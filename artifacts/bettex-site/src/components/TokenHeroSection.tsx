@@ -53,7 +53,7 @@ export function TokenHeroSection() {
               <span className="text-[#a4eacb]">Um token.</span>
             </h2>
             <p className="mt-8 max-w-[560px] text-base leading-[1.75] text-[#d1e5d9] sm:mt-10 sm:text-lg">
-              O token BETTEX representa sua participação no projeto que reúne os quatro agentes de IA. <strong className="font-semibold text-[#f7f4e9]">Quatro frentes de atuação, uma tecnologia central.</strong>
+              O token BETTEX representa sua participação no projeto que reúne os quatro agentes de IA. <strong className="font-semibold text-[#f7f4e9]">Quatro frentes de atuação, um só projeto BETTEX.</strong>
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
               <a

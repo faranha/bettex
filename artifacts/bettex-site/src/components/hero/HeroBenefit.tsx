@@ -1,4 +1,5 @@
 import { ChartCandlestick, Radar, Spade, Trophy } from 'lucide-react';
+import { BettexMark } from '@/components/BettexMark';
 import './HeroBenefit.css';
 
 const markets = [
@@ -43,19 +44,16 @@ export function HeroBenefit() {
         </div>
       </div>
       <svg className="hero-benefit__routes" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <marker id="hero-benefit-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-            <path d="M0 0 8 4 0 8Z" fill="#b6f7d5" />
-          </marker>
-        </defs>
-        <path d="M61 25 C54 25 59 52 53.8 57" />
-        <path d="M61 37 C56 37 59 55 53.8 59.2" />
-        <path d="M61 49 C57 49 57 59 53.8 61.4" />
-        <path d="M61 61 C58 61 56 62 53.8 63.6" />
-        <circle cx="61" cy="25" r=".6" />
-        <circle cx="61" cy="37" r=".6" />
-        <circle cx="61" cy="49" r=".6" />
-        <circle cx="61" cy="61" r=".6" />
+        <path d="M61 25 C58 25 58.5 42 57.8 49 C57 56 56 60 54.7 62.4" />
+        <path d="M61 37 C58.3 37 58.4 48 57.5 53 C56.8 57 55.6 61 54.7 62.4" />
+        <path d="M61 49 C58 49 57.5 55 56.8 58 C56.2 60 55.4 61.8 54.7 62.4" />
+        <path d="M61 61 C58.5 61 56.5 62 54.7 62.4" />
+        <circle cx="61" cy="25" r=".42" />
+        <circle cx="61" cy="37" r=".42" />
+        <circle cx="61" cy="49" r=".42" />
+        <circle cx="61" cy="61" r=".42" />
+        <circle className="hero-benefit__hub-ring" cx="54.7" cy="62.4" r="1.5" />
+        <circle className="hero-benefit__hub-center" cx="54.7" cy="62.4" r=".55" />
       </svg>
       <ul className="hero-benefit__markets" aria-label="Agentes e mercados em que a BETTEX opera">
         {markets.map(({ name, type, Icon }, index) => (
@@ -66,7 +64,23 @@ export function HeroBenefit() {
         ))}
       </ul>
       <figcaption className="hero-benefit__caption">
-        <img className="hero-benefit__caption-mark" src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" aria-hidden="true" />
+        <span className="hero-benefit__caption-mark" role="img" aria-label="Moeda BETTEX ativa">
+          <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="hero-benefit-coin-fill" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#ffe5bb" />
+                <stop offset="1" stopColor="#dc9b68" />
+              </linearGradient>
+            </defs>
+            <circle className="hero-benefit__caption-ring" cx="23" cy="25" r="17" fill="none" stroke="#b6efca" strokeWidth="1.5" strokeDasharray="16 92" strokeLinecap="round" />
+            <circle cx="23" cy="25" r="14" fill="#a86645" />
+            <circle cx="23" cy="23.5" r="13" fill="url(#hero-benefit-coin-fill)" stroke="#fff0d1" strokeWidth="1.2" />
+            <circle cx="23" cy="23.5" r="10" fill="none" stroke="#b87750" strokeWidth="1.2" />
+            <circle className="hero-benefit__caption-active-glow" cx="38" cy="10" r="6" fill="#a4eacb" />
+            <circle cx="38" cy="10" r="3.4" fill="#a4eacb" stroke="#123a3b" strokeWidth="1.5" />
+          </svg>
+          <BettexMark className="hero-benefit__caption-brand" />
+        </span>
         <strong>Invista em mercados de risco e receba nos dias de lucro sem abrir mão da sua participação.</strong>
       </figcaption>
       <span className="hero-benefit__bottom" aria-hidden="true">INTELIGÊNCIA EM MERCADOS DE RISCO</span>

@@ -25,7 +25,7 @@
   box-shadow: 0 10px 32px rgba(86, 69, 50, .06);
 }
 .technology-section__coin { display: grid; place-items: center; width: 50px; height: 50px; flex: none; border: 4px solid #f5d5bf; border-radius: 50%; background: #f8c5a7; color: #244942; font: 800 28px/1 var(--app-font-serif, sans-serif); letter-spacing: -.1em; }
-.technology-section__coin span { color: #be795b; }
+.technology-section__coin img { width: 29px; height: 29px; border-radius: 7px; }
 .technology-section__token-copy { display: flex; flex-direction: column; gap: 2px; }
 .technology-section__token-copy strong { font: 800 17px/1.1 var(--app-font-serif, sans-serif); letter-spacing: -.04em; }
 .technology-section__token-copy small { color: #755f52; font-size: 11px; line-height: 1.3; }
@@ -45,6 +45,7 @@
   color: #244942; font: 800 17px/1 var(--app-font-serif, sans-serif);
   animation: technology-deposit 2.7s ease-in-out infinite;
 }
+.technology-section__moving-coin img { width: 16px; height: 16px; border-radius: 4px; }
 @keyframes technology-deposit {
   0%, 10% { transform: translateY(0); opacity: 0; }
   18%, 55% { opacity: 1; }
@@ -77,19 +78,11 @@
   border: 3px solid #f5d5bf; border-radius: 50%; background: #f8c5a7; color: #244942;
   font: 800 23px/1 var(--app-font-serif, sans-serif);
 }
-.technology-section__core-bridge {
-  display: flex; align-items: center; gap: 17px; width: min(100%, 850px);
-  margin: 24px auto 0; padding: 12px 24px; border: 1px solid #b8d1c2;
-  border-radius: 18px; background: #f4f8ee;
-}
-.technology-section__core-bridge img { flex: none; width: 72px; height: 72px; border-radius: 12px; background: #123a3b; object-fit: contain; }
-.technology-section__core-bridge span { color: #168367; font: 700 9px/1.4 var(--app-font-mono, monospace); letter-spacing: .11em; text-transform: uppercase; }
-.technology-section__core-bridge h3 { margin: 3px 0; font: 800 22px/1.1 var(--app-font-serif, sans-serif); letter-spacing: -.04em; }
-.technology-section__core-bridge p { margin: 0; color: #526e69; font-size: 12px; line-height: 1.45; }
+.technology-section__wallet-coin img { width: 21px; height: 21px; border-radius: 5px; }
 .technology-section__branch { height: 46px; position: relative; width: 75%; margin: 0 auto; border-bottom: 1px solid #8db7a5; }
 .technology-section__branch::before { content: ""; position: absolute; width: 1px; height: 100%; top: 0; left: 50%; background: #8db7a5; }
 .technology-section__branch::after { content: ""; position: absolute; width: 7px; height: 7px; bottom: -4px; left: calc(50% - 3px); border-radius: 50%; background: #168367; }
-.technology-section__agents-label { display: block; margin: 9px 0 35px; color: #397665; font: 700 10px/1.5 var(--app-font-mono, monospace); letter-spacing: .15em; text-align: center; text-transform: uppercase; }
+.technology-section__agents-label { position: relative; z-index: 2; display: block; width: fit-content; max-width: 100%; margin: 9px auto 35px; padding: 3px 12px; border-radius: 999px; background: #e8efe7; box-shadow: 0 0 0 4px #e8efe7; color: #397665; font: 700 10px/1.5 var(--app-font-mono, monospace); letter-spacing: .15em; text-align: center; text-transform: uppercase; }
 .technology-section__agents { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .technology-section__agents > * { position: relative; min-width: 0; }
 .technology-section__agents > *::before { content: ""; position: absolute; z-index: 1; top: -59px; left: 50%; width: 1px; height: 59px; background: #8db7a5; }
@@ -115,8 +108,11 @@
 .technology-section__allora a:focus-visible { outline: 3px solid #168367; outline-offset: 5px; }
 @media (max-width: 1000px) {
   .technology-section__agents { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .technology-section__branch, .technology-section__agents > *::before, .technology-section__agents > *::after { display: none; }
-  .technology-section__agents-label { margin: 28px 0 18px; }
+  .technology-section__branch { width: 2px; height: 38px; border: 0; background: #8db7a5; }
+  .technology-section__branch::before { display: none; }
+  .technology-section__branch::after { bottom: -3px; left: -2px; }
+  .technology-section__agents > *::before, .technology-section__agents > *::after { display: none; }
+  .technology-section__agents-label { margin: 14px auto 24px; }
   .technology-section__result-path { display: block; width: 1px; height: 48px; margin: 0 auto; background: #8db7a5; }
   .technology-section__result-path span, .technology-section__result-path::before, .technology-section__result-path::after { display: none; }
 }
@@ -129,10 +125,8 @@
   .technology-section__wallet-art { align-self: center; width: 180px; height: 150px; }
   .technology-section__wallet-art svg { width: 96px; height: 96px; }
   .technology-section__wallet-coin { width: 31px; height: 31px; font-size: 18px; }
+  .technology-section__wallet-coin img { width: 17px; height: 17px; }
   .technology-section__wallet h3 { font-size: clamp(2.7rem, 12vw, 4.7rem); }
-  .technology-section__core-bridge { align-items: flex-start; gap: 11px; padding: 14px; }
-  .technology-section__core-bridge img { width: 52px; height: 52px; }
-  .technology-section__core-bridge h3 { font-size: 19px; }
   .technology-section__agents { grid-template-columns: 1fr; gap: 16px; }
   .technology-section__result { align-items: flex-start; gap: 14px; padding: 27px 20px 22px; }
   .technology-section__result-icon { width: 44px; height: 44px; border-radius: 12px; }
