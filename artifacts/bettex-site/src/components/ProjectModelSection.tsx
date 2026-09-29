@@ -74,10 +74,10 @@ export function ProjectModelSection() {
          .pm-stake-arrow { height: 17px; color: #b6efca; animation: pm-drop 1.8s ease-in-out infinite; }
          .pm-stake-vault { display: grid; width: 96px; height: 23px; place-items: center; border: 1px solid #a2dcc1; border-top: 3px solid #b6efca; border-radius: 4px 4px 9px 9px; background: linear-gradient(#2d7169, #184f50); box-shadow: 0 7px 0 #0b2c31; color: #d9f4e2; font: 700 8px/1 var(--app-font-mono); letter-spacing: .09em; }
          .pm-flow { display: flex; align-items: center; gap: 8px; }
-         .pm-flow-node { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 70px; height: 65px; border: 1px solid rgba(182, 239, 202, .5); border-radius: 12px; background: #215452; box-shadow: 0 8px 0 rgba(3, 29, 32, .35); color: #eaf7ed; }
+         .pm-flow-node { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 70px; height: 65px; border: 1px solid rgba(182, 239, 202, .5); border-radius: 12px; background: #215452; box-shadow: 0 8px 0 rgba(3, 29, 32, .35); color: #eaf7ed; text-align: center; }
          .pm-flow-node b { font: 800 25px/1 var(--app-font-serif); }
-         .pm-flow-node img { width: 27px; height: 27px; border-radius: 6px; }
-         .pm-flow-node small { font: 700 8px/1 var(--app-font-mono); letter-spacing: .03em; }
+         .pm-flow-node img { display: block; width: 27px; height: 27px; flex: none; border-radius: 50%; object-fit: contain; }
+         .pm-flow-node small { display: block; width: 100%; font: 700 8px/1 var(--app-font-mono); letter-spacing: .03em; text-align: center; white-space: nowrap; }
          .pm-flow-node--market { border-color: rgba(243, 201, 166, .6); background: #53433c; }
          .pm-flow-node--market b { font-size: 22px; }
          .pm-flow-arrows { display: grid; gap: 1px; width: 60px; color: #b6efca; }
@@ -101,7 +101,8 @@ export function ProjectModelSection() {
         .pm-outcomes { display: grid; gap: 8px; margin-top: 18px; }
         .pm-outcome { padding: 12px 13px; border-radius: 10px; }
          .pm-outcome--profit { background: #f3c9a6; color: #54362b; }
-        .pm-outcome--none { border: 1px solid rgba(174, 229, 200, .25); color: #d2e4d9; }
+        .pm-outcome--none { border: 1px solid #cb7161; background: linear-gradient(135deg, #aa4037, #91342e); color: #fff5ef; box-shadow: inset 0 1px 0 rgba(255, 226, 207, .2), 0 7px 16px rgba(3, 29, 32, .16); }
+        .pm-outcome--none span { color: #ffe1d0; }
         .pm-outcome span { display: block; margin-bottom: 3px; font: 700 10px/1.3 var(--app-font-mono); letter-spacing: .04em; text-transform: uppercase; }
         .pm-outcome strong { display: block; font-size: 12px; line-height: 1.4; }
         .pm-panel-foot { display: flex; align-items: center; gap: 11px; padding: 15px 32px; border-top: 1px solid rgba(174, 229, 200, .18); background: rgba(8, 37, 39, .22); }
@@ -113,6 +114,9 @@ export function ProjectModelSection() {
          .pm-bottom a:hover { color: #613221; }
         .pm-bottom a svg { transition: transform .2s ease; }
         .pm-bottom a:hover svg { transform: translateX(3px); }
+        @media (min-width: 768px) and (max-width: 1100px) {
+          .pm-title { max-width: calc(100% - 250px); font-size: clamp(2.1rem, 3.5vw, 2.6rem); letter-spacing: -.045em; }
+        }
         @media (max-width: 1000px) {
           .pm-casino-cards { display: none; }
           .pm-steps { grid-template-columns: .86fr .86fr 1.4fr 1.35fr; padding-inline: 8px; }
@@ -123,10 +127,10 @@ export function ProjectModelSection() {
           .pm-casino-wheel { top: 65px; right: -95px; width: 350px; opacity: .58; }
           .pm-casino-wheel::after { top: 71%; left: 24%; }
           .pm-casino-cards { display: block; top: 292px; right: 180px; opacity: .52; transform: scale(.56); transform-origin: top right; }
-          .pm-sport-ball { top: 58px; right: -20px; width: 96px; opacity: .42; }
+          .pm-sport-ball { top: 12px; right: -20px; width: 96px; opacity: .42; }
           .pm-wrap { width: min(100% - 32px, 1200px); }
-           .pm-head { min-height: 0; padding-bottom: 82px; margin-bottom: 25px; }
-          .pm-title { font-size: clamp(2.75rem, 10vw, 4.5rem); }
+           .pm-head { min-height: 0; padding-bottom: 190px; margin-bottom: 25px; }
+          .pm-title { font-size: clamp(2rem, 8.35vw, 3rem); letter-spacing: -.04em; }
            .pm-head-note { max-width: 190px; margin-top: 13px; }
            .pm-person { right: -5px; bottom: -26px; width: 200px; height: 205px; }
           .pm-panel { border-radius: 22px; }
@@ -148,7 +152,7 @@ export function ProjectModelSection() {
         }
         @media (max-width: 370px) {
           .pm-casino-cards { display: none; }
-          .pm-sport-ball { top: 302px; right: 172px; width: 66px; opacity: .4; }
+          .pm-sport-ball { top: 360px; right: 172px; width: 66px; opacity: .4; }
           .pm-person { right: -25px; width: 170px; height: 180px; }
           .pm-head-note { max-width: 145px; }
           .pm-agent-list { grid-template-columns: 1fr 1fr; }
@@ -173,7 +177,7 @@ export function ProjectModelSection() {
         <div className="pm-head">
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
-              <h2 id="pm-heading" className="pm-title">Compre. Ative.<br /><span>Receba nos dias de lucro.</span></h2>
+              <h2 id="pm-heading" className="pm-title">Compre. Ative. Receba.<br /><span>Viva as apostas com segurança.</span></h2>
           </div>
           <p className="pm-head-note">Todos os agentes em um só lugar.</p>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />

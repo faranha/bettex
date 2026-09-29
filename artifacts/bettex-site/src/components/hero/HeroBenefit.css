@@ -59,7 +59,7 @@
 }
 .hero-benefit__scene {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   top: 8%;
   left: -20%;
   width: 116%;
@@ -74,15 +74,15 @@
 }
 .hero-benefit__phone-screen {
   position: absolute;
-  top: 48%;
-  left: 56%;
+  top: 48.6%;
+  left: 56.4%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5%;
-  width: 8.5%;
-  height: 19.5%;
+  width: 7.7%;
+  height: 18.1%;
   overflow: hidden;
   border-radius: 3px;
   background: linear-gradient(180deg, #0a2528, #16453e);
@@ -99,7 +99,7 @@
   font: 800 clamp(5px, .6vw, 8px)/1.1 "Bricolage Grotesque", sans-serif;
   text-align: center;
 }
-.hero-benefit__phone-chart { display: block; width: 84%; height: 44%; overflow: visible; }
+.hero-benefit__phone-chart { display: block; width: 84%; height: 44%; overflow: hidden; }
 .hero-benefit__phone-grid { fill: none; stroke: rgba(164,234,203,.18); stroke-width: .6; }
 .hero-benefit__phone-bars { fill: none; stroke: #e8c49d; stroke-width: 1.6; stroke-linecap: round; }
 .hero-benefit__phone-line { fill: none; stroke: #a4eacb; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
