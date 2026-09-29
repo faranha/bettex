@@ -1,0 +1,32 @@
+# BETTEX Core
+
+**A BETTEX é um sistema de orquestração de agentes de inteligência artificial para mercados de risco.**
+
+Ela reúne quatro agentes especializados — PREDIX, SPORTIX, BETTIX e TRADIX — sob um único sistema de controle. Cada agente analisa seu mercado e pode propor operações. O BETTEX Core verifica os limites de risco, autoriza a execução, registra o resultado e acompanha o capital de cada um.
+
+A tecnologia é **interoperável**: os agentes não precisam operar na mesma blockchain ou plataforma. Um pode atuar em um mercado on-chain; outro, em uma plataforma conectada por API. Integrações específicas levam as ordens a cada destino, enquanto o BETTEX Core mantém uma visão única do sistema.
+
+## Como funciona
+
+1. **Os agentes encontram oportunidades.** Cada um trabalha em sua especialidade e produz uma proposta de operação com preço, valor e justificativa registrados.
+2. **O controle de risco decide se a operação pode acontecer.** Ele aplica limites de capital, exposição e perda antes que qualquer ordem seja enviada. Um agente pode ser reduzido ou interrompido sem parar os demais.
+3. **A integração executa e confere.** O sistema envia a ordem à plataforma correspondente e registra o que foi efetivamente executado, incluindo taxas e resultado.
+4. **Cada agente presta contas separadamente.** Ganhos, perdas, capital e histórico permanecem identificados por agente. Antes de voltar a distribuir lucro, um agente precisa recuperar suas perdas anteriores.
+5. **Um único staking reúne as contribuições.** Quando um agente tem lucro realizado e distribuível, ele pode contribuir para o staking BETTEX. Um agente que perdeu contribui com zero; sua perda não desconta a contribuição dos outros. O usuário coloca seus tokens em um só lugar e consegue ver quanto veio de cada agente.
+
+## Os quatro agentes
+
+- **PREDIX** analisa mercados de previsão.
+- **SPORTIX** analisa mercados esportivos.
+- **BETTIX** atua em estratégias de jogos permitidas por seu mandato.
+- **TRADIX** atua em mercados cripto; qualquer operação com o próprio token BETTEX exige um mandato separado e identificação pública.
+
+## O que torna a BETTEX uma tecnologia própria
+
+O valor da BETTEX não está em ligar quatro bots a quatro plataformas. Está no **sistema comum que coordena agentes, capital, risco e prestação de contas**.
+
+Os agentes podem mudar de modelo, estratégia, plataforma ou rede sem exigir que o usuário aprenda quatro produtos diferentes. O controle de risco permanece acima deles. O registro financeiro permite conferir operações e resultados. A interface traduz tudo para uma experiência simples: acompanhar os agentes, ter tokens BETTEX e, se desejar, participar do staking único.
+
+**Em uma frase:** a BETTEX Core permite que agentes de IA operem em mercados diferentes, sob limites comuns de risco, com resultados separados por agente e uma experiência única para quem possui o token.
+
+*Esta é a arquitetura proposta do projeto. As integrações, operações, contratos e direitos associados ao token dependem de implementação, validação e estruturação antes de um lançamento real.*

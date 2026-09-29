@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ArrowUpRight, Eye, UsersRound } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Eye, Infinity } from 'lucide-react';
 
 const agents = [
   { name: 'PREDIX', role: 'Previsões', status: 'Em operação', image: 'predix', className: 'predix' },
@@ -162,12 +162,12 @@ export function ProjectModelSection() {
       <div className="pm-wrap">
         <div className="pm-intro">
           <div className="pm-intro-copy">
-            <p className="pm-eyebrow">O que existe por trás do token</p>
-            <h2 id="pm-heading" className="pm-title">Você não entra em um robô. <strong>Entra na BETTEX inteira.</strong></h2>
+            <p className="pm-eyebrow">O que é a BTEX</p>
+            <h2 id="pm-heading" className="pm-title">Em vez de apostar, invista em tecnologia. <strong>Seja dono de uma parte da IA.</strong></h2>
             <p className="pm-lead">
-              O token BETTEX representa sua <strong>participação em um único projeto de inteligência artificial</strong>. São quatro agentes dentro do mesmo ecossistema — não quatro investimentos separados.
+              A BTEX é um projeto de investimento em inteligência artificial que reúne quatro agentes. Ao comprar um token, você adquire <strong>um ativo seu, sem data de vencimento</strong>, que representa sua participação nessa tecnologia e nos resultados que ela efetivamente gerar — não uma aposta em um resultado isolado.
             </p>
-            <p className="pm-small-note">Sua parte é na IA da BETTEX inteira, não em um agente isolado. O token representa essa participação no projeto, com os riscos dessa escolha.</p>
+            <p className="pm-small-note">PREDIX e TRADIX já operam em mercados de risco com apoio da Allora, uma rede descentralizada de IA. SPORTIX e BETTIX ainda estão em desenvolvimento.</p>
           </div>
           <div className="pm-map" role="img" aria-label="Um ecossistema BETTEX reúne PREDIX e TRADIX em operação e SPORTIX e BETTIX em desenvolvimento">
             <div className="pm-center" aria-hidden="true"><span className="pm-center-mark" /><b>BETTEX<span>.</span></b><small>Um ecossistema</small></div>
@@ -182,34 +182,34 @@ export function ProjectModelSection() {
         </div>
         <div className="pm-model">
           <div className="pm-model-head">
-            <div><p className="pm-model-kicker">Na prática / o que muda para você</p><h3>Fazer parte também é <span>entender o que acontece.</span></h3></div>
+            <div><p className="pm-model-kicker">Por que comprar um token da BTEX?</p><h3>Um ativo seu. <span>Retorno ligado ao resultado real.</span></h3></div>
             <ArrowUpRight aria-hidden="true" strokeWidth={1.5} />
           </div>
           <div className="pm-benefits">
             <div className="pm-benefit">
-              <span className="pm-benefit-index">01 / RESULTADO</span>
+              <span className="pm-benefit-index">01 / TITULARIDADE</span>
+              <span className="pm-benefit-icon" aria-hidden="true"><Infinity size={22} strokeWidth={1.7} /></span>
+              <h4>É seu. Não expira.</h4>
+              <p>O token é <strong>um ativo perpétuo</strong>. Enquanto você for titular, sua participação no projeto é sua. Se quiser vendê-lo no futuro, dependerá de haver negociação disponível.</p>
+            </div>
+            <div className="pm-benefit">
+              <span className="pm-benefit-index">02 / RETORNO</span>
               <span className="pm-benefit-icon" aria-hidden="true"><ArrowUpRight size={22} strokeWidth={1.7} /></span>
-              <h4>Lucro, só quando existe.</h4>
-              <p>Quando o projeto gera lucro e há resultado positivo, os <strong>lucros efetivamente gerados são distribuídos diariamente</strong> aos titulares de tokens.</p>
+              <h4>Retorno se houver lucro.</h4>
+              <p>Se as operações gerarem lucro, o resultado positivo é <strong>distribuído diariamente aos titulares</strong>. Sem lucro nas operações, não há distribuição.</p>
             </div>
             <div className="pm-benefit">
-              <span className="pm-benefit-index">02 / COMUNIDADE</span>
-              <span className="pm-benefit-icon" aria-hidden="true"><UsersRound size={22} strokeWidth={1.7} /></span>
-              <h4>Uma voz no caminho.</h4>
-              <p>Você entra em uma comunidade de titulares que pode ajudar a decidir os próximos passos do projeto.</p>
-            </div>
-            <div className="pm-benefit">
-              <span className="pm-benefit-index">03 / ACOMPANHAMENTO</span>
+              <span className="pm-benefit-index">03 / INTELIGÊNCIA</span>
               <span className="pm-benefit-icon" aria-hidden="true"><Eye size={22} strokeWidth={1.7} /></span>
-              <h4>Veja os agentes agir.</h4>
-              <p>Um sistema separado para investidores permite acompanhar a atividade dos agentes em tempo real.</p>
+              <h4>Análise, não impulso.</h4>
+              <p>Em vez de depender das emoções de uma aposta, você participa de um projeto cujos agentes usam IA para apoiar operações em mercados de risco. <strong>Inteligência não elimina o risco.</strong></p>
             </div>
           </div>
-          <div className="pm-result"><span aria-hidden="true" /><p><strong>Lucro não é garantido:</strong> a distribuição diária ocorre somente quando as operações têm resultado positivo.</p></div>
+          <div className="pm-result"><span aria-hidden="true" /><p><strong>Retorno não é garantido:</strong> operações em mercados de risco podem gerar perdas, e o token pode perder valor.</p></div>
         </div>
         <div className="pm-bottom">
-          <p>PREDIX e TRADIX já operam em mercados. SPORTIX e BETTIX fazem parte do mesmo projeto, mas ainda estão em desenvolvimento.</p>
-          <a href="#agentes" data-testid="link-conhecer-agentes">Conheça cada agente <ArrowRight size={16} aria-hidden="true" /></a>
+          <p>Chega de apostar no impulso: conheça as quatro frentes da BTEX e participe do projeto como investidor, sem perder de vista os riscos.</p>
+          <a href="#agentes" data-testid="link-conhecer-agentes">Conheça os agentes <ArrowRight size={16} aria-hidden="true" /></a>
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ import NotFound from '@/pages/not-found';
 import { Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
 import { TechnologySection } from '@/components/technology/TechnologySection';
 import { InvestorSection } from '@/components/investor/InvestorSection';
+import { HeroNetwork } from '@/components/hero/HeroNetwork';
 import { PrelaunchTokenomics } from '@/components/PrelaunchTokenomics';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { TokenHeroSection } from '@/components/TokenHeroSection';
@@ -180,9 +181,9 @@ function Home() {
       <div className="page-wrap flex h-[72px] items-center justify-between gap-4">
         <Logo />
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegação principal">
-          <a href="#participacao" className="text-sm font-semibold hover:text-[#168367]">Como funciona</a>
-          <a href="#tecnologia" className="text-sm font-semibold hover:text-[#168367]">Tecnologia</a>
+          <a href="#participacao" className="text-sm font-semibold hover:text-[#168367]">O que é a BTEX</a>
           <a href="#agentes" className="text-sm font-semibold hover:text-[#168367]">Agentes</a>
+          <a href="#tecnologia" className="text-sm font-semibold hover:text-[#168367]">Tecnologia</a>
           <a href="#token" className="text-sm font-semibold hover:text-[#168367]">Token BETTEX</a>
           <a href="#comprar" className="text-sm font-semibold hover:text-[#168367]">Demonstração</a>
         </nav>
@@ -190,7 +191,7 @@ function Home() {
         <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 lg:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
       </div>
       {menuOpen && <nav className="page-wrap flex flex-col gap-1 border-t border-[#d6e1d7] py-3 lg:hidden" aria-label="Navegação móvel">
-        {([['Como funciona', 'participacao'], ['Tecnologia', 'tecnologia'], ['Agentes', 'agentes'], ['Token BETTEX', 'token'], ['Demonstração', 'comprar']] as const).map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
+        {([['O que é a BTEX', 'participacao'], ['Agentes', 'agentes'], ['Tecnologia', 'tecnologia'], ['Token BETTEX', 'token'], ['Demonstração', 'comprar']] as const).map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
       </nav>}
     </header>
 
@@ -200,33 +201,19 @@ function Home() {
         <div className="page-wrap relative grid min-h-[660px] items-center gap-10 pb-10 pt-8 sm:pt-16 md:grid-cols-[1fr_.95fr] md:py-20 lg:min-h-[715px]">
           <div className="entrance relative z-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#94ebcb]/35 bg-[#94ebcb]/10 px-4 py-2 text-[11px] font-bold text-[#aff3d7]"><span className="h-2 w-2 rounded-full bg-[#a6edcb]" /> BETTEX · INVESTIMENTO EM IA</div>
-            <h1 className="hero-title mt-7 max-w-[650px] text-[clamp(3.05rem,5.4vw,5.7rem)] font-extrabold">Pare de apostar.<br /><span className="text-[#a4eacb]">Comece a investir.</span></h1>
-            <p className="mt-6 max-w-[555px] text-[17px] leading-[1.7] text-[#d7e9df] sm:text-lg"><strong className="font-bold text-[#f7f4e9]">Com tokens BETTEX, você é dono de uma parte do projeto de IA que reúne quatro agentes.</strong> Quando as operações geram lucro, ele é distribuído diariamente aos titulares. Você participa da comunidade que decide os próximos passos e acompanha a movimentação dos agentes em tempo real no sistema do investidor.</p>
-            <div className="mt-7 grid grid-cols-2 gap-2.5 md:hidden" aria-label="Agentes da BETTEX em operação">
-              {agents.filter((agent) => agent.status === 'Em operação').map((agent) => <a href="#agentes" key={agent.name} className="hero-mini-agent tap relative h-[118px] overflow-hidden rounded-[18px]" style={{ backgroundColor: agent.imageBackground }}>
-                <img src={image(agent.image)} alt="" className="absolute -right-2 -top-2 h-[113px] w-[113px] object-contain" />
-                <span className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[#103739]/95 to-transparent px-3 pb-2.5 pt-9 text-[#f7f4e9]"><strong className="display block text-sm leading-none">{agent.name}</strong><span className="mt-1 block text-[10px]">{agent.platform} · Em operação</span></span>
-              </a>)}
-            </div>
-            <p className="mt-3 text-xs leading-5 text-[#c9e0d6] md:hidden">SPORTIX e BETTIX também fazem parte da BETTEX. Veja os quatro agentes abaixo.</p>
+            <h1 className="hero-title mt-7 max-w-[650px] text-[clamp(3rem,5.1vw,5.5rem)] font-extrabold">Aposta não é<br />{' '}investimento,<br />{' '}<span className="text-[#a4eacb]">BTEX é.</span></h1>
+            <p className="mt-6 max-w-[555px] text-[17px] leading-[1.7] text-[#d7e9df] sm:text-lg">Apostar o salário em jogos de azar e apostas esportivas é arriscar o dinheiro do mês em um resultado incerto, sem ser dono de nada.</p>
+            <p className="mt-4 max-w-[555px] text-[17px] leading-[1.7] text-[#d7e9df] sm:text-lg">Na BTEX, você investe em agentes de IA, compra tokens e se torna dono da tecnologia. <strong className="font-bold text-[#f7f4e9]">Não é aposta, é investimento.</strong></p>
             <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#token" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Entenda o token <ArrowDown className="h-4 w-4" /></a></div>
             <p className="mt-8 max-w-lg border-l-2 border-[#ffcb9b] pl-4 text-xs leading-5 text-[#c9e0d6]">Investimentos envolvem riscos. Lucros e valorização do token não são garantidos.</p>
           </div>
-          <div className="entrance entrance-delay relative mx-auto hidden h-[380px] w-full max-w-[530px] sm:h-[480px] md:block md:h-[530px]" aria-label="Ilustração dos quatro agentes de IA">
-            <div className="absolute inset-[9%] rounded-full border border-[#a4eacb]/30" />
-            <div className="absolute inset-[19%] rounded-full border border-dashed border-[#a4eacb]/30" />
-            <div className="absolute inset-[30%] rounded-full bg-[#a4eacb]/10 blur-2xl" />
-            <div className="absolute left-[34%] top-[39%] z-10 grid h-[31%] w-[31%] place-items-center rounded-[27%] border border-[#a4eacb]/45 bg-[#1c5953] shadow-2xl"><span className="display text-center text-[clamp(1.1rem,2.7vw,1.8rem)] font-extrabold tracking-[-.06em]">BETTEX<span className="text-[#a4eacb]">.</span></span></div>
-            {agents.map((agent, i) => <div key={agent.name} className={`hero-agent absolute ${['left-[-1%] top-[1%] w-[54%]', 'right-[-3%] top-[0%] w-[53%]', 'bottom-[-4%] left-[0%] w-[52%]', 'bottom-[-4%] right-[-2%] w-[52%]'][i]}`}>
-              <img src={image(agent.image)} alt={`${agent.name}, agente de ${agent.area.toLowerCase()} com ${agent.visual}`} className="w-full" />
-            </div>)}
-            <span className="stamp absolute right-[-1%] top-[47%] z-20 rounded-full bg-[#ffd39e] px-4 py-2.5 text-center text-[11px] font-extrabold text-[#173b3a] shadow-lg sm:text-xs">PREDIX + TRADIX<br />em operação.</span>
+          <div className="entrance entrance-delay relative mx-auto w-full max-w-[570px]">
+            <HeroNetwork />
           </div>
         </div>
       </section>
 
       <ProjectModelSection />
-      <TechnologySection />
 
       <section id="agentes" className="bg-[#e8efe7] py-20 sm:py-28">
         <div className="page-wrap">
@@ -266,6 +253,7 @@ function Home() {
         </div>
       </section>
 
+      <TechnologySection />
       <InvestorSection />
       <TokenHeroSection />
 
