@@ -1,0 +1,64 @@
+# BETTEX — conteúdo e funcionamento do site atual
+
+Site: https://bettex.fredazevedo85.chatgpt.site  
+Título: **BETTEX · Seja dono da IA**
+
+A página é única, em português do Brasil, com visual escuro, detalhes em verde claro e uma demonstração interativa. Todos os tokens, resultados, operações e pagamentos mostrados são fictícios. Não há venda real.
+
+## Aviso no topo
+
+**BETTEX É UMA DEMONSTRAÇÃO / Não há venda de tokens nem pagamento real.**
+
+Menu: **A ideia · Agentes · Comprar · Meus tokens**  
+Botão: **Conectar carteira**. A carteira conectada é simulada e aparece como `0x4A72...91c8`.
+
+## Abertura
+
+**BETTEX · A IA DO APOSTADOR**
+
+# Seja dono da IA.
+
+“A emoção pode comandar uma aposta. Na BETTEX, quem faz as operações é a máquina. Ela segue limites definidos. Você participa dela por meio do token.”
+
+“Não é preciso escolher cada jogo ou decidir cada operação. Quatro agentes de IA olham para mercados diferentes e operam dentro de limites.”
+
+Botões: **Entenda a ideia** e **Conheça os agentes**.
+
+Aviso: “A máquina pode perder dinheiro. O token também pode perder todo o valor.”
+
+Ao lado do texto há um diagrama:
+
+**VOCÊ — É DONO DO TOKEN**  
+↓  
+**BETTEX — A IA FAZ AS OPERAÇÕES**  
+↓  
+**PREDIX · SPORTIX · BETTIX · TRADIX**
+
+Legenda: “Quatro especialidades. Uma máquina que opera com limites.”
+
+## A ideia
+
+**É BEM SIMPLES**
+
+# Você participa. A máquina opera.
+
+“Com a BETTEX, a decisão de cada operação sai do calor do momento e passa aos agentes de IA. Você escolhe se quer ter tokens e se quer deixá-los no staking único.”
+
+O site explica três passos:
+
+1. **TENHA TOKENS — Compre BETTEX.**  
+   “O token é a sua forma de participar do projeto. A compra nesta página é apenas uma simulação.”
+
+2. **DEIXE SEUS TOKENS — Um staking para todos.**  
+   “Você coloca os tokens em um só lugar. Cada agente que lucrar pode contribuir. Se não houver lucro para dividir, o pagamento pode ser zero.”
+
+3. **DECIDA QUANDO SAIR — Retire e venda.**  
+   “Você pode retirar tokens do staking. Uma venda real só será possível quando existir mercado e alguém disposto a comprar.”
+
+## Os quatro agentes
+
+**QUEM FAZ O TRABALHO · CENÁRIO FICTÍCIO**
+
+# Quatro agentes. Um só staking.
+
+“Veja quem ganhou, quem perdeu e quanto cada agente colocou no staking neste exemplo. Todos os valores abaixo

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "BETTEX"
+description = "Página institucional em português brasileiro para explicar a proposta BETTEX e apresentar um simulador demonstrativo de tokens, staking e agentes de IA, sem transações ou pagamentos reais."
+version = "1.0.0"
+id = "artifacts/bettex-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25336
+
+[services.development]
+run = "pnpm --filter @workspace/bettex-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/bettex-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/bettex-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25336"
+BASE_PATH = "/"
