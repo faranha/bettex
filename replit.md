@@ -1,9 +1,11 @@
-# [Project name]
+# BETTEX
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Site de apresentação da proposta BETTEX para brasileiros adultos, com quatro agentes ilustrados e uma demonstração local de tokens.
 
 ## Run & Operate
 
+- `pnpm --filter @workspace/bettex-site run dev` — iniciar a página pelo workflow gerenciado
+- `pnpm --filter @workspace/bettex-site run typecheck` — verificar o frontend
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
@@ -22,23 +24,29 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/bettex-site/src/App.tsx` — página e simulador
+- `artifacts/bettex-site/src/index.css` — identidade visual
+- `artifacts/bettex-site/public/agents/` — artes próprias dos quatro agentes
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Esta versão é somente uma demonstração no navegador; não conectar compra, carteira, apostas ou pagamentos reais sem solicitação e análise regulatória apropriada.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Explica a proposta, apresenta PREDIX, SPORTIX, BETTIX e TRADIX e permite simular tokens, participação, retirada e venda.
+- Distribuição proposta atual: 50% público, 25% investidores, 25% dono/criador do sistema. Números e resultados dos agentes são fictícios.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Todo texto da interface deve ser português brasileiro simples, sem misturar inglês nem depender de termos técnicos como “staking” ou “leituras”.
+- O visual deve ser bastante ilustrado, acolhedor e fácil de entender, quase lúdico, mas voltado a adultos. Cada agente precisa manter uma arte visual própria.
+- O público é o apostador brasileiro; não normalizar apostar dinheiro do salário/contas nem confundir apostas com investimento. A BETTEX é apresentada como proposta de investimento ainda não disponível, sem promessa de retorno.
+- Não colocar na interface blocos longos sobre transparência, governança, revisão regulatória ou agentes inativos. Usar apenas avisos curtos e objetivos para deixar claro que a demonstração não realiza transações.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Os saldos ficam apenas no armazenamento local do navegador e não provam propriedade de tokens.
 
 ## Pointers
 
