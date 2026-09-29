@@ -118,6 +118,10 @@
 .hero-agent:nth-child(2) { animation-delay: -1s; }
 .hero-agent:nth-child(3) { animation-delay: -2s; }
 .hero-agent:nth-child(4) { animation-delay: -3s; }
+.hero-mini-agent { animation: rise .7s cubic-bezier(.18,.72,.25,1) both; }
+.hero-mini-agent:nth-child(2) { animation-delay: .12s; }
+.hero-mini-agent img { transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.hero-mini-agent:hover img { transform: translateY(-5px) rotate(-4deg) scale(1.08); }
 .entrance { animation: rise .7s cubic-bezier(.18,.72,.25,1) both; }
 .entrance-delay { animation-delay: .16s; }
 .tap { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }

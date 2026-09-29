@@ -1,0 +1,1 @@
+- [BETTEX checkout eligibility](bettex-checkout-eligibility.md) — confirm processor approval for investment tokens before wiring real purchases.
