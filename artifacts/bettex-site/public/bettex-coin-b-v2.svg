@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bettex-coin-face" x1="11" y1="10" x2="54" y2="57" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE9CF"/>
+      <stop offset="1" stop-color="#E9AD83"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#B87451" stroke="#FCE6CF" stroke-width="2"/>
+  <circle cx="32" cy="32" r="26" fill="url(#bettex-coin-face)" stroke="#D7956F" stroke-width="1.5"/>
+  <circle cx="32" cy="32" r="22" stroke="#FCE6CF" stroke-width="1.5"/>
+  <path d="M22 12h13c8.5 0 13.5 4.1 13.5 10.8 0 4.1-2.1 7.4-6.2 9.2 5.1 1.4 8.2 4.9 8.2 9.7C50.5 49 45 53 36 53H22V12Zm8.5 7v9.4H35c3.7 0 5.7-1.8 5.7-4.7 0-3-2-4.7-5.7-4.7h-4.5Zm0 16.5v10.1h4.8c4.2 0 6.3-1.8 6.3-5.1s-2.1-5-6.3-5h-4.8Z" transform="translate(-3 0)" fill="#123A3B" fill-rule="evenodd"/>
+</svg>

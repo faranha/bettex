@@ -1,7 +1,28 @@
-.agent-card { --agent-accent: #a4eacb; box-shadow: 0 12px 28px rgba(16, 53, 52, .055); }
+.agent-card {
+  --agent-accent: #a4eacb;
+  --agent-stage-center: #334b4d;
+  --agent-stage-mid: #1c3538;
+  --agent-stage-edge: #152d31;
+  box-shadow: 0 12px 28px rgba(16, 53, 52, .055);
+}
+.agent-card--tradex {
+  --agent-stage-center: #354956;
+  --agent-stage-mid: #203742;
+  --agent-stage-edge: #172d37;
+}
+.agent-card--sportix {
+  --agent-stage-center: #354d43;
+  --agent-stage-mid: #203a33;
+  --agent-stage-edge: #172f2c;
+}
+.agent-card--bettix {
+  --agent-stage-center: #493f4d;
+  --agent-stage-mid: #302e3c;
+  --agent-stage-edge: #252a36;
+}
 .agent-card__stage {
   color: #e7f1ea;
-  background: radial-gradient(ellipse at 50% 74%, #334b4d 0%, #1c3538 52%, #152d31 100%);
+  background: radial-gradient(ellipse at 50% 74%, var(--agent-stage-center) 0%, var(--agent-stage-mid) 52%, var(--agent-stage-edge) 100%);
   border-bottom: 2px solid var(--agent-accent);
 }
 .agent-card__stage::before {

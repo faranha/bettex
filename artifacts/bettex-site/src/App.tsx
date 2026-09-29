@@ -7,14 +7,13 @@ import { Toaster } from '@/components/ui/toaster';
 import NotFound from '@/pages/not-found';
 import { Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
 import { TechnologySection } from '@/components/technology/TechnologySection';
-import { InvestorSection } from '@/components/investor/InvestorSection';
+import { InvestorAppPreview } from '@/components/investor/InvestorAppPreview';
 import { HeroBenefit } from '@/components/hero/HeroBenefit';
 import { BettexMark } from '@/components/BettexMark';
 import { AgentMark, type AgentKind } from '@/components/hero/AgentMark';
 import '@/components/hero/AgentCard.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { HumanStorySection } from '@/components/HumanStorySection';
-import { TokenHeroSection } from '@/components/TokenHeroSection';
 import { tokenomics } from '@/lib/tokenomics';
 
 const queryClient = new QueryClient();
@@ -57,9 +56,11 @@ function readBalance(): Balance {
 const money = (number: number) => number.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
 
 function Logo({ pale = false }: { pale?: boolean }) {
-  return <a href="#inicio" className={`inline-flex items-center gap-2.5 rounded-md font-bold ${pale ? 'text-[#f6f4e9]' : 'text-[#103739]'}`} aria-label="BETTEX, voltar ao início">
-    <BettexMark className={`h-9 w-9 shrink-0 rounded-[11px] ${pale ? 'ring-1 ring-[#a4eacb]/70' : ''}`} />
-    <span className="display text-[23px] leading-none tracking-[-.07em]">BETTEX<span className={pale ? 'text-[#94ebcb]' : 'text-[#219c79]'}>.</span></span>
+  return <a href="#inicio" className={`inline-flex items-center gap-2.5 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#168367] ${pale ? 'text-[#f6f4e9]' : 'text-[#123a3b]'}`} aria-label="BETTEX, voltar ao início">
+    <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border ${pale ? 'border-[#a4eacb]/35 bg-[#0b2c30]' : 'border-[#1e5551] bg-[#123a3b]'} shadow-[0_3px_10px_rgba(6,32,33,.12)]`}>
+      <BettexMark className="block h-[30px] w-[30px]" />
+    </span>
+    <span className="display text-[25px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
   </a>;
 }
 
@@ -79,7 +80,7 @@ function MoveControl({ title, available, value, onChange, onSubmit, button }: { 
 }
 
 function AgentCard({ agent, number }: { agent: Agent; number: number }) {
-  return <article className={`agent-card flex h-full flex-col overflow-hidden rounded-[18px] border border-[#123a3b]/15 bg-[#f5f6ef]`}>
+  return <article className={`agent-card agent-card--${agent.kind} flex h-full flex-col overflow-hidden rounded-[18px] border border-[#123a3b]/15 bg-[#f5f6ef]`}>
     <div className="agent-card__stage relative flex h-[190px] shrink-0 items-center justify-center overflow-hidden sm:h-[205px]">
       <div className="agent-card__index absolute left-5 top-5 z-20 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em]"><agent.icon className="h-4 w-4" aria-hidden="true" />0{number} / {agent.area}</div>
       <span className="agent-card__crosshair agent-card__crosshair--tl" aria-hidden="true" />
@@ -183,14 +184,14 @@ function Home() {
           <a href="#participacao" className="text-sm font-semibold hover:text-[#168367]">O que é a BETTEX</a>
           <a href="#agentes" className="text-sm font-semibold hover:text-[#168367]">Agentes</a>
           <a href="#tecnologia" className="text-sm font-semibold hover:text-[#168367]">Operações</a>
-          <a href="#token" className="text-sm font-semibold hover:text-[#168367]">Token BETTEX</a>
+          <a href="#visao-investidor" className="text-sm font-semibold hover:text-[#168367]">Prévia do aplicativo</a>
           <a href="#comprar" className="text-sm font-semibold hover:text-[#168367]">Demonstração</a>
         </nav>
         <a href="#participacao" className="tap hidden items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Entenda o projeto</a>
         <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 lg:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
       </div>
       {menuOpen && <nav className="page-wrap flex flex-col gap-1 border-t border-[#d6e1d7] py-3 lg:hidden" aria-label="Navegação móvel">
-        {([['O que é a BETTEX', 'participacao'], ['Agentes', 'agentes'], ['Operações', 'tecnologia'], ['Token BETTEX', 'token'], ['Demonstração', 'comprar']] as const).map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
+        {([['O que é a BETTEX', 'participacao'], ['Agentes', 'agentes'], ['Operações', 'tecnologia'], ['Prévia do aplicativo', 'visao-investidor'], ['Demonstração', 'comprar']] as const).map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
       </nav>}
     </header>
 
@@ -206,7 +207,7 @@ function Home() {
             </h1>
             <p className="mt-7 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Em vez de colocar o dinheiro do mês em uma aposta, conheça a BETTEX: seja dono de uma IA que opera em diferentes mercados de risco com resultados diários.</p>
             <p className="mt-4 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Ao comprar tokens, você participa do <strong className="font-bold text-[#f7f4e9]">projeto BETTEX como um todo</strong>, não de um único palpite. O risco continua; resultados não são garantidos.</p>
-            <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#token" data-testid="link-hero-token" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Entenda o token <ArrowDown className="h-4 w-4" /></a></div>
+            <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#comprar" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ver demonstração <ArrowDown className="h-4 w-4" /></a></div>
             <p className="mt-7 max-w-lg border-l-2 border-[#ffcb9b] pl-4 text-xs leading-5 text-[#c9e0d6]">Investir em mercados de risco pode gerar perdas. Lucro e valorização do token não são garantidos.</p>
           </div>
           <div className="entrance entrance-delay relative mx-auto w-full max-w-[510px]">
@@ -221,8 +222,7 @@ function Home() {
        <TechnologySection>
          {agents.map((agent, index) => <div className="technology-section__agent-slot" key={agent.name}><AgentCard agent={agent} number={index + 1} /></div>)}
        </TechnologySection>
-      <InvestorSection />
-      <TokenHeroSection />
+      <InvestorAppPreview />
 
       <section id="comprar" className="scroll-mt-[72px] bg-[#f7f4e9] py-20 sm:py-28">
         <div className="page-wrap">
@@ -256,7 +256,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-[#ffe6cc] py-16 sm:py-20"><div className="page-wrap flex flex-col gap-7 md:flex-row md:items-center md:justify-between"><div><Eyebrow>Seu próximo passo</Eyebrow><h2 className="display mt-3 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-.04em] sm:text-4xl">Pare de apostar. Comece a investir na IA da BETTEX.</h2><p className="mt-4 max-w-2xl text-sm leading-7 text-[#61534a]">Conheça o token, veja como o projeto funciona e descubra o que significa participar da BETTEX.</p></div><a href="#token" className="tap inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3.5 text-sm font-bold text-[#f7f4e9]">Conheça o token <ArrowUpRight className="h-4 w-4" /></a></div></section>
+      <section className="bg-[#ffe6cc] py-16 sm:py-20"><div className="page-wrap flex flex-col gap-7 md:flex-row md:items-center md:justify-between"><div><Eyebrow>Seu próximo passo</Eyebrow><h2 className="display mt-3 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-.04em] sm:text-4xl">Pare de apostar. Comece a investir na IA da BETTEX.</h2><p className="mt-4 max-w-2xl text-sm leading-7 text-[#61534a]">Veja como o projeto funciona e experimente a demonstração dos tokens BETTEX.</p></div><a href="#comprar" className="tap inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3.5 text-sm font-bold text-[#f7f4e9]">Explorar demonstração <ArrowUpRight className="h-4 w-4" /></a></div></section>
     </main>
 
     <footer className="bg-[#123a3b] py-10 text-[#d0e5d9]"><div className="page-wrap flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo pale /><p className="max-w-[550px] text-xs leading-6">BETTEX é um negócio de investimento com agentes de IA. Conheça seus agentes, a tecnologia e os tokens perpétuos.</p><a href="#inicio" className="flex shrink-0 items-center gap-1 text-xs font-bold text-[#a4eacb]">Voltar ao topo <ChevronDown className="h-4 w-4 rotate-180" /></a></div></footer>

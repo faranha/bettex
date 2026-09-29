@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="780" viewBox="0 0 360 780">
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2=".8" y2="1">
+      <stop stop-color="#092e31"/>
+      <stop offset=".62" stop-color="#103f3e"/>
+      <stop offset="1" stop-color="#0b2b2e"/>
+    </linearGradient>
+    <linearGradient id="chart" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#a4eacb" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#a4eacb" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="edge"><rect width="360" height="780" rx="27"/></clipPath>
+  </defs>
+  <g clip-path="url(#edge)">
+    <rect width="360" height="780" fill="url(#screen)"/>
+    <text x="28" y="67" fill="#a4eacb" font-size="34" font-weight="800" font-family="DejaVu Sans, sans-serif" letter-spacing="2">BETTEX</text>
+    <path d="M28 88H332" stroke="#a4eacb" stroke-opacity=".28" stroke-width="2"/>
+    <text x="28" y="144" fill="#f7f4e9" font-size="32" font-weight="700" font-family="DejaVu Sans, sans-serif">Mercados</text>
+    <text x="28" y="182" fill="#b9d8cc" font-size="17" font-family="DejaVu Sans, sans-serif">Visão geral</text>
+    <rect x="25" y="214" width="310" height="326" rx="18" fill="#153f3e" stroke="#a4eacb" stroke-opacity=".2" stroke-width="2"/>
+    <path d="M48 287H311M48 347H311M48 407H311M48 467H311" stroke="#a4eacb" stroke-opacity=".13" stroke-width="2"/>
+    <path d="M48 467L82 443 118 451 149 398 184 420 219 362 251 371 282 306 312 288V507H48Z" fill="url(#chart)"/>
+    <path d="M48 467L82 443 118 451 149 398 184 420 219 362 251 371 282 306 312 288" fill="none" stroke="#a4eacb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="312" cy="288" r="8" fill="#f2c3a0"/>
+    <rect x="25" y="563" width="310" height="92" rx="16" fill="#1c5550" stroke="#a4eacb" stroke-opacity=".38" stroke-width="2"/>
+    <circle cx="63" cy="609" r="12" fill="#a4eacb"/>
+    <text x="91" y="620" fill="#f7f4e9" font-size="25" font-weight="700" font-family="DejaVu Sans, sans-serif">Tokens ativos</text>
+    <path d="M28 694H334" stroke="#a4eacb" stroke-opacity=".2" stroke-width="2"/>
+  </g>
+</svg>
