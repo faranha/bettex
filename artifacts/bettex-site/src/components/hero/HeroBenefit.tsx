@@ -18,7 +18,7 @@ export function HeroBenefit() {
       <div className="hero-benefit__light" aria-hidden="true" />
       <img
         className="hero-benefit__spouse"
-        src={`${import.meta.env.BASE_URL}hero-spouse.webp`}
+        src={`${import.meta.env.BASE_URL}hero-spouse-full.webp`}
         alt="Esposa ao fundo sorrindo e olhando para o marido"
         loading="eager"
         decoding="async"
@@ -26,22 +26,12 @@ export function HeroBenefit() {
       <div className="hero-benefit__scene">
         <img
           className="hero-benefit__person"
-          src={`${import.meta.env.BASE_URL}hero-person-phone.webp`}
-          alt="Pessoa olhando a BETTEX no celular"
+          src={`${import.meta.env.BASE_URL}hero-person-screen.webp`}
+          alt="Pessoa olhando para a tela ilustrativa da BETTEX no celular"
           loading="eager"
           decoding="async"
           fetchPriority="high"
         />
-        <div className="hero-benefit__phone-screen" role="img" aria-label="Tela ilustrativa do aplicativo BETTEX com gráfico de mercados e tokens ativados, sem dados reais">
-          <span className="hero-benefit__phone-brand">BETTEX</span>
-          <span className="hero-benefit__phone-title">Mercados</span>
-          <svg className="hero-benefit__phone-chart" viewBox="0 0 48 42" preserveAspectRatio="none" aria-hidden="true">
-            <path className="hero-benefit__phone-grid" d="M0 9H48 M0 21H48 M0 33H48" />
-            <path className="hero-benefit__phone-bars" d="M7 27V36 M14 22V32 M21 19V29 M29 15V26 M38 10V22" />
-            <path className="hero-benefit__phone-line" d="M2 33 L9 29 L15 31 L22 21 L29 24 L37 13 L45 9" />
-          </svg>
-          <span className="hero-benefit__phone-status"><span aria-hidden="true" />Tokens ativos</span>
-        </div>
       </div>
       <svg className="hero-benefit__routes" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <path d="M61 25 C58 25 58.5 42 57.8 49 C57 56 56 60 54.7 62.4" />
@@ -66,16 +56,7 @@ export function HeroBenefit() {
       <figcaption className="hero-benefit__caption">
         <span className="hero-benefit__caption-mark" role="img" aria-label="Moeda BETTEX ativa">
           <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="hero-benefit-coin-fill" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stopColor="#ffe5bb" />
-                <stop offset="1" stopColor="#dc9b68" />
-              </linearGradient>
-            </defs>
-            <circle className="hero-benefit__caption-ring" cx="23" cy="25" r="17" fill="none" stroke="#b6efca" strokeWidth="1.5" strokeDasharray="16 92" strokeLinecap="round" />
-            <circle cx="23" cy="25" r="14" fill="#a86645" />
-            <circle cx="23" cy="23.5" r="13" fill="url(#hero-benefit-coin-fill)" stroke="#fff0d1" strokeWidth="1.2" />
-            <circle cx="23" cy="23.5" r="10" fill="none" stroke="#b87750" strokeWidth="1.2" />
+            <circle className="hero-benefit__caption-ring" cx="24" cy="24" r="20" fill="none" stroke="#b6efca" strokeWidth="1.5" strokeDasharray="18 108" strokeLinecap="round" />
             <circle className="hero-benefit__caption-active-glow" cx="38" cy="10" r="6" fill="#a4eacb" />
             <circle cx="38" cy="10" r="3.4" fill="#a4eacb" stroke="#123a3b" strokeWidth="1.5" />
           </svg>

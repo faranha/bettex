@@ -21,16 +21,21 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           <div className="technology-section__deposit-flow">
             <div className="technology-section__token" data-testid="diagram-technology-token">
               <span className="technology-section__coin" aria-hidden="true"><BettexMark /></span>
-              <span className="technology-section__token-copy"><strong>Compre tokens BETTEX</strong><small>01 / Compra</small></span>
+              <span className="technology-section__token-copy"><strong>Compre o token BETTEX</strong><small>01 / Compra</small></span>
             </div>
             <p className="technology-section__deposit-label">Mova para sua carteira</p>
             <div className="technology-section__deposit-path" aria-hidden="true">
+              <span className="technology-section__moving-coin"><BettexMark /></span>
+              <span className="technology-section__moving-coin"><BettexMark /></span>
               <span className="technology-section__moving-coin"><BettexMark /></span>
               <ArrowDown size={20} strokeWidth={2.4} />
             </div>
           </div>
           <div className="technology-section__wallet" data-testid="diagram-technology-wallet">
             <span className="technology-section__wallet-slot" aria-hidden="true" />
+            <span className="technology-section__wallet-falling-coin" aria-hidden="true"><BettexMark /></span>
+            <span className="technology-section__wallet-falling-coin" aria-hidden="true"><BettexMark /></span>
+            <span className="technology-section__wallet-falling-coin" aria-hidden="true"><BettexMark /></span>
             <div className="technology-section__wallet-copy">
               <span className="technology-section__wallet-kicker">02 / Ative sua participação</span>
               <h3>Carteira <em>BETTEX</em></h3>

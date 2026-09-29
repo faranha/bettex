@@ -66,11 +66,11 @@ export function ProjectModelSection() {
         .pm-step h3 em { color: var(--pm-lime); font-style: normal; }
         .pm-detail { margin: 12px 0 0; color: #b9d3c9; font-size: 12px; line-height: 1.55; }
          .pm-visual { display: flex; align-items: center; height: 84px; margin-bottom: 15px; }
-         .pm-token-symbol { display: grid; width: 67px; height: 67px; place-items: center; border: 2px solid #efb994; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe4c9, #e7a47d 78%); box-shadow: inset 0 0 0 5px #f9d6b7, inset 0 0 0 7px rgba(116, 62, 44, .35), 0 8px 0 #9b614d, 0 14px 23px rgba(0, 0, 0, .22); color: #123a3b; font: 800 37px/1 var(--app-font-serif); }
-         .pm-token-symbol img { width: 32px; height: 32px; border-radius: 7px; }
+         .pm-token-symbol { display: grid; width: 67px; height: 67px; place-items: center; border-radius: 50%; filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .22)); }
+         .pm-token-symbol img { display: block; width: 100%; height: 100%; }
          .pm-stake { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 112px; }
-         .pm-stake-coin { display: grid; width: 30px; height: 30px; place-items: center; border: 2px solid #eab389; border-radius: 50%; background: #f7d1ad; box-shadow: inset 0 0 0 3px #ffe2c5; color: #123a3b; font: 800 18px/1 var(--app-font-serif); }
-         .pm-stake-coin img { width: 17px; height: 17px; border-radius: 4px; }
+         .pm-stake-coin { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; filter: drop-shadow(0 3px 4px rgba(0, 0, 0, .24)); }
+         .pm-stake-coin img { display: block; width: 100%; height: 100%; }
          .pm-stake-arrow { height: 17px; color: #b6efca; animation: pm-drop 1.8s ease-in-out infinite; }
          .pm-stake-vault { display: grid; width: 96px; height: 23px; place-items: center; border: 1px solid #a2dcc1; border-top: 3px solid #b6efca; border-radius: 4px 4px 9px 9px; background: linear-gradient(#2d7169, #184f50); box-shadow: 0 7px 0 #0b2c31; color: #d9f4e2; font: 700 8px/1 var(--app-font-mono); letter-spacing: .09em; }
          .pm-flow { display: flex; align-items: center; gap: 8px; }
@@ -177,7 +177,7 @@ export function ProjectModelSection() {
         <div className="pm-head">
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
-              <h2 id="pm-heading" className="pm-title">Compre. Ative. Receba.<br /><span>Viva as apostas com segurança.</span></h2>
+              <h2 id="pm-heading" className="pm-title">Compre. Ative. Receba.<br /><span>Investir é melhor do que apostar.</span></h2>
           </div>
           <p className="pm-head-note">Todos os agentes em um só lugar.</p>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
