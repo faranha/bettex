@@ -8,7 +8,7 @@ const access = [
     number: '01',
     icon: ChartCandlestick,
     title: 'Participar dos lucros',
-    description: 'Quando houver lucro nas operações, ele é distribuído diariamente aos titulares dos tokens.',
+    description: 'Ative seus tokens para participar da distribuição. Ela só ocorre quando houver lucro nas operações.',
   },
   {
     number: '02',
@@ -63,8 +63,8 @@ export function InvestorSection() {
               Seu token.<em>Sua parte na IA.</em>
             </h2>
             <p className="bett-investor__lead">
-              Ter tokens BETTEX é <strong>ser dono de uma parte do projeto de IA</strong> que reúne PREDIX, TRADIX, SPORTIX e BETTIX.
-              Os lucros efetivamente gerados são distribuídos diariamente aos titulares. Você também tem voz na comunidade e acesso ao sistema para acompanhar os agentes em tempo real.
+              Ter tokens BETTEX é <strong>ser dono de uma parte do projeto de IA</strong> que reúne PREDIX, TRADEX, SPORTIX e BETTIX.
+              Ao ativar seus tokens, você participa da distribuição diária se as operações gerarem lucro. Sem lucro, não há distribuição. Você também tem voz na comunidade e acesso ao sistema para acompanhar os agentes em tempo real.
             </p>
             <div className="bett-investor__perpetual" data-testid="text-token-perpetuo">
               <span className="bett-investor__perpetual-icon" aria-hidden="true"><Infinity size={23} strokeWidth={1.8} /></span>
@@ -94,7 +94,7 @@ export function InvestorSection() {
 
         <div className="bett-investor__content">
           <div>
-             <p className="bett-investor__overline">Ser titular / 01—03</p>
+             <p className="bett-investor__overline">Ser titular / 01 de 03</p>
              <h3 className="bett-investor__subhead">Participe dos resultados. Tenha voz. Acompanhe tudo.</h3>
             <p className="bett-investor__description">
                Seu token representa participação na IA, nos resultados que ela gerar e nas decisões da comunidade. Acompanhe o projeto por dentro, do progresso dos agentes à movimentação das operações.

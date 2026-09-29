@@ -1,1 +1,2 @@
 - [BETTEX checkout eligibility](bettex-checkout-eligibility.md) — confirm processor approval for investment tokens before wiring real purchases.
+- [Raster asset inspection](raster-asset-inspection.md) — use font-free ImageMagick composition for contact sheets in this Nix workspace.

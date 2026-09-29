@@ -1,215 +1,198 @@
-import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ArrowUpRight, Eye, Infinity } from 'lucide-react';
+import { ArrowDown, ArrowDownRight, ArrowLeft, ArrowRight, Wallet } from 'lucide-react';
 
 const agents = [
-  { name: 'PREDIX', role: 'Previsões', status: 'Em operação', image: 'predix', className: 'predix' },
-  { name: 'TRADIX', role: 'Cripto', status: 'Em operação', image: 'tradix', className: 'tradix' },
-  { name: 'SPORTIX', role: 'Esportes', status: 'Em desenvolvimento', image: 'sportix', className: 'sportix' },
-  { name: 'BETTIX', role: 'Jogos', status: 'Em desenvolvimento', image: 'bettix', className: 'bettix' },
+  { name: 'PREDIX', specialty: 'Previsões' },
+  { name: 'TRADEX', specialty: 'Ações e cripto' },
+  { name: 'SPORTIX', specialty: 'Esportes' },
+  { name: 'BETTIX', specialty: 'Cassinos' },
 ] as const;
 
 export function ProjectModelSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section || !('IntersectionObserver' in window)) {
-      setVisible(true);
-      return;
-    }
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setVisible(true);
-        observer.disconnect();
-      }
-    }, { threshold: 0.08 });
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="participacao" className="pm-section" data-visible={visible} aria-labelledby="pm-heading" data-testid="section-modelo-projeto">
+    <section id="participacao" className="pm-section" aria-labelledby="pm-heading" data-testid="section-modelo-projeto">
       <style>{`
         .pm-section {
-          --pm-ink: #123a3b;
-          --pm-mint: #a4eacb;
-          --pm-muted: #526e69;
-          position: relative;
-          overflow: hidden;
-          isolation: isolate;
+          --pm-deep: #123a3b;
+          --pm-lime: #b6efca;
+          --pm-cream: #f9f3e9;
+          color: var(--pm-deep);
+          background: #f7e8d7;
+          padding: clamp(72px, 8vw, 112px) 0 clamp(60px, 7vw, 90px);
           scroll-margin-top: 72px;
-          color: var(--pm-ink);
-          background: #dcefe5;
-          padding: clamp(76px, 9vw, 136px) 0 0;
-        }
-        .pm-section::before {
-          content: "";
-          position: absolute;
-          inset: 0 0 auto;
-          height: 570px;
-          z-index: -1;
-          background: radial-gradient(circle at 83% 23%, rgba(255, 215, 171, .58), transparent 32%), radial-gradient(circle at 5% 6%, rgba(159, 219, 239, .45), transparent 36%);
-          pointer-events: none;
         }
         .pm-wrap { width: min(100% - 40px, 1200px); margin-inline: auto; }
-        .pm-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(450px, .93fr); align-items: center; gap: clamp(32px, 5vw, 80px); }
-        .pm-eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 22px; font: 700 10px/1.5 var(--app-font-mono); text-transform: uppercase; letter-spacing: .16em; color: #168367; }
-        .pm-eyebrow::before { content: ""; width: 25px; height: 2px; background: currentColor; }
-        .pm-title { max-width: 690px; margin: 0; font: 800 clamp(3.1rem, 5.8vw, 6.2rem)/.98 var(--app-font-serif); letter-spacing: -.067em; }
-        .pm-title strong { font-weight: inherit; color: #168367; }
-        .pm-lead { max-width: 590px; margin: 27px 0 0; font-size: clamp(1.02rem, 1.4vw, 1.17rem); line-height: 1.7; color: #3d615b; }
-        .pm-lead strong { color: var(--pm-ink); font-weight: 700; }
-        .pm-small-note { display: flex; align-items: flex-start; gap: 10px; max-width: 570px; margin: 23px 0 0; font-size: 12px; line-height: 1.55; color: #53716a; }
-        .pm-small-note::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: 6px; border-radius: 50%; background: #db936c; }
-        .pm-map { position: relative; min-width: 0; height: 475px; }
-        .pm-map::before { content: ""; position: absolute; inset: 9% 5% 6%; border: 1px dashed #83b8a4; border-radius: 50%; transform: rotate(-12deg); }
-        .pm-map::after { content: ""; position: absolute; inset: 22% 18% 20%; border: 1px solid #9ac8b6; border-radius: 50%; transform: rotate(18deg); }
-        .pm-center { position: absolute; z-index: 3; left: 50%; top: 50%; width: 175px; height: 175px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 8px solid #dcefe5; border-radius: 43px; color: #f7f4e9; background: #123a3b; box-shadow: 0 20px 50px rgba(20, 76, 66, .17); transform: translate(-50%, -50%) rotate(-7deg); }
-        .pm-center-mark { position: relative; width: 28px; height: 28px; margin-bottom: 12px; border: 3px solid var(--pm-mint); border-radius: 6px; transform: rotate(45deg); }
-        .pm-center-mark::after { content: ""; position: absolute; width: 7px; height: 7px; top: 7px; left: 7px; border-radius: 50%; background: var(--pm-mint); }
-        .pm-center b { font: 800 26px/1 var(--app-font-serif); letter-spacing: -.07em; }
-        .pm-center b span { color: var(--pm-mint); }
-        .pm-center small { margin-top: 6px; font: 700 9px/1.4 var(--app-font-mono); letter-spacing: .05em; color: #a4eacb; text-transform: uppercase; }
-        .pm-agent { position: absolute; z-index: 2; display: flex; align-items: center; gap: 8px; width: 188px; height: 83px; padding: 7px 11px 7px 5px; border: 1px solid rgba(18, 58, 59, .1); border-radius: 19px; box-shadow: 0 10px 25px rgba(18, 58, 59, .07); }
-        .pm-agent img { width: 68px; height: 68px; flex: none; object-fit: contain; }
-        .pm-agent-text { min-width: 0; }
-        .pm-agent strong { display: block; font: 800 16px/1.1 var(--app-font-serif); letter-spacing: -.035em; }
-        .pm-agent small { display: block; margin-top: 3px; font-size: 10px; color: #415e58; }
-        .pm-agent em { display: block; margin-top: 5px; font-size: 9px; font-style: normal; font-weight: 700; color: #14785d; }
-        .pm-agent--predix { top: 16px; left: 5%; background: #d9f5e8; transform: rotate(-5deg); }
-        .pm-agent--tradix { top: 33px; right: 0; background: #eee0f8; transform: rotate(5deg); }
-        .pm-agent--sportix { bottom: 21px; left: 0; background: #dae9ff; transform: rotate(4deg); }
-        .pm-agent--bettix { bottom: 12px; right: 4%; background: #ffe8d4; transform: rotate(-5deg); }
-        .pm-agent--sportix em, .pm-agent--bettix em { color: #956349; }
-        .pm-map-label { position: absolute; left: 50%; bottom: -9px; transform: translateX(-50%); white-space: nowrap; font: 700 10px/1.4 var(--app-font-mono); letter-spacing: .03em; color: #53756a; }
-        .pm-model { position: relative; margin-top: clamp(68px, 9vw, 124px); padding: clamp(28px, 5vw, 66px); border-radius: 34px 34px 0 0; background: #123a3b; color: #f7f4e9; }
-        .pm-model-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 32px; border-bottom: 1px solid rgba(164, 234, 203, .23); }
-        .pm-model-kicker { margin: 0 0 14px; color: #a4eacb; font: 700 10px/1.5 var(--app-font-mono); text-transform: uppercase; letter-spacing: .15em; }
-        .pm-model-head h3 { max-width: 730px; margin: 0; font: 800 clamp(2rem, 3.6vw, 3.9rem)/1.05 var(--app-font-serif); letter-spacing: -.055em; }
-        .pm-model-head h3 span { color: #a4eacb; }
-        .pm-model-head > svg { width: 30px; height: 30px; flex: none; margin-top: 4px; color: #a4eacb; }
-        .pm-benefits { display: grid; grid-template-columns: 1.14fr .88fr .88fr; gap: 0; }
-        .pm-benefit { position: relative; padding: 36px 28px 12px 0; }
-        .pm-benefit + .pm-benefit { border-left: 1px solid rgba(164, 234, 203, .23); padding-left: 30px; }
-        .pm-benefit-index { display: block; margin-bottom: 29px; color: #8ac4ae; font: 700 11px/1 var(--app-font-mono); }
-        .pm-benefit-icon { display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(164, 234, 203, .38); border-radius: 14px; color: #a4eacb; }
-        .pm-benefit h4 { margin: 20px 0 11px; font: 800 clamp(1.35rem, 2vw, 1.85rem)/1.12 var(--app-font-serif); letter-spacing: -.045em; }
-        .pm-benefit p { max-width: 350px; margin: 0; color: #c9ddd2; font-size: 13px; line-height: 1.7; }
-        .pm-benefit p strong { color: #f7f4e9; }
-        .pm-result { display: flex; align-items: flex-start; gap: 13px; margin-top: 38px; padding: 17px 20px; border: 1px solid rgba(255, 211, 158, .4); border-radius: 17px; background: rgba(255, 211, 158, .09); }
-        .pm-result span { flex: none; width: 7px; height: 7px; margin-top: 7px; border-radius: 50%; background: #ffd39e; }
-        .pm-result p { margin: 0; color: #f4e4cd; font-size: 12px; line-height: 1.6; }
-        .pm-result strong { color: #ffd39e; }
-        .pm-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 23px 0 27px; }
-        .pm-bottom p { max-width: 670px; margin: 0; color: #496d63; font-size: 12px; line-height: 1.6; }
-        .pm-bottom a { display: inline-flex; align-items: center; gap: 8px; flex: none; color: #12674f; font-size: 12px; font-weight: 700; text-decoration: none; }
-        .pm-bottom a:hover { text-decoration: underline; text-underline-offset: 4px; }
+         .pm-head { position: relative; min-height: 190px; margin-bottom: 32px; }
+         .pm-eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 18px; color: #a55538; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .15em; text-transform: uppercase; }
+        .pm-eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+          .pm-title { position: relative; z-index: 1; margin: 0; font: 800 clamp(2.65rem, 4.5vw, 4.7rem)/1.02 var(--app-font-serif); letter-spacing: -.065em; }
+         .pm-title span { color: #a55538; }
+          .pm-head-note { position: relative; z-index: 1; max-width: 340px; margin: 16px 0 0; color: #75594a; font-size: 13px; line-height: 1.55; }
+          .pm-person { position: absolute; z-index: 0; right: 15px; bottom: -42px; width: 330px; height: 330px; object-fit: contain; object-position: center bottom; pointer-events: none; filter: drop-shadow(0 10px 20px rgba(64, 42, 30, .18)); }
+          .pm-panel { position: relative; z-index: 1; overflow: hidden; border: 1px solid #2c5b55; border-radius: 28px; background: var(--pm-deep); color: var(--pm-cream); box-shadow: 0 20px 48px rgba(99, 55, 37, .13); }
+        .pm-panel-top { display: flex; justify-content: space-between; gap: 16px; padding: 24px 32px 0; }
+        .pm-panel-label, .pm-panel-count { margin: 0; color: #aee5c8; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
+        .pm-panel-count { color: #8ab9a9; letter-spacing: .06em; white-space: nowrap; }
+         .pm-steps { display: grid; grid-template-columns: .92fr .92fr 1.48fr 1.42fr; padding: 27px 18px 32px; }
+        .pm-step { position: relative; min-width: 0; padding: 9px 25px 10px 24px; }
+        .pm-step + .pm-step { border-left: 1px solid rgba(174, 229, 200, .24); }
+         .pm-index { display: block; margin-bottom: 12px; color: #aee5c8; font: 700 11px/1 var(--app-font-mono); }
+        .pm-step h3 { margin: 0; font: 800 clamp(1.35rem, 2.15vw, 2rem)/1.12 var(--app-font-serif); letter-spacing: -.045em; }
+        .pm-step h3 em { color: var(--pm-lime); font-style: normal; }
+        .pm-detail { margin: 12px 0 0; color: #b9d3c9; font-size: 12px; line-height: 1.55; }
+         .pm-visual { display: flex; align-items: center; height: 84px; margin-bottom: 15px; }
+         .pm-token-symbol { display: grid; width: 67px; height: 67px; place-items: center; border: 2px solid #efb994; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe4c9, #e7a47d 78%); box-shadow: inset 0 0 0 5px #f9d6b7, inset 0 0 0 7px rgba(116, 62, 44, .35), 0 8px 0 #9b614d, 0 14px 23px rgba(0, 0, 0, .22); color: #123a3b; font: 800 37px/1 var(--app-font-serif); }
+         .pm-stake { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 112px; }
+         .pm-stake-coin { display: grid; width: 30px; height: 30px; place-items: center; border: 2px solid #eab389; border-radius: 50%; background: #f7d1ad; box-shadow: inset 0 0 0 3px #ffe2c5; color: #123a3b; font: 800 18px/1 var(--app-font-serif); }
+         .pm-stake-arrow { height: 17px; color: #b6efca; animation: pm-drop 1.8s ease-in-out infinite; }
+         .pm-stake-vault { display: grid; width: 96px; height: 23px; place-items: center; border: 1px solid #a2dcc1; border-top: 3px solid #b6efca; border-radius: 4px 4px 9px 9px; background: linear-gradient(#2d7169, #184f50); box-shadow: 0 7px 0 #0b2c31; color: #d9f4e2; font: 700 8px/1 var(--app-font-mono); letter-spacing: .09em; }
+         .pm-flow { display: flex; align-items: center; gap: 8px; }
+         .pm-flow-node { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 70px; height: 65px; border: 1px solid rgba(182, 239, 202, .5); border-radius: 12px; background: #215452; box-shadow: 0 8px 0 rgba(3, 29, 32, .35); color: #eaf7ed; }
+         .pm-flow-node b { font: 800 25px/1 var(--app-font-serif); }
+         .pm-flow-node small { font: 700 8px/1 var(--app-font-mono); letter-spacing: .03em; }
+         .pm-flow-node--market { border-color: rgba(243, 201, 166, .6); background: #53433c; }
+         .pm-flow-node--market b { font-size: 22px; }
+         .pm-flow-arrows { display: grid; gap: 1px; width: 60px; color: #b6efca; }
+         .pm-flow-arrows svg { width: 58px; height: 21px; }
+         .pm-flow-out { animation: pm-go 1.8s ease-in-out infinite; }
+         .pm-flow-back { color: #f3c9a6; animation: pm-return 1.8s ease-in-out infinite; }
+         .pm-profit-visual { position: relative; width: 205px; }
+         .pm-profit-coin { position: absolute; display: grid; width: 39px; height: 39px; place-items: center; border: 2px solid #ffe0ad; border-radius: 50%; background: linear-gradient(135deg, #ffe8c4, #e7a974); box-shadow: inset 0 0 0 4px rgba(255, 245, 224, .65), 0 5px 0 #a56a4d; color: #8c543c; font: 800 20px/1 var(--app-font-serif); }
+         .pm-profit-coin--one { left: 0; top: 32px; }
+         .pm-profit-coin--two { left: 22px; top: 15px; }
+         .pm-profit-coin--three { left: 44px; top: 34px; }
+         .pm-profit-arrow { position: absolute; left: 88px; top: 25px; color: #f3c9a6; animation: pm-go 1.8s ease-in-out infinite; }
+         .pm-profit-wallet { position: absolute; top: 23px; left: 131px; display: grid; width: 56px; height: 44px; place-items: center; border: 1px solid #a2dcc1; border-radius: 9px; background: #22605b; color: #b6efca; box-shadow: 0 7px 0 #0b2c31; }
+         @keyframes pm-drop { 50% { transform: translateY(4px); } }
+         @keyframes pm-go { 50% { transform: translateX(5px); } }
+         @keyframes pm-return { 50% { transform: translateX(-5px); } }
+        .pm-agent-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 19px; }
+        .pm-agent { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 9px 10px; border: 1px solid rgba(174, 229, 200, .19); border-radius: 9px; background: rgba(245, 246, 237, .055); }
+        .pm-agent strong { color: #eaf7ed; font: 800 12px/1.1 var(--app-font-serif); letter-spacing: -.02em; }
+        .pm-agent span { color: #aecdc1; font-size: 11px; }
+        .pm-outcomes { display: grid; gap: 8px; margin-top: 18px; }
+        .pm-outcome { padding: 12px 13px; border-radius: 10px; }
+         .pm-outcome--profit { background: #f3c9a6; color: #54362b; }
+        .pm-outcome--none { border: 1px solid rgba(174, 229, 200, .25); color: #d2e4d9; }
+        .pm-outcome span { display: block; margin-bottom: 3px; font: 700 10px/1.3 var(--app-font-mono); letter-spacing: .04em; text-transform: uppercase; }
+        .pm-outcome strong { display: block; font-size: 12px; line-height: 1.4; }
+        .pm-panel-foot { display: flex; align-items: center; gap: 11px; padding: 15px 32px; border-top: 1px solid rgba(174, 229, 200, .18); background: rgba(8, 37, 39, .22); }
+        .pm-risk-mark { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #e9b386; }
+        .pm-panel-foot p { margin: 0; color: #c8d9cc; font-size: 12px; line-height: 1.5; }
+        .pm-panel-foot strong { color: #f7e3cb; }
+        .pm-bottom { display: flex; justify-content: flex-end; padding-top: 19px; }
+         .pm-bottom a { display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid currentColor; padding: 3px 0 5px; color: #8d4932; font-size: 13px; font-weight: 700; text-decoration: none; }
+         .pm-bottom a:hover { color: #613221; }
         .pm-bottom a svg { transition: transform .2s ease; }
         .pm-bottom a:hover svg { transform: translateX(3px); }
-        .pm-section[data-visible="true"] .pm-intro-copy { animation: pm-rise .7s cubic-bezier(.18,.72,.25,1) both; }
-        .pm-section[data-visible="true"] .pm-map { animation: pm-rise .8s .12s cubic-bezier(.18,.72,.25,1) both; }
-        .pm-section[data-visible="true"] .pm-model { animation: pm-rise .8s .18s cubic-bezier(.18,.72,.25,1) both; }
-        @keyframes pm-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 960px) {
-          .pm-intro { grid-template-columns: minmax(0, 1fr) minmax(340px, .9fr); gap: 12px; }
-          .pm-map { height: 390px; }
-          .pm-agent { width: 151px; height: 72px; gap: 3px; padding: 4px; }
-          .pm-agent img { width: 57px; height: 62px; }
-          .pm-agent strong { font-size: 14px; }
-          .pm-agent small { font-size: 9px; }
-          .pm-agent em { font-size: 8px; }
-          .pm-center { width: 145px; height: 145px; }
+        @media (max-width: 1000px) {
+          .pm-steps { grid-template-columns: .86fr .86fr 1.4fr 1.35fr; padding-inline: 8px; }
+          .pm-step { padding-inline: 16px; }
+           .pm-person { right: 0; width: 240px; height: 260px; }
         }
         @media (max-width: 767px) {
           .pm-wrap { width: min(100% - 32px, 1200px); }
-          .pm-section { padding-top: 76px; }
-          .pm-intro { display: block; }
-          .pm-title { font-size: clamp(2.95rem, 11.3vw, 5.2rem); }
-          .pm-lead { margin-top: 22px; font-size: 16px; }
-          .pm-map { width: min(100%, 470px); height: 390px; margin: 40px auto 0; }
-          .pm-model { margin-top: 65px; padding: 29px 22px 30px; border-radius: 27px 27px 0 0; }
-          .pm-model-head { padding-bottom: 28px; }
-          .pm-model-head > svg { width: 23px; height: 23px; }
-          .pm-benefits { display: block; }
-          .pm-benefit, .pm-benefit + .pm-benefit { display: grid; grid-template-columns: 45px minmax(0,1fr); column-gap: 17px; padding: 24px 0; border-left: 0; border-bottom: 1px solid rgba(164, 234, 203, .23); }
-          .pm-benefit-index { grid-column: 1 / -1; margin-bottom: 15px; }
-          .pm-benefit-icon { grid-column: 1; grid-row: 2 / 4; }
-          .pm-benefit h4 { margin: 0 0 8px; }
-          .pm-benefit p { grid-column: 2; }
-          .pm-result { margin-top: 24px; }
-          .pm-bottom { align-items: flex-start; flex-direction: column; gap: 14px; }
+           .pm-head { min-height: 0; padding-bottom: 82px; margin-bottom: 25px; }
+          .pm-title { font-size: clamp(2.75rem, 10vw, 4.5rem); }
+           .pm-head-note { max-width: 190px; margin-top: 13px; }
+           .pm-person { right: -5px; bottom: -26px; width: 155px; height: 175px; }
+          .pm-panel { border-radius: 22px; }
+          .pm-panel-top { padding: 23px 23px 0; }
+          .pm-panel-count { display: none; }
+          .pm-steps { display: block; padding: 12px 23px 23px; }
+           .pm-step, .pm-step + .pm-step { display: block; padding: 23px 0; border-left: 0; border-bottom: 1px solid rgba(174, 229, 200, .24); }
+          .pm-step:last-child { border-bottom: 0; padding-bottom: 0; }
+            .pm-index { margin: 0 0 12px; }
+           .pm-visual { height: 72px; margin-bottom: 13px; }
+           .pm-token-symbol { width: 58px; height: 58px; font-size: 31px; }
+           .pm-stake { transform: scale(.9); transform-origin: left center; }
+          .pm-step h3 { font-size: clamp(1.4rem, 5vw, 1.85rem); }
+          .pm-detail { margin-top: 7px; }
+          .pm-agent-list { margin-top: 15px; }
+          .pm-outcomes { margin-top: 14px; }
+          .pm-panel-foot { align-items: flex-start; padding: 17px 23px; }
+          .pm-risk-mark { margin-top: 5px; }
         }
-        @media (max-width: 400px) {
-          .pm-map { height: 340px; }
-          .pm-center { width: 125px; height: 125px; border-width: 6px; border-radius: 32px; }
-          .pm-center b { font-size: 21px; }
-          .pm-center-mark { width: 22px; height: 22px; margin-bottom: 8px; }
-          .pm-center-mark::after { top: 5px; left: 5px; width: 6px; height: 6px; }
-          .pm-agent { width: 132px; height: 66px; }
-          .pm-agent img { width: 48px; height: 55px; }
-          .pm-agent strong { font-size: 12px; }
-          .pm-agent em { font-size: 7px; }
-          .pm-map-label { bottom: -15px; font-size: 9px; }
+        @media (max-width: 370px) {
+          .pm-agent-list { grid-template-columns: 1fr 1fr; }
+          .pm-agent { padding: 8px; }
+          .pm-agent strong { font-size: 11px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .pm-section[data-visible="true"] .pm-intro-copy,
-          .pm-section[data-visible="true"] .pm-map,
-          .pm-section[data-visible="true"] .pm-model { animation: none; }
-          .pm-bottom a svg { transition: none; }
+           .pm-bottom a svg { transition: none; }
+           .pm-stake-arrow, .pm-flow-out, .pm-flow-back, .pm-profit-arrow { animation: none; }
         }
       `}</style>
       <div className="pm-wrap">
-        <div className="pm-intro">
-          <div className="pm-intro-copy">
-            <p className="pm-eyebrow">O que é a BTEX</p>
-            <h2 id="pm-heading" className="pm-title">Em vez de apostar, invista em tecnologia. <strong>Seja dono de uma parte da IA.</strong></h2>
-            <p className="pm-lead">
-              A BTEX é um projeto de investimento em inteligência artificial que reúne quatro agentes. Ao comprar um token, você adquire <strong>um ativo seu, sem data de vencimento</strong>, que representa sua participação nessa tecnologia e nos resultados que ela efetivamente gerar — não uma aposta em um resultado isolado.
-            </p>
-            <p className="pm-small-note">PREDIX e TRADIX já operam em mercados de risco com apoio da Allora, uma rede descentralizada de IA. SPORTIX e BETTIX ainda estão em desenvolvimento.</p>
+        <div className="pm-head">
+          <div>
+            <p className="pm-eyebrow">O modelo da BETTEX</p>
+              <h2 id="pm-heading" className="pm-title">Compre. Ative.<br /><span>Receba nos dias de lucro.</span></h2>
           </div>
-          <div className="pm-map" role="img" aria-label="Um ecossistema BETTEX reúne PREDIX e TRADIX em operação e SPORTIX e BETTIX em desenvolvimento">
-            <div className="pm-center" aria-hidden="true"><span className="pm-center-mark" /><b>BETTEX<span>.</span></b><small>Um ecossistema</small></div>
-            {agents.map((agent) => (
-              <div key={agent.name} className={`pm-agent pm-agent--${agent.className}`} aria-hidden="true">
-                <img src={`${import.meta.env.BASE_URL}agents/${agent.image}.webp?v=role-art`} alt="" loading="lazy" />
-                <span className="pm-agent-text"><strong>{agent.name}</strong><small>{agent.role}</small><em>{agent.status}</em></span>
-              </div>
-            ))}
-            <span className="pm-map-label" aria-hidden="true">4 agentes · 1 projeto</span>
-          </div>
+          <p className="pm-head-note">Todos os agentes em um só lugar.</p>
+          <img className="pm-person" src={`${import.meta.env.BASE_URL}model-person.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
-        <div className="pm-model">
-          <div className="pm-model-head">
-            <div><p className="pm-model-kicker">Por que comprar um token da BTEX?</p><h3>Um ativo seu. <span>Retorno ligado ao resultado real.</span></h3></div>
-            <ArrowUpRight aria-hidden="true" strokeWidth={1.5} />
+
+        <div className="pm-panel">
+          <div className="pm-panel-top">
+               <p className="pm-panel-label">Distribuição diária somente nos dias de lucro</p>
+            <p className="pm-panel-count">Quatro etapas · um projeto</p>
           </div>
-          <div className="pm-benefits">
-            <div className="pm-benefit">
-              <span className="pm-benefit-index">01 / TITULARIDADE</span>
-              <span className="pm-benefit-icon" aria-hidden="true"><Infinity size={22} strokeWidth={1.7} /></span>
-              <h4>É seu. Não expira.</h4>
-              <p>O token é <strong>um ativo perpétuo</strong>. Enquanto você for titular, sua participação no projeto é sua. Se quiser vendê-lo no futuro, dependerá de haver negociação disponível.</p>
+          <div className="pm-steps">
+            <div className="pm-step">
+              <span className="pm-index">01 / TOKEN</span>
+              <div className="pm-visual" aria-hidden="true"><span className="pm-token-symbol">B</span></div>
+              <h3>Você compra o <em>token BETTEX.</em></h3>
+              <p className="pm-detail">O token representa sua participação no projeto.</p>
             </div>
-            <div className="pm-benefit">
-              <span className="pm-benefit-index">02 / RETORNO</span>
-              <span className="pm-benefit-icon" aria-hidden="true"><ArrowUpRight size={22} strokeWidth={1.7} /></span>
-              <h4>Retorno se houver lucro.</h4>
-              <p>Se as operações gerarem lucro, o resultado positivo é <strong>distribuído diariamente aos titulares</strong>. Sem lucro nas operações, não há distribuição.</p>
+            <div className="pm-step">
+              <span className="pm-index">02 / CARTEIRA</span>
+              <div className="pm-visual" aria-hidden="true">
+                <div className="pm-stake"><span className="pm-stake-coin">B</span><ArrowDown className="pm-stake-arrow" size={16} /><span className="pm-stake-vault">CARTEIRA</span></div>
+              </div>
+              <h3>Mova o token <em>para sua Carteira BETTEX.</em></h3>
+              <p className="pm-detail">Ao mover o token para sua carteira na BETTEX, ele fica ativado para participar da distribuição nos dias de lucro.</p>
             </div>
-            <div className="pm-benefit">
-              <span className="pm-benefit-index">03 / INTELIGÊNCIA</span>
-              <span className="pm-benefit-icon" aria-hidden="true"><Eye size={22} strokeWidth={1.7} /></span>
-              <h4>Análise, não impulso.</h4>
-              <p>Em vez de depender das emoções de uma aposta, você participa de um projeto cujos agentes usam IA para apoiar operações em mercados de risco. <strong>Inteligência não elimina o risco.</strong></p>
+            <div className="pm-step">
+              <span className="pm-index">03 / OPERAÇÕES</span>
+              <div className="pm-visual" aria-hidden="true">
+                <div className="pm-flow">
+                  <span className="pm-flow-node"><b>B</b><small>BETTEX</small></span>
+                  <span className="pm-flow-arrows"><ArrowRight className="pm-flow-out" strokeWidth={2.3} /><ArrowLeft className="pm-flow-back" strokeWidth={2.3} /></span>
+                  <span className="pm-flow-node pm-flow-node--market"><b>↗</b><small>MERCADOS</small></span>
+                </div>
+              </div>
+              <h3>A <em>BETTEX</em> realiza operações com quatro agentes.</h3>
+              <div className="pm-agent-list" aria-label="Especialidades dos agentes BETTEX">
+                {agents.map((agent) => (
+                  <div className="pm-agent" key={agent.name}>
+                    <strong>{agent.name}</strong><span>{agent.specialty}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="pm-step">
+              <span className="pm-index">04 / RESULTADO</span>
+              <div className="pm-visual pm-profit-visual" aria-hidden="true">
+                <span className="pm-profit-coin pm-profit-coin--one">✦</span>
+                <span className="pm-profit-coin pm-profit-coin--two">✦</span>
+                <span className="pm-profit-coin pm-profit-coin--three">✦</span>
+                <ArrowDownRight className="pm-profit-arrow" size={31} strokeWidth={2.2} />
+                <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
+              </div>
+              <h3>Receba sua parte <em>nos dias de lucro.</em></h3>
+              <div className="pm-outcomes">
+                  <div className="pm-outcome pm-outcome--profit"><span>Dia com lucro</span><strong>Titulares com tokens ativados recebem sua parte do lucro daquele dia.</strong></div>
+                 <div className="pm-outcome pm-outcome--none"><span>Dia sem lucro</span><strong>Não há distribuição naquele dia.</strong></div>
+              </div>
             </div>
           </div>
-          <div className="pm-result"><span aria-hidden="true" /><p><strong>Retorno não é garantido:</strong> operações em mercados de risco podem gerar perdas, e o token pode perder valor.</p></div>
+          <div className="pm-panel-foot">
+            <span className="pm-risk-mark" aria-hidden="true" />
+            <p><strong>Risco:</strong> lucro não é garantido; operações podem gerar perdas e o token pode perder valor.</p>
+          </div>
         </div>
         <div className="pm-bottom">
-          <p>Chega de apostar no impulso: conheça as quatro frentes da BTEX e participe do projeto como investidor, sem perder de vista os riscos.</p>
-          <a href="#agentes" data-testid="link-conhecer-agentes">Conheça os agentes <ArrowRight size={16} aria-hidden="true" /></a>
+          <a href="#agentes" data-testid="link-conhecer-agentes">Conheça os quatro agentes <ArrowRight size={16} aria-hidden="true" /></a>
         </div>
       </div>
     </section>
