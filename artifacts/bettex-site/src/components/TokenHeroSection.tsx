@@ -1,11 +1,11 @@
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { formatTokenCount, tokenomics } from '@/lib/tokenomics';
 
 const agents = [
-  { name: 'PREDIX', status: 'EM OPERAÇÃO', position: 'left-[3%] top-[8%] sm:left-[2%] sm:top-[10%]', active: true },
-  { name: 'TRADIX', status: 'EM OPERAÇÃO', position: 'right-[1%] top-[20%] sm:right-[0%] sm:top-[19%]', active: true },
-  { name: 'SPORTIX', status: 'EM DESENVOLVIMENTO', position: 'left-[0%] bottom-[20%] sm:left-[0%] sm:bottom-[19%]', active: false },
-  { name: 'BETTIX', status: 'EM DESENVOLVIMENTO', position: 'right-[2%] bottom-[6%] sm:right-[2%] sm:bottom-[9%]', active: false },
+  { name: 'PREDIX', role: 'ANALISA PREVISÕES', position: 'left-[3%] top-[8%] sm:left-[2%] sm:top-[10%]' },
+  { name: 'TRADEX', role: 'AÇÕES E CRIPTO', position: 'right-[1%] top-[20%] sm:right-[0%] sm:top-[19%]' },
+  { name: 'SPORTIX', role: 'ANALISA ESPORTES', position: 'left-[0%] bottom-[20%] sm:left-[0%] sm:bottom-[19%]' },
+  { name: 'BETTIX', role: 'ATUA EM CASSINOS', position: 'right-[2%] bottom-[6%] sm:right-[2%] sm:bottom-[9%]' },
 ] as const;
 
 /**
@@ -42,7 +42,7 @@ export function TokenHeroSection() {
         <div className="grid items-center gap-10 pb-14 pt-16 sm:pb-20 sm:pt-20 lg:min-h-[690px] lg:grid-cols-[1.12fr_.88fr] lg:gap-3 lg:pb-20 lg:pt-16">
           <div className="relative z-20">
             <p className="mono mb-7 text-[11px] font-bold uppercase tracking-[.2em] text-[#a4eacb] sm:mb-9">
-              Participação no projeto inteiro <span className="ml-2 text-[#b9dccb]/60">— 01 / 04</span>
+              Quatro agentes. Uma BETTEX. <span className="ml-2 text-[#b9dccb]/60">01 / 04</span>
             </p>
             <h2
               id="token-hero-title"
@@ -53,20 +53,13 @@ export function TokenHeroSection() {
               <span className="text-[#a4eacb]">Um token.</span>
             </h2>
             <p className="mt-8 max-w-[560px] text-base leading-[1.75] text-[#d1e5d9] sm:mt-10 sm:text-lg">
-              O token BETTEX representa participação no projeto unificado dos quatro agentes de IA — não em um agente isolado. <strong className="font-semibold text-[#f7f4e9]">PREDIX e TRADIX já operam.</strong> SPORTIX e BETTIX estão em desenvolvimento.
+              O token BETTEX representa sua participação no projeto que reúne os quatro agentes de IA. <strong className="font-semibold text-[#f7f4e9]">Quatro frentes de atuação, uma tecnologia central.</strong>
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
               <a
-                href="#oferta"
-                data-testid="link-token-offer"
-                className="tap inline-flex min-h-14 items-center justify-center gap-4 rounded-full bg-[#a4eacb] px-7 py-3.5 text-sm font-bold text-[#103739] hover:bg-[#c8f5dd]"
-              >
-                Conhecer a oferta <ArrowUpRight className="h-[18px] w-[18px]" aria-hidden="true" />
-              </a>
-              <a
                 href="#comprar"
                 data-testid="link-token-simulator"
-                className="tap inline-flex min-h-14 items-center justify-center gap-4 rounded-full border border-[#a4eacb]/45 px-7 py-3.5 text-sm font-bold text-[#f7f4e9] hover:bg-[#a4eacb]/10"
+                className="tap inline-flex min-h-14 items-center justify-center gap-4 rounded-full bg-[#a4eacb] px-7 py-3.5 text-sm font-bold text-[#103739] hover:bg-[#c8f5dd]"
               >
                 Explorar a simulação <ArrowDown className="h-[18px] w-[18px]" aria-hidden="true" />
               </a>
@@ -96,11 +89,11 @@ export function TokenHeroSection() {
             {agents.map((agent) => (
               <div
                 key={agent.name}
-                className={`absolute ${agent.position} min-w-[104px] rounded-xl border px-3 py-2.5 shadow-[0_12px_28px_rgba(2,27,25,.18)] sm:min-w-[134px] sm:rounded-2xl sm:px-4 sm:py-3 ${agent.active ? 'border-[#b8efd3]/50 bg-[#1c544d] text-[#f7f4e9]' : 'border-[#efc69f]/40 bg-[#264d49] text-[#f7f4e9]'}`}
+                className={`absolute ${agent.position} min-w-[104px] rounded-xl border border-[#b8efd3]/50 bg-[#1c544d] px-3 py-2.5 text-[#f7f4e9] shadow-[0_12px_28px_rgba(2,27,25,.18)] sm:min-w-[134px] sm:rounded-2xl sm:px-4 sm:py-3`}
                 aria-hidden="true"
               >
                 <span className="display block text-sm font-extrabold tracking-[-.045em] sm:text-lg">{agent.name}</span>
-                <span className={`mono mt-1 block text-[7px] font-bold tracking-[.015em] sm:text-[8px] ${agent.active ? 'text-[#a4eacb]' : 'text-[#efc69f]'}`}>{agent.status}</span>
+                <span className="mono mt-1 block text-[7px] font-bold tracking-[.015em] text-[#a4eacb] sm:text-[8px]">{agent.role}</span>
               </div>
             ))}
           </div>
@@ -116,7 +109,7 @@ export function TokenHeroSection() {
           <div className="flex gap-4">
             <span className="mono pt-0.5 text-[11px] font-bold text-[#a4eacb]">02</span>
             <p className="max-w-[490px] text-sm leading-6 text-[#d1e5d9]">
-              <strong className="text-[#f7f4e9]">Resultado, não promessa.</strong> A distribuição diária só acontece quando as operações efetivamente geram lucros. O projeto envolve alto risco; ganhos não são garantidos.
+              <strong className="text-[#f7f4e9]">Resultado, não promessa.</strong> Tokens ativados participam da distribuição diária somente quando as operações geram lucro. O projeto envolve alto risco; ganhos não são garantidos.
             </p>
           </div>
         </div>

@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "grxBHfr_2Vx4JIAykSqvy"
+uri = "file://artifacts/bettex-site/public/favicon.svg"
+type = "image"
+title = "Símbolo BETTEX em SVG"
+description = "Ícone vetorial do robô BETTEX com velas de gráfico; usado no logotipo do site e na aba do navegador."
+logical_id = "ffac4b5a-0802-44a5-bd55-e18add732e0f"
+content_hash = "sha256:d2edbe09423cffb0889bec96c4a97ad15637718df6456d62bd9bf63e1bbd4888"
+size = 1028
+mtime_ms = 1790715355821
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/ffac4b5a-0802-44a5-bd55-e18add732e0f/e543cd5c-7b32-4682-a7d6-df77345cb930"
+storage_version_token = "1790715441361436"
+content_type = "image/svg+xml"

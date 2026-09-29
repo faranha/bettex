@@ -1,0 +1,62 @@
+.hs-section {
+  position: relative;
+  overflow: hidden;
+  background: #eed1bc;
+  color: #4a342d;
+  padding: 34px 0 clamp(76px, 9vw, 130px);
+}
+
+.hs-section::before {
+  content: "";
+  position: absolute;
+  right: -105px;
+  top: 90px;
+  width: min(45vw, 570px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(144, 76, 50, .14);
+  border-radius: 50%;
+  box-shadow: 0 0 0 60px rgba(144, 76, 50, .035), 0 0 0 120px rgba(144, 76, 50, .025);
+  pointer-events: none;
+}
+
+.hs-wrap { position: relative; width: min(100% - 40px, 1200px); margin-inline: auto; }
+.hs-topline { display: flex; align-items: center; justify-content: space-between; gap: 18px; border-top: 1px solid rgba(100, 57, 39, .36); padding-top: 17px; }
+.hs-kicker { color: #9e5135; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .13em; text-transform: uppercase; }
+.hs-topline-detail { color: #775b50; font-size: 12px; }
+.hs-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(55px, 10vw, 150px); padding-top: clamp(58px, 8vw, 105px); }
+.hs-left { max-width: 665px; }
+.hs-asterisk { position: relative; width: 45px; height: 45px; margin-bottom: 29px; border: 1px solid #ae5a3a; border-radius: 50%; }
+.hs-asterisk::before, .hs-asterisk::after { content: ""; position: absolute; top: 50%; left: 50%; width: 20px; height: 1px; background: #ae5a3a; transform: translate(-50%, -50%); }
+.hs-asterisk::after { transform: translate(-50%, -50%) rotate(90deg); }
+.hs-left h2 { max-width: 660px; margin: 0; font: 800 clamp(3.3rem, 6.25vw, 6.6rem)/.99 var(--app-font-serif); letter-spacing: -.072em; }
+.hs-left h2 em { color: #ae5a3a; font-style: normal; }
+.hs-lead { max-width: 530px; margin: 39px 0 0; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.62; }
+.hs-lead strong { color: #7f3f2c; font-weight: 800; }
+.hs-right { align-self: end; max-width: 465px; padding-top: 30px; }
+.hs-family { position: relative; overflow: hidden; width: 100%; aspect-ratio: 1.55; border-radius: 18px; background: #b7866f; box-shadow: 0 22px 40px rgba(88, 47, 30, .18); }
+.hs-family::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 55%, rgba(65, 36, 25, .25)); pointer-events: none; }
+.hs-family img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+.hs-down { position: absolute; z-index: 1; left: 16px; bottom: 16px; display: grid; width: 48px; height: 48px; place-items: center; border: 1px solid rgba(255, 250, 237, .7); border-radius: 50%; background: rgba(59, 38, 30, .45); color: #fff9ed; }
+.hs-right-label { margin: 26px 0 17px; color: #975036; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.hs-explanation { margin: 0; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.55; letter-spacing: -.02em; }
+.hs-explanation strong { font-weight: 800; }
+.hs-invitation { margin: 28px 0 0; font: 800 clamp(26px, 2.5vw, 34px)/1.12 var(--app-font-serif); letter-spacing: -.045em; }
+.hs-invitation strong { color: #a55538; }
+.hs-conditional { margin-top: 35px; padding: 23px 25px 25px; border-left: 4px solid #e7ab85; border-radius: 0 15px 15px 0; background: #4b3832; color: #fff0df; }
+.hs-conditional span { display: block; color: #e9ad88; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.hs-conditional p { margin: 8px 0 0; font: 700 clamp(21px, 2.3vw, 28px)/1.2 var(--app-font-serif); letter-spacing: -.04em; }
+.hs-conditional strong { color: #f3c4a4; }
+.hs-caution { margin: 18px 0 0; color: #71554a; font-size: 12px; line-height: 1.6; }
+
+@media (max-width: 767px) {
+  .hs-wrap { width: min(100% - 32px, 1200px); }
+  .hs-topline-detail { display: none; }
+  .hs-grid { grid-template-columns: 1fr; gap: 50px; padding-top: 49px; }
+  .hs-asterisk { margin-bottom: 23px; }
+  .hs-left h2 { max-width: 590px; font-size: clamp(3.1rem, 11vw, 5rem); }
+  .hs-lead { margin-top: 27px; }
+  .hs-right { max-width: 620px; padding-top: 0; }
+  .hs-down { display: none; }
+  .hs-right-label { margin-top: 27px; }
+  .hs-conditional { margin-top: 28px; }
+}

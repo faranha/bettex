@@ -1,95 +1,75 @@
-import { ArrowUpRight } from 'lucide-react';
+import { type ReactNode } from 'react';
+import { ArrowDown, ArrowUpRight, WalletCards } from 'lucide-react';
 import './TechnologySection.css';
 
-const agents = [
-  { name: 'PREDIX', market: 'Previsões', status: 'Em operação', active: true },
-  { name: 'TRADIX', market: 'Cripto', status: 'Em operação', active: true },
-  { name: 'SPORTIX', market: 'Esportes', status: 'Em desenvolvimento', active: false },
-  { name: 'BETTIX', market: 'Jogos', status: 'Em desenvolvimento', active: false },
-] as const;
-
-export function TechnologySection() {
+export function TechnologySection({ children }: { children: ReactNode }) {
   return (
-    <section id="tecnologia" className="technology-section" aria-labelledby="technology-title">
+    <section id="agentes" className="technology-section scroll-mt-[72px]" aria-labelledby="technology-title">
       <div className="technology-section__wrap">
         <header className="technology-section__intro">
           <div>
-            <p className="technology-section__eyebrow"><span aria-hidden="true">01 /</span> A tecnologia BETTEX</p>
+            <p className="technology-section__eyebrow">A inteligência por trás do seu token</p>
             <h2 id="technology-title" className="technology-section__title" data-testid="text-technology-title">
-              Quatro agentes.<br /><em>Um sistema.</em>
+              Uma BETTEX.<br /><em>Quatro especialidades.</em>
             </h2>
           </div>
-          <p className="technology-section__intro-note">
-            A BETTEX é a tecnologia que reúne agentes para mercados de risco. O BETTEX Core é a arquitetura proposta para coordená-los em um só sistema.
-          </p>
+          <p className="technology-section__intro-note">Conheça os quatro agentes e a tecnologia que conecta todas as frentes de atuação da BETTEX.</p>
         </header>
 
-        <div className="technology-section__diagram" role="group" aria-label="Esquema da BETTEX: o token representa participação no projeto inteiro; o BETTEX Core propõe coordenar quatro agentes especializados.">
-          <div className="technology-section__diagram-header">
-            <span>VISÃO DO SISTEMA</span>
-            <span>ARQUITETURA PROPOSTA <span aria-hidden="true">↗</span></span>
-          </div>
-
-          <div className="technology-section__token-area">
+        <div className="technology-section__hierarchy" aria-label="Token BETTEX movido para a Carteira BETTEX; BETTEX Core coordena quatro agentes e o lucro, quando houver, é creditado na conta BETTEX">
+          <div className="technology-section__deposit-flow">
             <div className="technology-section__token" data-testid="diagram-technology-token">
-              <span className="technology-section__token-kicker">PARTICIPAÇÃO NO TODO</span>
-              <div className="technology-section__coin" aria-hidden="true">
-                <span className="technology-section__coin-mark">B<span>·</span></span>
-              </div>
-              <strong>Token BETTEX</strong>
-              <span className="technology-section__token-sub">Sua parte no sistema inteiro,<br />não em um agente isolado.</span>
+              <span className="technology-section__coin" aria-hidden="true">B<span>·</span></span>
+              <span className="technology-section__token-copy"><strong>Seus tokens BETTEX</strong><small>Mova para sua Carteira BETTEX</small></span>
+            </div>
+            <p className="technology-section__deposit-label">Token entra na carteira</p>
+            <div className="technology-section__deposit-path" aria-hidden="true">
+              <span className="technology-section__moving-coin">B</span>
+              <ArrowDown size={20} strokeWidth={2.4} />
             </div>
           </div>
-
-          <div className="technology-section__divider">
-            <span>PARTICIPAÇÃO NO PROJETO</span>
-            <span>TECNOLOGIA DE ORQUESTRAÇÃO</span>
-          </div>
-
-          <div className="technology-section__core" data-testid="diagram-technology-core">
-            <div className="technology-section__core-symbol" aria-hidden="true"><span /><span /><span /><span /></div>
-            <div className="technology-section__core-copy">
-              <span className="technology-section__core-kicker">CAMADA CENTRAL · PROPOSTA</span>
-              <h3>BETTEX <em>Core</em></h3>
-              <p>Previsto para coordenar risco, execução e registro por agente.</p>
+          <div className="technology-section__wallet" data-testid="diagram-technology-wallet">
+            <span className="technology-section__wallet-slot" aria-hidden="true" />
+            <div className="technology-section__wallet-copy">
+              <span className="technology-section__wallet-kicker">Destino dos tokens · participação ativa</span>
+              <h3>Carteira <em>BETTEX</em></h3>
+              <p>Mova seus tokens para sua Carteira BETTEX para ativar sua participação. Eles ficam na carteira, não no BETTEX Core.</p>
             </div>
-            <span className="technology-section__core-index" aria-hidden="true">BC / 04</span>
+            <div className="technology-section__wallet-art" aria-hidden="true">
+              <WalletCards size={126} strokeWidth={1.25} />
+              <span className="technology-section__wallet-coin">B</span>
+            </div>
           </div>
-
-          <div className="technology-section__network" aria-hidden="true"><span /></div>
-
-          <div className="technology-section__agents" aria-label="Quatro agentes especializados da BETTEX">
-            {agents.map((agent, index) => (
-              <article
-                key={agent.name}
-                className={`technology-section__agent${agent.active ? ' technology-section__agent--active' : ''}`}
-                data-testid={`card-technology-${agent.name.toLowerCase()}`}
-              >
-                <div className="technology-section__agent-top">
-                  <span className="technology-section__agent-number">0{index + 1}</span>
-                  <span className="technology-section__agent-glyph" aria-hidden="true">{agent.active ? '●' : '○'}</span>
-                </div>
-                <div>
-                  <h4>{agent.name}</h4>
-                  <p className="technology-section__agent-market">{agent.market}</p>
-                </div>
-                <span className="technology-section__agent-status">{agent.status}</span>
-              </article>
-            ))}
+          <div id="tecnologia" className="technology-section__core-bridge scroll-mt-[88px]" data-testid="diagram-technology-core">
+            <img src={`${import.meta.env.BASE_URL}agents/bettex-hunter-portrait.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <div>
+              <span>Inteligência que opera, não recebe tokens</span>
+              <h3>BETTEX Core</h3>
+              <p>Enquanto os tokens ficam na carteira, o Core coordena risco, execução e resultados dos quatro agentes.</p>
+            </div>
           </div>
-          <div className="technology-section__diagram-footer">
-            <span><i aria-hidden="true" /> Dois agentes operam hoje</span>
-            <span><i aria-hidden="true" /> Dois estão em desenvolvimento</span>
+          <div className="technology-section__branch" aria-hidden="true" />
+          <span className="technology-section__agents-label">Quatro agentes especializados</span>
+          <div className="technology-section__agents" aria-label="Quatro agentes da BETTEX">{children}</div>
+          <div className="technology-section__result-path" aria-hidden="true">
+            <span /><span /><span /><span />
+          </div>
+          <div className="technology-section__result" data-testid="diagram-technology-result">
+            <span className="technology-section__result-arrow" aria-hidden="true"><ArrowDown size={18} /></span>
+            <span className="technology-section__result-icon" aria-hidden="true"><WalletCards size={32} strokeWidth={1.7} /></span>
+            <div className="technology-section__result-copy">
+              <span className="technology-section__result-kicker">Dos quatro agentes para a sua conta</span>
+              <h3>Lucro creditado na sua conta BETTEX.</h3>
+              <p>Nos dias em que houver lucro, sua parte é creditada na conta dentro da plataforma, se seus tokens estiverem ativados. Sem lucro, não há distribuição.</p>
+            </div>
           </div>
         </div>
 
         <div className="technology-section__after">
-          <p className="technology-section__clarity">
-            <strong>Ter o token BETTEX é ter uma parte do sistema, não só de um agente.</strong> O token representa essa participação; não executa operações. O Core é a arquitetura proposta para coordenar os agentes — seus controles e integrações ainda dependem de implementação e validação. Mercados têm risco e lucros não são garantidos.
-          </p>
+          <p className="technology-section__clarity"><strong>Um token, participação no sistema inteiro.</strong> O token representa a participação na BETTEX; não executa operações. Mercados de risco podem gerar perdas e lucros não são garantidos.</p>
           <div className="technology-section__allora">
-            <span className="technology-section__allora-label">INTELIGÊNCIA EXTERNA / ALLORA</span>
-            <p>A Allora é uma rede descentralizada de inteligência que apoia PREDIX e TRADIX. É um serviço externo, não o BETTEX Core.</p>
+            <span className="technology-section__allora-label">REDE EXTERNA / ALLORA</span>
+            <p>A Allora é uma rede descentralizada de inteligência externa que apoia PREDIX e TRADEX. Não é o BETTEX Core.</p>
             <a href="https://docs.allora.network/home/overview" target="_blank" rel="noopener noreferrer" data-testid="link-allora-documentation">
               Documentação da Allora <ArrowUpRight size={16} aria-hidden="true" />
             </a>
