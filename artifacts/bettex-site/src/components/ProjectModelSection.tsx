@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowDownRight, ArrowLeft, ArrowRight, Wallet } from 'lucide-react';
+import { BettexMark } from '@/components/BettexMark';
 
 const agents = [
   { name: 'PREDIX', specialty: 'Previsões' },
@@ -15,12 +16,37 @@ export function ProjectModelSection() {
           --pm-deep: #123a3b;
           --pm-lime: #b6efca;
           --pm-cream: #f9f3e9;
+          position: relative;
+          overflow: hidden;
           color: var(--pm-deep);
           background: #f7e8d7;
           padding: clamp(72px, 8vw, 112px) 0 clamp(60px, 7vw, 90px);
           scroll-margin-top: 72px;
         }
-        .pm-wrap { width: min(100% - 40px, 1200px); margin-inline: auto; }
+        .pm-casino-wheel {
+          position: absolute; top: -100px; right: max(4vw, 20px);
+          width: min(46vw, 570px); aspect-ratio: 1; border-radius: 50%;
+          border: 2px solid rgba(145, 66, 49, .22);
+          background: repeating-conic-gradient(from -7deg, rgba(151, 67, 48, .17) 0deg 10deg, rgba(18, 58, 59, .13) 10deg 20deg);
+          mask-image: radial-gradient(circle, transparent 0 15%, #000 16% 20%, transparent 21% 27%, #000 28% 81%, transparent 82%);
+          opacity: .8; pointer-events: none;
+        }
+        .pm-casino-wheel::after { content: ""; position: absolute; top: 19%; left: calc(50% - 6px); width: 12px; height: 12px; border-radius: 50%; background: #fff3d8; box-shadow: 0 2px 7px rgba(86, 46, 32, .3); }
+        .pm-casino-cards { position: absolute; top: 95px; right: 28%; width: 155px; height: 160px; opacity: .42; pointer-events: none; }
+        .pm-casino-card {
+          position: absolute; display: grid; place-items: center; width: 94px; height: 128px;
+          border: 2px solid #9d5b48; border-radius: 11px; background: rgba(255, 248, 234, .7);
+          color: #9d4c3c; font: 700 44px/1 Georgia, serif;
+        }
+        .pm-casino-card:first-child { left: 0; top: 17px; transform: rotate(-17deg); }
+        .pm-casino-card:last-child { left: 44px; top: 0; transform: rotate(13deg); }
+        .pm-sport-ball {
+          position: absolute; top: 125px; right: clamp(16px, 3vw, 64px);
+          width: clamp(105px, 11vw, 155px); aspect-ratio: 1; color: #2b6a60;
+          opacity: .38; transform: rotate(-17deg); pointer-events: none;
+        }
+        .pm-sport-ball svg { display: block; width: 100%; height: 100%; }
+        .pm-wrap { position: relative; z-index: 1; width: min(100% - 40px, 1200px); margin-inline: auto; }
          .pm-head { position: relative; min-height: 190px; margin-bottom: 32px; }
          .pm-eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 18px; color: #a55538; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .15em; text-transform: uppercase; }
         .pm-eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
@@ -41,13 +67,16 @@ export function ProjectModelSection() {
         .pm-detail { margin: 12px 0 0; color: #b9d3c9; font-size: 12px; line-height: 1.55; }
          .pm-visual { display: flex; align-items: center; height: 84px; margin-bottom: 15px; }
          .pm-token-symbol { display: grid; width: 67px; height: 67px; place-items: center; border: 2px solid #efb994; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe4c9, #e7a47d 78%); box-shadow: inset 0 0 0 5px #f9d6b7, inset 0 0 0 7px rgba(116, 62, 44, .35), 0 8px 0 #9b614d, 0 14px 23px rgba(0, 0, 0, .22); color: #123a3b; font: 800 37px/1 var(--app-font-serif); }
+         .pm-token-symbol img { width: 32px; height: 32px; border-radius: 7px; }
          .pm-stake { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 112px; }
          .pm-stake-coin { display: grid; width: 30px; height: 30px; place-items: center; border: 2px solid #eab389; border-radius: 50%; background: #f7d1ad; box-shadow: inset 0 0 0 3px #ffe2c5; color: #123a3b; font: 800 18px/1 var(--app-font-serif); }
+         .pm-stake-coin img { width: 17px; height: 17px; border-radius: 4px; }
          .pm-stake-arrow { height: 17px; color: #b6efca; animation: pm-drop 1.8s ease-in-out infinite; }
          .pm-stake-vault { display: grid; width: 96px; height: 23px; place-items: center; border: 1px solid #a2dcc1; border-top: 3px solid #b6efca; border-radius: 4px 4px 9px 9px; background: linear-gradient(#2d7169, #184f50); box-shadow: 0 7px 0 #0b2c31; color: #d9f4e2; font: 700 8px/1 var(--app-font-mono); letter-spacing: .09em; }
          .pm-flow { display: flex; align-items: center; gap: 8px; }
          .pm-flow-node { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 70px; height: 65px; border: 1px solid rgba(182, 239, 202, .5); border-radius: 12px; background: #215452; box-shadow: 0 8px 0 rgba(3, 29, 32, .35); color: #eaf7ed; }
          .pm-flow-node b { font: 800 25px/1 var(--app-font-serif); }
+         .pm-flow-node img { width: 27px; height: 27px; border-radius: 6px; }
          .pm-flow-node small { font: 700 8px/1 var(--app-font-mono); letter-spacing: .03em; }
          .pm-flow-node--market { border-color: rgba(243, 201, 166, .6); background: #53433c; }
          .pm-flow-node--market b { font-size: 22px; }
@@ -85,16 +114,21 @@ export function ProjectModelSection() {
         .pm-bottom a svg { transition: transform .2s ease; }
         .pm-bottom a:hover svg { transform: translateX(3px); }
         @media (max-width: 1000px) {
+          .pm-casino-cards { display: none; }
           .pm-steps { grid-template-columns: .86fr .86fr 1.4fr 1.35fr; padding-inline: 8px; }
           .pm-step { padding-inline: 16px; }
            .pm-person { right: 0; width: 240px; height: 260px; }
         }
         @media (max-width: 767px) {
+          .pm-casino-wheel { top: 65px; right: -95px; width: 350px; opacity: .58; }
+          .pm-casino-wheel::after { top: 71%; left: 24%; }
+          .pm-casino-cards { display: block; top: 292px; right: 180px; opacity: .52; transform: scale(.56); transform-origin: top right; }
+          .pm-sport-ball { top: 58px; right: -20px; width: 96px; opacity: .42; }
           .pm-wrap { width: min(100% - 32px, 1200px); }
            .pm-head { min-height: 0; padding-bottom: 82px; margin-bottom: 25px; }
           .pm-title { font-size: clamp(2.75rem, 10vw, 4.5rem); }
            .pm-head-note { max-width: 190px; margin-top: 13px; }
-           .pm-person { right: -5px; bottom: -26px; width: 155px; height: 175px; }
+           .pm-person { right: -5px; bottom: -26px; width: 200px; height: 205px; }
           .pm-panel { border-radius: 22px; }
           .pm-panel-top { padding: 23px 23px 0; }
           .pm-panel-count { display: none; }
@@ -113,6 +147,10 @@ export function ProjectModelSection() {
           .pm-risk-mark { margin-top: 5px; }
         }
         @media (max-width: 370px) {
+          .pm-casino-cards { display: none; }
+          .pm-sport-ball { top: 302px; right: 172px; width: 66px; opacity: .4; }
+          .pm-person { right: -25px; width: 170px; height: 180px; }
+          .pm-head-note { max-width: 145px; }
           .pm-agent-list { grid-template-columns: 1fr 1fr; }
           .pm-agent { padding: 8px; }
           .pm-agent strong { font-size: 11px; }
@@ -122,6 +160,15 @@ export function ProjectModelSection() {
            .pm-stake-arrow, .pm-flow-out, .pm-flow-back, .pm-profit-arrow { animation: none; }
         }
       `}</style>
+      <div className="pm-casino-wheel" aria-hidden="true" />
+      <div className="pm-casino-cards" aria-hidden="true"><span className="pm-casino-card">♠</span><span className="pm-casino-card">♦</span></div>
+      <div className="pm-sport-ball" aria-hidden="true">
+        <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="60" cy="60" r="54" />
+          <path d="M60 34 79 48 72 70 48 70 41 48Z" fill="currentColor" fillOpacity=".12" />
+          <path d="M60 34V7 M79 48l26-9 M72 70l16 29 M48 70 32 99 M41 48l-26-9 M15 39l13-22 M60 7 28 17 M60 7l32 10 M105 39 92 17 M32 99l28 14 28-14" />
+        </svg>
+      </div>
       <div className="pm-wrap">
         <div className="pm-head">
           <div>
@@ -129,7 +176,7 @@ export function ProjectModelSection() {
               <h2 id="pm-heading" className="pm-title">Compre. Ative.<br /><span>Receba nos dias de lucro.</span></h2>
           </div>
           <p className="pm-head-note">Todos os agentes em um só lugar.</p>
-          <img className="pm-person" src={`${import.meta.env.BASE_URL}model-person.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
 
         <div className="pm-panel">
@@ -140,14 +187,14 @@ export function ProjectModelSection() {
           <div className="pm-steps">
             <div className="pm-step">
               <span className="pm-index">01 / TOKEN</span>
-              <div className="pm-visual" aria-hidden="true"><span className="pm-token-symbol">B</span></div>
+              <div className="pm-visual" aria-hidden="true"><span className="pm-token-symbol"><BettexMark /></span></div>
               <h3>Você compra o <em>token BETTEX.</em></h3>
               <p className="pm-detail">O token representa sua participação no projeto.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / CARTEIRA</span>
               <div className="pm-visual" aria-hidden="true">
-                <div className="pm-stake"><span className="pm-stake-coin">B</span><ArrowDown className="pm-stake-arrow" size={16} /><span className="pm-stake-vault">CARTEIRA</span></div>
+                <div className="pm-stake"><span className="pm-stake-coin"><BettexMark /></span><ArrowDown className="pm-stake-arrow" size={16} /><span className="pm-stake-vault">CARTEIRA</span></div>
               </div>
               <h3>Mova o token <em>para sua Carteira BETTEX.</em></h3>
               <p className="pm-detail">Ao mover o token para sua carteira na BETTEX, ele fica ativado para participar da distribuição nos dias de lucro.</p>
@@ -156,7 +203,7 @@ export function ProjectModelSection() {
               <span className="pm-index">03 / OPERAÇÕES</span>
               <div className="pm-visual" aria-hidden="true">
                 <div className="pm-flow">
-                  <span className="pm-flow-node"><b>B</b><small>BETTEX</small></span>
+                  <span className="pm-flow-node"><BettexMark /><small>BETTEX</small></span>
                   <span className="pm-flow-arrows"><ArrowRight className="pm-flow-out" strokeWidth={2.3} /><ArrowLeft className="pm-flow-back" strokeWidth={2.3} /></span>
                   <span className="pm-flow-node pm-flow-node--market"><b>↗</b><small>MERCADOS</small></span>
                 </div>
@@ -182,7 +229,7 @@ export function ProjectModelSection() {
               <h3>Receba sua parte <em>nos dias de lucro.</em></h3>
               <div className="pm-outcomes">
                   <div className="pm-outcome pm-outcome--profit"><span>Dia com lucro</span><strong>Titulares com tokens ativados recebem sua parte do lucro daquele dia.</strong></div>
-                 <div className="pm-outcome pm-outcome--none"><span>Dia sem lucro</span><strong>Não há distribuição naquele dia.</strong></div>
+                  <div className="pm-outcome pm-outcome--none"><span>Dia sem lucro</span><strong>Não há distribuição naquele dia, mas você não perde seu token.</strong></div>
               </div>
             </div>
           </div>

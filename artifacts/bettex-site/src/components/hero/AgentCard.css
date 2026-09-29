@@ -18,6 +18,12 @@
 .agent-card__instrument { filter: drop-shadow(0 14px 16px rgba(4, 20, 23, .45)); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
 .agent-card:hover .agent-card__instrument { transform: translateY(-5px) scale(1.04); }
 .agent-card__image { display: block; }
+.agent-card__platform-logo-slot { display: flex; align-items: center; height: 36px; margin-top: 6px; }
+.agent-card__platform-logo { display: block; width: auto; max-width: 100%; object-fit: contain; object-position: left; filter: brightness(0) invert(1); }
+.agent-card__platform-logo--predix { height: 36px; }
+.agent-card__platform-logo--tradex { height: 32px; }
+.agent-card__platform-logo--sportix { height: 25px; }
+.agent-card__platform-logo--bettix { height: 24px; }
 .agent-card__emblem {
   position: absolute;
   top: 49%;

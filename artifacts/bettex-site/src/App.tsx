@@ -9,6 +9,7 @@ import { Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
 import { TechnologySection } from '@/components/technology/TechnologySection';
 import { InvestorSection } from '@/components/investor/InvestorSection';
 import { HeroBenefit } from '@/components/hero/HeroBenefit';
+import { BettexMark } from '@/components/BettexMark';
 import { AgentMark, type AgentKind } from '@/components/hero/AgentMark';
 import '@/components/hero/AgentCard.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
@@ -57,7 +58,7 @@ const money = (number: number) => number.toLocaleString('pt-BR', { style: 'curre
 
 function Logo({ pale = false }: { pale?: boolean }) {
   return <a href="#inicio" className={`inline-flex items-center gap-2.5 rounded-md font-bold ${pale ? 'text-[#f6f4e9]' : 'text-[#103739]'}`} aria-label="BETTEX, voltar ao início">
-    <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" className={`h-9 w-9 shrink-0 rounded-[11px] ${pale ? 'ring-1 ring-[#a4eacb]/70' : ''}`} />
+    <BettexMark className={`h-9 w-9 shrink-0 rounded-[11px] ${pale ? 'ring-1 ring-[#a4eacb]/70' : ''}`} />
     <span className="display text-[23px] leading-none tracking-[-.07em]">BETTEX<span className={pale ? 'text-[#94ebcb]' : 'text-[#219c79]'}>.</span></span>
   </a>;
 }
@@ -97,7 +98,7 @@ function AgentCard({ agent, number }: { agent: Agent; number: number }) {
         <div>
           <p className="mono text-[9px] font-bold uppercase tracking-[.09em] text-[#c9e0d6]">{agent.platformLogo ? 'Plataforma' : 'Onde atua'}</p>
           {agent.platformLogo
-            ? <img src={`${import.meta.env.BASE_URL}platforms/${agent.platformLogo}`} alt={`Marca da ${agent.platform}`} loading="lazy" className="mt-2 h-7 w-auto max-w-[140px] object-contain object-left brightness-0 invert" />
+            ? <div className="agent-card__platform-logo-slot"><img src={`${import.meta.env.BASE_URL}platforms/${agent.platformLogo}`} alt={`Marca da ${agent.platform}`} loading="lazy" className={`agent-card__platform-logo agent-card__platform-logo--${agent.kind}`} /></div>
             : <p className="display mt-1 text-base font-extrabold leading-tight text-[#f7f4e9]">{agent.platform}</p>}
         </div>
       </div>
@@ -181,7 +182,7 @@ function Home() {
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegação principal">
           <a href="#participacao" className="text-sm font-semibold hover:text-[#168367]">O que é a BETTEX</a>
           <a href="#agentes" className="text-sm font-semibold hover:text-[#168367]">Agentes</a>
-          <a href="#tecnologia" className="text-sm font-semibold hover:text-[#168367]">Tecnologia</a>
+          <a href="#tecnologia" className="text-sm font-semibold hover:text-[#168367]">Operações</a>
           <a href="#token" className="text-sm font-semibold hover:text-[#168367]">Token BETTEX</a>
           <a href="#comprar" className="text-sm font-semibold hover:text-[#168367]">Demonstração</a>
         </nav>
@@ -189,7 +190,7 @@ function Home() {
         <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 lg:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
       </div>
       {menuOpen && <nav className="page-wrap flex flex-col gap-1 border-t border-[#d6e1d7] py-3 lg:hidden" aria-label="Navegação móvel">
-        {([['O que é a BETTEX', 'participacao'], ['Agentes', 'agentes'], ['Tecnologia', 'tecnologia'], ['Token BETTEX', 'token'], ['Demonstração', 'comprar']] as const).map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
+        {([['O que é a BETTEX', 'participacao'], ['Agentes', 'agentes'], ['Operações', 'tecnologia'], ['Token BETTEX', 'token'], ['Demonstração', 'comprar']] as const).map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
       </nav>}
     </header>
 
