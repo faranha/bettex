@@ -1,5 +1,5 @@
 import { type ReactNode, useEffect, useState } from 'react';
-import { ArrowDown, ArrowRight, ArrowUpRight, ChartCandlestick, Check, ChevronDown, Menu, Minus, Plus, Radar, ShieldCheck, Spade, Trophy, Wallet, X, type LucideIcon } from 'lucide-react';
+import { ArrowDown, ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -14,12 +14,8 @@ import { AgentMark, type AgentKind } from '@/components/hero/AgentMark';
 import '@/components/hero/AgentCard.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { HumanStorySection } from '@/components/HumanStorySection';
-import { tokenomics } from '@/lib/tokenomics';
 
 const queryClient = new QueryClient();
-const KEY = 'bettex-demo-balances';
-const PRICE = tokenomics.priceBRL;
-type Balance = { free: number; participating: number };
 type Agent = {
   name: string;
   kind: AgentKind;
@@ -39,22 +35,6 @@ const agents: Agent[] = [
   { name: 'BETTIX', kind: 'bettix', icon: Spade, visual: 'máquina cilíndrica sem rosto com ícone de naipe de espadas', area: 'Cassino', intro: 'Análise de jogos.', detail: 'Opera somente nos jogos de cassino da Duel como parte da BETTEX.', platform: 'Duel', platformLogo: 'duel.webp' },
 ];
 
-function readBalance(): Balance {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (!raw) return { free: 0, participating: 0 };
-    const parsed = JSON.parse(raw) as Partial<Balance>;
-    const clean = (n: unknown) => Number.isFinite(n) ? Math.max(0, Math.floor(Number(n))) : 0;
-    // Aceita dados de uma versão anterior da demonstração, quando existirem.
-    const old = parsed as Partial<Balance> & { staked?: number };
-    return { free: clean(parsed.free), participating: clean(parsed.participating ?? old.staked) };
-  } catch {
-    return { free: 0, participating: 0 };
-  }
-}
-
-const money = (number: number) => number.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
-
 function Logo({ pale = false }: { pale?: boolean }) {
   return <a href="#inicio" className={`inline-flex items-center gap-2.5 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#168367] ${pale ? 'text-[#f6f4e9]' : 'text-[#123a3b]'}`} aria-label="BETTEX, voltar ao início">
     <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border ${pale ? 'border-[#a4eacb]/35 bg-[#0b2c30]' : 'border-[#1e5551] bg-[#123a3b]'} shadow-[0_3px_10px_rgba(6,32,33,.12)]`}>
@@ -62,21 +42,6 @@ function Logo({ pale = false }: { pale?: boolean }) {
     </span>
     <span className="display text-[25px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
   </a>;
-}
-
-function Eyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) {
-  return <p className={`mono text-[10px] font-bold uppercase tracking-[.16em] ${light ? 'text-[#a2efce]' : 'text-[#168367]'}`}>{children}</p>;
-}
-
-function MoveControl({ title, available, value, onChange, onSubmit, button }: { title: string; available: number; value: string; onChange: (value: string) => void; onSubmit: () => void; button: string }) {
-  return <div className="rounded-[22px] border border-[#c5d9ce] bg-[#fbfaf2] p-4 sm:p-5">
-    <div className="flex items-start justify-between gap-3"><label className="display text-lg font-bold leading-tight">{title}</label><span className="shrink-0 text-right text-xs text-[#5f7874]">Disponível: {available}</span></div>
-    <div className="mt-5 flex gap-2">
-      <input type="number" min="1" max={available} step="1" inputMode="numeric" aria-label={`Quantidade para ${title.toLowerCase()}`} value={value} onChange={(e) => onChange(e.target.value)} placeholder="Quantidade" className="number-input min-w-0 flex-1 rounded-xl border border-[#b9d1c7] bg-white/80 px-3 py-3 text-sm text-[#103739] placeholder:text-[#7a918b]" />
-      <button type="button" onClick={() => onChange(String(available))} disabled={available === 0} className="tap rounded-xl bg-[#e0f2e8] px-3 text-xs font-bold text-[#146d55] disabled:opacity-40">Tudo</button>
-    </div>
-    <button type="button" onClick={onSubmit} disabled={available === 0} className="tap mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-[#123a3b] px-4 py-3 text-sm font-bold text-[#f7f6ec] hover:bg-[#205658] disabled:opacity-40">{button}<ArrowRight className="h-4 w-4" /></button>
-  </div>;
 }
 
 function AgentCard({ agent, number }: { agent: Agent; number: number }) {
@@ -109,13 +74,6 @@ function AgentCard({ agent, number }: { agent: Agent; number: number }) {
 
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [connected, setConnected] = useState(false);
-  const [balance, setBalance] = useState<Balance>(readBalance);
-  const [quantity, setQuantity] = useState(40);
-  const [toParticipating, setToParticipating] = useState('');
-  const [toFree, setToFree] = useState('');
-  const [toSell, setToSell] = useState('');
-  const [feedback, setFeedback] = useState('Este é um teste. Nenhum dinheiro ou token real é usado.');
 
   useEffect(() => {
     const id = window.location.hash.slice(1);
@@ -137,45 +95,6 @@ function Home() {
     };
   }, []);
 
-  const save = (next: Balance) => {
-    setBalance(next);
-    try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* A experiência continua mesmo sem armazenamento local. */ }
-  };
-  const buy = () => {
-    const amount = Math.floor(Number(quantity));
-    if (!Number.isFinite(amount) || amount < 1 || amount > 500) { setFeedback('Escolha entre 1 e 500 tokens para testar.'); return; }
-    setConnected(true);
-    save({ ...balance, free: balance.free + amount });
-    setFeedback(`Pronto! ${amount} tokens de exemplo entraram no seu saldo livre. ${money(amount * PRICE)} foi só uma conta: você não pagou nada.`);
-  };
-  const validate = (raw: string, available: number): number | null => {
-    const number = Number(raw);
-    if (!Number.isInteger(number) || number < 1) { setFeedback('Digite uma quantidade inteira maior que zero.'); return null; }
-    if (number > available) { setFeedback(`Você tem apenas ${available} tokens disponíveis para essa ação.`); return null; }
-    return number;
-  };
-  const leaveParticipating = () => {
-    const amount = validate(toParticipating, balance.free);
-    if (amount === null) return;
-    save({ free: balance.free - amount, participating: balance.participating + amount });
-    setToParticipating('');
-    setFeedback(`${amount} tokens agora estão participando na demonstração. Isso não gera pagamento nem rendimento real.`);
-  };
-  const withdraw = () => {
-    const amount = validate(toFree, balance.participating);
-    if (amount === null) return;
-    save({ free: balance.free + amount, participating: balance.participating - amount });
-    setToFree('');
-    setFeedback(`${amount} tokens foram tirados da participação e voltaram ao seu saldo livre de exemplo.`);
-  };
-  const sell = () => {
-    const amount = validate(toSell, balance.free);
-    if (amount === null) return;
-    save({ ...balance, free: balance.free - amount });
-    setToSell('');
-    setFeedback(`Venda simulada: ${amount} tokens livres saíram do seu saldo. Nenhum dinheiro foi recebido.`);
-  };
-
   return <div className="min-h-[100dvh] overflow-x-hidden bg-[#f7f4e9]">
     <header className="sticky top-0 z-40 border-b border-[#d6e1d7] bg-[#f7f4e9]/95 backdrop-blur-lg">
       <div className="page-wrap flex h-[72px] items-center justify-between gap-4">
@@ -185,13 +104,13 @@ function Home() {
           <a href="#agentes" className="text-sm font-semibold hover:text-[#168367]">Agentes</a>
           <a href="#tecnologia" className="text-sm font-semibold hover:text-[#168367]">Operações</a>
           <a href="#visao-investidor" className="text-sm font-semibold hover:text-[#168367]">Prévia do aplicativo</a>
-          <a href="#comprar" className="text-sm font-semibold hover:text-[#168367]">Demonstração</a>
+          <a href="#visao-investidor" className="text-sm font-semibold hover:text-[#168367]">Demonstração</a>
         </nav>
         <a href="#participacao" className="tap hidden items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Entenda o projeto</a>
         <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 lg:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
       </div>
       {menuOpen && <nav className="page-wrap flex flex-col gap-1 border-t border-[#d6e1d7] py-3 lg:hidden" aria-label="Navegação móvel">
-        {([['O que é a BETTEX', 'participacao'], ['Agentes', 'agentes'], ['Operações', 'tecnologia'], ['Prévia do aplicativo', 'visao-investidor'], ['Demonstração', 'comprar']] as const).map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
+        {([['O que é a BETTEX', 'participacao'], ['Agentes', 'agentes'], ['Operações', 'tecnologia'], ['Prévia do aplicativo', 'visao-investidor'], ['Demonstração', 'visao-investidor']] as const).map(([label, id]) => <a key={label} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
       </nav>}
     </header>
 
@@ -207,7 +126,7 @@ function Home() {
             </h1>
             <p className="mt-7 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Em vez de colocar o dinheiro do mês em uma aposta, conheça a BETTEX: seja dono de uma IA que opera em diferentes mercados de risco com resultados diários.</p>
             <p className="mt-4 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Ao comprar tokens, você participa do <strong className="font-bold text-[#f7f4e9]">projeto BETTEX como um todo</strong>, não de um único palpite. O risco continua; resultados não são garantidos.</p>
-            <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#comprar" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ver demonstração <ArrowDown className="h-4 w-4" /></a></div>
+            <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ver demonstração <ArrowDown className="h-4 w-4" /></a></div>
             <p className="mt-7 max-w-lg border-l-2 border-[#ffcb9b] pl-4 text-xs leading-5 text-[#c9e0d6]">Investir em mercados de risco pode gerar perdas. Lucro e valorização do token não são garantidos.</p>
           </div>
           <div className="entrance entrance-delay relative mx-auto w-full max-w-[510px]">
@@ -224,39 +143,6 @@ function Home() {
        </TechnologySection>
       <InvestorAppPreview />
 
-      <section id="comprar" className="scroll-mt-[72px] bg-[#f7f4e9] py-20 sm:py-28">
-        <div className="page-wrap">
-          <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-16">
-          <div><Eyebrow>Área de demonstração</Eyebrow><h2 className="display mt-4 text-[clamp(2.6rem,5vw,4.8rem)] font-extrabold leading-[1.04] tracking-[-.055em]">Teste o pré-lançamento.</h2><p className="mt-6 max-w-md text-base leading-7 text-[#526e69]">O token BETTEX custa <strong className="text-[#123a3b]">R$ {PRICE}</strong>. Experimente calcular uma quantidade e veja como seria movimentar tokens. O teste não reserva unidades da oferta pública.</p><div className="mt-8 flex max-w-md items-start gap-3 rounded-[22px] bg-[#ffe7d0] p-5"><ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#b95c36]" /><p className="text-sm leading-6 text-[#654d3e]">Os saldos deste teste ficam apenas no navegador e não correspondem a tokens adquiridos.</p></div></div>
-          <div className="rounded-[32px] border border-[#bad5c6] bg-[#e3f2e7] p-4 shadow-[0_24px_60px_rgba(20,78,64,.09)] sm:p-8">
-            <div className="flex items-start justify-between gap-4"><div><span className="mono text-[10px] font-bold uppercase tracking-[.1em] text-[#168367]">Simulação do pré-lançamento</span><h3 className="display mt-2 text-2xl font-extrabold tracking-[-.04em]">Escolha uma quantidade</h3></div><span className="rounded-full bg-[#c9e9d7] px-3 py-1.5 text-[10px] font-bold text-[#176d54]">SEM CUSTO</span></div>
-            <div className="mt-8 flex items-center justify-between gap-2 rounded-[22px] bg-[#fcfbf3] p-3 sm:p-4">
-              <button type="button" onClick={() => setQuantity((q) => Math.max(1, Number(q) - 10))} aria-label="Diminuir quantidade" className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#e2f1e7] hover:bg-[#cbebd9]"><Minus className="h-5 w-5" /></button>
-              <div className="min-w-0 text-center"><label htmlFor="token-amount" className="block text-xs text-[#526e69]">Tokens de exemplo</label><input id="token-amount" type="number" min="1" max="500" step="1" aria-describedby="test-limit" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} className="number-input display w-full bg-transparent text-center text-4xl font-extrabold tracking-[-.05em] outline-none sm:text-5xl" /></div>
-              <button type="button" onClick={() => setQuantity((q) => Math.min(500, Number(q) + 10))} aria-label="Aumentar quantidade" className="tap grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#e2f1e7] hover:bg-[#cbebd9]"><Plus className="h-5 w-5" /></button>
-            </div>
-            <div className="mt-3 flex flex-wrap gap-2">{[10, 40, 100].map((number) => <button key={number} type="button" onClick={() => setQuantity(number)} className={`tap rounded-full border px-4 py-2 text-xs font-bold ${quantity === number ? 'border-[#123a3b] bg-[#123a3b] text-white' : 'border-[#b5d1c3] bg-[#f9fbf3] text-[#123a3b]'}`}>{number} tokens</button>)}</div>
-            <p id="test-limit" className="mt-2 text-xs leading-5 text-[#526e69]">Limite deste teste: 500 tokens por vez. Isso não limita a oferta pública de 1.000.000.</p>
-            <div className="mt-8 flex items-end justify-between border-b border-[#b6d5c5] pb-5"><div><p className="text-sm text-[#526e69]">Total da simulação</p><p className="display mt-1 text-4xl font-extrabold tracking-[-.05em] sm:text-5xl">{Number.isFinite(quantity) && quantity >= 1 ? money(quantity * PRICE) : money(0)}</p></div><span className="text-right text-xs text-[#526e69]">Preço BETTEX<br />R$ {PRICE} por token</span></div>
-            <button type="button" onClick={buy} className="tap mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#123a3b] px-5 py-4 text-sm font-bold text-[#f6f5ea] hover:bg-[#235956]">Colocar tokens na minha demonstração <ArrowRight className="h-4 w-4" /></button>
-            <p className="mt-4 text-center text-xs text-[#526e69]">Esta ação adiciona apenas tokens de exemplo à demonstração; não confirma compra nem disponibilidade.</p>
-          </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="meus-tokens" className="bg-[#d9eee3] py-20 sm:py-28">
-        <div className="page-wrap">
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between"><div><Eyebrow>Seu espaço de teste</Eyebrow><h2 className="display mt-4 text-[clamp(2.6rem,5vw,4.8rem)] font-extrabold leading-[1.04] tracking-[-.055em]">Explore os movimentos.</h2><p className="mt-4 max-w-xl text-sm leading-6 text-[#526e69]">Somente neste teste, “deixar participando” muda a visualização dos saldos, sem movimentar tokens adquiridos.</p></div><div className="inline-flex w-fit items-center gap-2 rounded-full border border-[#a8ceba] bg-[#f5faf2] px-4 py-2 text-xs font-bold text-[#176d54]"><span className="h-2 w-2 rounded-full bg-[#2aa983]" />{connected ? 'Demonstração iniciada' : 'Demonstração local'}</div></div>
-          <div className="mt-10 grid gap-5 lg:grid-cols-[.7fr_1.3fr]">
-            <div className="rounded-[30px] bg-[#123a3b] p-6 text-[#f8f7ed] sm:p-8"><div className="flex items-center justify-between"><p className="text-sm text-[#c2d9cf]">Seus tokens de exemplo</p><Wallet className="h-5 w-5 text-[#a4eacb]" /></div><p className="display mt-5 text-6xl font-extrabold tracking-[-.07em]">{balance.free + balance.participating}</p><p className="mt-1 text-xs text-[#c2d9cf]">Unidades de exemplo no total</p><div className="mt-9 divide-y divide-[#b6dccb]/20 border-t border-[#b6dccb]/20"><div className="flex justify-between py-4 text-sm"><span className="text-[#c2d9cf]">Livres para usar</span><strong>{balance.free}</strong></div><div className="flex justify-between py-4 text-sm"><span className="text-[#c2d9cf]">Deixados participando</span><strong>{balance.participating}</strong></div></div><p className="mt-5 text-xs leading-5 text-[#b5d5c7]">Saldos ilustrativos, guardados apenas neste navegador.</p></div>
-            <div className="rounded-[30px] border border-[#b9d6c5] bg-[#f2f8ef] p-5 sm:p-7"><div className="flex items-center justify-between gap-4"><div><p className="mono text-[10px] font-bold uppercase tracking-[.1em] text-[#168367]">Faça um teste</p><h3 className="display mt-1 text-2xl font-extrabold tracking-[-.04em]">O que você quer fazer?</h3></div><span className="hidden rounded-full bg-[#dfefe3] px-3 py-1.5 text-[10px] font-bold text-[#176d54] sm:inline-block">SÓ NA TELA</span></div><div className="mt-6 grid gap-3 sm:grid-cols-2"><MoveControl title="Deixar tokens participando" available={balance.free} value={toParticipating} onChange={setToParticipating} onSubmit={leaveParticipating} button="Deixar participando" /><MoveControl title="Tirar tokens da participação" available={balance.participating} value={toFree} onChange={setToFree} onSubmit={withdraw} button="Tirar meus tokens" /></div><div className="mt-3"><MoveControl title="Simular venda dos tokens livres" available={balance.free} value={toSell} onChange={setToSell} onSubmit={sell} button="Simular venda" /><p className="mt-2 text-xs leading-5 text-[#526e69]">Esta simulação representa a escolha de vender no futuro; não envia ordens a corretoras parceiras.</p></div></div>
-          </div>
-          <div role="status" aria-live="polite" className="mt-4 flex items-start gap-3 rounded-[18px] border border-[#9ccdb1] bg-[#f9faf1] px-5 py-4 text-sm leading-6 text-[#285b4b]"><Check className="mt-0.5 h-4 w-4 shrink-0" />{feedback}</div>
-        </div>
-      </section>
-
-      <section className="bg-[#ffe6cc] py-16 sm:py-20"><div className="page-wrap flex flex-col gap-7 md:flex-row md:items-center md:justify-between"><div><Eyebrow>Seu próximo passo</Eyebrow><h2 className="display mt-3 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-.04em] sm:text-4xl">Pare de apostar. Comece a investir na IA da BETTEX.</h2><p className="mt-4 max-w-2xl text-sm leading-7 text-[#61534a]">Veja como o projeto funciona e experimente a demonstração dos tokens BETTEX.</p></div><a href="#comprar" className="tap inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3.5 text-sm font-bold text-[#f7f4e9]">Explorar demonstração <ArrowUpRight className="h-4 w-4" /></a></div></section>
     </main>
 
     <footer className="bg-[#123a3b] py-10 text-[#d0e5d9]"><div className="page-wrap flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo pale /><p className="max-w-[550px] text-xs leading-6">BETTEX é um negócio de investimento com agentes de IA. Conheça seus agentes, a tecnologia e os tokens perpétuos.</p><a href="#inicio" className="flex shrink-0 items-center gap-1 text-xs font-bold text-[#a4eacb]">Voltar ao topo <ChevronDown className="h-4 w-4 rotate-180" /></a></div></footer>

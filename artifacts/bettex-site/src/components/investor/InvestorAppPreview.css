@@ -9,12 +9,12 @@
   --ip-peach: #f6ddc5;
   background: #f0f2e9;
   color: var(--ip-ink);
-  padding: clamp(70px, 8vw, 116px) 0 clamp(80px, 9vw, 124px);
+  padding: clamp(44px, 6vw, 72px) 0 clamp(48px, 6vw, 76px);
   scroll-margin-top: 72px;
 }
 .investor-preview *, .investor-preview *::before, .investor-preview *::after { box-sizing: border-box; }
 .investor-preview__wrap { width: min(calc(100% - 40px), 1200px); margin: 0 auto; }
-.investor-preview__intro { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(240px, .7fr); align-items: end; gap: 32px; margin-bottom: 36px; }
+.investor-preview__intro { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(240px, .7fr); align-items: end; gap: 24px; margin-bottom: 22px; }
 .investor-preview__eyebrow, .investor-preview__micro { margin: 0; color: var(--ip-green); font: 700 10px/1.5 var(--app-font-mono, monospace); letter-spacing: .14em; text-transform: uppercase; }
 .investor-preview__eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 17px; }
 .investor-preview__eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
@@ -23,12 +23,14 @@
 .investor-preview__intro-text { max-width: 340px; margin: 0 0 5px auto; color: #506a65; font-size: 15px; line-height: 1.7; }
 
 .investor-preview__window { overflow: hidden; border: 1px solid #aac6b8; border-radius: 28px; background: #faf9f1; box-shadow: 0 28px 70px rgba(16, 58, 53, .12), 0 4px 12px rgba(16, 58, 53, .04); }
-.investor-preview__topbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 70px; padding: 13px 26px; border-bottom: 1px solid #335d57; background: var(--ip-deep); color: #f7f4e9; }
+.investor-preview__topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 62px; padding: 9px 24px; border-bottom: 1px solid #335d57; background: var(--ip-deep); color: #f7f4e9; }
 .investor-preview__brand { display: flex; align-items: center; gap: 11px; min-width: 0; font: 800 20px/1 var(--app-font-serif, sans-serif); letter-spacing: -.06em; }
 .investor-preview__brand-mark { display: grid; width: 35px; height: 35px; flex: none; place-items: center; border: 1px solid #76bda3; border-radius: 10px; background: #1b4b47; }
 .investor-preview__brand-mark svg { width: 26px; height: 26px; }
 .investor-preview__topbar-right { display: flex; align-items: center; gap: 18px; min-width: 0; }
-.investor-preview__topbar-note { color: #a7c7b9; font: 700 10px/1.4 var(--app-font-mono, monospace); letter-spacing: .07em; text-transform: uppercase; }
+.investor-preview__viewer { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; min-width: 0; text-align: right; }
+.investor-preview__viewer strong { color: #f7f4e9; font-size: 12px; line-height: 1.2; white-space: nowrap; }
+.investor-preview__viewer small { color: #a7c7b9; font-size: 9px; line-height: 1.2; }
 .investor-preview__badge { display: inline-flex; align-items: center; gap: 7px; flex: none; padding: 7px 10px; border: 1px solid #8abd9d; border-radius: 50px; color: #d6f2db; font: 700 10px/1.3 var(--app-font-mono, monospace); text-transform: uppercase; letter-spacing: .07em; }
 .investor-preview__badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #a4eacb; }
 .investor-preview__body { display: grid; grid-template-columns: 188px minmax(0, 1fr); }
@@ -39,49 +41,78 @@
 .investor-preview__rail-item--active { background: #d2e9d9; color: #145643; }
 .investor-preview__rail-item svg { width: 16px; height: 16px; flex: none; }
 .investor-preview__rail-foot { margin: auto 4px 0; padding: 17px 12px 0; border-top: 1px solid #c6d9cc; color: #628077; font-size: 11px; line-height: 1.5; }
-.investor-preview__content { min-width: 0; padding: clamp(20px, 3vw, 36px); }
-.investor-preview__header { display: flex; align-items: start; justify-content: space-between; gap: 18px; margin-bottom: 25px; }
+.investor-preview__content { min-width: 0; padding: clamp(16px, 2vw, 24px); }
+.investor-preview__header { display: flex; align-items: start; justify-content: space-between; gap: 18px; margin-bottom: 16px; }
 .investor-preview__header h3 { margin: 6px 0 0; font: 800 clamp(1.65rem, 2.5vw, 2.25rem)/1.1 var(--app-font-serif, sans-serif); letter-spacing: -.05em; }
 .investor-preview__header-copy { margin: 6px 0 0; color: var(--ip-muted); font-size: 12px; line-height: 1.5; }
 .investor-preview__section-index { flex: none; margin-top: 2px; color: #7b9990; font: 700 10px/1.5 var(--app-font-mono, monospace); }
 
-.investor-preview__wallet-flow { display: grid; grid-template-columns: minmax(0, 1fr) 154px minmax(0, 1fr); align-items: stretch; gap: 9px; }
-.investor-preview__wallet { min-width: 0; padding: 20px; border: 1px solid #c7dacf; border-radius: 17px; background: #eff5eb; }
+.investor-preview__wallet-flow { display: grid; grid-template-columns: minmax(0, 1fr) 126px minmax(0, 1fr); align-items: stretch; gap: 9px; }
+.investor-preview__wallet { min-width: 0; padding: 16px; border: 1px solid #c7dacf; border-radius: 17px; background: #eff5eb; }
 .investor-preview__wallet--bettex { border-color: #1c6054; background: var(--ip-ink); color: #f9f7ec; }
+.investor-preview__wallet-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .investor-preview__wallet-label { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 700; }
 .investor-preview__wallet-label svg { width: 17px; height: 17px; color: var(--ip-green); }
 .investor-preview__wallet--bettex .investor-preview__wallet-label svg { color: #a4eacb; }
-.investor-preview__wallet-value { display: block; margin: 18px 0 3px; font: 800 clamp(1.45rem, 2.6vw, 2.15rem)/1.1 var(--app-font-serif, sans-serif); letter-spacing: -.055em; }
-.investor-preview__wallet--bettex .investor-preview__wallet-value { color: #c2f0d2; }
+.investor-preview__wallet-value { display: block; margin: 9px 0 3px; font: 800 clamp(1.45rem, 2.6vw, 2.15rem)/1.1 var(--app-font-serif, sans-serif); letter-spacing: -.055em; }
+.investor-preview__wallet--bettex .investor-preview__wallet-value { margin-top: 4px; color: #c2f0d2; }
 .investor-preview__wallet-caption { color: #617c72; font-size: 11px; line-height: 1.4; }
 .investor-preview__wallet--bettex .investor-preview__wallet-caption { color: #b9d5c8; }
+.investor-preview__wallet-buy { display: inline-flex; align-items: center; gap: 10px; margin-top: 17px; padding: 9px 12px; border-radius: 9px; background: #123a3b; color: #f7f4e9; font-size: 11px; font-weight: 800; text-decoration: none; transition: background-color .2s ease, transform .2s ease; }
+.investor-preview__wallet-buy:hover { background: #216a56; transform: translateY(-2px); }
+.investor-preview__wallet-buy svg { width: 14px; height: 14px; }
+.investor-preview__wallet-buy-note { display: block; margin-top: 6px; color: #5c7569; font-size: 10px; line-height: 1.4; }
+.investor-preview__wallet-history-button { display: grid; width: 38px; height: 38px; flex: none; place-items: center; border: 1px solid #599484; border-radius: 10px; background: #1c5350; color: #c2f0d2; cursor: pointer; }
+.investor-preview__wallet-history-button:hover, .investor-preview__wallet-history-button[aria-expanded="true"] { background: #286e60; }
+.investor-preview__wallet-history-button svg { width: 19px; height: 19px; }
+.investor-preview__wallet-kicker { display: block; margin-top: 11px; color: #b9d5c8; font: 700 9px/1.4 var(--app-font-mono, monospace); letter-spacing: .07em; text-transform: uppercase; }
+.investor-preview__wallet-daily { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 11px; border-top: 1px solid #507b70; }
+.investor-preview__wallet-daily span { color: #e7f1e7; font-size: 11px; font-weight: 700; }
+.investor-preview__wallet-daily small { display: block; margin-top: 3px; color: #b9d5c8; font-size: 9px; font-weight: 400; }
+.investor-preview__wallet-daily strong { color: #c2f0d2; font: 800 19px/1.1 var(--app-font-serif, sans-serif); white-space: nowrap; }
+.investor-preview__wallet-history { margin-top: 12px; padding: 16px 20px; border: 1px solid #bdd7c5; border-radius: 13px; background: #f1f7ed; }
+.investor-preview__wallet-history[hidden] { display: none; }
+.investor-preview__wallet-history-head, .investor-preview__wallet-history-row { display: flex; justify-content: space-between; gap: 16px; }
+.investor-preview__wallet-history-head { padding-bottom: 12px; border-bottom: 1px solid #cfddcf; }
+.investor-preview__wallet-history-head strong { font-size: 13px; }
+.investor-preview__wallet-history-head span { color: #44775e; font: 700 9px/1.5 var(--app-font-mono, monospace); text-align: right; text-transform: uppercase; }
+.investor-preview__wallet-history-row { padding: 9px 0; border-bottom: 1px solid #dbe5d9; font-size: 11px; }
+.investor-preview__wallet-history-row strong { color: #23674c; text-align: right; }
+.investor-preview__wallet-history p { margin: 10px 0 0; color: #647d71; font-size: 10px; line-height: 1.5; }
 .investor-preview__flow-action { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 10px 0; color: #28745b; text-align: center; }
 .investor-preview__flow-line { position: relative; width: 100%; height: 1px; background: #8cb6a3; }
 .investor-preview__flow-line svg { position: absolute; top: 50%; right: 0; width: 18px; height: 18px; transform: translate(2px, -50%); background: #faf9f1; }
 .investor-preview__explain-button { padding: 8px 10px; border: 1px solid #b6d6c1; border-radius: 9px; background: #e3f1e5; color: #145d49; font-size: 11px; font-weight: 800; line-height: 1.35; text-align: center; transition: transform .2s ease, background-color .2s ease; }
 .investor-preview__explain-button:hover { transform: translateY(-2px); background: #d3eacf; }
-.investor-preview__explain-button:focus-visible, .investor-preview__filter:focus-visible, .investor-preview__agent:focus-visible { outline: 3px solid #e9956f; outline-offset: 3px; }
+.investor-preview__explain-button:focus-visible, .investor-preview__filter:focus-visible, .investor-preview__agent:focus-visible, .investor-preview__wallet-buy:focus-visible, .investor-preview__wallet-history-button:focus-visible { outline: 3px solid #e9956f; outline-offset: 3px; }
 .investor-preview__flow-hint { max-width: 115px; color: #69847b; font-size: 10px; line-height: 1.4; }
 .investor-preview__explanation { display: flex; align-items: start; gap: 12px; margin-top: 11px; padding: 14px 17px; border: 1px solid #b9d7c4; border-radius: 12px; background: #e3f2e7; color: #235846; font-size: 12px; line-height: 1.6; }
 .investor-preview__explanation svg { flex: none; width: 17px; height: 17px; margin-top: 1px; }
 .investor-preview__explanation p { margin: 0; }
 .investor-preview__explanation strong { color: #123a3b; }
 
-.investor-preview__workspace { display: grid; grid-template-columns: minmax(0, 1.48fr) minmax(250px, .82fr); gap: 14px; margin-top: 22px; }
+.investor-preview__workspace { display: grid; grid-template-columns: minmax(0, 1.48fr) minmax(250px, .82fr); gap: 12px; margin-top: 14px; }
+.investor-preview__performance-panel { scroll-margin-top: 85px; }
 .investor-preview__panel { min-width: 0; overflow: hidden; border: 1px solid #cfddd2; border-radius: 17px; background: #fffdf5; }
-.investor-preview__panel-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; padding: 20px 20px 0; }
+.investor-preview__panel-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; padding: 16px 16px 0; }
 .investor-preview__panel-head h4 { margin: 5px 0 0; font: 800 21px/1.15 var(--app-font-serif, sans-serif); letter-spacing: -.045em; }
 .investor-preview__panel-help { max-width: 245px; margin: 6px 0 0; color: var(--ip-muted); font-size: 11px; line-height: 1.5; }
 .investor-preview__panel-icon { display: grid; width: 32px; height: 32px; flex: none; place-items: center; border-radius: 9px; background: #e5f1e7; color: #26765b; }
 .investor-preview__panel-icon svg { width: 17px; height: 17px; }
-.investor-preview__filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 19px 20px 0; padding: 4px; border: 1px solid #d4e1d5; border-radius: 10px; background: #edf3e9; width: fit-content; max-width: calc(100% - 40px); }
+.investor-preview__filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 13px 16px 0; padding: 4px; border: 1px solid #d4e1d5; border-radius: 10px; background: #edf3e9; width: fit-content; max-width: calc(100% - 32px); }
 .investor-preview__filter { min-height: 31px; padding: 6px 11px; border: 0; border-radius: 7px; background: transparent; color: #587469; font-size: 11px; font-weight: 700; white-space: nowrap; transition: background-color .2s ease, color .2s ease; }
 .investor-preview__filter[aria-pressed="true"] { background: #123a3b; color: #f6f4e9; }
-.investor-preview__chart { display: flex; flex-direction: column; justify-content: center; min-height: 174px; margin: 17px 20px 20px; padding: 22px; border: 1px dashed #b8cfc0; border-radius: 12px; background: repeating-linear-gradient(to bottom, transparent 0, transparent 37px, rgba(30, 91, 67, .07) 38px, transparent 39px), #f6f8ef; }
-.investor-preview__empty-mark { display: grid; width: 34px; height: 34px; margin-bottom: 12px; place-items: center; border: 1px solid #aac9b7; border-radius: 50%; background: #e7f3e8; color: #26765b; }
-.investor-preview__empty-mark svg { width: 17px; height: 17px; }
+.investor-preview__chart { min-width: 0; margin: 12px 16px 14px; padding: 16px; border: 1px solid #b8cfc0; border-radius: 12px; background: #f6f8ef; }
 .investor-preview__chart strong, .investor-preview__history-empty strong { font-size: 12px; color: #234b40; }
+.investor-preview__sample-label { color: #438269; font: 700 10px/1.5 var(--app-font-mono, monospace); letter-spacing: .07em; text-transform: uppercase; }
+.investor-preview__chart .investor-preview__sample-result { display: block; margin-top: 4px; color: #185f48; font: 800 clamp(1.8rem, 3vw, 2.5rem)/1.15 var(--app-font-serif, sans-serif); letter-spacing: -.05em; }
+.investor-preview__chart .investor-preview__sample-result[data-negative="true"], .investor-preview__total strong[data-negative="true"] { color: #a54d3e; }
 .investor-preview__chart p, .investor-preview__history-empty p { max-width: 390px; margin: 4px 0 0; color: #647d71; font-size: 11px; line-height: 1.5; }
+.investor-preview__bars { min-width: 0; margin: 18px 0 0; }
+.investor-preview__bars figcaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 10px; color: #234b40; font-size: 11px; font-weight: 800; }
+.investor-preview__bars figcaption span { color: #5e776c; font: 700 9px/1.5 var(--app-font-mono, monospace); text-transform: uppercase; }
+.investor-preview__bars-plot { width: 100%; height: 155px; margin-top: 8px; }
+.investor-preview__chart .investor-preview__bars p { margin-top: 8px; }
 .investor-preview__chart-period { margin-top: 12px; color: #367158; font: 700 10px/1.5 var(--app-font-mono, monospace); }
 .investor-preview__policy { display: flex; align-items: start; gap: 11px; margin: 0 20px 20px; padding: 13px 14px; border-radius: 11px; background: #f8e7d7; color: #765445; font-size: 11px; line-height: 1.55; }
 .investor-preview__policy svg { width: 16px; height: 16px; flex: none; margin-top: 1px; color: #a5573e; }
@@ -94,16 +125,35 @@
 .investor-preview__agent:hover { transform: translateX(2px); background: #eaf3e7; }
 .investor-preview__agent[aria-pressed="true"] { border-color: #74a88d; background: #dcefe2; }
 .investor-preview__agent-index { color: #438269; font: 700 9px/1 var(--app-font-mono, monospace); }
+.investor-preview__agent-mark { display: grid; width: 28px; height: 28px; flex: none; place-items: center; border-radius: 8px; background: #d7eee1; color: #24775c; }
+.investor-preview__agent-mark[data-kind="tradex"] { background: #e0edf5; color: #426d96; }
+.investor-preview__agent-mark[data-kind="sportix"] { background: #e5efd6; color: #617e3c; }
+.investor-preview__agent-mark[data-kind="bettix"] { background: #eee5ef; color: #845c87; }
+.investor-preview__agent .investor-preview__agent-mark svg { width: 19px; height: 19px; color: inherit; }
 .investor-preview__agent-name { flex: 1; font: 800 13px/1.2 var(--app-font-serif, sans-serif); letter-spacing: -.02em; }
 .investor-preview__agent-area { color: #56786b; font-size: 10px; }
-.investor-preview__agent svg { width: 13px; height: 13px; flex: none; color: #377761; }
+.investor-preview__agent > svg { width: 13px; height: 13px; flex: none; color: #377761; }
+.investor-preview__total { display: flex; flex-direction: column; gap: 3px; width: calc(100% - 30px); margin: 14px 15px 0; padding: 15px 17px; border: 1px solid #93c4a4; border-radius: 12px; background: #e5f2e6; text-align: left; cursor: pointer; transition: border-color .2s ease, background-color .2s ease; }
+.investor-preview__total:hover, .investor-preview__total[aria-pressed="true"] { border-color: #508c6c; background: #dcefe2; }
+.investor-preview__total:focus-visible { outline: 2px solid #145d49; outline-offset: 3px; }
+.investor-preview__total span { color: #2a7155; font: 700 10px/1.4 var(--app-font-mono, monospace); letter-spacing: .05em; text-transform: uppercase; }
+.investor-preview__total strong { color: #145d49; font: 800 clamp(1.45rem, 2.5vw, 1.95rem)/1.15 var(--app-font-serif, sans-serif); letter-spacing: -.045em; }
+.investor-preview__total small { color: #557d67; font-size: 10px; line-height: 1.4; }
+.investor-preview__total .investor-preview__total-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 9px; color: #145d49; font: 800 10px/1.4 var(--app-font-serif, sans-serif); letter-spacing: 0; text-transform: none; }
+.investor-preview__total-link svg { width: 13px; height: 13px; }
 .investor-preview__agent-detail { margin: 14px 15px 0; padding: 17px; border-radius: 12px; background: #123a3b; color: #eff8ec; }
 .investor-preview__agent-detail-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-.investor-preview__agent-detail-top strong { font: 800 18px/1.1 var(--app-font-serif, sans-serif); letter-spacing: -.04em; }
+.investor-preview__agent-detail summary { cursor: pointer; }
+.investor-preview__agent-detail summary:focus-visible { outline: 2px solid #a4eacb; outline-offset: 4px; }
+.investor-preview__agent-detail:not([open]) { padding-block: 13px; }
+.investor-preview__agent-detail-top strong { font: 800 17px/1.15 var(--app-font-serif, sans-serif); letter-spacing: -.04em; }
 .investor-preview__agent-detail-top span { color: #add6c0; font: 700 9px/1.4 var(--app-font-mono, monospace); text-align: right; }
-.investor-preview__detail-row { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid #42645b; font-size: 11px; }
-.investor-preview__detail-row span { color: #b7d1c3; }
-.investor-preview__detail-row strong { color: #d7f1db; font-weight: 700; text-align: right; }
+.investor-preview__detail-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid #42645b; font-size: 11px; }
+.investor-preview__detail-agent { display: inline-flex; align-items: center; gap: 8px; color: #d7f1db; font-weight: 700; }
+.investor-preview__detail-mark { display: grid; width: 21px; height: 21px; flex: none; place-items: center; border-radius: 6px; background: #285b50; color: #b9e8ca; }
+.investor-preview__detail-mark svg { width: 15px; height: 15px; }
+.investor-preview__detail-row strong { color: #d7f1db; font-size: 12px; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.investor-preview__detail-row strong[data-negative="true"] { color: #ffc0a4; }
 .investor-preview__agent-detail p { margin: 12px 0 0; color: #b8d6c6; font-size: 10px; line-height: 1.5; }
 
 .investor-preview__history { margin-top: 14px; }
@@ -112,8 +162,17 @@
 .investor-preview__history-limit { flex: none; padding: 7px 10px; border: 1px solid #b6d6c0; border-radius: 7px; background: #e6f2e7; color: #24664e; font: 700 9px/1.3 var(--app-font-mono, monospace); letter-spacing: .04em; text-transform: uppercase; }
 .investor-preview__history-columns { display: grid; grid-template-columns: 1.1fr 1.2fr .9fr .75fr; gap: 12px; padding: 11px 20px; border-bottom: 1px solid #e2e9dc; background: #f4f7ee; color: #687f73; font: 700 9px/1.3 var(--app-font-mono, monospace); letter-spacing: .07em; text-transform: uppercase; }
 .investor-preview__history-columns span:last-child { text-align: right; }
-.investor-preview__history-empty { display: flex; align-items: center; gap: 13px; min-height: 86px; padding: 18px 20px; }
-.investor-preview__history-empty .investor-preview__empty-mark { flex: none; margin: 0; }
+.investor-preview__history-rows { max-height: 322px; overflow-y: auto; padding: 0 20px; scrollbar-color: #9cbaa8 transparent; }
+.investor-preview__history-rows:focus-visible { outline: 2px solid #168367; outline-offset: -2px; }
+.investor-preview__history-row { display: grid; grid-template-columns: 1.1fr 1.2fr .9fr .75fr; align-items: center; gap: 12px; min-height: 38px; padding: 7px 0; border-bottom: 1px solid #e2e9dc; font-size: 11px; }
+.investor-preview__history-row time { color: #60796d; font: 700 10px/1.4 var(--app-font-mono, monospace); }
+.investor-preview__history-movement { color: #234b40; }
+.investor-preview__history-agent { color: #39735a; font-size: 10px; font-weight: 700; }
+.investor-preview__history-amount { color: #23674c; font-size: 12px; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.investor-preview__history-amount[data-negative="true"], .investor-preview__history-summary strong[data-negative="true"] { color: #a54d3e; }
+.investor-preview__history-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 20px; padding: 13px 0; color: #26634c; font-size: 11px; font-weight: 700; }
+.investor-preview__history-summary strong { font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.investor-preview__history-disclaimer { margin: 0; padding: 10px 20px 15px; border-top: 1px solid #e2e9dc; background: #f4f7ee; color: #60796d; font-size: 10px; line-height: 1.5; }
 .investor-preview__bottom { display: flex; align-items: start; gap: 10px; padding: 15px 26px; border-top: 1px solid #c9dacf; background: #e8f0e7; color: #506b60; font-size: 11px; line-height: 1.55; }
 .investor-preview__bottom svg { width: 16px; height: 16px; flex: none; margin-top: 1px; color: #a45b3d; }
 .investor-preview__bottom p { margin: 0; }
@@ -129,19 +188,23 @@
   .investor-preview__intro-text { margin: 0; }
   .investor-preview__workspace { grid-template-columns: 1fr; }
   .investor-preview__agent-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .investor-preview__agent { flex-wrap: wrap; }
-  .investor-preview__agent-area { width: 100%; padding-left: 22px; }
-  .investor-preview__agent-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
-  .investor-preview__agent-detail-top, .investor-preview__agent-detail p { grid-column: 1 / -1; }
+  .investor-preview__agent { display: grid; grid-template-columns: auto 24px minmax(0, 1fr) auto; gap: 5px 6px; padding: 8px 9px; }
+  .investor-preview__agent-index { grid-column: 1; grid-row: 1; }
+  .investor-preview__agent-mark { grid-column: 2; grid-row: 1; width: 24px; height: 24px; }
+  .investor-preview__agent-name { grid-column: 3; grid-row: 1; }
+  .investor-preview__agent-area { grid-column: 3; grid-row: 2; width: auto; padding: 0; }
+  .investor-preview__agent > svg { grid-column: 4; grid-row: 1; }
 }
 @media (max-width: 560px) {
   .investor-preview__wrap { width: min(calc(100% - 32px), 1200px); }
   .investor-preview__window { border-radius: 20px; }
-  .investor-preview__topbar { min-height: 60px; padding: 12px 16px; }
-  .investor-preview__topbar-note { display: none; }
+  .investor-preview__topbar { min-height: 60px; padding: 10px 13px; }
+  .investor-preview__topbar-right { gap: 7px; }
+  .investor-preview__viewer strong { font-size: 10px; }
+  .investor-preview__viewer small { display: none; }
   .investor-preview__brand { font-size: 18px; }
   .investor-preview__badge { font-size: 9px; }
-  .investor-preview__content { padding: 18px 13px; }
+  .investor-preview__content { padding: 14px 13px; }
   .investor-preview__wallet-flow { grid-template-columns: 1fr; gap: 0; }
   .investor-preview__wallet { padding: 16px 18px; }
   .investor-preview__wallet-value { margin-top: 9px; }
@@ -152,21 +215,26 @@
   .investor-preview__panel-head { padding: 17px 15px 0; }
   .investor-preview__filters { margin-left: 15px; max-width: calc(100% - 30px); }
   .investor-preview__filter { padding-inline: 9px; font-size: 10px; }
-  .investor-preview__chart { margin: 15px; min-height: 155px; padding: 17px; }
+  .investor-preview__chart { margin: 15px; padding: 17px; }
+  .investor-preview__bars-plot { height: 150px; }
+  .investor-preview__history-rows { max-height: 290px; }
   .investor-preview__policy { margin: 0 15px 15px; }
   .investor-preview__history-header { padding: 16px; }
-  .investor-preview__history-columns { grid-template-columns: 1fr 1fr .7fr; padding-inline: 16px; font-size: 8px; }
-  .investor-preview__history-columns span:nth-child(2) { display: none; }
-  .investor-preview__history-empty { padding: 18px 16px; }
+  .investor-preview__history-columns { display: none; }
+  .investor-preview__history-rows { padding-inline: 16px; }
+  .investor-preview__history-row { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 8px; }
+  .investor-preview__history-row time { grid-column: 1; grid-row: 1; }
+  .investor-preview__history-agent { grid-column: 2; grid-row: 1; text-align: right; }
+  .investor-preview__history-movement { grid-column: 1; grid-row: 2; }
+  .investor-preview__history-amount { grid-column: 2; grid-row: 2; }
+  .investor-preview__history-summary { margin-inline: 16px; }
+  .investor-preview__history-disclaimer { padding-inline: 16px; }
   .investor-preview__bottom { padding: 16px; }
-  .investor-preview__agent-detail { display: block; }
 }
 @media (max-width: 370px) {
   .investor-preview__agent-list { grid-template-columns: 1fr; }
-  .investor-preview__agent-area { width: auto; padding: 0; }
-  .investor-preview__agent-detail { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .investor-preview__explain-button, .investor-preview__filter, .investor-preview__agent { transition: none; }
-  .investor-preview__explain-button:hover, .investor-preview__agent:hover { transform: none; }
+  .investor-preview__explain-button, .investor-preview__filter, .investor-preview__agent, .investor-preview__total, .investor-preview__wallet-buy { transition: none; }
+  .investor-preview__explain-button:hover, .investor-preview__agent:hover, .investor-preview__wallet-buy:hover { transform: none; }
 }

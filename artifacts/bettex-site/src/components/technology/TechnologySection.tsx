@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { ArrowDown, ArrowUpRight, WalletCards } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight, WalletCards } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
 import './TechnologySection.css';
 
@@ -18,32 +18,30 @@ export function TechnologySection({ children }: { children: ReactNode }) {
         </header>
 
         <div className="technology-section__hierarchy" aria-label="Compre tokens BETTEX, mova-os para sua carteira e participe das operações dos quatro agentes. Nos dias de lucro, sua parte é creditada na conta BETTEX.">
-          <div className="technology-section__deposit-flow">
+          <div className="technology-section__entry">
             <div className="technology-section__token" data-testid="diagram-technology-token">
               <span className="technology-section__coin" aria-hidden="true"><BettexMark /></span>
               <span className="technology-section__token-copy"><strong>Compre o token BETTEX</strong><small>01 / Compra</small></span>
             </div>
-            <p className="technology-section__deposit-label">Mova para sua carteira</p>
-            <div className="technology-section__deposit-path" aria-hidden="true">
-              <span className="technology-section__moving-coin"><BettexMark /></span>
-              <span className="technology-section__moving-coin"><BettexMark /></span>
-              <span className="technology-section__moving-coin"><BettexMark /></span>
-              <ArrowDown size={20} strokeWidth={2.4} />
+            <div className="technology-section__deposit-flow">
+              <p className="technology-section__deposit-label">Mova para sua carteira</p>
+              <div className="technology-section__deposit-path" aria-hidden="true">
+                <span className="technology-section__moving-coin"><BettexMark /></span>
+                <span className="technology-section__moving-coin"><BettexMark /></span>
+                <span className="technology-section__moving-coin"><BettexMark /></span>
+                <ArrowRight size={20} strokeWidth={2.4} />
+              </div>
             </div>
-          </div>
-          <div className="technology-section__wallet" data-testid="diagram-technology-wallet">
-            <span className="technology-section__wallet-slot" aria-hidden="true" />
-            <span className="technology-section__wallet-falling-coin" aria-hidden="true"><BettexMark /></span>
-            <span className="technology-section__wallet-falling-coin" aria-hidden="true"><BettexMark /></span>
-            <span className="technology-section__wallet-falling-coin" aria-hidden="true"><BettexMark /></span>
-            <div className="technology-section__wallet-copy">
-              <span className="technology-section__wallet-kicker">02 / Ative sua participação</span>
-              <h3>Carteira <em>BETTEX</em></h3>
-              <p>Ao mover seus tokens para sua Carteira BETTEX, você ativa sua participação nas operações dos quatro agentes. Seus tokens continuam na carteira.</p>
-            </div>
-            <div className="technology-section__wallet-art" aria-hidden="true">
-              <WalletCards size={126} strokeWidth={1.25} />
-              <span className="technology-section__wallet-coin"><BettexMark /></span>
+            <div className="technology-section__wallet" data-testid="diagram-technology-wallet">
+              <div className="technology-section__wallet-copy">
+                <span className="technology-section__wallet-kicker">02 / Ative sua participação</span>
+                <h3>Carteira <em>BETTEX</em></h3>
+                <p>Ao mover seus tokens para sua Carteira BETTEX, você ativa sua participação nas operações dos quatro agentes. Seus tokens continuam na carteira.</p>
+              </div>
+              <div className="technology-section__wallet-art" aria-hidden="true">
+                <WalletCards size={126} strokeWidth={1.25} />
+                <span className="technology-section__wallet-coin"><BettexMark /></span>
+              </div>
             </div>
           </div>
           <div className="technology-section__branch" aria-hidden="true" />
