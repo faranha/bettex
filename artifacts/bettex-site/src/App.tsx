@@ -14,7 +14,7 @@ import { AgentMark, type AgentKind } from '@/components/hero/AgentMark';
 import '@/components/hero/AgentCard.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { HumanStorySection } from '@/components/HumanStorySection';
-import { PrelaunchTokenomics } from '@/components/PrelaunchTokenomics';
+import { WhitepaperSection } from '@/components/WhitepaperSection';
 
 const queryClient = new QueryClient();
 type Agent = {
@@ -30,10 +30,10 @@ type Agent = {
 };
 
 const agents: Agent[] = [
-  { name: 'PREDIX', kind: 'predix', icon: Radar, visual: 'máquina cilíndrica sem rosto com ícone de cenários ramificados', area: 'Previsões', intro: 'Inteligência de cenários.', detail: 'Analisa mercados de previsão na Polymarket para a BETTEX.', platform: 'Polymarket', platformLogo: 'polymarket.svg' },
-  { name: 'TRADEX', kind: 'tradex', icon: ChartCandlestick, visual: 'máquina cilíndrica sem rosto com ícone de gráfico de negociação', area: 'Ações e cripto', intro: 'Negociação de ações e criptoativos.', detail: 'Negocia ações e criptoativos na Robinhood como parte da BETTEX.', platform: 'Robinhood', platformLogo: 'robinhood.svg' },
-  { name: 'SPORTIX', kind: 'sportix', icon: Trophy, visual: 'máquina cilíndrica sem rosto com pequeno ícone de bola de futebol', area: 'Esportes', intro: 'Análise esportiva.', detail: 'Opera em mercados esportivos na Kalshi como parte da BETTEX.', platform: 'Kalshi', platformLogo: 'kalshi.webp' },
-  { name: 'BETTIX', kind: 'bettix', icon: Spade, visual: 'máquina cilíndrica sem rosto com ícone de naipe de espadas', area: 'Cassino', intro: 'Análise de jogos.', detail: 'Opera somente nos jogos de cassino da Duel como parte da BETTEX.', platform: 'Duel', platformLogo: 'duel.webp' },
+  { name: 'PREDIX', kind: 'predix', icon: Radar, visual: 'máquina cilíndrica sem rosto com ícone de cenários ramificados', area: 'Previsões', intro: 'Estudo de cenários.', detail: 'Proposta: analisar mercados de previsão na Polymarket, sujeito à elegibilidade e às regras da plataforma.', platform: 'Polymarket', platformLogo: 'polymarket.svg' },
+  { name: 'TRADEX', kind: 'tradex', icon: ChartCandlestick, visual: 'máquina cilíndrica sem rosto com ícone de gráfico de negociação', area: 'Ações e cripto', intro: 'Análise de ativos.', detail: 'Proposta: estudar ações e criptoativos; o uso da Robinhood depende de acesso e autorização compatíveis.', platform: 'Robinhood', platformLogo: 'robinhood.svg' },
+  { name: 'SPORTIX', kind: 'sportix', icon: Trophy, visual: 'máquina cilíndrica sem rosto com pequeno ícone de bola de futebol', area: 'Esportes', intro: 'Análise esportiva.', detail: 'Proposta: analisar mercados esportivos na Kalshi, sujeito à elegibilidade e às regras da plataforma.', platform: 'Kalshi', platformLogo: 'kalshi.webp' },
+  { name: 'BETTIX', kind: 'bettix', icon: Spade, visual: 'máquina cilíndrica sem rosto com ícone de naipe de espadas', area: 'Cassino', intro: 'Análise de jogos.', detail: 'Proposta: estudar jogos na Duel; automação e operação só após autorização e revisão jurídica.', platform: 'Duel', platformLogo: 'duel.webp' },
 ];
 
 const navItems = [
@@ -43,7 +43,7 @@ const navItems = [
   { label: 'Operações', id: 'tecnologia' },
   { label: 'Agentes', id: 'agentes' },
   { label: 'Aplicativo', id: 'visao-investidor' },
-  { label: 'Pré-venda', id: 'pre-venda' },
+  { label: 'Whitepaper', id: 'whitepaper' },
 ] as const;
 
 function Logo({ pale = false }: { pale?: boolean }) {
@@ -131,8 +131,8 @@ function Home() {
               <span className="block whitespace-nowrap">A melhor aposta é</span>
               <span className="block whitespace-nowrap text-[#a4eacb]">um investimento.</span>
             </h1>
-            <p className="mt-7 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Em vez de colocar o dinheiro do mês em uma aposta, conheça a BETTEX: seja dono de uma IA que opera em diferentes mercados de risco com resultados diários.</p>
-            <p className="mt-4 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Ao comprar tokens, você participa do projeto BETTEX e de todos os resultados, não apenas de um palpite. Quando não tem lucro, você não perde o que investiu.</p>
+            <p className="mt-7 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Conheça a proposta da BETTEX: quatro agentes de IA estudando diferentes mercados de risco, sob limites definidos pela tesouraria.</p>
+            <p className="mt-4 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">O whitepaper apresenta a tokenomia, o modelo cripto e as regras que ainda precisamos definir juntos. Nenhuma compra ou distribuição está disponível nesta página.</p>
             <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ver demonstração <ArrowDown className="h-4 w-4" /></a></div>
             <p className="mt-7 max-w-lg border-l-2 border-[#ffcb9b] pl-4 text-xs leading-5 text-[#c9e0d6]">Investir em mercados de risco pode gerar perdas. Lucro e valorização do token não são garantidos.</p>
           </div>
@@ -148,12 +148,12 @@ function Home() {
        <TechnologySection>
          {agents.map((agent, index) => <div className="technology-section__agent-slot" key={agent.name}><AgentCard agent={agent} number={index + 1} /></div>)}
        </TechnologySection>
-      <InvestorAppPreview />
-       <PrelaunchTokenomics />
+       <InvestorAppPreview />
+       <WhitepaperSection />
 
     </main>
 
-    <footer className="bg-[#123a3b] py-10 text-[#d0e5d9]"><div className="page-wrap flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo pale /><p className="max-w-[550px] text-xs leading-6">BETTEX é um negócio de investimento com agentes de IA. Conheça seus agentes, a tecnologia e os tokens perpétuos.</p><a href="#inicio" className="flex shrink-0 items-center gap-1 text-xs font-bold text-[#a4eacb]">Voltar ao topo <ChevronDown className="h-4 w-4 rotate-180" /></a></div></footer>
+    <footer className="bg-[#123a3b] py-10 text-[#d0e5d9]"><div className="page-wrap flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo pale /><p className="max-w-[550px] text-xs leading-6">BETTEX é uma proposta de projeto cripto com agentes de IA. Leia o whitepaper em discussão para conhecer o modelo e seus riscos.</p><a href="#inicio" className="flex shrink-0 items-center gap-1 text-xs font-bold text-[#a4eacb]">Voltar ao topo <ChevronDown className="h-4 w-4 rotate-180" /></a></div></footer>
   </div>;
 }
 

@@ -76,13 +76,13 @@ export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
           <>
             Disponível na origem: {formatMovementAmount(mode, available)}.
             {isReais
-              ? ` Taxa: 1 BETTEX do saldo de tokens desta carteira (${formatTokens(sourceTokens)} disponíveis), sem descontar a taxa em reais.`
-              : ` Taxa adicional: 1 BETTEX.${amount === null ? '' : ` Débito total: ${formatTokens(amount + TRANSFER_FEE_CENTS)}.`} Somente tokens inteiros.`}
+               ? ` Taxa fictícia desta prévia: 1 BETTEX do saldo de tokens (${formatTokens(sourceTokens)} disponíveis).`
+               : ` Taxa fictícia desta prévia: 1 BETTEX.${amount === null ? '' : ` Débito total na simulação: ${formatTokens(amount + TRANSFER_FEE_CENTS)}.`} Somente tokens inteiros; custos reais a definir.`}
           </>
         )}
       </small>
       {error && <p id="investor-preview-transfer-error" className="investor-preview__transfer-error" role="alert">{error}</p>}
-      <p className="investor-preview__transfer-disclaimer">Simulação neste navegador. Nenhum token ou real é transferido de verdade.</p>
+       <p className="investor-preview__transfer-disclaimer">Simulação neste navegador. Nenhum BETTEX, USDC ou real é transferido de verdade. As taxas do projeto ainda não foram definidas.</p>
     </form>
   );
 }

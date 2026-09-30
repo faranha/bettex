@@ -16,7 +16,7 @@ export function PerformanceBars({ subject, period }: { subject: PerformanceSubje
 
   return (
     <figure className="investor-preview__bars" data-testid="grafico-desempenho">
-      <figcaption>Resultado por {interval} <span>R$ · valores fictícios</span></figcaption>
+       <figcaption>Resultado por {interval} <span>R$ · exemplo fictício, sem câmbio real</span></figcaption>
       <div className="investor-preview__bars-plot" role="img" aria-label={`Gráfico de barras do desempenho ${subjectLabel} em ${period}. ${description}`}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 10, right: 5, bottom: 0, left: -12 }} barCategoryGap="23%">
