@@ -176,7 +176,7 @@ export function ProjectModelSection() {
         <div className="pm-head">
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
-            <h2 id="pm-heading" className="pm-title">Compre. Ative. Receba.<br /><span>Investir é a melhor aposta.</span></h2>
+            <h2 id="pm-heading" className="pm-title">Compre. Ative. Receba.<br /><span>Renda passiva com apostas?</span></h2>
           </div>
           <p className="pm-head-note">Todos os agentes em um só lugar.</p>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
@@ -199,8 +199,8 @@ export function ProjectModelSection() {
               <div className="pm-visual" aria-hidden="true">
                 <div className="pm-stake"><span className="pm-stake-coin"><BettexMark /></span><ArrowDown className="pm-stake-arrow" size={16} /><span className="pm-stake-vault">CARTEIRA</span></div>
               </div>
-              <h3>Sua participação <em>fica ativada.</em></h3>
-              <p className="pm-detail">O sistema cuida da compra e da movimentação dos tokens. Você acompanha sua participação pelo aplicativo.</p>
+              <h3>Deposite BETTEX <em>e ative sua participação.</em></h3>
+              <p className="pm-detail">Para ativar sua participação, deposite seus tokens BETTEX na Carteira BETTEX. Somente os tokens depositados participam da distribuição nos dias de lucro.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / OPERAÇÕES</span>

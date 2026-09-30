@@ -62,7 +62,7 @@ export function HeroBenefit() {
           </svg>
           <BettexMark className="hero-benefit__caption-brand" />
         </span>
-        <strong>Invista em mercados de risco e receba nos dias de lucro sem abrir mão da sua participação.</strong>
+        <strong>Invista em um único token e tenha acesso aos retornos de investimentos em diferentes mercados de risco, com distribuição diária nos dias de lucro.</strong>
       </figcaption>
       <span className="hero-benefit__bottom" aria-hidden="true">RENDA PASSIVA DE APOSTAS COM IA</span>
     </figure>
