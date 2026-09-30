@@ -76,7 +76,7 @@ export function InvestorAppPreview() {
                 <div>
                   <p className="investor-preview__micro">Área do investidor</p>
                   <h3>Seu espaço na BETTEX</h3>
-                  <p className="investor-preview__header-copy">Veja seus saldos em reais e BETTEX e simule a movimentação dos tokens.</p>
+                  <p className="investor-preview__header-copy">Simule movimentações fictícias de BETTEX. Resultados em R$ nesta prévia são apenas valores ilustrativos, sem câmbio real.</p>
                 </div>
               </div>
 
@@ -112,7 +112,7 @@ export function InvestorAppPreview() {
                   </div>
                   <div className="investor-preview__policy">
                     <ShieldAlert aria-hidden="true" />
-                    <p><strong>Distribuição diária:</strong> o resultado do projeto é calculado conforme as políticas de investimento. Nos dias de lucro, o valor distribuído é dividido proporcionalmente aos BETTEX ativos de cada investidor. Perdas são possíveis.</p>
+                     <p><strong>Distribuição proposta:</strong> frequência, cálculo do lucro líquido e elegibilidade dos tokens ainda estão em discussão. Os resultados abaixo são fictícios; perdas são possíveis.</p>
                   </div>
                 </div>
 
@@ -198,7 +198,7 @@ export function InvestorAppPreview() {
 
           <div className="investor-preview__bottom">
             <ShieldAlert aria-hidden="true" />
-            <p><strong>Esta tela é apenas ilustrativa.</strong> Saldos, resultados e movimentações são exemplos fictícios. As transferências funcionam apenas nesta demonstração local, sem mover ativos ou reais. Os tokens podem perder valor; resultados não são garantidos.</p>
+             <p><strong>Esta tela é apenas ilustrativa.</strong> Saldos, resultados e movimentações são exemplos fictícios. A prévia não compra tokens nem envia USDC ou BETTEX. Os valores em R$ não representam saldo sacável; resultados não são garantidos.</p>
           </div>
         </div>
       </div>

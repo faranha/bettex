@@ -32,7 +32,7 @@ export const DAY_MS = 24 * 60 * 60 * 1000;
 export const PERSONAL_REAIS_CENTS = 85000;
 export const BETTEX_REAIS_CENTS = 12480;
 export const TRANSFER_FEE_CENTS = 100; // 1 whole BETTEX, paid in addition to the amount sent.
-export const PURCHASE_PRICE_CENTS = Math.round(tokenomics.priceBRL * 100);
+export const PURCHASE_PRICE_CENTS = Math.round(tokenomics.launchPriceBRL * 100);
 // Only the visitor's active tokens vary in this local demo; other investors are illustrative.
 export const OTHER_INVESTORS_ACTIVE_TOKENS = 116250;
 export const EXAMPLE_DISTRIBUTION_REAIS_CENTS = 100000;

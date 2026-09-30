@@ -5,20 +5,18 @@ import {
   initialWalletDemo,
   loadWalletDemo,
   requestTransfer,
-  transferReaisToPersonal,
   depositIntoPersonal,
-  buyTokens,
   withdrawFromWallet,
   saveWalletDemo,
   TRANSFER_FEE_CENTS,
   type MovementKind,
 } from './walletDemo';
-import { formatMovementAmount, formatTokens, movements, reais } from './walletMovements';
+import { formatMovementAmount, formatTokens, movements } from './walletMovements';
 import { WalletMovementForm } from './WalletMovementForm';
 import './WalletDemoPreview.css';
 
 const dateAndTime = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
-type ActiveMovementKind = Exclude<MovementKind, 'bettexExternalWithdraw' | 'bettexReaisWithdraw'>;
+type ActiveMovementKind = 'deposit' | 'withdraw' | 'externalDeposit' | 'externalWithdraw';
 
 export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDivElement | null }) {
   const [loaded] = useState(loadWalletDemo);
@@ -46,17 +44,11 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
     const requestedAt = Date.now();
     const updated = mode === 'externalDeposit'
       ? depositIntoPersonal(wallet, amountCents, requestedAt)
-      : mode === 'purchase'
-        ? buyTokens(wallet, amountCents, requestedAt)
-      : mode === 'bettexReaisTransfer'
-        ? transferReaisToPersonal(wallet, amountCents, requestedAt)
-      : mode === 'deposit' || mode === 'withdraw'
-        ? requestTransfer(wallet, mode, amountCents, requestedAt)
-        : withdrawFromWallet(wallet, mode, amountCents, requestedAt);
+      : mode === 'externalWithdraw'
+        ? withdrawFromWallet(wallet, mode, amountCents, requestedAt)
+        : requestTransfer(wallet, mode, amountCents, requestedAt);
     setWallet(updated);
-    setNotice(mode === 'purchase'
-      ? `Compra simulada: ${formatTokens(amountCents)} creditados na carteira pessoal; ${reais.format((updated.transfers[0].costCents ?? 0) / 100)} descontados apenas do saldo fictício em reais. Nenhum pagamento real foi feito.`
-      : `${movements[mode].title}: ${formatMovementAmount(mode, amountCents)} concluído imediatamente. ${mode === 'externalDeposit' ? 'Depósito sem taxa; nenhum depósito real foi feito.' : 'Taxa de 1 BETTEX debitada da carteira de origem. Nenhum pagamento ou transferência real foi feito.'}`);
+    setNotice(`${movements[mode].title}: ${formatMovementAmount(mode, amountCents)} concluído nesta demonstração. ${mode === 'externalDeposit' ? 'Sem taxa no exemplo.' : 'Taxa fictícia de 1 BETTEX nesta prévia; custo real ainda não definido.'} Nenhuma transferência real foi feita.`);
     setMode(null);
   }
 
@@ -70,15 +62,15 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
 
   function sourceAndDestination(kind: MovementKind) {
     switch (kind) {
-      case 'purchase': return 'Saldo fictício em R$ da carteira pessoal → BETTEX na carteira pessoal';
+      case 'purchase': return 'Compra fictícia em BRL de uma versão anterior';
       case 'deposit': return 'Carteira pessoal → Carteira BETTEX';
       case 'withdraw': return 'Carteira BETTEX → carteira pessoal';
-      case 'bettexReaisTransfer': return 'Reais da Carteira BETTEX → reais da carteira pessoal';
+      case 'bettexReaisTransfer': return 'Movimentação fictícia em BRL de uma versão anterior';
       case 'externalDeposit': return 'Origem externa simulada → carteira pessoal';
       case 'externalWithdraw': return 'Carteira pessoal → saída externa simulada';
       case 'bettexExternalWithdraw': return 'Carteira BETTEX → saída externa simulada';
-      case 'personalReaisWithdraw': return 'Carteira pessoal → saque em reais simulado';
-      case 'bettexReaisWithdraw': return 'Carteira BETTEX → saque em reais simulado';
+      case 'personalReaisWithdraw': return 'Movimentação fictícia em BRL de uma versão anterior';
+      case 'bettexReaisWithdraw': return 'Movimentação fictícia em BRL de uma versão anterior';
     }
   }
 
@@ -89,14 +81,6 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
           <button
             type="button"
             className="investor-preview__topbar-action"
-            aria-expanded={mode === 'purchase'}
-            aria-controls="investor-preview-transfer-form"
-            onClick={() => toggleForm('purchase')}
-            data-testid="button-comprar-bettex"
-          >Comprar BETTEX <ArrowRight aria-hidden="true" /></button>
-          <button
-            type="button"
-            className="investor-preview__topbar-action investor-preview__topbar-action--secondary"
             aria-expanded={mode === 'externalDeposit'}
             aria-controls="investor-preview-transfer-form"
             onClick={() => toggleForm('externalDeposit')}
@@ -109,7 +93,7 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
             aria-controls="investor-preview-transfer-form"
             onClick={() => toggleForm('externalWithdraw')}
             data-testid="button-sacar-bettex-pessoal"
-          >Sacar BETTEX</button>
+          >Retirar BETTEX</button>
         </>,
         topbarActionsEl,
       )}
@@ -122,11 +106,11 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
               <strong className="investor-preview__wallet-value" data-testid="text-saldo-carteira-pessoal">{formatTokens(wallet.personalTokensCents)}</strong>
             </div>
             <div className="investor-preview__wallet-balance investor-preview__wallet-balance--reais">
-              <span>Saldo em reais (R$) · exemplo</span>
-              <strong data-testid="text-saldo-reais-pessoal">{reais.format(wallet.personalReaisCents / 100)}</strong>
+              <span>USDC · saque planejado</span>
+              <strong data-testid="status-usdc-pessoal">Indisponível nesta prévia</strong>
             </div>
           </div>
-          <span className="investor-preview__wallet-caption">Os saldos em R$ e BETTEX são separados.</span>
+          <span className="investor-preview__wallet-caption">Não há saldo real em USDC ou reais nesta demonstração. A rede de saques ainda será definida.</span>
           <div className="investor-preview__wallet-actions">
             <button
               type="button"
@@ -136,14 +120,6 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
               onClick={() => toggleForm('deposit')}
               data-testid="button-transferir-bettex"
             >Transferir para Carteira BETTEX <ArrowRight aria-hidden="true" /></button>
-            <button
-              type="button"
-              className="investor-preview__wallet-withdraw investor-preview__wallet-action-secondary"
-              aria-expanded={mode === 'personalReaisWithdraw'}
-              aria-controls="investor-preview-transfer-form"
-              onClick={() => toggleForm('personalReaisWithdraw')}
-              data-testid="button-sacar-reais-pessoal"
-            >Sacar reais</button>
           </div>
           <span className="investor-preview__wallet-buy-note">Movimentações apenas simuladas; nenhum ativo real é movimentado.</span>
         </div>
@@ -167,11 +143,11 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
               <strong className="investor-preview__wallet-value" data-testid="text-saldo-carteira-bettex">{formatTokens(wallet.allocatedTokensCents)}</strong>
             </div>
             <div className="investor-preview__wallet-balance investor-preview__wallet-balance--reais">
-              <span>Saldo em reais (R$) · exemplo</span>
-              <strong data-testid="text-saldo-reais-bettex">{reais.format(wallet.allocatedReaisCents / 100)}</strong>
+              <span>Distribuições em USDC · proposta</span>
+              <strong data-testid="status-usdc-bettex">Regras em definição</strong>
             </div>
           </div>
-          <span className="investor-preview__wallet-caption">BETTEX alocados participam do cálculo proporcional. Os saques desta carteira vão para a carteira pessoal.</span>
+          <span className="investor-preview__wallet-caption">A elegibilidade de BETTEX depositados e a distribuição proporcional em USDC dependem das regras de staking e lucro líquido.</span>
           <div className="investor-preview__wallet-actions investor-preview__wallet-actions--bettex">
             <button
               type="button"
@@ -180,23 +156,15 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
               aria-controls="investor-preview-transfer-form"
               onClick={() => toggleForm('withdraw')}
               data-testid="button-sacar-bettex-bettex"
-            >Sacar BETTEX</button>
-            <button
-              type="button"
-              className="investor-preview__wallet-withdraw"
-              aria-expanded={mode === 'bettexReaisTransfer'}
-              aria-controls="investor-preview-transfer-form"
-              onClick={() => toggleForm('bettexReaisTransfer')}
-              data-testid="button-sacar-reais-bettex"
-            >Sacar reais</button>
+            >Retirar BETTEX</button>
           </div>
         </div>
       </div>
 
       <details className="investor-preview__fee-note">
-        <summary>Taxa por transferência ou saque: 1 BETTEX</summary>
-        <p>Os saques da Carteira BETTEX são transferências para a carteira pessoal. A taxa é debitada do saldo BETTEX da carteira de origem em transferências entre carteiras e saques externos da carteira pessoal. Em movimentações de BETTEX, ela é cobrada além do valor enviado.</p>
-        <p>A compra com reais fictícios da carteira pessoal e o depósito externo simulado são imediatos e não têm taxa. Não há transferências nem pagamentos reais.</p>
+        <summary>Taxas desta simulação ≠ taxas reais do projeto</summary>
+        <p>A movimentação fictícia de BETTEX entre carteiras ou para fora desta prévia desconta 1 BETTEX de exemplo. O depósito externo simulado não tem taxa. As tarifas reais de depósito, retirada, gas e terceiros ainda não foram aprovadas.</p>
+        <p>Não há compra, envio de USDC, saque em reais ou transação em blockchain nesta demonstração.</p>
       </details>
 
       {mode && (
@@ -229,12 +197,12 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
           <div className="investor-preview__wallet-history-row" key={transfer.id}>
             <span>
               {movements[transfer.kind].title}
-              <small>{sourceAndDestination(transfer.kind)} · {movements[transfer.kind].currency} · {dateAndTime.format(transfer.requestedAt)} · {transfer.status === 'pending' ? `Pendente até ${dateAndTime.format(transfer.readyAt)}` : 'Concluído'}{transfer.kind === 'externalDeposit' || transfer.kind === 'purchase' ? ' · Sem taxa' : ` · Taxa: ${formatTokens(transfer.feeCents ?? TRANSFER_FEE_CENTS)}`}{transfer.kind === 'purchase' && transfer.costCents !== undefined ? ` · Valor fictício: ${reais.format(transfer.costCents / 100)}` : ''}</small>
+               <small>{sourceAndDestination(transfer.kind)} · {movements[transfer.kind].currency} · {dateAndTime.format(transfer.requestedAt)} · {transfer.status === 'pending' ? `Pendente até ${dateAndTime.format(transfer.readyAt)}` : 'Concluído na simulação'}{transfer.kind === 'externalDeposit' || transfer.kind === 'purchase' ? ' · Sem taxa fictícia' : ` · Taxa fictícia: ${formatTokens(transfer.feeCents ?? TRANSFER_FEE_CENTS)}`}</small>
             </span>
             <strong>{formatMovementAmount(transfer.kind, transfer.amountCents)}</strong>
           </div>
         ))}
-        <p>Histórico local e fictício. Nenhuma operação real foi feita.</p>
+         <p>Histórico local e fictício, inclusive registros de versões antigas em BRL. Nenhuma operação real foi feita e BRL não é moeda de saque.</p>
       </div>
     </>
   );
