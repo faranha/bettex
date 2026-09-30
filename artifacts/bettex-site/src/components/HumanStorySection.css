@@ -37,7 +37,7 @@
 .hs-asterisk { position: relative; width: 45px; height: 45px; margin-bottom: 29px; border: 1px solid #ae5a3a; border-radius: 50%; }
 .hs-asterisk::before, .hs-asterisk::after { content: ""; position: absolute; top: 50%; left: 50%; width: 20px; height: 1px; background: #ae5a3a; transform: translate(-50%, -50%); }
 .hs-asterisk::after { transform: translate(-50%, -50%) rotate(90deg); }
-.hs-left h2 { max-width: 660px; margin: 0; font: 800 clamp(3.3rem, 6.25vw, 6.6rem)/.99 var(--app-font-serif); letter-spacing: -.072em; }
+.hs-left h2 { max-width: 660px; margin: 0; font: 800 clamp(2.7rem, 4.2vw, 4.6rem)/1.02 var(--app-font-serif); letter-spacing: -.062em; }
 .hs-left h2 em { color: #ae5a3a; font-style: normal; }
 .hs-lead { max-width: 530px; margin: 39px 0 0; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.62; }
 .hs-right { align-self: end; max-width: 465px; padding-top: 30px; }
@@ -62,7 +62,7 @@
   .hs-topline-detail { display: none; }
   .hs-grid { grid-template-columns: 1fr; gap: 50px; padding-top: 49px; }
   .hs-asterisk { margin-bottom: 23px; }
-  .hs-left h2 { max-width: 590px; font-size: clamp(3.1rem, 11vw, 5rem); }
+  .hs-left h2 { max-width: 590px; font-size: clamp(2.4rem, 8vw, 3.4rem); }
   .hs-lead { margin-top: 27px; }
   .hs-right { max-width: 620px; padding-top: 0; }
   .hs-right-label { margin-top: 27px; }

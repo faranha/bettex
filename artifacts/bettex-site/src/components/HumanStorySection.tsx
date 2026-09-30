@@ -13,7 +13,7 @@ export function HumanStorySection() {
         <div className="hs-grid">
           <div className="hs-left">
             <div className="hs-asterisk" aria-hidden="true" />
-            <h2 id="hs-heading">O dinheiro das contas <em>não deveria estar na mesa.</em></h2>
+            <h2 id="hs-heading">Admita: você <em>perde mais do que ganha.</em></h2>
             <p className="hs-lead">Sem controle emocional, uma perda pode virar outra tentativa de recuperar o dinheiro. Sem controle financeiro, até o dinheiro das contas entra na aposta. É esse ciclo que a BETTEX enfrenta: agentes de IA executam as operações, enquanto você acompanha saldos, histórico e resultados em uma interface única.</p>
           </div>
 
