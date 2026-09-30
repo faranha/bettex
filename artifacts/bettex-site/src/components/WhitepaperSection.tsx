@@ -48,14 +48,14 @@ export function WhitepaperSection() {
 
   return (
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
-      <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO TÉCNICA</span><span>MODELO PROPOSTO · {total} CAPÍTULOS</span></div>
+      <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO TÉCNICA</span><span>O MODELO BETTEX · {total} CAPÍTULOS</span></div>
       <header className="whitepaper__hero page-wrap">
         <div>
-          <p className="whitepaper__eyebrow"><span aria-hidden="true" /> O SISTEMA POR TRÁS DA PROPOSTA</p>
+          <p className="whitepaper__eyebrow"><span aria-hidden="true" /> ARQUITETURA, ECONOMIA E RISCO</p>
           <h2 id="whitepaper-title">Documentação<br /><em>técnica.</em></h2>
           <p className="whitepaper__hero-lede">Uma leitura técnica da rede, do aplicativo, das carteiras, da operação e das regras econômicas da BETTEX.</p>
         </div>
-        <div className="whitepaper__hero-note"><span>ESCOPO DESTA PUBLICAÇÃO</span><p>Regras documentadas e uma arquitetura ainda sujeita a validação. A área do investidor exibida nesta página é uma simulação, não uma plataforma cripto em operação.</p></div>
+        <div className="whitepaper__hero-note"><span>VISÃO GERAL</span><p>O token BETTEX organiza a participação no projeto. A documentação detalha a rede, a elegibilidade, a tesouraria, os controles e a distribuição de resultados.</p></div>
       </header>
       <div className="whitepaper__body page-wrap">
         <aside className="whitepaper__aside" aria-label="Índice da documentação">
@@ -84,7 +84,7 @@ export function WhitepaperSection() {
             <ChapterContent index={selected} />
             <nav className="whitepaper__chapter-pagination" aria-label="Navegação entre capítulos">
               {selected > 0 ? <a href={`#${chapters[selected - 1].id}`} onClick={(event) => selectChapter(event, selected - 1)} data-testid="link-capitulo-anterior"><span>← ANTERIOR</span><strong>{chapters[selected - 1].title}</strong></a> : <span aria-hidden="true" />}
-              {selected < chapters.length - 1 ? <a href={`#${chapters[selected + 1].id}`} onClick={(event) => selectChapter(event, selected + 1)} data-testid="link-proximo-capitulo"><span>PRÓXIMO →</span><strong>{chapters[selected + 1].title}</strong></a> : <a href="#documentacao" onClick={(event) => selectChapter(event, 0)} data-testid="link-voltar-documentacao"><span>VOLTAR AO INÍCIO ↑</span><strong>O que existe hoje</strong></a>}
+              {selected < chapters.length - 1 ? <a href={`#${chapters[selected + 1].id}`} onClick={(event) => selectChapter(event, selected + 1)} data-testid="link-proximo-capitulo"><span>PRÓXIMO →</span><strong>{chapters[selected + 1].title}</strong></a> : <a href="#documentacao" onClick={(event) => selectChapter(event, 0)} data-testid="link-voltar-documentacao"><span>VOLTAR AO INÍCIO ↑</span><strong>{chapters[0].title}</strong></a>}
             </nav>
           </article>
         </div>
