@@ -15,6 +15,7 @@ import {
   parseTokens,
   requestTransfer,
   saveWalletDemo,
+  transferReaisToPersonal,
   withdrawFromWallet,
   type WalletDemoState,
 } from './walletDemo.ts';
@@ -95,7 +96,7 @@ test('simulated purchase exchanges personal example BRL for whole BETTEX without
   expectRejectedWithoutMutation(() => buyTokens(initial, 17100, NOW), initial);
 });
 
-test('external token and both BRL withdrawals charge the correct wallet fee', () => {
+test('external withdrawals from the personal wallet charge the correct fee', () => {
   const initial = initialWalletDemo();
   const external = withdrawFromWallet(initial, 'externalWithdraw', 1_000, NOW);
   assert.equal(external.personalTokensCents, initial.personalTokensCents - 1_000 - TRANSFER_FEE_CENTS);
@@ -104,13 +105,6 @@ test('external token and both BRL withdrawals charge the correct wallet fee', ()
   assert.equal(external.transfers[0].kind, 'externalWithdraw');
   assert.equal(external.personalReaisCents, initial.personalReaisCents);
 
-  const fromBettex = withdrawFromWallet(initial, 'bettexExternalWithdraw', 1_000, NOW);
-  assert.equal(fromBettex.allocatedTokensCents, initial.allocatedTokensCents - 1_000 - TRANSFER_FEE_CENTS);
-  assert.equal(fromBettex.personalTokensCents, initial.personalTokensCents);
-  assert.equal(fromBettex.allocatedReaisCents, initial.allocatedReaisCents);
-  assert.equal(fromBettex.transfers[0].kind, 'bettexExternalWithdraw');
-  assert.equal(fromBettex.transfers[0].status, 'completed');
-
   const personalReais = withdrawFromWallet(initial, 'personalReaisWithdraw', 2_550, NOW);
   assert.equal(personalReais.personalReaisCents, initial.personalReaisCents - 2_550);
   assert.equal(personalReais.allocatedReaisCents, initial.allocatedReaisCents);
@@ -118,12 +112,20 @@ test('external token and both BRL withdrawals charge the correct wallet fee', ()
   assert.equal(personalReais.allocatedTokensCents, initial.allocatedTokensCents);
   assert.equal(personalReais.transfers[0].amountCents, 2_550);
 
-  const bettexReais = withdrawFromWallet(initial, 'bettexReaisWithdraw', 1_234, NOW);
-  assert.equal(bettexReais.allocatedReaisCents, initial.allocatedReaisCents - 1_234);
-  assert.equal(bettexReais.personalReaisCents, initial.personalReaisCents);
-  assert.equal(bettexReais.allocatedTokensCents, initial.allocatedTokensCents - TRANSFER_FEE_CENTS);
-  assert.equal(bettexReais.personalTokensCents, initial.personalTokensCents);
-  assert.equal(bettexReais.transfers[0].feeCents, TRANSFER_FEE_CENTS);
+});
+
+test('withdrawing reais from Carteira BETTEX credits the personal wallet immediately', () => {
+  const initial = initialWalletDemo();
+  const moved = transferReaisToPersonal(initial, 1_234, NOW);
+  assert.equal(moved.allocatedReaisCents, initial.allocatedReaisCents - 1_234);
+  assert.equal(moved.personalReaisCents, initial.personalReaisCents + 1_234);
+  assert.equal(moved.allocatedTokensCents, initial.allocatedTokensCents - TRANSFER_FEE_CENTS);
+  assert.equal(moved.personalTokensCents, initial.personalTokensCents);
+  assert.equal(moved.transfers[0].kind, 'bettexReaisTransfer');
+  assert.equal(moved.transfers[0].amountCents, 1_234);
+  assert.equal(moved.transfers[0].feeCents, TRANSFER_FEE_CENTS);
+  assert.equal(moved.transfers[0].status, 'completed');
+  assert.equal(moved.transfers[0].readyAt, NOW);
 });
 
 test('invalid amounts, insufficient funds, and overflow reject without mutating state', () => {
@@ -142,9 +144,15 @@ test('invalid amounts, insufficient funds, and overflow reject without mutating 
   );
   const insufficientBettex = { ...initial, allocatedTokensCents: 500 };
   expectRejectedWithoutMutation(
-    () => withdrawFromWallet(insufficientBettex, 'bettexExternalWithdraw', 500, NOW),
+    () => requestTransfer(insufficientBettex, 'withdraw', 500, NOW),
     insufficientBettex,
   );
+  expectRejectedWithoutMutation(() => transferReaisToPersonal(initial, 0, NOW), initial);
+  expectRejectedWithoutMutation(() => transferReaisToPersonal(initial, BETTEX_REAIS_CENTS + 1, NOW), initial);
+  const noAllocatedTokens = { ...initial, allocatedTokensCents: 0 };
+  expectRejectedWithoutMutation(() => transferReaisToPersonal(noAllocatedTokens, 100, NOW), noAllocatedTokens);
+  const realOverflow = { ...initial, personalReaisCents: Number.MAX_SAFE_INTEGER - 50 };
+  expectRejectedWithoutMutation(() => transferReaisToPersonal(realOverflow, 100, NOW), realOverflow);
   const overflow = { ...initial, allocatedTokensCents: Number.MAX_SAFE_INTEGER - 100 };
   expectRejectedWithoutMutation(() => requestTransfer(overflow, 'deposit', 200, NOW), overflow);
   const tokenOverflow = { ...initial, personalTokensCents: Number.MAX_SAFE_INTEGER - 99 };
@@ -197,15 +205,28 @@ test('legacy pending transfers migrate once, preserve history and balances, and 
   assert.deepEqual(second.state.transfers, first.state.transfers);
 });
 
+test('old external-withdrawal history from Carteira BETTEX remains readable without new external actions', () => {
+  const storage = useStorage();
+  const initial = initialWalletDemo();
+  const oldTransfers = [
+    { id: 'old-bettex-tokens', kind: 'bettexExternalWithdraw', amountCents: 500, feeCents: 100, requestedAt: NOW, readyAt: NOW, status: 'completed' },
+    { id: 'old-bettex-reais', kind: 'bettexReaisWithdraw', amountCents: 480, feeCents: 100, requestedAt: NOW, readyAt: NOW, status: 'completed' },
+  ];
+  storage.setItem(STORAGE_KEY, JSON.stringify({ ...initial, transfers: oldTransfers }));
+  const loaded = loadWalletDemo();
+  assert.equal(loaded.warning, null);
+  assert.deepEqual(loaded.state.transfers, oldTransfers);
+});
+
 test('current state and real balances persist, and illustrative participation remains proportional', () => {
   const storage = useStorage();
   const initial = initialWalletDemo();
-  const moved = withdrawFromWallet(initial, 'bettexReaisWithdraw', 480, NOW);
+  const moved = transferReaisToPersonal(initial, 480, NOW);
   saveWalletDemo(moved);
   const loaded = loadWalletDemo();
   assert.equal(loaded.warning, null);
   assert.deepEqual(loaded.state, moved);
-  assert.equal(loaded.state.personalReaisCents, PERSONAL_REAIS_CENTS);
+  assert.equal(loaded.state.personalReaisCents, PERSONAL_REAIS_CENTS + 480);
   assert.equal(loaded.state.allocatedReaisCents, BETTEX_REAIS_CENTS - 480);
 
   const participation = illustrativeParticipation(initial);

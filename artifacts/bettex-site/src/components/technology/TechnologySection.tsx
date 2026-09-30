@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { ArrowDown, ArrowRight, ArrowUpRight, WalletCards } from 'lucide-react';
+import { ArrowDown, WalletCards } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
 import './TechnologySection.css';
 
@@ -11,10 +11,10 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           <div>
             <p className="technology-section__eyebrow">Sua participação na BETTEX</p>
             <h2 id="technology-title" className="technology-section__title" data-testid="text-technology-title">
-              Uma BETTEX.<br /><em>Quatro especialidades.</em>
+              Uma IA de apostas<br /><em>que controla quatro agentes</em>
             </h2>
           </div>
-          <p className="technology-section__intro-note">Compre tokens BETTEX, mova-os para sua Carteira BETTEX e participe das operações dos quatro agentes.</p>
+          <p className="technology-section__intro-note">ao comprar o token, você recebe o retorno de todos os agentes da BETTEX todos os dias quando ele lucra, e não perde os tokens em dias de red</p>
         </header>
 
         <div className="technology-section__hierarchy" aria-label="Compre tokens BETTEX, mova-os para sua carteira e participe das operações dos quatro agentes. Nos dias de lucro, sua parte é creditada na conta BETTEX.">
@@ -25,22 +25,18 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             </div>
             <div className="technology-section__deposit-flow">
               <p className="technology-section__deposit-label">Mova para sua carteira</p>
-              <div className="technology-section__deposit-path" aria-hidden="true">
-                <span className="technology-section__moving-coin"><BettexMark /></span>
-                <span className="technology-section__moving-coin"><BettexMark /></span>
-                <span className="technology-section__moving-coin"><BettexMark /></span>
-                <ArrowRight size={20} strokeWidth={2.4} />
-              </div>
+              <div className="technology-section__deposit-path" aria-hidden="true" />
             </div>
             <div className="technology-section__wallet" data-testid="diagram-technology-wallet">
               <div className="technology-section__wallet-copy">
                 <span className="technology-section__wallet-kicker">02 / Ative sua participação</span>
-                <h3>Carteira <em>BETTEX</em></h3>
-                <p>Ao mover seus tokens para sua Carteira BETTEX, você ativa sua participação nas operações dos quatro agentes. Seus tokens continuam na carteira.</p>
+                <h3><span className="technology-section__wallet-heading-icon" aria-hidden="true"><WalletCards strokeWidth={1.7} /></span><span>Carteira <em>BETTEX</em></span></h3>
+                <p>Ao mover seus tokens para sua Carteira BETTEX, você ativa sua participação na IA central da BETTEX, que coordena os quatro agentes. Seus tokens continuam na carteira.</p>
               </div>
-              <div className="technology-section__wallet-art" aria-hidden="true">
-                <WalletCards size={126} strokeWidth={1.25} />
-                <span className="technology-section__wallet-coin"><BettexMark /></span>
+              <div className="technology-section__wallet-art" role="img" aria-label="Robô da IA BETTEX com a marca BETTEX no peito">
+                <img className="technology-section__ai-robot" src={`${import.meta.env.BASE_URL}agents/bettex-hunter-portrait.webp`} alt="" loading="lazy" decoding="async" />
+                <span className="technology-section__ai-brand" aria-hidden="true"><BettexMark /></span>
+                <span className="technology-section__ai-label" aria-hidden="true">IA BETTEX</span>
               </div>
             </div>
           </div>
@@ -61,16 +57,6 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           </div>
         </div>
 
-        <div className="technology-section__after">
-          <p className="technology-section__clarity"><strong>Um token, participação no sistema inteiro.</strong> O token representa a participação na BETTEX; não executa operações. Mercados de risco podem gerar perdas e lucros não são garantidos.</p>
-          <div className="technology-section__allora">
-            <span className="technology-section__allora-label">REDE EXTERNA / ALLORA</span>
-            <p>A Allora é uma rede descentralizada de inteligência externa que apoia PREDIX e TRADEX.</p>
-            <a href="https://docs.allora.network/home/overview" target="_blank" rel="noopener noreferrer" data-testid="link-allora-documentation">
-              Documentação da Allora <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );
