@@ -5,6 +5,7 @@ import {
   initialWalletDemo,
   loadWalletDemo,
   requestTransfer,
+  transferReaisToPersonal,
   depositIntoPersonal,
   buyTokens,
   withdrawFromWallet,
@@ -17,12 +18,13 @@ import { WalletMovementForm } from './WalletMovementForm';
 import './WalletDemoPreview.css';
 
 const dateAndTime = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+type ActiveMovementKind = Exclude<MovementKind, 'bettexExternalWithdraw' | 'bettexReaisWithdraw'>;
 
 export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDivElement | null }) {
   const [loaded] = useState(loadWalletDemo);
   const [wallet, setWallet] = useState(loaded.state);
   const [storageWarning, setStorageWarning] = useState(loaded.warning);
-  const [mode, setMode] = useState<MovementKind | null>(null);
+  const [mode, setMode] = useState<ActiveMovementKind | null>(null);
   const [notice, setNotice] = useState('');
   const [showHistory, setShowHistory] = useState(false);
 
@@ -34,7 +36,7 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
     }
   }, [wallet]);
 
-  function toggleForm(kind: MovementKind) {
+  function toggleForm(kind: ActiveMovementKind) {
     setMode((current) => current === kind ? null : kind);
     setNotice('');
   }
@@ -46,6 +48,8 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
       ? depositIntoPersonal(wallet, amountCents, requestedAt)
       : mode === 'purchase'
         ? buyTokens(wallet, amountCents, requestedAt)
+      : mode === 'bettexReaisTransfer'
+        ? transferReaisToPersonal(wallet, amountCents, requestedAt)
       : mode === 'deposit' || mode === 'withdraw'
         ? requestTransfer(wallet, mode, amountCents, requestedAt)
         : withdrawFromWallet(wallet, mode, amountCents, requestedAt);
@@ -69,6 +73,7 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
       case 'purchase': return 'Saldo fictício em R$ da carteira pessoal → BETTEX na carteira pessoal';
       case 'deposit': return 'Carteira pessoal → Carteira BETTEX';
       case 'withdraw': return 'Carteira BETTEX → carteira pessoal';
+      case 'bettexReaisTransfer': return 'Reais da Carteira BETTEX → reais da carteira pessoal';
       case 'externalDeposit': return 'Origem externa simulada → carteira pessoal';
       case 'externalWithdraw': return 'Carteira pessoal → saída externa simulada';
       case 'bettexExternalWithdraw': return 'Carteira BETTEX → saída externa simulada';
@@ -97,6 +102,14 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
             onClick={() => toggleForm('externalDeposit')}
             data-testid="button-depositar-carteira-pessoal"
           >Depositar BETTEX</button>
+          <button
+            type="button"
+            className="investor-preview__topbar-action investor-preview__topbar-action--secondary"
+            aria-expanded={mode === 'externalWithdraw'}
+            aria-controls="investor-preview-transfer-form"
+            onClick={() => toggleForm('externalWithdraw')}
+            data-testid="button-sacar-bettex-pessoal"
+          >Sacar BETTEX</button>
         </>,
         topbarActionsEl,
       )}
@@ -123,14 +136,6 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
               onClick={() => toggleForm('deposit')}
               data-testid="button-transferir-bettex"
             >Transferir para Carteira BETTEX <ArrowRight aria-hidden="true" /></button>
-            <button
-              type="button"
-              className="investor-preview__wallet-withdraw investor-preview__wallet-action-secondary"
-              aria-expanded={mode === 'externalWithdraw'}
-              aria-controls="investor-preview-transfer-form"
-              onClick={() => toggleForm('externalWithdraw')}
-              data-testid="button-sacar-bettex-pessoal"
-            >Sacar BETTEX</button>
             <button
               type="button"
               className="investor-preview__wallet-withdraw investor-preview__wallet-action-secondary"
@@ -166,30 +171,22 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
               <strong data-testid="text-saldo-reais-bettex">{reais.format(wallet.allocatedReaisCents / 100)}</strong>
             </div>
           </div>
-          <span className="investor-preview__wallet-caption">BETTEX alocados participam do cálculo proporcional.</span>
+          <span className="investor-preview__wallet-caption">BETTEX alocados participam do cálculo proporcional. Os saques desta carteira vão para a carteira pessoal.</span>
           <div className="investor-preview__wallet-actions investor-preview__wallet-actions--bettex">
             <button
               type="button"
-              className="investor-preview__wallet-transfer"
+              className="investor-preview__wallet-withdraw"
               aria-expanded={mode === 'withdraw'}
               aria-controls="investor-preview-transfer-form"
               onClick={() => toggleForm('withdraw')}
-              data-testid="button-transferir-para-pessoal"
-            >Transferir para carteira pessoal <ArrowRight aria-hidden="true" /></button>
-            <button
-              type="button"
-              className="investor-preview__wallet-withdraw"
-              aria-expanded={mode === 'bettexExternalWithdraw'}
-              aria-controls="investor-preview-transfer-form"
-              onClick={() => toggleForm('bettexExternalWithdraw')}
               data-testid="button-sacar-bettex-bettex"
             >Sacar BETTEX</button>
             <button
               type="button"
               className="investor-preview__wallet-withdraw"
-              aria-expanded={mode === 'bettexReaisWithdraw'}
+              aria-expanded={mode === 'bettexReaisTransfer'}
               aria-controls="investor-preview-transfer-form"
-              onClick={() => toggleForm('bettexReaisWithdraw')}
+              onClick={() => toggleForm('bettexReaisTransfer')}
               data-testid="button-sacar-reais-bettex"
             >Sacar reais</button>
           </div>
@@ -198,7 +195,7 @@ export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDi
 
       <details className="investor-preview__fee-note">
         <summary>Taxa por transferência ou saque: 1 BETTEX</summary>
-        <p>A taxa é debitada do saldo BETTEX da carteira de origem em transferências entre carteiras, saques externos de BETTEX e saques em reais. Em transferências e saques de BETTEX, ela é cobrada além do valor enviado.</p>
+        <p>Os saques da Carteira BETTEX são transferências para a carteira pessoal. A taxa é debitada do saldo BETTEX da carteira de origem em transferências entre carteiras e saques externos da carteira pessoal. Em movimentações de BETTEX, ela é cobrada além do valor enviado.</p>
         <p>A compra com reais fictícios da carteira pessoal e o depósito externo simulado são imediatos e não têm taxa. Não há transferências nem pagamentos reais.</p>
       </details>
 

@@ -1,9 +1,9 @@
-import { ArrowDownRight } from 'lucide-react';
 import './HumanStorySection.css';
 
 export function HumanStorySection() {
   return (
     <section id="historia" className="hs-section" aria-labelledby="hs-heading" data-testid="section-narrativa-humana">
+      <img className="hs-photo" src={`${import.meta.env.BASE_URL}story/man-loss-background.jpg`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
       <div className="hs-wrap">
         <div className="hs-topline">
           <span className="hs-kicker">Antes do próximo palpite</span>
@@ -14,23 +14,21 @@ export function HumanStorySection() {
           <div className="hs-left">
             <div className="hs-asterisk" aria-hidden="true" />
             <h2 id="hs-heading">O dinheiro das contas <em>não deveria estar na mesa.</em></h2>
-            <p className="hs-lead">O dinheiro que sobra precisa ser investido com consciência, não apostado de forma irresponsável. Na BETTEX, você investe em um projeto de IA que atua em diferentes mercados de risco. Com seus tokens, você detém os direitos sobre a execução da nossa IA.</p>
+            <p className="hs-lead">Sem controle emocional, uma perda pode virar outra tentativa de recuperar o dinheiro. Sem controle financeiro, até o dinheiro das contas entra na aposta. É esse ciclo que a BETTEX enfrenta: agentes de IA executam as operações, enquanto você acompanha saldos, histórico e resultados em uma interface única.</p>
           </div>
 
           <div className="hs-right">
-            <div className="hs-family">
-              <img
-                src={`${import.meta.env.BASE_URL}family-dinner-brazil.webp`}
-                alt="Família brasileira jantando em casa, com uma mulher negra e pratos de arroz, feijão, bife e batata frita"
-                loading="lazy"
-                decoding="async"
-              />
-              <span className="hs-down" aria-hidden="true"><ArrowDownRight size={26} strokeWidth={1.5} /></span>
+            <div className="hs-risk-card">
+              <p className="hs-risk-label">Quando você aposta sozinho</p>
+              <h3>Sem controle, uma aposta pode custar tudo.</h3>
+              <ul>
+                <li><strong>Sem controle emocional</strong><span>A pressa de recuperar uma perda leva a novas apostas.</span></li>
+                <li><strong>Sem controle financeiro</strong><span>Sem limites, até o dinheiro das contas pode entrar na aposta.</span></li>
+              </ul>
             </div>
-            <p className="hs-right-label">O que muda com a BETTEX</p>
-            <p className="hs-explanation">Ao comprar e ativar tokens BETTEX, você participa do projeto de IA que reúne os quatro agentes. <strong>Nos dias em que as operações gerarem lucro, titulares com tokens ativados recebem sua parte na distribuição daquele dia.</strong></p>
-            <p className="hs-invitation">Seja dono do seu futuro.<br /><strong>Junte-se à BETTEX.</strong></p>
-            <p className="hs-caution">Ainda é investimento de alto risco: as operações podem gerar perdas e o token pode perder valor.</p>
+            <p className="hs-right-label">Como a BETTEX muda essa dinâmica</p>
+            <p className="hs-explanation"><strong>Na BETTEX, a operação não depende do impulso de apostar.</strong> Os agentes de IA atuam em mercados de risco, e você acompanha saldos, movimentações e a atividade dos agentes no mesmo lugar.</p>
+            <p className="hs-next">Menos impulso. Mais visibilidade. O risco de perda continua.</p>
           </div>
         </div>
       </div>

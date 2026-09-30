@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { ArrowRight, ChartNoAxesCombined, Clock3, LayoutDashboard, ShieldAlert, Wallet, type LucideIcon } from 'lucide-react';
+import { ArrowRight, ChartNoAxesCombined, ShieldAlert } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
 import { AgentMark, type AgentKind } from '@/components/hero/AgentMark';
 import { WalletDemoPreview } from './WalletDemoPreview';
@@ -19,10 +19,6 @@ const agents: Agent[] = [
 ];
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 const formatResult = (value: number) => `${value >= 0 ? '+' : '−'}${currency.format(Math.abs(value))}`;
-
-function RailItem({ icon: Icon, children, active = false }: { icon: LucideIcon; children: string; active?: boolean }) {
-  return <div className={`investor-preview__rail-item${active ? ' investor-preview__rail-item--active' : ''}`}><Icon aria-hidden="true" />{children}</div>;
-}
 
 export function InvestorAppPreview() {
   const [period, setPeriod] = useState<PerformancePeriod>('7 dias');
@@ -68,34 +64,20 @@ export function InvestorAppPreview() {
           <div className="investor-preview__topbar">
             <div className="investor-preview__brand"><span className="investor-preview__brand-mark"><BettexMark /></span><span>BETTEX</span></div>
             <div className="investor-preview__topbar-right">
-              <div ref={setTopbarActionsEl} className="investor-preview__topbar-actions" aria-label="Ações da carteira pessoal" />
+              <div ref={setTopbarActionsEl} className="investor-preview__topbar-actions" aria-label="Ações principais" />
               <span className="investor-preview__viewer"><strong>João da Silva</strong><small>Investidor fictício</small></span>
               <span className="investor-preview__badge" data-testid="status-previa-ilustrativa">Prévia ilustrativa</span>
             </div>
           </div>
 
           <div className="investor-preview__body">
-            <aside className="investor-preview__rail" aria-label="Áreas representadas nesta prévia">
-              <div>
-                <p className="investor-preview__rail-heading">Seu espaço</p>
-                <div className="investor-preview__rail-items">
-                  <RailItem icon={LayoutDashboard} active>Visão geral</RailItem>
-                  <RailItem icon={Wallet}>Carteiras</RailItem>
-                  <RailItem icon={ChartNoAxesCombined}>Agentes</RailItem>
-                  <RailItem icon={Clock3}>Histórico</RailItem>
-                </div>
-              </div>
-              <p className="investor-preview__rail-foot">Uma participação no projeto. Quatro agentes para acompanhar.</p>
-            </aside>
-
             <div className="investor-preview__content">
               <div className="investor-preview__header">
                 <div>
-                  <p className="investor-preview__micro">Visão geral</p>
+                  <p className="investor-preview__micro">Área do investidor</p>
                   <h3>Seu espaço na BETTEX</h3>
                   <p className="investor-preview__header-copy">Veja seus saldos em reais e BETTEX e simule a movimentação dos tokens.</p>
                 </div>
-                <span className="investor-preview__section-index">01 / 03</span>
               </div>
 
               <WalletDemoPreview topbarActionsEl={topbarActionsEl} />

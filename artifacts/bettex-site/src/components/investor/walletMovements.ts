@@ -26,9 +26,14 @@ export const movements: Record<MovementKind, MovementDefinition> = {
     currency: 'BETTEX', source: 'personal', confirm: 'Confirmar transferência',
   },
   withdraw: {
-    title: 'Transferir BETTEX para a carteira pessoal',
-    description: 'Origem: Carteira BETTEX → destino: carteira pessoal. O crédito é imediato; não é um saque externo.',
+    title: 'Sacar BETTEX para a carteira pessoal',
+    description: 'Origem: Carteira BETTEX → destino: carteira pessoal. Crédito imediato nesta demonstração; não é um saque externo.',
     currency: 'BETTEX', source: 'bettex', confirm: 'Confirmar transferência',
+  },
+  bettexReaisTransfer: {
+    title: 'Sacar reais para a carteira pessoal',
+    description: 'Origem: saldo em reais da Carteira BETTEX → saldo em reais da carteira pessoal. Crédito imediato nesta demonstração; não é um saque externo.',
+    currency: 'BRL', source: 'bettex', confirm: 'Confirmar transferência',
   },
   externalDeposit: {
     title: 'Depositar BETTEX na carteira pessoal',
@@ -41,8 +46,8 @@ export const movements: Record<MovementKind, MovementDefinition> = {
     currency: 'BETTEX', source: 'personal', confirm: 'Confirmar saque simulado',
   },
   bettexExternalWithdraw: {
-    title: 'Sacar BETTEX da Carteira BETTEX',
-    description: 'Saída externa simulada diretamente da Carteira BETTEX, sem passar pela carteira pessoal. Nenhum token será enviado de verdade.',
+    title: 'Saque externo antigo da Carteira BETTEX',
+    description: 'Movimentação antiga da demonstração: saída externa simulada diretamente da Carteira BETTEX.',
     currency: 'BETTEX', source: 'bettex', confirm: 'Confirmar saque simulado',
   },
   personalReaisWithdraw: {
@@ -51,8 +56,8 @@ export const movements: Record<MovementKind, MovementDefinition> = {
     currency: 'BRL', source: 'personal', confirm: 'Confirmar saque simulado',
   },
   bettexReaisWithdraw: {
-    title: 'Sacar reais da Carteira BETTEX',
-    description: 'Simule um saque imediato do saldo em reais da Carteira BETTEX. Nenhum pagamento real será realizado.',
+    title: 'Saque externo antigo em reais da Carteira BETTEX',
+    description: 'Movimentação antiga da demonstração: saída externa simulada diretamente da Carteira BETTEX.',
     currency: 'BRL', source: 'bettex', confirm: 'Confirmar saque simulado',
   },
 };

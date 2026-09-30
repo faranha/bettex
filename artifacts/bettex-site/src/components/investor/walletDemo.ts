@@ -1,8 +1,9 @@
 import { tokenomics } from '../../lib/tokenomics.ts';
 
 export type TransferKind = 'deposit' | 'withdraw';
-export type WithdrawalKind = 'externalWithdraw' | 'bettexExternalWithdraw' | 'personalReaisWithdraw' | 'bettexReaisWithdraw';
-export type MovementKind = TransferKind | WithdrawalKind | 'externalDeposit' | 'purchase';
+export type WithdrawalKind = 'externalWithdraw' | 'personalReaisWithdraw';
+export type MovementKind = TransferKind | WithdrawalKind | 'externalDeposit' | 'purchase'
+  | 'bettexReaisTransfer' | 'bettexExternalWithdraw' | 'bettexReaisWithdraw';
 export type TransferStatus = 'pending' | 'completed';
 
 export type DemoTransfer = {
@@ -58,6 +59,7 @@ function isValidTransfer(value: unknown): value is DemoTransfer {
   const entry = value as Partial<DemoTransfer>;
   const knownKind = entry.kind === 'deposit'
     || entry.kind === 'withdraw'
+    || entry.kind === 'bettexReaisTransfer'
     || entry.kind === 'purchase'
     || entry.kind === 'externalDeposit'
     || entry.kind === 'externalWithdraw'
@@ -232,6 +234,31 @@ export function requestTransfer(state: WalletDemoState, kind: TransferKind, amou
   });
 }
 
+export function transferReaisToPersonal(state: WalletDemoState, amountCents: number, now: number): WalletDemoState {
+  validateNow(now);
+  if (!isSafeAmount(amountCents) || amountCents === 0) throw new Error('Digite um valor positivo em reais.');
+  if (amountCents > state.allocatedReaisCents) throw new Error('Saldo em reais insuficiente na Carteira BETTEX.');
+  if (state.allocatedTokensCents < TRANSFER_FEE_CENTS) {
+    throw new Error('Saldo BETTEX insuficiente na Carteira BETTEX para a taxa de 1 BETTEX.');
+  }
+  const nextPersonalReais = state.personalReaisCents + amountCents;
+  if (!Number.isSafeInteger(nextPersonalReais)) throw new Error('Valor muito alto para esta demonstração.');
+  return addMovement({
+    ...state,
+    personalReaisCents: nextPersonalReais,
+    allocatedReaisCents: state.allocatedReaisCents - amountCents,
+    allocatedTokensCents: state.allocatedTokensCents - TRANSFER_FEE_CENTS,
+  }, {
+    id: `${now}-${state.transfers.length}`,
+    kind: 'bettexReaisTransfer',
+    amountCents,
+    feeCents: TRANSFER_FEE_CENTS,
+    requestedAt: now,
+    readyAt: now,
+    status: 'completed',
+  });
+}
+
 export function depositIntoPersonal(state: WalletDemoState, amountCents: number, now: number): WalletDemoState {
   validateNow(now);
   validateTokenAmount(amountCents);
@@ -283,24 +310,19 @@ export function withdrawFromWallet(
 ): WalletDemoState {
   validateNow(now);
   if (!isSafeAmount(amountCents) || amountCents === 0) throw new Error('Digite uma quantidade positiva.');
-  const isTokenWithdrawal = kind === 'externalWithdraw' || kind === 'bettexExternalWithdraw';
+  const isTokenWithdrawal = kind === 'externalWithdraw';
   if (isTokenWithdrawal) validateTokenAmount(amountCents);
-  else if (kind !== 'personalReaisWithdraw' && kind !== 'bettexReaisWithdraw') throw new Error('Tipo de saque inválido.');
+  else if (kind !== 'personalReaisWithdraw') throw new Error('Tipo de saque inválido.');
 
-  const isPersonal = kind === 'externalWithdraw' || kind === 'personalReaisWithdraw';
-  const tokenBalance = isPersonal ? state.personalTokensCents : state.allocatedTokensCents;
-  const reaisBalance = isPersonal ? state.personalReaisCents : state.allocatedReaisCents;
-  if (!isTokenWithdrawal && amountCents > reaisBalance) throw new Error('Saldo em reais insuficiente para este saque.');
+  if (!isTokenWithdrawal && amountCents > state.personalReaisCents) throw new Error('Saldo em reais insuficiente para este saque.');
   const tokenDebit = isTokenWithdrawal ? amountCents + TRANSFER_FEE_CENTS : TRANSFER_FEE_CENTS;
   if (!Number.isSafeInteger(tokenDebit)) throw new Error('Quantidade muito alta para esta demonstração.');
-  if (tokenBalance < tokenDebit) throw new Error('Saldo BETTEX insuficiente para cobrir o saque e a taxa de 1 BETTEX.');
+  if (state.personalTokensCents < tokenDebit) throw new Error('Saldo BETTEX insuficiente para cobrir o saque e a taxa de 1 BETTEX.');
 
   const updated: WalletDemoState = {
     ...state,
-    personalTokensCents: state.personalTokensCents - (isPersonal ? tokenDebit : 0),
-    allocatedTokensCents: state.allocatedTokensCents - (!isPersonal ? tokenDebit : 0),
+    personalTokensCents: state.personalTokensCents - tokenDebit,
     personalReaisCents: state.personalReaisCents - (kind === 'personalReaisWithdraw' ? amountCents : 0),
-    allocatedReaisCents: state.allocatedReaisCents - (kind === 'bettexReaisWithdraw' ? amountCents : 0),
   };
   return addMovement(updated, {
     id: `${now}-${state.transfers.length}`,
