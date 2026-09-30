@@ -49,6 +49,7 @@ Site da BETTEX, negócio de investimento com agentes de IA voltado ao apostador 
 
 ## User preferences
 
+- Em todos os textos da BETTEX, chamar a entidade de “projeto”, nunca de “empresa”, inclusive na parcela de tokens e na tesouraria.
 - Todo texto da interface deve ser português brasileiro simples, sem misturar inglês nem depender de termos técnicos como “leituras”. Na explicação de ativação, não usar “staking”; dizer que o usuário move o token para sua Carteira BETTEX para ativar a participação.
 - Evitar travessões nos textos da interface. Preferir pontuação simples e indicadores numéricos sem traços separadores.
 - O visual deve ser ilustrado, claro e voltado a adultos, sem aparência de mascote infantil ou brincadeira. Na identidade visual, o símbolo da BETTEX é apenas o B da moeda, nunca o rosto do robô: usar a moeda com B no cabeçalho, rodapé, ícone da aba, selos, tokens e diagramas identificados como BETTEX. O robô BETTEX pode aparecer como personagem em artes ilustrativas, separado do símbolo da marca; quando aparecer, tem olhos estreitos e focados de caçador, sem sorriso, corpo angular e desenvolvido, não arredondado como um pinguim. Os quatro agentes não têm rosto, olhos ou boca. Os agentes são máquinas cilíndricas compactas, menores que a BETTEX, sem aparência de computadores quadrados nem proporções espalhafatosas.
