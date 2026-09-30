@@ -5,7 +5,7 @@ import './TechnologySection.css';
 
 export function TechnologySection({ children }: { children: ReactNode }) {
   return (
-    <section id="agentes" className="technology-section scroll-mt-[72px]" aria-labelledby="technology-title">
+    <section id="tecnologia" className="technology-section" aria-labelledby="technology-title">
       <div className="technology-section__wrap">
         <header className="technology-section__intro">
           <div>
@@ -45,7 +45,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             </div>
           </div>
           <div className="technology-section__branch" aria-hidden="true" />
-          <span id="tecnologia" className="technology-section__agents-label scroll-mt-[88px]">03 / Operações dos quatro agentes BETTEX</span>
+          <span id="agentes" className="technology-section__agents-label">03 / Operações dos quatro agentes BETTEX</span>
           <div className="technology-section__agents" aria-label="Quatro agentes da BETTEX">{children}</div>
           <div className="technology-section__result-path" aria-hidden="true">
             <span /><span /><span /><span />

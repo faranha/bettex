@@ -21,7 +21,6 @@ export function ProjectModelSection() {
           color: var(--pm-deep);
           background: #f7e8d7;
           padding: clamp(72px, 8vw, 112px) 0 clamp(60px, 7vw, 90px);
-          scroll-margin-top: 72px;
         }
         .pm-casino-wheel {
           position: absolute; top: -100px; right: max(4vw, 20px);

@@ -36,6 +36,16 @@ const agents: Agent[] = [
   { name: 'BETTIX', kind: 'bettix', icon: Spade, visual: 'máquina cilíndrica sem rosto com ícone de naipe de espadas', area: 'Cassino', intro: 'Análise de jogos.', detail: 'Opera somente nos jogos de cassino da Duel como parte da BETTEX.', platform: 'Duel', platformLogo: 'duel.webp' },
 ];
 
+const navItems = [
+  { label: 'Início', id: 'inicio' },
+  { label: 'O projeto', id: 'participacao' },
+  { label: 'História', id: 'historia' },
+  { label: 'Operações', id: 'tecnologia' },
+  { label: 'Agentes', id: 'agentes' },
+  { label: 'Aplicativo', id: 'visao-investidor' },
+  { label: 'Pré-venda', id: 'pre-venda' },
+] as const;
+
 function Logo({ pale = false }: { pale?: boolean }) {
   return <a href="#inicio" className={`inline-flex items-center gap-2.5 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#168367] ${pale ? 'text-[#f6f4e9]' : 'text-[#123a3b]'}`} aria-label="BETTEX, voltar ao início">
     <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border ${pale ? 'border-[#a4eacb]/35 bg-[#0b2c30]' : 'border-[#1e5551] bg-[#123a3b]'} shadow-[0_3px_10px_rgba(6,32,33,.12)]`}>
@@ -96,22 +106,18 @@ function Home() {
     };
   }, []);
 
-  return <div className="min-h-[100dvh] overflow-x-hidden bg-[#f7f4e9]">
+  return <div className="min-h-[100dvh] overflow-x-clip bg-[#f7f4e9]">
     <header className="sticky top-0 z-40 border-b border-[#d6e1d7] bg-[#f7f4e9]/95 backdrop-blur-lg">
       <div className="page-wrap flex h-[72px] items-center justify-between gap-4">
         <Logo />
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegação principal">
-          <a href="#participacao" className="text-sm font-semibold hover:text-[#168367]">O que é a BETTEX</a>
-          <a href="#agentes" className="text-sm font-semibold hover:text-[#168367]">Agentes</a>
-          <a href="#tecnologia" className="text-sm font-semibold hover:text-[#168367]">Operações</a>
-          <a href="#visao-investidor" className="text-sm font-semibold hover:text-[#168367]">Prévia do aplicativo</a>
-          <a href="#visao-investidor" className="text-sm font-semibold hover:text-[#168367]">Demonstração</a>
+        <nav className="hidden items-center gap-4 lg:flex xl:gap-6" aria-label="Navegação principal">
+          {navItems.map(({ label, id }) => <a key={id} href={`#${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#168367] xl:text-sm">{label}</a>)}
         </nav>
-        <a href="#participacao" className="tap hidden items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Entenda o projeto</a>
+        <a href="#participacao" className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Entenda o projeto</a>
         <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 lg:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
       </div>
-      {menuOpen && <nav className="page-wrap flex flex-col gap-1 border-t border-[#d6e1d7] py-3 lg:hidden" aria-label="Navegação móvel">
-        {([['O que é a BETTEX', 'participacao'], ['Agentes', 'agentes'], ['Operações', 'tecnologia'], ['Prévia do aplicativo', 'visao-investidor'], ['Demonstração', 'visao-investidor']] as const).map(([label, id]) => <a key={label} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
+      {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#d6e1d7] py-3 lg:hidden" aria-label="Navegação móvel">
+        {navItems.map(({ label, id }) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
       </nav>}
     </header>
 

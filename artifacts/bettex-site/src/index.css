@@ -95,7 +95,7 @@
 
 @layer base {
   * { @apply border-border; }
-  html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   body { @apply bg-background text-foreground antialiased font-sans; }
   button, input { font: inherit; }
   button { cursor: pointer; }
