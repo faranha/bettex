@@ -1,0 +1,8 @@
+.pmi-art{display:block;height:100%;width:auto;max-width:100%;overflow:visible}
+.pmi-drop{animation:pmi-drop 2.4s ease-in-out infinite}
+.pmi-flow{stroke-dasharray:3 5;animation:pmi-dash 1.6s linear infinite}
+.pmi-pulse{animation:pmi-pulse 2.4s ease-in-out infinite}
+@keyframes pmi-drop{50%{transform:translateY(4px)}}
+@keyframes pmi-dash{to{stroke-dashoffset:-16}}
+@keyframes pmi-pulse{50%{opacity:.55}}
+@media (prefers-reduced-motion:reduce){.pmi-drop,.pmi-flow,.pmi-pulse{animation:none}}

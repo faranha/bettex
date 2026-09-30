@@ -50,6 +50,8 @@ Site da BETTEX, negócio de investimento com agentes de IA voltado ao apostador 
 
 ## User preferences
 
+- No modelo de quatro etapas, o desenho da etapa 04 (moedas chegando à conta) foi aprovado. Preservar sua aparência ao revisar os desenhos das etapas 01, 02 e 03; não alterar os textos nesse tipo de revisão.
+
 - Na documentação técnica, apresentar a BETTEX pelo que o projeto é: modelo, regras, arquitetura e riscos. Não abrir com "o que existe hoje" nem inventariar o que está pronto, pendente ou é simulação; andamento e etapas de implantação pertencem ao Roadmap. A demonstração deve ser identificada como tal em seus próprios controles, sem transformar o documento em bloco de notas sobre a prévia.
 - O Roadmap fica imediatamente após a documentação técnica e deve ser um percurso visual, não uma tabela. Os marcos devem alternar entre duas colunas em alturas diferentes, como degraus, sem cartões alinhados por fileira nem linha serpenteante grossa; uma conexão discreta deve preservar a leitura da sequência. A ordem definida pelo criador começa com apresentação do pré-lançamento, depois piloto de agente e, imediatamente após o piloto, lançamento do token. Não inventar datas ou marcar etapas planejadas como concluídas. Encerrar a página com transição visual suave para um rodapé completo.
 - Em todos os textos da BETTEX, chamar a entidade de “projeto”, nunca de “empresa”, inclusive na parcela de tokens e na tesouraria.

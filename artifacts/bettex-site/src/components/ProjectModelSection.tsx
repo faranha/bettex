@@ -1,5 +1,5 @@
-import { ArrowDown, ArrowDownRight, ArrowLeft, ArrowRight, Wallet } from 'lucide-react';
-import { BettexMark } from '@/components/BettexMark';
+import { ArrowDownRight, ArrowRight, Wallet } from 'lucide-react';
+import { TokenIllustration, DepositIllustration, CoordinationIllustration } from '@/components/ProjectModelIllustrations';
 
 const agents = [
   { name: 'PREDIX', specialty: 'Previsões' },
@@ -65,24 +65,6 @@ export function ProjectModelSection() {
         .pm-step h3 em { color: var(--pm-lime); font-style: normal; }
         .pm-detail { margin: 12px 0 0; color: #b9d3c9; font-size: 12px; line-height: 1.55; }
          .pm-visual { display: flex; align-items: center; height: 84px; margin-bottom: 15px; }
-         .pm-token-symbol { display: grid; width: 67px; height: 67px; place-items: center; border-radius: 50%; filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .22)); }
-         .pm-token-symbol img { display: block; width: 100%; height: 100%; }
-         .pm-stake { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 112px; }
-         .pm-stake-coin { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; filter: drop-shadow(0 3px 4px rgba(0, 0, 0, .24)); }
-         .pm-stake-coin img { display: block; width: 100%; height: 100%; }
-         .pm-stake-arrow { height: 17px; color: #b6efca; animation: pm-drop 1.8s ease-in-out infinite; }
-         .pm-stake-vault { display: grid; width: 96px; height: 23px; place-items: center; border: 1px solid #a2dcc1; border-top: 3px solid #b6efca; border-radius: 4px 4px 9px 9px; background: linear-gradient(#2d7169, #184f50); box-shadow: 0 7px 0 #0b2c31; color: #d9f4e2; font: 700 8px/1 var(--app-font-mono); letter-spacing: .09em; }
-         .pm-flow { display: flex; align-items: center; gap: 8px; }
-         .pm-flow-node { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 70px; height: 65px; border: 1px solid rgba(182, 239, 202, .5); border-radius: 12px; background: #215452; box-shadow: 0 8px 0 rgba(3, 29, 32, .35); color: #eaf7ed; text-align: center; }
-         .pm-flow-node b { font: 800 25px/1 var(--app-font-serif); }
-         .pm-flow-node img { display: block; width: 27px; height: 27px; flex: none; border-radius: 50%; object-fit: contain; }
-         .pm-flow-node small { display: block; width: 100%; font: 700 8px/1 var(--app-font-mono); letter-spacing: .03em; text-align: center; white-space: nowrap; }
-         .pm-flow-node--market { border-color: rgba(243, 201, 166, .6); background: #53433c; }
-         .pm-flow-node--market b { font-size: 22px; }
-         .pm-flow-arrows { display: grid; gap: 1px; width: 60px; color: #b6efca; }
-         .pm-flow-arrows svg { width: 58px; height: 21px; }
-         .pm-flow-out { animation: pm-go 1.8s ease-in-out infinite; }
-         .pm-flow-back { color: #f3c9a6; animation: pm-return 1.8s ease-in-out infinite; }
          .pm-profit-visual { position: relative; width: 205px; }
          .pm-profit-coin { position: absolute; display: grid; width: 39px; height: 39px; place-items: center; border: 2px solid #ffe0ad; border-radius: 50%; background: linear-gradient(135deg, #ffe8c4, #e7a974); box-shadow: inset 0 0 0 4px rgba(255, 245, 224, .65), 0 5px 0 #a56a4d; color: #8c543c; font: 800 20px/1 var(--app-font-serif); }
          .pm-profit-coin--one { left: 0; top: 32px; }
@@ -90,9 +72,7 @@ export function ProjectModelSection() {
          .pm-profit-coin--three { left: 44px; top: 34px; }
          .pm-profit-arrow { position: absolute; left: 88px; top: 25px; color: #f3c9a6; animation: pm-go 1.8s ease-in-out infinite; }
          .pm-profit-wallet { position: absolute; top: 23px; left: 131px; display: grid; width: 56px; height: 44px; place-items: center; border: 1px solid #a2dcc1; border-radius: 9px; background: #22605b; color: #b6efca; box-shadow: 0 7px 0 #0b2c31; }
-         @keyframes pm-drop { 50% { transform: translateY(4px); } }
          @keyframes pm-go { 50% { transform: translateX(5px); } }
-         @keyframes pm-return { 50% { transform: translateX(-5px); } }
         .pm-agent-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 19px; }
         .pm-agent { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 9px 10px; border: 1px solid rgba(174, 229, 200, .19); border-radius: 9px; background: rgba(245, 246, 237, .055); }
         .pm-agent strong { color: #eaf7ed; font: 800 12px/1.1 var(--app-font-serif); letter-spacing: -.02em; }
@@ -140,8 +120,6 @@ export function ProjectModelSection() {
           .pm-step:last-child { border-bottom: 0; padding-bottom: 0; }
             .pm-index { margin: 0 0 12px; }
            .pm-visual { height: 72px; margin-bottom: 13px; }
-           .pm-token-symbol { width: 58px; height: 58px; font-size: 31px; }
-           .pm-stake { transform: scale(.9); transform-origin: left center; }
           .pm-step h3 { font-size: clamp(1.4rem, 5vw, 1.85rem); }
           .pm-detail { margin-top: 7px; }
           .pm-agent-list { margin-top: 15px; }
@@ -160,7 +138,7 @@ export function ProjectModelSection() {
         }
         @media (prefers-reduced-motion: reduce) {
            .pm-bottom a svg { transition: none; }
-           .pm-stake-arrow, .pm-flow-out, .pm-flow-back, .pm-profit-arrow { animation: none; }
+           .pm-profit-arrow { animation: none; }
         }
       `}</style>
       <div className="pm-casino-wheel" aria-hidden="true" />
@@ -190,14 +168,14 @@ export function ProjectModelSection() {
           <div className="pm-steps">
             <div className="pm-step">
               <span className="pm-index">01 / TOKEN</span>
-              <div className="pm-visual" aria-hidden="true"><span className="pm-token-symbol"><BettexMark /></span></div>
+              <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
               <h3>Você compra o <em>token BETTEX.</em></h3>
               <p className="pm-detail">O token representa sua participação no projeto.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / PARTICIPAÇÃO</span>
               <div className="pm-visual" aria-hidden="true">
-                <div className="pm-stake"><span className="pm-stake-coin"><BettexMark /></span><ArrowDown className="pm-stake-arrow" size={16} /><span className="pm-stake-vault">CARTEIRA</span></div>
+                <DepositIllustration />
               </div>
               <h3>Deposite BETTEX <em>e ative sua participação.</em></h3>
               <p className="pm-detail">Para ativar sua participação, deposite seus tokens BETTEX na Carteira BETTEX. Somente os tokens depositados participam da distribuição nos dias de lucro.</p>
@@ -205,11 +183,7 @@ export function ProjectModelSection() {
             <div className="pm-step">
               <span className="pm-index">03 / OPERAÇÕES</span>
               <div className="pm-visual" aria-hidden="true">
-                <div className="pm-flow">
-                  <span className="pm-flow-node"><BettexMark /><small>BETTEX</small></span>
-                  <span className="pm-flow-arrows"><ArrowRight className="pm-flow-out" strokeWidth={2.3} /><ArrowLeft className="pm-flow-back" strokeWidth={2.3} /></span>
-                  <span className="pm-flow-node pm-flow-node--market"><b>↗</b><small>MERCADOS</small></span>
-                </div>
+                <CoordinationIllustration />
               </div>
               <h3>A IA da <em>BETTEX</em> realiza operações com seus agentes nativos.</h3>
               <div className="pm-agent-list" aria-label="Especialidades dos agentes BETTEX">
