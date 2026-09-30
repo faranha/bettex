@@ -45,7 +45,7 @@ export function HeroBenefit() {
         <circle className="hero-benefit__hub-ring" cx="54.7" cy="62.4" r="1.5" />
         <circle className="hero-benefit__hub-center" cx="54.7" cy="62.4" r=".55" />
       </svg>
-      <ul className="hero-benefit__markets" aria-label="Agentes e mercados propostos pela BETTEX">
+      <ul className="hero-benefit__markets" aria-label="Agentes e mercados em que a BETTEX opera">
         {markets.map(({ name, type, Icon }, index) => (
           <li key={name} className={`hero-benefit__market hero-benefit__market--${index + 1}`}>
             <Icon aria-hidden="true" size={17} strokeWidth={1.9} />
@@ -62,9 +62,9 @@ export function HeroBenefit() {
           </svg>
           <BettexMark className="hero-benefit__caption-brand" />
         </span>
-          <strong>Conheça os quatro agentes e as regras de risco na Documentação técnica.</strong>
+        <strong>Invista em mercados de risco e receba nos dias de lucro sem abrir mão da sua participação.</strong>
       </figcaption>
-       <span className="hero-benefit__bottom" aria-hidden="true">MERCADOS DE RISCO / RESULTADOS NÃO GARANTIDOS</span>
+      <span className="hero-benefit__bottom" aria-hidden="true">RENDA PASSIVA DE APOSTAS COM IA</span>
     </figure>
   );
 }

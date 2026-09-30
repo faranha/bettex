@@ -14,10 +14,6 @@ export function HumanStorySection() {
           <div className="hs-left">
             <div className="hs-asterisk" aria-hidden="true" />
             <h2 id="hs-heading">Admita: você <em>perde mais do que ganha.</em></h2>
-            <p className="hs-lead">Sem controle emocional, uma perda pode virar outra tentativa de recuperar o dinheiro. Sem controle financeiro, até o dinheiro das contas entra na aposta. É esse ciclo que a BETTEX enfrenta: agentes de IA executam as operações, enquanto você acompanha saldos, histórico e resultados em uma interface única.</p>
-          </div>
-
-          <div className="hs-right">
             <div className="hs-risk-card">
               <p className="hs-risk-label">Quando você aposta sozinho</p>
               <h3>Sem controle, uma aposta pode custar tudo.</h3>
@@ -26,9 +22,12 @@ export function HumanStorySection() {
                 <li><strong>Sem controle financeiro</strong><span>Sem limites, até o dinheiro das contas pode entrar na aposta.</span></li>
               </ul>
             </div>
+          </div>
+
+          <div className="hs-right">
             <p className="hs-right-label">Como a BETTEX muda essa dinâmica</p>
             <p className="hs-explanation"><strong>Na BETTEX, a operação não depende do impulso de apostar.</strong> Os agentes de IA atuam em mercados de risco, e você acompanha saldos, movimentações e a atividade dos agentes no mesmo lugar.</p>
-            <p className="hs-next">Menos impulso. Mais visibilidade. O risco de perda continua.</p>
+            <p className="hs-next">Seja dono do seu futuro.<br /><strong>Junte-se à BETTEX.</strong></p>
           </div>
         </div>
       </div>

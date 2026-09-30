@@ -184,23 +184,23 @@ export function ProjectModelSection() {
 
         <div className="pm-panel">
           <div className="pm-panel-top">
-                 <p className="pm-panel-label">Participação por BETTEX depositados · resultados sem garantia</p>
+            <p className="pm-panel-label">Distribuição diária somente nos dias de lucro</p>
             <p className="pm-panel-count">Quatro etapas · um projeto</p>
           </div>
           <div className="pm-steps">
             <div className="pm-step">
               <span className="pm-index">01 / TOKEN</span>
               <div className="pm-visual" aria-hidden="true"><span className="pm-token-symbol"><BettexMark /></span></div>
-               <h3>Conheça o <em>token BETTEX.</em></h3>
-                <p className="pm-detail">A Documentação técnica explica a emissão. Esta página não vende tokens.</p>
+              <h3>Você compra o <em>token BETTEX.</em></h3>
+              <p className="pm-detail">O token representa sua participação no projeto.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / CARTEIRA</span>
               <div className="pm-visual" aria-hidden="true">
                 <div className="pm-stake"><span className="pm-stake-coin"><BettexMark /></span><ArrowDown className="pm-stake-arrow" size={16} /><span className="pm-stake-vault">CARTEIRA</span></div>
               </div>
-                <h3>Deposite o token <em>para participar.</em></h3>
-                <p className="pm-detail">O depósito confirmado ativa a participação. O saque encerra a elegibilidade; ter tokens sem depositá-los não gera distribuição.</p>
+              <h3>Mova o token <em>para sua Carteira BETTEX.</em></h3>
+              <p className="pm-detail">Ao mover o token para sua carteira na BETTEX, ele fica ativado para participar da distribuição nos dias de lucro.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / OPERAÇÕES</span>
@@ -211,7 +211,7 @@ export function ProjectModelSection() {
                   <span className="pm-flow-node pm-flow-node--market"><b>↗</b><small>MERCADOS</small></span>
                 </div>
               </div>
-               <h3>A IA da <em>BETTEX</em> propõe estratégias com quatro agentes.</h3>
+              <h3>A IA da <em>BETTEX</em> realiza operações com seus agentes nativos.</h3>
               <div className="pm-agent-list" aria-label="Especialidades dos agentes BETTEX">
                 {agents.map((agent) => (
                   <div className="pm-agent" key={agent.name}>
@@ -229,10 +229,10 @@ export function ProjectModelSection() {
                 <ArrowDownRight className="pm-profit-arrow" size={31} strokeWidth={2.2} />
                 <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
               </div>
-               <h3>Resultados e repasses <em>são diferentes.</em></h3>
+              <h3>Receba sua parte <em>nos dias de lucro.</em></h3>
               <div className="pm-outcomes">
-                   <div className="pm-outcome pm-outcome--profit"><span>Resultado positivo</span><strong>Só lucro líquido realizado após perdas anteriores pode gerar distribuição em USDC para quem depositou BETTEX.</strong></div>
-                   <div className="pm-outcome pm-outcome--none"><span>Resultado negativo</span><strong>Não há distribuição garantida. Perdas podem reduzir a tesouraria e o valor do token.</strong></div>
+                <div className="pm-outcome pm-outcome--profit"><span>Dia com lucro</span><strong>Titulares com tokens ativados recebem sua parte do lucro daquele dia.</strong></div>
+                <div className="pm-outcome pm-outcome--none"><span>Dia sem lucro</span><strong>Não há distribuição naquele dia, mas você não perde seu token.</strong></div>
               </div>
             </div>
           </div>
