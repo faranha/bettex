@@ -43,7 +43,7 @@ const navItems = [
   { label: 'Operações', id: 'tecnologia' },
   { label: 'Agentes', id: 'agentes' },
   { label: 'Aplicativo', id: 'visao-investidor' },
-  { label: 'Whitepaper', id: 'whitepaper' },
+  { label: 'Documentação', id: 'documentacao' },
 ] as const;
 
 function Logo({ pale = false }: { pale?: boolean }) {
@@ -131,8 +131,8 @@ function Home() {
               <span className="block whitespace-nowrap">A melhor aposta é</span>
               <span className="block whitespace-nowrap text-[#a4eacb]">um investimento.</span>
             </h1>
-            <p className="mt-7 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Conheça a proposta da BETTEX: quatro agentes de IA estudando diferentes mercados de risco, sob limites definidos pela tesouraria.</p>
-            <p className="mt-4 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">O whitepaper apresenta a tokenomia, o modelo cripto e as regras que ainda precisamos definir juntos. Nenhuma compra ou distribuição está disponível nesta página.</p>
+            <p className="mt-7 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Conheça a BETTEX: quatro agentes de IA estudam diferentes mercados de risco sob limites da tesouraria.</p>
+            <p className="mt-4 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">A documentação técnica explica a emissão dos tokens, a distribuição de resultados e as regras de risco. Esta página permite apenas simulações; não realiza compras ou pagamentos.</p>
             <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ver demonstração <ArrowDown className="h-4 w-4" /></a></div>
             <p className="mt-7 max-w-lg border-l-2 border-[#ffcb9b] pl-4 text-xs leading-5 text-[#c9e0d6]">Investir em mercados de risco pode gerar perdas. Lucro e valorização do token não são garantidos.</p>
           </div>
@@ -153,7 +153,7 @@ function Home() {
 
     </main>
 
-    <footer className="bg-[#123a3b] py-10 text-[#d0e5d9]"><div className="page-wrap flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo pale /><p className="max-w-[550px] text-xs leading-6">BETTEX é uma proposta de projeto cripto com agentes de IA. Leia o whitepaper em discussão para conhecer o modelo e seus riscos.</p><a href="#inicio" className="flex shrink-0 items-center gap-1 text-xs font-bold text-[#a4eacb]">Voltar ao topo <ChevronDown className="h-4 w-4 rotate-180" /></a></div></footer>
+    <footer className="bg-[#123a3b] py-10 text-[#d0e5d9]"><div className="page-wrap flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo pale /><p className="max-w-[550px] text-xs leading-6">Conheça o modelo, as regras e os riscos na <a className="underline" href="#documentacao">Documentação técnica</a>. Esta página apresenta simulações, não movimentações reais.</p><a href="#inicio" className="flex shrink-0 items-center gap-1 text-xs font-bold text-[#a4eacb]">Voltar ao topo <ChevronDown className="h-4 w-4 rotate-180" /></a></div></footer>
   </div>;
 }
 

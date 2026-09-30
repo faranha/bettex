@@ -1,27 +1,24 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { X } from 'lucide-react';
-import { parseReais, parseTokens, PURCHASE_PRICE_CENTS, TRANSFER_FEE_CENTS, type MovementKind, type WalletDemoState } from './walletDemo';
-import { formatTokens, formatMovementAmount, movements, reais } from './walletMovements';
+import { parseTokens, parseUsdc, type MovementKind, type WalletDemoState } from './walletDemo';
+import { formatMovementAmount, movements } from './walletMovements';
 
 export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
   mode: MovementKind;
   wallet: WalletDemoState;
-  onConfirm: (amountCents: number) => void;
+  onConfirm: (amountCents: number, address?: string) => void;
   onClose: () => void;
 }) {
   const [quantity, setQuantity] = useState('');
+  const [address, setAddress] = useState('');
   const [error, setError] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
   const definition = movements[mode];
-  const isReais = definition.currency === 'BRL';
-  const isDeposit = mode === 'externalDeposit';
-  const isPurchase = mode === 'purchase';
-  const amount = isReais ? parseReais(quantity) : parseTokens(quantity);
-  const purchaseCostCents = isPurchase && amount !== null ? amount / 100 * PURCHASE_PRICE_CENTS : null;
-  const sourceTokens = definition.source === 'personal' ? wallet.personalTokensCents : wallet.allocatedTokensCents;
-  const available = isReais
-    ? definition.source === 'personal' ? wallet.personalReaisCents : wallet.allocatedReaisCents
-    : sourceTokens;
+  const isUsdc = definition.currency === 'USDC';
+  const amount = isUsdc ? parseUsdc(quantity) : parseTokens(quantity);
+  const available = isUsdc
+    ? definition.source === 'personal' ? wallet.personalUsdcCents : wallet.allocatedUsdcCents
+    : definition.source === 'personal' ? wallet.personalTokensCents : wallet.allocatedTokensCents;
 
   useEffect(() => {
     const rect = formRef.current?.getBoundingClientRect();
@@ -33,11 +30,11 @@ export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (amount === null) {
-      setError(isReais ? 'Digite um valor positivo em reais com até duas casas decimais, como 25,50.' : 'Digite uma quantidade inteira de BETTEX, como 1, 2 ou 3.');
+      setError(isUsdc ? 'Digite um valor positivo em USDC com até duas casas decimais, como 12,50.' : 'Digite uma quantidade inteira e positiva de BETTEX.');
       return;
     }
     try {
-      onConfirm(amount);
+      onConfirm(amount, mode === 'profitWithdraw' ? address.trim() : undefined);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Não foi possível simular esta movimentação.');
     }
@@ -49,14 +46,14 @@ export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
         <div><strong>{definition.title}</strong><p>{definition.description}</p></div>
         <button type="button" className="investor-preview__transfer-close" aria-label="Fechar movimentação" onClick={onClose}><X aria-hidden="true" /></button>
       </div>
-      <label htmlFor="investor-preview-quantity">{isReais ? 'Valor em reais (R$)' : 'Quantidade de BETTEX'}</label>
+      <label htmlFor="investor-preview-quantity">{isUsdc ? 'Valor em USDC' : 'Quantidade de BETTEX'}</label>
       <div className="investor-preview__transfer-controls">
         <input
           id="investor-preview-quantity"
           type="text"
-          inputMode={isReais ? 'decimal' : 'numeric'}
+          inputMode={isUsdc ? 'decimal' : 'numeric'}
           autoComplete="off"
-          placeholder={isReais ? 'Ex.: 25,50' : 'Ex.: 100'}
+          placeholder={isUsdc ? 'Ex.: 12,50' : 'Ex.: 100'}
           value={quantity}
           onChange={(event) => { setQuantity(event.target.value); setError(''); }}
           aria-invalid={Boolean(error)}
@@ -64,25 +61,22 @@ export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
         />
         <button type="submit">{definition.confirm}</button>
       </div>
+      {mode === 'profitWithdraw' && (
+        <div className="investor-preview__address-field">
+          <label htmlFor="investor-preview-address">Endereço da carteira na Arbitrum One</label>
+          <input id="investor-preview-address" type="text" autoComplete="off" spellCheck={false}
+            placeholder="0x..." value={address} onChange={(event) => { setAddress(event.target.value); setError(''); }}
+            aria-invalid={Boolean(error)} />
+          <small>Use um endereço 0x de 42 caracteres. Só a saída fictícia será registrada neste navegador.</small>
+        </div>
+      )}
       <small id="investor-preview-transfer-available">
-        {isPurchase ? (
-          <>
-            Preço de referência do lançamento: {reais.format(PURCHASE_PRICE_CENTS / 100)} por BETTEX (não é o preço da pré-venda).
-            Saldo em reais da carteira pessoal: {reais.format(wallet.personalReaisCents / 100)}.
-            {purchaseCostCents !== null && Number.isSafeInteger(purchaseCostCents) ? ` Total desta compra: ${reais.format(purchaseCostCents / 100)}.` : ''}
-            {' '}Compra fictícia sem taxa; nenhum pagamento real será feito.
-          </>
-        ) : isDeposit ? 'Somente BETTEX inteiros. Este depósito de exemplo não tem taxa.' : (
-          <>
-            Disponível na origem: {formatMovementAmount(mode, available)}.
-            {isReais
-               ? ` Taxa fictícia desta prévia: 1 BETTEX do saldo de tokens (${formatTokens(sourceTokens)} disponíveis).`
-               : ` Taxa fictícia desta prévia: 1 BETTEX.${amount === null ? '' : ` Débito total na simulação: ${formatTokens(amount + TRANSFER_FEE_CENTS)}.`} Somente tokens inteiros; custos reais a definir.`}
-          </>
-        )}
+        {mode === 'externalDeposit'
+          ? 'Adição de BETTEX fictícios, sem taxa.'
+          : `Disponível na origem: ${formatMovementAmount(mode, available)}. Taxa do projeto: zero. Custos de rede e terceiros em uma transação real seriam variáveis e separados.`}
       </small>
       {error && <p id="investor-preview-transfer-error" className="investor-preview__transfer-error" role="alert">{error}</p>}
-       <p className="investor-preview__transfer-disclaimer">Simulação neste navegador. Nenhum BETTEX, USDC ou real é transferido de verdade. As taxas do projeto ainda não foram definidas.</p>
+      <p className="investor-preview__transfer-disclaimer">Simulação local. Nenhum BETTEX ou USDC é enviado de verdade; não há saque em reais ou para conta bancária.</p>
     </form>
   );
 }

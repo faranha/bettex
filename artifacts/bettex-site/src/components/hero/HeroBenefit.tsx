@@ -62,9 +62,9 @@ export function HeroBenefit() {
           </svg>
           <BettexMark className="hero-benefit__caption-brand" />
         </span>
-         <strong>Conheça os quatro agentes propostos e as regras de risco em discussão no whitepaper.</strong>
+          <strong>Conheça os quatro agentes e as regras de risco na Documentação técnica.</strong>
       </figcaption>
-       <span className="hero-benefit__bottom" aria-hidden="true">PROPOSTA CRIPTO / RESULTADOS NÃO GARANTIDOS</span>
+       <span className="hero-benefit__bottom" aria-hidden="true">MERCADOS DE RISCO / RESULTADOS NÃO GARANTIDOS</span>
     </figure>
   );
 }

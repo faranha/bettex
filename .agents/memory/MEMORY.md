@@ -2,3 +2,4 @@
 - [Raster asset inspection](raster-asset-inspection.md) — use font-free ImageMagick composition for contact sheets in this Nix workspace.
 - [Concurrent media edits](concurrent-media-edits.md) — await image-edit jobs before unrelated workspace writes; a later completion can replace new files.
 - [Polymarket market-data source](polymarket-market-data-source.md) — official MCP reads documentation only; Gamma is the public market-data API.
+- [Simulated staking eligibility](simulated-staking-eligibility.md) — use time-weighted participation for monthly credits, not the staking balance at close.

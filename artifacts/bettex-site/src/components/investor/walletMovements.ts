@@ -2,62 +2,83 @@ import type { MovementKind } from './walletDemo';
 
 export const reais = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 export const tokens = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
+const dollars = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+export const DEMO_BRL_PER_USDC = 5;
 export const formatTokens = (cents: number) => `${tokens.format(cents / 100)} BETTEX`;
-export const formatMovementAmount = (kind: MovementKind, cents: number) =>
-  movements[kind].currency === 'BRL' ? reais.format(cents / 100) : formatTokens(cents);
+export const formatUsdc = (cents: number) => `${dollars.format(cents / 100)} USDC`;
+export const formatUsdcInReais = (cents: number) => reais.format(cents / 100 * DEMO_BRL_PER_USDC);
 
 type MovementDefinition = {
   title: string;
   description: string;
-  currency: 'BRL' | 'BETTEX';
-  source: 'personal' | 'bettex';
+  currency: 'BRL' | 'BETTEX' | 'USDC';
+  source: 'personal' | 'bettex' | 'system';
   confirm: string;
 };
 
 export const movements: Record<MovementKind, MovementDefinition> = {
   purchase: {
-    title: 'Comprar BETTEX',
-    description: 'Compra fictícia: desconta reais de exemplo da carteira pessoal e credita BETTEX inteiros nela. Não há cobrança, emissão ou reserva de tokens reais.',
-    currency: 'BETTEX', source: 'personal', confirm: 'Confirmar compra simulada',
+    title: 'Compra simulada antiga de BETTEX',
+    description: 'Registro de uma versão anterior da demonstração.',
+    currency: 'BETTEX', source: 'personal', confirm: '',
   },
   deposit: {
-    title: 'Transferir BETTEX para a Carteira BETTEX',
-    description: 'Origem: carteira pessoal fictícia → Carteira BETTEX fictícia. Crédito imediato só nesta demonstração; regras de staking real ainda em discussão.',
-    currency: 'BETTEX', source: 'personal', confirm: 'Confirmar transferência',
+    title: 'Depositar BETTEX na Carteira BETTEX',
+    description: 'Transfere BETTEX da carteira pessoal para a Carteira BETTEX. Na simulação, os tokens ficam elegíveis imediatamente; não há taxa do projeto.',
+    currency: 'BETTEX', source: 'personal', confirm: 'Confirmar depósito simulado',
   },
   withdraw: {
-    title: 'Retirar BETTEX para a carteira pessoal',
-    description: 'Origem: Carteira BETTEX fictícia → carteira pessoal fictícia. Crédito imediato só nesta demonstração; não é um saque de lucros em USDC.',
-    currency: 'BETTEX', source: 'bettex', confirm: 'Confirmar transferência',
+    title: 'Retirar BETTEX do staking',
+    description: 'Devolve BETTEX da Carteira BETTEX à carteira pessoal e encerra sua elegibilidade. Não movimenta lucros em USDC.',
+    currency: 'BETTEX', source: 'bettex', confirm: 'Confirmar retirada simulada',
   },
   bettexReaisTransfer: {
-    title: 'Sacar reais para a carteira pessoal',
-    description: 'Origem: saldo em reais da Carteira BETTEX → saldo em reais da carteira pessoal. Crédito imediato nesta demonstração; não é um saque externo.',
-    currency: 'BRL', source: 'bettex', confirm: 'Confirmar transferência',
+    title: 'Registro antigo em reais · transferência interna',
+    description: 'Histórico de uma versão anterior; não é saldo em USDC.',
+    currency: 'BRL', source: 'bettex', confirm: '',
   },
   externalDeposit: {
-    title: 'Depositar BETTEX na carteira pessoal',
-    description: 'Depósito fictício e imediato. Não há endereço de depósito nem recebimento de cripto real.',
-    currency: 'BETTEX', source: 'personal', confirm: 'Adicionar BETTEX de exemplo',
+    title: 'Adicionar BETTEX de exemplo',
+    description: 'Adiciona tokens fictícios à carteira pessoal. Não há depósito real nem endereço de recebimento.',
+    currency: 'BETTEX', source: 'system', confirm: 'Adicionar BETTEX fictícios',
   },
   externalWithdraw: {
     title: 'Retirar BETTEX da carteira pessoal',
-    description: 'Simule a saída fictícia de BETTEX da carteira pessoal. Nenhum token será enviado a um endereço real; não é um saque de lucros em USDC.',
-    currency: 'BETTEX', source: 'personal', confirm: 'Confirmar saque simulado',
+    description: 'Simula uma saída de BETTEX da carteira pessoal, separada do saque de lucros em USDC.',
+    currency: 'BETTEX', source: 'personal', confirm: 'Confirmar retirada simulada',
   },
   bettexExternalWithdraw: {
-    title: 'Saque externo antigo da Carteira BETTEX',
-    description: 'Movimentação antiga da demonstração: saída externa simulada diretamente da Carteira BETTEX.',
-    currency: 'BETTEX', source: 'bettex', confirm: 'Confirmar saque simulado',
+    title: 'Registro antigo · saída de BETTEX',
+    description: 'Movimentação antiga da demonstração.',
+    currency: 'BETTEX', source: 'bettex', confirm: '',
   },
   personalReaisWithdraw: {
-    title: 'Sacar reais da carteira pessoal',
-    description: 'Simule um saque imediato do saldo em reais da carteira pessoal. Nenhum pagamento real será realizado.',
-    currency: 'BRL', source: 'personal', confirm: 'Confirmar saque simulado',
+    title: 'Registro antigo em reais · saída externa',
+    description: 'Histórico de uma versão anterior; não é saque disponível.',
+    currency: 'BRL', source: 'personal', confirm: '',
   },
   bettexReaisWithdraw: {
-    title: 'Saque externo antigo em reais da Carteira BETTEX',
-    description: 'Movimentação antiga da demonstração: saída externa simulada diretamente da Carteira BETTEX.',
-    currency: 'BRL', source: 'bettex', confirm: 'Confirmar saque simulado',
+    title: 'Registro antigo em reais · saída da Carteira BETTEX',
+    description: 'Histórico de uma versão anterior; não é saque disponível.',
+    currency: 'BRL', source: 'bettex', confirm: '',
+  },
+  distribution: {
+    title: 'Distribuição simulada atribuída',
+    description: 'Lucro elegível do fechamento ilustrativo creditado na Carteira BETTEX.',
+    currency: 'USDC', source: 'system', confirm: '',
+  },
+  profitTransfer: {
+    title: 'Transferir lucro para carteira pessoal',
+    description: 'Transfere USDC da Carteira BETTEX para a carteira pessoal. Nenhum USDC real se move.',
+    currency: 'USDC', source: 'bettex', confirm: 'Confirmar transferência simulada',
+  },
+  profitWithdraw: {
+    title: 'Sacar lucro em USDC',
+    description: 'Simula saída da carteira pessoal para um endereço compatível com Arbitrum One. Nenhuma transação blockchain será feita.',
+    currency: 'USDC', source: 'personal', confirm: 'Confirmar saque simulado',
   },
 };
+
+export const formatMovementAmount = (kind: MovementKind, cents: number) =>
+  movements[kind].currency === 'BRL' ? reais.format(cents / 100)
+    : movements[kind].currency === 'USDC' ? formatUsdc(cents) : formatTokens(cents);

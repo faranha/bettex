@@ -1,11 +1,14 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ChartNoAxesCombined, ShieldAlert } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
 import { AgentMark, type AgentKind } from '@/components/hero/AgentMark';
 import { WalletDemoPreview } from './WalletDemoPreview';
+import { DistributionSummary } from './DistributionSummary';
+import { loadWalletDemo, saveWalletDemo, simulateMonthlyDistribution } from './walletDemo';
 import { PerformanceBars } from './PerformanceBars';
 import { performanceTotal, type PerformancePeriod, type PerformanceSubject } from './performanceSeries';
 import { historyForPeriod, simulatedDate, type AgentName } from './simulatedHistory';
+import { DEMO_BRL_PER_USDC } from './walletMovements';
 import './InvestorAppPreview.css';
 
 type Agent = { name: AgentName; area: string; kind: AgentKind };
@@ -17,10 +20,16 @@ const agents: Agent[] = [
   { name: 'SPORTIX', area: 'Esportes', kind: 'sportix' },
   { name: 'BETTIX', area: 'Cassino', kind: 'bettix' },
 ];
-const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-const formatResult = (value: number) => `${value >= 0 ? '+' : '−'}${currency.format(Math.abs(value))}`;
+const usd = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'USD' });
+const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+const formatResult = (value: number) => `${value >= 0 ? '+' : '−'}${usd.format(Math.abs(value))}`;
+const formatConvertedResult = (value: number) => `≈ ${value < 0 ? '−' : ''}${brl.format(Math.abs(value) * DEMO_BRL_PER_USDC)}`;
 
 export function InvestorAppPreview() {
+  const [loaded] = useState(loadWalletDemo);
+  const [wallet, setWallet] = useState(loaded.state);
+  const [storageWarning, setStorageWarning] = useState(loaded.warning);
+  const [distributionNotice, setDistributionNotice] = useState('');
   const [period, setPeriod] = useState<PerformancePeriod>('7 dias');
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(agents[0]);
   const [topbarActionsEl, setTopbarActionsEl] = useState<HTMLDivElement | null>(null);
@@ -38,6 +47,27 @@ export function InvestorAppPreview() {
     .sort((a, b) => a.daysAgo - b.daysAgo || a.hoursAgo - b.hoursAgo);
   const historyLimit = period === '24 horas' ? 2 : period === '7 dias' ? 4 : 10;
   const visibleHistoryRows = selectedAgent ? historyRows : historyRows.slice(0, historyLimit);
+
+  useEffect(() => {
+    try {
+      saveWalletDemo(wallet);
+    } catch {
+      setStorageWarning('O navegador não conseguiu guardar a demonstração; os saldos podem reiniciar após recarregar.');
+    }
+  }, [wallet]);
+
+  function closeExamplePeriod() {
+    try {
+      const next = simulateMonthlyDistribution(wallet, Date.now());
+      setWallet(next);
+      const credited = next.transfers[0].amountCents;
+      setDistributionNotice(credited === 0
+        ? 'Fechamento simulado: sua distribuição foi zero após ponderar o tempo elegível no período.'
+        : 'Fechamento simulado: sua distribuição foi creditada em USDC na Carteira BETTEX.');
+    } catch (cause) {
+      setDistributionNotice(cause instanceof Error ? cause.message : 'Não foi possível simular o fechamento.');
+    }
+  }
 
   function showPerformance(agent: Agent | null) {
     setSelectedAgent(agent);
@@ -76,19 +106,21 @@ export function InvestorAppPreview() {
                 <div>
                   <p className="investor-preview__micro">Área do investidor</p>
                   <h3>Seu espaço na BETTEX</h3>
-                  <p className="investor-preview__header-copy">Simule movimentações fictícias de BETTEX. Resultados em R$ nesta prévia são apenas valores ilustrativos, sem câmbio real.</p>
+                   <p className="investor-preview__header-copy">Simule BETTEX em staking, distribuição pessoal em USDC e retirada de lucro. A conversão em R$ é fixa e apenas informativa.</p>
                 </div>
               </div>
 
-              <WalletDemoPreview topbarActionsEl={topbarActionsEl} />
+               <WalletDemoPreview topbarActionsEl={topbarActionsEl} wallet={wallet} onWalletChange={setWallet}
+                 storageWarning={storageWarning} onStorageWarning={setStorageWarning} />
+               <DistributionSummary wallet={wallet} onSimulate={closeExamplePeriod} notice={distributionNotice} />
 
               <div className="investor-preview__workspace">
                 <div className="investor-preview__panel investor-preview__performance-panel" id="investor-preview-performance" ref={performancePanelRef}>
                   <div className="investor-preview__panel-head">
                     <div>
-                      <p className="investor-preview__micro">Desempenho {selectedAgent ? 'individual' : 'coletivo'}</p>
-                      <h4>Desempenho {selectedAgent ? `de ${selectedAgent.name}` : 'dos agentes'}</h4>
-                      <p className="investor-preview__panel-help">{selectedAgent ? 'Selecione um agente e um período para consultar os resultados agregados.' : 'Veja a soma dos quatro agentes no período selecionado.'}</p>
+                       <p className="investor-preview__micro">Desempenho do projeto · {selectedAgent ? 'um agente' : 'quatro agentes'}</p>
+                       <h4>Desempenho {selectedAgent ? `de ${selectedAgent.name}` : 'dos agentes'}</h4>
+                       <p className="investor-preview__panel-help">{selectedAgent ? 'Este é o resultado ilustrativo do agente, não o lucro pago a você.' : 'Soma dos resultados ilustrativos dos quatro agentes, não a sua distribuição.'}</p>
                     </div>
                     <span className="investor-preview__panel-icon"><ChartNoAxesCombined aria-hidden="true" /></span>
                   </div>
@@ -105,14 +137,15 @@ export function InvestorAppPreview() {
                     ))}
                   </div>
                   <div className="investor-preview__chart" data-testid="panel-desempenho-simulado">
-                    <span className="investor-preview__sample-label">Resultado ilustrativo · {selectedAgent?.name ?? 'quatro agentes'}</span>
+                     <span className="investor-preview__sample-label">Resultado do projeto · {selectedAgent?.name ?? 'quatro agentes'} · não é seu saldo</span>
                     <strong className="investor-preview__sample-result" data-negative={agentResult < 0} aria-live="polite">{formatResult(agentResult)}</strong>
+                     <span className="investor-preview__conversion">{formatConvertedResult(agentResult)} · câmbio fictício de R$ 5,00 por USD</span>
                     <PerformanceBars subject={subject} period={period} />
                       <span className="investor-preview__chart-period" aria-live="polite" data-testid="text-periodo-desempenho">{selectedAgent?.name ?? 'Quatro agentes'} · {period}. O histórico abaixo acompanha o período selecionado.</span>
                   </div>
                   <div className="investor-preview__policy">
                     <ShieldAlert aria-hidden="true" />
-                     <p><strong>Distribuição proposta:</strong> frequência, cálculo do lucro líquido e elegibilidade dos tokens ainda estão em discussão. Os resultados abaixo são fictícios; perdas são possíveis.</p>
+                      <p><strong>Resultado dos agentes ≠ sua distribuição.</strong> Seu crédito depende de BETTEX elegíveis no staking e de lucro líquido realizado após compensar perdas. Trocar este filtro não altera sua carteira.</p>
                   </div>
                 </div>
 
@@ -143,14 +176,15 @@ export function InvestorAppPreview() {
                     ))}
                   </div>
                   <button type="button" className="investor-preview__total" aria-pressed={!selectedAgent} aria-controls="investor-preview-performance" onClick={() => showPerformance(null)} data-testid="resultado-total-agentes">
-                    <span>Resultado total · {period}</span>
+                     <span>Resultado dos quatro agentes · {period}</span>
                     <strong data-negative={totalResult < 0}>{formatResult(totalResult)}</strong>
-                    <small>Soma dos quatro resultados simulados.</small>
+                     <small>{formatConvertedResult(totalResult)} · câmbio fictício</small>
+                     <small>Desempenho do projeto; não é valor pago à pessoa.</small>
                     <span className="investor-preview__total-link">Ver desempenho coletivo <ArrowRight aria-hidden="true" /></span>
                   </button>
                   <details className="investor-preview__agent-detail" data-testid="panel-resultados-por-agente">
                     <summary className="investor-preview__agent-detail-top">
-                      <strong>Resultado por agente</strong>
+                       <strong>Desempenho por agente · projeto</strong>
                       <span>{period} · abrir</span>
                     </summary>
                     {agents.map((agent) => {
@@ -162,7 +196,7 @@ export function InvestorAppPreview() {
                         </div>
                       );
                     })}
-                    <p>Valores simulados. Selecione um agente ou o resultado total para atualizar o gráfico e o histórico abaixo.</p>
+                     <p>Valores simulados dos agentes, não pagamentos ao usuário. A sua distribuição aparece acima, em USDC.</p>
                   </details>
                 </div>
               </div>
@@ -190,7 +224,7 @@ export function InvestorAppPreview() {
                   })}
                 </div>
                 <p className="investor-preview__history-disclaimer">Mostrando {visibleHistoryRows.length} de {historyRows.length} trades fictícios.{visibleHistoryRows.length < historyRows.length ? ' O total do período inclui também os trades não listados.' : ''}</p>
-                <div className="investor-preview__history-summary"><span>Total ilustrativo · {period}</span><strong data-negative={historyResult < 0}>{formatResult(historyResult)}</strong></div>
+                 <div className="investor-preview__history-summary"><span>Desempenho do projeto · {period} · não é distribuição</span><strong data-negative={historyResult < 0}>{formatResult(historyResult)} <small>{formatConvertedResult(historyResult)}</small></strong></div>
                 <p className="investor-preview__history-disclaimer">Operações e datas fictícias; não refletem mercados ou transações reais.</p>
               </div>
             </div>
@@ -198,7 +232,7 @@ export function InvestorAppPreview() {
 
           <div className="investor-preview__bottom">
             <ShieldAlert aria-hidden="true" />
-             <p><strong>Esta tela é apenas ilustrativa.</strong> Saldos, resultados e movimentações são exemplos fictícios. A prévia não compra tokens nem envia USDC ou BETTEX. Os valores em R$ não representam saldo sacável; resultados não são garantidos.</p>
+              <p><strong>Esta tela é apenas ilustrativa.</strong> Desempenho dos agentes e distribuição da pessoa são diferentes. Saldos e movimentações são fictícios: nenhum USDC ou BETTEX é enviado. A projeção em R$ não é saldo sacável; resultados não são garantidos.</p>
           </div>
         </div>
       </div>

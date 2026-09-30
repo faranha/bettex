@@ -1,7 +1,7 @@
 import { Bar, BarChart, CartesianGrid, Cell, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { performanceSeries, type PerformancePeriod, type PerformanceSubject } from './performanceSeries';
 
-const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'USD' });
 const compact = new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 });
 const gains = '#168367';
 const losses = '#b25c47';
@@ -16,7 +16,7 @@ export function PerformanceBars({ subject, period }: { subject: PerformanceSubje
 
   return (
     <figure className="investor-preview__bars" data-testid="grafico-desempenho">
-       <figcaption>Resultado por {interval} <span>R$ · exemplo fictício, sem câmbio real</span></figcaption>
+        <figcaption>Resultado por {interval} <span>USD · exemplo fictício, sem câmbio real</span></figcaption>
       <div className="investor-preview__bars-plot" role="img" aria-label={`Gráfico de barras do desempenho ${subjectLabel} em ${period}. ${description}`}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 10, right: 5, bottom: 0, left: -12 }} barCategoryGap="23%">
