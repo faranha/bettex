@@ -5,7 +5,7 @@ export const tokenomics = {
   firstPublicTranche: 100_000_000,
   monthlyPublicAllocation: 400_000_000,
   investorAllocation: 250_000_000,
-  companyAllocation: 250_000_000,
+  projectAllocation: 250_000_000,
   investorSaleMonths: 24,
   presaleAllocation: 50_000_000,
   launchAllocation: 50_000_000,
