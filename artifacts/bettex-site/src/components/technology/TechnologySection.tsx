@@ -14,7 +14,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
               Uma IA de apostas<br /><em>que controla quatro agentes</em>
             </h2>
           </div>
-           <p className="technology-section__intro-note">Este diagrama ilustra o modelo proposto. A elegibilidade para distribuições, a tecnologia e os controles de risco ainda estão sendo definidos.</p>
+           <p className="technology-section__intro-note">Este diagrama ilustra o modelo proposto. As regras de participação estão na documentação técnica; a infraestrutura, custódia e validação operacional ainda dependem de construção.</p>
         </header>
 
          <div className="technology-section__hierarchy" aria-label="Modelo proposto: token BETTEX, participação sujeita a regras, quatro agentes e possível distribuição de lucros líquidos em USDC.">
@@ -29,9 +29,9 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             </div>
             <div className="technology-section__wallet" data-testid="diagram-technology-wallet">
               <div className="technology-section__wallet-copy">
-                 <span className="technology-section__wallet-kicker">02 / Staking em definição</span>
+                  <span className="technology-section__wallet-kicker">02 / Staking proposto</span>
                 <h3><span className="technology-section__wallet-heading-icon" aria-hidden="true"><WalletCards strokeWidth={1.7} /></span><span>Carteira <em>BETTEX</em></span></h3>
-                 <p>O depósito ou staking de BETTEX poderá tornar os tokens elegíveis à participação. Bloqueio, prazo e forma de custódia ainda estão em definição.</p>
+                  <p>Staking de ao menos 1 BETTEX, sem período de bloqueio. O tempo em depósito determina a participação no mês UTC. A forma de custódia e a implementação ainda precisam ser validadas.</p>
               </div>
               <div className="technology-section__wallet-art" role="img" aria-label="Robô da IA BETTEX com a marca BETTEX no peito">
                 <img className="technology-section__ai-robot" src={`${import.meta.env.BASE_URL}agents/bettex-hunter-portrait.webp`} alt="" loading="lazy" decoding="async" />

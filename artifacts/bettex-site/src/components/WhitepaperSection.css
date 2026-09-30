@@ -18,14 +18,14 @@
 .whitepaper__eyebrow, .whitepaper__hero-note > span, .whitepaper__aside-label, .whitepaper__chapter-meta, .whitepaper__chapter-number { font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .11em; }
 .whitepaper__eyebrow { display: flex; gap: 12px; align-items: center; margin: 0; color: #30816b; }
 .whitepaper__eyebrow span { width: 26px; height: 1px; background: currentColor; }
-.whitepaper__hero h2 { margin: 19px 0 24px; font: 800 clamp(3.7rem, 8vw, 8.7rem)/.92 var(--app-font-serif); letter-spacing: -.08em; }
+.whitepaper__hero h2 { margin: 19px 0 24px; font: 800 clamp(3.4rem, 7vw, 7.1rem)/.96 var(--app-font-serif); letter-spacing: -.08em; overflow-wrap: anywhere; }
 .whitepaper__hero h2 em { font-style: normal; color: #256d5e; }
 .whitepaper__hero-lede { max-width: 620px; margin: 0; font: 600 clamp(1.2rem, 2.2vw, 1.85rem)/1.35 var(--app-font-serif); letter-spacing: -.03em; }
 .whitepaper__hero-note { padding: 4px 0 5px 22px; border-left: 2px solid var(--wp-orange); }
 .whitepaper__hero-note > span { color: #a85d3e; }
 .whitepaper__hero-note p { margin: 11px 0 0; color: #4c665b; font-size: 14px; line-height: 1.75; }
 .whitepaper__body { display: grid; grid-template-columns: 244px minmax(0, 1fr); gap: clamp(45px, 7vw, 105px); align-items: start; padding-top: clamp(45px, 6vw, 80px); padding-bottom: clamp(80px, 10vw, 150px); border-top: 1px solid var(--wp-line); }
-.whitepaper__aside-inner { position: sticky; top: 110px; }
+.whitepaper__aside-inner { position: sticky; top: 110px; max-height: calc(100vh - 128px); overflow-y: auto; scrollbar-color: #abc7b3 transparent; }
 .whitepaper__aside-label { display: flex; justify-content: space-between; margin-bottom: 18px; color: #6b8679; }
 .whitepaper__aside nav { border-top: 1px solid var(--wp-line); }
 .whitepaper__toc-link { position: relative; display: flex; align-items: baseline; gap: 13px; padding: 15px 8px 15px 11px; border-bottom: 1px solid var(--wp-line); color: #47625a; font-size: 13px; font-weight: 700; line-height: 1.4; text-decoration: none; transition: color .2s ease, background-color .2s ease; }
@@ -38,7 +38,7 @@
 .whitepaper__toc-link.is-active .whitepaper__toc-arrow, .whitepaper__toc-link:hover .whitepaper__toc-arrow, .whitepaper__toc-link:focus-visible .whitepaper__toc-arrow { opacity: 1; transform: translate(0,0); }
 .whitepaper a:focus-visible { outline: 2px solid #287d67; outline-offset: 3px; }
 .whitepaper__aside-foot { margin: 23px 0 0; max-width: 220px; color: #70887b; font-size: 11px; line-height: 1.6; }
-.whitepaper__content { min-width: 0; max-width: 820px; }
+.whitepaper__content { min-width: 0; max-width: 820px; scroll-margin-top: 100px; }
 .whitepaper__chapter-meta { display: flex; justify-content: space-between; padding: 0 0 15px; border-bottom: 1px solid var(--wp-line); color: #779084; font-size: 9px; }
 .whitepaper__chapter-meta button { display: none; border: 0; background: transparent; color: #216d5a; font: inherit; text-decoration: underline; cursor: pointer; }
 .whitepaper__chapter { min-height: 560px; padding-top: clamp(32px, 4vw, 52px); animation: wp-enter .35s ease both; }
@@ -109,6 +109,19 @@
 .whitepaper__risk-list > div { display: grid; grid-template-columns: 190px 1fr; gap: 22px; padding: 23px 0; border-bottom: 1px solid var(--wp-line); }
 .whitepaper__risk-list p { margin: 0; color: #435b51; font-size: 14px; line-height: 1.75; }
 .whitepaper__closing { margin-top: 36px; }
+.whitepaper__subhead { margin: 38px 0 17px; font: 800 clamp(1.5rem, 2.6vw, 2.05rem)/1.2 var(--app-font-serif); letter-spacing: -.04em; }
+.whitepaper__status-grid, .whitepaper__system { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 27px 0 33px; border: 1px solid #bdd1bf; background: #bdd1bf; }
+.whitepaper__status-grid > div, .whitepaper__system > div { min-width: 0; padding: 24px; background: #f0f1e6; }
+.whitepaper__status-grid > div:first-child { grid-column: 1 / -1; background: #e4efe5; }
+.whitepaper__status-grid span, .whitepaper__system span, .whitepaper__flow > span, .whitepaper__glossary > span { display: block; color: #397864; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .1em; }
+.whitepaper__status-grid strong, .whitepaper__system strong { display: block; margin: 12px 0 9px; font: 800 22px/1.2 var(--app-font-serif); letter-spacing: -.04em; }
+.whitepaper__status-grid p, .whitepaper__system p, .whitepaper__glossary p { margin: 0; color: #455e53; font-size: 13px; line-height: 1.7; }
+.whitepaper__flow { margin: 30px 0; padding: 27px; border: 1px solid #b9d1be; background: #e8f0e6; }
+.whitepaper__flow ol { margin: 21px 0 0; padding: 0; list-style: none; counter-reset: flow; }
+.whitepaper__flow li { display: grid; grid-template-columns: 33px minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 14px 0; border-top: 1px solid #c4d8c8; color: #3c564a; font-size: 13px; line-height: 1.7; counter-increment: flow; }
+.whitepaper__flow li::before { content: counter(flow, decimal-leading-zero); color: #397864; font: 700 11px var(--app-font-mono); }
+.whitepaper__glossary { margin-top: 36px; padding: 24px; border: 1px solid #c2d5c5; }
+.whitepaper__glossary p { margin-top: 12px; }
 .whitepaper__chapter-pagination { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--wp-line); }
 .whitepaper__chapter-pagination a { display: flex; flex-direction: column; gap: 8px; padding: 19px; border: 1px solid #c5d5c7; color: var(--wp-ink); text-decoration: none; transition: background-color .2s ease, transform .2s ease; }
 .whitepaper__chapter-pagination a:last-child { text-align: right; }
@@ -137,15 +150,17 @@
   .whitepaper__hero h2 { font-size: clamp(3.15rem, 11vw, 5.5rem); }
   .whitepaper__body { display: block; padding-top: 30px; }
   .whitepaper__aside { margin-bottom: 48px; }
-  .whitepaper__aside-inner { position: static; }
+  .whitepaper__aside-inner { position: static; max-height: none; overflow: visible; }
   .whitepaper__aside nav { display: flex; overflow-x: auto; gap: 7px; padding: 4px 0 12px; border: 0; scroll-snap-type: x proximity; scrollbar-color: #abc7b3 transparent; }
   .whitepaper__toc-link { min-width: max-content; padding: 10px 13px; border: 1px solid var(--wp-line); scroll-snap-align: start; }
   .whitepaper__toc-link.is-active::before { width: 2px; }
   .whitepaper__toc-arrow { display: none; }
-  .whitepaper__aside-foot { max-width: none; margin-top: 5px; }
+  .whitepaper__aside-foot { display: none; }
   .whitepaper__chapter { min-height: 0; }
   .whitepaper__limits > div { grid-template-columns: 1fr; }
   .whitepaper__limits > div > span { grid-row: auto; }
+  .whitepaper__status-grid, .whitepaper__system { grid-template-columns: 1fr; }
+  .whitepaper__status-grid > div:first-child { grid-column: auto; }
 }
 @media (max-width: 480px) {
   .whitepaper__chapter-head h3 { font-size: 2.6rem; }
