@@ -28,6 +28,13 @@
 .investor-preview__brand-mark { display: grid; width: 35px; height: 35px; flex: none; place-items: center; border: 1px solid #76bda3; border-radius: 10px; background: #1b4b47; }
 .investor-preview__brand-mark svg { width: 26px; height: 26px; }
 .investor-preview__topbar-right { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.investor-preview__topbar-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.investor-preview__topbar-action { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 9px 11px; border: 1px solid #b9e4cc; border-radius: 9px; background: #d9f2df; color: #123a3b; font-family: inherit; font-size: 11px; font-weight: 800; line-height: 1.3; white-space: nowrap; cursor: pointer; }
+.investor-preview__topbar-action:hover, .investor-preview__topbar-action[aria-expanded="true"] { background: #bce9c9; }
+.investor-preview__topbar-action--secondary { border-color: #79ab96; background: transparent; color: #e9f8eb; }
+.investor-preview__topbar-action--secondary:hover, .investor-preview__topbar-action--secondary[aria-expanded="true"] { background: #286e60; }
+.investor-preview__topbar-action svg { width: 14px; height: 14px; flex: none; }
+.investor-preview__topbar-action:focus-visible { outline: 3px solid #e9956f; outline-offset: 3px; }
 .investor-preview__viewer { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; min-width: 0; text-align: right; }
 .investor-preview__viewer strong { color: #f7f4e9; font-size: 12px; line-height: 1.2; white-space: nowrap; }
 .investor-preview__viewer small { color: #a7c7b9; font-size: 9px; line-height: 1.2; }
@@ -37,9 +44,10 @@
 .investor-preview__rail { display: flex; flex-direction: column; gap: 26px; padding: 28px 16px; border-right: 1px solid #d3e0d6; background: #e8f0e8; }
 .investor-preview__rail-heading { padding: 0 10px; color: #648078; font: 700 9px/1.5 var(--app-font-mono, monospace); text-transform: uppercase; letter-spacing: .16em; }
 .investor-preview__rail-items { display: grid; gap: 6px; }
-.investor-preview__rail-item { display: flex; align-items: center; gap: 10px; min-height: 39px; padding: 8px 10px; border-radius: 9px; color: #496d64; font-size: 12px; font-weight: 700; }
+.investor-preview__rail-item { display: flex; align-items: center; gap: 10px; min-height: 39px; padding: 8px 10px; border-radius: 9px; color: #868f8d; font-size: 12px; font-weight: 700; }
 .investor-preview__rail-item--active { background: #d2e9d9; color: #145643; }
-.investor-preview__rail-item svg { width: 16px; height: 16px; flex: none; }
+.investor-preview__rail-item svg { width: 16px; height: 16px; flex: none; color: #9aa29f; }
+.investor-preview__rail-item--active svg { color: #145643; }
 .investor-preview__rail-foot { margin: auto 4px 0; padding: 17px 12px 0; border-top: 1px solid #c6d9cc; color: #628077; font-size: 11px; line-height: 1.5; }
 .investor-preview__content { min-width: 0; padding: clamp(16px, 2vw, 24px); }
 .investor-preview__header { display: flex; align-items: start; justify-content: space-between; gap: 18px; margin-bottom: 16px; }
@@ -47,7 +55,7 @@
 .investor-preview__header-copy { margin: 6px 0 0; color: var(--ip-muted); font-size: 12px; line-height: 1.5; }
 .investor-preview__section-index { flex: none; margin-top: 2px; color: #7b9990; font: 700 10px/1.5 var(--app-font-mono, monospace); }
 
-.investor-preview__wallet-flow { display: grid; grid-template-columns: minmax(0, 1fr) 126px minmax(0, 1fr); align-items: stretch; gap: 9px; }
+.investor-preview__wallet-flow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 12px; }
 .investor-preview__wallet { min-width: 0; padding: 16px; border: 1px solid #c7dacf; border-radius: 17px; background: #eff5eb; }
 .investor-preview__wallet--bettex { border-color: #1c6054; background: var(--ip-ink); color: #f9f7ec; }
 .investor-preview__wallet-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
@@ -58,9 +66,6 @@
 .investor-preview__wallet--bettex .investor-preview__wallet-value { margin-top: 4px; color: #c2f0d2; }
 .investor-preview__wallet-caption { color: #617c72; font-size: 11px; line-height: 1.4; }
 .investor-preview__wallet--bettex .investor-preview__wallet-caption { color: #b9d5c8; }
-.investor-preview__wallet-buy { display: inline-flex; align-items: center; gap: 10px; margin-top: 17px; padding: 9px 12px; border-radius: 9px; background: #123a3b; color: #f7f4e9; font-size: 11px; font-weight: 800; text-decoration: none; transition: background-color .2s ease, transform .2s ease; }
-.investor-preview__wallet-buy:hover { background: #216a56; transform: translateY(-2px); }
-.investor-preview__wallet-buy svg { width: 14px; height: 14px; }
 .investor-preview__wallet-buy-note { display: block; margin-top: 6px; color: #5c7569; font-size: 10px; line-height: 1.4; }
 .investor-preview__wallet-history-button { display: grid; width: 38px; height: 38px; flex: none; place-items: center; border: 1px solid #599484; border-radius: 10px; background: #1c5350; color: #c2f0d2; cursor: pointer; }
 .investor-preview__wallet-history-button:hover, .investor-preview__wallet-history-button[aria-expanded="true"] { background: #286e60; }
@@ -79,13 +84,6 @@
 .investor-preview__wallet-history-row { padding: 9px 0; border-bottom: 1px solid #dbe5d9; font-size: 11px; }
 .investor-preview__wallet-history-row strong { color: #23674c; text-align: right; }
 .investor-preview__wallet-history p { margin: 10px 0 0; color: #647d71; font-size: 10px; line-height: 1.5; }
-.investor-preview__flow-action { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 10px 0; color: #28745b; text-align: center; }
-.investor-preview__flow-line { position: relative; width: 100%; height: 1px; background: #8cb6a3; }
-.investor-preview__flow-line svg { position: absolute; top: 50%; right: 0; width: 18px; height: 18px; transform: translate(2px, -50%); background: #faf9f1; }
-.investor-preview__explain-button { padding: 8px 10px; border: 1px solid #b6d6c1; border-radius: 9px; background: #e3f1e5; color: #145d49; font-size: 11px; font-weight: 800; line-height: 1.35; text-align: center; transition: transform .2s ease, background-color .2s ease; }
-.investor-preview__explain-button:hover { transform: translateY(-2px); background: #d3eacf; }
-.investor-preview__explain-button:focus-visible, .investor-preview__filter:focus-visible, .investor-preview__agent:focus-visible, .investor-preview__wallet-buy:focus-visible, .investor-preview__wallet-history-button:focus-visible { outline: 3px solid #e9956f; outline-offset: 3px; }
-.investor-preview__flow-hint { max-width: 115px; color: #69847b; font-size: 10px; line-height: 1.4; }
 .investor-preview__explanation { display: flex; align-items: start; gap: 12px; margin-top: 11px; padding: 14px 17px; border: 1px solid #b9d7c4; border-radius: 12px; background: #e3f2e7; color: #235846; font-size: 12px; line-height: 1.6; }
 .investor-preview__explanation svg { flex: none; width: 17px; height: 17px; margin-top: 1px; }
 .investor-preview__explanation p { margin: 0; }
@@ -198,20 +196,19 @@
 @media (max-width: 560px) {
   .investor-preview__wrap { width: min(calc(100% - 32px), 1200px); }
   .investor-preview__window { border-radius: 20px; }
-  .investor-preview__topbar { min-height: 60px; padding: 10px 13px; }
-  .investor-preview__topbar-right { gap: 7px; }
+  .investor-preview__topbar { flex-wrap: wrap; column-gap: 7px; row-gap: 10px; min-height: 60px; padding: 10px 13px; }
+  .investor-preview__topbar-right { display: contents; }
+  .investor-preview__topbar-actions { order: 3; width: 100%; }
+  .investor-preview__viewer { order: 1; margin-left: auto; }
+  .investor-preview__badge { order: 2; }
   .investor-preview__viewer strong { font-size: 10px; }
   .investor-preview__viewer small { display: none; }
   .investor-preview__brand { font-size: 18px; }
   .investor-preview__badge { font-size: 9px; }
   .investor-preview__content { padding: 14px 13px; }
-  .investor-preview__wallet-flow { grid-template-columns: 1fr; gap: 0; }
+  .investor-preview__wallet-flow { grid-template-columns: 1fr; gap: 12px; }
   .investor-preview__wallet { padding: 16px 18px; }
   .investor-preview__wallet-value { margin-top: 9px; }
-  .investor-preview__flow-action { flex-direction: row; justify-content: center; gap: 12px; padding: 11px; }
-  .investor-preview__flow-line { width: 24px; height: 27px; background: transparent; border-left: 1px solid #8cb6a3; }
-  .investor-preview__flow-line svg { top: auto; bottom: -2px; left: -9px; right: auto; transform: rotate(90deg); background: #faf9f1; }
-  .investor-preview__flow-hint { max-width: 105px; text-align: left; }
   .investor-preview__panel-head { padding: 17px 15px 0; }
   .investor-preview__filters { margin-left: 15px; max-width: calc(100% - 30px); }
   .investor-preview__filter { padding-inline: 9px; font-size: 10px; }
@@ -235,6 +232,6 @@
   .investor-preview__agent-list { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .investor-preview__explain-button, .investor-preview__filter, .investor-preview__agent, .investor-preview__total, .investor-preview__wallet-buy { transition: none; }
-  .investor-preview__explain-button:hover, .investor-preview__agent:hover, .investor-preview__wallet-buy:hover { transform: none; }
+  .investor-preview__filter, .investor-preview__agent, .investor-preview__total { transition: none; }
+  .investor-preview__agent:hover { transform: none; }
 }

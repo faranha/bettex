@@ -1,6 +1,8 @@
+import { tokenomics } from '../../lib/tokenomics.ts';
+
 export type TransferKind = 'deposit' | 'withdraw';
-export type WithdrawalKind = 'externalWithdraw' | 'personalReaisWithdraw' | 'bettexReaisWithdraw';
-export type MovementKind = TransferKind | WithdrawalKind | 'externalDeposit';
+export type WithdrawalKind = 'externalWithdraw' | 'bettexExternalWithdraw' | 'personalReaisWithdraw' | 'bettexReaisWithdraw';
+export type MovementKind = TransferKind | WithdrawalKind | 'externalDeposit' | 'purchase';
 export type TransferStatus = 'pending' | 'completed';
 
 export type DemoTransfer = {
@@ -8,6 +10,7 @@ export type DemoTransfer = {
   kind: MovementKind;
   amountCents: number;
   feeCents?: number; // Older local demonstration entries did not record a fee.
+  costCents?: number; // BRL debited for a simulated purchase, fixed at the price when recorded.
   requestedAt: number;
   readyAt: number;
   status: TransferStatus;
@@ -28,6 +31,7 @@ export const DAY_MS = 24 * 60 * 60 * 1000;
 export const PERSONAL_REAIS_CENTS = 85000;
 export const BETTEX_REAIS_CENTS = 12480;
 export const TRANSFER_FEE_CENTS = 100; // 1 whole BETTEX, paid in addition to the amount sent.
+export const PURCHASE_PRICE_CENTS = Math.round(tokenomics.priceBRL * 100);
 // Only the visitor's active tokens vary in this local demo; other investors are illustrative.
 export const OTHER_INVESTORS_ACTIVE_TOKENS = 116250;
 export const EXAMPLE_DISTRIBUTION_REAIS_CENTS = 100000;
@@ -54,19 +58,22 @@ function isValidTransfer(value: unknown): value is DemoTransfer {
   const entry = value as Partial<DemoTransfer>;
   const knownKind = entry.kind === 'deposit'
     || entry.kind === 'withdraw'
+    || entry.kind === 'purchase'
     || entry.kind === 'externalDeposit'
     || entry.kind === 'externalWithdraw'
+    || entry.kind === 'bettexExternalWithdraw'
     || entry.kind === 'personalReaisWithdraw'
     || entry.kind === 'bettexReaisWithdraw';
   if (typeof entry.id !== 'string' || !knownKind || !isSafeAmount(entry.amountCents) || entry.amountCents === 0) return false;
-  if (entry.kind === 'deposit' || entry.kind === 'withdraw' || entry.kind === 'externalDeposit' || entry.kind === 'externalWithdraw') {
+  if (entry.kind === 'deposit' || entry.kind === 'withdraw' || entry.kind === 'purchase' || entry.kind === 'externalDeposit' || entry.kind === 'externalWithdraw' || entry.kind === 'bettexExternalWithdraw') {
     if (!isWholeTokens(entry.amountCents)) return false;
   }
+  if (entry.kind === 'purchase' ? !isSafeAmount(entry.costCents) || entry.costCents === 0 : entry.costCents !== undefined) return false;
   if (entry.feeCents !== undefined
-    && (entry.kind === 'externalDeposit' ? entry.feeCents !== 0 : entry.feeCents !== TRANSFER_FEE_CENTS)) return false;
+    && (entry.kind === 'externalDeposit' || entry.kind === 'purchase' ? entry.feeCents !== 0 : entry.feeCents !== TRANSFER_FEE_CENTS)) return false;
   if (!isSafeAmount(entry.requestedAt) || !isSafeAmount(entry.readyAt)) return false;
   if (entry.status !== 'pending' && entry.status !== 'completed') return false;
-  if (entry.kind === 'externalDeposit' && (entry.readyAt !== entry.requestedAt || entry.status !== 'completed')) return false;
+  if ((entry.kind === 'externalDeposit' || entry.kind === 'purchase') && (entry.readyAt !== entry.requestedAt || entry.status !== 'completed')) return false;
   return true;
 }
 
@@ -241,6 +248,33 @@ export function depositIntoPersonal(state: WalletDemoState, amountCents: number,
   });
 }
 
+export function buyTokens(state: WalletDemoState, amountCents: number, now: number): WalletDemoState {
+  validateNow(now);
+  validateTokenAmount(amountCents);
+  const costCents = (amountCents / 100) * PURCHASE_PRICE_CENTS;
+  const nextTokens = state.personalTokensCents + amountCents;
+  if (!Number.isSafeInteger(costCents) || !Number.isSafeInteger(nextTokens)) {
+    throw new Error('Quantidade muito alta para esta demonstração.');
+  }
+  if (costCents > state.personalReaisCents) {
+    throw new Error('Saldo em reais insuficiente na carteira pessoal para esta compra simulada.');
+  }
+  return addMovement({
+    ...state,
+    personalTokensCents: nextTokens,
+    personalReaisCents: state.personalReaisCents - costCents,
+  }, {
+    id: `${now}-${state.transfers.length}`,
+    kind: 'purchase',
+    amountCents,
+    costCents,
+    feeCents: 0,
+    requestedAt: now,
+    readyAt: now,
+    status: 'completed',
+  });
+}
+
 export function withdrawFromWallet(
   state: WalletDemoState,
   kind: WithdrawalKind,
@@ -249,14 +283,15 @@ export function withdrawFromWallet(
 ): WalletDemoState {
   validateNow(now);
   if (!isSafeAmount(amountCents) || amountCents === 0) throw new Error('Digite uma quantidade positiva.');
-  if (kind === 'externalWithdraw') validateTokenAmount(amountCents);
+  const isTokenWithdrawal = kind === 'externalWithdraw' || kind === 'bettexExternalWithdraw';
+  if (isTokenWithdrawal) validateTokenAmount(amountCents);
   else if (kind !== 'personalReaisWithdraw' && kind !== 'bettexReaisWithdraw') throw new Error('Tipo de saque inválido.');
 
   const isPersonal = kind === 'externalWithdraw' || kind === 'personalReaisWithdraw';
   const tokenBalance = isPersonal ? state.personalTokensCents : state.allocatedTokensCents;
   const reaisBalance = isPersonal ? state.personalReaisCents : state.allocatedReaisCents;
-  if (kind !== 'externalWithdraw' && amountCents > reaisBalance) throw new Error('Saldo em reais insuficiente para este saque.');
-  const tokenDebit = kind === 'externalWithdraw' ? amountCents + TRANSFER_FEE_CENTS : TRANSFER_FEE_CENTS;
+  if (!isTokenWithdrawal && amountCents > reaisBalance) throw new Error('Saldo em reais insuficiente para este saque.');
+  const tokenDebit = isTokenWithdrawal ? amountCents + TRANSFER_FEE_CENTS : TRANSFER_FEE_CENTS;
   if (!Number.isSafeInteger(tokenDebit)) throw new Error('Quantidade muito alta para esta demonstração.');
   if (tokenBalance < tokenDebit) throw new Error('Saldo BETTEX insuficiente para cobrir o saque e a taxa de 1 BETTEX.');
 

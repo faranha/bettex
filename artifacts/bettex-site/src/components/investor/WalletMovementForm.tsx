@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { X } from 'lucide-react';
-import { parseReais, parseTokens, TRANSFER_FEE_CENTS, type MovementKind, type WalletDemoState } from './walletDemo';
-import { formatTokens, formatMovementAmount, movements } from './walletMovements';
+import { parseReais, parseTokens, PURCHASE_PRICE_CENTS, TRANSFER_FEE_CENTS, type MovementKind, type WalletDemoState } from './walletDemo';
+import { formatTokens, formatMovementAmount, movements, reais } from './walletMovements';
 
 export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
   mode: MovementKind;
@@ -15,7 +15,9 @@ export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
   const definition = movements[mode];
   const isReais = definition.currency === 'BRL';
   const isDeposit = mode === 'externalDeposit';
+  const isPurchase = mode === 'purchase';
   const amount = isReais ? parseReais(quantity) : parseTokens(quantity);
+  const purchaseCostCents = isPurchase && amount !== null ? amount / 100 * PURCHASE_PRICE_CENTS : null;
   const sourceTokens = definition.source === 'personal' ? wallet.personalTokensCents : wallet.allocatedTokensCents;
   const available = isReais
     ? definition.source === 'personal' ? wallet.personalReaisCents : wallet.allocatedReaisCents
@@ -63,7 +65,14 @@ export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
         <button type="submit">{definition.confirm}</button>
       </div>
       <small id="investor-preview-transfer-available">
-        {isDeposit ? 'Somente BETTEX inteiros. Este depósito de exemplo não tem taxa.' : (
+        {isPurchase ? (
+          <>
+            Preço de referência: {reais.format(PURCHASE_PRICE_CENTS / 100)} por BETTEX.
+            Saldo em reais da carteira pessoal: {reais.format(wallet.personalReaisCents / 100)}.
+            {purchaseCostCents !== null && Number.isSafeInteger(purchaseCostCents) ? ` Total desta compra: ${reais.format(purchaseCostCents / 100)}.` : ''}
+            {' '}Compra fictícia sem taxa; nenhum pagamento real será feito.
+          </>
+        ) : isDeposit ? 'Somente BETTEX inteiros. Este depósito de exemplo não tem taxa.' : (
           <>
             Disponível na origem: {formatMovementAmount(mode, available)}.
             {isReais

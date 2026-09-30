@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowRight, History, Wallet } from 'lucide-react';
 import {
   initialWalletDemo,
   loadWalletDemo,
   requestTransfer,
   depositIntoPersonal,
+  buyTokens,
   withdrawFromWallet,
   saveWalletDemo,
   TRANSFER_FEE_CENTS,
@@ -16,7 +18,7 @@ import './WalletDemoPreview.css';
 
 const dateAndTime = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
 
-export function WalletDemoPreview() {
+export function WalletDemoPreview({ topbarActionsEl }: { topbarActionsEl: HTMLDivElement | null }) {
   const [loaded] = useState(loadWalletDemo);
   const [wallet, setWallet] = useState(loaded.state);
   const [storageWarning, setStorageWarning] = useState(loaded.warning);
@@ -42,11 +44,15 @@ export function WalletDemoPreview() {
     const requestedAt = Date.now();
     const updated = mode === 'externalDeposit'
       ? depositIntoPersonal(wallet, amountCents, requestedAt)
+      : mode === 'purchase'
+        ? buyTokens(wallet, amountCents, requestedAt)
       : mode === 'deposit' || mode === 'withdraw'
         ? requestTransfer(wallet, mode, amountCents, requestedAt)
         : withdrawFromWallet(wallet, mode, amountCents, requestedAt);
     setWallet(updated);
-    setNotice(`${movements[mode].title}: ${formatMovementAmount(mode, amountCents)} concluído imediatamente. ${mode === 'externalDeposit' ? 'Depósito sem taxa; nenhum depósito real foi feito.' : 'Taxa de 1 BETTEX debitada da carteira de origem. Nenhum pagamento ou transferência real foi feito.'}`);
+    setNotice(mode === 'purchase'
+      ? `Compra simulada: ${formatTokens(amountCents)} creditados na carteira pessoal; ${reais.format((updated.transfers[0].costCents ?? 0) / 100)} descontados apenas do saldo fictício em reais. Nenhum pagamento real foi feito.`
+      : `${movements[mode].title}: ${formatMovementAmount(mode, amountCents)} concluído imediatamente. ${mode === 'externalDeposit' ? 'Depósito sem taxa; nenhum depósito real foi feito.' : 'Taxa de 1 BETTEX debitada da carteira de origem. Nenhum pagamento ou transferência real foi feito.'}`);
     setMode(null);
   }
 
@@ -60,10 +66,12 @@ export function WalletDemoPreview() {
 
   function sourceAndDestination(kind: MovementKind) {
     switch (kind) {
+      case 'purchase': return 'Saldo fictício em R$ da carteira pessoal → BETTEX na carteira pessoal';
       case 'deposit': return 'Carteira pessoal → Carteira BETTEX';
       case 'withdraw': return 'Carteira BETTEX → carteira pessoal';
       case 'externalDeposit': return 'Origem externa simulada → carteira pessoal';
       case 'externalWithdraw': return 'Carteira pessoal → saída externa simulada';
+      case 'bettexExternalWithdraw': return 'Carteira BETTEX → saída externa simulada';
       case 'personalReaisWithdraw': return 'Carteira pessoal → saque em reais simulado';
       case 'bettexReaisWithdraw': return 'Carteira BETTEX → saque em reais simulado';
     }
@@ -71,6 +79,27 @@ export function WalletDemoPreview() {
 
   return (
     <>
+      {topbarActionsEl && createPortal(
+        <>
+          <button
+            type="button"
+            className="investor-preview__topbar-action"
+            aria-expanded={mode === 'purchase'}
+            aria-controls="investor-preview-transfer-form"
+            onClick={() => toggleForm('purchase')}
+            data-testid="button-comprar-bettex"
+          >Comprar BETTEX <ArrowRight aria-hidden="true" /></button>
+          <button
+            type="button"
+            className="investor-preview__topbar-action investor-preview__topbar-action--secondary"
+            aria-expanded={mode === 'externalDeposit'}
+            aria-controls="investor-preview-transfer-form"
+            onClick={() => toggleForm('externalDeposit')}
+            data-testid="button-depositar-carteira-pessoal"
+          >Depositar BETTEX</button>
+        </>,
+        topbarActionsEl,
+      )}
       <div className="investor-preview__wallet-flow" aria-label="Carteira pessoal e Carteira BETTEX">
         <div className="investor-preview__wallet">
           <div className="investor-preview__wallet-label"><Wallet aria-hidden="true" />Sua carteira pessoal</div>
@@ -88,12 +117,12 @@ export function WalletDemoPreview() {
           <div className="investor-preview__wallet-actions">
             <button
               type="button"
-              className="investor-preview__wallet-buy"
-              aria-expanded={mode === 'externalDeposit'}
+              className="investor-preview__wallet-transfer"
+              aria-expanded={mode === 'deposit'}
               aria-controls="investor-preview-transfer-form"
-              onClick={() => toggleForm('externalDeposit')}
-              data-testid="button-depositar-carteira-pessoal"
-            >Depositar BETTEX <ArrowRight aria-hidden="true" /></button>
+              onClick={() => toggleForm('deposit')}
+              data-testid="button-transferir-bettex"
+            >Transferir para Carteira BETTEX <ArrowRight aria-hidden="true" /></button>
             <button
               type="button"
               className="investor-preview__wallet-withdraw investor-preview__wallet-action-secondary"
@@ -112,28 +141,6 @@ export function WalletDemoPreview() {
             >Sacar reais</button>
           </div>
           <span className="investor-preview__wallet-buy-note">Movimentações apenas simuladas; nenhum ativo real é movimentado.</span>
-        </div>
-
-        <div className="investor-preview__flow-action">
-          <span className="investor-preview__flow-line" aria-hidden="true"><ArrowRight /></span>
-          <button
-            type="button"
-            className="investor-preview__explain-button"
-            aria-expanded={mode === 'deposit'}
-            aria-controls="investor-preview-transfer-form"
-            onClick={() => toggleForm('deposit')}
-            data-testid="button-transferir-bettex"
-          >Transferir BETTEX <ArrowRight aria-hidden="true" /></button>
-          <span className="investor-preview__flow-line investor-preview__flow-line--reverse" aria-hidden="true"><ArrowRight /></span>
-          <button
-            type="button"
-            className="investor-preview__wallet-transfer-back"
-            aria-expanded={mode === 'withdraw'}
-            aria-controls="investor-preview-transfer-form"
-            onClick={() => toggleForm('withdraw')}
-            data-testid="button-transferir-para-pessoal"
-          >Para a carteira pessoal</button>
-          <span className="investor-preview__flow-hint">Transferências imediatas</span>
         </div>
 
         <div className="investor-preview__wallet investor-preview__wallet--bettex">
@@ -163,6 +170,22 @@ export function WalletDemoPreview() {
           <div className="investor-preview__wallet-actions investor-preview__wallet-actions--bettex">
             <button
               type="button"
+              className="investor-preview__wallet-transfer"
+              aria-expanded={mode === 'withdraw'}
+              aria-controls="investor-preview-transfer-form"
+              onClick={() => toggleForm('withdraw')}
+              data-testid="button-transferir-para-pessoal"
+            >Transferir para carteira pessoal <ArrowRight aria-hidden="true" /></button>
+            <button
+              type="button"
+              className="investor-preview__wallet-withdraw"
+              aria-expanded={mode === 'bettexExternalWithdraw'}
+              aria-controls="investor-preview-transfer-form"
+              onClick={() => toggleForm('bettexExternalWithdraw')}
+              data-testid="button-sacar-bettex-bettex"
+            >Sacar BETTEX</button>
+            <button
+              type="button"
               className="investor-preview__wallet-withdraw"
               aria-expanded={mode === 'bettexReaisWithdraw'}
               aria-controls="investor-preview-transfer-form"
@@ -175,8 +198,8 @@ export function WalletDemoPreview() {
 
       <details className="investor-preview__fee-note">
         <summary>Taxa por transferência ou saque: 1 BETTEX</summary>
-        <p>A taxa é debitada do saldo BETTEX da carteira de origem em transferências entre carteiras, saques de BETTEX e saques em reais. Em transferências de BETTEX, ela é cobrada além do valor enviado.</p>
-        <p>O depósito externo simulado na carteira pessoal é imediato e não tem taxa. Não há transferências nem pagamentos reais.</p>
+        <p>A taxa é debitada do saldo BETTEX da carteira de origem em transferências entre carteiras, saques externos de BETTEX e saques em reais. Em transferências e saques de BETTEX, ela é cobrada além do valor enviado.</p>
+        <p>A compra com reais fictícios da carteira pessoal e o depósito externo simulado são imediatos e não têm taxa. Não há transferências nem pagamentos reais.</p>
       </details>
 
       {mode && (
@@ -209,7 +232,7 @@ export function WalletDemoPreview() {
           <div className="investor-preview__wallet-history-row" key={transfer.id}>
             <span>
               {movements[transfer.kind].title}
-              <small>{sourceAndDestination(transfer.kind)} · {movements[transfer.kind].currency} · {dateAndTime.format(transfer.requestedAt)} · {transfer.status === 'pending' ? `Pendente até ${dateAndTime.format(transfer.readyAt)}` : 'Concluído'}{transfer.kind === 'externalDeposit' ? ' · Sem taxa' : ` · Taxa: ${formatTokens(transfer.feeCents ?? TRANSFER_FEE_CENTS)}`}</small>
+              <small>{sourceAndDestination(transfer.kind)} · {movements[transfer.kind].currency} · {dateAndTime.format(transfer.requestedAt)} · {transfer.status === 'pending' ? `Pendente até ${dateAndTime.format(transfer.readyAt)}` : 'Concluído'}{transfer.kind === 'externalDeposit' || transfer.kind === 'purchase' ? ' · Sem taxa' : ` · Taxa: ${formatTokens(transfer.feeCents ?? TRANSFER_FEE_CENTS)}`}{transfer.kind === 'purchase' && transfer.costCents !== undefined ? ` · Valor fictício: ${reais.format(transfer.costCents / 100)}` : ''}</small>
             </span>
             <strong>{formatMovementAmount(transfer.kind, transfer.amountCents)}</strong>
           </div>
