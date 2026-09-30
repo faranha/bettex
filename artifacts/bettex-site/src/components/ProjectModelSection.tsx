@@ -195,12 +195,12 @@ export function ProjectModelSection() {
               <p className="pm-detail">O token representa sua participação no projeto.</p>
             </div>
             <div className="pm-step">
-              <span className="pm-index">02 / CARTEIRA</span>
+              <span className="pm-index">02 / PARTICIPAÇÃO</span>
               <div className="pm-visual" aria-hidden="true">
                 <div className="pm-stake"><span className="pm-stake-coin"><BettexMark /></span><ArrowDown className="pm-stake-arrow" size={16} /><span className="pm-stake-vault">CARTEIRA</span></div>
               </div>
-              <h3>Mova o token <em>para sua Carteira BETTEX.</em></h3>
-              <p className="pm-detail">Ao mover o token para sua carteira na BETTEX, ele fica ativado para participar da distribuição nos dias de lucro.</p>
+              <h3>Sua participação <em>fica ativada.</em></h3>
+              <p className="pm-detail">O sistema cuida da compra e da movimentação dos tokens. Você acompanha sua participação pelo aplicativo.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / OPERAÇÕES</span>
@@ -231,7 +231,7 @@ export function ProjectModelSection() {
               </div>
               <h3>Receba sua parte <em>nos dias de lucro.</em></h3>
               <div className="pm-outcomes">
-                <div className="pm-outcome pm-outcome--profit"><span>Dia com lucro</span><strong>Titulares com tokens ativados recebem sua parte do lucro daquele dia.</strong></div>
+                <div className="pm-outcome pm-outcome--profit"><span>Dia com lucro</span><strong>Titulares com tokens ativados recebem sua parte do lucro daquele dia em reais.</strong></div>
                 <div className="pm-outcome pm-outcome--none"><span>Dia sem lucro</span><strong>Não há distribuição naquele dia, mas você não perde seu token.</strong></div>
               </div>
             </div>

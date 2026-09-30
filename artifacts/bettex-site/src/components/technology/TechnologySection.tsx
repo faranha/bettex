@@ -17,21 +17,21 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           <p className="technology-section__intro-note">ao comprar o token, você recebe o retorno de todos os agentes da BETTEX todos os dias quando ele lucra, e não perde os tokens em dias de red</p>
         </header>
 
-        <div className="technology-section__hierarchy" aria-label="Compre tokens BETTEX, mova-os para sua carteira e participe das operações dos quatro agentes. Nos dias de lucro, sua parte é creditada na conta BETTEX.">
+        <div className="technology-section__hierarchy" aria-label="O sistema processa a compra e a ativação dos tokens BETTEX. Nos dias de lucro, sua parte é creditada em reais na conta BETTEX, com saque por Pix.">
           <div className="technology-section__entry">
             <div className="technology-section__token" data-testid="diagram-technology-token">
               <span className="technology-section__coin" aria-hidden="true"><BettexMark /></span>
               <span className="technology-section__token-copy"><strong>Compre o token BETTEX</strong><small>01 / Compra</small></span>
             </div>
             <div className="technology-section__deposit-flow">
-              <p className="technology-section__deposit-label">Mova para sua carteira</p>
+              <p className="technology-section__deposit-label">Participação ativada</p>
               <div className="technology-section__deposit-path" aria-hidden="true" />
             </div>
             <div className="technology-section__wallet" data-testid="diagram-technology-wallet">
               <div className="technology-section__wallet-copy">
                 <span className="technology-section__wallet-kicker">02 / Ative sua participação</span>
                 <h3><span className="technology-section__wallet-heading-icon" aria-hidden="true"><WalletCards strokeWidth={1.7} /></span><span>Carteira <em>BETTEX</em></span></h3>
-                <p>Ao mover seus tokens para sua Carteira BETTEX, você ativa sua participação na IA central da BETTEX, que coordena os quatro agentes. Seus tokens continuam na carteira.</p>
+                <p>O sistema processa a compra e a ativação dos seus tokens. No aplicativo, você acompanha sua participação na IA BETTEX, que coordena os quatro agentes, e os lucros em reais.</p>
               </div>
               <div className="technology-section__wallet-art" role="img" aria-label="Robô da IA BETTEX com a marca BETTEX no peito">
                 <img className="technology-section__ai-robot" src={`${import.meta.env.BASE_URL}agents/bettex-hunter-portrait.webp`} alt="" loading="lazy" decoding="async" />
@@ -52,7 +52,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             <div className="technology-section__result-copy">
               <span className="technology-section__result-kicker">Dos quatro agentes para a sua conta</span>
               <h3>Lucro creditado na sua conta BETTEX.</h3>
-              <p>Nos dias em que houver lucro, sua parte é creditada na conta dentro da plataforma, se seus tokens estiverem ativados. Você pode sacar sua parte imediatamente, sem limite e sem restrições. Sem lucro, não há distribuição.</p>
+              <p>Nos dias em que houver lucro, sua parte é creditada em reais na conta dentro da plataforma, se seus tokens estiverem ativados. Depósitos e saques são em reais, por Pix. Você pode sacar sua parte imediatamente, sem limite e sem restrições. Sem lucro, não há distribuição.</p>
             </div>
           </div>
         </div>
