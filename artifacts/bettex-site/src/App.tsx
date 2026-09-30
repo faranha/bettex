@@ -14,6 +14,7 @@ import { AgentMark, type AgentKind } from '@/components/hero/AgentMark';
 import '@/components/hero/AgentCard.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { HumanStorySection } from '@/components/HumanStorySection';
+import { PrelaunchTokenomics } from '@/components/PrelaunchTokenomics';
 
 const queryClient = new QueryClient();
 type Agent = {
@@ -142,6 +143,7 @@ function Home() {
          {agents.map((agent, index) => <div className="technology-section__agent-slot" key={agent.name}><AgentCard agent={agent} number={index + 1} /></div>)}
        </TechnologySection>
       <InvestorAppPreview />
+       <PrelaunchTokenomics />
 
     </main>
 
