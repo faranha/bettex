@@ -85,7 +85,7 @@ function SiteFooter() {
           <ul className="space-y-3 text-sm font-semibold">
             <li><a className="hover:text-[#a4eacb]" href="#participacao">Como funciona</a></li>
             <li><a className="hover:text-[#a4eacb]" href="#agentes">Os quatro agentes</a></li>
-            <li><a className="hover:text-[#a4eacb]" href="#visao-investidor">Demonstração</a></li>
+            <li><a className="hover:text-[#a4eacb]" href="#visao-investidor">Telas do aplicativo</a></li>
           </ul>
         </nav>
         <nav aria-label="Informações e etapas">
@@ -183,7 +183,7 @@ function Home() {
             </h1>
             <p className="mt-7 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Em vez de colocar o dinheiro do mês em uma aposta, conheça a BETTEX: seja dono de uma IA que opera em diferentes mercados de risco com resultados diários.</p>
             <p className="mt-4 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">BETTEX é um token. Ao comprá-lo, você ativa sua participação e recebe uma parte dos lucros gerados pelos agentes autônomos de apostas e trading.</p>
-            <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ver demonstração <ArrowDown className="h-4 w-4" /></a></div>
+            <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ver telas do app <ArrowDown className="h-4 w-4" /></a></div>
             <p className="mt-7 max-w-lg border-l-2 border-[#ffcb9b] pl-4 text-xs leading-5 text-[#c9e0d6]">Investir em mercados de risco pode gerar perdas. Lucro e valorização do token não são garantidos.</p>
           </div>
           <div className="entrance entrance-delay relative mx-auto w-full max-w-[510px]">

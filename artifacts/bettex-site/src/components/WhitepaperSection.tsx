@@ -53,9 +53,9 @@ export function WhitepaperSection() {
         <div>
           <p className="whitepaper__eyebrow"><span aria-hidden="true" /> ARQUITETURA, ECONOMIA E RISCO</p>
           <h2 id="whitepaper-title">Documentação<br /><em>técnica.</em></h2>
-          <p className="whitepaper__hero-lede">Uma leitura técnica da rede, do aplicativo, das carteiras, da operação e das regras econômicas da BETTEX.</p>
+          <p className="whitepaper__hero-lede">Uma leitura técnica das contas em reais, da arquitetura backend, da operação e das regras econômicas da BETTEX.</p>
         </div>
-        <div className="whitepaper__hero-note"><span>VISÃO GERAL</span><p>O token BETTEX organiza a participação no projeto. A documentação detalha a rede, a elegibilidade, a tesouraria, os controles e a distribuição de resultados.</p></div>
+        <div className="whitepaper__hero-note"><span>VISÃO GERAL</span><p>O token BETTEX organiza a participação no projeto. A documentação detalha contas em reais, elegibilidade, tesouraria, controles e distribuição de resultados.</p></div>
       </header>
       <div className="whitepaper__body page-wrap">
         <aside className="whitepaper__aside" aria-label="Índice da documentação">
