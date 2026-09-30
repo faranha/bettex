@@ -14,14 +14,14 @@ export function TechnologySection({ children }: { children: ReactNode }) {
               Uma IA de apostas<br /><em>que controla quatro agentes</em>
             </h2>
           </div>
-           <p className="technology-section__intro-note">Este diagrama ilustra o modelo proposto. As regras de participação estão na documentação técnica; a infraestrutura, custódia e validação operacional ainda dependem de construção.</p>
+          <p className="technology-section__intro-note">ao comprar o token, você recebe o retorno de todos os agentes da BETTEX todos os dias quando ele lucra, e não perde os tokens em dias de red</p>
         </header>
 
-         <div className="technology-section__hierarchy" aria-label="Modelo proposto: token BETTEX, participação sujeita a regras, quatro agentes e possível distribuição de lucros líquidos em USDC.">
+        <div className="technology-section__hierarchy" aria-label="Compre tokens BETTEX, mova-os para sua carteira e participe das operações dos quatro agentes. Nos dias de lucro, sua parte é creditada na conta BETTEX.">
           <div className="technology-section__entry">
             <div className="technology-section__token" data-testid="diagram-technology-token">
               <span className="technology-section__coin" aria-hidden="true"><BettexMark /></span>
-               <span className="technology-section__token-copy"><strong>Token BETTEX proposto</strong><small>01 / Emissão</small></span>
+              <span className="technology-section__token-copy"><strong>Compre o token BETTEX</strong><small>01 / Compra</small></span>
             </div>
             <div className="technology-section__deposit-flow">
               <p className="technology-section__deposit-label">Mova para sua carteira</p>
@@ -29,9 +29,9 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             </div>
             <div className="technology-section__wallet" data-testid="diagram-technology-wallet">
               <div className="technology-section__wallet-copy">
-                  <span className="technology-section__wallet-kicker">02 / Staking proposto</span>
+                <span className="technology-section__wallet-kicker">02 / Ative sua participação</span>
                 <h3><span className="technology-section__wallet-heading-icon" aria-hidden="true"><WalletCards strokeWidth={1.7} /></span><span>Carteira <em>BETTEX</em></span></h3>
-                  <p>Staking de ao menos 1 BETTEX, sem período de bloqueio. O tempo em depósito determina a participação no mês UTC. A forma de custódia e a implementação ainda precisam ser validadas.</p>
+                <p>Ao mover seus tokens para sua Carteira BETTEX, você ativa sua participação na IA central da BETTEX, que coordena os quatro agentes. Seus tokens continuam na carteira.</p>
               </div>
               <div className="technology-section__wallet-art" role="img" aria-label="Robô da IA BETTEX com a marca BETTEX no peito">
                 <img className="technology-section__ai-robot" src={`${import.meta.env.BASE_URL}agents/bettex-hunter-portrait.webp`} alt="" loading="lazy" decoding="async" />
@@ -50,9 +50,9 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             <span className="technology-section__result-arrow" aria-hidden="true"><ArrowDown size={18} /></span>
             <span className="technology-section__result-icon" aria-hidden="true"><WalletCards size={32} strokeWidth={1.7} /></span>
             <div className="technology-section__result-copy">
-               <span className="technology-section__result-kicker">Resultados possíveis · distribuição condicionada</span>
-                <h3>Distribuição em USDC quando houver lucro elegível.</h3>
-                <p>Após compensar perdas anteriores, metade do resultado líquido realizado é distribuída proporcionalmente aos BETTEX depositados e elegíveis. Lucro não é garantido. A saída é em USDC para carteira na rede Arbitrum One, não em reais ou por banco.</p>
+              <span className="technology-section__result-kicker">Dos quatro agentes para a sua conta</span>
+              <h3>Lucro creditado na sua conta BETTEX.</h3>
+              <p>Nos dias em que houver lucro, sua parte é creditada na conta dentro da plataforma, se seus tokens estiverem ativados. Você pode sacar sua parte imediatamente, sem limite e sem restrições. Sem lucro, não há distribuição.</p>
             </div>
           </div>
         </div>
