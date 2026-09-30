@@ -1,212 +1,166 @@
+import { useEffect, useState } from 'react';
 import { tokenomics, formatTokenCount } from '@/lib/tokenomics';
 import './WhitepaperSection.css';
 
-type Status = 'definido' | 'proposta' | 'aberto';
-
-const statusLabels: Record<Status, string> = {
-  definido: 'Regra definida',
-  proposta: 'Em discussão',
-  aberto: 'A definir',
-};
-
 const chapters = [
-  { id: 'whitepaper-escopo', number: '01', title: 'Escopo e leitura' },
-  { id: 'whitepaper-emissao', number: '02', title: 'Emissão e vendas' },
-  { id: 'whitepaper-tesouraria', number: '03', title: 'Tesouraria e agentes' },
-  { id: 'whitepaper-risco', number: '04', title: 'Controle de risco' },
-  { id: 'whitepaper-staking', number: '05', title: 'Staking e distribuição' },
-  { id: 'whitepaper-fluxos', number: '06', title: 'Contas e saques' },
-  { id: 'whitepaper-riscos', number: '07', title: 'Riscos materiais' },
-  { id: 'whitepaper-pendencias', number: '08', title: 'Decisões em aberto' },
+  { id: 'documentacao-como-funciona', number: '01', title: 'Como funciona', subtitle: 'O desenho, sem confundir intenção com operação.' },
+  { id: 'documentacao-emissao', number: '02', title: 'Emissão e vendas', subtitle: 'Quando os tokens podem ser emitidos e por quanto.' },
+  { id: 'documentacao-tesouraria', number: '03', title: 'Tesouraria e agentes', subtitle: 'O destino dos recursos e o espaço de cada agente.' },
+  { id: 'documentacao-controles', number: '04', title: 'Controles de risco', subtitle: 'Limites que vêm antes de qualquer operação.' },
+  { id: 'documentacao-staking', number: '05', title: 'Staking e distribuição', subtitle: 'Elegibilidade não é promessa de rendimento.' },
+  { id: 'documentacao-contas', number: '06', title: 'Contas e saques', subtitle: 'O que é contabilizado, exibido e transferido.' },
+  { id: 'documentacao-riscos', number: '07', title: 'Riscos', subtitle: 'O que pode dar errado, inclusive antes do lançamento.' },
 ] as const;
 
-function StatusBadge({ status }: { status: Status }) {
-  return <span className={`whitepaper__status whitepaper__status--${status}`}>{statusLabels[status]}</span>;
-}
-
-function ChapterHead({ number, title, id, status, description }: { number: string; title: string; id: string; status?: Status; description?: string }) {
-  return <div className="whitepaper__chapter-head">
-    <div className="whitepaper__chapter-line"><span className="whitepaper__chapter-number">CAPÍTULO / {number}</span>{status && <StatusBadge status={status} />}</div>
-    <h3 id={id} className="whitepaper__chapter-title">{title}</h3>
-    {description && <p className="whitepaper__chapter-intro">{description}</p>}
-  </div>;
+function chapterFromHash() {
+  if (typeof window === 'undefined') return 0;
+  const index = chapters.findIndex(chapter => `#${chapter.id}` === window.location.hash);
+  return index < 0 ? 0 : index;
 }
 
 const agents = [
-  { name: 'PREDIX', area: 'Mercados de previsão', platform: 'Polymarket', detail: 'Pesquisa cenários e operações em mercados de previsão.' },
-  { name: 'TRADEX', area: 'Ações e cripto', platform: 'Robinhood · conceito', detail: 'Estuda estratégias para ativos tradicionais e criptoativos.' },
-  { name: 'SPORTIX', area: 'Mercados esportivos', platform: 'Kalshi', detail: 'Analisa eventos esportivos e seus mercados associados.' },
-  { name: 'BETTIX', area: 'Jogos de cassino', platform: 'Duel · conceito', detail: 'Estuda decisões em jogos de cassino, sujeitos a regras locais.' },
+  { name: 'PREDIX', area: 'Mercados de previsão', reference: 'Polymarket', detail: 'Avalia cenários e preços de eventos futuros.' },
+  { name: 'TRADEX', area: 'Ações e criptoativos', reference: 'Robinhood', detail: 'Estuda oportunidades em mercados financeiros.' },
+  { name: 'SPORTIX', area: 'Mercados esportivos', reference: 'Kalshi', detail: 'Analisa eventos relacionados ao esporte.' },
+  { name: 'BETTIX', area: 'Jogos de cassino', reference: 'Duel', detail: 'Estuda decisões em jogos, se legalmente permitidas.' },
 ] as const;
 
-const openDecisions = [
-  { topic: 'Oferta inicial', detail: 'Divisão dos 100 milhões entre pré-venda e lançamento; preço e calendário da pré-venda.' },
-  { topic: 'Vendas posteriores', detail: 'Datas, preços e cadência efetiva dos 400 milhões destinados às vendas públicas mensais; preço da venda a investidores.' },
-  { topic: 'Tokens da empresa', detail: 'Momento do mint e regras específicas de elegibilidade a distribuições; a carteira da empresa é livremente movimentável.' },
-  { topic: 'Política de investimento', detail: 'Aprovação ou rejeição da proposta defensiva de 50% e limites numéricos do controle de risco.' },
-  { topic: 'Staking e resultados', detail: 'Lockup, cooldown, snapshots, periodicidade de pagamento e tratamento de perdas acumuladas anteriores.' },
-  { topic: 'Operação e infraestrutura', detail: 'Redes aceitas, integrações permitidas, critérios de custódia e estrutura legal da operação.' },
-  { topic: 'Custos do projeto', detail: 'Taxas próprias de depósito e saque; custos de rede, bridge e terceiros serão variáveis e separados.' },
-] as const;
+function ChapterContent({ index }: { index: number }) {
+  switch (index) {
+    case 0:
+      return <>
+        <div className="whitepaper__lead"><span>EM UMA FRASE</span><p>A BETTEX reúne quatro agentes de inteligência artificial, um token e uma tesouraria comum sob regras de alocação, risco e distribuição.</p></div>
+        <div className="whitepaper__prose">
+          <p>Um <strong>agente de IA</strong> é um sistema que analisa informações e pode sugerir ações dentro de uma função específica. Aqui, PREDIX, TRADEX, SPORTIX e BETTIX representam quatro áreas de análise. As sugestões não substituem autorizações, verificações de risco ou decisões humanas de governança.</p>
+          <p><strong>BETTEX</strong> é o token previsto para o projeto: uma unidade digital registrada em uma rede blockchain. O modelo liga a participação em resultados ao depósito voluntário desses tokens em <strong>staking</strong>, explicado no capítulo 05. Comprar ou guardar o token, por si só, não dá direito a um pagamento.</p>
+          <p>Estas páginas descrevem <strong>regras da BETTEX</strong>. Os números e fluxos mostrados na prévia do aplicativo são <strong>simulações de demonstração</strong>, sem dinheiro, tokens ou transações reais. Operações fora desta prévia exigem infraestrutura, permissões das plataformas e revisão jurídica.</p>
+        </div>
+        <div className="whitepaper__aside-callout"><span>COMO LER</span><p>Uma regra documentada não significa que o sistema já foi lançado, auditado ou autorizado a operar. Nenhuma compra, depósito ou saque é realizado nesta documentação.</p></div>
+      </>;
+    case 1:
+      return <>
+        <div className="whitepaper__supply">
+          <div className="whitepaper__supply-top"><span>TETO MÁXIMO NO GENESIS</span><strong data-testid="text-documentacao-max-supply">{formatTokenCount(tokenomics.maxSupply)}</strong><small>BETTEX · Genesis é o marco inicial do calendário de emissão.</small></div>
+          <div className="whitepaper__supply-bar" role="img" aria-label="50% vendas públicas, 25% investidores, 25% empresa"><span /><span /><span /></div>
+          <div className="whitepaper__supply-key"><span><i />Público · 500 milhões</span><span><i />Investidores · 250 milhões</span><span><i />Empresa · 250 milhões</span></div>
+        </div>
+        <div className="whitepaper__prose"><p>O teto é <strong>1 bilhão de BETTEX</strong>, não uma afirmação de que todo esse volume já exista. <strong>Mint</strong> é a criação efetiva de tokens na rede. As parcelas pública e de investidores só são emitidas depois de cada venda confirmada.</p></div>
+        <div className="whitepaper__timeline">
+          <div><span>DIAS 0–30</span><h4>Pré-venda pública</h4><p><strong>50 milhões</strong> a <strong>R$ 0,08</strong> por BETTEX, contados desde o Genesis.</p></div>
+          <div><span>DIAS 31–60</span><h4>Lançamento público</h4><p><strong>50 milhões</strong> a <strong>R$ 0,10</strong> por BETTEX.</p></div>
+          <div><span>DO DIA 61</span><h4>Vendas mensais</h4><p>Os <strong>400 milhões</strong> restantes da parcela pública têm janela de <strong>40 meses</strong>, até <strong>10 milhões por mês</strong>, a <strong>R$ 0,10</strong> cada. Tokens não vendidos no mês não são emitidos; o saldo não utilizado expira ao fim da janela.</p></div>
+        </div>
+        <div className="whitepaper__rule-pair">
+          <div><span>INVESTIDORES / 25%</span><p><strong>250 milhões</strong> disponíveis para venda a <strong>R$ 0,10</strong> por token ao longo de <strong>24 meses desde o Genesis</strong>. Somente vendas confirmadas geram emissão; o saldo não vendido expira ao final do prazo.</p></div>
+          <div><span>EMPRESA / 25%</span><p><strong>250 milhões</strong> são emitidos no Genesis para a empresa e podem ser movimentados livremente. Só participam de distribuições se depositados em staking, sob exatamente as mesmas regras dos demais participantes.</p></div>
+        </div>
+      </>;
+    case 2:
+      return <>
+        <div className="whitepaper__lead whitepaper__lead--dark"><span>DESTINAÇÃO INTEGRAL</span><p><strong>100%</strong> do dinheiro recebido nas vendas primárias públicas e a investidores vai para a tesouraria de investimentos, não para despesas operacionais da empresa.</p></div>
+        <div className="whitepaper__prose"><p>A tesouraria separa <strong>50%</strong> em USDC líquido como reserva defensiva e <strong>50%</strong> como parcela investível. USDC é um ativo digital concebido para acompanhar o valor do dólar americano, mas que também tem riscos próprios.</p><p>Da <strong>metade investível</strong>, cada agente recebe uma reserva de exatamente <strong>25%</strong> — equivalente a 12,5% da tesouraria total. Se um agente não utilizar sua parte, o valor permanece reservado para ele e não pode ser repassado a outro agente.</p><p>Despesas da empresa não saem dos recebimentos das vendas primárias. A empresa pode receber distribuições pelos próprios tokens que colocar em staking, nas mesmas condições dos demais; sem lucro elegível, não recebe essa distribuição.</p></div>
+        <div className="whitepaper__agents" aria-label="Divisão da parcela investível entre agentes">
+          {agents.map((agent, i) => <article key={agent.name} className="whitepaper__agent"><div className="whitepaper__agent-top"><span>0{i + 1} / 04</span><strong>25%</strong></div><h4>{agent.name}</h4><span className="whitepaper__agent-area">{agent.area}</span><p>{agent.detail}</p><small>REFERÊNCIA CONCEITUAL · {agent.reference}</small></article>)}
+        </div>
+        <div className="whitepaper__aside-callout"><span>LIMITES REAIS</span><p>As plataformas citadas são referências conceituais, não integrações ativas ou endossos. Qualquer acesso exigirá autorização da plataforma, conformidade com as regras locais e infraestrutura própria. Uma ferramenta de consulta não autoriza uma operação.</p></div>
+      </>;
+    case 3:
+      return <>
+        <div className="whitepaper__prose"><p>Todos os percentuais abaixo são medidos contra a <strong>metade investível da tesouraria</strong>, não contra o saldo total. Antes de uma operação, um controle independente dos agentes deve verificar a proposta. <strong>Ordens pendentes contam</strong> nos limites de compromisso e exposição; uma ordem que ultrapasse qualquer limite é rejeitada.</p></div>
+        <div className="whitepaper__limits">
+          <div><span>01 / NOVOS COMPROMISSOS POR DIA</span><strong>2% <em>global</em> / 0,5% <em>por agente</em></strong><p>Teto de recursos assumidos em novas operações por dia UTC.</p></div>
+          <div><span>02 / OPERAÇÃO INDIVIDUAL</span><strong>0,05%</strong><p>Máximo comprometido em uma única operação.</p></div>
+          <div><span>03 / EXPOSIÇÃO EM ABERTO</span><strong>10% <em>global</em> / 2,5% <em>por agente</em></strong><p>Limite para o total ainda sujeito a resultado.</p></div>
+          <div><span>04 / EXPOSIÇÃO CORRELACIONADA</span><strong>0,5%</strong><p>Máximo conjunto em posições afetadas pelo mesmo evento ou risco.</p></div>
+          <div><span>05 / PERDA REALIZADA DIÁRIA</span><strong>0,5% <em>global</em> / 0,125% <em>por agente</em></strong><p>Ao atingir o limite, novas operações naquele escopo param até o próximo dia UTC.</p></div>
+        </div>
+        <div className="whitepaper__aside-callout"><span>FREIO ADICIONAL</span><p>Não há alavancagem — operar com dinheiro emprestado para ampliar posições. Uma pausa de emergência pode interromper novas operações independentemente dos demais limites. Limites reduzem exposição; não impedem perdas.</p></div>
+      </>;
+    case 4:
+      return <>
+        <div className="whitepaper__prose"><p><strong>Staking</strong> é o depósito de BETTEX para se tornar elegível a uma possível distribuição. O mínimo é <strong>1 BETTEX inteiro</strong>. A elegibilidade começa quando o depósito é confirmado e termina no momento do pedido de retirada. Não há período de bloqueio: tokens disponíveis podem ser retirados imediatamente, sujeitos apenas à confirmação da rede.</p><p>Ter BETTEX na carteira sem depositá-los não gera elegibilidade. O saldo elegível de cada pessoa é acompanhado <strong>dia a dia, ao longo do mês-calendário em UTC</strong>; a participação mensal é proporcional a esse saldo ponderado pelo tempo, comparado ao de todos os participantes. Tokens da empresa seguem a mesma conta, sem preferência.</p></div>
+        <div className="whitepaper__formula"><span>BASE DA PARTICIPAÇÃO MENSAL</span><p>Saldo elegível diário, ponderado pelo tempo <b>÷</b> soma dos saldos elegíveis de todos os participantes no mês</p></div>
+        <div className="whitepaper__steps">
+          <div><span>01</span><p>No fim de cada mês UTC, apuram-se em <strong>USD</strong> os resultados <strong>realizados</strong> em USDC, descontando custos e perdas acumuladas de meses anteriores. Ganhos ainda não concretizados não entram.</p></div>
+          <div><span>02</span><p>Somente se o resultado líquido continuar positivo depois de compensar perdas anteriores, <strong>50%</strong> é distribuído proporcionalmente aos elegíveis; os outros <strong>50%</strong> permanecem na tesouraria.</p></div>
+          <div><span>03</span><p>A determinação ocorre no <strong>quinto dia útil do mês seguinte</strong>. Se não houver saldo elegível no mês, não há pagamento. Resultado zero ou negativo também não gera distribuição.</p></div>
+        </div>
+        <div className="whitepaper__aside-callout"><span>SEM PROMESSA</span><p>Não há taxa de retorno fixa, pagamento automático todo mês nem proteção do capital. Os resultados dependem de operações efetivamente realizadas e podem ser negativos.</p></div>
+      </>;
+    case 5:
+      return <>
+        <div className="whitepaper__currency-grid">
+          <div><span>01 / CONTABILIDADE</span><strong>USD</strong><p>Unidade usada para apurar riscos, custos e resultados.</p></div>
+          <div><span>02 / EXIBIÇÃO</span><strong>BRL</strong><p>Conversão em reais apenas indicativa. Não cria saldo ou direito de saque em reais.</p></div>
+          <div><span>03 / DISTRIBUIÇÃO</span><strong>USDC</strong><p>Ativo digital concebido para acompanhar o dólar; envio exclusivamente pela rede Arbitrum One.</p></div>
+        </div>
+        <div className="whitepaper__prose"><p>Depositar e retirar <strong>BETTEX</strong> do staking são movimentos do token. Receber uma distribuição, quando houver, é um fluxo separado em <strong>USDC pela Arbitrum One</strong>, uma rede blockchain. É preciso usar endereço compatível; envio para a rede ou carteira errada pode causar perda irreversível. <strong>Não existe saque bancário</strong> nem saldo sacável em BRL.</p><p>A taxa própria do projeto é <strong>zero</strong> para depósito e retirada no staking, transferência de lucro e saque de USDC. Custos de rede e de terceiros são separados, variáveis e devem ser mostrados para confirmação antes da transação. Zero taxa do projeto não significa transação gratuita.</p></div>
+        <div className="whitepaper__aside-callout"><span>NESTA PÁGINA</span><p>Não há transação ao vivo. Qualquer carteira, saldo, lucro ou movimento mostrado em uma demonstração é uma simulação de interface, não uma conta ativa nem comprovante de propriedade. Transações futuras dependem de infraestrutura, autorizações externas e confirmação na rede.</p></div>
+      </>;
+    default:
+      return <>
+        <div className="whitepaper__prose"><p>Os limites, a reserva defensiva e a divisão de resultados organizam o desenho do projeto, mas <strong>não eliminam risco nem garantem retorno</strong>. É possível perder parte ou a totalidade do valor empregado.</p></div>
+        <div className="whitepaper__risk-list">
+          <div><span>01 / MERCADO E MODELO</span><p>Agentes de IA podem errar, usar dados incompletos ou atrasados e executar mal uma decisão. Mercados de previsão, ações, criptoativos, esportes e jogos podem gerar perdas consecutivas ou liquidez insuficiente.</p></div>
+          <div><span>02 / TOKEN E MOEDA DIGITAL</span><p>BETTEX pode perder valor e pode não haver comprador quando se quiser vender. USDC pode perder sua referência ao dólar; emissores, reservas e intermediários também apresentam riscos.</p></div>
+          <div><span>03 / TECNOLOGIA E CUSTÓDIA</span><p>Contratos, carteiras, chaves, redes, APIs e plataformas podem falhar, sofrer ataques ou ficar indisponíveis. Transações em blockchain geralmente não podem ser revertidas.</p></div>
+          <div><span>04 / LEI E AUTORIZAÇÕES</span><p>A possibilidade de atuar em cada mercado depende da jurisdição, das regras das plataformas e de revisão jurídica. Uma referência conceitual não equivale a integração, licença ou aprovação regulatória.</p></div>
+          <div><span>05 / EXECUÇÃO DO PROJETO</span><p>O desenho pode não chegar à operação. Mesmo com regras publicadas, a implementação, as permissões e os controles precisam ser desenvolvidos e testados. Simulações não demonstram desempenho futuro.</p></div>
+        </div>
+        <div className="whitepaper__lead whitepaper__lead--dark whitepaper__closing"><span>ANTES DE TOMAR UMA DECISÃO</span><p>Não há rendimento prometido, capital protegido, oferta ativa ou transação nesta documentação. Leia os riscos e diferencie sempre uma regra descrita de um serviço efetivamente disponível.</p></div>
+      </>;
+  }
+}
 
 export function WhitepaperSection() {
-  return <section className="whitepaper" id="whitepaper" aria-labelledby="whitepaper-title">
-    <div className="whitepaper__topline"><span>BETTEX / DOCUMENTO DE TRABALHO</span><span>LEITURA PÚBLICA · VERSÃO PROPOSTA</span></div>
+  const [active, setActive] = useState(chapterFromHash);
 
+  useEffect(() => {
+    const syncHash = () => {
+      const hash = window.location.hash;
+      if (hash !== '#documentacao' && !chapters.some(chapter => `#${chapter.id}` === hash)) return;
+      setActive(chapterFromHash());
+    };
+    window.addEventListener('hashchange', syncHash);
+    return () => window.removeEventListener('hashchange', syncHash);
+  }, []);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash !== '#documentacao' && hash !== `#${chapters[active].id}`) return;
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(hash === '#documentacao' ? 'documentacao' : chapters[active].id)
+        ?.scrollIntoView({ block: 'start' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [active]);
+
+  const chapter = chapters[active];
+  return <section className="whitepaper" id="documentacao" aria-labelledby="documentacao-title">
+    <div className="whitepaper__topline"><span>BETTEX / ARQUIVO TÉCNICO</span><span>REGRAS DA BETTEX · PRÉVIA DO APP SIMULADA</span></div>
     <div className="whitepaper__hero page-wrap">
-      <div className="whitepaper__hero-main">
-        <p className="whitepaper__kicker"><span className="whitepaper__kicker-mark" aria-hidden="true" /> NOTA TÉCNICA / 001</p>
-        <h2 id="whitepaper-title">Whitepaper<span className="whitepaper__hero-period">.</span></h2>
-        <p className="whitepaper__hero-lede">Uma proposta para examinar, não uma promessa para aceitar.</p>
-      </div>
-      <div className="whitepaper__hero-note">
-        <span className="whitepaper__micro">Antes de começar</span>
-        <p>A BETTEX ainda não está em operação. Este documento separa regras de desenho, hipóteses e decisões pendentes. Ele não constitui uma oferta, um convite à compra ou uma garantia de resultados.</p>
-      </div>
+      <div><p className="whitepaper__eyebrow"><span aria-hidden="true" /> GUIA DE LEITURA / 07 CAPÍTULOS</p><h2 id="documentacao-title">Documentação<br /><em>técnica.</em></h2><p className="whitepaper__hero-lede">O projeto por dentro. Regras claras, números conferíveis e os riscos que importam.</p></div>
+      <div className="whitepaper__hero-note"><span>NOTA AO LEITOR / 001</span><p>Este documento descreve o desenho da BETTEX em linguagem direta. Não anuncia o início das operações, não oferece tokens e não garante resultados.</p></div>
     </div>
-
-    <div className="whitepaper__legend page-wrap" aria-label="Legenda dos estados deste documento">
-      <span className="whitepaper__legend-heading">COMO LER ESTE TEXTO</span>
-      <div><StatusBadge status="definido" /><span>Regra estabelecida no desenho atual; não significa produto em funcionamento.</span></div>
-      <div><StatusBadge status="proposta" /><span>Hipótese ainda sujeita a validação e revisão.</span></div>
-      <div><StatusBadge status="aberto" /><span>Parâmetro ou decisão não estabelecido.</span></div>
-    </div>
-
     <div className="whitepaper__body page-wrap">
-      <aside className="whitepaper__aside" aria-label="Índice do whitepaper">
-        <div className="whitepaper__aside-inner">
-          <p className="whitepaper__aside-label">NESTE DOCUMENTO <span>01—08</span></p>
-          <nav aria-label="Capítulos do whitepaper">
-            {chapters.map(chapter => <a key={chapter.id} href={`#${chapter.id}`} className="whitepaper__toc-link" data-testid={`link-${chapter.id}`}><span>{chapter.number}</span>{chapter.title}<span className="whitepaper__toc-arrow" aria-hidden="true">↗</span></a>)}
+      <aside className="whitepaper__aside" aria-label="Navegação dos capítulos">
+        <div id="documentacao-indice" className="whitepaper__aside-inner"><div className="whitepaper__aside-label"><span>ÍNDICE</span><span>01 — 07</span></div>
+          <nav aria-label="Capítulos da documentação">
+            {chapters.map((item, index) => <a key={item.id} href={`#${item.id}`} onClick={() => setActive(index)} aria-current={index === active ? 'page' : undefined} className={`whitepaper__toc-link${index === active ? ' is-active' : ''}`} data-testid={`link-${item.id}`}><span className="whitepaper__toc-number">{item.number}</span><span>{item.title}</span><span className="whitepaper__toc-arrow" aria-hidden="true">↗</span></a>)}
           </nav>
-          <p className="whitepaper__aside-foot">Todas as quantidades representam o desenho planejado, não tokens disponíveis, emitidos ou vendidos.</p>
+          <p className="whitepaper__aside-foot">Selecione um capítulo. O endereço de cada um pode ser compartilhado diretamente.</p>
         </div>
       </aside>
-
       <div className="whitepaper__content">
-        <section className="whitepaper__chapter" aria-labelledby="whitepaper-escopo">
-          <ChapterHead number="01" id="whitepaper-escopo" title="O que este documento é" status="definido" description="Uma descrição verificável da arquitetura pretendida — inclusive do que ainda não foi resolvido." />
-          <div className="whitepaper__prose">
-            <p>A BETTEX propõe reunir quatro agentes de IA em uma estratégia de mercados de risco, com regras comuns de tesouraria e distribuição. O projeto é cripto-nativo no desenho do token e do eventual saque, mas a política de tesouraria é <strong>centralizada por enquanto</strong>. Não há aqui execução autônoma irrestrita nem infraestrutura on-chain em produção.</p>
-            <p>“Definido” neste texto identifica uma regra do modelo proposto pela equipe, não uma operação auditada ou lançada. Implementação, permissões de plataformas, conformidade legal e parâmetros operacionais precisam ser verificados antes de qualquer atividade real.</p>
-          </div>
-          <div className="whitepaper__margin-note"><span>PRINCÍPIO DE LEITURA</span><p>Se um número aparece como exemplo, ele não deve ser interpretado como meta, rendimento esperado ou limite aprovado.</p></div>
-        </section>
-
-        <section className="whitepaper__chapter" aria-labelledby="whitepaper-emissao">
-          <ChapterHead number="02" id="whitepaper-emissao" title="Emissão não é circulação" status="definido" description="Um teto máximo e três destinações planejadas. Alocação não equivale a mint, venda ou liquidez." />
-          <div className="whitepaper__supply">
-            <div className="whitepaper__supply-total"><span className="whitepaper__micro">TETO MÁXIMO · GENESIS</span><strong data-testid="text-whitepaper-max-supply">{formatTokenCount(tokenomics.maxSupply)}</strong><span>BETTEX · limite absoluto de emissão</span></div>
-            <div className="whitepaper__supply-bar" role="img" aria-label="Distribuição planejada: 50% venda pública, 25% investidores, 25% empresa"><span className="whitepaper__supply-public" /><span className="whitepaper__supply-investor" /><span className="whitepaper__supply-company" /></div>
-            <div className="whitepaper__allocation-grid">
-              <div><span className="whitepaper__allocation-key whitepaper__allocation-key--public" /> <span>Venda pública</span><strong>{formatTokenCount(tokenomics.publicSaleAllocation)}</strong><small>50% do teto</small></div>
-              <div><span className="whitepaper__allocation-key whitepaper__allocation-key--investor" /> <span>Investidores</span><strong>{formatTokenCount(tokenomics.investorAllocation)}</strong><small>25% do teto</small></div>
-              <div><span className="whitepaper__allocation-key whitepaper__allocation-key--company" /> <span>Empresa</span><strong>{formatTokenCount(tokenomics.companyAllocation)}</strong><small>25% do teto</small></div>
-            </div>
-          </div>
-          <div className="whitepaper__prose">
-            <p>O Genesis estabelece o teto de <strong>{formatTokenCount(tokenomics.maxSupply)} BETTEX</strong>. Os tokens destinados às vendas pública e a investidores só são emitidos <strong>após a confirmação de cada venda</strong>; a alocação prevista não deve ser lida como saldo já cunhado.</p>
-          </div>
-          <div className="whitepaper__rule-list">
-            <div><span className="whitepaper__rule-index">02.1</span><div><h4>Primeira tranche pública <StatusBadge status="aberto" /></h4><p><strong>{formatTokenCount(tokenomics.firstPublicTranche)} BETTEX</strong> somam pré-venda e lançamento. A divisão exata entre as duas etapas e o preço da pré-venda ainda serão definidos. O preço previsto para o lançamento é <strong>R$ {tokenomics.launchPriceBRL.toFixed(2).replace('.', ',')}</strong> por token; não é o preço da pré-venda.</p></div></div>
-            <div><span className="whitepaper__rule-index">02.2</span><div><h4>Vendas públicas posteriores <StatusBadge status="aberto" /></h4><p>Os <strong>{formatTokenCount(tokenomics.monthlyPublicAllocation)} BETTEX</strong> restantes da parcela pública são destinados a vendas mensais conforme a demanda permitir. Datas, quantidades efetivas de cada mês e preços ainda não estão determinados.</p></div></div>
-            <div><span className="whitepaper__rule-index">02.3</span><div><h4>Venda a investidores <StatusBadge status="aberto" /></h4><p><strong>{formatTokenCount(tokenomics.investorAllocation)} BETTEX</strong> estão previstos para venda a investidores ao longo de até <strong>{tokenomics.investorSaleMonths} meses a partir do Gênesis</strong>. Preço e cronograma efetivo permanecem em aberto. O prazo não é compromisso de venda integral.</p></div></div>
-            <div><span className="whitepaper__rule-index">02.4</span><div><h4>Parcela da empresa <StatusBadge status="definido" /></h4><p><strong>{formatTokenCount(tokenomics.companyAllocation)} BETTEX</strong> são destinados a uma carteira da empresa que poderá movimentá-los livremente. <strong>A definir:</strong> o momento do mint e as regras de elegibilidade desses tokens para distribuições. Não se deve supor que 25% da emissão máxima corresponderão sempre a 25% dos tokens elegíveis em circulação.</p></div></div>
-          </div>
-        </section>
-
-        <section className="whitepaper__chapter" aria-labelledby="whitepaper-tesouraria">
-          <ChapterHead number="03" id="whitepaper-tesouraria" title="De onde vem o capital; para onde pode ir" status="definido" description="A origem de recursos e a alocação entre agentes precisam continuar legíveis mesmo quando não houver operação." />
-          <div className="whitepaper__statement"><span className="whitepaper__micro">REGRA DE DESTINAÇÃO</span><p><strong>100%</strong> dos recursos obtidos nas vendas primárias públicas e a investidores vão para a tesouraria de investimentos. <em>Não são usados para pagar salários.</em></p></div>
-          <div className="whitepaper__prose">
-            <p>Despesas operacionais da empresa devem ser financiadas por distribuições elegíveis provenientes dos tokens da empresa, conforme as regras a definir. Isso não garante receita à empresa: sem lucro líquido realizado elegível, ou sem distribuição permitida, essa fonte pode não existir.</p>
-            <p>Do capital efetivamente designado como <strong>parcela investível</strong>, cada agente tem sempre <strong>exatamente 25%</strong> reservado. Se um agente não usar sua parte, ela fica líquida e reservada a ele; <strong>não pode ser emprestada ou realocada aos outros agentes</strong>. A composição total da tesouraria antes da parcela investível ainda depende de política aprovada.</p>
-          </div>
-          <div className="whitepaper__agents" aria-label="Quatro agentes e seus respectivos mandatos">
-            {agents.map((agent, index) => <article key={agent.name} className="whitepaper__agent">
-              <div className="whitepaper__agent-top"><span>0{index + 1} / 04</span><strong>25%</strong></div>
-              <h4>{agent.name}</h4><p className="whitepaper__agent-area">{agent.area}</p><p>{agent.detail}</p>
-              <span className="whitepaper__agent-platform">REFERÊNCIA · {agent.platform}</span>
-            </article>)}
-          </div>
-          <p className="whitepaper__caption">Os ambientes citados são referências de conceito, não integrações ativas ou endossos. Qualquer atuação depende de permissões das plataformas, legislação aplicável e disponibilidade de APIs.</p>
-           <div className="whitepaper__prose whitepaper__technical-note">
-             <p>O desenho técnico contempla agentes com acesso a ferramentas do tipo MCP e um agente que interage com o navegador, sempre subordinados ao mesmo controle de risco. <strong>MCP não significa permissão para negociar</strong>; uma ferramenta de consulta não é uma API de ordens. Automação do navegador, especialmente em ambientes que restringem bots, só poderá movimentar recursos se houver autorização da plataforma.</p>
-             <p>Robinhood Chain, a corretora Robinhood, Arbitrum One e a rede usada pela Polymarket são ambientes distintos. A escolha da rede BETTEX e das rotas de custódia/transferência entre plataformas continua em aberto.</p>
-           </div>
-          <div className="whitepaper__proposal"><StatusBadge status="proposta" /><div><h4>Parcela defensiva de 50%</h4><p>Manter metade da tesouraria em uma alocação defensiva é uma <strong>hipótese para discussão</strong>, não uma política aprovada. Caso venha a ser adotada, o percentual investível e sua composição serão formalizados; a regra de 25% por agente se aplica sempre à parcela investível, não necessariamente à tesouraria inteira.</p></div></div>
-        </section>
-
-        <section className="whitepaper__chapter" aria-labelledby="whitepaper-risco">
-          <ChapterHead number="04" id="whitepaper-risco" title="A estratégia não aprova a si mesma" status="definido" description="Antes de qualquer ordem, um controle de risco independente precisa poder dizer não." />
-          <div className="whitepaper__prose"><p>O controle de risco deve avaliar cada ordem proposta independentemente da confiança do agente. Uma ordem que viola qualquer limite é rejeitada; uma pausa de emergência bloqueia novas operações. O valor comprometido por ordens pendentes também consome o limite diário; perdas no dia não devem liberar o limite para novas tentativas de recuperação. Os limites numéricos ainda não foram estabelecidos e devem preceder a operação real.</p></div>
-          <div className="whitepaper__gate" aria-label="Camadas propostas para o controle de risco">
-            <div><span>01</span><p>Gasto diário global e por agente</p></div>
-            <div><span>02</span><p>Valor máximo por ordem</p></div>
-            <div><span>03</span><p>Exposição total em aberto</p></div>
-            <div><span>04</span><p>Exposição correlacionada</p></div>
-            <div><span>05</span><p>Controles de perdas</p></div>
-            <div><span>06</span><p>Quantidade de ordens pendentes</p></div>
-            <div className="whitepaper__gate-stop"><span>07</span><p>Pausa de emergência</p></div>
-          </div>
-          <div className="whitepaper__example"><span className="whitepaper__micro">EXEMPLOS ≠ PARÂMETROS</span><p>Odds de retorno de <strong>10×</strong> e aposta de <strong>0,01%</strong> são apenas exemplos ilustrativos; não foram aprovados como estratégia ou limite. Odds altas, isoladamente, <strong>não implicam valor esperado positivo</strong>. Probabilidade real, custos, execução e correlação podem transformar um pagamento potencial alto em uma decisão ruim.</p></div>
-        </section>
-
-        <section className="whitepaper__chapter" aria-labelledby="whitepaper-staking">
-          <ChapterHead number="05" id="whitepaper-staking" title="Staking e distribuição" status="proposta" description="A posse do token não deve ser confundida com um pagamento automático." />
-          <div className="whitepaper__prose">
-            <p>O mecanismo de staking proposto consiste em <strong>depositar e ativar BETTEX</strong> para possível elegibilidade às distribuições. Quando uma distribuição for permitida, a participação seria calculada proporcionalmente aos tokens elegíveis de cada participante em relação ao total elegível no período de apuração, observadas as regras finais.</p>
-            <p>Distribuições podem ocorrer <strong>somente a partir de lucros líquidos efetivamente realizados e elegíveis</strong>, se o regulamento permitir. Resultado não realizado não é caixa distribuível. Não existe rendimento diário automático, taxa de retorno prometida, proteção do principal ou garantia de distribuição em qualquer período.</p>
-          </div>
-          <div className="whitepaper__formula"><span className="whitepaper__micro">LÓGICA PROPOSTA · NÃO É SIMULAÇÃO DE RENDIMENTO</span><p>Participação elegível individual <span>÷</span> total de tokens elegíveis <span>×</span> montante distribuível aprovado</p></div>
-           <div className="whitepaper__rule-list">
-             <div><span className="whitepaper__rule-index">05.1</span><div><h4>Depositar BETTEX <StatusBadge status="aberto" /></h4><p>O participante enviaria tokens de sua carteira para o mecanismo de staking, sujeito à confirmação na rede e à regra de elegibilidade. Contrato, custódia, depósito mínimo, prazo de ativação e eventual bloqueio ainda não estão definidos; o envio não está disponível nesta página.</p></div></div>
-             <div><span className="whitepaper__rule-index">05.2</span><div><h4>Retirar BETTEX <StatusBadge status="aberto" /></h4><p>A retirada devolveria os tokens elegíveis à carteira indicada conforme as regras de saída. Prazo de espera, momento em que cessam os direitos de distribuição, taxas e disponibilidade de liquidez ainda precisam ser estabelecidos. Retirar BETTEX não é sacar lucros em USDC.</p></div></div>
-             <div><span className="whitepaper__rule-index">05.3</span><div><h4>Receber resultados <StatusBadge status="aberto" /></h4><p>Se houver lucro líquido distribuível e tokens elegíveis, o valor aprovado seria disponibilizado em USDC. O titular escolheria uma carteira e rede compatíveis antes de solicitar o saque; não há pagamento ativo nem calendário aprovado.</p></div></div>
-           </div>
-          <div className="whitepaper__decision"><StatusBadge status="aberto" /><p>Lockup, prazo de cooldown, método e momento dos snapshots, direitos dos tokens da empresa, frequência dos pagamentos e tratamento de perdas anteriores à apuração ainda precisam de definição. Sem essas regras, não é possível calcular uma distribuição individual confiável.</p></div>
-        </section>
-
-        <section className="whitepaper__chapter" aria-labelledby="whitepaper-fluxos">
-          <ChapterHead number="06" id="whitepaper-fluxos" title="Uma unidade de conta, outra de saída" status="definido" description="As moedas exibidas e o ativo eventual de saque têm funções diferentes." />
-          <div className="whitepaper__currency-grid">
-            <div><span className="whitepaper__micro">CONTABILIDADE</span><strong>USD</strong><p>Resultados e riscos são apurados em dólar americano.</p></div>
-            <div><span className="whitepaper__micro">EXIBIÇÃO INDICATIVA</span><strong>BRL</strong><p>Valores em reais são apenas referência visual, com cotação e horário informados quando disponíveis.</p></div>
-            <div><span className="whitepaper__micro">SAQUE EVENTUAL</span><strong>USDC</strong><p>Para carteira blockchain, sujeito a elegibilidade e infraestrutura futura. Não há saque em BRL ou para conta bancária.</p></div>
-          </div>
-          <div className="whitepaper__prose">
-            <p>Não há transferências on-chain reais neste estágio. Redes suportadas ainda serão escolhidas. Depósito e retirada de BETTEX no staking são movimentos do token; o saque de resultados seria feito em USDC. Uma referência de preço em reais não cria saldo em reais nem opção de saque em reais.</p>
-            <p>Qualquer tarifa de “1 BETTEX” exibida em uma demonstração é <strong>apenas parte da interface demonstrativa</strong> e não representa uma taxa real aprovada.</p>
-          </div>
-          <div className="whitepaper__rule-list whitepaper__cost-list" aria-label="Custos previstos e estado de definição">
-            <div><span className="whitepaper__rule-index">06.1</span><div><h4>Depósito de BETTEX no staking <StatusBadge status="aberto" /></h4><p>Tarifa própria do projeto: <strong>a definir</strong>. Eventual gas da rede e custos de custódia: variáveis e apresentados antes de um futuro envio.</p></div></div>
-            <div><span className="whitepaper__rule-index">06.2</span><div><h4>Retirada de BETTEX do staking <StatusBadge status="aberto" /></h4><p>Tarifa própria do projeto: <strong>a definir</strong>. Eventual gas e período de saída: a confirmar de acordo com a rede e o mecanismo escolhidos.</p></div></div>
-            <div><span className="whitepaper__rule-index">06.3</span><div><h4>Saque de resultados em USDC <StatusBadge status="aberto" /></h4><p>Tarifa própria do projeto: <strong>a definir</strong>. Gas, bridge e custos de terceiros são separados e variáveis; rede, valor líquido e endereço deverão ser confirmados antes de qualquer transação futura.</p></div></div>
-          </div>
-        </section>
-
-        <section className="whitepaper__chapter" aria-labelledby="whitepaper-riscos">
-          <ChapterHead number="07" id="whitepaper-riscos" title="Riscos que não cabem em uma nota de rodapé" status="definido" description="A perda pode vir da estratégia, da infraestrutura, do mercado do token ou das regras aplicáveis." />
-          <div className="whitepaper__risks">
-            <div><span>01 / MERCADOS</span><p>Previsões, ações, criptoativos, esportes e jogos podem produzir perdas, inclusive perdas relevantes ou consecutivas. Modelos de IA erram, dados chegam atrasados e execução pode falhar.</p></div>
-            <div><span>02 / ATIVOS</span><p>O token pode perder valor ou não ter liquidez. Criptoativos e stablecoins, inclusive USDC, têm riscos de mercado, contraparte e desancoragem.</p></div>
-            <div><span>03 / INFRAESTRUTURA</span><p>Plataformas, APIs, carteiras, custódia, bridges, redes e contratos podem falhar, restringir acesso ou sofrer incidentes. Nenhuma integração mencionada está garantida.</p></div>
-            <div><span>04 / DIREITO E ACESSO</span><p>Tokens vinculados a lucro exigem revisão jurídica específica. A operação de mercados de previsão, apostas esportivas e cassino pode ser limitada ou proibida conforme a jurisdição e a plataforma.</p></div>
-          </div>
-          <p className="whitepaper__risk-close">Não há APY anunciado, proteção do capital investido ou direito automático a lucro. A existência deste documento não demonstra autorização regulatória, viabilidade econômica ou lançamento.</p>
-        </section>
-
-        <section className="whitepaper__chapter whitepaper__chapter--last" aria-labelledby="whitepaper-pendencias">
-          <ChapterHead number="08" id="whitepaper-pendencias" title="O que ainda precisa de resposta" status="aberto" description="Uma lista de decisões pendentes é mais útil do que uma certeza artificial." />
-          <div className="whitepaper__open-list">
-            {openDecisions.map((item, index) => <div key={item.topic}><span>{String(index + 1).padStart(2, '0')}</span><div><h4>{item.topic}</h4><p>{item.detail}</p></div></div>)}
-          </div>
-          <div className="whitepaper__closing">
-            <span className="whitepaper__micro">FIM DA NOTA / INÍCIO DA ANÁLISE</span>
-            <p>Este é um desenho para ser questionado. Antes de qualquer lançamento, as decisões abertas precisam virar regras publicadas, testáveis e juridicamente revisadas.</p>
-            <a href="#whitepaper" data-testid="link-whitepaper-topo">Voltar ao início do documento <span aria-hidden="true">↑</span></a>
-          </div>
-        </section>
+        <div className="whitepaper__chapter-meta"><span>BETTEX / DOCUMENTAÇÃO TÉCNICA</span><button type="button" onClick={() => document.getElementById('documentacao-indice')?.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })}>Ver índice ↑</button><span>{chapter.number} / 07</span></div>
+        <article className="whitepaper__chapter" aria-labelledby={chapter.id} key={chapter.id}>
+          <header className="whitepaper__chapter-head"><span className="whitepaper__chapter-number">CAPÍTULO {chapter.number} <i /> LEITURA TÉCNICA</span><h3 id={chapter.id}>{chapter.title}<span className="whitepaper__title-period">.</span></h3><p>{chapter.subtitle}</p></header>
+          <ChapterContent index={active} />
+        </article>
+        <nav className="whitepaper__chapter-pagination" aria-label="Navegação entre capítulos">
+          {active > 0 ? <a href={`#${chapters[active - 1].id}`} onClick={() => setActive(active - 1)} data-testid="link-capitulo-anterior"><span>← ANTERIOR</span><strong>{chapters[active - 1].title}</strong></a> : <span className="whitepaper__pagination-spacer" />}
+          {active < chapters.length - 1 ? <a href={`#${chapters[active + 1].id}`} onClick={() => setActive(active + 1)} data-testid="link-proximo-capitulo"><span>PRÓXIMO →</span><strong>{chapters[active + 1].title}</strong></a> : <a href="#documentacao" onClick={() => setActive(0)} data-testid="link-voltar-documentacao"><span>VOLTAR AO INÍCIO ↑</span><strong>Como funciona</strong></a>}
+        </nav>
       </div>
     </div>
   </section>;

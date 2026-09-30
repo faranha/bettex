@@ -6,11 +6,11 @@ export type SimulatedTransaction = {
   daysAgo: number;
   hoursAgo: number;
   movement: string;
-  resultCents: number;
+  resultCents: number; // USD cents in this fictional accounting example.
 };
 
 // Illustrative entries only: no orders were placed and no platform supplied these results.
-// The same fictional transactions feed the history, chart series, and period totals.
+// The same fictional USD transactions feed the history, chart series, and period totals.
 export const simulatedHistory: Record<AgentName, SimulatedTransaction[]> = {
   PREDIX: [
     { id: 'today-close', daysAgo: 0, hoursAgo: 22, movement: 'Cenário encerrado', resultCents: 14500 },

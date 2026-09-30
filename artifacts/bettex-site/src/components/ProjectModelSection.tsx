@@ -176,7 +176,7 @@ export function ProjectModelSection() {
         <div className="pm-head">
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
-               <h2 id="pm-heading" className="pm-title">Token. Agentes. Tesouraria.<br /><span>Um modelo em discussão.</span></h2>
+               <h2 id="pm-heading" className="pm-title">Token. Agentes. Tesouraria.<br /><span>Regras da BETTEX.</span></h2>
           </div>
           <p className="pm-head-note">Todos os agentes em um só lugar.</p>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
@@ -184,7 +184,7 @@ export function ProjectModelSection() {
 
         <div className="pm-panel">
           <div className="pm-panel-top">
-                <p className="pm-panel-label">Proposta de participação · regras de distribuição em definição</p>
+                 <p className="pm-panel-label">Participação por BETTEX depositados · resultados sem garantia</p>
             <p className="pm-panel-count">Quatro etapas · um projeto</p>
           </div>
           <div className="pm-steps">
@@ -192,15 +192,15 @@ export function ProjectModelSection() {
               <span className="pm-index">01 / TOKEN</span>
               <div className="pm-visual" aria-hidden="true"><span className="pm-token-symbol"><BettexMark /></span></div>
                <h3>Conheça o <em>token BETTEX.</em></h3>
-               <p className="pm-detail">O whitepaper descreve a emissão proposta. Não há compra disponível nesta página.</p>
+                <p className="pm-detail">A Documentação técnica explica a emissão. Esta página não vende tokens.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / CARTEIRA</span>
               <div className="pm-visual" aria-hidden="true">
                 <div className="pm-stake"><span className="pm-stake-coin"><BettexMark /></span><ArrowDown className="pm-stake-arrow" size={16} /><span className="pm-stake-vault">CARTEIRA</span></div>
               </div>
-               <h3>Deposite o token <em>para participar, se elegível.</em></h3>
-               <p className="pm-detail">Depósito, staking, eventual bloqueio e momento de elegibilidade ainda precisam de regras definitivas.</p>
+                <h3>Deposite o token <em>para participar.</em></h3>
+                <p className="pm-detail">O depósito confirmado ativa a participação. O saque encerra a elegibilidade; ter tokens sem depositá-los não gera distribuição.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / OPERAÇÕES</span>
@@ -229,9 +229,9 @@ export function ProjectModelSection() {
                 <ArrowDownRight className="pm-profit-arrow" size={31} strokeWidth={2.2} />
                 <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
               </div>
-               <h3>Resultados e repasses <em>dependem de regras.</em></h3>
+               <h3>Resultados e repasses <em>são diferentes.</em></h3>
               <div className="pm-outcomes">
-                   <div className="pm-outcome pm-outcome--profit"><span>Resultado positivo</span><strong>Uma eventual distribuição em USDC depende de lucro líquido e critérios ainda em definição.</strong></div>
+                   <div className="pm-outcome pm-outcome--profit"><span>Resultado positivo</span><strong>Só lucro líquido realizado após perdas anteriores pode gerar distribuição em USDC para quem depositou BETTEX.</strong></div>
                    <div className="pm-outcome pm-outcome--none"><span>Resultado negativo</span><strong>Não há distribuição garantida. Perdas podem reduzir a tesouraria e o valor do token.</strong></div>
               </div>
             </div>

@@ -51,8 +51,8 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             <span className="technology-section__result-icon" aria-hidden="true"><WalletCards size={32} strokeWidth={1.7} /></span>
             <div className="technology-section__result-copy">
                <span className="technology-section__result-kicker">Resultados possíveis · distribuição condicionada</span>
-               <h3>Distribuição em USDC, se aprovada e disponível.</h3>
-               <p>Um eventual repasse dependerá de resultado líquido realizado, elegibilidade dos tokens e regras de reserva e distribuição ainda em discussão. Saque previsto apenas em USDC para carteira blockchain, sem prazo ou disponibilidade garantidos.</p>
+                <h3>Distribuição em USDC quando houver lucro elegível.</h3>
+                <p>Após compensar perdas anteriores, metade do resultado líquido realizado é distribuída proporcionalmente aos BETTEX depositados e elegíveis. Lucro não é garantido. A saída é em USDC para carteira na rede Arbitrum One, não em reais ou por banco.</p>
             </div>
           </div>
         </div>
