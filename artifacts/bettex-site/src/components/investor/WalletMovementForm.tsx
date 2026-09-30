@@ -67,7 +67,7 @@ export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
       <small id="investor-preview-transfer-available">
         {isPurchase ? (
           <>
-            Preço de referência: {reais.format(PURCHASE_PRICE_CENTS / 100)} por BETTEX.
+            Preço de referência do lançamento: {reais.format(PURCHASE_PRICE_CENTS / 100)} por BETTEX (não é o preço da pré-venda).
             Saldo em reais da carteira pessoal: {reais.format(wallet.personalReaisCents / 100)}.
             {purchaseCostCents !== null && Number.isSafeInteger(purchaseCostCents) ? ` Total desta compra: ${reais.format(purchaseCostCents / 100)}.` : ''}
             {' '}Compra fictícia sem taxa; nenhum pagamento real será feito.
