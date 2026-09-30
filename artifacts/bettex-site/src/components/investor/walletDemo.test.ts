@@ -4,7 +4,9 @@ import {
   BETTEX_REAIS_CENTS,
   EXAMPLE_DISTRIBUTION_REAIS_CENTS,
   PERSONAL_REAIS_CENTS,
+  PURCHASE_PRICE_CENTS,
   TRANSFER_FEE_CENTS,
+  buyTokens,
   depositIntoPersonal,
   illustrativeParticipation,
   initialWalletDemo,
@@ -72,6 +74,27 @@ test('external token deposits are immediate and fee-free', () => {
   assert.equal(result.transfers[0].status, 'completed');
 });
 
+test('simulated purchase exchanges personal example BRL for whole BETTEX without a real charge', () => {
+  const initial = initialWalletDemo();
+  const bought = buyTokens(initial, 1_000, NOW);
+  assert.equal(bought.personalTokensCents, initial.personalTokensCents + 1_000);
+  assert.equal(bought.personalReaisCents, initial.personalReaisCents - 10 * PURCHASE_PRICE_CENTS);
+  assert.equal(bought.allocatedTokensCents, initial.allocatedTokensCents);
+  assert.equal(bought.allocatedReaisCents, initial.allocatedReaisCents);
+  assert.equal(bought.transfers[0].kind, 'purchase');
+  assert.equal(bought.transfers[0].costCents, 10 * PURCHASE_PRICE_CENTS);
+  assert.equal(bought.transfers[0].feeCents, 0);
+  assert.equal(bought.transfers[0].status, 'completed');
+
+  const storage = useStorage();
+  saveWalletDemo(bought);
+  assert.ok(storage.getItem(STORAGE_KEY));
+  assert.deepEqual(loadWalletDemo().state, bought);
+  expectRejectedWithoutMutation(() => buyTokens(initial, 101, NOW), initial);
+  expectRejectedWithoutMutation(() => buyTokens(initial, 0, NOW), initial);
+  expectRejectedWithoutMutation(() => buyTokens(initial, 17100, NOW), initial);
+});
+
 test('external token and both BRL withdrawals charge the correct wallet fee', () => {
   const initial = initialWalletDemo();
   const external = withdrawFromWallet(initial, 'externalWithdraw', 1_000, NOW);
@@ -80,6 +103,13 @@ test('external token and both BRL withdrawals charge the correct wallet fee', ()
   assert.equal(external.transfers[0].amountCents, 1_000);
   assert.equal(external.transfers[0].kind, 'externalWithdraw');
   assert.equal(external.personalReaisCents, initial.personalReaisCents);
+
+  const fromBettex = withdrawFromWallet(initial, 'bettexExternalWithdraw', 1_000, NOW);
+  assert.equal(fromBettex.allocatedTokensCents, initial.allocatedTokensCents - 1_000 - TRANSFER_FEE_CENTS);
+  assert.equal(fromBettex.personalTokensCents, initial.personalTokensCents);
+  assert.equal(fromBettex.allocatedReaisCents, initial.allocatedReaisCents);
+  assert.equal(fromBettex.transfers[0].kind, 'bettexExternalWithdraw');
+  assert.equal(fromBettex.transfers[0].status, 'completed');
 
   const personalReais = withdrawFromWallet(initial, 'personalReaisWithdraw', 2_550, NOW);
   assert.equal(personalReais.personalReaisCents, initial.personalReaisCents - 2_550);
@@ -109,6 +139,11 @@ test('invalid amounts, insufficient funds, and overflow reject without mutating 
   expectRejectedWithoutMutation(
     () => withdrawFromWallet(insufficientExternal, 'externalWithdraw', 50_000, NOW),
     insufficientExternal,
+  );
+  const insufficientBettex = { ...initial, allocatedTokensCents: 500 };
+  expectRejectedWithoutMutation(
+    () => withdrawFromWallet(insufficientBettex, 'bettexExternalWithdraw', 500, NOW),
+    insufficientBettex,
   );
   const overflow = { ...initial, allocatedTokensCents: Number.MAX_SAFE_INTEGER - 100 };
   expectRejectedWithoutMutation(() => requestTransfer(overflow, 'deposit', 200, NOW), overflow);

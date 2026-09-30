@@ -15,14 +15,19 @@ type MovementDefinition = {
 };
 
 export const movements: Record<MovementKind, MovementDefinition> = {
+  purchase: {
+    title: 'Comprar BETTEX',
+    description: 'Compra fictícia: desconta reais de exemplo da carteira pessoal e credita BETTEX inteiros nela. Não há cobrança, emissão ou reserva de tokens reais.',
+    currency: 'BETTEX', source: 'personal', confirm: 'Confirmar compra simulada',
+  },
   deposit: {
     title: 'Transferir BETTEX para a Carteira BETTEX',
-    description: 'Crédito imediato na Carteira BETTEX nesta demonstração. Os tokens creditados passam a participar do cálculo proporcional.',
+    description: 'Origem: carteira pessoal → destino: Carteira BETTEX. O crédito é imediato nesta demonstração.',
     currency: 'BETTEX', source: 'personal', confirm: 'Confirmar transferência',
   },
   withdraw: {
     title: 'Transferir BETTEX para a carteira pessoal',
-    description: 'Crédito imediato na carteira pessoal nesta demonstração. Não é um saque externo.',
+    description: 'Origem: Carteira BETTEX → destino: carteira pessoal. O crédito é imediato; não é um saque externo.',
     currency: 'BETTEX', source: 'bettex', confirm: 'Confirmar transferência',
   },
   externalDeposit: {
@@ -34,6 +39,11 @@ export const movements: Record<MovementKind, MovementDefinition> = {
     title: 'Sacar BETTEX da carteira pessoal',
     description: 'Simule a saída imediata de BETTEX para fora da plataforma. Nenhum token será enviado a um endereço real.',
     currency: 'BETTEX', source: 'personal', confirm: 'Confirmar saque simulado',
+  },
+  bettexExternalWithdraw: {
+    title: 'Sacar BETTEX da Carteira BETTEX',
+    description: 'Saída externa simulada diretamente da Carteira BETTEX, sem passar pela carteira pessoal. Nenhum token será enviado de verdade.',
+    currency: 'BETTEX', source: 'bettex', confirm: 'Confirmar saque simulado',
   },
   personalReaisWithdraw: {
     title: 'Sacar reais da carteira pessoal',

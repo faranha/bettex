@@ -27,6 +27,7 @@ function RailItem({ icon: Icon, children, active = false }: { icon: LucideIcon; 
 export function InvestorAppPreview() {
   const [period, setPeriod] = useState<PerformancePeriod>('7 dias');
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(agents[0]);
+  const [topbarActionsEl, setTopbarActionsEl] = useState<HTMLDivElement | null>(null);
   const performancePanelRef = useRef<HTMLDivElement>(null);
   const subject: PerformanceSubject = selectedAgent?.name ?? 'COLETIVO';
   const agentResult = performanceTotal(subject, period);
@@ -67,6 +68,7 @@ export function InvestorAppPreview() {
           <div className="investor-preview__topbar">
             <div className="investor-preview__brand"><span className="investor-preview__brand-mark"><BettexMark /></span><span>BETTEX</span></div>
             <div className="investor-preview__topbar-right">
+              <div ref={setTopbarActionsEl} className="investor-preview__topbar-actions" aria-label="Ações da carteira pessoal" />
               <span className="investor-preview__viewer"><strong>João da Silva</strong><small>Investidor fictício</small></span>
               <span className="investor-preview__badge" data-testid="status-previa-ilustrativa">Prévia ilustrativa</span>
             </div>
@@ -96,7 +98,7 @@ export function InvestorAppPreview() {
                 <span className="investor-preview__section-index">01 / 03</span>
               </div>
 
-              <WalletDemoPreview />
+              <WalletDemoPreview topbarActionsEl={topbarActionsEl} />
 
               <div className="investor-preview__workspace">
                 <div className="investor-preview__panel investor-preview__performance-panel" id="investor-preview-performance" ref={performancePanelRef}>

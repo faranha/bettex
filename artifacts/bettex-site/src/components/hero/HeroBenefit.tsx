@@ -13,7 +13,7 @@ export function HeroBenefit() {
   return (
     <figure className="hero-benefit">
       <div className="hero-benefit__top" aria-hidden="true">
-        <span>BETTEX / NO SEU CELULAR</span>
+        <span>AGENTES BETTEX / NO SEU CELULAR</span>
       </div>
       <div className="hero-benefit__light" aria-hidden="true" />
       <img
@@ -54,7 +54,7 @@ export function HeroBenefit() {
         ))}
       </ul>
       <figcaption className="hero-benefit__caption">
-        <span className="hero-benefit__caption-mark" role="img" aria-label="Moeda BETTEX ativa">
+        <span className="hero-benefit__caption-mark" role="img" aria-label="Símbolo BETTEX">
           <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
             <circle className="hero-benefit__caption-ring" cx="24" cy="24" r="20" fill="none" stroke="#b6efca" strokeWidth="1.5" strokeDasharray="18 108" strokeLinecap="round" />
             <circle className="hero-benefit__caption-active-glow" cx="38" cy="10" r="6" fill="#a4eacb" />
@@ -64,7 +64,7 @@ export function HeroBenefit() {
         </span>
         <strong>Invista em mercados de risco e receba nos dias de lucro sem abrir mão da sua participação.</strong>
       </figcaption>
-      <span className="hero-benefit__bottom" aria-hidden="true">INTELIGÊNCIA EM MERCADOS DE RISCO</span>
+      <span className="hero-benefit__bottom" aria-hidden="true">RENDA PASSIVA DE APOSTAS COM IA</span>
     </figure>
   );
 }
