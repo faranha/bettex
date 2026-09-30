@@ -57,6 +57,54 @@ function Logo({ pale = false }: { pale?: boolean }) {
   </a>;
 }
 
+function SiteFooter() {
+  return <footer id="rodape" className="relative overflow-hidden bg-[#123a3b] text-[#e5f0e8]">
+    <div aria-hidden="true" className="pointer-events-none absolute -right-36 top-0 h-[440px] w-[440px] rounded-full border border-[#a4eacb]/10 sm:-right-12" />
+    <div aria-hidden="true" className="pointer-events-none absolute -right-20 top-20 h-[290px] w-[290px] rounded-full border border-[#a4eacb]/10 sm:right-6" />
+    <div className="page-wrap relative">
+      <div className="grid gap-8 border-b border-[#a4eacb]/20 py-14 sm:py-20 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+        <div>
+          <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#a4eacb]">O próximo passo é entender</span>
+          <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,5vw,4.7rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#f7f4e9]">Conheça o caminho.<br /><span className="text-[#a4eacb]">Decida com consciência.</span></h2>
+        </div>
+        <div className="lg:justify-self-end">
+          <p className="max-w-[390px] text-sm leading-7 text-[#cadfd4]">Veja a sequência planejada, as regras do projeto e os riscos antes de tomar qualquer decisão.</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="#roadmap" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-5 py-3 text-sm font-bold text-[#123a3b] hover:bg-[#c0f5dc]">Ver o roadmap <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
+            <a href="#documentacao" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/40 px-5 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ler a documentação</a>
+          </div>
+        </div>
+      </div>
+      <div className="grid gap-10 border-b border-[#a4eacb]/20 py-11 md:grid-cols-[minmax(0,1.5fr)_1fr_1fr]">
+        <div>
+          <Logo pale />
+          <p className="mt-5 max-w-[350px] text-sm leading-7 text-[#cadfd4]">Um projeto de IA para acompanhar operações em mercados de risco. Resultados e valorização do token não são garantidos.</p>
+        </div>
+        <nav aria-label="Explorar o projeto">
+          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Explore</h3>
+          <ul className="space-y-3 text-sm font-semibold">
+            <li><a className="hover:text-[#a4eacb]" href="#participacao">Como funciona</a></li>
+            <li><a className="hover:text-[#a4eacb]" href="#agentes">Os quatro agentes</a></li>
+            <li><a className="hover:text-[#a4eacb]" href="#visao-investidor">Demonstração</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Informações e etapas">
+          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Informe-se</h3>
+          <ul className="space-y-3 text-sm font-semibold">
+            <li><a className="hover:text-[#a4eacb]" href="#documentacao">Documentação técnica</a></li>
+            <li><a className="hover:text-[#a4eacb]" href="#roadmap">Roadmap</a></li>
+            <li><a className="hover:text-[#a4eacb]" href="#historia">Dinheiro e risco</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div className="flex flex-col gap-4 py-6 text-xs leading-5 text-[#b5d1c3] sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} BETTEX. Investir envolve risco de perda.</p>
+        <a href="#inicio" className="inline-flex w-fit items-center gap-2 font-bold text-[#a4eacb] hover:text-white">Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
+      </div>
+    </div>
+  </footer>;
+}
+
 function AgentCard({ agent, number }: { agent: Agent; number: number }) {
   return <article className={`agent-card agent-card--${agent.kind} flex h-full flex-col overflow-hidden rounded-[18px] border border-[#123a3b]/15 bg-[#f5f6ef]`}>
     <div className="agent-card__stage relative flex h-[190px] shrink-0 items-center justify-center overflow-hidden sm:h-[205px]">
@@ -156,7 +204,7 @@ function Home() {
 
     </main>
 
-    <footer className="bg-[#123a3b] py-10 text-[#d0e5d9]"><div className="page-wrap flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Logo pale /><p className="max-w-[550px] text-xs leading-6">Conheça o modelo, as regras e os riscos na <a className="underline" href="#documentacao">Documentação técnica</a>. Esta página apresenta simulações, não movimentações reais.</p><a href="#inicio" className="flex shrink-0 items-center gap-1 text-xs font-bold text-[#a4eacb]">Voltar ao topo <ChevronDown className="h-4 w-4 rotate-180" /></a></div></footer>
+    <SiteFooter />
   </div>;
 }
 
