@@ -1,0 +1,64 @@
+.investor-preview__wallet-balances { display: grid; gap: 11px; margin: 15px 0 10px; }
+.investor-preview__wallet-balance + .investor-preview__wallet-balance { padding-top: 10px; border-top: 1px solid #d3e1d5; }
+.investor-preview__wallet--bettex .investor-preview__wallet-balance + .investor-preview__wallet-balance { border-color: #507b70; }
+.investor-preview__wallet-balance > span { display: block; color: #58786c; font: 700 9px/1.4 var(--app-font-mono, monospace); letter-spacing: .04em; text-transform: uppercase; }
+.investor-preview__wallet--bettex .investor-preview__wallet-balance > span { color: #b9d5c8; }
+.investor-preview__wallet .investor-preview__wallet-balance .investor-preview__wallet-value { margin: 3px 0 0; }
+.investor-preview__wallet-balance--reais strong { display: block; margin-top: 3px; color: #123a3b; font: 800 20px/1.15 var(--app-font-serif, sans-serif); }
+.investor-preview__wallet--bettex .investor-preview__wallet-balance--reais strong { color: #f7f4e9; }
+.investor-preview__wallet-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+.investor-preview__wallet-actions .investor-preview__wallet-buy { margin-top: 0; border: 0; cursor: pointer; font-family: inherit; }
+.investor-preview__wallet-actions .investor-preview__wallet-withdraw { margin-top: 0; }
+.investor-preview__wallet-action-secondary { background: transparent; color: #184f40; border-color: #9fbfb0; }
+.investor-preview__wallet-action-secondary:hover { background: #d8ece0; }
+.investor-preview__wallet-actions--bettex { margin-top: 12px; }
+.investor-preview__wallet-withdraw { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; padding: 9px 11px; border: 1px solid #74ad96; border-radius: 9px; background: #1d5a50; color: #e9f8eb; font-size: 11px; font-weight: 800; text-align: left; cursor: pointer; }
+.investor-preview__wallet-withdraw:hover { background: #287260; }
+.investor-preview__wallet-withdraw svg { width: 14px; height: 14px; flex: none; }
+.investor-preview__wallet-transfer-back { padding: 8px 9px; border: 1px solid #b6d6c1; border-radius: 9px; background: #e3f1e5; color: #145d49; font-size: 10px; font-weight: 800; line-height: 1.35; cursor: pointer; }
+.investor-preview__wallet-transfer-back:hover { background: #d3eacf; }
+.investor-preview__flow-line--reverse svg { left: 0; right: auto; transform: translate(-2px, -50%) rotate(180deg); }
+
+.investor-preview__fee-note { margin-top: 12px; padding: 14px 17px; border: 1px solid #d2d9be; border-radius: 12px; background: #f8f5e9; }
+.investor-preview__fee-note summary { color: #325c47; font-size: 12px; font-weight: 800; cursor: pointer; }
+.investor-preview__fee-note summary:focus-visible { outline: 2px solid #168367; outline-offset: 3px; }
+.investor-preview__fee-note p { margin: 6px 0 0; color: #5b7061; font-size: 10px; line-height: 1.55; }
+
+.investor-preview__transfer-form, .investor-preview__demo-status { margin-top: 12px; padding: 18px 20px; border: 1px solid #bdd7c5; border-radius: 13px; background: #eef6ed; }
+.investor-preview__transfer-head, .investor-preview__demo-status-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
+.investor-preview__transfer-head strong, .investor-preview__demo-status-head > strong { color: #123a3b; font: 800 17px/1.25 var(--app-font-serif, sans-serif); }
+.investor-preview__transfer-head p { max-width: 650px; margin: 5px 0 15px; color: #516e61; font-size: 11px; line-height: 1.55; }
+.investor-preview__transfer-close { display: grid; width: 32px; height: 32px; flex: none; place-items: center; border: 1px solid #b6d6c0; border-radius: 8px; background: transparent; color: #28634f; cursor: pointer; }
+.investor-preview__transfer-close svg { width: 17px; height: 17px; }
+.investor-preview__transfer-form label { display: block; margin-bottom: 7px; color: #255943; font-size: 11px; font-weight: 800; }
+.investor-preview__transfer-controls { display: flex; gap: 9px; }
+.investor-preview__transfer-controls input { min-width: 0; width: min(230px, 100%); padding: 10px 12px; border: 1px solid #a9cbb7; border-radius: 9px; background: #fffdf5; color: #123a3b; font-size: 13px; }
+.investor-preview__transfer-controls input[aria-invalid="true"] { border-color: #b75843; }
+.investor-preview__transfer-controls button { padding: 10px 14px; border: 0; border-radius: 9px; background: #123a3b; color: #fffdf5; font-size: 11px; font-weight: 800; cursor: pointer; }
+.investor-preview__transfer-controls button:hover { background: #216a56; }
+.investor-preview__transfer-form small, .investor-preview__demo-status small { display: block; margin-top: 8px; color: #577568; font-size: 10px; line-height: 1.5; }
+.investor-preview__transfer-form .investor-preview__transfer-error, .investor-preview__demo-status .investor-preview__transfer-error { color: #9e4334; font-weight: 700; }
+.investor-preview__transfer-form .investor-preview__transfer-disclaimer { margin: 10px 0 0; color: #577568; font-size: 10px; }
+.investor-preview__demo-status { background: #f6f8ef; }
+.investor-preview__demo-status-head { align-items: center; flex-wrap: wrap; }
+.investor-preview__demo-status-head button { padding: 7px 10px; border: 1px solid #a4c7b1; border-radius: 8px; background: #e3f1e5; color: #195743; font-size: 10px; font-weight: 800; cursor: pointer; }
+.investor-preview__demo-status-head button:hover { background: #d2e9d9; }
+.investor-preview__demo-status p { margin: 9px 0 0; color: #3e6554; font-size: 11px; line-height: 1.5; }
+.investor-preview__demo-status p strong { color: #123a3b; }
+.investor-preview__wallet-history-row small { display: block; margin-top: 4px; color: #60796d; font-size: 10px; line-height: 1.4; }
+.investor-preview__wallet-history-row strong { flex: none; }
+.investor-preview__wallet-withdraw:focus-visible, .investor-preview__wallet-transfer-back:focus-visible, .investor-preview__wallet-buy:focus-visible, .investor-preview__transfer-close:focus-visible, .investor-preview__transfer-controls input:focus-visible, .investor-preview__transfer-controls button:focus-visible, .investor-preview__demo-status-head button:focus-visible { outline: 3px solid #e9956f; outline-offset: 3px; }
+
+@media (max-width: 560px) {
+  .investor-preview__transfer-form, .investor-preview__demo-status { padding: 15px; }
+  .investor-preview__transfer-controls { flex-direction: column; }
+  .investor-preview__transfer-controls input { width: 100%; }
+  .investor-preview__demo-status-head { align-items: start; }
+  .investor-preview__wallet-withdraw { max-width: 100%; }
+  .investor-preview__flow-action { flex-wrap: wrap; }
+  .investor-preview__flow-line { display: none; }
+  .investor-preview__flow-hint { flex-basis: 100%; max-width: none; text-align: center; }
+  .investor-preview__wallet-history { padding: 14px; }
+  .investor-preview__wallet-history-head, .investor-preview__wallet-history-row { gap: 8px; }
+  .investor-preview__wallet-history-row { align-items: start; }
+}
