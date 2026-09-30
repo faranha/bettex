@@ -211,7 +211,7 @@ export function ProjectModelSection() {
                   <span className="pm-flow-node pm-flow-node--market"><b>↗</b><small>MERCADOS</small></span>
                 </div>
               </div>
-              <h3>A <em>BETTEX</em> realiza operações com quatro agentes.</h3>
+              <h3>A IA da <em>Bettex</em> realiza operações com seus agentes nativos.</h3>
               <div className="pm-agent-list" aria-label="Especialidades dos agentes BETTEX">
                 {agents.map((agent) => (
                   <div className="pm-agent" key={agent.name}>
