@@ -13,18 +13,17 @@ export function HeroBenefit() {
     <figure className="hero-benefit">
       <img
         className="hero-benefit__art"
-        src={`${import.meta.env.BASE_URL}hero-ai-participation.webp`}
-        alt="Homem segurando um token BETTEX, agente de IA conectado a apostas esportivas e previsões, e lucros em reais representados por moedas com uma seta para a carteira"
+        src={`${import.meta.env.BASE_URL}hero-ai-wallet.webp`}
+        alt="Homem ao lado do token BETTEX conectado a apostas e previsões, com uma seta saindo do token central e chegando à carteira"
         width={1024}
         height={1024}
         loading="eager"
         decoding="async"
         fetchPriority="high"
       />
-      <HeroBrand className="hero-benefit__brand hero-benefit__brand--token" />
       <HeroBrand className="hero-benefit__brand hero-benefit__brand--core" />
       <div className="hero-benefit__market-node hero-benefit__market-node--sports" aria-hidden="true">
-        <span className="hero-benefit__label">Apostas esportivas</span>
+        <span className="hero-benefit__label">Apostas</span>
         <svg viewBox="0 0 120 120" fill="#0b3633" stroke="#a4eacb" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="60" cy="60" r="54" />
           <path d="M60 34 79 48 72 70 48 70 41 48Z" fill="#a4eacb" />
@@ -40,7 +39,7 @@ export function HeroBenefit() {
             <path d="M1 1 8 5 1 9" fill="none" stroke="#f3c98e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </marker>
         </defs>
-        <path d="M68 93 C68 85 77 84 83 87" fill="none" stroke="#f3c98e" strokeWidth=".45" strokeLinecap="round" markerEnd="url(#hero-profit-arrow)" />
+        <path d="M73.5 43.2 V68.5 Q73.5 71 76 71 H82 Q85 71 85 74 V86.8" fill="none" stroke="#f3c98e" strokeWidth=".45" strokeLinecap="round" markerEnd="url(#hero-profit-arrow)" />
       </svg>
     </figure>
   );
