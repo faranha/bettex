@@ -53,3 +53,9 @@
 .market-card__crosshair--br { bottom: 41px; right: 20px; border-right: 1px solid; border-bottom: 1px solid; }
 @media (max-width: 420px) { .market-card__composition { transform: scale(.92); } }
 @media (prefers-reduced-motion: reduce) { .market-card__composition { transition: none; } }
+
+@media (max-width:767px) {
+  .market-card__stage-foot { font-size:9.5px !important; }
+  .market-card .mono { font-size:10.5px !important; }
+  .market-card .min-h-\[75px\], .market-card .min-h-\[70px\] { min-height:0; }
+}

@@ -10,3 +10,7 @@
 .hydra-screen__rule { width:32px; height:2px; margin:12px 0; background:#a4eacb; }
 .hydra-screen__attitude { margin:0; color:#b5c7be; font-size:11px; line-height:1.5; }
 .hydra-screen__goal { display:block; margin-top:12px; color:#a4eacb; font:800 23px/1.1 var(--app-font-serif,sans-serif); letter-spacing:-.045em; text-transform:uppercase; }
+@media (max-width:767px) {
+  .hydra-screen .hydra-screen__label { font-size:10.5px; letter-spacing:.2em; }
+  .hydra-screen__attitude { font-size:12px; }
+}

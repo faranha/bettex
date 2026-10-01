@@ -46,3 +46,9 @@
 .tw-meter__t { margin:-4px 0 0; font-size:10px; color:#5a7470; }
 .tw-list { display:grid; gap:7px; margin:0; padding-left:16px; font-size:11px; line-height:1.5; }
 @media (prefers-reduced-motion:reduce) { .tw { animation:none; } .tw-action { transition:none; } }
+@media (max-width:767px) {
+  .tw-hero__status, .tw-profit-card > em, .tw-foot, .tw-dl div, .tw-list { font-size:10.5px; }
+  .tw-action b { font-size:12px; }
+  .tw-back { min-height:44px; padding-inline:16px; font-size:12px; }
+  .tw-hero__status { min-height:44px; }
+}

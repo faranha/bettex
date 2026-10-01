@@ -107,7 +107,7 @@ export function ProjectModelSection() {
           .pm-casino-cards { display: block; top: 292px; right: 180px; opacity: .52; transform: scale(.56); transform-origin: top right; }
           .pm-sport-ball { top: 12px; right: -20px; width: 96px; opacity: .42; }
           .pm-wrap { width: min(100% - 32px, 1200px); }
-           .pm-head { min-height: 0; padding-bottom: 190px; margin-bottom: 25px; }
+           .pm-head { min-height: 0; padding-bottom: 170px; margin-bottom: 20px; }
           .pm-title { max-width: none; font-size: clamp(2rem, 8.35vw, 3rem); letter-spacing: -.04em; }
            .pm-head-note { max-width: 190px; margin-top: 13px; }
            .pm-person { right: -5px; bottom: -26px; width: 200px; height: 205px; }
