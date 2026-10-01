@@ -1,7 +1,6 @@
 import { type ReactNode } from 'react';
 import { ArrowDown, WalletCards } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
-import { PlatformCoverage } from './PlatformCoverage';
 import './TechnologySection.css';
 
 export function TechnologySection({ children }: { children: ReactNode }) {
@@ -58,7 +57,6 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           </div>
         </div>
 
-        <PlatformCoverage />
       </div>
     </section>
   );

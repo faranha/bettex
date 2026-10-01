@@ -240,9 +240,7 @@ function Home() {
        <TechnologySection>
          {markets.map((market, index) => <div className="technology-section__agent-slot" key={market.name}><MarketCard market={market} number={index + 1} /></div>)}
        </TechnologySection>
-       <MarketsFloorSection>
-         {markets.map((market, index) => <MarketCard key={market.name} market={market} number={index + 1} />)}
-       </MarketsFloorSection>
+       <MarketsFloorSection />
        <InvestorAppPreview />
         <RoadmapSection />
 
