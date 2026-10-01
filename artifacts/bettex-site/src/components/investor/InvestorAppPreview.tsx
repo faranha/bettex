@@ -1,6 +1,7 @@
 import { useRef, useState, type KeyboardEvent } from 'react';
 import { BettexMark } from '@/components/BettexMark';
 import { PhoneScreen } from './PhoneScreens';
+import { PreviewImage } from './PreviewImage';
 import { allScreens, navGroups, type ScreenId } from './presentationData';
 import './InvestorAppPreview.css';
 
@@ -65,7 +66,7 @@ export function InvestorAppPreview() {
             </div>
             {art[current] && (
               <figure className={`ip-art${current === 'bettex' || current === 'hydra' ? ' ip-art--transparent' : ''}${current === 'hydra' ? ' ip-art--hydra' : ''}`} key={`art-${current}`} data-testid={`arte-tela-${current}`}>
-                <img src={`${import.meta.env.BASE_URL}app/${art[current].file}.webp`} alt={art[current].alt} width={600} height={600} loading="lazy" decoding="async" />
+                <PreviewImage src={`${import.meta.env.BASE_URL}app/${art[current].file}.webp`} alt={art[current].alt} width={600} height={600} loading="lazy" decoding="async" />
               </figure>
             )}
           </div>

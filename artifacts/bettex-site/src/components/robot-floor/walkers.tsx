@@ -1,3 +1,5 @@
+import { AgentValue } from './AgentValue';
+
 export type Sim = {
   x: number; y: number; tx: number; ty: number;
   speed: number; wait: number; hasTarget: boolean; phase: number;
@@ -64,7 +66,7 @@ export function stepSims(sims: Sim[], dt: number, project: (x: number, y: number
   }
 }
 
-export function Walker({ sim, color, at }: { sim: Sim; color: string; at: [number, number] }) {
+export function Walker({ sim, color, at, value }: { sim: Sim; color: string; at: [number, number]; value: string }) {
   return (
     <g ref={el => { sim.g = el; }} data-testid="walking-agent" data-x-min={sim.b.x0} data-x-max={sim.b.x1} data-y-min={sim.b.y0} data-y-max={sim.b.y1} transform={`translate(${at[0].toFixed(1)} ${at[1].toFixed(1)})`}>
       <ellipse cx="0" cy="1" rx="12" ry="4" fill="rgba(0,0,0,.4)" />
@@ -80,6 +82,7 @@ export function Walker({ sim, color, at }: { sim: Sim; color: string; at: [numbe
         <rect x="-10" y="-45" width="20" height="14" rx="5" fill="#F4F1E8" />
         <rect x="-7.5" y="-42" width="15" height="8" rx="3" fill="#070B1F" />
         <circle cx="-3.2" cy="-38" r="1.7" fill="#36E0D0" /><circle cx="3.2" cy="-38" r="1.7" fill="#36E0D0" />
+        <AgentValue value={value} color={color} />
       </g>
     </g>
   );

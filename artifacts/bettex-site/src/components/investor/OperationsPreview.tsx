@@ -1,4 +1,5 @@
 import './OperationsPreview.css';
+import { PreviewImage } from './PreviewImage';
 
 const base = import.meta.env.BASE_URL;
 
@@ -15,9 +16,9 @@ export function OperationsPreview() {
         <summary>
           <span className="ops__top"><b>Surebet</b><em data-s="on">Ativa</em></span>
           <span className="ops__match">
-            <img src={`${base}teams/flamengo-transparente.png`} alt="Escudo do Flamengo" width="28" height="28" />
+            <PreviewImage src={`${base}teams/flamengo-transparente.png`} alt="Escudo do Flamengo" width="28" height="28" />
             <b>Flamengo x Athletico-PR</b>
-            <img src={`${base}teams/athletico-pr-transparente.png`} alt="Escudo do Athletico Paranaense" width="28" height="28" />
+            <PreviewImage src={`${base}teams/athletico-pr-transparente.png`} alt="Escudo do Athletico Paranaense" width="28" height="28" />
           </span>
           <span className="ops__sum">3 resultados cobertos em BX Bet, NX Bet e BX Exchange · total R$ 962,50</span>
           <span className="ops__more">Ver apostas</span>
