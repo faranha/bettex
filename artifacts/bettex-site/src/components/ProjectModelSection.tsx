@@ -8,13 +8,13 @@ export function ProjectModelSection() {
     <section id="participacao" className="pm-section" aria-labelledby="pm-heading" data-testid="section-modelo-projeto">
       <style>{`
         .pm-section {
-          --pm-deep: #05143c;
-          --pm-lime: #9fbbfb;
-          --pm-cream: #e9eef9;
+          --pm-deep: #070B1F;
+          --pm-lime: #F2B632;
+          --pm-cream: #F4F1E8;
           position: relative;
           overflow: hidden;
           color: var(--pm-deep);
-          background: #dae2f4;
+          background: #F4F1E8;
           padding: clamp(72px, 8vw, 112px) 0 clamp(60px, 7vw, 90px);
         }
         .pm-casino-wheel {
@@ -29,8 +29,8 @@ export function ProjectModelSection() {
         .pm-casino-cards { position: absolute; top: 95px; right: 28%; width: 155px; height: 160px; opacity: .42; pointer-events: none; }
         .pm-casino-card {
           position: absolute; display: grid; place-items: center; width: 94px; height: 128px;
-          border: 2px solid #9d5b48; border-radius: 11px; background: rgba(255, 248, 234, .7);
-          color: #9d4c3c; font: 700 44px/1 Georgia, serif;
+          border: 2px solid #B8860B; border-radius: 11px; background: rgba(255, 248, 234, .7);
+          color: #B8860B; font: 700 44px/1 Georgia, serif;
         }
         .pm-casino-card:first-child { left: 0; top: 17px; transform: rotate(-17deg); }
         .pm-casino-card:last-child { left: 44px; top: 0; transform: rotate(13deg); }
@@ -42,46 +42,46 @@ export function ProjectModelSection() {
         .pm-sport-ball svg { display: block; width: 100%; height: 100%; }
         .pm-wrap { position: relative; z-index: 1; width: min(100% - 40px, 1200px); margin-inline: auto; }
          .pm-head { position: relative; min-height: 190px; margin-bottom: 32px; }
-         .pm-eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 18px; color: #a55538; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .15em; text-transform: uppercase; }
+         .pm-eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 18px; color: #B8860B; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .15em; text-transform: uppercase; }
         .pm-eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
            .pm-title { position: relative; z-index: 1; max-width: calc(100% - 350px); margin: 0; font: 800 clamp(2.65rem, 4.5vw, 4.7rem)/1.02 var(--app-font-serif); letter-spacing: -.065em; }
-         .pm-title span { color: #a55538; font-size: .75em; }
+         .pm-title span { color: #B8860B; font-size: .75em; }
           .pm-head-note { position: relative; z-index: 1; max-width: 340px; margin: 16px 0 0; color: #75594a; font-size: 13px; line-height: 1.55; }
           .pm-person { position: absolute; z-index: 0; right: 15px; bottom: -42px; width: 330px; height: 330px; object-fit: contain; object-position: center bottom; pointer-events: none; filter: drop-shadow(0 10px 20px rgba(14,28,66, .18)); }
-          .pm-panel { position: relative; z-index: 1; overflow: hidden; border: 1px solid #14285f; border-radius: 28px; background: var(--pm-deep); color: var(--pm-cream); box-shadow: 0 20px 48px rgba(14,37,101, .13); }
+          .pm-panel { position: relative; z-index: 1; overflow: hidden; border: 1px solid #13204F; border-radius: 28px; background: var(--pm-deep); color: var(--pm-cream); box-shadow: 0 20px 48px rgba(14,37,101, .13); }
         .pm-panel-top { display: flex; justify-content: space-between; gap: 16px; padding: 24px 32px 0; }
-        .pm-panel-label, .pm-panel-count { margin: 0; color: #799df1; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
+        .pm-panel-label, .pm-panel-count { margin: 0; color: #5F86FF; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
         .pm-panel-count { color: #4b73cf; letter-spacing: .06em; white-space: nowrap; }
           .pm-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 27px 12px 32px; }
         .pm-step { position: relative; min-width: 0; padding: 9px 20px 10px; }
         .pm-step + .pm-step { border-left: 1px solid rgba(121,157,241, .24); }
-         .pm-index { display: block; margin-bottom: 12px; color: #799df1; font: 700 11px/1 var(--app-font-mono); }
+         .pm-index { display: block; margin-bottom: 12px; color: #5F86FF; font: 700 11px/1 var(--app-font-mono); }
         .pm-step h3 { margin: 0; font: 800 clamp(1.3rem, 1.95vw, 1.8rem)/1.18 var(--app-font-serif); letter-spacing: -.045em; overflow-wrap: anywhere; text-wrap: balance; }
         .pm-step h3 em { color: var(--pm-lime); font-style: normal; }
         .pm-detail { margin: 12px 0 0; color: #87a0dd; font-size: 12px; line-height: 1.55; }
          .pm-visual { display: flex; align-items: center; height: 84px; margin-bottom: 15px; }
          .pm-profit-visual { position: relative; width: 205px; }
-         .pm-profit-coin { position: absolute; display: grid; width: 39px; height: 39px; place-items: center; border: 2px solid #ffe0ad; border-radius: 50%; background: linear-gradient(135deg, #ffe8c4, #e7a974); box-shadow: inset 0 0 0 4px rgba(255, 245, 224, .65), 0 5px 0 #a56a4d; color: #8c543c; font: 800 20px/1 var(--app-font-serif); }
+         .pm-profit-coin { position: absolute; display: grid; width: 39px; height: 39px; place-items: center; border: 2px solid #F2B632; border-radius: 50%; background: linear-gradient(135deg, #F2B632, #F2B632); box-shadow: inset 0 0 0 4px rgba(255, 245, 224, .65), 0 5px 0 #B8860B; color: #B8860B; font: 800 20px/1 var(--app-font-serif); }
          .pm-profit-coin--one { left: 0; top: 32px; }
          .pm-profit-coin--two { left: 22px; top: 15px; }
          .pm-profit-coin--three { left: 44px; top: 34px; }
-         .pm-profit-arrow { position: absolute; left: 88px; top: 25px; color: #f3c9a6; animation: pm-go 1.8s ease-in-out infinite; }
-         .pm-profit-wallet { position: absolute; top: 23px; left: 131px; display: grid; width: 56px; height: 44px; place-items: center; border: 1px solid #6b91eb; border-radius: 9px; background: #0c2362; color: #9fbbfb; box-shadow: 0 7px 0 #020e31; }
+         .pm-profit-arrow { position: absolute; left: 88px; top: 25px; color: #F2B632; animation: pm-go 1.8s ease-in-out infinite; }
+         .pm-profit-wallet { position: absolute; top: 23px; left: 131px; display: grid; width: 56px; height: 44px; place-items: center; border: 1px solid #5F86FF; border-radius: 9px; background: #13204F; color: #5F86FF; box-shadow: 0 7px 0 #070B1F; }
          @keyframes pm-go { 50% { transform: translateX(5px); } }
         .pm-agent-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 19px; }
         .pm-agent { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 9px 10px; border: 1px solid rgba(121,157,241, .19); border-radius: 9px; background: rgba(245, 246, 237, .055); }
-        .pm-agent strong { color: #e9edf8; font: 800 12px/1.1 var(--app-font-serif); letter-spacing: -.02em; }
+        .pm-agent strong { color: #F4F1E8; font: 800 12px/1.1 var(--app-font-serif); letter-spacing: -.02em; }
         .pm-agent span { color: #7996d9; font-size: 11px; }
         .pm-outcomes { display: grid; gap: 8px; margin-top: 18px; }
         .pm-outcome { padding: 12px 13px; border-radius: 10px; }
-         .pm-outcome--profit { background: #f3c9a6; color: #132659; }
+         .pm-outcome--profit { background: #F2B632; color: #132659; }
         .pm-outcome h4 { margin: 0 0 8px; font: 800 16px/1.2 var(--app-font-serif); letter-spacing: -.025em; }
         .pm-outcome p { margin: 0; font-size: 13px; font-weight: 400; line-height: 1.5; }
         .pm-outcome a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
         .pm-panel-foot { padding: 20px 32px; border-top: 1px solid #cb7161; background: linear-gradient(135deg, #aa4037, #91342e); color: #fff5ef; }
         .pm-panel-foot p { margin: 0; font-size: 13px; line-height: 1.5; }
         .pm-bottom { display: flex; justify-content: flex-end; padding-top: 19px; }
-         .pm-bottom a { display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid currentColor; padding: 3px 0 5px; color: #8d4932; font-size: 13px; font-weight: 700; text-decoration: none; }
+         .pm-bottom a { display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid currentColor; padding: 3px 0 5px; color: #B8860B; font-size: 13px; font-weight: 700; text-decoration: none; }
          .pm-bottom a:hover { color: #0b2363; }
         .pm-bottom a svg { transition: transform .2s ease; }
         .pm-bottom a:hover svg { transform: translateX(3px); }

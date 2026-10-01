@@ -1,15 +1,15 @@
-.ip-phone.ip-phone--hydra { background:#020408; border-color:#000102; color:#e8edf8; }
-.ip-phone--hydra .ip-phone__notch { background:#6d97f8; opacity:.55; }
+.ip-phone.ip-phone--hydra { background:#020408; border-color:#000102; color:#F4F1E8; }
+.ip-phone--hydra .ip-phone__notch { background:#5F86FF; opacity:.55; }
 .ip-phone--hydra .ip-phone__bar i { color:#6783c5; }
-.ip-phone--hydra .ip-phone__logo { background:#05143c; }
+.ip-phone--hydra .ip-phone__logo { background:#070B1F; }
 .hydra-screen { display:flex; flex-direction:column; align-items:center; padding:8px 0; text-align:center; }
-.hydra-screen .hydra-screen__label { color:#6d97f8; font:700 9px/1.4 var(--app-font-mono,monospace); letter-spacing:.28em; text-transform:uppercase; }
-.hydra-screen .hydra-screen__title { margin:5px 0 0; color:#e8edf8; font:800 28px/1.05 var(--app-font-serif,sans-serif); letter-spacing:-.06em; }
+.hydra-screen .hydra-screen__label { color:#5F86FF; font:700 9px/1.4 var(--app-font-mono,monospace); letter-spacing:.28em; text-transform:uppercase; }
+.hydra-screen .hydra-screen__title { margin:5px 0 0; color:#F4F1E8; font:800 28px/1.05 var(--app-font-serif,sans-serif); letter-spacing:-.06em; }
 .hydra-screen__art { display:block; width:min(100%,140px); height:auto; aspect-ratio:1; object-fit:contain; margin:4px 0 8px; }
-.hydra-screen__opening { margin:0; color:#e8edf8; font:700 14px/1.35 var(--app-font-serif,sans-serif); letter-spacing:-.025em; }
-.hydra-screen__rule { width:32px; height:2px; margin:12px 0; background:#6d97f8; }
+.hydra-screen__opening { margin:0; color:#F4F1E8; font:700 14px/1.35 var(--app-font-serif,sans-serif); letter-spacing:-.025em; }
+.hydra-screen__rule { width:32px; height:2px; margin:12px 0; background:#5F86FF; }
 .hydra-screen__attitude { margin:0; color:#8199d2; font-size:11px; line-height:1.5; }
-.hydra-screen__goal { display:block; margin-top:12px; color:#6d97f8; font:800 23px/1.1 var(--app-font-serif,sans-serif); letter-spacing:-.045em; text-transform:uppercase; }
+.hydra-screen__goal { display:block; margin-top:12px; color:#5F86FF; font:800 23px/1.1 var(--app-font-serif,sans-serif); letter-spacing:-.045em; text-transform:uppercase; }
 @media (max-width:767px) {
   .hydra-screen .hydra-screen__label { font-size:10.5px; letter-spacing:.2em; }
   .hydra-screen__attitude { font-size:12px; }

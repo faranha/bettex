@@ -1,14 +1,14 @@
 .market-card {
-  --mk-accent: #6d97f8;
+  --mk-accent: #5F86FF;
   --mk-center: #122456;
   --mk-edge: #081331;
   box-shadow: 0 12px 28px rgba(5,18,54, .055);
 }
-.market-card--trading { --mk-accent: #6795ff; --mk-center: #152a64; --mk-edge: #08163b; }
-.market-card--sports { --mk-accent: #6895fd; --mk-center: #14275d; --mk-edge: #0a1431; }
-.market-card--casino { --mk-accent: #f2c9a6; --mk-center: #4b4048; --mk-edge: #232733; }
+.market-card--trading { --mk-accent: #6795ff; --mk-center: #13204F; --mk-edge: #08163b; }
+.market-card--sports { --mk-accent: #6895fd; --mk-center: #13204F; --mk-edge: #0a1431; }
+.market-card--casino { --mk-accent: #F2B632; --mk-center: #4b4048; --mk-edge: #232733; }
 .market-card__stage {
-  color: #e4e9f4;
+  color: #F4F1E8;
   background: radial-gradient(ellipse at 50% 60%, var(--mk-center) 0%, var(--mk-edge) 100%);
   border-bottom: 2px solid var(--mk-accent);
 }
