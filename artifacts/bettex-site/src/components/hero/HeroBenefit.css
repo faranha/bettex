@@ -16,7 +16,7 @@
 .hero-benefit::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(to top, rgba(4,16,48,.7), rgba(4,16,48,.1) 60%); pointer-events: none; }
 .hero-benefit__person { position: absolute; left: 50%; bottom: 0; width: 42%; height: auto; transform: translateX(-50%); z-index: 1; }
 .hero-benefit__person > img { display: block; width: 100%; height: auto; }
-.hero-benefit__face-reader { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; color: #f0bc9a; }
+.hero-benefit__face-reader { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; color: #F2B632; }
 .hero-benefit__face-reader path { stroke: currentColor; stroke-width: 3; stroke-linecap: square; }
 .hero-benefit__scan-line { opacity: .85; }
 .hero-benefit__clip { position: absolute; z-index: 2; right: 2%; bottom: 3%; width: 46%; transform: rotate(2deg); }

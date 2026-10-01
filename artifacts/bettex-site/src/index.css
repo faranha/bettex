@@ -37,24 +37,24 @@
 }
 
 :root, .dark {
-  --background: 222 60% 96%;
-  --foreground: 224 62% 14%;
-  --border: 222 40% 82%;
+  --background: 44 33% 94%;
+  --foreground: 231 65% 7%;
+  --border: 44 20% 82%;
   --input: 222 40% 70%;
   --ring: 222 90% 52%;
-  --card: 222 60% 98%;
+  --card: 44 33% 96%;
   --card-foreground: 224 62% 14%;
   --card-border: 222 40% 82%;
   --popover: 222 60% 98%;
   --popover-foreground: 224 62% 14%;
   --popover-border: 222 40% 82%;
-  --primary: 222 90% 52%;
+  --primary: 228 100% 58%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 222 60% 90%;
+  --secondary: 44 25% 88%;
   --secondary-foreground: 224 62% 14%;
-  --muted: 222 45% 92%;
+  --muted: 44 25% 90%;
   --muted-foreground: 222 25% 36%;
-  --accent: 17 90% 65%;
+  --accent: 41 88% 58%;
   --accent-foreground: 224 62% 14%;
   --destructive: 7 70% 43%;
   --destructive-foreground: 0 0% 100%;
@@ -70,7 +70,7 @@
   --chart-2: 17 90% 65%;
   --chart-3: 218 76% 68%;
   --chart-4: 40 95% 58%;
-  --chart-5: 282 54% 67%;
+  --chart-5: 175 73% 54%;
   --app-font-sans: 'DM Sans', sans-serif;
   --app-font-serif: 'Bricolage Grotesque', sans-serif;
   --app-font-mono: 'Space Mono', monospace;
@@ -100,15 +100,15 @@
   button, input { font: inherit; }
   button { cursor: pointer; }
   button:disabled { cursor: not-allowed; }
-  ::selection { background: #5d8eff; color: #05143c; }
-  :focus-visible { outline: 3px solid #f2744d; outline-offset: 3px; }
+  ::selection { background: #2B59FF; color: #fff; }
+  :focus-visible { outline: 3px solid #F2B632; outline-offset: 3px; }
 }
 
 .display { font-family: var(--app-font-serif); }
 .mono { font-family: var(--app-font-mono); }
 .page-wrap { width: min(100% - 40px, 1200px); margin-inline: auto; }
 .pill { border-radius: 999px; }
-.hero-bg { background: radial-gradient(circle at 82% 23%, rgba(25,92,246,.17), transparent 34%), radial-gradient(circle at 15% 100%, rgba(84,129,193,.11), transparent 35%), #051238; }
+.hero-bg { background: radial-gradient(circle at 82% 23%, rgba(43,89,255,.22), transparent 34%), radial-gradient(circle at 15% 100%, rgba(242,182,50,.07), transparent 35%), #070B1F; }
 .hero-pattern { background-image: radial-gradient(rgba(151,182,255,.21) 1.2px, transparent 1.2px); background-size: 27px 27px; }
 .hero-title { font-family: var(--app-font-serif); letter-spacing: -.065em; line-height: .98; }
 .agent-image { filter: drop-shadow(0 20px 25px rgba(3,16,54,.17)); transition: transform .45s cubic-bezier(.2,.7,.2,1); }

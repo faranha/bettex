@@ -20,13 +20,13 @@ function Chart({ days, label }: { days: PerformanceDay[]; label: string }) {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 6, right: 2, bottom: 0, left: 0 }} barCategoryGap="18%">
             <CartesianGrid vertical={false} stroke="#cbd6ef" strokeDasharray="3 4" />
-            <XAxis dataKey="label" height={18} tickLine={false} axisLine={false} interval={0} tick={{ fill: '#2244a1', fontSize: 8 }} />
-            <YAxis tickCount={3} tickLine={false} axisLine={false} width={40} tick={{ fill: '#2244a1', fontSize: 8 }} tickFormatter={(v: number) => compact.format(v)} domain={[(m: number) => Math.min(0, m), (m: number) => Math.max(0, m)]} />
+            <XAxis dataKey="label" height={18} tickLine={false} axisLine={false} interval={0} tick={{ fill: '#2B59FF', fontSize: 8 }} />
+            <YAxis tickCount={3} tickLine={false} axisLine={false} width={40} tick={{ fill: '#2B59FF', fontSize: 8 }} tickFormatter={(v: number) => compact.format(v)} domain={[(m: number) => Math.min(0, m), (m: number) => Math.max(0, m)]} />
             <ReferenceLine y={0} stroke="#39569b" />
             <Tooltip
               cursor={{ fill: '#c5d4f5', fillOpacity: 0.45 }}
               formatter={(value: number) => [Number.isFinite(value) ? brl.format(value) : '', 'Resultado líquido']}
-              contentStyle={{ border: '1px solid #b0c1e8', borderRadius: 8, background: '#fffdf5', fontSize: 10 }}
+              contentStyle={{ border: '1px solid #b0c1e8', borderRadius: 8, background: '#F4F1E8', fontSize: 10 }}
             />
             <Bar dataKey="value" isAnimationActive={false} radius={2}>
               {data.map((p) => <Cell key={p.label} fill={p.value < 0 ? LOSS : GAIN} />)}

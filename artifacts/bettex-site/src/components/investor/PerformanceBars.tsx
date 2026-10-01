@@ -5,7 +5,7 @@ import { markets } from './presentationData';
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'USD' });
 const compact = new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 });
 const gains = '#168367';
-const losses = '#b25c47';
+const losses = '#C2362F';
 
 export function PerformanceBars({ subject, period }: { subject: PerformanceSubject; period: PerformancePeriod }) {
   const points = performanceSeries(subject, period);
@@ -24,11 +24,11 @@ export function PerformanceBars({ subject, period }: { subject: PerformanceSubje
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 10, right: 5, bottom: 0, left: -12 }} barCategoryGap="23%">
             <CartesianGrid vertical={false} stroke="#cbd6ef" strokeDasharray="3 4" />
-            <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fill: '#2346a6', fontSize: 10 }} interval={0} />
+            <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fill: '#2B59FF', fontSize: 10 }} interval={0} />
             <YAxis
               tickLine={false}
               axisLine={false}
-              tick={{ fill: '#2346a6', fontSize: 10 }}
+              tick={{ fill: '#2B59FF', fontSize: 10 }}
               tickFormatter={(value: number) => compact.format(value)}
               domain={[(min: number) => Math.min(0, min), (max: number) => Math.max(0, max)]}
               width={48}
@@ -37,7 +37,7 @@ export function PerformanceBars({ subject, period }: { subject: PerformanceSubje
             <Tooltip
               cursor={{ fill: '#c7d4f1', fillOpacity: 0.55 }}
               formatter={(value: number) => [currency.format(value), 'Resultado']}
-              contentStyle={{ border: '1px solid #afc0e7', borderRadius: 8, background: '#fffdf5', fontSize: 11 }}
+              contentStyle={{ border: '1px solid #afc0e7', borderRadius: 8, background: '#F4F1E8', fontSize: 11 }}
             />
             <Bar dataKey="value" name="Resultado" maxBarSize={42} radius={[3, 3, 0, 0]}>
               {data.map((point, index) => <Cell key={`${point.label}-${index}`} fill={point.value < 0 ? losses : gains} />)}

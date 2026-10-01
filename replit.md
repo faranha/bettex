@@ -102,7 +102,7 @@ Site da BETTEX, projeto de investimento com quatro agentes especializados em mer
 
 ## Gotchas
 
-- A direção visual do BETTEX deve usar cores fortes, com o azul do cartão da notícia como referência, em vez de uma paleta predominantemente pastel. Manter contraste legível e preservar as cores semânticas de ganhos, perdas e avisos.
+- A paleta aprovada do BETTEX para o posicionamento GambleFi + token + agente de IA é: preto azulado `#070B1F` como base, azul elétrico `#2B59FF` nas ações, azul-meia-noite `#13204F` nos painéis, dourado `#F2B632` em destaques do token, ciano `#36E0D0` em pequenos sinais do agente e marfim `#F4F1E8` para leitura. Evitar fundos lavanda/pastel e recoloração automática de toda a interface. Aplicar cores por função, mantendo ganhos/perdas/avisos distintos e preservando as artes e marcas originais.
 
 - A apresentação do app não grava nem altera saldos. Históricos antigos do simulador no navegador não provam propriedade de tokens e não devem ser apagados automaticamente.
 - As marcas foram obtidas dos materiais oficiais de Polymarket e Robinhood. A página de imprensa da Robinhood informa que o uso da marca exige autorização prévia; confirmar isso antes de publicar.
