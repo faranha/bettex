@@ -37,11 +37,11 @@ function Figure({ id, num, title, lead, children }: { id: string; num: string; t
 }
 
 const fig1: Step[] = [
-  { title: 'Carteira da pessoa', text: 'Gerada com a conta. Pertence ao titular, que pode exportar chaves e dados.', tone: 'blue', badge: 'Titular' },
+  { title: 'Carteira BETTEX', text: 'Gerada com a conta. Pertence ao titular, que pode exportar chaves e dados.', tone: 'blue', badge: 'Titular' },
   { title: 'Acesso ao aplicativo', text: 'Comprova o controle da carteira. Chaves privadas e frase de recuperação nunca vão ao servidor.' },
-   { title: 'BETTEX na Arbitrum One', text: 'A rede registra emissão e transferências do token.', tone: 'gold', id: 'node-arbitrum',
-    extra: <span className="ba-wordmark ba-wordmark--arbitrum">Arbitrum One</span> },
-  { title: 'Participação automática', text: 'Todo BETTEX disponível na carteira oficial entra na piscina fechada, ponderado pelo tempo.', tone: 'blue' },
+  { title: 'Compra de BETTEX', text: 'Troca USDC confirmado por BETTEX no app, com cotação, custos e quantidade informados antes de confirmar.', tone: 'gold', badge: 'Swap', id: 'node-bettex-swap',
+    extra: <div className="ba-swap" aria-label="Troca de USDC por BETTEX"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
+  { title: 'BETTEX na carteira', text: 'A compra confirmada credita BETTEX. Todo BETTEX disponível na Carteira BETTEX participa automaticamente, ponderado pelo tempo.', tone: 'blue' },
 ];
 const fig2: Step[] = [
   { title: 'Entrada em USDC', text: 'Escolha um dos dois caminhos.', tone: 'blue',
@@ -86,11 +86,16 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
            <h3 className="ba__title">Quatro fluxos da operação BETTEX.</h3>
         </header>
       )}
-       <figcaption id="ba-caption" className="ba__note">Modelo descrito na v1: carteira e acesso, entrada de recursos, operação dos mercados e distribuição dos resultados.</figcaption>
+       <figcaption id="ba-caption" className="ba__note">Modelo descrito na v1: carteira e compra de BETTEX, entrada de recursos, operação dos mercados e distribuição dos resultados.</figcaption>
 
       <div className="ba__figs">
-        <Figure id="figure-bettex-wallet" num="1" title="Carteira, acesso e participação" lead="A carteira é da pessoa. A participação é automática.">
-          <Steps steps={fig1} label="Carteira, acesso e participação automática" />
+        <Figure id="figure-bettex-wallet" num="1" title="Carteira, compra de BETTEX e participação" lead="Na Carteira BETTEX, a pessoa compra o token pelo swap USDC → BETTEX. Após confirmação, a participação é automática.">
+          <Steps steps={fig1} label="Carteira BETTEX, acesso, compra por swap e participação automática" />
+          <aside className="ba-side ba-side--apart" data-testid="node-arbitrum">
+            <span className="ba-side__tag">Infraestrutura</span>
+            <span className="ba-wordmark ba-wordmark--arbitrum">Arbitrum One</span>
+            <p>A rede registra emissão e transferências do token. A compra confirma o débito de USDC e o crédito de BETTEX na carteira do titular, registrados juntos e uma única vez.</p>
+          </aside>
           <p className="ba-fig__foot">A piscina é fechada e exige acesso ao aplicativo, mas não uma sessão aberta o tempo todo. Exportar a carteira não torna a piscina operável fora do app.</p>
         </Figure>
 

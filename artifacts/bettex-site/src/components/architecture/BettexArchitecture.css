@@ -23,6 +23,8 @@
 .ba-step h5 { display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; margin:0; font:800 15px/1.2 var(--app-font-serif); letter-spacing:-.025em; }
 .ba-step h5 em { padding:2px 7px; border:1px solid var(--ba-gold); border-radius:999px; color:var(--ba-gold); font:700 9px/1.2 var(--app-font-mono); font-style:normal; letter-spacing:.06em; text-transform:uppercase; }
 .ba-step p { margin:6px 0 0; color:var(--ba-muted); font-size:12px; line-height:1.55; }
+.ba-swap { display:flex; align-items:center; gap:6px; margin-top:12px; color:var(--ba-gold); font:700 11px/1.4 var(--app-font-mono); }
+.ba-swap span:not([aria-hidden]) { padding:4px 6px; border:1px solid var(--ba-line); border-radius:6px; }
 .ba-entry { display:grid; gap:8px; margin-top:12px; }
 .ba-entry > div { padding:10px; border:1px solid var(--ba-line); border-radius:8px; }
 .ba .ba-entry strong { display:block; color:var(--ba-ink); font-size:12px; }
