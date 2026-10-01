@@ -149,7 +149,7 @@ export function ProjectModelSection() {
         <div className="pm-head">
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
-            <h2 id="pm-heading" className="pm-title">Compre. Seu saldo participa.<br /><span>Distribuição apenas se houver lucro.</span></h2>
+            <h2 id="pm-heading" className="pm-title">Compre. Seu saldo participa.<br /><span>Renda passiva com apostas?</span></h2>
           </div>
           <p className="pm-head-note">Um agente, diferentes mercados.</p>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />

@@ -62,7 +62,7 @@ export function HeroBenefit() {
           </svg>
           <BettexMark className="hero-benefit__caption-brand" />
         </span>
-        <strong>Com a compra concluída, o saldo BETTEX participa automaticamente. A distribuição acontece quando o projeto tem lucro.</strong>
+        <strong>Faça parte do projeto BETTEX. Com seus tokens, você participa dos lucros e recebe sua parte em reais.</strong>
       </figcaption>
       <span className="hero-benefit__bottom" aria-hidden="true">PARTICIPAÇÃO CONCEITUAL · SEM GARANTIA DE LUCRO</span>
     </figure>
