@@ -6,7 +6,7 @@ export function NewsClipping({ className = '' }: { className?: string }) {
       <span className="news-clip__tape news-clip__tape--a" aria-hidden="true" />
       <span className="news-clip__tape news-clip__tape--b" aria-hidden="true" />
       <div className="news-clip__paper">
-        <span className="news-clip__tag">ECONOMIA</span>
+        <span className="news-clip__tag">APOSTAS</span>
         <img
           className="news-clip__img"
           src={`${import.meta.env.BASE_URL}noticia-ia-recorte.webp`}
