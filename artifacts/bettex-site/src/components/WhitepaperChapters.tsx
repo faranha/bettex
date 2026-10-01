@@ -1,6 +1,8 @@
 import { type ReactNode } from 'react';
 import { tokenomics, formatTokenCount } from '@/lib/tokenomics';
 import { BettexArchitecture } from '@/components/architecture/BettexArchitecture';
+import { ArbitrumFlowDiagram } from '@/components/docs-diagrams/ArbitrumFlowDiagram';
+import { RobinhoodFlowDiagram } from '@/components/docs-diagrams/RobinhoodFlowDiagram';
 
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, as carteiras em moeda fiduciária e BETTEX, participação automática e controles.' },
@@ -56,13 +58,15 @@ export function ChapterContent({ index }: { index: number }) {
       </>;
     case 1:
       return <>
-        <Subhead>Arbitrum One: camada do token e da carteira</Subhead>
+        <Subhead>Arbitrum One: escala e integração com Ethereum</Subhead>
         <div className="whitepaper__prose">
-          <p>A <strong>Arbitrum One</strong> volta à arquitetura de referência como a camada blockchain do token BETTEX e da carteira do titular. É uma rede de segunda camada do Ethereum, compatível com a EVM, com <strong>identificador de rede 42161</strong>. A carteira gerada com a conta deve ser compatível com essa rede e permitir ao titular exportar suas chaves e seus dados.</p>
-          <p>Os contratos do token, os serviços de leitura da rede e o aplicativo têm responsabilidades distintas. A camada blockchain registra emissão e movimentações do token; o backend acompanha os eventos confirmados e os concilia com os registros da conta e da piscina fechada de staking. O controle das chaves da pessoa não se confunde com as permissões administrativas da tesouraria ou do contrato.</p>
-          <p>A portabilidade da carteira não transforma a piscina fechada em staking operável fora do aplicativo. A participação continua automática pelo BETTEX disponível na carteira oficial, com registros de saldo e tempo. A escolha de Arbitrum na arquitetura não significa que um contrato já tenha sido publicado ou auditado; este documento não apresenta endereço de contrato implantado.</p>
-          <p>Referência técnica: <a href="https://docs.arbitrum.io/for-devs/dev-tools-and-resources/chain-info" target="_blank" rel="noopener noreferrer">documentação oficial das redes Arbitrum</a>.</p>
+          <p>A <strong>Arbitrum One</strong> é uma rede de segunda camada do Ethereum. Ela amplia a capacidade de processamento e reduz os custos das transações em relação à rede principal, oferecendo uma infraestrutura para contratos inteligentes, tokens e carteiras.</p>
+          <p>Seu funcionamento utiliza <strong>optimistic rollups</strong>: as transações são executadas na segunda camada, agrupadas em lotes e seus dados são publicados no Ethereum. Esse modelo distribui o custo de publicação entre várias operações e mantém mecanismos de verificação vinculados ao Ethereum, em vez de executar cada operação diretamente na rede principal.</p>
+          <p>A compatibilidade com o ambiente de contratos do Ethereum permite utilizar ferramentas de desenvolvimento, padrões de tokens e carteiras do mesmo ecossistema. Para a BETTEX, isso facilita a integração entre o token, a carteira do titular e os serviços que acompanham as movimentações da rede.</p>
+          <p>A importância da Arbitrum para a BETTEX está na combinação de <strong>escala, custos de transação menores e registros verificáveis</strong>. Essa infraestrutura dá suporte à emissão e às transferências do token, enquanto o backend acompanha os eventos confirmados e os concilia com os registros da conta. A carteira do titular permanece compatível com esse ecossistema, com chaves e dados exportáveis.</p>
+          <p>Conheça a tecnologia: <a href="https://docs.arbitrum.io/" target="_blank" rel="noopener noreferrer">documentação oficial da Arbitrum</a>.</p>
         </div>
+        <ArbitrumFlowDiagram />
         <div className="whitepaper__lead"><span>MOEDA DA PESSOA E LIQUIDAÇÃO INTERNA</span><p>Os saldos, depósitos, saques e distribuições da pessoa são denominados e movimentados em <strong>moeda fiduciária, conforme a moeda da conta e o país de operação</strong>, com meios de pagamento locais. O modelo admite diferentes moedas e provedores, sem fixar uma moeda nacional para todo o projeto. Distribuições são feitas apenas nos dias de lucro líquido realizado. Stablecoins podem apoiar a liquidação entre serviços ou na tesouraria, exclusivamente como infraestrutura interna do backend, separada da Carteira BETTEX e da conta fiduciária da pessoa.</p></div>
         <div className="whitepaper__currency-grid">
           <div><span>01 / MOEDA DA CONTA</span><strong>Moeda fiduciária</strong><p>Unidade efetiva dos saldos, depósitos, saques e distribuições da pessoa, conforme a moeda da conta; não é mera conversão indicativa.</p></div>
@@ -111,6 +115,7 @@ export function ChapterContent({ index }: { index: number }) {
           <p>A <strong>Robinhood</strong> faz parte da apresentação técnica como uma possibilidade de conector para o mercado de ações e criptoativos. O conector deve separar leitura de preços e posições, proposta de ordem, aprovação pelo núcleo de risco, execução e conciliação do resultado. A conta operacional do projeto não é a carteira pessoal do titular.</p>
           <p>A <a href="https://docs.robinhood.com/crypto/trading" target="_blank" rel="noopener noreferrer">Robinhood Crypto Trading API</a> documenta consultas de mercado e conta, envio e cancelamento de ordens de <strong>criptoativos</strong>, com disponibilidade para clientes nos Estados Unidos. Essa API não estabelece acesso equivalente para negociação de ações: esse caminho requer um canal autorizado próprio. O desenho apresenta a integração possível, não uma conexão já ativa ou uma autorização de uso obtida.</p>
         </div>
+        <RobinhoodFlowDiagram />
         <Subhead>Allora: integração possível de inferências</Subhead>
         <div className="whitepaper__prose">
           <p>A <strong>Allora</strong> pode fornecer inferências agregadas para enriquecer a análise da BETTEX. Um adaptador de dados pode consultar os tópicos relevantes por API, registrar origem e horário e normalizar os valores recebidos. Intervalos de confiança devem ser tratados quando estiverem disponíveis no tópico, sem pressupor que todas as respostas os contenham.</p>
