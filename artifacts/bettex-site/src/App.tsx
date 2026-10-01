@@ -52,8 +52,8 @@ const navItems = [
 ] as const;
 
 function Logo({ pale = false }: { pale?: boolean }) {
-  return <a href={homeAnchor('inicio')} className={`inline-flex items-center gap-2.5 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#168367] ${pale ? 'text-[#f6f4e9]' : 'text-[#123a3b]'}`} aria-label="BETTEX, voltar ao início">
-    <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border ${pale ? 'border-[#a4eacb]/35 bg-[#0b2c30]' : 'border-[#1e5551] bg-[#123a3b]'} shadow-[0_3px_10px_rgba(6,32,33,.12)]`}>
+  return <a href={homeAnchor('inicio')} className={`inline-flex items-center gap-2.5 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#002382] ${pale ? 'text-[#e7ecf8]' : 'text-[#05143c]'}`} aria-label="BETTEX, voltar ao início">
+    <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border ${pale ? 'border-[#6d97f8]/35 bg-[#020e30]' : 'border-[#0b1f57] bg-[#05143c]'} shadow-[0_3px_10px_rgba(0,9,33,.12)]`}>
       <BettexMark className="block h-[30px] w-[30px]" />
     </span>
     <span className="display text-[25px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
@@ -63,73 +63,73 @@ function Logo({ pale = false }: { pale?: boolean }) {
 function SiteHeader({ documentation = false }: { documentation?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  return <header className="sticky top-0 z-40 border-b border-[#d6e1d7] bg-[#f7f4e9]/95 backdrop-blur-lg">
+  return <header className="sticky top-0 z-40 border-b border-[#c3ceea] bg-[#e8edf8]/95 backdrop-blur-lg">
     <div className="page-wrap flex h-[72px] items-center justify-between gap-4">
       <Logo />
       <nav className="hidden items-center gap-4 xl:flex" aria-label="Navegação principal">
-        {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#168367] xl:text-sm">{label}</a>)}
+        {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#002382] xl:text-sm">{label}</a>)}
       </nav>
-      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
-      <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#bdd5c8] xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
+      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#05143c] px-5 py-3 text-xs font-bold text-[#e8edf8] hover:bg-[#0e245f] sm:inline-flex">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
+      <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#8ca4de] xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
-    {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#d6e1d7] py-3 xl:hidden" aria-label="Navegação móvel">
-      {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#e6f0e7]">{label}</a>)}
-      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} onClick={() => setMenuOpen(false)} className="tap mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:hidden">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
+    {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#c3ceea] py-3 xl:hidden" aria-label="Navegação móvel">
+      {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#e3e8f3]">{label}</a>)}
+      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} onClick={() => setMenuOpen(false)} className="tap mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#05143c] px-5 py-3 text-xs font-bold text-[#e8edf8] hover:bg-[#0e245f] sm:hidden">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
     </nav>}
   </header>;
 }
 
 function SiteFooter() {
-  return <footer id="rodape" className="relative overflow-hidden bg-[#123a3b] text-[#e5f0e8]">
-    <div aria-hidden="true" className="pointer-events-none absolute -right-36 top-0 h-[440px] w-[440px] rounded-full border border-[#a4eacb]/10 sm:-right-12" />
-    <div aria-hidden="true" className="pointer-events-none absolute -right-20 top-20 h-[290px] w-[290px] rounded-full border border-[#a4eacb]/10 sm:right-6" />
+  return <footer id="rodape" className="relative overflow-hidden bg-[#05143c] text-[#e1e7f4]">
+    <div aria-hidden="true" className="pointer-events-none absolute -right-36 top-0 h-[440px] w-[440px] rounded-full border border-[#6d97f8]/10 sm:-right-12" />
+    <div aria-hidden="true" className="pointer-events-none absolute -right-20 top-20 h-[290px] w-[290px] rounded-full border border-[#6d97f8]/10 sm:right-6" />
     <div className="page-wrap relative">
-      <div className="grid gap-8 border-b border-[#a4eacb]/20 py-10 sm:py-20 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+      <div className="grid gap-8 border-b border-[#6d97f8]/20 py-10 sm:py-20 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
         <div>
-          <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#a4eacb]">BETTEX</span>
-          <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#f7f4e9]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#a4eacb]">e se torne dono do jogo</span></h2>
+          <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#6d97f8]">BETTEX</span>
+          <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#e8edf8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#6d97f8]">e se torne dono do jogo</span></h2>
         </div>
         <div className="lg:justify-self-end">
-          <p className="max-w-[390px] text-sm leading-7 text-[#cadfd4]">Participe dos resultados da IA com o token BETTEX.</p>
+          <p className="max-w-[390px] text-sm leading-7 text-[#b4c5eb]">Participe dos resultados da IA com o token BETTEX.</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href={homeAnchor('roadmap')} className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-5 py-3 text-sm font-bold text-[#123a3b] hover:bg-[#c0f5dc]">Ver o roadmap <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
-            <a href={DOCUMENTATION_PATH} className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/40 px-5 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ler a documentação</a>
+            <a href={homeAnchor('roadmap')} className="tap inline-flex items-center gap-2 rounded-full bg-[#2457ff] px-5 py-3 text-sm font-bold text-white hover:bg-[#1237c9]">Ver o roadmap <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
+            <a href={DOCUMENTATION_PATH} className="tap inline-flex items-center gap-2 rounded-full border border-[#6d97f8]/40 px-5 py-3 text-sm font-bold text-[#e8edf8] hover:bg-white/10">Ler a documentação</a>
           </div>
         </div>
       </div>
-      <div className="grid gap-10 border-b border-[#a4eacb]/20 py-11 md:grid-cols-[minmax(0,1.5fr)_1fr_1fr]">
+      <div className="grid gap-10 border-b border-[#6d97f8]/20 py-11 md:grid-cols-[minmax(0,1.5fr)_1fr_1fr]">
         <div>
           <Logo pale />
-           <p className="mt-5 max-w-[350px] text-sm leading-7 text-[#cadfd4]">O token do projeto de inteligência artificial BETTEX.</p>
+           <p className="mt-5 max-w-[350px] text-sm leading-7 text-[#b4c5eb]">O token do projeto de inteligência artificial BETTEX.</p>
         </div>
         <nav aria-label="Explorar o projeto">
-          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Explore</h3>
+          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#6d97f8]">Explore</h3>
           <ul className="footer-links space-y-1 text-sm font-semibold">
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('participacao')}>Token BETTEX</a></li>
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('tecnologia')}>Como opera</a></li>
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('mercados')}>Mercados</a></li>
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
+            <li><a className="hover:text-[#6d97f8]" href={homeAnchor('participacao')}>Token BETTEX</a></li>
+            <li><a className="hover:text-[#6d97f8]" href={homeAnchor('tecnologia')}>Como opera</a></li>
+            <li><a className="hover:text-[#6d97f8]" href={homeAnchor('mercados')}>Mercados</a></li>
+            <li><a className="hover:text-[#6d97f8]" href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
           </ul>
         </nav>
         <nav aria-label="Links do projeto">
-          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">O projeto</h3>
+          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#6d97f8]">O projeto</h3>
           <ul className="footer-links space-y-1 text-sm font-semibold">
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('historia')}>Por que BETTEX</a></li>
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('roadmap')}>Roadmap</a></li>
-            <li><a className="hover:text-[#a4eacb]" href={DOCUMENTATION_PATH}>Documentação</a></li>
+            <li><a className="hover:text-[#6d97f8]" href={homeAnchor('historia')}>Por que BETTEX</a></li>
+            <li><a className="hover:text-[#6d97f8]" href={homeAnchor('roadmap')}>Roadmap</a></li>
+            <li><a className="hover:text-[#6d97f8]" href={DOCUMENTATION_PATH}>Documentação</a></li>
           </ul>
         </nav>
       </div>
-      <div className="flex flex-col gap-4 py-6 text-xs leading-5 text-[#b5d1c3] sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 py-6 text-xs leading-5 text-[#829ddc] sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} BETTEX.</p>
-        <a href={homeAnchor('inicio')} className="inline-flex min-h-11 w-fit items-center gap-2 font-bold text-[#a4eacb] hover:text-white">Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
+        <a href={homeAnchor('inicio')} className="inline-flex min-h-11 w-fit items-center gap-2 font-bold text-[#6d97f8] hover:text-white">Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
       </div>
     </div>
   </footer>;
 }
 
 function SitePage({ children, documentation = false }: { children: ReactNode; documentation?: boolean }) {
-  return <div className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#f7f4e9]`}>
+  return <div className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#e8edf8]`}>
     <SiteHeader documentation={documentation} />
     {children}
     <SiteFooter />
@@ -137,7 +137,7 @@ function SitePage({ children, documentation = false }: { children: ReactNode; do
 }
 
 function MarketCard({ market, number }: { market: Market; number: number }) {
-  return <article className={`market-card market-card--${market.kind} flex h-full flex-col overflow-hidden rounded-[18px] border border-[#123a3b]/15 bg-[#f5f6ef]`}>
+  return <article className={`market-card market-card--${market.kind} flex h-full flex-col overflow-hidden rounded-[18px] border border-[#05143c]/15 bg-[#f5f6ef]`}>
     <div className="market-card__stage relative flex h-[190px] shrink-0 items-center justify-center overflow-hidden sm:h-[205px]">
       <div className="market-card__index absolute left-5 top-5 z-20 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em]"><market.icon className="h-4 w-4" aria-hidden="true" />0{number} / {market.area}</div>
       <span className="market-card__crosshair market-card__crosshair--tl" aria-hidden="true" />
@@ -152,9 +152,9 @@ function MarketCard({ market, number }: { market: Market; number: number }) {
       <div className="market-card__stage-foot absolute bottom-3 left-5 right-5 z-20 flex justify-between border-t border-white/15 pt-2 text-[8px] font-bold uppercase tracking-[.16em]"><span>BETTEX / MERCADO</span><span>0{number} / 04</span></div>
     </div>
     <div className="flex flex-1 flex-col p-5 sm:p-6">
-      <div className="min-h-[75px]"><h4 className="display text-[25px] font-extrabold leading-none tracking-[-.055em] text-[#123a3b]">{market.name}</h4><p className="display mt-2 text-base font-bold leading-5 text-[#294d4a]">{market.intro}</p></div>
-      <p className="mono mt-4 text-[9px] font-bold uppercase tracking-[.12em] text-[#44776b]">Como a BETTEX atua</p>
-      <p className="mt-2 min-h-[70px] text-[13px] leading-[1.55] text-[#455f5b]">{market.detail}</p>
+      <div className="min-h-[75px]"><h4 className="display text-[25px] font-extrabold leading-none tracking-[-.055em] text-[#05143c]">{market.name}</h4><p className="display mt-2 text-base font-bold leading-5 text-[#122353]">{market.intro}</p></div>
+      <p className="mono mt-4 text-[9px] font-bold uppercase tracking-[.12em] text-[#1f3e94]">Como a BETTEX atua</p>
+      <p className="mt-2 min-h-[70px] text-[13px] leading-[1.55] text-[#183173]">{market.detail}</p>
     </div>
   </article>;
 }
@@ -186,18 +186,18 @@ function Home() {
 
   return <SitePage>
     <main>
-      <section id="inicio" className="hero-bg relative overflow-hidden text-[#f7f4e9]">
+      <section id="inicio" className="hero-bg relative overflow-hidden text-[#e8edf8]">
         <div className="hero-intro-stage relative">
         <div className="page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[730px] xl:py-16">
           <div className="entrance relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#94ebcb]/35 bg-[#94ebcb]/10 px-4 py-2 text-[11px] font-bold text-[#aff3d7]"><span className="h-2 w-2 rounded-full bg-[#a6edcb]" /> AGENTE MULTIMERCADO</div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#5a8bfc]/35 bg-[#5a8bfc]/10 px-4 py-2 text-[11px] font-bold text-[#99b7ff]"><span className="h-2 w-2 rounded-full bg-[#6f99fb]" /> AGENTE MULTIMERCADO</div>
             <h1 className="hero-title mt-7 max-w-[690px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold">
               <span className="block">USE IA CONTRA</span>
-              <span className="block text-[#a4eacb]">O SISTEMA.</span>
+              <span className="block text-[#6d97f8]">O SISTEMA.</span>
             </h1>
-            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#f7f4e9]">Seja o dono do jogo. Participe dos resultados da IA.</h2>
-            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">BETTEX é o token do nosso agente de inteligência artificial, que analisa e opera em esportes, previsões, cassinos, ações e cripto. Quem tem BETTEX participa dos resultados do projeto.</p>
-            <div className="mt-8 flex flex-wrap items-center gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-7 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Quero participar</a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 px-4 py-4 text-sm font-semibold text-[#d7e9df] underline-offset-4 hover:underline">Ver telas do app</a></div>
+            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#e8edf8]">Seja o dono do jogo. Participe dos resultados da IA.</h2>
+            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">BETTEX é o token do nosso agente de inteligência artificial, que analisa e opera em esportes, previsões, cassinos, ações e cripto. Quem tem BETTEX participa dos resultados do projeto.</p>
+            <div className="mt-8 flex flex-wrap items-center gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#2457ff] px-7 py-4 text-sm font-bold text-white hover:bg-[#1237c9]">Quero participar</a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 px-4 py-4 text-sm font-semibold text-[#c5d2f1] underline-offset-4 hover:underline">Ver telas do app</a></div>
           </div>
         </div>
         <HeroBenefit />

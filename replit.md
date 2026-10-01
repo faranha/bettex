@@ -102,6 +102,8 @@ Site da BETTEX, projeto de investimento com quatro agentes especializados em mer
 
 ## Gotchas
 
+- A direção visual do BETTEX deve usar cores fortes, com o azul do cartão da notícia como referência, em vez de uma paleta predominantemente pastel. Manter contraste legível e preservar as cores semânticas de ganhos, perdas e avisos.
+
 - A apresentação do app não grava nem altera saldos. Históricos antigos do simulador no navegador não provam propriedade de tokens e não devem ser apagados automaticamente.
 - As marcas foram obtidas dos materiais oficiais de Polymarket e Robinhood. A página de imprensa da Robinhood informa que o uso da marca exige autorização prévia; confirmar isso antes de publicar.
 

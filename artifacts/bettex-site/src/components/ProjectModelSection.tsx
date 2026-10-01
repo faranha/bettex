@@ -8,24 +8,24 @@ export function ProjectModelSection() {
     <section id="participacao" className="pm-section" aria-labelledby="pm-heading" data-testid="section-modelo-projeto">
       <style>{`
         .pm-section {
-          --pm-deep: #123a3b;
-          --pm-lime: #b6efca;
-          --pm-cream: #f9f3e9;
+          --pm-deep: #05143c;
+          --pm-lime: #9fbbfb;
+          --pm-cream: #e9eef9;
           position: relative;
           overflow: hidden;
           color: var(--pm-deep);
-          background: #f7e8d7;
+          background: #dae2f4;
           padding: clamp(72px, 8vw, 112px) 0 clamp(60px, 7vw, 90px);
         }
         .pm-casino-wheel {
           position: absolute; top: -100px; right: max(4vw, 20px);
           width: min(46vw, 570px); aspect-ratio: 1; border-radius: 50%;
           border: 2px solid rgba(145, 66, 49, .22);
-          background: repeating-conic-gradient(from -7deg, rgba(151, 67, 48, .17) 0deg 10deg, rgba(18, 58, 59, .13) 10deg 20deg);
+          background: repeating-conic-gradient(from -7deg, rgba(151, 67, 48, .17) 0deg 10deg, rgba(5,20,60, .13) 10deg 20deg);
           mask-image: radial-gradient(circle, transparent 0 15%, #000 16% 20%, transparent 21% 27%, #000 28% 81%, transparent 82%);
           opacity: .8; pointer-events: none;
         }
-        .pm-casino-wheel::after { content: ""; position: absolute; top: 19%; left: calc(50% - 6px); width: 12px; height: 12px; border-radius: 50%; background: #fff3d8; box-shadow: 0 2px 7px rgba(86, 46, 32, .3); }
+        .pm-casino-wheel::after { content: ""; position: absolute; top: 19%; left: calc(50% - 6px); width: 12px; height: 12px; border-radius: 50%; background: #fff3d8; box-shadow: 0 2px 7px rgba(12,32,88, .3); }
         .pm-casino-cards { position: absolute; top: 95px; right: 28%; width: 155px; height: 160px; opacity: .42; pointer-events: none; }
         .pm-casino-card {
           position: absolute; display: grid; place-items: center; width: 94px; height: 128px;
@@ -36,7 +36,7 @@ export function ProjectModelSection() {
         .pm-casino-card:last-child { left: 44px; top: 0; transform: rotate(13deg); }
         .pm-sport-ball {
           position: absolute; top: 125px; right: clamp(16px, 3vw, 64px);
-          width: clamp(105px, 11vw, 155px); aspect-ratio: 1; color: #2b6a60;
+          width: clamp(105px, 11vw, 155px); aspect-ratio: 1; color: #122a6d;
           opacity: .38; transform: rotate(-17deg); pointer-events: none;
         }
         .pm-sport-ball svg { display: block; width: 100%; height: 100%; }
@@ -47,18 +47,18 @@ export function ProjectModelSection() {
            .pm-title { position: relative; z-index: 1; max-width: calc(100% - 350px); margin: 0; font: 800 clamp(2.65rem, 4.5vw, 4.7rem)/1.02 var(--app-font-serif); letter-spacing: -.065em; }
          .pm-title span { color: #a55538; font-size: .75em; }
           .pm-head-note { position: relative; z-index: 1; max-width: 340px; margin: 16px 0 0; color: #75594a; font-size: 13px; line-height: 1.55; }
-          .pm-person { position: absolute; z-index: 0; right: 15px; bottom: -42px; width: 330px; height: 330px; object-fit: contain; object-position: center bottom; pointer-events: none; filter: drop-shadow(0 10px 20px rgba(64, 42, 30, .18)); }
-          .pm-panel { position: relative; z-index: 1; overflow: hidden; border: 1px solid #2c5b55; border-radius: 28px; background: var(--pm-deep); color: var(--pm-cream); box-shadow: 0 20px 48px rgba(99, 55, 37, .13); }
+          .pm-person { position: absolute; z-index: 0; right: 15px; bottom: -42px; width: 330px; height: 330px; object-fit: contain; object-position: center bottom; pointer-events: none; filter: drop-shadow(0 10px 20px rgba(14,28,66, .18)); }
+          .pm-panel { position: relative; z-index: 1; overflow: hidden; border: 1px solid #14285f; border-radius: 28px; background: var(--pm-deep); color: var(--pm-cream); box-shadow: 0 20px 48px rgba(14,37,101, .13); }
         .pm-panel-top { display: flex; justify-content: space-between; gap: 16px; padding: 24px 32px 0; }
-        .pm-panel-label, .pm-panel-count { margin: 0; color: #aee5c8; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
-        .pm-panel-count { color: #8ab9a9; letter-spacing: .06em; white-space: nowrap; }
+        .pm-panel-label, .pm-panel-count { margin: 0; color: #799df1; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
+        .pm-panel-count { color: #4b73cf; letter-spacing: .06em; white-space: nowrap; }
           .pm-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 27px 12px 32px; }
         .pm-step { position: relative; min-width: 0; padding: 9px 20px 10px; }
-        .pm-step + .pm-step { border-left: 1px solid rgba(174, 229, 200, .24); }
-         .pm-index { display: block; margin-bottom: 12px; color: #aee5c8; font: 700 11px/1 var(--app-font-mono); }
+        .pm-step + .pm-step { border-left: 1px solid rgba(121,157,241, .24); }
+         .pm-index { display: block; margin-bottom: 12px; color: #799df1; font: 700 11px/1 var(--app-font-mono); }
         .pm-step h3 { margin: 0; font: 800 clamp(1.3rem, 1.95vw, 1.8rem)/1.18 var(--app-font-serif); letter-spacing: -.045em; overflow-wrap: anywhere; text-wrap: balance; }
         .pm-step h3 em { color: var(--pm-lime); font-style: normal; }
-        .pm-detail { margin: 12px 0 0; color: #b9d3c9; font-size: 12px; line-height: 1.55; }
+        .pm-detail { margin: 12px 0 0; color: #87a0dd; font-size: 12px; line-height: 1.55; }
          .pm-visual { display: flex; align-items: center; height: 84px; margin-bottom: 15px; }
          .pm-profit-visual { position: relative; width: 205px; }
          .pm-profit-coin { position: absolute; display: grid; width: 39px; height: 39px; place-items: center; border: 2px solid #ffe0ad; border-radius: 50%; background: linear-gradient(135deg, #ffe8c4, #e7a974); box-shadow: inset 0 0 0 4px rgba(255, 245, 224, .65), 0 5px 0 #a56a4d; color: #8c543c; font: 800 20px/1 var(--app-font-serif); }
@@ -66,15 +66,15 @@ export function ProjectModelSection() {
          .pm-profit-coin--two { left: 22px; top: 15px; }
          .pm-profit-coin--three { left: 44px; top: 34px; }
          .pm-profit-arrow { position: absolute; left: 88px; top: 25px; color: #f3c9a6; animation: pm-go 1.8s ease-in-out infinite; }
-         .pm-profit-wallet { position: absolute; top: 23px; left: 131px; display: grid; width: 56px; height: 44px; place-items: center; border: 1px solid #a2dcc1; border-radius: 9px; background: #22605b; color: #b6efca; box-shadow: 0 7px 0 #0b2c31; }
+         .pm-profit-wallet { position: absolute; top: 23px; left: 131px; display: grid; width: 56px; height: 44px; place-items: center; border: 1px solid #6b91eb; border-radius: 9px; background: #0c2362; color: #9fbbfb; box-shadow: 0 7px 0 #020e31; }
          @keyframes pm-go { 50% { transform: translateX(5px); } }
         .pm-agent-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 19px; }
-        .pm-agent { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 9px 10px; border: 1px solid rgba(174, 229, 200, .19); border-radius: 9px; background: rgba(245, 246, 237, .055); }
-        .pm-agent strong { color: #eaf7ed; font: 800 12px/1.1 var(--app-font-serif); letter-spacing: -.02em; }
-        .pm-agent span { color: #aecdc1; font-size: 11px; }
+        .pm-agent { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 9px 10px; border: 1px solid rgba(121,157,241, .19); border-radius: 9px; background: rgba(245, 246, 237, .055); }
+        .pm-agent strong { color: #e9edf8; font: 800 12px/1.1 var(--app-font-serif); letter-spacing: -.02em; }
+        .pm-agent span { color: #7996d9; font-size: 11px; }
         .pm-outcomes { display: grid; gap: 8px; margin-top: 18px; }
         .pm-outcome { padding: 12px 13px; border-radius: 10px; }
-         .pm-outcome--profit { background: #f3c9a6; color: #54362b; }
+         .pm-outcome--profit { background: #f3c9a6; color: #132659; }
         .pm-outcome h4 { margin: 0 0 8px; font: 800 16px/1.2 var(--app-font-serif); letter-spacing: -.025em; }
         .pm-outcome p { margin: 0; font-size: 13px; font-weight: 400; line-height: 1.5; }
         .pm-outcome a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
@@ -82,7 +82,7 @@ export function ProjectModelSection() {
         .pm-panel-foot p { margin: 0; font-size: 13px; line-height: 1.5; }
         .pm-bottom { display: flex; justify-content: flex-end; padding-top: 19px; }
          .pm-bottom a { display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid currentColor; padding: 3px 0 5px; color: #8d4932; font-size: 13px; font-weight: 700; text-decoration: none; }
-         .pm-bottom a:hover { color: #613221; }
+         .pm-bottom a:hover { color: #0b2363; }
         .pm-bottom a svg { transition: transform .2s ease; }
         .pm-bottom a:hover svg { transform: translateX(3px); }
         @media (min-width: 768px) {
@@ -93,7 +93,7 @@ export function ProjectModelSection() {
           .pm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .pm-step { padding: 24px; }
           .pm-step:nth-child(3) { border-left: 0; }
-          .pm-step:nth-child(n + 3) { border-top: 1px solid rgba(174, 229, 200, .24); }
+          .pm-step:nth-child(n + 3) { border-top: 1px solid rgba(121,157,241, .24); }
         }
         @media (max-width: 1000px) {
           .pm-casino-cards { display: none; }
@@ -115,7 +115,7 @@ export function ProjectModelSection() {
           .pm-panel-top { padding: 23px 23px 0; }
           .pm-panel-count { display: none; }
           .pm-steps { display: block; padding: 12px 23px 23px; }
-           .pm-step, .pm-step + .pm-step { display: block; padding: 23px 0; border-left: 0; border-bottom: 1px solid rgba(174, 229, 200, .24); }
+           .pm-step, .pm-step + .pm-step { display: block; padding: 23px 0; border-left: 0; border-bottom: 1px solid rgba(121,157,241, .24); }
           .pm-step:last-child { border-bottom: 0; padding-bottom: 0; }
             .pm-index { margin: 0 0 12px; }
            .pm-visual { height: 72px; margin-bottom: 13px; }
