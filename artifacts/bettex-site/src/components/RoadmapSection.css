@@ -235,7 +235,7 @@
 .roadmap__closing-mark span:nth-child(3) { opacity: .25; }
 .roadmap__closing-label { color: #0d2874; font: 700 10px/1.4 var(--app-font-mono); letter-spacing: .1em; }
 .roadmap__closing p { margin: 12px 0 0; color: #13204F; font-size: 15px; line-height: 1.7; }
-.roadmap__fade { height: clamp(90px, 12vw, 160px); background: linear-gradient(180deg, #F4F1E8 0%, #afc0e9 33%, #254ab0 70%, #070B1F 100%); }
+.roadmap__fade { height: clamp(90px, 12vw, 160px); background: linear-gradient(180deg, #F4F1E8 0%, #6b769f 36%, #13204F 72%, #070B1F 100%); }
 
 @media (max-width: 850px) {
   .roadmap__intro { grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; }
