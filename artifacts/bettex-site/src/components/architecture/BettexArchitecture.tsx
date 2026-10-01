@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react';
+import { ArchitectureIntegrations, type ArchitectureFigureNumber } from './ArchitectureIntegrations';
 import './BettexArchitecture.css';
 
 type Surface = 'dark' | 'paper';
@@ -6,9 +7,9 @@ type Tone = 'blue' | 'gold' | 'teal' | 'plain';
 
 interface Step { title: string; text: string; tone?: Tone; badge?: string; id?: string; extra?: ReactNode }
 
-function Steps({ steps, label }: { steps: Step[]; label: string }) {
+function Steps({ steps, label, stacked = false }: { steps: Step[]; label: string; stacked?: boolean }) {
   return (
-    <ol className="ba-steps" aria-label={label} style={{ ['--cols' as string]: steps.length }}>
+    <ol className={`ba-steps${stacked ? ' ba-steps--stacked' : ''}`} aria-label={label} style={{ ['--cols' as string]: steps.length }}>
       {steps.map((s, i) => (
         <li key={s.title} className={`ba-step ba-step--${s.tone ?? 'plain'}`} data-testid={s.id}>
           <span className="ba-step__n">{i + 1}</span>
@@ -17,21 +18,27 @@ function Steps({ steps, label }: { steps: Step[]; label: string }) {
             <p>{s.text}</p>
             {s.extra}
           </div>
+          {i < steps.length - 1 && (
+            <svg className="ba-step__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
         </li>
       ))}
     </ol>
   );
 }
 
-function Figure({ id, num, title, lead, children }: { id: string; num: string; title: string; lead: string; children: ReactNode }) {
+function Figure({ id, num, title, lead, children }: { id: string; num: ArchitectureFigureNumber; title: string; lead: string; children: ReactNode }) {
   return (
     <section className="ba-fig" id={id} data-testid={id} aria-labelledby={`${id}-t`}>
       <header className="ba-fig__head">
-        <span className="ba-fig__num">Desenho {num} de 7</span>
+        <span className="ba-fig__num">Desenho {num} de 8</span>
         <h4 id={`${id}-t`}>{title}</h4>
         <p>{lead}</p>
       </header>
       {children}
+      <ArchitectureIntegrations figure={num} />
     </section>
   );
 }
@@ -73,16 +80,22 @@ const fig4: Step[] = [
 const fig5: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Autoriza a parcela investível para a IA, com alocação dinâmica e respeito à reserva defensiva e aos limites de risco.', tone: 'gold' },
   { title: 'IA BETTEX', text: 'Analisa oportunidades e opera após aprovação independente de risco. Apura o lucro líquido realizado, após custos, perdas anteriores e conciliação.', tone: 'blue', badge: 'Análise e operação' },
-  { title: 'Distribuição automática', text: 'Quando houver lucro distribuível e as condições forem atendidas, a IA aplica o split diretamente aos dois destinos.', tone: 'teal', badge: 'Split', id: 'node-bettex-profit-split',
+  { title: 'Reservas antes do split', text: 'Antes de distribuir qualquer lucro, a IA verifica se as reservas exigidas da tesouraria estão atendidas.', tone: 'teal', badge: 'Prioridade às reservas', id: 'node-bettex-profit-split',
     extra: (
-      <div className="ba-entry ba-split" aria-label="Dois destinos do lucro líquido">
-        <div className="ba-split__treasury"><strong>Tesouraria · 75%</strong><p>Recebe a parcela restante do lucro líquido.</p></div>
-        <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Pago na Carteira USDC dos participantes elegíveis, nunca na Carteira BETTEX.</p></div>
-      </div>
+      <>
+        <div className="ba-entry" data-testid="node-bettex-reserve-recovery">
+          <div className="ba-split__treasury"><strong>Reservas insuficientes</strong><p>100% do lucro líquido retorna à tesouraria para recompor as reservas. Não há pagamento ao staking nessa apuração.</p></div>
+        </div>
+        <p>Somente com reservas atendidas, aplica o split:</p>
+        <div className="ba-entry ba-split" aria-label="Split permitido apenas com reservas da tesouraria atendidas">
+          <div className="ba-split__treasury"><strong>Tesouraria · 75%</strong><p>Recebe a parcela restante do lucro líquido.</p></div>
+          <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Pago na Carteira USDC dos participantes elegíveis, nunca na Carteira BETTEX.</p></div>
+        </div>
+      </>
     ) },
 ];
 const fig6: Step[] = [
-  { title: 'Parcela do staking', text: 'Parcela já separada pela IA no split do desenho 5, quando houver lucro distribuível. Segue diretamente para os participantes elegíveis.', tone: 'blue' },
+  { title: 'Parcela do staking', text: 'Parcela já separada pela IA no desenho 5, somente com lucro distribuível e reservas atendidas. Segue diretamente para os participantes elegíveis.', tone: 'blue' },
   { title: 'Crédito na Carteira USDC', text: 'A IA credita automaticamente a parcela individual na Carteira USDC, uma única vez. Nunca na Carteira BETTEX de staking.', tone: 'teal' },
   { title: 'Saque em USDC', text: 'Transferência para carteira compatível, com custos e valor líquido informados. Sem pagamento em moeda local.' },
 ];
@@ -101,10 +114,15 @@ const fig7: Step[] = [
       </div>
     ) },
   { title: 'Execução automática', text: 'As operações autorizadas são executadas automaticamente. Toda ordem passa pela aprovação independente de risco, limites e permissões antes do envio.', tone: 'gold', id: 'node-agents-automated-execution' },
+];
+const fig8: Step[] = [
+  { title: 'Coleta de oportunidades', text: 'Os agentes coletam oportunidades nos quatro mercados: preços, probabilidades, liquidez, custos e sinais de IA, com origem e horário dos dados.', tone: 'blue', id: 'node-opportunities-collection' },
+  { title: 'Escolha da melhor oportunidade', text: 'A IA compara as alternativas e escolhe a mais vantajosa segundo retorno esperado, custos, liquidez, exposição e risco. Registra os critérios e o motivo da escolha.', tone: 'blue', id: 'node-opportunities-decision' },
+  { title: 'Investimento autorizado', text: 'A IA propõe o valor dentro da parcela investível autorizada. O risco valida a operação e o valor; só então o investimento é executado automaticamente, preservando reservas e limites.', tone: 'gold', id: 'node-opportunities-investment' },
   { title: 'Registro público', text: 'Todas as transações têm registro aberto: horário, plataforma, ativo, quantidade, valores, custos, estado e referência auditável.', tone: 'teal', badge: 'Todas as transações', id: 'node-agents-public-transactions',
     extra: (
       <div className="ba-entry">
-        <div><strong>Todo o ciclo registrado</strong><p>Envio, execução, falhas, cancelamentos, liquidações e ajustes, não apenas operações lucrativas.</p></div>
+        <div><strong>Da oportunidade à transação</strong><p>Coleta, comparação, decisão, investimento, execução, falhas, cancelamentos, liquidações e ajustes.</p></div>
       </div>
     ) },
 ];
@@ -115,10 +133,10 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
       {heading && (
         <header className="ba__head">
            <p className="ba__eyebrow">Documentação v1 · arquitetura</p>
-           <h3 className="ba__title">Sete fluxos da operação BETTEX.</h3>
+           <h3 className="ba__title">Oito fluxos da operação BETTEX.</h3>
         </header>
       )}
-       <figcaption id="ba-caption" className="ba__note">Modelo descrito na v1: conta e carteiras, compra de BETTEX, auto staking, conexão da tesouraria com a IA, operação dos mercados, distribuição dos ganhos e agentes com registro público de todas as transações.</figcaption>
+       <figcaption id="ba-caption" className="ba__note">Modelo descrito na v1: conta e carteiras, compra de BETTEX, auto staking, conexão da tesouraria com a IA, operação dos mercados, distribuição dos ganhos, agentes e conexões, coleta de oportunidades, decisão de investimento e registro público de todas as transações.</figcaption>
 
       <div className="ba__figs">
         <Figure id="figure-bettex-wallet" num="1" title="Conta, carteiras e compra de BETTEX" lead="Cria a conta, recebe as duas carteiras e compra BETTEX por swap.">
@@ -149,20 +167,26 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
           <p className="ba-fig__foot">O contrato aplica reservas, limites e permissões à movimentação do capital.</p>
         </Figure>
 
-        <Figure id="figure-bettex-risk" num="5" title="Tesouraria, IA e split dos ganhos" lead="Tesouraria → IA BETTEX → dois destinos: tesouraria e staking, quando houver lucro distribuível.">
-          <Steps steps={fig5} label="Tesouraria autoriza capital, IA opera e apura o resultado, lucro dividido diretamente entre tesouraria e staking" />
-          <p className="ba-fig__foot">O lucro não volta integralmente à tesouraria antes da distribuição. O split incide apenas sobre o lucro líquido positivo realizado e conciliado, não sobre o capital investido. Sem lucro distribuível ou sem as condições de pagamento atendidas, não há pagamento ao staking.</p>
+        <Figure id="figure-bettex-risk" num="5" title="Tesouraria, reservas e split dos ganhos" lead="Tesouraria → IA BETTEX → verifica reservas: retorna o lucro à tesouraria ou libera o split.">
+          <Steps steps={fig5} label="IA apura lucro, verifica reservas e retorna 100% à tesouraria se insuficientes; só com reservas atendidas aplica o split de 75% para tesouraria e 25% para staking" />
+          <p className="ba-fig__foot">A recomposição das reservas tem prioridade sobre o staking. Se a tesouraria estiver abaixo das reservas exigidas, todo o lucro líquido dessa apuração retorna à tesouraria, sem pagamento ao staking. Somente com as reservas atendidas e as demais condições cumpridas, a IA aplica o split diretamente, sem enviar todo o lucro primeiro à tesouraria. O lucro líquido é realizado e conciliado, após custos e perdas anteriores; o capital investido não entra no split.</p>
         </Figure>
 
         <Figure id="figure-bettex-payout" num="6" title="Da parcela do staking ao saque em USDC" lead="Depois do split do desenho 5: parcela do staking → Carteira USDC → saque em USDC.">
           <Steps steps={fig6} label="Parcela do staking já separada pela IA, crédito na Carteira USDC e saque em USDC" />
         </Figure>
 
-        <Figure id="figure-bettex-agents" num="7" title="Agentes de IA, conexões e transações abertas" lead="Agentes analisam → conectam por MCP ou API → executam automaticamente → registram todas as transações publicamente.">
-          <Steps steps={fig7} label="Agentes de IA com inferências opcionais da Allora, conexões MCP ou API com mercados, execução autorizada automática e registro público de todas as transações" />
+        <Figure id="figure-bettex-agents" num="7" title="Agentes de IA e conexões com os mercados" lead="Agentes de IA → conexões por MCP ou API → execução automática das operações autorizadas.">
+          <Steps steps={fig7} label="Agentes de IA com inferências opcionais da Allora, conexões MCP ou API com mercados e execução autorizada automática" />
           <p className="ba-fig__foot">Allora fornece inferências para análise, não executa ordens. Cada conexão usa apenas as ferramentas de consulta ou execução oferecidas e autorizadas pelo serviço.</p>
+          <p className="ba-fig__foot">O desenho 8 detalha o ciclo de coleta de oportunidades, escolha, investimento e registro público das transações.</p>
+        </Figure>
+
+        <Figure id="figure-bettex-opportunities" num="8" title="Da coleta de oportunidades ao investimento e registro público" lead="Coleta oportunidades → compara e escolhe a melhor → investe com autorização → registra todo o ciclo abertamente.">
+          <Steps steps={fig8} stacked label="Coleta de oportunidades nos mercados, comparação e decisão pela melhor oportunidade, investimento automático autorizado e registro público de todo o ciclo" />
+          <p className="ba-fig__foot">O registro permite acompanhar quais oportunidades foram coletadas, quais foram selecionadas ou descartadas, os motivos da decisão e o valor investido. A escolha e a alocação são dinâmicas, sem parcelas fixas por mercado; somente operações aprovadas pelo risco seguem para investimento.</p>
           <p className="ba-fig__foot">O registro aberto cobre todas as transações do projeto: vendas de tokens, operações de mercado, movimentações da tesouraria, distribuições e saques. Chaves privadas, credenciais e dados pessoais não são publicados.</p>
-          <p className="ba-fig__foot">Resultados conciliados seguem para o split do desenho 5. A automação das operações não muda a decisão centralizada de abrir novas vendas de BETTEX e definir suas quantidades.</p>
+          <p className="ba-fig__foot">Resultados conciliados seguem para a verificação de reservas do desenho 5: se insuficientes, o lucro retorna integralmente à tesouraria; somente com reservas atendidas há split para o staking. A automação das operações não muda a decisão centralizada de abrir novas vendas de BETTEX e definir suas quantidades.</p>
         </Figure>
       </div>
     </figure>
