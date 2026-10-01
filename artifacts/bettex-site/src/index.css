@@ -37,36 +37,36 @@
 }
 
 :root, .dark {
-  --background: 43 41% 95%;
-  --foreground: 184 40% 14%;
-  --border: 179 17% 80%;
-  --input: 179 17% 74%;
-  --ring: 166 71% 38%;
-  --card: 43 46% 98%;
-  --card-foreground: 184 40% 14%;
-  --card-border: 179 17% 80%;
-  --popover: 43 46% 98%;
-  --popover-foreground: 184 40% 14%;
-  --popover-border: 179 17% 80%;
-  --primary: 166 71% 38%;
-  --primary-foreground: 43 46% 98%;
-  --secondary: 178 25% 87%;
-  --secondary-foreground: 184 40% 14%;
-  --muted: 43 21% 90%;
-  --muted-foreground: 181 13% 40%;
+  --background: 222 60% 96%;
+  --foreground: 224 62% 14%;
+  --border: 222 40% 82%;
+  --input: 222 40% 70%;
+  --ring: 222 90% 52%;
+  --card: 222 60% 98%;
+  --card-foreground: 224 62% 14%;
+  --card-border: 222 40% 82%;
+  --popover: 222 60% 98%;
+  --popover-foreground: 224 62% 14%;
+  --popover-border: 222 40% 82%;
+  --primary: 222 90% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 222 60% 90%;
+  --secondary-foreground: 224 62% 14%;
+  --muted: 222 45% 92%;
+  --muted-foreground: 222 25% 36%;
   --accent: 17 90% 65%;
-  --accent-foreground: 184 40% 14%;
+  --accent-foreground: 224 62% 14%;
   --destructive: 7 70% 43%;
-  --destructive-foreground: 43 46% 98%;
-  --sidebar: 43 41% 95%;
-  --sidebar-foreground: 184 40% 14%;
-  --sidebar-border: 179 17% 80%;
-  --sidebar-primary: 166 71% 38%;
-  --sidebar-primary-foreground: 43 46% 98%;
-  --sidebar-accent: 178 25% 87%;
-  --sidebar-accent-foreground: 184 40% 14%;
-  --sidebar-ring: 166 71% 38%;
-  --chart-1: 166 71% 38%;
+  --destructive-foreground: 0 0% 100%;
+  --sidebar: 222 60% 96%;
+  --sidebar-foreground: 224 62% 14%;
+  --sidebar-border: 222 40% 82%;
+  --sidebar-primary: 222 90% 52%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 222 60% 90%;
+  --sidebar-accent-foreground: 224 62% 14%;
+  --sidebar-ring: 222 90% 52%;
+  --chart-1: 222 90% 52%;
   --chart-2: 17 90% 65%;
   --chart-3: 218 76% 68%;
   --chart-4: 40 95% 58%;
@@ -75,10 +75,10 @@
   --app-font-serif: 'Bricolage Grotesque', sans-serif;
   --app-font-mono: 'Space Mono', monospace;
   --radius: 1rem;
-  --button-outline: rgba(16,56,58,.16);
-  --badge-outline: rgba(16,56,58,.1);
-  --elevate-1: rgba(16,56,58,.04);
-  --elevate-2: rgba(16,56,58,.08);
+  --button-outline: rgba(4,19,59,.16);
+  --badge-outline: rgba(4,19,59,.1);
+  --elevate-1: rgba(4,19,59,.04);
+  --elevate-2: rgba(4,19,59,.08);
   --opaque-button-border-intensity: -8;
   --sidebar-primary-border: hsl(var(--sidebar-primary));
   --sidebar-accent-border: hsl(var(--sidebar-accent));
@@ -87,10 +87,10 @@
   --muted-border: hsl(var(--muted));
   --accent-border: hsl(var(--accent));
   --destructive-border: hsl(var(--destructive));
-  --shadow-xs: 0 4px 10px rgba(14,56,55,.05);
-  --shadow-sm: 0 10px 28px rgba(14,56,55,.08);
-  --shadow: 0 18px 44px rgba(14,56,55,.1);
-  --shadow-lg: 0 28px 65px rgba(14,56,55,.14);
+  --shadow-xs: 0 4px 10px rgba(3,17,57,.05);
+  --shadow-sm: 0 10px 28px rgba(3,17,57,.08);
+  --shadow: 0 18px 44px rgba(3,17,57,.1);
+  --shadow-lg: 0 28px 65px rgba(3,17,57,.14);
 }
 
 @layer base {
@@ -100,7 +100,7 @@
   button, input { font: inherit; }
   button { cursor: pointer; }
   button:disabled { cursor: not-allowed; }
-  ::selection { background: #96efd3; color: #123a3b; }
+  ::selection { background: #5d8eff; color: #05143c; }
   :focus-visible { outline: 3px solid #f2744d; outline-offset: 3px; }
 }
 
@@ -108,10 +108,10 @@
 .mono { font-family: var(--app-font-mono); }
 .page-wrap { width: min(100% - 40px, 1200px); margin-inline: auto; }
 .pill { border-radius: 999px; }
-.hero-bg { background: radial-gradient(circle at 82% 23%, rgba(93,219,180,.17), transparent 34%), radial-gradient(circle at 15% 100%, rgba(84,129,193,.11), transparent 35%), #103537; }
-.hero-pattern { background-image: radial-gradient(rgba(174,242,216,.21) 1.2px, transparent 1.2px); background-size: 27px 27px; }
+.hero-bg { background: radial-gradient(circle at 82% 23%, rgba(25,92,246,.17), transparent 34%), radial-gradient(circle at 15% 100%, rgba(84,129,193,.11), transparent 35%), #051238; }
+.hero-pattern { background-image: radial-gradient(rgba(151,182,255,.21) 1.2px, transparent 1.2px); background-size: 27px 27px; }
 .hero-title { font-family: var(--app-font-serif); letter-spacing: -.065em; line-height: .98; }
-.agent-image { filter: drop-shadow(0 20px 25px rgba(13,54,49,.17)); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.agent-image { filter: drop-shadow(0 20px 25px rgba(3,16,54,.17)); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
 .agent-card:hover .agent-image { transform: translateY(-10px) rotate(-3deg) scale(1.04); }
 .entrance { animation: rise .7s cubic-bezier(.18,.72,.25,1) both; }
 .entrance-delay { animation-delay: .16s; }

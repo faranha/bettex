@@ -1,10 +1,10 @@
-.platform-coverage { margin-top: 48px; padding-top: 32px; border-top: 1px solid #b9cdc1; color: #123a3b; }
-.platform-coverage__eyebrow { margin: 0 0 12px; color: #317565; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.platform-coverage { margin-top: 48px; padding-top: 32px; border-top: 1px solid #869fd7; color: #05143c; }
+.platform-coverage__eyebrow { margin: 0 0 12px; color: #142f79; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
 .platform-coverage h3 { max-width: 780px; margin: 0; font: 800 clamp(1.6rem, 3vw, 2.6rem)/1.12 var(--app-font-serif); letter-spacing: -.045em; }
-.platform-coverage h3 em { color: #26715e; font-style: normal; }
-.platform-coverage__description { max-width: 650px; margin: 16px 0 24px; color: #4c665d; font-size: 14px; line-height: 1.6; }
+.platform-coverage h3 em { color: #0d2873; font-style: normal; }
+.platform-coverage__description { max-width: 650px; margin: 16px 0 24px; color: #1a357d; font-size: 14px; line-height: 1.6; }
 .platform-coverage__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
-.platform-coverage__list li { display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 82px; padding: 20px; border: 1px solid #2b5550; border-radius: 13px; background: #123a3b; }
+.platform-coverage__list li { display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 82px; padding: 20px; border: 1px solid #13265a; border-radius: 13px; background: #05143c; }
 .platform-coverage__logo { display: block; width: auto; max-width: 100%; height: 34px; object-fit: contain; filter: brightness(0) invert(1); }
 .platform-coverage__logo--robinhood { height: 30px; }
 .platform-coverage__logo--kalshi { height: 27px; }
