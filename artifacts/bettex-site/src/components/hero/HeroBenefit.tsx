@@ -1,3 +1,4 @@
+import { ChartNoAxesCombined, Spade } from 'lucide-react';
 import './HeroBenefit.css';
 
 function HeroBrand({ className }: { className: string }) {
@@ -14,7 +15,7 @@ export function HeroBenefit() {
       <img
         className="hero-benefit__art"
         src={`${import.meta.env.BASE_URL}hero-ai-wallet.webp`}
-        alt="Homem ao lado do token BETTEX conectado a apostas e previsões, com uma seta saindo do token central e chegando à carteira"
+        alt="Homem ao lado da marca BETTEX, com referências a surebet, bônus automatizados, previsões e cripto"
         width={1024}
         height={1024}
         loading="eager"
@@ -23,7 +24,7 @@ export function HeroBenefit() {
       />
       <HeroBrand className="hero-benefit__brand hero-benefit__brand--core" />
       <div className="hero-benefit__market-node hero-benefit__market-node--sports" aria-hidden="true">
-        <span className="hero-benefit__label">Apostas</span>
+        <span className="hero-benefit__label">Surebet</span>
         <svg viewBox="0 0 120 120" fill="#0b3633" stroke="#a4eacb" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="60" cy="60" r="54" />
           <path d="M60 34 79 48 72 70 48 70 41 48Z" fill="#a4eacb" />
@@ -33,14 +34,14 @@ export function HeroBenefit() {
       <div className="hero-benefit__market-node hero-benefit__market-node--predictions" aria-hidden="true">
         <span className="hero-benefit__label">Previsões</span>
       </div>
-      <svg className="hero-benefit__profit-route" viewBox="0 0 100 100" aria-hidden="true">
-        <defs>
-          <marker id="hero-profit-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
-            <path d="M1 1 8 5 1 9" fill="none" stroke="#f3c98e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          </marker>
-        </defs>
-        <path d="M73.5 43.2 V68.5 Q73.5 71 76 71 H82 Q85 71 85 74 V86.8" fill="none" stroke="#f3c98e" strokeWidth=".45" strokeLinecap="round" markerEnd="url(#hero-profit-arrow)" />
-      </svg>
+      <div className="hero-benefit__market-node hero-benefit__market-node--bonuses" aria-hidden="true">
+        <span className="hero-benefit__label">Bônus automatizados</span>
+        <Spade strokeWidth={1.8} />
+      </div>
+      <div className="hero-benefit__market-node hero-benefit__market-node--crypto" aria-hidden="true">
+        <span className="hero-benefit__label">Cripto</span>
+        <ChartNoAxesCombined strokeWidth={1.8} />
+      </div>
     </figure>
   );
 }
