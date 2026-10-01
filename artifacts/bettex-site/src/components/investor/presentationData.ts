@@ -32,7 +32,7 @@ export const navGroups = [
     { id: 'bettex', label: 'Como opera', title: 'BETTEX em operação.', text: 'Os quatro agentes da BETTEX operam com surebet, mineração de bônus, cripto alavancada e previsões.' },
     { id: 'resultados', label: 'Resultados', title: 'O desempenho dos quatro mercados.', text: 'Compare o lucro obtido, as perdas e o resultado líquido do projeto nos quatro mercados.' },
     { id: 'historico', label: 'Histórico', title: 'Performance por mercado.', text: 'Escolha um dos quatro mercados para ver seu gráfico e os dias de lucro e de perda.' },
-    { id: 'hydra', label: 'PROTOCOLO HYDRA', title: 'Protocolo Hydra.', text: `${hydraMessage.opening} ${hydraMessage.attitude} ${hydraMessage.goal}` },
+    { id: 'hydra', label: 'Protocolo Hydra', title: 'Protocolo Hydra.', text: `${hydraMessage.opening} ${hydraMessage.attitude} ${hydraMessage.goal}` },
   ] satisfies ScreenMeta[] },
 ];
 
