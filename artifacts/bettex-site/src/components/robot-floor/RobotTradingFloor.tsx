@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactElement } from 'react';
-import { Pause, Play } from 'lucide-react';
+import { Maximize2, Minimize2, Pause, Play } from 'lucide-react';
 import { Walker, makeSim, stepSims, type Sim } from './walkers';
 import { AgentValue } from './AgentValue';
 import './RobotTradingFloor.css';
@@ -150,6 +150,14 @@ type Stage = 'idle' | keyof typeof STATE_TEXT;
 export function RobotTradingFloor() {
   const reduce = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   const [playing, setPlaying] = useState(!reduce);
+  const [expanded, setExpanded] = useState(false);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    viewport.scrollLeft = expanded ? (viewport.scrollWidth - viewport.clientWidth) / 2 : 0;
+    viewport.scrollTop = 0;
+  }, [expanded]);
   const [inView, setInView] = useState(true);
   const [live, setLive] = useState<{ team: number; stage: Stage }>({ team: 0, stage: 'idle' });
   const [sims] = useState<Sim[]>(() => TEAMS.flatMap(t => [0, 1].map(k => makeSim(t.gx, t.gy, k))));
@@ -225,12 +233,19 @@ export function RobotTradingFloor() {
       </div>
 
       <div className="robot-floor__stage">
+        <div className="robot-floor__controls">
         <button type="button" className="robot-floor__toggle" onClick={() => setPlaying(p => !p)} aria-pressed={!playing} data-testid="button-robot-floor-toggle">
           {playing ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />}
           <span>{playing ? 'Pausar animação' : 'Retomar animação'}</span>
         </button>
+        <button type="button" className="robot-floor__zoom" onClick={() => setExpanded(e => !e)} aria-expanded={expanded} aria-controls="robot-floor-viewport" data-testid="button-robot-floor-zoom">
+          {expanded ? <Minimize2 size={14} aria-hidden="true" /> : <Maximize2 size={14} aria-hidden="true" />}
+          <span>{expanded ? 'Ver cena inteira' : 'Ampliar cena'}</span>
+        </button>
+        </div>
         <span className="robot-floor__tag">Ilustração conceitual</span>
 
+        <div ref={viewportRef} id="robot-floor-viewport" className={`robot-floor__viewport${expanded ? ' is-expanded' : ''}`} tabIndex={expanded ? 0 : undefined} role="region" aria-label="Cena das equipes de robôs">
         <svg ref={svgRef} className="robot-floor__svg" viewBox="0 0 1000 620" role="img" aria-label="Cena isométrica com agentes caminhando aleatoriamente em salas de previsões, surebet, memecoins e mineração de bônus, controlados pela IA da BETTEX. As operações seguem pedidos de análise, autorização e execução em um ciclo ilustrativo.">
           <defs>
             <radialGradient id="rf-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stopColor="#2B59FF" stopOpacity=".5" /><stop offset="100%" stopColor="#2B59FF" stopOpacity="0" /></radialGradient>
@@ -308,6 +323,8 @@ export function RobotTradingFloor() {
             })}
           </g>
         </svg>
+        </div>
+        {expanded && <p className="robot-floor__zoom-hint">Arraste para explorar a cena ampliada.</p>}
       </div>
 
       <div className="robot-floor__status" role="status" aria-live="off">
