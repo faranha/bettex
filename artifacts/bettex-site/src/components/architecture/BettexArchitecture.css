@@ -31,13 +31,14 @@
 .ba-entry { display:grid; gap:8px; margin-top:12px; }
 .ba-entry > div { padding:10px; border:1px solid var(--ba-line); border-radius:8px; }
 .ba .ba-entry strong { display:block; color:var(--ba-ink); font-size:12px; }
+.ba-reserves p { margin:6px 0 0; color:var(--ba-muted); font-size:12px; line-height:1.55; }
 .ba-entry__or { color:var(--ba-gold); text-align:center; font:700 10px/1.2 var(--app-font-mono); text-transform:uppercase; }
 .ba-side { margin-top:18px; padding:14px; border:1px dashed var(--ba-teal); border-radius:14px; display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
 .ba-side p { margin:0; color:var(--ba-muted); font-size:12px; line-height:1.55; }
 .ba-side__tag { color:var(--ba-teal); font:700 10px/1.4 var(--app-font-mono); letter-spacing:.12em; text-transform:uppercase; }
 .ba-side--apart { border-color:var(--ba-muted); } .ba-side--apart .ba-side__tag { color:var(--ba-muted); }
 .ba-wordmark { display:inline-block; margin:6px 0 0; padding:3px 9px; border-radius:6px; border:1px solid var(--ba-line); font:800 13px/1.3 var(--app-font-serif); }
-.ba-wordmark--arbitrum { color:var(--ba-blue); } .ba-wordmark--allora { color:var(--ba-teal); margin:0; }
+.ba-wordmark--arbitrum { color:var(--ba-blue); white-space:nowrap; flex-shrink:0; } .ba-wordmark--allora { color:var(--ba-teal); margin:0; }
 .ba-badge { padding:3px 8px; border:1px solid currentColor; border-radius:999px; font:700 9px/1.2 var(--app-font-mono); letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
 .ba-badge--gold { color:var(--ba-gold); }
 .ba-chips { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 0; padding:0; list-style:none; }
@@ -46,6 +47,7 @@
 .ba-partner__logo { display:block; width:auto; height:20px; max-width:100%; object-fit:contain; filter:brightness(0) invert(1); }
 .ba--paper .ba-partner__logo { filter:brightness(0); }
 @container (min-width:640px) {
+  .ba-reserves { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .ba-steps { grid-template-columns:repeat(var(--cols,4),minmax(0,1fr)); gap:30px; }
   .ba-step { flex-direction:column; }
   .ba-step:not(:last-child)::after { left:auto; right:-21px; bottom:auto; top:32px; margin:0; transform:rotate(-45deg); }
