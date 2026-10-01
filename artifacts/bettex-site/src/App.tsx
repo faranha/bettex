@@ -85,17 +85,19 @@ function SiteFooter() {
       <div aria-hidden="true" className="site-footer__ring pointer-events-none absolute -right-36 -top-24 h-[480px] w-[480px] rounded-full border-2 border-[#F4F1E8]/15 sm:-right-12" />
       <div aria-hidden="true" className="site-footer__ring pointer-events-none absolute -right-16 top-12 h-[300px] w-[300px] rounded-full border border-[#F2B632]/45 sm:right-10" />
       <div className="page-wrap relative">
-        <div className="grid gap-8 py-14 sm:py-20 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
-          <div>
+        <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">
+          <div className="pb-2 lg:pb-20">
             <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#F4F1E8]">BETTEX</span>
             <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#F2B632]">e se torne dono do jogo</span></h2>
-          </div>
-          <div className="lg:justify-self-end">
-            <p className="max-w-[390px] text-base font-medium leading-7 text-[#F4F1E8]">Participe dos resultados da IA com o token BETTEX.</p>
+            <p className="mt-6 max-w-[390px] text-base font-medium leading-7 text-[#F4F1E8]">Participe dos resultados da IA com o token BETTEX.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href={homeAnchor('roadmap')} className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#070B1F] px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#13204F] focus-visible:outline-[#F2B632]">Ver o roadmap <ArrowRight className="h-4 w-4 text-[#F2B632]" aria-hidden="true" /></a>
               <a href={DOCUMENTATION_PATH} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#F4F1E8] hover:text-[#070B1F] focus-visible:outline-[#F2B632]">Ler a documentação</a>
             </div>
+          </div>
+          <div className="relative z-10 mx-auto w-full max-w-[400px] self-end lg:max-w-[540px] lg:justify-self-end">
+            <div aria-hidden="true" className="absolute inset-x-[8%] bottom-0 top-[18%] rounded-t-full bg-[#1E44D6]/60" />
+            <img src={`${import.meta.env.BASE_URL}footer-community.webp`} width={900} height={858} alt="" aria-hidden="true" loading="lazy" decoding="async" className="relative block h-auto w-full drop-shadow-[0_14px_24px_rgba(7,11,31,.35)]" />
           </div>
         </div>
       </div>
