@@ -29,7 +29,7 @@ export function HumanStorySection() {
             <p className="hs-right-label">A IA do outro lado da aposta</p>
             <p className="hs-explanation"><strong>Deixe de ser uma vítima do sistema.</strong></p>
             <div className="hs-collage">
-              <NewsClipping className="hs-news" />
+              <NewsClipping className="hs-news" showSource />
             </div>
             <p className="hs-next">USE IA CONTRA<br /><strong>O SISTEMA.</strong></p>
           </div>
