@@ -75,12 +75,11 @@ export function ProjectModelSection() {
         .pm-outcomes { display: grid; gap: 8px; margin-top: 18px; }
         .pm-outcome { padding: 12px 13px; border-radius: 10px; }
          .pm-outcome--profit { background: #f3c9a6; color: #54362b; }
-        .pm-outcome span { display: block; margin-bottom: 3px; font: 700 10px/1.3 var(--app-font-mono); letter-spacing: .04em; text-transform: uppercase; }
-        .pm-outcome strong { display: block; font-size: 12px; line-height: 1.4; }
-        .pm-panel-foot { display: flex; align-items: center; gap: 20px; padding: 20px 32px; border-top: 1px solid #cb7161; background: linear-gradient(135deg, #aa4037, #91342e); color: #fff5ef; }
-        .pm-panel-foot-label { flex: none; padding-right: 20px; border-right: 1px solid rgba(255, 226, 207, .35); color: #ffe1d0; font: 700 11px/1.5 var(--app-font-mono); letter-spacing: .04em; text-transform: uppercase; }
+        .pm-outcome h4 { margin: 0 0 8px; font: 800 16px/1.2 var(--app-font-serif); letter-spacing: -.025em; }
+        .pm-outcome p { margin: 0; font-size: 13px; font-weight: 400; line-height: 1.5; }
+        .pm-outcome a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+        .pm-panel-foot { padding: 20px 32px; border-top: 1px solid #cb7161; background: linear-gradient(135deg, #aa4037, #91342e); color: #fff5ef; }
         .pm-panel-foot p { margin: 0; font-size: 13px; line-height: 1.5; }
-        .pm-panel-foot strong { color: #fff5ef; }
         .pm-bottom { display: flex; justify-content: flex-end; padding-top: 19px; }
          .pm-bottom a { display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid currentColor; padding: 3px 0 5px; color: #8d4932; font-size: 13px; font-weight: 700; text-decoration: none; }
          .pm-bottom a:hover { color: #613221; }
@@ -121,8 +120,7 @@ export function ProjectModelSection() {
           .pm-detail { margin-top: 7px; }
           .pm-agent-list { margin-top: 15px; }
           .pm-outcomes { margin-top: 14px; }
-          .pm-panel-foot { flex-direction: column; align-items: flex-start; gap: 8px; padding: 17px 23px; }
-          .pm-panel-foot-label { border-right: 0; padding-right: 0; }
+          .pm-panel-foot { padding: 17px 23px; }
         }
         @media (max-width: 370px) {
           .pm-casino-cards { display: none; }
@@ -202,13 +200,12 @@ export function ProjectModelSection() {
               </div>
               <h3>Quando houver lucro, crédito <em>em reais.</em></h3>
               <div className="pm-outcomes">
-                <div className="pm-outcome pm-outcome--profit"><span>Participação no lucro</span><strong>25% do lucro líquido do projeto é distribuído entre os titulares, proporcionalmente à quantidade e ao tempo de BETTEX em carteira.</strong></div>
+                <div className="pm-outcome pm-outcome--profit"><h4>Participação no lucro</h4><p>De acordo com as <a href={`${import.meta.env.BASE_URL}documentacao#documentacao-apuracao`}>regras documentadas</a>.</p></div>
               </div>
             </div>
           </div>
           <div className="pm-panel-foot">
-            <span className="pm-panel-foot-label">Sem lucro</span>
-            <p><strong>Sem lucro, não há distribuição.</strong> O crédito é feito em reais sem venda de BETTEX.</p>
+            <p>Sem lucro não há distribuição e você não perde os seus tokens.</p>
           </div>
         </div>
         <div className="pm-bottom">
