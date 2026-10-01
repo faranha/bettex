@@ -9,9 +9,9 @@ const main: FlowNode[] = [
 ];
 
 const branch: FlowNode[] = [
-  { tag: 'A', title: 'Eventos confirmados', text: 'Transferências e saldos do token registrados pela rede.', tone: 'blue' },
+  { tag: 'A', title: 'Eventos confirmados', text: 'Movimentações de BETTEX e USDC identificadas por ativo e confirmadas na rede.', tone: 'blue' },
   { tag: 'B', title: 'Leitura pelo backend', text: 'O backend apenas lê eventos públicos confirmados. Não recebe chaves privadas.', tone: 'ink' },
-  { tag: 'C', title: 'Conciliação contábil', text: 'Os eventos são comparados com o livro contábil da conta. Pagamentos em moeda fiduciária seguem fora da rede.', tone: 'gold' },
+  { tag: 'C', title: 'Conciliação contábil', text: 'Os eventos são comparados com os registros separados de BETTEX e USDC. A conversão de fiat na entrada cabe ao on-ramp externo.', tone: 'gold' },
 ];
 
 export function ArbitrumFlowDiagram() {
