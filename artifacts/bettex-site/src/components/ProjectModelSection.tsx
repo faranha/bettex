@@ -44,7 +44,7 @@ export function ProjectModelSection() {
          .pm-head { position: relative; min-height: 190px; margin-bottom: 32px; }
          .pm-eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 18px; color: #a55538; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .15em; text-transform: uppercase; }
         .pm-eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
-          .pm-title { position: relative; z-index: 1; margin: 0; font: 800 clamp(2.65rem, 4.5vw, 4.7rem)/1.02 var(--app-font-serif); letter-spacing: -.065em; }
+           .pm-title { position: relative; z-index: 1; max-width: calc(100% - 350px); margin: 0; font: 800 clamp(2.65rem, 4.5vw, 4.7rem)/1.02 var(--app-font-serif); letter-spacing: -.065em; }
          .pm-title span { color: #a55538; }
           .pm-head-note { position: relative; z-index: 1; max-width: 340px; margin: 16px 0 0; color: #75594a; font-size: 13px; line-height: 1.55; }
           .pm-person { position: absolute; z-index: 0; right: 15px; bottom: -42px; width: 330px; height: 330px; object-fit: contain; object-position: center bottom; pointer-events: none; filter: drop-shadow(0 10px 20px rgba(64, 42, 30, .18)); }
@@ -52,11 +52,11 @@ export function ProjectModelSection() {
         .pm-panel-top { display: flex; justify-content: space-between; gap: 16px; padding: 24px 32px 0; }
         .pm-panel-label, .pm-panel-count { margin: 0; color: #aee5c8; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
         .pm-panel-count { color: #8ab9a9; letter-spacing: .06em; white-space: nowrap; }
-         .pm-steps { display: grid; grid-template-columns: .92fr .92fr 1.48fr 1.42fr; padding: 27px 18px 32px; }
-        .pm-step { position: relative; min-width: 0; padding: 9px 25px 10px 24px; }
+          .pm-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 27px 12px 32px; }
+        .pm-step { position: relative; min-width: 0; padding: 9px 20px 10px; }
         .pm-step + .pm-step { border-left: 1px solid rgba(174, 229, 200, .24); }
          .pm-index { display: block; margin-bottom: 12px; color: #aee5c8; font: 700 11px/1 var(--app-font-mono); }
-        .pm-step h3 { margin: 0; font: 800 clamp(1.35rem, 2.15vw, 2rem)/1.12 var(--app-font-serif); letter-spacing: -.045em; }
+        .pm-step h3 { margin: 0; font: 800 clamp(1.3rem, 1.95vw, 1.8rem)/1.18 var(--app-font-serif); letter-spacing: -.045em; overflow-wrap: anywhere; text-wrap: balance; }
         .pm-step h3 em { color: var(--pm-lime); font-style: normal; }
         .pm-detail { margin: 12px 0 0; color: #b9d3c9; font-size: 12px; line-height: 1.55; }
          .pm-visual { display: flex; align-items: center; height: 84px; margin-bottom: 15px; }
@@ -90,10 +90,14 @@ export function ProjectModelSection() {
         .pm-bottom a:hover svg { transform: translateX(3px); }
         @media (min-width: 768px) and (max-width: 1100px) {
           .pm-title { max-width: calc(100% - 250px); font-size: clamp(2.1rem, 3.5vw, 2.6rem); letter-spacing: -.045em; }
+          .pm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .pm-step { padding: 24px; }
+          .pm-step:nth-child(3) { border-left: 0; }
+          .pm-step:nth-child(n + 3) { border-top: 1px solid rgba(174, 229, 200, .24); }
         }
         @media (max-width: 1000px) {
           .pm-casino-cards { display: none; }
-          .pm-steps { grid-template-columns: .86fr .86fr 1.4fr 1.35fr; padding-inline: 8px; }
+          .pm-steps { padding-inline: 12px; }
           .pm-step { padding-inline: 16px; }
            .pm-person { right: 0; width: 240px; height: 260px; }
         }
@@ -104,7 +108,7 @@ export function ProjectModelSection() {
           .pm-sport-ball { top: 12px; right: -20px; width: 96px; opacity: .42; }
           .pm-wrap { width: min(100% - 32px, 1200px); }
            .pm-head { min-height: 0; padding-bottom: 190px; margin-bottom: 25px; }
-          .pm-title { font-size: clamp(2rem, 8.35vw, 3rem); letter-spacing: -.04em; }
+          .pm-title { max-width: none; font-size: clamp(2rem, 8.35vw, 3rem); letter-spacing: -.04em; }
            .pm-head-note { max-width: 190px; margin-top: 13px; }
            .pm-person { right: -5px; bottom: -26px; width: 200px; height: 205px; }
           .pm-panel { border-radius: 22px; }
@@ -149,9 +153,8 @@ export function ProjectModelSection() {
         <div className="pm-head">
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
-            <h2 id="pm-heading" className="pm-title">Compre. Seu saldo participa.<br /><span>Renda passiva com apostas?</span></h2>
+            <h2 id="pm-heading" className="pm-title">Compre, ative, lucre.<br /><span>Transformamos apostas em renda passiva.</span></h2>
           </div>
-          <p className="pm-head-note">Um agente, diferentes mercados.</p>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
 
