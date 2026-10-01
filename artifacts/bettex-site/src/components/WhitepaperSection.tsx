@@ -70,9 +70,9 @@ export function WhitepaperSection() {
         <div>
           <p className="whitepaper__eyebrow"><span aria-hidden="true" /> ARQUITETURA, ECONOMIA E RISCO</p>
           <h1 id="whitepaper-title">Documentação<br /><em>técnica.</em></h1>
-          <p className="whitepaper__hero-lede">Uma leitura técnica do agente BETTEX em previsões, ações e cripto, esportes e cassinos, das contas em moedas fiduciárias, da arquitetura backend, da operação internacional e das regras econômicas.</p>
+          <p className="whitepaper__hero-lede">Uma leitura técnica do agente BETTEX em previsões, ações e cripto, esportes e cassinos, da operação inicial 100% cripto em USDC, da arquitetura backend e das regras econômicas.</p>
         </div>
-        <div className="whitepaper__hero-note"><span>VISÃO GERAL</span><p>A BETTEX é um agente único, com operação em vários países e diferentes moedas fiduciárias. Estratégias e conectores por mercado operam sob o mesmo núcleo de risco; o token BETTEX e a Carteira BETTEX registram a participação e as distribuições em moeda fiduciária nos dias de lucro, conforme a moeda da conta.</p></div>
+        <div className="whitepaper__hero-note"><span>VERSÃO INICIAL · 100% CRIPTO</span><p>A BETTEX é um projeto internacional. Os saldos financeiros, depósitos, saques e distribuições são em USDC; BETTEX é o token de participação. A entrada com moeda fiduciária ocorre por on-ramp externo. Conversão e pagamentos em moeda local pertencem à proposta futura do BETTEX Bank, não à versão inicial.</p></div>
       </header>
       <div className="whitepaper__body page-wrap" id="documentacao-indice">
         <aside className="whitepaper__aside" aria-label="Índice da documentação">

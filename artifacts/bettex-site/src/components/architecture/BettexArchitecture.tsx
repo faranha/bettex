@@ -25,9 +25,9 @@ const flows = [
   ['A', 'A carteira da pessoa é gerada com a conta. O acesso demonstra o controle dela, sem enviar chave privada ou frase de recuperação ao servidor.'],
   ['B', 'O saldo BETTEX disponível na carteira oficial do projeto participa automaticamente do pool fechado de staking, sem ativação nem depósito adicional.'],
   ['C', 'O backend registra contabilidade, conciliação e confirmações de pagamento. Essas funções são separadas da custódia e das chaves privadas da carteira pessoal.'],
-  ['D', 'Provedores de pagamento independentes processam moedas fiduciárias pelos meios locais de cada mercado; eventual KYC do provedor não integra o acesso à BETTEX.'],
+  ['D', 'O on-ramp externo converte fiat em USDC na entrada, com cotação e custos próprios; eventual KYC do provedor não integra o acesso à BETTEX. Não há off-ramp próprio.'],
   ['E', 'O motor comum de decisão e risco analisa os mercados e aciona conectores autorizados. Os sinais da Allora, se usados, entram apenas na análise.'],
-  ['F', 'Os resultados dos mercados voltam à conciliação. Em dia de lucro, 25% do lucro líquido realizado é creditado em moeda fiduciária, conforme a moeda da conta, ponderado pelo tempo em UTC.'],
+  ['F', 'Os resultados dos mercados voltam à conciliação. Em dia de lucro, 25% do lucro líquido realizado após custos é distribuído em USDC, ponderado pelo tempo em UTC.'],
 ] as const;
 
 export function BettexArchitecture({ surface = 'dark', heading = true }: { surface?: Surface; heading?: boolean }) {
@@ -36,17 +36,17 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
       {heading && (
         <header className="ba__head">
           <p className="ba__eyebrow">Arquitetura técnica prevista</p>
-          <h3 className="ba__title">Da carteira da pessoa ao crédito em moeda fiduciária.</h3>
+          <h3 className="ba__title">Da carteira da pessoa ao crédito em USDC.</h3>
         </header>
       )}
       <div className="ba__board">
-        <section className="ba-lane" aria-label="Titular e provedores de pagamento">
+        <section className="ba-lane" aria-label="Titular e on-ramp externo">
           <p className="ba-lane__label">01 / Titular</p>
           <Node tag="A" tone="blue" title="Carteira da pessoa" badge="Modelo">
             <p>Gerada na criação da conta, com dados básicos. Pertence ao titular; chaves e dados são exportáveis por iniciativa dele.</p>
           </Node>
-          <Node tag="D" title="Provedores de pagamento" badge="Externo">
-            <p>Moedas fiduciárias e meios de pagamento locais, conforme o país e o mercado de operação. Eventual KYC do provedor é independente do acesso à BETTEX.</p>
+          <Node tag="D" title="On-ramp: fiat → USDC" badge="Externo">
+            <p>Conversão somente na entrada, com cotação e custos do provedor. Crédito após recebimento de USDC. KYC externo é independente do acesso à BETTEX.</p>
           </Node>
         </section>
 
@@ -60,7 +60,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
             <p>O saldo na carteira oficial participa automaticamente. O staking exige acessar o aplicativo, sem manter sessão aberta o tempo todo.</p>
           </Node>
           <Node tag="C" title="Backend: API, contabilidade e conciliação">
-            <p>Confirma pagamentos e registra saldos. Separado de custódia e de chaves privadas.</p>
+            <p>Concilia USDC recebido, custos e saldos separados de USDC e BETTEX. Não recebe chaves privadas da pessoa.</p>
           </Node>
         </section>
 
@@ -87,8 +87,8 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
 
         <section className="ba-lane ba-lane--result" aria-label="Resultado">
           <p className="ba-lane__label">04 / Resultado</p>
-          <Node tone="gold" tag="F" title="Conciliação e crédito diário em moeda fiduciária">
-            <p>Resultados dos mercados entram na conciliação. Dia de lucro: 25% do lucro líquido realizado, ponderado pelo tempo em UTC, creditado na moeda fiduciária da conta.</p>
+          <Node tone="gold" tag="F" title="Conciliação e crédito diário em USDC">
+            <p>Resultados e custos entram na conciliação. Dia de lucro: 25% do lucro líquido realizado, ponderado pelo tempo em UTC, creditado em USDC.</p>
           </Node>
         </section>
       </div>
