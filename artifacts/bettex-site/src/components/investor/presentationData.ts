@@ -16,17 +16,16 @@ export const markets = [
 
 export type MarketId = typeof markets[number]['id'];
 export type PlatformId = typeof markets[number]['platformId'];
-export type ScreenId = 'dinheiro' | 'participacao' | 'bettex' | 'resultados' | 'historico';
+export type ScreenId = 'participacao' | 'bettex' | 'resultados' | 'historico';
 
 export interface ScreenMeta { id: ScreenId; label: string; title: string; text: string }
 
 export const navGroups = [
   { label: 'BETTEX', items: [
-    { id: 'dinheiro', label: 'Conta em reais / Pix', title: 'Sua conta em reais.', text: 'Consulte depósitos, compra concluída de BETTEX, créditos e saques em reais.' },
-    { id: 'participacao', label: 'Token BETTEX', title: 'Saldo de tokens BETTEX.', text: 'Seu saldo de BETTEX participa automaticamente nos dias com lucro líquido realizado pelo projeto, conforme a quantidade de tokens e o tempo mantido.' },
-    { id: 'bettex', label: 'Como opera', title: 'Uma IA. Múltiplas análises. Quatro mercados.', text: 'A BETTEX compara oportunidades em diferentes mercados e plataformas a partir de suas análises.' },
-    { id: 'resultados', label: 'Resultados', title: 'Lucros recebidos em reais.', text: 'Veja sua parte do lucro e o exemplo de valores por plataforma.' },
-    { id: 'historico', label: 'Histórico', title: 'Movimentações da conta.', text: 'Consulte compras de tokens, o crédito diário consolidado e outras movimentações.' },
+    { id: 'participacao', label: 'Token BETTEX', title: 'Sua carteira BETTEX.', text: 'Seus tokens, sua participação automática e seus lucros em reais.' },
+    { id: 'bettex', label: 'Como opera', title: 'BETTEX em operação.', text: 'Exemplos de surebet, mineração de bônus, cripto alavancada e previsões, operados pelos quatro agentes da BETTEX em plataformas fictícias.' },
+    { id: 'resultados', label: 'Resultados', title: 'O desempenho dos quatro agentes.', text: 'Compare o lucro obtido, as perdas e o resultado líquido do projeto nos quatro mercados.' },
+    { id: 'historico', label: 'Histórico', title: 'Performance por agente.', text: 'Escolha um dos quatro agentes para ver seu gráfico e os dias de lucro e de perda na semana de exemplo.' },
   ] satisfies ScreenMeta[] },
 ];
 

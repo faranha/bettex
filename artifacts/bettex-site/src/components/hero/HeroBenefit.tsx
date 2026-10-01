@@ -5,8 +5,8 @@ const HUB = { x: 76, y: 50 };
 const NODES = [
   { key: 'sports', label: 'Surebet', x: 66, y: 23 },
   { key: 'predictions', label: 'Previsões', x: 87, y: 27 },
-  { key: 'bonuses', label: 'Bônus automatizados', x: 66, y: 73 },
-  { key: 'crypto', label: 'Cripto', x: 87, y: 71 },
+  { key: 'bonuses', label: 'Mineração de bônus', x: 66, y: 73 },
+  { key: 'crypto', label: 'Cripto e memes', x: 87, y: 68 },
 ];
 const R = 5.6;
 const ICON = 6.4;
@@ -28,11 +28,11 @@ function Icon({ k, x, y }: { k: string; x: number; y: number }) {
 
 export function HeroBenefit() {
   return (
-    <figure className="hero-benefit">
+    <figure className="hero-benefit entrance entrance-delay">
       <img
         className="hero-benefit__art"
-        src={`${import.meta.env.BASE_URL}hero-connected-portrait.webp`}
-        alt="Homem ao lado da marca BETTEX, com referências a surebet, bônus automatizados, previsões e cripto"
+        src={`${import.meta.env.BASE_URL}hero-portrait-overlay.webp`}
+        alt="Homem ao lado da marca BETTEX, com referências a surebet, previsões, mineração de bônus e cripto e memes"
         width={1024}
         height={1024}
         loading="eager"
@@ -41,11 +41,13 @@ export function HeroBenefit() {
       />
       <svg className="hero-benefit__system" viewBox="0 0 100 100" aria-hidden="true">
         <defs>
+          <radialGradient id="hb-halo"><stop offset="0" stopColor="#5ddbb4" stopOpacity=".28" /><stop offset="1" stopColor="#5ddbb4" stopOpacity="0" /></radialGradient>
           <radialGradient id="hb-core" cx="50%" cy="45%" r="60%">
             <stop offset="0" stopColor="#c9f6df" />
             <stop offset="1" stopColor="#7fd9b3" />
           </radialGradient>
         </defs>
+        <circle cx={HUB.x} cy={HUB.y} r="34" fill="url(#hb-halo)" />
         <polygon
           className="hero-benefit__orbit"
           points={`${NODES[0].x},${NODES[0].y} ${NODES[1].x},${NODES[1].y} ${NODES[3].x},${NODES[3].y} ${NODES[2].x},${NODES[2].y}`}

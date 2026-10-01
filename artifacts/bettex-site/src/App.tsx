@@ -86,11 +86,11 @@ function SiteFooter() {
     <div className="page-wrap relative">
       <div className="grid gap-8 border-b border-[#a4eacb]/20 py-14 sm:py-20 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
         <div>
-          <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#a4eacb]">O próximo passo é entender</span>
-          <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,5vw,4.7rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#f7f4e9]">Conheça o caminho.<br /><span className="text-[#a4eacb]">Decida com consciência.</span></h2>
+          <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#a4eacb]">BETTEX</span>
+          <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#f7f4e9]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#a4eacb]">e se torne dono do jogo</span></h2>
         </div>
         <div className="lg:justify-self-end">
-          <p className="max-w-[390px] text-sm leading-7 text-[#cadfd4]">Veja a sequência planejada, as regras do projeto e os riscos antes de tomar qualquer decisão.</p>
+          <p className="max-w-[390px] text-sm leading-7 text-[#cadfd4]">Participe dos resultados da IA com o token BETTEX.</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a href={homeAnchor('roadmap')} className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-5 py-3 text-sm font-bold text-[#123a3b] hover:bg-[#c0f5dc]">Ver o roadmap <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
             <a href={DOCUMENTATION_PATH} className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/40 px-5 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ler a documentação</a>
@@ -100,7 +100,7 @@ function SiteFooter() {
       <div className="grid gap-10 border-b border-[#a4eacb]/20 py-11 md:grid-cols-[minmax(0,1.5fr)_1fr_1fr]">
         <div>
           <Logo pale />
-          <p className="mt-5 max-w-[350px] text-sm leading-7 text-[#cadfd4]">Um projeto de IA para acompanhar operações em mercados de risco. Resultados e valorização do token não são garantidos.</p>
+           <p className="mt-5 max-w-[350px] text-sm leading-7 text-[#cadfd4]">O token do projeto de inteligência artificial BETTEX.</p>
         </div>
         <nav aria-label="Explorar o projeto">
           <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Explore</h3>
@@ -110,17 +110,17 @@ function SiteFooter() {
             <li><a className="hover:text-[#a4eacb]" href={homeAnchor('visao-investidor')}>Telas do aplicativo</a></li>
           </ul>
         </nav>
-        <nav aria-label="Informações e etapas">
-          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Informe-se</h3>
+        <nav aria-label="Links do projeto">
+          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">O projeto</h3>
           <ul className="space-y-3 text-sm font-semibold">
             <li><a className="hover:text-[#a4eacb]" href={DOCUMENTATION_PATH}>Documentação técnica</a></li>
             <li><a className="hover:text-[#a4eacb]" href={homeAnchor('roadmap')}>Roadmap</a></li>
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('historia')}>Dinheiro e risco</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('historia')}>Nossa história</a></li>
           </ul>
         </nav>
       </div>
       <div className="flex flex-col gap-4 py-6 text-xs leading-5 text-[#b5d1c3] sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} BETTEX. Investir envolve risco de perda.</p>
+        <p>© {new Date().getFullYear()} BETTEX.</p>
         <a href={homeAnchor('inicio')} className="inline-flex w-fit items-center gap-2 font-bold text-[#a4eacb] hover:text-white">Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
       </div>
     </div>
@@ -187,7 +187,7 @@ function Home() {
     <main>
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#f7f4e9]">
         <div className="hero-pattern pointer-events-none absolute inset-0 opacity-40 [mask-image:linear-gradient(to_right,transparent,black)]" />
-        <div className="page-wrap relative grid items-center gap-10 pb-10 pt-12 sm:pt-16 md:min-h-[690px] md:grid-cols-[1.08fr_.92fr] md:gap-8 md:py-16 lg:min-h-[730px] lg:gap-14">
+        <div className="page-wrap relative grid items-center pb-2 pt-12 sm:pt-16 xl:min-h-[730px] xl:py-16">
           <div className="entrance relative z-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#94ebcb]/35 bg-[#94ebcb]/10 px-4 py-2 text-[11px] font-bold text-[#aff3d7]"><span className="h-2 w-2 rounded-full bg-[#a6edcb]" /> AGENTE MULTIMERCADO</div>
             <h1 className="hero-title mt-7 max-w-[690px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold">
@@ -195,13 +195,11 @@ function Home() {
               <span className="block text-[#a4eacb]">em renda passiva.</span>
             </h1>
             <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#f7f4e9]">Seja o dono do jogo. Participe dos resultados da IA.</h2>
-            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">BETTEX é o token do nosso agente de inteligência artificial. Ele opera com surebet, exploração automatizada de bônus, previsões e cripto. Quem tem BETTEX participa dos resultados todos os dias.</p>
+            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">BETTEX é o token do nosso agente de inteligência artificial. Ele opera com surebet, mineração automatizada de bônus, previsões, cripto e memes. Quem tem BETTEX participa dos resultados todos os dias.</p>
             <div className="mt-8 flex flex-wrap items-center gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-7 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Quero participar <ArrowRight className="h-4 w-4" /></a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 px-4 py-4 text-sm font-semibold text-[#d7e9df] underline-offset-4 hover:underline">Ver telas do app <ArrowDown className="h-4 w-4" /></a></div>
           </div>
-          <div className="entrance entrance-delay relative mx-auto w-full max-w-[560px]">
-            <HeroBenefit />
-          </div>
         </div>
+        <HeroBenefit />
       </section>
 
       <ProjectModelSection />
