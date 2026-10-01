@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import { ArrowDown, WalletCards } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
+import { PlatformCoverage } from './PlatformCoverage';
 import './TechnologySection.css';
 
 export function TechnologySection({ children }: { children: ReactNode }) {
@@ -11,7 +12,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           <div>
             <p className="technology-section__eyebrow">Sua participação na BETTEX</p>
             <h2 id="technology-title" className="technology-section__title" data-testid="text-technology-title">
-              Uma IA, um token<br /><em>quatro mercados</em>
+              Um token.<br /><em>Múltiplos mercados.</em>
             </h2>
           </div>
           <p className="technology-section__intro-note">Antes de cada operação, a BETTEX cruza análises de dados, probabilidades, liquidez e risco. Compara as oportunidades e seleciona o investimento mais vantajoso segundo suas análises, respeitando os limites de risco.</p>
@@ -57,6 +58,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           </div>
         </div>
 
+        <PlatformCoverage />
       </div>
     </section>
   );
