@@ -1,0 +1,73 @@
+01 / INTERFACE
+Saldos USDC e BETTEX
+Exibe os ativos separados e a estimativa do valor financeiro em moeda local, além de custos, valores líquidos e participação automática. A visualização não converte o saldo USDC.
+
+02 / SERVIDOR
+API e livro contábil
+Autentica a conta, registra lançamentos em USDC e BETTEX corrigíveis por ajuste identificado, calcula limites e saldos elegíveis, processa compras e impede pedidos repetidos.
+
+03 / AGENTE BETTEX
+Smart contract, análises e conectores
+O agente de IA BETTEX se conecta à tesouraria por seu smart contract, que formaliza as regras de acesso ao capital, reservas e autorizações. Os serviços de análise e conectores externos cruzam dados, probabilidades, preços, liquidez, execução e risco, comparam oportunidades nos quatro mercados e operam somente após aprovação independente de risco. A IA apura e concilia o resultado e, quando houver lucro distribuível e as condições forem atendidas, aplica automaticamente o split: 75% do lucro líquido para a tesouraria e 25% para o staking, pagos nas Carteiras USDC dos participantes elegíveis. O lucro não retorna integralmente à tesouraria antes desse split.
+
+04 / LIQUIDAÇÃO E SUPERVISÃO
+Serviços operacionais
+O backend concilia transferências de USDC e BETTEX e o recebimento do on-ramp externo; controles independentes verificam ordens e operadores autorizados aprovam intervenções críticas, pausas e conciliações.
+
+Dados que precisam bater
+Antes de cada operação, BETTEX reúne dados, probabilidades, preços, liquidez, execução, exposição e risco, compara oportunidades nos quatro mercados e prioriza as mais vantajosas segundo essas análises e os limites e reservas vigentes. A operação não é automática em todos os mercados; a análise orienta a decisão, mas não garante resultado.
+
+Cada movimento deve conter identificador único, conta, ativo, rede, origem, destino, valor bruto, custos, valor líquido, estado e referência externa. Após confirmação da liquidação, uma compra deve registrar o débito de USDC e o crédito da quantidade inteira de BETTEX juntos e uma única vez. Uma mensagem repetida não pode duplicar os efeitos. Serviços de fila podem repetir mensagens, por isso a operação deve ser idempotente: o mesmo identificador tem um único efeito contábil. A atomicidade dos registros não equivale à confirmação de uma transferência on-chain ainda pendente.
+
+A conciliação compara USDC recebido, incluindo entradas por on-ramp, saldos e movimentos dos dois ativos, resultados por mercado, custos, reservas e obrigações em USDC. Cada conector informa origem, horário e estado; a visão consolidada permite verificar o risco global. Diferenças devem congelar o fluxo afetado e gerar investigação, nunca saldo artificial. Monitoramento, auditoria e alertas são requisitos operacionais.
+
+Robinhood: dados e execução de mercado
+A Robinhood faz parte da apresentação técnica como uma possibilidade de conector para o mercado de ações e criptoativos. O conector deve separar leitura de preços e posições, proposta de ordem, aprovação pelo núcleo de risco, execução e conciliação do resultado. A conta operacional do projeto não é a carteira pessoal do titular.
+
+A Robinhood Crypto Trading API documenta consultas de mercado e conta, envio e cancelamento de ordens de criptoativos, com disponibilidade para clientes nos Estados Unidos. Essa API não estabelece acesso equivalente para negociação de ações: esse caminho requer um canal autorizado próprio. O desenho apresenta a integração possível, não uma conexão já ativa ou uma autorização de uso obtida.
+
+Fluxo do conector de criptoativos
+
+Leitura, decisão e execução em etapas separadas
+Leitura e decisão
+
+01
+Dados e preços
+Consulta de preços de compra e venda e estimativas de cotação de criptoativos. Somente leitura.
+
+02
+Análise BETTEX
+O agente cruza preços, liquidez e exposição e propõe uma ordem.
+
+03
+Autorização de risco
+O núcleo central de risco aprova ou recusa antes de qualquer envio.
+
+04
+Conector autorizado
+Só ordens aprovadas chegam ao conector, com credenciais restritas à operação.
+
+Somente após a autorização, a execução começa
+Execução e retorno
+
+05
+Robinhood · criptoativos
+Envio ou cancelamento de ordens de criptoativos na conta operacional do projeto.
+
+06
+Estado e posições
+Leitura do estado das ordens e das posições mantidas na conta.
+
+07
+Conciliação BETTEX
+Os registros do projeto são conferidos com o estado informado pela plataforma.
+
+Referência: documentação da Robinhood Crypto Trading API.
+Allora: integração possível de inferências
+A Allora pode fornecer inferências agregadas para enriquecer a análise da BETTEX. Um adaptador de dados pode consultar os tópicos relevantes por API, registrar origem e horário e normalizar os valores recebidos. Intervalos de confiança devem ser tratados quando estiverem disponíveis no tópico, sem pressupor que todas as respostas os contenham.
+
+Esses sinais entram na camada de análise junto de preços, probabilidades, liquidez e exposição. A decisão permanece no núcleo BETTEX, com aprovação independente de risco antes de qualquer ordem. Allora não controla a carteira, não executa pagamentos ou ordens e não autentica o usuário. A consulta por API é uma integração possível do backend, não uma afirmação de integração on-chain já validada na Arbitrum.
+
+Referência técnica: consumo de inferências na documentação oficial da Allora.
+
+Voltar ao índice ↑

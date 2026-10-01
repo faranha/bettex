@@ -31,6 +31,12 @@
 .ba-entry { display:grid; gap:8px; margin-top:12px; }
 .ba-entry > div { padding:10px; border:1px solid var(--ba-line); border-radius:8px; }
 .ba .ba-entry strong { display:block; color:var(--ba-ink); font-size:12px; }
+.ba-split { position:relative; padding-left:14px; gap:12px; grid-auto-rows:1fr; }
+.ba-split::before { content:""; position:absolute; left:0; top:calc(25% - 3px); bottom:calc(25% - 3px); border-left:2px solid var(--ba-blue); }
+.ba-split > div { position:relative; }
+.ba-split > div::before { content:""; position:absolute; left:-15px; top:50%; width:14px; border-top:2px solid var(--ba-blue); }
+.ba-entry > .ba-split__treasury { border-color:var(--ba-gold); }
+.ba-entry > .ba-split__staking { border-color:var(--ba-teal); }
 .ba-reserves p { margin:6px 0 0; color:var(--ba-muted); font-size:12px; line-height:1.55; }
 .ba-entry__or { color:var(--ba-gold); text-align:center; font:700 10px/1.2 var(--app-font-mono); text-transform:uppercase; }
 .ba-side { margin-top:18px; padding:14px; border:1px dashed var(--ba-teal); border-radius:14px; display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
