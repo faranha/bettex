@@ -7,6 +7,10 @@
 .robot-floor__note { max-width: 380px; margin: 0; color: #b9c6ee; font-size: 14px; line-height: 1.65; }
 .robot-floor__stage { position: relative; border: 1px solid rgba(95,134,255,.28); border-radius: 18px; background: #050818; overflow: hidden; }
 .robot-floor__svg { display: block; width: 100%; height: auto; }
+.robot-floor__controls { display: contents; }
+.robot-floor__viewport { min-width: 0; }
+.robot-floor__zoom, .robot-floor__zoom-hint { display: none; }
+.robot-floor__toggle:focus-visible, .robot-floor__zoom:focus-visible, .robot-floor__viewport:focus-visible { outline: 2px solid #8FA8F0; outline-offset: -3px; }
 .robot-floor__toggle { position: absolute; z-index: 2; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid #2B59FF; border-radius: 999px; background: #13204F; color: #F4F1E8; font: 700 11px/1 var(--app-font-mono); letter-spacing: .06em; text-transform: uppercase; transition: background-color .2s ease, transform .2s ease; }
 .robot-floor__toggle:hover { background: #2B59FF; }
 .robot-floor__toggle:active { transform: translateY(1px); }
@@ -29,11 +33,16 @@
 }
 @media (max-width: 900px) { .robot-floor__teams { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) {
-  .robot-floor { border-radius: 18px; padding: 16px; }
+  .robot-floor { border-radius: 18px; }
   .robot-floor__stage { display: flex; flex-direction: column; }
-  .robot-floor__svg { order: 0; }
-  .robot-floor__toggle { position: static; order: 1; align-self: center; min-height: 44px; margin: 10px; }
-  .robot-floor__tag { position: static; order: 2; align-self: center; margin: 0 8px 14px; text-align: center; }
+  .robot-floor__viewport { order: 0; width: 100%; }
+  .robot-floor__viewport.is-expanded { max-height: min(60svh, 440px); overflow: auto; }
+  .robot-floor__viewport.is-expanded .robot-floor__svg { width: 1250px; max-width: none; }
+  .robot-floor__controls { display: flex; order: 2; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 10px 8px; }
+  .robot-floor__toggle { position: static; min-height: 44px; padding-inline: 12px; font-size: 10px; }
+  .robot-floor__zoom { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 12px; border: 1px solid rgba(95,134,255,.5); border-radius: 999px; background: #0C1436; color: #F4F1E8; font: 700 10px/1.2 var(--app-font-mono); }
+  .robot-floor__zoom-hint { display: block; order: 1; margin: 8px 12px 0; color: #b9c6ee; font-size: 12px; text-align: center; }
+  .robot-floor__tag { position: static; order: 3; align-self: center; margin: 0 8px 14px; text-align: center; }
   .robot-floor__steps li span { display: none; }
   .robot-floor__steps li.is-on span { display: inline; }
   .robot-floor__teams { grid-template-columns: 1fr; }

@@ -4,6 +4,7 @@ Site da BETTEX, projeto de investimento com quatro agentes especializados em mer
 
 ## Diretiva editorial para todos os agentes
 
+- Todo feedback dado a partir de agora é para a documentação técnica. Não tocar na página inicial.
 - Os robôs da animação de Mercados devem exibir valores acima da cabeça, acompanhando seu movimento. Nos valores monetários desses robôs, usar apenas “$”, sem “R”.
 - Na animação de Mercados, pedidos de análise e decisões de retorno seguem linhas curtas e sutis, conectadas somente às bordas das plataformas das salas e da IA da BETTEX. Desenhar linhas e pacotes por baixo das plataformas, robôs, valores e títulos, sem atravessar as salas nem ir até o centro dos quadrados. Os pacotes devem seguir exatamente essas linhas, não aparecer soltos.
 - A seção animada “Mercados” é adicional. Preservar integralmente o bloco anterior “Um token. Múltiplos mercados.”, seus quatro agentes/cartões, conexões, carteira e resultado em reais. Não mover, integrar, resumir ou substituir esses conteúdos pela nova seção; o menu Mercados pode apontar para a seção nova sem apagar a anterior. Exceção autorizada: o bloco “Plataformas onde podemos operar com nossa tecnologia” deve ficar somente na nova seção Mercados, não no bloco anterior.
