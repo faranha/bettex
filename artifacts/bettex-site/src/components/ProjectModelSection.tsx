@@ -75,14 +75,12 @@ export function ProjectModelSection() {
         .pm-outcomes { display: grid; gap: 8px; margin-top: 18px; }
         .pm-outcome { padding: 12px 13px; border-radius: 10px; }
          .pm-outcome--profit { background: #f3c9a6; color: #54362b; }
-        .pm-outcome--none { border: 1px solid #cb7161; background: linear-gradient(135deg, #aa4037, #91342e); color: #fff5ef; box-shadow: inset 0 1px 0 rgba(255, 226, 207, .2), 0 7px 16px rgba(3, 29, 32, .16); }
-        .pm-outcome--none span { color: #ffe1d0; }
         .pm-outcome span { display: block; margin-bottom: 3px; font: 700 10px/1.3 var(--app-font-mono); letter-spacing: .04em; text-transform: uppercase; }
         .pm-outcome strong { display: block; font-size: 12px; line-height: 1.4; }
-        .pm-panel-foot { display: flex; align-items: center; gap: 11px; padding: 15px 32px; border-top: 1px solid rgba(174, 229, 200, .18); background: rgba(8, 37, 39, .22); }
-        .pm-risk-mark { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #e9b386; }
-        .pm-panel-foot p { margin: 0; color: #c8d9cc; font-size: 12px; line-height: 1.5; }
-        .pm-panel-foot strong { color: #f7e3cb; }
+        .pm-panel-foot { display: flex; align-items: center; gap: 20px; padding: 20px 32px; border-top: 1px solid #cb7161; background: linear-gradient(135deg, #aa4037, #91342e); color: #fff5ef; }
+        .pm-panel-foot-label { flex: none; padding-right: 20px; border-right: 1px solid rgba(255, 226, 207, .35); color: #ffe1d0; font: 700 11px/1.5 var(--app-font-mono); letter-spacing: .04em; text-transform: uppercase; }
+        .pm-panel-foot p { margin: 0; font-size: 13px; line-height: 1.5; }
+        .pm-panel-foot strong { color: #fff5ef; }
         .pm-bottom { display: flex; justify-content: flex-end; padding-top: 19px; }
          .pm-bottom a { display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid currentColor; padding: 3px 0 5px; color: #8d4932; font-size: 13px; font-weight: 700; text-decoration: none; }
          .pm-bottom a:hover { color: #613221; }
@@ -123,8 +121,8 @@ export function ProjectModelSection() {
           .pm-detail { margin-top: 7px; }
           .pm-agent-list { margin-top: 15px; }
           .pm-outcomes { margin-top: 14px; }
-          .pm-panel-foot { align-items: flex-start; padding: 17px 23px; }
-          .pm-risk-mark { margin-top: 5px; }
+          .pm-panel-foot { flex-direction: column; align-items: flex-start; gap: 8px; padding: 17px 23px; }
+          .pm-panel-foot-label { border-right: 0; padding-right: 0; }
         }
         @media (max-width: 370px) {
           .pm-casino-cards { display: none; }
@@ -167,16 +165,16 @@ export function ProjectModelSection() {
             <div className="pm-step">
               <span className="pm-index">01 / COMPRA</span>
               <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
-              <h3>Compra concluída: <em>BETTEX na carteira.</em></h3>
-              <p className="pm-detail">A Carteira em reais reúne depósitos via Pix, compras e créditos de lucro.</p>
+              <h3>Deposite reais e <em>compre BETTEX.</em></h3>
+              <p className="pm-detail">No aplicativo, você deposita reais por Pix e usa esse saldo para comprar tokens BETTEX.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / SALDO BETTEX</span>
               <div className="pm-visual" aria-hidden="true">
                 <DepositIllustration />
               </div>
-              <h3>O saldo participa <em>automaticamente.</em></h3>
-              <p className="pm-detail">Ao concluir a compra, seus tokens entram na Carteira BETTEX com participação automática. Você acompanha o saldo e os lucros pelo aplicativo.</p>
+              <h3>O token <em>é seu.</em></h3>
+              <p className="pm-detail">Você é dono dos tokens, pode retirá-los do aplicativo quando quiser e participa automaticamente dos lucros do projeto.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / ANÁLISE E OPERAÇÕES</span>
@@ -205,13 +203,12 @@ export function ProjectModelSection() {
               <h3>Quando houver lucro, crédito <em>em reais.</em></h3>
               <div className="pm-outcomes">
                 <div className="pm-outcome pm-outcome--profit"><span>Participação no lucro</span><strong>25% do lucro líquido do projeto é distribuído entre os titulares, proporcionalmente à quantidade e ao tempo de BETTEX em carteira.</strong></div>
-                <div className="pm-outcome pm-outcome--none"><span>Sem lucro</span><strong>Sem lucro, não há distribuição. O crédito é feito em reais sem venda de BETTEX.</strong></div>
               </div>
             </div>
           </div>
           <div className="pm-panel-foot">
-            <span className="pm-risk-mark" aria-hidden="true" />
-            <p><strong>Risco:</strong> não há garantia de lucro; operações podem gerar perdas e o token pode perder valor. Esta descrição é conceitual.</p>
+            <span className="pm-panel-foot-label">Sem lucro</span>
+            <p><strong>Sem lucro, não há distribuição.</strong> O crédito é feito em reais sem venda de BETTEX.</p>
           </div>
         </div>
         <div className="pm-bottom">
