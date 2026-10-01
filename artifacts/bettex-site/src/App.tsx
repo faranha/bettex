@@ -8,6 +8,7 @@ import NotFound from '@/pages/not-found';
 import { Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
 import { DocumentationPage } from '@/pages/documentation';
 import { TechnologySection } from '@/components/technology/TechnologySection';
+import { MarketsFloorSection } from '@/components/robot-floor/MarketsFloorSection';
 import { InvestorAppPreview } from '@/components/investor/InvestorAppPreview';
 import { HeroBenefit } from '@/components/hero/HeroBenefit';
 import { BettexMark } from '@/components/BettexMark';
@@ -239,6 +240,9 @@ function Home() {
        <TechnologySection>
          {markets.map((market, index) => <div className="technology-section__agent-slot" key={market.name}><MarketCard market={market} number={index + 1} /></div>)}
        </TechnologySection>
+       <MarketsFloorSection>
+         {markets.map((market, index) => <MarketCard key={market.name} market={market} number={index + 1} />)}
+       </MarketsFloorSection>
        <InvestorAppPreview />
         <RoadmapSection />
 

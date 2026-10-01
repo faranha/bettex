@@ -6,3 +6,4 @@
 - [Simulated staking eligibility](simulated-staking-eligibility.md) — use time-weighted participation for monthly credits, not the staking balance at close.
 - [Content source precedence](content-source-precedence.md) — approved product rules take precedence over stale whitepaper economics in the Git baseline.
 - [Revisable hero artwork](revisable-hero-artwork.md) — replace the whole diagram layer when changing coverage; partial overlays can look disconnected.
+- [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.

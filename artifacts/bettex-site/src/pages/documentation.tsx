@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { WhitepaperSection } from '@/components/WhitepaperSection';
 
 const TITLE = 'Documentação técnica | BETTEX';
-const DESC = 'Documentação técnica da BETTEX: duas carteiras, participação automática com BETTEX liquidado, distribuição diária em BRL, tesouraria e controles de risco.';
+const DESC = 'Arquitetura técnica BETTEX: Arbitrum One, carteira exportável, autocustódia, acesso sem KYC, staking no aplicativo e possíveis integrações com Robinhood e Allora.';
 
 export function DocumentationPage() {
   useEffect(() => {
