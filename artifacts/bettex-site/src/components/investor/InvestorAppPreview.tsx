@@ -7,7 +7,7 @@ import './InvestorAppPreview.css';
 const art: Record<string, { file: string; alt: string }> = {
   participacao: { file: 'participacao', alt: 'Carteira de couro verde aberta com fichas de token e esferas douradas ao redor' },
   bettex: { file: 'bettex-transparent', alt: 'Processador de inteligência artificial em vidro, com bola, cartas, esferas e ficha inteiras sobre fundo transparente' },
-  resultados: { file: 'resultados', alt: 'Balança dourada com fichas, ao lado de um livro-caixa e uma calculadora' },
+  resultados: { file: 'resultados-soft', alt: 'Balança dourada com fichas, ao lado de um livro-caixa e uma calculadora' },
   historico: { file: 'historico', alt: 'Livro de registros aberto, calendário de mesa, relógio e moedas' },
   hydra: { file: 'hydra-transparent', alt: 'Hidra de duas cabeças em metal preto com reflexos verdes, símbolo do Protocolo Hydra' },
 };
@@ -64,12 +64,12 @@ export function InvestorAppPreview() {
               {!isPerformance && <p>{active.text}</p>}
             </div>
             {art[current] && (
-              <figure className={`ip-art${current === 'bettex' || current === 'hydra' ? ' ip-art--transparent' : ''}`} key={`art-${current}`} data-testid={`arte-tela-${current}`}>
+              <figure className={`ip-art${current === 'bettex' || current === 'hydra' ? ' ip-art--transparent' : ''}${current === 'hydra' ? ' ip-art--hydra' : ''}`} key={`art-${current}`} data-testid={`arte-tela-${current}`}>
                 <img src={`${import.meta.env.BASE_URL}app/${art[current].file}.webp`} alt={art[current].alt} width={600} height={600} loading="lazy" decoding="async" />
               </figure>
             )}
           </div>
-          <div className="ip-device" key={current}>
+          <div className={`ip-device${current === 'hydra' ? ' ip-device--hydra' : ''}`} key={current}>
             <div className={`ip-phone${current === 'participacao' ? ' ip-phone--wallet' : current === 'hydra' ? ' ip-phone--hydra' : isPerformance ? ' ip-phone--performance' : ''}`} role="group" aria-label="Tela conceitual do aplicativo">
               <div className="ip-phone__notch" />
               <div className="ip-phone__bar"><span className="ip-phone__logo"><BettexMark /></span><b>BETTEX</b><i>João da Silva</i></div>

@@ -13,6 +13,7 @@ import { HeroBenefit } from '@/components/hero/HeroBenefit';
 import { BettexMark } from '@/components/BettexMark';
 import { MarketMark, type MarketKind } from '@/components/hero/MarketMark';
 import '@/components/hero/MarketCard.css';
+import '@/components/SiteFooter.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { RoadmapSection } from '@/components/RoadmapSection';
@@ -82,8 +83,29 @@ function SiteHeader({ documentation = false }: { documentation?: boolean }) {
 function SiteFooter() {
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
     <div className="site-footer__cta relative overflow-hidden bg-[#2B59FF]">
-      <div aria-hidden="true" className="site-footer__ring pointer-events-none absolute -right-36 -top-24 h-[480px] w-[480px] rounded-full border-2 border-[#F4F1E8]/15 sm:-right-12" />
-      <div aria-hidden="true" className="site-footer__ring pointer-events-none absolute -right-16 top-12 h-[300px] w-[300px] rounded-full border border-[#F2B632]/45 sm:right-10" />
+      <div aria-hidden="true" className="site-footer__tech">
+        <svg className="site-footer__tech-svg" viewBox="0 0 800 560" preserveAspectRatio="xMaxYMax slice" focusable="false">
+          <circle className="halo" cx="470" cy="330" r="190" />
+          <circle className="halo" cx="470" cy="330" r="270" strokeDasharray="2 9" />
+          <path className="trace" d="M0 110H150L190 70H330L370 110H520" />
+          <path className="trace trace--soft" d="M40 200H210L250 240H360" />
+          <path className="trace" d="M800 90H690L650 130H560V210" />
+          <path className="trace trace--gold" d="M800 250H720L690 280V400" />
+          <path className="trace trace--soft" d="M0 470H180L220 430H320" />
+          <path className="trace" d="M800 500H640L600 460H520" />
+          <path className="trace trace--soft" d="M300 0V40L340 80" />
+          <path className="trace trace--soft" d="M620 0V60L660 100" />
+          <circle className="node" cx="520" cy="110" r="5" />
+          <circle className="node" cx="190" cy="70" r="4" />
+          <circle className="node" cx="360" cy="240" r="4" />
+          <circle className="node" cx="560" cy="210" r="5" />
+          <circle className="node node--gold" cx="690" cy="400" r="6" />
+          <circle className="node" cx="320" cy="430" r="4" />
+          <circle className="node" cx="520" cy="460" r="5" />
+          <circle className="node node--gold" cx="650" cy="130" r="4" />
+          <circle className="node" cx="340" cy="80" r="3.5" />
+        </svg>
+      </div>
       <div className="page-wrap relative">
         <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">
           <div className="pb-2 lg:pb-20">
