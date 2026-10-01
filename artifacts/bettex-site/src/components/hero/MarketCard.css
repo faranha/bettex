@@ -1,0 +1,55 @@
+.market-card {
+  --mk-accent: #a4eacb;
+  --mk-center: #2f4b4c;
+  --mk-edge: #142c30;
+  box-shadow: 0 12px 28px rgba(16, 53, 52, .055);
+}
+.market-card--trading { --mk-accent: #9fdcf0; --mk-center: #33505c; --mk-edge: #15303a; }
+.market-card--sports { --mk-accent: #b8eea0; --mk-center: #35503f; --mk-edge: #162f2b; }
+.market-card--casino { --mk-accent: #f2c9a6; --mk-center: #4b4048; --mk-edge: #232733; }
+.market-card__stage {
+  color: #e7f1ea;
+  background: radial-gradient(ellipse at 50% 60%, var(--mk-center) 0%, var(--mk-edge) 100%);
+  border-bottom: 2px solid var(--mk-accent);
+}
+.market-card__stage::before {
+  content: ""; position: absolute; inset: 20px; pointer-events: none;
+  background: linear-gradient(to right, rgba(221,240,231,.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(221,240,231,.1) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at center, black, transparent 74%);
+}
+.market-card__index { color: var(--mk-accent); }
+.market-card__composition { position: relative; display: grid; place-items: center; width: 150px; height: 150px; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.market-card:hover .market-card__composition { transform: translateY(-4px) scale(1.04); }
+.market-card__ring { position: absolute; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--mk-accent) 38%, transparent); }
+.market-card__ring--outer { inset: 0; border-style: dashed; }
+.market-card__ring--inner { inset: 14px; }
+.market-card__tile {
+  position: relative; display: grid; place-items: center; width: 92px; height: 92px; border-radius: 24px;
+  color: var(--mk-accent); border: 1.5px solid color-mix(in srgb, var(--mk-accent) 60%, transparent);
+  background: linear-gradient(145deg, rgba(255,255,255,.1), rgba(6,26,29,.55));
+  box-shadow: 0 14px 22px rgba(4,20,23,.4), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.market-card__mark { display: block; width: 62%; height: 62%; }
+.market-card__chip {
+  position: absolute; display: flex; gap: 3px; align-items: flex-end; height: 22px; padding: 4px 6px;
+  border-radius: 7px; background: rgba(6,26,29,.7); border: 1px solid color-mix(in srgb, var(--mk-accent) 40%, transparent);
+}
+.market-card__chip i { display: block; width: 3px; border-radius: 1px; background: var(--mk-accent); }
+.market-card__chip--a { top: 8px; right: -6px; }
+.market-card__chip--b { bottom: 10px; left: -10px; }
+.market-card__chip--a i:nth-child(1){height:5px}.market-card__chip--a i:nth-child(2){height:9px}.market-card__chip--a i:nth-child(3){height:7px}.market-card__chip--a i:nth-child(4){height:12px}
+.market-card__chip--b i:nth-child(1){height:11px}.market-card__chip--b i:nth-child(2){height:6px}.market-card__chip--b i:nth-child(3){height:9px}.market-card__chip--b i:nth-child(4){height:4px}
+.market-card__platform-logo-slot { display: flex; align-items: center; height: 36px; margin-top: 6px; }
+.market-card__platform-logo { display: block; width: auto; max-width: 100%; object-fit: contain; object-position: left; filter: brightness(0) invert(1); }
+.market-card__platform-logo--predictions { height: 36px; }
+.market-card__platform-logo--trading { height: 32px; }
+.market-card__platform-logo--sports { height: 25px; }
+.market-card__platform-logo--casino { height: 24px; }
+.market-card__stage-foot { color: #a8c1b9; }
+.market-card__crosshair { position: absolute; width: 17px; height: 17px; border-color: rgba(192,225,208,.37); }
+.market-card__crosshair--tl { top: 48px; left: 20px; border-left: 1px solid; border-top: 1px solid; }
+.market-card__crosshair--br { bottom: 41px; right: 20px; border-right: 1px solid; border-bottom: 1px solid; }
+@media (max-width: 420px) { .market-card__composition { transform: scale(.92); } }
+@media (prefers-reduced-motion: reduce) { .market-card__composition { transition: none; } }

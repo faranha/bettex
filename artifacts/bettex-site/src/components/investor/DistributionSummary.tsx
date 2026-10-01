@@ -18,7 +18,7 @@ export function DistributionSummary({ wallet, onSimulate, notice }: {
     <section className="investor-preview__distribution" aria-labelledby="investor-distribution-title" data-testid="panel-sua-distribuicao">
       <div className="investor-preview__distribution-head">
         <div>
-          <p className="investor-preview__micro">Seu saldo, não o gráfico dos agentes</p>
+          <p className="investor-preview__micro">Seu saldo, não o gráfico dos mercados</p>
           <h4 id="investor-distribution-title">Sua distribuição</h4>
           <p>O desempenho do projeto não é pago automaticamente a você. Só BETTEX em staking participam do fechamento mensal.</p>
         </div>
@@ -38,7 +38,7 @@ export function DistributionSummary({ wallet, onSimulate, notice }: {
         <span>Já retirado na simulação: <strong>{formatUsdc(withdrawn)}</strong></span>
       </div>
       <div className="investor-preview__distribution-foot">
-        <p>Exemplo de apuração: resultado líquido realizado de {formatUsdc(DISTRIBUTION_NET_RESULT_CENTS)}; metade ({formatUsdc(DISTRIBUTABLE_CENTS)}) é dividida pelo tempo em que cada pessoa manteve BETTEX elegíveis durante o mês UTC. Sem tokens elegíveis em todo o mês, o <strong>crédito do período é zero</strong>, mesmo com lucro dos agentes. Retirar BETTEX encerra a elegibilidade futura, mas preserva a participação dos dias anteriores. Os filtros do gráfico não alteram estes valores.</p>
+        <p>Exemplo de apuração: resultado líquido realizado de {formatUsdc(DISTRIBUTION_NET_RESULT_CENTS)}; metade ({formatUsdc(DISTRIBUTABLE_CENTS)}) é dividida pelo tempo em que cada pessoa manteve BETTEX elegíveis durante o mês UTC. Sem tokens elegíveis em todo o mês, o <strong>crédito do período é zero</strong>, mesmo com lucro da BETTEX nos mercados. Retirar BETTEX encerra a elegibilidade futura, mas preserva a participação dos dias anteriores. Os filtros do gráfico não alteram estes valores.</p>
         <button type="button" onClick={onSimulate} disabled={wallet.distributionPeriods >= MAX_DISTRIBUTION_PERIODS}
           data-testid="button-simular-fechamento">Simular próximo fechamento mensal</button>
       </div>

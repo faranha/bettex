@@ -3,17 +3,17 @@ import { BettexMark } from '@/components/BettexMark';
 import './HeroBenefit.css';
 
 const markets = [
-  { name: 'PREDIX', type: 'Previsões', Icon: Radar },
-  { name: 'TRADEX', type: 'Ações e cripto', Icon: ChartCandlestick },
-  { name: 'SPORTIX', type: 'Esportes', Icon: Trophy },
-  { name: 'BETTIX', type: 'Cassino', Icon: Spade },
+  { name: 'Mercado 01', type: 'Previsões', Icon: Radar },
+  { name: 'Mercado 02', type: 'Ações e cripto', Icon: ChartCandlestick },
+  { name: 'Mercado 03', type: 'Esportes', Icon: Trophy },
+  { name: 'Mercado 04', type: 'Cassinos', Icon: Spade },
 ] as const;
 
 export function HeroBenefit() {
   return (
     <figure className="hero-benefit">
       <div className="hero-benefit__top" aria-hidden="true">
-        <span>AGENTES BETTEX / NO SEU CELULAR</span>
+        <span>BETTEX / MERCADOS NO SEU CELULAR</span>
       </div>
       <div className="hero-benefit__light" aria-hidden="true" />
       <img
@@ -45,11 +45,11 @@ export function HeroBenefit() {
         <circle className="hero-benefit__hub-ring" cx="54.7" cy="62.4" r="1.5" />
         <circle className="hero-benefit__hub-center" cx="54.7" cy="62.4" r=".55" />
       </svg>
-      <ul className="hero-benefit__markets" aria-label="Agentes e mercados em que a BETTEX opera">
+      <ul className="hero-benefit__markets" aria-label="Mercados em que a BETTEX opera">
         {markets.map(({ name, type, Icon }, index) => (
           <li key={name} className={`hero-benefit__market hero-benefit__market--${index + 1}`}>
             <Icon aria-hidden="true" size={17} strokeWidth={1.9} />
-            <span><strong>AGENTE {name}</strong><small>{type}</small></span>
+            <span><strong>{type}</strong><small>{name}</small></span>
           </li>
         ))}
       </ul>

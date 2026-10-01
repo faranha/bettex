@@ -26,7 +26,7 @@ export function HumanStorySection() {
 
           <div className="hs-right">
             <p className="hs-right-label">Como a BETTEX muda essa dinâmica</p>
-            <p className="hs-explanation"><strong>Na BETTEX, a operação não depende do impulso de apostar.</strong> Os agentes autônomos da IA BETTEX atuam em mercados de risco, e você acompanha saldos, movimentações e a atividade dos agentes no mesmo lugar.</p>
+            <p className="hs-explanation"><strong>Na BETTEX, a operação não depende do impulso de apostar.</strong> A BETTEX analisa diferentes mercados de risco e busca otimizar os investimentos onde identifica maior vantagem. Você acompanha saldos, movimentações e a atividade da IA no mesmo lugar.</p>
             <p className="hs-next">Seja dono do seu futuro.<br /><strong>Junte-se à BETTEX.</strong></p>
           </div>
         </div>

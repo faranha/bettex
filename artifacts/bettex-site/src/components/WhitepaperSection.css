@@ -80,14 +80,13 @@
 .whitepaper__rule-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 32px; border: 1px solid #bdd1bf; background: #bdd1bf; }
 .whitepaper__rule-pair > div { padding: 25px; background: #f0f1e6; }
 .whitepaper__rule-pair p { margin-top: 12px; }
-.whitepaper__agents { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 33px; border: 1px solid #b5cdbd; background: #b5cdbd; }
-.whitepaper__agent { display: flex; min-width: 0; flex-direction: column; padding: 24px; background: #f0f1e7; }
-.whitepaper__agent-top { display: flex; justify-content: space-between; color: #5d8372; font: 700 10px var(--app-font-mono); }
-.whitepaper__agent-top strong { font: 800 26px/1 var(--app-font-serif); }
-.whitepaper__agent h4 { margin: 30px 0 5px; font: 800 27px/1 var(--app-font-serif); letter-spacing: -.04em; }
-.whitepaper__agent-area { color: #278064; font-size: 12px; font-weight: 800; }
-.whitepaper__agent p { margin: 12px 0 21px; color: #536a5e; font-size: 12px; line-height: 1.65; }
-.whitepaper__agent small { margin-top: auto; padding-top: 12px; border-top: 1px solid #cbdacd; color: #698071; font: 700 9px/1.5 var(--app-font-mono); letter-spacing: .04em; }
+.whitepaper__markets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 33px; border: 1px solid #b5cdbd; background: #b5cdbd; }
+.whitepaper__market-card { display: flex; min-width: 0; flex-direction: column; padding: 24px; background: #f0f1e7; }
+.whitepaper__market-top { display: flex; justify-content: space-between; gap: 12px; color: #5d8372; font: 700 10px var(--app-font-mono); }
+.whitepaper__market-top strong { flex: none; font: 800 26px/1 var(--app-font-serif); }
+.whitepaper__market-card h4 { margin: 30px 0 5px; font: 800 27px/1 var(--app-font-serif); letter-spacing: -.04em; }
+.whitepaper__market-card p { margin: 12px 0 21px; color: #536a5e; font-size: 12px; line-height: 1.65; }
+.whitepaper__market-card small { margin-top: auto; padding-top: 12px; border-top: 1px solid #cbdacd; color: #698071; font: 700 9px/1.5 var(--app-font-mono); letter-spacing: .04em; }
 .whitepaper__limits { margin-top: 33px; border-top: 1px solid #acc6b4; }
 .whitepaper__limits > div { display: grid; grid-template-columns: 200px 1fr; gap: 6px 18px; padding: 21px 0; border-bottom: 1px solid var(--wp-line); }
 .whitepaper__limits > div > span { grid-row: span 2; }
@@ -167,7 +166,7 @@
   .whitepaper__hero-lede { font-size: 1.28rem; }
   .whitepaper__timeline > div { grid-template-columns: 1fr; gap: 7px; }
   .whitepaper__timeline p { grid-column: auto; }
-  .whitepaper__rule-pair, .whitepaper__agents { grid-template-columns: 1fr; }
+  .whitepaper__rule-pair, .whitepaper__markets { grid-template-columns: 1fr; }
   .whitepaper__currency-grid > div { grid-template-columns: 1fr 1fr; }
   .whitepaper__currency-grid p { grid-column: 1 / -1; }
   .whitepaper__risk-list > div { grid-template-columns: 1fr; gap: 8px; }

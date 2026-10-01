@@ -42,11 +42,12 @@
 .ip-pair { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
 .ip-fake { padding:11px 6px; border-radius:10px; background:#a4eacb; text-align:center; font-size:11px; font-weight:800; }
 .ip-fake--ghost { background:transparent; border:1px solid #9bbdaa; }
-.ip-agent { display:flex; align-items:center; gap:10px; padding:10px; border:1px solid #d6e2d6; border-radius:12px; background:#fffdf5; }
-.ip-agent span { display:grid; width:30px; height:30px; place-items:center; border-radius:9px; background:#d7eee1; color:#24775c; }
-.ip-agent span svg { width:20px; height:20px; }
-.ip-agent b { font:800 13px/1 var(--app-font-serif,sans-serif); }
-.ip-agent em { margin-left:auto; font-style:normal; font-size:10px; color:#5a7470; }
+.ip-platform-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+.ip-platform-card { display:grid; align-content:start; gap:5px; min-width:0; padding:8px; border:1px solid #d6e2d6; border-radius:11px; background:#fffdf5; }
+.ip-platform-card__market { display:flex; align-items:center; gap:5px; min-height:20px; color:#24775c; font-size:9px; font-weight:800; line-height:1.2; }
+.ip-market-glyph { width:18px; height:18px; flex:none; }
+.ip-platform-card img { width:76px; max-width:100%; height:24px; padding:4px; border-radius:5px; background:#123a3b; object-fit:contain; }
+.ip-platform-card b { font-size:10px; line-height:1.2; }
 .ip-skeleton { display:flex; align-items:end; gap:8px; height:90px; padding:12px; border:1px dashed #9bbdaa; border-radius:12px; }
 .ip-skeleton i { flex:1; border-radius:5px; background:#cfe3d6; height:40%; }
 .ip-skeleton i:nth-child(2) { height:65%; } .ip-skeleton i:nth-child(3) { height:30%; } .ip-skeleton i:nth-child(4) { height:55%; } .ip-skeleton i:nth-child(5) { height:45%; }
@@ -71,17 +72,6 @@
 .ip-mini { display:flex; gap:8px; }
 .ip-mini span { display:grid; width:38px; height:38px; place-items:center; border-radius:11px; background:#d7eee1; color:#24775c; }
 .ip-mini svg { width:24px; height:24px; }
-.ip-agent div { display:grid; gap:3px; }
-.ip-agent em { margin:0; }
-.ip-agent__logo { margin-left:auto; width:64px; height:28px; padding:6px; border-radius:6px; background:#123a3b; object-fit:contain; }
-.ip-hero-img { display:grid; place-items:center; height:150px; border-radius:16px; background:#d7eee1; overflow:hidden; }
-.ip-hero-img img { height:100%; width:100%; object-fit:contain; }
-.ip-platform { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:10px; border:1px solid #d6e2d6; border-radius:12px; background:#fffdf5; }
-.ip-platform small { width:100%; }
-.ip-platform span { display:flex; align-items:center; gap:6px; padding:5px 9px; border-radius:9px; background:#e6f1e6; font-size:11px; }
-.ip-platform img { width:64px; height:28px; padding:6px; border-radius:6px; background:#123a3b; object-fit:contain; }
-.ip-platform__allora { flex-direction:column; align-items:flex-start !important; gap:1px !important; }
-.ip-platform__allora em { font-style:normal; font-size:9px; color:#5a7470; }
 .ip-steps { display:grid; gap:6px; }
 .ip-steps div { display:flex; align-items:center; gap:9px; font-size:11px; }
 .ip-steps i { display:grid; width:20px; height:20px; place-items:center; border-radius:50%; background:#123a3b; color:#a4eacb; font:700 10px/1 var(--app-font-mono,monospace); font-style:normal; }
