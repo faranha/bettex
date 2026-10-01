@@ -13,6 +13,9 @@
 .ba-fig__head h4 { margin:4px 0 4px; font:800 clamp(1.1rem,2vw,1.4rem)/1.15 var(--app-font-serif); letter-spacing:-.03em; }
 .ba-fig__head p { margin:0; color:var(--ba-muted); font-size:13px; line-height:1.5; }
 .ba-fig__foot { margin:14px 0 0; color:var(--ba-muted); font-size:12px; line-height:1.55; }
+.ba-flow__label { margin:0 0 14px; color:var(--ba-blue); font:700 10px/1.5 var(--app-font-mono); letter-spacing:.1em; text-transform:uppercase; }
+.ba-flow--treasury { margin-top:24px; padding-top:22px; border-top:1px solid var(--ba-line); }
+.ba-flow--treasury .ba-flow__label { color:var(--ba-gold); }
 .ba-steps { display:grid; grid-template-columns:1fr; align-items:start; gap:26px; margin:0; padding:0; list-style:none; counter-reset:s; }
 .ba-step { position:relative; display:flex; gap:10px; align-items:flex-start; min-width:0; padding:14px; border:1px solid var(--ba-line); border-top:3px solid var(--ba-line); border-radius:14px; background:var(--ba-card); }
 .ba-step--blue { border-top-color:var(--ba-blue); } .ba-step--gold { border-top-color:var(--ba-gold); } .ba-step--teal { border-top-color:var(--ba-teal); }
@@ -39,7 +42,7 @@
 .ba-badge--gold { color:var(--ba-gold); }
 .ba-chips { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 0; padding:0; list-style:none; }
 .ba-chips li { padding:3px 8px; border-radius:999px; background:rgba(95,134,255,.16); font-size:11px; font-weight:700; }
-.ba-partner { display:flex; align-items:center; gap:10px; margin-top:10px; padding-top:10px; border-top:1px solid var(--ba-line); }
+.ba-partner { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:10px; padding-top:10px; border-top:1px solid var(--ba-line); }
 .ba-partner__logo { display:block; width:auto; height:20px; max-width:100%; object-fit:contain; filter:brightness(0) invert(1); }
 .ba--paper .ba-partner__logo { filter:brightness(0); }
 @container (min-width:640px) {
