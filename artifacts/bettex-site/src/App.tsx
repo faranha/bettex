@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from '@/components/ui/toaster';
 import NotFound from '@/pages/not-found';
 import { Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
+import { DocumentationPage } from '@/pages/documentation';
 import { TechnologySection } from '@/components/technology/TechnologySection';
 import { InvestorAppPreview } from '@/components/investor/InvestorAppPreview';
 import { HeroBenefit } from '@/components/hero/HeroBenefit';
@@ -14,10 +15,15 @@ import { MarketMark, type MarketKind } from '@/components/hero/MarketMark';
 import '@/components/hero/MarketCard.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { HumanStorySection } from '@/components/HumanStorySection';
-import { WhitepaperSection } from '@/components/WhitepaperSection';
 import { RoadmapSection } from '@/components/RoadmapSection';
+import { chapters } from '@/components/WhitepaperChapters';
 
 const queryClient = new QueryClient();
+const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
+const HOME_PATH = `${BASE_PATH}/`;
+const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
+const legacyChapterIds = new Set<string>(chapters.map(({ id }) => id));
+const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
 type Market = {
   name: string;
   kind: MarketKind;
@@ -26,15 +32,13 @@ type Market = {
   area: string;
   intro: string;
   detail: string;
-  platform: string;
-  platformLogo?: string;
 };
 
 const markets: Market[] = [
-  { name: 'Previsões', kind: 'predictions', icon: Radar, visual: 'símbolo de cenários ramificados', area: 'Previsões', intro: 'Mercados de previsão.', detail: 'A BETTEX opera mercados de previsão na Polymarket.', platform: 'Polymarket', platformLogo: 'polymarket.svg' },
-  { name: 'Ações e cripto', kind: 'trading', icon: ChartCandlestick, visual: 'símbolo de gráfico de negociação', area: 'Ações e cripto', intro: 'Negociação de ações e criptoativos.', detail: 'A BETTEX negocia ações e criptoativos na Robinhood.', platform: 'Robinhood', platformLogo: 'robinhood.svg' },
-  { name: 'Esportes', kind: 'sports', icon: Trophy, visual: 'símbolo de bola esportiva', area: 'Esportes', intro: 'Mercados esportivos.', detail: 'A BETTEX opera em mercados esportivos na Kalshi.', platform: 'Kalshi', platformLogo: 'kalshi.webp' },
-  { name: 'Cassinos', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'Cassinos', intro: 'Jogos de cassino.', detail: 'A BETTEX opera somente nos jogos de cassino da Duel.', platform: 'Duel', platformLogo: 'duel.webp' },
+  { name: 'Previsões', kind: 'predictions', icon: Radar, visual: 'símbolo de cenários ramificados', area: 'Previsões', intro: 'Mercados de previsão.', detail: 'Analisa probabilidades, cenários e preços em eventos futuros.' },
+  { name: 'Ações e cripto', kind: 'trading', icon: ChartCandlestick, visual: 'símbolo de gráfico de negociação', area: 'Ações e cripto', intro: 'Negociação de ações e criptoativos.', detail: 'Compara tendências, liquidez e risco antes de negociar ativos financeiros.' },
+  { name: 'Esportes', kind: 'sports', icon: Trophy, visual: 'símbolo de bola esportiva', area: 'Esportes', intro: 'Mercados esportivos.', detail: 'Cruza dados de eventos esportivos, probabilidades e preços antes de operar.' },
+  { name: 'Cassinos', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'Cassinos', intro: 'Jogos de cassino.', detail: 'Avalia probabilidades, condições de jogo e risco antes de cada operação.' },
 ];
 
 const navItems = [
@@ -49,12 +53,30 @@ const navItems = [
 ] as const;
 
 function Logo({ pale = false }: { pale?: boolean }) {
-  return <a href="#inicio" className={`inline-flex items-center gap-2.5 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#168367] ${pale ? 'text-[#f6f4e9]' : 'text-[#123a3b]'}`} aria-label="BETTEX, voltar ao início">
+  return <a href={homeAnchor('inicio')} className={`inline-flex items-center gap-2.5 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#168367] ${pale ? 'text-[#f6f4e9]' : 'text-[#123a3b]'}`} aria-label="BETTEX, voltar ao início">
     <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border ${pale ? 'border-[#a4eacb]/35 bg-[#0b2c30]' : 'border-[#1e5551] bg-[#123a3b]'} shadow-[0_3px_10px_rgba(6,32,33,.12)]`}>
       <BettexMark className="block h-[30px] w-[30px]" />
     </span>
     <span className="display text-[25px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
   </a>;
+}
+
+function SiteHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return <header className="sticky top-0 z-40 border-b border-[#d6e1d7] bg-[#f7f4e9]/95 backdrop-blur-lg">
+    <div className="page-wrap flex h-[72px] items-center justify-between gap-4">
+      <Logo />
+      <nav className="hidden items-center gap-4 xl:flex xl:gap-6" aria-label="Navegação principal">
+        {navItems.map(({ label, id }) => <a key={id} href={id === 'documentacao' ? DOCUMENTATION_PATH : homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#168367] xl:text-sm">{label}</a>)}
+      </nav>
+      <a href={homeAnchor('participacao')} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Entenda o projeto</a>
+      <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
+    </div>
+    {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#d6e1d7] py-3 xl:hidden" aria-label="Navegação móvel">
+      {navItems.map(({ label, id }) => <a key={id} href={id === 'documentacao' ? DOCUMENTATION_PATH : homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
+    </nav>}
+  </header>;
 }
 
 function SiteFooter() {
@@ -70,8 +92,8 @@ function SiteFooter() {
         <div className="lg:justify-self-end">
           <p className="max-w-[390px] text-sm leading-7 text-[#cadfd4]">Veja a sequência planejada, as regras do projeto e os riscos antes de tomar qualquer decisão.</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#roadmap" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-5 py-3 text-sm font-bold text-[#123a3b] hover:bg-[#c0f5dc]">Ver o roadmap <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
-            <a href="#documentacao" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/40 px-5 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ler a documentação</a>
+            <a href={homeAnchor('roadmap')} className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-5 py-3 text-sm font-bold text-[#123a3b] hover:bg-[#c0f5dc]">Ver o roadmap <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
+            <a href={DOCUMENTATION_PATH} className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/40 px-5 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ler a documentação</a>
           </div>
         </div>
       </div>
@@ -83,26 +105,34 @@ function SiteFooter() {
         <nav aria-label="Explorar o projeto">
           <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Explore</h3>
           <ul className="space-y-3 text-sm font-semibold">
-            <li><a className="hover:text-[#a4eacb]" href="#participacao">Como funciona</a></li>
-            <li><a className="hover:text-[#a4eacb]" href="#mercados">Os quatro mercados</a></li>
-            <li><a className="hover:text-[#a4eacb]" href="#visao-investidor">Telas do aplicativo</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('participacao')}>Como funciona</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('mercados')}>Os quatro mercados</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('visao-investidor')}>Telas do aplicativo</a></li>
           </ul>
         </nav>
         <nav aria-label="Informações e etapas">
           <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Informe-se</h3>
           <ul className="space-y-3 text-sm font-semibold">
-            <li><a className="hover:text-[#a4eacb]" href="#documentacao">Documentação técnica</a></li>
-            <li><a className="hover:text-[#a4eacb]" href="#roadmap">Roadmap</a></li>
-            <li><a className="hover:text-[#a4eacb]" href="#historia">Dinheiro e risco</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={DOCUMENTATION_PATH}>Documentação técnica</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('roadmap')}>Roadmap</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('historia')}>Dinheiro e risco</a></li>
           </ul>
         </nav>
       </div>
       <div className="flex flex-col gap-4 py-6 text-xs leading-5 text-[#b5d1c3] sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} BETTEX. Investir envolve risco de perda.</p>
-        <a href="#inicio" className="inline-flex w-fit items-center gap-2 font-bold text-[#a4eacb] hover:text-white">Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
+        <a href={homeAnchor('inicio')} className="inline-flex w-fit items-center gap-2 font-bold text-[#a4eacb] hover:text-white">Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
       </div>
     </div>
   </footer>;
+}
+
+function SitePage({ children, documentation = false }: { children: ReactNode; documentation?: boolean }) {
+  return <div className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#f7f4e9]`}>
+    <SiteHeader />
+    {children}
+    <SiteFooter />
+  </div>;
 }
 
 function MarketCard({ market, number }: { market: Market; number: number }) {
@@ -124,24 +154,18 @@ function MarketCard({ market, number }: { market: Market; number: number }) {
       <div className="min-h-[75px]"><h4 className="display text-[25px] font-extrabold leading-none tracking-[-.055em] text-[#123a3b]">{market.name}</h4><p className="display mt-2 text-base font-bold leading-5 text-[#294d4a]">{market.intro}</p></div>
       <p className="mono mt-4 text-[9px] font-bold uppercase tracking-[.12em] text-[#44776b]">Como a BETTEX atua</p>
       <p className="mt-2 min-h-[70px] text-[13px] leading-[1.55] text-[#455f5b]">{market.detail}</p>
-      <div className="mt-auto flex min-h-[76px] items-center rounded-[10px] border border-[#294e4b] bg-[#123a3b] px-4 py-3 text-[#f7f4e9]">
-        <div>
-          <p className="mono text-[9px] font-bold uppercase tracking-[.09em] text-[#c9e0d6]">Plataforma</p>
-          {market.platformLogo
-            ? <div className="market-card__platform-logo-slot"><img src={`${import.meta.env.BASE_URL}platforms/${market.platformLogo}`} alt={`Marca da ${market.platform}`} loading="lazy" className={`market-card__platform-logo market-card__platform-logo--${market.kind}`} /></div>
-            : <p className="display mt-1 text-base font-extrabold leading-tight text-[#f7f4e9]">{market.platform}</p>}
-        </div>
-      </div>
     </div>
   </article>;
 }
 
 function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   useEffect(() => {
     const id = window.location.hash.slice(1);
     if (!id) return;
+    if (id === 'documentacao' || legacyChapterIds.has(id)) {
+      window.location.replace(`${DOCUMENTATION_PATH}${id === 'documentacao' ? '' : `#${id}`}`);
+      return;
+    }
     const scrollToSection = () => {
       const target = document.getElementById(id);
       if (!target) return;
@@ -159,21 +183,7 @@ function Home() {
     };
   }, []);
 
-  return <div className="min-h-[100dvh] overflow-x-clip bg-[#f7f4e9]">
-    <header className="sticky top-0 z-40 border-b border-[#d6e1d7] bg-[#f7f4e9]/95 backdrop-blur-lg">
-      <div className="page-wrap flex h-[72px] items-center justify-between gap-4">
-        <Logo />
-        <nav className="hidden items-center gap-4 xl:flex xl:gap-6" aria-label="Navegação principal">
-          {navItems.map(({ label, id }) => <a key={id} href={`#${id}`} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#168367] xl:text-sm">{label}</a>)}
-        </nav>
-        <a href="#participacao" className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Entenda o projeto</a>
-        <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
-      </div>
-      {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#d6e1d7] py-3 xl:hidden" aria-label="Navegação móvel">
-        {navItems.map(({ label, id }) => <a key={id} href={`#${id}`} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
-      </nav>}
-    </header>
-
+  return <SitePage>
     <main>
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#f7f4e9]">
         <div className="hero-pattern pointer-events-none absolute inset-0 opacity-40 [mask-image:linear-gradient(to_right,transparent,black)]" />
@@ -202,13 +212,14 @@ function Home() {
          {markets.map((market, index) => <div className="technology-section__agent-slot" key={market.name}><MarketCard market={market} number={index + 1} /></div>)}
        </TechnologySection>
        <InvestorAppPreview />
-       <WhitepaperSection />
         <RoadmapSection />
 
     </main>
+  </SitePage>;
+}
 
-    <SiteFooter />
-  </div>;
+function Documentation() {
+  return <SitePage documentation><DocumentationPage /></SitePage>;
 }
 
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {
@@ -217,7 +228,7 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
 }
 
 function App() {
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}><RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>;
+  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={BASE_PATH}><RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/documentacao" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>;
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import { MarketMark } from '@/components/hero/MarketMark';
+import { technologyPlatforms } from '@/lib/platforms';
 import { markets, type ScreenId } from './presentationData';
 import { presentationAccount as account, formatAccountMoney as money, formatAccountTokens as tokens } from './presentationAccount';
 
@@ -13,14 +13,10 @@ const unknownScreen = (id: ScreenId): never => { throw new Error(`Tela conceitua
 function PlatformList() {
   return (
     <div className="ip-platform-grid">
-      {markets.map((market) => (
-        <div className="ip-platform-card" key={market.platformId}>
-          <span className="ip-platform-card__market" aria-hidden="true">
-            <MarketMark kind={market.kind} className="ip-market-glyph" />
-            {market.label}
-          </span>
-          <img src={`${base}${market.logo}`} alt={`Logo da plataforma ${market.platform}`} />
-          <b>{market.platform}</b>
+      {technologyPlatforms.map((platform) => (
+        <div className="ip-platform-card" key={platform.id}>
+          <img src={`${base}platforms/${platform.logo}`} alt={`Logo da plataforma ${platform.name}`} />
+          <b>{platform.name}</b>
         </div>
       ))}
     </div>
@@ -61,7 +57,7 @@ export function PhoneScreen({ id }: { id: ScreenId }) {
         <div><i>2</i>Compara oportunidades nos quatro mercados</div>
         <div><i>3</i>Seleciona onde investir e opera dentro dos limites</div>
       </div>
-      <small>Plataformas e mercados</small>
+      <small>Plataformas onde podemos operar</small>
       <PlatformList />
     </>);
     case 'resultados': return (<>
