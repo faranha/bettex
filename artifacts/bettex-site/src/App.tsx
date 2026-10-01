@@ -37,8 +37,8 @@ type Market = {
 const markets: Market[] = [
   { name: 'Previsões', kind: 'predictions', icon: Radar, visual: 'símbolo de cenários ramificados', area: 'Previsões', intro: 'Mercados de previsão.', detail: 'Analisa probabilidades, cenários e preços em eventos futuros.' },
   { name: 'Ações e cripto', kind: 'trading', icon: ChartCandlestick, visual: 'símbolo de gráfico de negociação', area: 'Ações e cripto', intro: 'Negociação de ações e criptoativos.', detail: 'Compara tendências, liquidez e risco antes de negociar ativos financeiros.' },
-  { name: 'Esportes', kind: 'sports', icon: Trophy, visual: 'símbolo de bola esportiva', area: 'Esportes', intro: 'Mercados esportivos.', detail: 'Cruza dados de eventos esportivos, probabilidades e preços antes de operar.' },
-  { name: 'Cassinos', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'Cassinos', intro: 'Jogos de cassino.', detail: 'Avalia probabilidades, condições de jogo e risco antes de cada operação.' },
+  { name: 'Esportes', kind: 'sports', icon: Trophy, visual: 'símbolo de bola esportiva', area: 'Esportes', intro: 'Surebet automatizada.', detail: 'Compara cotações entre casas de apostas e automatiza a execução de apostas combinadas.' },
+  { name: 'Cassinos', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'Cassinos', intro: 'Exploração automatizada de bônus.', detail: 'Analisa as regras dos bônus e automatiza os métodos para aproveitar as ofertas disponíveis.' },
 ];
 
 const navItems = [
