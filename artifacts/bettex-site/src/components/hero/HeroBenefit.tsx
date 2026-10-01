@@ -27,7 +27,7 @@ export function HeroBenefit() {
         <img
           className="hero-benefit__person"
           src={`${import.meta.env.BASE_URL}hero-person-screen.webp`}
-          alt="Pessoa olhando para a tela ilustrativa da BETTEX no celular"
+          alt="Ilustração da BETTEX no celular, com saldo BETTEX após a compra concluída"
           loading="eager"
           decoding="async"
           fetchPriority="high"
@@ -62,9 +62,9 @@ export function HeroBenefit() {
           </svg>
           <BettexMark className="hero-benefit__caption-brand" />
         </span>
-        <strong>Invista em um único token e tenha acesso aos retornos de investimentos em diferentes mercados de risco, com distribuição diária nos dias de lucro.</strong>
+        <strong>Com a compra concluída, o saldo BETTEX participa automaticamente. A distribuição acontece quando o projeto tem lucro.</strong>
       </figcaption>
-      <span className="hero-benefit__bottom" aria-hidden="true">RENDA PASSIVA DE APOSTAS COM IA</span>
+      <span className="hero-benefit__bottom" aria-hidden="true">PARTICIPAÇÃO CONCEITUAL · SEM GARANTIA DE LUCRO</span>
     </figure>
   );
 }

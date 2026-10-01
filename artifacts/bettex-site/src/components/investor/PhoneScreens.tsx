@@ -27,48 +27,46 @@ export function PhoneScreen({ id }: { id: ScreenId }) {
   switch (id) {
     case 'visao': return (<>
       <Head k="Sua participação" t="Olá, João" />
-      <Hero dark label="Saldo disponível em reais" cents={account.availableCents} />
-      <div className="ip-tiles"><div><small>Lucro creditado</small><b>{money(account.profitCents)}</b></div><div><small>BETTEX ativados</small><b>{tokens(account.activatedTokens)}</b></div><div><small>Mercados</small><b>4</b></div></div>
-      <Row a="Conta de exemplo" b="BRL · Pix" />
-      <Row a="Token na Carteira BETTEX" b={`${tokens(account.activatedTokens)} BETTEX`} />
+      <Hero dark label="Carteira em reais · saldo disponível" cents={account.availableCents} />
+      <div className="ip-tiles"><div><small>Lucros recebidos</small><b>{money(account.profitCents)}</b></div><div><small>Carteira BETTEX</small><b>{tokens(account.tokens)}</b></div><div><small>Mercados</small><b>4</b></div></div>
     </>);
     case 'dinheiro': return (<>
-      <Head k="Conta de exemplo" t="Conta em reais" />
+      <Head k="Carteira em reais" t="Conta em reais" />
       <Hero dark label="Saldo disponível" cents={account.availableCents} />
-      <div className="ip-pair"><span className="ip-fake">Depositar com Pix</span><span className="ip-fake ip-fake--ghost">Sacar com Pix</span></div>
       <Row a="Depósitos por Pix" b={money(account.depositsCents)} />
+      <Row a="Compra concluída de BETTEX" b={`− ${money(account.purchaseCents)}`} />
       <Row a="Saques por Pix" b={money(account.withdrawalsCents)} />
-      <Row a="Lucro creditado" b={money(account.profitCents)} />
-      <Row a="Chave Pix" b="cadastrada" />
+      <Row a="Lucros recebidos" b={money(account.profitCents)} />
     </>);
     case 'participacao': return (<>
-      <Head k="Participação" t="Token BETTEX" />
-      <div className="ip-card ip-card--dark"><small>Total de tokens</small><strong>{tokens(account.tokens)} BETTEX</strong><em>O token não ativa participação automaticamente</em></div>
-      <div className="ip-split"><div><small>Na Carteira BETTEX · ativados</small><b>{tokens(account.activatedTokens)}</b></div><div><small>Na carteira pessoal</small><b>{tokens(account.tokens - account.activatedTokens)}</b></div></div>
-      <Row a="Ativação" b="Depósito na Carteira BETTEX" />
-      <Row a="Elegibilidade" b="Nos dias com tokens ativados" />
-      <Row a="Recebimento de créditos" b="Em reais na conta" />
+      <Head k="Carteiras BETTEX e em reais" t="Saldo de tokens" />
+      <div className="ip-card ip-card--dark"><small>Carteira BETTEX</small><strong>{tokens(account.tokens)} BETTEX</strong><em>Seu saldo participa automaticamente nos dias com lucro líquido realizado pelo projeto</em></div>
+      <Row a="Carteira em reais disponível" b={money(account.availableCents)} />
+      <Row a="Sua parte do lucro" b="Proporcional ao saldo e ao tempo mantido no dia" />
+      <Row a="Créditos em reais" b="Na Carteira em reais" />
     </>);
     case 'bettex': return (<>
       <Head k="Operação BETTEX" t="Analisa antes de operar" />
-      <p className="ip-note">Antes de cada operação, a BETTEX cruza múltiplas análises, compara oportunidades nos mercados e seleciona o investimento mais vantajoso segundo seus critérios e limites de risco.</p>
+      <p className="ip-note">A BETTEX analisa sinais e compara as oportunidades antes de cada operação.</p>
       <div className="ip-steps">
         <div><i>1</i>Analisa sinais, contexto e dados disponíveis</div>
         <div><i>2</i>Compara oportunidades nos quatro mercados</div>
-        <div><i>3</i>Seleciona onde investir e opera dentro dos limites</div>
+        <div><i>3</i>Seleciona onde operar e respeita os limites de risco definidos</div>
       </div>
       <small>Plataformas onde podemos operar</small>
       <PlatformList />
     </>);
     case 'resultados': return (<>
-      <Head k="Conta de exemplo · BRL" t="Resultados por plataforma" />
-      <Hero label="Lucro creditado" cents={account.profitCents} />
-      {markets.map((market) => <Row key={market.platformId} a={`${market.platform} · ${market.label}`} b={money(account.platformCreditsCents[market.platformId])} />)}
-      <Row a="Total creditado na conta" b={money(account.profitCents)} />
+      <Head k="Distribuição diária" t="Lucros recebidos em reais" />
+      <Hero label="Sua parte do lucro" cents={account.profitCents} />
+      <p className="ip-note">Nos dias com lucro líquido realizado pelo projeto, após custos e perdas anteriores, 25% desse lucro vai para a distribuição global. A parte de cada pessoa é proporcional ao saldo BETTEX e ao tempo mantido no dia. R$ 128,40 é sua parte neste exemplo, não um retorno fixo de 25%.</p>
+      <small>Exemplo por plataforma, não são créditos separados</small>
+      {markets.map((market) => <Row key={market.platformId} a={market.platform} b={money(account.platformAttributionCents[market.platformId])} />)}
+      <Row a="Crédito consolidado do dia" b={money(account.profitCents)} />
     </>);
     case 'historico': return (<>
-      <Head k="Conta de exemplo · BRL" t="Histórico de operações" />
-      <small>Movimentações da conta e resultados das operações por plataforma.</small>
+      <Head k="Carteiras em reais e BETTEX" t="Histórico de operações" />
+      <small>Movimentações das carteiras e crédito diário consolidado.</small>
       {account.movements.map((movement) => (
         <div className="ip-tx" data-dir={movement.direction} key={movement.label}><i /><div><b>{movement.label}</b><em>{movement.detail}</em></div><span>{movement.direction === 'out' ? '−' : '+'} {money(movement.amountCents)}</span></div>
       ))}

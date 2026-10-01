@@ -39,9 +39,6 @@
 .ip-card--dark em { color:#b9d5c8; }
 .ip-row { display:flex; justify-content:space-between; gap:10px; padding:11px 0; border-bottom:1px solid #d6e2d6; font-size:11px; color:#5a7470; }
 .ip-row b { color:#123a3b; text-align:right; }
-.ip-pair { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.ip-fake { padding:11px 6px; border-radius:10px; background:#a4eacb; text-align:center; font-size:11px; font-weight:800; }
-.ip-fake--ghost { background:transparent; border:1px solid #9bbdaa; }
 .ip-platform-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
 .ip-platform-card { display:grid; align-content:start; gap:5px; min-width:0; padding:8px; border:1px solid #d6e2d6; border-radius:11px; background:#fffdf5; }
 .ip-platform-card__market { display:flex; align-items:center; gap:5px; min-height:20px; color:#24775c; font-size:9px; font-weight:800; line-height:1.2; }

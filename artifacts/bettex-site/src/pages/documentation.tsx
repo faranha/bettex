@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { WhitepaperSection } from '@/components/WhitepaperSection';
 
 const TITLE = 'Documentação técnica | BETTEX';
-const DESC = 'Documentação técnica da BETTEX: agente IA multimercado, token, Carteira BETTEX, tesouraria, controles de risco e apuração diária em reais.';
+const DESC = 'Documentação técnica da BETTEX: duas carteiras, participação automática com BETTEX liquidado, distribuição diária em BRL, tesouraria e controles de risco.';
 
 export function DocumentationPage() {
   useEffect(() => {
