@@ -45,7 +45,7 @@ export function ProjectModelSection() {
          .pm-eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 18px; color: #a55538; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .15em; text-transform: uppercase; }
         .pm-eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
            .pm-title { position: relative; z-index: 1; max-width: calc(100% - 350px); margin: 0; font: 800 clamp(2.65rem, 4.5vw, 4.7rem)/1.02 var(--app-font-serif); letter-spacing: -.065em; }
-         .pm-title span { color: #a55538; }
+         .pm-title span { color: #a55538; font-size: .75em; }
           .pm-head-note { position: relative; z-index: 1; max-width: 340px; margin: 16px 0 0; color: #75594a; font-size: 13px; line-height: 1.55; }
           .pm-person { position: absolute; z-index: 0; right: 15px; bottom: -42px; width: 330px; height: 330px; object-fit: contain; object-position: center bottom; pointer-events: none; filter: drop-shadow(0 10px 20px rgba(64, 42, 30, .18)); }
           .pm-panel { position: relative; z-index: 1; overflow: hidden; border: 1px solid #2c5b55; border-radius: 28px; background: var(--pm-deep); color: var(--pm-cream); box-shadow: 0 20px 48px rgba(99, 55, 37, .13); }
@@ -85,6 +85,9 @@ export function ProjectModelSection() {
          .pm-bottom a:hover { color: #613221; }
         .pm-bottom a svg { transition: transform .2s ease; }
         .pm-bottom a:hover svg { transform: translateX(3px); }
+        @media (min-width: 768px) {
+          .pm-title span { white-space: nowrap; }
+        }
         @media (min-width: 768px) and (max-width: 1100px) {
           .pm-title { max-width: calc(100% - 250px); font-size: clamp(2.1rem, 3.5vw, 2.6rem); letter-spacing: -.045em; }
           .pm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -178,8 +181,8 @@ export function ProjectModelSection() {
               <div className="pm-visual" aria-hidden="true">
                 <CoordinationIllustration />
               </div>
-              <h3>Uma IA analisa <em>e opera em vários mercados.</em></h3>
-              <p className="pm-detail">Uma única IA cruza análises de diferentes mercados antes de cada operação, segundo critérios e limites de risco.</p>
+              <h3>Nossa IA analisa <em>e opera em vários mercados.</em></h3>
+              <p className="pm-detail">Nossa IA cruza análises de diferentes mercados antes de cada operação, segundo critérios e limites de risco.</p>
               <div className="pm-agent-list" aria-label="Mercados em que a BETTEX opera">
                 {markets.map((market) => (
                   <div className="pm-agent" key={market}>

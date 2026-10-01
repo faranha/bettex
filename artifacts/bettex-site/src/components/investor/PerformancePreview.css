@@ -1,30 +1,46 @@
-.pp { display:grid; gap:8px; min-width:0; }
+.pp { display:grid; gap:4px; min-width:0; container-type:inline-size; }
+.ip-screen .pp > h5 { margin:4px 0 6px; }
 .pp > small { color:#168367; font:700 9px/1.4 var(--app-font-mono,monospace); letter-spacing:.08em; text-transform:uppercase; }
-.pp-metrics { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
-.pp-metrics div { display:grid; gap:3px; padding:8px; border:1px solid #d6e2d6; border-radius:11px; background:#fffdf5; min-width:0; }
+.pp-metrics { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.25fr); gap:4px; }
+.pp-metrics div { display:grid; gap:4px; padding:8px 6px; border:1px solid #d6e2d6; border-radius:9px; background:#fffdf5; min-width:0; }
 .pp-metrics span { font-size:9px; color:#5a7470; }
-.pp-metrics b { font:800 14px/1.1 var(--app-font-serif,sans-serif); letter-spacing:-.04em; overflow-wrap:anywhere; }
-.pp-metrics .pp-net { grid-column:1/-1; background:#123a3b; border-color:#123a3b; }
+.pp-metrics b { font:800 12px/1.1 var(--app-font-serif,sans-serif); letter-spacing:-.04em; white-space:nowrap; }
+.pp-metrics .pp-net { padding-inline:8px; background:#123a3b; border-color:#123a3b; }
 .pp-metrics .pp-net span { color:#b9d5c8; }
-.pp-metrics .pp-net b { font-size:20px; color:#a4eacb; }
+.pp-metrics .pp-net b { color:#a4eacb; }
 .pp-metrics .pp-net b.pp-neg { color:#ffb38f; }
 .pp-pos { color:#168367; } .pp-neg { color:#b25c47; }
-.pp-chart { margin:0; padding:8px 6px 6px; border:1px solid #c7dbcf; border-radius:12px; background:#e6f1e6; }
-.pp-chart__plot { width:100%; height:120px; }
+.pp-chart { margin:0; padding:6px 4px 4px; border:1px solid #c7dbcf; border-radius:10px; background:#e6f1e6; }
+.pp-chart__plot { width:100%; height:84px; }
 .pp-chart figcaption { margin-top:4px; font-size:8px; color:#5a7470; text-align:center; }
 .pp-agents, .pp-days { list-style:none; margin:0; padding:0; display:grid; }
-.pp-agents li { display:grid; gap:3px; padding:7px 0; border-bottom:1px solid #d6e2d6; }
+.pp-agents li { display:grid; gap:2px; padding:4px 0; border-bottom:1px solid #d6e2d6; }
 .pp-agents__head { display:flex; justify-content:space-between; font-size:11px; }
 .pp-agents__head span { font-weight:800; }
-.pp-agents__bar { height:5px; border-radius:3px; background:#d7eee1; display:block; }
+.pp-agents__bar { height:3px; border-radius:3px; background:#d7eee1; display:block; }
 .pp-agents__bar u { display:block; height:100%; border-radius:3px; }
 .pp-agents em, .pp-days em { font-style:normal; }
 .pp-agents em { font-size:9px; color:#5a7470; }
-.pp-tabs { display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:3px; border:1px solid #c7dbcf; border-radius:11px; }
-.pp-tabs button { padding:7px 4px; border:0; border-radius:8px; background:transparent; color:#123a3b; font:700 10px/1.2 var(--app-font-sans,sans-serif); cursor:pointer; }
-.pp-tabs button[aria-selected="true"] { background:#123a3b; color:#a4eacb; }
+.pp-tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; margin:2px 0 5px; }
+.pp-tabs button { position:relative; display:flex; align-items:center; gap:6px; min-width:0; min-height:44px; padding:7px; border:1px solid #c7dbcf; border-radius:11px; background:#fffdf5; color:#123a3b; font:700 10px/1.25 var(--app-font-sans,sans-serif); text-align:left; cursor:pointer; transition:background .15s,border-color .15s,box-shadow .15s; }
+.pp-tab-icon { display:grid; place-items:center; flex:none; width:28px; height:28px; border-radius:8px; background:var(--pp-market-wash,#e2f0e7); color:var(--pp-market-ink,#257355); }
+.pp-tab-icon svg { display:block; width:28px; height:28px; }
+.pp-tab-name { min-width:0; }
+.pp-tabs button[data-market="predictions"] { --pp-market-wash:#e8edf9; --pp-market-ink:#4a67a1; }
+.pp-tabs button[data-market="casino"] { --pp-market-wash:#f8e6d7; --pp-market-ink:#a05c35; }
+.pp-tabs button[data-market="trading"] { --pp-market-wash:#eee6f5; --pp-market-ink:#8054a0; }
+.pp-tabs button:hover { background:#eef5ed; border-color:#70aa93; }
+.pp-tabs button[aria-selected="true"] { background:#123a3b; border-color:#123a3b; color:#a4eacb; box-shadow:0 3px 8px #123a3b20; }
+.pp-tabs button[aria-selected="true"] .pp-tab-icon { background:#a4eacb; color:#123a3b; }
+.pp-tabs button[aria-selected="true"]::after { content:""; position:absolute; top:5px; right:5px; width:4px; height:4px; border-radius:50%; background:#a4eacb; }
 .pp-tabs button:focus-visible { outline:3px solid #d98a5f; outline-offset:1px; }
 .pp-cat { margin:0; font-size:10px; color:#5a7470; }
-.pp-days li { display:grid; grid-template-columns:auto 1fr auto; gap:6px; padding:6px 0; border-bottom:1px solid #d6e2d6; font-size:10px; color:#5a7470; }
+.pp-days li { display:grid; grid-template-columns:auto 1fr auto; gap:6px; padding:3px 0; border-bottom:1px solid #d6e2d6; font-size:10px; color:#5a7470; }
 .pp-days b { color:#123a3b; } .pp-days em { font-weight:800; }
-.pp-note { margin:0; font-size:9px; line-height:1.45; color:#5a7470; }
+@container (max-width:225px) {
+  .pp-tabs button { gap:4px; padding:6px; }
+  .pp-tab-icon, .pp-tab-icon svg { width:24px; height:24px; }
+  .pp-tab-name { font-size:9px; }
+  .pp-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .pp-metrics .pp-net { grid-column:1 / -1; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+}

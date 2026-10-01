@@ -1,6 +1,7 @@
 import { useRef, useState, type KeyboardEvent } from 'react';
 import { Bar, BarChart, CartesianGrid, Cell, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { agentPerformance, dailyFor, netCents, totalsFor, type PerformanceDay } from './performanceExample';
+import { MarketMark } from '@/components/hero/MarketMark';
+import { marketPerformance, dailyFor, netCents, totalsFor, type PerformanceDay } from './performanceExample';
 import './PerformancePreview.css';
 
 const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -19,8 +20,8 @@ function Chart({ days, label }: { days: PerformanceDay[]; label: string }) {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 6, right: 2, bottom: 0, left: 0 }} barCategoryGap="18%">
             <CartesianGrid vertical={false} stroke="#dce8dc" strokeDasharray="3 4" />
-            <XAxis dataKey="label" tickLine={false} axisLine={false} interval={0} tick={{ fill: '#5a7470', fontSize: 8 }} />
-            <YAxis tickLine={false} axisLine={false} width={40} tick={{ fill: '#5a7470', fontSize: 8 }} tickFormatter={(v: number) => compact.format(v)} domain={[(m: number) => Math.min(0, m), (m: number) => Math.max(0, m)]} />
+            <XAxis dataKey="label" height={18} tickLine={false} axisLine={false} interval={0} tick={{ fill: '#5a7470', fontSize: 8 }} />
+            <YAxis tickCount={3} tickLine={false} axisLine={false} width={40} tick={{ fill: '#5a7470', fontSize: 8 }} tickFormatter={(v: number) => compact.format(v)} domain={[(m: number) => Math.min(0, m), (m: number) => Math.max(0, m)]} />
             <ReferenceLine y={0} stroke="#769489" />
             <Tooltip
               cursor={{ fill: '#d7eee1', fillOpacity: 0.45 }}
@@ -33,7 +34,7 @@ function Chart({ days, label }: { days: PerformanceDay[]; label: string }) {
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <figcaption>Líquido diário, R$ · acima de zero ganho, abaixo perda</figcaption>
+      <figcaption>Líquido diário · R$</figcaption>
     </figure>
   );
 }
@@ -42,30 +43,28 @@ function Metrics({ profit, loss }: { profit: number; loss: number }) {
   const net = profit - loss;
   return (
     <div className="pp-metrics">
-      <div><span>Lucro obtido</span><b className="pp-pos">{money(profit)}</b></div>
+      <div><span>Lucro</span><b className="pp-pos">{money(profit)}</b></div>
       <div><span>Perdas</span><b className="pp-neg">{money(loss)}</b></div>
-      <div className="pp-net"><span>Resultado líquido</span><b className={net < 0 ? 'pp-neg' : 'pp-pos'}>{signed(net)}</b></div>
+      <div className="pp-net"><span>Líquido</span><b className={net < 0 ? 'pp-neg' : 'pp-pos'}>{signed(net)}</b></div>
     </div>
   );
 }
-
-const Note = () => <p className="pp-note">Dados ilustrativos da operação BETTEX, separados da carteira e do crédito do titular.</p>;
 
 export function PerformancePreview({ mode }: { mode: 'overview' | 'history' }) {
   const [active, setActive] = useState(0);
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
 
   if (mode === 'overview') {
-    const t = totalsFor(agentPerformance);
-    const max = Math.max(...agentPerformance.map((a) => Math.abs(totalsFor([a]).profitCents - totalsFor([a]).lossCents)), 1);
+    const t = totalsFor(marketPerformance);
+    const max = Math.max(...marketPerformance.map((a) => Math.abs(totalsFor([a]).profitCents - totalsFor([a]).lossCents)), 1);
     return (
       <div className="pp" data-testid="performance-overview">
-        <small>Resultados de exemplo · 24–30/09/2026</small>
+        <small>Resultados · 24–30/09/2026</small>
         <h5>Lucros e perdas</h5>
         <Metrics profit={t.profitCents} loss={t.lossCents} />
-        <Chart days={dailyFor(agentPerformance)} label="Consolidado dos quatro agentes" />
+        <Chart days={dailyFor(marketPerformance)} label="Consolidado dos quatro mercados" />
         <ul className="pp-agents">
-          {agentPerformance.map((a) => {
+          {marketPerformance.map((a) => {
             const x = totalsFor([a]);
             const n = x.profitCents - x.lossCents;
             return (
@@ -77,15 +76,14 @@ export function PerformancePreview({ mode }: { mode: 'overview' | 'history' }) {
             );
           })}
         </ul>
-        <Note />
       </div>
     );
   }
 
-  const agent = agentPerformance[active];
-  const t = totalsFor([agent]);
+  const market = marketPerformance[active];
+  const t = totalsFor([market]);
   const onKey = (e: KeyboardEvent) => {
-    const n = agentPerformance.length;
+    const n = marketPerformance.length;
     let i = active;
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') i = (active + 1) % n;
     else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') i = (active + n - 1) % n;
@@ -99,19 +97,22 @@ export function PerformancePreview({ mode }: { mode: 'overview' | 'history' }) {
 
   return (
     <div className="pp" data-testid="performance-history">
-      <small>Histórico de exemplo · 24–30/09/2026</small>
-      <h5>Performance por agente</h5>
-      <div className="pp-tabs" role="tablist" aria-label="Agentes especializados" onKeyDown={onKey}>
-        {agentPerformance.map((a, i) => (
-          <button key={a.id} ref={(el) => { refs.current[i] = el; }} role="tab" id={`pp-tab-${a.id}`} aria-selected={i === active} aria-controls="pp-panel" tabIndex={i === active ? 0 : -1} onClick={() => setActive(i)} data-testid={`tab-agent-${a.id}`}>{a.name}</button>
+      <small>Histórico · 24–30/09/2026</small>
+      <h5>Performance por mercado</h5>
+      <div className="pp-tabs" role="tablist" aria-label="Mercados" onKeyDown={onKey}>
+        {marketPerformance.map((a, i) => (
+          <button key={a.id} ref={(el) => { refs.current[i] = el; }} role="tab" id={`pp-tab-${a.id}`} aria-selected={i === active} aria-controls="pp-panel" tabIndex={i === active ? 0 : -1} onClick={() => setActive(i)} data-market={a.id} data-testid={`tab-market-${a.id}`}>
+            <span className="pp-tab-icon"><MarketMark kind={a.id} /></span>
+            <span className="pp-tab-name">{a.name}</span>
+          </button>
         ))}
       </div>
-      <div id="pp-panel" role="tabpanel" aria-labelledby={`pp-tab-${agent.id}`} className="pp">
-        <p className="pp-cat">{agent.category}</p>
+      <div id="pp-panel" role="tabpanel" aria-labelledby={`pp-tab-${market.id}`} className="pp">
+        <p className="pp-cat">{market.category}</p>
         <Metrics profit={t.profitCents} loss={t.lossCents} />
-        <Chart days={agent.days} label={agent.name} />
+        <Chart days={market.days} label={market.name} />
         <ul className="pp-days">
-          {agent.days.map((d) => {
+          {market.days.map((d) => {
             const n = netCents(d);
             return (
               <li key={d.date}>
@@ -123,7 +124,6 @@ export function PerformancePreview({ mode }: { mode: 'overview' | 'history' }) {
           })}
         </ul>
       </div>
-      <Note />
     </div>
   );
 }

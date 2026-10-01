@@ -15,6 +15,12 @@ Confirm actual alpha before repeating background removal because a thumbnail loo
 
 **How to apply:** Inspect opacity and representative background pixels with ImageMagick, then view the image over a contrasting background or in the app. Do not infer transparency from a thumbnail alone.
 
+Check graphics-tool version compatibility before using older transparency commands, and do not treat output-file existence as success.
+
+**Why:** ImageMagick 7 rejected an older flood-fill drawing primitive but still left an opaque PNG output. A later successful inspection command also masked the conversion failure in the shell's final status.
+
+**How to apply:** Use syntax supported by the installed major version, stop shell pipelines on conversion errors, and verify real alpha before integrating the result.
+
 Visually verify the identity of logos returned by image search; do not trust a result's title or filename as proof of authenticity.
 
 **Why:** A result labeled as a football club crest actually contained a generic dragon shield with a baked-in checkerboard background. Another source provided the recognizable club mark with genuine transparency.

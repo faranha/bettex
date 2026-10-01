@@ -16,16 +16,23 @@ export const markets = [
 
 export type MarketId = typeof markets[number]['id'];
 export type PlatformId = typeof markets[number]['platformId'];
-export type ScreenId = 'participacao' | 'bettex' | 'resultados' | 'historico';
+export type ScreenId = 'participacao' | 'bettex' | 'resultados' | 'historico' | 'hydra';
+
+export const hydraMessage = {
+  opening: 'Quando um mercado cai, outros dois nascem em seu lugar.',
+  attitude: 'Nossa IA é predatória contra o mercado — e não temos pudor em admitir:',
+  goal: 'Queremos vencer.',
+};
 
 export interface ScreenMeta { id: ScreenId; label: string; title: string; text: string }
 
 export const navGroups = [
   { label: 'BETTEX', items: [
     { id: 'participacao', label: 'Token BETTEX', title: 'Sua carteira BETTEX.', text: 'Seus tokens, sua participação automática e seus lucros em reais.' },
-    { id: 'bettex', label: 'Como opera', title: 'BETTEX em operação.', text: 'Exemplos de surebet, mineração de bônus, cripto alavancada e previsões, operados pelos quatro agentes da BETTEX em plataformas fictícias.' },
-    { id: 'resultados', label: 'Resultados', title: 'O desempenho dos quatro agentes.', text: 'Compare o lucro obtido, as perdas e o resultado líquido do projeto nos quatro mercados.' },
-    { id: 'historico', label: 'Histórico', title: 'Performance por agente.', text: 'Escolha um dos quatro agentes para ver seu gráfico e os dias de lucro e de perda na semana de exemplo.' },
+    { id: 'bettex', label: 'Como opera', title: 'BETTEX em operação.', text: 'Os quatro agentes da BETTEX operam com surebet, mineração de bônus, cripto alavancada e previsões.' },
+    { id: 'resultados', label: 'Resultados', title: 'O desempenho dos quatro mercados.', text: 'Compare o lucro obtido, as perdas e o resultado líquido do projeto nos quatro mercados.' },
+    { id: 'historico', label: 'Histórico', title: 'Performance por mercado.', text: 'Escolha um dos quatro mercados para ver seu gráfico e os dias de lucro e de perda.' },
+    { id: 'hydra', label: 'PROTOCOLO HYDRA', title: 'Protocolo Hydra.', text: `${hydraMessage.opening} ${hydraMessage.attitude} ${hydraMessage.goal}` },
   ] satisfies ScreenMeta[] },
 ];
 
