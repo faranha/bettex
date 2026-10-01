@@ -24,7 +24,7 @@
     <circle cx="312" cy="288" r="8" fill="#f2c3a0"/>
     <rect x="25" y="563" width="310" height="92" rx="16" fill="#1c5550" stroke="#a4eacb" stroke-opacity=".38" stroke-width="2"/>
     <circle cx="63" cy="609" r="12" fill="#a4eacb"/>
-    <text x="91" y="620" fill="#f7f4e9" font-size="25" font-weight="700" font-family="DejaVu Sans, sans-serif">Tokens ativos</text>
+    <text x="91" y="620" fill="#f7f4e9" font-size="25" font-weight="700" font-family="DejaVu Sans, sans-serif">Saldo BETTEX</text>
     <path d="M28 694H334" stroke="#a4eacb" stroke-opacity=".2" stroke-width="2"/>
   </g>
 </svg>

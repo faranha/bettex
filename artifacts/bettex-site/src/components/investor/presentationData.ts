@@ -22,12 +22,12 @@ export interface ScreenMeta { id: ScreenId; label: string; title: string; text: 
 
 export const navGroups = [
   { label: 'BETTEX', items: [
-    { id: 'visao', label: 'Visão geral', title: 'Sua participação, de forma simples.', text: 'Acompanhe saldo, token e créditos na conta de exemplo BETTEX.' },
-    { id: 'dinheiro', label: 'Conta BRL / Pix', title: 'Sua conta em reais.', text: 'Depósitos, lucros e saques aparecem em reais, com Pix.' },
-    { id: 'participacao', label: 'Token BETTEX', title: 'Ative sua participação.', text: 'Ter BETTEX na carteira pessoal não ativa participação: deposite tokens na Carteira BETTEX para ativá-la.' },
-    { id: 'bettex', label: 'Como opera', title: 'Uma IA. Múltiplas análises. Quatro mercados.', text: 'Antes de cada operação, a BETTEX compara oportunidades nos mercados e plataformas segundo suas análises.' },
-    { id: 'resultados', label: 'Resultados', title: 'Créditos por plataforma.', text: 'Veja como o exemplo de lucro total se distribui entre as plataformas.' },
-    { id: 'historico', label: 'Histórico', title: 'Investimentos e operações.', text: 'Acompanhe créditos de operações identificados pela plataforma, além de depósitos e saques por Pix.' },
+    { id: 'visao', label: 'Visão geral', title: 'Sua participação, de forma simples.', text: 'Acompanhe suas carteiras, os resultados e as movimentações.' },
+    { id: 'dinheiro', label: 'Conta em reais / Pix', title: 'Sua conta em reais.', text: 'Consulte depósitos, compra concluída de BETTEX, créditos e saques em reais.' },
+    { id: 'participacao', label: 'Token BETTEX', title: 'Saldo de tokens BETTEX.', text: 'Seu saldo de BETTEX participa automaticamente nos dias com lucro líquido realizado pelo projeto, conforme a quantidade de tokens e o tempo mantido.' },
+    { id: 'bettex', label: 'Como opera', title: 'Uma IA. Múltiplas análises. Quatro mercados.', text: 'A BETTEX compara oportunidades em diferentes mercados e plataformas a partir de suas análises.' },
+    { id: 'resultados', label: 'Resultados', title: 'Lucros recebidos em reais.', text: 'Veja sua parte do lucro e o exemplo de valores por plataforma.' },
+    { id: 'historico', label: 'Histórico', title: 'Movimentações da conta.', text: 'Consulte compras de tokens, o crédito diário consolidado e outras movimentações.' },
   ] satisfies ScreenMeta[] },
 ];
 
