@@ -189,12 +189,13 @@ function Home() {
         <div className="hero-pattern pointer-events-none absolute inset-0 opacity-40 [mask-image:linear-gradient(to_right,transparent,black)]" />
         <div className="page-wrap relative grid items-center gap-10 pb-10 pt-12 sm:pt-16 md:min-h-[690px] md:grid-cols-[1.08fr_.92fr] md:gap-8 md:py-16 lg:min-h-[730px] lg:gap-14">
           <div className="entrance relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#94ebcb]/35 bg-[#94ebcb]/10 px-4 py-2 text-[11px] font-bold text-[#aff3d7]"><span className="h-2 w-2 rounded-full bg-[#a6edcb]" /> BETTEX · IA EM APOSTAS E PREVISÕES</div>
-            <h1 className="hero-title mt-7 max-w-[690px] text-[clamp(2.4rem,6vw,5rem)] font-extrabold">
-              <span className="block">Sua aposta é na IA.</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#94ebcb]/35 bg-[#94ebcb]/10 px-4 py-2 text-[11px] font-bold text-[#aff3d7]"><span className="h-2 w-2 rounded-full bg-[#a6edcb]" /> AGENTE DE APOSTAS E PREVISÕES</div>
+            <h1 className="hero-title mt-7 max-w-[690px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold">
+              <span className="block">Transforme apostas</span>
+              <span className="block text-[#a4eacb]">em renda passiva.</span>
             </h1>
-            <p className="mt-5 max-w-[550px] text-[clamp(1.4rem,2.6vw,2rem)] font-bold leading-[1.2] text-[#a4eacb]">Transforme apostas em renda passiva.</p>
-            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">A BETTEX analisa oportunidades em apostas e previsões. Você participa dos resultados e recebe sua parte dos lucros em reais.</p>
+            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#f7f4e9]">Seja o dono do jogo. Participe dos resultados da IA.</h2>
+            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">BETTEX é o token do nosso agente de inteligência artificial que opera em apostas e previsões. Quem tem BETTEX participa dos resultados todos os dias.</p>
             <div className="mt-8 flex flex-wrap items-center gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-7 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Quero participar <ArrowRight className="h-4 w-4" /></a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 px-4 py-4 text-sm font-semibold text-[#d7e9df] underline-offset-4 hover:underline">Ver telas do app <ArrowDown className="h-4 w-4" /></a></div>
           </div>
           <div className="entrance entrance-delay relative mx-auto w-full max-w-[560px]">
