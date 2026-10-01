@@ -5,7 +5,7 @@ import { allScreens, navGroups, type ScreenId } from './presentationData';
 import './InvestorAppPreview.css';
 
 export function InvestorAppPreview() {
-  const [current, setCurrent] = useState<ScreenId>('visao');
+  const [current, setCurrent] = useState<ScreenId>(allScreens[0].id);
   const refs = useRef<Record<string, HTMLButtonElement | null>>({});
   const idx = allScreens.findIndex((s) => s.id === current);
   const active = allScreens[idx];

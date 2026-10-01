@@ -16,13 +16,12 @@ export const markets = [
 
 export type MarketId = typeof markets[number]['id'];
 export type PlatformId = typeof markets[number]['platformId'];
-export type ScreenId = 'visao' | 'dinheiro' | 'participacao' | 'bettex' | 'resultados' | 'historico';
+export type ScreenId = 'dinheiro' | 'participacao' | 'bettex' | 'resultados' | 'historico';
 
 export interface ScreenMeta { id: ScreenId; label: string; title: string; text: string }
 
 export const navGroups = [
   { label: 'BETTEX', items: [
-    { id: 'visao', label: 'Visão geral', title: 'Sua participação, de forma simples.', text: 'Acompanhe suas carteiras, os resultados e as movimentações.' },
     { id: 'dinheiro', label: 'Conta em reais / Pix', title: 'Sua conta em reais.', text: 'Consulte depósitos, compra concluída de BETTEX, créditos e saques em reais.' },
     { id: 'participacao', label: 'Token BETTEX', title: 'Saldo de tokens BETTEX.', text: 'Seu saldo de BETTEX participa automaticamente nos dias com lucro líquido realizado pelo projeto, conforme a quantidade de tokens e o tempo mantido.' },
     { id: 'bettex', label: 'Como opera', title: 'Uma IA. Múltiplas análises. Quatro mercados.', text: 'A BETTEX compara oportunidades em diferentes mercados e plataformas a partir de suas análises.' },

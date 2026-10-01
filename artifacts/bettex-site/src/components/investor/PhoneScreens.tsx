@@ -1,6 +1,7 @@
 import { technologyPlatforms } from '@/lib/platforms';
 import { markets, type ScreenId } from './presentationData';
 import { presentationAccount as account, formatAccountMoney as money, formatAccountTokens as tokens } from './presentationAccount';
+import '../technology/PlatformCoverage.css';
 
 const base = import.meta.env.BASE_URL;
 const Row = ({ a, b }: { a: string; b: string }) => <div className="ip-row"><span>{a}</span><b>{b}</b></div>;
@@ -15,8 +16,7 @@ function PlatformList() {
     <div className="ip-platform-grid">
       {technologyPlatforms.map((platform) => (
         <div className="ip-platform-card" key={platform.id}>
-          <img src={`${base}platforms/${platform.logo}`} alt={`Logo da plataforma ${platform.name}`} />
-          <b>{platform.name}</b>
+          <img className={`platform-coverage__logo platform-coverage__logo--${platform.id}`} src={`${base}platforms/${platform.logo}`} alt={platform.name} />
         </div>
       ))}
     </div>
@@ -25,11 +25,6 @@ function PlatformList() {
 
 export function PhoneScreen({ id }: { id: ScreenId }) {
   switch (id) {
-    case 'visao': return (<>
-      <Head k="Sua participação" t="Olá, João" />
-      <Hero dark label="Carteira em reais · saldo disponível" cents={account.availableCents} />
-      <div className="ip-tiles"><div><small>Lucros recebidos</small><b>{money(account.profitCents)}</b></div><div><small>Carteira BETTEX</small><b>{tokens(account.tokens)}</b></div><div><small>Mercados</small><b>4</b></div></div>
-    </>);
     case 'dinheiro': return (<>
       <Head k="Carteira em reais" t="Conta em reais" />
       <Hero dark label="Saldo disponível" cents={account.availableCents} />
