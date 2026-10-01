@@ -65,12 +65,12 @@ export function WhitepaperSection() {
 
   return (
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
-      <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO TÉCNICA</span><span>UM AGENTE · {total} CAPÍTULOS</span></div>
+      <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO TÉCNICA · v1</span><span>UM AGENTE · {total} CAPÍTULOS</span></div>
       <header className="whitepaper__hero page-wrap">
         <div>
-          <p className="whitepaper__eyebrow"><span aria-hidden="true" /> ARQUITETURA, ECONOMIA E RISCO</p>
+          <p className="whitepaper__eyebrow"><span aria-hidden="true" /> v1 · ARQUITETURA, ECONOMIA E RISCO</p>
           <h1 id="whitepaper-title">Documentação<br /><em>técnica.</em></h1>
-          <p className="whitepaper__hero-lede">Uma leitura técnica do agente BETTEX em previsões, ações e cripto, esportes e cassinos, da operação inicial 100% cripto em USDC, da arquitetura backend e das regras econômicas.</p>
+          <p className="whitepaper__hero-lede">A v1 da documentação apresenta a arquitetura e as regras do modelo inicial da BETTEX: agente multimercado, operação 100% cripto em USDC, visão de valor local e participação automática. Novas versões ampliarão o detalhamento técnico e documentarão a evolução da plataforma.</p>
         </div>
         <div className="whitepaper__hero-note"><span>VERSÃO INICIAL · 100% CRIPTO</span><p>A BETTEX é um projeto internacional. O saldo efetivo e as movimentações são em USDC; a interface mostra seu valor estimado na moeda da pessoa, como reais. O saque continua em USDC. BETTEX é o token de participação. A entrada fiat usa on-ramp externo; conversão e pagamento em moeda local pertencem à proposta futura do BETTEX Bank.</p></div>
       </header>

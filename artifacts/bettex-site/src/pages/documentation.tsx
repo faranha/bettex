@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { WhitepaperSection } from '@/components/WhitepaperSection';
 
-const TITLE = 'Documentação técnica | BETTEX';
-const DESC = 'Arquitetura técnica BETTEX: Arbitrum One, carteira exportável, autocustódia, acesso sem KYC, staking no aplicativo e possíveis integrações com Robinhood e Allora.';
+const TITLE = 'Documentação técnica v1 | BETTEX';
+const DESC = 'Documentação técnica v1 da BETTEX: arquitetura Arbitrum, carteira exportável, operação em USDC, visão de valor local, participação automática e evolução para novas versões.';
 
 export function DocumentationPage() {
   useEffect(() => {
