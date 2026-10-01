@@ -43,13 +43,13 @@ const markets: Market[] = [
 
 const navItems = [
   { label: 'Início', id: 'inicio' },
-  { label: 'O projeto', id: 'participacao' },
-  { label: 'História', id: 'historia' },
-  { label: 'Operações', id: 'tecnologia' },
+  { label: 'Token BETTEX', id: 'participacao' },
+  { label: 'Por que BETTEX', id: 'historia' },
+  { label: 'Como opera', id: 'tecnologia' },
   { label: 'Mercados', id: 'mercados' },
   { label: 'Aplicativo', id: 'visao-investidor' },
-  { label: 'Documentação', id: 'documentacao' },
   { label: 'Roadmap', id: 'roadmap' },
+  { label: 'Documentação', id: 'documentacao' },
 ] as const;
 
 function Logo({ pale = false }: { pale?: boolean }) {
@@ -67,10 +67,10 @@ function SiteHeader() {
   return <header className="sticky top-0 z-40 border-b border-[#d6e1d7] bg-[#f7f4e9]/95 backdrop-blur-lg">
     <div className="page-wrap flex h-[72px] items-center justify-between gap-4">
       <Logo />
-      <nav className="hidden items-center gap-4 xl:flex xl:gap-6" aria-label="Navegação principal">
+      <nav className="hidden items-center gap-4 xl:flex" aria-label="Navegação principal">
         {navItems.map(({ label, id }) => <a key={id} href={id === 'documentacao' ? DOCUMENTATION_PATH : homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#168367] xl:text-sm">{label}</a>)}
       </nav>
-      <a href={homeAnchor('participacao')} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Entenda o projeto</a>
+      <a href={homeAnchor('participacao')} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Conheça o token</a>
       <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#d6e1d7] py-3 xl:hidden" aria-label="Navegação móvel">
@@ -105,17 +105,18 @@ function SiteFooter() {
         <nav aria-label="Explorar o projeto">
           <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Explore</h3>
           <ul className="space-y-3 text-sm font-semibold">
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('participacao')}>Como funciona</a></li>
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('mercados')}>Os quatro mercados</a></li>
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('visao-investidor')}>Telas do aplicativo</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('participacao')}>Token BETTEX</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('tecnologia')}>Como opera</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('mercados')}>Mercados</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
           </ul>
         </nav>
         <nav aria-label="Links do projeto">
           <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">O projeto</h3>
           <ul className="space-y-3 text-sm font-semibold">
-            <li><a className="hover:text-[#a4eacb]" href={DOCUMENTATION_PATH}>Documentação técnica</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('historia')}>Por que BETTEX</a></li>
             <li><a className="hover:text-[#a4eacb]" href={homeAnchor('roadmap')}>Roadmap</a></li>
-            <li><a className="hover:text-[#a4eacb]" href={homeAnchor('historia')}>Nossa história</a></li>
+            <li><a className="hover:text-[#a4eacb]" href={DOCUMENTATION_PATH}>Documentação</a></li>
           </ul>
         </nav>
       </div>

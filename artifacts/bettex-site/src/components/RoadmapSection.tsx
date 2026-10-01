@@ -3,40 +3,52 @@ import './RoadmapSection.css';
 const stops = [
   {
     number: '01',
-    tag: 'PONTO DE PARTIDA',
-    title: 'Apresentação do pré-lançamento',
-    description: 'Mostrar o projeto, o funcionamento do token e as regras já documentadas. A página apresenta o modelo; não realiza compras.',
+    tag: 'PREPARAÇÃO TÉCNICA E JURÍDICA',
+    date: 'Pré-lançamento',
+    dateTime: '',
+    title: 'Preparação do ecossistema BETTEX',
+    description: 'Investigar os requisitos legais e regulatórios do projeto e preparar sua base técnica: arquitetura, contratos, segurança e integrações. Estruturar o ecossistema BETTEX para as validações técnicas e jurídicas necessárias antes do lançamento.',
   },
   {
     number: '02',
-    tag: 'PRIMEIRO TESTE',
-    title: 'Piloto da BETTEX',
-    description: 'Testar a BETTEX em ambiente supervisionado, com limites de risco e avaliação das oportunidades antes de ampliar a operação.',
-  },
-  {
-    number: '03',
-    tag: 'PRÓXIMO MARCO',
+    tag: 'LANÇAMENTO',
+    date: 'Dezembro de 2026',
+    dateTime: '2026-12',
     title: 'Lançamento do token',
-    description: 'Disponibilizar o BETTEX conforme as regras de emissão, só após validar contratos, tesouraria, segurança e condições jurídicas.',
+    description: 'Disponibilizar o BETTEX conforme as regras de emissão, após validar contratos, tesouraria, segurança e condições jurídicas.',
     featured: true,
   },
   {
+    number: '03',
+    tag: 'PRIMEIRO MERCADO',
+    date: 'Fevereiro de 2027',
+    dateTime: '2027-02',
+    title: 'Abertura dos mercados',
+    description: 'Iniciar a operação em mercados de previsão (prediction markets), com acompanhamento, limites de risco e avaliação dos resultados.',
+  },
+  {
     number: '04',
-    tag: 'ESTRUTURA',
-    title: 'Tesouraria em operação',
-    description: 'Acompanhar a reserva defensiva e a parcela investível, com conciliação dos saldos e limites para a operação.',
+    tag: 'CONSULTA ABERTA',
+    date: 'Março de 2027',
+    dateTime: '2027-03',
+    title: 'Resultados e próximos passos',
+    description: 'Realizar uma consulta aberta para avaliar os resultados da operação e determinar os próximos passos do projeto.',
   },
   {
     number: '05',
     tag: 'AMPLIAÇÃO',
-    title: 'Operação multimercado',
-    description: 'Ampliar a atuação da BETTEX em previsões, ações e cripto, esportes e cassinos, buscando otimizar a alocação onde houver maior vantagem, conforme acesso permitido, integração viável e limites de risco.',
+    date: 'Junho de 2027',
+    dateTime: '2027-06',
+    title: 'Novos agentes',
+    description: 'Expandir a operação com novos agentes, conforme os resultados e as prioridades definidos na consulta aberta.',
   },
   {
     number: '06',
-    tag: 'ACOMPANHAMENTO',
-    title: 'Resultados e acesso',
-    description: 'Testar a apuração dos resultados e a distribuição apenas quando houver lucro. Abrir o acompanhamento do investidor gradualmente.',
+    tag: 'EXPANSÃO DO APLICATIVO',
+    date: 'Dezembro de 2027',
+    dateTime: '2027-12',
+    title: 'BETTEX Bank',
+    description: 'Uma nova etapa de expansão do aplicativo BETTEX. O formato, os recursos e o alcance dessa evolução permanecem em aberto.',
   },
 ] as const;
 
@@ -56,7 +68,7 @@ export function RoadmapSection() {
           </div>
           <div className="roadmap__intro-side">
             <span className="roadmap__intro-index" aria-hidden="true">01 → 06</span>
-            <p>Do primeiro contato com o projeto à operação acompanhada. Um marco prepara o próximo.</p>
+            <p>Da preparação técnica e jurídica à expansão do aplicativo. Lançamento do token em dezembro de 2026; abertura dos mercados em fevereiro de 2027.</p>
           </div>
         </header>
 
@@ -79,6 +91,11 @@ export function RoadmapSection() {
                     <span className="roadmap__place-number">{stop.number}<span> / 06</span></span>
                     <span className="roadmap__place-tag">{stop.tag}</span>
                   </div>
+                  {stop.dateTime ? (
+                    <time className="roadmap__place-date" dateTime={stop.dateTime}>{stop.date}</time>
+                  ) : (
+                    <span className="roadmap__place-date">{stop.date}</span>
+                  )}
                   <h3>{stop.title}</h3>
                   <p>{stop.description}</p>
                 </article>
@@ -92,7 +109,7 @@ export function RoadmapSection() {
           <div className="roadmap__closing-mark" aria-hidden="true"><span /><span /><span /></div>
           <div>
             <span className="roadmap__closing-label">O QUE IMPORTA NESTA ROTA</span>
-            <p>Os marcos indicam uma sequência planejada, não entregas concluídas nem uma data de lançamento. Cada avanço depende dos testes e das verificações necessárias. Investir envolve risco e não há rendimento garantido.</p>
+            <p>As datas indicam o cronograma previsto, não entregas concluídas. Cada avanço depende dos testes e das verificações necessárias, e o planejamento pode ser ajustado. Investir envolve risco e não há rendimento garantido.</p>
           </div>
         </aside>
       </div>
