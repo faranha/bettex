@@ -157,7 +157,6 @@ export function ProjectModelSection() {
         <div className="pm-panel">
           <div className="pm-panel-top">
             <p className="pm-panel-label">Como funciona a participação no projeto</p>
-            <p className="pm-panel-count">Quatro etapas · um projeto</p>
           </div>
           <div className="pm-steps">
             <div className="pm-step">
