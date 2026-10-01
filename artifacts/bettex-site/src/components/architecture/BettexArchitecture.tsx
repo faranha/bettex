@@ -25,9 +25,9 @@ const flows = [
   ['A', 'A carteira da pessoa é gerada com a conta. O acesso demonstra o controle dela, sem enviar chave privada ou frase de recuperação ao servidor.'],
   ['B', 'O saldo BETTEX disponível na carteira oficial do projeto participa automaticamente do pool fechado de staking, sem ativação nem depósito adicional.'],
   ['C', 'O backend registra contabilidade, conciliação e confirmações de pagamento. Essas funções são separadas da custódia e das chaves privadas da carteira pessoal.'],
-  ['D', 'Provedores de pagamento independentes processam moedas fiduciárias. No Brasil, a referência é Pix; eventual KYC do provedor não integra o acesso à BETTEX.'],
+  ['D', 'Provedores de pagamento independentes processam moedas fiduciárias pelos meios locais de cada mercado; eventual KYC do provedor não integra o acesso à BETTEX.'],
   ['E', 'O motor comum de decisão e risco analisa os mercados e aciona conectores autorizados. Os sinais da Allora, se usados, entram apenas na análise.'],
-  ['F', 'Os resultados dos mercados voltam à conciliação. Em dia de lucro, 25% do lucro líquido realizado é creditado em reais, ponderado pelo tempo em UTC.'],
+  ['F', 'Os resultados dos mercados voltam à conciliação. Em dia de lucro, 25% do lucro líquido realizado é creditado em moeda fiduciária, conforme a moeda da conta, ponderado pelo tempo em UTC.'],
 ] as const;
 
 export function BettexArchitecture({ surface = 'dark', heading = true }: { surface?: Surface; heading?: boolean }) {
@@ -36,7 +36,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
       {heading && (
         <header className="ba__head">
           <p className="ba__eyebrow">Arquitetura técnica prevista</p>
-          <h3 className="ba__title">Da carteira da pessoa ao crédito em reais.</h3>
+          <h3 className="ba__title">Da carteira da pessoa ao crédito em moeda fiduciária.</h3>
         </header>
       )}
       <div className="ba__board">
@@ -46,7 +46,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
             <p>Gerada na criação da conta, com dados básicos. Pertence ao titular; chaves e dados são exportáveis por iniciativa dele.</p>
           </Node>
           <Node tag="D" title="Provedores de pagamento" badge="Externo">
-            <p>Moedas locais: BRL, RSD, EUR e USD. No Brasil, Pix. Eventual KYC do provedor é independente do acesso à BETTEX.</p>
+            <p>Moedas fiduciárias e meios de pagamento locais, conforme o país e o mercado de operação. Eventual KYC do provedor é independente do acesso à BETTEX.</p>
           </Node>
         </section>
 
@@ -87,8 +87,8 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
 
         <section className="ba-lane ba-lane--result" aria-label="Resultado">
           <p className="ba-lane__label">04 / Resultado</p>
-          <Node tone="gold" tag="F" title="Conciliação e crédito diário em reais">
-            <p>Resultados dos mercados entram na conciliação. Dia de lucro: 25% do lucro líquido realizado, ponderado pelo tempo em UTC, creditado em reais.</p>
+          <Node tone="gold" tag="F" title="Conciliação e crédito diário em moeda fiduciária">
+            <p>Resultados dos mercados entram na conciliação. Dia de lucro: 25% do lucro líquido realizado, ponderado pelo tempo em UTC, creditado na moeda fiduciária da conta.</p>
           </Node>
         </section>
       </div>
