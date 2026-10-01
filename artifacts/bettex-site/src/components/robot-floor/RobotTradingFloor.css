@@ -1,0 +1,40 @@
+.robot-floor { color: #F4F1E8; }
+.robot-floor *, .robot-floor *::before, .robot-floor *::after { box-sizing: border-box; }
+.robot-floor__head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px 40px; margin-bottom: clamp(16px, 2.5vw, 26px); }
+.robot-floor__eyebrow { margin: 0 0 10px; color: #5F86FF; font: 700 10px/1.4 var(--app-font-mono); letter-spacing: .16em; text-transform: uppercase; }
+.robot-floor__title { margin: 0; font: 800 clamp(1.8rem, 3.6vw, 3rem)/1.04 var(--app-font-serif); letter-spacing: -.05em; }
+.robot-floor__title em { color: #5F86FF; font-style: normal; }
+.robot-floor__note { max-width: 380px; margin: 0; color: #b9c6ee; font-size: 14px; line-height: 1.65; }
+.robot-floor__stage { position: relative; border: 1px solid rgba(95,134,255,.28); border-radius: 18px; background: #050818; overflow: hidden; }
+.robot-floor__svg { display: block; width: 100%; height: auto; }
+.robot-floor__toggle { position: absolute; z-index: 2; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid #2B59FF; border-radius: 999px; background: #13204F; color: #F4F1E8; font: 700 11px/1 var(--app-font-mono); letter-spacing: .06em; text-transform: uppercase; transition: background-color .2s ease, transform .2s ease; }
+.robot-floor__toggle:hover { background: #2B59FF; }
+.robot-floor__toggle:active { transform: translateY(1px); }
+.robot-floor__tag { position: absolute; z-index: 2; top: 12px; left: 12px; padding: 6px 10px; border: 1px solid rgba(95,134,255,.4); border-radius: 999px; background: rgba(7,11,31,.8); color: #8FA8F0; font: 700 10px/1 var(--app-font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.robot-floor__status { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 14px; padding: 12px 16px; border: 1px solid rgba(95,134,255,.25); border-radius: 14px; background: #0C1436; }
+.robot-floor__steps { display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; flex-wrap: wrap; }
+.robot-floor__steps li { display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border: 1px solid rgba(95,134,255,.25); border-radius: 999px; color: #8FA8F0; font: 700 10px/1.2 var(--app-font-mono); letter-spacing: .06em; text-transform: uppercase; transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
+.robot-floor__steps b { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #13204F; color: #F4F1E8; font-size: 10px; }
+.robot-floor__steps li.is-on { border-color: #2B59FF; background: #2B59FF; color: #fff; }
+.robot-floor__steps li.is-on b { background: #fff; color: #2B59FF; }
+.robot-floor__caption { flex: 1 1 260px; margin: 0; color: #F4F1E8; font-size: 14px; line-height: 1.5; min-height: 21px; }
+.robot-floor__teams { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 14px 0 0; padding: 0; list-style: none; }
+.robot-floor__teams li { padding: 14px; border: 1px solid rgba(95,134,255,.22); border-top: 3px solid var(--team); border-radius: 12px; background: #0C1436; transition: background-color .25s ease, border-color .25s ease; }
+.robot-floor__teams li.is-active { background: #13204F; border-color: var(--team); }
+.robot-floor__team-role { display: block; color: var(--team); font: 700 9px/1.4 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.robot-floor__teams strong { display: block; margin: 4px 0 6px; font: 800 18px/1.1 var(--app-font-serif); letter-spacing: -.03em; }
+.robot-floor__teams p { margin: 0; color: #b9c6ee; font-size: 12px; line-height: 1.55; }
+@media (prefers-reduced-motion: reduce) {
+  .robot-floor *, .robot-floor *::before, .robot-floor *::after { transition: none; }
+}
+@media (max-width: 900px) { .robot-floor__teams { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .robot-floor { border-radius: 18px; padding: 16px; }
+  .robot-floor__stage { display: flex; flex-direction: column; }
+  .robot-floor__svg { order: 0; }
+  .robot-floor__toggle { position: static; order: 1; align-self: center; min-height: 44px; margin: 10px; }
+  .robot-floor__tag { position: static; order: 2; align-self: center; margin: 0 8px 14px; text-align: center; }
+  .robot-floor__steps li span { display: none; }
+  .robot-floor__steps li.is-on span { display: inline; }
+  .robot-floor__teams { grid-template-columns: 1fr; }
+}

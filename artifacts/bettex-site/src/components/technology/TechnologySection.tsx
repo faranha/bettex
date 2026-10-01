@@ -42,7 +42,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             </div>
           </div>
           <div className="technology-section__branch" aria-hidden="true" />
-          <span id="mercados" className="technology-section__agents-label">03 / Uma IA BETTEX, quatro mercados</span>
+          <span className="technology-section__agents-label">03 / Uma IA BETTEX, quatro mercados</span>
           <div className="technology-section__agents" aria-label="Quatro mercados da BETTEX">{children}</div>
           <div className="technology-section__result-path" aria-hidden="true">
             <span /><span /><span /><span />
