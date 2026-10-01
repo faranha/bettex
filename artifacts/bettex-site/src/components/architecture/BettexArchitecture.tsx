@@ -4,100 +4,117 @@ import './BettexArchitecture.css';
 type Surface = 'dark' | 'paper';
 type Tone = 'blue' | 'gold' | 'teal' | 'plain';
 
-function Badge({ tone = 'plain', children }: { tone?: Tone; children: ReactNode }) {
-  return <span className={`ba-badge ba-badge--${tone}`}>{children}</span>;
-}
+interface Step { title: string; text: string; tone?: Tone; badge?: string; id?: string; extra?: ReactNode }
 
-function Node({ title, tag, tone = 'plain', badge, badgeTone, children, id }: { title: string; tag?: string; tone?: Tone; badge?: string; badgeTone?: Tone; children?: ReactNode; id?: string }) {
+function Steps({ steps, label }: { steps: Step[]; label: string }) {
   return (
-    <div className={`ba-node ba-node--${tone}`} data-testid={id}>
-      <div className="ba-node__top">
-        {tag && <span className="ba-node__tag">{tag}</span>}
-        {badge && <Badge tone={badgeTone ?? tone}>{badge}</Badge>}
-      </div>
-      <h4>{title}</h4>
-      {children}
-    </div>
+    <ol className="ba-steps" aria-label={label} style={{ ['--cols' as string]: steps.length }}>
+      {steps.map((s, i) => (
+        <li key={s.title} className={`ba-step ba-step--${s.tone ?? 'plain'}`} data-testid={s.id}>
+          <span className="ba-step__n">{i + 1}</span>
+          <div className="ba-step__body">
+            <h5>{s.title}{s.badge && <em>{s.badge}</em>}</h5>
+            <p>{s.text}</p>
+            {s.extra}
+          </div>
+        </li>
+      ))}
+    </ol>
   );
 }
 
-const flows = [
-  ['A', 'A carteira da pessoa é gerada com a conta. O acesso demonstra o controle dela, sem enviar chave privada ou frase de recuperação ao servidor.'],
-  ['B', 'O saldo BETTEX disponível na carteira oficial do projeto participa automaticamente do pool fechado de staking, sem ativação nem depósito adicional.'],
-  ['C', 'O backend registra contabilidade, conciliação e confirmações de pagamento. Essas funções são separadas da custódia e das chaves privadas da carteira pessoal.'],
-  ['D', 'O on-ramp externo converte fiat em USDC na entrada, com cotação e custos próprios; eventual KYC do provedor não integra o acesso à BETTEX. Não há off-ramp próprio.'],
-  ['E', 'O motor comum de decisão e risco analisa os mercados e aciona conectores autorizados. Os sinais da Allora, se usados, entram apenas na análise.'],
-  ['F', 'Os resultados dos mercados voltam à conciliação. Em dia de lucro, 25% do lucro líquido realizado após custos é distribuído em USDC, ponderado pelo tempo em UTC.'],
-] as const;
+function Figure({ id, num, title, lead, children }: { id: string; num: string; title: string; lead: string; children: ReactNode }) {
+  return (
+    <section className="ba-fig" id={id} data-testid={id} aria-labelledby={`${id}-t`}>
+      <header className="ba-fig__head">
+        <span className="ba-fig__num">Desenho {num} de 4</span>
+        <h4 id={`${id}-t`}>{title}</h4>
+        <p>{lead}</p>
+      </header>
+      {children}
+    </section>
+  );
+}
+
+const fig1: Step[] = [
+  { title: 'Carteira da pessoa', text: 'Gerada com a conta. Pertence ao titular, que pode exportar chaves e dados.', tone: 'blue', badge: 'Titular' },
+  { title: 'Acesso ao aplicativo', text: 'Comprova o controle da carteira. Chaves privadas e frase de recuperação nunca vão ao servidor.' },
+   { title: 'BETTEX na Arbitrum One', text: 'A rede registra emissão e transferências do token.', tone: 'gold', id: 'node-arbitrum',
+    extra: <span className="ba-wordmark ba-wordmark--arbitrum">Arbitrum One</span> },
+  { title: 'Participação automática', text: 'Todo BETTEX disponível na carteira oficial entra na piscina fechada, ponderado pelo tempo.', tone: 'blue' },
+];
+const fig2: Step[] = [
+  { title: 'Entrada em USDC', text: 'Escolha um dos dois caminhos.', tone: 'blue',
+    extra: (
+      <div className="ba-entry">
+        <div><strong>Depósito direto</strong><p>Envio de USDC por uma carteira compatível.</p></div>
+        <span className="ba-entry__or">ou</span>
+        <div><strong>On-ramp externo</strong><p>O provedor converte fiat em USDC, com sua cotação e custos. Eventual KYC fica separado do acesso à BETTEX.</p></div>
+      </div>
+    ) },
+  { title: 'Confirmação do recebimento', text: 'Só USDC efetivamente recebido e confirmado é creditado.' },
+  { title: 'Saldo em USDC', text: 'Saldo financeiro, separado do token BETTEX. Sem conta fiduciária e sem off-ramp próprio.', tone: 'gold' },
+];
+const fig3: Step[] = [
+  { title: 'Análise de mercado', text: 'O motor comum cruza mercados, liquidez e limites.', tone: 'blue' },
+  { title: 'Aprovação de risco independente', text: 'Nenhuma ordem sai sem aprovação.', tone: 'gold', badge: 'Antes das ordens' },
+  { title: 'Conectores autorizados', text: 'Executam as ordens aprovadas nos quatro mercados.',
+    extra: (
+      <>
+        <ul className="ba-chips"><li>Previsões</li><li>Ações e cripto</li><li>Esportes</li><li>Cassinos</li></ul>
+        <div className="ba-partner">
+          <img className="ba-partner__logo" src={`${import.meta.env.BASE_URL}platforms/robinhood.svg`} alt="Robinhood" width={96} height={22} loading="lazy" decoding="async" />
+          <span className="ba-badge ba-badge--gold">Possível</span>
+        </div>
+        <p>A API pública da Robinhood é só de cripto. Não há parceria ativa afirmada.</p>
+      </>
+    ) },
+];
+const fig4: Step[] = [
+  { title: 'Lucro líquido realizado', text: 'Após custos e perdas anteriores, já conciliado.', tone: 'blue' },
+  { title: 'Distribuição de 25%', text: 'Parcela global do lucro, só em dias positivos. Participação individual pelo BETTEX-tempo, em UTC.', tone: 'gold' },
+  { title: 'Crédito em USDC', text: 'Entra no saldo em USDC da pessoa.' },
+  { title: 'Saque em USDC', text: 'Transferência para carteira compatível, com custos e valor líquido informados. Sem pagamento em moeda local.' },
+];
 
 export function BettexArchitecture({ surface = 'dark', heading = true }: { surface?: Surface; heading?: boolean }) {
   return (
     <figure className={`ba ba--${surface}`} data-testid="diagram-bettex-architecture" aria-labelledby="ba-caption">
       {heading && (
         <header className="ba__head">
-          <p className="ba__eyebrow">Arquitetura técnica prevista</p>
-          <h3 className="ba__title">Da carteira da pessoa ao crédito em USDC.</h3>
+           <p className="ba__eyebrow">Documentação v1 · arquitetura</p>
+           <h3 className="ba__title">Quatro fluxos da operação BETTEX.</h3>
         </header>
       )}
-      <div className="ba__board">
-        <section className="ba-lane" aria-label="Titular e on-ramp externo">
-          <p className="ba-lane__label">01 / Titular</p>
-          <Node tag="A" tone="blue" title="Carteira da pessoa" badge="Modelo">
-            <p>Gerada na criação da conta, com dados básicos. Pertence ao titular; chaves e dados são exportáveis por iniciativa dele.</p>
-          </Node>
-          <Node tag="D" title="On-ramp: fiat → USDC" badge="Externo">
-            <p>Conversão somente na entrada, com cotação e custos do provedor. Crédito após recebimento de USDC. KYC externo é independente do acesso à BETTEX.</p>
-          </Node>
-        </section>
+       <figcaption id="ba-caption" className="ba__note">Modelo descrito na v1: carteira e acesso, entrada de recursos, operação dos mercados e distribuição dos resultados.</figcaption>
 
-        <section className="ba-lane" aria-label="Rede e aplicativo">
-          <p className="ba-lane__label">02 / Rede e aplicativo</p>
-          <Node tag="Rede" tone="gold" title="BETTEX na Arbitrum One" badge="Modelo previsto" id="node-arbitrum">
-            <span className="ba-wordmark ba-wordmark--arbitrum">Arbitrum One</span>
-            <p>Rede prevista para o token. Não afirma contrato implantado.</p>
-          </Node>
-          <Node tag="B" tone="blue" title="Aplicativo oficial e piscina fechada de staking">
-            <p>O saldo na carteira oficial participa automaticamente. O staking exige acessar o aplicativo, sem manter sessão aberta o tempo todo.</p>
-          </Node>
-          <Node tag="C" title="Backend: API, contabilidade e conciliação">
-            <p>Concilia USDC recebido, custos e saldos separados de USDC e BETTEX. Não recebe chaves privadas da pessoa.</p>
-          </Node>
-        </section>
+      <div className="ba__figs">
+        <Figure id="figure-bettex-wallet" num="1" title="Carteira, acesso e participação" lead="A carteira é da pessoa. A participação é automática.">
+          <Steps steps={fig1} label="Carteira, acesso e participação automática" />
+          <p className="ba-fig__foot">A piscina é fechada e exige acesso ao aplicativo, mas não uma sessão aberta o tempo todo. Exportar a carteira não torna a piscina operável fora do app.</p>
+        </Figure>
 
-        <section className="ba-lane" aria-label="Agente BETTEX">
-          <p className="ba-lane__label">03 / Agente BETTEX</p>
-          <Node tag="E" tone="blue" title="Motor comum de decisão e risco">
-            <p>Cruza análises, liquidez e limites de risco antes de cada operação. É a autoridade de decisão.</p>
-          </Node>
-          <Node title="Conectores de mercado" badge="Autorizados">
-            <ul className="ba-chips">
-              <li>Previsões</li><li>Ações e cripto</li><li>Esportes</li><li>Cassinos</li>
-            </ul>
-            <div className="ba-partner">
-              <img className="ba-partner__logo" src={`${import.meta.env.BASE_URL}platforms/robinhood.svg`} alt="Robinhood" width={96} height={22} loading="lazy" decoding="async" />
-              <Badge tone="gold">Possível</Badge>
-            </div>
-            <p>Dados e execução autorizados, se disponíveis. Não afirma API pública de negociação de ações.</p>
-          </Node>
-          <Node tone="teal" title="Sinais de inferência e probabilidade" badge="Opcional" id="node-allora">
+        <Figure id="figure-bettex-deposit" num="2" title="Entrada de valor e saldo confirmado" lead="Duas portas de entrada, um só saldo: USDC confirmado.">
+          <Steps steps={fig2} label="Depósito ou on-ramp até o saldo confirmado" />
+        </Figure>
+
+        <Figure id="figure-bettex-risk" num="3" title="Análise, risco e execução" lead="O risco aprova antes de qualquer ordem chegar ao conector.">
+          <Steps steps={fig3} label="Análise, aprovação de risco e conectores" />
+          <aside className="ba-side" data-testid="node-allora">
+            <span className="ba-side__tag">Entrada opcional, só leitura</span>
             <span className="ba-wordmark ba-wordmark--allora">Allora</span>
-            <p>Entra só na análise. Sem custódia, sem execução de ordens, sem login e sem ser a única autoridade de risco.</p>
-          </Node>
-        </section>
+            <p>Alimenta apenas a etapa 1, a análise. Sem custódia, sem login, sem execução e sem decidir o risco.</p>
+          </aside>
+        </Figure>
 
-        <section className="ba-lane ba-lane--result" aria-label="Resultado">
-          <p className="ba-lane__label">04 / Resultado</p>
-          <Node tone="gold" tag="F" title="Conciliação e crédito diário em USDC">
-            <p>Resultados e custos entram na conciliação. Dia de lucro: 25% do lucro líquido realizado, ponderado pelo tempo em UTC, creditado em USDC.</p>
-          </Node>
-        </section>
+        <Figure id="figure-bettex-payout" num="4" title="Lucro distribuído e saque" lead="O dinheiro se move sempre em USDC.">
+          <Steps steps={fig4} label="Distribuição do lucro e saque em USDC" />
+          <aside className="ba-side ba-side--apart" data-testid="figure-bettex-estimate">
+            <span className="ba-side__tag">Visão de valor, fora do fluxo</span>
+            <p>A interface mostra um equivalente estimado do saldo na moeda local da pessoa, apenas para consulta. Não é uma etapa de conversão e não altera o saque, que segue em USDC.</p>
+          </aside>
+        </Figure>
       </div>
-      <figcaption id="ba-caption" className="ba__flows">
-        <p className="ba__flows-label">Fluxos principais</p>
-        <ol>
-          {flows.map(([k, text]) => <li key={k}><b>{k}</b><span>{text}</span></li>)}
-        </ol>
-      </figcaption>
     </figure>
   );
 }
