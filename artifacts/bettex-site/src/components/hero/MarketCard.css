@@ -1,15 +1,19 @@
 .market-card {
-  --mk-accent: #5F86FF;
-  --mk-center: #122456;
-  --mk-edge: #081331;
+  --mk-accent: #36E0D0;
+  --mk-center: #0f3a4a;
+  --mk-edge: #060d24;
+  --mk-ink: #096c67;
+  --mk-glow: rgba(54,224,208,.22);
   box-shadow: 0 12px 28px rgba(5,18,54, .055);
+  border-top: 3px solid var(--mk-accent);
 }
-.market-card--trading { --mk-accent: #6795ff; --mk-center: #13204F; --mk-edge: #08163b; }
-.market-card--sports { --mk-accent: #6895fd; --mk-center: #13204F; --mk-edge: #0a1431; }
-.market-card--casino { --mk-accent: #F2B632; --mk-center: #4b4048; --mk-edge: #232733; }
+.market-card--trading { --mk-accent: #5F86FF; --mk-center: #1b3cc2; --mk-edge: #070B1F; --mk-ink: #2B59FF; --mk-glow: rgba(95,134,255,.3); }
+.market-card--sports { --mk-accent: #FF8A45; --mk-center: #5a2a14; --mk-edge: #0d0a17; --mk-ink: #B5500F; --mk-glow: rgba(255,138,69,.24); }
+.market-card--casino { --mk-accent: #F2B632; --mk-center: #4a3708; --mk-edge: #0a0a14; --mk-ink: #8A6200; --mk-glow: rgba(242,182,50,.26); }
+.market-card__label { color: var(--mk-ink); }
 .market-card__stage {
   color: #F4F1E8;
-  background: radial-gradient(ellipse at 50% 60%, var(--mk-center) 0%, var(--mk-edge) 100%);
+  background: radial-gradient(circle at 50% 58%, var(--mk-glow) 0%, transparent 46%), radial-gradient(ellipse at 50% 60%, var(--mk-center) 0%, var(--mk-edge) 100%);
   border-bottom: 2px solid var(--mk-accent);
 }
 .market-card__stage::before {
@@ -47,8 +51,8 @@
 .market-card__platform-logo--trading { height: 32px; }
 .market-card__platform-logo--sports { height: 25px; }
 .market-card__platform-logo--casino { height: 24px; }
-.market-card__stage-foot { color: #718dd0; }
-.market-card__crosshair { position: absolute; width: 17px; height: 17px; border-color: rgba(169,190,238,.37); }
+.market-card__stage-foot { color: color-mix(in srgb, var(--mk-accent) 72%, #F4F1E8); }
+.market-card__crosshair { position: absolute; width: 17px; height: 17px; border-color: color-mix(in srgb, var(--mk-accent) 55%, transparent); }
 .market-card__crosshair--tl { top: 48px; left: 20px; border-left: 1px solid; border-top: 1px solid; }
 .market-card__crosshair--br { bottom: 41px; right: 20px; border-right: 1px solid; border-bottom: 1px solid; }
 @media (max-width: 420px) { .market-card__composition { transform: scale(.92); } }

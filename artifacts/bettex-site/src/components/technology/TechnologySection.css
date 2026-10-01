@@ -58,7 +58,7 @@
 .technology-section__ai-brand {
   position: absolute; top: 53%; left: 50%; display: grid; width: 31px; height: 31px;
   place-items: center; transform: translate(-50%, -50%); border: 1px solid #5F86FF;
-  border-radius: 9px; background: #F4F1E8; box-shadow: 0 0 18px rgba(109,151,248, .65);
+   border-radius: 9px; background: #070B1F; box-shadow: 0 0 12px rgba(43,89,255,.3), inset 0 0 6px rgba(43,89,255,.12);
 }
 .technology-section__ai-brand img { display: block; width: 21px; height: 21px; object-fit: contain; }
 .technology-section__ai-label {

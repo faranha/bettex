@@ -158,7 +158,7 @@ function MarketCard({ market, number }: { market: Market; number: number }) {
     </div>
     <div className="flex flex-1 flex-col p-5 sm:p-6">
       <div className="min-h-[75px]"><h4 className="display text-[25px] font-extrabold leading-none tracking-[-.055em] text-[#070B1F]">{market.name}</h4><p className="display mt-2 text-base font-bold leading-5 text-[#122353]">{market.intro}</p></div>
-      <p className="mono mt-4 text-[9px] font-bold uppercase tracking-[.12em] text-[#1f3e94]">Como a BETTEX atua</p>
+      <p className="market-card__label mono mt-4 text-[9px] font-bold uppercase tracking-[.12em]">Como a BETTEX atua</p>
       <p className="mt-2 min-h-[70px] text-[13px] leading-[1.55] text-[#183173]">{market.detail}</p>
     </div>
   </article>;
