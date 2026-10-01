@@ -64,7 +64,6 @@ export function HeroBenefit() {
         </span>
         <strong>Faça parte do projeto BETTEX. Com seus tokens, você participa dos lucros e recebe sua parte em reais.</strong>
       </figcaption>
-      <span className="hero-benefit__bottom" aria-hidden="true">PARTICIPAÇÃO CONCEITUAL · SEM GARANTIA DE LUCRO</span>
     </figure>
   );
 }
