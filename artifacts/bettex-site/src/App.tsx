@@ -49,7 +49,6 @@ const navItems = [
   { label: 'Mercados', id: 'mercados' },
   { label: 'Aplicativo', id: 'visao-investidor' },
   { label: 'Roadmap', id: 'roadmap' },
-  { label: 'Documentação', id: 'documentacao' },
 ] as const;
 
 function Logo({ pale = false }: { pale?: boolean }) {
@@ -68,13 +67,14 @@ function SiteHeader() {
     <div className="page-wrap flex h-[72px] items-center justify-between gap-4">
       <Logo />
       <nav className="hidden items-center gap-4 xl:flex" aria-label="Navegação principal">
-        {navItems.map(({ label, id }) => <a key={id} href={id === 'documentacao' ? DOCUMENTATION_PATH : homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#168367] xl:text-sm">{label}</a>)}
+        {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#168367] xl:text-sm">{label}</a>)}
       </nav>
-      <a href={homeAnchor('participacao')} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Conheça o token</a>
+      <a href={DOCUMENTATION_PATH} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Documentação</a>
       <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#d6e1d7] py-3 xl:hidden" aria-label="Navegação móvel">
-      {navItems.map(({ label, id }) => <a key={id} href={id === 'documentacao' ? DOCUMENTATION_PATH : homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
+      {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
+      <a href={DOCUMENTATION_PATH} onClick={() => setMenuOpen(false)} className="tap mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:hidden"><ArrowRight className="h-4 w-4" />Documentação</a>
     </nav>}
   </header>;
 }
