@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactElement } from 'react';
 import { Pause, Play } from 'lucide-react';
 import { Walker, makeSim, stepSims, type Sim } from './walkers';
+import { AgentValue } from './AgentValue';
 import './RobotTradingFloor.css';
 
 const CYCLE = 20;
@@ -10,14 +11,20 @@ const pts = (...a: [number, number][]) => a.map(p => `${p[0].toFixed(1)},${p[1].
 const kt = (...a: number[]) => a.map(n => n.toFixed(4)).join(';');
 const DUR = `${CYCLE}s`;
 
-type Team = { id: string; name: string; color: string; gx: number; gy: number; tickers: [string, string]; role: string; desc: string };
+type Team = { id: string; name: string; color: string; gx: number; gy: number; tickers: [string, string]; values: [string, string, string, string]; role: string; desc: string };
 const TEAMS: Team[] = [
-  { id: 'previsoes', name: 'Previsões', color: '#36E0D0', gx: 5, gy: 0, tickers: ['SIM', 'NÃO'], role: 'Mercados de previsão', desc: 'Compara probabilidades de eventos e envia à IA da BETTEX as análises que passam nos critérios.' },
-  { id: 'surebet', name: 'Surebet', color: '#FF8A45', gx: 0, gy: 5, tickers: ['ODDS A', 'ODDS B'], role: 'Diferenças entre casas', desc: 'Cruza odds de casas diferentes e pede autorização antes de qualquer cobertura de risco.' },
-  { id: 'memecoins', name: 'Memecoins', color: '#5F86FF', gx: 10, gy: 5, tickers: ['PEPE', 'DOGE'], role: 'Compra de memecoins', desc: 'Monitora memecoins e só compra dentro do limite liberado pela IA central.' },
-  { id: 'bonus', name: 'Bônus', color: '#F2B632', gx: 5, gy: 10, tickers: ['ROLLOVER', 'FREEBET'], role: 'Mineração de bônus', desc: 'Garimpa bônus e promoções, respeitando regras e limites aprovados pela IA da BETTEX.' },
+  { id: 'previsoes', name: 'Previsões', color: '#36E0D0', gx: 5, gy: 0, tickers: ['SIM', 'NÃO'], values: ['64%', '58%', '71%', '62%'], role: 'Mercados de previsão', desc: 'Compara probabilidades de eventos e envia à IA da BETTEX as análises que passam nos critérios.' },
+  { id: 'surebet', name: 'Surebet', color: '#FF8A45', gx: 0, gy: 5, tickers: ['ODDS A', 'ODDS B'], values: ['2,10×', '1,85×', '2,35×', '1,92×'], role: 'Diferenças entre casas', desc: 'Cruza odds de casas diferentes e pede autorização antes de qualquer cobertura de risco.' },
+  { id: 'memecoins', name: 'Memecoins', color: '#5F86FF', gx: 10, gy: 5, tickers: ['PEPE', 'DOGE'], values: ['$0,004', '$0,012', '$0,008', '$0,006'], role: 'Compra de memecoins', desc: 'Monitora memecoins e só compra dentro do limite liberado pela IA central.' },
+  { id: 'bonus', name: 'Bônus', color: '#F2B632', gx: 5, gy: 10, tickers: ['ROLLOVER', 'FREEBET'], values: ['$ 25', '$ 40', '$ 30', '$ 50'], role: 'Mineração de bônus', desc: 'Garimpa bônus e promoções, respeitando regras e limites aprovados pela IA da BETTEX.' },
 ];
 const MM = { x: 7, y: 7 };
+
+function connectionPoints(team: Team) {
+  const x = team.gx + 2, y = team.gy + 2;
+  const dx = Math.sign(MM.x - x), dy = Math.sign(MM.y - y);
+  return { a: P(x + dx * 2, y + dy * 2), b: P(MM.x - dx * 2, MM.y - dy * 2) };
+}
 
 const t0 = (i: number) => 0.02 + i * 0.24;
 const W = (i: number) => ({ req: [t0(i), t0(i) + 0.09], auth: [t0(i) + 0.09, t0(i) + 0.13], ret: [t0(i) + 0.13, t0(i) + 0.17], exec: [t0(i) + 0.17, t0(i) + 0.235] }) as Record<string, [number, number]>;
@@ -58,7 +65,7 @@ function Monitor({ x, y, z, color, seed }: { x: number; y: number; z: number; co
   );
 }
 
-function Robot({ x, y, z, color, seed }: { x: number; y: number; z: number; color: string; seed: number }) {
+function Robot({ x, y, z, color, seed, value }: { x: number; y: number; z: number; color: string; seed: number; value: string }) {
   const [px, py] = P(x, y, z);
   const bob = 1.4 + (seed % 3) * 0.3;
   return (
@@ -83,6 +90,7 @@ function Robot({ x, y, z, color, seed }: { x: number; y: number; z: number; colo
           <circle cx="-3.2" cy="-36" r="1.7" fill="#36E0D0"><animate attributeName="r" values="1.7;1.7;.2;1.7;1.7" keyTimes="0;.9;.94;.98;1" dur={`${3.5 + (seed % 4)}s`} repeatCount="indefinite" /></circle>
           <circle cx="3.2" cy="-36" r="1.7" fill="#36E0D0"><animate attributeName="r" values="1.7;1.7;.2;1.7;1.7" keyTimes="0;.9;.94;.98;1" dur={`${3.5 + (seed % 4)}s`} repeatCount="indefinite" /></circle>
         </g>
+        <AgentValue value={value} color={color} />
       </g>
     </g>
   );
@@ -94,10 +102,10 @@ function Island({ team, idx, sims }: { team: Team; idx: number; sims: Sim[] }) {
   const rows = [gy + 0.5, gy + 2.7];
   const out: ReactElement[] = [];
   rows.forEach((ry, r) => {
-    out.push(<Robot key={`r${r}`} x={gx + 2.65} y={ry + 0.15} z={0.42} color={color} seed={idx * 7 + r * 3} />);
+    out.push(<Robot key={`r${r}`} x={gx + 2.65} y={ry + 0.15} z={0.42} color={color} seed={idx * 7 + r * 3} value={team.values[r]} />);
     out.push(<Box key={`d${r}`} x={gx + 0.4} y={ry + 0.2} w={3.2} d={0.85} h={0.42} top="#16245a" left="#0D1740" right="#0A1235" stroke={`${color}55`} />);
     [0.5, 1.75, 3.05].forEach((ox, k) => out.push(<Monitor key={`m${r}${k}`} x={gx + ox} y={ry + 0.45} z={0.42} color={color} seed={idx * 5 + r * 2 + k} />));
-    if (r === 0) sims.forEach((sim, k) => out.push(<Walker key={`w${k}`} sim={sim} color={color} at={P(sim.x, sim.y)} />));
+    if (r === 0) sims.forEach((sim, k) => out.push(<Walker key={`w${k}`} sim={sim} color={color} value={team.values[k + 2]} at={P(sim.x, sim.y)} />));
   });
   const marks = sims.map((sim, k) => <ellipse key={`t${k}`} ref={el => { sim.mark = el; }} cx={P(sim.tx, sim.ty)[0]} cy={P(sim.tx, sim.ty)[1]} rx="9" ry="5" fill="none" stroke={color} strokeWidth="1.4" strokeDasharray="3 3" opacity=".7" />);
   const [tx, ty] = P(gx + 2, gy + 0.4, 0);
@@ -127,9 +135,9 @@ function Island({ team, idx, sims }: { team: Team; idx: number; sims: Sim[] }) {
 
 function Packet({ d, w, fill, ring }: { d: string; w: [number, number]; fill: string; ring?: string }) {
   return (
-    <g opacity="0">
-      <circle r="12" fill="none" stroke={ring ?? fill} strokeWidth="1.5" opacity=".5" />
-      <circle r="6" fill={fill} stroke="#F4F1E8" strokeWidth="1.5" />
+    <g opacity="0" data-testid="signal-packet">
+      <circle r="4.5" fill="none" stroke={ring ?? fill} strokeWidth=".75" opacity=".35" />
+      <circle r="2.5" fill={fill} stroke="#F4F1E8" strokeWidth=".6" />
       <animateMotion path={d} keyPoints="0;0;1;1" keyTimes={kt(0, w[0], w[1], 1)} calcMode="linear" dur={DUR} repeatCount="indefinite" />
       <Win attr="opacity" w={w} on="1" off="0" />
     </g>
@@ -236,16 +244,25 @@ export function RobotTradingFloor() {
             </g>
           ))}
 
-          {TEAMS.map((t) => {
-            const a = P(t.gx + 2, t.gy + 2), b = P(MM.x, MM.y);
-            return (
-              <g key={t.id}>
-                <line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={t.color} strokeOpacity=".35" strokeWidth="2" strokeDasharray="8 8">
-                  <animate attributeName="stroke-dashoffset" values="0;-32" dur="2.4s" repeatCount="indefinite" />
-                </line>
-              </g>
-            );
-          })}
+          <g data-testid="signal-layer">
+            {TEAMS.map((t, i) => {
+              const w = W(i);
+              const { a, b } = connectionPoints(t);
+              const go = `M${a[0]} ${a[1]} L${b[0]} ${b[1]}`, back = `M${b[0]} ${b[1]} L${a[0]} ${a[1]}`;
+              return (
+                <g key={t.id} data-testid="signal-connection" data-team={t.id}>
+                  <path d={go} data-testid="signal-route" fill="none" stroke={t.color} strokeWidth="1.25" strokeOpacity=".35" strokeLinecap="round" />
+                  <path d={go} fill="none" stroke={t.color} strokeWidth="1.5" strokeLinecap="round" opacity="0">
+                    <Win attr="opacity" w={[w.req[0], w.ret[1]]} on=".65" off="0" />
+                  </path>
+                  <circle cx={a[0]} cy={a[1]} r="1.5" fill={t.color} opacity=".6" />
+                  <circle cx={b[0]} cy={b[1]} r="1.5" fill={t.color} opacity=".6" />
+                  <Packet d={go} w={w.req} fill={t.color} />
+                  <Packet d={back} w={w.ret} fill="#2B59FF" ring={t.color} />
+                </g>
+              );
+            })}
+          </g>
 
           {TEAMS.slice(0, 2).map((t, i) => <Island key={t.id} team={t} idx={i} sims={sims.slice(i * 2, i * 2 + 2)} />)}
 
@@ -276,22 +293,8 @@ export function RobotTradingFloor() {
 
           {TEAMS.slice(2).map((t, i) => <Island key={t.id} team={t} idx={i + 2} sims={sims.slice((i + 2) * 2, (i + 2) * 2 + 2)} />)}
 
-          {TEAMS.map((t, i) => {
-            const w = W(i);
-            const a = P(t.gx + 2, t.gy + 2), b = P(MM.x, MM.y);
-            const go = `M${a[0]} ${a[1]} L${b[0]} ${b[1]}`, back = `M${b[0]} ${b[1]} L${a[0]} ${a[1]}`;
-            return (
-              <g key={t.id}>
-                <Packet d={go} w={w.req} fill={t.color} />
-                <Packet d={back} w={w.ret} fill="#2B59FF" ring={t.color} />
-              </g>
-            );
-          })}
-
           <g>
             <line x1="500" y1="98" x2="500" y2={mmP[1] - 160} stroke="#5F86FF" strokeOpacity=".6" strokeWidth="2" strokeDasharray="4 5"><animate attributeName="stroke-dashoffset" values="0;-18" dur="1s" repeatCount="indefinite" /></line>
-            <rect x="320" y="10" width="360" height="88" rx="14" fill="#070B1F" stroke="#5F86FF" strokeWidth="1.8" />
-            <path d="M338 10 H662" fill="none" stroke="#2B59FF" strokeWidth="2" strokeLinecap="round" />
             <text x="500" y="40" textAnchor="middle" fill="#F4F1E8" fontFamily="var(--app-font-serif)" fontWeight="800" fontSize="22" letterSpacing="-.5">IA da BETTEX</text>
             <text x="500" y="58" textAnchor="middle" fill="#8FA8F0" fontFamily="var(--app-font-mono)" fontWeight="700" fontSize="11" letterSpacing="2">CONTROLE CENTRAL</text>
             {TEAMS.map((t, i) => {
