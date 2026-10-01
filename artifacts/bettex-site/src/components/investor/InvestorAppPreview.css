@@ -59,6 +59,7 @@
 .ip-nav .ip-tab { flex-direction:row; padding:8px 13px; border:1px solid #3b6b63; border-radius:50px; font-size:13px; }
 .ip-nav .ip-tab[aria-selected="true"] { border-color:#a4eacb; }
 .ip-phone { min-height:600px; }
+.ip-phone--wallet { min-height:0; }
 .ip-screen > * { min-width:0; }
 .ip-tiles { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
 .ip-tiles div, .ip-split div { display:grid; gap:4px; padding:10px; border:1px solid #d6e2d6; border-radius:12px; background:#fffdf5; }

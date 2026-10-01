@@ -1,0 +1,30 @@
+.pp { display:grid; gap:8px; min-width:0; }
+.pp > small { color:#168367; font:700 9px/1.4 var(--app-font-mono,monospace); letter-spacing:.08em; text-transform:uppercase; }
+.pp-metrics { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.pp-metrics div { display:grid; gap:3px; padding:8px; border:1px solid #d6e2d6; border-radius:11px; background:#fffdf5; min-width:0; }
+.pp-metrics span { font-size:9px; color:#5a7470; }
+.pp-metrics b { font:800 14px/1.1 var(--app-font-serif,sans-serif); letter-spacing:-.04em; overflow-wrap:anywhere; }
+.pp-metrics .pp-net { grid-column:1/-1; background:#123a3b; border-color:#123a3b; }
+.pp-metrics .pp-net span { color:#b9d5c8; }
+.pp-metrics .pp-net b { font-size:20px; color:#a4eacb; }
+.pp-metrics .pp-net b.pp-neg { color:#ffb38f; }
+.pp-pos { color:#168367; } .pp-neg { color:#b25c47; }
+.pp-chart { margin:0; padding:8px 6px 6px; border:1px solid #c7dbcf; border-radius:12px; background:#e6f1e6; }
+.pp-chart__plot { width:100%; height:120px; }
+.pp-chart figcaption { margin-top:4px; font-size:8px; color:#5a7470; text-align:center; }
+.pp-agents, .pp-days { list-style:none; margin:0; padding:0; display:grid; }
+.pp-agents li { display:grid; gap:3px; padding:7px 0; border-bottom:1px solid #d6e2d6; }
+.pp-agents__head { display:flex; justify-content:space-between; font-size:11px; }
+.pp-agents__head span { font-weight:800; }
+.pp-agents__bar { height:5px; border-radius:3px; background:#d7eee1; display:block; }
+.pp-agents__bar u { display:block; height:100%; border-radius:3px; }
+.pp-agents em, .pp-days em { font-style:normal; }
+.pp-agents em { font-size:9px; color:#5a7470; }
+.pp-tabs { display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:3px; border:1px solid #c7dbcf; border-radius:11px; }
+.pp-tabs button { padding:7px 4px; border:0; border-radius:8px; background:transparent; color:#123a3b; font:700 10px/1.2 var(--app-font-sans,sans-serif); cursor:pointer; }
+.pp-tabs button[aria-selected="true"] { background:#123a3b; color:#a4eacb; }
+.pp-tabs button:focus-visible { outline:3px solid #d98a5f; outline-offset:1px; }
+.pp-cat { margin:0; font-size:10px; color:#5a7470; }
+.pp-days li { display:grid; grid-template-columns:auto 1fr auto; gap:6px; padding:6px 0; border-bottom:1px solid #d6e2d6; font-size:10px; color:#5a7470; }
+.pp-days b { color:#123a3b; } .pp-days em { font-weight:800; }
+.pp-note { margin:0; font-size:9px; line-height:1.45; color:#5a7470; }

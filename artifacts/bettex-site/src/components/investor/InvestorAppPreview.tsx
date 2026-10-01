@@ -56,7 +56,7 @@ export function InvestorAppPreview() {
             </div>
           </div>
           <div className="ip-device" key={current}>
-            <div className="ip-phone" role="group" aria-label="Tela conceitual do aplicativo">
+            <div className={`ip-phone${current === 'participacao' ? ' ip-phone--wallet' : ''}`} role="group" aria-label="Tela conceitual do aplicativo">
               <div className="ip-phone__notch" />
               <div className="ip-phone__bar"><span className="ip-phone__logo"><BettexMark /></span><b>BETTEX</b><i>João da Silva</i></div>
               <p className="ip-account-caption">Conta de exemplo</p>
