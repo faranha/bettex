@@ -1,5 +1,5 @@
 import { type ReactNode, useEffect, useState } from 'react';
-import { ArrowDown, ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -60,7 +60,7 @@ function Logo({ pale = false }: { pale?: boolean }) {
   </a>;
 }
 
-function SiteHeader() {
+function SiteHeader({ documentation = false }: { documentation?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return <header className="sticky top-0 z-40 border-b border-[#d6e1d7] bg-[#f7f4e9]/95 backdrop-blur-lg">
@@ -69,12 +69,12 @@ function SiteHeader() {
       <nav className="hidden items-center gap-4 xl:flex" aria-label="Navegação principal">
         {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#168367] xl:text-sm">{label}</a>)}
       </nav>
-      <a href={DOCUMENTATION_PATH} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex"><ArrowRight className="h-4 w-4" />Documentação</a>
+      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
       <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#d6e1d7] py-3 xl:hidden" aria-label="Navegação móvel">
       {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
-      <a href={DOCUMENTATION_PATH} onClick={() => setMenuOpen(false)} className="tap mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:hidden"><ArrowRight className="h-4 w-4" />Documentação</a>
+      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} onClick={() => setMenuOpen(false)} className="tap mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:hidden">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
     </nav>}
   </header>;
 }
@@ -130,7 +130,7 @@ function SiteFooter() {
 
 function SitePage({ children, documentation = false }: { children: ReactNode; documentation?: boolean }) {
   return <div className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#f7f4e9]`}>
-    <SiteHeader />
+    <SiteHeader documentation={documentation} />
     {children}
     <SiteFooter />
   </div>;
