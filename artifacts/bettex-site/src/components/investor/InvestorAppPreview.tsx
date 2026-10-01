@@ -4,11 +4,20 @@ import { PhoneScreen } from './PhoneScreens';
 import { allScreens, navGroups, type ScreenId } from './presentationData';
 import './InvestorAppPreview.css';
 
+const art: Record<string, { file: string; alt: string }> = {
+  participacao: { file: 'participacao', alt: 'Carteira de couro verde aberta com fichas de token e esferas douradas ao redor' },
+  bettex: { file: 'bettex-transparent', alt: 'Processador de inteligência artificial em vidro, com bola, cartas, esferas e ficha inteiras sobre fundo transparente' },
+  resultados: { file: 'resultados', alt: 'Balança dourada com fichas, ao lado de um livro-caixa e uma calculadora' },
+  historico: { file: 'historico', alt: 'Livro de registros aberto, calendário de mesa, relógio e moedas' },
+  hydra: { file: 'hydra-transparent', alt: 'Hidra de duas cabeças em metal preto com reflexos verdes, símbolo do Protocolo Hydra' },
+};
+
 export function InvestorAppPreview() {
   const [current, setCurrent] = useState<ScreenId>(allScreens[0].id);
   const refs = useRef<Record<string, HTMLButtonElement | null>>({});
   const idx = allScreens.findIndex((s) => s.id === current);
   const active = allScreens[idx];
+  const isPerformance = current === 'resultados' || current === 'historico';
 
   function go(n: number) {
     const s = allScreens[(n + allScreens.length) % allScreens.length];
@@ -29,12 +38,12 @@ export function InvestorAppPreview() {
       <div className="investor-preview__wrap">
         <div className="investor-preview__intro">
           <div>
-            <p className="investor-preview__eyebrow">Por dentro da participação</p>
+             <p className="investor-preview__eyebrow">Prévia do aplicativo</p>
             <h2 id="investor-preview-title" className="investor-preview__title">Conheça o <em>APP da BETTEX</em></h2>
           </div>
         </div>
 
-        <div className="ip-stage">
+        <div className={`ip-stage${isPerformance ? ' ip-stage--performance' : ''}`}>
           <div className="ip-side">
             <div role="tablist" aria-label="Telas do aplicativo" aria-orientation="vertical" className="ip-nav" onKeyDown={onKey}>
               {navGroups.map((g) => (
@@ -52,14 +61,18 @@ export function InvestorAppPreview() {
             </div>
             <div id="ip-panel" role="tabpanel" aria-labelledby={`ip-tab-${current}`} className="ip-copy" tabIndex={0}>
               <h3>{active.title}</h3>
-              <p>{active.text}</p>
+              {!isPerformance && <p>{active.text}</p>}
             </div>
+            {art[current] && (
+              <figure className={`ip-art${current === 'bettex' || current === 'hydra' ? ' ip-art--transparent' : ''}`} key={`art-${current}`} data-testid={`arte-tela-${current}`}>
+                <img src={`${import.meta.env.BASE_URL}app/${art[current].file}.webp`} alt={art[current].alt} width={600} height={600} loading="lazy" decoding="async" />
+              </figure>
+            )}
           </div>
           <div className="ip-device" key={current}>
-            <div className={`ip-phone${current === 'participacao' ? ' ip-phone--wallet' : ''}`} role="group" aria-label="Tela conceitual do aplicativo">
+            <div className={`ip-phone${current === 'participacao' ? ' ip-phone--wallet' : current === 'hydra' ? ' ip-phone--hydra' : isPerformance ? ' ip-phone--performance' : ''}`} role="group" aria-label="Tela conceitual do aplicativo">
               <div className="ip-phone__notch" />
               <div className="ip-phone__bar"><span className="ip-phone__logo"><BettexMark /></span><b>BETTEX</b><i>João da Silva</i></div>
-              <p className="ip-account-caption">Conta de exemplo</p>
               <div className="ip-screen"><PhoneScreen id={current} /></div>
             </div>
           </div>

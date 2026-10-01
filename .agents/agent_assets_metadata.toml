@@ -14,3 +14,115 @@ mtime_ms = 1790715355821
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/ffac4b5a-0802-44a5-bd55-e18add732e0f/e543cd5c-7b32-4682-a7d6-df77345cb930"
 storage_version_token = "1790715441361436"
 content_type = "image/svg+xml"
+
+[[outputs]]
+id = "kRGduhUzEn-d6Vkp_V39Z"
+uri = "file://screenshots/hero-previa-atual.jpg"
+type = "image"
+title = "Hero que aparece na prévia agora"
+description = "Captura atual: notícia recortada à direita e pessoa com marcação de perfilamento digital, sem nomes de empresas ou veículos."
+logical_id = "b7e39d50-915f-4a93-bd9c-2a0790b943aa"
+content_hash = "sha256:f1ce002c648fff7191d2ac794e3c44beb4e9a8d304a61fbdaef54a41507a1f42"
+size = 135238
+mtime_ms = 1790849354390
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/b7e39d50-915f-4a93-bd9c-2a0790b943aa/f0ac082a-e341-47df-9dcd-82427f18d778"
+storage_version_token = "1790849361941182"
+content_type = "image/jpeg"
+
+[[outputs]]
+id = "ymK2ktuMhs78c9ca7ZKyF"
+uri = "file://screenshots/botoes-por-mercado.png"
+type = "image"
+title = "Novos botões por mercado"
+description = "Captura dos botões atualizados no Histórico: ícones próprios, áreas maiores e seleção em verde-escuro."
+logical_id = "ca4616dc-fcdd-49dc-8117-84127dd56fe5"
+content_hash = "sha256:7c0436b7d063ed15b622a3919444b0ef0a652cdd3e4c086c1d6ee7cfe29b9093"
+size = 23961
+mtime_ms = 1790849830537
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/ca4616dc-fcdd-49dc-8117-84127dd56fe5/c2f46ac2-63ff-49a6-8946-c0928c55ed28"
+storage_version_token = "1790849927238380"
+content_type = "image/png"
+
+[[outputs]]
+id = "0TcTOMt2df17ytfpMBJ4S"
+uri = "file://screenshots/previa-app-historico-imagem.png"
+type = "image"
+title = "Histórico com imagem própria"
+description = "Captura da prévia atual: livro de registros, calendário e relógio ao lado do telefone. Cada uma das outras três abas também tem sua própria imagem."
+logical_id = "9f335f1e-3771-4f87-9af3-ed67c574996b"
+content_hash = "sha256:497b60e4ad7d8a62e1d96f6e137795254aaf598773576e73a2483deb285a42fa"
+size = 219508
+mtime_ms = 1790850351669
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/9f335f1e-3771-4f87-9af3-ed67c574996b/2116f2f5-94f1-49d3-b9f2-009ac96a36aa"
+storage_version_token = "1790850405214396"
+content_type = "image/png"
+
+[[outputs]]
+id = "ejj-SVoIBCBL-NuPOBIGr"
+uri = "file://screenshots/protocolo-hydra-app.png"
+type = "image"
+title = "PROTOCOLO HYDRA — tela preta"
+description = "A nova aba com a hidra de duas cabeças, o manifesto e “QUEREMOS VENCER.” em destaque."
+logical_id = "72c70e1e-1491-4d75-96b7-3a14d89df9ec"
+content_hash = "sha256:594867fa34f9a567ce052cca1a715fd5bc3df3f35add7ec2f4a6f1f77494dfc0"
+size = 220501
+mtime_ms = 1790850722997
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/72c70e1e-1491-4d75-96b7-3a14d89df9ec/2b87d34a-fc20-4650-83cc-3b6ee9341005"
+storage_version_token = "1790850768811931"
+content_type = "image/png"
+
+[[outputs]]
+id = "YMtrqgQYGqIoB0HY49N0W"
+uri = "file://screenshots/hero-use-ia-contra-sistema.jpg"
+type = "image"
+title = "USE IA CONTRA O SISTEMA — nova composição"
+description = "Homem centralizado na composição, cassino ao fundo e clipagem real com ECONOMIA e UM CASO REPORTADO, sem setas, ofertas ou link da notícia."
+logical_id = "87348c14-280b-4db3-8472-ee550448420d"
+content_hash = "sha256:98a3aa69bbc61c4514334ecb8896b4b471ab8a2477b976b1db33ed18a98e7edb"
+size = 119815
+mtime_ms = 1790851142393
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/87348c14-280b-4db3-8472-ee550448420d/f28f12f5-dcad-40ad-bf2f-3b33a503578e"
+storage_version_token = "1790851304669171"
+content_type = "image/jpeg"
+
+[[outputs]]
+id = "XZC7PX2RYc32I9pKKewxt"
+uri = "file://screenshots/noticia-azul-colunas.jpg"
+type = "image"
+title = "Notícia compacta com contraste azul"
+description = "Área reestruturada para terminar na mesma altura da coluna esquerda, mantendo a manchete real e removendo ofertas, perfilamento e links."
+logical_id = "a6f79255-eaab-4557-9d95-5157b76a05e8"
+content_hash = "sha256:e066773ab303b8ea1aa54629af8d90dd549777474653ee4b2e5933189889c1dc"
+size = 122478
+mtime_ms = 1790851462297
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/a6f79255-eaab-4557-9d95-5157b76a05e8/4fff0710-2f76-41f9-a2df-553ed202f56a"
+storage_version_token = "1790851551534518"
+content_type = "image/jpeg"
+
+[[outputs]]
+id = "M7QFMhhdmTDCleaBTSiwI"
+uri = "file://attached_assets/generated_images/bettex-operation-full-transparent.png"
+type = "image"
+title = "Como opera — objetos completos e fundo transparente"
+description = "Nova ilustração com transparência real, sem fundo retangular, mesa cortada ou máscara nas bordas."
+logical_id = "607a1c20-898f-4eb9-8c0c-e97ffee3b1ec"
+content_hash = "sha256:04e583d0f0aac545ce75dd1901ac0cf422773f1c5f59975f7b82688402582bcc"
+size = 1435507
+mtime_ms = 1790851788150
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/607a1c20-898f-4eb9-8c0c-e97ffee3b1ec/34060104-deef-44d1-b973-4e1b94fb8535"
+storage_version_token = "1790851965166178"
+content_type = "image/png"
+
+[[outputs]]
+id = "C-JAsR5ClfE5xS1O32kOr"
+uri = "file://attached_assets/generated_images/bettex-hydra-transparent.png"
+type = "image"
+title = "Protocolo Hydra — arte transparente"
+description = "Hidra de duas cabeças aplicada no espaço das ilustrações e no perfil visual do Protocolo Hydra, sem fundo retangular."
+logical_id = "27305fea-e593-46ad-9276-3fd241ef4476"
+content_hash = "sha256:32044c4949c277b5aacc30ac81a319538e32cd983321c36819e1013a394ec4fc"
+size = 1502044
+mtime_ms = 1790852021302
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/27305fea-e593-46ad-9276-3fd241ef4476/66abde12-ed45-4bb4-97db-de1eba39515c"
+storage_version_token = "1790852314570420"
+content_type = "image/png"

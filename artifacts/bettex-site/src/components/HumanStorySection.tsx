@@ -1,3 +1,4 @@
+import { NewsClipping } from './hero/NewsClipping';
 import './HumanStorySection.css';
 
 export function HumanStorySection() {
@@ -15,19 +16,22 @@ export function HumanStorySection() {
             <div className="hs-asterisk" aria-hidden="true" />
             <h2 id="hs-heading">Admita: você <em>perde mais do que ganha.</em></h2>
             <div className="hs-risk-card">
-              <p className="hs-risk-label">Quando você aposta sozinho</p>
-              <h3>Sem controle, uma aposta pode custar tudo.</h3>
+              <p className="hs-risk-label">Como a BETTEX opera</p>
+              <h3>Na BETTEX, a operação não depende do impulso de apostar.</h3>
               <ul>
-                <li><strong>Sem controle emocional</strong><span>A pressa de recuperar uma perda leva a novas apostas.</span></li>
-                <li><strong>Sem controle financeiro</strong><span>Sem limites, até o dinheiro das contas pode entrar na aposta.</span></li>
+                <li><strong>Análise, não palpite</strong><span>Nossa IA cruza análises de diferentes mercados antes de operar.</span></li>
+                <li><strong>Sua participação em BETTEX</strong><span>Acompanhe as operações e os resultados pelo app.</span></li>
               </ul>
             </div>
           </div>
 
           <div className="hs-right">
-            <p className="hs-right-label">Como a BETTEX muda essa dinâmica</p>
-            <p className="hs-explanation"><strong>Na BETTEX, a operação não depende do impulso de apostar.</strong> A BETTEX analisa diferentes mercados de risco e busca otimizar os investimentos onde identifica maior vantagem. Você acompanha saldos, movimentações e a atividade da IA no mesmo lugar.</p>
-            <p className="hs-next">Seja dono do seu futuro.<br /><strong>Junte-se à BETTEX.</strong></p>
+            <p className="hs-right-label">A IA do outro lado da aposta</p>
+            <p className="hs-explanation"><strong>Deixe de ser uma vítima do sistema.</strong></p>
+            <div className="hs-collage">
+              <NewsClipping className="hs-news" />
+            </div>
+            <p className="hs-next">USE IA CONTRA<br /><strong>O SISTEMA.</strong></p>
           </div>
         </div>
       </div>

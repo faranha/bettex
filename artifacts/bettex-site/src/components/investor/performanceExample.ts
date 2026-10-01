@@ -10,7 +10,7 @@ export type PerformanceDay = {
   lossCents: number;
 };
 
-export type AgentPerformance = {
+export type MarketPerformance = {
   id: MarketId;
   name: string;
   category: string;
@@ -19,7 +19,7 @@ export type AgentPerformance = {
 
 function days(values: readonly (readonly [number, number])[]): PerformanceDay[] {
   if (values.length !== performanceDates.length) {
-    throw new Error('O exemplo de desempenho precisa ter sete dias para cada agente.');
+    throw new Error('O exemplo de desempenho precisa ter sete dias para cada mercado.');
   }
   return performanceDates.map((date, index) => {
     const [profitCents, lossCents] = values[index];
@@ -30,11 +30,11 @@ function days(values: readonly (readonly [number, number])[]): PerformanceDay[] 
   });
 }
 
-export const agentPerformance: AgentPerformance[] = [
+export const marketPerformance: MarketPerformance[] = [
   {
     id: 'sports',
-    name: 'Surebet',
-    category: 'Esportes',
+    name: 'Esportes',
+    category: 'Surebet',
     days: days([[72000, 0], [0, 12000], [51000, 0], [0, 6000], [68000, 0], [90000, 0], [82000, 0]]),
   },
   {
@@ -45,13 +45,13 @@ export const agentPerformance: AgentPerformance[] = [
   },
   {
     id: 'casino',
-    name: 'Mineração de bônus',
+    name: 'Cassinos',
     category: 'Mineração de bônus',
     days: days([[18000, 0], [12000, 0], [0, 7000], [16000, 0], [22000, 0], [0, 11000], [10000, 0]]),
   },
   {
     id: 'trading',
-    name: 'Cripto e memes',
+    name: 'Ações e cripto',
     category: 'Cripto e memes',
     days: days([[0, 30000], [45000, 0], [0, 49000], [61000, 0], [0, 17000], [0, 40000], [38000, 0]]),
   },
@@ -59,9 +59,9 @@ export const agentPerformance: AgentPerformance[] = [
 
 export const netCents = (day: PerformanceDay) => day.profitCents - day.lossCents;
 
-export function totalsFor(agents: readonly AgentPerformance[]) {
-  return agents.reduce((totals, agent) => {
-    for (const day of agent.days) {
+export function totalsFor(markets: readonly MarketPerformance[]) {
+  return markets.reduce((totals, market) => {
+    for (const day of market.days) {
       totals.profitCents += day.profitCents;
       totals.lossCents += day.lossCents;
     }
@@ -69,10 +69,10 @@ export function totalsFor(agents: readonly AgentPerformance[]) {
   }, { profitCents: 0, lossCents: 0 });
 }
 
-export function dailyFor(agents: readonly AgentPerformance[]): PerformanceDay[] {
+export function dailyFor(markets: readonly MarketPerformance[]): PerformanceDay[] {
   return performanceDates.map((date, index) => ({
     date,
-    profitCents: agents.reduce((total, agent) => total + agent.days[index].profitCents, 0),
-    lossCents: agents.reduce((total, agent) => total + agent.days[index].lossCents, 0),
+    profitCents: markets.reduce((total, market) => total + market.days[index].profitCents, 0),
+    lossCents: markets.reduce((total, market) => total + market.days[index].lossCents, 0),
   }));
 }

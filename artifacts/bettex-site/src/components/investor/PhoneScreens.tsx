@@ -2,6 +2,7 @@ import type { ScreenId } from './presentationData';
 import { TokenWallet } from './TokenWallet';
 import { OperationsPreview } from './OperationsPreview';
 import { PerformancePreview } from './PerformancePreview';
+import { HydraScreen } from './HydraScreen';
 
 const Head = ({ k, t }: { k: string; t: string }) => <><small>{k}</small><h5>{t}</h5></>;
 const unknownScreen = (id: ScreenId): never => { throw new Error(`Tela conceitual desconhecida: ${id}`); };
@@ -15,6 +16,7 @@ export function PhoneScreen({ id }: { id: ScreenId }) {
     </>);
     case 'resultados': return <PerformancePreview mode="overview" />;
     case 'historico': return <PerformancePreview mode="history" />;
+    case 'hydra': return <HydraScreen />;
     default: return unknownScreen(id);
   }
 }
