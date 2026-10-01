@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>BETTEX</title>
+  <path fill="#070B1F" stroke="#2B59FF" stroke-width="2.5" stroke-linejoin="round" d="M8 8h41l7 7v41H15l-7-7V8Z"/>
+  <path fill="#5F86FF" d="M17 15h6v34h-6V15Z"/>
+  <path fill="#F2B632" d="M27 15h12l9 8v4l-5 5 6 8v3l-9 6H27v-6h11l4-3-4-5H27v-6h11l4-4-4-4H27v-6Z"/>
+</svg>
