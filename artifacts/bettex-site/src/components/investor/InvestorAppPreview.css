@@ -89,3 +89,21 @@
 @media (max-width:860px) { .ip-art { width:min(72%,300px); margin-inline:auto; } }
 @media (max-width:560px) { .ip-art { width:min(64%,220px); } }
 @media (prefers-reduced-motion:reduce) { .ip-art { animation:none; } }
+
+/* Mobile: readable phone content, touch targets, compact phone with internal scroll */
+@media (max-width:767px) {
+  .investor-preview { padding:32px 0; }
+  .ip-stage { gap:20px; }
+  .ip-nav .ip-tab { min-height:44px; }
+  .ip-phone, .ip-phone--performance { width:min(100%,320px); max-height:460px; }
+  .ip-screen { overscroll-behavior:auto; -webkit-overflow-scrolling:touch; }
+  .ip-screen small, .ip-card em, .ip-note, .ip-tx em, .ip-phone__bar i, .ip-device__caption { font-size:10.5px; }
+  .ip-art, .ip-art--transparent { width:min(70%,240px); }
+}
+@media (max-width:380px) {
+  .investor-preview__wrap { width:calc(100% - 24px); }
+  .ip-stage { padding:12px; border-radius:18px; }
+  .ip-phone, .ip-phone--performance { padding-inline:10px; border-width:6px; border-radius:30px; }
+  .ip-card strong { font-size:26px; }
+  .investor-preview__title { font-size:clamp(2.2rem,11vw,2.7rem); }
+}

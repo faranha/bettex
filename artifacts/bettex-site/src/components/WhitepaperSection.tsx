@@ -5,7 +5,7 @@ import './WhitepaperSection.css';
 const OFFSET = 88;
 
 function scrollOffset() {
-  const mobileIndexHeight = window.matchMedia('(max-width: 700px)').matches
+  const mobileIndexHeight = window.matchMedia('(max-width: 768px)').matches
     ? document.querySelector('.whitepaper__aside')?.getBoundingClientRect().height ?? 0
     : 0;
   return OFFSET + mobileIndexHeight;

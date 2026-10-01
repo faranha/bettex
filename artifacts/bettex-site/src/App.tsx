@@ -70,11 +70,11 @@ function SiteHeader({ documentation = false }: { documentation?: boolean }) {
         {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#168367] xl:text-sm">{label}</a>)}
       </nav>
       <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:inline-flex">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
-      <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="rounded-xl border border-[#bdd5c8] p-2.5 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
+      <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#bdd5c8] xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#d6e1d7] py-3 xl:hidden" aria-label="Navegação móvel">
-      {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="rounded-lg px-2 py-2.5 text-sm font-bold hover:bg-[#e6f0e7]">{label}</a>)}
-      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} onClick={() => setMenuOpen(false)} className="tap mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:hidden">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
+      {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#e6f0e7]">{label}</a>)}
+      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} onClick={() => setMenuOpen(false)} className="tap mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#123a3b] px-5 py-3 text-xs font-bold text-[#f7f4e9] hover:bg-[#245d57] sm:hidden">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
     </nav>}
   </header>;
 }
@@ -84,7 +84,7 @@ function SiteFooter() {
     <div aria-hidden="true" className="pointer-events-none absolute -right-36 top-0 h-[440px] w-[440px] rounded-full border border-[#a4eacb]/10 sm:-right-12" />
     <div aria-hidden="true" className="pointer-events-none absolute -right-20 top-20 h-[290px] w-[290px] rounded-full border border-[#a4eacb]/10 sm:right-6" />
     <div className="page-wrap relative">
-      <div className="grid gap-8 border-b border-[#a4eacb]/20 py-14 sm:py-20 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+      <div className="grid gap-8 border-b border-[#a4eacb]/20 py-10 sm:py-20 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
         <div>
           <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#a4eacb]">BETTEX</span>
           <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#f7f4e9]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#a4eacb]">e se torne dono do jogo</span></h2>
@@ -104,7 +104,7 @@ function SiteFooter() {
         </div>
         <nav aria-label="Explorar o projeto">
           <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Explore</h3>
-          <ul className="space-y-3 text-sm font-semibold">
+          <ul className="footer-links space-y-1 text-sm font-semibold">
             <li><a className="hover:text-[#a4eacb]" href={homeAnchor('participacao')}>Token BETTEX</a></li>
             <li><a className="hover:text-[#a4eacb]" href={homeAnchor('tecnologia')}>Como opera</a></li>
             <li><a className="hover:text-[#a4eacb]" href={homeAnchor('mercados')}>Mercados</a></li>
@@ -113,7 +113,7 @@ function SiteFooter() {
         </nav>
         <nav aria-label="Links do projeto">
           <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">O projeto</h3>
-          <ul className="space-y-3 text-sm font-semibold">
+          <ul className="footer-links space-y-1 text-sm font-semibold">
             <li><a className="hover:text-[#a4eacb]" href={homeAnchor('historia')}>Por que BETTEX</a></li>
             <li><a className="hover:text-[#a4eacb]" href={homeAnchor('roadmap')}>Roadmap</a></li>
             <li><a className="hover:text-[#a4eacb]" href={DOCUMENTATION_PATH}>Documentação</a></li>
@@ -122,7 +122,7 @@ function SiteFooter() {
       </div>
       <div className="flex flex-col gap-4 py-6 text-xs leading-5 text-[#b5d1c3] sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} BETTEX.</p>
-        <a href={homeAnchor('inicio')} className="inline-flex w-fit items-center gap-2 font-bold text-[#a4eacb] hover:text-white">Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
+        <a href={homeAnchor('inicio')} className="inline-flex min-h-11 w-fit items-center gap-2 font-bold text-[#a4eacb] hover:text-white">Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
       </div>
     </div>
   </footer>;
@@ -188,7 +188,7 @@ function Home() {
     <main>
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#f7f4e9]">
         <div className="hero-intro-stage relative">
-        <div className="page-wrap relative grid items-center pb-2 pt-12 sm:pt-16 xl:min-h-[730px] xl:py-16">
+        <div className="page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[730px] xl:py-16">
           <div className="entrance relative z-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#94ebcb]/35 bg-[#94ebcb]/10 px-4 py-2 text-[11px] font-bold text-[#aff3d7]"><span className="h-2 w-2 rounded-full bg-[#a6edcb]" /> AGENTE MULTIMERCADO</div>
             <h1 className="hero-title mt-7 max-w-[690px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold">

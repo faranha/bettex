@@ -19,3 +19,10 @@
 .ops__det p { display:flex; justify-content:space-between; gap:8px; margin:0; padding:5px 0; border-bottom:1px solid #d6e2d6; font-size:10px; color:#5a7470; }
 .ops__det b { color:#123a3b; text-align:right; white-space:nowrap; }
 .ops__det small { text-transform:none !important; letter-spacing:0 !important; font:400 9px/1.4 var(--app-font-sans,sans-serif) !important; color:#5a7470 !important; }
+
+@media (max-width:767px) {
+  .ops__top em, .ops__det small { font-size:10.5px !important; }
+  .ops__sum, .ops__more, .ops__det p { font-size:11px; }
+  .ops__det b { white-space:normal; overflow-wrap:anywhere; }
+  .ops__card summary { min-height:44px; }
+}
