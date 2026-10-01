@@ -1,12 +1,7 @@
 import { ArrowDownRight, ArrowRight, Wallet } from 'lucide-react';
 import { TokenIllustration, DepositIllustration, CoordinationIllustration } from '@/components/ProjectModelIllustrations';
 
-const agents = [
-  { name: 'PREDIX', specialty: 'Previsões' },
-  { name: 'TRADEX', specialty: 'Ações e cripto' },
-  { name: 'SPORTIX', specialty: 'Esportes' },
-  { name: 'BETTIX', specialty: 'Cassinos' },
-] as const;
+const markets = ['Previsões', 'Ações e cripto', 'Esportes', 'Cassinos'] as const;
 
 export function ProjectModelSection() {
   return (
@@ -156,7 +151,7 @@ export function ProjectModelSection() {
             <p className="pm-eyebrow">O modelo da BETTEX</p>
             <h2 id="pm-heading" className="pm-title">Compre. Ative. Receba.<br /><span>Renda passiva com apostas?</span></h2>
           </div>
-          <p className="pm-head-note">Todos os agentes em um só lugar.</p>
+          <p className="pm-head-note">Um agente, diferentes mercados.</p>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
 
@@ -185,11 +180,12 @@ export function ProjectModelSection() {
               <div className="pm-visual" aria-hidden="true">
                 <CoordinationIllustration />
               </div>
-              <h3>A IA da <em>BETTEX</em> realiza operações com seus agentes nativos.</h3>
-              <div className="pm-agent-list" aria-label="Especialidades dos agentes BETTEX">
-                {agents.map((agent) => (
-                  <div className="pm-agent" key={agent.name}>
-                    <strong>{agent.name}</strong><span>{agent.specialty}</span>
+              <h3>A <em>BETTEX</em> analisa os mercados e escolhe onde investir.</h3>
+              <p className="pm-detail">Antes de cada operação, cruza múltiplas análises e seleciona a oportunidade mais vantajosa segundo seus critérios e limites de risco.</p>
+              <div className="pm-agent-list" aria-label="Mercados em que a BETTEX opera">
+                {markets.map((market) => (
+                  <div className="pm-agent" key={market}>
+                    <strong>{market}</strong>
                   </div>
                 ))}
               </div>
@@ -216,7 +212,7 @@ export function ProjectModelSection() {
           </div>
         </div>
         <div className="pm-bottom">
-          <a href="#agentes" data-testid="link-conhecer-agentes">Conheça os quatro agentes <ArrowRight size={16} aria-hidden="true" /></a>
+          <a href="#mercados" data-testid="link-conhecer-mercados">Conheça os mercados <ArrowRight size={16} aria-hidden="true" /></a>
         </div>
       </div>
     </section>

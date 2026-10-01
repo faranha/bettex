@@ -1,43 +1,34 @@
-import type { AgentKind } from '@/components/hero/AgentMark';
+import type { MarketKind } from '@/components/hero/MarketMark';
 
-export type ScreenId = 'visao' | 'dinheiro' | 'participacao' | 'agentes' | 'predix' | 'tradex' | 'sportix' | 'bettix' | 'resultados' | 'historico';
+export const markets = [
+  { id: 'predictions', kind: 'predictions', label: 'Previsões', platformId: 'polymarket', platform: 'Polymarket', logo: 'platforms/polymarket.svg' },
+  { id: 'trading', kind: 'trading', label: 'Ações e cripto', platformId: 'robinhood', platform: 'Robinhood', logo: 'platforms/robinhood.svg' },
+  { id: 'sports', kind: 'sports', label: 'Esportes', platformId: 'kalshi', platform: 'Kalshi', logo: 'platforms/kalshi.webp' },
+  { id: 'casino', kind: 'casino', label: 'Cassinos', platformId: 'duel', platform: 'Duel', logo: 'platforms/duel.webp' },
+] as const satisfies readonly {
+  id: MarketKind;
+  kind: MarketKind;
+  label: string;
+  platformId: string;
+  platform: string;
+  logo: string;
+}[];
+
+export type MarketId = typeof markets[number]['id'];
+export type PlatformId = typeof markets[number]['platformId'];
+export type ScreenId = 'visao' | 'dinheiro' | 'participacao' | 'bettex' | 'resultados' | 'historico';
 
 export interface ScreenMeta { id: ScreenId; label: string; title: string; text: string }
-export interface NavGroup { label: string; items: ScreenMeta[] }
 
-export const navGroups: NavGroup[] = [
-  { label: 'Minha conta', items: [
-    { id: 'visao', label: 'Visão geral', title: 'Tudo da sua participação, numa tela só.', text: 'Um painel de entrada que reúne sua participação, os quatro agentes e o último aviso do período.' },
-    { id: 'dinheiro', label: 'Conta em reais', title: 'Reais entram e saem por Pix.', text: 'Depósitos, lucros e saques são mostrados em reais, com Pix. O token fica nos bastidores.' },
-    { id: 'participacao', label: 'Participação BETTEX', title: 'Um token, quatro mercados.', text: 'Acompanhe sua participação no projeto BETTEX. A compra, a ativação e a movimentação dos tokens são processadas pelo sistema.' },
-  ] },
-  { label: 'Agentes', items: [
-    { id: 'agentes', label: 'Todos os agentes', title: 'Quatro agentes, cada um no seu mercado.', text: 'Descubra o que cada agente faz e em qual plataforma ele atua, sem jargão.' },
-    { id: 'predix', label: 'PREDIX', title: 'PREDIX, o agente de previsões.', text: 'Atua em mercados de previsão na Polymarket, com apoio de inteligência da Allora.' },
-    { id: 'tradex', label: 'TRADEX', title: 'TRADEX, o agente de ações e cripto.', text: 'Atua em ações e criptoativos pela Robinhood, com apoio de inteligência da Allora.' },
-    { id: 'sportix', label: 'SPORTIX', title: 'SPORTIX, o agente de esportes.', text: 'Atua em mercados esportivos na Kalshi.' },
-    { id: 'bettix', label: 'BETTIX', title: 'BETTIX, o agente de cassino.', text: 'Atua em jogos de cassino na Duel.' },
-  ] },
-  { label: 'Acompanhamento', items: [
-    { id: 'resultados', label: 'Resultados', title: 'Seu resumo de resultados em reais.', text: 'Acompanhe sua parte nos resultados de cada agente e o total de lucro creditado na sua conta.' },
-    { id: 'historico', label: 'Histórico', title: 'Cada movimento, registrado em reais.', text: 'Uma linha do tempo organizada de depósitos, créditos de lucro e saques por Pix.' },
-  ] },
+export const navGroups = [
+  { label: 'BETTEX', items: [
+    { id: 'visao', label: 'Visão geral', title: 'Sua participação, de forma simples.', text: 'Acompanhe saldo, token e créditos na conta de exemplo BETTEX.' },
+    { id: 'dinheiro', label: 'Conta BRL / Pix', title: 'Sua conta em reais.', text: 'Depósitos, lucros e saques aparecem em reais, com Pix.' },
+    { id: 'participacao', label: 'Token BETTEX', title: 'Ative sua participação.', text: 'Ter BETTEX na carteira pessoal não ativa participação: deposite tokens na Carteira BETTEX para ativá-la.' },
+    { id: 'bettex', label: 'Como opera', title: 'Uma IA. Múltiplas análises. Quatro mercados.', text: 'Antes de cada operação, a BETTEX compara oportunidades nos mercados e plataformas segundo suas análises.' },
+    { id: 'resultados', label: 'Resultados', title: 'Créditos por plataforma.', text: 'Veja como o exemplo de lucro total se distribui entre as plataformas.' },
+    { id: 'historico', label: 'Histórico', title: 'Investimentos e operações.', text: 'Acompanhe créditos de operações identificados pela plataforma, além de depósitos e saques por Pix.' },
+  ] satisfies ScreenMeta[] },
 ];
 
-export const allScreens = navGroups.flatMap((g) => g.items);
-
-export interface AgentInfo {
-  name: string; kind: AgentKind; area: string; img: string; platform: string; logo: string; allora: boolean;
-  does: string; how: string[];
-}
-export const agentInfo: Record<AgentKind, AgentInfo> = {
-  predix: { name: 'PREDIX', kind: 'predix', area: 'Previsões', img: 'agents/predix.webp', platform: 'Polymarket', logo: 'platforms/polymarket.svg', allora: true,
-    does: 'Avalia perguntas sobre o futuro e participa de mercados de previsão.', how: ['Lê eventos abertos', 'Compara probabilidades', 'Registra o resultado apurado'] },
-  tradex: { name: 'TRADEX', kind: 'tradex', area: 'Ações e cripto', img: 'agents/tradix.webp', platform: 'Robinhood', logo: 'platforms/robinhood.svg', allora: true,
-    does: 'Acompanha ações e criptoativos e opera dentro de limites definidos.', how: ['Observa o mercado', 'Opera com limites', 'Registra o resultado apurado'] },
-  sportix: { name: 'SPORTIX', kind: 'sportix', area: 'Esportes', img: 'agents/sportix.webp', platform: 'Kalshi', logo: 'platforms/kalshi.webp', allora: false,
-    does: 'Analisa eventos esportivos e participa de mercados sobre seus desfechos.', how: ['Acompanha a agenda', 'Avalia cenários', 'Registra o resultado apurado'] },
-  bettix: { name: 'BETTIX', kind: 'bettix', area: 'Cassino', img: 'agents/bettix.webp', platform: 'Duel', logo: 'platforms/duel.webp', allora: false,
-    does: 'Participa de jogos de cassino seguindo regras de gestão de risco.', how: ['Segue regras de risco', 'Limita exposição', 'Registra o resultado apurado'] },
-};
-export const agentOrder: AgentKind[] = ['predix', 'tradex', 'sportix', 'bettix'];
+export const allScreens = navGroups.flatMap((group) => group.items);

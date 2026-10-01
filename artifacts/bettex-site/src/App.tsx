@@ -10,17 +10,17 @@ import { TechnologySection } from '@/components/technology/TechnologySection';
 import { InvestorAppPreview } from '@/components/investor/InvestorAppPreview';
 import { HeroBenefit } from '@/components/hero/HeroBenefit';
 import { BettexMark } from '@/components/BettexMark';
-import { AgentMark, type AgentKind } from '@/components/hero/AgentMark';
-import '@/components/hero/AgentCard.css';
+import { MarketMark, type MarketKind } from '@/components/hero/MarketMark';
+import '@/components/hero/MarketCard.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { WhitepaperSection } from '@/components/WhitepaperSection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 
 const queryClient = new QueryClient();
-type Agent = {
+type Market = {
   name: string;
-  kind: AgentKind;
+  kind: MarketKind;
   icon: LucideIcon;
   visual: string;
   area: string;
@@ -30,11 +30,11 @@ type Agent = {
   platformLogo?: string;
 };
 
-const agents: Agent[] = [
-  { name: 'PREDIX', kind: 'predix', icon: Radar, visual: 'máquina cilíndrica sem rosto com ícone de cenários ramificados', area: 'Previsões', intro: 'Inteligência de cenários.', detail: 'Analisa mercados de previsão na Polymarket para a BETTEX.', platform: 'Polymarket', platformLogo: 'polymarket.svg' },
-  { name: 'TRADEX', kind: 'tradex', icon: ChartCandlestick, visual: 'máquina cilíndrica sem rosto com ícone de gráfico de negociação', area: 'Ações e cripto', intro: 'Negociação de ações e criptoativos.', detail: 'Negocia ações e criptoativos na Robinhood como parte da BETTEX.', platform: 'Robinhood', platformLogo: 'robinhood.svg' },
-  { name: 'SPORTIX', kind: 'sportix', icon: Trophy, visual: 'máquina cilíndrica sem rosto com pequeno ícone de bola de futebol', area: 'Esportes', intro: 'Análise esportiva.', detail: 'Opera em mercados esportivos na Kalshi como parte da BETTEX.', platform: 'Kalshi', platformLogo: 'kalshi.webp' },
-  { name: 'BETTIX', kind: 'bettix', icon: Spade, visual: 'máquina cilíndrica sem rosto com ícone de naipe de espadas', area: 'Cassino', intro: 'Análise de jogos.', detail: 'Opera somente nos jogos de cassino da Duel como parte da BETTEX.', platform: 'Duel', platformLogo: 'duel.webp' },
+const markets: Market[] = [
+  { name: 'Previsões', kind: 'predictions', icon: Radar, visual: 'símbolo de cenários ramificados', area: 'Previsões', intro: 'Mercados de previsão.', detail: 'A BETTEX opera mercados de previsão na Polymarket.', platform: 'Polymarket', platformLogo: 'polymarket.svg' },
+  { name: 'Ações e cripto', kind: 'trading', icon: ChartCandlestick, visual: 'símbolo de gráfico de negociação', area: 'Ações e cripto', intro: 'Negociação de ações e criptoativos.', detail: 'A BETTEX negocia ações e criptoativos na Robinhood.', platform: 'Robinhood', platformLogo: 'robinhood.svg' },
+  { name: 'Esportes', kind: 'sports', icon: Trophy, visual: 'símbolo de bola esportiva', area: 'Esportes', intro: 'Mercados esportivos.', detail: 'A BETTEX opera em mercados esportivos na Kalshi.', platform: 'Kalshi', platformLogo: 'kalshi.webp' },
+  { name: 'Cassinos', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'Cassinos', intro: 'Jogos de cassino.', detail: 'A BETTEX opera somente nos jogos de cassino da Duel.', platform: 'Duel', platformLogo: 'duel.webp' },
 ];
 
 const navItems = [
@@ -42,7 +42,7 @@ const navItems = [
   { label: 'O projeto', id: 'participacao' },
   { label: 'História', id: 'historia' },
   { label: 'Operações', id: 'tecnologia' },
-  { label: 'Agentes', id: 'agentes' },
+  { label: 'Mercados', id: 'mercados' },
   { label: 'Aplicativo', id: 'visao-investidor' },
   { label: 'Documentação', id: 'documentacao' },
   { label: 'Roadmap', id: 'roadmap' },
@@ -84,7 +84,7 @@ function SiteFooter() {
           <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#a4eacb]">Explore</h3>
           <ul className="space-y-3 text-sm font-semibold">
             <li><a className="hover:text-[#a4eacb]" href="#participacao">Como funciona</a></li>
-            <li><a className="hover:text-[#a4eacb]" href="#agentes">Os quatro agentes</a></li>
+            <li><a className="hover:text-[#a4eacb]" href="#mercados">Os quatro mercados</a></li>
             <li><a className="hover:text-[#a4eacb]" href="#visao-investidor">Telas do aplicativo</a></li>
           </ul>
         </nav>
@@ -105,28 +105,31 @@ function SiteFooter() {
   </footer>;
 }
 
-function AgentCard({ agent, number }: { agent: Agent; number: number }) {
-  return <article className={`agent-card agent-card--${agent.kind} flex h-full flex-col overflow-hidden rounded-[18px] border border-[#123a3b]/15 bg-[#f5f6ef]`}>
-    <div className="agent-card__stage relative flex h-[190px] shrink-0 items-center justify-center overflow-hidden sm:h-[205px]">
-      <div className="agent-card__index absolute left-5 top-5 z-20 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em]"><agent.icon className="h-4 w-4" aria-hidden="true" />0{number} / {agent.area}</div>
-      <span className="agent-card__crosshair agent-card__crosshair--tl" aria-hidden="true" />
-      <span className="agent-card__crosshair agent-card__crosshair--br" aria-hidden="true" />
-      <div className="agent-card__instrument relative z-10 h-[154px] w-[154px] sm:h-[166px] sm:w-[166px]" role="img" aria-label={`${agent.name}, ${agent.visual}`}>
-        <img src={`${import.meta.env.BASE_URL}agents/predix-cycle.webp`} alt="" aria-hidden="true" loading="lazy" className="agent-card__image h-full w-full object-contain" />
-        <span className="agent-card__emblem" aria-hidden="true"><AgentMark kind={agent.kind} /></span>
+function MarketCard({ market, number }: { market: Market; number: number }) {
+  return <article className={`market-card market-card--${market.kind} flex h-full flex-col overflow-hidden rounded-[18px] border border-[#123a3b]/15 bg-[#f5f6ef]`}>
+    <div className="market-card__stage relative flex h-[190px] shrink-0 items-center justify-center overflow-hidden sm:h-[205px]">
+      <div className="market-card__index absolute left-5 top-5 z-20 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em]"><market.icon className="h-4 w-4" aria-hidden="true" />0{number} / {market.area}</div>
+      <span className="market-card__crosshair market-card__crosshair--tl" aria-hidden="true" />
+      <span className="market-card__crosshair market-card__crosshair--br" aria-hidden="true" />
+      <div className="market-card__composition relative z-10" role="img" aria-label={`Mercado de ${market.area}, ${market.visual}`}>
+        <span className="market-card__ring market-card__ring--outer" aria-hidden="true" />
+        <span className="market-card__ring market-card__ring--inner" aria-hidden="true" />
+        <span className="market-card__chip market-card__chip--a" aria-hidden="true"><i /><i /><i /><i /></span>
+        <span className="market-card__chip market-card__chip--b" aria-hidden="true"><i /><i /><i /><i /></span>
+        <span className="market-card__tile" aria-hidden="true"><MarketMark kind={market.kind} className="market-card__mark" /></span>
       </div>
-      <div className="agent-card__stage-foot absolute bottom-3 left-5 right-5 z-20 flex justify-between border-t border-white/15 pt-2 text-[8px] font-bold uppercase tracking-[.16em]"><span>BETTEX / AGENTE</span><span>0{number} / 04</span></div>
+      <div className="market-card__stage-foot absolute bottom-3 left-5 right-5 z-20 flex justify-between border-t border-white/15 pt-2 text-[8px] font-bold uppercase tracking-[.16em]"><span>BETTEX / MERCADO</span><span>0{number} / 04</span></div>
     </div>
     <div className="flex flex-1 flex-col p-5 sm:p-6">
-      <div className="min-h-[75px]"><h4 className="display text-[25px] font-extrabold leading-none tracking-[-.055em] text-[#123a3b]">{agent.name}</h4><p className="display mt-2 text-base font-bold leading-5 text-[#294d4a]">{agent.intro}</p></div>
-      <p className="mono mt-4 text-[9px] font-bold uppercase tracking-[.12em] text-[#44776b]">O que faz</p>
-      <p className="mt-2 min-h-[70px] text-[13px] leading-[1.55] text-[#455f5b]">{agent.detail}</p>
+      <div className="min-h-[75px]"><h4 className="display text-[25px] font-extrabold leading-none tracking-[-.055em] text-[#123a3b]">{market.name}</h4><p className="display mt-2 text-base font-bold leading-5 text-[#294d4a]">{market.intro}</p></div>
+      <p className="mono mt-4 text-[9px] font-bold uppercase tracking-[.12em] text-[#44776b]">Como a BETTEX atua</p>
+      <p className="mt-2 min-h-[70px] text-[13px] leading-[1.55] text-[#455f5b]">{market.detail}</p>
       <div className="mt-auto flex min-h-[76px] items-center rounded-[10px] border border-[#294e4b] bg-[#123a3b] px-4 py-3 text-[#f7f4e9]">
         <div>
-          <p className="mono text-[9px] font-bold uppercase tracking-[.09em] text-[#c9e0d6]">{agent.platformLogo ? 'Plataforma' : 'Onde atua'}</p>
-          {agent.platformLogo
-            ? <div className="agent-card__platform-logo-slot"><img src={`${import.meta.env.BASE_URL}platforms/${agent.platformLogo}`} alt={`Marca da ${agent.platform}`} loading="lazy" className={`agent-card__platform-logo agent-card__platform-logo--${agent.kind}`} /></div>
-            : <p className="display mt-1 text-base font-extrabold leading-tight text-[#f7f4e9]">{agent.platform}</p>}
+          <p className="mono text-[9px] font-bold uppercase tracking-[.09em] text-[#c9e0d6]">Plataforma</p>
+          {market.platformLogo
+            ? <div className="market-card__platform-logo-slot"><img src={`${import.meta.env.BASE_URL}platforms/${market.platformLogo}`} alt={`Marca da ${market.platform}`} loading="lazy" className={`market-card__platform-logo market-card__platform-logo--${market.kind}`} /></div>
+            : <p className="display mt-1 text-base font-extrabold leading-tight text-[#f7f4e9]">{market.platform}</p>}
         </div>
       </div>
     </div>
@@ -181,8 +184,8 @@ function Home() {
               <span className="block whitespace-nowrap">A melhor aposta é</span>
               <span className="block whitespace-nowrap text-[#a4eacb]">um investimento.</span>
             </h1>
-            <p className="mt-7 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Em vez de colocar o dinheiro do mês em uma aposta, conheça a BETTEX: seja dono de uma IA que opera em diferentes mercados de risco com resultados diários.</p>
-            <p className="mt-4 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">BETTEX é um token. Ao comprá-lo, você ativa sua participação e recebe uma parte dos lucros gerados pelos agentes autônomos de apostas e trading.</p>
+            <p className="mt-7 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Em vez de colocar o dinheiro do mês em uma aposta, conheça a BETTEX: um agente de IA que cruza múltiplas análises, compara diferentes mercados e escolhe onde investir antes de cada operação.</p>
+            <p className="mt-4 max-w-[550px] text-[17px] leading-[1.6] text-[#d7e9df] sm:text-lg">Com o token BETTEX, você participa do projeto. Deposite seus tokens na Carteira BETTEX para ativar sua participação e receber sua parte nos dias de lucro.</p>
             <div className="mt-8 flex flex-wrap gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#a4eacb] px-6 py-4 text-sm font-bold text-[#103739] hover:bg-[#c0f5dc]">Entenda como funciona <ArrowRight className="h-4 w-4" /></a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 rounded-full border border-[#a4eacb]/45 px-6 py-4 text-sm font-bold text-[#f7f4e9] hover:bg-white/10">Ver telas do app <ArrowDown className="h-4 w-4" /></a></div>
             <p className="mt-7 max-w-lg border-l-2 border-[#ffcb9b] pl-4 text-xs leading-5 text-[#c9e0d6]">Investir em mercados de risco pode gerar perdas. Lucro e valorização do token não são garantidos.</p>
           </div>
@@ -196,7 +199,7 @@ function Home() {
       <HumanStorySection />
 
        <TechnologySection>
-         {agents.map((agent, index) => <div className="technology-section__agent-slot" key={agent.name}><AgentCard agent={agent} number={index + 1} /></div>)}
+         {markets.map((market, index) => <div className="technology-section__agent-slot" key={market.name}><MarketCard market={market} number={index + 1} /></div>)}
        </TechnologySection>
        <InvestorAppPreview />
        <WhitepaperSection />

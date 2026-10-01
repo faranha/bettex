@@ -127,7 +127,7 @@ export function WalletDemoPreview({ topbarActionsEl, wallet, onWalletChange, sto
               <small>≈ {formatUsdcInReais(wallet.allocatedUsdcCents)} na cotação fixa de exemplo</small>
             </div>
           </div>
-          <span className="investor-preview__wallet-caption">Só os BETTEX depositados entram no cálculo de distribuição. O desempenho dos agentes não é seu saldo.</span>
+          <span className="investor-preview__wallet-caption">Só os BETTEX depositados entram no cálculo de distribuição. O desempenho da BETTEX nos mercados não é seu saldo.</span>
           <div className="investor-preview__wallet-actions investor-preview__wallet-actions--bettex">
             <button type="button" className="investor-preview__wallet-withdraw" aria-expanded={mode === 'withdraw'}
               aria-controls="investor-preview-transfer-form" onClick={() => toggleForm('withdraw')}

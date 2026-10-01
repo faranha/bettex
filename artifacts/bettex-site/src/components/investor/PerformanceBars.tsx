@@ -1,5 +1,6 @@
 import { Bar, BarChart, CartesianGrid, Cell, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { performanceSeries, type PerformancePeriod, type PerformanceSubject } from './performanceSeries';
+import { markets } from './presentationData';
 
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'USD' });
 const compact = new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 });
@@ -12,7 +13,9 @@ export function PerformanceBars({ subject, period }: { subject: PerformanceSubje
   const description = points.map((point) =>
     `${point.label}: ${currency.format(point.resultCents / 100)}`).join('; ');
   const interval = period === '24 horas' ? 'intervalos de 4 horas' : period === '7 dias' ? 'dias' : 'intervalos de 5 dias';
-  const subjectLabel = subject === 'COLETIVO' ? 'dos quatro agentes' : `de ${subject}`;
+  const subjectLabel = subject === 'BETTEX'
+    ? 'da BETTEX nos quatro mercados'
+    : `do mercado ${markets.find((market) => market.id === subject)?.label ?? subject}`;
 
   return (
     <figure className="investor-preview__bars" data-testid="grafico-desempenho">
@@ -42,7 +45,7 @@ export function PerformanceBars({ subject, period }: { subject: PerformanceSubje
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <p>Barras acima de zero indicam ganho; abaixo, perda. Não são resultados reais.</p>
+      <p>Barras acima de zero indicam ganho; abaixo, perda. Não são resultados reais nem saldo da conta.</p>
     </figure>
   );
 }

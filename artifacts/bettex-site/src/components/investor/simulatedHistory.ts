@@ -1,4 +1,5 @@
-export type AgentName = 'PREDIX' | 'TRADEX' | 'SPORTIX' | 'BETTIX';
+import type { MarketId } from './presentationData';
+
 export type HistoryPeriod = '24 horas' | '7 dias' | '30 dias';
 
 export type SimulatedTransaction = {
@@ -11,8 +12,8 @@ export type SimulatedTransaction = {
 
 // Illustrative entries only: no orders were placed and no platform supplied these results.
 // The same fictional USD transactions feed the history, chart series, and period totals.
-export const simulatedHistory: Record<AgentName, SimulatedTransaction[]> = {
-  PREDIX: [
+export const simulatedHistory: Record<MarketId, SimulatedTransaction[]> = {
+  predictions: [
     { id: 'today-close', daysAgo: 0, hoursAgo: 22, movement: 'Cenário encerrado', resultCents: 14500 },
     { id: 'today-adjustment', daysAgo: 0, hoursAgo: 2, movement: 'Ajuste de previsão', resultCents: 9500 },
     { id: 'week-adjustment', daysAgo: 1, hoursAgo: 8, movement: 'Ajuste de previsão', resultCents: 13380 },
@@ -24,7 +25,7 @@ export const simulatedHistory: Record<AgentName, SimulatedTransaction[]> = {
     { id: 'month-10', daysAgo: 10, hoursAgo: 4, movement: 'Ajuste de previsão', resultCents: 24000 },
     { id: 'month-8', daysAgo: 8, hoursAgo: 16, movement: 'Cenário encerrado', resultCents: 30000 },
   ],
-  TRADEX: [
+  trading: [
     { id: 'today-close', daysAgo: 0, hoursAgo: 21, movement: 'Posição encerrada', resultCents: 8200 },
     { id: 'today-adjustment', daysAgo: 0, hoursAgo: 3, movement: 'Ajuste de cripto', resultCents: 6300 },
     { id: 'week-adjustment', daysAgo: 1, hoursAgo: 10, movement: 'Ajuste de cripto', resultCents: 28010 },
@@ -36,7 +37,7 @@ export const simulatedHistory: Record<AgentName, SimulatedTransaction[]> = {
     { id: 'month-10', daysAgo: 10, hoursAgo: 4, movement: 'Posição encerrada', resultCents: 14000 },
     { id: 'month-8', daysAgo: 8, hoursAgo: 16, movement: 'Ajuste de cripto', resultCents: 16000 },
   ],
-  SPORTIX: [
+  sports: [
     { id: 'today-close', daysAgo: 0, hoursAgo: 22, movement: 'Evento esportivo', resultCents: -7000 },
     { id: 'today-adjustment', daysAgo: 0, hoursAgo: 2, movement: 'Ajuste de posição', resultCents: -5000 },
     { id: 'week-adjustment', daysAgo: 1, hoursAgo: 8, movement: 'Evento esportivo', resultCents: 9950 },
@@ -48,7 +49,7 @@ export const simulatedHistory: Record<AgentName, SimulatedTransaction[]> = {
     { id: 'month-10', daysAgo: 10, hoursAgo: 4, movement: 'Evento esportivo', resultCents: 2000 },
     { id: 'month-8', daysAgo: 8, hoursAgo: 16, movement: 'Evento esportivo', resultCents: 3000 },
   ],
-  BETTIX: [
+  casino: [
     { id: 'today-close', daysAgo: 0, hoursAgo: 21, movement: 'Sessão encerrada', resultCents: 7500 },
     { id: 'today-adjustment', daysAgo: 0, hoursAgo: 3, movement: 'Ajuste de sessão', resultCents: 5040 },
     { id: 'week-adjustment', daysAgo: 1, hoursAgo: 10, movement: 'Sessão encerrada', resultCents: 2720 },
@@ -62,15 +63,15 @@ export const simulatedHistory: Record<AgentName, SimulatedTransaction[]> = {
   ],
 };
 
-export const historyForPeriod = (agent: AgentName, period: HistoryPeriod) => {
+export const historyForPeriod = (market: MarketId, period: HistoryPeriod) => {
   const days = period === '24 horas' ? 1 : period === '7 dias' ? 7 : 30;
-  return simulatedHistory[agent].filter((entry) => entry.daysAgo >= 0 && entry.daysAgo < days);
+  return simulatedHistory[market].filter((entry) => entry.daysAgo >= 0 && entry.daysAgo < days);
 };
 
-export const sevenDayHistory = (agent: AgentName) => historyForPeriod(agent, '7 dias');
+export const sevenDayHistory = (market: MarketId) => historyForPeriod(market, '7 dias');
 
-export const sevenDayResult = (agent: AgentName) =>
-  sevenDayHistory(agent).reduce((total, entry) => total + entry.resultCents, 0) / 100;
+export const sevenDayResult = (market: MarketId) =>
+  sevenDayHistory(market).reduce((total, entry) => total + entry.resultCents, 0) / 100;
 
 const dateFormatter = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 

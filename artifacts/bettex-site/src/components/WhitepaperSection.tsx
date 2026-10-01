@@ -48,14 +48,14 @@ export function WhitepaperSection() {
 
   return (
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
-      <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO TÉCNICA</span><span>O MODELO BETTEX · {total} CAPÍTULOS</span></div>
+      <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO TÉCNICA</span><span>UM AGENTE · {total} CAPÍTULOS</span></div>
       <header className="whitepaper__hero page-wrap">
         <div>
           <p className="whitepaper__eyebrow"><span aria-hidden="true" /> ARQUITETURA, ECONOMIA E RISCO</p>
           <h2 id="whitepaper-title">Documentação<br /><em>técnica.</em></h2>
-          <p className="whitepaper__hero-lede">Uma leitura técnica das contas em reais, da arquitetura backend, da operação e das regras econômicas da BETTEX.</p>
+          <p className="whitepaper__hero-lede">Uma leitura técnica do agente BETTEX em previsões, ações e cripto, esportes e cassinos, das contas em reais, da arquitetura backend, da operação e das regras econômicas.</p>
         </div>
-        <div className="whitepaper__hero-note"><span>VISÃO GERAL</span><p>O token BETTEX organiza a participação no projeto. A documentação detalha contas em reais, elegibilidade, tesouraria, controles e distribuição de resultados.</p></div>
+        <div className="whitepaper__hero-note"><span>VISÃO GERAL</span><p>A BETTEX é um agente único. Estratégias e conectores por mercado operam sob o mesmo núcleo de risco; o token BETTEX e a Carteira BETTEX registram a participação e as distribuições em reais nos dias de lucro.</p></div>
       </header>
       <div className="whitepaper__body page-wrap">
         <aside className="whitepaper__aside" aria-label="Índice da documentação">

@@ -10,8 +10,8 @@ const stops = [
   {
     number: '02',
     tag: 'PRIMEIRO TESTE',
-    title: 'Piloto de agente',
-    description: 'Testar um agente em ambiente supervisionado, com limites de risco e avaliação dos resultados antes de ampliar a operação.',
+    title: 'Piloto da BETTEX',
+    description: 'Testar a BETTEX em ambiente supervisionado, com limites de risco e avaliação das oportunidades antes de ampliar a operação.',
   },
   {
     number: '03',
@@ -29,8 +29,8 @@ const stops = [
   {
     number: '05',
     tag: 'AMPLIAÇÃO',
-    title: 'Agentes em conjunto',
-    description: 'Ampliar os testes de PREDIX, TRADEX, SPORTIX e BETTIX conforme acesso permitido, integração viável e avaliação de risco.',
+    title: 'Operação multimercado',
+    description: 'Ampliar a atuação da BETTEX em previsões, ações e cripto, esportes e cassinos, buscando otimizar a alocação onde houver maior vantagem, conforme acesso permitido, integração viável e limites de risco.',
   },
   {
     number: '06',

@@ -85,7 +85,7 @@ export function DepositIllustration() {
   );
 }
 
-/* Step 3: the BETTEX AI hub coordinating four agent nodes */
+/* Step 3: one BETTEX agent operating across four markets */
 export function CoordinationIllustration() {
   const id = 'pmi3';
   const nodes = [
