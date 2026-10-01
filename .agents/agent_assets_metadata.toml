@@ -126,3 +126,17 @@ mtime_ms = 1790852021302
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/27305fea-e593-46ad-9276-3fd241ef4476/66abde12-ed45-4bb4-97db-de1eba39515c"
 storage_version_token = "1790852314570420"
 content_type = "image/png"
+
+[[outputs]]
+id = "UvET3ZyfTk9Pk2LLlB1rJ"
+uri = "file://artifacts/bettex-site/public/bettex-mark-gamblefi.svg"
+type = "image"
+title = "Símbolo BETTEX — azul e dourado"
+description = "Versão vetorial sem verde, com monograma dourado, detalhes azuis e base escura."
+logical_id = "31e84807-3e28-45ce-b089-bf9b07f9552c"
+content_hash = "sha256:9ae5596a4b2983554ca08498bbaad709828ec4053be73cb88a52d68d1bc323d0"
+size = 356
+mtime_ms = 1790884375580
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/31e84807-3e28-45ce-b089-bf9b07f9552c/b14e3b86-2f01-4a5a-adb1-0429c50b9ae3"
+storage_version_token = "1790884411505182"
+content_type = "image/svg+xml"
