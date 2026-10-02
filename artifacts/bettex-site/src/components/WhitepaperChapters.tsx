@@ -12,6 +12,7 @@ import { DistributionCorrections } from '@/components/DistributionCorrections';
 import { DistributionSettlement } from '@/components/DistributionSettlement';
 import { ReservePolicy } from '@/components/ReservePolicy';
 import { InvestmentRiskBase } from '@/components/InvestmentRiskBase';
+import { OrderReservations } from '@/components/OrderReservations';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
@@ -205,7 +206,8 @@ export function ChapterContent({ index }: { index: number }) {
           <div><span>05 / PERDA REALIZADA DIÁRIA</span><strong>0,5% <em>global</em> / 0,125% <em>por mercado</em></strong><p>Ao atingir o teto, novas operações param naquele escopo até o próximo dia UTC.</p></div>
         </div>
         <Subhead>Como o bloqueio funcionaria</Subhead>
-        <div className="whitepaper__prose"><p>A API de execução não deve aceitar ordens diretas de uma estratégia ou conector. O núcleo central verifica simultaneamente caixa reservado, exposição por mercado e correlação, perdas realizadas e autorização da integração; grava a reserva da operação <strong>antes</strong> de enviá-la. Repetir o mesmo pedido não pode consumir o limite duas vezes nem gerar duas ordens. Falta de cotação confiável, divergência de saldo ou perda de comunicação impede novas ordens até reconciliação.</p><p>Não há alavancagem. Uma pausa de emergência, controlada por pessoas autorizadas e registrada em auditoria, pode impedir novas operações independentemente dos limites; a política de cancelamento de ordens pendentes também precisa ser testada. Limites reduzem exposição, mas não evitam perdas nem autorizam atuação onde a lei, as regras do mercado ou a plataforma proíbem. Operações de cassino mantêm os mesmos tetos e podem perder rapidamente por acaso, variância e vantagem da casa.</p></div>
+        <div className="whitepaper__prose"><p>A API de execução não deve aceitar ordens diretas de uma estratégia ou conector. O núcleo central verifica caixa livre, reservas existentes, exposição por mercado e correlação, perdas realizadas e autorização da integração; a verificação dos limites e o registro da reserva da operação são indivisíveis e devem concluir <strong>antes</strong> de enviá-la. Ordens distintas e simultâneas consideram as reservas umas das outras, sem reutilizar o mesmo capital ou exceder os limites conjuntos. Repetir o mesmo pedido não pode consumir o limite duas vezes nem gerar duas ordens. Falta de cotação confiável, divergência de saldo ou perda de comunicação impede novas ordens até reconciliação.</p><p>Não há alavancagem. Uma pausa de emergência, controlada por pessoas autorizadas e registrada em auditoria, pode impedir novas operações independentemente dos limites; a política de cancelamento de ordens pendentes também precisa ser testada. Limites reduzem exposição, mas não evitam perdas nem autorizam atuação onde a lei, as regras do mercado ou a plataforma proíbem. Operações de cassino mantêm os mesmos tetos e podem perder rapidamente por acaso, variância e vantagem da casa.</p></div>
+        <OrderReservations />
       </>;
     case 7:
       return <>
