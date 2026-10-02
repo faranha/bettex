@@ -44,7 +44,7 @@ export function VestingChart() {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-      <p className="whitepaper__vesting-chart-note">Eixo horizontal: meses desde a abertura da venda pública. Eixo vertical: BETTEX liberados acumulados. Mês 0 = antes da primeira liberação. A tabela abaixo contém as quantidades exatas; liberação não significa venda realizada.</p>
+      <p className="whitepaper__vesting-chart-note">Eixo horizontal: meses desde a abertura da venda pública. Eixo vertical: BETTEX liberados acumulados. Mês 0 = antes da primeira liberação. A tabela abaixo contém as quantidades exatas; liberação não significa venda realizada. Gráfico e tabela mostram liberações brutas, sem descontar o burning das taxas; não representam a oferta líquida em circulação.</p>
     </figure>
   );
 }
