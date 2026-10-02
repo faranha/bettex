@@ -80,14 +80,14 @@ const fig4: Step[] = [
 const fig5: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Autoriza a parcela investível para a IA, com alocação dinâmica e respeito à reserva defensiva e aos limites de risco.', tone: 'gold' },
   { title: 'IA BETTEX', text: 'Opera após aprovação independente de risco. Apura o lucro realizado líquido e limita o valor elegível ao ganho patrimonial acima da base, considerando posições abertas.', tone: 'blue', badge: 'Análise e apuração' },
-  { title: 'Reservas antes do split', text: 'Antes de distribuir qualquer lucro, a IA verifica se as reservas exigidas da tesouraria estão atendidas.', tone: 'teal', badge: 'Prioridade às reservas', id: 'node-bettex-profit-split',
+  { title: 'Reservas e liquidez antes do split', text: 'Verifica reserva defensiva mínima inicial de 50% do patrimônio líquido atualizado e caixa livre suficiente, antes e após a distribuição projetada.', tone: 'teal', badge: 'Prioridade às reservas', id: 'node-bettex-profit-split',
     extra: (
       <>
         <div className="ba-entry" data-testid="node-bettex-reserve-recovery">
-          <div className="ba-split__treasury"><strong>Reservas insuficientes</strong><p>100% do lucro líquido retorna à tesouraria para recompor as reservas. Não há pagamento ao staking nessa apuração.</p></div>
+          <div className="ba-split__treasury"><strong>Reserva ou liquidez insuficiente</strong><p>100% do lucro líquido é destinado à tesouraria para recomposição. Não há pagamento ao staking nem distribuição de saldo restante nessa apuração.</p></div>
         </div>
-        <p>Somente com reservas atendidas, lucro elegível positivo e posições conciliadas, aplica o split sobre o valor elegível:</p>
-        <div className="ba-entry ba-split" aria-label="Split permitido apenas com reservas da tesouraria atendidas">
+        <p>Somente com reserva e liquidez atendidas antes e após a distribuição projetada, lucro elegível positivo e posições conciliadas, aplica o split sobre o valor elegível:</p>
+        <div className="ba-entry ba-split" aria-label="Split permitido apenas com reserva e liquidez atendidas antes e após a distribuição projetada">
           <div className="ba-split__treasury"><strong>Tesouraria · 75%</strong><p>Recebe 75% do lucro elegível ao split.</p></div>
           <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Pago na Carteira USDC dos participantes elegíveis, nunca na Carteira BETTEX.</p></div>
         </div>
@@ -148,7 +148,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
           <div className="ba-flow ba-flow--treasury">
             <p className="ba-flow__label">Tesouraria BETTEX · reservas do valor recebido</p>
             <div className="ba-entry ba-reserves" data-testid="node-bettex-reserves">
-              <div><strong>50% · Reserva defensiva</strong><p>Aplicada em estratégias de baixo risco para gerar yield mensal.</p></div>
+              <div><strong>50% · Reserva defensiva</strong><p>Mínimo inicial sobre o patrimônio líquido atualizado. Ativos segregados de baixo risco, com objetivo de yield mensal, sem rendimento garantido.</p></div>
               <div><strong>50% · Parcela investível</strong><p>Alocada dinamicamente pelo algoritmo conforme as oportunidades e os limites de risco.</p></div>
             </div>
             <p className="ba-fig__foot">O algoritmo analisa oportunidades em previsões, ações e cripto, esportes e cassinos e distribui a parcela investível conforme as melhores oportunidades identificadas. As estratégias previstas incluem surebet nos esportes, com comparação de odds e cobertura dos resultados entre casas, e bonus hunting (mineração de bônus) em cassinos, com análise das promoções, requisitos de aposta e elegibilidade. A alocação é ajustada segundo as análises, sem percentuais fixos por mercado, preservando a reserva defensiva e a aprovação independente de risco.</p>
