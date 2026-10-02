@@ -4,6 +4,7 @@ export function TokenBurning() {
       <h4 id="burning-title" className="whitepaper__subhead">Taxas em BETTEX e burning</h4>
       <div className="whitepaper__prose">
         <p><strong>BETTEX tem duas funções: participação no staking e pagamento de taxas de serviço nas operações processadas pelo aplicativo oficial.</strong> As taxas são cobradas em BETTEX e os tokens utilizados nesse pagamento são queimados, retirados permanentemente da oferta. Não são ganhos distribuídos ao staking nem tokens transferidos à tesouraria.</p>
+        <p>As taxas destinadas à queima não financiam a Fundação. Desenvolvimento, infraestrutura, auditoria e administração dependem de seu orçamento institucional separado da tesouraria de investimentos.</p>
       </div>
       <div className="whitepaper__rule-pair">
         <div><span>VENDAS POR SWAPPING NO APLICATIVO</span><p><strong>Vendas por swapping processadas pelo aplicativo oficial têm taxa de serviço em BETTEX.</strong> Antes da confirmação, o fluxo deve apresentar o valor da venda, a quantidade de BETTEX da taxa e o resultado líquido. Os tokens da taxa são destinados à queima.</p></div>
