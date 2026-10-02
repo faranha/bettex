@@ -28,6 +28,7 @@ import { RiskStateRecovery } from '@/components/RiskStateRecovery';
 import { RiskPrecision } from '@/components/RiskPrecision';
 import { AuthorizedRequestIntegrity } from '@/components/AuthorizedRequestIntegrity';
 import { OutOfOrderResponses } from '@/components/OutOfOrderResponses';
+import { TreasuryFundsInTransit } from '@/components/TreasuryFundsInTransit';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
@@ -248,6 +249,7 @@ export function ChapterContent({ index }: { index: number }) {
           <div><span>04</span><p>Monitorar saldos, obrigações, limites globais e por mercado e integrações; emitir alertas acionáveis e manter procedimentos de resposta a incidentes. A pausa de emergência deve bloquear novas ordens sem apagar obrigações já atribuídas; retomada após incidente depende de conciliação e autorização registrada.</p></div>
         </div>
         <RiskStateRecovery />
+        <TreasuryFundsInTransit />
         <div className="whitepaper__prose"><p>Os fluxos financeiros são requisitos pretendidos, não capacidades já implementadas ou em produção. A compra deve registrar débito de USDC e crédito de BETTEX juntos e uma única vez após a liquidação; cada distribuição é lançada uma única vez em USDC. A continuidade preserva registros imutáveis com ajustes identificados, backups testados e conciliação entre transferências on-chain, recebimentos de on-ramp, saldos dos dois ativos, custos, resultados por mercado, tesouraria e saques. Falhas resultam em estado pendente ou bloqueio, nunca confirmação presumida. Custódia, permissões, integrações e conformidade exigem validação técnica e jurídica. A operação inicial cripto não pressupõe autorização de exchange ou banco; a proposta fiduciária do BETTEX Bank demanda estrutura própria antes de qualquer oferta.</p></div>
         <div className="whitepaper__aside-callout"><span>SEQUÊNCIA DO PROJETO</span><p>O <a href={`${import.meta.env.BASE_URL}#roadmap`} data-testid="link-documentacao-roadmap">Roadmap da BETTEX</a> apresenta o percurso da preparação técnica e jurídica à expansão do aplicativo.</p></div>
       </>;
