@@ -32,7 +32,7 @@ const notes: Record<ArchitectureFigureNumber, IntegrationNote[]> = {
     { brand: 'arbitrum', placement: 'Etapa 3 · Movimentações em USDC', description: 'Referências on-chain de transferências compatíveis. Reservas insuficientes mantêm todo o lucro temporariamente na tesouraria, sem pagamento nessa apuração; uma liberação futura exige nova verificação.' },
   ],
   '6': [
-    { brand: 'arbitrum', placement: 'Crédito e saque em USDC', description: 'O crédito é registrado no livro contábil BETTEX. O saque usa uma transferência on-chain de USDC compatível, confirmada e conciliada na rede.' },
+    { brand: 'arbitrum', placement: 'Recebimento e saque em USDC', description: 'O livro contábil registra o direito e a obrigação como distribuição pendente. A transferência on-chain confirmada e conciliada reconhece USDC recebido na carteira do titular e liquida a obrigação. O saque posterior movimenta esse saldo, sem novo pagamento da distribuição.' },
   ],
   '7': [
     { brand: 'allora', placement: 'Etapa 1 · Agentes de IA', description: 'Consulta opcional de inferências para a análise. Não controla a carteira nem executa ordens.' },

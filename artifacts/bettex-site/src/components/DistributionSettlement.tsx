@@ -1,0 +1,14 @@
+export function DistributionSettlement() {
+  return (
+    <section id="documentacao-liquidacao-distribuicao" aria-labelledby="liquidacao-distribuicao-title">
+      <h4 id="liquidacao-distribuicao-title" className="whitepaper__subhead">Distribuição pendente e USDC recebido na carteira</h4>
+      <div className="whitepaper__prose">
+        <p><strong>O split autorizado registra o direito do participante e a obrigação correspondente da tesouraria.</strong> O livro contábil identifica a rodada original, o participante, seu peso e o valor em USDC. Esse crédito apurado não significa que o criptoativo já chegou à carteira pessoal. Até a transferência ser confirmada e conciliada, a interface apresenta <strong>distribuição pendente</strong>, separada do saldo disponível.</p>
+        <p><strong>O USDC da distribuição só é reconhecido como recebido na Carteira USDC após a transferência on-chain confirmada e conciliada.</strong> A conferência verifica o ativo e a rede compatíveis, o destino da carteira do titular, o valor efetivamente recebido e a referência da transação. Uma transferência apenas enviada, pendente ou com falha não é recebimento confirmado. Antes de reenviar, a conciliação deve verificar o estado da tentativa anterior para evitar pagamento duplicado.</p>
+        <p>A obrigação é reconhecida uma única vez na apuração: P já desconta esse valor e B reflete a parcela do split atribuída aos participantes. A transferência confirmada liquida a obrigação correspondente, sem consumir R nem reduzir P e B novamente pelo mesmo pagamento. Custos de rede são identificados e conciliados separadamente, sem tarifas inventadas ou desconto duplicado. Os pesos e o direito continuam vinculados à rodada autorizada, mesmo com atraso na transferência.</p>
+        <p><strong>O crédito pendente e o saldo recebido não são dois valores disponíveis.</strong> Ao confirmar o recebimento, a interface reduz o pendente pelo valor liquidado e atualiza o saldo conciliado da carteira. O registro histórico do direito permanece, mas não é somado novamente ao saldo. Se apenas parte da obrigação for liquidada, somente o restante continua pendente. Complementos por correção seguem a mesma distinção, sem recriar créditos cuja transferência esteja apenas aguardando conclusão.</p>
+        <p>Depois do recebimento, o USDC é ativo da carteira pessoal do titular, não patrimônio da tesouraria. Um saque movimenta o USDC já disponível para outra carteira compatível; não paga novamente a distribuição nem transforma um crédito pendente em saldo recebido. Preservam-se as regras de autorização, chaves exportáveis, taxas em BETTEX e custos externos já documentadas. Estes são requisitos do modelo, não transferências ou saldos reais implementados na demonstração.</p>
+      </div>
+    </section>
+  );
+}
