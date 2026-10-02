@@ -203,7 +203,7 @@ export function ProjectModelSection() {
               </div>
               <h3>Quando houver lucro, crédito <em>em reais.</em></h3>
               <div className="pm-outcomes">
-                <div className="pm-outcome pm-outcome--profit"><h4>Participação no lucro</h4><p>De acordo com as <a href={`${import.meta.env.BASE_URL}documentacao#documentacao-apuracao`}>regras documentadas</a>.</p></div>
+                <div className="pm-outcome pm-outcome--profit"><h4>Participação no lucro</h4><p>De acordo com as <a href={`${import.meta.env.BASE_URL}documentacao#documentacao-arquitetura`}>regras documentadas</a>.</p></div>
               </div>
             </div>
           </div>
