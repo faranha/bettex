@@ -85,6 +85,9 @@
 .whitepaper__rule-pair p { margin-top: 12px; }
 .whitepaper__rule-pair[data-testid="documentacao-novas-vendas"] + .whitepaper__prose { margin-top: 32px; }
 #documentacao-burning .whitepaper__rule-pair + .whitepaper__prose { margin-top: 32px; }
+#documentacao-agentes .whitepaper__steps + .whitepaper__prose,
+#documentacao-agentes .whitepaper__prose + .whitepaper__risk-list,
+#documentacao-agentes .whitepaper__risk-list + .whitepaper__prose { margin-top: 28px; }
 .whitepaper__vesting { margin-top: 34px; padding-top: 28px; border-top: 1px solid #d9d3c0; }
 .whitepaper__vesting > h4 { margin: 0 0 22px; color: #080d27; font: 800 24px/1.3 var(--app-font-serif); letter-spacing: -.03em; }
 .whitepaper__vesting-scroll { max-height: 460px; overflow: auto; margin-top: 26px; border: 1px solid #d9d3c0; }

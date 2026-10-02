@@ -5,13 +5,14 @@ import { ArbitrumFlowDiagram } from '@/components/docs-diagrams/ArbitrumFlowDiag
 import { RobinhoodFlowDiagram } from '@/components/docs-diagrams/RobinhoodFlowDiagram';
 import { VestingSchedule } from '@/components/VestingSchedule';
 import { TokenBurning } from '@/components/TokenBurning';
+import { InvestmentAgents } from '@/components/InvestmentAgents';
 
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação inicial em USDC, participação automática e controles.' },
   { id: 'documentacao-rede', title: 'Arbitrum e ativos', subtitle: 'Arbitrum One, carteira do titular, USDC e entrada por on-ramp externo.' },
   { id: 'documentacao-acesso', title: 'Acesso ao aplicativo', subtitle: 'Carteira gerada com a conta, acesso e autorização de ações financeiras.' },
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Oito fluxos: agentes por MCP e APIs, inferências Allora, coleta de oportunidades, decisão de investimento e registro público.' },
-  { id: 'documentacao-agentes', title: 'Agentes de IA', subtitle: 'Agente da tesouraria, agentes de investimento e coordenação entre suas funções.' },
+  { id: 'documentacao-agentes', title: 'Agentes de IA', subtitle: 'Gestão adaptativa da tesouraria, agentes especializados nos quatro mercados e ciclo coordenado de análise, execução e conciliação.' },
   { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Emissão de 1 bilhão, vesting de 36 meses em 65% / 20% / 15%, taxas de transação em BETTEX e burning.' },
   { id: 'documentacao-controles', title: 'Controles de risco', subtitle: 'Limites globais e por mercado, autorizações e pausas de segurança.' },
   { id: 'documentacao-implantacao', title: 'Requisitos operacionais e de segurança', subtitle: 'Controles técnicos, validações e salvaguardas para operar o modelo.' },
@@ -129,15 +130,7 @@ export function ChapterContent({ index }: { index: number }) {
         </div>
       </>;
     case 4:
-      return <>
-        <div className="whitepaper__lead"><span>TESOURARIA E INVESTIMENTOS</span><p>A BETTEX prevê agentes de IA com funções distintas e atuação coordenada: um agente dedicado à própria tesouraria e agentes que analisam oportunidades e realizam investimentos nos mercados atendidos pelo projeto.</p></div>
-        <Subhead>Agente da tesouraria</Subhead>
-        <div className="whitepaper__prose"><p>O agente da tesouraria ajusta e otimiza seus regimentos internos em conjunto com os agentes de investimento, considerando reservas, liquidez e exposição ao risco. As regras da tesouraria e dos controles de risco são iniciais e podem ser ajustadas pela própria IA.</p></div>
-        <Subhead>Agentes de investimento</Subhead>
-        <div className="whitepaper__prose"><p>Os agentes de investimento analisam dados e oportunidades em previsões, ações e cripto, esportes e cassinos. Comparam alternativas e executam as operações autorizadas por meio dos conectores de cada mercado, conforme as regras vigentes da tesouraria e dos controles de risco. A expansão contempla agentes especializados em surebet e bonus hunting.</p></div>
-        <Subhead>Coordenação entre os agentes</Subhead>
-        <div className="whitepaper__prose"><p>A gestão da tesouraria e as decisões de investimento são tratadas em conjunto, sem confundir suas responsabilidades. O detalhamento de cada agente — funções, dados utilizados, ferramentas, permissões, comunicação e critérios de decisão — será aprofundado nesta seção. As conexões e os fluxos gerais estão apresentados em <a href="#documentacao-arquitetura">Arquitetura e integrações</a>.</p></div>
-      </>;
+      return <InvestmentAgents />;
     case 5:
       return <>
         <div className="whitepaper__supply">
