@@ -1,0 +1,14 @@
+export function InvestmentRiskBase() {
+  return (
+    <section id="documentacao-base-investivel" aria-labelledby="base-investivel-title">
+      <h4 id="base-investivel-title" className="whitepaper__subhead">Base patrimonial dos limites de risco</h4>
+      <div className="whitepaper__prose">
+        <p><strong>Todos os percentuais de limite usam o patrimônio líquido atualizado da parcela investível, em USDC.</strong> Essa base inclui recursos da parcela investível ainda em caixa e o valor atualizado de posições já abertas. Exclui os ativos efetivamente segregados na reserva defensiva e as carteiras pessoais. A divisão inicial de 50% defensivos e 50% investíveis não torna a base um valor fixo nem a mantém sempre igual à metade do patrimônio.</p>
+        <p><strong>Base investível = max(0, P − D).</strong> P é o patrimônio líquido atualizado da tesouraria, já descontadas suas obrigações; D é o valor atualizado dos ativos efetivamente segregados na reserva defensiva. Custos e obrigações entram uma única vez em P, sem novo desconto pelo mesmo fato ao calcular a base. Essa base não é B, a referência usada para apurar o lucro elegível ao split.</p>
+        <p><strong>Capital comprometido não é caixa livre, mas continua compondo a base patrimonial pelo seu valor conciliado.</strong> Reservar recursos para uma ordem ou aplicá-los em uma posição não reduz a base novamente pelo valor comprometido nem permite somar o mesmo recurso como caixa e posição. Ordens pendentes contam nos compromissos e exposições; sua execução atualiza o estado do compromisso, sem duplicá-lo.</p>
+        <p>O teto em USDC de cada controle é o percentual vigente multiplicado por essa mesma base. Se mais patrimônio for segregado na reserva defensiva, a base e os tetos diminuem; resultados, custos, obrigações e avaliações conciliados também podem alterá-los. Base zero não autoriza novos compromissos. O cálculo da base não libera a reserva, elimina obrigações ou substitui a verificação separada de caixa livre, liquidez e demais limites antes de uma ordem.</p>
+        <p>O controle registra P, D, a base investível, as fontes e horários da avaliação, os compromissos e exposições considerados e os tetos aplicáveis à verificação. A base atualizada não zera o histórico de operações ou perdas do dia UTC. Sem avaliação e conciliação confiáveis, novas ordens não são autorizadas. Os percentuais abaixo permanecem inalterados; estes são requisitos do modelo, não cálculos de risco já implementados na demonstração.</p>
+      </div>
+    </section>
+  );
+}

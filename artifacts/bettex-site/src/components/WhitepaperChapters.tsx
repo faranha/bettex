@@ -11,6 +11,7 @@ import { ProfitAccounting } from '@/components/ProfitAccounting';
 import { DistributionCorrections } from '@/components/DistributionCorrections';
 import { DistributionSettlement } from '@/components/DistributionSettlement';
 import { ReservePolicy } from '@/components/ReservePolicy';
+import { InvestmentRiskBase } from '@/components/InvestmentRiskBase';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
@@ -191,9 +192,10 @@ export function ChapterContent({ index }: { index: number }) {
       return <>
         <div className="whitepaper__lead"><span>TESOURARIA · AJUSTES SUJEITOS À APROVAÇÃO</span><p><strong>A IA sugere ajustes nas regras da tesouraria e nos controles de risco; as sugestões entram em uma fila para execução e precisam de aprovação da liderança da Fundação BETTEX.</strong> O agente da tesouraria propõe otimizações em conjunto com os agentes de investimento, considerando reservas, liquidez e exposição. Essa evolução pode incluir os limites e percentuais apresentados nesta seção, mas nenhuma sugestão altera as regras antes de sua aprovação e execução.</p></div>
         <ReservePolicy />
+        <InvestmentRiskBase />
         <div className="whitepaper__prose">
           <p>Os controles aplicam as regras vigentes em cada momento. Enquanto uma sugestão aguarda aprovação ou execução, continuam valendo as regras anteriores. Cada mudança deve registrar a proposta, a justificativa, a aprovação da liderança da Fundação BETTEX, a execução e o momento de vigência. As verificações independentes de risco continuam obrigatórias para as operações dos agentes.</p>
-          <p>Os percentuais abaixo são <strong>parâmetros iniciais, cuja alteração depende de aprovação da liderança da Fundação BETTEX e execução registrada</strong>, e usam como base a <strong>metade investível da tesouraria</strong>, não o patrimônio inteiro. São tetos de risco, não percentuais fixos de distribuição dos investimentos entre mercados. Uma verificação central independente das estratégias deve recusar qualquer nova ordem que ultrapasse um limite vigente. <strong>Ordens pendentes contam</strong> nos compromissos e na exposição; registrar a ordem apenas depois de executá-la não basta. O total de exposições correlacionadas é consolidado entre mercados, mesmo quando conectores diferentes estejam envolvidos.</p>
+          <p>Os percentuais abaixo são <strong>parâmetros iniciais, cuja alteração depende de aprovação da liderança da Fundação BETTEX e execução registrada</strong>, e usam como base o <strong>patrimônio líquido atualizado da parcela investível</strong>, conforme a definição acima, não o patrimônio inteiro nem apenas o caixa livre. São tetos de risco, não percentuais fixos de distribuição dos investimentos entre mercados. Uma verificação central independente das estratégias deve recusar qualquer nova ordem que ultrapasse um limite vigente. <strong>Ordens pendentes contam</strong> nos compromissos e na exposição; registrar a ordem apenas depois de executá-la não basta. O total de exposições correlacionadas é consolidado entre mercados, mesmo quando conectores diferentes estejam envolvidos.</p>
         </div>
         <div className="whitepaper__limits">
           <div><span>01 / NOVOS COMPROMISSOS POR DIA</span><strong>2% <em>global</em> / 0,5% <em>por mercado</em></strong><p>Máximo somado das novas operações em cada dia UTC, monitorado pelo núcleo central de risco.</p></div>
