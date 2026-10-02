@@ -83,6 +83,7 @@
 .whitepaper__rule-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 32px; border: 1px solid #d9d3c0; background: #d9d3c0; }
 .whitepaper__rule-pair > div { padding: 25px; background: #F4F1E8; }
 .whitepaper__rule-pair p { margin-top: 12px; }
+.whitepaper__rule-pair[data-testid="documentacao-novas-vendas"] + .whitepaper__prose { margin-top: 32px; }
 .whitepaper__markets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 33px; border: 1px solid #d9d3c0; background: #d9d3c0; }
 .whitepaper__market-card { display: flex; min-width: 0; flex-direction: column; padding: 24px; background: #F4F1E8; }
 .whitepaper__market-top { display: flex; justify-content: space-between; gap: 12px; color: #2549ae; font: 700 10px var(--app-font-mono); }
