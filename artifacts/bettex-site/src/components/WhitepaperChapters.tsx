@@ -9,6 +9,7 @@ import { InvestmentAgents } from '@/components/InvestmentAgents';
 import { StakingDistribution } from '@/components/StakingDistribution';
 import { ProfitAccounting } from '@/components/ProfitAccounting';
 import { DistributionCorrections } from '@/components/DistributionCorrections';
+import { DistributionSettlement } from '@/components/DistributionSettlement';
 import { ReservePolicy } from '@/components/ReservePolicy';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
@@ -109,6 +110,7 @@ export function ChapterContent({ index }: { index: number }) {
           <div><span>04 / LIQUIDAÇÃO E SUPERVISÃO</span><strong>Serviços operacionais</strong><p>O backend concilia transferências de USDC e BETTEX e o recebimento do on-ramp externo; controles independentes verificam ordens e operadores autorizados aprovam intervenções críticas, pausas e conciliações.</p></div>
         </div>
         <ProfitAccounting />
+        <DistributionSettlement />
         <DistributionCorrections />
         <Subhead>Dados que precisam bater</Subhead>
         <div className="whitepaper__prose">

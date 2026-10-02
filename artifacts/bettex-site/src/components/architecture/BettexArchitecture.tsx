@@ -70,7 +70,7 @@ const fig2: Step[] = [
 const fig3: Step[] = [
   { title: 'Carteira BETTEX', text: 'Todo BETTEX disponível na carteira oficial do projeto conta a partir da confirmação do saldo.', tone: 'blue' },
   { title: 'Auto staking', text: 'A participação na piscina fechada é automática. Sem ativação manual nem depósito adicional de tokens.', tone: 'gold', id: 'node-bettex-auto-staking' },
-  { title: 'Rateio diário dos ganhos', text: 'A participação usa BETTEX disponível × tempo elegível na rodada UTC. A saída não apaga o peso anterior; ganhos são creditados na Carteira USDC.', tone: 'teal' },
+  { title: 'Rateio diário dos ganhos', text: 'A participação usa BETTEX disponível × tempo elegível na rodada UTC. A saída não apaga o peso anterior. O ganho autorizado fica pendente até a transferência à Carteira USDC ser confirmada e conciliada.', tone: 'teal' },
 ];
 const fig4: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Mantém as reservas e a parcela investível, separadas dos saldos pessoais.', tone: 'gold' },
@@ -96,8 +96,8 @@ const fig5: Step[] = [
 ];
 const fig6: Step[] = [
   { title: 'Parcela do staking', text: 'Parcela separada no desenho 5, com lucro distribuível, reservas e liquidez atendidas e soma dos pesos elegíveis positiva. Usa os pesos da rodada em que o split é autorizado, inclusive quando o lucro veio de retenção anterior.', tone: 'blue' },
-  { title: 'Crédito na Carteira USDC', text: 'A IA credita automaticamente a parcela individual na Carteira USDC, uma única vez. Nunca na Carteira BETTEX de staking.', tone: 'teal' },
-  { title: 'Saque em USDC', text: 'Transferência para carteira compatível. A taxa é paga em BETTEX e queimada; seu valor variável é informado antes da confirmação, separado do USDC e dos custos externos. Sem pagamento em moeda local.' },
+  { title: 'Crédito na Carteira USDC', text: 'O direito apurado fica como distribuição pendente. A IA transfere USDC à carteira do titular; só após confirmação e conciliação o valor recebido entra no saldo disponível, liquidando a obrigação uma única vez.', tone: 'teal' },
+  { title: 'Saque em USDC', text: 'Movimenta USDC já recebido para carteira compatível, sem pagar a distribuição novamente. A taxa é paga em BETTEX e queimada; seu valor variável é informado antes da confirmação, separado do USDC e dos custos externos. Sem pagamento em moeda local.' },
 ];
 const fig7: Step[] = [
   { title: 'Agentes de IA', text: 'A IA BETTEX coordena agentes que analisam oportunidades e propõem operações nos mercados.', tone: 'blue',
@@ -176,8 +176,9 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
           <p className="ba-fig__foot">Reter lucro não é um split e, por si só, não altera R ou B. Uma apuração futura pode liberar apenas o lucro ainda elegível, considerando perdas posteriores. Cada valor efetivamente considerado no split é consumido uma única vez em R e reconhecido em B, sem duplicar o crédito e sua liquidação.</p>
         </Figure>
 
-        <Figure id="figure-bettex-payout" num="6" title="Da parcela do staking ao saque em USDC" lead="Depois do split do desenho 5: parcela do staking → Carteira USDC → saque em USDC.">
-          <Steps steps={fig6} label="Parcela do staking já separada pela IA, crédito na Carteira USDC e saque em USDC" />
+        <Figure id="figure-bettex-payout" num="6" title="Da parcela do staking ao saque em USDC" lead="Depois do split do desenho 5: parcela do staking → recebimento confirmado na Carteira USDC → saque em USDC.">
+          <Steps steps={fig6} label="Parcela do staking já separada pela IA, distribuição pendente até recebimento confirmado na Carteira USDC e saque do USDC recebido" />
+          <p className="ba-fig__foot">O registro do direito à distribuição não é saldo on-chain recebido. A obrigação e o posterior pagamento têm efeito único na apuração; a interface não soma o pendente ao saldo já recebido. Custos de rede são identificados separadamente.</p>
         </Figure>
 
         <Figure id="figure-bettex-agents" num="7" title="Agentes de IA e conexões com os mercados" lead="Agentes de IA → conexões por MCP ou API → execução automática das operações autorizadas.">
