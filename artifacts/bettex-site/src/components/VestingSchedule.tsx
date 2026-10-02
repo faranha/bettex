@@ -1,5 +1,6 @@
 import { formatTokenCount, tokenomics } from '@/lib/tokenomics';
 import { vestingSchedule } from '@/lib/vesting';
+import { VestingChart } from '@/components/VestingChart';
 
 export function VestingSchedule() {
   return (
@@ -10,6 +11,7 @@ export function VestingSchedule() {
         <p>O vesting abrange <strong>toda a emissão de {formatTokenCount(tokenomics.maxSupply)} BETTEX</strong>, sem liberação integral antecipada de nenhuma destinação. No mês 36, os 500 milhões, 250 milhões e 250 milhões estarão integralmente liberados.</p>
         <p>As parcelas são distribuídas de forma uniforme, com pequenos ajustes de arredondamento para manter quantidades inteiras de tokens e a proporção exata de 50% / 25% / 25% em todos os meses. A agenda mostra <strong>tokens liberados, não tokens já vendidos</strong>. A venda pública continua sob gestão centralizada e sua receita em USDC vai para a tesouraria.</p>
       </div>
+      <VestingChart />
       <div className="whitepaper__vesting-scroll" role="region" aria-label="Agenda dos 36 meses, com rolagem horizontal e vertical" tabIndex={0}>
         <table className="whitepaper__vesting-table">
           <caption>Quantidades em BETTEX · mês 1 = abertura da venda pública</caption>
