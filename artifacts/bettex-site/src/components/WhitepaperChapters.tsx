@@ -21,6 +21,7 @@ import { RiskRuleTransitions } from '@/components/RiskRuleTransitions';
 import { CoordinatedProposals } from '@/components/CoordinatedProposals';
 import { AuthorizedOperationCosts } from '@/components/AuthorizedOperationCosts';
 import { QuoteValidity } from '@/components/QuoteValidity';
+import { ExecutionConditions } from '@/components/ExecutionConditions';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
@@ -219,6 +220,7 @@ export function ChapterContent({ index }: { index: number }) {
         <CoordinatedProposals />
         <AuthorizedOperationCosts />
         <QuoteValidity />
+        <ExecutionConditions />
         <RiskRuleTransitions />
         <DailyCommitments />
         <DailyRealizedLosses />
