@@ -16,6 +16,7 @@ import { OrderReservations } from '@/components/OrderReservations';
 import { OrderReconciliation } from '@/components/OrderReconciliation';
 import { DailyCommitments } from '@/components/DailyCommitments';
 import { DailyRealizedLosses } from '@/components/DailyRealizedLosses';
+import { FinancialEventTiming } from '@/components/FinancialEventTiming';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
@@ -213,6 +214,7 @@ export function ChapterContent({ index }: { index: number }) {
         <OrderReservations />
         <DailyCommitments />
         <DailyRealizedLosses />
+        <FinancialEventTiming />
         <OrderReconciliation />
       </>;
     case 7:
