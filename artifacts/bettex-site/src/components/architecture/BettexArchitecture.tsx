@@ -122,7 +122,7 @@ const fig8: Step[] = [
   { title: 'Registro público', text: 'Todas as transações têm registro aberto: horário, plataforma, ativo, quantidade, valores, custos, estado e referência auditável.', tone: 'teal', badge: 'Todas as transações', id: 'node-agents-public-transactions',
     extra: (
       <div className="ba-entry">
-        <div><strong>Da oportunidade à transação</strong><p>Coleta, comparação, decisão, investimento, execução, falhas, cancelamentos, liquidações e ajustes.</p></div>
+        <div><strong>Da oportunidade à transação</strong><p>Coleta, comparação, decisão, investimento, execução, resultado desconhecido, falhas, cancelamentos, liquidações e ajustes.</p></div>
       </div>
     ) },
 ];
@@ -191,6 +191,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
         <Figure id="figure-bettex-opportunities" num="8" title="Da coleta de oportunidades ao investimento e registro público" lead="Coleta oportunidades → compara e escolhe a melhor → investe com autorização → registra todo o ciclo abertamente.">
           <Steps steps={fig8} stacked label="Coleta de oportunidades nos mercados, comparação e decisão pela melhor oportunidade, investimento automático autorizado e registro público de todo o ciclo" />
           <p className="ba-fig__foot">O registro permite acompanhar quais oportunidades foram coletadas, quais foram selecionadas ou descartadas, os motivos da decisão e o valor investido. A escolha e a alocação são dinâmicas, sem parcelas fixas por mercado; somente operações aprovadas pelo risco seguem para investimento.</p>
+          <p className="ba-fig__foot">Sem resposta conclusiva após o envio, o resultado permanece desconhecido: capital e exposição continuam comprometidos, sem reenvio automático. Cancelamento solicitado não libera recursos; somente a parcela comprovadamente livre após conciliação pode ser liberada. Execução parcial é registrada uma vez, mantendo reservado o restante incerto.</p>
           <p className="ba-fig__foot">O registro aberto cobre todas as transações do projeto: vendas de tokens, operações de mercado, movimentações da tesouraria, distribuições e saques. Chaves privadas, credenciais e dados pessoais não são publicados.</p>
           <p className="ba-fig__foot">Resultados conciliados seguem para a verificação do desenho 5: reserva ou liquidez insuficiente, ou soma dos pesos elegíveis zero, mantém 100% do lucro temporariamente na tesouraria, sem split. A distribuição exige reservas e liquidez atendidas e pesos elegíveis positivos. Essa verificação rege a distribuição do lucro, não a liberação de tokens: as quantidades e os meses seguem o vesting predefinido de 36 meses, sem decisão discricionária da gestão.</p>
         </Figure>
