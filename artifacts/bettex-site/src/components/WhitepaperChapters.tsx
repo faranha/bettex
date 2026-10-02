@@ -8,6 +8,7 @@ import { TokenBurning } from '@/components/TokenBurning';
 import { InvestmentAgents } from '@/components/InvestmentAgents';
 import { StakingDistribution } from '@/components/StakingDistribution';
 import { ProfitAccounting } from '@/components/ProfitAccounting';
+import { DistributionCorrections } from '@/components/DistributionCorrections';
 import { ReservePolicy } from '@/components/ReservePolicy';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
@@ -107,6 +108,7 @@ export function ChapterContent({ index }: { index: number }) {
           <div><span>04 / LIQUIDAÇÃO E SUPERVISÃO</span><strong>Serviços operacionais</strong><p>O backend concilia transferências de USDC e BETTEX e o recebimento do on-ramp externo; controles independentes verificam ordens e operadores autorizados aprovam intervenções críticas, pausas e conciliações.</p></div>
         </div>
         <ProfitAccounting />
+        <DistributionCorrections />
         <Subhead>Dados que precisam bater</Subhead>
         <div className="whitepaper__prose">
           <p>Antes de cada operação, BETTEX reúne dados, probabilidades, preços, liquidez, execução, exposição e risco, compara oportunidades nos quatro mercados e prioriza as mais vantajosas segundo essas análises e os limites e reservas vigentes. A operação não é automática em todos os mercados; a análise orienta a decisão, mas não garante resultado.</p>
