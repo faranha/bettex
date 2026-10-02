@@ -1,0 +1,14 @@
+export function DailyCommitments() {
+  return (
+    <section id="documentacao-compromissos-diarios" aria-labelledby="compromissos-diarios-title">
+      <h4 id="compromissos-diarios-title" className="whitepaper__subhead">Acumulado diário e cancelamento de ordens</h4>
+      <div className="whitepaper__prose">
+        <p><strong>O acumulado diário soma os valores em USDC dos novos compromissos autorizados e com reserva registrada, uma única vez por operação.</strong> O registro pertence ao dia UTC em que a autorização e a reserva indivisíveis foram concluídas, antes do envio ao conector. A soma global respeita 2% da base investível atualizada e a soma de cada mercado respeita 0,5% dessa mesma base.</p>
+        <p><strong>Cancelar uma ordem não devolve a capacidade diária consumida por sua autorização.</strong> Mesmo com cancelamento ou não execução confirmados, o valor autorizado permanece integralmente no acumulado do dia original. Caixa e exposição são controles distintos: somente a parcela comprovadamente livre é liberada conforme a conciliação. A parte executada continua como posição ou compromisso; liberar capital não apaga o histórico diário.</p>
+        <p>Execução parcial não reduz o acumulado ao valor executado. Repetições do pedido, confirmações e consultas não somam o compromisso novamente. Um pedido recusado antes da autorização e do registro da reserva não entra na soma; uma falha que impeça concluir esse registro indivisível também não cria compromisso autorizado. Uma nova ordem autorizada após cancelamento constitui novo compromisso e entra na soma, sem substituir o anterior.</p>
+        <p><strong>A mudança do dia UTC inicia o acumulado do novo dia, mas não libera ordens nem posições antigas.</strong> Confirmações, execuções ou cancelamentos posteriores não transferem o compromisso anterior para o novo dia nem o contam outra vez. Reservas, posições e resultados desconhecidos continuam nos controles de caixa e exposição até sua conciliação; o bloqueio de novas ordens por divergência ou perda de comunicação permanece.</p>
+        <p>Os registros preservam identificador, valor autorizado, mercado e instante UTC da autorização, permitindo conferir as somas global e por mercado. A base atualizada não zera esses acumulados. Compromissos cancelados podem esgotar o teto diário mesmo sem execução; os percentuais não mudam. Esta é uma regra do modelo, não um contador financeiro já implementado na demonstração.</p>
+      </div>
+    </section>
+  );
+}
