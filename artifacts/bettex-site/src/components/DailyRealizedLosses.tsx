@@ -1,0 +1,14 @@
+export function DailyRealizedLosses() {
+  return (
+    <section id="documentacao-perda-diaria" aria-labelledby="perda-diaria-title">
+      <h4 id="perda-diaria-title" className="whitepaper__subhead">Perda líquida realizada e pausa diária</h4>
+      <div className="whitepaper__prose">
+        <p><strong>A perda diária usa o resultado líquido realizado e conciliado do dia UTC, após custos.</strong> Para cada escopo, perda diária = max(0, −resultado líquido realizado do dia). Não é a soma bruta de todas as operações perdedoras: ganhos realizados do mesmo escopo podem compensar perdas antes do bloqueio. Cada resultado e custo é registrado uma única vez.</p>
+        <p><strong>O cálculo global e o cálculo por mercado são separados.</strong> O global consolida os resultados realizados da operação da tesouraria e compara a perda líquida com 0,5% da base investível atualizada. Cada mercado considera seus próprios resultados e custos conciliados e compara sua perda líquida com 0,125% da mesma base. Ganhos de outro mercado podem integrar o resultado global, mas não reduzem a perda local nem eliminam a pausa daquele mercado.</p>
+        <p><strong>Ao atingir ou ultrapassar o teto, novas operações ficam pausadas naquele escopo até o próximo dia UTC.</strong> O registro da pausa permanece mesmo se ganhos posteriores reduzirem a perda líquida ou se a base investível aumentar. Pausa global impede novas operações em todos os mercados; pausa local impede novas operações no mercado afetado. Os resultados continuam sendo conciliados durante a pausa, sem apagar o motivo ou o momento do bloqueio.</p>
+        <p>Esse controle não é o acumulado de compromissos autorizados, o lucro ainda não consumido em R ou a base patrimonial B. Aportes, principal recuperado, venda pública de tokens e transferências não são resultado operacional realizado. Autorizar ou liquidar o split não zera a perda diária nem registra novamente o mesmo resultado ou pagamento como perda operacional. A compensação de perdas e a elegibilidade das distribuições continuam seguindo a apuração única já documentada.</p>
+        <p>Resultados desconhecidos e ganhos não realizados não podem ser usados como compensação realizada fictícia. Posições abertas continuam na avaliação patrimonial e nos controles de exposição; falta de conciliação mantém os bloqueios existentes. O próximo dia tem seu próprio resultado diário, mas não libera reservas, posições ou outras pausas de segurança automaticamente. Base zero continua impedindo novos compromissos por sua própria regra, sem ser tratada como perda realizada. Preservam-se os percentuais; estes são requisitos do modelo, não um controle financeiro já implementado na demonstração.</p>
+      </div>
+    </section>
+  );
+}
