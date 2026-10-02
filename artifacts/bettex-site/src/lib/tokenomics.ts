@@ -11,4 +11,13 @@ export const tokenomics = {
   vestingMonths: 36,
 } as const;
 
+// Current documentation rules. Keep the homepage's previous presentation unchanged.
+export const documentationTokenomics = {
+  maxSupply: 1_000_000_000,
+  publicSaleAllocation: 650_000_000,
+  teamAllocation: 200_000_000,
+  investorAllocation: 150_000_000,
+  vestingMonths: 36,
+} as const;
+
 export const formatTokenCount = (amount: number) => amount.toLocaleString('pt-BR');

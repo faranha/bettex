@@ -3,9 +3,9 @@ import { formatTokenCount } from '@/lib/tokenomics';
 import { vestingSchedule } from '@/lib/vesting';
 
 const series = [
-  { key: 'publicSale', label: 'Venda pública · 50%', color: '#0a256f' },
-  { key: 'team', label: 'Fundador e time · 25%', color: '#436dd0' },
-  { key: 'investors', label: 'Investidores e fundo · 25%', color: '#e6a920' },
+  { key: 'publicSale', label: 'Venda pública · 65%', color: '#0a256f' },
+  { key: 'team', label: 'Fundador · 20%', color: '#436dd0' },
+  { key: 'investors', label: 'Investidores · 15%', color: '#e6a920' },
 ] as const;
 
 const cumulative = { publicSale: 0, team: 0, investors: 0 };
