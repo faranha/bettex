@@ -80,14 +80,14 @@ const fig4: Step[] = [
 const fig5: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Autoriza a parcela investível para a IA, com alocação dinâmica e respeito à reserva defensiva e aos limites de risco.', tone: 'gold' },
   { title: 'IA BETTEX', text: 'Opera após aprovação independente de risco. Apura o lucro realizado líquido e limita o valor elegível ao ganho patrimonial acima da base, considerando posições abertas.', tone: 'blue', badge: 'Análise e apuração' },
-  { title: 'Reservas e liquidez antes do split', text: 'Verifica reserva defensiva mínima inicial de 50% do patrimônio líquido atualizado e caixa livre suficiente, antes e após a distribuição projetada.', tone: 'teal', badge: 'Prioridade às reservas', id: 'node-bettex-profit-split',
+  { title: 'Reservas, liquidez e elegibilidade', text: 'Verifica reserva defensiva mínima inicial de 50% do patrimônio líquido atualizado e caixa livre suficiente, antes e após a distribuição projetada. A soma dos pesos elegíveis da rodada deve ser positiva.', tone: 'teal', badge: 'Condições antes do split', id: 'node-bettex-profit-split',
     extra: (
       <>
         <div className="ba-entry" data-testid="node-bettex-reserve-recovery">
-          <div className="ba-split__treasury"><strong>Reserva ou liquidez insuficiente</strong><p>100% do lucro líquido permanece temporariamente na tesouraria para recomposição, sem pagamento nessa apuração. Um split futuro depende de nova apuração, perdas posteriores, reservas e liquidez; não é um crédito garantido.</p></div>
+          <div className="ba-split__treasury"><strong>Reserva ou liquidez insuficiente, ou soma dos pesos zero</strong><p>100% do lucro líquido permanece temporariamente na tesouraria, sem split nem pagamento nessa apuração. A retenção não consome R nem altera B por si só. Um split futuro depende de nova apuração, perdas posteriores, reservas, liquidez e pesos elegíveis positivos na rodada da liberação; não é um crédito garantido.</p></div>
         </div>
-        <p>Somente com reserva e liquidez atendidas antes e após a distribuição projetada, lucro elegível positivo e posições conciliadas, aplica o split sobre o valor elegível:</p>
-        <div className="ba-entry ba-split" aria-label="Split permitido apenas com reserva e liquidez atendidas antes e após a distribuição projetada">
+        <p>Somente com reserva e liquidez atendidas antes e após a distribuição projetada, lucro elegível positivo, posições conciliadas e soma dos pesos elegíveis positiva, aplica o split sobre o valor elegível:</p>
+        <div className="ba-entry ba-split" aria-label="Split permitido apenas com pesos elegíveis positivos, reserva e liquidez atendidas antes e após a distribuição projetada">
           <div className="ba-split__treasury"><strong>Tesouraria · 75%</strong><p>Recebe 75% do lucro elegível ao split.</p></div>
           <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Pago na Carteira USDC dos participantes elegíveis, nunca na Carteira BETTEX.</p></div>
         </div>
@@ -95,7 +95,7 @@ const fig5: Step[] = [
     ) },
 ];
 const fig6: Step[] = [
-  { title: 'Parcela do staking', text: 'Parcela separada no desenho 5, com lucro distribuível e reservas atendidas. Usa os pesos da rodada em que o split é autorizado, inclusive quando o lucro veio de retenção anterior.', tone: 'blue' },
+  { title: 'Parcela do staking', text: 'Parcela separada no desenho 5, com lucro distribuível, reservas e liquidez atendidas e soma dos pesos elegíveis positiva. Usa os pesos da rodada em que o split é autorizado, inclusive quando o lucro veio de retenção anterior.', tone: 'blue' },
   { title: 'Crédito na Carteira USDC', text: 'A IA credita automaticamente a parcela individual na Carteira USDC, uma única vez. Nunca na Carteira BETTEX de staking.', tone: 'teal' },
   { title: 'Saque em USDC', text: 'Transferência para carteira compatível. A taxa é paga em BETTEX e queimada; seu valor variável é informado antes da confirmação, separado do USDC e dos custos externos. Sem pagamento em moeda local.' },
 ];
@@ -160,6 +160,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
           <Steps steps={fig3} label="BETTEX disponível na carteira, auto staking e rateio diário por quantidade e tempo, pago na Carteira USDC" />
           <p className="ba-fig__foot">Vender ou retirar interrompe o acúmulo sobre a quantidade que saiu, mas preserva o peso do período elegível anterior à saída. Entradas contam a partir da confirmação do saldo, sem participação em períodos anteriores. O rateio usa o peso individual dividido pela soma dos pesos da rodada. Os ganhos são pagos sempre na Carteira USDC, nunca na Carteira BETTEX de staking.</p>
           <p className="ba-fig__foot">A piscina exige acesso ao aplicativo, mas não uma sessão continuamente aberta.</p>
+          <p className="ba-fig__foot">Soma dos pesos elegíveis zero impede o split e mantém 100% temporariamente na tesouraria. Saldo atual zero não apaga os pesos acumulados antes de uma saída durante a rodada.</p>
           <p className="ba-fig__foot">Lucro retido para recomposição não cria crédito individual. Quando houver liberação, o rateio usa os pesos da rodada em cuja apuração o split é autorizado, não pesos antigos. Participantes novos podem receber lucros anteriores; atraso no pagamento de um split já autorizado não muda seus pesos.</p>
         </Figure>
 
@@ -168,8 +169,8 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
           <p className="ba-fig__foot">O contrato aplica reservas, limites e permissões à movimentação do capital.</p>
         </Figure>
 
-        <Figure id="figure-bettex-risk" num="5" title="Tesouraria, reservas e split dos ganhos" lead="Tesouraria → IA BETTEX → verifica reservas: retorna o lucro à tesouraria ou libera o split.">
-          <Steps steps={fig5} label="IA apura lucro, verifica reservas e retorna 100% à tesouraria se insuficientes; só com reservas atendidas aplica o split de 75% para tesouraria e 25% para staking" />
+        <Figure id="figure-bettex-risk" num="5" title="Tesouraria, reservas e split dos ganhos" lead="Tesouraria → IA BETTEX → verifica reservas, liquidez e pesos elegíveis: retém o lucro ou libera o split.">
+          <Steps steps={fig5} label="IA apura lucro, verifica reservas, liquidez e pesos elegíveis; se alguma condição falhar, retém 100% sem split; com condições atendidas aplica 75% para tesouraria e 25% para staking" />
           <p className="ba-fig__foot">A recomposição das reservas tem prioridade sobre o staking. Se a tesouraria estiver abaixo das reservas exigidas, todo o lucro líquido dessa apuração retorna à tesouraria, sem pagamento ao staking. Somente com as reservas atendidas e as demais condições cumpridas, a IA aplica o split diretamente, sem enviar todo o lucro primeiro à tesouraria. O lucro líquido é realizado e conciliado, após custos e perdas anteriores; o capital investido não entra no split.</p>
           <p className="ba-fig__foot">Reter lucro não é um split e, por si só, não altera R ou B. Uma apuração futura pode liberar apenas o lucro ainda elegível, considerando perdas posteriores. Cada valor efetivamente considerado no split é consumido uma única vez em R e reconhecido em B, sem duplicar o crédito e sua liquidação.</p>
         </Figure>
@@ -188,7 +189,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
           <Steps steps={fig8} stacked label="Coleta de oportunidades nos mercados, comparação e decisão pela melhor oportunidade, investimento automático autorizado e registro público de todo o ciclo" />
           <p className="ba-fig__foot">O registro permite acompanhar quais oportunidades foram coletadas, quais foram selecionadas ou descartadas, os motivos da decisão e o valor investido. A escolha e a alocação são dinâmicas, sem parcelas fixas por mercado; somente operações aprovadas pelo risco seguem para investimento.</p>
           <p className="ba-fig__foot">O registro aberto cobre todas as transações do projeto: vendas de tokens, operações de mercado, movimentações da tesouraria, distribuições e saques. Chaves privadas, credenciais e dados pessoais não são publicados.</p>
-          <p className="ba-fig__foot">Resultados conciliados seguem para a verificação de reservas do desenho 5: se insuficientes, o lucro retorna integralmente à tesouraria; somente com reservas atendidas há split para o staking. Essa verificação rege a distribuição do lucro, não a liberação de tokens: as quantidades e os meses seguem o vesting predefinido de 36 meses, sem decisão discricionária da gestão.</p>
+          <p className="ba-fig__foot">Resultados conciliados seguem para a verificação do desenho 5: reserva ou liquidez insuficiente, ou soma dos pesos elegíveis zero, mantém 100% do lucro temporariamente na tesouraria, sem split. A distribuição exige reservas e liquidez atendidas e pesos elegíveis positivos. Essa verificação rege a distribuição do lucro, não a liberação de tokens: as quantidades e os meses seguem o vesting predefinido de 36 meses, sem decisão discricionária da gestão.</p>
         </Figure>
       </div>
     </figure>
