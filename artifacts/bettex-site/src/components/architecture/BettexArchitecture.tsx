@@ -79,16 +79,16 @@ const fig4: Step[] = [
 ];
 const fig5: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Autoriza a parcela investível para a IA, com alocação dinâmica e respeito à reserva defensiva e aos limites de risco.', tone: 'gold' },
-  { title: 'IA BETTEX', text: 'Analisa oportunidades e opera após aprovação independente de risco. Apura o lucro líquido realizado, após custos, perdas anteriores e conciliação.', tone: 'blue', badge: 'Análise e operação' },
+  { title: 'IA BETTEX', text: 'Opera após aprovação independente de risco. Apura o lucro realizado líquido e limita o valor elegível ao ganho patrimonial acima da base, considerando posições abertas.', tone: 'blue', badge: 'Análise e apuração' },
   { title: 'Reservas antes do split', text: 'Antes de distribuir qualquer lucro, a IA verifica se as reservas exigidas da tesouraria estão atendidas.', tone: 'teal', badge: 'Prioridade às reservas', id: 'node-bettex-profit-split',
     extra: (
       <>
         <div className="ba-entry" data-testid="node-bettex-reserve-recovery">
           <div className="ba-split__treasury"><strong>Reservas insuficientes</strong><p>100% do lucro líquido retorna à tesouraria para recompor as reservas. Não há pagamento ao staking nessa apuração.</p></div>
         </div>
-        <p>Somente com reservas atendidas, aplica o split:</p>
+        <p>Somente com reservas atendidas, lucro elegível positivo e posições conciliadas, aplica o split sobre o valor elegível:</p>
         <div className="ba-entry ba-split" aria-label="Split permitido apenas com reservas da tesouraria atendidas">
-          <div className="ba-split__treasury"><strong>Tesouraria · 75%</strong><p>Recebe a parcela restante do lucro líquido.</p></div>
+          <div className="ba-split__treasury"><strong>Tesouraria · 75%</strong><p>Recebe 75% do lucro elegível ao split.</p></div>
           <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Pago na Carteira USDC dos participantes elegíveis, nunca na Carteira BETTEX.</p></div>
         </div>
       </>

@@ -1,0 +1,16 @@
+export function ProfitAccounting() {
+  return (
+    <section id="documentacao-apuracao" aria-labelledby="apuracao-title">
+      <h4 id="apuracao-title" className="whitepaper__subhead">Apuração do lucro e perdas nas posições abertas</h4>
+      <div className="whitepaper__prose">
+        <p><strong>Lucro realizado positivo, isoladamente, não autoriza a distribuição.</strong> Antes do split, a apuração considera o resultado realizado líquido e o valor atualizado das posições abertas, descontando custos e obrigações. Ganhos não realizados não são, por si só, distribuíveis. Todas as grandezas são conciliadas e expressas em USDC.</p>
+        <p><strong>R</strong> é o lucro realizado líquido acumulado, após custos e compensação de perdas anteriores, ainda não considerado em splits anteriores. <strong>P</strong> é o patrimônio líquido atualizado da tesouraria, incluindo posições abertas e descontando obrigações. Carteiras pessoais não são patrimônio da tesouraria.</p>
+        <p><strong>B</strong> é a base patrimonial de referência: acompanha os aportes efetivos à tesouraria e os lucros já considerados no split, descontando os pagamentos aos participantes. Aportes não são lucro; registrar novamente o mesmo aporte, lucro, perda ou pagamento não pode alterar a base uma segunda vez. Custos e obrigações não podem ser descontados duas vezes.</p>
+        <p><strong>Lucro elegível ao split = máximo entre zero e o menor valor entre R e (P − B).</strong> Se R ou P − B for zero ou negativo, não há distribuição. O cálculo limita o lucro realizado pelo ganho patrimonial líquido acima da base de referência; uma venda com lucro não permite ignorar perdas nas posições ainda abertas.</p>
+        <p>A apuração deve reconciliar a passagem de uma posição aberta para um resultado realizado, sem duplicar a perda ou o ganho. A contabilização dos pagamentos e das obrigações correspondentes deve ser consistente entre P e B, sem considerar a liquidação de uma obrigação já registrada como uma nova perda.</p>
+        <p>Exemplo: com base de US$ 100.000, ganho realizado de US$ 1.000 e perda de US$ 5.000 nas posições abertas, o patrimônio líquido é US$ 96.000, supondo ausência de outros movimentos. Como P − B é negativo, não há lucro elegível ao split, apesar do ganho realizado.</p>
+        <p><strong>Sem avaliação confiável das posições, a distribuição fica suspensa até conciliação.</strong> A apuração registra fontes de preço, horários, posições, custos, obrigações, R, P, B e o valor elegível. A regra contábil não altera os 75% / 25% nem elimina a prioridade das reservas: o split continua condicionado às reservas atendidas. Estes são requisitos a validar antes da operação, não cálculos financeiros já implementados na demonstração.</p>
+      </div>
+    </section>
+  );
+}
