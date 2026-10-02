@@ -29,7 +29,7 @@ const notes: Record<ArchitectureFigureNumber, IntegrationNote[]> = {
   '5': [
     { brand: 'allora', placement: 'Etapa 2 · Análise da IA', description: 'Inferências opcionais ajudam a avaliar oportunidades. Allora não executa ordens nem decide o split.' },
     { brand: 'robinhood', placement: 'Etapa 2 · Operações de mercado', description: 'Possível conector de dados e ordens de cripto na conta operacional, após aprovação de risco. Não paga o staking.' },
-    { brand: 'arbitrum', placement: 'Etapa 3 · Movimentações em USDC', description: 'Referências on-chain de transferências compatíveis. Reservas insuficientes destinam todo o lucro à tesouraria, sem pagamento ao staking.' },
+    { brand: 'arbitrum', placement: 'Etapa 3 · Movimentações em USDC', description: 'Referências on-chain de transferências compatíveis. Reservas insuficientes mantêm todo o lucro temporariamente na tesouraria, sem pagamento nessa apuração; uma liberação futura exige nova verificação.' },
   ],
   '6': [
     { brand: 'arbitrum', placement: 'Crédito e saque em USDC', description: 'O crédito é registrado no livro contábil BETTEX. O saque usa uma transferência on-chain de USDC compatível, confirmada e conciliada na rede.' },
