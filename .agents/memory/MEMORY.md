@@ -6,5 +6,6 @@
 - [Content source precedence](content-source-precedence.md) — approved product rules take precedence over stale whitepaper economics in the Git baseline.
 - [Revisable hero artwork](revisable-hero-artwork.md) — replace the whole diagram layer when changing coverage; partial overlays can look disconnected.
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
-- [Regras da tesouraria](treasury-rule-evolution.md) — agente próprio de IA otimizará regimentos internos em conjunto com os agentes de investimento.
+- [Regras da tesouraria](treasury-rule-evolution.md) — sugestões da IA entram em fila e só são executadas após aprovação da liderança da Fundação.
+- [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
 - [Identidade econômica](bettex-economic-identity.md) — o criador define a BETTEX, em última análise, como um fundo de investimentos.
