@@ -3,13 +3,14 @@ import { tokenomics, formatTokenCount } from '@/lib/tokenomics';
 import { BettexArchitecture } from '@/components/architecture/BettexArchitecture';
 import { ArbitrumFlowDiagram } from '@/components/docs-diagrams/ArbitrumFlowDiagram';
 import { RobinhoodFlowDiagram } from '@/components/docs-diagrams/RobinhoodFlowDiagram';
+import { VestingSchedule } from '@/components/VestingSchedule';
 
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação inicial em USDC, participação automática e controles.' },
   { id: 'documentacao-rede', title: 'Arbitrum e ativos', subtitle: 'Arbitrum One, carteira do titular, USDC e entrada por on-ramp externo.' },
   { id: 'documentacao-acesso', title: 'Acesso ao aplicativo', subtitle: 'Carteira gerada com a conta, acesso e autorização de ações financeiras.' },
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Oito fluxos: agentes por MCP e APIs, inferências Allora, coleta de oportunidades, decisão de investimento e registro público.' },
-  { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Teto, parcelas e decisão centralizada de novas vendas conforme as reservas, com receita destinada à tesouraria.' },
+  { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Emissão de 1 bilhão, vesting mensal de 36 meses em 50% / 25% / 25% e venda pública sob gestão centralizada.' },
   { id: 'documentacao-carteiras', title: 'Saldos USDC e BETTEX', subtitle: 'Dois ativos separados e registros contábeis, com todo BETTEX disponível na carteira oficial do projeto elegível automaticamente.' },
   { id: 'documentacao-staking', title: 'Participação automática', subtitle: 'BETTEX em staking participa da próxima rodada se permanecer até o pagamento. Ganhos sempre na Carteira USDC.' },
   { id: 'documentacao-tesouraria', title: 'Tesouraria e estratégias de mercado', subtitle: 'Alocação de recursos entre mercados e execução supervisionada pelo agente BETTEX.' },
@@ -146,7 +147,7 @@ export function ChapterContent({ index }: { index: number }) {
         </div>
         <Subhead>Regras e requisitos de emissão</Subhead>
         <div className="whitepaper__rule-pair" data-testid="documentacao-novas-vendas">
-           <div><span>EMISSÃO E VENDA / GESTÃO CENTRALIZADA</span><p>Por enquanto, o controle da emissão de novos BETTEX, a abertura de vendas e a definição de quantos tokens ofertar são <strong>centralizados na gestão do projeto</strong>. Essas decisões consideram o equilíbrio e a recomposição das reservas da BETTEX, respeitando o teto total de emissão e as parcelas aprovadas. A automação dos agentes não torna essas decisões descentralizadas.</p></div>
+           <div><span>EMISSÃO E VENDA / GESTÃO CENTRALIZADA</span><p>Por enquanto, o controle da emissão de novos BETTEX e das vendas é <strong>centralizado na gestão do projeto</strong>. Toda a emissão segue a agenda de liberação mensal durante 36 meses, na proporção de 50% / 25% / 25%. As ofertas para equilibrar as reservas respeitam os tokens já liberados para venda pública e o teto total. A automação dos agentes não torna essas decisões descentralizadas.</p></div>
           <div><span>USDC DAS VENDAS → TESOURARIA</span><p><strong>100% do USDC recebido nessas vendas vai para a tesouraria do projeto, nunca para carteiras individuais.</strong> O comprador recebe os tokens na Carteira BETTEX. A receita de venda é separada dos ganhos pagos ao staking nas Carteiras USDC.</p></div>
         </div>
         <div className="whitepaper__prose">
@@ -154,9 +155,7 @@ export function ChapterContent({ index }: { index: number }) {
           <p>A compra na venda primária pelo projeto é liquidada em USDC e só é concluída após confirmação conciliada. O débito de USDC e o crédito da quantidade inteira de BETTEX devem ser registrados juntos e uma única vez; o saldo BETTEX disponível na carteira oficial passa a participar automaticamente do staking. Essa aquisição não é uma operação de mercado dos agentes. A tela de compra não envia tokens a uma carteira externa escolhida na hora; o crédito é lançado na carteira gerada com a conta. Recibos devem identificar preço em USDC, custos, quantidade e conta.</p>
           <p><strong>BETTEX tem exclusivamente a função de staking, sem negociação secundária ou uso nas operações dos agentes.</strong> Novas versões aprofundarão os mecanismos de custódia das chaves administrativas, aprovação de mudanças e atualização. Auditoria independente permanece um requisito da implementação.</p>
         </div>
-        <div className="whitepaper__timeline" data-testid="documentacao-venda-publica">
-          <div><span>VENDA PÚBLICA / 50% DA EMISSÃO</span><h4>{formatTokenCount(tokenomics.publicSaleAllocation)} BETTEX</h4><p>Destinados à venda primária pelo projeto, com liquidação em USDC. A gestão centralizada define a abertura e a quantidade de cada nova oferta conforme o equilíbrio das reservas, dentro dessa destinação e do teto total. Não há divisão fixa entre pré-venda e lançamento nem calendário fixo de vendas nesta documentação.</p></div>
-        </div>
+        <VestingSchedule />
         <div className="whitepaper__rule-pair"><div><span>FUNDADOR E TIME / 25%</span><p><strong>{formatTokenCount(tokenomics.teamAllocation)} BETTEX</strong> reservados ao fundador e ao time.</p></div><div><span>INVESTIDORES E FUNDO / 25%</span><p><strong>{formatTokenCount(tokenomics.investorAllocation)} BETTEX</strong> para investidores externos, rodadas de investimento e capitalização do fundo.</p></div></div>
         <div className="whitepaper__aside-callout"><span>REQUISITOS DE VENDA</span><p>A compra é paga em USDC confirmado. Quem entra com fiat primeiro adquire USDC por on-ramp externo, sujeito à cotação e aos custos do provedor. A oferta deve informar o preço em USDC e os custos aplicáveis antes da confirmação, sem presumir equivalência entre valores nominais de moedas diferentes. O processamento depende de controles operacionais e autorização jurídica.</p></div>
       </>;
