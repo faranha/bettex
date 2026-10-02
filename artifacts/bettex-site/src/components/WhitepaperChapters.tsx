@@ -130,6 +130,12 @@ export function ChapterContent({ index }: { index: number }) {
           <p>Esses sinais entram na camada de análise junto de preços, probabilidades, liquidez e exposição. A decisão permanece no núcleo BETTEX, com aprovação independente de risco antes de qualquer ordem. Allora não controla a carteira, não executa pagamentos ou ordens e não autentica o usuário. A consulta por API é uma integração possível do backend, não uma afirmação de integração on-chain já validada na Arbitrum.</p>
           <p>Referência técnica: <a href="https://docs.allora.network/get-started/quickstart-consume" target="_blank" rel="noopener noreferrer">consumo de inferências na documentação oficial da Allora</a>.</p>
         </div>
+        <Subhead>Expansão futura das integrações e dos agentes</Subhead>
+        <div className="whitepaper__prose" id="documentacao-expansao-integracoes">
+          <p>As integrações com <strong>plataformas de trading e casas de apostas</strong> serão ampliadas futuramente, junto com o desenvolvimento de agentes mais complexos e especializados. Essa expansão inclui conectores de dados e execução para os mercados atendidos pela BETTEX.</p>
+          <p>Serão desenvolvidos agentes específicos para <strong>surebetting</strong>, com comparação de cotações e coordenação de apostas entre casas, e para <strong>uso de promoções em cassinos</strong>, com análise das condições de cada oferta, requisitos de aposta e regras de elegibilidade.</p>
+          <p>Esses desenvolvimentos fazem parte da expansão futura, não de integrações já ativas. Os novos agentes e conectores seguirão os mesmos controles de autorização, risco e reservas, com regras e transações públicas. <strong>O token BETTEX permanece exclusivo para staking</strong> e não será usado como capital de trading, apostas ou promoções.</p>
+        </div>
       </>;
     case 4:
       return <>
