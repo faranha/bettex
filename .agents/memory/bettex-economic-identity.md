@@ -13,4 +13,4 @@ O criador quer constituir a BETTEX na Sérvia e confirmou que se refere ao país
 
 **Why:** Essa é a definição econômica do projeto dada pelo usuário, que corrigiu uma avaliação que complicava sua proposta.
 
-**How to apply:** Explicar e avaliar a BETTEX a partir desse mecanismo simples, sem atribuir sofisticação ou adicionar camadas não solicitadas. Distinguir simplicidade do conceito de requisitos de execução quando pertinente. A declaração não comprova constituição jurídica como fundo, nem define automaticamente cotas, direito de resgate ou propriedade da tesouraria; esses elementos precisam ser estabelecidos separadamente.
+**How to apply:** Explicar e avaliar a BETTEX a partir desse mecanismo simples, sem atribuir sofisticação ou adicionar camadas não solicitadas. Distinguir simplicidade do conceito de requisitos de execução quando pertinente. A declaração não comprova constituição jurídica como fundo. Para direitos dos titulares e financiamento, usar as definições posteriores do criador registradas em replit.md; não reapresentar a ausência de definição na declaração original como se esses pontos continuassem necessariamente em aberto.
