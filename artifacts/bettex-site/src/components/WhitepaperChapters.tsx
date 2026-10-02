@@ -27,6 +27,7 @@ import { RiskReducingClosures } from '@/components/RiskReducingClosures';
 import { RiskStateRecovery } from '@/components/RiskStateRecovery';
 import { RiskPrecision } from '@/components/RiskPrecision';
 import { AuthorizedRequestIntegrity } from '@/components/AuthorizedRequestIntegrity';
+import { OutOfOrderResponses } from '@/components/OutOfOrderResponses';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
@@ -235,6 +236,7 @@ export function ChapterContent({ index }: { index: number }) {
         <RiskReducingClosures />
         <FinancialEventTiming />
         <OrderReconciliation />
+        <OutOfOrderResponses />
       </>;
     case 7:
       return <>
