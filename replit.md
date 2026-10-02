@@ -1,5 +1,7 @@
 # BETTEX
 
+- Regra confirmada para a documentação técnica: BETTEX serve exclusivamente para staking e determinação da participação nas distribuições. A venda primária pelo projeto continua existindo para formar/equilibrar reservas; não há negociação secundária nem uso do token nas operações dos agentes ou como meio de pagamento. Movimentos financeiros e ganhos usam USDC. Essa regra substitui referências anteriores à liberação de BETTEX para trading após as ofertas. Preservar os direitos de retirada da carteira do titular e manter a homepage intocada.
+
 Site da BETTEX, projeto de investimento com quatro agentes especializados em mercados diferentes, voltado ao apostador brasileiro adulto. A página inicial é uma landing page de apresentação; a seção de demonstração usa saldos e operações locais de exemplo.
 
 ## Diretiva editorial para todos os agentes
