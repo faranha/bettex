@@ -1,18 +1,19 @@
-import { tokenomics } from './tokenomics';
+import { documentationTokenomics as tokenomics } from './tokenomics';
 
-// Release whole-token groups of 2:1:1, preserving 50%/25%/25% every month.
+// Release whole-token groups of 13:4:3, preserving 65%/20%/15% every month.
 // Cumulative rounding spreads the indivisible remainder across the 36 months.
+const totalGroups = tokenomics.maxSupply / 20;
 export const vestingSchedule = Array.from({ length: tokenomics.vestingMonths }, (_, index) => {
   const month = index + 1;
-  const cumulativeQuarter = Math.floor(tokenomics.teamAllocation * month / tokenomics.vestingMonths);
-  const previousQuarter = Math.floor(tokenomics.teamAllocation * index / tokenomics.vestingMonths);
-  const quarter = cumulativeQuarter - previousQuarter;
+  const cumulativeGroups = Math.floor(totalGroups * month / tokenomics.vestingMonths);
+  const previousGroups = Math.floor(totalGroups * index / tokenomics.vestingMonths);
+  const groups = cumulativeGroups - previousGroups;
   return {
     month,
-    publicSale: quarter * 2,
-    team: quarter,
-    investors: quarter,
-    total: quarter * 4,
-    cumulative: cumulativeQuarter * 4,
+    publicSale: groups * 13,
+    team: groups * 4,
+    investors: groups * 3,
+    total: groups * 20,
+    cumulative: cumulativeGroups * 20,
   };
 });
