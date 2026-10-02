@@ -84,7 +84,7 @@ const fig5: Step[] = [
     extra: (
       <>
         <div className="ba-entry" data-testid="node-bettex-reserve-recovery">
-          <div className="ba-split__treasury"><strong>Reserva ou liquidez insuficiente</strong><p>100% do lucro líquido é destinado à tesouraria para recomposição. Não há pagamento ao staking nem distribuição de saldo restante nessa apuração.</p></div>
+          <div className="ba-split__treasury"><strong>Reserva ou liquidez insuficiente</strong><p>100% do lucro líquido permanece temporariamente na tesouraria para recomposição, sem pagamento nessa apuração. Um split futuro depende de nova apuração, perdas posteriores, reservas e liquidez; não é um crédito garantido.</p></div>
         </div>
         <p>Somente com reserva e liquidez atendidas antes e após a distribuição projetada, lucro elegível positivo e posições conciliadas, aplica o split sobre o valor elegível:</p>
         <div className="ba-entry ba-split" aria-label="Split permitido apenas com reserva e liquidez atendidas antes e após a distribuição projetada">
@@ -95,7 +95,7 @@ const fig5: Step[] = [
     ) },
 ];
 const fig6: Step[] = [
-  { title: 'Parcela do staking', text: 'Parcela já separada pela IA no desenho 5, somente com lucro distribuível e reservas atendidas. Segue diretamente para os participantes elegíveis.', tone: 'blue' },
+  { title: 'Parcela do staking', text: 'Parcela separada no desenho 5, com lucro distribuível e reservas atendidas. Usa os pesos da rodada em que o split é autorizado, inclusive quando o lucro veio de retenção anterior.', tone: 'blue' },
   { title: 'Crédito na Carteira USDC', text: 'A IA credita automaticamente a parcela individual na Carteira USDC, uma única vez. Nunca na Carteira BETTEX de staking.', tone: 'teal' },
   { title: 'Saque em USDC', text: 'Transferência para carteira compatível. A taxa é paga em BETTEX e queimada; seu valor variável é informado antes da confirmação, separado do USDC e dos custos externos. Sem pagamento em moeda local.' },
 ];
@@ -160,6 +160,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
           <Steps steps={fig3} label="BETTEX disponível na carteira, auto staking e rateio diário por quantidade e tempo, pago na Carteira USDC" />
           <p className="ba-fig__foot">Vender ou retirar interrompe o acúmulo sobre a quantidade que saiu, mas preserva o peso do período elegível anterior à saída. Entradas contam a partir da confirmação do saldo, sem participação em períodos anteriores. O rateio usa o peso individual dividido pela soma dos pesos da rodada. Os ganhos são pagos sempre na Carteira USDC, nunca na Carteira BETTEX de staking.</p>
           <p className="ba-fig__foot">A piscina exige acesso ao aplicativo, mas não uma sessão continuamente aberta.</p>
+          <p className="ba-fig__foot">Lucro retido para recomposição não cria crédito individual. Quando houver liberação, o rateio usa os pesos da rodada em cuja apuração o split é autorizado, não pesos antigos. Participantes novos podem receber lucros anteriores; atraso no pagamento de um split já autorizado não muda seus pesos.</p>
         </Figure>
 
         <Figure id="figure-bettex-ai-contract" num="4" title="Tesouraria conectada ao agente de IA BETTEX" lead="O smart contract do agente de IA BETTEX conecta a tesouraria às regras de operação e autorização do capital.">
@@ -170,6 +171,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
         <Figure id="figure-bettex-risk" num="5" title="Tesouraria, reservas e split dos ganhos" lead="Tesouraria → IA BETTEX → verifica reservas: retorna o lucro à tesouraria ou libera o split.">
           <Steps steps={fig5} label="IA apura lucro, verifica reservas e retorna 100% à tesouraria se insuficientes; só com reservas atendidas aplica o split de 75% para tesouraria e 25% para staking" />
           <p className="ba-fig__foot">A recomposição das reservas tem prioridade sobre o staking. Se a tesouraria estiver abaixo das reservas exigidas, todo o lucro líquido dessa apuração retorna à tesouraria, sem pagamento ao staking. Somente com as reservas atendidas e as demais condições cumpridas, a IA aplica o split diretamente, sem enviar todo o lucro primeiro à tesouraria. O lucro líquido é realizado e conciliado, após custos e perdas anteriores; o capital investido não entra no split.</p>
+          <p className="ba-fig__foot">Reter lucro não é um split e, por si só, não altera R ou B. Uma apuração futura pode liberar apenas o lucro ainda elegível, considerando perdas posteriores. Cada valor efetivamente considerado no split é consumido uma única vez em R e reconhecido em B, sem duplicar o crédito e sua liquidação.</p>
         </Figure>
 
         <Figure id="figure-bettex-payout" num="6" title="Da parcela do staking ao saque em USDC" lead="Depois do split do desenho 5: parcela do staking → Carteira USDC → saque em USDC.">
