@@ -12,6 +12,25 @@ export function ProfitAccounting() {
         <p>Quando as condições forem atendidas, o lucro elegível é recalculado e recebe o split de 75% / 25%. Somente o valor efetivamente considerado nesse split é retirado de R e incorporado a B, descontada a parcela atribuída aos participantes de forma consistente com seu reconhecimento em P. O crédito ou a obrigação e sua posterior liquidação não podem consumir o lucro nem reduzir P e B duas vezes. O rateio usa os pesos da <strong>rodada diária UTC em cuja apuração o split é autorizado</strong>, não os pesos da rodada em que o lucro foi originalmente obtido.</p>
         <p>A apuração deve reconciliar a passagem de uma posição aberta para um resultado realizado, sem duplicar a perda ou o ganho. A contabilização dos pagamentos e das obrigações correspondentes deve ser consistente entre P e B, sem considerar a liquidação de uma obrigação já registrada como uma nova perda.</p>
         <p>Exemplo: com base de US$ 100.000, ganho realizado de US$ 1.000 e perda de US$ 5.000 nas posições abertas, o patrimônio líquido é US$ 96.000, supondo ausência de outros movimentos. Como P − B é negativo, não há lucro elegível ao split, apesar do ganho realizado.</p>
+        <p id="apuracao-exemplo"><strong>Exemplo sequencial de compensação de perdas.</strong> Os valores abaixo estão em USDC, após cada etapa, partindo de um aporte efetivo de 100.000 à tesouraria. Todos os resultados são realizados e líquidos de custos, sem outros movimentos ou posições abertas. Nos dois splits, a reserva defensiva mínima e a liquidez estão atendidas antes e após a distribuição projetada.</p>
+        <div className="whitepaper__vesting-scroll" role="region" aria-labelledby="apuracao-exemplo" tabIndex={0}>
+          <table className="whitepaper__vesting-table">
+            <caption>R, P e B após cada etapa · elegível = max(0, min(R, P − B)) · valores em USDC</caption>
+            <thead>
+              <tr><th scope="col">Etapa</th><th scope="col">R</th><th scope="col">P</th><th scope="col">B</th><th scope="col">Elegível restante</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">1 · Aporte de 100.000</th><td>0</td><td>100.000</td><td>100.000</td><td>0</td></tr>
+              <tr><th scope="row">2 · Lucro de 1.000</th><td>1.000</td><td>101.000</td><td>100.000</td><td>1.000</td></tr>
+              <tr><th scope="row">3 · Split: 250 ao staking; 750 retidos</th><td>0</td><td>100.750</td><td>100.750</td><td>0</td></tr>
+              <tr><th scope="row">4 · Perda de 500</th><td>−500</td><td>100.250</td><td>100.750</td><td>0</td></tr>
+              <tr><th scope="row">5 · Recuperação de 500</th><td>0</td><td>100.750</td><td>100.750</td><td>0</td></tr>
+              <tr><th scope="row">6 · Novo lucro de 200</th><td>200</td><td>100.950</td><td>100.750</td><td>200</td></tr>
+              <tr><th scope="row">7 · Split: 50 ao staking; 150 retidos</th><td>0</td><td>100.900</td><td>100.900</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Os splits consomem uma única vez os lucros elegíveis de 1.000 e 200. Os 750 e 150 mantidos na tesouraria já foram considerados nesses splits e não voltam a ser distribuídos. A perda reduz R e P, sem reduzir B; recuperar os 500 apenas recompõe a perda, sem gerar lucro elegível. Os valores pós-split de P e B já descontam a parcela do staking: registrar sua obrigação e depois liquidá-la não gera uma segunda redução. Isso difere da retenção temporária por falta de reserva ou liquidez, que não realiza split nem consome R.</p>
         <p><strong>Sem avaliação confiável das posições, a distribuição fica suspensa até conciliação.</strong> A apuração registra fontes de preço, horários, posições, custos, obrigações, R, P, B e o valor elegível. O split exige reserva defensiva mínima inicial de 50% do patrimônio líquido atualizado e liquidez suficiente para obrigações exigíveis e para a distribuição, verificadas antes e após seu efeito projetado. Se qualquer condição falhar, 100% do lucro líquido permanece na tesouraria para recomposição, sem pagamento ao staking nem saldo restante distribuído na mesma apuração. A possibilidade de split futuro depende de nova apuração e das condições então vigentes. Estes são requisitos a validar antes da operação, não cálculos financeiros já implementados na demonstração.</p>
       </div>
     </section>
