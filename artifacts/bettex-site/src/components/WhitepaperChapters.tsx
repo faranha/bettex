@@ -8,6 +8,7 @@ import { TokenBurning } from '@/components/TokenBurning';
 import { InvestmentAgents } from '@/components/InvestmentAgents';
 import { StakingDistribution } from '@/components/StakingDistribution';
 import { ProfitAccounting } from '@/components/ProfitAccounting';
+import { ReservePolicy } from '@/components/ReservePolicy';
 
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação inicial em USDC, participação automática e controles.' },
@@ -178,6 +179,7 @@ export function ChapterContent({ index }: { index: number }) {
     case 6:
       return <>
         <div className="whitepaper__lead"><span>TESOURARIA · AJUSTES SUJEITOS À APROVAÇÃO</span><p><strong>A IA sugere ajustes nas regras da tesouraria e nos controles de risco; as sugestões entram em uma fila para execução e precisam de aprovação da liderança da Fundação BETTEX.</strong> O agente da tesouraria propõe otimizações em conjunto com os agentes de investimento, considerando reservas, liquidez e exposição. Essa evolução pode incluir os limites e percentuais apresentados nesta seção, mas nenhuma sugestão altera as regras antes de sua aprovação e execução.</p></div>
+        <ReservePolicy />
         <div className="whitepaper__prose">
           <p>Os controles aplicam as regras vigentes em cada momento. Enquanto uma sugestão aguarda aprovação ou execução, continuam valendo as regras anteriores. Cada mudança deve registrar a proposta, a justificativa, a aprovação da liderança da Fundação BETTEX, a execução e o momento de vigência. As verificações independentes de risco continuam obrigatórias para as operações dos agentes.</p>
           <p>Os percentuais abaixo são <strong>parâmetros iniciais, cuja alteração depende de aprovação da liderança da Fundação BETTEX e execução registrada</strong>, e usam como base a <strong>metade investível da tesouraria</strong>, não o patrimônio inteiro. São tetos de risco, não percentuais fixos de distribuição dos investimentos entre mercados. Uma verificação central independente das estratégias deve recusar qualquer nova ordem que ultrapasse um limite vigente. <strong>Ordens pendentes contam</strong> nos compromissos e na exposição; registrar a ordem apenas depois de executá-la não basta. O total de exposições correlacionadas é consolidado entre mercados, mesmo quando conectores diferentes estejam envolvidos.</p>

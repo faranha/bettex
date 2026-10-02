@@ -1,0 +1,16 @@
+export function ReservePolicy() {
+  return (
+    <section id="documentacao-reservas" aria-labelledby="reservas-title">
+      <h4 id="reservas-title" className="whitepaper__subhead">Reserva defensiva e liquidez antes da distribuição</h4>
+      <div className="whitepaper__prose">
+        <p><strong>A reserva defensiva mínima inicial corresponde a 50% do patrimônio líquido atualizado da tesouraria, apurado em USDC.</strong> Não é um valor fixado apenas na captação inicial: acompanha o patrimônio líquido conforme os aportes, resultados, custos, obrigações e distribuições conciliados. A base patrimonial de referência da apuração do lucro não substitui o patrimônio líquido atualizado usado para calcular a reserva mínima.</p>
+        <p><strong>Cobertura defensiva = valor atualizado dos ativos efetivamente segregados para a reserva defensiva.</strong> Carteiras pessoais e capital comprometido nas estratégias não entram nessa cobertura. Os ativos defensivos podem ser aplicados em baixo risco, com objetivo de gerar yield mensal, sem taxa de rendimento definida nem garantia de retorno.</p>
+        <p><strong>Reserva atendida exige cobertura defensiva igual ou superior a 50% do patrimônio líquido atualizado.</strong> Antes de distribuir, a tesouraria verifica também se possui recursos líquidos suficientes para cumprir as obrigações exigíveis e pagar a distribuição proposta, sem usar valores comprometidos em outras operações. Uma aplicação defensiva não é automaticamente dinheiro disponível para pagamento imediato.</p>
+        <p>O núcleo de controle registra os ativos segregados, seus valores e fontes de avaliação, os recursos líquidos disponíveis, as obrigações exigíveis, os compromissos existentes e a distribuição proposta. Valores comprometidos não podem ser contados como caixa livre; a apuração deve evitar duplicidade de ativos, obrigações e pagamentos.</p>
+        <p><strong>O split só é permitido se a reserva mínima e a liquidez estiverem atendidas antes e permanecerem atendidas após a distribuição projetada.</strong> A simulação considera o efeito do crédito ou pagamento ao staking sobre o patrimônio, a cobertura defensiva e o caixa disponível, sem contar a posterior liquidação de uma obrigação já registrada como nova redução patrimonial.</p>
+        <p><strong>Se qualquer dessas condições falhar, 100% do lucro líquido permanece destinado à tesouraria para recomposição.</strong> Não há pagamento ao staking nem distribuição de um saldo restante na mesma apuração. A existência de lucro elegível pela regra contábil não dispensa essa verificação de reservas e liquidez.</p>
+        <p>Alterações nesses parâmetros seguem a fila de sugestões da IA e a aprovação da liderança da Fundação BETTEX, com registro de vigência e sem mudança retroativa de rodadas já apuradas. Sem avaliação ou conciliação confiável, a distribuição não é autorizada. As verificações descritas são requisitos a validar, não controles financeiros já implementados na demonstração.</p>
+      </div>
+    </section>
+  );
+}
