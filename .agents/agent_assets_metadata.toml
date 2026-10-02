@@ -140,3 +140,31 @@ mtime_ms = 1790884375580
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/31e84807-3e28-45ce-b089-bf9b07f9552c/b14e3b86-2f01-4a5a-adb1-0429c50b9ae3"
 storage_version_token = "1790884411505182"
 content_type = "image/svg+xml"
+
+[[outputs]]
+id = "YCUPshoKgueXwh61Qnww-"
+uri = "file://research/notes.md"
+type = "text"
+title = "Pesquisa: BETTEX na Sérvia"
+description = "Escopo e perguntas do estudo; será atualizado com as conclusões."
+logical_id = "415a1ffd-447f-4d49-922b-950b3ad322e4"
+content_hash = "sha256:a8ff0e3c3cddeeb2dcf661175b44319f7c85991c72ac03297e8ee8fc29476d8b"
+size = 1826
+mtime_ms = 1790904695451
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/415a1ffd-447f-4d49-922b-950b3ad322e4/42e81378-6fd0-4b38-ae42-bb2716dbefaf"
+storage_version_token = "1790904719369243"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "ci_Ur-Xex0S2dE3mCRP1x"
+uri = "file://research/bettex-servia.md"
+type = "text"
+title = "Estudo: constituição e operação da BETTEX na Sérvia"
+description = "Conclusão de viabilidade, estruturas possíveis, token, fundos, capital, identificação, impostos e restrições de apostas. Fontes e limitações incluídas."
+logical_id = "86073d8c-3515-476c-bf8b-e9feff1ece2e"
+content_hash = "sha256:c5d26ab8aed06647fc61da9229037da18de88d2d172bea244f10c83ad0a59a1f"
+size = 28010
+mtime_ms = 1790905218391
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/86073d8c-3515-476c-bf8b-e9feff1ece2e/1561e1a3-18b0-4683-8b15-f24a35b15ed7"
+storage_version_token = "1790905219189734"
+content_type = "text/markdown"
