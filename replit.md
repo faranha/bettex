@@ -1,5 +1,7 @@
 # BETTEX
 
+- A parcela de 65% aberta à venda pública pode ser vendida diretamente a corretoras para formar a tesouraria, sem depender de swaps. 100% dos recursos recebidos nessas vendas, em USDC, vão à tesouraria. Isso é um canal de distribuição da parcela existente, não uma nova alocação para fundo; respeitar o vesting, preservar o split dos aportes ligados aos 15% dos investidores e a liberdade dos tokens liberados do fundador. Distinguir a compra no aplicativo da entrega e conciliação próprias da venda a corretoras, sem afirmar parceria ou integração ativa.
+
 - Na documentação técnica, não reintroduzir os capítulos separados “Saldos USDC e BETTEX”, “Participação automática” e “Tesouraria e estratégias de mercado”: o criador considera esses assuntos já explicados nos gráficos. Manter os gráficos e as demais áreas, com foco na sequência de controles de risco, apuração e distribuição, créditos/depósitos/saques, requisitos operacionais e riscos/validações.
 
 - Regra confirmada para a documentação técnica: a função de BETTEX dentro do projeto é exclusivamente staking e determinação da participação nas distribuições; não usar o token como capital nas operações dos agentes nem como meio de pagamento. A venda primária pelo projeto continua existindo. O fundador pode distribuir, transferir, manter em staking ou vender seus tokens liberados; não inserir proibição geral de venda ou negociação secundária que impeça esse direito. Movimentos financeiros e ganhos usam USDC. Preservar os direitos de retirada da carteira do titular e manter a homepage intocada.
