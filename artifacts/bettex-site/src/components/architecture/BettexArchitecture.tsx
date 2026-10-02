@@ -57,7 +57,7 @@ const fig1: Step[] = [
 ];
 const fig2: Step[] = [
   { title: 'Carteira USDC', text: 'A pessoa usa o USDC disponível e confirmado para pagar a compra de BETTEX.', tone: 'blue' },
-  { title: 'Confirma o swap', text: 'Confere o preço em USDC, a quantidade de BETTEX, os custos e o valor líquido antes de confirmar a compra.', tone: 'gold', id: 'node-treasury-swap',
+  { title: 'Confirma o swap', text: 'Confere preço em USDC, quantidade de BETTEX, taxa de transação em BETTEX e valor líquido. A taxa varia com o mercado e os tokens pagos são queimados.', tone: 'gold', id: 'node-treasury-swap',
     extra: <div className="ba-swap" aria-label="Compra de BETTEX com USDC"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
   { title: 'Compra liquidada', text: 'Após confirmação, o débito de USDC e o crédito de BETTEX são registrados juntos e uma única vez.', tone: 'teal',
     extra: (
@@ -97,7 +97,7 @@ const fig5: Step[] = [
 const fig6: Step[] = [
   { title: 'Parcela do staking', text: 'Parcela já separada pela IA no desenho 5, somente com lucro distribuível e reservas atendidas. Segue diretamente para os participantes elegíveis.', tone: 'blue' },
   { title: 'Crédito na Carteira USDC', text: 'A IA credita automaticamente a parcela individual na Carteira USDC, uma única vez. Nunca na Carteira BETTEX de staking.', tone: 'teal' },
-  { title: 'Saque em USDC', text: 'Transferência para carteira compatível, com custos e valor líquido informados. Sem pagamento em moeda local.' },
+  { title: 'Saque em USDC', text: 'Transferência para carteira compatível. A taxa é paga em BETTEX e queimada; seu valor variável é informado antes da confirmação, separado do USDC e dos custos externos. Sem pagamento em moeda local.' },
 ];
 const fig7: Step[] = [
   { title: 'Agentes de IA', text: 'A IA BETTEX coordena agentes que analisam oportunidades e propõem operações nos mercados.', tone: 'blue',
