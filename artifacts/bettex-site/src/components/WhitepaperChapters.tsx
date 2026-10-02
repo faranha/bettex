@@ -18,6 +18,7 @@ import { DailyCommitments } from '@/components/DailyCommitments';
 import { DailyRealizedLosses } from '@/components/DailyRealizedLosses';
 import { FinancialEventTiming } from '@/components/FinancialEventTiming';
 import { RiskRuleTransitions } from '@/components/RiskRuleTransitions';
+import { CoordinatedProposals } from '@/components/CoordinatedProposals';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
@@ -205,7 +206,7 @@ export function ChapterContent({ index }: { index: number }) {
         </div>
         <div className="whitepaper__limits">
           <div><span>01 / NOVOS COMPROMISSOS POR DIA</span><strong>2% <em>global</em> / 0,5% <em>por mercado</em></strong><p>Soma dos novos compromissos autorizados e com reserva registrada no dia UTC, uma vez por operação. Cancelamento não reduz o acumulado; pedidos recusados antes da autorização e reserva não entram.</p></div>
-          <div><span>02 / OPERAÇÃO INDIVIDUAL</span><strong>0,05%</strong><p>Máximo comprometido em uma única proposta do agente BETTEX.</p></div>
+          <div><span>02 / OPERAÇÃO INDIVIDUAL</span><strong>0,05%</strong><p>Máximo comprometido pelo conjunto das partes coordenadas de uma única proposta, não por cada ordem isolada.</p></div>
           <div><span>03 / EXPOSIÇÃO EM ABERTO</span><strong>10% <em>global</em> / 2,5% <em>por mercado</em></strong><p>Inclui posições abertas e compromissos que aguardam resultado, consolidados pelo núcleo central.</p></div>
           <div><span>04 / EXPOSIÇÃO CORRELACIONADA</span><strong>0,5%</strong><p>Conjunto de posições em quaisquer mercados afetadas pelo mesmo evento ou risco.</p></div>
           <div><span>05 / PERDA REALIZADA DIÁRIA</span><strong>0,5% <em>global</em> / 0,125% <em>por mercado</em></strong><p>Perda líquida do resultado realizado e conciliado no dia UTC, após custos, apurada globalmente e por mercado. Ao atingir o teto, a pausa permanece até o próximo dia UTC, mesmo com ganhos posteriores.</p></div>
@@ -213,6 +214,7 @@ export function ChapterContent({ index }: { index: number }) {
         <Subhead>Como o bloqueio funcionaria</Subhead>
         <div className="whitepaper__prose"><p>A API de execução não deve aceitar ordens diretas de uma estratégia ou conector. O núcleo central verifica caixa livre, reservas existentes, exposição por mercado e correlação, perdas realizadas e autorização da integração; a verificação dos limites e o registro da reserva da operação são indivisíveis e devem concluir <strong>antes</strong> de enviá-la. Ordens distintas e simultâneas consideram as reservas umas das outras, sem reutilizar o mesmo capital ou exceder os limites conjuntos. Repetir o mesmo pedido não pode consumir o limite duas vezes nem gerar duas ordens. Falta de cotação confiável, divergência de saldo ou perda de comunicação impede novas ordens até reconciliação.</p><p>Não há alavancagem. Uma pausa de emergência, controlada por pessoas autorizadas e registrada em auditoria, pode impedir novas operações independentemente dos limites; a política de cancelamento de ordens pendentes também precisa ser testada. Limites reduzem exposição, mas não evitam perdas nem autorizam atuação onde a lei, as regras do mercado ou a plataforma proíbem. Operações de cassino mantêm os mesmos tetos e podem perder rapidamente por acaso, variância e vantagem da casa.</p></div>
         <OrderReservations />
+        <CoordinatedProposals />
         <RiskRuleTransitions />
         <DailyCommitments />
         <DailyRealizedLosses />
