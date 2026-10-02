@@ -12,6 +12,7 @@ import { DistributionCorrections } from '@/components/DistributionCorrections';
 import { ReservePolicy } from '@/components/ReservePolicy';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
+import { SaleChannels } from '@/components/SaleChannels';
 
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação inicial em USDC, participação automática e controles.' },
@@ -158,6 +159,7 @@ export function ChapterContent({ index }: { index: number }) {
           <p>A compra no aplicativo é liquidada em USDC e só é concluída após confirmação conciliada. O débito de USDC e o crédito da quantidade inteira de BETTEX devem ser registrados juntos e uma única vez; o saldo BETTEX disponível na carteira oficial passa a participar automaticamente do staking. Essa aquisição não é uma operação de mercado dos agentes. A tela de compra do aplicativo não envia tokens a uma carteira externa escolhida na hora; o crédito é lançado na carteira gerada com a conta. Essa regra da tela não impede a venda direta a corretoras em um fluxo próprio. Recibos devem identificar preço em USDC, custos, quantidade e conta.</p>
           <p><strong>BETTEX serve para staking e pagamento de taxas de serviço das operações processadas pelo aplicativo oficial, com queima dos tokens usados nas taxas.</strong> Não é usado como capital nas estratégias dos agentes. Essas funções não impedem o fundador de vender ou distribuir sua parcela já liberada. Novas versões aprofundarão os mecanismos de custódia das chaves administrativas, aprovação de mudanças e atualização. Auditoria independente permanece um requisito da implementação.</p>
         </div>
+        <SaleChannels />
         <div id="documentacao-venda-corretoras">
           <Subhead>Venda direta a corretoras para formar a tesouraria</Subhead>
           <div className="whitepaper__prose">

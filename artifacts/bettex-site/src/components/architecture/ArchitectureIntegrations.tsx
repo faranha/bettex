@@ -18,7 +18,7 @@ const notes: Record<ArchitectureFigureNumber, IntegrationNote[]> = {
     { brand: 'arbitrum', placement: 'Etapas 2 e 3 · Carteiras e compra', description: 'Rede de referência do token BETTEX e das transações da carteira. A criação da conta fica no aplicativo.' },
   ],
   '2': [
-    { brand: 'arbitrum', placement: 'Compra e liquidação', description: 'Rede de referência para transferências de BETTEX e USDC compatível, com confirmação dos movimentos da compra e conciliação da tesouraria.' },
+    { brand: 'arbitrum', placement: 'Venda pública · Compra e liquidação', description: 'Rede de referência para transferências de BETTEX e USDC compatível, com confirmação da compra da venda pública e conciliação do recebimento pela tesouraria. Revendas entre titulares têm o vendedor como destinatário do pagamento.' },
   ],
   '3': [
     { brand: 'arbitrum', placement: 'Etapa 1 · Saldo BETTEX da carteira', description: 'O backend acompanha os tokens confirmados na rede. A elegibilidade e a permanência no staking são verificadas pelo aplicativo.' },

@@ -52,18 +52,18 @@ const fig1: Step[] = [
         <div><strong>Carteira BETTEX</strong></div>
       </div>
     ) },
-  { title: 'Compra BETTEX', text: 'Usa USDC da Carteira USDC. A compra confirmada entrega os tokens na Carteira BETTEX.', tone: 'gold', badge: 'Swap', id: 'node-bettex-swap',
+  { title: 'Compra BETTEX', text: 'Usa USDC da Carteira USDC na venda pública do projeto. A compra confirmada entrega os tokens na Carteira BETTEX.', tone: 'gold', badge: 'Swap', id: 'node-bettex-swap',
     extra: <div className="ba-swap" aria-label="Troca de USDC por BETTEX"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
 ];
 const fig2: Step[] = [
-  { title: 'Carteira USDC', text: 'A pessoa usa o USDC disponível e confirmado para pagar a compra de BETTEX.', tone: 'blue' },
+  { title: 'Carteira USDC', text: 'A pessoa usa o USDC disponível e confirmado para comprar BETTEX da venda pública do projeto.', tone: 'blue' },
   { title: 'Confirma o swap', text: 'Confere preço em USDC, quantidade de BETTEX, taxa de transação em BETTEX e valor líquido. A taxa varia com o mercado e os tokens pagos são queimados.', tone: 'gold', id: 'node-treasury-swap',
     extra: <div className="ba-swap" aria-label="Compra de BETTEX com USDC"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
   { title: 'Compra liquidada', text: 'Após confirmação, o débito de USDC e o crédito de BETTEX são registrados juntos e uma única vez.', tone: 'teal',
     extra: (
       <div className="ba-entry">
         <div><strong>BETTEX → Carteira BETTEX</strong><p>Recebe os tokens comprados.</p></div>
-        <div data-testid="node-bettex-treasury"><strong>USDC → Tesouraria BETTEX</strong><p>Recebe o USDC usado na compra.</p></div>
+        <div data-testid="node-bettex-treasury"><strong>USDC → Tesouraria BETTEX</strong><p>Recebe 100% do USDC da venda pública pelo projeto.</p></div>
       </div>
     ) },
 ];
@@ -143,8 +143,9 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
           <Steps steps={fig1} label="Criação da conta, criação das carteiras USDC e BETTEX e compra por swap" />
         </Figure>
 
-        <Figure id="figure-bettex-deposit" num="2" title="Como comprar BETTEX usando USDC" lead="O swap usa a Carteira USDC: BETTEX vai para a Carteira BETTEX e o USDC da compra vai para a tesouraria.">
-          <Steps steps={fig2} label="USDC disponível, cotação e confirmação do swap, entrega de BETTEX e envio de USDC à tesouraria" />
+        <Figure id="figure-bettex-deposit" num="2" title="Compra na venda pública usando USDC" lead="Neste desenho, o vendedor é o projeto: BETTEX vai para a Carteira BETTEX e 100% do USDC recebido vai para a tesouraria.">
+          <Steps steps={fig2} label="Compra da venda pública: USDC disponível, cotação e confirmação do swap, entrega de BETTEX e envio de USDC à tesouraria" />
+          <p className="ba-fig__foot">Este fluxo não representa revenda entre titulares. Numa revenda, o pagamento vai ao titular vendedor, sem nova captação para a tesouraria, mesmo que os tokens tenham origem na parcela pública. As taxas de serviço aplicáveis no aplicativo continuam em BETTEX, destinadas à queima. A distinção não afirma negociação secundária já implementada.</p>
           <div className="ba-flow ba-flow--treasury">
             <p className="ba-flow__label">Tesouraria BETTEX · reservas do valor recebido</p>
             <div className="ba-entry ba-reserves" data-testid="node-bettex-reserves">
