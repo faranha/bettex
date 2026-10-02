@@ -70,7 +70,7 @@ const fig2: Step[] = [
 const fig3: Step[] = [
   { title: 'Carteira BETTEX', text: 'Todo BETTEX disponível na carteira oficial do projeto conta a partir da confirmação do saldo.', tone: 'blue' },
   { title: 'Auto staking', text: 'A participação na piscina fechada é automática. Sem ativação manual nem depósito adicional de tokens.', tone: 'gold', id: 'node-bettex-auto-staking' },
-  { title: 'Próxima rodada de ganhos', text: 'BETTEX em staking participa da próxima rodada. Precisa permanecer em staking até o pagamento, que é creditado na Carteira USDC.', tone: 'teal' },
+  { title: 'Rateio diário dos ganhos', text: 'A participação usa BETTEX disponível × tempo elegível na rodada UTC. A saída não apaga o peso anterior; ganhos são creditados na Carteira USDC.', tone: 'teal' },
 ];
 const fig4: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Mantém as reservas e a parcela investível, separadas dos saldos pessoais.', tone: 'gold' },
@@ -157,8 +157,8 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
         </Figure>
 
         <Figure id="figure-bettex-staking" num="3" title="Auto staking na Carteira BETTEX" lead="BETTEX disponível na carteira participa automaticamente. USDC não entra no cálculo do staking.">
-          <Steps steps={fig3} label="BETTEX disponível na carteira, auto staking e próxima rodada paga na Carteira USDC" />
-          <p className="ba-fig__foot">Se o BETTEX for retirado antes do pagamento, não recebe essa rodada. Se entrar depois, participa da próxima, sem receber rodadas anteriores. Os ganhos são pagos sempre na Carteira USDC, nunca na Carteira BETTEX de staking.</p>
+          <Steps steps={fig3} label="BETTEX disponível na carteira, auto staking e rateio diário por quantidade e tempo, pago na Carteira USDC" />
+          <p className="ba-fig__foot">Vender ou retirar interrompe o acúmulo sobre a quantidade que saiu, mas preserva o peso do período elegível anterior à saída. Entradas contam a partir da confirmação do saldo, sem participação em períodos anteriores. O rateio usa o peso individual dividido pela soma dos pesos da rodada. Os ganhos são pagos sempre na Carteira USDC, nunca na Carteira BETTEX de staking.</p>
           <p className="ba-fig__foot">A piscina exige acesso ao aplicativo, mas não uma sessão continuamente aberta.</p>
         </Figure>
 
