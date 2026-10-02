@@ -10,6 +10,7 @@ import { StakingDistribution } from '@/components/StakingDistribution';
 import { ProfitAccounting } from '@/components/ProfitAccounting';
 import { ReservePolicy } from '@/components/ReservePolicy';
 import { FoundationFunding } from '@/components/FoundationFunding';
+import { TokenHolderRights } from '@/components/TokenHolderRights';
 
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação inicial em USDC, participação automática e controles.' },
@@ -176,6 +177,7 @@ export function ChapterContent({ index }: { index: number }) {
           </div>
         </div>
         <FoundationFunding />
+        <TokenHolderRights />
         <div className="whitepaper__aside-callout"><span>REQUISITOS DE VENDA</span><p>A compra é paga em USDC confirmado. Quem entra com fiat primeiro adquire USDC por on-ramp externo, sujeito à cotação e aos custos do provedor. A oferta deve informar o preço em USDC e os custos aplicáveis antes da confirmação, sem presumir equivalência entre valores nominais de moedas diferentes. O processamento depende de controles operacionais e autorização jurídica.</p></div>
       </>;
     case 6:
