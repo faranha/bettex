@@ -25,6 +25,7 @@ import { ExecutionConditions } from '@/components/ExecutionConditions';
 import { CoordinatedContinuation } from '@/components/CoordinatedContinuation';
 import { RiskReducingClosures } from '@/components/RiskReducingClosures';
 import { RiskStateRecovery } from '@/components/RiskStateRecovery';
+import { RiskPrecision } from '@/components/RiskPrecision';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
@@ -222,6 +223,7 @@ export function ChapterContent({ index }: { index: number }) {
         <OrderReservations />
         <CoordinatedProposals />
         <AuthorizedOperationCosts />
+        <RiskPrecision />
         <QuoteValidity />
         <ExecutionConditions />
         <CoordinatedContinuation />
