@@ -118,7 +118,7 @@ const fig7: Step[] = [
 const fig8: Step[] = [
   { title: 'Coleta de oportunidades', text: 'Os agentes coletam oportunidades nos quatro mercados: preços, probabilidades, liquidez, custos e sinais de IA, com origem e horário dos dados.', tone: 'blue', id: 'node-opportunities-collection' },
   { title: 'Escolha da melhor oportunidade', text: 'A IA compara as alternativas e escolhe a mais vantajosa segundo retorno esperado, custos, liquidez, exposição e risco. Registra os critérios e o motivo da escolha.', tone: 'blue', id: 'node-opportunities-decision' },
-  { title: 'Investimento autorizado', text: 'A IA propõe o valor dentro da parcela investível autorizada. O risco valida a operação e o valor; só então o investimento é executado automaticamente, preservando reservas e limites.', tone: 'gold', id: 'node-opportunities-investment' },
+  { title: 'Investimento autorizado', text: 'A IA propõe o valor dentro da parcela investível autorizada. O risco verifica os limites e registra a reserva em uma decisão indivisível, considerando outras ordens. Só após a reserva confirmada o investimento é enviado para execução automática.', tone: 'gold', id: 'node-opportunities-investment' },
   { title: 'Registro público', text: 'Todas as transações têm registro aberto: horário, plataforma, ativo, quantidade, valores, custos, estado e referência auditável.', tone: 'teal', badge: 'Todas as transações', id: 'node-agents-public-transactions',
     extra: (
       <div className="ba-entry">
@@ -184,6 +184,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true }: { surfa
         <Figure id="figure-bettex-agents" num="7" title="Agentes de IA e conexões com os mercados" lead="Agentes de IA → conexões por MCP ou API → execução automática das operações autorizadas.">
           <Steps steps={fig7} label="Agentes de IA com inferências opcionais da Allora, conexões MCP ou API com mercados e execução autorizada automática" />
           <p className="ba-fig__foot">Allora fornece inferências para análise, não executa ordens. Cada conexão usa apenas as ferramentas de consulta ou execução oferecidas e autorizadas pelo serviço.</p>
+          <p className="ba-fig__foot">Antes de qualquer envio, a verificação de limites e a reserva de capital são indivisíveis no núcleo central, compartilhado pelos agentes e conectores. Ordens simultâneas não reutilizam o mesmo capital.</p>
           <p className="ba-fig__foot">O desenho 8 detalha o ciclo de coleta de oportunidades, escolha, investimento e registro público das transações.</p>
         </Figure>
 
