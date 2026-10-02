@@ -7,3 +7,4 @@
 - [Revisable hero artwork](revisable-hero-artwork.md) — replace the whole diagram layer when changing coverage; partial overlays can look disconnected.
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
 - [Regras da tesouraria](treasury-rule-evolution.md) — agente próprio de IA otimizará regimentos internos em conjunto com os agentes de investimento.
+- [Identidade econômica](bettex-economic-identity.md) — o criador define a BETTEX, em última análise, como um fundo de investimentos.
