@@ -23,6 +23,7 @@ import { AuthorizedOperationCosts } from '@/components/AuthorizedOperationCosts'
 import { QuoteValidity } from '@/components/QuoteValidity';
 import { ExecutionConditions } from '@/components/ExecutionConditions';
 import { CoordinatedContinuation } from '@/components/CoordinatedContinuation';
+import { RiskReducingClosures } from '@/components/RiskReducingClosures';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
@@ -206,7 +207,7 @@ export function ChapterContent({ index }: { index: number }) {
         <InvestmentRiskBase />
         <div className="whitepaper__prose">
           <p>Os controles aplicam as regras vigentes em cada momento. Enquanto uma sugestão aguarda aprovação ou execução, continuam valendo as regras anteriores. Cada mudança deve registrar a proposta, a justificativa, a aprovação da liderança da Fundação BETTEX, a execução e o momento de vigência. As verificações independentes de risco continuam obrigatórias para as operações dos agentes.</p>
-          <p>Os percentuais abaixo são <strong>parâmetros iniciais, cuja alteração depende de aprovação da liderança da Fundação BETTEX e execução registrada</strong>, e usam como base o <strong>patrimônio líquido atualizado da parcela investível</strong>, conforme a definição acima, não o patrimônio inteiro nem apenas o caixa livre. São tetos de risco, não percentuais fixos de distribuição dos investimentos entre mercados. Uma verificação central independente das estratégias deve recusar qualquer nova ordem que ultrapasse um limite vigente. <strong>Ordens pendentes contam</strong> nos compromissos e na exposição; registrar a ordem apenas depois de executá-la não basta. O total de exposições correlacionadas é consolidado entre mercados, mesmo quando conectores diferentes estejam envolvidos.</p>
+          <p>Os percentuais abaixo são <strong>parâmetros iniciais, cuja alteração depende de aprovação da liderança da Fundação BETTEX e execução registrada</strong>, e usam como base o <strong>patrimônio líquido atualizado da parcela investível</strong>, conforme a definição acima, não o patrimônio inteiro nem apenas o caixa livre. São tetos de risco, não percentuais fixos de distribuição dos investimentos entre mercados. Uma verificação central independente das estratégias deve recusar qualquer nova ordem de investimento que ultrapasse um limite vigente. Reduções de posições na pausa por perda diária seguem a <a href="#documentacao-reducao-na-pausa">regra específica de fechamento</a>, sem dispensar os demais controles. <strong>Ordens pendentes contam</strong> nos compromissos e na exposição; registrar a ordem apenas depois de executá-la não basta. O total de exposições correlacionadas é consolidado entre mercados, mesmo quando conectores diferentes estejam envolvidos.</p>
         </div>
         <div className="whitepaper__limits">
           <div><span>01 / NOVOS COMPROMISSOS POR DIA</span><strong>2% <em>global</em> / 0,5% <em>por mercado</em></strong><p>Soma dos novos compromissos autorizados e com reserva registrada no dia UTC, uma vez por operação. Cancelamento não reduz o acumulado; pedidos recusados antes da autorização e reserva não entram.</p></div>
@@ -226,6 +227,7 @@ export function ChapterContent({ index }: { index: number }) {
         <RiskRuleTransitions />
         <DailyCommitments />
         <DailyRealizedLosses />
+        <RiskReducingClosures />
         <FinancialEventTiming />
         <OrderReconciliation />
       </>;
@@ -236,7 +238,7 @@ export function ChapterContent({ index }: { index: number }) {
           <div><span>01</span><p>Aplicar controle de acesso mínimo, autenticação forte para operadores e segregação de funções. Sugestões da IA para alterar regras da tesouraria ou limites de risco entram em uma fila e só podem ser executadas após aprovação da liderança da Fundação BETTEX, com trilha auditável. Mudanças em contratos, permissões e destinos de ativos exigem aprovação por múltiplos responsáveis autorizados pela liderança e registro auditável.</p></div>
           <div><span>02</span><p>Proteger chaves com armazenamento e procedimentos de recuperação definidos; estabelecer limites de assinatura e política de revogação. Endereços de contratos, ativos e tesouraria devem ser verificados por fontes independentes antes de serem usados.</p></div>
           <div><span>03</span><p>Testar contratos, integrações, indexadores, conectores de mercado e livro contábil contra duplicidade, reordenação de blocos, falha de rede, divergência de saldo, repetição de mensagens e recuperação. Exigir auditoria independente dos contratos e controles de custódia.</p></div>
-          <div><span>04</span><p>Monitorar saldos, obrigações, limites globais e por mercado e integrações; emitir alertas acionáveis e manter procedimentos de resposta a incidentes. A pausa deve bloquear novas ordens sem apagar obrigações já atribuídas; retomada depende de conciliação e autorização registrada.</p></div>
+          <div><span>04</span><p>Monitorar saldos, obrigações, limites globais e por mercado e integrações; emitir alertas acionáveis e manter procedimentos de resposta a incidentes. A pausa de emergência deve bloquear novas ordens sem apagar obrigações já atribuídas; retomada após incidente depende de conciliação e autorização registrada.</p></div>
         </div>
         <div className="whitepaper__prose"><p>Os fluxos financeiros são requisitos pretendidos, não capacidades já implementadas ou em produção. A compra deve registrar débito de USDC e crédito de BETTEX juntos e uma única vez após a liquidação; cada distribuição é lançada uma única vez em USDC. A continuidade preserva registros imutáveis com ajustes identificados, backups testados e conciliação entre transferências on-chain, recebimentos de on-ramp, saldos dos dois ativos, custos, resultados por mercado, tesouraria e saques. Falhas resultam em estado pendente ou bloqueio, nunca confirmação presumida. Custódia, permissões, integrações e conformidade exigem validação técnica e jurídica. A operação inicial cripto não pressupõe autorização de exchange ou banco; a proposta fiduciária do BETTEX Bank demanda estrutura própria antes de qualquer oferta.</p></div>
         <div className="whitepaper__aside-callout"><span>SEQUÊNCIA DO PROJETO</span><p>O <a href={`${import.meta.env.BASE_URL}#roadmap`} data-testid="link-documentacao-roadmap">Roadmap da BETTEX</a> apresenta o percurso da preparação técnica e jurídica à expansão do aplicativo.</p></div>
