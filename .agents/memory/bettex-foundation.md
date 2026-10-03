@@ -7,4 +7,4 @@ O usuário definiu: “vamos criar a fundacao, empresa que controla e detem os d
 
 **Why:** O usuário definiu a entidade que lidera o projeto e aprova as sugestões de alteração de regras feitas pela IA.
 
-**How to apply:** Tratar a Fundação como entidade a constituir, não como pessoa jurídica já registrada. Não presumir que “fundação” determine sua forma jurídica em uma jurisdição. A declaração original não detalhava os direitos dos titulares; para esses direitos, consultar as definições posteriormente aprovadas em replit.md, sem inferir direitos adicionais da expressão “direitos do token”.
+**How to apply:** Tratar a organização como entidade a constituir, não como pessoa jurídica já registrada. O uso histórico de “Fundação” não determina a forma jurídica. Consultar as decisões posteriores em replit.md sobre entidade comercial única, liberdade para substituir o nome e direitos dos titulares; não inferir direitos adicionais da expressão “direitos do token”.
