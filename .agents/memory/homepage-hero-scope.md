@@ -9,6 +9,12 @@ O criador corrigiu: “Eu nunca lhe disse pra modificar o hero com a tese do fun
 
 **How to apply:** Manter a tese numa seção própria e não substituir o conteúdo ou layout do hero ao trabalhar nesse tema. Preservar as demais alterações do site numa restauração específica do hero.
 
+A apresentação do aplicativo e a tese sobre IA e empregos são seções distintas e precisam de separação visual evidente.
+
+**Why:** O criador mostrou os dois blocos consecutivos com o mesmo fundo e ressaltou: “são sections distintas”.
+
+**How to apply:** Preservar ambos os conteúdos como blocos independentes, com contraste de fundo ou composição suficiente para não parecerem uma seção única.
+
 O criador reiterou: “nós precisamos manter a sessão onde falamos da Yahoo para empregos”.
 
 **Why:** O criador pediu explicitamente preservar essa seção.

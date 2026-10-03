@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import { ArrowDown, WalletCards } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
+import { BrainEnergy } from './BrainEnergy';
 import './TechnologySection.css';
 
 export function TechnologySection({ children }: { children: ReactNode }) {
@@ -33,9 +34,9 @@ export function TechnologySection({ children }: { children: ReactNode }) {
                 <h3><span className="technology-section__wallet-heading-icon" aria-hidden="true"><WalletCards strokeWidth={1.7} /></span><span>Carteira <em>BETTEX</em></span></h3>
               <p>Ao concluir a compra, seus tokens entram na Carteira BETTEX com participação automática. Você acompanha o saldo e os lucros pelo aplicativo. A Carteira USDC recebe depósitos cripto, serve para compras e recebe os créditos de lucro. A interface mostra o valor estimado em moeda fiduciária.</p>
               </div>
-              <div className="technology-section__wallet-art" role="img" aria-label="Robô da IA BETTEX com a marca BETTEX no peito">
-                <img className="technology-section__ai-robot" src={`${import.meta.env.BASE_URL}agents/bettex-hunter-portrait.webp`} alt="" loading="lazy" decoding="async" />
-                <span className="technology-section__ai-brand" aria-hidden="true"><BettexMark /></span>
+              <div className="technology-section__wallet-art" role="img" aria-label="Cérebro representando a inteligência artificial da BETTEX">
+                <img className="technology-section__ai-brain" src={`${import.meta.env.BASE_URL}agents/bettex-intelligence-brain.webp`} alt="" width={640} height={640} loading="lazy" decoding="async" />
+                <BrainEnergy />
                 <span className="technology-section__ai-label" aria-hidden="true">IA BETTEX</span>
               </div>
             </div>

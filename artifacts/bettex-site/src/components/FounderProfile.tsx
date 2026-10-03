@@ -6,10 +6,10 @@ import './growth.css';
 const n = (v: number) => v.toLocaleString('pt-BR');
 const f = g.founder;
 
-export function FounderProfile({ dark = false, id, portrait = false }: { dark?: boolean; id?: string; portrait?: boolean }) {
+export function FounderProfile({ dark = false, id, portrait = false, noDashes = false }: { dark?: boolean; id?: string; portrait?: boolean; noDashes?: boolean }) {
   const stats = [
-    ['Comunidade', n(f.community), 'membros'],
-    ['Instagram', n(f.instagram), `${f.instagramEngagementPercent[0]}–${f.instagramEngagementPercent[1]}% de engajamento`],
+    [f.communityPlatform, `${f.communityMoreThan ? 'mais de ' : ''}${n(f.community)}`, 'membros'],
+    ['Instagram', n(f.instagram), noDashes ? `${f.instagramEngagementPercent[0]} a ${f.instagramEngagementPercent[1]}% de engajamento` : `${f.instagramEngagementPercent[0]}–${f.instagramEngagementPercent[1]}% de engajamento`],
     ['YouTube', `${f.youtubeMoreThan ? 'mais de ' : ''}${n(f.youtube)}`, 'inscritos'],
     ['X', n(f.x), 'seguidores'],
   ];

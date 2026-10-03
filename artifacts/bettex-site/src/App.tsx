@@ -1,7 +1,6 @@
 import { type ReactNode, type CSSProperties, useEffect, useState } from 'react';
 import { PageMetadata } from '@/components/PageMetadata';
 import { LanguageSelector } from '@/components/LanguageSelector';
-import { founderSocials } from '@/lib/founder-socials';
 import { useLocale, localizedUrl, t } from '@/lib/i18n';
 import { ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -62,10 +61,10 @@ const navItems = [
   { label: 'Roadmap', id: 'roadmap' },
 ] as const;
 
-function Logo({ pale = false }: { pale?: boolean }) {
-  return <a href={homeAnchor('inicio')} className={`inline-flex items-center gap-2.5 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F2B632] ${'text-[#F4F1E8]'}`} aria-label="BETTEX, voltar ao início">
-    <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border ${pale ? 'border-[#F2B632]/40 bg-[#070B1F]' : 'border-[#F2B632]/50 bg-[#13204F]'} shadow-[0_3px_10px_rgba(0,9,33,.12)]`}>
-      <BettexMark className="block h-[30px] w-[30px]" />
+function Logo() {
+  return <a href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX, voltar ao início">
+    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] border border-[#768BB5]/30 bg-[#0D1530] shadow-[0_3px_10px_rgba(0,9,33,.12)]">
+      <BettexMark slate className="block h-[30px] w-[30px]" />
     </span>
     <span className="display text-[25px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
   </a>;
@@ -160,9 +159,9 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
     </div>
     <div className="h-1 bg-[#F2B632]" aria-hidden="true" />
     <div className="page-wrap relative">
-      <div className="grid gap-10 border-b border-[#2B59FF]/25 py-11 md:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_1fr_1fr_1fr]">
+      <div className="grid gap-10 border-b border-[#2B59FF]/25 py-11 md:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_1fr_1fr]">
         <div>
-          <Logo pale />
+          <Logo />
            <p className="mt-5 max-w-[350px] text-sm leading-7 text-[#b4c5eb]">O token do projeto de inteligência artificial BETTEX.</p>
           <LanguageSelector className="mt-6" />
         </div>
@@ -183,13 +182,6 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             <li><a className="hover:text-[#5F86FF]" href={`${BASE_PATH}/pitch`}>Pitch</a></li>
             <li><a className="hover:text-[#5F86FF]" href={DOCUMENTATION_PATH}>Documentação</a></li>
             <li><a className="hover:text-[#5F86FF]" href={`${BASE_PATH}/demo`}>Demo</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Redes de Fred Azevedo">
-          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#5F86FF]">Redes do fundador</h3>
-          <p className="mb-2 text-sm text-[#829ddc]">Fred Azevedo</p>
-          <ul className="footer-links space-y-1 text-sm font-semibold">
-            {founderSocials.map(({ name, href }) => <li key={name}><a className="inline-flex min-h-11 items-center hover:text-[#5F86FF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F2B632]" href={href} target="_blank" rel="noopener noreferrer">{name}</a></li>)}
           </ul>
         </nav>
       </div>

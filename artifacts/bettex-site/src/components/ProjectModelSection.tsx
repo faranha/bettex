@@ -168,8 +168,8 @@ export function ProjectModelSection() {
             <div className="pm-step">
               <span className="pm-index">01 / COMPRA</span>
               <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
-              <h3>Deposite USDC e <em>compre BETTEX.</em></h3>
-              <p className="pm-detail">No aplicativo, você recebe USDC e usa esse saldo para comprar tokens BETTEX. A compra tem tarifa de US$ 2,50 em USDC, separada do preço e dos custos externos.</p>
+              <h3>Compre <em>BETTEX.</em></h3>
+              <p className="pm-detail">Faça sua compra pelo aplicativo e acompanhe seus tokens. Use cartão de crédito, transferências imediatas e mais. Não precisa entender de cripto para entrar na comunidade.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / SALDO BETTEX</span>
@@ -177,7 +177,7 @@ export function ProjectModelSection() {
                 <DepositIllustration />
               </div>
               <h3>O token <em>é seu.</em></h3>
-              <p className="pm-detail">Você é dono dos tokens e participa automaticamente dos lucros elegíveis. Qualquer saída de BETTEX, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado.</p>
+              <p className="pm-detail">Compre BETTEX e participe dos lucros do projeto. Basta comprar e deixar na sua carteira que todo dia a gente paga sua parte dos lucros*.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / ANÁLISE E OPERAÇÕES</span>
@@ -203,15 +203,11 @@ export function ProjectModelSection() {
                 <ArrowDownRight className="pm-profit-arrow" size={31} strokeWidth={2.2} />
                 <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
               </div>
-              <h3>Quando houver lucro elegível, crédito <em>em USDC.</em></h3>
-              <div className="pm-outcomes">
-                <div className="pm-outcome pm-outcome--profit"><h4>Participação no lucro</h4><p>De acordo com as <a href={`${import.meta.env.BASE_URL}documentacao#documentacao-arquitetura`}>regras documentadas</a>.</p></div>
-              </div>
+              <h3>Quando houver lucro elegível, <em>você recebe sua parte.</em></h3>
             </div>
           </div>
           <div className="pm-panel-foot">
-            <p>Sem lucro não há distribuição e você não perde os seus tokens.</p>
-            <p className="pm-buyback-note" data-testid="text-buyback-note">Do lucro distribuível, 50% fica na tesouraria, 25% vai ao staking e 25% financia recompras, executadas pela Administração (<a href={`${import.meta.env.BASE_URL}documentacao#documentacao-recompras`}>ver regras</a>).</p>
+            <p>*Sem lucro não há distribuição e você não perde os seus tokens.</p>
           </div>
         </div>
         <div className="pm-bottom">

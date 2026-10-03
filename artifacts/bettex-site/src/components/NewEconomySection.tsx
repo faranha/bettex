@@ -1,13 +1,10 @@
-import { ArrowRight } from 'lucide-react';
 import thesis from '@/lib/new-economy-thesis.json';
 import './NewEconomySection.css';
 
-const DOC_LINK = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/documentacao#documentacao-oportunidade`;
-
 const points = [
-  { n: '01', title: 'Substituição de trabalho humano', text: thesis.vision },
-  { n: '02', title: 'O risco de ficar fora dos ganhos', text: thesis.exclusion },
-  { n: '03', title: 'Participação na economia programável', text: thesis.purpose },
+  { n: '01', title: 'Substituição de trabalho humano', text: 'IA e robôs vão substituir empregos e transferir a geração de valor para sistemas automatizados.' },
+  { n: '02', title: 'O risco de ficar fora dos ganhos', text: 'Quem depende só do salário pode ficar de fora dos ganhos gerados pela IA.' },
+  { n: '03', title: 'Participação na economia programável', text: 'BETTEX conecta você aos lucros elegíveis de estratégias com IA.' },
 ];
 
 export function NewEconomySection() {
@@ -34,7 +31,6 @@ export function NewEconomySection() {
             </li>
           ))}
         </ol>
-        <a href={DOC_LINK} className="ne-link tap" data-testid="link-nova-economia-documentacao">Ler a oportunidade na documentação <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
       </div>
     </section>
   );

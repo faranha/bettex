@@ -26,3 +26,9 @@ Source-message coverage alone does not cover every rendered diagram caption.
 **Why:** Diagram captions and node data were omitted from extraction despite appearing on screen. A prop named `to` carried diagram branches, not navigation links. Static coverage passed while strict English prerender failed.
 
 **How to apply:** Run strict prerender and rendered-localization checks for all languages after changing diagram data or indirect text props. Do not infer a prop's meaning solely from its name when excluding subtrees from extraction; distinguish URL values from data arrays. Coverage alone is not evidence that every visible caption is translated.
+
+Use parameterized translations for statements containing changing numeric thresholds, instead of adding a separate catalogue entry for each formatted number.
+
+**Why:** A threshold assembled from data passed source coverage but failed English prerender because the final text contained a newly formatted number with no matching translation.
+
+**How to apply:** Translate the wording independently of the numeric value and audit the rendered result in all languages. Preserve locale-specific number formatting rather than assuming a Portuguese-formatted value is the runtime translation key.

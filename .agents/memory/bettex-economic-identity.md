@@ -1,9 +1,15 @@
 ---
 name: Identidade econômica da BETTEX
-description: Definição do projeto pelo criador como fundo de investimentos.
+description: Definição econômica e posicionamento público aprovados pelo criador.
 ---
 
-O criador definiu: “em ultima analise, bettex eh um fundo de investimentos”.
+A definição atual para a apresentação pública é: “Tecnologia de investimento para apostadores brasileiros gerido por IA”.
+
+**Why:** O criador pediu essa definição no hero e afirmou “é isso que somos”.
+
+**How to apply:** Usar esse posicionamento como a definição principal no hero, com o público brasileiro explícito. Não interpretar a alteração do posicionamento como autorização para mudar as regras econômicas do projeto.
+
+A definição econômica anterior do criador foi: “em ultima analise, bettex eh um fundo de investimentos”.
 
 O criador esclareceu: “nao ha sofisticacao na bettex, eh um fundo descentralizado, IA faz os invstimentos, distribui lucros, a tesouraria tem regras, nada aqui eh de outro mundo”; “na verdade, eh um projeto simples”.
 

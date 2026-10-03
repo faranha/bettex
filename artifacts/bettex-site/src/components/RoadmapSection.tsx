@@ -7,7 +7,7 @@ const stops = [
     date: 'Pré-lançamento',
     dateTime: '',
     title: 'Preparação do ecossistema BETTEX',
-    description: 'Investigar os requisitos legais e regulatórios do projeto e preparar sua base técnica: arquitetura, contratos, segurança e integrações. Estruturar o ecossistema BETTEX para as validações técnicas e jurídicas necessárias antes do lançamento.',
+    description: 'Apresentar o projeto a investidores-anjo. Investigar os requisitos legais e regulatórios do projeto e preparar sua base técnica: arquitetura, contratos, segurança e integrações. Estruturar o ecossistema BETTEX para as validações técnicas e jurídicas necessárias antes do lançamento.',
   },
   {
     number: '02',

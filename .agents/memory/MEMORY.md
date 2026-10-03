@@ -8,7 +8,7 @@
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
 - [Regras da tesouraria](treasury-rule-evolution.md) — humanos aprovam políticas; mandatos limitados preservam liberdade operacional sem aprovação de cada operação.
 - [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
-- [Identidade econômica](bettex-economic-identity.md) — o criador define a BETTEX, em última análise, como um fundo de investimentos.
+- [Identidade e posicionamento](bettex-economic-identity.md) — apresentação pública: tecnologia de investimento para apostadores brasileiros, gerida por IA; preservar regras econômicas.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
 - [Custo mensal](operating-cost-target.md) — criador estima US$ 50–75 mil para operar; US$ 50 mil é a referência equilibrada de sustentabilidade.
@@ -24,8 +24,10 @@
 - [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
 - [Mercados no mobile](mobile-market-content.md) — não repetir os quatro cartões de agentes abaixo da animação; a apresentação anterior já cobre esse conteúdo.
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
+- [Rodapé](footer-scope.md) — não apresentar o bloco de redes pessoais do fundador no rodapé.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
 - [Ordem da documentação](documentation-reading-order.md) — “Entidade e negócios” vem imediatamente após “Visão do projeto”, não no fim.
 - [Leitura do pitch](pitch-reading-behavior.md) — todo o conteúdo deve ficar visível, sem caixas expansíveis ou controles de expandir/recolher.
-- [Visual do pitch](pitch-visual-direction.md) — usar foto do fundador e imagens de cassinos e investimentos, com estilo de apresentação distinto da homepage.
+- [Visual do pitch](pitch-visual-direction.md) — apresentação limpa, com foto do fundador; não reintroduzir fundos de cassino nem a foto de gráficos.
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
+- [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.
