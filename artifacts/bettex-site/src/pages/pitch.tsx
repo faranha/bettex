@@ -10,14 +10,20 @@ const DOC = `${BASE}/documentacao`;
 const ANBIMA = 'https://www.anbima.com.br/data/files/BE/05/B0/55/1EABD91008E6DAD9F82BA2A8/Raio-X-do-Investidor-9-edicao.pdf';
 const ILO = 'https://www.ilo.org/sites/default/files/2025-05/Research%20brief_GenAI%202025%20Update.pdf';
 
-function Sec({ id, n, kicker, title, dark = false, summary, children }: { id: string; n: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; children: ReactNode }) {
-  return <section id={id} aria-labelledby={`${id}-t`} className={dark ? 'bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}>
-    <div className="page-wrap py-16 sm:py-24">
-      <div className={`mono flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}><span>{n}</span><span className="h-px w-10 bg-current" aria-hidden="true" />{kicker}</div>
-      <h2 id={`${id}-t`} className="display mt-5 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h2>
-      {summary ? <p className={`mt-6 max-w-[760px] text-base leading-7 ${dark ? 'text-[#c5d2f1]' : 'text-[#183173]'}`}>{summary}</p> : null}
-      <div className="mt-8">{children}</div>
-    </div>
+const MEDIA = `${BASE}/pitch-media`;
+const PHOTO = { casino: `${MEDIA}/casino-roulette.jpg`, markets: `${MEDIA}/investment-markets.jpg` };
+function Sec({ id, n, kicker, title, dark = false, summary, photo, children }: { id: string; n: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; photo?: 'casino' | 'markets'; children: ReactNode }) {
+  const head = photo || dark;
+  return <section id={id} aria-labelledby={`${id}-t`} className={`slide ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
+    <header className={`slide__head ${photo ? `slide__head--photo slide__head--${photo}` : ''} ${head ? 'slide__head--ink' : 'slide__head--paper'}`} style={photo ? { backgroundImage: `url(${PHOTO[photo]})` } : undefined}>
+      <span className="slide__num display" aria-hidden="true">{n}</span>
+      <div className="page-wrap slide__headin">
+        <div className={`mono flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] ${head ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}><span>{n} / 13</span><span className="h-px w-10 bg-current" aria-hidden="true" />{kicker}</div>
+        <h2 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h2>
+        {summary ? <p className={`mt-5 max-w-[700px] text-base leading-7 ${head ? 'text-[#e3eaff]' : 'text-[#183173]'}`}>{summary}</p> : null}
+      </div>
+    </header>
+    <div className="page-wrap slide__body">{children}</div>
   </section>;
 }
 
@@ -60,21 +66,23 @@ export function PitchPage() {
     };
   }, []);
   return <main className="pitch">
-    <section className="hero-bg relative overflow-hidden text-[#F4F1E8]">
-      <div className="pitch-grid absolute inset-0 opacity-70" aria-hidden="true" />
+    <section className="cover relative overflow-hidden text-[#F4F1E8]" style={{ backgroundImage: `url(${PHOTO.casino})` }}>
+      <div className="cover__shade absolute inset-0" aria-hidden="true" />
       <div className="page-wrap relative pb-8 pt-8 sm:pb-12 sm:pt-14">
-        <div className="pitch-hero">
-          <div className="pitch-hero__copy">
+        <div className="cover__grid">
+          <div className="cover__copy">
             <h1 className="pitch-rise display text-[clamp(1.9rem,4.4vw,3.6rem)] font-extrabold leading-[1.02] tracking-[-.06em]">Um fundo de investimentos gerido por IA. <span className="text-[#F2B632]">Participação nos lucros por token.</span></h1>
-            <p className="pitch-rise mt-4 max-w-[520px] text-base leading-7 text-[#c5d2f1]">A BETTEX reúne capital em uma tesouraria de estratégias geridas por IA. O token permite participar do lucro elegível em USDC, conforme as regras de staking, sem operar cada investimento por conta própria.</p>
+            <p className="pitch-rise mt-4 max-w-[520px] text-base leading-7 text-[#e3eaff]">A BETTEX reúne capital em uma tesouraria de estratégias geridas por IA. O token permite participar do lucro elegível em USDC, conforme as regras de staking, sem operar cada investimento por conta própria.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
               <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
             </div>
           </div>
-          <figure className="pitch-hero__visual pitch-rise">
-            <img src={`${BASE}/hero-connected-portrait.webp`} alt="Retrato de um homem adulto de camisa bege, imagem ilustrativa do público da BETTEX" width={1024} height={1024} loading="eager" decoding="async" fetchPriority="high" />
+          <figure className="cover__fred pitch-rise">
+            <img src={`${BASE}/fred-azevedo.png`} alt="Retrato de Fred Azevedo, fundador da BETTEX" width={400} height={400} loading="eager" decoding="async" fetchPriority="high" />
+            <figcaption className="mono">Fred Azevedo</figcaption>
           </figure>
+          <div className="cover__markets" style={{ backgroundImage: `url(${PHOTO.markets})` }} role="presentation" aria-hidden="true" />
         </div>
         <nav id="pitch-index" className="pitch-index" data-testid="pitch-index" aria-label="Seções do pitch">
           <div className="pitch-index__links">
@@ -87,9 +95,9 @@ export function PitchPage() {
       </div>
     </section>
 
-    <Sec id="problema" summary="Hipótese de oportunidade a partir de pesquisa com público brasileiro; não comprova demanda pelo produto nem promete recuperar perdas." n="01" kicker="Problema e oportunidade" title={<>O problema: <span className="text-[#2B59FF]">perder o emprego e a renda.</span></>}>
+    <Sec photo="casino" id="problema" summary="Hipótese de oportunidade a partir de pesquisa com público brasileiro; não comprova demanda pelo produto nem promete recuperar perdas." n="01" kicker="Problema e oportunidade" title={<>O problema: <span className="text-[#2B59FF]">perder o emprego e a renda.</span></>}>
       <p className="mb-6 max-w-[800px] text-[15px] leading-7 text-[#183173]">{thesis.exclusion}</p>
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="pitch-metrics grid gap-4 md:grid-cols-3">
         {[['17%', 'apostaram online em 2025'], ['39%', 'dos apostadores buscavam dinheiro rápido em caso de necessidade'], ['20%', 'dos apostadores viam apostas como investir ou juntar dinheiro']].map(([v, t]) => <div key={v} className="rounded-2xl bg-[#070B1F] p-6 text-[#F4F1E8]"><div className="display text-6xl font-extrabold tracking-[-.07em] text-[#F2B632]">{v}</div><p className="mt-3 text-sm leading-6 text-[#c5d2f1]">{t}</p></div>)}
       </div>
       <p className="mt-6 max-w-[760px] text-[15px] leading-7 text-[#183173]">Fonte: <A href={ANBIMA}>ANBIMA/Datafolha, Raio X do Investidor, 9ª edição (2026)</A>: 5.832 entrevistas com pessoas de 16 anos ou mais, coletadas em novembro de 2025. Os números descrevem motivações declaradas. Não são retorno de apostas nem demanda medida pela BETTEX.</p>
@@ -97,7 +105,7 @@ export function PitchPage() {
       <Doc hash="documentacao-oportunidade">Pesquisa completa na documentação</Doc>
     </Sec>
 
-    <Sec id="agora" summary="O impacto da IA no trabalho e o acesso aos resultados da economia programável." n="02" kicker="Por que agora" dark title={<>{thesis.statement} <span className="text-[#F2B632]">{thesis.question}</span></>}>
+    <Sec photo="markets" id="agora" summary="O impacto da IA no trabalho e o acesso aos resultados da economia programável." n="02" kicker="Por que agora" dark title={<>{thesis.statement} <span className="text-[#F2B632]">{thesis.question}</span></>}>
       <p className="mb-5 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">{thesis.vision}</p>
       <p className="mb-7 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">{thesis.exclusion}</p>
       <div className="grid gap-4 md:grid-cols-2">
@@ -108,7 +116,7 @@ export function PitchPage() {
       <Doc dark hash="documentacao-tese-ia">Tese e evidências na documentação</Doc>
     </Sec>
 
-    <Sec id="solucao" summary="Empresa privada, ainda a constituir, com identidade econômica de fundo gerido por IA; quatro frentes planejadas, nenhuma garantida como ativa." n="03" kicker="Solução" title={<>Um fundo gerido por IA, aberto por token.</>}>
+    <Sec photo="markets" id="solucao" summary="Empresa privada, ainda a constituir, com identidade econômica de fundo gerido por IA; quatro frentes planejadas, nenhuma garantida como ativa." n="03" kicker="Solução" title={<>Um fundo gerido por IA, aberto por token.</>}>
       <p className="max-w-[760px] text-[15px] leading-7 text-[#183173]">Uma empresa privada, ainda a constituir, com identidade econômica de fundo de investimento gerido por IA. Não é operadora de apostas nem intermediária. Quatro frentes planejadas, todas sujeitas a autorização e compatibilidade, nenhuma garantida como ativa.</p>
       <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-label="Como o cliente participa">
         {[
@@ -137,7 +145,7 @@ export function PitchPage() {
       <Doc hash="documentacao-oportunidade">Ver regras na documentação</Doc>
     </Sec>
 
-    <Sec id="diferencial" summary="O cliente participa do resultado da estratégia, sem escolher cada aposta ou depender apenas da revenda do token." n="04" kicker="Diferenciação proposta" dark title={<>A diferença está <span className="text-[#F2B632]">no direito econômico.</span></>}>
+    <Sec photo="casino" id="diferencial" summary="O cliente participa do resultado da estratégia, sem escolher cada aposta ou depender apenas da revenda do token." n="04" kicker="Diferenciação proposta" dark title={<>A diferença está <span className="text-[#F2B632]">no direito econômico.</span></>}>
       <div className="mb-8 grid gap-4 md:grid-cols-3">
         <Card dark label="Alternativa" title="Aposta individual">O resultado depende de cada aposta escolhida pelo usuário.</Card>
         <Card dark label="Alternativa" title="Token centrado no preço">O resultado depende da variação de preço e da possibilidade de revenda.</Card>
@@ -151,13 +159,13 @@ export function PitchPage() {
       <p className="mt-6 max-w-[720px] text-sm leading-7 text-[#c5d2f1]">Nenhuma promessa de que a IA supere o mercado. Desempenho líquido contra uma referência é justamente o que o piloto precisa medir.</p>
     </Sec>
 
-    <Sec id="fundador" summary="Aquisição founder-led, com audiência própria e experiência de distribuição." n="05" kicker="Fundador e distribuição" dark title={<>Experiência de aquisição <span className="text-[#F2B632]">e canais próprios.</span></>}>
-      <FounderProfile dark />
+    <Sec photo="markets" id="fundador" summary="Aquisição founder-led, com audiência própria e experiência de distribuição." n="05" kicker="Fundador e distribuição" dark title={<>Experiência de aquisição <span className="text-[#F2B632]">e canais próprios.</span></>}>
+      <FounderProfile dark portrait />
       <p className="mt-6 max-w-[760px] text-[15px] leading-7 text-[#c5d2f1]">Meta inicial: primeiros {g.launch.initialUsersGoal.toLocaleString('pt-BR')} usuários elegíveis e ativados no {g.launch.country}. A audiência dos canais se sobrepõe e não equivale a clientes; conversão e retenção da BETTEX serão medidas por coorte.</p>
       <Doc dark hash="documentacao-fundador">Apresentação na documentação</Doc>
     </Sec>
 
-    <Sec id="economia" summary="Duas receitas separadas: tarifa fixa de US$ 2,50 em USDC e ganhos de investimento da tesouraria." n="06" kicker="Economia do negócio" title={<>O dinheiro da empresa <span className="text-[#2B59FF]">não se mistura ao da tesouraria.</span></>}>
+    <Sec photo="casino" id="economia" summary="Duas receitas separadas: tarifa fixa de US$ 2,50 em USDC e ganhos de investimento da tesouraria." n="06" kicker="Economia do negócio" title={<>O dinheiro da empresa <span className="text-[#2B59FF]">não se mistura ao da tesouraria.</span></>}>
       <div className="mb-8 grid gap-4 md:grid-cols-3">
         <Card label="Venda pública primária" title="100% para a tesouraria">O preço dos tokens financia as estratégias. A venda não é lucro distribuível nem receita livre da empresa.</Card>
         <Card label="Aporte vinculado a tokens" title="50% / 50%">Metade financia o desenvolvimento inicial; metade vai para a tesouraria. É a regra para aportes vinculados aos tokens dos investidores, não para qualquer rodada societária.</Card>
@@ -199,14 +207,14 @@ export function PitchPage() {
       </div>
     </Sec>
 
-    <Sec id="piloto" summary="Demanda, estratégia e economia comercial: três validações antes da expansão." n="09" kicker="Proposta de piloto" title={<>O capital deve financiar <span className="text-[#2B59FF]">evidência.</span></>}>
+    <Sec photo="markets" id="piloto" summary="Demanda, estratégia e economia comercial: três validações antes da expansão." n="09" kicker="Proposta de piloto" title={<>O capital deve financiar <span className="text-[#2B59FF]">evidência.</span></>}>
       <ol className="grid gap-4 md:grid-cols-3">
         {[['Validar demanda', 'Medir intenção específica, compreensão dos direitos e disposição de pagar a tarifa nos tickets previstos.'], ['Validar produto e estratégia', 'Começar com dados autorizados e simulação em previsões. Medir o resultado após custos contra uma referência e validar o percurso do usuário e a conciliação.'], ['Validar a operação comercial', 'Após as validações jurídicas e de segurança, medir ativação, retenção D7/D30, receita de serviços e custo de operação em uma coorte limitada.']].map(([t, d], i) => <li key={t} className="rounded-2xl border border-[#070B1F]/15 p-6"><span className="display text-5xl font-extrabold text-[#2B59FF]">{i + 1}</span><h3 className="display mt-2 text-xl font-extrabold tracking-[-.04em]">{t}</h3><p className="mt-2 text-[15px] leading-7 text-[#183173]">{d}</p></li>)}
       </ol>
       <a href={`${BASE}/#roadmap`} className="tap mt-2 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#2B59FF] underline underline-offset-4">Ver o roadmap <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
     </Sec>
 
-    <Sec id="publico" summary="Distribuição do fundador com consentimento e medição; taxas e custos ainda serão medidos." n="10" kicker="Aquisição, retenção e expansão" dark title={<>Primeiros 1.000 usuários no Brasil. <span className="text-[#F2B632]">Depois, expansão por evidência.</span></>}>
+    <Sec photo="casino" id="publico" summary="Distribuição do fundador com consentimento e medição; taxas e custos ainda serão medidos." n="10" kicker="Aquisição, retenção e expansão" dark title={<>Primeiros 1.000 usuários no Brasil. <span className="text-[#F2B632]">Depois, expansão por evidência.</span></>}>
       <p className="max-w-[760px] text-[15px] leading-7 text-[#c5d2f1]">{g.launch.strategy} {g.media.status}</p>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         <Card dark label="Canais orgânicos" title="Comunidade, Instagram, YouTube e X">{g.launch.channels.map(c => c.name).join(', ')}: conteúdo do fundador, perguntas e feedback, combinados com performance, marca e narrativa (US$ {g.media.paidAllocation.map(x => x.amountUsd.toLocaleString('pt-BR')).join(' / ')} por mês dentro de US$ {g.media.monthlyPaidMediaUsd.toLocaleString('pt-BR')} de mídia paga; proposta, não campanha executada).</Card>
@@ -226,7 +234,7 @@ export function PitchPage() {
       <Doc hash="documentacao-financiamento-fundacao">Financiamento na documentação</Doc>
     </Sec>
 
-    <Sec id="riscos" n="12" kicker="Riscos" dark title={<>Alto risco: pode haver perda parcial ou total.</>}>
+    <Sec photo="casino" id="riscos" n="12" kicker="Riscos" dark title={<>Alto risco: pode haver perda parcial ou total.</>}>
       <ul className="grid gap-3 md:grid-cols-2">
         {['Sem renda garantida; não substitui salário.', 'Parecer jurídico, permissões de provedores, contratos e segurança são necessários antes de qualquer fundo.', 'Frentes de esportes e cassinos dependem de compatibilidade regulatória e não estão todas autorizadas.', 'Demanda, desempenho da IA, custos e liquidez ainda não foram testados.'].map((r) => <li key={r} className="rounded-2xl border border-[#2B59FF]/40 bg-[#0d1536] p-5 text-[15px] leading-7 text-[#c5d2f1]">{r}</li>)}
       </ul>

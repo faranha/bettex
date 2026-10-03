@@ -51,3 +51,51 @@ img, svg, video { max-width: 100%; }
   .page-wrap { width: min(100% - 24px, 1200px); }
   .pitch h1, .hero-title { overflow-wrap: anywhere; }
 }
+
+/* ===== Presentation slides ===== */
+.cover { background-size: cover; background-position: 30% 40%; }
+.cover__shade { background: linear-gradient(100deg, rgba(7,11,31,.94) 0%, rgba(7,11,31,.78) 55%, rgba(7,11,31,.5) 100%); }
+.cover__grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.7fr) minmax(0,.35fr); gap: 32px; align-items: end; min-height: 440px; }
+.cover__fred { margin: 0; position: relative; border: 2px solid #F2B632; border-radius: 4px; box-shadow: 14px 14px 0 rgba(43,89,255,.55); }
+.cover__fred img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.cover__fred figcaption { position: absolute; left: 0; bottom: 0; background: #F2B632; color: #070B1F; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; }
+.cover__markets { align-self: stretch; background-size: cover; background-position: 70% 60%; border: 1px solid rgba(95,134,255,.5); min-height: 200px; }
+@media (max-width: 899px) {
+  .cover__grid { grid-template-columns: minmax(0,1fr) 120px; min-height: 0; gap: 20px 16px; align-items: start; }
+  .cover__copy { display: contents; }
+  .cover__copy > h1 { grid-column: 1 / -1; grid-row: 2; }
+  .cover__copy > p { grid-column: 1 / -1; grid-row: 3; margin-top: 0; font-size: 14px; }
+  .cover__copy > div { grid-column: 1 / -1; grid-row: 4; }
+  .cover__fred { grid-column: 1; grid-row: 1; width: min(100%, 220px); box-shadow: 8px 8px 0 rgba(43,89,255,.55); }
+  .cover__markets { grid-column: 2; grid-row: 1; min-height: 0; height: 100%; }
+}
+.slide { position: relative; }
+.slide__head { position: relative; overflow: hidden; padding: 56px 0 44px; background-size: cover; background-position: center; }
+.slide__head--ink { color: #F4F1E8; background-color: #070B1F; }
+.slide__head--ink h2 span { color: #F2B632; }
+.slide__head--paper { background: #e9e4d3; border-bottom: 4px solid #2B59FF; }
+.slide__head--photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,11,31,.93), rgba(7,11,31,.72) 70%, rgba(7,11,31,.55)); }
+.slide__head--markets { background-position: 70% 35%; }
+.slide__head--casino { background-position: 50% 30%; }
+.slide__headin { position: relative; }
+.slide__num { position: absolute; right: 4%; bottom: -.22em; font-size: clamp(7rem, 22vw, 16rem); font-weight: 800; line-height: 1; letter-spacing: -.08em; color: rgba(244,241,232,.1); pointer-events: none; z-index: 0; }
+.slide__head--paper .slide__num { color: rgba(7,11,31,.07); }
+.slide__body { padding-block: 40px 64px; }
+.slide--dark .slide__body { border-top: 4px solid #F2B632; }
+.slide--dark .slide__head + .slide__body { border-top: 0; }
+/* Varied compositions replacing card grids */
+.slide__body > .grid:not(.pitch-metrics) { gap: 0; }
+.slide__body > .grid > * { border-radius: 0 !important; }
+.slide__body > .grid.md\:grid-cols-3:not(.pitch-metrics) > *, .slide__body > .grid.md\:grid-cols-2 > * { border-width: 0 0 0 4px; border-color: #F2B632; background: transparent; padding-block: 8px; padding-inline: 24px; margin-bottom: 24px; }
+.slide--dark .slide__body > .grid > * { background: transparent; }
+.slide__body ol > li, .slide__body ul > li { border-radius: 4px !important; }
+.pitch .fp--portrait { display: grid; grid-template-columns: minmax(0,300px) minmax(0,1fr); column-gap: 32px; align-items: start; }
+.pitch .fp--portrait > * { grid-column: 2; }
+.pitch .fp--portrait > .fp__portrait { grid-column: 1; grid-row: 1 / span 6; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border: 2px solid #F2B632; box-shadow: 10px 10px 0 rgba(43,89,255,.55); }
+@media (max-width: 767px) {
+  .pitch .fp--portrait { grid-template-columns: minmax(0,1fr); }
+  .pitch .fp--portrait > .fp__portrait { grid-column: 1; grid-row: auto; max-width: 280px; margin-bottom: 20px; }
+  .pitch .fp--portrait > * { grid-column: 1; }
+  .slide__head { padding: 40px 0 32px; }
+}
+@media (prefers-reduced-motion: reduce) { .pitch * { transition: none !important; scroll-behavior: auto !important; } }
