@@ -1,8 +1,7 @@
 {
-  "basis": "Hipóteses de comportamento com saques diários; mês de referência de 30 dias; não dados observados",
+  "basis": "Meta do criador: 100 mil holders e mínimo de 5 mil ativos diários no ano 1. Projeção ampla de 1 milhão de usuários; cenário 1% = 10 mil ativos diários. Crescimento linear desde zero, aquisição pelo pool e tickets são hipóteses, não metas fornecidas pelo criador.",
   "scenarios": [
-    { "name": "Adoção inicial", "activeUsers": 1000, "newBuyerShare": 0.05, "firstPurchase": 100, "repeatBuyerShare": 0.10, "monthlyRepeatPurchase": 50, "withdrawerShare": 0.20, "withdrawalDays": 30, "dailyWithdrawal": 1 },
-    { "name": "Referência", "activeUsers": 5000, "newBuyerShare": 0.10, "firstPurchase": 200, "repeatBuyerShare": 0.20, "monthlyRepeatPurchase": 100, "withdrawerShare": 0.40, "withdrawalDays": 30, "dailyWithdrawal": 3 },
-    { "name": "Escala", "activeUsers": 20000, "newBuyerShare": 0.12, "firstPurchase": 250, "repeatBuyerShare": 0.25, "monthlyRepeatPurchase": 150, "withdrawerShare": 0.50, "withdrawalDays": 30, "dailyWithdrawal": 5 }
+    { "name": "Meta mínima do ano 1", "projectedUsers": 1000000, "targetHolders": 100000, "initialHolders": 0, "targetDailyActiveUsers": 5000, "initialDailyActiveUsers": 0, "poolBuyerShare": 1, "firstPurchase": 200, "repeatBuyerShare": 0.20, "monthlyRepeatPurchase": 100, "withdrawerShare": 0.40, "withdrawalDays": 30, "dailyWithdrawal": 3 },
+    { "name": "Cenário de 1% da projeção", "projectedUsers": 1000000, "targetHolders": 100000, "initialHolders": 0, "targetDailyActiveUsers": 10000, "initialDailyActiveUsers": 0, "poolBuyerShare": 1, "firstPurchase": 200, "repeatBuyerShare": 0.20, "monthlyRepeatPurchase": 100, "withdrawerShare": 0.40, "withdrawalDays": 30, "dailyWithdrawal": 3 }
   ]
 }
