@@ -1,0 +1,47 @@
+.technology-networks {
+  margin-bottom: clamp(30px, 4vw, 48px);
+  padding: 20px 0 22px;
+  border-block: 1px solid #c9bea0;
+}
+.technology-networks h3 {
+  margin: 0 0 18px;
+  color: #13204f;
+  font: 700 14px/1.4 var(--app-font-serif, sans-serif);
+}
+.technology-networks__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.technology-networks__list li { min-width: 0; text-align: center; }
+.technology-networks__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 280px);
+  height: 90px;
+  margin-inline: auto;
+  padding: 14px 20px;
+  border-radius: 10px;
+}
+.technology-networks__logo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+.technology-networks__logo--arbitrum { background: #f4f1e8; }
+.technology-networks__logo--arbitrum img { width: 230px; }
+.technology-networks__logo--allora { background: #171717; }
+.technology-networks__logo--allora img { width: 185px; }
+.technology-networks__logo--robinhood { background: #dbfe52; }
+.technology-networks__logo--robinhood img { width: 220px; }
+.technology-networks__list p { margin: 10px 0 0; color: #13204f; font-size: 12px; line-height: 1.5; }
+@media (max-width: 600px) {
+  .technology-networks__list { grid-template-columns: 1fr; gap: 18px; }
+  .technology-networks__logo { height: 80px; }
+}

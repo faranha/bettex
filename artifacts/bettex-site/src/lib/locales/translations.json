@@ -1,4 +1,9 @@
 {
+  "Arbitrum": { "en": "Arbitrum", "es": "Arbitrum" },
+  "Redes e tecnologias": { "en": "Networks and technologies", "es": "Redes y tecnologías" },
+  "Rede blockchain": { "en": "Blockchain network", "es": "Red blockchain" },
+  "Inferências de IA": { "en": "AI inference", "es": "Inferencias de IA" },
+  "Trading de cripto": { "en": "Crypto trading", "es": "Trading de cripto" },
   "IA e robôs vão substituir empregos e transferir a geração de valor para sistemas automatizados.": {
     "en": "AI and robots will replace jobs and shift value creation to automated systems.",
     "es": "La IA y los robots van a sustituir empleos y trasladar la creación de valor a sistemas automatizados."

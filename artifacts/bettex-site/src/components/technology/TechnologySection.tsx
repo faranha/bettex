@@ -3,6 +3,7 @@ import { ArrowDown, WalletCards } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
 import { BrainEnergy } from './BrainEnergy';
 import './TechnologySection.css';
+import { TechnologyNetworks } from './TechnologyNetworks';
 
 export function TechnologySection({ children }: { children: ReactNode }) {
   return (
@@ -17,6 +18,8 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           </div>
           <p className="technology-section__intro-note">Antes de cada operação, a BETTEX cruza análises de dados, probabilidades, liquidez e risco. Compara as oportunidades e seleciona o investimento mais vantajoso segundo suas análises, respeitando os limites de risco.</p>
         </header>
+
+        <TechnologyNetworks />
 
         <div className="technology-section__hierarchy" aria-label="compra concluída de BETTEX, participação automática do saldo, uma IA analisando vários mercados e crédito de lucro elegível na Carteira USDC.">
           <div className="technology-section__entry">

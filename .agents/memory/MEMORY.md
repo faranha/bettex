@@ -31,3 +31,4 @@
 - [Visual do pitch](pitch-visual-direction.md) — apresentação limpa, com foto do fundador; não reintroduzir fundos de cassino nem a foto de gráficos.
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
 - [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.
+- [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
