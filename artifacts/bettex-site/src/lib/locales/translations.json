@@ -1,4 +1,165 @@
 {
+  ". A audiência dos canais se sobrepõe e não equivale a clientes; conversão e retenção da BETTEX serão medidas por coorte.": {
+    "en": ". Channel audiences overlap and are not customers; BETTEX conversion and retention will be measured by cohort.",
+    "es": ". Las audiencias de los canales se superponen y no equivalen a clientes; la conversión y la retención de BETTEX se medirán por cohorte."
+  },
+  "1 bilhão de BETTEX.": { "en": "1 billion BETTEX.", "es": "1.000 millones de BETTEX." },
+  "100% para a tesouraria": { "en": "100% to the treasury", "es": "100% a la tesorería" },
+  "100% para o caixa operacional": { "en": "100% to operating funds", "es": "100% a los fondos operativos" },
+  "15% · 150 milhões": { "en": "15% · 150 million", "es": "15% · 150 millones" },
+  "20% · 200 milhões": { "en": "20% · 200 million", "es": "20% · 200 millones" },
+  "65% · 650 milhões": { "en": "65% · 650 million", "es": "65% · 650 millones" },
+  "A BETTEX reúne capital em uma tesouraria de estratégias geridas por IA. O token permite participar do lucro elegível em USDC, conforme as regras de staking, sem operar cada investimento por conta própria.": {
+    "en": "BETTEX pools capital in a treasury of AI-managed strategies. The token enables participation in eligible profit in USDC under the staking rules, without managing each investment yourself.",
+    "es": "BETTEX reúne capital en una tesorería de estrategias gestionadas por IA. El token permite participar en las ganancias elegibles en USDC, según las reglas de staking, sin gestionar cada inversión por cuenta propia."
+  },
+  "A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. O destino dos tokens adquiridos permanece pendente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.": {
+    "en": "Management authorises buybacks, preserving multisig controls; these are not automatic daily purchases. Unused dedicated funds accumulate and do not finance strategies or expenses. The destination of acquired tokens remains undecided. The token is not a share, does not confer ownership of assets and does not guarantee redemption.",
+    "es": "La administración autoriza las recompras, manteniendo los controles multifirma; no son compras diarias automáticas. El saldo exclusivo no utilizado se acumula y no financia estrategias ni gastos. El destino de los tokens adquiridos sigue pendiente. El token no es una acción, no otorga propiedad del patrimonio ni garantiza el rescate."
+  },
+  "A diferença está": { "en": "The difference lies", "es": "La diferencia está" },
+  "A tarifa de US$ 2,50 é receita bruta da empresa, antes de custos e tributos, fora do split do lucro da tesouraria.": {
+    "en": "The US$2.50 fee is gross company revenue, before costs and taxes, outside the treasury profit split.",
+    "es": "La tarifa de US$2,50 es ingreso bruto de la empresa, antes de costos e impuestos, fuera del reparto de las ganancias de la tesorería."
+  },
+  "Acompanha a operação": { "en": "Follows the operation", "es": "Sigue la operación" },
+  "Alternativa": { "en": "Alternative", "es": "Alternativa" },
+  "Aporte vinculado a tokens": { "en": "Token-linked funding", "es": "Aporte vinculado a tokens" },
+  "Aposta individual": { "en": "Individual bet", "es": "Apuesta individual" },
+  "Após as validações jurídicas e de segurança, medir ativação, retenção D7/D30, receita de serviços e custo de operação em uma coorte limitada.": {
+    "en": "After legal and security validation, measure activation, D7/D30 retention, service revenue and operating costs in a limited cohort.",
+    "es": "Tras las validaciones jurídicas y de seguridad, medir activación, retención D7/D30, ingresos por servicios y costos operativos en una cohorte limitada."
+  },
+  "Aquisição founder-led, com audiência própria e experiência de distribuição.": {
+    "en": "Founder-led acquisition, with an existing audience and distribution experience.",
+    "es": "Adquisición liderada por el fundador, con audiencia propia y experiencia de distribución."
+  },
+  "BETTEX disponível e tempo elegível no aplicativo oficial definem o peso de cada participante.": {
+    "en": "Available BETTEX and eligible time in the official app determine each participant's weight.",
+    "es": "Los BETTEX disponibles y el tiempo elegible en la aplicación oficial determinan el peso de cada participante."
+  },
+  "Começar com dados autorizados e simulação em previsões. Medir o resultado após custos contra uma referência e validar o percurso do usuário e a conciliação.": {
+    "en": "Start with authorised data and prediction-market simulations. Measure results after costs against a benchmark and validate the user journey and reconciliation.",
+    "es": "Comenzar con datos autorizados y simulación en mercados de predicción. Medir el resultado tras costos frente a una referencia y validar el recorrido del usuario y la conciliación."
+  },
+  "Como o cliente participa": { "en": "How the customer participates", "es": "Cómo participa el cliente" },
+  "Consulta resultados, custos, alocações e registros de conciliação previstos no modelo.": {
+    "en": "Reviews the results, costs, allocations and reconciliation records envisaged in the model.",
+    "es": "Consulta los resultados, costos, asignaciones y registros de conciliación previstos en el modelo."
+  },
+  "Demanda, estratégia e economia comercial: três validações antes da expansão.": {
+    "en": "Demand, strategy and commercial economics: three validations before expansion.",
+    "es": "Demanda, estrategia y economía comercial: tres validaciones antes de la expansión."
+  },
+  "Depois, expansão por evidência.": { "en": "Then, evidence-led expansion.", "es": "Después, expansión basada en evidencia." },
+  "Exemplo ilustrativo: 10.000 USDC de lucro elegível destinam 5.000 à tesouraria, 2.500 ao pool global dos stakers e 2.500 à carteira de recompra. Os 25% não são uma taxa de retorno individual. Sem peso elegível ou condições de reserva e liquidez, não há split: 100% fica retido. Rodadas encerradas não acumulam direitos a lucros futuros.": {
+    "en": "Illustrative example: 10,000 USDC of eligible profit allocates 5,000 to the treasury, 2,500 to the global staker pool and 2,500 to the buyback wallet. The 25% is not an individual rate of return. Without eligible weight or the required reserve and liquidity conditions, there is no split: 100% is retained. Closed rounds do not carry forward rights to future profits.",
+    "es": "Ejemplo ilustrativo: 10.000 USDC de ganancias elegibles asignan 5.000 a la tesorería, 2.500 al fondo global de stakers y 2.500 a la cartera de recompra. El 25% no es una tasa de retorno individual. Sin peso elegible o las condiciones de reserva y liquidez, no hay reparto: se retiene el 100%. Las rondas cerradas no acumulan derechos a ganancias futuras."
+  },
+  "Experiência de aquisição": { "en": "Acquisition experience", "es": "Experiencia de adquisición" },
+  "Financiamento inicial para validar produto, estratégia e aquisição; valor e termos ainda em estruturação.": {
+    "en": "Initial funding to validate the product, strategy and acquisition; the amount and terms are still being structured.",
+    "es": "Financiación inicial para validar producto, estrategia y adquisición; el importe y los términos aún están en estructuración."
+  },
+  "Financiar o produto": { "en": "Funding the product", "es": "Financiar el producto" },
+  "Liberação": { "en": "Release", "es": "Liberación" },
+  "Livre destinação após a liberação, sem antecipação do vesting.": {
+    "en": "Free allocation after release, without accelerating vesting.",
+    "es": "Libre destino después de la liberación, sin anticipar el vesting."
+  },
+  "Medir intenção específica, compreensão dos direitos e disposição de pagar a tarifa nos tickets previstos.": {
+    "en": "Measure specific intent, understanding of rights and willingness to pay the fee at the expected transaction sizes.",
+    "es": "Medir intención específica, comprensión de los derechos y disposición a pagar la tarifa para los importes previstos."
+  },
+  "Meta inicial: primeiros": { "en": "Initial goal: the first", "es": "Meta inicial: los primeros" },
+  "Metade financia o desenvolvimento inicial; metade vai para a tesouraria. É a regra para aportes vinculados aos tokens dos investidores, não para qualquer rodada societária.": {
+    "en": "Half funds initial development; half goes to the treasury. This is the rule for funding linked to investor tokens, not for every equity round.",
+    "es": "La mitad financia el desarrollo inicial; la otra mitad va a la tesorería. Es la regla para aportes vinculados a los tokens de los inversores, no para cualquier ronda de capital."
+  },
+  "O capital deve financiar": { "en": "Capital should fund", "es": "El capital debe financiar" },
+  "O cliente participa do resultado da estratégia, sem escolher cada aposta ou depender apenas da revenda do token.": {
+    "en": "The customer participates in the strategy's results, without choosing each bet or relying solely on reselling the token.",
+    "es": "El cliente participa en el resultado de la estrategia, sin elegir cada apuesta ni depender únicamente de la reventa del token."
+  },
+  "O dinheiro da empresa": { "en": "Company funds", "es": "El dinero de la empresa" },
+  "O preço da venda pública primária vai integralmente à tesouraria; a tarifa de serviço é separada.": {
+    "en": "The primary public-sale price goes entirely to the treasury; the service fee is separate.",
+    "es": "El precio de la venta pública primaria va íntegramente a la tesorería; la tarifa de servicio es independiente."
+  },
+  "O preço dos tokens financia as estratégias. A venda não é lucro distribuível nem receita livre da empresa.": {
+    "en": "The token price funds the strategies. The sale is neither distributable profit nor unrestricted company revenue.",
+    "es": "El precio de los tokens financia las estrategias. La venta no es ganancia distribuible ni ingreso de libre disposición de la empresa."
+  },
+  "O resultado depende da variação de preço e da possibilidade de revenda.": {
+    "en": "The result depends on price changes and the ability to resell.",
+    "es": "El resultado depende de la variación del precio y de la posibilidad de reventa."
+  },
+  "O resultado depende de cada aposta escolhida pelo usuário.": {
+    "en": "The result depends on each bet chosen by the user.",
+    "es": "El resultado depende de cada apuesta elegida por el usuario."
+  },
+  "O titular tem os direitos de participação nos resultados definidos pelo token, não ações da empresa, propriedade da tesouraria, voto societário ou resgate pelo valor patrimonial. Pode ganhar ou perder na revenda, se houver liquidez. Oferta fixa não significa pagamento fixo.": {
+    "en": "The holder has the profit-participation rights defined by the token, not company shares, treasury ownership, shareholder voting rights or redemption at net asset value. They may gain or lose on resale, if liquidity exists. Fixed supply does not mean fixed payments.",
+    "es": "El titular tiene los derechos de participación en los resultados definidos por el token, no acciones de la empresa, propiedad de la tesorería, voto societario ni rescate por el valor patrimonial. Puede ganar o perder en la reventa, si existe liquidez. Una oferta fija no significa pagos fijos."
+  },
+  "O token combina participação condicionada no lucro elegível das estratégias e possibilidade de revenda, com risco de preço e liquidez.": {
+    "en": "The token combines conditional participation in eligible strategy profit with the possibility of resale, subject to price and liquidity risk.",
+    "es": "El token combina participación condicionada en las ganancias elegibles de las estrategias y posibilidad de reventa, con riesgo de precio y liquidez."
+  },
+  "Oferta e direitos do token": { "en": "Token supply and rights", "es": "Oferta y derechos del token" },
+  "Oferta, vesting e direitos na documentação": { "en": "Supply, vesting and rights in the documentation", "es": "Oferta, vesting y derechos en la documentación" },
+  "Parcelas mensais durante 36 meses": { "en": "Monthly releases over 36 months", "es": "Liberaciones mensuales durante 36 meses" },
+  "Participa pelo staking": { "en": "Participates through staking", "es": "Participa mediante staking" },
+  "Participação": { "en": "Participation", "es": "Participación" },
+  "Participação nos lucros por token.": { "en": "Profit participation through a token.", "es": "Participación en las ganancias mediante un token." },
+  "Participação nos resultados": { "en": "Participation in results", "es": "Participación en los resultados" },
+  "Pool global, rateado pelo peso elegível.": { "en": "Global pool, allocated by eligible weight.", "es": "Fondo global, repartido según el peso elegible." },
+  "Primeiros 1.000 usuários no Brasil.": { "en": "First 1,000 users in Brazil.", "es": "Primeros 1.000 usuarios en Brasil." },
+  "Público": { "en": "Public", "es": "Público" },
+  "Quando a rodada diária atende às condições de lucro, reserva e liquidez, recebe sua parcela do pool dos stakers.": {
+    "en": "When the daily round meets profit, reserve and liquidity conditions, receives their share of the staker pool.",
+    "es": "Cuando la ronda diaria cumple las condiciones de ganancias, reserva y liquidez, recibe su parte del fondo de stakers."
+  },
+  "Recebe em USDC": { "en": "Receives USDC", "es": "Recibe en USDC" },
+  "Retenção e reinvestimento.": { "en": "Retention and reinvestment.", "es": "Retención y reinversión." },
+  "Stakers": { "en": "Stakers", "es": "Stakers" },
+  "Só há lucro elegível após custos reais, tributos, obrigações, avaliação das posições abertas, reservas e liquidez.": {
+    "en": "Profit is eligible only after actual costs, taxes, obligations, open-position valuation, reserves and liquidity requirements.",
+    "es": "Solo hay ganancias elegibles después de costos reales, impuestos, obligaciones, valoración de posiciones abiertas y requisitos de reserva y liquidez."
+  },
+  "Tarifas de serviço": { "en": "Service fees", "es": "Tarifas de servicio" },
+  "Todas as alocações começam a liberar no mês da abertura da venda pública e terminam no mês 36. Liberação não significa venda realizada nem início dos investimentos.": {
+    "en": "All allocations begin releasing in the month the public sale opens and finish in month 36. Release does not mean a completed sale or the start of investments.",
+    "es": "Todas las asignaciones empiezan a liberarse en el mes de apertura de la venta pública y terminan en el mes 36. Liberación no significa venta realizada ni inicio de las inversiones."
+  },
+  "Token": { "en": "Token", "es": "Token" },
+  "Token centrado no preço": { "en": "Price-driven token", "es": "Token centrado en el precio" },
+  "Token disponível × tempo elegível": { "en": "Available tokens × eligible time", "es": "Tokens disponibles × tiempo elegible" },
+  "Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. A liberação de novos tokens pode alterar a participação individual; fundador e investidores seguem os mesmos critérios.": {
+    "en": "Locked tokens, public-sale inventory and unavailable balances are excluded from allocations. Releasing new tokens may change individual participation; the founder and investors follow the same criteria.",
+    "es": "Los tokens bloqueados, el inventario de venta pública y los saldos no disponibles quedan fuera del reparto. La liberación de nuevos tokens puede alterar la participación individual; el fundador y los inversores siguen los mismos criterios."
+  },
+  "Tokens destinados à venda pública, cujo preço primário financia integralmente a tesouraria.": {
+    "en": "Tokens allocated to the public sale, whose primary price funds the treasury in full.",
+    "es": "Tokens destinados a la venta pública, cuyo precio primario financia íntegramente la tesorería."
+  },
+  "Tokens vinculados ao financiamento inicial, conforme os termos da rodada.": {
+    "en": "Tokens linked to initial funding under the round's terms.",
+    "es": "Tokens vinculados a la financiación inicial, según los términos de la ronda."
+  },
+  "Três alocações.": { "en": "Three allocations.", "es": "Tres asignaciones." },
+  "USDC exclusivo para recompras autorizadas.": { "en": "USDC reserved for authorised buybacks.", "es": "USDC exclusivo para recompras autorizadas." },
+  "Um fundo de investimentos gerido por IA.": { "en": "An AI-managed investment fund.", "es": "Un fondo de inversión gestionado por IA." },
+  "Validar a operação comercial": { "en": "Validate commercial operations", "es": "Validar la operación comercial" },
+  "Validar demanda": { "en": "Validate demand", "es": "Validar la demanda" },
+  "Validar produto e estratégia": { "en": "Validate the product and strategy", "es": "Validar producto y estrategia" },
+  "Venda pública primária": { "en": "Primary public sale", "es": "Venta pública primaria" },
+  "e a tesouraria inicial.": { "en": "and the initial treasury.", "es": "y la tesorería inicial." },
+  "e canais próprios.": { "en": "and owned channels.", "es": "y canales propios." },
+  "evidência.": { "en": "evidence.", "es": "evidencia." },
+  "no direito econômico.": { "en": "in the economic right.", "es": "en el derecho económico." },
+  "não se mistura ao da tesouraria.": { "en": "are kept separate from treasury funds.", "es": "no se mezcla con el de la tesorería." },
+  "token": { "en": "token", "es": "token" },
   "% compras,": {
     "en": "% purchases,",
     "es": "% compras,"

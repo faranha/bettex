@@ -290,6 +290,7 @@ Site da BETTEX, projeto de investimento com quatro agentes especializados em mer
 - O criador exige localizar absolutamente todo o conteúdo do site em português, inglês internacional e espanhol internacional.
 - “E sempre que nós promovermos alguma mudança, você vai localizar também essa mudança nas línguas do site.”
 - Atualizar os três idiomas juntos: conteúdo institucional, pitch, documentação, prévias, tabelas, gráficos/SVG, acessibilidade, datas/números, SEO, imagens de compartilhamento e downloads expostos pelo site.
+- Todas as próximas artes da BETTEX devem ter versões em português, inglês e espanhol, conforme pedido do criador. A arte do perfil do Instagram fornecida é referência visual; localizar interface e bio sem alterar usuário, foto ou métricas.
 - Não misturar idiomas nem substituir traduções ausentes por português. Usar nomes nativos dos idiomas e ícone de globo, sem bandeiras de países.
 - Manter as qualificações jurídicas, os riscos, a economia aprovada e o estado da Demo (“Em breve”, localizado). A localização não autoriza criar transações nem disponibilizar a Demo.
 - Antes de entregar mudanças, executar `check:locales` e verificar as páginas localizadas. O build bloqueia mensagens ausentes e placeholders incompatíveis; traduções ainda precisam preservar sentido e naturalidade.
@@ -301,6 +302,8 @@ Site da BETTEX, projeto de investimento com quatro agentes especializados em mer
 - A tese é da BETTEX, não uma observação pessoal do fundador. Apresentá-la diretamente, sem acrescentar atribuições óbvias como “visão estratégica do fundador”, comentários sobre o que não está comprovado ou ressalvas de renda e desemprego. Não inserir essas observações sem solicitação do criador. Preservar as fontes e os fatos, sem inventar resultados ou garantias.
 
 ## Aquisição founder-led
+
+- Foto de referência de Fred Azevedo fornecida pelo criador para os trabalhos da BETTEX: `artifacts/bettex-site/public/fred-azevedo.png`. Cópia original, sem edição; arquivo recebido em `attached_assets/image_1791061100277.png`. Esta é a foto do fundador, não um retrato ilustrativo.
 
 - O criador define BETTEX como uma empresa founder-led. Sua apresentação como fundador e sua audiência existente devem sustentar a explicação de aquisição, tanto na documentação quanto no pitch; não substituir essa distribuição por uma hipótese genérica de mídia.
 - A meta inicial são os primeiros 1.000 usuários no Brasil; depois, expansão para países com perfil correlato. A estratégia combina marketing de performance, brand building e narrative building nas mídias sociais, com custo de mídia explícito e ações de retenção.

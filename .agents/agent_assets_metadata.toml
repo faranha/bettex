@@ -336,3 +336,87 @@ mtime_ms = 1791037045507
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/15631624-e07b-478a-9742-abd1961d45dc/68671c5b-7798-47c3-95c8-538bae9f7a48"
 storage_version_token = "1791038174490695"
 content_type = "image/jpeg"
+
+[[outputs]]
+id = "9MXSA_1sxa_sFXEGa--Yz"
+uri = "file://artifacts/bettex-site/public/founder/instagram-fred-azevedo-pt.png"
+type = "image"
+title = "Perfil Instagram de Fred — Português"
+description = "Arte em português, com interface e bio localizadas. Foto, usuário, links e métricas preservados."
+logical_id = "cd1bd8dc-8b2a-4d16-b3c8-da79f5921146"
+content_hash = "sha256:3a2b61fda8b13895d0ec79d45639a6a3bd3e13c683213c1e01d77d259aec8011"
+size = 332827
+mtime_ms = 1791061619330
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/cd1bd8dc-8b2a-4d16-b3c8-da79f5921146/96c35f00-882d-437d-b3e9-d542395d5bdc"
+storage_version_token = "1791061699840105"
+content_type = "image/png"
+
+[[outputs]]
+id = "9XzvpuY-of1jQ7RuW9FD1"
+uri = "file://artifacts/bettex-site/public/founder/instagram-fred-azevedo-en.png"
+type = "image"
+title = "Perfil Instagram de Fred — Inglês"
+description = "Arte em inglês, com interface e bio localizadas. Foto, usuário, links e métricas preservados."
+logical_id = "e539836a-6600-46ff-b8c9-66efc5508564"
+content_hash = "sha256:1a3c31b851869f4f9004e2b0ae6ea35310d81ca178ca947334b0dc0c4a06de48"
+size = 322777
+mtime_ms = 1791061624186
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/e539836a-6600-46ff-b8c9-66efc5508564/1d19ddd6-0b21-4159-b24c-b033b412388e"
+storage_version_token = "1791061700740874"
+content_type = "image/png"
+
+[[outputs]]
+id = "ma1gevi_p_7Sd7HhpH7s0"
+uri = "file://artifacts/bettex-site/public/founder/instagram-fred-azevedo-es.png"
+type = "image"
+title = "Perfil Instagram de Fred — Espanhol"
+description = "Arte em espanhol, com interface e bio localizadas. Foto, usuário, links e métricas preservados."
+logical_id = "e09a5724-a873-44f2-b38b-d16cbc180193"
+content_hash = "sha256:c2b3e2d3e10489186a0c49ef31907dbe010d94cbbf5b4b2da1c032bd95fb53c0"
+size = 331474
+mtime_ms = 1791061628479
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/e09a5724-a873-44f2-b38b-d16cbc180193/f41ef513-0fed-48a4-ae7d-03d3bfe1b3da"
+storage_version_token = "1791061701431890"
+content_type = "image/png"
+
+[[outputs]]
+id = "ZZ6kjCk9dsNjRhgaxUHND"
+uri = "file://artifacts/bettex-site/public/founder/x-fred-azevedo-pt.png"
+type = "image"
+title = "Perfil X de Fred — Português"
+description = "Arte do perfil em português, com banner e métricas preservados e patrocínio pessoal da Gamecheck e Good Game Labs indicado na bio."
+logical_id = "8f1ad402-d36a-404d-9c6f-a8dc9d16969f"
+content_hash = "sha256:eed5d875e852822637af74f93c71da93958773789f15049b96aa6212f8d4f63b"
+size = 818733
+mtime_ms = 1791061826629
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8f1ad402-d36a-404d-9c6f-a8dc9d16969f/215dca00-a1c6-4795-8685-5bc7df5690f3"
+storage_version_token = "1791061866476232"
+content_type = "image/png"
+
+[[outputs]]
+id = "B6YmtLlKv12j_5Y9u6FqI"
+uri = "file://artifacts/bettex-site/public/founder/x-fred-azevedo-en.png"
+type = "image"
+title = "Perfil X de Fred — Inglês"
+description = "Arte do perfil em inglês, com banner e métricas preservados e patrocínio pessoal da Gamecheck e Good Game Labs indicado na bio."
+logical_id = "bf56bcfb-dd05-48b7-82b5-7b67e0ff4e54"
+content_hash = "sha256:002b98136992831a241ba2c2d2c104210b3cd553572d1976cb55ecef87bd1783"
+size = 810874
+mtime_ms = 1791061833215
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/bf56bcfb-dd05-48b7-82b5-7b67e0ff4e54/3f60e9e1-4f91-4aad-a8b0-f901d4ae417d"
+storage_version_token = "1791061867078650"
+content_type = "image/png"
+
+[[outputs]]
+id = "QpB9A8cxXvXLd_gWizBQF"
+uri = "file://artifacts/bettex-site/public/founder/x-fred-azevedo-es.png"
+type = "image"
+title = "Perfil X de Fred — Espanhol"
+description = "Arte do perfil em espanhol, com banner e métricas preservados e patrocínio pessoal da Gamecheck e Good Game Labs indicado na bio."
+logical_id = "4c5bd3f1-1b2f-4c27-8937-2d349e1ae0c4"
+content_hash = "sha256:15f60467056d3fc5c93b4af417dff0b60c091c8bdd7d9cfa2e94ee0800678e87"
+size = 819858
+mtime_ms = 1791061839775
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/4c5bd3f1-1b2f-4c27-8937-2d349e1ae0c4/92cbe7c8-3c95-44e2-aec0-7e00624443a1"
+storage_version_token = "1791061867701664"
+content_type = "image/png"

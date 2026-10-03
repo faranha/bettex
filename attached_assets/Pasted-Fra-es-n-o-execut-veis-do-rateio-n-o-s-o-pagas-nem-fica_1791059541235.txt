@@ -1,0 +1,27 @@
+Frações não executáveis do rateio não são pagas nem ficam pendentes do beneficiário: retornam à tesouraria. Não se acumulam para rodadas futuras, não compõem pagamentos posteriores e não são redistribuídas entre participantes.
+
+O cálculo proporcional usa precisão exata. A precisão validada do ativo e do conector determina a unidade executável; a parcela pagável é ajustada para baixo, sem arredondar para cima nem usar a precisão de exibição como regra financeira. O registro identifica o cálculo, o valor executável e a fração retornada à tesouraria por rodada, sem criar obrigação com o beneficiário sobre essa diferença. Retenções tributárias são separadas: não são sobras livres do rateio.
+
+Os 25% continuam sendo a parcela nominal destinada ao rateio. O pagamento efetivo exclui as frações não executáveis e os créditos cancelados por saída de BETTEX; a tesouraria conserva os 50% e recebe também as frações não pagas, enquanto outros 25% são destinados à carteira exclusiva de recompra. O retorno dessas frações não é novo lucro realizado, novo aporte ou autorização para aplicar outro split ao mesmo resultado. Histórico, obrigações vigentes e retornos são conciliados sem sobreposição nem efeito duplicado em R, P ou B.
+
+Encerrada a rodada, não resta crédito de distribuição a pagar, saldo residual do beneficiário ou obrigação de complemento. Valores não pagos e comprovadamente não enviados ficam na tesouraria; autorizações não executadas são encerradas, sem migração para outra rodada. Transferências já iniciadas, enviadas ou incertas exigem apenas conciliação do fato original: não são créditos de uma nova rodada, não reabrem o rateio e não autorizam novos envios da rodada encerrada. Recursos incertos não são considerados recuperados.
+
+Durante a execução da própria rodada, somente valores executáveis e autorizados podem ser pagos. Não consolidar parcelas de rodadas diferentes. Frações retornadas à tesouraria não entram em pagamentos. Envios incertos continuam comprometidos para conciliação, sem presumir recursos recuperados ou liberar reenvio; segurança, reservas, liquidez, custos e tributos permanecem obrigatórios.
+
+Se a soma dos pesos elegíveis for zero, não há split. Mesmo com lucro, reservas e liquidez atendidas, 100% permanece na tesouraria, sem separar 25% para destinatários inexistentes nem criar créditos individuais. Reter não cria um novo resultado nem muda a origem do lucro.
+
+Qualquer saída de BETTEX da carteira oficial, por saque, venda ou transferência, cancela todos os créditos do ciclo acumulados até a saída e ainda não pagos, inclusive em retiradas parciais. Todo o peso acumulado da rodada é zerado, não apenas o da quantidade retirada. Não se conserva o peso do período anterior à saída, nem o peso anterior do saldo que permaneceu. Esses créditos não são pagos.
+
+A saída cancela também créditos executáveis já apurados ou autorizados e pagamentos pendentes. Frações não executáveis retornam à tesouraria desde a apuração e nunca constituem crédito pendente do beneficiário. O cancelamento é registrado por titular e ciclo, sem novo rateio nem transferência desses direitos a novos participantes. Uma nova entrada não recupera créditos cancelados.
+
+USDC já recebido e conciliado na Carteira USDC permanece do titular. Sacar USDC não cancela créditos de staking; esta regra é exclusiva das saídas de BETTEX.
+
+Se a rodada não paga, o lucro fica definitivamente na tesouraria, sem crédito ao staking nem liberação futura desse resultado. A recomposição das reservas não recupera a rodada encerrada. Novas rodadas consideram somente seus próprios resultados e participantes elegíveis.
+
+Tokens ainda não liberados e estoque institucional de venda não participam. Somente saldos pessoais disponíveis entram no cálculo. Taxas pagas em USDC não reservam BETTEX nem reduzem seu peso; saídas efetivas de BETTEX seguem quantidade e tempo. Tokens do fundador e dos investidores têm os mesmos critérios de elegibilidade dos demais titulares.
+
+O saldo BETTEX remanescente ou uma nova entrada volta a acumular participação a partir da confirmação após a saída, sem recuperar peso ou créditos anteriores.
+
+Exemplo em uma única rodada, com dois participantes elegíveis aos mesmos resultados e sem saída de BETTEX: 1.000 BETTEX por 24 horas produzem 24.000 token-horas; 500 BETTEX por 24 horas produzem 12.000 token-horas. As participações são ⅔ e ⅓ da parcela executável dessa rodada, se ela pagar. Se não pagar, nenhum deles conserva crédito ou peso para outra rodada. O exemplo demonstra a fórmula, não uma promessa de lucro.
+
+O registro identifica os intervalos de saldo, os pesos elegíveis, a parcela executável, os pagamentos e o encerramento de uma única rodada. Durante a execução, valores ainda não recebidos não são saldo disponível na Carteira USDC. Após o encerramento, o histórico não é crédito pendente, obrigação de complemento ou direito sobre lucros futuros. Confirmações de envios já realizados apenas conciliam o fato original, sem criar outro crédito, repetir efeitos patrimoniais ou reabrir o rateio, conforme a regra de liquidação da distribuição.
