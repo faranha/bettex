@@ -4,7 +4,35 @@
 
 **Natureza do documento:** memorando preparatório para estruturação e consulta jurídica. Não é estatuto, contrato definitivo, parecer jurídico, registro de empresa ou autorização de emissão. Não está pronto para assinatura. Nenhuma captação, incorporação ou contato externo foi realizado.
 
-**Atualização de escopo do criador:** não buscar nem obter licença. A comparação abaixo registra os regimes encontrados, mas sua prioridade inicial de El Salvador está suspensa: não é uma rota aprovada diante dessa restrição. A possibilidade de registro ou aprovação da emissão, distinta da licença de prestador, ainda precisa ser esclarecida. Somente um enquadramento verificavelmente não sujeito a licença ou dispensado poderá ser recomendado dentro do novo escopo; emissão pública e atividades reguladas não serão presumidas autorizadas pelo simples registro comercial.
+**Escopo mais recente do criador:** não aceita licença financeira nem aprovação da emissão do token. A aceitação anterior de aprovação foi substituída. Busca uma empresa comercial única de tecnologia/IA, remunerada pela venda de um ativo digital, com liberdade operacional e estrutura simples e defensável. O comprador pode revender o token no mercado aberto sem ser obrigado a utilizar o serviço ou tecnologia; a participação no staking é facultativa e permite resultados conforme lucro e regras aprovadas. Nenhum serviço adicional de assinatura ou acesso à IA é presumido. A participação financeira não foi retirada. A comparação abaixo documenta possibilidades e incompatibilidades, não aprovação do modelo: a escolha de nome, a ausência de participação societária e a facultatividade do staking não demonstram dispensa regulatória. Nenhuma empresa, licença, emissão ou captação será solicitada/executada por iniciativa própria.
+
+## 0. Modelo simples proposto para análise jurídica
+
+**Pesquisa ampliada:** ver bettex-bvi-hipotese-de-dispensa.md para a hipótese em Ilhas Virgens Britânicas, com exclusão de emissão inicial identificada em orientação oficial e limites de investimento, fundos e funções VASP. Essa prioridade de pesquisa não constitui escolha do país ou confirmação de dispensa para BETTEX.
+
+**Uma empresa. Um token negociável. Um programa facultativo de participação em resultados.**
+
+**Empresa:** sociedade comercial de tecnologia e IA, titular/licenciada dos direitos do projeto, responsável pela emissão, receitas, tesouraria e obrigações do programa. Denominação de trabalho BETTEX Digital; forma e país ainda não escolhidos. Não a apresentar como fundo constituído ou fundação sem fins lucrativos. A tesouraria é uma função interna, não uma segunda entidade.
+
+**Tecnologia e resultados, conforme esclarecimento do criador:** a empresa vende a tecnologia de IA; a IA analisa e executa as operações das quais podem surgir resultados financeiros. O criador define a aquisição como compra da inteligência artificial, sem obrigar o titular a usar o serviço ou inventar uma assinatura de software. A empresa não promete nem garante lucro. A proposta diferencia a obrigação de disponibilizar e operar a tecnologia das condições de apuração e distribuição de resultados previstas no programa de staking.
+
+**Responsabilidade e direitos:** execução por IA não confere personalidade jurídica à tecnologia nem retira da empresa suas responsabilidades contratuais e legais. Resultados das operações institucionais são apurados na contabilidade pertinente, não atribuídos a uma pessoa jurídica chamada IA. Ausência de garantia de lucro não cancela créditos já apurados nem torna discricionários os direitos definidos pelas regras aprovadas. Também não demonstra, isoladamente, dispensa de regras sobre investimento coletivo ou oferta de ativos financeiros.
+
+**Venda:** transferência das unidades de BETTEX ao comprador, com a destinação de recursos já aprovada. O comprador é dono das unidades; não se torna sócio nem adquire direito de resgate de fração da tesouraria. A tese de aplicação de recursos recebidos pela própria empresa deve ser examinada à luz dos direitos financeiros prometidos, não tomada como prova de que se trata apenas de capital próprio livre de regras de investimento coletivo. Tratamento contábil de receita, capital e obrigações também depende de validação.
+
+**Mercado secundário:** o titular pode revender ou transferir, sujeito às regras dos mercados e às normas aplicáveis. Pagamento entre titulares pertence ao vendedor e não é novo aporte à tesouraria ou lucro da empresa. Negociabilidade pretendida não é promessa de liquidez, listagem, preço ou autorização para a empresa operar uma exchange.
+
+**Staking:** participação facultativa no mecanismo de resultados existente. Propor termos de adesão e regras de elegibilidade claros dentro da mesma empresa, sem inventar bloqueio, prazo ou resgate. Manter apuração, reservas, split 75%/25%, créditos reconhecidos e pagamentos conciliados. A existência de lucro elegível e a elegibilidade do titular são condições; não converter o direito aprovado em mera liberalidade da administração.
+
+**Separação documental proposta:** atos societários da empresa; termos da emissão/venda e transferência do token; termos do staking e da participação nos resultados. São documentos e relações da mesma pessoa jurídica, não três empresas. Separar documentos explicita obrigações, mas não garante que venda e staking sejam analisados isoladamente pelo regulador. Não usar a separação para omitir, no material da venda, o programa de resultados conhecido.
+
+**Tese defensável a testar:** atividade empresarial real, contas institucionais, destinação de recursos transparente, responsabilidade identificada, ausência de mandato individual para gerir carteira de cada comprador, inexistência de promessa de principal ou retorno fixo e direitos contratuais de staking definidos. Nenhum desses pontos será criado ficticiamente para obter um rótulo favorável.
+
+**Ponto decisivo:** é necessário verificar se a oferta de token com acesso facultativo aos resultados, somada à tesouraria comum aplicada pela empresa, exige autorização na jurisdição da operação e nos países dos compradores. Esta proposta ainda não comprova dispensa. O Parecer CVM 40 adota análise funcional e admite funções simultâneas no mesmo token [S12].
+
+**Rota concreta para investigação dentro do limite:** Dubai fora do DIFC, somente se BETTEX e o negócio efetivo se enquadrarem na categoria 2 VARA e não em outra atividade sujeita a licença própria. A regra I.E.2 prevê dispensa de aprovação prévia quando toda colocação/distribuição ocorre por distribuidor licenciado. Portanto, existe uma dispensa documentada para certas emissões, mas ela não equivale à liberdade de venda direta irrestrita e não foi confirmada para BETTEX. Um fornecedor externo não é segunda empresa própria; seus custos, obrigações e efeito sobre o aplicativo devem ser avaliados [S13–S14].
+
+**Alternativas restantes:** El Salvador apresenta aderência a tokens de renda, mas a rota de habilitação da emissão consultada exige aprovação e não atende ao limite atual. Não foi verificada na Sérvia uma dispensa que cubra o modelo completo na escala pretendida. Não incorporar em qualquer país com a justificativa de que a denominação “tecnologia” substitui essa verificação.
 
 ## 1. Decisão empresarial já tomada
 
@@ -18,7 +46,7 @@ A classificação jurídica dependerá das regras locais e das funções efetiva
 
 ## 2. Conclusão comparativa inicial
 
-**Avaliação anterior à restrição de não obter licença:** El Salvador apresentou a maior aderência documental ao instrumento de renda e à emissão pública. Essa avaliação não constitui recomendação atual de implantação: a prioridade está suspensa até esclarecer quais procedimentos são aceitos e verificar um enquadramento compatível. Dubai e Sérvia permanecem alternativas a avaliar. Nenhum país está escolhido.
+**Comparação histórica, com prioridade suspensa pelo novo escopo:** El Salvador, como emissora de token de renda, e Dubai, na hipótese de emissão VARA categoria 2 com distribuidor independente licenciado. A rota de aprovação de emissão em El Salvador não atende à restrição mais recente. Dubai não foi confirmado para BETTEX; a dispensa prevista para certas emissões não é dispensa de todas as atividades. Sérvia permanece alternativa de comparação. Nenhuma rota está juridicamente confirmada para BETTEX, nenhum país está escolhido e não há promessa de processo rápido.
 
 El Salvador apresenta o caminho documental mais diretamente relacionado a um token que dá direito a resultados sem transformar o comprador em sócio. A lei publicada define “Oferta Pública de Ingresos”, incluindo ganhos, lucros e rendimentos. A CNAD descreve os requisitos da emissão e publica exemplos de ofertas de tokens de renda. Isso justifica consultar primeiro esse regime, mas não demonstra que uma tesouraria com as quatro estratégias da BETTEX será aprovada [S1–S3].
 
@@ -27,7 +55,7 @@ El Salvador apresenta o caminho documental mais diretamente relacionado a um tok
 - **Forma comercial candidata:** S.A.S. de C.V. ou S.A. de C.V., a escolher após avaliação societária, tributária e regulatória. A plataforma oficial do CNR admite SA e SAS; não se afirma que ambas sejam automaticamente adequadas a todas as autorizações da BETTEX [S4].
 - **Caminho de emissão:** consulta à CNAD sobre oferta pública de ingresos e enquadramento do token BETTEX; preparar Documento de Informação Relevante (DIR), relatório de certificador registrado e estruturação conforme requisitos vigentes. Registro comercial, registro da emissora e habilitação da emissão são atos distintos [S1–S2].
 - **Evidência concreta:** aviso publicado pela CNAD em abril de 2026 descreve uma sociedade comercial emitindo o token de renda PMARISCO 1, lastreado em direitos econômicos de royalties. É evidência de uma rota de emissão de renda, não precedente de aprovação de apostas, gestão coletiva por IA ou ativos de investimento da BETTEX [S3].
-- **Entidade única:** investigar se a mesma sociedade pode ser emissora, operar o aplicativo e executar as estratégias, e quais atividades exigem registro PSAD ou prestadores externos. Não presumir que a habilitação de uma emissão cubra esses serviços. O art. 19 inclui administração de produtos de investimento em ativos digitais e certas operações por conta de terceiros [S1].
+- **Entidade única e sem licença própria:** investigar se a sociedade pode permanecer apenas emissora, aplicar recursos nas estratégias aprovadas e cumprir suas obrigações de resultados, contratando PSAD, estruturador e certificador independentes onde necessário. O aviso de renda consultado identifica emissora e PSAD diferentes; não demonstra que o aplicativo completo da BETTEX dispense registro como prestador. Se as funções reais da BETTEX exigirem autorização própria de prestador, essa rota não atende ao requisito, mesmo que o procedimento local se chame registro. O art. 19 inclui administração de produtos de investimento em ativos digitais e certas operações por conta de terceiros [S1–S3].
 - **Captação e identificação:** esclarecer acesso de varejo, identificação dos beneficiários de yield, controles AML, transferências secundárias, países aceitos e interfaces com PSAD, sem substituir essas obrigações por mera conexão de carteira.
 - **Tributação:** há benefícios legais para atividades digitais qualificadas, mas esta análise não confirma isenção integral da empresa, de receitas de serviços, dos investimentos subjacentes, de ganhos no exterior ou de residentes de outros países. Não alimentar o simulador com alíquota zero por inferência.
 - **Ponto pendente determinante:** autorização e elegibilidade institucional de previsões, ações/cripto, surebet e cassinos; classificação da gestão dos recursos; uso de USDC; contas, custódia e distribuição internacional. Não foi verificada uma permissão geral para apostas ou para todas essas estratégias.
@@ -35,10 +63,11 @@ El Salvador apresenta o caminho documental mais diretamente relacionado a um tok
 ### Dubai — Emirados Árabes Unidos
 
 - **Não existe uma única resposta “abrir em Dubai”.** É necessário escolher a jurisdição interna e identificar o regulador. VARA cobre Dubai fora do DIFC; o DIFC possui regime financeiro próprio, supervisionado pela DFSA [S5–S6].
-- **Fora do DIFC:** solicitar classificação do token e de todas as atividades. O rulebook VARA consultado tem versão de 19 de maio de 2025. Categoria 1 exige licença; categoria 2 exige distribuição por distribuidor licenciado. A categoria depende dos direitos e do modelo; não classificamos BETTEX automaticamente em nenhuma delas [S5].
+- **Fora do DIFC:** solicitar classificação do token e de todas as atividades. O rulebook VARA consultado disponibiliza versão de 19 de maio de 2025. Categoria 1 exige licença própria e não atende ao limite escolhido. A orientação oficial explicita que categoria 2 não exige licença VARA do emissor, mas exige distribuidor licenciado para colocação e distribuição. A categoria depende dos direitos e do modelo; não classificamos BETTEX automaticamente nela [S5, S13–S14].
+- **Limite dessa possibilidade:** a dispensa refere-se à emissão categoria 2, não a todo negócio da emissora nem a regras de instrumentos financeiros ou investimento coletivo. Verificar se a participação em resultados e a tesouraria ficam nesse regime ou em outro. A regra I.E.2 condiciona a dispensa de aprovação prévia ao distribuidor licenciado; uma página administrativa da VARA também descreve formulário de emissão categoria 2. Confirmar o procedimento atual aplicável, sem prometer ausência de apresentação ou fiscalização [S13–S15].
 - **No DIFC:** a DFSA trata Investment Tokens por referência a securities ou derivatives e aos direitos substancialmente semelhantes. O anúncio de 2021 é evidência da criação do regime, não substituto do rulebook vigente ou de uma decisão sobre BETTEX [S6].
 - **Forma candidata:** sociedade comercial local adequada ao regime escolhido, não “fundação” como atalho. Forma, atividades permitidas, capital e substância dependem do escopo autorizado. Uma licença genérica de software não cobre a oferta financeira.
-- **Entidade única:** obter confirmação de compatibilidade entre emissão, aplicação do capital e serviços do aplicativo na mesma sociedade; não contratar um pacote societário antes dessa resposta.
+- **Entidade única:** obter confirmação de compatibilidade entre emissão, aplicação do capital e serviços do aplicativo na mesma sociedade sem licença própria. Contratar distribuidor licenciado externo não significa criar segunda empresa BETTEX, mas pode mudar o fluxo da compra no aplicativo; avaliar esse fluxo sem alterar o produto silenciosamente. Não contratar um pacote societário antes dessa resposta.
 - **Jogos:** a GCGRA é a autoridade de jogos comerciais dos Emirados e informa que atividades comerciais de jogos sem licença são ilegais. Isso não prova que a BETTEX seja operadora de cassino ou que toda aposta como cliente necessite dessa licença; exige análise territorial e funcional das estratégias e plataformas [S7].
 - **Pontos não confirmados:** varejo no desenho específico, autorizações simultâneas, orçamento, tratamento fiscal de todos os fluxos e acesso institucional às plataformas. Não há estimativa comprovada de custo ou prazo total.
 
@@ -52,6 +81,18 @@ El Salvador apresenta o caminho documental mais diretamente relacionado a um tok
 - **Entidade única:** viabilidade não confirmada. Se o enquadramento exigir estrutura própria incompatível com a sociedade única, isso deve ser informado, não contornado por nomenclatura.
 
 ## 3. Desenho da entidade BETTEX
+
+### 3.0 Fronteira de atividades proposta
+
+**Identidade de trabalho:** sociedade comercial emissora de BETTEX, instrumento de participação em resultados, responsável pelos direitos do token e pela aplicação dos recursos nas atividades que sejam legalmente permitidas nesse escopo.
+
+**Funções pretendidas da emissora:** propriedade/licença da tecnologia e marca; emissão e informação ao adquirente; administração de suas contas institucionais; apuração de resultados e cumprimento dos créditos de yield. A própria emissão e a atividade de aplicação da tesouraria permanecem sujeitas à classificação local.
+
+**Não incluir como capacidade já autorizada:** bolsa/exchange própria, negociação por conta de clientes, custódia financeira de terceiros, gestão de carteiras individuais, oferta bancária, intermediação financeira ou operação de jogos. Nenhuma dessas exclusões formais prova dispensa se o fluxo efetivo do aplicativo realizar a atividade.
+
+**Prestadores externos a avaliar:** estruturador, certificador, distribuidor registrado/licenciado, intermediários de investimento e, quando necessários, custódia e pagamentos. São fornecedores independentes, não subsidiárias ou veículos próprios adicionais. A exigência de distribuidor externo pode restringir venda direta por contrato ou aplicativo; a hipótese de receitas de compra deve refletir o fluxo efetivamente permitido.
+
+**Pergunta jurídica determinante:** a gestão da tesouraria com obrigação de compartilhar resultados pode ser tratada como atividade da própria emissora, sem exigir autorização de gestão coletiva? Não presumir resposta positiva porque os holders não possuem ações ou direito de resgate. Uma resposta negativa exige descartar a rota ou obter nova decisão do criador, não ocultar a atividade.
 
 ### 3.1 Funções concentradas na mesma pessoa jurídica
 
@@ -132,7 +173,7 @@ Não usar tabela universal de gross-up para decidir base tributária ou regime. 
 
 ## 7. Pacote a preparar antes da incorporação e da oferta
 
-1. Parecer local sobre empresa única, instrumento, investimento coletivo e todas as atividades.
+1. Parecer local sobre empresa única emissora sem licença própria de prestador, instrumento, investimento coletivo, serviços externos e todas as atividades.
 2. Forma societária, denominação, sócios, administradores, capital, sede e beneficiários finais, após escolha de país.
 3. Objeto social com atividades reais permitidas; não disfarçar a captação como software.
 4. Documento de emissão/DIR ou equivalente, direitos do token e fluxo de oferta e distribuição.
@@ -141,14 +182,14 @@ Não usar tabela universal de gross-up para decidir base tributária ou regime. 
 7. Identificação, AML, sanções, proteção de dados e controle dos prestadores.
 8. Contratos com plataformas e prestadores institucionais; conferência técnica e jurídica dos smart contracts.
 9. Termos de encerramento, insolvência, créditos e patrimônio remanescente.
-10. Pedido de aprovação de emissão e autorizações adicionais exigíveis, antes de captar ou operar atividade regulada.
+10. Pedido de registro/aprovação da emissão e contratação de prestadores externos necessários, somente após confirmar que a BETTEX não precisa de licença própria de prestador para o modelo efetivo. Se precisar, a rota não atende ao escopo escolhido; não seguir com a captação ou com um pedido de licença por conta própria.
 
 ### Perguntas iguais para os três países
 
-- A mesma sociedade pode emitir esse token, administrar a tesouraria e operar o aplicativo sem segunda pessoa jurídica própria?
+- A mesma sociedade pode emitir esse token, administrar a tesouraria e operar o aplicativo sem segunda pessoa jurídica própria e sem licença própria de prestador financeiro? Qual fundamento normativo sustenta essa conclusão?
 - O modelo é emissão de renda, instrumento financeiro, investimento coletivo ou combinação? Quais direitos e autorizações são obrigatórios?
 - É possível captar varejo na escala pretendida e atender os países-alvo? Quem pode distribuir e negociar o token?
-- Quais serviços do aplicativo exigem autorização própria e quais podem ser prestados por terceiros independentes?
+- Quais serviços do aplicativo exigem autorização própria e quais podem ser prestados por terceiros independentes? O fluxo de compra, distribuição, staking e saque proposto mantém a emissora fora do perímetro de prestador?
 - Quais estratégias e plataformas são admissíveis, inclusive apostas como cliente institucional, sem confundir a empresa com organizadora de jogos?
 - Qual identificação é necessária para emitir, transferir, participar do yield e receber pagamentos? Um parceiro pode executar controles, com quais responsabilidades?
 - Quem é titular do patrimônio, qual a posição dos holders e o que sucede na insolvência?
@@ -156,7 +197,7 @@ Não usar tabela universal de gross-up para decidir base tributária ou regime. 
 
 ### Critério de decisão
 
-Priorizar o país que confirmar conjuntamente: entidade única, token de resultados sem participação societária, varejo, estratégias admissíveis e operação sustentável. Não escolher por slogan “cripto-friendly”, por suposta isenção de todos os impostos ou por preço de registro. Uma exigência de estrutura incompatível deve ser registrada como incompatibilidade, não assumida como solução aprovada.
+Priorizar o país que confirmar conjuntamente: entidade única, nenhuma licença própria de prestador financeiro, token de resultados sem participação societária, varejo, estratégias admissíveis e operação sustentável. Registro/aprovação da emissão é aceito, mas não há prazo curto comprovado. Solicitar prazo e custo reais separando incorporação, emissão, preparação documental e contratação de fornecedores. Não escolher por slogan “cripto-friendly”, por suposta isenção de todos os impostos ou por preço de registro. Uma exigência de estrutura ou licença incompatível deve ser registrada como incompatibilidade, não assumida como solução aprovada.
 
 ## 8. Fontes e limites da consulta
 
@@ -174,5 +215,8 @@ Fontes oficiais consultadas ou rechecadas em 3 de outubro de 2026; traduções e
 - **S10 — APR, Formation:** [registro de empresas](https://www.apr.gov.rs/registers/companies/instructions/formation.4339.html). Conteúdo anteriormente consultado e evidência de busca oficial; acesso integral bloqueado na consulta recente. Não utilizado para orçamento ou exigências regulatórias específicas.
 - **S11 — Administração sérvia de jogos, lei traduzida, 18/2020 e 94/2024:** [art. 10](https://www.uis.gov.rs/static/uploads/2753_Law_on_games_of_chance.pdf). Texto sérvio prevalece.
 - **S12 — CVM, Parecer de Orientação 40:** [tokens e oferta estrangeira](https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/pareceres-orientacao/anexos/Pare040.pdf).
+- **S13 — VARA, Category 2 VA Issuance, regra I.E:** [distribuição licenciada e condições](https://rulebooks.vara.ae/rulebook/e-category-2-va-issuance).
+- **S14 — VARA, Guidance on the Virtual Asset Issuance Rulebook:** [dispensa de licença do emissor categoria 2 e seus limites](https://rulebooks.vara.ae/entiresection/516). Orientação explicativa, não substitui o rulebook.
+- **S15 — VARA, Licensed Activities:** [procedimento administrativo de emissão](https://www.vara.ae/en/licenses-and-register/licensed-activities). A página descreve formulário categoria 2; confirmar compatibilidade com o procedimento aplicável, sem inferir prazo.
 
 **Resultado desta etapa:** proposta preparatória escrita de entidade única e prioridades de consulta. Nenhuma empresa constituída, emissão habilitada, autorização obtida, regime tributário aprovado ou cláusula contratual assinada. A documentação econômica permanece preservada; a homepage não foi alterada.
