@@ -2,9 +2,9 @@ import thesis from '@/lib/new-economy-thesis.json';
 import './NewEconomySection.css';
 
 const points = [
-  { n: '01', title: 'Substituição de trabalho humano', text: 'IA e robôs vão substituir empregos e transferir a geração de valor para sistemas automatizados.' },
-  { n: '02', title: 'O risco de ficar fora dos ganhos', text: 'Quem depende só do salário pode ficar de fora dos ganhos gerados pela IA.' },
-  { n: '03', title: 'Participação na economia programável', text: 'BETTEX conecta você aos lucros elegíveis de estratégias com IA.' },
+  { n: '01', title: 'O trabalho está mudando', text: 'A IA e os robôs estão assumindo cada vez mais tarefas. Com menos espaço para o trabalho humano, depender só do salário fica mais difícil.' },
+  { n: '02', title: 'Não fique fora dessa mudança', text: 'A tecnologia gera riqueza, mas os ganhos podem ficar nas mãos de poucos. Você também precisa de formas de participar dessa nova economia.' },
+  { n: '03', title: 'A IA também pode trabalhar para você', text: 'Com a BETTEX, você participa dos lucros de estratégias geridas por IA, seguindo as regras do projeto. A tecnologia também pode trabalhar a seu favor.' },
 ];
 
 export function NewEconomySection() {
@@ -20,7 +20,7 @@ export function NewEconomySection() {
           <figure className="ne-visual">
             <img src={`${import.meta.env.BASE_URL}new-economy-workplace.webp`} alt="Substituição de trabalho humano" width={1024} height={1024} loading="lazy" decoding="async" />
           </figure>
-          <p>{thesis.purpose}</p>
+          <p>A BETTEX chegou para te ajudar a atravessar grandes períodos de incerteza.</p>
         </div>
         <ol className="ne-list">
           {points.map((p) => (
