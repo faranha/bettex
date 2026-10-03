@@ -21,6 +21,12 @@ O criador corrigiu a regra das frações: “fracoes nao pagam retornam ao treas
 
 **How to apply:** Separar parcelas executáveis dos restos devolvidos à tesouraria. Corrigir também liquidação, complementos, diagramas, projeções e traduções; não apresentar a parcela nominal de 25% como integralmente pagável quando houver restos não executáveis.
 
+A independência das rodadas não proíbe acumular saldo da carteira exclusiva de recompra: esse saldo tem destinação própria e não é crédito de stakers ou lucro novo.
+
+**Why:** O criador determinou que recursos de recompra não utilizados permanecem acumulados, mantendo as regras de elegibilidade existentes.
+
+**How to apply:** Distinguir a carteira de recompra dos créditos de distribuição ao revisar textos, indicadores e verificações de consistência. Seguir a política aprovada registrada em replit.md.
+
 **Why:** O criador corrigiu esses trechos da documentação com “JAMAIS”; o texto existente não representa a regra aprovada.
 
 **How to apply:** Aplicar a todos os textos, diagramas, cálculos e idiomas do projeto. Revalidar a ausência de saída antes de autorizar pagamentos, complementos e reenvios; manter cancelamentos separados do histórico e não restaurar créditos por atraso ou correção. Não inventar redistribuição dos valores cancelados.

@@ -26,7 +26,7 @@
 .whitepaper__hero-note p { margin: 11px 0 0; color: #13204F; font-size: 14px; line-height: 1.75; }
 .whitepaper__body { display: grid; grid-template-columns: 244px minmax(0, 1fr); gap: clamp(45px, 7vw, 105px); align-items: start; padding-top: clamp(45px, 6vw, 80px); padding-bottom: clamp(80px, 10vw, 150px); border-top: 1px solid var(--wp-line); }
 .whitepaper__aside { position: sticky; top: 92px; }
-.whitepaper__aside-inner { max-height: calc(100dvh - 110px); overflow-y: auto; scrollbar-color: #d9d3c0 transparent; }
+.whitepaper__aside-inner { max-height: calc(100dvh - 110px); overflow-y: auto; scrollbar-color: var(--bettex-scrollbar-thumb) var(--bettex-scrollbar-track); }
 .whitepaper__aside-label { display: flex; justify-content: space-between; margin-bottom: 18px; color: #2B59FF; }
 .whitepaper__aside nav { border-top: 1px solid var(--wp-line); }
 .whitepaper__mobile-index { display: none; }
@@ -236,7 +236,7 @@
   .whitepaper__mobile-index svg { transition: transform .18s ease; }
   .whitepaper__mobile-index[aria-expanded="true"] svg { transform: rotate(180deg); }
   .whitepaper__mobile-index:focus-visible { outline: 2px solid #2B59FF; outline-offset: 3px; }
-  .whitepaper__aside nav { display: none; position: absolute; top: calc(100% - 1px); left: 16px; right: 16px; max-height: min(65dvh, 520px); overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: 6px; border: 1px solid var(--wp-line); border-radius: 0 0 10px 10px; background: var(--wp-paper); box-shadow: 0 14px 30px #13204f24; scrollbar-color: #37559b transparent; }
+  .whitepaper__aside nav { display: none; position: absolute; top: calc(100% - 1px); left: 16px; right: 16px; max-height: min(65dvh, 520px); overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: 6px; border: 1px solid var(--wp-line); border-radius: 0 0 10px 10px; background: var(--wp-paper); box-shadow: 0 14px 30px #13204f24; scrollbar-color: var(--bettex-scrollbar-thumb) var(--bettex-scrollbar-track); }
   .whitepaper__aside nav.is-open { display: block; }
   .whitepaper__toc-link { min-width: 0; min-height: 48px; align-items: center; padding: 12px; border: 0; border-bottom: 1px solid var(--wp-line); font-size: 13px; gap: 10px; }
   .whitepaper__toc-link > span:nth-child(2) { min-width: 0; overflow-wrap: anywhere; }

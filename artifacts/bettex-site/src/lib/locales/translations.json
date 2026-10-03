@@ -699,10 +699,6 @@
     "en": "3 results covered in BX Bet, NX Bet and BX Exchange · total R$ 962.50",
     "es": "3 resultados cubiertos en BX Bet, NX Bet y BX Exchange · total R$ 962,50"
   },
-  "3 · Split: 250 ao staking; 750 retidos": {
-    "en": "3 · Split: 250 to staking; 750 withheld",
-    "es": "3 · Split: 250 al staking; 750 retenidos"
-  },
   "3. Mandato limitado, sem cheque em branco": {
     "en": "3. Limited mandate, no blank check",
     "es": "3. Mandato limitado, sin cheque en blanco"
@@ -811,10 +807,6 @@
     "en": "6 · New profit of 200",
     "es": "6 · Nueva ganancia de 200"
   },
-  "6 · Split: 125 ao staking; 375 retidos": {
-    "en": "6 · Split: 125 to staking; 375 retained",
-    "es": "6 · Split: 125 al staking; 375 retenidos"
-  },
   "6. Prestação de contas": {
     "en": "6. Accountability",
     "es": "6. Rendición de cuentas"
@@ -838,14 +830,6 @@
   "7 · Novo lucro de 200": {
     "en": "7 · New profit of 200",
     "es": "7 · Nuevo beneficio de 200"
-  },
-  "7 · Split: 50 ao staking; 150 retidos": {
-    "en": "7 · Split: 50 to staking; 150 withheld",
-    "es": "7 · Split: 50 al staking; 150 retenidos"
-  },
-  "8 · Split: 50 ao staking; 150 retidos": {
-    "en": "8 · Split: 50 to staking; 150 retained",
-    "es": "8 · Split: 50 al staking; 150 retenidos"
   },
   "8s": {
     "en": "8s",
@@ -1355,10 +1339,6 @@
     "en": "The fund protection policy is in the operational and security requirements.",
     "es": "La política de protección de los fondos está en los requisitos operativos y de seguridad."
   },
-  "A precisão validada do ativo e do conector determina a parcela que pode ser transferida, sem arredondar o pagamento para cima ou descartar o restante. Direitos vigentes = parcelas validamente liquidadas + pendentes + em conciliação, sem sobreposição; parcelas reservadas são parte do pendente, não outro direito. A soma dos direitos da rodada fecha na parcela de 25% autorizada, com os ajustes identificados aplicáveis, sem mudar o split de 75% / 25% ou aplicar pesos futuros. Pagamentos indevidos excedentes ficam identificados separadamente do direito correto e seguem a regra de déficit. O registro preserva o cálculo exato, a precisão de execução, o valor transferível e a diferença pendente. Esta obrigação não é lucro livre da tesouraria nem saldo disponível na carteira antes de recebimento confirmado e conciliado.": {
-    "en": "Validated accuracy of the asset and connector determines the portion that can be transferred, without rounding payment up or discarding the remainder. Current rights = validly settled installments + pending + in reconciliation, without overlap; reserved installments are part of the pending amount, not another right. Sum of round rights closes on the authorized 25% installment, with applicable identified adjustments, without changing the 75% / 25% split or applying future weights. Excessive undue payments remain identified separately from the correct right and follow the deficit rule. The record preserves the exact calculation, execution precision, transferable value, and pending difference. This obligation is not free treasury profit or balance available in the wallet before confirmed and reconciled receipt.",
-    "es": "La precisión validada del activo y del conector determina la parcela que puede ser transferida, sin redondear el pago hacia arriba o descartar el restante. Derechos vigentes = parcelas válidamente liquidadas + pendientes + en conciliación, sin sobreposición; parcelas reservadas son parte del pendiente, no otro derecho. La suma de los derechos de la ronda cierra en la parcela de 25% autorizada, con los ajustes identificados aplicables, sin cambiar el split de 75% / 25% o aplicar pesos futuros. Pagos indebidos excedentes quedan identificados separadamente del derecho correcto y siguen la regla de déficit. El registro preserva el cálculo exacto, la precisión de ejecución, el valor transferible y la diferencia pendiente. Esta obligación no es utilidad libre de la tesorería ni saldo disponible en la billetera antes de recibimiento confirmado y conciliado."
-  },
   "A precisão validada do ativo e do conector determina a parcela transferível, sem arredondar para cima ou descartar o restante. Direitos vigentes = liquidados + pendentes + em conciliação, sem sobreposição; parcelas reservadas fazem parte do pendente. A soma dos direitos corresponde aos 25% autorizados, com ajustes identificados, sem mudar o split nem aplicar pesos futuros. Pagamentos indevidos são registrados separadamente do direito correto e reconhecidos uma única vez, sem cobrança automática do titular nem déficit a compensar com lucros futuros. A obrigação não é lucro livre da tesouraria ou saldo disponível antes do recebimento confirmado e conciliado.": {
     "en": "The validated precision of the asset and the connector determines the transferable share, without rounding up or discarding the remainder. Current rights = settled + pending + under reconciliation, without overlap; reserved shares are part of the pending. The sum of rights corresponds to the 25% authorized, with identified adjustments, without changing the split or applying future weights. Undue payments are recorded separately from the correct right and recognized only once, without automatic charging of the holder or deficit to offset with future profits. The obligation is not free treasury profit or available balance before confirmed and reconciled receipt.",
     "es": "La precisión validada del activo y del conector determina la parte transferible, sin redondear al alza ni descartar el resto. Derechos vigentes = liquidados + pendientes + en conciliación, sin solapamiento; las partes reservadas forman parte del pendiente. La suma de los derechos corresponde al 25% autorizado, con ajustes identificados, sin cambiar el split ni aplicar pesos futuros. Los pagos indebidos se registran separadamente del derecho correcto y se reconocen una sola vez, sin cargo automático al titular ni déficit a compensar con beneficios futuros. La obligación no es beneficio libre de la tesorería o saldo disponible antes de la recepción confirmada y conciliada."
@@ -1411,10 +1391,6 @@
     "en": "Service revenue stays out of the investment split. Cost, budget, and tax profile need assessment before presenting available profit. Check stock and vesting for primary acquisition; do not extrapolate purchases indefinitely after stock depletion.",
     "es": "El ingreso de servicios queda fuera del split de inversiones. Costo, presupuesto y perfil fiscal necesitan apuración antes de presentar utilidad disponible. Verificar stock y vesting para la adquisición primaria; no extrapolar compras indefinidamente después del agotamiento del stock."
   },
-  "A receita de serviços fica no caixa operacional, fora do split de investimentos de 75%/25%. Dez mil saques representam US$ 25 mil de receita bruta, antes de custos e tributos. O orçamento deve considerar operações efetivas, não apenas usuários cadastrados.": {
-    "en": "Service revenue stays in the operational cash box, outside the 75%/25% investment split. Ten thousand withdrawals represent US$ 25,000 in gross revenue, before costs and taxes. The budget must consider effective operations, not just registered users.",
-    "es": "Los ingresos por servicios permanecen en la caja operativa, fuera del split de inversiones del 75%/25%. Diez mil retiros representan US$ 25,000 de ingresos brutos, antes de costos e impuestos. El presupuesto debe considerar operaciones efectivas, no solo usuarios registrados."
-  },
   "A receita dos serviços é bruta: a tarifa fixa US$ 2,50 não recebe gross-up automático para assegurar um valor líquido à empresa. Tributos dos serviços entram no orçamento operacional; tributos dos investimentos entram na apuração correspondente; retenções legais pertencem ao beneficiário e pagamento aplicáveis. Contabilidade separada não exclui impostos nem permite financiar a mesma obrigação duas vezes. Ver a": {
     "en": "Service revenue is gross: the US$ 2.50 flat fee does not receive an automatic gross-up to ensure a net value to the company. Service taxes go into the operational budget; investment taxes go into the corresponding accounting; legal withholdings belong to the beneficiary and applicable payments. Separate accounting does not exclude taxes nor allows financing the same obligation twice. See the",
     "es": "Los ingresos por servicios son brutos: la tarifa fija de US$ 2.50 no recibe un gross-up automático para asegurar un valor neto a la empresa. Los impuestos de los servicios entran al presupuesto operativo; los impuestos de las inversiones entran al cálculo correspondiente; las retenciones legales pertenecen al beneficiario y a los pagos aplicables. La contabilidad separada no excluye impuestos ni permite financiar la misma obligación dos veces. Ver la"
@@ -1426,10 +1402,6 @@
   "A receita pertence à empresa privada BETTEX e vai à carteira operacional própria, distinta da tesouraria e das carteiras pessoais. Provisões fiscais e custos reduzem a disponibilidade; US$ 2,50 de receita bruta não são US$ 2,50 de lucro líquido.": {
     "en": "Revenue belongs to the private company BETTEX and goes to its own operational wallet, distinct from the treasury and personal wallets. Fiscal provisions and costs reduce availability; US$ 2.50 of gross revenue is not US$ 2.50 of net profit.",
     "es": "Los ingresos pertenecen a la empresa privada BETTEX y van a su propia billetera operativa, distinta de la tesorería y de las billeteras personales. Las provisiones fiscales y los costos reducen la disponibilidad; US$ 2.50 de ingresos brutos no son US$ 2.50 de utilidad neta."
-  },
-  "A recomposição das reservas tem prioridade sobre o staking. Com reserva ou liquidez insuficiente, 100% do lucro líquido fica na tesouraria, sem staking nem distribuição de um saldo restante na mesma apuração. Com todas as condições atendidas, aplica o split diretamente sobre o lucro líquido conciliado, não sobre o capital: 75% tesouraria e 25% staking.": {
-    "en": "Reserve replenishment has priority over staking. With insufficient reserves or liquidity, 100% of net profit remains in the treasury, without staking or distribution of a remaining balance in the same assessment. With all conditions met, the split applies directly to the reconciled net profit, not to capital: 75% treasury and 25% staking.",
-    "es": "La recomposición de las reservas tiene prioridad sobre el staking. Con reserva o liquidez insuficiente, el 100% del beneficio neto permanece en la tesorería, sin staking ni distribución de un saldo restante en la misma evaluación. Con todas las condiciones cumplidas, aplica el split directamente sobre el beneficio neto conciliado, no sobre el capital: 75% tesorería y 25% staking."
   },
   "A recomposição das reservas tem prioridade sobre o staking. Se a tesouraria estiver abaixo das reservas exigidas, todo o lucro líquido dessa apuração retorna à tesouraria, sem pagamento ao staking. Somente com as reservas atendidas e as demais condições cumpridas, a IA aplica o split diretamente, sem enviar todo o lucro primeiro à tesouraria. O lucro líquido é realizado e conciliado, após custos e perdas anteriores; o capital investido não entra no split.": {
     "en": "Reserve replenishment has priority over staking. If the treasury is below the required reserves, the entire net profit from that calculation returns to the treasury, with no payment to staking. Only with reserves met and other conditions fulfilled does the AI apply the split directly, without sending all profit to the treasury first. Net profit is realized and reconciled, after costs and previous losses; invested capital does not enter the split.",
@@ -1994,10 +1966,6 @@
   "Análise, não palpite": {
     "en": "Analysis, not guessing",
     "es": "Análisis, no palpite"
-  },
-  "Análises e conectores operam fora da rede; contratos aplicam as permissões executáveis on-chain. O núcleo de risco verifica cada operação dentro do mandato. A apuração concilia resultados, posições abertas e obrigações antes de autorizar o split 75%/25%. Esse split define a destinação do resultado, não uma nova entrada de capital: reter os 75% não exige uma transferência fictícia, e atribuir os 25% não confirma seu recebimento. O crédito só fica disponível após liquidação conciliada em USDC.": {
-    "en": "Analysis and connectors operate off-network; contracts apply executable on-chain permissions. The risk core checks each operation within the mandate. The calculation reconciles results, open positions and obligations before authorizing the 75%/25% split. This split defines the destination of the result, not a new capital inflow: retaining the 75% does not require a fake transfer, and attributing the 25% does not confirm its receipt. Credit is only available after reconciled settlement in USDC.",
-    "es": "Análisis y conectores operan fuera de la red; contratos aplican los permisos ejecutables on-chain. El núcleo de riesgo verifica cada operación dentro del mandato. La apuración concilia resultados, posiciones abiertas y obligaciones antes de autorizar el split 75%/25%. Ese split define el destino del resultado, no una nueva entrada de capital: retener los 75% no exige una transferencia ficticia, y atribuir los 25% no confirma su recibimiento. El crédito solo queda disponible tras liquidación conciliada en USDC."
   },
   "Análises e relatórios compreensíveis, com resultados positivos, negativos ou sem lucro e registros de decisões; sem inventar desempenho.": {
     "en": "Understandable analysis and reports, with positive, negative or no-profit results and decision records; without inventing performance.",
@@ -2755,10 +2723,6 @@
     "en": "Each holder is the owner of the BETTEX tokens acquired",
     "es": "Cada titular es propietario de los tokens BETTEX adquiridos"
   },
-  "Cada tributo de investimento é apurado pela entidade BETTEX conforme regime, jurisdição, natureza da receita, fato gerador e vigência. Descontar ou provisionar a obrigação antes do lucro líquido e atualizar R e P sem alterar artificialmente B. Depois, aplicar elegibilidade e verificar reservas, obrigações, liquidez e pesos antes do split 75%/25%. A estrutura básica é de uma única empresa, sem subsidiárias presumidas.": {
-    "en": "Each investment tax is calculated by the BETTEX entity according to regime, jurisdiction, nature of revenue, taxable event, and effective period. Discount or provision the obligation before net profit and update R and P without artificially altering B. Afterward, apply eligibility and verify reserves, obligations, liquidity, and weights before the 75%/25% split. The basic structure is a single company, without presumed subsidiaries.",
-    "es": "Cada tributo de inversión es apurado por la entidad BETTEX conforme régimen, jurisdicción, naturaleza de la renta, hecho generador y vigencia. Descontar o provisionar la obligación antes del lucro líquido y actualizar R y P sin alterar artificialmente B. Después, aplicar elegibilidad y verificar reservas, obligaciones, liquidez y pesos antes del split 75%/25%. La estructura básica es de una única empresa, sin subsidiarias presumidas."
-  },
   "Cadastro elegível": {
     "en": "Eligible registration",
     "es": "Cadastro elegible"
@@ -2990,10 +2954,6 @@
   "Carteira pessoal → staking na Carteira BETTEX": {
     "en": "Personal wallet → staking in BETTEX Wallet",
     "es": "Billetera personal → staking en la Billetera BETTEX"
-  },
-  "Carteira própria; fora da tesouraria e do split 75%/25%.": {
-    "en": "Own wallet; outside the treasury and the 75%/25% split.",
-    "es": "Monedero propio; fuera de la tesorería y del split 75%/25%."
   },
   "Carteira, chaves e exportação": {
     "en": "Wallet, keys, and export",
@@ -3919,14 +3879,6 @@
     "en": "Network and third-party costs are itemized, not hidden institutional fees. The receipt links operation, version, assets, origin, destination, price, fee, charges and authorized net. The quote relevant to settlement/accounting does not assume eternal parity between USDC and the dollar.",
     "es": "Costos de red y de terceros son discriminados, no tarifas institucionales ocultas. El recibo vincula operación, versión, activos, origen, destino, precio, tarifa, encargos y líquido autorizado. La cotización pertinente a la liquidación/contabilidad no presume paridad eterna entre USDC y dólar."
   },
-  "Custos e perdas dessas aplicações são considerados uma única vez, junto dos resultados das estratégias. Perdas são permanentes, sem déficit para rodadas futuras. O lucro elegível recebe o split de 75% tesouraria e 25% staking, preservando origem, período e beneficiários elegíveis. Não há distribuição paralela da reserva nem pagamento mensal automático.": {
-    "en": "Costs and losses of these applications are considered once, together with strategy results. Losses are permanent, with no deficit for future rounds. Eligible profit receives the split of 75% treasury and 25% staking, preserving origin, period, and eligible beneficiaries. There is no parallel distribution of the reserve nor automatic monthly payment.",
-    "es": "Los costes y pérdidas de estas aplicaciones se consideran una sola vez, junto con los resultados de las estrategias. Las pérdidas son permanentes, sin déficit para rondas futuras. El beneficio elegible recibe el split del 75% tesorería y 25% staking, preservando origen, periodo y beneficiarios elegibles. No hay distribución paralela de la reserva ni pago mensual automático."
-  },
-  "Custos e perdas dessas aplicações também são considerados, sem duplicidade, junto dos resultados das estratégias. O lucro elegível segue a fórmula max(0, min(R, P − B)), a compensação de perdas e o split de 75% para a tesouraria e 25% para o staking. Não existe uma distribuição paralela de rendimentos da reserva nem pagamento mensal automático.": {
-    "en": "Costs and losses of these applications are also considered, without duplication, along with strategy results. Eligible profit follows the formula max(0, min(R, P − B)), loss compensation and the 75% split for the treasury and 25% for staking. There is no parallel distribution of reserve income or automatic monthly payment.",
-    "es": "Los costos y pérdidas de estas aplicaciones también se consideran, sin duplicidad, junto con los resultados de la estrategia. El beneficio elegible sigue la fórmula max(0, min(R, P − B)), la compensación de pérdidas y la división del 75% para la tesorería y 25% para el staking. No existe una distribución paralela de los ingresos de reserva ni pago mensual automático."
-  },
   "Custos efetivos e obrigações seguem a apuração única, com evidências e conciliação; um custo já reconhecido não é descontado novamente ao ser pago. Valores pagos em custos não se transformam em posições abertas, e reservas, pagamentos e posições não duplicam o mesmo recurso nos controles de caixa e exposição.": {
     "en": "Effective costs and obligations follow unique assessment, with evidence and reconciliation; a cost already recognized is not discounted again when paid. Values paid in costs do not turn into open positions, and reserves, payments and positions do not duplicate the same resource in cash and exposure controls.",
     "es": "Costos efectivos y obligaciones siguen la apuración única, con evidencias y conciliación; un costo ya reconocido no es descontado nuevamente al ser pagado. Valores pagados en costos no se transforman en posiciones abiertas, y reservas, pagos y posiciones no duplican el mismo recurso en los controles de caja y exposición."
@@ -4314,10 +4266,6 @@
   "Distribuição founder-led pelos canais de Fred Azevedo, combinada com performance, construção de marca e narrativa nas redes sociais. Acompanhar as primeiras coortes brasileiras e ampliar a aquisição conforme ativação, retenção, chamados e caixa. A meta inicial de 1.000 usuários não é resultado realizado nem prazo garantido. Ajustar custos e produto antes de ampliar gasto; não promover rendimento garantido.": {
     "en": "Founder-led distribution through Fred Azevedo's channels, combined with performance, brand building and narrative on social networks. Track the first Brazilian cohorts and scale acquisition according to activation, retention, calls and cash. The initial goal of 1,000 users is not a realized result or guaranteed deadline. Adjust costs and product before scaling spending; do not promote guaranteed return.",
     "es": "Distribución founder-led por los canales de Fred Azevedo, combinada con performance, construcción de marca y narrativa en las redes sociales. Acompañar las primeras cohortes brasileñas y ampliar la adquisición conforme activación, retención, llamados y caja. La meta inicial de 1.000 usuarios no es resultado realizado ni plazo garantizado. Ajustar costos y producto antes de ampliar gasto; no promover rendimiento garantizado."
-  },
-  "Distribuição ou antecipação de lucro exige apuração contábil, procedimento societário permitido e caixa após obrigações e reservas. Receita futura projetada não autoriza retirada como dividendo. Os 75% destinados à tesouraria não são automaticamente renda pessoal do fundador.": {
-    "en": "Profit distribution or anticipation requires accounting assessment, permitted corporate procedure and cash after obligations and reserves. Projected future revenue does not authorize withdrawal as a dividend. The 75% allocated to the treasury is not automatically the founder's personal income.",
-    "es": "Distribución o anticipación de lucro exige apuración contable, procedimiento societario permitido y caja después de obligaciones y reservas. Receta futura proyectada no autoriza retirada como dividendo. Los 75% destinados a la tesorería no son automáticamente renta personal del fundador."
   },
   "Distribuição pendente e USDC recebido na carteira": {
     "en": "Pending distribution and USDC received in the wallet",
@@ -5659,10 +5607,6 @@
     "en": "BETTEX AI",
     "es": "IA BETTEX"
   },
-  "IA apura lucro, verifica reservas, liquidez e pesos elegíveis; se alguma condição falhar, retém 100% sem split; com condições atendidas aplica 75% para tesouraria e 25% para staking": {
-    "en": "AI assesses profit, verifies reserves, liquidity, and eligible weights; if any condition fails, it withholds 100% without split; if conditions are met, it applies 75% to treasury and 25% to staking",
-    "es": "La IA calcula ganancias, verifica reservas, liquidez y pesos elegibles; si alguna condición falla, retiene 100% sin split; si se cumplen las condiciones, aplica 75% a tesorería y 25% a staking"
-  },
   "IA da BETTEX": {
     "en": "BETTEX's AI",
     "es": "IA de la BETTEX"
@@ -5690,10 +5634,6 @@
   "Idempotência:": {
     "en": "Idempotency:",
     "es": "Idempotencia:"
-  },
-  "Identidade e negócios": {
-    "en": "Identity and business",
-    "es": "Identidad y negocios"
   },
   "Identidade e negócios — orçamento proposto": {
     "en": "Identity and business — proposed budget",
@@ -6098,10 +6038,6 @@
   "Lucro creditado": {
     "en": "Credited profit",
     "es": "Beneficio acreditado"
-  },
-  "Lucro elegível = max(0, min(R, P − B)): R é o resultado realizado líquido ainda não consumido em splits; P, o patrimônio líquido atualizado; B, a base de aportes e resultados já considerados. Com reservas, liquidez, conciliação e pesos elegíveis atendidos, 75% ficam na tesouraria e 25% são rateados por BETTEX disponível × tempo na rodada diária UTC. Sem essas condições, há retenção temporária, não crédito individual. Autorizar o direito e confirmar o recebimento em USDC são etapas distintas.": {
-    "en": "Eligible profit = max(0, min(R, P − B)): R is the net realized result not yet consumed in splits; P, the updated net equity; B, the base of contributions and results already considered. With reserves, liquidity, reconciliation, and eligible weights met, 75% remain in the treasury and 25% are distributed by BETTEX available × time in the daily UTC round. Without these conditions, there is temporary retention, not individual credit. Authorizing the right and confirming receipt in USDC are distinct steps.",
-    "es": "Beneficio elegible = max(0, min(R, P − B)): R es el resultado neto realizado aún no consumido en divisiones (splits); P, el patrimonio neto actualizado; B, la base de aportaciones y resultados ya considerados. Con las reservas, la liquidez, la conciliación y los pesos elegibles cumplidos, el 75% permanece en la tesorería y el 25% se distribuye por BETTEX disponible × tiempo en la ronda diaria UTC. Sin estas condiciones, hay una retención temporal, no un crédito individual. Autorizar el derecho y confirmar la recepción en USDC son pasos distintos."
   },
   "Lucro elegível ao split = máximo entre zero e o menor valor entre R e (P − B).": {
     "en": "Profit eligible for split = maximum between zero and the lower value between R and (P − B).",
@@ -6887,10 +6823,6 @@
     "en": "The backend reconciles USDC and BETTEX transfers and external on-ramp receipt; independent controls verify orders and authorized operators approve critical interventions, pauses, and reconciliations.",
     "es": "El backend concilia las transferencias de USDC y BETTEX y la recepción de on-ramp externo; controles independientes verifican las órdenes y los operadores autorizados aprueban las intervenciones críticas, pausas y conciliaciones."
   },
-  "O caixa operacional e a tesouraria têm carteiras, rubricas e mandatos separados. Na tesouraria continuam valendo reserva defensiva de 50% do patrimônio líquido atualizado, capital já comprometido, limites de risco, elegibilidade e split 75%/25%. O multisig não muda emissão, vesting, pesos ou créditos dos participantes. Carteiras pessoais e exportação de chaves não entram no multisig da empresa.": {
-    "en": "Operational cash and the treasury have separate wallets, accounts, and mandates. In the treasury, a defensive reserve of 50% of the updated net equity, already committed capital, risk limits, eligibility, and 75%/25% split remain valid. The multisig does not change issuance, vesting, weights, or participant credits. Personal wallets and key export do not enter the company's multisig.",
-    "es": "El efectivo operativo y la tesorería tienen billeteras, cuentas y mandatos separados. En la tesorería siguen siendo válidas la reserva defensiva del 50% del patrimonio neto actualizado, el capital ya comprometido, los límites de riesgo, la elegibilidad y el split del 75%/25%. La multisig no cambia la emisión, vesting, pesos o créditos de los participantes. Las billeteras personales y la exportación de claves no entran en la multisig de la empresa."
-  },
   "O caminho da": {
     "en": "The path of",
     "es": "El camino de la"
@@ -7311,10 +7243,6 @@
     "en": "The split is only permitted if the minimum reserve and liquidity are met before and remain met after the projected distribution.",
     "es": "El split solo es permitido si la reserva mínima y la liquidez se cumplen antes y permanecen cumplidas después de la distribución proyectada."
   },
-  "O split usa o lucro líquido realizado e conciliado, após custos e tributos, com reservas, liquidez e elegibilidade atendidas: 75% tesouraria e 25% staking. Perdas são permanentes, sem déficit a compensar em rodadas futuras. A participação considera BETTEX disponível × tempo elegível; a quantidade que sai não conserva peso. Novos participantes nunca recebem lucros anteriores. Autorizar o direito e confirmar o recebimento em USDC são etapas distintas.": {
-    "en": "The split uses realized and reconciled net profit, after costs and taxes, with reserves, liquidity, and eligibility met: 75% treasury and 25% staking. Losses are permanent, with no deficit to offset in future rounds. Participation considers available BETTEX × eligible time; the quantity that leaves does not retain weight. New participants never receive previous profits. Authorizing the right and confirming receipt in USDC are distinct steps.",
-    "es": "El split utiliza la ganancia neta realizada y conciliada, después de costos e impuestos, con reservas, liquidez y elegibilidad cumplidas: 75% tesorería y 25% staking. Las pérdidas son permanentes, sin déficit que compensar en rondas futuras. La participación considera BETTEX disponible × tiempo elegible; la cantidad que sale no conserva peso. Los nuevos participantes nunca reciben ganancias anteriores. Autorizar el derecho y confirmar la recepción en USDC son etapas distintas."
-  },
   "O teto em USDC de cada controle é o percentual vigente multiplicado por essa mesma base. Se mais patrimônio for segregado na reserva defensiva, a base e os tetos diminuem; resultados, custos, obrigações e avaliações conciliados também podem alterá-los. Atualizar a base não encerra uma": {
     "en": "The ceiling in USDC for each control is the current percentage multiplied by this same base. If more capital is segregated into the defensive reserve, the base and ceilings decrease; reconciled results, costs, obligations, and valuations may also alter them. Updating the base does not close a",
     "es": "El techo en USDC de cada control es el porcentaje vigente multiplicado por esa misma base. Si más patrimonio fuera segregado en la reserva defensiva, la base y los techos disminuyen; resultados, costos, obligaciones y evaluaciones conciliados también pueden alterarlos. Actualizar la base no encierra una"
@@ -7646,10 +7574,6 @@
   "Os fluxos de capital e de serviços são separados.": {
     "en": "Capital and service flows are separate.",
     "es": "Los flujos de capital y de servicios son separados."
-  },
-  "Os lucros de 1.000, 500 e 200 são considerados uma única vez. A perda de 500 reduz permanentemente o patrimônio: o novo lucro de 500 não é destinado a pagar um déficit anterior. Os 75% de cada split permanecem na tesouraria e não recebem outro split. Registrar a obrigação dos 25% e depois liquidá-la não reduz o patrimônio duas vezes. Essa retenção dos 75% é diferente de reter 100% por insuficiência de reserva ou liquidez, sem split.": {
-    "en": "The profits of 1,000, 500, and 200 are considered only once. The loss of 500 permanently reduces the equity: the new profit of 500 is not intended to pay off a previous deficit. The 75% of each split remains in the treasury and does not receive another split. Registering the obligation for the 25% and subsequently settling it does not reduce the equity twice. This retention of 75% is different from retaining 100% due to insufficient reserve or liquidity, without a split.",
-    "es": "Las ganancias de 1.000, 500 y 200 se consideran una única vez. La pérdida de 500 reduce permanentemente el patrimonio: la nueva ganancia de 500 no se destina a pagar un déficit anterior. El 75% de cada split permanece en la tesorería y no recibe otro split. Registrar la obligación del 25% y luego liquidarla no reduce el patrimonio dos veces. Esta retención del 75% es diferente a retener el 100% por insuficiencia de reserva o liquidez, sin split."
   },
   "Os novos compromissos continuam no dia UTC da autorização e reserva; resultados ficam no dia da realização comprovada. Essa atribuição não muda, por si só, a rodada de autorização do split, seus pesos ou créditos. Uma liberação de lucro retido e uma correção de distribuição já autorizada seguem suas regras próprias, preservando R, P, B e obrigações com efeito único. Confirmações tardias podem corrigir relatórios de dias anteriores.": {
     "en": "New commitments continue on the UTC day of authorization and reservation; results stay on the day of proven realization. This assignment does not, by itself, change the split authorization round, its weights, or credits. A release of retained profit and a correction of an already authorized distribution follow their own rules, preserving R, P, B, and obligations with a single effect. Late confirmations may correct reports from previous days.",
@@ -8635,10 +8559,6 @@
     "en": "Any",
     "es": "Cualquier"
   },
-  "Quando as condições forem atendidas e a soma dos pesos elegíveis da rodada for positiva, o lucro elegível é recalculado e recebe o split de 75% / 25%. Com soma zero, 100% permanece temporariamente na tesouraria, sem split; a retenção não consome R nem altera B ou aumenta P por si só. Somente o valor efetivamente considerado nesse split é retirado de R e incorporado a B, descontada a parcela atribuída aos participantes de forma consistente com seu reconhecimento em P. O crédito ou a obrigação e sua posterior liquidação não podem consumir o lucro nem reduzir P e B duas vezes. O rateio usa os pesos da": {
-    "en": "When conditions are met and the sum of the round's eligible weights is positive, the eligible profit is recalculated and receives the 75% / 25% split. With zero sum, 100% remains temporarily in the treasury, without split; retention does not consume R nor alter B or increase P by itself. Only the value effectively considered in this split is withdrawn from R and incorporated into B, minus the portion attributed to participants consistently with their recognition in P. The credit or obligation and its subsequent liquidation cannot consume the profit nor reduce P and B twice. The apportionment uses the weights of",
-    "es": "Cuando las condiciones sean atendidas y la suma de los pesos elegibles de la ronda sea positiva, el lucro elegible es recalculado y recibe el split de 75% / 25%. Con suma cero, 100% permanece temporalmente en la tesorería, sin split; la retención no consume R ni altera B o aumenta P por sí solo. Solamente el valor efectivamente considerado en ese split es retirado de R e incorporado a B, descontada la parcela atribuida a los participantes de forma consistente con su reconocimiento en P. El crédito o la obligación y su posterior liquidación no pueden consumir el lucro ni reducir P y B dos veces. El rateo usa los pesos de"
-  },
   "Quando exigida, separada do direito bruto do beneficiário antes da liberação do líquido.": {
     "en": "When required, separated from the beneficiary's gross right before net release.",
     "es": "Cuando sea requerido, separado del derecho bruto del beneficiario antes de la liberación del neto."
@@ -8839,10 +8759,6 @@
     "en": "Receives 100% of the token price from the public sale, separate from the tariff.",
     "es": "Recibe 100% del precio de los tokens de la venta pública, separado de la tarifa."
   },
-  "Recebe 75% do lucro elegível ao split.": {
-    "en": "Receives 75% of the eligible profit upon split.",
-    "es": "Recibe 75% del lucro elegible al split."
-  },
   "Recebe a quantidade comprada, sem tarifa deduzida em tokens.": {
     "en": "Receives the purchased quantity, without tariff deducted in tokens.",
     "es": "Recibe la cantidad comprada, sin tarifa deducida en tokens."
@@ -8918,10 +8834,6 @@
   "Receita bruta, antes de custos e tributos": {
     "en": "Gross revenue, before costs and taxes",
     "es": "Ingresos brutos, antes de costos e impuestos"
-  },
-  "Receita de serviço da empresa, em carteira operacional própria, fora da tesouraria e do split 75/25. Não é taxa de performance.": {
-    "en": "Company service revenue, in its own operational wallet, outside the treasury and 75/25 split. It is not a performance fee.",
-    "es": "Ingresos por servicios de la empresa, en cartera operacional propia, fuera de la tesorería y del split 75/25. No es una comisión por rendimiento."
   },
   "Receita institucional de serviços:": {
     "en": "Institutional service revenue:",
@@ -10119,10 +10031,6 @@
     "en": "Only entity cash available; do not include treasury, provisions, or participant credits.",
     "es": "Solo efectivo de la entidad disponible; no incluir tesorería, provisiones o créditos de participantes."
   },
-  "Só há lucro elegível após custos reais, tributos, recuperação de perdas, reservas e liquidez. Desse lucro, 75% ficam na tesouraria e 25% vão à distribuição condicionada, conforme as regras do token e do staking. O token não é ação, não dá propriedade do patrimônio e não garante resgate.": {
-    "en": "There is only eligible profit after real costs, taxes, loss recovery, reserves, and liquidity. From this profit, 75% stays in the treasury and 25% goes to conditional distribution, according to token and staking rules. The token is not a stock, does not give ownership of equity, and does not guarantee redemption.",
-    "es": "Solo existe beneficio elegible después de costos reales, tributos, recuperación de pérdidas, reservas y liquidez. De este beneficio, el 75% permanece en la tesorería y el 25% se destina a la distribución condicional, de acuerdo con las reglas del token y del staking. El token no es una acción, no otorga propiedad sobre el patrimonio y no garantiza el rescate."
-  },
   "Só ordens aprovadas chegam ao conector, com credenciais restritas à operação.": {
     "en": "Only approved orders reach the connector, with credentials restricted to the operation.",
     "es": "Só órdenes aprobadas llegan al conector, con credenciales restringidas a la operación."
@@ -10142,10 +10050,6 @@
   "TESOURARIA": {
     "en": "TREASURY",
     "es": "TESORERÍA"
-  },
-  "TESOURARIA · 75%": {
-    "en": "TREASURY · 75%",
-    "es": "TESORERÍA · 75%"
   },
   "TESOURARIA · AJUSTES SUJEITOS À APROVAÇÃO": {
     "en": "TREASURY · ADJUSTMENTS SUBJECT TO APPROVAL",
@@ -10374,10 +10278,6 @@
   "Tesouraria separada do caixa operacional, com registros conciliáveis e condições antes de usar dinheiro real.": {
     "en": "Treasury separated from operating cash, with reconcilable records and conditions before using real money.",
     "es": "Tesorería separada de la caja operacional, con registros conciliables y condiciones antes de usar dinero real."
-  },
-  "Tesouraria · 75%": {
-    "en": "Treasury · 75%",
-    "es": "Tesorería · 75%"
   },
   "Tesouraria → IA BETTEX → verifica reservas, liquidez e pesos elegíveis: retém o lucro ou libera o split.": {
     "en": "Treasury → BETTEX AI → verifies reserves, liquidity, and eligible weights: withholds profit or releases the split.",
@@ -11286,10 +11186,6 @@
   "Ver histórico das carteiras": {
     "en": "View wallet history",
     "es": "Ver el historial de la billetera"
-  },
-  "Ver o orçamento discriminado em Identidade e negócios.": {
-    "en": "See the budget broken down in Identity and business.",
-    "es": "Ver el presupuesto discriminado en Identidad y negocios."
   },
   "Ver o pitch do projeto": {
     "en": "View project pitch",
@@ -14847,10 +14743,6 @@
     "en": "Before starting any payment, the executor revalidates the absence of a BETTEX withdrawal since the accumulation of the credits. The cancellation and sending authorization are ordered indivisibly by holder and cycle; a canceled review does not authorize sending, supplementing, or resending. Attempts already sent or uncertain remain in reconciliation, without restoring canceled rights or presuming recovered resources. The cancellation of the obligation is recorded once, separate from profit, split, and payment.",
     "es": "Antes de iniciar cualquier pago, el ejecutor revalida la ausencia de salida de BETTEX desde la acumulación de los créditos. La cancelación y la autorización de envío se ordenan de forma indivisible por titular y ciclo; una revisión cancelada no autoriza envío, complemento o reenvío. Los intentos ya enviados o inciertos permanecen en conciliación, sin restaurar derechos cancelados ni presumir recursos recuperados. La cancelación de la obligación se registra una sola vez, separado de lucro, split y pago."
   },
-  "Com reservas, liquidez, conciliação e pesos elegíveis atendidos, aplica o split de 75% para tesouraria e 25% para staking. Sem peso elegível, 100% permanece na tesouraria, sem split. A elegibilidade corresponde aos resultados distribuídos, não apenas à data da autorização: novos participantes nunca recebem lucros anteriores e qualquer saída de BETTEX cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado, mesmo quando parcial.": {
-    "en": "With reserves, liquidity, reconciliation, and eligible weights met, it applies the 75% split for treasury and 25% for staking. Without eligible weight, 100% remains in the treasury, without split. Eligibility corresponds to distributed results, not just the authorization date: new participants never receive previous profits and any BETTEX withdrawal cancels all previous unpaid cycle credits and resets the accumulated weight, even when partial.",
-    "es": "Con reservas, liquidez, conciliación y pesos elegibles cumplidos, aplica el split de 75% para tesorería y 25% para staking. Sin peso elegible, 100% permanece en tesorería, sin split. La elegibilidad corresponde a los resultados distribuidos, no solo a la fecha de autorización: los nuevos participantes nunca reciben ganancias anteriores y cualquier salida de BETTEX cancela todos los créditos anteriores aún no pagados del ciclo y pone a cero el peso acumulado, incluso cuando es parcial."
-  },
   "Complementos e correções consideram apenas direitos ainda vigentes. Uma saída de BETTEX cancela os créditos anteriores ainda não pagos do ciclo; histórico preservado não autoriza restaurar esses direitos, executar complementos ou reenviar pagamentos cancelados.": {
     "en": "Additions and corrections consider only currently valid rights. A BETTEX withdrawal cancels all earlier unpaid credits of the cycle; preserved history does not authorize the restoration of these rights, the execution of additions, or the resending of canceled payments.",
     "es": "Los complementos y correcciones consideran solo los derechos aún vigentes. Una salida de BETTEX cancela los créditos anteriores aún no pagados del ciclo; el historial preservado no autoriza restaurar esos derechos, ejecutar complementos o reenviar pagos cancelados."
@@ -14907,10 +14799,6 @@
     "en": "Any BETTEX outflow cancels previous unpaid cycle credits, even when already calculated or authorized. Only obligations still in force remain pending and identified. Settling them does not create a new split nor repeat effects in R, P or B. Corrections follow the",
     "es": "Cualquier salida de BETTEX cancela los créditos anteriores del ciclo aún no pagados, incluso cuando ya estén calculados o autorizados. Solo las obligaciones aún vigentes permanecen pendientes e identificadas. Liquidarlas no crea un nuevo split ni repite efectos en R, P o B. Las correcciones siguen los"
   },
-  "O split usa o lucro líquido realizado e conciliado, após custos e tributos, com reservas, liquidez e elegibilidade atendidas: 75% tesouraria e 25% staking. Perdas são permanentes, sem déficit a compensar em rodadas futuras. A participação considera BETTEX disponível × tempo elegível desde a última saída. Qualquer saída de BETTEX, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado. Novos participantes nunca recebem lucros anteriores. Autorizar o direito e confirmar o recebimento em USDC são etapas distintas.": {
-    "en": "The split uses the net realized and reconciled profit, after costs and taxes, with reserves, liquidity and eligibility met: 75% treasury and 25% staking. Losses are permanent, with no deficit to offset in future rounds. Participation considers available BETTEX × eligible time since the last outflow. Any BETTEX outflow, even partial, cancels all previous unpaid cycle credits and resets accumulated weight. New participants never receive previous profits. Authorizing the right and confirming receipt in USDC are distinct steps.",
-    "es": "El split utiliza el beneficio neto realizado y conciliado, después de costos e impuestos, con reservas, liquidez y elegibilidad cumplidas: 75% tesorería y 25% staking. Las pérdidas son permanentes, sin déficit que compensar en rondas futuras. La participación considera BETTEX disponible × tiempo elegible desde la última salida. Cualquier salida de BETTEX, incluso parcial, cancela todos los créditos anteriores del ciclo aún no pagados y restablece el peso acumulado. Los nuevos participantes nunca reciben ganancias anteriores. Autorizar el derecho y confirmar la recepción en USDC son pasos distintos."
-  },
   "Reter lucro, por si só, não cancela créditos ainda vigentes.": {
     "en": "Retaining profit, by itself, does not cancel credits still in force.",
     "es": "Retener ganancias, por sí solo, no cancela créditos aún vigentes."
@@ -14958,10 +14846,6 @@
   "O cálculo proporcional usa precisão exata. A precisão validada do ativo e do conector determina a unidade executável; a parcela pagável é ajustada para baixo, sem arredondar para cima nem usar a precisão de exibição como regra financeira. O registro identifica o cálculo, o valor executável e a fração retornada à tesouraria por rodada, sem criar obrigação com o beneficiário sobre essa diferença. Retenções tributárias são separadas: não são sobras livres do rateio.": {
     "en": "The proportional calculation uses exact precision. The validated precision of the asset and connector determines the executable unit; the payable portion is adjusted downward, without rounding up or using display precision as a financial rule. The record identifies the calculation, the executable value, and the fraction returned to the treasury per round, without creating an obligation to the beneficiary regarding this difference. Tax withholdings are separate: they are not free rounding remainders.",
     "es": "El cálculo proporcional utiliza precisión exacta. La precisión validada del activo y del conector determina la unidad ejecutable; la porción pagable se ajusta a la baja, sin redondear hacia arriba ni utilizar la precisión de visualización como regla financiera. El registro identifica el cálculo, el valor ejecutable y la fracción devuelta a la tesorería por ronda, sin crear obligación con el beneficiario sobre esa diferencia. Las retenciones fiscales son separadas: no son remanentes libres del prorrateo."
-  },
-  "Os 25% continuam sendo a parcela nominal destinada ao rateio. O pagamento efetivo exclui as frações não executáveis e os créditos cancelados por saída de BETTEX; a tesouraria conserva os 75% e recebe também as frações não pagas. O retorno dessas frações não é novo lucro realizado, novo aporte ou autorização para aplicar outro split ao mesmo resultado. Histórico, obrigações vigentes e retornos são conciliados sem sobreposição nem efeito duplicado em R, P ou B.": {
-    "en": "The 25% continues to be the nominal portion intended for distribution. The actual payment excludes non-executable fractions and credits canceled by BETTEX withdrawal; the treasury retains the 75% and also receives the unpaid fractions. The return of these fractions is not new realized profit, a new contribution, or authorization to apply another split to the same result. History, current obligations, and returns are reconciled without overlap or duplicated effect in R, P, or B.",
-    "es": "El 25% continúa siendo la porción nominal destinada al prorrateo. El pago efectivo excluye las fracciones no ejecutables y los créditos cancelados por retiro de BETTEX; la tesorería conserva el 75% y recibe también las fracciones no pagadas. El retorno de estas fracciones no es nuevo beneficio realizado, nuevo aporte o autorización para aplicar otro split al mismo resultado. El histórico, las obligaciones vigentes y los retornos se concilian sin superposición ni efecto duplicado en R, P o B."
   },
   "Os pisos de lucro das projeções pressupõem parcelas integralmente executáveis. Frações não executáveis retornam à tesouraria e não financiam saques; o saldo efetivamente disponível depende dos valores executáveis, das retenções aplicáveis e da liquidação confirmada.": {
     "en": "The profit floors of the projections assume fully executable portions. Non-executable fractions return to the treasury and do not fund withdrawals; the effectively available balance depends on executable values, applicable withholdings, and confirmed settlement.",
@@ -15230,5 +15114,385 @@
   "pagamento em execução": {
     "en": "payment in execution",
     "es": "pago en ejecución"
+  },
+  "Entidade e negócios": {
+    "en": "Entity and business",
+    "es": "Entidad y negocios"
+  },
+  "Ver o orçamento discriminado em Entidade e negócios.": {
+    "en": "See the itemized budget in Entity and business.",
+    "es": "Ver el presupuesto desglosado en Entidad y negocios."
+  },
+  "A BETTEX usa IA para investir em diferentes mercados. Com o token BETTEX, pessoas comuns participam dos lucros elegíveis do projeto.": {
+    "en": "BETTEX uses AI to invest across different markets. With the BETTEX token, everyday people share in the project's eligible profits.",
+    "es": "BETTEX utiliza IA para invertir en diferentes mercados. Con el token BETTEX, personas comunes participan en los beneficios elegibles del proyecto."
+  },
+  "Retrato de um homem adulto de camisa bege, imagem ilustrativa do público da BETTEX": {
+    "en": "Portrait of an adult man wearing a beige shirt, an illustrative image of BETTEX's audience",
+    "es": "Retrato de un hombre adulto con camisa beige, imagen ilustrativa del público de BETTEX"
+  },
+  "25% do lucro líquido distribuível é destinado diariamente a uma carteira exclusiva de recompra de BETTEX. A execução das recompras depende de decisão centralizada da administração, considerando preço, liquidez e segurança. Valores não utilizados permanecem acumulados para futuras recompras.": {
+    "en": "25% of the distributable net profit is allocated daily to an exclusive BETTEX buyback wallet. The execution of buybacks depends on a centralized management decision, considering price, liquidity, and security. Unused amounts remain accumulated for future buybacks.",
+    "es": "El 25% del beneficio neto distribuible se destina diariamente a una billetera exclusiva de recompra de BETTEX. La ejecución de las recompras depende de una decisión centralizada de la administración, considerando precio, liquidez y seguridad. Los importes no utilizados permanecen acumulados para futuras recompras."
+  },
+  "25% · Carteira de recompras": {
+    "en": "25% · Buyback wallet",
+    "es": "25% · Billetera de recompras"
+  },
+  "25% · Staking": {
+    "en": "25% · Staking",
+    "es": "25% · Staking"
+  },
+  "3 · Split: 250 staking; 250 recompra; 500 retidos": {
+    "en": "3 · Split: 250 staking; 250 buyback; 500 retained",
+    "es": "3 · Split: 250 staking; 250 recompra; 500 retenidos"
+  },
+  "50% · Tesouraria": {
+    "en": "50% · Treasury",
+    "es": "50% · Tesorería"
+  },
+  "6 · Split: 125 staking; 125 recompra; 250 retidos": {
+    "en": "6 · Split: 125 staking; 125 buyback; 250 retained",
+    "es": "6 · Split: 125 staking; 125 recompra; 250 retenidos"
+  },
+  "8 · Split: 50 staking; 50 recompra; 100 retidos": {
+    "en": "8 · Split: 50 staking; 50 buyback; 100 retained",
+    "es": "8 · Split: 50 staking; 50 recompra; 100 retenidos"
+  },
+  "A administração decide quando executar.": {
+    "en": "Management decides when to execute.",
+    "es": "La administración decide cuándo ejecutar."
+  },
+  "A carteira só financia recompras de BETTEX. Não financia estratégias, distribuições ou despesas da empresa e não conta simultaneamente como reserva defensiva ou capital disponível. Distinguir valor destinado, efetivamente transferido, disponível, comprometido em ordens, gasto e custos conciliados. Comprometer uma ordem não é gastar; enviar uma transferência não comprova recebimento. Recursos incertos permanecem comprometidos, sem compra duplicada ou recuperação presumida.": {
+    "en": "The wallet only funds BETTEX buybacks. It does not fund strategies, distributions, or company expenses and does not simultaneously count as a defensive reserve or available capital. Distinguish between allocated value, effectively transferred, available, committed to orders, spent, and reconciled costs. Committing an order is not spending; sending a transfer does not prove receipt. Uncertain resources remain committed, without duplicate purchases or presumed recovery.",
+    "es": "La billetera solo financia recompras de BETTEX. No financia estrategias, distribuciones o gastos de la empresa y no cuenta simultáneamente como reserva defensiva o capital disponible. Distinga entre valor destinado, efectivamente transferido, disponible, comprometido en órdenes, gastado y costes conciliados. Comprometer una orden no es gastar; enviar una transferencia no prueba la recepción. Los recursos inciertos permanecen comprometidos, sin compra duplicada o recuperación presumida."
+  },
+  "A política exige mecanismos previstos de segregação e controle de destino, com código, permissões e evidências verificáveis após implementação e validação. Uma carteira comum ou uma instrução apenas administrativa não constitui garantia contratual on-chain. Contratos, endereços e mecanismos ativos devem ser identificados por evidências efetivas, sem presumir implantação.": {
+    "en": "The policy requires planned mechanisms for segregation and destination control, with code, permissions, and verifiable evidence after implementation and validation. A common wallet or purely administrative instruction does not constitute an on-chain contractual guarantee. Contracts, addresses, and active mechanisms must be identified by effective evidence, without assuming deployment.",
+    "es": "La política exige mecanismos previstos de segregación y control de destino, con código, permisos y evidencias verificables tras la implementación y validación. Una billetera común o una instrucción meramente administrativa no constituye una garantía contractual on-chain. Los contratos, direcciones y mecanismos activos deben ser identificados mediante evidencias efectivas, sin asumir su despliegue."
+  },
+  "A receita de serviços fica no caixa operacional, fora do split de investimentos de 50%/25%/25%. Dez mil saques representam US$ 25 mil de receita bruta, antes de custos e tributos. O orçamento deve considerar operações efetivas, não apenas usuários cadastrados.": {
+    "en": "Service revenue remains in operational cash, outside the 50%/25%/25% investment split. Ten thousand withdrawals represent $25,000 in gross revenue, before costs and taxes. The budget must consider effective operations, not just registered users.",
+    "es": "Los ingresos por servicios permanecen en caja operativa, fuera del split de inversión del 50%/25%/25%. Diez mil retiros representan 25.000 USD de ingresos brutos, antes de costes e impuestos. El presupuesto debe considerar operaciones efectivas, no solo usuarios registrados."
+  },
+  "A recomposição das reservas tem prioridade sobre o staking. Com reserva ou liquidez insuficiente, 100% do lucro líquido fica na tesouraria, sem staking nem distribuição de um saldo restante na mesma apuração. Com todas as condições atendidas, aplica o split diretamente sobre o lucro líquido conciliado, não sobre o capital: 50% tesouraria, 25% staking e 25% carteira de recompras (financiamento obrigatório; a compra é discricionária e autorizada pela Administração). Créditos do staking não acumulam entre rodadas fechadas; a carteira de recompras acumula USDC entre dias. Essa carteira não financia trading, distribuições nem despesas, nem conta como reserva defensiva. Destino dos tokens recomprados pendente de confirmação; sem promessa de efeito sobre preço.": {
+    "en": "Reserving replenishment has priority over staking. With insufficient reserves or liquidity, 100% of the net profit remains in the treasury, without staking or distribution of a remaining balance in the same assessment. With all conditions met, the split is applied directly to the reconciled net profit, not on capital: 50% treasury, 25% staking, and 25% buyback wallet (mandatory funding; the purchase is discretionary and authorized by Management). Staking credits do not accumulate between closed rounds; the buyback wallet accumulates USDC between days. This wallet does not fund trading, distributions, or expenses, nor does it count as a defensive reserve. Destination of repurchased tokens pending confirmation; no promise of effect on price.",
+    "es": "La recomposición de las reservas tiene prioridad sobre el staking. Con reservas o liquidez insuficientes, el 100% del beneficio neto permanece en la tesorería, sin staking ni distribución de un saldo restante en el mismo cálculo. Con todas las condiciones cumplidas, se aplica el split directamente sobre el beneficio neto conciliado, no sobre el capital: 50% tesorería, 25% staking y 25% billetera de recompras (financiación obligatoria; la compra es discrecional y autorizada por la Administración). Los créditos de staking no se acumulan entre rondas cerradas; la billetera de recompras acumula USDC entre días. Esta billetera no financia trading, distribuciones ni gastos, ni cuenta como reserva defensiva. El destino de los tokens recomprados está pendiente de confirmación; no hay promesa de efecto sobre el precio."
+  },
+  "A rodada não paga. 100% do lucro fica na tesouraria, sem crédito ao staking nem alocação à carteira de recompras, nem liberação futura desse resultado. A rodada encerra sem acumular lucro ou pesos para outro rateio.": {
+    "en": "The round does not pay. 100% of the profit remains in the treasury, without staking credit or allocation to the buyback wallet, nor future release of this result. The round ends without accumulating profit or weights for another distribution.",
+    "es": "La ronda no paga. El 100% del beneficio permanece en la tesorería, sin crédito al staking ni asignación a la billetera de recompras, ni liberación futura de ese resultado. La ronda finaliza sin acumular beneficios o pesos para otro prorrateo."
+  },
+  "A segregação reduz o caixa operacionalmente disponível da tesouraria, mas não constitui despesa nem uma nova perda no patrimônio consolidado da entidade. A carteira de recompra é registrada separadamente; obrigações, reservas e transferências têm efeitos únicos. Custos efetivos das recompras são conciliados, sem segunda dedução ou reaplicação do split sobre saldos acumulados.": {
+    "en": "Segregation reduces the treasury's operationally available cash but does not constitute an expense or a new loss in the entity's consolidated equity. The buyback wallet is recorded separately; obligations, reserves, and transfers have unique effects. Effective buyback costs are reconciled, without a second deduction or re-application of the split on accumulated balances.",
+    "es": "La segregación reduce el efectivo operacionalmente disponible de la tesorería, pero no constituye un gasto ni una nueva pérdida en el patrimonio consolidado de la entidad. La billetera de recompra se registra por separado; las obligaciones, reservas y transferencias tienen efectos únicos. Los costes efectivos de las recompras se concilian, sin una segunda deducción o reaplicación del split sobre saldos acumulados."
+  },
+  "A · Financiamento obrigatório, no fechamento diário elegível": {
+    "en": "A · Mandatory funding, at eligible daily close",
+    "es": "A · Financiación obligatoria, en el cierre diario elegible"
+  },
+  "Acumulável": {
+    "en": "Accumulable",
+    "es": "Acumulable"
+  },
+  "Administração autoriza": {
+    "en": "Management authorizes",
+    "es": "La administración autoriza"
+  },
+  "Agentes de IA podem fornecer análises e propostas, mas não autorizam nem executam recompras autonomamente. Cada execução exige autorização da administração e controles de preço, liquidez e segurança; a multisig e os controles de movimentação permanecem. Não há calendário obrigatório de compras, garantia de compra diária, valorização ou sustentação de preço. O saldo pode permanecer reservado indefinidamente.": {
+    "en": "AI agents can provide analyses and proposals, but do not authorize or execute buybacks autonomously. Each execution requires management authorization and price, liquidity, and security controls; the multisig and movement controls remain. There is no mandatory buying calendar, daily buy guarantee, appreciation, or price support. The balance can remain reserved indefinitely.",
+    "es": "Los agentes de IA pueden proporcionar análisis y propuestas, pero no autorizan ni ejecutan recompras de forma autónoma. Cada ejecución requiere la autorización de la administración y controles de precio, liquidez y seguridad; la multisig y los controles de movimiento permanecen. No existe un calendario obligatorio de compras, garantía de compra diaria, revalorización o soporte de precio. El saldo puede permanecer reservado indefinidamente."
+  },
+  "Alocação diária obrigatória em USDC, acumulável entre dias. Execução é decisão separada da Administração.": {
+    "en": "Mandatory daily allocation in USDC, accumulable between days. Execution is a separate Management decision.",
+    "es": "Asignación diaria obligatoria en USDC, acumulable entre días. La ejecución es una decisión separada de la Administración."
+  },
+  "Antes do split, projetar todos os desembolsos: staking, transferência de recompra e custos aplicáveis. Se a reserva defensiva ou a liquidez ficarem insuficientes após esses desembolsos, 100% permanece na tesouraria, sem distribuição nem destinação à recompra naquele fechamento. Sem peso elegível, mantém-se a regra de não realizar o split.": {
+    "en": "Before the split, project all disbursements: staking, buyback transfer, and applicable costs. If the defensive reserve or liquidity remains insufficient after these disbursements, 100% remains in the treasury, without distribution or allocation to buyback at that close. Without eligible weight, the rule of not performing the split remains in effect.",
+    "es": "Antes del split, proyecte todos los desembolsos: staking, transferencia de recompra y costes aplicables. Si la reserva defensiva o la liquidez resultan insuficientes tras estos desembolsos, el 100% permanece en la tesorería, sin distribución ni destino a recompra en ese cierre. Sin peso elegible, se mantiene la regla de no realizar el split."
+  },
+  "Análises e conectores operam fora da rede; contratos aplicam as permissões executáveis on-chain. O núcleo de risco verifica cada operação dentro do mandato. A apuração concilia resultados, posições abertas e obrigações antes de autorizar o split 50%/25%/25%. Esse split define a destinação do resultado, não uma nova entrada de capital: reter os 50% não exige uma transferência fictícia, e atribuir os 25% não confirma seu recebimento. O crédito só fica disponível após liquidação conciliada em USDC.": {
+    "en": "Analyses and connectors operate off-chain; contracts apply executable permissions on-chain. The risk core verifies each operation within the mandate. The calculation reconciles results, open positions, and obligations before authorizing the 50%/25%/25% split. This split defines the allocation of the result, not a new capital injection: retaining the 50% does not require a fictitious transfer, and assigning the 25% does not confirm its receipt. Credit is only available after reconciliation and settlement in USDC.",
+    "es": "Los análisis y conectores operan fuera de la red; los contratos aplican los permisos ejecutables en la cadena. El núcleo de riesgo verifica cada operación dentro del mandato. La liquidación concilia los resultados, las posiciones abiertas y las obligaciones antes de autorizar la división 50%/25%/25%. Esta división define la asignación del resultado, no una nueva entrada de capital: retener el 50% no requiere una transferencia ficticia, y asignar el 25% no confirma su recepción. El crédito solo está disponible tras la liquidación conciliada en USDC."
+  },
+  "Apenas propõe": {
+    "en": "Proposes only",
+    "es": "Solo propone"
+  },
+  "Autorização da recompra": {
+    "en": "Buyback authorization",
+    "es": "Autorización de recompra"
+  },
+  "B · Execução discricionária, sem compra automática diária": {
+    "en": "B · Discretionary execution, no daily automatic buying",
+    "es": "B · Ejecución discrecional, sin compra automática diaria"
+  },
+  "CARTEIRA DE RECOMPRA · 25%": {
+    "en": "BUYBACK WALLET · 25%",
+    "es": "CARTERA DE RECOMPRA · 25%"
+  },
+  "Cada tributo de investimento é apurado pela entidade BETTEX conforme regime, jurisdição, natureza da receita, fato gerador e vigência. Descontar ou provisionar a obrigação antes do lucro líquido e atualizar R e P sem alterar artificialmente B. Depois, aplicar elegibilidade e verificar reservas, obrigações, liquidez e pesos antes do split 50%/25%/25%. A estrutura básica é de uma única empresa, sem subsidiárias presumidas.": {
+    "en": "Each investment tax is assessed by the BETTEX entity according to regime, jurisdiction, nature of income, taxable event, and validity. Deduct or provision the obligation before net profit and update R and P without artificially altering B. Then, apply eligibility and verify reserves, obligations, liquidity, and weights before the 50%/25%/25% split. The basic structure is that of a single company, with no assumed subsidiaries.",
+    "es": "Cada impuesto de inversión es calculado por la entidad BETTEX según el régimen, jurisdicción, naturaleza de los ingresos, hecho generador y vigencia. Descontar o provisionar la obligación antes de la utilidad neta y actualizar R y P sin alterar artificialmente B. Después, aplicar la elegibilidad y verificar las reservas, obligaciones, liquidez y pesos antes de la división 50%/25%/25%. La estructura básica es de una sola empresa, sin subsidiarias asumidas."
+  },
+  "Carteira de recompra": {
+    "en": "Buyback wallet",
+    "es": "Cartera de recompra"
+  },
+  "Carteira de recompras": {
+    "en": "Buyback wallet",
+    "es": "Cartera de recompra"
+  },
+  "Carteira de recompras · 25%": {
+    "en": "Buyback wallet · 25%",
+    "es": "Cartera de recompra · 25%"
+  },
+  "Carteira exclusiva e política de recompra": {
+    "en": "Exclusive wallet and buyback policy",
+    "es": "Cartera exclusiva y política de recompra"
+  },
+  "Carteira própria; fora da tesouraria e do split 50%/25%/25%.": {
+    "en": "Proprietary wallet; outside the treasury and the 50%/25%/25% split.",
+    "es": "Cartera propia; fuera de la tesorería y de la división 50%/25%/25%."
+  },
+  "Com reservas, liquidez, conciliação e pesos elegíveis atendidos antes e após todos os desembolsos, aplica o split de 50% para retenção na tesouraria, 25% para staking e 25% para a carteira exclusiva de recompra. Sem peso elegível, reserva ou liquidez suficientes, 100% permanece na tesouraria, sem split ou destinação à recompra. Novos participantes nunca recebem lucros anteriores e qualquer saída de BETTEX cancela os créditos anteriores ainda não pagos do ciclo e zera todo o peso acumulado.": {
+    "en": "With reserves, liquidity, reconciliation, and eligible weights met before and after all disbursements, apply the split of 50% for treasury retention, 25% for staking, and 25% for the exclusive buyback wallet. Without sufficient eligible weight, reserve, or liquidity, 100% remains in the treasury, with no split or allocation for buybacks. New participants never receive previous profits, and any exit from BETTEX cancels previous unpaid credits from the cycle and resets all accumulated weight.",
+    "es": "Con las reservas, liquidez, conciliación y pesos elegibles cumplidos antes y después de todos los desembolsos, se aplica la división del 50% para retención en tesorería, 25% para staking y 25% para la cartera exclusiva de recompra. Sin peso elegible, reserva o liquidez suficientes, el 100% permanece en la tesorería, sin división ni asignación para recompra. Los nuevos participantes nunca reciben beneficios anteriores y cualquier salida de BETTEX cancela los créditos anteriores aún no pagados del ciclo y reinicia todo el peso acumulado."
+  },
+  "Compra de BETTEX": {
+    "en": "BETTEX purchase",
+    "es": "Compra de BETTEX"
+  },
+  "Créditos da rodada; nunca acumulam entre rodadas fechadas": {
+    "en": "Round credits; never accumulate between closed rounds",
+    "es": "Créditos de la ronda; nunca se acumulan entre rondas cerradas"
+  },
+  "Custos e perdas dessas aplicações são considerados uma única vez, junto dos resultados das estratégias. Perdas são permanentes, sem déficit para rodadas futuras. O lucro elegível recebe o split de 50% tesouraria, 25% staking e 25% carteira de recompra, preservando origem, período e beneficiários elegíveis. Não há distribuição paralela da reserva nem pagamento mensal automático.": {
+    "en": "Costs and losses from these applications are considered once, alongside strategy results. Losses are permanent, with no deficit for future rounds. Eligible profit receives the 50% treasury, 25% staking, and 25% buyback wallet split, preserving origin, period, and eligible beneficiaries. There is no parallel reserve distribution or automatic monthly payment.",
+    "es": "Los costos y pérdidas de estas aplicaciones se consideran una sola vez, junto con los resultados de las estrategias. Las pérdidas son permanentes, sin déficit para rondas futuras. La utilidad elegible recibe la división del 50% tesorería, 25% staking y 25% cartera de recompra, preservando el origen, período y beneficiarios elegibles. No hay distribución paralela de la reserva ni pago mensual automático."
+  },
+  "Destinação diária não é compra diária.": {
+    "en": "Daily allocation is not daily purchase.",
+    "es": "La asignación diaria no es una compra diaria."
+  },
+  "Destinação diária; compra depende de autorização da administração.": {
+    "en": "Daily allocation; purchase depends on management authorization.",
+    "es": "Asignación diaria; la compra depende de la autorización de la administración."
+  },
+  "Destino dos tokens recomprados: pendente de confirmação.": {
+    "en": "Destination of repurchased tokens: pending confirmation.",
+    "es": "Destino de los tokens recomprados: pendiente de confirmación."
+  },
+  "Do lucro distribuível, 50% fica na tesouraria, 25% vai ao staking e 25% financia recompras, executadas pela Administração (": {
+    "en": "Of the distributable profit, 50% stays in the treasury, 25% goes to staking, and 25% funds buybacks, executed by Management (",
+    "es": "De la utilidad distribuible, el 50% se queda en la tesorería, el 25% va al staking y el 25% financia recompras, ejecutadas por la Administración ("
+  },
+  "Financiamento da carteira de recompras": {
+    "en": "Funding of the buyback wallet",
+    "es": "Financiación de la cartera de recompra"
+  },
+  "IA": {
+    "en": "AI",
+    "es": "IA"
+  },
+  "IA apura lucro, verifica reservas, liquidez e pesos elegíveis; se alguma condição falhar, retém 100% sem split; com condições atendidas aplica 50% tesouraria, 25% staking e 25% carteira de recompras": {
+    "en": "AI calculates profit, verifies reserves, liquidity, and eligible weights; if any condition fails, it retains 100% without a split; if conditions are met, it applies 50% to the treasury, 25% to staking, and 25% to the buyback wallet.",
+    "es": "La IA calcula el beneficio, verifica las reservas, la liquidez y las ponderaciones elegibles; si alguna condición falla, retiene el 100% sin división; si se cumplen las condiciones, aplica el 50% a la tesorería, el 25% al staking y el 25% a la cartera de recompras."
+  },
+  "Lucro distribuível": {
+    "en": "Distributable profit",
+    "es": "Beneficio distribuible"
+  },
+  "Líquido, realizado e conciliado, com reserva e liquidez atendidas após todas as saídas projetadas": {
+    "en": "Net, realized, and reconciled, with reserves and liquidity met after all projected outflows.",
+    "es": "Neto, realizado y conciliado, con reservas y liquidez satisfechas tras todas las salidas proyectadas."
+  },
+  "Multisig preservado; define o momento": {
+    "en": "Multisig preserved; defines the timing.",
+    "es": "Multisig preservado; define el momento."
+  },
+  "Não divulgar antecipadamente horários, preços-alvo ou ordens específicas. Publicar cada operação somente após execução e conciliação, com seus valores efetivos e custos. Autorizar uma recompra não comprova que ela já ocorreu.": {
+    "en": "Do not disclose schedules, target prices, or specific orders in advance. Publish each operation only after execution and reconciliation, with its actual values and costs. Authorizing a buyback does not prove that it has already occurred.",
+    "es": "No divulgar con antelación horarios, precios objetivo u órdenes específicas. Publicar cada operación solo tras su ejecución y conciliación, con sus valores efectivos y costes. Autorizar una recompra no prueba que ya se haya producido."
+  },
+  "O caixa operacional e a tesouraria têm carteiras, rubricas e mandatos separados. Na tesouraria continuam valendo reserva defensiva de 50% do patrimônio líquido atualizado, capital já comprometido, limites de risco, elegibilidade e split 50%/25%/25%. O multisig não muda emissão, vesting, pesos ou créditos dos participantes. Carteiras pessoais e exportação de chaves não entram no multisig da empresa.": {
+    "en": "Operational cash and the treasury have separate wallets, line items, and mandates. In the treasury, the defensive reserve of 50% of the updated net worth, already committed capital, risk limits, eligibility, and the 50%/25%/25% split remain in effect. The multisig does not change issuance, vesting, weights, or participant credits. Personal wallets and key exports are not part of the company's multisig.",
+    "es": "El efectivo operativo y la tesorería tienen carteras, partidas y mandatos separados. En la tesorería siguen vigentes la reserva defensiva del 50% del patrimonio neto actualizado, el capital ya comprometido, los límites de riesgo, la elegibilidad y la división del 50%/25%/25%. El multisig no altera la emisión, la consolidación (vesting), las ponderaciones ni los créditos de los participantes. Las carteras personales y la exportación de claves no forman parte del multisig de la empresa."
+  },
+  "O fechamento diário elegível destina 50% do lucro líquido distribuível à retenção e ao reinvestimento na tesouraria, 25% aos stakers elegíveis e 25% à carteira exclusiva de recompra. A base é resultado realizado, conciliado e disponível, após custos, tributos e obrigações, considerando as posições abertas. Venda de tokens e transferência entre carteiras não criam lucro para esse split.": {
+    "en": "The eligible daily close allocates 50% of distributable net profit for retention and reinvestment in the treasury, 25% to eligible stakers, and 25% to the exclusive buyback wallet. The base is realized, reconciled, and available result after costs, taxes, and obligations, considering open positions. Token sales and transfers between wallets do not create profit for this split.",
+    "es": "El cierre diario elegible destina el 50% del beneficio neto distribuible a la retención y reinversión en la tesorería, el 25% a los stakers elegibles y el 25% a la cartera exclusiva de recompra. La base es el resultado realizado, conciliado y disponible tras costes, impuestos y obligaciones, considerando las posiciones abiertas. La venta de tokens y las transferencias entre carteras no generan beneficios para esta división."
+  },
+  "O preço dos tokens financia a tesouraria conforme sua origem; as tarifas adicionais de US$ 2,50, pagas em USDC, vão ao caixa operacional. As tarifas não queimam BETTEX nem descontam taxas em tokens. Os tokens não financiam as estratégias; o destino dos BETTEX recomprados permanece pendente de definição.": {
+    "en": "Token prices fund the treasury according to their origin; additional fees of $2.50, paid in USDC, go to operational cash. The fees do not burn BETTEX nor are they deducted as token fees. Tokens do not fund the strategies; the destination of repurchased BETTEX remains pending definition.",
+    "es": "El precio de los tokens financia la tesorería según su origen; las tarifas adicionales de 2,50 USD, pagadas en USDC, van al efectivo operativo. Las tarifas no queman BETTEX ni se descuentan como comisiones en tokens. Los tokens no financian las estrategias; el destino de los BETTEX recomprados queda pendiente de definición."
+  },
+  "O split usa o lucro líquido realizado e conciliado, após custos e tributos, com reservas, liquidez e elegibilidade atendidas: 50% tesouraria, 25% staking e 25% carteira de recompra. Perdas são permanentes, sem déficit a compensar em rodadas futuras. A participação considera BETTEX disponível × tempo elegível desde a última saída. Qualquer saída de BETTEX, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado. Novos participantes nunca recebem lucros anteriores. Autorizar o direito e confirmar o recebimento em USDC são etapas distintas.": {
+    "en": "The split uses realized and reconciled net profit, after costs and taxes, with reserves, liquidity, and eligibility met: 50% treasury, 25% staking, and 25% buyback wallet. Losses are permanent, with no deficit to be compensated in future rounds. Participation considers available BETTEX × eligible time since the last exit. Any BETTEX exit, even partial, cancels all previous unpaid cycle credits and resets the accumulated weight to zero. New participants never receive previous profits. Authorizing the right and confirming receipt in USDC are distinct steps.",
+    "es": "La división utiliza el beneficio neto realizado y conciliado, tras costes e impuestos, con reservas, liquidez y elegibilidad satisfechas: 50% tesorería, 25% staking y 25% cartera de recompra. Las pérdidas son permanentes, sin déficit a compensar en futuras rondas. La participación considera BETTEX disponible × tiempo elegible desde la última salida. Cualquier salida de BETTEX, incluso parcial, cancela todos los créditos pendientes de pago del ciclo y pone a cero el peso acumulado. Los nuevos participantes nunca reciben beneficios anteriores. Autorizar el derecho y confirmar la recepción en USDC son pasos distintos."
+  },
+  "Os 25% continuam sendo a parcela nominal destinada ao rateio. O pagamento efetivo exclui as frações não executáveis e os créditos cancelados por saída de BETTEX; a tesouraria conserva os 50% e recebe também as frações não pagas, enquanto outros 25% são destinados à carteira exclusiva de recompra. O retorno dessas frações não é novo lucro realizado, novo aporte ou autorização para aplicar outro split ao mesmo resultado. Histórico, obrigações vigentes e retornos são conciliados sem sobreposição nem efeito duplicado em R, P ou B.": {
+    "en": "The 25% remains the nominal portion allocated for distribution. The actual payment excludes non-executable fractions and credits canceled due to a BETTEX exit; the treasury retains its 50% and also receives the unpaid fractions, while another 25% is allocated to the exclusive buyback wallet. The return of these fractions is not new realized profit, a new contribution, or authorization to apply another split to the same result. History, existing obligations, and returns are reconciled without overlap or duplicate effects on R, P, or B.",
+    "es": "El 25% sigue siendo la parte nominal destinada al reparto. El pago efectivo excluye las fracciones no ejecutables y los créditos cancelados por salida de BETTEX; la tesorería conserva el 50% y recibe también las fracciones no pagadas, mientras que otro 25% se destina a la cartera exclusiva de recompra. El retorno de estas fracciones no es nuevo beneficio realizado, nueva aportación ni autorización para aplicar otra división al mismo resultado. El historial, las obligaciones vigentes y los retornos se concilian sin solapamientos ni efectos duplicados en R, P o B."
+  },
+  "Os 25% são transferidos em USDC para uma carteira exclusiva, separada da tesouraria operacional, da reserva defensiva e do caixa da empresa. Seu saldo não utilizado acumula para recompras, sem prazo obrigatório de execução. Esse saldo segregado não é lucro novo nem crédito de stakers: suas rodadas continuam únicas, sem créditos residuais ou pesos acumulados.": {
+    "en": "The 25% is transferred in USDC to an exclusive wallet, separate from the operational treasury, the defensive reserve, and the company's cash. Its unused balance accumulates for buybacks, without a mandatory execution deadline. This segregated balance is not new profit or staker credit: their rounds remain unique, without residual credits or accumulated weights.",
+    "es": "El 25% se transfiere en USDC a una cartera exclusiva, separada de la tesorería operativa, la reserva defensiva y el efectivo de la empresa. Su saldo no utilizado se acumula para recompras, sin plazo obligatorio de ejecución. Este saldo segregado no es un beneficio nuevo ni crédito para los stakers: sus rondas siguen siendo únicas, sin créditos residuales ni pesos acumulados."
+  },
+  "Os lucros de 1.000, 500 e 200 entram uma única vez. A perda de 500 é permanente, sem déficit a pagar com lucro futuro. No exemplo, 425 foram destinados ao staking, 425 à carteira de recompra e o patrimônio operacional termina em 100.350; somado à carteira segregada, o patrimônio consolidado é 100.775. A segregação não é despesa da entidade, mas retira recursos da disponibilidade operacional. Os 50% retidos e o saldo de recompra não recebem outro split. Registrar obrigações e depois liquidá-las não reduz o patrimônio duas vezes. Reter 100% por falta de reserva ou liquidez impede ambas as destinações.": {
+    "en": "Profits of 1,000, 500, and 200 are entered once. The 500 loss is permanent, with no deficit to be paid with future profit. In the example, 425 were allocated to staking, 425 to the buyback wallet, and operational equity ends at 100,350; added to the segregated wallet, the consolidated equity is 100,775. Segregation is not an entity expense, but it removes resources from operational availability. The 50% retained and the buyback balance do not receive another split. Recording obligations and then settling them does not reduce equity twice. Retaining 100% due to lack of reserves or liquidity prevents both allocations.",
+    "es": "Los beneficios de 1.000, 500 y 200 se contabilizan una sola vez. La pérdida de 500 es permanente, sin déficit a pagar con beneficios futuros. En el ejemplo, 425 se destinaron al staking, 425 a la cartera de recompra y el patrimonio operativo termina en 100.350; sumado a la cartera segregada, el patrimonio consolidado es 100.775. La segregación no es un gasto de la entidad, pero retira recursos de la disponibilidad operativa. El 50% retenido y el saldo de recompra no reciben otra división. Registrar obligaciones y luego liquidarlas no reduce el patrimonio dos veces. Retener el 100% por falta de reserva o liquidez impide ambas destinaciones."
+  },
+  "Parcela de 25% do lucro distribuível já separada no desenho 5, vinculada aos resultados e participantes elegíveis. Novos participantes não recebem lucros anteriores. Não há nova apuração ou novo split neste fluxo.": {
+    "en": "25% portion of distributable profit already separated in design 5, linked to results and eligible participants. New participants do not receive previous profits. There is no new calculation or new split in this flow.",
+    "es": "Porción del 25% del beneficio distribuible ya separada en el diseño 5, vinculada a los resultados y a los participantes elegibles. Los nuevos participantes no reciben beneficios anteriores. No hay nuevo cálculo ni nueva división en este flujo."
+  },
+  "Patrimônio operacional": {
+    "en": "Operational equity",
+    "es": "Patrimonio operativo"
+  },
+  "Patrimônio operacional e carteira de recompra separados · perda permanente · valores em USDC": {
+    "en": "Operational equity and buyback wallet separated · permanent loss · values in USDC",
+    "es": "Patrimonio operativo y cartera de recompra separados · pérdida permanente · valores en USDC"
+  },
+  "Preservar a base patrimonial e os controles vigentes de reserva: uma transferência interna à carteira de recompra não reduz, por si só, o patrimônio consolidado nem a base exigida para sua proteção. O saldo segregado não cobre a reserva defensiva nem fica disponível para estratégias. P e B usam perímetros consistentes; a liquidez exclui recursos exclusivos e compromissos, considerando todos os desembolsos previstos. A carteira acumula destinações elegíveis, sem permitir acumular créditos, pesos ou lucros para stakers de rodadas encerradas.": {
+    "en": "Preserve the equity base and existing reserve controls: an internal transfer to the buyback wallet does not, by itself, reduce consolidated equity or the base required for its protection. The segregated balance does not cover the defensive reserve nor is it available for strategies. P and B use consistent perimeters; liquidity excludes exclusive resources and commitments, considering all projected disbursements. The wallet accumulates eligible allocations, without allowing the accumulation of credits, weights, or profits for stakers of closed rounds.",
+    "es": "Preservar la base patrimonial y los controles de reserva vigentes: una transferencia interna a la cartera de recompra no reduce, por sí misma, el patrimonio consolidado ni la base exigida para su protección. El saldo segregado no cubre la reserva defensiva ni queda disponible para estrategias. P y B utilizan perímetros consistentes; la liquidez excluye recursos exclusivos y compromisos, considerando todos los desembolsos previstos. La cartera acumula destinaciones elegibles, sin permitir acumular créditos, pesos o beneficios para los stakers de rondas cerradas."
+  },
+  "Preço, liquidez e segurança": {
+    "en": "Price, liquidity, and security",
+    "es": "Precio, liquidez y seguridad"
+  },
+  "Proposta": {
+    "en": "Proposal",
+    "es": "Propuesta"
+  },
+  "Publicar lucro distribuível diário e memória de cálculo; valor dos 25%; transferências e identificadores; saldo disponível acumulado e compromissos; histórico com data, USDC gasto, BETTEX adquirido, preço médio e custos; e destino dos tokens adquiridos. Registros on-chain comprovam movimentações, enquanto conciliação e auditoria sustentam a correção do lucro declarado. Um identificador on-chain não comprova, sozinho, a apuração econômica.": {
+    "en": "Publish daily distributable profit and calculation memory; 25% value; transfers and identifiers; accumulated available balance and commitments; history with date, USDC spent, BETTEX acquired, average price, and costs; and destination of acquired tokens. On-chain records prove movements, while reconciliation and auditing support the accuracy of the declared profit. An on-chain identifier alone does not prove the economic calculation.",
+    "es": "Publicar el beneficio distribuible diario y la memoria de cálculo; el valor del 25%; transferencias e identificadores; saldo disponible acumulado y compromisos; historial con fecha, USDC gastado, BETTEX adquirido, precio medio y costes; y destino de los tokens adquiridos. Los registros on-chain prueban los movimientos, mientras que la conciliación y la auditoría respaldan la exactitud del beneficio declarado. Un identificador on-chain no prueba, por sí solo, el cálculo económico."
+  },
+  "Queima e staking perpétuo da tesouraria não são decisões aprovadas. As referências existentes à ausência de queima nas taxas e no vesting tratam desses fluxos, não definem o destino das recompras. A política de financiamento e autorização permanece independente dessa definição.": {
+    "en": "Treasury burning and perpetual staking are not approved decisions. Existing references to the absence of burning in fees and vesting address those flows, they do not define the destination of buybacks. Funding and authorization policy remains independent of this definition.",
+    "es": "La quema y el staking perpetuo de la tesorería no son decisiones aprobadas. Las referencias existentes a la ausencia de quema en las tasas y en el vesting tratan sobre esos flujos, no definen el destino de las recompras. La política de financiación y autorización permanece independiente de esta definición."
+  },
+  "Receita de serviço da empresa, em carteira operacional própria, fora da tesouraria e do split 50/25/25. Não é taxa de performance.": {
+    "en": "Company service revenue, in its own operational wallet, outside the treasury and the 50/25/25 split. It is not a performance fee.",
+    "es": "Ingresos por servicios de la empresa, en cartera operativa propia, fuera de la tesorería y del split 50/25/25. No es una comisión de rendimiento."
+  },
+  "Recompras de BETTEX": {
+    "en": "BETTEX buybacks",
+    "es": "Recompras de BETTEX"
+  },
+  "Recompras: financiamento obrigatório e execução discricionária": {
+    "en": "Buybacks: mandatory funding and discretionary execution",
+    "es": "Recompras: financiación obligatoria y ejecución discrecional"
+  },
+  "Reserva ou liquidez insuficiente, ou peso elegível zero": {
+    "en": "Insufficient reserve or liquidity, or zero eligible weight",
+    "es": "Reserva o liquidez insuficiente, o peso elegible cero"
+  },
+  "Restrição de uso tecnicamente verificável.": {
+    "en": "Technically verifiable usage restriction.",
+    "es": "Restricción de uso técnicamente verificable."
+  },
+  "Retenção e reinvestimento": {
+    "en": "Retention and reinvestment",
+    "es": "Retención y reinversión"
+  },
+  "Retenção e reinvestimento de 50% do lucro distribuível.": {
+    "en": "Retention and reinvestment of 50% of distributable profit.",
+    "es": "Retención y reinversión del 50% del beneficio distribuible."
+  },
+  "Segregada da tesouraria": {
+    "en": "Segregated from the treasury",
+    "es": "Segregada de la tesorería"
+  },
+  "Sem destinação a staking ou recompra nesta simulação.": {
+    "en": "No allocation to staking or buyback in this simulation.",
+    "es": "Sin destino a staking o recompra en esta simulación."
+  },
+  "Somente após autorização. Destino dos tokens pendente de confirmação": {
+    "en": "Only after authorization. Token destination pending confirmation",
+    "es": "Solo después de autorización. Destino de los tokens pendiente de confirmación"
+  },
+  "Split do lucro elegível: tesouraria, staking e carteira de recompra.": {
+    "en": "Eligible profit split: treasury, staking, and buyback wallet.",
+    "es": "Split del beneficio elegible: tesorería, staking y cartera de recompra."
+  },
+  "Só há lucro elegível após custos reais, tributos, obrigações, avaliação das posições abertas, reservas e liquidez. Desse lucro, 50% ficam na tesouraria, 25% vão à carteira exclusiva de recompra e 25% à distribuição diária condicionada, conforme as regras do token e do staking. A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. O destino dos tokens adquiridos permanece pendente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.": {
+    "en": "Eligible profit exists only after actual costs, taxes, obligations, valuation of open positions, reserves, and liquidity. Of this profit, 50% remains in the treasury, 25% goes to the exclusive buyback wallet, and 25% to conditional daily distribution, according to token and staking rules. Management authorizes buybacks, preserving multisig; they are not automatic daily purchases. The unused exclusive balance accumulates and does not fund strategies or expenses. The destination of acquired tokens remains pending. The token is not a share, does not grant ownership of assets, and does not guarantee redemption.",
+    "es": "Solo hay beneficio elegible después de costes reales, impuestos, obligaciones, valoración de posiciones abiertas, reservas y liquidez. De este beneficio, el 50% queda en la tesorería, el 25% va a la cartera exclusiva de recompra y el 25% a la distribución diaria condicionada, conforme a las reglas del token y del staking. La administración autoriza las recompras, preservando la multisig; no son compras diarias automáticas. El saldo exclusivo no utilizado se acumula y no financia estrategias o gastos. El destino de los tokens adquiridos permanece pendiente. El token no es acción, no da propiedad del patrimonio y no garantiza rescate."
+  },
+  "TESOURARIA · 50%": {
+    "en": "TREASURY · 50%",
+    "es": "TESORERÍA · 50%"
+  },
+  "Tesouraria · 50%": {
+    "en": "Treasury · 50%",
+    "es": "Tesorería · 50%"
+  },
+  "Transparência por fechamento e por execução.": {
+    "en": "Transparency by close and by execution.",
+    "es": "Transparencia por cierre y por ejecución."
+  },
+  "USDC diário; acumula entre dias": {
+    "en": "Daily USDC; accumulates across days",
+    "es": "USDC diario; acumula entre días"
+  },
+  "Verificações": {
+    "en": "Verifications",
+    "es": "Verificaciones"
+  },
+  "ver regras": {
+    "en": "view rules",
+    "es": "ver reglas"
+  },
+  "Distribuição ou antecipação de lucro exige apuração contábil, procedimento societário permitido e caixa após obrigações e reservas. Receita futura projetada não autoriza retirada como dividendo. Os 50% retidos na tesouraria e os 25% destinados à recompra não são renda pessoal do fundador.": {
+    "en": "Profit distributions or advances require accounting assessment, a legally permitted corporate procedure and cash after obligations and reserves. Projected future revenue does not authorize withdrawal as a dividend. The 50% retained in the treasury and the 25% allocated to buybacks are not the founder’s personal income.",
+    "es": "La distribución o el anticipo de beneficios exige una determinación contable, un procedimiento societario permitido y efectivo tras las obligaciones y reservas. Los ingresos futuros proyectados no autorizan retiros como dividendos. El 50% retenido en la tesorería y el 25% destinado a recompras no son ingresos personales del fundador."
+  },
+  "Neste exemplo, reservas, liquidez, conciliação e pesos elegíveis permitem o split antes e após todos os desembolsos.": {
+    "en": "In this example, reserves, liquidity, reconciliation and eligible weights allow the allocation before and after all outflows.",
+    "es": "En este ejemplo, las reservas, la liquidez, la conciliación y los pesos elegibles permiten la distribución antes y después de todos los desembolsos."
+  },
+  "Neste exemplo, pagamentos aos stakers e transferências à carteira de recompra estão conciliados. Não houve execução de recompras; o saldo segregado continua em USDC.": {
+    "en": "In this example, payments to stakers and transfers to the buyback wallet have been reconciled. No buybacks have been executed; the segregated balance remains in USDC.",
+    "es": "En este ejemplo, los pagos a los stakers y las transferencias a la billetera de recompra están conciliados. No se han ejecutado recompras; el saldo segregado permanece en USDC."
+  },
+  "100% retido na tesouraria; nenhuma alocação ao staking nem às recompras": {
+    "en": "100% retained in the treasury; no allocation to staking or buybacks",
+    "es": "100% retenido en la tesorería; sin asignación a staking ni a recompras"
+  },
+  "Carteira exclusiva": {
+    "en": "Exclusive wallet",
+    "es": "Billetera exclusiva"
+  },
+  "Não conta como reserva defensiva nem capital de estratégia": {
+    "en": "Does not count as a defensive reserve or strategy capital",
+    "es": "No cuenta como reserva defensiva ni capital de estrategia"
+  },
+  "Não financia trading, distribuições nem despesas da empresa": {
+    "en": "Does not fund trading, distributions, or company expenses",
+    "es": "No financia trading, distribuciones ni gastos de la empresa"
+  },
+  "Saldo disponível segregado": {
+    "en": "Segregated available balance",
+    "es": "Saldo disponible segregado"
+  },
+  "Sem garantia ou apoio de preço; queima e staking da tesouraria não aprovados": {
+    "en": "No guarantee or price support; treasury burn and staking not approved",
+    "es": "Sin garantía ni apoyo de precio; quema y staking de la tesorería no aprobados"
+  },
+  "Somente com tributos aplicáveis validados e reconhecidos, reserva e liquidez atendidas antes e após staking, transferência à carteira de recompra e custos projetados, lucro elegível positivo, posições conciliadas e soma dos pesos elegíveis positiva, aplica o split sobre o valor elegível:": {
+    "en": "Only with applicable taxes validated and recognized, reserve and liquidity met before and after staking, transfer to the buyback wallet and projected costs, positive eligible profit, reconciled positions and sum of eligible weights positive, apply the split on the eligible value:",
+    "es": "Solo con los impuestos aplicables validados y reconocidos, reserva y liquidez cumplidas antes y después del staking, transferencia a la billetera de recompra y costos proyectados, beneficio elegible positivo, posiciones conciliadas y suma de los pesos elegibles positiva, aplique el split sobre el valor elegible:"
+  },
+  "Split permitido apenas com pesos elegíveis positivos, reserva e liquidez atendidas antes e após staking, transferência à carteira de recompra e custos projetados": {
+    "en": "Split permitted only with positive eligible weights, reserve and liquidity met before and after staking, transfer to the buyback wallet and projected costs",
+    "es": "Split permitido solo con pesos elegibles positivos, reserva y liquidez cumplidas antes y después del staking, transferencia a la billetera de recompra y costos proyectados"
+  },
+  "Verifica reserva defensiva mínima inicial de 50% do patrimônio líquido atualizado e caixa livre suficiente, antes e após staking, transferência à carteira de recompra e custos projetados. A soma dos pesos elegíveis da rodada deve ser positiva.": {
+    "en": "Verifies initial minimum defensive reserve of 50% of updated net equity and sufficient free cash, before and after staking, transfer to the buyback wallet and projected costs. The sum of the round's eligible weights must be positive.",
+    "es": "Verifica la reserva defensiva mínima inicial del 50% del patrimonio neto actualizado y suficiente efectivo libre, antes y después del staking, transferencia a la billetera de recompra y costos proyectados. La suma de los pesos elegibles de la ronda debe ser positiva."
   }
 }

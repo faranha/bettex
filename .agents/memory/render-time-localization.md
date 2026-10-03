@@ -23,6 +23,6 @@ Localize React fragments themselves, not only HTML elements. React child groupin
 
 Source-message coverage alone does not cover every rendered diagram caption.
 
-**Why:** A changed caption stored in a diagram data object's short field was omitted from extraction. Static coverage passed, but strict English prerender failed on that visible caption.
+**Why:** Diagram captions and node data were omitted from extraction despite appearing on screen. A prop named `to` carried diagram branches, not navigation links. Static coverage passed while strict English prerender failed.
 
-**How to apply:** Run strict prerender and rendered-localization checks for all languages after changing diagram data or indirect text props. Register missing visible captions even when the extraction-based check reports full coverage.
+**How to apply:** Run strict prerender and rendered-localization checks for all languages after changing diagram data or indirect text props. Do not infer a prop's meaning solely from its name when excluding subtrees from extraction; distinguish URL values from data arrays. Coverage alone is not evidence that every visible caption is translated.

@@ -12,28 +12,29 @@
 /* ===== Site-wide responsive layer (pitch, demo, shared) ===== */
 html, body { max-width: 100%; }
 img, svg, video { max-width: 100%; }
-/* Compact chapter index; content stays closed until requested. */
-.pitch-index { width: min(100%, 560px); margin-top: 32px; border-block: 1px solid rgba(95,134,255,.35); }
-.pitch-index__trigger { display: flex; align-items: center; gap: 12px; min-height: 56px; color: #F4F1E8; font-size: 14px; font-weight: 700; cursor: pointer; list-style: none; }
-.pitch-index__trigger::-webkit-details-marker { display: none; }
-.pitch-index__trigger > svg:first-child { color: #F2B632; }
-.pitch-index__chevron { margin-left: auto; }
-.pitch-index[open] .pitch-index__chevron { transform: rotate(180deg); }
-.pitch-index__body { padding-bottom: 8px; }
-.pitch-index__links { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0 24px; max-height: 396px; max-height: min(55svh,396px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
-.pitch-index__links a { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 8px 0; border-bottom: 1px solid rgba(95,134,255,.16); color: #c5d2f1; font-size: 14px; }
-.pitch-index__links a > svg { flex-shrink: 0; margin-left: auto; color: #5F86FF; }
+/* Compact opening and always-visible section navigation. */
+.pitch-hero { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,.62fr); gap: 40px; align-items: center; }
+.pitch-hero__visual { margin: 0; justify-self: end; width: min(100%, 400px); aspect-ratio: 1; overflow: hidden; border-radius: 24px; border: 1px solid rgba(242,182,50,.55); box-shadow: 0 0 0 6px rgba(43,89,255,.18); position: relative; }
+.pitch-hero__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,11,31,.45), transparent 50%), rgba(7,11,60,.12); mix-blend-mode: multiply; }
+.pitch-hero__visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 767px) {
+  .pitch-hero { grid-template-columns: minmax(0,1fr) 112px; gap: 14px; align-items: start; }
+  .pitch-hero__copy { display: contents; }
+  .pitch-hero__copy > h1 { grid-column: 1 / -1; }
+  .pitch-hero__visual { grid-column: 2; grid-row: 2; width: 112px; border-radius: 16px; }
+  .pitch-hero__copy > p { grid-column: 1; grid-row: 2; margin-top: 0; font-size: 14px; line-height: 1.55; }
+  .pitch-hero__copy > div { grid-column: 1 / -1; grid-row: 3; }
+}
+.pitch-index { width: 100%; margin-top: 20px; border-block: 1px solid rgba(95,134,255,.35); --bettex-scrollbar-track: #11162b; }
+.pitch-index__links { display: flex; align-items: center; gap: 20px; overflow-x: auto; padding-block: 4px; }
+.pitch-index__links a { display: inline-flex; flex-shrink: 0; align-items: center; gap: 7px; min-height: 44px; color: #c5d2f1; font-size: 12px; white-space: nowrap; }
 .pitch-index__number { color: #829ddc; font: 700 10px/1.5 var(--app-font-mono); }
-.pitch-index__links a:hover, .pitch-index__links a:hover > svg { color: #F2B632; }
-.pitch-index__trigger:focus-visible, .pitch-index__links a:focus-visible { outline: 2px solid #F2B632; outline-offset: -2px; }
-.pitch-index .reading-controls { margin-top: 12px; gap: 20px; }
-.pitch-index .reading-controls button { min-height: 44px; padding: 8px 0; border: 0; border-radius: 0; background: transparent; color: #c5d2f1; font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
-.pitch-index .reading-controls button:hover { color: #F2B632; background: transparent; }
+.pitch-index__links a:hover { color: #F2B632; }
+.pitch-index__links a:focus-visible { outline: 2px solid #F2B632; outline-offset: -2px; }
 .pitch h1, .pitch h2, .pitch h3, .pitch p, .pitch li { overflow-wrap: break-word; }
 .pitch a { overflow-wrap: anywhere; }
 .pitch [class*="grid"] > * { min-width: 0; }
 @media (max-width: 639px) {
-  .pitch-index__links { grid-template-columns: 1fr; }
   .pitch [role="region"][aria-label="Exemplos de custo"] { overflow: visible; border: 0; border-radius: 0; }
   .pitch [role="region"] table { min-width: 0 !important; width: 100%; }
   .pitch [role="region"] table, .pitch [role="region"] tbody, .pitch [role="region"] tr, .pitch [role="region"] td { display: block; width: 100%; }
