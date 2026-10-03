@@ -4,6 +4,8 @@ import assumptions from './fee-projection-scenarios.json';
 export const purchaseRate = fees.fees[0].rate;
 export const withdrawalRate = fees.fees[1].rate;
 
+// purchaseFees/withdrawalFees/monthlyFees são ALVOS líquidos de tributos,
+// não cobrança bruta. A cobertura fiscal exige dados e cotação próprios.
 export const feeProjections = assumptions.scenarios.map(scenario => {
   const newBuyers = scenario.activeUsers * scenario.newBuyerShare;
   const repeatBuyers = scenario.activeUsers * scenario.repeatBuyerShare;

@@ -57,7 +57,7 @@ const fig1: Step[] = [
 ];
 const fig2: Step[] = [
   { title: 'Carteira USDC', text: 'A pessoa usa o USDC disponível e confirmado para comprar BETTEX da venda pública do projeto.', tone: 'blue' },
-  { title: 'Confirma o swap', text: 'Confere preço em USDC, quantidade bruta de BETTEX, taxa de compra de 1% paga em BETTEX à Fundação e quantidade líquida do titular. A taxa vai à carteira própria da Fundação, sem queima.', tone: 'gold', id: 'node-treasury-swap',
+  { title: 'Confirma o swap', text: 'Confere preço em USDC, quantidade bruta, alvo líquido de 1% da Fundação, cobertura fiscal e cobrança total em BETTEX. Mostra o líquido do titular antes da autorização. A cobrança vai à carteira própria da Fundação, sem queima.', tone: 'gold', id: 'node-treasury-swap',
     extra: <div className="ba-swap" aria-label="Compra de BETTEX com USDC"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
   { title: 'Compra liquidada', text: 'Débito USDC, taxa BETTEX e crédito líquido são conciliados juntos, uma única vez.', tone: 'teal',
     extra: (
@@ -98,7 +98,7 @@ const fig5: Step[] = [
 const fig6: Step[] = [
   { title: 'Parcela do staking', text: 'Parcela separada no desenho 5, com lucro distribuível, reservas e liquidez atendidas e soma dos pesos elegíveis positiva. Usa os pesos da rodada em que o split é autorizado, inclusive quando o lucro veio de retenção anterior.', tone: 'blue' },
   { title: 'Retenção e crédito na Carteira USDC', text: 'O direito bruto apurado fica identificado. Quando exigidas, retenções fiscais são reservadas antes do pagamento; a IA transfere somente o líquido. Após confirmação e conciliação, o recebido entra no saldo disponível, sem liquidar novamente o tributo reservado.', tone: 'teal' },
-  { title: 'Saque de USDC do staking', text: 'Retira USDC do staking para carteira compatível, sem repetir a distribuição. A taxa de 2% do valor solicitado é paga em BETTEX à carteira própria da Fundação. Cotação, quantidade e custos externos são informados antes da confirmação. Sem pagamento em moeda local.' },
+  { title: 'Saque de USDC do staking', text: 'Retira USDC sem repetir a distribuição. 2% do valor solicitado é o alvo líquido de tributos da Fundação; o total inclui cobertura fiscal e é pago em BETTEX à carteira separada. Composição, cotação, quantidade e custos externos precedem autorização. Sem pagamento em moeda local.' },
 ];
 const fig7: Step[] = [
   { title: 'Agentes de IA', text: 'A IA BETTEX coordena agentes que analisam oportunidades e propõem operações nos mercados.', tone: 'blue',
