@@ -17,7 +17,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           <p className="technology-section__intro-note">Antes de cada operação, a BETTEX cruza análises de dados, probabilidades, liquidez e risco. Compara as oportunidades e seleciona o investimento mais vantajoso segundo suas análises, respeitando os limites de risco.</p>
         </header>
 
-        <div className="technology-section__hierarchy" aria-label="Representação conceitual: compra concluída de BETTEX, participação automática do saldo, uma IA analisando vários mercados e crédito de lucro em reais na Carteira em reais.">
+        <div className="technology-section__hierarchy" aria-label="compra concluída de BETTEX, participação automática do saldo, uma IA analisando vários mercados e crédito de lucro elegível na Carteira USDC.">
           <div className="technology-section__entry">
             <div className="technology-section__token" data-testid="diagram-technology-token">
               <span className="technology-section__coin" aria-hidden="true"><BettexMark /></span>
@@ -31,7 +31,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
               <div className="technology-section__wallet-copy">
                 <span className="technology-section__wallet-kicker">02 / Participação automática</span>
                 <h3><span className="technology-section__wallet-heading-icon" aria-hidden="true"><WalletCards strokeWidth={1.7} /></span><span>Carteira <em>BETTEX</em></span></h3>
-              <p>Ao concluir a compra, seus tokens entram na Carteira BETTEX com participação automática. Você acompanha o saldo e os lucros pelo aplicativo. A Carteira em reais recebe depósitos via Pix, serve para compras e recebe os créditos de lucro.</p>
+              <p>Ao concluir a compra, seus tokens entram na Carteira BETTEX com participação automática. Você acompanha o saldo e os lucros pelo aplicativo. A Carteira USDC recebe depósitos cripto, serve para compras e recebe os créditos de lucro. A interface mostra o valor estimado em moeda fiduciária.</p>
               </div>
               <div className="technology-section__wallet-art" role="img" aria-label="Robô da IA BETTEX com a marca BETTEX no peito">
                 <img className="technology-section__ai-robot" src={`${import.meta.env.BASE_URL}agents/bettex-hunter-portrait.webp`} alt="" loading="lazy" decoding="async" />
@@ -50,9 +50,9 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             <span className="technology-section__result-arrow" aria-hidden="true"><ArrowDown size={18} /></span>
             <span className="technology-section__result-icon" aria-hidden="true"><WalletCards size={32} strokeWidth={1.7} /></span>
             <div className="technology-section__result-copy">
-              <span className="technology-section__result-kicker">Dos mercados para a Carteira em reais</span>
-              <h3>Crédito de lucro em reais.</h3>
-              <p>Nos dias com lucro do projeto, a distribuição é creditada em reais na Carteira em reais, sem venda de BETTEX. Sem lucro, não há distribuição.</p>
+              <span className="technology-section__result-kicker">Dos mercados para a Carteira USDC</span>
+              <h3>Crédito de lucro em USDC.</h3>
+              <p>Nos dias com lucro elegível e condições de distribuição atendidas, sua parte é creditada na Carteira USDC, sem venda de BETTEX. Você vê a estimativa em moeda fiduciária. Sem lucro elegível, não há distribuição.</p>
             </div>
           </div>
         </div>

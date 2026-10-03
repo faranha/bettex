@@ -1,7 +1,7 @@
 kind = "web"
 previewPath = "/"
 title = "BETTEX"
-description = "Página institucional em português brasileiro para explicar a proposta BETTEX e apresentar um simulador demonstrativo de tokens, staking e agentes de IA, sem transações ou pagamentos reais."
+description = "Site institucional BETTEX em português, inglês internacional e espanhol internacional: tese, pitch, documentação, projeções e Demo em breve, sem transações reais."
 version = "1.0.0"
 id = "artifacts/bettex-site"
 router = "path"
@@ -20,8 +20,92 @@ serve = "static"
 publicDir = "artifacts/bettex-site/dist/public"
 
 [[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+from = "/pitch"
+to = "/pitch.html"
+
+[[services.production.rewrites]]
+from = "/pitch/"
+to = "/pitch.html"
+
+[[services.production.rewrites]]
+from = "/documentacao"
+to = "/documentacao.html"
+
+[[services.production.rewrites]]
+from = "/documentacao/"
+to = "/documentacao.html"
+
+[[services.production.rewrites]]
+from = "/demo"
+to = "/demo.html"
+
+[[services.production.rewrites]]
+from = "/demo/"
+to = "/demo.html"
+
+[[services.production.rewrites]]
+from = "/en"
+to = "/en.html"
+
+[[services.production.rewrites]]
+from = "/en/"
+to = "/en.html"
+
+[[services.production.rewrites]]
+from = "/en/pitch"
+to = "/en/pitch.html"
+
+[[services.production.rewrites]]
+from = "/en/pitch/"
+to = "/en/pitch.html"
+
+[[services.production.rewrites]]
+from = "/en/documentation"
+to = "/en/documentation.html"
+
+[[services.production.rewrites]]
+from = "/en/documentation/"
+to = "/en/documentation.html"
+
+[[services.production.rewrites]]
+from = "/en/demo"
+to = "/en/demo.html"
+
+[[services.production.rewrites]]
+from = "/en/demo/"
+to = "/en/demo.html"
+
+[[services.production.rewrites]]
+from = "/es"
+to = "/es.html"
+
+[[services.production.rewrites]]
+from = "/es/"
+to = "/es.html"
+
+[[services.production.rewrites]]
+from = "/es/pitch"
+to = "/es/pitch.html"
+
+[[services.production.rewrites]]
+from = "/es/pitch/"
+to = "/es/pitch.html"
+
+[[services.production.rewrites]]
+from = "/es/documentacion"
+to = "/es/documentacion.html"
+
+[[services.production.rewrites]]
+from = "/es/documentacion/"
+to = "/es/documentacion.html"
+
+[[services.production.rewrites]]
+from = "/es/demo"
+to = "/es/demo.html"
+
+[[services.production.rewrites]]
+from = "/es/demo/"
+to = "/es/demo.html"
 
 [services.env]
 PORT = "25336"

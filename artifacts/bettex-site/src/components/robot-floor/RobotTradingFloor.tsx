@@ -243,7 +243,6 @@ export function RobotTradingFloor() {
           <span>{expanded ? 'Ver cena inteira' : 'Ampliar cena'}</span>
         </button>
         </div>
-        <span className="robot-floor__tag">Ilustração conceitual</span>
 
         <div ref={viewportRef} id="robot-floor-viewport" className={`robot-floor__viewport${expanded ? ' is-expanded' : ''}`} tabIndex={expanded ? 0 : undefined} role="region" aria-label="Cena das equipes de robôs">
         <svg ref={svgRef} className="robot-floor__svg" viewBox="0 0 1000 620" role="img" aria-label="Cena isométrica com agentes caminhando aleatoriamente em salas de previsões, surebet, memecoins e mineração de bônus, controlados pela IA da BETTEX. As operações seguem pedidos de análise, autorização e execução em um ciclo ilustrativo.">

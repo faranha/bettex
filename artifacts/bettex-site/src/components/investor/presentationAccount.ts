@@ -2,6 +2,8 @@ import type { PlatformId } from './presentationData';
 
 // A single fictional account keeps all presentation screens consistent.
 // These values are not fetched from an investor account or live BETTEX operations.
+// Monetary cents are illustrative BRL display estimates, NOT USDC quantities,
+// a live conversion rate or an offer price. Preserve that distinction in every view.
 const platformAttributionCents: Record<PlatformId, number> = {
   polymarket: 4820,
   robinhood: 3960,
@@ -24,18 +26,18 @@ export const presentationAccount = {
   movements: [
     {
       label: 'Distribuição diária BETTEX',
-      detail: 'Hoje, 09:00 · Crédito consolidado em reais',
+      detail: 'Exemplo · Crédito USDC confirmado, valor em moeda fiduciária estimado',
       direction: 'in' as const,
       amountCents: profitCents,
     },
-    { label: 'Saque por Pix', detail: 'Ontem, 16:30', direction: 'out', amountCents: withdrawalsCents },
+    { label: 'Saque de USDC', detail: 'Exemplo · Valor em moeda fiduciária estimado', direction: 'out', amountCents: withdrawalsCents },
     {
       label: 'Compra concluída de BETTEX',
-      detail: 'Pré-venda · 1.000 BETTEX a R$ 3,00',
+      detail: 'Exemplo · 1.000 BETTEX, valor em moeda fiduciária estimado',
       direction: 'out' as const,
       amountCents: purchaseCents,
     },
-    { label: 'Depósito por Pix', detail: 'Ontem, 10:00', direction: 'in', amountCents: depositsCents },
+    { label: 'Depósito de USDC', detail: 'Exemplo · Após on-ramp externo, valor em moeda fiduciária estimado', direction: 'in', amountCents: depositsCents },
   ],
 };
 

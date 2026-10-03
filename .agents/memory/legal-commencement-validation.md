@@ -22,3 +22,11 @@ Se o título do portal/nome do arquivo divergir do número ou data extraídos do
 **Why:** uma opinião regulatória disponibilizada por um link apresentou número/data diferentes na extração do PDF, criando risco de citar a decisão errada.
 
 **How to apply:** distinguir metadados do portal, texto do documento e possíveis erros de OCR; não escolher silenciosamente uma versão.
+
+## Orientação retirada ou substituída
+
+Verificar se uma orientação regulatória antiga foi retirada ou substituída, mesmo quando continua aparecendo em buscas.
+
+**Why:** Na pesquisa territorial, o framework SEC de 2019 sobre contratos de investimento de ativos digitais apareceu como retirado e substituído pela interpretação da Comissão de 17 de março de 2026. Usar o texto antigo como posição atual produziria conclusão desatualizada.
+
+**How to apply:** Em pesquisas dos EUA, conferir a posição vigente e o status da fonte na SEC. A interpretação de 2026 distingue criptoativo e contrato de investimento; não é uma dispensa geral para tokens de participação em lucros. Reconfirmar futuras mudanças, sem tratar esse marco como permanente. Fonte: https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets

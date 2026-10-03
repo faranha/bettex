@@ -1,0 +1,82 @@
+Copie e envie ao Replit:
+
+Atualize a documentação do BETTEX e todos os gráficos, diagramas, tabelas e textos que expliquem distribuição de lucros, tesouraria e recompra, conforme as regras abaixo.
+
+1. Distribuição do lucro
+
+Substitua as versões anteriores pela seguinte divisão do lucro líquido distribuível:
+
+* 50% para retenção e reinvestimento na tesouraria.
+* 25% para distribuição diária aos stakers elegíveis.
+* 25% para uma carteira exclusiva de recompra de BETTEX.
+
+A base é o lucro líquido realizado, conciliado e disponível, após custos, tributos e obrigações, considerando a avaliação das posições abertas. Recursos recebidos pela venda de tokens não são lucro para essa divisão.
+
+Preserve as regras existentes de elegibilidade dos stakers e de proteção da reserva. Se reserva ou liquidez forem insuficientes após os desembolsos previstos, 100% do lucro permanece retido na tesouraria, sem distribuição nem destinação à carteira de recompra naquele fechamento.
+
+2. Carteira exclusiva de recompra
+
+Em cada fechamento diário elegível, os 25% destinados à recompra devem ser transferidos em USDC para uma carteira exclusiva, separada da tesouraria operacional e da reserva defensiva.
+
+O saldo dessa carteira:
+
+* Tem finalidade exclusiva de recompra de BETTEX.
+* Acumula enquanto não houver execução.
+* Não pode financiar operações, distribuições ou despesas da empresa.
+* Não é contabilizado novamente como lucro.
+* Não pode ser contado simultaneamente como reserva defensiva ou capital disponível para estratégias.
+
+Distinguir claramente valores destinados, transferidos, comprometidos em ordens e efetivamente gastos, evitando dupla contagem.
+
+3. Decisão centralizada de execução
+
+A decisão sobre quando recomprar é centralizada na administração do BETTEX.
+
+Não haverá recompra diária automática, calendário obrigatório de compras ou execução autônoma por agentes de IA. Os agentes podem fornecer análises e propostas; a autorização de execução cabe à administração, respeitando controles de preço, liquidez e segurança.
+
+Preserve a multisig e os controles existentes para movimentação dos recursos. Decisão centralizada não significa eliminar esses controles.
+
+Não anunciar antecipadamente horários, preços-alvo ou ordens específicas. Publicar as operações após sua execução e conciliação.
+
+4. Compromisso verificável
+
+Apresente a política com esta redação:
+
+“25% do lucro líquido distribuível é destinado diariamente a uma carteira exclusiva de recompra de BETTEX. A execução das recompras depende de decisão centralizada da administração, considerando preço, liquidez e segurança. Valores não utilizados permanecem acumulados para futuras recompras.”
+
+Não afirmar que existe garantia de compra diária, valorização do token ou sustentação de preço. Sem prazo obrigatório de execução, os recursos podem permanecer reservados indefinidamente.
+
+Documente que a restrição de uso da carteira deve ser tecnicamente verificável. Não apresente uma carteira comum ou uma restrição apenas administrativa como garantia contratual on-chain.
+
+5. Transparência e indicadores
+
+Atualize as referências de transparência para incluir:
+
+* Lucro distribuível apurado por dia e memória de cálculo.
+* Valor correspondente aos 25% de recompra.
+* Transferências para a carteira e respectivos identificadores.
+* Saldo acumulado disponível e valores comprometidos.
+* Histórico de recompras: data, USDC gasto, BETTEX adquirido, preço médio e custos.
+* Destino dos tokens recomprados.
+
+Explique que os registros on-chain comprovam as movimentações; a conciliação e a auditoria sustentam a correção do lucro declarado.
+
+Não invente endereços, transações, auditorias ou contratos implantados. Identifique mecanismos ainda não implementados como previstos.
+
+6. Gráficos e diagramas
+
+Atualize todas as representações para mostrar:
+
+Lucro distribuível → 50% tesouraria / 25% stakers / 25% carteira de recompra.
+
+Mostre a carteira de recompra como componente separado, com saldo acumulado e uma etapa de “Autorização da administração” antes da execução da compra.
+
+Diferencie visualmente a destinação diária obrigatória da execução discricionária. Remova qualquer representação de compra automática diária.
+
+7. Destino dos tokens adquiridos
+
+Não formalize o staking perpétuo da tesouraria como decisão aprovada: ele foi discutido como alternativa à queima, mas sua adoção ainda não foi definida.
+
+Sinalize esse ponto como pendente de confirmação e identifique as referências existentes à queima para revisão. A regra de financiamento e autorização da recompra deve ficar documentada independentemente dessa definição.
+
+Revise a consistência entre todos os materiais e entregue um resumo dos arquivos e gráficos atualizados, além das pendências de implementação. Este pedido autoriza a atualização documental e visual, sem executar compras, movimentar recursos ou implantar contratos.

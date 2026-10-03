@@ -1,0 +1,20 @@
+# Gap research: MP 1.394/2026 current legal and litigation status
+
+**As-of cutoff:** 2026-10-03. This is a documentary status check, not a legal opinion.
+
+## Findings
+
+- The saved Planalto text identifies this as **Medida Provisória nº 1.394, de 25 de setembro de 2026**, signed under Constitution art. 62, and says it takes effect on publication (art. 30). It is therefore a temporary measure with force of law while congressional consideration is pending—not merely a proposal. The instrument prohibits fixed-odds lottery betting broadly in Brazil (art. 1), with transition/closure steps and separate deadlines: operators must make sites/apps unavailable 10 days after publication (art. 7); existing authorizations end 30 days after publication (art. 4). Distinguish the immediate statutory prohibition from those scheduled operational steps.
+- The official Congress page, whose result was calculated **2026-10-02 10:46**, lists the latest state as “MATÉRIA DESPACHADA,” a congressional deliberation period of 25 September–23 November, an amendment period through 13 October, and a mixed committee as the active stage. It shows no Câmara or Senate floor stage yet. The consulted page does not show passage or conversion into a permanent law.
+- STF’s official news report of **2026-09-28** confirms ADIs 8024 and 8027 challenge the MP and seek suspension, and says the MP was also raised in ADI 7721. It reports requests, not an order suspending the MP. Combined with the Congress page, the primary-source material located supports “in force/pending consideration; injunction requests reported; no suspension order established by these consulted sources.” It does **not** establish a comprehensive docket search through 3 October, so do not state categorically that no later order exists without checking the live dockets.
+- On these records, characterize provisions as **in force subject to litigation and the MP's congressional process**, while reporting transition dates. Avoid saying the Congress has enacted a permanent ban or that an injunction definitely does not exist.
+
+## Sources (title — URL — date — tier — evidence)
+
+1. **Medida Provisória nº 1.394, de 25 de setembro de 2026** — https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/mpv/mpv1394.htm — published 2026-09-25; source captured in `perfil-noticia-01.md` 2026-10-03 — **Tier 1, primary law** — arts. 1, 4, 7, 30 (saved lines 19–45, 89–95, 129–145, 572–584). Evidence path: `research/bettex-publico-oportunidade/sources/perfil-noticia-01.md`.
+2. **MPV 1394/2026 - Medidas Provisórias** — https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175871 — accessed 2026-10-03; status/result timestamp 2026-10-02 10:46 — **Tier 1, official Congress tracking** — “Situação Atual” with deadlines/state and stage markers; page states no Câmara/Senado floor texts published in this phase. Evidence path: this source note records the fetched page text; source snippet preserved in `gap-regra-snippets.md`.
+3. **Associações questionam no STF medida provisória que proíbe bets** — https://noticias.stf.jus.br/postsnoticias/associacoes-questionam-no-stf-medida-provisoria-que-proibe-bets/ — 2026-09-28 (updated same date) — **Tier 1, official court news, not a docket ruling** — reports ADI 8024/8027 suspension requests and the MP being raised in ADI 7721; does not report relief granted. Evidence path: fetched article text excerpt in `gap-regra-snippets.md`.
+
+## Remaining gap
+
+For affirmative confirmation of any order entered after STF’s 28 September news item and through the cutoff, inspect the official ADI 8024/8027 docket events and related requests in ADI 7721. This check found the official court report but did not verify the complete live dockets. No inference about BETTEX's identity, authorization, or product classification follows from the general statute.

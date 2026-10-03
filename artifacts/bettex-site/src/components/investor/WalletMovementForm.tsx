@@ -76,7 +76,7 @@ export function WalletMovementForm({ mode, wallet, onConfirm, onClose }: {
           : `Disponível na origem: ${formatMovementAmount(mode, available)}. Taxa do projeto: zero. Custos de rede e terceiros em uma transação real seriam variáveis e separados.`}
       </small>
       {error && <p id="investor-preview-transfer-error" className="investor-preview__transfer-error" role="alert">{error}</p>}
-      <p className="investor-preview__transfer-disclaimer">Simulação local. Nenhum BETTEX ou USDC é enviado de verdade; não há saque em reais ou para conta bancária.</p>
+      <p className="investor-preview__transfer-disclaimer">Simulação local. Nenhum BETTEX ou USDC é enviado de verdade; não há saque em moeda fiduciária ou para conta bancária.</p>
     </form>
   );
 }

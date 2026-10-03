@@ -1,5 +1,8 @@
-import { type ReactNode, useEffect, useState } from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
+import { type ReactNode, type CSSProperties, useEffect, useState } from 'react';
+import { PageMetadata } from '@/components/PageMetadata';
+import { LanguageSelector } from '@/components/LanguageSelector';
+import { useLocale, localizedUrl, t } from '@/lib/i18n';
+import { ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -7,6 +10,8 @@ import { Toaster } from '@/components/ui/toaster';
 import NotFound from '@/pages/not-found';
 import { Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
 import { DocumentationPage } from '@/pages/documentation';
+import { PitchPage } from '@/pages/pitch';
+import { DemoPage } from '@/pages/demo';
 import { TechnologySection } from '@/components/technology/TechnologySection';
 import { MarketsFloorSection } from '@/components/robot-floor/MarketsFloorSection';
 import { InvestorAppPreview } from '@/components/investor/InvestorAppPreview';
@@ -15,7 +20,9 @@ import { BettexMark } from '@/components/BettexMark';
 import { MarketMark, type MarketKind } from '@/components/hero/MarketMark';
 import '@/components/hero/MarketCard.css';
 import '@/components/SiteFooter.css';
+import '@/pages/pitch.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
+import { NewEconomySection } from '@/components/NewEconomySection';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { chapters } from '@/components/WhitepaperChapters';
@@ -24,6 +31,7 @@ const queryClient = new QueryClient();
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 const HOME_PATH = `${BASE_PATH}/`;
 const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
+const mainLinks = [{ label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'Demo', href: '/demo' }] as const;
 const legacyChapterIds = new Set<string>(chapters.map(({ id }) => id));
 const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
 type Market = {
@@ -62,28 +70,52 @@ function Logo({ pale = false }: { pale?: boolean }) {
   </a>;
 }
 
-function SiteHeader({ documentation = false }: { documentation?: boolean }) {
+function MainLinks({ className, onNavigate, uniform = false }: { className: string; onNavigate?: () => void; uniform?: boolean }) {
+  const [location] = useLocation();
+  return <>{mainLinks.map(({ label, href }) => {
+    const active = location === href || (href === '/documentacao' && ['/documentation', '/documentacion'].includes(location));
+    return <a key={href} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`${className} ${uniform ? `bg-[#2B59FF] text-white hover:bg-[#1E44D6] ${active ? 'ring-1 ring-inset ring-white/60' : ''}` : active ? 'bg-[#F2B632] text-[#070B1F]' : 'bg-[#2B59FF] text-white hover:bg-[#1E44D6]'}`}>{label}</a>;
+  })}</>;
+}
+
+function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [location] = useLocation();
+
+  useEffect(() => {
+    setMenuOpen(false);
+    if (!window.location.hash) window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [location]);
 
   return <header className="sticky top-0 z-40 border-b border-[#2B59FF]/30 bg-[#070B1F]/95 text-[#F4F1E8] backdrop-blur-lg">
-    <div className="page-wrap flex h-[72px] items-center justify-between gap-4">
+    <div className="page-wrap flex h-[72px] items-center justify-between gap-3">
       <Logo />
-      <nav className="hidden items-center gap-4 xl:flex" aria-label="Navegação principal">
-        {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#F2B632] xl:text-sm">{label}</a>)}
+      <nav className="hidden items-center gap-3 xl:ml-6 xl:flex" aria-label="Navegação principal">
+        {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#F2B632]">{label}</a>)}
       </nav>
-      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} className="tap hidden shrink-0 items-center gap-2 rounded-full bg-[#2B59FF] px-5 py-3 text-xs font-bold text-white hover:bg-[#1E44D6] sm:inline-flex">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
-      <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
+      <div className="ml-auto hidden items-center gap-2 xl:flex" aria-label="Páginas do projeto"><MainLinks className="tap inline-flex min-h-10 items-center rounded-full px-4 text-xs font-bold" /></div>
+      <div className="hidden xl:flex"><LanguageSelector /></div>
+      <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 max-sm:ml-auto xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
-    {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-72px)] flex-col gap-1 overflow-y-auto border-t border-[#2B59FF]/30 py-3 xl:hidden" aria-label="Navegação móvel">
+    {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-var(--site-header-h))] flex-col gap-1 overflow-y-auto border-t border-[#2B59FF]/30 py-3 xl:hidden" aria-label="Navegação móvel">
       {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#13204F]">{label}</a>)}
-      <a href={documentation ? HOME_PATH : DOCUMENTATION_PATH} onClick={() => setMenuOpen(false)} className="tap mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#2B59FF] px-5 py-3 text-xs font-bold text-white hover:bg-[#1E44D6] sm:hidden">{documentation ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}{documentation ? 'Voltar à página principal' : 'Documentação'}</a>
+      <section className="mt-2 border-t border-[#2B59FF]/30 pt-3" aria-label="Páginas do projeto">
+        <h2 className="mb-3 px-2 text-xs font-bold uppercase tracking-wider text-[#c5d2f1]">Páginas do projeto</h2>
+        <div className="grid gap-2 sm:grid-cols-3">
+          <MainLinks uniform onNavigate={() => setMenuOpen(false)} className="tap flex min-h-11 items-center justify-center rounded-lg px-3 py-2.5 text-[15px] font-bold" />
+        </div>
+      </section>
+      <div className="mt-2 flex min-h-14 items-center justify-between gap-3 border-t border-[#2B59FF]/30 px-2 pt-3">
+        <span className="text-[15px] font-bold">Selecionar idioma</span>
+        <LanguageSelector />
+      </div>
     </nav>}
   </header>;
 }
 
-function SiteFooter() {
+function SiteFooter({ compact = false }: { compact?: boolean }) {
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
-    <div className="site-footer__cta relative overflow-hidden bg-[#2B59FF]">
+    <div className={`site-footer__cta relative overflow-hidden bg-[#2B59FF] ${compact ? 'hidden' : ''}`}>
       <div aria-hidden="true" className="site-footer__tech">
         <svg className="site-footer__tech-svg" viewBox="0 0 800 560" preserveAspectRatio="xMaxYMax slice" focusable="false">
           <circle className="halo" cx="470" cy="330" r="190" />
@@ -131,6 +163,7 @@ function SiteFooter() {
         <div>
           <Logo pale />
            <p className="mt-5 max-w-[350px] text-sm leading-7 text-[#b4c5eb]">O token do projeto de inteligência artificial BETTEX.</p>
+          <LanguageSelector className="mt-6" />
         </div>
         <nav aria-label="Explorar o projeto">
           <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#5F86FF]">Explore</h3>
@@ -146,7 +179,9 @@ function SiteFooter() {
           <ul className="footer-links space-y-1 text-sm font-semibold">
             <li><a className="hover:text-[#5F86FF]" href={homeAnchor('historia')}>Por que BETTEX</a></li>
             <li><a className="hover:text-[#5F86FF]" href={homeAnchor('roadmap')}>Roadmap</a></li>
+            <li><a className="hover:text-[#5F86FF]" href={`${BASE_PATH}/pitch`}>Pitch</a></li>
             <li><a className="hover:text-[#5F86FF]" href={DOCUMENTATION_PATH}>Documentação</a></li>
+            <li><a className="hover:text-[#5F86FF]" href={`${BASE_PATH}/demo`}>Demo</a></li>
           </ul>
         </nav>
       </div>
@@ -158,11 +193,11 @@ function SiteFooter() {
   </footer>;
 }
 
-function SitePage({ children, documentation = false }: { children: ReactNode; documentation?: boolean }) {
-  return <div className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#F4F1E8]`}>
-    <SiteHeader documentation={documentation} />
+function SitePage({ children, documentation = false, compactFooter = false }: { children: ReactNode; documentation?: boolean; compactFooter?: boolean }) {
+  return <div style={{ '--pitch-label-1': JSON.stringify(t('Movimentação')), '--pitch-label-2': JSON.stringify(t('Tarifa')), '--pitch-label-3': JSON.stringify(t('Resultado')) } as CSSProperties} className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#F4F1E8]`}>
+    <SiteHeader />
     {children}
-    <SiteFooter />
+    <SiteFooter compact={compactFooter} />
   </div>;
 }
 
@@ -194,7 +229,7 @@ function Home() {
     const id = window.location.hash.slice(1);
     if (!id) return;
     if (id === 'documentacao' || legacyChapterIds.has(id)) {
-      window.location.replace(`${DOCUMENTATION_PATH}${id === 'documentacao' ? '' : `#${id}`}`);
+      window.location.replace(localizedUrl(`${DOCUMENTATION_PATH}${id === 'documentacao' ? '' : `#${id}`}`));
       return;
     }
     const scrollToSection = () => {
@@ -242,10 +277,19 @@ function Home() {
        </TechnologySection>
        <MarketsFloorSection />
        <InvestorAppPreview />
+       <NewEconomySection />
         <RoadmapSection />
 
     </main>
   </SitePage>;
+}
+
+function Pitch() {
+  return <SitePage compactFooter><PitchPage /></SitePage>;
+}
+
+function Demo() {
+  return <SitePage compactFooter><DemoPage /></SitePage>;
 }
 
 function Documentation() {
@@ -257,8 +301,10 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
   return <ErrorBoundary resetKey={location}>{children}</ErrorBoundary>;
 }
 
-function App() {
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={BASE_PATH}><RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/documentacao" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>;
+function App({ ssrPath }: { ssrPath?: string } = {}) {
+  const language = useLocale();
+  const base = `${BASE_PATH}${language === 'pt' ? '' : `/${language}`}`;
+  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/pitch" component={Pitch} /><Route path="/demo" component={Demo} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>;
 }
 
 export default App;

@@ -1,0 +1,38 @@
+import ts from 'typescript';
+import fs from 'node:fs';
+import path from 'node:path';
+const root = path.resolve(import.meta.dirname, '../src');
+const keys = new Set();
+const templates = new Set();
+const normalize = value => value.replace(/\s+/g, ' ').trim();
+function add(value) {
+  value = normalize(value);
+  if (!value || !/[A-Za-zÀ-ÿ]/.test(value) || /^https?:|^[/#@]\S|^\.[a-z]|^#[a-f\d]{3,8}$/i.test(value) || /^[a-z\d_-]+:[^\s]+$/i.test(value)) return;
+  if (!value.includes(' ') && /[/[\]{}=]/.test(value)) return;
+  if (/(?:bg-|text-|grid-|flex-|border-|rounded-|min-h-|max-w-|aria-|data-testid)/.test(value)) return;
+  keys.add(value);
+}
+function scan(file) {
+  if (file.endsWith('.json') && !file.includes('/locales/')) {
+    function visit(value) { if (typeof value === 'string') add(value); else if (value && typeof value === 'object') Object.values(value).forEach(visit); }
+    visit(JSON.parse(fs.readFileSync(file, 'utf8'))); return;
+  }
+  if (!/\.tsx?$/.test(file) || file.includes('/lib/localized/') || file.endsWith('/i18n.ts')) return;
+  const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
+  function visit(node) {
+    if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) return;
+    if (ts.isJsxElement(node) && ['style', 'script'].includes(node.openingElement.tagName.getText(source))) return;
+    if (ts.isJsxAttribute(node) && ['className','id','key','href','to','src','d','viewBox','style','align','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath'].includes(node.name.getText(source))) return;
+    if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node) || ts.isJsxText(node)) add(node.text);
+    if (ts.isTemplateExpression(node)) {
+      const text = node.head.text + node.templateSpans.map((span, i) => `{${i}}${span.literal.text}`).join('');
+      if (/[A-Za-zÀ-ÿ]/.test(text.replace(/\{\d+\}/g, ''))) { add(text); templates.add(normalize(text)); }
+    }
+    ts.forEachChild(node, visit);
+  }
+  visit(source);
+}
+function walk(dir) { for (const entry of fs.readdirSync(dir, { withFileTypes: true })) { const file = path.join(dir, entry.name); entry.isDirectory() ? walk(file) : scan(file); } }
+walk(root);
+fs.writeFileSync(path.join(root,'lib/locales/source.json'), JSON.stringify([...keys].sort(), null, 2) + '\n');
+console.log(`${keys.size} source messages; ${templates.size} dynamic templates; ${JSON.stringify([...keys]).length} characters`);

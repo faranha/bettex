@@ -87,7 +87,7 @@ export function ProjectModelSection() {
         .pm-bottom a svg { transition: transform .2s ease; }
         .pm-bottom a:hover svg { transform: translateX(3px); }
         @media (min-width: 768px) {
-          .pm-title span { white-space: nowrap; }
+          .pm-title span { white-space: normal; }
         }
         @media (min-width: 768px) and (max-width: 1100px) {
           .pm-title { max-width: calc(100% - 250px); font-size: clamp(2.1rem, 3.5vw, 2.6rem); letter-spacing: -.045em; }
@@ -166,8 +166,8 @@ export function ProjectModelSection() {
             <div className="pm-step">
               <span className="pm-index">01 / COMPRA</span>
               <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
-              <h3>Deposite reais e <em>compre BETTEX.</em></h3>
-              <p className="pm-detail">No aplicativo, você deposita reais por Pix e usa esse saldo para comprar tokens BETTEX.</p>
+              <h3>Deposite USDC e <em>compre BETTEX.</em></h3>
+              <p className="pm-detail">No aplicativo, você recebe USDC e usa esse saldo para comprar tokens BETTEX. A compra tem tarifa de US$ 2,50 em USDC, separada do preço e dos custos externos.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / SALDO BETTEX</span>
@@ -175,7 +175,7 @@ export function ProjectModelSection() {
                 <DepositIllustration />
               </div>
               <h3>O token <em>é seu.</em></h3>
-              <p className="pm-detail">Você é dono dos tokens, pode retirá-los do aplicativo quando quiser e participa automaticamente dos lucros do projeto.</p>
+              <p className="pm-detail">Você é dono dos tokens e participa automaticamente dos lucros elegíveis. Qualquer saída de BETTEX, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / ANÁLISE E OPERAÇÕES</span>
@@ -201,7 +201,7 @@ export function ProjectModelSection() {
                 <ArrowDownRight className="pm-profit-arrow" size={31} strokeWidth={2.2} />
                 <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
               </div>
-              <h3>Quando houver lucro, crédito <em>em reais.</em></h3>
+              <h3>Quando houver lucro elegível, crédito <em>em USDC.</em></h3>
               <div className="pm-outcomes">
                 <div className="pm-outcome pm-outcome--profit"><h4>Participação no lucro</h4><p>De acordo com as <a href={`${import.meta.env.BASE_URL}documentacao#documentacao-arquitetura`}>regras documentadas</a>.</p></div>
               </div>

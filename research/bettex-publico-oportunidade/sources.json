@@ -1,0 +1,234 @@
+[
+  {
+    "key": "raiox",
+    "title": "ANBIMA/Datafolha — Raio X, 9ª edição",
+    "url": "https://www.anbima.com.br/data/files/BE/05/B0/55/1EABD91008E6DAD9F82BA2A8/Raio-X-do-Investidor-9-edicao.pdf",
+    "date": "2026-04; coleta 2025-11",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-motivacoes-04-anbima-raiox-9a-edicao-2026.md"
+  },
+  {
+    "key": "senado",
+    "title": "DataSenado — Panorama Político 2024",
+    "url": "https://www12.senado.leg.br/institucional/datasenado/materias/relatorios-de-pesquisa/golpes-digitais-atingem-24-dos-brasileiros-aponta-21a-edicao-da-pesquisa-panorama-politico",
+    "date": "2024; coleta junho; baseline antigo",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-escala-03-datasenado.md"
+  },
+  {
+    "key": "spa",
+    "title": "SPA — panorama 2025",
+    "url": "https://www.gov.br/fazenda/pt-br/composicao/orgaos/secretaria-de-premios-e-apostas/apresentacoes/defeso-2deg-panorama-semestral-de-apostas-de-quota-fixa-jan-2026.pdf",
+    "date": "2026-01; dados 2025",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-escala-02-spa-panorama.md"
+  },
+  {
+    "key": "bc2024",
+    "title": "BCB — análise técnica EE119",
+    "url": "https://www.bcb.gov.br/conteudo/relatorioinflacao/EstudosEspeciais/EE119_Analise_tecnica_sobre_o_mercado_de_apostas_online_no_Brasil_e_o_perfil_dos_apostadores.pdf",
+    "date": "2024-09; baseline antigo/preliminar",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-escala-01-bcb-EE119.md"
+  },
+  {
+    "key": "qual",
+    "title": "ANBIMA — estudo qualitativo de apostas",
+    "url": "https://www.anbima.com.br/pt_br/noticias/papel-das-apostas-online-na-vida-financeira-da-populacao-e-tema-de-estudo-inedito-da-anbima.htm",
+    "date": "2026-09-02; pesquisa 2025",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-motivacoes-01-anbima-raiox-2026.md"
+  },
+  {
+    "key": "cndl",
+    "title": "CNDL/SPC — pesquisa sobre bets",
+    "url": "https://site.cndl.org.br/brasil-chega-a-marca-de-50-milhoes-de-apostadores-em-bets-revela-pesquisa-cndlspc-brasil/",
+    "date": "2026-09-25; coleta maio/junho",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-motivacoes-03-cndl-spc.md"
+  },
+  {
+    "key": "cetic",
+    "title": "Cetic.br — TIC Domicílios 2025",
+    "url": "https://www.cetic.br/media/analises/tic_domicilios_2025_principais_resultados.pdf",
+    "date": "2025-12-09; coleta março/agosto",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-acesso-01.md"
+  },
+  {
+    "key": "ilo",
+    "title": "OIT — atualização de IA generativa e empregos",
+    "url": "https://www.ilo.org/sites/default/files/2025-05/Research%20brief_GenAI%202025%20Update.pdf",
+    "date": "2025-05",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-trabalho-01-ilo-2025-brief.md"
+  },
+  {
+    "key": "imf",
+    "title": "FMI — Gen-AI e futuro do trabalho",
+    "url": "https://www.imf.org/-/media/files/publications/sdn/2024/english/sdnea2024001.pdf",
+    "date": "2024-01; estudo modelado antigo",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-trabalho-03-imf.md"
+  },
+  {
+    "key": "lac",
+    "title": "OIT/Banco Mundial — WP121",
+    "url": "https://www.ilo.org/sites/default/files/2024-07/WP121_web.pdf",
+    "date": "2024-07; bases nacionais 2014–2022",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-trabalho-02-ilo-worldbank-lac.md"
+  },
+  {
+    "key": "ipea",
+    "title": "IPEA CTS — IA e futuro do mercado de trabalho",
+    "url": "https://www.ipea.gov.br/cts/pt/central-de-conteudo/todas-as-publicacoes/publicacoes/538-ia-e-o-futuro-do-mercado-de-trabalho",
+    "date": "2026-04-15; síntese de capítulo",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-trabalho-05-ipea-ia-trabalho.md"
+  },
+  {
+    "key": "cid",
+    "title": "BCB — Cidadania Financeira",
+    "url": "https://www.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/RCF/relatorio_de_cidadania_financeira_2025.pdf",
+    "date": "2025; recuperação parcial",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-acesso-03.md"
+  },
+  {
+    "key": "pix",
+    "title": "BCB — Pix em números",
+    "url": "https://www.bcb.gov.br/estabilidadefinanceira/estatisticaspix",
+    "date": "consultado 2026-10-03",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-noticia-10.md"
+  },
+  {
+    "key": "mp",
+    "title": "MP 1.394/2026 — texto da Presidência",
+    "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/mpv/mpv1394.htm",
+    "date": "2026-09-25",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-noticia-01.md"
+  },
+  {
+    "key": "congresso",
+    "title": "Congresso — MPV 1394/2026",
+    "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175871",
+    "date": "status observado 2026-10-02; evidência em notas de gap",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/gap-regra-snippets.md"
+  },
+  {
+    "key": "presidencia",
+    "title": "Presidência — registro legislativo MP1394",
+    "url": "https://legislacao.presidencia.gov.br/atos/?tipo=MPV&numero=1394&ano=2026&ato=13fUTTq1EejpWTe89",
+    "date": "2026-09-25; consultado 2026-10-03",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-noticia-07.md"
+  },
+  {
+    "key": "stf",
+    "title": "STF — questionamento da MP sobre bets",
+    "url": "https://noticias.stf.jus.br/postsnoticias/associacoes-questionam-no-stf-medida-provisoria-que-proibe-bets/",
+    "date": "2026-09-28; notícia de pedidos, não decisão",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/gap-regra-snippets.md"
+  },
+  {
+    "key": "senadomp",
+    "title": "Agência Senado — cronograma de encerramento",
+    "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/mp-proibe-bets-e-determina-encerramento-das-operacoes-em-30-dias",
+    "date": "2026-09-28",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-noticia-04.md"
+  },
+  {
+    "key": "gov",
+    "title": "Agência Gov — medida e cronograma",
+    "url": "https://agenciagov.ebc.com.br/noticias/202609/presidente-lula-assina-medida-provisoria-que-proibe-as-bets-no-brasil",
+    "date": "2026-09-25; resumo governamental",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-noticia-02.md"
+  },
+  {
+    "key": "cnn",
+    "title": "CNN — declaração de Durigan sobre R$600 milhões/dia",
+    "url": "https://www.cnnbrasil.com.br/economia/money/macroeconomia/proibicao-das-bets-interrompeu-movimentacao-diaria-de-r-600-milhoes/",
+    "date": "2026-10-02",
+    "tier": 2,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-noticia-09.md"
+  },
+  {
+    "key": "valor",
+    "title": "Valor — declaração e fluxo Pix",
+    "url": "https://valor.globo.com/brasil/noticia/2026/10/02/pix-para-bets-cai-e-ja-migra-para-outros-setores-afirma-durigan.ghtml",
+    "date": "2026-10-02; snippet apenas",
+    "tier": 2,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/gap-regra-snippets.md"
+  },
+  {
+    "key": "contestacao",
+    "title": "InfoMoney/Estadão — contestação da ANJL",
+    "url": "https://www.infomoney.com.br/brasil/bets-associacao-rebate-governo-e-diz-que-apostas-migraram-para-mercado-clandestino/",
+    "date": "2026-10-02; associação interessada",
+    "tier": 2,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-noticia-08.md"
+  },
+  {
+    "key": "investidores",
+    "title": "ANBIMA — divulgação Raio X 2026",
+    "url": "https://www.anbima.com.br/pt_br/noticias/anbima-lanca-a-nona-edicao-do-raio-x-do-investidor-brasileiro-36-da-populacao-aplica-em-produtos-financeiros.htm",
+    "date": "2026-04-23",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-acesso-02.md"
+  },
+  {
+    "key": "saude",
+    "title": "Ministério da Saúde — riscos e atendimento SUS",
+    "url": "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/campanha-do-ministerio-da-saude-orienta-sobre-riscos-das-apostas-online-e-atendimento-em-saude-mental-no-sus",
+    "date": "2026-07-26; informação de serviço",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-motivacoes-06-ministerio-saude-campanha.md"
+  },
+  {
+    "key": "ibge",
+    "title": "IBGE — rendimento médio do trabalho",
+    "url": "http://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/46579-rendimento-medio-da-populacao-brasileira-atinge-r-3-367-em-2025",
+    "date": "2026-05-08; referência 2025; snippet",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-escala-snippets.md"
+  },
+  {
+    "key": "senadopress",
+    "title": "Agência Senado — divulgação da pesquisa",
+    "url": "https://www12.senado.leg.br/noticias/materias/2024/10/01/mais-de-22-milhoes-de-pessoas-apostaram-nas-bets-no-ultimo-mes-revela-datasenado",
+    "date": "2024-10-01; antiga; snippet",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/gap-escala-snippets.md"
+  },
+  {
+    "key": "radiosenado",
+    "title": "Rádio Senado — tramitação da MP",
+    "url": "https://www12.senado.leg.br/radio/1/noticia/2026/09/28/medida-provisoria-que-proibe-bets-no-pais-ja-esta-no-congresso-nacional",
+    "date": "2026-09-28",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-noticia-05.md"
+  },
+  {
+    "key": "lacsummary",
+    "title": "OIT — resumo regional WP121",
+    "url": "https://www.ilo.org/publications/buffer-or-bottleneck-employment-exposure-generative-ai-and-digital-divide",
+    "date": "2024; mesma pesquisa de WP121",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/perfil-trabalho-06-ilo-lac-publication.md"
+  },
+  {
+    "key": "spaanual",
+    "title": "SPA — balanço do mercado regulado em 2025",
+    "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/janeiro/em-um-ano-de-mercado-regulado-spa-registra-mais-de-25-mil-sites-ilegais-bloqueados",
+    "date": "2026-01-23; dados de 2025; trecho de busca",
+    "tier": 1,
+    "evidencePath": "research/bettex-publico-oportunidade/sources/gap-escala-snippets.md"
+  }
+]

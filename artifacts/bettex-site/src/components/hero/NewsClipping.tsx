@@ -1,7 +1,9 @@
 import { BETTING_NEWS_URL } from './bettingNewsSource';
+import { useLocale } from '@/lib/i18n';
 import './NewsClipping.css';
 
 export function NewsClipping({ className = '', showSource = false }: { className?: string; showSource?: boolean }) {
+  const language = useLocale();
   return (
     <figure className={`news-clip ${className}`} data-testid="news-clipping">
       <span className="news-clip__tape news-clip__tape--a" aria-hidden="true" />
@@ -10,7 +12,7 @@ export function NewsClipping({ className = '', showSource = false }: { className
         <span className="news-clip__tag">APOSTAS</span>
         <img
           className="news-clip__img"
-          src={`${import.meta.env.BASE_URL}noticia-ia-fundo.webp`}
+          src={`${import.meta.env.BASE_URL}noticia-ia-fundo${language === 'pt' ? '' : `-${language}`}.webp`}
           alt="Recorte de notícia com a manchete: Gigante americana das bets usou IA para encontrar apostadores mais propensos a perder"
           width={720}
           height={367}

@@ -29,7 +29,7 @@ export const movements: Record<MovementKind, MovementDefinition> = {
   },
   withdraw: {
     title: 'Retirar BETTEX do staking',
-    description: 'Devolve BETTEX da Carteira BETTEX à carteira pessoal e encerra sua elegibilidade. Não movimenta lucros em USDC.',
+    description: 'Retirar BETTEX, mesmo parcialmente, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado. USDC já recebido não é retirado.',
     currency: 'BETTEX', source: 'bettex', confirm: 'Confirmar retirada simulada',
   },
   bettexReaisTransfer: {
@@ -44,7 +44,7 @@ export const movements: Record<MovementKind, MovementDefinition> = {
   },
   externalWithdraw: {
     title: 'Retirar BETTEX da carteira pessoal',
-    description: 'Simula uma saída de BETTEX da carteira pessoal, separada do saque de lucros em USDC.',
+    description: 'A saída de BETTEX cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado, mesmo quando parcial. Sacar USDC é uma operação distinta.',
     currency: 'BETTEX', source: 'personal', confirm: 'Confirmar retirada simulada',
   },
   bettexExternalWithdraw: {

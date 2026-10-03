@@ -13,7 +13,7 @@ const LOSS = '#D8524F';
 
 function Chart({ days, label }: { days: PerformanceDay[]; label: string }) {
   const data = days.map((d) => ({ label: d.date, value: netCents(d) / 100 }));
-  const summary = `${label}, resultado líquido por dia em reais: ${days.map((d) => `${d.date} ${signed(netCents(d))}`).join('; ')}.`;
+  const summary = `${label}, resultado líquido por dia em moeda fiduciária: ${days.map((d) => `${d.date} ${signed(netCents(d))}`).join('; ')}.`;
   return (
     <figure className="pp-chart">
       <div className="pp-chart__plot" role="img" aria-label={summary}>

@@ -8,3 +8,9 @@ A própria tesouraria tem regras que podem evoluir, com sugestões de um agente 
 **Why:** O usuário definiu que a liderança da Fundação aprova as mudanças; a IA sugere, não altera diretamente as regras.
 
 **How to apply:** Preservar a fila de sugestões, aprovação antes da execução e vigência somente após a execução. Não confundir aprovação de alterações de regras com aprovação humana de cada investimento. Não apresentar o fluxo como já implementado.
+
+O criador pediu “regras claras multisig pra movimentacoes seguindo liberdade operacional com boas praticas de mercado” na área da empresa.
+
+**Why:** O controle de custódia deve coexistir com liberdade operacional, não transformar cada investimento ou pagamento já autorizado em uma nova aprovação humana.
+
+**How to apply:** Separar aprovação da política, custódia e execução por mandato limitado. Não apresentar uma regra administrativa como bloqueio técnico já implementado; distinguir o multisig institucional da autocustódia pessoal.

@@ -25,6 +25,7 @@ export type DemoTransfer = {
 export type DemoStakeChange = {
   at: number;
   allocatedTokensCents: number;
+  cancelsCycleCredits?: boolean;
 };
 
 export type WalletDemoState = {
@@ -214,7 +215,8 @@ function isValidState(value: unknown): value is WalletDemoState {
 function isValidStakeChange(value: unknown): value is DemoStakeChange {
   if (!value || typeof value !== 'object') return false;
   const change = value as Partial<DemoStakeChange>;
-  return isSafeAmount(change.at) && isWholeTokens(change.allocatedTokensCents);
+  return isSafeAmount(change.at) && isWholeTokens(change.allocatedTokensCents)
+    && (change.cancelsCycleCredits === undefined || typeof change.cancelsCycleCredits === 'boolean');
 }
 
 function legacyState(value: unknown): { state: WalletDemoState; releasedPending: boolean } | null {
@@ -463,6 +465,7 @@ function withStakeChange(
   state: WalletDemoState,
   allocatedTokensCents: number,
   now: number,
+  cancelsCycleCredits = false,
 ): WalletDemoState {
   const latest = state.stakeChanges[state.stakeChanges.length - 1];
   if (state.stakeChanges.length >= 100_000) {
@@ -473,7 +476,7 @@ function withStakeChange(
   }
   return {
     ...state,
-    stakeChanges: [...state.stakeChanges, { at: now, allocatedTokensCents }],
+    stakeChanges: [...state.stakeChanges, { at: now, allocatedTokensCents, ...(cancelsCycleCredits ? { cancelsCycleCredits: true } : {}) }],
   };
 }
 
@@ -498,7 +501,7 @@ export function requestTransfer(
     personalTokensCents: state.personalTokensCents + (isDeposit ? -amountCents : amountCents),
     allocatedTokensCents: state.allocatedTokensCents + (isDeposit ? amountCents : -amountCents),
   };
-  updated = withStakeChange(updated, updated.allocatedTokensCents, now);
+  updated = withStakeChange(updated, updated.allocatedTokensCents, now, !isDeposit);
   return addMovement(updated, {
     kind,
     amountCents,
@@ -534,7 +537,13 @@ export function withdrawFromWallet(
   validateTokenAmount(amountCents);
   if (kind !== 'externalWithdraw') throw new Error('Tipo de saque inválido.');
   if (amountCents > state.personalTokensCents) throw new Error('Saldo BETTEX insuficiente na carteira pessoal.');
-  return addMovement({ ...state, personalTokensCents: state.personalTokensCents - amountCents }, {
+  const updated = withStakeChange(
+    { ...state, personalTokensCents: state.personalTokensCents - amountCents },
+    state.allocatedTokensCents,
+    now,
+    true,
+  );
+  return addMovement(updated, {
     kind,
     amountCents,
     feeCents: TRANSFER_FEE_CENTS,
@@ -613,7 +622,19 @@ function weightedPersonalTokenMilliseconds(
   changes: DemoStakeChange[],
   periodStartAt: number,
   periodEndAt: number,
+  paymentAt: number,
 ): bigint {
+  let previousTokensCents = 0;
+  let lastWithdrawalAt = periodStartAt;
+  for (const change of changes) {
+    if (change.at > Math.max(paymentAt, periodEndAt - 1)) break;
+    if ((change.cancelsCycleCredits || change.allocatedTokensCents < previousTokensCents)
+      && change.at >= periodStartAt) lastWithdrawalAt = change.at;
+    previousTokensCents = change.allocatedTokensCents;
+  }
+  // A withdrawal after closing but before payment cancels the entire unpaid cycle.
+  if (lastWithdrawalAt >= periodEndAt) return 0n;
+  periodStartAt = lastWithdrawalAt;
   let tokens = 0n;
   let cursor = periodStartAt;
   let tokenMilliseconds = 0n;
@@ -635,11 +656,13 @@ function roundedWeightedDistributionCents(
   state: WalletDemoState,
   periodStartAt: number,
   periodEndAt: number,
+  paymentAt: number,
 ): number {
   const personalTokenMilliseconds = weightedPersonalTokenMilliseconds(
     state.stakeChanges,
     periodStartAt,
     periodEndAt,
+    paymentAt,
   );
   if (personalTokenMilliseconds === 0n) return 0;
   const duration = BigInt(periodEndAt - periodStartAt);
@@ -662,7 +685,7 @@ export function simulateMonthlyDistribution(state: WalletDemoState, now: number)
     throw new Error('Não foi possível determinar o próximo período UTC da demonstração.');
   }
   const periodIndex = state.distributionPeriods + 1;
-  const amountCents = roundedWeightedDistributionCents(state, periodStartAt, periodEndAt);
+  const amountCents = roundedWeightedDistributionCents(state, periodStartAt, periodEndAt, now);
   const allocatedUsdcCents = state.allocatedUsdcCents + amountCents;
   const totalUsdcDistributedCents = state.totalUsdcDistributedCents + amountCents;
   if (!Number.isSafeInteger(allocatedUsdcCents) || !Number.isSafeInteger(totalUsdcDistributedCents)) {

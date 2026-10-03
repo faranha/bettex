@@ -9,13 +9,14 @@ export default function NotFound() {
           <div className="flex mb-4 gap-2">
             <AlertCircle className="h-8 w-8 text-red-500" />
             <h1 className="text-2xl font-bold text-gray-900">
-              404 Page Not Found
+              Página não encontrada
             </h1>
           </div>
 
           <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
+            O endereço não existe ou foi alterado.
           </p>
+          <a href={import.meta.env.BASE_URL} className="mt-4 inline-flex min-h-11 items-center font-semibold text-[#2B59FF] underline">Voltar ao início</a>
         </CardContent>
       </Card>
     </div>

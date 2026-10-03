@@ -38,7 +38,7 @@ export function DistributionSummary({ wallet, onSimulate, notice }: {
         <span>Já retirado na simulação: <strong>{formatUsdc(withdrawn)}</strong></span>
       </div>
       <div className="investor-preview__distribution-foot">
-        <p>Exemplo de apuração: resultado líquido realizado de {formatUsdc(DISTRIBUTION_NET_RESULT_CENTS)}; metade ({formatUsdc(DISTRIBUTABLE_CENTS)}) é dividida pelo tempo em que cada pessoa manteve BETTEX elegíveis durante o mês UTC. Sem tokens elegíveis em todo o mês, o <strong>crédito do período é zero</strong>, mesmo com lucro da BETTEX nos mercados. Retirar BETTEX encerra a elegibilidade futura, mas preserva a participação dos dias anteriores. Os filtros do gráfico não alteram estes valores.</p>
+        <p>Exemplo de apuração: resultado líquido realizado de {formatUsdc(DISTRIBUTION_NET_RESULT_CENTS)}; metade ({formatUsdc(DISTRIBUTABLE_CENTS)}) é dividida pelo tempo em que cada pessoa manteve BETTEX elegíveis durante o mês UTC. Sem tokens elegíveis em todo o mês, o <strong>crédito do período é zero</strong>, mesmo com lucro da BETTEX nos mercados. Qualquer retirada de BETTEX, mesmo parcial, cancela os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado. Os filtros do gráfico não alteram estes valores.</p>
         <button type="button" onClick={onSimulate} disabled={wallet.distributionPeriods >= MAX_DISTRIBUTION_PERIODS}
           data-testid="button-simular-fechamento">Simular próximo fechamento mensal</button>
       </div>

@@ -1,0 +1,29 @@
+{
+  "origin": "https://bettex.replit.app",
+  "pages": {
+    "/": {
+      "title": "BETTEX | IA, investimentos e participação nos resultados",
+      "description": "Use IA contra o sistema. BETTEX é o token do nosso agente de inteligência artificial, que analisa e opera em esportes, previsões, cassinos, ações e cripto.",
+      "image": "home",
+      "index": true
+    },
+    "/pitch": {
+      "title": "Pitch BETTEX | Fundador, estratégia e modelo de negócio",
+      "description": "Conheça Fred Azevedo, a tese da BETTEX, a aquisição inicial no Brasil e o modelo de negócio proposto. Confira premissas, etapas de validação e riscos do projeto.",
+      "image": "pitch",
+      "index": true
+    },
+    "/documentacao": {
+      "title": "Documentação BETTEX | Token, tesouraria, regras e riscos",
+      "description": "Consulte a documentação da BETTEX: token, tesouraria, lucros elegíveis, serviços em USDC e plano de negócios. Entenda as hipóteses, regras e riscos do projeto.",
+      "image": "documentation",
+      "index": true
+    },
+    "/demo": {
+      "title": "Demo BETTEX | Em breve",
+      "description": "A demonstração BETTEX está em preparação. Nenhuma operação financeira ou demonstração funcional está disponível nesta página.",
+      "image": "demo",
+      "index": false
+    }
+  }
+}

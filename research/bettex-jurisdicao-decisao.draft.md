@@ -1,4 +1,6 @@
 # Onde constituir a BETTEX
+
+**Rascunho histórico:** as premissas econômicas deste texto foram substituídas. Não aplicar taxas 1%/2% em BETTEX ou participação manual. Consultar a [base atual da entidade](bettex-base-da-entidade.md) para tarifas US$ 2,50 em USDC, equipe, remuneração e controles. A pesquisa original não valida as alterações posteriores nem representa escolha de país.
 ## Decisão comparativa para uma única sociedade privada
 
 **Data de corte: 3 de outubro de 2026.** Foram comparadas 11 jurisdições. Este relatório utiliza __SOURCE_COUNT__ fontes distintas, com referências numeradas e evidências salvas. Não houve contato com autoridades ou prestadores em nome da BETTEX, abertura de empresa, captação ou alteração do aplicativo.

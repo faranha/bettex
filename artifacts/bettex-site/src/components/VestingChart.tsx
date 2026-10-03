@@ -36,6 +36,8 @@ export function VestingChart() {
             <XAxis dataKey="month" type="number" domain={[0, 36]} ticks={[0, 6, 12, 18, 24, 30, 36]} tickFormatter={value => `${value}`} tick={{ fill: '#13204F', fontSize: 12 }} />
             <YAxis type="number" domain={[0, 1_000_000_000]} ticks={[0, 250_000_000, 500_000_000, 750_000_000, 1_000_000_000]} width={66} tickFormatter={value => value === 1_000_000_000 ? '1 bi' : value === 0 ? '0' : `${value / 1_000_000} mi`} tick={{ fill: '#13204F', fontSize: 12 }} />
             <Tooltip
+              position={{ x: 0, y: 0 }}
+              wrapperStyle={{ maxWidth: '100%', pointerEvents: 'none' }}
               labelFormatter={label => Number(label) === 0 ? 'Antes da abertura da venda pública' : `Mês ${label}`}
               formatter={(value, name) => [`${formatTokenCount(Number(value))} BETTEX`, name]}
               contentStyle={{ backgroundColor: '#F4F1E8', border: '1px solid #d9d3c0', borderRadius: 0, fontSize: 12, color: '#13204F' }}
@@ -44,7 +46,7 @@ export function VestingChart() {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-      <p className="whitepaper__vesting-chart-note">Eixo horizontal: meses desde a abertura da venda pública. Eixo vertical: BETTEX liberados acumulados. Mês 0 = antes da primeira liberação. A tabela abaixo contém as quantidades exatas; liberação não significa venda realizada. Taxas são transferências de tokens à Fundação, não redução da oferta. Gráfico e tabela mostram a liberação prevista, não o saldo disponível de cada titular.</p>
+      <p className="whitepaper__vesting-chart-note">Eixo horizontal: meses desde a abertura da venda pública. Eixo vertical: BETTEX liberados acumulados. Mês 0 = antes da primeira liberação. A tabela abaixo contém as quantidades exatas; liberação não significa venda realizada. Taxas são pagas em USDC, sem queima ou redução da oferta BETTEX. Gráfico e tabela mostram a liberação prevista, não o saldo disponível de cada titular.</p>
     </figure>
   );
 }

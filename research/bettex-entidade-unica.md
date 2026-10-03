@@ -1,12 +1,14 @@
 # BETTEX — proposta inicial de estruturação da entidade única
 
+**Premissas históricas, não regras vigentes:** referências abaixo a taxas de 1%/2%, cobrança em BETTEX ou cobertura fiscal adicional pertencem ao modelo anterior. A política atual usa três tarifas brutas de US$ 2,50 pagas em USDC, caixa operacional separado e a equipe descrita na [base vigente](bettex-base-da-entidade.md). Adesão ao projeto é facultativa; participação de BETTEX disponível na carteira oficial é automática. Este memorando preserva a pesquisa original; suas conclusões jurídicas não constituem validação das alterações posteriores.
+
 **Data da consulta:** 3 de outubro de 2026.
 
 **Histórico de estruturação:** a base vigente está consolidada em [BETTEX — base da entidade e preparação do registro](bettex-base-da-entidade.md). Os critérios abaixo que rejeitam licenças refletem uma etapa anterior e foram substituídos: licenças posteriores são aceitáveis; a prioridade atual é estruturar a entidade, reunir o cadastro e adaptar à legislação. Nenhum país foi escolhido definitivamente.
 
 **Natureza do documento:** memorando preparatório para estruturação e consulta jurídica. Não é estatuto, contrato definitivo, parecer jurídico, registro de empresa ou autorização de emissão. Não está pronto para assinatura. Nenhuma captação, incorporação ou contato externo foi realizado.
 
-**Escopo histórico desta consulta:** o criador então rejeitava licença financeira e aprovação da emissão; esse limite foi substituído pela aceitação de licenciamento posterior. Permanecem a sociedade comercial única, a negociabilidade do token, o staking facultativo e os direitos financeiros aprovados, sem inventar assinatura de software. As comparações seguintes são histórico, não a decisão atual de jurisdição. Nenhuma empresa, licença, emissão ou captação será solicitada/executada por iniciativa própria.
+**Escopo histórico desta consulta:** o criador então rejeitava licença financeira e aprovação da emissão; esse limite foi substituído pela aceitação de licenciamento posterior. Permanecem a sociedade comercial única, a negociabilidade do token, a adesão facultativa ao projeto e os direitos financeiros aprovados, sem inventar assinatura de software. A participação dos tokens disponíveis na carteira oficial é automática. As comparações seguintes são histórico, não a decisão atual de jurisdição. Nenhuma empresa, licença, emissão ou captação será solicitada/executada por iniciativa própria.
 
 ## 0. Modelo simples proposto para análise jurídica
 

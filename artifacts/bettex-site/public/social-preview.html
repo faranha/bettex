@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>BETTEX — imagem de compartilhamento</title>
+  <link rel="icon" type="image/svg+xml" href="bettex-mark-gamblefi.svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap');
+    *{box-sizing:border-box}body{margin:0;width:1200px;height:630px;overflow:hidden;background:#070b1f;color:#f4f1e8;font-family:'DM Sans',sans-serif}
+    .card{height:630px;padding:48px 64px;position:relative;background:radial-gradient(ellipse at 93% 30%,#1b3482 0,transparent 60%)}
+    .orbit{position:absolute;right:-115px;top:-145px;width:720px;height:720px;border:1px solid #4261b9;border-radius:50%;opacity:.35;pointer-events:none}
+    .orbit::after{content:'';position:absolute;inset:65px;border:1px solid #6688ff;border-radius:50%}
+    .brand{display:flex;gap:16px;align-items:center;font-size:36px;letter-spacing:-1px;font-weight:800;position:relative}.brand img{width:52px;height:52px}
+    .label{margin:30px 0 20px;color:#8aa5ff;font-size:16px;font-weight:700;letter-spacing:3px;text-transform:uppercase;position:relative}
+    h1{max-width:1030px;margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:66px;line-height:1.08;letter-spacing:-2.5px;font-weight:800;position:relative}
+    h2{margin:24px 0 0;color:#f2b632;font-size:38px;line-height:1.2;letter-spacing:-.8px;max-width:1020px;position:relative}
+    .foot{position:absolute;left:64px;right:64px;bottom:39px;border-top:1px solid #4f64994f;padding-top:22px;display:flex;justify-content:space-between;gap:25px;font-size:17px;color:#b4c2e1}
+    .foot b{color:#f2b632;font-weight:600}
+  </style>
+</head>
+<body><div class="card"><div class="orbit"></div><div class="brand"><img src="bettex-mark-gamblefi.svg" alt="">BETTEX</div><p class="label" id="label"></p><h1 id="title"></h1><h2 id="question"></h2><div class="foot"><span id="f1"></span><b id="f2"></b></div></div>
+<script>
+const T={
+pt:{home:['Tese do fundador','A IA vai substituir os trabalhadores.','E de onde virá sua renda?'],pitch:['Apresentação do projeto','Pitch BETTEX','Fundador, estratégia e modelo de negócio.'],documentation:['Documentação técnica','Entenda o modelo da BETTEX.','Token, tesouraria, regras e riscos.'],demo:['Demonstração','Demo BETTEX','Em breve.'],f:['Conheça a proposta, as regras e os riscos.','Projeto em validação · Sem renda garantida']},
+en:{home:['Founder thesis','AI will replace workers.','So where will your income come from?'],pitch:['Project presentation','BETTEX Pitch','Founder, strategy and business model.'],documentation:['Technical documentation','Understand the BETTEX model.','Token, treasury, rules and risks.'],demo:['Demonstration','BETTEX Demo','Coming soon.'],f:['Explore the proposal, the rules and the risks.','Project under validation · No guaranteed income']},
+es:{home:['Tesis del fundador','La IA va a reemplazar a los trabajadores.','¿De dónde vendrá tu ingreso?'],pitch:['Presentación del proyecto','Pitch BETTEX','Fundador, estrategia y modelo de negocio.'],documentation:['Documentación técnica','Entiende el modelo de BETTEX.','Token, tesorería, reglas y riesgos.'],demo:['Demostración','Demo BETTEX','Próximamente.'],f:['Conoce la propuesta, las reglas y los riesgos.','Proyecto en validación · Sin ingreso garantizado']}};
+const q=new URLSearchParams(location.search),l=T[q.get('lang')]?q.get('lang'):'pt',d=T[l];
+document.documentElement.lang={pt:'pt-BR',en:'en',es:'es'}[l];
+document.title={pt:'BETTEX — imagem de compartilhamento',en:'BETTEX — sharing image',es:'BETTEX — imagen para compartir'}[l];
+const page=d[q.get('page')]||d.home;
+['label','title','question'].forEach((id,i)=>document.getElementById(id).textContent=page[i]);
+f1.textContent=d.f[0];f2.textContent=d.f[1];
+</script></body></html>

@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { ChapterContent, chapters } from './WhitepaperChapters';
+import { ExpandControls } from './ReadingDisclosure';
+import { t } from '@/lib/i18n';
 import './WhitepaperSection.css';
 
-const OFFSET = 88;
-
 function scrollOffset() {
+  const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 73;
   const mobileIndexHeight = window.matchMedia('(max-width: 768px)').matches
     ? document.querySelector('.whitepaper__aside')?.getBoundingClientRect().height ?? 0
     : 0;
-  return OFFSET + mobileIndexHeight;
+  return headerHeight + (mobileIndexHeight ? 20 + mobileIndexHeight : 0) + 16;
 }
 
 function prefersReduced() {
@@ -18,12 +19,18 @@ function prefersReduced() {
 function scrollToId(id: string, smooth: boolean) {
   const el = document.getElementById(id);
   if (!el) return false;
+  // Deep links retain access to requirements inside closed technical sections.
+  if (el instanceof HTMLDetailsElement) el.open = true;
+  for (let parent = el.parentElement; parent; parent = parent.parentElement) {
+    if (parent instanceof HTMLDetailsElement) parent.open = true;
+  }
   const top = el.getBoundingClientRect().top + window.scrollY - scrollOffset();
   window.scrollTo({ top: Math.max(0, top), behavior: smooth && !prefersReduced() ? 'smooth' : 'instant' });
   return true;
 }
 
 export function WhitepaperSection() {
+  const documentationTitle = t('Documentação técnica.').split(' ');
   const [active, setActive] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -48,6 +55,18 @@ export function WhitepaperSection() {
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [menuOpen]);
+
+  useEffect(() => {
+    // Label every data cell with its column header so tables can stack on narrow screens.
+    document.querySelectorAll('.whitepaper table').forEach(table => {
+      const heads = Array.from(table.querySelectorAll('thead th')).map(th => (th.textContent ?? '').replace(/\s+/g, ' ').trim());
+      table.querySelectorAll('tr').forEach(tr => {
+        Array.from(tr.children).forEach((cell, i) => {
+          if (cell.tagName === 'TD' && heads[i]) cell.setAttribute('data-label', heads[i]);
+        });
+      });
+    });
+  }, []);
 
   useEffect(() => {
     const go = (smooth: boolean) => {
@@ -94,10 +113,10 @@ export function WhitepaperSection() {
       <header className="whitepaper__hero page-wrap">
         <div>
           <p className="whitepaper__eyebrow"><span aria-hidden="true" /> v1 · ARQUITETURA, ECONOMIA E RISCO</p>
-          <h1 id="whitepaper-title">Documentação<br /><em>técnica.</em></h1>
-          <p className="whitepaper__hero-lede">A v1 da documentação apresenta a arquitetura e as regras do modelo inicial da BETTEX: agente multimercado, operação 100% cripto em USDC, visão de valor local e participação automática. Novas versões ampliarão o detalhamento técnico e documentarão a evolução da plataforma.</p>
+          <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
+          <p className="whitepaper__hero-lede">A BETTEX é um fundo de investimentos descentralizado, gerido por IA, criado para ampliar o acesso de pessoas comuns a diferentes mercados e à participação nos lucros, sem precisar operar por conta própria.</p>
         </div>
-        <div className="whitepaper__hero-note"><span>VERSÃO INICIAL · 100% CRIPTO</span><p>A BETTEX é um projeto internacional. O saldo efetivo e as movimentações são em USDC; a interface mostra seu valor estimado na moeda da pessoa, como reais. O saque continua em USDC. BETTEX é o token de participação. A entrada fiat usa on-ramp externo; conversão e pagamento em moeda local pertencem à proposta futura do BETTEX Bank.</p></div>
+        <div className="whitepaper__hero-note"><span>VERSÃO INICIAL · 100% CRIPTO</span><p>A BETTEX é um projeto internacional. O saldo efetivo e as movimentações previstos são em USDC; a interface mostra seu valor estimado na moeda fiduciária da pessoa. O saque interno continua em USDC. BETTEX é o token de participação.</p><p>A entrada em moeda fiduciária depende de um provedor externo de conversão habilitado. Conversão de saldos USDC e pagamentos em moeda fiduciária por serviços próprios da BETTEX pertencem à proposta futura do BETTEX Bank, sujeita a validação específica.</p></div>
       </header>
       <div className="whitepaper__body page-wrap" id="documentacao-indice">
         <aside className="whitepaper__aside" aria-label="Índice da documentação">
@@ -130,6 +149,7 @@ export function WhitepaperSection() {
           </div>
         </aside>
         <div className="whitepaper__content">
+          <ExpandControls scope=".whitepaper__content" label="Expandir ou recolher toda a documentação" />
           {chapters.map((chapter, index) => {
             const number = String(index + 1).padStart(2, '0');
             return (

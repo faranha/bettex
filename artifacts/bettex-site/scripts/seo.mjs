@@ -1,0 +1,120 @@
+import { existsSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+
+export const seo = JSON.parse(readFileSync(new URL('../src/lib/site-seo.json', import.meta.url), 'utf8'));
+const messages = JSON.parse(readFileSync(new URL('../src/lib/locales/translations.json', import.meta.url), 'utf8'));
+export const languages = ['pt', 'en', 'es'];
+export function localizedPath(page, language) {
+  if (language === 'pt') return page;
+  return `/${language}${page === '/' ? '/' : page === '/documentacao' ? language === 'en' ? '/documentation' : '/documentacion' : page}`;
+}
+export const routes = Object.fromEntries(languages.flatMap(language => Object.entries(seo.pages).map(([page, data]) => [localizedPath(page, language), { ...data, page, language }])));
+export function routeData(pathname) {
+  const path = pathname === '/en' || pathname === '/es' ? `${pathname}/` : pathname.replace(/\/+$/, '') || '/';
+  return routes[pathname] ?? routes[path];
+}
+export const htmlFile = route => route === '/' ? 'index.html' : `${route.replace(/^\//, '').replace(/\/$/, '')}.html`;
+function translated(text, language) {
+  if (language === 'pt') return text;
+  if (!messages[text]?.[language]) throw new Error(`Missing ${language} SEO translation: ${text}`);
+  return messages[text][language];
+}
+const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+export function metadata(path) {
+  const record = routeData(path);
+  const language = record?.language ?? (/^\/en(?:\/|$)/.test(path) ? 'en' : /^\/es(?:\/|$)/.test(path) ? 'es' : 'pt');
+  const fallback = { pt: ['Página não encontrada | BETTEX','A página solicitada não foi encontrada.'], en: ['Page not found | BETTEX','The requested page could not be found.'], es: ['Página no encontrada | BETTEX','No se encontró la página solicitada.'] };
+  const page = record ? { ...record, title: translated(record.title, language), description: translated(record.description, language) } : { title: fallback[language][0], description: fallback[language][1], image: 'home', index: false };
+  if (record) path = localizedPath(record.page, language);
+  const url = `${seo.origin}${path}`;
+  const image = `${seo.origin}/social/${page.image}${language === 'pt' ? '' : `-${language}`}.jpg`;
+  const meta = (key, value, property = false) => `<meta ${property ? 'property' : 'name'}="${key}" content="${escape(value)}">`;
+  const alternates = record ? languages.map(lang => `<link rel="alternate" hreflang="${lang === 'pt' ? 'pt-BR' : lang}" href="${seo.origin}${localizedPath(record.page, lang)}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${seo.origin}${record.page}">` : '';
+  const schema = { '@context': 'https://schema.org', '@type': 'WebPage', name: page.title, description: page.description, url, inLanguage: language === 'pt' ? 'pt-BR' : language, isPartOf: { '@type': 'WebSite', name: 'BETTEX', url: `${seo.origin}${localizedPath('/', language)}` } };
+  return `<title>${escape(page.title)}</title>
+<link rel="canonical" href="${escape(url)}">
+${alternates}
+${meta('description', page.description)}
+${meta('robots', page.index ? 'index, follow' : 'noindex, follow')}
+${meta('og:title', page.title, true)}
+${meta('og:description', page.description, true)}
+${meta('og:url', url, true)}
+${meta('og:type', 'website', true)}
+${meta('og:site_name', 'BETTEX', true)}
+${meta('og:locale', { pt: 'pt_BR', en: 'en_US', es: 'es_ES' }[language], true)}
+${meta('og:image', image, true)}
+${meta('og:image:width', '1200', true)}
+${meta('og:image:height', '630', true)}
+${meta('og:image:type', 'image/jpeg', true)}
+${meta('og:image:alt', page.title, true)}
+${meta('twitter:card', 'summary_large_image')}
+${meta('twitter:title', page.title)}
+${meta('twitter:description', page.description)}
+${meta('twitter:image', image)}
+${meta('twitter:image:alt', page.title)}
+<script id="site-jsonld" type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>`;
+}
+export function withMetadata(html, path) {
+  return html.replace(/<!-- SEO:START -->[\s\S]*?<!-- SEO:END -->/, `<!-- SEO:START -->${metadata(path)}<!-- SEO:END -->`);
+}
+export function discovery() {
+  const urls = Object.entries(routes).filter(([, page]) => page.index).map(([path, page]) => `<url><loc>${escape(`${seo.origin}${path}`)}</loc>${languages.map(lang => `<xhtml:link rel="alternate" hreflang="${lang === 'pt' ? 'pt-BR' : lang}" href="${seo.origin}${localizedPath(page.page, lang)}"/>`).join('')}</url>`).join('\n');
+  return {
+    robots: `User-agent: *\nAllow: /\nDisallow: /social-preview.html\nSitemap: ${seo.origin}/sitemap.xml\n`,
+    sitemap: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}</urlset>\n`,
+  };
+}
+export function seoPlugin(base) {
+  const prefix = base.replace(/\/$/, '');
+  function redirectTrailingSlash(req, res) {
+    const [pathname, query] = (req.url ?? '').split('?');
+    const route = pathname.replace(prefix, '').replace(/\/+$/, '') || '/';
+    if (pathname.endsWith('/') && route !== '/' && routes[route]) {
+      res.statusCode = 301;
+      res.setHeader('Location', `${prefix}${route}${query ? `?${query}` : ''}`);
+      res.end();
+      return true;
+    }
+    return false;
+  }
+  return {
+    name: 'bettex-seo',
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html, context) {
+        const path = (context.path.replace(prefix, '').replace(/\/+$/, '') || '/');
+        return withMetadata(html, path);
+      },
+    },
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (redirectTrailingSlash(req, res)) return;
+        const path = (req.url ?? '').split('?')[0].replace(prefix, '');
+        if (path !== '/robots.txt' && path !== '/sitemap.xml') return next();
+        const files = discovery();
+        res.setHeader('Content-Type', path === '/robots.txt' ? 'text/plain; charset=utf-8' : 'application/xml; charset=utf-8');
+        res.end(path === '/robots.txt' ? files.robots : files.sitemap);
+      });
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (redirectTrailingSlash(req, res)) return;
+        let route;
+        try { route = decodeURIComponent(new URL(req.url, 'http://localhost').pathname).replace(prefix, '') || '/'; }
+        catch { res.statusCode = 400; res.end('Endereço inválido'); return; }
+        const root = path.resolve(server.config.root, server.config.build.outDir);
+        if (routeData(route)) {
+          res.setHeader('Content-Type', 'text/html; charset=utf-8');
+          const data = routeData(route);
+          res.end(readFileSync(path.join(root, htmlFile(localizedPath(data.page, data.language)))));
+          return;
+        }
+        const requested = path.resolve(root, `.${route}`);
+        if (requested.startsWith(`${root}${path.sep}`) && existsSync(requested)) return next();
+        res.statusCode = 404;
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        res.end(readFileSync(path.join(root, '404.html')));
+      });
+    },
+  };
+}

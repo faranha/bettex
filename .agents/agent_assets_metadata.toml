@@ -173,14 +173,14 @@ content_type = "text/markdown"
 id = "VGpMe6RIty5B5t2hq9iKD"
 uri = "file://artifacts/bettex-site/public/downloads/bettex-taxas-fundacao.xlsx"
 type = "table"
-title = "BETTEX — projeção do primeiro ano"
-description = "Meta de 100 mil holders e 5 mil ativos diários; cenário separado de 10 mil ativos, equivalente a 1% da projeção de 1 milhão de usuários. Aquisição única, crescimento linear editável, recompras, saques diários e cobertura tributária."
+title = "BETTEX — planilha revisada"
+description = "Dez abas com custos, provisões, equilíbrio, rampa e financiamento. Sensibilidades unificadas e controles adicionais de coerência das premissas."
 logical_id = "cfda3f16-fd31-48a1-b680-a81cfde3fdf6"
-content_hash = "sha256:57c4d977d4c6bf03c64c1374547ca3087ac9ce8ebc03acb0304a52ff9eda4eef"
-size = 19028
-mtime_ms = 1791011392651
-storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/cfda3f16-fd31-48a1-b680-a81cfde3fdf6/0fe7d112-cd45-461e-9084-8365147c7d9c"
-storage_version_token = "1791011494558924"
+content_hash = "sha256:ed672f7440fed02cce0076e277beccb7b132260c1a1ff2f0c47c4ab820cb4a76"
+size = 35939
+mtime_ms = 1791031188209
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/cfda3f16-fd31-48a1-b680-a81cfde3fdf6/625f6cff-7f80-4929-8b76-a2349b7f78d2"
+storage_version_token = "1791031270908080"
 content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
 [[outputs]]
@@ -238,3 +238,101 @@ mtime_ms = 1791019192507
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/d719c909-a7ab-4f31-bd7d-0493134a6033/dc8810f8-bb68-4315-ab41-469ce7ce82f5"
 storage_version_token = "1791019204760815"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "bt8S3ak2PGq-gU9zsYAf0"
+uri = "file://research/bettex-financiamento-e-caixa.md"
+type = "text"
+title = "BETTEX — receitas, caixa e financiamento da entidade"
+description = "Empresa privada administrada pelo fundador: taxas em USDC, projeções, impostos, salários, financiamento e condições propostas para antecipação de lucros."
+logical_id = "3db407d9-648a-474e-b2ee-d5e079590495"
+content_hash = "sha256:208b20a6abab5bd82b97b8b46d7e9cc711819ef0633156dd974343bd19d2332a"
+size = 17298
+mtime_ms = 1791022992276
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/3db407d9-648a-474e-b2ee-d5e079590495/6c4a39b3-348f-4b82-a4c3-1bd27d8b4a0c"
+storage_version_token = "1791023236800598"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "YChGM85rf7n4Q5-1uwdg3"
+uri = "file://research/bettex-caixa-operacional.xlsx"
+type = "table"
+title = "BETTEX — plano financeiro e lançamento"
+description = "Planilha editável com dez abas: fundador sem salário, remunerações propostas, orçamento detalhado, rampa de 12 meses e financiamento operacional. Valores não contratados são hipóteses para feedback."
+logical_id = "19e24fbc-5c9d-4367-b8c1-666dc16e757e"
+content_hash = "sha256:d067633c5e3cc96c0bf3eeab92d9145a6b97d2b7de96d9f8d319b55ff3357900"
+size = 33614
+mtime_ms = 1791028966200
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/19e24fbc-5c9d-4367-b8c1-666dc16e757e/26101d3b-9292-475d-aca3-fda621089744"
+storage_version_token = "1791029343934142"
+content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+[[outputs]]
+id = "g0b7uIRwVeVEThA6Zglmk"
+uri = "file://research/bettex-operacao-territorial/notes.md"
+type = "text"
+title = "BETTEX — pesquisa de territórios"
+description = "Escopo e critérios para distinguir oferta do token, gestão da tesouraria e execução das estratégias."
+logical_id = "622136f7-0b3e-470b-a99a-1a4961be771a"
+content_hash = "sha256:4d42c0ff3abe4768b4f968dde61ed17d86f0bb39ec051bc69806da99f716f920"
+size = 2170
+mtime_ms = 1791031565488
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/622136f7-0b3e-470b-a99a-1a4961be771a/6d91276d-2394-4b20-a8a1-2904f9ddd9e8"
+storage_version_token = "1791031598276094"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "MN-1KBy27o7bhQ2UhW5E2"
+uri = "file://research/bettex-operacao-territorial.md"
+type = "text"
+title = "BETTEX — mercados de oferta e operação"
+description = "Triagem de dez jurisdições e do quadro UE/EEE, com 31 fontes, rotas condicionadas, impedimentos e lacunas. Separa oferta do token, gestão e execução; não é autorização jurídica de lançamento."
+logical_id = "59f25ee8-9222-4f0b-a4ae-728dcb5248b1"
+content_hash = "sha256:d8f5e1b7ce569cd2dbf193a955d8d5e6f0571d6ec396134a2ddff11a9f7381c0"
+size = 31583
+mtime_ms = 1791032438108
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/59f25ee8-9222-4f0b-a4ae-728dcb5248b1/cd90f1f8-b74b-4edf-a4e6-38291b231da0"
+storage_version_token = "1791032491068030"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "sbd7JM8mYQt7YyABCmYoo"
+uri = "file://research/bettex-publico-oportunidade/notes.md"
+type = "text"
+title = "Pesquisa — público brasileiro e IA"
+description = "Perfil econômico, necessidades, notícia do Banco Central e fundamento da oportunidade BETTEX."
+logical_id = "c8b97cf7-46d9-4d8d-8a5e-c7a68e820d7e"
+content_hash = "sha256:323ca975c7203f91dd0940812df7ff798893af3c9fc42b77a24c2417e9ccf15d"
+size = 2050
+mtime_ms = 1791032727559
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/c8b97cf7-46d9-4d8d-8a5e-c7a68e820d7e/68376487-7244-4d68-aefe-3a97eca34b47"
+storage_version_token = "1791032788253954"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "F9hb9pU535TB38XOIZ4kw"
+uri = "file://research/bettex-publico-oportunidade.md"
+type = "text"
+title = "BETTEX — público brasileiro e oportunidade na nova economia"
+description = "Pesquisa profunda com 29 fontes: renda, motivações, escala, custos de US$10/15, transformação do trabalho pela IA e condicionantes regulatórios."
+logical_id = "fea9a5cb-ad31-488a-8383-1bc6ac67ffae"
+content_hash = "sha256:aaa0ca7764115fe0188992457f3919f2387d19488fa023bb0a9d7c8ce93a0e31"
+size = 32542
+mtime_ms = 1791033548276
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/fea9a5cb-ad31-488a-8383-1bc6ac67ffae/701c21b5-2c5e-47bf-8480-64deae186ec6"
+storage_version_token = "1791033685471618"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "8m6rSnTsKBzJZNS1Gaq_p"
+uri = "file://artifacts/bettex-site/public/social/home.jpg"
+type = "image"
+title = "Capa de compartilhamento BETTEX"
+description = "Imagem de1200×630 para a homepage. Pitch, documentação e Demo também têm capas próprias configuradas."
+logical_id = "15631624-e07b-478a-9742-abd1961d45dc"
+content_hash = "sha256:020d06370e3646c22ddff79cdb6f2dd1bd030960b210cc7c768bce4252f05c6d"
+size = 48821
+mtime_ms = 1791037045507
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/15631624-e07b-478a-9742-abd1961d45dc/68671c5b-7798-47c3-95c8-538bae9f7a48"
+storage_version_token = "1791038174490695"
+content_type = "image/jpeg"

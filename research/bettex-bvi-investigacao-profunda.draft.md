@@ -1,5 +1,7 @@
 # BVI frente às ambições completas da BETTEX
 
+**Rascunho histórico:** premissas de taxas 1%/2% em BETTEX e participação manual foram substituídas. A [base atual da entidade](bettex-base-da-entidade.md) reúne tarifas US$ 2,50 em USDC, participação automática na carteira oficial, equipe e controles. Este rascunho não valida alterações posteriores nem confirma jurisdição.
+
 **Data da pesquisa:** 3 de outubro de 2026  
 **Profundidade:** aprofundada — cinco frentes e duas verificações complementares  
 **Fontes citadas:** __SOURCE_COUNT__  

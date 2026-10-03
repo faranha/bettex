@@ -1,4 +1,6 @@
 # Onde constituir a BETTEX
+
+**Premissas históricas:** este relatório foi elaborado sob o modelo anterior de taxas e estrutura. As referências a 1%/2% em BETTEX não são a política vigente: as três tarifas atuais são US$ 2,50 em USDC. A [base atual da entidade](bettex-base-da-entidade.md) reúne equipe, remuneração e controles; as recomendações abaixo não são escolha de país nem validação jurídica das alterações posteriores. Adesão é facultativa; participação dos BETTEX disponíveis na carteira oficial é automática.
 ## Decisão comparativa para uma única sociedade privada
 
 **Data de corte: 3 de outubro de 2026.** Foram comparadas 11 jurisdições. Este relatório utiliza 63 fontes distintas, com referências numeradas e evidências salvas. Não houve contato com autoridades ou prestadores em nome da BETTEX, abertura de empresa, captação ou alteração do aplicativo.
