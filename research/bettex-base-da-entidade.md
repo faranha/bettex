@@ -8,7 +8,7 @@ Este é um documento preparatório, não um estatuto pronto para assinatura, par
 
 ## 1. Base empresarial
 
-A BETTEX será estruturada com **uma única pessoa jurídica comercial**, responsável pelo projeto, pelos direitos sobre o token, pelo aplicativo, pela tesouraria institucional, pela execução das estratégias e pelas obrigações perante os participantes.
+A BETTEX será estruturada com **uma única pessoa jurídica comercial privada**, responsável pelo projeto, pelos direitos sobre o token, pelo aplicativo, pela tesouraria institucional, pela execução das estratégias e pelas obrigações perante os participantes.
 
 “Fundação BETTEX” é a denominação histórica da organização do projeto; não determina uma forma jurídica de fundação nem cria uma segunda pessoa jurídica. O nome empresarial e o sufixo legal serão formalizados no país escolhido. A definição econômica do projeto como fundo de investimentos não significa que ele já seja um fundo juridicamente constituído ou reconhecido.
 
@@ -28,7 +28,9 @@ Prestadores independentes — advogado, contador, auditor, intermediário, distr
 
 ## 2. Sócios, titulares de tokens e liderança são posições distintas
 
-Os sócios possuem os direitos societários que constarem dos atos constitutivos. Administradores e representantes exercem os poderes formalmente atribuídos. Beneficiários finais devem ser identificados conforme a legislação aplicável. Esta etapa não atribui nomes, participações societárias, cargos ou poderes de assinatura sem decisão específica.
+Os sócios possuem os direitos societários que constarem dos atos constitutivos. **O administrador da entidade é o fundador**, conforme decisão do criador. Representação, poderes de assinatura e eventuais funções profissionais adicionais serão formalizados conforme a legislação, sem substituir essa decisão por iniciativa própria. Beneficiários finais devem ser identificados conforme a legislação aplicável. Esta etapa não atribui participações societárias nem presume que o fundador seja o único sócio.
+
+**A empresa será privada.** A distribuição pública do token não é, por si só, abertura do capital social; os titulares não recebem ações. Essa característica não é declaração de dispensa de registros ou autorizações aplicáveis ao produto.
 
 O titular de BETTEX é proprietário das suas unidades e tem os direitos contratuais do programa. **Não recebe ações da empresa, voto societário, fração da tesouraria ou direito automático ao resgate do capital/recompra.** Os percentuais de alocação de tokens não são percentuais de propriedade da empresa.
 
@@ -57,13 +59,13 @@ São separações internas de uma entidade, não empresas distintas. Carteiras s
 - Lucro elegível: **max(0, min(R, P − B))**. R é o resultado realizado líquido acumulado ainda não considerado em splits anteriores, após custos e compensação de perdas; P é o patrimônio líquido atualizado, incluindo posições abertas e descontando obrigações; B acompanha aportes efetivos e lucros já considerados no split, descontando pagamentos aos participantes. Não distribuir aportes ou ganhos não realizados como lucro.
 - Split do lucro elegível autorizado: **75% tesouraria e 25% participantes elegíveis**, com rateio por token-tempo e validações de cobertura/liquidez. A reserva defensiva mínima inicial é **50% do patrimônio líquido atualizado da tesouraria**, não 50% do lucro nem um valor fixo da captação.
 - Retenção temporária por insuficiência de reservas/liquidez ou ausência de pesos elegíveis não cria crédito individual por si só. Após o split autorizado, os créditos individuais em USDC são obrigações exigíveis conforme as regras e não se tornam discricionários.
-- Compra no pool do projeto pelo aplicativo: **1%**; saque de USDC do pool de staking pelo aplicativo: **2%**, segundo a cobertura fiscal e os fluxos aprovados. Taxas pagas em BETTEX à carteira institucional; não queimar nem incluir essa receita no split da tesouraria. Outros percentuais sugeridos não são tratados como aprovados.
+- **Atualização de política pelo criador:** substituir taxas percentuais de compra/saque por valores fixos denominados em dólar. O último valor proposto é **US$ 2,50 para compra e US$ 2,50 para saque**; também haverá cobrança de envio de BETTEX para outras carteiras pelo fluxo aplicável. Escopo do saque, valor do envio e moeda de cobrança serão confirmados antes de fechar o quadro financeiro. Não presumir duas cobranças sobre a mesma transferência nem implementar cobrança real nesta etapa.
 
 Este resumo não substitui o detalhamento econômico vigente. Nenhuma regra foi alterada nesta estruturação.
 
 ## 4. Governo da entidade e responsabilidade pela IA
 
-A liderança humana aprova políticas, limites e alterações de regras. Sugestões da IA entram em fila e só são executadas depois da aprovação prevista. A IA não é sócia, administradora legal ou pessoa jurídica e não elimina a responsabilidade institucional.
+A liderança humana, sob administração do fundador, aprova políticas, limites e alterações de regras. Sugestões da IA entram em fila e só são executadas depois da aprovação prevista. A IA não é sócia, administradora legal ou pessoa jurídica e não elimina a responsabilidade institucional.
 
 Como organização documental, propõe-se separar três funções: **aprovação**, **execução** e **conciliação/verificação**. Elas podem existir na mesma entidade; quantidade de pessoas, acumulação de funções, assinaturas, quóruns e alçadas serão formalizadas conforme a legislação e a decisão empresarial.
 
