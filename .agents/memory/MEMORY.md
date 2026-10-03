@@ -6,8 +6,23 @@
 - [Content source precedence](content-source-precedence.md) — approved product rules take precedence over stale whitepaper economics in the Git baseline.
 - [Revisable hero artwork](revisable-hero-artwork.md) — replace the whole diagram layer when changing coverage; partial overlays can look disconnected.
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
-- [Regras da tesouraria](treasury-rule-evolution.md) — sugestões da IA entram em fila e só são executadas após aprovação da liderança da Fundação.
+- [Regras da tesouraria](treasury-rule-evolution.md) — humanos aprovam políticas; mandatos limitados preservam liberdade operacional sem aprovação de cada operação.
 - [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
 - [Identidade econômica](bettex-economic-identity.md) — o criador define a BETTEX, em última análise, como um fundo de investimentos.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
+- [Custo mensal](operating-cost-target.md) — criador estima US$ 50–75 mil para operar; US$ 50 mil é a referência equilibrada de sustentabilidade.
+- [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
+- [Remuneração da gestão](management-remuneration.md) — criador quer remuneração sobre lucro além dos serviços; salário do fundador condicionado a equilíbrio e payback.
+- [Âncoras e navegação fixa](navigation-anchor-offsets.md) — mudanças de altura precisam considerar rolagem JavaScript e índice fixo, não apenas scroll-margin.
+- [SEO e roteamento estático](seo-static-routing.md) — validar HTTP inicial por rota; reescritas genéricas podem apagar o HTML pré-renderizado.
+- [Overlays mobile](mobile-chart-overlays.md) — largura e posição dos tooltips precisam caber no gráfico, inclusive após expandir sanfonas.
+- [Render-time localization](render-time-localization.md) — exclude app JSX runtimes from Vite prebundling; fragments and cloned elements need rendered-text audits.
+- [Large localization edits](large-localization-edits.md) — failed large saves can leave source ahead of translations; prepare and save separately, then audit coverage.
+- [Elegibilidade ao lucro](profit-entitlement-rules.md) — cada rodada paga ou não paga, sem retorno ou acumulação; saídas cancelam direitos e frações vão à tesouraria.
+- [Demo visual](demo-prototype-scope.md) — planejar antes de reconstruir; protótipo visual baseado nas regras, sem banco de dados ou operações reais.
+- [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
+- [Mercados no mobile](mobile-market-content.md) — não repetir os quatro cartões de agentes abaixo da animação; a apresentação anterior já cobre esse conteúdo.
+- [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
+- [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
+- [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.

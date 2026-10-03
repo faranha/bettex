@@ -1,5 +1,7 @@
 # BVI frente às ambições completas da BETTEX
 
+**Premissas históricas:** esta pesquisa antecede a consolidação das taxas fixas e da equipe. Referências a 1%/2%, pagamento de taxas em BETTEX e participação manual não são regras atuais. A [base vigente](bettex-base-da-entidade.md) usa tarifas US$ 2,50 em USDC e participação automática do BETTEX disponível na carteira oficial, com adesão facultativa ao projeto. Preservar esta pesquisa como histórico, sem tratar suas conclusões como validação jurídica das alterações posteriores ou escolha definitiva de BVI.
+
 **Data da pesquisa:** 3 de outubro de 2026  
 **Profundidade:** aprofundada — cinco frentes e duas verificações complementares  
 **Fontes citadas:** 33  

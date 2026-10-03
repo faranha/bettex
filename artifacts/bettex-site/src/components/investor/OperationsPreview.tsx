@@ -44,14 +44,14 @@ export function OperationsPreview() {
       </details>
       <details className="ops__card">
         <summary>
-          <span className="ops__top"><b>Meme alavancada</b><em data-s="open">Aberta</em></span>
-          <span className="ops__sum">BX Exchange · MEME/BRL compra 2x · capital R$ 250,00</span>
+          <span className="ops__top"><b>Memecoin à vista</b><em data-s="open">Aberta</em></span>
+          <span className="ops__sum">BX Exchange · compra à vista · capital estimado R$ 250,00</span>
           <span className="ops__more">Ver posição</span>
         </summary>
         <div className="ops__det">
           <p><span>Entrada</span><b>R$ 0,50</b></p>
-          <p><span>Valor da posição</span><b>R$ 500,00</b></p>
-          <p><span>Quantidade</span><b>1.000 MEME</b></p>
+          <p><span>Valor da posição</span><b>R$ 250,00</b></p>
+          <p><span>Quantidade</span><b>500 MEME</b></p>
           <small>Aguardando o fechamento da posição.</small>
         </div>
       </details>
@@ -69,6 +69,7 @@ export function OperationsPreview() {
           <small>Aguardando o resultado do mercado.</small>
         </div>
       </details>
+      <small>Exemplos ilustrativos. Valores em moeda fiduciária são estimativas de exibição; o saldo financeiro e a liquidação do projeto são em USDC.</small>
     </div>
   );
 }

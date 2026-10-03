@@ -1,0 +1,250 @@
+[
+  {
+    "key": "cvm40",
+    "title": "Parecer de Orientação CVM 40",
+    "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/pareceres-orientacao/anexos/Pare040.pdf",
+    "date": "2022-10-11",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/core-cvm40.md"
+  },
+  {
+    "key": "brlaw",
+    "title": "Lei 6.385/1976 — texto consolidado",
+    "url": "https://www.planalto.gov.br/ccivil_03/leis/l6385.htm",
+    "date": "1976; consolidação consultada em 2026",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-brasil-10.md"
+  },
+  {
+    "key": "br32",
+    "title": "Parecer CVM 32 — uso da internet em ofertas",
+    "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/pareceres-orientacao/anexos/pare032.pdf",
+    "date": "2005-09-30; orientação antiga",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-brasil-07.md"
+  },
+  {
+    "key": "br33",
+    "title": "Parecer CVM 33 — ofertas estrangeiras",
+    "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/pareceres-orientacao/anexos/pare033.pdf",
+    "date": "2005-09-30; orientação antiga",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-brasil-08.md"
+  },
+  {
+    "key": "br160",
+    "title": "Resolução CVM 160 — ofertas públicas",
+    "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/100/resol160consolid.pdf",
+    "date": "2022; consolidação com alterações até 2025",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-brasil-09.md"
+  },
+  {
+    "key": "br88",
+    "title": "Resolução CVM 88 — crowdfunding",
+    "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/001/resol088consolid.pdf",
+    "date": "2022; texto consolidado",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-brasil-13.md"
+  },
+  {
+    "key": "br232",
+    "title": "Resolução CVM 232 — FÁCIL",
+    "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/resolucoes/anexos/200/resol232consolid.pdf",
+    "date": "2025; vigência 2026-03-16",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-brasil-22.md"
+  },
+  {
+    "key": "esma",
+    "title": "ESMA — classificação de criptoativos como instrumentos financeiros",
+    "url": "https://www.esma.europa.eu/sites/default/files/2025-03/ESMA75453128700-1323_Guidelines_on_the_conditions_and_criteria_for_the_qualification_of_CAs_as_FIs.pdf",
+    "date": "2025-03",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-europa-01.md"
+  },
+  {
+    "key": "aifmd",
+    "title": "Diretiva 2011/61/UE — AIFMD",
+    "url": "https://eur-lex.europa.eu/eli/dir/2011/61/oj",
+    "date": "2011; consultar alterações e transposição nacional",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-europa-13.md"
+  },
+  {
+    "key": "aifmd2",
+    "title": "Diretiva (UE) 2024/927 — alterações AIFMD",
+    "url": "https://eur-lex.europa.eu/eli/dir/2024/927/oj/eng",
+    "date": "2024; transposição/aplicação em geral 2026-04-16, disposições diferidas",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-europa-08.md"
+  },
+  {
+    "key": "portugal",
+    "title": "Portugal — Regime da Gestão de Ativos, art.164 e seguintes, espelho PGDL",
+    "url": "https://pgdlisboa.pt/leis/lei_mostra_articulado.php?artigo_id=3635A0164&ficha=1&nid=3635&nversao&pagina=1&so_miolo=S&tabela=leis",
+    "date": "2023; espelho indica alterações até 2026-08-26",
+    "tier": 2,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-europa-22.md"
+  },
+  {
+    "key": "uk21",
+    "title": "FSMA — seção 21: promoções financeiras",
+    "url": "https://www.legislation.gov.uk/ukpga/2000/8/section/21",
+    "date": "2000; texto consultado 2026",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-europa-23.md"
+  },
+  {
+    "key": "uk235",
+    "title": "FSMA — seção 235: collective investment schemes",
+    "url": "https://www.legislation.gov.uk/ukpga/2000/8/section/235",
+    "date": "2000; texto consultado 2026",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-europa-09.md"
+  },
+  {
+    "key": "fca",
+    "title": "FCA — cryptoasset firms marketing to UK consumers",
+    "url": "https://www.fca.org.uk/firms/cryptoassets/marketing-uk-consumers",
+    "date": "regime promocional desde 2023-10-08",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-europa-05.md"
+  },
+  {
+    "key": "ukfuture",
+    "title": "FCA — novo regime de criptoativos",
+    "url": "https://www.fca.org.uk/firms/new-regime-cryptoasset-regulation",
+    "date": "atualizada 2026-09-30; início indicado 2027-10-25",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-europa-20.md"
+  },
+  {
+    "key": "serbia",
+    "title": "Sérvia — Law on Digital Assets, tradução oficial não vinculante",
+    "url": "https://www.nbs.rs/export/sites/NBS_site/documents-eng/propisi/zakoni/digitalna_imovina_e.pdf",
+    "date": "2020; aplicação desde 2021-06-29",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-europa-15.md"
+  },
+  {
+    "key": "sec",
+    "title": "SEC — interpretação dos criptoativos e contratos de investimento",
+    "url": "https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets",
+    "date": "2026-03-17",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-americas-01.md"
+  },
+  {
+    "key": "regs",
+    "title": "17 CFR 230.903 — Regulation S",
+    "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-230/section-230.903",
+    "date": "texto atual em 2026-10-01",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-americas-02.md"
+  },
+  {
+    "key": "usproposal",
+    "title": "CRS — SEC Proposes Regulation Crypto Assets",
+    "url": "https://www.congress.gov/crs_external_products/LSB/PDF/LSB11480/LSB11480.1.pdf",
+    "date": "2026-09-10; descreve proposta de 2026-08-18",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/us-crs-proposal.md"
+  },
+  {
+    "key": "canada",
+    "title": "CSA Staff Notice 81-336 — fundos públicos de criptoativos",
+    "url": "https://www.asc.ca/-/media/ASC-Documents-part-1/Regulatory-Instruments/2023/07/6104091-CSA-Notice-81-336-Guidance-on-Crypto-Asset-Investment-Funds.pdf",
+    "date": "2023-07-06; orientação, não novas obrigações",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-americas-03.md"
+  },
+  {
+    "key": "caexempt",
+    "title": "OSC — National Instrument 45-106 Prospectus Exemptions",
+    "url": "https://www.osc.ca/en/securities-law/instruments-rules-policies/4/45-106/national-instrument-45-106-prospectus-exemptions",
+    "date": "data não confirmada; evidência limitada a resultados de busca",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-americas-snippets.md"
+  },
+  {
+    "key": "bvi",
+    "title": "SIBA — compêndio Conyers",
+    "url": "https://www.conyers.com/wp-content/uploads/2025/11/Securities_and_Investment_Business_Act_2010_Compendium-BVI.pdf",
+    "date": "arquivo publicado em caminho 2025/11; texto Last Updated January 2025",
+    "tier": 2,
+    "evidencePath": "research/bettex-operacao-territorial/sources/bvi-conyers-compendium.md"
+  },
+  {
+    "key": "bvifunds",
+    "title": "BVI — Private Investment Funds Regulations",
+    "url": "https://www.bvifsc.vg/sites/default/files/private_investment_funds_regulations.pdf",
+    "date": "2019; commencement 2019-12-31",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-sede-02.md"
+  },
+  {
+    "key": "panama",
+    "title": "SMV — texto unificado do mercado de valores",
+    "url": "https://supervalores.gob.pa/wp-content/uploads/2021/03/UNIFIED_TEXT_DL1-1999-1.pdf",
+    "date": "documento de trabalho, alterações descritas até 2012; validar Gazette vigente",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-sede-03.md"
+  },
+  {
+    "key": "elsal",
+    "title": "El Salvador — Digital Assets Issuance Law, tradução inglesa CNAD",
+    "url": "https://cnad.gob.sv/wp-content/uploads/2024/04/LEY-DE-ACTIVOS-DIGITAIS-2023-ENG.pdf",
+    "date": "2023; tradução postada em 2024, conferir espanhol oficial",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-rotas-14.md"
+  },
+  {
+    "key": "cnadnotice",
+    "title": "CNAD — aviso público de token de renda PMARISCO1",
+    "url": "https://cnad.gob.sv/wp-content/uploads/2026/04/Public-Offering-Notice_PMARISCO1.pdf",
+    "date": "2026-04; exemplo de emissor local, não autorização BETTEX",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-rotas-02.md"
+  },
+  {
+    "key": "vara",
+    "title": "VARA — Guidance on Virtual Asset Issuance",
+    "url": "https://rulebooks.vara.ae/sites/default/files/en_net_file_store/VARA_EN_516_VER1.pdf",
+    "date": "2026-04-09",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-rotas-23.md"
+  },
+  {
+    "key": "uaelaw",
+    "title": "EAU — Federal Decree-Law 33/2025, capital markets",
+    "url": "https://www.uaecma.gov.ae/assets/download/86f55732/federal-decree-law-no-33-of-2025-en-regulation-of.aspx",
+    "date": "vigência 2026-01-01",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-rotas-21.md"
+  },
+  {
+    "key": "uaezones",
+    "title": "Dubai — Law 4/2022, delimitação VARA/DIFC",
+    "url": "https://dlp.dubai.gov.ae/Legislation%20Reference/2022/Law%20No.%20(4)%20of%202022%20Regulating%20Virtual%20Assets.html",
+    "date": "2022",
+    "tier": 1,
+    "evidencePath": "research/bettex-operacao-territorial/sources/territorio-rotas-16.md"
+  },
+  {
+    "key": "polymarket",
+    "title": "Polymarket — Geographic Restrictions, mercados de previsão",
+    "url": "https://docs.polymarket.com/api-reference/geoblock",
+    "date": "página dinâmica consultada 2026-10-03",
+    "tier": 2,
+    "evidencePath": "research/bettex-operacao-territorial/sources/execution-polymarket.md"
+  },
+  {
+    "key": "bet365",
+    "title": "bet365 — termos internacionais em inglês",
+    "url": "https://help.bet365.com/s/en/terms-and-conditions",
+    "date": "página dinâmica consultada 2026-10-03; alcance contratual dessa versão",
+    "tier": 2,
+    "evidencePath": "research/bettex-operacao-territorial/sources/execution-bet365.md"
+  }
+]

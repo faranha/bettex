@@ -5,6 +5,10 @@ description: Premissa de comportamento do usuário exigida pelo criador para as 
 
 O criador afirma: “as pessoas vão fazer saques diários”, “as pessoas querem dinheiro todo dia” e “nós temos que modelar o comportamento do usuário para fazer essa projeção dos ganhos”.
 
-**Why:** O criador corrigiu a projeção que tratava saques somente como um valor mensal por pessoa, sem representar explicitamente o hábito diário.
+Ao propor uma tarifa fixa por saque, o criador também declarou a expectativa de que as pessoas acumulem mais antes de sacar. É uma hipótese de incentivo, não uma mudança de comportamento comprovada.
 
-**How to apply:** Nas projeções de receita de taxas, representar explicitamente adesão ao saque diário, dias com saque e valor por saque. Valores ilustrativos de ticket ou adesão não foram fornecidos pelo criador e não devem ser tratados como fatos sobre a base.
+O criador esclareceu que o foco é Brasil e que o ticket médio será bem inferior às projeções anteriores, com movimentações de US$10 e US$15. Sua expectativa é que, com US$10, as pessoas já prefiram pagar a tarifa e sacar. Essa disposição de pagar é hipótese do criador, não comportamento demonstrado por pesquisa.
+
+**Why:** O criador corrigiu a projeção que tratava saques somente como um valor mensal por pessoa e depois passou a considerar o efeito da tarifa fixa sobre a frequência.
+
+**How to apply:** Nas projeções, manter cenários diários com adesão, dias e valor por saque, junto de alternativas menos frequentes com acúmulo de saldo. Considerar tickets pequenos e público brasileiro; não tratar US$10 ou US$15 como média estatisticamente comprovada. Não presumir redução garantida da frequência nem abandonar o cenário diário. Tickets e adesões ilustrativos não são fatos sobre a base.

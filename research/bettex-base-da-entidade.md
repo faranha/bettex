@@ -34,7 +34,7 @@ Os sócios possuem os direitos societários que constarem dos atos constitutivos
 
 O titular de BETTEX é proprietário das suas unidades e tem os direitos contratuais do programa. **Não recebe ações da empresa, voto societário, fração da tesouraria ou direito automático ao resgate do capital/recompra.** Os percentuais de alocação de tokens não são percentuais de propriedade da empresa.
 
-O staking é facultativo. A transferência ou revenda é prevista no modelo, sem promessa de liquidez, listagem ou preço. Não será inventada uma assinatura de IA ou obrigação de utilizar software como justificativa para a compra.
+A aquisição e o acesso ao programa são facultativos; uma vez disponível na carteira oficial do projeto, todo BETTEX participa automaticamente conforme quantidade e tempo elegíveis, sem ativação ou depósito adicional. A transferência ou revenda é prevista no modelo, sem promessa de liquidez, listagem ou preço. Não será inventada uma assinatura de IA ou obrigação de utilizar software como justificativa para a compra.
 
 ## 3. Patrimônio institucional e economia preservada
 
@@ -43,7 +43,7 @@ O staking é facultativo. A transferência ou revenda é prevista no modelo, sem
 | Área | Tratamento |
 |---|---|
 | Tesouraria de investimentos | Recebe os recursos destinados aos investimentos e mantém ativos, reservas e obrigações relacionados. |
-| Carteira institucional de taxas | Endereço distinto da tesouraria e das carteiras pessoais; os tokens recebidos pertencem à entidade. |
+| Carteira institucional de taxas | Recebe USDC de serviços, pertence à entidade e tem endereço distinto da tesouraria e das carteiras pessoais. |
 | Orçamento operacional | Financiamento e despesas institucionais conforme as destinações aprovadas; não transformar livremente a tesouraria em caixa operacional. |
 | Créditos de resultados | Obrigações individualizadas após o split autorizado, até sua liquidação conciliada. |
 | Obrigações fiscais | Fonte de cobertura e recolhimento documentadas, sem dupla dedução. |
@@ -59,7 +59,7 @@ São separações internas de uma entidade, não empresas distintas. Carteiras s
 - Lucro elegível: **max(0, min(R, P − B))**. R é o resultado realizado líquido acumulado ainda não considerado em splits anteriores, após custos e compensação de perdas; P é o patrimônio líquido atualizado, incluindo posições abertas e descontando obrigações; B acompanha aportes efetivos e lucros já considerados no split, descontando pagamentos aos participantes. Não distribuir aportes ou ganhos não realizados como lucro.
 - Split do lucro elegível autorizado: **75% tesouraria e 25% participantes elegíveis**, com rateio por token-tempo e validações de cobertura/liquidez. A reserva defensiva mínima inicial é **50% do patrimônio líquido atualizado da tesouraria**, não 50% do lucro nem um valor fixo da captação.
 - Retenção temporária por insuficiência de reservas/liquidez ou ausência de pesos elegíveis não cria crédito individual por si só. Após o split autorizado, os créditos individuais em USDC são obrigações exigíveis conforme as regras e não se tornam discricionários.
-- **Atualização de política pelo criador:** substituir taxas percentuais de compra/saque por valores fixos denominados em dólar. O último valor proposto é **US$ 2,50 para compra e US$ 2,50 para saque**; também haverá cobrança de envio de BETTEX para outras carteiras pelo fluxo aplicável. Escopo do saque, valor do envio e moeda de cobrança serão confirmados antes de fechar o quadro financeiro. Não presumir duas cobranças sobre a mesma transferência nem implementar cobrança real nesta etapa.
+- **Taxas confirmadas:** US$ 2,50 por compra primária de BETTEX no aplicativo, US$ 2,50 por saque de rendimentos em USDC e US$ 2,50 por envio autônomo de BETTEX para outra carteira pelo aplicativo. Todas pagas em **USDC**, sem queima de BETTEX. Receita de serviços separada da tesouraria e do split 75%/25%; custos externos discriminados. Não cobrar envio pela entrega já integrante da compra nem cobrar exportação/movimentação direta fora do aplicativo. Não implementar cobranças reais nesta etapa.
 
 Este resumo não substitui o detalhamento econômico vigente. Nenhuma regra foi alterada nesta estruturação.
 
@@ -68,6 +68,46 @@ Este resumo não substitui o detalhamento econômico vigente. Nenhuma regra foi 
 A liderança humana, sob administração do fundador, aprova políticas, limites e alterações de regras. Sugestões da IA entram em fila e só são executadas depois da aprovação prevista. A IA não é sócia, administradora legal ou pessoa jurídica e não elimina a responsabilidade institucional.
 
 Como organização documental, propõe-se separar três funções: **aprovação**, **execução** e **conciliação/verificação**. Elas podem existir na mesma entidade; quantidade de pessoas, acumulação de funções, assinaturas, quóruns e alçadas serão formalizadas conforme a legislação e a decisão empresarial.
+
+### Equipe básica: seis funções, teto de cinco pessoas
+
+O criador definiu fundador, social media, dev, generalist trader, community manager e legal; concessões individuais de tokens pelo fundador; teto permanente de cinco pessoas na ata ou instrumento de constituição/registro; e operação full stack AI. A definição mais recente substitui a remuneração do fundador: **ele não recebe salário, pois já tem sua alocação originária de tokens**. Os outros quatro integrantes da proposta recebem remuneração; tokens não substituem essas obrigações.
+
+A distribuição inicial **proposta**, sem contratação, conta o fundador no teto e acumula social media e community manager em uma pessoa: fundador, conteúdo/comunidade, dev, trader generalista e jurídico. Essa contagem conservadora não registra uma confirmação sobre a inclusão do fundador no limite; preserva cinco pessoas e todas as funções enquanto organiza a documentação. As frentes administrativas não são vagas adicionais. Serviços ou funções profissionais necessários devem ser compatibilizados com o teto, sem terceirização recorrente para contorná-lo.
+
+A fonte recorrente pretendida são as taxas realizadas; enquanto insuficientes, financiamento operacional aprovado cobre compromissos. A proposta inicial de remuneração mensal bruta é fundador zero, conteúdo/comunidade US$ 4 mil, dev US$ 7 mil, trader US$ 5 mil e legal US$ 4 mil: **US$ 20 mil**, com US$ 4 mil de encargos/benefícios como hipótese de 20%, não alíquota validada. Valores dos colaboradores são sugestões para feedback, não salários contratados. Validar vínculos, inclusive administração sem salário, encargos e moeda contratual.
+
+O plano-base distribui as responsabilidades e o uso de IA entre essas posições, prevê atendimento multilíngue e social media globais, contratação de fornecedores por escopo, lançamento condicionado a controles e um modelo financeiro de 12 meses. IA e autoatendimento contínuos não significam atendimento humano mundial 24/7. A conferência e a responsabilidade profissional permanecem humanas.
+
+Outsourcing cobre serviços delimitados de engenharia, auditoria independente, contabilidade/pareceres locais, criativos/localização e cobertura pontual de atendimento. Escopo, acesso mínimo, propriedade intelectual, proteção de dados, custo, prazo e aceite têm registro. Não usar terceirização para criar posição permanente adicional disfarçada; apresentar ao fundador mudança de estrutura antes de contratar.
+
+Concessões identificam beneficiário, quantidade, condições, aceite e entrega. Saem dos BETTEX pessoais liberados e disponíveis do fundador, dentro de seus 20% originários e do vesting de 36 meses; não há quarta alocação, divisão igual obrigatória, emissão adicional ou dupla concessão ao fundador. Não substituem remuneração, ações ou obrigações fiscais. A transferência pessoal não exige o multisig da empresa; chegada conciliada à carteira oficial inicia elegibilidade pelo tempo efetivo.
+
+Cada função recebe ferramentas de IA, dados, treinamento e apoio técnico, incluídos no orçamento, com revisão humana de qualidade e responsabilidade. IA não ocupa uma vaga humana, assina custódia, substitui habilitações profissionais ou aprova suas próprias alterações de regras.
+
+### Segurança dos fundos e responsabilidades
+
+A proteção dos fundos será organizada em camadas: separar tesouraria, caixa operacional e carteiras pessoais; preservar autocustódia sem recolher chaves privadas dos titulares; proteger chaves institucionais independentes, acessos e recuperação; aplicar a política multisig 2/3 aos atos previstos, mantendo execução automática apenas dentro dos mandatos aprovados; conciliar diariamente, monitorar movimentações e obrigações e manter registros auditáveis. Testes e auditoria independente dos contratos e controles de custódia precedem o uso de recursos reais. Incidentes permitem pausar novas execuções afetadas sem apagar créditos ou registros; recuperação segue o procedimento aprovado e retomada exige conciliação e autorização. São requisitos a implantar e validar, não controles já ativos na demonstração.
+
+Na estrutura proposta, fundador responde por política, orçamento e responsáveis; dev conduz segurança técnica, acessos, armazenamento seguro e monitoramento, sem assumir automaticamente função de signatário; generalist trader acompanha exposição, reservas e conciliação; legal acompanha permissões, contratos e registros de incidentes. A conferência fica com pessoa distinta do executor. A IA auxilia a detecção e análise, sem assumir responsabilidade humana ou receber chaves dos titulares. Auditorias independentes são serviços especializados, sem nova posição permanente na equipe de até cinco pessoas.
+
+As verbas de segurança, auditorias, monitoramento, recuperação e resposta a incidentes integram o orçamento operacional de referência de US$ 50 mil mensais, com detalhamento a preencher e sem dupla contagem. Não há valores individuais aprovados nem aumento automático do orçamento. Despesas institucionais não são descontadas automaticamente da tesouraria ou dos créditos dos participantes; custos efetivos de investimento seguem sua apuração própria.
+
+### Política-base de multisig e liberdade operacional
+
+A área Entidade detalha a política-base para formalização, sem implantação de carteiras ou movimentações reais:
+
+- **Custódia institucional 2 de 3:** na distribuição inicial proposta, fundador-administrador, trader na função financeira/tesouraria e jurídico na função de conformidade/controles, com apoio técnico do dev. São três pessoas dentro do teto de cinco, com chaves independentes, não vagas adicionais. A IA não é signatária. A assinatura não transfere administração societária.
+- **Rotina por mandato:** aprovação 2/3 permite execução sem assinatura a cada pagamento, ordem ou crédito, dentro de origem, finalidade, executor, ativos/redes, contratos/funções, destinos, teto por operação, teto diário UTC, orçamento total e validade máxima de 30 dias. Consumo agregado considera todas as execuções e compromissos, sem contorno por fracionamento.
+- **Movimento sem mandato:** 2/3 sobre conteúdo exato e fundamento aprovado, com saldo livre e fonte conferidos. Renovação sem ampliação exige 2/3, sem espera adicional; não renova compromissos ou limites automaticamente.
+- **Mudança sensível:** aprovação administrativa registrada, 2/3 e espera mínima de 24h após agendamento do conteúdo aprovado, incluindo ampliação de mandatos, limites, destinos estratégicos, signatários, quórum, módulos, permissões, contratos e o próprio bloqueio temporal. Vigência somente após execução e conferência. Aprovação administrativa não exige presença do fundador em toda rotina.
+- **Conflitos:** beneficiário ou interessado não conta como aprovador independente; remuneração própria, dividendos e partes relacionadas exigem os procedimentos societários e dois aprovadores não conflitados.
+- **Separação:** mandatos de operação e investimento têm origens e rubricas distintas. Preservar reserva defensiva, limites de risco, créditos, split, emissão e vesting. Carteiras pessoais não integram o multisig institucional; pagamentos aos participantes usam obrigações e beneficiários conciliados, sem aprovação humana por titular.
+- **Proteção verificável:** quórum não aplica sozinho orçamento, aprovação administrativa ou espera. Módulos Safe podem executar sem assinaturas normais; transações diretas, módulos, lotes e permissões a terceiros precisam de cobertura técnica validada. Sem cobertura, não habilitar o executor nem afirmar bloqueio on-chain. Bancos e plataformas externas usam dupla aprovação e limites disponíveis, sem inventar multisig onde não existe.
+- **Emergência:** responsável habilitado pausa novas execuções afetadas e cancela propostas não executadas, sem poder transferir. Retomada exige 2/3 e revalidação. Exceção protetiva sem espera mantém 2/3: revogar permissões comprometidas, substituir chave afetada por outro integrante da própria equipe previamente habilitado para contingência ou transferir para recuperação institucional previamente cadastrada sob controle independente equivalente. Dev ou conteúdo/comunidade não assumem assinatura automaticamente nem criam sexta vaga. Sem novos beneficiários, aumento de orçamento, redução do quórum ou pagamentos ao fundador. Registro imediato e relatório em até 24h; nenhuma tentativa incerta é liberada ou reenviada por presunção.
+- **Conferência:** checagem diária de movimentações; revisão mensal de orçamento, mandatos, acessos e permissões; chaves independentes, recuperação protegida e verificação independente do conteúdo antes de assinar.
+
+Referências consultadas em 3 de outubro de 2026: [Safe — Smart Account Concepts](https://docs.safe.global/advanced/smart-account-concepts) e [OpenZeppelin — Access Control](https://docs.openzeppelin.com/contracts/5.x/access-control). Os parâmetros 2/3, 24h e 30 dias são escolhas desta política-base, não normas universais das fontes.
 
 Devem ficar documentados os poderes sobre contas/chaves, limites de investimento, conflitos de interesses, critérios de apuração e trilhas de aprovação. A entidade mantém as quatro frentes pretendidas — ações, cripto, previsões e esportes/cassinos — sem tratar sua inclusão no plano como autorização jurídica já obtida.
 
@@ -112,6 +152,7 @@ Licenças posteriores são aceitáveis e não eliminam uma jurisdição por si s
 
 ## 8. Material já reunido
 
+- [Receitas, caixa e financiamento da entidade](bettex-financiamento-e-caixa.md): tarifas fixas, projeções, despesas, impostos, remuneração do fundador, financiamento inicial e condições propostas para distribuição/antecipação de lucros.
 - [Panamá: início e licenciamento posterior](bettex-panama-inicio-licenciamento.md): requisitos e limites documentados, incluindo distinção entre sociedade e administrador de investimentos.
 - [Comparação de jurisdições](bettex-jurisdicao-decisao.md): fontes e alternativas; interpretar critérios de decisão à luz desta atualização.
 - [Memorando anterior da entidade única](bettex-entidade-unica.md): histórico da estrutura e consultas. As antigas recusas de licenciamento não são critérios atuais.

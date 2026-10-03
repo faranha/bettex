@@ -1,0 +1,16 @@
+import './extract-locales.mjs';
+import fs from 'node:fs';
+const root = new URL('../src/lib/locales/', import.meta.url);
+const source = JSON.parse(fs.readFileSync(new URL('source.json', root), 'utf8'));
+const messages = JSON.parse(fs.readFileSync(new URL('translations.json', root), 'utf8'));
+const failures = [];
+for (const key of source) {
+  for (const language of ['en', 'es']) {
+    const target = messages[key]?.[language];
+    if (typeof target !== 'string' || !target.trim()) { failures.push(`${language}: ${key}`); continue; }
+    const placeholders = value => [...value.matchAll(/\{\d+\}/g)].map(match => match[0]).sort().join(',');
+    if (placeholders(key) !== placeholders(target)) failures.push(`${language} placeholders: ${key}`);
+  }
+}
+if (failures.length) throw new Error(`Incomplete localization (${failures.length}). Update all three languages before building:\n${failures.slice(0,20).join('\n')}`);
+console.log(`Localization coverage: ${source.length} messages, complete EN/ES and matching dynamic placeholders.`);

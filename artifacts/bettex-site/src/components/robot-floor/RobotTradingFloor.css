@@ -45,5 +45,5 @@
   .robot-floor__tag { position: static; order: 3; align-self: center; margin: 0 8px 14px; text-align: center; }
   .robot-floor__steps li span { display: none; }
   .robot-floor__steps li.is-on span { display: inline; }
-  .robot-floor__teams { grid-template-columns: 1fr; }
+  .robot-floor__teams { display: none; }
 }

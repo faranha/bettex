@@ -29,7 +29,7 @@ const notes: Record<ArchitectureFigureNumber, IntegrationNote[]> = {
   '5': [
     { brand: 'allora', placement: 'Etapa 2 · Análise da IA', description: 'Inferências opcionais ajudam a avaliar oportunidades. Allora não executa ordens nem decide o split.' },
     { brand: 'robinhood', placement: 'Etapa 2 · Operações de mercado', description: 'Possível conector de dados e ordens de cripto na conta operacional, após aprovação de risco. Não paga o staking.' },
-    { brand: 'arbitrum', placement: 'Etapa 3 · Movimentações em USDC', description: 'Referências on-chain de transferências compatíveis. Reservas insuficientes mantêm todo o lucro temporariamente na tesouraria, sem pagamento nessa apuração; uma liberação futura exige nova verificação.' },
+    { brand: 'arbitrum', placement: 'Etapa 3 · Movimentações em USDC', description: 'Referências on-chain de transferências compatíveis. Se reserva ou liquidez falhar, a rodada não paga e o lucro fica na tesouraria, sem liberação futura. Cada pagamento pertence somente à sua própria rodada.' },
   ],
   '6': [
     { brand: 'arbitrum', placement: 'Recebimento e saque em USDC', description: 'O livro contábil registra o direito e a obrigação como distribuição pendente. A transferência on-chain confirmada e conciliada reconhece USDC recebido na carteira do titular e liquida a obrigação. O saque posterior movimenta esse saldo, sem novo pagamento da distribuição.' },

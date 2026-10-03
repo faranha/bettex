@@ -1,0 +1,67 @@
+{
+  "maxPeople": 5,
+  "distributionStatus": "initial_proposal",
+  "countingBasis": "A proposta inicial conta o fundador sem salário no teto e reúne social media e community manager em uma pessoa: cinco pessoas, quatro posições remuneradas.",
+  "positions": [
+    {
+      "id": "founder",
+      "title": "Fundador",
+      "functions": ["Fundador"],
+      "responsibility": "Responde por produto, estratégia, orçamento, captação institucional, parcerias, contratação e lançamento. Aprova políticas, acompanha caixa e indicadores e resolve prioridades e incidentes escalados. Não recebe salário no plano: conserva sua alocação originária de tokens, sem renda mensal presumida.",
+      "aiSupport": "Assistentes para planejamento, análise do caixa, síntese dos indicadores, pesquisa de parceiros e acompanhamento das entregas; decisões e compromissos continuam humanos.",
+      "proposedMonthlySalaryUsd": 0,
+      "deliverables": ["Revisão semanal de produto, caixa e riscos; decisões registradas.", "Plano de aquisição por idioma e territórios autorizados; aceite das entregas terceirizadas.", "Aprovação de contratos, orçamento, marcos de liberação e responsabilidades."],
+      "outsourcing": "Coordena fornecedores por escopo, prazo, custo e critérios de aceite; não terceiriza a administração ou aprovações institucionais.",
+      "signingRole": "Administração",
+      "tokenBasis": "Parcela originária do fundador; não recebe uma segunda alocação."
+    },
+    {
+      "id": "content-community",
+      "title": "Social media e community manager",
+      "functions": ["Social media", "Community manager"],
+      "responsibility": "Lidera conteúdo e aquisição social globais, calendário editorial, localização, moderação, comunidade e atendimento de primeiro nível. Mantém a base de conhecimento, acompanha filas por idioma, revisa respostas e encaminha assuntos financeiros ao trader, técnicos ao dev e legais ao jurídico. Não assina pagamentos nem solicita chaves privadas.",
+      "aiSupport": "Produção de rascunhos, legendas, tradução, reaproveitamento de peças, programação de publicações, triagem de comentários e assistente de suporte multilíngue conectado a conteúdo aprovado. Revisão humana de campanhas, alegações financeiras, respostas sensíveis e erros de tradução.",
+      "proposedMonthlySalaryUsd": 4000,
+      "deliverables": ["Calendário por canal e idioma, campanhas revisadas e métricas de aquisição/retorno.", "Fila única de atendimento com categoria, idioma, prioridade, responsável e prazo.", "Relatório semanal de dúvidas, casos não resolvidos, reclamações e sugestões de produto."],
+      "outsourcing": "Peças e vídeos de campanha, revisão linguística e cobertura pontual de filas por serviços contratados; gastos saem de marketing e atendimento, sem duplicação.",
+      "signingRole": "Contingência, somente após habilitação",
+      "tokenBasis": "Concessão individual pelo fundador, sem percentual automático."
+    },
+    {
+      "id": "dev",
+      "title": "Desenvolvimento (dev)",
+      "functions": ["Dev"],
+      "responsibility": "Lidera arquitetura, frontend, backend, carteira, contratos, conectores, livro contábil, infraestrutura, observabilidade, segurança e suporte técnico de segundo nível. Mantém testes, revisão de código, ambientes separados, backups, recuperação e processo de publicação. Um único dev não faz sozinho a implementação e a auditoria independente.",
+      "aiSupport": "Assistentes de programação e revisão, geração de testes, documentação, análise de logs e automação de tarefas. Código de IA passa por revisão, testes e validação humana; nenhuma ferramenta recebe chaves dos titulares ou autoridade para publicar mudanças financeiras por conta própria.",
+      "proposedMonthlySalaryUsd": 7000,
+      "deliverables": ["Entregas pequenas com critérios de aceite, testes automatizados e revisão antes de publicação.", "Painel de disponibilidade, falhas e integrações; runbooks de incidentes e restauração testada.", "Conciliação técnica e evidências de auditoria de contratos e controles de custódia."],
+      "outsourcing": "Especialistas em contratos, testes de segurança e QA por projeto; auditoria independente de quem implementa. Fornecedores recebem acesso mínimo e sem custódia dos fundos.",
+      "signingRole": "Apoio técnico e contingência após habilitação",
+      "tokenBasis": "Concessão individual pelo fundador, sem percentual automático."
+    },
+    {
+      "id": "trader",
+      "title": "Trader generalista",
+      "functions": ["Generalist trader"],
+      "responsibility": "Responde pela rotina financeira e de tesouraria, avaliação das estratégias, exposição, liquidez, reservas, custos e conciliação. Confere créditos, saques e estados pendentes com o dev, produz o fechamento e acompanha compromissos do caixa operacional. Não aprova sozinho seus próprios atos ou alterações de risco.",
+      "aiSupport": "Coleta e normalização de dados, pesquisa de oportunidades, simulações, cálculo de métricas, detecção de divergências e preparação do fechamento. Validação humana e núcleo independente de risco precedem execução dentro dos mandatos.",
+      "proposedMonthlySalaryUsd": 5000,
+      "deliverables": ["Conciliação diária e controle de caixa, obrigações, reserva e exposição.", "Relatório de resultados realizados e custos; sem confundir aportes com lucro.", "Triagem de incidentes financeiros e relatório periódico de desempenho e limites."],
+      "outsourcing": "Fontes de dados e análises especializadas por escopo; não delega a fornecedores o poder de mudar regras ou custodiar a tesouraria.",
+      "signingRole": "Financeiro e tesouraria",
+      "tokenBasis": "Concessão individual pelo fundador, sem percentual automático."
+    },
+    {
+      "id": "legal",
+      "title": "Jurídico (legal)",
+      "functions": ["Legal"],
+      "responsibility": "Coordena constituição, contratos de trabalho e fornecedores, direitos do token, restrições de oferta por território, proteção de dados, publicidade, propriedade intelectual e conflitos. Organiza obrigações e fechamento com contador habilitado. A licença de uma jurisdição não é tratada como autorização mundial.",
+      "aiSupport": "Pesquisa com fontes, comparação de versões, organização de obrigações, contratos preliminares e triagem documental. Pareceres, enquadramento e decisões profissionais exigem revisão e habilitação aplicável.",
+      "proposedMonthlySalaryUsd": 4000,
+      "deliverables": ["Matriz de territórios, serviços e permissões antes de cada expansão.", "Contratos, prazos, obrigações fiscais e trabalhistas, dados e políticas documentados.", "Revisão das campanhas e conformidade dos controles e fornecedores."],
+      "outsourcing": "Contabilidade e assessoria local habilitada para registros, tributos e pareceres específicos; não presumir que o jurídico interno tenha licença em todos os países.",
+      "signingRole": "Conformidade e controles",
+      "tokenBasis": "Concessão individual pelo fundador, sem percentual automático."
+    }
+  ]
+}

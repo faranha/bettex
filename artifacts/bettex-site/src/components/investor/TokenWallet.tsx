@@ -27,13 +27,13 @@ function Detail({ view }: { view: View }) {
   const bal = `${tokens(account.tokens)} BETTEX`;
   switch (view) {
     case 'sacar': return (<>
-      <p className="tw-lead">Retire seus tokens BETTEX do app quando quiser.</p>
+      <p className="tw-lead">Retire seus tokens BETTEX do app quando quiser. Qualquer retirada, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado.</p>
       <dl className="tw-dl">
         <div><dt>Tokens no app</dt><dd>{bal}</dd></div>
         <div><dt>Tipo de saque</dt><dd>Token BETTEX</dd></div>
         <div><dt>Prazo</dt><dd>A qualquer momento</dd></div>
       </dl>
-      <p className="tw-note">Retirada em unidades inteiras de BETTEX.</p>
+      <p className="tw-note">Envio pelo aplicativo: US$ 2,50 em USDC, com custos externos separados.</p>
     </>);
     case 'transferir': return (<>
       <p className="tw-lead">Envie BETTEX para outro titular da plataforma.</p>
@@ -42,10 +42,10 @@ function Detail({ view }: { view: View }) {
         <div><dt>Quem recebe</dt><dd>Outro titular BETTEX</dd></div>
         <div><dt>O que é enviado</dt><dd>Token BETTEX</dd></div>
       </dl>
-      <p className="tw-note">Transferências em unidades inteiras de BETTEX.</p>
+      <p className="tw-note">Envio pelo aplicativo: US$ 2,50 em USDC, sem descontar tokens como taxa.</p>
     </>);
     case 'lucro': return (<>
-      <p className="tw-lead">Créditos em reais da sua parte do lucro, na Carteira em reais.</p>
+      <p className="tw-lead">Créditos em USDC da sua parte do lucro. Os valores abaixo são estimativas de exibição em moeda fiduciária.</p>
       <div className="tw-total"><span>Lucro creditado</span><b>{money(account.profitCents)}</b></div>
       <ul className="tw-days">
         {profitDays.map((d) => (
@@ -55,7 +55,7 @@ function Detail({ view }: { view: View }) {
           </li>
         ))}
       </ul>
-      <p className="tw-note">Créditos consolidados na carteira em reais.</p>
+      <p className="tw-note">Créditos confirmados na Carteira USDC; saque em USDC.</p>
     </>);
     case 'pool': return (<>
       <div className="tw-pool">
@@ -67,7 +67,7 @@ function Detail({ view }: { view: View }) {
       <p className="tw-lead">A participação é automática. Não há etapa para ativar ou depositar.</p>
       <ul className="tw-list">
         <li>Sua parte é proporcional ao saldo elegível e ao tempo mantido no dia.</li>
-        <li>Nos dias com lucro líquido realizado, 25% vai para a distribuição global entre todos os titulares.</li>
+        <li>Com lucro elegível, reservas e liquidez atendidas, 25% são rateados pelos pesos da rodada diária UTC.</li>
       </ul>
     </>);
   }
@@ -114,13 +114,13 @@ export function TokenWallet() {
           </button>
         ))}
       </div>
-      <button ref={(el) => { btns.current.lucro = el; }} type="button" className="tw-profit-card" onClick={() => setView('lucro')} data-testid="button-token-lucro" aria-label={`Histórico de lucro: ${money(account.profitCents)} creditados em reais. Ver créditos por data.`}>
-        <span>Lucro em reais</span>
+      <button ref={(el) => { btns.current.lucro = el; }} type="button" className="tw-profit-card" onClick={() => setView('lucro')} data-testid="button-token-lucro" aria-label={`Histórico de lucro em USDC: valor estimado ${money(account.profitCents)}. Ver créditos por data.`}>
+        <span>Lucro · estimativa em moeda fiduciária</span>
         <strong>{money(account.profitCents)}</strong>
-        <em>01/10/2026 · Histórico</em>
+        <em>Histórico ilustrativo</em>
         <ChevronRight aria-hidden="true" />
       </button>
-      <div className="tw-foot"><span>Carteira em reais</span><b>{money(account.availableCents)}</b></div>
+      <div className="tw-foot"><span>USDC · estimativa em moeda fiduciária</span><b>{money(account.availableCents)}</b></div>
     </div>
   );
 }

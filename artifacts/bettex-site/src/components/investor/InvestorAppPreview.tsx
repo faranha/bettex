@@ -39,7 +39,7 @@ export function InvestorAppPreview() {
       <div className="investor-preview__wrap">
         <div className="investor-preview__intro">
           <div>
-             <p className="investor-preview__eyebrow">Prévia do aplicativo</p>
+             <p className="investor-preview__eyebrow">Aplicativo</p>
             <h2 id="investor-preview-title" className="investor-preview__title">Conheça o <em>APP da BETTEX</em></h2>
           </div>
         </div>
@@ -71,7 +71,7 @@ export function InvestorAppPreview() {
             )}
           </div>
           <div className={`ip-device${current === 'hydra' ? ' ip-device--hydra' : ''}`} key={current}>
-            <div className={`ip-phone${current === 'participacao' ? ' ip-phone--wallet' : current === 'hydra' ? ' ip-phone--hydra' : isPerformance ? ' ip-phone--performance' : ''}`} role="group" aria-label="Tela conceitual do aplicativo">
+            <div className={`ip-phone${current === 'participacao' ? ' ip-phone--wallet' : current === 'hydra' ? ' ip-phone--hydra' : isPerformance ? ' ip-phone--performance' : ''}`} role="group" aria-label="Tela do aplicativo">
               <div className="ip-phone__notch" />
               <div className="ip-phone__bar"><span className="ip-phone__logo"><BettexMark /></span><b>BETTEX</b><i>João da Silva</i></div>
               <div className="ip-screen"><PhoneScreen id={current} /></div>

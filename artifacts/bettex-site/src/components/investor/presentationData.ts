@@ -28,8 +28,8 @@ export interface ScreenMeta { id: ScreenId; label: string; title: string; text: 
 
 export const navGroups = [
   { label: 'BETTEX', items: [
-    { id: 'participacao', label: 'Token BETTEX', title: 'Sua carteira BETTEX.', text: 'Seus tokens, sua participação automática e seus lucros em reais.' },
-    { id: 'bettex', label: 'Como opera', title: 'BETTEX em operação.', text: 'Os quatro agentes da BETTEX operam com surebet, mineração de bônus, cripto alavancada e previsões.' },
+    { id: 'participacao', label: 'Token BETTEX', title: 'Sua carteira BETTEX.', text: 'Seus tokens, sua participação automática e seus lucros em USDC, com valor estimado em moeda fiduciária.' },
+    { id: 'bettex', label: 'Como opera', title: 'BETTEX em operação.', text: 'Os quatro agentes da BETTEX operam com surebet, mineração de bônus, cripto sem alavancagem e previsões.' },
     { id: 'resultados', label: 'Resultados', title: 'O desempenho dos quatro mercados.', text: 'Compare o lucro obtido, as perdas e o resultado líquido do projeto nos quatro mercados.' },
     { id: 'historico', label: 'Histórico', title: 'Performance por mercado.', text: 'Escolha um dos quatro mercados para ver seu gráfico e os dias de lucro e de perda.' },
     { id: 'hydra', label: 'Protocolo Hydra', title: 'Protocolo Hydra.', text: `${hydraMessage.opening} ${hydraMessage.attitude} ${hydraMessage.goal}` },

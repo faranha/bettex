@@ -1,11 +1,15 @@
-import { type ReactNode } from 'react';
+import { Fragment, isValidElement, type ReactElement, type ReactNode } from 'react';
+import thesis from '@/lib/new-economy-thesis.json';
+import { TechnicalDetails } from './TechnicalDetails';
 import { documentationTokenomics as tokenomics, formatTokenCount } from '@/lib/tokenomics';
-import { BettexArchitecture } from '@/components/architecture/BettexArchitecture';
+import { BettexFlow, architectureFigureTitles } from '@/components/architecture/BettexArchitecture';
+import type { ArchitectureFigureNumber } from '@/components/architecture/ArchitectureIntegrations';
 import { ArbitrumFlowDiagram } from '@/components/docs-diagrams/ArbitrumFlowDiagram';
 import { RobinhoodFlowDiagram } from '@/components/docs-diagrams/RobinhoodFlowDiagram';
 import { VestingSchedule } from '@/components/VestingSchedule';
 import { ServiceFees } from '@/components/ServiceFees';
 import { FeeProjections } from '@/components/FeeProjections';
+import { OperatingBreakEven } from '@/components/OperatingBreakEven';
 import { InvestmentAgents } from '@/components/InvestmentAgents';
 import { StakingDistribution } from '@/components/StakingDistribution';
 import { ProfitAccounting } from '@/components/ProfitAccounting';
@@ -35,21 +39,26 @@ import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
 import { DocFacts } from '@/components/DocFacts';
+import { EntityOrganisation } from '@/components/EntityOrganisation';
+import { InvestmentCycleSchematic, AssetRolesSchematic, WalletAccessSchematic, TokenAllocationSchematic, RiskAuthorizationSchematic } from '@/components/docs-diagrams/DocSchematics';
+import { FundSecurity } from '@/components/FundSecurity';
+import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure';
 
 export const chapters = [
-  { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação inicial em USDC, participação automática e controles.' },
+  { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação em USDC, participação automática e controles.' },
   { id: 'documentacao-rede', title: 'Arbitrum e ativos', subtitle: 'Arbitrum One, carteira do titular, USDC e entrada por on-ramp externo.' },
   { id: 'documentacao-acesso', title: 'Acesso ao aplicativo', subtitle: 'Carteira gerada com a conta, acesso e autorização de ações financeiras.' },
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Oito fluxos: agentes por MCP e APIs, inferências Allora, coleta de oportunidades, decisão de investimento e registro público.' },
   { id: 'documentacao-agentes', title: 'Agentes de IA', subtitle: 'Gestão adaptativa da tesouraria, agentes especializados nos quatro mercados e ciclo coordenado de análise, execução e conciliação.' },
-  { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Emissão de 1 bilhão, vesting de 36 meses em 65% / 20% / 15% e taxas em BETTEX para financiar a Fundação.' },
+  { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Emissão de 1 bilhão, vesting de 36 meses em 65% / 20% / 15% e taxas fixas em USDC para financiar a entidade.' },
   { id: 'documentacao-controles', title: 'Controles de risco', subtitle: 'Limites globais e por mercado, autorizações e pausas de segurança.' },
   { id: 'documentacao-implantacao', title: 'Requisitos operacionais e de segurança', subtitle: 'Controles técnicos, validações e salvaguardas para operar o modelo.' },
   { id: 'documentacao-riscos', title: 'Riscos e validações', subtitle: 'Exposições dos mercados, do agente e decisões técnicas, operacionais e jurídicas.' },
+  { id: 'documentacao-entidade', title: 'Identidade e negócios', subtitle: 'Público brasileiro, oportunidade na nova economia, empresa privada, operação global, equipe, lançamento, custos e ponto de equilíbrio.' },
 ] as const;
 
 function Subhead({ children }: { children: ReactNode }) {
-  return <h4 className="whitepaper__subhead">{children}</h4>;
+  return <h3 className="whitepaper__subhead">{children}</h3>;
 }
 
 function Flow({ label, steps }: { label: string; steps: string[] }) {
@@ -59,53 +68,58 @@ function Flow({ label, steps }: { label: string; steps: string[] }) {
   </div>;
 }
 
-export function ChapterContent({ index }: { index: number }) {
+function RawChapter({ index }: { index: number }) {
   switch (index) {
+    case 9:
+      return <EntityOrganisation />;
     case 0:
       return <>
-        <div className="whitepaper__lead"><span>UM AGENTE · MÚLTIPLOS MERCADOS</span><p>A BETTEX é um agente multimercado que opera em previsões, ações e cripto, esportes e cassinos. Antes de cada operação, cruza análises de dados, probabilidades, preços, liquidez, condições de execução e risco; compara oportunidades e prioriza as mais vantajosas segundo essas análises, dentro dos controles e reservas aprovados. A BETTEX não precisa operar automaticamente em todos os mercados, e essa seleção não garante resultados.</p></div>
+        <div className="whitepaper__lead"><span>UM PROJETO DE INVESTIMENTOS · ECONOMIA PROGRAMÁVEL</span><p>{thesis.purpose}</p><p>A BETTEX reúne capital numa tesouraria e utiliza agentes de IA para analisar e executar investimentos em previsões, ações e cripto, esportes e cassinos. Economicamente, funciona como um fundo de investimentos; sua estrutura proposta é uma única empresa privada, não uma afirmação de registro jurídico como fundo. O token BETTEX dá acesso ao programa de resultados, sem ações ou propriedade proporcional da tesouraria.</p></div>
+        <div className="whitepaper__prose"><p><a href="#documentacao-tese-ia">Ler a tese</a></p></div>
         <div className="whitepaper__status-grid">
-          <div><span>01 / ECONOMIA DO TOKEN</span><strong>BETTEX e participação</strong><p>O teto, as parcelas de emissão e as janelas de venda definem a oferta. Todo BETTEX disponível na carteira oficial do projeto participa automaticamente, sem ativação nem depósito adicional.</p></div>
-          <div><span>02 / OPERAÇÃO FINANCEIRA</span><strong>Tesouraria multimercado</strong><p>A receita da venda pública vai para a tesouraria; dos aportes dos investidores, 50% vão para a tesouraria e 50% para capital inicial e desenvolvimento. Dentro da tesouraria, os recursos são divididos entre reserva defensiva e parcela investível. O algoritmo aloca a parcela investível dinamicamente conforme as oportunidades e os limites de risco.</p></div>
+          <div><span>01 / ECONOMIA DO TOKEN</span><strong>BETTEX e participação</strong><p>Um bilhão de tokens: 65% venda pública, 20% fundador e 15% investidores, liberados em 36 meses. Todo BETTEX disponível na carteira oficial do projeto participa automaticamente, sem ativação nem depósito adicional.</p></div>
+          <div><span>02 / OPERAÇÃO FINANCEIRA</span><strong>Tesouraria multimercado</strong><p>100% do preço dos tokens da venda pública vai à tesouraria. Aportes vinculados aos investidores: 50% tesouraria, 50% capital inicial e desenvolvimento. A reserva defensiva mínima é 50% do patrimônio líquido atualizado da tesouraria; a parcela investível é alocada dinamicamente.</p></div>
           <div><span>03 / ARQUITETURA E CONTROLES</span><strong>Registros conciliados</strong><p>O modelo separa responsabilidades entre aplicativo, serviços, agente, conectores e operação, com registros auditáveis, autorizações explícitas e reconciliação de ativos e obrigações.</p></div>
         </div>
         <DocFacts title="Resumo do modelo" facts={[
           { label: 'OPERAÇÃO', value: 'USDC', text: 'Saldos, compras, distribuições e saques.' },
-          { label: 'TOKEN', value: 'BETTEX', text: 'Staking e taxas de serviço à Fundação.' },
+          { label: 'TOKEN', value: 'BETTEX', text: 'Participação no staking; serviços pagos em USDC.' },
           { label: 'TESOURARIA', value: '75% / 25%', text: 'Split do lucro elegível: tesouraria e staking.' },
         ]} />
+        <InvestmentCycleSchematic />
+        <BettexFlow figure="1" />
         <Subhead>Camadas do sistema</Subhead>
         <div className="whitepaper__prose">
-          <p>A BETTEX é um <strong>projeto internacional com operação inicial 100% cripto</strong>. O USDC é a unidade dos saldos financeiros, depósitos, compras, apuração, distribuições e saques. <strong>O token BETTEX serve para staking e pagamento de taxas de serviço à Fundação</strong>, incluindo compras do pool do projeto, vendas por swapping e saques pelo aplicativo. A taxa é percentual sobre o valor da operação, convertida em BETTEX pela cotação informada antes da autorização. Os tokens são transferidos à Fundação para sustentar a operação, não destruídos. Transferências realizadas diretamente pelo titular fora do aplicativo não estão sujeitas à taxa de serviço do aplicativo. BETTEX não é usado como capital nas estratégias dos agentes nem representa participação na empresa. O fundador pode manter, distribuir ou vender seus tokens liberados. Não há saldo fiduciário, pagamento em moeda local nem conversão de USDC para fiat realizada pela BETTEX nesta versão.</p>
-          <p>A arquitetura conecta <strong>aplicativo web → carteira com USDC e BETTEX → serviços de API, livro contábil e conciliação on-chain → tesouraria → agente BETTEX → plataformas e conectores de mercado</strong>. Quem entra com moeda fiduciária utiliza um provedor externo de on-ramp para adquirir USDC; a BETTEX reconhece apenas o criptoativo efetivamente recebido e confirmado. O aplicativo apresenta os dois saldos separados. Todo BETTEX disponível na carteira oficial do projeto participa automaticamente. Antes de cada operação, o agente cruza sinais e análises de dados, probabilidades, preços, liquidez, execução, risco e exposição; compara oportunidades entre mercados, dentro dos limites e reservas vigentes. A escolha de plataforma e conector depende das permissões técnicas, disponibilidade e regras aplicáveis.</p>
-          <p>As estratégias e os conectores por mercado são componentes técnicos do agente BETTEX e compartilham suas regras, tesouraria, limites e supervisão. Custódia, ativos e redes de liquidação interna, fontes de dados, permissões de execução e requisitos legais devem ser especificados e validados antes de qualquer operação que dependa deles. A seleção de oportunidades não garante lucro nem evita perdas.</p>
+          <p><strong>USDC é o ativo financeiro; BETTEX é o token de participação.</strong> A interface pode mostrar uma estimativa em moeda local, mas saldo, crédito e saque continuam em USDC. Entrada fiat ocorre por on-ramp externo, sem conta fiduciária ou off-ramp próprio da BETTEX.</p>
+          <p><strong>Os fluxos de capital e de serviços são separados.</strong> O preço dos tokens financia a tesouraria conforme sua origem; as tarifas adicionais de US$ 2,50, pagas em USDC, vão ao caixa operacional. Não há queima, desconto de taxa em BETTEX ou uso dos tokens como capital das estratégias.</p>
+          <p><strong>Aplicativo e carteiras → API e livro contábil → tesouraria → agentes e conectores.</strong> As análises comparam probabilidades, preços, liquidez, custos e risco. Operações automáticas respeitam mandatos e controles independentes; mudanças de política exigem aprovação humana. Os quatro mercados são o escopo do projeto, não a obrigação de investir em todos ou a confirmação de conectores ativos.</p>
         </div>
-        <div className="whitepaper__aside-callout"><span>BASE DO MODELO</span><p>Todo BETTEX disponível na carteira oficial do projeto participa automaticamente, sem ativação ou depósito para participar. A distribuição em USDC exige lucro realizado líquido positivo, após custos e perdas anteriores, limitado pelo ganho patrimonial líquido acima da base de referência, considerando as posições abertas. Reservas atendidas e conciliação também são obrigatórias. Não há lucro garantido todos os dias.</p></div>
+        <div className="whitepaper__aside-callout"><span>QUANDO HÁ DISTRIBUIÇÃO</span><p>O split usa o lucro líquido realizado e conciliado, após custos e tributos, com reservas, liquidez e elegibilidade atendidas: 75% tesouraria e 25% staking. Perdas são permanentes, sem déficit a compensar em rodadas futuras. A participação considera BETTEX disponível × tempo elegível desde a última saída. Qualquer saída de BETTEX, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado. Novos participantes nunca recebem lucros anteriores. Autorizar o direito e confirmar o recebimento em USDC são etapas distintas.</p></div>
       </>;
     case 1:
       return <>
         <DocFacts title="Rede e ativos em resumo" facts={[
           { label: 'REDE DO TOKEN', value: 'Arbitrum One', text: 'Segunda camada do Ethereum, compatível com seu ecossistema.' },
           { label: 'SALDO FINANCEIRO', value: 'USDC', text: 'Compras, distribuições e saques na versão inicial.' },
-          { label: 'PARTICIPAÇÃO', value: 'BETTEX', text: 'Staking e pagamento das taxas de serviço à Fundação.' },
+          { label: 'PARTICIPAÇÃO', value: 'BETTEX', text: 'Staking por quantidade e tempo elegíveis; taxas em USDC.' },
         ]} />
         <Subhead>Arbitrum One: escala e integração com Ethereum</Subhead>
         <div className="whitepaper__prose">
           <p>A <strong>Arbitrum One</strong> é uma rede de segunda camada do Ethereum. Ela amplia a capacidade de processamento e reduz os custos das transações em relação à rede principal, oferecendo uma infraestrutura para contratos inteligentes, tokens e carteiras.</p>
-          <p>Seu funcionamento utiliza <strong>optimistic rollups</strong>: as transações são executadas na segunda camada, agrupadas em lotes e seus dados são publicados no Ethereum. Esse modelo distribui o custo de publicação entre várias operações e mantém mecanismos de verificação vinculados ao Ethereum, em vez de executar cada operação diretamente na rede principal.</p>
-          <p>A compatibilidade com o ambiente de contratos do Ethereum permite utilizar ferramentas de desenvolvimento, padrões de tokens e carteiras do mesmo ecossistema. Para a BETTEX, isso facilita a integração entre o token, a carteira do titular e os serviços que acompanham as movimentações da rede.</p>
-          <p>A importância da Arbitrum para a BETTEX está na combinação de <strong>escala, custos de transação menores e registros verificáveis</strong>. Essa infraestrutura dá suporte à emissão e às transferências do token, enquanto o backend acompanha os eventos confirmados e os concilia com os registros da conta. A carteira do titular permanece compatível com esse ecossistema, com chaves e dados exportáveis.</p>
+          <p>Utiliza <strong>optimistic rollups</strong>: executa transações na segunda camada e publica os dados em lotes no Ethereum. A compatibilidade com contratos e carteiras desse ecossistema permite emissão e transferências de BETTEX; o backend acompanha confirmações e concilia os eventos com os registros da conta. As chaves e os dados da carteira do titular são exportáveis.</p>
           <p>Conheça a tecnologia: <a href="https://docs.arbitrum.io/" target="_blank" rel="noopener noreferrer">documentação oficial da Arbitrum</a>.</p>
         </div>
         <ArbitrumFlowDiagram />
-        <div className="whitepaper__lead" id="documentacao-operacao-usdc"><span>VERSÃO INICIAL · OPERAÇÃO CRIPTO, VISÃO DE VALOR LOCAL</span><p>Os saldos financeiros, depósitos, saques e distribuições da pessoa são denominados e movimentados em <strong>USDC</strong>. A interface mostra uma <strong>estimativa desse valor na moeda fiduciária da pessoa</strong> — reais, por exemplo — para facilitar a leitura. O saque continua em USDC, com referência em dólar: a estimativa não é saldo fiduciário nem valor a receber em moeda local. A entrada com fiat ocorre por provedores externos de on-ramp. Distribuições exigem lucro elegível ao split, considerando posições abertas, conciliação e reservas atendidas.</p></div>
+        <div className="whitepaper__lead" id="documentacao-operacao-usdc"><span>VERSÃO INICIAL · OPERAÇÃO CRIPTO, VISÃO DE VALOR LOCAL</span><p>Os saldos financeiros, depósitos, saques e distribuições da pessoa são denominados e movimentados em <strong>USDC</strong>. A interface mostra uma <strong>estimativa desse valor na moeda fiduciária da pessoa</strong> para facilitar a leitura. O saque continua em USDC, com referência em dólar: a estimativa não é saldo fiduciário nem valor a receber em moeda local. A entrada com fiat ocorre por provedores externos de on-ramp. Distribuições exigem lucro elegível ao split, considerando posições abertas, conciliação e reservas atendidas.</p></div>
         <div className="whitepaper__currency-grid">
-          <div><span>01 / SALDO E VISÃO DE VALOR</span><strong>USDC</strong><p>Saldo efetivo em USDC, com valor estimado na moeda da pessoa na interface — reais, por exemplo. A estimativa não altera o ativo nem a moeda do saque.</p></div>
+          <div><span>01 / SALDO E VISÃO DE VALOR</span><strong>USDC</strong><p>Saldo efetivo em USDC, com valor estimado na moeda fiduciária da pessoa na interface. A estimativa não altera o ativo nem a moeda do saque.</p></div>
           <div><span>02 / ENTRADA COM FIAT</span><strong>On-ramp externo</strong><p>O provedor converte a moeda da pessoa em USDC, com sua cotação e seus custos. A BETTEX credita somente o valor líquido recebido e confirmado.</p></div>
           <div><span>03 / SAÍDA DA PLATAFORMA</span><strong>Saques em USDC</strong><p>Transferência cripto para uma carteira compatível, com custos e valor líquido informados. Não há venda de USDC nem pagamento em moeda local pela BETTEX.</p></div>
         </div>
+        <BettexFlow figure="2" />
         <Subhead>O que cada ativo representa</Subhead>
-        <div className="whitepaper__prose"><p><strong>BETTEX</strong> é o token de participação no staking e de pagamento das taxas de serviço nas operações processadas pelo aplicativo oficial. Todo saldo BETTEX disponível na carteira oficial participa automaticamente, sem ativação ou depósito adicional. Os tokens pagos como taxas são transferidos à Fundação para financiar a operação. Os tokens pertencem ao titular e podem ser retirados do aplicativo; retirar BETTEX não significa vendê-lo ou sacar USDC. A retirada processada pelo aplicativo exige a taxa de serviço em BETTEX. Exportar as chaves não movimenta os ativos nem gera taxa de retirada. Transferências realizadas diretamente pelo titular fora do aplicativo não estão sujeitas à taxa de serviço do aplicativo, mas continuam sujeitas aos custos da rede e às regras do contrato do token. <strong>USDC</strong> é o criptoativo utilizado para o saldo financeiro e as movimentações da versão inicial, incluindo os créditos de distribuição. Os dois ativos têm registros separados.</p><p>Os serviços devem validar o contrato do ativo, a rede, a origem, o destino e as confirmações antes de reconhecer um depósito ou concluir um saque. O fluxo exige uma rede e uma versão de USDC compatíveis; um comprovante de pagamento fiat ao on-ramp não substitui a confirmação do recebimento de USDC. Divergências mantêm o movimento pendente até conciliação.</p></div>
+        <div className="whitepaper__prose"><p><strong>BETTEX</strong> é o token de participação no staking. Todo BETTEX disponível na carteira oficial participa automaticamente, sem ativação ou depósito adicional. Os tokens pertencem ao titular; enviá-los a outra carteira não significa vendê-los ou sacar USDC. <strong>USDC</strong> é o ativo dos saldos financeiros, movimentações, créditos de distribuição e pagamentos de serviços. As taxas de serviço são pagas em USDC, não em BETTEX. Os ativos têm registros separados.</p><p>Os serviços devem validar contrato, rede, origem, destino e confirmações antes de reconhecer um depósito ou concluir um saque. O fluxo exige rede e versão compatíveis de USDC; um comprovante fiat do on-ramp não substitui a confirmação do recebimento. Divergências mantêm o movimento pendente até conciliação.</p></div>
+        <AssetRolesSchematic />
         <div className="whitepaper__aside-callout"><span>BETTEX BANK · PROPOSTA FUTURA</span><p>A conversão de USDC para a moeda da pessoa e pagamentos ou saques fiduciários pertencem à proposta futura do BETTEX Bank, distante da operação inicial. Esse fluxo exigirá venda de USDC, cotação, liquidez, taxas, descontos aplicáveis, conciliação e estrutura jurídica própria. A versão inicial não oferece esse serviço nem opera uma exchange de fiat.</p></div>
       </>;
     case 2:
@@ -115,46 +129,51 @@ export function ChapterContent({ index }: { index: number }) {
           { label: 'ACESSO', value: 'Controle da carteira', text: 'Sem enviar chave privada ou frase de recuperação ao servidor.' },
           { label: 'STAKING', value: 'No aplicativo', text: 'Piscina fechada; não exige manter a sessão aberta continuamente.' },
         ]} />
-        <div className="whitepaper__lead"><span>ACESSO PELA CARTEIRA</span><p>O modelo do projeto prevê uma área pessoal vinculada à <strong>Carteira BETTEX, gerada na criação da conta</strong>. O acesso utiliza os dados dessa carteira e dados básicos de cadastro, <strong>sem KYC nem documentos de identificação no modelo atual</strong>.</p></div>
+        <div className="whitepaper__lead"><span>ACESSO PELA CARTEIRA</span><p>A área pessoal é vinculada à <strong>Carteira BETTEX, gerada na criação da conta</strong>. O acesso utiliza os dados dessa carteira e dados básicos de cadastro, <strong>sem KYC nem documentos de identificação</strong>.</p></div>
         <Flow label="Autenticação e autorização" steps={['Criar a conta com dados básicos; a carteira da pessoa é gerada na criação da conta. Depois, acessar a área pessoal com os dados dessa carteira.', 'O servidor verifica que a pessoa controla a carteira, sem receber chave privada nem frase de recuperação, e abre uma sessão protegida, com expiração, revogação e trilha de auditoria.', 'Depósitos em USDC exigem recebimento e confirmação on-chain. Saques exigem autorização, saldo disponível, destino e rede compatíveis, além de conciliação da transferência.', 'Uma compra debita USDC e credita BETTEX uma única vez, após confirmação da liquidação; a participação começa no horário do saldo BETTEX final confirmado.', 'A área pessoal apresenta os saldos separados em USDC e BETTEX, os custos e valores líquidos, os lançamentos conciliados e o histórico do agente.']} />
         <Subhead>Carteira, chaves e exportação</Subhead>
         <div className="whitepaper__prose">
           <p>A Carteira BETTEX é a carteira da pessoa criada com a conta no aplicativo oficial; ela pertence ao titular, não à tesouraria do projeto. Ela é livre e portátil: <strong>as chaves e os dados do usuário são exportáveis</strong> por iniciativa do próprio titular. O projeto incentiva a <strong>autocustódia</strong>. Exportar esses dados não é uma etapa do login e não movimenta, por si só, os tokens.</p>
-          <p>A autenticação descrita na <strong>v1</strong> demonstra o controle da carteira sem transmitir chave privada ou frase de recuperação ao servidor. O modelo de acesso utiliza dados básicos e as credenciais da carteira, não uma identidade civil verificada. Arbitrum One é a rede de referência do token. O detalhamento da biblioteca criptográfica e do protocolo de autenticação faz parte da evolução técnica documentada em novas versões.</p>
-          <p>As funções aqui descritas são requisitos do modelo do projeto, não uma confirmação de que geração de carteira, acesso por carteira ou exportação já estejam implementados na demonstração.</p>
+          <p>A autenticação descrita na <strong>v1</strong> demonstra o controle da carteira sem transmitir chave privada ou frase de recuperação ao servidor. O modelo de acesso utiliza dados básicos e as credenciais da carteira, não uma identidade civil verificada. Arbitrum One é a rede de referência do token.</p>
         </div>
+        <WalletAccessSchematic />
+
         <Subhead>Staking no aplicativo</Subhead>
-        <div className="whitepaper__prose"><p>A liberdade da carteira não torna o staking independente do projeto. A <strong>piscina de staking é fechada e exige acesso ao aplicativo</strong>; exportar a carteira ou utilizá-la fora do app não permite operar essa piscina por conta própria. Isso não exige manter a sessão aberta continuamente. Todo BETTEX disponível na carteira oficial do projeto participa automaticamente, sem ativação nem depósito adicional, conforme a quantidade e o tempo elegível em cada rodada diária UTC. Quem vende ou retira deixa de acumular participação sobre a quantidade que saiu, mas conserva o peso do período elegível anterior à saída; não precisa permanecer até o pagamento. Entradas posteriores não recebem participação por períodos anteriores à confirmação de seu saldo. Os ganhos são pagos na Carteira USDC, nunca na Carteira BETTEX de staking.</p></div>
+        <div className="whitepaper__prose"><p>A liberdade da carteira não torna o staking independente do projeto. A <strong>piscina de staking é fechada e exige acesso ao aplicativo</strong>; exportar a carteira ou utilizá-la fora do app não permite operar essa piscina por conta própria. Isso não exige manter a sessão aberta continuamente. Todo BETTEX disponível na carteira oficial participa automaticamente, sem ativação nem depósito adicional, conforme quantidade e tempo elegível na rodada diária UTC. Qualquer saída de BETTEX, mesmo parcial, zera o peso anterior e cancela todos os créditos do ciclo acumulados até a saída e ainda não pagos. Novos participantes nunca recebem lucros anteriores à sua elegibilidade. Os ganhos são pagos na Carteira USDC, nunca na Carteira BETTEX.</p></div>
+
         <StakingDistribution />
-        <div className="whitepaper__prose"><p>A preservação do peso anterior à saída vale para aquela rodada. Se o lucro ficar retido para recomposição, uma distribuição futura usa os pesos da rodada em cuja apuração o split é autorizado, não os pesos da rodada de origem. Participantes novos podem receber lucros anteriores, sem receber peso por tempo anterior à entrada. O lucro retido não constitui crédito individual garantido.</p></div>
+        <div className="whitepaper__prose"><p>Cada rodada paga ou não paga e não retorna depois. Lucro não distribuído fica na tesouraria, sem crédito acumulado ou liberação futura. Novos participantes não recebem lucros de rodadas anteriores. Qualquer saída de BETTEX cancela os créditos anteriores ainda não pagos do ciclo, inclusive os já apurados ou autorizados.</p></div>
         <Subhead>Sessão e autorização de pagamento</Subhead>
         <div className="whitepaper__prose">
           <p>A entrada com moeda fiduciária utiliza <strong>provedores externos de on-ramp</strong>: a pessoa contrata a conversão para USDC no ambiente do provedor. Isso não cria um saldo fiat na BETTEX nem um serviço de saque fiduciário. A autenticação na BETTEX comprova o controle da carteira e não autoriza, por si só, uma movimentação.</p>
           <p>Qualquer <strong>verificação de identidade ou KYC exigido pelo provedor</strong> ocorre em seu próprio aplicativo ou ambiente, conforme suas regras. Esses processos são separados do cadastro, do login e da recuperação de acesso da BETTEX: <strong>o KYC do provedor não integra o sistema de autenticação por carteira do projeto</strong>. O acesso atual à BETTEX continua baseado nos dados da carteira e em dados básicos de cadastro, sem KYC nem documentos de identificação.</p>
           <p>A integração financeira acompanha o on-ramp e concilia o USDC efetivamente recebido na rede, sem confundir pagamento fiat ao provedor, confirmação cripto e verificação de identidade. O backend valida a solicitação, o vínculo com a conta, a autorização e o saldo antes de registrar o efeito financeiro. Cada confirmação deve ser processada de forma idempotente, para que mensagens repetidas ou retomadas de serviço não creditem nem transfiram duas vezes.</p>
-          <p>Troca de aparelho e recuperação de acesso respeitam o controle da carteira pelo titular. A v1 estabelece esse princípio; novas versões documentarão os procedimentos de recuperação, mantendo a separação do KYC de provedores externos e sem pressupor verificação documental de identidade. Compras e alterações da posição BETTEX passam pelo backend, com autorização da conta e registro dos eventos relevantes. As ordens do agente não podem ser iniciadas por uma sessão comum de usuário nem contornar as autorizações próprias da operação. Autenticação da carteira, autorização financeira e autorização de operações do agente permanecem controles distintos.</p>
+          <p>Troca de aparelho e recuperação de acesso respeitam o controle da carteira pelo titular. Compras e alterações da posição BETTEX passam pelo backend, com autorização da conta e registro dos eventos relevantes. As ordens do agente não podem ser iniciadas por uma sessão comum de usuário nem contornar as autorizações próprias da operação. Autenticação da carteira, autorização financeira e autorização de operações do agente permanecem controles distintos.</p>
         </div>
       </>;
     case 3:
       return <>
         <div className="whitepaper__lead"><span>UM AGENTE, RESPONSABILIDADES SEPARADAS</span><p>A arquitetura separa apresentação, registros em USDC e BETTEX, operação do agente, conectores de mercado e supervisão. A entrada fiat é convertida por on-ramp externo; o restante do fluxo financeiro da pessoa é cripto. Nenhum conector pode aprovar ou executar uma operação fora dos controles centrais. Um saldo só deve ser exibido como disponível após conciliação.</p></div>
-        <BettexArchitecture surface="dark" />
+        <BettexFlow figure="4" />
         <div className="whitepaper__system">
           <div><span>01 / INTERFACE</span><strong>Saldos USDC e BETTEX</strong><p>Exibe os ativos separados e a estimativa do valor financeiro em moeda local, além de custos, valores líquidos e participação automática. A visualização não converte o saldo USDC.</p></div>
           <div><span>02 / SERVIDOR</span><strong>API e livro contábil</strong><p>Autentica a conta, registra lançamentos em USDC e BETTEX corrigíveis por ajuste identificado, calcula limites e saldos elegíveis, processa compras e impede pedidos repetidos.</p></div>
-          <div><span>03 / AGENTE BETTEX</span><strong>Smart contract, análises e conectores</strong><p>O agente de IA BETTEX se conecta à tesouraria por seu smart contract, que formaliza as regras de acesso ao capital, reservas e autorizações. Os serviços de análise e conectores externos cruzam dados, probabilidades, preços, liquidez, execução e risco, comparam oportunidades nos quatro mercados e operam somente após aprovação independente de risco. A IA apura e concilia o lucro realizado líquido, considera o valor das posições abertas e limita o lucro elegível ao ganho patrimonial líquido acima da base de referência. Sem avaliação confiável das posições, a distribuição fica suspensa até conciliação. Reserva ou liquidez insuficiente, ou soma dos pesos elegíveis zero, mantém 100% do lucro temporariamente na tesouraria, sem split nessa apuração. Somente com reservas e liquidez atendidas antes/depois, lucro elegível positivo e soma dos pesos elegíveis positiva, aplica automaticamente o split sobre o valor elegível: 75% para a tesouraria e 25% para o staking, pagos nas Carteiras USDC dos participantes elegíveis, sem enviar todo o lucro primeiro à tesouraria.</p></div>
+          <div><span>03 / AGENTE BETTEX</span><strong>Análises, contratos e conectores</strong><p>Análises e conectores operam fora da rede; contratos aplicam as permissões executáveis on-chain. O núcleo de risco verifica cada operação dentro do mandato. A apuração concilia resultados, posições abertas e obrigações antes de autorizar o split 75%/25%. Esse split define a destinação do resultado, não uma nova entrada de capital: reter os 75% não exige uma transferência fictícia, e atribuir os 25% não confirma seu recebimento. O crédito só fica disponível após liquidação conciliada em USDC.</p></div>
           <div><span>04 / LIQUIDAÇÃO E SUPERVISÃO</span><strong>Serviços operacionais</strong><p>O backend concilia transferências de USDC e BETTEX e o recebimento do on-ramp externo; controles independentes verificam ordens e operadores autorizados aprovam intervenções críticas, pausas e conciliações.</p></div>
         </div>
         <DistributionTaxes />
-        <ProfitAccounting />
-        <DistributionSettlement />
-        <DistributionCorrections />
+        <TechnicalDetails title="Apuração do lucro, perdas permanentes e exemplos">
+          <ProfitAccounting />
+        </TechnicalDetails>
+        <TechnicalDetails title="Liquidação: créditos pendentes, confirmações e correções">
+          <DistributionSettlement />
+          <DistributionCorrections />
+        </TechnicalDetails>
         <Subhead>Dados que precisam bater</Subhead>
         <div className="whitepaper__prose">
-          <p>Antes de cada operação, BETTEX reúne dados, probabilidades, preços, liquidez, execução, exposição e risco, compara oportunidades nos quatro mercados e prioriza as mais vantajosas segundo essas análises e os limites e reservas vigentes. A operação não é automática em todos os mercados; a análise orienta a decisão, mas não garante resultado.</p>
-          <p><strong>BETTEX determina a participação no staking e paga taxas de serviço à Fundação.</strong> O registro distingue saldo pessoal disponível, tokens reservados para taxas e transferências confirmadas à carteira institucional. A taxa não reduz a oferta: o saldo pago deixa de estar disponível ao titular, preservando seu peso anterior na rodada. BETTEX não é capital das estratégias dos agentes nem participação societária. Os ganhos são creditados em USDC, nunca em BETTEX.</p>
+          <p><strong>BETTEX determina a participação no staking; os serviços são pagos em USDC.</strong> A tarifa não reduz o saldo BETTEX nem a oferta. Entradas contam a partir da confirmação. Qualquer saída de BETTEX, mesmo parcial, zera o peso anterior e cancela os créditos do ciclo acumulados até a saída e ainda não pagos. BETTEX não é capital das estratégias dos agentes nem participação societária. Os ganhos são creditados em USDC, nunca em BETTEX.</p>
           <p>Cada movimento financeiro em <strong>USDC</strong> deve conter identificador único, conta, ativo, rede, origem, destino, valor bruto, custos, valor líquido, estado e referência externa. Após confirmação da liquidação, os lançamentos correspondentes devem ser registrados juntos e uma única vez. Uma mensagem repetida não pode duplicar os efeitos: o mesmo identificador tem um único efeito contábil. Registrar um movimento não confirma uma transferência on-chain ainda pendente.</p>
-          <p>A <strong>venda pública de BETTEX pelo projeto</strong> é um fluxo separado das operações dos agentes. Pode ocorrer no aplicativo ou por venda direta a corretoras, sem depender de swaps: o pagamento é em USDC e 100% dos recursos recebidos vão para a tesouraria. No aplicativo, a quantidade adquirida é registrada na Carteira BETTEX para staking; a venda direta a corretoras exige um fluxo próprio de entrega e conciliação. Os aportes ligados à parcela de 15% dos investidores têm outra destinação: 50% para a tesouraria e 50% para capital inicial e desenvolvimento. Nenhum desses fluxos autoriza usar BETTEX como capital nas estratégias dos agentes.</p>
+          <p>A <strong>venda pública</strong> no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria; a tarifa adicional do aplicativo tem destino operacional próprio. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida. Os aportes vinculados aos investidores seguem a destinação 50%/50% do capítulo de emissão.</p>
           <p>A conciliação compara USDC recebido, incluindo entradas por on-ramp, saldos e movimentos dos dois ativos, resultados por mercado, custos, reservas e obrigações em USDC. Cada conector informa origem, horário e estado; a visão consolidada permite verificar o risco global. Diferenças devem congelar o fluxo afetado e gerar investigação, nunca saldo artificial. Monitoramento, auditoria e alertas são requisitos operacionais.</p>
         </div>
         <Subhead>Agentes, MCP e APIs de mercado</Subhead>
@@ -163,7 +182,7 @@ export function ChapterContent({ index }: { index: number }) {
         <Subhead>Robinhood: dados e execução de mercado</Subhead>
         <div className="whitepaper__prose">
           <p>A <strong>Robinhood</strong> faz parte da apresentação técnica como uma possibilidade de conector para o mercado de ações e criptoativos. O conector deve separar leitura de preços e posições, proposta de ordem, aprovação pelo núcleo de risco, execução e conciliação do resultado. A conta operacional do projeto não é a carteira pessoal do titular.</p>
-          <p>A <a href="https://docs.robinhood.com/crypto/trading" target="_blank" rel="noopener noreferrer">Robinhood Crypto Trading API</a> documenta consultas de mercado e conta, envio e cancelamento de ordens de <strong>criptoativos</strong>, com disponibilidade para clientes nos Estados Unidos. Essa API não estabelece acesso equivalente para negociação de ações: esse caminho requer um canal autorizado próprio. O desenho apresenta a integração possível, não uma conexão já ativa ou uma autorização de uso obtida.</p>
+          <p>A <a href="https://docs.robinhood.com/crypto/trading" target="_blank" rel="noopener noreferrer">Robinhood Crypto Trading API</a> documenta consultas e ordens de <strong>criptoativos</strong>, com disponibilidade para clientes nos Estados Unidos; não estabelece acesso equivalente para ações. Cada canal precisa de autorização e custódia e liquidação compatíveis com a operação cripto inicial. Um conector que exija caixa fiduciário próprio não integra esse escopo.</p>
         </div>
         <RobinhoodFlowDiagram />
         <Subhead>Allora: integração possível de inferências</Subhead>
@@ -176,7 +195,7 @@ export function ChapterContent({ index }: { index: number }) {
         <div className="whitepaper__prose" id="documentacao-expansao-integracoes">
           <p>As integrações com <strong>plataformas de trading e casas de apostas</strong> serão ampliadas futuramente, junto com o desenvolvimento de agentes mais complexos e especializados. Essa expansão inclui conectores de dados e execução para os mercados atendidos pela BETTEX.</p>
           <p>Serão desenvolvidos agentes específicos para <strong>surebet (surebetting) nos esportes</strong>, com comparação de odds e coordenação de apostas entre casas para cobrir os resultados do evento, e para <strong>bonus hunting (mineração de bônus) em cassinos</strong>, com análise de promoções, condições de cada oferta, requisitos de aposta e regras de elegibilidade.</p>
-            <p>Esses desenvolvimentos fazem parte da expansão futura, não de integrações já ativas. Os novos agentes e conectores seguirão os mesmos controles de autorização, risco e reservas, com regras e transações públicas. <strong>BETTEX serve para staking e pagamento de taxas de serviço à Fundação nas operações do aplicativo oficial</strong>, mas não será usado como capital de trading, apostas ou promoções.</p>
+          <p>Esses desenvolvimentos fazem parte da expansão futura, não de integrações já ativas. Os novos agentes e conectores seguirão os mesmos controles de autorização, risco e reservas, com regras e transações públicas. <strong>BETTEX serve para staking; taxas de serviço são pagas em USDC</strong>. BETTEX não será usado como capital de trading, apostas ou promoções.</p>
         </div>
       </>;
     case 4:
@@ -192,19 +211,20 @@ export function ChapterContent({ index }: { index: number }) {
           { label: 'EMISSÃO', value: '1 bilhão', text: 'Teto total de BETTEX.' },
           { label: 'ALOCAÇÃO', value: '65 / 20 / 15', text: 'Venda pública, fundador, investidores.' },
           { label: 'VESTING', value: '36 meses', text: 'Cronograma predefinido de liberação.' },
-          { label: 'VENDA PÚBLICA', value: '100% USDC', text: 'Recebido vai direto à tesouraria.' },
+          { label: 'VENDA PÚBLICA', value: '100% do preço', text: 'USDC dos tokens vai à tesouraria; tarifa é adicional.' },
         ]} />
+        <TokenAllocationSchematic />
         <Subhead>Regras e requisitos de emissão</Subhead>
         <div className="whitepaper__rule-pair" data-testid="documentacao-novas-vendas">
           <div><span>EMISSÃO E VENDA / CRONOGRAMA DE VESTING</span><p><strong>A liberação de BETTEX segue o cronograma predefinido de vesting de 36 meses</strong>, na proporção de 65% para venda pública, 20% para o fundador e 15% para investidores. Não cabe à gestão decidir quando abrir novas liberações nem quantos tokens liberar conforme as reservas: meses e quantidades já estão definidos na agenda. A venda pública utiliza apenas sua parcela liberada, sem antecipar tokens ou ultrapassar o teto de 1 bilhão. Liberação não significa venda realizada.</p></div>
-          <div><span>USDC DA VENDA PÚBLICA → TESOURARIA</span><p><strong>100% do USDC recebido na venda pública vai para a tesouraria do projeto, inclusive nas vendas diretas a corretoras, nunca para carteiras individuais.</strong> Isso se refere à parcela de 65%, não aos aportes vinculados aos 15% dos investidores nem às vendas pessoais do fundador. A receita de venda é separada dos ganhos pagos ao staking nas Carteiras USDC.</p></div>
+          <div><span>PREÇO DOS TOKENS DA VENDA PÚBLICA → TESOURARIA</span><p><strong>100% do preço dos tokens, pago em USDC, vai à tesouraria, inclusive nas vendas diretas a corretoras.</strong> A tarifa adicional do aplicativo vai ao caixa operacional e não reduz esse preço. A regra vale para os 65% públicos, não para aportes dos investidores, vendas pessoais do fundador ou ganhos de staking.</p></div>
         </div>
         <div className="whitepaper__prose">
-          <p>A emissão total aprovada é de <strong>1 bilhão de BETTEX</strong>: <strong>{formatTokenCount(tokenomics.publicSaleAllocation)} (65%)</strong> para venda pública, <strong>{formatTokenCount(tokenomics.teamAllocation)} (20%)</strong> reservados ao fundador, e <strong>{formatTokenCount(tokenomics.investorAllocation)} (15%)</strong> para investidores. Fundador e investidores somam 35% da emissão; os 65% restantes são vendidos pelo projeto, com 100% da receita em USDC destinada diretamente à tesouraria. O fundador decide quanto de sua parcela destinar ao time.</p>
-          <p>A compra no aplicativo é liquidada em USDC e só é concluída após confirmação conciliada. O débito de USDC, a quantidade bruta comprada, a taxa em BETTEX transferida à Fundação e a quantidade líquida creditada ao titular são registrados juntos e uma única vez. O saldo líquido disponível na carteira oficial passa a participar automaticamente do staking. Essa aquisição não é uma operação de mercado dos agentes. A tela de compra do aplicativo não envia tokens a uma carteira externa escolhida na hora; o crédito é lançado na carteira gerada com a conta. Essa regra da tela não impede a venda direta a corretoras em um fluxo próprio. Recibos identificam preço em USDC, percentual e cotação da taxa, custos, quantidades bruta e líquida, destinos e conta.</p>
-          <p><strong>BETTEX serve para staking e pagamento de taxas de serviço à Fundação nas operações processadas pelo aplicativo oficial.</strong> Não é usado como capital nas estratégias dos agentes nem representa participação na empresa. Essas funções não impedem o fundador de vender ou distribuir sua parcela já liberada. Novas versões aprofundarão os mecanismos de custódia das chaves administrativas, aprovação de mudanças e atualização. Auditoria independente permanece um requisito da implementação.</p>
+          <p>A compra no aplicativo é liquidada em USDC após confirmação conciliada. O preço destinado à tesouraria, a tarifa separada em USDC destinada à entidade e a quantidade de BETTEX creditada são registrados juntos e uma única vez, sem deduzir taxa em tokens. Todo BETTEX disponível na carteira oficial passa a participar automaticamente do staking. A aquisição não é investimento dos agentes. A compra credita a carteira gerada com a conta, não um endereço externo escolhido na hora; a venda direta a corretoras tem fluxo próprio. O recibo identifica preço, tarifa fixa, cotação pertinente, custos, tokens adquiridos, destinos e conta.</p>
+          <p><strong>BETTEX serve para staking, não pagamento de taxas ou participação societária.</strong> Não é capital das estratégias. O fundador pode vender ou distribuir sua parcela liberada. Novas versões aprofundarão custódia das chaves administrativas, aprovação de mudanças e atualização. Auditoria independente permanece requisito da implementação.</p>
         </div>
         <SaleChannels />
+        <TechnicalDetails title="Canais de venda: entrega e conciliação com corretoras">
         <div id="documentacao-venda-corretoras">
           <Subhead>Venda direta a corretoras para formar a tesouraria</Subhead>
           <div className="whitepaper__prose">
@@ -213,6 +233,7 @@ export function ChapterContent({ index }: { index: number }) {
             <p>O fluxo de venda à corretora deve identificar a contraparte, a quantidade de BETTEX, o pagamento em USDC e a carteira de entrega, com confirmação, conciliação e registro público da transação. A previsão desse canal não significa parceria, listagem ou integração com uma corretora já ativa.</p>
           </div>
         </div>
+        </TechnicalDetails>
         <ServiceFees />
         <VestingSchedule />
         <div id="documentacao-aportes-investidores">
@@ -227,18 +248,22 @@ export function ChapterContent({ index }: { index: number }) {
           </div>
         </div>
         <FoundationFunding />
-        <FeeProjections />
+        <OperatingBreakEven />
+        <TechnicalDetails title="Projeções de taxas e planilha: premissas, operações e caixa">
+          <FeeProjections />
+        </TechnicalDetails>
         <TokenHolderRights />
         <div className="whitepaper__aside-callout"><span>REQUISITOS DE VENDA</span><p>A compra é paga em USDC confirmado. Quem entra com fiat primeiro adquire USDC por on-ramp externo, sujeito à cotação e aos custos do provedor. A oferta deve informar o preço em USDC e os custos aplicáveis antes da confirmação, sem presumir equivalência entre valores nominais de moedas diferentes. O processamento depende de controles operacionais e autorização jurídica.</p></div>
       </>;
     case 6:
       return <>
-        <div className="whitepaper__lead"><span>TESOURARIA · AJUSTES SUJEITOS À APROVAÇÃO</span><p><strong>A IA sugere ajustes nas regras da tesouraria e nos controles de risco; as sugestões entram em uma fila para execução e precisam de aprovação da liderança da Fundação BETTEX.</strong> O agente da tesouraria propõe otimizações em conjunto com os agentes de investimento, considerando reservas, liquidez e exposição. Essa evolução pode incluir os limites e percentuais apresentados nesta seção, mas nenhuma sugestão altera as regras antes de sua aprovação e execução.</p></div>
+        <div className="whitepaper__lead"><span>TESOURARIA · AJUSTES SUJEITOS À APROVAÇÃO</span><p><strong>A IA sugere ajustes nas regras da tesouraria e nos controles de risco; as sugestões entram em uma fila para execução e precisam de aprovação da liderança da empresa BETTEX.</strong> O agente da tesouraria propõe otimizações em conjunto com os agentes de investimento, considerando reservas, liquidez e exposição. Essa evolução pode incluir os limites e percentuais apresentados nesta seção, mas nenhuma sugestão altera as regras antes de sua aprovação e execução.</p></div>
         <ReservePolicy />
         <InvestmentRiskBase />
+        <BettexFlow figure="5" />
         <div className="whitepaper__prose">
-          <p>Os controles aplicam as regras vigentes em cada momento. Enquanto uma sugestão aguarda aprovação ou execução, continuam valendo as regras anteriores. Cada mudança deve registrar a proposta, a justificativa, a aprovação da liderança da Fundação BETTEX, a execução e o momento de vigência. As verificações independentes de risco continuam obrigatórias para as operações dos agentes.</p>
-          <p>Os percentuais abaixo são <strong>parâmetros iniciais, cuja alteração depende de aprovação da liderança da Fundação BETTEX e execução registrada</strong>, e usam como base o <strong>patrimônio líquido atualizado da parcela investível</strong>, conforme a definição acima, não o patrimônio inteiro nem apenas o caixa livre. São tetos de risco, não percentuais fixos de distribuição dos investimentos entre mercados. Uma verificação central independente das estratégias deve recusar qualquer nova ordem de investimento que ultrapasse um limite vigente. Reduções de posições na pausa por perda diária seguem a <a href="#documentacao-reducao-na-pausa">regra específica de fechamento</a>, sem dispensar os demais controles. <strong>Ordens pendentes contam</strong> nos compromissos e na exposição; registrar a ordem apenas depois de executá-la não basta. O total de exposições correlacionadas é consolidado entre mercados, mesmo quando conectores diferentes estejam envolvidos.</p>
+          <p>Os controles aplicam as regras vigentes em cada momento. Enquanto uma sugestão aguarda aprovação ou execução, continuam valendo as regras anteriores. Cada mudança deve registrar a proposta, a justificativa, a aprovação da liderança da empresa BETTEX, a execução e o momento de vigência. As verificações independentes de risco continuam obrigatórias para as operações dos agentes.</p>
+          <p>Os percentuais abaixo são <strong>parâmetros iniciais, cuja alteração depende de aprovação da liderança da empresa BETTEX e execução registrada</strong>, e usam como base o <strong>patrimônio líquido atualizado da parcela investível</strong>, conforme a definição acima, não o patrimônio inteiro nem apenas o caixa livre. São tetos de risco, não percentuais fixos de distribuição dos investimentos entre mercados. Uma verificação central independente das estratégias deve recusar qualquer nova ordem de investimento que ultrapasse um limite vigente. Reduções de posições na pausa por perda diária seguem a <a href="#documentacao-reducao-na-pausa">regra específica de fechamento</a>, sem dispensar os demais controles. <strong>Ordens pendentes contam</strong> nos compromissos e na exposição; registrar a ordem apenas depois de executá-la não basta. O total de exposições correlacionadas é consolidado entre mercados, mesmo quando conectores diferentes estejam envolvidos.</p>
         </div>
         <div className="whitepaper__limits">
           <div><span>01 / NOVOS COMPROMISSOS POR DIA</span><strong>2% <em>global</em> / 0,5% <em>por mercado</em></strong><p>Soma dos novos compromissos autorizados e com reserva registrada no dia UTC, uma vez por operação. Cancelamento não reduz o acumulado; pedidos recusados antes da autorização e reserva não entram.</p></div>
@@ -249,34 +274,44 @@ export function ChapterContent({ index }: { index: number }) {
         </div>
         <Subhead>Como o bloqueio funcionaria</Subhead>
         <div className="whitepaper__prose"><p>A API de execução não deve aceitar ordens diretas de uma estratégia ou conector. O núcleo central verifica caixa livre, reservas existentes, exposição por mercado e correlação, perdas realizadas e autorização da integração; a verificação dos limites e o registro da reserva da operação são indivisíveis e devem concluir <strong>antes</strong> de enviá-la. Ordens distintas e simultâneas consideram as reservas umas das outras, sem reutilizar o mesmo capital ou exceder os limites conjuntos. Repetir o mesmo pedido não pode consumir o limite duas vezes nem gerar duas ordens. Falta de cotação confiável, divergência de saldo ou perda de comunicação impede novas ordens até reconciliação.</p><p>Não há alavancagem. Uma pausa de emergência, controlada por pessoas autorizadas e registrada em auditoria, pode impedir novas operações independentemente dos limites; a política de cancelamento de ordens pendentes também precisa ser testada. Limites reduzem exposição, mas não evitam perdas nem autorizam atuação onde a lei, as regras do mercado ou a plataforma proíbem. Operações de cassino mantêm os mesmos tetos e podem perder rapidamente por acaso, variância e vantagem da casa.</p></div>
-        <OrderReservations />
-        <AuthorizedRequestIntegrity />
-        <CoordinatedProposals />
-        <AuthorizedOperationCosts />
-        <RiskPrecision />
-        <QuoteValidity />
-        <ExecutionConditions />
-        <CoordinatedContinuation />
-        <RiskRuleTransitions />
-        <DailyCommitments />
-        <DailyRealizedLosses />
-        <RiskReducingClosures />
-        <FinancialEventTiming />
-        <OrderReconciliation />
-        <OutOfOrderResponses />
+        <RiskAuthorizationSchematic />
+        <TechnicalDetails title="Autorizar e executar: reservas, integridade, custos e propostas coordenadas">
+          <OrderReservations />
+          <AuthorizedRequestIntegrity />
+          <CoordinatedProposals />
+          <AuthorizedOperationCosts />
+          <RiskPrecision />
+          <QuoteValidity />
+          <ExecutionConditions />
+          <CoordinatedContinuation />
+        </TechnicalDetails>
+        <TechnicalDetails title="Limites e calendário: mudança de regras, compromissos e perdas diárias">
+          <RiskRuleTransitions />
+          <DailyCommitments />
+          <DailyRealizedLosses />
+          <RiskReducingClosures />
+          <FinancialEventTiming />
+        </TechnicalDetails>
+        <TechnicalDetails title="Conciliação de ordens: respostas tardias e fora de ordem">
+          <OrderReconciliation />
+          <OutOfOrderResponses />
+        </TechnicalDetails>
       </>;
     case 7:
       return <>
         <div className="whitepaper__lead"><span>REQUISITOS DE OPERAÇÃO SEGURA</span><p>Os componentes financeiros, o agente BETTEX e a infraestrutura de ativos devem operar com controles verificáveis, separação de responsabilidades e capacidade de interromper fluxos inseguros sem perder o histórico contábil.</p></div>
+        <FundSecurity />
         <div className="whitepaper__steps">
-          <div><span>01</span><p>Aplicar controle de acesso mínimo, autenticação forte para operadores e segregação de funções. Sugestões da IA para alterar regras da tesouraria ou limites de risco entram em uma fila e só podem ser executadas após aprovação da liderança da Fundação BETTEX, com trilha auditável. Mudanças em contratos, permissões e destinos de ativos exigem aprovação por múltiplos responsáveis autorizados pela liderança e registro auditável.</p></div>
+          <div><span>01</span><p>Aplicar controle de acesso mínimo, autenticação forte para operadores e segregação de funções. Sugestões da IA para alterar regras da tesouraria ou limites de risco entram em uma fila e só podem ser executadas após aprovação da liderança da empresa BETTEX, com trilha auditável. Mudanças em contratos, permissões e destinos de ativos exigem aprovação por múltiplos responsáveis autorizados pela liderança e registro auditável.</p></div>
           <div><span>02</span><p>Proteger chaves com armazenamento e procedimentos de recuperação definidos; estabelecer limites de assinatura e política de revogação. Endereços de contratos, ativos e tesouraria devem ser verificados por fontes independentes antes de serem usados.</p></div>
           <div><span>03</span><p>Testar contratos, integrações, indexadores, conectores de mercado e livro contábil contra duplicidade, reordenação de blocos, falha de rede, divergência de saldo, repetição de mensagens e recuperação. Exigir auditoria independente dos contratos e controles de custódia.</p></div>
           <div><span>04</span><p>Monitorar saldos, obrigações, limites globais e por mercado e integrações; emitir alertas acionáveis e manter procedimentos de resposta a incidentes. A pausa de emergência deve bloquear novas ordens sem apagar obrigações já atribuídas; retomada após incidente depende de conciliação e autorização registrada.</p></div>
         </div>
-        <RiskStateRecovery />
-        <TreasuryFundsInTransit />
-        <div className="whitepaper__prose"><p>Os fluxos financeiros são requisitos pretendidos, não capacidades já implementadas ou em produção. A compra deve registrar débito de USDC e crédito de BETTEX juntos e uma única vez após a liquidação; cada distribuição é lançada uma única vez em USDC. A continuidade preserva registros imutáveis com ajustes identificados, backups testados e conciliação entre transferências on-chain, recebimentos de on-ramp, saldos dos dois ativos, custos, resultados por mercado, tesouraria e saques. Falhas resultam em estado pendente ou bloqueio, nunca confirmação presumida. Custódia, permissões, integrações e conformidade exigem validação técnica e jurídica. A operação inicial cripto não pressupõe autorização de exchange ou banco; a proposta fiduciária do BETTEX Bank demanda estrutura própria antes de qualquer oferta.</p></div>
+        <TechnicalDetails title="Continuidade: recuperar controles e conciliar fundos em trânsito">
+          <RiskStateRecovery />
+          <TreasuryFundsInTransit />
+        </TechnicalDetails>
+        <div className="whitepaper__prose reading-keep"><p> A compra deve registrar débito de USDC e crédito de BETTEX juntos e uma única vez após a liquidação; cada distribuição é lançada uma única vez em USDC. A continuidade preserva registros imutáveis com ajustes identificados, backups testados e conciliação entre transferências on-chain, recebimentos de on-ramp, saldos dos dois ativos, custos, resultados por mercado, tesouraria e saques. Falhas resultam em estado pendente ou bloqueio, nunca confirmação presumida. Custódia, permissões, integrações e conformidade exigem validação técnica e jurídica. A operação inicial cripto não pressupõe autorização de exchange ou banco; a proposta fiduciária do BETTEX Bank demanda estrutura própria antes de qualquer oferta.</p></div>
         <div className="whitepaper__aside-callout"><span>SEQUÊNCIA DO PROJETO</span><p>O <a href={`${import.meta.env.BASE_URL}#roadmap`} data-testid="link-documentacao-roadmap">Roadmap da BETTEX</a> apresenta o percurso da preparação técnica e jurídica à expansão do aplicativo.</p></div>
       </>;
     default:
@@ -292,9 +327,56 @@ export function ChapterContent({ index }: { index: number }) {
         </div>
         <Subhead>Escolhas sujeitas a validação</Subhead>
         <div className="whitepaper__prose"><p>Autenticação por carteira, custódia, contrato e rede de USDC, controles da tesouraria, conciliação on-chain, tratamento de custos, on-ramp externo, emissão e gestão da posição BETTEX, conectores autorizados, arredondamento e resposta a incidentes devem ser validados pelos responsáveis técnicos e jurídicos. Nenhum requisito técnico substitui autorização legal ou controles independentes. A conversão para fiat da proposta futura do BETTEX Bank exige validação separada e não integra o escopo inicial.</p></div>
-        <div className="whitepaper__glossary"><span>GLOSSÁRIO BREVE</span><p><strong>Agente BETTEX:</strong> sistema que analisa e opera mercados sob risco e supervisão comuns. <strong>Estratégia:</strong> análise especializada de mercado. <strong>Conector:</strong> integração autorizada para dados ou execução. <strong>USDC:</strong> stablecoin usada para saldos financeiros, compras, depósitos, distribuições e saques da versão inicial. <strong>Visão de valor:</strong> equivalente estimado do saldo USDC na moeda da pessoa, como reais, sem conversão executada ou alteração do ativo de saque. <strong>Moeda fiduciária:</strong> moeda local da estimativa exibida na interface e da entrada por on-ramp externo; pagamento efetivo nessa moeda pertence à proposta futura do BETTEX Bank, não ao saldo inicial. <strong>On-ramp:</strong> provedor externo que converte fiat em cripto. <strong>Off-ramp:</strong> conversão de cripto para fiat, não oferecida pela BETTEX inicial. <strong>Lucro elegível ao split:</strong> máximo entre zero e o menor valor entre o lucro realizado líquido acumulado ainda não considerado em splits anteriores e o ganho patrimonial líquido acima da base de referência, considerando posições abertas, custos e obrigações. <strong>Dia de lucro:</strong> apuração conciliada em USDC com lucro elegível positivo; a distribuição também depende das reservas atendidas. <strong>Carteira da pessoa:</strong> gerada com a conta, pertencente ao titular, com chaves e dados exportáveis; não é identidade civil verificada. <strong>Participação automática:</strong> saldo BETTEX disponível na carteira oficial acumula peso pela quantidade e pelo tempo elegível na rodada diária UTC; vender ou retirar interrompe o acúmulo sobre a quantidade que saiu, sem apagar o peso anterior. Entradas não recebem participação por períodos anteriores à confirmação do saldo. Ganhos são creditados apenas na Carteira USDC. <strong>Peso de participação:</strong> soma de BETTEX disponível multiplicado pelo tempo elegível em cada intervalo, usada no rateio da parcela distribuível. <strong>Conciliação:</strong> comparação de registros, confirmações e fundos. <strong>Idempotência:</strong> repetir o pedido sem repetir o efeito.</p></div>
-        <div className="whitepaper__prose"><p><strong>Taxa BETTEX:</strong> pagamento de serviço à Fundação em BETTEX, calculado sobre o valor da operação em USDC e convertido pela cotação informada. Os percentuais definidos são 1% na compra de BETTEX do pool e 2% no saque de USDC do pool de staking pelo aplicativo; a tabela distingue taxas definidas de sugestões adicionais. Os tokens da taxa continuam existindo na carteira institucional e financiam a operação. Exportar chaves não gera taxa. Transferências diretas fora do aplicativo não estão sujeitas à taxa de serviço, mas seguem os custos da rede e as regras do contrato.</p><p><strong>Carteira da Fundação:</strong> carteira separada, com endereço próprio e de propriedade da Fundação, destinada a receber as taxas. É distinta da tesouraria e das carteiras pessoais. <strong>Receita institucional:</strong> taxas recebidas e recursos próprios da Fundação, separados da tesouraria de investimentos. <strong>Oferta:</strong> taxas transferem unidades existentes, sem reduzir o total emitido nem alterar o cronograma de liberação.</p></div>
+        <div className="whitepaper__glossary"><span>GLOSSÁRIO BREVE</span><p><strong>Agente BETTEX:</strong> sistema que analisa e opera mercados sob risco e supervisão comuns. <strong>Estratégia:</strong> análise especializada de mercado. <strong>Conector:</strong> integração autorizada para dados ou execução. <strong>USDC:</strong> stablecoin usada para saldos financeiros, compras, depósitos, distribuições e saques da versão inicial. <strong>Visão de valor:</strong> equivalente estimado do saldo USDC na moeda fiduciária da pessoa, sem conversão executada ou alteração do ativo de saque. <strong>Moeda fiduciária:</strong> moeda local da estimativa exibida na interface e da entrada por on-ramp externo; pagamento efetivo nessa moeda pertence à proposta futura do BETTEX Bank, não ao saldo inicial. <strong>On-ramp:</strong> provedor externo que converte fiat em cripto. <strong>Off-ramp:</strong> conversão de cripto para fiat, não oferecida pela BETTEX inicial. <strong>Lucro elegível ao split:</strong> máximo entre zero e o menor valor entre o lucro realizado líquido da própria rodada e o ganho patrimonial líquido elegível acima da base de referência, considerando posições abertas, custos e obrigações. Não inclui lucro retido de rodadas encerradas. <strong>Dia de lucro:</strong> apuração conciliada em USDC com lucro elegível positivo; a distribuição também depende das reservas atendidas. <strong>Carteira da pessoa:</strong> gerada com a conta, pertencente ao titular, com chaves e dados exportáveis; não é identidade civil verificada. <strong>Participação automática:</strong> saldo BETTEX disponível na carteira oficial acumula peso pela quantidade e pelo tempo elegível desde a última saída na rodada diária UTC. Qualquer saída, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado. Entradas não recuperam créditos cancelados nem recebem lucros anteriores. Ganhos são creditados apenas na Carteira USDC. <strong>Peso de participação:</strong> soma de BETTEX disponível multiplicado pelo tempo elegível em cada intervalo da própria rodada. Não passa para a seguinte. <strong>Conciliação:</strong> comparação de registros, confirmações e fundos, sem reabrir rateios encerrados. <strong>Idempotência:</strong> repetir o pedido sem repetir o efeito.</p></div>
+        <div className="whitepaper__prose"><p><strong>Taxa de serviço:</strong> US$ 2,50, pagos em USDC, por compra primária, saque de rendimentos ou envio autônomo BETTEX pelo aplicativo. Não incide sobre exportação de chaves, transferência externa direta ou entrega integrante da compra; custos externos são separados.</p><p><strong>Caixa operacional:</strong> carteira institucional distinta da tesouraria e das carteiras pessoais. <strong>Receita institucional de serviços:</strong> tarifas brutas, sujeitas a custos e tributos. <strong>Financiamento:</strong> capital ou dívida, não receita de serviços nem lucro de investimento. <strong>Oferta:</strong> as taxas não queimam BETTEX nem alteram emissão ou vesting.</p></div>
         <div className="whitepaper__lead whitepaper__lead--dark whitepaper__closing"><span>ANTES DE DECIDIR</span><p>Não há rendimento prometido, capital protegido ou aprovação implícita. Considere os riscos de mercado, liquidez, tecnologia, custódia e regulação antes de qualquer decisão financeira.</p></div>
       </>;
   }
+}
+const topicTitles = new Map<unknown, string>([
+  [StakingDistribution, 'Distribuição do staking'],
+  [DistributionTaxes, 'Tributos sobre distribuições'],
+  [SaleChannels, 'Canais de venda'],
+  [ServiceFees, 'Taxas de serviço'],
+  [VestingSchedule, 'Cronograma de vesting'],
+  [FoundationFunding, 'Financiamento da fundação'],
+  [OperatingBreakEven, 'Ponto de equilíbrio operacional'],
+  [TokenHolderRights, 'Direitos dos titulares'],
+  [ArbitrumFlowDiagram, 'Fluxo na Arbitrum'],
+  [RobinhoodFlowDiagram, 'Fluxo Robinhood'],
+  [ReservePolicy, 'Política de reservas'],
+  [InvestmentRiskBase, 'Base de risco do investimento'],
+  [OrderReservations, 'Reservas de ordens'],
+  [OrderReconciliation, 'Conciliação de ordens'],
+  [DailyCommitments, 'Compromissos diários'],
+  [DailyRealizedLosses, 'Perdas realizadas diárias'],
+  [FinancialEventTiming, 'Tempo dos eventos financeiros'],
+  [RiskRuleTransitions, 'Transições de regras de risco'],
+  [CoordinatedProposals, 'Propostas coordenadas'],
+  [AuthorizedOperationCosts, 'Custos de operações autorizadas'],
+  [QuoteValidity, 'Validade de cotações'],
+  [ExecutionConditions, 'Condições de execução'],
+  [CoordinatedContinuation, 'Continuação coordenada'],
+  [RiskReducingClosures, 'Encerramentos que reduzem risco'],
+  [RiskPrecision, 'Precisão de risco'],
+  [AuthorizedRequestIntegrity, 'Integridade de pedidos autorizados'],
+  [OutOfOrderResponses, 'Respostas fora de ordem']
+]);
+
+function titleOf(el: ReactElement<{ children?: ReactNode; className?: string; id?: string }>): TopicInfo {
+  if (el.type === BettexFlow) {
+    const figure = (el.props as { figure: ArchitectureFigureNumber }).figure;
+    return { title: architectureFigureTitles[figure], drop: false };
+  }
+  if (el.type === Subhead) return { title: el.props.children, drop: true };
+  if (el.type === DocFacts || el.type === FundSecurity) return 'bare';
+  const t = topicTitles.get(el.type);
+  if (t) return { title: t, drop: false };
+  return defaultTopicOf(el);
+}
+
+export function ChapterContent({ index }: { index: number }) {
+  const raw = RawChapter({ index });
+  if (!isValidElement(raw) || raw.type !== Fragment) return raw;
+  return <>{groupTopics((raw as ReactElement<{ children: ReactNode }>).props.children, titleOf)}</>;
 }

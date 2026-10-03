@@ -1,0 +1,40 @@
+{
+  "status": "initial_proposal_for_feedback",
+  "payrollChargesRate": 0.20,
+  "variableCostPerOperationUsd": 0.15,
+  "revenueTaxProvisionRate": 0.10,
+  "reserveMonths": 3,
+  "fixedCosts": [
+    { "id": "marketing", "name": "Marketing e aquisição", "amountUsd": 6000, "scope": "3.000 mídia de teste: 1.800 performance, 750 marca e 450 narrativa; 1.500 criadores/campanhas, 1.000 peças e 500 localização. Proposta founder-led, não campanhas ou contratos comprovados." },
+    { "id": "ai", "name": "IA, dados e ferramentas", "amountUsd": 2500, "scope": "Inferência, automações, bases e ferramentas da equipe, com limites de consumo." },
+    { "id": "infra", "name": "Infraestrutura e observabilidade", "amountUsd": 1000, "scope": "Hospedagem, armazenamento, logs, disponibilidade e backups." },
+    { "id": "security", "name": "Segurança e revisão recorrente", "amountUsd": 2500, "scope": "Monitoramento, revisões e resposta contratada; auditoria inicial está no orçamento de implantação." },
+    { "id": "engineering", "name": "Outsourcing técnico por escopo", "amountUsd": 2500, "scope": "QA e especialistas em entregas delimitadas, sem substituir o responsável interno." },
+    { "id": "accounting", "name": "Contabilidade e assessoria local", "amountUsd": 1500, "scope": "Serviços externos específicos, não a remuneração do jurídico interno." },
+    { "id": "support", "name": "Atendimento e localização", "amountUsd": 1000, "scope": "Helpdesk e cobertura pontual; IA é cobrada na rubrica de IA, campanhas na de marketing." },
+    { "id": "admin", "name": "Administração e pagamentos", "amountUsd": 1000, "scope": "Custos institucionais fixos, separados do custo variável por operação." }
+  ],
+  "setupCosts": [
+    { "name": "Auditoria inicial de contratos e custódia", "amountUsd": 20000 },
+    { "name": "Constituição, contratos e validação local", "amountUsd": 10000 },
+    { "name": "Especialistas técnicos e testes de implantação", "amountUsd": 10000 },
+    { "name": "Materiais, documentação e localização inicial", "amountUsd": 5000 }
+  ],
+  "months": [
+    { "month": 1, "phase": "Preparação", "operations": 0, "monthlyActiveUsers": 0 },
+    { "month": 2, "phase": "Preparação", "operations": 0, "monthlyActiveUsers": 0 },
+    { "month": 3, "phase": "Piloto condicionado", "operations": 1500, "monthlyActiveUsers": 1000 },
+    { "month": 4, "phase": "Validação", "operations": 3000, "monthlyActiveUsers": 2000 },
+    { "month": 5, "phase": "Validação", "operations": 5000, "monthlyActiveUsers": 3500 },
+    { "month": 6, "phase": "Validação", "operations": 8000, "monthlyActiveUsers": 5000 },
+    { "month": 7, "phase": "Expansão condicionada", "operations": 12000, "monthlyActiveUsers": 8000 },
+    { "month": 8, "phase": "Expansão condicionada", "operations": 16000, "monthlyActiveUsers": 11000 },
+    { "month": 9, "phase": "Expansão condicionada", "operations": 20000, "monthlyActiveUsers": 14000 },
+    { "month": 10, "phase": "Expansão condicionada", "operations": 24000, "monthlyActiveUsers": 17000 },
+    { "month": 11, "phase": "Expansão condicionada", "operations": 28000, "monthlyActiveUsers": 20000 },
+    { "month": 12, "phase": "Expansão condicionada", "operations": 32000, "monthlyActiveUsers": 24000 }
+  ],
+  "mix": { "purchaseShare": 0.20, "withdrawalShare": 0.75, "purchaseTicketUsdc": 100, "withdrawalTicketUsdc": 10 },
+  "support": { "ticketsPerMonthlyActiveUser": 0.03, "automatedResolutionShare": 0.60, "humanMinutesPerTicket": 10, "humanHoursBudget": 60 },
+  "growth": { "monthlyPaidMediaUsd": 3000, "testPaidCacUsd": 12 }
+}

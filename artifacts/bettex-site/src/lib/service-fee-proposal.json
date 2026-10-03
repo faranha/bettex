@@ -1,10 +1,11 @@
 {
   "status": "documented_not_active",
-  "taxTreatment": "net_target_plus_validated_tax_gross_up",
+  "taxTreatment": "fixed_gross_service_price_no_automatic_gross_up",
+  "currency": "USD",
+  "paymentAsset": "USDC",
   "fees": [
-    { "operation": "Compra de BETTEX do pool do projeto", "rate": 0.01, "basis": "Valor bruto da compra em USDC", "scope": "Líquido-alvo após tributos; total inclui cobertura fiscal validada" },
-    { "operation": "Saque de USDC do pool de staking pelo aplicativo", "rate": 0.02, "basis": "USDC do staking solicitado no saque, antes dos custos externos", "scope": "Líquido-alvo após tributos; total inclui cobertura fiscal validada" },
-    { "operation": "Venda por swap no aplicativo", "rate": 0.003, "basis": "Valor bruto da venda avaliado em USDC", "scope": "Serviço existente; percentual sugerido" },
-    { "operation": "Retirada de BETTEX pelo aplicativo", "rate": 0.005, "basis": "Quantidade retirada, avaliada em USDC", "scope": "Serviço existente; percentual sugerido" }
+    { "operation": "Compra primária de BETTEX pelo aplicativo", "amountUsd": 2.5, "basis": "Por compra concluída, separada do preço dos tokens", "scope": "Tarifa confirmada; entrega integrante da compra sem segunda taxa" },
+    { "operation": "Saque de rendimentos em USDC pelo aplicativo", "amountUsd": 2.5, "basis": "Por saque concluído", "scope": "Tarifa confirmada; não é novo pagamento da distribuição" },
+    { "operation": "Envio autônomo de BETTEX para outra carteira pelo aplicativo", "amountUsd": 2.5, "basis": "Por envio concluído; quantidade de BETTEX não é taxa", "scope": "Tarifa confirmada; exportação e transferência direta fora do app não tarifadas" }
   ]
 }

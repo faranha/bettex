@@ -1,5 +1,7 @@
 # Notas de pesquisa — Panamá: começar e licenciar depois
 
+**Registro histórico de pesquisa:** as notas abaixo preservam perguntas e premissas das consultas originais. Menções a taxas líquidas 1%/2% em BETTEX não são a política vigente. Consultar [a base atual da entidade](bettex-base-da-entidade.md) para tarifas US$ 2,50 em USDC, equipe, concessões e controles; as pesquisas anteriores não validam automaticamente alterações posteriores.
+
 **Status:** concluída — 19 fontes citadas; referências e proveniência verificadas
 **Profundidade:** Standard — investigação focada, com reaproveitamento das fontes comparativas
 **Data:** 3 de outubro de 2026

@@ -2,6 +2,10 @@ import path from 'path';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
+// @ts-expect-error Native build helper is intentionally JavaScript.
+import { seoPlugin } from './scripts/seo.mjs';
+// @ts-expect-error Shared build-time formatting adapter.
+import { localeFormatPlugin } from './scripts/locale-format-plugin.mjs';
 
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
 
@@ -30,7 +34,15 @@ if (!basePath) {
 export default defineConfig({
   base: basePath,
   plugins: [
-    react(),
+    {
+      name: 'bettex-local-runtime-no-prebundle',
+      configResolved(config) {
+        config.optimizeDeps.include = config.optimizeDeps.include?.filter(id => !id.includes('/lib/localized'));
+      },
+    },
+    seoPlugin(basePath),
+    localeFormatPlugin(),
+    react({ jsxImportSource: '@/lib/localized' }),
     tailwindcss(),
     runtimeErrorOverlay(),
     ...(process.env.NODE_ENV !== 'production' &&
@@ -58,6 +70,11 @@ export default defineConfig({
       ),
     },
     dedupe: ['react', 'react-dom'],
+  },
+  optimizeDeps: {
+    // This is application code, not a dependency. Prebundling it creates a
+    // second locale store and caches old catalogues outside normal HMR.
+    exclude: ['@/lib/localized/jsx-runtime', '@/lib/localized/jsx-dev-runtime'],
   },
   root: path.resolve(import.meta.dirname),
   build: {
