@@ -1,4 +1,72 @@
-# Notas de pesquisa — onde constituir a BETTEX
+# Notas de pesquisa — Panamá: começar e licenciar depois
+
+**Status:** concluída — 19 fontes citadas; referências e proveniência verificadas
+**Profundidade:** Standard — investigação focada, com reaproveitamento das fontes comparativas
+**Data:** 3 de outubro de 2026
+
+## Plano atual
+
+- **Pergunta:** Panamá permite constituir a BETTEX, iniciar a operação e obter depois licenças eventualmente devidas, sem comprometer a autorização futura?
+- **Critério atualizado pelo criador:** licenças posteriores são aceitáveis; a prioridade é conseguir abrir e iniciar. A restrição anterior contra qualquer licença não serve mais como eliminatória.
+- **Modelo:** uma única sociedade privada, direitos e economia aprovados preservados. Não iniciar operações reais nem solicitar licenças nesta pesquisa.
+- **Entrega:** atividades que podem começar, autorizações prévias obrigatórias, efeito de infração anterior, rotas de licenciamento e dificuldade documentada.
+
+## Frentes atuais
+
+| Frente | Status |
+|---|---|
+| Constituição, aviso de operação e início de atividade própria | concluída; integral + snippets |
+| Emissão de profit token, oferta territorial e sociedade de investimento | concluída; classificação BETTEX não resolvida |
+| Licenças SMV: requisitos, capital, taxas, prazo e administração | concluída; regulamento completo recuperado pelo agente principal |
+| Operação irregular anterior, sanções e idoneidade para licença futura | concluída; continuação da lei recuperada pelo agente principal |
+| Cripto/jogos, reformas de 2026 e licenças diferentes da SMV | concluída; alcance da reforma 2026 é limitação |
+
+## Cobertura
+
+- [x] Constituição anterior é separável de autorização financeira. [@pa-start-formation-01]
+- [x] Preparação pode iniciar; produto público inalterado não está liberado pela evidência. [@decision-gap-panama-01]
+- [x] Art.128 depende do domicílio dos compradores; administração tem teste independente. [@decision-gap-panama-03] [@pa-start-parent-acuerdo-full]
+- [x] Não identificado mecanismo aplicável para lançar atividade financeira já licenciável enquanto aguarda aprovação; atualizações cripto/jogos ficam em Limitações.
+- [x] Sem proibição universal permanente encontrada; infração pode produzir sanção/inabilitação e afetar honorabilidade. Arts.255/264/269/272 e Acuerdo5-2004. [@decision-gap-panama-01] [@pa-start-parent-acuerdo-full]
+- [x] Uma sociedade auto-administrada é prevista, condicionada à classificação, registro e profissionais/controles; não impõe automaticamente segunda empresa. [@pa-start-parent-acuerdo-full]
+- [x] Art.40: patrimônio mínimo B/.25 mil da sociedade de investimento; art.68(14): B/.150 mil do administrador. Art.23: 30 dias úteis para registro após expediente completo, interrompíveis; não prazo geral de licença. Taxas atuais/orçamento total em Limitações. [@pa-start-parent-acuerdo-full]
+- [x] Projetos PSAV não são licença vigente comprovada; distinção operador/cliente de jogos preservada. [@pa-start-other-01] [@pa-start-other-02]
+
+## Achados iniciais e cuidados
+
+- Reusar art.128 e material SMV de sociedades de investimento, sem afirmar consolidação plena em 2026.
+- Não confundir SMV Panamá com SMV Peru; buscas retornaram resoluções peruanas.
+- Prestadores anunciam “licença cripto”; não presumir que exista um regime vigente de PSAV.
+- “Licença posterior” pode significar iniciar atividade não regulada e licenciar expansão, ou exercer atividade regulada sem licença; resultados jurídicos diferentes.
+- A afirmação sobre restrições em El Salvador é a preocupação relatada pelo criador, não fato comparativo já verificado nesta pesquisa.
+
+## Achados finais
+
+- Abertura registral estimada em 1–2 semanas pelo Panamá Digital, não prazo completo de operação. [@pa-start-formation-01]
+- “Privada” não impede enquadramento financeiro do direito contratual negociável aos lucros; opinião BTC/ETH sem fluxo de caixa não decide BETTEX. [@decision-gap-panama-05]
+- Autoadministração exige governança, meios técnicos, compliance e executivo principal licenciado. Patrimônio de sociedade e administrador são requisitos diferentes, não taxas. [@pa-start-parent-acuerdo-full]
+- Honorabilidade inclui trajetória de respeito às leis econômicas; causas explícitas incluem condenações recentes e revogação anterior de licença. Não equivale a perdão do início irregular. [@pa-start-parent-acuerdo-full]
+- Resolução SMV79-26: pedido inicial 30/12/2024 por outra entidade, alteração 17/07/2025, concessão 17/03/2026. Caso real de processo longo, não prazo típico nem caso de regularização. [@pa-start-parent-licence2026]
+- Limite offshore é hipótese condicional, não bloqueio territorial adotado nem autorização internacional. [@decision-gap-panama-03]
+
+## Lacunas e triangulação
+
+- **Preenchidas:** regulamento integral Acuerdo5-2004 por anexo da página oficial; patrimônio B/.25mil/B/.150mil; governança de autoadministração; prazo específico do registro; lei complementada para sanções/inabilitações.
+- **Preenchida parcialmente:** licença real concedida em 2026 verifica viabilidade do procedimento, mas não taxa de aprovação/tempo médio nem antecedentes irregulares.
+- **Limitações:** classificação oficial BETTEX; versão autêntica/alterações legais até 03/10/2026; taxas atuais e custo operacional integral; compatibilidade dos quatro mercados e direitos aprovados com eventual categoria; acesso corporativo às contrapartes; alcance/implementação da Lei527.
+- **Atualização final:** buscas setembro/outubro sem prova conclusiva de regime PSAV novo; lista SMV agosto/2026 mostra licenças recentes de assessoria, não licença aplicável ao modelo.
+- **Data da Lei527:** leads anteriores apontavam 23/05/2026; metadados vLex apontam 28/05/2026 e Gaceta30534B. Não repetir a data inicial como fato nem inferir vigência/alcance de matérias de imprensa.
+- **Números de fonte única:** patrimônios e prazo vêm do regulamento oficial; prazo registral empresarial vem de ficha oficial; processo observado vem de resolução individual. Identificados como tais, não estimativas universais.
+
+## Entrega
+
+- Relatório: `research/bettex-panama-inicio-licenciamento.md`.
+- Conclusão: manter Panamá como candidato para sociedade primeiro e licença prospectiva; produto público atual não liberado antes da definição das autorizações exigíveis.
+- Não alterados: site, API, direitos/economia do token, mercados, controles territoriais e cadastro.
+
+---
+
+# Pesquisa concluída — onde constituir a BETTEX
 
 **Status:** concluída
 **Profundidade:** Deep

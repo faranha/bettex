@@ -145,14 +145,14 @@ content_type = "image/svg+xml"
 id = "YCUPshoKgueXwh61Qnww-"
 uri = "file://research/notes.md"
 type = "text"
-title = "Onde constituir a BETTEX — pesquisa para decisão"
-description = "Comparação jurídica e operacional do modelo completo, com alternativas eliminadas por regras concretas e investigação das candidatas finais."
+title = "Panamá — início da operação e licenciamento posterior"
+description = "Atividades que podem começar, autorizações prévias, efeito de infrações anteriores e dificuldade de licenciamento."
 logical_id = "415a1ffd-447f-4d49-922b-950b3ad322e4"
-content_hash = "sha256:40c11495faecd75e317038b6bd8c2d9511d2aacca32a21c4829fe1b3cd5f7c02"
-size = 13648
-mtime_ms = 1791014955273
-storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/415a1ffd-447f-4d49-922b-950b3ad322e4/13261a70-14a0-4720-85de-b609836be5bf"
-storage_version_token = "1791015003662620"
+content_hash = "sha256:2352e45490b71ee54e3db16e310b0a5184e56f0068d9d354a19ae4d4db22ce25"
+size = 20154
+mtime_ms = 1791017846175
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/415a1ffd-447f-4d49-922b-950b3ad322e4/6587f69f-398a-48bf-9503-bca71b6cac09"
+storage_version_token = "1791017905138560"
 content_type = "text/markdown"
 
 [[outputs]]
@@ -209,4 +209,18 @@ size = 52222
 mtime_ms = 1791016304212
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/3fa8fe15-ef7c-4936-baae-25c26bea2fd3/3368903d-bcf6-49da-a9d2-bd1863f167f7"
 storage_version_token = "1791016362229630"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "TES2x2vTZfLRrd1nrfy9i"
+uri = "file://research/bettex-panama-inicio-licenciamento.md"
+type = "text"
+title = "BETTEX no Panamá: abertura e licenciamento posterior"
+description = "Conclusão operacional, efeito de atividade anterior sobre a licença, autoadministração, patrimônio mínimo, prazo e limites jurídicos. Relatório com 19 fontes verificadas."
+logical_id = "ea71689d-4121-433b-85a8-e3d0a8ac196f"
+content_hash = "sha256:87ef5bf1db4ca470ccec6c3262b7842de721664323a3cbf4b6150848919d1288"
+size = 24482
+mtime_ms = 1791018717690
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/ea71689d-4121-433b-85a8-e3d0a8ac196f/938751f4-af65-4cb3-ad46-5162c9c083b8"
+storage_version_token = "1791018752463141"
 content_type = "text/markdown"
