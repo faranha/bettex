@@ -51,21 +51,19 @@
 .technology-section__wallet p { max-width: 540px; margin: 0; color: #becdf0; font-size: 13px; line-height: 1.55; }
 .technology-section__wallet-art {
   position: relative; z-index: 1; flex: none; display: grid; place-items: center; overflow: hidden;
-  width: 175px; height: 165px; border: 1px solid rgba(109,151,248, .3);
-  border-radius: 50%; background: radial-gradient(circle at 50% 42%, rgba(109,151,248, .25), rgba(109,151,248, .06) 58%, transparent 72%); color: #5F86FF;
+  width: 175px; height: 190px;
 }
-.technology-section__ai-robot { position: absolute; top: 4px; left: 50%; width: 162px; height: auto; transform: translateX(-50%); filter: drop-shadow(0 6px 10px rgba(0,4,14, .5)); }
-.technology-section__ai-brand {
-  position: absolute; top: 53%; left: 50%; display: grid; width: 31px; height: 31px;
-  place-items: center; transform: translate(-50%, -50%); border: 1px solid #5F86FF;
-   border-radius: 9px; background: #070B1F; box-shadow: 0 0 12px rgba(43,89,255,.3), inset 0 0 6px rgba(43,89,255,.12);
-}
-.technology-section__ai-brand img { display: block; width: 21px; height: 21px; object-fit: contain; }
+.technology-section__wallet-art::before { content: ""; position: absolute; inset: 8px 0 24px; border-radius: 50%; background: radial-gradient(ellipse at 43% 48%, rgba(54,183,255,.28), rgba(43,89,255,.12) 42%, transparent 72%); pointer-events: none; }
+.technology-section__ai-brain { position: relative; z-index: 1; display: block; width: 90%; height: calc(100% - 20px); object-fit: contain; mix-blend-mode: lighten; filter: drop-shadow(0 0 10px rgba(88,181,255,.3)); }
+.technology-section__brain-energy { position: absolute; inset: 0 0 20px; z-index: 2; width: 100%; height: calc(100% - 20px); pointer-events: none; }
+.brain-energy__blue { color: #7CE8FF; filter: drop-shadow(0 0 4px currentColor); animation: brain-energy-pulse 4.8s ease-in-out infinite; }
+.brain-energy__gold { color: #FFD16F; filter: drop-shadow(0 0 3px currentColor); animation: brain-energy-pulse 6.4s -2s ease-in-out infinite; }
+@keyframes brain-energy-pulse { 0%,100% { opacity: .6; } 45% { opacity: 1; } 70% { opacity: .8; } }
+@media (prefers-reduced-motion: reduce) { .brain-energy__blue, .brain-energy__gold { animation: none; opacity: 1; } }
 .technology-section__ai-label {
-  position: absolute; bottom: 7px; left: 50%; padding: 4px 8px; transform: translateX(-50%);
-  border: 1px solid rgba(109,151,248, .38); border-radius: 4px;
-  background: rgba(5,20,60, .88); color: #a8c2ff;
-  font: 700 9px/1 var(--app-font-mono, monospace); letter-spacing: .1em; white-space: nowrap;
+  position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+  color: #c5d2f1;
+  font: 600 10px/1.4 var(--app-font-mono, monospace); letter-spacing: .1em; white-space: nowrap;
 }
 .technology-section__branch { height: 46px; position: relative; width: 75%; margin: 0 auto; border-bottom: 1px solid #4f75cc; }
 .technology-section__branch::before { content: ""; position: absolute; width: 1px; height: 100%; top: 0; left: 50%; background: #4f75cc; }
@@ -105,11 +103,7 @@
   .technology-section__deposit-path { width: 34px; height: 52px; }
   .technology-section__deposit-path::before { top: 0; bottom: 0; left: 50%; right: auto; border-top: 0; border-left: 2px dashed #4f75cc; }
   .technology-section__wallet { min-height: 0; padding: 22px; }
-  .technology-section__wallet-art { width: 120px; height: 110px; }
-  .technology-section__ai-robot { width: 110px; }
-  .technology-section__ai-brand { width: 25px; height: 25px; }
-  .technology-section__ai-brand img { width: 17px; height: 17px; }
-  .technology-section__ai-label { bottom: 4px; font-size: 7px; }
+  .technology-section__wallet-art { width: 140px; height: 158px; }
   .technology-section__wallet h3 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
 }
 @media (max-width: 767px) {
@@ -125,6 +119,6 @@
   .technology-section__wallet { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
   .technology-section__wallet h3 { font-size: clamp(2rem, 8vw, 2.8rem); }
   .technology-section__wallet p { font-size: 12px; }
-  .technology-section__wallet-art { align-self: center; width: 120px; height: 110px; }
+  .technology-section__wallet-art { align-self: center; width: 140px; height: 158px; }
 }
 

@@ -4,6 +4,8 @@
     "channel": "SOS Jogador",
     "quote": "Eu sou o Fred Azevedo. Tenho o maior canal de jogo responsável do Brasil. Minha ideia para a BETTEX é uma empresa founder-led.",
     "community": 5000,
+    "communityMoreThan": true,
+    "communityPlatform": "Telegram",
     "instagram": 101000,
     "instagramEngagementPercent": [4, 5],
     "youtube": 34000,
@@ -18,7 +20,7 @@
     "goalDefinition": "Meta de primeiros 1.000 usuários únicos no Brasil, com cadastro elegível e ativação no produto ou piloto disponível. Interessados em lista de espera, seguidores, compradores e titulares são métricas distintas.",
     "funnel": ["Conteúdo e alcance", "Interesse com consentimento", "Cadastro elegível", "Onboarding e compreensão", "Primeiro uso útil", "Retorno por coorte"],
     "channels": [
-      {"name": "Comunidade", "purpose": "Convites voluntários, sessões de perguntas e feedback para formar as primeiras coortes."},
+      {"name": "Telegram", "purpose": "Convites voluntários, sessões de perguntas e feedback para formar as primeiras coortes."},
       {"name": "Instagram", "purpose": "Conteúdo do fundador, vídeos curtos e transmissões sobre a tese, riscos, custos e evolução do projeto."},
       {"name": "YouTube", "purpose": "Conteúdo aprofundado sobre funcionamento, direitos, validações e limites das estratégias."},
       {"name": "X", "purpose": "Atualizações, decisões e discussões abertas sobre o desenvolvimento."}
