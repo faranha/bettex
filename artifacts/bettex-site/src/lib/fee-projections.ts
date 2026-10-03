@@ -22,8 +22,9 @@ export const feeProjections = assumptions.scenarios.map(scenario => {
     dailyWithdrawalFees: dailyWithdrawalVolume * withdrawalRate,
     purchaseFees, withdrawalFees, monthlyFees, annualFees: monthlyFees * 12,
     feesPerActiveUser: monthlyFees / scenario.activeUsers,
-    // Mínimo necessário se não houver créditos anteriores e todo o saque vier
-    // de distribuições do mês. Não é previsão de resultado das estratégias.
+    // Piso APÓS tributos da entidade, sem créditos anteriores ou retenções individuais.
+    // Retenções exigem (volume líquido + imposto retido) / 25%; não presumir isenção.
+    // Não é previsão de resultado das estratégias ou lucro antes dos impostos.
     minimumEligibleProfit: withdrawalVolume / 0.25,
     minimumDailyEligibleProfit: dailyWithdrawalVolume / 0.25,
   };

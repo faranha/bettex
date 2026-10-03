@@ -105,7 +105,7 @@ monthly.write_row(3, 0, ["Parâmetro mensal", "USDC", "Tratamento"], header)
 inputs = [
     ("Volume bruto de compras do pool", "Entrada de cenário; não receita institucional em USDC"),
     ("Volume solicitado de saques de USDC do staking", "Não somar novamente o crédito automático do yield"),
-    ("Custo institucional mensal previsto", "Infraestrutura, auditoria, administração e operação"),
+    ("Custo institucional mensal previsto, inclusive tributos", "Infraestrutura, auditoria, administração, operação e tributos próprios da Fundação, fora da tesouraria"),
     ("Caixa líquido efetivo da conversão de taxas", "Somente USDC efetivamente recebido, após custos"),
     ("Orçamento inicial ainda disponível", "Saldo finito; não é receita recorrente"),
 ]
@@ -160,9 +160,9 @@ labels = {
     23: "Total em 12 meses constantes: equivalente USDC",
     24: "Taxas por usuário ativo/mês: equivalente USDC",
     25: "Taxas de saque por dia ativo: equivalente USDC",
-    26: "Mínimo de lucro elegível se saques vierem só do mês",
+    26: "Piso líquido elegível/mês, sem retenção individual",
     27: "BETTEX recebido/mês à cotação ilustrativa constante",
-    28: "Lucro elegível/dia se saques usarem só créditos do dia",
+    28: "Piso líquido elegível/dia, sem retenção individual",
 }
 for row, label in labels.items():
     projection.write(row, 0, label, text)
@@ -216,12 +216,68 @@ for col, s in enumerate(scenarios, 1):
 projection.merge_range("A30:D31", "Ticket de saque = valor por dia; um saque por pessoa/dia ativo. Recompras = total mensal. Volume = pessoas × dias × ticket diário. Os 12 meses repetem o mês de referência, não o calendário exato. Entrantes compensam inativos; não é curva de crescimento nem primeira compra repetida. Dividir o mesmo volume em mais saques não aumenta a taxa de 2%.", note)
 projection.set_row(29, 35)
 projection.set_row(30, 35)
-projection.merge_range("A33:D34", "Dias com saque pressupõem crédito, liquidez e saldo BETTEX para a taxa. O lucro mínimo do período supõe saques financiados apenas por créditos desse período, sem saldo anterior; não é previsão de rendimento. Lucros retidos não geram créditos sacáveis. Aplicar reservas e split vigente antes das distribuições. Compras dependem do vesting.", note)
+projection.merge_range("A33:D34", "Saques pressupõem crédito líquido de retenções, liquidez e BETTEX para taxa. Pisos de lucro elegível são APÓS tributos da entidade, sem créditos anteriores e sem retenções individuais. Com retenção: (saques líquidos + imposto retido) / 25%. Preencha a aba Tributos; ausência de valor não significa isenção. Reservas precedem split; retenção para recomposição não cria crédito.", note)
 projection.set_row(32, 35)
 projection.set_row(33, 35)
 projection.merge_range("A36:D37", "Somente compra do pool no aplicativo (1%) e saque USDC do staking (2%). Exclui taxas sugeridas, transferências externas e orçamento inicial. Não presume cobrança em vendas diretas a corretoras. Conversão de BETTEX em caixa considera valores efetivos, liquidez e custos. Compras para completar a taxa entram uma vez no volume, não automaticamente.", note)
 projection.set_row(35, 35)
 projection.set_row(36, 35)
 projection.print_area("A1:D37")
+
+tax = setup("Tributos", "BETTEX — ordem fiscal da distribuição",
+            "Simulação, não cálculo de alíquotas legais. Valores fiscais em branco bloqueiam resultados; informe zero explicitamente se essa for a hipótese. Nenhuma obrigação real é criada.", 2)
+tax.set_column("A:A", 61)
+tax.set_column("B:B", 30)
+tax.set_column("C:C", 74)
+tax.write_row(3, 0, ["Parâmetro", "USDC ou condição", "Tratamento"], header)
+tax.write("A5", "Resultado após custos, antes dos tributos", text)
+tax.write_number("B5", 1000, input_number)
+tax.write("C5", "Exemplo isolado: R = P − B antes dos tributos, sem perdas anteriores ou posições abertas.", text)
+tax.write("A6", "Tributos da entidade imputáveis à tesouraria", text)
+tax.write_blank("B6", None, input_number)
+tax.write("C6", "Somente tributos ainda não descontados do resultado; não incluir os tributos próprios da receita institucional da Fundação.", text)
+tax.write("A7", "Retenções totais dos beneficiários desta rodada", text)
+tax.write_blank("B7", None, input_number)
+tax.write("C7", "Incidências individuais validadas, separadas do bruto. Não é alíquota universal nem receita da Fundação.", text)
+tax.write("A8", "Condições de distribuição atendidas no exemplo?", text)
+tax.write("B8", "Não", choice)
+tax.write("C8", "Sim pressupõe reservas, liquidez, conciliação e pesos positivos. Não mantém lucro líquido retido, sem novo split.", text)
+tax.data_validation("B8", {"validate": "list", "source": ["Sim", "Não"]})
+tax.data_validation("B5", {"validate": "decimal", "criteria": "between", "minimum": -1e15, "maximum": 1e15})
+for cell in ["B6", "B7", "B21", "B22"]:
+    tax.data_validation(cell, {"validate": "decimal", "criteria": ">=", "value": 0})
+tax.write("A10", "Validação das entradas", text)
+tax.write_formula("B10", '=IF(COUNT(B5:B7)<3,"Informar tributos e retenções",IF(OR(B6<0,B7<0),"Valores inválidos",IF(AND(B8<>"Sim",B8<>"Não"),"Rever condições",IF(B7>IF(B8="Sim",MAX(0,B5-B6)*25%,0),"Retenção supera staking","Calculado"))))', text, "Informar tributos e retenções")
+tax_rows = [
+    (12, "Resultado após tributos da entidade", "=B5-B6"),
+    (13, "Lucro elegível neste exemplo isolado", "=MAX(0,B12)"),
+    (14, "Parcela da tesouraria ou lucro retido", '=IF(B8="Sim",B13*75%,B13)'),
+    (15, "Staking bruto", '=IF(B8="Sim",B13*25%,0)'),
+    (16, "Tributo retido a recolher", "=B7"),
+    (17, "Staking líquido a pagar", "=B15-B16"),
+]
+for row, label, formula in tax_rows:
+    tax.write(f"A{row}", label, text)
+    tax.write_formula(f"B{row}", f'=IF(B10="Calculado",{formula[1:]},"Não calculado")', number, "Não calculado")
+tax.merge_range("A19:C19", "Meta de saques mensais do cenário de referência: demanda líquida, não previsão de rendimento", header)
+tax.write("A21", "Retenções dos beneficiários no mês", text)
+tax.write_blank("B21", None, input_number)
+tax.write("C21", "Total fiscal previsto para os beneficiários do cenário. Informe inclusive zero; nenhuma isenção é presumida.", text)
+tax.write("A22", "Tributos da entidade no mês, ainda não deduzidos", text)
+tax.write_blank("B22", None, input_number)
+tax.write("C22", "Tributos imputáveis a esse resultado. Regime, base e cálculo exigem validação; não é percentual sobre o lucro elegível por padrão.", text)
+tax.write("A23", "Volume líquido de saques pretendido", text)
+reference_withdrawals = scenarios[1]["activeUsers"] * scenarios[1]["withdrawerShare"] * scenarios[1]["dailyWithdrawal"] * scenarios[1]["withdrawalDays"]
+tax.write_formula("B23", "='Projeções'!C19", number, reference_withdrawals)
+tax.write("A24", "Lucro líquido elegível necessário após tributos", text)
+tax.write_formula("B24", '=IF(COUNT(B21)=1,IF(B21>=0,(B23+B21)/25%,"Valor inválido"),"Informar retenções")', number, "Informar retenções")
+tax.write("A25", "Resultado necessário antes dos tributos da entidade", text)
+tax.write_formula("B25", '=IF(AND(ISNUMBER(B24),COUNT(B22)=1),IF(B22>=0,B24+B22,"Valor inválido"),"Informar tributos e retenções")', number, "Informar tributos e retenções")
+tax.merge_range("A27:C29", "Tributos da entidade precedem apuração e split; retenções do beneficiário precedem pagamento ou disponibilização no evento fiscal aplicável. Bruto = líquido devido + imposto retido. Reservar imposto para recolhimento, não como caixa livre. Pagar obrigação já reconhecida não gera nova dedução. As metas pressupõem ausência de créditos anteriores e retirada de todo o líquido; perdas e recomposição podem impedir o split. Não altera taxas BETTEX de compra (1%) ou saque (2%), nem executa pagamentos.", note)
+for row in [4, 5, 6, 7, 9, 20, 21]:
+    tax.set_row(row, 48)
+for row in [26, 27, 28]:
+    tax.set_row(row, 30)
+tax.print_area("A1:C29")
 book.close()
 print(output)
