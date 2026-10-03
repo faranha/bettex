@@ -5,6 +5,7 @@ import { ArbitrumFlowDiagram } from '@/components/docs-diagrams/ArbitrumFlowDiag
 import { RobinhoodFlowDiagram } from '@/components/docs-diagrams/RobinhoodFlowDiagram';
 import { VestingSchedule } from '@/components/VestingSchedule';
 import { ServiceFees } from '@/components/ServiceFees';
+import { FeeProjections } from '@/components/FeeProjections';
 import { InvestmentAgents } from '@/components/InvestmentAgents';
 import { StakingDistribution } from '@/components/StakingDistribution';
 import { ProfitAccounting } from '@/components/ProfitAccounting';
@@ -202,6 +203,7 @@ export function ChapterContent({ index }: { index: number }) {
           </div>
         </div>
         <FoundationFunding />
+        <FeeProjections />
         <TokenHolderRights />
         <div className="whitepaper__aside-callout"><span>REQUISITOS DE VENDA</span><p>A compra é paga em USDC confirmado. Quem entra com fiat primeiro adquire USDC por on-ramp externo, sujeito à cotação e aos custos do provedor. A oferta deve informar o preço em USDC e os custos aplicáveis antes da confirmação, sem presumir equivalência entre valores nominais de moedas diferentes. O processamento depende de controles operacionais e autorização jurídica.</p></div>
       </>;

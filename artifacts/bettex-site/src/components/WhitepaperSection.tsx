@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { ChapterContent, chapters } from './WhitepaperChapters';
 import './WhitepaperSection.css';
 
@@ -25,7 +25,29 @@ function scrollToId(id: string, smooth: boolean) {
 
 export function WhitepaperSection() {
   const [active, setActive] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const total = String(chapters.length).padStart(2, '0');
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onPointerDown = (event: PointerEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) setMenuOpen(false);
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     const go = (smooth: boolean) => {
@@ -59,6 +81,9 @@ export function WhitepaperSection() {
 
   function jump(event: MouseEvent<HTMLAnchorElement>, id: string) {
     event.preventDefault();
+    const mobile = window.matchMedia('(max-width: 768px)').matches;
+    setMenuOpen(mobile && id === 'documentacao-indice');
+    if (mobile) menuButtonRef.current?.focus({ preventScroll: true });
     if (window.location.hash !== `#${id}`) window.history.pushState(null, '', `#${id}`);
     scrollToId(id, true);
   }
@@ -76,9 +101,23 @@ export function WhitepaperSection() {
       </header>
       <div className="whitepaper__body page-wrap" id="documentacao-indice">
         <aside className="whitepaper__aside" aria-label="Índice da documentação">
-          <div className="whitepaper__aside-inner">
+          <div className="whitepaper__aside-inner" ref={menuRef}
+            onBlur={event => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setMenuOpen(false);
+            }}>
             <div className="whitepaper__aside-label"><span>CAPÍTULOS</span><span>{total} SEÇÕES</span></div>
-            <nav aria-label="Capítulos da documentação">
+            <button type="button" className="whitepaper__mobile-index" ref={menuButtonRef}
+              aria-expanded={menuOpen} aria-controls="whitepaper-chapter-menu"
+              onClick={() => setMenuOpen(open => !open)}>
+              <span className="whitepaper__mobile-index-copy">
+                <span className="whitepaper__mobile-index-label">CAPÍTULOS · {String(active + 1).padStart(2, '0')} / {total}</span>
+                <span className="whitepaper__mobile-index-title">{chapters[active].title}</span>
+              </span>
+              <span className="whitepaper__mobile-index-action">{menuOpen ? 'Fechar' : 'Explorar'}
+                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </span>
+            </button>
+            <nav id="whitepaper-chapter-menu" className={`whitepaper__chapter-menu${menuOpen ? ' is-open' : ''}`} aria-label="Capítulos da documentação">
               {chapters.map((item, index) => (
                 <a key={item.id} href={`#${item.id}`} className={`whitepaper__toc-link${active === index ? ' is-active' : ''}`}
                   aria-current={active === index ? 'true' : undefined} onClick={(e) => jump(e, item.id)} data-testid={`link-${item.id}`}>
