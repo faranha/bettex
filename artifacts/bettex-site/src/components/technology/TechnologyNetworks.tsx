@@ -2,7 +2,8 @@ import './TechnologyNetworks.css';
 
 export function TechnologyNetworks() {
   return (
-    <section className="technology-networks" aria-labelledby="technology-networks-title" data-testid="technology-networks">
+    <section id="redes-tecnologias" className="technology-networks" aria-labelledby="technology-networks-title" data-testid="technology-networks">
+      <div className="technology-networks__wrap">
       <h3 id="technology-networks-title">Redes e tecnologias</h3>
       <ul className="technology-networks__list">
         <li>
@@ -12,8 +13,14 @@ export function TechnologyNetworks() {
           <p>Rede blockchain</p>
         </li>
         <li>
+          <div className="technology-networks__logo technology-networks__logo--ethereum">
+            <img src={`${import.meta.env.BASE_URL}technologies/ethereum.webp`} alt="Ethereum" width={222} height={60} loading="lazy" decoding="async" />
+          </div>
+          <p>Rede blockchain</p>
+        </li>
+        <li>
           <div className="technology-networks__logo technology-networks__logo--allora">
-            <img src={`${import.meta.env.BASE_URL}technologies/allora.webp`} alt="Allora" width={524} height={167} loading="lazy" decoding="async" />
+            <img src={`${import.meta.env.BASE_URL}technologies/allora.webp`} alt="Allora" width={523} height={167} loading="lazy" decoding="async" />
           </div>
           <p>Inferências de IA</p>
         </li>
@@ -24,6 +31,7 @@ export function TechnologyNetworks() {
           <p>Trading de cripto</p>
         </li>
       </ul>
+      </div>
     </section>
   );
 }

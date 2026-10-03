@@ -1,19 +1,25 @@
 .technology-networks {
-  margin-bottom: clamp(30px, 4vw, 48px);
-  padding: 20px 0 22px;
-  border-block: 1px solid #c9bea0;
+  background: #070b1f;
+  padding: 26px 0 30px;
+  border-block: 1px solid rgba(130, 154, 199, .15);
+  color: #f4f1e8;
 }
+.technology-networks__wrap { width: min(calc(100% - 40px), 1200px); margin-inline: auto; }
 .technology-networks h3 {
-  margin: 0 0 18px;
-  color: #13204f;
-  font: 700 14px/1.4 var(--app-font-serif, sans-serif);
+  margin: 0 0 24px;
+  color: #a8b9da;
+  text-align: center;
+  font: 600 10px/1.4 var(--app-font-mono, monospace);
+  letter-spacing: .13em;
+  text-transform: uppercase;
 }
 .technology-networks__list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
+  max-width: 1050px;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   list-style: none;
 }
 .technology-networks__list li { min-width: 0; text-align: center; }
@@ -21,11 +27,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: min(100%, 280px);
-  height: 90px;
+  width: min(100%, 210px);
+  height: 44px;
   margin-inline: auto;
-  padding: 14px 20px;
-  border-radius: 10px;
 }
 .technology-networks__logo img {
   display: block;
@@ -34,14 +38,15 @@
   max-height: 100%;
   object-fit: contain;
 }
-.technology-networks__logo--arbitrum { background: #f4f1e8; }
-.technology-networks__logo--arbitrum img { width: 230px; }
-.technology-networks__logo--allora { background: #171717; }
-.technology-networks__logo--allora img { width: 185px; }
-.technology-networks__logo--robinhood { background: #dbfe52; }
-.technology-networks__logo--robinhood img { width: 220px; }
-.technology-networks__list p { margin: 10px 0 0; color: #13204f; font-size: 12px; line-height: 1.5; }
+.technology-networks__logo--arbitrum img { width: 170px; }
+.technology-networks__logo--ethereum img { width: 163px; }
+.technology-networks__logo--allora img { width: 138px; }
+.technology-networks__logo--robinhood img { width: 178px; }
+.technology-networks__list p { margin: 12px 0 0; color: #a8b9da; font-size: 11px; line-height: 1.5; }
 @media (max-width: 600px) {
-  .technology-networks__list { grid-template-columns: 1fr; gap: 18px; }
-  .technology-networks__logo { height: 80px; }
+  .technology-networks__wrap { width: calc(100% - 32px); }
+  .technology-networks__list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 20px; }
+  .technology-networks__logo { height: 40px; }
+  .technology-networks__logo--allora img { width: 118px; }
+  .technology-networks__list p { margin-top: 8px; }
 }

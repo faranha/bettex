@@ -26,6 +26,7 @@ import { NewEconomySection } from '@/components/NewEconomySection';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { chapters } from '@/components/WhitepaperChapters';
+import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 
 const queryClient = new QueryClient();
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -269,6 +270,7 @@ function Home() {
         </div>
       </section>
 
+      <TechnologyNetworks />
       <ProjectModelSection />
       <HumanStorySection />
 
