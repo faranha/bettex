@@ -34,8 +34,24 @@ function Lane({ label, children }: { label: string; children: ReactNode }) {
 }
 
 function Schematic({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+  const descriptions: Record<string, string> = {
+    'schematic-cycle': 'Da compra à participação e ao recebimento líquido confirmado.',
+    'schematic-asset-roles': 'USDC movimenta valor financeiro; BETTEX define a participação.',
+    'schematic-wallet-access': 'Controle pessoal das chaves e acesso ao aplicativo são camadas distintas.',
+    'schematic-staking': 'Quantidade e tempo definem o peso da própria rodada; saídas cancelam direitos.',
+    'schematic-boundaries': 'Destinos separados para preço público, serviços, staking e recompra com burn.',
+    'schematic-orchestration': 'Dados e inferências entram na análise; risco e mandato precedem ordens.',
+    'schematic-mandate': 'Rotina autorizada segue risco independente; mudança de poderes exige nova aprovação.',
+    'schematic-governance': 'Proposta, teste, aprovação, espera e versão vigente delimitam a execução.',
+    'schematic-buyback': 'Parcela do resultado financia compras autorizadas; tokens recebidos são queimados.',
+    'schematic-vesting': 'A liberação mensal não representa automaticamente venda ou circulação.',
+    'schematic-allocation': 'Três parcelas da emissão; preço público e aportes têm destinos distintos.',
+    'schematic-risk-authorization': 'Mandato, avaliação, reserva e liquidez precisam passar antes do envio.',
+    'schematic-fees': 'Cada serviço tem fato gerador e pagamento separado do preço dos tokens.',
+    'schematic-allora': 'Inferência é insumo de análise, não permissão para movimentar carteira.',
+  };
   return <figure className="ds" id={id} data-testid={id} aria-labelledby={`${id}-t`}>
-    <figcaption className="ds__cap"><span>Esquema</span><b id={`${id}-t`}>{title}</b></figcaption>
+    <figcaption className="ds__cap"><span>Esquema</span><b id={`${id}-t`}>{title}</b><p>{descriptions[id] ?? title}</p></figcaption>
     {children}
   </figure>;
 }
@@ -46,8 +62,8 @@ export function InvestmentCycleSchematic() {
       { t: 'Carteira USDC', s: 'Compra BETTEX com USDC', tone: 'blue' },
       { t: 'BETTEX na carteira', s: 'Participa automaticamente', tone: 'gold' },
       { t: 'Tesouraria e agentes', s: 'Investem nos quatro mercados', tone: 'blue' },
-      { t: 'Lucro da própria rodada', s: 'Paga ou fica na tesouraria, sem acumular', tone: 'teal' },
-      { t: 'Crédito em USDC', s: 'Rateio entre participantes', tone: 'teal' },
+      { t: 'Lucro da própria rodada', s: 'Após custos e tributos resolvidos, sujeito aos controles', tone: 'teal' },
+      { t: 'Crédito em USDC', s: 'Líquido após retenções aplicáveis; recebimento confirmado', tone: 'teal' },
     ]} />
     <p className="ds-loop">Agentes e apuração seguem as rodadas diárias UTC</p>
   </Schematic>;
@@ -83,7 +99,7 @@ export function StakingSchematic() {
       { t: 'BETTEX disponível', s: 'Na carteira oficial', tone: 'blue' },
       { t: 'Participação automática', s: 'Sem ativação nem depósito', tone: 'gold' },
       { t: 'Rodada diária UTC', s: 'Quantidade × tempo elegível', tone: 'gold' },
-      { t: 'Crédito em USDC', s: 'Lucro liberado à Carteira USDC, nunca em BETTEX', tone: 'teal' },
+      { t: 'Crédito em USDC', s: 'Líquido após retenções, confirmado na Carteira USDC', tone: 'teal' },
     ]} />
     <Fork from={{ t: 'Entradas e saídas', s: 'Alteram o BETTEX disponível', tone: 'blue' }} to={[
       { t: 'Saída', s: 'Cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado, mesmo quando parcial', tone: 'plain' },
@@ -107,6 +123,9 @@ export function AccountBoundariesSchematic() {
     <Lane label="Resultados">
       <Flow nodes={[{ t: 'Parcela do staking', s: 'Em USDC', tone: 'blue' }, { t: 'Carteira USDC do titular', s: 'Após conciliação', tone: 'teal' }]} />
     </Lane>
+    <Lane label="Recompra e queima">
+      <Flow nodes={[{ t: '25% do resultado elegível', s: 'Em USDC', tone: 'blue' }, { t: 'Carteira exclusiva', s: 'Compra autorizada de BETTEX', tone: 'gold' }, { t: 'Burn permanente', s: 'Destruição irreversível dos tokens adquiridos', tone: 'teal' }]} />
+    </Lane>
   </Schematic>;
 }
 
@@ -114,8 +133,8 @@ export function TokenAllocationSchematic() {
   return <Schematic id="schematic-allocation" title="Alocação e destino dos recursos">
     <Fork from={{ t: '1 bilhão de BETTEX', s: 'Emissão total', tone: 'blue' }} to={[
       { t: 'Venda pública · 65%', s: 'Preço em USDC: 100% para a tesouraria', tone: 'gold' },
-      { t: 'Fundador · 20%', s: 'Livre destinação após cada liberação', tone: 'blue' },
-      { t: 'Investidores · 15%', s: 'Aportes: 50% tesouraria, 50% capital inicial e desenvolvimento', tone: 'teal' },
+      { t: 'Fundador e equipe · 20%', s: 'Livre destinação após cada liberação', tone: 'blue' },
+      { t: 'Investidores · 15%', s: 'Aportes de livre alocação', tone: 'teal' },
     ]} />
     <div className="ds-vest" role="img" aria-label="Vesting de 36 meses com liberação mensal">
       <span>Vesting · liberação mensal</span>
@@ -142,7 +161,8 @@ export function GovernanceSchematic() {
   return <Schematic id="schematic-governance" title="Governança das regras">
     <Flow label="Governança das regras" nodes={[
       { t: 'IA sugere a mudança', s: 'Fila de ajustes de regras e limites', tone: 'blue' },
-      { t: 'Liderança aprova', s: 'Mudanças de política, não investimentos individuais', tone: 'gold' },
+      { t: 'Administração aprova', s: 'Testes e versão registrados; custódia por multisig', tone: 'gold' },
+      { t: 'Espera aplicável', s: 'Mudanças sensíveis: ao menos 24h', tone: 'gold' },
       { t: 'Execução registrada', s: 'A regra anterior vale até lá, sem efeito retroativo', tone: 'teal' },
       { t: 'Agentes operam no mandato', s: 'Sob controles independentes de risco', tone: 'blue' },
     ]} />
@@ -165,13 +185,14 @@ export function BuybackSchematic() {
         { t: 'IA', s: 'Apenas propõe', tone: 'blue', tag: 'Proposta' },
         { t: 'Verificações', s: 'Preço, liquidez e segurança', tone: 'gold' },
         { t: 'Administração autoriza', s: 'Multisig preservado; define o momento', tone: 'gold', tag: 'Autorização' },
-        { t: 'Compra de BETTEX', s: 'Somente após autorização. Destino dos tokens pendente de confirmação', tone: 'teal' },
+        { t: 'Compra de BETTEX', s: 'Somente após autorização', tone: 'teal' },
+        { t: 'Burn permanente', s: 'Todo BETTEX adquirido é destruído irreversivelmente', tone: 'gold' },
       ]} />
     </Lane>
     <Fork from={{ t: 'Carteira de recompras', s: 'Segregada da tesouraria', tone: 'blue' }} to={[
       { t: 'Não financia trading, distribuições nem despesas da empresa', tone: 'plain' },
       { t: 'Não conta como reserva defensiva nem capital de estratégia', tone: 'plain' },
-      { t: 'Sem garantia ou apoio de preço; queima e staking da tesouraria não aprovados', tone: 'plain' },
+      { t: 'Tokens queimados não retornam à circulação nem ao staking', tone: 'plain' },
     ]} />
   </Schematic>;
 }

@@ -1,0 +1,128 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 2 /Kids [4 0 R 6 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 2827 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(BETTEX — entity, pilot, and rules) Tj T*
+() Tj T*
+(Company and administration) Tj T*
+() Tj T*
+(A single private, closely-held commercial company to be incorporated, managed by the founder) Tj T*
+(Fred Azevedo in a full stack AI model, with no employees. Specialized external services are) Tj T*
+(contracted by need, not internal positions.) Tj T*
+() Tj T*
+(The company brings together the token, application, treasury, investments, and program) Tj T*
+(obligations. Final name, corporate structure, and jurisdiction are part of the formalization.) Tj T*
+(Holders own tokens and program rights, not shares, corporate voting, or a redeemable fraction) Tj T*
+(of the treasury.) Tj T*
+() Tj T*
+(The mission expands alternatives for economic participation during the transition of AI and) Tj T*
+(robotics. Transparency, understanding, responsibility, and accountability guide the operation,) Tj T*
+(without guaranteed income or capital protection.) Tj T*
+() Tj T*
+(Pilot and revenue) Tj T*
+() Tj T*
+(Pilot capital: US$ 100k, with US$ 50k for treasury and US$ 50k for launch. Three-month goal:) Tj T*
+(5,000 users and 1,000 MAU. Investor contributions have free allocation; the pilot's destination) Tj T*
+(is not a general split.) Tj T*
+() Tj T*
+(Fred drives acquisition through his own channels and audience, with AI and necessary external) Tj T*
+(services. Launch includes boosting, partnerships, security, and paid media on the founder's) Tj T*
+(profiles and own networks.) Tj T*
+() Tj T*
+(Service revenue = charged operations  x  US$ 2.50. Scenarios of 1, 10, and 30 operations per) Tj T*
+(asset consider 1,000 MAU; 30 illustrates daily withdrawals, without presuming balance or) Tj T*
+(adoption. Revenue is not profit: identified costs and taxes come before the net amount. No) Tj T*
+(monthly budget or break-even date is presumed.) Tj T*
+() Tj T*
+(Token, funding, and burn) Tj T*
+() Tj T*
+(1 billion BETTEX issuance: 65% public sale, 20% Founder and team, 15% investors. Monthly) Tj T*
+(vesting for 36 months since public sale opening, with whole groups 13:4:3. Release does not) Tj T*
+(prove sale or circulation.) Tj T*
+() Tj T*
+(100% of the public sale price in USDC goes to the treasury. Separate service fees go to the) Tj T*
+(operating cash. External markets do not automatically inherit the conditions of the official) Tj T*
+(swap.) Tj T*
+() Tj T*
+(Eligible result, after taxes and controls, receives 50% to treasury, 25% to staking, and 25% to) Tj T*
+(the exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains) Tj T*
+(in the treasury, without future split. Purchase uses administrative authorization; all acquired) Tj T*
+(BETTEX is burned permanently. The exclusive wallet is not the burn mechanism.) Tj T*
+() Tj T*
+(Staking and fiscal sequence) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 2414 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
+(BETTEX available in the official wallet participates automatically. Individual weight = sum of) Tj T*
+(quantity  x  eligible time. Gross payment = staking share  x  individual weight  /  sum of) Tj T*
+(eligible weights for the specific UTC round.) Tj T*
+() Tj T*
+(Each round pays or does not pay, without accumulation, reopening, or future supplement. Any) Tj T*
+(BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable) Tj T*
+(fractions return to the treasury, without future credit. Received USDC remains personal.) Tj T*
+() Tj T*
+(Taxes attributable to the entity are calculated, deducted, and paid according to the applicable) Tj T*
+(obligation before eligible profit and split. Applicable withholdings are resolved before the) Tj T*
+(net credit. Provision is not payment; accounting for and paying the same obligation does not) Tj T*
+(allow double deduction. There is no universal personal exemption.) Tj T*
+() Tj T*
+(Only confirmed and reconciled USDC enters the available balance. Uncertain sends do not) Tj T*
+(authorize repetition nor are they recovered resources. Corrections maintain history and unique) Tj T*
+(effects, without automatic debit from the personal wallet.) Tj T*
+() Tj T*
+(Governance and integrations) Tj T*
+() Tj T*
+(Policies evolve through approved versions. Administration defines policy; 2-of-3 multisig) Tj T*
+(controls custody; executors act within mandates. Sensitive changes wait at least 24h; already) Tj T*
+(mandated routine does not require new signature per operation. AI does not expand its own) Tj T*
+(permissions.) Tj T*
+() Tj T*
+(Treasury, operational cash, exclusive buyback wallet, and personal wallets have their own) Tj T*
+(boundaries. Defensive reserve follows the approved policy, without a general minimum fixed at) Tj T*
+(50%. New operations require independent risk, availability, and reconciliation.) Tj T*
+() Tj T*
+(Arbitrum provides the network and contracts. Allora is a candidate for inferences, not) Tj T*
+(execution. Robinhood Crypto Trading API requires an eligible account in the United States and) Tj T*
+(authorization; it does not prove access to stocks. Arbitrum/Gamma public queries were verified;) Tj T*
+(other examples without private access are simulations. No real money operations took place.) Tj T*
+() Tj T*
+(https://www.linkedin.com/in/fredazevedo85/) Tj T*
+() Tj T*
+ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000344 00000 n 
+0000003223 00000 n 
+0000003349 00000 n 
+trailer << /Size 8 /Root 1 0 R >>
+startxref
+5815
+%%EOF

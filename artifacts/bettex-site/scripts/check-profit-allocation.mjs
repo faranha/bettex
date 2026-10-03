@@ -8,7 +8,7 @@ const simulation = await transformWithEsbuild(await read('../src/lib/distributio
 const moduleSource = policy.code + simulation.code.replace(/^import.*profit-allocation-policy.*;\s*$/m, '');
 const { calculateTaxIllustration, profitAllocation } = await import(`data:text/javascript;base64,${Buffer.from(moduleSource).toString('base64')}`);
 assert.deepEqual(profitAllocation, { treasury: 0.5, staking: 0.25, buyback: 0.25 });
-const input = { resultAfterCosts: 5000, entityTaxes: 1000, beneficiaryWithholding: 125, distributionConditionsMet: true };
+const input = { resultAfterCosts: 5000, entityTaxes: 1000, beneficiaryWithholding: 125, distributionConditionsMet: true, fiscalObligationsSettled: true };
 const paid = calculateTaxIllustration(input);
 assert.equal(paid.status, 'ready');
 assert.equal(paid.treasury, 2000);
@@ -20,6 +20,9 @@ const blocked = calculateTaxIllustration({ ...input, distributionConditionsMet: 
 assert.equal(blocked.treasury, 4000);
 assert.equal(blocked.buyback, 0);
 assert.equal(blocked.stakingGross, 0);
+const unresolvedTax = calculateTaxIllustration({ ...input, fiscalObligationsSettled: false, beneficiaryWithholding: 0 });
+assert.equal(unresolvedTax.treasury, 4000);
+assert.equal(unresolvedTax.buyback + unresolvedTax.stakingGross + unresolvedTax.stakingNet, 0);
 for (const resultAfterCosts of [0, -500]) {
   const empty = calculateTaxIllustration({ ...input, resultAfterCosts, entityTaxes: 0, beneficiaryWithholding: 0 });
   assert.equal(empty.treasury + empty.buyback + empty.stakingGross, 0);

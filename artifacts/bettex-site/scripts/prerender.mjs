@@ -6,6 +6,9 @@ import { discovery, routes, withMetadata, htmlFile } from './seo.mjs';
 const root = path.resolve(import.meta.dirname, '..');
 const output = path.join(root, 'dist/public');
 const template = await readFile(path.join(output, 'index.html'), 'utf8');
+if (!template.includes('<div id="root"></div>')) {
+  throw new Error('Prerender needs a fresh Vite build with an empty root. Run the full build; do not reuse already prerendered index.html.');
+}
 const server = await createServer({ configFile: path.join(root, 'vite.config.ts'), server: { middlewareMode: true }, appType: 'custom' });
 try {
   const { render } = await server.ssrLoadModule('/src/entry-server.tsx');

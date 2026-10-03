@@ -1,0 +1,8 @@
+.doc-agent { margin-block: 44px; border-top: 1px solid var(--wp-line); }
+.doc-agent__robot { display: inline-flex; width: 42px; height: 42px; padding: 8px; margin-right: 12px; border-radius: 50%; background: #13204f; color: #f2b632; vertical-align: middle; }
+.doc-agent__robot svg { width: 100%; height: 100%; }
+.doc-agent__flow { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; padding: 0; list-style: none; }
+.doc-agent__flow li { padding: 18px; border: 1px solid #d9d3c0; }
+.doc-agent__flow li + li::before { content: '→'; display: block; color: #2b59ff; }
+.doc-agent__flow p { margin-top: 12px; }
+@media(max-width: 768px) { .doc-agent__flow { grid-template-columns: 1fr; } .doc-agent__flow li + li::before { content: '↓'; } }

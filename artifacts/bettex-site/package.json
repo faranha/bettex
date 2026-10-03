@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "node scripts/check-locales.mjs && node scripts/check-round-policy.mjs && node scripts/check-profit-allocation.mjs && python scripts/localize-downloads.py && vite build --config vite.config.ts && node scripts/prerender.mjs && python scripts/verify-localized-html.py",
+    "build": "node scripts/check-locales.mjs && node scripts/check-round-policy.mjs && node scripts/check-profit-allocation.mjs && node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs && node scripts/check-documentation-runtime.mjs && python scripts/localize-downloads.py && vite build --config vite.config.ts && node scripts/prerender.mjs && python scripts/verify-localized-html.py && python scripts/verify-documentation-html.py",
     "check:allocation": "node scripts/extract-locales.mjs && node scripts/check-profit-allocation.mjs",
     "check:rounds": "node scripts/check-round-policy.mjs",
+    "check:docs": "node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs",
     "check:locales": "node scripts/check-locales.mjs",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
