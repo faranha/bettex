@@ -1,14 +1,13 @@
 import { DocFacts, DocGroup } from '@/components/DocFacts';
 import { feeProjections, purchaseRate, withdrawalRate } from '@/lib/fee-projections';
 
-const count = (value: number) => value.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
-const money = (value: number) => `${value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDC`;
-const percent = (value: number) => `${(value * 100).toLocaleString('pt-BR')}%`;
+const count = (n: number) => n.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
+const money = (n: number) => `${n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDC`;
+const percent = (n: number) => `${(n * 100).toLocaleString('pt-BR')}%`;
 type Scenario = typeof feeProjections[number];
 
 function ScenarioTable({ caption, rows }: {
-  caption: string;
-  rows: { label: string; value: (scenario: Scenario) => string }[];
+  caption: string; rows: { label: string; value: (s: Scenario) => string }[];
 }) {
   return (
     <div className="whitepaper__vesting-scroll whitepaper__projection-table" role="region" aria-label={caption} tabIndex={0}>
@@ -22,70 +21,68 @@ function ScenarioTable({ caption, rows }: {
 }
 
 export function FeeProjections() {
-  const reference = feeProjections[1];
+  const reference = feeProjections[0];
   return (
     <section id="documentacao-projecoes-taxas" aria-labelledby="projecoes-taxas-title">
-      <h4 id="projecoes-taxas-title" className="whitepaper__subhead">Receita líquida-alvo das taxas por comportamento do usuário</h4>
-      <DocFacts title="Saques diários · cenário de referência hipotético" cols={3} facts={[
-        { label: 'PESSOAS SACANDO TODO DIA', value: count(reference.withdrawers), text: `${money(reference.dailyWithdrawal)} por pessoa, em ${reference.withdrawalDays} dias do mês.` },
-        { label: 'ALVO LÍQUIDO POR MÊS', value: money(reference.monthlyFees), text: 'Após tributos modelados, antes dos demais custos. Equivalente nominal em BETTEX.' },
-        { label: 'ALVO EM 12 MESES', value: money(reference.annualFees), text: 'Operação constante, hipotética; não cobrança bruta.' },
+      <h4 id="projecoes-taxas-title" className="whitepaper__subhead">Projeção do ano 1: 100 mil holders e 5 mil ativos diários</h4>
+      <DocFacts title="Meta mínima do primeiro ano definida pelo criador" cols={3} facts={[
+        { label: 'HOLDERS AO FINAL DO ANO', value: count(reference.targetHolders), text: 'Base de titulares, não quantidade de sacadores diários.' },
+        { label: 'ATIVOS DIÁRIOS NA META', value: count(reference.targetDailyActiveUsers), text: `${percent(reference.activeShareOfHolders)} dos 100 mil holders.` },
+        { label: 'PROJEÇÃO AMPLA DE USUÁRIOS', value: count(reference.projectedUsers), text: '1% dessa projeção corresponde a 10 mil ativos diários, no cenário separado.' },
       ]} />
       <div className="whitepaper__prose">
-        <p><strong>O comportamento central deste modelo é sacar dinheiro todos os dias.</strong> No cenário de referência, {count(reference.activeUsers)} usuários ativos, dos quais {count(reference.withdrawers)} sacam {money(reference.dailyWithdrawal)} por dia em {reference.withdrawalDays} dias do mês, geram taxas equivalentes a {money(reference.monthlyFees)} por mês, ou {money(reference.annualFees)} em 12 meses constantes. A projeção combina esse hábito com primeiras compras e compras adicionais.</p>
-        <p>Os percentuais de adesão e os tickets diários de 1, 3 e 5 USDC são <strong>hipóteses de comportamento, não dados observados nem rendimentos atribuídos ao investimento</strong>. Cada participante do grupo de saque faz um saque por dia com saldo disponível. Os demais usuários ativos não têm saques contabilizados naquele cenário; podem comprar ou manter tokens. Novos compradores e compradores recorrentes são grupos distintos, enquanto quem saca pode pertencer a qualquer um deles. A recompra é um total mensal; o ticket de saque agora é um valor <strong>por dia</strong>.</p>
+        <p><strong>A meta do primeiro ano é 100.000 holders com pelo menos 5.000 usuários ativos por dia.</strong> O cenário alternativo usa 10.000 ativos por dia, equivalentes a 1% da projeção ampla de 1 milhão de usuários. Essa projeção ampla não significa 1 milhão de holders ou compradores do pool. Os dois cenários mantêm a meta de 100 mil holders; não confundem cadastros, titulares, atividade e saques.</p>
+        <p><strong>Metas e hipóteses são separadas.</strong> Para calcular o ano, esta simulação parte de zero holders e zero ativos e cresce linearmente até a meta em 12 meses. Por isso, a média de ativos do ano é metade da meta final, não 5.000 pessoas ativas desde o primeiro dia. Os tickets de 200 USDC na primeira compra, 100 USDC em compras adicionais mensais, 3 USDC por saque diário, adesão de 20% às recompras e 40% aos saques são hipóteses de comportamento mantidas para comparação, não valores fornecidos pelo criador.</p>
+        <p>A hipótese de aquisição considera 100% dos novos holders fazendo uma primeira compra no pool do projeto. <strong>Ser holder não gera essa taxa automaticamente:</strong> recebimento por transferência ou compra externa não é compra tributável pelo aplicativo. A participação de compradores do pool é editável na planilha. Essa receita de aquisição é contabilizada uma vez no ano, sem repetir a primeira compra a cada mês.</p>
       </div>
-      <ScenarioTable caption="Premissas mensais de comportamento · valores por pessoa em USDC" rows={[
-        { label: 'Usuários ativos no mês', value: s => count(s.activeUsers) },
-        { label: 'Primeira compra: parcela dos ativos', value: s => `${percent(s.newBuyerShare)} · ${count(s.newBuyers)} pessoas` },
+      <ScenarioTable caption="Metas de população e hipóteses de comportamento" rows={[
+        { label: 'Projeção ampla de usuários', value: s => count(s.projectedUsers) },
+        { label: 'Meta de holders ao final do ano', value: s => count(s.targetHolders) },
+        { label: 'Ativos diários ao final do ano', value: s => count(s.targetDailyActiveUsers) },
+        { label: 'Ativos finais / holders', value: s => percent(s.activeShareOfHolders) },
+        { label: 'Ativos finais / projeção de usuários', value: s => percent(s.activeShareOfProjection) },
+        { label: 'Média de ativos diários no ano linear', value: s => count(s.activeUsers) },
+        { label: 'Primeiros compradores do pool no ano', value: s => count(s.annualNewBuyers) },
         { label: 'Ticket da primeira compra', value: s => money(s.firstPurchase) },
-        { label: 'Compra adicional: parcela dos ativos', value: s => `${percent(s.repeatBuyerShare)} · ${count(s.repeatBuyers)} pessoas` },
+        { label: 'Parcela dos ativos que recompra', value: s => percent(s.repeatBuyerShare) },
         { label: 'Compras adicionais por comprador/mês', value: s => money(s.monthlyRepeatPurchase) },
-        { label: 'Sacadores diários: parcela dos ativos', value: s => `${percent(s.withdrawerShare)} · ${count(s.withdrawers)} pessoas` },
-        { label: 'Dias com saque por pessoa/mês', value: s => count(s.withdrawalDays) },
+        { label: 'Parcela dos ativos que saca diariamente', value: s => percent(s.withdrawerShare) },
         { label: 'Ticket por saque diário', value: s => money(s.dailyWithdrawal) },
-        { label: 'USDC sacado por pessoa/mês', value: s => money(s.monthlyWithdrawal) },
-        { label: 'Quantidade de saques concluídos/mês', value: s => count(s.withdrawalCount) },
+        { label: 'Dias com saque por pessoa/mês', value: s => count(s.withdrawalDays) },
       ]} />
-      <div className="whitepaper__prose">
-        <p><strong>Volume de compras = ativos × parcela de novos compradores × ticket inicial + ativos × parcela de compradores recorrentes × ticket adicional.</strong> Volume mensal de saques = ativos × parcela que saca diariamente × dias com saque × ticket por saque diário. Equivalente das taxas = volume de compras × {percent(purchaseRate)} + volume de saques × {percent(withdrawalRate)}.</p>
-        <p>Na referência: {count(reference.newBuyers)} primeiras compras de {money(reference.firstPurchase)} + {count(reference.repeatBuyers)} compradores adicionais com {money(reference.monthlyRepeatPurchase)} no mês = <strong>{money(reference.purchaseVolume)} em compras</strong>. Já {count(reference.withdrawers)} pessoas × {reference.withdrawalDays} dias × {money(reference.dailyWithdrawal)} = <strong>{money(reference.withdrawalVolume)} em saques</strong>, distribuídos em {count(reference.withdrawalCount)} operações. As taxas equivalem a {money(reference.purchaseFees)} nas compras e {money(reference.withdrawalFees)} nos saques, sendo {money(reference.dailyWithdrawalFees)} de taxas de saque por dia ativo.</p>
-      </div>
-      <ScenarioTable caption="Alvos após tributos · equivalentes nominais em USDC, não cobrança total" rows={[
-        { label: 'Volume mensal de compras do pool', value: s => money(s.purchaseVolume) },
-        { label: 'Volume mensal de saques do staking', value: s => money(s.withdrawalVolume) },
-        { label: 'Alvo líquido de compra/mês · 1%', value: s => money(s.purchaseFees) },
-        { label: 'Alvo líquido de saque/mês · 2%', value: s => money(s.withdrawalFees) },
-        { label: 'Alvo líquido de saque/dia · 2%', value: s => money(s.dailyWithdrawalFees) },
-        { label: 'Total líquido-alvo por mês', value: s => money(s.monthlyFees) },
-        { label: 'Alvo em 12 meses constantes', value: s => money(s.annualFees) },
-        { label: 'Alvo por usuário ativo/mês', value: s => money(s.feesPerActiveUser) },
+      <DocFacts title="Resultado do ano 1 nas hipóteses acima, líquido-alvo de tributos" cols={3} facts={[
+        { label: 'PRIMEIRAS COMPRAS NO ANO', value: money(reference.acquisitionFees), text: `${count(reference.annualNewBuyers)} compras × ${money(reference.firstPurchase)} × ${percent(purchaseRate)}.` },
+        { label: 'ALVO TOTAL DO ANO', value: money(reference.annualFees), text: 'Aquisição + recompras + saques, com crescimento linear.' },
+        { label: 'MÉDIA MENSAL DO ANO', value: money(reference.monthlyFees), text: 'Total anual dividido por 12; não receita constante em todos os meses.' },
       ]} />
-      <div className="whitepaper__prose">
-        <p><strong>Todos os valores de taxas desta seção são alvos líquidos dos tributos modelados, não cobranças brutas.</strong> A referência mantém {money(reference.monthlyFees)} por mês e {money(reference.annualFees)} em 12 meses como alvos, antes dos demais custos institucionais. A cobrança total inclui a cobertura fiscal e depende das regras validadas por operação. A planilha separa compra e saque na aba Cobertura fiscal, sem presumir alíquotas. Não cobrar novamente na tesouraria ou no pagamento um tributo já financiado nesse acréscimo.</p>
-        <p>A cobrança é recebida em BETTEX na carteira da Fundação, não em USDC. A 0,20 USDC por BETTEX, apenas o alvo de referência equivale a {count(reference.monthlyFees / 0.20)} BETTEX por mês; o recebimento bruto inclui ainda a provisão fiscal. O caixa institucional usa os valores da conversão efetiva, a liquidez e os custos registrados. Receita líquida de tributos não é lucro líquido após todas as despesas.</p>
-        <p><strong>A projeção de saques depende de créditos de staking disponíveis.</strong> Os tickets representam USDC disponível para saque depois de eventuais retenções fiscais. Não se aplica 2% ao patrimônio da tesouraria, a depósitos, ao crédito automático do yield, ao tributo retido ou a lucros que ficaram retidos para recompor reservas. Sem créditos anteriores, os mínimos abaixo são pisos de lucro elegível <strong>após os tributos da entidade e antes de acrescentar as retenções dos beneficiários</strong>. São requisitos matemáticos dos cenários, não premissas de rendimento das estratégias. Se parte das distribuições permanecer nas carteiras, a necessidade de lucro elegível é maior para sustentar o mesmo saque.</p>
-        <p><strong>Com retenções, lucro líquido elegível necessário = (volume líquido de saques + retenções dos beneficiários) ÷ 25%.</strong> Na referência, o piso de {money(reference.minimumEligibleProfit)} cresce conforme as retenções aplicáveis; o resultado antes dos tributos da entidade precisa cobrir ainda esses tributos. Não presumir imposto zero ou uma alíquota comum para Fundação, subsidiárias e titulares. A aba Tributos da planilha permite informar esses valores separadamente. Seguir a <a href="#documentacao-tributos">ordem fiscal da distribuição</a>.</p>
-      </div>
-      <ScenarioTable caption="Condição para sustentar os saques somente com distribuições do mês" rows={[
-        { label: 'USDC necessário para os saques de cada dia', value: s => money(s.dailyWithdrawalVolume) },
-        { label: 'Piso líquido elegível/dia · sem retenções individuais', value: s => money(s.minimumDailyEligibleProfit) },
-        { label: 'Mínimo distribuído ao staking', value: s => money(s.withdrawalVolume) },
-        { label: 'Piso líquido elegível/mês · sem retenções individuais', value: s => money(s.minimumEligibleProfit) },
+      <ScenarioTable caption="Alvos líquidos de tributos, antes de demais despesas; equivalentes nominais em USDC" rows={[
+        { label: 'Aquisição: alvo líquido no ano · 1%', value: s => money(s.acquisitionFees) },
+        { label: 'Recompras: alvo anual · 1%', value: s => money(s.repeatPurchaseVolume * purchaseRate * 12) },
+        { label: 'Saques: alvo anual · 2%', value: s => money(s.withdrawalFees * 12) },
+        { label: 'Total líquido-alvo no primeiro ano', value: s => money(s.annualFees) },
+        { label: 'Média mensal incluindo aquisição', value: s => money(s.monthlyFees) },
+        { label: 'Média mensal recorrente, sem aquisição', value: s => money(s.recurringMonthlyFees) },
+        { label: 'Recorrente mensal com a atividade final', value: s => money(s.yearEndRecurringMonthlyFees) },
+        { label: 'Média de saques concluídos por mês', value: s => count(s.withdrawalCount) },
+        { label: 'Média de volume sacado por mês', value: s => money(s.withdrawalVolume) },
       ]} />
-      <DocGroup title="Relação entre lucro elegível, staking e receita de saque">
+      <DocGroup title="Como os valores são calculados">
         <div className="whitepaper__prose">
-          <p>Sem retenções individuais, se todo o USDC distribuído ao staking no período for sacado, sem créditos anteriores, o alvo líquido de serviço é <strong>lucro elegível após tributos da entidade × 25% × 2% = 0,5% desse lucro elegível</strong>. Com retenções, o alvo passa a ser <strong>(lucro elegível × 25% − retenções) × 2%</strong>, se todo o líquido for sacado. Retirada parcial reduz o alvo proporcionalmente. Os 2% representam a receita líquida-alvo, não a cobrança total: o usuário paga também a cobertura fiscal validada em BETTEX. A frequência não cria lucro adicional para sustentar o volume.</p>
+          <p><strong>Aquisição anual = novos holders × parcela que compra no pool × ticket inicial × 1%.</strong> Recompras usam a média temporal dos ativos × adesão × ticket adicional × 12 meses × 1%. Saques usam média dos ativos × adesão diária × ticket diário × dias com saque × 12 meses × 2%. Somar esses três componentes uma única vez. Um primeiro comprador pode também recomprar e sacar; a primeira compra não entra novamente como recompra.</p>
+          <p>Na meta mínima, aquisição contribui com {money(reference.acquisitionFees)}, recompras com {money(reference.repeatPurchaseVolume * purchaseRate * 12)} e saques com {money(reference.withdrawalFees * 12)} no ano: total de <strong>{money(reference.annualFees)}</strong>. Depois de atingir 5 mil ativos diários, as mesmas hipóteses geram {money(reference.yearEndRecurringMonthlyFees)} recorrentes por mês, sem novas primeiras compras presumidas. A média do ano inclui crescimento e aquisição e não deve ser confundida com esse valor recorrente.</p>
+          <p>1% na compra e 2% no saque são receita líquida-alvo de tributos. O total cobrado inclui cobertura fiscal validada, não é igual aos alvos desta seção. A aba Cobertura fiscal separa alvo, provisão e total. Valores recebidos são em BETTEX; caixa usa conversões efetivas. Não financiar novamente pela tesouraria ou pagamentos um imposto já coberto na cobrança.</p>
         </div>
       </DocGroup>
+      <ScenarioTable caption="Créditos necessários para os saques médios, sem créditos anteriores" rows={[
+        { label: 'Volume médio de saque por dia ativo', value: s => money(s.dailyWithdrawalVolume) },
+        { label: 'Piso líquido elegível/dia, sem retenção individual', value: s => money(s.minimumDailyEligibleProfit) },
+        { label: 'Piso líquido elegível/mês, sem retenção individual', value: s => money(s.minimumEligibleProfit) },
+      ]} />
       <div className="whitepaper__prose">
-        <p><strong>Frequência e volume são variáveis diferentes.</strong> Trinta saques de 3 USDC e um saque de 90 USDC produzem o mesmo alvo líquido de 1,80 USDC para a Fundação. A cobrança bruta depende dos tributos, inclusive custos fiscais por operação quando aplicáveis; não deve ser presumida como 1,80 USDC nos dois casos. Multiplicar operações sobre o mesmo volume não aumenta o alvo líquido de serviço, embora possa mudar a provisão fiscal e os custos externos.</p>
-        <p><strong>Sensibilidade da referência:</strong> cada 1.000 usuários ativos adicionais, mantendo as premissas, acrescentam {money(reference.feesPerActiveUser * 1000)} equivalentes em taxas mensais. Cada 1 USDC adicional no ticket diário dos {count(reference.withdrawers)} sacadores, em {reference.withdrawalDays} dias, acrescenta {money(reference.withdrawers * reference.withdrawalDays * withdrawalRate)} equivalentes no mês. Se os dias com saldo para sacar caírem de 30 para 15, a parcela das taxas de saque cai pela metade; se não houver saques, restam somente {money(reference.purchaseFees)} equivalentes nas compras.</p>
-        <p><strong>Saldo disponível e sustentação diária:</strong> desejar sacar todo dia não cria crédito de staking. Os 30 dias representam saques concluídos na hipótese de saldo, liquidez, tratamento fiscal validado e pagamento da taxa disponíveis. Sem crédito anterior nem retenções individuais, o piso da referência é {money(reference.minimumDailyEligibleProfit)} de lucro elegível após tributos da entidade em cada dia de saque, para distribuir os {money(reference.dailyWithdrawalVolume)} utilizados naquele dia; o piso mensal é {money(reference.minimumEligibleProfit)}. Retenções aumentam esse requisito pela fórmula acima. Se os ganhos se concentrarem em outros dias, créditos já disponíveis podem sustentar os saques; o mínimo diário não descreve essa alternativa. Lucros retidos para recomposição não entram como créditos sacáveis, e o valor efetivamente sacado fica limitado aos créditos disponíveis, sem contar o mesmo crédito novamente.</p>
-        <p>Pagar a cobrança total diariamente consome BETTEX disponível na carteira. Recompras dependem de decisão do titular e descontam sua própria cobrança total, com alvo de 1% mais cobertura fiscal; não são automáticas nem receita adicional presumida. O modelo mantém as recompras na premissa mensal, sem duplicar volume. Custos externos por operação ficam separados da receita líquida-alvo.</p>
-        <p><strong>Leitura dos 12 meses:</strong> o total anual é o mensal multiplicado por 12, com meses de referência de 30 dias, base ativa, tickets e proporções constantes; não é uma contagem exata dos dias do calendário. Não é uma curva de crescimento: pressupõe entrada contínua de novos compradores compensando a saída de usuários da base ativa. Primeiras compras não são repetidas para a mesma pessoa. As compras do pool dependem do estoque disponível no vesting; após seu esgotamento, esse componente de receita não pode continuar sendo projetado da mesma forma.</p>
-        <p>O modelo inclui somente as taxas aprovadas de compra no pool pelo aplicativo e saque de USDC do staking. Não presume a mesma taxa nas vendas diretas a corretoras e exclui swap, retirada de BETTEX, transferências externas e orçamento inicial. Compras para completar saldo de taxas, quando realizadas, entram no volume de compras uma única vez; não se soma uma receita adicional automática. Os 100% do USDC da venda pública continuam destinados à tesouraria, separados dos tokens pagos à Fundação.</p>
-        <p><a href={`${import.meta.env.BASE_URL}downloads/bettex-taxas-fundacao.xlsx`} download>Baixar a planilha com os cenários e as fórmulas das projeções</a></p>
+        <p><strong>Atividade não é saldo para saque.</strong> Tickets são valores líquidos disponíveis depois de eventuais retenções, e os dias representam saques concluídos com crédito, liquidez e BETTEX para a cobrança disponíveis. O piso é após os tributos da entidade. Com retenções individuais: lucro elegível necessário = (saques líquidos + retenções) ÷ 25%. Lucro retido não cria crédito e o mesmo crédito não financia dois saques. Ver o <a href="#documentacao-tributos">tratamento fiscal</a>.</p>
+        <p>Trinta saques de 3 USDC e um de 90 USDC geram o mesmo alvo líquido de 1,80 USDC. A cobrança bruta pode mudar com tributos por operação. Reposição de BETTEX depende de decisão do titular e inclui a cobertura fiscal da própria compra, sem receita adicional automática. Compras e saques contabilizam volumes distintos, não reutilizam a primeira compra.</p>
+        <p><strong>O crescimento linear desde zero é uma hipótese editável, não uma trajetória aprovada.</strong> A planilha aceita bases iniciais de holders e ativos. Os 12 meses usam 30 dias de referência; não são calendário exato. A meta de holders, isoladamente, não comprova volume vendido pelo pool. Conferir estoque e vesting antes de tratar aquisição como executável; após esgotamento, primeiras compras do pool não continuam indefinidamente. Preservam-se reservas, split, taxas líquidas e separação da carteira da Fundação.</p>
+        <p><a href={`${import.meta.env.BASE_URL}downloads/bettex-taxas-fundacao.xlsx`} download>Baixar a planilha com as metas do primeiro ano e as fórmulas</a></p>
       </div>
     </section>
   );
