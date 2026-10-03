@@ -1,7 +1,14 @@
+import { DocFacts } from '@/components/DocFacts';
+
 export function FoundationFunding() {
   return (
     <section id="documentacao-financiamento-fundacao" aria-labelledby="financiamento-fundacao-title">
       <h4 id="financiamento-fundacao-title" className="whitepaper__subhead">Financiamento institucional separado da tesouraria</h4>
+      <DocFacts title="Fundação em resumo" cols={3} facts={[
+        { label: 'ORÇAMENTO INICIAL', value: '50%', text: 'Dos aportes dos investidores, para capital inicial e desenvolvimento.' },
+        { label: 'FINANCIAMENTO RECORRENTE', value: 'Taxas em BETTEX', text: 'Compra a 1% e saque de USDC do staking a 2%.' },
+        { label: 'SEPARAÇÃO', value: 'Fora da tesouraria', text: 'Carteira própria; fora do split 75% / 25%.' },
+      ]} />
       <div className="whitepaper__prose">
         <p><strong>A Fundação BETTEX, entidade a constituir, é responsável por financiar o desenvolvimento e as despesas recorrentes de infraestrutura, auditoria e administração com recursos próprios, segregados da tesouraria de investimentos.</strong> A parcela de 50% dos aportes dos investidores destinada a capital inicial e desenvolvimento integra esse orçamento separado; os outros 50% continuam destinados à tesouraria. A receita da venda pública permanece integralmente na tesouraria.</p>
         <p><strong>O financiamento recorrente vem das taxas de serviço pagas em BETTEX à Fundação.</strong> As compras de BETTEX do pool do projeto, com taxa de 1%, e os saques de USDC do pool de staking pelo aplicativo, com taxa de 2%, transferem os tokens da taxa a uma carteira separada, destinada à Fundação e de propriedade dela.</p>

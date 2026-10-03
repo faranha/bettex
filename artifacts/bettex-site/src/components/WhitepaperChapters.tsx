@@ -33,6 +33,7 @@ import { TreasuryFundsInTransit } from '@/components/TreasuryFundsInTransit';
 import { FoundationFunding } from '@/components/FoundationFunding';
 import { TokenHolderRights } from '@/components/TokenHolderRights';
 import { SaleChannels } from '@/components/SaleChannels';
+import { DocFacts } from '@/components/DocFacts';
 
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação inicial em USDC, participação automática e controles.' },
@@ -67,6 +68,11 @@ export function ChapterContent({ index }: { index: number }) {
           <div><span>02 / OPERAÇÃO FINANCEIRA</span><strong>Tesouraria multimercado</strong><p>A receita da venda pública vai para a tesouraria; dos aportes dos investidores, 50% vão para a tesouraria e 50% para capital inicial e desenvolvimento. Dentro da tesouraria, os recursos são divididos entre reserva defensiva e parcela investível. O algoritmo aloca a parcela investível dinamicamente conforme as oportunidades e os limites de risco.</p></div>
           <div><span>03 / ARQUITETURA E CONTROLES</span><strong>Registros conciliados</strong><p>O modelo separa responsabilidades entre aplicativo, serviços, agente, conectores e operação, com registros auditáveis, autorizações explícitas e reconciliação de ativos e obrigações.</p></div>
         </div>
+        <DocFacts title="Resumo do modelo" facts={[
+          { label: 'OPERAÇÃO', value: 'USDC', text: 'Saldos, compras, distribuições e saques.' },
+          { label: 'TOKEN', value: 'BETTEX', text: 'Staking e taxas de serviço à Fundação.' },
+          { label: 'TESOURARIA', value: '75% / 25%', text: 'Split do lucro elegível: tesouraria e staking.' },
+        ]} />
         <Subhead>Camadas do sistema</Subhead>
         <div className="whitepaper__prose">
           <p>A BETTEX é um <strong>projeto internacional com operação inicial 100% cripto</strong>. O USDC é a unidade dos saldos financeiros, depósitos, compras, apuração, distribuições e saques. <strong>O token BETTEX serve para staking e pagamento de taxas de serviço à Fundação</strong>, incluindo compras do pool do projeto, vendas por swapping e saques pelo aplicativo. A taxa é percentual sobre o valor da operação, convertida em BETTEX pela cotação informada antes da autorização. Os tokens são transferidos à Fundação para sustentar a operação, não destruídos. Transferências realizadas diretamente pelo titular fora do aplicativo não estão sujeitas à taxa de serviço do aplicativo. BETTEX não é usado como capital nas estratégias dos agentes nem representa participação na empresa. O fundador pode manter, distribuir ou vender seus tokens liberados. Não há saldo fiduciário, pagamento em moeda local nem conversão de USDC para fiat realizada pela BETTEX nesta versão.</p>
@@ -77,6 +83,11 @@ export function ChapterContent({ index }: { index: number }) {
       </>;
     case 1:
       return <>
+        <DocFacts title="Rede e ativos em resumo" facts={[
+          { label: 'REDE DO TOKEN', value: 'Arbitrum One', text: 'Segunda camada do Ethereum, compatível com seu ecossistema.' },
+          { label: 'SALDO FINANCEIRO', value: 'USDC', text: 'Compras, distribuições e saques na versão inicial.' },
+          { label: 'PARTICIPAÇÃO', value: 'BETTEX', text: 'Staking e pagamento das taxas de serviço à Fundação.' },
+        ]} />
         <Subhead>Arbitrum One: escala e integração com Ethereum</Subhead>
         <div className="whitepaper__prose">
           <p>A <strong>Arbitrum One</strong> é uma rede de segunda camada do Ethereum. Ela amplia a capacidade de processamento e reduz os custos das transações em relação à rede principal, oferecendo uma infraestrutura para contratos inteligentes, tokens e carteiras.</p>
@@ -98,6 +109,11 @@ export function ChapterContent({ index }: { index: number }) {
       </>;
     case 2:
       return <>
+        <DocFacts title="Carteira e acesso em resumo" facts={[
+          { label: 'CARTEIRA PESSOAL', value: 'Do titular', text: 'Criada com a conta, com chaves e dados exportáveis.' },
+          { label: 'ACESSO', value: 'Controle da carteira', text: 'Sem enviar chave privada ou frase de recuperação ao servidor.' },
+          { label: 'STAKING', value: 'No aplicativo', text: 'Piscina fechada; não exige manter a sessão aberta continuamente.' },
+        ]} />
         <div className="whitepaper__lead"><span>ACESSO PELA CARTEIRA</span><p>O modelo do projeto prevê uma área pessoal vinculada à <strong>Carteira BETTEX, gerada na criação da conta</strong>. O acesso utiliza os dados dessa carteira e dados básicos de cadastro, <strong>sem KYC nem documentos de identificação no modelo atual</strong>.</p></div>
         <Flow label="Autenticação e autorização" steps={['Criar a conta com dados básicos; a carteira da pessoa é gerada na criação da conta. Depois, acessar a área pessoal com os dados dessa carteira.', 'O servidor verifica que a pessoa controla a carteira, sem receber chave privada nem frase de recuperação, e abre uma sessão protegida, com expiração, revogação e trilha de auditoria.', 'Depósitos em USDC exigem recebimento e confirmação on-chain. Saques exigem autorização, saldo disponível, destino e rede compatíveis, além de conciliação da transferência.', 'Uma compra debita USDC e credita BETTEX uma única vez, após confirmação da liquidação; a participação começa no horário do saldo BETTEX final confirmado.', 'A área pessoal apresenta os saldos separados em USDC e BETTEX, os custos e valores líquidos, os lançamentos conciliados e o histórico do agente.']} />
         <Subhead>Carteira, chaves e exportação</Subhead>
@@ -170,6 +186,12 @@ export function ChapterContent({ index }: { index: number }) {
           <div className="whitepaper__supply-bar" role="img" aria-label="65% venda pública, 20% fundador, 15% investidores"><span /><span /><span /></div>
           <div className="whitepaper__supply-key"><span><i />Venda pública · {formatTokenCount(tokenomics.publicSaleAllocation)} (65%)</span><span><i />Fundador · {formatTokenCount(tokenomics.teamAllocation)} (20%)</span><span><i />Investidores · {formatTokenCount(tokenomics.investorAllocation)} (15%)</span></div>
         </div>
+        <DocFacts title="Economia do token em resumo" tone="accent" cols={4} facts={[
+          { label: 'EMISSÃO', value: '1 bilhão', text: 'Teto total de BETTEX.' },
+          { label: 'ALOCAÇÃO', value: '65 / 20 / 15', text: 'Venda pública, fundador, investidores.' },
+          { label: 'VESTING', value: '36 meses', text: 'Cronograma predefinido de liberação.' },
+          { label: 'VENDA PÚBLICA', value: '100% USDC', text: 'Recebido vai direto à tesouraria.' },
+        ]} />
         <Subhead>Regras e requisitos de emissão</Subhead>
         <div className="whitepaper__rule-pair" data-testid="documentacao-novas-vendas">
           <div><span>EMISSÃO E VENDA / CRONOGRAMA DE VESTING</span><p><strong>A liberação de BETTEX segue o cronograma predefinido de vesting de 36 meses</strong>, na proporção de 65% para venda pública, 20% para o fundador e 15% para investidores. Não cabe à gestão decidir quando abrir novas liberações nem quantos tokens liberar conforme as reservas: meses e quantidades já estão definidos na agenda. A venda pública utiliza apenas sua parcela liberada, sem antecipar tokens ou ultrapassar o teto de 1 bilhão. Liberação não significa venda realizada.</p></div>

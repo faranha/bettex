@@ -128,8 +128,8 @@ monthly.merge_range("A16:C18", "Converta ou utilize receitas institucionais sepa
 monthly.print_area("A1:C18")
 
 scenarios = json.loads((app / "src/lib/fee-projection-scenarios.json").read_text())["scenarios"]
-projection = setup("Projeções", "BETTEX — projeções por comportamento",
-                   "Hipóteses mensais, não dados observados. Amarelo = premissas editáveis. Taxas recebidas em BETTEX; valores em USDC são equivalentes nominais, não caixa ou lucro líquido.")
+projection = setup("Projeções", "BETTEX — comportamento de saques diários",
+                   "Premissas diárias hipotéticas, mês de referência de 30 dias. Amarelo = editável. Taxas recebidas em BETTEX; USDC indica equivalente nominal, não caixa ou lucro líquido.")
 projection.set_column("A:A", 62)
 projection.set_column("B:D", 27)
 projection.write_row(3, 0, ["Indicador"] + [s["name"] for s in scenarios], header)
@@ -139,25 +139,30 @@ input_rows = [
     (6, "firstPurchase", "Ticket da primeira compra (USDC)", input_number),
     (7, "repeatBuyerShare", "Parcela dos ativos que faz compras adicionais", rate),
     (8, "monthlyRepeatPurchase", "Compras adicionais por comprador/mês (USDC)", input_number),
-    (9, "withdrawerShare", "Parcela dos ativos que saca USDC do staking", rate),
-    (10, "monthlyWithdrawal", "USDC sacado por pessoa/mês", input_number),
+    (9, "withdrawerShare", "Parcela dos ativos que saca diariamente", rate),
+    (10, "dailyWithdrawal", "Ticket por saque diário (USDC por pessoa)", input_number),
+    (11, "withdrawalDays", "Dias com saque por pessoa/mês", input_number),
 ]
 for row, _, label, _ in input_rows:
     projection.write(row, 0, label, text)
-projection.write("A12", "Cotação ilustrativa: USDC por BETTEX", text)
+projection.write("A13", "Cotação ilustrativa: USDC por BETTEX", text)
 labels = {
     13: "Pessoas que fazem primeira compra",
     14: "Pessoas que fazem compras adicionais",
-    15: "Pessoas que sacam USDC do staking",
+    15: "Pessoas que sacam diariamente",
+    16: "USDC sacado por pessoa/mês",
     17: "Volume mensal de compras (USDC)",
     18: "Volume mensal de saques (USDC)",
+    19: "Quantidade de saques concluídos/mês",
     20: "Taxas de compra: equivalente USDC/mês",
     21: "Taxas de saque: equivalente USDC/mês",
     22: "Total de taxas: equivalente USDC/mês",
     23: "Total em 12 meses constantes: equivalente USDC",
     24: "Taxas por usuário ativo/mês: equivalente USDC",
+    25: "Taxas de saque por dia ativo: equivalente USDC",
     26: "Mínimo de lucro elegível se saques vierem só do mês",
     27: "BETTEX recebido/mês à cotação ilustrativa constante",
+    28: "Lucro elegível/dia se saques usarem só créditos do dia",
 }
 for row, label in labels.items():
     projection.write(row, 0, label, text)
@@ -165,7 +170,7 @@ for col, s in enumerate(scenarios, 1):
     letter = xlsxwriter.utility.xl_col_to_name(col)
     for row, key, _, fmt in input_rows:
         projection.write_number(row, col, s[key], fmt)
-    projection.write_number(11, col, example_price, input_number)
+    projection.write_number(12, col, example_price, input_number)
     for excel_row in [5, 7, 9, 11]:
         projection.data_validation(f"{letter}{excel_row}", {"validate": "decimal", "criteria": ">=", "value": 0})
     for excel_row, other in [(6, 8), (8, 6)]:
@@ -175,12 +180,16 @@ for col, s in enumerate(scenarios, 1):
             "error_message": "Primeiros e recorrentes devem somar no máximo 100%.",
         })
     projection.data_validation(f"{letter}10", {"validate": "decimal", "criteria": "between", "minimum": 0, "maximum": 1})
-    projection.data_validation(f"{letter}12", {"validate": "decimal", "criteria": ">", "value": 0})
+    projection.data_validation(f"{letter}12", {"validate": "integer", "criteria": "between", "minimum": 0, "maximum": 31})
+    projection.data_validation(f"{letter}13", {"validate": "decimal", "criteria": ">", "value": 0})
     new_buyers = s["activeUsers"] * s["newBuyerShare"]
     repeat_buyers = s["activeUsers"] * s["repeatBuyerShare"]
     withdrawers = s["activeUsers"] * s["withdrawerShare"]
     buys = new_buyers * s["firstPurchase"] + repeat_buyers * s["monthlyRepeatPurchase"]
-    withdrawals = withdrawers * s["monthlyWithdrawal"]
+    monthly_withdrawal = s["dailyWithdrawal"] * s["withdrawalDays"]
+    withdrawal_count = withdrawers * s["withdrawalDays"]
+    daily_volume = withdrawers * s["dailyWithdrawal"] if s["withdrawalDays"] > 0 else 0
+    withdrawals = daily_volume * s["withdrawalDays"]
     buy_fees = buys * purchase_rate
     withdrawal_fees = withdrawals * proposal["fees"][1]["rate"]
     total = buy_fees + withdrawal_fees
@@ -188,22 +197,26 @@ for col, s in enumerate(scenarios, 1):
         (13, f"={letter}5*{letter}6", new_buyers),
         (14, f"={letter}5*{letter}8", repeat_buyers),
         (15, f"={letter}5*{letter}10", withdrawers),
+        (16, f"={letter}11*{letter}12", monthly_withdrawal),
         (17, f"={letter}14*{letter}7+{letter}15*{letter}9", buys),
-        (18, f"={letter}16*{letter}11", withdrawals),
+        (18, f"={letter}16*{letter}11*{letter}12", withdrawals),
+        (19, f"={letter}16*{letter}12", withdrawal_count),
         (20, f"={letter}18*Taxas!$B$5", buy_fees),
         (21, f"={letter}19*Taxas!$B$6", withdrawal_fees),
         (22, f"={letter}21+{letter}22", total),
         (23, f"={letter}23*12", total * 12),
         (24, f"=IF({letter}5>0,{letter}23/{letter}5,0)", total / s["activeUsers"]),
+        (25, f"=IF({letter}12>0,{letter}16*{letter}11*Taxas!$B$6,0)", daily_volume * proposal["fees"][1]["rate"]),
         (26, f"={letter}19/25%", withdrawals / .25),
-        (27, f'=IF({letter}12>0,{letter}23/{letter}12,"Definir cotação positiva")', total / example_price),
+        (27, f'=IF({letter}13>0,{letter}23/{letter}13,"Definir cotação positiva")', total / example_price),
+        (28, f"=IF({letter}12>0,{letter}16*{letter}11/25%,0)", daily_volume / .25),
     ]
     for row, formula, cached in formulas:
         projection.write_formula(row, col, formula, number, cached)
-projection.merge_range("A30:D31", "Os tickets são totais mensais por pessoa, não por operação. Primeiros compradores e recorrentes são grupos distintos; quem saca pode pertencer a qualquer grupo. Os 12 meses mantêm base, tickets e proporções constantes, com entrantes compensando inativos; não é curva de crescimento nem primeira compra repetida pela mesma pessoa.", note)
+projection.merge_range("A30:D31", "Ticket de saque = valor por dia; um saque por pessoa/dia ativo. Recompras = total mensal. Volume = pessoas × dias × ticket diário. Os 12 meses repetem o mês de referência, não o calendário exato. Entrantes compensam inativos; não é curva de crescimento nem primeira compra repetida. Dividir o mesmo volume em mais saques não aumenta a taxa de 2%.", note)
 projection.set_row(29, 35)
 projection.set_row(30, 35)
-projection.merge_range("A33:D34", "Saques exigem créditos disponíveis. O mínimo de lucro elegível pressupõe ausência de créditos anteriores e saque de toda a parcela do staking usada no cálculo. Aplicar reservas e split vigente antes das distribuições; lucros retidos não geram novas taxas de saque. Compras dependem do estoque liberado no vesting.", note)
+projection.merge_range("A33:D34", "Dias com saque pressupõem crédito, liquidez e saldo BETTEX para a taxa. O lucro mínimo do período supõe saques financiados apenas por créditos desse período, sem saldo anterior; não é previsão de rendimento. Lucros retidos não geram créditos sacáveis. Aplicar reservas e split vigente antes das distribuições. Compras dependem do vesting.", note)
 projection.set_row(32, 35)
 projection.set_row(33, 35)
 projection.merge_range("A36:D37", "Somente compra do pool no aplicativo (1%) e saque USDC do staking (2%). Exclui taxas sugeridas, transferências externas e orçamento inicial. Não presume cobrança em vendas diretas a corretoras. Conversão de BETTEX em caixa considera valores efetivos, liquidez e custos. Compras para completar a taxa entram uma vez no volume, não automaticamente.", note)

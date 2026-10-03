@@ -1,3 +1,4 @@
+import { DocFacts, DocGroup } from '@/components/DocFacts';
 import proposal from '@/lib/service-fee-proposal.json';
 
 const percent = new Intl.NumberFormat('pt-BR', { style: 'percent', maximumFractionDigits: 1 });
@@ -7,11 +8,20 @@ export function ServiceFees() {
     <section id="documentacao-taxas" aria-labelledby="taxas-title">
       <span id="documentacao-burning" aria-hidden="true" />
       <h4 id="taxas-title" className="whitepaper__subhead">Taxas em BETTEX e financiamento da Fundação</h4>
+      <DocFacts title="Taxas definidas em resumo" tone="accent" facts={[
+        { label: 'COMPRA NO POOL', value: '1%', text: 'Paga em BETTEX pela cotação informada.' },
+        { label: 'SAQUE DE USDC DO STAKING', value: '2%', text: 'Paga em BETTEX, pelo aplicativo.' },
+        { label: 'DESTINO', value: 'Fundação', text: 'Carteira separada, de propriedade da Fundação.' },
+      ]} />
       <div className="whitepaper__prose">
         <p><strong>As taxas são pagamentos à Fundação BETTEX, não queima de tokens.</strong> A compra de BETTEX do pool do projeto tem taxa de <strong>1%</strong> e o saque de USDC do pool de staking pelo aplicativo tem taxa de <strong>2%</strong>. Ambas são pagas em BETTEX, pela cotação informada antes da autorização.</p>
         <p><strong>Os tokens pagos como taxas vão para uma carteira separada, destinada à Fundação e de propriedade da Fundação.</strong> Essa carteira tem endereço próprio, distinto da tesouraria de investimentos e das carteiras pessoais dos titulares; a separação não é apenas contábil. Os valores recebidos pertencem à Fundação e financiam sua operação, fora do split de 75% / 25%.</p>
-        <p><strong>Taxa em BETTEX = valor-base em USDC × percentual vigente ÷ cotação BETTEX/USDC.</strong> A cotação indica quantos USDC valem um BETTEX, com fonte, horário e validade. O recibo informa base, percentual, cotação, quantidade exigida, custos externos e resultado líquido. Percentual de serviço e cotação do token são grandezas distintas; uma mudança relevante exige nova cotação e autorização, sem cobrança silenciosa.</p>
       </div>
+      <DocGroup title="Como calcular a taxa">
+        <div className="whitepaper__prose">
+          <p><strong>Taxa em BETTEX = valor-base em USDC × percentual vigente ÷ cotação BETTEX/USDC.</strong> A cotação indica quantos USDC valem um BETTEX, com fonte, horário e validade. O recibo informa base, percentual, cotação, quantidade exigida, custos externos e resultado líquido. Percentual de serviço e cotação do token são grandezas distintas; uma mudança relevante exige nova cotação e autorização, sem cobrança silenciosa.</p>
+        </div>
+      </DocGroup>
       <div className="whitepaper__vesting-scroll" role="region" aria-label="Percentuais definidos e sugestões adicionais de taxas" tabIndex={0}>
         <table className="whitepaper__vesting-table">
           <caption>Taxas definidas e sugestões adicionais · cobrança não implementada na demonstração</caption>
