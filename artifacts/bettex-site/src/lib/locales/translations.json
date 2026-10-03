@@ -1,4 +1,7 @@
 {
+  "Ethereum": { "en": "Ethereum", "es": "Ethereum" },
+  "Arbitrum": { "en": "Arbitrum", "es": "Arbitrum" },
+  "Redes e tecnologias": { "en": "Networks and technologies", "es": "Redes y tecnologías" },
   "IA e robôs vão substituir empregos e transferir a geração de valor para sistemas automatizados.": {
     "en": "AI and robots will replace jobs and shift value creation to automated systems.",
     "es": "La IA y los robots van a sustituir empleos y trasladar la creación de valor a sistemas automatizados."
