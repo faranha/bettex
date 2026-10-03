@@ -1,0 +1,76 @@
+{
+  "sources": [
+    {
+      "date": "2026-10-03",
+      "evidence": "research/sources/decision-gap-panama-02.md",
+      "quality": "parcial",
+      "tier": 1,
+      "title": "Unified Text of Decree Law No. 1 of 1999 (Securities Market Law)",
+      "url": "https://supervalores.gob.pa/wp-content/uploads/2021/03/UNIFIED_TEXT_DL1-1999-1.pdf"
+    },
+    {
+      "date": "2026-10-03",
+      "evidence": "research/sources/decision-offshore-08.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Ley del Mercado de Valores — Superintendencia del Mercado de Valores",
+      "url": "https://supervalores.gob.pa/ley-del-mercado-de-valores"
+    },
+    {
+      "date": "2026-06-11",
+      "evidence": "research/sources/decision-gap-panama-01.md",
+      "quality": "integral",
+      "tier": 2,
+      "title": "Blockchain & Crypto-Assets 2026 — Panama",
+      "url": "https://practiceguides.chambers.com/practice-guides/blockchain-crypto-assets-2026/panama"
+    },
+    {
+      "date": "2021",
+      "evidence": "research/sources/decision-gap-panama-06.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Sociedades de inversión. Cristina Vence – Panamá",
+      "url": "https://supervalores.gob.pa/wp-content/uploads/2021/03/sociedades-de-inversion.pdf"
+    },
+    {
+      "date": "2025-09-08",
+      "evidence": "research/sources/decision-gap-panama-07.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Opinión 04-2025 — SMV",
+      "url": "https://supervalores.gob.pa/download/opinion-04-2025/?wpdmdl=31565&ind=1758042988802&refresh=a6538178&filename=Opinion_4-2025.pdf"
+    },
+    {
+      "date": "Historical",
+      "evidence": "research/sources/decision-gap-panama-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Article 5 gambling territorial rule (historical Gazette excerpt)",
+      "url": "http://gacetas.procuraduria-admon.gob.pa/23484_27822.pdf"
+    },
+    {
+      "date": "2026-05-20",
+      "evidence": "research/sources/decision-gap-panama-snippets.md",
+      "quality": "snippet",
+      "tier": 3,
+      "title": "Panama tightens gambling rules after Bill No. 403 is approved",
+      "url": "https://newsroompanama.com/2026/05/20/panama-tightens-gambling-rules-after-bill-no-403-is-approved"
+    },
+    {
+      "date": "2026-07-30",
+      "evidence": "research/sources/decision-gap-panama-snippets.md",
+      "quality": "snippet",
+      "tier": 3,
+      "title": "How Panama's New Gambling Law Changes the Rules for Digital Platforms",
+      "url": "https://newsroompanama.com/2026/07/30/how-panamas-new-gambling-law-changes-the-rules-for-digital-platforms"
+    },
+    {
+      "date": "N/A",
+      "evidence": "research/sources/decision-gap-panama-03.md",
+      "quality": "parcial",
+      "tier": 1,
+      "title": "SMV – Advertencia Sobre Criptomonedas y ICOs",
+      "url": "https://supervalores.gob.pa/smv-advertencia-sobre-criptomonedas-y-icos"
+    }
+  ]
+}

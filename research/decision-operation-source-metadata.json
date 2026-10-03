@@ -1,0 +1,156 @@
+{
+  "sources": [
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/tos",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Terms of Use | Polymarket",
+      "url": "https://polymarket.com/tos"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/geoblock",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Geographic Restrictions (Polymarket API documentation)",
+      "url": "https://docs.polymarket.com/api-reference/geoblock.md"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/institutional",
+      "quality": "snippet",
+      "tier": 3,
+      "title": "Polymarket Institutional",
+      "url": "https://institutional.polymarket.com/"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/betfair-corporate",
+      "quality": "integral",
+      "tier": 1,
+      "title": "What's required to open a corporate Betfair trading account? – Betfair Developer Program",
+      "url": "https://support.developer.betfair.com/hc/en-us/articles/12763276187292-What-s-required-to-open-a-corporate-betfair-trading-account"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/betfair-api",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Guide to the Betfair Exchange API",
+      "url": "https://developer.betfair.com/exchange-api/"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/betfair-license",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "SOFTWARE VENDOR’S API LICENCE",
+      "url": "https://developer.betfair.com/assets/Uploads/Betfair-API-Commercial-Odds-Publisher-AFFILIATES.pdf"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/sbobet-terms",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "General Promotion Terms & Conditions - SBOBET Information Center",
+      "url": "https://help.sbobet.com/article/381.html"
+    },
+    {
+      "date": "2015-08-31",
+      "evidence": "research/sources/sbobet-accounts",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Can I have more than one account? - SBOBET Information Center",
+      "url": "https://help.sbobet.com/article/can-i-have-more-than-one-sbobet-account-138.html"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/ibkr-countries",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Available Countries and Territories | Interactive Brokers LLC",
+      "url": "https://www.interactivebrokers.com/en/accounts/open-account-country-list.php"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/ibkr-api",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "IBKR Trading API Solutions",
+      "url": "https://www.interactivebrokers.com/api"
+    },
+    {
+      "date": "2026-01-15",
+      "evidence": "research/sources/ibkr-stablecoin",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Interactive Brokers Enables 24/7 Account Funding with Stablecoin",
+      "url": "https://www.interactivebrokers.com/en/general/about/mediaRelations/1-15-26.php"
+    },
+    {
+      "date": "2026-07-15",
+      "evidence": "research/sources/ibkr-crypto",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Interactive Brokers Builds Out One of the Most Comprehensive and Low-Cost Solutions for Accessing Cryptocurrency Available",
+      "url": "https://www.interactivebrokers.com/en/general/about/mediaRelations/7-15-26.php"
+    },
+    {
+      "date": "2026-01-02",
+      "evidence": "research/sources/bvi-bo-guidelines",
+      "quality": "integral",
+      "tier": 1,
+      "title": "BVI Business Companies and Limited Partnerships Beneficial Ownership Guidelines (Revised as of 2nd January 2026)",
+      "url": "https://www.bvifsc.vg/sites/default/files/revised_bo_guidelines_final_version_for_publication_02.01.26_0.pdf"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/bvi-gaming-notice",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Public Notice – Casino and Gaming Operators (BVI Government)",
+      "url": "https://bvi.gov.vg/media-centre/public-notice-casino-and-gaming-operators"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/svg-forex",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "FAQs Re Revised Requirements for Business Companies (BCs) and Limited Liability Companies (LLCs) Seeking to Engage/Engaged in FOREX Activity",
+      "url": "https://svgfsa.com/faqs-re-revised-requirements-for-business-companies-bcs-and-limited-liability-companies-llcs-seeking-to-engage-engaged-in-forex-activity"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/panama-aml",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "Panama Technical Note (AML/CFT assessment materials hosted by Panama's Superintendence of Banks)",
+      "url": "https://www.superbancos.gob.pa/documents/imf_assessments/TN-AML-CFT-Panama-FSAP-final.pdf"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/panama-law",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "Law 129 of 2020 – single system of beneficial ownership in Panama",
+      "url": "https://kraemerlaw.com/en/articles/law-129-of-2020-single-system-of-beneficial-ownership-in-panama"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/panama-formation",
+      "quality": "snippet",
+      "tier": 3,
+      "title": "Panama Company Formation + Registered Agent + Bank Account",
+      "url": "https://www.vepapu.com/panama/company-formation"
+    },
+    {
+      "date": "Retrieved 2026-10-03",
+      "evidence": "research/sources/bvi-substance",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "BVI Economic Substance Legislation",
+      "url": "https://www.bvi.gov.vg/economic-substance-legislation"
+    }
+  ]
+}
