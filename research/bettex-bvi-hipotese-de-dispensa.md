@@ -2,6 +2,8 @@
 
 **Consulta:** 3 de outubro de 2026. **Status:** investigação preliminar, não parecer jurídico, autorização, contrato pronto para assinatura ou recomendação definitiva de incorporação. Nenhuma entidade foi aberta e nenhuma captação foi executada.
 
+**Atualização:** esta nota preliminar deve ser lida junto da [investigação aprofundada](bettex-bvi-investigacao-profunda.md). Ela recupera alterações SIBA posteriores, examina a fórmula R/P/B e corrige a premissa sobre vigência da Parte II. A ausência de resgate do principal não exclui, sozinha, o teste de fundo privado.
+
 ## Conclusão executiva
 
 As Ilhas Virgens Britânicas (BVI) merecem a próxima análise de enquadramento. Foram encontradas exclusões legais para desenvolvimento/venda de software e uma apresentação oficial da Financial Services Commission (FSC) que inclui a venda inicial de ativos virtuais recém-criados entre atividades excluídas do regime VASP.
@@ -59,7 +61,7 @@ Autocustódia pretendida e exportação de chaves não comprovam a ausência de 
 
 ### Ofertas locais e operação externa
 
-A seção 25 do SIBA consultado prevê prospecto registrado para certas ofertas de valores mobiliários ao público em BVI, com hipóteses legais específicas. Não afirmar liberdade irrestrita para vender a residentes locais ou que todos os tokens estão fora desse regime [B3].
+A seção 25 consta do texto SIBA consultado, mas o compêndio Conyers atualizado até janeiro/2025 marca a Parte II, seções 23–39, como não vigente. Portanto, a existência dessa seção não comprova exigência atual de prospecto local. Confirmar commencement/status em outubro/2026 e os demais regimes antes de concluir obrigação ou dispensa [B3, B9].
 
 A seção 5(4) da lei VASP trata uma BVI Business Company que exerce serviços VASP no exterior como exercendo esses serviços a partir de BVI. Incorporar ali e executar a operação fora não elimina automaticamente o regime da entidade [B1].
 
@@ -115,3 +117,4 @@ Fontes oficiais, consultadas em 3 de outubro de 2026. A busca não comprova a co
 - **B6:** [CIMA, requisitos de registro VASP](https://www.cima.ky/registration-requirements).
 - **B7:** [FINMA, orientações ICO de 2018](https://www.finma.ch/en/news/2018/02/20180216-mm-ico-wegleitung), referência histórica de classificação.
 - **B8:** [FINMA Guidance 08/2024, governança de IA](https://www.finma.ch/en/~/media/finma/dokumente/dokumentencenter/myfinma/4dokumentation/finma-aufsichtsmitteilungen/20241218-finma-aufsichtsmitteilung-08-2024.pdf?sc_lang=en). Evidência de tratamento da IA em instituições supervisionadas na Suíça, não regra mundial nem prova do enquadramento BETTEX.
+- **B9:** [Conyers, SIBA and Related Legislation Compendium](https://www.conyers.com/wp-content/uploads/2025/11/Securities_and_Investment_Business_Act_2010_Compendium-BVI.pdf), atualizado até janeiro/2025; Parte II expressamente marcada NOT IN FORCE. Consolidação profissional informativa, não certificação do status em outubro/2026.

@@ -1,4 +1,71 @@
-# Pesquisa: constituição e operação da BETTEX na Sérvia
+# Notas de pesquisa — BVI frente às ambições BETTEX
+
+**Status:** concluída
+**Profundidade:** Deep
+**Data:** 3 de outubro de 2026
+
+## Plano BVI
+
+- **Pergunta:** BVI permite uma única empresa BETTEX com venda pública de token, tesouraria operada por IA, staking de resultados e aplicativo, sem licença financeira própria nem aprovação da emissão?
+- **Escopo:** exclusões atuais; carteiras/transferências; investimentos/fundos/ofertas; empresa, substância e fiscalidade; quatro mercados e acesso institucional; limites internacionais do lançamento. Não incorporar, operar, solicitar aprovação ou alterar o site.
+- **Público:** fundador, decisão empresarial.
+- **Entrega:** relatório com fontes, matriz de compatibilidade, estrutura candidata, custos comprováveis, limitações e sequência de decisão.
+- **Regras:** uma empresa; token sem ações/voto/resgate da tesouraria; staking facultativo, respeitando participação automática do saldo elegível no aplicativo; créditos preservados; split 75%/25%; 100% USDC da venda pública à tesouraria; sem assinatura de IA inventada.
+- **Escala:** ano 1: 100 mil holders e mínimo 5 mil ativos diários; horizonte amplo de 1 milhão de usuários, sem presumir compradores. Não substituir por oferta profissional restrita.
+
+## Áreas BVI
+
+| # | Área | Status | Fontes |
+|---|---|---|---|
+| 1 | VASP, emissão, carteiras, staking e AML | concluída | Lei, apresentação FSC, FAQ 2025, orientação Travel Rule, Carey Olsen 2026 |
+| 2 | SIBA, instrumentos próprios, fundos e oferta pública | concluída com limites | Revisão 2020; emendas 2023/2024 e início 2025; Conyers; ICLG 2026 |
+| 3 | Empresa, custos, substância, tributos e identificação societária | concluída com limites | BO janeiro/2026; Conyers; Maples; Circular 20/2026; Carey Olsen |
+| 4 | Quatro mercados, jogos e acesso institucional | concluída com limites | Ogier julho/2026; Robinhood; Polymarket API/geoblock; IBKR; termos SBOBET |
+| 5 | Distribuição internacional, IA, faseamento e publicidade | concluída com limites | SIBA; Parecer CVM 40 integral; MiCA; ESMA |
+
+## Cobertura BVI
+
+- [x] ICO: base favorável para emissão isolada; aplicação ao pacote completo não confirmada.
+- [x] Fundo: §63A não exige resgate; ligação de max(0,min(R,P−B)) ao patrimônio deve entrar no parecer, sem concluir automaticamente fund interest.
+- [x] Carteiras/saques: controle efetivo de chaves/ativos, serviço para terceiros e poderes dos contratos determinam VASP.
+- [x] IA: não foi encontrada exceção por execução automatizada; testes legais continuam ligados à atividade da empresa.
+- [x] Sociedade: uma empresa é possível; custo total, enquadramento específico de substância e tributação internacional em Limitações.
+- [x] Mercados: rota institucional de ações tem lead IBKR; demais exigem análise contratual/regulatória; não afirmar licenças de operador para simples apostador.
+- [x] Varejo: escala não demonstra dispensa; países de oferta/gestão e permissões de plataformas em Limitações.
+- [x] Veredito: candidatura BVI preservada, mas lançamento completo sem licenças/aprovações não demonstrado.
+
+## Achados BVI
+
+- Paisagem inicial: buscas por BVI retornam alterações de Cayman; não confundir jurisdições.
+- Fonte jurídica especializada de agosto/2026 ainda identifica SIBA revisão 2020 como base; verificar alterações/aplicação sem presumir consolidação completa.
+- [@bvi-ico-fsc] e [@bvi-carey-2026]: emissão isolada favorável; não converter exclusão VASP em dispensa de todos os regimes.
+- [@bvi-siba], [@bvi-siba-2023], [@bvi-siba-order2024]: emendas identificadas não eliminam o teste de §63A nem a exclusão limitada de emissão própria.
+- [@bvi-conyers-siba]: Parte II §§23–39 expressamente marcada NOT IN FORCE; corrigir afirmação preliminar categórica sobre prospecto local.
+- [@bvi-ogier-games]: Gaming Act pode alcançar software e atividades externas de entidade BVI; papel de cliente versus operador permanece decisivo.
+- [@bvi-es-fees2026]: FSC não implementa taxa de filing de economic substance via VIRRGIN em 2026; isso não elimina custos de prestadores.
+- [@bvi-cvm40] e [@mica]: emissão internacional não dispensa classificação/oferta nos países alcançados; staking BETTEX não é consenso PoS.
+
+## Conflitos BVI
+
+- A apresentação FSC de 2023 exclui ICO; confirmar alcance de serviços adicionais e de SIBA.
+- Não ter resgate por NAV não demonstra exclusão de todo regime de fundos.
+- Exportação de chaves não prova ausência de controle técnico da empresa.
+- Registro comercial não autoriza automaticamente captação ou operação.
+- Resolvido parcialmente: emendas SIBA 2023 e Schedule 1 2024 recuperadas; esta última acrescenta instrumentos de câmbio e começa em 02/01/2025.
+- Em aberto: status de entrada em vigor da Parte II em 03/10/2026. Conyers atualizado até janeiro/2025 indica NOT IN FORCE; existência do texto oficial não demonstra commencement.
+- Em aberto: Gaming Act primário integral/consolidação e status atual da Comissão; artigo Ogier é opinião profissional datada de julho/2026.
+
+## Lacunas BVI
+
+- Dois gap-fills concluídos: (1) SIBA vigente/fórmula NAV, (2) jogos/Polymarket/IBKR. Evidências preservadas nos respectivos slugs.
+- Limitações finais: ausência de parecer específico; Parte II SIBA; consolidação completa 2026; Gaming Act integral; contratos corporativos finais; custos totais; enquadramento fiscal/substância por residência/atividade.
+- Revisão crítica: excluídos domínios de cassino com autenticidade não confirmada, dados promocionais, inferências de autorização por silêncio, regras Cayman/Polymarket US transplantadas e conclusão automática de fundo baseada somente no teto P−B.
+- Entrega: research/bettex-bvi-investigacao-profunda.md; 33 fontes distintas citadas, 25 Tier 1 e 8 Tier 2, nenhuma Tier 3. Numeração e referências geradas mecanicamente; arquivos de evidência conferidos; principais alegações cotejadas.
+- Verificação: todas as perguntas respondidas ou delimitadas; regras econômicas e quatro mercados preservados. Nenhum arquivo do site ou da API alterado. A nota preliminar recebeu a correção de vigência e remissão ao estudo aprofundado.
+
+---
+
+# Pesquisa anterior: constituição e operação da BETTEX na Sérvia
 
 **Status:** complete
 **Depth:** Quick — investigação focada na jurisdição, apoiada pela pesquisa inicial já realizada.

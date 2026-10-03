@@ -10,3 +10,4 @@
 - [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
 - [Identidade econômica](bettex-economic-identity.md) — o criador define a BETTEX, em última análise, como um fundo de investimentos.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
+- [Vigência jurídica](legal-commencement-validation.md) — texto publicado não prova vigência; conferir commencement por parte antes de concluir obrigação ou dispensa.

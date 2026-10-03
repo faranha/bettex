@@ -1,16 +1,356 @@
 {
-  "apr-registration": {"title":"APR — e-Incorporation of Companies","url":"https://www.apr.gov.rs/services/eservices/e-registration-of-companies.4265.html","date":"Página sem data; consultada em 02/10/2026","tier":1,"evidence":"research/sources/parent-apr-previous-success.md"},
-  "digital-law": {"title":"NBS — Law on Digital Assets","url":"https://www.nbs.rs/export/sites/NBS_site/documents-eng/propisi/zakoni/digitalna_imovina_e.pdf","date":"Diário Oficial 153/2020; tradução consultada em 02/10/2026","tier":1,"evidence":"research/sources/parent-digital-assets-law.md"},
-  "digital-current": {"title":"Paragraf — Zakon o digitalnoj imovini","url":"https://www.paragraf.rs/propisi/zakon-o-digitalnoj-imovini.html","date":"Texto identificado como Diário Oficial 153/2020; consultado em 02/10/2026","tier":3,"evidence":"research/sources/parent-digital-assets-current-sr.md"},
-  "fund-amendments": {"title":"Comissão sérvia — entrada em vigor das alterações de fundos e mercado de capitais","url":"https://www.sec.gov.rs/index.php/en/news/actual/1008-amendments-to-the-capital-markets-law-and-the-alternative-investment-funds-law-come-into-force","date":"Entrada em vigor em 12/12/2025","tier":1,"evidence":"research/sources/funds-05.md"},
-  "fund-legacy": {"title":"Ministério das Finanças — tradução da Lei de Fundos Alternativos de 2019","url":"https://mfin.gov.rs/upload/media/ZXt3nZ_62d661c5b7d60.pdf","date":"2019; não consolidada com todas as alterações posteriores","tier":1,"evidence":"research/sources/funds-04.md"},
-  "fund-update-analysis": {"title":"BDK Advokati — Serbia updates alternative investment funds legislation","url":"https://bdkadvokati.com/serbia-updates-alternative-investment-funds-legislation","date":"26/12/2025","tier":3,"evidence":"research/sources/parent-aif-amendments.md"},
-  "gambling-law": {"title":"Sistema Jurídico Oficial — Lei de Jogos de Azar da Sérvia","url":"https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2020/18/5","date":"Diários Oficiais 18/2020 e 94/2024; consultado em 02/10/2026","tier":1,"evidence":"research/sources/entity-01.md"},
-  "cit": {"title":"PwC — Serbia: Corporate taxes on corporate income","url":"https://taxsummaries.pwc.com/serbia/corporate/taxes-on-corporate-income","date":"Consultado em 02/10/2026; o conteúdo extraído não informa revisão","tier":2,"evidence":"research/sources/parent-pwc-cit.md"},
-  "tax-law": {"title":"Administração Tributária — Law on Corporate Income Tax","url":"https://purs.gov.rs/upload/media/2025/11/28/760479/Law_on_corporate_income_tax_-_Zakon_o_porezu_na_dobit_pravnih_lica_english_translated.pdf","date":"Tradução hospedada em 2025; evidência de busca dos artigos 39–40","tier":1,"evidence":"research/sources/entity-snippets.md"},
-  "tax-changes": {"title":"KPMG — alterações do imposto corporativo adotadas em setembro de 2026","url":"https://assets.kpmg.com/content/dam/kpmgsites/rs/pdf/2026/09/KPMG-Tax-Alert-Amendments-to-the-Corporate-Income-Tax-Law-adopted-September-2026.pdf.coredownload.inline.pdf","date":"Setembro/2026","tier":2,"evidence":"research/sources/entity-03.md"},
-  "mica": {"title":"União Europeia — Regulamento 2023/1114, MiCA","url":"https://eur-lex.europa.eu/eli/reg/2023/1114/oj","date":"31/05/2023; consultado em 02/10/2026","tier":1,"evidence":"research/sources/parent-mica.md"},
-  "token-licenses": {"title":"Comissão sérvia — duas licenças para serviços de tokens digitais","url":"https://www.sec.gov.rs/index.php/en/news/actual/820-securities-commission-of-the-republic-of-serbia-issued-two-licences-to-service-providers-related-to-digital-tokens","date":"17/03/2023; exemplo histórico, não certificação de situação atual","tier":1,"evidence":"research/sources/tokens-03.md"},
-  "beneficial-owners": {"title":"APR — aviso sobre verificação anual de beneficiários finais","url":"https://www.apr.gov.rs/home.1435.html","date":"Aviso de 25/09/2026, início em 01/10/2026; evidência de busca","tier":1,"evidence":"research/sources/entity-snippets.md"},
-  "corporate-capital": {"title":"APR — Formation: capital mínimo de DOO","url":"https://apr.gov.rs/registers/companies/instructions/formation.4339.html","date":"Consulta de busca em 02/10/2026; acesso integral bloqueado","tier":1,"evidence":"research/sources/parent-apr-formation-snippet.md"}
+  "apr-registration": {
+    "title": "APR — e-Incorporation of Companies",
+    "url": "https://www.apr.gov.rs/services/eservices/e-registration-of-companies.4265.html",
+    "date": "Página sem data; consultada em 02/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/parent-apr-previous-success.md"
+  },
+  "digital-law": {
+    "title": "NBS — Law on Digital Assets",
+    "url": "https://www.nbs.rs/export/sites/NBS_site/documents-eng/propisi/zakoni/digitalna_imovina_e.pdf",
+    "date": "Diário Oficial 153/2020; tradução consultada em 02/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/parent-digital-assets-law.md"
+  },
+  "digital-current": {
+    "title": "Paragraf — Zakon o digitalnoj imovini",
+    "url": "https://www.paragraf.rs/propisi/zakon-o-digitalnoj-imovini.html",
+    "date": "Texto identificado como Diário Oficial 153/2020; consultado em 02/10/2026",
+    "tier": 3,
+    "evidence": "research/sources/parent-digital-assets-current-sr.md"
+  },
+  "fund-amendments": {
+    "title": "Comissão sérvia — entrada em vigor das alterações de fundos e mercado de capitais",
+    "url": "https://www.sec.gov.rs/index.php/en/news/actual/1008-amendments-to-the-capital-markets-law-and-the-alternative-investment-funds-law-come-into-force",
+    "date": "Entrada em vigor em 12/12/2025",
+    "tier": 1,
+    "evidence": "research/sources/funds-05.md"
+  },
+  "fund-legacy": {
+    "title": "Ministério das Finanças — tradução da Lei de Fundos Alternativos de 2019",
+    "url": "https://mfin.gov.rs/upload/media/ZXt3nZ_62d661c5b7d60.pdf",
+    "date": "2019; não consolidada com todas as alterações posteriores",
+    "tier": 1,
+    "evidence": "research/sources/funds-04.md"
+  },
+  "fund-update-analysis": {
+    "title": "BDK Advokati — Serbia updates alternative investment funds legislation",
+    "url": "https://bdkadvokati.com/serbia-updates-alternative-investment-funds-legislation",
+    "date": "26/12/2025",
+    "tier": 3,
+    "evidence": "research/sources/parent-aif-amendments.md"
+  },
+  "gambling-law": {
+    "title": "Sistema Jurídico Oficial — Lei de Jogos de Azar da Sérvia",
+    "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2020/18/5",
+    "date": "Diários Oficiais 18/2020 e 94/2024; consultado em 02/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/entity-01.md"
+  },
+  "cit": {
+    "title": "PwC — Serbia: Corporate taxes on corporate income",
+    "url": "https://taxsummaries.pwc.com/serbia/corporate/taxes-on-corporate-income",
+    "date": "Consultado em 02/10/2026; o conteúdo extraído não informa revisão",
+    "tier": 2,
+    "evidence": "research/sources/parent-pwc-cit.md"
+  },
+  "tax-law": {
+    "title": "Administração Tributária — Law on Corporate Income Tax",
+    "url": "https://purs.gov.rs/upload/media/2025/11/28/760479/Law_on_corporate_income_tax_-_Zakon_o_porezu_na_dobit_pravnih_lica_english_translated.pdf",
+    "date": "Tradução hospedada em 2025; evidência de busca dos artigos 39–40",
+    "tier": 1,
+    "evidence": "research/sources/entity-snippets.md"
+  },
+  "tax-changes": {
+    "title": "KPMG — alterações do imposto corporativo adotadas em setembro de 2026",
+    "url": "https://assets.kpmg.com/content/dam/kpmgsites/rs/pdf/2026/09/KPMG-Tax-Alert-Amendments-to-the-Corporate-Income-Tax-Law-adopted-September-2026.pdf.coredownload.inline.pdf",
+    "date": "Setembro/2026",
+    "tier": 2,
+    "evidence": "research/sources/entity-03.md"
+  },
+  "mica": {
+    "title": "União Europeia — Regulamento 2023/1114, MiCA",
+    "url": "https://eur-lex.europa.eu/eli/reg/2023/1114/oj",
+    "date": "31/05/2023; consultado em 02/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/parent-mica.md"
+  },
+  "token-licenses": {
+    "title": "Comissão sérvia — duas licenças para serviços de tokens digitais",
+    "url": "https://www.sec.gov.rs/index.php/en/news/actual/820-securities-commission-of-the-republic-of-serbia-issued-two-licences-to-service-providers-related-to-digital-tokens",
+    "date": "17/03/2023; exemplo histórico, não certificação de situação atual",
+    "tier": 1,
+    "evidence": "research/sources/tokens-03.md"
+  },
+  "beneficial-owners": {
+    "title": "APR — aviso sobre verificação anual de beneficiários finais",
+    "url": "https://www.apr.gov.rs/home.1435.html",
+    "date": "Aviso de 25/09/2026, início em 01/10/2026; evidência de busca",
+    "tier": 1,
+    "evidence": "research/sources/entity-snippets.md"
+  },
+  "corporate-capital": {
+    "title": "APR — Formation: capital mínimo de DOO",
+    "url": "https://apr.gov.rs/registers/companies/instructions/formation.4339.html",
+    "date": "Consulta de busca em 02/10/2026; acesso integral bloqueado",
+    "tier": 1,
+    "evidence": "research/sources/parent-apr-formation-snippet.md"
+  },
+  "bvi-ico-fsc": {
+    "title": "FSC — VASP Processes and Procedures",
+    "url": "https://www.bvifsc.vg/sites/default/files/bvi_fsc_vasp_processes_and_procedures_mtr.pdf",
+    "date": "03/10/2023; histórica",
+    "tier": 1,
+    "evidence": "research/sources/bvi-vasp-processes-2023.md",
+    "quality": "integral"
+  },
+  "bvi-vasp": {
+    "title": "Virtual Assets Service Providers Act, 2022",
+    "url": "https://www.bvifsc.vg/sites/default/files/virtual_assets_service_providers_act_2022.pdf",
+    "date": "2022; vigência 01/02/2023",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-vasp-02-act.md",
+    "quality": "integral"
+  },
+  "bvi-siba": {
+    "title": "Securities and Investment Business Act — Revised Edition 2020",
+    "url": "https://www.bvifsc.vg/sites/default/files/securities_and_investment_business_act.pdf",
+    "date": "Revisão até 01/01/2020; histórica, alterações verificadas separadamente",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-global-01.md",
+    "quality": "integral"
+  },
+  "bvi-virtual-guidance": {
+    "title": "FSC — Guidance on Regulation of Virtual Assets in the BVI",
+    "url": "https://www.bvifsc.vg/sites/default/files/guidance_on_regulation_of_virtual_assets_in_the_virgin_islands_bvi_final_0.pdf",
+    "date": "13/07/2020; histórica",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-siba-02.md",
+    "quality": "integral"
+  },
+  "bvi-carey-2026": {
+    "title": "Carey Olsen — Blockchain and Cryptocurrency Laws and Regulations 2026: BVI",
+    "url": "https://www.jdsupra.com/legalnews/a-guide-to-blockchain-and-6734390",
+    "date": "12/11/2025; edição 2026",
+    "tier": 2,
+    "evidence": "research/sources/bvi-deep-company-04.md",
+    "quality": "integral"
+  },
+  "bvi-maples-2026": {
+    "title": "Maples — The Rise of Digital Asset Funds and Tokenisation in Cayman and BVI",
+    "url": "https://maples.com/knowledge/the-rise-of-digital-asset-funds-and-tokenisation-in-the-cayman-islands-and-the-british-virgin-islands",
+    "date": "23/04/2026",
+    "tier": 2,
+    "evidence": "research/sources/bvi-deep-global-snippets.md",
+    "quality": "trecho de busca; página atual 404, não prova integral"
+  },
+  "bvi-vasp-faq": {
+    "title": "FSC — Understanding Virtual Assets & VASP Regulation FAQs",
+    "url": "https://www.bvifsc.vg/sites/default/files/virtual_assets_faqs.pdf",
+    "date": "Divulgação em 21/11/2025",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-vasp-01-fsc-faqs.md",
+    "quality": "integral"
+  },
+  "bvi-circular43": {
+    "title": "FSC — Circular 43 of 2025: Virtual Assets and VASP Regulation FAQs",
+    "url": "https://www.bvifsc.vg/news/industry-updates/industry-circular-43-2025-fsc-publishes-virtual-assets-and-vasp-regulation",
+    "date": "21/11/2025",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-vasp-snippets.md",
+    "quality": "trecho de busca"
+  },
+  "bvi-harneys-faq": {
+    "title": "Harneys — Key guidance on BVI Virtual Assets and VASPs",
+    "url": "https://www.harneys.com/our-blogs/regulatory/key-guidance-on-bvi-virtual-assets-and-vasps",
+    "date": "06/01/2026",
+    "tier": 2,
+    "evidence": "research/sources/bvi-deep-vasp-snippets.md",
+    "quality": "trecho de busca"
+  },
+  "bvi-travel": {
+    "title": "FSC — VASP Travel Rule Guidance",
+    "url": "https://www.bvifsc.vg/sites/default/files/vasp_travel_guidance_f.pdf",
+    "date": "Sem data explícita recuperada; consultado 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-vasp-03-travel-rule.md",
+    "quality": "integral"
+  },
+  "bvi-aml": {
+    "title": "FSC — Virtual Assets Service Providers AML Guidelines",
+    "url": "https://www.bvifsc.vg/sites/default/files/vasp_aml_guidelines.pdf",
+    "date": "Indexação 16/04/2024; histórica, data original não confirmada",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-vasp-snippets.md",
+    "quality": "trecho de busca"
+  },
+  "bvi-siba-2023": {
+    "title": "Securities and Investment Business (Amendment) Act, 2023",
+    "url": "https://www.bvifsc.vg/sites/default/files/securities_and_investment_business_amendment_act_2023_1.pdf",
+    "date": "20/03/2023; histórica",
+    "tier": 1,
+    "evidence": "research/sources/bvi-gap-law-03.md",
+    "quality": "integral"
+  },
+  "bvi-siba-start2023": {
+    "title": "SI 34/2023 — Commencement of SIBA Amendment Act 2023",
+    "url": "https://laws.gov.vg/sites/default/files/2023-03/SI%20No%2034%20of%202023%20--%20Notice-Securities%20and%20Investment%20Business%20%28Amendment%29%20Act%2C%202023.pdf",
+    "date": "Vigência nomeada 22/03/2023; histórica",
+    "tier": 1,
+    "evidence": "research/sources/bvi-gap-law-08.md",
+    "quality": "integral"
+  },
+  "bvi-siba-order2024": {
+    "title": "SI 42/2024 — SIBA Amendment of Schedule 1 Order 2024",
+    "url": "https://www.bvifsc.vg/sites/default/files/si_no_42_of_2024-securities_and_investment_business_amendment_of_schedule_1_order_2024.pdf",
+    "date": "Gazeta 05/09/2024; histórica",
+    "tier": 1,
+    "evidence": "research/sources/bvi-gap-law-04.md",
+    "quality": "integral"
+  },
+  "bvi-siba-start2025": {
+    "title": "SI 77/2024 — Commencement of SIBA Schedule 1 Order",
+    "url": "https://www.bvifsc.vg/sites/default/files/si_no_77_of_2024-notice_to_bring_into_force_the_securities_and_investment_business_amendment_of_schedule_1_order_2024_1.pdf",
+    "date": "Vigência nomeada 02/01/2025",
+    "tier": 1,
+    "evidence": "research/sources/bvi-gap-law-snippets.md",
+    "quality": "trecho de busca"
+  },
+  "bvi-conyers-siba": {
+    "title": "Conyers — Securities and Investment Business Act and Related Legislation Compendium",
+    "url": "https://www.conyers.com/wp-content/uploads/2025/11/Securities_and_Investment_Business_Act_2010_Compendium-BVI.pdf",
+    "date": "Consolidação profissional até janeiro/2025; arquivo hospedado em novembro/2025",
+    "tier": 2,
+    "evidence": "research/sources/bvi-gap-law-05.md",
+    "quality": "parcial por limite do fetch; trecho de status e Parte II preservados"
+  },
+  "bvi-aif2026": {
+    "title": "ICLG/Harneys — Alternative Investment Funds Laws 2026: BVI",
+    "url": "https://iclg.com/practice-areas/alternative-investment-funds-laws-and-regulations/british-virgin-islands",
+    "date": "12/08/2026",
+    "tier": 2,
+    "evidence": "research/sources/bvi-deep-siba-03.md",
+    "quality": "integral"
+  },
+  "bvi-bo": {
+    "title": "Registrar/FSC — Revised Beneficial Ownership Guidance",
+    "url": "https://www.bvifsc.vg/sites/default/files/revised_bo_guidelines_final_version_for_publication_02.01.26_0.pdf",
+    "date": "02/01/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-company-01.md",
+    "quality": "integral"
+  },
+  "bvi-continuing": {
+    "title": "Conyers — Continuing Requirements for BVI Business Companies",
+    "url": "https://www.conyers.com/wp-content/uploads/2025/05/Continuing_Requirements_for_Companies_in_the_BVI-BVI-1.pdf",
+    "date": "Arquivo de maio/2025",
+    "tier": 2,
+    "evidence": "research/sources/bvi-deep-company-snippets.md",
+    "quality": "trecho de busca"
+  },
+  "bvi-annual-es": {
+    "title": "Maples — BVI Annual Returns and Economic Substance Filing Deadlines",
+    "url": "https://maples.com/wp-content/uploads/2025/07/20250725-Legal-Update-BVI-Annual-Returns-and-Economic-Substance-Filing-Deadlines-Final.pdf",
+    "date": "25/07/2025",
+    "tier": 2,
+    "evidence": "research/sources/bvi-deep-company-snippets.md",
+    "quality": "trecho de busca"
+  },
+  "bvi-bo-fees": {
+    "title": "SI 62/2025 — BVI Business Companies Amendment of Schedule 1 Order",
+    "url": "https://www.bvifsc.vg/sites/default/files/si_no_62_of_2025-bvi_business_companies_amendment_of_schedule_1_order_2025.pdf",
+    "date": "01/07/2025",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-company-03.md",
+    "quality": "integral"
+  },
+  "bvi-es-fees2026": {
+    "title": "FSC — Circular 20 of 2026: Economic Substance Filing Fees",
+    "url": "https://www.bvifsc.vg/news/industry-updates/industry-circular-20-2026-update-economic-substance-filing-fees",
+    "date": "01/07/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-parent-economic-filing-2026.md",
+    "quality": "integral"
+  },
+  "bvi-ogier-games": {
+    "title": "Ogier — All bets are off: event contracts and decentralised prediction markets in BVI",
+    "url": "https://www.ogier.com/news-and-insights/insights/navigating-event-contracts-and-decentralised-prediction-markets-in-the-bvi",
+    "date": "08/07/2026",
+    "tier": 2,
+    "evidence": "research/sources/bvi-gap-games-01.md",
+    "quality": "integral"
+  },
+  "bvi-gaming-portal": {
+    "title": "Virgin Islands Laws Online — Gaming and Betting Control Act 2020",
+    "url": "https://laws.gov.vg/Laws/virgin-islands-gaming-and-betting-control-act-2020",
+    "date": "Lei de 2020; portal consultado 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-gap-games-02.md",
+    "quality": "registro/visualizador; não texto integral"
+  },
+  "bvi-robin-api": {
+    "title": "Robinhood — Crypto Trading API",
+    "url": "https://docs.robinhood.com/crypto/trading",
+    "date": "Documentação viva; consultada 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-markets-05.md",
+    "quality": "integral; fonte contratual/técnica, não lei"
+  },
+  "bvi-poly-api": {
+    "title": "Polymarket — API documentation",
+    "url": "https://docs.polymarket.com/getting-started/api",
+    "date": "Documentação viva; consultada 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-gap-games-snippets.md",
+    "quality": "trecho de busca; fonte técnica, não autorização"
+  },
+  "bvi-poly-geo": {
+    "title": "Polymarket — Geographic restrictions / geoblock",
+    "url": "https://docs.polymarket.com/api-reference/geoblock",
+    "date": "Documentação viva; consultada 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-gap-games-snippets.md",
+    "quality": "trecho de busca; fonte técnica"
+  },
+  "bvi-ibkr-countries": {
+    "title": "Interactive Brokers — Available Countries and Territories",
+    "url": "https://www.interactivebrokers.com/en/accounts/open-account-country-list.php",
+    "date": "Página viva; consultada 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-gap-games-snippets.md",
+    "quality": "trecho de busca; não aprovação individual"
+  },
+  "bvi-ibkr-api": {
+    "title": "Interactive Brokers — Trading API Solutions",
+    "url": "https://www.interactivebrokers.com/en/trading/ib-api.php",
+    "date": "Página viva; consultada 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-gap-games-snippets.md",
+    "quality": "trecho de busca; fonte técnica"
+  },
+  "bvi-sbobet": {
+    "title": "SBOBET — Terms and Conditions, §3.12",
+    "url": "https://www.sbobet.com/en/legal/terms-and-conditions/iomb2c",
+    "date": "Sem data confirmada; consultado 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-markets-snippets.md",
+    "quality": "trecho de busca; contrato de um operador específico"
+  },
+  "bvi-cvm40": {
+    "title": "CVM — Parecer de Orientação 40: Os Criptoativos e o Mercado de Valores Mobiliários",
+    "url": "https://conteudo.cvm.gov.br/export/sites/cvm/legislacao/pareceres-orientacao/anexos/Pare040.pdf",
+    "date": "11/10/2022; referência histórica",
+    "tier": 1,
+    "evidence": "research/sources/bvi-parent-cvm40-full.md",
+    "quality": "integral"
+  },
+  "bvi-esma-staking": {
+    "title": "ESMA/Comissão Europeia — Treatment of staking services in MiCA, Q&A 2067",
+    "url": "https://www.esma.europa.eu/publications-data/questions-answers/2067",
+    "date": "Resposta de 20/06/2024; histórica",
+    "tier": 1,
+    "evidence": "research/sources/bvi-deep-global-03.md",
+    "quality": "integral"
+  }
 }
