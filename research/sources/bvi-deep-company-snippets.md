@@ -1,0 +1,33 @@
+# BVI research snippets — bvi-deep-company
+
+Search-stage evidence saved 2026-10-03. Snippets are discovery evidence, not a substitute for checking the complete instruments. Tier 1 = law/government/regulator; Tier 2 = established legal practice/research; Tier 3 = other commentary.
+
+## Official / primary sources
+
+1. **BVI Business Companies and Limited Partnerships (Beneficial Ownership) Regulations, 2025 (Amendment No. 2), Statutory Instrument No. 120 of 2025** — 31 Dec 2025 — Tier 1 — URL: https://www.bvifsc.vg/sites/default/files/si_no_120_of_2025-bvi_bc_and_lp_beneficial_ownership_amendment_no._2_regulations_2025.pdf — Search snippet identifies amendments to regulations 11, 14 and 31B, including filed BO information and registered-agent/liquidator actions. The later 2026 Registrar guidance was fetched separately (evidence 01); do not infer substantive detail from this snippet alone.
+
+2. **BVI Business Companies (Amendment of Schedule 1) Order, 2025, SI No. 62 of 2025** — gazetted 1 Jul 2025 — Tier 1 — URL: https://www.bvifsc.vg/sites/default/files/si_no_62_of_2025-bvi_business_companies_amendment_of_schedule_1_order_2025.pdf — Search result says it amends Schedule 1 and commences with the 2025 BO regulations. The fetched document (evidence 03) yielded BO registry charges ($75 inspection/copy/certified copy; $50 exemption/renewal) but not the general incorporation/annual government-fee table; do not treat those amounts as incorporation costs.
+
+3. **Fees | British Virgin Islands Financial Services Commission** — undated live regulator page (search as of 3 Oct 2026) — Tier 1 — URL: https://www.bvifsc.vg/fees — Result states that application, licence and annual licence-renewal fees are on the page and subject to change, under FSC Fees Regulations 2010. This is not evidence of the Registry's routine company incorporation/annual fee or registered-agent price.
+
+4. **Economic Substance (Companies and Limited Partnerships) Act (Revised 2020)** — revision date 1 Jan 2020 — Tier 1 — URL: https://www.bvifsc.vg/sites/default/files/economic_substance_companies_and_ltd_partnerships_act.pdf — Official FSC legislation-library search result. Fetch attempt returned HTTP 429; this URL was not retried. Read the instrument and subsequent amendments/guidance before relying on it. Related official listing: https://www.bvifsc.vg/library/legislation/legislation-british-virgin-islands
+
+5. **Continuing Requirements of the Business Companies Act of the British Virgin Islands** — Conyers, PDF path dated May 2025 — Tier 2 — URL: https://www.conyers.com/wp-content/uploads/2025/05/Continuing_Requirements_for_Companies_in_the_BVI-BVI-1.pdf — Search excerpt: company keeps records and underlying documentation at registered agent or another place specified by directors (agent receives physical address and requested records); annual financial return is filed/retained by agent. Specialist secondary source; confirm against the Act/Financial Return Order.
+
+6. **BVI Business Companies Act (Revised Edition 2020)** — revision date 1 Jan 2020; FSC-listed official PDF — Tier 1 — URL: https://www.bvifsc.vg/sites/default/files/bvi_business_companies_act.pdf — Search snippet gives section 242 heading “Exemptions from tax”; legal numbering/consolidations must be cross-checked against later amendments (including section 242A/return provisions in newer consolidated text).
+
+## Specialist secondary-source snippets
+
+7. **BVI Annual Returns and Economic Substance Filing Deadlines** — Maples Group, 25 Jul 2025 — Tier 2 — URL: https://maples.com/wp-content/uploads/2025/07/20250725-Legal-Update-BVI-Annual-Returns-and-Economic-Substance-Filing-Deadlines-Final.pdf — Search snippet: ES return deadline six months after relevant financial period; example period ending 29 Jun 2025 due 29 Dec 2025. Secondary update; confirm period-specific deadline with current law/ITA portal.
+
+8. **BVI Beneficial Ownership Filings Now Extended to 1 January 2026** — Maples Group, 6 Jun 2025 — Tier 2 — URL: https://maples.com/wp-content/uploads/2025/06/20250606-Legal-Update-BVI-BVI-Beneficial-Ownership-Filings-Now-Extended-to-1-January-2026.pdf — Excerpt reports extension for pre-existing entities; the revised Registrar guidance (2 Jan 2026, fetched evidence 01) states final existing-entity deadline of 2 Jan 2026, which controls this note.
+
+9. **BVI Business Companies (Amendment) Act, 2024** — gazetted/published 26 Sep 2024 — Tier 1 — URL: https://www.bvifsc.vg/sites/default/files/bvi_business_companies_amendment_act_2024.pdf — Search snippet discusses penalties for overdue annual fees (10% within first two months after due date; 50% thereafter) and statutory schedule references. Not fetched; check any later fee amendment before quoting.
+
+10. **Blockchain & Crypto-Assets 2026 — BVI, Global Practice Guides** — Chambers and Partners, 2026 guide — Tier 2 — URL: https://practiceguides.chambers.com/practice-guides/blockchain-crypto-assets-2026/bvi — Search excerpt says where tokens represent company shares, members' register is prima facie evidence of ownership; shares/tokens should not be conflated with non-equity contractual tokens.
+
+11. **A guide to blockchain and cryptocurrency laws and regulations 2026: British Virgin Islands (GLI chapter)** — Carey Olsen, JDSupra republishing; document dated 12 Nov 2025 — Tier 2 — URL: https://www.jdsupra.com/legalnews/a-guide-to-blockchain-and-6734390 — This source was fetched in full answer form to evidence 04. Search result excerpt: BVI ITA has not issued formal virtual-asset tax statement; BVI tax-neutral/0% income tax; potential SIBA overlap depends on asset/service; token issuance exclusion from VASP perimeter does not itself remove SIBA/fund rules.
+
+12. **VIRGIN ISLANDS BVI BUSINESS COMPANIES (AMENDMENT) (No. 2) Act, 2024** — BVI FSC, deemed effective 1 Sep 2024, published 6 Dec 2024 — Tier 1 — URL: https://www.bvifsc.vg/sites/default/files/bvi_business_companies_amendment_no._2_act_2024.pdf — Search snippet states registered agent must notify Registrar within 30 days after missed annual-return deadline (unless extension). See statutory text for operative details.
+
+13. **Guidance on Regulation of Virtual Assets in the Virgin Islands** — BVI FSC, 13 Jul 2020 — Tier 1 — URL: https://www.bvifsc.vg/sites/default/files/documents/Sandbox/guidance_on_regulation_of_virtual_assets_in_the_virgin_islands_bvi_final_0.pdf — Official guidance search excerpt expressly treats virtual-asset issuance/characteristics and associated activity as distinct questions. Older guidance; use together with VASP Act amendments and SIBA, not as a blanket exemption.
