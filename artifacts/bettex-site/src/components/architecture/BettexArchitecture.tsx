@@ -80,24 +80,24 @@ const fig4: Step[] = [
 ];
 const fig5: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Autoriza a parcela investível para a IA, com alocação dinâmica e respeito à reserva defensiva e aos limites de risco.', tone: 'gold' },
-  { title: 'IA BETTEX', text: 'Opera após aprovação independente de risco. Apura o lucro realizado líquido e limita o valor elegível ao ganho patrimonial acima da base, considerando posições abertas.', tone: 'blue', badge: 'Análise e apuração' },
+  { title: 'IA BETTEX', text: 'Opera após aprovação independente de risco. Reconhece custos e tributos aplicáveis da entidade antes de apurar o lucro realizado líquido. Limita o valor elegível ao ganho patrimonial acima da base, considerando posições abertas.', tone: 'blue', badge: 'Análise e apuração' },
   { title: 'Reservas, liquidez e elegibilidade', text: 'Verifica reserva defensiva mínima inicial de 50% do patrimônio líquido atualizado e caixa livre suficiente, antes e após a distribuição projetada. A soma dos pesos elegíveis da rodada deve ser positiva.', tone: 'teal', badge: 'Condições antes do split', id: 'node-bettex-profit-split',
     extra: (
       <>
         <div className="ba-entry" data-testid="node-bettex-reserve-recovery">
           <div className="ba-split__treasury"><strong>Reserva ou liquidez insuficiente, ou soma dos pesos zero</strong><p>100% do lucro líquido permanece temporariamente na tesouraria, sem split nem pagamento nessa apuração. A retenção não consome R nem altera B por si só. Um split futuro depende de nova apuração, perdas posteriores, reservas, liquidez e pesos elegíveis positivos na rodada da liberação; não é um crédito garantido.</p></div>
         </div>
-        <p>Somente com reserva e liquidez atendidas antes e após a distribuição projetada, lucro elegível positivo, posições conciliadas e soma dos pesos elegíveis positiva, aplica o split sobre o valor elegível:</p>
+        <p>Somente com tributos aplicáveis validados e reconhecidos, reserva e liquidez atendidas antes e após a distribuição projetada, lucro elegível positivo, posições conciliadas e soma dos pesos elegíveis positiva, aplica o split sobre o valor elegível:</p>
         <div className="ba-entry ba-split" aria-label="Split permitido apenas com pesos elegíveis positivos, reserva e liquidez atendidas antes e após a distribuição projetada">
           <div className="ba-split__treasury"><strong>Tesouraria · 75%</strong><p>Recebe 75% do lucro elegível ao split.</p></div>
-          <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Pago na Carteira USDC dos participantes elegíveis, nunca na Carteira BETTEX.</p></div>
+          <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Parcela bruta rateada entre participantes elegíveis. Retenções fiscais precedem o pagamento líquido na Carteira USDC, nunca na Carteira BETTEX.</p></div>
         </div>
       </>
     ) },
 ];
 const fig6: Step[] = [
   { title: 'Parcela do staking', text: 'Parcela separada no desenho 5, com lucro distribuível, reservas e liquidez atendidas e soma dos pesos elegíveis positiva. Usa os pesos da rodada em que o split é autorizado, inclusive quando o lucro veio de retenção anterior.', tone: 'blue' },
-  { title: 'Crédito na Carteira USDC', text: 'O direito apurado fica como distribuição pendente. A IA transfere USDC à carteira do titular; só após confirmação e conciliação o valor recebido entra no saldo disponível, liquidando a obrigação uma única vez.', tone: 'teal' },
+  { title: 'Retenção e crédito na Carteira USDC', text: 'O direito bruto apurado fica identificado. Quando exigidas, retenções fiscais são reservadas antes do pagamento; a IA transfere somente o líquido. Após confirmação e conciliação, o recebido entra no saldo disponível, sem liquidar novamente o tributo reservado.', tone: 'teal' },
   { title: 'Saque de USDC do staking', text: 'Retira USDC do staking para carteira compatível, sem repetir a distribuição. A taxa de 2% do valor solicitado é paga em BETTEX à carteira própria da Fundação. Cotação, quantidade e custos externos são informados antes da confirmação. Sem pagamento em moeda local.' },
 ];
 const fig7: Step[] = [

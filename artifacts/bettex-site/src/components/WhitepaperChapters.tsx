@@ -9,6 +9,7 @@ import { FeeProjections } from '@/components/FeeProjections';
 import { InvestmentAgents } from '@/components/InvestmentAgents';
 import { StakingDistribution } from '@/components/StakingDistribution';
 import { ProfitAccounting } from '@/components/ProfitAccounting';
+import { DistributionTaxes } from '@/components/DistributionTaxes';
 import { DistributionCorrections } from '@/components/DistributionCorrections';
 import { DistributionSettlement } from '@/components/DistributionSettlement';
 import { ReservePolicy } from '@/components/ReservePolicy';
@@ -144,6 +145,7 @@ export function ChapterContent({ index }: { index: number }) {
           <div><span>03 / AGENTE BETTEX</span><strong>Smart contract, análises e conectores</strong><p>O agente de IA BETTEX se conecta à tesouraria por seu smart contract, que formaliza as regras de acesso ao capital, reservas e autorizações. Os serviços de análise e conectores externos cruzam dados, probabilidades, preços, liquidez, execução e risco, comparam oportunidades nos quatro mercados e operam somente após aprovação independente de risco. A IA apura e concilia o lucro realizado líquido, considera o valor das posições abertas e limita o lucro elegível ao ganho patrimonial líquido acima da base de referência. Sem avaliação confiável das posições, a distribuição fica suspensa até conciliação. Reserva ou liquidez insuficiente, ou soma dos pesos elegíveis zero, mantém 100% do lucro temporariamente na tesouraria, sem split nessa apuração. Somente com reservas e liquidez atendidas antes/depois, lucro elegível positivo e soma dos pesos elegíveis positiva, aplica automaticamente o split sobre o valor elegível: 75% para a tesouraria e 25% para o staking, pagos nas Carteiras USDC dos participantes elegíveis, sem enviar todo o lucro primeiro à tesouraria.</p></div>
           <div><span>04 / LIQUIDAÇÃO E SUPERVISÃO</span><strong>Serviços operacionais</strong><p>O backend concilia transferências de USDC e BETTEX e o recebimento do on-ramp externo; controles independentes verificam ordens e operadores autorizados aprovam intervenções críticas, pausas e conciliações.</p></div>
         </div>
+        <DistributionTaxes />
         <ProfitAccounting />
         <DistributionSettlement />
         <DistributionCorrections />
