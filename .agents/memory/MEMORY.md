@@ -27,4 +27,5 @@
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
 - [Ordem da documentação](documentation-reading-order.md) — “Entidade e negócios” vem imediatamente após “Visão do projeto”, não no fim.
 - [Leitura do pitch](pitch-reading-behavior.md) — todo o conteúdo deve ficar visível, sem caixas expansíveis ou controles de expandir/recolher.
+- [Visual do pitch](pitch-visual-direction.md) — usar foto do fundador e imagens de cassinos e investimentos, com estilo de apresentação distinto da homepage.
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.

@@ -6,14 +6,15 @@ import './growth.css';
 const n = (v: number) => v.toLocaleString('pt-BR');
 const f = g.founder;
 
-export function FounderProfile({ dark = false, id }: { dark?: boolean; id?: string }) {
+export function FounderProfile({ dark = false, id, portrait = false }: { dark?: boolean; id?: string; portrait?: boolean }) {
   const stats = [
     ['Comunidade', n(f.community), 'membros'],
     ['Instagram', n(f.instagram), `${f.instagramEngagementPercent[0]}–${f.instagramEngagementPercent[1]}% de engajamento`],
     ['YouTube', `${f.youtubeMoreThan ? 'mais de ' : ''}${n(f.youtube)}`, 'inscritos'],
     ['X', n(f.x), 'seguidores'],
   ];
-  return <figure id={id} className={`fp${dark ? ' fp--dark' : ''}`} aria-label="Apresentação do fundador">
+  return <figure id={id} className={`fp${dark ? ' fp--dark' : ''}${portrait ? ' fp--portrait' : ''}`} aria-label="Apresentação do fundador">
+    {portrait ? <img className="fp__portrait" src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/fred-azevedo.png`} alt="Retrato de Fred Azevedo, fundador da BETTEX" width={400} height={400} loading="lazy" decoding="async" /> : null}
     <span className="mono text-[10px] font-bold uppercase tracking-[.14em]" style={{ color: dark ? '#F2B632' : '#2B59FF' }}>Founder-led · distribuição existente</span>
     <blockquote className="fp__quote">“{f.quote}”</blockquote>
     <figcaption className="fp__who"><span className="fp__ini" aria-hidden="true">FA</span><span>{f.name}<br /><small style={{ fontWeight: 500, opacity: .75 }}>Fundador de BETTEX · {f.channel}</small></span></figcaption>
