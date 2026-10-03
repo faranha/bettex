@@ -44,3 +44,9 @@ Use parameterized translations for statements containing changing numeric thresh
 **Why:** A threshold assembled from data passed source coverage but failed English prerender because the final text contained a newly formatted number with no matching translation.
 
 **How to apply:** Translate the wording independently of the numeric value and audit the rendered result in all languages. Preserve locale-specific number formatting rather than assuming a Portuguese-formatted value is the runtime translation key.
+
+The visual pilot deliberately uses explicit PT/EN/ES tuples outside the site's automatic JSX translator. Keep an independent localization audit for that surface.
+
+**Why:** Automatically extracting prepared state, English/Spanish alternatives and fixture identifiers into the site's Portuguese source catalog would double-translate already localized text and treat non-visible state as public copy.
+
+**How to apply:** Audit all three rendered pilot languages, including locale URL changes while preserving in-memory simulation state. Do not assume passing the site's source-catalog check covers the pilot's alternative runtime.

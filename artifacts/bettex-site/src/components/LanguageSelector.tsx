@@ -1,6 +1,7 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { Check, ChevronDown } from 'lucide-react';
-import { changeLocale, t, useLocale, type Locale } from '@/lib/i18n';
+import { changeLocale, localizedUrl, setLocale, t, useLocale, type Locale } from '@/lib/i18n';
+import { useLocation } from 'wouter';
 import './LanguageSelector.css';
 
 const options: { value: Locale; label: string; flag: string }[] = [
@@ -15,6 +16,7 @@ function Flag({ country }: { country: string }) {
 
 export function LanguageSelector({ className = '' }: { className?: string }) {
   const locale = useLocale();
+  const [, navigate] = useLocation();
   const selected = options.find((option) => option.value === locale)!;
   return <DropdownMenu.Root>
     <DropdownMenu.Trigger asChild>
@@ -27,7 +29,12 @@ export function LanguageSelector({ className = '' }: { className?: string }) {
     <DropdownMenu.Portal>
       <DropdownMenu.Content className="lang-selector__menu" align="end" sideOffset={8} collisionPadding={12} aria-label={t('Selecionar idioma')} data-testid="language-options">
         <DropdownMenu.RadioGroup value={locale} onValueChange={(value) => {
-          if (value !== locale) changeLocale(value as Locale);
+          if (value === locale) return;
+          if (/\/demo\/?$/.test(window.location.pathname)) {
+            const next = value as Locale;
+            navigate('~' + localizedUrl(window.location.pathname + window.location.search, next), { replace: true });
+            setLocale(next);
+          } else changeLocale(value as Locale);
         }}>
           {options.map((option) => <DropdownMenu.RadioItem key={option.value} value={option.value} className="lang-selector__option" data-testid={`language-option-${option.value}`}>
             <Flag country={option.flag} />

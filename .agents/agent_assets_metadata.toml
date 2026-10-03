@@ -420,3 +420,17 @@ mtime_ms = 1791061839775
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/4c5bd3f1-1b2f-4c27-8937-2d349e1ae0c4/92cbe7c8-3c95-44e2-aec0-7e00624443a1"
 storage_version_token = "1791061867701664"
 content_type = "image/png"
+
+[[outputs]]
+id = "9B1rfFtMNds_HRZrAjRrw"
+uri = "file://.local/bettex-demo-coverage.md"
+type = "text"
+title = "Cobertura do piloto BETTEX"
+description = "Lista de capacidades, percursos, estados e evidências de verificação, com os limites da passagem de navegador registrados."
+logical_id = "dc716e20-650b-4cdf-a57b-845b0c95b640"
+content_hash = "sha256:01437c0ca326e79da1aa115aa5d5c1b89c8faf320ae980b5f736321ec8595eb8"
+size = 19159
+mtime_ms = 1791071200918
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/dc716e20-650b-4cdf-a57b-845b0c95b640/ff837447-9452-44bc-bfc6-e1a1661d3fda"
+storage_version_token = "1791071264557936"
+content_type = "text/markdown"
