@@ -9,8 +9,6 @@ O criador esclareceu: “nao ha sofisticacao na bettex, eh um fundo descentraliz
 
 A tese de demanda apresentada pelo criador é: “se a IA tiver resultado positivo, havera interesse em staking”.
 
-O criador quer constituir a BETTEX na Sérvia e confirmou que se refere ao país.
-
 **Why:** Essa é a definição econômica do projeto dada pelo usuário, que corrigiu uma avaliação que complicava sua proposta.
 
-**How to apply:** Explicar e avaliar a BETTEX a partir desse mecanismo simples, sem atribuir sofisticação ou adicionar camadas não solicitadas. Distinguir simplicidade do conceito de requisitos de execução quando pertinente. A declaração não comprova constituição jurídica como fundo. Para direitos dos titulares e financiamento, usar as definições posteriores do criador registradas em replit.md; não reapresentar a ausência de definição na declaração original como se esses pontos continuassem necessariamente em aberto.
+**How to apply:** Explicar e avaliar a BETTEX a partir desse mecanismo simples, sem atribuir sofisticação ou adicionar camadas não solicitadas. A expressão “fundo” nesta declaração é econômica, não comprova constituição jurídica como fundo. Usar as decisões posteriores em replit.md para estrutura de entidade única, direitos dos titulares, financiamento e alternativas de jurisdição; não tratar a preferência histórica pela Sérvia como escolha definitiva.
