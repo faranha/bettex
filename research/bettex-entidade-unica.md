@@ -2,9 +2,11 @@
 
 **Data da consulta:** 3 de outubro de 2026.
 
+**Histórico de estruturação:** a base vigente está consolidada em [BETTEX — base da entidade e preparação do registro](bettex-base-da-entidade.md). Os critérios abaixo que rejeitam licenças refletem uma etapa anterior e foram substituídos: licenças posteriores são aceitáveis; a prioridade atual é estruturar a entidade, reunir o cadastro e adaptar à legislação. Nenhum país foi escolhido definitivamente.
+
 **Natureza do documento:** memorando preparatório para estruturação e consulta jurídica. Não é estatuto, contrato definitivo, parecer jurídico, registro de empresa ou autorização de emissão. Não está pronto para assinatura. Nenhuma captação, incorporação ou contato externo foi realizado.
 
-**Escopo mais recente do criador:** não aceita licença financeira nem aprovação da emissão do token. A aceitação anterior de aprovação foi substituída. Busca uma empresa comercial única de tecnologia/IA, remunerada pela venda de um ativo digital, com liberdade operacional e estrutura simples e defensável. O comprador pode revender o token no mercado aberto sem ser obrigado a utilizar o serviço ou tecnologia; a participação no staking é facultativa e permite resultados conforme lucro e regras aprovadas. Nenhum serviço adicional de assinatura ou acesso à IA é presumido. A participação financeira não foi retirada. A comparação abaixo documenta possibilidades e incompatibilidades, não aprovação do modelo: a escolha de nome, a ausência de participação societária e a facultatividade do staking não demonstram dispensa regulatória. Nenhuma empresa, licença, emissão ou captação será solicitada/executada por iniciativa própria.
+**Escopo histórico desta consulta:** o criador então rejeitava licença financeira e aprovação da emissão; esse limite foi substituído pela aceitação de licenciamento posterior. Permanecem a sociedade comercial única, a negociabilidade do token, o staking facultativo e os direitos financeiros aprovados, sem inventar assinatura de software. As comparações seguintes são histórico, não a decisão atual de jurisdição. Nenhuma empresa, licença, emissão ou captação será solicitada/executada por iniciativa própria.
 
 ## 0. Modelo simples proposto para análise jurídica
 
