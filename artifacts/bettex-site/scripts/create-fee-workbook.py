@@ -39,7 +39,7 @@ def setup(name, heading, subtitle, last_col=3):
     return sheet
 
 fees = setup("Taxas", "BETTEX — taxas definidas e sugestões",
-             "Compra: 1%. Saque USDC do staking: 2%. Taxas em BETTEX vão à carteira própria da Fundação, sem queima. Células editáveis para simulação; não alteram as tarifas do projeto.")
+             "Compra: alvo líquido de tributos 1%. Saque: alvo líquido 2%. Cobrança total inclui cobertura fiscal e é paga em BETTEX à Fundação, sem queima. Simulação sem tarifas reais.")
 fees.set_column("A:A", 46)
 fees.set_column("B:B", 16)
 fees.set_column("C:C", 44)
@@ -58,7 +58,7 @@ fees.print_area("A1:D14")
 book.define_name("OPERACOES_CALCULADORA", "='Taxas'!$A$5:$A$6")
 
 calc = setup("Calculadora", "BETTEX — calculadora por operação",
-             "Exemplo ilustrativo: 100 USDC e 0,20 USDC por BETTEX. Não é preço do projeto. Amarelo = entrada editável; precisão exibida não define a precisão do contrato.", 2)
+             "100 USDC a 0,20 USDC/BETTEX são ilustrativos. Informe B23:B24. Perfil fiscal comum a compra/saque/reposição somente neste exemplo; operação real exige cotação fiscal própria.", 2)
 calc.set_column("A:A", 54)
 calc.set_column("B:B", 48)
 calc.set_column("C:C", 65)
@@ -71,30 +71,42 @@ calc.write_row(6, 0, ["Operação", proposal["fees"][0]["operation"], "Selecione
 calc.write("B7", proposal["fees"][0]["operation"], choice)
 calc.set_row(6, 44)
 calc.data_validation("B7", {"validate": "list", "source": "=OPERACOES_CALCULADORA"})
-calc.write("A8", "Percentual da operação", text)
+calc.write("A8", "Percentual líquido-alvo após tributos", text)
 calc.write_formula("B8", "=INDEX(Taxas!$B$5:$B$6,MATCH(B7,Taxas!$A$5:$A$6,0))", rate, purchase_rate)
 calc.write("A9", "Saldo BETTEX já disponível para a taxa", text)
 calc.write_number("B9", 0, input_number)
 calc.write("C9", "Sem incluir tokens reservados, pendentes ou em conciliação", text)
-calc.write("A11", "Equivalente da taxa em USDC", text)
-calc.write_formula("B11", "=B5*B8", number, example_fee_usdc)
+calc.write("A11", "Cobrança total com tributos: equivalente USDC", text)
+calc.write_formula("B11", '=IF(COUNT(B23:B24)<2,"Informar dados fiscais",IF(AND(B23>=0,B23<1,B24>=0,B5>=0),(B5*B8+B24)/(1-B23),"Rever dados fiscais"))', number, "Informar dados fiscais")
 calc.write("A12", "Taxa em BETTEX", text)
-calc.write_formula("B12", '=IF(B6>0,B11/B6,"Definir cotação positiva")', number, example_fee_tokens)
+calc.write_formula("B12", '=IF(AND(B6>0,ISNUMBER(B11)),B11/B6,"Conferir cotação e tributos")', number, "Conferir cotação e tributos")
 calc.write("A14", "Compra: BETTEX brutos", text)
 calc.write_formula("B14", '=IF(B7=Taxas!A5,IF(B6>0,B5/B6,"Definir cotação positiva"),"Não aplicável")', number, example_gross)
 calc.write("A15", "Compra: BETTEX líquidos para o titular", text)
-calc.write_formula("B15", '=IF(B7=Taxas!A5,IF(AND(ISNUMBER(B14),ISNUMBER(B12)),B14-B12,"Definir cotação positiva"),"Não aplicável")', number, example_gross - example_fee_tokens)
+calc.write_formula("B15", '=IF(B7=Taxas!A5,IF(AND(ISNUMBER(B14),ISNUMBER(B12)),IF(B14>B12,B14-B12,"Cobrança esgota compra"),"Conferir cotação e tributos"),"Não aplicável")', number, "Conferir cotação e tributos")
 calc.write("C15", "Bruto menos taxa à Fundação; primeira compra não exige saldo prévio", text)
 calc.write("A17", "Saque: compra bruta para completar a taxa", text)
-calc.write_formula("B17", '=IF(B7=Taxas!A5,"Taxa deduzida na compra",IF(AND(ISNUMBER(B12),Taxas!B5<1),MAX(0,B12-B9)/(1-Taxas!B5),"Rever cotação e percentual"))', number, "Taxa deduzida na compra")
-calc.write("C17", "Considera a taxa da própria compra: líquido precisa cobrir o saldo faltante", text)
+calc.write_formula("B17", '=IF(B7=Taxas!A5,"Cobrança deduzida na compra",IF(AND(ISNUMBER(B12),B6>0,COUNT(B23:B24)=2,B23>=0,B24>=0,1-B23-Taxas!B5>0),IF(B12<=B9,0,((B12-B9)*(1-B23)+B24/B6)/(1-B23-Taxas!B5)),"Conferir cotação e tributos"))', number, "Cobrança deduzida na compra")
+calc.write("C17", "Inclui tributos da compra. Perfil comum apenas nesta hipótese; sem saldo faltante não há compra nem segunda provisão.", text)
 calc.write("A18", "USDC necessário para essa compra", text)
 calc.write_formula("B18", '=IF(ISNUMBER(B17),B17*B6,"Não aplicável")', number, "Não aplicável")
 calc.data_validation("B5", {"validate": "decimal", "criteria": ">=", "value": 0})
 calc.data_validation("B6", {"validate": "decimal", "criteria": ">", "value": 0})
 calc.data_validation("B9", {"validate": "decimal", "criteria": ">=", "value": 0})
 calc.merge_range("A20:C21", "As fórmulas usam cotação comum e não executam operações. Gas, tarifas externas, liquidez e arredondamento executável precisam de validação separada. Saldo insuficiente não cancela yield nem autoriza compra automática.", note)
-calc.print_area("A1:C21")
+calc.write("A23", "Carga efetiva sobre total cobrado (hipótese)", text)
+calc.write_blank("B23", None, rate)
+calc.write("C23", "Modelo linear. Não é alíquota universal nem apuração legal; incide também sobre o acréscimo fiscal.", text)
+calc.write("A24", "Outros tributos por operação (USDC)", text)
+calc.write_blank("B24", None, input_number)
+calc.write("C24", "Somente obrigações ainda não cobertas, não incluídas na carga proporcional ou financiadas por outra fonte.", text)
+calc.write("A26", "Líquido-alvo em USDC antes de demais despesas", text)
+calc.write_formula("B26", "=B5*B8", number, example_fee_usdc)
+calc.data_validation("B23", {"validate": "decimal", "criteria": "between", "minimum": 0, "maximum": 0.999999})
+calc.data_validation("B24", {"validate": "decimal", "criteria": ">=", "value": 0})
+calc.set_row(22, 48)
+calc.set_row(23, 48)
+calc.print_area("A1:C26")
 
 monthly = setup("Operação mensal", "BETTEX — orçamento institucional",
                 "Preencha os volumes e custos: nenhum volume operacional real foi informado. Equivalente estimado de taxas em USDC NÃO é caixa recebido.", 2)
@@ -115,9 +127,9 @@ for row, (label, description) in enumerate(inputs, 4):
     monthly.write(row, 2, description, text)
     monthly.set_row(row, 32)
 monthly.data_validation("B5:B9", {"validate": "decimal", "criteria": ">=", "value": 0})
-monthly.write("A11", "Equivalente nominal das taxas previstas", text)
+monthly.write("A11", "Equivalente nominal líquido-alvo após tributos", text)
 monthly.write_formula("B11", "=B5*Taxas!B5+B6*Taxas!B6", number, 0)
-monthly.write("C11", "Estimativa de valor; não presume venda dos tokens ou caixa", text)
+monthly.write("C11", "Alvo 1% / 2% líquido de tributos, antes dos demais custos. Cobrança bruta na aba Cobertura fiscal. Não é caixa.", text)
 monthly.write("A12", "Cobertura do custo com caixa e orçamento", text)
 monthly.write_formula("B12", "=B8+B9-B7", number, 0)
 monthly.write("C12", "Não inclui tokens apenas avaliados. Negativo indica falta de financiamento.", text)
@@ -129,7 +141,7 @@ monthly.print_area("A1:C18")
 
 scenarios = json.loads((app / "src/lib/fee-projection-scenarios.json").read_text())["scenarios"]
 projection = setup("Projeções", "BETTEX — comportamento de saques diários",
-                   "Premissas diárias hipotéticas, mês de referência de 30 dias. Amarelo = editável. Taxas recebidas em BETTEX; USDC indica equivalente nominal, não caixa ou lucro líquido.")
+                   "Mês hipotético de 30 dias. Valores de taxas são ALVOS líquidos de tributos, antes dos demais custos, não cobrança bruta ou caixa. Informe o perfil na aba Cobertura fiscal.")
 projection.set_column("A:A", 62)
 projection.set_column("B:D", 27)
 projection.write_row(3, 0, ["Indicador"] + [s["name"] for s in scenarios], header)
@@ -154,14 +166,14 @@ labels = {
     17: "Volume mensal de compras (USDC)",
     18: "Volume mensal de saques (USDC)",
     19: "Quantidade de saques concluídos/mês",
-    20: "Taxas de compra: equivalente USDC/mês",
-    21: "Taxas de saque: equivalente USDC/mês",
-    22: "Total de taxas: equivalente USDC/mês",
-    23: "Total em 12 meses constantes: equivalente USDC",
+    20: "Alvo líquido de compra: equivalente USDC/mês",
+    21: "Alvo líquido de saque: equivalente USDC/mês",
+    22: "Total líquido-alvo: equivalente USDC/mês",
+    23: "Alvo em 12 meses constantes: equivalente USDC",
     24: "Taxas por usuário ativo/mês: equivalente USDC",
     25: "Taxas de saque por dia ativo: equivalente USDC",
     26: "Piso líquido elegível/mês, sem retenção individual",
-    27: "BETTEX recebido/mês à cotação ilustrativa constante",
+    27: "Alvo em BETTEX/mês, sem provisão fiscal bruta",
     28: "Piso líquido elegível/dia, sem retenção individual",
 }
 for row, label in labels.items():
@@ -213,7 +225,7 @@ for col, s in enumerate(scenarios, 1):
     ]
     for row, formula, cached in formulas:
         projection.write_formula(row, col, formula, number, cached)
-projection.merge_range("A30:D31", "Ticket de saque = valor por dia; um saque por pessoa/dia ativo. Recompras = total mensal. Volume = pessoas × dias × ticket diário. Os 12 meses repetem o mês de referência, não o calendário exato. Entrantes compensam inativos; não é curva de crescimento nem primeira compra repetida. Dividir o mesmo volume em mais saques não aumenta a taxa de 2%.", note)
+projection.merge_range("A30:D31", "Ticket de saque = valor por dia; um saque por pessoa/dia ativo. Recompras = total mensal. Volume = pessoas × dias × ticket. Os 12 meses repetem o mês de referência, não calendário exato. Entrantes compensam inativos. Dividir o mesmo volume não altera o alvo líquido de 2%, mas pode alterar provisão fiscal por operação. Cobrança bruta na aba Cobertura fiscal.", note)
 projection.set_row(29, 35)
 projection.set_row(30, 35)
 projection.merge_range("A33:D34", "Saques pressupõem crédito líquido de retenções, liquidez e BETTEX para taxa. Pisos de lucro elegível são APÓS tributos da entidade, sem créditos anteriores e sem retenções individuais. Com retenção: (saques líquidos + imposto retido) / 25%. Preencha a aba Tributos; ausência de valor não significa isenção. Reservas precedem split; retenção para recomposição não cria crédito.", note)
@@ -235,7 +247,7 @@ tax.write_number("B5", 1000, input_number)
 tax.write("C5", "Exemplo isolado: R = P − B antes dos tributos, sem perdas anteriores ou posições abertas.", text)
 tax.write("A6", "Tributos da entidade imputáveis à tesouraria", text)
 tax.write_blank("B6", None, input_number)
-tax.write("C6", "Somente tributos ainda não descontados do resultado; não incluir os tributos próprios da receita institucional da Fundação.", text)
+tax.write("C6", "Tributos e custos fiscais atribuídos à tesouraria ainda não deduzidos; incluir cobertura de outras obrigações somente conforme fonte validada, sem repetir o já financiado nas taxas.", text)
 tax.write("A7", "Retenções totais dos beneficiários desta rodada", text)
 tax.write_blank("B7", None, input_number)
 tax.write("C7", "Incidências individuais validadas, separadas do bruto. Não é alíquota universal nem receita da Fundação.", text)
@@ -273,11 +285,58 @@ tax.write("A24", "Lucro líquido elegível necessário após tributos", text)
 tax.write_formula("B24", '=IF(COUNT(B21)=1,IF(B21>=0,(B23+B21)/25%,"Valor inválido"),"Informar retenções")', number, "Informar retenções")
 tax.write("A25", "Resultado necessário antes dos tributos da entidade", text)
 tax.write_formula("B25", '=IF(AND(ISNUMBER(B24),COUNT(B22)=1),IF(B22>=0,B24+B22,"Valor inválido"),"Informar tributos e retenções")', number, "Informar tributos e retenções")
-tax.merge_range("A27:C29", "Tributos da entidade precedem apuração e split; retenções do beneficiário precedem pagamento ou disponibilização no evento fiscal aplicável. Bruto = líquido devido + imposto retido. Reservar imposto para recolhimento, não como caixa livre. Pagar obrigação já reconhecida não gera nova dedução. As metas pressupõem ausência de créditos anteriores e retirada de todo o líquido; perdas e recomposição podem impedir o split. Não altera taxas BETTEX de compra (1%) ou saque (2%), nem executa pagamentos.", note)
+tax.merge_range("A27:C29", "Tributos da entidade precedem apuração e split; retenções precedem pagamento no evento fiscal aplicável. Bruto = líquido devido + imposto retido. Reservar para recolhimento, sem caixa livre. Não deduzir ou financiar de novo imposto já coberto. Metas supõem ausência de créditos anteriores e saque de todo o líquido; perdas e recomposição podem impedir split. 1% compra / 2% saque são alvos líquidos: total inclui cobertura fiscal. Sem pagamentos reais.", note)
 for row in [4, 5, 6, 7, 9, 20, 21]:
     tax.set_row(row, 48)
 for row in [26, 27, 28]:
     tax.set_row(row, 30)
 tax.print_area("A1:C29")
+
+coverage = setup("Cobertura fiscal", "BETTEX — alvo líquido e cobrança bruta mensal",
+                 "Referência: 1% compra / 2% saque líquidos de tributos. Entradas fiscais em branco impedem cobrança total. Modelos lineares distintos por operação, sem alíquota legal presumida.", 2)
+coverage.set_column("A:A", 63)
+coverage.set_column("B:B", 32)
+coverage.set_column("C:C", 72)
+coverage.write_row(3, 0, ["Indicador", "Valor", "Tratamento"], header)
+reference = scenarios[1]
+reference_buys = reference["activeUsers"] * (reference["newBuyerShare"] * reference["firstPurchase"] + reference["repeatBuyerShare"] * reference["monthlyRepeatPurchase"])
+buy_target = reference_buys * purchase_rate
+withdrawal_target = reference_withdrawals * proposal["fees"][1]["rate"]
+coverage.write("A5", "Alvo líquido mensal de compra", text)
+coverage.write_formula("B5", "='Projeções'!C21", number, buy_target)
+coverage.write("A6", "Alvo líquido mensal de saque", text)
+coverage.write_formula("B6", "='Projeções'!C22", number, withdrawal_target)
+for row, label, fmt in [
+    (8, "Carga efetiva sobre cobrança bruta de compra", rate),
+    (9, "Carga efetiva sobre cobrança bruta de saque", rate),
+    (10, "Outros tributos mensais atribuídos à compra", input_number),
+    (11, "Outros tributos mensais atribuídos ao saque", input_number),
+]:
+    coverage.write(f"A{row}", label, text)
+    coverage.write_blank(f"B{row}", None, fmt)
+    coverage.write(f"C{row}", "Somente obrigações ainda não financiadas. Não somar incidência proporcional e tributo adicional sobre a mesma obrigação.", text)
+    coverage.set_row(row - 1, 42)
+for cell in ["B8", "B9"]:
+    coverage.data_validation(cell, {"validate": "decimal", "criteria": "between", "minimum": 0, "maximum": 0.999999})
+for cell in ["B10", "B11"]:
+    coverage.data_validation(cell, {"validate": "decimal", "criteria": ">=", "value": 0})
+coverage.write("A12", "Cotação ilustrativa: USDC por BETTEX", text)
+coverage.write_number("B12", example_price, input_number)
+coverage.data_validation("B12", {"validate": "decimal", "criteria": ">", "value": 0})
+coverage_formulas = [
+    (14, "Cobrança bruta mensal de compra", 'IF(COUNT(B8,B10)<2,"Informar tributos",IF(AND(B8>=0,B8<1,B10>=0),(B5+B10)/(1-B8),"Dados inválidos"))', "Informar tributos"),
+    (15, "Cobrança bruta mensal de saque", 'IF(COUNT(B9,B11)<2,"Informar tributos",IF(AND(B9>=0,B9<1,B11>=0),(B6+B11)/(1-B9),"Dados inválidos"))', "Informar tributos"),
+    (16, "Total bruto cobrado do usuário", 'IF(AND(ISNUMBER(B14),ISNUMBER(B15)),B14+B15,"Informar tributos")', "Informar tributos"),
+    (17, "Provisão fiscal total vinculada", 'IF(ISNUMBER(B16),B16-B5-B6,"Informar tributos")', "Informar tributos"),
+    (18, "Total líquido-alvo da Fundação", "B5+B6", buy_target + withdrawal_target),
+    (19, "Cobrança bruta em BETTEX à cotação ilustrativa", 'IF(AND(ISNUMBER(B16),B12>0),B16/B12,"Conferir tributos e cotação")', "Conferir tributos e cotação"),
+]
+for row, label, formula, cached in coverage_formulas:
+    coverage.write(f"A{row}", label, text)
+    coverage.write_formula(f"B{row}", "=" + formula, number, cached)
+coverage.merge_range("A21:C24", "Cobrança total − provisão fiscal = líquido-alvo, antes dos demais custos institucionais. A provisão cobre também a incidência sobre o acréscimo; não é receita livre. Carga efetiva linear só pode representar hipótese validada, não soma automática de alíquotas sobre bases diferentes. Tributos sobre lucro, créditos, faixas e ajustes exigem cálculo fiscal próprio sobre a cobrança final. Identificar obrigação e fonte: não financiar de novo pela tesouraria ou pagamentos o que já foi coberto aqui. Cotação, total e líquido do titular precisam de autorização; sem pagamentos reais.", note)
+for row in range(20, 24):
+    coverage.set_row(row, 30)
+coverage.print_area("A1:C24")
 book.close()
 print(output)
