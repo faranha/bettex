@@ -1,3 +1,4 @@
+.ds__cap p { margin: 8px 0 0; color: var(--ds-muted); font: 400 13px/1.65 var(--app-font-sans); text-transform: none; letter-spacing: normal; max-width: 68ch; }
 .ds { --ds-bg:#070B1F; --ds-card:#13204F; --ds-ink:#F4F1E8; --ds-muted:#b9c6ee; --ds-line:rgba(95,134,255,.35); --ds-blue:#5F86FF; --ds-gold:#F2B632; --ds-teal:#36E0D0; --ds-warn:#F28B6B;
   container-type:inline-size; margin:20px 0; padding:clamp(14px,2vw,20px); border:1px solid var(--ds-line); border-radius:16px; background:var(--ds-bg); color:var(--ds-ink); font-family:var(--app-font-sans); display:grid; gap:16px; min-width:0; }
 .ds * { box-sizing:border-box; }

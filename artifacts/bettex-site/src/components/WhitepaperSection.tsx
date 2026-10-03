@@ -1,16 +1,9 @@
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { ChapterContent, chapters } from './WhitepaperChapters';
 import { ExpandControls } from './ReadingDisclosure';
-import { t } from '@/lib/i18n';
+import { t, useLocale } from '@/lib/i18n';
+import { collectOutline, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
 import './WhitepaperSection.css';
-
-function scrollOffset() {
-  const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 73;
-  const mobileIndexHeight = window.matchMedia('(max-width: 768px)').matches
-    ? document.querySelector('.whitepaper__aside')?.getBoundingClientRect().height ?? 0
-    : 0;
-  return headerHeight + (mobileIndexHeight ? 20 + mobileIndexHeight : 0) + 16;
-}
 
 function prefersReduced() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -19,19 +12,25 @@ function prefersReduced() {
 function scrollToId(id: string, smooth: boolean) {
   const el = document.getElementById(id);
   if (!el) return false;
-  // Deep links retain access to requirements inside closed technical sections.
-  if (el instanceof HTMLDetailsElement) el.open = true;
-  for (let parent = el.parentElement; parent; parent = parent.parentElement) {
-    if (parent instanceof HTMLDetailsElement) parent.open = true;
-  }
-  const top = el.getBoundingClientRect().top + window.scrollY - scrollOffset();
-  window.scrollTo({ top: Math.max(0, top), behavior: smooth && !prefersReduced() ? 'smooth' : 'instant' });
+  // Open the target and all collapsed ancestors BEFORE measuring.
+  openAncestors(el);
+  requestAnimationFrame(() => {
+    const top = el.getBoundingClientRect().top + window.scrollY - scrollOffset();
+    window.scrollTo({ top: Math.max(0, top), behavior: smooth && !prefersReduced() ? 'smooth' : 'instant' });
+    const focusEl = el instanceof HTMLDetailsElement ? el.querySelector<HTMLElement>('summary') ?? el : el;
+    if (!focusEl.hasAttribute('tabindex') && !(focusEl instanceof HTMLElement && focusEl.tagName === 'SUMMARY')) focusEl.setAttribute('tabindex', '-1');
+    focusEl.focus({ preventScroll: true });
+  });
   return true;
 }
 
 export function WhitepaperSection() {
   const documentationTitle = t('Documentação técnica.').split(' ');
+  const locale = useLocale();
   const [active, setActive] = useState(0);
+  const [activeId, setActiveId] = useState<string>('');
+  const [outline, setOutline] = useState<ChapterOutline[]>(() => chapters.map((c, i) => ({ id: c.id, number: String(i + 1), title: t(c.title), items: [] })));
+  const sigRef = useRef('');
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -57,6 +56,21 @@ export function WhitepaperSection() {
   }, [menuOpen]);
 
   useEffect(() => {
+    const root = document.querySelector('.whitepaper__content');
+    let timer = 0;
+    const rebuild = () => {
+      const next = collectOutline(chapters);
+      const sig = outlineSignature(next);
+      if (sig !== sigRef.current) { sigRef.current = sig; setOutline(next); }
+    };
+    const schedule = () => { window.clearTimeout(timer); timer = window.setTimeout(rebuild, 120); };
+    rebuild();
+    const obs = new MutationObserver(schedule);
+    if (root) obs.observe(root, { childList: true, subtree: true, characterData: true });
+    return () => { obs.disconnect(); window.clearTimeout(timer); };
+  }, [locale]);
+
+  useEffect(() => {
     // Label every data cell with its column header so tables can stack on narrow screens.
     document.querySelectorAll('.whitepaper table').forEach(table => {
       const heads = Array.from(table.querySelectorAll('thead th')).map(th => (th.textContent ?? '').replace(/\s+/g, ' ').trim());
@@ -66,45 +80,84 @@ export function WhitepaperSection() {
         });
       });
     });
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     const go = (smooth: boolean) => {
-      const id = window.location.hash.slice(1);
+      const id = decodeURIComponent(window.location.hash.slice(1));
       if (id) requestAnimationFrame(() => scrollToId(id, smooth));
     };
     const t1 = window.setTimeout(() => go(false), 60);
     const t2 = window.setTimeout(() => go(false), 400);
     const onHash = () => go(true);
     window.addEventListener('hashchange', onHash);
+    window.addEventListener('popstate', onHash);
+    const onContentLink = (event: globalThis.MouseEvent) => {
+      const anchor = (event.target as Element)?.closest<HTMLAnchorElement>('.whitepaper__content a[href^="#"]');
+      if (!anchor || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const id = decodeURIComponent(anchor.hash.slice(1));
+      if (!document.getElementById(id)) return;
+      event.preventDefault();
+      if (window.location.hash !== anchor.hash) window.history.pushState(null, '', anchor.hash);
+      scrollToId(id, true);
+    };
+    document.addEventListener('click', onContentLink);
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
       window.removeEventListener('hashchange', onHash);
+      window.removeEventListener('popstate', onHash);
+      document.removeEventListener('click', onContentLink);
     };
   }, []);
 
   useEffect(() => {
-    const onScroll = () => {
+    let raf = 0;
+    const compute = () => {
+      raf = 0;
+      const limit = scrollOffset() + 40;
       let cur = 0;
-      chapters.forEach((c, i) => {
+      let curId = '';
+      outline.forEach((c, i) => {
         const el = document.getElementById(c.id);
-        if (el && el.getBoundingClientRect().top <= scrollOffset() + 40) cur = i;
+        if (el && el.getBoundingClientRect().top <= limit) { cur = i; curId = c.id; }
+        c.items.forEach(item => {
+          const e = document.getElementById(item.id);
+          if (!e || !e.getClientRects().length) return;
+          if (e.getBoundingClientRect().top <= limit && el && el.getBoundingClientRect().top <= limit) curId = item.id;
+        });
       });
       setActive(cur);
+      setActiveId(curId);
     };
-    onScroll();
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(compute); };
+    compute();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    window.addEventListener('resize', onScroll);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); if (raf) cancelAnimationFrame(raf); };
+  }, [outline]);
 
   function jump(event: MouseEvent<HTMLAnchorElement>, id: string) {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     const mobile = window.matchMedia('(max-width: 768px)').matches;
-    setMenuOpen(mobile && id === 'documentacao-indice');
-    if (mobile) menuButtonRef.current?.focus({ preventScroll: true });
+    const wasOpen = menuOpen;
+    setMenuOpen(false);
     if (window.location.hash !== `#${id}`) window.history.pushState(null, '', `#${id}`);
-    scrollToId(id, true);
+    // Let the overlay close before measuring against the compact index.
+    requestAnimationFrame(() => requestAnimationFrame(() => scrollToId(id, true)));
+    if (mobile && wasOpen && id === 'documentacao-indice') menuButtonRef.current?.focus({ preventScroll: true });
+  }
+
+  const activeChapter = outline[active] ?? outline[0];
+  const activeItem = activeChapter?.items.find(i => i.id === activeId);
+  const crumbs: { label: string; id: string }[] = [{ label: t('Documentação'), id: 'documentacao' }, { label: `${activeChapter.number.padStart(2, '0')} ${activeChapter.title}`, id: activeChapter.id }];
+  if (activeItem) {
+    const list = activeChapter.items;
+    const idx = list.indexOf(activeItem);
+    const chain: typeof list = [activeItem];
+    for (let lvl = activeItem.level - 1, j = idx - 1; lvl >= 1 && j >= 0; j--) if (list[j].level === lvl) { chain.unshift(list[j]); lvl--; }
+    chain.forEach(c => crumbs.push({ label: `${c.number} ${c.title}`, id: c.id }));
   }
 
   return (
@@ -130,20 +183,48 @@ export function WhitepaperSection() {
               onClick={() => setMenuOpen(open => !open)}>
               <span className="whitepaper__mobile-index-copy">
                 <span className="whitepaper__mobile-index-label">CAPÍTULOS · {String(active + 1).padStart(2, '0')} / {total}</span>
-                <span className="whitepaper__mobile-index-title">{chapters[active].title}</span>
+                <span className="whitepaper__mobile-index-title" data-i18n="translated">{activeItem ? `${activeItem.number} ${activeItem.title}` : activeChapter.title}</span>
               </span>
               <span className="whitepaper__mobile-index-action">{menuOpen ? 'Fechar' : 'Explorar'}
                 <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
             </button>
+            <nav className="whitepaper__crumbs" aria-label="Localização atual">
+              <ol>
+                {crumbs.map((c, i) => (
+                  <li key={c.id}>
+                    {i === crumbs.length - 1
+                      ? <span aria-current="location" data-i18n="translated">{c.label}</span>
+                      : <a href={`#${c.id}`} onClick={(e) => jump(e, c.id)} data-i18n="translated">{c.label}</a>}
+                  </li>
+                ))}
+              </ol>
+            </nav>
             <nav id="whitepaper-chapter-menu" className={`whitepaper__chapter-menu${menuOpen ? ' is-open' : ''}`} aria-label="Capítulos da documentação">
-              {chapters.map((item, index) => (
-                <a key={item.id} href={`#${item.id}`} className={`whitepaper__toc-link${active === index ? ' is-active' : ''}`}
-                  aria-current={active === index ? 'true' : undefined} onClick={(e) => jump(e, item.id)} data-testid={`link-${item.id}`}>
-                  <span className="whitepaper__toc-number">{String(index + 1).padStart(2, '0')}</span>
-                  <span>{item.title}</span><span className="whitepaper__toc-arrow" aria-hidden="true">↗</span>
-                </a>
-              ))}
+              {outline.map((item, index) => {
+                const current = active === index;
+                return (
+                  <div key={item.id} className={`whitepaper__toc-group${current ? ' is-current' : ''}`}>
+                    <a href={`#${item.id}`} className={`whitepaper__toc-link${current && !activeItem ? ' is-active' : ''}${current ? ' is-chapter-current' : ''}`}
+                      aria-current={current && !activeItem ? 'location' : undefined} onClick={(e) => jump(e, item.id)} data-testid={`link-${item.id}`}>
+                      <span className="whitepaper__toc-number">{String(index + 1).padStart(2, '0')}</span>
+                      <span data-i18n="translated">{item.title}</span><span className="whitepaper__toc-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    {item.items.length > 0 && (
+                      <ul className="whitepaper__toc-sub">
+                        {item.items.map(sub => (
+                          <li key={sub.id}>
+                            <a href={`#${sub.id}`} className={`whitepaper__toc-sublink level-${sub.level}${activeId === sub.id ? ' is-active' : ''}`}
+                              aria-current={activeId === sub.id ? 'location' : undefined} onClick={(e) => jump(e, sub.id)} data-testid={`link-${sub.id}`}>
+                              <span className="whitepaper__toc-subnum">{sub.number}</span><span data-i18n="translated">{sub.title}</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })}
             </nav>
             <p className="whitepaper__aside-foot">Todos os capítulos estão nesta página. Use o índice para saltar entre seções.</p>
           </div>

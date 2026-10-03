@@ -27,6 +27,18 @@ Source-message coverage alone does not cover every rendered diagram caption.
 
 **How to apply:** Run strict prerender and rendered-localization checks for all languages after changing diagram data or indirect text props. Do not infer a prop's meaning solely from its name when excluding subtrees from extraction; distinguish URL values from data arrays. Coverage alone is not evidence that every visible caption is translated.
 
+Catalogue cleanup must preserve resolved runtime messages, not only literals and templates found in source.
+
+**Why:** Pruning to AST-extracted keys removed working translations of concatenated market labels and diagram captions, breaking previously working pages during strict prerender.
+
+**How to apply:** Include observed source-language render messages before removing unused translations. Keep already-localized DOM titles and numbered breadcrumbs outside a second translation pass.
+
+Responsive charts need explicit locale checks for formatter callbacks, even when strict prerender passes.
+
+**Why:** Responsive containers emit no chart ticks during SSR. A new monthly-axis label crashed English only in the browser; translating a prefix before joining a tooltip label also caused double translation.
+
+**How to apply:** Return source-language templates from callbacks wrapped by the localization runtime, not partially translated strings. Exercise ticks and hover labels in every locale independently of SSR.
+
 Use parameterized translations for statements containing changing numeric thresholds, instead of adding a separate catalogue entry for each formatted number.
 
 **Why:** A threshold assembled from data passed source coverage but failed English prerender because the final text contained a newly formatted number with no matching translation.

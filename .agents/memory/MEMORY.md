@@ -11,9 +11,7 @@
 - [Identidade e posicionamento](bettex-economic-identity.md) — apresentação pública: tecnologia de investimento para apostadores brasileiros, gerida por IA; preservar regras econômicas.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
-- [Custo mensal](operating-cost-target.md) — criador estima US$ 50–75 mil para operar; US$ 50 mil é a referência equilibrada de sustentabilidade.
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
-- [Remuneração da gestão](management-remuneration.md) — criador quer remuneração sobre lucro além dos serviços; salário do fundador condicionado a equilíbrio e payback.
 - [Âncoras e navegação fixa](navigation-anchor-offsets.md) — mudanças de altura precisam considerar rolagem JavaScript e índice fixo, não apenas scroll-margin.
 - [SEO e roteamento estático](seo-static-routing.md) — validar HTTP inicial por rota; reescritas genéricas podem apagar o HTML pré-renderizado.
 - [Overlays mobile](mobile-chart-overlays.md) — largura e posição dos tooltips precisam caber no gráfico, inclusive após expandir sanfonas.

@@ -75,11 +75,12 @@ function MainLinks({ className, onNavigate, uniform = false }: { className: stri
   const [location] = useLocation();
   return <>{mainLinks.map(({ label, href }) => {
     const active = location === href || (href === '/documentacao' && ['/documentation', '/documentacion'].includes(location));
-    return <a key={href} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`${className} ${uniform ? `bg-[#2B59FF] text-white hover:bg-[#1E44D6] ${active ? 'ring-1 ring-inset ring-white/60' : ''}` : active ? 'bg-[#F2B632] text-[#070B1F]' : 'bg-[#2B59FF] text-white hover:bg-[#1E44D6]'}`}>{label}</a>;
+    return <a key={href} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`${className} ${active ? 'bg-transparent text-[#E9C77A] underline decoration-1 underline-offset-8' : 'bg-[#2B59FF] text-white hover:bg-[#1E44D6]'}`}>{label}</a>;
   })}</>;
 }
 
 function SiteHeader() {
+  useLocale();
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
 
@@ -92,14 +93,14 @@ function SiteHeader() {
     <div className="page-wrap flex h-[72px] items-center justify-between gap-3">
       <Logo />
       <nav className="hidden items-center gap-3 xl:ml-6 xl:flex" aria-label="Navegação principal">
-        {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#F2B632]">{label}</a>)}
+        {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#F2B632]"><span data-i18n="translated">{t(label)}</span></a>)}
       </nav>
       <div className="ml-auto hidden items-center gap-2 xl:flex" aria-label="Páginas do projeto"><MainLinks className="tap inline-flex min-h-10 items-center rounded-full px-4 text-xs font-bold" /></div>
       <div className="hidden xl:flex"><LanguageSelector /></div>
       <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 max-sm:ml-auto xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-var(--site-header-h))] flex-col gap-1 overflow-y-auto border-t border-[#2B59FF]/30 py-3 xl:hidden" aria-label="Navegação móvel">
-      {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#13204F]">{label}</a>)}
+      {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#13204F]"><span data-i18n="translated">{t(label)}</span></a>)}
       <section className="mt-2 border-t border-[#2B59FF]/30 pt-3" aria-label="Páginas do projeto">
         <h2 className="mb-3 px-2 text-xs font-bold uppercase tracking-wider text-[#c5d2f1]">Páginas do projeto</h2>
         <div className="grid gap-2 sm:grid-cols-3">
