@@ -415,7 +415,10 @@
     "quality": "parcial",
     "tier": 1,
     "title": "Unified Text of Decree Law No. 1 of 1999 (Securities Market Law)",
-    "url": "https://supervalores.gob.pa/wp-content/uploads/2021/03/UNIFIED_TEXT_DL1-1999-1.pdf"
+    "url": "https://supervalores.gob.pa/wp-content/uploads/2021/03/UNIFIED_TEXT_DL1-1999-1.pdf",
+    "supplementalEvidence": [
+      "research/sources/pa-start-parent-law-continuation.md"
+    ]
   },
   "decision-gap-panama-02": {
     "date": "2026-10-03",
@@ -423,7 +426,10 @@
     "quality": "integral",
     "tier": 1,
     "title": "Ley del Mercado de Valores — Superintendencia del Mercado de Valores",
-    "url": "https://supervalores.gob.pa/ley-del-mercado-de-valores"
+    "url": "https://supervalores.gob.pa/ley-del-mercado-de-valores",
+    "supplementalEvidence": [
+      "research/sources/pa-start-token-03.md"
+    ]
   },
   "decision-gap-panama-03": {
     "date": "2026-06-11",
@@ -1064,5 +1070,125 @@
     "tier": 1,
     "evidence": "research/sources/decision-parent-duckdice-api.md",
     "quality": "Integral; capacidade técnica não equivale a aceitação corporativa"
+  },
+  "pa-start-formation-01": {
+    "title": "Información de Trámite - Panamá Digital",
+    "url": "https://www.panamadigital.gob.pa/InformacionTramite/constitucion-de-sociedades-y-fundaciones-de-interes-privado",
+    "date": "Data de publicação não identificada; consultado 03/10/2026",
+    "tier": 1,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-formation-01.md"
+  },
+  "pa-start-licensing-01": {
+    "title": "Resolución SMV No. 112-22 — amonestación por presentación tardía del Plan Único de Cuentas",
+    "url": "https://supervalores.gob.pa/files/Resoluciones/2022/112-22.pdf",
+    "date": "Data de publicação não identificada; consultado 03/10/2026",
+    "tier": 1,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-licensing-01.md"
+  },
+  "pa-start-licensing-02": {
+    "title": "Información General – Sociedades de Inversión – Superintendencia del Mercado de Valores",
+    "url": "https://supervalores.gob.pa/informacion-de-personas-juridicas-o-entes-regulados/informacion-general-sociedades-de-inversion-registradas-que-ofrecen-sus-cuotas-de-participacion-en-panama",
+    "date": "Data de publicação não identificada; consultado 03/10/2026",
+    "tier": 1,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-licensing-02.md"
+  },
+  "pa-start-licensing-03": {
+    "title": "Compilación de artículos sobre la regulación y el funcionamiento del mercado de valores en Panamá — Tomo IV (2017)",
+    "url": "https://supervalores.gob.pa/wp-content/uploads/2021/03/SMV-COMPILACION-DIGITAL-TOMO-IV-2017.pdf",
+    "date": "Data de publicação não identificada; consultado 03/10/2026",
+    "tier": 1,
+    "quality": "Parcial",
+    "evidence": "research/sources/pa-start-licensing-03.md"
+  },
+  "pa-start-other-01": {
+    "title": "Chambers — Blockchain & Crypto-Assets 2026, Panamá: Trends and Developments",
+    "url": "https://practiceguides.chambers.com/practice-guides/blockchain-crypto-assets-2026/panama/trends-and-developments/O26034",
+    "date": "11/06/2026",
+    "tier": 2,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-other-01.md"
+  },
+  "pa-start-other-02": {
+    "title": "JCJ — Resolução 11: jogos pela Internet",
+    "url": "https://www.mef.gob.pa/wp-content/uploads/2023/07/Resolucion-11-del-6-de-marzo-de-2020-JUEGOS-DE-SUERTE-Y-AZAR-A-TRAVES-DE-INTERNET.pdf",
+    "date": "06/03/2020; anteriores às alterações de 2026",
+    "tier": 1,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-other-02.md"
+  },
+  "pa-start-other-03": {
+    "title": "Gaceta Oficial N° 30501 A",
+    "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2026/30501-A_2026.pdf",
+    "date": "Data de publicação não identificada; consultado 03/10/2026",
+    "tier": 1,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-other-03.md"
+  },
+  "pa-start-parent-acuerdo-full": {
+    "title": "SMV — Texto Único do Acuerdo 5-2004",
+    "url": "https://supervalores.gob.pa/download/acuerdo-05-2004/?wpdmdl=3086&ind=1737557728252&refresh=3cf6d933&filename=AcuerdoNo5-2004.pdf",
+    "date": "23/07/2004; texto único disponibilizado na página atualizada em 22/01/2025",
+    "tier": 1,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-parent-acuerdo-full.md"
+  },
+  "pa-start-parent-licence2026": {
+    "title": "SMV — Resolução 79-26: licença de administrador de investimentos",
+    "url": "https://supervalores.gob.pa/files/Resoluciones/2026/79-26.pdf",
+    "date": "17/03/2026",
+    "tier": 1,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-parent-licence2026.md"
+  },
+  "pa-start-token-01": {
+    "title": "Acuerdo 05-2004 – Superintendencia del Mercado de Valores",
+    "url": "https://supervalores.gob.pa/download/acuerdo-05-2004",
+    "date": "Data de publicação não identificada; consultado 03/10/2026",
+    "tier": 1,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-token-01.md"
+  },
+  "pa-start-token-02": {
+    "title": "Chambers — Fintech 2026, Panamá",
+    "url": "https://practiceguides.chambers.com/practice-guides/fintech-2026/panama",
+    "date": "31/03/2026",
+    "tier": 2,
+    "quality": "Integral",
+    "evidence": "research/sources/pa-start-token-02.md"
+  },
+  "pa-emprende": {
+    "title": "Panamá Emprende — fundamento legal",
+    "url": "https://www.panamaemprende.gob.pa/legal",
+    "date": "Sem data; consultado 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/pa-start-formation-snippets.md",
+    "quality": "Trecho de busca; não leitura integral"
+  },
+  "pa-ley5": {
+    "title": "Lei 5 de 2007 — Aviso de Operação",
+    "url": "https://www.gacetaoficial.gob.pa/pdfTemp/25709/2494.pdf",
+    "date": "11/01/2007; referência histórica",
+    "tier": 1,
+    "evidence": "research/sources/pa-start-formation-snippets.md",
+    "quality": "Trecho de busca; não leitura integral"
+  },
+  "pa-ley32": {
+    "title": "Lei 32 de 1927 — sociedades anônimas, reprodução OAS",
+    "url": "https://www.oas.org/juridico/spanish/mesicic3_pan_ley32.pdf",
+    "date": "1927; reprodução histórica, não consolidação 2026",
+    "tier": 1,
+    "evidence": "research/sources/pa-start-formation-snippets.md",
+    "quality": "Trecho de busca; não leitura integral"
+  },
+  "pa-forum2026": {
+    "title": "La Estrella — debate sobre Lei de Ativos Digitais",
+    "url": "https://www.laestrella.com.pa/economia/mercado-de-capitales-debate-ley-de-activos-digitales-en-panama-HI23094030",
+    "date": "09/06/2026",
+    "tier": 2,
+    "evidence": "research/sources/pa-start-landscape-snippets.md",
+    "quality": "Trecho de busca; não leitura integral"
   }
 }
