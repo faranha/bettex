@@ -224,3 +224,17 @@ mtime_ms = 1791018717690
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/ea71689d-4121-433b-85a8-e3d0a8ac196f/938751f4-af65-4cb3-ad46-5162c9c083b8"
 storage_version_token = "1791018752463141"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "s7r9iUHyWGj4x_WNdGcgG"
+uri = "file://research/bettex-base-da-entidade.md"
+type = "text"
+title = "BETTEX — base da entidade e preparação do registro"
+description = "Estrutura de entidade única, responsabilidades, patrimônio, governança, economia preservada e ficha de informações para constituição, com adaptações locais separadas."
+logical_id = "d719c909-a7ab-4f31-bd7d-0493134a6033"
+content_hash = "sha256:69bcd7ef65476788b3e9410b5e28c1f256d3c21b111f1a206fb1dffe4216d90f"
+size = 13001
+mtime_ms = 1791019192507
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/d719c909-a7ab-4f31-bd7d-0493134a6033/dc8810f8-bb68-4315-ab41-469ce7ce82f5"
+storage_version_token = "1791019204760815"
+content_type = "text/markdown"
