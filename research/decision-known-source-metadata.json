@@ -1,0 +1,100 @@
+{
+  "sources": [
+    {
+      "date": "2026-04-09",
+      "evidence": "research/sources/decision-known-05.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Guidance on the Virtual Asset Issuance Rulebook",
+      "url": "https://rulebooks.vara.ae/entiresection/522"
+    },
+    {
+      "date": "2025-05-19",
+      "evidence": "research/sources/vara-issuance-2025.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Virtual Asset Issuance Rulebook",
+      "url": "https://rulebooks.vara.ae/entiresection/293"
+    },
+    {
+      "date": "sem data",
+      "evidence": "research/sources/decision-known-09.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Licensed Activities - VARA",
+      "url": "https://www.vara.ae/en/licenses-and-register/licensed-activities"
+    },
+    {
+      "date": "2026-01-20",
+      "evidence": "research/sources/decision-known-snippets.md",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "Proprietary Trading, DLT Services & Category 2 Issuance",
+      "url": "https://www.lexology.com/library/detail.aspx?g=3ca7338a-49f9-4e99-b0eb-c2f68c9dbbb3"
+    },
+    {
+      "date": "sem data",
+      "evidence": "research/sources/decision-known-08.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "General Commercial Gaming Regulatory Authority — Licensing",
+      "url": "https://www.gcgra.gov.ae/en/licensing/"
+    },
+    {
+      "date": "2023",
+      "evidence": "research/sources/decision-known-04.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Ley de Emisión de Activos Digitales (Digital Asset Issuance Law / LEAD)",
+      "url": "https://www.asamblea.gob.sv/sites/default/files/documents/dictamenes/7050D57B-97A1-492F-AA15-CFCAEEF6E138.pdf"
+    },
+    {
+      "date": "2026-05",
+      "evidence": "research/sources/decision-known-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Public Offer of Digital Assets — HENCORP Opportunity revenue token notice",
+      "url": "https://cnad.gob.sv/wp-content/uploads/2026/05/NOTICE-OF-PUBLIC-OFFERING-OF-DIGITAL-ASSETS-OPPORTUNITY-1.pdf"
+    },
+    {
+      "date": "2020",
+      "evidence": "research/sources/parent-digital-assets-law.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Law on Digital Assets (RS Official Gazette No. 153/2020)",
+      "url": "https://www.nbs.rs/export/sites/NBS_site/documents-eng/propisi/zakoni/digitalna_imovina_e.pdf"
+    },
+    {
+      "date": "2020",
+      "evidence": "research/sources/decision-known-03.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Law on Games of Chance (Official Gazette RS Nos. 18/2020 and 94/2024)",
+      "url": "https://uis.gov.rs/static/uploads/2753_Law_on_games_of_chance.pdf"
+    },
+    {
+      "date": "2025-12-12",
+      "evidence": "research/sources/decision-known-11.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Amendments to the Capital Markets Law and the Alternative Investment Funds Law Come into Force",
+      "url": "https://www.sec.gov.rs/index.php/en/news/actual/1008-amendments-to-the-capital-markets-law-and-the-alternative-investment-funds-law-come-into-force"
+    },
+    {
+      "date": "2025-12-26",
+      "evidence": "research/sources/parent-aif-amendments.md",
+      "quality": "integral",
+      "tier": 2,
+      "title": "Serbia updates alternative investment funds legislation",
+      "url": "https://bdkadvokati.com/serbia-updates-alternative-investment-funds-legislation"
+    },
+    {
+      "date": "2026-04-06",
+      "evidence": "research/sources/decision-known-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "UAE Capital Market Authority (CMA) — 2026 Virtual Assets Framework announcement",
+      "url": "https://www.sca.gov.ae/en/home"
+    }
+  ]
+}

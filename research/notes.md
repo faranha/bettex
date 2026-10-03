@@ -1,4 +1,76 @@
-# Notas de pesquisa — BVI frente às ambições BETTEX
+# Notas de pesquisa — onde constituir a BETTEX
+
+**Status:** concluída
+**Profundidade:** Deep
+**Data:** 3 de outubro de 2026
+
+## Plano de decisão
+
+- **Pergunta:** qual jurisdição oferece o melhor fundamento verificável para constituir e operar a BETTEX inteira, com uma sociedade privada e sem licença financeira própria nem aprovação da emissão?
+- **Escopo:** comparar BVI e alternativas concretas; aplicar os testes de instrumento próprio, fundo, serviços cripto e jogos aos fluxos reais. Distinguir autorização local, regras dos compradores e contratos das plataformas.
+- **Entrega:** recomendação de constituição ou conclusão negativa fundamentada; eliminatórias legais, condições específicas, custos/prazos documentados e sequência operacional. Não incorporar, captar, consultar externamente em nome do projeto ou mudar o produto.
+- **Modelo preservado:** sociedade única privada; token sem ações/voto/fração da tesouraria/resgate; 100% do USDC público à tesouraria; resultado elegível max(0,min(R,P−B)); 75%/25%; créditos USDC; taxas líquidas 1%/2% em BETTEX; quatro mercados; IA; autocustódia; escala varejo internacional. Não substituir por investidores profissionais ou produto fictício.
+
+## Frentes comparativas
+
+| # | Frente | Status | Evidências |
+|---|---|---|---|
+| 1 | BVI: aplicação literal, instrumentos de lucro/dívida, fundo e precedentes de emissores | concluída com limites | SIBA, PIF Regulations, FSC, Maples abril/2026 e complemento |
+| 2 | Dubai/EAU, El Salvador e Sérvia: testes eliminatórios atuais | concluída com limites | VARA, LEAD/CNAD e lei NBS |
+| 3 | Alternativas offshore: Cayman, Seychelles, Panamá, São Vicente e Granadinas | concluída com limites | atos e reguladores; VABA integral; complemento Panamá |
+| 4 | Suíça, Singapura e Hong Kong: empresa operacional, instrumentos próprios e varejo | concluída com limites | FINMA/Fedlex, MAS/SFA e SFC/SFO; territorialidade corrigida |
+| 5 | Operação completa: tesouraria própria, jogos como cliente, acesso corporativo e incorporação | concluída com limites | Betfair corporativo; IBKR; Polymarket TOS internacional integral; contratos de cassinos |
+
+## Perguntas que a decisão deve responder
+
+- [x] Seleção: BVI como primeira candidata; Panamá como alternativa territorial; não demonstrado país que libere o pacote integral.
+- [x] Fórmula: aplicados os dois requisitos cumulativos de §63A; classificação conclusiva do claim e exclusão de dívida em PIF em Limitações.
+- [x] Emissão: own-issue exclui atividades específicas; SIBA Parte II atual em Limitações. Seychelles/CNAD e exceções sérvias mapeadas.
+- [x] Carteiras: VASP depende de serviço por conta de terceiro e controle efetivo; auditoria técnica não realizada e listada em Limitações.
+- [x] Mercados: papéis de cliente/operador separados; não demonstrada execução corporativa automatizada de cassinos/bônus.
+- [x] Acesso: rotas corporativas reais identificadas; aceitações individuais não obtidas e listadas em Limitações.
+- [x] Constituição: BO e agente; taxa-base BVI documentada; orçamento total, prazo específico e fiscalidade em Limitações.
+- [x] Território: oferta, domicílio e gestão não confundidos; países-alvo não escolhidos pelo usuário, sem exclusões unilaterais.
+
+## Achados, conflitos e lacunas
+
+- Pesquisa anterior não resolveu o critério de escolha. Não promover uma exclusão de ICO a dispensa do modelo inteiro.
+- Sociedade privada não equivale a oferta privada de tokens; emissão financeira própria não implica automaticamente licença do emissor.
+- Reexaminar diferença entre participação em lucro realizado e direito proporcional ao patrimônio; limite P−B não resolve sozinho o teste.
+- Verificar commencement por parte. Não usar seção publicada como prova de vigência.
+- Não inferir licença de cassino para mero cliente empresarial, nem aceitação de bots a partir de existência de API.
+- Orientação inicial encontrou PDF integral Maples abril/2026 e exemplo Ondo BVI com documentação de oferta em Malta: investigar, sem confundir países ou importar autorizações.
+
+## Triangulação concluída
+
+- BVI: §63A exige pooling E direito calculado por participação proporcional em ativos líquidos; ausência de resgate não afasta PIF. [@bvi-siba] [@decision-bvi-02] [@decision-bvi-pif-guidelines]
+- Emissão própria: exclusão SIBA é atividade/instrumento-específica, não dispensa global; Maples inclui public token offerings na emissão primária não regulada por si. [@bvi-siba] [@decision-bvi-06] [@decision-bvi-07]
+- Panamá: art.128 + material SMV sobre administração + guia 2026 sustentam rota de oferta a domiciliados fora/gestão fora, sem aprovar o aplicativo atual. [@decision-gap-panama-01] [@decision-gap-panama-04] [@decision-gap-panama-03]
+- Dubai: Categoria 2 sem licença/aprovação do emissor, mas distribuição por licenciado; lucro não prova ARVA automaticamente. [@decision-known-01] [@decision-known-02] [@decision-known-03]
+- SVG: VABA integral e guidelines recuperadas; vigência 31/05/2025. Own-issue não foi transformado em VASP apenas pelo anúncio do regulador. [@decision-svg-vaba] [@decision-svg-guidelines] [@decision-offshore-13]
+- Suíça: atividade comercial principal/investimentos acessórios é obstáculo substancial ao modelo BETTEX; não eliminar apenas pelo domicílio do emissor. [@decision-onshore-20] [@decision-onshore-21] [@decision-onshore-01]
+- Polymarket: termos internacionais de 11/08/2026 recuperados pelo documento ligado no site. Contemplam entidade; dados para clientes do mercado de capitais exigem acordo escrito. [@decision-poly-tos] [@decision-operation-03] [@decision-operation-02]
+- SBOBET: contrato completo confirma proibição geral de IA/bots em §3.12. Cláusula promocional antiabuso mais estreita não o revoga. [@bvi-sbobet] [@decision-operation-07]
+- DuckDice: bot API existe, mas contrato exige uso pessoal/entretenimento; isso não comprova cliente corporativo de investimentos. [@decision-duckdice-api] [@decision-duckdice-terms]
+
+## Limitações finais e qualidade
+
+- Dois gap-fills decisivos concluídos/coletados: BVI fórmula/commencement e Panamá art.128/administração; nenhuma pesquisa pendente.
+- Sem caso/guia vinculante sobre o payout BETTEX; Parte II SIBA em 2026 não confirmada; textos históricos identificados, não promovidos a consolidações atuais.
+- Registro de fontes preserva corpus anterior e valida URL contra evidência real. Três entradas sem evidência verificável foram excluídas do merge.
+- Documento de opinião SMV: número/data extraídos do PDF divergem do título do link; não usado para classificação dispositiva do token.
+- Não obtidos: contratos finais/aceitação BETTEX, Gaming Act completo atualizado, auditoria de chaves/pool, orçamento total/prazo vinculante e enquadramento fiscal por residência/gestão.
+- Recomendação é seleção comparativa, não autorização de lançamento. Não houve contato externo, incorporação, captação ou alteração do produto.
+
+## Entrega e verificação
+
+- Relatório: `research/bettex-jurisdicao-decisao.md` — 11 jurisdições e 63 fontes distintas citadas; numeração gerada mecanicamente.
+- Evidência/URL e arquivos verificados; registros anteriores preservados integralmente; nenhuma alteração no site ou API.
+- Todas as perguntas respondidas ou delimitadas em Limitações. Seleção BVI prioritária/Panamá alternativa; abertura imediata do pacote integral não recomendada como já validada.
+
+---
+
+# Pesquisa anterior — BVI frente às ambições BETTEX
 
 **Status:** concluída
 **Profundidade:** Deep

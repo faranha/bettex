@@ -352,5 +352,717 @@
     "tier": 1,
     "evidence": "research/sources/bvi-deep-global-03.md",
     "quality": "integral"
+  },
+  "decision-bvi-02": {
+    "date": "Commencement 31 Dec. 2019; fetched 3 Oct. 2026",
+    "evidence": "research/sources/decision-bvi-05-pif-regulations.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Private Investment Funds Regulations, S.I. 80/2019",
+    "url": "https://www.bvifsc.vg/sites/default/files/private_investment_funds_regulations.pdf"
+  },
+  "decision-bvi-06": {
+    "date": "23 Apr. 2026 (URL filename); fetched 3 Oct. 2026",
+    "evidence": "research/sources/decision-bvi-01-maples-2026.pdf.md",
+    "quality": "integral",
+    "tier": 2,
+    "title": "The Rise of Digital Asset Funds and Tokenisation in the Cayman Islands and the British Virgin Islands",
+    "url": "https://maples.com/wp-content/uploads/2026/04/20260423-Article-Cayman-and-BVI-The-Rise-of-Digital-Asset-Funds-and-Tokenisation-in-the-Cayman-Islands-and-the-British-Virgin-Islands.pdf"
+  },
+  "decision-bvi-07": {
+    "date": "Undated in fetched text; accessed 3 Oct. 2026",
+    "evidence": "research/sources/decision-bvi-04-harneys-vasp.md",
+    "quality": "integral",
+    "tier": 2,
+    "title": "BVI Virtual Asset (Service Providers) Act — a practical guide",
+    "url": "https://www.harneys.com/media/lrfj3lwt/bvi-virtual-asset-service-providers-act-a-practical-guide-final.pdf"
+  },
+  "decision-bvi-09": {
+    "date": "24 Jan. 2025 listing",
+    "evidence": "research/sources/decision-bvi-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "British Virgin Islands Securities and Investment Business Act and Related Legislation — Conyers",
+    "url": "https://www.conyers.com/publications/view/bvi-securities-investment-business-act-2010"
+  },
+  "decision-bvi-10": {
+    "date": "Feb. 2026 (filename)",
+    "evidence": "research/sources/decision-bvi-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "What you need to know about the regulation of investment business in the BVI — Mourant",
+    "url": "https://www.mourant.com/wp-content/uploads/2026/02/Mourant-What-you-need-to-know-about-the-regulation-of-investment-business-in-the-BVI.pdf"
+  },
+  "decision-bvi-11": {
+    "date": "Undated page; accessed 3 Oct. 2026",
+    "evidence": "research/sources/decision-bvi-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Securities and Investment Business Act | Virgin Islands Laws Online",
+    "url": "https://laws.gov.vg/Laws/securities-and-investment-business-act"
+  },
+  "decision-bvi-12": {
+    "date": "2024; precise date not displayed; accessed 3 Oct. 2026",
+    "evidence": "research/sources/decision-bvi-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Notice: Securities and Investment Business (Amendment of Schedule 1) Order, 2024 | BVI FSC",
+    "url": "https://www.bvifsc.vg/library/legislation/notice-securities-and-investment-business-amendment-schedule-1-order-2024"
+  },
+  "decision-gap-panama-01": {
+    "date": "2026-10-03",
+    "evidence": "research/sources/decision-gap-panama-02.md",
+    "quality": "parcial",
+    "tier": 1,
+    "title": "Unified Text of Decree Law No. 1 of 1999 (Securities Market Law)",
+    "url": "https://supervalores.gob.pa/wp-content/uploads/2021/03/UNIFIED_TEXT_DL1-1999-1.pdf"
+  },
+  "decision-gap-panama-02": {
+    "date": "2026-10-03",
+    "evidence": "research/sources/decision-offshore-08.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Ley del Mercado de Valores — Superintendencia del Mercado de Valores",
+    "url": "https://supervalores.gob.pa/ley-del-mercado-de-valores"
+  },
+  "decision-gap-panama-03": {
+    "date": "2026-06-11",
+    "evidence": "research/sources/decision-gap-panama-01.md",
+    "quality": "integral",
+    "tier": 2,
+    "title": "Blockchain & Crypto-Assets 2026 — Panama",
+    "url": "https://practiceguides.chambers.com/practice-guides/blockchain-crypto-assets-2026/panama"
+  },
+  "decision-gap-panama-04": {
+    "date": "2021",
+    "evidence": "research/sources/decision-gap-panama-06.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Sociedades de inversión. Cristina Vence – Panamá",
+    "url": "https://supervalores.gob.pa/wp-content/uploads/2021/03/sociedades-de-inversion.pdf"
+  },
+  "decision-gap-panama-05": {
+    "date": "2025-09-08",
+    "evidence": "research/sources/decision-gap-panama-07.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Opinión 04-2025 — SMV",
+    "url": "https://supervalores.gob.pa/download/opinion-04-2025/?wpdmdl=31565&ind=1758042988802&refresh=a6538178&filename=Opinion_4-2025.pdf"
+  },
+  "decision-gap-panama-06": {
+    "date": "Historical",
+    "evidence": "research/sources/decision-gap-panama-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Article 5 gambling territorial rule (historical Gazette excerpt)",
+    "url": "http://gacetas.procuraduria-admon.gob.pa/23484_27822.pdf"
+  },
+  "decision-gap-panama-07": {
+    "date": "2026-05-20",
+    "evidence": "research/sources/decision-gap-panama-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 3,
+    "title": "Panama tightens gambling rules after Bill No. 403 is approved",
+    "url": "https://newsroompanama.com/2026/05/20/panama-tightens-gambling-rules-after-bill-no-403-is-approved"
+  },
+  "decision-gap-panama-08": {
+    "date": "2026-07-30",
+    "evidence": "research/sources/decision-gap-panama-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 3,
+    "title": "How Panama's New Gambling Law Changes the Rules for Digital Platforms",
+    "url": "https://newsroompanama.com/2026/07/30/how-panamas-new-gambling-law-changes-the-rules-for-digital-platforms"
+  },
+  "decision-gap-panama-09": {
+    "date": "N/A",
+    "evidence": "research/sources/decision-gap-panama-03.md",
+    "quality": "parcial",
+    "tier": 1,
+    "title": "SMV – Advertencia Sobre Criptomonedas y ICOs",
+    "url": "https://supervalores.gob.pa/smv-advertencia-sobre-criptomonedas-y-icos"
+  },
+  "decision-known-01": {
+    "date": "2026-04-09",
+    "evidence": "research/sources/decision-known-05.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Guidance on the Virtual Asset Issuance Rulebook",
+    "url": "https://rulebooks.vara.ae/entiresection/522"
+  },
+  "decision-known-02": {
+    "date": "2025-05-19",
+    "evidence": "research/sources/vara-issuance-2025.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Virtual Asset Issuance Rulebook",
+    "url": "https://rulebooks.vara.ae/entiresection/293"
+  },
+  "decision-known-03": {
+    "date": "sem data",
+    "evidence": "research/sources/decision-known-09.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Licensed Activities - VARA",
+    "url": "https://www.vara.ae/en/licenses-and-register/licensed-activities"
+  },
+  "decision-known-04": {
+    "date": "2026-01-20",
+    "evidence": "research/sources/decision-known-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "Proprietary Trading, DLT Services & Category 2 Issuance",
+    "url": "https://www.lexology.com/library/detail.aspx?g=3ca7338a-49f9-4e99-b0eb-c2f68c9dbbb3"
+  },
+  "decision-known-05": {
+    "date": "sem data",
+    "evidence": "research/sources/decision-known-08.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "General Commercial Gaming Regulatory Authority — Licensing",
+    "url": "https://www.gcgra.gov.ae/en/licensing/"
+  },
+  "decision-known-06": {
+    "date": "2023",
+    "evidence": "research/sources/decision-known-04.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Ley de Emisión de Activos Digitales (Digital Asset Issuance Law / LEAD)",
+    "url": "https://www.asamblea.gob.sv/sites/default/files/documents/dictamenes/7050D57B-97A1-492F-AA15-CFCAEEF6E138.pdf"
+  },
+  "decision-known-07": {
+    "date": "2026-05",
+    "evidence": "research/sources/decision-known-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Public Offer of Digital Assets — HENCORP Opportunity revenue token notice",
+    "url": "https://cnad.gob.sv/wp-content/uploads/2026/05/NOTICE-OF-PUBLIC-OFFERING-OF-DIGITAL-ASSETS-OPPORTUNITY-1.pdf"
+  },
+  "decision-known-09": {
+    "date": "2020",
+    "evidence": "research/sources/decision-known-03.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Law on Games of Chance (Official Gazette RS Nos. 18/2020 and 94/2024)",
+    "url": "https://uis.gov.rs/static/uploads/2753_Law_on_games_of_chance.pdf"
+  },
+  "decision-known-12": {
+    "date": "2026-04-06",
+    "evidence": "research/sources/decision-known-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "UAE Capital Market Authority (CMA) — 2026 Virtual Assets Framework announcement",
+    "url": "https://www.sca.gov.ae/en/home"
+  },
+  "decision-offshore-01": {
+    "date": "2026-10-03",
+    "evidence": "research/sources/decision-offshore-05.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "FAQs",
+    "url": "https://fsaseychelles.sc/vasp/faqs"
+  },
+  "decision-offshore-02": {
+    "date": "2024",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Act 12 - 2024 - Virtual Asset Service Providers Act 2024",
+    "url": "https://www.gazette.sc/sites/default/files/2024-08/Act%2012%20-%202024%20-%20Virtual%20Asset%20Service%20Providers%20Act%202024.pdf"
+  },
+  "decision-offshore-03": {
+    "date": "2025-05-27",
+    "evidence": "research/sources/decision-offshore-07.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Implementation of the Virtual Asset Business Act & Commencement of the Registration Process for Virtual Asset Businesses",
+    "url": "https://fsasvg.com/implementation-of-the-virtual-asset-business-act-commencement-of-the-registration-process-for-virtual-asset-businesses"
+  },
+  "decision-offshore-04": {
+    "date": "Sem data; consultado 03/10/2026",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "PUBLIC NOTICE – virtual asset businesses",
+    "url": "https://fsasvg.com/public-notice"
+  },
+  "decision-offshore-05": {
+    "date": "2026-03-03",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Saint Vincent and the Grenadines, Tuesday 3rd March 2026 (Gazette No. 11)",
+    "url": "https://legal.gov.vc/legal/images/PDF/2026Gazettes/Gazette_No_11_2026.pdf"
+  },
+  "decision-offshore-06": {
+    "date": "Sem data; consultado 03/10/2026",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "The Cayman Islands Private Funds Act: what you need to know",
+    "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-us/campaigns/bbc/documents/ey-cayman-private-funds-act.pdf"
+  },
+  "decision-offshore-07": {
+    "date": "2025-01-01",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Private Funds Act (2025 Revision)",
+    "url": "https://gov.ky/documents/35692/750927/Private-Funds-Act-2025-Revision-LG12-S6.pdf/e16598d7-84f0-ec1f-e66b-d0beddb1d323?t=1760367251424"
+  },
+  "decision-offshore-08": {
+    "date": "2026-03-24",
+    "evidence": "research/sources/decision-offshore-06.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Private Funds (Amendment) Act, 2026",
+    "url": "https://gov.ky/documents/35692/0/PrivateFunds(Amendment)Act,2026.pdf/fb0abfa6-5a61-8d6c-84dc-078852f3fcc8?t=1774385956505"
+  },
+  "decision-offshore-09": {
+    "date": "Sem data; consultado 03/10/2026",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "Private Funds (Amendment) Act, 2026 — Cayman Islands Tokenised Fund Legislation 2026",
+    "url": "https://www.mondaq.com/caymanislands/fund-finance/1829928/cayman-islands-tokenised-fund-legislation-2026"
+  },
+  "decision-offshore-10": {
+    "date": "2023",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "Securities Investment Business in the Cayman Islands",
+    "url": "https://www.conyers.com/wp-content/uploads/2023/08/Securities_Investment_Business-CAY.pdf"
+  },
+  "decision-offshore-11": {
+    "date": "2026",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Virtual Asset (Service Providers) (Amendment) Act, 2026",
+    "url": "https://www.cima.ky/upimages/lawsregulations/VirtualAssetServiceProvidersAmendmentAct,2026_1779831559.pdf"
+  },
+  "decision-offshore-12": {
+    "date": "Sem data; consultado 03/10/2026",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 3,
+    "title": "Cayman exempts fund tokenisation from VASP Act",
+    "url": "https://caymanindependent.com/cayman-exempts-fund-tokenisation-from-vasp-act"
+  },
+  "decision-offshore-13": {
+    "date": "Sem data; consultado 03/10/2026",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Virtual Asset Businesses – St. Vincent and the Grenadines Financial Services Authority",
+    "url": "https://fsasvg.com/virtual-asset-businesses/"
+  },
+  "decision-offshore-14": {
+    "date": "2026-06-11",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "Blockchain & Crypto-Assets 2026 — Panama, Law and Practice",
+    "url": "https://practiceguides.chambers.com/practice-guides/comparison/1134/19496/30676-30678-30679-30680-30681-30682-30683"
+  },
+  "decision-offshore-17": {
+    "date": "1999",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Decreto Ley 1 del 8 de julio de 1999",
+    "url": "https://supervalores.gob.pa/files/Decreto_Ley_de_Valores/__Decreto_Ley_1_1999_ley_valores.pdf"
+  },
+  "decision-offshore-18": {
+    "date": "2026-01-21",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "RES SMV 21 26 DE 21 ENE 2026 NOTIFICADA.pdf",
+    "url": "https://supervalores.gob.pa/files/Resoluciones/2026/21-26.pdf"
+  },
+  "decision-offshore-20": {
+    "date": "2022",
+    "evidence": "research/sources/decision-offshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 3,
+    "title": "Presidente de Panamá veta proyecto de ley sobre uso de criptoactivos",
+    "url": "https://www.swissinfo.ch/spa/presidente-de-panam%C3%A1-veta-proyecto-de-ley-sobre-uso-de-criptoactivos/47681178"
+  },
+  "decision-onshore-01": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-CH-01.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Developments in FinTech | FINMA",
+    "url": "https://www.finma.ch/en/documentation/dossier/dossier-fintech/entwicklungen-im-bereich-fintech/"
+  },
+  "decision-onshore-02": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "New Rules on Prospectus and Key Information Document | Baer & Karrer",
+    "url": "https://www.baerkarrer.ch/userdata/files/publications/1970/FinSA_-_Prospectus_and_KID.pdf"
+  },
+  "decision-onshore-03": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "Art. 36 FIDLEG (Financial Services Act - 2024) | Swissrights",
+    "url": "https://www.swissrights.ch/gesetze/Artikel-36-FIDLEG-2024-EN.php"
+  },
+  "decision-onshore-04": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-SG-01.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Offers of Securities and Securities-based Derivatives Contracts | MAS",
+    "url": "https://www.mas.gov.sg/regulation/capital-markets/offers-of-securities-and-securities-based-derivatives-contracts"
+  },
+  "decision-onshore-05": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Securities and Futures Act 2001, ss. 272A–272B result | Singapore Statutes Online",
+    "url": "https://sso.agc.gov.sg/Act/SFA2001?ProvIds=pr272A-%2Cpr272B-"
+  },
+  "decision-onshore-06": {
+    "date": "2024-10-21",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Offers of Collective Investment Schemes | MAS",
+    "url": "https://www.mas.gov.sg/regulation/capital-markets/offers-of-collective-investment-schemes"
+  },
+  "decision-onshore-07": {
+    "date": "2013",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "SFC outlines regulation of collective investment schemes | SFC Hong Kong",
+    "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=13PR84"
+  },
+  "decision-onshore-08": {
+    "date": "2019",
+    "evidence": "research/sources/decision-onshore-HK-01.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Statement on Security Token Offerings | SFC Hong Kong",
+    "url": "https://www.sfc.hk/en/News-and-announcements/Policy-statements-and-announcements/Statement-on-Security-Token-Offerings"
+  },
+  "decision-onshore-09": {
+    "date": "2026",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Circular on tokenisation of SFC-authorised investment products | SFC Hong Kong",
+    "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC22"
+  },
+  "decision-onshore-11": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Section 103, Securities and Futures Ordinance, Cap. 571 | Hong Kong e-Legislation",
+    "url": "https://www.elegislation.gov.hk/hk/cap571!en/s103"
+  },
+  "decision-onshore-13": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Service & transaction fees: Companies | ACRA Singapore",
+    "url": "https://www.acra.gov.sg/manage/companies/service-transaction-fees/"
+  },
+  "decision-onshore-14": {
+    "date": "2026",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 3,
+    "title": "How to Form a Swiss GmbH: Capital, Steps & Cost (2026) | Goldblum",
+    "url": "https://goldblum.ch/knowledgebase/swiss-gmbh-formation"
+  },
+  "decision-onshore-15": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Unlawful Remote Gambling Activities | Singapore Gambling Regulatory Authority",
+    "url": "https://www.gra.gov.sg/harm-minimisation/unlawful-remote-gambling-activities"
+  },
+  "decision-onshore-16": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Unauthorised online games | Swiss Federal Gaming Board (ESBK)",
+    "url": "https://www.esbk.admin.ch/en/unauthorised-online-games"
+  },
+  "decision-onshore-17": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Gambling Ordinance, Cap. 148 | Hong Kong e-Legislation",
+    "url": "https://www.elegislation.gov.hk/hk/cap148%21en.pdf"
+  },
+  "decision-onshore-18": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Section 11, Companies Ordinance, Cap. 622 | Hong Kong e-Legislation",
+    "url": "https://www.elegislation.gov.hk/hk/cap622!en/s11?_lang=sc"
+  },
+  "decision-onshore-19": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Licensing Handbook | SFC Hong Kong",
+    "url": "https://www.sfc.hk/-/media/EN/files/LIC/handbook/licensing-handbook.pdf"
+  },
+  "decision-onshore-20": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-CH-CISA-01.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "Collective Investment Schemes Ordinance (CISO), Art. 1b | Fedlex",
+    "url": "https://www.fedlex.admin.ch/eli/cc/2006/859/en"
+  },
+  "decision-onshore-21": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-territorial-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Financial Services Act (FinSA), Art. 35 | Fedlex",
+    "url": "https://www.fedlex.admin.ch/eli/cc/2019/758/en"
+  },
+  "decision-onshore-22": {
+    "date": "Accessed 2026-10-03",
+    "evidence": "research/sources/decision-onshore-territorial-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Companies Ordinance Consultation Conclusions | Hong Kong SFC legislative history",
+    "url": "https://www.sfc.hk/-/media/EN/files/LSD/Legislative-history/laws/sfo/8/Consultation-Conclusion/CO5726_1.pdf?rev=b9a5d7cafd894e18bf584e387d14a08f"
+  },
+  "decision-operation-01": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-01.md",
+    "quality": "Página parcial com bloqueio e link ao documento de termos",
+    "tier": 1,
+    "title": "Terms of Use | Polymarket",
+    "url": "https://polymarket.com/tos"
+  },
+  "decision-operation-02": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Geographic Restrictions (Polymarket API documentation)",
+    "url": "https://docs.polymarket.com/api-reference/geoblock.md"
+  },
+  "decision-operation-03": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 3,
+    "title": "Polymarket Institutional",
+    "url": "https://institutional.polymarket.com/"
+  },
+  "decision-operation-04": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-02.md",
+    "quality": "integral",
+    "tier": 1,
+    "title": "What's required to open a corporate Betfair trading account? – Betfair Developer Program",
+    "url": "https://support.developer.betfair.com/hc/en-us/articles/12763276187292-What-s-required-to-open-a-corporate-betfair-trading-account"
+  },
+  "decision-operation-05": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Guide to the Betfair Exchange API",
+    "url": "https://developer.betfair.com/exchange-api/"
+  },
+  "decision-operation-06": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "SOFTWARE VENDOR’S API LICENCE",
+    "url": "https://developer.betfair.com/assets/Uploads/Betfair-API-Commercial-Odds-Publisher-AFFILIATES.pdf"
+  },
+  "decision-operation-07": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "General Promotion Terms & Conditions - SBOBET Information Center",
+    "url": "https://help.sbobet.com/article/381.html"
+  },
+  "decision-operation-08": {
+    "date": "2015-08-31",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "Can I have more than one account? - SBOBET Information Center",
+    "url": "https://help.sbobet.com/article/can-i-have-more-than-one-sbobet-account-138.html"
+  },
+  "decision-operation-10": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "IBKR Trading API Solutions",
+    "url": "https://www.interactivebrokers.com/api"
+  },
+  "decision-operation-11": {
+    "date": "2026-01-15",
+    "evidence": "research/sources/decision-operation-03.md",
+    "quality": "integral; anúncio próprio, não contrato ou aceite BETTEX",
+    "tier": 3,
+    "title": "Interactive Brokers Enables 24/7 Account Funding with Stablecoin",
+    "url": "https://www.interactivebrokers.com/en/general/about/mediaRelations/1-15-26.php"
+  },
+  "decision-operation-12": {
+    "date": "2026-07-15",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral; anúncio próprio, não contrato ou aceite BETTEX",
+    "tier": 3,
+    "title": "Interactive Brokers Builds Out One of the Most Comprehensive and Low-Cost Solutions for Accessing Cryptocurrency Available",
+    "url": "https://www.interactivebrokers.com/en/general/about/mediaRelations/7-15-26.php"
+  },
+  "decision-operation-14": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/bvi-deep-markets-04.md",
+    "quality": "snippet",
+    "tier": 1,
+    "title": "Public Notice – Casino and Gaming Operators (BVI Government)",
+    "url": "https://bvi.gov.vg/media-centre/public-notice-casino-and-gaming-operators"
+  },
+  "decision-operation-15": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "FAQs Re Revised Requirements for Business Companies (BCs) and Limited Liability Companies (LLCs) Seeking to Engage/Engaged in FOREX Activity",
+    "url": "https://svgfsa.com/faqs-re-revised-requirements-for-business-companies-bcs-and-limited-liability-companies-llcs-seeking-to-engage-engaged-in-forex-activity"
+  },
+  "decision-operation-16": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "Panama Technical Note (AML/CFT assessment materials hosted by Panama's Superintendence of Banks)",
+    "url": "https://www.superbancos.gob.pa/documents/imf_assessments/TN-AML-CFT-Panama-FSAP-final.pdf"
+  },
+  "decision-operation-17": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 2,
+    "title": "Law 129 of 2020 – single system of beneficial ownership in Panama",
+    "url": "https://kraemerlaw.com/en/articles/law-129-of-2020-single-system-of-beneficial-ownership-in-panama"
+  },
+  "decision-operation-18": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 3,
+    "title": "Panama Company Formation + Registered Agent + Bank Account",
+    "url": "https://www.vepapu.com/panama/company-formation"
+  },
+  "decision-operation-19": {
+    "date": "Retrieved 2026-10-03",
+    "evidence": "research/sources/decision-operation-snippets.md",
+    "quality": "Trecho de busca; não é leitura integral",
+    "tier": 1,
+    "title": "BVI Economic Substance Legislation",
+    "url": "https://www.bvi.gov.vg/economic-substance-legislation"
+  },
+  "decision-svg-guidelines": {
+    "title": "SVG FSA — Guidelines for Virtual Asset Businesses",
+    "url": "https://fsasvg.com/wp-content/uploads/2026/01/Guidelines-for-Virtual-Assets-Businesses-in-SVG.pdf",
+    "date": "18/11/2025; arquivo publicado em janeiro/2026",
+    "tier": 1,
+    "evidence": "research/sources/decision-parent-svg-guidelines.md",
+    "quality": "Integral"
+  },
+  "decision-svg-vaba": {
+    "title": "SVG — Virtual Asset Business Act 2022",
+    "url": "https://fsasvg.com/wp-content/uploads/2024/11/Virtual-Asset-Act-2022_OCR.pdf",
+    "date": "2022; início confirmado em 31/05/2025",
+    "tier": 1,
+    "evidence": "research/sources/decision-parent-svg-vaba.md",
+    "quality": "Integral"
+  },
+  "decision-bvi-pif-guidelines": {
+    "title": "FSC — Private Investment Funds Regime Guidelines",
+    "url": "https://www.bvifsc.vg/sites/default/files/private_investment_funds_regime_guidelines_2019_0.pdf",
+    "date": "2019; referência histórica ao regime",
+    "tier": 1,
+    "evidence": "research/sources/decision-parent-bvi-fund-guidelines.md",
+    "quality": "Integral"
+  },
+  "decision-bvi-appleby": {
+    "title": "Appleby — Guide to Blockchain & Crypto-Assets in BVI 2026",
+    "url": "https://www.mondaq.com/commoditiesderivativesstock-exchanges/1818804/guide-to-blockchain-crypto-assets-in-the-british-virgin-islands-2026",
+    "date": "17/07/2026",
+    "tier": 2,
+    "evidence": "research/sources/decision-parent-appleby2026.md",
+    "quality": "Integral"
+  },
+  "decision-poly-tos": {
+    "title": "Polymarket International — Terms of Use, documento ligado pelo site oficial",
+    "url": "https://docs.google.com/document/d/1N4aYlRcqaWCeKMID7vUSWJ1UPMvw_v6SP4cOFN8ZxR4/preview",
+    "date": "11/08/2026",
+    "tier": 1,
+    "evidence": "research/sources/decision-parent-polymarket-embedded-tos.md",
+    "quality": "Integral; documento público incorporado na página oficial"
+  },
+  "decision-bvi-fee-order": {
+    "title": "BVI Business Companies — Amendment of Schedule 1 (No. 2) Order 2022",
+    "url": "https://www.bvifsc.vg/sites/default/files/bvi_business_companies_amendment_of_schedule_1_no_2_order_2022.pdf",
+    "date": "2022; vigência em 01/01/2023",
+    "tier": 1,
+    "evidence": "research/sources/decision-parent-bvi-fees-order2022.md",
+    "quality": "Integral; tarifa-base histórica, não certificação de consolidação 2026"
+  },
+  "decision-bvi-bca": {
+    "title": "BVI Business Companies Act — edição revisada 2020",
+    "url": "https://www.bvifsc.vg/sites/default/files/bvi_business_companies_act.pdf",
+    "date": "01/01/2020; fonte histórica",
+    "tier": 1,
+    "evidence": "research/sources/decision-parent-bca2020.md",
+    "quality": "Parcial; trechos de incorporação recuperados, tabela completa não recuperada"
+  },
+  "decision-bvi-gaming2021": {
+    "title": "Ogier — Gaming and betting controls in BVI",
+    "url": "https://www.ogier.com/news-and-insights/insights/gaming-and-betting-controls-in-the-bvi",
+    "date": "29/10/2021; análise histórica",
+    "tier": 2,
+    "evidence": "research/sources/decision-parent-ogier-gaming2021.md",
+    "quality": "Parcial; seções relevantes recuperadas"
+  },
+  "decision-duckdice-terms": {
+    "title": "DuckDice — Terms of Use",
+    "url": "https://duckdice.io/terms",
+    "date": "Sem data; consultado 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/decision-parent-duckdice-terms.md",
+    "quality": "Integral; contrato, não validação independente de licença"
+  },
+  "decision-duckdice-api": {
+    "title": "DuckDice — Developers Bot API",
+    "url": "https://duckdice.io/bot-api",
+    "date": "Sem data; consultado 03/10/2026",
+    "tier": 1,
+    "evidence": "research/sources/decision-parent-duckdice-api.md",
+    "quality": "Integral; capacidade técnica não equivale a aceitação corporativa"
   }
 }

@@ -1,0 +1,180 @@
+{
+  "sources": [
+    {
+      "date": "2026-10-03",
+      "evidence": "research/sources/decision-offshore-05.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "FAQs",
+      "url": "https://fsaseychelles.sc/vasp/faqs"
+    },
+    {
+      "date": "2024",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Act 12 - 2024 - Virtual Asset Service Providers Act 2024",
+      "url": "https://www.gazette.sc/sites/default/files/2024-08/Act%2012%20-%202024%20-%20Virtual%20Asset%20Service%20Providers%20Act%202024.pdf"
+    },
+    {
+      "date": "2025-05-27",
+      "evidence": "research/sources/decision-offshore-07.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Implementation of the Virtual Asset Business Act & Commencement of the Registration Process for Virtual Asset Businesses",
+      "url": "https://fsasvg.com/implementation-of-the-virtual-asset-business-act-commencement-of-the-registration-process-for-virtual-asset-businesses"
+    },
+    {
+      "date": "",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "PUBLIC NOTICE – virtual asset businesses",
+      "url": "https://fsasvg.com/public-notice"
+    },
+    {
+      "date": "2026-03-03",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Saint Vincent and the Grenadines, Tuesday 3rd March 2026 (Gazette No. 11)",
+      "url": "https://legal.gov.vc/legal/images/PDF/2026Gazettes/Gazette_No_11_2026.pdf"
+    },
+    {
+      "date": "",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "The Cayman Islands Private Funds Act: what you need to know",
+      "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-us/campaigns/bbc/documents/ey-cayman-private-funds-act.pdf"
+    },
+    {
+      "date": "2025-01-01",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Private Funds Act (2025 Revision)",
+      "url": "https://gov.ky/documents/35692/750927/Private-Funds-Act-2025-Revision-LG12-S6.pdf/e16598d7-84f0-ec1f-e66b-d0beddb1d323?t=1760367251424"
+    },
+    {
+      "date": "2026-03-24",
+      "evidence": "research/sources/decision-offshore-06.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Private Funds (Amendment) Act, 2026",
+      "url": "https://gov.ky/documents/35692/0/PrivateFunds(Amendment)Act,2026.pdf/fb0abfa6-5a61-8d6c-84dc-078852f3fcc8?t=1774385956505"
+    },
+    {
+      "date": "",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "Private Funds (Amendment) Act, 2026 — Cayman Islands Tokenised Fund Legislation 2026",
+      "url": "https://www.mondaq.com/caymanislands/fund-finance/1829928/cayman-islands-tokenised-fund-legislation-2026"
+    },
+    {
+      "date": "2023",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "Securities Investment Business in the Cayman Islands",
+      "url": "https://www.conyers.com/wp-content/uploads/2023/08/Securities_Investment_Business-CAY.pdf"
+    },
+    {
+      "date": "2026",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Virtual Asset (Service Providers) (Amendment) Act, 2026",
+      "url": "https://www.cima.ky/upimages/lawsregulations/VirtualAssetServiceProvidersAmendmentAct,2026_1779831559.pdf"
+    },
+    {
+      "date": "",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 3,
+      "title": "Cayman exempts fund tokenisation from VASP Act",
+      "url": "https://caymanindependent.com/cayman-exempts-fund-tokenisation-from-vasp-act"
+    },
+    {
+      "date": "",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Virtual Asset Businesses – St. Vincent and the Grenadines Financial Services Authority",
+      "url": "https://fsasvg.com/virtual-asset-businesses/"
+    },
+    {
+      "date": "2026-06-11",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "Blockchain & Crypto-Assets 2026 — Panama, Law and Practice",
+      "url": "https://practiceguides.chambers.com/practice-guides/comparison/1134/19496/30676-30678-30679-30680-30681-30682-30683"
+    },
+    {
+      "date": "2021",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Sociedades de inversión. Cristina Vence – Panamá",
+      "url": "https://supervalores.gob.pa/wp-content/uploads/2021/03/sociedades-de-inversion.pdf"
+    },
+    {
+      "date": "2022",
+      "evidence": "research/sources/decision-offshore-08.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Ley del Mercado de Valores – Superintendencia del Mercado de Valores",
+      "url": "https://supervalores.gob.pa/ley-del-mercado-de-valores"
+    },
+    {
+      "date": "1999",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Decreto Ley 1 del 8 de julio de 1999",
+      "url": "https://supervalores.gob.pa/files/Decreto_Ley_de_Valores/__Decreto_Ley_1_1999_ley_valores.pdf"
+    },
+    {
+      "date": "2026-01-21",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "RES SMV 21 26 DE 21 ENE 2026 NOTIFICADA.pdf",
+      "url": "https://supervalores.gob.pa/files/Resoluciones/2026/21-26.pdf"
+    },
+    {
+      "date": "2026",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Gaceta Oficial N° 30598 B",
+      "url": "https://s3-legispan.asamblea.gob.pa/legispan/GACETAS/2020/2026/30598-B_2026.pdf"
+    },
+    {
+      "date": "2022",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 3,
+      "title": "Presidente de Panamá veta proyecto de ley sobre uso de criptoactivos",
+      "url": "https://www.swissinfo.ch/spa/presidente-de-panam%C3%A1-veta-proyecto-de-ley-sobre-uso-de-criptoactivos/47681178"
+    },
+    {
+      "date": "2026-05-20",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 3,
+      "title": "Panama tightens gambling rules after Bill No. 403 is approved",
+      "url": "https://newsroompanama.com/2026/05/20/panama-tightens-gambling-rules-after-bill-no-403-is-approved"
+    },
+    {
+      "date": "2026-07-30",
+      "evidence": "research/sources/decision-offshore-snippets.md",
+      "quality": "snippet",
+      "tier": 3,
+      "title": "How Panama's New Gambling Law Changes the Rules for Digital Platforms",
+      "url": "https://newsroompanama.com/2026/07/30/how-panamas-new-gambling-law-changes-the-rules-for-digital-platforms"
+    }
+  ]
+}

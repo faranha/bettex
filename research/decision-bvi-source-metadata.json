@@ -1,0 +1,108 @@
+{
+  "sources": [
+    {
+      "date": "Act 2 of 2010; revision date 1 Jan. 2020; amended through Act 12 of 2019 in the PDF; fetched 3 Oct. 2026",
+      "evidence": "research/sources/decision-bvi-02-siba-act.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Securities and Investment Business Act, 2010 (Revised Edition 2020; PDF on FSC site)",
+      "url": "https://www.bvifsc.vg/sites/default/files/securities_and_investment_business_act.pdf"
+    },
+    {
+      "date": "Commencement 31 Dec. 2019; fetched 3 Oct. 2026",
+      "evidence": "research/sources/decision-bvi-05-pif-regulations.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Private Investment Funds Regulations, S.I. 80/2019",
+      "url": "https://www.bvifsc.vg/sites/default/files/private_investment_funds_regulations.pdf"
+    },
+    {
+      "date": "2024; fetched 3 Oct. 2026",
+      "evidence": "research/sources/decision-bvi-06-schedule1-order.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Securities and Investment Business (Amendment of Schedule 1) Order, 2024, S.I. No. 42 of 2024",
+      "url": "https://www.bvifsc.vg/sites/default/files/si_no_42_of_2024-securities_and_investment_business_amendment_of_schedule_1_order_2024.pdf"
+    },
+    {
+      "date": "Act 17 of 2022; commenced 1 Feb. 2023 per FSC materials; fetched previously 3 Oct. 2026",
+      "evidence": "research/sources/bvi-deep-vasp-02-act.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Virtual Assets Service Providers Act, 2022",
+      "url": "https://www.bvifsc.vg/sites/default/files/virtual_assets_service_providers_act_2022.pdf"
+    },
+    {
+      "date": "13 July 2020; fetched previously 3 Oct. 2026",
+      "evidence": "research/sources/bvi-deep-siba-02.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Guidance on Regulation of Virtual Assets in the Virgin Islands (BVI)",
+      "url": "https://www.bvifsc.vg/sites/default/files/guidance_on_regulation_of_virtual_assets_in_the_virgin_islands_bvi_final_0.pdf"
+    },
+    {
+      "date": "23 Apr. 2026 (URL filename); fetched 3 Oct. 2026",
+      "evidence": "research/sources/decision-bvi-01-maples-2026.pdf.md",
+      "quality": "integral",
+      "tier": 2,
+      "title": "The Rise of Digital Asset Funds and Tokenisation in the Cayman Islands and the British Virgin Islands",
+      "url": "https://maples.com/wp-content/uploads/2026/04/20260423-Article-Cayman-and-BVI-The-Rise-of-Digital-Asset-Funds-and-Tokenisation-in-the-Cayman-Islands-and-the-British-Virgin-Islands.pdf"
+    },
+    {
+      "date": "Undated in fetched text; accessed 3 Oct. 2026",
+      "evidence": "research/sources/decision-bvi-04-harneys-vasp.md",
+      "quality": "integral",
+      "tier": 2,
+      "title": "BVI Virtual Asset (Service Providers) Act — a practical guide",
+      "url": "https://www.harneys.com/media/lrfj3lwt/bvi-virtual-asset-service-providers-act-a-practical-guide-final.pdf"
+    },
+    {
+      "date": "Compendium PDF fetched 3 Oct. 2026; content says Jan. 2025",
+      "evidence": "research/sources/decision-bvi-08-conyers-compendium.md",
+      "quality": "parcial",
+      "tier": 2,
+      "title": "Securities and Investment Business Act Compendium — Conyers",
+      "url": "https://www.conyers.com/wp-content/uploads/2025/11/Securities_and_Investment_Business_Act_2010_Compendium-BVI.pdf"
+    },
+    {
+      "date": "24 Jan. 2025 listing",
+      "evidence": "research/sources/decision-bvi-snippets.md",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "British Virgin Islands Securities and Investment Business Act and Related Legislation — Conyers",
+      "url": "https://www.conyers.com/publications/view/bvi-securities-investment-business-act-2010"
+    },
+    {
+      "date": "Feb. 2026 (filename)",
+      "evidence": "research/sources/decision-bvi-snippets.md",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "What you need to know about the regulation of investment business in the BVI — Mourant",
+      "url": "https://www.mourant.com/wp-content/uploads/2026/02/Mourant-What-you-need-to-know-about-the-regulation-of-investment-business-in-the-BVI.pdf"
+    },
+    {
+      "date": "Undated page; accessed 3 Oct. 2026",
+      "evidence": "research/sources/decision-bvi-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Securities and Investment Business Act | Virgin Islands Laws Online",
+      "url": "https://laws.gov.vg/Laws/securities-and-investment-business-act"
+    },
+    {
+      "date": "2024; precise date not displayed; accessed 3 Oct. 2026",
+      "evidence": "research/sources/decision-bvi-snippets.md",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Notice: Securities and Investment Business (Amendment of Schedule 1) Order, 2024 | BVI FSC",
+      "url": "https://www.bvifsc.vg/library/legislation/notice-securities-and-investment-business-amendment-schedule-1-order-2024"
+    },
+    {
+      "date": "12 Aug. 2026",
+      "evidence": "research/sources/decision-bvi-snippets.md",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "Alternative Investment Funds Laws 2026 | British Virgin Islands | ICLG",
+      "url": "https://iclg.com/practice-areas/alternative-investment-funds-laws-and-regulations/british-virgin-islands"
+    }
+  ]
+}

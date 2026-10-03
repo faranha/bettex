@@ -1,0 +1,180 @@
+{
+  "sources": [
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "research/sources/decision-onshore-CH-01.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Developments in FinTech | FINMA",
+      "url": "https://www.finma.ch/en/documentation/dossier/dossier-fintech/entwicklungen-im-bereich-fintech/"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "New Rules on Prospectus and Key Information Document | Baer & Karrer",
+      "url": "https://www.baerkarrer.ch/userdata/files/publications/1970/FinSA_-_Prospectus_and_KID.pdf"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 2,
+      "title": "Art. 36 FIDLEG (Financial Services Act - 2024) | Swissrights",
+      "url": "https://www.swissrights.ch/gesetze/Artikel-36-FIDLEG-2024-EN.php"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "research/sources/decision-onshore-SG-01.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Offers of Securities and Securities-based Derivatives Contracts | MAS",
+      "url": "https://www.mas.gov.sg/regulation/capital-markets/offers-of-securities-and-securities-based-derivatives-contracts"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Securities and Futures Act 2001, ss. 272A–272B result | Singapore Statutes Online",
+      "url": "https://sso.agc.gov.sg/Act/SFA2001?ProvIds=pr272A-%2Cpr272B-"
+    },
+    {
+      "date": "2024-10-21",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Offers of Collective Investment Schemes | MAS",
+      "url": "https://www.mas.gov.sg/regulation/capital-markets/offers-of-collective-investment-schemes"
+    },
+    {
+      "date": "2013",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "SFC outlines regulation of collective investment schemes | SFC Hong Kong",
+      "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=13PR84"
+    },
+    {
+      "date": "2019",
+      "evidence": "research/sources/decision-onshore-HK-01.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Statement on Security Token Offerings | SFC Hong Kong",
+      "url": "https://www.sfc.hk/en/News-and-announcements/Policy-statements-and-announcements/Statement-on-Security-Token-Offerings"
+    },
+    {
+      "date": "2026",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Circular on tokenisation of SFC-authorised investment products | SFC Hong Kong",
+      "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC22"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Offers of Investments under the Securities and Futures Ordinance | SFC Hong Kong FAQ",
+      "url": "https://www.sfc.hk/en/faqs/Publicly-offered-investment-products/Offers-of-Investments-under-the-Securities-and-Futures-Ordinance"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Section 103, Securities and Futures Ordinance, Cap. 571 | Hong Kong e-Legislation",
+      "url": "https://www.elegislation.gov.hk/hk/cap571!en/s103"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Major Fees under the Companies Ordinance | Hong Kong Companies Registry",
+      "url": "https://www.cr.gov.hk/en/services/fees.htm"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Service & transaction fees: Companies | ACRA Singapore",
+      "url": "https://www.acra.gov.sg/manage/companies/service-transaction-fees/"
+    },
+    {
+      "date": "2026",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 3,
+      "title": "How to Form a Swiss GmbH: Capital, Steps & Cost (2026) | Goldblum",
+      "url": "https://goldblum.ch/knowledgebase/swiss-gmbh-formation"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Unlawful Remote Gambling Activities | Singapore Gambling Regulatory Authority",
+      "url": "https://www.gra.gov.sg/harm-minimisation/unlawful-remote-gambling-activities"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Unauthorised online games | Swiss Federal Gaming Board (ESBK)",
+      "url": "https://www.esbk.admin.ch/en/unauthorised-online-games"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Gambling Ordinance, Cap. 148 | Hong Kong e-Legislation",
+      "url": "https://www.elegislation.gov.hk/hk/cap148%21en.pdf"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Section 11, Companies Ordinance, Cap. 622 | Hong Kong e-Legislation",
+      "url": "https://www.elegislation.gov.hk/hk/cap622!en/s11?_lang=sc"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Licensing Handbook | SFC Hong Kong",
+      "url": "https://www.sfc.hk/-/media/EN/files/LIC/handbook/licensing-handbook.pdf"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "research/sources/decision-onshore-CH-CISA-01.md",
+      "quality": "integral",
+      "tier": 1,
+      "title": "Collective Investment Schemes Ordinance (CISO), Art. 1b | Fedlex",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2006/859/en"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Financial Services Act (FinSA), Art. 35 | Fedlex",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2019/758/en"
+    },
+    {
+      "date": "Accessed 2026-10-03",
+      "evidence": "snippet",
+      "quality": "snippet",
+      "tier": 1,
+      "title": "Companies Ordinance Consultation Conclusions | Hong Kong SFC legislative history",
+      "url": "https://www.sfc.hk/-/media/EN/files/LSD/Legislative-history/laws/sfo/8/Consultation-Conclusion/CO5726_1.pdf?rev=b9a5d7cafd894e18bf584e387d14a08f"
+    }
+  ]
+}

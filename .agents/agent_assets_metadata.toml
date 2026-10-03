@@ -145,14 +145,14 @@ content_type = "image/svg+xml"
 id = "YCUPshoKgueXwh61Qnww-"
 uri = "file://research/notes.md"
 type = "text"
-title = "Plano da investigação BVI × BETTEX"
-description = "Perguntas de cobertura e registro dos achados, atualizados durante a investigação."
+title = "Onde constituir a BETTEX — pesquisa para decisão"
+description = "Comparação jurídica e operacional do modelo completo, com alternativas eliminadas por regras concretas e investigação das candidatas finais."
 logical_id = "415a1ffd-447f-4d49-922b-950b3ad322e4"
-content_hash = "sha256:57d75093d2ef7e461d000b4aae1866e9e66039ad272fc88b0b162b46c4c3ffbc"
-size = 6901
-mtime_ms = 1791013577977
-storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/415a1ffd-447f-4d49-922b-950b3ad322e4/c4ed8afd-b741-4fd7-b1c7-a70fd8ff4824"
-storage_version_token = "1791013607959230"
+content_hash = "sha256:40c11495faecd75e317038b6bd8c2d9511d2aacca32a21c4829fe1b3cd5f7c02"
+size = 13648
+mtime_ms = 1791014955273
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/415a1ffd-447f-4d49-922b-950b3ad322e4/13261a70-14a0-4720-85de-b609836be5bf"
+storage_version_token = "1791015003662620"
 content_type = "text/markdown"
 
 [[outputs]]
@@ -195,4 +195,18 @@ size = 49452
 mtime_ms = 1791014303743
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/c60d39e9-f80f-4a92-ad19-103b753b5f49/0f101ef4-e2c0-4670-8f3d-cd2d276fdbee"
 storage_version_token = "1791014324229686"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "CuWv5Ckzc2zt2XnZajgst"
+uri = "file://research/bettex-jurisdicao-decisao.md"
+type = "text"
+title = "Onde constituir a BETTEX — decisão comparativa"
+description = "Comparação de 11 jurisdições com 63 fontes: BVI prioritária, Panamá alternativa territorial, impedimentos concretos e condições ainda não comprovadas. Modelo e aplicativo preservados."
+logical_id = "3fa8fe15-ef7c-4936-baae-25c26bea2fd3"
+content_hash = "sha256:a51ca6841a78e09abe935f54f66f6e96f5d8bd556a564a8b9b2ecf5341714919"
+size = 52222
+mtime_ms = 1791016304212
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/3fa8fe15-ef7c-4936-baae-25c26bea2fd3/3368903d-bcf6-49da-a9d2-bd1863f167f7"
+storage_version_token = "1791016362229630"
 content_type = "text/markdown"
