@@ -75,3 +75,6 @@
 .ba-steps--stacked .ba-step h5 { font-size:17px; }
 .ba-steps--stacked .ba-step p { font-size:14px; line-height:1.65; }
 .ba-steps--stacked .ba-step__arrow { left:50%; right:auto; top:auto; bottom:-27px; transform:translateX(-50%) rotate(90deg); }
+
+.ba-split__buyback { border-top:3px solid #5F86FF; border-style:dashed; }
+.ba-split__buyback strong { color:#5F86FF; }

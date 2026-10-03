@@ -81,6 +81,8 @@ export function ProjectModelSection() {
         .pm-outcome a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
         .pm-panel-foot { padding: 20px 32px; border-top: 1px solid rgba(95,134,255,.25); background: rgba(7,11,31,.55); color: #c9d4f5; }
         .pm-panel-foot p { margin: 0; font-size: 13px; line-height: 1.5; }
+        .pm-buyback-note { margin-top: 8px !important; color: #87a0dd; font-size: 12px !important; }
+        .pm-buyback-note a { color: inherit; text-underline-offset: 3px; }
         .pm-bottom { display: flex; justify-content: flex-end; padding-top: 19px; }
          .pm-bottom a { display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid currentColor; padding: 3px 0 5px; color: #F4F1E8; font-size: 13px; font-weight: 700; text-decoration: none; }
          .pm-bottom a:hover { color: #F2B632; }
@@ -209,6 +211,7 @@ export function ProjectModelSection() {
           </div>
           <div className="pm-panel-foot">
             <p>Sem lucro não há distribuição e você não perde os seus tokens.</p>
+            <p className="pm-buyback-note" data-testid="text-buyback-note">Do lucro distribuível, 50% fica na tesouraria, 25% vai ao staking e 25% financia recompras, executadas pela Administração (<a href={`${import.meta.env.BASE_URL}documentacao#documentacao-recompras`}>ver regras</a>).</p>
           </div>
         </div>
         <div className="pm-bottom">

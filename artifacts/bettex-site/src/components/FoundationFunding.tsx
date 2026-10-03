@@ -6,7 +6,7 @@ export function FoundationFunding() {
     <DocFacts title="Entidade em resumo" facts={[
       { label: 'ORÇAMENTO INICIAL', value: '50%', text: 'Dos aportes ligados aos investidores, para capital inicial e desenvolvimento.' },
       { label: 'RECEITA RECORRENTE', value: 'Taxas em USDC', text: 'US$ 2,50 por compra, saque USDC ou envio autônomo BETTEX tarifado.' },
-      { label: 'SEPARAÇÃO', value: 'Caixa operacional', text: 'Carteira própria; fora da tesouraria e do split 75%/25%.' },
+      { label: 'SEPARAÇÃO', value: 'Caixa operacional', text: 'Carteira própria; fora da tesouraria e do split 50%/25%/25%.' },
     ]} />
     <div className="whitepaper__prose">
       <p>A entidade BETTEX é organizada como uma empresa privada, administrada pelo fundador. Seu orçamento operacional financia desenvolvimento, infraestrutura, auditoria, administração e obrigações correspondentes.</p>

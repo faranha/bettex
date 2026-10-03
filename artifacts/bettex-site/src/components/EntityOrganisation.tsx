@@ -73,7 +73,7 @@ function Body() {
     <h3 className="whitepaper__subhead">Receitas de serviços e financiamento</h3>
     <div className="whitepaper__prose">
       <p>A política atual é de <strong>US$ 2,50 por compra primária de BETTEX, US$ 2,50 por saque de rendimentos em USDC e US$ 2,50 por envio autônomo de BETTEX para outra carteira pelo aplicativo</strong>. Todas as taxas são pagas em USDC, sem queima de BETTEX. A entrega integrante da compra não gera uma segunda tarifa de envio; exportação e transferências diretas fora do aplicativo não recebem taxa de serviço do aplicativo.</p>
-      <p>A receita de serviços fica no caixa operacional, fora do split de investimentos de 75%/25%. Dez mil saques representam US$ 25 mil de receita bruta, antes de custos e tributos. O orçamento deve considerar operações efetivas, não apenas usuários cadastrados.</p>
+      <p>A receita de serviços fica no caixa operacional, fora do split de investimentos de 50%/25%/25%. Dez mil saques representam US$ 25 mil de receita bruta, antes de custos e tributos. O orçamento deve considerar operações efetivas, não apenas usuários cadastrados.</p>
       <p>Dos aportes ligados à parcela dos investidores, <strong>50% financiam capital inicial e desenvolvimento e 50% vão à tesouraria</strong>. Já 100% dos recursos da venda pública primária de BETTEX vão à tesouraria. A tarifa de serviço tem registro e destino próprios, separados do preço dos tokens.</p>
       <p>Financiamento adicional da operação pode ser avaliado por aporte societário ou empréstimo documentado e aprovado. Capital, dívida e receita de serviços recebem registros distintos; devolução de principal não é dividendo.</p>
     </div>
@@ -82,7 +82,7 @@ function Body() {
     <div className="whitepaper__prose">
       <p>O fundador não recebe salário neste plano, conforme decisão do criador; mantém sua alocação originária de tokens. Os quatro colaboradores têm remuneração proposta no orçamento, com valores, encargos, tributos, vencimentos e responsáveis registrados e modalidade validada. Taxas são a fonte recorrente pretendida; financiamento aprovado sustenta a fase inicial sem se tornar receita. Remuneração, concessões pessoais de tokens e dividendos são movimentos diferentes.</p>
       <p>A contabilidade registra receita bruta, custos, obrigações fiscais e resultado. A moeda USDC não dispensa essas etapas. Alíquotas, retenções e recolhimentos seguem o regime aplicável; a tarifa de US$ 2,50 não representa lucro líquido de US$ 2,50.</p>
-      <p>Distribuição ou antecipação de lucro exige apuração contábil, procedimento societário permitido e caixa após obrigações e reservas. Receita futura projetada não autoriza retirada como dividendo. Os 75% destinados à tesouraria não são automaticamente renda pessoal do fundador.</p>
+      <p>Distribuição ou antecipação de lucro exige apuração contábil, procedimento societário permitido e caixa após obrigações e reservas. Receita futura projetada não autoriza retirada como dividendo. Os 50% retidos na tesouraria e os 25% destinados à recompra não são renda pessoal do fundador.</p>
     </div>
 
     <h3 className="whitepaper__subhead">Rotina administrativa</h3>

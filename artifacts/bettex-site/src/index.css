@@ -37,6 +37,8 @@
 }
 
 :root, .dark {
+  --bettex-scrollbar-thumb: #2B59FF;
+  --bettex-scrollbar-track: #e5e0d4;
   --background: 44 33% 94%;
   --foreground: 231 65% 7%;
   --border: 44 20% 82%;
@@ -105,6 +107,32 @@
 }
 
 .display { font-family: var(--app-font-serif); }
+/* Native scrolling stays available, with the same treatment on both axes. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bettex-scrollbar-thumb) var(--bettex-scrollbar-track);
+}
+
+.site-header,
+.lang-selector__menu {
+  --bettex-scrollbar-track: #11162b;
+}
+
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: var(--bettex-scrollbar-track); border-radius: 999px; }
+*::-webkit-scrollbar-thumb {
+  background: var(--bettex-scrollbar-thumb);
+  border: 2px solid var(--bettex-scrollbar-track);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover { background: #5a7aff; }
+*::-webkit-scrollbar-corner { background: var(--bettex-scrollbar-track); }
+*::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+
+@media (forced-colors: active) {
+  * { scrollbar-color: auto !important; }
+}
+
 .mono { font-family: var(--app-font-mono); }
 .page-wrap { width: min(100% - 40px, 1200px); margin-inline: auto; }
 .pill { border-radius: 999px; }

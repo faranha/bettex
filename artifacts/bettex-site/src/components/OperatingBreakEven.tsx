@@ -59,7 +59,7 @@ export function OperatingBreakEven() {
           })}</tbody>
         </table>
       </div>
-      <div className="whitepaper__prose"><p>Os adicionais aumentam variáveis ou provisão e mantêm os custos fixos do cenário; não tratar novamente o total de US$ 50 mil como se fosse todo fixo. A provisão adicional é somada em pontos percentuais, não aplicada como imposto sobre imposto. Sustentação exige tarifas recebidas, custos completos e caixa para vencimentos. <a href="#documentacao-entidade">Ver o orçamento discriminado em Identidade e negócios.</a> <a href={`${import.meta.env.BASE_URL}downloads/bettex-taxas-fundacao.xlsx`} download>Conferir as abas Equilíbrio mensal e Plano-base da planilha.</a></p></div>
+      <div className="whitepaper__prose"><p>Os adicionais aumentam variáveis ou provisão e mantêm os custos fixos do cenário; não tratar novamente o total de US$ 50 mil como se fosse todo fixo. A provisão adicional é somada em pontos percentuais, não aplicada como imposto sobre imposto. Sustentação exige tarifas recebidas, custos completos e caixa para vencimentos. <a href="#documentacao-entidade">Ver o orçamento discriminado em Entidade e negócios.</a> <a href={`${import.meta.env.BASE_URL}downloads/bettex-taxas-fundacao.xlsx`} download>Conferir as abas Equilíbrio mensal e Plano-base da planilha.</a></p></div>
     </TechnicalDetails>
   </section>;
 }

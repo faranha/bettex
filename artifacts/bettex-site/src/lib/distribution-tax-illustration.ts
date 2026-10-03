@@ -1,3 +1,5 @@
+import { profitAllocation } from './profit-allocation-policy';
+
 /** Simulação documental. Não determina tributos legais nem autoriza pagamentos. */
 export function calculateTaxIllustration(input: {
   resultAfterCosts: number;
@@ -15,14 +17,15 @@ export function calculateTaxIllustration(input: {
   }
   const netResult = resultAfterCosts - entityTaxes;
   const eligibleProfit = Math.max(0, netResult);
-  const stakingGross = distributionConditionsMet ? eligibleProfit * 0.25 : 0;
+  const stakingGross = distributionConditionsMet ? eligibleProfit * profitAllocation.staking : 0;
   if (beneficiaryWithholding > stakingGross) {
     return { status: 'invalid' as const, message: 'A retenção não pode superar a parcela bruta do staking desta simulação. Sem split, não há nova retenção sobre esta rodada.' };
   }
-  const treasury = distributionConditionsMet ? eligibleProfit * 0.75 : eligibleProfit;
+  const treasury = distributionConditionsMet ? eligibleProfit * profitAllocation.treasury : eligibleProfit;
+  const buyback = distributionConditionsMet ? eligibleProfit * profitAllocation.buyback : 0;
   return {
     status: 'ready' as const,
-    netResult, eligibleProfit, treasury, stakingGross, beneficiaryWithholding,
+    netResult, eligibleProfit, treasury, buyback, stakingGross, beneficiaryWithholding,
     stakingNet: stakingGross - beneficiaryWithholding,
   };
 }

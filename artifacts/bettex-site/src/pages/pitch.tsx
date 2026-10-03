@@ -1,9 +1,8 @@
 import { useEffect, type ReactNode } from 'react';
-import { ArrowRight, ChevronDown, ExternalLink, List } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 import g from '@/lib/growth-strategy.json';
 import thesis from '@/lib/new-economy-thesis.json';
 import { FounderProfile } from '@/components/FounderProfile';
-import { ReadingDisclosure, ExpandControls } from '@/components/ReadingDisclosure';
 import './pitch.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -11,13 +10,13 @@ const DOC = `${BASE}/documentacao`;
 const ANBIMA = 'https://www.anbima.com.br/data/files/BE/05/B0/55/1EABD91008E6DAD9F82BA2A8/Raio-X-do-Investidor-9-edicao.pdf';
 const ILO = 'https://www.ilo.org/sites/default/files/2025-05/Research%20brief_GenAI%202025%20Update.pdf';
 
-function Sec({ id, n, kicker, title, dark = false, summary, plain = false, children }: { id: string; n: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; plain?: boolean; children: ReactNode }) {
+function Sec({ id, n, kicker, title, dark = false, summary, children }: { id: string; n: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; children: ReactNode }) {
   return <section id={id} aria-labelledby={`${id}-t`} className={dark ? 'bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}>
     <div className="page-wrap py-16 sm:py-24">
       <div className={`mono flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}><span>{n}</span><span className="h-px w-10 bg-current" aria-hidden="true" />{kicker}</div>
       <h2 id={`${id}-t`} className="display mt-5 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h2>
       {summary ? <p className={`mt-6 max-w-[760px] text-base leading-7 ${dark ? 'text-[#c5d2f1]' : 'text-[#183173]'}`}>{summary}</p> : null}
-      <div className="mt-8">{plain ? children : <ReadingDisclosure sectionDetail title="Ver detalhes desta seção" hint="Evidências, números e links">{children}</ReadingDisclosure>}</div>
+      <div className="mt-8">{children}</div>
     </div>
   </section>;
 }
@@ -43,9 +42,6 @@ export function PitchPage() {
       if (!mounted || !id) return;
       const el = document.getElementById(id);
       if (!el) return;
-      if (el instanceof HTMLDetailsElement) el.open = true;
-      el.querySelectorAll<HTMLDetailsElement>('details[data-section-detail]').forEach((d) => { d.open = true; });
-      for (let p = el.parentElement; p; p = p.parentElement) if (p instanceof HTMLDetailsElement) p.open = true;
       el.scrollIntoView({ block: 'start', behavior: 'instant' });
     };
     const frame = requestAnimationFrame(scrollToHash);
@@ -66,40 +62,28 @@ export function PitchPage() {
   return <main className="pitch">
     <section className="hero-bg relative overflow-hidden text-[#F4F1E8]">
       <div className="pitch-grid absolute inset-0 opacity-70" aria-hidden="true" />
-      <div className="page-wrap relative pb-16 pt-14 sm:pb-24 sm:pt-24">
-        <h1 className="pitch-rise display max-w-[980px] text-[clamp(2.6rem,8.4vw,6.4rem)] font-extrabold leading-[.98] tracking-[-.07em]">Participar dos resultados da IA, <span className="text-[#F2B632]">com regras que dá para conferir.</span></h1>
-        <p className="pitch-rise mt-7 max-w-[640px] text-lg leading-8 text-[#c5d2f1]">Projeto founder-led liderado por Fred Azevedo. {thesis.purpose}</p>
-        <div className="mt-9 flex flex-wrap gap-3">
-          <a href="#solucao" className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#2B59FF] px-7 py-3.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
-          <a href={DOC} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-7 py-3.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
+      <div className="page-wrap relative pb-8 pt-8 sm:pb-12 sm:pt-14">
+        <div className="pitch-hero">
+          <div className="pitch-hero__copy">
+            <h1 className="pitch-rise display text-[clamp(1.9rem,4.4vw,3.6rem)] font-extrabold leading-[1.02] tracking-[-.06em]">Participar dos resultados da IA, <span className="text-[#F2B632]">com regras que dá para conferir.</span></h1>
+            <p className="pitch-rise mt-4 max-w-[520px] text-base leading-7 text-[#c5d2f1]">A BETTEX usa IA para investir em diferentes mercados. Com o token BETTEX, pessoas comuns participam dos lucros elegíveis do projeto.</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
+              <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
+            </div>
+          </div>
+          <figure className="pitch-hero__visual pitch-rise">
+            <img src={`${BASE}/hero-connected-portrait.webp`} alt="Retrato de um homem adulto de camisa bege, imagem ilustrativa do público da BETTEX" width={1024} height={1024} loading="eager" decoding="async" fetchPriority="high" />
+          </figure>
         </div>
-        <details id="pitch-index" className="pitch-index" data-testid="pitch-index" onKeyDown={(event) => {
-          if (event.key !== 'Escape') return;
-          event.currentTarget.open = false;
-          event.currentTarget.querySelector('summary')?.focus({ preventScroll: true });
-        }}>
-          <summary className="pitch-index__trigger">
-            <List size={18} aria-hidden="true" />
-            <span>Seções do pitch</span>
-            <ChevronDown className="pitch-index__chevron" size={18} aria-hidden="true" />
-          </summary>
-          <div className="pitch-index__body">
-            <nav aria-label="Seções do pitch" className="pitch-index__links">
-              {index.map(([id, label], i) => <a key={id} href={`#${id}`} onClick={(event) => {
-                const menu = event.currentTarget.closest('details');
-                if (menu) {
-                  menu.open = false;
-                  menu.querySelector('summary')?.focus({ preventScroll: true });
-                }
-              }}>
+        <nav id="pitch-index" className="pitch-index" data-testid="pitch-index" aria-label="Seções do pitch">
+          <div className="pitch-index__links">
+              {index.map(([id, label], i) => <a key={id} href={`#${id}`}>
                 <span className="pitch-index__number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 <span>{label}</span>
-                <ArrowRight size={15} aria-hidden="true" />
               </a>)}
-            </nav>
-            <ExpandControls scope=".pitch > section:not(:first-child)" label="Expandir ou recolher todo o pitch" />
           </div>
-        </details>
+        </nav>
       </div>
     </section>
 
@@ -137,7 +121,7 @@ export function PitchPage() {
       </div>
       <div className="mt-8 rounded-2xl bg-[#070B1F] p-6 text-[#F4F1E8]">
         <span className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#F2B632]">Regra do lucro</span>
-        <p className="mt-3 text-[15px] leading-7 text-[#c5d2f1]">Só há lucro elegível após custos reais, tributos, recuperação de perdas, reservas e liquidez. Desse lucro, 75% ficam na tesouraria e 25% vão à distribuição condicionada, conforme as regras do token e do staking. O token não é ação, não dá propriedade do patrimônio e não garante resgate.</p>
+        <p className="mt-3 text-[15px] leading-7 text-[#c5d2f1]">Só há lucro elegível após custos reais, tributos, obrigações, avaliação das posições abertas, reservas e liquidez. Desse lucro, 50% ficam na tesouraria, 25% vão à carteira exclusiva de recompra e 25% à distribuição diária condicionada, conforme as regras do token e do staking. A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. O destino dos tokens adquiridos permanece pendente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.</p>
       </div>
       <Doc hash="documentacao-oportunidade">Ver regras na documentação</Doc>
     </Sec>
@@ -153,7 +137,7 @@ export function PitchPage() {
 
     <Sec id="economia" summary="Duas receitas separadas: tarifa fixa de US$ 2,50 em USDC e ganhos de investimento da tesouraria." n="05" kicker="Economia do negócio" title={<>Duas receitas, mantidas separadas.</>}>
       <div className="grid gap-4 md:grid-cols-2">
-        <Card label="Operadora" title="Tarifa fixa de US$ 2,50 em USDC">Receita de serviço da empresa, em carteira operacional própria, fora da tesouraria e do split 75/25. Não é taxa de performance.</Card>
+        <Card label="Operadora" title="Tarifa fixa de US$ 2,50 em USDC">Receita de serviço da empresa, em carteira operacional própria, fora da tesouraria e do split 50/25/25. Não é taxa de performance.</Card>
         <Card label="Tesouraria" title="Ganhos de investimento">Resultado das estratégias. O preço público primário do token vai integralmente à tesouraria; a tarifa é registrada à parte.</Card>
       </div>
       <div className="mt-6 rounded-2xl border border-[#070B1F]/15" role="region" aria-label="Exemplos de custo" tabIndex={0}>
@@ -201,7 +185,7 @@ export function PitchPage() {
       <Doc hash="documentacao-financiamento-fundacao">Financiamento na documentação</Doc>
     </Sec>
 
-    <Sec id="riscos" plain n="10" kicker="Riscos" dark title={<>Alto risco: pode haver perda parcial ou total.</>}>
+    <Sec id="riscos" n="10" kicker="Riscos" dark title={<>Alto risco: pode haver perda parcial ou total.</>}>
       <ul className="grid gap-3 md:grid-cols-2">
         {['Sem renda garantida; não substitui salário.', 'Parecer jurídico, permissões de provedores, contratos e segurança são necessários antes de qualquer fundo.', 'Frentes de esportes e cassinos dependem de compatibilidade regulatória e não estão todas autorizadas.', 'Demanda, desempenho da IA, custos e liquidez ainda não foram testados.'].map((r) => <li key={r} className="rounded-2xl border border-[#2B59FF]/40 bg-[#0d1536] p-5 text-[15px] leading-7 text-[#c5d2f1]">{r}</li>)}
       </ul>

@@ -87,7 +87,7 @@ function SiteHeader() {
     if (!window.location.hash) window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location]);
 
-  return <header className="sticky top-0 z-40 border-b border-[#2B59FF]/30 bg-[#070B1F]/95 text-[#F4F1E8] backdrop-blur-lg">
+  return <header className="site-header sticky top-0 z-40 border-b border-[#2B59FF]/30 bg-[#070B1F]/95 text-[#F4F1E8] backdrop-blur-lg">
     <div className="page-wrap flex h-[72px] items-center justify-between gap-3">
       <Logo />
       <nav className="hidden items-center gap-3 xl:ml-6 xl:flex" aria-label="Navegação principal">

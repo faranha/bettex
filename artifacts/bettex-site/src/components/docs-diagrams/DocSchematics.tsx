@@ -148,3 +148,30 @@ export function GovernanceSchematic() {
     ]} />
   </Schematic>;
 }
+
+export function BuybackSchematic() {
+  return <Schematic id="schematic-buyback" title="Recompras: financiamento obrigatório e execução discricionária">
+    <Lane label="A · Financiamento obrigatório, no fechamento diário elegível">
+      <Fork from={{ t: 'Lucro distribuível', s: 'Líquido, realizado e conciliado, com reserva e liquidez atendidas após todas as saídas projetadas', tone: 'blue' }} to={[
+        { t: '50% · Tesouraria', s: 'Retenção e reinvestimento', tone: 'gold' },
+        { t: '25% · Staking', s: 'Créditos da rodada; nunca acumulam entre rodadas fechadas', tone: 'teal' },
+        { t: '25% · Carteira de recompras', s: 'USDC diário; acumula entre dias', tone: 'blue', tag: 'Acumulável' },
+      ]} />
+      <Fork from={{ t: 'Reserva ou liquidez insuficiente, ou peso elegível zero', tone: 'plain' }} to={[{ t: '100% retido na tesouraria; nenhuma alocação ao staking nem às recompras', tone: 'plain' }]} />
+    </Lane>
+    <Lane label="B · Execução discricionária, sem compra automática diária">
+      <Flow label="Autorização da recompra" nodes={[
+        { t: 'Carteira exclusiva', s: 'Saldo disponível segregado', tone: 'blue' },
+        { t: 'IA', s: 'Apenas propõe', tone: 'blue', tag: 'Proposta' },
+        { t: 'Verificações', s: 'Preço, liquidez e segurança', tone: 'gold' },
+        { t: 'Administração autoriza', s: 'Multisig preservado; define o momento', tone: 'gold', tag: 'Autorização' },
+        { t: 'Compra de BETTEX', s: 'Somente após autorização. Destino dos tokens pendente de confirmação', tone: 'teal' },
+      ]} />
+    </Lane>
+    <Fork from={{ t: 'Carteira de recompras', s: 'Segregada da tesouraria', tone: 'blue' }} to={[
+      { t: 'Não financia trading, distribuições nem despesas da empresa', tone: 'plain' },
+      { t: 'Não conta como reserva defensiva nem capital de estratégia', tone: 'plain' },
+      { t: 'Sem garantia ou apoio de preço; queima e staking da tesouraria não aprovados', tone: 'plain' },
+    ]} />
+  </Schematic>;
+}
