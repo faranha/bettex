@@ -10,7 +10,7 @@ export function EmploymentIncomeProblem() {
         <iframe
           src="https://www.youtube-nocookie.com/embed/HHS8OVYT9cI?rel=0"
           title={t('Elon Musk e a promessa de abundância')}
-          loading="lazy"
+          loading="eager"
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
@@ -19,16 +19,16 @@ export function EmploymentIncomeProblem() {
       <figcaption><a href="https://www.youtube.com/watch?v=HHS8OVYT9cI" target="_blank" rel="noopener noreferrer">{t('USA TODAY · Elon Musk e a promessa de abundância')}<ExternalLink aria-hidden="true" /></a></figcaption>
     </figure>
     <h3 id="problema-ia-t" className="display">É mentira, a era da prosperidade é uma mentira.</h3>
-    <p>Na visão da BETTEX, a promessa de prosperidade com IA e robôs ignora uma pergunta central: de que vive quem perde o trabalho antes de conseguir participar da riqueza produzida pelas máquinas? Nossa tese é que a substituição acelerada de funções pode retirar salário e poder de compra de milhões de pessoas, enquanto os ganhos se concentram em quem controla a tecnologia.</p>
+    <p>Elon Musk descreve um futuro em que a IA e os robôs fazem o trabalho de todos, tornando o emprego opcional. Ao mesmo tempo, promete uma era de abundância sustentada por uma renda universal alta. A BETTEX não acredita que essa renda vá chegar para sustentar quem perder o emprego: substituir trabalhadores por máquinas não cria, por si só, um direito à riqueza que essas máquinas produzem.</p>
 
     <div className="pb-problem__explanation">
       <section aria-labelledby="problema-substituicao-t">
-        <h4 id="problema-substituicao-t" className="display">A ameaça não é apenas mudar de profissão.</h4>
-        <p>Quando uma tarefa remunerada passa a ser executada por software ou por um robô, o trabalhador pode perder a função que sustentava sua renda. A IA amplia essa pressão sobre atividades de escritório, atendimento e programação; os humanoides levam a possibilidade de substituição ao trabalho físico. O problema se agrava se novas oportunidades não surgirem na velocidade necessária para absorver quem ficou de fora.</p>
+        <h4 id="problema-substituicao-t" className="display">IA para o trabalho intelectual. Robôs para o trabalho físico.</h4>
+        <p>A visão de Musk não se limita a automatizar uma tarefa ou uma profissão: é um futuro em que máquinas podem fornecer todos os bens e serviços. A IA avança sobre atividades de escritório, atendimento e programação; robôs humanoides, como o Optimus da Tesla, levam essa ambição ao trabalho físico. Se essa substituição alcançar diferentes setores ao mesmo tempo, mudar de profissão pode não ser suficiente para preservar a renda.</p>
       </section>
       <section aria-labelledby="problema-concentracao-t">
-        <h4 id="problema-concentracao-t" className="display">Mais produtividade não significa renda para todos.</h4>
-        <p>Uma empresa pode produzir mais com menos pessoas. Isso pode beneficiar seus proprietários e quem controla os sistemas, sem gerar uma renda equivalente para os trabalhadores substituídos. Para a BETTEX, existe uma diferença decisiva entre uma economia que produz mais riqueza e uma população que consegue acessar essa riqueza. Ter acesso a uma ferramenta de IA não é o mesmo que participar dos ganhos de quem a possui.</p>
+        <h4 id="problema-concentracao-t" className="display">A renda universal alta não vem junto com o robô.</h4>
+        <p>Musk apresenta a renda universal alta como parte desse futuro, mas a promessa não é um mecanismo de distribuição. Quem vai pagar, quem terá direito e quando o dinheiro chegará? Uma empresa pode substituir pessoas, reduzir custos e aumentar o lucro sem transferir esses ganhos aos trabalhadores dispensados. Na tese da BETTEX, a prosperidade fica com quem controla a tecnologia, enquanto quem perde o salário não recebe a renda prometida.</p>
       </section>
       <section aria-labelledby="problema-orcamento-t">
         <h4 id="problema-orcamento-t" className="display">O salário desaparece. As contas continuam.</h4>
@@ -40,9 +40,10 @@ export function EmploymentIncomeProblem() {
       </section>
     </div>
 
-    <p className="pb-problem__automation-conclusion">É essa combinação que a BETTEX quer enfrentar: pessoas buscando melhorar de vida pelas apostas, enquanto a economia automatizada pode retirar o trabalho que paga suas contas. A tese é que esperar pela prosperidade prometida não basta para quem precisa de renda agora.</p>
+    <p className="pb-problem__automation-conclusion">Para a BETTEX, o problema é substituir o emprego de todos por máquinas e vender a promessa de que todos viverão melhor depois. Nossa tese é que essa renda universal alta não vai se materializar para quem precisa dela, e que esperar por essa promessa pode custar o futuro de milhões de pessoas. Participar da tecnologia precisa ser uma possibilidade agora, não uma esperança para depois da perda do salário.</p>
     <a className="tap pb-problem__evidence-link" href="#cenario-exclusao">Emprego, automação e economia real<ArrowRight aria-hidden="true" /></a>
     <PitchObservations dark>
+      <p>Fonte das declarações sobre emprego opcional e renda universal alta: <a href="https://edition.cnn.com/2024/05/23/tech/elon-musk-ai-your-job/index.html" target="_blank" rel="noopener noreferrer">CNN · VivaTech, maio de 2024<ExternalLink aria-hidden="true" /></a>.</p>
       <p>Essa é a tese da BETTEX, não uma previsão de desemprego inevitável. O horizonte de três anos depende da materialização das previsões sobre a substituição de postos de trabalho pela IA. Participar da BETTEX também envolve risco de perda e não garante renda nem proteção contra desemprego.</p>
     </PitchObservations>
   </section>;

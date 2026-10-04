@@ -93,11 +93,11 @@ A tese de perda simultânea de patrimônio e salário precisa de subseção pró
 
 **How to apply:** Preservar o conteúdo e as fontes, com separação visual e navegação subordinada a IA e trabalho no desktop e no celular.
 
-A tese de pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA, agora define o segundo problema. Musk e os indicadores econômicos são sua análise de Ambiente externo.
+A tese de pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA, define o segundo problema. Esse item deve tratar diretamente da visão de Musk de substituir o trabalho humano por máquinas e da promessa de renda universal alta, rejeitada pela tese da BETTEX, com o vídeo na abertura.
 
 **Why:** O criador esclareceu que “é sobre apresentar a visão de resgate frente ao apocalipse iminente” e pediu um parágrafo claro ligando essa crença à missão de resgatar o futuro agora.
 
-**How to apply:** Explicitar a crença em Problema, analisar o cenário em Ambiente externo e apresentar a missão de resgate na Solução. Não transformar a crença em fatos comprovados nem a missão em promessa de renda ou proteção garantida.
+**How to apply:** Não deixar o item 2 genérico sobre automação nem reservar a discussão de Musk apenas ao Ambiente externo. Explicitar a crença em Problema, analisar o cenário em Ambiente externo e apresentar a missão de resgate na Solução. Não transformar a crença em fatos comprovados nem a missão em promessa de renda ou proteção garantida.
 
 Não reintroduzir os quatro trechos que o criador mostrou e mandou retirar: a cadeia “Cenário de choque, não previsão”; o cartão Stanford “19% abaixo” e sua nota; o bloco “A tecnologia pode ser real. O preço pode ser uma bolha.” com as matérias de Reuters e Altman; e o fechamento “Resgatar esse futuro começa agora. Não depois da crise.” com sua nota.
 
