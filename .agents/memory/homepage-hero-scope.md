@@ -27,7 +27,7 @@ O criador reiterou: “nunca traga como opção futura. Não é ‘pretende’, 
 
 **How to apply:** Preservar o copy comercial aprovado e descrever o funcionamento no presente, sem substituir os textos por intenções futuras ou ressalvas editoriais novas. Não confundir isso com afirmar que a demonstração visual realiza transações reais.
 
-No hero, o criador definiu o posicionamento como “comunidade de investimento em IA” e pediu falar em “lucros do projeto”, sem “lucros elegíveis”.
+No hero, o criador definiu o posicionamento como “comunidade de investimento com IA”, não “em IA”, e pediu falar em “lucros do projeto”, sem “lucros elegíveis”.
 
 **Why:** O criador corrigiu diretamente a etiqueta e o texto comercial do hero.
 
