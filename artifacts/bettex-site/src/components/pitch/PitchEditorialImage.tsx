@@ -10,16 +10,18 @@ const alts: Record<PitchImageName, string> = {
   'pitch-economy-separation': 'Duas bandejas de trabalho financeiro separadas sobre uma mesa creme, em azul e dourado, representando tesouraria e empresa distintas',
   'pitch-token-participation': 'Protótipo do token BTEX físico em metal azul e dourado, com símbolo da marca e inscrição BTEX em relevo',
   'pitch-brazil-community': 'Pequeno grupo de pessoas conversando sobre tecnologia em um café brasileiro, cena ilustrativa',
-  'pitch-product-development': 'Notebook, caderno de protótipo, placa de circuito e infraestrutura, ilustração do desenvolvimento do produto',
+  'pitch-product-development': 'Desenvolvedor trabalhando com código em um notebook, representando a construção do produto e da tecnologia',
 };
 
 export function PitchEditorialImage({ name, dark = false, className = '' }: { name: PitchImageName; dark?: boolean; className?: string }) {
   useLocale();
   const isToken = name === 'pitch-token-participation';
-  const imagePath = isToken ? 'pitch-illustrations/pitch-btex-physical-token.webp' : `pitch-illustrations/${name}.webp`;
-  return <figure className={`pei ${dark ? 'pei--dark' : ''} ${className}`} data-testid={`img-${name}`}>
-    <img src={`${BASE}${imagePath}`} alt={t(alts[name])} width={1024} height={1024} loading="lazy" decoding="async" />
-    <figcaption>{t(isToken ? 'Protótipo do token BTEX físico' : 'Imagem conceitual')}</figcaption>
+  const isProduct = name === 'pitch-product-development';
+  const imagePath = isToken ? 'pitch-illustrations/pitch-btex-physical-token.webp'
+    : isProduct ? 'pitch-illustrations/pitch-software-development.webp' : `pitch-illustrations/${name}.webp`;
+  return <figure className={`pei ${dark ? 'pei--dark' : ''} ${isProduct ? 'pei--photo' : ''} ${className}`} data-testid={`img-${name}`}>
+    <img src={`${BASE}${imagePath}`} alt={t(alts[name])} width={isProduct ? 1400 : 1024} height={isProduct ? 2100 : 1024} loading="lazy" decoding="async" />
+    {isToken && <figcaption>{t('Protótipo do token BTEX físico')}</figcaption>}
   </figure>;
 }
 

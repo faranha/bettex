@@ -33,6 +33,7 @@
 - [Leitura do pitch](pitch-reading-behavior.md) — Público antes de Problema; cenário em Ambiente externo; Economia e Token em Tokenomics; menu segue a ordem das áreas; gráficos abertos.
 - [Go to market no Brasil](pitch-brazil-go-to-market.md) — substituir Onboarding; sem seção de Piloto nem expansão internacional nesse bloco do Pitch.
 - [Visual e tom do pitch](pitch-visual-direction.md) — leitores: grandes investidores e anjos; usuário: apostador brasileiro, sem “pequeno investidor” ou “adulto” como rótulo.
+- [Ícones das receitas](pitch-revenue-visuals.md) — Operadora e Tesouraria usam ícones, não a foto das bandejas; não confundir com Community-driven.
 - [Pauta do cenário apocalíptico](pitch-economic-risk-story.md) — reunir emprego EUA, gráfico brasileiro, matérias sombrias, bolha da IA e perda de patrimônio/salário no mesmo trecho.
 - [Mercado na abertura do Pitch](pitch-market-priority.md) — apostas e cripto são públicos potenciais; 6,9 milhões é o núcleo, não o limite; público e fluxo financeiro primeiro.
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
