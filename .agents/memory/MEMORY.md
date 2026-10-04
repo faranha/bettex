@@ -40,3 +40,4 @@
 - [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
 - [Apresentação do fundador](documentation-founder-presentation.md) — documentação com retrato integrado e sem aspas; Pitch com biografia profissional em terceira pessoa.
 - [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.
+- [Responsive text verification](responsive-text-verification.md) — text-range bounds include font leading; distinguish compact heading lines from actual collisions.
