@@ -9,9 +9,9 @@ O Problema 2 precisa apresentar e desenvolver a ameaça ao emprego e à renda no
 
 **How to apply:** Explicar substituição de funções, concentração dos ganhos, efeito sobre o orçamento de quem depende do salário e relação com perdas nas apostas. Não mover capítulos ou repetir toda a pauta de Ambiente externo sem solicitação. Manter observações ao fim do bloco.
 
-O vídeo da USA TODAY sobre Musk e a “era da abundância”, indicado pelo usuário, deve abrir o Problema 2, antes da crítica à promessa de prosperidade.
+O vídeo da USA TODAY sobre Musk e a “era da abundância”, indicado pelo usuário, fica no Problema 2 após o título e o parágrafo introdutório, antes das explicações detalhadas.
 
-**Why:** O usuário forneceu o vídeo e pediu que ele abrisse essa área do problema como contexto para a tese “é uma mentira”.
+**Why:** O usuário corrigiu a ordem: “o video precisa vir depois de alguma introducao”.
 
 **How to apply:** Preservar essa sequência ao editar o trecho. Distinguir a fala de Musk da interpretação crítica da BETTEX, sem afirmar que o vídeo prova intenção de enganar.
 
@@ -93,7 +93,7 @@ A tese de perda simultânea de patrimônio e salário precisa de subseção pró
 
 **How to apply:** Preservar o conteúdo e as fontes, com separação visual e navegação subordinada a IA e trabalho no desktop e no celular.
 
-A tese de pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA, define o segundo problema. Esse item deve tratar diretamente da visão de Musk de substituir o trabalho humano por máquinas e da promessa de renda universal alta, rejeitada pela tese da BETTEX, com o vídeo na abertura.
+A tese de pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA, define o segundo problema. Esse item deve tratar diretamente da visão de Musk de substituir o trabalho humano por máquinas e da promessa de renda universal alta, rejeitada pela tese da BETTEX, com o vídeo depois da introdução.
 
 **Why:** O criador esclareceu que “é sobre apresentar a visão de resgate frente ao apocalipse iminente” e pediu um parágrafo claro ligando essa crença à missão de resgatar o futuro agora.
 
