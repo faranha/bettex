@@ -21,6 +21,12 @@ O público do produto deve ser chamado simplesmente de “apostador brasileiro�
 
 **How to apply:** Revisar todos os textos e traduções do site, incluindo componentes extraídos, metadados e HTML gerado; não deixar a classificação antiga em textos secundários ou arquivos de entrega desatualizados. Distinguir o apostador brasileiro que utiliza o produto dos grandes investidores e anjos que avaliam o negócio. Não acrescentar “adulto” ao rótulo do público; preservar separadamente requisitos legais de idade, a população da pesquisa, regras econômicas, condições de lucro e riscos.
 
+A regra de terceira pessoa se limita à narrativa do Pitch. Citações atribuídas ao fundador, controles de navegação e convites de comunidade compartilhados são exceções; não exigir uma faixa explicando a finalidade da apresentação.
+
+**Why:** O criador delimitou essas exceções para que a proteção editorial não reescreva falas atribuídas nem imponha o tom institucional aos controles ou à homepage.
+
+**How to apply:** Avaliar o texto narrativo no contexto de cada elemento, não proibir palavras globalmente no site nem isentar toda a seção do fundador. A proteção deve acompanhar a definição atual do público e a prioridade de mercado na abertura, sem restaurar rótulos rejeitados nem exigir explicação de participação na capa.
+
 As áreas do Pitch depois do fundador devem incluir imagens relevantes ao conteúdo, não permanecer só em texto e gráficos.
 
 **Why:** O criador disse que todas essas áreas estavam sem imagens, considerou isso muito ruim e pediu melhorar.

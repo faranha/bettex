@@ -3,6 +3,7 @@ import json
 import re
 from html.parser import HTMLParser
 from pathlib import Path
+from verify_pitch_narrative import verify_pitch_files
 
 root = Path(__file__).resolve().parent.parent
 messages = json.loads((root / "src/lib/locales/translations.json").read_text())
@@ -39,3 +40,4 @@ for language, documentation in (("en", "documentation"), ("es", "documentacion")
 if failures:
     raise ValueError("Rendered content bypassed localization:\n" + "\n".join(failures))
 print("Rendered localization: all 8 EN/ES pages contain no untranslated source messages.")
+verify_pitch_files(root / "dist/public")

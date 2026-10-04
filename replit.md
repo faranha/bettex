@@ -304,7 +304,7 @@ Site da BETTEX, projeto de investimento com quatro agentes especializados em mer
 
 - O criador especificou que o pitch é uma apresentação no próprio navegador, não slides ou um deck. Deve ser uma página do site BETTEX, legível tanto no celular quanto no PC.
 - A barra principal deve oferecer Página Inicial, Pitch e Documentação como links de navegação e ABRIR APP como botão diferente e estilizado, na mesma aba. As seções da página inicial e do Pitch ficam em submenus próprios; manter a navegação interna atual da documentação.
-- O acesso ao demo permanece em Token BETTEX, pelo banner “Acesse o demo ao vivo agora mesmo” e seu botão, e volta ao menu principal com o rótulo ABRIR APP. Este botão deve ser visualmente distinto dos demais links, sem devolver cápsulas a toda a navegação. Não criar um item independente no submenu da homepage para o banner.
+- O demo é acessado pelo botão ABRIR APP do menu principal, visualmente distinto dos demais links, sem devolver cápsulas a toda a navegação. O criador rejeitou e pediu retirar o banner “Acesse o demo ao vivo agora mesmo” de Token BETTEX; não reinseri-lo nem criar um item independente no submenu da homepage.
 
 ## Localização obrigatória
 
