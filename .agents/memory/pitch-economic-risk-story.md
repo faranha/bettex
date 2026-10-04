@@ -15,6 +15,12 @@ O vídeo da USA TODAY sobre Musk e a “era da abundância”, indicado pelo usu
 
 **How to apply:** Preservar essa sequência ao editar o trecho. Distinguir a fala de Musk da interpretação crítica da BETTEX, sem afirmar que o vídeo prova intenção de enganar.
 
+O item 2 de Problema deve ser resumido, com mais tópicos e números e menos parágrafos. O fundo do Optimus deve se integrar ao container com degradê, sem corte abrupto.
+
+**Why:** O criador pediu “mais topicos, numeros, menos paragrafos” e apontou o corte visível da imagem.
+
+**How to apply:** Manter uma introdução curta antes do vídeo e uma explicação compacta após ele. Não inventar estatísticas para atender ao pedido de números; preservar a leitura sobre a imagem.
+
 O problema apresentado pela BETTEX combina, em escala mundial, pessoas tratando apostas como investimento e a deterioração de emprego e renda com o avanço da IA. A tese do criador é o risco de miséria para uma geração, com comportamentos nocivos e vidas em jogo, não apenas um problema de apostas no Brasil.
 
 **Why:** O criador corrigiu a abertura de Problema por ela reduzir a tese a apostas e pediu resumir a combinação dos dois riscos, incluindo a humanidade e o futuro de uma geração.
