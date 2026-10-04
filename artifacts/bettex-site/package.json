@@ -15,7 +15,8 @@
     "check:pitch-research": "node scripts/check-pitch-research.mjs",
     "check:responsive": "node scripts/check-responsive.mjs",
     "check:seo": "node scripts/check-seo.mjs",
-    "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
+    "serve": "node scripts/serve.mjs",
+    "check:server": "node --test scripts/serve.test.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {

@@ -1,14 +1,15 @@
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import path from 'node:path';
-import { preview } from 'vite';
+import { createSiteServer } from './serve.mjs';
 import { routes, seo, canonicalPath } from './seo.mjs';
 
 // Check actual HTTP responses from the production static server, not the
 // development SPA shell or metadata that only appears after JavaScript runs.
 const root = path.resolve(import.meta.dirname, '..');
-const server = await preview({ configFile: path.join(root, 'vite.config.ts'), preview: { port: 25337, strictPort: true } });
-const origin = 'http://127.0.0.1:25337';
+const server = createSiteServer();
+await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+const origin = `http://127.0.0.1:${server.address().port}`;
 const failures = [];
 const capture = (html, pattern) => html.match(pattern)?.[1];
 try {
@@ -55,7 +56,7 @@ try {
   assert.ok((await missing.text()).includes('noindex, follow'));
   assert.ok(!(await readFile(path.join(root, 'dist/public/index.html'), 'utf8')).includes('<div id="root"></div>'));
 } finally {
-  await new Promise(resolve => server.httpServer.close(resolve));
+  await new Promise(resolve => server.close(resolve));
 }
 if (failures.length) throw new Error(failures.join('\n'));
 console.log(`SEO audit passed: ${Object.keys(routes).length} localized pages, robots.txt, sitemap and true 404.`);

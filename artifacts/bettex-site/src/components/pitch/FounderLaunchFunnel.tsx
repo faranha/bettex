@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Instagram, Send, Smartphone, Wallet, ArrowRight, ArrowDown } from 'lucide-react';
 import { getFormatLocale, t, useLocale } from '@/lib/i18n';
 import './FounderLaunchFunnel.css';
@@ -17,17 +18,18 @@ export function FounderLaunchFunnel() {
     </figcaption>
     <div className="flf__fund" data-testid="flf-founder-fund">
       <Wallet aria-hidden="true" size={22} />
-      <div><b>Fred Azevedo</b><span>{t('financia a aquisição com seu orçamento corrente')}</span></div>
+      <div className="flf__fundtxt"><b>Fred Azevedo</b><span>{t('financia a aquisição com seu orçamento corrente')}</span></div>
     </div>
     <ol className="flf__stages">
-      {stages.map((s, i) => <li key={s.n} className="flf__stage">
+      {stages.map((s, i) => <Fragment key={s.n}><li className="flf__stage">
         <span className="flf__n">{s.n}</span>
         <s.Icon aria-hidden="true" size={26} />
         <h3>{t(s.title)}</h3>
         <em>{t(s.line)}</em>
         <p>{t(s.note)}</p>
-        {i < 2 && <span className="flf__arrow" aria-hidden="true"><ArrowRight className="flf__ar" size={20} /><ArrowDown className="flf__ad" size={20} /></span>}
-      </li>)}
+      </li>
+      {i < 2 && <li className="flf__arrow" aria-hidden="true"><ArrowRight className="flf__ar" size={22} /><ArrowDown className="flf__ad" size={22} /></li>}
+      </Fragment>)}
     </ol>
     <div className="flf__goal">
       <div><strong>{(1000).toLocaleString(getFormatLocale())}</strong><span>{t('primeiros usuários')}</span></div>

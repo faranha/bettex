@@ -16,6 +16,7 @@
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
 - [Âncoras e navegação fixa](navigation-anchor-offsets.md) — mudanças de altura precisam considerar rolagem JavaScript e índice fixo, não apenas scroll-margin.
 - [SEO e roteamento estático](seo-static-routing.md) — validar HTTP inicial por rota; reescritas genéricas podem apagar o HTML pré-renderizado.
+- [Domínio oficial](official-domain.md) — bettex.ai confirmado pelo criador; bettex.replit.app deve redirecionar preservando a página.
 - [Overlays mobile](mobile-chart-overlays.md) — largura e posição dos tooltips precisam caber no gráfico, inclusive após expandir sanfonas.
 - [Render-time localization](render-time-localization.md) — exclude app JSX runtimes from Vite prebundling; fragments and cloned elements need rendered-text audits.
 - [Large localization edits](large-localization-edits.md) — failed large saves can leave source ahead of translations; prepare and save separately, then audit coverage.

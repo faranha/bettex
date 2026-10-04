@@ -1,32 +1,37 @@
-.flf { margin: 0 0 32px; padding: clamp(16px,3vw,32px); border: 1px solid rgba(43,89,255,.4); border-radius: 12px; background: radial-gradient(circle at 90% 0, rgba(43,89,255,.22), transparent 40%), #0d1536; color: #F4F1E8; display: grid; gap: 18px; }
-.flf__head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; }
+.flf { width: 100%; box-sizing: border-box; margin: 0 0 32px; padding: clamp(16px,3.5vw,40px); border: 1px solid rgba(43,89,255,.4); border-radius: 12px; background: radial-gradient(circle at 90% 0, rgba(43,89,255,.22), transparent 40%), #0d1536; color: #F4F1E8; display: grid; gap: 0; min-width: 0; }
+.flf__head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; padding-bottom: 20px; margin-bottom: 24px; border-bottom: 1px solid rgba(197,210,241,.2); }
 .flf__kicker { font-family: var(--app-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #F2B632; }
 .flf__head strong { font-family: var(--app-font-serif); font-size: 1.15rem; letter-spacing: -.02em; }
-.flf__fund { display: flex; gap: 14px; align-items: center; padding: 14px 18px; border-radius: 10px; background: #F2B632; color: #070B1F; position: relative; }
-.flf__fund div { display: grid; font-size: 14px; }
-.flf__fund b { font-family: var(--app-font-serif); font-size: 1.2rem; }
-.flf__fund::after { content: ''; position: absolute; left: 50%; top: 100%; width: 2px; height: 18px; background: #F2B632; }
-.flf__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
-.flf__stage { position: relative; min-width: 0; padding: 18px; border: 1px solid rgba(95,134,255,.5); border-radius: 10px; background: #070B1F; display: grid; gap: 6px; align-content: start; animation: flf-in .6s both; }
-.flf__stage:nth-child(2) { animation-delay: .15s; } .flf__stage:nth-child(3) { animation-delay: .3s; border-color: #5F86FF; background: #14214f; }
+.flf__fund { display: flex; gap: 16px; align-items: center; padding: 16px 22px; border-radius: 10px; background: #F2B632; color: #070B1F; position: relative; margin-bottom: 36px; min-width: 0; }
+.flf__fund svg { flex: none; }
+.flf__fundtxt { display: grid; gap: 4px; font-size: 14px; line-height: 1.45; min-width: 0; }
+.flf__fund b { display: block; font-family: var(--app-font-serif); font-size: 1.3rem; line-height: 1.15; }
+.flf__fund::after { content: ''; position: absolute; left: 50%; top: 100%; width: 2px; height: 36px; background: repeating-linear-gradient(#F2B632 0 6px, transparent 6px 10px); }
+.flf__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0,1fr) 40px minmax(0,1fr) 40px minmax(0,1fr); align-items: stretch; }
+.flf__stage { position: relative; min-width: 0; padding: 20px; border: 1px solid rgba(95,134,255,.5); border-radius: 10px; background: #070B1F; display: grid; gap: 8px; align-content: start; animation: flf-in .6s both; }
+.flf__stage:nth-of-type(2) { animation-delay: .15s; }
+.flf__stage:last-child { animation-delay: .3s; border-color: #5F86FF; background: #14214f; }
 .flf__stage svg { color: #5F86FF; }
 .flf__n { font-family: var(--app-font-mono); font-size: 12px; color: #c5d2f1; }
-.flf__stage h3 { margin: 0; font-family: var(--app-font-serif); font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; }
+.flf__stage h3 { margin: 0; font-family: var(--app-font-serif); font-size: clamp(1.1rem,2vw,1.3rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.15; text-wrap: balance; overflow-wrap: break-word; }
 .flf__stage em { font-style: normal; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #F2B632; }
 .flf__stage p { margin: 0; font-size: 14px; line-height: 1.5; color: #c5d2f1; }
-.flf__arrow { position: absolute; right: -17px; top: 50%; z-index: 1; width: 20px; height: 20px; display: grid; place-items: center; background: #0d1536; color: #F2B632; }
-.flf__arrow svg { color: #F2B632; } .flf__ad { display: none; }
-.flf__goal { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.flf__goal > div { display: grid; padding: 14px 18px; border-radius: 10px; border: 1px solid rgba(197,210,241,.25); }
+.flf__arrow { display: grid; place-items: center; color: #F2B632; position: relative; }
+.flf__arrow::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: repeating-linear-gradient(90deg,#F2B632 0 6px,transparent 6px 10px); }
+.flf__arrow svg { position: relative; z-index: 1; background: #0d1536; border-radius: 50%; padding: 3px; box-sizing: content-box; color: #F2B632; }
+.flf__ad { display: none; }
+.flf__goal { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+.flf__goal > div { display: grid; gap: 4px; padding: 16px 20px; border-radius: 10px; border: 1px solid rgba(197,210,241,.25); min-width: 0; }
 .flf__goal strong { font-family: var(--app-font-serif); font-size: clamp(2rem,5vw,3rem); line-height: 1; letter-spacing: -.04em; color: #F4F1E8; }
 .flf__zero strong { color: #F2B632; }
-.flf__goal span { font-size: 13px; color: #c5d2f1; margin-top: 4px; }
-.flf__note { margin: 0; font-size: 13px; line-height: 1.6; color: #c5d2f1; }
+.flf__goal span { font-size: 13px; line-height: 1.4; color: #c5d2f1; }
+.flf__note { margin: 20px 0 0; font-size: 13px; line-height: 1.6; color: #c5d2f1; }
 @keyframes flf-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .flf__stage { animation: none; } }
 @media (max-width: 767px) {
-  .flf__stages { grid-template-columns: minmax(0,1fr); gap: 22px; }
-  .flf__arrow { right: auto; left: 50%; top: auto; bottom: -21px; margin-left: -10px; }
+  .flf__stages { grid-template-columns: minmax(0,1fr); }
+  .flf__arrow { height: 36px; }
+  .flf__arrow::before { left: 50%; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: repeating-linear-gradient(#F2B632 0 6px,transparent 6px 10px); }
   .flf__ar { display: none; } .flf__ad { display: block; }
   .flf__goal { grid-template-columns: minmax(0,1fr); }
 }
