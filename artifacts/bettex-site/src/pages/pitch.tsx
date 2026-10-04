@@ -176,7 +176,7 @@ export function PitchPage() {
       <TokenValueMechanisms />
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <Card dark label="Público" title="65% · 650 milhões">Tokens destinados à venda pública, cujo preço primário financia integralmente a tesouraria.</Card>
-        <Card dark label="Fundador" title="20% · 200 milhões">Livre destinação após a liberação, sem antecipação do vesting.</Card>
+        <Card dark label="Fundador e equipe" title="20% · 200 milhões">Livre destinação após a liberação, sem antecipação do vesting.</Card>
         <Card dark label="Financiamento inicial" title="15% · 150 milhões">Tokens vinculados ao financiamento inicial, conforme os termos da rodada.</Card>
       </div>
       <div className="mt-8" />
@@ -192,11 +192,16 @@ export function PitchPage() {
     </section>
 
     <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="Meta de 1.000 usuários nos primeiros três meses de operação, incluindo os primeiros compradores, sem custo de aquisição para a BETTEX." n="08" kicker="Go to market no Brasil" dark title={<>Aquisição orgânica. <span className="text-[#F2B632]">Financiada pelo fundador.</span></>}>
-      <PitchEditorialSplit dark image={<PitchEditorialImage dark name="pitch-brazil-community" />}>
-      <p className="max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo vai financiar a aquisição inicial com seu orçamento corrente. Sua audiência no Instagram entra na comunidade do Telegram e segue para o aplicativo BETTEX, trazendo os primeiros compradores e usuários para validar o produto, sem cobrar esse custo da empresa.</p>
+      <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo vai financiar a aquisição inicial com seu orçamento corrente. Sua audiência no Instagram entra na comunidade do Telegram e segue para o aplicativo BETTEX, trazendo os primeiros compradores e usuários para validar o produto, sem cobrar esse custo da empresa.</p>
       <FounderLaunchFunnel />
-      </PitchEditorialSplit>
-      <Card dark label="Community-driven" title="Construído com a comunidade.">A proposta é construir com os usuários: ouvir feedback, validar melhorias e estimular recomendações orgânicas. A comunidade no Telegram conecta aquisição, uso do aplicativo e evolução do produto.</Card>
+      <div className="pitch-community">
+        <div className="pitch-community__copy">
+          <p className="mono text-[11px] font-bold uppercase tracking-[.18em] text-[#5F86FF]">Community-driven</p>
+          <h3 className="display">Construído com a comunidade.</h3>
+          <p>A proposta é construir com os usuários: ouvir feedback, validar melhorias e estimular recomendações orgânicas. A comunidade no Telegram conecta aquisição, uso do aplicativo e evolução do produto.</p>
+        </div>
+        <img src={`${BASE}/pitch-illustrations/pitch-internet-community.webp`} alt={t('Pessoas com headsets interagindo enquanto usam computadores em uma comunidade de jogos online')} width={1400} height={933} loading="lazy" decoding="async" />
+      </div>
       <Doc dark hash="documentacao-aquisicao-retencao">Plano de aquisição e retenção na documentação</Doc>
       <PitchObservations dark><p>A validação acompanha a primeira compra elegível, o primeiro uso útil e o retorno dos usuários. Compradores e usuários ativados serão medidos separadamente; a meta não representa resultados já alcançados. Oferta e publicidade dependem de revisão jurídica e elegibilidade.</p></PitchObservations>
     </Sec>

@@ -7,7 +7,7 @@ Validar o HTML entregue por HTTP de cada rota pública, não apenas o arquivo ge
 
 **Why:** Na revisão da BETTEX, os componentes alteravam metadados no navegador, mas bots recebiam a homepage. Mesmo após pré-renderizar as páginas, uma reescrita genérica da publicação continuaria enviando todas as rotas ao mesmo HTML.
 
-**How to apply:** Manter reescritas específicas para os arquivos de cada página; não reintroduzir fallback genérico para a homepage. Em mudanças de SEO/publicação, conferir resposta inicial, título, canonical, H1/conteúdo, imagem social real e comportamento de rotas inexistentes no servidor usado pela publicação. Checagens locais não comprovam que a versão publicada foi atualizada.
+**How to apply:** Servir o HTML próprio de cada rota; em hospedagem estática, manter reescritas específicas para os arquivos de cada página. Não reintroduzir fallback genérico para a homepage. Em mudanças de SEO/publicação, conferir resposta inicial, título, canonical, H1/conteúdo, imagem social real e comportamento de rotas inexistentes no servidor usado pela publicação. Checagens locais não comprovam que a versão publicada foi atualizada.
 
 A pré-renderização precisa de um template SPA vazio, não do HTML já pré-renderizado da homepage.
 

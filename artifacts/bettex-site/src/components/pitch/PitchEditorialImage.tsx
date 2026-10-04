@@ -8,16 +8,18 @@ export type PitchImageName = 'pitch-economy-separation' | 'pitch-token-participa
 
 const alts: Record<PitchImageName, string> = {
   'pitch-economy-separation': 'Duas bandejas de trabalho financeiro separadas sobre uma mesa creme, em azul e dourado, representando tesouraria e empresa distintas',
-  'pitch-token-participation': 'Disco de token em azul e dourado sobre fundo azul-marinho, ilustração conceitual de participação',
+  'pitch-token-participation': 'Protótipo do token BTEX físico em metal azul e dourado, com símbolo da marca e inscrição BTEX em relevo',
   'pitch-brazil-community': 'Pequeno grupo de pessoas conversando sobre tecnologia em um café brasileiro, cena ilustrativa',
   'pitch-product-development': 'Notebook, caderno de protótipo, placa de circuito e infraestrutura, ilustração do desenvolvimento do produto',
 };
 
 export function PitchEditorialImage({ name, dark = false, className = '' }: { name: PitchImageName; dark?: boolean; className?: string }) {
   useLocale();
+  const isToken = name === 'pitch-token-participation';
+  const imagePath = isToken ? 'pitch-illustrations/pitch-btex-physical-token.webp' : `pitch-illustrations/${name}.webp`;
   return <figure className={`pei ${dark ? 'pei--dark' : ''} ${className}`} data-testid={`img-${name}`}>
-    <img src={`${BASE}pitch-illustrations/${name}.webp`} alt={t(alts[name])} width={1024} height={1024} loading="lazy" decoding="async" />
-    <figcaption>{t('Imagem conceitual')}</figcaption>
+    <img src={`${BASE}${imagePath}`} alt={t(alts[name])} width={1024} height={1024} loading="lazy" decoding="async" />
+    <figcaption>{t(isToken ? 'Protótipo do token BTEX físico' : 'Imagem conceitual')}</figcaption>
   </figure>;
 }
 

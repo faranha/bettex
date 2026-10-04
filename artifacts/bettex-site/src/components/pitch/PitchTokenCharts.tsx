@@ -8,7 +8,7 @@ import './PitchTokenCharts.css';
 
 const groups = [
   { key: 'publicSale', label: 'Público', amount: tokenomics.publicSaleAllocation, color: '#5F86FF' },
-  { key: 'team', label: 'Fundador', amount: tokenomics.teamAllocation, color: '#F2B632' },
+  { key: 'team', label: 'Fundador e equipe', amount: tokenomics.teamAllocation, color: '#F2B632' },
   { key: 'investors', label: 'Financiamento inicial', amount: tokenomics.investorAllocation, color: '#F4F1E8' },
 ] as const;
 

@@ -123,6 +123,42 @@ img, svg, video { max-width: 100%; }
 .slide__body > .grid > * { border-radius: 0 !important; }
 .slide__body > .grid.md\:grid-cols-3:not(.pitch-metrics) > *, .slide__body > .grid.md\:grid-cols-2 > * { border-width: 0 0 0 4px; border-color: #F2B632; background: transparent; padding-block: 8px; padding-inline: 24px; margin-bottom: 24px; }
 .slide--dark .slide__body > .grid > * { background: transparent; }
+
+/* Community content is editorial, not another enclosing card. */
+.pitch-community {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  margin: 48px 0 28px;
+}
+.pitch-community__copy { min-width: 0; }
+.pitch-community__copy h3 {
+  margin: 16px 0 20px;
+  max-width: 540px;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.pitch-community__copy > p:last-child {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.85;
+  color: #c5d2f1;
+}
+.pitch-community > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 4px;
+}
+@media (max-width: 767px) {
+  .pitch-community { grid-template-columns: minmax(0, 1fr); margin-top: 36px; }
+}
 .slide__body ol > li, .slide__body ul > li { border-radius: 4px !important; }
 @media (max-width: 767px) {
   .slide__head { padding: 40px 0 32px; }
