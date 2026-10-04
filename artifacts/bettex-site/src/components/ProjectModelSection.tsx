@@ -67,7 +67,7 @@ export function ProjectModelSection() {
           color: #F4F1E8;
           background: #070B1F;
           border-top: 1px solid rgba(43,89,255,.28);
-          padding: clamp(72px, 8vw, 112px) 0 clamp(60px, 7vw, 90px);
+          padding: clamp(72px, 8vw, 112px) 0 clamp(24px, 3vw, 40px);
         }
         .pm-casino-wheel {
           position: absolute; top: -100px; right: max(4vw, 20px);
@@ -134,11 +134,6 @@ export function ProjectModelSection() {
         .pm-panel-foot p { margin: 0; font-size: 13px; line-height: 1.5; }
         .pm-buyback-note { margin-top: 8px !important; color: #87a0dd; font-size: 12px !important; }
         .pm-buyback-note a { color: inherit; text-underline-offset: 3px; }
-        .pm-bottom { display: flex; justify-content: flex-end; padding-top: 19px; }
-         .pm-bottom a { display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid currentColor; padding: 3px 0 5px; color: #F4F1E8; font-size: 13px; font-weight: 700; text-decoration: none; }
-         .pm-bottom a:hover { color: #F2B632; }
-        .pm-bottom a svg { transition: transform .2s ease; }
-        .pm-bottom a:hover svg { transform: translateX(3px); }
         @media (min-width: 768px) {
           .pm-title span { white-space: normal; }
         }
@@ -189,7 +184,6 @@ export function ProjectModelSection() {
           .pm-agent strong { font-size: 11px; }
         }
         @media (prefers-reduced-motion: reduce) {
-           .pm-bottom a svg { transition: none; }
            .pm-profit-arrow { animation: none; }
         }
         .pm-nav { display: none; }
@@ -286,9 +280,6 @@ export function ProjectModelSection() {
           </div>
         </div>
         <CommunityCTA source="participacao" label="Entre na comunidade" note="Tire dúvidas antes de participar." className="!justify-end" />
-        <div className="pm-bottom">
-          <a href="#mercados" data-testid="link-conhecer-mercados">Conheça os mercados <ArrowRight size={16} aria-hidden="true" /></a>
-        </div>
       </div>
     </section>
   );
