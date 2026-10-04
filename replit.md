@@ -8,7 +8,7 @@
 
 ## Regras do projeto
 
-- Navegação canônica: o menu principal contém as páginas Página Inicial, Pitch e Documentação, com navegação na mesma aba. Não abreviar Página Inicial para Início. Não misturar âncoras da homepage nesse menu.
+- Navegação canônica: o menu principal contém Página Inicial, Pitch, Documentação e o botão ABRIR APP, que abre o demo na mesma aba. Não abreviar Página Inicial para Início. Não misturar âncoras da homepage nesse menu.
 - Todos os links internos, incluindo botões, âncoras e referências à documentação, navegam na mesma aba. Nova aba somente para exceções externas, como redes sociais e fontes de pesquisa.
 - Página inicial e Pitch têm seus próprios submenus de âncoras, correspondentes exclusivamente às seções da página aberta. Preservar o idioma selecionado ao trocar de página.
 - Quando a página já tiver seu submenu, não duplicar as seções em dropdowns do menu principal no desktop. Manter links diretos para as páginas e uma única navegação pelas seções.
@@ -302,8 +302,8 @@ Site da BETTEX, projeto de investimento com quatro agentes especializados em mer
 ## Pitch no navegador
 
 - O criador especificou que o pitch é uma apresentação no próprio navegador, não slides ou um deck. Deve ser uma página do site BETTEX, legível tanto no celular quanto no PC.
-- A barra principal deve oferecer Página Inicial, Pitch e Documentação como páginas separadas, na mesma aba. As seções da página inicial e do Pitch ficam em submenus próprios; manter a navegação interna atual da documentação.
-- O acesso ao demo faz parte de Token BETTEX, pelo banner “Acesse o demo ao vivo agora mesmo” e seu botão. Não criar itens próprios “Demo” ou “Aplicativo” nos menus do site para esse acesso; preservar o demo e seu funcionamento.
+- A barra principal deve oferecer Página Inicial, Pitch e Documentação como links de navegação e ABRIR APP como botão diferente e estilizado, na mesma aba. As seções da página inicial e do Pitch ficam em submenus próprios; manter a navegação interna atual da documentação.
+- O acesso ao demo permanece em Token BETTEX, pelo banner “Acesse o demo ao vivo agora mesmo” e seu botão, e volta ao menu principal com o rótulo ABRIR APP. Este botão deve ser visualmente distinto dos demais links, sem devolver cápsulas a toda a navegação. Não criar um item independente no submenu da homepage para o banner.
 
 ## Localização obrigatória
 

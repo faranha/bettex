@@ -35,7 +35,7 @@ const queryClient = new QueryClient();
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 const HOME_PATH = `${BASE_PATH}/`;
 const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
-const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }] as const;
+const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR APP', href: '/demo' }] as const;
 const legacyChapterIds = new Set<string>(chapters.map(({ id }) => id));
 const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
 type Market = {
@@ -75,7 +75,8 @@ function MainLinks({ className, onNavigate, uniform = false }: { className: stri
   const linkProps = usePageLinkProps();
   return <>{mainLinks.map(({ label, href }) => {
     const active = location === href || (href === '/documentacao' && ['/documentation', '/documentacion'].includes(location));
-    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`site-page-link ${uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{label}</a>;
+    const appLink = href === '/demo';
+    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`site-page-link ${appLink ? 'site-page-link--app' : uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{label}{appLink && <ArrowRight size={16} aria-hidden="true" />}</a>;
   })}</>;
 }
 
