@@ -14,7 +14,6 @@ export function InflationOilRisks() {
   const { inflation: i, oil: o, sources: s } = snapshot;
   const date = new Intl.DateTimeFormat(loc, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${o.date}T00:00:00Z`));
   const usd = new Intl.NumberFormat(loc, { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(o.usdPerBarrel);
-  const steps = ['Conflito ou corte de oferta', 'Custos de energia, frete e produção', 'Pressão sobre preços ao consumidor', 'Menos poder de compra'];
 
   return (
     <div id="inflacao-petroleo" className="io" role="region" aria-labelledby="io-t">
@@ -48,11 +47,6 @@ export function InflationOilRisks() {
         </article>
       </div>
 
-      <div className="io-chain">
-        <span className="mono io-label">{t('Cenário de choque, não previsão')}</span>
-        <ol>{steps.map(x => <li key={x}>{t(x)}</li>)}</ol>
-        <p>{t('O repasse ao consumidor é condicional: depende do câmbio, da política de preços e do tempo. Não é garantido, e a alta de preços pode ser localizada em vez de generalizada.')}</p>
-      </div>
     </div>
   );
 }

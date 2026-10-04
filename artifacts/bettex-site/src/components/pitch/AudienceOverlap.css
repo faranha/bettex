@@ -3,8 +3,9 @@
 .pb-overlap h3 { margin: 8px 0 20px; font-size: clamp(1.3rem, 2.4vw, 1.9rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.2; }
 .pb-overlap__body { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: center; }
 .pb-overlap__figure { margin: 0; min-width: 0; }
-.pb-overlap__figure svg { display: block; width: 100%; height: auto; }
+.pb-overlap__figure > svg { display: block; width: 100%; height: auto; overflow: visible; }
 .pb-overlap__figure text { font-family: var(--app-font-sans, sans-serif); font-variant-numeric: tabular-nums; }
+.pb-overlap__svg-role-compact { display: none; }
 .pb-overlap__legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 12px; font-size: 12px; line-height: 1.4; }
 .pb-overlap__legend span { display: inline-flex; align-items: center; gap: 6px; }
 .pb-overlap__legend span::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #2b59ff; flex: none; }
@@ -13,6 +14,7 @@
 .pb-overlap__figure figcaption { margin-top: 8px; color: #c5d2f1; font-size: 12px; line-height: 1.6; }
 .pb-overlap__facts { min-width: 0; }
 .pb-overlap__facts p { margin: 12px 0 0; color: #e0e8fc; font-size: 13px; line-height: 1.65; }
+.pb-overlap__facts .pb-overlap__scope { padding-left: 12px; border-left: 3px solid #f2b632; color: #f4f1e8; font-weight: 600; }
 .pb-overlap__total { padding: 16px; background: #10234d; border-left: 4px solid #f2b632; }
 .pb-overlap__total p { margin: 0; }
 .pb-overlap__total .mono { color: #c5d2f1; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
@@ -20,4 +22,11 @@
 .pb-overlap__math { margin-top: 6px !important; font-size: 13px; font-variant-numeric: tabular-nums; }
 @media (max-width: 800px) { .pb-overlap__body { grid-template-columns: 1fr; } }
 @media (max-width: 639px) { .pb-overlap { padding: 16px; } .pb-overlap__facts p { font-size: 12px; } }
-@media (max-width: 639px) { .pb-overlap__svg-label { display: none; } }
+@media (max-width: 639px) {
+  .pb-overlap__svg-core { font-size: 19px; }
+  .pb-overlap__svg-role { display: none; }
+  .pb-overlap__svg-role-compact { display: block; }
+  .pb-overlap__svg-label { font-size: 19px; }
+  .pb-overlap__svg-unit { font-size: 18px; }
+  .pb-overlap__svg-overlap-unit { font-size: 16px; }
+}

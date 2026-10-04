@@ -1,15 +1,16 @@
-export function PitchArt() {
-  return <svg className="pb-metric__art" viewBox="0 0 240 240" aria-hidden="true" focusable="false">
-    <rect x="14" y="40" width="212" height="160" rx="4" fill="none" stroke="#F4F1E8" strokeWidth="2" opacity=".5" />
-    <line x1="120" y1="40" x2="120" y2="200" stroke="#F4F1E8" strokeWidth="2" opacity=".5" />
-    <circle cx="120" cy="120" r="30" fill="none" stroke="#F4F1E8" strokeWidth="2" opacity=".5" />
-    <rect x="14" y="85" width="38" height="70" fill="none" stroke="#F4F1E8" strokeWidth="2" opacity=".5" />
-    <rect x="188" y="85" width="38" height="70" fill="none" stroke="#F4F1E8" strokeWidth="2" opacity=".5" />
-    <g transform="translate(120 120) scale(1.6)">
-      <circle r="26" fill="#F4F1E8" stroke="#070B1F" strokeWidth="3" />
-      <polygon points="0,-11 10,-3 6,9 -6,9 -10,-3" fill="#070B1F" />
-      <path d="M0 -11V-26M10 -3L24 -9M6 9L15 21M-6 9L-15 21M-10 -3L-24 -9" stroke="#070B1F" strokeWidth="3" fill="none" />
-    </g>
+export function CrowdArt() {
+  return <svg className="pb-metric__art" viewBox="0 0 240 240" aria-hidden="true" focusable="false" data-testid="audience-crowd-icon">
+    <defs>
+      <g id="pitch-crowd-person" stroke="#F4F1E8" strokeWidth="2.5" strokeLinecap="round" fill="#070B1F">
+        <circle r="16" />
+        <path d="M-28 72V46a28 28 0 0 1 56 0v26M-13 72V48M13 72V48" />
+      </g>
+    </defs>
+    <use href="#pitch-crowd-person" transform="translate(45 82)" opacity=".55" />
+    <use href="#pitch-crowd-person" transform="translate(195 82)" opacity=".55" />
+    <use href="#pitch-crowd-person" transform="translate(85 58)" opacity=".8" />
+    <use href="#pitch-crowd-person" transform="translate(155 58)" opacity=".8" />
+    <use href="#pitch-crowd-person" transform="translate(120 112) scale(1.2)" />
   </svg>;
 }
 

@@ -19,7 +19,7 @@ No Pitch, o cenário apocalíptico deve reunir uma pauta clara: evidências de p
 
 **Why:** O criador repetiu que os dados estavam sendo ignorados e não encontrou os gráficos dos EUA quando estavam na seção posterior “Resgatar o futuro”. Pediu explicitamente “estrutura tudo que te pedi, uma pauta, e atende tudo que te pedi”.
 
-**How to apply:** Manter esses cinco temas juntos, visíveis e ordenados no cenário apocalíptico. Não reintroduzir os gráficos americanos contestados para atender à antiga exigência de totais antes/depois. Consultar os materiais enviados e preservar imagens já aprovadas. Separar perdas líquidas observadas, cortes anunciados, previsões atribuídas e a tese extrema do fundador; não somar contagens sobrepostas nem fabricar uma queda agregada.
+**How to apply:** Manter os temas remanescentes juntos, visíveis e ordenados no cenário apocalíptico, respeitando as retiradas posteriores indicadas abaixo. Não reintroduzir os gráficos americanos contestados para atender à antiga exigência de totais antes/depois. Consultar os materiais enviados e preservar imagens já aprovadas. Separar perdas líquidas observadas, cortes anunciados, previsões atribuídas e a tese extrema do fundador; não somar contagens sobrepostas nem fabricar uma queda agregada.
 
 O criador pediu trabalhar mais com gráficos nesse trecho, incluindo a queda das vagas abertas desde o pico de março de 2022 e os dados do Brasil. Isso não revoga a retirada da comparação americana de totais de empregos.
 
@@ -51,7 +51,7 @@ O gráfico brasileiro deve mostrar evolução histórica e a tendência recente 
 
 **How to apply:** Comparar a mesma janela de meses em todos os anos e mostrar recuperações intermediárias, sem forçar queda contínua ou inventar projeções. Distinguir criação líquida de empregos do estoque ocupado; separar inflação registrada, prévia e expectativa. Choques do petróleo são riscos de pressão sobre preços, não prova de uma explosão inflacionária já medida.
 
-Bolha da IA e a tese de perda simultânea de patrimônio e salário precisam de subseção própria dentro da área de Elon Musk, não de uma seção principal fora dela.
+A tese de perda simultânea de patrimônio e salário precisa de subseção própria dentro da área de Elon Musk, não de uma seção principal fora dela.
 
 **Why:** O criador mostrou esses dois blocos e pediu que tivessem “a propria sub secao dentro da area do Elon”.
 
@@ -62,3 +62,9 @@ A área de Elon Musk apresenta a visão de resgate da BETTEX diante do apocalips
 **Why:** O criador esclareceu que “é sobre apresentar a visão de resgate frente ao apocalipse iminente” e pediu um parágrafo claro ligando essa crença à missão de resgatar o futuro agora.
 
 **How to apply:** Explicitar essa relação já na abertura e manter a urgência de agir antes da exclusão ao longo da área. Não reduzir o trecho a críticas a Musk ou a uma lista de sinais econômicos. Apresentar a crença como visão da BETTEX, sem transformar a missão em promessa de renda ou proteção garantida.
+
+Não reintroduzir os quatro trechos que o criador mostrou e mandou retirar: a cadeia “Cenário de choque, não previsão”; o cartão Stanford “19% abaixo” e sua nota; o bloco “A tecnologia pode ser real. O preço pode ser uma bolha.” com as matérias de Reuters e Altman; e o fechamento “Resgatar esse futuro começa agora. Não depois da crise.” com sua nota.
+
+**Why:** O criador revisou a apresentação e pediu explicitamente remover essas quatro partes pelas imagens, substituindo a exigência anterior de manter o bloco de matérias da bolha.
+
+**How to apply:** Preservar os gráficos de vagas e inflação/petróleo, os alertas remanescentes, a tese de patrimônio e salário e Optimus. A retirada dos trechos não autoriza remover o restante da área nem reapresentar previsões como fatos medidos.

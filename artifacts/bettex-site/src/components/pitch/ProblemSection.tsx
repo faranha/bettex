@@ -1,6 +1,6 @@
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import './ProblemSection.css';
-import { PitchArt, TotalIcon, PartialIcon } from './MetricArt';
+import { CrowdArt, TotalIcon, PartialIcon } from './MetricArt';
 import { MarketOpportunity } from './MarketOpportunity';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -18,8 +18,8 @@ export function ProblemSection() {
     <div className="page-wrap pb-problem__wrap">
       <header className="pb-problem__market-head">
         <div className="mono pb-problem__kicker"><span>01 / 10</span><span className="pb-problem__rule" aria-hidden="true" />Problema e oportunidade</div>
-        <h2 id="problema-t" className="display pb-problem__title">O apostador brasileiro.<br /><span>O público e o volume financeiro.</span></h2>
-        <p className="pb-problem__summary">A BETTEX parte de um público que já movimentou bilhões nas apostas. A proposta é um produto de investimento que fale a língua dessas pessoas, com experiência familiar, custos claros e risco de perda explícito.</p>
+        <h2 id="problema-t" className="display pb-problem__title">O público brasileiro.<br /><span>A escala e o volume financeiro.</span></h2>
+        <p className="pb-problem__summary">A BETTEX busca alcançar os públicos brasileiros de apostas e cripto. A proposta é um produto de investimento que fale a língua dessas pessoas, com experiência familiar, custos claros e risco de perda explícito.</p>
       </header>
       <MarketOpportunity />
       <div className="pb-problem__head">
@@ -35,7 +35,7 @@ export function ProblemSection() {
 
       <div className="pb-problem__metrics pitch-metrics">
         {metrics.map(([v, group, t], i) => <div key={v} className={`pb-metric pb-metric--${i}`}>
-          {i === 0 ? <PitchArt /> : i === 1 ? <TotalIcon /> : <PartialIcon />}
+          {i === 0 ? <CrowdArt /> : i === 1 ? <TotalIcon /> : <PartialIcon />}
           <p className="mono pb-metric__group">{group}</p>
           <div className="display pb-metric__value">{v}</div>
           <p className="pb-metric__text">{t}</p>

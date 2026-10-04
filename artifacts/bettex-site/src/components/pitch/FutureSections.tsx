@@ -36,26 +36,14 @@ export function FutureSections() {
           <span className="mono fu-tag">O cenário apocalíptico</span>
           <h3 className="display">Sem emprego. Sem renda. Sem lugar na nova economia.</h3>
           <p>Esse é o apocalipse econômico que acreditamos estar se aproximando: a tecnologia avança, mas pessoas ficam sem trabalho, sem salário e sem uma nova oportunidade. A BETTEX nasce para agir diante dessa ameaça, antes que a exclusão se consolide.</p>
-          <ol className="fu-pauta"><li>EUA: vagas abertas</li><li>Brasil: menos novas vagas</li><li>Inflação, petróleo e conflitos globais</li><li>Alertas de um futuro sem trabalho</li><li>Bolha da IA e risco de ruptura</li><li>Desta vez, patrimônio e salário</li></ol>
+          <ol className="fu-pauta"><li>EUA: vagas abertas</li><li>Brasil: menos novas vagas</li><li>Inflação, petróleo e conflitos globais</li><li>Alertas de um futuro sem trabalho</li><li>Desta vez, patrimônio e salário</li></ol>
           <USVacancyChart />
           <BrazilEmploymentCharts />
           <InflationOilRisks />
           <LaborWarningReports />
-          <div className="fu-evidence fu-evidence--focused">
-            <article>
-              <span className="mono fu-tag">EUA · dados até junho de 2026</span>
-              <p className="display fu-evidence-value">19% abaixo</p>
-              <h4 className="display">Menos oportunidades na entrada do mercado</h4>
-              <p>Em ocupações expostas à IA, o emprego de jovens de 22 a 25 anos ficou 19% abaixo do nível que teria acompanhado seus colegas em funções menos expostas. A diferença aparece sobretudo em menos contratações, não em mais demissões. É uma comparação descritiva, não uma prova de causalidade.</p>
-              <Src href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence">Stanford, 12 ago. 2026</Src>
-            </article>
-          </div>
-          <p className="fu-evidence-limit">Os indicadores têm períodos e métodos diferentes e não devem ser somados. Stanford não encontra eliminação generalizada de empregos na economia; a comparação não prova causalidade da IA.</p>
         </div>
-        <section id="risco-bolha-ia" className="fu-exposed fu-bubble-subsection" aria-labelledby="ai-bubble-title">
+        <section id="risco-bolha-ia" className="fu-exposed fu-bubble-subsection" aria-labelledby="ai-double-loss-title">
           <AIBubbleScenario />
-          <p className="display fu-now">Resgatar esse futuro começa agora. Não depois da crise.</p>
-          <p className="fu-scenario-note">Tese da BETTEX sobre o risco de exclusão, não uma previsão inevitável nem uma promessa de renda do projeto.</p>
         </section>
         <div id="tesla-spacex" className="fu-pair fu-pair--focused">
           <article className="fu-card fu-card--tesla">
