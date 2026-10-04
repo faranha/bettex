@@ -10,6 +10,7 @@ import { FutureSections } from '@/components/pitch/FutureSections';
 import { EconomicComparison } from '@/components/pitch/EconomicComparison';
 import { economicComparisonRows } from '@/components/pitch/EconomicComparisonRows';
 import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
+import { TokenValueMechanisms } from '@/components/pitch/TokenValueMechanisms';
 import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
 import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipationFlow';
 import { PitchObservations } from '@/components/pitch/PitchObservations';
@@ -111,7 +112,7 @@ export function PitchPage() {
       <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A oportunidade da BETTEX é oferecer a esses públicos um produto de investimento com experiência familiar, linguagem acessível e estratégias geridas por IA. O objetivo é redirecionar a busca por retorno financeiro das apostas para a participação em resultados de investimentos em mercados de risco.</p>
       <div className="fu-position">
         <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
-        <p className="display fu-pos-lead">Resgatar o futuro é ampliar o acesso à participação econômica, para que a tecnologia não produza prosperidade apenas para quem já controla o capital.</p>
+        <p className="display fu-pos-lead">Resgatar o futuro, transformando a aposta em investimento.</p>
       </div>
       <SolutionParticipationFlow />
       <div className="mt-8 rounded-2xl bg-[#070B1F] p-6 text-[#F4F1E8]">
@@ -122,27 +123,26 @@ export function PitchPage() {
         </dl>
         <p className="mt-5 text-sm leading-7 text-[#c5d2f1]">
           <span>Exemplo ilustrativo: 10.000 USDC de lucro elegível destinam 5.000 à tesouraria, 2.500 ao pool global dos stakers e 2.500 à carteira de recompra. Os 25% não são uma taxa de retorno individual. Sem peso elegível ou condições de reserva e liquidez, não há split: 100% fica retido. Rodadas encerradas não acumulam direitos a lucros futuros.</span>{' '}
-          <span>A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. O destino dos tokens adquiridos permanece pendente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.</span>
+          <span>A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. Todos os tokens adquiridos nas recompras são queimados permanentemente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.</span>
         </p>
       </div>
       <Doc hash="documentacao-oportunidade">Ver regras na documentação</Doc>
 
-    <Sec id="diferencial" summary="O usuário participa dos resultados do projeto, sem escolher cada operação ou depender apenas da revenda do token." kicker="Diferenciação proposta" dark title={<>A diferença está <span className="text-[#F2B632]">no direito econômico.</span></>}>
+    <Sec id="diferencial" summary="O usuário participa dos resultados do projeto, sem escolher cada operação ou depender apenas da revenda do token." kicker="Diferenciação proposta" title={<>A diferença está <span className="text-[#2B59FF]">no direito econômico.</span></>}>
       <EconomicComparison rows={economicComparisonRows} />
-      <PitchObservations dark>
+      <PitchObservations>
         <p>Custos, direitos e regras das alternativas variam conforme a plataforma e o contrato.</p>
         <p>Nenhuma promessa de que a IA supere o mercado. O desempenho líquido das estratégias precisa ser medido contra uma referência.</p>
       </PitchObservations>
     </Sec>
     </Sec>
 
-    <Sec id="fundador" hero="./fred-azevedo.png" summary="Aquisição founder-led, com audiência própria e experiência de distribuição." n="06" kicker="Fundador e distribuição" dark title={<>Experiência de aquisição <span className="text-[#F2B632]">e canais próprios.</span></>}>
+    <Sec id="fundador" hero="pitch-illustrations/pitch-startup-team.webp" summary="Aquisição founder-led, com audiência própria e experiência de distribuição." n="06" kicker="Fundador e distribuição" dark title={<>Experiência de aquisição <span className="text-[#F2B632]">e canais próprios.</span></>}>
       <FounderProfile dark portrait noDashes thirdPerson />
       <div className="mt-6">
         <Card dark label="Alinhamento do fundador" title="Sem salário. Sem retiradas da empresa.">{g.founder.bettexEarnings}</Card>
       </div>
       <Doc dark hash="documentacao-fundador">Apresentação na documentação</Doc>
-      <PitchObservations dark><p>Meta inicial: primeiros {g.launch.initialUsersGoal.toLocaleString('pt-BR')} usuários elegíveis e ativados no {g.launch.country}. A audiência dos canais se sobrepõe e não equivale a clientes; conversão e retenção da BETTEX serão medidas por coorte.</p></PitchObservations>
     </Sec>
 
     <section id="tokenomics" aria-labelledby="economia-t">
@@ -173,6 +173,7 @@ export function PitchPage() {
 
     <Sec id="token" kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Três alocações.</span></>}>
       <PitchTokenCharts />
+      <TokenValueMechanisms />
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <Card dark label="Público" title="65% · 650 milhões">Tokens destinados à venda pública, cujo preço primário financia integralmente a tesouraria.</Card>
         <Card dark label="Fundador" title="20% · 200 milhões">Livre destinação após a liberação, sem antecipação do vesting.</Card>

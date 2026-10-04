@@ -11,7 +11,7 @@ const PHOTO = `${import.meta.env.BASE_URL}pitch-future/elon-musk.jpg`;
 export function FutureSections() {
   return <>
     <section id="agora" aria-labelledby="agora-t" className="slide fu fu--one">
-      <ChapterHero id="agora" n="04" kicker="Ambiente externo" src="pitch-future/city-bombardment-no-flags.jpg" title={<>Ambiente externo.</>} summary="Musk, automação do trabalho e o que está acontecendo na economia real." />
+      <ChapterHero id="agora" n="04" kicker="Ambiente externo" src="pitch-future/urban-poverty-sao-paulo-2024.jpg" credit={{ label: 'Paulo Pinto / Agência Brasil · São Paulo, 2024', href: 'https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2024-02/populacao-em-situacao-de-rua-aumenta-17-vezes-em-sao-paulo' }} title={<>Ambiente externo.</>} summary="Musk, automação do trabalho e o que está acontecendo na economia real." />
       <div className="page-wrap">
         <div id="cenario-exclusao" className="fu-scenario">
           <div className="fu-scenario-opening">

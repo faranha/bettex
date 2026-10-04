@@ -108,9 +108,16 @@ img, svg, video { max-width: 100%; }
 #solucao .slide__head .mono { color: #F2B632; }
 #solucao .slide__head p { color: #e3eaff; }
 .slide__headin { position: relative; }
+#solucao #diferencial > .slide__head { background: transparent; color: #070B1F; padding-block: 40px 0; }
+#solucao #diferencial > .slide__head .mono { color: #2B59FF; }
+#solucao #diferencial > .slide__head p { color: #183173; }
+#diferencial > .slide__head > .page-wrap, #diferencial > .slide__body { width: 100%; }
+#diferencial > .slide__body { padding-top: 28px; }
+#diferencial .ecmp__hint { color: #183173; }
 .slide__body { padding-block: 40px 64px; }
 .slide--dark .slide__body { border-top: 4px solid #F2B632; }
 .slide--dark .slide__head + .slide__body { border-top: 0; }
+#fundador > .chero + .slide__body { border-top: 0; }
 /* Varied compositions replacing card grids */
 .slide__body > .grid:not(.pitch-metrics) { gap: 0; }
 .slide__body > .grid > * { border-radius: 0 !important; }

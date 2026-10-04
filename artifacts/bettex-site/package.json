@@ -13,6 +13,8 @@
     "check:locales": "node scripts/check-locales.mjs",
     "check:pitch": "python scripts/test_pitch_narrative.py && python scripts/verify_pitch_narrative.py",
     "check:pitch-research": "node scripts/check-pitch-research.mjs",
+    "check:responsive": "node scripts/check-responsive.mjs",
+    "check:seo": "node scripts/check-seo.mjs",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

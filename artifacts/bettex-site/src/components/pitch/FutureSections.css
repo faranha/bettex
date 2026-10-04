@@ -1,7 +1,7 @@
-.fu--one > .chero .chero__bg img { object-position: 72% 43%; }
+.fu--one > .chero .chero__bg img { object-position: 72% 55%; }
 .fu--one > .chero .chero__bg::after { background: linear-gradient(90deg, rgba(7,11,31,.95) 0%, rgba(7,11,31,.8) 38%, rgba(7,11,31,.35) 75%, rgba(7,11,31,.2) 100%); }
 @media (max-width: 767px) {
-  .fu--one > .chero .chero__bg img { object-position: 80% 43%; }
+  .fu--one > .chero .chero__bg img { object-position: 80% 55%; }
   .fu--one > .chero .chero__bg::after { background: linear-gradient(90deg, rgba(7,11,31,.88), rgba(7,11,31,.6)); }
 }
 .fu { padding-block: clamp(44px, 6vw, 84px); }
