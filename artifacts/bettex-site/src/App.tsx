@@ -62,11 +62,12 @@ function usePageLinkProps() {
 
 function Logo() {
   const linkProps = usePageLinkProps();
-  return <a {...linkProps} href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX, voltar ao início">
+  return <a {...linkProps} href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX ALFA, voltar ao início">
     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[#768BB5]/30 bg-[#0D1530] shadow-[0_3px_10px_rgba(0,9,33,.12)]">
       <BettexMark slate className="block h-[26px] w-[26px]" />
     </span>
     <span className="display text-[22px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
+    <span data-i18n="raw" data-testid="brand-alpha-badge" className="mono shrink-0 rounded border border-[#F2B632]/60 bg-[#F2B632]/10 px-1.5 py-1 text-[9px] font-bold leading-none tracking-[.12em] text-[#F2B632]">ALFA</span>
   </a>;
 }
 

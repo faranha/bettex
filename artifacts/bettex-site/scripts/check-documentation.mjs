@@ -20,9 +20,12 @@ for (const [i, row] of vestingSchedule.entries()) {
   assert.equal(row.cumulative, totals.total);
 }
 assert.deepEqual(totals, { publicSale: 650000000, team: 200000000, investors: 150000000, total: documentationTokenomics.maxSupply });
-const pilot = JSON.parse(await read('src/lib/business-plan.json'));
-assert.deepEqual([pilot.pilotCapitalUsd, pilot.treasuryUsd, pilot.launchUsd, pilot.months, pilot.usersGoal, pilot.monthlyActiveUsersGoal], [100000, 50000, 50000, 3, 5000, 1000]);
-assert.deepEqual(pilot.monthlyOperationsPerActive.map(n => pilot.monthlyActiveUsersGoal * n * 2.5), [2500, 25000, 75000]);
+const commercialLink = await read('src/components/BusinessPlan.tsx');
+assert.match(commercialLink, /pitch#publico/);
+assert(!/business-plan\.json|DocFacts|<table|<h[234]|MAU/.test(commercialLink), 'Documentation contains only a Pitch link, not launch plans or forecasts.');
+const materials = JSON.parse(await read('src/lib/documentation-materials.json'));
+assert(!/piloto|MAU|5\.000 usuários|Capital do piloto/i.test(JSON.stringify(materials)), 'Downloads must not retain launch targets or projections.');
+assert.equal(materials.pitchLink.href, 'https://bettex.ai/pitch#publico');
 const chapters = await read('src/components/WhitepaperChapters.tsx');
 const order = [...chapters.matchAll(/\{ id: '(documentacao-[\w-]+)', title:/g)].map(m => m[1]);
 assert.equal(order.length, 13);
@@ -57,4 +60,4 @@ assert(!await fs.access(new URL('../src/lib/entity-team.json', import.meta.url))
 for (const obsoleteFile of ['fee-projection-scenarios.json', 'service-fee-taxes.ts', 'operating-targets.json']) {
   assert(!await fs.access(new URL(`../src/lib/${obsoleteFile}`, import.meta.url)).then(() => true, () => false));
 }
-console.log('Documentation: chapter order, 8 agents, pilot scenarios, 36-month integer vesting and removal of obsolete rules verified.');
+console.log('Documentation: chapter order, 8 agents, commercial plans restricted to the Pitch, 36-month integer vesting and removal of obsolete rules verified.');

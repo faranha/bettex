@@ -48,7 +48,7 @@ export function t(text: string): string {
     }
   }
   // Technical identifiers and amounts are language-independent, not prose.
-  if (!result && (!/[A-Za-zÀ-ÿ]/.test(key) || /^(?:0x[a-f\d]+|(?:US\$|R\$)\s?[\d.,]+|[A-Z]{1,6}[/-][A-Z\d]{1,6}|[A-Z]{1,4}\s?[\d.,]+|[\d.,]+\s?(?:BETTEX|USDC|ETH|USD|BRL)|[a-z\d_]+(?:[.:/_-][a-z\d_]+)+)$/i.test(key))) return text;
+  if (!result && (!/[A-Za-zÀ-ÿ]/.test(key) || /^(?:0x[a-f\d]+|[-−]?(?:US\$|R\$)\s?[\d.,]+|[A-Z]{1,6}[/-][A-Z\d]{1,6}|[A-Z]{1,4}\s?[\d.,]+|[-−]?[\d.,]+\s?(?:BETTEX|USDC|ETH|USD|BRL|US\$|R\$)|[a-z\d_]+(?:[.:/_-][a-z\d_]+)+)$/i.test(key))) return text;
   if (!result) {
     missingMessages.add(key);
     if (translationAudit) return text;

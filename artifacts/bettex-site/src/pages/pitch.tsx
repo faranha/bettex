@@ -12,6 +12,8 @@ import { economicComparisonRows } from '@/components/pitch/EconomicComparisonRow
 import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
 import { TokenValueMechanisms } from '@/components/pitch/TokenValueMechanisms';
 import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
+import { RoadmapSection } from '@/components/RoadmapSection';
+import { LaunchSimulation } from '@/components/pitch/LaunchSimulation';
 import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipationFlow';
 import { PitchObservations } from '@/components/pitch/PitchObservations';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
@@ -137,7 +139,7 @@ export function PitchPage() {
     </Sec>
     </Sec>
 
-    <Sec id="fundador" hero="pitch-illustrations/pitch-startup-team.webp" summary="Aquisição founder-led, com audiência própria e experiência de distribuição." n="06" kicker="Fundador e distribuição" dark title={<>Experiência de aquisição <span className="text-[#F2B632]">e canais próprios.</span></>}>
+    <Sec id="fundador" hero="pitch-illustrations/pitch-startup-team.webp" summary="Experiência no lançamento e na administração de operações, com IA e serviços externos especializados." n="06" kicker="Fundador" dark title={<>Experiência internacional. <span className="text-[#F2B632]">Fundador à frente da BETTEX.</span></>}>
       <FounderProfile dark portrait noDashes thirdPerson />
       <div className="mt-6">
         <Card dark label="Alinhamento do fundador" title="Sem salário. Sem retiradas da empresa.">{g.founder.bettexEarnings}</Card>
@@ -179,7 +181,6 @@ export function PitchPage() {
           </tbody>
         </table>
       </div>
-      <Doc hash="documentacao-plano-negocios">Plano-base de negócios na documentação</Doc>
       <PitchObservations><p>Antes de custos externos de rede e conversão. Movimentos de US$ 10 ou 15 e saques frequentes são hipóteses do fundador, não ticket ou disposição medidos. O modelo financeiro ainda não foi recalibrado para tickets pequenos; volumes e CAC antigos não são dados observados.</p></PitchObservations>
     </Sec>
 
@@ -203,18 +204,25 @@ export function PitchPage() {
     </Sec>
     </section>
 
-    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="Meta de 1.000 usuários nos primeiros três meses de operação, incluindo os primeiros compradores, sem custo de aquisição para a BETTEX." n="08" kicker="Go to market no Brasil" dark title={<>Aquisição orgânica. <span className="text-[#F2B632]">Financiada pelo fundador.</span></>}>
-      <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo vai financiar a aquisição inicial com seu orçamento corrente. Sua audiência no Instagram entra na comunidade do Telegram e segue para o aplicativo BETTEX, trazendo os primeiros compradores e usuários para validar o produto, sem cobrar esse custo da empresa.</p>
+    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="A fase ALFA está em andamento: validação da demanda pelo produto com um lançamento mock e o demo da BETTEX." n="08" kicker="Fase atual e próximos passos" dark title={<>Fase atual. <span className="text-[#F2B632]">ALFA</span></>}>
+      <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
+        <span className="mono">FASE ATUAL · ALFA</span>
+        <strong>Validação da demanda em andamento</strong>
+        <p>A validação da demanda já está em andamento com um demo. Esta é a fase atual do projeto; o demo é demonstrativo e não realiza operações financeiras reais.</p>
+        <a href={`${BASE}/demo`}>Acessar o demo para validação</a>
+      </aside>
+      <RoadmapSection id="pitch-roadmap" />
+      <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.</p>
       <FounderLaunchFunnel />
-      <div className="pitch-community">
+      <LaunchSimulation />
+      <div className="pitch-community" id="pitch-community">
         <div className="pitch-community__copy">
           <p className="mono text-[11px] font-bold uppercase tracking-[.18em] text-[#5F86FF]">Community-driven</p>
           <h3 className="display">Construído com a comunidade.</h3>
-          <p>A proposta é construir com os usuários: ouvir feedback, validar melhorias e estimular recomendações orgânicas. A comunidade no Telegram conecta aquisição, uso do aplicativo e evolução do produto.</p>
+          <p>A proposta é construir com os usuários: ouvir feedback, validar melhorias e estimular recomendações orgânicas. A comunidade no Telegram reúne dúvidas e feedback para orientar a evolução do produto.</p>
         </div>
-        <img src={`${BASE}/pitch-illustrations/pitch-online-community.webp`} alt={t('Celular com aplicativos de redes sociais e Telegram, representando a comunidade online')} width={1400} height={933} loading="lazy" decoding="async" />
+        <img src={`${BASE}/pitch-illustrations/pitch-community-people-cutout.webp`} alt={t('Pessoas sorrindo e interagindo com notebook, tablet e celular, em um recorte sem fundo com elementos tecnológicos')} width={1021} height={886} loading="lazy" decoding="async" />
       </div>
-      <Doc dark hash="documentacao-aquisicao-retencao">Plano de aquisição e retenção na documentação</Doc>
       <PitchObservations dark><p>A validação acompanha a primeira compra elegível, o primeiro uso útil e o retorno dos usuários. Compradores e usuários ativados serão medidos separadamente; a meta não representa resultados já alcançados. Oferta e publicidade dependem de revisão jurídica e elegibilidade.</p></PitchObservations>
     </Sec>
 

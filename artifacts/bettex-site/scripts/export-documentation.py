@@ -12,7 +12,6 @@ lib = app / "src/lib"
 out = app / "public/downloads"
 out.mkdir(parents=True, exist_ok=True)
 materials = json.loads((lib / "documentation-materials.json").read_text())
-pilot = json.loads((lib / "business-plan.json").read_text())
 fees = json.loads((lib / "service-fee-proposal.json").read_text())["fees"]
 catalogue = json.loads((lib / "locales/translations.json").read_text())
 ns = "http://schemas.openxmlformats.org"
@@ -97,6 +96,10 @@ for lang in ("pt", "en", "es"):
         blocks.append(f'<h2>{escape(t(section["title"]))}</h2>')
         for p in section["paragraphs"]:
             paragraphs.append(t(p)); blocks.append(f"<p>{escape(t(p))}</p>")
+    pitch_link = materials["pitchLink"]
+    pitch_href = pitch_link["href"] if lang == "pt" else pitch_link["href"].replace("/pitch", f"/{lang}/pitch", 1)
+    paragraphs.append(f'{t(pitch_link["label"])}: {pitch_href}')
+    blocks.append(f'<p><a href="{escape(pitch_href, quote=True)}">{escape(t(pitch_link["label"]))}</a></p>')
     paragraphs.append("https://www.linkedin.com/in/fredazevedo85/")
     stem = out / f"bettex-entidade-unica{suffix}"
     stem.with_suffix(".md").write_text("\n\n".join(paragraphs))
@@ -105,12 +108,10 @@ for lang in ("pt", "en", "es"):
     pdf(stem.with_suffix(".pdf"), paragraphs)
     labels = materials["workbook"]
     c = {v:t(v) for v in labels["columns"]}
-    pilot_rows = [[c["Item"],c["Valor"]]] + [[t(label),pilot[key]] for label,key in zip(labels["pilotLabels"],["pilotCapitalUsd","treasuryUsd","launchUsd","usersGoal","monthlyActiveUsersGoal"])]
-    pilot_rows += [[""],[c["Operações por ativo"],c["Operações tarifadas"],c["Receita bruta"]]] + [[n,pilot["monthlyActiveUsersGoal"]*n,pilot["monthlyActiveUsersGoal"]*n*2.5] for n in pilot["monthlyOperationsPerActive"]]
     fee_rows = [[c["Operação"],c["Tarifa"],c["Incidência"],c["Escopo"]]] + [[t(f["operation"]),f["amountUsd"],t(f["basis"]),t(f["scope"])] for f in fees]
-    sheets = [(t(labels["pilot"]),pilot_rows),(t(labels["fees"]),fee_rows),(t(labels["vesting"]),[[c[x] for x in labels["columns"][9:]]] + vesting),(t(labels["rules"]),[[p] for p in paragraphs])]
+    sheets = [(t(labels["fees"]),fee_rows),(t(labels["vesting"]),[[c[x] for x in labels["columns"][4:]]] + vesting),(t(labels["rules"]),[[p] for p in paragraphs])]
     xlsx(out / f"bettex-taxas-fundacao{suffix}.xlsx", sheets)
-    print(f"Exported {lang}: current entity PDF/DOCX/HTML/MD, pilot, fees and 36-month vesting.")
+    print(f"Exported {lang}: entity and rules PDF/DOCX/HTML/MD with Pitch reference, fees and 36-month vesting.")
 
 # Explicitly excluded research download, not an application source.
 for file in out.glob("bettex-publico-oportunidade*.md"):

@@ -18,14 +18,13 @@
     "country": "Brasil",
     "angelFundingUse": "100% dos aportes de investidores-anjo serão destinados ao produto, à tecnologia e ao marketing. Os recursos financiam desenvolvimento, infraestrutura e automação, além de marketing, sem pagamento de salários e sem retiradas para o fundador.",
     "initialUsersGoal": 1000,
-    "strategy": "Aquisição orgânica nos primeiros três meses de operação, financiada por Fred Azevedo com seu orçamento corrente, sem custo de aquisição para a BETTEX. O funil parte do Instagram, passa pela comunidade no Telegram e leva ao aplicativo BETTEX para trazer os primeiros compradores e usuários e validar o produto.",
-    "goalDefinition": "Meta de primeiros 1.000 usuários únicos no Brasil nos três primeiros meses de operação, com cadastro elegível e ativação no produto. Os primeiros compradores também serão trazidos pelo fundador; compradores, usuários ativados, seguidores e interessados serão medidos separadamente. É uma meta, não tração já realizada.",
-    "funnel": ["Instagram", "Telegram", "Aplicativo BETTEX"],
+    "strategy": "Plano inicial financiado por Fred Azevedo com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, a compreensão da proposta e a experiência de uso. A validação já está em andamento com um demo, na fase ALFA do projeto.",
+    "goalDefinition": "Meta de primeiros 1.000 usuários únicos no Brasil nos três primeiros meses de operação, com cadastro elegível e ativação no produto. Interesse, compradores e usuários ativados serão medidos separadamente. É uma meta, não tração comprovada.",
+    "funnel": ["Interesse no produto", "Demo BETTEX", "Feedback e validação"],
     "channels": [
-      {"name": "Telegram", "purpose": "Relacionamento, perguntas e feedback; convites para retornar ao site e conhecer a compra do token."},
-      {"name": "Instagram", "purpose": "Conteúdo do fundador, vídeos curtos e transmissões sobre a tese, riscos, custos e evolução do projeto."},
-      {"name": "YouTube", "purpose": "Conteúdo aprofundado sobre funcionamento, direitos, validações e limites das estratégias."},
-      {"name": "X", "purpose": "Atualizações, decisões e discussões abertas sobre o desenvolvimento."}
+      {"name": "Interesse no produto", "purpose": "Medir o interesse pela proposta da BETTEX."},
+      {"name": "Demo BETTEX", "purpose": "Testar o uso do aplicativo em um ambiente demonstrativo."},
+      {"name": "Feedback e validação", "purpose": "Avaliar compreensão, utilidade e intenção de uso."}
     ],
     "brandNarrative": "A tese central é a substituição crescente de trabalho humano por IA e robótica e o risco de exclusão dos ganhos para quem depende exclusivamente do salário. BETTEX propõe participação nos lucros elegíveis de estratégias geridas por IA numa economia programável, com regras compreensíveis, gestão responsável e prestação de contas. É visão do fundador, não previsão comprovada do fim de todos os empregos. Não usar medo de desemprego para pressionar compras, nem apresentar o token como tratamento, recuperação de perdas ou renda garantida."
   },

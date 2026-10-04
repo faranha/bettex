@@ -12,10 +12,10 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2971 >>
+<< /Length 3049 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(BETTEX — entidade, piloto e regras) Tj T*
+(BETTEX — entidade e regras) Tj T*
 () Tj T*
 (Empresa e administração) Tj T*
 () Tj T*
@@ -35,21 +35,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Transparência, compreensão, responsabilidade e prestação de contas orientam a operação, sem) Tj T*
 (renda ou proteção de capital garantidas.) Tj T*
 () Tj T*
-(Piloto e receita) Tj T*
-() Tj T*
-(Capital do piloto: US$ 100 mil, sendo US$ 50 mil para tesouraria e US$ 50 mil para lançamento.) Tj T*
-(Meta aos três meses: 5.000 usuários e 1.000 MAU. Aportes de investidores têm livre alocação; a) Tj T*
-(destinação do piloto não é um split geral.) Tj T*
-() Tj T*
-(Fred conduz aquisição pelos próprios canais e audiência, com IA e serviços externos) Tj T*
-(necessários. Lançamento inclui impulsionamento, parcerias, segurança, mídia paga nos perfis do) Tj T*
-(fundador e redes próprias.) Tj T*
-() Tj T*
-(Receita de serviços = operações tarifadas  x  US$ 2,50. Cenários de 1, 10 e 30 operações por) Tj T*
-(ativo consideram 1.000 MAU; 30 ilustra saques diários, sem presumir saldo ou adoção. Receita) Tj T*
-(não é lucro: custos identificados e tributos vêm antes do líquido. Não há orçamento mensal ou) Tj T*
-(data de equilíbrio presumidos.) Tj T*
-() Tj T*
 (Token, captação e queima) Tj T*
 () Tj T*
 (Emissão de 1 bilhão de BETTEX: 65% venda pública, 20% Fundador e equipe, 15% investidores.) Tj T*
@@ -63,16 +48,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (carteira exclusiva de recompra. Sem pesos, reservas ou liquidez suficientes, 100% fica na) Tj T*
 (tesouraria, sem split futuro. Compra usa autorização administrativa; todo BETTEX adquirido é) Tj T*
 (queimado permanentemente. Carteira exclusiva não é o mecanismo de burn.) Tj T*
-ET
-endstream
-endobj
-6 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
-endobj
-7 0 obj
-<< /Length 2373 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Staking e sequência fiscal) Tj T*
 () Tj T*
@@ -88,6 +63,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (aplicável antes do lucro elegível e split. Retenções aplicáveis são resolvidas antes do crédito) Tj T*
 (líquido. Provisão não é recolhimento; contabilizar e pagar a mesma obrigação não permite dupla) Tj T*
 (dedução. Não existe isenção pessoal universal.) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1484 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Somente USDC confirmado e conciliado entra no saldo disponível. Envios incertos não autorizam) Tj T*
 (repetição nem são recursos recuperados. Correções mantêm histórico e efeitos únicos, sem débito) Tj T*
@@ -109,6 +94,8 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (ações. Consultas públicas Arbitrum/Gamma foram verificadas; demais exemplos sem acesso privado) Tj T*
 (são simulações. Não houve operações com dinheiro real.) Tj T*
 () Tj T*
+(Plano comercial e lançamento no Pitch: https://bettex.ai/pitch#publico) Tj T*
+() Tj T*
 (https://www.linkedin.com/in/fredazevedo85/) Tj T*
 () Tj T*
 ET
@@ -122,9 +109,9 @@ xref
 0000000121 00000 n 
 0000000218 00000 n 
 0000000344 00000 n 
-0000003367 00000 n 
-0000003493 00000 n 
+0000003445 00000 n 
+0000003571 00000 n 
 trailer << /Size 8 /Root 1 0 R >>
 startxref
-5918
+5107
 %%EOF

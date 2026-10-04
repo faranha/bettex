@@ -303,16 +303,19 @@
 .roadmap__place-date,
 .roadmap__stop--featured .roadmap__place-date { background: var(--sb); color: var(--sd); }
 .roadmap__stop--featured .roadmap__place { border-top-color: var(--sc); }
-.roadmap__stop--featured .roadmap__icon, .roadmap__stop--6 .roadmap__icon { color: #070B1F; }
+.roadmap__stop--featured .roadmap__icon, .roadmap__stop--7 .roadmap__icon { color: #070B1F; }
 .roadmap__stop--featured .roadmap__place-number,
 .roadmap__stop--featured .roadmap__place-number span,
 .roadmap__stop--featured .roadmap__place-tag { color: var(--sc); }
 .roadmap__stop--1 { --sc: #2B59FF; --sb: #E3EAFF; --sd: #1B3FC4; }
-.roadmap__stop--2 { --sc: #F2B632; --sb: #FFF1CC; --sd: #8A5A00; }
-.roadmap__stop--3 { --sc: #0E9F6E; --sb: #D9F5E9; --sd: #0A6B4A; }
-.roadmap__stop--4 { --sc: #8B4DE0; --sb: #EBDDFB; --sd: #5E2BA8; }
-.roadmap__stop--5 { --sc: #E8505B; --sb: #FDE0E2; --sd: #A4262F; }
-.roadmap__stop--6 { --sc: #0EA5C6; --sb: #D6F3FA; --sd: #0A6A82; }
+.roadmap__stop--2 { --sc: #2B59FF; --sb: #E3EAFF; --sd: #1B3FC4; }
+.roadmap__stop--3 { --sc: #F2B632; --sb: #FFF1CC; --sd: #8A5A00; }
+.roadmap__stop--4 { --sc: #0E9F6E; --sb: #D9F5E9; --sd: #0A6B4A; }
+.roadmap__stop--5 { --sc: #8B4DE0; --sb: #EBDDFB; --sd: #5E2BA8; }
+.roadmap__stop--6 { --sc: #E8505B; --sb: #FDE0E2; --sd: #A4262F; }
+.roadmap__stop--7 { --sc: #0EA5C6; --sb: #D6F3FA; --sd: #0A6A82; }
+.roadmap__stop--current .roadmap__place { border-color: #2B59FF; box-shadow: 0 0 0 2px rgba(43,89,255,.12), 0 13px 27px rgba(7,11,31,.06); }
+.roadmap__current-badge { align-self: flex-start; margin-top: 10px; padding: 7px 10px; border-radius: 6px; background: #F2B632; color: #070B1F; font: 700 12px/1.3 var(--app-font-mono); }
 @media (prefers-reduced-motion: reduce) {
   .roadmap__place:hover .roadmap__icon { transform: none; }
 }

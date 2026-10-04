@@ -12,10 +12,10 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2980 >>
+<< /Length 3048 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(BETTEX — entidad, piloto y reglas) Tj T*
+(BETTEX — entidad y reglas) Tj T*
 () Tj T*
 (Empresa y administración) Tj T*
 () Tj T*
@@ -36,21 +36,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (robótica. Transparencia, comprensión, responsabilidad y rendición de cuentas orientan la) Tj T*
 (operación, sin ingresos ni protección de capital garantizados.) Tj T*
 () Tj T*
-(Piloto y ingresos) Tj T*
-() Tj T*
-(Capital del piloto: US$ 100 mil, siendo US$ 50 mil para tesorería y US$ 50 mil para) Tj T*
-(lanzamiento. Meta a los tres meses: 5.000 usuarios y 1.000 MAU. Aportes de inversores tienen) Tj T*
-(libre asignación; el destino del piloto no es un split general.) Tj T*
-() Tj T*
-(Fred conduce adquisición por los propios canales y audiencia, con IA y servicios externos) Tj T*
-(necesarios. Lanzamiento incluye impulsión, alianzas, seguridad, medios pagados en los perfiles) Tj T*
-(del fundador y redes propias.) Tj T*
-() Tj T*
-(Ingresos por servicios = operaciones tarifadas  x  US$ 2,50. Escenarios de 1, 10 y 30) Tj T*
-(operaciones por activo consideran 1.000 MAU; 30 ilustra retiros diarios, sin presumir saldo o) Tj T*
-(adopción. Los ingresos no son ganancia: los costos identificados y los tributos van antes del) Tj T*
-(neto. No hay presupuesto mensual o fecha de equilibrio presumidos.) Tj T*
-() Tj T*
 (Token, captación y quema) Tj T*
 () Tj T*
 (Emisión de 1 billón de BETTEX: 65% venta pública, 20% Fundador y equipo, 15% inversores.) Tj T*
@@ -63,16 +48,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (El resultado elegible, tras tributos y controles, recibe 50% tesorería, 25% staking y 25%) Tj T*
 (billetera exclusiva de recompra. Sin pesos, reservas o liquidez suficientes, el 100% queda en) Tj T*
-ET
-endstream
-endobj
-6 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
-endobj
-7 0 obj
-<< /Length 2683 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (la tesorería, sin split futuro. La compra usa autorización administrativa; todo BETTEX) Tj T*
 (adquirido es quemado permanentemente. La billetera exclusiva no es el mecanismo de quema.) Tj T*
 () Tj T*
@@ -88,6 +63,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Los tributos imputables a la entidad son determinados, descontados y pagados según la) Tj T*
 (obligación aplicable antes de la ganancia elegible y split. Las retenciones aplicables se) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1762 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (resuelven antes del crédito líquido. La provisión no es pago; contabilizar y pagar la misma) Tj T*
 (obligación no permite doble deducción. No existe exención personal universal.) Tj T*
 () Tj T*
@@ -111,6 +96,8 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (prueba acceso a acciones. Consultas públicas Arbitrum/Gamma fueron verificadas; otros ejemplos) Tj T*
 (sin acceso privado son simulaciones. No hubo operaciones con dinero real.) Tj T*
 () Tj T*
+(Plan comercial y lanzamiento en el Pitch: https://bettex.ai/es/pitch#publico) Tj T*
+() Tj T*
 (https://www.linkedin.com/in/fredazevedo85/) Tj T*
 () Tj T*
 ET
@@ -124,9 +111,9 @@ xref
 0000000121 00000 n 
 0000000218 00000 n 
 0000000344 00000 n 
-0000003376 00000 n 
-0000003502 00000 n 
+0000003444 00000 n 
+0000003570 00000 n 
 trailer << /Size 8 /Root 1 0 R >>
 startxref
-6237
+5384
 %%EOF

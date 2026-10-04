@@ -9,6 +9,12 @@ O criador definiu para a demonstração: “não tem banco de dados, é tudo pro
 
 **How to apply:** Não introduzir banco de dados, autenticação real, custódia, pagamentos, envio blockchain ou operações reais de agentes como parte dessa demonstração. Apresentar os comportamentos como simulações visuais e respeitar as correções mais recentes do criador sobre as regras.
 
+A fase atual do projeto é ALFA; a validação da demanda já está em andamento com um lançamento mock usando um demo, antes da preparação técnica e jurídica. O Roadmap deve identificar essa fase com “Estamos aqui”. O logotipo no topo e no rodapé deve incluir o selo ALFA.
+
+**Why:** O criador definiu expressamente a fase atual e pediu comunicar a validação em andamento, junto dos dois selos.
+
+**How to apply:** Distinguir o demo em validação das metas futuras de compradores e usuários. Manter ALFA junto da marca nas duas posições enquanto essa for a fase definida pelo criador, sem afirmar operações financeiras reais. A abertura dessa área no Pitch apresenta “Fase atual — ALFA” e, depois, o mesmo Roadmap da homepage, com etapas e cronograma iguais.
+
 No mobile, as telas devem aparecer antes das imagens, ícones e símbolos que exemplificam cada área.
 
 **Why:** O criador disse que as ilustrações antes da tela dificultam ver o demo.
