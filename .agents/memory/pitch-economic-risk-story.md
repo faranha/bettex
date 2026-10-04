@@ -15,11 +15,37 @@ O vídeo da USA TODAY sobre Musk e a “era da abundância”, indicado pelo usu
 
 **How to apply:** Preservar essa sequência ao editar o trecho. Distinguir a fala de Musk da interpretação crítica da BETTEX, sem afirmar que o vídeo prova intenção de enganar.
 
+O fundo do hero de Ambiente externo deve representar guerra, fome e miséria, não o robô da Tesla.
+
+**Why:** O criador pediu essa direção visual especificamente para o hero de Ambiente externo.
+
+**How to apply:** Preservar os textos e o restante da seção nessa troca. A direção não exige retirar Optimus dos outros trechos sobre automação.
+
+O cartão “Optimus e a substituição do trabalho humano” pertence ao item 2 de Problema, não a Ambiente externo.
+
+**Why:** O criador mostrou o cartão e pediu movê-lo para o item 2 e tirá-lo de Ambiente externo.
+
+**How to apply:** Preservar imagem, texto, fonte e observação sobre ausência de parceria; não duplicar o cartão entre as duas áreas.
+
+A foto de Musk deve ficar integrada à abertura de “O cenário apocalíptico”, não isolada no bloco “Musk e a promessa de prosperidade” acima.
+
+**Why:** O criador mostrou a separação entre retrato e cenário e pediu integrar a foto ao cenário.
+
+**How to apply:** Manter retrato e crédito junto da introdução do cenário, com leitura adaptada ao desktop e ao celular. Não duplicar a imagem na apresentação anterior.
+
 O item 2 de Problema deve ser resumido, com mais tópicos e números e menos parágrafos. O fundo do Optimus deve se integrar ao container com degradê, sem corte abrupto.
 
 **Why:** O criador pediu “mais topicos, numeros, menos paragrafos” e apontou o corte visível da imagem.
 
 **How to apply:** Manter uma introdução curta antes do vídeo e uma explicação compacta após ele. Não inventar estatísticas para atender ao pedido de números; preservar a leitura sobre a imagem.
+
+O item 2 deve apresentar a economia agêntica como o problema ao qual a BETTEX responde: tese de miséria universal em vez de renda universal alta, com atenção à América Latina, pessoas humildes e sobretudo empregos de colarinho branco.
+
+**Why:** O criador insistiu em apresentar o problema para o qual a BETTEX é a solução e pediu explicitamente incluir a economia agêntica.
+
+**How to apply:** Preservar os painéis com números e conectar a participação por token à tese sem garantir renda ou proteção. Não reintroduzir o bloco de contador “Cenário da BETTEX · economia agêntica”, “3–5 anos” e janela 2029–2031.
+
+**Why da retirada do contador:** O criador mostrou o bloco e reiterou que já havia pedido para deletá-lo. A retirada substitui a orientação anterior de manter uma contagem em anos, meses, dias e horas; não autoriza retirar os painéis ou o restante do Problema 2.
 
 O problema apresentado pela BETTEX combina, em escala mundial, pessoas tratando apostas como investimento e a deterioração de emprego e renda com o avanço da IA. A tese do criador é o risco de miséria para uma geração, com comportamentos nocivos e vidas em jogo, não apenas um problema de apostas no Brasil.
 

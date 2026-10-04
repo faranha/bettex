@@ -1,4 +1,152 @@
 {
+  "A tese da BETTEX é que automatizar o trabalho sem ampliar o acesso aos ganhos pode produzir miséria, não prosperidade. No estudo de": {
+    "en": "BETTEX's thesis is that automating work without widening access to the gains may produce poverty, not prosperity. In the",
+    "es": "La tesis de BETTEX es que automatizar el trabajo sin ampliar el acceso a las ganancias puede producir miseria, no prosperidad. En el estudio de"
+  },
+  "da OIT e do Banco Mundial,": {
+    "en": "ILO and World Bank study,",
+    "es": "de la OIT y del Banco Mundial,"
+  },
+  "26% a 38%": {
+    "en": "26% to 38%",
+    "es": "26% a 38%"
+  },
+  "dos empregos da América Latina e do Caribe estavam expostos à IA generativa, e": {
+    "en": "of jobs in Latin America and the Caribbean were exposed to generative AI, and",
+    "es": "de los empleos de América Latina y el Caribe estaban expuestos a la IA generativa, y"
+  },
+  "2% a 5%": {
+    "en": "2% to 5%",
+    "es": "2% a 5%"
+  },
+  "tinham potencial de automação completa com as capacidades então disponíveis. A exposição à automação era maior em empregos formais e qualificados, inclusive de colarinho branco; ao mesmo tempo, a exclusão digital limitava os benefícios potenciais da IA em cerca de": {
+    "en": "had the potential for full automation with the capabilities available at the time. Exposure to automation was higher in formal and skilled jobs, including white-collar roles; at the same time, digital exclusion limited the potential benefits of AI in around",
+    "es": "tenían potencial de automatización completa con las capacidades disponibles entonces. La exposición a la automatización era mayor en empleos formales y cualificados, incluidos los de cuello blanco; al mismo tiempo, la exclusión digital limitaba los beneficios potenciales de la IA en unos"
+  },
+  "de postos. Nossa preocupação é que pessoas humildes percam renda ou fiquem fora dos ganhos dessa economia. É esse risco de exclusão que a BETTEX busca enfrentar, não uma certeza de desemprego ou miséria universal.": {
+    "en": "jobs. Our concern is that low-income people may lose income or be excluded from this economy's gains. It is this risk of exclusion that BETTEX seeks to address, not a certainty of unemployment or universal poverty.",
+    "es": "de puestos. Nuestra preocupación es que las personas de bajos ingresos pierdan renta o queden fuera de las ganancias de esta economía. Es ese riesgo de exclusión el que BETTEX busca afrontar, no una certeza de desempleo o miseria universal."
+  },
+  "17 milhões": {
+    "en": "17 million",
+    "es": "17 millones"
+  },
+  "2029–2031: nossa janela de risco para uma economia com menos trabalho humano e mais agentes de IA.": {
+    "en": "2029–2031: our risk window for an economy with less human work and more AI agents.",
+    "es": "2029–2031: nuestra ventana de riesgo para una economía con menos trabajo humano y más agentes de IA."
+  },
+  "3–5 anos": {
+    "en": "3–5 years",
+    "es": "3–5 años"
+  },
+  "A desigualdade de acesso": {
+    "en": "Unequal access",
+    "es": "La desigualdad de acceso"
+  },
+  "Agentes de IA executam tarefas, usam ferramentas e tomam decisões dentro de limites definidos. O risco para o colarinho branco é deixar de ser necessário no fluxo de trabalho. Robôs como o Optimus ampliam essa pressão para o trabalho físico.": {
+    "en": "AI agents execute tasks, use tools and make decisions within defined limits. The risk for white-collar workers is becoming unnecessary in the workflow. Robots like Optimus extend this pressure to physical work.",
+    "es": "Los agentes de IA ejecutan tareas, utilizan herramientas y toman decisiones dentro de límites definidos. El riesgo para los trabajadores de cuello blanco es dejar de ser necesarios en el flujo de trabajo. Robots como Optimus extienden esa presión al trabajo físico."
+  },
+  "América Latina e Caribe": {
+    "en": "Latin America and the Caribbean",
+    "es": "América Latina y el Caribe"
+  },
+  "América Latina e pessoas humildes com menos reservas e menos acesso aos benefícios.": {
+    "en": "Latin America and low-income people with fewer savings and less access to the benefits.",
+    "es": "América Latina y las personas de bajos ingresos con menos ahorros y menos acceso a los beneficios."
+  },
+  "Anos": {
+    "en": "Years",
+    "es": "Años"
+  },
+  "Cenário da BETTEX · economia agêntica": {
+    "en": "BETTEX scenario · agentic economy",
+    "es": "Escenario de BETTEX · economía agéntica"
+  },
+  "Colarinho branco sob pressão: formação e emprego de escritório não bastam como proteção.": {
+    "en": "White-collar workers under pressure: education and an office job are not enough to provide protection.",
+    "es": "Trabajadores de cuello blanco bajo presión: la formación y un empleo de oficina no bastan como protección."
+  },
+  "Como a BETTEX responde a esse problema": {
+    "en": "How BETTEX addresses this problem",
+    "es": "Cómo BETTEX responde a este problema"
+  },
+  "Contagem até 04/10/2029, três anos após 04/10/2026. Cenário da BETTEX, não prazo anunciado por Musk nem data certa de desemprego.": {
+    "en": "Countdown to 4 October 2029, three years after 4 October 2026. A BETTEX scenario, not a deadline announced by Musk or a certain date for unemployment.",
+    "es": "Cuenta regresiva hasta el 4 de octubre de 2029, tres años después del 4 de octubre de 2026. Escenario de BETTEX, no un plazo anunciado por Musk ni una fecha cierta de desempleo."
+  },
+  "Das decisões diárias de trabalho até 2028": {
+    "en": "Of daily work decisions by 2028",
+    "es": "De las decisiones diarias de trabajo para 2028"
+  },
+  "De empregos com benefícios limitados pela exclusão digital": {
+    "en": "Jobs with benefits limited by digital exclusion",
+    "es": "De empleos con beneficios limitados por la exclusión digital"
+  },
+  "Dias": {
+    "en": "Days",
+    "es": "Días"
+  },
+  "Dos empregos expostos à IA generativa": {
+    "en": "Of jobs exposed to generative AI",
+    "es": "De los empleos expuestos a la IA generativa"
+  },
+  "Economia agêntica": {
+    "en": "Agentic economy",
+    "es": "Economía agéntica"
+  },
+  "Economia agêntica: não é só conversar com uma IA.": {
+    "en": "Agentic economy: it is not just chatting with AI.",
+    "es": "Economía agéntica: no es solo conversar con una IA."
+  },
+  "Estimativa da OIT e do Banco Mundial. Exposição significa transformação possível das tarefas, não esse percentual de postos eliminados.": {
+    "en": "ILO and World Bank estimate. Exposure means tasks may be transformed, not that this percentage of jobs will be eliminated.",
+    "es": "Estimación de la OIT y del Banco Mundial. La exposición significa una posible transformación de las tareas, no ese porcentaje de puestos eliminados."
+  },
+  "Gartner · previsão, 2025": {
+    "en": "Gartner · forecast, 2025",
+    "es": "Gartner · previsión, 2025"
+  },
+  "Horas": {
+    "en": "Hours",
+    "es": "Horas"
+  },
+  "Menos salários, enquanto os ganhos se concentram nos donos da tecnologia.": {
+    "en": "Fewer wages, while the gains concentrate among technology owners.",
+    "es": "Menos salarios, mientras las ganancias se concentran en los dueños de la tecnología."
+  },
+  "Musk promete renda universal alta. Nós não acreditamos nisso: nossa tese é que substituir salários por máquinas, sem distribuir os ganhos, levará à miséria universal, não à prosperidade.": {
+    "en": "Musk promises universal high income. We do not believe it: our thesis is that replacing wages with machines, without distributing the gains, will lead to universal poverty, not prosperity.",
+    "es": "Musk promete una renta universal alta. No creemos en eso: nuestra tesis es que sustituir salarios por máquinas, sin distribuir las ganancias, conducirá a la miseria universal, no a la prosperidad."
+  },
+  "Na região, a falta de acesso digital dificulta ganhos com IA nesses postos. Pessoas humildes têm menos recursos para se adaptar e participar dessa economia.": {
+    "en": "In the region, a lack of digital access limits AI gains in these jobs. Low-income people have fewer resources to adapt and participate in this economy.",
+    "es": "En la región, la falta de acceso digital dificulta los beneficios de la IA en estos puestos. Las personas de bajos ingresos tienen menos recursos para adaptarse y participar en esta economía."
+  },
+  "Nossa tese: miséria universal, não renda universal alta.": {
+    "en": "Our thesis: universal poverty, not universal high income.",
+    "es": "Nuestra tesis: miseria universal, no renta universal alta."
+  },
+  "O início da janela de risco foi alcançado.": {
+    "en": "The start of the risk window has been reached.",
+    "es": "Se ha alcanzado el inicio de la ventana de riesgo."
+  },
+  "O problema que a BETTEX quer resolver": {
+    "en": "The problem BETTEX aims to solve",
+    "es": "El problema que BETTEX quiere resolver"
+  },
+  "OIT / Banco Mundial · estudo, 2024": {
+    "en": "ILO / World Bank · study, 2024",
+    "es": "OIT / Banco Mundial · estudio, 2024"
+  },
+  "Previsão da Gartner para decisões tomadas por agentes de IA. Escritório, análise, atendimento e programação estão no centro da nossa preocupação.": {
+    "en": "Gartner forecast for decisions made by AI agents. Office work, analysis, customer service and programming are at the center of our concern.",
+    "es": "Previsión de Gartner para decisiones tomadas por agentes de IA. Oficina, análisis, atención al cliente y programación están en el centro de nuestra preocupación."
+  },
+  "Trocar a busca de futuro nas apostas por participação na economia agêntica. Pelo token, a BETTEX propõe acesso à tecnologia e aos resultados previstos pelas suas regras: participar dessa economia, em vez de depender apenas do salário que ela ameaça. Não é renda garantida.": {
+    "en": "Replace the search for a future in betting with participation in the agentic economy. Through its token, BETTEX proposes access to technology and the results provided for by its rules: participating in this economy rather than relying solely on the wages it threatens. It is not guaranteed income.",
+    "es": "Cambiar la búsqueda de futuro en las apuestas por participación en la economía agéntica. A través del token, BETTEX propone acceso a la tecnología y a los resultados previstos por sus reglas: participar en esta economía, en vez de depender solo del salario que amenaza. No es una renta garantizada."
+  },
   "Musk promete máquinas fazendo o trabalho de todos e uma renda universal alta. A tese da BETTEX: o emprego pode desaparecer sem que a renda prometida chegue a quem perdeu o salário.": {
     "en": "Musk promises machines doing everyone's work and a universal high income. BETTEX's thesis: jobs may disappear without the promised income reaching those who lost their wages.",
     "es": "Musk promete máquinas haciendo el trabajo de todos y una renta universal alta. La tesis de BETTEX: el empleo puede desaparecer sin que la renta prometida llegue a quienes perdieron su salario."

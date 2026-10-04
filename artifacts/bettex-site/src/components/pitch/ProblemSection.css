@@ -37,6 +37,25 @@
 .pb-problem__points ul { margin: 14px 0 0; padding-left: 18px; display: grid; gap: 8px; }
 .pb-problem__points ul li, .pb-problem__points p { color: #e3eaff; font-size: 14px; line-height: 1.6; }
 .pb-problem__points p { margin: 12px 0 0; }
+.pb-problem__response { max-width: 900px; margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(242,182,50,.3); }
+.pb-problem__response h4 { margin: 0; color: #F2B632; font-size: 22px; line-height: 1.3; }
+.pb-problem__response p { margin: 12px 0 0; color: #e3eaff; font-size: 16px; line-height: 1.7; }
+.pb-problem__response ul { display: grid; gap: 8px; padding-left: 20px; margin: 16px 0 0; color: #e3eaff; font-size: 15px; line-height: 1.6; }
+.pb-problem__agentic-intro { max-width: 900px; margin: 24px 0; }
+.pb-problem__agentic-intro h4 { color: #F2B632; margin: 0; font-size: 23px; line-height: 1.3; }
+.pb-problem__agentic-intro p { margin: 12px 0 0; color: #e3eaff; font-size: 15px; line-height: 1.6; }
+.pb-problem__agentic-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: 900px; margin: 24px 0; }
+.pb-problem__agentic-metrics article { display: flex; flex-direction: column; padding: 20px; border: 1px solid rgba(242,182,50,.3); background: rgba(7,11,31,.75); }
+.pb-problem__agentic-label { margin: 0; color: #F2B632; font-size: 11px; line-height: 1.6; }
+.pb-problem__agentic-value { margin: 20px 0 14px; color: #F2B632; font-weight: 800; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.1; }
+.pb-problem__agentic-metrics h4 { margin: 0; font-size: 17px; line-height: 1.3; }
+.pb-problem__agentic-metrics article > p:not([class]) { color: #e3eaff; font-size: 13px; line-height: 1.6; margin: 12px 0 0; }
+.pb-problem__agentic-metrics a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-top: auto; padding-top: 14px; color: #F2B632; font-size: 11px; line-height: 1.5; text-decoration: underline; }
+.pb-problem__agentic-metrics a svg { width: 13px; height: 13px; flex: none; }
+@media (max-width: 800px) {
+  .pb-problem__agentic-metrics { grid-template-columns: 1fr; }
+  .pb-problem__agentic-value { font-size: 40px; margin-top: 12px; }
+}
 @media (max-width: 800px) {
   .pb-problem__points { grid-template-columns: 1fr; gap: 20px; }
   .pb-problem__points > li { position: relative; padding-left: 46px; }
