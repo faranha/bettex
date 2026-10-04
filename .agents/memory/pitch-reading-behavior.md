@@ -50,3 +50,9 @@ Não reintroduzir a linha “Saída e elegibilidade” no quadro comparativo do 
 **Why:** O criador mostrou essa linha e pediu removê-la do quadro comparativo.
 
 **How to apply:** A exclusão é de apresentação nesse quadro, não uma alteração das regras de saída, cancelamento de créditos ou independência das rodadas nas demais áreas.
+
+A simulação de lançamento deve permanecer escondida no Pitch, com o conteúdo preservado para possível reativação.
+
+**Why:** O criador pediu “remova a simulação, deixe ela escondida”.
+
+**How to apply:** Não exibir a simulação no Pitch nem reintroduzi-la durante reorganizações; preservar os demais conteúdos e gráficos.
