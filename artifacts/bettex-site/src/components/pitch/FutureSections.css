@@ -18,13 +18,13 @@
 .fu--one .fu-sub { color: #c5d2f1; } .fu--two .fu-sub { color: #183173; }
 .fu-hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
 .fu--one > .page-wrap > .fu-hero { margin-top: 32px; }
-.fu-context { margin-top: 32px; }
+.fu-scenario { margin-top: 40px; }
 .fu-scenario-opening { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 260px); gap: clamp(24px, 4vw, 48px); align-items: center; }
 .fu-scenario-copy > p { margin-top: 18px; font-size: 16px; line-height: 1.7; color: #e3eaff; }
-.fu-exposed .fu-scenario-photo { margin: 0; max-width: 260px; border-color: rgba(255,119,119,.4); background: #1d101e; }
+.fu-scenario .fu-scenario-photo { margin: 0; max-width: 260px; border-color: rgba(255,119,119,.4); background: #070B1F; }
 @media (max-width: 767px) {
   .fu-scenario-opening { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .fu-exposed .fu-scenario-photo { max-width: 180px; justify-self: center; }
+  .fu-scenario .fu-scenario-photo { max-width: 180px; justify-self: center; }
 }
 .fu-environment-title { font-size: clamp(1.65rem, 3vw, 2.4rem); line-height: 1.15; font-weight: 800; letter-spacing: -.03em; }
 .fu-environment-signals { margin-top: 48px; padding: clamp(24px, 4vw, 40px); background: #F4F1E8; color: #070B1F; border-top: 4px solid #2B59FF; }
@@ -36,8 +36,7 @@
 .fu-verdict { margin: 30px 8px 28px; padding: 14px 18px; max-width: 570px; border: 5px double #ff7777; color: #ff9292; background: #25101b; transform: rotate(-2deg); }
 .fu-verdict > span { display: block; margin-bottom: 8px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
 .fu-verdict > h2 { font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.15; font-weight: 800; letter-spacing: -.03em; text-transform: uppercase; }
-.fu-exposed { margin-top: 40px; padding: clamp(24px, 4vw, 40px); border-left: 5px solid #ff7777; background: #1d101e; }
-.fu-exposed .fu-tag { color: #ff9292; }
+.fu-scenario .fu-tag { color: #ff9292; }
 .fu-evidence { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
 .fu-evidence--focused { grid-template-columns: minmax(0, 1fr); }
 .fu-evidence article { min-width: 0; padding: 20px; border: 1px solid #ff777744; background: #070b1f88; display: flex; flex-direction: column; align-items: flex-start; }
