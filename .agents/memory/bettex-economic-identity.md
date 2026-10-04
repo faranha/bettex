@@ -3,11 +3,11 @@ name: Identidade econômica da BETTEX
 description: Definição econômica e posicionamento público aprovados pelo criador.
 ---
 
-A definição atual para a apresentação pública é: “Tecnologia de investimento para apostadores brasileiros gerido por IA”.
+A apresentação pública prioriza uma “comunidade de investimento em IA”. O criador definiu: “A comunidade é o tema central agora. É o nosso funil. O topo do funil é a comunidade”.
 
-**Why:** O criador pediu essa definição no hero e afirmou “é isso que somos”.
+**Why:** O criador passou a priorizar a comunidade como porta de entrada, revisando o posicionamento anterior de tecnologia de investimento para apostadores brasileiros.
 
-**How to apply:** Usar esse posicionamento como a definição principal no hero, com o público brasileiro explícito. Não interpretar a alteração do posicionamento como autorização para mudar as regras econômicas do projeto.
+**How to apply:** Usar “Quero participar da comunidade” como CTA e conectar os temas de apostas, IA e futuro dos empregos à comunidade, ao acompanhamento e à participação nas decisões. Não iniciar esse convite pela compra do token. Preservar o público e as regras econômicas do projeto; não apresentar a comunidade como uma garantia de ganhos.
 
 A definição econômica anterior do criador foi: “em ultima analise, bettex eh um fundo de investimentos”.
 

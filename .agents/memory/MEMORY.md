@@ -8,7 +8,7 @@
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
 - [Regras da tesouraria](treasury-rule-evolution.md) — humanos aprovam políticas; mandatos limitados preservam liberdade operacional sem aprovação de cada operação.
 - [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
-- [Identidade e posicionamento](bettex-economic-identity.md) — apresentação pública: tecnologia de investimento para apostadores brasileiros, gerida por IA; preservar regras econômicas.
+- [Identidade e posicionamento](bettex-economic-identity.md) — comunidade de investimento em IA é o tema central e o topo do funil; preservar as regras econômicas.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
