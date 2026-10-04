@@ -1,4 +1,4 @@
-import { type ReactNode, type CSSProperties, useEffect, useState } from 'react';
+import { type ReactNode, type CSSProperties, useEffect, useRef, useState } from 'react';
 import { PageMetadata } from '@/components/PageMetadata';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useLocale, localizedUrl, t } from '@/lib/i18n';
@@ -14,7 +14,6 @@ import { PitchPage } from '@/pages/pitch';
 import { DemoPage } from '@/pages/demo';
 import { TechnologySection } from '@/components/technology/TechnologySection';
 import { MarketsFloorSection } from '@/components/robot-floor/MarketsFloorSection';
-import { InvestorAppPreview } from '@/components/investor/InvestorAppPreview';
 import { HeroBenefit } from '@/components/hero/HeroBenefit';
 import { BettexMark } from '@/components/BettexMark';
 import { MarketMark, type MarketKind } from '@/components/hero/MarketMark';
@@ -30,12 +29,13 @@ import { FloatingCommunityCTA, TelegramIcon } from '@/components/CommunityCTA';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { PitchSectionNav } from '@/components/pitch/PitchSectionNav';
+import { HomeSectionNav } from '@/components/HomeSectionNav';
 
 const queryClient = new QueryClient();
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 const HOME_PATH = `${BASE_PATH}/`;
 const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
-const mainLinks = [{ label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'Demo', href: '/demo' }] as const;
+const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }] as const;
 const legacyChapterIds = new Set<string>(chapters.map(({ id }) => id));
 const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
 type Market = {
@@ -55,30 +55,18 @@ const markets: Market[] = [
   { name: 'iGaming', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'iGaming', intro: 'Exploração automatizada de bônus.', detail: 'Analisa as regras dos bônus e automatiza os métodos para aproveitar as ofertas disponíveis.' },
 ];
 
-const navItems = [
-  { label: 'Início', id: 'inicio' },
-  { label: 'Por que BETTEX', id: 'historia' },
-  { label: 'Nova Economia', id: 'nova-economia' },
-  { label: 'Token BETTEX', id: 'participacao' },
-  { label: 'Como opera', id: 'tecnologia' },
-  { label: 'Mercados', id: 'mercados' },
-  { label: 'Roadmap', id: 'roadmap' },
-] as const;
-
 function usePageLinkProps() {
-  const [location] = useLocation();
-  return location.replace(/\/$/, '') === '/pitch'
-    ? { target: '_blank', rel: 'noopener noreferrer' } as const
-    : {};
+  // Internal site navigation always stays in the current tab.
+  return {};
 }
 
 function Logo() {
   const linkProps = usePageLinkProps();
   return <a {...linkProps} href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX, voltar ao início">
-    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] border border-[#768BB5]/30 bg-[#0D1530] shadow-[0_3px_10px_rgba(0,9,33,.12)]">
-      <BettexMark slate className="block h-[30px] w-[30px]" />
+    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[#768BB5]/30 bg-[#0D1530] shadow-[0_3px_10px_rgba(0,9,33,.12)]">
+      <BettexMark slate className="block h-[26px] w-[26px]" />
     </span>
-    <span className="display text-[25px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
+    <span className="display text-[22px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
   </a>;
 }
 
@@ -87,38 +75,53 @@ function MainLinks({ className, onNavigate, uniform = false }: { className: stri
   const linkProps = usePageLinkProps();
   return <>{mainLinks.map(({ label, href }) => {
     const active = location === href || (href === '/documentacao' && ['/documentation', '/documentacion'].includes(location));
-    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`${className} ${uniform ? `bg-[#2B59FF] text-white hover:bg-[#1E44D6] ${active ? 'ring-1 ring-inset ring-white/60' : ''}` : active ? 'bg-[#26324D] text-[#E4EAF4] ring-1 ring-inset ring-[#7185AC]/35 hover:bg-[#303E5C]' : 'bg-[#2B59FF] text-white hover:bg-[#1E44D6]'}`}>{label}</a>;
+    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`site-page-link ${uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{label}</a>;
   })}</>;
 }
 
 function SiteHeader() {
   useLocale();
-  const linkProps = usePageLinkProps();
+  const headerRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
+
+  useEffect(() => {
+    const header = headerRef.current;
+    const primaryRow = header?.firstElementChild;
+    if (!header || !primaryRow) return;
+    const measure = () => {
+      const style = getComputedStyle(header);
+      const height = primaryRow.getBoundingClientRect().height
+        + parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth);
+      document.documentElement.style.setProperty('--site-header-h', `${height}px`);
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(primaryRow);
+    measure();
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     setMenuOpen(false);
     if (!window.location.hash) window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location]);
 
-  return <header className="site-header sticky top-0 z-40 border-b border-[#2B59FF]/30 bg-[#070B1F]/95 text-[#F4F1E8] backdrop-blur-lg">
-    <div className="page-wrap flex h-[72px] items-center justify-between gap-3">
+  return <header ref={headerRef} className="site-header sticky top-0 z-40 border-b border-[#2B59FF]/30 bg-[#070B1F]/95 text-[#F4F1E8] backdrop-blur-lg">
+    <div className="page-wrap flex h-14 items-center justify-between gap-3">
       <Logo />
-      <nav className="hidden items-center gap-3 xl:ml-6 xl:flex" aria-label="Navegação principal">
-        {navItems.map(({ label, id }) => <a key={id} {...linkProps} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#F2B632]"><span data-i18n="translated">{t(label)}</span></a>)}
+      <nav className="site-main-nav ml-auto hidden xl:flex" aria-label="Navegação principal">
+        <MainLinks className="" />
       </nav>
-      <div className="ml-auto hidden items-center gap-2 xl:flex" aria-label="Páginas do projeto"><MainLinks className="tap inline-flex min-h-10 items-center rounded-full px-4 text-xs font-bold" /></div>
       <div className="hidden xl:flex"><LanguageSelector /></div>
       <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 max-sm:ml-auto xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
-    {/\/pitch\/?$/.test(location) && <PitchSectionNav onNavigate={() => setMenuOpen(false)} />}
-    {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-var(--pitch-sticky-h,var(--site-header-h)))] flex-col gap-1 overflow-y-auto border-t border-[#2B59FF]/30 py-3 xl:hidden" aria-label="Navegação móvel">
-      {navItems.map(({ label, id }) => <a key={id} {...linkProps} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#13204F]"><span data-i18n="translated">{t(label)}</span></a>)}
+    {/\/pitch\/?$/.test(location) && <PitchSectionNav onNavigate={() => setMenuOpen(false)} menuOpen={menuOpen} />}
+    {location.replace(/\/$/, '') === '' && <HomeSectionNav onNavigate={() => setMenuOpen(false)} menuOpen={menuOpen} />}
+    {menuOpen && <nav className="page-wrap absolute inset-x-0 top-full mx-auto flex max-h-[calc(100dvh-var(--home-sticky-h,var(--pitch-sticky-h,var(--site-header-h))))] flex-col gap-1 overflow-y-auto rounded-b-lg border border-[#2B59FF]/30 bg-[#070B1F] py-3 shadow-xl xl:hidden" aria-label="Navegação móvel">
       <section className="mt-2 border-t border-[#2B59FF]/30 pt-3" aria-label="Páginas do projeto">
         <h2 className="mb-3 px-2 text-xs font-bold uppercase tracking-wider text-[#c5d2f1]">Páginas do projeto</h2>
         <div className="grid gap-2 sm:grid-cols-3">
-          <MainLinks uniform onNavigate={() => setMenuOpen(false)} className="tap flex min-h-11 items-center justify-center rounded-lg px-3 py-2.5 text-[15px] font-bold" />
+          <MainLinks uniform onNavigate={() => setMenuOpen(false)} className="" />
         </div>
       </section>
       <div className="mt-2 flex min-h-14 items-center justify-between gap-3 border-t border-[#2B59FF]/30 px-2 pt-3">
@@ -192,7 +195,6 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             <li><a {...linkProps} href={homeAnchor('participacao')}>Token BETTEX</a></li>
             <li><a {...linkProps} href={homeAnchor('tecnologia')}>Como opera</a></li>
             <li><a {...linkProps} href={homeAnchor('mercados')}>Mercados</a></li>
-            <li><a {...linkProps} href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
           </ul>
         </nav>
         <nav aria-label="Links do projeto" className="sf-group">
@@ -202,7 +204,6 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             <li><a {...linkProps} href={homeAnchor('roadmap')}>Roadmap</a></li>
             <li><a {...linkProps} href={`${BASE_PATH}/pitch`}>Pitch</a></li>
             <li><a {...linkProps} href={DOCUMENTATION_PATH}>Documentação</a></li>
-            <li><a {...linkProps} href={`${BASE_PATH}/demo`}>Demo</a></li>
           </ul>
         </nav>
       </div>
@@ -238,7 +239,7 @@ function MarketCard({ market, number }: { market: Market; number: number }) {
       <div className="market-card__stage-foot absolute bottom-3 left-5 right-5 z-20 flex justify-between border-t border-white/15 pt-2 text-[8px] font-bold uppercase tracking-[.16em]"><span>BETTEX / MERCADO</span><span>0{number} / 04</span></div>
     </div>
     <div className="flex flex-1 flex-col p-5 sm:p-6">
-      <div className="min-h-[75px]"><h4 className="display text-[25px] font-extrabold leading-none tracking-[-.055em] text-[#070B1F]">{market.name}</h4><p className="display mt-2 text-base font-bold leading-5 text-[#122353]">{market.intro}</p></div>
+      <div className="min-h-[75px]"><h4 className="display text-[22px] font-extrabold leading-none tracking-[-.055em] text-[#070B1F]">{market.name}</h4><p className="display mt-2 text-base font-bold leading-5 text-[#122353]">{market.intro}</p></div>
       <p className="market-card__label mono mt-4 text-[9px] font-bold uppercase tracking-[.12em]">Como a BETTEX atua</p>
       <p className="mt-2 min-h-[70px] text-[13px] leading-[1.55] text-[#183173]">{market.detail}</p>
     </div>
@@ -306,7 +307,6 @@ function Home() {
        <TechnologySection>
          {markets.map((market, index) => <div className="technology-section__agent-slot" key={market.name}><MarketCard market={market} number={index + 1} /></div>)}
        </TechnologySection>
-       <InvestorAppPreview />
        <MarketsFloorSection />
         <RoadmapSection />
 

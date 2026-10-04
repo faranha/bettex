@@ -1,10 +1,29 @@
 # BETTEX
 
+## Regra canônica: preservar a página inicial
+
+- Não mexer no conteúdo da página inicial: o conteúdo em si está perfeito e aprovado.
+- O escopo permitido é apenas adicionar o submenu com âncoras para as seções existentes, sem alterar o conteúdo.
+- Aplicar esta regra às próximas tarefas. Ela substitui autorizações anteriores para alterar o conteúdo da página inicial.
+
+## Regras do projeto
+
+- Navegação canônica: o menu principal contém as páginas Página Inicial, Pitch e Documentação, com navegação na mesma aba. Não abreviar Página Inicial para Início. Não misturar âncoras da homepage nesse menu.
+- Todos os links internos, incluindo botões, âncoras e referências à documentação, navegam na mesma aba. Nova aba somente para exceções externas, como redes sociais e fontes de pesquisa.
+- Página inicial e Pitch têm seus próprios submenus de âncoras, correspondentes exclusivamente às seções da página aberta. Preservar o idioma selecionado ao trocar de página.
+- Quando a página já tiver seu submenu, não duplicar as seções em dropdowns do menu principal no desktop. Manter links diretos para as páginas e uma única navegação pelas seções.
+- Menu principal e submenus devem formar um conjunto compacto e coerente: sem cápsulas ou “bolotas” nos links, sem itens de submenu espalhados pela largura toda. Destacar página e seção ativas sem caixas azuis pesadas.
+- Conectar visualmente a página ativa do menu principal ao seu submenu e identificar a página no submenu, para deixar claro que “Início” ali pertence àquela página, não ao site inteiro.
+- Não reintroduzir a seta vertical abaixo do botão ativo do menu principal: essa apresentação foi rejeitada pelo criador.
+- Não deixar vão entre o menu fixo e o começo da seção ao navegar por âncoras, em nenhuma página. Os heroes do Pitch devem seguir um padrão visual comum.
+- Heroes do Pitch: imagens integradas como fundo das faixas, sem fotos em caixas, molduras ou sombras deslocadas. Preservar legibilidade dos textos no desktop e no celular.
+- A navegação interna da documentação permanece como está; não substituí-la pelos submenus da homepage ou do Pitch.
+
 - Revisão vigente da documentação: uma única empresa comercial privada de capital fechado a constituir, administrada pelo fundador sozinho, full stack AI, sem funcionários; serviços externos por necessidade, sem cargos/folha/salários/teto de pessoas. Regra mais recente para aportes de investidores-anjo: 100% destinados ao produto, à tecnologia e ao marketing, sem salários nem retiradas para o fundador; não há split obrigatório de 50% para a tesouraria. O piloto específico de US$100 mil, com US$50 mil à tesouraria e US$50 mil ao lançamento, meta de 5.000 usuários e 1.000 MAU em três meses e sem data de equilíbrio, é um cenário anterior e não a destinação vigente do aporte anjo. Todo BETTEX recomprado é queimado permanentemente. Tributos aplicáveis são resolvidos antes do split e do crédito líquido. A revisão fica na documentação e materiais derivados, sem reescrever Pitch, homepage ou demo.
 
 - “Não aceitamos déficit, perdas são permanentes”; novos participantes jamais recebem lucros anteriores; qualquer saída de BETTEX, mesmo parcial, zera TODO o peso anterior da rodada e cancela TODOS os créditos anteriores ainda não pagos, inclusive os apurados ou autorizados. Não conservar o peso do período anterior à saída, da quantidade retirada ou do saldo remanescente. Somente o tempo elegível após a confirmação posterior à saída pode gerar novo peso, sem recuperar direitos anteriores. Cada rodada é única: paga ou não paga, sem retorno, soma ou acumulação entre rodadas. Os oito desenhos da documentação ficam próximos dos respectivos assuntos; os esquemas de staking ficam na mesma seção visível do rateio. Staking e Governança são capítulos próprios na organização vigente. Não alterar a homepage nessa revisão.
 
-- O criador exige alinhamento conceitual e ausência de conflitos de lógica em todo o white paper, com redação concisa. Conferir também a homepage, preservando o copy definido: só alterar a homepage para corrigir erro factual ou conceitual, não por preferência editorial. Essa autorização substitui o congelamento absoluto da homepage nas instruções anteriores. Valores estimados em moeda fiduciária não são saldos ou pagamentos fiat; não converter preços históricos em ofertas USDC sem definição.
+- O criador exige alinhamento conceitual e ausência de conflitos de lógica em todo o white paper, com redação concisa. Conferir também a homepage, sem alterar seu conteúdo, conforme a regra canônica acima. Valores estimados em moeda fiduciária não são saldos ou pagamentos fiat; não converter preços históricos em ofertas USDC sem definição.
 
 - “Fundador e equipe” é o rótulo dos 20% de tokens, não um quadro de funcionários. Concessões pessoais do fundador não criam nova emissão, divisão igual, quarta alocação nem posições internas. Signatários independentes do multisig não são presumidos empregados ou nomes confirmados.
 
@@ -283,8 +302,8 @@ Site da BETTEX, projeto de investimento com quatro agentes especializados em mer
 ## Pitch no navegador
 
 - O criador especificou que o pitch é uma apresentação no próprio navegador, não slides ou um deck. Deve ser uma página do site BETTEX, legível tanto no celular quanto no PC.
-- A barra principal deve oferecer Pitch, Documentação e Demo como áreas separadas; a documentação também deve oferecer acesso ao pitch.
-- A área Demo deve mostrar “Em breve”. O criador pediu expressamente para não gerar o demo nesta etapa.
+- A barra principal deve oferecer Página Inicial, Pitch e Documentação como páginas separadas, na mesma aba. As seções da página inicial e do Pitch ficam em submenus próprios; manter a navegação interna atual da documentação.
+- O acesso ao demo faz parte de Token BETTEX, pelo banner “Acesse o demo ao vivo agora mesmo” e seu botão. Não criar itens próprios “Demo” ou “Aplicativo” nos menus do site para esse acesso; preservar o demo e seu funcionamento.
 
 ## Localização obrigatória
 

@@ -11,13 +11,15 @@ const clean = (s: string | null | undefined) => (s ?? '').replace(/\s+/g, ' ').t
 const EXCLUDED = '.whitepaper__timeline, .whitepaper__market-card, .whitepaper__vesting-chart, table, .wp-facts, .whitepaper__status-grid, .whitepaper__system';
 
 /** Offset of the real shared site header plus the compact mobile index. */
-export function scrollOffset() {
+export function scrollOffset(target?: Element) {
   const header = document.querySelector('header.site-header') ?? document.querySelector('.site-header');
   const headerHeight = header?.getBoundingClientRect().height ?? 73;
   const aside = document.querySelector('.whitepaper__aside');
   const mobile = window.matchMedia('(max-width: 768px)').matches;
-  const indexHeight = mobile ? aside?.getBoundingClientRect().height ?? 0 : 0;
-  return headerHeight + indexHeight + 16;
+  const indexHeight = mobile && (!target || target.closest('.whitepaper__content')) ? aside?.getBoundingClientRect().height ?? 0 : 0;
+  const offset = headerHeight + indexHeight;
+  document.documentElement.style.setProperty('--documentation-sticky-h', `${offset}px`);
+  return offset;
 }
 
 export function openAncestors(el: Element) {

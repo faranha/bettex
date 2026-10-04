@@ -4,6 +4,7 @@ import { USVacancyChart } from './USVacancyChart';
 import { BrazilEmploymentCharts } from './BrazilEmploymentCharts';
 import { InflationOilRisks } from './InflationOilRisks';
 import { AIBubbleScenario, LaborWarningReports } from './AICrisisScenario';
+import { ChapterHero } from './ChapterHero';
 import './FutureSections.css';
 
 const PHOTO = `${import.meta.env.BASE_URL}pitch-future/elon-musk.jpg`;
@@ -15,10 +16,8 @@ function Src({ href, children }: { href: string; children: string }) {
 export function FutureSections() {
   return <>
     <section id="agora" aria-labelledby="agora-t" className="slide fu fu--one">
+      <ChapterHero id="agora" n="04" kicker="Ambiente externo" src="pitch-future/tesla-optimus.jpg" title={<>Ambiente externo.</>} summary="Musk, automação do trabalho e o que está acontecendo na economia real." />
       <div className="page-wrap">
-        <div className="mono fu-kicker"><span>04 / 10</span><span className="fu-rule" aria-hidden="true" />Ambiente externo</div>
-        <h2 id="agora-t" className="display fu-title">Ambiente externo.</h2>
-        <p className="fu-sub">Musk, automação do trabalho e o que está acontecendo na economia real.</p>
         <div className="fu-hero">
           <div>
             <h3 className="display fu-environment-title">Musk e a promessa de prosperidade</h3>

@@ -13,24 +13,22 @@ O espaço de `scroll-padding` do documento e o de `scroll-margin` do destino sã
 
 **Why:** O fim da seção anterior permanecia visível porque algumas âncoras compensavam duas vezes a mesma navegação fixa.
 
-**How to apply:** Conferir as duas regras em conjunto, inclusive estilos próprios de Nova Economia e Roadmap. Restringir correções à homepage; a documentação tem um índice fixo adicional e não deve receber o mesmo reset.
+**How to apply:** Conferir as duas regras em conjunto, inclusive estilos próprios de Nova Economia e Roadmap. A documentação tem um índice fixo adicional no celular: compensar sua altura real, sem uma folga extra e sem contá-lo na abertura anterior ao índice.
 
-No mobile, Pitch, Documentação, Demo e o seletor de idioma devem ficar dentro do menu hambúrguer, sem uma segunda linha de botões sob o cabeçalho.
+Não medir o destino de uma âncora durante uma animação que translada o próprio elemento.
 
-Pitch, Documentação e Demo ficam numa seção própria no fim do menu, após Roadmap, não no topo. O seletor de idioma continua dentro do menu.
+**Why:** A leitura pode capturar uma posição transitória; quando a animação termina, o destino fica parcialmente sob a navegação, apesar de o offset estar correto.
 
-**Why:** O usuário pediu expressamente retirar a linha adicional e mover a opção de língua para o menu. As três opções de páginas podem se diferenciar do restante do menu, mas devem compartilhar o mesmo estilo de cor.
+**How to apply:** Em capítulos revelados imediatamente antes da rolagem, preferir animação de opacidade sem deslocamento geométrico ou medir somente uma posição estável.
 
-**How to apply:** Manter o cabeçalho móvel em uma linha e preservar essa organização nos três idiomas. Considerar a altura reduzida ao posicionar índices fixos e rolar para âncoras.
+A altura persistente do cabeçalho não basta para validar a estabilidade da navegação durante a abertura do menu mobile.
 
-No cabeçalho desktop, a página ativa entre Pitch, Documentação e Demo deve continuar com formato de botão e uma coloração sutil, sem destaque amarelo nem marcação por sublinhado.
+**Why:** Foi observado deslocamento do alvo e mudança da seção destacada sem alteração do fragmento, mesmo com a altura persistente do cabeçalho constante. Conferir apenas o offset do cabeçalho pode ocultar esse problema.
+
+**How to apply:** Conferir conjuntamente endereço, posição do alvo e seleção do submenu nos estados fechado, aberto e fechado novamente. A preservação da seleção e da posição precisa ser demonstrada no navegador, não presumida a partir da altura medida ou de uma guarda no rastreamento.
+
+No cabeçalho desktop, a página ativa deve continuar com formato de botão e uma coloração sutil, sem destaque amarelo nem marcação por sublinhado.
 
 **Why:** O criador rejeitou a marcação de Documentação como texto amarelo sublinhado e pediu preservar o botão com uma cor mais discreta.
 
 **How to apply:** Manter as dimensões e o formato dos botões de páginas; diferenciar a página atual por um fundo discreto, sem alterar a organização do menu.
-
-O menu superior deve acompanhar a estrutura atual da homepage, não a organização antiga.
-
-**Why:** O criador pediu revisar os menus do topo para adequá-los à nova estrutura da página inicial.
-
-**How to apply:** Usar a mesma sequência no desktop e no mobile, incluindo Nova Economia. O banner do Demo não deve continuar identificado como “Aplicativo”; preservar o acesso direto ao Demo no grupo de páginas do projeto e as âncoras existentes para links antigos.

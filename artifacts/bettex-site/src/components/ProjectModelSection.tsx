@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { ArrowDownRight, ArrowLeft, ArrowRight, Wallet } from 'lucide-react';
 import { CommunityCTA } from '@/components/CommunityCTA';
+import { InvestorAppPreview } from '@/components/investor/InvestorAppPreview';
 import { TokenIllustration, DepositIllustration, CoordinationIllustration } from '@/components/ProjectModelIllustrations';
 
 const markets = ['Previsões', 'Ações e cripto', 'Esportes', 'iGaming'] as const;
@@ -285,6 +286,7 @@ export function ProjectModelSection() {
             <p>*Sem lucro não há distribuição e você não perde os seus tokens.</p>
           </div>
         </div>
+        <InvestorAppPreview embedded />
         <CommunityCTA source="participacao" label="Entre na comunidade" note="Tire dúvidas antes de participar." className="!justify-end" />
         <div className="pm-bottom">
           <a href="#mercados" data-testid="link-conhecer-mercados">Conheça os mercados <ArrowRight size={16} aria-hidden="true" /></a>

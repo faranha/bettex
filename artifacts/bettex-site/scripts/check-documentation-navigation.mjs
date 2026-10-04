@@ -73,7 +73,9 @@ for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vis
   article.append(new Element('h2', title, 'title-documentacao-teste'), account, policy, new Element('h3', `${locale}: fees`, 'fees'));
   // Reserve the first automatic id to exercise collision handling.
   root.append(header, aside, new Element('div', '', 'documentacao-teste-secao-1'), article);
+  const measuredOffsets = {};
   globalThis.document = {
+    documentElement: { style: { setProperty: (name, value) => { measuredOffsets[name] = value; } } },
     querySelector: s => root.querySelector(s),
     querySelectorAll: s => root.querySelectorAll(s),
     getElementById: id => root.querySelectorAll('[id]').find(n => n.id === id),
@@ -95,8 +97,12 @@ for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vis
   openAncestors(version);
   assert(policy.open && version.open);
   globalThis.window = { matchMedia: () => ({ matches: false }) };
-  assert.equal(scrollOffset(), 88);
+  assert.equal(scrollOffset(), 72);
+  assert.equal(measuredOffsets['--documentation-sticky-h'], '72px');
   window.matchMedia = () => ({ matches: true });
-  assert.equal(scrollOffset(), 200);
+  assert.equal(scrollOffset(), 184);
+  assert.equal(measuredOffsets['--documentation-sticky-h'], '184px');
+  assert.equal(scrollOffset({ closest: () => null }), 72, 'The documentation opening has no sticky chapter index above it.');
+  assert.equal(scrollOffset({ closest: () => article }), 184, 'Chapter content compensates only the header and mobile index.');
 }
 console.log('Documentation navigation: 3-level numbering, stable locale ids, collisions, closed ancestors and measured desktop/mobile offsets verified.');

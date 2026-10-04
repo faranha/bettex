@@ -1,9 +1,9 @@
 import { BettexMark } from '@/components/BettexMark';
 import './InvestorAppPreview.css';
 
-export function InvestorAppPreview() {
+export function InvestorAppPreview({ embedded = false }: { embedded?: boolean }) {
   return (
-    <section id="visao-investidor" className="investor-preview investor-preview--banner" aria-labelledby="investor-preview-title" data-testid="section-visao-investidor">
+    <section id="visao-investidor" className={`investor-preview investor-preview--banner${embedded ? ' investor-preview--embedded' : ''}`} aria-labelledby="investor-preview-title" data-testid="section-visao-investidor">
       <div className="investor-preview__wrap">
         <div className="ip-banner">
           <span className="ip-banner__logo" aria-hidden="true"><BettexMark /></span>
