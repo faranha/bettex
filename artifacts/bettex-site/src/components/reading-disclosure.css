@@ -14,12 +14,7 @@
 .reading__body { min-width: 0; padding: 4px clamp(14px, 3vw, 24px) 22px; }
 .reading__body > :first-child { margin-top: 18px; }
 .reading__body > .reading { margin: 18px 0; }
-.reading-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
-.reading-controls button { min-height: 44px; padding: 8px 18px; border: 1px solid currentColor; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-size: .8rem; font-weight: 700; cursor: pointer; }
-.reading-controls button:hover { background: color-mix(in srgb, currentColor 10%, transparent); }
-.reading-controls button:focus-visible { outline: 2px solid #2B59FF; outline-offset: 3px; }
 .whitepaper .reading { background: #fffdf6; color: #13204F; }
-.whitepaper .reading-controls { color: #13204F; }
 @media (max-width: 480px) { .reading__summary { padding: 12px 14px; } .reading__action svg { display: none; } }
 @media (prefers-reduced-motion: reduce) { .reading__action svg { transition: none; } }
 h3.reading__title { margin: 0; font-family: inherit; letter-spacing: normal; text-transform: none; }

@@ -67,7 +67,7 @@ export function localizedUrl(href: string, next: Locale = locale): string {
   const page = clean === '/documentation' || clean === '/documentacion' ? '/documentacao' : clean;
   if (!['/', '/pitch', '/documentacao', '/demo'].includes(page)) {
     if (next !== 'pt' && page === '/downloads/bettex-taxas-fundacao.xlsx') return `${base}/downloads/bettex-taxas-fundacao-${next}.xlsx${suffix}`;
-    if (next !== 'pt' && page === '/downloads/bettex-publico-oportunidade.md') return `${base}/downloads/bettex-publico-oportunidade-${next}.md${suffix}`;
+    if (next !== 'pt' && /^\/downloads\/bettex-entidade-unica\.(pdf|docx|html|md)$/.test(page)) return `${base}${page.replace(/\.([a-z]+)$/, `-${next}.$1`)}${suffix}`;
     return href;
   }
   const translated = page === '/documentacao' ? next === 'en' ? '/documentation' : next === 'es' ? '/documentacion' : page : page;

@@ -34,5 +34,7 @@ function scan(file) {
 }
 function walk(dir) { for (const entry of fs.readdirSync(dir, { withFileTypes: true })) { const file = path.join(dir, entry.name); entry.isDirectory() ? walk(file) : scan(file); } }
 walk(root);
+const runtimeKeys = path.join(root, 'lib/locales/runtime-source.json');
+if (fs.existsSync(runtimeKeys)) JSON.parse(fs.readFileSync(runtimeKeys, 'utf8')).forEach(add);
 fs.writeFileSync(path.join(root,'lib/locales/source.json'), JSON.stringify([...keys].sort(), null, 2) + '\n');
 console.log(`${keys.size} source messages; ${templates.size} dynamic templates; ${JSON.stringify([...keys]).length} characters`);

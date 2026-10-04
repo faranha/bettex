@@ -2,6 +2,11 @@ import { Children, Fragment, isValidElement, type ReactNode, type ReactElement }
 import './reading-disclosure.css';
 
 export function ReadingDisclosure({ title, hint, children, className = '', id, headingId, testId, asHeading = true, sectionDetail = false }: { asHeading?: boolean; testId?: string; title: ReactNode; headingId?: string; hint?: string; children: ReactNode; className?: string; id?: string; sectionDetail?: boolean }) {
+  if (!sectionDetail) return <section className={`reading-topic ${className}`} id={id} data-testid={testId}>
+    {asHeading ? <h3 className="whitepaper__subhead" id={headingId}>{title}</h3> : <h4 className="whitepaper__subhead">{title}</h4>}
+    {hint ? <p className="reading__hint">{hint}</p> : null}
+    {children}
+  </section>;
   return (
     <details className={`reading ${className}`} id={id} data-testid={testId} data-section-detail={sectionDetail ? '' : undefined}>
       <summary className="reading__summary">
@@ -17,19 +22,6 @@ export function ReadingDisclosure({ title, hint, children, className = '', id, h
       </summary>
       <div className="reading__body">{children}</div>
     </details>
-  );
-}
-
-/** Scoped expand/collapse-all controls: act on every <details> inside the element matching `scope`. */
-export function ExpandControls({ scope, label }: { scope: string; label: string }) {
-  const set = (open: boolean) => {
-    document.querySelectorAll<HTMLDetailsElement>(`${scope} details`).forEach((d) => { d.open = open; });
-  };
-  return (
-    <div className="reading-controls" role="group" aria-label={label}>
-      <button type="button" onClick={() => set(true)}>Expandir tudo</button>
-      <button type="button" onClick={() => set(false)}>Recolher tudo</button>
-    </div>
   );
 }
 
@@ -57,10 +49,11 @@ export function groupTopics(nodes: ReactNode, titleOf: (el: El) => TopicInfo): R
     else if (cur) cur.items.push(node);
     else segs.push({ bare: node });
   }
-  const total = segs.filter((x) => 'items' in x).length;
-  let n = 0;
   return <>{segs.map((x, i) => 'items' in x
-    ? <ReadingDisclosure key={i} title={x.title} headingId={x.id} asHeading={x.heading} hint={`Tópico ${++n} de ${total} nesta seção`}>{x.items}</ReadingDisclosure>
+    ? <section key={i} className="reading-topic">
+        {x.heading ? <h3 id={x.id} className="whitepaper__subhead">{x.title}</h3> : null}
+        {x.items}
+      </section>
     : <Fragment key={i}>{x.bare}</Fragment>)}</>;
 }
 

@@ -2,8 +2,27 @@ import './extract-locales.mjs';
 import fs from 'node:fs';
 const root = new URL('../src/lib/locales/', import.meta.url);
 const source = JSON.parse(fs.readFileSync(new URL('source.json', root), 'utf8'));
-const messages = JSON.parse(fs.readFileSync(new URL('translations.json', root), 'utf8'));
+const catalog = fs.readFileSync(new URL('translations.json', root), 'utf8');
+const messages = JSON.parse(catalog);
 const failures = [];
+const seen = new Set();
+let depth = 0;
+let expectsKey = false;
+for (const [token] of catalog.matchAll(/"(?:[^"\\]|\\.)*"|[{}\[\],:]/g)) {
+  if (token === '{' || token === '[') {
+    depth++;
+    if (depth === 1) expectsKey = true;
+  } else if (token === '}' || token === ']') {
+    depth--;
+  } else if (token === ',' && depth === 1) {
+    expectsKey = true;
+  } else if (token.startsWith('"') && depth === 1 && expectsKey) {
+    const key = JSON.parse(token);
+    if (seen.has(key)) failures.push(`duplicate translation key: ${key}`);
+    seen.add(key);
+    expectsKey = false;
+  }
+}
 for (const key of source) {
   for (const language of ['en', 'es']) {
     const target = messages[key]?.[language];
@@ -13,4 +32,4 @@ for (const key of source) {
   }
 }
 if (failures.length) throw new Error(`Incomplete localization (${failures.length}). Update all three languages before building:\n${failures.slice(0,20).join('\n')}`);
-console.log(`Localization coverage: ${source.length} messages, complete EN/ES and matching dynamic placeholders.`);
+console.log(`Localization coverage: ${source.length} messages, complete EN/ES, matching dynamic placeholders and no duplicate catalog keys.`);

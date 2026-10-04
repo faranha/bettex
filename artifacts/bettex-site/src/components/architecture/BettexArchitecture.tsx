@@ -9,7 +9,7 @@ interface Step { title: string; text: string; tone?: Tone; badge?: string; id?: 
 
 export const architectureFigureTitles: Record<ArchitectureFigureNumber, string> = {
   '1': 'Conta, carteiras e compra de BETTEX',
-  '2': 'Compra na venda pública usando USDC',
+  '2': 'Compra no swap oficial usando USDC',
   '3': 'Auto staking na Carteira BETTEX',
   '4': 'Tesouraria conectada ao agente de IA BETTEX',
   '5': 'Tesouraria, reservas e split dos ganhos',
@@ -45,7 +45,7 @@ function Figure({ id, num, title, lead, children }: { id: string; num: Architect
     <section className="ba-fig" id={id} data-testid={id} aria-labelledby={`${id}-t`}>
       <header className="ba-fig__head">
         <span className="ba-fig__num">Desenho {num} de 8</span>
-        <h4 id={`${id}-t`}>{title}</h4>
+        <h3 id={`${id}-t`}>{title}</h3>
         <p>{lead}</p>
       </header>
       {children}
@@ -63,18 +63,18 @@ const fig1: Step[] = [
         <div><strong>Carteira BETTEX</strong></div>
       </div>
     ) },
-  { title: 'Compra BETTEX', text: 'Usa USDC na venda pública do projeto. Após confirmação, recebe os BETTEX comprados; a tarifa separada de US$ 2,50 é paga em USDC à entidade.', tone: 'gold', badge: 'Swap', id: 'node-bettex-swap',
+  { title: 'Compra BETTEX', text: 'Usa USDC no swap oficial da venda pública. Após confirmação, recebe os BETTEX; a tarifa separada segue a política oficial e vai ao caixa operacional.', tone: 'gold', badge: 'Swap', id: 'node-bettex-swap',
     extra: <div className="ba-swap" aria-label="Troca de USDC por BETTEX"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
 ];
 const fig2: Step[] = [
   { title: 'Carteira USDC', text: 'A pessoa usa o USDC disponível e confirmado para comprar BETTEX da venda pública do projeto.', tone: 'blue' },
-  { title: 'Confirma o swap', text: 'Confere preço dos tokens, quantidade adquirida, tarifa fixa de US$ 2,50 paga em USDC e custos externos. A tarifa vai ao caixa operacional, sem dedução ou queima de BETTEX. Valores e destinos precedem a autorização.', tone: 'gold', id: 'node-treasury-swap',
+  { title: 'Confirma o swap', text: 'Confere preço, quantidade, tarifa conforme política oficial e custos externos em USDC. Valores e destinos precedem a autorização; a tarifa vai ao caixa operacional, sem dedução ou queima de BETTEX.', tone: 'gold', id: 'node-treasury-swap',
     extra: <div className="ba-swap" aria-label="Compra de BETTEX com USDC"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
   { title: 'Compra liquidada', text: 'Preço e tarifa em USDC têm destinos separados; o crédito dos BETTEX comprados e os débitos são conciliados juntos uma única vez.', tone: 'teal',
     extra: (
       <div className="ba-entry">
         <div><strong>BETTEX comprado → Titular</strong><p>Recebe a quantidade comprada, sem tarifa deduzida em tokens.</p></div>
-        <div><strong>Tarifa USDC → Caixa operacional</strong><p>US$ 2,50 em carteira separada, de propriedade da entidade.</p></div>
+        <div><strong>Tarifa USDC → Caixa operacional</strong><p><a href="#documentacao-taxas">Política oficial de taxas</a>; caixa separado, fora do split.</p></div>
         <div data-testid="node-bettex-treasury"><strong>Preço USDC → Tesouraria BETTEX</strong><p>Recebe 100% do preço dos tokens da venda pública, separado da tarifa.</p></div>
       </div>
     ) },
@@ -92,25 +92,25 @@ const fig4: Step[] = [
 const fig5: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Autoriza a parcela investível para a IA, com alocação dinâmica e respeito à reserva defensiva e aos limites de risco.', tone: 'gold' },
   { title: 'IA BETTEX', text: 'Opera dentro do mandato e após verificação independente de risco. Apura o resultado líquido conciliado, após custos e tributos, considerando posições abertas. Perdas são reconhecidas permanentemente, sem déficit a compensar com lucros de rodadas futuras.', tone: 'blue', badge: 'Análise e apuração' },
-  { title: 'Reservas, liquidez e elegibilidade', text: 'Verifica reserva defensiva mínima inicial de 50% do patrimônio líquido atualizado e caixa livre suficiente, antes e após staking, transferência à carteira de recompra e custos projetados. A soma dos pesos elegíveis da rodada deve ser positiva.', tone: 'teal', badge: 'Condições antes do split', id: 'node-bettex-profit-split',
+  { title: 'Reservas, liquidez e elegibilidade', text: 'Verifica reservas conforme política aprovada e caixa livre antes e após staking, transferência à carteira de recompra e custos projetados. A soma dos pesos elegíveis da rodada deve ser positiva.', tone: 'teal', badge: 'Condições antes do split', id: 'node-bettex-profit-split',
     extra: (
       <>
         <div className="ba-entry" data-testid="node-bettex-reserve-recovery">
           <div className="ba-split__treasury"><strong>Reserva ou liquidez insuficiente, ou soma dos pesos zero</strong><p>A rodada não paga. 100% do lucro fica na tesouraria, sem crédito ao staking nem alocação à carteira de recompras, nem liberação futura desse resultado. A rodada encerra sem acumular lucro ou pesos para outro rateio.</p></div>
         </div>
-        <p>Somente com tributos aplicáveis validados e reconhecidos, reserva e liquidez atendidas antes e após staking, transferência à carteira de recompra e custos projetados, lucro elegível positivo, posições conciliadas e soma dos pesos elegíveis positiva, aplica o split sobre o valor elegível:</p>
+        <p>Somente com tributos aplicáveis apurados e recolhidos conforme obrigação, reserva e liquidez atendidas antes e após as saídas, lucro elegível positivo, posições conciliadas e soma dos pesos elegíveis positiva, aplica o split:</p>
         <div className="ba-entry ba-split" aria-label="Split permitido apenas com pesos elegíveis positivos, reserva e liquidez atendidas antes e após staking, transferência à carteira de recompra e custos projetados">
           <div className="ba-split__treasury"><strong>Tesouraria · 50%</strong><p>Retenção e reinvestimento de 50% do lucro distribuível.</p></div>
           <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Parcela bruta rateada entre participantes elegíveis. Retenções fiscais precedem o pagamento líquido na Carteira USDC, nunca na Carteira BETTEX.</p></div>
-          <div className="ba-split__buyback"><strong>Carteira de recompras · 25%</strong><p>Alocação diária obrigatória em USDC, acumulável entre dias. Execução é decisão separada da Administração.</p></div>
+          <div className="ba-split__buyback"><strong>Carteira de recompras · 25%</strong><p>USDC segregado → compra autorizada de BETTEX → burn permanente de todos os tokens adquiridos.</p></div>
         </div>
       </>
     ) },
 ];
 const fig6: Step[] = [
   { title: 'Parcela do staking', text: 'Parcela de 25% do lucro distribuível já separada no desenho 5, vinculada aos resultados e participantes elegíveis. Novos participantes não recebem lucros anteriores. Não há nova apuração ou novo split neste fluxo.', tone: 'blue' },
-  { title: 'Retenção e crédito na Carteira USDC', text: 'O direito bruto apurado fica identificado. Quando exigidas, retenções fiscais são reservadas antes do pagamento; a IA transfere somente o líquido. Após confirmação e conciliação, o recebido entra no saldo disponível, sem liquidar novamente o tributo reservado.', tone: 'teal' },
-  { title: 'Saque de USDC do staking', text: 'Movimenta USDC recebido sem repetir a distribuição. A tarifa fixa de US$ 2,50 é paga em USDC ao caixa operacional, com dedução autorizada e líquido discriminado. Custos externos e retenções aplicáveis são separados. Sem pagamento em moeda local.' },
+  { title: 'Retenção e crédito na Carteira USDC', text: 'Direito bruto identificado; retenções aplicáveis são resolvidas e recolhidas antes da disponibilização líquida. Provisão isolada não libera saldo. USDC transferido entra no disponível após confirmação e conciliação, sem nova dedução do tributo já considerado.', tone: 'teal' },
+  { title: 'Saque de USDC do staking', text: 'Movimenta USDC recebido sem repetir a distribuição. A tarifa segue a política oficial, paga em USDC ao caixa operacional, com dedução autorizada e líquido discriminado. Custos externos e retenções são separados. Sem pagamento em moeda local.' },
 ];
 const fig7: Step[] = [
   { title: 'Agentes de IA', text: 'A IA BETTEX coordena agentes que analisam oportunidades e propõem operações nos mercados.', tone: 'blue',
@@ -163,12 +163,12 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
           <div className="ba-flow ba-flow--treasury">
             <p className="ba-flow__label">Tesouraria BETTEX · reservas do valor recebido</p>
             <div className="ba-entry ba-reserves" data-testid="node-bettex-reserves">
-              <div><strong>50% · Reserva defensiva</strong><p>Mínimo inicial sobre o patrimônio líquido atualizado. Ativos segregados de baixo risco, com objetivo de yield mensal, sem rendimento garantido.</p></div>
-              <div><strong>50% · Parcela investível</strong><p>Alocada dinamicamente pelo algoritmo conforme as oportunidades e os limites de risco.</p></div>
+              <div><strong>Reserva defensiva</strong><p>Ativos efetivamente segregados conforme política aprovada, sem percentual geral fixado em 50%.</p></div>
+              <div><strong>Parcela investível</strong><p>Alocação dinâmica conforme oportunidades, liquidez e limites de risco.</p></div>
             </div>
             <p className="ba-fig__foot">O algoritmo analisa oportunidades em previsões, ações e cripto, esportes e cassinos e distribui a parcela investível conforme as melhores oportunidades identificadas. As estratégias incluem surebet nos esportes, com comparação de odds e cobertura dos resultados entre casas, e bonus hunting (mineração de bônus) em cassinos, com análise das promoções, requisitos de aposta e elegibilidade. A alocação é dinâmica, sem percentuais fixos por mercado, preservando a reserva defensiva e a verificação independente de risco.</p>
           </div>
-          <p className="ba-fig__foot">A disponibilidade de tokens para venda pública segue a liberação mensal predefinida no vesting de 36 meses, não decisões discricionárias da gestão conforme as reservas. A parcela de 65% pode ser vendida diretamente a corretoras para formar a tesouraria, sem depender de swaps; 100% do USDC recebido nessas vendas vai à tesouraria. Os aportes ligados à parcela de 15% dos investidores são separados: 50% para a tesouraria e 50% para capital inicial e desenvolvimento. O fundador decide livremente o destino de seus 20% após a liberação, inclusive distribuir ao time, manter em staking ou vender. O USDC pessoal não usado na compra continua separado da tesouraria.</p>
+          <p className="ba-fig__foot">O swap oficial vende tokens públicos já liberados no vesting de 36 meses: 100% do preço em USDC vai à tesouraria. Venda direta a corretoras respeita a mesma destinação e agenda. Aportes de investidores têm livre alocação. A parcela Fundador e equipe tem livre destinação pelo fundador após liberação, sem concessão automática. Mercados externos não herdam automaticamente a tarifa ou destinação do swap oficial. USDC pessoal não gasto continua fora da tesouraria.</p>
         </Figure>}
 
         {(!figure || figure === '3') && <Figure id="figure-bettex-staking" num="3" title={architectureFigureTitles['3']} lead="BETTEX disponível na carteira participa automaticamente. USDC não entra no cálculo do staking.">
@@ -182,12 +182,12 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
         {(!figure || figure === '4') && <Figure id="figure-bettex-ai-contract" num="4" title={architectureFigureTitles['4']} lead="O smart contract do agente de IA BETTEX conecta a tesouraria às regras de operação e autorização do capital.">
           <Steps steps={fig4} label="Tesouraria BETTEX conectada ao agente de IA por contrato inteligente e suas autorizações" />
           <p className="ba-fig__foot">O contrato aplica reservas, limites e permissões à movimentação do capital.</p>
-          <p className="ba-fig__foot">A IA sugere alterações de regras e limites numa fila. A liderança da Fundação BETTEX aprova as mudanças; a regra anterior permanece vigente até a execução da alteração aprovada, sem efeito retroativo em rodadas apuradas. Investimentos dentro do mandato seguem os controles independentes de risco, sem aprovação humana de cada ordem. A custódia institucional por multisig permanece separada da autocustódia das carteiras pessoais.</p>
+          <p className="ba-fig__foot">A IA propõe mudanças de políticas; a administração aprova versões que passam pelos controles e espera aplicáveis. Investimentos já mandatados seguem risco independente, sem assinatura por ordem. <a href="#documentacao-governanca">Governança</a> detalha política, custódia e execução, separadas da autocustódia pessoal.</p>
         </Figure>}
 
         {(!figure || figure === '5') && <Figure id="figure-bettex-risk" num="5" title={architectureFigureTitles['5']} lead="Tesouraria → IA BETTEX → verifica reservas, liquidez e pesos elegíveis: retém o lucro ou libera o split.">
           <Steps steps={fig5} label="IA apura lucro, verifica reservas, liquidez e pesos elegíveis; se alguma condição falhar, retém 100% sem split; com condições atendidas aplica 50% tesouraria, 25% staking e 25% carteira de recompras" />
-          <p className="ba-fig__foot">A recomposição das reservas tem prioridade sobre o staking. Com reserva ou liquidez insuficiente, 100% do lucro líquido fica na tesouraria, sem staking nem distribuição de um saldo restante na mesma apuração. Com todas as condições atendidas, aplica o split diretamente sobre o lucro líquido conciliado, não sobre o capital: 50% tesouraria, 25% staking e 25% carteira de recompras (financiamento obrigatório; a compra é discricionária e autorizada pela Administração). Créditos do staking não acumulam entre rodadas fechadas; a carteira de recompras acumula USDC entre dias. Essa carteira não financia trading, distribuições nem despesas, nem conta como reserva defensiva. Destino dos tokens recomprados pendente de confirmação; sem promessa de efeito sobre preço.</p>
+          <p className="ba-fig__foot">Reserva ou liquidez insuficiente mantém 100% do lucro na tesouraria, sem split ou liberação futura. Com tributos aplicáveis resolvidos e condições atendidas, o resultado elegível recebe 50% tesouraria, 25% staking e 25% carteira de recompra. O USDC da recompra pode acumular; sua compra exige autorização da administração e todo BETTEX adquirido segue para queima permanente. A carteira não financia estratégias, distribuições ou despesas, nem conta como reserva defensiva.</p>
           <p className="ba-fig__foot">Perdas reconhecidas são permanentes: não criam déficit a recuperar com resultados futuros. A reserva defensiva e a liquidez continuam obrigatórias. Cada lucro, perda, obrigação e pagamento é registrado uma única vez. Lucros anteriores não entram no rateio de novos participantes.</p>
         </Figure>}
 
@@ -195,6 +195,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
           <Steps steps={fig6} label="Parcela do staking já separada pela IA, distribuição pendente até recebimento confirmado na Carteira USDC e saque do USDC recebido" />
           <p className="ba-fig__foot">O registro do direito à distribuição não é saldo on-chain recebido. A obrigação e o posterior pagamento têm efeito único na apuração; a interface não soma o pendente ao saldo já recebido. Custos de rede são identificados separadamente.</p>
           <p className="ba-fig__foot"><a href="#figure-bettex-risk">Ver condições do split no desenho 5</a>.</p>
+          <p className="ba-fig__foot"><a href="#documentacao-taxas">Consultar a política oficial de taxas</a>.</p>
         </Figure>}
 
         {(!figure || figure === '7') && <Figure id="figure-bettex-agents" num="7" title={architectureFigureTitles['7']} lead="Agentes de IA → conexões por MCP ou API → execução automática das operações autorizadas.">

@@ -15,5 +15,8 @@ export const vestingSchedule = Array.from({ length: tokenomics.vestingMonths }, 
     investors: groups * 3,
     total: groups * 20,
     cumulative: cumulativeGroups * 20,
+    publicSaleCumulative: cumulativeGroups * 13,
+    teamCumulative: cumulativeGroups * 4,
+    investorsCumulative: cumulativeGroups * 3,
   };
 });

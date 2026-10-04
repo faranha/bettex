@@ -11,9 +11,7 @@
 - [Identidade e posicionamento](bettex-economic-identity.md) — apresentação pública: tecnologia de investimento para apostadores brasileiros, gerida por IA; preservar regras econômicas.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
-- [Custo mensal](operating-cost-target.md) — criador estima US$ 50–75 mil para operar; US$ 50 mil é a referência equilibrada de sustentabilidade.
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
-- [Remuneração da gestão](management-remuneration.md) — criador quer remuneração sobre lucro além dos serviços; salário do fundador condicionado a equilíbrio e payback.
 - [Âncoras e navegação fixa](navigation-anchor-offsets.md) — mudanças de altura precisam considerar rolagem JavaScript e índice fixo, não apenas scroll-margin.
 - [SEO e roteamento estático](seo-static-routing.md) — validar HTTP inicial por rota; reescritas genéricas podem apagar o HTML pré-renderizado.
 - [Overlays mobile](mobile-chart-overlays.md) — largura e posição dos tooltips precisam caber no gráfico, inclusive após expandir sanfonas.
@@ -26,8 +24,11 @@
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
 - [Rodapé](footer-scope.md) — não apresentar o bloco de redes pessoais do fundador no rodapé.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
-- [Ordem da documentação](documentation-reading-order.md) — “Entidade e negócios” vem imediatamente após “Visão do projeto”, não no fim.
+- [Ordem e leitura da documentação](documentation-reading-order.md) — Entidade após Visão; um capítulo visível por vez, com subseções apenas da área selecionada.
 - [Leitura do pitch](pitch-reading-behavior.md) — todo o conteúdo deve ficar visível, sem caixas expansíveis ou controles de expandir/recolher.
 - [Visual do pitch](pitch-visual-direction.md) — apresentação limpa, com foto do fundador; não reintroduzir fundos de cassino nem a foto de gráficos.
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
 - [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.
+- [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
+- [Fundador na documentação](documentation-founder-presentation.md) — sem aspas decorativas; retrato proporcional e integrado ao texto, sem alterar o Pitch.
+- [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.

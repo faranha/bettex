@@ -10,7 +10,7 @@
 .ba-fig { container-type:inline-size; padding:clamp(14px,2vw,22px); border:1px solid var(--ba-line); border-radius:16px; background:rgba(95,134,255,.05); min-width:0; scroll-margin-top:140px; }
 .ba-fig__head { margin-bottom:16px; }
 .ba-fig__num { color:var(--ba-blue); font:700 10px/1.4 var(--app-font-mono); letter-spacing:.14em; text-transform:uppercase; }
-.ba-fig__head h4 { margin:4px 0 4px; font:800 clamp(1.1rem,2vw,1.4rem)/1.15 var(--app-font-serif); letter-spacing:-.03em; }
+.ba-fig__head h3, .ba-fig__head h4 { margin:4px 0 4px; font:800 clamp(1.1rem,2vw,1.4rem)/1.15 var(--app-font-serif); letter-spacing:-.03em; }
 .ba-fig__head p { margin:0; color:var(--ba-muted); font-size:13px; line-height:1.5; }
 .ba-fig__foot { margin:14px 0 0; color:var(--ba-muted); font-size:12px; line-height:1.55; }
 .ba-flow__label { margin:0 0 14px; color:var(--ba-blue); font:700 10px/1.5 var(--app-font-mono); letter-spacing:.1em; text-transform:uppercase; }

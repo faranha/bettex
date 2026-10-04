@@ -1,0 +1,128 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 2 /Kids [4 0 R 6 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 2959 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(BETTEX — entidad, piloto y reglas) Tj T*
+() Tj T*
+(Empresa y administración) Tj T*
+() Tj T*
+(Una única empresa comercial privada de capital cerrado a constituir, administrada por el) Tj T*
+(fundador Fred Azevedo en modelo full stack AI, sin empleados. Servicios externos especializados) Tj T*
+(son contratados por necesidad, no posiciones internas.) Tj T*
+() Tj T*
+(La empresa reúne el token, la aplicación, la tesorería, las inversiones y las obligaciones del) Tj T*
+(programa. El nombre final, la forma societaria y la jurisdicción forman parte de la) Tj T*
+(formalización. Los titulares poseen tokens y derechos del programa, no acciones, voto) Tj T*
+(societario o una fracción rescatable de la tesorería.) Tj T*
+() Tj T*
+(La misión amplía alternativas de participación económica durante la transición de la IA y la) Tj T*
+(robótica. Transparencia, comprensión, responsabilidad y rendición de cuentas orientan la) Tj T*
+(operación, sin ingresos ni protección de capital garantizados.) Tj T*
+() Tj T*
+(Piloto y ingresos) Tj T*
+() Tj T*
+(Capital del piloto: US$ 100 mil, siendo US$ 50 mil para tesorería y US$ 50 mil para) Tj T*
+(lanzamiento. Meta a los tres meses: 5.000 usuarios y 1.000 MAU. Aportes de inversores tienen) Tj T*
+(libre asignación; el destino del piloto no es un split general.) Tj T*
+() Tj T*
+(Fred conduce adquisición por los propios canales y audiencia, con IA y servicios externos) Tj T*
+(necesarios. Lanzamiento incluye impulsión, alianzas, seguridad, medios pagados en los perfiles) Tj T*
+(del fundador y redes propias.) Tj T*
+() Tj T*
+(Ingresos por servicios = operaciones tarifadas  x  US$ 2,50. Escenarios de 1, 10 y 30) Tj T*
+(operaciones por activo consideran 1.000 MAU; 30 ilustra retiros diarios, sin presumir saldo o) Tj T*
+(adopción. Los ingresos no son ganancia: los costos identificados y los tributos van antes del) Tj T*
+(neto. No hay presupuesto mensual o fecha de equilibrio presumidos.) Tj T*
+() Tj T*
+(Token, captación y quema) Tj T*
+() Tj T*
+(Emisión de 1 billón de BETTEX: 65% venta pública, 20% Fundador y equipo, 15% inversores.) Tj T*
+(Vesting mensual por 36 meses desde la apertura de la venta pública, con grupos enteros 13:4:3.) Tj T*
+(La liberación no comprueba venta o circulación.) Tj T*
+() Tj T*
+(El 100% del precio de la venta pública en USDC va a la tesorería. Las tarifas de servicio) Tj T*
+(separadas van a la caja operativa. Los mercados externos no heredan automáticamente las) Tj T*
+(condiciones del swap oficial.) Tj T*
+() Tj T*
+(El resultado elegible, tras tributos y controles, recibe 50% tesorería, 25% staking y 25%) Tj T*
+(billetera exclusiva de recompra. Sin pesos, reservas o liquidez suficientes, el 100% queda en) Tj T*
+(la tesorería, sin split futuro. La compra usa autorización administrativa; todo BETTEX) Tj T*
+(adquirido es quemado permanentemente. La billetera exclusiva no es el mecanismo de quema.) Tj T*
+() Tj T*
+(Staking y secuencia fiscal) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 2446 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
+(BETTEX disponible en la billetera oficial participa automáticamente. Peso individual = suma de) Tj T*
+(cantidad  x  tiempo elegible. Pago bruto = porción de staking  x  peso individual  /  suma de) Tj T*
+(los pesos elegibles de la propia ronda UTC.) Tj T*
+() Tj T*
+(Cada ronda paga o no paga, sin acumulación, reapertura o complemento futuro. Cualquier salida) Tj T*
+(BETTEX, incluso parcial, resetea el peso y cancela derechos aún no pagados. Fracciones no) Tj T*
+(ejecutables regresan a la tesorería, sin crédito futuro. USDC recibido sigue siendo personal.) Tj T*
+() Tj T*
+(Los tributos imputables a la entidad son determinados, descontados y pagados según la) Tj T*
+(obligación aplicable antes de la ganancia elegible y split. Las retenciones aplicables se) Tj T*
+(resuelven antes del crédito líquido. La provisión no es pago; contabilizar y pagar la misma) Tj T*
+(obligación no permite doble deducción. No existe exención personal universal.) Tj T*
+() Tj T*
+(Solo USDC confirmado y conciliado entra en el saldo disponible. Los envíos inciertos no) Tj T*
+(autorizan repetición ni son recursos recuperados. Las correcciones mantienen historial y) Tj T*
+(efectos únicos, sin débito automático en la billetera personal.) Tj T*
+() Tj T*
+(Gobernanza e integraciones) Tj T*
+() Tj T*
+(Las políticas evolucionan por versiones aprobadas. La administración define la política; el) Tj T*
+(multisig 2 de 3 controla la custodia; los ejecutores actúan dentro de los mandatos. Los cambios) Tj T*
+(sensibles esperan al menos 24h; la rutina ya mandatada no exige nueva firma por operación. La) Tj T*
+(IA no amplía los propios permisos.) Tj T*
+() Tj T*
+(Tesorería, caja operativa, billetera exclusiva de recompra y billeteras personales tienen) Tj T*
+(fronteras propias. La reserva defensiva sigue la política aprobada, sin un mínimo general) Tj T*
+(fijado en 50%. Nuevas operaciones exigen riesgo independiente, disponibilidad y conciliación.) Tj T*
+() Tj T*
+(Arbitrum proporciona la red y los contratos. Allora es candidata a inferencias, no ejecución.) Tj T*
+(Robinhood Crypto Trading API requiere cuenta elegible en los Estados Unidos y autorización; no) Tj T*
+(prueba acceso a acciones. Consultas públicas Arbitrum/Gamma fueron verificadas; otros ejemplos) Tj T*
+(sin acceso privado son simulaciones. No hubo operaciones con dinero real.) Tj T*
+() Tj T*
+(https://www.linkedin.com/in/fredazevedo85/) Tj T*
+() Tj T*
+ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000344 00000 n 
+0000003355 00000 n 
+0000003481 00000 n 
+trailer << /Size 8 /Root 1 0 R >>
+startxref
+5979
+%%EOF

@@ -6,8 +6,10 @@ export function calculateTaxIllustration(input: {
   entityTaxes: number | null;
   beneficiaryWithholding: number | null;
   distributionConditionsMet: boolean;
+  fiscalObligationsSettled: boolean;
 }) {
-  const { resultAfterCosts, entityTaxes, beneficiaryWithholding, distributionConditionsMet } = input;
+  const { resultAfterCosts, entityTaxes, beneficiaryWithholding } = input;
+  const distributionConditionsMet = input.distributionConditionsMet && input.fiscalObligationsSettled;
   if (!Number.isFinite(resultAfterCosts)
     || [entityTaxes, beneficiaryWithholding].some(value => value !== null && (!Number.isFinite(value) || value < 0))) {
     return { status: 'invalid' as const, message: 'Informe valores finitos; tributos e retenções não podem ser negativos.' };
