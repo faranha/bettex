@@ -41,7 +41,6 @@ export function MarketOpportunity() {
     <div className="pb-market__opportunity">
       <h3 className="display">Já existe público. Já existe volume financeiro.</h3>
       <p>A BETTEX pretende alcançar apostadores brasileiros e pessoas com experiência em cripto. O público central estimado é um núcleo de afinidade, não o limite de atuação do produto.</p>
-      <p>A oportunidade da BETTEX é oferecer a esses públicos um produto de investimento com experiência familiar, linguagem acessível e estratégias geridas por IA. O objetivo é redirecionar a busca por retorno financeiro das apostas para a participação em resultados de investimentos em mercados de risco.</p>
     </div>
   </div>;
 }

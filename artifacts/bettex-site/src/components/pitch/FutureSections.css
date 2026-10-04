@@ -11,6 +11,10 @@
 .fu-sub { margin-top: 20px; max-width: 620px; font-size: 17px; line-height: 1.6; font-weight: 500; }
 .fu--one .fu-sub { color: #c5d2f1; } .fu--two .fu-sub { color: #183173; }
 .fu-hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.fu--one > .page-wrap > .fu-hero { margin-top: 32px; }
+.fu-environment-title { font-size: clamp(1.65rem, 3vw, 2.4rem); line-height: 1.15; font-weight: 800; letter-spacing: -.03em; }
+.fu-environment-signals { margin-top: 48px; padding: clamp(24px, 4vw, 40px); background: #F4F1E8; color: #070B1F; border-top: 4px solid #2B59FF; }
+.fu--one .fu-environment-signals > .fu-sub { color: #183173; }
 .fu-quote { margin-top: 32px; padding-left: 22px; border-left: 4px solid #F2B632; }
 .fu-quote p { font-size: clamp(1.5rem, 3vw, 2.3rem); font-weight: 800; line-height: 1.15; letter-spacing: -.04em; color: #F4F1E8; }
 .fu-quote footer { margin-top: 12px; font-size: 14px; color: #c5d2f1; }

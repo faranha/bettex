@@ -1,7 +1,6 @@
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import './ProblemSection.css';
 import { CrowdArt, TotalIcon, PartialIcon } from './MetricArt';
-import { MarketOpportunity } from './MarketOpportunity';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
@@ -16,20 +15,16 @@ const metrics = [
 export function ProblemSection() {
   return <section id="problema" aria-labelledby="problema-t" className="slide pb-problem">
     <div className="page-wrap pb-problem__wrap">
-      <header className="pb-problem__market-head">
-        <div className="mono pb-problem__kicker"><span>01 / 10</span><span className="pb-problem__rule" aria-hidden="true" />Problema e oportunidade</div>
-        <h2 id="problema-t" className="display pb-problem__title">O público brasileiro.<br /><span>A escala e o volume financeiro.</span></h2>
-        <p className="pb-problem__summary">A BETTEX busca alcançar os públicos brasileiros de apostas e cripto. A proposta é um produto de investimento que fale a língua dessas pessoas, com experiência familiar, custos claros e risco de perda explícito.</p>
-      </header>
-      <MarketOpportunity />
-      <div className="pb-problem__head">
-        <h3 className="display pb-problem__title">Apostar <span>não é investir.</span></h3>
+      <header className="pb-problem__head">
+        <div className="mono pb-problem__kicker"><span>03 / 10</span><span className="pb-problem__rule" aria-hidden="true" />Problema</div>
+        <h2 id="problema-t" className="display pb-problem__title">Apostar <span>não é investir.</span></h2>
+        <p className="mono pb-problem__topic">1. Perda de dinheiro nas apostas</p>
         <p className="pb-problem__summary">Para quem aposta buscando renda, o jogo não é apenas entretenimento. É uma expectativa de retorno financeiro.</p>
         <p className="mono pb-problem__eligibility">Participação na BETTEX: somente pessoas de 18 anos ou mais.</p>
-      </div>
+      </header>
 
       <div className="pb-problem__intro">
-        <p className="pb-problem__lead">A tese da BETTEX é que apostar para obter renda ou quitar dívidas é atribuir ao jogo uma função de investimento. A BETTEX propõe redirecionar essa busca por retorno financeiro para estratégias de ganhos em mercados de risco geridas por IA. A experiência tem linguagem e estética de aposta, mas é um produto de tecnologia voltado ao investimento, com participação nos resultados e risco de perda.</p>
+        <p className="pb-problem__lead">A tese da BETTEX é que apostar para obter renda ou quitar dívidas é atribuir ao jogo uma função de investimento. Ao tratar apostas como investimento, o brasileiro se expõe à perda de dinheiro justamente quando busca melhorar sua situação financeira.</p>
         <p>A pesquisa CNDL/SPC Brasil, com a Offerwise, ouviu consumidores de 18 anos ou mais nas 27 capitais que pretendiam gastar com a Copa de 2026. Os percentuais abaixo se referem aos que pretendiam apostar nesse evento.</p>
       </div>
 
@@ -48,6 +43,12 @@ export function ProblemSection() {
           <p>A oportunidade é uma hipótese: uma experiência financeira compreensível, com custos e riscos à vista. O projeto não mira pessoas em dificuldade e não promete recuperar perdas de apostas.</p>
           <a href={`${DOC}#documentacao-oportunidade`} target="_blank" rel="noopener noreferrer" className="tap pb-problem__doc">Conheça a proposta na documentação<ArrowRight aria-hidden="true" /></a>
         </div>
+      </div>
+      <div className="pb-problem__automation" aria-labelledby="problema-ia-t">
+        <p className="mono pb-problem__topic">2. Emprego e renda ameaçados pela IA</p>
+        <h3 id="problema-ia-t" className="display">É mentira, a era da prosperidade é uma mentira.</h3>
+        <p>Na visão da BETTEX, brasileiros e populações de todo o mundo vão enfrentar desemprego em massa em breve: IA e robôs vão causar um estrago gigante na economia real antes que a prosperidade prometida chegue. Acreditamos que a crise, a miséria e o abandono virão primeiro, enquanto os ganhos se concentram em quem controla as máquinas.</p>
+        <p>São dois problemas que queremos enfrentar: a perda de dinheiro nas apostas tratadas como investimento e a perda de trabalho e renda em uma economia automatizada.</p>
       </div>
     </div>
   </section>;

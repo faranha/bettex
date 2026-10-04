@@ -1,4 +1,4 @@
-import { CircuitBoard, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { LaborSignals } from './LaborSignals';
 import { USVacancyChart } from './USVacancyChart';
 import { BrazilEmploymentCharts } from './BrazilEmploymentCharts';
@@ -16,16 +16,14 @@ export function FutureSections() {
   return <>
     <section id="agora" aria-labelledby="agora-t" className="slide fu fu--one">
       <div className="page-wrap">
-        <div className="mono fu-kicker"><span>02 / 9</span><span className="fu-rule" aria-hidden="true" />Resgatar o futuro antes da crise</div>
+        <div className="mono fu-kicker"><span>04 / 10</span><span className="fu-rule" aria-hidden="true" />Ambiente externo</div>
+        <h2 id="agora-t" className="display fu-title">Ambiente externo.</h2>
+        <p className="fu-sub">Musk, automação do trabalho e o que está acontecendo na economia real.</p>
         <div className="fu-hero">
           <div>
-            <div className="fu-verdict">
-              <span className="mono">Tese da BETTEX</span>
-              <h2 id="agora-t" className="display">É mentira, a era da prosperidade é uma mentira.</h2>
-            </div>
-            <p className="fu-sub">Na BETTEX, acreditamos que milhões de pessoas vão perder o trabalho e ficar sem renda antes que a prosperidade prometida pela IA chegue. Nossa visão é que a crise, a miséria e o abandono virão primeiro, enquanto os ganhos se concentram em quem controla as máquinas. Por isso, nossa missão é resgatar o futuro das pessoas agora: ampliar o acesso à participação econômica em um mundo automatizado, sem esperar que o socorro venha depois da exclusão.</p>
+            <h3 className="display fu-environment-title">Musk e a promessa de prosperidade</h3>
+            <p className="fu-sub">Musk projeta uma era de abundância impulsionada por IA e robôs. A análise da BETTEX observa o intervalo entre essa promessa e seus efeitos sobre trabalho, renda e poder de compra.</p>
             <p className="fu-frame"><Src href="https://www.businessinsider.com/elon-musk-ai-abundance-trump-jobs-wealth-healthcare-ubi-robots-2026-9">Business Insider, 30 set. 2026</Src></p>
-            <p className="fu-sub">IA e robôs vão destruir empregos e a economia real. As pessoas vão enfrentar miséria e abandono antes de qualquer socorro chegar.</p>
           </div>
           <figure className="fu-photo" data-attribution="The Royal Society (2018)" data-license="https://creativecommons.org/licenses/by-sa/3.0/" data-modifications="crop, color grading">
             <img src={PHOTO} alt="Retrato de Elon Musk em 2018" width={1337} height={1771} loading="lazy" />
@@ -60,19 +58,11 @@ export function FutureSections() {
           </article>
         </div>
         <p className="fu-note mono">A referência à Tesla não indica parceria, endosso ou participação da BETTEX na empresa.</p>
-      </div>
-    </section>
-
-    <section id="resgatar-futuro" aria-labelledby="resgatar-futuro-t" className="slide fu fu--two">
-      <div className="page-wrap">
-        <div className="mono fu-kicker"><span>02 / 9</span><span className="fu-rule" aria-hidden="true" />O futuro das pessoas</div>
-        <h2 id="resgatar-futuro-t" className="display fu-title fu-title--two">Resgatar o futuro <span>das pessoas</span></h2>
+    <section id="resgatar-futuro" aria-labelledby="resgatar-futuro-t" className="fu-environment-signals">
+        <h3 id="resgatar-futuro-t" className="display fu-environment-title">O que já acontece na economia real.</h3>
         <p className="fu-sub">Os sinais de fragilidade já são concretos: empregos eliminados, menos vagas criadas e milhões sem trabalho suficiente ou vínculo formal. Para quem depende de renda para viver, a promessa de abundância não resolve o presente.</p>
         <LaborSignals />
-        <div className="fu-position">
-          <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
-          <p className="display fu-pos-lead">Resgatar o futuro é ampliar o acesso à participação econômica, para que a tecnologia não produza prosperidade apenas para quem já controla o capital.</p>
-        </div>
+    </section>
       </div>
     </section>
 
