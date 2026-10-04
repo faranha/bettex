@@ -19,6 +19,7 @@
 - [Large localization edits](large-localization-edits.md) — failed large saves can leave source ahead of translations; prepare and save separately, then audit coverage.
 - [Elegibilidade ao lucro](profit-entitlement-rules.md) — cada rodada paga ou não paga, sem retorno ou acumulação; saídas cancelam direitos e frações vão à tesouraria.
 - [Demo visual](demo-prototype-scope.md) — planejar antes de reconstruir; protótipo visual baseado nas regras, sem banco de dados ou operações reais.
+- [Navegação do piloto](demo-navigation.md) — tudo no mesmo demo/app; Participação e Resultados em duas abas aprovadas.
 - [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
 - [Mercados no mobile](mobile-market-content.md) — não repetir os quatro cartões de agentes abaixo da animação; a apresentação anterior já cobre esse conteúdo.
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.

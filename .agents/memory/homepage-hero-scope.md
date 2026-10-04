@@ -26,3 +26,15 @@ O criador reiterou: “nunca traga como opção futura. Não é ‘pretende’, 
 **Why:** O criador repetiu que essas mudanças na apresentação não foram autorizadas.
 
 **How to apply:** Preservar o copy comercial aprovado e descrever o funcionamento no presente, sem substituir os textos por intenções futuras ou ressalvas editoriais novas. Não confundir isso com afirmar que a demonstração visual realiza transações reais.
+
+No hero, o criador definiu o posicionamento como “comunidade de investimento em IA” e pediu falar em “lucros do projeto”, sem “lucros elegíveis”.
+
+**Why:** O criador corrigiu diretamente a etiqueta e o texto comercial do hero.
+
+**How to apply:** Manter esse posicionamento nas revisões do hero, sem reintroduzir o qualificador técnico no texto comercial. A correção não altera as regras econômicas detalhadas na documentação.
+
+O hero deve ter uma única frase sobre a comunidade, sem repetir a mesma mensagem no subtítulo e no parágrafo seguinte.
+
+**Why:** O criador apontou a duplicação e reiterou: “É uma frase só sobre a comunidade”.
+
+**How to apply:** Preservar a etiqueta solicitada e concentrar a frase sobre a comunidade no subtítulo; o parágrafo seguinte explica a IA e a participação nos lucros.

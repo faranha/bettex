@@ -15,6 +15,12 @@ Na apresentação comercial, o foco é comprar BETTEX e participar dos lucros, s
 
 **How to apply:** Usar texto simples e direto nos cartões comerciais, podendo explicar um pouco mais a compra e a participação sem torná-las complexas, conforme pedido do criador. Para o resultado, o criador definiu: “Quando houver lucro elegível, você recebe sua parte.” A referência ao pagamento diário dos lucros deve usar asterisco ligado à observação “*Sem lucro não há distribuição e você não perde os seus tokens.” Manter regras detalhadas na documentação e nos termos de operações reais, sem alterar a economia do projeto nem prometer rendimento garantido.
 
+No cartão “O token é seu”, a mensagem de propriedade deve explicar que receber os lucros não faz a pessoa perder os tokens ou deixar de ser dona deles.
+
+**Why:** O criador esclareceu que é a continuidade da propriedade que deseja comunicar após a frase sobre o pagamento dos lucros.
+
+**How to apply:** Relacionar a permanência dos tokens ao recebimento dos lucros, sem transformar a mensagem de propriedade numa garantia de valor de mercado.
+
 A auditoria precisa incluir as fontes canônicas de texto, não apenas o texto escrito diretamente nos componentes.
 
 **Why:** Uma ressalva sobre renda e desemprego continuou aparecendo após a revisão dos componentes porque vinha dos dados compartilhados da tese.

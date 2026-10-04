@@ -177,7 +177,7 @@ export function ProjectModelSection() {
                 <DepositIllustration />
               </div>
               <h3>O token <em>é seu.</em></h3>
-              <p className="pm-detail">Compre BETTEX e participe dos lucros do projeto. Basta comprar e deixar na sua carteira que todo dia a gente paga sua parte dos lucros*.</p>
+              <p className="pm-detail">Compre BETTEX e participe dos lucros do projeto. Basta comprar e deixar na sua carteira que todo dia a gente paga sua parte dos lucros*. O token continua sendo seu: receber os lucros não faz você perder seus tokens nem deixar de ser dono deles.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / ANÁLISE E OPERAÇÕES</span>
