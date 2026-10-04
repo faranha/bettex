@@ -1,4 +1,224 @@
 {
+  "A comunidade ajuda a determinar a evolução dos agentes de IA.": {
+    "en": "The community helps determine the evolution of the AI agents.",
+    "es": "La comunidad ayuda a determinar la evolución de los agentes de IA."
+  },
+  "Público da iniciativa": {
+    "en": "Audience for the initiative",
+    "es": "Público de la iniciativa"
+  },
+  "Foco em quem busca migrar das apostas para investimentos.": {
+    "en": "Focused on those seeking to move from betting to investing.",
+    "es": "Enfoque en quienes buscan pasar de las apuestas a las inversiones."
+  },
+  "prosperidade": {
+    "en": "prosperity",
+    "es": "prosperidad"
+  },
+  "A era da": {
+    "en": "The age of",
+    "es": "La era de la"
+  },
+  "Elon Musk imagina um futuro em que IA e robôs produzem em abundância e o trabalho deixa de ser obrigatório.": {
+    "en": "Elon Musk envisions a future in which AI and robots produce in abundance and work is no longer compulsory.",
+    "es": "Elon Musk imagina un futuro en el que la IA y los robots producen en abundancia y el trabajo deja de ser obligatorio."
+  },
+  "“Provavelmente nenhum de nós terá um emprego.”": {
+    "en": "“Probably none of us will have a job.”",
+    "es": "“Probablemente ninguno de nosotros tendrá un empleo.”"
+  },
+  "Elon Musk, VivaTech 2024 ·": {
+    "en": "Elon Musk, VivaTech 2024 ·",
+    "es": "Elon Musk, VivaTech 2024 ·"
+  },
+  "Na visão de Musk, IA e robôs forneceriam os bens e serviços necessários, sustentados por uma alta renda universal. Uma era de prosperidade em que trabalhar seria uma escolha, não uma condição de sobrevivência.": {
+    "en": "In Musk’s vision, AI and robots would provide the necessary goods and services, supported by a universal high income. An age of prosperity in which working would be a choice, not a condition for survival.",
+    "es": "En la visión de Musk, la IA y los robots proporcionarían los bienes y servicios necesarios, respaldados por una renta alta universal. Una era de prosperidad en la que trabajar sería una elección, no una condición para sobrevivir."
+  },
+  "Retrato de Elon Musk em 2018": {
+    "en": "Portrait of Elon Musk in 2018",
+    "es": "Retrato de Elon Musk en 2018"
+  },
+  "Wikimedia Commons": {
+    "en": "Wikimedia Commons",
+    "es": "Wikimedia Commons"
+  },
+  "CC BY-SA 3.0": {
+    "en": "CC BY-SA 3.0",
+    "es": "CC BY-SA 3.0"
+  },
+  "Foto: The Royal Society (2018) ·": {
+    "en": "Photo: The Royal Society (2018) ·",
+    "es": "Foto: The Royal Society (2018) ·"
+  },
+  "Enquadramento e tratamento visual.": {
+    "en": "Framing and visual treatment.",
+    "es": "Encuadre y tratamiento visual."
+  },
+  "Tesla · Optimus": {
+    "en": "Tesla · Optimus",
+    "es": "Tesla · Optimus"
+  },
+  "Tesla e os humanoides": {
+    "en": "Tesla and humanoid robots",
+    "es": "Tesla y los humanoides"
+  },
+  "O Master Plan Part IV, publicado em setembro de 2025, apresenta o Optimus, robô humanoide da Tesla, como parte da automação física e da abundância sustentável. A IA deixa a tela e passa a executar tarefas no mundo real. O plano oficial fala em redefinir trabalho, mobilidade e energia.": {
+    "en": "Master Plan Part IV, published in September 2025, presents Optimus, Tesla’s humanoid robot, as part of physical automation and sustainable abundance. AI moves beyond the screen to perform tasks in the real world. The official plan discusses redefining labor, mobility and energy.",
+    "es": "El Master Plan Part IV, publicado en septiembre de 2025, presenta a Optimus, el robot humanoide de Tesla, como parte de la automatización física y la abundancia sostenible. La IA sale de la pantalla para realizar tareas en el mundo real. El plan oficial habla de redefinir el trabajo, la movilidad y la energía."
+  },
+  "SpaceX · Nasdaq: SPCX": {
+    "en": "SpaceX · Nasdaq: SPCX",
+    "es": "SpaceX · Nasdaq: SPCX"
+  },
+  "SpaceX e o capital do futuro": {
+    "en": "SpaceX and the capital of the future",
+    "es": "SpaceX y el capital del futuro"
+  },
+  "A SpaceX estreou na Nasdaq em 12 de junho de 2026, sob o ticker SPCX. Seu IPO conecta foguetes, Starlink e IA a uma visão de infraestrutura espacial, incluindo data centers orbitais. São planos de expansão sujeitos a riscos tecnológicos.": {
+    "en": "SpaceX debuted on Nasdaq on June 12, 2026, under the ticker SPCX. Its IPO connects rockets, Starlink and AI to a vision of space infrastructure, including orbital data centers. These expansion plans are subject to technological risks.",
+    "es": "SpaceX debutó en Nasdaq el 12 de junio de 2026, con el símbolo SPCX. Su salida a bolsa conecta cohetes, Starlink e IA con una visión de infraestructura espacial, incluidos centros de datos orbitales. Son planes de expansión sujetos a riesgos tecnológicos."
+  },
+  "Essas referências não indicam parceria, endosso ou participação da BETTEX em Tesla ou SpaceX.": {
+    "en": "These references do not indicate any partnership, endorsement or BETTEX ownership stake in Tesla or SpaceX.",
+    "es": "Estas referencias no indican una alianza, respaldo ni participación de BETTEX en Tesla o SpaceX."
+  },
+  "O futuro das pessoas": {
+    "en": "People’s future",
+    "es": "El futuro de las personas"
+  },
+  "das pessoas": {
+    "en": "for people",
+    "es": "de las personas"
+  },
+  "Resgatar o futuro": {
+    "en": "Reclaiming the future",
+    "es": "Rescatar el futuro"
+  },
+  "O risco não é apenas perder um emprego. É ficar sem renda e sem participação na riqueza que as máquinas produzem.": {
+    "en": "The risk is not just losing a job. It is being left without income or a share in the wealth that machines produce.",
+    "es": "El riesgo no es solo perder un empleo. Es quedarse sin ingresos ni participación en la riqueza que producen las máquinas."
+  },
+  "EUA: cenário de Dario Amodei": {
+    "en": "USA: Dario Amodei’s scenario",
+    "es": "EE. UU.: escenario de Dario Amodei"
+  },
+  "dos empregos de entrada de colarinho branco poderiam desaparecer. Em maio de 2025, Dario Amodei, CEO da Anthropic, alertou à Axios para um cenário de 10% a 20% de desemprego nos EUA em um a cinco anos. Tecnologia, finanças, direito e consultoria estão entre as áreas citadas.": {
+    "en": "of entry-level white-collar jobs could disappear. In May 2025, Dario Amodei, CEO of Anthropic, warned Axios of a scenario with 10% to 20% unemployment in the USA within one to five years. Technology, finance, law and consulting are among the fields cited.",
+    "es": "de los empleos de entrada de cuello blanco podrían desaparecer. En mayo de 2025, Dario Amodei, CEO de Anthropic, advirtió a Axios de un escenario de entre el 10% y el 20% de desempleo en EE. UU. en uno a cinco años. Tecnología, finanzas, derecho y consultoría figuran entre las áreas citadas."
+  },
+  "América Latina: Guatemala e El Salvador": {
+    "en": "Latin America: Guatemala and El Salvador",
+    "es": "América Latina: Guatemala y El Salvador"
+  },
+  "dos trabalhadores em ocupações com alto risco de substituição por robôs na Guatemala e em El Salvador. O relatório do BID de 2021 apresenta essas estimativas de Micco e Soler (2020) e aponta 65% na Argentina.": {
+    "en": "of workers in occupations at high risk of replacement by robots in Guatemala and El Salvador. The IDB’s 2021 report presents these estimates from Micco and Soler (2020) and reports 65% in Argentina.",
+    "es": "de los trabajadores en ocupaciones con alto riesgo de sustitución por robots en Guatemala y El Salvador. El informe del BID de 2021 presenta estas estimaciones de Micco y Soler (2020) e indica un 65% en Argentina."
+  },
+  "Potencial de automação por ocupação, não previsão de 75% de desemprego. O próprio relatório ressalta que custos, adoção e metodologias podem reduzir o impacto.": {
+    "en": "Automation potential by occupation, not a forecast of 75% unemployment. The report itself notes that costs, adoption and methodologies can reduce the impact.",
+    "es": "Potencial de automatización por ocupación, no una previsión del 75% de desempleo. El propio informe señala que los costes, la adopción y las metodologías pueden reducir el impacto."
+  },
+  "Para a IA generativa, a OIT e o Banco Mundial estimaram em 2024 que 26% a 38% dos empregos na América Latina e no Caribe estão expostos, com 2% a 5% em risco de automação total. Cerca de 17 milhões de empregos poderiam ficar sem os ganhos de produtividade por falta de acesso digital. São tecnologias e metodologias diferentes das estimativas de robótica do BID.": {
+    "en": "For generative AI, the ILO and World Bank estimated in 2024 that 26% to 38% of jobs in Latin America and the Caribbean are exposed, with 2% to 5% at risk of full automation. Around 17 million jobs could miss out on productivity gains due to a lack of digital access. These technologies and methodologies differ from the IDB’s robotics estimates.",
+    "es": "Para la IA generativa, la OIT y el Banco Mundial estimaron en 2024 que entre el 26% y el 38% de los empleos en América Latina y el Caribe están expuestos, con entre el 2% y el 5% en riesgo de automatización total. Unos 17 millones de empleos podrían quedar sin las mejoras de productividad por falta de acceso digital. Son tecnologías y metodologías distintas de las estimaciones de robótica del BID."
+  },
+  "Resgatar o futuro é ampliar o acesso à participação econômica, para que a tecnologia não produza prosperidade apenas para quem já controla o capital.": {
+    "en": "Reclaiming the future means widening access to economic participation, so that technology does not generate prosperity only for those who already control capital.",
+    "es": "Rescatar el futuro es ampliar el acceso a la participación económica, para que la tecnología no genere prosperidad solo para quienes ya controlan el capital."
+  },
+  "A BETTEX organiza uma comunidade de investimento com IA e reúne capital em uma tesouraria que opera em mercados de risco. Quando há lucro e as condições de distribuição são atendidas, o participante recebe sua parcela conforme as regras do projeto.": {
+    "en": "BETTEX organizes an investment community with AI and pools capital in a treasury that operates in risk markets. When there is profit and the distribution conditions are met, participants receive their share according to the project’s rules.",
+    "es": "BETTEX organiza una comunidad de inversión con IA y reúne capital en una tesorería que opera en mercados de riesgo. Cuando hay beneficios y se cumplen las condiciones de distribución, el participante recibe su parte conforme a las reglas del proyecto."
+  },
+  "Não é salário, seguro contra desemprego ou renda garantida. Há risco de perda de capital.": {
+    "en": "It is not a salary, unemployment insurance or guaranteed income. There is a risk of capital loss.",
+    "es": "No es un salario, un seguro de desempleo ni ingresos garantizados. Existe riesgo de pérdida de capital."
+  },
+  "Como a BETTEX amplia a participação": {
+    "en": "How BETTEX broadens participation",
+    "es": "Cómo BETTEX amplía la participación"
+  },
+  "CNN, 23 mai. 2024": {
+    "en": "CNN, May 23, 2024",
+    "es": "CNN, 23 may. 2024"
+  },
+  "Nasdaq, IPO": {
+    "en": "Nasdaq, IPO",
+    "es": "Nasdaq, salida a bolsa"
+  },
+  "SEC, prospecto": {
+    "en": "SEC, prospectus",
+    "es": "SEC, folleto"
+  },
+  "Axios, mai. 2025": {
+    "en": "Axios, May 2025",
+    "es": "Axios, may. 2025"
+  },
+  "BID, futuro do trabalho, 2021": {
+    "en": "IDB, future of work, 2021",
+    "es": "BID, futuro del trabajo, 2021"
+  },
+  "OIT e Banco Mundial, 2024": {
+    "en": "ILO and World Bank, 2024",
+    "es": "OIT y Banco Mundial, 2024"
+  },
+  "Para quem aposta buscando renda, o jogo não é apenas entretenimento. É uma expectativa de retorno financeiro.": {
+    "en": "For those who bet seeking income, gambling is not just entertainment. It is an expectation of financial returns.",
+    "es": "Para quien apuesta buscando ingresos, el juego no es solo entretenimiento. Es una expectativa de retorno financiero."
+  },
+  "Participação na BETTEX: somente pessoas de 18 anos ou mais.": {
+    "en": "Participation in BETTEX: only people aged 18 or older.",
+    "es": "Participación en BETTEX: solo personas de 18 años o más."
+  },
+  "A tese da BETTEX é que apostar para obter renda ou quitar dívidas é atribuir ao jogo uma função de investimento. O projeto propõe redirecionar essa busca por retorno financeiro para estratégias de investimento geridas por IA.": {
+    "en": "BETTEX’s thesis is that betting to earn income or repay debts gives gambling an investment role. The project proposes redirecting this pursuit of financial returns towards AI-managed investment strategies.",
+    "es": "La tesis de BETTEX es que apostar para obtener ingresos o saldar deudas es atribuir al juego una función de inversión. El proyecto propone redirigir esta búsqueda de retorno financiero hacia estrategias de inversión gestionadas por IA."
+  },
+  "A pesquisa CNDL/SPC Brasil, com a Offerwise, ouviu consumidores de 18 anos ou mais nas 27 capitais que pretendiam gastar com a Copa de 2026. Os percentuais abaixo se referem aos que pretendiam apostar nesse evento.": {
+    "en": "The CNDL/SPC Brasil survey, conducted with Offerwise, interviewed consumers aged 18 or older in Brazil’s 27 state capitals who intended to spend on the 2026 World Cup. The percentages below refer to those who intended to bet during that event.",
+    "es": "La encuesta de CNDL/SPC Brasil, con Offerwise, entrevistó a consumidores de 18 años o más en las 27 capitales de Brasil que pretendían gastar en el Mundial de 2026. Los porcentajes siguientes corresponden a quienes pretendían apostar en ese evento."
+  },
+  "Entre os que pretendiam apostar na Copa de 2026": {
+    "en": "Among those who intended to bet during the 2026 World Cup",
+    "es": "Entre quienes pretendían apostar en el Mundial de 2026"
+  },
+  "viam nas bets uma forma de quitar dívidas pendentes": {
+    "en": "saw betting platforms as a way to repay outstanding debts",
+    "es": "veían en las plataformas de apuestas una forma de saldar deudas pendientes"
+  },
+  "No mesmo grupo pesquisado": {
+    "en": "Within the same surveyed group",
+    "es": "En el mismo grupo encuestado"
+  },
+  "concordavam totalmente com essa possibilidade": {
+    "en": "fully agreed with that possibility",
+    "es": "estaban totalmente de acuerdo con esa posibilidad"
+  },
+  "concordavam parcialmente com essa possibilidade": {
+    "en": "partly agreed with that possibility",
+    "es": "estaban parcialmente de acuerdo con esa posibilidad"
+  },
+  "CNDL/SPC Brasil e Offerwise, pesquisa sobre a Copa de 2026": {
+    "en": "CNDL/SPC Brasil and Offerwise, 2026 World Cup survey",
+    "es": "CNDL/SPC Brasil y Offerwise, encuesta sobre el Mundial de 2026"
+  },
+  ". Amostra de 600 participantes com intenção de gastos para a Copa, coleta de 27 de abril a 5 de maio de 2026. Os 74% reúnem 31% de concordância total e 43% parcial. Esse recorte não representa toda a população brasileira, retorno de apostas ou demanda medida pela BETTEX.": {
+    "en": ". Sample of 600 participants intending to spend on the World Cup, surveyed from April 27 to May 5, 2026. The 74% comprises 31% who fully agreed and 43% who partly agreed. This sample does not represent Brazil’s entire population, betting returns or demand measured by BETTEX.",
+    "es": ". Muestra de 600 participantes con intención de gastar en el Mundial, encuestados del 27 de abril al 5 de mayo de 2026. El 74% reúne un 31% de acuerdo total y un 43% de acuerdo parcial. Este recorte no representa a toda la población brasileña, retornos de las apuestas ni demanda medida por BETTEX."
+  },
+  "Conheça a proposta na documentação": {
+    "en": "Explore the proposal in the documentation",
+    "es": "Conozca la propuesta en la documentación"
+  },
+  "4 a 5% de engajamento": {
+    "en": "4 to 5% engagement",
+    "es": "4 a 5% de interacción"
+  },
+  "mais de 5.000": {
+    "en": "over 5,000",
+    "es": "más de 5.000"
+  },
   "Quero participar da comunidade": {
     "en": "I want to join the community",
     "es": "Quiero participar en la comunidad"
@@ -399,13 +619,17 @@
     "en": "BETTEX is aimed at adults in Brazil who want to move away from this approach: stop choosing individual bets and start participating in AI-managed investment strategies.",
     "es": "BETTEX se dirige a los adultos en Brasil que quieren salir de esa lógica: dejar de elegir apuestas individuales y empezar a participar en estrategias de inversión gestionadas por IA."
   },
-  "A pesquisa ANBIMA/Datafolha ouviu 5.832 pessoas de 16 anos ou mais no Brasil. O primeiro número descreve a participação em apostas online; os outros dois mostram motivações declaradas pelos apostadores pesquisados.": {
-    "en": "The ANBIMA/Datafolha survey interviewed 5,832 people aged 16 or over in Brazil. The first figure describes participation in online betting; the other two show motivations reported by the bettors surveyed.",
-    "es": "La encuesta ANBIMA/Datafolha entrevistó a 5.832 personas de 16 años o más en Brasil. La primera cifra describe la participación en apuestas en línea; las otras dos muestran motivaciones declaradas por las personas encuestadas que apostaban."
+  "A pesquisa ANBIMA/Datafolha ouviu 5.832 pessoas no Brasil. Os percentuais apresentados mostram motivações declaradas pelos apostadores pesquisados, não o público elegível da BETTEX.": {
+    "en": "The ANBIMA/Datafolha survey interviewed 5,832 people in Brazil. The percentages shown describe motivations reported by the surveyed bettors, not BETTEX’s eligible audience.",
+    "es": "La encuesta ANBIMA/Datafolha entrevistó a 5.832 personas en Brasil. Los porcentajes presentados describen motivaciones declaradas por las personas encuestadas que apostaban, no el público elegible de BETTEX."
   },
-  "Brasileiros de 16 anos ou mais": {
-    "en": "Brazilians aged 16 or over",
-    "es": "Brasileños de 16 años o más"
+  "Público da BETTEX": {
+    "en": "BETTEX’s audience",
+    "es": "Público de BETTEX"
+  },
+  "participação exclusiva para pessoas de 18 anos ou mais": {
+    "en": "participation exclusively for people aged 18 or older",
+    "es": "participación exclusiva para personas de 18 años o más"
   },
   "Entre os apostadores pesquisados": {
     "en": "Among the bettors surveyed",
@@ -419,10 +643,6 @@
     "en": "saw betting as investing or saving money",
     "es": "veían las apuestas como una forma de invertir o ahorrar dinero"
   },
-  "Para apostadores adultos no Brasil": {
-    "en": "For adult bettors in Brazil",
-    "es": "Para adultos que apuestan en Brasil"
-  },
   "Para quem quer deixar as apostas e começar a investir.": {
     "en": "For people who want to stop betting and start investing.",
     "es": "Para quienes quieren dejar las apuestas y empezar a invertir."
@@ -435,10 +655,6 @@
     "en": "Who is BETTEX for?",
     "es": "¿Para quién es BETTEX?"
   },
-  "O apostador brasileiro adulto que quer deixar as apostas e começar a investir.": {
-    "en": "Adult Brazilian bettors who want to stop betting and start investing.",
-    "es": "Los adultos brasileños que apuestan y quieren dejar las apuestas y empezar a invertir."
-  },
   "Em vez de escolher apostas isoladas, a proposta é participar, via token, de uma tesouraria com estratégias de investimento geridas por IA.": {
     "en": "Instead of choosing individual bets, the proposal is to participate, through a token, in a treasury with AI-managed investment strategies.",
     "es": "En lugar de elegir apuestas individuales, la propuesta es participar, mediante un token, en una tesorería con estrategias de inversión gestionadas por IA."
@@ -446,6 +662,26 @@
   "O mercado inicial é o Brasil. A estratégia de aquisição começa pela audiência e comunidade de Fred Azevedo, fundador do SOS Jogador, com a meta dos primeiros 1.000 usuários.": {
     "en": "The initial market is Brazil. The acquisition strategy starts with the audience and community of Fred Azevedo, founder of Player SOS, with a goal of reaching the first 1,000 users.",
     "es": "El mercado inicial es Brasil. La estrategia de adquisición comienza con la audiencia y la comunidad de Fred Azevedo, fundador de SOS Jugador, con la meta de alcanzar los primeros 1.000 usuarios."
+  },
+  "O mercado inicial é o Brasil. A estratégia de onboarding começa pela audiência e comunidade de": {
+    "en": "The initial market is Brazil. The onboarding strategy starts with the audience and community of",
+    "es": "El mercado inicial es Brasil. La estrategia de onboarding comienza con la audiencia y la comunidad de"
+  },
+  ", fundador do SOS Jogador, com a meta dos primeiros 1.000 usuários.": {
+    "en": ", founder of SOS Jogador, with a goal of the first 1,000 users.",
+    "es": ", fundador de SOS Jogador, con la meta de los primeros 1.000 usuarios."
+  },
+  ", fundador do": {
+    "en": ", founder of",
+    "es": ", fundador de"
+  },
+  ", com a meta dos primeiros 1.000 usuários.": {
+    "en": ", with a goal of the first 1,000 users.",
+    "es": ", con la meta de los primeros 1.000 usuarios."
+  },
+  "Instagram de Fred Azevedo": {
+    "en": "Fred Azevedo's Instagram",
+    "es": "Instagram de Fred Azevedo"
   },
   "A BETTEX chegou para te ajudar a atravessar grandes períodos de incerteza.": {
     "en": "BETTEX is here to help you through long periods of uncertainty.",
@@ -1455,9 +1691,9 @@
     "en": "9–5d",
     "es": "9–5d"
   },
-  ": 5.832 entrevistas com pessoas de 16 anos ou mais, coletadas em novembro de 2025. Os números descrevem motivações declaradas. Não são retorno de apostas nem demanda medida pela BETTEX.": {
-    "en": ": 5,832 interviews with people 16 and older, collected in November 2025. The numbers describe stated motivations. They are not return on bets nor demand measured by BETTEX.",
-    "es": ": 5.832 entrevistas con personas de 16 años o más, recolectadas en noviembre de 2025. Los números describen motivaciones declaradas. No son retorno de apuestas ni demanda medida por BETTEX."
+  ": 5.832 entrevistas, coletadas em novembro de 2025. Os percentuais descrevem motivações declaradas. Não são retorno de apostas nem demanda medida pela BETTEX.": {
+    "en": ": 5,832 interviews collected in November 2025. The percentages describe reported motivations. They are not betting returns or demand measured by BETTEX.",
+    "es": ": 5.832 entrevistas recolectadas en noviembre de 2025. Los porcentajes describen motivaciones declaradas. No son retorno de apuestas ni demanda medida por BETTEX."
   },
   ": a pessoa contrata a conversão para USDC no ambiente do provedor. Isso não cria um saldo fiat na BETTEX nem um serviço de saque fiduciário. A autenticação na BETTEX comprova o controle da carteira e não autoriza, por si só, uma movimentação.": {
     "en": ": the person contracts the conversion to USDC in the provider's environment. This does not create a fiat balance at BETTEX nor a fiat cashout service. Authentication at BETTEX proves wallet control and does not, in itself, authorize a movement.",
@@ -8480,8 +8716,8 @@
     "es": "SÍ"
   },
   "SOS Jogador": {
-    "en": "Player SOS",
-    "es": "SOS Jugador"
+    "en": "SOS Jogador",
+    "es": "SOS Jogador"
   },
   "STAKING": {
     "en": "STAKING",
@@ -13298,5 +13534,97 @@
   "nova-economia": {
     "en": "nova-economia",
     "es": "nova-economia"
+  },
+  "Nova Economia": {
+    "en": "New Economy",
+    "es": "Nueva Economía"
+  },
+  "Tecnologia de investimento com IA": {
+    "en": "AI-powered investment technology",
+    "es": "Tecnología de inversión con IA"
+  },
+  "Tecnologia de investimento para o apostador brasileiro,": {
+    "en": "Investment technology for the Brazilian bettor,",
+    "es": "Tecnología de inversión para el apostador brasileño,"
+  },
+  "Uma alternativa de investimento para o apostador brasileiro.": {
+    "en": "An investment alternative for the Brazilian bettor.",
+    "es": "Una alternativa de inversión para el apostador brasileño."
+  },
+  "A BETTEX reúne o capital em uma tesouraria com estratégias geridas por IA, limites de risco e supervisão humana. Com o token BETTEX, o investidor participa dessas estratégias sem escolher ou executar cada operação. Pelo aplicativo, o investidor acompanha saldo, resultados e custos. Quando há lucro elegível e as condições de distribuição são atendidas, a parcela do investidor é paga em USDC, conforme as regras de staking.": {
+    "en": "BETTEX pools capital in a treasury with AI-managed strategies, risk limits and human oversight. Through the BETTEX token, the investor participates in these strategies without selecting or executing each trade. Through the app, the investor tracks balances, results and costs. When there is eligible profit and the distribution conditions are met, the investor's share is paid in USDC under the staking rules.",
+    "es": "BETTEX reúne el capital en una tesorería con estrategias gestionadas por IA, límites de riesgo y supervisión humana. Con el token BETTEX, el inversor participa en estas estrategias sin seleccionar ni ejecutar cada operación. A través de la aplicación, el inversor consulta saldos, resultados y costes. Cuando hay beneficio elegible y se cumplen las condiciones de distribución, la parte del inversor se paga en USDC, conforme a las reglas de staking."
+  },
+  "Público do produto": {
+    "en": "Product target audience",
+    "es": "Público del producto"
+  },
+  "O apostador brasileiro como público inicial.": {
+    "en": "Brazilian bettors as the initial target audience.",
+    "es": "El apostador brasileño como público inicial."
+  },
+  "O apostador brasileiro, com foco inicial em quem busca migrar das apostas para investimentos.": {
+    "en": "Brazilian bettors, initially focusing on those seeking to move from betting to investing.",
+    "es": "El apostador brasileño, con un enfoque inicial en quienes buscan pasar de las apuestas a las inversiones."
+  },
+  "Como o investidor participa": {
+    "en": "How the investor participates",
+    "es": "Cómo participa el inversor"
+  },
+  "O investidor participa, via token, de uma tesouraria que realiza investimentos em mercados de risco com estratégias geridas por IA, sem selecionar ou executar cada operação.": {
+    "en": "Through the token, the investor participates in a treasury that invests in risky markets using AI-managed strategies, without selecting or executing each trade.",
+    "es": "El inversor participa, mediante el token, en una tesorería que realiza inversiones en mercados de riesgo con estrategias gestionadas por IA, sin seleccionar ni ejecutar cada operación."
+  },
+  "A BETTEX propõe uma alternativa para o apostador brasileiro: acesso a estratégias de investimento geridas por IA, sem depender da escolha de apostas individuais.": {
+    "en": "BETTEX proposes an alternative for Brazilian bettors: access to AI-managed investment strategies, without relying on the selection of individual bets.",
+    "es": "BETTEX propone una alternativa para el apostador brasileño: acceso a estrategias de inversión gestionadas por IA, sin depender de la selección de apuestas individuales."
+  },
+  "Como ampliar o acesso aos resultados dessa economia?": {
+    "en": "How can access to the gains of this economy be broadened?",
+    "es": "¿Cómo ampliar el acceso a los resultados de esta economía?"
+  },
+  "Etapas de participação do investidor": {
+    "en": "Investor participation stages",
+    "es": "Etapas de participación del inversor"
+  },
+  "Aquisição de BETTEX": {
+    "en": "BETTEX acquisition",
+    "es": "Adquisición de BETTEX"
+  },
+  "O investidor adquire o token. O preço da venda pública primária vai integralmente à tesouraria; a tarifa de serviço é separada.": {
+    "en": "The investor acquires the token. The primary public-sale price goes entirely to the treasury; the service fee is separate.",
+    "es": "El inversor adquiere el token. El precio de la venta pública primaria se destina íntegramente a la tesorería; la tarifa de servicio es independiente."
+  },
+  "Participação pelo staking": {
+    "en": "Participation through staking",
+    "es": "Participación mediante staking"
+  },
+  "BETTEX disponível e tempo elegível no aplicativo oficial definem o peso de cada investidor.": {
+    "en": "Available BETTEX and eligible time in the official app determine each investor's weight.",
+    "es": "Los BETTEX disponibles y el tiempo elegible en la aplicación oficial determinan el peso de cada inversor."
+  },
+  "Acompanhamento da operação": {
+    "en": "Operation monitoring",
+    "es": "Seguimiento de la operación"
+  },
+  "O investidor consulta resultados, custos, alocações e registros de conciliação previstos no modelo.": {
+    "en": "The investor reviews results, costs, allocations and reconciliation records provided for in the model.",
+    "es": "El inversor consulta resultados, costes, asignaciones y registros de conciliación previstos en el modelo."
+  },
+  "Distribuição em USDC": {
+    "en": "Distribution in USDC",
+    "es": "Distribución en USDC"
+  },
+  "Quando a rodada diária atende às condições de lucro, reserva e liquidez, o investidor recebe a parcela correspondente ao peso elegível no pool dos stakers.": {
+    "en": "When the daily round meets the profit, reserve and liquidity conditions, the investor receives the share corresponding to the eligible weight in the staker pool.",
+    "es": "Cuando la ronda diaria cumple las condiciones de beneficio, reserva y liquidez, el inversor recibe la parte correspondiente al peso elegible en el fondo de los stakers."
+  },
+  "O investidor participa dos resultados das estratégias, sem escolher cada operação ou depender apenas da revenda do token.": {
+    "en": "The investor participates in the results of the strategies, without selecting each trade or relying solely on reselling the token.",
+    "es": "El inversor participa en los resultados de las estrategias, sin seleccionar cada operación ni depender únicamente de la reventa del token."
+  },
+  "Tese da BETTEX, público inicial de apostadores brasileiros, estratégias geridas por IA, modelo de negócio, etapas de validação e riscos do projeto.": {
+    "en": "The BETTEX thesis, initial audience of Brazilian bettors, AI-managed strategies, business model, validation stages and project risks.",
+    "es": "Tesis de BETTEX, público inicial de apostadores brasileños, estrategias gestionadas por IA, modelo de negocio, etapas de validación y riesgos del proyecto."
   }
 }

@@ -56,16 +56,24 @@ const markets: Market[] = [
 
 const navItems = [
   { label: 'Início', id: 'inicio' },
-  { label: 'Token BETTEX', id: 'participacao' },
   { label: 'Por que BETTEX', id: 'historia' },
+  { label: 'Nova Economia', id: 'nova-economia' },
+  { label: 'Token BETTEX', id: 'participacao' },
   { label: 'Como opera', id: 'tecnologia' },
   { label: 'Mercados', id: 'mercados' },
-  { label: 'Aplicativo', id: 'visao-investidor' },
   { label: 'Roadmap', id: 'roadmap' },
 ] as const;
 
+function usePageLinkProps() {
+  const [location] = useLocation();
+  return location.replace(/\/$/, '') === '/pitch'
+    ? { target: '_blank', rel: 'noopener noreferrer' } as const
+    : {};
+}
+
 function Logo() {
-  return <a href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX, voltar ao início">
+  const linkProps = usePageLinkProps();
+  return <a {...linkProps} href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX, voltar ao início">
     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] border border-[#768BB5]/30 bg-[#0D1530] shadow-[0_3px_10px_rgba(0,9,33,.12)]">
       <BettexMark slate className="block h-[30px] w-[30px]" />
     </span>
@@ -75,14 +83,16 @@ function Logo() {
 
 function MainLinks({ className, onNavigate, uniform = false }: { className: string; onNavigate?: () => void; uniform?: boolean }) {
   const [location] = useLocation();
+  const linkProps = usePageLinkProps();
   return <>{mainLinks.map(({ label, href }) => {
     const active = location === href || (href === '/documentacao' && ['/documentation', '/documentacion'].includes(location));
-    return <a key={href} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`${className} ${uniform ? `bg-[#2B59FF] text-white hover:bg-[#1E44D6] ${active ? 'ring-1 ring-inset ring-white/60' : ''}` : active ? 'bg-[#26324D] text-[#E4EAF4] ring-1 ring-inset ring-[#7185AC]/35 hover:bg-[#303E5C]' : 'bg-[#2B59FF] text-white hover:bg-[#1E44D6]'}`}>{label}</a>;
+    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`${className} ${uniform ? `bg-[#2B59FF] text-white hover:bg-[#1E44D6] ${active ? 'ring-1 ring-inset ring-white/60' : ''}` : active ? 'bg-[#26324D] text-[#E4EAF4] ring-1 ring-inset ring-[#7185AC]/35 hover:bg-[#303E5C]' : 'bg-[#2B59FF] text-white hover:bg-[#1E44D6]'}`}>{label}</a>;
   })}</>;
 }
 
 function SiteHeader() {
   useLocale();
+  const linkProps = usePageLinkProps();
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
 
@@ -95,14 +105,14 @@ function SiteHeader() {
     <div className="page-wrap flex h-[72px] items-center justify-between gap-3">
       <Logo />
       <nav className="hidden items-center gap-3 xl:ml-6 xl:flex" aria-label="Navegação principal">
-        {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#F2B632]"><span data-i18n="translated">{t(label)}</span></a>)}
+        {navItems.map(({ label, id }) => <a key={id} {...linkProps} href={homeAnchor(id)} data-testid={`link-nav-${id}`} className="whitespace-nowrap text-[13px] font-semibold hover:text-[#F2B632]"><span data-i18n="translated">{t(label)}</span></a>)}
       </nav>
       <div className="ml-auto hidden items-center gap-2 xl:flex" aria-label="Páginas do projeto"><MainLinks className="tap inline-flex min-h-10 items-center rounded-full px-4 text-xs font-bold" /></div>
       <div className="hidden xl:flex"><LanguageSelector /></div>
       <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 max-sm:ml-auto xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-var(--site-header-h))] flex-col gap-1 overflow-y-auto border-t border-[#2B59FF]/30 py-3 xl:hidden" aria-label="Navegação móvel">
-      {navItems.map(({ label, id }) => <a key={id} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#13204F]"><span data-i18n="translated">{t(label)}</span></a>)}
+      {navItems.map(({ label, id }) => <a key={id} {...linkProps} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#13204F]"><span data-i18n="translated">{t(label)}</span></a>)}
       <section className="mt-2 border-t border-[#2B59FF]/30 pt-3" aria-label="Páginas do projeto">
         <h2 className="mb-3 px-2 text-xs font-bold uppercase tracking-wider text-[#c5d2f1]">Páginas do projeto</h2>
         <div className="grid gap-2 sm:grid-cols-3">
@@ -118,6 +128,7 @@ function SiteHeader() {
 }
 
 function SiteFooter({ compact = false }: { compact?: boolean }) {
+  const linkProps = usePageLinkProps();
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
     <div className={`site-footer__cta relative overflow-hidden bg-[#2B59FF] ${compact ? 'hidden' : ''}`}>
       <div aria-hidden="true" className="site-footer__tech">
@@ -150,8 +161,8 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#F2B632]">e se torne dono do jogo</span></h2>
             <p className="mt-6 max-w-[390px] text-base font-medium leading-7 text-[#F4F1E8]">Participe dos resultados da IA com o token BETTEX.</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href={homeAnchor('roadmap')} className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#070B1F] px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#13204F] focus-visible:outline-[#F2B632]">Ver o roadmap <ArrowRight className="h-4 w-4 text-[#F2B632]" aria-hidden="true" /></a>
-              <a href={DOCUMENTATION_PATH} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#F4F1E8] hover:text-[#070B1F] focus-visible:outline-[#F2B632]">Ler a documentação</a>
+              <a {...linkProps} href={homeAnchor('roadmap')} className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#070B1F] px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#13204F] focus-visible:outline-[#F2B632]">Ver o roadmap <ArrowRight className="h-4 w-4 text-[#F2B632]" aria-hidden="true" /></a>
+              <a {...linkProps} href={DOCUMENTATION_PATH} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#F4F1E8] hover:text-[#070B1F] focus-visible:outline-[#F2B632]">Ler a documentação</a>
               <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-community-source="footer" data-testid="link-community-footer" className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F4F1E8] px-6 py-3.5 text-sm font-bold text-[#070B1F] hover:bg-white focus-visible:outline-[#F2B632]"><TelegramIcon className="h-5 w-5" />Vem pra comunidade</a>
             </div>
           </div>
@@ -173,27 +184,27 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
         <nav aria-label="Explorar o projeto" className="sf-group">
           <h3 className="mono">Explore</h3>
           <ul>
-            <li><a href={homeAnchor('participacao')}>Token BETTEX</a></li>
-            <li><a href={homeAnchor('tecnologia')}>Como opera</a></li>
-            <li><a href={homeAnchor('mercados')}>Mercados</a></li>
-            <li><a href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
+            <li><a {...linkProps} href={homeAnchor('participacao')}>Token BETTEX</a></li>
+            <li><a {...linkProps} href={homeAnchor('tecnologia')}>Como opera</a></li>
+            <li><a {...linkProps} href={homeAnchor('mercados')}>Mercados</a></li>
+            <li><a {...linkProps} href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
             <li><a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="sf-community" data-community-source="footer" data-testid="link-community-footer-nav"><TelegramIcon className="sf-community__icon" /><span>Entre na comunidade</span></a></li>
           </ul>
         </nav>
         <nav aria-label="Links do projeto" className="sf-group">
           <h3 className="mono">O projeto</h3>
           <ul>
-            <li><a href={homeAnchor('historia')}>Por que BETTEX</a></li>
-            <li><a href={homeAnchor('roadmap')}>Roadmap</a></li>
-            <li><a href={`${BASE_PATH}/pitch`}>Pitch</a></li>
-            <li><a href={DOCUMENTATION_PATH}>Documentação</a></li>
-            <li><a href={`${BASE_PATH}/demo`}>Demo</a></li>
+            <li><a {...linkProps} href={homeAnchor('historia')}>Por que BETTEX</a></li>
+            <li><a {...linkProps} href={homeAnchor('roadmap')}>Roadmap</a></li>
+            <li><a {...linkProps} href={`${BASE_PATH}/pitch`}>Pitch</a></li>
+            <li><a {...linkProps} href={DOCUMENTATION_PATH}>Documentação</a></li>
+            <li><a {...linkProps} href={`${BASE_PATH}/demo`}>Demo</a></li>
           </ul>
         </nav>
       </div>
       <div className="sf-bottom">
         <p>© {new Date().getFullYear()} BETTEX.</p>
-        <a href={homeAnchor('inicio')}>Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
+        <a {...linkProps} href={homeAnchor('inicio')}>Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
       </div>
     </div>
   </footer>;
