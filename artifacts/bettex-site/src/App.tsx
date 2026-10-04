@@ -271,10 +271,11 @@ function Home() {
         </div>
       </section>
 
-      <TechnologyNetworks />
-      <ProjectModelSection />
       <HumanStorySection />
       <NewEconomySection />
+
+      <TechnologyNetworks />
+      <ProjectModelSection />
 
        <TechnologySection>
          {markets.map((market, index) => <div className="technology-section__agent-slot" key={market.name}><MarketCard market={market} number={index + 1} /></div>)}

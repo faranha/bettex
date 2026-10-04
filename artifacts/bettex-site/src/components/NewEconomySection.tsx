@@ -13,7 +13,7 @@ export function NewEconomySection() {
       <div className="ne-bg" aria-hidden="true" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}new-economy-workplace.webp)` }} />
       <div className="ne-wrap">
         <p className="ne-bridge">Das apostas ao futuro do trabalho, a tecnologia já muda as regras. A comunidade BETTEX é onde essa conversa começa.</p>
-        <h2 id="ne-heading">{thesis.statement} <em>Participe dessa mudança com a nossa comunidade.</em></h2>
+        <h2 id="ne-heading">{thesis.statement} <em>Faça parte dessa conversa. Proteja-se da mudança. Proteja a sua família.</em></h2>
         <ol className="ne-list">
           {points.map((p) => (
             <li key={p.n} className="ne-item">
