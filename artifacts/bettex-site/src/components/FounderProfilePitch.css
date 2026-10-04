@@ -1,0 +1,24 @@
+/* Pitch founder card (thirdPerson + portrait). Scoped; doc variant untouched. */
+.pitch .fp.fp--portrait.fp--pitch{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:16px;row-gap:0;align-items:center;padding:clamp(16px,3vw,28px);border-radius:16px;overflow:hidden}
+.pitch .fp--pitch>*{grid-column:1/-1}
+.pitch .fp--pitch>.fp__portrait{grid-column:1;grid-row:1;width:96px;height:96px;aspect-ratio:1;max-width:none;margin:0;object-fit:cover;object-position:50% 18%;border-radius:12px;border:2px solid #F2B632;box-shadow:5px 5px 0 rgba(43,89,255,.45)}
+.pitch .fp--pitch>.fp__who{grid-column:2;grid-row:1;margin:0}
+.pitch .fp--pitch>.mono{grid-row:2;margin-top:18px}
+.pitch .fp--pitch>.fp__quote{grid-row:3;margin-top:8px;max-width:none;font-size:clamp(1.05rem,4.2vw,1.35rem);font-weight:700;line-height:1.35;letter-spacing:-.025em;border-left:3px solid #F2B632;padding-left:14px}
+.pitch .fp--pitch .fp__ini{display:none}
+.pitch .fp--pitch>nav{grid-row:4;margin:20px 0 0;padding-top:16px;border-top:1px solid currentColor;border-top-color:color-mix(in srgb,currentColor 18%,transparent)}
+.pitch .fp--pitch>nav p{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.pitch .fp--pitch>nav ul{gap:8px}
+.pitch .fp--pitch>.fp__grid{grid-row:5;margin-top:20px;gap:12px 14px}
+.pitch .fp--pitch .fp__grid strong{font-size:clamp(1.35rem,6vw,1.9rem);overflow-wrap:normal}
+.pitch .fp--pitch>.fp__cap{grid-row:6;max-width:none;margin-top:18px;padding:12px 14px;border-radius:10px;background:rgba(242,182,50,.12);border-left:3px solid #F2B632;opacity:.9;font-size:12px}
+@media(max-width:359px){.pitch .fp.fp--portrait.fp--pitch{grid-template-columns:76px minmax(0,1fr);column-gap:12px}.pitch .fp--pitch>.fp__portrait{width:76px;height:76px}.pitch .fp--pitch>nav ul{display:grid;grid-template-columns:1fr 1fr}.pitch .fp--pitch>nav a{width:100%;justify-content:center;padding-inline:10px}}
+@media(min-width:768px){
+.pitch .fp.fp--portrait.fp--pitch{grid-template-columns:184px minmax(0,1fr);column-gap:32px;align-items:start}
+.pitch .fp--pitch>.fp__portrait{grid-column:1;grid-row:1/span 3;width:184px;height:auto;aspect-ratio:4/5;box-shadow:8px 8px 0 rgba(43,89,255,.45)}
+.pitch .fp--pitch>.mono{grid-column:2;grid-row:1;margin-top:2px}
+.pitch .fp--pitch>.fp__quote{grid-column:2;grid-row:2;font-size:clamp(1.2rem,2vw,1.55rem)}
+.pitch .fp--pitch>.fp__who{grid-column:2;grid-row:3;margin-top:16px;align-self:end}
+.pitch .fp--pitch>nav{grid-row:4;margin-top:28px}
+.pitch .fp--pitch>.fp__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}

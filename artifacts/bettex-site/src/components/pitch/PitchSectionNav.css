@@ -3,6 +3,14 @@
 .pitch-subnav-links { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2px; padding-block: 5px; min-height: 46px; }
 .pitch-subnav-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 6px 7px; border-radius: 5px; font-size: 11px; font-weight: 600; line-height: 1.3; text-align: center; text-decoration: none; }
 .pitch-subnav-links a:hover, .pitch-subnav-links a[aria-current="location"] { background: #2b59ff; color: #fff; }
+.pitch-nav-group { position: relative; }
+.pitch-nav-group > summary { display: flex; align-items: center; gap: 6px; min-height: 36px; padding: 6px 7px; border-radius: 5px; font-size: 11px; font-weight: 600; line-height: 1.3; list-style: none; cursor: pointer; }
+.pitch-nav-group > summary::-webkit-details-marker { display: none; }
+.pitch-nav-group > summary::after { content: "▾"; }
+.pitch-nav-group > summary:hover, .pitch-nav-group > summary[aria-current="location"] { background: #2b59ff; color: #fff; }
+.pitch-nav-group > summary:focus-visible { outline: 2px solid #f2b632; outline-offset: 2px; }
+.pitch-nav-children { position: absolute; z-index: 10; top: calc(100% + 5px); left: 0; min-width: 190px; padding: 6px; border: 1px solid #5f86ff55; border-radius: 5px; background: #070b1f; box-shadow: 0 12px 30px #0006; }
+.pitch-nav-children > a { width: 100%; justify-content: flex-start; text-align: left; }
 .pitch-subnav a:focus-visible, .pitch-subnav select:focus-visible { outline: 2px solid #f2b632; outline-offset: 2px; }
 .pitch-subnav-mobile { display: none; }
 html:has(.pitch) { scroll-padding-top: 0; }

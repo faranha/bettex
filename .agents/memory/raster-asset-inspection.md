@@ -3,11 +3,17 @@ name: Raster asset inspection
 description: Visual authenticity and transparency checks, plus font-free raster comparisons.
 ---
 
-For temporary contact sheets, avoid depending on Python Pillow or ImageMagick montage's default font; use font-free ImageMagick composition instead.
+For temporary contact sheets, avoid depending on Python Pillow or ImageMagick montage's default font; use font-free ImageMagick or FFmpeg composition instead.
 
 **Why:** Pillow was unavailable here, and montage failed to resolve a font even without requesting visible labels. A font-free composition worked.
 
 **How to apply:** When comparing multiple generated raster assets, compose them in `/tmp` against a contrasting background rather than installing a package only for visual inspection.
+
+Do not assume generated images have the aspect ratio requested in the prompt.
+
+**Why:** Four images requested as wide landscape compositions were returned as square images. Prompt wording is not a reliable output-dimension contract.
+
+**How to apply:** Inspect actual dimensions before laying out the images. Preserve their meaningful subjects with an appropriate frame or deliberate crop rather than forcing an assumed ratio.
 
 Confirm actual alpha before repeating background removal because a thumbnail looks opaque.
 

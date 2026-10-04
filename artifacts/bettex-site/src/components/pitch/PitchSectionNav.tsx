@@ -5,7 +5,10 @@ import './PitchSectionNav.css';
 const sections = [
   { id: 'visao', label: 'Visão' },
   { id: 'problema', label: 'Problema' },
-  { id: 'agora', label: 'IA e trabalho' },
+  { id: 'agora', label: 'IA e trabalho', children: [
+    { id: 'agora', label: 'Elon Musk e trabalho' },
+    { id: 'risco-bolha-ia', label: 'Bolha da IA' },
+  ] },
   { id: 'resgatar-futuro', label: 'Resgatar o futuro' },
   { id: 'solucao', label: 'Solução' },
   { id: 'diferencial', label: 'Diferenciação' },
@@ -15,6 +18,12 @@ const sections = [
   { id: 'publico', label: 'Go to market' },
   { id: 'recursos', label: 'Recursos e riscos' },
 ] as const;
+
+type Destination = { id: string; label: string; parent?: string };
+const destinations: Destination[] = sections.flatMap((section): Destination[] => [
+  { id: section.id, label: section.label },
+  ...('children' in section ? section.children.filter(child => child.id !== section.id).map(child => ({ ...child, parent: section.id })) : []),
+]);
 
 export function PitchSectionNav({ onNavigate }: { onNavigate: () => void }) {
   const locale = useLocale();
@@ -32,9 +41,10 @@ export function PitchSectionNav({ onNavigate }: { onNavigate: () => void }) {
     const updateActive = () => {
       if (!mounted) return;
       let current: string = sections[0].id;
-      for (const section of sections) {
+      for (const section of destinations) {
         const target = document.getElementById(section.id);
-        if (target && target.getBoundingClientRect().top <= height + 24) current = section.id;
+        const bounds = target?.getBoundingClientRect();
+        if (bounds && bounds.top <= height + 24 && (!section.parent || bounds.bottom > height + 24)) current = section.id;
       }
       setActive(current);
     };
@@ -76,10 +86,20 @@ export function PitchSectionNav({ onNavigate }: { onNavigate: () => void }) {
     requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: 'start', behavior: 'instant' }));
   };
 
+  const activeParent = destinations.find(section => section.id === active)?.parent ?? active;
+
   return <nav ref={nav} className="pitch-subnav" aria-label={t('Seções do Pitch')} data-testid="pitch-section-nav">
     <div className="page-wrap">
       <div className="pitch-subnav-links">
-        {sections.map(section => <a key={section.id} href={`#${section.id}`}
+        {sections.map(section => 'children' in section ? <details key={section.id} className="pitch-nav-group"
+          onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); event.currentTarget.open = false; (event.currentTarget.firstElementChild as HTMLElement | null)?.focus(); } }}>
+          <summary aria-current={activeParent === section.id ? 'location' : undefined} data-i18n="translated">{t(section.label)}</summary>
+          <div className="pitch-nav-children">
+            {section.children.map(child => <a key={child.id} href={`#${child.id}`} data-i18n="translated"
+              data-testid={`pitch-nav-${child.id}`} aria-current={active === child.id ? 'location' : undefined}
+              onClick={event => { onNavigate(); setActive(child.id); const group = event.currentTarget.closest('details'); if (group) group.open = false; }}>{t(child.label)}</a>)}
+          </div>
+        </details> : <a key={section.id} href={`#${section.id}`}
           data-i18n="translated" data-testid={`pitch-nav-${section.id}`}
           aria-current={active === section.id ? 'location' : undefined}
           onClick={() => { onNavigate(); setActive(section.id); }}>{t(section.label)}</a>)}
@@ -87,7 +107,9 @@ export function PitchSectionNav({ onNavigate }: { onNavigate: () => void }) {
       <label className="pitch-subnav-mobile">
         <span className="mono">Pitch</span>
         <select value={active} onChange={event => jump(event.target.value)} aria-label={t('Seções do Pitch')} data-testid="pitch-section-select">
-          {sections.map(section => <option key={section.id} value={section.id} data-i18n="translated">{t(section.label)}</option>)}
+          {sections.map(section => 'children' in section ? <optgroup key={section.id} label={t(section.label)}>
+            {section.children.map(child => <option key={child.id} value={child.id} data-i18n="translated">{t(child.label)}</option>)}
+          </optgroup> : <option key={section.id} value={section.id} data-i18n="translated">{t(section.label)}</option>)}
         </select>
       </label>
     </div>

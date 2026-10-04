@@ -21,6 +21,12 @@ O público do produto deve ser chamado simplesmente de “apostador brasileiro�
 
 **How to apply:** Revisar todos os textos e traduções do site, incluindo componentes extraídos, metadados e HTML gerado; não deixar a classificação antiga em textos secundários ou arquivos de entrega desatualizados. Distinguir o apostador brasileiro que utiliza o produto dos grandes investidores e anjos que avaliam o negócio. Não acrescentar “adulto” ao rótulo do público; preservar separadamente requisitos legais de idade, a população da pesquisa, regras econômicas, condições de lucro e riscos.
 
+As áreas do Pitch depois do fundador devem incluir imagens relevantes ao conteúdo, não permanecer só em texto e gráficos.
+
+**Why:** O criador disse que todas essas áreas estavam sem imagens, considerou isso muito ruim e pediu melhorar.
+
+**How to apply:** Preservar imagens em Economia, Token, Go to market e Recursos e riscos, inclusive no celular. Elas complementam, não substituem, os gráficos abertos de tokenomics e vesting, o funil, as condições econômicas e os riscos. Imagens conceituais não são evidência de clientes, instalações ou produtos já existentes.
+
 O título aprovado da capa é “Tecnologia de investimento para o apostador brasileiro, gerida por IA”, com a bandeira brasileira ao fundo.
 
 **Why:** O criador substituiu explicitamente “para o pequeno investidor” por “para o apostador brasileiro” no título e pediu a bandeira no hero.

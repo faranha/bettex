@@ -9,6 +9,8 @@ import { EconomicComparison } from '@/components/pitch/EconomicComparison';
 import { economicComparisonRows } from '@/components/pitch/EconomicComparisonRows';
 import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
 import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
+import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipationFlow';
+import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
 import './pitch.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -95,21 +97,7 @@ export function PitchPage() {
     <FutureSections />
 
     <Sec id="solucao" summary="Produto de tecnologia com IA, operado por uma empresa privada. Quatro frentes de atuação." n="03" kicker="Solução" title={<>IA na operação, participação por token.</>}>
-      <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-label="Etapas de participação do usuário">
-        {[
-          ['Aquisição de BETTEX', 'O usuário adquire o token. O preço da venda pública primária vai integralmente à tesouraria; a tarifa de serviço é separada.'],
-          ['Participação pelo staking', 'BETTEX disponível e tempo elegível no aplicativo oficial definem o peso de cada usuário.'],
-          ['Acompanhamento da operação', 'O usuário consulta resultados, custos, alocações e registros de conciliação previstos no modelo.'],
-          ['Distribuição em USDC', 'Quando a rodada diária atende às condições de lucro, reserva e liquidez, o usuário recebe a parcela correspondente ao peso elegível no pool dos stakers.'],
-        ].map(([title, description], i) => <li key={title} className="rounded-2xl border border-[#070B1F]/15 bg-white/50 p-5">
-          <span className="mono text-[11px] font-bold text-[#2B59FF]">0{i + 1}</span>
-          <h3 className="display mt-3 text-xl font-extrabold leading-tight tracking-[-.04em]">{title}</h3>
-          <p className="mt-3 text-sm leading-6 text-[#183173]">{description}</p>
-        </li>)}
-      </ol>
-      <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {['Previsões', 'Ações e cripto', 'Esportes (surebet)', 'iGaming (bônus)'].map((m, i) => <div key={m} className="rounded-2xl border border-[#070B1F]/15 p-5"><span className="mono text-[10px] font-bold text-[#2B59FF]">0{i + 1}</span><div className="display mt-3 text-lg font-extrabold leading-tight tracking-[-.04em]">{m}</div></div>)}
-      </div>
+      <SolutionParticipationFlow />
       <div className="mt-8 rounded-2xl bg-[#070B1F] p-6 text-[#F4F1E8]">
         <span className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#F2B632]">Regra do lucro</span>
         <p className="mt-3 text-[15px] leading-7 text-[#c5d2f1]">Só há lucro elegível após custos reais, tributos, obrigações, avaliação das posições abertas, reservas e liquidez.</p>
@@ -145,10 +133,12 @@ export function PitchPage() {
         <Card label="Investidores-anjo" title="100% para produto, tecnologia e marketing">{g.launch.angelFundingUse}</Card>
         <Card label="Tarifas de serviço" title="100% para o caixa operacional">A tarifa de US$ 2,50 é receita bruta da empresa, antes de custos e tributos, fora do split do lucro da tesouraria.</Card>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card label="Operadora" title="Tarifa fixa de US$ 2,50 em USDC">Receita de serviço da empresa, em carteira operacional própria, fora da tesouraria e do split 50/25/25. Não é taxa de performance.</Card>
-        <Card label="Tesouraria" title="Ganhos de investimento">Resultado das estratégias. O preço público primário do token vai integralmente à tesouraria; a tarifa é registrada à parte.</Card>
-      </div>
+      <PitchEditorialSplit image={<PitchEditorialImage name="pitch-economy-separation" />}>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Card label="Operadora" title="Tarifa fixa de US$ 2,50 em USDC">Receita de serviço da empresa, em carteira operacional própria, fora da tesouraria e do split 50/25/25. Não é taxa de performance.</Card>
+          <Card label="Tesouraria" title="Ganhos de investimento">Resultado das estratégias. O preço público primário do token vai integralmente à tesouraria; a tarifa é registrada à parte.</Card>
+        </div>
+      </PitchEditorialSplit>
       <div className="pitch-cost-examples mt-6 rounded-2xl border border-[#070B1F]/15" role="region" aria-label="Exemplos de custo" tabIndex={0}>
         <table className="w-full text-left text-sm">
           <thead className="bg-[#070B1F] text-[#F4F1E8]"><tr><th className="p-3">Movimentação</th><th className="p-3">Tarifa</th><th className="p-3">Resultado</th></tr></thead>
@@ -168,28 +158,35 @@ export function PitchPage() {
         <Card dark label="Fundador" title="20% · 200 milhões">Livre destinação após a liberação, sem antecipação do vesting.</Card>
         <Card dark label="Financiamento inicial" title="15% · 150 milhões">Tokens vinculados ao financiamento inicial, conforme os termos da rodada.</Card>
       </div>
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
+      <div className="mt-8" />
+      <PitchEditorialSplit dark side="right" image={<PitchEditorialImage dark name="pitch-token-participation" />}>
+      <div className="grid gap-4 md:grid-cols-2">
         <Card dark label="Liberação" title="Parcelas mensais durante 36 meses">Todas as alocações começam a liberar no mês da abertura da venda pública e terminam no mês 36. Liberação não significa venda realizada nem início dos investimentos.</Card>
         <Card dark label="Participação" title="Token disponível × tempo elegível">Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. A liberação de novos tokens pode alterar a participação individual; fundador e demais usuários seguem os mesmos critérios.</Card>
       </div>
+      </PitchEditorialSplit>
       <p className="mt-6 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">O titular tem os direitos de participação nos resultados definidos pelo token, não ações da empresa, propriedade da tesouraria, voto societário ou resgate pelo valor patrimonial. Pode ganhar ou perder na revenda, se houver liquidez. Oferta fixa não significa pagamento fixo.</p>
       <Doc dark hash="documentacao-emissao">Oferta, vesting e direitos na documentação</Doc>
     </Sec>
 
     <Sec id="publico" summary="Meta de 1.000 usuários nos primeiros três meses de operação, incluindo os primeiros compradores, sem custo de aquisição para a BETTEX." n="08" kicker="Go to market no Brasil" dark title={<>Aquisição orgânica. <span className="text-[#F2B632]">Financiada pelo fundador.</span></>}>
-      <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo vai financiar a aquisição inicial com seu orçamento corrente. Sua audiência no Instagram entra na comunidade do Telegram e segue para o aplicativo BETTEX, trazendo os primeiros compradores e usuários para validar o produto, sem cobrar esse custo da empresa.</p>
+      <PitchEditorialSplit dark image={<PitchEditorialImage dark name="pitch-brazil-community" />}>
+      <p className="max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo vai financiar a aquisição inicial com seu orçamento corrente. Sua audiência no Instagram entra na comunidade do Telegram e segue para o aplicativo BETTEX, trazendo os primeiros compradores e usuários para validar o produto, sem cobrar esse custo da empresa.</p>
       <FounderLaunchFunnel />
+      </PitchEditorialSplit>
       <Card dark label="Community-driven" title="Construído com a comunidade.">A proposta é construir com os usuários: ouvir feedback, validar melhorias e estimular recomendações orgânicas. A comunidade no Telegram conecta aquisição, uso do aplicativo e evolução do produto.</Card>
       <p className="mt-6 max-w-[800px] text-sm leading-7 text-[#c5d2f1]">A validação acompanha a primeira compra elegível, o primeiro uso útil e o retorno dos usuários. Compradores e usuários ativados serão medidos separadamente; a meta não representa resultados já alcançados. Oferta e publicidade dependem de revisão jurídica e elegibilidade.</p>
       <Doc dark hash="documentacao-aquisicao-retencao">Plano de aquisição e retenção na documentação</Doc>
     </Sec>
 
     <Sec id="recursos" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="09" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>
+      <PitchEditorialSplit image={<PitchEditorialImage name="pitch-product-development" />}>
       <div className="grid gap-4 md:grid-cols-3">
         <Card label="Destino do capital" title="Tecnologia e marketing, sem salários">{g.launch.angelFundingUse}</Card>
         <Card label="Alinhamento do fundador" title="Ganhos somente com seus tokens">{g.founder.bettexEarnings}</Card>
         <Card label="Em aberto" title="Valor total e termos">Orçamento e marcos do lançamento ainda serão definidos, assim como o valor total e os termos contratuais. Não há oferta formal de venda de tokens nem participação societária proposta aqui.</Card>
       </div>
+      </PitchEditorialSplit>
       <Doc hash="documentacao-financiamento-fundacao">Financiamento na documentação</Doc>
       <div id="riscos" className="pitch-risk-panel">
         <h3 className="display max-w-[800px] text-[clamp(1.5rem,3vw,2.1rem)] font-extrabold leading-tight tracking-[-.04em]">Alto risco: pode haver perda parcial ou total.</h3>
