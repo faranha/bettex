@@ -6,6 +6,7 @@ import { InflationOilRisks } from './InflationOilRisks';
 import { AIBubbleScenario, LaborWarningReports } from './AICrisisScenario';
 import { ChapterHero } from './ChapterHero';
 import './FutureSections.css';
+import { PitchObservations } from './PitchObservations';
 
 const PHOTO = `${import.meta.env.BASE_URL}pitch-future/elon-musk.jpg`;
 
@@ -55,8 +56,8 @@ export function FutureSections() {
               <Src href="https://www.tesla.com/master-plan-part-4">Tesla, Master Plan Part IV</Src>
             </div>
           </article>
+          <PitchObservations dark><p>A referência à Tesla não indica parceria, endosso ou participação da BETTEX na empresa.</p></PitchObservations>
         </div>
-        <p className="fu-note mono">A referência à Tesla não indica parceria, endosso ou participação da BETTEX na empresa.</p>
     <section id="resgatar-futuro" aria-labelledby="resgatar-futuro-t" className="fu-environment-signals">
         <h3 id="resgatar-futuro-t" className="display fu-environment-title">O que já acontece na economia real.</h3>
         <p className="fu-sub">Os sinais de fragilidade já são concretos: empregos eliminados, menos vagas criadas e milhões sem trabalho suficiente ou vínculo formal. Para quem depende de renda para viver, a promessa de abundância não resolve o presente.</p>

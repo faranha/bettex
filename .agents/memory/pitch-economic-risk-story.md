@@ -3,11 +3,29 @@ name: Pauta econômica do cenário apocalíptico
 description: A pauta econômica pedida pelo criador pertence ao cenário apocalíptico, com gráficos, matérias e riscos globais.
 ---
 
+O Problema 2 precisa apresentar e desenvolver a ameaça ao emprego e à renda no próprio bloco, não ficar reduzido a uma chamada e dois parágrafos que dependem de Ambiente externo para explicar o problema.
+
+**Why:** O usuário reiterou que o conteúdo precisava ser expandido e que ajustar observações não atendia à apresentação do problema.
+
+**How to apply:** Explicar substituição de funções, concentração dos ganhos, efeito sobre o orçamento de quem depende do salário e relação com perdas nas apostas. Não mover capítulos ou repetir toda a pauta de Ambiente externo sem solicitação. Manter observações ao fim do bloco.
+
+O vídeo da USA TODAY sobre Musk e a “era da abundância”, indicado pelo usuário, deve abrir o Problema 2, antes da crítica à promessa de prosperidade.
+
+**Why:** O usuário forneceu o vídeo e pediu que ele abrisse essa área do problema como contexto para a tese “é uma mentira”.
+
+**How to apply:** Preservar essa sequência ao editar o trecho. Distinguir a fala de Musk da interpretação crítica da BETTEX, sem afirmar que o vídeo prova intenção de enganar.
+
 O problema apresentado pela BETTEX combina, em escala mundial, pessoas tratando apostas como investimento e a deterioração de emprego e renda com o avanço da IA. A tese do criador é o risco de miséria para uma geração, com comportamentos nocivos e vidas em jogo, não apenas um problema de apostas no Brasil.
 
 **Why:** O criador corrigiu a abertura de Problema por ela reduzir a tese a apostas e pediu resumir a combinação dos dois riscos, incluindo a humanidade e o futuro de uma geração.
 
 **How to apply:** O hero de Problema deve apresentar essa combinação global em linguagem simples. Manter o cenário de miséria como visão da BETTEX, sem transformá-lo em previsão inevitável ou extrapolar os percentuais brasileiros da pesquisa para a população mundial.
+
+O horizonte desse cenário é de três anos, condicionado à materialização das previsões sobre a IA absorver postos de trabalho.
+
+**Why:** O criador acrescentou expressamente “nos próximos 3 anos se as previsões sobre como a IA vai absorver os postos de trabalho se materializarem” ao texto do hero.
+
+**How to apply:** Preservar prazo e condição juntos no texto e nas traduções; não apresentar a miséria ou a substituição de empregos como resultados certos em três anos.
 
 O alerta de Amodei à Axios sobre eliminação de empregos pertence apenas ao cenário apocalíptico, não a um quadro genérico de “risco adicional” em “Resgatar o futuro”.
 
@@ -33,11 +51,23 @@ O criador pediu trabalhar mais com gráficos nesse trecho, incluindo a queda das
 
 **How to apply:** Mostrar oportunidades de contratação, perdas líquidas e cortes anunciados como métricas distintas, com unidades e períodos visíveis. O percentual desde um pico não equivale a postos eliminados nem a desemprego.
 
-O tema Elon Musk e o cenário apocalíptico vêm antes dos indicadores sobre a economia real, agora na mesma área de Ambiente externo no Pitch.
+O futuro do emprego pertence ao Problema 2; evitar repetir essa narrativa em Problema e Ambiente externo. Dentro desse argumento, Elon Musk e o cenário de automação vêm antes dos indicadores sobre a economia real.
 
-**Why:** O criador revisou a ordem anterior, mostrou “Resgatar o futuro das pessoas” e corrigiu: “essa parte vem abaixo da parte do Elon Musk amigo”.
+**Why:** O criador primeiro exigiu os indicadores abaixo do trecho de Musk. Depois identificou duplicação e explicou que as informações de Ambiente externo representam o Problema 2, o futuro do emprego.
 
-**How to apply:** Preservar a sequência interna na área unificada de Ambiente externo, mantendo as evidências remanescentes, os gráficos brasileiros, as matérias e as imagens do bloco de Elon Musk. A missão de resgatar o futuro pertence à Solução. O menu principal acompanha as áreas unificadas.
+**How to apply:** Concentrar o Problema 2 na visão de Musk, Tesla, SpaceX, automação e outros líderes, seguida das evidências remanescentes, sem repetir o argumento em outro capítulo. Preservar gráficos brasileiros, matérias e imagens aprovadas. A missão de resgatar o futuro pertence à Solução.
+
+O Problema 1 deve tratar da fragilidade financeira atual: renda comprometida com o mês, apostas para pagar contas e insuficiência de reservas, com dados brasileiros e americanos. O Problema 2 conecta essa vulnerabilidade à possível perda da renda do trabalho.
+
+**Why:** O criador pediu levantar a situação de quem vive de salário em salário e descrever o risco de automação para quem hoje aposta com o dinheiro do mês e não tem reservas. Reiterou que os dados precisam estar visíveis no Problema 1 do Pitch, não apenas na resposta da conversa.
+
+**How to apply:** Distinguir motivação para pagar contas, desvio de dinheiro das contas e insuficiência de reservas. “Viver de salário em salário” não equivale automaticamente a não ter economias; não atribuir esse perfil a todos os apostadores nem tratar previsões de desemprego como fatos.
+
+O destaque brasileiro desse argumento deve medir salário ou renda regular usados para apostar e ausência de dinheiro guardado, não apenas inadimplência causada pelo jogo.
+
+**Why:** O criador rejeitou o destaque de 6% de contas deixadas sem pagar, explicando que se referia a mais de 60% usando a renda do mês e sem poupança. A pesquisa da Futura Inteligência correspondente mede as duas condições separadamente.
+
+**How to apply:** Selecionar indicadores que respondam às perguntas sobre origem dos recursos e reservas. Não trocar uso de salário por inadimplência nem apresentar dois percentuais separados como uma prevalência conjunta.
 
 Na parte de Elon Musk, manter apenas o conteúdo mais polêmico, problemático e apocalíptico, sem a contraposição otimista ou explicações secundárias.
 

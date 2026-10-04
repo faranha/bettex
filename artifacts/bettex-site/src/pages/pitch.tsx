@@ -12,6 +12,7 @@ import { economicComparisonRows } from '@/components/pitch/EconomicComparisonRow
 import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
 import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
 import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipationFlow';
+import { PitchObservations } from '@/components/pitch/PitchObservations';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
 import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
 import { formatCryptoDailyBillions } from '@/components/pitch/marketFlow';
@@ -80,7 +81,7 @@ export function PitchPage() {
           <div className="cover__copy">
             <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Início</span>
             <h1 className="pitch-rise display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Tecnologia de investimento para o apostador brasileiro, <span className="text-[#F2B632]">gerida por IA.</span></h1>
-            <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t('Mais de 60 milhões de brasileiros no público potencial estimado.')}{' '}{t(`Cripto: cerca de R$ ${cryptoDailyBillions} bilhão por dia.`)}{' '}{t('Bets: referência histórica de R$ 600 milhões por dia.')}</strong>{' '}A oportunidade é um produto de investimento que fale a língua dessas pessoas.{' '}<a href="#publico-pitch">Público e movimentação financeira.</a></p>
+            <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t(`Mais de 60 milhões de brasileiros formam o público potencial estimado, enquanto o mercado de cripto movimenta cerca de R$ ${cryptoDailyBillions} bilhão em operações diárias e as bets têm uma referência histórica de R$ 600 milhões em depósitos por dia.`)}</strong>{' '}A oportunidade é oferecer um produto de investimento que fale a língua dessas pessoas.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
               <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
@@ -128,8 +129,10 @@ export function PitchPage() {
 
     <Sec id="diferencial" summary="O usuário participa dos resultados do projeto, sem escolher cada operação ou depender apenas da revenda do token." kicker="Diferenciação proposta" dark title={<>A diferença está <span className="text-[#F2B632]">no direito econômico.</span></>}>
       <EconomicComparison rows={economicComparisonRows} />
-      <p className="mt-5 text-xs leading-6 text-[#c5d2f1]">Custos, direitos e regras das alternativas variam conforme a plataforma e o contrato.</p>
-      <p className="mt-6 max-w-[720px] text-sm leading-7 text-[#c5d2f1]">Nenhuma promessa de que a IA supere o mercado. O desempenho líquido das estratégias precisa ser medido contra uma referência.</p>
+      <PitchObservations dark>
+        <p>Custos, direitos e regras das alternativas variam conforme a plataforma e o contrato.</p>
+        <p>Nenhuma promessa de que a IA supere o mercado. O desempenho líquido das estratégias precisa ser medido contra uma referência.</p>
+      </PitchObservations>
     </Sec>
     </Sec>
 
@@ -138,8 +141,8 @@ export function PitchPage() {
       <div className="mt-6">
         <Card dark label="Alinhamento do fundador" title="Sem salário. Sem retiradas da empresa.">{g.founder.bettexEarnings}</Card>
       </div>
-      <p className="mt-6 max-w-[760px] text-[15px] leading-7 text-[#c5d2f1]">Meta inicial: primeiros {g.launch.initialUsersGoal.toLocaleString('pt-BR')} usuários elegíveis e ativados no {g.launch.country}. A audiência dos canais se sobrepõe e não equivale a clientes; conversão e retenção da BETTEX serão medidas por coorte.</p>
       <Doc dark hash="documentacao-fundador">Apresentação na documentação</Doc>
+      <PitchObservations dark><p>Meta inicial: primeiros {g.launch.initialUsersGoal.toLocaleString('pt-BR')} usuários elegíveis e ativados no {g.launch.country}. A audiência dos canais se sobrepõe e não equivale a clientes; conversão e retenção da BETTEX serão medidas por coorte.</p></PitchObservations>
     </Sec>
 
     <section id="tokenomics" aria-labelledby="economia-t">
@@ -164,8 +167,8 @@ export function PitchPage() {
           </tbody>
         </table>
       </div>
-      <p className="mt-4 max-w-[760px] text-[15px] leading-7 text-[#183173]">Antes de custos externos de rede e conversão. Movimentos de US$ 10 ou 15 e saques frequentes são hipóteses do fundador, não ticket ou disposição medidos. O modelo financeiro ainda não foi recalibrado para tickets pequenos; volumes e CAC antigos não são dados observados.</p>
       <Doc hash="documentacao-plano-negocios">Plano-base de negócios na documentação</Doc>
+      <PitchObservations><p>Antes de custos externos de rede e conversão. Movimentos de US$ 10 ou 15 e saques frequentes são hipóteses do fundador, não ticket ou disposição medidos. O modelo financeiro ainda não foi recalibrado para tickets pequenos; volumes e CAC antigos não são dados observados.</p></PitchObservations>
     </Sec>
 
     <Sec id="token" kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Três alocações.</span></>}>
@@ -193,8 +196,8 @@ export function PitchPage() {
       <FounderLaunchFunnel />
       </PitchEditorialSplit>
       <Card dark label="Community-driven" title="Construído com a comunidade.">A proposta é construir com os usuários: ouvir feedback, validar melhorias e estimular recomendações orgânicas. A comunidade no Telegram conecta aquisição, uso do aplicativo e evolução do produto.</Card>
-      <p className="mt-6 max-w-[800px] text-sm leading-7 text-[#c5d2f1]">A validação acompanha a primeira compra elegível, o primeiro uso útil e o retorno dos usuários. Compradores e usuários ativados serão medidos separadamente; a meta não representa resultados já alcançados. Oferta e publicidade dependem de revisão jurídica e elegibilidade.</p>
       <Doc dark hash="documentacao-aquisicao-retencao">Plano de aquisição e retenção na documentação</Doc>
+      <PitchObservations dark><p>A validação acompanha a primeira compra elegível, o primeiro uso útil e o retorno dos usuários. Compradores e usuários ativados serão medidos separadamente; a meta não representa resultados já alcançados. Oferta e publicidade dependem de revisão jurídica e elegibilidade.</p></PitchObservations>
     </Sec>
 
     <Sec id="recursos" hero="pitch-illustrations/pitch-product-development.webp" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="09" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>

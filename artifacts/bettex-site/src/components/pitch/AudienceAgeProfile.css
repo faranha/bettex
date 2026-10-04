@@ -1,0 +1,15 @@
+.pb-audience-ages { border-top: 1px solid rgba(7,11,31,.15); padding-top: 24px; scroll-margin-top: 120px; }
+.pb-audience-ages h3 { margin: 0 0 18px; font-size: clamp(1.3rem, 2.5vw, 1.9rem); line-height: 1.2; letter-spacing: -.035em; }
+.pb-audience-ages__grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.pb-audience-ages__card { min-width: 0; padding: 20px; background: #070B1F; color: #F4F1E8; border-left: 3px solid #F2B632; border-radius: 4px; }
+.pb-audience-ages__card p { margin: 0; font-size: 14px; line-height: 1.6; }
+.pb-audience-ages__card .pb-audience-ages__label { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.pb-audience-ages__card .pb-audience-ages__value { margin: 12px 0; color: #F2B632; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -.04em; }
+.pb-audience-ages__value span { font-size: 14px; font-weight: 600; letter-spacing: 0; }
+.pb-audience-ages__card a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-top: 10px; color: #F2B632; font-size: 11px; line-height: 1.5; text-decoration: underline; text-underline-offset: 3px; }
+.pb-audience-ages__card a svg { width: 14px; height: 14px; flex: none; }
+.pb-audience-ages__card a:focus-visible { outline: 2px solid #F4F1E8; outline-offset: 3px; }
+.pb-audience-ages__note { margin: 14px 0 0; font-size: 12px; line-height: 1.6; color: #183173; }
+@media (max-width: 639px) {
+  .pb-audience-ages__grid { grid-template-columns: minmax(0, 1fr); }
+}

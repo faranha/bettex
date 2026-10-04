@@ -1,0 +1,5 @@
+.pitch-observations { grid-column: 1 / -1; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(24,49,115,.2); color: #183173; font-size: 12px; line-height: 1.7; }
+.pitch-observations > p { margin: 0; font-size: inherit; line-height: inherit; }
+.pitch-observations > p + p { margin-top: 10px; }
+.pitch-observations--dark { color: #c5d2f1; border-top-color: rgba(95,134,255,.35); }
+.pitch-observations a { text-underline-offset: 3px; }

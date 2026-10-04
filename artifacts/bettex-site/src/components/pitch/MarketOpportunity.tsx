@@ -1,6 +1,7 @@
 import { ExternalLink, UsersRound } from 'lucide-react';
 import './MarketOpportunity.css';
 import { AudienceOverlap } from './AudienceOverlap';
+import { AudienceAgeProfile } from './AudienceAgeProfile';
 import { audienceScenario } from './audienceScenario';
 import { formatCryptoDailyBillions, marketFlow } from './marketFlow';
 import { useLocale } from '../../lib/i18n';
@@ -14,9 +15,10 @@ export function MarketOpportunity() {
     <div className="pb-market__metrics">
       <article className="pb-market__card pb-market__card--total">
         <div className="pb-market__audience-heading"><UsersRound aria-hidden="true" size={32} /><p className="mono pb-market__label">Público potencial · apostas</p></div>
-        <p className="display pb-market__value">Até 40</p>
+        <p className="display pb-market__value">≈ {audienceScenario.bettingMillions}</p>
         <h3>milhões de apostadores brasileiros</h3>
         <p>Cenário da BETTEX para a escala do público de apostas no Brasil, considerando diferentes tipos de plataformas. É uma estimativa de mercado, não uma contagem oficial.</p>
+        <a href={audienceScenario.bettingSourceUrl} target="_blank" rel="noopener noreferrer">Apostas: Fazenda / SIGAP, via Folha · set. 2026<ExternalLink aria-hidden="true" /></a>
       </article>
       <article className="pb-market__card">
         <div className="pb-market__audience-heading"><UsersRound aria-hidden="true" size={32} /><p className="mono pb-market__label">Público potencial · cripto</p></div>
@@ -38,6 +40,7 @@ export function MarketOpportunity() {
       </article>
     </div>
     <AudienceOverlap />
+    <AudienceAgeProfile />
     <div className="pb-market__opportunity">
       <h3 className="display">Já existe público. Já existe volume financeiro.</h3>
       <p>A BETTEX pretende alcançar apostadores brasileiros e pessoas com experiência em cripto. O público central estimado é um núcleo de afinidade, não o limite de atuação do produto.</p>

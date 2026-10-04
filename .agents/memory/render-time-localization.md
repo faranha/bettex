@@ -92,3 +92,15 @@ Locale-formatted dates and currencies must not be sent back through automatic pr
 **Why:** Intl can put the currency symbol after the number in Spanish, yielding text the translator treats as a missing sentence even when static catalogue coverage passes.
 
 **How to apply:** Format with the selected locale and mark only the generated value as already translated. Translate surrounding prose normally and validate actual PT/EN/ES rendering, not just source coverage.
+
+The source extractor can classify Intl option strings such as “percent” as UI messages, even outside JSX.
+
+**Why:** Moving a percentage formatter out of JSX did not remove the false localization requirement; the extractor also scans ordinary source literals.
+
+**How to apply:** Check extracted messages when adding formatting options. For percentage cards, locale-format the numeric percentage and append the symbol, rather than creating fake prose translations for technical enum values.
+
+Technical iframe permissions and request policies must not be treated as translatable copy.
+
+**Why:** Embedding a video caused the locale audit to demand translations for browser permission and referrer-policy values. Translating those values would be incorrect.
+
+**How to apply:** When the audit reports non-visible HTML configuration, exempt the technical attribute from extraction rather than add fake translations. Keep accessible titles and visible captions localized.

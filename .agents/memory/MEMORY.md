@@ -37,7 +37,9 @@
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
 - [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.
 - [Cabeçalhos das seções](homepage-section-headers.md) — não reintroduzir as faixas informativas decorativas acima de História e Roadmap.
+- [Consistência dos heros](homepage-hero-accent.md) — homepage segue a barra azul na borda esquerda dos heros do Pitch.
 - [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
 - [Apresentação do fundador](documentation-founder-presentation.md) — documentação com retrato integrado e sem aspas; Pitch com biografia profissional em terceira pessoa.
 - [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.
 - [Responsive text verification](responsive-text-verification.md) — text-range bounds include font leading; distinguish compact heading lines from actual collisions.
+- [Observações editoriais](document-observations.md) — notas agrupadas no fim de cada bloco, sem repetição ou interrupção do conteúdo principal.
