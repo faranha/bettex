@@ -9,6 +9,7 @@ const sections = [
   { id: 'solucao', label: 'Solução' },
   { id: 'fundador', label: 'Fundador' },
   { id: 'tokenomics', label: 'Tokenomics' },
+  { id: 'pitch-roadmap', label: 'Roadmap' },
   { id: 'publico', label: 'Go to market' },
   { id: 'recursos', label: 'Recursos e riscos' },
 ] as const;

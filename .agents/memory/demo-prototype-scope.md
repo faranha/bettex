@@ -13,7 +13,9 @@ A fase atual do projeto é ALFA; a validação da demanda já está em andamento
 
 **Why:** O criador definiu expressamente a fase atual e pediu comunicar a validação em andamento, junto dos dois selos.
 
-**How to apply:** Distinguir o demo em validação das metas futuras de compradores e usuários. Manter ALFA junto da marca nas duas posições enquanto essa for a fase definida pelo criador, sem afirmar operações financeiras reais. A abertura dessa área no Pitch apresenta “Fase atual — ALFA” e, depois, o mesmo Roadmap da homepage, com etapas e cronograma iguais.
+**How to apply:** Distinguir o demo em validação das metas futuras de compradores e usuários. Manter ALFA junto da marca nas duas posições enquanto essa for a fase definida pelo criador, sem afirmar operações financeiras reais. A abertura de Go to market no Pitch apresenta “Fase atual — ALFA”. O mesmo Roadmap da homepage, com etapas e cronograma iguais, aparece em seção independente imediatamente antes de Go to market, com item próprio no menu e fundo branco de ponta a ponta, sem container claro dentro de uma área escura.
+
+**Why da separação:** O criador pediu o Roadmap antes de Go to market, com seção e item próprios no menu, e esclareceu “Não quero esse container claro, o fundo é claro”.
 
 No mobile, as telas devem aparecer antes das imagens, ícones e símbolos que exemplificam cada área.
 
