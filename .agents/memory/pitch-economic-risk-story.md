@@ -15,9 +15,9 @@ O vídeo da USA TODAY sobre Musk e a “era da abundância”, indicado pelo usu
 
 **How to apply:** Preservar essa sequência ao editar o trecho. Distinguir a fala de Musk da interpretação crítica da BETTEX, sem afirmar que o vídeo prova intenção de enganar.
 
-O fundo do hero de Ambiente externo deve representar a guerra na Ucrânia, com bombas explodindo na cidade, não o robô da Tesla.
+O fundo do hero de Ambiente externo deve representar a guerra na Ucrânia, com bombas explodindo na cidade, sem nenhuma bandeira e não o robô da Tesla.
 
-**Why:** O criador pediu inicialmente guerra, fome e miséria, depois refinou a direção para explosões na cidade e especificou a guerra na Ucrânia.
+**Why:** O criador pediu inicialmente guerra, fome e miséria, depois refinou a direção para explosões na cidade e especificou a guerra na Ucrânia. Na revisão da imagem pediu “Não põe bandeira nenhuma”.
 
 **How to apply:** Preservar os textos e o restante da seção nessa troca. A direção não exige retirar Optimus dos outros trechos sobre automação.
 
@@ -27,11 +27,11 @@ O cartão “Optimus e a substituição do trabalho humano” pertence ao item 2
 
 **How to apply:** Preservar imagem, texto, fonte e observação sobre ausência de parceria; não duplicar o cartão entre as duas áreas.
 
-A foto de Musk deve ficar integrada à abertura de “O cenário apocalíptico”, não isolada no bloco “Musk e a promessa de prosperidade” acima.
+A foto de Musk deve ficar integrada à abertura de “O cenário apocalíptico”. Ambiente externo começa diretamente nessa abertura após o hero, sem o bloco “Musk e a promessa de prosperidade”, sem o título “Sem emprego. Sem renda. Sem lugar na nova economia.” e sem a caixa vermelha externa.
 
-**Why:** O criador mostrou a separação entre retrato e cenário e pediu integrar a foto ao cenário.
+**Why:** O criador pediu integrar a foto ao cenário e depois mandou retirar a abertura otimista, o título de exclusão e o container vermelho, deixando o conteúdo diretamente na página e os gráficos em caixas.
 
-**How to apply:** Manter retrato e crédito junto da introdução do cenário, com leitura adaptada ao desktop e ao celular. Não duplicar a imagem na apresentação anterior.
+**How to apply:** Manter retrato e crédito junto da introdução do cenário, com leitura adaptada ao desktop e ao celular. Preservar as caixas individuais dos gráficos; não recriar o invólucro vermelho nem a abertura removida.
 
 O item 2 de Problema deve ser resumido, com mais tópicos e números e menos parágrafos. O fundo do Optimus deve se integrar ao container com degradê, sem corte abrupto.
 
