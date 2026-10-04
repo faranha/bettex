@@ -2,7 +2,7 @@ import { type ReactNode, type CSSProperties, useEffect, useState } from 'react';
 import { PageMetadata } from '@/components/PageMetadata';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useLocale, localizedUrl, t } from '@/lib/i18n';
-import { ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
+import { ArrowDown, ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -198,12 +198,11 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
   </footer>;
 }
 
-function SitePage({ children, documentation = false, compactFooter = false, floatingCta = false }: { children: ReactNode; documentation?: boolean; compactFooter?: boolean; floatingCta?: boolean }) {
+function SitePage({ children, documentation = false, compactFooter = false }: { children: ReactNode; documentation?: boolean; compactFooter?: boolean }) {
   return <div style={{ '--pitch-label-1': JSON.stringify(t('Movimentação')), '--pitch-label-2': JSON.stringify(t('Tarifa')), '--pitch-label-3': JSON.stringify(t('Resultado')) } as CSSProperties} className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#F4F1E8]`}>
     <SiteHeader />
     {children}
     <SiteFooter compact={compactFooter} />
-    {floatingCta && <><div className="h-[calc(72px+env(safe-area-inset-bottom))] bg-[#070B1F] md:hidden" aria-hidden="true" /><FloatingCommunityCTA /></>}
   </div>;
 }
 
@@ -255,7 +254,7 @@ function Home() {
     };
   }, []);
 
-  return <SitePage floatingCta>
+  return <SitePage>
     <main>
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#F4F1E8]">
         <div className="hero-intro-stage relative">
@@ -268,7 +267,10 @@ function Home() {
             </h1>
             <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Uma comunidade pra quem está cansado de só apostar e quer começar a ganhar.</h2>
             <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">Na BETTEX, nossa IA analisa e opera em diferentes mercados. Com nosso token, você participa dos lucros do projeto.</p>
-            <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[#2B59FF] px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">Entenda o projeto</a>
+            <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
+              <span>Entenda o projeto</span>
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/20" aria-hidden="true"><ArrowDown size={22} strokeWidth={2.2} /></span>
+            </a>
           </div>
         </div>
         <HeroBenefit />
@@ -312,7 +314,7 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
 function App({ ssrPath }: { ssrPath?: string } = {}) {
   const language = useLocale();
   const base = `${BASE_PATH}${language === 'pt' ? '' : `/${language}`}`;
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/pitch" component={Pitch} /><Route path="/demo" component={Demo} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>;
+  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/pitch" component={Pitch} /><Route path="/demo" component={Demo} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></WouterRouter><FloatingCommunityCTA /><Toaster /></TooltipProvider></QueryClientProvider>;
 }
 
 export default App;

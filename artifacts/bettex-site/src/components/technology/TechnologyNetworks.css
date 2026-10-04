@@ -1,22 +1,25 @@
 .technology-networks {
   --networks-line: rgba(130, 154, 199, .12);
   background: #070b1f;
-  padding: 14px 0;
+  padding: 0;
   border-block: 1px solid rgba(130, 154, 199, .15);
   color: #f4f1e8;
 }
 .technology-networks__wrap {
-  width: min(calc(100% - 40px), 1200px);
-  margin-inline: auto;
-  border: 1px solid var(--networks-line);
-  border-radius: 8px;
-  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 .technology-networks__label {
-  display: block;
+  position: absolute;
+  z-index: 2;
+  top: -1px;
+  left: max(20px, calc((100% - 1200px) / 2));
+  transform: translateY(-50%);
   margin: 0;
-  padding: 7px 12px;
-  border-bottom: 1px solid var(--networks-line);
+  padding: 3px 10px;
+  border: 1px solid var(--networks-line);
+  border-radius: 999px;
+  background: #070b1f;
   color: #b5c1dc;
   font: 600 9px/1.5 var(--app-font-mono, monospace);
   letter-spacing: .12em;
@@ -30,7 +33,7 @@
   margin: 0;
   list-style: none;
 }
-.technology-networks__list li { min-width: 0; padding: 8px 10px; text-align: center; border-inline-end: 1px solid var(--networks-line); }
+.technology-networks__list li { display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 88px; padding: 18px 20px; text-align: center; border-inline-end: 1px solid var(--networks-line); }
 .technology-networks__list li:last-child { border-inline-end: 0; }
 .technology-networks__logo {
   display: flex;
@@ -52,9 +55,9 @@
 .technology-networks__logo--allora img { width: 112px; }
 .technology-networks__logo--robinhood img { width: 150px; }
 @media (max-width: 600px) {
-  .technology-networks { padding: 12px 0; }
-  .technology-networks__wrap { width: calc(100% - 32px); }
+  .technology-networks__label { left: 16px; }
   .technology-networks__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .technology-networks__list li { min-height: 64px; padding: 16px 12px; }
   .technology-networks__list li:nth-child(2n) { border-inline-end: 0; }
   .technology-networks__list li:nth-child(-n + 2) { border-bottom: 1px solid var(--networks-line); }
   .technology-networks__logo { height: 26px; }

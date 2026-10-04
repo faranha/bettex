@@ -2,7 +2,7 @@
   --tech-ink: #070B1F;
   --tech-mint: #5F86FF;
   color: var(--tech-ink);
-  background: #ECE8DA;
+  background: linear-gradient(to bottom, #ECE8DA, #F4F1E8) bottom / 100% clamp(72px, 9vw, 120px) no-repeat, #ECE8DA;
   padding: clamp(62px, 8vw, 110px) 0 clamp(72px, 9vw, 120px);
 }
 .technology-section *, .technology-section *::before, .technology-section *::after { box-sizing: border-box; }

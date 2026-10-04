@@ -117,7 +117,6 @@ export function RoadmapSection() {
           </div>
         </aside>
       </div>
-      <div className="roadmap__fade" aria-hidden="true" />
     </section>
   );
 }

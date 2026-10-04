@@ -20,3 +20,9 @@ O banner “Acesse o demo ao vivo agora mesmo” deve ficar abaixo do bloco “C
 **Why:** O criador mostrou o banner existente e pediu “coloque o demo abaixo do crédito de lucro em USDC”.
 
 **How to apply:** Mover o banner existente, mantendo sua apresentação compacta e o link para o demo, sem duplicá-lo nem substituir o cartão USDC.
+
+As passagens entre o bloco de crédito em USDC, o banner do demo e a seção de mercados devem terminar em degradê para a cor do bloco seguinte, sem cortes secos de fundo.
+
+**Why:** O criador mostrou essa sequência e rejeitou a “transição seca”, pedindo que a parte de cima termine em degradê para a cor da seção abaixo.
+
+**How to apply:** Fazer a mudança de cor no fundo, sem sobrepor textos ou botões e sem aumentar a altura do banner. Preservar o visual do cartão USDC e a ordem desses blocos.

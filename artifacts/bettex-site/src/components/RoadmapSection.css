@@ -216,7 +216,7 @@
   grid-template-columns: 125px minmax(0, 790px);
   gap: clamp(20px, 5vw, 90px);
   align-items: center;
-  margin: 45px 0 105px;
+  margin: 45px 0 40px;
   padding: 35px 0 0;
   border-top: 1px solid rgba(95,134,255,.25);
 }
@@ -227,7 +227,6 @@
 .roadmap__closing-mark span:nth-child(3) { opacity: .25; }
 .roadmap__closing-label { color: var(--roadmap-green); font: 700 10px/1.4 var(--app-font-mono); letter-spacing: .1em; }
 .roadmap__closing p { margin: 12px 0 0; color: var(--roadmap-muted); font-size: 15px; line-height: 1.7; }
-.roadmap__fade { height: clamp(90px, 12vw, 160px); background: var(--roadmap-paper); }
 
 @media (max-width: 850px) {
   .roadmap__intro { grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; }
@@ -262,7 +261,7 @@
   .roadmap__place h3 { margin-top: 20px; font-size: clamp(1.65rem, 5vw, 2.1rem); }
   .roadmap__place p { font-size: 13px; line-height: 1.6; }
   .roadmap__destination { justify-content: flex-start; padding: 26px 0 12px 43px; }
-  .roadmap__closing { grid-template-columns: 1fr; gap: 20px; margin: 35px 0 70px; }
+  .roadmap__closing { grid-template-columns: 1fr; gap: 20px; margin: 35px 0 32px; }
 }
 @media (max-width: 410px) {
   .roadmap h2 { font-size: clamp(3rem, 12.5vw, 3.6rem); }

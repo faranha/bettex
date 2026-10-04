@@ -243,6 +243,22 @@
     "en": "Arbitrum",
     "es": "Arbitrum"
   },
+  "Fechar convite da comunidade": {
+    "en": "Dismiss community invitation",
+    "es": "Cerrar invitación a la comunidad"
+  },
+  "bettex-community-dismissed": {
+    "en": "bettex-community-dismissed",
+    "es": "bettex-community-dismissed"
+  },
+  "Não foi possível ler a preferência do botão da comunidade.": {
+    "en": "Unable to read the community button preference.",
+    "es": "No se pudo leer la preferencia del botón de la comunidad."
+  },
+  "Não foi possível salvar a preferência do botão da comunidade.": {
+    "en": "Unable to save the community button preference.",
+    "es": "No se pudo guardar la preferencia del botón de la comunidad."
+  },
   "Entenda o projeto": {
     "en": "Understand the project",
     "es": "Entiende el proyecto"
