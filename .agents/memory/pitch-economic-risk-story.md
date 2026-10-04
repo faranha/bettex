@@ -15,9 +15,9 @@ O vídeo da USA TODAY sobre Musk e a “era da abundância”, indicado pelo usu
 
 **How to apply:** Preservar essa sequência ao editar o trecho. Distinguir a fala de Musk da interpretação crítica da BETTEX, sem afirmar que o vídeo prova intenção de enganar.
 
-O fundo do hero de Ambiente externo deve representar guerra, fome e miséria, não o robô da Tesla.
+O fundo do hero de Ambiente externo deve representar a guerra na Ucrânia, com bombas explodindo na cidade, não o robô da Tesla.
 
-**Why:** O criador pediu essa direção visual especificamente para o hero de Ambiente externo.
+**Why:** O criador pediu inicialmente guerra, fome e miséria, depois refinou a direção para explosões na cidade e especificou a guerra na Ucrânia.
 
 **How to apply:** Preservar os textos e o restante da seção nessa troca. A direção não exige retirar Optimus dos outros trechos sobre automação.
 
@@ -119,11 +119,11 @@ O gráfico brasileiro deve mostrar evolução histórica e a tendência recente 
 
 **How to apply:** Comparar a mesma janela de meses em todos os anos e mostrar recuperações intermediárias, sem forçar queda contínua ou inventar projeções. Distinguir criação líquida de empregos do estoque ocupado; separar inflação registrada, prévia e expectativa. Choques do petróleo são riscos de pressão sobre preços, não prova de uma explosão inflacionária já medida.
 
-A tese de perda simultânea de patrimônio e salário precisa de subseção própria dentro da área de Elon Musk, não de uma seção principal fora dela.
+Não reintroduzir o bloco “Desta vez, a perda pode acontecer dos dois lados”, com a cadeia de patrimônio, salário e recuperação e o fechamento “Sem patrimônio. Sem salário. E se não houver um lugar para voltar?”.
 
-**Why:** O criador mostrou esses dois blocos e pediu que tivessem “a propria sub secao dentro da area do Elon”.
+**Why:** O criador mostrou esse bloco inteiro e pediu para deletá-lo, substituindo a exigência anterior de manter a tese de perda simultânea em subseção própria.
 
-**How to apply:** Preservar o conteúdo e as fontes, com separação visual e navegação subordinada a IA e trabalho no desktop e no celular.
+**How to apply:** Retirar também a referência “Desta vez, patrimônio e salário” da pauta. Preservar gráficos, alertas e demais conteúdos do cenário apocalíptico.
 
 A tese de pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA, define o segundo problema. Esse item deve tratar diretamente da visão de Musk de substituir o trabalho humano por máquinas e da promessa de renda universal alta, rejeitada pela tese da BETTEX, com o vídeo depois da introdução.
 
@@ -135,4 +135,4 @@ Não reintroduzir os quatro trechos que o criador mostrou e mandou retirar: a ca
 
 **Why:** O criador revisou a apresentação e pediu explicitamente remover essas quatro partes pelas imagens, substituindo a exigência anterior de manter o bloco de matérias da bolha.
 
-**How to apply:** Preservar os gráficos de vagas e inflação/petróleo, os alertas remanescentes, a tese de patrimônio e salário e Optimus. A retirada dos trechos não autoriza remover o restante da área nem reapresentar previsões como fatos medidos.
+**How to apply:** Preservar os gráficos de vagas e inflação/petróleo, os alertas remanescentes e Optimus. A tese de patrimônio e salário foi retirada posteriormente, conforme a regra acima. A retirada dos trechos não autoriza remover o restante da área nem reapresentar previsões como fatos medidos.
