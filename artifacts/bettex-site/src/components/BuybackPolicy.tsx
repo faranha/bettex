@@ -1,4 +1,3 @@
-import { BuybackSchematic } from '@/components/docs-diagrams/DocSchematics';
 import { buybackCommitment } from '@/lib/profit-allocation-policy';
 
 export function BuybackPolicy() {
@@ -9,7 +8,7 @@ export function BuybackPolicy() {
       <p>O fechamento diário elegível destina 50% do lucro líquido distribuível à retenção e ao reinvestimento na tesouraria, 25% aos stakers elegíveis e 25% à carteira exclusiva de recompra. A base é resultado realizado, conciliado e disponível, após custos, tributos e obrigações, considerando as posições abertas. Venda de tokens e transferência entre carteiras não criam lucro para esse split.</p>
       <p>Antes do split, projetar todos os desembolsos: staking, transferência de recompra e custos aplicáveis. Se a reserva defensiva ou a liquidez ficarem insuficientes após esses desembolsos, 100% permanece na tesouraria, sem distribuição nem destinação à recompra naquele fechamento. Sem peso elegível, mantém-se a regra de não realizar o split.</p>
     </div>
-    <BuybackSchematic />
+    <span id="schematic-buyback" />
     <div className="whitepaper__prose">
       <p><strong>Destinação diária não é compra diária.</strong> Os 25% são transferidos em USDC para uma carteira exclusiva, separada da tesouraria operacional, da reserva defensiva e do caixa da empresa. Seu saldo não utilizado acumula para recompras, sem prazo obrigatório de execução. Esse saldo segregado não é lucro novo nem crédito de stakers: suas rodadas continuam únicas, sem créditos residuais ou pesos acumulados.</p>
       <p>A carteira só financia recompras de BETTEX. Não financia estratégias, distribuições ou despesas da empresa e não conta simultaneamente como reserva defensiva ou capital disponível. Distinguir valor destinado, efetivamente transferido, disponível, comprometido em ordens, gasto e custos conciliados. Comprometer uma ordem não é gastar; enviar uma transferência não comprova recebimento. Recursos incertos permanecem comprometidos, sem compra duplicada ou recuperação presumida.</p>

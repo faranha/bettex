@@ -482,3 +482,14 @@
   .whitepaper :is(h3, h4, details)[id], .whitepaper [id] { scroll-margin-top: calc(var(--site-header-h, 73px) + 90px); }
 }
 @media (prefers-reduced-motion: reduce) { .whitepaper__mobile-index svg { transition: none; } html:has(.whitepaper) { scroll-behavior: auto; } }
+
+/* Single-chapter reader (progressive enhancement) */
+.whitepaper__chapter[hidden] { display: none; }
+.whitepaper__content.is-single .whitepaper__chapter { padding-top: 0; border-bottom: 0; animation: wp-enter .28s ease both; }
+.whitepaper__chapter-pagination > span { display: block; }
+.whitepaper__toc-link { padding-block: 10px; }
+.whitepaper__toc-group.is-current { background: #ebe7dc; }
+.whitepaper__toc-group.is-current > .whitepaper__toc-link { font-weight: 800; }
+@media (prefers-reduced-motion: reduce) {
+  .whitepaper__content.is-single .whitepaper__chapter { animation: none; }
+}

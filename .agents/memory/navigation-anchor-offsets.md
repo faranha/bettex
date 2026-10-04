@@ -16,3 +16,9 @@ Pitch, Documentação e Demo ficam numa seção própria no fim do menu, após R
 **Why:** O usuário pediu expressamente retirar a linha adicional e mover a opção de língua para o menu. As três opções de páginas podem se diferenciar do restante do menu, mas devem compartilhar o mesmo estilo de cor.
 
 **How to apply:** Manter o cabeçalho móvel em uma linha e preservar essa organização nos três idiomas. Considerar a altura reduzida ao posicionar índices fixos e rolar para âncoras.
+
+No cabeçalho desktop, a página ativa entre Pitch, Documentação e Demo deve continuar com formato de botão e uma coloração sutil, sem destaque amarelo nem marcação por sublinhado.
+
+**Why:** O criador rejeitou a marcação de Documentação como texto amarelo sublinhado e pediu preservar o botão com uma cor mais discreta.
+
+**How to apply:** Manter as dimensões e o formato dos botões de páginas; diferenciar a página atual por um fundo discreto, sem alterar a organização do menu.

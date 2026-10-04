@@ -1,5 +1,8 @@
 import { BettexFlow } from './architecture/BettexArchitecture';
+import { AgentPortrait, DocTerms } from './DocImage';
 import './agent-documentation.css';
+
+const portraits: Record<string, string> = { orquestradora: 'bettex-intelligence-brain.webp', previsoes: 'predix-serious.webp', 'acoes-cripto': 'tradix-serious.webp', esportes: 'sportix-serious.webp', cassinos: 'bettix-serious.webp' };
 
 const agents = [
   { id: 'orquestradora', name: 'IA BETTEX · orquestradora', input: 'Oportunidades, prioridades e respostas dos agentes.', analysis: 'Compara propostas e solicita análises; os agentes também propõem e refinam decisões.', control: 'Risco independente e política vigente precedem execução.', example: 'Com base investível ilustrativa de 100.000 USDC, compara proposta de 800 com proposta de 1.200. A primeira pode passar pelo teto individual de 1%; a segunda é rejeitada. Melhor sinal não permite exceder o teto.', result: 'Prioridade e proposta fundamentadas; retorno aos agentes e histórico.' },
@@ -15,15 +18,12 @@ const agents = [
 export function InvestmentAgents() {
   return <>
     <div className="whitepaper__lead"><span>ORQUESTRAÇÃO · ANÁLISE · CONTROLE</span><p>A IA BETTEX orquestra agentes com responsabilidades distintas. A comunicação é bidirecional: BETTEX define prioridades e pede análises; agentes propõem oportunidades, respondem e refinam. Tesouraria e governança acompanham os mesmos dados conciliados e a mesma versão de política.</p></div>
+    <p className="doc-terms__note">BETTEX ↔ agente: proposta, pedido de análise e resposta</p>
     <div className="whitepaper__prose"><p>Os exemplos abaixo são simulações de decisões, não operações executadas. Usam os <a href="#documentacao-controles">limites documentados</a> e uma base investível ilustrativa de 100.000 USDC. Valores de preços, odds e custos são entradas do exemplo, não novos limites universais. Dados inválidos, falta de liquidez ou autorização impedem o envio. Pausa por perda diária de 2% bloqueia novos investimentos, sem reduzir os controles sobre encerramentos.</p></div>
     {agents.map(agent => <section key={agent.id} id={`documentacao-agente-${agent.id}`} className="doc-agent">
-      <h3 className="whitepaper__subhead"><span className="doc-agent__robot" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4v4M11 4h10M7 12h18v14H7zM3 16h4m18 0h4M11 21h10" fill="none" stroke="currentColor" strokeWidth="2" /><circle cx="12" cy="16" r="2" fill="currentColor" /><circle cx="20" cy="16" r="2" fill="currentColor" /></svg></span>{agent.name}</h3>
+      <h3 className="whitepaper__subhead doc-agent__head">{portraits[agent.id] ? <AgentPortrait file={portraits[agent.id]} /> : <span className="doc-agent__robot" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4v4M11 4h10M7 12h18v14H7zM3 16h4m18 0h4M11 21h10" fill="none" stroke="currentColor" strokeWidth="2" /><circle cx="12" cy="16" r="2" fill="currentColor" /><circle cx="20" cy="16" r="2" fill="currentColor" /></svg></span>}<span>{agent.name}</span></h3>
       <div className="whitepaper__prose"><p>{agent.analysis}</p></div>
-      <figure className="ds">
-        <figcaption className="ds__cap"><span>Esquema</span><b>{agent.name}</b><p>{agent.input}</p></figcaption>
-        <p>BETTEX ↔ agente: proposta, pedido de análise e resposta</p>
-        <ol className="doc-agent__flow"><li><strong>Entradas</strong><p>{agent.input}</p></li><li><strong>Controle</strong><p>{agent.control}</p></li><li><strong>Resultado</strong><p>{agent.result}</p></li></ol>
-      </figure>
+      <DocTerms items={[['Entradas', agent.input], ['Controle', agent.control], ['Resultado', agent.result]]} />
       <h4 className="whitepaper__subhead">Exemplo de aceitação e rejeição</h4>
       <div className="whitepaper__prose"><p>{agent.example}</p></div>
     </section>)}

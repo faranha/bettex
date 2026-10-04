@@ -1,4 +1,7 @@
-import { DocFigure, FlowLane, Link2, type FlowNode } from './DocFlow';
+import { DocTerms } from '../DocImage';
+import { type FlowNode } from './DocFlow';
+
+const terms = (n: FlowNode[]): [string, string][] => n.map((x) => [x.title, x.text]);
 
 const decide: FlowNode[] = [
   { tag: '01', title: 'Dados e preços', text: 'Consulta de preços de compra e venda e estimativas de cotação de criptoativos. Somente leitura.', tone: 'blue' },
@@ -15,15 +18,10 @@ const execute: FlowNode[] = [
 
 export function RobinhoodFlowDiagram() {
   return (
-    <DocFigure
-      id="documentacao-diagrama-robinhood"
-      label="Fluxo do conector de criptoativos"
-      title="Leitura, decisão e execução em etapas separadas"
-      caption={<>Referência: <a href="https://docs.robinhood.com/crypto/trading/" target="_blank" rel="noopener noreferrer">documentação da Robinhood Crypto Trading API</a>.</>}
-    >
-      <FlowLane label="Leitura e decisão" nodes={decide} />
-      <Link2 label="Somente após a autorização, a execução começa" />
-      <FlowLane label="Execução e retorno" nodes={execute} />
-    </DocFigure>
+    <div id="documentacao-diagrama-robinhood" data-testid="documentacao-diagrama-robinhood">
+      <DocTerms label="Leitura, decisão e execução em etapas separadas" items={terms(decide)} />
+      <DocTerms label="Somente após a autorização, a execução começa" items={terms(execute)} />
+      <div className="whitepaper__prose"><p>Referência: <a href="https://docs.robinhood.com/crypto/trading/" target="_blank" rel="noopener noreferrer">documentação da Robinhood Crypto Trading API</a>.</p></div>
+    </div>
   );
 }

@@ -1,3 +1,4 @@
+import { DocImage, DocTerms } from '../DocImage';
 const connectors = [
   { name: 'Arbitrum One', kind: 'Rede e contratos', access: 'JSON-RPC / EVM', status: 'Consulta pública verificada', function: 'Carteiras, token, transferências e contratos. Execução BETTEX exige contratos validados.', url: 'https://docs.arbitrum.io/' },
   { name: 'Polymarket', kind: 'Dados e negociação', access: 'Gamma / CLOB API', status: 'Dados públicos verificados; ordens condicionadas', function: 'Gamma descobre mercados. CLOB recebe ordens assinadas com conta, permissões e território elegíveis.', url: 'https://docs.polymarket.com/market-data/overview' },
@@ -13,12 +14,8 @@ export function ArchitectureCatalogue() {
   return <>
     <h3 className="whitepaper__subhead" id="documentacao-mapa-arquitetura">Mapa orquestrado do sistema</h3>
     <div className="whitepaper__prose"><p>Fontes de dados e inferências alimentam a IA BETTEX, que coordena análises com os agentes especializados nos dois sentidos. Tesouraria informa capital e liquidez; risco independente valida cada proposta; somente conectores autorizados executam. Respostas e conciliação retornam à orquestradora, à tesouraria e ao histórico.</p></div>
-    <figure className="ds" id="schematic-orchestration">
-      <figcaption className="ds__cap"><span>Esquema</span><b>Dados, orquestração e execução</b></figcaption>
-      <p>Fontes / Allora → análise BETTEX ↔ agentes especializados ↔ tesouraria</p>
-      <p>Proposta → risco independente → conector autorizado → conciliação → BETTEX</p>
-      <p>Governança ↔ políticas e versões · Arbitrum One: carteiras e contratos</p>
-    </figure>
+    <DocImage wide src="technology/rede-inteligencia.png" alt="Rede de módulos conectados cujos fios convergem em um único fluxo luminoso." caption="Dados e inferências de várias fontes alimentam a análise da BETTEX." />
+    <div className="whitepaper__prose" id="schematic-orchestration"><p>Governança ↔ políticas e versões · Arbitrum One: carteiras e contratos</p></div>
     <h3 className="whitepaper__subhead" id="documentacao-catalogo-integracoes">Catálogo de integrações</h3>
     <div className="whitepaper__prose"><p>Capacidade descrita pelo provedor, consulta demonstrada e integração operacional são estados distintos. Este catálogo identifica o acesso efetivamente verificado; dados públicos não comprovam permissão de negociar.</p></div>
     <div className="whitepaper__vesting-scroll"><table className="whitepaper__vesting-table whitepaper__business-table">
@@ -31,7 +28,12 @@ export function ArchitectureCatalogue() {
     <div className="whitepaper__prose"><p><a href="#documentacao-rede">Ver o esquema de Arbitrum, ativos e carteiras</a>.</p></div>
     <details className="whitepaper__technical" id="documentacao-consultas-publicas"><summary>Reproduzir as consultas sem movimentar recursos</summary><div className="whitepaper__technical-body"><pre data-i18n="skip"><code>{'POST https://arb1.arbitrum.io/rpc\n{"jsonrpc":"2.0","id":1,"method":"eth_chainId","params":[]}\n\nGET https://gamma-api.polymarket.com/markets?limit=1&active=true&closed=false'}</code></pre><p>Conferir rede, status, timestamp, regras de resolução e identificadores antes de análise. Dados atuais podem diferir do registro consultado. Não há método de envio de transação nessas consultas.</p></div></details>
     <h4 className="whitepaper__subhead" id="documentacao-allora-fluxo">Allora: da inferência à análise</h4>
-    <figure className="ds" id="schematic-allora"><figcaption className="ds__cap"><span>Esquema</span><b>Inferência não é ordem</b></figcaption><ol className="whitepaper__steps"><li>API Allora → tópico, inferência normalizada e timestamp</li><li>Análise BETTEX ↔ agente de ações e cripto</li><li>Risco independente → validação ou rejeição</li><li>Conector autorizado → eventual execução → conciliação</li></ol><p>Allora não controla carteira, não envia pagamentos e não executa ordens.</p></figure>
+    <DocTerms id="schematic-allora" label="Inferência não é ordem" items={[
+      ['API Allora', 'tópico, inferência normalizada e timestamp'],
+      ['Análise BETTEX ↔ agente de ações e cripto', 'Insumo de análise.'],
+      ['Risco independente', 'validação ou rejeição'],
+      ['Conector autorizado', 'eventual execução → conciliação'],
+    ]} note="Allora não controla carteira, não envia pagamentos e não executa ordens." />
     <div className="whitepaper__prose"><p>O quickstart oficial usa tópico 69 em testnet, consultado por API com chave e resposta assinada. A demonstração BETTEX desse percurso é simulada: validar origem, horário e normalização, cruzar preços e liquidez, rejeitar sinal vencido e executar somente após risco independente. Sem credencial autorizada, não se afirma consulta Allora realizada.</p><p>Robinhood documenta preços, posições, ordens e cancelamentos de cripto, com assinatura e conta elegível. O exemplo é simulado sem essas permissões: proposta de ordem → risco → chamada autorizada → estado → conciliação. Não é transação Arbitrum nem acesso a ações. Esportes e cassinos exigem canal e regras específicos; suas demonstrações de agentes são simulações parametrizadas.</p></div>
   </>;
 }

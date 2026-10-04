@@ -10,3 +10,9 @@ If the creator explicitly says the saved rules are outdated, their correction ta
 **Why:** Both whitepaper content and saved project instructions have retained incompatible economic models. Preserving numbers solely because they match the current code or instructions can perpetuate a regression; restoring an entire old file can also undo later wallet and access corrections.
 
 **How to apply:** Audit substantive figures and rules across the landing, app presentation and whitepaper together. Distinguish alignment with an already approved rule from introducing a new economic rule; do not invent allocations, vesting dates or guarantees.
+
+After merging isolated work, compare the result with the most recent approved presentation, not only with the isolated branch's starting point.
+
+**Why:** A merge passed compilation and content audits while undoing recently approved copy limits and mobile styling. Technical validation alone does not establish that editorial and visual approvals were preserved.
+
+**How to apply:** Reconcile conflicting changes at the affected fields or branches, preserving newer approved content elsewhere. Do not restore whole files from an older version just to repair a localized regression.

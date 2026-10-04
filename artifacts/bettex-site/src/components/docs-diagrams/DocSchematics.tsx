@@ -8,8 +8,9 @@ function Arrow() {
   return <svg className="ds-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>;
 }
 
-function Node({ n }: { n: Nd }) {
+function Node({ n, number }: { n: Nd; number?: number }) {
   return <div className={`ds-node ds-node--${n.tone ?? 'blue'}`}>
+    {number !== undefined && <span className="ds-node__n" aria-hidden="true">{number}</span>}
     {n.tag && <em>{n.tag}</em>}
     <strong>{n.t}</strong>
     {n.s && <p>{n.s}</p>}
@@ -18,7 +19,7 @@ function Node({ n }: { n: Nd }) {
 
 function Flow({ nodes, label }: { nodes: Nd[]; label?: string }) {
   return <ol className="ds-flow" aria-label={label} style={{ ['--n' as string]: nodes.length }}>
-    {nodes.map((n, i) => <li key={n.t}><Node n={n} />{i < nodes.length - 1 && <Arrow />}</li>)}
+    {nodes.map((n, i) => <li key={n.t}><Node n={n} number={i + 1} />{i < nodes.length - 1 && <Arrow />}</li>)}
   </ol>;
 }
 

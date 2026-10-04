@@ -27,3 +27,20 @@
   .wd-drop { width:auto; margin-left:16px; border-top:0; }
   .wd-drop::before { display:none; }
 }
+.wd { border-radius: 16px; box-shadow: inset 0 0 0 8px #F4F1E8, inset 0 0 0 9px var(--wd-line); padding: clamp(22px,3vw,34px); }
+.wd-node { border-radius: 14px; }
+.wd-node__tag { border-radius: 6px; background: var(--wd-blue); }
+.whitepaper .wd .wd-node strong { color: var(--wd-ink); }
+.whitepaper .wd .wd-node p, .whitepaper .wd .wd__caption { color: var(--wd-muted); }
+.whitepaper .wd {
+  --wd-ink: #F4F1E8;
+  --wd-muted: #b9c6ee;
+  --wd-line: rgba(95,134,255,.35);
+  --wd-card: #13204F;
+  --wd-blue: #5F86FF;
+  --wd-gold: #F2B632;
+  --wd-teal: #36E0D0;
+  background: #070B1F;
+  border-radius: 22px;
+  box-shadow: inset 0 0 0 8px #070B1F, inset 0 0 0 9px var(--wd-line);
+}

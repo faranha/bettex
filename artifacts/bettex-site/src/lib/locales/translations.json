@@ -1,7 +1,136 @@
 {
-  "Ethereum": { "en": "Ethereum", "es": "Ethereum" },
-  "Arbitrum": { "en": "Arbitrum", "es": "Arbitrum" },
-  "Redes e tecnologias": { "en": "Networks and technologies", "es": "Redes y tecnologías" },
+  "A IA BETTEX orquestra agentes de análise e execução.": {
+    "en": "The BETTEX AI orchestrates analysis and execution agents.",
+    "es": "La IA BETTEX orquesta agentes de análisis y ejecución."
+  },
+  "O token BETTEX dá acesso ao programa de resultados, sem representar ações ou propriedade da tesouraria.": {
+    "en": "The BETTEX token provides access to the results program, without representing shares or ownership of the treasury.",
+    "es": "El token BETTEX da acceso al programa de resultados, sin representar acciones ni propiedad de la tesorería."
+  },
+  "A Carteira BETTEX pertence ao titular, com chaves e dados exportáveis.": {
+    "en": "The BETTEX Wallet belongs to its holder, with exportable keys and data.",
+    "es": "La Cartera BETTEX pertenece a su titular, con claves y datos exportables."
+  },
+  "Registros separados e conciliados para tesouraria, caixa operacional e recompra.": {
+    "en": "Separate, reconciled records for the treasury, operating cash and buybacks.",
+    "es": "Registros separados y conciliados para la tesorería, la caja operativa y las recompras."
+  },
+  "Dados e inferências de várias fontes alimentam a análise da BETTEX.": {
+    "en": "Data and inferences from multiple sources feed BETTEX's analysis.",
+    "es": "Los datos y las inferencias de diversas fuentes alimentan el análisis de BETTEX."
+  },
+  "API Allora": {
+    "en": "Allora API",
+    "es": "API de Allora"
+  },
+  "Análise BETTEX ↔ agentes especializados ↔ tesouraria": {
+    "en": "BETTEX analysis ↔ specialized agents ↔ treasury",
+    "es": "Análisis BETTEX ↔ agentes especializados ↔ tesorería"
+  },
+  "Conciliação → BETTEX": {
+    "en": "Reconciliation → BETTEX",
+    "es": "Conciliación → BETTEX"
+  },
+  "Coordenação nos dois sentidos.": {
+    "en": "Coordination in both directions.",
+    "es": "Coordinación en ambos sentidos."
+  },
+  "Dados e inferências alimentam a análise.": {
+    "en": "Data and inferences feed the analysis.",
+    "es": "Los datos y las inferencias alimentan el análisis."
+  },
+  "Fontes / Allora": {
+    "en": "Sources / Allora",
+    "es": "Fuentes / Allora"
+  },
+  "Insumo de análise.": {
+    "en": "Analysis input.",
+    "es": "Insumo para el análisis."
+  },
+  "Proposta → risco independente → conector autorizado": {
+    "en": "Proposal → independent risk review → authorized connector",
+    "es": "Propuesta → revisión independiente de riesgo → conector autorizado"
+  },
+  "Respostas retornam à orquestradora, à tesouraria e ao histórico.": {
+    "en": "Responses return to the orchestrator, treasury and history.",
+    "es": "Las respuestas vuelven a la orquestadora, la tesorería y el historial."
+  },
+  "Risco independente": {
+    "en": "Independent risk review",
+    "es": "Revisión independiente de riesgo"
+  },
+  "Somente conectores autorizados executam.": {
+    "en": "Only authorized connectors execute.",
+    "es": "Solo ejecutan los conectores autorizados."
+  },
+  "eventual execução → conciliação": {
+    "en": "possible execution → reconciliation",
+    "es": "posible ejecución → conciliación"
+  },
+  "tópico, inferência normalizada e timestamp": {
+    "en": "topic, normalized inference and timestamp",
+    "es": "tema, inferencia normalizada y marca de tiempo"
+  },
+  "validação ou rejeição": {
+    "en": "validation or rejection",
+    "es": "validación o rechazo"
+  },
+  "UMA NOVA FORMA DE JOGAR": {
+    "en": "A NEW WAY TO PLAY",
+    "es": "UNA NUEVA FORMA DE JUGAR"
+  },
+  "Chega de apostar.": {
+    "en": "Stop betting.",
+    "es": "Deja de apostar."
+  },
+  "Comece a investir.": {
+    "en": "Start investing.",
+    "es": "Empieza a invertir."
+  },
+  "Uma comunidade para quem está cansado de perder dinheiro nas apostas.": {
+    "en": "A community for people who are tired of losing money on bets.",
+    "es": "Una comunidad para quienes están cansados de perder dinero en las apuestas."
+  },
+  "Na BETTEX, nossa IA analisa e opera em diferentes mercados. Você faz parte da comunidade e, com nosso token, participa dos lucros elegíveis do projeto.": {
+    "en": "At BETTEX, our AI analyzes and operates in different markets. You're part of the community and, with our token, participate in the project's eligible profits.",
+    "es": "En BETTEX, nuestra IA analiza y opera en diferentes mercados. Formas parte de la comunidad y, con nuestro token, participas en las ganancias elegibles del proyecto."
+  },
+  "manual": {
+    "en": "manual",
+    "es": "manual"
+  },
+  "article.whitepaper__chapter": {
+    "en": "article.whitepaper__chapter",
+    "es": "article.whitepaper__chapter"
+  },
+  "next": {
+    "en": "next",
+    "es": "next"
+  },
+  "prev": {
+    "en": "prev",
+    "es": "prev"
+  },
+  "Capítulo anterior": {
+    "en": "Previous chapter",
+    "es": "Capítulo anterior"
+  },
+  "Próximo capítulo": {
+    "en": "Next chapter",
+    "es": "Siguiente capítulo"
+  },
+  "Ethereum": {
+    "en": "Ethereum",
+    "es": "Ethereum"
+  },
+  "Arbitrum": {
+    "en": "Arbitrum",
+    "es": "Arbitrum"
+  },
+  "Redes e tecnologias": {
+    "en": "Networks and technologies",
+    "es": "Redes y tecnologías"
+  },
   "IA e robôs vão substituir empregos e transferir a geração de valor para sistemas automatizados.": {
     "en": "AI and robots will replace jobs and shift value creation to automated systems.",
     "es": "La IA y los robots van a sustituir empleos y trasladar la creación de valor a sistemas automatizados."
@@ -26,13 +155,22 @@
     "en": "*Without profit there is no distribution, and you don't lose your tokens.",
     "es": "*Sin ganancias no hay distribución y no pierdes tus tokens."
   },
-  "Quando houver lucro elegível,": { "en": "When there is eligible profit,", "es": "Cuando haya ganancias elegibles," },
-  "você recebe sua parte.": { "en": "you receive your share.", "es": "recibes tu parte." },
+  "Quando houver lucro elegível,": {
+    "en": "When there is eligible profit,",
+    "es": "Cuando haya ganancias elegibles,"
+  },
+  "você recebe sua parte.": {
+    "en": "you receive your share.",
+    "es": "recibes tu parte."
+  },
   "Compre BETTEX e participe dos lucros do projeto.": {
     "en": "Buy BETTEX and participate in the project's profits.",
     "es": "Compra BETTEX y participa en las ganancias del proyecto."
   },
-  "Compre": { "en": "Buy", "es": "Compra" },
+  "Compre": {
+    "en": "Buy",
+    "es": "Compra"
+  },
   "Faça sua compra pelo aplicativo e acompanhe seus tokens.": {
     "en": "Buy through the app and keep track of your tokens.",
     "es": "Compra desde la aplicación y sigue tus tokens."
@@ -41,38 +179,134 @@
     "en": "Present the project to angel investors. Investigate the project's legal and regulatory requirements and prepare its technical foundation: architecture, contracts, security and integrations. Structure the BETTEX ecosystem for the technical and legal validations needed before launch.",
     "es": "Presentar el proyecto a inversores ángeles. Investigar los requisitos legales y regulatorios del proyecto y preparar su base técnica: arquitectura, contratos, seguridad e integraciones. Estructurar el ecosistema BETTEX para las validaciones técnicas y jurídicas necesarias antes del lanzamiento."
   },
-  "Recursos e riscos": { "en": "Funding and risks", "es": "Financiación y riesgos" },
-  "Ver a pesquisa": { "en": "View the research", "es": "Ver la investigación" },
-  "Como participa": { "en": "How to participate", "es": "Cómo participar" },
-  "Primeiros usuários": { "en": "First users", "es": "Primeros usuarios" },
-  "Tecnologia de investimento para apostadores brasileiros,": { "en": "Investment technology for Brazilian bettors,", "es": "Tecnología de inversión para apostadores brasileños," },
-  "gerida por IA.": { "en": "managed by AI.", "es": "gestionada por IA." },
-  "A BETTEX reúne o capital em uma tesouraria com estratégias geridas por IA, limites de risco e supervisão humana. Com o token BETTEX, você participa dessas estratégias sem escolher ou executar cada operação. Pelo aplicativo, acompanha saldo, resultados e custos. Quando há lucro elegível e as condições de distribuição são atendidas, sua participação é paga em USDC, conforme as regras de staking.": { "en": "BETTEX pools capital in a treasury with AI-managed strategies, risk limits and human oversight. With the BETTEX token, you participate in these strategies without selecting or executing each trade. Through the app, you track your balance, results and costs. When there is eligible profit and the distribution conditions are met, your share is paid in USDC according to the staking rules.", "es": "BETTEX reúne el capital en una tesorería con estrategias gestionadas por IA, límites de riesgo y supervisión humana. Con el token BETTEX, participas en estas estrategias sin elegir ni ejecutar cada operación. Desde la aplicación, consultas tu saldo, los resultados y los costes. Cuando hay beneficios elegibles y se cumplen las condiciones de distribución, tu parte se paga en USDC conforme a las reglas de staking." },
-  "Cérebro representando a inteligência artificial da BETTEX": { "en": "Brain representing BETTEX artificial intelligence", "es": "Cerebro que representa la inteligencia artificial de BETTEX" },
-  "Fundador da BETTEX": { "en": "Founder of BETTEX", "es": "Fundador de BETTEX" },
-  "Ver o LinkedIn de Fred Azevedo": { "en": "View Fred Azevedo's LinkedIn profile", "es": "Ver el perfil de Fred Azevedo en LinkedIn" },
-  "mais de {0}": { "en": "more than {0}", "es": "más de {0}" },
-  "Telegram": { "en": "Telegram", "es": "Telegram" },
-  "Telegram, Instagram, YouTube, X": { "en": "Telegram, Instagram, YouTube, X", "es": "Telegram, Instagram, YouTube, X" },
-  "Telegram, Instagram, YouTube e X": { "en": "Telegram, Instagram, YouTube and X", "es": "Telegram, Instagram, YouTube y X" },
-  "A IA e a robótica vão substituir uma parcela crescente do trabalho humano, inclusive profissões de colarinho branco, além de tarefas físicas executadas por robôs humanoides. Esse cenário pode causar desemprego e deslocar a geração de valor do trabalho das pessoas para sistemas automatizados.": { "en": "AI and robotics will replace a growing share of human work, including white-collar jobs and physical tasks performed by humanoid robots. This scenario could cause unemployment and shift value creation from people's work to automated systems.", "es": "La IA y la robótica sustituirán una parte creciente del trabajo humano, incluidas las profesiones de cuello blanco y las tareas físicas realizadas por robots humanoides. Este escenario puede provocar desempleo y trasladar la generación de valor del trabajo de las personas a los sistemas automatizados." },
-  "{0} a {1}% de engajamento": { "en": "{0} to {1}% engagement", "es": "{0} a {1}% de interacción" },
-  "Apostar": { "en": "Betting", "es": "Apostar" },
-  "não é investir.": { "en": "is not investing.", "es": "no es invertir." },
-  "Parte dos apostadores brasileiros busca nas apostas uma forma de ganhar ou juntar dinheiro.": { "en": "Some Brazilian bettors turn to betting as a way to make or save money.", "es": "Parte de quienes apuestan en Brasil busca en las apuestas una forma de ganar o ahorrar dinero." },
-  "A BETTEX se dirige ao adulto no Brasil que quer sair dessa lógica: deixar de escolher apostas isoladas e começar a participar de estratégias de investimento geridas por IA.": { "en": "BETTEX is aimed at adults in Brazil who want to move away from this approach: stop choosing individual bets and start participating in AI-managed investment strategies.", "es": "BETTEX se dirige a los adultos en Brasil que quieren salir de esa lógica: dejar de elegir apuestas individuales y empezar a participar en estrategias de inversión gestionadas por IA." },
-  "A pesquisa ANBIMA/Datafolha ouviu 5.832 pessoas de 16 anos ou mais no Brasil. O primeiro número descreve a participação em apostas online; os outros dois mostram motivações declaradas pelos apostadores pesquisados.": { "en": "The ANBIMA/Datafolha survey interviewed 5,832 people aged 16 or over in Brazil. The first figure describes participation in online betting; the other two show motivations reported by the bettors surveyed.", "es": "La encuesta ANBIMA/Datafolha entrevistó a 5.832 personas de 16 años o más en Brasil. La primera cifra describe la participación en apuestas en línea; las otras dos muestran motivaciones declaradas por las personas encuestadas que apostaban." },
-  "Brasileiros de 16 anos ou mais": { "en": "Brazilians aged 16 or over", "es": "Brasileños de 16 años o más" },
-  "Entre os apostadores pesquisados": { "en": "Among the bettors surveyed", "es": "Entre las personas encuestadas que apostaban" },
-  "buscavam dinheiro rápido em caso de necessidade": { "en": "sought quick money in times of need", "es": "buscaban dinero rápido en caso de necesidad" },
-  "viam apostas como investir ou juntar dinheiro": { "en": "saw betting as investing or saving money", "es": "veían las apuestas como una forma de invertir o ahorrar dinero" },
-  "Para apostadores adultos no Brasil": { "en": "For adult bettors in Brazil", "es": "Para adultos que apuestan en Brasil" },
-  "Para quem quer deixar as apostas e começar a investir.": { "en": "For people who want to stop betting and start investing.", "es": "Para quienes quieren dejar las apuestas y empezar a invertir." },
-  "Público-alvo": { "en": "Target audience", "es": "Público objetivo" },
-  "Para quem é a BETTEX?": { "en": "Who is BETTEX for?", "es": "¿Para quién es BETTEX?" },
-  "O apostador brasileiro adulto que quer deixar as apostas e começar a investir.": { "en": "Adult Brazilian bettors who want to stop betting and start investing.", "es": "Los adultos brasileños que apuestan y quieren dejar las apuestas y empezar a invertir." },
-  "Em vez de escolher apostas isoladas, a proposta é participar, via token, de uma tesouraria com estratégias de investimento geridas por IA.": { "en": "Instead of choosing individual bets, the proposal is to participate, through a token, in a treasury with AI-managed investment strategies.", "es": "En lugar de elegir apuestas individuales, la propuesta es participar, mediante un token, en una tesorería con estrategias de inversión gestionadas por IA." },
-  "O mercado inicial é o Brasil. A estratégia de aquisição começa pela audiência e comunidade de Fred Azevedo, fundador do SOS Jogador, com a meta dos primeiros 1.000 usuários.": { "en": "The initial market is Brazil. The acquisition strategy starts with the audience and community of Fred Azevedo, founder of Player SOS, with a goal of reaching the first 1,000 users.", "es": "El mercado inicial es Brasil. La estrategia de adquisición comienza con la audiencia y la comunidad de Fred Azevedo, fundador de SOS Jugador, con la meta de alcanzar los primeros 1.000 usuarios." },
+  "Recursos e riscos": {
+    "en": "Funding and risks",
+    "es": "Financiación y riesgos"
+  },
+  "Ver a pesquisa": {
+    "en": "View the research",
+    "es": "Ver la investigación"
+  },
+  "Como participa": {
+    "en": "How to participate",
+    "es": "Cómo participar"
+  },
+  "Primeiros usuários": {
+    "en": "First users",
+    "es": "Primeros usuarios"
+  },
+  "Tecnologia de investimento para apostadores brasileiros,": {
+    "en": "Investment technology for Brazilian bettors,",
+    "es": "Tecnología de inversión para apostadores brasileños,"
+  },
+  "gerida por IA.": {
+    "en": "managed by AI.",
+    "es": "gestionada por IA."
+  },
+  "A BETTEX reúne o capital em uma tesouraria com estratégias geridas por IA, limites de risco e supervisão humana. Com o token BETTEX, você participa dessas estratégias sem escolher ou executar cada operação. Pelo aplicativo, acompanha saldo, resultados e custos. Quando há lucro elegível e as condições de distribuição são atendidas, sua participação é paga em USDC, conforme as regras de staking.": {
+    "en": "BETTEX pools capital in a treasury with AI-managed strategies, risk limits and human oversight. With the BETTEX token, you participate in these strategies without selecting or executing each trade. Through the app, you track your balance, results and costs. When there is eligible profit and the distribution conditions are met, your share is paid in USDC according to the staking rules.",
+    "es": "BETTEX reúne el capital en una tesorería con estrategias gestionadas por IA, límites de riesgo y supervisión humana. Con el token BETTEX, participas en estas estrategias sin elegir ni ejecutar cada operación. Desde la aplicación, consultas tu saldo, los resultados y los costes. Cuando hay beneficios elegibles y se cumplen las condiciones de distribución, tu parte se paga en USDC conforme a las reglas de staking."
+  },
+  "Cérebro representando a inteligência artificial da BETTEX": {
+    "en": "Brain representing BETTEX artificial intelligence",
+    "es": "Cerebro que representa la inteligencia artificial de BETTEX"
+  },
+  "Fundador da BETTEX": {
+    "en": "Founder of BETTEX",
+    "es": "Fundador de BETTEX"
+  },
+  "Ver o LinkedIn de Fred Azevedo": {
+    "en": "View Fred Azevedo's LinkedIn profile",
+    "es": "Ver el perfil de Fred Azevedo en LinkedIn"
+  },
+  "mais de {0}": {
+    "en": "more than {0}",
+    "es": "más de {0}"
+  },
+  "Telegram": {
+    "en": "Telegram",
+    "es": "Telegram"
+  },
+  "Telegram, Instagram, YouTube, X": {
+    "en": "Telegram, Instagram, YouTube, X",
+    "es": "Telegram, Instagram, YouTube, X"
+  },
+  "Telegram, Instagram, YouTube e X": {
+    "en": "Telegram, Instagram, YouTube and X",
+    "es": "Telegram, Instagram, YouTube y X"
+  },
+  "A IA e a robótica vão substituir uma parcela crescente do trabalho humano, inclusive profissões de colarinho branco, além de tarefas físicas executadas por robôs humanoides. Esse cenário pode causar desemprego e deslocar a geração de valor do trabalho das pessoas para sistemas automatizados.": {
+    "en": "AI and robotics will replace a growing share of human work, including white-collar jobs and physical tasks performed by humanoid robots. This scenario could cause unemployment and shift value creation from people's work to automated systems.",
+    "es": "La IA y la robótica sustituirán una parte creciente del trabajo humano, incluidas las profesiones de cuello blanco y las tareas físicas realizadas por robots humanoides. Este escenario puede provocar desempleo y trasladar la generación de valor del trabajo de las personas a los sistemas automatizados."
+  },
+  "{0} a {1}% de engajamento": {
+    "en": "{0} to {1}% engagement",
+    "es": "{0} a {1}% de interacción"
+  },
+  "Apostar": {
+    "en": "Betting",
+    "es": "Apostar"
+  },
+  "não é investir.": {
+    "en": "is not investing.",
+    "es": "no es invertir."
+  },
+  "Parte dos apostadores brasileiros busca nas apostas uma forma de ganhar ou juntar dinheiro.": {
+    "en": "Some Brazilian bettors turn to betting as a way to make or save money.",
+    "es": "Parte de quienes apuestan en Brasil busca en las apuestas una forma de ganar o ahorrar dinero."
+  },
+  "A BETTEX se dirige ao adulto no Brasil que quer sair dessa lógica: deixar de escolher apostas isoladas e começar a participar de estratégias de investimento geridas por IA.": {
+    "en": "BETTEX is aimed at adults in Brazil who want to move away from this approach: stop choosing individual bets and start participating in AI-managed investment strategies.",
+    "es": "BETTEX se dirige a los adultos en Brasil que quieren salir de esa lógica: dejar de elegir apuestas individuales y empezar a participar en estrategias de inversión gestionadas por IA."
+  },
+  "A pesquisa ANBIMA/Datafolha ouviu 5.832 pessoas de 16 anos ou mais no Brasil. O primeiro número descreve a participação em apostas online; os outros dois mostram motivações declaradas pelos apostadores pesquisados.": {
+    "en": "The ANBIMA/Datafolha survey interviewed 5,832 people aged 16 or over in Brazil. The first figure describes participation in online betting; the other two show motivations reported by the bettors surveyed.",
+    "es": "La encuesta ANBIMA/Datafolha entrevistó a 5.832 personas de 16 años o más en Brasil. La primera cifra describe la participación en apuestas en línea; las otras dos muestran motivaciones declaradas por las personas encuestadas que apostaban."
+  },
+  "Brasileiros de 16 anos ou mais": {
+    "en": "Brazilians aged 16 or over",
+    "es": "Brasileños de 16 años o más"
+  },
+  "Entre os apostadores pesquisados": {
+    "en": "Among the bettors surveyed",
+    "es": "Entre las personas encuestadas que apostaban"
+  },
+  "buscavam dinheiro rápido em caso de necessidade": {
+    "en": "sought quick money in times of need",
+    "es": "buscaban dinero rápido en caso de necesidad"
+  },
+  "viam apostas como investir ou juntar dinheiro": {
+    "en": "saw betting as investing or saving money",
+    "es": "veían las apuestas como una forma de invertir o ahorrar dinero"
+  },
+  "Para apostadores adultos no Brasil": {
+    "en": "For adult bettors in Brazil",
+    "es": "Para adultos que apuestan en Brasil"
+  },
+  "Para quem quer deixar as apostas e começar a investir.": {
+    "en": "For people who want to stop betting and start investing.",
+    "es": "Para quienes quieren dejar las apuestas y empezar a invertir."
+  },
+  "Público-alvo": {
+    "en": "Target audience",
+    "es": "Público objetivo"
+  },
+  "Para quem é a BETTEX?": {
+    "en": "Who is BETTEX for?",
+    "es": "¿Para quién es BETTEX?"
+  },
+  "O apostador brasileiro adulto que quer deixar as apostas e começar a investir.": {
+    "en": "Adult Brazilian bettors who want to stop betting and start investing.",
+    "es": "Los adultos brasileños que apuestan y quieren dejar las apuestas y empezar a invertir."
+  },
+  "Em vez de escolher apostas isoladas, a proposta é participar, via token, de uma tesouraria com estratégias de investimento geridas por IA.": {
+    "en": "Instead of choosing individual bets, the proposal is to participate, through a token, in a treasury with AI-managed investment strategies.",
+    "es": "En lugar de elegir apuestas individuales, la propuesta es participar, mediante un token, en una tesorería con estrategias de inversión gestionadas por IA."
+  },
+  "O mercado inicial é o Brasil. A estratégia de aquisição começa pela audiência e comunidade de Fred Azevedo, fundador do SOS Jogador, com a meta dos primeiros 1.000 usuários.": {
+    "en": "The initial market is Brazil. The acquisition strategy starts with the audience and community of Fred Azevedo, founder of Player SOS, with a goal of reaching the first 1,000 users.",
+    "es": "El mercado inicial es Brasil. La estrategia de adquisición comienza con la audiencia y la comunidad de Fred Azevedo, fundador de SOS Jugador, con la meta de alcanzar los primeros 1.000 usuarios."
+  },
   "A BETTEX chegou para te ajudar a atravessar grandes períodos de incerteza.": {
     "en": "BETTEX is here to help you through long periods of uncertainty.",
     "es": "BETTEX llegó para ayudarte a atravesar largos períodos de incertidumbre."
@@ -101,21 +335,54 @@
     "en": "With BETTEX, you share in profits from AI-managed strategies, following the project's rules. Technology can work in your favor too.",
     "es": "Con BETTEX, participas en las ganancias de estrategias gestionadas por IA, siguiendo las reglas del proyecto. La tecnología también puede trabajar a tu favor."
   },
-  "Retrato de Fred Azevedo, fundador da BETTEX": { "en": "Portrait of Fred Azevedo, founder of BETTEX", "es": "Retrato de Fred Azevedo, fundador de BETTEX" },
-  "markets": { "en": "markets", "es": "markets" },
-  "LinkedIn": { "en": "LinkedIn", "es": "LinkedIn" },
-  "Redes de Fred Azevedo": { "en": "Fred Azevedo's social profiles", "es": "Redes sociales de Fred Azevedo" },
-  "Redes do fundador": { "en": "Founder's social profiles", "es": "Redes sociales del fundador" },
+  "Retrato de Fred Azevedo, fundador da BETTEX": {
+    "en": "Portrait of Fred Azevedo, founder of BETTEX",
+    "es": "Retrato de Fred Azevedo, fundador de BETTEX"
+  },
+  "markets": {
+    "en": "markets",
+    "es": "markets"
+  },
+  "LinkedIn": {
+    "en": "LinkedIn",
+    "es": "LinkedIn"
+  },
+  "Redes de Fred Azevedo": {
+    "en": "Fred Azevedo's social profiles",
+    "es": "Redes sociales de Fred Azevedo"
+  },
+  "Redes do fundador": {
+    "en": "Founder's social profiles",
+    "es": "Redes sociales del fundador"
+  },
   ". A audiência dos canais se sobrepõe e não equivale a clientes; conversão e retenção da BETTEX serão medidas por coorte.": {
     "en": ". Channel audiences overlap and are not customers; BETTEX conversion and retention will be measured by cohort.",
     "es": ". Las audiencias de los canales se superponen y no equivalen a clientes; la conversión y la retención de BETTEX se medirán por cohorte."
   },
-  "1 bilhão de BETTEX.": { "en": "1 billion BETTEX.", "es": "1.000 millones de BETTEX." },
-  "100% para a tesouraria": { "en": "100% to the treasury", "es": "100% a la tesorería" },
-  "100% para o caixa operacional": { "en": "100% to operating funds", "es": "100% a los fondos operativos" },
-  "15% · 150 milhões": { "en": "15% · 150 million", "es": "15% · 150 millones" },
-  "20% · 200 milhões": { "en": "20% · 200 million", "es": "20% · 200 millones" },
-  "65% · 650 milhões": { "en": "65% · 650 million", "es": "65% · 650 millones" },
+  "1 bilhão de BETTEX.": {
+    "en": "1 billion BETTEX.",
+    "es": "1.000 millones de BETTEX."
+  },
+  "100% para a tesouraria": {
+    "en": "100% to the treasury",
+    "es": "100% a la tesorería"
+  },
+  "100% para o caixa operacional": {
+    "en": "100% to operating funds",
+    "es": "100% a los fondos operativos"
+  },
+  "15% · 150 milhões": {
+    "en": "15% · 150 million",
+    "es": "15% · 150 millones"
+  },
+  "20% · 200 milhões": {
+    "en": "20% · 200 million",
+    "es": "20% · 200 millones"
+  },
+  "65% · 650 milhões": {
+    "en": "65% · 650 million",
+    "es": "65% · 650 millones"
+  },
   "A BETTEX reúne capital em uma tesouraria de estratégias geridas por IA. O token permite participar do lucro elegível em USDC, conforme as regras de staking, sem operar cada investimento por conta própria.": {
     "en": "BETTEX pools capital in a treasury of AI-managed strategies. The token enables participation in eligible profit in USDC under the staking rules, without managing each investment yourself.",
     "es": "BETTEX reúne capital en una tesorería de estrategias gestionadas por IA. El token permite participar en las ganancias elegibles en USDC, según las reglas de staking, sin gestionar cada inversión por cuenta propia."
@@ -124,15 +391,30 @@
     "en": "Management authorises buybacks, preserving multisig controls; these are not automatic daily purchases. Unused dedicated funds accumulate and do not finance strategies or expenses. The destination of acquired tokens remains undecided. The token is not a share, does not confer ownership of assets and does not guarantee redemption.",
     "es": "La administración autoriza las recompras, manteniendo los controles multifirma; no son compras diarias automáticas. El saldo exclusivo no utilizado se acumula y no financia estrategias ni gastos. El destino de los tokens adquiridos sigue pendiente. El token no es una acción, no otorga propiedad del patrimonio ni garantiza el rescate."
   },
-  "A diferença está": { "en": "The difference lies", "es": "La diferencia está" },
+  "A diferença está": {
+    "en": "The difference lies",
+    "es": "La diferencia está"
+  },
   "A tarifa de US$ 2,50 é receita bruta da empresa, antes de custos e tributos, fora do split do lucro da tesouraria.": {
     "en": "The US$2.50 fee is gross company revenue, before costs and taxes, outside the treasury profit split.",
     "es": "La tarifa de US$2,50 es ingreso bruto de la empresa, antes de costos e impuestos, fuera del reparto de las ganancias de la tesorería."
   },
-  "Acompanha a operação": { "en": "Follows the operation", "es": "Sigue la operación" },
-  "Alternativa": { "en": "Alternative", "es": "Alternativa" },
-  "Aporte vinculado a tokens": { "en": "Token-linked funding", "es": "Aporte vinculado a tokens" },
-  "Aposta individual": { "en": "Individual bet", "es": "Apuesta individual" },
+  "Acompanha a operação": {
+    "en": "Follows the operation",
+    "es": "Sigue la operación"
+  },
+  "Alternativa": {
+    "en": "Alternative",
+    "es": "Alternativa"
+  },
+  "Aporte vinculado a tokens": {
+    "en": "Token-linked funding",
+    "es": "Aporte vinculado a tokens"
+  },
+  "Aposta individual": {
+    "en": "Individual bet",
+    "es": "Apuesta individual"
+  },
   "Após as validações jurídicas e de segurança, medir ativação, retenção D7/D30, receita de serviços e custo de operação em uma coorte limitada.": {
     "en": "After legal and security validation, measure activation, D7/D30 retention, service revenue and operating costs in a limited cohort.",
     "es": "Tras las validaciones jurídicas y de seguridad, medir activación, retención D7/D30, ingresos por servicios y costos operativos en una cohorte limitada."
@@ -149,7 +431,10 @@
     "en": "Start with authorised data and prediction-market simulations. Measure results after costs against a benchmark and validate the user journey and reconciliation.",
     "es": "Comenzar con datos autorizados y simulación en mercados de predicción. Medir el resultado tras costos frente a una referencia y validar el recorrido del usuario y la conciliación."
   },
-  "Como o cliente participa": { "en": "How the customer participates", "es": "Cómo participa el cliente" },
+  "Como o cliente participa": {
+    "en": "How the customer participates",
+    "es": "Cómo participa el cliente"
+  },
   "Consulta resultados, custos, alocações e registros de conciliação previstos no modelo.": {
     "en": "Reviews the results, costs, allocations and reconciliation records envisaged in the model.",
     "es": "Consulta los resultados, costos, asignaciones y registros de conciliación previstos en el modelo."
@@ -158,18 +443,30 @@
     "en": "Demand, strategy and commercial economics: three validations before expansion.",
     "es": "Demanda, estrategia y economía comercial: tres validaciones antes de la expansión."
   },
-  "Depois, expansão por evidência.": { "en": "Then, evidence-led expansion.", "es": "Después, expansión basada en evidencia." },
+  "Depois, expansão por evidência.": {
+    "en": "Then, evidence-led expansion.",
+    "es": "Después, expansión basada en evidencia."
+  },
   "Exemplo ilustrativo: 10.000 USDC de lucro elegível destinam 5.000 à tesouraria, 2.500 ao pool global dos stakers e 2.500 à carteira de recompra. Os 25% não são uma taxa de retorno individual. Sem peso elegível ou condições de reserva e liquidez, não há split: 100% fica retido. Rodadas encerradas não acumulam direitos a lucros futuros.": {
     "en": "Illustrative example: 10,000 USDC of eligible profit allocates 5,000 to the treasury, 2,500 to the global staker pool and 2,500 to the buyback wallet. The 25% is not an individual rate of return. Without eligible weight or the required reserve and liquidity conditions, there is no split: 100% is retained. Closed rounds do not carry forward rights to future profits.",
     "es": "Ejemplo ilustrativo: 10.000 USDC de ganancias elegibles asignan 5.000 a la tesorería, 2.500 al fondo global de stakers y 2.500 a la cartera de recompra. El 25% no es una tasa de retorno individual. Sin peso elegible o las condiciones de reserva y liquidez, no hay reparto: se retiene el 100%. Las rondas cerradas no acumulan derechos a ganancias futuras."
   },
-  "Experiência de aquisição": { "en": "Acquisition experience", "es": "Experiencia de adquisición" },
+  "Experiência de aquisição": {
+    "en": "Acquisition experience",
+    "es": "Experiencia de adquisición"
+  },
   "Financiamento inicial para validar produto, estratégia e aquisição; valor e termos ainda em estruturação.": {
     "en": "Initial funding to validate the product, strategy and acquisition; the amount and terms are still being structured.",
     "es": "Financiación inicial para validar producto, estrategia y adquisición; el importe y los términos aún están en estructuración."
   },
-  "Financiar o produto": { "en": "Funding the product", "es": "Financiar el producto" },
-  "Liberação": { "en": "Release", "es": "Liberación" },
+  "Financiar o produto": {
+    "en": "Funding the product",
+    "es": "Financiar el producto"
+  },
+  "Liberação": {
+    "en": "Release",
+    "es": "Liberación"
+  },
   "Livre destinação após a liberação, sem antecipação do vesting.": {
     "en": "Free allocation after release, without accelerating vesting.",
     "es": "Libre destino después de la liberación, sin anticipar el vesting."
@@ -178,17 +475,26 @@
     "en": "Measure specific intent, understanding of rights and willingness to pay the fee at the expected transaction sizes.",
     "es": "Medir intención específica, comprensión de los derechos y disposición a pagar la tarifa para los importes previstos."
   },
-  "Meta inicial: primeiros": { "en": "Initial goal: the first", "es": "Meta inicial: los primeros" },
+  "Meta inicial: primeiros": {
+    "en": "Initial goal: the first",
+    "es": "Meta inicial: los primeros"
+  },
   "Metade financia o desenvolvimento inicial; metade vai para a tesouraria. É a regra para aportes vinculados aos tokens dos investidores, não para qualquer rodada societária.": {
     "en": "Half funds initial development; half goes to the treasury. This is the rule for funding linked to investor tokens, not for every equity round.",
     "es": "La mitad financia el desarrollo inicial; la otra mitad va a la tesorería. Es la regla para aportes vinculados a los tokens de los inversores, no para cualquier ronda de capital."
   },
-  "O capital deve financiar": { "en": "Capital should fund", "es": "El capital debe financiar" },
+  "O capital deve financiar": {
+    "en": "Capital should fund",
+    "es": "El capital debe financiar"
+  },
   "O cliente participa do resultado da estratégia, sem escolher cada aposta ou depender apenas da revenda do token.": {
     "en": "The customer participates in the strategy's results, without choosing each bet or relying solely on reselling the token.",
     "es": "El cliente participa en el resultado de la estrategia, sin elegir cada apuesta ni depender únicamente de la reventa del token."
   },
-  "O dinheiro da empresa": { "en": "Company funds", "es": "El dinero de la empresa" },
+  "O dinheiro da empresa": {
+    "en": "Company funds",
+    "es": "El dinero de la empresa"
+  },
   "O preço da venda pública primária vai integralmente à tesouraria; a tarifa de serviço é separada.": {
     "en": "The primary public-sale price goes entirely to the treasury; the service fee is separate.",
     "es": "El precio de la venta pública primaria va íntegramente a la tesorería; la tarifa de servicio es independiente."
@@ -213,35 +519,86 @@
     "en": "The token combines conditional participation in eligible strategy profit with the possibility of resale, subject to price and liquidity risk.",
     "es": "El token combina participación condicionada en las ganancias elegibles de las estrategias y posibilidad de reventa, con riesgo de precio y liquidez."
   },
-  "Oferta e direitos do token": { "en": "Token supply and rights", "es": "Oferta y derechos del token" },
-  "Oferta, vesting e direitos na documentação": { "en": "Supply, vesting and rights in the documentation", "es": "Oferta, vesting y derechos en la documentación" },
-  "Parcelas mensais durante 36 meses": { "en": "Monthly releases over 36 months", "es": "Liberaciones mensuales durante 36 meses" },
-  "Participa pelo staking": { "en": "Participates through staking", "es": "Participa mediante staking" },
-  "Participação": { "en": "Participation", "es": "Participación" },
-  "Participação nos lucros por token.": { "en": "Profit participation through a token.", "es": "Participación en las ganancias mediante un token." },
-  "Participação nos resultados": { "en": "Participation in results", "es": "Participación en los resultados" },
-  "Pool global, rateado pelo peso elegível.": { "en": "Global pool, allocated by eligible weight.", "es": "Fondo global, repartido según el peso elegible." },
-  "Primeiros 1.000 usuários no Brasil.": { "en": "First 1,000 users in Brazil.", "es": "Primeros 1.000 usuarios en Brasil." },
-  "Público": { "en": "Public", "es": "Público" },
+  "Oferta e direitos do token": {
+    "en": "Token supply and rights",
+    "es": "Oferta y derechos del token"
+  },
+  "Oferta, vesting e direitos na documentação": {
+    "en": "Supply, vesting and rights in the documentation",
+    "es": "Oferta, vesting y derechos en la documentación"
+  },
+  "Parcelas mensais durante 36 meses": {
+    "en": "Monthly releases over 36 months",
+    "es": "Liberaciones mensuales durante 36 meses"
+  },
+  "Participa pelo staking": {
+    "en": "Participates through staking",
+    "es": "Participa mediante staking"
+  },
+  "Participação": {
+    "en": "Participation",
+    "es": "Participación"
+  },
+  "Participação nos lucros por token.": {
+    "en": "Profit participation through a token.",
+    "es": "Participación en las ganancias mediante un token."
+  },
+  "Participação nos resultados": {
+    "en": "Participation in results",
+    "es": "Participación en los resultados"
+  },
+  "Pool global, rateado pelo peso elegível.": {
+    "en": "Global pool, allocated by eligible weight.",
+    "es": "Fondo global, repartido según el peso elegible."
+  },
+  "Primeiros 1.000 usuários no Brasil.": {
+    "en": "First 1,000 users in Brazil.",
+    "es": "Primeros 1.000 usuarios en Brasil."
+  },
+  "Público": {
+    "en": "Public",
+    "es": "Público"
+  },
   "Quando a rodada diária atende às condições de lucro, reserva e liquidez, recebe sua parcela do pool dos stakers.": {
     "en": "When the daily round meets profit, reserve and liquidity conditions, receives their share of the staker pool.",
     "es": "Cuando la ronda diaria cumple las condiciones de ganancias, reserva y liquidez, recibe su parte del fondo de stakers."
   },
-  "Recebe em USDC": { "en": "Receives USDC", "es": "Recibe en USDC" },
-  "Retenção e reinvestimento.": { "en": "Retention and reinvestment.", "es": "Retención y reinversión." },
-  "Stakers": { "en": "Stakers", "es": "Stakers" },
+  "Recebe em USDC": {
+    "en": "Receives USDC",
+    "es": "Recibe en USDC"
+  },
+  "Retenção e reinvestimento.": {
+    "en": "Retention and reinvestment.",
+    "es": "Retención y reinversión."
+  },
+  "Stakers": {
+    "en": "Stakers",
+    "es": "Stakers"
+  },
   "Só há lucro elegível após custos reais, tributos, obrigações, avaliação das posições abertas, reservas e liquidez.": {
     "en": "Profit is eligible only after actual costs, taxes, obligations, open-position valuation, reserves and liquidity requirements.",
     "es": "Solo hay ganancias elegibles después de costos reales, impuestos, obligaciones, valoración de posiciones abiertas y requisitos de reserva y liquidez."
   },
-  "Tarifas de serviço": { "en": "Service fees", "es": "Tarifas de servicio" },
+  "Tarifas de serviço": {
+    "en": "Service fees",
+    "es": "Tarifas de servicio"
+  },
   "Todas as alocações começam a liberar no mês da abertura da venda pública e terminam no mês 36. Liberação não significa venda realizada nem início dos investimentos.": {
     "en": "All allocations begin releasing in the month the public sale opens and finish in month 36. Release does not mean a completed sale or the start of investments.",
     "es": "Todas las asignaciones empiezan a liberarse en el mes de apertura de la venta pública y terminan en el mes 36. Liberación no significa venta realizada ni inicio de las inversiones."
   },
-  "Token": { "en": "Token", "es": "Token" },
-  "Token centrado no preço": { "en": "Price-driven token", "es": "Token centrado en el precio" },
-  "Token disponível × tempo elegível": { "en": "Available tokens × eligible time", "es": "Tokens disponibles × tiempo elegible" },
+  "Token": {
+    "en": "Token",
+    "es": "Token"
+  },
+  "Token centrado no preço": {
+    "en": "Price-driven token",
+    "es": "Token centrado en el precio"
+  },
+  "Token disponível × tempo elegível": {
+    "en": "Available tokens × eligible time",
+    "es": "Tokens disponibles × tiempo elegible"
+  },
   "Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. A liberação de novos tokens pode alterar a participação individual; fundador e investidores seguem os mesmos critérios.": {
     "en": "Locked tokens, public-sale inventory and unavailable balances are excluded from allocations. Releasing new tokens may change individual participation; the founder and investors follow the same criteria.",
     "es": "Los tokens bloqueados, el inventario de venta pública y los saldos no disponibles quedan fuera del reparto. La liberación de nuevos tokens puede alterar la participación individual; el fundador y los inversores siguen los mismos criterios."
@@ -254,19 +611,58 @@
     "en": "Tokens linked to initial funding under the round's terms.",
     "es": "Tokens vinculados a la financiación inicial, según los términos de la ronda."
   },
-  "Três alocações.": { "en": "Three allocations.", "es": "Tres asignaciones." },
-  "USDC exclusivo para recompras autorizadas.": { "en": "USDC reserved for authorised buybacks.", "es": "USDC exclusivo para recompras autorizadas." },
-  "Um fundo de investimentos gerido por IA.": { "en": "An AI-managed investment fund.", "es": "Un fondo de inversión gestionado por IA." },
-  "Validar a operação comercial": { "en": "Validate commercial operations", "es": "Validar la operación comercial" },
-  "Validar demanda": { "en": "Validate demand", "es": "Validar la demanda" },
-  "Validar produto e estratégia": { "en": "Validate the product and strategy", "es": "Validar producto y estrategia" },
-  "Venda pública primária": { "en": "Primary public sale", "es": "Venta pública primaria" },
-  "e a tesouraria inicial.": { "en": "and the initial treasury.", "es": "y la tesorería inicial." },
-  "e canais próprios.": { "en": "and owned channels.", "es": "y canales propios." },
-  "evidência.": { "en": "evidence.", "es": "evidencia." },
-  "no direito econômico.": { "en": "in the economic right.", "es": "en el derecho económico." },
-  "não se mistura ao da tesouraria.": { "en": "are kept separate from treasury funds.", "es": "no se mezcla con el de la tesorería." },
-  "token": { "en": "token", "es": "token" },
+  "Três alocações.": {
+    "en": "Three allocations.",
+    "es": "Tres asignaciones."
+  },
+  "USDC exclusivo para recompras autorizadas.": {
+    "en": "USDC reserved for authorised buybacks.",
+    "es": "USDC exclusivo para recompras autorizadas."
+  },
+  "Um fundo de investimentos gerido por IA.": {
+    "en": "An AI-managed investment fund.",
+    "es": "Un fondo de inversión gestionado por IA."
+  },
+  "Validar a operação comercial": {
+    "en": "Validate commercial operations",
+    "es": "Validar la operación comercial"
+  },
+  "Validar demanda": {
+    "en": "Validate demand",
+    "es": "Validar la demanda"
+  },
+  "Validar produto e estratégia": {
+    "en": "Validate the product and strategy",
+    "es": "Validar producto y estrategia"
+  },
+  "Venda pública primária": {
+    "en": "Primary public sale",
+    "es": "Venta pública primaria"
+  },
+  "e a tesouraria inicial.": {
+    "en": "and the initial treasury.",
+    "es": "y la tesorería inicial."
+  },
+  "e canais próprios.": {
+    "en": "and owned channels.",
+    "es": "y canales propios."
+  },
+  "evidência.": {
+    "en": "evidence.",
+    "es": "evidencia."
+  },
+  "no direito econômico.": {
+    "en": "in the economic right.",
+    "es": "en el derecho económico."
+  },
+  "não se mistura ao da tesouraria.": {
+    "en": "are kept separate from treasury funds.",
+    "es": "no se mezcla con el de la tesorería."
+  },
+  "token": {
+    "en": "token",
+    "es": "token"
+  },
   "% compras,": {
     "en": "% purchases,",
     "es": "% compras,"
@@ -422,10 +818,6 @@
   "--color-{0}: {1};": {
     "en": "--color-{0}: {1};",
     "es": "--color-{0}: {1};"
-  },
-  ". A audiência dos canais se sobrepõe e não equivale a clientes; conversão e retenção da BETTEX serão medidas por coorte.": {
-    "en": ". Channel audiences overlap and are not customers; BETTEX conversion and retention will be measured by cohort.",
-    "es": ". Las audiencias de los canales se superponen y no equivalen a clientes; la conversión y la retención de BETTEX se medirán por cohorte."
   },
   ". A base é resultado, não capital aportado.": {
     "en": ". The base is result, not contributed capital.",
@@ -647,10 +1039,6 @@
     "en": "1 billion BETTEX",
     "es": "1.000 millones de BETTEX"
   },
-  "1 bilhão de BETTEX.": {
-    "en": "1 billion BETTEX.",
-    "es": "1.000 millones de BETTEX."
-  },
   "1 de setembro de 2025": {
     "en": "September 1, 2025",
     "es": "1 de septiembre de 2025"
@@ -711,14 +1099,6 @@
     "en": "100% of the resources received in these sales, settled in USDC, go directly to the treasury.",
     "es": "100% de los recursos recibidos en estas ventas, liquidadas en USDC, van directamente a la tesorería."
   },
-  "100% para a tesouraria": {
-    "en": "100% to the treasury",
-    "es": "100% a la tesorería"
-  },
-  "100% para o caixa operacional": {
-    "en": "100% to operating funds",
-    "es": "100% a los fondos operativos"
-  },
   "100% permanece na tesouraria, sem parcela de staking ou recompra, crédito acumulado ou divisão por zero.": {
     "en": "100% remains in the treasury, without a staking or buyback portion, accumulated credit, or division by zero.",
     "es": "El 100% permanece en la tesorería, sin parte de staking o recompra, crédito acumulado o división por cero."
@@ -738,10 +1118,6 @@
   "14–10d": {
     "en": "14–10d",
     "es": "14–10d"
-  },
-  "15% · 150 milhões": {
-    "en": "15% · 150 million",
-    "es": "15% · 150 millones"
   },
   "16rem": {
     "en": "16rem",
@@ -798,10 +1174,6 @@
   "2/3 sobre a transação exata e fundamento aprovado.": {
     "en": "2/3 on the exact transaction and approved foundation.",
     "es": "2/3 sobre la transacción exacta y fundamento aprobado."
-  },
-  "20% · 200 milhões": {
-    "en": "20% · 200 million",
-    "es": "20% · 200 millones"
   },
   "20–16h": {
     "en": "20–16h",
@@ -915,10 +1287,6 @@
     "en": "65% public sale, 20% Founder and team, 15% investors",
     "es": "65% venta pública, 20% Fundador y equipo, 15% inversores"
   },
-  "65% · 650 milhões": {
-    "en": "65% · 650 million",
-    "es": "65% · 650 millones"
-  },
   "6s": {
     "en": "6s",
     "es": "6s"
@@ -1011,10 +1379,6 @@
     "en": "BETTEX proposes access to AI-managed strategies and conditional participation in eligible profits. It does not replace salary, qualification or social protection, and is not a stock portfolio of AI companies.",
     "es": "BETTEX propone acceso a estrategias gestionadas por IA y participación condicionada en beneficios elegibles. No sustituye al salario, la cualificación o la protección social, y no es una cartera de acciones de empresas de IA."
   },
-  "A BETTEX reúne capital em uma tesouraria de estratégias geridas por IA. O token permite participar do lucro elegível em USDC, conforme as regras de staking, sem operar cada investimento por conta própria.": {
-    "en": "BETTEX pools capital in a treasury of AI-managed strategies. The token enables participation in eligible profit in USDC under the staking rules, without managing each investment yourself.",
-    "es": "BETTEX reúne capital en una tesorería de estrategias gestionadas por IA. El token permite participar en las ganancias elegibles en USDC, según las reglas de staking, sin gestionar cada inversión por cuenta propia."
-  },
   "A BETTEX reúne capital numa tesouraria e utiliza agentes de IA para analisar e executar investimentos em previsões, ações e cripto, esportes e cassinos. Economicamente, funciona como um fundo de investimentos; sua estrutura proposta é uma única empresa privada, não uma afirmação de registro jurídico como fundo. O token BETTEX dá acesso ao programa de resultados, sem ações ou propriedade proporcional da tesouraria.": {
     "en": "BETTEX gathers capital into a treasury and uses AI agents to analyze and execute investments in predictions, stocks and crypto, sports and casinos. Economically, it functions as an investment fund; its proposed structure is a single private company, not a claim of legal registration as a fund. The BETTEX token gives access to the results program, without shares or proportional ownership of the treasury.",
     "es": "BETTEX reúne capital en una tesorería y utiliza agentes de IA para analizar y ejecutar inversiones en previsiones, acciones y cripto, deportes y casinos. Económicamente, funciona como un fondo de inversión; su estructura propuesta es una única empresa privada, no una afirmación de registro jurídico como fondo. El token BETTEX da acceso al programa de resultados, sin acciones ni propiedad proporcional de la tesorería."
@@ -1102,10 +1466,6 @@
   "A administração aprova a política; o multisig autoriza a custódia; o executor atua dentro do mandato.": {
     "en": "Administration approves the policy; multisig authorizes custody; the executor acts within the mandate.",
     "es": "La administración aprueba la política; el multisig autoriza la custodia; el ejecutor actúa dentro del mandato."
-  },
-  "A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. O destino dos tokens adquiridos permanece pendente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.": {
-    "en": "Management authorises buybacks, preserving multisig controls; these are not automatic daily purchases. Unused dedicated funds accumulate and do not finance strategies or expenses. The destination of acquired tokens remains undecided. The token is not a share, does not confer ownership of assets and does not guarantee redemption.",
-    "es": "La administración autoriza las recompras, manteniendo los controles multifirma; no son compras diarias automáticas. El saldo exclusivo no utilizado se acumula y no financia estrategias ni gastos. El destino de los tokens adquiridos sigue pendiente. El token no es una acción, no otorga propiedad del patrimonio ni garantiza el rescate."
   },
   "A administração decide quando executar.": {
     "en": "Management decides when to execute.",
@@ -1246,10 +1606,6 @@
   "A destinação específica de US$ 100 mil está no": {
     "en": "The specific allocation of US$ 100k is in the",
     "es": "La asignación específica de US$ 100 mil está en el"
-  },
-  "A diferença está": {
-    "en": "The difference lies",
-    "es": "La diferencia está"
   },
   "A empresa reúne token, aplicativo, tesouraria, investimentos e obrigações do programa. Nome final, forma societária e jurisdição fazem parte da formalização. Titulares possuem tokens e direitos do programa, não ações, voto societário ou fração resgatável da tesouraria.": {
     "en": "The company brings together the token, application, treasury, investments, and program obligations. Final name, corporate structure, and jurisdiction are part of the formalization. Holders own tokens and program rights, not shares, corporate voting, or a redeemable fraction of the treasury.",
@@ -1491,10 +1847,6 @@
     "en": "The additional app fee goes to the operational cash box and does not reduce this price. The rule applies to the 65% public, not to investor contributions, founder's personal sales or staking gains.",
     "es": "La tarifa adicional del aplicativo va a la caja operativa y no reduce este precio. La regla vale para los 65% públicos, no para aportes de los inversores, ventas personales del fundador o ganancias de staking."
   },
-  "A tarifa de US$ 2,50 é receita bruta da empresa, antes de custos e tributos, fora do split do lucro da tesouraria.": {
-    "en": "The US$2.50 fee is gross company revenue, before costs and taxes, outside the treasury profit split.",
-    "es": "La tarifa de US$2,50 es ingreso bruto de la empresa, antes de costos e impuestos, fuera del reparto de las ganancias de la tesorería."
-  },
   "A tarifa de serviço é receita bruta. Custos identificados e tributos aplicáveis reduzem o resultado operacional, sem gross-up automático. Provisão é uma obrigação estimada ou reconhecida, não comprovação de recolhimento. Pagar a obrigação já contabilizada não gera segunda dedução.": {
     "en": "The service fee is gross revenue. Identified costs and applicable taxes reduce operating results, without automatic gross-up. A provision is an estimated or recognized obligation, not proof of payment. Paying an already accounted obligation does not generate a second deduction.",
     "es": "La tarifa de servicio es ingreso bruto. Los costos identificados y los tributos aplicables reducen el resultado operativo, sin gross-up automático. La provisión es una obligación estimada o reconocida, no una prueba de pago. Pagar la obligación ya contabilizada no genera una segunda deducción."
@@ -1674,10 +2026,6 @@
   "Acesso à rede": {
     "en": "Network access",
     "es": "Acceso a la red"
-  },
-  "Acompanha a operação": {
-    "en": "Follows the operation",
-    "es": "Sigue la operación"
   },
   "Acompanhe as operações e os resultados pelo app.": {
     "en": "Track operations and results through the app.",
@@ -1903,10 +2251,6 @@
     "en": "Changes to these parameters follow the AI suggestion queue and approval by BETTEX company leadership, with validity record and without retroactive change of already calculated rounds. Without reliable evaluation or reconciliation, distribution is not authorized.",
     "es": "Alteraciones en esos parámetros siguen la fila de sugerencias de la IA y la aprobación de la dirección de la empresa BETTEX, con registro de vigencia y sin cambio retroactivo de rondas ya apuradas. Sin evaluación o conciliación confiable, la distribución no es autorizada."
   },
-  "Alternativa": {
-    "en": "Alternative",
-    "es": "Alternativa"
-  },
   "Alto risco: pode haver perda parcial ou total.": {
     "en": "High risk: there may be partial or total loss.",
     "es": "Alto riesgo: puede haber pérdida parcial o total."
@@ -2043,10 +2387,6 @@
     "en": "Application and wallets → API and ledger → treasury → agents and connectors.",
     "es": "Aplicativo y billeteras → API y libro contable → tesorería → agentes y conectores."
   },
-  "Aporte vinculado a tokens": {
-    "en": "Token-linked funding",
-    "es": "Aporte vinculado a tokens"
-  },
   "Aportes de investidores têm livre alocação. A divisão do piloto não é uma regra geral de captação.": {
     "en": "Investor contributions have free allocation. The pilot's split is not a general rule for fundraising.",
     "es": "Los aportes de los inversores tienen libre asignación. La división del piloto no es una regla general de captación."
@@ -2058,10 +2398,6 @@
   "Aportes ligados a investidores": {
     "en": "Contributions linked to investors",
     "es": "Aportes ligados a inversores"
-  },
-  "Aposta individual": {
-    "en": "Individual bet",
-    "es": "Apuesta individual"
   },
   "Apresentação do fundador": {
     "en": "Founder presentation",
@@ -2095,10 +2431,6 @@
     "en": "Calculation and settlement of results",
     "es": "Cálculo y liquidación de resultados"
   },
-  "Após as validações jurídicas e de segurança, medir ativação, retenção D7/D30, receita de serviços e custo de operação em uma coorte limitada.": {
-    "en": "After legal and security validation, measure activation, D7/D30 retention, service revenue and operating costs in a limited cohort.",
-    "es": "Tras las validaciones jurídicas y de seguridad, medir activación, retención D7/D30, ingresos por servicios y costos operativos en una cohorte limitada."
-  },
   "Após conciliação": {
     "en": "After reconciliation",
     "es": "Tras la conciliación"
@@ -2118,10 +2450,6 @@
   "Aquisição de usuários nos primeiros três meses, não vendas de tokens.": {
     "en": "User acquisition in the first three months, not token sales.",
     "es": "Adquisición de usuarios en los primeros tres meses, no ventas de tokens."
-  },
-  "Aquisição founder-led, com audiência própria e experiência de distribuição.": {
-    "en": "Founder-led acquisition, with an existing audience and distribution experience.",
-    "es": "Adquisición liderada por el fundador, con audiencia propia y experiencia de distribución."
   },
   "Aquisição, retenção e expansão": {
     "en": "Acquisition, retention and expansion",
@@ -2398,10 +2726,6 @@
   "BETTEX disponível": {
     "en": "Available BETTEX",
     "es": "BETTEX disponible"
-  },
-  "BETTEX disponível e tempo elegível no aplicativo oficial definem o peso de cada participante.": {
-    "en": "Available BETTEX and eligible time in the official app determine each participant's weight.",
-    "es": "Los BETTEX disponibles y el tiempo elegible en la aplicación oficial determinan el peso de cada participante."
   },
   "BETTEX disponível na carteira oficial participa automaticamente. Peso individual = soma de quantidade × tempo elegível. Pagamento bruto = parcela de staking × peso individual ÷ soma dos pesos elegíveis da própria rodada UTC.": {
     "en": "BETTEX available in the official wallet participates automatically. Individual weight = sum of quantity × eligible time. Gross payment = staking share × individual weight ÷ sum of eligible weights for the specific UTC round.",
@@ -3071,10 +3395,6 @@
     "en": "With reserves, liquidity, reconciliation, and eligible weights met before and after all disbursements, apply the split of 50% for treasury retention, 25% for staking, and 25% for the exclusive buyback wallet. Without sufficient eligible weight, reserve, or liquidity, 100% remains in the treasury, with no split or allocation for buybacks. New participants never receive previous profits, and any exit from BETTEX cancels previous unpaid credits from the cycle and resets all accumulated weight.",
     "es": "Con las reservas, liquidez, conciliación y pesos elegibles cumplidos antes y después de todos los desembolsos, se aplica la división del 50% para retención en tesorería, 25% para staking y 25% para la cartera exclusiva de recompra. Sin peso elegible, reserva o liquidez suficientes, el 100% permanece en la tesorería, sin división ni asignación para recompra. Los nuevos participantes nunca reciben beneficios anteriores y cualquier salida de BETTEX cancela los créditos anteriores aún no pagados del ciclo y reinicia todo el peso acumulado."
   },
-  "Começar com dados autorizados e simulação em previsões. Medir o resultado após custos contra uma referência e validar o percurso do usuário e a conciliação.": {
-    "en": "Start with authorised data and prediction-market simulations. Measure results after costs against a benchmark and validate the user journey and reconciliation.",
-    "es": "Comenzar con datos autorizados y simulación en mercados de predicción. Medir el resultado tras costos frente a una referencia y validar el recorrido del usuario y la conciliación."
-  },
   "CommandShortcut": {
     "en": "CommandShortcut",
     "es": "CommandShortcut"
@@ -3094,10 +3414,6 @@
   "Como o bloqueio funcionaria": {
     "en": "How the block would work",
     "es": "Cómo el bloqueo funcionaría"
-  },
-  "Como o cliente participa": {
-    "en": "How the customer participates",
-    "es": "Cómo participa el cliente"
   },
   "Como opera": {
     "en": "How it operates",
@@ -3439,10 +3755,6 @@
     "en": "Verified public query",
     "es": "Consulta pública verificada"
   },
-  "Consulta resultados, custos, alocações e registros de conciliação previstos no modelo.": {
-    "en": "Reviews the results, costs, allocations and reconciliation records envisaged in the model.",
-    "es": "Consulta los resultados, costos, asignaciones y registros de conciliación previstos en el modelo."
-  },
   "Consultar a política oficial de taxas": {
     "en": "Consult the official fee policy",
     "es": "Consultar la política oficial de tasas"
@@ -3759,10 +4071,6 @@
     "en": "Demand, AI performance, costs and liquidity have not yet been tested.",
     "es": "La demanda, el rendimiento de la IA, los costos y la liquidez aún no han sido probados."
   },
-  "Demanda, estratégia e economia comercial: três validações antes da expansão.": {
-    "en": "Demand, strategy and commercial economics: three validations before expansion.",
-    "es": "Demanda, estrategia y economía comercial: tres validaciones antes de la expansión."
-  },
   "Demo": {
     "en": "Demo",
     "es": "Demo"
@@ -3786,10 +4094,6 @@
   "Depois do split do desenho 5: parcela do staking → recebimento confirmado na Carteira USDC → saque em USDC.": {
     "en": "After split from drawing 5: staking portion → received confirmed in USDC Wallet → withdrawal in USDC.",
     "es": "Después del split del sorteo 5: parte del staking → recibido confirmado en el Monedero USDC → retiro en USDC."
-  },
-  "Depois, expansão por evidência.": {
-    "en": "Then, evidence-led expansion.",
-    "es": "Después, expansión basada en evidencia."
   },
   "Depositar BETTEX na Carteira BETTEX": {
     "en": "Deposit BETTEX to BETTEX Wallet",
@@ -4551,10 +4855,6 @@
     "en": "Example of permanent loss and new profits.",
     "es": "Ejemplo de pérdida permanente y nuevos beneficios."
   },
-  "Exemplo ilustrativo: 10.000 USDC de lucro elegível destinam 5.000 à tesouraria, 2.500 ao pool global dos stakers e 2.500 à carteira de recompra. Os 25% não são uma taxa de retorno individual. Sem peso elegível ou condições de reserva e liquidez, não há split: 100% fica retido. Rodadas encerradas não acumulam direitos a lucros futuros.": {
-    "en": "Illustrative example: 10,000 USDC of eligible profit allocates 5,000 to the treasury, 2,500 to the global staker pool and 2,500 to the buyback wallet. The 25% is not an individual rate of return. Without eligible weight or the required reserve and liquidity conditions, there is no split: 100% is retained. Closed rounds do not carry forward rights to future profits.",
-    "es": "Ejemplo ilustrativo: 10.000 USDC de ganancias elegibles asignan 5.000 a la tesorería, 2.500 al fondo global de stakers y 2.500 a la cartera de recompra. El 25% no es una tasa de retorno individual. Sin peso elegible o las condiciones de reserva y liquidez, no hay reparto: se retiene el 100%. Las rondas cerradas no acumulan derechos a ganancias futuras."
-  },
   "Exemplo isolado, sem perdas anteriores ou posições abertas e com R = P − B antes dos tributos. Não substitui a apuração completa nem calcula alíquotas legais. Informe apenas tributos ainda não descontados do resultado; as retenções são o total da parcela de staking deste exemplo, não uma taxa universal por usuário.": {
     "en": "Isolated example, without previous losses or open positions and with R = P − B before taxes. It does not replace the complete assessment nor calculate legal rates. Report only taxes not yet deducted from the result; retentions are the total of the staking portion of this example, not a universal rate per user.",
     "es": "Ejemplo aislado, sin pérdidas anteriores o posiciones abiertas y con R = P − B antes de impuestos. No sustituye la evaluación completa ni calcula tasas legales. Informe solo los impuestos aún no deducidos del resultado; las retenciones son el total de la porción de staking de este ejemplo, no una tasa universal por usuario."
@@ -4610,10 +4910,6 @@
   "Expansão futura das integrações e dos agentes": {
     "en": "Future expansion of integrations and agents",
     "es": "Expansión futura de las integraciones y de los agentes"
-  },
-  "Experiência de aquisição": {
-    "en": "Acquisition experience",
-    "es": "Experiencia de adquisición"
   },
   "Explicar direitos, tarifas, USDC, riscos e liquidez, confirmando compreensão antes de uso financeiro.": {
     "en": "Explain rights, fees, USDC, risks, and liquidity, confirming understanding before financial use.",
@@ -4687,10 +4983,6 @@
     "en": "Queue of rule and limit adjustments",
     "es": "Cola de ajustes de reglas y límites"
   },
-  "Financiamento inicial para validar produto, estratégia e aquisição; valor e termos ainda em estruturação.": {
-    "en": "Initial funding to validate the product, strategy and acquisition; the amount and terms are still being structured.",
-    "es": "Financiación inicial para validar producto, estrategia y adquisición; el importe y los términos aún están en estructuración."
-  },
   "Financiamento na documentação": {
     "en": "Financing in documentation",
     "es": "Financiación en la documentación"
@@ -4698,10 +4990,6 @@
   "Financiamento:": {
     "en": "Financing:",
     "es": "Financiamiento:"
-  },
-  "Financiar o produto": {
-    "en": "Funding the product",
-    "es": "Financiar el producto"
   },
   "Flamengo vence": {
     "en": "Flamengo wins",
@@ -5295,10 +5583,6 @@
     "en": "Read report",
     "es": "Leer reportaje"
   },
-  "Liberação": {
-    "en": "Release",
-    "es": "Liberación"
-  },
   "Liberação mensal por grupo": {
     "en": "Monthly release by group",
     "es": "Liberación mensual por grupo"
@@ -5315,10 +5599,6 @@
     "en": "Global and market limits, authorizations, and security pauses.",
     "es": "Límites globales y por mercado, autorizaciones y pausas de seguridad."
   },
-  "LinkedIn": {
-    "en": "LinkedIn",
-    "es": "LinkedIn"
-  },
   "LinkedIn de Fred Azevedo": {
     "en": "Fred Azevedo's LinkedIn",
     "es": "LinkedIn de Fred Azevedo"
@@ -5326,10 +5606,6 @@
   "Links do projeto": {
     "en": "Project links",
     "es": "Enlaces del proyecto"
-  },
-  "Livre destinação após a liberação, sem antecipação do vesting.": {
-    "en": "Free allocation after release, without accelerating vesting.",
-    "es": "Libre destino después de la liberación, sin anticipar el vesting."
   },
   "Livre destinação após cada liberação": {
     "en": "Free use after each release",
@@ -5511,10 +5787,6 @@
     "en": "Authorization matrix",
     "es": "Matriz de autorización"
   },
-  "Medir intenção específica, compreensão dos direitos e disposição de pagar a tarifa nos tickets previstos.": {
-    "en": "Measure specific intent, understanding of rights and willingness to pay the fee at the expected transaction sizes.",
-    "es": "Medir intención específica, comprensión de los derechos y disposición a pagar la tarifa para los importes previstos."
-  },
   "Melhoria por coorte": {
     "en": "Improvement by cohort",
     "es": "Mejora por cohorte"
@@ -5578,14 +5850,6 @@
   "Meta de primeiros 1.000 usuários únicos no Brasil, com cadastro elegível e ativação no produto ou piloto disponível. Interessados em lista de espera, seguidores, compradores e titulares são métricas distintas.": {
     "en": "Goal of the first 1,000 unique users in Brazil, with eligible registration and activation in the product or available pilot. Interested in waiting lists, followers, buyers, and holders are distinct metrics.",
     "es": "Meta de primeros 1.000 usuarios únicos en Brasil, con registro elegible y activación en el producto o piloto disponible. Interesados en lista de espera, seguidores, compradores y titulares son métricas distintas."
-  },
-  "Meta inicial: primeiros": {
-    "en": "Initial goal: the first",
-    "es": "Meta inicial: los primeros"
-  },
-  "Metade financia o desenvolvimento inicial; metade vai para a tesouraria. É a regra para aportes vinculados aos tokens dos investidores, não para qualquer rodada societária.": {
-    "en": "Half funds initial development; half goes to the treasury. This is the rule for funding linked to investor tokens, not for every equity round.",
-    "es": "La mitad financia el desarrollo inicial; la otra mitad va a la tesorería. Es la regla para aportes vinculados a los tokens de los inversores, no para cualquier ronda de capital."
   },
   "Mineração de bônus": {
     "en": "Bonus mining",
@@ -5975,17 +6239,9 @@
     "en": "Invested capital is not profit. Estimated or unrealized yields may reflect the valuation of assets in P, but they do not increase the realized result R of the round nor authorize distribution by themselves. Receiving or reinvesting yields does not mean having free cash. If defensive coverage, liquidity, or another condition fails in the round's decision, it does not pay: the profit remains in the treasury and is not released for staking in a subsequent round.",
     "es": "El capital aplicado no es beneficio. Los rendimientos estimados o aún no realizados pueden reflejar la valoración de los activos en P, pero no aumentan el resultado realizado R de la ronda ni autorizan distribución por sí solos. Recibir o reinvertir rendimientos no significa tener caja libre. Si la cobertura defensiva, la liquidez u otra condición falla en la decisión de la ronda, ella no paga: el beneficio permanece en la tesorería y no es liberado para staking en una ronda posterior."
   },
-  "O capital deve financiar": {
-    "en": "Capital should fund",
-    "es": "El capital debe financiar"
-  },
   "O cenário de 30 operações por ativo ilustra um saque diário em um mês de 30 dias; não presume que todos tenham créditos diários ou adotem esse hábito. Compras e envios elegíveis também contam, sem cobrar duas vezes a entrega integrante da compra.": {
     "en": "The 30 operations per asset scenario illustrates a daily withdrawal in a 30-day month; it does not assume that everyone has daily credits or adopts this habit. Eligible purchases and transfers also count, without charging twice for the delivery inherent to the purchase.",
     "es": "El escenario de 30 operaciones por activo ilustra un retiro diario en un mes de 30 días; no presume que todos tengan créditos diarios o adopten este hábito. Las compras y envíos elegibles también cuentan, sin cobrar dos veces la entrega integrante de la compra."
-  },
-  "O cliente participa do resultado da estratégia, sem escolher cada aposta ou depender apenas da revenda do token.": {
-    "en": "The customer participates in the strategy's results, without choosing each bet or relying solely on reselling the token.",
-    "es": "El cliente participa en el resultado de la estrategia, sin elegir cada apuesta ni depender únicamente de la reventa del token."
   },
   "O conector deve comprovar que a plataforma suporta e respeita as condições essenciais da ordem.": {
     "en": "The connector must prove that the platform supports and respects the order's essential conditions.",
@@ -6038,10 +6294,6 @@
   "O dia é o da realização comprovada, não o do recebimento de uma confirmação tardia, conforme a": {
     "en": "The day is that of proven realization, not of receiving a late confirmation, according to the",
     "es": "El día es el de la realización comprobada, no el de la recepción de una confirmación tardía, conforme a"
-  },
-  "O dinheiro da empresa": {
-    "en": "Company funds",
-    "es": "El dinero de la empresa"
   },
   "O encerramento registra os pagamentos confirmados, as frações retornadas e os valores comprovadamente não enviados, sem apagar o histórico. Cancelar uma autorização não executada exige bloquear seu envio antigo e registrar uma única vez os efeitos sobre obrigações e recursos disponíveis. Esse retorno à tesouraria não cria lucro em R nem permite outro split do mesmo resultado. Recursos incertos e obrigações tributárias não são liberados por presunção.": {
     "en": "The closing registers confirmed payments, returned fractions, and provably unsent amounts, without erasing the history. Canceling an unexecuted authorization requires blocking its old send and registering the effects on obligations and available resources only once. This return to the treasury does not create profit in R nor allow another split of the same result. Uncertain resources and tax obligations are not released by presumption.",
@@ -6175,14 +6427,6 @@
     "en": "The weight determines the gross entitlement. Applicable withholdings are settled before the net credit is made available. Registration or authorization is not received balance: only confirmed and reconciled USDC enters the USDC Wallet.",
     "es": "El peso determina el derecho bruto. Las retenciones aplicables se resuelven antes del crédito líquido disponible. Registro o autorización no es saldo recibido: solo USDC confirmado y conciliado entra en la Cartera USDC."
   },
-  "O preço da venda pública primária vai integralmente à tesouraria; a tarifa de serviço é separada.": {
-    "en": "The primary public-sale price goes entirely to the treasury; the service fee is separate.",
-    "es": "El precio de la venta pública primaria va íntegramente a la tesorería; la tarifa de servicio es independiente."
-  },
-  "O preço dos tokens financia as estratégias. A venda não é lucro distribuível nem receita livre da empresa.": {
-    "en": "The token price funds the strategies. The sale is neither distributable profit nor unrestricted company revenue.",
-    "es": "El precio de los tokens financia las estrategias. La venta no es ganancia distribuible ni ingreso de libre disposición de la empresa."
-  },
   "O preço público dos tokens vai à tesouraria; as": {
     "en": "The public price of the tokens goes to the treasury; the",
     "es": "El precio público de los tokens va a la tesorería; las"
@@ -6307,14 +6551,6 @@
     "en": "The authorized person can",
     "es": "El responsable habilitado puede"
   },
-  "O resultado depende da variação de preço e da possibilidade de revenda.": {
-    "en": "The result depends on price changes and the ability to resell.",
-    "es": "El resultado depende de la variación del precio y de la posibilidad de reventa."
-  },
-  "O resultado depende de cada aposta escolhida pelo usuário.": {
-    "en": "The result depends on each bet chosen by the user.",
-    "es": "El resultado depende de cada apuesta elegida por el usuario."
-  },
   "O risco de ficar fora dos ganhos": {
     "en": "The risk of being excluded from gains",
     "es": "El riesgo de quedarse fuera de las ganancias"
@@ -6359,17 +6595,9 @@
     "en": "The individual ceiling of 0.05% applies to the total capital committed by coordinated parties of the same proposal, not to each isolated order.",
     "es": "El techo individual de 0,05% incide sobre el capital total comprometido por las partes coordinadas de la misma propuesta, no sobre cada orden aislada."
   },
-  "O titular tem os direitos de participação nos resultados definidos pelo token, não ações da empresa, propriedade da tesouraria, voto societário ou resgate pelo valor patrimonial. Pode ganhar ou perder na revenda, se houver liquidez. Oferta fixa não significa pagamento fixo.": {
-    "en": "The holder has the profit-participation rights defined by the token, not company shares, treasury ownership, shareholder voting rights or redemption at net asset value. They may gain or lose on resale, if liquidity exists. Fixed supply does not mean fixed payments.",
-    "es": "El titular tiene los derechos de participación en los resultados definidos por el token, no acciones de la empresa, propiedad de la tesorería, voto societario ni rescate por el valor patrimonial. Puede ganar o perder en la reventa, si existe liquidez. Una oferta fija no significa pagos fijos."
-  },
   "O token": {
     "en": "The token",
     "es": "El token"
-  },
-  "O token combina participação condicionada no lucro elegível das estratégias e possibilidade de revenda, com risco de preço e liquidez.": {
-    "en": "The token combines conditional participation in eligible strategy profit with the possibility of resale, subject to price and liquidity risk.",
-    "es": "El token combina participación condicionada en las ganancias elegibles de las estrategias y posibilidad de reventa, con riesgo de precio y liquidez."
   },
   "O token do projeto de inteligência artificial BETTEX.": {
     "en": "The token for the BETTEX artificial intelligence project.",
@@ -6455,17 +6683,9 @@
     "en": "Offer accepted or rejected with calculation memo; do not infer profit from nominal bonus.",
     "es": "Oferta aceptada o rechazada con memoria de cálculo; no inferir beneficio por el bono nominal."
   },
-  "Oferta e direitos do token": {
-    "en": "Token supply and rights",
-    "es": "Oferta y derechos del token"
-  },
   "Oferta ilustrativa de 100 USDC com rollover 30× exige analisar volume de 3.000, custos, condições e variância.": {
     "en": "Illustrative offer of 100 USDC with 30× rollover requires analyzing a volume of 3,000, costs, conditions, and variance.",
     "es": "Oferta ilustrativa de 100 USDC con rollover 30× exige analizar un volumen de 3.000, costos, condiciones y varianza."
-  },
-  "Oferta, vesting e direitos na documentação": {
-    "en": "Supply, vesting and rights in the documentation",
-    "es": "Oferta, vesting y derechos en la documentación"
   },
   "Off-ramp:": {
     "en": "Off-ramp:",
@@ -6819,10 +7039,6 @@
     "en": "Investable installment",
     "es": "Cuota invertible"
   },
-  "Parcelas mensais durante 36 meses": {
-    "en": "Monthly releases over 36 months",
-    "es": "Liberaciones mensuales durante 36 meses"
-  },
   "Parecer jurídico, permissões de provedores, contratos e segurança são necessários antes de qualquer fundo.": {
     "en": "Legal opinion, provider permissions, contracts, and security are required before any funds.",
     "es": "Parecer jurídico, permisos de proveedores, contratos y seguridad son necesarios antes de cualquier fondo."
@@ -6831,17 +7047,9 @@
     "en": "Participates automatically",
     "es": "Participa automáticamente"
   },
-  "Participa pelo staking": {
-    "en": "Participates through staking",
-    "es": "Participa mediante staking"
-  },
   "Participando": {
     "en": "Participating",
     "es": "Participando"
-  },
-  "Participação": {
-    "en": "Participation",
-    "es": "Participación"
   },
   "Participação automática": {
     "en": "Automatic participation",
@@ -6882,14 +7090,6 @@
   "Participação no total elegível": {
     "en": "Participation in the eligible total",
     "es": "Participación en el total elegible"
-  },
-  "Participação nos lucros por token.": {
-    "en": "Profit participation through a token.",
-    "es": "Participación en las ganancias mediante un token."
-  },
-  "Participação nos resultados": {
-    "en": "Participation in results",
-    "es": "Participación en los resultados"
   },
   "Participação, não proteção garantida": {
     "en": "Participation, no guaranteed protection",
@@ -7107,10 +7307,6 @@
     "en": "Staking pool: {0} BETTEX participating automatically. See details.",
     "es": "Pool de staking: {0} BETTEX participando automáticamente. Ver detalles."
   },
-  "Pool global, rateado pelo peso elegível.": {
-    "en": "Global pool, allocated by eligible weight.",
-    "es": "Fondo global, repartido según el peso elegible."
-  },
   "Por compra concluída, separada do preço dos tokens": {
     "en": "Per completed purchase, separate from token price",
     "es": "Por compra concluida, separada del precio de los tokens"
@@ -7251,10 +7447,6 @@
     "en": "First useful use",
     "es": "Primer uso útil"
   },
-  "Primeiros 1.000 usuários no Brasil.": {
-    "en": "First 1,000 users in Brazil.",
-    "es": "Primeros 1.000 usuarios en Brasil."
-  },
   "Principal e teto de custos no valor autorizado": {
     "en": "Principal and cost ceiling in the authorized amount",
     "es": "Principal y techo de costos en el valor autorizado"
@@ -7391,10 +7583,6 @@
     "en": "Project pages",
     "es": "Páginas del proyecto"
   },
-  "Público": {
-    "en": "Public",
-    "es": "Público"
-  },
   "Público e oportunidade": {
     "en": "Audience and opportunity",
     "es": "Público y oportunidad"
@@ -7418,10 +7606,6 @@
   "Qualquer saída de BETTEX da carteira oficial, por saque, venda ou transferência, cancela todos os créditos do ciclo acumulados até a saída e ainda não pagos, inclusive em retiradas parciais. Todo o peso acumulado da rodada é zerado, não apenas o da quantidade retirada. Não se conserva o peso do período anterior à saída, nem o peso anterior do saldo que permaneceu. Esses créditos não são pagos.": {
     "en": "Any outflow of BETTEX from the official wallet, through withdrawal, sale or transfer, cancels all cycle credits accrued up to that outflow and not yet paid, including partial withdrawals. All weight accrued in the round is reset to zero, not just the weight of the withdrawn quantity. No weight from the period before the outflow is retained, including the previous weight of the remaining balance. These credits are not paid.",
     "es": "Cualquier salida de BETTEX de la cartera oficial, por retiro, venta o transferencia, cancela todos los créditos del ciclo acumulados hasta esa salida y aún no pagados, incluso en retiros parciales. Todo el peso acumulado de la ronda se pone a cero, no solo el de la cantidad retirada. No se conserva el peso del período anterior a la salida ni el peso anterior del saldo restante. Estos créditos no se pagan."
-  },
-  "Quando a rodada diária atende às condições de lucro, reserva e liquidez, recebe sua parcela do pool dos stakers.": {
-    "en": "When the daily round meets profit, reserve and liquidity conditions, receives their share of the staker pool.",
-    "es": "Cuando la ronda diaria cumple las condiciones de ganancias, reserva y liquidez, recibe su parte del fondo de stakers."
   },
   "Quando houver lucro elegível, crédito": {
     "en": "When there is eligible profit, credit",
@@ -7591,10 +7775,6 @@
     "en": "Receives the unpaid fractions",
     "es": "Recibe las fracciones no pagadas"
   },
-  "Recebe em USDC": {
-    "en": "Receives USDC",
-    "es": "Recibe en USDC"
-  },
   "Recebimento e saque em USDC": {
     "en": "Receipt and withdrawal in USDC",
     "es": "Recepción y retiro en USDC"
@@ -7694,14 +7874,6 @@
   "Rede e contratos": {
     "en": "Network and contracts",
     "es": "Red y contratos"
-  },
-  "Redes de Fred Azevedo": {
-    "en": "Fred Azevedo's social profiles",
-    "es": "Redes sociales de Fred Azevedo"
-  },
-  "Redes do fundador": {
-    "en": "Founder's social profiles",
-    "es": "Redes sociales del fundador"
   },
   "Redução de posições durante a pausa por perda diária": {
     "en": "Position reduction during pause due to daily loss",
@@ -8023,10 +8195,6 @@
     "en": "Retention and reinvestment of 50% of distributable profit.",
     "es": "Retención y reinversión del 50% del beneficio distribuible."
   },
-  "Retenção e reinvestimento.": {
-    "en": "Retention and reinvestment.",
-    "es": "Retención y reinversión."
-  },
   "Retenção honesta": {
     "en": "Honest retention",
     "es": "Retención honesta"
@@ -8086,10 +8254,6 @@
   "Retorno por coorte": {
     "en": "Return by cohort",
     "es": "Retorno por cohorte"
-  },
-  "Retrato de Fred Azevedo, fundador da BETTEX": {
-    "en": "Portrait of Fred Azevedo, founder of BETTEX",
-    "es": "Retrato de Fred Azevedo, fundador de BETTEX"
   },
   "Revalidação do saldo livre e da fonte. Reforço não renova automaticamente limites nem usa reservas ou créditos como caixa livre.": {
     "en": "Revalidation of free balance and source. Replenishment does not automatically renew limits nor use reserves or credits as free cash.",
@@ -8559,10 +8723,6 @@
     "en": "Split permitted only with positive eligible weights, reserve and liquidity met before and after staking, transfer to the buyback wallet and projected costs",
     "es": "Split permitido solo con pesos elegibles positivos, reserva y liquidez cumplidas antes y después del staking, transferencia a la billetera de recompra y costos proyectados"
   },
-  "Stakers": {
-    "en": "Stakers",
-    "es": "Stakers"
-  },
   "Staking automático": {
     "en": "Automatic staking",
     "es": "Staking automático"
@@ -8642,10 +8802,6 @@
   "Swap": {
     "en": "Swap",
     "es": "Swap"
-  },
-  "Só há lucro elegível após custos reais, tributos, obrigações, avaliação das posições abertas, reservas e liquidez.": {
-    "en": "Profit is eligible only after actual costs, taxes, obligations, open-position valuation, reserves and liquidity requirements.",
-    "es": "Solo hay ganancias elegibles después de costos reales, impuestos, obligaciones, valoración de posiciones abiertas y requisitos de reserva y liquidez."
   },
   "Só ordens aprovadas chegam ao conector, com credenciais restritas à operação.": {
     "en": "Only approved orders reach the connector, with credentials restricted to the operation.",
@@ -8742,10 +8898,6 @@
   "Tarifas": {
     "en": "Fees",
     "es": "Tarifas"
-  },
-  "Tarifas de serviço": {
-    "en": "Service fees",
-    "es": "Tarifas de servicio"
   },
   "Tarifas fixas confirmadas": {
     "en": "Confirmed fixed fees",
@@ -8915,10 +9067,6 @@
     "en": "Invalid transfer type.",
     "es": "Tipo de transferencia inválido."
   },
-  "Todas as alocações começam a liberar no mês da abertura da venda pública e terminam no mês 36. Liberação não significa venda realizada nem início dos investimentos.": {
-    "en": "All allocations begin releasing in the month the public sale opens and finish in month 36. Release does not mean a completed sale or the start of investments.",
-    "es": "Todas las asignaciones empiezan a liberarse en el mes de apertura de la venta pública y terminan en el mes 36. Liberación no significa venta realizada ni inicio de las inversiones."
-  },
   "Todas as transações": {
     "en": "All transactions",
     "es": "Todas las transacciones"
@@ -8963,25 +9111,13 @@
     "en": "Toggle Sidebar",
     "es": "Toggle Sidebar"
   },
-  "Token": {
-    "en": "Token",
-    "es": "Token"
-  },
   "Token BETTEX": {
     "en": "BETTEX token",
     "es": "Token BETTEX"
   },
-  "Token centrado no preço": {
-    "en": "Price-driven token",
-    "es": "Token centrado en el precio"
-  },
   "Token de participação": {
     "en": "Participation token",
     "es": "Token de participación"
-  },
-  "Token disponível × tempo elegível": {
-    "en": "Available tokens × eligible time",
-    "es": "Tokens disponibles × tiempo elegible"
   },
   "Token e direitos do programa, não ações ou voto societário.": {
     "en": "Token and program rights, not stocks or corporate voting.",
@@ -8995,14 +9131,6 @@
     "en": "Token, funding, and burn",
     "es": "Token, captación y quema"
   },
-  "Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. A liberação de novos tokens pode alterar a participação individual; fundador e investidores seguem os mesmos critérios.": {
-    "en": "Locked tokens, public-sale inventory and unavailable balances are excluded from allocations. Releasing new tokens may change individual participation; the founder and investors follow the same criteria.",
-    "es": "Los tokens bloqueados, el inventario de venta pública y los saldos no disponibles quedan fuera del reparto. La liberación de nuevos tokens puede alterar la participación individual; el fundador y los inversores siguen los mismos criterios."
-  },
-  "Tokens destinados à venda pública, cujo preço primário financia integralmente a tesouraria.": {
-    "en": "Tokens allocated to the public sale, whose primary price funds the treasury in full.",
-    "es": "Tokens destinados a la venta pública, cuyo precio primario financia íntegramente la tesorería."
-  },
   "Tokens no app": {
     "en": "Tokens in the app",
     "es": "Tokens en el aplicativo"
@@ -9014,10 +9142,6 @@
   "Tokens queimados não retornam à circulação nem ao staking": {
     "en": "Burned tokens do not return to circulation nor to staking",
     "es": "Los tokens quemados no retornan a la circulación ni al staking"
-  },
-  "Tokens vinculados ao financiamento inicial, conforme os termos da rodada.": {
-    "en": "Tokens linked to initial funding under the round's terms.",
-    "es": "Tokens vinculados a la financiación inicial, según los términos de la ronda."
   },
   "Total acumulado": {
     "en": "Total accumulated",
@@ -9123,10 +9247,6 @@
     "en": "Try again",
     "es": "Inténtalo de nuevo"
   },
-  "Três alocações.": {
-    "en": "Three allocations.",
-    "es": "Tres asignaciones."
-  },
   "Três parcelas da emissão; preço público e aportes têm destinos distintos.": {
     "en": "Three issuance installments; public price and contributions have distinct destinations.",
     "es": "Tres cuotas de la emisión; precio público y aportes tienen destinos distintos."
@@ -9215,10 +9335,6 @@
     "en": "USDC from tokens goes to treasury; fee is additional.",
     "es": "El USDC de los tokens va a la tesorería; la tarifa es adicional."
   },
-  "USDC exclusivo para recompras autorizadas.": {
-    "en": "USDC reserved for authorised buybacks.",
-    "es": "USDC exclusivo para recompras autorizadas."
-  },
   "USDC já recebido e conciliado na Carteira USDC permanece do titular. Sacar USDC não cancela créditos de staking; esta regra é exclusiva das saídas de BETTEX.": {
     "en": "USDC already received and reconciled in the USDC Wallet remains with the holder. Withdrawing USDC does not cancel staking credits; this rule is exclusive to BETTEX exits.",
     "es": "El USDC ya recibido y conciliado en la Billetera USDC permanece del titular. Retirar USDC no cancela los créditos de staking; esta regla es exclusiva de las salidas de BETTEX."
@@ -9274,10 +9390,6 @@
   "Um erro de apuração ou de rateio é corrigido por ajuste identificado, vinculado à rodada original.": {
     "en": "An assessment or apportionment error is corrected by an identified adjustment, linked to the original round.",
     "es": "Un error de apuración o de rateo es corregido por ajuste identificado, vinculado a la ronda original."
-  },
-  "Um fundo de investimentos gerido por IA.": {
-    "en": "An AI-managed investment fund.",
-    "es": "Un fondo de inversión gestionado por IA."
   },
   "Um fundo gerido por IA, aberto por token.": {
     "en": "A fund managed by AI, opened by token.",
@@ -9463,21 +9575,9 @@
     "en": "Quote validity",
     "es": "Validez de cotizaciones"
   },
-  "Validar a operação comercial": {
-    "en": "Validate commercial operations",
-    "es": "Validar la operación comercial"
-  },
-  "Validar demanda": {
-    "en": "Validate demand",
-    "es": "Validar la demanda"
-  },
   "Validar demanda, desempenho e receita. Constituição da empresa e contratações fazem parte do plano: 6 funções em 5 pessoas, com 4 posições remuneradas. O fundador não recebe salário, conforme a regra documentada.": {
     "en": "Validate demand, performance, and revenue. Company constitution and hiring are part of the plan: 6 roles for 5 people, with 4 paid positions. The founder receives no salary, according to the documented rule.",
     "es": "Validar demanda, desempeño e ingresos. La constitución de la empresa y las contrataciones forman parte del plan: 6 funciones para 5 personas, con 4 puestos remunerados. El fundador no recibe salario, conforme a la regla documentada."
-  },
-  "Validar produto e estratégia": {
-    "en": "Validate the product and strategy",
-    "es": "Validar producto y estrategia"
   },
   "Validação, autorização e encerramento": {
     "en": "Validation, authorization, and closure",
@@ -9550,10 +9650,6 @@
   "Venda pública do projeto e revenda entre titulares": {
     "en": "Project public sale and resale between holders",
     "es": "Venta pública del proyecto y reventa entre titulares"
-  },
-  "Venda pública primária": {
-    "en": "Primary public sale",
-    "es": "Venta pública primaria"
   },
   "Venda pública ·": {
     "en": "Public sale ·",
@@ -10291,14 +10387,6 @@
     "en": "and",
     "es": "y"
   },
-  "e a tesouraria inicial.": {
-    "en": "and the initial treasury.",
-    "es": "y la tesorería inicial."
-  },
-  "e canais próprios.": {
-    "en": "and owned channels.",
-    "es": "y canales propios."
-  },
   "e financiamento documentado, pagando serviços externos e obrigações próprias. Um déficit operacional não autoriza retirada automática da tesouraria. Aportes de investidores têm livre alocação.": {
     "en": "and documented financing, paying for external services and own obligations. An operational deficit does not authorize automatic withdrawal from the treasury. Investor contributions have free allocation.",
     "es": "y financiación documentada, pagando servicios externos y obligaciones propias. Un déficit operacional no autoriza retirada automática de la tesorería. Aportes de inversores tienen libre asignación."
@@ -10394,10 +10482,6 @@
   "estiver insuficiente.": {
     "en": "is insufficient.",
     "es": "es insuficiente."
-  },
-  "evidência.": {
-    "en": "evidence.",
-    "es": "evidencia."
   },
   "excesso ainda não enviado do excesso já recebido": {
     "en": "excess not yet sent of the excess already received",
@@ -10915,10 +10999,6 @@
     "en": "more than",
     "es": "más de"
   },
-  "markets": {
-    "en": "markets",
-    "es": "markets"
-  },
   "mb-2 flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0": {
     "en": "mb-2 flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0",
     "es": "mb-2 flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0"
@@ -11067,10 +11147,6 @@
     "en": "in the application or directly to brokers delivers only released tokens. 100% of the price paid in USDC goes to the treasury; the additional application fee has its own operational destination. Sale to brokers requires specific delivery and reconciliation, not a presumed integration. Investor contributions have free allocation, as per",
     "es": "en la aplicación o directamente a corredoras entrega solo tokens liberados. 100% del precio pagado en USDC va a la tesorería; la tarifa adicional de la aplicación tiene destino operacional propio. La venta a corredoras exige entrega y conciliación específicas, no una integración presumida. Los aportes de inversores tienen libre asignación, conforme"
   },
-  "no direito econômico.": {
-    "en": "in the economic right.",
-    "es": "en el derecho económico."
-  },
   "no fee is charged for any new token or USDC movement; insufficient balances reject": {
     "en": "no fee is charged for any new token or USDC movement; insufficient balances reject",
     "es": "no se cobra tasa por ningún movimiento nuevo de token o USDC; saldos insuficientes rechazan"
@@ -11162,10 +11238,6 @@
   "não garantem retorno ou proteção do capital": {
     "en": "do not guarantee return or capital protection",
     "es": "no garantizan retorno o protección del capital"
-  },
-  "não se mistura ao da tesouraria.": {
-    "en": "are kept separate from treasury funds.",
-    "es": "no se mezcla con el de la tesorería."
   },
   "o KYC do provedor não integra o sistema de autenticação por carteira do projeto": {
     "en": "the provider's KYC does not integrate with the project's wallet authentication system",
@@ -12047,10 +12119,6 @@
     "en": "today-close",
     "es": "today-close"
   },
-  "token": {
-    "en": "token",
-    "es": "token"
-  },
   "token and USDC parsers accept only positive supported precision": {
     "en": "token and USDC parsers accept only positive supported precision",
     "es": "los analizadores de token y USDC aceptan solo precisión positiva soportada"
@@ -12655,198 +12723,6 @@
     "en": "more than 34,000",
     "es": "más de 34.000"
   },
-  "IA e robôs vão substituir empregos e transferir a geração de valor para sistemas automatizados.": {
-    "en": "AI and robots will replace jobs and shift value creation to automated systems.",
-    "es": "La IA y los robots van a sustituir empleos y trasladar la creación de valor a sistemas automatizados."
-  },
-  "Quem depende só do salário pode ficar de fora dos ganhos gerados pela IA.": {
-    "en": "Those relying only on a salary may miss out on the gains generated by AI.",
-    "es": "Quien depende solo del salario puede quedar fuera de las ganancias generadas por la IA."
-  },
-  "BETTEX conecta você aos lucros elegíveis de estratégias com IA.": {
-    "en": "BETTEX connects you to eligible profits from AI strategies.",
-    "es": "BETTEX te conecta con las ganancias elegibles de estrategias con IA."
-  },
-  "Faça sua compra pelo aplicativo e acompanhe seus tokens. Use cartão de crédito, transferências imediatas e mais. Não precisa entender de cripto para entrar na comunidade.": {
-    "en": "Buy through the app and keep track of your tokens. Use a credit card, instant transfers and more. You don't need to understand crypto to join the community.",
-    "es": "Compra desde la aplicación y sigue tus tokens. Usa tarjeta de crédito, transferencias inmediatas y más. No necesitas entender de cripto para entrar en la comunidad."
-  },
-  "Compre BETTEX e participe dos lucros do projeto. Basta comprar e deixar na sua carteira que todo dia a gente paga sua parte dos lucros*.": {
-    "en": "Buy BETTEX and participate in the project's profits. Just buy and keep it in your wallet, and every day we pay your share of the profits*.",
-    "es": "Compra BETTEX y participa en las ganancias del proyecto. Solo compra y déjalo en tu billetera: cada día pagamos tu parte de las ganancias*."
-  },
-  "*Sem lucro não há distribuição e você não perde os seus tokens.": {
-    "en": "*Without profit there is no distribution, and you don't lose your tokens.",
-    "es": "*Sin ganancias no hay distribución y no pierdes tus tokens."
-  },
-  "Quando houver lucro elegível,": {
-    "en": "When there is eligible profit,",
-    "es": "Cuando haya ganancias elegibles,"
-  },
-  "você recebe sua parte.": {
-    "en": "you receive your share.",
-    "es": "recibes tu parte."
-  },
-  "Compre BETTEX e participe dos lucros do projeto.": {
-    "en": "Buy BETTEX and participate in the project's profits.",
-    "es": "Compra BETTEX y participa en las ganancias del proyecto."
-  },
-  "Compre": {
-    "en": "Buy",
-    "es": "Compra"
-  },
-  "Faça sua compra pelo aplicativo e acompanhe seus tokens.": {
-    "en": "Buy through the app and keep track of your tokens.",
-    "es": "Compra desde la aplicación y sigue tus tokens."
-  },
-  "Apresentar o projeto a investidores-anjo. Investigar os requisitos legais e regulatórios do projeto e preparar sua base técnica: arquitetura, contratos, segurança e integrações. Estruturar o ecossistema BETTEX para as validações técnicas e jurídicas necessárias antes do lançamento.": {
-    "en": "Present the project to angel investors. Investigate the project's legal and regulatory requirements and prepare its technical foundation: architecture, contracts, security and integrations. Structure the BETTEX ecosystem for the technical and legal validations needed before launch.",
-    "es": "Presentar el proyecto a inversores ángeles. Investigar los requisitos legales y regulatorios del proyecto y preparar su base técnica: arquitectura, contratos, seguridad e integraciones. Estructurar el ecosistema BETTEX para las validaciones técnicas y jurídicas necesarias antes del lanzamiento."
-  },
-  "Recursos e riscos": {
-    "en": "Funding and risks",
-    "es": "Financiación y riesgos"
-  },
-  "Ver a pesquisa": {
-    "en": "View the research",
-    "es": "Ver la investigación"
-  },
-  "Como participa": {
-    "en": "How to participate",
-    "es": "Cómo participar"
-  },
-  "Primeiros usuários": {
-    "en": "First users",
-    "es": "Primeros usuarios"
-  },
-  "Tecnologia de investimento para apostadores brasileiros,": {
-    "en": "Investment technology for Brazilian bettors,",
-    "es": "Tecnología de inversión para apostadores brasileños,"
-  },
-  "gerida por IA.": {
-    "en": "managed by AI.",
-    "es": "gestionada por IA."
-  },
-  "A BETTEX reúne o capital em uma tesouraria com estratégias geridas por IA, limites de risco e supervisão humana. Com o token BETTEX, você participa dessas estratégias sem escolher ou executar cada operação. Pelo aplicativo, acompanha saldo, resultados e custos. Quando há lucro elegível e as condições de distribuição são atendidas, sua participação é paga em USDC, conforme as regras de staking.": {
-    "en": "BETTEX pools capital in a treasury with AI-managed strategies, risk limits and human oversight. With the BETTEX token, you participate in these strategies without selecting or executing each trade. Through the app, you track your balance, results and costs. When there is eligible profit and the distribution conditions are met, your share is paid in USDC according to the staking rules.",
-    "es": "BETTEX reúne el capital en una tesorería con estrategias gestionadas por IA, límites de riesgo y supervisión humana. Con el token BETTEX, participas en estas estrategias sin elegir ni ejecutar cada operación. Desde la aplicación, consultas tu saldo, los resultados y los costes. Cuando hay beneficios elegibles y se cumplen las condiciones de distribución, tu parte se paga en USDC conforme a las reglas de staking."
-  },
-  "Cérebro representando a inteligência artificial da BETTEX": {
-    "en": "Brain representing BETTEX artificial intelligence",
-    "es": "Cerebro que representa la inteligencia artificial de BETTEX"
-  },
-  "Fundador da BETTEX": {
-    "en": "Founder of BETTEX",
-    "es": "Fundador de BETTEX"
-  },
-  "Ver o LinkedIn de Fred Azevedo": {
-    "en": "View Fred Azevedo's LinkedIn profile",
-    "es": "Ver el perfil de Fred Azevedo en LinkedIn"
-  },
-  "mais de {0}": {
-    "en": "more than {0}",
-    "es": "más de {0}"
-  },
-  "Telegram": {
-    "en": "Telegram",
-    "es": "Telegram"
-  },
-  "Telegram, Instagram, YouTube, X": {
-    "en": "Telegram, Instagram, YouTube, X",
-    "es": "Telegram, Instagram, YouTube, X"
-  },
-  "Telegram, Instagram, YouTube e X": {
-    "en": "Telegram, Instagram, YouTube and X",
-    "es": "Telegram, Instagram, YouTube y X"
-  },
-  "A IA e a robótica vão substituir uma parcela crescente do trabalho humano, inclusive profissões de colarinho branco, além de tarefas físicas executadas por robôs humanoides. Esse cenário pode causar desemprego e deslocar a geração de valor do trabalho das pessoas para sistemas automatizados.": {
-    "en": "AI and robotics will replace a growing share of human work, including white-collar jobs and physical tasks performed by humanoid robots. This scenario could cause unemployment and shift value creation from people's work to automated systems.",
-    "es": "La IA y la robótica sustituirán una parte creciente del trabajo humano, incluidas las profesiones de cuello blanco y las tareas físicas realizadas por robots humanoides. Este escenario puede provocar desempleo y trasladar la generación de valor del trabajo de las personas a los sistemas automatizados."
-  },
-  "{0} a {1}% de engajamento": {
-    "en": "{0} to {1}% engagement",
-    "es": "{0} a {1}% de interacción"
-  },
-  "Apostar": {
-    "en": "Betting",
-    "es": "Apostar"
-  },
-  "não é investir.": {
-    "en": "is not investing.",
-    "es": "no es invertir."
-  },
-  "Parte dos apostadores brasileiros busca nas apostas uma forma de ganhar ou juntar dinheiro.": {
-    "en": "Some Brazilian bettors turn to betting as a way to make or save money.",
-    "es": "Parte de quienes apuestan en Brasil busca en las apuestas una forma de ganar o ahorrar dinero."
-  },
-  "A BETTEX se dirige ao adulto no Brasil que quer sair dessa lógica: deixar de escolher apostas isoladas e começar a participar de estratégias de investimento geridas por IA.": {
-    "en": "BETTEX is aimed at adults in Brazil who want to move away from this approach: stop choosing individual bets and start participating in AI-managed investment strategies.",
-    "es": "BETTEX se dirige a los adultos en Brasil que quieren salir de esa lógica: dejar de elegir apuestas individuales y empezar a participar en estrategias de inversión gestionadas por IA."
-  },
-  "A pesquisa ANBIMA/Datafolha ouviu 5.832 pessoas de 16 anos ou mais no Brasil. O primeiro número descreve a participação em apostas online; os outros dois mostram motivações declaradas pelos apostadores pesquisados.": {
-    "en": "The ANBIMA/Datafolha survey interviewed 5,832 people aged 16 or over in Brazil. The first figure describes participation in online betting; the other two show motivations reported by the bettors surveyed.",
-    "es": "La encuesta ANBIMA/Datafolha entrevistó a 5.832 personas de 16 años o más en Brasil. La primera cifra describe la participación en apuestas en línea; las otras dos muestran motivaciones declaradas por las personas encuestadas que apostaban."
-  },
-  "Brasileiros de 16 anos ou mais": {
-    "en": "Brazilians aged 16 or over",
-    "es": "Brasileños de 16 años o más"
-  },
-  "Entre os apostadores pesquisados": {
-    "en": "Among the bettors surveyed",
-    "es": "Entre las personas encuestadas que apostaban"
-  },
-  "buscavam dinheiro rápido em caso de necessidade": {
-    "en": "sought quick money in times of need",
-    "es": "buscaban dinero rápido en caso de necesidad"
-  },
-  "viam apostas como investir ou juntar dinheiro": {
-    "en": "saw betting as investing or saving money",
-    "es": "veían las apuestas como una forma de invertir o ahorrar dinero"
-  },
-  "Para apostadores adultos no Brasil": {
-    "en": "For adult bettors in Brazil",
-    "es": "Para adultos que apuestan en Brasil"
-  },
-  "Para quem quer deixar as apostas e começar a investir.": {
-    "en": "For people who want to stop betting and start investing.",
-    "es": "Para quienes quieren dejar las apuestas y empezar a invertir."
-  },
-  "Público-alvo": {
-    "en": "Target audience",
-    "es": "Público objetivo"
-  },
-  "Para quem é a BETTEX?": {
-    "en": "Who is BETTEX for?",
-    "es": "¿Para quién es BETTEX?"
-  },
-  "O apostador brasileiro adulto que quer deixar as apostas e começar a investir.": {
-    "en": "Adult Brazilian bettors who want to stop betting and start investing.",
-    "es": "Los adultos brasileños que apuestan y quieren dejar las apuestas y empezar a invertir."
-  },
-  "Em vez de escolher apostas isoladas, a proposta é participar, via token, de uma tesouraria com estratégias de investimento geridas por IA.": {
-    "en": "Instead of choosing individual bets, the proposal is to participate, through a token, in a treasury with AI-managed investment strategies.",
-    "es": "En lugar de elegir apuestas individuales, la propuesta es participar, mediante un token, en una tesorería con estrategias de inversión gestionadas por IA."
-  },
-  "O mercado inicial é o Brasil. A estratégia de aquisição começa pela audiência e comunidade de Fred Azevedo, fundador do SOS Jogador, com a meta dos primeiros 1.000 usuários.": {
-    "en": "The initial market is Brazil. The acquisition strategy starts with the audience and community of Fred Azevedo, founder of Player SOS, with a goal of reaching the first 1,000 users.",
-    "es": "El mercado inicial es Brasil. La estrategia de adquisición comienza con la audiencia y la comunidad de Fred Azevedo, fundador de SOS Jugador, con la meta de alcanzar los primeros 1.000 usuarios."
-  },
-  "% compras,": {
-    "en": "% purchases,",
-    "es": "% compras,"
-  },
-  "% envios; tickets de": {
-    "en": "% withdrawals; tickets of",
-    "es": "% envíos; tickets de"
-  },
-  "% forem resolvidos corretamente pelo autoatendimento, sobram": {
-    "en": "% are resolved correctly by self-service, remain",
-    "es": "% sean resueltos correctamente por el autoservicio, sobran"
-  },
-  "% saques e": {
-    "en": "% cashouts and",
-    "es": "% retiros y"
-  },
   "Ferramentas": {
     "en": "Tools",
     "es": "Herramientas"
@@ -13066,5 +12942,73 @@
   "Verifica reserva defensiva mínima inicial de 50% do patrimônio líquido atualizado e caixa livre suficiente, antes e após staking, transferência à carteira de recompra e custos projetados. A soma dos pesos elegíveis da rodada deve ser positiva.": {
     "en": "Verifies initial minimum defensive reserve of 50% of updated net equity and sufficient free cash, before and after staking, transfer to the buyback wallet and projected costs. The sum of the round's eligible weights must be positive.",
     "es": "Verifica la reserva defensiva mínima inicial del 50% del patrimonio neto actualizado y suficiente efectivo libre, antes y después del staking, transferencia a la billetera de recompra y costos proyectados. La suma de los pesos elegibles de la ronda debe ser positiva."
+  },
+  "A IA BETTEX orquestra agentes de análise e execução. A arte representa a inteligência do projeto; não é uma tela do produto.": {
+    "en": "BETTEX AI orchestrates analysis and execution agents. The artwork represents the project's intelligence; it is not a product screen.",
+    "es": "La IA BETTEX orquesta agentes de análisis y ejecución. La obra representa la inteligencia del proyecto; no es una pantalla del producto."
+  },
+  "Balança, livro-razão e calculadora sobre fundo verde.": {
+    "en": "Scales, ledger and calculator on a green background.",
+    "es": "Balanza, libro mayor y calculadora sobre fondo verde."
+  },
+  "Dados e inferências de várias fontes convergem para a análise; a ilustração é conceitual e não indica integrações ativas.": {
+    "en": "Data and inferences from several sources converge into analysis; the illustration is conceptual and does not indicate active integrations.",
+    "es": "Datos e inferencias de varias fuentes convergen en el análisis; la ilustración es conceptual y no indica integraciones activas."
+  },
+  "Escultura realista de um cérebro sobre fundo escuro.": {
+    "en": "Realistic sculpture of a brain on a dark background.",
+    "es": "Escultura realista de un cerebro sobre fondo oscuro."
+  },
+  "Fluxo de uma transação: da assinatura à verificação": {
+    "en": "Transaction flow: from signature to verification",
+    "es": "Flujo de una transacción: de la firma a la verificación"
+  },
+  "Ilustração conceitual": {
+    "en": "Conceptual illustration",
+    "es": "Ilustración conceptual"
+  },
+  "Ilustração conceitual da Carteira BETTEX, que pertence ao titular. É arte promocional, não uma captura de tela do aplicativo.": {
+    "en": "Conceptual illustration of the BETTEX Wallet, which belongs to the holder. It is promotional artwork, not a screenshot of the app.",
+    "es": "Ilustración conceptual de la Cartera BETTEX, que pertenece al titular. Es arte promocional, no una captura de pantalla de la aplicación."
+  },
+  "Ilustração conceitual do token BETTEX: ele dá acesso ao programa de resultados, sem representar ações ou propriedade da tesouraria.": {
+    "en": "Conceptual illustration of the BETTEX token: it gives access to the results program, without representing shares or ownership of the treasury.",
+    "es": "Ilustración conceptual del token BETTEX: da acceso al programa de resultados, sin representar acciones ni propiedad de la tesorería."
+  },
+  "Ilustração tridimensional de um token de acesso.": {
+    "en": "Three-dimensional illustration of an access token.",
+    "es": "Ilustración tridimensional de un token de acceso."
+  },
+  "Ilustração tridimensional de uma carteira e tokens.": {
+    "en": "Three-dimensional illustration of a wallet and tokens.",
+    "es": "Ilustración tridimensional de una cartera y tokens."
+  },
+  "Rede de módulos conectados cujos fios convergem em um único fluxo luminoso.": {
+    "en": "Network of connected modules whose threads converge into a single glowing stream.",
+    "es": "Red de módulos conectados cuyos hilos convergen en un único flujo luminoso."
+  },
+  "Registros separados e conciliados: ilustração conceitual da separação entre tesouraria, caixa operacional e recompra.": {
+    "en": "Separate, reconciled records: a conceptual illustration of the separation between treasury, operating cash and buyback.",
+    "es": "Registros separados y conciliados: ilustración conceptual de la separación entre tesorería, caja operativa y recompra."
+  },
+  "bettex-intelligence-brain.webp": {
+    "en": "bettex-intelligence-brain.webp",
+    "es": "bettex-intelligence-brain.webp"
+  },
+  "bettix-serious.webp": {
+    "en": "bettix-serious.webp",
+    "es": "bettix-serious.webp"
+  },
+  "predix-serious.webp": {
+    "en": "predix-serious.webp",
+    "es": "predix-serious.webp"
+  },
+  "sportix-serious.webp": {
+    "en": "sportix-serious.webp",
+    "es": "sportix-serious.webp"
+  },
+  "tradix-serious.webp": {
+    "en": "tradix-serious.webp",
+    "es": "tradix-serious.webp"
   }
 }

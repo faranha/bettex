@@ -2,9 +2,9 @@ import thesis from '@/lib/new-economy-thesis.json';
 import './NewEconomySection.css';
 
 const points = [
-  { n: '01', title: 'O trabalho está mudando', text: 'A IA e os robôs estão assumindo cada vez mais tarefas. Com menos espaço para o trabalho humano, depender só do salário fica mais difícil.' },
-  { n: '02', title: 'Não fique fora dessa mudança', text: 'A tecnologia gera riqueza, mas os ganhos podem ficar nas mãos de poucos. Você também precisa de formas de participar dessa nova economia.' },
-  { n: '03', title: 'A IA também pode trabalhar para você', text: 'Com a BETTEX, você participa dos lucros de estratégias geridas por IA, seguindo as regras do projeto. A tecnologia também pode trabalhar a seu favor.' },
+  { n: '01', title: 'O trabalho está mudando', text: 'IA e robôs vão substituir empregos e transferir a geração de valor para sistemas automatizados.' },
+  { n: '02', title: 'Não fique fora dessa mudança', text: 'Quem depende só do salário pode ficar de fora dos ganhos gerados pela IA.' },
+  { n: '03', title: 'A IA também pode trabalhar para você', text: 'BETTEX conecta você aos lucros elegíveis de estratégias com IA.' },
 ];
 
 export function NewEconomySection() {

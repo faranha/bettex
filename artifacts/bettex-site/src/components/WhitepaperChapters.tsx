@@ -40,7 +40,8 @@ import { EntityOrganisation } from '@/components/EntityOrganisation';
 import { DocumentationGovernance } from '@/components/DocumentationGovernance';
 import { ArchitectureCatalogue } from '@/components/architecture/ArchitectureCatalogue';
 import { BuybackPolicy } from '@/components/BuybackPolicy';
-import { InvestmentCycleSchematic, AssetRolesSchematic, WalletAccessSchematic, TokenAllocationSchematic, RiskAuthorizationSchematic } from '@/components/docs-diagrams/DocSchematics';
+import { TokenAllocationSchematic } from '@/components/docs-diagrams/DocSchematics';
+import { DocImage, DocTerms, Dot } from '@/components/DocImage';
 import { FundSecurity } from '@/components/FundSecurity';
 import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure';
 
@@ -104,7 +105,14 @@ function RawChapter({ index }: { index: number }) {
           { label: 'TOKEN', value: 'BETTEX', text: 'Participação no staking; serviços pagos em USDC.' },
           { label: 'TESOURARIA', value: '50% / 25% / 25%', text: 'Split do lucro elegível: tesouraria, staking e carteira de recompra.' },
         ]} />
-        <InvestmentCycleSchematic />
+        <DocImage src="agents/bettex-intelligence-brain.webp" alt="Escultura realista de um cérebro sobre fundo escuro." caption="A IA BETTEX orquestra agentes de análise e execução." />
+        <DocTerms id="schematic-cycle" label="Ciclo do investimento" items={[
+          ['Carteira USDC', 'Compra BETTEX com USDC'],
+          ['BETTEX na carteira', 'Participa automaticamente'],
+          ['Tesouraria e agentes', 'Investem nos quatro mercados'],
+          ['Lucro da própria rodada', 'Após custos e tributos resolvidos, sujeito aos controles'],
+          ['Crédito em USDC', 'Líquido após retenções aplicáveis; recebimento confirmado'],
+        ]} note="Agentes e apuração seguem as rodadas diárias UTC" />
         <BettexFlow figure="1" />
         <Subhead>Camadas do sistema</Subhead>
         <div className="whitepaper__prose">
@@ -137,7 +145,11 @@ function RawChapter({ index }: { index: number }) {
         <BettexFlow figure="2" />
         <Subhead>O que cada ativo representa</Subhead>
         <div className="whitepaper__prose"><p><strong>BETTEX</strong> é o token de participação no staking. Todo BETTEX disponível na carteira oficial participa automaticamente, sem ativação ou depósito adicional. Os tokens pertencem ao titular; enviá-los a outra carteira não significa vendê-los ou sacar USDC. <strong>USDC</strong> é o ativo dos saldos financeiros, movimentações, créditos de distribuição e pagamentos de serviços. As taxas de serviço são pagas em USDC, não em BETTEX. Os ativos têm registros separados.</p><p>Os serviços devem validar contrato, rede, origem, destino e confirmações antes de reconhecer um depósito ou concluir um saque. O fluxo exige rede e versão compatíveis de USDC; um comprovante fiat do on-ramp não substitui a confirmação do recebimento. Divergências mantêm o movimento pendente até conciliação.</p></div>
-        <AssetRolesSchematic />
+        <DocImage src="technology/token-acesso.png" alt="Ilustração tridimensional de um token de acesso." caption="O token BETTEX dá acesso ao programa de resultados, sem representar ações ou propriedade da tesouraria." />
+        <DocTerms id="schematic-asset-roles" label="Papéis dos ativos" items={[
+          ['USDC', <Dot items={['Ativo financeiro', 'Saldos e compras', 'Distribuições e saques', 'Taxas de serviço pagas em USDC']} />],
+          ['BETTEX', <Dot items={['Token de participação', 'Participação automática no staking', 'Não paga taxas nem é capital das estratégias']} />],
+        ]} />
         <div className="whitepaper__aside-callout"><span>BETTEX BANK · PROPOSTA FUTURA</span><p>A conversão de USDC para a moeda da pessoa e pagamentos ou saques fiduciários pertencem à proposta futura do BETTEX Bank, distante da operação inicial. Esse fluxo exigirá venda de USDC, cotação, liquidez, taxas, descontos aplicáveis, conciliação e estrutura jurídica própria. A versão inicial não oferece esse serviço nem opera uma exchange de fiat.</p></div>
       </>;
     case 'documentacao-acesso':
@@ -154,7 +166,13 @@ function RawChapter({ index }: { index: number }) {
           <p>A Carteira BETTEX é a carteira da pessoa criada com a conta no aplicativo oficial; ela pertence ao titular, não à tesouraria do projeto. Ela é livre e portátil: <strong>as chaves e os dados do usuário são exportáveis</strong> por iniciativa do próprio titular. O projeto incentiva a <strong>autocustódia</strong>. Exportar esses dados não é uma etapa do login e não movimenta, por si só, os tokens.</p>
           <p>A autenticação descrita na <strong>v1</strong> demonstra o controle da carteira sem transmitir chave privada ou frase de recuperação ao servidor. O modelo de acesso utiliza dados básicos e as credenciais da carteira, não uma identidade civil verificada. Arbitrum One é a rede de referência do token.</p>
         </div>
-        <WalletAccessSchematic />
+        <DocImage src="app/participacao.webp" alt="Ilustração tridimensional de uma carteira e tokens." caption="A Carteira BETTEX pertence ao titular, com chaves e dados exportáveis." />
+        <DocTerms id="schematic-wallet-access" items={[
+          ['Conta e duas carteiras', 'Pertencem ao titular, não à tesouraria'],
+          ['Autocustódia', 'Chaves e dados exportáveis por iniciativa do titular'],
+          ['Acesso ao aplicativo', 'Comprova o controle da carteira, sem enviar a chave privada'],
+          ['Piscina de staking', 'Fechada: exige acesso ao aplicativo'],
+        ]} />
 
         <div className="whitepaper__prose"><p>A participação na piscina fechada e suas regras estão em <a href="#documentacao-staking">Staking e distribuição de resultados</a>.</p></div>
         <Subhead>Sessão e autorização de pagamento</Subhead>
@@ -276,7 +294,14 @@ function RawChapter({ index }: { index: number }) {
         </div>
         <Subhead>Como o bloqueio funcionaria</Subhead>
         <div className="whitepaper__prose"><p>A API de execução não deve aceitar ordens diretas de uma estratégia ou conector. O núcleo central verifica caixa livre, reservas existentes, exposição por mercado e correlação, perdas realizadas e autorização da integração; a verificação dos limites e o registro da reserva da operação são indivisíveis e devem concluir <strong>antes</strong> de enviá-la. Ordens distintas e simultâneas consideram as reservas umas das outras, sem reutilizar o mesmo capital ou exceder os limites conjuntos. Repetir o mesmo pedido não pode consumir o limite duas vezes nem gerar duas ordens. Falta de cotação confiável, divergência de saldo ou perda de comunicação impede novas ordens até reconciliação.</p><p>Não há alavancagem. Uma pausa de emergência, controlada por pessoas autorizadas e registrada em auditoria, pode impedir novas operações independentemente dos limites; a política de cancelamento de ordens pendentes também precisa ser testada. Limites reduzem exposição, mas não evitam perdas nem autorizam atuação onde a lei, as regras do mercado ou a plataforma proíbem. Operações de cassino mantêm os mesmos tetos e podem perder rapidamente por acaso, variância e vantagem da casa.</p></div>
-        <RiskAuthorizationSchematic />
+        <DocTerms id="schematic-risk-authorization" label="Autorização de cada ordem" items={[
+          ['Estratégia ou conector', 'Propõe a operação'],
+          ['Núcleo de risco', 'Verifica limites, reserva e caixa livre'],
+          ['Reserva de capital', 'Registrada de forma indivisível'],
+          ['Execução automática', 'Somente após validação automática do risco'],
+          ['Conciliação', 'Resultado e estado registrados'],
+          ['Limite ou reserva não atendidos', 'Ordem não enviada'],
+        ]} />
         <TechnicalDetails title="Autorizar e executar: reservas, integridade, custos e propostas coordenadas">
           <OrderReservations />
           <AuthorizedRequestIntegrity />

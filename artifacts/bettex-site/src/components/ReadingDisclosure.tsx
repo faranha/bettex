@@ -25,19 +25,6 @@ export function ReadingDisclosure({ title, hint, children, className = '', id, h
   );
 }
 
-/** Scoped expand/collapse-all controls: act on every <details> inside the element matching `scope`. */
-export function ExpandControls({ scope, label }: { scope: string; label: string }) {
-  const set = (open: boolean) => {
-    document.querySelectorAll<HTMLDetailsElement>(`${scope} details`).forEach((d) => { d.open = open; });
-  };
-  return (
-    <div className="reading-controls" role="group" aria-label={label}>
-      <button type="button" onClick={() => set(true)}>Expandir tudo</button>
-      <button type="button" onClick={() => set(false)}>Recolher tudo</button>
-    </div>
-  );
-}
-
 export type TopicInfo = { title: ReactNode; id?: string; drop: boolean } | 'bare' | null;
 
 /** Default recognition: whitepaper subheads become topics; DocFacts, leads, callouts and keep-marked blocks stay visible. */

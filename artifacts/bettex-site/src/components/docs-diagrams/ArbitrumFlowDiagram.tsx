@@ -1,4 +1,7 @@
-import { DocFigure, FlowLane, Link2, type FlowNode } from './DocFlow';
+import { DocTerms } from '../DocImage';
+import { type FlowNode } from './DocFlow';
+
+const terms = (n: FlowNode[]): [string, string][] => n.map((x) => [x.title, x.text]);
 
 const main: FlowNode[] = [
   { tag: '01', title: 'Carteira do titular', text: 'A carteira assina a transação com o token BETTEX. A chave privada permanece com o titular.', tone: 'ink' },
@@ -16,15 +19,10 @@ const branch: FlowNode[] = [
 
 export function ArbitrumFlowDiagram() {
   return (
-    <DocFigure
-      id="documentacao-diagrama-arbitrum"
-      label="Fluxo de uma transação"
-      title="Da assinatura à verificação"
-      caption={<>Referência: <a href="https://docs.arbitrum.io/how-arbitrum-works/deep-dives/sequencer-transaction-flow" target="_blank" rel="noopener noreferrer">fluxo de transações na documentação oficial da Arbitrum</a>.</>}
-    >
-      <FlowLane label="Caminho da transação" nodes={main} />
-      <Link2 label="Observação separada: leitura de eventos já confirmados" />
-      <FlowLane label="Ramo de observação do backend" nodes={branch} dashed />
-    </DocFigure>
+    <div id="documentacao-diagrama-arbitrum" data-testid="documentacao-diagrama-arbitrum">
+      <DocTerms label="Fluxo de uma transação: da assinatura à verificação" items={terms(main)} />
+      <DocTerms label="Observação separada: leitura de eventos já confirmados" items={terms(branch)} />
+      <div className="whitepaper__prose"><p>Referência: <a href="https://docs.arbitrum.io/how-arbitrum-works/deep-dives/sequencer-transaction-flow" target="_blank" rel="noopener noreferrer">fluxo de transações na documentação oficial da Arbitrum</a>.</p></div>
+    </div>
   );
 }

@@ -36,3 +36,17 @@
 .gs-list{margin:12px 0}
 .gs-list li+li{margin-top:6px}
 .fp a,.gs-list a{overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:3px}
+
+/* Documentation founder variant */
+.fp--doc{display:grid;grid-template-columns:minmax(0,1fr);column-gap:32px;padding:28px}
+.fp--doc .fp__portrait{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 20%;border-radius:12px;margin-bottom:18px;filter:saturate(.92)}
+.fp--doc .fp__quote{font-size:clamp(1.15rem,2.2vw,1.55rem);font-weight:700;line-height:1.3;border-left:3px solid #F2B632;padding-left:16px}
+.fp--doc .fp__ini{display:none}
+.fp--doc .fp__grid strong{font-size:clamp(1.4rem,2.5vw,1.9rem);overflow-wrap:normal;word-break:normal}
+@media(min-width:768px){
+.fp--doc{grid-template-columns:240px minmax(0,1fr)}
+.fp--doc>*{grid-column:2}
+.fp--doc>.fp__portrait{grid-column:1;grid-row:1/span 4;margin:0;height:auto;aspect-ratio:4/5;align-self:start}
+.fp--doc .fp__grid{grid-column:1/-1;grid-template-columns:repeat(4,minmax(0,1fr))}
+.fp--doc .fp__cap{grid-column:1/-1}
+}
