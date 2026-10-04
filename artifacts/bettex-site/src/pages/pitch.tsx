@@ -2,6 +2,7 @@ import { useEffect, type ReactNode } from 'react';
 import { ArrowRight, CircuitBoard, ExternalLink } from 'lucide-react';
 import g from '@/lib/growth-strategy.json';
 import { FounderProfile } from '@/components/FounderProfile';
+import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { founderSocials } from '@/lib/founder-socials';
 import { ProblemSection } from '@/components/pitch/ProblemSection';
 import { AudienceSection } from '@/components/pitch/AudienceSection';
@@ -11,6 +12,7 @@ import { economicComparisonRows } from '@/components/pitch/EconomicComparisonRow
 import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
 import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
 import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipationFlow';
+import { ChapterHero } from '@/components/pitch/ChapterHero';
 import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
 import { formatCryptoDailyBillions } from '@/components/pitch/marketFlow';
 import { t, useLocale } from '@/lib/i18n';
@@ -20,17 +22,15 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
 const LINKEDIN = founderSocials.find(({ name }) => name === 'LinkedIn')!.href;
 
-function Sec({ id, n, kicker, title, dark = false, summary, subsection = false, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; subsection?: boolean; children: ReactNode }) {
+function Sec({ id, n, kicker, title, dark = false, summary, hero, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; hero?: string; children: ReactNode }) {
   return <section id={id} aria-labelledby={`${id}-t`} className={`slide ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
-    <header className={`slide__head ${dark ? 'slide__head--ink' : 'slide__head--paper'}`}>
+    {hero && n ? <ChapterHero id={id} n={n} kicker={kicker} title={title} summary={summary ?? ''} src={hero} tone={id === 'solucao' ? 'blue' : 'ink'} /> : <header className={`slide__head ${dark ? 'slide__head--ink' : 'slide__head--paper'}`}>
       <div className="page-wrap slide__headin">
-        <div className={`mono flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}>{n ? <span className="whitespace-nowrap">{n} / 10</span> : null}<span className="h-px w-10 shrink-0 bg-current" aria-hidden="true" />{kicker}</div>
-        {subsection
-          ? <h3 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h3>
-          : <h2 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h2>}
+        <div className={`mono flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}><span className="h-px w-10 shrink-0 bg-current" aria-hidden="true" />{kicker}</div>
+        <h3 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h3>
         {summary ? <p className={`mt-5 max-w-[700px] text-base leading-7 ${dark ? 'text-[#e3eaff]' : 'text-[#183173]'}`}>{summary}</p> : null}
       </div>
-    </header>
+    </header>}
     <div className="page-wrap slide__body">{children}</div>
   </section>;
 }
@@ -44,7 +44,7 @@ function Card({ label, title, children, dark = false }: { label: string; title: 
 }
 
 const A = ({ href, children, dark = false }: { href: string; children: ReactNode; dark?: boolean }) => <a href={href} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 font-bold underline underline-offset-4 ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}>{children}<ExternalLink className="h-3.5 w-3.5" aria-hidden="true" /></a>;
-const Doc = ({ hash, children, dark = false }: { hash: string; children: ReactNode; dark?: boolean }) => <a href={`${DOC}#${hash}`} target="_blank" rel="noopener noreferrer" className={`tap inline-flex min-h-11 items-center gap-2 text-sm font-bold underline underline-offset-4 ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}>{children}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>;
+const Doc = ({ hash, children, dark = false }: { hash: string; children: ReactNode; dark?: boolean }) => <a href={`${DOC}#${hash}`} className={`tap inline-flex min-h-11 items-center gap-2 text-sm font-bold underline underline-offset-4 ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}>{children}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>;
 
 export function PitchPage() {
   useLocale();
@@ -78,12 +78,12 @@ export function PitchPage() {
       <div className="page-wrap relative pb-8 pt-8 sm:pb-12 sm:pt-14">
         <div className="cover__grid">
           <div className="cover__copy">
-            <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">01 / 10 · Início</span>
+            <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">01 / 9 · Início</span>
             <h1 className="pitch-rise display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Tecnologia de investimento para o apostador brasileiro, <span className="text-[#F2B632]">gerida por IA.</span></h1>
-            <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t('Mais de 60 milhões de brasileiros no público potencial estimado.')}{' '}{t(`Cripto: cerca de R$ ${cryptoDailyBillions} bilhão por dia.`)}{' '}{t('Bets: referência histórica de R$ 600 milhões por dia.')}</strong>{' '}A oportunidade é um produto de investimento que fale a língua dessas pessoas.{' '}<a href="#publico-pitch" target="_blank" rel="noopener noreferrer">Público e movimentação financeira.</a></p>
+            <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t('Mais de 60 milhões de brasileiros no público potencial estimado.')}{' '}{t(`Cripto: cerca de R$ ${cryptoDailyBillions} bilhão por dia.`)}{' '}{t('Bets: referência histórica de R$ 600 milhões por dia.')}</strong>{' '}A oportunidade é um produto de investimento que fale a língua dessas pessoas.{' '}<a href="#publico-pitch">Público e movimentação financeira.</a></p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#solucao" target="_blank" rel="noopener noreferrer" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
-              <a href={DOC} target="_blank" rel="noopener noreferrer" className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
+              <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
+              <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
             </div>
           </div>
           <figure className="cover__fred pitch-rise">
@@ -99,12 +99,14 @@ export function PitchPage() {
       </div>
     </section>
 
+    <TechnologyNetworks />
+
     <AudienceSection />
     <ProblemSection />
 
     <FutureSections />
 
-    <Sec id="solucao" summary="Produto de tecnologia com IA, operado por uma empresa privada. Quatro frentes de atuação." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
+    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" summary="Produto de tecnologia com IA, operado por uma empresa privada. Quatro frentes de atuação." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
       <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A oportunidade da BETTEX é oferecer a esses públicos um produto de investimento com experiência familiar, linguagem acessível e estratégias geridas por IA. O objetivo é redirecionar a busca por retorno financeiro das apostas para a participação em resultados de investimentos em mercados de risco.</p>
       <div className="fu-position">
         <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
@@ -123,15 +125,15 @@ export function PitchPage() {
         </p>
       </div>
       <Doc hash="documentacao-oportunidade">Ver regras na documentação</Doc>
-    </Sec>
 
-    <Sec id="diferencial" summary="O usuário participa dos resultados do projeto, sem escolher cada operação ou depender apenas da revenda do token." n="06" kicker="Diferenciação proposta" dark title={<>A diferença está <span className="text-[#F2B632]">no direito econômico.</span></>}>
+    <Sec id="diferencial" summary="O usuário participa dos resultados do projeto, sem escolher cada operação ou depender apenas da revenda do token." kicker="Diferenciação proposta" dark title={<>A diferença está <span className="text-[#F2B632]">no direito econômico.</span></>}>
       <EconomicComparison rows={economicComparisonRows} />
       <p className="mt-5 text-xs leading-6 text-[#c5d2f1]">Custos, direitos e regras das alternativas variam conforme a plataforma e o contrato.</p>
       <p className="mt-6 max-w-[720px] text-sm leading-7 text-[#c5d2f1]">Nenhuma promessa de que a IA supere o mercado. O desempenho líquido das estratégias precisa ser medido contra uma referência.</p>
     </Sec>
+    </Sec>
 
-    <Sec id="fundador" summary="Aquisição founder-led, com audiência própria e experiência de distribuição." n="07" kicker="Fundador e distribuição" dark title={<>Experiência de aquisição <span className="text-[#F2B632]">e canais próprios.</span></>}>
+    <Sec id="fundador" hero="./fred-azevedo.png" summary="Aquisição founder-led, com audiência própria e experiência de distribuição." n="06" kicker="Fundador e distribuição" dark title={<>Experiência de aquisição <span className="text-[#F2B632]">e canais próprios.</span></>}>
       <FounderProfile dark portrait noDashes thirdPerson />
       <div className="mt-6">
         <Card dark label="Alinhamento do fundador" title="Sem salário. Sem retiradas da empresa.">{g.founder.bettexEarnings}</Card>
@@ -141,7 +143,7 @@ export function PitchPage() {
     </Sec>
 
     <section id="tokenomics" aria-labelledby="economia-t">
-    <Sec id="economia" summary="Duas receitas separadas: tarifa fixa de US$ 2,50 em USDC e ganhos de investimento da tesouraria." n="08" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Receitas, tesouraria e direitos do token.</span></>}>
+    <Sec id="economia" hero="pitch-illustrations/pitch-token-participation.webp" summary="Duas receitas separadas: tarifa fixa de US$ 2,50 em USDC e ganhos de investimento da tesouraria." n="07" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Receitas, tesouraria e direitos do token.</span></>}>
       <h3 className="display mb-6 text-2xl font-extrabold">O dinheiro da empresa não se mistura ao da tesouraria.</h3>
       <div className="mb-8 grid gap-4 md:grid-cols-3">
         <Card label="Venda pública primária" title="100% para a tesouraria">O preço dos tokens financia as estratégias. A venda não é lucro distribuível nem receita livre da empresa.</Card>
@@ -166,7 +168,7 @@ export function PitchPage() {
       <Doc hash="documentacao-plano-negocios">Plano-base de negócios na documentação</Doc>
     </Sec>
 
-    <Sec id="token" subsection kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Três alocações.</span></>}>
+    <Sec id="token" kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Três alocações.</span></>}>
       <PitchTokenCharts />
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <Card dark label="Público" title="65% · 650 milhões">Tokens destinados à venda pública, cujo preço primário financia integralmente a tesouraria.</Card>
@@ -185,7 +187,7 @@ export function PitchPage() {
     </Sec>
     </section>
 
-    <Sec id="publico" summary="Meta de 1.000 usuários nos primeiros três meses de operação, incluindo os primeiros compradores, sem custo de aquisição para a BETTEX." n="09" kicker="Go to market no Brasil" dark title={<>Aquisição orgânica. <span className="text-[#F2B632]">Financiada pelo fundador.</span></>}>
+    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="Meta de 1.000 usuários nos primeiros três meses de operação, incluindo os primeiros compradores, sem custo de aquisição para a BETTEX." n="08" kicker="Go to market no Brasil" dark title={<>Aquisição orgânica. <span className="text-[#F2B632]">Financiada pelo fundador.</span></>}>
       <PitchEditorialSplit dark image={<PitchEditorialImage dark name="pitch-brazil-community" />}>
       <p className="max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo vai financiar a aquisição inicial com seu orçamento corrente. Sua audiência no Instagram entra na comunidade do Telegram e segue para o aplicativo BETTEX, trazendo os primeiros compradores e usuários para validar o produto, sem cobrar esse custo da empresa.</p>
       <FounderLaunchFunnel />
@@ -195,7 +197,7 @@ export function PitchPage() {
       <Doc dark hash="documentacao-aquisicao-retencao">Plano de aquisição e retenção na documentação</Doc>
     </Sec>
 
-    <Sec id="recursos" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="10" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>
+    <Sec id="recursos" hero="pitch-illustrations/pitch-product-development.webp" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="09" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>
       <PitchEditorialSplit image={<PitchEditorialImage name="pitch-product-development" />}>
       <div className="grid gap-4 md:grid-cols-3">
         <Card label="Destino do capital" title="Tecnologia e marketing, sem salários">{g.launch.angelFundingUse}</Card>
@@ -210,8 +212,8 @@ export function PitchPage() {
           {['Sem renda garantida; não substitui salário.', 'Parecer jurídico, permissões de provedores, contratos e segurança são necessários antes de operações com dinheiro real.', 'Frentes de esportes e iGaming dependem de compatibilidade regulatória e não estão todas autorizadas.', 'Demanda, desempenho da IA, custos e liquidez ainda não foram testados.'].map((r) => <li key={r} className="rounded-2xl border border-[#2B59FF]/40 bg-[#0d1536] p-5 text-[15px] leading-7 text-[#c5d2f1]">{r}</li>)}
         </ul>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href={DOC} target="_blank" rel="noopener noreferrer" className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F2B632] px-7 py-3.5 text-sm font-bold text-[#070B1F]">Ler a documentação completa <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
-          <a href={`${DOC}#documentacao-oportunidade`} target="_blank" rel="noopener noreferrer" className="tap inline-flex min-h-12 items-center rounded-full border-2 border-[#F4F1E8]/70 px-7 py-3.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ver a pesquisa</a>
+          <a href={DOC} className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F2B632] px-7 py-3.5 text-sm font-bold text-[#070B1F]">Ler a documentação completa <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
+          <a href={`${DOC}#documentacao-oportunidade`} className="tap inline-flex min-h-12 items-center rounded-full border-2 border-[#F4F1E8]/70 px-7 py-3.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ver a pesquisa</a>
         </div>
       </div>
     </Sec>

@@ -9,6 +9,12 @@ Use explicit JSX heading branches when switching heading levels; don't add HTML 
 
 **How to apply:** Prefer conditional `<h2>` / `<h3>` elements rather than a variable containing those tag strings, and verify source-message coverage after changing semantic heading levels.
 
+Keep routing IDs and asset aliases out of scanned copy positions.
+
+**Why:** The source-message extractor scans most string literals, not only translation-call arguments. Route IDs, custom image alias props and quoted asset lookup keys can become false missing-translation failures.
+
+**How to apply:** Reuse existing route definitions instead of repeating technical IDs in expressions. For images, prefer standard `src` props and relative file paths over unrecognized alias strings. Do not add technical identifiers to the translation catalogue to silence these failures.
+
 Em JSX com o runtime de localização do site, colocar `key` antes de props espalhadas (`{...props}`).
 
 **Why:** Babel converte elementos com `key` depois de um spread para `createElement` importado da raiz do `jsxImportSource`. O runtime local não expõe essa raiz, causando erro de módulo mesmo quando o TypeScript passa.

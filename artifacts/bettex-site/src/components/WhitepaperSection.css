@@ -170,7 +170,7 @@
 .whitepaper__chapter-pagination a:hover { background: #F4F1E8; transform: translateY(-2px); }
 .whitepaper__chapter-pagination a span { color: #21429c; font: 700 10px/1.4 var(--app-font-mono); letter-spacing: .09em; }
 .whitepaper__chapter-pagination a strong { font: 800 17px/1.3 var(--app-font-serif); }
-@keyframes wp-enter { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes wp-enter { from { opacity: 0; } to { opacity: 1; } }
 @media (max-width: 900px) {
   .whitepaper__body { grid-template-columns: 190px minmax(0, 1fr); gap: 35px; }
   .whitepaper__hero { grid-template-columns: 1fr; gap: 35px; }

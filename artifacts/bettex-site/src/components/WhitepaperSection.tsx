@@ -37,7 +37,7 @@ export function WhitepaperSection() {
     }
     openAncestors(el);
     requestAnimationFrame(() => {
-      const top = el.getBoundingClientRect().top + window.scrollY - scrollOffset();
+      const top = el.getBoundingClientRect().top + window.scrollY - scrollOffset(el);
       window.scrollTo({ top: Math.max(0, top), behavior: smooth && !switchingChapter && !prefersReduced() ? 'smooth' : 'instant' });
       const focusEl = el instanceof HTMLDetailsElement ? el.querySelector<HTMLElement>('summary') ?? el : el;
       if (!focusEl.hasAttribute('tabindex') && focusEl.tagName !== 'SUMMARY') focusEl.setAttribute('tabindex', '-1');

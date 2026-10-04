@@ -97,7 +97,7 @@
 
 @layer base {
   * { @apply border-border; }
-  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--site-header-h, 73px); }
   body { @apply bg-background text-foreground antialiased font-sans; }
   button, input { font: inherit; }
   button { cursor: pointer; }
@@ -108,8 +108,12 @@
 
 .display { font-family: var(--app-font-serif); }
 /* Homepage anchors account for the sticky header once, not once per section. */
-html:has(.home-page) { scroll-padding-top: var(--site-header-h, 73px); }
+html:has(.home-page) { scroll-padding-top: var(--home-sticky-h, var(--site-header-h, 73px)); }
 .home-page section[id] { scroll-margin-top: 0; }
+/* Each page compensates its persistent navigation exactly once. */
+html:has(.pitch) { scroll-padding-top: var(--pitch-sticky-h, 120px); }
+html:has(.whitepaper) { scroll-padding-top: var(--documentation-sticky-h, var(--site-header-h, 73px)); }
+.whitepaper[id], .whitepaper [id], .whitepaper__content { scroll-margin-top: 0 !important; }
 /* Native scrolling stays available, with the same treatment on both axes. */
 * {
   scrollbar-width: thin;
@@ -159,3 +163,15 @@ html:has(.home-page) { scroll-padding-top: var(--site-header-h, 73px); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Unified site navigation: text tabs with an underline rule, no capsules. */
+.site-main-nav { align-items: stretch; align-self: stretch; gap: 2px; margin-right: 14px; }
+.site-page-link--tab { position: relative; display: inline-flex; align-items: center; padding: 0 12px; font-size: 13px; font-weight: 600; color: #aebbd9; transition: color .15s; }
+.site-page-link--tab::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; background: #2b59ff; transform: scaleX(0); transition: transform .18s; }
+.site-page-link--tab:hover { color: #f4f1e8; }
+.site-page-link--tab[aria-current="page"] { color: #fff; }
+.site-page-link--tab[aria-current="page"]::after { transform: scaleX(1); }
+.site-page-link--tile { display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-left: 2px solid #2b59ff40; font-size: 15px; font-weight: 600; color: #c5d2f1; }
+.site-page-link--tile[aria-current="page"] { border-left-color: #2b59ff; color: #fff; background: #13204f; }
+.site-header .lang-selector { border-radius: 6px; border-color: #5f86ff40; }
+@media (min-width: 1280px) { .site-header .lang-selector { height: 34px; } }

@@ -31,7 +31,7 @@ O tema Elon Musk e o cenário apocalíptico vêm antes dos indicadores sobre a e
 
 **Why:** O criador revisou a ordem anterior, mostrou “Resgatar o futuro das pessoas” e corrigiu: “essa parte vem abaixo da parte do Elon Musk amigo”.
 
-**How to apply:** Preservar a sequência interna na área unificada de Ambiente externo, mantendo as evidências remanescentes, os gráficos brasileiros, as matérias e as imagens do bloco de Elon Musk. A missão de resgatar o futuro pertence à Solução. O criador adiou a atualização do menu.
+**How to apply:** Preservar a sequência interna na área unificada de Ambiente externo, mantendo as evidências remanescentes, os gráficos brasileiros, as matérias e as imagens do bloco de Elon Musk. A missão de resgatar o futuro pertence à Solução. O menu principal acompanha as áreas unificadas.
 
 Na parte de Elon Musk, manter apenas o conteúdo mais polêmico, problemático e apocalíptico, sem a contraposição otimista ou explicações secundárias.
 

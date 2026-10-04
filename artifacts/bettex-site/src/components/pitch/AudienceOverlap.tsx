@@ -12,6 +12,15 @@ export function AudienceOverlap() {
   const share = fmt(s.cryptoShare * 100, 1);
   const overlap = fmt(s.overlapMillions);
   const combined = fmt(s.combinedMillions);
+  // Labels belong in the exclusive portions, not at the circle centers.
+  const bettingLabelX = (geometry.bettingX - geometry.bettingRadius + geometry.cryptoX - geometry.cryptoRadius) / 2;
+  const cryptoLabelX = (geometry.bettingX + geometry.bettingRadius + geometry.cryptoX + geometry.cryptoRadius) / 2;
+  const circleY = 210;
+  // The lens starts at the lower of the two upper circle boundaries here.
+  const intersectionTop = circleY - Math.min(
+    Math.sqrt(geometry.bettingRadius ** 2 - (geometry.overlapX - geometry.bettingX) ** 2),
+    Math.sqrt(geometry.cryptoRadius ** 2 - (geometry.overlapX - geometry.cryptoX) ** 2),
+  );
   const title = t('Públicos potenciais e público central');
   const desc = `${t('Público potencial de apostadores')}: ${bet} ${t('milhões')}. ${t('Público potencial com experiência em cripto')}: ${cry} ${t('milhões')}. ${t('Público central estimado')}: ${overlap} ${t('milhões')}. ${t('Alcance potencial combinado, sem duplicados')}: ${combined} ${t('milhões')}.`;
   return <section className="pb-overlap" id="audience-overlap" data-testid="audience-overlap" aria-labelledby="audience-overlap-title">
@@ -33,28 +42,29 @@ export function AudienceOverlap() {
           <circle cx={geometry.bettingX} cy="210" r={geometry.bettingRadius} clipPath="url(#audience-overlap-crypto-clip)" fill="#f2b632" />
           <g textAnchor="middle" fill="#f2b632">
             <text x={geometry.overlapX} y="28" className="pb-overlap__svg-core" fontSize="15" fontWeight="700">{t('Público central estimado')}</text>
-            <path d={`M${geometry.overlapX} 40V155`} fill="none" stroke="#f2b632" strokeWidth="1.5" />
+            <path d={`M${geometry.overlapX} 40V${intersectionTop}`} fill="none" stroke="#f2b632" strokeWidth="1.5" />
+            <circle cx={geometry.overlapX} cy={intersectionTop} r="3" />
           </g>
           <g textAnchor="middle" fill="#f4f1e8" data-testid="audience-betting-labels">
-            <UsersRound x={geometry.bettingX - 17} y="96" width="34" height="34" stroke="#f4f1e8" aria-hidden="true" />
-            <text x={geometry.bettingX} y="154" className="pb-overlap__svg-role" fontSize="13" fontWeight="600">{t('Público potencial')}</text>
-            <text x={geometry.bettingX} y="154" className="pb-overlap__svg-role-compact" fontSize="19" fontWeight="600">{t('Potencial')}</text>
-            <text x={geometry.bettingX} y="181" className="pb-overlap__svg-label" fontSize="15" fontWeight="700">{t('Apostadores')}</text>
-            <text x={geometry.bettingX} y="250" fontSize="50" fontWeight="800">{bet}</text>
-            <text x={geometry.bettingX} y="275" className="pb-overlap__svg-unit" fontSize="14">{t('milhões')}</text>
+            <UsersRound x={bettingLabelX - 17} y="96" width="34" height="34" stroke="#f4f1e8" aria-hidden="true" />
+            <text x={bettingLabelX} y="154" className="pb-overlap__svg-role" fontSize="13" fontWeight="600">{t('Público potencial')}</text>
+            <text x={bettingLabelX} y="154" className="pb-overlap__svg-role-compact" fontSize="19" fontWeight="600">{t('Potencial')}</text>
+            <text x={bettingLabelX} y="181" className="pb-overlap__svg-label" fontSize="15" fontWeight="700">{t('Apostadores')}</text>
+            <text x={bettingLabelX} y="250" fontSize="50" fontWeight="800">{bet}</text>
+            <text x={bettingLabelX} y="275" className="pb-overlap__svg-unit" fontSize="14">{t('milhões')}</text>
           </g>
           <g textAnchor="middle" fill="#f4f1e8" data-testid="audience-crypto-labels">
-            <UsersRound x={geometry.cryptoX - 17} y="96" width="34" height="34" stroke="#f4f1e8" aria-hidden="true" />
-            <text x={geometry.cryptoX} y="154" className="pb-overlap__svg-role" fontSize="13" fontWeight="600">{t('Público potencial')}</text>
-            <text x={geometry.cryptoX} y="154" className="pb-overlap__svg-role-compact" fontSize="19" fontWeight="600">{t('Potencial')}</text>
-            <text x={geometry.cryptoX} y="181" className="pb-overlap__svg-label" fontSize="15" fontWeight="700">{t('Já tiveram')}</text>
-            <text x={geometry.cryptoX} y="200" className="pb-overlap__svg-label" fontSize="15" fontWeight="700">{t('cripto')}</text>
-            <text x={geometry.cryptoX} y="250" fontSize="50" fontWeight="800">{cry}</text>
-            <text x={geometry.cryptoX} y="275" className="pb-overlap__svg-unit" fontSize="14">{t('milhões')}</text>
+            <UsersRound x={cryptoLabelX - 17} y="96" width="34" height="34" stroke="#f4f1e8" aria-hidden="true" />
+            <text x={cryptoLabelX} y="154" className="pb-overlap__svg-role" fontSize="13" fontWeight="600">{t('Público potencial')}</text>
+            <text x={cryptoLabelX} y="154" className="pb-overlap__svg-role-compact" fontSize="19" fontWeight="600">{t('Potencial')}</text>
+            <text x={cryptoLabelX} y="181" className="pb-overlap__svg-label" fontSize="15" fontWeight="700">{t('Já tiveram')}</text>
+            <text x={cryptoLabelX} y="200" className="pb-overlap__svg-label" fontSize="15" fontWeight="700">{t('cripto')}</text>
+            <text x={cryptoLabelX} y="250" fontSize="50" fontWeight="800">{cry}</text>
+            <text x={cryptoLabelX} y="275" className="pb-overlap__svg-unit" fontSize="14">{t('milhões')}</text>
           </g>
           <g textAnchor="middle" fill="#070b1f">
-            <text x={geometry.overlapX} y="245" fontSize="32" fontWeight="800">{overlap}</text>
-            <text x={geometry.overlapX} y="268" className="pb-overlap__svg-unit pb-overlap__svg-overlap-unit" fontSize="13" fontWeight="700">{t('milhões')}</text>
+            <text x={geometry.overlapX} y={circleY} dominantBaseline="middle" fontSize="32" fontWeight="800">{overlap}</text>
+            <text x={geometry.overlapX} y={circleY + 29} className="pb-overlap__svg-unit pb-overlap__svg-overlap-unit" fontSize="13" fontWeight="700">{t('milhões')}</text>
           </g>
         </svg>
         <figcaption>{t('Valores em milhões de pessoas. Áreas proporcionais ao cenário estimado, não a uma medição real.')}</figcaption>

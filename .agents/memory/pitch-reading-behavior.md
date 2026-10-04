@@ -3,11 +3,17 @@ name: Leitura do pitch
 description: Conteúdo do Pitch sempre visível e Diferenciação apresentada em quadro comparativo.
 ---
 
-A ordem de conteúdo aprovada é: Início (Hero), Público, Problema, Ambiente externo, Solução, Diferenciação, Fundador, Tokenomics e as partes finais já existentes.
+A ordem de conteúdo aprovada é: Início (Hero), Público, Problema, Ambiente externo, Solução (incluindo Diferenciação), Fundador, Tokenomics e as partes finais já existentes.
 
 **Why:** O criador distinguiu apresentação do público, problemas e análise do cenário, e pediu reorganizar o conteúdo antes de ajustar o menu.
 
-**How to apply:** Público termina imediatamente antes de “Apostar não é investir”, que abre Problema. Problema apresenta duas questões: perdas em apostas tratadas como investimento e desemprego/renda ameaçados pela IA, segundo a visão da BETTEX. Ambiente externo reúne Musk e economia real, antes separados em IA e trabalho e Resgatar o futuro. Solução e Diferenciação vêm depois. Tokenomics reúne os antigos blocos Economia e Token, preservando suas subseções e gráficos. O menu foi explicitamente adiado: não alinhá-lo sem o próximo pedido do criador.
+**How to apply:** Público termina imediatamente antes de “Apostar não é investir”, que abre Problema. Problema apresenta duas questões: perdas em apostas tratadas como investimento e desemprego/renda ameaçados pela IA, segundo a visão da BETTEX. Ambiente externo reúne Musk e economia real, antes separados em IA e trabalho e Resgatar o futuro. Solução vem depois, com Diferenciação dentro dela. Tokenomics reúne os antigos blocos Economia e Token, preservando suas subseções e gráficos. O criador posteriormente pediu alinhar o menu: manter a mesma ordem de áreas no desktop e no celular, sem reintroduzir IA e trabalho, Resgatar o futuro, Economia, Token ou Diferenciação como itens principais separados.
+
+Cada seção principal da apresentação do Pitch precisa de um hero próprio de abertura no meio da página, alinhado ao menu. “Hero de subseção” não significa um novo Hero de homepage ou do topo.
+
+**Why:** O criador disse que a apresentação ainda não está estruturada, pediu uma abertura própria para cada parte e esclareceu que se refere às seções no meio da página.
+
+**How to apply:** Estruturar uma abertura identificável antes do conteúdo de cada capítulo, respeitando a ordem aprovada e sem substituir o Hero inicial por essas aberturas. Manter os destinos do menu alinhados ao começo dessas áreas; as subseções internas de Tokenomics não são novos capítulos principais.
 
 No pitch, apresentar todo o conteúdo das seções diretamente na página, sem caixas expansíveis ou controles de expandir e recolher.
 
@@ -15,7 +21,13 @@ No pitch, apresentar todo o conteúdo das seções diretamente na página, sem c
 
 **How to apply:** Não reintroduzir sanfonas ao reorganizar ou redesenhar o pitch. Essa decisão é específica do pitch e não manda remover as caixas expansíveis da documentação.
 
-Na seção Diferenciação do Pitch, usar um quadro comparativo entre aposta individual, token centrado no preço e BETTEX, avaliando os mesmos critérios lado a lado, em vez de cartões independentes.
+Diferenciação fica dentro de Solução, não é uma seção principal separada.
+
+**Why:** O criador corrigiu explicitamente: “a diferenciacao nao eh uma secao separada ela fica dentro de solucao”.
+
+**How to apply:** Preservar o comparativo e seus textos como subseção de Solução, sem item próprio no menu principal nem hero de capítulo independente.
+
+Na subseção Diferenciação do Pitch, usar um quadro comparativo entre aposta individual, token centrado no preço e BETTEX, avaliando os mesmos critérios lado a lado, em vez de cartões independentes.
 
 **Why:** O criador disse que sem um comparativo “nada disso faz sentido” e exigiu “Tem que ser um quadro comparativo”.
 

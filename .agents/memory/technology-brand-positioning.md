@@ -32,3 +32,9 @@ As alterações desta faixa devem ficar limitadas à área abaixo do hero e aos 
 **Why:** O criador cobrou que o merge se limite “apenas e apenas a area modificada, abaix do hero”, porque outras partes já receberam alterações.
 
 **How to apply:** Integrar somente a importação e a inserção da faixa sobre a versão atual da homepage; não substituir páginas completas nem incluir alterações preexistentes do Pitch ou de outras seções.
+
+O Pitch também deve ter a mesma faixa de marcas, logo abaixo do hero e antes de Público.
+
+**Why:** O criador apontou que o hero e a primeira seção se confundem visualmente e escolheu a faixa existente na homepage como separação.
+
+**How to apply:** Reutilizar a apresentação existente no Pitch, sem alterar o conteúdo nem a faixa da homepage.
