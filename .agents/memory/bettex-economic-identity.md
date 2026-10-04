@@ -21,6 +21,12 @@ A proposta não se limita a estratégias de investimento tradicionais: inclui es
 
 **How to apply:** Descrever o escopo mais amplo das estratégias e distinguir a experiência de aposta da participação nos resultados. Preservar a identidade de produto de tecnologia, não fundo, e não transformar a estética em afirmação de ganhos garantidos ou ausência de risco.
 
+A oportunidade comercial é vender um token para um público que aposta como se investisse. O token representa investimento em tecnologia com estética de aposta e oferece um caminho mais saudável para começar a pensar em investir, sem tratar jogo como investimento.
+
+**Why:** O criador definiu essa oportunidade explicitamente e rejeitou substituí-la por um texto genérico sobre experiência compreensível, custos e riscos.
+
+**How to apply:** Apresentar essa tese em linguagem simples no Pitch e nas traduções, preservando a distinção entre estética de aposta e investimento em tecnologia, sem inventar resultados ou garantias.
+
 O nome público do mercado é “iGaming”, não “Cassinos”, em toda a apresentação, todo o site e todas as páginas, incluindo traduções.
 
 **Why:** O criador pediu expressamente essa troca global.

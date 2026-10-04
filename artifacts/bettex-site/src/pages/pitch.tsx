@@ -78,7 +78,7 @@ export function PitchPage() {
       <div className="page-wrap relative pb-8 pt-8 sm:pb-12 sm:pt-14">
         <div className="cover__grid">
           <div className="cover__copy">
-            <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">01 / 9 · Início</span>
+            <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Início</span>
             <h1 className="pitch-rise display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Tecnologia de investimento para o apostador brasileiro, <span className="text-[#F2B632]">gerida por IA.</span></h1>
             <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t('Mais de 60 milhões de brasileiros no público potencial estimado.')}{' '}{t(`Cripto: cerca de R$ ${cryptoDailyBillions} bilhão por dia.`)}{' '}{t('Bets: referência histórica de R$ 600 milhões por dia.')}</strong>{' '}A oportunidade é um produto de investimento que fale a língua dessas pessoas.{' '}<a href="#publico-pitch">Público e movimentação financeira.</a></p>
             <div className="mt-6 flex flex-wrap gap-3">
