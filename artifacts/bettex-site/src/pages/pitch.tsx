@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from 'react';
-import { ArrowRight, CircuitBoard, ExternalLink } from 'lucide-react';
+import { ArrowRight, CircuitBoard, ExternalLink, ReceiptText, Landmark } from 'lucide-react';
 import g from '@/lib/growth-strategy.json';
 import { FounderProfile } from '@/components/FounderProfile';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
@@ -153,12 +153,24 @@ export function PitchPage() {
         <Card label="Investidores-anjo" title="100% para produto, tecnologia e marketing">{g.launch.angelFundingUse}</Card>
         <Card label="Tarifas de serviço" title="100% para o caixa operacional">A tarifa de US$ 2,50 é receita bruta da empresa, antes de custos e tributos, fora do split do lucro da tesouraria.</Card>
       </div>
-      <PitchEditorialSplit image={<PitchEditorialImage name="pitch-economy-separation" />}>
-        <div className="grid gap-4 md:grid-cols-2">
-          <Card label="Operadora" title="Tarifa fixa de US$ 2,50 em USDC">Receita de serviço da empresa, em carteira operacional própria, fora da tesouraria e do split 50/25/25. Não é taxa de performance.</Card>
-          <Card label="Tesouraria" title="Ganhos de investimento">Resultado das estratégias. O preço público primário do token vai integralmente à tesouraria; a tarifa é registrada à parte.</Card>
-        </div>
-      </PitchEditorialSplit>
+      <div className="pitch-revenue">
+        <article className="pitch-revenue__item">
+          <div className="pitch-revenue__icon" aria-hidden="true"><ReceiptText size={36} strokeWidth={1.6} /></div>
+          <div className="pitch-revenue__copy">
+            <p className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#2B59FF]">Operadora</p>
+            <h3 className="display">Tarifa fixa de US$ 2,50 em USDC</h3>
+            <p>Receita de serviço da empresa, em carteira operacional própria, fora da tesouraria e do split 50/25/25. Não é taxa de performance.</p>
+          </div>
+        </article>
+        <article className="pitch-revenue__item pitch-revenue__item--treasury">
+          <div className="pitch-revenue__icon" aria-hidden="true"><Landmark size={36} strokeWidth={1.6} /></div>
+          <div className="pitch-revenue__copy">
+            <p className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#2B59FF]">Tesouraria</p>
+            <h3 className="display">Ganhos de investimento</h3>
+            <p>Resultado das estratégias. O preço público primário do token vai integralmente à tesouraria; a tarifa é registrada à parte.</p>
+          </div>
+        </article>
+      </div>
       <div className="pitch-cost-examples mt-6 rounded-2xl border border-[#070B1F]/15" role="region" aria-label="Exemplos de custo" tabIndex={0}>
         <table className="w-full text-left text-sm">
           <thead className="bg-[#070B1F] text-[#F4F1E8]"><tr><th className="p-3">Movimentação</th><th className="p-3">Tarifa</th><th className="p-3">Resultado</th></tr></thead>
@@ -200,7 +212,7 @@ export function PitchPage() {
           <h3 className="display">Construído com a comunidade.</h3>
           <p>A proposta é construir com os usuários: ouvir feedback, validar melhorias e estimular recomendações orgânicas. A comunidade no Telegram conecta aquisição, uso do aplicativo e evolução do produto.</p>
         </div>
-        <img src={`${BASE}/pitch-illustrations/pitch-internet-community.webp`} alt={t('Pessoas com headsets interagindo enquanto usam computadores em uma comunidade de jogos online')} width={1400} height={933} loading="lazy" decoding="async" />
+        <img src={`${BASE}/pitch-illustrations/pitch-online-community.webp`} alt={t('Celular com aplicativos de redes sociais e Telegram, representando a comunidade online')} width={1400} height={933} loading="lazy" decoding="async" />
       </div>
       <Doc dark hash="documentacao-aquisicao-retencao">Plano de aquisição e retenção na documentação</Doc>
       <PitchObservations dark><p>A validação acompanha a primeira compra elegível, o primeiro uso útil e o retorno dos usuários. Compradores e usuários ativados serão medidos separadamente; a meta não representa resultados já alcançados. Oferta e publicidade dependem de revisão jurídica e elegibilidade.</p></PitchObservations>

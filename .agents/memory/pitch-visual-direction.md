@@ -177,8 +177,14 @@ Na diferenciação do Pitch, título, proposta e texto devem ficar diretamente n
 
 **How to apply:** Não envolver a introdução ou as observações em uma grande caixa escura junto da tabela. Manter contraste dos textos sobre o fundo claro e preservar a tabela com rolagem horizontal no celular.
 
-Na Tokenomics, destacar os dois mecanismos para os titulares: real yield pelo lucro distribuído e recompra com queima, esta com ícone de fogo e explicação de redução da oferta.
+Na Tokenomics, dar forte destaque visual aos dois mecanismos para os titulares: real yield pelo lucro distribuído e recompra com queima, esta com ícone de fogo e explicação de redução da oferta. Ícones pequenos e duas colunas simples de texto não atendem ao destaque solicitado.
 
-**Why:** O criador reiterou que a proposta não é apenas distribuir os 25% do lucro: recompra e queima também buscam valorização para os holders.
+**Why:** O criador reiterou que a proposta não é apenas distribuir os 25% do lucro: recompra e queima também buscam valorização para os holders. Repetiu o pedido de muito mais destaque visual e apontou que a proposta anterior não tinha sido implementada.
 
 **How to apply:** Dar destaque próprio à recompra com queima, sem confundir seus 25% com os 25% dos stakers. Explicar o efeito sobre demanda e oferta sem garantir preço ou retorno, seguindo a política de recompra aprovada em replit.md.
+
+Não usar a legenda genérica “Imagem conceitual” no Pitch.
+
+**Why:** O criador disse “nao escreva imagem conceitual nao faz sentido” ao revisar Recursos e riscos.
+
+**How to apply:** Omitir essa legenda das imagens editoriais. Preservar legendas específicas aprovadas, como “Protótipo do token BTEX físico”.

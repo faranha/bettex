@@ -125,6 +125,34 @@ img, svg, video { max-width: 100%; }
 .slide--dark .slide__body > .grid > * { background: transparent; }
 
 /* Community content is editorial, not another enclosing card. */
+.pitch-revenue {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 48px;
+  margin-bottom: 32px;
+}
+.pitch-revenue__item { display: flex; align-items: flex-start; gap: 20px; min-width: 0; }
+.pitch-revenue__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 72px;
+  height: 72px;
+  border: 1px solid #2B59FF40;
+  border-radius: 16px;
+  background: #2B59FF0d;
+  color: #2B59FF;
+}
+.pitch-revenue__item--treasury .pitch-revenue__icon { color: #9b6900; background: #F2B63220; border-color: #F2B63280; }
+.pitch-revenue__copy { min-width: 0; }
+.pitch-revenue__copy h3 { margin: 12px 0; font-size: 20px; font-weight: 800; line-height: 1.25; letter-spacing: -.04em; }
+.pitch-revenue__copy > p:last-child { margin: 0; color: #183173; font-size: 15px; line-height: 1.85; }
+@media (max-width: 767px) {
+  .pitch-revenue { grid-template-columns: minmax(0, 1fr); }
+  .pitch-revenue__item { gap: 16px; }
+  .pitch-revenue__icon { flex-basis: 56px; height: 56px; border-radius: 12px; }
+  .pitch-revenue__icon svg { width: 30px; height: 30px; }
+}
+
 .pitch-community {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);

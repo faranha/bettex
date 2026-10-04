@@ -27,8 +27,14 @@ A arte do funil deve usar a largura do conteúdo, sem foto lateral, com o financ
 
 **How to apply:** Preservar o percurso Instagram → Telegram → aplicativo BETTEX e verificar conexões e leitura no desktop e no celular. Não reintroduzir a foto ao lado do diagrama.
 
-O bloco “Community-driven” deve manter seu conteúdo sem caixa externa e usar foto de cultura de internet, não de conversa em bar.
+O bloco “Community-driven” deve manter seu conteúdo sem caixa externa e usar foto de cultura de internet, não de conversa em bar nem de gamers em uma lan house.
 
-**Why:** O criador pediu “pode tirar o container mas deixa o conteudo e adiciona uma foto aqui, mas cuiltura de internet, nao de buteco”.
+**Why:** O criador pediu “pode tirar o container mas deixa o conteudo e adiciona uma foto aqui, mas cuiltura de internet, nao de buteco”. Também rejeitou expressamente a foto de gamers em lan house por não fazer sentido nesse contexto.
 
-**How to apply:** Usar referência visual de comunidade digital, computadores e interação online nesse bloco, separado do funil.
+**How to apply:** Usar referência visual de comunidade digital, redes sociais e interação online nesse bloco, separado do funil. Cultura de internet não equivale a esports ou pessoas jogando juntas em um local físico.
+
+A projeção de Go to market solicitada pelo criador cobre os primeiros 90 dias, com zero aporte de investidores, crescimento de 200–400 pessoas por mês e objetivo de 1.000 compradores/usuários ativos e US$ 50 mil em vendas. Deve mostrar entradas, movimentação, tarifas e lucro nas visões de uma semana, um mês e três meses.
+
+**Why:** O criador pediu emular o crescimento todo ao longo dos 90 dias, não projetar como se os 1.000 usuários estivessem presentes desde o início.
+
+**How to apply:** Modelar entradas progressivas e tempo de atividade das coortes; distinguir vendas de tokens, receitas de serviço e resultado das estratégias. Saques de rendimentos precisam de saldo distribuível; atividade não implica automaticamente saque ou lucro.
