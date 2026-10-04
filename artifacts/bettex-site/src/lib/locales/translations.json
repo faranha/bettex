@@ -1,4 +1,104 @@
 {
+  "Quero participar da comunidade": {
+    "en": "I want to join the community",
+    "es": "Quiero participar en la comunidad"
+  },
+  "Uma comunidade do seu lado": {
+    "en": "A community on your side",
+    "es": "Una comunidad de tu lado"
+  },
+  "Tecnologia, decisões e participação": {
+    "en": "Technology, decisions and participation",
+    "es": "Tecnología, decisiones y participación"
+  },
+  "O mercado está contra você o tempo todo e utiliza a tecnologia para tirar o seu dinheiro. A comunidade BETTEX reúne quem quer mudar essa relação e usar a IA do seu lado.": {
+    "en": "The market is against you all the time and uses technology to take your money. The BETTEX community brings together people who want to change that relationship and use AI on their side.",
+    "es": "El mercado está en tu contra todo el tiempo y utiliza la tecnología para quitarte tu dinero. La comunidad BETTEX reúne a quienes quieren cambiar esa relación y usar la IA de su lado."
+  },
+  "A IA opera. A comunidade participa.": {
+    "en": "AI operates. The community participates.",
+    "es": "La IA opera. La comunidad participa."
+  },
+  "Na BETTEX, não é impulso: a IA faz as operações.": {
+    "en": "At BETTEX, it is not impulse: AI carries out the operations.",
+    "es": "En BETTEX, no es impulso: la IA realiza las operaciones."
+  },
+  "Você faz parte da comunidade": {
+    "en": "You are part of the community",
+    "es": "Formas parte de la comunidad"
+  },
+  "Compartilhe ideias, acompanhe as operações e ajude nas decisões do projeto.": {
+    "en": "Share ideas, follow the operations and help with project decisions.",
+    "es": "Comparte ideas, sigue las operaciones y ayuda en las decisiones del proyecto."
+  },
+  "As casas usam IA para conhecer você.": {
+    "en": "Betting companies use AI to understand you.",
+    "es": "Las casas de apuestas usan IA para conocerte."
+  },
+  "A reportagem mostra como uma casa de apostas usou IA para identificar quem tinha mais chance de perder. Na BETTEX, a comunidade acompanha a tecnologia usada nas operações e participa das decisões.": {
+    "en": "The report shows how a betting company used AI to identify those more likely to lose. At BETTEX, the community follows the technology used in the operations and takes part in decisions.",
+    "es": "El reportaje muestra cómo una casa de apuestas usó IA para identificar a quienes tenían más probabilidades de perder. En BETTEX, la comunidad sigue la tecnología usada en las operaciones y participa en las decisiones."
+  },
+  "CONHEÇA A IA.": {
+    "en": "GET TO KNOW AI.",
+    "es": "CONOCE LA IA."
+  },
+  "PARTICIPE DA COMUNIDADE.": {
+    "en": "JOIN THE COMMUNITY.",
+    "es": "PARTICIPA EN LA COMUNIDAD."
+  },
+  "Entenda o que está mudando": {
+    "en": "Understand what is changing",
+    "es": "Entiende lo que está cambiando"
+  },
+  "IA e robôs estão transformando empregos e mercados. Na comunidade, discutimos como isso afeta a nossa vida.": {
+    "en": "AI and robots are transforming jobs and markets. In the community, we discuss how this affects our lives.",
+    "es": "La IA y los robots están transformando empleos y mercados. En la comunidad, hablamos de cómo esto afecta a nuestra vida."
+  },
+  "Troque ideias e participe": {
+    "en": "Exchange ideas and take part",
+    "es": "Intercambia ideas y participa"
+  },
+  "Depender só do salário pode deixar você de fora dessa mudança. Na comunidade, trocamos conhecimento e ideias.": {
+    "en": "Depending solely on your salary could leave you out of this change. In the community, we exchange knowledge and ideas.",
+    "es": "Depender solo del salario puede dejarte fuera de este cambio. En la comunidad, compartimos conocimientos e ideas."
+  },
+  "Conheça a BETTEX por dentro": {
+    "en": "Get to know BETTEX from within",
+    "es": "Conoce BETTEX desde dentro"
+  },
+  "Acompanhe como a IA faz as operações e como nosso token permite participar dos lucros do projeto.": {
+    "en": "Follow how AI carries out the operations and how our token lets you share in the project's profits.",
+    "es": "Sigue cómo la IA realiza las operaciones y cómo nuestro token permite participar en los beneficios del proyecto."
+  },
+  "Das apostas ao futuro do trabalho, a tecnologia já muda as regras. A comunidade BETTEX é onde essa conversa começa.": {
+    "en": "From betting to the future of work, technology is already changing the rules. The BETTEX community is where that conversation begins.",
+    "es": "De las apuestas al futuro del trabajo, la tecnología ya cambia las reglas. La comunidad BETTEX es donde comienza esa conversación."
+  },
+  "Participe dessa mudança com a nossa comunidade.": {
+    "en": "Take part in this change with our community.",
+    "es": "Participa en este cambio con nuestra comunidad."
+  },
+  "A mesma tecnologia que transforma as apostas também está mudando o trabalho.": {
+    "en": "The same technology transforming betting is also changing work.",
+    "es": "La misma tecnología que transforma las apuestas también está cambiando el trabajo."
+  },
+  "O mercado está contra você o tempo todo e utiliza a tecnologia para tirar o seu dinheiro.": {
+    "en": "The market is against you all the time and uses technology to take your money.",
+    "es": "El mercado está en tu contra todo el tiempo y utiliza la tecnología para quitarte tu dinero."
+  },
+  "Na BETTEX, a aposta não depende de impulso: a IA faz as operações.": {
+    "en": "At BETTEX, betting does not depend on impulse: AI carries out the operations.",
+    "es": "En BETTEX, las apuestas no dependen del impulso: la IA realiza las operaciones."
+  },
+  "Você participa das decisões": {
+    "en": "You take part in decisions",
+    "es": "Participas en las decisiones"
+  },
+  "Você participa da comunidade, acompanha as operações e ajuda nas decisões do projeto.": {
+    "en": "You are part of the community, follow the operations and help with project decisions.",
+    "es": "Formas parte de la comunidad, sigues las operaciones y ayudas en las decisiones del proyecto."
+  },
   "Compre BETTEX e participe dos lucros do projeto. Basta comprar e deixar na sua carteira que todo dia a gente paga sua parte dos lucros*. O token continua sendo seu: receber os lucros não faz você perder seus tokens nem deixar de ser dono deles.": {
     "en": "Buy BETTEX and participate in the project's profits. Just buy and keep it in your wallet, and every day we pay your share of the profits*. The token remains yours: receiving profits does not consume your tokens or take away your ownership of them.",
     "es": "Compra BETTEX y participa en las ganancias del proyecto. Solo compra y déjalo en tu billetera: cada día pagamos tu parte de las ganancias*. El token sigue siendo tuyo: recibir las ganancias no consume tus tokens ni te hace dejar de ser su dueño."

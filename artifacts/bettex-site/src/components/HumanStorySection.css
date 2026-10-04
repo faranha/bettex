@@ -39,6 +39,7 @@
 .hs-asterisk::after { transform: translate(-50%, -50%) rotate(90deg); }
 .hs-left h2 { max-width: 660px; margin: 0; font: 800 clamp(2.7rem, 3.7vw, 3.6rem)/1.02 var(--app-font-serif); letter-spacing: -.062em; }
 .hs-left h2 em { color: #2B59FF; font-style: normal; }
+.hs-market-context { position: relative; max-width: 590px; margin: 20px 0 0; color: #13204F; font-size: clamp(17px, 1.4vw, 19px); line-height: 1.6; }
 .hs-right {
   position: relative;
   align-self: stretch;

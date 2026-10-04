@@ -2,7 +2,7 @@ import { BETTING_NEWS_URL } from './bettingNewsSource';
 import { useLocale } from '@/lib/i18n';
 import './NewsClipping.css';
 
-export function NewsClipping({ className = '', showSource = false }: { className?: string; showSource?: boolean }) {
+export function NewsClipping({ className = '', showSource = false, caption = 'A IA já trabalha a favor das casas de apostas. Nós escolhemos usá-la do nosso lado, com estratégia e protocolos próprios.' }: { className?: string; showSource?: boolean; caption?: string }) {
   const language = useLocale();
   return (
     <figure className={`news-clip ${className}`} data-testid="news-clipping">
@@ -21,7 +21,7 @@ export function NewsClipping({ className = '', showSource = false }: { className
         />
         <figcaption className="news-clip__cap">
           <strong className="news-clip__kicker">UM CASO REPORTADO</strong>
-          <span>A IA já trabalha a favor das casas de apostas. Nós escolhemos usá-la do nosso lado, com estratégia e protocolos próprios.</span>
+          <span>{caption}</span>
           {showSource && (
             <div className="news-clip__source">
               <span>Fonte: <strong>Terra</strong></span>

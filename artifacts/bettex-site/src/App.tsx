@@ -264,7 +264,7 @@ function Home() {
             </h1>
             <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Uma comunidade pra quem está cansado de só apostar e quer começar a ganhar.</h2>
             <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">Na BETTEX, nossa IA analisa e opera em diferentes mercados. Com nosso token, você participa dos lucros do projeto.</p>
-            <div className="mt-8 flex flex-wrap items-center gap-3"><a href="#participacao" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#2B59FF] px-7 py-4 text-sm font-bold text-white hover:bg-[#1E44D6]">Quero participar</a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 px-4 py-4 text-sm font-semibold text-[#c5d2f1] underline-offset-4 hover:underline">Ver telas do app</a></div>
+            <div className="mt-8 flex flex-wrap items-center gap-3"><a href="#historia" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#2B59FF] px-7 py-4 text-sm font-bold text-white hover:bg-[#1E44D6]">Quero participar da comunidade</a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 px-4 py-4 text-sm font-semibold text-[#c5d2f1] underline-offset-4 hover:underline">Ver telas do app</a></div>
           </div>
         </div>
         <HeroBenefit />
@@ -274,13 +274,13 @@ function Home() {
       <TechnologyNetworks />
       <ProjectModelSection />
       <HumanStorySection />
+      <NewEconomySection />
 
        <TechnologySection>
          {markets.map((market, index) => <div className="technology-section__agent-slot" key={market.name}><MarketCard market={market} number={index + 1} /></div>)}
        </TechnologySection>
        <MarketsFloorSection />
        <InvestorAppPreview />
-       <NewEconomySection />
         <RoadmapSection />
 
     </main>
