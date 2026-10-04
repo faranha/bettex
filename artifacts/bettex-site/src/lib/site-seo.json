@@ -1,5 +1,5 @@
 {
-  "origin": "https://bettex.replit.app",
+  "origin": "https://bettex.ai",
   "pages": {
     "/": {
       "title": "BETTEX | IA, investimentos e participação nos resultados",
@@ -20,8 +20,8 @@
       "index": true
     },
     "/demo": {
-      "title": "Demo BETTEX | Em breve",
-      "description": "A demonstração BETTEX está em preparação. Nenhuma operação financeira ou demonstração funcional está disponível nesta página.",
+      "title": "Demo BETTEX | Protótipo de participação e resultados",
+      "description": "Explore o protótipo visual da BETTEX: participação, resultados e cenários simulados. Entenda as regras do token, sem dinheiro real ou operações financeiras.",
       "image": "demo",
       "index": false
     }

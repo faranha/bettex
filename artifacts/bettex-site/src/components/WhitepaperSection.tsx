@@ -194,7 +194,7 @@ export function WhitepaperSection() {
       <header className="whitepaper__hero page-wrap">
         <div>
           <p className="whitepaper__eyebrow"><span aria-hidden="true" /> v1 · ARQUITETURA, ECONOMIA E RISCO</p>
-          <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
+          <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}{' '}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
           <p className="whitepaper__hero-lede">A BETTEX é um produto de tecnologia com IA, criado para ampliar o acesso de pessoas comuns a diferentes mercados e à participação nos resultados do projeto, sem precisar operar por conta própria.</p>
         </div>
         <div className="whitepaper__hero-note"><span>VERSÃO INICIAL · 100% CRIPTO</span><p>A BETTEX é um projeto internacional. O saldo efetivo e as movimentações previstos são em USDC; a interface mostra seu valor estimado na moeda fiduciária da pessoa. O saque interno continua em USDC. BETTEX é o token de participação.</p><p>A entrada em moeda fiduciária depende de um provedor externo de conversão habilitado. Conversão de saldos USDC e pagamentos em moeda fiduciária por serviços próprios da BETTEX pertencem à proposta futura do BETTEX Bank, sujeita a validação específica.</p></div>

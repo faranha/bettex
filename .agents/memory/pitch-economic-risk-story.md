@@ -15,11 +15,11 @@ O vídeo da USA TODAY sobre Musk e a “era da abundância”, indicado pelo usu
 
 **How to apply:** Preservar essa sequência ao editar o trecho. Distinguir a fala de Musk da interpretação crítica da BETTEX, sem afirmar que o vídeo prova intenção de enganar.
 
-O fundo do hero de Ambiente externo deve representar a guerra na Ucrânia, com bombas explodindo na cidade, sem nenhuma bandeira e não o robô da Tesla.
+O fundo do hero de Ambiente externo deve usar uma fotografia de miséria contemporânea em centros urbanos nos anos 2020, sem explosões, guerra ou bandeiras e não o robô da Tesla.
 
-**Why:** O criador pediu inicialmente guerra, fome e miséria, depois refinou a direção para explosões na cidade e especificou a guerra na Ucrânia. Na revisão da imagem pediu “Não põe bandeira nenhuma”.
+**Why:** Depois de solicitar guerra na Ucrânia e retirar a bandeira, o criador revisou a direção: “Vamos achar uma foto menos crítica, explosiva, que represente a miséria nos tempos contemporâneos, atual, em centros urbanos nos anos 2020”.
 
-**How to apply:** Preservar os textos e o restante da seção nessa troca. A direção não exige retirar Optimus dos outros trechos sobre automação.
+**How to apply:** Preservar os textos e o restante da seção nessa troca. Usar fotografia real com origem, data e direito de reutilização conferidos e crédito visível; não voltar à ilustração de bombardeio. A direção não exige retirar Optimus dos outros trechos sobre automação.
 
 O cartão “Optimus e a substituição do trabalho humano” pertence ao item 2 de Problema, não a Ambiente externo.
 

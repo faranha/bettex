@@ -16,12 +16,24 @@
 .chero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; display: block; filter: saturate(.9); }
 .chero__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,11,31,.96) 0%, rgba(7,11,31,.86) 38%, rgba(7,11,31,.45) 75%, rgba(7,11,31,.3) 100%); }
 .chero::before { z-index: 2; }
+.chero__credit { position: absolute; z-index: 2; right: 16px; bottom: 10px; max-width: calc(100% - 32px); padding: 4px 8px; background: #070b1fcc; color: #e3eaff; font-size: 10px; line-height: 1.5; text-decoration: underline; text-underline-offset: 2px; }
+#fundador > .chero .chero__bg img { position: absolute; right: 0; width: 54%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+#fundador > .chero .chero__bg::after { background: linear-gradient(90deg, #070b1f 40%, #070b1fb3 57%, #070b1f1a 80%); }
+#fundador > .chero .chero__copy { max-width: 62%; }
 .pitch .pb-problem:has(> .chero), .pitch .fu:has(> .chero) { padding-top: 0; }
 .pitch .pb-problem:has(> .chero) > .pb-problem__wrap { padding-top: clamp(28px, 4vw, 48px); }
 @media (max-width: 767px) {
+  #fundador > .chero { display: flex; flex-direction: column; padding: var(--pitch-hero-padding) 0 0; }
+  #fundador > .chero .chero__bg { position: relative; order: 1; height: 190px; }
+  #fundador > .chero .chero__bg img { position: static; width: 100%; height: 100%; object-position: 50% 40%; }
+  #fundador > .chero .chero__bg::after { background: linear-gradient(180deg, #070b1f26, transparent); }
+  #fundador > .chero .chero__copy { max-width: none; }
+  #fundador > .chero .chero__grid { min-height: 0; padding-bottom: 24px; }
   .chero__grid { min-height: 0; }
   .chero__bg img { object-position: 65% center; }
   .chero__bg::after { background: linear-gradient(180deg, rgba(7,11,31,.9) 0%, rgba(7,11,31,.82) 60%, rgba(7,11,31,.7) 100%); }
   .pitch .chero__title { margin-top: 12px; }
   .pitch .chero__summary { margin-top: 12px; font-size: 14px; }
+  .chero:has(.chero__credit) { padding-bottom: calc(var(--pitch-hero-padding) + 40px); }
+  .chero__credit { min-height: 44px; display: inline-flex; align-items: center; }
 }

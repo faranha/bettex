@@ -13,7 +13,8 @@ export function PageMetadata() {
     const title = t(page?.title ?? 'Página não encontrada | BETTEX');
     const description = page ? t(page.description) : t('A página solicitada não foi encontrada.');
     const path = localizedUrl(`${base}${page ? key : location}`);
-    const url = `${seo.origin}${path.slice(base.length)}`;
+    const canonicalPath = (route: string) => route === '/' ? '/' : `${route.replace(/\/+$/, '')}/`;
+    const url = `${seo.origin}${canonicalPath(path.slice(base.length))}`;
     const image = `${seo.origin}/social/${page?.image ?? 'home'}${language === 'pt' ? '' : `-${language}`}.jpg`;
     document.documentElement.lang = language === 'pt' ? 'pt-BR' : language;
     document.title = title;
@@ -36,7 +37,7 @@ export function PageMetadata() {
     document.head.querySelectorAll('link[hreflang]').forEach(link => link.remove());
     if (page) for (const lang of ['pt', 'en', 'es', 'x-default'] as const) {
       const link = document.createElement('link'); link.rel = 'alternate'; link.hreflang = lang === 'pt' ? 'pt-BR' : lang;
-      link.href = `${seo.origin}${localizedUrl(`${base}${key}`, lang === 'x-default' ? 'pt' : lang).slice(base.length)}`;
+      link.href = `${seo.origin}${canonicalPath(localizedUrl(`${base}${key}`, lang === 'x-default' ? 'pt' : lang).slice(base.length))}`;
       document.head.appendChild(link);
     }
     const structured = document.querySelector<HTMLScriptElement>('#site-jsonld');

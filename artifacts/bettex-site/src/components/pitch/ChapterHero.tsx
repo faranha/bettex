@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import './ChapterHero.css';
 
 const BASE = import.meta.env.BASE_URL;
-export function ChapterHero({ id, kicker, title, summary, src, tone = 'ink' }: { id: string; n: string; kicker: string; title: ReactNode; summary: string; src: string; tone?: 'ink' | 'blue' }) {
+export function ChapterHero({ id, kicker, title, summary, src, tone = 'ink', credit }: { id: string; n: string; kicker: string; title: ReactNode; summary: string; src: string; tone?: 'ink' | 'blue'; credit?: { label: string; href: string } }) {
   return <header className={`chero chero--${tone}`}>
     <div className="chero__bg" aria-hidden="true"><img src={`${BASE}${src}`} alt="" width={640} height={640} loading="eager" decoding="async" /></div>
     <div className="page-wrap chero__grid">
@@ -12,5 +12,6 @@ export function ChapterHero({ id, kicker, title, summary, src, tone = 'ink' }: {
         <p className="chero__summary">{summary}</p>
       </div>
     </div>
+    {credit && <a className="chero__credit" href={credit.href} target="_blank" rel="noopener noreferrer">{credit.label}</a>}
   </header>;
 }

@@ -1,4 +1,72 @@
 {
+  "Resgatar o futuro, transformando a aposta em investimento.": {
+    "en": "Reclaiming the future by turning betting into investment.",
+    "es": "Rescatar el futuro, transformando la apuesta en inversión."
+  },
+  "Demo BETTEX | Protótipo de participação e resultados": {
+    "en": "BETTEX Demo | Participation and results prototype",
+    "es": "Demo BETTEX | Prototipo de participación y resultados"
+  },
+  "Explore o protótipo visual da BETTEX: participação, resultados e cenários simulados. Entenda as regras do token, sem dinheiro real ou operações financeiras.": {
+    "en": "Explore the BETTEX visual prototype: participation, results and simulated scenarios. Understand the token rules, without real money or financial transactions.",
+    "es": "Explora el prototipo visual de BETTEX: participación, resultados y escenarios simulados. Conoce las reglas del token, sin dinero real ni operaciones financieras."
+  },
+  "Dois mecanismos para o titular": {
+    "en": "Two mechanisms for token holders",
+    "es": "Dos mecanismos para el titular"
+  },
+  "Real yield e recompra com queima.": {
+    "en": "Real yield and buyback with token burns.",
+    "es": "Real yield y recompra con quema."
+  },
+  "25% para os stakers": {
+    "en": "25% for stakers",
+    "es": "25% para los stakers"
+  },
+  "Lucro real, distribuído em USDC.": {
+    "en": "Real profit, distributed in USDC.",
+    "es": "Beneficio real, distribuido en USDC."
+  },
+  "25% do lucro elegível compõem o pool global dos stakers, rateado pelo peso elegível de cada participante. É participação nos resultados das estratégias, não rendimento criado pela emissão de novos tokens.": {
+    "en": "25% of eligible profit forms the global staker pool, allocated according to each participant's eligible weight. This is participation in strategy results, not yield created by issuing new tokens.",
+    "es": "El 25% del beneficio elegible forma el pool global de los stakers, repartido según el peso elegible de cada participante. Es participación en los resultados de las estrategias, no rendimiento creado mediante la emisión de nuevos tokens."
+  },
+  "25% para recompra e queima": {
+    "en": "25% for buybacks and burns",
+    "es": "25% para recompra y quema"
+  },
+  "Recomprar. Queimar. Reduzir a oferta.": {
+    "en": "Buy back. Burn. Reduce supply.",
+    "es": "Recomprar. Quemar. Reducir la oferta."
+  },
+  "Outros 25% do lucro elegível vão à carteira exclusiva de recompra. A administração autoriza a compra de BETTEX no mercado; todos os tokens adquiridos são queimados permanentemente, reduzindo a oferta existente.": {
+    "en": "Another 25% of eligible profit goes to the dedicated buyback wallet. Management authorizes the purchase of BETTEX on the market; all purchased tokens are permanently burned, reducing the existing supply.",
+    "es": "Otro 25% del beneficio elegible va a la cartera exclusiva de recompra. La administración autoriza la compra de BETTEX en el mercado; todos los tokens adquiridos se queman permanentemente, reduciendo la oferta existente."
+  },
+  "USDC da recompra": {
+    "en": "Buyback USDC",
+    "es": "USDC de la recompra"
+  },
+  "Queima permanente": {
+    "en": "Permanent burn",
+    "es": "Quema permanente"
+  },
+  "Recompras geram demanda pelo token; a queima reduz sua oferta. Esse mecanismo busca favorecer a valorização para os holders, mas não garante aumento de preço: demanda e liquidez também influenciam o mercado.": {
+    "en": "Buybacks generate demand for the token; burns reduce its supply. This mechanism aims to support appreciation for holders, but does not guarantee a price increase: demand and liquidity also influence the market.",
+    "es": "Las recompras generan demanda del token; la quema reduce su oferta. Este mecanismo busca favorecer la valorización para los holders, pero no garantiza un aumento de precio: la demanda y la liquidez también influyen en el mercado."
+  },
+  "Os outros 50% permanecem na tesouraria. O split depende de lucro elegível, peso elegível, reserva e liquidez; não é uma taxa de retorno individual. O saldo de recompra não utilizado acumula para futuras compras autorizadas, sem reabrir rodadas de distribuição.": {
+    "en": "The remaining 50% stays in the treasury. The split depends on eligible profit, eligible weight, reserves and liquidity; it is not an individual return rate. Unused buyback funds accumulate for future authorized purchases, without reopening distribution rounds.",
+    "es": "El 50% restante permanece en la tesorería. El reparto depende de beneficio elegible, peso elegible, reserva y liquidez; no es una tasa de retorno individual. El saldo de recompra no utilizado se acumula para futuras compras autorizadas, sin reabrir rondas de distribución."
+  },
+  "A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. Todos os tokens adquiridos nas recompras são queimados permanentemente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.": {
+    "en": "Management authorizes buybacks, preserving multisig controls; purchases are not automatically made every day. Unused dedicated funds accumulate and do not finance strategies or expenses. All tokens purchased through buybacks are permanently burned. The token is not equity, does not grant ownership of assets and does not guarantee redemption.",
+    "es": "La administración autoriza las recompras, preservando la multisig; no son compras diarias automáticas. El saldo exclusivo no utilizado se acumula y no financia estrategias ni gastos. Todos los tokens adquiridos en las recompras se queman permanentemente. El token no es una acción, no otorga propiedad del patrimonio ni garantiza rescate."
+  },
+  "Paulo Pinto / Agência Brasil · São Paulo, 2024": {
+    "en": "Paulo Pinto / Agência Brasil · São Paulo, 2024",
+    "es": "Paulo Pinto / Agência Brasil · São Paulo, 2024"
+  },
   "A tese da BETTEX é que automatizar o trabalho sem ampliar o acesso aos ganhos pode produzir miséria, não prosperidade. No estudo de": {
     "en": "BETTEX's thesis is that automating work without widening access to the gains may produce poverty, not prosperity. In the",
     "es": "La tesis de BETTEX es que automatizar el trabajo sin ampliar el acceso a las ganancias puede producir miseria, no prosperidad. En el estudio de"

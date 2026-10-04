@@ -170,3 +170,15 @@ Os blocos Tesla/Optimus e SpaceX do Pitch devem mostrar imagens do humanoide e d
 **Why:** O criador apontou os dois cartões e perguntou “onde esta a nave? o android? precisamos de imagens”.
 
 **How to apply:** Preservar imagens reconhecíveis dos produtos junto aos textos desses blocos e manter as fontes, sem insinuar parceria com a BETTEX.
+
+Na diferenciação do Pitch, título, proposta e texto devem ficar diretamente no fundo da página; apenas a tabela comparativa mantém a caixa escura.
+
+**Why:** O criador disse que o excesso de containers estava deixando o site “muito empacotado” e distinguiu expressamente a tabela dos textos.
+
+**How to apply:** Não envolver a introdução ou as observações em uma grande caixa escura junto da tabela. Manter contraste dos textos sobre o fundo claro e preservar a tabela com rolagem horizontal no celular.
+
+Na Tokenomics, destacar os dois mecanismos para os titulares: real yield pelo lucro distribuído e recompra com queima, esta com ícone de fogo e explicação de redução da oferta.
+
+**Why:** O criador reiterou que a proposta não é apenas distribuir os 25% do lucro: recompra e queima também buscam valorização para os holders.
+
+**How to apply:** Dar destaque próprio à recompra com queima, sem confundir seus 25% com os 25% dos stakers. Explicar o efeito sobre demanda e oferta sem garantir preço ou retorno, seguindo a política de recompra aprovada em replit.md.

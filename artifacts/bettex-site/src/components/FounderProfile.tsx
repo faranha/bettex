@@ -28,6 +28,6 @@ export function FounderProfile({ dark = false, id, portrait = false, noDashes = 
       </ul>
     </nav>
     <ul className="fp__grid">{stats.map(([l, v, t]) => <li key={l}><span>{l}</span><strong>{v}</strong><small>{t}</small></li>)}</ul>
-    <p className="fp__cap">{thirdPerson ? 'Informações e métricas declaradas pelo fundador, sem auditoria independente. As audiências podem se sobrepor; seguidores e engajamento não são clientes, alcance garantido ou conversão.' : f.sourceNote} Esta é audiência de distribuição do fundador, não tração de produto da BETTEX.</p>
+    {!thirdPerson && <p className="fp__cap">{f.sourceNote} Esta é audiência de distribuição do fundador, não tração de produto da BETTEX.</p>}
   </figure>;
 }

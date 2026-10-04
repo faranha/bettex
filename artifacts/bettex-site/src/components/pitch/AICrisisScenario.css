@@ -7,6 +7,7 @@
 .ai-news-grid h4 { margin: 14px 0 0; color: #f4f1e8; font-size: 21px; font-weight: 800; line-height: 1.25; letter-spacing: -.025em; }
 .ai-news-grid p { margin-top: 14px; color: #e3eaff; font-size: 13px; line-height: 1.75; flex: 1; }
 .ai-news-source { display: inline-block; margin-top: 16px; color: #c5d2f1; font-size: 12px; line-height: 1.6; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 767px) { .ai-news-source { display: inline-flex; align-items: center; min-height: 44px; } }
 .ai-crisis-limit { margin-top: 20px; max-width: 960px; color: #c5d2f1; font-size: 12px; line-height: 1.75; }
 .ai-crisis--bubble { border-top-color: #f2b63277; }
 .ai-crisis--bubble .fu-tag, .ai-crisis--bubble .ai-news-grid article > span { color: #f2b632; }
