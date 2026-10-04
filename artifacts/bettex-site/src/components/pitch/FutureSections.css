@@ -15,6 +15,29 @@
 .fu-quote p { font-size: clamp(1.5rem, 3vw, 2.3rem); font-weight: 800; line-height: 1.15; letter-spacing: -.04em; color: #F4F1E8; }
 .fu-quote footer { margin-top: 12px; font-size: 14px; color: #c5d2f1; }
 .fu-frame { margin-top: 24px; max-width: 600px; font-size: 15px; line-height: 1.75; color: #c5d2f1; }
+.fu-verdict { margin: 30px 8px 28px; padding: 14px 18px; max-width: 570px; border: 5px double #ff7777; color: #ff9292; background: #25101b; transform: rotate(-2deg); }
+.fu-verdict > span { display: block; margin-bottom: 8px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
+.fu-verdict > h2 { font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.15; font-weight: 800; letter-spacing: -.03em; text-transform: uppercase; }
+.fu-exposed { margin-top: 40px; padding: clamp(24px, 4vw, 40px); border-left: 5px solid #ff7777; background: #1d101e; }
+.fu-exposed .fu-tag { color: #ff9292; }
+.fu-evidence { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+.fu-evidence--focused { grid-template-columns: minmax(0, 1fr); }
+.fu-evidence article { min-width: 0; padding: 20px; border: 1px solid #ff777744; background: #070b1f88; display: flex; flex-direction: column; align-items: flex-start; }
+.fu-evidence .fu-tag { font-size: 10px; line-height: 1.6; }
+.fu-exposed .fu-evidence-value { margin-top: 16px; font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.1; letter-spacing: -.04em; font-weight: 800; color: #ff9292; }
+.fu-evidence h4 { margin-top: 14px; font-size: 19px; font-weight: 800; line-height: 1.25; letter-spacing: -.025em; color: #f4f1e8; }
+.fu-exposed .fu-evidence article > p:not(.fu-evidence-value) { margin-top: 12px; font-size: 13px; line-height: 1.75; color: #e3eaff; flex: 1; }
+.fu-evidence .fu-src { margin-top: 20px; color: #bdcfff; }
+.fu-exposed .fu-evidence-limit { font-size: 12px; line-height: 1.7; color: #bdcfff; }
+@media (max-width: 899px) { .fu-evidence { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
+.fu-exposed h3 { margin-top: 14px; max-width: 900px; font-size: clamp(1.75rem, 3.6vw, 2.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -.04em; }
+.fu-exposed > p { margin-top: 18px; max-width: 900px; font-size: 16px; line-height: 1.7; color: #e3eaff; }
+.fu-exposed .fu-now { margin-top: 26px; color: #ff9292; font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; line-height: 1.2; letter-spacing: -.03em; }
+.fu-exposed .fu-scenario-note { font-size: 12px; color: #c5d2f1; }
+.fu-labor { margin-top: 32px; padding-top: 28px; border-top: 1px solid #5f86ff66; }
+.fu-labor h3 { margin-top: 14px; max-width: 850px; font-size: clamp(1.4rem, 2.7vw, 2rem); font-weight: 800; line-height: 1.2; letter-spacing: -.03em; }
+.fu-labor > p { margin-top: 14px; max-width: 960px; font-size: 14px; line-height: 1.7; color: #c5d2f1; }
+.fu-labor .fu-srcs { margin-top: 16px; }
 .fu-photo { margin-top: 24px; max-width: 360px; justify-self: end; width: 100%; border: 1px solid rgba(242,182,50,.5); border-radius: 6px; overflow: hidden; background: #0d1536; }
 .fu-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: top; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
 .fu-photo figcaption { padding: 10px 12px; font-size: 12px; line-height: 1.5; color: #c5d2f1; }
@@ -23,9 +46,17 @@
 .fu-src svg { width: 13px; height: 13px; flex: none; }
 .fu--two .fu-src { color: #2B59FF; }
 .fu-pair { margin-top: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.fu-pair--focused { grid-template-columns: minmax(0, 1fr); }
+.fu-pair--focused .fu-card { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 32px); align-items: center; }
+.fu-card-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
 .fu-card { border-radius: 6px; padding: clamp(20px, 3vw, 32px); display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
 .fu-card h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -.04em; line-height: 1.1; }
 .fu-card p { font-size: 15px; line-height: 1.7; }
+.fu-card-media { width: 100%; overflow: hidden; border-radius: 3px; background: #070b1f; }
+.fu-card-media img { display: block; width: 100%; height: clamp(240px, 25vw, 340px); object-fit: cover; object-position: center; }
+.fu-card-media--optimus img { object-fit: contain; background: linear-gradient(#606060, #414141); }
+.fu-card-media figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; padding: 10px 12px; color: #c5d2f1; font-size: 11px; line-height: 1.5; }
+.fu-card-media figcaption a { color: #c5d2f1; text-decoration: underline; text-underline-offset: 3px; }
 .fu-card--tesla { background: #0d1536; border-left: 4px solid #2B59FF; color: #c5d2f1; }
 .fu-card--tesla h3 { color: #F4F1E8; }
 .fu-card--space { background: linear-gradient(160deg, #142C50, #070B1F 70%); border: 1px solid rgba(242,182,50,.45); color: #d3e0f6; }
@@ -53,6 +84,7 @@
 .fu-doc { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; }
 .fu-doc svg { width: 16px; height: 16px; }
 @media (max-width: 899px) {
+  .fu-pair--focused .fu-card { grid-template-columns: minmax(0, 1fr); }
   .fu-hero, .fu-pair, .fu-forecasts { grid-template-columns: minmax(0, 1fr); }
   .fu-photo { justify-self: start; max-width: 280px; }
   .fu-pos-lead, .fu-pos-body { grid-column: 1 / -1; }

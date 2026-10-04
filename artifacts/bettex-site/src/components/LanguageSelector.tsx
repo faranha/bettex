@@ -14,7 +14,7 @@ function Flag({ country }: { country: string }) {
   return <img className="lang-selector__flag" src={`${import.meta.env.BASE_URL}${country}`} width={24} height={16} alt="" aria-hidden="true" />;
 }
 
-export function LanguageSelector({ className = '' }: { className?: string }) {
+export function LanguageSelector({ className = '', showLabel = false }: { className?: string; showLabel?: boolean }) {
   const locale = useLocale();
   const [, navigate] = useLocation();
   const selected = options.find((option) => option.value === locale)!;
@@ -22,12 +22,14 @@ export function LanguageSelector({ className = '' }: { className?: string }) {
     <DropdownMenu.Trigger asChild>
       <button type="button" className={`lang-selector ${className}`.trim()} data-testid="language-selector" aria-label={t('Selecionar idioma')}>
         <Flag country={selected.flag} />
-        <span className="lang-selector__code" data-i18n="translated">{locale.toUpperCase()}</span>
+        {showLabel
+          ? <span className="lang-selector__label" lang={selected.value} data-i18n="translated">{selected.label}</span>
+          : <span className="lang-selector__code" data-i18n="translated">{locale.toUpperCase()}</span>}
         <ChevronDown className="lang-selector__chevron" aria-hidden="true" />
       </button>
     </DropdownMenu.Trigger>
     <DropdownMenu.Portal>
-      <DropdownMenu.Content className="lang-selector__menu" align="end" sideOffset={8} collisionPadding={12} aria-label={t('Selecionar idioma')} data-testid="language-options">
+      <DropdownMenu.Content className="lang-selector__menu" align={showLabel ? 'start' : 'end'} side={showLabel ? 'top' : 'bottom'} sideOffset={8} collisionPadding={12} aria-label={t('Selecionar idioma')} data-testid="language-options">
         <DropdownMenu.RadioGroup value={locale} onValueChange={(value) => {
           if (value === locale) return;
           if (/\/demo\/?$/.test(window.location.pathname)) {

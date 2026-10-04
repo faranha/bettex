@@ -1,0 +1,20 @@
+.fu-signals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+.fu-signal { min-width: 0; padding: 26px; border: 1px solid #30466e; border-top: 3px solid #f2b632; border-radius: 6px; background: #13204f; color: #f4f1e8; display: flex; flex-direction: column; align-items: flex-start; gap: 17px; }
+.fu-signal-head { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.fu-signal-head .fu-tag { font-size: 10px; line-height: 1.6; color: #ccd8ff; }
+.fu-signal-icon { display: grid; place-items: center; flex-shrink: 0; width: 42px; height: 42px; border: 1px solid #f2b63266; border-radius: 8px; color: #f2b632; background: #f2b6320c; }
+.fu-signal-icon svg { width: 22px; height: 22px; stroke-width: 1.7; }
+.fu-signal .fu-signal-value { font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.05; font-weight: 900; letter-spacing: -.045em; color: #ffaaa0; overflow-wrap: anywhere; }
+.fu-signal h3 { font-size: 22px; line-height: 1.2; font-weight: 800; letter-spacing: -.025em; }
+.fu-signal-copy { flex: 1; font-size: 13px; line-height: 1.75; color: #dce3f5; }
+.fu-signal-copy p + p { margin-top: 12px; }
+.fu--two .fu-signal .fu-src { color: #bdcfff; margin-top: 6px; }
+.fu-signal-method { margin-top: 22px; max-width: 960px; font-size: 12px; line-height: 1.75; color: #455373; }
+.fu-forecast-current { margin-top: 28px; padding: 26px; background: #fff9; border: 1px solid #13204f33; border-left: 3px solid #2b59ff; border-radius: 6px; }
+.fu-forecast-heading { display: flex; align-items: center; gap: 14px; }
+.fu-forecast-current .fu-signal-icon { color: #2b59ff; border-color: #2b59ff44; background: #2b59ff0a; }
+.fu-forecast-current p { margin-top: 16px; max-width: 930px; font-size: 14px; line-height: 1.75; color: #183173; }
+.fu-forecast-current .fu-src { margin-top: 16px; }
+.fu-position-icon { margin-bottom: 18px; }
+@media (max-width: 1100px) { .fu-signals { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .fu-signals { grid-template-columns: minmax(0, 1fr); gap: 14px; } .fu-signal, .fu-forecast-current { padding: 22px; } .fu-signal .fu-signal-value { font-size: 40px; } }

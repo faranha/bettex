@@ -4,7 +4,7 @@ export const markets = [
   { id: 'predictions', kind: 'predictions', label: 'Previsões', platformId: 'polymarket', platform: 'Polymarket', logo: 'platforms/polymarket.svg' },
   { id: 'trading', kind: 'trading', label: 'Ações e cripto', platformId: 'robinhood', platform: 'Robinhood', logo: 'platforms/robinhood.svg' },
   { id: 'sports', kind: 'sports', label: 'Esportes', platformId: 'kalshi', platform: 'Kalshi', logo: 'platforms/kalshi.webp' },
-  { id: 'casino', kind: 'casino', label: 'Cassinos', platformId: 'duel', platform: 'Duel', logo: 'platforms/duel.webp' },
+  { id: 'casino', kind: 'casino', label: 'iGaming', platformId: 'duel', platform: 'Duel', logo: 'platforms/duel.webp' },
 ] as const satisfies readonly {
   id: MarketKind;
   kind: MarketKind;

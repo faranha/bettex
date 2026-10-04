@@ -1,8 +1,11 @@
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { CircuitBoard, ExternalLink } from 'lucide-react';
+import { LaborSignals } from './LaborSignals';
+import { USVacancyChart } from './USVacancyChart';
+import { BrazilEmploymentCharts } from './BrazilEmploymentCharts';
+import { InflationOilRisks } from './InflationOilRisks';
+import { AIBubbleScenario, LaborWarningReports } from './AICrisisScenario';
 import './FutureSections.css';
 
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
-const DOC = `${BASE}/documentacao#documentacao-como-funciona`;
 const PHOTO = `${import.meta.env.BASE_URL}pitch-future/elon-musk.jpg`;
 
 function Src({ href, children }: { href: string; children: string }) {
@@ -13,74 +16,76 @@ export function FutureSections() {
   return <>
     <section id="agora" aria-labelledby="agora-t" className="slide fu fu--one">
       <div className="page-wrap">
-        <div className="mono fu-kicker"><span>02 / 10</span><span className="fu-rule" aria-hidden="true" />Por que agora</div>
+        <div className="mono fu-kicker"><span>02 / 9</span><span className="fu-rule" aria-hidden="true" />Promessa sob contestação</div>
         <div className="fu-hero">
           <div>
-            <h2 id="agora-t" className="display fu-title">A era da <span>prosperidade</span></h2>
-            <p className="fu-sub">Elon Musk imagina um futuro em que IA e robôs produzem em abundância e o trabalho deixa de ser obrigatório.</p>
-            <blockquote className="fu-quote">
-              <p className="display">“Provavelmente nenhum de nós terá um emprego.”</p>
-              <footer>Elon Musk, VivaTech 2024 · <Src href="https://www.cnn.com/2024/05/23/tech/elon-musk-ai-your-job">CNN, 23 mai. 2024</Src></footer>
-            </blockquote>
-            <p className="fu-frame">Na visão de Musk, IA e robôs forneceriam os bens e serviços necessários, sustentados por uma alta renda universal. Uma era de prosperidade em que trabalhar seria uma escolha, não uma condição de sobrevivência.</p>
+            <div className="fu-verdict">
+              <span className="mono">Tese da BETTEX</span>
+              <h2 id="agora-t" className="display">É mentira, a era da prosperidade é uma mentira.</h2>
+            </div>
+            <p className="fu-sub">Na tese da BETTEX, a promessa de abundância esconde o risco de androides substituírem trabalhadores: os ganhos ficam com os donos das máquinas, enquanto quem depende de salário pode perder renda e lugar na economia.</p>
+            <p className="fu-frame"><Src href="https://www.businessinsider.com/elon-musk-ai-abundance-trump-jobs-wealth-healthcare-ubi-robots-2026-9">Business Insider, 30 set. 2026</Src></p>
+            <p className="fu-sub">IA e robôs vão destruir empregos e a economia real. As pessoas vão enfrentar miséria e abandono antes de qualquer socorro chegar.</p>
           </div>
-          <figure className="fu-photo">
+          <figure className="fu-photo" data-attribution="The Royal Society (2018)" data-license="https://creativecommons.org/licenses/by-sa/3.0/" data-modifications="crop, color grading">
             <img src={PHOTO} alt="Retrato de Elon Musk em 2018" width={1337} height={1771} loading="lazy" />
-            <figcaption>Foto: The Royal Society (2018) · <a href="https://commons.wikimedia.org/wiki/File:Elon_Musk_Royal_Society_(crop2).jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a><br />Enquadramento e tratamento visual.</figcaption>
+            <figcaption><a href="https://commons.wikimedia.org/wiki/File:Elon_Musk_Royal_Society_(crop2).jpg" target="_blank" rel="noopener noreferrer">Fonte: The Royal Society</a></figcaption>
           </figure>
         </div>
-        <div className="fu-pair">
+        <div id="cenario-exclusao" className="fu-exposed">
+          <span className="mono fu-tag">O cenário apocalíptico</span>
+          <h3 className="display">Sem emprego. Sem renda. Sem lugar na nova economia.</h3>
+          <p>Se androides assumem funções físicas e a IA substitui atividades de escritório, a ameaça é perder o emprego e descobrir que a próxima oportunidade também deixou de existir.</p>
+          <ol className="fu-pauta"><li>EUA: vagas abertas</li><li>Brasil: menos novas vagas</li><li>Inflação, petróleo e conflitos globais</li><li>Alertas de um futuro sem trabalho</li><li>Bolha da IA e risco de ruptura</li><li>Desta vez, patrimônio e salário</li></ol>
+          <USVacancyChart />
+          <BrazilEmploymentCharts />
+          <InflationOilRisks />
+          <LaborWarningReports />
+          <div className="fu-evidence fu-evidence--focused">
+            <article>
+              <span className="mono fu-tag">EUA · dados até junho de 2026</span>
+              <p className="display fu-evidence-value">19% abaixo</p>
+              <h4 className="display">Menos oportunidades na entrada do mercado</h4>
+              <p>Em ocupações expostas à IA, o emprego de jovens de 22 a 25 anos ficou 19% abaixo do nível que teria acompanhado seus colegas em funções menos expostas. A diferença aparece sobretudo em menos contratações, não em mais demissões. É uma comparação descritiva, não uma prova de causalidade.</p>
+              <Src href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence">Stanford, 12 ago. 2026</Src>
+            </article>
+          </div>
+          <p className="fu-evidence-limit">Os indicadores têm períodos e métodos diferentes e não devem ser somados. Stanford não encontra eliminação generalizada de empregos na economia; a comparação não prova causalidade da IA.</p>
+          <AIBubbleScenario />
+          <p className="display fu-now">Só resta o agora. O amanhã está perdido.</p>
+          <p className="fu-scenario-note">Tese da BETTEX sobre o risco de exclusão, não uma previsão inevitável nem uma promessa de renda do projeto.</p>
+        </div>
+        <div id="tesla-spacex" className="fu-pair fu-pair--focused">
           <article className="fu-card fu-card--tesla">
-            <span className="mono fu-tag">Tesla · Optimus</span>
-            <h3 className="display">Tesla e os humanoides</h3>
-            <p>O Master Plan Part IV, publicado em setembro de 2025, apresenta o Optimus, robô humanoide da Tesla, como parte da automação física e da abundância sustentável. A IA deixa a tela e passa a executar tarefas no mundo real. O plano oficial fala em redefinir trabalho, mobilidade e energia.</p>
-            <Src href="https://www.tesla.com/master-plan-part-4">Tesla, Master Plan Part IV</Src>
-          </article>
-          <article className="fu-card fu-card--space">
-            <span className="mono fu-tag">SpaceX · Nasdaq: SPCX</span>
-            <h3 className="display">SpaceX e o capital do futuro</h3>
-            <p>A SpaceX estreou na Nasdaq em 12 de junho de 2026, sob o ticker SPCX. Seu IPO conecta foguetes, Starlink e IA a uma visão de infraestrutura espacial, incluindo data centers orbitais. São planos de expansão sujeitos a riscos tecnológicos.</p>
-            <div className="fu-srcs"><Src href="https://www.nasdaq.com/newsroom/spacex-ipo-rocket-company-launches-historic-ipo">Nasdaq, IPO</Src><Src href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm">SEC, prospecto</Src></div>
+            <figure className="fu-card-media fu-card-media--optimus">
+              <img src={`${import.meta.env.BASE_URL}pitch-future/tesla-optimus.jpg`} alt="Optimus, robô humanoide da Tesla" width={1024} height={1024} loading="lazy" />
+              <figcaption>Optimus · Tesla <a href="https://robozaps.com/_next/image?url=/robots/media/tesla-optimus/tesla-tesla-optimus-gen-2-3-01.webp&w=3840&q=75" target="_blank" rel="noopener noreferrer">Imagem via RoboZaps</a></figcaption>
+            </figure>
+            <div className="fu-card-copy">
+              <span className="mono fu-tag">Tesla · Optimus</span>
+              <h3 className="display">Optimus e a substituição do trabalho humano</h3>
+              <p>Humanoides como o Optimus podem ocupar funções hoje remuneradas. Na tese da BETTEX, a substituição em escala concentra ganhos nos donos das máquinas e retira salário e poder de compra de quem depende do próprio trabalho.</p>
+              <Src href="https://www.tesla.com/master-plan-part-4">Tesla, Master Plan Part IV</Src>
+            </div>
           </article>
         </div>
-        <p className="fu-note mono">Essas referências não indicam parceria, endosso ou participação da BETTEX em Tesla ou SpaceX.</p>
+        <p className="fu-note mono">A referência à Tesla não indica parceria, endosso ou participação da BETTEX na empresa.</p>
       </div>
     </section>
 
     <section id="resgatar-futuro" aria-labelledby="resgatar-futuro-t" className="slide fu fu--two">
       <div className="page-wrap">
-        <div className="mono fu-kicker"><span>02 / 10</span><span className="fu-rule" aria-hidden="true" />O futuro das pessoas</div>
+        <div className="mono fu-kicker"><span>02 / 9</span><span className="fu-rule" aria-hidden="true" />O futuro das pessoas</div>
         <h2 id="resgatar-futuro-t" className="display fu-title fu-title--two">Resgatar o futuro <span>das pessoas</span></h2>
-        <p className="fu-sub">O risco não é apenas perder um emprego. É ficar sem renda e sem participação na riqueza que as máquinas produzem.</p>
-        <div className="fu-forecasts">
-          <article className="fu-big fu-big--blue">
-            <span className="mono fu-tag">EUA: cenário de Dario Amodei</span>
-            <p className="fu-num display">50%</p>
-            <p>dos empregos de entrada de colarinho branco poderiam desaparecer. Em maio de 2025, Dario Amodei, CEO da Anthropic, alertou à Axios para um cenário de 10% a 20% de desemprego nos EUA em um a cinco anos. Tecnologia, finanças, direito e consultoria estão entre as áreas citadas.</p>
-            <Src href="https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic">Axios, mai. 2025</Src>
-          </article>
-          <article className="fu-big fu-big--paper">
-            <span className="mono fu-tag">América Latina: Guatemala e El Salvador</span>
-            <p className="fu-num display">75%</p>
-            <p>dos trabalhadores em ocupações com alto risco de substituição por robôs na Guatemala e em El Salvador. O relatório do BID de 2021 apresenta essas estimativas de Micco e Soler (2020) e aponta 65% na Argentina.</p>
-            <p className="fu-warn">Potencial de automação por ocupação, não previsão de 75% de desemprego. O próprio relatório ressalta que custos, adoção e metodologias podem reduzir o impacto.</p>
-            <Src href="https://publications.iadb.org/publications/english/document/The-Future-of-Work-in-Latin-America-and-the-Caribbean-What-is-the-Impact-of-Automation-on-Employment-and-Wages.pdf">BID, futuro do trabalho, 2021</Src>
-          </article>
-        </div>
-        <div className="fu-regional">
-          <p>Para a IA generativa, a OIT e o Banco Mundial estimaram em 2024 que 26% a 38% dos empregos na América Latina e no Caribe estão expostos, com 2% a 5% em risco de automação total. Cerca de 17 milhões de empregos poderiam ficar sem os ganhos de produtividade por falta de acesso digital. São tecnologias e metodologias diferentes das estimativas de robótica do BID.</p>
-          <Src href="https://www.ilo.org/pt-pt/resource/news/press-release-ai-latin-america">OIT e Banco Mundial, 2024</Src>
-        </div>
+        <p className="fu-sub">Os sinais de fragilidade já são concretos: empregos eliminados, menos vagas criadas e milhões sem trabalho suficiente ou vínculo formal. Para quem depende de renda para viver, a promessa de abundância não resolve o presente.</p>
+        <LaborSignals />
         <div className="fu-position">
+          <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
           <p className="display fu-pos-lead">Resgatar o futuro é ampliar o acesso à participação econômica, para que a tecnologia não produza prosperidade apenas para quem já controla o capital.</p>
-          <div className="fu-pos-body">
-            <p>A BETTEX organiza uma comunidade de investimento com IA e reúne capital em uma tesouraria que opera em mercados de risco. Quando há lucro e as condições de distribuição são atendidas, o participante recebe sua parcela conforme as regras do projeto.</p>
-            <p className="fu-risk mono">Não é salário, seguro contra desemprego ou renda garantida. Há risco de perda de capital.</p>
-            <a className="fu-doc" href={DOC} target="_blank" rel="noopener noreferrer">Como a BETTEX amplia a participação <ArrowRight aria-hidden="true" /></a>
-          </div>
         </div>
       </div>
     </section>
+
   </>;
 }
 

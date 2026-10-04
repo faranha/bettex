@@ -2,7 +2,7 @@
 .whitepaper .whitepaper__aside { top: calc(var(--site-header-h) + 20px); }
 .whitepaper [id], .whitepaper__content { scroll-margin-top: calc(var(--site-header-h) + 28px); }
 .whitepaper section[id] { scroll-margin-top: calc(var(--site-header-h) + 12px); }
-.pitch [id] { scroll-margin-top: calc(var(--site-header-h) + 16px); }
+.pitch [id] { scroll-margin-top: calc(var(--pitch-sticky-h, 120px) + 16px); }
 .pitch-grid { background-image: linear-gradient(rgba(95,134,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(95,134,255,.09) 1px, transparent 1px); background-size: 44px 44px; }
 @keyframes pitch-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 .pitch-rise { animation: pitch-rise .7s cubic-bezier(.2,.7,.2,1) both; }
@@ -29,17 +29,17 @@ img, svg, video { max-width: 100%; }
 .pitch a { overflow-wrap: anywhere; }
 .pitch [class*="grid"] > * { min-width: 0; }
 @media (max-width: 639px) {
-  .pitch [role="region"][aria-label="Exemplos de custo"] { overflow: visible; border: 0; border-radius: 0; }
-  .pitch [role="region"] table { min-width: 0 !important; width: 100%; }
-  .pitch [role="region"] table, .pitch [role="region"] tbody, .pitch [role="region"] tr, .pitch [role="region"] td { display: block; width: 100%; }
-  .pitch [role="region"] thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-  .pitch [role="region"] tr { margin-bottom: 10px; border: 1px solid rgba(7,11,31,.18); border-radius: 14px; overflow: hidden; }
-  .pitch [role="region"] td { display: grid; grid-template-columns: minmax(80px, 34%) minmax(0, 1fr); gap: 10px; padding: 10px 14px; overflow-wrap: anywhere; }
-  .pitch [role="region"] td + td { border-top: 1px solid rgba(7,11,31,.12); }
-  .pitch [role="region"] td:nth-child(1)::before { content: var(--pitch-label-1); }
-  .pitch [role="region"] td:nth-child(2)::before { content: var(--pitch-label-2); }
-  .pitch [role="region"] td:nth-child(3)::before { content: var(--pitch-label-3); }
-  .pitch [role="region"] td::before { font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .06em; text-transform: uppercase; opacity: .7; overflow-wrap: anywhere; }
+  .pitch .pitch-cost-examples { overflow: visible; border: 0; border-radius: 0; }
+  .pitch .pitch-cost-examples table { min-width: 0 !important; width: 100%; }
+  .pitch .pitch-cost-examples table, .pitch .pitch-cost-examples tbody, .pitch .pitch-cost-examples tr, .pitch .pitch-cost-examples td { display: block; width: 100%; }
+  .pitch .pitch-cost-examples thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .pitch .pitch-cost-examples tr { margin-bottom: 10px; border: 1px solid rgba(7,11,31,.18); border-radius: 14px; overflow: hidden; }
+  .pitch .pitch-cost-examples td { display: grid; grid-template-columns: minmax(80px, 34%) minmax(0, 1fr); gap: 10px; padding: 10px 14px; overflow-wrap: anywhere; }
+  .pitch .pitch-cost-examples td + td { border-top: 1px solid rgba(7,11,31,.12); }
+  .pitch .pitch-cost-examples td:nth-child(1)::before { content: var(--pitch-label-1); }
+  .pitch .pitch-cost-examples td:nth-child(2)::before { content: var(--pitch-label-2); }
+  .pitch .pitch-cost-examples td:nth-child(3)::before { content: var(--pitch-label-3); }
+  .pitch .pitch-cost-examples td::before { font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .06em; text-transform: uppercase; opacity: .7; overflow-wrap: anywhere; }
 }
 @media (max-width: 359px) {
   .page-wrap { width: min(100% - 24px, 1200px); }
@@ -85,27 +85,23 @@ img, svg, video { max-width: 100%; }
   .cover__copy > div { grid-column: 1 / -1; grid-row: 5; }
   .cover__fred { grid-column: 1; grid-row: 3; width: min(100%, 220px); box-shadow: 8px 8px 0 rgba(43,89,255,.55); }
 }
-.pitch-audience { background: #142C50; color: #F4F1E8; border-top: 1px solid rgba(197,210,241,.18); }
-.pitch-audience__layout { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(32px,6vw,88px); align-items: center; padding-block: 48px; }
-.pitch-audience__kicker { margin: 0 0 18px; color: #F2B632; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-.pitch-audience__title { margin: 0; font-size: clamp(1.8rem,3vw,2.6rem); line-height: 1.12; font-weight: 800; letter-spacing: -.045em; }
-.pitch-audience__statement { max-width: 480px; margin-top: 20px; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.55; font-weight: 600; color: #E0E9F8; }
-.pitch-audience__details { min-width: 0; border-left: 1px solid rgba(197,210,241,.25); padding-left: clamp(24px,3vw,40px); }
-.pitch-audience__detail + .pitch-audience__detail { margin-top: 26px; }
-.pitch-audience__detail h3 { margin: 0 0 9px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #F2B632; }
-.pitch-audience__detail p { margin: 0; font-size: 15px; line-height: 1.75; color: #D3E0F6; }
-@media (max-width: 767px) {
-  .pitch-audience__layout { grid-template-columns: minmax(0,1fr); gap: 28px; padding-block: 36px; }
-  .pitch-audience__details { border-left: 0; border-top: 1px solid rgba(197,210,241,.25); padding: 24px 0 0; }
-  .pitch-audience__statement { margin-top: 16px; }
-  .pitch-audience__detail p { font-size: 14px; }
-}
 .slide { position: relative; }
+.pitch .slide + .slide { border-top: 3px solid #2B59FF; }
+.pitch .slide--dark + .slide, .pitch .fu--one + .slide { border-top-color: #F2B632; }
 .pitch-risk-panel { margin-top: 36px; padding: clamp(20px,3vw,36px); border-radius: 12px; background: #070B1F; color: #F4F1E8; }
 .slide__head { position: relative; padding: 48px 0 32px; }
 .slide__head--ink { color: #F4F1E8; background-color: #070B1F; }
 .slide__head--ink h2 span { color: #F2B632; }
 .slide__head--paper { background: #F4F1E8; }
+#solucao { border-top: 6px solid #2B59FF; }
+#solucao .slide__head {
+  background: #13204F;
+  color: #F4F1E8;
+  padding-block: clamp(48px, 5vw, 72px) clamp(36px, 4vw, 56px);
+}
+#solucao .slide__head h2 { color: #F4F1E8; }
+#solucao .slide__head .mono { color: #F2B632; }
+#solucao .slide__head p { color: #e3eaff; }
 .slide__headin { position: relative; }
 .slide__body { padding-block: 40px 64px; }
 .slide--dark .slide__body { border-top: 4px solid #F2B632; }

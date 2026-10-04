@@ -1,0 +1,18 @@
+.ecmp { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(95,134,255,.4); border-radius: 8px; background: #0d1536; color: #c5d2f1; scrollbar-color: #F2B632 #142C50; box-shadow: inset -18px 0 14px -14px rgba(7,11,31,.9); }
+.ecmp:focus-visible { outline: 3px solid #F2B632; outline-offset: 3px; }
+.ecmp__table { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 0; text-align: left; font-size: 15px; line-height: 1.6; }
+.ecmp__hint { display: none; margin: 0 0 12px; color: #c5d2f1; font-size: 12px; line-height: 1.6; }
+.ecmp th, .ecmp td { padding: 16px 18px; vertical-align: top; border-bottom: 1px solid rgba(95,134,255,.22); overflow-wrap: break-word; }
+.ecmp tbody tr:last-child > * { border-bottom: 0; }
+.ecmp thead th { font-family: var(--app-font-mono); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #F4F1E8; background: #070B1F; border-bottom: 2px solid #F2B632; vertical-align: bottom; }
+.ecmp tbody th { width: 17%; min-width: 150px; font-size: 14px; font-weight: 800; color: #F4F1E8; background: #101a3f; position: sticky; left: 0; z-index: 1; border-right: 1px solid rgba(95,134,255,.3); }
+.ecmp thead .ecmp__crit-h { position: sticky; left: 0; z-index: 2; }
+.ecmp td { width: 27%; }
+.ecmp td.ecmp__bettex { color: #F4F1E8; font-weight: 600; background: rgba(43,89,255,.2); border-left: 3px solid #F2B632; }
+.ecmp thead th.ecmp__bettex { color: #070B1F; background: #F2B632; border-left: 3px solid #F2B632; }
+@media (max-width: 767px) {
+  .ecmp__hint { display: block; }
+  .ecmp__table { min-width: 720px; font-size: 14px; }
+  .ecmp th, .ecmp td { padding: 12px 14px; }
+  .ecmp tbody th { min-width: 120px; width: 120px; }
+}

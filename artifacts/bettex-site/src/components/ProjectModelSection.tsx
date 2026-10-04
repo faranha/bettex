@@ -3,7 +3,7 @@ import { ArrowDownRight, ArrowLeft, ArrowRight, Wallet } from 'lucide-react';
 import { CommunityCTA } from '@/components/CommunityCTA';
 import { TokenIllustration, DepositIllustration, CoordinationIllustration } from '@/components/ProjectModelIllustrations';
 
-const markets = ['Previsões', 'Ações e cripto', 'Esportes', 'Cassinos'] as const;
+const markets = ['Previsões', 'Ações e cripto', 'Esportes', 'iGaming'] as const;
 
 const STEP_COUNT = 4;
 const dotLabels = ['Ir para a etapa 1', 'Ir para a etapa 2', 'Ir para a etapa 3', 'Ir para a etapa 4'];

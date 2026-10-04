@@ -3,6 +3,18 @@ name: Texto do produto sem metaconversa
 description: Evitar comentários editoriais sobre a finalidade do pitch, da documentação e do site.
 ---
 
+Na legenda da foto de Elon Musk no Pitch, mostrar apenas a fonte com link, sem comentários de enquadramento ou tratamento visual e sem uma sequência de informações bibliográficas.
+
+**Why:** O criador exigiu “Bota a fonte e pronto, acabou”, rejeitando a legenda extensa.
+
+**How to apply:** Manter a fonte compacta e preservar as informações necessárias de atribuição no registro da imagem e na página de origem, sem repetir o comentário editorial na interface.
+
+Na descrição comercial da solução do Pitch, apresentar a operação como responsabilidade de uma empresa privada e as quatro frentes de atuação. Não acrescentar “ainda a constituir”, “nenhuma garantida como ativa” ou comentários sobre uma futura constituição da empresa.
+
+**Why:** O criador reiterou que já havia proibido esses comentários e exigiu “por empresa privada, ponto”, retirando também a ressalva de frentes não garantidas como ativas.
+
+**How to apply:** Manter a descrição direta, inclusive nos resumos, parágrafos, rótulos e traduções da solução. Isso não modifica o status jurídico real, as condições de autorização ou as regras econômicas do produto.
+
 O criador pediu: “Pare de colocar meta conversa na nossa documentação, no nosso site, no nosso produto”. Rejeitou a faixa “busca de investidores para o piloto” no pitch: “Um pitch é um pitch, cara, é uma coisa óbvia”.
 
 **Why:** O texto deve apresentar o negócio, não explicar ao leitor a finalidade do material ou narrar sua produção.

@@ -39,7 +39,7 @@ O rótulo da seção é “Público da iniciativa”, não “Público do produt
 
 **How to apply:** Identificar o apostador brasileiro uma vez no título e usar a descrição para explicar o foco de migração das apostas para investimentos, nos três idiomas.
 
-No Pitch, a explicação de como o investidor participa deve explicitar “investimentos em mercados de risco”.
+No Pitch, a explicação de como o usuário participa deve explicitar que a tesouraria realiza “investimentos em mercados de risco”.
 
 **Why:** O criador corrigiu o trecho “Como participa” com essa expressão.
 
@@ -81,9 +81,9 @@ Manter um background discreto e elegante no topo do pitch. A bandeira brasileira
 
 **How to apply:** Dar presença ao fundo sem competir com a leitura ou com o retrato, mantendo a rejeição aos fundos de cassino e à fotografia de gráficos. Preservar a escala grande, formas e contornos suaves, tons de azul e transparência; não confinar a bandeira a uma área pequena atrás do retrato nem voltar a cores saturadas.
 
-Seções consecutivas do pitch precisam ter uma separação visual clara, especialmente Público-alvo e Problema.
+Seções consecutivas do pitch precisam ter uma separação visual clara, especialmente Público-alvo e Problema, e “Resgatar o futuro das pessoas” e “IA na operação, participação por token”.
 
-**Why:** O criador rejeitou a sequência dessas duas seções com o mesmo fundo e composição porque “parece a mesma section”.
+**Why:** O criador rejeitou seções consecutivas com o mesmo fundo e composição porque “parece a mesma section”. Reiterou que “Resgatar o futuro das pessoas” e “IA na operação, participação por token” são seções diferentes e precisam parecer diferentes.
 
 **How to apply:** Diferenciar fundo, composição ou hierarquia entre blocos adjacentes, sem eliminar a apresentação do público antes dos dados.
 
@@ -111,11 +111,17 @@ A tese do fundador é que apostar buscando renda, pagar contas ou quitar dívida
 
 **How to apply:** Não usar a pergunta estreita sobre chamar apostas de “investimento” como limite do público com motivação financeira. Sustentar a narrativa com evidência de busca de renda ou quitação de dívidas, preservando o grupo e a pergunta de cada levantamento. Apresentar a interpretação como tese da BETTEX, sem afirmar que uma pesquisa mediu essa equivalência ou generalizar um recorte para toda a população.
 
-No trecho sobre IA e trabalho, o foco aprovado é resgatar o futuro das pessoas. O criador quer a visão de prosperidade de Elon Musk, SpaceX e seu IPO, documentação dos humanoides e cenários severos de desemprego ou substituição, incluindo a América Latina. Autoriza dividir esse argumento em duas seções.
+No trecho sobre IA e trabalho, confrontar a visão de prosperidade de Elon Musk, não apresentá-la como uma promessa endossada. O criador exige o carimbo “É mentira, a era da prosperidade é uma mentira”, o lado negativo e apocalíptico da perda de empregos e renda, e “Só resta o agora, o amanhã está perdido”. Preservar a conexão com resgatar o futuro das pessoas, SpaceX, humanoides e os cenários de substituição, incluindo a América Latina.
 
-**Why:** O criador apontou um problema grave de diagramação e falta de foco, pedindo explicitamente esses elementos e a centralidade do futuro das pessoas.
+**Why:** O criador reiterou que já havia pedido o cenário apocalíptico e rejeitou a apresentação otimista do bloco de Musk. Perguntou onde estava o “exposed” e corrigiu a chamada “Por que agora”: “Só resta o agora, o amanhã está perdido”.
 
-**How to apply:** Separar a visão de abundância dos riscos para renda e participação econômica. Não voltar a uma apresentação genérica só sobre exposição à IA. Atribuir previsões e preservar países, datas e metodologia; não transformar potencial de automação em desemprego medido, nem atribuir à documentação uma eliminação universal de empregos que ela não afirma.
+**How to apply:** Mostrar a fala recente de Musk como alvo da crítica, com carimbo e contraponto no mesmo bloco. Identificar a crítica e o cenário extremo como tese da BETTEX, sem suavizar o tom pedido nem confundi-los com fatos medidos. Atribuir previsões e preservar países, datas e metodologia; não transformar potencial de automação em desemprego medido, nem publicar números ou explicações de indicadores sem verificar a fonte.
+
+Em “Resgatar o futuro das pessoas”, usar dados recentes internacionais, com destaque aos EUA, e conectar a análise ao Brasil. Priorizar fragilidade, perdas de postos, desaceleração e falta de trabalho suficiente verificáveis, sem apresentar um cenário otimista. Os containers dessa seção devem trabalhar com ícones; não acrescentar ícones decorativos no bloco de Elon Musk.
+
+**Why:** O criador voltou a rejeitar o cenário como muito positivo e pediu dados atuais, contexto norte-americano trazido ao Brasil e ícones especificamente em “Resgatar o futuro das pessoas”.
+
+**How to apply:** Separar medições atuais de previsões de automação. Verificar a série, o país e o período antes de afirmar geração zero de vagas; saldo de empregos formais do Caged e estabilidade estatística do emprego privado com carteira na PNAD são medidas diferentes. Manter fontes e riscos, sem atribuir automaticamente perdas à IA.
 
 Escrever o texto do pitch sem travessões, com pontuação natural.
 
@@ -129,8 +135,26 @@ O pitch não deve ter rolagem lateral, inclusive no índice de seções.
 
 **How to apply:** Fazer o conteúdo caber na largura disponível, com quebra de linhas quando necessário. Não apenas esconder a barra de rolagem.
 
-Na estrutura do pitch, retirar Fontes e Estágio, reunir Recursos e riscos e preservar o conteúdo das demais seções fora do menu de seções da capa.
+Na estrutura do pitch, retirar Fontes e Estágio, reunir Recursos e riscos e preservar o conteúdo das demais seções. Não reintroduzir o índice na capa; a navegação por áreas deve ficar numa linha adicional abaixo do header, fixa junto dele e exclusiva do Pitch.
 
-**Why:** O criador pediu essas remoções e voltou a cobrar “não tirou nada” quando apenas a aparência do menu havia mudado.
+**Why:** O criador pediu essas remoções e depois cobrou o menu que havia sumido, solicitando expressamente um submenu com as áreas do Pitch numa linha adicional abaixo do header, sticky como ele.
 
-**How to apply:** Não reintroduzir os blocos removidos nem o índice da capa em revisões visuais. Manter a navegação geral do site e as referências dentro das seções preservadas.
+**How to apply:** Não reintroduzir os blocos removidos nem o índice da capa em revisões visuais. Manter a navegação geral do site e as referências dentro das seções preservadas. A navegação do Pitch é adicional ao header global, não substitui seu menu móvel. Compensar as duas barras nas âncoras e preservar a ausência de rolagem lateral.
+
+Na seção de Elon Musk, o carimbo “É mentira, a era da prosperidade é uma mentira” é suficiente como título. Não acrescentar “A era da prosperidade” acima dele.
+
+**Why:** O criador rejeitou os dois títulos na mesma seção e pediu manter somente o carimbo.
+
+**How to apply:** Preservar o carimbo como heading da seção, com seu estilo original, sem duplicar o título em outro elemento. Manter o restante do conteúdo e o retrato.
+
+O criador retirou a exigência anterior de comparar em gráficos os totais pré-pandemia e atuais nos EUA: “Remova o gráfico. Eu preciso de dados que suportem a tese de que os empregos começaram a desaparecer.” Preservar os gráficos brasileiros e não reintroduzir os gráficos americanos contestados.
+
+**Why:** A correção mais recente prevalece sobre o pedido anterior de gráficos; o criador rejeitou o total agregado como evidência de eliminação de funções.
+
+**How to apply:** Mostrar as séries e comparações visualmente, com fontes, datas, unidades e bases comparáveis. Distinguir empregos ocupados, pessoas ocupadas e vagas abertas; nunca forçar os dados a sustentar queda agregada se a série mostrar crescimento.
+
+Os blocos Tesla/Optimus e SpaceX do Pitch devem mostrar imagens do humanoide e da nave, inclusive no celular, não apenas texto.
+
+**Why:** O criador apontou os dois cartões e perguntou “onde esta a nave? o android? precisamos de imagens”.
+
+**How to apply:** Preservar imagens reconhecíveis dos produtos junto aos textos desses blocos e manter as fontes, sem insinuar parceria com a BETTEX.

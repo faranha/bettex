@@ -9,6 +9,12 @@ Uma mudança na altura da navegação precisa ser refletida também no cálculo 
 
 **How to apply:** Em alterações futuras da navegação, conferir links diretos com fragmento e títulos visíveis em celular. Ajustes em scroll-margin não corrigem um scrollTo que calcula a posição por conta própria.
 
+O espaço de `scroll-padding` do documento e o de `scroll-margin` do destino são cumulativos. A homepage deve descontar o cabeçalho uma única vez e alinhar o começo do bloco, preservando o padding interno da seção.
+
+**Why:** O fim da seção anterior permanecia visível porque algumas âncoras compensavam duas vezes a mesma navegação fixa.
+
+**How to apply:** Conferir as duas regras em conjunto, inclusive estilos próprios de Nova Economia e Roadmap. Restringir correções à homepage; a documentação tem um índice fixo adicional e não deve receber o mesmo reset.
+
 No mobile, Pitch, Documentação, Demo e o seletor de idioma devem ficar dentro do menu hambúrguer, sem uma segunda linha de botões sob o cabeçalho.
 
 Pitch, Documentação e Demo ficam numa seção própria no fim do menu, após Roadmap, não no topo. O seletor de idioma continua dentro do menu.

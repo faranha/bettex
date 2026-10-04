@@ -8,7 +8,7 @@ const SLIDE_LABELS = [
   'Ir para o slide 1: Previsões',
   'Ir para o slide 2: Ações e cripto',
   'Ir para o slide 3: Esportes',
-  'Ir para o slide 4: Cassinos',
+  'Ir para o slide 4: iGaming',
   'Ir para o slide 5: Carteira USDC',
 ];
 const COUNT = SLIDE_LABELS.length;

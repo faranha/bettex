@@ -1,0 +1,16 @@
+/* Part of the site's sticky header, not constrained by the main content. */
+.pitch-subnav { border-top: 1px solid #2b59ff55; background: #13204f; color: #f4f1e8; }
+.pitch-subnav-links { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2px; padding-block: 5px; min-height: 46px; }
+.pitch-subnav-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 6px 7px; border-radius: 5px; font-size: 11px; font-weight: 600; line-height: 1.3; text-align: center; text-decoration: none; }
+.pitch-subnav-links a:hover, .pitch-subnav-links a[aria-current="location"] { background: #2b59ff; color: #fff; }
+.pitch-subnav a:focus-visible, .pitch-subnav select:focus-visible { outline: 2px solid #f2b632; outline-offset: 2px; }
+.pitch-subnav-mobile { display: none; }
+html:has(.pitch) { scroll-padding-top: 0; }
+.pitch [id] { scroll-margin-top: calc(var(--pitch-sticky-h, 120px) + 16px); }
+@media (max-width: 1279px) {
+  .pitch-subnav-links { display: none; }
+  .pitch-subnav-mobile { display: flex; align-items: center; gap: 16px; min-height: 48px; width: 100%; padding-block: 3px; }
+  .pitch-subnav-mobile > span { flex-shrink: 0; color: #f2b632; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
+  .pitch-subnav-mobile select { flex: 1; min-width: 0; width: 100%; min-height: 42px; border: 1px solid #5f86ff55; border-radius: 5px; background: #070b1f; color: #f4f1e8; padding: 6px 10px; font-size: 14px; font-weight: 600; }
+  .pitch-subnav-mobile option { background: #070b1f; color: #f4f1e8; }
+}

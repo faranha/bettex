@@ -1,4 +1,1026 @@
 {
+  "03 / Inflação e petróleo · choque global": { "en": "03 / Inflation and oil · global shock", "es": "03 / Inflación y petróleo · choque global" },
+  "04 / Futuro do trabalho · matérias e alertas": { "en": "04 / Future of work · reports and warnings", "es": "04 / Futuro del trabajo · artículos y alertas" },
+  "05 / Bolha da IA · risco financeiro": { "en": "05 / AI bubble · financial risk", "es": "05 / Burbuja de la IA · riesgo financiero" },
+  "06 / Tese da BETTEX · cenário extremo": { "en": "06 / BETTEX thesis · extreme scenario", "es": "06 / Tesis de BETTEX · escenario extremo" },
+  "2021–2026: evolução da criação de novas vagas": { "en": "2021–2026: the evolution of new job creation", "es": "2021–2026: evolución de la creación de nuevos empleos" },
+  "A criação de empregos desacelera enquanto choques de energia e conflitos internacionais ameaçam o custo de vida. Sem renda acompanhando os preços, o mesmo salário compra menos.": { "en": "Job creation is slowing while energy shocks and international conflicts threaten the cost of living. When income fails to keep pace with prices, the same salary buys less.", "es": "La creación de empleo se desacelera mientras los choques energéticos y los conflictos internacionales amenazan el costo de vida. Si los ingresos no acompañan los precios, el mismo salario compra menos." },
+  "A criação líquida de empregos formais caiu pelo segundo ano consecutivo no acumulado de janeiro a agosto. O saldo de 2026 ficou 25,2% abaixo de 2025 e cerca de 35% abaixo de 2024. O país ainda gera novos vínculos, mas o ritmo recente é de queda.": { "en": "Net formal job creation fell for the second consecutive year in the January–August period. The 2026 balance was 25.2% below 2025 and roughly 35% below 2024. The country is still generating new formal jobs, but the recent pace is declining.", "es": "La creación neta de empleo formal cayó por segundo año consecutivo en el acumulado de enero a agosto. El saldo de 2026 fue un 25,2% inferior al de 2025 y alrededor de un 35% inferior al de 2024. El país sigue generando nuevos empleos formales, pero el ritmo reciente disminuye." },
+  "A energia elétrica subiu 7,42% em setembro, principalmente pelo fim de um crédito anterior de Itaipu. Isso não mostra o petróleo como causa da aceleração medida.": { "en": "Electricity rose 7.42% in September, mainly because a previous Itaipu credit ended. This does not establish oil as the cause of the measured acceleration.", "es": "La electricidad subió un 7,42% en septiembre, principalmente por el fin de un crédito anterior de Itaipu. Esto no demuestra que el petróleo causara la aceleración medida." },
+  "Agência Brasil/Reuters, 4 out. 2026": { "en": "Agência Brasil/Reuters, Oct. 4, 2026", "es": "Agência Brasil/Reuters, 4 oct. 2026" },
+  "Cenário de choque, não previsão": { "en": "Shock scenario, not a forecast", "es": "Escenario de choque, no una previsión" },
+  "Conflito ou corte de oferta": { "en": "Conflict or supply disruption", "es": "Conflicto o reducción de la oferta" },
+  "Contexto global · reportado em": { "en": "Global context · reported on", "es": "Contexto global · informado el" },
+  "Custos de energia, frete e produção": { "en": "Energy, freight and production costs", "es": "Costos de energía, transporte y producción" },
+  "Em 4 out. 2026, a Agência Brasil, com a Reuters, informou que o presidente do Parlamento iraniano condicionou a reabertura do Estreito de Ormuz, rota importante de energia.": { "en": "On Oct. 4, 2026, Agência Brasil, with Reuters, reported that the Iranian Parliament speaker set conditions for reopening the Strait of Hormuz, an important energy route.", "es": "El 4 oct. 2026, Agência Brasil, con Reuters, informó que el presidente del Parlamento iraní estableció condiciones para reabrir el estrecho de Ormuz, una importante ruta energética." },
+  "Expectativa · Boletim Focus, 28 set. 2026": { "en": "Expectation · Focus bulletin, Sept. 28, 2026", "es": "Expectativa · Boletín Focus, 28 sept. 2026" },
+  "Gráfico de linha da criação líquida de empregos formais no Brasil de 2021 a 2026": { "en": "Line chart of net formal job creation in Brazil from 2021 to 2026", "es": "Gráfico de líneas de la creación neta de empleo formal en Brasil de 2021 a 2026" },
+  "IBGE, IPCA-15 de setembro de 2026": { "en": "IBGE, September 2026 IPCA-15", "es": "IBGE, IPCA-15 de septiembre de 2026" },
+  "Inflação, petróleo e conflitos globais": { "en": "Inflation, oil and global conflicts", "es": "Inflación, petróleo y conflictos globales" },
+  "Inflação, petróleo e guerras: a renda sob pressão": { "en": "Inflation, oil and wars: income under pressure", "es": "Inflación, petróleo y guerras: los ingresos bajo presión" },
+  "MTE · série histórica do Novo Caged · ago. 2026": { "en": "MTE · Novo Caged historical series · Aug. 2026", "es": "MTE · serie histórica de Novo Caged · ago. 2026" },
+  "Menos poder de compra": { "en": "Less purchasing power", "es": "Menor poder adquisitivo" },
+  "O IPCA-15 é uma prévia da inflação, não o IPCA fechado.": { "en": "IPCA-15 is a preliminary inflation index, not the final IPCA.", "es": "El IPCA-15 es un índice preliminar de inflación, no el IPCA definitivo." },
+  "O Novo Caged mede vínculos formais CLT. A linha compara o saldo de janeiro a agosto de cada ano, de 2021 a 2026, com ajustes da divulgação de agosto de 2026. Houve recuperação em 2024 e queda em 2025 e 2026. A tendência recente de menor criação não é redução de todo o estoque de empregos nem uma previsão de queda futura. Não há atribuição causal à IA.": { "en": "Novo Caged measures formal CLT employment relationships. The line compares the January–August net balance for each year from 2021 to 2026, including adjustments in the August 2026 release. There was a recovery in 2024 and declines in 2025 and 2026. The recent trend of lower job creation is neither a reduction in the entire stock of jobs nor a forecast of future decline. No causal attribution to AI is made.", "es": "Novo Caged mide las relaciones laborales formales CLT. La línea compara el saldo neto de enero a agosto de cada año, de 2021 a 2026, con los ajustes de la publicación de agosto de 2026. Hubo recuperación en 2024 y caídas en 2025 y 2026. La tendencia reciente de menor creación no es una reducción de todo el empleo existente ni una previsión de caída futura. No se atribuye causalidad a la IA." },
+  "O repasse ao consumidor é condicional: depende do câmbio, da política de preços e do tempo. Não é garantido, e a alta de preços pode ser localizada em vez de generalizada.": { "en": "Pass-through to consumers is conditional: it depends on exchange rates, pricing policies and time. It is not guaranteed, and price increases may be localized rather than generalized.", "es": "El traslado al consumidor es condicional: depende del tipo de cambio, de la política de precios y del tiempo. No está garantizado, y la subida de precios puede ser localizada en vez de generalizada." },
+  "Observado · IBGE, IPCA-15 de setembro de 2026": { "en": "Observed · IBGE, September 2026 IPCA-15", "es": "Observado · IBGE, IPCA-15 de septiembre de 2026" },
+  "Petróleo · Radioagência, 28 set. 2026": { "en": "Oil · Radioagência, Sept. 28, 2026", "es": "Petróleo · Radioagência, 28 sept. 2026" },
+  "Pressão sobre preços ao consumidor": { "en": "Pressure on consumer prices", "es": "Presión sobre los precios al consumidor" },
+  "Preço por barril reportado em 28 de setembro no contexto da guerra com o Irã. A referência não identifica o tipo de petróleo e não é uma cotação em tempo real.": { "en": "Price per barrel reported on September 28 in the context of the war with Iran. The report does not identify the oil benchmark and is not a real-time quotation.", "es": "Precio por barril informado el 28 de septiembre en el contexto de la guerra con Irán. La referencia no identifica el tipo de petróleo y no es una cotización en tiempo real." },
+  "Projeção do mercado para o IPCA de 2026, acima dos": { "en": "Market forecast for 2026 IPCA, up from", "es": "Previsión del mercado para el IPCA de 2026, por encima del" },
+  "Radioagência, 28 set. 2026": { "en": "Radioagência, Sept. 28, 2026", "es": "Radioagência, 28 sept. 2026" },
+  "Saldo líquido de janeiro a agosto de cada ano, em milhões de empregos formais. Mesma janela de comparação; eixo começa em zero.": { "en": "January–August net balance for each year, in millions of formal jobs. The same comparison window; the axis starts at zero.", "es": "Saldo neto de enero a agosto de cada año, en millones de empleos formales. El mismo período de comparación; el eje comienza en cero." },
+  "Variação mensal, contra": { "en": "Monthly change, versus", "es": "Variación mensual, frente al" },
+  "always": { "en": "always", "es": "always" },
+  "contra": { "en": "versus", "es": "frente al" },
+  "da previsão anterior. É uma expectativa, não um resultado realizado.": { "en": "in the previous forecast. This is an expectation, not a realized outcome.", "es": "de la previsión anterior. Es una expectativa, no un resultado observado." },
+  "desde 2024: duas quedas anuais consecutivas.": { "en": "since 2024: two consecutive annual declines.", "es": "desde 2024: dos caídas anuales consecutivas." },
+  "em agosto. Em 12 meses, a taxa foi de": { "en": "in August. Over 12 months, the rate was", "es": "en agosto. En 12 meses, la tasa fue del" },
+  "long": { "en": "long", "es": "long" },
+  "por barril": { "en": "per barrel", "es": "por barril" },
+  "EUA: vagas abertas": {
+    "en": "US: job openings",
+    "es": "EE. UU.: vacantes disponibles"
+  },
+  "IA e robôs vão destruir empregos e a economia real. As pessoas vão enfrentar miséria e abandono antes de qualquer socorro chegar.": {
+    "en": "AI and robots will destroy jobs and the real economy. People will face poverty and abandonment before any help arrives.",
+    "es": "La IA y los robots van a destruir empleos y la economía real. Las personas van a enfrentar miseria y abandono antes de que llegue cualquier ayuda."
+  },
+  "17,2% dos brasileiros no público pesquisado dizem ter ou já ter tido dinheiro em criptomoedas. Inclui experiências passadas, não apenas quem possui cripto hoje.": { "en": "17.2% of Brazilians in the surveyed population say they have or have previously had money in cryptocurrencies. This includes past experience, not only current owners.", "es": "El 17,2% de los brasileños del público encuestado afirma tener o haber tenido dinero en criptomonedas. Incluye experiencias pasadas, no solo propietarios actuales." },
+  "A participação na BETTEX exige 18 anos ou mais. O público inicial são apostadores; quem já conhece cripto é um segmento de familiaridade, não um requisito.": { "en": "BETTEX participation requires being 18 or older. The initial audience is bettors; familiarity with crypto identifies a segment, not an entry requirement.", "es": "Participar en BETTEX requiere tener 18 años o más. El público inicial son los apostadores; conocer cripto identifica un segmento de familiaridad, no es un requisito." },
+  "Cripto inclui experiências passadas e público de 16 anos ou mais. O alcance combinado é uma hipótese de escala, não público elegível ou demanda comprovada.": { "en": "Crypto includes past experience and people aged 16 or older. Combined reach is a scale hypothesis, not a verified eligible audience or proven demand.", "es": "Cripto incluye experiencias pasadas y personas de 16 años o más. El alcance combinado es una hipótesis de escala, no un público elegible verificado ni demanda comprobada." },
+  "Alcance combinado sem contar duplicados": { "en": "Combined reach without double counting", "es": "Alcance combinado sin duplicados" },
+  "Alcance combinado, sem duplicados": { "en": "Combined reach, no double counting", "es": "Alcance combinado, sin duplicados" },
+  "Apostadores": { "en": "Bettors", "es": "Apostadores" },
+  "Base de apostas: até 40 milhões é o cenário de escala da BETTEX, não uma estatística oficial nem um teto comprovado para o Brasil. Os dados publicados da Fazenda contextualizam esse mercado, mas não verificam esse total.": { "en": "Betting base: up to 40 million is BETTEX’s scale scenario, not an official statistic or a verified ceiling for Brazil. Published Finance Ministry data provide market context but do not verify this total.", "es": "Base de apuestas: hasta 40 millones es el escenario de escala de BETTEX, no una estadística oficial ni un límite comprobado para Brasil. Los datos publicados del Ministerio de Hacienda contextualizan el mercado, pero no verifican ese total." },
+  "Base de cripto: 2ª Pesquisa Nacional das Criptomoedas, Datafolha e Paradigma. Coleta presencial de 11 a 14 de maio de 2026, com 2.004 entrevistados em 137 municípios, público de 16 anos ou mais. Margem de erro de 2 pontos percentuais e confiança de 95%. A matéria do Valor, de 18 de agosto de 2026, reporta 17,2%, equivalentes a cerca de 29 milhões de pessoas.": { "en": "Crypto base: second National Cryptocurrency Survey, Datafolha and Paradigma. In-person fieldwork from May 11–14, 2026, with 2,004 respondents in 137 municipalities, aged 16 or older. Margin of error of 2 percentage points and 95% confidence. Valor’s August 18, 2026 article reports 17.2%, equivalent to about 29 million people.", "es": "Base de cripto: segunda Encuesta Nacional de Criptomonedas, Datafolha y Paradigma. Trabajo de campo presencial del 11 al 14 de mayo de 2026, con 2.004 entrevistados en 137 municipios, público de 16 años o más. Margen de error de 2 puntos porcentuales y confianza del 95%. El artículo de Valor del 18 de agosto de 2026 informa un 17,2%, equivalente a unos 29 millones de personas." },
+  "Brasileiros com histórico em cripto": { "en": "Brazilians with crypto experience", "es": "Brasileños con experiencia en cripto" },
+  "Cenário da BETTEX para a escala do público de apostas no Brasil, considerando diferentes tipos de plataformas. É uma estimativa de mercado, não uma contagem oficial.": { "en": "BETTEX’s scenario for the scale of Brazil’s betting audience, across different types of platforms. It is a market estimate, not an official count.", "es": "Escenario de BETTEX para la escala del público de apuestas en Brasil, considerando distintos tipos de plataformas. Es una estimación de mercado, no un recuento oficial." },
+  "Cenário de sobreposição de público": { "en": "Audience overlap scenario", "es": "Escenario de superposición de públicos" },
+  "Cenário hipotético · não é medição": { "en": "Hypothetical scenario · not a measurement", "es": "Escenario hipotético · no es una medición" },
+  "Datafolha / Paradigma · publicado em ago. 2026": { "en": "Datafolha / Paradigma · published Aug. 2026", "es": "Datafolha / Paradigma · publicado en ago. de 2026" },
+  "Valores em milhões de pessoas. Áreas proporcionais ao cenário estimado, não a uma medição real.": { "en": "Values in millions of people. Areas are proportional to the estimated scenario, not a real measurement.", "es": "Valores en millones de personas. Áreas proporcionales al escenario estimado, no a una medición real." },
+  "Experiência com cripto · pesquisa": { "en": "Crypto experience · survey", "es": "Experiencia en cripto · encuesta" },
+  "Já tiveram cripto": { "en": "Have had crypto", "es": "Han tenido cripto" },
+  "Mercado de apostas · Fazenda / O Globo": { "en": "Betting market · Finance Ministry / O Globo", "es": "Mercado de apuestas · Ministerio de Hacienda / O Globo" },
+  "O cruzamento usa a taxa nacional de experiência com cripto como aproximação para o grupo de apostadores, supondo independência entre os comportamentos. As bases têm períodos e recortes etários diferentes; não existe medição conjunta nas fontes consultadas. A estimativa não identifica usuários ativos, elegíveis ou interessados na BETTEX. A participação no produto é restrita a pessoas de 18 anos ou mais.": { "en": "The overlap uses the national crypto-experience rate as a proxy for bettors, assuming independence between behaviors. The bases have different periods and age ranges; the consulted sources contain no joint measurement. The estimate does not identify active, eligible or interested BETTEX users. Product participation is restricted to people aged 18 or older.", "es": "El cruce usa la tasa nacional de experiencia en cripto como aproximación para los apostadores, suponiendo independencia entre los comportamientos. Las bases tienen períodos y edades diferentes; no hay una medición conjunta en las fuentes consultadas. La estimación no identifica usuarios activos, elegibles o interesados en BETTEX. La participación en el producto se limita a personas de 18 años o más." },
+  "Pesquisa de cripto e metodologia · Valor Econômico": { "en": "Crypto survey and methodology · Valor Econômico", "es": "Encuesta de cripto y metodología · Valor Econômico" },
+  "Premissa de independência": { "en": "Independence assumption", "es": "Supuesto de independencia" },
+  "Sobreposição estimada": { "en": "Estimated overlap", "es": "Superposición estimada" },
+  "milhões": { "en": "million", "es": "millones" },
+  "milhões de apostadores brasileiros": { "en": "million Brazilian bettors", "es": "millones de apostadores brasileños" },
+  "milhões têm ou já tiveram cripto": { "en": "million have or have had crypto", "es": "millones tienen o han tenido cripto" },
+  "É um cenário hipotético, não uma interseção medida nem clientes da BETTEX.": { "en": "This is a hypothetical scenario, not a measured intersection or BETTEX customers.", "es": "Es un escenario hipotético, no una intersección medida ni clientes de BETTEX." },
+  "×": { "en": "×", "es": "×" },
+  "Community-driven": { "en": "Community-driven", "es": "Community-driven" },
+  "Construído com a comunidade.": { "en": "Built with the community.", "es": "Construido con la comunidad." },
+  "A proposta é construir com os usuários: ouvir feedback, validar melhorias e estimular recomendações orgânicas. A comunidade no Telegram conecta aquisição, uso do aplicativo e evolução do produto.": { "en": "The aim is to build with users: listen to feedback, validate improvements and encourage organic referrals. The Telegram community connects acquisition, app usage and product development.", "es": "La propuesta es construir con los usuarios: escuchar comentarios, validar mejoras y fomentar recomendaciones orgánicas. La comunidad en Telegram conecta adquisición, uso de la aplicación y evolución del producto." },
+  "100% do aporte anjo.": { "en": "100% of angel funding.", "es": "100% del aporte ángel." },
+  "100% dos aportes de investidores-anjo serão destinados ao produto, à tecnologia e ao marketing. Os recursos financiam desenvolvimento, infraestrutura e automação, além de marketing, sem pagamento de salários e sem retiradas para o fundador.": { "en": "100% of angel investor contributions will go to the product, technology and marketing. The funds finance development, infrastructure and automation, as well as marketing, with no salary payments or founder withdrawals.", "es": "El 100% de los aportes de inversores ángel se destinará al producto, la tecnología y el marketing. Los recursos financian desarrollo, infraestructura y automatización, además de marketing, sin pagos de salarios ni retiros para el fundador." },
+  "100% para produto, tecnologia e marketing": { "en": "100% for product, technology and marketing", "es": "100% para producto, tecnología y marketing" },
+  "Alinhamento do fundador": { "en": "Founder alignment", "es": "Alineación del fundador" },
+  "Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial.": { "en": "Capital to build the product and develop the market, not to pay the founder or fund a payroll.", "es": "Capital para construir el producto y desarrollar el mercado, no para remunerar al fundador ni financiar una nómina salarial." },
+  "Destino do capital": { "en": "Use of capital", "es": "Destino del capital" },
+  "Fred Azevedo não recebe salário ou pró-labore nem faz retiradas do caixa da empresa. Seus únicos ganhos na BETTEX são os eventuais ganhos com seus próprios tokens, sujeitos às mesmas regras dos demais titulares e sem retorno garantido.": { "en": "Fred Azevedo receives no salary or management compensation and makes no withdrawals from the company’s cash. His only earnings from BETTEX are potential earnings from his own tokens, subject to the same rules as other holders and with no guaranteed return.", "es": "Fred Azevedo no recibe salario ni remuneración por administración, ni realiza retiros de la caja de la empresa. Sus únicos ingresos de BETTEX son las posibles ganancias de sus propios tokens, sujetos a las mismas reglas que los demás titulares y sin rentabilidad garantizada." },
+  "Ganhos somente com seus tokens": { "en": "Earnings only from his tokens", "es": "Ganancias solo con sus tokens" },
+  "Investidores-anjo": { "en": "Angel investors", "es": "Inversores ángel" },
+  "Produto, tecnologia e marketing.": { "en": "Product, technology and marketing.", "es": "Producto, tecnología y marketing." },
+  "Sem salário. Sem retiradas da empresa.": { "en": "No salary. No company withdrawals.", "es": "Sin salario. Sin retiros de la empresa." },
+  "Tecnologia e marketing, sem salários": { "en": "Technology and marketing, no salaries", "es": "Tecnología y marketing, sin salarios" },
+  "A comunidade esclarece dúvidas e conduz ao app.": { "en": "The community answers questions and leads to the app.", "es": "La comunidad resuelve dudas y conduce a la aplicación." },
+  "A validação acompanha a primeira compra elegível, o primeiro uso útil e o retorno dos usuários. Compradores e usuários ativados serão medidos separadamente; a meta não representa resultados já alcançados. Oferta e publicidade dependem de revisão jurídica e elegibilidade.": { "en": "Validation tracks the first eligible purchase, first useful interaction and returning users. Buyers and activated users will be measured separately; the goal does not represent results already achieved. Offering and advertising depend on legal review and eligibility.", "es": "La validación mide la primera compra elegible, el primer uso útil y el regreso de los usuarios. Compradores y usuarios activados se medirán por separado; la meta no representa resultados ya alcanzados. La oferta y la publicidad dependen de revisión jurídica y elegibilidad." },
+  "Aplicativo BETTEX": { "en": "BETTEX app", "es": "Aplicación BETTEX" },
+  "Aquisição orgânica nos primeiros três meses de operação, financiada por Fred Azevedo com seu orçamento corrente, sem custo de aquisição para a BETTEX. O funil parte do Instagram, passa pela comunidade no Telegram e leva ao aplicativo BETTEX para trazer os primeiros compradores e usuários e validar o produto.": { "en": "Organic acquisition during the first three months of operation, funded by Fred Azevedo from his ongoing budget, with no acquisition cost to BETTEX. The funnel starts on Instagram, passes through the Telegram community and leads to the BETTEX app to bring in the first buyers and users and validate the product.", "es": "Adquisición orgánica durante los primeros tres meses de operación, financiada por Fred Azevedo con su presupuesto corriente, sin costo de adquisición para BETTEX. El embudo parte de Instagram, pasa por la comunidad en Telegram y lleva a la aplicación BETTEX para atraer a los primeros compradores y usuarios y validar el producto." },
+  "Aquisição orgânica.": { "en": "Organic acquisition.", "es": "Adquisición orgánica." },
+  "Atração": { "en": "Attraction", "es": "Atracción" },
+  "Cenário de mídia paga para uma fase posterior aos três primeiros meses; a aquisição inicial é orgânica e financiada pelo fundador, sem cobrança à empresa. Não é campanha executada ou CAC comprovado.": { "en": "Paid media scenario for a phase after the first three months; initial acquisition is organic and funded by the founder, at no charge to the company. This is not an executed campaign or proven CAC.", "es": "Escenario de medios pagados para una fase posterior a los primeros tres meses; la adquisición inicial es orgánica y financiada por el fundador, sin cargo a la empresa. No es una campaña ejecutada ni un CAC comprobado." },
+  "Compromisso planejado do fundador, não tração realizada. Não indica despesas operacionais zero nem promete retorno.": { "en": "Planned founder commitment, not achieved traction. It does not imply zero operating expenses or promise returns.", "es": "Compromiso previsto del fundador, no tracción realizada. No implica gastos operativos cero ni promete rentabilidad." },
+  "Conteúdo do fundador atrai o apostador brasileiro.": { "en": "The founder’s content attracts Brazilian bettors.", "es": "El contenido del fundador atrae al apostador brasileño." },
+  "Financiada pelo fundador.": { "en": "Funded by the founder.", "es": "Financiada por el fundador." },
+  "Fred Azevedo vai financiar a aquisição inicial com seu orçamento corrente. Sua audiência no Instagram entra na comunidade do Telegram e segue para o aplicativo BETTEX, trazendo os primeiros compradores e usuários para validar o produto, sem cobrar esse custo da empresa.": { "en": "Fred Azevedo will fund initial acquisition from his ongoing budget. His Instagram audience joins the Telegram community and moves to the BETTEX app, bringing in the first buyers and users to validate the product without charging this cost to the company.", "es": "Fred Azevedo financiará la adquisición inicial con su presupuesto corriente. Su audiencia de Instagram entra en la comunidad de Telegram y pasa a la aplicación BETTEX, atrayendo a los primeros compradores y usuarios para validar el producto, sin cobrar este costo a la empresa." },
+  "Lançamento orgânico financiado pelo fundador": { "en": "Founder-funded organic launch", "es": "Lanzamiento orgánico financiado por el fundador" },
+  "Meta de 1.000 usuários nos primeiros três meses de operação, incluindo os primeiros compradores, sem custo de aquisição para a BETTEX.": { "en": "Goal of 1,000 users in the first three months of operation, including the first buyers, with no acquisition cost to BETTEX.", "es": "Meta de 1.000 usuarios en los primeros tres meses de operación, incluidos los primeros compradores, sin costo de adquisición para BETTEX." },
+  "Meta de primeiros 1.000 usuários únicos no Brasil nos três primeiros meses de operação, com cadastro elegível e ativação no produto. Os primeiros compradores também serão trazidos pelo fundador; compradores, usuários ativados, seguidores e interessados serão medidos separadamente. É uma meta, não tração já realizada.": { "en": "Goal of the first 1,000 unique users in Brazil during the first three months of operation, with eligible registration and product activation. The founder will also bring in the first buyers; buyers, activated users, followers and interested people will be measured separately. This is a goal, not traction already achieved.", "es": "Meta de los primeros 1.000 usuarios únicos en Brasil durante los primeros tres meses de operación, con registro elegible y activación en el producto. El fundador también atraerá a los primeros compradores; compradores, usuarios activados, seguidores e interesados se medirán por separado. Es una meta, no tracción ya realizada." },
+  "Primeiro uso": { "en": "First use", "es": "Primer uso" },
+  "Primeiros 3 meses de operação": { "en": "First 3 months of operation", "es": "Primeros 3 meses de operación" },
+  "Primeiros compradores e usuários entram no produto.": { "en": "The first buyers and users enter the product.", "es": "Los primeros compradores y usuarios entran en el producto." },
+  "Relacionamento": { "en": "Relationship", "es": "Relación" },
+  "Zero": { "en": "Zero", "es": "Cero" },
+  "custo de aquisição para a empresa": { "en": "acquisition cost to the company", "es": "costo de adquisición para la empresa" },
+  "financia a aquisição com seu orçamento corrente": { "en": "funds acquisition from his ongoing budget", "es": "financia la adquisición con su presupuesto corriente" },
+  "primeiros usuários": { "en": "first users", "es": "primeros usuarios" },
+  ", distribuída entre performance, marca e narrativa. Testar mensagens e canais no Brasil e ampliar investimento conforme custo por usuário ativado, CAC por comprador e retenção medidos.": { "en": ", allocated across performance marketing, brand and narrative. Test messages and channels in Brazil and increase investment based on measured cost per activated user, buyer CAC and retention.", "es": ", distribuida entre marketing de resultados, marca y narrativa. Probar mensajes y canales en Brasil y ampliar la inversión según el costo por usuario activado, el CAC por comprador y la retención medidos." },
+  ". A meta é chegar a usuários elegíveis e ativados; seguidores, interessados e compradores são métricas distintas.": { "en": ". The goal is to reach eligible, activated users; followers, interested people and buyers are separate metrics.", "es": ". La meta es llegar a usuarios elegibles y activados; seguidores, interesados y compradores son métricas distintas." },
+  ". Vídeos curtos, transmissões, conteúdo aprofundado e atualizações levam ao site. A comunidade no Telegram esclarece dúvidas e mantém o relacionamento.": { "en": ". Short videos, livestreams, in-depth content and updates lead to the website. The Telegram community answers questions and maintains the relationship.", "es": ". Videos cortos, transmisiones, contenido detallado y actualizaciones llevan al sitio. La comunidad en Telegram resuelve dudas y mantiene la relación." },
+  "A entrada no mercado parte da audiência de Fred Azevedo e da comunidade do SOS Jogador. O conteúdo atrai o apostador brasileiro; o Telegram aprofunda o relacionamento e conduz o retorno ao site para conhecer a BETTEX, entender seus custos e riscos e iniciar uma participação elegível.": { "en": "Market entry starts with Fred Azevedo’s audience and the SOS Jogador community. Content attracts Brazilian bettors; Telegram deepens the relationship and brings them back to the website to learn about BETTEX, understand its costs and risks and begin eligible participation.", "es": "La entrada al mercado parte de la audiencia de Fred Azevedo y la comunidad de SOS Jogador. El contenido atrae al apostador brasileño; Telegram profundiza la relación y conduce el regreso al sitio para conocer BETTEX, entender sus costos y riesgos e iniciar una participación elegible." },
+  "Acompanhar o primeiro uso útil e o retorno após 7 e 30 dias. Relatórios com ganhos, perdas ou ausência de lucro, suporte e atualizações com adesão voluntária. Sem promessa de renda, recuperação de perdas ou pressão para comprar tokens.": { "en": "Track the first useful interaction and return after 7 and 30 days. Reports covering gains, losses or no profit, support and opt-in updates. No promise of income, recovery of losses or pressure to buy tokens.", "es": "Medir el primer uso útil y el regreso después de 7 y 30 días. Informes con ganancias, pérdidas o ausencia de beneficios, soporte y actualizaciones voluntarias. Sin promesas de ingresos, recuperación de pérdidas ni presión para comprar tokens." },
+  "Aquisição com mídia paga": { "en": "Paid media acquisition", "es": "Adquisición con medios pagados" },
+  "Audiência do fundador e conteúdo": { "en": "Founder’s audience and content", "es": "Audiencia del fundador y contenido" },
+  "Conteúdo, comunidade e primeiro uso": { "en": "Content, community and first use", "es": "Contenido, comunidad y primer uso" },
+  "Conversão em usuários": { "en": "User conversion", "es": "Conversión en usuarios" },
+  "Da audiência ao uso do produto.": { "en": "From audience to product use.", "es": "De la audiencia al uso del producto." },
+  "Distribuição no Brasil": { "en": "Distribution in Brazil", "es": "Distribución en Brasil" },
+  "Entrada pelo público brasileiro de apostas, distribuição do fundador e meta inicial de 1.000 usuários.": { "en": "Entry through Brazil’s betting audience, founder-led distribution and an initial goal of 1,000 users.", "es": "Entrada por el público brasileño de apuestas, distribución del fundador y una meta inicial de 1.000 usuarios." },
+  "Go to market": { "en": "Go to market", "es": "Go to market" },
+  "Go to market no Brasil": { "en": "Go to market in Brazil", "es": "Go to market en Brasil" },
+  "Go to market no Brasil.": { "en": "Go to market in Brazil.", "es": "Go to market en Brasil." },
+  "Livre alocação dos recursos conforme o instrumento aprovado da rodada. O preço público primário do token vai inteiro à tesouraria.": { "en": "Free allocation of funds under the round’s approved agreement. The token’s primary public sale price goes entirely to the treasury.", "es": "Libre asignación de los recursos conforme al instrumento aprobado de la ronda. El precio de venta pública primaria del token va íntegramente a la tesorería." },
+  "Meta e orçamento são propostas, não resultados realizados. Conversão, CAC e retenção ainda serão medidos. Oferta e publicidade dependem de revisão jurídica, elegibilidade e políticas das plataformas.": { "en": "The goal and budget are proposals, not achieved results. Conversion, CAC and retention remain to be measured. Offering and advertising depend on legal review, eligibility and platform policies.", "es": "La meta y el presupuesto son propuestas, no resultados realizados. La conversión, el CAC y la retención aún se medirán. La oferta y la publicidad dependen de revisión jurídica, elegibilidad y políticas de las plataformas." },
+  "Nenhuma promessa de que a IA supere o mercado. O desempenho líquido das estratégias precisa ser medido contra uma referência.": { "en": "No promise that AI will outperform the market. The strategies’ net performance must be measured against a benchmark.", "es": "Sin promesas de que la IA supere al mercado. El rendimiento neto de las estrategias debe medirse frente a una referencia." },
+  "O mercado inicial é o Brasil. A estratégia de go to market começa pela audiência e comunidade de": { "en": "The initial market is Brazil. The go-to-market strategy starts with the audience and community of", "es": "El mercado inicial es Brasil. La estrategia de go to market comienza con la audiencia y comunidad de" },
+  "Orçamento e marcos do lançamento ainda serão definidos, assim como o valor total e os termos contratuais. Não há oferta formal de venda de tokens nem participação societária proposta aqui.": { "en": "The launch budget and milestones remain to be defined, along with the total amount and contractual terms. No formal token sale or equity offering is proposed here.", "es": "El presupuesto y los hitos del lanzamiento aún se definirán, al igual que el importe total y los términos contractuales. Aquí no se propone una oferta formal de venta de tokens ni participación societaria." },
+  "Performance, marca e narrativa": { "en": "Performance marketing, brand and narrative", "es": "Marketing de resultados, marca y narrativa" },
+  "Plano de aquisição e retenção na documentação": { "en": "Acquisition and retention plan in the documentation", "es": "Plan de adquisición y retención en la documentación" },
+  "Proposta mensal de mídia paga: US$": { "en": "Monthly paid media proposal: US$", "es": "Propuesta mensual de medios pagados: US$" },
+  "Retenção no Brasil": { "en": "Retention in Brazil", "es": "Retención en Brasil" },
+  "Uso recorrente e prestação de contas": { "en": "Recurring use and accountability", "es": "Uso recurrente y rendición de cuentas" },
+  "Na tese da BETTEX, a promessa de abundância esconde o risco de androides substituírem trabalhadores: os ganhos ficam com os donos das máquinas, enquanto quem depende de salário pode perder renda e lugar na economia.": { "en": "In BETTEX’s thesis, the promise of abundance conceals the risk of androids replacing workers: gains stay with machine owners, while people who depend on wages may lose income and their place in the economy.", "es": "En la tesis de BETTEX, la promesa de abundancia oculta el riesgo de que los androides sustituyan a los trabajadores: las ganancias quedan en manos de los dueños de las máquinas, mientras quienes dependen de un salario pueden perder ingresos y su lugar en la economía." },
+  "Se androides assumem funções físicas e a IA substitui atividades de escritório, a ameaça é perder o emprego e descobrir que a próxima oportunidade também deixou de existir.": { "en": "If androids take over physical roles and AI replaces office work, the threat is losing a job and discovering that the next opportunity has also ceased to exist.", "es": "Si los androides asumen funciones físicas y la IA sustituye actividades de oficina, la amenaza es perder el empleo y descubrir que la siguiente oportunidad también ha dejado de existir." },
+  "Os indicadores têm períodos e métodos diferentes e não devem ser somados. Stanford não encontra eliminação generalizada de empregos na economia; a comparação não prova causalidade da IA.": { "en": "The indicators cover different periods and methods and must not be added together. Stanford does not find widespread job elimination across the economy; the comparison does not establish AI causality.", "es": "Los indicadores tienen períodos y métodos diferentes y no deben sumarse. Stanford no encuentra una eliminación generalizada de empleos en la economía; la comparación no demuestra causalidad de la IA." },
+  "Humanoides como o Optimus podem ocupar funções hoje remuneradas. Na tese da BETTEX, a substituição em escala concentra ganhos nos donos das máquinas e retira salário e poder de compra de quem depende do próprio trabalho.": { "en": "Humanoids such as Optimus could take over roles that currently pay wages. In BETTEX’s thesis, large-scale replacement concentrates gains among machine owners and takes away wages and purchasing power from people who depend on their own work.", "es": "Humanoides como Optimus pueden ocupar funciones hoy remuneradas. En la tesis de BETTEX, la sustitución a gran escala concentra las ganancias en los dueños de las máquinas y quita salario y poder adquisitivo a quienes dependen de su propio trabajo." },
+  "A referência à Tesla não indica parceria, endosso ou participação da BETTEX na empresa.": { "en": "The reference to Tesla does not indicate a partnership, endorsement or BETTEX ownership in the company.", "es": "La referencia a Tesla no indica una alianza, respaldo ni participación de BETTEX en la empresa." },
+  "Em maio de 2025, Dario Amodei alertou à Axios que a IA poderia eliminar metade dos empregos de entrada de colarinho branco e levar o desemprego nos EUA a 10% a 20% em um a cinco anos. Voltou ao cenário de substituição no ensaio de janeiro de 2026. É uma previsão, não uma contagem de postos eliminados.": { "en": "In May 2025, Dario Amodei warned Axios that AI could eliminate half of entry-level white-collar jobs and push US unemployment to 10% to 20% within one to five years. He returned to the replacement scenario in his January 2026 essay. This is a forecast, not a count of eliminated jobs.", "es": "En mayo de 2025, Dario Amodei advirtió a Axios que la IA podría eliminar la mitad de los empleos de entrada de oficina y llevar el desempleo en EE. UU. del 10% al 20% en uno a cinco años. Volvió al escenario de sustitución en su ensayo de enero de 2026. Es una previsión, no un recuento de puestos eliminados." },
+  "Esses alertas não são fatos consumados: as previsões foram posteriormente revistas e continuam controversas.": { "en": "These warnings are not established outcomes: the forecasts were subsequently revised and remain controversial.", "es": "Estas alertas no son hechos consumados: las previsiones fueron revisadas posteriormente y siguen siendo controvertidas." },
+  "1px solid rgba(95,134,255,.5)": { "en": "1px solid rgba(95,134,255,.5)", "es": "1px solid rgba(95,134,255,.5)" },
+  "amount": { "en": "amount", "es": "amount" },
+  "insideBottom": { "en": "insideBottom", "es": "insideBottom" },
+  "v": { "en": "v", "es": "v" },
+  "mi": { "en": "M", "es": "M" },
+  "Composição da oferta fixa": { "en": "Fixed supply allocation", "es": "Distribución de la oferta fija" },
+  "Total fixo": { "en": "Fixed total", "es": "Total fijo" },
+  "Gráfico de pizza da oferta fixa por alocação": { "en": "Pie chart of the fixed supply by allocation", "es": "Gráfico circular de la oferta fija por asignación" },
+  "Liberação progressiva acumulada": { "en": "Cumulative vesting releases", "es": "Liberación progresiva acumulada" },
+  "Mês 0 a mês 36, em milhões de BETTEX": { "en": "Month 0 to month 36, in millions of BETTEX", "es": "Del mes 0 al mes 36, en millones de BETTEX" },
+  "Gráfico de áreas empilhadas da liberação acumulada em 36 meses": { "en": "Stacked area chart of cumulative releases over 36 months", "es": "Gráfico de áreas apiladas de la liberación acumulada durante 36 meses" },
+  "Meses": { "en": "Months", "es": "Meses" },
+  "Antes da primeira liberação": { "en": "Before the first release", "es": "Antes de la primera liberación" },
+  "O topo empilhado é o total liberado: zero antes da primeira liberação e 1 bilhão no mês 36.": { "en": "The stacked top is the total released: zero before the first release and 1 billion in month 36.", "es": "El límite superior apilado es el total liberado: cero antes de la primera liberación y 1.000 millones en el mes 36." },
+  "Liberação não comprova venda, circulação ou saldo pessoal. A primeira liberação ocorre na abertura da venda pública e segue até o mês 36.": { "en": "Release does not establish a sale, circulation or a personal balance. The first release takes place when the public sale opens, with releases continuing through month 36.", "es": "La liberación no acredita venta, circulación ni saldo personal. La primera liberación ocurre al abrirse la venta pública y las liberaciones continúan hasta el mes 36." },
+  "Livre alocação dos recursos": { "en": "Flexible allocation of funds", "es": "Libre asignación de los recursos" },
+  "Os recursos aportados têm livre destinação pela administração, conforme o instrumento aprovado da rodada, sem divisão obrigatória entre desenvolvimento e tesouraria.": { "en": "Management may freely allocate the contributed funds under the round’s approved instrument, without a mandatory split between development and the treasury.", "es": "La administración puede destinar libremente los recursos aportados, conforme al instrumento aprobado de la ronda, sin una división obligatoria entre desarrollo y tesorería." },
+  "Experiência internacional e comunidade própria": { "en": "International experience and an established community", "es": "Experiencia internacional y comunidad propia" },
+  "Fred Azevedo é o fundador da BETTEX e tem experiência no lançamento de diversas operações ao redor do mundo. Influenciador reconhecido no Brasil, reúne uma grande comunidade e canais próprios de relacionamento com seu público.": { "en": "Fred Azevedo is BETTEX’s founder and has experience launching multiple operations around the world. A recognized influencer in Brazil, he has built a large community and his own channels for engaging with his audience.", "es": "Fred Azevedo es el fundador de BETTEX y cuenta con experiencia en el lanzamiento de diversas operaciones en todo el mundo. Influenciador reconocido en Brasil, reúne una gran comunidad y canales propios para relacionarse con su público." },
+  "Informações e métricas declaradas pelo fundador, sem auditoria independente. As audiências podem se sobrepor; seguidores e engajamento não são clientes, alcance garantido ou conversão.": { "en": "Information and metrics reported by the founder, without independent auditing. Audiences may overlap; followers and engagement are not customers, guaranteed reach or conversion.", "es": "Información y métricas declaradas por el fundador, sin auditoría independiente. Las audiencias pueden solaparse; los seguidores y la interacción no son clientes, alcance garantizado ni conversión." },
+  "Quadro comparativo das alternativas": { "en": "Comparison of the alternatives", "es": "Cuadro comparativo de las alternativas" },
+  "Deslize para comparar as colunas.": { "en": "Swipe to compare the columns.", "es": "Desliza para comparar las columnas." },
+  "Critério": { "en": "Criterion", "es": "Criterio" },
+  "Fonte do resultado": { "en": "Source of the outcome", "es": "Origen del resultado" },
+  "Resultado de cada aposta escolhida pelo usuário.": { "en": "Outcome of each bet chosen by the user.", "es": "Resultado de cada apuesta elegida por el usuario." },
+  "Variação do preço do token e possibilidade de revenda.": { "en": "Token price changes and the possibility of resale.", "es": "Variación del precio del token y posibilidad de reventa." },
+  "Lucro elegível das estratégias da tesouraria; o token também pode ser revendido.": { "en": "Eligible profit from treasury strategies; the token can also be resold.", "es": "Beneficio elegible de las estrategias de la tesorería; el token también puede revenderse." },
+  "Papel do usuário": { "en": "User’s role", "es": "Papel del usuario" },
+  "Escolher e acompanhar cada aposta.": { "en": "Choose and monitor each bet.", "es": "Elegir y seguir cada apuesta." },
+  "Decidir quando comprar, manter ou vender o token.": { "en": "Decide when to buy, hold or sell the token.", "es": "Decidir cuándo comprar, mantener o vender el token." },
+  "Participar pelo staking e acompanhar a operação, sem escolher cada estratégia.": { "en": "Participate through staking and monitor operations without choosing each strategy.", "es": "Participar mediante staking y seguir la operación, sin elegir cada estrategia." },
+  "Direito econômico": { "en": "Economic entitlement", "es": "Derecho económico" },
+  "Pagamento condicionado ao resultado da aposta, conforme as regras da plataforma.": { "en": "Payment conditional on the bet’s outcome, under the platform’s rules.", "es": "Pago condicionado al resultado de la apuesta, según las reglas de la plataforma." },
+  "Ganho ou perda na revenda; participação em lucro não é pressuposta nesse modelo.": { "en": "Gain or loss on resale; profit participation is not assumed in this model.", "es": "Ganancia o pérdida en la reventa; este modelo no presupone participación en beneficios." },
+  "Parcela do pool global de stakers, rateada pelo peso elegível da rodada. Exige lucro elegível, reserva e liquidez; não é retorno fixo.": { "en": "Share of the global staker pool, allocated by the round’s eligible weight. Requires eligible profit, reserves and liquidity; it is not a fixed return.", "es": "Parte del pool global de stakers, repartida según el peso elegible de la ronda. Requiere beneficio elegible, reserva y liquidez; no es un rendimiento fijo." },
+  "Saída e elegibilidade": { "en": "Exit and eligibility", "es": "Salida y elegibilidad" },
+  "Resultado e liquidação seguem as regras da aposta.": { "en": "Outcome and settlement follow the bet’s rules.", "es": "El resultado y la liquidación siguen las reglas de la apuesta." },
+  "Venda depende de comprador e liquidez do mercado.": { "en": "Selling depends on a buyer and market liquidity.", "es": "La venta depende de un comprador y de la liquidez del mercado." },
+  "Qualquer saída de BETTEX, mesmo parcial, cancela créditos ainda não pagos e zera todo o peso anterior da rodada. Rodadas encerradas não acumulam direitos.": { "en": "Any BETTEX exit, even a partial one, cancels unpaid credits and resets all prior weight in the round. Closed rounds do not carry forward entitlements.", "es": "Cualquier salida de BETTEX, incluso parcial, cancela los créditos aún no pagados y pone a cero todo el peso anterior de la ronda. Las rondas cerradas no acumulan derechos." },
+  "Custos podem estar nas odds e em tarifas da plataforma.": { "en": "Costs may be embedded in odds or charged as platform fees.", "es": "Los costos pueden estar incluidos en las cuotas o en las tarifas de la plataforma." },
+  "Custos de negociação, spread e rede, conforme mercado e plataforma.": { "en": "Trading costs, spread and network fees, depending on the market and platform.", "es": "Costos de negociación, spread y red, según el mercado y la plataforma." },
+  "Controle e registros": { "en": "Controls and records", "es": "Control y registros" },
+  "Histórico e regras disponíveis na plataforma escolhida.": { "en": "History and rules available on the chosen platform.", "es": "Historial y reglas disponibles en la plataforma elegida." },
+  "Regras e registros dependem do token, do mercado e da plataforma.": { "en": "Rules and records depend on the token, market and platform.", "es": "Las reglas y los registros dependen del token, del mercado y de la plataforma." },
+  "Tesouraria separada do caixa operacional, direitos e créditos em contas distintas, registros conciliáveis e condições antes de usar dinheiro real.": { "en": "Treasury separate from operating cash, entitlements and credits in separate accounts, reconcilable records and conditions before using real money.", "es": "Tesorería separada de la caja operativa, derechos y créditos en cuentas distintas, registros conciliables y condiciones antes de usar dinero real." },
+  "Perda do valor apostado.": { "en": "Loss of the amount wagered.", "es": "Pérdida del importe apostado." },
+  "Perda de valor e falta de liquidez para revenda.": { "en": "Loss of value and lack of resale liquidity.", "es": "Pérdida de valor y falta de liquidez para revender." },
+  "Perda de capital, risco de preço e liquidez. Sem lucro elegível ou condições de pagamento, não há distribuição.": { "en": "Capital loss, price risk and liquidity risk. Without eligible profit or payment conditions being met, there is no distribution.", "es": "Pérdida de capital, riesgo de precio y liquidez. Sin beneficio elegible o sin cumplir las condiciones de pago, no hay distribución." },
+  "Custos, direitos e regras das alternativas variam conforme a plataforma e o contrato.": { "en": "Costs, entitlements and rules of the alternatives vary by platform and contract.", "es": "Los costos, derechos y reglas de las alternativas varían según la plataforma y el contrato." },
+  "Axios · maio de 2025 / CNBC · janeiro de 2026": {
+    "en": "Axios · May 2025 / CNBC · January 2026",
+    "es": "Axios · mayo de 2025 / CNBC · enero de 2026"
+  },
+  "Metade dos empregos de entrada pode desaparecer": {
+    "en": "Half of entry-level jobs could disappear",
+    "es": "La mitad de los empleos de entrada podría desaparecer"
+  },
+  "Em maio de 2025, Dario Amodei, CEO da Anthropic, alertou à Axios que a IA poderia eliminar metade dos empregos de entrada de colarinho branco e levar o desemprego nos EUA a 10%–20% em um a cinco anos. No ensaio de janeiro de 2026, voltou ao cenário de substituição dessas funções. Para quem está começando, o risco é perder a porta de entrada no trabalho antes de construir carreira, salário e autonomia.": {
+    "en": "In May 2025, Anthropic CEO Dario Amodei warned Axios that AI could eliminate half of entry-level white-collar jobs and push US unemployment to 10%–20% within one to five years. In his January 2026 essay, he returned to the scenario of replacing these roles. For those starting out, the risk is losing their entry point into work before building a career, earning wages and gaining independence.",
+    "es": "En mayo de 2025, Dario Amodei, CEO de Anthropic, advirtió a Axios que la IA podría eliminar la mitad de los empleos de entrada de cuello blanco y llevar el desempleo en EE. UU. al 10%–20% en uno a cinco años. En su ensayo de enero de 2026, volvió al escenario de sustitución de esas funciones. Para quienes empiezan, el riesgo es perder la puerta de entrada al trabajo antes de construir una carrera, un salario y autonomía."
+  },
+  "Ler o alerta de Amodei · Axios": {
+    "en": "Read Amodei’s warning · Axios",
+    "es": "Leer la advertencia de Amodei · Axios"
+  },
+  "Na leitura da BETTEX, a promessa de prosperidade para todos esconde a substituição da força de trabalho humana por androides: IA e robôs humanoides assumem funções físicas, o capital recebe os ganhos e quem dependia do próprio trabalho pode ficar sem salário e sem alternativa de renda.": {
+    "en": "In BETTEX’s view, the promise of prosperity for everyone conceals the replacement of the human workforce by androids: AI and humanoid robots take over physical roles, capital captures the gains, and those who depended on their own work may lose their wages and have no alternative source of income.",
+    "es": "En la lectura de BETTEX, la promesa de prosperidad para todos oculta la sustitución de la fuerza de trabajo humana por androides: la IA y los robots humanoides asumen funciones físicas, el capital recibe las ganancias y quienes dependían de su propio trabajo pueden quedarse sin salario ni alternativa de ingresos."
+  },
+  "O risco central é a substituição da força de trabalho humana por androides: não apenas automatizar tarefas digitais, mas colocar robôs humanoides no lugar de pessoas em atividades físicas. Se essa troca avança sem oportunidades equivalentes, o mercado pode deixar de precisar de trabalhadores que continuam dependendo de renda para viver.": {
+    "en": "The central risk is the replacement of the human workforce by androids: not just automating digital tasks, but putting humanoid robots in place of people performing physical activities. If this shift advances without equivalent opportunities, the market may stop needing workers who still depend on income to live.",
+    "es": "El riesgo central es la sustitución de la fuerza de trabajo humana por androides: no solo automatizar tareas digitales, sino colocar robots humanoides en lugar de personas en actividades físicas. Si ese cambio avanza sin oportunidades equivalentes, el mercado puede dejar de necesitar trabajadores que siguen dependiendo de ingresos para vivir."
+  },
+  "Optimus e a substituição do trabalho humano": {
+    "en": "Optimus and the replacement of human labor",
+    "es": "Optimus y la sustitución del trabajo humano"
+  },
+  "Androides como o Optimus levam a IA ao trabalho físico. A proposta da Tesla é colocar robôs humanoides para executar tarefas que hoje dependem de pessoas. Seu Master Plan Part IV inclui tarefas monótonas ou perigosas nessa automação. Na tese da BETTEX, a substituição em escala da força de trabalho humana significa máquinas ocupando funções remuneradas e pessoas perdendo salário e poder de compra.": {
+    "en": "Androids such as Optimus bring AI into physical work. Tesla’s proposal is to use humanoid robots to perform tasks that currently depend on people. Its Master Plan Part IV includes monotonous or dangerous tasks in this automation. In BETTEX’s thesis, replacing the human workforce at scale means machines taking over paid roles and people losing wages and purchasing power.",
+    "es": "Androides como Optimus llevan la IA al trabajo físico. La propuesta de Tesla es utilizar robots humanoides para realizar tareas que hoy dependen de personas. Su Master Plan Part IV incluye tareas monótonas o peligrosas en esta automatización. En la tesis de BETTEX, la sustitución a gran escala de la fuerza de trabajo humana significa máquinas ocupando funciones remuneradas y personas perdiendo salario y poder adquisitivo."
+  },
+  "SpaceX: infraestrutura e concentração de capital": {
+    "en": "SpaceX: infrastructure and capital concentration",
+    "es": "SpaceX: infraestructura y concentración de capital"
+  },
+  "O IPO da SpaceX e sua expansão em foguetes, Starlink e infraestrutura de IA representam a escala do capital e da tecnologia nessa visão de futuro. A substituição da força de trabalho humana por androides está em outra frente: os humanoides da Tesla, como o Optimus. Na tese da BETTEX, quando IA e máquinas passam a executar o trabalho, os ganhos se concentram nos donos da infraestrutura e quem dependia do salário pode perder sua fonte de renda.": {
+    "en": "SpaceX’s IPO and its expansion in rockets, Starlink and AI infrastructure represent the scale of capital and technology in this vision of the future. Replacing the human workforce with androids is a separate development: Tesla’s humanoid robots, such as Optimus. In BETTEX’s thesis, when AI and machines take over work, the gains concentrate among infrastructure owners, and those who depended on wages may lose their source of income.",
+    "es": "La salida a bolsa de SpaceX y su expansión en cohetes, Starlink e infraestructura de IA representan la escala del capital y la tecnología en esta visión de futuro. La sustitución de la fuerza de trabajo humana por androides está en otra línea: los humanoides de Tesla, como Optimus. En la tesis de BETTEX, cuando la IA y las máquinas pasan a ejecutar el trabajo, las ganancias se concentran en los dueños de la infraestructura y quienes dependían del salario pueden perder su fuente de ingresos."
+  },
+  "UTC": { "en": "UTC", "es": "UTC" },
+  "cuts": { "en": "cuts", "es": "cuts" },
+  "vacancies": { "en": "vacancies", "es": "vacancies" },
+  "year": { "en": "year", "es": "year" },
+  "EUA: vagas abertas, perdas de postos e cortes anunciados": { "en": "US: job openings, job losses and announced cuts", "es": "EE. UU.: vacantes, pérdida de puestos y recortes anunciados" },
+  "EUA · vagas disponíveis, não empregos ocupados": { "en": "US · Available vacancies, not filled jobs", "es": "EE. UU. · Vacantes disponibles, no puestos ocupados" },
+  "As vagas abertas caíram do pico de 2022.": { "en": "Job openings have fallen from their 2022 peak.", "es": "Las vacantes han caído desde su máximo de 2022." },
+  "Pico · março de 2022": { "en": "Peak · March 2022", "es": "Máximo · marzo de 2022" },
+  "Agosto de 2026": { "en": "August 2026", "es": "Agosto de 2026" },
+  "milhões de vagas abertas": { "en": "million job openings", "es": "millones de vacantes" },
+  "Queda desde o pico": { "en": "Decline from the peak", "es": "Caída desde el máximo" },
+  "vagas abertas a menos": { "en": "fewer job openings", "es": "vacantes menos" },
+  "Menos oportunidades disponíveis": { "en": "Fewer opportunities available", "es": "Menos oportunidades disponibles" },
+  "Vagas não preenchidas ao final do mês, em milhões. Série mensal de janeiro de 2019 a agosto de 2026, com ajuste sazonal. Eixo começa em zero.": {
+    "en": "Unfilled vacancies at the end of the month, in millions. Monthly series from January 2019 to August 2026, seasonally adjusted. Axis starts at zero.",
+    "es": "Vacantes sin cubrir al final del mes, en millones. Serie mensual de enero de 2019 a agosto de 2026, con ajuste estacional. El eje empieza en cero."
+  },
+  "Gráfico da queda de 42,5% nas vagas abertas nos EUA desde março de 2022": { "en": "Chart of the 42.5% decline in US job openings since March 2022", "es": "Gráfico de la caída del 42,5% en las vacantes de EE. UU. desde marzo de 2022" },
+  "Pico": { "en": "Peak", "es": "Máximo" },
+  "Fonte: BLS / FRED · JTSJOL": { "en": "Source: BLS / FRED · JTSJOL", "es": "Fuente: BLS / FRED · JTSJOL" },
+  "Essa queda mede oportunidades de contratação, não pessoas que perderam o emprego. O ponto de comparação é o pico de março de 2022, não 2020. Os dados não demonstram que a IA causou toda a redução. Série publicada em 29 set. 2026.": {
+    "en": "This decline measures hiring opportunities, not people who lost their jobs. The comparison point is the March 2022 peak, not 2020. The data do not show that AI caused the entire decline. Series published Sep. 29, 2026.",
+    "es": "Esta caída mide oportunidades de contratación, no personas que perdieron su empleo. El punto de comparación es el máximo de marzo de 2022, no 2020. Los datos no demuestran que la IA causara toda la reducción. Serie publicada el 29 sep. 2026."
+  },
+  "EUA: vagas abertas em unidades": { "en": "US: job openings in units", "es": "EE. UU.: vacantes en unidades" },
+  "Gráfico das perdas líquidas no setor financeiro por atividade": { "en": "Chart of net financial-sector job losses by activity", "es": "Gráfico de pérdidas netas de puestos en el sector financiero por actividad" },
+  "Gráfico da composição das 129 mil perdas líquidas de postos no setor financeiro": { "en": "Chart breaking down the 129,000 net financial-sector job losses", "es": "Gráfico de la composición de las 129.000 pérdidas netas de puestos en el sector financiero" },
+  "Seguros e atividades relacionadas": { "en": "Insurance carriers and related activities", "es": "Seguros y actividades relacionadas" },
+  "Demais atividades financeiras": { "en": "Other financial activities", "es": "Otras actividades financieras" },
+  "Demais atividades: diferença entre a perda total e a perda em seguros.": { "en": "Other activities: total losses minus insurance losses.", "es": "Otras actividades: diferencia entre la pérdida total y la de seguros." },
+  "Gráfico da proporção de cortes anunciados com IA citada como motivo": { "en": "Chart of the share of announced cuts citing AI as the reason", "es": "Gráfico de la proporción de recortes anunciados que citan la IA como motivo" },
+  "IA citada como motivo": { "en": "AI cited as the reason", "es": "IA citada como motivo" },
+  "Outros motivos": { "en": "Other reasons", "es": "Otros motivos" },
+  "Participação nos 573.195 cortes anunciados em janeiro a setembro de 2026.": { "en": "Share of the 573,195 cuts announced from January to September 2026.", "es": "Participación en los 573.195 recortes anunciados de enero a septiembre de 2026." },
+  "Gráfico do aumento de 54% nos cortes anunciados em tecnologia entre 2025 e 2026": { "en": "Chart of the 54% increase in announced technology job cuts between 2025 and 2026", "es": "Gráfico del aumento del 54% en los recortes anunciados en tecnología entre 2025 y 2026" },
+  "cortes anunciados": { "en": "announced cuts", "es": "recortes anunciados" },
+  "Janeiro a setembro em ambos os anos. Eixo em milhares de cortes anunciados, começando em zero.": { "en": "January to September in both years. Axis in thousands of announced cuts, starting at zero.", "es": "Enero a septiembre en ambos años. Eje en miles de recortes anunciados, empezando en cero." },
+  "The Royal Society (2018)": { "en": "The Royal Society (2018)", "es": "The Royal Society (2018)" },
+  "crop, color grading": { "en": "crop, color grading", "es": "recorte, tratamiento del color" },
+  "EUA: perdas de postos e cortes anunciados": { "en": "US: job losses and announced cuts", "es": "EE. UU.: pérdida de puestos y recortes anunciados" },
+  "01 / EUA · Perdas de postos e cortes anunciados": { "en": "01 / US · Job losses and announced cuts", "es": "01 / EE. UU. · Pérdida de puestos y recortes anunciados" },
+  "Há perdas líquidas de empregos em setores específicos e empresas anunciando cortes associados à IA. São evidências do enfraquecimento de oportunidades e da eliminação de funções, não uma medição de desaparecimento de todo o emprego americano.": {
+    "en": "There are net job losses in specific sectors and companies announcing AI-related cuts. This is evidence of weakening opportunities and the elimination of roles, not a measurement of all American employment disappearing.",
+    "es": "Hay pérdidas netas de empleo en sectores específicos y empresas que anuncian recortes asociados a la IA. Son evidencias del debilitamiento de las oportunidades y la eliminación de funciones, no una medición de la desaparición de todo el empleo estadounidense."
+  },
+  "Perda líquida observada · maio de 2025 a setembro de 2026": { "en": "Observed net loss · May 2025 to September 2026", "es": "Pérdida neta observada · mayo de 2025 a septiembre de 2026" },
+  "Postos a menos no setor financeiro": { "en": "Fewer jobs in financial activities", "es": "Puestos menos en el sector financiero" },
+  "O BLS registra 129 mil postos a menos desde o pico de maio de 2025. Seguros e atividades relacionadas respondem por 90 mil dessas perdas, já incluídas no total. É redução efetiva do estoque de postos; o relatório não atribui essa queda à IA.": {
+    "en": "The BLS records 129,000 fewer jobs since the May 2025 peak. Insurance carriers and related activities account for 90,000 of these losses, already included in the total. This is an actual reduction in the number of jobs; the report does not attribute the decline to AI.",
+    "es": "El BLS registra 129.000 puestos menos desde el máximo de mayo de 2025. Los seguros y las actividades relacionadas representan 90.000 de esas pérdidas, ya incluidas en el total. Es una reducción efectiva del número de puestos; el informe no atribuye esta caída a la IA."
+  },
+  "BLS · relatório de setembro, publicado em 2 out. 2026": { "en": "BLS · September report, published Oct. 2, 2026", "es": "BLS · informe de septiembre, publicado el 2 oct. 2026" },
+  "Cortes anunciados · janeiro a setembro de 2026": { "en": "Announced cuts · January to September 2026", "es": "Recortes anunciados · enero a septiembre de 2026" },
+  "Cortes anunciados em tecnologia": { "en": "Announced technology job cuts", "es": "Recortes anunciados en tecnología" },
+  "As empresas de tecnologia anunciaram 165.925 cortes nos EUA, contra 107.878 no mesmo período de 2025: aumento de 54%. São anúncios de desligamentos, não uma contagem de todos os cortes já executados nem uma perda líquida após contratações.": {
+    "en": "Technology companies announced 165,925 job cuts in the US, compared with 107,878 over the same period in 2025: a 54% increase. These are layoff announcements, not a count of all cuts already implemented or a net loss after hiring.",
+    "es": "Las empresas de tecnología anunciaron 165.925 recortes en EE. UU., frente a 107.878 en el mismo período de 2025: un aumento del 54%. Son anuncios de despidos, no un recuento de todos los recortes ya ejecutados ni una pérdida neta tras las contrataciones."
+  },
+  "Challenger · relatório de setembro, 1 out. 2026": { "en": "Challenger · September report, Oct. 1, 2026", "es": "Challenger · informe de septiembre, 1 oct. 2026" },
+  "Motivo declarado · janeiro a setembro de 2026": { "en": "Reported reason · January to September 2026", "es": "Motivo declarado · enero a septiembre de 2026" },
+  "Cortes anunciados com IA citada como motivo": { "en": "Announced cuts citing AI as the reason", "es": "Recortes anunciados que citan la IA como motivo" },
+  "A Challenger contabiliza 120.136 cortes anunciados por empregadores dos EUA que citaram IA como motivo: cerca de 21% dos anúncios do período. É a justificativa informada pelas empresas, não uma comprovação independente de causalidade.": {
+    "en": "Challenger counts 120,136 job cuts announced by US employers that cited AI as the reason: around 21% of announcements during the period. This is the explanation reported by companies, not independent proof of causation.",
+    "es": "Challenger contabiliza 120.136 recortes anunciados por empleadores de EE. UU. que citaron la IA como motivo: cerca del 21% de los anuncios del período. Es la justificación informada por las empresas, no una comprobación independiente de causalidad."
+  },
+  "Challenger · motivos dos cortes, 1 out. 2026": { "en": "Challenger · reasons for cuts, Oct. 1, 2026", "es": "Challenger · motivos de los recortes, 1 oct. 2026" },
+  "Os indicadores não devem ser somados: o financeiro é uma variação líquida, tecnologia é um setor e IA é um motivo que pode incluir cortes desse mesmo setor. No conjunto acompanhado pela Challenger, os anúncios de cortes caíram 39% em relação a janeiro a setembro de 2025; o aumento em tecnologia não é um aumento generalizado.": {
+    "en": "The indicators must not be added together: financial employment is a net change, technology is a sector and AI is a reason that may include cuts in that same sector. Across all employers tracked by Challenger, announced cuts fell 39% compared with January to September 2025; the increase in technology is not a general increase.",
+    "es": "Los indicadores no deben sumarse: el empleo financiero es una variación neta, tecnología es un sector e IA es un motivo que puede incluir recortes de ese mismo sector. En el conjunto seguido por Challenger, los anuncios de recortes cayeron un 39% frente a enero a septiembre de 2025; el aumento en tecnología no es un aumento generalizado."
+  },
+  "Esses dados sustentam a tese de perdas de postos e pressão sobre funções específicas, não uma queda nacional de dezenas de milhões de pessoas empregadas. A previsão de eliminação ampla de empregos continua sendo um cenário, não um resultado já demonstrado. Fontes conferidas em 4 out. 2026.": {
+    "en": "These data support the thesis of job losses and pressure on specific roles, not a nationwide decline of tens of millions of employed people. The prediction of widespread job elimination remains a scenario, not an already demonstrated result. Sources checked Oct. 4, 2026.",
+    "es": "Estos datos respaldan la tesis de pérdidas de puestos y presión sobre funciones específicas, no una caída nacional de decenas de millones de personas empleadas. La previsión de una eliminación amplia de empleos sigue siendo un escenario, no un resultado ya demostrado. Fuentes verificadas el 4 oct. 2026."
+  },
+  "R$ 600": { "en": "R$ 600", "es": "R$ 600" },
+  "Cenário de público · BETTEX": { "en": "Audience scenario · BETTEX", "es": "Escenario de público · BETTEX" },
+  "Até 40": { "en": "Up to 40", "es": "Hasta 40" },
+  "milhões de brasileiros": { "en": "million Brazilians", "es": "millones de brasileños" },
+  "Ordem de grandeza proposta pela BETTEX: uma base de pelo menos 30 milhões nas bets então legalizadas, mais um possível público exclusivo dos cassinos ilegais.": {
+    "en": "Order of magnitude proposed by BETTEX: a base of at least 30 million on then-legalized betting platforms, plus a possible audience using illegal casinos exclusively.",
+    "es": "Orden de magnitud propuesto por BETTEX: una base de al menos 30 millones en las plataformas entonces legalizadas, más un posible público exclusivo de los casinos ilegales."
+  },
+  "Plataformas então autorizadas": { "en": "Platforms authorized at the time", "es": "Plataformas entonces autorizadas" },
+  "milhões de apostadores": { "en": "million bettors", "es": "millones de apostadores" },
+  "30,4 milhões de pessoas fizeram ao menos uma aposta no primeiro semestre de 2026. Não é uma contagem de apostadores ativos todos os dias.": {
+    "en": "30.4 million people placed at least one bet in the first half of 2026. This is not a count of bettors active every day.",
+    "es": "30,4 millones de personas realizaron al menos una apuesta en el primer semestre de 2026. No es un recuento de apostadores activos todos los días."
+  },
+  "Dados da Fazenda / O Globo, 25 set. 2026": { "en": "Finance Ministry data / O Globo, Sep. 25, 2026", "es": "Datos del Ministerio de Hacienda / O Globo, 25 sep. 2026" },
+  "Adicional estimado · fundador": { "en": "Estimated additional audience · founder", "es": "Público adicional estimado · fundador" },
+  "Até 10": { "en": "Up to 10", "es": "Hasta 10" },
+  "milhões somente no ilegal": { "en": "million exclusively in the illegal market", "es": "millones exclusivamente en el mercado ilegal" },
+  "Hipótese da BETTEX para quem aposta apenas em cassinos ilegais, fora da base legal. Não inclui novamente quem usa os dois mercados.": {
+    "en": "BETTEX's hypothesis for people who bet only in illegal casinos, outside the legal base. Those using both markets are not counted again.",
+    "es": "Hipótesis de BETTEX para quienes apuestan solo en casinos ilegales, fuera de la base legal. No se vuelve a contar a quienes usan ambos mercados."
+  },
+  "Fluxo diário histórico": { "en": "Historical daily flow", "es": "Flujo diario histórico" },
+  "milhões por dia, aproximadamente": { "en": "million per day, approximately", "es": "millones al día, aproximadamente" },
+  "Movimentação diária enviada às casas de apostas antes da proibição de setembro de 2026, segundo a Fazenda. É volume de depósitos, não lucro das bets.": {
+    "en": "Daily funds sent to betting operators before the September 2026 ban, according to the Finance Ministry. This is deposit volume, not betting operators' profit.",
+    "es": "Flujo diario enviado a las casas de apuestas antes de la prohibición de septiembre de 2026, según el Ministerio de Hacienda. Es volumen de depósitos, no ganancias de las casas de apuestas."
+  },
+  "Fazenda / MJSP, 2 out. 2026": { "en": "Finance Ministry / MJSP, Oct. 2, 2026", "es": "Ministerio de Hacienda / MJSP, 2 oct. 2026" },
+  "Já existe público. Já existe volume financeiro.": { "en": "The audience already exists. So does the financial volume.", "es": "Ya existe público. Ya existe volumen financiero." },
+  "A oportunidade da BETTEX é oferecer ao apostador brasileiro um produto de investimento que fale a sua língua: experiência familiar, linguagem acessível e estratégias geridas por IA. O objetivo é redirecionar a busca por retorno financeiro das apostas para a participação em resultados de investimentos em mercados de risco.": {
+    "en": "BETTEX's opportunity is to offer Brazilian bettors an investment product that speaks their language: a familiar experience, accessible wording and AI-managed strategies. The goal is to redirect the search for financial returns from betting toward participation in investment results in risk markets.",
+    "es": "La oportunidad de BETTEX es ofrecer al apostador brasileño un producto de inversión que hable su idioma: experiencia familiar, lenguaje accesible y estrategias gestionadas por IA. El objetivo es redirigir la búsqueda de rendimientos financieros desde las apuestas hacia la participación en resultados de inversiones en mercados de riesgo."
+  },
+  "Esse volume não é receita nem captação da BETTEX. A migração depende da escolha dos usuários, da execução do produto e das condições legais; não há promessa de retorno ou recuperação de perdas.": {
+    "en": "This volume is not BETTEX revenue or funds raised. Migration depends on users' choices, product execution and legal conditions; there is no promise of returns or recovery of losses.",
+    "es": "Este volumen no es ingreso ni captación de BETTEX. La migración depende de la elección de los usuarios, la ejecución del producto y las condiciones legales; no hay promesa de rendimiento ni de recuperación de pérdidas."
+  },
+  "Base e estimativa: os 30,4 milhões são um dado publicado sobre o primeiro semestre de 2026. Os até 10 milhões exclusivos do mercado ilegal são uma hipótese do fundador ainda sem contagem verificada. O total de até 40 milhões é um cenário arredondado, não uma estatística oficial nem um teto comprovado para o Brasil.": {
+    "en": "Baseline and estimate: the 30.4 million figure is published data for the first half of 2026. Up to 10 million exclusively in the illegal market is the founder's hypothesis, with no verified count yet. The total of up to 40 million is a rounded scenario, not an official statistic or a proven ceiling for Brazil.",
+    "es": "Base y estimación: los 30,4 millones son un dato publicado sobre el primer semestre de 2026. Los hasta 10 millones exclusivos del mercado ilegal son una hipótesis del fundador aún sin recuento verificado. El total de hasta 40 millones es un escenario redondeado, no una estadística oficial ni un límite comprobado para Brasil."
+  },
+  "Escala financeira: a CNN, com dados da Fazenda via LAI, registra R$ 318 bilhões em depósitos de janeiro de 2025 a junho de 2026, média de R$ 582 milhões por dia. A Fazenda informou cerca de R$ 600 milhões por dia antes da MP nº 1.394/2026, publicada em 25 de setembro. São referências históricas, não o fluxo atual.": {
+    "en": "Financial scale: CNN, using Finance Ministry data obtained under Brazil's access-to-information law, reports R$318 billion in deposits from January 2025 to June 2026, averaging R$582 million per day. The Finance Ministry reported around R$600 million per day before Provisional Measure No. 1,394/2026, published on September 25. These are historical references, not the current flow.",
+    "es": "Escala financiera: CNN, con datos del Ministerio de Hacienda obtenidos mediante la ley de acceso a la información, registra R$ 318.000 millones en depósitos de enero de 2025 a junio de 2026, un promedio de R$ 582 millones al día. El Ministerio informó de cerca de R$ 600 millones al día antes de la medida provisional n.º 1.394/2026, publicada el 25 de septiembre. Son referencias históricas, no el flujo actual."
+  },
+  "Depósitos, período e média diária · CNN Brasil": { "en": "Deposits, period and daily average · CNN Brasil", "es": "Depósitos, período y promedio diario · CNN Brasil" },
+  "Mercado ilegal e sobreposição de públicos · Agência Brasil": { "en": "Illegal market and overlapping audiences · Agência Brasil", "es": "Mercado ilegal y superposición de públicos · Agência Brasil" },
+  "A pesquisa Locomotiva citada pela Agência Brasil identifica uso de plataformas ilegais, mas não confirma os 10 milhões exclusivos. Usar uma plataforma ilegal não significa apostar somente nela.": {
+    "en": "The Locomotiva survey cited by Agência Brasil identifies use of illegal platforms but does not confirm 10 million exclusive users. Using an illegal platform does not mean betting only on it.",
+    "es": "La encuesta Locomotiva citada por Agência Brasil identifica uso de plataformas ilegales, pero no confirma los 10 millones de usuarios exclusivos. Usar una plataforma ilegal no significa apostar solo en ella."
+  },
+  "O apostador brasileiro.": { "en": "The Brazilian bettor.", "es": "El apostador brasileño." },
+  "O público e o volume financeiro.": { "en": "The audience and the financial volume.", "es": "El público y el volumen financiero." },
+  "A BETTEX parte de um público que já movimentou bilhões nas apostas. A proposta é um produto de investimento que fale a língua dessas pessoas, com experiência familiar, custos claros e risco de perda explícito.": {
+    "en": "BETTEX starts with an audience that has already moved billions through betting. The proposal is an investment product that speaks their language, with a familiar experience, clear costs and explicit risk of loss.",
+    "es": "BETTEX parte de un público que ya ha movido miles de millones en apuestas. La propuesta es un producto de inversión que hable su idioma, con una experiencia familiar, costos claros y riesgo de pérdida explícito."
+  },
+  "Até 40 milhões de brasileiros no cenário de público da BETTEX. Cerca de R$ 600 milhões por dia no fluxo histórico das bets.": {
+    "en": "Up to 40 million Brazilians in BETTEX's audience scenario. Around R$600 million per day in historical betting flows.",
+    "es": "Hasta 40 millones de brasileños en el escenario de público de BETTEX. Cerca de R$ 600 millones al día en el flujo histórico de las apuestas."
+  },
+  "A oportunidade é um produto de investimento que fale a língua dessas pessoas.": {
+    "en": "The opportunity is an investment product that speaks their language.",
+    "es": "La oportunidad es un producto de inversión que hable su idioma."
+  },
+  "Veja a base, as estimativas e os períodos.": { "en": "See the baseline, estimates and periods.", "es": "Ver la base, las estimaciones y los períodos." },
+  "January–August": { "en": "January–August", "es": "Enero–agosto" },
+  "empregos não agrícolas": { "en": "nonfarm jobs", "es": "empleos no agrícolas" },
+  "Empregos nos EUA: antes e agora": { "en": "US jobs: before and now", "es": "Empleos en EE. UU.: antes y ahora" },
+  "Brasil: menos novas vagas": { "en": "Brazil: fewer new jobs", "es": "Brasil: menos nuevos puestos" },
+  "Alertas de um futuro sem trabalho": { "en": "Warnings of a future without work", "es": "Alertas de un futuro sin trabajo" },
+  "Bolha da IA e risco de ruptura": { "en": "The AI bubble and risk of a rupture", "es": "La burbuja de la IA y el riesgo de ruptura" },
+  "Desta vez, patrimônio e salário": { "en": "This time, assets and wages", "es": "Esta vez, patrimonio y salario" },
+  "01 / EUA · Emprego antes da pandemia e agora": { "en": "01 / US · Employment before the pandemic and now", "es": "01 / EE. UU. · Empleo antes de la pandemia y ahora" },
+  "empregos · +": { "en": "jobs · +", "es": "empleos · +" },
+  "Pessoas ocupadas · pesquisa domiciliar CPS": { "en": "Employed people · CPS household survey", "es": "Personas ocupadas · encuesta de hogares CPS" },
+  "Esta medida inclui agricultura e trabalhadores por conta própria. Não é a mesma população da folha de pagamento.": {
+    "en": "This measure includes agriculture and self-employed workers. It is not the same population as payroll employment.",
+    "es": "Esta medida incluye la agricultura y los trabajadores por cuenta propia. No es la misma población que la del empleo en nómina."
+  },
+  "Saídas": { "en": "Exits", "es": "Salidas" },
+  "vínculos": { "en": "employment relationships", "es": "vínculos laborales" },
+  "Brasil · Novo Caged · janeiro a agosto": { "en": "Brazil · Novo Caged · January to August", "es": "Brasil · Novo Caged · enero a agosto" },
+  "02 / Brasil · O motor de novas vagas desacelera": { "en": "02 / Brazil · New job creation slows down", "es": "02 / Brasil · La creación de nuevos puestos se desacelera" },
+  "A criação líquida de empregos formais caiu 25,2% em relação ao mesmo período de 2025: são 382.848 novas vagas a menos. É o menor saldo de janeiro a agosto desde 2020, segundo a reportagem baseada no Novo Caged. A desaceleração é real; dizer que o Brasil parou totalmente de contratar não é.": {
+    "en": "Net formal job creation fell 25.2% compared with the same period in 2025: 382,848 fewer new jobs. It is the lowest January–August balance since 2020, according to reporting based on Novo Caged. The slowdown is real; saying Brazil stopped hiring altogether is not.",
+    "es": "La creación neta de empleos formales cayó un 25,2% frente al mismo período de 2025: son 382.848 nuevos puestos menos. Es el menor saldo de enero a agosto desde 2020, según la noticia basada en el Novo Caged. La desaceleración es real; afirmar que Brasil dejó de contratar por completo no lo es."
+  },
+  "Janeiro a agosto de 2025": { "en": "January to August 2025", "es": "Enero a agosto de 2025" },
+  "novos empregos líquidos": { "en": "net new jobs", "es": "nuevos empleos netos" },
+  "Janeiro a agosto de 2026": { "en": "January to August 2026", "es": "Enero a agosto de 2026" },
+  "Queda na criação de vagas": { "en": "Decline in job creation", "es": "Caída en la creación de puestos" },
+  "novas vagas a menos": { "en": "fewer new jobs", "es": "nuevos puestos menos" },
+  "Menos vagas novas, no mesmo intervalo": { "en": "Fewer new jobs over the same period", "es": "Menos nuevos puestos en el mismo período" },
+  "Saldo de admissões menos desligamentos, em postos de trabalho. Janeiro a agosto de cada ano, não anos completos. Eixo começa em zero.": {
+    "en": "Hires minus separations, in jobs. January to August of each year, not full years. Axis starts at zero.",
+    "es": "Saldo de contrataciones menos desvinculaciones, en puestos de trabajo. Enero a agosto de cada año, no años completos. El eje empieza en cero."
+  },
+  "Gráfico da queda de 25,2% na criação líquida de empregos formais no Brasil": { "en": "Chart of the 25.2% decline in net formal job creation in Brazil", "es": "Gráfico de la caída del 25,2% en la creación neta de empleos formales en Brasil" },
+  "Novo Caged / Jornal do Comércio · 29 set. 2026": { "en": "Novo Caged / Jornal do Comércio · Sep. 29, 2026", "es": "Novo Caged / Jornal do Comércio · 29 sep. 2026" },
+  "Contratações não são criação líquida": { "en": "Hiring is not net job creation", "es": "Contrataciones no equivalen a creación neta" },
+  "Agosto de 2026: admissões e desligamentos em milhões de vínculos. A diferença entre as barras é o saldo de novos empregos. Eixo começa em zero.": {
+    "en": "August 2026: hires and separations in millions of employment relationships. The difference between the bars is the net balance of new jobs. Axis starts at zero.",
+    "es": "Agosto de 2026: contrataciones y desvinculaciones en millones de vínculos laborales. La diferencia entre las barras es el saldo de nuevos empleos. El eje empieza en cero."
+  },
+  "Gráfico de admissões e desligamentos no Brasil em agosto de 2026": { "en": "Chart of hires and separations in Brazil in August 2026", "es": "Gráfico de contrataciones y desvinculaciones en Brasil en agosto de 2026" },
+  "novos empregos líquidos em agosto.": { "en": "net new jobs in August.", "es": "nuevos empleos netos en agosto." },
+  "vínculos CLT ativos no fim do mês.": { "en": "active CLT employment relationships at month-end.", "es": "vínculos laborales CLT activos al cierre del mes." },
+  "MTE · Novo Caged · agosto de 2026": { "en": "MTE · Novo Caged · August 2026", "es": "MTE · Novo Caged · agosto de 2026" },
+  "O Novo Caged mede vínculos formais CLT, não todo o trabalho no Brasil. Saldo positivo não significa que todos conseguem emprego; saldo menor não significa que as admissões zeraram. Valores com ajustes disponíveis em 29 de setembro de 2026; comparação anual conforme a reportagem dessa data. Não há atribuição causal à IA.": {
+    "en": "Novo Caged measures formal CLT employment relationships, not all work in Brazil. A positive balance does not mean everyone finds a job; a lower balance does not mean hiring fell to zero. Adjusted values available on September 29, 2026; annual comparison according to reporting on that date. No causal attribution to AI is made.",
+    "es": "El Novo Caged mide vínculos formales CLT, no todo el trabajo en Brasil. Un saldo positivo no significa que todos consiguen empleo; un saldo menor no significa que las contrataciones llegaron a cero. Valores ajustados disponibles al 29 de septiembre de 2026; comparación anual según la noticia de esa fecha. No se atribuye causalidad a la IA."
+  },
+  "Brasil: dados dos gráficos em unidades": { "en": "Brazil: chart data in units", "es": "Brasil: datos de los gráficos en unidades" },
+  "Período": { "en": "Period", "es": "Período" },
+  "Saldo líquido de empregos": { "en": "Net job balance", "es": "Saldo neto de empleos" },
+  "03 / Futuro do trabalho · matérias e alertas": { "en": "03 / The future of work · reporting and warnings", "es": "03 / Futuro del trabajo · noticias y alertas" },
+  "E se o próximo emprego também desaparecer?": { "en": "What if the next job disappears too?", "es": "¿Y si el próximo empleo también desaparece?" },
+  "O risco sombrio não é apenas perder uma função. É procurar a próxima e descobrir que a mesma tecnologia também chegou lá: escritório, programação, atendimento e, com robôs, trabalho físico. Os alertas abaixo descrevem esse cenário; não são contagens de desempregados.": {
+    "en": "The bleak risk is not just losing one role. It is looking for the next and discovering the same technology has arrived there too: office work, programming, customer service and, with robots, physical work. The warnings below describe this scenario; they are not unemployment counts.",
+    "es": "El riesgo sombrío no es solo perder una función. Es buscar la siguiente y descubrir que la misma tecnología también llegó allí: oficina, programación, atención al cliente y, con robots, trabajo físico. Las alertas siguientes describen ese escenario; no son recuentos de desempleados."
+  },
+  "CNBC · 27 jan. 2026": { "en": "CNBC · Jan. 27, 2026", "es": "CNBC · 27 ene. 2026" },
+  "Amodei alerta para um choque de emprego sem precedentes": { "en": "Amodei warns of an unprecedented employment shock", "es": "Amodei advierte de un choque del empleo sin precedentes" },
+  "Ao apresentar seu ensaio de janeiro de 2026, o CEO da Anthropic advertiu que a velocidade e a abrangência da IA poderiam tornar a transição do trabalho excepcionalmente dolorosa. No ensaio, mantém o cenário de substituição de metade dos empregos de entrada de colarinho branco em um a cinco anos.": {
+    "en": "Presenting his January 2026 essay, Anthropic's CEO warned that the speed and breadth of AI could make the labor transition unusually painful. In the essay, he maintains the scenario of replacing half of entry-level white-collar jobs within one to five years.",
+    "es": "Al presentar su ensayo de enero de 2026, el CEO de Anthropic advirtió que la velocidad y el alcance de la IA podrían hacer que la transición laboral fuera excepcionalmente dolorosa. En el ensayo mantiene el escenario de sustitución de la mitad de los empleos iniciales de oficina en uno a cinco años."
+  },
+  "Reuters · setembro de 2026": { "en": "Reuters · September 2026", "es": "Reuters · septiembre de 2026" },
+  "A própria Anthropic declara riscos catastróficos à humanidade": { "en": "Anthropic itself discloses catastrophic risks to humanity", "es": "La propia Anthropic declara riesgos catastróficos para la humanidad" },
+  "A Reuters relata que o prospecto do IPO alerta para riscos catastróficos ou existenciais de IA avançada, incluindo comportamentos de autopreservação e resistência ao desligamento. É um alerta de segurança da empresa, não uma previsão estatística de desemprego ou de extinção inevitável.": {
+    "en": "Reuters reports that the IPO prospectus warns of catastrophic or existential risks from advanced AI, including self-preservation and resistance to shutdown. This is a company safety warning, not a statistical forecast of unemployment or inevitable extinction.",
+    "es": "Reuters informa que el prospecto de la salida a bolsa alerta de riesgos catastróficos o existenciales de la IA avanzada, incluidos comportamientos de autopreservación y resistencia al apagado. Es una alerta de seguridad de la empresa, no una previsión estadística de desempleo ni de extinción inevitable."
+  },
+  "As previsões são controversas e mudam: em maio de 2026, Altman reconheceu menos impacto sobre empregos de entrada do que esperava, e Amodei também destacou a possibilidade de expansão do trabalho e da produtividade.": {
+    "en": "Forecasts are disputed and change: in May 2026, Altman acknowledged less impact on entry-level jobs than he expected, and Amodei also highlighted the possibility of expanding work and productivity.",
+    "es": "Las previsiones son controvertidas y cambian: en mayo de 2026, Altman reconoció un impacto menor en los empleos iniciales del que esperaba, y Amodei también destacó la posibilidad de expansión del trabajo y la productividad."
+  },
+  "Ler a reportagem da CNBC": { "en": "Read the CNBC report", "es": "Leer la noticia de CNBC" },
+  "Ler o ensaio de Amodei · seção 4": { "en": "Read Amodei's essay · section 4", "es": "Leer el ensayo de Amodei · sección 4" },
+  "Ler a reportagem da Reuters": { "en": "Read the Reuters report", "es": "Leer la noticia de Reuters" },
+  "Divergências nas previsões · Fortune, 26 mai. 2026": { "en": "Disputed forecasts · Fortune, May 26, 2026", "es": "Divergencias en las previsiones · Fortune, 26 may. 2026" },
+  "04 / Bolha da IA · risco financeiro": { "en": "04 / The AI bubble · financial risk", "es": "04 / Burbuja de la IA · riesgo financiero" },
+  "A tecnologia pode ser real. O preço pode ser uma bolha.": { "en": "The technology can be real. The price can be a bubble.", "es": "La tecnología puede ser real. El precio puede ser una burbuja." },
+  "A aposta depende de receitas e produtividade futuras suficientes para pagar uma infraestrutura gigantesca. Se a receita não chega no prazo da dívida, a promessa de abundância pode virar queda de ativos, restrição de crédito e cortes. O risco de estouro existe; sua data e sua dimensão não são conhecidas.": {
+    "en": "The bet depends on future revenue and productivity sufficient to pay for enormous infrastructure. If revenue does not arrive before debt falls due, the promise of abundance can turn into falling assets, tighter credit and cuts. The risk of a burst exists; its timing and scale are unknown.",
+    "es": "La apuesta depende de ingresos y productividad futuros suficientes para pagar una infraestructura gigantesca. Si los ingresos no llegan antes del vencimiento de la deuda, la promesa de abundancia puede convertirse en caída de activos, restricción del crédito y recortes. Existe el riesgo de estallido; su fecha y dimensión son desconocidas."
+  },
+  "Reuters · 3 out. 2026": { "en": "Reuters · Oct. 3, 2026", "es": "Reuters · 3 oct. 2026" },
+  "A corrida da IA antes de o dinheiro acabar": { "en": "The AI race before the money runs out", "es": "La carrera de la IA antes de que se acabe el dinero" },
+  "A reportagem reúne alertas sobre retornos insuficientes e dívida alavancada. Segundo o estudo da Bain citado pela Reuters, os participantes da corrida precisariam encontrar mais de US$ 4,2 trilhões em novas receitas nos próximos cinco anos para financiar a expansão. É uma estimativa de necessidade de receita, não dinheiro já recebido.": {
+    "en": "The report brings together warnings about insufficient returns and leveraged debt. According to the Bain study cited by Reuters, participants in the race would need to find more than $4.2 trillion in new revenue over the next five years to finance the buildout. This is an estimate of revenue needed, not money already received.",
+    "es": "La noticia reúne alertas sobre rendimientos insuficientes y deuda apalancada. Según el estudio de Bain citado por Reuters, los participantes en la carrera tendrían que encontrar más de US$ 4,2 billones en nuevos ingresos durante los próximos cinco años para financiar la expansión. Es una estimación de ingresos necesarios, no dinero ya recibido."
+  },
+  "Reuters · 30 abr. 2026": { "en": "Reuters · Apr. 30, 2026", "es": "Reuters · 30 abr. 2026" },
+  "Mais de US$ 700 bilhões previstos para um único ano": { "en": "More than $700 billion planned for a single year", "es": "Más de US$ 700.000 millones previstos para un solo año" },
+  "A Reuters descreveu planos combinados das grandes empresas de tecnologia acima de US$ 700 bilhões em 2026 na corrida da IA. São previsões de gastos, não despesas integralmente realizadas. A mesma matéria registra crescimento de receita em nuvem: há negócio real, mas retorno suficiente para todo o capital ainda é a questão.": {
+    "en": "Reuters described combined plans by major technology companies exceeding $700 billion in 2026 in the AI race. These are spending forecasts, not expenses already fully incurred. The same report records cloud revenue growth: there is real business, but sufficient returns on all the capital remain the question.",
+    "es": "Reuters describió planes combinados de las grandes empresas tecnológicas por encima de US$ 700.000 millones en 2026 en la carrera de la IA. Son previsiones de gasto, no desembolsos íntegramente realizados. La misma noticia registra crecimiento de ingresos en la nube: hay negocio real, pero la cuestión sigue siendo si habrá rendimientos suficientes para todo el capital."
+  },
+  "The Verge · 15 ago. 2025": { "en": "The Verge · Aug. 15, 2025", "es": "The Verge · 15 ago. 2025" },
+  "Até Altman reconheceu o excesso de entusiasmo": { "en": "Even Altman acknowledged excessive enthusiasm", "es": "Hasta Altman reconoció el exceso de entusiasmo" },
+  "O CEO da OpenAI afirmou que investidores estavam excessivamente empolgados com a IA e comparou a reação à bolha das empresas de internet. Sua avaliação separa uma tecnologia importante de preços e expectativas que podem não se sustentar.": {
+    "en": "OpenAI's CEO said investors were excessively excited about AI and compared the reaction to the dot-com bubble. His assessment separates an important technology from prices and expectations that may not hold up.",
+    "es": "El CEO de OpenAI afirmó que los inversores estaban excesivamente entusiasmados con la IA y comparó la reacción con la burbuja de las empresas de internet. Su evaluación distingue una tecnología importante de precios y expectativas que podrían no sostenerse."
+  },
+  "FMI · abril de 2026": { "en": "IMF · April 2026", "es": "FMI · abril de 2026" },
+  "Financiamento circular amplia a dependência entre empresas": { "en": "Circular financing increases interdependence between companies", "es": "La financiación circular aumenta la dependencia entre empresas" },
+  "O relatório de estabilidade financeira trata da rede de financiamento circular na cadeia de IA e da exposição das grandes provedoras de infraestrutura. O FMI identifica vulnerabilidades, mas descreve o impacto atual dessa exposição na estabilidade financeira como modesto; não anuncia um colapso inevitável.": {
+    "en": "The financial stability report discusses the circular financing network in the AI value chain and the exposure of major infrastructure providers. The IMF identifies vulnerabilities but describes the current financial stability impact of this exposure as modest; it does not announce an inevitable collapse.",
+    "es": "El informe de estabilidad financiera aborda la red de financiación circular en la cadena de IA y la exposición de las grandes proveedoras de infraestructura. El FMI identifica vulnerabilidades, pero describe como modesto el impacto actual de esa exposición en la estabilidad financiera; no anuncia un colapso inevitable."
+  },
+  "05 / Tese da BETTEX · cenário extremo": { "en": "05 / The BETTEX thesis · extreme scenario", "es": "05 / Tesis de BETTEX · escenario extremo" },
+  "Desta vez, a perda pode acontecer dos dois lados.": { "en": "This time, losses could hit both sides.", "es": "Esta vez, la pérdida puede llegar por ambos lados." },
+  "A tese sombria da BETTEX é que a bolha financeira pode estourar sem desfazer a automação. As ações podem cair; as máquinas não precisam voltar a dar lugar às pessoas. Se o capital se reorganiza enquanto a demanda por trabalho não se recupera, a família perde patrimônio e salário ao mesmo tempo.": {
+    "en": "The bleak BETTEX thesis is that the financial bubble could burst without undoing automation. Stocks can fall; machines do not have to give way to people again. If capital reorganizes while demand for labor fails to recover, families lose assets and wages at the same time.",
+    "es": "La tesis sombría de BETTEX es que la burbuja financiera puede estallar sin deshacer la automatización. Las acciones pueden caer; las máquinas no tienen por qué volver a dejar espacio a las personas. Si el capital se reorganiza mientras la demanda de trabajo no se recupera, las familias pierden patrimonio y salario al mismo tiempo."
+  },
+  "O patrimônio cai": { "en": "Assets fall", "es": "El patrimonio cae" },
+  "A reprecificação dos ativos atinge quem comprou a promessa de crescimento. Dívida e alavancagem podem ampliar a perda.": {
+    "en": "Asset repricing hits those who bought the promise of growth. Debt and leverage can magnify losses.",
+    "es": "La revisión de precios de los activos afecta a quienes compraron la promesa de crecimiento. La deuda y el apalancamiento pueden ampliar la pérdida."
+  },
+  "O salário desaparece": { "en": "Wages disappear", "es": "El salario desaparece" },
+  "Se a automação continua, o fim do entusiasmo financeiro não devolve automaticamente os postos substituídos.": {
+    "en": "If automation continues, the end of financial enthusiasm does not automatically restore displaced jobs.",
+    "es": "Si la automatización continúa, el fin del entusiasmo financiero no devuelve automáticamente los puestos sustituidos."
+  },
+  "A recuperação deixa gente para trás": { "en": "Recovery leaves people behind", "es": "La recuperación deja gente atrás" },
+  "Sem novas funções acessíveis, qualificação ou proteção social, parte das pessoas pode continuar sem renda mesmo quando os lucros voltam.": {
+    "en": "Without accessible new roles, training or social protection, some people may remain without income even when profits return.",
+    "es": "Sin nuevas funciones accesibles, formación o protección social, parte de las personas puede seguir sin ingresos incluso cuando vuelven las ganancias."
+  },
+  "Sem patrimônio. Sem salário. E se não houver um lugar para voltar?": { "en": "No assets. No wages. What if there is nowhere to return to?", "es": "Sin patrimonio. Sin salario. ¿Y si no hay un lugar al que volver?" },
+  "Esse é o cenário extremo que motiva a tese da BETTEX, não uma certeza de que todos perderão tudo ou de que jamais haverá recuperação. As fontes não demonstram perda universal e irreversível. Participar da BETTEX também envolve risco de perda; não é proteção garantida contra esse cenário.": {
+    "en": "This is the extreme scenario motivating the BETTEX thesis, not a certainty that everyone will lose everything or that recovery will never happen. The sources do not demonstrate universal, irreversible loss. Participating in BETTEX also involves risk of loss; it is not guaranteed protection against this scenario.",
+    "es": "Este es el escenario extremo que motiva la tesis de BETTEX, no una certeza de que todos perderán todo o de que jamás habrá recuperación. Las fuentes no demuestran pérdidas universales e irreversibles. Participar en BETTEX también implica riesgo de pérdida; no es una protección garantizada contra ese escenario."
+  },
+  "Ler a reportagem completa · Reuters": { "en": "Read the full report · Reuters", "es": "Leer la noticia completa · Reuters" },
+  "Gastos e receitas das big techs · Reuters": { "en": "Big Tech spending and revenue · Reuters", "es": "Gastos e ingresos de las grandes tecnológicas · Reuters" },
+  "Altman e a bolha · The Verge": { "en": "Altman and the bubble · The Verge", "es": "Altman y la burbuja · The Verge" },
+  "Relatório de estabilidade financeira · FMI": { "en": "Financial stability report · IMF", "es": "Informe de estabilidad financiera · FMI" },
+  "Optimus, robô humanoide da Tesla": { "en": "Optimus, Tesla's humanoid robot", "es": "Optimus, robot humanoide de Tesla" },
+  "Optimus · Tesla": { "en": "Optimus · Tesla", "es": "Optimus · Tesla" },
+  "Imagem via RoboZaps": { "en": "Image via RoboZaps", "es": "Imagen vía RoboZaps" },
+  "Nave Starship da SpaceX sobre o Super Heavy na plataforma de lançamento": { "en": "SpaceX's Starship spacecraft atop Super Heavy on the launch pad", "es": "Nave Starship de SpaceX sobre el Super Heavy en la plataforma de lanzamiento" },
+  "Starship · SpaceX": { "en": "Starship · SpaceX", "es": "Starship · SpaceX" },
+  "Imagem via Space.com": { "en": "Image via Space.com", "es": "Imagen vía Space.com" },
+  "calc(100vw - 64px)": { "en": "calc(100vw - 64px)", "es": "calc(100vw - 64px)" },
+  "dataMax": { "en": "dataMax", "es": "dataMax" },
+  "dataMin": { "en": "dataMin", "es": "dataMin" },
+  "insideTopRight": { "en": "insideTopRight", "es": "insideTopRight" },
+  "jobs": { "en": "jobs", "es": "jobs" },
+  "millions": { "en": "millions", "es": "millions" },
+  "openings": { "en": "openings", "es": "openings" },
+  "thousands": { "en": "thousands", "es": "thousands" },
+  "time": { "en": "time", "es": "time" },
+  "top": { "en": "top", "es": "top" },
+  "Pré-pandemia": { "en": "Pre-pandemic", "es": "Prepandemia" },
+  "Mais recente": { "en": "Latest", "es": "Más reciente" },
+  "Milhões": { "en": "Millions", "es": "Millones" },
+  "Milhares": { "en": "Thousands", "es": "Miles" },
+  "EUA · antes da pandemia e agora": { "en": "US · before the pandemic and now", "es": "EE. UU. · antes de la pandemia y ahora" },
+  "Empregos, vagas e ritmo de contratação": { "en": "Jobs, vacancies and hiring momentum", "es": "Empleos, vacantes y ritmo de contratación" },
+  "O total de empregos não agrícolas está acima de fevereiro de 2020. A fragilidade aparece no ritmo de criação de postos e na redução das vagas abertas desde o pico de 2022, não numa queda do total agregado desde a pandemia.": {
+    "en": "Total nonfarm payroll employment is above February 2020. Weakness appears in the pace of job creation and the reduction in vacancies since the 2022 peak, not in a decline in aggregate employment since the pandemic.",
+    "es": "El total de empleos no agrícolas supera el de febrero de 2020. La fragilidad aparece en el ritmo de creación de puestos y la reducción de vacantes desde el máximo de 2022, no en una caída del empleo agregado desde la pandemia."
+  },
+  "Pré-pandemia · fev. 2020": { "en": "Pre-pandemic · Feb. 2020", "es": "Prepandemia · feb. 2020" },
+  "milhões de empregos": { "en": "million jobs", "es": "millones de empleos" },
+  "Mais recente · set. 2026": { "en": "Latest · Sep. 2026", "es": "Más reciente · sep. 2026" },
+  "Diferença desde fevereiro de 2020": { "en": "Change since February 2020", "es": "Diferencia desde febrero de 2020" },
+  "milhões · +": { "en": "million · +", "es": "millones · +" },
+  "01 / PAYEMS": { "en": "01 / PAYEMS", "es": "01 / PAYEMS" },
+  "02 / PAYEMS": { "en": "02 / PAYEMS", "es": "02 / PAYEMS" },
+  "03 / JOLTS": { "en": "03 / JOLTS", "es": "03 / JOLTS" },
+  "04 / PAYEMS": { "en": "04 / PAYEMS", "es": "04 / PAYEMS" },
+  "Total de empregos: antes e agora": { "en": "Total jobs: before and now", "es": "Total de empleos: antes y ahora" },
+  "Postos não agrícolas em milhões. Fevereiro de 2020 e setembro de 2026. Eixo começa em zero.": {
+    "en": "Nonfarm payroll jobs in millions. February 2020 and September 2026. Axis starts at zero.",
+    "es": "Puestos no agrícolas en millones. Febrero de 2020 y septiembre de 2026. El eje empieza en cero."
+  },
+  "Gráfico de barras comparando o total de empregos antes da pandemia e em setembro de 2026": {
+    "en": "Bar chart comparing total jobs before the pandemic and in September 2026",
+    "es": "Gráfico de barras que compara el total de empleos antes de la pandemia y en septiembre de 2026"
+  },
+  "BLS / FRED · PAYEMS": { "en": "BLS / FRED · PAYEMS", "es": "BLS / FRED · PAYEMS" },
+  "A queda de 2020 e a recuperação": { "en": "The 2020 drop and recovery", "es": "La caída de 2020 y la recuperación" },
+  "Série mensal completa: janeiro de 2019 a setembro de 2026. Milhões de empregos; eixo de 125 a 165 milhões, sem preenchimento de área.": {
+    "en": "Complete monthly series: January 2019 to September 2026. Millions of jobs; axis from 125 to 165 million, with no area fill.",
+    "es": "Serie mensual completa: enero de 2019 a septiembre de 2026. Millones de empleos; eje de 125 a 165 millones, sin relleno de área."
+  },
+  "Gráfico mensal do total de empregos nos EUA entre 2019 e 2026": {
+    "en": "Monthly chart of total US jobs from 2019 to 2026",
+    "es": "Gráfico mensual del total de empleos en EE. UU. entre 2019 y 2026"
+  },
+  "No fundo da pandemia, em abril de 2020, havia 130,426 milhões de postos. O nível de fevereiro de 2020 foi superado em junho de 2022 nesta versão revisada da série.": {
+    "en": "At the pandemic trough in April 2020, there were 130.426 million jobs. The February 2020 level was exceeded in June 2022 in this revised version of the series.",
+    "es": "En el punto más bajo de la pandemia, en abril de 2020, había 130,426 millones de puestos. El nivel de febrero de 2020 se superó en junio de 2022 en esta versión revisada de la serie."
+  },
+  "Vagas abertas recuaram do pico": { "en": "Job openings declined from their peak", "es": "Las vacantes retrocedieron desde su máximo" },
+  "Série mensal completa: janeiro de 2019 a agosto de 2026. Milhões de vagas não preenchidas, não pessoas desempregadas.": {
+    "en": "Complete monthly series: January 2019 to August 2026. Millions of unfilled positions, not unemployed people.",
+    "es": "Serie mensual completa: enero de 2019 a agosto de 2026. Millones de puestos sin cubrir, no personas desempleadas."
+  },
+  "Gráfico mensal das vagas abertas nos EUA entre 2019 e agosto de 2026": {
+    "en": "Monthly chart of US job openings from 2019 to August 2026",
+    "es": "Gráfico mensual de vacantes en EE. UU. entre 2019 y agosto de 2026"
+  },
+  "milhões de vagas: março de 2022 → agosto de 2026.": {
+    "en": "million openings: March 2022 → August 2026.",
+    "es": "millones de vacantes: marzo de 2022 → agosto de 2026."
+  },
+  "Em fevereiro de 2020 eram 6,966 milhões; o total atual ainda é ligeiramente maior.": {
+    "en": "In February 2020 there were 6.966 million; the current total is still slightly higher.",
+    "es": "En febrero de 2020 eran 6,966 millones; el total actual todavía es ligeramente mayor."
+  },
+  "BLS / FRED · JTSJOL": { "en": "BLS / FRED · JTSJOL", "es": "BLS / FRED · JTSJOL" },
+  "Criação líquida mês a mês": { "en": "Net job creation month by month", "es": "Creación neta mes a mes" },
+  "Outubro de 2025 a setembro de 2026. Milhares de postos adicionados ou eliminados, calculados pela diferença entre meses consecutivos.": {
+    "en": "October 2025 to September 2026. Thousands of jobs added or lost, calculated from the difference between consecutive months.",
+    "es": "Octubre de 2025 a septiembre de 2026. Miles de puestos creados o eliminados, calculados por la diferencia entre meses consecutivos."
+  },
+  "Gráfico de criação e perda líquida de empregos nos últimos doze meses": {
+    "en": "Chart of net job creation and losses over the last twelve months",
+    "es": "Gráfico de creación y pérdida neta de empleos en los últimos doce meses"
+  },
+  "Setembro de 2026 adicionou 29 mil postos. A média dos 12 meses encerrados em setembro é de 41,3 mil por mês, calculada com os níveis revisados desta série.": {
+    "en": "September 2026 added 29,000 jobs. The average for the twelve months ending in September is 41,300 per month, calculated using the revised levels of this series.",
+    "es": "Septiembre de 2026 añadió 29.000 puestos. El promedio de los doce meses terminados en septiembre es de 41.300 por mes, calculado con los niveles revisados de esta serie."
+  },
+  "PAYEMS conta empregos em estabelecimentos não agrícolas, não pessoas únicas: exclui agricultura e parte dos autônomos. Na pesquisa domiciliar CPS, que mede pessoas ocupadas, os totais são 158,714 milhões em fevereiro de 2020 e 163,152 milhões em setembro de 2026. São pesquisas diferentes e não devem ser somadas; a CPS também incorpora revisões dos controles populacionais.": {
+    "en": "PAYEMS counts jobs at nonfarm establishments, not unique people: it excludes agriculture and some self-employed workers. In the CPS household survey, which measures employed people, the totals are 158.714 million in February 2020 and 163.152 million in September 2026. These are different surveys and must not be added together; CPS also incorporates revisions to population controls.",
+    "es": "PAYEMS cuenta empleos en establecimientos no agrícolas, no personas únicas: excluye la agricultura y parte de los trabajadores autónomos. En la encuesta de hogares CPS, que mide personas ocupadas, los totales son 158,714 millones en febrero de 2020 y 163,152 millones en septiembre de 2026. Son encuestas diferentes y no deben sumarse; la CPS también incorpora revisiones de los controles poblacionales."
+  },
+  "BLS / FRED · CE16OV · pessoas ocupadas": { "en": "BLS / FRED · CE16OV · employed people", "es": "BLS / FRED · CE16OV · personas ocupadas" },
+  "Dados disponíveis em 4 de outubro de 2026: PAYEMS e CPS até setembro; JOLTS até agosto. Séries mensais com ajuste sazonal, sujeitas a revisão. Não há projeções, interpolação ou atribuição automática das mudanças à IA.": {
+    "en": "Data available on October 4, 2026: PAYEMS and CPS through September; JOLTS through August. Seasonally adjusted monthly series, subject to revision. There are no forecasts, interpolation or automatic attribution of changes to AI.",
+    "es": "Datos disponibles al 4 de octubre de 2026: PAYEMS y CPS hasta septiembre; JOLTS hasta agosto. Series mensuales con ajuste estacional, sujetas a revisión. No hay proyecciones, interpolación ni atribución automática de los cambios a la IA."
+  },
+  "Dados mensais dos gráficos, em unidades, não milhões": { "en": "Monthly chart data in units, not millions", "es": "Datos mensuales de los gráficos en unidades, no millones" },
+  "Empregos não agrícolas": { "en": "Nonfarm payroll jobs", "es": "Empleos no agrícolas" },
+  "Vagas abertas": { "en": "Job openings", "es": "Vacantes" },
+  "Variação mensal de empregos": { "en": "Monthly change in jobs", "es": "Variación mensual de empleos" },
+  "EUA · dados até junho de 2026": {
+    "en": "USA · data through June 2026",
+    "es": "EE. UU. · datos hasta junio de 2026"
+  },
+  "19% abaixo": {
+    "en": "19% below",
+    "es": "19% por debajo"
+  },
+  "Menos oportunidades na entrada do mercado": {
+    "en": "Fewer opportunities at the start of a career",
+    "es": "Menos oportunidades al entrar al mercado laboral"
+  },
+  "Em ocupações expostas à IA, o emprego de jovens de 22 a 25 anos ficou 19% abaixo do nível que teria acompanhado seus colegas em funções menos expostas. A diferença aparece sobretudo em menos contratações, não em mais demissões. É uma comparação descritiva, não uma prova de causalidade.": {
+    "en": "In AI-exposed occupations, employment among 22- to 25-year-olds was 19% below the level it would have reached had it kept pace with peers in less-exposed roles. The gap appears mainly through reduced hiring, not increased layoffs. This is a descriptive comparison, not proof of causality.",
+    "es": "En ocupaciones expuestas a la IA, el empleo de jóvenes de 22 a 25 años quedó un 19% por debajo del nivel que habría alcanzado de seguir el ritmo de sus pares en funciones menos expuestas. La diferencia aparece principalmente en menos contrataciones, no en más despidos. Es una comparación descriptiva, no una prueba de causalidad."
+  },
+  "Stanford, 12 ago. 2026": {
+    "en": "Stanford, Aug. 12, 2026",
+    "es": "Stanford, 12 ago. 2026"
+  },
+  "Global · estimativa da OIT, 2025": {
+    "en": "Global · ILO estimate, 2025",
+    "es": "Global · estimación de la OIT, 2025"
+  },
+  "1 em 4": {
+    "en": "1 in 4",
+    "es": "1 de cada 4"
+  },
+  "Trabalhadores em ocupações expostas": {
+    "en": "Workers in exposed occupations",
+    "es": "Trabajadores en ocupaciones expuestas"
+  },
+  "A OIT estima que um quarto dos trabalhadores está em ocupações com alguma exposição à IA generativa. A faixa de maior exposição reúne 3,3% do emprego global. Isso mede tarefas suscetíveis à tecnologia, não postos já eliminados; o estudo considera a transformação dos empregos mais provável que sua substituição completa.": {
+    "en": "The ILO estimates that a quarter of workers are in occupations with some exposure to generative AI. The highest-exposure category accounts for 3.3% of global employment. This measures tasks susceptible to the technology, not jobs already eliminated; the study considers job transformation more likely than complete replacement.",
+    "es": "La OIT estima que una cuarta parte de los trabajadores está en ocupaciones con alguna exposición a la IA generativa. La categoría de mayor exposición reúne el 3,3% del empleo global. Esto mide tareas susceptibles a la tecnología, no puestos ya eliminados; el estudio considera más probable la transformación de los empleos que su sustitución completa."
+  },
+  "OIT, estudo de 2025": {
+    "en": "ILO, 2025 study",
+    "es": "OIT, estudio de 2025"
+  },
+  "Brasil · estudo de 2024": {
+    "en": "Brazil · 2024 study",
+    "es": "Brasil · estudio de 2024"
+  },
+  "Só 40%": {
+    "en": "Only 40%",
+    "es": "Solo el 40%"
+  },
+  "Acesso digital entre trabalhadores pobres": {
+    "en": "Digital access among workers in poverty",
+    "es": "Acceso digital entre trabajadores en situación de pobreza"
+  },
+  "Entre trabalhadores em situação de pobreza cujas funções poderiam se beneficiar da IA, apenas 40% usavam tecnologias digitais no trabalho, segundo OIT e Banco Mundial. Entre os não pobres nas mesmas condições, eram 60%. É uma estimativa de acesso aos possíveis benefícios, não uma medição de ganhos realizados.": {
+    "en": "Among workers living in poverty whose roles could benefit from AI, only 40% used digital technologies at work, according to the ILO and World Bank. Among workers not living in poverty under the same conditions, the figure was 60%. This is an estimate of access to potential benefits, not a measurement of realized gains.",
+    "es": "Entre los trabajadores en situación de pobreza cuyas funciones podrían beneficiarse de la IA, solo el 40% usaba tecnologías digitales en el trabajo, según la OIT y el Banco Mundial. Entre los no pobres en las mismas condiciones, era el 60%. Es una estimación del acceso a posibles beneficios, no una medición de ganancias realizadas."
+  },
+  "OIT / Banco Mundial, 2024": {
+    "en": "ILO / World Bank, 2024",
+    "es": "OIT / Banco Mundial, 2024"
+  },
+  "Esses estudos sustentam um risco desigual de exclusão, não desemprego total nem perda inevitável de renda. Stanford não encontra eliminação generalizada de empregos na economia. Os indicadores têm períodos e métodos diferentes e não devem ser somados.": {
+    "en": "These studies support an unequal risk of exclusion, not total unemployment or inevitable income loss. Stanford finds no widespread elimination of jobs across the economy. The indicators have different periods and methods and must not be added together.",
+    "es": "Estos estudios respaldan un riesgo desigual de exclusión, no el desempleo total ni una pérdida inevitable de ingresos. Stanford no encuentra una eliminación generalizada de empleos en la economía. Los indicadores tienen períodos y métodos diferentes y no deben sumarse."
+  },
+  "Visão": {
+    "en": "Overview",
+    "es": "Visión"
+  },
+  "IA e trabalho": {
+    "en": "AI and work",
+    "es": "IA y trabajo"
+  },
+  "Diferenciação": {
+    "en": "Differentiation",
+    "es": "Diferenciación"
+  },
+  "Onboarding": {
+    "en": "Onboarding",
+    "es": "Incorporación"
+  },
+  "Seções do Pitch": {
+    "en": "Pitch sections",
+    "es": "Secciones del Pitch"
+  },
+  "EUA · setembro de 2026": {
+    "en": "US · September 2026",
+    "es": "EE. UU. · septiembre de 2026"
+  },
+  "−129 mil": {
+    "en": "−129 thousand",
+    "es": "−129 mil"
+  },
+  "Empregos eliminados no setor financeiro": {
+    "en": "Jobs eliminated in financial activities",
+    "es": "Empleos eliminados en el sector financiero"
+  },
+  "O setor financeiro perdeu 129 mil postos desde o pico de maio de 2025. Só seguros e atividades relacionadas respondem por 90 mil dessas perdas.": {
+    "en": "Financial activities have lost 129,000 jobs since their May 2025 peak. Insurance and related activities alone account for 90,000 of those losses.",
+    "es": "El sector financiero perdió 129.000 puestos desde el máximo de mayo de 2025. Solo seguros y actividades relacionadas representan 90.000 de esas pérdidas."
+  },
+  "A economia criou +29 mil empregos não agrícolas em setembro, após média de apenas 45 mil por mês nos 12 meses anteriores. Há criação líquida, mas ela não impede perdas em setores inteiros.": {
+    "en": "The economy added +29,000 nonfarm jobs in September, following an average of just 45,000 per month over the previous 12 months. There is net job creation, but it does not prevent losses across entire sectors.",
+    "es": "La economía creó +29.000 empleos no agrícolas en septiembre, tras un promedio de apenas 45.000 al mes en los 12 meses anteriores. Hay creación neta, pero no impide pérdidas en sectores enteros."
+  },
+  "1,9 milhão": {
+    "en": "1.9 million",
+    "es": "1,9 millones"
+  },
+  "Sem trabalho há pelo menos 27 semanas": {
+    "en": "Jobless for at least 27 weeks",
+    "es": "Sin trabajo desde hace al menos 27 semanas"
+  },
+  "O desemprego de longa duração atinge 27,1% dos desempregados. Outros 5,8 milhões querem emprego, mas estão fora da força de trabalho e da taxa principal.": {
+    "en": "Long-term unemployment accounts for 27.1% of unemployed people. Another 5.8 million want a job but are outside the labor force and the headline unemployment rate.",
+    "es": "El desempleo de larga duración afecta al 27,1% de los desempleados. Otros 5,8 millones quieren empleo, pero están fuera de la fuerza laboral y de la tasa principal."
+  },
+  "Há ainda 4,5 milhões trabalhando em tempo parcial por razões econômicas, embora prefiram trabalhar em tempo integral. A taxa de 4,2% não resume essa falta de trabalho.": {
+    "en": "A further 4.5 million work part time for economic reasons, although they would prefer full-time work. The 4.2% rate does not capture all this lack of work.",
+    "es": "Otros 4,5 millones trabajan a tiempo parcial por razones económicas, aunque preferirían trabajar a tiempo completo. La tasa del 4,2% no resume toda esta falta de trabajo."
+  },
+  "Reino Unido · agosto de 2026": {
+    "en": "UK · August 2026",
+    "es": "Reino Unido · agosto de 2026"
+  },
+  "−145 mil": {
+    "en": "−145 thousand",
+    "es": "−145 mil"
+  },
+  "Menos pessoas na folha de pagamento": {
+    "en": "Fewer people on payrolls",
+    "es": "Menos personas en las nóminas"
+  },
+  "A estimativa preliminar mostra 145 mil pessoas a menos na folha de pagamento em um ano e queda de 26 mil entre julho e agosto. Esses dados estão sujeitos a revisão.": {
+    "en": "The preliminary estimate shows 145,000 fewer payrolled employees over a year and a drop of 26,000 between July and August. These figures are subject to revision.",
+    "es": "La estimación preliminar muestra 145.000 personas menos en las nóminas en un año y una caída de 26.000 entre julio y agosto. Estos datos están sujetos a revisión."
+  },
+  "As vagas abertas ficaram em 702 mil no trimestre de junho a agosto. Fora da pandemia, um nível tão baixo não era observado desde 2014.": {
+    "en": "Job vacancies stood at 702,000 in the June to August quarter. Outside the pandemic, a level this low had not been seen since 2014.",
+    "es": "Las vacantes se situaron en 702.000 en el trimestre de junio a agosto. Fuera de la pandemia, no se observaba un nivel tan bajo desde 2014."
+  },
+  "ONS, 15 set. 2026": {
+    "en": "ONS, Sep. 15, 2026",
+    "es": "ONS, 15 sep. 2026"
+  },
+  "Brasil · janeiro a agosto de 2026": {
+    "en": "Brazil · January to August 2026",
+    "es": "Brasil · enero a agosto de 2026"
+  },
+  "−25,2%": {
+    "en": "−25.2%",
+    "es": "−25,2%"
+  },
+  "Menor criação de vagas no ano desde 2020": {
+    "en": "Lowest year-to-date job creation since 2020",
+    "es": "Menor creación de empleo en lo que va del año desde 2020"
+  },
+  "O saldo formal caiu de 1.516.881 vagas em janeiro a agosto de 2025 para 1.134.033 no mesmo período de 2026. São 382.848 oportunidades líquidas a menos.": {
+    "en": "Net formal job creation fell from 1,516,881 in January to August 2025 to 1,134,033 in the same period of 2026. That is 382,848 fewer net opportunities.",
+    "es": "El saldo de empleo formal cayó de 1.516.881 puestos entre enero y agosto de 2025 a 1.134.033 en el mismo período de 2026. Son 382.848 oportunidades netas menos."
+  },
+  "Agosto teve saldo positivo de 165.827 vagas. O problema comprovado é a desaceleração no acumulado, não geração zero no mês.": {
+    "en": "August had a positive balance of 165,827 jobs. The documented problem is the year-to-date slowdown, not zero job creation in the month.",
+    "es": "Agosto registró un saldo positivo de 165.827 puestos. El problema comprobado es la desaceleración en el acumulado, no una creación nula de empleo en el mes."
+  },
+  "Novo Caged / JC, 29 set. 2026": {
+    "en": "Novo Caged / JC, Sep. 29, 2026",
+    "es": "Novo Caged / JC, 29 sep. 2026"
+  },
+  "MTE, agosto de 2026": {
+    "en": "MTE, August 2026",
+    "es": "MTE, agosto de 2026"
+  },
+  "Brasil · junho a agosto de 2026": {
+    "en": "Brazil · June to August 2026",
+    "es": "Brasil · junio a agosto de 2026"
+  },
+  "15 milhões": {
+    "en": "15 million",
+    "es": "15 millones"
+  },
+  "Pessoas com trabalho insuficiente ou sem acesso a ele": {
+    "en": "People with insufficient work or no access to it",
+    "es": "Personas con trabajo insuficiente o sin acceso a él"
+  },
+  "A subutilização alcança 13,1% da força de trabalho ampliada: inclui desempregados, quem trabalha menos horas do que precisa e a força de trabalho potencial.": {
+    "en": "Labor underutilization reaches 13.1% of the extended labor force: it includes unemployed people, those working fewer hours than they need and the potential labor force.",
+    "es": "La subutilización alcanza al 13,1% de la fuerza laboral ampliada: incluye a desempleados, personas que trabajan menos horas de las que necesitan y la fuerza laboral potencial."
+  },
+  "O emprego privado com carteira ficou estatisticamente estável nas comparações trimestral e anual. Estabilidade na PNAD não significa zero criação líquida no Caged.": {
+    "en": "Private-sector employment with a formal contract remained statistically stable in quarterly and annual comparisons. Stability in the PNAD survey does not mean zero net job creation in Caged.",
+    "es": "El empleo privado con contrato formal se mantuvo estadísticamente estable en las comparaciones trimestral y anual. La estabilidad en la PNAD no significa creación neta nula en el Caged."
+  },
+  "IBGE, PNAD, 29 set. 2026": {
+    "en": "IBGE, PNAD, Sep. 29, 2026",
+    "es": "IBGE, PNAD, 29 sep. 2026"
+  },
+  "38,8 milhões": {
+    "en": "38.8 million",
+    "es": "38,8 millones"
+  },
+  "Trabalhadores na informalidade": {
+    "en": "Workers in informal employment",
+    "es": "Trabajadores en la informalidad"
+  },
+  "São 37,5% dos ocupados, incluindo trabalhadores sem carteira e pessoas por conta própria sem CNPJ. A informalidade era de 37,3% no trimestre de março a maio.": {
+    "en": "They represent 37.5% of employed people, including workers without a formal contract and self-employed people without business registration. Informality was 37.3% in the March to May quarter.",
+    "es": "Representan el 37,5% de los ocupados, incluidos trabajadores sin contrato formal y personas por cuenta propia sin registro empresarial. La informalidad era del 37,3% en el trimestre de marzo a mayo."
+  },
+  "Mesmo com desemprego de 5,3%, milhões seguem sem vínculo formal. O problema não é apenas conseguir trabalho, mas a proteção de quem depende dessa renda.": {
+    "en": "Even with unemployment at 5.3%, millions still have no formal employment relationship. The problem is not just finding work, but protection for those who depend on that income.",
+    "es": "Incluso con un desempleo del 5,3%, millones siguen sin vínculo formal. El problema no es solo conseguir trabajo, sino la protección de quienes dependen de esos ingresos."
+  },
+  "Dados disponíveis em 4 de outubro de 2026. São indicadores de populações, períodos e metodologias diferentes, não valores para somar. Eles mostram perdas e vulnerabilidade, mas não provam que a IA causou esses resultados. Desemprego mede pessoas sem trabalho que procuram e estão disponíveis, não a quantidade de vagas abertas.": {
+    "en": "Data available on October 4, 2026. These indicators cover different populations, periods and methodologies and must not be added together. They show losses and vulnerability, but do not prove that AI caused these outcomes. Unemployment measures people without work who are seeking and available for it, not the number of job vacancies.",
+    "es": "Datos disponibles al 4 de octubre de 2026. Son indicadores de poblaciones, períodos y metodologías diferentes, no valores que se puedan sumar. Muestran pérdidas y vulnerabilidad, pero no prueban que la IA causara estos resultados. El desempleo mide a personas sin trabajo que buscan y están disponibles, no la cantidad de vacantes."
+  },
+  "Os sinais de fragilidade já são concretos: empregos eliminados, menos vagas criadas e milhões sem trabalho suficiente ou vínculo formal. Para quem depende de renda para viver, a promessa de abundância não resolve o presente.": {
+    "en": "The signs of fragility are already tangible: jobs eliminated, fewer jobs created and millions without sufficient work or a formal employment relationship. For people who depend on income to live, the promise of abundance does not solve the present.",
+    "es": "Las señales de fragilidad ya son concretas: empleos eliminados, menos puestos creados y millones sin trabajo suficiente o vínculo formal. Para quienes dependen de ingresos para vivir, la promesa de abundancia no resuelve el presente."
+  },
+  "Risco adicional da IA · cenário, não dado observado": {
+    "en": "Additional AI risk · scenario, not observed data",
+    "es": "Riesgo adicional de la IA · escenario, no dato observado"
+  },
+  "Em maio de 2025, Dario Amodei, CEO da Anthropic, alertou à Axios que metade dos empregos de entrada de colarinho branco poderia desaparecer, com desemprego de 10% a 20% nos EUA em um a cinco anos. É uma previsão atribuída ao executivo, não o desemprego atual. O risco de automação se soma a problemas de trabalho que já existem.": {
+    "en": "In May 2025, Anthropic CEO Dario Amodei warned Axios that half of entry-level white-collar jobs could disappear, with US unemployment reaching 10% to 20% in one to five years. This is a forecast attributed to the executive, not current unemployment. Automation risk adds to labor problems that already exist.",
+    "es": "En mayo de 2025, Dario Amodei, CEO de Anthropic, advirtió a Axios que la mitad de los empleos iniciales de oficina podría desaparecer, con un desempleo del 10% al 20% en EE. UU. en uno a cinco años. Es una previsión atribuida al ejecutivo, no el desempleo actual. El riesgo de automatización se suma a problemas laborales que ya existen."
+  },
+  "A BETTEX é um produto de tecnologia com aplicativo, token e agentes de IA. A comunidade de investimento com IA conecta usuários ao projeto, cuja tesouraria opera em mercados de risco. Quando há lucro e as condições de distribuição são atendidas, o usuário recebe sua parcela conforme as regras do projeto.": {
+    "en": "BETTEX is a technology product with an app, a token and AI agents. The AI investment community connects users to the project, whose treasury operates in risk markets. When there is profit and the distribution conditions are met, the user receives their share according to the project's rules.",
+    "es": "BETTEX es un producto tecnológico con una aplicación, un token y agentes de IA. La comunidad de inversión con IA conecta a los usuarios con el proyecto, cuya tesorería opera en mercados de riesgo. Cuando hay beneficios y se cumplen las condiciones de distribución, el usuario recibe su parte conforme a las reglas del proyecto."
+  },
+  "PRODUTO DE TECNOLOGIA · ECONOMIA PROGRAMÁVEL": {
+    "en": "TECHNOLOGY PRODUCT · PROGRAMMABLE ECONOMY",
+    "es": "PRODUCTO TECNOLÓGICO · ECONOMÍA PROGRAMABLE"
+  },
+  "A BETTEX é um produto de tecnologia com IA, criado para ampliar o acesso de pessoas comuns a diferentes mercados e à participação nos resultados do projeto, sem precisar operar por conta própria.": {
+    "en": "BETTEX is an AI-powered technology product created to give everyday people greater access to different markets and participation in the project's results, without having to trade on their own.",
+    "es": "BETTEX es un producto tecnológico con IA, creado para ampliar el acceso de las personas comunes a distintos mercados y a la participación en los resultados del proyecto, sin tener que operar por su cuenta."
+  },
+  "A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA para analisar e executar investimentos em previsões, ações e cripto, esportes e iGaming. O capital das operações fica numa tesouraria separada. A estrutura jurídica proposta é uma única empresa privada, ainda a constituir. O token BETTEX dá acesso ao programa de resultados, sem ações ou propriedade proporcional da tesouraria.": {
+    "en": "BETTEX is a technology product that combines an app, a token and AI agents to analyze and execute investments in predictions, stocks and crypto, sports and iGaming. Operating capital is held in a separate treasury. The proposed legal structure is a single private company yet to be established. The BETTEX token gives access to the results program, without shares or proportional ownership of the treasury.",
+    "es": "BETTEX es un producto tecnológico que reúne una aplicación, un token y agentes de IA para analizar y ejecutar inversiones en previsiones, acciones y cripto, deportes y iGaming. El capital de las operaciones se mantiene en una tesorería separada. La estructura jurídica propuesta es una única empresa privada, aún por constituir. El token BETTEX da acceso al programa de resultados, sin acciones ni propiedad proporcional de la tesorería."
+  },
+  "Produto de tecnologia com IA, operado por uma empresa privada. Quatro frentes de atuação.": {
+    "en": "An AI-powered technology product operated by a private company. Four areas of operation.",
+    "es": "Producto tecnológico con IA, operado por una empresa privada. Cuatro áreas de actuación."
+  },
+  "A BETTEX é um produto de tecnologia que utiliza IA para gerir estratégias. A operação cabe a uma empresa privada. O token BETTEX define os direitos de participação do usuário nos resultados do projeto. Não é operadora de apostas nem intermediária. São quatro frentes de atuação, sujeitas a autorização e compatibilidade.": {
+    "en": "BETTEX is a technology product that uses AI to manage strategies. A private company is responsible for the operation. The BETTEX token defines the user's rights to participate in the project's results. It is neither a betting operator nor an intermediary. There are four areas of operation, subject to authorization and compatibility.",
+    "es": "BETTEX es un producto tecnológico que utiliza IA para gestionar estrategias. La operación corresponde a una empresa privada. El token BETTEX define los derechos del usuario a participar en los resultados del proyecto. No es operadora de apuestas ni intermediaria. Son cuatro áreas de actuación, sujetas a autorización y compatibilidad."
+  },
+  "A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA. O usuário participa dos resultados do projeto conforme as regras do token, sem propriedade da empresa ou da tesouraria.": {
+    "en": "BETTEX is a technology product that combines an app, a token and AI agents. The user participates in the project's results according to the token rules, without ownership of the company or treasury.",
+    "es": "BETTEX es un producto tecnológico que reúne una aplicación, un token y agentes de IA. El usuario participa en los resultados del proyecto conforme a las reglas del token, sin ser propietario de la empresa ni de la tesorería."
+  },
+  "Promessa sob contestação": {
+    "en": "A promise under scrutiny",
+    "es": "Una promesa cuestionada"
+  },
+  "Tese da BETTEX": {
+    "en": "BETTEX's thesis",
+    "es": "Tesis de BETTEX"
+  },
+  "É mentira, a era da prosperidade é uma mentira.": {
+    "en": "It's a lie, the age of prosperity is a lie.",
+    "es": "Es mentira, la era de la prosperidad es una mentira."
+  },
+  "Musk promete abundância. A crítica da BETTEX é que produzir mais não significa garantir emprego, renda ou acesso à riqueza para todos.": {
+    "en": "Musk promises abundance. BETTEX's criticism is that producing more does not guarantee jobs, income or access to wealth for everyone.",
+    "es": "Musk promete abundancia. La crítica de BETTEX es que producir más no garantiza empleo, ingresos ni acceso a la riqueza para todos."
+  },
+  "Na leitura da BETTEX, a promessa de prosperidade para todos esconde um cenário de exclusão: máquinas produzem, o capital recebe e quem dependia do próprio trabalho pode ficar sem salário e sem alternativa de renda.": {
+    "en": "In BETTEX's reading, the promise of prosperity for all hides a scenario of exclusion: machines produce, capital earns, and those who depended on their own work may be left without wages or an alternative source of income.",
+    "es": "En la lectura de BETTEX, la promesa de prosperidad para todos oculta un escenario de exclusión: las máquinas producen, el capital cobra y quienes dependían de su propio trabajo pueden quedarse sin salario ni otra fuente de ingresos."
+  },
+  "O cenário apocalíptico": {
+    "en": "The apocalyptic scenario",
+    "es": "El escenario apocalíptico"
+  },
+  "Sem emprego. Sem renda. Sem lugar na nova economia.": {
+    "en": "No job. No income. No place in the new economy.",
+    "es": "Sin empleo. Sin ingresos. Sin lugar en la nueva economía."
+  },
+  "Se IA e robôs eliminam funções sem oportunidades equivalentes, não basta dizer que as pessoas vão se adaptar. O cenário extremo é um mercado que deixa de precisar delas, enquanto famílias continuam dependendo de renda para viver.": {
+    "en": "If AI and robots eliminate roles without equivalent opportunities, saying people will adapt is not enough. The extreme scenario is a market that no longer needs them, while families still depend on income to survive.",
+    "es": "Si la IA y los robots eliminan funciones sin oportunidades equivalentes, no basta con decir que las personas se adaptarán. El escenario extremo es un mercado que deja de necesitarlas, mientras las familias siguen dependiendo de ingresos para vivir."
+  },
+  "Só resta o agora. O amanhã está perdido.": {
+    "en": "Only the present remains. Tomorrow is lost.",
+    "es": "Solo queda el ahora. El mañana está perdido."
+  },
+  "Tese da BETTEX sobre o risco de exclusão, não uma previsão inevitável nem uma promessa de renda do projeto.": {
+    "en": "BETTEX's thesis on the risk of exclusion, not an inevitable forecast or a promise of income from the project.",
+    "es": "Tesis de BETTEX sobre el riesgo de exclusión, no una predicción inevitable ni una promesa de ingresos del proyecto."
+  },
+  "Dados atuais · EUA": {
+    "en": "Current data · US",
+    "es": "Datos actuales · EE. UU."
+  },
+  "5,8 milhões querem um emprego e não entram na taxa principal.": {
+    "en": "5.8 million want a job but are not counted in the headline rate.",
+    "es": "5,8 millones quieren un empleo y no se incluyen en la tasa principal."
+  },
+  "Em setembro de 2026, o BLS registra 5,8 milhões de pessoas fora da força de trabalho que querem um emprego e 4,5 milhões trabalhando em tempo parcial por razões econômicas. A taxa de desemprego de 4,2% não resume toda essa falta de acesso ao trabalho.": {
+    "en": "In September 2026, the BLS reports 5.8 million people outside the labor force who want a job and 4.5 million working part time for economic reasons. The 4.2% unemployment rate does not capture all this lack of access to work.",
+    "es": "En septiembre de 2026, el BLS registra 5,8 millones de personas fuera de la fuerza laboral que quieren un empleo y 4,5 millones que trabajan a tiempo parcial por razones económicas. La tasa de desempleo del 4,2% no refleja toda esta falta de acceso al trabajo."
+  },
+  "A taxa usa desempregados ÷ força de trabalho, não vagas abertas. A geração líquida de empregos não agrícolas foi de +29 mil em setembro: um avanço pequeno, não zero. Esses números não demonstram, por si só, causalidade da IA.": {
+    "en": "The rate uses unemployed people ÷ labor force, not job openings. Net nonfarm payroll growth was +29,000 in September: a small gain, not zero. These figures do not, by themselves, establish AI as the cause.",
+    "es": "La tasa usa personas desempleadas ÷ fuerza laboral, no vacantes. La creación neta de empleos no agrícolas fue de +29 mil en septiembre: un avance pequeño, no cero. Estas cifras no demuestran, por sí solas, que la IA sea la causa."
+  },
+  "BLS, 2 out. 2026": {
+    "en": "BLS, Oct. 2, 2026",
+    "es": "BLS, 2 oct. 2026"
+  },
+  "BLS, metodologia": {
+    "en": "BLS, methodology",
+    "es": "BLS, metodología"
+  },
+  "Em setembro de 2026, Elon Musk voltou a associar IA e robôs a uma era de abundância, com renda alta universal.": {
+    "en": "In September 2026, Elon Musk once again linked AI and robots to an age of abundance with universal high income.",
+    "es": "En septiembre de 2026, Elon Musk volvió a vincular la IA y los robots con una era de abundancia, con ingresos altos universales."
+  },
+  "“Acho que, de longe, o resultado mais provável é uma era de abundância.”": {
+    "en": "“I think by far the most likely outcome is an age of abundance.”",
+    "es": "“Creo que, con diferencia, el resultado más probable es una era de abundancia.”"
+  },
+  "Elon Musk, Casa Branca, 29 set. 2026 ·": {
+    "en": "Elon Musk, White House, Sep. 29, 2026 ·",
+    "es": "Elon Musk, Casa Blanca, 29 sep. 2026 ·"
+  },
+  "Business Insider, 30 set. 2026": {
+    "en": "Business Insider, Sep. 30, 2026",
+    "es": "Business Insider, 30 sep. 2026"
+  },
+  "Na visão de Musk, robôs e superinteligência ampliariam a produção e o acesso a bens e serviços. Ele prevê mudanças nos empregos e uma renda alta universal, não apenas uma renda básica.": {
+    "en": "In Musk's view, robots and superintelligence would expand production and access to goods and services. He predicts changes in jobs and universal high income, not just basic income.",
+    "es": "En la visión de Musk, los robots y la superinteligencia ampliarían la producción y el acceso a bienes y servicios. Prevé cambios en los empleos e ingresos altos universales, no solo ingresos básicos."
+  },
+  "A BETTEX reúne o capital em uma tesouraria com estratégias geridas por IA, limites de risco e supervisão humana. Com o token BETTEX, o usuário participa dos resultados do projeto, sem escolher ou executar cada operação. Pelo aplicativo, o usuário acompanha saldo, resultados e custos. Quando há lucro elegível e as condições de distribuição são atendidas, a parcela do usuário é paga em USDC, conforme as regras de staking.": {
+    "en": "BETTEX pools capital in a treasury with AI-managed strategies, risk limits and human oversight. With the BETTEX token, the user participates in the project's results without selecting or executing each operation. Through the app, the user tracks balances, results and costs. When there is eligible profit and the distribution conditions are met, the user's portion is paid in USDC according to the staking rules.",
+    "es": "BETTEX reúne el capital en una tesorería con estrategias gestionadas por IA, límites de riesgo y supervisión humana. Con el token BETTEX, el usuario participa en los resultados del proyecto sin elegir ni ejecutar cada operación. A través de la aplicación, el usuario consulta saldos, resultados y costos. Cuando hay beneficios elegibles y se cumplen las condiciones de distribución, la parte del usuario se paga en USDC conforme a las reglas de staking."
+  },
+  "Aportes vinculados ao financiamento inicial": {
+    "en": "Contributions linked to initial funding",
+    "es": "Aportes vinculados a la financiación inicial"
+  },
+  "BETTEX disponível e tempo elegível no aplicativo oficial definem o peso de cada usuário.": {
+    "en": "Available BETTEX and eligible time in the official app determine each user's weight.",
+    "es": "Los BETTEX disponibles y el tiempo elegible en la aplicación oficial determinan el peso de cada usuario."
+  },
+  "Como o usuário participa": {
+    "en": "How the user participates",
+    "es": "Cómo participa el usuario"
+  },
+  "Empresa privada, ainda a constituir, com estratégias geridas por IA e participação por token; quatro frentes planejadas, nenhuma garantida como ativa.": {
+    "en": "A private company yet to be established, with AI-managed strategies and token-based participation; four planned areas, none guaranteed to be active.",
+    "es": "Empresa privada, aún por constituir, con estrategias gestionadas por IA y participación mediante token; cuatro áreas previstas, ninguna garantizada como activa."
+  },
+  "Etapas de participação do usuário": {
+    "en": "User participation stages",
+    "es": "Etapas de participación del usuario"
+  },
+  "Financiamento inicial": {
+    "en": "Initial funding",
+    "es": "Financiación inicial"
+  },
+  "IA na operação, participação por token.": {
+    "en": "AI-powered operations, token-based participation.",
+    "es": "IA en la operación, participación mediante token."
+  },
+  "Metade financia o desenvolvimento inicial; metade vai para a tesouraria. É a regra para aportes vinculados aos tokens do financiamento inicial, não para qualquer rodada societária.": {
+    "en": "Half funds initial development; half goes to the treasury. This is the rule for contributions linked to initial-funding tokens, not for every equity funding round.",
+    "es": "La mitad financia el desarrollo inicial; la mitad va a la tesorería. Esta es la regla para los aportes vinculados a los tokens de la financiación inicial, no para cualquier ronda de capital societario."
+  },
+  "O token combina participação condicionada no lucro elegível do projeto e possibilidade de revenda, com risco de preço e liquidez.": {
+    "en": "The token combines conditional participation in the project's eligible profit and the possibility of resale, with price and liquidity risk.",
+    "es": "El token combina la participación condicionada en los beneficios elegibles del proyecto y la posibilidad de reventa, con riesgo de precio y liquidez."
+  },
+  "O usuário adquire o token. O preço da venda pública primária vai integralmente à tesouraria; a tarifa de serviço é separada.": {
+    "en": "The user acquires the token. The primary public-sale price goes entirely to the treasury; the service fee is separate.",
+    "es": "El usuario adquiere el token. El precio de la venta pública primaria va íntegramente a la tesorería; la tarifa de servicio se cobra por separado."
+  },
+  "O usuário consulta resultados, custos, alocações e registros de conciliação previstos no modelo.": {
+    "en": "The user reviews the results, costs, allocations and reconciliation records provided for in the model.",
+    "es": "El usuario consulta los resultados, costos, asignaciones y registros de conciliación previstos en el modelo."
+  },
+  "O usuário participa dos resultados do projeto por meio do token BETTEX. A tesouraria realiza investimentos em mercados de risco com estratégias geridas por IA, sem que o usuário selecione ou execute cada operação.": {
+    "en": "The user participates in the project's results through the BETTEX token. The treasury invests in risk markets using AI-managed strategies, without the user selecting or executing each operation.",
+    "es": "El usuario participa en los resultados del proyecto mediante el token BETTEX. La tesorería realiza inversiones en mercados de riesgo con estrategias gestionadas por IA, sin que el usuario seleccione ni ejecute cada operación."
+  },
+  "O usuário participa dos resultados do projeto, sem escolher cada operação ou depender apenas da revenda do token.": {
+    "en": "The user participates in the project's results without selecting each operation or relying solely on reselling the token.",
+    "es": "El usuario participa en los resultados del proyecto sin elegir cada operación ni depender únicamente de la reventa del token."
+  },
+  "Parecer jurídico, permissões de provedores, contratos e segurança são necessários antes de operações com dinheiro real.": {
+    "en": "Legal opinions, provider permissions, contracts and security are required before operations involving real money.",
+    "es": "Los dictámenes jurídicos, permisos de proveedores, contratos y medidas de seguridad son necesarios antes de realizar operaciones con dinero real."
+  },
+  "Quando a rodada diária atende às condições de lucro, reserva e liquidez, o usuário recebe a parcela correspondente ao peso elegível no pool dos stakers.": {
+    "en": "When the daily round meets the profit, reserve and liquidity conditions, the user receives the portion corresponding to their eligible weight in the stakers' pool.",
+    "es": "Cuando la ronda diaria cumple las condiciones de beneficio, reserva y liquidez, el usuario recibe la parte correspondiente a su peso elegible en el pool de stakers."
+  },
+  "Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. A liberação de novos tokens pode alterar a participação individual; fundador e demais usuários seguem os mesmos critérios.": {
+    "en": "Locked tokens, public-sale inventory and unavailable amounts are excluded from the distribution. The release of new tokens may change individual participation; the founder and other users follow the same criteria.",
+    "es": "Los tokens bloqueados, las existencias para venta pública y los valores no disponibles quedan fuera del reparto. La liberación de nuevos tokens puede modificar la participación individual; el fundador y los demás usuarios siguen los mismos criterios."
+  },
+  "Uma empresa privada, ainda a constituir, que utiliza IA para gerir suas estratégias. O token BETTEX define os direitos de participação do usuário nos resultados do projeto. Não é operadora de apostas nem intermediária. Quatro frentes planejadas, todas sujeitas a autorização e compatibilidade, nenhuma garantida como ativa.": {
+    "en": "A private company yet to be established that uses AI to manage its strategies. The BETTEX token defines the user's rights to participate in the project's results. It is neither a betting operator nor an intermediary. Four planned areas, all subject to authorization and compatibility, none guaranteed to be active.",
+    "es": "Una empresa privada, aún por constituir, que utiliza IA para gestionar sus estrategias. El token BETTEX define los derechos del usuario a participar en los resultados del proyecto. No es operadora de apuestas ni intermediaria. Cuatro áreas previstas, todas sujetas a autorización y compatibilidad, ninguna garantizada como activa."
+  },
   "A comunidade ajuda a determinar a evolução dos agentes de IA.": {
     "en": "The community helps determine the evolution of the AI agents.",
     "es": "La comunidad ayuda a determinar la evolución de los agentes de IA."
@@ -47,13 +1069,9 @@
     "en": "CC BY-SA 3.0",
     "es": "CC BY-SA 3.0"
   },
-  "Foto: The Royal Society (2018) ·": {
-    "en": "Photo: The Royal Society (2018) ·",
-    "es": "Foto: The Royal Society (2018) ·"
-  },
-  "Enquadramento e tratamento visual.": {
-    "en": "Framing and visual treatment.",
-    "es": "Encuadre y tratamiento visual."
+  "Fonte: The Royal Society": {
+    "en": "Source: The Royal Society",
+    "es": "Fuente: The Royal Society"
   },
   "Tesla · Optimus": {
     "en": "Tesla · Optimus",
@@ -171,9 +1189,9 @@
     "en": "Participation in BETTEX: only people aged 18 or older.",
     "es": "Participación en BETTEX: solo personas de 18 años o más."
   },
-  "A tese da BETTEX é que apostar para obter renda ou quitar dívidas é atribuir ao jogo uma função de investimento. O projeto propõe redirecionar essa busca por retorno financeiro para estratégias de investimento geridas por IA.": {
-    "en": "BETTEX’s thesis is that betting to earn income or repay debts gives gambling an investment role. The project proposes redirecting this pursuit of financial returns towards AI-managed investment strategies.",
-    "es": "La tesis de BETTEX es que apostar para obtener ingresos o saldar deudas es atribuir al juego una función de inversión. El proyecto propone redirigir esta búsqueda de retorno financiero hacia estrategias de inversión gestionadas por IA."
+  "A tese da BETTEX é que apostar para obter renda ou quitar dívidas é atribuir ao jogo uma função de investimento. A BETTEX propõe redirecionar essa busca por retorno financeiro para estratégias de ganhos em mercados de risco geridas por IA. A experiência tem linguagem e estética de aposta, mas é um produto de tecnologia voltado ao investimento, com participação nos resultados e risco de perda.": {
+    "en": "BETTEX’s thesis is that betting to earn income or repay debts gives gambling an investment role. BETTEX proposes redirecting this pursuit of financial returns towards AI-managed strategies for generating gains in risk markets. The experience uses the language and aesthetics of betting, but it is a technology product focused on investment, with participation in results and a risk of loss.",
+    "es": "La tesis de BETTEX es que apostar para obtener ingresos o saldar deudas es atribuir al juego una función de inversión. BETTEX propone redirigir esta búsqueda de retorno financiero hacia estrategias de ganancias en mercados de riesgo gestionadas por IA. La experiencia tiene el lenguaje y la estética de las apuestas, pero es un producto de tecnología orientado a la inversión, con participación en los resultados y riesgo de pérdida."
   },
   "A pesquisa CNDL/SPC Brasil, com a Offerwise, ouviu consumidores de 18 anos ou mais nas 27 capitais que pretendiam gastar com a Copa de 2026. Os percentuais abaixo se referem aos que pretendiam apostar nesse evento.": {
     "en": "The CNDL/SPC Brasil survey, conducted with Offerwise, interviewed consumers aged 18 or older in Brazil’s 27 state capitals who intended to spend on the 2026 World Cup. The percentages below refer to those who intended to bet during that event.",
@@ -995,10 +2013,6 @@
     "en": "USDC reserved for authorised buybacks.",
     "es": "USDC exclusivo para recompras autorizadas."
   },
-  "Um fundo de investimentos gerido por IA.": {
-    "en": "An AI-managed investment fund.",
-    "es": "Un fondo de inversión gestionado por IA."
-  },
   "Validar a operação comercial": {
     "en": "Validate commercial operations",
     "es": "Validar la operación comercial"
@@ -1755,10 +2769,6 @@
     "en": "BETTEX proposes access to AI-managed strategies and conditional participation in eligible profits. It does not replace salary, qualification or social protection, and is not a stock portfolio of AI companies.",
     "es": "BETTEX propone acceso a estrategias gestionadas por IA y participación condicionada en beneficios elegibles. No sustituye al salario, la cualificación o la protección social, y no es una cartera de acciones de empresas de IA."
   },
-  "A BETTEX reúne capital numa tesouraria e utiliza agentes de IA para analisar e executar investimentos em previsões, ações e cripto, esportes e cassinos. Economicamente, funciona como um fundo de investimentos; sua estrutura proposta é uma única empresa privada, não uma afirmação de registro jurídico como fundo. O token BETTEX dá acesso ao programa de resultados, sem ações ou propriedade proporcional da tesouraria.": {
-    "en": "BETTEX gathers capital into a treasury and uses AI agents to analyze and execute investments in predictions, stocks and crypto, sports and casinos. Economically, it functions as an investment fund; its proposed structure is a single private company, not a claim of legal registration as a fund. The BETTEX token gives access to the results program, without shares or proportional ownership of the treasury.",
-    "es": "BETTEX reúne capital en una tesorería y utiliza agentes de IA para analizar y ejecutar inversiones en previsiones, acciones y cripto, deportes y casinos. Económicamente, funciona como un fondo de inversión; su estructura propuesta es una única empresa privada, no una afirmación de registro jurídico como fondo. El token BETTEX da acceso al programa de resultados, sin acciones ni propiedad proporcional de la tesorería."
-  },
   "A BETTEX reúne o projeto em uma única empresa comercial privada de capital fechado a constituir, administrada pelo fundador. A entidade é responsável pelo token, aplicativo, tesouraria, investimentos e obrigações do programa de resultados.": {
     "en": "BETTEX brings the project together into a single private, closed-capital commercial company to be incorporated, managed by the founder. The entity is responsible for the token, application, treasury, investments, and result program obligations.",
     "es": "BETTEX reúne el proyecto en una única empresa comercial privada de capital cerrado a constituir, administrada por el fundador. La entidad es responsable del token, la aplicación, la tesorería, las inversiones y las obligaciones del programa de resultados."
@@ -1766,10 +2776,6 @@
   "A BETTEX seleciona onde operar conforme suas análises e as oportunidades de cada mercado.": {
     "en": "BETTEX selects where to operate according to its analyses and the opportunities of each market.",
     "es": "BETTEX selecciona dónde operar según sus análisis y las oportunidades de cada mercado."
-  },
-  "A BETTEX é um fundo de investimentos descentralizado, gerido por IA, criado para ampliar o acesso de pessoas comuns a diferentes mercados e à participação nos lucros, sem precisar operar por conta própria.": {
-    "en": "BETTEX is a decentralized investment fund managed by AI, created to give everyday people greater access to different markets and a share in profits, without having to trade on their own.",
-    "es": "BETTEX es un fondo de inversión descentralizado, gestionado por IA, creado para ampliar el acceso de las personas comunes a diferentes mercados y a la participación en los beneficios, sin tener que operar por su cuenta."
   },
   "A BETTEX é um projeto internacional. O saldo efetivo e as movimentações previstos são em USDC; a interface mostra seu valor estimado na moeda fiduciária da pessoa. O saque interno continua em USDC. BETTEX é o token de participação.": {
     "en": "BETTEX is an international project. The effective balance and projected movements are in USDC; the interface shows its estimated value in the person's fiat currency. The internal cashout remains in USDC. BETTEX is the participation token.",
@@ -2487,9 +3493,9 @@
     "en": "Stocks and crypto agent",
     "es": "Agente de acciones y cripto"
   },
-  "Agente de cassinos": {
-    "en": "Casino agent",
-    "es": "Agente de casinos"
+  "Agente de iGaming": {
+    "en": "iGaming agent",
+    "es": "Agente de iGaming"
   },
   "Agente de esportes": {
     "en": "Sports agent",
@@ -3167,9 +4173,9 @@
     "en": "BETTEX is more than extra income.",
     "es": "BETTEX es más que ingresos extra."
   },
-  "BETTEX é o token do nosso agente de inteligência artificial, que analisa e opera em esportes, previsões, cassinos, ações e cripto. Quem tem BETTEX participa dos resultados do projeto.": {
-    "en": "BETTEX is the token of our artificial intelligence agent, which analyzes and operates in sports betting, prediction markets, casinos, stocks and crypto. BETTEX holders participate in the project’s results.",
-    "es": "BETTEX es el token de nuestro agente de inteligencia artificial, que analiza y opera en deportes, mercados de predicción, casinos, acciones y cripto. Quienes tienen BETTEX participan en los resultados del proyecto."
+  "BETTEX é o token do nosso agente de inteligência artificial, que analisa e opera em esportes, previsões, iGaming, ações e cripto. Quem tem BETTEX participa dos resultados do projeto.": {
+    "en": "BETTEX is the token of our artificial intelligence agent, which analyzes and operates in sports betting, prediction markets, iGaming, stocks and crypto. BETTEX holders participate in the project’s results.",
+    "es": "BETTEX es el token de nuestro agente de inteligencia artificial, que analiza y opera en deportes, mercados de predicción, iGaming, acciones y cripto. Quienes tienen BETTEX participan en los resultados del proyecto."
   },
   "BETTEX — entidade, piloto e regras": {
     "en": "BETTEX — entity, pilot, and rules",
@@ -3343,9 +4349,9 @@
     "en": "PERSONAL WALLET",
     "es": "MONEDERO PERSONAL"
   },
-  "CASSINOS": {
-    "en": "CASINOS",
-    "es": "CASINOS"
+  "iGaming": {
+    "en": "iGaming",
+    "es": "iGaming"
   },
   "COL": {
     "en": "COL",
@@ -3659,13 +4665,9 @@
     "en": "Wallets, token, transfers, and contracts. BETTEX execution requires validated contracts.",
     "es": "Billeteras, token, transferencias y contratos. Ejecución BETTEX exige contratos validados."
   },
-  "Cassinos": {
-    "en": "Casinos",
-    "es": "Casinos"
-  },
-  "Cassinos (bônus)": {
-    "en": "Casinos (bonus)",
-    "es": "Cassinos (bonus)"
+  "iGaming (bônus)": {
+    "en": "iGaming (bonus)",
+    "es": "iGaming (bonus)"
   },
   "Categoria / acesso": {
     "en": "Category / access",
@@ -5007,9 +6009,9 @@
     "en": "Sports (surebet)",
     "es": "Deportes (surebet)"
   },
-  "Esportes e cassinos": {
-    "en": "Sports and casinos",
-    "es": "Deportes y casinos"
+  "Esportes e iGaming": {
+    "en": "Sports and iGaming",
+    "es": "Deportes y iGaming"
   },
   "Esquema": {
     "en": "Diagram",
@@ -5471,9 +6473,9 @@
     "en": "Fred drives acquisition through his own channels and audience, with AI and necessary external services. Launch includes boosting, partnerships, security, and paid media on the founder's profiles and own networks.",
     "es": "Fred conduce adquisición por los propios canales y audiencia, con IA y servicios externos necesarios. Lanzamiento incluye impulsión, alianzas, seguridad, medios pagados en los perfiles del fundador y redes propias."
   },
-  "Frentes de esportes e cassinos dependem de compatibilidade regulatória e não estão todas autorizadas.": {
-    "en": "Sports and casino fronts depend on regulatory compatibility and are not all authorized.",
-    "es": "Frentes de deportes y casinos dependen de compatibilidad regulatoria y no están todas autorizadas."
+  "Frentes de esportes e iGaming dependem de compatibilidade regulatória e não estão todas autorizadas.": {
+    "en": "Sports and iGaming fronts depend on regulatory compatibility and are not all authorized.",
+    "es": "Frentes de deportes y iGaming dependen de compatibilidad regulatoria y no están todas autorizadas."
   },
   "Frequência de operações e receita": {
     "en": "Operation frequency and revenue",
@@ -5871,9 +6873,9 @@
     "en": "JSON-RPC / EVM",
     "es": "JSON-RPC / EVM"
   },
-  "Jogos de cassino envolvem acaso, vantagem da casa e alta variância, podendo gerar perdas rápidas. Só podem ser considerados onde forem legalmente permitidos e mediante autorização do provedor; nenhuma estratégia ou automação elimina esses riscos.": {
-    "en": "Casino games involve chance, house edge, and high variance, which can generate rapid losses. They can only be considered where legally permitted and upon provider authorization; no strategy or automation eliminates these risks.",
-    "es": "Juegos de casino involucran azar, ventaja de la casa y alta varianza, pudiendo generar pérdidas rápidas. Solo pueden ser considerados donde sean legalmente permitidos y mediante autorización del proveedor; ninguna estrategia o automación elimina estos riesgos."
+  "Jogos de iGaming envolvem acaso, vantagem da casa e alta variância, podendo gerar perdas rápidas. Só podem ser considerados onde forem legalmente permitidos e mediante autorização do provedor; nenhuma estratégia ou automação elimina esses riscos.": {
+    "en": "iGaming games involve chance, house edge, and high variance, which can generate rapid losses. They can only be considered where legally permitted and upon provider authorization; no strategy or automation eliminates these risks.",
+    "es": "Juegos de iGaming involucran azar, ventaja de la casa y alta varianza, pudiendo generar pérdidas rápidas. Solo pueden ser considerados donde sean legalmente permitidos y mediante autorización del proveedor; ninguna estrategia o automación elimina estos riesgos."
   },
   "João da Silva": {
     "en": "João da Silva",
@@ -6503,9 +7505,9 @@
     "en": "Do not create pending credits",
     "es": "No generan créditos pendientes"
   },
-  "Não há alavancagem. Uma pausa de emergência, controlada por pessoas autorizadas e registrada em auditoria, pode impedir novas operações independentemente dos limites; a política de cancelamento de ordens pendentes também precisa ser testada. Limites reduzem exposição, mas não evitam perdas nem autorizam atuação onde a lei, as regras do mercado ou a plataforma proíbem. Operações de cassino mantêm os mesmos tetos e podem perder rapidamente por acaso, variância e vantagem da casa.": {
-    "en": "There is no leverage. An emergency pause, controlled by authorized persons and recorded in an audit, can prevent new operations regardless of limits; the pending order cancellation policy also needs to be tested. Limits reduce exposure but do not prevent losses nor authorize action where the law, market rules, or the platform prohibit it. Casino operations maintain the same caps and can lose quickly by chance, variance, and the house edge.",
-    "es": "No hay apalancamiento. Una pausa de emergencia, controlada por personas autorizadas y registrada en auditoría, puede impedir nuevas operaciones independientemente de los límites; la política de cancelación de órdenes pendientes también necesita ser probada. Los límites reducen la exposición, pero no evitan pérdidas ni autorizan acciones donde la ley, las reglas del mercado o la plataforma lo prohíben. Las operaciones de casino mantienen los mismos topes y pueden perder rápidamente por azar, varianza y la ventaja de la casa."
+  "Não há alavancagem. Uma pausa de emergência, controlada por pessoas autorizadas e registrada em auditoria, pode impedir novas operações independentemente dos limites; a política de cancelamento de ordens pendentes também precisa ser testada. Limites reduzem exposição, mas não evitam perdas nem autorizam atuação onde a lei, as regras do mercado ou a plataforma proíbem. Operações de iGaming mantêm os mesmos tetos e podem perder rapidamente por acaso, variância e vantagem da casa.": {
+    "en": "There is no leverage. An emergency pause, controlled by authorized persons and recorded in an audit, can prevent new operations regardless of limits; the pending order cancellation policy also needs to be tested. Limits reduce exposure but do not prevent losses nor authorize action where the law, market rules, or the platform prohibit it. iGaming operations maintain the same caps and can lose quickly by chance, variance, and the house edge.",
+    "es": "No hay apalancamiento. Una pausa de emergencia, controlada por personas autorizadas y registrada en auditoría, puede impedir nuevas operaciones independientemente de los límites; la política de cancelación de órdenes pendientes también necesita ser probada. Los límites reducen la exposición, pero no evitan pérdidas ni autorizan acciones donde la ley, las reglas del mercado o la plataforma lo prohíben. Las operaciones de iGaming mantienen los mismos topes y pueden perder rápidamente por azar, varianza y la ventaja de la casa."
   },
   "Não há reenvio automático enquanto o resultado estiver desconhecido.": {
     "en": "No automatic resending while the result is unknown.",
@@ -6583,9 +7585,9 @@
     "en": "The adjustment removes only the undue portion, preserves the correct right, and identifies previous, corrected, already settled, and still pending values of the original person and round. It does not authorize debiting the personal wallet or canceling credits due to mere retention. The old value cannot continue authorizing a shipment incompatible with the corrected right. Portions linked to a shipment started, sent, or uncertain remain blocked for reconciliation; lack of response does not prove non-sending nor release resources.",
     "es": "El ajuste retira solo la parte indebida, preserva el derecho correcto e identifica los valores anteriores, corregidos, ya liquidados y aún pendientes de la persona y ronda originales. No autoriza debitar la billetera personal o cancelar créditos por mera retención. El valor antiguo no puede seguir autorizando un envío incompatible con el derecho corregido. Las partes vinculadas a un envío iniciado, enviado o incierto permanecen bloqueadas para conciliación; la ausencia de respuesta no demuestra que no se haya enviado ni libera recursos."
   },
-  "O algoritmo analisa oportunidades em previsões, ações e cripto, esportes e cassinos e distribui a parcela investível conforme as melhores oportunidades identificadas. As estratégias incluem surebet nos esportes, com comparação de odds e cobertura dos resultados entre casas, e bonus hunting (mineração de bônus) em cassinos, com análise das promoções, requisitos de aposta e elegibilidade. A alocação é dinâmica, sem percentuais fixos por mercado, preservando a reserva defensiva e a verificação independente de risco.": {
-    "en": "The algorithm analyzes opportunities in predictions, stocks and crypto, sports, and casinos, and distributes the investable portion according to the best identified opportunities. Strategies include surebet in sports, with odds comparison and coverage of results across bookmakers, and bonus hunting in casinos, with analysis of promotions, wagering requirements, and eligibility. Allocation is dynamic, without fixed percentages per market, preserving the defensive reserve and independent risk verification.",
-    "es": "El algoritmo analiza oportunidades en predicciones, acciones y cripto, deportes y casinos, y distribuye la porción invertible según las mejores oportunidades identificadas. Las estrategias incluyen surebet en deportes, con comparación de cuotas y cobertura de resultados entre casas, y bonus hunting en casinos, con análisis de promociones, requisitos de apuesta y elegibilidad. La asignación es dinámica, sin porcentajes fijos por mercado, preservando la reserva defensiva y la verificación independiente de riesgo."
+  "O algoritmo analisa oportunidades em previsões, ações e cripto, esportes e iGaming e distribui a parcela investível conforme as melhores oportunidades identificadas. As estratégias incluem surebet nos esportes, com comparação de odds e cobertura dos resultados entre casas, e bonus hunting (mineração de bônus) no iGaming, com análise das promoções, requisitos de aposta e elegibilidade. A alocação é dinâmica, sem percentuais fixos por mercado, preservando a reserva defensiva e a verificação independente de risco.": {
+    "en": "The algorithm analyzes opportunities in predictions, stocks and crypto, sports, and iGaming, and distributes the investable portion according to the best identified opportunities. Strategies include surebet in sports, with odds comparison and coverage of results across bookmakers, and bonus hunting in iGaming, with analysis of promotions, wagering requirements, and eligibility. Allocation is dynamic, without fixed percentages per market, preserving the defensive reserve and independent risk verification.",
+    "es": "El algoritmo analiza oportunidades en predicciones, acciones y cripto, deportes y iGaming, y distribuye la porción invertible según las mejores oportunidades identificadas. Las estrategias incluyen surebet en deportes, con comparación de cuotas y cobertura de resultados entre casas, y bonus hunting en iGaming, con análisis de promociones, requisitos de apuesta y elegibilidad. La asignación es dinámica, sin porcentajes fijos por mercado, preservando la reserva defensiva y la verificación independiente de riesgo."
   },
   "O backend acompanha os tokens confirmados na rede. A elegibilidade e a permanência no staking são verificadas pelo aplicativo.": {
     "en": "The backend tracks tokens confirmed on the network. Eligibility and staking retention are verified by the application.",
@@ -8667,9 +9669,9 @@
     "en": "Robinhood Crypto Trading API",
     "es": "Robinhood Crypto Trading API"
   },
-  "Robinhood documenta preços, posições, ordens e cancelamentos de cripto, com assinatura e conta elegível. O exemplo é simulado sem essas permissões: proposta de ordem → risco → chamada autorizada → estado → conciliação. Não é transação Arbitrum nem acesso a ações. Esportes e cassinos exigem canal e regras específicos; suas demonstrações de agentes são simulações parametrizadas.": {
-    "en": "Robinhood documents crypto prices, positions, orders, and cancellations, with signature and eligible account. The example is simulated without these permissions: order proposal → risk → authorized call → state → reconciliation. It is not an Arbitrum transaction nor access to stocks. Sports and casinos require specific channels and rules; their agent demonstrations are parameterized simulations.",
-    "es": "Robinhood documenta precios, posiciones, órdenes y cancelaciones de cripto, con firma y cuenta elegible. El ejemplo es simulado sin esos permisos: propuesta de orden → riesgo → llamada autorizada → estado → conciliación. No es una transacción Arbitrum ni acceso a acciones. Deportes y casinos exigen canal y reglas específicos; sus demostraciones de agentes son simulaciones parametrizadas."
+  "Robinhood documenta preços, posições, ordens e cancelamentos de cripto, com assinatura e conta elegível. O exemplo é simulado sem essas permissões: proposta de ordem → risco → chamada autorizada → estado → conciliação. Não é transação Arbitrum nem acesso a ações. Esportes e iGaming exigem canal e regras específicos; suas demonstrações de agentes são simulações parametrizadas.": {
+    "en": "Robinhood documents crypto prices, positions, orders, and cancellations, with signature and eligible account. The example is simulated without these permissions: order proposal → risk → authorized call → state → reconciliation. It is not an Arbitrum transaction nor access to stocks. Sports and iGaming require specific channels and rules; their agent demonstrations are parameterized simulations.",
+    "es": "Robinhood documenta precios, posiciones, órdenes y cancelaciones de cripto, con firma y cuenta elegible. El ejemplo es simulado sin esos permisos: propuesta de orden → riesgo → llamada autorizada → estado → conciliación. No es una transacción Arbitrum ni acceso a acciones. Deportes y iGaming exigen canal y reglas específicos; sus demostraciones de agentes son simulaciones parametrizadas."
   },
   "Robinhood · criptoativos": {
     "en": "Robinhood · cryptoassets",
@@ -9811,10 +10813,6 @@
     "en": "A private, closely-held commercial company to be incorporated, managed by the founder alone in a full stack AI model, with no employees.",
     "es": "Una empresa comercial privada de capital cerrado a constituir, administrada por el fundador solo en modelo full stack AI, sin empleados."
   },
-  "Uma empresa privada, ainda a constituir, com identidade econômica de fundo de investimento gerido por IA. Não é operadora de apostas nem intermediária. Quatro frentes planejadas, todas sujeitas a autorização e compatibilidade, nenhuma garantida como ativa.": {
-    "en": "A private company, yet to be established, with the economic identity of an AI-managed investment fund. It is not a betting operator nor an intermediary. Four planned fronts, all subject to authorization and compatibility, none guaranteed as active.",
-    "es": "Una empresa privada, aún a constituir, con identidad económica de fondo de inversión gestionado por IA. No es operadora de apuestas ni intermediaria. Cuatro frentes planeados, todas sujetas a autorización y compatibilidad, ninguna garantizada como activa."
-  },
   "Uma mensagem de estado comprovadamente obsoleta não desfaz execução confirmada, não recria reserva já conciliada e não libera capital indevidamente. Um aceite antigo recebido depois da execução não transforma a ordem em apenas aceita; uma resposta antiga de cancelamento não substitui a conferência das execuções e dos recursos efetivamente disponíveis.": {
     "en": "A proven obsolete status message does not undo a confirmed execution, does not recreate an already reconciled reserve, and does not release capital improperly. An old acceptance received after execution does not transform the order into only accepted; an old cancellation response does not replace the verification of actual executions and effectively available resources.",
     "es": "Un mensaje de estado comprobadamente obsoleto no deshace una ejecución confirmada, no recrea una reserva ya conciliada y no libera capital indebidamente. Una aceptación antigua recibida después de la ejecución no transforma la orden en solo aceptada; una respuesta antigua de cancelación no sustituye la verificación de las ejecuciones reales y de los recursos efectivamente disponibles."
@@ -9847,9 +10845,9 @@
     "en": "A previous day's loss confirmed today corrects the original day's result, without entering into today's loss or automatically triggering the current daily pause just due to the old result.",
     "es": "Una pérdida de día anterior confirmada hoy corrige el resultado del día original, sin entrar en la pérdida de hoy ni accionar automáticamente la pausa diaria actual apenas por el resultado antiguo."
   },
-  "Uma plataforma pode não permitir automação; uma jurisdição pode vedar depósito, venda, distribuição ou operação em determinado mercado, inclusive esportes ou cassino.": {
-    "en": "A platform may not allow automation; a jurisdiction may prohibit deposit, sale, distribution, or operation in a given market, including sports or casino.",
-    "es": "Una plataforma puede no permitir la automatización; una jurisdicción puede prohibir el depósito, la venta, la distribución o la operación en un mercado determinado, incluyendo deportes o casino."
+  "Uma plataforma pode não permitir automação; uma jurisdição pode vedar depósito, venda, distribuição ou operação em determinado mercado, inclusive esportes ou iGaming.": {
+    "en": "A platform may not allow automation; a jurisdiction may prohibit deposit, sale, distribution, or operation in a given market, including sports or iGaming.",
+    "es": "Una plataforma puede no permitir la automatización; una jurisdicción puede prohibir el depósito, la venta, la distribución o la operación en un mercado determinado, incluyendo deportes o iGaming."
   },
   "Uma possível era de abundância é uma tese, não um fato comprovado. A transição depende de política, instituições e acesso: “a natureza não dá saltos”. A missão considera o caminho entre o presente e essa transformação. O público de entrada é brasileiro; a estrutura do projeto é internacional e as movimentações financeiras usam USDC.": {
     "en": "A possible era of abundance is a thesis, not a proven fact. The transition depends on politics, institutions, and access: “nature does not make jumps”. The mission considers the path between the present and this transformation. The target audience is Brazilian; the project structure is international and financial movements use USDC.",
@@ -9887,9 +10885,9 @@
     "en": "They use MCP tools where available or authorized APIs, according to the data and execution resources of each service.",
     "es": "Usan herramientas MCP donde disponibles o APIs autorizadas, conforme los recursos de datos y ejecución de cada servicio."
   },
-  "Use IA contra o sistema. BETTEX é o token do nosso agente de inteligência artificial, que analisa e opera em esportes, previsões, cassinos, ações e cripto.": {
-    "en": "Use AI against the system. BETTEX is the token of our artificial intelligence agent, which analyzes and operates in sports betting, prediction markets, casinos, stocks and crypto.",
-    "es": "Usa IA contra el sistema. BETTEX es el token de nuestro agente de inteligencia artificial, que analiza y opera en deportes, mercados de predicción, casinos, acciones y cripto."
+  "Use IA contra o sistema. BETTEX é o token do nosso agente de inteligência artificial, que analisa e opera em esportes, previsões, iGaming, ações e cripto.": {
+    "en": "Use AI against the system. BETTEX is the token of our artificial intelligence agent, which analyzes and operates in sports betting, prediction markets, iGaming, stocks and crypto.",
+    "es": "Usa IA contra el sistema. BETTEX es el token de nuestro agente de inteligencia artificial, que analiza y opera en deportes, mercados de predicción, iGaming, acciones y cripto."
   },
   "Use um endereço 0x de 42 caracteres. Só a saída fictícia será registrada neste navegador.": {
     "en": "Use a 42-character 0x address. Only the fictitious output will be registered in this browser.",
@@ -10363,9 +11361,9 @@
     "en": "bonus",
     "es": "bonus"
   },
-  "bonus hunting (mineração de bônus) em cassinos": {
-    "en": "bonus hunting in casinos",
-    "es": "caza de bonos (bonus hunting) en casinos"
+  "bonus hunting (mineração de bônus) no iGaming": {
+    "en": "bonus hunting in iGaming",
+    "es": "caza de bonos (bonus hunting) en iGaming"
   },
   "boolean": {
     "en": "boolean",
@@ -12943,9 +13941,9 @@
     "en": "Stock and crypto market, trading chart symbol",
     "es": "Mercado de Acciones y cripto, símbolo de gráfico de negociación"
   },
-  "Mercado de Cassinos, símbolo de naipe de espadas": {
-    "en": "Casino market, spade suit symbol",
-    "es": "Mercado de Casinos, símbolo de palo de picas"
+  "Mercado de iGaming, símbolo de naipe de espadas": {
+    "en": "iGaming market, spade suit symbol",
+    "es": "Mercado de iGaming, símbolo de palo de picas"
   },
   "Mercado de Esportes, símbolo de bola esportiva": {
     "en": "Sports market, sports ball symbol",
@@ -13447,9 +14445,9 @@
     "en": "Go to slide 3: Sports",
     "es": "Ir a la diapositiva 3: Deportes"
   },
-  "Ir para o slide 4: Cassinos": {
-    "en": "Go to slide 4: Casinos",
-    "es": "Ir a la diapositiva 4: Casinos"
+  "Ir para o slide 4: iGaming": {
+    "en": "Go to slide 4: iGaming",
+    "es": "Ir a la diapositiva 4: iGaming"
   },
   "Ir para o slide 5: Carteira USDC": {
     "en": "Go to slide 5: USDC Wallet",
