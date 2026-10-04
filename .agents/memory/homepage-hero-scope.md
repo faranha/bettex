@@ -39,8 +39,8 @@ O hero deve ter uma única frase sobre a comunidade, sem repetir a mesma mensage
 
 **How to apply:** Preservar a etiqueta solicitada e concentrar a frase sobre a comunidade no subtítulo; o parágrafo seguinte explica a IA e a participação nos lucros.
 
-A tese sobre IA e empregos deve vir imediatamente depois do bloco “Admita: você perde mais do que ganha”, numa faixa compacta com robôs ao fundo, não como outro hero com uma imagem independente.
+A sequência imediatamente abaixo do hero deve ser o bloco “Admita: você perde mais do que ganha”, incluindo o uso de IA pelas casas de apostas, seguido pela tese sobre IA e empregos numa faixa compacta com robôs ao fundo, não como outro hero com uma imagem independente.
 
-**Why:** O criador quer conectar o uso de tecnologia contra apostadores à transformação do trabalho pela IA, reduzindo a altura dessa apresentação.
+**Why:** O criador quer conectar o uso de tecnologia contra apostadores à transformação do trabalho pela IA, reduzindo a altura dessa apresentação. Reiterou que esses temas devem ficar logo abaixo do hero.
 
-**How to apply:** Preservar essa sequência e a ligação entre os temas, também no celular. No bloco anterior, destacar que a IA faz as operações e a comunidade ajuda nas decisões, não apenas acompanha resultados. Não modificar o hero principal para apresentar essa tese.
+**How to apply:** Preservar essa sequência e a ligação entre os temas, também no celular, sem intercalar a faixa de marcas tecnológicas ou o modelo do projeto. No bloco anterior, destacar que a IA faz as operações e a comunidade ajuda nas decisões, não apenas acompanha resultados. Não modificar o hero principal para apresentar essa tese.
