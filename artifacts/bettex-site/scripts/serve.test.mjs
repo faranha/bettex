@@ -32,6 +32,13 @@ test('proxy-forwarded legacy host redirects, including uppercase and port', asyn
   assert.equal(res.status, 301);
   assert.equal(res.headers.location, 'https://bettex.ai/es/pitch/?a=1');
 });
+test('legacy direct host cannot be masked by a different forwarded host', async () => {
+  const res = await get('/en/pitch/?ref=legacy', { Host: 'bettex.replit.app', 'X-Forwarded-Host': 'bettex.ai' });
+  assert.equal(res.status, 301);
+  assert.equal(res.headers.location, 'https://bettex.ai/en/pitch/?ref=legacy');
+  assert.equal(res.headers['cache-control'], 'no-store');
+  assert.equal(res.body, '');
+});
 test('official, development and unrelated hosts do not redirect', async () => {
   for (const host of ['bettex.ai', 'localhost', 'preview.replit.dev', 'bettex.replit.app.attacker.test']) {
     assert.equal((await get('/', { Host: host })).status, 200);

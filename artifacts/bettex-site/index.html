@@ -2,6 +2,12 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      if (window.location.hostname.toLowerCase().replace(/\.$/, '') === 'bettex.replit.app') {
+        document.documentElement.style.display = 'none';
+        window.location.replace('https://bettex.ai' + window.location.pathname + window.location.search + window.location.hash);
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#070B1F" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
