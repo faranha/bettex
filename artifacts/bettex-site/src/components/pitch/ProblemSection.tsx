@@ -41,7 +41,7 @@ export function ProblemSection() {
 
       <div className="pb-problem__notes">
         <div className="pb-problem__hyp">
-          <p>A oportunidade é vender o token BETTEX para quem hoje aposta como se estivesse investindo. O token representa um investimento em tecnologia, com estética de aposta e uma experiência familiar a esse público. É um caminho mais saudável para começar a pensar em investir e deixar de tratar o jogo como investimento.</p>
+          <p>A oportunidade é vender o token BETTEX para quem hoje aposta como se estivesse investindo enquanto depreda o próprio futuro. O token representa um investimento em tecnologia, com estética de aposta e uma experiência familiar a esse público. É um caminho mais saudável para começar a pensar em investir e deixar de tratar o jogo como investimento. É uma forma de resgatar um futuro que se perde a cada dia.</p>
           <a href={`${DOC}#documentacao-oportunidade`} className="tap pb-problem__doc">Conheça a proposta na documentação<ArrowRight aria-hidden="true" /></a>
         </div>
         <PitchObservations>

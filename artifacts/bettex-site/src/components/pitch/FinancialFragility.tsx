@@ -1,7 +1,6 @@
 import { ExternalLink } from 'lucide-react';
 import { getFormatLocale, t, useLocale } from '../../lib/i18n';
 import './FinancialFragility.css';
-import { PitchObservations } from './PitchObservations';
 
 const evidence = [
   {
@@ -22,7 +21,6 @@ const evidence = [
     value: 0.665, digits: 1,
     label: 'EUA · de salário em salário',
     description: 'Consumidores americanos que relatam viver de salário em salário, com ou sem dificuldades para pagar contas.',
-    note: 'Relatório de 2026, coleta em dezembro de 2025. Viver de salário em salário não significa necessariamente não ter economias.',
     source: 'PYMNTS Intelligence · relatório de 2026',
     url: 'https://www.pymnts.com/study_posts/the-american-paycheck-2026-annual-edition-an-annual-portrait-of-how-americans-earn-spend-save-and-sustain-themselves',
   },
@@ -30,7 +28,6 @@ const evidence = [
     value: 0.45, digits: 0,
     label: 'EUA · reserva insuficiente',
     description: 'Adultos americanos sem uma reserva específica para cobrir três meses de despesas.',
-    note: 'Dados de 2025. Não equivale a ausência total de economias ou de patrimônio.',
     source: 'Federal Reserve · SHED, maio de 2026',
     url: 'https://www.federalreserve.gov/publications/2026-economic-well-being-of-us-households-in-2025-savings-investments.htm',
   },
@@ -51,10 +48,5 @@ export function FinancialFragility() {
       </article>)}
     </div>
     <p className="pb-fragility__conclusion">Na visão da BETTEX, o risco se agrava quando a mesma pessoa aposta recursos essenciais, não consegue formar reservas e depende de um trabalho que pode ser afetado pela automação.</p>
-    <PitchObservations id="problema-renda-observacoes">
-      <p>Brasil: pesquisa com 1.000 pessoas em dezembro de 2024, publicada em fevereiro de 2025. Cerca de 9% declararam apostar. Os 64,3% e os 65,7% descrevem esse subgrupo, não a população inteira, e são indicadores separados, não o percentual que reúne as duas condições.</p>
-      <p><strong>{t(evidence[2].label)}</strong>: {t(evidence[2].note)}</p>
-      <p><strong>{t(evidence[3].label)}</strong>: {t(evidence[3].note)}</p>
-    </PitchObservations>
   </section>;
 }
