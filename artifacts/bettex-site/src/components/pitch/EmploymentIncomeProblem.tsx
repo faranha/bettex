@@ -1,5 +1,7 @@
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { t } from '../../lib/i18n';
+import { AgenticProblemMetrics } from './AgenticProblemMetrics';
+import { OptimusWorkCard } from './OptimusWorkCard';
 
 export function EmploymentIncomeProblem() {
   return <section id="problema-emprego-renda" className="pb-problem__automation" aria-labelledby="problema-ia-t">
@@ -8,7 +10,7 @@ export function EmploymentIncomeProblem() {
     </div>
     <p className="mono pb-problem__topic">2. Emprego e renda ameaçados pela IA</p>
     <h3 id="problema-ia-t" className="display">É mentira, a era da prosperidade é uma mentira.</h3>
-    <p>Musk promete máquinas fazendo o trabalho de todos e uma renda universal alta. A tese da BETTEX: o emprego pode desaparecer sem que a renda prometida chegue a quem perdeu o salário.</p>
+    <p>Musk promete renda universal alta. Nós não acreditamos nisso: nossa tese é que substituir salários por máquinas, sem distribuir os ganhos, levará à miséria universal, não à prosperidade.</p>
     <figure className="pb-problem__opening-video">
       <div className="pb-problem__video-frame">
         <iframe
@@ -22,38 +24,22 @@ export function EmploymentIncomeProblem() {
       </div>
       <figcaption><a href="https://www.youtube.com/watch?v=HHS8OVYT9cI" target="_blank" rel="noopener noreferrer">{t('USA TODAY · Elon Musk e a promessa de abundância')}<ExternalLink aria-hidden="true" /></a></figcaption>
     </figure>
+    <div className="pb-problem__agentic-intro">
+      <h4 className="display">Economia agêntica: não é só conversar com uma IA.</h4>
+      <p>Agentes de IA executam tarefas, usam ferramentas e tomam decisões dentro de limites definidos. O risco para o colarinho branco é deixar de ser necessário no fluxo de trabalho. Robôs como o Optimus ampliam essa pressão para o trabalho físico.</p>
+    </div>
+    <OptimusWorkCard />
+    <AgenticProblemMetrics />
 
-    <ol className="pb-problem__points">
-      <li>
-        <span className="mono pb-problem__point-number" aria-hidden="true">01</span>
-        <h4 id="problema-substituicao-t" className="display">2 frentes de substituição</h4>
-        <ul>
-          <li>IA: escritório, atendimento e programação.</li>
-          <li>Robôs: trabalho físico, com humanoides como o Optimus.</li>
-        </ul>
-      </li>
-      <li>
-        <span className="mono pb-problem__point-number" aria-hidden="true">02</span>
-        <h4 id="problema-concentracao-t" className="display">3 perguntas sobre a renda</h4>
-        <ul>
-          <li>Quem vai pagar?</li>
-          <li>Quem terá direito?</li>
-          <li>Quando o dinheiro chega?</li>
-        </ul>
-        <p>Promessa de abundância não é distribuição de riqueza.</p>
-      </li>
-      <li>
-        <span className="mono pb-problem__point-number" aria-hidden="true">03</span>
-        <h4 id="problema-orcamento-t" className="display">O risco para quem vive do salário</h4>
-        <ul>
-          <li>Apostas podem consumir as reservas.</li>
-          <li>A automação pode retirar a renda.</li>
-          <li>As contas continuam chegando.</li>
-        </ul>
-      </li>
-    </ol>
+    <div className="pb-problem__response">
+      <p>A tese da BETTEX é que automatizar o trabalho sem ampliar o acesso aos ganhos pode produzir miséria, não prosperidade. No estudo de <strong>2024</strong> da OIT e do Banco Mundial, <strong>26% a 38%</strong> dos empregos da América Latina e do Caribe estavam expostos à IA generativa, e <strong>2% a 5%</strong> tinham potencial de automação completa com as capacidades então disponíveis. A exposição à automação era maior em empregos formais e qualificados, inclusive de colarinho branco; ao mesmo tempo, a exclusão digital limitava os benefícios potenciais da IA em cerca de <strong>17 milhões</strong> de postos. Nossa preocupação é que pessoas humildes percam renda ou fiquem fora dos ganhos dessa economia. É esse risco de exclusão que a BETTEX busca enfrentar, não uma certeza de desemprego ou miséria universal.</p>
+    </div>
 
-    <p className="pb-problem__automation-conclusion">A BETTEX não acredita que a renda universal alta vá sustentar quem perder o emprego. Participar da tecnologia agora, em vez de esperar pela prosperidade prometida: essa é a nossa tese.</p>
+    <div className="pb-problem__response">
+      <h4 className="display">O problema que a BETTEX quer resolver</h4>
+      <p>Trocar a busca de futuro nas apostas por participação na economia agêntica. Pelo token, a BETTEX propõe acesso à tecnologia e aos resultados previstos pelas suas regras: participar dessa economia, em vez de depender apenas do salário que ela ameaça. Não é renda garantida.</p>
+      <a className="tap pb-problem__evidence-link" href="#solucao">Como a BETTEX responde a esse problema<ArrowRight aria-hidden="true" /></a>
+    </div>
     <a className="tap pb-problem__evidence-link" href="#cenario-exclusao">Emprego, automação e economia real<ArrowRight aria-hidden="true" /></a>
   </section>;
 }
