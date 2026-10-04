@@ -40,20 +40,3 @@ export function LaborWarningReports() {
     </PitchObservations>
   </section>;
 }
-
-export function AIBubbleScenario() {
-  return <>
-    <section id="desta-vez-diferente" className="ai-crisis ai-crisis--thesis" aria-labelledby="ai-double-loss-title">
-      <span className="mono fu-tag">05 / Tese da BETTEX · cenário extremo</span>
-      <h3 id="ai-double-loss-title" className="display">Desta vez, a perda pode acontecer dos dois lados.</h3>
-      <p className="ai-crisis-intro">A tese sombria da BETTEX é que a bolha financeira pode estourar sem desfazer a automação. As ações podem cair; as máquinas não precisam voltar a dar lugar às pessoas. Se o capital se reorganiza enquanto a demanda por trabalho não se recupera, a família perde patrimônio e salário ao mesmo tempo.</p>
-      <ol className="ai-loss-chain">
-        <li><span className="mono">01</span><h4 className="display">O patrimônio cai</h4><p>A reprecificação dos ativos atinge quem comprou a promessa de crescimento. Dívida e alavancagem podem ampliar a perda.</p></li>
-        <li><span className="mono">02</span><h4 className="display">O salário desaparece</h4><p>Se a automação continua, o fim do entusiasmo financeiro não devolve automaticamente os postos substituídos.</p></li>
-        <li><span className="mono">03</span><h4 className="display">A recuperação deixa gente para trás</h4><p>Sem novas funções acessíveis, qualificação ou proteção social, parte das pessoas pode continuar sem renda mesmo quando os lucros voltam.</p></li>
-      </ol>
-      <p className="display ai-no-way-back">Sem patrimônio. Sem salário. E se não houver um lugar para voltar?</p>
-      <PitchObservations dark><p>Esse é o cenário extremo que motiva a tese da BETTEX, não uma certeza de que todos perderão tudo ou de que jamais haverá recuperação. As fontes não demonstram perda universal e irreversível. Participar da BETTEX também envolve risco de perda; não é proteção garantida contra esse cenário.</p></PitchObservations>
-    </section>
-  </>;
-}

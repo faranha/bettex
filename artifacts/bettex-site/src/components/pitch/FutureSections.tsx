@@ -3,7 +3,7 @@ import { LaborSignals } from './LaborSignals';
 import { USVacancyChart } from './USVacancyChart';
 import { BrazilEmploymentCharts } from './BrazilEmploymentCharts';
 import { InflationOilRisks } from './InflationOilRisks';
-import { AIBubbleScenario, LaborWarningReports } from './AICrisisScenario';
+import { LaborWarningReports } from './AICrisisScenario';
 import { ChapterHero } from './ChapterHero';
 import './FutureSections.css';
 
@@ -16,7 +16,7 @@ function Src({ href, children }: { href: string; children: string }) {
 export function FutureSections() {
   return <>
     <section id="agora" aria-labelledby="agora-t" className="slide fu fu--one">
-      <ChapterHero id="agora" n="04" kicker="Ambiente externo" src="pitch-future/external-environment-crisis.jpg" title={<>Ambiente externo.</>} summary="Musk, automação do trabalho e o que está acontecendo na economia real." />
+      <ChapterHero id="agora" n="04" kicker="Ambiente externo" src="pitch-future/ukraine-city-bombardment.jpg" title={<>Ambiente externo.</>} summary="Musk, automação do trabalho e o que está acontecendo na economia real." />
       <div className="page-wrap">
         <div className="fu-context">
             <h3 className="display fu-environment-title">Musk e a promessa de prosperidade</h3>
@@ -35,15 +35,12 @@ export function FutureSections() {
               <figcaption><a href="https://commons.wikimedia.org/wiki/File:Elon_Musk_Royal_Society_(crop2).jpg" target="_blank" rel="noopener noreferrer">Fonte: The Royal Society</a></figcaption>
             </figure>
           </div>
-          <ol className="fu-pauta"><li>EUA: vagas abertas</li><li>Brasil: menos novas vagas</li><li>Inflação, petróleo e conflitos globais</li><li>Alertas de um futuro sem trabalho</li><li>Desta vez, patrimônio e salário</li></ol>
+          <ol className="fu-pauta"><li>EUA: vagas abertas</li><li>Brasil: menos novas vagas</li><li>Inflação, petróleo e conflitos globais</li><li>Alertas de um futuro sem trabalho</li></ol>
           <USVacancyChart />
           <BrazilEmploymentCharts />
           <InflationOilRisks />
           <LaborWarningReports />
         </div>
-        <section id="risco-bolha-ia" className="fu-exposed fu-bubble-subsection" aria-labelledby="ai-double-loss-title">
-          <AIBubbleScenario />
-        </section>
     <section id="resgatar-futuro" aria-labelledby="resgatar-futuro-t" className="fu-environment-signals">
         <h3 id="resgatar-futuro-t" className="display fu-environment-title">O que já acontece na economia real.</h3>
         <p className="fu-sub">Os sinais de fragilidade já são concretos: empregos eliminados, menos vagas criadas e milhões sem trabalho suficiente ou vínculo formal. Para quem depende de renda para viver, a promessa de abundância não resolve o presente.</p>
