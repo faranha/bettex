@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { X } from 'lucide-react';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 import './CommunityCTA.css';
 
@@ -20,10 +22,35 @@ export function CommunityCTA({ source, label = 'Vem pra comunidade', note, tone 
 }
 
 export function FloatingCommunityCTA() {
+  const [dismissed, setDismissed] = useState(false);
+  useEffect(() => {
+    try {
+      setDismissed(sessionStorage.getItem('bettex-community-dismissed') === 'true');
+    } catch (error) {
+      console.warn('Não foi possível ler a preferência do botão da comunidade.', error);
+    }
+  }, []);
+
+  const dismiss = () => {
+    setDismissed(true);
+    try {
+      sessionStorage.setItem('bettex-community-dismissed', 'true');
+    } catch (error) {
+      console.warn('Não foi possível salvar a preferência do botão da comunidade.', error);
+    }
+  };
+
+  if (dismissed) return null;
   return (
-    <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="community-float" data-community-source="floating-mobile" data-testid="link-community-floating-mobile">
-      <span className="community-float__badge"><TelegramIcon className="community-float__icon" /></span>
-      <span className="community-float__label">Vem pra comunidade</span>
-    </a>
+    <>
+      <div className="community-float__spacer" aria-hidden="true" />
+      <div className="community-float">
+        <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="community-float__link" data-community-source="floating" data-testid="link-community-floating">
+          <span className="community-float__badge"><TelegramIcon className="community-float__icon" /></span>
+          <span className="community-float__label">Vem pra comunidade</span>
+        </a>
+        <button type="button" className="community-float__close" onClick={dismiss} aria-label="Fechar convite da comunidade" data-testid="button-community-floating-close"><X size={18} aria-hidden="true" /></button>
+      </div>
+    </>
   );
 }
