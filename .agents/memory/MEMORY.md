@@ -1,6 +1,7 @@
 - [BETTEX checkout eligibility](bettex-checkout-eligibility.md) — confirm processor approval for investment tokens before wiring real purchases.
 - [Raster asset inspection](raster-asset-inspection.md) — verify logo identity and real alpha; use font-free contact sheets.
 - [Artifact validation environment](artifact-validation-env.md) — manual builds need artifact-scoped runtime variables; do not persist them globally.
+- [Production build validation](production-build-validation.md) — source checks miss rendered narrative and regenerated export mismatches; verify the full build before publishing.
 - [Concurrent media edits](concurrent-media-edits.md) — await image-edit jobs before unrelated workspace writes; a later completion can replace new files.
 - [Polymarket market-data source](polymarket-market-data-source.md) — official MCP reads documentation only; Gamma is the public market-data API.
 - [Content source precedence](content-source-precedence.md) — approved product rules take precedence over stale whitepaper economics in the Git baseline.

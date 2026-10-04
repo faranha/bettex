@@ -217,7 +217,7 @@ export function LaunchSimulation() {
           </div>
 
           <div className="ls__block ls__math" data-testid="launch-math">
-            <h4>{t('A matemática com os seus números')}</h4>
+            <h4>{t('A matemática do cenário')}</h4>
             <ol>
               <li><span>{t('Vendas de tokens = usuários × valor da compra')}</span><code>{n(row.users)} × {usd(ticket)} = {usd(row.purchasesUsd)}</code></li>
               <li><span>{t('BETTEX vendidos = USDC das compras ÷ preço por token')}</span><code data-i18n="raw">{n(row.purchasesUsd, 2)} ÷ {n(price, 6)} = {n(row.tokensSold, 6)} BETTEX</code></li>
