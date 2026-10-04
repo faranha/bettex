@@ -12,6 +12,7 @@
 - [Telegram flutuante](community-floating-button.md) — convite no canto inferior direito de todas as páginas, desktop e mobile, com opção de fechar.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
+- [Fontes de pesquisa](research-source-verification.md) — conferir artigo e metodologia, não apenas status HTTP; preservar URLs canônicas e consultar materiais já enviados.
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
 - [Âncoras e navegação fixa](navigation-anchor-offsets.md) — mudanças de altura precisam considerar rolagem JavaScript e índice fixo, não apenas scroll-margin.
 - [SEO e roteamento estático](seo-static-routing.md) — validar HTTP inicial por rota; reescritas genéricas podem apagar o HTML pré-renderizado.
@@ -29,7 +30,7 @@
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
 - [Ordem e leitura da documentação](documentation-reading-order.md) — Entidade após Visão; um capítulo visível por vez, com subseções apenas da área selecionada.
 - [Leitura do pitch](pitch-reading-behavior.md) — todo o conteúdo deve ficar visível, sem caixas expansíveis ou controles de expandir/recolher.
-- [Visual do pitch](pitch-visual-direction.md) — apresentação limpa, com foto do fundador; não reintroduzir fundos de cassino nem a foto de gráficos.
+- [Visual e tom do pitch](pitch-visual-direction.md) — leitores: grandes investidores e anjos; usuário: apostador brasileiro, sem “pequeno investidor” ou “adulto” como rótulo.
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
 - [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.
 - [Cabeçalhos das seções](homepage-section-headers.md) — não reintroduzir as faixas informativas decorativas acima de História e Roadmap.

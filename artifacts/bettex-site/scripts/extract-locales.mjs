@@ -25,7 +25,7 @@ function scan(file) {
   function visit(node) {
     if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) return;
     if (ts.isJsxElement(node) && ['style', 'script'].includes(node.openingElement.tagName.getText(source))) return;
-    if (ts.isJsxAttribute(node) && ['className','id','key','href','src','d','viewBox','style','align','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath'].includes(node.name.getText(source))) return;
+    if (ts.isJsxAttribute(node) && ['className','id','key','href','src','d','viewBox','transform','style','align','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath'].includes(node.name.getText(source))) return;
     if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node) || ts.isJsxText(node)) add(node.text);
     if (ts.isTemplateExpression(node)) {
       const text = node.head.text + node.templateSpans.map((span, i) => `{${i}}${span.literal.text}`).join('');

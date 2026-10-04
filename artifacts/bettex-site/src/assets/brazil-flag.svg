@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <defs>
+    <radialGradient id="field">
+      <stop offset="0" stop-color="#3d6194" stop-opacity=".65"/>
+      <stop offset="1" stop-color="#3d6194" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="diamond" x2="1" y2="1">
+      <stop offset="0" stop-color="#7799cd" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#7799cd" stop-opacity=".04"/>
+    </linearGradient>
+    <clipPath id="globe"><circle cx="500" cy="350" r="175"/></clipPath>
+    <path id="star" d="M0-5 1.5-1.55 4.75-1.55 2 0.6 3 4 -0.05 2 -3 4 -2 0.6 -4.75-1.55 -1.5-1.55Z"/>
+    <path id="motto" d="M338 294Q485 248 667 376"/>
+  </defs>
+  <ellipse cx="500" cy="350" rx="500" ry="350" fill="url(#field)"/>
+  <path fill="url(#diamond)" stroke="#7799cd" stroke-opacity=".7" stroke-width="2" d="M500 85 915 350 500 615 85 350Z"/>
+  <circle cx="500" cy="350" r="175" fill="#19305b" stroke="#6c8fb8" stroke-opacity=".65" stroke-width="2"/>
+  <g clip-path="url(#globe)" opacity=".6">
+    <path fill="#bfd0eb" d="M320 280Q480 230 680 365L680 392Q480 257 320 307Z"/>
+    <text fill="#19305b" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="1.7">
+      <textPath href="#motto" startOffset="50%" text-anchor="middle">ORDEM E PROGRESSO</textPath>
+    </text>
+    <g fill="#bfd0eb">
+      <use href="#star" transform="translate(548 264)"/>
+      <use href="#star" transform="translate(372 347) scale(1.1)"/>
+      <use href="#star" transform="translate(402 383)"/>
+      <use href="#star" transform="translate(421 360) scale(.8)"/>
+      <use href="#star" transform="translate(426 406) scale(1.15)"/>
+      <use href="#star" transform="translate(456 371) scale(.7)"/>
+      <use href="#star" transform="translate(476 400)"/>
+      <use href="#star" transform="translate(500 375) scale(1.2)"/>
+      <use href="#star" transform="translate(487 419) scale(.8)"/>
+      <use href="#star" transform="translate(510 440) scale(1.15)"/>
+      <use href="#star" transform="translate(530 405)"/>
+      <use href="#star" transform="translate(541 434) scale(.75)"/>
+      <use href="#star" transform="translate(567 389) scale(1.15)"/>
+      <use href="#star" transform="translate(590 407) scale(.85)"/>
+      <use href="#star" transform="translate(612 397)"/>
+      <use href="#star" transform="translate(635 411) scale(.8)"/>
+      <use href="#star" transform="translate(625 437) scale(.75)"/>
+      <use href="#star" transform="translate(599 450)"/>
+      <use href="#star" transform="translate(577 457) scale(.75)"/>
+      <use href="#star" transform="translate(556 466) scale(.75)"/>
+      <use href="#star" transform="translate(530 473) scale(.8)"/>
+      <use href="#star" transform="translate(505 493) scale(.7)"/>
+      <use href="#star" transform="translate(479 472) scale(.8)"/>
+      <use href="#star" transform="translate(456 460) scale(.7)"/>
+      <use href="#star" transform="translate(436 444)"/>
+      <use href="#star" transform="translate(414 431) scale(.75)"/>
+      <use href="#star" transform="translate(392 410) scale(.8)"/>
+    </g>
+  </g>
+</svg>

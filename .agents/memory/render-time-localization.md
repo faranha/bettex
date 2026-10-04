@@ -3,6 +3,12 @@ name: Render-time localization pitfalls
 description: Browser/SSR differences and React fragment handling when localizing existing JSX.
 ---
 
+Em JSX com o runtime de localização do site, colocar `key` antes de props espalhadas (`{...props}`).
+
+**Why:** Babel converte elementos com `key` depois de um spread para `createElement` importado da raiz do `jsxImportSource`. O runtime local não expõe essa raiz, causando erro de módulo mesmo quando o TypeScript passa.
+
+**How to apply:** Ao adicionar atributos compartilhados em listas, preservar `key` antes do spread e conferir a renderização real por Vite/SSR, não apenas o typecheck.
+
 Application-owned JSX runtimes must stay outside Vite dependency prebundling, including explicit optimizer includes added by React plugins.
 
 **Why:** Prebundling cached an early runtime/catalogue and created a separate locale store. SSR passed while the browser attempted to translate stylesheet code and showed stale or mixed-language copy. Excluding aliases alone did not remove React's explicit include.
@@ -14,6 +20,12 @@ DOM selector names must stay unchanged across locales, even when the coverage ch
 **Why:** The source-message collector also picks up literal tag names used by DOM queries. Those are technical identifiers, not visible text; translating them would break navigation.
 
 **How to apply:** When coverage flags a selector, register identical technical values in each language rather than translating the identifier or removing the interaction.
+
+SVG geometry is not language content. Exclude geometry attributes from source extraction rather than requiring translations for drawing commands.
+
+**Why:** Decorative SVG transformations were mistaken for copy and blocked an otherwise valid build. Splitting the transformations into separate groups did not resolve the false positives.
+
+**How to apply:** When adding illustrations triggers missing translations, inspect whether the reported values are visible text or geometry. Keep captions and accessible text in the language audit; keep transformation commands outside it.
 
 Localize React fragments themselves, not only HTML elements. React child grouping can clone elements and discard external WeakMap metadata.
 
@@ -56,3 +68,9 @@ When labels from data are joined before reaching JSX, audit the complete joined 
 **Why:** Static source coverage can pass for each label while rendering still fails because the automatic translator receives the joined result as one message.
 
 **How to apply:** Include the final combined wording in the rendered-language audit whenever changing a data-driven list or sequence. Do not treat a passing source-catalog check as sufficient.
+
+Refresh the observed-message inventory when retiring or replacing rendered copy, before removing its translation entries.
+
+**Why:** A stale inventory can keep demanding a sentence that no longer exists in the components, making a valid copy change look like missing localization.
+
+**How to apply:** Recollect rendered messages, then reconcile static and observed coverage and audit the localized HTML. Resolve newly exposed coverage gaps without restoring obsolete public wording.

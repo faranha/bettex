@@ -22,3 +22,9 @@ No cabeçalho desktop, a página ativa entre Pitch, Documentação e Demo deve c
 **Why:** O criador rejeitou a marcação de Documentação como texto amarelo sublinhado e pediu preservar o botão com uma cor mais discreta.
 
 **How to apply:** Manter as dimensões e o formato dos botões de páginas; diferenciar a página atual por um fundo discreto, sem alterar a organização do menu.
+
+O menu superior deve acompanhar a estrutura atual da homepage, não a organização antiga.
+
+**Why:** O criador pediu revisar os menus do topo para adequá-los à nova estrutura da página inicial.
+
+**How to apply:** Usar a mesma sequência no desktop e no mobile, incluindo Nova Economia. O banner do Demo não deve continuar identificado como “Aplicativo”; preservar o acesso direto ao Demo no grupo de páginas do projeto e as âncoras existentes para links antigos.

@@ -11,6 +11,12 @@ A apresentação pública prioriza uma “comunidade de investimento com IA”, 
 
 A definição econômica anterior do criador foi: “em ultima analise, bettex eh um fundo de investimentos”.
 
+A comunidade ajuda a determinar a evolução dos agentes de IA.
+
+**Why:** O criador definiu esse papel da comunidade e pediu salientá-lo na apresentação inicial do Pitch.
+
+**How to apply:** Destacar esse papel ao explicar a proposta, sem reduzir a comunidade somente a um canal de distribuição.
+
 O criador esclareceu: “nao ha sofisticacao na bettex, eh um fundo descentralizado, IA faz os invstimentos, distribui lucros, a tesouraria tem regras, nada aqui eh de outro mundo”; “na verdade, eh um projeto simples”.
 
 A tese de demanda apresentada pelo criador é: “se a IA tiver resultado positivo, havera interesse em staking”.
