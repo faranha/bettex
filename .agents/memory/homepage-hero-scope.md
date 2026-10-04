@@ -50,3 +50,9 @@ O hero não deve conter os links ou botões da comunidade e do demo.
 **Why:** O criador marcou esses dois links e pediu “nem demo nem comunidade aqui”, porque não cabem no hero.
 
 **How to apply:** Ao distribuir CTAs pela landing page, excluir a área de conteúdo do hero. Preservar os convites das outras seções e o banner próprio do demo.
+
+O CTA aprovado no hero é “Entenda o projeto”, levando à seção da própria homepage que explica o projeto e a participação.
+
+**Why:** Após remover comunidade e demo do hero, o criador marcou esse espaço e pediu especificamente esse botão e destino.
+
+**How to apply:** Manter esse convite como navegação interna, sem abrir Telegram ou o demo e sem acrescentar outros botões ao hero.

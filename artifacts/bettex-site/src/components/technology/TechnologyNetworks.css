@@ -5,13 +5,18 @@
   border-block: 1px solid rgba(130, 154, 199, .15);
   color: #f4f1e8;
 }
-.technology-networks__wrap { width: min(calc(100% - 40px), 960px); margin-inline: auto; }
-.technology-networks__label {
-  display: inline-flex;
-  margin: 0 0 8px;
-  padding: 2px 8px;
+.technology-networks__wrap {
+  width: min(calc(100% - 40px), 1200px);
+  margin-inline: auto;
   border: 1px solid var(--networks-line);
-  border-radius: 4px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.technology-networks__label {
+  display: block;
+  margin: 0;
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--networks-line);
   color: #b5c1dc;
   font: 600 9px/1.5 var(--app-font-mono, monospace);
   letter-spacing: .12em;
@@ -21,13 +26,9 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
-  max-width: 960px;
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
   list-style: none;
-  border: 1px solid var(--networks-line);
-  border-radius: 8px;
-  overflow: hidden;
 }
 .technology-networks__list li { min-width: 0; padding: 8px 10px; text-align: center; border-inline-end: 1px solid var(--networks-line); }
 .technology-networks__list li:last-child { border-inline-end: 0; }

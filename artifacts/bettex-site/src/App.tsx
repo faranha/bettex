@@ -268,6 +268,7 @@ function Home() {
             </h1>
             <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Uma comunidade pra quem está cansado de só apostar e quer começar a ganhar.</h2>
             <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">Na BETTEX, nossa IA analisa e opera em diferentes mercados. Com nosso token, você participa dos lucros do projeto.</p>
+            <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[#2B59FF] px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">Entenda o projeto</a>
           </div>
         </div>
         <HeroBenefit />
