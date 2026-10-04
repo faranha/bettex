@@ -107,6 +107,9 @@
 }
 
 .display { font-family: var(--app-font-serif); }
+/* Homepage anchors account for the sticky header once, not once per section. */
+html:has(.home-page) { scroll-padding-top: var(--site-header-h, 73px); }
+.home-page section[id] { scroll-margin-top: 0; }
 /* Native scrolling stays available, with the same treatment on both axes. */
 * {
   scrollbar-width: thin;

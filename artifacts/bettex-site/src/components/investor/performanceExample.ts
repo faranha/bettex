@@ -45,7 +45,7 @@ export const marketPerformance: MarketPerformance[] = [
   },
   {
     id: 'casino',
-    name: 'Cassinos',
+    name: 'iGaming',
     category: 'Mineração de bônus',
     days: days([[18000, 0], [12000, 0], [0, 7000], [16000, 0], [22000, 0], [0, 11000], [10000, 0]]),
   },

@@ -8,7 +8,7 @@
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
 - [Regras da tesouraria](treasury-rule-evolution.md) — humanos aprovam políticas; mandatos limitados preservam liberdade operacional sem aprovação de cada operação.
 - [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
-- [Identidade e posicionamento](bettex-economic-identity.md) — comunidade de investimento COM IA é o meio do funil; conduz o retorno ao site para compra dos tokens.
+- [Identidade e posicionamento](bettex-economic-identity.md) — produto de tecnologia, não fundo, em todo o projeto; usuário, não investidor; comunidade COM IA é meio do funil.
 - [Telegram flutuante](community-floating-button.md) — convite no canto inferior direito de todas as páginas, desktop e mobile, com opção de fechar.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
@@ -29,11 +29,14 @@
 - [Rodapé](footer-scope.md) — navegação compacta, convite simples ao Telegram no mobile e desktop; sem redes pessoais do fundador.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
 - [Ordem e leitura da documentação](documentation-reading-order.md) — Entidade após Visão; um capítulo visível por vez, com subseções apenas da área selecionada.
-- [Leitura do pitch](pitch-reading-behavior.md) — todo o conteúdo deve ficar visível, sem caixas expansíveis ou controles de expandir/recolher.
+- [Leitura do pitch](pitch-reading-behavior.md) — sem caixas expansíveis; Diferenciação comparativa; tokenomics e vesting em gráficos visíveis, com seções distintas.
+- [Go to market no Brasil](pitch-brazil-go-to-market.md) — substituir Onboarding; sem seção de Piloto nem expansão internacional nesse bloco do Pitch.
 - [Visual e tom do pitch](pitch-visual-direction.md) — leitores: grandes investidores e anjos; usuário: apostador brasileiro, sem “pequeno investidor” ou “adulto” como rótulo.
+- [Pauta do cenário apocalíptico](pitch-economic-risk-story.md) — reunir emprego EUA, gráfico brasileiro, matérias sombrias, bolha da IA e perda de patrimônio/salário no mesmo trecho.
+- [Mercado na abertura do Pitch](pitch-market-priority.md) — público e volume financeiro primeiro; cenário 40/30/10 milhões e fluxo histórico de R$ 600 milhões/dia.
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
 - [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.
 - [Cabeçalhos das seções](homepage-section-headers.md) — não reintroduzir as faixas informativas decorativas acima de História e Roadmap.
 - [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
-- [Fundador na documentação](documentation-founder-presentation.md) — sem aspas decorativas; retrato proporcional e integrado ao texto, sem alterar o Pitch.
+- [Apresentação do fundador](documentation-founder-presentation.md) — documentação com retrato integrado e sem aspas; Pitch com biografia profissional em terceira pessoa.
 - [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.

@@ -1,0 +1,4 @@
+.us-losses { margin-top: 32px; padding-block: 28px; border-block: 1px solid rgba(197,210,241,.25); }
+.fu-exposed .us-losses__title { margin: 0 0 18px; font-size: clamp(1.45rem, 2.5vw, 2.1rem); }
+.us-losses > p { color: #c5d2f1; font-size: 15px; line-height: 1.75; }
+.us-losses .us-losses__limit { margin: 18px 0 0; font-size: 12px; }

@@ -2,6 +2,7 @@
 .lang-selector:hover,.lang-selector[data-state=open]{border-color:#f2b632;background:#13204f}
 .lang-selector:focus-visible{outline:2px solid #f2b632;outline-offset:3px}
 .lang-selector__code{font-size:12px;font-weight:700;letter-spacing:.06em;line-height:1}
+.lang-selector__label{font-size:14px;font-weight:600;line-height:1.25;white-space:nowrap}
 .lang-selector__flag{display:block;width:24px;height:16px;flex-shrink:0;border-radius:3px;object-fit:cover;box-shadow:0 0 0 1px rgba(244,241,232,.2)}
 .lang-selector__chevron{width:12px;height:12px;color:#c5d2f1;flex-shrink:0;transition:transform .15s}
 .lang-selector[data-state=open] .lang-selector__chevron{transform:rotate(180deg)}

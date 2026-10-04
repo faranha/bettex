@@ -1,0 +1,24 @@
+.io { margin: 34px 0; padding: clamp(20px, 4vw, 40px); border: 1px solid #ff777755; border-top: 4px solid #F2B632; background: #0b1128; color: #f4f1e8; }
+.io h3 { margin: 14px 0 0; max-width: 900px; font-size: clamp(1.6rem, 3.2vw, 2.7rem); font-weight: 800; line-height: 1.1; letter-spacing: -.035em; }
+.io .fu-tag { color: #ff9292; }
+.io-lead { max-width: 800px; margin: 16px 0 0; color: #c5d2f1; font-size: 15px; line-height: 1.7; }
+.io-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.io-card { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; border-left: 3px solid #61a9bd; background: #131b37; }
+.io-card--expect { border-left-color: #F2B632; }
+.io-card--oil { border-left-color: #ff7777; }
+.io-card p { margin: 0; color: #e0e8fc; font-size: 13px; line-height: 1.7; }
+.io-card .io-small { color: #c5d2f1; font-size: 12px; flex: 1; }
+.io-card > p:not(.io-value):not(.io-small) { flex: 0 0 auto; }
+.io-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; line-height: 1.6; color: #8ccede; }
+.io-card--expect .io-label { color: #F2B632; }
+.io-card--oil .io-label { color: #ff9292; }
+.io .io-value { font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; line-height: 1.05; letter-spacing: -.05em; color: #f4f1e8; }
+.io-value small { margin-left: 8px; font-size: 14px; letter-spacing: 0; color: #c5d2f1; font-weight: 600; }
+.io-chain { margin-top: 24px; padding: 18px; border: 1px dashed #ff777788; background: #1d101e; }
+.io-chain .io-label { color: #ff9292; }
+.io-chain ol { list-style: none; margin: 14px 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; counter-reset: s; }
+.io-chain li { counter-increment: s; padding: 12px; background: #070b1f; border-top: 2px solid #ff7777; font-size: 14px; font-weight: 700; line-height: 1.35; }
+.io-chain li::before { content: counter(s, decimal-leading-zero); display: block; margin-bottom: 6px; color: #F2B632; font-size: 11px; }
+.io-chain p { margin: 0; max-width: 900px; color: #c5d2f1; font-size: 12px; line-height: 1.7; }
+@media (max-width: 899px) { .io-grid { grid-template-columns: minmax(0, 1fr); } .io-chain ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 479px) { .io-chain ol { grid-template-columns: minmax(0, 1fr); } }

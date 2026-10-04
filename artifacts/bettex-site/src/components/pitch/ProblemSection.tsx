@@ -1,6 +1,7 @@
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import './ProblemSection.css';
 import { PitchArt, TotalIcon, PartialIcon } from './MetricArt';
+import { MarketOpportunity } from './MarketOpportunity';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
@@ -15,15 +16,20 @@ const metrics = [
 export function ProblemSection() {
   return <section id="problema" aria-labelledby="problema-t" className="slide pb-problem">
     <div className="page-wrap pb-problem__wrap">
-      <header className="pb-problem__head">
+      <header className="pb-problem__market-head">
         <div className="mono pb-problem__kicker"><span>01 / 10</span><span className="pb-problem__rule" aria-hidden="true" />Problema e oportunidade</div>
-        <h2 id="problema-t" className="display pb-problem__title">Apostar <span>não é investir.</span></h2>
+        <h2 id="problema-t" className="display pb-problem__title">O apostador brasileiro.<br /><span>O público e o volume financeiro.</span></h2>
+        <p className="pb-problem__summary">A BETTEX parte de um público que já movimentou bilhões nas apostas. A proposta é um produto de investimento que fale a língua dessas pessoas, com experiência familiar, custos claros e risco de perda explícito.</p>
+      </header>
+      <MarketOpportunity />
+      <div className="pb-problem__head">
+        <h3 className="display pb-problem__title">Apostar <span>não é investir.</span></h3>
         <p className="pb-problem__summary">Para quem aposta buscando renda, o jogo não é apenas entretenimento. É uma expectativa de retorno financeiro.</p>
         <p className="mono pb-problem__eligibility">Participação na BETTEX: somente pessoas de 18 anos ou mais.</p>
-      </header>
+      </div>
 
       <div className="pb-problem__intro">
-        <p className="pb-problem__lead">A tese da BETTEX é que apostar para obter renda ou quitar dívidas é atribuir ao jogo uma função de investimento. O projeto propõe redirecionar essa busca por retorno financeiro para estratégias de investimento geridas por IA.</p>
+        <p className="pb-problem__lead">A tese da BETTEX é que apostar para obter renda ou quitar dívidas é atribuir ao jogo uma função de investimento. A BETTEX propõe redirecionar essa busca por retorno financeiro para estratégias de ganhos em mercados de risco geridas por IA. A experiência tem linguagem e estética de aposta, mas é um produto de tecnologia voltado ao investimento, com participação nos resultados e risco de perda.</p>
         <p>A pesquisa CNDL/SPC Brasil, com a Offerwise, ouviu consumidores de 18 anos ou mais nas 27 capitais que pretendiam gastar com a Copa de 2026. Os percentuais abaixo se referem aos que pretendiam apostar nesse evento.</p>
       </div>
 

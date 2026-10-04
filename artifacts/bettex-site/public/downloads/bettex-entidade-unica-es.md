@@ -2,6 +2,8 @@ BETTEX — entidad, piloto y reglas
 
 Empresa y administración
 
+BETTEX es un producto tecnológico que reúne una aplicación, un token y agentes de IA. El usuario participa en los resultados del proyecto conforme a las reglas del token, sin ser propietario de la empresa ni de la tesorería.
+
 Una única empresa comercial privada de capital cerrado a constituir, administrada por el fundador Fred Azevedo en modelo full stack AI, sin empleados. Servicios externos especializados son contratados por necesidad, no posiciones internas.
 
 La empresa reúne el token, la aplicación, la tesorería, las inversiones y las obligaciones del programa. El nombre final, la forma societaria y la jurisdicción forman parte de la formalización. Los titulares poseen tokens y derechos del programa, no acciones, voto societario o una fracción rescatable de la tesorería.

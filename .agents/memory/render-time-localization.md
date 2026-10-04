@@ -74,3 +74,9 @@ Refresh the observed-message inventory when retiring or replacing rendered copy,
 **Why:** A stale inventory can keep demanding a sentence that no longer exists in the components, making a valid copy change look like missing localization.
 
 **How to apply:** Recollect rendered messages, then reconcile static and observed coverage and audit the localized HTML. Resolve newly exposed coverage gaps without restoring obsolete public wording.
+
+Locale-formatted dates and currencies must not be sent back through automatic prose translation.
+
+**Why:** Intl can put the currency symbol after the number in Spanish, yielding text the translator treats as a missing sentence even when static catalogue coverage passes.
+
+**How to apply:** Format with the selected locale and mark only the generated value as already translated. Translate surrounding prose normally and validate actual PT/EN/ES rendering, not just source coverage.

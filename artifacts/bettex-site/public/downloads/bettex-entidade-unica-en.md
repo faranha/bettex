@@ -2,6 +2,8 @@ BETTEX — entity, pilot, and rules
 
 Company and administration
 
+BETTEX is a technology product that combines an app, a token and AI agents. The user participates in the project's results according to the token rules, without ownership of the company or treasury.
+
 A single private, closely-held commercial company to be incorporated, managed by the founder Fred Azevedo in a full stack AI model, with no employees. Specialized external services are contracted by need, not internal positions.
 
 The company brings together the token, application, treasury, investments, and program obligations. Final name, corporate structure, and jurisdiction are part of the formalization. Holders own tokens and program rights, not shares, corporate voting, or a redeemable fraction of the treasury.

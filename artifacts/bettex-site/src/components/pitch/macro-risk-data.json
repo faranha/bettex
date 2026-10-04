@@ -1,0 +1,20 @@
+{
+  "asOf": "2026-10-04",
+  "inflation": {
+    "monthlySeptember": 0.70,
+    "monthlyAugust": -0.40,
+    "trailingSeptember": 4.47,
+    "trailingAugust": 4.24,
+    "forecast2026": 4.99,
+    "forecastPrevious": 4.92
+  },
+  "oil": {
+    "usdPerBarrel": 108,
+    "date": "2026-09-28"
+  },
+  "sources": {
+    "inflation": "https://biblioteca.ibge.gov.br/visualizacao/periodicos/2376/ipca_15_2026_set.pdf",
+    "focus": "https://agenciabrasil.ebc.com.br/radioagencia-nacional/economia/audio/2026-09/boletim-focus-eleva-projecao-da-inflacao-e-reduz-do-pib-para-2026",
+    "hormuz": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-10/ira-diz-que-ormuz-nao-sera-reaberto-ate-que-condicoes-sejam-atendidas"
+  }
+}

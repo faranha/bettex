@@ -29,6 +29,7 @@ import { chapters } from '@/components/WhitepaperChapters';
 import { FloatingCommunityCTA, TelegramIcon } from '@/components/CommunityCTA';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
+import { PitchSectionNav } from '@/components/pitch/PitchSectionNav';
 
 const queryClient = new QueryClient();
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -51,7 +52,7 @@ const markets: Market[] = [
   { name: 'Previsões', kind: 'predictions', icon: Radar, visual: 'símbolo de cenários ramificados', area: 'Previsões', intro: 'Mercados de previsão.', detail: 'Analisa probabilidades, cenários e preços em eventos futuros.' },
   { name: 'Ações e cripto', kind: 'trading', icon: ChartCandlestick, visual: 'símbolo de gráfico de negociação', area: 'Ações e cripto', intro: 'Negociação de ações e criptoativos.', detail: 'Compara tendências, liquidez e risco antes de negociar ativos financeiros.' },
   { name: 'Esportes', kind: 'sports', icon: Trophy, visual: 'símbolo de bola esportiva', area: 'Esportes', intro: 'Surebet automatizada.', detail: 'Compara cotações entre casas de apostas e automatiza a execução de apostas combinadas.' },
-  { name: 'Cassinos', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'Cassinos', intro: 'Exploração automatizada de bônus.', detail: 'Analisa as regras dos bônus e automatiza os métodos para aproveitar as ofertas disponíveis.' },
+  { name: 'iGaming', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'iGaming', intro: 'Exploração automatizada de bônus.', detail: 'Analisa as regras dos bônus e automatiza os métodos para aproveitar as ofertas disponíveis.' },
 ];
 
 const navItems = [
@@ -111,7 +112,8 @@ function SiteHeader() {
       <div className="hidden xl:flex"><LanguageSelector /></div>
       <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 max-sm:ml-auto xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
-    {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-var(--site-header-h))] flex-col gap-1 overflow-y-auto border-t border-[#2B59FF]/30 py-3 xl:hidden" aria-label="Navegação móvel">
+    {/\/pitch\/?$/.test(location) && <PitchSectionNav onNavigate={() => setMenuOpen(false)} />}
+    {menuOpen && <nav className="page-wrap flex max-h-[calc(100dvh-var(--pitch-sticky-h,var(--site-header-h)))] flex-col gap-1 overflow-y-auto border-t border-[#2B59FF]/30 py-3 xl:hidden" aria-label="Navegação móvel">
       {navItems.map(({ label, id }) => <a key={id} {...linkProps} href={homeAnchor(id)} data-testid={`link-menu-${id}`} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-2 py-2.5 text-[15px] font-bold hover:bg-[#13204F]"><span data-i18n="translated">{t(label)}</span></a>)}
       <section className="mt-2 border-t border-[#2B59FF]/30 pt-3" aria-label="Páginas do projeto">
         <h2 className="mb-3 px-2 text-xs font-bold uppercase tracking-wider text-[#c5d2f1]">Páginas do projeto</h2>
@@ -178,8 +180,11 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
       <div className="sf-nav">
         <div className="sf-brand">
           <Logo />
-          <LanguageSelector className="sf-lang" />
           <p className="sf-tag mono">COMUNIDADE DE INVESTIMENTO COM IA</p>
+          <div className="sf-actions">
+            <LanguageSelector className="sf-lang" showLabel />
+            <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="sf-community" data-community-source="footer" data-testid="link-community-footer-nav"><TelegramIcon className="sf-community__icon" /><span>Entre na comunidade</span></a>
+          </div>
         </div>
         <nav aria-label="Explorar o projeto" className="sf-group">
           <h3 className="mono">Explore</h3>
@@ -188,7 +193,6 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             <li><a {...linkProps} href={homeAnchor('tecnologia')}>Como opera</a></li>
             <li><a {...linkProps} href={homeAnchor('mercados')}>Mercados</a></li>
             <li><a {...linkProps} href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
-            <li><a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="sf-community" data-community-source="footer" data-testid="link-community-footer-nav"><TelegramIcon className="sf-community__icon" /><span>Entre na comunidade</span></a></li>
           </ul>
         </nav>
         <nav aria-label="Links do projeto" className="sf-group">
@@ -244,13 +248,15 @@ function MarketCard({ market, number }: { market: Market; number: number }) {
 function Home() {
   useEffect(() => {
     const id = window.location.hash.slice(1);
-    if (!id) return;
     if (id === 'documentacao' || legacyChapterIds.has(id)) {
       window.location.replace(localizedUrl(`${DOCUMENTATION_PATH}${id === 'documentacao' ? '' : `#${id}`}`));
       return;
     }
+    let cancelled = false;
     const scrollToSection = () => {
-      const target = document.getElementById(id);
+      if (cancelled) return;
+      // Loading assets must not return a visitor to an earlier anchor.
+      const target = document.getElementById(window.location.hash.slice(1));
       if (!target) return;
       const root = document.documentElement;
       const previousBehavior = root.style.scrollBehavior;
@@ -260,14 +266,16 @@ function Home() {
     };
     const frame = requestAnimationFrame(scrollToSection);
     window.addEventListener('load', scrollToSection, { once: true });
+    void document.fonts.ready.then(scrollToSection);
     return () => {
+      cancelled = true;
       cancelAnimationFrame(frame);
       window.removeEventListener('load', scrollToSection);
     };
   }, []);
 
   return <SitePage>
-    <main>
+    <main className="home-page">
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#F4F1E8]">
         <div className="hero-intro-stage relative">
         <div className="page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[730px] xl:py-16">

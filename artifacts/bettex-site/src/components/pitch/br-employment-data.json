@@ -1,0 +1,49 @@
+{
+  "asOf": "2026-10-04",
+  "published": "2026-09-29",
+  "period": "January–August",
+  "annual": [
+    {
+      "year": 2021,
+      "time": 1609459200000,
+      "jobs": 2176649
+    },
+    {
+      "year": 2022,
+      "time": 1640995200000,
+      "jobs": 1902667
+    },
+    {
+      "year": 2023,
+      "time": 1672531200000,
+      "jobs": 1393814
+    },
+    {
+      "year": 2024,
+      "time": 1704067200000,
+      "jobs": 1744608
+    },
+    {
+      "year": 2025,
+      "time": 1735689600000,
+      "jobs": 1516881
+    },
+    {
+      "year": 2026,
+      "time": 1767225600000,
+      "jobs": 1134033
+    }
+  ],
+  "august": {
+    "year": 2026,
+    "hires": 2294563,
+    "separations": 2128736,
+    "net": 165827,
+    "stock": 48244696
+  },
+  "sources": {
+    "history": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/novo-caged/2026/agosto/apresentacao-agosto-de-2026.pdf",
+    "official": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/novo-caged/2026/agosto/sumario-executivo_agosto-de-2026.pdf",
+    "comparison": "https://www.jornaldocomercio.com/economia/2026/09/1265045-caged-saldo-liquido-de-emprego-formal-e-positivo-em-165-827-vagas-em-agosto.html"
+  }
+}
