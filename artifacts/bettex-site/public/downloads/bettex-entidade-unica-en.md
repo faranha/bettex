@@ -1,4 +1,4 @@
-BETTEX — entity, pilot, and rules
+BETTEX — entity and rules
 
 Company and administration
 
@@ -9,14 +9,6 @@ A single private, closely-held commercial company to be incorporated, managed by
 The company brings together the token, application, treasury, investments, and program obligations. Final name, corporate structure, and jurisdiction are part of the formalization. Holders own tokens and program rights, not shares, corporate voting, or a redeemable fraction of the treasury.
 
 The mission expands alternatives for economic participation during the transition of AI and robotics. Transparency, understanding, responsibility, and accountability guide the operation, without guaranteed income or capital protection.
-
-Pilot and revenue
-
-Pilot capital: US$ 100k, with US$ 50k for treasury and US$ 50k for launch. Three-month goal: 5,000 users and 1,000 MAU. Investor contributions have free allocation; the pilot's destination is not a general split.
-
-Fred drives acquisition through his own channels and audience, with AI and necessary external services. Launch includes boosting, partnerships, security, and paid media on the founder's profiles and own networks.
-
-Service revenue = charged operations × US$ 2.50. Scenarios of 1, 10, and 30 operations per asset consider 1,000 MAU; 30 illustrates daily withdrawals, without presuming balance or adoption. Revenue is not profit: identified costs and taxes come before the net amount. No monthly budget or break-even date is presumed.
 
 Token, funding, and burn
 
@@ -43,5 +35,7 @@ Policies evolve through approved versions. Administration defines policy; 2-of-3
 Treasury, operational cash, exclusive buyback wallet, and personal wallets have their own boundaries. Defensive reserve follows the approved policy, without a general minimum fixed at 50%. New operations require independent risk, availability, and reconciliation.
 
 Arbitrum provides the network and contracts. Allora is a candidate for inferences, not execution. Robinhood Crypto Trading API requires an eligible account in the United States and authorization; it does not prove access to stocks. Arbitrum/Gamma public queries were verified; other examples without private access are simulations. No real money operations took place.
+
+Commercial plan and launch in the Pitch: https://bettex.ai/en/pitch#publico
 
 https://www.linkedin.com/in/fredazevedo85/

@@ -47,7 +47,7 @@ import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure
 
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação em USDC, participação automática e controles.' },
-  { id: 'documentacao-entidade', title: 'Entidade e negócios', subtitle: 'Empresa privada, missão, público, fundador administrador e piloto de lançamento.' },
+  { id: 'documentacao-entidade', title: 'Entidade e negócios', subtitle: 'Empresa privada, missão, público e fundador administrador.' },
   { id: 'documentacao-rede', title: 'Arbitrum e ativos', subtitle: 'Arbitrum One, carteira do titular, USDC e entrada por on-ramp externo.' },
   { id: 'documentacao-acesso', title: 'Acesso ao aplicativo', subtitle: 'Carteira gerada com a conta, acesso e autorização de ações financeiras.' },
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Mapa orquestrado, catálogo de conectores, consultas verificadas e demonstrações por plataforma.' },
@@ -263,9 +263,8 @@ function RawChapter({ index }: { index: number }) {
         </TechnicalDetails>
         <div id="documentacao-aportes-investidores">
           <Subhead>Dinheiro dos investidores e liberdade do fundador</Subhead>
-          <div className="whitepaper__rule-pair">
+          <div className="whitepaper__aside-callout">
             <div><span>APORTES DOS INVESTIDORES</span><p>Os recursos vinculados à parcela de 15% têm <strong>livre alocação</strong>, conforme os instrumentos aprovados. Não há split obrigatório entre tesouraria e desenvolvimento.</p></div>
-            <div><span>CAPITAL DO PILOTO</span><p>A destinação específica de US$ 100 mil está no <a href="#documentacao-piloto">piloto</a>; ela não define uma regra geral para aportes.</p></div>
           </div>
           <div className="whitepaper__rule-pair">
             <div><span>FUNDADOR / 20% DE LIVRE DESTINAÇÃO</span><p><strong>{formatTokenCount(tokenomics.teamAllocation)} BETTEX</strong> pertencem ao fundador. Após cada liberação do vesting, ele pode usar os tokens como quiser: distribuir ao time, manter em staking, transferir ou vender. Não existe uma divisão obrigatória dessa parcela com o time. A destinação de suas vendas pessoais é livre e não segue o split dos aportes dos investidores.</p></div>
@@ -339,7 +338,6 @@ function RawChapter({ index }: { index: number }) {
           <TreasuryFundsInTransit />
         </TechnicalDetails>
         <div className="whitepaper__prose reading-keep"><p> A compra deve registrar débito de USDC e crédito de BETTEX juntos e uma única vez após a liquidação; cada distribuição é lançada uma única vez em USDC. A continuidade preserva registros imutáveis com ajustes identificados, backups testados e conciliação entre transferências on-chain, recebimentos de on-ramp, saldos dos dois ativos, custos, resultados por mercado, tesouraria e saques. Falhas resultam em estado pendente ou bloqueio, nunca confirmação presumida. Custódia, permissões, integrações e conformidade exigem validação técnica e jurídica. A operação inicial cripto não pressupõe autorização de exchange ou banco; a proposta fiduciária do BETTEX Bank demanda estrutura própria antes de qualquer oferta.</p></div>
-        <div className="whitepaper__aside-callout"><span>SEQUÊNCIA DO PROJETO</span><p>O <a href={`${import.meta.env.BASE_URL}#roadmap`} data-testid="link-documentacao-roadmap">Roadmap da BETTEX</a> apresenta o percurso da preparação técnica e jurídica à expansão do aplicativo.</p></div>
       </>;
     default:
       return <>

@@ -116,7 +116,19 @@ img, svg, video { max-width: 100%; }
 .slide__body { padding-block: 40px 64px; }
 .slide--dark .slide__body { border-top: 4px solid #F2B632; }
 .slide--dark .slide__head + .slide__body { border-top: 0; }
-#fundador > .chero + .slide__body { border-top: 0; }
+#fundador > .chero + .slide__body,
+#publico > .chero + .slide__body { border-top: 0; }
+#publico .pitch-validation-status { display: grid; gap: 8px; margin-bottom: 28px; padding: 18px 22px; border-left: 3px solid #F2B632; background: #13204f; }
+#publico .pitch-validation-status > span { color: #F2B632; font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+#publico .pitch-validation-status > strong { font-size: 18px; line-height: 1.3; }
+#publico .pitch-validation-status > p { margin: 0; color: #c5d2f1; font-size: 14px; line-height: 1.6; }
+#publico .pitch-validation-status > a { justify-self: start; display: inline-flex; align-items: center; min-height: 44px; color: #F2B632; font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+#pitch-roadmap { margin-bottom: 32px; }
+#pitch-roadmap .roadmap__intro { padding: 36px 0 40px; gap: 28px; }
+#pitch-roadmap h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+@media (max-width: 760px) {
+  #pitch-roadmap .roadmap__intro { padding: 26px 0 28px; gap: 16px; }
+}
 /* Varied compositions replacing card grids */
 .slide__body > .grid:not(.pitch-metrics) { gap: 0; }
 .slide__body > .grid > * { border-radius: 0 !important; }
@@ -179,10 +191,11 @@ img, svg, video { max-width: 100%; }
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  border-radius: 4px;
+  object-fit: contain;
+  border-radius: 0;
+  background: transparent;
 }
+.pitch-community { scroll-margin-top: calc(var(--pitch-sticky-h, 100px) + 24px); }
 @media (max-width: 767px) {
   .pitch-community { grid-template-columns: minmax(0, 1fr); margin-top: 36px; }
 }

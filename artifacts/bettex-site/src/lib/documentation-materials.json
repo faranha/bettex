@@ -1,16 +1,15 @@
 {
-  "title": "BETTEX — entidade, piloto e regras",
+  "title": "BETTEX — entidade e regras",
+  "pitchLink": {
+    "label": "Plano comercial e lançamento no Pitch",
+    "href": "https://bettex.ai/pitch#publico"
+  },
   "sections": [
     {"title": "Empresa e administração", "paragraphs": [
       "A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA. O usuário participa dos resultados do projeto conforme as regras do token, sem propriedade da empresa ou da tesouraria.",
       "Uma única empresa comercial privada de capital fechado a constituir, administrada pelo fundador Fred Azevedo em modelo full stack AI, sem funcionários. Serviços externos especializados são contratados por necessidade, não posições internas.",
       "A empresa reúne token, aplicativo, tesouraria, investimentos e obrigações do programa. Nome final, forma societária e jurisdição fazem parte da formalização. Titulares possuem tokens e direitos do programa, não ações, voto societário ou fração resgatável da tesouraria.",
       "A missão amplia alternativas de participação econômica durante a transição da IA e robótica. Transparência, compreensão, responsabilidade e prestação de contas orientam a operação, sem renda ou proteção de capital garantidas."
-    ]},
-    {"title": "Piloto e receita", "paragraphs": [
-      "Capital do piloto: US$ 100 mil, sendo US$ 50 mil para tesouraria e US$ 50 mil para lançamento. Meta aos três meses: 5.000 usuários e 1.000 MAU. Aportes de investidores têm livre alocação; a destinação do piloto não é um split geral.",
-      "Fred conduz aquisição pelos próprios canais e audiência, com IA e serviços externos necessários. Lançamento inclui impulsionamento, parcerias, segurança, mídia paga nos perfis do fundador e redes próprias.",
-      "Receita de serviços = operações tarifadas × US$ 2,50. Cenários de 1, 10 e 30 operações por ativo consideram 1.000 MAU; 30 ilustra saques diários, sem presumir saldo ou adoção. Receita não é lucro: custos identificados e tributos vêm antes do líquido. Não há orçamento mensal ou data de equilíbrio presumidos."
     ]},
     {"title": "Token, captação e queima", "paragraphs": [
       "Emissão de 1 bilhão de BETTEX: 65% venda pública, 20% Fundador e equipe, 15% investidores. Vesting mensal por 36 meses desde a abertura da venda pública, com grupos inteiros 13:4:3. Liberação não comprova venda ou circulação.",
@@ -30,11 +29,9 @@
     ]}
   ],
   "workbook": {
-    "pilot": "Piloto",
     "fees": "Taxas",
     "vesting": "Vesting",
     "rules": "Regras",
-    "columns": ["Item", "Valor", "Operações por ativo", "Operações tarifadas", "Receita bruta", "Operação", "Tarifa", "Incidência", "Escopo", "Mês", "Venda pública · mensal", "Fundador e equipe · mensal", "Investidores · mensal", "Total mensal", "Venda pública · acumulado", "Fundador e equipe · acumulado", "Investidores · acumulado", "Total acumulado"],
-    "pilotLabels": ["Capital do piloto", "Tesouraria", "Lançamento", "Usuários aos três meses", "MAU aos três meses"]
+    "columns": ["Operação", "Tarifa", "Incidência", "Escopo", "Mês", "Venda pública · mensal", "Fundador e equipe · mensal", "Investidores · mensal", "Total mensal", "Venda pública · acumulado", "Fundador e equipe · acumulado", "Investidores · acumulado", "Total acumulado"]
   }
 }

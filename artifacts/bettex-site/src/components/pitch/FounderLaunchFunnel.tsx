@@ -1,19 +1,19 @@
 import { Fragment } from 'react';
-import { Instagram, Send, Smartphone, Wallet, ArrowRight, ArrowDown } from 'lucide-react';
+import { Search, MessageSquare, Smartphone, Wallet, ArrowRight, ArrowDown } from 'lucide-react';
 import { getFormatLocale, t, useLocale } from '@/lib/i18n';
 import './FounderLaunchFunnel.css';
 
 const stages = [
-  { n: '01', Icon: Instagram, title: 'Instagram', line: 'Atração', note: 'Conteúdo do fundador atrai o apostador brasileiro.' },
-  { n: '02', Icon: Send, title: 'Telegram', line: 'Relacionamento', note: 'A comunidade esclarece dúvidas e conduz ao app.' },
-  { n: '03', Icon: Smartphone, title: 'Aplicativo BETTEX', line: 'Primeiro uso', note: 'Primeiros compradores e usuários entram no produto.' },
+  { n: '01', Icon: Search, title: 'Interesse no produto', line: 'Demanda', note: 'Medir o interesse pela proposta da BETTEX.' },
+  { n: '02', Icon: Smartphone, title: 'Demo BETTEX', line: 'Experimentação', note: 'Testar o uso do aplicativo em um ambiente demonstrativo.' },
+  { n: '03', Icon: MessageSquare, title: 'Feedback e validação', line: 'Aprendizado', note: 'Avaliar compreensão, utilidade e intenção de uso.' },
 ] as const;
 
 export function FounderLaunchFunnel() {
   useLocale();
   return <figure className="flf" data-testid="founder-launch-funnel">
     <figcaption className="flf__head">
-      <span className="flf__kicker">{t('Lançamento orgânico financiado pelo fundador')}</span>
+      <span className="flf__kicker">{t('Plano inicial de validação da demanda')}</span>
       <strong>{t('Primeiros 3 meses de operação')}</strong>
     </figcaption>
     <div className="flf__fund" data-testid="flf-founder-fund">
@@ -35,7 +35,7 @@ export function FounderLaunchFunnel() {
       <div><strong>{(1000).toLocaleString(getFormatLocale())}</strong><span>{t('primeiros usuários')}</span></div>
       <div className="flf__zero"><strong>{t('Zero')}</strong><span>{t('custo de aquisição para a empresa')}</span></div>
     </div>
-    <p className="flf__note">{t('Compromisso planejado do fundador, não tração realizada. Não indica despesas operacionais zero nem promete retorno.')}</p>
+    <p className="flf__note">{t('Meta de planejamento, não tração comprovada. Custo de aquisição zero para a empresa não significa despesas operacionais zero.')}</p>
   </figure>;
 }
 

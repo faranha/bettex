@@ -1,12 +1,19 @@
-import { ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark } from 'lucide-react';
+import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark } from 'lucide-react';
 import { CommunityCTA } from './CommunityCTA';
 import './RoadmapSection.css';
 
-const icons = [ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark];
+const icons = [FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark];
 
 const stops = [
   {
-    number: '01',
+    tag: 'VALIDAÇÃO DA DEMANDA',
+    date: 'Fase ALFA',
+    dateTime: '',
+    title: 'Teste de demanda com lançamento mock',
+    description: 'Validar a demanda pelo produto com um lançamento mock (simulado), usando o demo da BETTEX para testar interesse, compreensão e intenção de uso. A fase ALFA já está em andamento, sem operações financeiras reais.',
+    current: true,
+  },
+  {
     tag: 'PREPARAÇÃO TÉCNICA E JURÍDICA',
     date: 'Pré-lançamento',
     dateTime: '',
@@ -14,7 +21,6 @@ const stops = [
     description: 'Apresentar o projeto a investidores-anjo. Investigar os requisitos legais e regulatórios do projeto e preparar sua base técnica: arquitetura, contratos, segurança e integrações. Estruturar o ecossistema BETTEX para as validações técnicas e jurídicas necessárias antes do lançamento.',
   },
   {
-    number: '02',
     tag: 'LANÇAMENTO',
     date: 'Dezembro de 2026',
     dateTime: '2026-12',
@@ -23,7 +29,6 @@ const stops = [
     featured: true,
   },
   {
-    number: '03',
     tag: 'PRIMEIRO MERCADO',
     date: 'Fevereiro de 2027',
     dateTime: '2027-02',
@@ -31,7 +36,6 @@ const stops = [
     description: 'Iniciar a operação em mercados de previsão (prediction markets), com acompanhamento, limites de risco e avaliação dos resultados.',
   },
   {
-    number: '04',
     tag: 'CONSULTA ABERTA',
     date: 'Março de 2027',
     dateTime: '2027-03',
@@ -39,7 +43,6 @@ const stops = [
     description: 'Realizar uma consulta aberta para avaliar os resultados da operação e determinar os próximos passos do projeto.',
   },
   {
-    number: '05',
     tag: 'AMPLIAÇÃO',
     date: 'Junho de 2027',
     dateTime: '2027-06',
@@ -47,7 +50,6 @@ const stops = [
     description: 'Expandir a operação com novos agentes, conforme os resultados e as prioridades definidos na consulta aberta.',
   },
   {
-    number: '06',
     tag: 'EXPANSÃO DO APLICATIVO',
     date: 'Dezembro de 2027',
     dateTime: '2027-12',
@@ -56,41 +58,45 @@ const stops = [
   },
 ] as const;
 
-export function RoadmapSection() {
+export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
+  const total = String(stops.length).padStart(2, '0');
   return (
-    <section className="roadmap" id="roadmap" aria-labelledby="roadmap-title">
+    <section className="roadmap" id={id} aria-labelledby={`${id}-title`}>
       <div className="roadmap__wrap">
         <header className="roadmap__intro">
           <div>
             <p className="roadmap__eyebrow"><span className="roadmap__eyebrow-mark" aria-hidden="true" /> Uma rota, passo a passo</p>
-            <h2 id="roadmap-title">O caminho da <em>BETTEX.</em></h2>
+            <h2 id={`${id}-title`}>O caminho da <em>BETTEX.</em></h2>
           </div>
           <div className="roadmap__intro-side">
-            <span className="roadmap__intro-index" aria-hidden="true">01 → 06</span>
-            <p>Da preparação técnica e jurídica à expansão do aplicativo. Lançamento do token em dezembro de 2026; abertura dos mercados em fevereiro de 2027.</p>
+            <span className="roadmap__intro-index" aria-hidden="true">01 → {total}</span>
+            <p>Fase ALFA em andamento: teste de demanda com lançamento mock e demo. Depois, preparação técnica e jurídica e expansão do aplicativo. Token em dezembro de 2026; mercados em fevereiro de 2027.</p>
           </div>
         </header>
 
         <div className="roadmap__map" aria-label="Percurso planejado do projeto BETTEX">
           <div className="roadmap__map-caption" aria-hidden="true">
             <span>SEQUÊNCIA PLANEJADA</span>
-            <span>LEITURA 01 → 06</span>
+            <span>LEITURA 01 → {total}</span>
           </div>
 
           <ol className="roadmap__stops">
             {stops.map((stop, index) => {
               const Icon = icons[index];
+              const number = String(index + 1).padStart(2, '0');
+              const current = 'current' in stop && stop.current;
               return (
               <li
-                className={`roadmap__stop roadmap__stop--${index + 1}${'featured' in stop ? ' roadmap__stop--featured' : ''}`}
-                key={stop.number}
+                className={`roadmap__stop roadmap__stop--${index + 1}${'featured' in stop ? ' roadmap__stop--featured' : ''}${current ? ' roadmap__stop--current' : ''}`}
+                key={stop.title}
+                aria-current={current ? 'step' : undefined}
                 data-testid={`roadmap-step-${index + 1}`}
               >
                 <span className="roadmap__pin" aria-hidden="true"><span /></span>
                 <article className="roadmap__place">
                   <span className="roadmap__icon" aria-hidden="true"><Icon strokeWidth={2.2} /></span>
                   <div className="roadmap__place-top">
-                    <span className="roadmap__place-number">{stop.number}<span> / 06</span></span>
+                    <span className="roadmap__place-number">{number}<span> / {total}</span></span>
                     <span className="roadmap__place-tag">{stop.tag}</span>
                   </div>
                   {stop.dateTime ? (
@@ -98,6 +104,7 @@ export function RoadmapSection() {
                   ) : (
                     <span className="roadmap__place-date">{stop.date}</span>
                   )}
+                  {current && <span className="roadmap__current-badge" data-testid="roadmap-current-phase">Estamos aqui</span>}
                   <h3>{stop.title}</h3>
                   <p>{stop.description}</p>
                 </article>

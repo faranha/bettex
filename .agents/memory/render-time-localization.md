@@ -3,6 +3,12 @@ name: Render-time localization pitfalls
 description: Browser/SSR differences and React fragment handling when localizing existing JSX.
 ---
 
+Already localized monetary amounts must bypass prose translation whether the currency is before or after the number, including negative amounts.
+
+**Why:** Spanish currency formatting places US$ after the amount; treating it as missing prose translation crashed the entire Pitch even with complete source-catalogue coverage.
+
+**How to apply:** Verify rendered positive and negative money values in each language, not only catalogue coverage. Preserve the locale's formatted amount; do not add individual monetary values as catalogue entries.
+
 Use explicit JSX heading branches when switching heading levels; don't add HTML tag names to the translation catalogue to satisfy extraction.
 
 **Why:** The source-message extractor treats conditional intrinsic-tag strings such as `h2` as translatable copy, even though they are not visible text.

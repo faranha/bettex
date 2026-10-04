@@ -1,4 +1,976 @@
 {
+  "Pessoas sorrindo e interagindo com notebook, tablet e celular, em um recorte sem fundo com elementos tecnológicos": {
+    "en": "People smiling and interacting with a laptop, tablet and phone, in a background-free cutout with technological elements",
+    "es": "Personas sonriendo e interactuando con un portátil, una tableta y un teléfono, en un recorte sin fondo con elementos tecnológicos"
+  },
+  "A fase ALFA está em andamento: validação da demanda pelo produto com um lançamento mock e o demo da BETTEX.": {
+    "en": "The ALFA phase is underway: validating product demand with a mock launch and the BETTEX demo.",
+    "es": "La fase ALFA está en marcha: validación de la demanda del producto con un lanzamiento simulado y la demo de BETTEX."
+  },
+  "Fase atual e próximos passos": {
+    "en": "Current phase and next steps",
+    "es": "Fase actual y próximos pasos"
+  },
+  "Fase atual.": {
+    "en": "Current phase.",
+    "es": "Fase actual."
+  },
+  "Estamos aqui": {
+    "en": "We are here",
+    "es": "Estamos aquí"
+  },
+  "Fase ALFA": {
+    "en": "ALFA phase",
+    "es": "Fase ALFA"
+  },
+  "Fase ALFA em andamento: teste de demanda com lançamento mock e demo. Depois, preparação técnica e jurídica e expansão do aplicativo. Token em dezembro de 2026; mercados em fevereiro de 2027.": {
+    "en": "ALFA phase underway: demand testing with a mock launch and demo. Next, technical and legal preparation and app expansion. Token launch in December 2026; markets open in February 2027.",
+    "es": "Fase ALFA en marcha: prueba de demanda con un lanzamiento simulado y una demo. Después, preparación técnica y jurídica y expansión de la aplicación. Lanzamiento del token en diciembre de 2026; apertura de mercados en febrero de 2027."
+  },
+  "LEITURA 01 →": {
+    "en": "READING 01 →",
+    "es": "LECTURA 01 →"
+  },
+  "Teste de demanda com lançamento mock": {
+    "en": "Demand testing with a mock launch",
+    "es": "Prueba de demanda con un lanzamiento simulado"
+  },
+  "VALIDAÇÃO DA DEMANDA": {
+    "en": "DEMAND VALIDATION",
+    "es": "VALIDACIÓN DE LA DEMANDA"
+  },
+  "Validar a demanda pelo produto com um lançamento mock (simulado), usando o demo da BETTEX para testar interesse, compreensão e intenção de uso. A fase ALFA já está em andamento, sem operações financeiras reais.": {
+    "en": "Validate product demand with a mock launch, using the BETTEX demo to test interest, comprehension and intent to use. The ALFA phase is already underway, without real financial operations.",
+    "es": "Validar la demanda del producto con un lanzamiento simulado, usando la demo de BETTEX para probar el interés, la comprensión y la intención de uso. La fase ALFA ya está en marcha, sin operaciones financieras reales."
+  },
+  "current": {
+    "en": "current",
+    "es": "actual"
+  },
+  "A proposta é construir com os usuários: ouvir feedback, validar melhorias e estimular recomendações orgânicas. A comunidade no Telegram reúne dúvidas e feedback para orientar a evolução do produto.": {
+    "en": "The proposal is to build with users: listen to feedback, validate improvements and encourage organic recommendations. The Telegram community brings together questions and feedback to guide the product’s development.",
+    "es": "La propuesta es construir con los usuarios: escuchar comentarios, validar mejoras y fomentar recomendaciones orgánicas. La comunidad en Telegram reúne dudas y comentarios para orientar la evolución del producto."
+  },
+  "Fundador · experiência e trajetória": {
+    "en": "Founder · experience and background",
+    "es": "Fundador · experiencia y trayectoria"
+  },
+  "Estes números descrevem os canais pessoais do fundador, não métricas de uso ou demanda da BETTEX.": {
+    "en": "These figures describe the founder’s personal channels, not BETTEX usage or demand metrics.",
+    "es": "Estas cifras describen los canales personales del fundador, no las métricas de uso o demanda de BETTEX."
+  },
+  "Fred Azevedo é fundador do SOS Jogador, influenciador e administrador da BETTEX. Tem experiência com comunidade, conteúdo e ferramentas digitais.": {
+    "en": "Fred Azevedo is the founder of SOS Jogador, an influencer and BETTEX’s administrator. He has experience with communities, content and digital tools.",
+    "es": "Fred Azevedo es fundador de SOS Jogador, influenciador y administrador de BETTEX. Tiene experiencia con comunidades, contenido y herramientas digitales."
+  },
+  "A validação da demanda já está em andamento com um demo. Esta é a fase atual do projeto; o demo é demonstrativo e não realiza operações financeiras reais.": {
+    "en": "Demand validation is already underway with a demo. This is the current phase of the project; the demo is for demonstration purposes and does not perform real financial operations.",
+    "es": "La validación de la demanda ya está en marcha con una demo. Esta es la fase actual del proyecto; la demo es de carácter demostrativo y no realiza operaciones financieras reales."
+  },
+  "ALFA": {
+    "en": "ALFA",
+    "es": "ALFA"
+  },
+  "Acessar o demo para validação": {
+    "en": "Access the demo for validation",
+    "es": "Acceder a la demo para validación"
+  },
+  "Aprendizado": {
+    "en": "Learning",
+    "es": "Aprendizaje"
+  },
+  "Avaliar compreensão, utilidade e intenção de uso.": {
+    "en": "Evaluate comprehension, usefulness, and intent to use.",
+    "es": "Evaluar la comprensión, utilidad e intención de uso."
+  },
+  "BETTEX ALFA, voltar ao início": {
+    "en": "BETTEX ALFA, return to home",
+    "es": "BETTEX ALFA, volver al inicio"
+  },
+  "Demanda": {
+    "en": "Demand",
+    "es": "Demanda"
+  },
+  "Demo BETTEX": {
+    "en": "BETTEX Demo",
+    "es": "Demo BETTEX"
+  },
+  "Experimentação": {
+    "en": "Experimentation",
+    "es": "Experimentación"
+  },
+  "Experiência internacional.": {
+    "en": "International experience.",
+    "es": "Experiencia internacional."
+  },
+  "Experiência no lançamento e na administração de operações, com IA e serviços externos especializados.": {
+    "en": "Experience in launching and managing operations, with AI and specialized external services.",
+    "es": "Experiencia en el lanzamiento y gestión de operaciones, con IA y servicios externos especializados."
+  },
+  "FASE ATUAL · ALFA": {
+    "en": "CURRENT PHASE · ALFA",
+    "es": "FASE ACTUAL · ALFA"
+  },
+  "Fase atual do projeto": {
+    "en": "Current project phase",
+    "es": "Fase actual del proyecto"
+  },
+  "Feedback e validação": {
+    "en": "Feedback and validation",
+    "es": "Retroalimentación y validación"
+  },
+  "Fred Azevedo financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.": {
+    "en": "Fred Azevedo is funding the initial plan with his current budget, at no acquisition cost to BETTEX. The goal is to validate product demand, interest in the proposal, and the user experience.",
+    "es": "Fred Azevedo financia el plan inicial con su presupuesto actual, sin costo de adquisición para BETTEX. El objetivo es validar la demanda del producto, el interés en la propuesta y la experiencia de uso."
+  },
+  "Fundador à frente da BETTEX.": {
+    "en": "Founder leading BETTEX.",
+    "es": "Fundador al frente de BETTEX."
+  },
+  "Interesse no produto": {
+    "en": "Interest in the product",
+    "es": "Interés en el producto"
+  },
+  "Medir o interesse pela proposta da BETTEX.": {
+    "en": "Measure interest in the BETTEX proposal.",
+    "es": "Medir el interés en la propuesta de BETTEX."
+  },
+  "Meta de planejamento, não tração comprovada. Custo de aquisição zero para a empresa não significa despesas operacionais zero.": {
+    "en": "Planning goal, not proven traction. Zero acquisition cost for the company does not mean zero operating expenses.",
+    "es": "Meta de planificación, no tracción comprobada. El costo de adquisición cero para la empresa no significa gastos operativos cero."
+  },
+  "Meta de primeiros 1.000 usuários únicos no Brasil nos três primeiros meses de operação, com cadastro elegível e ativação no produto. Interesse, compradores e usuários ativados serão medidos separadamente. É uma meta, não tração comprovada.": {
+    "en": "Goal of the first 1,000 unique users in Brazil in the first three months of operation, with eligible registration and product activation. Interest, buyers, and activated users will be measured separately. It is a goal, not proven traction.",
+    "es": "Meta de los primeros 1.000 usuarios únicos en Brasil en los primeros tres meses de operación, con registro elegible y activación en el producto. El interés, los compradores y los usuarios activados se medirán por separado. Es una meta, no tracción comprobada."
+  },
+  "Plano inicial de validação da demanda": {
+    "en": "Initial demand validation plan",
+    "es": "Plan inicial de validación de la demanda"
+  },
+  "Plano inicial financiado por Fred Azevedo com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, a compreensão da proposta e a experiência de uso. A validação já está em andamento com um demo, na fase ALFA do projeto.": {
+    "en": "Initial plan funded by Fred Azevedo with his current budget, at no acquisition cost to BETTEX. The goal is to validate product demand, comprehension of the proposal, and the user experience. Validation is already underway with a demo, in the ALFA phase of the project.",
+    "es": "Plan inicial financiado por Fred Azevedo con su presupuesto actual, sin costo de adquisición para BETTEX. El objetivo es validar la demanda del producto, la comprensión de la propuesta y la experiencia de uso. La validación ya está en marcha con una demo, en la fase ALFA del proyecto."
+  },
+  "Testar o uso do aplicativo em um ambiente demonstrativo.": {
+    "en": "Test the application in a demo environment.",
+    "es": "Probar el uso de la aplicación en un entorno de demostración."
+  },
+  "Validação da demanda em andamento": {
+    "en": "Demand validation in progress",
+    "es": "Validación de la demanda en curso"
+  },
+  "Validação da demanda.": {
+    "en": "Demand validation.",
+    "es": "Validación de la demanda."
+  },
+  "Empresa privada, missão, público e fundador administrador.": {
+    "en": "Private company, mission, audience and founder-administrator.",
+    "es": "Empresa privada, misión, público y fundador administrador."
+  },
+  "Plano comercial e lançamento no Pitch": {
+    "en": "Commercial plan and launch in the Pitch",
+    "es": "Plan comercial y lanzamiento en el Pitch"
+  },
+  "BETTEX — entidade e regras": {
+    "en": "BETTEX — entity and rules",
+    "es": "BETTEX — entidad y reglas"
+  },
+  "1px solid #5F86FF": {
+    "en": "1px solid #5F86FF",
+    "es": "1px solid #5F86FF"
+  },
+  "90vw": {
+    "en": "90vw",
+    "es": "90vw"
+  },
+  "A data da compra importa: tokens comprados depois não recebem pagamentos anteriores.": {
+    "en": "Purchase date matters: tokens bought later do not receive previous payouts.",
+    "es": "La fecha de compra importa: los tokens comprados más tarde no reciben pagos anteriores."
+  },
+  "As rodadas positivas pressupõem reservas atendidas; o exemplo não modela bloqueios, recomposição de reservas nem operações reais. Os tokens vendidos são assumidos disponíveis conforme o vesting, sem antecipar liberações.": {
+    "en": "Positive rounds assume reserves are met; the example does not model lockups, reserve replenishment, or actual operations. Sold tokens are assumed available per vesting, without anticipating releases.",
+    "es": "Las rondas positivas asumen reservas cumplidas; el ejemplo no modela bloqueos, recomposición de reservas ni operaciones reales. Se asume que los tokens vendidos están disponibles según el vesting, sin anticipar liberaciones."
+  },
+  "Auto staking: todos os tokens vendidos permanecem elegíveis neste exemplo": {
+    "en": "Auto staking: all sold tokens remain eligible in this example",
+    "es": "Auto staking: todos los tokens vendidos permanecen elegibles en este ejemplo"
+  },
+  "BETTEX em auto staking": {
+    "en": "BETTEX in auto staking",
+    "es": "BETTEX en auto staking"
+  },
+  "BETTEX vendidos (quantidade)": {
+    "en": "BETTEX sold (quantity)",
+    "es": "BETTEX vendidos (cantidad)"
+  },
+  "BETTEX vendidos = USDC das compras ÷ preço por token": {
+    "en": "BETTEX sold = purchase USDC ÷ price per token",
+    "es": "BETTEX vendidos = USDC de compras ÷ precio por token"
+  },
+  "Comprador de referência": {
+    "en": "Reference buyer",
+    "es": "Comprador de referencia"
+  },
+  "Coortes de compradores": {
+    "en": "Buyer cohorts",
+    "es": "Cohortes de compradores"
+  },
+  "Dia": {
+    "en": "Day",
+    "es": "Día"
+  },
+  "Dia de entrada": {
+    "en": "Entry day",
+    "es": "Día de entrada"
+  },
+  "Digite um preço maior que zero e até 10000 USDC.": {
+    "en": "Enter a price greater than zero and up to 10000 USDC.",
+    "es": "Ingrese un precio mayor a cero y hasta 10000 USDC."
+  },
+  "Eixo X: dia. Eixo Y: USDC.": {
+    "en": "X-axis: day. Y-axis: USDC.",
+    "es": "Eje X: día. Eje Y: USDC."
+  },
+  "Este cenário excede os 650 milhões de tokens da alocação pública. Aumente o preço ou reduza as compras.": {
+    "en": "This scenario exceeds the 650 million public allocation tokens. Increase price or reduce purchases.",
+    "es": "Este escenario excede los 650 millones de tokens de la asignación pública. Aumente el precio o reduzca las compras."
+  },
+  "Evolução de tokens e pagamentos": {
+    "en": "Token and payout evolution",
+    "es": "Evolución de tokens y pagos"
+  },
+  "Evolução numérica por marco": {
+    "en": "Numerical evolution by milestone",
+    "es": "Evolución numérica por hito"
+  },
+  "Evolução numérica por marco (dia final de cada período)": {
+    "en": "Numerical evolution by milestone (last day of each period)",
+    "es": "Evolución numérica por hito (día final de cada período)"
+  },
+  "Ganho por token mantido desde a primeira rodada no ponto de verificação:": {
+    "en": "Gain per token held since the first round at checkpoint:",
+    "es": "Ganancia por token mantenido desde la primera ronda en el punto de control:"
+  },
+  "Ganhos das rodadas positivas": {
+    "en": "Gains from positive rounds",
+    "es": "Ganancias de las rondas positivas"
+  },
+  "Ganhos no período": {
+    "en": "Period gains",
+    "es": "Ganancias en el período"
+  },
+  "Livro diário": {
+    "en": "Daily log",
+    "es": "Libro diario"
+  },
+  "Livro diário: matemática dia a dia": {
+    "en": "Daily log: day-by-day math",
+    "es": "Libro diario: matemática día a día"
+  },
+  "Na compra de referência:": {
+    "en": "For the reference purchase:",
+    "es": "En la compra de referencia:"
+  },
+  "Notas metodológicas": {
+    "en": "Methodological notes",
+    "es": "Notas metodológicas"
+  },
+  "O pagamento da última rodada é o valor efetivamente liquidado nas carteiras dividido pelos tokens elegíveis, não o pool nominal. O acumulado vale só para um token mantido desde a primeira rodada; quem compra depois não recebe pagamentos anteriores.": {
+    "en": "Last round payout is actual settled wallet credits divided by eligible tokens, not the nominal pool. The cumulative amount applies only to a token held since the first round; later buyers earn no previous rounds.",
+    "es": "El pago de la última ronda es el valor efectivamente liquidado en carteras dividido por los tokens elegibles, no el pool nominal. El acumulado vale solo para un token mantenido desde la primera ronda; quien compra después no recibe pagos anteriores."
+  },
+  "O preço por BETTEX é apenas uma hipótese de conversão entre compras e quantidade de tokens. Alterá-lo recalcula quantidades e pagamentos por token, sem simular valorização ou lucro de revenda.": {
+    "en": "The price per BETTEX is just a conversion hypothesis between purchases and token quantity. Changing it recalculates quantities and payouts per token, without simulating appreciation or resale profit.",
+    "es": "El precio por BETTEX es solo una hipótesis de conversión entre compras y cantidad de tokens. Cambiarlo recalcula cantidades y pagos por token, sin simular valorización o lucro de reventa."
+  },
+  "O valor por token é uma proporção dos créditos liquidados na carteira; não é uma transferência separada para cada unidade de BETTEX.": {
+    "en": "The value per token is a proportion of settled wallet credits; it is not a separate transfer for each BETTEX unit.",
+    "es": "El valor por token es una proporción de los créditos liquidados en la cartera; no es una transferencia separada para cada unidad de BETTEX."
+  },
+  "Pagamento acumulado por token e por compra de referência": {
+    "en": "Cumulative payout per token and per reference purchase",
+    "es": "Pago acumulado por token y por compra de referencia"
+  },
+  "Pagamento efetivo por BETTEX = USDC liquidado na rodada ÷ tokens elegíveis": {
+    "en": "Effective payout per BETTEX = USDC settled in round ÷ eligible tokens",
+    "es": "Pago efectivo por BETTEX = USDC liquidado en la ronda ÷ tokens elegibles"
+  },
+  "Pagamento por BETTEX na última rodada (USDC)": {
+    "en": "Payout per BETTEX in the last round (USDC)",
+    "es": "Pago por BETTEX en la última ronda (USDC)"
+  },
+  "Pagamento por data de compra": {
+    "en": "Payout by purchase date",
+    "es": "Pago por fecha de compra"
+  },
+  "Pagamentos aos stakers no período": {
+    "en": "Payouts to stakers in the period",
+    "es": "Pagos a los stakers en el periodo"
+  },
+  "Pago aos stakers": {
+    "en": "Paid to stakers",
+    "es": "Pagado a los stakers"
+  },
+  "Pago por token": {
+    "en": "Paid per token",
+    "es": "Pagado por token"
+  },
+  "Pago por token na última rodada (já liquidado)": {
+    "en": "Paid per token in the last round (already settled)",
+    "es": "Pagado por token en la última ronda (ya liquidado)"
+  },
+  "Pago por token no dia final": {
+    "en": "Paid per token on the final day",
+    "es": "Pagado por token en el día final"
+  },
+  "Pago por token por dia (liquidado)": {
+    "en": "Paid per token per day (settled)",
+    "es": "Pagado por token por día (liquidado)"
+  },
+  "Perdas das rodadas negativas": {
+    "en": "Losses from negative rounds",
+    "es": "Pérdidas de las rondas negativas"
+  },
+  "Perdas no período (magnitude)": {
+    "en": "Losses in the period (magnitude)",
+    "es": "Pérdidas en el periodo (magnitud)"
+  },
+  "Períodos completos de 30 dias; na visão de 7 dias, somente a primeira semana. O saldo da tesouraria cresce também pelas novas compras, não apenas pelos ganhos.": {
+    "en": "Full 30-day periods; in the 7-day view, only the first week. The treasury balance grows also by new purchases, not just by gains.",
+    "es": "Periodos completos de 30 días; en la vista de 7 días, solo la primera semana. El saldo de la tesorería crece también por las nuevas compras, no solo por las ganancias."
+  },
+  "Ponto de partida: 200 / 400 / 400 novos usuários, compra de 50 USDC e preço ilustrativo de 0,10 USDC por BETTEX. Resultados mensais hipotéticos: +1%, −0,5% e +1,5%; custo operacional de US$ 300/mês.": {
+    "en": "Starting point: 200 / 400 / 400 new users, 50 USDC purchase and illustrative price of 0.10 USDC per BETTEX. Hypothetical monthly results: +1%, −0.5% and +1.5%; operating cost of $300/month.",
+    "es": "Punto de partida: 200 / 400 / 400 nuevos usuarios, compra de 50 USDC y precio ilustrativo de 0,10 USDC por BETTEX. Resultados mensuales hipotéticos: +1%, −0,5% y +1,5%; costo operativo de US$ 300/mes."
+  },
+  "Preço fixo ilustrativo, não uma cotação de mercado.": {
+    "en": "Illustrative fixed price, not a market quote.",
+    "es": "Precio fijo ilustrativo, no una cotización de mercado."
+  },
+  "Preço ilustrativo fixo no período, sem valorização. Todos os tokens vendidos ficam em auto staking; estoque público não vendido e carteiras de fundadores e investidores ficam fora (diluição não modelada).": {
+    "en": "Illustrative price fixed in the period, without appreciation. All sold tokens remain in auto staking; unsold public stock and founders/investors wallets stay out (dilution not modeled).",
+    "es": "Precio ilustrativo fijo en el periodo, sin valorización. Todos los tokens vendidos quedan en auto staking; el stock público no vendido y las carteras de fundadores e inversores quedan fuera (dilución no modelada)."
+  },
+  "Preço ilustrativo por BETTEX (USDC)": {
+    "en": "Illustrative price per BETTEX (USDC)",
+    "es": "Precio ilustrativo por BETTEX (USDC)"
+  },
+  "Preço ilustrativo por token": {
+    "en": "Illustrative price per token",
+    "es": "Precio ilustrativo por token"
+  },
+  "Referência: o primeiro comprador de cada mês, não a média de todos os compradores desse mês. Pagamento por token = acumulado no marco menos o acumulado antes da entrada, sem renda passada.": {
+    "en": "Reference: the first buyer of each month, not the average of all buyers that month. Payout per token = cumulative at milestone minus cumulative before entry, excluding past income.",
+    "es": "Referencia: el primer comprador de cada mes, no el promedio de todos los compradores de ese mes. Pago por token = acumulado en el hito menos el acumulado antes de la entrada, sin ingresos pasados."
+  },
+  "Registro diário calculado da simulação até o ponto de verificação": {
+    "en": "Calculated daily log of the simulation up to the checkpoint",
+    "es": "Registro diario calculado de la simulación hasta el punto de verificación"
+  },
+  "Reserva de recompra (separada)": {
+    "en": "Buyback reserve (separate)",
+    "es": "Reserva de recompra (separada)"
+  },
+  "Resultado acumulado da tesouraria = ganhos das rodadas positivas − perdas das rodadas negativas": {
+    "en": "Cumulative treasury result = gains from positive rounds − losses from negative rounds",
+    "es": "Resultado acumulado de la tesorería = ganancias de las rondas positivas − pérdidas de las rondas negativas"
+  },
+  "Resultado diário": {
+    "en": "Daily result",
+    "es": "Resultado diario"
+  },
+  "Resultado diário da estratégia (com sinal)": {
+    "en": "Strategy daily result (with sign)",
+    "es": "Resultado diario de la estrategia (con signo)"
+  },
+  "Resultado líquido no mês 1 (%)": {
+    "en": "Net result in month 1 (%)",
+    "es": "Resultado neto en el mes 1 (%)"
+  },
+  "Resultado líquido no mês 2 (%)": {
+    "en": "Net result in month 2 (%)",
+    "es": "Resultado neto en el mes 2 (%)"
+  },
+  "Resultado líquido no mês 3 (%)": {
+    "en": "Net result in month 3 (%)",
+    "es": "Resultado neto en el mes 3 (%)"
+  },
+  "Resultado líquido no período": {
+    "en": "Net result in the period",
+    "es": "Resultado neto en el periodo"
+  },
+  "Resultados hipotéticos, não são previsão nem retorno prometido.": {
+    "en": "Hypothetical results, not a forecast or guaranteed return.",
+    "es": "Resultados hipotéticos, no son previsión ni retorno prometido."
+  },
+  "Saldo de trading": {
+    "en": "Trading balance",
+    "es": "Saldo de trading"
+  },
+  "Saldo de trading ao fechar": {
+    "en": "Closing trading balance",
+    "es": "Saldo de trading al cierre"
+  },
+  "Saldo de trading da tesouraria": {
+    "en": "Treasury trading balance",
+    "es": "Saldo de trading de la tesorería"
+  },
+  "Sem compradores neste mês.": {
+    "en": "No buyers this month.",
+    "es": "Sin compradores este mes."
+  },
+  "Sem execução de recompra, queima ou valorização de preço confirmada.": {
+    "en": "No executed buybacks or burns, and no confirmed price appreciation.",
+    "es": "Sin ejecución de recompra, quema o valorización de precio confirmada."
+  },
+  "São créditos recebidos em USDC antes de eventuais saques, não o saldo atual da carteira nem direitos pendentes.": {
+    "en": "These are USDC credits received before potential withdrawals, not current wallet balance or pending rights.",
+    "es": "Son créditos recibidos en USDC antes de eventuales retiros, no el saldo actual de la billetera ni derechos pendientes."
+  },
+  "Todos os BETTEX vendidos permanecem disponíveis em auto staking. Cada token tem o mesmo tempo elegível dentro da rodada diária, com entradas no início do dia. Estoque não vendido e tokens de outros titulares não participam desta simulação.": {
+    "en": "All sold BETTEX remain available in auto staking. Each token has the same eligible time within the daily round, with entries at the start of the day. Unsold stock and tokens from other holders do not participate in this simulation.",
+    "es": "Todos los BETTEX vendidos permanecen disponibles en auto staking. Cada token tiene el mismo tiempo elegible dentro de la ronda diaria, con entradas al inicio del día. El stock no vendido y los tokens de otros titulares no participan en esta simulación."
+  },
+  "Token mantido desde a primeira rodada: pagamentos acumulados": {
+    "en": "Token held since the first round: cumulative payments",
+    "es": "Token mantenido desde la primera ronda: pagos acumulados"
+  },
+  "Tokens da compra de referência": {
+    "en": "Reference purchase tokens",
+    "es": "Tokens de la compra de referencia"
+  },
+  "Tokens em auto staking": {
+    "en": "Tokens in auto staking",
+    "es": "Tokens en auto staking"
+  },
+  "Tokens em auto staking acumulados": {
+    "en": "Cumulative tokens in auto staking",
+    "es": "Tokens en auto staking acumulados"
+  },
+  "Tokens novos vendidos": {
+    "en": "New tokens sold",
+    "es": "Tokens nuevos vendidos"
+  },
+  "Tokens novos vendidos no período": {
+    "en": "New tokens sold in the period",
+    "es": "Tokens nuevos vendidos en el período"
+  },
+  "Tokens vendidos": {
+    "en": "Tokens sold",
+    "es": "Tokens vendidos"
+  },
+  "Tokens vendidos acumulados": {
+    "en": "Cumulative tokens sold",
+    "es": "Tokens vendidos acumulados"
+  },
+  "Tokens vendidos são considerados disponíveis sob vesting.": {
+    "en": "Sold tokens are considered available under vesting.",
+    "es": "Los tokens vendidos se consideran disponibles bajo vesting."
+  },
+  "Trading + reserva de recompra": {
+    "en": "Trading + buyback reserve",
+    "es": "Trading + reserva de recompra"
+  },
+  "USDC das novas compras no período": {
+    "en": "USDC from new purchases in the period",
+    "es": "USDC de nuevas compras en el período"
+  },
+  "Verde: resultado positivo. Vermelho: negativo. Linha clara: zero.": {
+    "en": "Green: positive result. Red: negative. Light line: zero.",
+    "es": "Verde: resultado positivo. Rojo: negativo. Línea clara: cero."
+  },
+  "Zero nas rodadas com perda.": {
+    "en": "Zero in rounds with loss.",
+    "es": "Cero en rondas con pérdida."
+  },
+  "dailyTreasuryProfitUsd": {
+    "en": "dailyTreasuryProfitUsd",
+    "es": "dailyTreasuryProfitUsd"
+  },
+  "day": {
+    "en": "day",
+    "es": "day"
+  },
+  "is-neg": {
+    "en": "is-neg",
+    "es": "is-neg"
+  },
+  "is-pos": {
+    "en": "is-pos",
+    "es": "is-pos"
+  },
+  "perTokenPaidTodayUsd": {
+    "en": "perTokenPaidTodayUsd",
+    "es": "perTokenPaidTodayUsd"
+  },
+  "price": {
+    "en": "price",
+    "es": "price"
+  },
+  "rate2": {
+    "en": "rate2",
+    "es": "rate2"
+  },
+  "rate3": {
+    "en": "rate3",
+    "es": "rate3"
+  },
+  "treasuryTradingBalanceUsd": {
+    "en": "treasuryTradingBalanceUsd",
+    "es": "treasuryTradingBalanceUsd"
+  },
+  "{0} USDC/BETTEX": {
+    "en": "{0} USDC/BETTEX",
+    "es": "{0} USDC/BETTEX"
+  },
+  "Desembolso dos compradores (tokens + tarifas)": {
+    "en": "Buyer spending (tokens + fees)",
+    "es": "Desembolso de los compradores (tokens + tarifas)"
+  },
+  "Resultado acumulado da tesouraria = soma dos saldos diários × taxa mensal ÷ 30": {
+    "en": "Cumulative treasury result = sum of daily balances × monthly rate ÷ 30",
+    "es": "Resultado acumulado de la tesorería = suma de saldos diarios × tasa mensual ÷ 30"
+  },
+  "Split do lucro positivo: 50% tesouraria / 25% stakers / 25% recompra": {
+    "en": "Positive-profit split: 50% treasury / 25% stakers / 25% buyback",
+    "es": "Reparto de ganancias positivas: 50% tesorería / 25% stakers / 25% recompra"
+  },
+  "% ÷ 30 =": {
+    "en": "% ÷ 30 =",
+    "es": "% ÷ 30 ="
+  },
+  "A cada 1 dia": {
+    "en": "Every 1 day",
+    "es": "Cada 1 día"
+  },
+  "A cada 30 dias": {
+    "en": "Every 30 days",
+    "es": "Cada 30 días"
+  },
+  "A cada 7 dias": {
+    "en": "Every 7 days",
+    "es": "Cada 7 días"
+  },
+  "A matemática com os seus números": {
+    "en": "The math with your numbers",
+    "es": "La matemática con tus números"
+  },
+  "A movimentação soma compras primárias e saques brutos concluídos, sem contar tarifas duas vezes. As compras de tokens são capital da tesouraria, não receita da operadora.": {
+    "en": "Movement sums primary purchases and gross withdrawals completed, without double-counting fees. Token purchases are treasury capital, not operating company revenue.",
+    "es": "El movimiento suma compras primarias y retiros brutos completados, sin contar tarifas dos veces. Las compras de tokens son capital de tesorería, no ingresos de la operadora."
+  },
+  "A receita de taxas não inclui tributos da operadora. O resultado operacional mostrado desconta apenas o custo informado.": {
+    "en": "Fee revenue does not include operating company taxes. The operating result shown deducts only the reported cost.",
+    "es": "Los ingresos por tarifas no incluyen impuestos de la operadora. El resultado operativo mostrado descuenta solo el costo informado."
+  },
+  "A taxa líquida da estratégia já desconta custos e impostos da estratégia. Custos do operador são separados e acumulam por dia.": {
+    "en": "The strategy net rate already deducts strategy costs and taxes. Operator costs are separate and accrue daily.",
+    "es": "La tasa neta de la estrategia ya descuenta costos e impuestos de la estrategia. Los costos del operador son separados y se acumulan diariamente."
+  },
+  "A taxa mensal é nominal, dividida por 30 e aplicada ao saldo disponível de cada dia. A retenção reinvestida altera esse saldo; perdas reduzem a base dos dias seguintes.": {
+    "en": "The monthly rate is nominal, divided by 30 and applied to each day's available balance. Reinvested retention changes this balance; losses reduce the base for following days.",
+    "es": "La tasa mensual es nominal, dividida por 30 y aplicada al saldo disponible de cada día. La retención reinvertida altera este saldo; las pérdidas reducen la base de los días siguientes."
+  },
+  "As tarifas não cobrem os custos neste cenário. Caixa operacional adicional necessário:": {
+    "en": "Fees do not cover costs in this scenario. Additional operating cash needed:",
+    "es": "Las tarifas no cubren los costos en este escenario. Efectivo operativo adicional necesario:"
+  },
+  "Caixa adicional necessário para a operadora": {
+    "en": "Additional cash required for the operating company",
+    "es": "Efectivo adicional requerido para la operadora"
+  },
+  "Comparação 7 / 30 / 90 dias (acumulado)": {
+    "en": "Comparison 7 / 30 / 90 days (accumulated)",
+    "es": "Comparación 7 / 30 / 90 días (acumulado)"
+  },
+  "Comparação acumulada da simulação": {
+    "en": "Accumulated simulation comparison",
+    "es": "Comparación acumulada de la simulación"
+  },
+  "Compradores acumulados": {
+    "en": "Accumulated buyers",
+    "es": "Compradores acumulados"
+  },
+  "Corrija os valores marcados para ver os resultados. Nada foi ajustado automaticamente.": {
+    "en": "Correct the marked values to see the results. Nothing was adjusted automatically.",
+    "es": "Corrige los valores marcados para ver los resultados. Nada se ha ajustado automáticamente."
+  },
+  "Créditos efetivamente liquidados": {
+    "en": "Effectively settled credits",
+    "es": "Créditos efectivamente liquidados"
+  },
+  "Custo do operador": {
+    "en": "Operator cost",
+    "es": "Costo del operador"
+  },
+  "Custo mensal do operador (USD)": {
+    "en": "Monthly operator cost (USD)",
+    "es": "Costo mensual del operador (USD)"
+  },
+  "Desejo de saque não é saque viável": {
+    "en": "Withdrawal request is not a viable withdrawal",
+    "es": "El deseo de retiro no es un retiro viable"
+  },
+  "Digite um número inteiro de 0 a 2000.": {
+    "en": "Enter an integer from 0 to 2000.",
+    "es": "Ingresa un número entero de 0 a 2000."
+  },
+  "Digite um percentual de -100 a 100.": {
+    "en": "Enter a percentage from -100 to 100.",
+    "es": "Ingresa un porcentaje de -100 a 100."
+  },
+  "Digite um valor de 0 a 10000.": {
+    "en": "Enter a value from 0 to 10000.",
+    "es": "Ingresa un valor de 0 a 10000."
+  },
+  "Digite um valor de 0 a 100000.": {
+    "en": "Enter a value from 0 to 100000.",
+    "es": "Ingresa un valor de 0 a 100000."
+  },
+  "Digite um valor maior que a taxa de 2,50 USD.": {
+    "en": "Enter a value greater than the 2.50 USD fee.",
+    "es": "Ingresa un valor mayor que la tarifa de 2,50 USD."
+  },
+  "Editar as premissas da simulação": {
+    "en": "Edit simulation premises",
+    "es": "Editar las premisas de la simulación"
+  },
+  "Entradas inteiras distribuídas de forma uniforme nos dias do mês; o dinheiro da entrada fica disponível no início do dia.": {
+    "en": "Whole-number user arrivals are spread evenly across the month; purchase funds are available at the start of the entry day.",
+    "es": "Las entradas de usuarios en números enteros se distribuyen uniformemente durante el mes; el dinero de la compra está disponible al inicio del día de entrada."
+  },
+  "Escolha 1, 7 ou 30 dias.": {
+    "en": "Choose 1, 7 or 30 days.",
+    "es": "Elige 1, 7 o 30 días."
+  },
+  "Esse dinheiro não foi incluído como aporte nem retirado da tesouraria.": {
+    "en": "This money was not included as an inflow nor withdrawn from the treasury.",
+    "es": "Este dinero no ha sido incluido como aporte ni retirado de la tesorería."
+  },
+  "Estágios de crescimento": {
+    "en": "Growth stages",
+    "es": "Etapas de crecimiento"
+  },
+  "Exemplo do dia 1: pagamento ajustado para baixo na unidade de 0,000001 USDC assumida pelo modelo; a fração não executável volta à tesouraria.": {
+    "en": "Day 1 example: payment adjusted downward to the 0.000001 USDC unit assumed by the model; the non-executable fraction returns to the treasury.",
+    "es": "Ejemplo del día 1: pago ajustado a la baja en la unidad de 0,000001 USDC asumida por el modelo; la fracción no ejecutable vuelve a la tesorería."
+  },
+  "Exposição total = soma dos usuários ativos de cada dia": {
+    "en": "Total exposure = sum of active users each day",
+    "es": "Exposición total = suma de usuarios activos de cada día"
+  },
+  "Frações devolvidas à tesouraria": {
+    "en": "Fractions returned to the treasury",
+    "es": "Fracciones devueltas a la tesorería"
+  },
+  "Frequência das tentativas de saque": {
+    "en": "Frequency of withdrawal attempts",
+    "es": "Frecuencia de intentos de retiro"
+  },
+  "Go to market em 90 dias: quanto entra, quanto sobra e quanto é pago": {
+    "en": "90-day go to market: how much comes in, how much is left, and how much is paid",
+    "es": "Go to market en 90 días: cuánto entra, cuánto sobra y cuánto se paga"
+  },
+  "Hipóteses simplificadas de resultados e custos; não representam liquidez real nem autorização regulatória.": {
+    "en": "Simplified outcome and cost hypotheses; they do not represent real liquidity or regulatory authorization.",
+    "es": "Hipótesis simplificadas de resultados y costos; no representan liquidez real ni autorización regulatoria."
+  },
+  "Há campos inválidos.": {
+    "en": "There are invalid fields.",
+    "es": "Hay campos inválidos."
+  },
+  "Já depois de custos e impostos da estratégia.": {
+    "en": "Already after strategy costs and taxes.",
+    "es": "Ya después de costos e impuestos de la estrategia."
+  },
+  "Metodologia e limites": {
+    "en": "Methodology and limits",
+    "es": "Metodología y límites"
+  },
+  "Movimentação dos usuários": {
+    "en": "User movement",
+    "es": "Movimiento de los usuarios"
+  },
+  "Métrica": {
+    "en": "Metric",
+    "es": "Métrica"
+  },
+  "Nenhuma carteira atingiu o saldo necessário para o saque desejado neste período. Ser ativo e tentar sacar não cria dinheiro disponível: não há saque concluído nem tarifa de saque a faturar.": {
+    "en": "No wallet reached the balance required for the desired withdrawal in this period. Being active and attempting a withdrawal does not create available money: no withdrawal is completed, nor is there a withdrawal fee to invoice.",
+    "es": "Ninguna billetera alcanzó el saldo necesario para el retiro deseado en este período. Estar activo e intentar retirar no crea dinero disponible: no hay retiro completado ni tarifa de retiro a facturar."
+  },
+  "Novos compradores": {
+    "en": "New buyers",
+    "es": "Nuevos compradores"
+  },
+  "Novos usuários no mês 1": {
+    "en": "New users in month 1",
+    "es": "Nuevos usuarios en el mes 1"
+  },
+  "Novos usuários no mês 2": {
+    "en": "New users in month 2",
+    "es": "Nuevos usuarios en el mes 2"
+  },
+  "Novos usuários no mês 3": {
+    "en": "New users in month 3",
+    "es": "Nuevos usuarios en el mes 3"
+  },
+  "Não é desempenho observado nem retorno prometido. A tarifa de serviço é US$ 2,50; o resultado da estratégia e o custo operacional são hipóteses.": {
+    "en": "This is not observed performance or a promised return. The service fee is US$ 2.50; the strategy result and the operating cost are hypotheses.",
+    "es": "No es rendimiento observado ni retorno prometido. La tarifa de servicio es de US$ 2.50; el resultado de la estrategia y el costo operativo son hipótesis."
+  },
+  "Os dois resultados são separados e não devem ser somados: o do operador vem de taxas, o da tesouraria vem da estratégia.": {
+    "en": "The two results are separate and must not be added together: the operator's comes from fees, the treasury's comes from the strategy.",
+    "es": "Los dos resultados son separados y no deben sumarse: el del operador proviene de comisiones, el de la tesorería proviene de la estrategia."
+  },
+  "Os outros 25% do lucro ficam reservados para recompra, ainda não executada; não simulamos valorização nem queima.": {
+    "en": "The other 25% of the profit remains reserved for buyback, not yet executed; we do not simulate appreciation or burn.",
+    "es": "El otro 25% de la ganancia queda reservado para recompra, aún no ejecutada; no simulamos valorización ni quema."
+  },
+  "Outros detentores elegíveis diluiriam o pool e não são modelados.": {
+    "en": "Other eligible holders would dilute the pool and are not modeled.",
+    "es": "Otros poseedores elegibles diluirían el pool y no están modelados."
+  },
+  "Parte dos usuários tem USDC já liquidado suficiente para sacar. Só os saques efetivamente concluídos geram tarifa.": {
+    "en": "Some users have enough USDC already settled to withdraw. Only effectively completed withdrawals generate a fee.",
+    "es": "Parte de los usuarios tiene suficiente USDC ya liquidado para retirar. Solo los retiros efectivamente completados generan tarifa."
+  },
+  "Ponto de partida: 200 / 400 / 400 novos usuários, compra de US$ 50, resultado hipotético de 1% ao mês e custo operacional de US$ 300/mês. Os valores podem ser alterados abaixo.": {
+    "en": "Starting point: 200 / 400 / 400 new users, US$ 50 purchase, hypothetical result of 1% per month and operating cost of US$ 300/month. Values can be changed below.",
+    "es": "Punto de partida: 200 / 400 / 400 nuevos usuarios, compra de US$ 50, resultado hipotético de 1% al mes y costo operativo de US$ 300/mes. Los valores pueden cambiarse abajo."
+  },
+  "Ponto de verificação acumulado": {
+    "en": "Accumulated checkpoint",
+    "es": "Punto de verificación acumulado"
+  },
+  "Pontos acumulados em 7, 30 e 90 dias, com meses de 30 dias.": {
+    "en": "Points accumulated over 7, 30, and 90 days, with 30-day months.",
+    "es": "Puntos acumulados en 7, 30 y 90 días, con meses de 30 días."
+  },
+  "Pool diário dos stakers por pessoa no último dia do ponto": {
+    "en": "Daily stakers' pool per person on the last day of the point",
+    "es": "Pool diario de los stakers por persona en el último día del punto"
+  },
+  "Pool nominal dos stakers (25%)": {
+    "en": "Nominal stakers' pool (25%)",
+    "es": "Pool nominal de los stakers (25%)"
+  },
+  "Precisa ser maior que a taxa de 2,50 USD.": {
+    "en": "Must be greater than the 2.50 USD fee.",
+    "es": "Debe ser mayor que la tarifa de 2.50 USD."
+  },
+  "Premissas": {
+    "en": "Premises",
+    "es": "Premisas"
+  },
+  "Preço do token estável, compras iguais, uma por usuário; apenas esses compradores têm peso elegível.": {
+    "en": "Stable token price, equal purchases, one per user; only these buyers have eligible weight.",
+    "es": "Precio del token estable, compras iguales, una por usuario; solo estos compradores tienen peso elegible."
+  },
+  "Primeira compra por pessoa (USD)": {
+    "en": "First purchase per person (USD)",
+    "es": "Primera compra por persona (USD)"
+  },
+  "Receita de taxas": {
+    "en": "Fee revenue",
+    "es": "Ingresos por comisiones"
+  },
+  "Reserva de recompra (25%)": {
+    "en": "Buyback reserve (25%)",
+    "es": "Reserva de recompra (25%)"
+  },
+  "Restaurar padrão": {
+    "en": "Restore default",
+    "es": "Restaurar predeterminado"
+  },
+  "Resultado acumulado até o dia": {
+    "en": "Accumulated result until day",
+    "es": "Resultado acumulado hasta el día"
+  },
+  "Resultado diário da estratégia = capital no início do dia × % líquido mensal ÷ 30 (exemplo: dia 1)": {
+    "en": "Strategy daily result = capital at start of day × monthly net % ÷ 30 (example: day 1)",
+    "es": "Resultado diario de la estrategia = capital al inicio del día × % neto mensual ÷ 30 (ejemplo: día 1)"
+  },
+  "Resultado do operador = receita de taxas − custo do operador": {
+    "en": "Operator result = fee revenue − operator cost",
+    "es": "Resultado del operador = ingresos por comisiones − coste del operador"
+  },
+  "Resultado do operador antes de impostos": {
+    "en": "Operator result before taxes",
+    "es": "Resultado del operador antes de impuestos"
+  },
+  "Resultado líquido da estratégia": {
+    "en": "Net strategy result",
+    "es": "Resultado neto de la estrategia"
+  },
+  "Resultado líquido da estratégia (tesouraria)": {
+    "en": "Net strategy result (treasury)",
+    "es": "Resultado neto de la estrategia (tesorería)"
+  },
+  "Resultado líquido mensal da estratégia (%)": {
+    "en": "Monthly net strategy result (%)",
+    "es": "Resultado neto mensual de la estrategia (%)"
+  },
+  "Resultado negativo reduz o capital de forma permanente e não financia distribuição nem recompra.": {
+    "en": "Negative result reduces capital permanently and does not fund distribution or buyback.",
+    "es": "El resultado negativo reduce el capital de forma permanente y no financia distribución ni recompra."
+  },
+  "Saldo em USDC na carteira é dinheiro já liquidado e pode ser guardado para saque; lucro não pago não é crédito a receber.": {
+    "en": "USDC wallet balance is already settled cash and can be held for withdrawal; unpaid profit is not a receivable.",
+    "es": "El saldo en USDC en la billetera es dinero ya liquidado y puede guardarse para retiro; el beneficio no pagado no es un crédito a cobrar."
+  },
+  "Saldo final de trading da tesouraria": {
+    "en": "Treasury final trading balance",
+    "es": "Saldo final de trading de la tesorería"
+  },
+  "Saque bruto desejado (USD)": {
+    "en": "Gross desired withdrawal (USD)",
+    "es": "Retiro bruto deseado (USD)"
+  },
+  "Saque desejado por tentativa": {
+    "en": "Desired withdrawal per attempt",
+    "es": "Retiro deseado por intento"
+  },
+  "Saques brutos concluídos": {
+    "en": "Completed gross withdrawals",
+    "es": "Retiros brutos completados"
+  },
+  "Saques desejados (tentativas)": {
+    "en": "Desired withdrawals (attempts)",
+    "es": "Retiros deseados (intentos)"
+  },
+  "Saques viáveis concluídos": {
+    "en": "Completed viable withdrawals",
+    "es": "Retiros viables completados"
+  },
+  "Sem compradores no primeiro dia: não há rateio.": {
+    "en": "No buyers on the first day: no allocation.",
+    "es": "Sin compradores el primer día: no hay reparto."
+  },
+  "Sem compras recorrentes extras, transferências ou dinheiro externo.": {
+    "en": "No extra recurring purchases, transfers, or external cash.",
+    "es": "Sin compras recurrentes extras, transferencias ni dinero externo."
+  },
+  "Sem financiamento anjo não significa sem custos de operação.": {
+    "en": "No angel funding does not mean no operating costs.",
+    "es": "Sin financiación ángel no significa sin costos de operación."
+  },
+  "Sem usuários elegíveis: não há rateio.": {
+    "en": "No eligible users: no allocation.",
+    "es": "Sin usuarios elegibles: no hay reparto."
+  },
+  "Simulação de lançamento · sem aporte anjo": {
+    "en": "Launch simulation · no angel capital",
+    "es": "Simulación de lanzamiento · sin aporte ángel"
+  },
+  "Taxas de compra": {
+    "en": "Purchase fees",
+    "es": "Tasas de compra"
+  },
+  "Taxas de compra = usuários × taxa de serviço": {
+    "en": "Purchase fees = users × service fee",
+    "es": "Tasas de compra = usuarios × tasa de servicio"
+  },
+  "Taxas de saque = saques viáveis × taxa de serviço": {
+    "en": "Withdrawal fees = viable withdrawals × service fee",
+    "es": "Tasas de retiro = retiros viables × tasa de servicio"
+  },
+  "Taxas de saque efetivas": {
+    "en": "Effective withdrawal fees",
+    "es": "Tasas de retiro efectivas"
+  },
+  "Tentativas de saque": {
+    "en": "Withdrawal attempts",
+    "es": "Intentos de retiro"
+  },
+  "Tentativas de saque × valor desejado = dinheiro necessário, não movimentação realizada": {
+    "en": "Withdrawal attempts × desired value = required cash, not executed movement",
+    "es": "Intentos de retiro × valor deseado = dinero necesario, no movimiento realizado"
+  },
+  "Todos os usuários ficam ativos, sem saída, bloqueio ou restrição de reserva neste exemplo simplificado.": {
+    "en": "All users remain active, with no exit, lock, or reserve restriction in this simplified example.",
+    "es": "Todos los usuarios permanecen activos, sin salida, bloqueo ni restricción de reserva en este ejemplo simplificado."
+  },
+  "USDC já liquidado nas carteiras dos usuários": {
+    "en": "USDC already settled in user wallets",
+    "es": "USDC ya liquidado en las billeteras de los usuarios"
+  },
+  "USDC recebido líquido nos saques": {
+    "en": "Net USDC received on withdrawals",
+    "es": "USDC neto recibido en retiros"
+  },
+  "Unidade executável assumida: 0,000001 USDC. Confirmar a precisão do ativo e do conector antes de qualquer operação real. Frações não executáveis voltam à tesouraria na mesma rodada, sem acumulação entre rodadas.": {
+    "en": "Assumed executable unit: 0.000001 USDC. Confirm asset and connector precision before any real operation. Non-executable fractions return to treasury in the same round, without carry-over between rounds.",
+    "es": "Unidad ejecutable asumida: 0.000001 USDC. Confirmar la precisión del activo y del conector antes de cualquier operación real. Las fracciones no ejecutables regresan a la tesorería en la misma ronda, sin acumulación entre rondas."
+  },
+  "Usuários acumulados": {
+    "en": "Accumulated users",
+    "es": "Usuarios acumulados"
+  },
+  "Usuários ativos": {
+    "en": "Active users",
+    "es": "Usuarios activos"
+  },
+  "Usuários-dia de exposição": {
+    "en": "User-days of exposure",
+    "es": "Días-usuario de exposición"
+  },
+  "Vendas acumuladas": {
+    "en": "Accumulated sales",
+    "es": "Ventas acumuladas"
+  },
+  "Vendas de tokens": {
+    "en": "Token sales",
+    "es": "Ventas de tokens"
+  },
+  "Vendas de tokens = usuários × valor da compra": {
+    "en": "Token sales = users × purchase value",
+    "es": "Ventas de tokens = usuarios × valor de compra"
+  },
+  "cadence": {
+    "en": "cadence",
+    "es": "cadence"
+  },
+  "cost": {
+    "en": "cost",
+    "es": "cost"
+  },
+  "gross": {
+    "en": "gross",
+    "es": "gross"
+  },
+  "ls-cadence": {
+    "en": "ls-cadence",
+    "es": "ls-cadence"
+  },
+  "m1": {
+    "en": "m1",
+    "es": "m1"
+  },
+  "m2": {
+    "en": "m2",
+    "es": "m2"
+  },
+  "m3": {
+    "en": "m3",
+    "es": "m3"
+  },
+  "rate": {
+    "en": "rate",
+    "es": "rate"
+  },
+  "ticket": {
+    "en": "ticket",
+    "es": "ticket"
+  },
+  "usuários-dia": {
+    "en": "user-days",
+    "es": "días-usuario"
+  },
+  "÷": {
+    "en": "÷",
+    "es": "÷"
+  },
   "Desenvolvedor trabalhando com código em um notebook, representando a construção do produto e da tecnologia": {
     "en": "Developer working with code on a laptop, representing product and technology development",
     "es": "Desarrollador trabajando con código en un portátil, representando la construcción del producto y la tecnología"

@@ -1,4 +1,4 @@
-BETTEX — entidade, piloto e regras
+BETTEX — entidade e regras
 
 Empresa e administração
 
@@ -9,14 +9,6 @@ Uma única empresa comercial privada de capital fechado a constituir, administra
 A empresa reúne token, aplicativo, tesouraria, investimentos e obrigações do programa. Nome final, forma societária e jurisdição fazem parte da formalização. Titulares possuem tokens e direitos do programa, não ações, voto societário ou fração resgatável da tesouraria.
 
 A missão amplia alternativas de participação econômica durante a transição da IA e robótica. Transparência, compreensão, responsabilidade e prestação de contas orientam a operação, sem renda ou proteção de capital garantidas.
-
-Piloto e receita
-
-Capital do piloto: US$ 100 mil, sendo US$ 50 mil para tesouraria e US$ 50 mil para lançamento. Meta aos três meses: 5.000 usuários e 1.000 MAU. Aportes de investidores têm livre alocação; a destinação do piloto não é um split geral.
-
-Fred conduz aquisição pelos próprios canais e audiência, com IA e serviços externos necessários. Lançamento inclui impulsionamento, parcerias, segurança, mídia paga nos perfis do fundador e redes próprias.
-
-Receita de serviços = operações tarifadas × US$ 2,50. Cenários de 1, 10 e 30 operações por ativo consideram 1.000 MAU; 30 ilustra saques diários, sem presumir saldo ou adoção. Receita não é lucro: custos identificados e tributos vêm antes do líquido. Não há orçamento mensal ou data de equilíbrio presumidos.
 
 Token, captação e queima
 
@@ -43,5 +35,7 @@ Políticas evoluem por versões aprovadas. Administração define política; mul
 Tesouraria, caixa operacional, carteira exclusiva de recompra e carteiras pessoais têm fronteiras próprias. Reserva defensiva segue a política aprovada, sem mínimo geral fixado em 50%. Novas operações exigem risco independente, disponibilidade e conciliação.
 
 Arbitrum fornece rede e contratos. Allora é candidata a inferências, não execução. Robinhood Crypto Trading API exige conta elegível nos Estados Unidos e autorização; não comprova acesso a ações. Consultas públicas Arbitrum/Gamma foram verificadas; demais exemplos sem acesso privado são simulações. Não houve operações com dinheiro real.
+
+Plano comercial e lançamento no Pitch: https://bettex.ai/pitch#publico
 
 https://www.linkedin.com/in/fredazevedo85/

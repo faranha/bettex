@@ -20,3 +20,9 @@ A documentação usa leitura por capítulo: o índice mostra as subseções apen
 **Why:** O criador rejeitou a apresentação amontoada e a rolagem longa tanto no menu quanto no conteúdo, pedindo subseções apenas da área carregada.
 
 **How to apply:** Preservar todos os assuntos, a ordem dos capítulos e os links diretos antigos. A navegação anterior/próximo e o histórico devem permitir percorrer o documento inteiro. Não aplicar essa organização ao Pitch, que tem orientação própria de leitura integral.
+
+Expectativas e planos de lançamento, metas, projeções e plano comercial ficam exclusivamente no Pitch. Na documentação, deixar apenas um link para o Pitch.
+
+**Why:** O criador pediu retirar todo esse conteúdo da documentação, não somente atualizar os números.
+
+**How to apply:** Manter na documentação as regras do produto, da entidade, das taxas e os procedimentos técnicos. Não reintroduzir planos de aquisição ou cenários comerciais, inclusive nos materiais baixáveis.

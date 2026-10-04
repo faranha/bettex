@@ -16,7 +16,7 @@ export function FounderProfile({ dark = false, id, portrait = false, noDashes = 
   ];
   return <figure id={id} className={`fp${dark ? ' fp--dark' : ''}${portrait ? ' fp--portrait' : ''}${doc ? ' fp--doc' : ''}${thirdPerson && portrait && !doc ? ' fp--pitch' : ''}`} aria-label="Apresentação do fundador">
     {portrait ? <img className="fp__portrait" src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/fred-azevedo.png`} alt="Retrato de Fred Azevedo, fundador da BETTEX" width={400} height={400} loading="lazy" decoding="async" /> : null}
-    <span className="mono text-[10px] font-bold uppercase tracking-[.14em]" style={{ color: dark ? '#F2B632' : '#2B59FF' }}>{thirdPerson ? 'Experiência internacional e comunidade própria' : 'Founder-led · distribuição existente'}</span>
+    <span className="mono text-[10px] font-bold uppercase tracking-[.14em]" style={{ color: dark ? '#F2B632' : '#2B59FF' }}>{thirdPerson ? 'Experiência internacional e comunidade própria' : 'Fundador · experiência e trajetória'}</span>
     {thirdPerson
       ? <p className="fp__quote">Fred Azevedo é o fundador da BETTEX e tem experiência no lançamento de diversas operações ao redor do mundo. Influenciador reconhecido no Brasil, reúne uma grande comunidade e canais próprios de relacionamento com seu público.</p>
       : <blockquote className="fp__quote">{doc ? f.quote : <>“{f.quote}”</>}</blockquote>}
@@ -28,6 +28,6 @@ export function FounderProfile({ dark = false, id, portrait = false, noDashes = 
       </ul>
     </nav>
     <ul className="fp__grid">{stats.map(([l, v, t]) => <li key={l}><span>{l}</span><strong>{v}</strong><small>{t}</small></li>)}</ul>
-    {!thirdPerson && <p className="fp__cap">{f.sourceNote} Esta é audiência de distribuição do fundador, não tração de produto da BETTEX.</p>}
+    {!thirdPerson && <p className="fp__cap">{f.sourceNote} Estes números descrevem os canais pessoais do fundador, não métricas de uso ou demanda da BETTEX.</p>}
   </figure>;
 }
