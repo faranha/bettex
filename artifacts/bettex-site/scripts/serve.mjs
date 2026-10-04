@@ -22,10 +22,13 @@ export function createSiteServer(root = publicRoot) {
   return createServer(async (req, res) => {
     try {
       // Replit's proxy can forward the visitor's original host in this header.
-      const host = String(req.headers['x-forwarded-host'] ?? req.headers.host ?? '')
-        .split(',')[0].trim().toLowerCase().replace(/:\d+$/, '').replace(/\.$/, '');
-      if (host === legacyHost) {
-        res.writeHead(301, { Location: officialOrigin + (req.url?.startsWith('/') ? req.url : '/') });
+      const hosts = [req.headers.host, req.headers['x-forwarded-host']]
+        .map(value => String(value ?? '').split(',')[0].trim().toLowerCase().replace(/:\d+$/, '').replace(/\.$/, ''));
+      if (hosts.includes(legacyHost)) {
+        res.writeHead(301, {
+          Location: officialOrigin + (req.url?.startsWith('/') ? req.url : '/'),
+          'Cache-Control': 'no-store',
+        });
         res.end();
         return;
       }
