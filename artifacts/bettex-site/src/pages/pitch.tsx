@@ -11,6 +11,8 @@ import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
 import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
 import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipationFlow';
 import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
+import { formatCryptoDailyBillions } from '@/components/pitch/marketFlow';
+import { t, useLocale } from '@/lib/i18n';
 import './pitch.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -42,6 +44,8 @@ const A = ({ href, children, dark = false }: { href: string; children: ReactNode
 const Doc = ({ hash, children, dark = false }: { hash: string; children: ReactNode; dark?: boolean }) => <a href={`${DOC}#${hash}`} target="_blank" rel="noopener noreferrer" className={`tap inline-flex min-h-11 items-center gap-2 text-sm font-bold underline underline-offset-4 ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}>{children}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>;
 
 export function PitchPage() {
+  useLocale();
+  const cryptoDailyBillions = formatCryptoDailyBillions();
   useEffect(() => {
     let mounted = true;
     const scrollToHash = () => {
@@ -73,7 +77,7 @@ export function PitchPage() {
           <div className="cover__copy">
             <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Tecnologia de investimento com IA</span>
             <h1 className="pitch-rise display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Tecnologia de investimento para o apostador brasileiro, <span className="text-[#F2B632]">gerida por IA.</span></h1>
-            <p className="pitch-rise cover__market mt-4"><strong>Até 40 milhões de brasileiros no cenário de público da BETTEX. Cerca de R$ 600 milhões por dia no fluxo histórico das bets.</strong>{' '}A oportunidade é um produto de investimento que fale a língua dessas pessoas.{' '}<a href="#problema" target="_blank" rel="noopener noreferrer">Veja a base, as estimativas e os períodos.</a></p>
+            <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t('Mais de 60 milhões de brasileiros no público potencial estimado.')}{' '}{t(`Cripto: cerca de R$ ${cryptoDailyBillions} bilhão por dia.`)}{' '}{t('Bets: referência histórica de R$ 600 milhões por dia.')}</strong>{' '}A oportunidade é um produto de investimento que fale a língua dessas pessoas.{' '}<a href="#problema" target="_blank" rel="noopener noreferrer">Público e movimentação financeira.</a></p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#solucao" target="_blank" rel="noopener noreferrer" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
               <a href={DOC} target="_blank" rel="noopener noreferrer" className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>

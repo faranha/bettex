@@ -1,9 +1,9 @@
 ---
 name: Prioridade do tamanho de mercado no Pitch
-description: O criador exige abrir o Pitch com o público brasileiro de apostas e seu volume financeiro, antes dos argumentos secundários.
+description: Abrir o Pitch com o público potencial combinado de apostas e cripto e sua escala financeira.
 ---
 
-O criador exige destacar primeiro o tamanho do público e o volume financeiro em “Problema e oportunidade”: até 40 milhões de apostadores brasileiros e depósitos da ordem de R$ 600 milhões por dia. Pediu retirar os cartões de 30 milhões nas bets legalizadas e 10 milhões no ilegal, pois a apresentação desses números parecia conflitante. Também pediu pesquisar brasileiros com experiência em cripto e apresentar círculos de sobreposição para estimar o público combinado sem dupla contagem.
+O criador exige destacar primeiro o tamanho do público e o volume financeiro em “Problema e oportunidade”. A capa deve considerar o público potencial combinado de apostas e cripto, mais de 60 milhões de brasileiros, e incluir a movimentação diária de cripto, não apenas os depósitos nas bets. Pediu retirar os cartões de 30 milhões nas bets legalizadas e 10 milhões no ilegal, pois a apresentação desses números parecia conflitante. Também pediu pesquisar brasileiros com experiência em cripto e apresentar círculos de sobreposição para estimar o público combinado sem dupla contagem.
 
 **Why:** O criador corrigiu uma omissão da abertura e reiterou “Isso tem que estar aqui, no problema e oportunidade” e “tem que ser a primeira coisa do pitch”. Depois explicou que os três números pareciam conflitantes e pediu eliminar os dois do meio, substituindo-os pela comparação com cripto.
 
@@ -14,3 +14,21 @@ Não reintroduzir o bloco separado “Público da iniciativa / O apostador brasi
 **Why:** Após integrar o mercado de apostas e cripto, o criador mostrou esse bloco e pediu sua remoção por redundância.
 
 **How to apply:** Concentrar o dimensionamento em Problema e oportunidade e a aquisição no Go to market, sem uma seção duplicada de Público-alvo.
+
+Os 40 milhões de apostadores e os 29 milhões de brasileiros com experiência em cripto são públicos potenciais que a BETTEX pretende alcançar. Os 6,9 milhões são o público central estimado na sobreposição, não o único público nem um limite de atuação. Experiência em apostas ou cripto não é requisito do produto.
+
+**Why:** O criador esclareceu que “todos são públicos, e vamos atacar todos os públicos” e que “esse é um produto pra todos”, mantendo os 6,9 milhões como núcleo central.
+
+**How to apply:** Identificar ambos os grupos como públicos potenciais nas artes e nos textos, nos três idiomas. Não reduzir a atuação à interseção nem chamar somente ela de público-alvo. Preservar o caráter hipotético do cruzamento, a metodologia e a elegibilidade; intenção de atender esses públicos não é demanda ou interesse medidos.
+
+Não reintroduzir o rodapé extenso de notas e fontes abaixo da tese de oportunidade no Pitch, nem a ressalva separada sobre o volume não ser receita ou captação nesse trecho.
+
+**Why:** O criador mostrou o bloco e pediu remover tudo, explicando que não há espaço na apresentação para conteúdo que não seja tese ou número grande que a justifique.
+
+**How to apply:** Manter essa área focada na tese e nos números principais. A remoção desse bloco não transforma estimativas em medições nem elimina os riscos ou a documentação do restante do produto.
+
+Usar os volumes diários de cripto e bets como referências separadas, não uma soma apresentada como capital único disponível. Operações de cripto incluem pagamentos, stablecoins e atividade empresarial; o total não mede exclusivamente investimentos especulativos.
+
+**Why:** O criador pediu ampliar o Hero para considerar transações e investimentos especulativos em cripto. A fonte recente distingue usos empresariais e de transferência; somá-los a depósitos nas bets não elimina circulação repetida do mesmo capital e mistura bases e períodos.
+
+**How to apply:** Incluir cripto no destaque financeiro, identificar a média do período e manter a referência de bets como histórica. Não confundir volume bruto de operações com captação, dinheiro exclusivo do público de varejo ou demanda pela BETTEX.

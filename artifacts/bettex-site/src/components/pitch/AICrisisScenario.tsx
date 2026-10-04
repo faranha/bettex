@@ -6,8 +6,6 @@ const sources = {
   essay: 'https://www.darioamodei.com/essay/the-adolescence-of-technology#4-player-piano',
   existential: 'https://www.reuters.com/business/finance/anthropic-warns-ai-may-pose-existential-risks-humanity-ipo-filing-2026-09-29/',
   revision: 'https://fortune.com/2026/05/26/sam-altman-dario-amodei-walking-back-ai-jobs-apocalypse-prophecies-ipo',
-  race: 'https://www.reuters.com/business/retail-consumer/ais-race-transform-world-before-money-runs-out-2026-10-03/',
-  altman: 'https://www.theverge.com/ai-artificial-intelligence/759965/sam-altman-openai-ai-bubble-interview',
 };
 
 function NewsLink({ href, children }: { href: string; children: string }) {
@@ -42,27 +40,8 @@ export function LaborWarningReports() {
 
 export function AIBubbleScenario() {
   return <>
-    <section id="bolha-ia" className="ai-crisis ai-crisis--bubble" aria-labelledby="ai-bubble-title">
-      <span className="mono fu-tag">05 / Bolha da IA · risco financeiro</span>
-      <h3 id="ai-bubble-title" className="display">A tecnologia pode ser real. O preço pode ser uma bolha.</h3>
-      <p className="ai-crisis-intro">A aposta depende de receitas e produtividade futuras suficientes para pagar uma infraestrutura gigantesca. Se a receita não chega no prazo da dívida, a promessa de abundância pode virar queda de ativos, restrição de crédito e cortes. O risco de estouro existe; sua data e sua dimensão não são conhecidas.</p>
-      <div className="ai-news-grid">
-        <article>
-          <span className="mono">Reuters · 3 out. 2026</span>
-          <h4 className="display">A corrida da IA antes de o dinheiro acabar</h4>
-          <p>A reportagem reúne alertas sobre retornos insuficientes e dívida alavancada. Segundo o estudo da Bain citado pela Reuters, os participantes da corrida precisariam encontrar mais de US$ 4,2 trilhões em novas receitas nos próximos cinco anos para financiar a expansão. É uma estimativa de necessidade de receita, não dinheiro já recebido.</p>
-          <NewsLink href={sources.race}>Ler a reportagem completa · Reuters</NewsLink>
-        </article>
-        <article>
-          <span className="mono">The Verge · 15 ago. 2025</span>
-          <h4 className="display">Até Altman reconheceu o excesso de entusiasmo</h4>
-          <p>O CEO da OpenAI afirmou que investidores estavam excessivamente empolgados com a IA e comparou a reação à bolha das empresas de internet. Sua avaliação separa uma tecnologia importante de preços e expectativas que podem não se sustentar.</p>
-          <NewsLink href={sources.altman}>Altman e a bolha · The Verge</NewsLink>
-        </article>
-      </div>
-    </section>
     <section id="desta-vez-diferente" className="ai-crisis ai-crisis--thesis" aria-labelledby="ai-double-loss-title">
-      <span className="mono fu-tag">06 / Tese da BETTEX · cenário extremo</span>
+      <span className="mono fu-tag">05 / Tese da BETTEX · cenário extremo</span>
       <h3 id="ai-double-loss-title" className="display">Desta vez, a perda pode acontecer dos dois lados.</h3>
       <p className="ai-crisis-intro">A tese sombria da BETTEX é que a bolha financeira pode estourar sem desfazer a automação. As ações podem cair; as máquinas não precisam voltar a dar lugar às pessoas. Se o capital se reorganiza enquanto a demanda por trabalho não se recupera, a família perde patrimônio e salário ao mesmo tempo.</p>
       <ol className="ai-loss-chain">

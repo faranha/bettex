@@ -1,4 +1,85 @@
 {
+  "Patrimônio e salário": { "en": "Wealth and wages", "es": "Patrimonio y salario" },
+  "R$": { "en": "R$", "es": "R$" },
+  "Mais de 60 milhões de brasileiros no público potencial estimado.": {
+    "en": "More than 60 million Brazilians in the estimated potential audience.",
+    "es": "Más de 60 millones de brasileños en el público potencial estimado."
+  },
+  "Cripto: cerca de R$ {0} bilhão por dia.": {
+    "en": "Crypto: about R$ {0} billion per day.",
+    "es": "Cripto: cerca de R$ {0} mil millones por día."
+  },
+  "Bets: referência histórica de R$ 600 milhões por dia.": {
+    "en": "Betting: historical reference of R$ 600 million per day.",
+    "es": "Apuestas: referencia histórica de R$ 600 millones por día."
+  },
+  "Público e movimentação financeira.": {
+    "en": "Audience and financial activity.",
+    "es": "Público y movimiento financiero."
+  },
+  "Movimentação diária · cripto": {
+    "en": "Daily activity · crypto",
+    "es": "Movimiento diario · cripto"
+  },
+  "bilhão por dia, aproximadamente": {
+    "en": "billion per day, approximately",
+    "es": "mil millones por día, aproximadamente"
+  },
+  "R$ 283 bilhões em operações no primeiro semestre de 2026. Inclui negociações, stablecoins e operações empresariais.": {
+    "en": "R$ 283 billion in operations in the first half of 2026. Includes trading, stablecoins and business operations.",
+    "es": "R$ 283 mil millones en operaciones en el primer semestre de 2026. Incluye negociaciones, stablecoins y operaciones empresariales."
+  },
+  "Receita Federal / Valor Investe · set. 2026": {
+    "en": "Receita Federal / Valor Investe · Sep. 2026",
+    "es": "Receita Federal / Valor Investe · sep. 2026"
+  },
+  "Bets: cerca de R$ 600 milhões por dia.": {
+    "en": "Betting: about R$ 600 million per day.",
+    "es": "Apuestas: cerca de R$ 600 millones por día."
+  },
+  "Referência histórica de depósitos, antes da proibição de setembro de 2026.": {
+    "en": "Historical deposit reference, before the September 2026 ban.",
+    "es": "Referencia histórica de depósitos, antes de la prohibición de septiembre de 2026."
+  },
+  "A escala e o volume financeiro.": { "en": "The scale and financial volume.", "es": "La escala y el volumen financiero." },
+  "O público brasileiro.": { "en": "The Brazilian audience.", "es": "El público brasileño." },
+  "A BETTEX busca alcançar os públicos brasileiros de apostas e cripto. A proposta é um produto de investimento que fale a língua dessas pessoas, com experiência familiar, custos claros e risco de perda explícito.": {
+    "en": "BETTEX aims to reach Brazilian betting and crypto audiences. The proposal is an investment product that speaks their language, with a familiar experience, clear costs and an explicit risk of loss.",
+    "es": "BETTEX busca llegar a los públicos brasileños de apuestas y cripto. La propuesta es un producto de inversión que hable su idioma, con una experiencia familiar, costos claros y riesgo de pérdida explícito."
+  },
+  "Públicos potenciais e público central": { "en": "Potential audiences and core audience", "es": "Públicos potenciales y público central" },
+  "Público potencial": { "en": "Potential audience", "es": "Público potencial" },
+  "Potencial": { "en": "Potential", "es": "Potencial" },
+  "Público central estimado": { "en": "Estimated core audience", "es": "Público central estimado" },
+  "Público potencial de apostadores": { "en": "Potential audience of bettors", "es": "Público potencial de apostadores" },
+  "Público potencial com experiência em cripto": { "en": "Potential audience with crypto experience", "es": "Público potencial con experiencia en cripto" },
+  "Apostadores · público potencial": { "en": "Bettors · potential audience", "es": "Apostadores · público potencial" },
+  "Cripto · público potencial": { "en": "Crypto · potential audience", "es": "Cripto · público potencial" },
+  "Público potencial · apostas": { "en": "Potential audience · betting", "es": "Público potencial · apuestas" },
+  "Público potencial · cripto": { "en": "Potential audience · crypto", "es": "Público potencial · cripto" },
+  "Já tiveram": { "en": "Have had", "es": "Han tenido" },
+  "cripto": { "en": "crypto", "es": "cripto" },
+  "Alcance potencial combinado, sem duplicados": { "en": "Combined potential reach, without duplicates", "es": "Alcance potencial combinado, sin duplicados" },
+  "O núcleo reúne, neste cenário, apostadores com experiência em cripto.": {
+    "en": "In this scenario, the core audience consists of bettors with crypto experience.",
+    "es": "En este escenario, el núcleo reúne a apostadores con experiencia en cripto."
+  },
+  "A BETTEX pretende alcançar os dois públicos potenciais, não apenas sua interseção. O público central não limita o alcance do produto.": {
+    "en": "BETTEX aims to reach both potential audiences, not just their intersection. The core audience does not limit the product's reach.",
+    "es": "BETTEX pretende llegar a ambos públicos potenciales, no solo a su intersección. El público central no limita el alcance del producto."
+  },
+  "A participação na BETTEX exige 18 anos ou mais. Experiência em apostas ou cripto não é requisito para usar o produto.": {
+    "en": "Participation in BETTEX requires being 18 or older. Experience with betting or crypto is not a requirement for using the product.",
+    "es": "Participar en BETTEX requiere tener 18 años o más. La experiencia en apuestas o cripto no es un requisito para usar el producto."
+  },
+  "A BETTEX pretende alcançar apostadores brasileiros e pessoas com experiência em cripto. O público central estimado é um núcleo de afinidade, não o limite de atuação do produto.": {
+    "en": "BETTEX aims to reach Brazilian bettors and people with crypto experience. The estimated core audience is a group with shared interests, not the limit of the product's scope.",
+    "es": "BETTEX pretende llegar a apostadores brasileños y personas con experiencia en cripto. El público central estimado es un núcleo de afinidad, no el límite de actuación del producto."
+  },
+  "A oportunidade da BETTEX é oferecer a esses públicos um produto de investimento com experiência familiar, linguagem acessível e estratégias geridas por IA. O objetivo é redirecionar a busca por retorno financeiro das apostas para a participação em resultados de investimentos em mercados de risco.": {
+    "en": "BETTEX's opportunity is to offer these audiences an investment product with a familiar experience, accessible language and AI-managed strategies. The goal is to redirect the pursuit of financial returns from betting toward participation in investment results in risk markets.",
+    "es": "La oportunidad de BETTEX es ofrecer a estos públicos un producto de inversión con una experiencia familiar, lenguaje accesible y estrategias gestionadas por IA. El objetivo es redirigir la búsqueda de retorno financiero de las apuestas hacia la participación en resultados de inversiones en mercados de riesgo."
+  },
   "Imagem conceitual": { "en": "Conceptual image", "es": "Imagen conceptual" },
   "Duas bandejas de trabalho financeiro separadas sobre uma mesa creme, em azul e dourado, representando tesouraria e empresa distintas": {
     "en": "Two separate financial work trays on a cream table, in blue and gold, representing distinct treasury and company accounts",

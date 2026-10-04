@@ -7,7 +7,7 @@ const sections = [
   { id: 'problema', label: 'Problema' },
   { id: 'agora', label: 'IA e trabalho', children: [
     { id: 'agora', label: 'Elon Musk e trabalho' },
-    { id: 'risco-bolha-ia', label: 'Bolha da IA' },
+    { id: 'risco-bolha-ia', label: 'Patrimônio e salário' },
   ] },
   { id: 'resgatar-futuro', label: 'Resgatar o futuro' },
   { id: 'solucao', label: 'Solução' },
