@@ -9,6 +9,8 @@
   position: relative;
   width: 100%;
 }
+.home-page .technology-networks { border-top: 4px solid #F2B632; }
+.home-page .technology-networks__label { top: -2px; }
 .technology-networks__label {
   position: absolute;
   z-index: 2;
