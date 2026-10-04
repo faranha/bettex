@@ -13,7 +13,6 @@ import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
 import { TokenValueMechanisms } from '@/components/pitch/TokenValueMechanisms';
 import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
 import { RoadmapSection } from '@/components/RoadmapSection';
-import { LaunchSimulation } from '@/components/pitch/LaunchSimulation';
 import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipationFlow';
 import { PitchObservations } from '@/components/pitch/PitchObservations';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
@@ -215,7 +214,7 @@ export function PitchPage() {
       </aside>
       <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.</p>
       <FounderLaunchFunnel />
-      <LaunchSimulation />
+      {/* Launch simulation intentionally unpublished; its component is retained for future reactivation. */}
       <div className="pitch-community" id="pitch-community">
         <div className="pitch-community__copy">
           <p className="mono text-[11px] font-bold uppercase tracking-[.18em] text-[#5F86FF]">Community-driven</p>
