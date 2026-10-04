@@ -35,8 +35,8 @@
 .sf-brand .sf-lang:hover, .sf-brand .sf-lang[data-state=open] { background: #18284d; border-color: #F2B632; }
 .sf-brand .sf-lang .lang-selector__flag { width: 20px; height: 14px; }
 .sf-brand .sf-lang .lang-selector__chevron { width: 10px; height: 10px; }
-.sf-community { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 10px 12px; border: 1px solid #F2B632; border-radius: 10px; background: #F2B632; color: #070B1F; font-size: 14px; font-weight: 700; line-height: 1.25; text-align: center; transition: background .15s, border-color .15s; }
-.sf-community:hover { background: #ffcd55; border-color: #ffcd55; }
+.sf-community { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 10px 12px; border: 1px solid #2B59FF; border-radius: 10px; background: #2B59FF; color: #FFFFFF; font-size: 14px; font-weight: 700; line-height: 1.25; text-align: center; transition: background .15s, border-color .15s; }
+.sf-community:hover { background: #2147D9; border-color: #2147D9; }
 .sf-community__icon { width: 18px; height: 18px; flex: none; color: currentColor; }
 .sf-community:focus-visible { outline: 2px solid #F4F1E8; outline-offset: 3px; }
 .sf-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; font-size: 12px; color: #829ddc; }

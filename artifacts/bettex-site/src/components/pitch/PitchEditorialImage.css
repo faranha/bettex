@@ -1,0 +1,21 @@
+.pei { margin: 0; position: relative; width: 100%; max-width: 420px; border: 2px solid #F2B632; border-radius: 6px; overflow: hidden; background: #070B1F; box-shadow: 8px 8px 0 rgba(43,89,255,.5); }
+.pei img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.pei figcaption { background: #F2B632; color: #070B1F; font: 700 11px/1.4 var(--app-font-mono, monospace); letter-spacing: .06em; text-transform: uppercase; padding: 7px 10px; }
+.pei--dark { border-color: #5F86FF; box-shadow: 8px 8px 0 rgba(242,182,50,.5); }
+.pes { display: grid; grid-template-columns: minmax(0,1fr); gap: 28px; margin-bottom: 32px; align-items: start; }
+.pes__media, .pes__main { min-width: 0; }
+.pes__media { justify-self: start; width: min(100%, 420px); padding-right: 8px; padding-bottom: 8px; }
+@media (min-width: 768px) {
+  .pes--left { grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 40px; }
+  .pes--right { grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 40px; }
+  .pes--right .pes__media { order: 2; justify-self: end; }
+  .pes--left .pes__media, .pes--right .pes__media { position: sticky; top: calc(var(--pitch-sticky-h, 120px) + 16px); }
+  .pes--left .pei { transform: rotate(-1deg); }
+  .pes--right .pei { transform: rotate(1deg); }
+}
+/* inside the split, cards stack in one column (beats .slide__body > .grid rules by not being direct children) */
+.pes__main > .grid { grid-template-columns: minmax(0,1fr) !important; gap: 0; }
+.pes__main > .grid > * { border-radius: 0 !important; border-width: 0 0 0 4px; border-color: #F2B632; background: transparent; padding: 8px 24px; margin-bottom: 24px; }
+.pes__main > p { margin-top: 0; }
+.pes__main .flf__stage { animation: none; }
+@media (max-width: 359px) { .pei { box-shadow: 5px 5px 0 rgba(43,89,255,.5); } .pes__media { padding-right: 5px; } }

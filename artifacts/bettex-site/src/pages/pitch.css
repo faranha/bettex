@@ -112,13 +112,7 @@ img, svg, video { max-width: 100%; }
 .slide__body > .grid.md\:grid-cols-3:not(.pitch-metrics) > *, .slide__body > .grid.md\:grid-cols-2 > * { border-width: 0 0 0 4px; border-color: #F2B632; background: transparent; padding-block: 8px; padding-inline: 24px; margin-bottom: 24px; }
 .slide--dark .slide__body > .grid > * { background: transparent; }
 .slide__body ol > li, .slide__body ul > li { border-radius: 4px !important; }
-.pitch .fp--portrait { display: grid; grid-template-columns: minmax(0,300px) minmax(0,1fr); column-gap: 32px; align-items: start; }
-.pitch .fp--portrait > * { grid-column: 2; }
-.pitch .fp--portrait > .fp__portrait { grid-column: 1; grid-row: 1 / span 6; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border: 1px solid rgba(244,241,232,.25); border-radius: 8px; }
 @media (max-width: 767px) {
-  .pitch .fp--portrait { grid-template-columns: minmax(0,1fr); }
-  .pitch .fp--portrait > .fp__portrait { grid-column: 1; grid-row: auto; max-width: 280px; margin-bottom: 20px; }
-  .pitch .fp--portrait > * { grid-column: 1; }
   .slide__head { padding: 40px 0 32px; }
 }
 @media (prefers-reduced-motion: reduce) { .pitch * { transition: none !important; scroll-behavior: auto !important; } }

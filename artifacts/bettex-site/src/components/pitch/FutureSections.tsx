@@ -16,14 +16,14 @@ export function FutureSections() {
   return <>
     <section id="agora" aria-labelledby="agora-t" className="slide fu fu--one">
       <div className="page-wrap">
-        <div className="mono fu-kicker"><span>02 / 9</span><span className="fu-rule" aria-hidden="true" />Promessa sob contestação</div>
+        <div className="mono fu-kicker"><span>02 / 9</span><span className="fu-rule" aria-hidden="true" />Resgatar o futuro antes da crise</div>
         <div className="fu-hero">
           <div>
             <div className="fu-verdict">
               <span className="mono">Tese da BETTEX</span>
               <h2 id="agora-t" className="display">É mentira, a era da prosperidade é uma mentira.</h2>
             </div>
-            <p className="fu-sub">Na tese da BETTEX, a promessa de abundância esconde o risco de androides substituírem trabalhadores: os ganhos ficam com os donos das máquinas, enquanto quem depende de salário pode perder renda e lugar na economia.</p>
+            <p className="fu-sub">Na BETTEX, acreditamos que milhões de pessoas vão perder o trabalho e ficar sem renda antes que a prosperidade prometida pela IA chegue. Nossa visão é que a crise, a miséria e o abandono virão primeiro, enquanto os ganhos se concentram em quem controla as máquinas. Por isso, nossa missão é resgatar o futuro das pessoas agora: ampliar o acesso à participação econômica em um mundo automatizado, sem esperar que o socorro venha depois da exclusão.</p>
             <p className="fu-frame"><Src href="https://www.businessinsider.com/elon-musk-ai-abundance-trump-jobs-wealth-healthcare-ubi-robots-2026-9">Business Insider, 30 set. 2026</Src></p>
             <p className="fu-sub">IA e robôs vão destruir empregos e a economia real. As pessoas vão enfrentar miséria e abandono antes de qualquer socorro chegar.</p>
           </div>
@@ -35,7 +35,7 @@ export function FutureSections() {
         <div id="cenario-exclusao" className="fu-exposed">
           <span className="mono fu-tag">O cenário apocalíptico</span>
           <h3 className="display">Sem emprego. Sem renda. Sem lugar na nova economia.</h3>
-          <p>Se androides assumem funções físicas e a IA substitui atividades de escritório, a ameaça é perder o emprego e descobrir que a próxima oportunidade também deixou de existir.</p>
+          <p>Esse é o apocalipse econômico que acreditamos estar se aproximando: a tecnologia avança, mas pessoas ficam sem trabalho, sem salário e sem uma nova oportunidade. A BETTEX nasce para agir diante dessa ameaça, antes que a exclusão se consolide.</p>
           <ol className="fu-pauta"><li>EUA: vagas abertas</li><li>Brasil: menos novas vagas</li><li>Inflação, petróleo e conflitos globais</li><li>Alertas de um futuro sem trabalho</li><li>Bolha da IA e risco de ruptura</li><li>Desta vez, patrimônio e salário</li></ol>
           <USVacancyChart />
           <BrazilEmploymentCharts />
@@ -51,10 +51,12 @@ export function FutureSections() {
             </article>
           </div>
           <p className="fu-evidence-limit">Os indicadores têm períodos e métodos diferentes e não devem ser somados. Stanford não encontra eliminação generalizada de empregos na economia; a comparação não prova causalidade da IA.</p>
-          <AIBubbleScenario />
-          <p className="display fu-now">Só resta o agora. O amanhã está perdido.</p>
-          <p className="fu-scenario-note">Tese da BETTEX sobre o risco de exclusão, não uma previsão inevitável nem uma promessa de renda do projeto.</p>
         </div>
+        <section id="risco-bolha-ia" className="fu-exposed fu-bubble-subsection" aria-labelledby="ai-bubble-title">
+          <AIBubbleScenario />
+          <p className="display fu-now">Resgatar esse futuro começa agora. Não depois da crise.</p>
+          <p className="fu-scenario-note">Tese da BETTEX sobre o risco de exclusão, não uma previsão inevitável nem uma promessa de renda do projeto.</p>
+        </section>
         <div id="tesla-spacex" className="fu-pair fu-pair--focused">
           <article className="fu-card fu-card--tesla">
             <figure className="fu-card-media fu-card-media--optimus">

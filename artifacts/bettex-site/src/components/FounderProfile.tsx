@@ -2,6 +2,7 @@ import g from '@/lib/growth-strategy.json';
 import { ExternalLink } from 'lucide-react';
 import { founderSocials } from '@/lib/founder-socials';
 import './growth.css';
+import './FounderProfilePitch.css';
 
 const n = (v: number) => v.toLocaleString('pt-BR');
 const f = g.founder;
@@ -13,7 +14,7 @@ export function FounderProfile({ dark = false, id, portrait = false, noDashes = 
     ['YouTube', `${f.youtubeMoreThan ? 'mais de ' : ''}${n(f.youtube)}`, 'inscritos'],
     ['X', n(f.x), 'seguidores'],
   ];
-  return <figure id={id} className={`fp${dark ? ' fp--dark' : ''}${portrait ? ' fp--portrait' : ''}${doc ? ' fp--doc' : ''}`} aria-label="Apresentação do fundador">
+  return <figure id={id} className={`fp${dark ? ' fp--dark' : ''}${portrait ? ' fp--portrait' : ''}${doc ? ' fp--doc' : ''}${thirdPerson && portrait && !doc ? ' fp--pitch' : ''}`} aria-label="Apresentação do fundador">
     {portrait ? <img className="fp__portrait" src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/fred-azevedo.png`} alt="Retrato de Fred Azevedo, fundador da BETTEX" width={400} height={400} loading="lazy" decoding="async" /> : null}
     <span className="mono text-[10px] font-bold uppercase tracking-[.14em]" style={{ color: dark ? '#F2B632' : '#2B59FF' }}>{thirdPerson ? 'Experiência internacional e comunidade própria' : 'Founder-led · distribuição existente'}</span>
     {thirdPerson

@@ -1,4 +1,57 @@
 {
+  "Imagem conceitual": { "en": "Conceptual image", "es": "Imagen conceptual" },
+  "Duas bandejas de trabalho financeiro separadas sobre uma mesa creme, em azul e dourado, representando tesouraria e empresa distintas": {
+    "en": "Two separate financial work trays on a cream table, in blue and gold, representing distinct treasury and company accounts",
+    "es": "Dos bandejas de trabajo financiero separadas sobre una mesa crema, en azul y dorado, que representan tesorería y empresa distintas"
+  },
+  "Disco de token em azul e dourado sobre fundo azul-marinho, ilustração conceitual de participação": {
+    "en": "A blue and gold token disc against a navy background, a conceptual illustration of participation",
+    "es": "Disco de token azul y dorado sobre fondo azul marino, ilustración conceptual de participación"
+  },
+  "Pequeno grupo de pessoas conversando sobre tecnologia em um café brasileiro, cena ilustrativa": {
+    "en": "A small group discussing technology in a Brazilian cafe, an illustrative scene",
+    "es": "Un pequeño grupo de personas conversando sobre tecnología en un café brasileño, escena ilustrativa"
+  },
+  "Notebook, caderno de protótipo, placa de circuito e infraestrutura, ilustração do desenvolvimento do produto": {
+    "en": "Laptop, prototype notebook, circuit board and infrastructure, an illustration of product development",
+    "es": "Portátil, cuaderno de prototipo, placa de circuito e infraestructura, ilustración del desarrollo del producto"
+  },
+  "pitch-brazil-community": { "en": "pitch-brazil-community", "es": "pitch-brazil-community" },
+  "pitch-economy-separation": { "en": "pitch-economy-separation", "es": "pitch-economy-separation" },
+  "pitch-product-development": { "en": "pitch-product-development", "es": "pitch-product-development" },
+  "pitch-token-participation": { "en": "pitch-token-participation", "es": "pitch-token-participation" },
+  "Investimento, não aposta: o usuário mantém seus tokens BETTEX mesmo se as operações tiverem prejuízo. O token pode perder valor e ter baixa liquidez. Sem lucro elegível ou condições de pagamento, não há distribuição.": {
+    "en": "Investment, not a bet: the user retains their BETTEX tokens even if operations incur losses. The token can lose value and have low liquidity. Without eligible profit or payment conditions, there is no distribution.",
+    "es": "Inversión, no apuesta: el usuario conserva sus tokens BETTEX incluso si las operaciones tienen pérdidas. El token puede perder valor y tener poca liquidez. Sin beneficio elegible o condiciones de pago, no hay distribución."
+  },
+  "A IA opera com o capital da tesouraria, nunca com os tokens em staking. Operar gera resultado, que pode ser negativo.": { "en": "AI operates with treasury capital, never with staked tokens. Operations produce results, which may be negative.", "es": "La IA opera con el capital de la tesorería, nunca con los tokens en staking. Las operaciones generan resultados que pueden ser negativos." },
+  "A aquisição de BETTEX conecta a operação à participação do usuário. O preço da venda pública primária financia a tesouraria; o saldo elegível define o peso no rateio. Os resultados da IA e o peso de cada usuário se encontram na distribuição em USDC, quando a rodada pode pagar.": { "en": "Acquiring BETTEX connects operations with user participation. The primary public sale price funds the treasury; the eligible balance determines allocation weight. AI results and each user's weight come together in USDC distribution when the round can pay.", "es": "La adquisición de BETTEX conecta la operación con la participación del usuario. El precio de la venta pública primaria financia la tesorería; el saldo elegible define el peso en el reparto. Los resultados de la IA y el peso de cada usuario se unen en la distribución en USDC, cuando la ronda puede pagar." },
+  "Capital formado pelo preço da venda pública primária.": { "en": "Capital funded by the primary public sale price.", "es": "Capital formado por el precio de la venta pública primaria." },
+  "Como a participação se liga à operação": { "en": "How participation connects with operations", "es": "Cómo se conecta la participación con la operación" },
+  "Frentes de atuação": { "en": "Operational areas", "es": "Áreas de operación" },
+  "IA opera quatro frentes": { "en": "AI operates across four areas", "es": "La IA opera en cuatro áreas" },
+  "O saldo de BETTEX e o tempo elegível no aplicativo oficial definem o peso de cada usuário no rateio. Os tokens em staking não financiam as operações.": { "en": "The BETTEX balance and eligible time in the official app determine each user's allocation weight. Staked tokens do not fund operations.", "es": "El saldo de BETTEX y el tiempo elegible en la aplicación oficial definen el peso de cada usuario en el reparto. Los tokens en staking no financian las operaciones." },
+  "O usuário acompanha:": { "en": "The user monitors:", "es": "El usuario consulta:" },
+  "O usuário adquire o token. Somente o preço da venda pública primária vai integralmente à tesouraria; compras em mercado secundário não financiam a tesouraria. A tarifa de serviço é separada.": { "en": "The user acquires the token. Only the primary public sale price goes entirely to the treasury; secondary-market purchases do not fund the treasury. The service fee is separate.", "es": "El usuario adquiere el token. Solo el precio de la venta pública primaria va íntegramente a la tesorería; las compras en el mercado secundario no financian la tesorería. La tarifa de servicio es independiente." },
+  "Sem rodada elegível, não há pagamento e ele não é acumulado. Nenhum retorno é garantido.": { "en": "Without an eligible round, there is no payment and no payment accumulates. No return is guaranteed.", "es": "Sin una ronda elegible, no hay pago ni se acumula. Ningún rendimiento está garantizado." },
+  "Trilha da participação, em paralelo": { "en": "Participation path, in parallel", "es": "Ruta de participación, en paralelo" },
+  "Trilha do capital": { "en": "Capital path", "es": "Ruta del capital" },
+  "capital operado pela IA": { "en": "capital operated by AI", "es": "capital operado por la IA" },
+  "lucro líquido realizado, se houver, segue ao passo 04": { "en": "realized net profit, if any, goes to step 04", "es": "el beneficio neto realizado, si existe, pasa al paso 04" },
+  "peso elegível segue ao passo 04": { "en": "eligible weight goes to step 04", "es": "el peso elegible pasa al paso 04" },
+  "preço da venda primária": { "en": "primary sale price", "es": "precio de la venta primaria" },
+  "resultados, custos, alocações e registros de conciliação.": { "en": "results, costs, allocations and reconciliation records.", "es": "resultados, costos, asignaciones y registros de conciliación." },
+  "saldo de BETTEX adquirido": { "en": "acquired BETTEX balance", "es": "saldo de BETTEX adquirido" },
+  "Lucro líquido, reservas, liquidez e peso elegível: condições para a distribuição.": { "en": "Net profit, reserves, liquidity and eligible weight: conditions for distribution.", "es": "Beneficio neto, reservas, liquidez y peso elegible: condiciones para la distribución." },
+  "money": { "en": "money", "es": "money" },
+  "weight": { "en": "weight", "es": "weight" },
+  "Resgatar o futuro antes da crise": { "en": "Rescue the future before the crisis", "es": "Rescatar el futuro antes de la crisis" },
+  "Na BETTEX, acreditamos que milhões de pessoas vão perder o trabalho e ficar sem renda antes que a prosperidade prometida pela IA chegue. Nossa visão é que a crise, a miséria e o abandono virão primeiro, enquanto os ganhos se concentram em quem controla as máquinas. Por isso, nossa missão é resgatar o futuro das pessoas agora: ampliar o acesso à participação econômica em um mundo automatizado, sem esperar que o socorro venha depois da exclusão.": { "en": "At BETTEX, we believe that millions of people will lose their jobs and be left without income before the prosperity promised by AI arrives. Our view is that crisis, poverty and abandonment will come first, while the gains concentrate among those who control the machines. That is why our mission is to rescue people's future now: to broaden access to economic participation in an automated world, without waiting for help to arrive after exclusion.", "es": "En BETTEX, creemos que millones de personas perderán el trabajo y quedarán sin ingresos antes de que llegue la prosperidad prometida por la IA. Nuestra visión es que la crisis, la miseria y el abandono llegarán primero, mientras las ganancias se concentran en quienes controlan las máquinas. Por eso, nuestra misión es rescatar el futuro de las personas ahora: ampliar el acceso a la participación económica en un mundo automatizado, sin esperar que la ayuda llegue después de la exclusión." },
+  "Esse é o apocalipse econômico que acreditamos estar se aproximando: a tecnologia avança, mas pessoas ficam sem trabalho, sem salário e sem uma nova oportunidade. A BETTEX nasce para agir diante dessa ameaça, antes que a exclusão se consolide.": { "en": "This is the economic apocalypse we believe is approaching: technology advances, but people are left without jobs, salaries or a new opportunity. BETTEX is founded to act in response to this threat, before exclusion becomes entrenched.", "es": "Este es el apocalipsis económico que creemos que se aproxima: la tecnología avanza, pero las personas quedan sin trabajo, sin salario y sin una nueva oportunidad. BETTEX nace para actuar ante esta amenaza, antes de que la exclusión se consolide." },
+  "Resgatar esse futuro começa agora. Não depois da crise.": { "en": "Rescuing that future starts now. Not after the crisis.", "es": "Rescatar ese futuro empieza ahora. No después de la crisis." },
+  "Elon Musk e trabalho": { "en": "Elon Musk and work", "es": "Elon Musk y trabajo" },
+  "Bolha da IA": { "en": "AI bubble", "es": "Burbuja de la IA" },
+  "details": { "en": "details", "es": "details" },
   "03 / Inflação e petróleo · choque global": { "en": "03 / Inflation and oil · global shock", "es": "03 / Inflación y petróleo · choque global" },
   "04 / Futuro do trabalho · matérias e alertas": { "en": "04 / Future of work · reports and warnings", "es": "04 / Futuro del trabajo · artículos y alertas" },
   "05 / Bolha da IA · risco financeiro": { "en": "05 / AI bubble · financial risk", "es": "05 / Burbuja de la IA · riesgo financiero" },

@@ -20,3 +20,15 @@ No Pitch, mostrar a distribuição de tokenomics em pizza e a liberação progre
 **Why:** O criador disse que as seções seis e sete pareciam a mesma seção e cobrou os dois gráficos visíveis no Pitch.
 
 **How to apply:** Preservar gráficos abertos, com percentuais e agenda aprovados, também no celular. Cartões de texto e links para a documentação não substituem os gráficos. Manter os limites visuais das seções nas revisões.
+
+Na Solução, o percurso de participação e as quatro frentes operacionais devem formar um único diagrama conectado, não dois conjuntos de cartões separados.
+
+**Why:** O criador disse que o gráfico parecia apresentar “coisas diferentes e separadas” e pediu juntá-las e conectá-las melhor.
+
+**How to apply:** Integrar as frentes à operação com IA e mostrar a relação com aquisição, tesouraria, staking e distribuição. A conexão visual não pode inventar que os tokens em staking financiam operações; capital e peso de participação se encontram na distribuição condicionada.
+
+Não reintroduzir a linha “Saída e elegibilidade” no quadro comparativo do Pitch.
+
+**Why:** O criador mostrou essa linha e pediu removê-la do quadro comparativo.
+
+**How to apply:** A exclusão é de apresentação nesse quadro, não uma alteração das regras de saída, cancelamento de créditos ou independência das rodadas nas demais áreas.

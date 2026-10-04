@@ -50,3 +50,15 @@ O gráfico brasileiro deve mostrar evolução histórica e a tendência recente 
 **Why:** O criador pediu substituir a comparação curta por uma evolução que permita enxergar as quedas e acrescentar essas pressões globais ao cenário.
 
 **How to apply:** Comparar a mesma janela de meses em todos os anos e mostrar recuperações intermediárias, sem forçar queda contínua ou inventar projeções. Distinguir criação líquida de empregos do estoque ocupado; separar inflação registrada, prévia e expectativa. Choques do petróleo são riscos de pressão sobre preços, não prova de uma explosão inflacionária já medida.
+
+Bolha da IA e a tese de perda simultânea de patrimônio e salário precisam de subseção própria dentro da área de Elon Musk, não de uma seção principal fora dela.
+
+**Why:** O criador mostrou esses dois blocos e pediu que tivessem “a propria sub secao dentro da area do Elon”.
+
+**How to apply:** Preservar o conteúdo e as fontes, com separação visual e navegação subordinada a IA e trabalho no desktop e no celular.
+
+A área de Elon Musk apresenta a visão de resgate da BETTEX diante do apocalipse econômico que o fundador considera iminente: pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA.
+
+**Why:** O criador esclareceu que “é sobre apresentar a visão de resgate frente ao apocalipse iminente” e pediu um parágrafo claro ligando essa crença à missão de resgatar o futuro agora.
+
+**How to apply:** Explicitar essa relação já na abertura e manter a urgência de agir antes da exclusão ao longo da área. Não reduzir o trecho a críticas a Musk ou a uma lista de sinais econômicos. Apresentar a crença como visão da BETTEX, sem transformar a missão em promessa de renda ou proteção garantida.

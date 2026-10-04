@@ -40,3 +40,9 @@ A tese de demanda apresentada pelo criador é: “se a IA tiver resultado positi
 **Why:** Essa é a definição econômica do projeto dada pelo usuário, que corrigiu uma avaliação que complicava sua proposta.
 
 **How to apply:** Explicar e avaliar a BETTEX a partir desse mecanismo simples, sem atribuir sofisticação ou adicionar camadas não solicitadas. Usar as decisões em replit.md para estrutura de entidade única, direitos dos titulares, financiamento e alternativas de jurisdição; não tratar a preferência histórica pela Sérvia como escolha definitiva.
+
+Na comparação com apostas, é permitido chamar a aquisição de BETTEX de investimento. Isso não redefine a BETTEX como fundo nem muda o nome do usuário para investidor.
+
+**Why:** Ao revisar os riscos do quadro comparativo, o criador pediu deixar claro que “não tem perda do token”, “não é uma aposta, é investimento”.
+
+**How to apply:** Distinguir manter a quantidade de tokens após prejuízos operacionais de preservar seu valor de mercado. Não sugerir capital ou preço garantidos nem retirar os riscos de desvalorização, liquidez e ausência de distribuição.

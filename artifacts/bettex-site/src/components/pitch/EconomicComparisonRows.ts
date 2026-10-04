@@ -20,12 +20,6 @@ export const economicComparisonRows: EconomicComparisonRow[] = [
     bettex: 'Parcela do pool global de stakers, rateada pelo peso elegível da rodada. Exige lucro elegível, reserva e liquidez; não é retorno fixo.',
   },
   {
-    criterion: 'Saída e elegibilidade',
-    bet: 'Resultado e liquidação seguem as regras da aposta.',
-    priceToken: 'Venda depende de comprador e liquidez do mercado.',
-    bettex: 'Qualquer saída de BETTEX, mesmo parcial, cancela créditos ainda não pagos e zera todo o peso anterior da rodada. Rodadas encerradas não acumulam direitos.',
-  },
-  {
     criterion: 'Custos',
     bet: 'Custos podem estar nas odds e em tarifas da plataforma.',
     priceToken: 'Custos de negociação, spread e rede, conforme mercado e plataforma.',
@@ -41,6 +35,6 @@ export const economicComparisonRows: EconomicComparisonRow[] = [
     criterion: 'Riscos',
     bet: 'Perda do valor apostado.',
     priceToken: 'Perda de valor e falta de liquidez para revenda.',
-    bettex: 'Perda de capital, risco de preço e liquidez. Sem lucro elegível ou condições de pagamento, não há distribuição.',
+    bettex: 'Investimento, não aposta: o usuário mantém seus tokens BETTEX mesmo se as operações tiverem prejuízo. O token pode perder valor e ter baixa liquidez. Sem lucro elegível ou condições de pagamento, não há distribuição.',
   },
 ];
