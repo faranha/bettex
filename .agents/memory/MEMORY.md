@@ -29,7 +29,7 @@
 - [Rodapé](footer-scope.md) — navegação compacta, convite simples ao Telegram no mobile e desktop; sem redes pessoais do fundador.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
 - [Ordem e leitura da documentação](documentation-reading-order.md) — Entidade após Visão; um capítulo visível por vez, com subseções apenas da área selecionada.
-- [Leitura do pitch](pitch-reading-behavior.md) — sem caixas expansíveis; Diferenciação comparativa; tokenomics e vesting em gráficos visíveis, com seções distintas.
+- [Leitura do pitch](pitch-reading-behavior.md) — Público antes de Problema; cenário em Ambiente externo; Economia e Token em Tokenomics; gráficos abertos; menu adiado.
 - [Go to market no Brasil](pitch-brazil-go-to-market.md) — substituir Onboarding; sem seção de Piloto nem expansão internacional nesse bloco do Pitch.
 - [Visual e tom do pitch](pitch-visual-direction.md) — leitores: grandes investidores e anjos; usuário: apostador brasileiro, sem “pequeno investidor” ou “adulto” como rótulo.
 - [Pauta do cenário apocalíptico](pitch-economic-risk-story.md) — reunir emprego EUA, gráfico brasileiro, matérias sombrias, bolha da IA e perda de patrimônio/salário no mesmo trecho.

@@ -3,6 +3,12 @@ name: Render-time localization pitfalls
 description: Browser/SSR differences and React fragment handling when localizing existing JSX.
 ---
 
+Use explicit JSX heading branches when switching heading levels; don't add HTML tag names to the translation catalogue to satisfy extraction.
+
+**Why:** The source-message extractor treats conditional intrinsic-tag strings such as `h2` as translatable copy, even though they are not visible text.
+
+**How to apply:** Prefer conditional `<h2>` / `<h3>` elements rather than a variable containing those tag strings, and verify source-message coverage after changing semantic heading levels.
+
 Em JSX com o runtime de localização do site, colocar `key` antes de props espalhadas (`{...props}`).
 
 **Why:** Babel converte elementos com `key` depois de um spread para `createElement` importado da raiz do `jsxImportSource`. O runtime local não expõe essa raiz, causando erro de módulo mesmo quando o TypeScript passa.

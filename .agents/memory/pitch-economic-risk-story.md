@@ -27,11 +27,11 @@ O criador pediu trabalhar mais com gráficos nesse trecho, incluindo a queda das
 
 **How to apply:** Mostrar oportunidades de contratação, perdas líquidas e cortes anunciados como métricas distintas, com unidades e períodos visíveis. O percentual desde um pico não equivale a postos eliminados nem a desemprego.
 
-O tema Elon Musk e o cenário apocalíptico vêm antes de “Resgatar o futuro das pessoas” no Pitch.
+O tema Elon Musk e o cenário apocalíptico vêm antes dos indicadores sobre a economia real, agora na mesma área de Ambiente externo no Pitch.
 
 **Why:** O criador revisou a ordem anterior, mostrou “Resgatar o futuro das pessoas” e corrigiu: “essa parte vem abaixo da parte do Elon Musk amigo”.
 
-**How to apply:** Preservar a ordem também na navegação do Pitch, mantendo as evidências remanescentes, os gráficos brasileiros, as matérias e as imagens do bloco de Elon Musk.
+**How to apply:** Preservar a sequência interna na área unificada de Ambiente externo, mantendo as evidências remanescentes, os gráficos brasileiros, as matérias e as imagens do bloco de Elon Musk. A missão de resgatar o futuro pertence à Solução. O criador adiou a atualização do menu.
 
 Na parte de Elon Musk, manter apenas o conteúdo mais polêmico, problemático e apocalíptico, sem a contraposição otimista ou explicações secundárias.
 
@@ -57,11 +57,11 @@ A tese de perda simultânea de patrimônio e salário precisa de subseção pró
 
 **How to apply:** Preservar o conteúdo e as fontes, com separação visual e navegação subordinada a IA e trabalho no desktop e no celular.
 
-A área de Elon Musk apresenta a visão de resgate da BETTEX diante do apocalipse econômico que o fundador considera iminente: pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA.
+A tese de pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA, agora define o segundo problema. Musk e os indicadores econômicos são sua análise de Ambiente externo.
 
 **Why:** O criador esclareceu que “é sobre apresentar a visão de resgate frente ao apocalipse iminente” e pediu um parágrafo claro ligando essa crença à missão de resgatar o futuro agora.
 
-**How to apply:** Explicitar essa relação já na abertura e manter a urgência de agir antes da exclusão ao longo da área. Não reduzir o trecho a críticas a Musk ou a uma lista de sinais econômicos. Apresentar a crença como visão da BETTEX, sem transformar a missão em promessa de renda ou proteção garantida.
+**How to apply:** Explicitar a crença em Problema, analisar o cenário em Ambiente externo e apresentar a missão de resgate na Solução. Não transformar a crença em fatos comprovados nem a missão em promessa de renda ou proteção garantida.
 
 Não reintroduzir os quatro trechos que o criador mostrou e mandou retirar: a cadeia “Cenário de choque, não previsão”; o cartão Stanford “19% abaixo” e sua nota; o bloco “A tecnologia pode ser real. O preço pode ser uma bolha.” com as matérias de Reuters e Altman; e o fechamento “Resgatar esse futuro começa agora. Não depois da crise.” com sua nota.
 

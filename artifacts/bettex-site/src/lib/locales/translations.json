@@ -1,4 +1,43 @@
 {
+  "01 / 10 · Início": { "en": "01 / 10 · Start", "es": "01 / 10 · Inicio" },
+  "Público e mercado": { "en": "Audience and market", "es": "Público y mercado" },
+  "1. Perda de dinheiro nas apostas": { "en": "1. Losing money on bets", "es": "1. Pérdida de dinero en apuestas" },
+  "2. Emprego e renda ameaçados pela IA": { "en": "2. Jobs and income threatened by AI", "es": "2. Empleo e ingresos amenazados por la IA" },
+  "A tese da BETTEX é que apostar para obter renda ou quitar dívidas é atribuir ao jogo uma função de investimento. Ao tratar apostas como investimento, o brasileiro se expõe à perda de dinheiro justamente quando busca melhorar sua situação financeira.": {
+    "en": "BETTEX's thesis is that betting to earn income or pay off debts assigns an investment function to gambling. By treating bets as investments, Brazilians expose themselves to losing money precisely when they seek to improve their financial situation.",
+    "es": "La tesis de BETTEX es que apostar para obtener ingresos o pagar deudas atribuye al juego una función de inversión. Al tratar las apuestas como inversiones, el brasileño se expone a perder dinero justamente cuando busca mejorar su situación financiera."
+  },
+  "Na visão da BETTEX, brasileiros e populações de todo o mundo vão enfrentar desemprego em massa em breve: IA e robôs vão causar um estrago gigante na economia real antes que a prosperidade prometida chegue. Acreditamos que a crise, a miséria e o abandono virão primeiro, enquanto os ganhos se concentram em quem controla as máquinas.": {
+    "en": "In BETTEX's view, Brazilians and populations around the world will soon face mass unemployment: AI and robots will wreak havoc on the real economy before the promised prosperity arrives. We believe that crisis, poverty and abandonment will come first, while gains concentrate among those who control the machines.",
+    "es": "En la visión de BETTEX, los brasileños y las poblaciones de todo el mundo enfrentarán pronto un desempleo masivo: la IA y los robots causarán un enorme daño en la economía real antes de que llegue la prosperidad prometida. Creemos que la crisis, la miseria y el abandono llegarán primero, mientras las ganancias se concentran en quienes controlan las máquinas."
+  },
+  "São dois problemas que queremos enfrentar: a perda de dinheiro nas apostas tratadas como investimento e a perda de trabalho e renda em uma economia automatizada.": {
+    "en": "We want to address two problems: losing money on bets treated as investments, and losing jobs and income in an automated economy.",
+    "es": "Queremos enfrentar dos problemas: la pérdida de dinero en apuestas tratadas como inversiones y la pérdida de trabajo e ingresos en una economía automatizada."
+  },
+  "Ambiente externo": { "en": "External environment", "es": "Entorno externo" },
+  "Ambiente externo.": { "en": "External environment.", "es": "Entorno externo." },
+  "Musk, automação do trabalho e o que está acontecendo na economia real.": {
+    "en": "Musk, labor automation and what is happening in the real economy.",
+    "es": "Musk, la automatización del trabajo y lo que está ocurriendo en la economía real."
+  },
+  "Musk e a promessa de prosperidade": { "en": "Musk and the promise of prosperity", "es": "Musk y la promesa de prosperidad" },
+  "Musk projeta uma era de abundância impulsionada por IA e robôs. A análise da BETTEX observa o intervalo entre essa promessa e seus efeitos sobre trabalho, renda e poder de compra.": {
+    "en": "Musk envisions an age of abundance driven by AI and robots. BETTEX's analysis examines the gap between that promise and its effects on jobs, income and purchasing power.",
+    "es": "Musk proyecta una era de abundancia impulsada por la IA y los robots. El análisis de BETTEX examina la distancia entre esa promesa y sus efectos sobre el trabajo, los ingresos y el poder adquisitivo."
+  },
+  "O que já acontece na economia real.": { "en": "What is already happening in the real economy.", "es": "Lo que ya está ocurriendo en la economía real." },
+  "Tokenomics": { "en": "Tokenomics", "es": "Tokenomics" },
+  "Tokenomics.": { "en": "Tokenomics.", "es": "Tokenomics." },
+  "Receitas, tesouraria e direitos do token.": { "en": "Revenue, treasury and token rights.", "es": "Ingresos, tesorería y derechos del token." },
+  "O dinheiro da empresa não se mistura ao da tesouraria.": {
+    "en": "The company's money is not mixed with the treasury's.",
+    "es": "El dinero de la empresa no se mezcla con el de la tesorería."
+  },
+  "Oferta, vesting e direitos do token": {
+    "en": "Supply, vesting and token rights",
+    "es": "Oferta, vesting y derechos del token"
+  },
   "Patrimônio e salário": { "en": "Wealth and wages", "es": "Patrimonio y salario" },
   "R$": { "en": "R$", "es": "R$" },
   "Mais de 60 milhões de brasileiros no público potencial estimado.": {

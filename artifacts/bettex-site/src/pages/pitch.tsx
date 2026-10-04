@@ -1,9 +1,10 @@
 import { useEffect, type ReactNode } from 'react';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, CircuitBoard, ExternalLink } from 'lucide-react';
 import g from '@/lib/growth-strategy.json';
 import { FounderProfile } from '@/components/FounderProfile';
 import { founderSocials } from '@/lib/founder-socials';
 import { ProblemSection } from '@/components/pitch/ProblemSection';
+import { AudienceSection } from '@/components/pitch/AudienceSection';
 import { FutureSections } from '@/components/pitch/FutureSections';
 import { EconomicComparison } from '@/components/pitch/EconomicComparison';
 import { economicComparisonRows } from '@/components/pitch/EconomicComparisonRows';
@@ -19,12 +20,14 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
 const LINKEDIN = founderSocials.find(({ name }) => name === 'LinkedIn')!.href;
 
-function Sec({ id, n, kicker, title, dark = false, summary, children }: { id: string; n: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; children: ReactNode }) {
+function Sec({ id, n, kicker, title, dark = false, summary, subsection = false, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; subsection?: boolean; children: ReactNode }) {
   return <section id={id} aria-labelledby={`${id}-t`} className={`slide ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
     <header className={`slide__head ${dark ? 'slide__head--ink' : 'slide__head--paper'}`}>
       <div className="page-wrap slide__headin">
-        <div className={`mono flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}><span className="whitespace-nowrap">{n} / 9</span><span className="h-px w-10 shrink-0 bg-current" aria-hidden="true" />{kicker}</div>
-        <h2 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h2>
+        <div className={`mono flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}>{n ? <span className="whitespace-nowrap">{n} / 10</span> : null}<span className="h-px w-10 shrink-0 bg-current" aria-hidden="true" />{kicker}</div>
+        {subsection
+          ? <h3 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h3>
+          : <h2 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h2>}
         {summary ? <p className={`mt-5 max-w-[700px] text-base leading-7 ${dark ? 'text-[#e3eaff]' : 'text-[#183173]'}`}>{summary}</p> : null}
       </div>
     </header>
@@ -71,13 +74,13 @@ export function PitchPage() {
     };
   }, []);
   return <main className="pitch">
-    <section id="visao" className="cover relative overflow-hidden text-[#F4F1E8]">
+    <section id="visao" aria-label="Início" className="cover relative overflow-hidden text-[#F4F1E8]">
       <div className="page-wrap relative pb-8 pt-8 sm:pb-12 sm:pt-14">
         <div className="cover__grid">
           <div className="cover__copy">
-            <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Tecnologia de investimento com IA</span>
+            <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">01 / 10 · Início</span>
             <h1 className="pitch-rise display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Tecnologia de investimento para o apostador brasileiro, <span className="text-[#F2B632]">gerida por IA.</span></h1>
-            <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t('Mais de 60 milhões de brasileiros no público potencial estimado.')}{' '}{t(`Cripto: cerca de R$ ${cryptoDailyBillions} bilhão por dia.`)}{' '}{t('Bets: referência histórica de R$ 600 milhões por dia.')}</strong>{' '}A oportunidade é um produto de investimento que fale a língua dessas pessoas.{' '}<a href="#problema" target="_blank" rel="noopener noreferrer">Público e movimentação financeira.</a></p>
+            <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t('Mais de 60 milhões de brasileiros no público potencial estimado.')}{' '}{t(`Cripto: cerca de R$ ${cryptoDailyBillions} bilhão por dia.`)}{' '}{t('Bets: referência histórica de R$ 600 milhões por dia.')}</strong>{' '}A oportunidade é um produto de investimento que fale a língua dessas pessoas.{' '}<a href="#publico-pitch" target="_blank" rel="noopener noreferrer">Público e movimentação financeira.</a></p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#solucao" target="_blank" rel="noopener noreferrer" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
               <a href={DOC} target="_blank" rel="noopener noreferrer" className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
@@ -96,11 +99,17 @@ export function PitchPage() {
       </div>
     </section>
 
+    <AudienceSection />
     <ProblemSection />
 
     <FutureSections />
 
-    <Sec id="solucao" summary="Produto de tecnologia com IA, operado por uma empresa privada. Quatro frentes de atuação." n="03" kicker="Solução" title={<>IA na operação, participação por token.</>}>
+    <Sec id="solucao" summary="Produto de tecnologia com IA, operado por uma empresa privada. Quatro frentes de atuação." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
+      <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A oportunidade da BETTEX é oferecer a esses públicos um produto de investimento com experiência familiar, linguagem acessível e estratégias geridas por IA. O objetivo é redirecionar a busca por retorno financeiro das apostas para a participação em resultados de investimentos em mercados de risco.</p>
+      <div className="fu-position">
+        <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
+        <p className="display fu-pos-lead">Resgatar o futuro é ampliar o acesso à participação econômica, para que a tecnologia não produza prosperidade apenas para quem já controla o capital.</p>
+      </div>
       <SolutionParticipationFlow />
       <div className="mt-8 rounded-2xl bg-[#070B1F] p-6 text-[#F4F1E8]">
         <span className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#F2B632]">Regra do lucro</span>
@@ -116,13 +125,13 @@ export function PitchPage() {
       <Doc hash="documentacao-oportunidade">Ver regras na documentação</Doc>
     </Sec>
 
-    <Sec id="diferencial" summary="O usuário participa dos resultados do projeto, sem escolher cada operação ou depender apenas da revenda do token." n="04" kicker="Diferenciação proposta" dark title={<>A diferença está <span className="text-[#F2B632]">no direito econômico.</span></>}>
+    <Sec id="diferencial" summary="O usuário participa dos resultados do projeto, sem escolher cada operação ou depender apenas da revenda do token." n="06" kicker="Diferenciação proposta" dark title={<>A diferença está <span className="text-[#F2B632]">no direito econômico.</span></>}>
       <EconomicComparison rows={economicComparisonRows} />
       <p className="mt-5 text-xs leading-6 text-[#c5d2f1]">Custos, direitos e regras das alternativas variam conforme a plataforma e o contrato.</p>
       <p className="mt-6 max-w-[720px] text-sm leading-7 text-[#c5d2f1]">Nenhuma promessa de que a IA supere o mercado. O desempenho líquido das estratégias precisa ser medido contra uma referência.</p>
     </Sec>
 
-    <Sec id="fundador" summary="Aquisição founder-led, com audiência própria e experiência de distribuição." n="05" kicker="Fundador e distribuição" dark title={<>Experiência de aquisição <span className="text-[#F2B632]">e canais próprios.</span></>}>
+    <Sec id="fundador" summary="Aquisição founder-led, com audiência própria e experiência de distribuição." n="07" kicker="Fundador e distribuição" dark title={<>Experiência de aquisição <span className="text-[#F2B632]">e canais próprios.</span></>}>
       <FounderProfile dark portrait noDashes thirdPerson />
       <div className="mt-6">
         <Card dark label="Alinhamento do fundador" title="Sem salário. Sem retiradas da empresa.">{g.founder.bettexEarnings}</Card>
@@ -131,7 +140,9 @@ export function PitchPage() {
       <Doc dark hash="documentacao-fundador">Apresentação na documentação</Doc>
     </Sec>
 
-    <Sec id="economia" summary="Duas receitas separadas: tarifa fixa de US$ 2,50 em USDC e ganhos de investimento da tesouraria." n="06" kicker="Economia do negócio" title={<>O dinheiro da empresa <span className="text-[#2B59FF]">não se mistura ao da tesouraria.</span></>}>
+    <section id="tokenomics" aria-labelledby="economia-t">
+    <Sec id="economia" summary="Duas receitas separadas: tarifa fixa de US$ 2,50 em USDC e ganhos de investimento da tesouraria." n="08" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Receitas, tesouraria e direitos do token.</span></>}>
+      <h3 className="display mb-6 text-2xl font-extrabold">O dinheiro da empresa não se mistura ao da tesouraria.</h3>
       <div className="mb-8 grid gap-4 md:grid-cols-3">
         <Card label="Venda pública primária" title="100% para a tesouraria">O preço dos tokens financia as estratégias. A venda não é lucro distribuível nem receita livre da empresa.</Card>
         <Card label="Investidores-anjo" title="100% para produto, tecnologia e marketing">{g.launch.angelFundingUse}</Card>
@@ -155,7 +166,7 @@ export function PitchPage() {
       <Doc hash="documentacao-plano-negocios">Plano-base de negócios na documentação</Doc>
     </Sec>
 
-    <Sec id="token" n="07" kicker="Oferta e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Três alocações.</span></>}>
+    <Sec id="token" subsection kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Três alocações.</span></>}>
       <PitchTokenCharts />
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <Card dark label="Público" title="65% · 650 milhões">Tokens destinados à venda pública, cujo preço primário financia integralmente a tesouraria.</Card>
@@ -172,8 +183,9 @@ export function PitchPage() {
       <p className="mt-6 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">O titular tem os direitos de participação nos resultados definidos pelo token, não ações da empresa, propriedade da tesouraria, voto societário ou resgate pelo valor patrimonial. Pode ganhar ou perder na revenda, se houver liquidez. Oferta fixa não significa pagamento fixo.</p>
       <Doc dark hash="documentacao-emissao">Oferta, vesting e direitos na documentação</Doc>
     </Sec>
+    </section>
 
-    <Sec id="publico" summary="Meta de 1.000 usuários nos primeiros três meses de operação, incluindo os primeiros compradores, sem custo de aquisição para a BETTEX." n="08" kicker="Go to market no Brasil" dark title={<>Aquisição orgânica. <span className="text-[#F2B632]">Financiada pelo fundador.</span></>}>
+    <Sec id="publico" summary="Meta de 1.000 usuários nos primeiros três meses de operação, incluindo os primeiros compradores, sem custo de aquisição para a BETTEX." n="09" kicker="Go to market no Brasil" dark title={<>Aquisição orgânica. <span className="text-[#F2B632]">Financiada pelo fundador.</span></>}>
       <PitchEditorialSplit dark image={<PitchEditorialImage dark name="pitch-brazil-community" />}>
       <p className="max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo vai financiar a aquisição inicial com seu orçamento corrente. Sua audiência no Instagram entra na comunidade do Telegram e segue para o aplicativo BETTEX, trazendo os primeiros compradores e usuários para validar o produto, sem cobrar esse custo da empresa.</p>
       <FounderLaunchFunnel />
@@ -183,7 +195,7 @@ export function PitchPage() {
       <Doc dark hash="documentacao-aquisicao-retencao">Plano de aquisição e retenção na documentação</Doc>
     </Sec>
 
-    <Sec id="recursos" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="09" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>
+    <Sec id="recursos" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="10" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>
       <PitchEditorialSplit image={<PitchEditorialImage name="pitch-product-development" />}>
       <div className="grid gap-4 md:grid-cols-3">
         <Card label="Destino do capital" title="Tecnologia e marketing, sem salários">{g.launch.angelFundingUse}</Card>

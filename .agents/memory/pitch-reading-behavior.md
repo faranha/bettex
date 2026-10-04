@@ -3,6 +3,12 @@ name: Leitura do pitch
 description: Conteúdo do Pitch sempre visível e Diferenciação apresentada em quadro comparativo.
 ---
 
+A ordem de conteúdo aprovada é: Início (Hero), Público, Problema, Ambiente externo, Solução, Diferenciação, Fundador, Tokenomics e as partes finais já existentes.
+
+**Why:** O criador distinguiu apresentação do público, problemas e análise do cenário, e pediu reorganizar o conteúdo antes de ajustar o menu.
+
+**How to apply:** Público termina imediatamente antes de “Apostar não é investir”, que abre Problema. Problema apresenta duas questões: perdas em apostas tratadas como investimento e desemprego/renda ameaçados pela IA, segundo a visão da BETTEX. Ambiente externo reúne Musk e economia real, antes separados em IA e trabalho e Resgatar o futuro. Solução e Diferenciação vêm depois. Tokenomics reúne os antigos blocos Economia e Token, preservando suas subseções e gráficos. O menu foi explicitamente adiado: não alinhá-lo sem o próximo pedido do criador.
+
 No pitch, apresentar todo o conteúdo das seções diretamente na página, sem caixas expansíveis ou controles de expandir e recolher.
 
 **Why:** O criador pediu remover as caixas expansíveis e deixar tudo na tela.
