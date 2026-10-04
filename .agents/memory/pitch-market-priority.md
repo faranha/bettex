@@ -43,4 +43,12 @@ No rodapé abaixo do destaque de 6,9 milhões, citar apenas as fontes. Não rein
 
 **Why:** O criador marcou todo esse rodapé e pediu “apenas cite as fontes para informação, só isso”.
 
-**How to apply:** Manter as referências compactas, distinguindo a pesquisa publicada de cripto do cenário da BETTEX. A indicação de cenário hipotético e o cálculo já presentes acima não fazem parte da área removida.
+**How to apply:** Manter as referências compactas, distinguindo a pesquisa publicada de cripto do cenário da BETTEX. A indicação de cenário hipotético e o cálculo já presentes acima não fazem parte da área removida. Ambos os públicos, apostas e cripto, precisam de fontes externas verificáveis; não citar apenas cripto e usar a própria BETTEX como substituto da referência para apostas.
+
+**Why:** O criador reiterou que “mesmo que seja 30 milhões tem que ter para ambas”. A existência de uma fonte para cada público é mais importante que preservar um número sem referência externa.
+
+O bloco de faixas etárias de apostas e cripto pertence a Público, logo abaixo do quadro de 6,9 milhões, e não aos gráficos de dívidas em Problema.
+
+**Why:** O criador corrigiu a localização: “você colocou isso no local errado, é abaixo do 6,9”.
+
+**How to apply:** Manter esse perfil junto ao dimensionamento do público, fora do rodapé compacto de fontes do quadro, preservando os dados e as referências verificadas.

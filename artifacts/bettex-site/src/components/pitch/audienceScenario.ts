@@ -12,6 +12,9 @@ export const audienceScenario = {
   cryptoShare,
   overlapMillions,
   combinedMillions: bettingMillions + cryptoMillions - overlapMillions,
+  // Fazenda/SIGAP via Folha: 43.8m people who had bet by Aug. 2026,
+  // not monthly active bettors. The scenario retains a rounded 40m base.
+  bettingSourceUrl: 'https://c-level.folha.uol.com.br/negocios/2026/09/numero-de-brasileiros-inscritos-em-bets-aumenta-752-em-8-meses-e-receita-dos-sites-sobe-59.shtml',
   cryptoSourceUrl: 'https://valor.globo.com/financas/criptomoedas/noticia/2026/08/18/cripto-supera-aes-e-cdb-em-alcance-entre-brasileiros-diz-pesquisa.ghtml',
 } as const;
 

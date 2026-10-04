@@ -1,4 +1,5 @@
 import './AICrisisScenario.css';
+import { PitchObservations } from './PitchObservations';
 
 const sources = {
   axios: 'https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic',
@@ -33,8 +34,10 @@ export function LaborWarningReports() {
         <NewsLink href={sources.existential}>Ler a reportagem da Reuters</NewsLink>
       </article>
     </div>
-    <p className="ai-crisis-limit">Esses alertas não são fatos consumados: as previsões foram posteriormente revistas e continuam controversas.</p>
-    <NewsLink href={sources.revision}>Divergências nas previsões · Fortune, 26 mai. 2026</NewsLink>
+    <PitchObservations dark>
+      <NewsLink href={sources.revision}>Divergências nas previsões · Fortune, 26 mai. 2026</NewsLink>
+      <p>Esses alertas não são fatos consumados: as previsões foram posteriormente revistas e continuam controversas.</p>
+    </PitchObservations>
   </section>;
 }
 
@@ -50,7 +53,7 @@ export function AIBubbleScenario() {
         <li><span className="mono">03</span><h4 className="display">A recuperação deixa gente para trás</h4><p>Sem novas funções acessíveis, qualificação ou proteção social, parte das pessoas pode continuar sem renda mesmo quando os lucros voltam.</p></li>
       </ol>
       <p className="display ai-no-way-back">Sem patrimônio. Sem salário. E se não houver um lugar para voltar?</p>
-      <p className="ai-crisis-limit">Esse é o cenário extremo que motiva a tese da BETTEX, não uma certeza de que todos perderão tudo ou de que jamais haverá recuperação. As fontes não demonstram perda universal e irreversível. Participar da BETTEX também envolve risco de perda; não é proteção garantida contra esse cenário.</p>
+      <PitchObservations dark><p>Esse é o cenário extremo que motiva a tese da BETTEX, não uma certeza de que todos perderão tudo ou de que jamais haverá recuperação. As fontes não demonstram perda universal e irreversível. Participar da BETTEX também envolve risco de perda; não é proteção garantida contra esse cenário.</p></PitchObservations>
     </section>
   </>;
 }

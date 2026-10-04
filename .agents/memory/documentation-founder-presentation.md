@@ -20,3 +20,9 @@ No Pitch, integrar o perfil em um container coeso, sem uma coluna inteira reserv
 **Why:** O criador rejeitou esse layout e pediu um container e melhor aproveitamento do conteúdo abaixo da fotografia.
 
 **How to apply:** Acomodar retrato, biografia, redes e métricas no mesmo bloco, aproveitando a largura abaixo da foto. Preservar todos os dados e as ressalvas; esta solicitação específica não autoriza redesenhar o perfil na documentação.
+
+Na capa do Pitch, preservar a estilização anterior do retrato: moldura dourada, sombra azul e faixa dourada com nome, função e LinkedIn, sem legenda solta sobre o fundo.
+
+**Why:** O criador mostrou a perda de formatação do retrato da abertura e pediu recuperar a estilização anterior, não redesenhar a área.
+
+**How to apply:** Limitar essa recuperação à foto e à legenda da capa do Pitch; não propagar automaticamente esse tratamento à documentação ou ao bloco de biografia.

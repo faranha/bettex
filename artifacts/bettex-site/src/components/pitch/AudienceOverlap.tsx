@@ -19,7 +19,7 @@ export function AudienceOverlap() {
         <li className="pb-overlap__metric" data-testid="audience-betting-labels">
           <span className="pb-overlap__metric-role mono">{t('Público potencial')}</span>
           <span className="pb-overlap__metric-label">{t('Apostadores')}</span>
-          <span className="pb-overlap__metric-value"><small>{t('Até')}</small> {bet} <small>{t('milhões')}</small></span>
+          <span className="pb-overlap__metric-value">≈ {bet} <small>{t('milhões')}</small></span>
         </li>
         <li className="pb-overlap__metric" data-testid="audience-crypto-labels">
           <span className="pb-overlap__metric-role mono">{t('Público potencial')}</span>
@@ -36,6 +36,8 @@ export function AudienceOverlap() {
     </div>
     <p className="pb-overlap__sources">
       <span>{t('Fontes')}:</span>{' '}
+      <a href={s.bettingSourceUrl} target="_blank" rel="noopener noreferrer">{t('Apostas: Fazenda / SIGAP, via Folha · set. 2026')}</a>
+      <span aria-hidden="true"> · </span>
       <a href={s.cryptoSourceUrl} target="_blank" rel="noopener noreferrer">{t('Datafolha / Paradigma · publicado em ago. 2026')}</a>
       <span aria-hidden="true"> · </span>
       <span>{t('BETTEX · cenário de mercado')}</span>

@@ -1,4 +1,137 @@
 {
+  "Elon Musk e a promessa de abundância": {
+    "en": "Elon Musk and the promise of abundance",
+    "es": "Elon Musk y la promesa de abundancia"
+  },
+  "USA TODAY · Elon Musk e a promessa de abundância": {
+    "en": "USA TODAY · Elon Musk and the promise of abundance",
+    "es": "USA TODAY · Elon Musk y la promesa de abundancia"
+  },
+  "Na visão da BETTEX, a promessa de prosperidade com IA e robôs ignora uma pergunta central: de que vive quem perde o trabalho antes de conseguir participar da riqueza produzida pelas máquinas? Nossa tese é que a substituição acelerada de funções pode retirar salário e poder de compra de milhões de pessoas, enquanto os ganhos se concentram em quem controla a tecnologia.": {
+    "en": "In BETTEX's view, the promise of prosperity through AI and robots overlooks a central question: how do people support themselves when they lose their jobs before they can share in the wealth produced by machines? Our thesis is that the rapid replacement of job functions could deprive millions of people of wages and purchasing power, while the gains concentrate among those who control the technology.",
+    "es": "En la visión de BETTEX, la promesa de prosperidad con IA y robots ignora una pregunta central: ¿de qué vive quien pierde su trabajo antes de poder participar en la riqueza producida por las máquinas? Nuestra tesis es que la sustitución acelerada de funciones puede quitar salario y poder adquisitivo a millones de personas, mientras las ganancias se concentran en quienes controlan la tecnología."
+  },
+  "A ameaça não é apenas mudar de profissão.": {
+    "en": "The threat goes beyond changing careers.",
+    "es": "La amenaza no es solo cambiar de profesión."
+  },
+  "Quando uma tarefa remunerada passa a ser executada por software ou por um robô, o trabalhador pode perder a função que sustentava sua renda. A IA amplia essa pressão sobre atividades de escritório, atendimento e programação; os humanoides levam a possibilidade de substituição ao trabalho físico. O problema se agrava se novas oportunidades não surgirem na velocidade necessária para absorver quem ficou de fora.": {
+    "en": "When a paid task is taken over by software or a robot, a worker can lose the role that provided their income. AI extends this pressure to office work, customer service and programming; humanoid robots bring the possibility of replacement to physical work. The problem worsens if new opportunities do not emerge fast enough to absorb those left out.",
+    "es": "Cuando una tarea remunerada pasa a ser ejecutada por software o por un robot, el trabajador puede perder la función que sostenía sus ingresos. La IA amplía esa presión sobre actividades de oficina, atención al cliente y programación; los humanoides llevan la posibilidad de sustitución al trabajo físico. El problema se agrava si no surgen nuevas oportunidades a la velocidad necesaria para absorber a quienes quedaron fuera."
+  },
+  "Mais produtividade não significa renda para todos.": {
+    "en": "Higher productivity does not mean income for everyone.",
+    "es": "Más productividad no significa ingresos para todos."
+  },
+  "Uma empresa pode produzir mais com menos pessoas. Isso pode beneficiar seus proprietários e quem controla os sistemas, sem gerar uma renda equivalente para os trabalhadores substituídos. Para a BETTEX, existe uma diferença decisiva entre uma economia que produz mais riqueza e uma população que consegue acessar essa riqueza. Ter acesso a uma ferramenta de IA não é o mesmo que participar dos ganhos de quem a possui.": {
+    "en": "A company can produce more with fewer people. This can benefit its owners and those who control its systems without generating equivalent income for the workers replaced. For BETTEX, there is a decisive difference between an economy that produces more wealth and a population that can access that wealth. Access to an AI tool is not the same as sharing in the gains of those who own it.",
+    "es": "Una empresa puede producir más con menos personas. Eso puede beneficiar a sus propietarios y a quienes controlan los sistemas, sin generar ingresos equivalentes para los trabajadores sustituidos. Para BETTEX, existe una diferencia decisiva entre una economía que produce más riqueza y una población que logra acceder a ella. Tener acceso a una herramienta de IA no es lo mismo que participar en las ganancias de quien la posee."
+  },
+  "O salário desaparece. As contas continuam.": {
+    "en": "The salary disappears. The bills remain.",
+    "es": "El salario desaparece. Las cuentas continúan."
+  },
+  "Quem depende da renda do mês e não tem dinheiro guardado tem pouco tempo para se adaptar. Aluguel, alimentação, dívidas e despesas da família continuam chegando, mesmo depois de uma demissão. Requalificação exige tempo e recursos; aceitar outro trabalho depende de haver demanda por ele. Se várias funções forem substituídas ao mesmo tempo, procurar emprego em outra área pode deixar de resolver o problema.": {
+    "en": "People who depend on their monthly income and have no savings have little time to adapt. Rent, food, debts and family expenses keep coming, even after a layoff. Retraining takes time and resources; finding another job depends on demand for that work. If several roles are replaced at once, looking for work in another field may no longer solve the problem.",
+    "es": "Quien depende de los ingresos del mes y no tiene dinero ahorrado dispone de poco tiempo para adaptarse. El alquiler, la alimentación, las deudas y los gastos familiares siguen llegando, incluso después de un despido. La recualificación exige tiempo y recursos; aceptar otro trabajo depende de que exista demanda. Si varias funciones se sustituyen al mismo tiempo, buscar empleo en otra área puede dejar de resolver el problema."
+  },
+  "Apostas e perda de renda podem atingir a mesma pessoa.": {
+    "en": "Betting and income loss can affect the same person.",
+    "es": "Las apuestas y la pérdida de ingresos pueden afectar a la misma persona."
+  },
+  "Os dois problemas se conectam quando alguém usa o salário para apostar, perde recursos que poderiam sustentar a casa e depois enfrenta a redução ou o desaparecimento da renda do trabalho. A fragilidade não está apenas na aposta ou na automação isoladamente: está na combinação de perdas financeiras, falta de reservas e menos oportunidades de recuperar a renda.": {
+    "en": "The two problems connect when someone uses their wages to bet, loses resources that could support their household, and then faces a reduction or disappearance of employment income. The vulnerability does not lie in betting or automation alone: it lies in the combination of financial losses, a lack of savings and fewer opportunities to restore income.",
+    "es": "Los dos problemas se conectan cuando alguien usa el salario para apostar, pierde recursos que podrían sostener su hogar y después enfrenta la reducción o desaparición de los ingresos del trabajo. La fragilidad no está solo en la apuesta o en la automatización por separado: está en la combinación de pérdidas financieras, falta de reservas y menos oportunidades de recuperar los ingresos."
+  },
+  "É essa combinação que a BETTEX quer enfrentar: pessoas buscando melhorar de vida pelas apostas, enquanto a economia automatizada pode retirar o trabalho que paga suas contas. A tese é que esperar pela prosperidade prometida não basta para quem precisa de renda agora.": {
+    "en": "This is the combination BETTEX aims to address: people seeking a better life through betting, while an automated economy could take away the work that pays their bills. The thesis is that waiting for promised prosperity is not enough for those who need income now.",
+    "es": "Esa es la combinación que BETTEX quiere enfrentar: personas que buscan mejorar su vida mediante las apuestas, mientras la economía automatizada puede quitarles el trabajo que paga sus cuentas. La tesis es que esperar la prosperidad prometida no basta para quien necesita ingresos ahora."
+  },
+  "Emprego, automação e economia real": {
+    "en": "Employment, automation and the real economy",
+    "es": "Empleo, automatización y economía real"
+  },
+  "Essa é a tese da BETTEX, não uma previsão de desemprego inevitável. O horizonte de três anos depende da materialização das previsões sobre a substituição de postos de trabalho pela IA. Participar da BETTEX também envolve risco de perda e não garante renda nem proteção contra desemprego.": {
+    "en": "This is BETTEX's thesis, not a forecast of inevitable unemployment. The three-year horizon depends on forecasts of AI replacing jobs materializing. Participating in BETTEX also carries a risk of loss and does not guarantee income or protection against unemployment.",
+    "es": "Esta es la tesis de BETTEX, no una previsión de desempleo inevitable. El horizonte de tres años depende de que se materialicen las previsiones sobre la sustitución de puestos de trabajo por la IA. Participar en BETTEX también implica riesgo de pérdida y no garantiza ingresos ni protección contra el desempleo."
+  },
+  "Observações": { "en": "Notes", "es": "Observaciones" },
+  "Brasil: pesquisa com 1.000 pessoas em dezembro de 2024, publicada em fevereiro de 2025. Cerca de 9% declararam apostar. Os 64,3% e os 65,7% descrevem esse subgrupo, não a população inteira, e são indicadores separados, não o percentual que reúne as duas condições.": {
+    "en": "Brazil: a survey of 1,000 people in December 2024, published in February 2025. Around 9% said they gambled. The 64.3% and 65.7% figures describe this subgroup, not the entire population, and are separate indicators, not the share that meets both conditions.",
+    "es": "Brasil: encuesta de 1.000 personas en diciembre de 2024, publicada en febrero de 2025. Cerca del 9% declaró apostar. El 64,3% y el 65,7% describen ese subgrupo, no toda la población, y son indicadores separados, no el porcentaje que reúne ambas condiciones."
+  },
+  ". Amostra de 600 participantes de 18 anos ou mais nas 27 capitais, com intenção de gastos para a Copa. Coleta de 27 de abril a 5 de maio de 2026. Os percentuais se referem aos que pretendiam apostar no evento; 74% reúnem 31% de concordância total e 43% parcial. Esse recorte não representa toda a população brasileira, retorno de apostas ou demanda medida pela BETTEX.": {
+    "en": ". A sample of 600 participants aged 18 or over in the 27 state capitals, who intended to spend on the World Cup. Fieldwork from April 27 to May 5, 2026. The percentages refer to those who intended to bet on the event; 74% combines 31% who fully agreed and 43% who partly agreed. This sample does not represent the entire Brazilian population, betting returns or measured BETTEX demand.",
+    "es": ". Muestra de 600 participantes de 18 años o más en las 27 capitales, con intención de gastar en el Mundial. Trabajo de campo del 27 de abril al 5 de mayo de 2026. Los porcentajes se refieren a quienes pretendían apostar en el evento; el 74% reúne un 31% de acuerdo total y un 43% de acuerdo parcial. Este recorte no representa a toda la población brasileña, rendimientos de apuestas ni demanda medida de BETTEX."
+  },
+  "Renda do mês nas apostas e falta de reservas": { "en": "Monthly income spent on gambling and a lack of savings", "es": "Ingresos del mes en apuestas y falta de reservas" },
+  "No levantamento da Futura Inteligência, a maioria dos apostadores usa salários ou rendimentos regulares para apostar; a maioria também diz não ter dinheiro guardado. Sem reservas, perder o trabalho pode significar perder a renda que sustenta a casa, enquanto as contas continuam chegando.": {
+    "en": "In the Futura Inteligência survey, most bettors use wages or regular income to gamble; most also say they have no money saved. Without savings, losing a job can mean losing the income that supports the household while bills keep coming.",
+    "es": "En la encuesta de Futura Inteligência, la mayoría de los apostadores utiliza salarios o ingresos regulares para apostar; la mayoría también dice no tener dinero ahorrado. Sin reservas, perder el trabajo puede significar perder los ingresos que sostienen el hogar, mientras las cuentas siguen llegando."
+  },
+  "Brasil · salário nas apostas": { "en": "Brazil · wages used for gambling", "es": "Brasil · salario en apuestas" },
+  "Apostadores entrevistados que usam salários ou rendimentos regulares para apostar.": { "en": "Surveyed bettors who use wages or regular income to gamble.", "es": "Apostadores encuestados que utilizan salarios o ingresos regulares para apostar." },
+  "Futura Inteligência, coleta em dezembro de 2024. Fonte do dinheiro das apostas, não apenas contas deixadas sem pagar.": { "en": "Futura Inteligência, fieldwork in December 2024. The source of gambling funds, not just bills left unpaid.", "es": "Futura Inteligência, trabajo de campo en diciembre de 2024. Origen del dinero de las apuestas, no solo cuentas que quedaron sin pagar." },
+  "Futura Inteligência / Estadão · fev. 2025": { "en": "Futura Inteligência / Estadão · Feb. 2025", "es": "Futura Inteligência / Estadão · feb. 2025" },
+  "Brasil · sem dinheiro guardado": { "en": "Brazil · no money saved", "es": "Brasil · sin dinero ahorrado" },
+  "Apostadores entrevistados que dizem não ter dinheiro guardado.": { "en": "Surveyed bettors who say they have no money saved.", "es": "Apostadores encuestados que dicen no tener dinero ahorrado." },
+  "Mesmo levantamento. Os 64,3% e os 65,7% são indicadores separados, não o percentual que reúne as duas condições.": { "en": "Same survey. The 64.3% and 65.7% figures are separate indicators, not the share that meets both conditions.", "es": "Misma encuesta. El 64,3% y el 65,7% son indicadores separados, no el porcentaje que reúne ambas condiciones." },
+  "Brasil: pesquisa com 1.000 pessoas em dezembro de 2024, publicada em fevereiro de 2025. Cerca de 9% dos entrevistados declararam apostar. Os dois percentuais brasileiros descrevem esse subgrupo, não a população inteira.": {
+    "en": "Brazil: a survey of 1,000 people in December 2024, published in February 2025. Around 9% of respondents said they gambled. The two Brazilian figures describe this subgroup, not the entire population.",
+    "es": "Brasil: encuesta de 1.000 personas en diciembre de 2024, publicada en febrero de 2025. Cerca del 9% de los encuestados declaró apostar. Los dos porcentajes brasileños describen ese subgrupo, no toda la población."
+  },
+  "Dinheiro das contas e dependência do salário": { "en": "Bill money and dependence on wages", "es": "Dinero para las cuentas y dependencia del salario" },
+  "Para quem depende da renda do mês, apostar com o dinheiro das contas compromete recursos necessários para viver. Sem uma reserva suficiente, a perda do emprego pode interromper a renda que sustenta a casa.": {
+    "en": "For people who depend on their monthly income, betting with money set aside for bills puts essential living expenses at risk. Without sufficient savings, losing a job can cut off the income that supports the household.",
+    "es": "Para quienes dependen de los ingresos del mes, apostar con el dinero de las cuentas compromete recursos necesarios para vivir. Sin una reserva suficiente, perder el empleo puede interrumpir los ingresos que sostienen el hogar."
+  },
+  "Brasil · dinheiro das contas": { "en": "Brazil · money for bills", "es": "Brasil · dinero para las cuentas" },
+  "Apostadores entrevistados que deixaram de pagar alguma conta para direcionar o dinheiro ao jogo.": { "en": "Surveyed bettors who left a bill unpaid to direct that money to gambling.", "es": "Apostadores encuestados que dejaron de pagar alguna cuenta para destinar ese dinero al juego." },
+  "Coleta em maio de 2026. Margem de erro do subgrupo de apostadores: 6 pontos percentuais.": { "en": "Fieldwork in May 2026. Margin of error for the bettor subgroup: 6 percentage points.", "es": "Trabajo de campo en mayo de 2026. Margen de error del subgrupo de apostadores: 6 puntos porcentuales." },
+  "Brasil · aposta como renda": { "en": "Brazil · gambling as income", "es": "Brasil · apuestas como ingreso" },
+  "Apostadores que dizem apostar para obter renda extra e ajudar a pagar as contas.": { "en": "Bettors who say they gamble to earn extra income and help pay bills.", "es": "Apostadores que dicen apostar para obtener ingresos extra y ayudar a pagar las cuentas." },
+  "Pesquisa de abril de 2026. Motivação para apostar, não comprovação de ganhos.": { "en": "April 2026 survey. Motivation to gamble, not evidence of winnings.", "es": "Encuesta de abril de 2026. Motivación para apostar, no prueba de ganancias." },
+  "Datafolha / Folha · abr. 2026": { "en": "Datafolha / Folha · Apr. 2026", "es": "Datafolha / Folha · abr. 2026" },
+  "EUA · de salário em salário": { "en": "US · paycheck to paycheck", "es": "EE. UU. · de salario en salario" },
+  "Consumidores americanos que relatam viver de salário em salário, com ou sem dificuldades para pagar contas.": { "en": "US consumers who report living paycheck to paycheck, with or without difficulty paying bills.", "es": "Consumidores estadounidenses que afirman vivir de salario en salario, con o sin dificultades para pagar las cuentas." },
+  "Relatório de 2026, coleta em dezembro de 2025. Viver de salário em salário não significa necessariamente não ter economias.": { "en": "2026 report, fieldwork in December 2025. Living paycheck to paycheck does not necessarily mean having no savings.", "es": "Informe de 2026, trabajo de campo en diciembre de 2025. Vivir de salario en salario no significa necesariamente carecer de ahorros." },
+  "PYMNTS Intelligence · relatório de 2026": { "en": "PYMNTS Intelligence · 2026 report", "es": "PYMNTS Intelligence · informe de 2026" },
+  "EUA · reserva insuficiente": { "en": "US · insufficient emergency savings", "es": "EE. UU. · reserva insuficiente" },
+  "Adultos americanos sem uma reserva específica para cobrir três meses de despesas.": { "en": "US adults without a dedicated emergency fund to cover three months of expenses.", "es": "Adultos estadounidenses sin una reserva específica para cubrir tres meses de gastos." },
+  "Dados de 2025. Não equivale a ausência total de economias ou de patrimônio.": { "en": "2025 data. This does not mean having no savings or assets at all.", "es": "Datos de 2025. No equivale a una ausencia total de ahorros o patrimonio." },
+  "Federal Reserve · SHED, maio de 2026": { "en": "Federal Reserve · SHED, May 2026", "es": "Reserva Federal · SHED, mayo de 2026" },
+  "Na visão da BETTEX, o risco se agrava quando a mesma pessoa aposta recursos essenciais, não consegue formar reservas e depende de um trabalho que pode ser afetado pela automação.": {
+    "en": "In BETTEX’s view, the risk intensifies when the same person gambles essential funds, cannot build savings and depends on a job that could be affected by automation.",
+    "es": "Desde la perspectiva de BETTEX, el riesgo se agrava cuando una misma persona apuesta recursos esenciales, no logra formar reservas y depende de un trabajo que puede verse afectado por la automatización."
+  },
+  "anos": { "en": "years", "es": "años" },
+  "Faixas etárias: apostas e cripto": { "en": "Age brackets: betting and crypto", "es": "Franjas de edad: apuestas y cripto" },
+  "Apostas · maioria do público": { "en": "Betting · majority of the audience", "es": "Apuestas · mayoría del público" },
+  "51,3% dos apostadores do mercado regulado estavam nessa faixa em 2025: 22,7% entre 25 e 30 anos e 28,6% entre 31 e 40.": {
+    "en": "51.3% of bettors in the regulated market were in this age bracket in 2025: 22.7% aged 25–30 and 28.6% aged 31–40.",
+    "es": "El 51,3% de los apostadores del mercado regulado estaba en esta franja en 2025: el 22,7% entre 25 y 30 años y el 28,6% entre 31 y 40."
+  },
+  "Fazenda / SIGAP · dados de 2025, publicado em jan. 2026": { "en": "Ministry of Finance / SIGAP · 2025 data, published Jan. 2026", "es": "Ministerio de Hacienda / SIGAP · datos de 2025, publicado en ene. 2026" },
+  "Apostas: composição do público do mercado regulado em 2025. Cripto: adesão dentro da faixa etária em 2026, incluindo posse atual ou passada. São indicadores diferentes, não uma comprovação de perfis etários iguais.": {
+    "en": "Betting: regulated-market audience composition in 2025. Crypto: uptake within the age group in 2026, including current or past ownership. These are different indicators, not proof of identical age profiles.",
+    "es": "Apuestas: composición del público del mercado regulado en 2025. Cripto: adopción dentro de la franja de edad en 2026, incluida la tenencia actual o pasada. Son indicadores diferentes, no una prueba de perfiles de edad iguales."
+  },
+  "A tese da BETTEX é que apostar para obter renda ou quitar dívidas é atribuir ao jogo uma função de investimento. Ao tratar apostas como investimento, brasileiros e pessoas ao redor do mundo se expõem à perda de dinheiro justamente quando buscam melhorar sua situação financeira.": {
+    "en": "BETTEX’s thesis is that gambling to earn income or pay off debts assigns an investment role to gambling. By treating gambling as an investment, Brazilians and people around the world expose themselves to losing money precisely when they are trying to improve their financial situation.",
+    "es": "La tesis de BETTEX es que apostar para obtener ingresos o pagar deudas es atribuir al juego una función de inversión. Al tratar las apuestas como una inversión, los brasileños y las personas de todo el mundo se exponen a perder dinero precisamente cuando buscan mejorar su situación financiera."
+  },
+  "Até 24 anos: maior adesão nos dois públicos": { "en": "Up to age 24: highest uptake in both audiences", "es": "Hasta los 24 años: mayor adopción en ambos públicos" },
+  "Apostas · maior adesão por idade": { "en": "Betting · highest uptake by age", "es": "Apuestas · mayor adopción por edad" },
+  "Cripto · maior adesão por idade": { "en": "Crypto · highest uptake by age", "es": "Cripto · mayor adopción por edad" },
+  "13% das pessoas nessa faixa dizem apostar atualmente em bets ou cassinos online.": { "en": "13% of people in this age group say they currently bet on betting platforms or online casinos.", "es": "El 13% de las personas de esta franja dice apostar actualmente en plataformas de apuestas o casinos en línea." },
+  "32% das pessoas nessa faixa têm ou já tiveram criptomoedas.": { "en": "32% of people in this age group own or have previously owned cryptocurrencies.", "es": "El 32% de las personas de esta franja tiene o ha tenido criptomonedas." },
+  "Datafolha / Folha · jun. 2026": { "en": "Datafolha / Folha · June 2026", "es": "Datafolha / Folha · jun. 2026" },
+  "Datafolha / Paradigma · Valor Investe, ago. 2026": { "en": "Datafolha / Paradigma · Valor Investe, Aug. 2026", "es": "Datafolha / Paradigma · Valor Investe, ago. 2026" },
+  "Os recortes etários e as perguntas são diferentes: apostas atuais e posse atual ou passada de cripto. Os percentuais medem adesão dentro de cada faixa, não a parcela de jovens no total de apostadores ou de pessoas com cripto.": {
+    "en": "The age brackets and questions differ: current betting and current or past crypto ownership. The percentages measure uptake within each age group, not young people’s share of all bettors or people with crypto.",
+    "es": "Las franjas de edad y las preguntas son diferentes: apuestas actuales y tenencia actual o pasada de cripto. Los porcentajes miden la adopción dentro de cada franja, no la proporción de jóvenes entre todos los apostadores o las personas con cripto."
+  },
+  "Fonte dos gráficos": { "en": "Source for the charts", "es": "Fuente de los gráficos" },
   "Início do Pitch": { "en": "Start of Pitch", "es": "Inicio del Pitch" },
   "Início da página": { "en": "Start of page", "es": "Inicio de la página" },
   "Página inicial": { "en": "Homepage", "es": "Página inicial" },
@@ -54,6 +187,18 @@
   "Cripto: cerca de R$ {0} bilhão por dia.": {
     "en": "Crypto: about R$ {0} billion per day.",
     "es": "Cripto: cerca de R$ {0} mil millones por día."
+  },
+  "Cripto: cerca de R$ {0} bilhão em operações diárias.": {
+    "en": "Crypto: around R$ {0} billion in daily operations.",
+    "es": "Cripto: cerca de R$ {0} mil millones en operaciones diarias."
+  },
+  "Mais de 60 milhões de brasileiros formam o público potencial estimado, enquanto o mercado de cripto movimenta cerca de R$ {0} bilhão em operações diárias e as bets têm uma referência histórica de R$ 600 milhões em depósitos por dia.": {
+    "en": "More than 60 million Brazilians make up the estimated potential audience, while the crypto market handles around R$ {0} billion in daily operations and betting platforms have a historical reference of R$ 600 million in deposits per day.",
+    "es": "Más de 60 millones de brasileños conforman el público potencial estimado, mientras el mercado cripto mueve cerca de R$ {0} mil millones en operaciones diarias y las plataformas de apuestas tienen una referencia histórica de R$ 600 millones en depósitos por día."
+  },
+  "A oportunidade é oferecer um produto de investimento que fale a língua dessas pessoas.": {
+    "en": "The opportunity is to offer an investment product that speaks these people’s language.",
+    "es": "La oportunidad es ofrecer un producto de inversión que hable el idioma de estas personas."
   },
   "Bets: referência histórica de R$ 600 milhões por dia.": {
     "en": "Betting: historical reference of R$ 600 million per day.",
@@ -241,6 +386,14 @@
   "Cenário hipotético · não é medição": { "en": "Hypothetical scenario · not a measurement", "es": "Escenario hipotético · no es una medición" },
   "Datafolha / Paradigma · publicado em ago. 2026": { "en": "Datafolha / Paradigma · published Aug. 2026", "es": "Datafolha / Paradigma · publicado en ago. de 2026" },
   "BETTEX · cenário de mercado": { "en": "BETTEX · market scenario", "es": "BETTEX · escenario de mercado" },
+  "Apostas: Fazenda / SIGAP, via Folha · set. 2026": {
+    "en": "Betting: Ministry of Finance / SIGAP, via Folha · Sept. 2026",
+    "es": "Apuestas: Ministerio de Hacienda / SIGAP, vía Folha · sept. 2026"
+  },
+  "Bets: referência histórica de R$ 600 milhões em depósitos diários.": {
+    "en": "Betting: historical reference of R$ 600 million in daily deposits.",
+    "es": "Apuestas: referencia histórica de R$ 600 millones en depósitos diarios."
+  },
   "Valores em milhões de pessoas. Áreas proporcionais ao cenário estimado, não a uma medição real.": { "en": "Values in millions of people. Areas are proportional to the estimated scenario, not a real measurement.", "es": "Valores en millones de personas. Áreas proporcionales al escenario estimado, no a una medición real." },
   "Experiência com cripto · pesquisa": { "en": "Crypto experience · survey", "es": "Experiencia en cripto · encuesta" },
   "Já tiveram cripto": { "en": "Have had crypto", "es": "Han tenido cripto" },
@@ -1374,6 +1527,10 @@
   "o futuro em jogo.": {
     "en": "its future at stake.",
     "es": "su futuro en juego."
+  },
+  "No mundo inteiro, pessoas tratam apostas como investimento enquanto a IA ameaça empregos e renda. Na visão da BETTEX, essa combinação de insegurança econômica e comportamentos nocivos pode levar uma geração à miséria, com vidas e futuros em jogo nos próximos 3 anos se as previsões sobre como a IA vai absorver os postos de trabalho se materializarem.": {
+    "en": "Around the world, people treat gambling as an investment while AI threatens jobs and income. In BETTEX’s view, this combination of economic insecurity and harmful behaviors could push a generation into poverty, with lives and futures at stake over the next 3 years if predictions about how AI will take over jobs materialize.",
+    "es": "En todo el mundo, las personas tratan las apuestas como una inversión mientras la IA amenaza el empleo y los ingresos. Desde la perspectiva de BETTEX, esta combinación de inseguridad económica y conductas perjudiciales puede llevar a una generación a la miseria, con vidas y futuros en juego durante los próximos 3 años si se materializan las previsiones sobre cómo la IA absorberá los puestos de trabajo."
   },
   "No mundo inteiro, pessoas tratam apostas como investimento enquanto a IA ameaça empregos e renda. Na visão da BETTEX, essa combinação de insegurança econômica e comportamentos nocivos pode levar uma geração à miséria, com vidas e futuros em jogo.": {
     "en": "Around the world, people treat gambling as an investment while AI threatens jobs and income. In BETTEX’s view, this combination of economic insecurity and harmful behaviors could push a generation into poverty, with lives and futures at stake.",

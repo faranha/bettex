@@ -145,6 +145,18 @@ html:has(.whitepaper) { scroll-padding-top: var(--documentation-sticky-h, var(--
 .pill { border-radius: 999px; }
 .hero-bg { background: radial-gradient(circle at 82% 23%, rgba(43,89,255,.22), transparent 34%), radial-gradient(circle at 15% 100%, rgba(242,182,50,.07), transparent 35%), #070B1F; }
 .hero-pattern { background-image: radial-gradient(rgba(151,182,255,.21) 1.2px, transparent 1.2px); background-size: 27px 27px; }
+.home-page > .technology-section { position: relative; }
+.home-page .hero-intro-stage::before,
+.home-page > :is(.hs-section, .ne-section, .pm-section, .technology-section, .roadmap)::before,
+.home-page > .markets-floor::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 10px;
+  background: #2B59FF;
+  z-index: 5;
+  pointer-events: none;
+}
 .hero-title { font-family: var(--app-font-serif); letter-spacing: -.065em; line-height: .98; }
 @media (max-width: 360px) {
   .hero-title { font-size: 2.05rem !important; overflow-wrap: normal; word-break: normal; }

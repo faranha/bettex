@@ -3,6 +3,12 @@ name: Verificação de fontes de pesquisa
 description: Preservar URLs canônicas e conferir o conteúdo efetivo antes de atribuir um percentual a uma pesquisa.
 ---
 
+Em comparações demográficas de apostas e cripto, distinguir maior adesão dentro de uma faixa etária de maior participação dessa faixa na composição total de usuários.
+
+**Why:** Uma comparação inicialmente tratou maior adesão entre jovens como perfil predominante dos apostadores. O criador corrigiu: “brasileiro apostador é 25–40 anos”. A distribuição oficial do mercado regulado confirma maioria nesse intervalo; maior adesão dentro de uma faixa não demonstra que ela concentra a maioria dos usuários.
+
+**How to apply:** Para o perfil do apostador, priorizar distribuição de CPFs únicos do SIGAP, não incidência por idade em pesquisa da população geral. Mostrar intervalos, período e definição de cada indicador; não forçar igualdade com cripto ou extrapolar dados brasileiros para o mundo.
+
 Validar o corpo da publicação, não apenas resultados de busca ou um status HTTP de sucesso. Preservar a URL canônica da fonte, inclusive a barra final.
 
 **Why:** Uma publicação da CNDL carregou uma página genérica sem a barra final, mas entregou o artigo, os percentuais e a metodologia com a URL canônica. O resultado de busca parecia correto em ambos os casos.
