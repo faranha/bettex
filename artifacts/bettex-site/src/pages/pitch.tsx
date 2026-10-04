@@ -227,16 +227,6 @@ export function PitchPage() {
       </div>
       </PitchEditorialSplit>
       <Doc hash="documentacao-financiamento-fundacao">Financiamento na documentação</Doc>
-      <div id="riscos" className="pitch-risk-panel">
-        <h3 className="display max-w-[800px] text-[clamp(1.5rem,3vw,2.1rem)] font-extrabold leading-tight tracking-[-.04em]">Alto risco: pode haver perda parcial ou total.</h3>
-        <ul className="mt-6 grid gap-3 md:grid-cols-2">
-          {['Sem renda garantida; não substitui salário.', 'Parecer jurídico, permissões de provedores, contratos e segurança são necessários antes de operações com dinheiro real.', 'Frentes de esportes e iGaming dependem de compatibilidade regulatória e não estão todas autorizadas.', 'Demanda, desempenho da IA, custos e liquidez ainda não foram testados.'].map((r) => <li key={r} className="rounded-2xl border border-[#2B59FF]/40 bg-[#0d1536] p-5 text-[15px] leading-7 text-[#c5d2f1]">{r}</li>)}
-        </ul>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a href={DOC} className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F2B632] px-7 py-3.5 text-sm font-bold text-[#070B1F]">Ler a documentação completa <ArrowRight className="h-4 w-4" aria-hidden="true" /></a>
-          <a href={`${DOC}#documentacao-oportunidade`} className="tap inline-flex min-h-12 items-center rounded-full border-2 border-[#F4F1E8]/70 px-7 py-3.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ver a pesquisa</a>
-        </div>
-      </div>
     </Sec>
   </main>;
 }

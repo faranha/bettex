@@ -188,3 +188,9 @@ Não usar a legenda genérica “Imagem conceitual” no Pitch.
 **Why:** O criador disse “nao escreva imagem conceitual nao faz sentido” ao revisar Recursos e riscos.
 
 **How to apply:** Omitir essa legenda das imagens editoriais. Preservar legendas específicas aprovadas, como “Protótipo do token BTEX físico”.
+
+Não reintroduzir o painel escuro “Alto risco: pode haver perda parcial ou total” ao final de Recursos e riscos do Pitch, incluindo seus quatro avisos e dois botões.
+
+**Why:** O criador apontou esse painel em uma captura e pediu removê-lo.
+
+**How to apply:** Manter o restante da seção. Essa remoção é específica do painel do Pitch, não das condições econômicas ou dos avisos na documentação.

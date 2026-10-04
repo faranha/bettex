@@ -93,7 +93,6 @@ img, svg, video { max-width: 100%; }
 .slide { position: relative; }
 .pitch .slide + .slide { border-top: 3px solid #2B59FF; }
 .pitch .slide--dark + .slide, .pitch .fu--one + .slide { border-top-color: #F2B632; }
-.pitch-risk-panel { margin-top: 36px; padding: clamp(20px,3vw,36px); border-radius: 12px; background: #070B1F; color: #F4F1E8; }
 .slide__head { position: relative; padding: 48px 0 32px; }
 .slide__head--ink { color: #F4F1E8; background-color: #070B1F; }
 .slide__head--ink h2 span { color: #F2B632; }
