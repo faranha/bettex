@@ -3,7 +3,7 @@ name: Prioridade do tamanho de mercado no Pitch
 description: Abrir o Pitch com o público potencial combinado de apostas e cripto e sua escala financeira.
 ---
 
-O criador exige destacar primeiro o tamanho do público e o volume financeiro, agora em Público, antes de Problema. A capa deve considerar o público potencial combinado de apostas e cripto, mais de 60 milhões de brasileiros, e incluir a movimentação diária de cripto, não apenas os depósitos nas bets. Pediu retirar os cartões de 30 milhões nas bets legalizadas e 10 milhões no ilegal, pois a apresentação desses números parecia conflitante. Também pediu pesquisar brasileiros com experiência em cripto e apresentar círculos de sobreposição para estimar o público combinado sem dupla contagem.
+O criador exige destacar primeiro o tamanho do público e o volume financeiro, agora em Público, antes de Problema. A capa deve considerar o público potencial combinado de apostas e cripto, mais de 60 milhões de brasileiros, e incluir a movimentação diária de cripto, não apenas os depósitos nas bets. Pediu retirar os cartões de 30 milhões nas bets legalizadas e 10 milhões no ilegal, pois a apresentação desses números parecia conflitante. Também pediu pesquisar brasileiros com experiência em cripto e estimar o público combinado sem dupla contagem.
 
 **Why:** O criador corrigiu uma omissão da abertura e reiterou “Isso tem que estar aqui, no problema e oportunidade” e “tem que ser a primeira coisa do pitch”. Depois explicou que os três números pareciam conflitantes e pediu eliminar os dois do meio, substituindo-os pela comparação com cripto.
 
@@ -21,6 +21,12 @@ Os 40 milhões de apostadores e os 29 milhões de brasileiros com experiência e
 
 **How to apply:** Identificar ambos os grupos como públicos potenciais nas artes e nos textos, nos três idiomas. Não reduzir a atuação à interseção nem chamar somente ela de público-alvo. Preservar o caráter hipotético do cruzamento, a metodologia e a elegibilidade; intenção de atender esses públicos não é demanda ou interesse medidos.
 
+O criador aprovou substituir os círculos por dois indicadores compactos de público potencial e um bloco principal com 6,9 milhões. Não reintroduzir o diagrama de círculos, legenda ou linha de chamada, nem substituir por um funil.
+
+**Why:** O criador rejeitou a apresentação dos círculos e aprovou a proposta de destacar o público central estimado, deixando os dois universos e a metodologia como contexto. Os números não são etapas de conversão nem uma interseção medida.
+
+**How to apply:** Preservar a hierarquia aprovada nas próximas revisões, com metodologia, alcance combinado e fontes disponíveis sem competir com o destaque dos 6,9 milhões.
+
 Não reintroduzir o rodapé extenso de notas e fontes abaixo da tese de oportunidade no Pitch, nem a ressalva separada sobre o volume não ser receita ou captação nesse trecho.
 
 **Why:** O criador mostrou o bloco e pediu remover tudo, explicando que não há espaço na apresentação para conteúdo que não seja tese ou número grande que a justifique.
@@ -32,3 +38,9 @@ Usar os volumes diários de cripto e bets como referências separadas, não uma 
 **Why:** O criador pediu ampliar o Hero para considerar transações e investimentos especulativos em cripto. A fonte recente distingue usos empresariais e de transferência; somá-los a depósitos nas bets não elimina circulação repetida do mesmo capital e mistura bases e períodos.
 
 **How to apply:** Incluir cripto no destaque financeiro, identificar a média do período e manter a referência de bets como histórica. Não confundir volume bruto de operações com captação, dinheiro exclusivo do público de varejo ou demanda pela BETTEX.
+
+No rodapé abaixo do destaque de 6,9 milhões, citar apenas as fontes. Não reinserir ali o cartão de alcance combinado nem os parágrafos de escopo, hipóteses e elegibilidade.
+
+**Why:** O criador marcou todo esse rodapé e pediu “apenas cite as fontes para informação, só isso”.
+
+**How to apply:** Manter as referências compactas, distinguindo a pesquisa publicada de cripto do cenário da BETTEX. A indicação de cenário hipotético e o cálculo já presentes acima não fazem parte da área removida.

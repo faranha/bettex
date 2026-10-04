@@ -3,6 +3,12 @@ name: Pauta econômica do cenário apocalíptico
 description: A pauta econômica pedida pelo criador pertence ao cenário apocalíptico, com gráficos, matérias e riscos globais.
 ---
 
+O problema apresentado pela BETTEX combina, em escala mundial, pessoas tratando apostas como investimento e a deterioração de emprego e renda com o avanço da IA. A tese do criador é o risco de miséria para uma geração, com comportamentos nocivos e vidas em jogo, não apenas um problema de apostas no Brasil.
+
+**Why:** O criador corrigiu a abertura de Problema por ela reduzir a tese a apostas e pediu resumir a combinação dos dois riscos, incluindo a humanidade e o futuro de uma geração.
+
+**How to apply:** O hero de Problema deve apresentar essa combinação global em linguagem simples. Manter o cenário de miséria como visão da BETTEX, sem transformá-lo em previsão inevitável ou extrapolar os percentuais brasileiros da pesquisa para a população mundial.
+
 O alerta de Amodei à Axios sobre eliminação de empregos pertence apenas ao cenário apocalíptico, não a um quadro genérico de “risco adicional” em “Resgatar o futuro”.
 
 **Why:** O criador rejeitou a apresentação dessa matéria fora do apocalipse.

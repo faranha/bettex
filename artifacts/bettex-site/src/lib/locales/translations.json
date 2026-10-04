@@ -104,6 +104,7 @@
   "Público potencial · apostas": { "en": "Potential audience · betting", "es": "Público potencial · apuestas" },
   "Público potencial · cripto": { "en": "Potential audience · crypto", "es": "Público potencial · cripto" },
   "Já tiveram": { "en": "Have had", "es": "Han tenido" },
+  "Até": { "en": "Up to", "es": "Hasta" },
   "cripto": { "en": "crypto", "es": "cripto" },
   "Alcance potencial combinado, sem duplicados": { "en": "Combined potential reach, without duplicates", "es": "Alcance potencial combinado, sin duplicados" },
   "O núcleo reúne, neste cenário, apostadores com experiência em cripto.": {
@@ -239,6 +240,7 @@
   "Cenário de sobreposição de público": { "en": "Audience overlap scenario", "es": "Escenario de superposición de públicos" },
   "Cenário hipotético · não é medição": { "en": "Hypothetical scenario · not a measurement", "es": "Escenario hipotético · no es una medición" },
   "Datafolha / Paradigma · publicado em ago. 2026": { "en": "Datafolha / Paradigma · published Aug. 2026", "es": "Datafolha / Paradigma · publicado en ago. de 2026" },
+  "BETTEX · cenário de mercado": { "en": "BETTEX · market scenario", "es": "BETTEX · escenario de mercado" },
   "Valores em milhões de pessoas. Áreas proporcionais ao cenário estimado, não a uma medição real.": { "en": "Values in millions of people. Areas are proportional to the estimated scenario, not a real measurement.", "es": "Valores en millones de personas. Áreas proporcionales al escenario estimado, no a una medición real." },
   "Experiência com cripto · pesquisa": { "en": "Crypto experience · survey", "es": "Experiencia en cripto · encuesta" },
   "Já tiveram cripto": { "en": "Have had crypto", "es": "Han tenido cripto" },
@@ -1364,6 +1366,18 @@
   "Para quem aposta buscando renda, o jogo não é apenas entretenimento. É uma expectativa de retorno financeiro.": {
     "en": "For those who bet seeking income, gambling is not just entertainment. It is an expectation of financial returns.",
     "es": "Para quien apuesta buscando ingresos, el juego no es solo entretenimiento. Es una expectativa de retorno financiero."
+  },
+  "Uma geração com": {
+    "en": "A generation with",
+    "es": "Una generación con"
+  },
+  "o futuro em jogo.": {
+    "en": "its future at stake.",
+    "es": "su futuro en juego."
+  },
+  "No mundo inteiro, pessoas tratam apostas como investimento enquanto a IA ameaça empregos e renda. Na visão da BETTEX, essa combinação de insegurança econômica e comportamentos nocivos pode levar uma geração à miséria, com vidas e futuros em jogo.": {
+    "en": "Around the world, people treat gambling as an investment while AI threatens jobs and income. In BETTEX’s view, this combination of economic insecurity and harmful behaviors could push a generation into poverty, with lives and futures at stake.",
+    "es": "En todo el mundo, las personas tratan las apuestas como una inversión mientras la IA amenaza el empleo y los ingresos. Desde la perspectiva de BETTEX, esta combinación de inseguridad económica y conductas perjudiciales puede llevar a una generación a la miseria, con vidas y futuros en juego."
   },
   "Participação na BETTEX: somente pessoas de 18 anos ou mais.": {
     "en": "Participation in BETTEX: only people aged 18 or older.",
@@ -3244,6 +3258,10 @@
   "A oportunidade é uma hipótese: uma experiência financeira compreensível, com custos e riscos à vista. O projeto não mira pessoas em dificuldade e não promete recuperar perdas de apostas.": {
     "en": "The opportunity is a hypothesis: an understandable financial experience, with visible costs and risks. The project does not target people in difficulty and does not promise to recover betting losses.",
     "es": "La oportunidad es una hipótesis: una experiencia financiera comprensible, con costos y riesgos a la vista. El proyecto no mira personas en dificultad y no promete recuperar pérdidas de apuestas."
+  },
+  "A oportunidade é vender o token BETTEX para quem hoje aposta como se estivesse investindo. O token representa um investimento em tecnologia, com estética de aposta e uma experiência familiar a esse público. É um caminho mais saudável para começar a pensar em investir e deixar de tratar o jogo como investimento.": {
+    "en": "The opportunity is to sell the BETTEX token to people who currently bet as if they were investing. The token represents an investment in technology, with a betting aesthetic and an experience familiar to this audience. It is a healthier path toward thinking about investing and no longer treating gambling as an investment.",
+    "es": "La oportunidad es vender el token BETTEX a quienes hoy apuestan como si estuvieran invirtiendo. El token representa una inversión en tecnología, con estética de apuesta y una experiencia familiar para este público. Es un camino más saludable para empezar a pensar en invertir y dejar de tratar el juego como una inversión."
   },
   "A ordem de chegada das respostas não determina, por si só, o estado da operação.": {
     "en": "The order of responses does not, by itself, determine the state of the operation.",

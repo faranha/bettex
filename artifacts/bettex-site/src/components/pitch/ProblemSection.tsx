@@ -15,11 +15,10 @@ const metrics = [
 
 export function ProblemSection() {
   return <section id="problema" aria-labelledby="problema-t" className="slide pb-problem">
-    <ChapterHero id="problema" n="03" kicker="Problema" src="pitch-illustrations/pitch-token-participation.webp" title={<>Apostar <span>não é investir.</span></>} summary="Para quem aposta buscando renda, o jogo não é apenas entretenimento. É uma expectativa de retorno financeiro." />
+    <ChapterHero id="problema" n="03" kicker="Problema" src="pitch-illustrations/pitch-token-participation.webp" title={<>Uma geração com{' '}<span>o futuro em jogo.</span></>} summary="No mundo inteiro, pessoas tratam apostas como investimento enquanto a IA ameaça empregos e renda. Na visão da BETTEX, essa combinação de insegurança econômica e comportamentos nocivos pode levar uma geração à miséria, com vidas e futuros em jogo." />
     <div className="page-wrap pb-problem__wrap">
       <header className="pb-problem__head">
         <p className="mono pb-problem__topic">1. Perda de dinheiro nas apostas</p>
-        <p className="mono pb-problem__eligibility">Participação na BETTEX: somente pessoas de 18 anos ou mais.</p>
       </header>
 
       <div className="pb-problem__intro">
@@ -39,7 +38,7 @@ export function ProblemSection() {
       <div className="pb-problem__notes">
         <p className="pb-problem__source">Fonte: <a href={CNDL} target="_blank" rel="noopener noreferrer">CNDL/SPC Brasil e Offerwise, pesquisa sobre a Copa de 2026<ExternalLink aria-hidden="true" /></a>. Amostra de 600 participantes com intenção de gastos para a Copa, coleta de 27 de abril a 5 de maio de 2026. Os 74% reúnem 31% de concordância total e 43% parcial. Esse recorte não representa toda a população brasileira, retorno de apostas ou demanda medida pela BETTEX.</p>
         <div className="pb-problem__hyp">
-          <p>A oportunidade é uma hipótese: uma experiência financeira compreensível, com custos e riscos à vista. O projeto não mira pessoas em dificuldade e não promete recuperar perdas de apostas.</p>
+          <p>A oportunidade é vender o token BETTEX para quem hoje aposta como se estivesse investindo. O token representa um investimento em tecnologia, com estética de aposta e uma experiência familiar a esse público. É um caminho mais saudável para começar a pensar em investir e deixar de tratar o jogo como investimento.</p>
           <a href={`${DOC}#documentacao-oportunidade`} className="tap pb-problem__doc">Conheça a proposta na documentação<ArrowRight aria-hidden="true" /></a>
         </div>
       </div>
