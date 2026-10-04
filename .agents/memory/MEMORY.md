@@ -25,7 +25,7 @@
 - [Mercados no mobile](mobile-market-content.md) — não repetir os quatro cartões de agentes abaixo da animação; a apresentação anterior já cobre esse conteúdo.
 - [Slides na homepage mobile](homepage-mobile-slides.md) — participação, carteira e agentes em slides horizontais para reduzir altura; preservar desktop e todo o conteúdo.
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
-- [Rodapé](footer-scope.md) — não apresentar o bloco de redes pessoais do fundador no rodapé.
+- [Rodapé](footer-scope.md) — navegação compacta, convite simples ao Telegram no mobile e desktop; sem redes pessoais do fundador.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
 - [Ordem e leitura da documentação](documentation-reading-order.md) — Entidade após Visão; um capítulo visível por vez, com subseções apenas da área selecionada.
 - [Leitura do pitch](pitch-reading-behavior.md) — todo o conteúdo deve ficar visível, sem caixas expansíveis ou controles de expandir/recolher.

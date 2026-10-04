@@ -2,8 +2,8 @@
   --tech-ink: #070B1F;
   --tech-mint: #5F86FF;
   color: var(--tech-ink);
-  background: linear-gradient(to bottom, #ECE8DA, #F4F1E8) bottom / 100% clamp(72px, 9vw, 120px) no-repeat, #ECE8DA;
-  padding: clamp(62px, 8vw, 110px) 0 clamp(72px, 9vw, 120px);
+  background: linear-gradient(to bottom, #ECE8DA, #F4F1E8) bottom / 100% 24px no-repeat, #ECE8DA;
+  padding: clamp(62px, 8vw, 110px) 0 24px;
 }
 .technology-section *, .technology-section *::before, .technology-section *::after { box-sizing: border-box; }
 .technology-section__wrap { width: min(calc(100% - 40px), 1200px); margin-inline: auto; }
@@ -128,7 +128,7 @@
   .technology-section__hierarchy { display: flex; align-items: flex-start; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; touch-action: pan-x pan-y; padding: 22px 0 20px; }
   .technology-section__hierarchy::-webkit-scrollbar { display: none; }
   .technology-section__hierarchy:focus-visible { outline: 2px solid #2B59FF; outline-offset: 2px; }
-  .technology-section__hierarchy > .technology-section__entry, .technology-section__agent-slot, .technology-section__hierarchy > .technology-section__result { flex: 0 0 100%; width: 100%; max-width: 100%; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+  .technology-section__agent-slot, .technology-section__hierarchy > .technology-section__result { flex: 0 0 100%; width: 100%; max-width: 100%; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
   .technology-section__hierarchy > .technology-section__agents { display: contents; }
   .technology-section__hierarchy > .technology-section__branch, .technology-section__hierarchy > .technology-section__result-path { display: none; }
   .technology-section__hierarchy > .technology-section__agents-label { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; box-shadow: none; }

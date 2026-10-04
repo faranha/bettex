@@ -5,12 +5,11 @@ import { BrainEnergy } from './BrainEnergy';
 import './TechnologySection.css';
 
 const SLIDE_LABELS = [
-  'Ir para o slide 1: Carteira BETTEX',
-  'Ir para o slide 2: Previsões',
-  'Ir para o slide 3: Ações e cripto',
-  'Ir para o slide 4: Esportes',
-  'Ir para o slide 5: Cassinos',
-  'Ir para o slide 6: Carteira USDC',
+  'Ir para o slide 1: Previsões',
+  'Ir para o slide 2: Ações e cripto',
+  'Ir para o slide 3: Esportes',
+  'Ir para o slide 4: Cassinos',
+  'Ir para o slide 5: Carteira USDC',
 ];
 const COUNT = SLIDE_LABELS.length;
 
@@ -73,7 +72,6 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           <p className="technology-section__intro-note">Antes de cada operação, a BETTEX cruza análises de dados, probabilidades, liquidez e risco. Compara as oportunidades e seleciona o investimento mais vantajoso segundo suas análises, respeitando os limites de risco.</p>
         </header>
 
-        <div className="technology-section__hierarchy" ref={trackRef} onKeyDown={onKey} tabIndex={mobile ? 0 : undefined} role="group" data-testid="slider-tecnologia" aria-label="compra concluída de BETTEX, participação automática do saldo, uma IA analisando vários mercados e crédito de lucro elegível na Carteira USDC.">
           <div className="technology-section__entry">
             <div className="technology-section__token" data-testid="diagram-technology-token">
               <span className="technology-section__coin" aria-hidden="true"><BettexMark /></span>
@@ -96,6 +94,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
               </div>
             </div>
           </div>
+        <div className="technology-section__hierarchy" ref={trackRef} onKeyDown={onKey} tabIndex={mobile ? 0 : undefined} role="group" data-testid="slider-tecnologia" aria-label="Mercados da BETTEX e crédito de lucro elegível na Carteira USDC.">
           <div className="technology-section__branch" aria-hidden="true" />
           <span className="technology-section__agents-label">03 / Uma IA BETTEX, quatro mercados</span>
           <div className="technology-section__agents" aria-label="Quatro mercados da BETTEX">{children}</div>
