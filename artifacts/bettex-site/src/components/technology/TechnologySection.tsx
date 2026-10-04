@@ -1,10 +1,65 @@
-import { type ReactNode } from 'react';
-import { ArrowDown, WalletCards } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { ArrowDown, ArrowLeft, ArrowRight, WalletCards } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
 import { BrainEnergy } from './BrainEnergy';
 import './TechnologySection.css';
 
+const SLIDE_LABELS = [
+  'Ir para o slide 1: Carteira BETTEX',
+  'Ir para o slide 2: Previsões',
+  'Ir para o slide 3: Ações e cripto',
+  'Ir para o slide 4: Esportes',
+  'Ir para o slide 5: Cassinos',
+  'Ir para o slide 6: Carteira USDC',
+];
+const COUNT = SLIDE_LABELS.length;
+
 export function TechnologySection({ children }: { children: ReactNode }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef(0);
+  const [active, setActive] = useState(0);
+  const [mobile, setMobile] = useState(false);
+
+  const goTo = useCallback((i: number) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const n = Math.max(0, Math.min(COUNT - 1, i));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    activeRef.current = n;
+    setActive(n);
+    el.scrollTo({ left: n * el.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+  }, []);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const mq = window.matchMedia('(max-width: 767px)');
+    let raf = 0;
+    const onMq = () => { setMobile(mq.matches); if (!mq.matches) { el.scrollLeft = 0; activeRef.current = 0; setActive(0); } };
+    const onScroll = () => {
+      if (!mq.matches) return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const i = Math.max(0, Math.min(COUNT - 1, Math.round(el.scrollLeft / (el.clientWidth || 1))));
+        if (i !== activeRef.current) { activeRef.current = i; setActive(i); }
+      });
+    };
+    const onResize = () => { if (mq.matches) el.scrollTo({ left: activeRef.current * el.clientWidth, behavior: 'auto' }); };
+    onMq();
+    el.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    mq.addEventListener('change', onMq);
+    return () => { cancelAnimationFrame(raf); el.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); mq.removeEventListener('change', onMq); };
+  }, []);
+
+  const onKey = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (!mobile || e.target !== e.currentTarget) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(activeRef.current + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(activeRef.current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(COUNT - 1); }
+  };
+
   return (
     <section id="tecnologia" className="technology-section" aria-labelledby="technology-title">
       <div className="technology-section__wrap">
@@ -18,7 +73,7 @@ export function TechnologySection({ children }: { children: ReactNode }) {
           <p className="technology-section__intro-note">Antes de cada operação, a BETTEX cruza análises de dados, probabilidades, liquidez e risco. Compara as oportunidades e seleciona o investimento mais vantajoso segundo suas análises, respeitando os limites de risco.</p>
         </header>
 
-        <div className="technology-section__hierarchy" aria-label="compra concluída de BETTEX, participação automática do saldo, uma IA analisando vários mercados e crédito de lucro elegível na Carteira USDC.">
+        <div className="technology-section__hierarchy" ref={trackRef} onKeyDown={onKey} tabIndex={mobile ? 0 : undefined} role="group" data-testid="slider-tecnologia" aria-label="compra concluída de BETTEX, participação automática do saldo, uma IA analisando vários mercados e crédito de lucro elegível na Carteira USDC.">
           <div className="technology-section__entry">
             <div className="technology-section__token" data-testid="diagram-technology-token">
               <span className="technology-section__coin" aria-hidden="true"><BettexMark /></span>
@@ -57,7 +112,15 @@ export function TechnologySection({ children }: { children: ReactNode }) {
             </div>
           </div>
         </div>
-
+        <div className="technology-section__nav" data-testid="controls-tecnologia">
+          <button type="button" className="technology-section__nav-btn" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="Slide anterior" data-testid="button-tecnologia-anterior"><ArrowLeft size={18} aria-hidden="true" /></button>
+          <div className="technology-section__dots">
+            {SLIDE_LABELS.map((label, i) => (
+              <button type="button" key={label} className="technology-section__dot" onClick={() => goTo(i)} aria-label={label} aria-current={active === i ? 'step' : undefined} data-active={active === i} data-testid={`button-tecnologia-${i + 1}`} />
+            ))}
+          </div>
+          <button type="button" className="technology-section__nav-btn" onClick={() => goTo(active + 1)} disabled={active === COUNT - 1} aria-label="Próximo slide" data-testid="button-tecnologia-proximo"><ArrowRight size={18} aria-hidden="true" /></button>
+        </div>
       </div>
     </section>
   );

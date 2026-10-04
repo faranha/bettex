@@ -1,26 +1,42 @@
 .technology-networks {
+  --networks-line: rgba(130, 154, 199, .12);
   background: #070b1f;
-  padding: 26px 0 30px;
+  padding: 14px 0;
   border-block: 1px solid rgba(130, 154, 199, .15);
   color: #f4f1e8;
 }
-.technology-networks__wrap { width: min(calc(100% - 40px), 1200px); margin-inline: auto; }
+.technology-networks__wrap { width: min(calc(100% - 40px), 960px); margin-inline: auto; }
+.technology-networks__label {
+  display: inline-flex;
+  margin: 0 0 8px;
+  padding: 2px 8px;
+  border: 1px solid var(--networks-line);
+  border-radius: 4px;
+  color: #b5c1dc;
+  font: 600 9px/1.5 var(--app-font-mono, monospace);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
 .technology-networks__list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
-  max-width: 1050px;
+  gap: 0;
+  max-width: 960px;
   padding: 0;
   margin: 0 auto;
   list-style: none;
+  border: 1px solid var(--networks-line);
+  border-radius: 8px;
+  overflow: hidden;
 }
-.technology-networks__list li { min-width: 0; text-align: center; }
+.technology-networks__list li { min-width: 0; padding: 8px 10px; text-align: center; border-inline-end: 1px solid var(--networks-line); }
+.technology-networks__list li:last-child { border-inline-end: 0; }
 .technology-networks__logo {
   display: flex;
   align-items: center;
   justify-content: center;
   width: min(100%, 210px);
-  height: 44px;
+  height: 32px;
   margin-inline: auto;
 }
 .technology-networks__logo img {
@@ -30,13 +46,19 @@
   max-height: 100%;
   object-fit: contain;
 }
-.technology-networks__logo--arbitrum img { width: 170px; }
-.technology-networks__logo--ethereum img { width: 163px; }
-.technology-networks__logo--allora img { width: 138px; }
-.technology-networks__logo--robinhood img { width: 178px; }
+.technology-networks__logo--arbitrum img { width: 142px; }
+.technology-networks__logo--ethereum img { width: 138px; }
+.technology-networks__logo--allora img { width: 112px; }
+.technology-networks__logo--robinhood img { width: 150px; }
 @media (max-width: 600px) {
+  .technology-networks { padding: 12px 0; }
   .technology-networks__wrap { width: calc(100% - 32px); }
-  .technology-networks__list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 20px; }
-  .technology-networks__logo { height: 40px; }
-  .technology-networks__logo--allora img { width: 118px; }
+  .technology-networks__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .technology-networks__list li:nth-child(2n) { border-inline-end: 0; }
+  .technology-networks__list li:nth-child(-n + 2) { border-bottom: 1px solid var(--networks-line); }
+  .technology-networks__logo { height: 26px; }
+  .technology-networks__logo--arbitrum img { width: 124px; }
+  .technology-networks__logo--ethereum img { width: 120px; }
+  .technology-networks__logo--allora img { width: 98px; }
+  .technology-networks__logo--robinhood img { width: 130px; }
 }

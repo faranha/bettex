@@ -1,4 +1,5 @@
 import { NewsClipping } from './hero/NewsClipping';
+import { CommunityCTA } from './CommunityCTA';
 import './HumanStorySection.css';
 
 export function HumanStorySection() {
@@ -6,11 +7,6 @@ export function HumanStorySection() {
     <section id="historia" className="hs-section" aria-labelledby="hs-heading" data-testid="section-narrativa-humana">
       <img className="hs-photo" src={`${import.meta.env.BASE_URL}story/man-loss-background.jpg`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
       <div className="hs-wrap">
-        <div className="hs-topline">
-          <span className="hs-kicker">Uma comunidade do seu lado</span>
-          <span className="hs-topline-detail">Tecnologia, decisões e participação</span>
-        </div>
-
         <div className="hs-grid">
           <div className="hs-left">
             <div className="hs-asterisk" aria-hidden="true" />
@@ -33,6 +29,7 @@ export function HumanStorySection() {
               <NewsClipping className="hs-news" showSource caption="A reportagem mostra como uma casa de apostas usou IA para identificar quem tinha mais chance de perder. Na BETTEX, a comunidade acompanha a tecnologia usada nas operações e participa das decisões." />
             </div>
             <p className="hs-next">CONHEÇA A IA.<br /><strong>PARTICIPE DA COMUNIDADE.</strong></p>
+            <CommunityCTA source="historia" tone="dark" className="!mt-4" />
           </div>
         </div>
       </div>

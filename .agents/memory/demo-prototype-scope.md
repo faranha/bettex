@@ -14,3 +14,9 @@ No mobile, as telas devem aparecer antes das imagens, ícones e símbolos que ex
 **Why:** O criador disse que as ilustrações antes da tela dificultam ver o demo.
 
 **How to apply:** Priorizar a tela na ordem visual mobile de todas as áreas; manter os elementos ilustrativos abaixo, sem mudar a disposição desktop.
+
+Na homepage, a área “Conheça o app da BETTEX” deve ser um banner simples convidando a acessar o demo existente, sem a apresentação de telas.
+
+**Why:** O criador disse que “nós já temos um demo” e pediu “Acesse o demo ao vivo agora mesmo”, sem precisar mostrar aquelas telas.
+
+**How to apply:** Não reconstruir o showcase de telas na homepage ao melhorar o banner. A prioridade visual das telas sobre ilustrações se aplica somente às áreas que continuam apresentando telas, não exige reintroduzi-las na homepage.

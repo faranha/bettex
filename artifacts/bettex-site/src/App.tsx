@@ -26,6 +26,8 @@ import { NewEconomySection } from '@/components/NewEconomySection';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { chapters } from '@/components/WhitepaperChapters';
+import { FloatingCommunityCTA, TelegramIcon } from '@/components/CommunityCTA';
+import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 
 const queryClient = new QueryClient();
@@ -150,6 +152,7 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             <div className="mt-6 flex flex-wrap gap-3">
               <a href={homeAnchor('roadmap')} className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#070B1F] px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#13204F] focus-visible:outline-[#F2B632]">Ver o roadmap <ArrowRight className="h-4 w-4 text-[#F2B632]" aria-hidden="true" /></a>
               <a href={DOCUMENTATION_PATH} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#F4F1E8] hover:text-[#070B1F] focus-visible:outline-[#F2B632]">Ler a documentação</a>
+              <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-community-source="footer" data-testid="link-community-footer" className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F4F1E8] px-6 py-3.5 text-sm font-bold text-[#070B1F] hover:bg-white focus-visible:outline-[#F2B632]"><TelegramIcon className="h-5 w-5" />Vem pra comunidade</a>
             </div>
           </div>
           <div className="relative z-10 mx-auto w-full max-w-[400px] self-end lg:max-w-[540px] lg:justify-self-end">
@@ -161,45 +164,46 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
     </div>
     <div className="h-1 bg-[#F2B632]" aria-hidden="true" />
     <div className="page-wrap relative">
-      <div className="grid gap-10 border-b border-[#2B59FF]/25 py-11 md:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_1fr_1fr]">
-        <div>
+      <div className="sf-nav">
+        <div className="sf-brand">
           <Logo />
-           <p className="mt-5 max-w-[350px] text-sm leading-7 text-[#b4c5eb]">O token do projeto de inteligência artificial BETTEX.</p>
-          <LanguageSelector className="mt-6" />
+          <LanguageSelector className="sf-lang" />
+          <p className="sf-tag mono">COMUNIDADE DE INVESTIMENTO COM IA</p>
         </div>
-        <nav aria-label="Explorar o projeto">
-          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#5F86FF]">Explore</h3>
-          <ul className="footer-links space-y-1 text-sm font-semibold">
-            <li><a className="hover:text-[#5F86FF]" href={homeAnchor('participacao')}>Token BETTEX</a></li>
-            <li><a className="hover:text-[#5F86FF]" href={homeAnchor('tecnologia')}>Como opera</a></li>
-            <li><a className="hover:text-[#5F86FF]" href={homeAnchor('mercados')}>Mercados</a></li>
-            <li><a className="hover:text-[#5F86FF]" href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
+        <nav aria-label="Explorar o projeto" className="sf-group">
+          <h3 className="mono">Explore</h3>
+          <ul>
+            <li><a href={homeAnchor('participacao')}>Token BETTEX</a></li>
+            <li><a href={homeAnchor('tecnologia')}>Como opera</a></li>
+            <li><a href={homeAnchor('mercados')}>Mercados</a></li>
+            <li><a href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
           </ul>
         </nav>
-        <nav aria-label="Links do projeto">
-          <h3 className="mono mb-4 text-[10px] font-bold uppercase tracking-[.16em] text-[#5F86FF]">O projeto</h3>
-          <ul className="footer-links space-y-1 text-sm font-semibold">
-            <li><a className="hover:text-[#5F86FF]" href={homeAnchor('historia')}>Por que BETTEX</a></li>
-            <li><a className="hover:text-[#5F86FF]" href={homeAnchor('roadmap')}>Roadmap</a></li>
-            <li><a className="hover:text-[#5F86FF]" href={`${BASE_PATH}/pitch`}>Pitch</a></li>
-            <li><a className="hover:text-[#5F86FF]" href={DOCUMENTATION_PATH}>Documentação</a></li>
-            <li><a className="hover:text-[#5F86FF]" href={`${BASE_PATH}/demo`}>Demo</a></li>
+        <nav aria-label="Links do projeto" className="sf-group">
+          <h3 className="mono">O projeto</h3>
+          <ul>
+            <li><a href={homeAnchor('historia')}>Por que BETTEX</a></li>
+            <li><a href={homeAnchor('roadmap')}>Roadmap</a></li>
+            <li><a href={`${BASE_PATH}/pitch`}>Pitch</a></li>
+            <li><a href={DOCUMENTATION_PATH}>Documentação</a></li>
+            <li><a href={`${BASE_PATH}/demo`}>Demo</a></li>
           </ul>
         </nav>
       </div>
-      <div className="flex flex-col gap-4 py-6 text-xs leading-5 text-[#829ddc] sm:flex-row sm:items-center sm:justify-between">
+      <div className="sf-bottom">
         <p>© {new Date().getFullYear()} BETTEX.</p>
-        <a href={homeAnchor('inicio')} className="inline-flex min-h-11 w-fit items-center gap-2 font-bold text-[#5F86FF] hover:text-white">Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
+        <a href={homeAnchor('inicio')}>Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
       </div>
     </div>
   </footer>;
 }
 
-function SitePage({ children, documentation = false, compactFooter = false }: { children: ReactNode; documentation?: boolean; compactFooter?: boolean }) {
+function SitePage({ children, documentation = false, compactFooter = false, floatingCta = false }: { children: ReactNode; documentation?: boolean; compactFooter?: boolean; floatingCta?: boolean }) {
   return <div style={{ '--pitch-label-1': JSON.stringify(t('Movimentação')), '--pitch-label-2': JSON.stringify(t('Tarifa')), '--pitch-label-3': JSON.stringify(t('Resultado')) } as CSSProperties} className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#F4F1E8]`}>
     <SiteHeader />
     {children}
     <SiteFooter compact={compactFooter} />
+    {floatingCta && <><div className="h-[calc(72px+env(safe-area-inset-bottom))] bg-[#070B1F] md:hidden" aria-hidden="true" /><FloatingCommunityCTA /></>}
   </div>;
 }
 
@@ -251,7 +255,7 @@ function Home() {
     };
   }, []);
 
-  return <SitePage>
+  return <SitePage floatingCta>
     <main>
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#F4F1E8]">
         <div className="hero-intro-stage relative">
@@ -264,24 +268,23 @@ function Home() {
             </h1>
             <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Uma comunidade pra quem está cansado de só apostar e quer começar a ganhar.</h2>
             <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">Na BETTEX, nossa IA analisa e opera em diferentes mercados. Com nosso token, você participa dos lucros do projeto.</p>
-            <div className="mt-8 flex flex-wrap items-center gap-3"><a href="#historia" data-testid="link-hero-participacao" className="tap inline-flex items-center gap-2 rounded-full bg-[#2B59FF] px-7 py-4 text-sm font-bold text-white hover:bg-[#1E44D6]">Quero participar da comunidade</a><a href="#visao-investidor" data-testid="link-hero-demo" className="tap inline-flex items-center gap-2 px-4 py-4 text-sm font-semibold text-[#c5d2f1] underline-offset-4 hover:underline">Ver telas do app</a></div>
           </div>
         </div>
         <HeroBenefit />
         </div>
       </section>
 
+      <TechnologyNetworks />
       <HumanStorySection />
       <NewEconomySection />
 
-      <TechnologyNetworks />
       <ProjectModelSection />
 
        <TechnologySection>
          {markets.map((market, index) => <div className="technology-section__agent-slot" key={market.name}><MarketCard market={market} number={index + 1} /></div>)}
        </TechnologySection>
-       <MarketsFloorSection />
        <InvestorAppPreview />
+       <MarketsFloorSection />
         <RoadmapSection />
 
     </main>

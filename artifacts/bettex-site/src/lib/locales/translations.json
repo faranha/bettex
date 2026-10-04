@@ -71,9 +71,9 @@
     "en": "Follow how AI carries out the operations and how our token lets you share in the project's profits.",
     "es": "Sigue cómo la IA realiza las operaciones y cómo nuestro token permite participar en los beneficios del proyecto."
   },
-  "Das apostas ao futuro do trabalho, a tecnologia já muda as regras. A comunidade BETTEX é onde essa conversa começa.": {
-    "en": "From betting to the future of work, technology is already changing the rules. The BETTEX community is where that conversation begins.",
-    "es": "De las apuestas al futuro del trabajo, la tecnología ya cambia las reglas. La comunidad BETTEX es donde comienza esa conversación."
+  "Das apostas ao futuro do trabalho, a tecnologia já muda as regras. Na BETTEX, você muda o jogo: para de perder e começa a ganhar.": {
+    "en": "From betting to the future of work, technology is already changing the rules. At BETTEX, you change the game: stop losing and start winning.",
+    "es": "De las apuestas al futuro del trabajo, la tecnología ya cambia las reglas. En BETTEX, cambias el juego: dejas de perder y empiezas a ganar."
   },
   "Faça parte dessa conversa. Proteja-se da mudança. Proteja a sua família.": {
     "en": "Join this conversation. Protect yourself from change. Protect your family.",
@@ -242,6 +242,10 @@
   "Arbitrum": {
     "en": "Arbitrum",
     "es": "Arbitrum"
+  },
+  "Parceiros": {
+    "en": "Partners",
+    "es": "Socios"
   },
   "Redes e tecnologias": {
     "en": "Networks and technologies",
@@ -9843,6 +9847,10 @@
     "en": "View rules in documentation",
     "es": "Ver reglas en la documentación"
   },
+  "Ver o demo": {
+    "en": "View the demo",
+    "es": "Ver la demo"
+  },
   "Ver telas do app": {
     "en": "View app screens",
     "es": "Ver las pantallas de la aplicación"
@@ -13126,5 +13134,149 @@
   "tradix-serious.webp": {
     "en": "tradix-serious.webp",
     "es": "tradix-serious.webp"
+  },
+  "Etapa anterior": {
+    "en": "Previous stage",
+    "es": "Etapa anterior"
+  },
+  "Próxima etapa": {
+    "en": "Next stage",
+    "es": "Siguiente etapa"
+  },
+  "Ir para a etapa 1": {
+    "en": "Go to stage 1",
+    "es": "Ir a la etapa 1"
+  },
+  "Ir para a etapa 2": {
+    "en": "Go to stage 2",
+    "es": "Ir a la etapa 2"
+  },
+  "Ir para a etapa 3": {
+    "en": "Go to stage 3",
+    "es": "Ir a la etapa 3"
+  },
+  "Ir para a etapa 4": {
+    "en": "Go to stage 4",
+    "es": "Ir a la etapa 4"
+  },
+  "(max-width: 767px)": {
+    "en": "(max-width: 767px)",
+    "es": "(max-width: 767px)"
+  },
+  "step": {
+    "en": "step",
+    "es": "step"
+  },
+  "Slide anterior": {
+    "en": "Previous slide",
+    "es": "Diapositiva anterior"
+  },
+  "Próximo slide": {
+    "en": "Next slide",
+    "es": "Siguiente diapositiva"
+  },
+  "Ir para o slide 1: Carteira BETTEX": {
+    "en": "Go to slide 1: BETTEX Wallet",
+    "es": "Ir a la diapositiva 1: Cartera BETTEX"
+  },
+  "Ir para o slide 2: Previsões": {
+    "en": "Go to slide 2: Predictions",
+    "es": "Ir a la diapositiva 2: Predicciones"
+  },
+  "Ir para o slide 3: Ações e cripto": {
+    "en": "Go to slide 3: Stocks and crypto",
+    "es": "Ir a la diapositiva 3: Acciones y cripto"
+  },
+  "Ir para o slide 4: Esportes": {
+    "en": "Go to slide 4: Sports",
+    "es": "Ir a la diapositiva 4: Deportes"
+  },
+  "Ir para o slide 5: Cassinos": {
+    "en": "Go to slide 5: Casinos",
+    "es": "Ir a la diapositiva 5: Casinos"
+  },
+  "Ir para o slide 6: Carteira USDC": {
+    "en": "Go to slide 6: USDC Wallet",
+    "es": "Ir a la diapositiva 6: Cartera USDC"
+  },
+  "Demonstração": {
+    "en": "Demo",
+    "es": "Demostración"
+  },
+  "Acesse o demo ao vivo agora mesmo.": {
+    "en": "Open the live demo right now.",
+    "es": "Accede a la demo en vivo ahora mismo."
+  },
+  "Abrir o demo": {
+    "en": "Open the demo",
+    "es": "Abrir la demo"
+  },
+  "Vem pra comunidade": {
+    "en": "Join the community",
+    "es": "Ven a la comunidad"
+  },
+  "Entre na comunidade": {
+    "en": "Enter the community",
+    "es": "Entra en la comunidad"
+  },
+  "A conversa continua no Telegram.": {
+    "en": "The conversation continues on Telegram.",
+    "es": "La conversación continúa en Telegram."
+  },
+  "Tire dúvidas antes de participar.": {
+    "en": "Ask your questions before taking part.",
+    "es": "Resuelve tus dudas antes de participar."
+  },
+  "Acompanhe cada etapa de perto.": {
+    "en": "Follow each stage up close.",
+    "es": "Sigue cada etapa de cerca."
+  },
+  "Veja de perto o que a IA acompanha.": {
+    "en": "See up close what the AI follows.",
+    "es": "Mira de cerca lo que sigue la IA."
+  },
+  "Converse com quem acompanha a IA.": {
+    "en": "Talk with people who follow the AI.",
+    "es": "Conversa con quienes siguen la IA."
+  },
+  "Comunidade no Telegram": {
+    "en": "Telegram community",
+    "es": "Comunidad en Telegram"
+  },
+  "Retorno ao site e compreensão": {
+    "en": "Return to the site and understanding",
+    "es": "Regreso al sitio y comprensión"
+  },
+  "Compra elegível do token": {
+    "en": "Eligible token purchase",
+    "es": "Compra elegible del token"
+  },
+  "Conteúdo e alcance → Interesse com consentimento → Comunidade no Telegram → Retorno ao site e compreensão → Compra elegível do token → Primeiro uso útil → Retorno por coorte": {
+    "en": "Content and reach → Consented interest → Telegram community → Return to the site and understanding → Eligible token purchase → First useful experience → Return by cohort",
+    "es": "Contenido y alcance → Interés con consentimiento → Comunidad en Telegram → Regreso al sitio y comprensión → Compra elegible del token → Primer uso útil → Retorno por cohorte"
+  },
+  "Founder-led: conteúdo e alcance levam ao site; a comunidade no Telegram aprofunda o relacionamento e conduz o retorno ao site para a compra elegível do token, com apoio de performance, marca e narrativa.": {
+    "en": "Founder-led: content and reach bring people to the site; the Telegram community deepens relationships and brings people back to the site for an eligible token purchase, supported by performance marketing, branding and storytelling.",
+    "es": "Founder-led: el contenido y el alcance llevan al sitio; la comunidad en Telegram profundiza la relación y conduce el regreso al sitio para la compra elegible del token, con apoyo de marketing de resultados, marca y narrativa."
+  },
+  "Relacionamento, perguntas e feedback; convites para retornar ao site e conhecer a compra do token.": {
+    "en": "Relationships, questions and feedback; invitations to return to the site and learn about purchasing the token.",
+    "es": "Relación, preguntas y comentarios; invitaciones para regresar al sitio y conocer la compra del token."
+  },
+  "floating-mobile": {
+    "en": "floating-mobile",
+    "es": "floating-mobile"
+  },
+  "hero": {
+    "en": "hero",
+    "es": "hero"
+  },
+  "light": {
+    "en": "light",
+    "es": "light"
+  },
+  "nova-economia": {
+    "en": "nova-economia",
+    "es": "nova-economia"
   }
 }

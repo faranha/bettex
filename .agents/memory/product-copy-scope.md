@@ -32,3 +32,9 @@ Os textos dos três cartões da Nova Economia devem ser reduzidos em cerca de do
 **Why:** O criador reiterou que já tinha pedido as duas mudanças e apontou que os cartões continuavam longos e o botão permanecia.
 
 **How to apply:** Usar resumos próprios para os cartões da homepage, sem reaproveitar os parágrafos completos da tese. Preservar os textos detalhados no pitch e na documentação. Remover o botão da seção, não apenas ocultá-lo, e manter os três idiomas consistentes.
+
+No convite da Nova Economia, não apresentar a BETTEX como apenas o lugar onde “essa conversa começa”. O posicionamento solicitado é “você muda o jogo: para de perder e começa a ganhar”.
+
+**Why:** O criador rejeitou expressamente o texto de início da conversa e pediu esse posicionamento em seu lugar.
+
+**How to apply:** Preservar esse sentido ao revisar ou traduzir o convite. Isso é direção de linguagem comercial, não altera as regras econômicas nem autoriza inventar garantia de retorno.

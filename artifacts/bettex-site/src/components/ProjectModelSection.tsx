@@ -1,9 +1,60 @@
-import { ArrowDownRight, ArrowRight, Wallet } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { ArrowDownRight, ArrowLeft, ArrowRight, Wallet } from 'lucide-react';
+import { CommunityCTA } from '@/components/CommunityCTA';
 import { TokenIllustration, DepositIllustration, CoordinationIllustration } from '@/components/ProjectModelIllustrations';
 
 const markets = ['Previsões', 'Ações e cripto', 'Esportes', 'Cassinos'] as const;
 
+const STEP_COUNT = 4;
+const dotLabels = ['Ir para a etapa 1', 'Ir para a etapa 2', 'Ir para a etapa 3', 'Ir para a etapa 4'];
+
 export function ProjectModelSection() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef(0);
+  const [active, setActive] = useState(0);
+  const [mobile, setMobile] = useState(false);
+
+  const goTo = useCallback((i: number, instant = false) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const n = Math.max(0, Math.min(STEP_COUNT - 1, i));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    activeRef.current = n;
+    setActive(n);
+    el.scrollTo({ left: n * el.clientWidth, behavior: instant || reduce ? 'auto' : 'smooth' });
+  }, []);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const mq = window.matchMedia('(max-width: 767px)');
+    let raf = 0;
+    const onMq = () => { setMobile(mq.matches); if (!mq.matches) { el.scrollLeft = 0; activeRef.current = 0; setActive(0); } };
+    const onScroll = () => {
+      if (!mq.matches) return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const w = el.clientWidth || 1;
+        const i = Math.max(0, Math.min(STEP_COUNT - 1, Math.round(el.scrollLeft / w)));
+        if (i !== activeRef.current) { activeRef.current = i; setActive(i); }
+      });
+    };
+    const onResize = () => { if (mq.matches) el.scrollTo({ left: activeRef.current * el.clientWidth, behavior: 'auto' }); };
+    onMq();
+    el.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    mq.addEventListener('change', onMq);
+    return () => { cancelAnimationFrame(raf); el.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); mq.removeEventListener('change', onMq); };
+  }, []);
+
+  const onKey = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (!mobile) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(activeRef.current + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(activeRef.current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(STEP_COUNT - 1); }
+  };
+
   return (
     <section id="participacao" className="pm-section" aria-labelledby="pm-heading" data-testid="section-modelo-projeto">
       <style>{`
@@ -141,6 +192,21 @@ export function ProjectModelSection() {
            .pm-bottom a svg { transition: none; }
            .pm-profit-arrow { animation: none; }
         }
+        .pm-nav { display: none; }
+        @media (max-width: 767px) {
+          .pm-steps { display: flex; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 12px 0 0; touch-action: pan-x pan-y; }
+          .pm-steps::-webkit-scrollbar { display: none; }
+          .pm-steps:focus-visible { outline-offset: -3px; }
+          .pm-step, .pm-step + .pm-step, .pm-step:last-child { flex: 0 0 100%; box-sizing: border-box; scroll-snap-align: start; scroll-snap-stop: always; padding: 14px 23px 8px; border: 0; }
+          .pm-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 23px 20px; }
+          .pm-nav-btn { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(121,157,241,.4); border-radius: 50%; background: rgba(245,246,237,.06); color: #F4F1E8; }
+          .pm-nav-btn:disabled { opacity: .35; }
+          .pm-dots { display: flex; align-items: center; gap: 2px; }
+          .pm-dot { position: relative; width: 32px; height: 44px; border: 0; background: none; padding: 0; }
+          .pm-dot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 999px; background: rgba(121,157,241,.45); transition: transform .25s ease, background-color .25s ease; }
+          .pm-dot[data-active="true"]::before { background: #F2B632; transform: scaleX(2.2); }
+        }
+        @media (prefers-reduced-motion: reduce) { .pm-dot::before { transition: none; } }
       `}</style>
       <div className="pm-casino-wheel" aria-hidden="true" />
       <div className="pm-casino-cards" aria-hidden="true"><span className="pm-casino-card">♠</span><span className="pm-casino-card">♦</span></div>
@@ -164,7 +230,7 @@ export function ProjectModelSection() {
           <div className="pm-panel-top">
             <p className="pm-panel-label">Como funciona a participação no projeto</p>
           </div>
-          <div className="pm-steps">
+          <div className="pm-steps" ref={trackRef} onKeyDown={onKey} tabIndex={mobile ? 0 : undefined} role="group" aria-label="Como funciona a participação no projeto" data-testid="slider-etapas">
             <div className="pm-step">
               <span className="pm-index">01 / COMPRA</span>
               <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
@@ -206,10 +272,20 @@ export function ProjectModelSection() {
               <h3>Quando houver lucro elegível, <em>você recebe sua parte.</em></h3>
             </div>
           </div>
+          <div className="pm-nav" data-testid="controls-etapas">
+            <button type="button" className="pm-nav-btn" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="Etapa anterior" data-testid="button-etapa-anterior"><ArrowLeft size={18} aria-hidden="true" /></button>
+            <div className="pm-dots">
+              {dotLabels.map((label, i) => (
+                <button type="button" key={label} className="pm-dot" onClick={() => goTo(i)} aria-label={label} aria-current={active === i ? 'step' : undefined} data-active={active === i} data-testid={`button-etapa-${i + 1}`} />
+              ))}
+            </div>
+            <button type="button" className="pm-nav-btn" onClick={() => goTo(active + 1)} disabled={active === STEP_COUNT - 1} aria-label="Próxima etapa" data-testid="button-proxima-etapa"><ArrowRight size={18} aria-hidden="true" /></button>
+          </div>
           <div className="pm-panel-foot">
             <p>*Sem lucro não há distribuição e você não perde os seus tokens.</p>
           </div>
         </div>
+        <CommunityCTA source="participacao" label="Entre na comunidade" note="Tire dúvidas antes de participar." className="!justify-end" />
         <div className="pm-bottom">
           <a href="#mercados" data-testid="link-conhecer-mercados">Conheça os mercados <ArrowRight size={16} aria-hidden="true" /></a>
         </div>

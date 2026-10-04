@@ -16,11 +16,11 @@
   "launch": {
     "country": "Brasil",
     "initialUsersGoal": 1000,
-    "strategy": "Founder-led: distribuição inicial pela audiência e comunidade do fundador, combinada com marketing de performance, construção de marca e construção de narrativa nas mídias sociais.",
+    "strategy": "Founder-led: conteúdo e alcance levam ao site; a comunidade no Telegram aprofunda o relacionamento e conduz o retorno ao site para a compra elegível do token, com apoio de performance, marca e narrativa.",
     "goalDefinition": "Meta de primeiros 1.000 usuários únicos no Brasil, com cadastro elegível e ativação no produto ou piloto disponível. Interessados em lista de espera, seguidores, compradores e titulares são métricas distintas.",
-    "funnel": ["Conteúdo e alcance", "Interesse com consentimento", "Cadastro elegível", "Onboarding e compreensão", "Primeiro uso útil", "Retorno por coorte"],
+    "funnel": ["Conteúdo e alcance", "Interesse com consentimento", "Comunidade no Telegram", "Retorno ao site e compreensão", "Compra elegível do token", "Primeiro uso útil", "Retorno por coorte"],
     "channels": [
-      {"name": "Telegram", "purpose": "Convites voluntários, sessões de perguntas e feedback para formar as primeiras coortes."},
+      {"name": "Telegram", "purpose": "Relacionamento, perguntas e feedback; convites para retornar ao site e conhecer a compra do token."},
       {"name": "Instagram", "purpose": "Conteúdo do fundador, vídeos curtos e transmissões sobre a tese, riscos, custos e evolução do projeto."},
       {"name": "YouTube", "purpose": "Conteúdo aprofundado sobre funcionamento, direitos, validações e limites das estratégias."},
       {"name": "X", "purpose": "Atualizações, decisões e discussões abertas sobre o desenvolvimento."}

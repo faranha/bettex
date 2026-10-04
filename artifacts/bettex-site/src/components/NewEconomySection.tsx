@@ -1,4 +1,5 @@
 import thesis from '@/lib/new-economy-thesis.json';
+import { CommunityCTA } from './CommunityCTA';
 import './NewEconomySection.css';
 
 const points = [
@@ -12,7 +13,7 @@ export function NewEconomySection() {
     <section id="nova-economia" className="ne-section" aria-labelledby="ne-heading" data-testid="section-nova-economia">
       <div className="ne-bg" aria-hidden="true" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}new-economy-workplace.webp)` }} />
       <div className="ne-wrap">
-        <p className="ne-bridge">Das apostas ao futuro do trabalho, a tecnologia já muda as regras. A comunidade BETTEX é onde essa conversa começa.</p>
+        <p className="ne-bridge">Das apostas ao futuro do trabalho, a tecnologia já muda as regras. Na BETTEX, você muda o jogo: para de perder e começa a ganhar.</p>
         <h2 id="ne-heading">{thesis.statement} <em>Faça parte dessa conversa. Proteja-se da mudança. Proteja a sua família.</em></h2>
         <ol className="ne-list">
           {points.map((p) => (
@@ -25,6 +26,7 @@ export function NewEconomySection() {
             </li>
           ))}
         </ol>
+        <CommunityCTA source="nova-economia" label="Entre na comunidade" note="A conversa continua no Telegram." />
       </div>
     </section>
   );
