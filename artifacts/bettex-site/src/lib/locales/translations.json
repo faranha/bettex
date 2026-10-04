@@ -551,9 +551,9 @@
     "en": "Every 7 days",
     "es": "Cada 7 días"
   },
-  "A matemática com os seus números": {
-    "en": "The math with your numbers",
-    "es": "La matemática con tus números"
+  "A matemática do cenário": {
+    "en": "The scenario calculations",
+    "es": "Los cálculos del escenario"
   },
   "A movimentação soma compras primárias e saques brutos concluídos, sem contar tarifas duas vezes. As compras de tokens são capital da tesouraria, não receita da operadora.": {
     "en": "Movement sums primary purchases and gross withdrawals completed, without double-counting fees. Token purchases are treasury capital, not operating company revenue.",

@@ -5,6 +5,7 @@ from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 from zipfile import ZipFile
+from xml.etree import ElementTree
 
 app = Path(__file__).resolve().parents[1]
 class Documentation(HTMLParser):
@@ -54,9 +55,20 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     for pattern in obsolete: assert not re.search(pattern,text,re.I), f"{lang}: obsolete {pattern}"
     assert p.agent_count==8, f"{lang}: missing agent explanations"
     print(f"{lang}: 13 chapters, {len(p.diagrams)} essential diagrams, {len(p.illustrations)} illustrations, original drawings preserved, unique ids and {len(p.hashes)} valid internal links.")
-for file in (app/'public/downloads').glob('bettex-*.xlsx'):
+expected_workbooks = {
+    "": ["Taxas", "Vesting", "Regras"],
+    "-en": ["Fees", "Vesting", "Rules"],
+    "-es": ["Tasas", "Vesting", "Reglas"],
+}
+for suffix, expected_sheets in expected_workbooks.items():
+    file = app/'public/downloads'/f'bettex-taxas-fundacao{suffix}.xlsx'
     with ZipFile(file) as z:
-        assert len([n for n in z.namelist() if n.startswith('xl/worksheets/')])==4
+        workbook = ElementTree.fromstring(z.read('xl/workbook.xml'))
+        sheets = workbook.findall('.//{http://schemas.openxmlformats.org/spreadsheetml/2006/main}sheet')
+        names = [sheet.attrib['name'] for sheet in sheets]
+        assert names == expected_sheets, f"{file}: expected {expected_sheets}, found {names}"
+        worksheet_files = [n for n in z.namelist() if re.fullmatch(r'xl/worksheets/sheet\d+\.xml', n)]
+        assert len(worksheet_files) == len(expected_sheets), f"{file}: missing or unexpected worksheet files"
         raw=' '.join(z.read(n).decode() for n in z.namelist() if n.endswith('.xml'))
         for pattern in obsolete: assert not re.search(pattern,raw,re.I), f"{file}: obsolete material"
-print('Downloads: current pilot, fees, rules and vesting; no old cash-flow simulation.')
+print('Downloads: three localized worksheets for fees, vesting and rules; no old cash-flow simulation.')
