@@ -177,6 +177,7 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             <li><a href={homeAnchor('tecnologia')}>Como opera</a></li>
             <li><a href={homeAnchor('mercados')}>Mercados</a></li>
             <li><a href={homeAnchor('visao-investidor')}>Aplicativo</a></li>
+            <li><a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="sf-community" data-community-source="footer" data-testid="link-community-footer-nav"><TelegramIcon className="sf-community__icon" /><span>Entre na comunidade</span></a></li>
           </ul>
         </nav>
         <nav aria-label="Links do projeto" className="sf-group">

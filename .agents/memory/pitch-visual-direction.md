@@ -9,6 +9,12 @@ O criador quer um pitch com composição visual de apresentação, distinto da h
 
 **How to apply:** Em revisões do pitch no navegador, manter essa direção visual e o conteúdo integralmente visível. Não confundir o pedido de estilo de apresentação com um pedido de criar um deck separado.
 
+Os próximos feedbacks de ajuste do criador são para o Pitch, não para a homepage.
+
+**Why:** O criador definiu explicitamente: “a partir de agora, o feedback é para o pitch”.
+
+**How to apply:** Tratar os próximos comentários e imagens de ajustes como referentes ao Pitch. Não modificar a homepage com base nesses feedbacks.
+
 O criador aprovou o estilo do retrato com moldura dourada e detalhe azul deslocado.
 
 **Why:** Após rejeitar a composição com fundos e gráficos, ele mostrou o recorte do retrato anterior e disse que “esse estilo tava legal”.
