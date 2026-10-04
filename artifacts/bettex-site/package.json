@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "node scripts/check-demo-locales.mjs && node scripts/check-locales.mjs && node scripts/check-round-policy.mjs && node scripts/check-profit-allocation.mjs && node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs && node scripts/check-documentation-runtime.mjs && python scripts/localize-downloads.py && vite build --config vite.config.ts && node scripts/prerender.mjs && python scripts/verify-localized-html.py && python scripts/verify-documentation-html.py",
+    "build": "node scripts/check-demo-locales.mjs && node scripts/check-locales.mjs && node scripts/check-round-policy.mjs && node scripts/check-profit-allocation.mjs && node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs && node scripts/check-documentation-runtime.mjs && python scripts/test_pitch_narrative.py && python scripts/localize-downloads.py && vite build --config vite.config.ts && node scripts/prerender.mjs && python scripts/verify-localized-html.py && python scripts/verify-documentation-html.py",
     "check:demo": "node scripts/check-demo-locales.mjs && node --test src/components/demo/model.test.ts",
     "check:allocation": "node scripts/extract-locales.mjs && node scripts/check-profit-allocation.mjs",
     "check:rounds": "node scripts/check-round-policy.mjs",
     "check:docs": "node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs",
     "check:locales": "node scripts/check-locales.mjs",
+    "check:pitch": "python scripts/test_pitch_narrative.py && python scripts/verify_pitch_narrative.py",
     "check:pitch-research": "node scripts/check-pitch-research.mjs",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
