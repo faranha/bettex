@@ -4,6 +4,7 @@ export function TechnologyNetworks() {
   return (
     <section id="redes-tecnologias" className="technology-networks" aria-label="Redes e tecnologias" data-testid="technology-networks">
       <div className="technology-networks__wrap">
+      <p className="technology-networks__label">Parceiros</p>
       <ul className="technology-networks__list">
         <li>
           <div className="technology-networks__logo technology-networks__logo--arbitrum">

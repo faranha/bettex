@@ -1,5 +1,6 @@
 import { PlatformCoverage } from '@/components/technology/PlatformCoverage';
 import { RobotTradingFloor } from './RobotTradingFloor';
+import { CommunityCTA } from '@/components/CommunityCTA';
 import './MarketsFloorSection.css';
 
 export function MarketsFloorSection() {
@@ -8,6 +9,7 @@ export function MarketsFloorSection() {
       <div className="markets-floor__wrap">
         <RobotTradingFloor />
         <PlatformCoverage />
+        <CommunityCTA source="mercados" note="Veja de perto o que a IA acompanha." />
       </div>
     </section>
   );

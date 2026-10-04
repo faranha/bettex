@@ -8,7 +8,7 @@
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
 - [Regras da tesouraria](treasury-rule-evolution.md) — humanos aprovam políticas; mandatos limitados preservam liberdade operacional sem aprovação de cada operação.
 - [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
-- [Identidade e posicionamento](bettex-economic-identity.md) — comunidade de investimento COM IA, não EM IA, é o tema central e o topo do funil; preservar as regras econômicas.
+- [Identidade e posicionamento](bettex-economic-identity.md) — comunidade de investimento COM IA é o meio do funil; conduz o retorno ao site para compra dos tokens.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
@@ -22,6 +22,7 @@
 - [Navegação do piloto](demo-navigation.md) — tudo no mesmo demo/app; Participação e Resultados em duas abas aprovadas.
 - [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
 - [Mercados no mobile](mobile-market-content.md) — não repetir os quatro cartões de agentes abaixo da animação; a apresentação anterior já cobre esse conteúdo.
+- [Slides na homepage mobile](homepage-mobile-slides.md) — participação, carteira e agentes em slides horizontais para reduzir altura; preservar desktop e todo o conteúdo.
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
 - [Rodapé](footer-scope.md) — não apresentar o bloco de redes pessoais do fundador no rodapé.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
@@ -30,6 +31,7 @@
 - [Visual do pitch](pitch-visual-direction.md) — apresentação limpa, com foto do fundador; não reintroduzir fundos de cassino nem a foto de gráficos.
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
 - [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.
+- [Cabeçalhos das seções](homepage-section-headers.md) — não reintroduzir as faixas informativas decorativas acima de História e Roadmap.
 - [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
 - [Fundador na documentação](documentation-founder-presentation.md) — sem aspas decorativas; retrato proporcional e integrado ao texto, sem alterar o Pitch.
 - [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.

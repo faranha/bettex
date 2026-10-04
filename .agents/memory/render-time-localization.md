@@ -50,3 +50,9 @@ The visual pilot deliberately uses explicit PT/EN/ES tuples outside the site's a
 **Why:** Automatically extracting prepared state, English/Spanish alternatives and fixture identifiers into the site's Portuguese source catalog would double-translate already localized text and treat non-visible state as public copy.
 
 **How to apply:** Audit all three rendered pilot languages, including locale URL changes while preserving in-memory simulation state. Do not assume passing the site's source-catalog check covers the pilot's alternative runtime.
+
+When labels from data are joined before reaching JSX, audit the complete joined text in every language, not just its individual labels.
+
+**Why:** Static source coverage can pass for each label while rendering still fails because the automatic translator receives the joined result as one message.
+
+**How to apply:** Include the final combined wording in the rendered-language audit whenever changing a data-driven list or sequence. Do not treat a passing source-catalog check as sufficient.

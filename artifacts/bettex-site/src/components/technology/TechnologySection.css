@@ -122,3 +122,22 @@
   .technology-section__wallet-art { align-self: center; width: 140px; height: 158px; }
 }
 
+
+.technology-section__nav { display: none; }
+@media (max-width: 767px) {
+  .technology-section__hierarchy { display: flex; align-items: flex-start; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; touch-action: pan-x pan-y; padding: 22px 0 20px; }
+  .technology-section__hierarchy::-webkit-scrollbar { display: none; }
+  .technology-section__hierarchy:focus-visible { outline: 2px solid #2B59FF; outline-offset: 2px; }
+  .technology-section__hierarchy > .technology-section__entry, .technology-section__agent-slot, .technology-section__hierarchy > .technology-section__result { flex: 0 0 100%; width: 100%; max-width: 100%; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+  .technology-section__hierarchy > .technology-section__agents { display: contents; }
+  .technology-section__hierarchy > .technology-section__branch, .technology-section__hierarchy > .technology-section__result-path { display: none; }
+  .technology-section__hierarchy > .technology-section__agents-label { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; box-shadow: none; }
+  .technology-section__nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .technology-section__nav-btn { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #4f75cc; border-radius: 50%; background: #F4F1E8; color: #070B1F; cursor: pointer; }
+  .technology-section__nav-btn:disabled { opacity: .35; cursor: default; }
+  .technology-section__dots { display: flex; align-items: center; gap: 0; }
+  .technology-section__dot { position: relative; width: 30px; height: 44px; border: 0; background: none; padding: 0; cursor: pointer; }
+  .technology-section__dot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 999px; background: rgba(43,89,255,.3); transition: transform .25s ease, background-color .25s ease; }
+  .technology-section__dot[data-active="true"]::before { background: #2B59FF; transform: scaleX(2.2); }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) { .technology-section__dot::before { transition: none; } }

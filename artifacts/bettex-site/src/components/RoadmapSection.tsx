@@ -1,4 +1,8 @@
+import { ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark } from 'lucide-react';
+import { CommunityCTA } from './CommunityCTA';
 import './RoadmapSection.css';
+
+const icons = [ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark];
 
 const stops = [
   {
@@ -56,11 +60,6 @@ export function RoadmapSection() {
   return (
     <section className="roadmap" id="roadmap" aria-labelledby="roadmap-title">
       <div className="roadmap__wrap">
-        <div className="roadmap__topline" aria-hidden="true">
-          <span>BETTEX / O CAMINHO ADIANTE</span>
-          <span>MAPA DO PROJETO · 06 MARCOS</span>
-        </div>
-
         <header className="roadmap__intro">
           <div>
             <p className="roadmap__eyebrow"><span className="roadmap__eyebrow-mark" aria-hidden="true" /> Uma rota, passo a passo</p>
@@ -79,7 +78,9 @@ export function RoadmapSection() {
           </div>
 
           <ol className="roadmap__stops">
-            {stops.map((stop, index) => (
+            {stops.map((stop, index) => {
+              const Icon = icons[index];
+              return (
               <li
                 className={`roadmap__stop roadmap__stop--${index + 1}${'featured' in stop ? ' roadmap__stop--featured' : ''}`}
                 key={stop.number}
@@ -87,6 +88,7 @@ export function RoadmapSection() {
               >
                 <span className="roadmap__pin" aria-hidden="true"><span /></span>
                 <article className="roadmap__place">
+                  <span className="roadmap__icon" aria-hidden="true"><Icon strokeWidth={2.2} /></span>
                   <div className="roadmap__place-top">
                     <span className="roadmap__place-number">{stop.number}<span> / 06</span></span>
                     <span className="roadmap__place-tag">{stop.tag}</span>
@@ -100,7 +102,8 @@ export function RoadmapSection() {
                   <p>{stop.description}</p>
                 </article>
               </li>
-            ))}
+              );
+            })}
           </ol>
           <div className="roadmap__destination" aria-hidden="true"><span className="roadmap__destination-dot" /> CAMINHO EM CONSTRUÇÃO</div>
         </div>
@@ -110,6 +113,7 @@ export function RoadmapSection() {
           <div>
             <span className="roadmap__closing-label">O QUE IMPORTA NESTA ROTA</span>
             <p>As datas indicam o cronograma previsto, não entregas concluídas. Cada avanço depende dos testes e das verificações necessárias, e o planejamento pode ser ajustado. Investir envolve risco e não há rendimento garantido.</p>
+            <CommunityCTA source="roadmap" label="Entre na comunidade" note="Acompanhe cada etapa de perto." tone="light" />
           </div>
         </aside>
       </div>

@@ -3,11 +3,11 @@ name: Identidade econômica da BETTEX
 description: Definição econômica e posicionamento público aprovados pelo criador.
 ---
 
-A apresentação pública prioriza uma “comunidade de investimento com IA”, não “em IA”. O criador definiu: “A comunidade é o tema central agora. É o nosso funil. O topo do funil é a comunidade”.
+A apresentação pública prioriza uma “comunidade de investimento com IA”, não “em IA”. A comunidade faz parte do meio do funil: dela as pessoas são convertidas de volta para o site e para a compra dos tokens.
 
-**Why:** O criador passou a priorizar a comunidade como porta de entrada, revisando o posicionamento anterior de tecnologia de investimento para apostadores brasileiros. Corrigiu expressamente: “Comunidade de investimento com IA, não em IA”.
+**Why:** O criador corrigiu expressamente “Comunidade de investimento com IA, não em IA”. Depois esclareceu: “a comunidade faz parte do meio do funil, que é dela que a gente converte as pessoas de volta pro site e pra compra dos tokens”, substituindo a definição anterior de comunidade como topo do funil.
 
-**How to apply:** Usar “Quero participar da comunidade” como CTA e conectar os temas de apostas, IA e futuro dos empregos à comunidade, ao acompanhamento e à participação nas decisões. Não iniciar esse convite pela compra do token. Preservar o público e as regras econômicas do projeto; não apresentar a comunidade como uma garantia de ganhos.
+**How to apply:** Distribuir convites para entrar na comunidade ao longo da landing page e conectar os temas de apostas, IA e futuro dos empregos ao relacionamento, ao acompanhamento e à participação nas decisões. Tratar a comunidade como meio do funil e prever o retorno ao site para compra dos tokens, não como substituto do site. Preservar o público e as regras econômicas do projeto; não apresentar a comunidade como uma garantia de ganhos.
 
 A definição econômica anterior do criador foi: “em ultima analise, bettex eh um fundo de investimentos”.
 
