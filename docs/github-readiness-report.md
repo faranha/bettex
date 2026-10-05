@@ -53,6 +53,12 @@
 The secret review is not an entropy scan, exhaustive privacy/asset-rights audit,
 independent security audit or financial-operational certification.
 
+An existing, separate `pitch-research` workflow was already failing before this
+preparation: its smoke test expects an obsolete Portuguese heading. It is not
+part of `pnpm quality`, was not disabled, and remains an explicitly reported
+test-maintenance limitation. Its expected copy and locale setup need review
+against the approved Pitch and the English first-visit default.
+
 ## Remaining external steps
 
 1. Authorize GitHub through Replit's supported connection flow.
