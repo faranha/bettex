@@ -1,0 +1,12 @@
+.demo-root{background:#F5F1E8;color:#1B2A41}
+.demo-root .dcard{min-width:0;background:#FFFCF6;border:1px solid #E4DCCB;border-radius:20px}
+@keyframes demo-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.demo-in{animation:demo-in .35s ease both}
+@media (prefers-reduced-motion:reduce){.demo-in{animation:none}}
+.console-dot{width:10px;height:10px;border-radius:50%;background:#0E7C6B;animation:console-beat 2s ease-in-out infinite}
+@keyframes console-beat{50%{opacity:.35;transform:scale(1.4)}}
+@keyframes console-flash{from{background-color:#F2E3B8}}
+.console-pulse{animation:console-flash 1.6s ease-out}
+.console-rail{border-left:2px solid #E4DCCB}
+.console-ev::before{content:"";position:absolute;left:-6px;top:14px;width:10px;height:10px;border-radius:50%;background:#0E7C6B;border:2px solid #FFFCF6}
+@media (prefers-reduced-motion:reduce){.console-dot,.console-pulse{animation:none}}

@@ -6,26 +6,26 @@ const icons = [FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, L
 
 const stops = [
   {
-    tag: 'VALIDAÇÃO DA DEMANDA',
-    date: 'Fase ALFA',
-    dateTime: '',
-    title: 'Teste de demanda com lançamento mock',
-    description: 'Validar a demanda pelo produto com um lançamento mock (simulado), usando o demo da BETTEX para testar interesse, compreensão e intenção de uso. A fase ALFA já está em andamento, sem operações financeiras reais.',
+    tag: 'ALFA · SEED',
+    date: 'Outubro de 2026',
+    dateTime: '2026-10',
+    title: 'ALFA com token e audiência semente',
+    description: 'Colocar o produto em operação com uma audiência semente, contratos básicos, a IA BTEX e um agente de trading básico com Allora. Emitir o token e disponibilizá-lo gradualmente em uma pool de liquidez, sem venda TGE.',
     current: true,
   },
   {
-    tag: 'PREPARAÇÃO TÉCNICA E JURÍDICA',
-    date: 'Pré-lançamento',
-    dateTime: '',
-    title: 'Preparação do ecossistema BETTEX',
-    description: 'Apresentar o projeto a investidores-anjo. Investigar os requisitos legais e regulatórios do projeto e preparar sua base técnica: arquitetura, contratos, segurança e integrações. Estruturar o ecossistema BETTEX para as validações técnicas e jurídicas necessárias antes do lançamento.',
+    tag: 'CAPTAÇÃO E FORMALIZAÇÃO',
+    date: 'Novembro de 2026',
+    dateTime: '2026-11',
+    title: 'Investidores e estruturação da empresa',
+    description: 'Captar investidores-anjo, formalizar a empresa e estruturar o negócio para a próxima fase.',
   },
   {
-    tag: 'LANÇAMENTO',
-    date: 'Dezembro de 2026',
-    dateTime: '2026-12',
-    title: 'Lançamento do token',
-    description: 'Disponibilizar o BETTEX conforme as regras de emissão, após validar contratos, tesouraria, segurança e condições jurídicas.',
+    tag: 'BETA · GO TO MARKET',
+    date: 'Janeiro de 2027',
+    dateTime: '2027-01',
+    title: 'Lançamento do BETA e go to market',
+    description: 'Lançar a versão BETA e iniciar o go to market. Ampliar o acesso ao produto a partir dos testes e aprendizados do ALFA.',
     featured: true,
   },
   {
@@ -70,7 +70,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
           </div>
           <div className="roadmap__intro-side">
             <span className="roadmap__intro-index" aria-hidden="true">01 → {total}</span>
-            <p>Fase ALFA em andamento: teste de demanda com lançamento mock e demo. Depois, preparação técnica e jurídica e expansão do aplicativo. Token em dezembro de 2026; mercados em fevereiro de 2027.</p>
+            <p>ALFA seed em outubro de 2026, com token e primeiros agentes. Captação e formalização em novembro de 2026. BETA e go to market em janeiro de 2027.</p>
           </div>
         </header>
 
@@ -99,14 +99,12 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
                     <span className="roadmap__place-number">{number}<span> / {total}</span></span>
                     <span className="roadmap__place-tag">{stop.tag}</span>
                   </div>
-                  {stop.dateTime ? (
-                    <time className="roadmap__place-date" dateTime={stop.dateTime}>{stop.date}</time>
-                  ) : (
-                    <span className="roadmap__place-date">{stop.date}</span>
-                  )}
+                  <time className="roadmap__place-date" dateTime={stop.dateTime}>{stop.date}</time>
                   {current && <span className="roadmap__current-badge" data-testid="roadmap-current-phase">Estamos aqui</span>}
                   <h3>{stop.title}</h3>
                   <p>{stop.description}</p>
+                  {index === 0 && <div className="roadmap__features roadmap__features--soon" data-testid="roadmap-alpha-features">Em breve, features</div>}
+                  {index === 2 && <div className="roadmap__features roadmap__features--soon" data-testid="roadmap-beta-features">Em breve, features</div>}
                 </article>
               </li>
               );

@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { t, useLocale } from '@/lib/i18n';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import './pitch/PitchSectionNav.css';
 
 type SectionTarget = { id: string; label: string };
 
 export function SectionAnchorNav({
-  sections, label, ariaLabel, offsetProperty, onNavigate, labelFor, menuOpen = false, 'data-testid': testId,
+  sections, label, ariaLabel, offsetProperty, onNavigate, labelFor, menuOpen = false, styledMobile = false, 'data-testid': testId,
 }: {
   sections: readonly [SectionTarget, ...SectionTarget[]];
   label: string;
@@ -13,6 +14,7 @@ export function SectionAnchorNav({
   offsetProperty: '--pitch-sticky-h' | '--home-sticky-h';
   onNavigate: () => void;
   menuOpen?: boolean;
+  styledMobile?: boolean;
   labelFor?: (section: SectionTarget) => string;
   'data-testid': string;
 }) {
@@ -88,12 +90,19 @@ export function SectionAnchorNav({
           onClick={() => { onNavigate(); setActive(section.id); }}>{sectionLabel(section)}</a>)}
         </div>
       </div>
-      <label className="pitch-subnav-mobile">
+      <div className="pitch-subnav-mobile">
         <span className="mono" data-i18n="translated">{t(label)}</span>
-        <select value={active} onChange={event => jump(event.target.value)} aria-label={t(ariaLabel)} data-testid={`${prefix}-section-select`}>
+        {styledMobile ? <Select value={active} onValueChange={jump}>
+          <SelectTrigger className="pitch-subnav-select-trigger" aria-label={t(ariaLabel)} data-testid={`${prefix}-section-select`}>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className="pitch-subnav-select-content" position="popper" align="end" sideOffset={4} collisionPadding={12} data-testid={`${prefix}-section-options`}>
+            {sections.map(section => <SelectItem key={section.id} value={section.id} className="pitch-subnav-select-item" data-i18n="translated">{sectionLabel(section)}</SelectItem>)}
+          </SelectContent>
+        </Select> : <select value={active} onChange={event => jump(event.target.value)} aria-label={t(ariaLabel)} data-testid={`${prefix}-section-select`}>
           {sections.map(section => <option key={section.id} value={section.id} data-i18n="translated">{sectionLabel(section)}</option>)}
-        </select>
-      </label>
+        </select>}
+      </div>
     </div>
   </nav>;
 }

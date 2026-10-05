@@ -32,6 +32,9 @@ import { PitchSectionNav } from '@/components/pitch/PitchSectionNav';
 import { HomeSectionNav } from '@/components/HomeSectionNav';
 
 const queryClient = new QueryClient();
+import { AccountAuthProvider, AuthenticatedHome } from '@/components/account/AuthProvider';
+import { SignInPage, SignUpPage } from '@/pages/auth';
+
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 const HOME_PATH = `${BASE_PATH}/`;
 const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
@@ -332,11 +335,14 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
   const [location] = useLocation();
   return <ErrorBoundary resetKey={location}>{children}</ErrorBoundary>;
 }
+function HomeRoute() {
+  return typeof window === 'undefined' ? <Home /> : <AuthenticatedHome><Home /></AuthenticatedHome>;
+}
 
 function App({ ssrPath }: { ssrPath?: string } = {}) {
   const language = useLocale();
   const base = `${BASE_PATH}${language === 'pt' ? '' : `/${language}`}`;
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/pitch" component={Pitch} /><Route path="/demo" component={Demo} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></WouterRouter><FloatingCommunityCTA /><Toaster /></TooltipProvider></QueryClientProvider>;
+  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><AccountAuthProvider><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={HomeRoute} /><Route path="/pitch" component={Pitch} /><Route path="/demo" component={Demo} /><Route path="/demo/central" component={Demo} /><Route path="/demo/saldo" component={Demo} /><Route path="/demo/balance" component={Demo} /><Route path="/demo/tesouraria" component={Demo} /><Route path="/demo/treasury" component={Demo} /><Route path="/demo/tesoreria" component={Demo} /><Route path="/demo/minha-conta/*?" component={Demo} /><Route path="/demo/account/*?" component={Demo} /><Route path="/demo/mi-cuenta/*?" component={Demo} /><Route path="/sign-in/*?" component={SignInPage} /><Route path="/sign-up/*?" component={SignUpPage} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></AccountAuthProvider></WouterRouter><FloatingCommunityCTA /><Toaster /></TooltipProvider></QueryClientProvider>;
 }
 
 export default App;

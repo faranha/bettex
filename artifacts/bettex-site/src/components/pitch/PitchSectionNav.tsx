@@ -17,6 +17,6 @@ const sections = [
 export function PitchSectionNav({ onNavigate, menuOpen }: { onNavigate: () => void; menuOpen?: boolean }) {
   const locale = useLocale();
   return <SectionAnchorNav sections={sections} label="Pitch" ariaLabel="Seções do Pitch"
-    data-testid="pitch-section-nav" offsetProperty="--pitch-sticky-h" onNavigate={onNavigate} menuOpen={menuOpen}
+    data-testid="pitch-section-nav" offsetProperty="--pitch-sticky-h" onNavigate={onNavigate} menuOpen={menuOpen} styledMobile
     labelFor={section => section === sections[1] && locale === 'en' ? t('Público-alvo') : t(section.label)} />;
 }

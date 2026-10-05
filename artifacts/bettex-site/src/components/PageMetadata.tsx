@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'wouter';
 import seo from '@/lib/site-seo.json';
 import { localizedUrl, t, useLocale } from '@/lib/i18n';
+import { demoView, demoPageTitle } from '@/components/demo/demo-navigation';
 
 export function PageMetadata() {
   const [location] = useLocation();
@@ -9,8 +10,9 @@ export function PageMetadata() {
   useEffect(() => {
     const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     const key = ['/documentation', '/documentacion'].includes(location) ? '/documentacao' : location.replace(/\/$/, '') || '/';
-    const page = seo.pages[key as keyof typeof seo.pages];
-    const title = t(page?.title ?? 'Página não encontrada | BETTEX');
+    const view = demoView(location);
+    const page = seo.pages[(view ? '/demo' : key) as keyof typeof seo.pages];
+    const title = view && view !== 'home' ? demoPageTitle(view, language) : t(page?.title ?? 'Página não encontrada | BETTEX');
     const description = page ? t(page.description) : t('A página solicitada não foi encontrada.');
     const path = localizedUrl(`${base}${page ? key : location}`);
     const canonicalPath = (route: string) => route === '/' ? '/' : `${route.replace(/\/+$/, '')}/`;

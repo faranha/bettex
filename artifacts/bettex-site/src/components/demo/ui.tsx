@@ -11,7 +11,7 @@ export function useX(): { x: X; tx: (t: Text) => string; n: (v: number, d?: numb
   return { loc, x: (a, b, c) => [a, b, c][i], tx: t => t[i], n: (v, d = 2) => v.toLocaleString(fl, { minimumFractionDigits: d, maximumFractionDigits: d }) };
 }
 export const AGENTS: Record<AgentId, { name: Text; color: string; role: Text }> = {
-  orchestrator: { name: ['IA orquestradora', 'Orchestrator AI', 'IA orquestadora'], color: '#5F86FF', role: ['Recebe, prioriza e pede análise', 'Receives, prioritizes, requests analysis', 'Recibe, prioriza y pide análisis'] },
+  orchestrator: { name: ['BTEX', 'BTEX', 'BTEX'], color: '#5F86FF', role: ['Recebe, prioriza e pede análise', 'Receives, prioritizes, requests analysis', 'Recibe, prioriza y pide análisis'] },
   treasury: { name: ['Tesouraria', 'Treasury', 'Tesorería'], color: '#8FA8F0', role: ['Reservas, liquidez e reservas concorrentes', 'Reserves, liquidity, competing reservations', 'Reservas, liquidez y reservas concurrentes'] },
   predictions: { name: ['Previsões', 'Predictions', 'Predicciones'], color: '#36E0D0', role: ['Probabilidades, posição e resolução', 'Probabilities, position, resolution', 'Probabilidades, posición y resolución'] },
   crypto: { name: ['Cripto à vista', 'Spot crypto', 'Cripto spot'], color: '#7C9BFF', role: ['Compra à vista, sem alavancagem', 'Spot only, no leverage', 'Solo spot, sin apalancamiento'] },

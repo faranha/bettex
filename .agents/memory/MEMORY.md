@@ -1,6 +1,7 @@
 - [BETTEX checkout eligibility](bettex-checkout-eligibility.md) — confirm processor approval for investment tokens before wiring real purchases.
 - [Raster asset inspection](raster-asset-inspection.md) — verify logo identity and real alpha; use font-free contact sheets.
 - [Artifact validation environment](artifact-validation-env.md) — manual builds need artifact-scoped runtime variables; do not persist them globally.
+- [Testes nativos TypeScript](native-typescript-tests.md) — o ESM do Node e a compilação empacotada resolvem imports de formas diferentes; verificar ambos.
 - [Production build validation](production-build-validation.md) — source checks miss rendered narrative and regenerated export mismatches; verify the full build before publishing.
 - [Concurrent media edits](concurrent-media-edits.md) — await image-edit jobs before unrelated workspace writes; a later completion can replace new files.
 - [Polymarket market-data source](polymarket-market-data-source.md) — official MCP reads documentation only; Gamma is the public market-data API.
@@ -22,8 +23,14 @@
 - [Render-time localization](render-time-localization.md) — exclude app JSX runtimes from Vite prebundling; fragments and cloned elements need rendered-text audits.
 - [Large localization edits](large-localization-edits.md) — failed large saves can leave source ahead of translations; prepare and save separately, then audit coverage.
 - [Elegibilidade ao lucro](profit-entitlement-rules.md) — cada rodada paga ou não paga, sem retorno ou acumulação; saídas cancelam direitos e frações vão à tesouraria.
-- [Demo visual e fase ALFA](demo-prototype-scope.md) — validação da demanda em andamento com demo; protótipo sem banco de dados ou operações reais; selo ALFA na marca.
-- [Navegação do piloto](demo-navigation.md) — tudo no mesmo demo/app; Participação e Resultados em duas abas aprovadas.
+- [Demonstração e fase ALFA](demo-prototype-scope.md) — banco básico e emulação automática; app claro, suporte no Telegram; sem dinheiro real.
+- [Navegação do piloto](demo-navigation.md) — saldo e extrato em página própria; painel com atividade e participação; Tesouraria e Minha conta separadas.
+- [Ações da carteira](wallet-action-context.md) — entradas e saídas junto de cada saldo; USDC/BETTEX com conversão nos dois sentidos; saque não limitado ao rendimento.
+- [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
+- [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
+- [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; BTEX é a IA principal; históricos de sugestões e decisões consultáveis.
+- [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
+- [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
 - [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
 - [Mercados no mobile](mobile-market-content.md) — não repetir os quatro cartões de agentes abaixo da animação; a apresentação anterior já cobre esse conteúdo.
 - [Slides na homepage mobile](homepage-mobile-slides.md) — participação, carteira e agentes em slides horizontais para reduzir altura; preservar desktop e todo o conteúdo.
@@ -46,3 +53,4 @@
 - [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.
 - [Responsive text verification](responsive-text-verification.md) — text-range bounds include font leading; distinguish compact heading lines from actual collisions.
 - [Observações editoriais](document-observations.md) — notas agrupadas no fim de cada bloco, sem repetição ou interrupção do conteúdo principal.
+- [Horário do Brasil](brazil-time-display.md) — exibir horários em São Paulo, sem rótulo UTC; preservar cálculos e instantes internos dos ciclos.

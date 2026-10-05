@@ -1,0 +1,78 @@
+Copie e envie ao Replit:
+
+Estabeleça uma base canônica de arquitetura para este projeto de plataforma de trading agêntica. O objetivo é orientar todas as implementações futuras, garantindo que cada funcionalidade tenha um lugar definido e respeite as mesmas regras.
+
+Primeiro, examine a estrutura existente. Preserve o que já estiver adequado e proponha ajustes incrementais, evitando reescritas desnecessárias.
+
+1. Documentação canônica
+
+Crie e mantenha:
+
+* AGENTS.md: instruções de desenvolvimento e regras arquiteturais.
+* docs/architecture.md: mapa dos módulos, responsabilidades, dependências permitidas e fontes de verdade.
+* docs/decisions/: registro das decisões arquiteturais relevantes, com contexto e justificativa.
+
+Configure as instruções do agente de desenvolvimento para consultar esses documentos antes de implementar alterações.
+
+2. Organização por domínio
+
+Organize o sistema pelos domínios: usuários, carteiras, contabilidade, agentes e estratégias, risco e execução.
+
+Cada domínio deve ter responsabilidades explícitas e ser proprietário de suas regras e dados. Evite concentrar regras de negócio em pastas genéricas como utils ou services. Código compartilhado deve ter finalidade definida e não pertencer naturalmente a um domínio.
+
+3. Separação entre negócio e infraestrutura
+
+Separe regras de negócio, fluxos de aplicação e integrações externas.
+
+Provedores de carteiras, blockchains, corretoras, modelos de IA e serviços de hospedagem devem ser acessados por interfaces e adaptadores. As regras centrais não devem depender diretamente de um fornecedor.
+
+4. Fronteiras entre módulos
+
+Um módulo não deve acessar ou modificar diretamente as tabelas internas de outro. A comunicação deve ocorrer por interfaces públicas ou eventos com contratos explícitos.
+
+Defina as dependências permitidas e evite dependências circulares. Cada regra de negócio deve ter uma única implementação responsável.
+
+5. Decisão, autorização e execução
+
+Preserve obrigatoriamente este fluxo:
+
+Agente propõe → motor de risco autoriza → executor realiza.
+
+A IA não pode assinar transações, acessar chaves ou contornar controles de risco diretamente. Limites financeiros e permissões devem ser aplicados por código determinístico, fora do modelo de linguagem.
+
+Se uma validação obrigatória falhar ou estiver indisponível, bloqueie novas operações financeiras. Defina separadamente os procedimentos de cancelamento, recuperação e redução de exposição.
+
+6. Integridade financeira
+
+Toda operação financeira deve ter identificador único, estados explícitos, histórico auditável e proteção contra execução duplicada.
+
+Repetir mensagens, receber webhooks duplicados ou reiniciar processos não pode provocar uma segunda movimentação. Quando o resultado externo for incerto, reconcilie antes de reenviar.
+
+Use valores com precisão exata e identificação explícita de ativo e rede. Diferencie saldo disponível, reservado e confirmado.
+
+7. Fontes de verdade
+
+Blockchain e corretora são as fontes para confirmar operações externas. O livro-razão interno é a fonte da posição contábil da plataforma e deve ser reconciliado com essas confirmações.
+
+Interface, cache e memória dos agentes não são fontes oficiais de saldo. Correções contábeis devem preservar o histórico por meio de lançamentos compensatórios.
+
+8. Segurança e rastreabilidade
+
+Mantenha chaves e credenciais fora do código, dos logs e do contexto da IA. Aplique o princípio de menor privilégio.
+
+Registre a proposta do agente, a decisão de risco, a tentativa de execução e o resultado, conectados pelo mesmo identificador de operação. Separe desenvolvimento, simulação e produção.
+
+9. Regra para toda implementação futura
+
+Antes de desenvolver:
+
+* Identifique o domínio responsável.
+* Verifique se já existe código que cumpre essa responsabilidade.
+* Confira as dependências e fontes de verdade afetadas.
+* Implemente dentro das fronteiras estabelecidas.
+* Atualize a documentação quando houver mudança arquitetural.
+* Valide os comportamentos relevantes, especialmente permissões, cálculos financeiros, duplicação e recuperação de falhas.
+
+Se uma funcionalidade não se encaixar no mapa existente, registre e justifique a evolução da arquitetura antes de criar uma estrutura paralela.
+
+Trate esses fundamentos como regras obrigatórias. Alterações devem ser explícitas e justificadas; nunca exceções silenciosas.

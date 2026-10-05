@@ -7,6 +7,27 @@ import { routes, seo, canonicalPath } from './seo.mjs';
 const server = createSiteServer();
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 after(() => new Promise(resolve => server.close(resolve)));
+test('dedicated app destinations load their localized shell directly', async () => {
+  for (const [url, title] of [
+    ['/demo/tesouraria', 'Tesouraria'],
+    ['/en/demo/treasury', 'Treasury'],
+    ['/es/demo/tesoreria', 'Tesorería'],
+    ['/demo/central', 'Central da IA'],
+    ['/demo/minha-conta', 'Minha conta'],
+    ['/en/demo/account', 'My account'],
+    ['/es/demo/mi-cuenta', 'Mi cuenta'],
+    ['/demo/minha-conta/security', 'Minha conta'],
+    ['/en/demo/account/security', 'My account'],
+    ['/es/demo/mi-cuenta/profile', 'Mi cuenta'],
+  ]) {
+    const res = await get(url);
+    assert.equal(res.status, 200);
+    assert.match(res.body, new RegExp(`<title>${title} \\| BETTEX</title>`));
+    assert.match(res.headers['x-robots-tag'], /noindex/);
+    assert.ok(res.body.includes(`href="https://bettex.ai${url}/"`));
+  }
+  assert.equal((await get('/demo/unknown')).status, 404);
+});
 function get(url, headers = {}, method = 'GET') {
   return new Promise((resolve, reject) => {
     const req = request({ hostname: '127.0.0.1', port: server.address().port, path: url, headers, method }, res => {
@@ -79,4 +100,19 @@ test('unknown pages return real noindex 404, malformed paths and traversal are r
   assert.equal((await get('/%ZZ')).status, 400);
   assert.equal((await get('/..%2F..%2Fpackage.json')).status, 400);
   assert.equal((await get('/', {}, 'POST')).status, 405);
+});
+test('personal balance and history reload directly in all languages without indexing', async () => {
+  for (const [route, title] of [
+    ['/demo/saldo', 'Saldo e histórico'],
+    ['/en/demo/balance', 'Balance and history'],
+    ['/es/demo/saldo', 'Saldo e historial'],
+  ]) {
+    for (const suffix of ['', '/']) {
+      const res = await get(route + suffix);
+      assert.equal(res.status, 200, route);
+      assert.ok(res.body.includes(`<title>${title} | BETTEX</title>`), route);
+      assert.ok(res.body.includes(`href="${seo.origin}${route}/"`), route);
+      assert.equal(res.headers['x-robots-tag'], 'noindex, nofollow');
+    }
+  }
 });

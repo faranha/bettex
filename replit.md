@@ -1,10 +1,29 @@
 # BETTEX
 
+## Desenvolvimento de aplicação — direção vigente
+
+- O criador declarou que saímos da prototipação e entramos no desenvolvimento. Antes de novas funcionalidades, organizar arquitetura, contas, agentes e regras para avaliação técnica de terceiros no GitHub.
+- Antes de implementar, consultar obrigatoriamente `AGENTS.md`, `docs/architecture.md` e decisões relevantes em `docs/decisions/`. Esses são os documentos canônicos; caminhos antigos em `docs/adr/` são encaminhamentos. Aplicar também `CONTRIBUTING.md`, `SECURITY.md` e `threat_model.md`.
+- Identificar proprietário do domínio, código existente, dependências e fontes de verdade antes da mudança; registrar evolução antes de criar estrutura paralela. Executar `pnpm check:architecture` e `pnpm quality` conforme o alcance.
+- A passagem para desenvolvimento não transforma emulação em dinheiro real nem autoriza custódia, execução financeira, migração de banco ou refatoração ampla sem avaliação.
+- Contextos modulares primeiro; assinatura isolada antes de operações reais; demais microsserviços extraídos com contratos e justificativa de segurança/carga.
+- Manter dados demonstrativos separados da futura infraestrutura financeira. Preservar regras econômicas e conteúdo público aprovados.
+
 ## Regra canônica: preservar a página inicial
 
 - Não mexer no conteúdo da página inicial: o conteúdo em si está perfeito e aprovado.
 - O escopo permitido é apenas adicionar o submenu com âncoras para as seções existentes, sem alterar o conteúdo.
 - Aplicar esta regra às próximas tarefas. Ela substitui autorizações anteriores para alterar o conteúdo da página inicial.
+- Exceção expressamente autorizada: atualizar o Roadmap compartilhado com o Pitch conforme a sequência vigente abaixo, sem alterar outras seções da homepage.
+
+## Roadmap vigente: ALFA seed, captação, BETA
+
+- Outubro de 2026: ALFA seed em operação com audiência semente, token emitido/disponível gradualmente via pool, sem venda TGE, contratos básicos, IA BTEX e agente de trading básico com Allora. Não apresentar ALFA como mero lançamento mock sem token.
+- Novembro de 2026: captação de investidores-anjo, formalização e estruturação da empresa.
+- Janeiro de 2027: lançamento do BETA e go to market. O go to market amplo pertence ao BETA, não ao ALFA seed.
+- Preservar as etapas posteriores: mercados em fevereiro de 2027, consulta aberta em março, novos agentes em junho e BETTEX Bank em dezembro de 2027.
+- Mesmos marcos na homepage e no Pitch. Dentro do ALFA e do BETA, caixa estática “Em breve, features”, sem abrir uma lista. O criador adiou a inclusão das features de ambos. Não inventar listas de funcionalidades.
+- Estas regras substituem cronogramas anteriores de lançamento do token em dezembro e preparação anterior ao ALFA. O cronograma público não afirma que os contratos já foram emitidos nem autoriza ativação automática de operações financeiras.
 
 ## Regras do projeto
 

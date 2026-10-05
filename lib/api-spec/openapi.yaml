@@ -11,6 +11,55 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /demo/dashboard:
+    get:
+      operationId: getDemoDashboard
+      tags: [demo]
+      summary: Persistent personal dashboard and live agent activity
+      responses:
+        "200":
+          description: Current dashboard
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DemoDashboard"
+  /demo/movements:
+    post:
+      operationId: createDemoMovement
+      tags: [demo]
+      summary: Submit a fictitious personal movement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DemoMovementInput"
+      responses:
+        "200":
+          description: Updated dashboard
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DemoDashboard"
+        "400":
+          description: Invalid amount or insufficient balance
+  /demo/profile:
+    patch:
+      operationId: updateDemoProfile
+      tags: [demo]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DemoProfileInput"
+      responses:
+        "200":
+          description: Updated dashboard
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DemoDashboard"
   /healthz:
     get:
       operationId: healthCheck
@@ -26,6 +75,186 @@ paths:
                 $ref: "#/components/schemas/HealthStatus"
 components:
   schemas:
+    DemoProfileInput:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string, minLength: 2, maxLength: 60 }
+    DemoMovementInput:
+      type: object
+      required: [requestId, kind, amount, asset]
+      properties:
+        requestId: { type: string, format: uuid }
+        kind: { type: string, enum: [receive, onramp, swap, withdraw, send] }
+        asset: { type: string, enum: [USDC, BETTEX] }
+        amount: { type: number, minimum: 0.000001, maximum: 100000 }
+        destination: { type: string, maxLength: 120 }
+    DemoProfile:
+      type: object
+      required: [name, email, memberSince, accountId]
+      properties:
+        name: { type: string }
+        email: { type: string }
+        memberSince: { type: string }
+        accountId: { type: string }
+    DemoBalances:
+      type: object
+      required: [usdc, bettex, receivedYield, brlPerUsdc, bettexUsdc, updatedAt]
+      properties:
+        usdc: { type: number }
+        bettex: { type: number }
+        receivedYield: { type: number }
+        brlPerUsdc: { type: number }
+        bettexUsdc: { type: number }
+        updatedAt: { type: string }
+    DemoStaking:
+      type: object
+      required: [eligibleTokens, since, weightTokenSeconds, sharePercent, cycleStartedAt, nextCycleAt, estimatedUsdc, status]
+      properties:
+        eligibleTokens: { type: number }
+        since: { type: ["string", "null"] }
+        weightTokenSeconds: { type: number }
+        sharePercent: { type: number, minimum: 0, maximum: 100 }
+        cycleStartedAt: { type: string }
+        nextCycleAt: { type: string }
+        estimatedUsdc: { type: number }
+        status: { type: string, enum: [active, inactive] }
+    DemoOperation:
+      type: object
+      required: [id, agent, market, status, capitalUsdc, pnlUsdc, updatedAt]
+      properties:
+        id: { type: string }
+        agent: { type: string, enum: [predictions, crypto, sports, bonus] }
+        market: { type: string }
+        status: { type: string, enum: [queued, analyzing, awaiting_data, comparing, awaiting_budget, approved, validated, executing, open, result, reconciling, closed, rejected, expired, cancelled, failed] }
+        capitalUsdc: { type: number }
+        pnlUsdc: { type: number }
+        updatedAt: { type: string }
+        proposal: { $ref: "#/components/schemas/DemoProposal" }
+        assessment: { $ref: "#/components/schemas/DemoAssessment" }
+    DemoProposalLeg:
+      type: object
+      required: [instrument, action, selection, venue, amountUsdc, priceUsdc, quantity]
+      properties:
+        instrument: { type: string }
+        action: { type: string, enum: [buy_spot, buy_yes, qualify_bonus] }
+        selection: { type: string, enum: [asset, home, draw, away, yes, bonus] }
+        venue: { type: string, enum: [crypto_demo, polymarket_demo, bonus_demo] }
+        amountUsdc: { type: number }
+        priceUsdc: { type: number }
+        quantity: { type: number }
+    DemoProposal:
+      type: object
+      required: [source, type, generatedAt, validUntil, durationHours, expectedNetUsdc, maxLossUsdc, feesUsdc, legs]
+      properties:
+        source: { type: string, enum: [emulated] }
+        type: { type: string, enum: [spot_buy, sports_coverage, prediction_buy, bonus_qualifying] }
+        generatedAt: { type: string }
+        validUntil: { type: string }
+        durationHours: { type: number }
+        expectedNetUsdc: { type: number }
+        maxLossUsdc: { type: number }
+        feesUsdc: { type: number }
+        targetPriceUsdc: { type: number }
+        homeTeam: { type: string }
+        awayTeam: { type: string }
+        eventAt: { type: string }
+        legs:
+          type: array
+          items: { $ref: "#/components/schemas/DemoProposalLeg" }
+    DemoAssessment:
+      type: object
+      required: [reason, score, comparedWith, availableUsdc, evaluatedAt]
+      properties:
+        reason: { type: string, enum: [comparison, selected_score, missing_data, invalid_proposal, non_positive_estimate, allocation_limit, exposure_limit, awaiting_budget, expired_quote] }
+        score: { type: number }
+        comparedWith:
+          type: array
+          items: { type: string }
+        availableUsdc: { type: number }
+        evaluatedAt: { type: string }
+    DemoOrchestratorBudget:
+      type: object
+      required: [workingUsdc, reservedUsdc, availableUsdc, perOperationLimitUsdc, perAgentLimitUsdc, perOperationPercent, perAgentPercent]
+      properties:
+        workingUsdc: { type: number }
+        reservedUsdc: { type: number }
+        availableUsdc: { type: number }
+        perOperationLimitUsdc: { type: number }
+        perAgentLimitUsdc: { type: number }
+        perOperationPercent: { type: number }
+        perAgentPercent: { type: number }
+    DemoEvent:
+      type: object
+      required: [id, at, fromAgent, toAgent, kind, reference]
+      properties:
+        id: { type: string }
+        at: { type: string }
+        fromAgent: { type: string }
+        toAgent: { type: string }
+        kind: { type: string, enum: [signal, risk_check, approved, order, result, rejected, reconciliation, cycle_closed] }
+        reference: { type: string }
+    DemoMovement:
+      type: object
+      required: [id, kind, asset, amount, feeUsdc, at, status, destination]
+      properties:
+        id: { type: string }
+        kind: { type: string, enum: [receive, onramp, swap, withdraw, send, distribution] }
+        asset: { type: string, enum: [USDC, BETTEX] }
+        amount: { type: number }
+        feeUsdc: { type: number }
+        at: { type: string }
+        status: { type: string, enum: [pending, confirmed, failed] }
+        destination: { type: string }
+        sourceAsset:
+          type: string
+          enum: [USDC, BETTEX]
+          description: Source asset for a conversion; asset is the asset received.
+        sourceAmount:
+          type: number
+          description: Source quantity locked when a conversion was submitted.
+    DemoTreasury:
+      type: object
+      required: [assetsUsdc, reserveUsdc, committedUsdc, realizedUsdc, cycleResultUsdc]
+      properties:
+        assetsUsdc: { type: number }
+        reserveUsdc: { type: number }
+        committedUsdc: { type: number }
+        realizedUsdc: { type: number }
+        cycleResultUsdc: { type: number }
+    DemoRound:
+      type: object
+      required: [id, endedAt, status, eligibleUsdc, stakingUsdc, treasuryUsdc, buybackUsdc]
+      properties:
+        id: { type: string }
+        endedAt: { type: string }
+        status: { type: string, enum: [paid, retained] }
+        eligibleUsdc: { type: number }
+        stakingUsdc: { type: number }
+        treasuryUsdc: { type: number }
+        buybackUsdc: { type: number }
+    DemoDashboard:
+      type: object
+      required: [serverNow, profile, balances, staking, operations, events, history, treasury, rounds]
+      properties:
+        serverNow: { type: string }
+        profile: { $ref: "#/components/schemas/DemoProfile" }
+        balances: { $ref: "#/components/schemas/DemoBalances" }
+        staking: { $ref: "#/components/schemas/DemoStaking" }
+        operations:
+          type: array
+          items: { $ref: "#/components/schemas/DemoOperation" }
+        orchestratorBudget: { $ref: "#/components/schemas/DemoOrchestratorBudget" }
+        events:
+          type: array
+          items: { $ref: "#/components/schemas/DemoEvent" }
+        history:
+          type: array
+          items: { $ref: "#/components/schemas/DemoMovement" }
+        treasury: { $ref: "#/components/schemas/DemoTreasury" }
+        rounds:
+          type: array
+          items: { $ref: "#/components/schemas/DemoRound" }
     HealthStatus:
       type: object
       properties:
