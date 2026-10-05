@@ -60,14 +60,14 @@ export function inspectArchitecture(root, { checkDocuments = true } = {}) {
       continue;
     }
     const source = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true);
-    function check(specifier) {
+    function check(specifier, typeOnly = false) {
       if (!ts.isStringLiteralLike(specifier)) { fail('dependência dinâmica sem contrato estático'); return; }
       const name = specifier.text;
       const external = !name.startsWith('.') && !name.startsWith('@/');
       if (external && ['domain', 'application', 'public'].includes(owner.layer) && !rules.purePackages.includes(name)) {
         fail('núcleo depende de fornecedor/infraestrutura; usar porta e adaptador');
       }
-      if (external && owner.layer === 'transport' && !['express', ...rules.purePackages].includes(name)) {
+      if (external && owner.layer === 'transport' && !['express', '@workspace/api-zod', ...rules.purePackages].includes(name)) {
         fail('fornecedor deve estar em adaptador de infraestrutura, não no transporte');
       }
       if (name === '@workspace/db') {
@@ -88,10 +88,12 @@ export function inspectArchitecture(root, { checkDocuments = true } = {}) {
         if (owner.context === dependency.context) {
           if (!rules.layers[owner.layer].includes(dependency.layer)) fail('dependência entre camadas não permitida');
         } else {
-          if (owner.layer === 'domain' || !rules.dependencies[owner.context].includes(dependency.context)) {
+          const contract = typeOnly && rules.typeContracts?.includes(targetRelative) &&
+            rules.dependencies[owner.context].includes(dependency.context);
+          if (!contract && (owner.layer === 'domain' || !rules.dependencies[owner.context].includes(dependency.context))) {
             fail(`dependência de domínio não permitida: ${dependency.context}`);
           }
-          if (dependency.layer !== 'public') fail('acesso a internos de outro módulo; usar index.ts público');
+          if (!contract && dependency.layer !== 'public') fail('acesso a internos de outro módulo; usar index.ts público');
         }
       } else if (targetRelative.startsWith(apiPrefix)) {
         if (!(owner.layer === 'infrastructure' && targetRelative === `${apiPrefix}lib/logger.ts`)) {
@@ -104,8 +106,15 @@ export function inspectArchitecture(root, { checkDocuments = true } = {}) {
       }
     }
     function visit(node) {
-      if ((ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) && node.moduleSpecifier) check(node.moduleSpecifier);
-      if (ts.isImportTypeNode(node) && ts.isLiteralTypeNode(node.argument)) check(node.argument.literal);
+      if ((ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) && node.moduleSpecifier) {
+        const clause = node.importClause;
+        const bindings = clause?.namedBindings;
+        const onlyTypes = node.isTypeOnly || clause?.isTypeOnly ||
+          !clause?.name && bindings && ts.isNamedImports(bindings) && bindings.elements.length > 0 &&
+          bindings.elements.every(element => element.isTypeOnly);
+        check(node.moduleSpecifier, !!onlyTypes);
+      }
+      if (ts.isImportTypeNode(node) && ts.isLiteralTypeNode(node.argument)) check(node.argument.literal, true);
       if (ts.isCallExpression(node) &&
         (node.expression.kind === ts.SyntaxKind.ImportKeyword || ts.isIdentifier(node.expression) && node.expression.text === 'require')) {
         if (node.arguments.length !== 1) fail('dependência dinâmica sem contrato estático');

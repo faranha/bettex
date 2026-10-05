@@ -339,10 +339,19 @@ function HomeRoute() {
   return typeof window === 'undefined' ? <Home /> : <AuthenticatedHome><Home /></AuthenticatedHome>;
 }
 
+/** The old account URL has no page: reload the canonical app route cleanly. */
+function Redirect({ to }: { to: string }) {
+  const language = useLocale();
+  useEffect(() => {
+    window.location.replace(`${BASE_PATH}${language === 'pt' ? '' : `/${language}`}${to}`);
+  }, [language, to]);
+  return null;
+}
+
 function App({ ssrPath }: { ssrPath?: string } = {}) {
   const language = useLocale();
   const base = `${BASE_PATH}${language === 'pt' ? '' : `/${language}`}`;
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><AccountAuthProvider><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={HomeRoute} /><Route path="/pitch" component={Pitch} /><Route path="/demo" component={Demo} /><Route path="/demo/central" component={Demo} /><Route path="/demo/saldo" component={Demo} /><Route path="/demo/balance" component={Demo} /><Route path="/demo/tesouraria" component={Demo} /><Route path="/demo/treasury" component={Demo} /><Route path="/demo/tesoreria" component={Demo} /><Route path="/demo/minha-conta/*?" component={Demo} /><Route path="/demo/account/*?" component={Demo} /><Route path="/demo/mi-cuenta/*?" component={Demo} /><Route path="/sign-in/*?" component={SignInPage} /><Route path="/sign-up/*?" component={SignUpPage} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></AccountAuthProvider></WouterRouter><FloatingCommunityCTA /><Toaster /></TooltipProvider></QueryClientProvider>;
+  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><AccountAuthProvider><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={HomeRoute} /><Route path="/pitch" component={Pitch} /><Route path="/testes/conta"><Redirect to="/demo/minha-conta" /></Route><Route path="/demo" component={Demo} /><Route path="/demo/central" component={Demo} /><Route path="/demo/saldo" component={Demo} /><Route path="/demo/balance" component={Demo} /><Route path="/demo/tesouraria" component={Demo} /><Route path="/demo/treasury" component={Demo} /><Route path="/demo/tesoreria" component={Demo} /><Route path="/demo/simulacao" component={Demo} /><Route path="/demo/simulation" component={Demo} /><Route path="/demo/simulacion" component={Demo} /><Route path="/demo/minha-conta/*?" component={Demo} /><Route path="/demo/account/*?" component={Demo} /><Route path="/demo/mi-cuenta/*?" component={Demo} /><Route path="/sign-in/*?" component={SignInPage} /><Route path="/sign-up/*?" component={SignUpPage} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></AccountAuthProvider></WouterRouter><FloatingCommunityCTA /><Toaster /></TooltipProvider></QueryClientProvider>;
 }
 
 export default App;

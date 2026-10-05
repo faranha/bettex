@@ -9,6 +9,10 @@ files.push(path.resolve(root, '../../pages/demo.tsx'));
 files.push(path.resolve(root, '../../pages/auth.tsx'));
 const accountRoot = path.resolve(root, '../account');
 files.push(...fs.readdirSync(accountRoot).filter(f => /\.(ts|tsx)$/.test(f)).map(f => path.join(accountRoot, f)));
+const tradingRoot = path.resolve(root, '../alpha-trading');
+files.push(...fs.readdirSync(tradingRoot).filter(f => /\.(ts|tsx)$/.test(f)).map(f => path.join(tradingRoot, f)));
+const simulationRoot = path.resolve(root, '../simulation');
+files.push(...fs.readdirSync(simulationRoot).filter(f => /\.(ts|tsx)$/.test(f) && !f.endsWith('.test.ts')).map(f => path.join(simulationRoot, f)));
 const failures = [];
 let tuples = 0;
 const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|BETTEX|USDC|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;
@@ -22,7 +26,16 @@ for (const file of files) {
     failures.push(`${path.basename(file)}:${source.getLineAndCharacterOfPosition(node.getStart(source)).line + 1}: ${message}`);
   }
   function walk(node) {
-    if (ts.isIdentifier(node) && forbidden.has(node.text)) report(node, `Forbidden real wallet operation: ${node.text}`);
+    if (ts.isIdentifier(node) && forbidden.has(node.text)) {
+      let owner = node.parent;
+      while (owner && !ts.isFunctionDeclaration(owner)) owner = owner.parent;
+      // Approved isolated native-test signer, not a general demo-wallet exception.
+      const localPurchaseSigner = node.text === 'signTransaction'
+        && file === path.join(accountRoot, 'wallet-vault.ts')
+        && owner?.name?.text === 'signPersonalTestPurchase'
+        && owner.getText(source).includes('draft.chainId !== 31337');
+      if (!localPurchaseSigner) report(node, `Forbidden real wallet operation: ${node.text}`);
+    }
     if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && ['x', 'tr'].includes(node.expression.text)) {
       tuples++;
       if (node.arguments.length !== 3 || node.arguments.some(a => !ts.isStringLiteral(a) && !ts.isTemplateExpression(a) && !ts.isNoSubstitutionTemplateLiteral(a))) report(node, 'Translation must explicitly provide PT, EN, ES.');
@@ -39,4 +52,4 @@ for (const file of files) {
 }
 assert.ok(tuples > 100, 'Demo localization coverage unexpectedly missing.');
 assert.deepEqual(failures, [], failures.join('\n'));
-console.log(`Demo: ${tuples} explicit PT/EN/ES translation calls; isolated JSX, no untranslated text nodes or real wallet signing.`);
+console.log(`Demo: ${tuples} explicit PT/EN/ES translation calls; isolated JSX, no untranslated text nodes or direct key/signing APIs in UI.`);

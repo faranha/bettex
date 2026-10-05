@@ -1,0 +1,32 @@
+Sim. A pesquisa na nossa documentação deve vir antes da implementação e determinar o contrato. Substitua o início do prompt por este trecho:
+
+PESQUISA OBRIGATÓRIA ANTES DA IMPLEMENTAÇÃO
+
+Antes de criar o contrato BETTEX, pesquise a documentação interna existente do projeto. Não implemente um contrato genérico apenas com base neste prompt.
+
+Localize e leia as especificações, decisões arquiteturais, regras canônicas, tokenomia, desenho da tesouraria, regras de venda, staking, liberações, permissões administrativas e integrações de rede.
+
+Pesquise tanto os arquivos do projeto quanto a base de documentação já disponível ao sistema. Identifique quais documentos são atuais, quais foram substituídos e quais decisões permanecem pendentes.
+
+Extraia dessa pesquisa os requisitos que determinam:
+
+• A rede de implantação do token.
+• O padrão do contrato e a oferta total.
+• As alocações e restrições de circulação.
+• Quem pode administrar, pausar ou atualizar os contratos.
+• Como a venda recebe USDC e entrega BETTEX.
+• Para onde vão o principal e as tarifas.
+• Como o contrato se relaciona com a tesouraria, as carteiras dos usuários e o futuro staking.
+• Como a implementação pode evoluir dentro da arquitetura existente.
+
+Registre cada requisito com referência ao arquivo e à seção de origem. Diferencie decisões documentadas, sugestões deste prompt e configurações temporárias de teste.
+
+Depois, consulte a documentação oficial externa das tecnologias escolhidas para verificar como implementar esses requisitos corretamente. A documentação externa orienta a implementação técnica; ela não substitui nossas decisões econômicas e arquiteturais.
+
+Se encontrar conflitos, não escolha silenciosamente uma versão. Utilize a decisão vigente quando ela estiver identificada. Se não estiver, registre o conflito e avance nas partes independentes.
+
+Não invente termos econômicos ausentes. Parâmetros necessários apenas para testar devem ficar explicitamente separados das regras definitivas.
+
+Antes de escrever os contratos, produza dentro da documentação do projeto uma especificação curta com os requisitos encontrados, suas fontes, as lacunas e o desenho proposto. Em seguida, implemente e verifique os contratos conforme essa especificação, sem parar apenas na pesquisa.
+
+Na entrega, demonstre como o contrato implementado corresponde à documentação existente e identifique qualquer decisão ainda pendente.

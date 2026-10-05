@@ -16,7 +16,9 @@ function add(value) {
 function scan(file) {
   // The isolated demo owns three-language tuples, not the site catalogue.
   // Its JSX bypasses the site's runtime and is audited by check-demo-locales.
-  if (file.includes('/components/demo/') || file.includes('/components/account/') || file.endsWith('/pages/demo.tsx') || file.endsWith('/pages/auth.tsx') || /\.test\.tsx?$/.test(file)) return;
+  if (file.includes('/components/demo/') || file.includes('/components/account/') ||
+    file.includes('/components/alpha-trading/') || file.includes('/components/simulation/') ||
+    file.endsWith('/pages/demo.tsx') || file.endsWith('/pages/auth.tsx') || /\.test\.tsx?$/.test(file)) return;
   if (file.endsWith('.json') && !file.includes('/locales/')) {
     function visit(value) { if (typeof value === 'string') add(value); else if (value && typeof value === 'object') Object.values(value).forEach(visit); }
     visit(JSON.parse(fs.readFileSync(file, 'utf8'))); return;

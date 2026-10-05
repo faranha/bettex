@@ -1,0 +1,257 @@
+Implemente os próximos passos da BETTEX: estrutura da tesouraria, participação em staking, apuração e distribuição de resultados no ambiente de testes.
+
+O nome é BETTEX. Não utilize BTX, Bitex ou outras abreviações inventadas.
+
+Esta entrega deve dar continuidade ao cadastro, às carteiras, à emissão, ao vesting e ao pool interno de compra já desenvolvidos ou especificados.
+
+1. PESQUISA OBRIGATÓRIA E RESPEITO À ARQUITETURA
+
+Antes de implementar, pesquise e leia a documentação interna vigente e examine o código existente.
+
+Localize as regras de:
+
+• Arquitetura e organização do sistema.
+• Tesouraria e segregação de recursos.
+• Tokenomia e destinação dos pagamentos.
+• Vesting e elegibilidade.
+• Staking automático.
+• Apuração de resultados.
+• Reservas, exposição e controles de risco.
+• Distribuições, recompra, perdas e suspensão de pagamentos.
+
+Para cada requisito utilizado, registre o arquivo e a seção de origem. Diferencie decisões aprovadas, propostas e lacunas.
+
+Consulte depois a documentação oficial externa necessária para implementar essas decisões.
+
+Não crie uma arquitetura paralela nem novos módulos apenas porque este prompt descreve funções distintas. Encaixe as responsabilidades nos componentes previstos pelo projeto, preservando eventos, processamento determinístico, idempotência e auditoria.
+
+Examine o que já funciona antes de alterar. Não reimplemente cadastro, carteiras ou contratos existentes sem necessidade.
+
+2. RESOLVER O SIGNIFICADO DO STAKING AUTOMÁTICO
+
+A intenção do produto é que a participação seja simples e automática dentro do aplicativo.
+
+Pesquise qual mecanismo foi efetivamente definido:
+
+A. Tokens BETTEX mantidos na carteira cadastrada tornam-se elegíveis sem transferência para um contrato.
+
+B. Tokens BETTEX precisam ser depositados em um contrato de staking, mediante autorização do usuário.
+
+Não trate esses modelos como equivalentes.
+
+Confirme também qual ativo determina a participação. A documentação conhecida utiliza quantidade e tempo elegíveis de BETTEX, com pagamentos em USDC. Não transforme saldo em dólares numa posição de staking sem encontrar uma decisão explícita que autorize essa regra.
+
+Se a documentação não resolver isso, registre a decisão pendente, desenvolva as partes independentes e prepare uma demonstração configurável em testes. Não consolide silenciosamente uma nova regra econômica.
+
+No modelo com depósito, nenhuma carteira pessoal pode ser movimentada sem autorização. Uma experiência automática pode usar uma autorização prévia claramente apresentada, mas nunca acesso irrestrito às chaves.
+
+No modelo baseado em saldo, implemente acompanhamento histórico verificável. Consultar apenas o saldo no momento da distribuição não demonstra tempo de participação.
+
+3. RESPONSABILIDADES DA TESOURARIA
+
+Implemente um controlador determinístico da tesouraria, conforme a nomenclatura e os componentes existentes.
+
+A tesouraria não é apenas uma carteira. Ela precisa representar e reconciliar:
+
+• Capital recebido das vendas.
+• Outros aportes e suas destinações.
+• Reserva defensiva.
+• Recursos disponíveis para alocação.
+• Recursos comprometidos com estratégias.
+• Posições abertas.
+• Custos e obrigações.
+• Resultados realizados.
+• Resultados ainda não realizados.
+• Valores comprometidos com distribuições.
+• Recursos exclusivos de recompra.
+
+Não confunda capital recebido com lucro.
+
+Não conte o mesmo recurso simultaneamente como reserva disponível, capital alocado e verba de recompra.
+
+Diferencie disponibilidade contábil de saldo efetivamente transferível em cada rede.
+
+4. CONTAS, CARTEIRAS E PERMISSÕES
+
+Reutilize a estrutura de carteiras e contratos existente.
+
+Defina os destinos necessários para tesouraria, pagamentos aos participantes, recompra e receita operacional da companhia, conforme a documentação.
+
+Segregue os recursos por contas, contratos ou registros verificáveis compatíveis com a arquitetura. Explique como essa segregação é aplicada.
+
+Não misture fundos operacionais da companhia com patrimônio da tesouraria.
+
+Identifique quem pode autorizar alocações, pausar operações, confirmar apurações e executar pagamentos.
+
+Proteja credenciais operacionais em secrets e mantenha-as separadas das chaves pessoais dos usuários.
+
+Uma IA pode fornecer análises ou propostas. Não permita que sua resposta, por si só, altere saldos, calcule direitos financeiros, contorne limites ou autorize transferências.
+
+5. REGRAS ECONÔMICAS DOCUMENTADAS
+
+Confira na documentação vigente as regras conhecidas:
+
+• Na venda pública primária, 100% do preço do token alimenta a tesouraria.
+• A tarifa de serviço é separada e destinada à companhia.
+• Aportes vinculados aos tokens dos investidores têm destinação própria, documentada como 50% companhia e 50% tesouraria.
+• Reserva defensiva mínima proposta de 50% do patrimônio líquido.
+• Ausência de alavancagem.
+• Lucro elegível dividido em 50% retenção/reinvestimento, 25% participantes elegíveis e 25% carteira exclusiva de recompra.
+• Apuração e alocação diárias.
+• Recompras executadas por decisão administrativa manual, sem execução automática previsível.
+• Quando os controles financeiros exigidos falham, o resultado permanece integralmente retido, sem distribuição nem nova alocação para recompra.
+
+Esses percentuais não são taxas de rendimento diário.
+
+Não use versões antigas ou contraditórias sem identificar qual decisão está vigente.
+
+Não escolha o destino dos tokens recomprados, como queima ou staking interno, se isso continuar pendente.
+
+6. APURAÇÃO DO LUCRO ELEGÍVEL
+
+Implemente uma apuração reproduzível por período, baseada em registros conciliados.
+
+Diferencie depósitos, aportes, transferências internas, retiradas, custos e resultados das estratégias.
+
+Movimentar recursos entre carteiras não cria lucro nem prejuízo.
+
+Resultados não realizados não podem ser distribuídos como lucro realizado.
+
+Antes de liberar uma distribuição, verifique os custos, obrigações, reservas, posições abertas e liquidez necessária após os pagamentos.
+
+Pesquise a metodologia de tratamento e recuperação de perdas anteriores. Não distribua resultados ignorando essa questão se ela ainda não estiver definida.
+
+Na ausência dessa definição, permita cenários de teste com premissas identificadas, mas mantenha a distribuição operacional bloqueada até a regra ser configurada.
+
+Registre os dados de origem, regras e versão utilizados em cada apuração.
+
+Não altere silenciosamente períodos já encerrados. Correções precisam de trilha de auditoria e tratamento explícito.
+
+7. ELEGIBILIDADE DOS PARTICIPANTES
+
+Implemente a quantidade e o tempo elegíveis conforme a documentação.
+
+Respeite vesting e bloqueios. Tokens institucionais bloqueados não entram no rateio; liberação não significa participação automática se houver outros critérios.
+
+Registre entradas, saídas, transferências e mudanças de elegibilidade com referência temporal verificável.
+
+Comprar ou receber tokens no fim de um período não pode conferir automaticamente participação em todo o período anterior.
+
+Defina pela documentação:
+
+• Início e término de cada período.
+• Fonte temporal utilizada.
+• Cálculo do peso individual.
+• Efeito de entradas e saídas.
+• Tratamento dos créditos já apurados.
+• Condições de suspensão.
+
+Não invente multas, cancelamento de créditos ou prazo mínimo.
+
+Se o peso total elegível for zero, não divida por zero nem destine o pool arbitrariamente. Aplique a regra documentada; se ausente, mantenha o valor reservado e registre a pendência.
+
+8. DISTRIBUIÇÃO EM USDC
+
+Implemente o mecanismo compatível com a arquitetura: pagamento direto, recebimento solicitado pelo usuário ou outro modelo documentado.
+
+Os pagamentos devem ter como destino a carteira BETTEX cadastrada do usuário na rede correta.
+
+Uma alteração posterior de carteira não pode redirecionar silenciosamente uma distribuição já autorizada.
+
+Separe:
+
+• Resultado apurado.
+• Lucro elegível aprovado.
+• Parcela destinada aos participantes.
+• Direito individual calculado.
+• Valor disponível para recebimento.
+• Pagamento enviado.
+• Pagamento confirmado.
+
+Se um pagamento falhar, preserve o direito e permita retomar sem pagar duas vezes.
+
+Utilize unidades inteiras e os decimais corretos do USDC. Defina o tratamento dos resíduos de arredondamento para que a soma dos pagamentos não exceda o pool.
+
+Bloqueie pagamentos superiores ao saldo disponível e às obrigações aprovadas.
+
+9. INTEGRAÇÃO COM OS AGENTES
+
+Prepare interfaces de alocação, retorno de capital e prestação de contas dos agentes existentes.
+
+Cada agente deve ter limites de recursos e permissões definidos. Não deve possuir acesso irrestrito à tesouraria.
+
+Receba registros verificáveis de operações, custos, posições e resultados. Não contabilize lucro apenas porque o agente declarou um número.
+
+Respeite a separação entre redes. Não presuma que USDC disponível numa rede possa pagar participantes em outra sem uma integração específica.
+
+Nesta entrega, utilize agentes simulados para verificar a contabilidade e os controles. Não execute estratégias com dinheiro real.
+
+10. PERSISTÊNCIA, EVENTOS E AUDITORIA
+
+Integre ao banco e aos mecanismos existentes:
+
+• Contas e destinos da tesouraria.
+• Movimentos patrimoniais.
+• Alocações aos agentes.
+• Posições de participação.
+• Histórico de elegibilidade.
+• Períodos de apuração.
+• Resultados e validações.
+• Obrigações de distribuição.
+• Pagamentos e confirmações.
+• Saldos exclusivos de recompra.
+• Pausas, autorizações e correções.
+
+Utilize registros contábeis consistentes e reconciliáveis, preferencialmente partidas dobradas se compatíveis com a arquitetura.
+
+Garanta idempotência, processamento confiável de eventos e retomada após falhas.
+
+Saldos derivados devem poder ser reconstruídos a partir dos registros de origem.
+
+11. PAINEL DO USUÁRIO E ADMINISTRAÇÃO
+
+No painel do usuário, mostrar:
+
+• BETTEX disponível.
+• BETTEX em participação ou staking.
+• Quantidade elegível.
+• Histórico de participação.
+• Rendimentos simulados apurados.
+• Valores disponíveis.
+• Distribuições confirmadas.
+• Motivo de eventual suspensão.
+
+No painel administrativo protegido, mostrar patrimônio, reservas, alocações, obrigações, resultado por período, conciliação e situação dos pagamentos.
+
+Não exponha chaves privadas nem apresente apuração diária como promessa de rendimento diário.
+
+12. TESTES E ENTREGA
+
+Use exclusivamente ativos de teste. Diferencie simulações econômicas de transações realmente executadas na testnet.
+
+Verifique ao menos:
+
+• Venda aumenta capital, sem gerar lucro.
+• Transferência interna não altera o resultado.
+• Lucro realizado elegível segue a divisão documentada.
+• Prejuízo não produz distribuição positiva.
+• Falha nos controles retém o resultado.
+• Tokens bloqueados ficam fora do rateio.
+• Quantidade e tempo de participação são considerados.
+• Entrada tardia não recebe direitos retroativos.
+• Saídas seguem as regras documentadas.
+• Peso total zero é tratado corretamente.
+• Arredondamentos não excedem o pool.
+• Falhas e novas tentativas não duplicam pagamentos.
+• Recursos comprometidos não são contados novamente como disponíveis.
+• Usuários e agentes não acessam fundos sem autorização.
+
+Execute um ciclo completo demonstrável:
+
+Recebimento de capital de teste → registro de alocação simulada → resultado e custos simulados → conciliação → controles de reserva → apuração → cálculo dos direitos → pagamento em USDC de teste → confirmação nas carteiras.
+
+Entregue a implementação, as fontes documentais, as verificações realizadas e as pendências.
+
+Explique precisamente qual modelo de staking foi encontrado e implementado. Não declare esse modelo definitivo se ainda depender de uma decisão econômica ausente.
+
+Continue até concluir as partes autorizadas e verificáveis. Deixe preparada qualquer etapa que dependa de uma definição ou ação externa, sem inventar regras para aparentar conclusão.

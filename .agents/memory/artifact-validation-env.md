@@ -9,6 +9,12 @@ Manual shell builds do not automatically inherit the environment supplied to man
 
 **How to apply:** Use the artifact's verified routing and port context for manual builds. Do not persist project-wide PORT or BASE_PATH values just to make a shell check pass, since different artifacts have their own runtime context.
 
+Internal loopback-only RPC helpers may become ready while a workflow's port-wait check still times out. Keep them console workflows without public-port readiness rather than exposing an unlocked development signer.
+
+**Why:** The local EVM answered internal requests but the managed port check did not recognize its loopback listener.
+
+**How to apply:** Check helper readiness internally; never bind an unlocked development RPC to all interfaces merely to satisfy preview detection.
+
 A managed workflow can report a port conflict while an older instance of the same artifact's development server is still running.
 
 **Why:** The failed workflow had attempted to start a second server on the port already held by an older instance.

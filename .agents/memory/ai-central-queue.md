@@ -3,11 +3,11 @@ name: Central da IA — fila e decisões
 description: Direção do criador para origem das sugestões, IA principal e histórico da Central.
 ---
 
-A Central da IA deve apresentar uma fila de pedidos e sugestões dos agentes, decisões em tempo real da IA principal e históricos consultáveis de decisões e sugestões geradas. Cada sugestão precisa identificar claramente seu agente de origem, por nome/identificador e ícone próprio. O criador chama a IA principal de “agente BTEX”.
+A Central da IA deve apresentar uma fila de pedidos e sugestões dos agentes, decisões em tempo real da IA principal e históricos consultáveis de decisões e sugestões geradas. Cada sugestão precisa identificar claramente seu agente de origem, por nome/identificador e ícone próprio.
 
 **Why:** O criador descreveu “uma fila de pedidos e sugestões”, exigiu “Isso aqui veio do agente tal” e disse que a pessoa deve poder consultar tanto o histórico de decisões quanto o histórico de sugestões.
 
-**How to apply:** Não reduzir a Central a uma lista de operações ou a um feed efêmero de eventos. Preservar a origem de cada sugestão e o vínculo entre pedido, decisão e eventual execução. Tratar sugestão, decisão e execução como registros distintos, sem apresentar sugestões como ordens já executadas. Não confundir a IA principal BTEX com a rede externa de inferências estudada.
+**How to apply:** Não reduzir a Central a uma lista de operações ou a um feed efêmero de eventos. Preservar a origem de cada sugestão e o vínculo entre pedido, decisão e eventual execução. Tratar sugestão, decisão e execução como registros distintos, sem apresentar sugestões como ordens já executadas. Não confundir a IA principal com a rede externa de inferências estudada.
 
 O criador autorizou um gráfico ilustrativo de “robozinhos enviando as ordens”, seguido pela lista na Central. Isso permite representar visualmente o fluxo dos agentes, mesmo antes de existir a integração real.
 

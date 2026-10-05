@@ -64,13 +64,15 @@ export function localizedUrl(href: string, next: Locale = locale): string {
   const [pathname] = relative.split(/[?#]/);
   const suffix = relative.slice(pathname.length);
   const clean = pathname.replace(/^\/(?:en|es)(?=\/|$)/, '').replace(/\/$/, '') || '/';
-  const page = clean === '/documentation' || clean === '/documentacion' ? '/documentacao' : clean;
-  if (!['/', '/pitch', '/documentacao', '/demo'].includes(page)) {
+  const page = clean === '/documentation' || clean === '/documentacion' ? '/documentacao' :
+    ['/demo/simulacao', '/demo/simulation', '/demo/simulacion'].includes(clean) ? '/demo/simulacao' : clean;
+  if (!['/', '/pitch', '/documentacao', '/demo'].includes(page) && !page.startsWith('/demo/')) {
     if (next !== 'pt' && page === '/downloads/bettex-taxas-fundacao.xlsx') return `${base}/downloads/bettex-taxas-fundacao-${next}.xlsx${suffix}`;
     if (next !== 'pt' && /^\/downloads\/bettex-entidade-unica\.(pdf|docx|html|md)$/.test(page)) return `${base}${page.replace(/\.([a-z]+)$/, `-${next}.$1`)}${suffix}`;
     return href;
   }
-  const translated = page === '/documentacao' ? next === 'en' ? '/documentation' : next === 'es' ? '/documentacion' : page : page;
+  const translated = page === '/documentacao' ? next === 'en' ? '/documentation' : next === 'es' ? '/documentacion' : page :
+    page === '/demo/simulacao' ? next === 'en' ? '/demo/simulation' : next === 'es' ? '/demo/simulacion' : page : page;
   return `${base}${next === 'pt' ? '' : `/${next}`}${translated}${suffix}`;
 }
 export function changeLocale(next: Locale) {

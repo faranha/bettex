@@ -1,0 +1,166 @@
+Entendi. Cada cadastro deve criar uma conta no aplicativo e, no mínimo, duas carteiras distintas: uma para depósitos e outra exclusiva do usuário para o projeto BETTEX e os recebimentos do staking.
+
+Tecnicamente, a carteira não é “de USDC”: ela tem um endereço Ethereum que pode receber USDC e outros ativos compatíveis. Também precisamos identificar a rede corretamente: Ethereum Mainnet e Arbitrum têm saldos separados, mesmo quando o endereço é igual. 
+
+Segue o prompt para colar no Replit:
+
+Implemente o processo de criação de conta e gerenciamento de carteiras da BETTEX conforme os requisitos abaixo. Primeiro, examine o código e a arquitetura existentes para integrar esse fluxo sem duplicar funcionalidades.
+
+1. O que significa criar uma conta
+
+O cadastro deve criar:
+
+• Uma conta de usuário no aplicativo.
+• Uma carteira individual para depósitos, compatível com Ethereum e capaz de receber USDC na rede configurada.
+• Uma segunda carteira individual, com endereço e chave privada distintos, exclusiva para as operações do usuário no projeto BETTEX e para receber as distribuições efetivamente realizadas pelo staking.
+
+Essas duas carteiras pertencem ao usuário. A carteira do projeto não é a tesouraria da BETTEX nem uma carteira compartilhada entre usuários.
+
+A arquitetura deve permitir adicionar outras carteiras no futuro, sem precisar refazer o cadastro.
+
+2. Rede e ativos
+
+Examine a configuração existente para identificar a rede utilizada pelo projeto.
+
+Diferencie explicitamente Ethereum Mainnet de Arbitrum ou de outras redes EVM. Compatibilidade com Ethereum não significa que todas essas redes compartilham o mesmo saldo.
+
+Se a rede ainda não estiver definida, mantenha-a configurável e utilize uma rede de testes durante o desenvolvimento. Não habilite depósitos reais com configuração incompleta.
+
+Para cada carteira, registre o usuário proprietário, a finalidade, o endereço, a chave pública, a rede e o chain ID.
+
+Configure o USDC pelo endereço oficial do contrato na rede escolhida. Não identifique um token apenas pelo nome ou símbolo.
+
+Na interface de depósitos, mostre o endereço, o QR code, o ativo e a rede aceita. Avise que o envio deve ser feito pela rede indicada.
+
+3. Cadastro sem confirmação de e-mail e sem KYC
+
+O formulário deve conter:
+
+• Nome de exibição.
+• E-mail.
+• Senha.
+• Confirmação da senha.
+
+O e-mail será utilizado como identificador de login nesta versão, mas não haverá confirmação de e-mail.
+
+Não implementar envio de link, código de confirmação ou bloqueio por e-mail não verificado. Não apresentar o e-mail como verificado.
+
+Não implementar KYC nesta etapa. Não solicitar documento, selfie ou verificação de identidade.
+
+Validar o formato e a unicidade do e-mail, sem tratar isso como comprovação de propriedade.
+
+4. Ausência de recuperação de senha
+
+Nesta versão, não existe recuperação ou redefinição de senha.
+
+Não criar botão “Esqueci minha senha”, recuperação por e-mail, recuperação pelo suporte ou outro mecanismo de redefinição.
+
+Antes de concluir o cadastro, mostrar este aviso:
+
+“A BETTEX não oferece recuperação de senha nesta versão. Se você esquecer sua senha, não será possível redefini-la ou recuperar o acesso à sua conta pelo aplicativo. Seu e-mail não será confirmado e não poderá ser utilizado para recuperar sua senha. Guarde sua senha e exporte um backup seguro das suas carteiras.”
+
+Exigir uma caixa de confirmação desmarcada por padrão:
+
+“Entendo que não existe recuperação de senha e que sou responsável por guardar minha senha e o backup das minhas carteiras.”
+
+Registrar a versão do aviso e a data do aceite.
+
+Exibir novamente essa informação na área de Segurança do painel.
+
+Distinguir perda de acesso ao aplicativo de acesso às carteiras: uma chave privada exportada pode permitir acessar os ativos controlados por aquela chave em uma carteira externa compatível. Ela não recupera automaticamente a conta BETTEX nem garante acesso a funcionalidades ou posições de staking que dependam de contratos específicos.
+
+5. Geração e proteção das carteiras
+
+Gerar carteiras reais usando biblioteca consolidada e aleatoriedade criptograficamente segura.
+
+Nunca gerar chaves a partir do e-mail, nome, ID do usuário ou senha. Nunca reutilizar a mesma carteira para usuários diferentes.
+
+Preferir geração e assinatura no cliente, com persistência apenas do material criptografado necessário para que o usuário acesse suas carteiras em outros dispositivos.
+
+O servidor não deve receber ou armazenar chaves privadas em texto puro. Não guardar uma cópia da senha nem uma chave administrativa capaz de descriptografar as carteiras dos usuários.
+
+Utilizar criptografia autenticada e derivação de chave apropriada para proteger o material das carteiras com a senha do usuário. Utilizar um mecanismo separado e adequado de hash para autenticação.
+
+Nunca colocar senhas ou chaves privadas em logs, analytics, mensagens de erro ou respostas comuns da API.
+
+Se a arquitetura atual não permitir cumprir esse modelo, documentar o impedimento antes de implementar uma solução que altere quem controla as chaves.
+
+6. Criação consistente e sem duplicação
+
+Tratar o cadastro como um fluxo único: criar o usuário, provisionar as duas carteiras e registrar suas associações.
+
+O cadastro só deve ser apresentado como concluído quando ambas as carteiras estiverem criadas e vinculadas corretamente.
+
+Se houver falha parcial, permitir retomar o processo com segurança, sem criar carteiras duplicadas ou substituir endereços já atribuídos.
+
+Criar um endereço não exige enviar uma transação à blockchain. Não cobrar gas nem enviar fundos apenas para concluir o cadastro.
+
+7. Painel do usuário
+
+Criar as áreas Perfil, Segurança e Minhas Carteiras.
+
+Em Perfil, permitir:
+
+• Alterar o nome de exibição.
+• Alterar o e-mail registrado mediante confirmação da senha atual.
+• Alterar a senha mediante confirmação da senha atual.
+
+A alteração de e-mail não exige confirmação por mensagem nesta versão. Se ele for usado no login, atualizar o identificador de acesso e impedir duplicidade.
+
+Usar um ID interno imutável para associar o usuário às carteiras. Alterar nome, e-mail ou senha não pode alterar endereços, propriedade, saldos ou posições de staking.
+
+Ao alterar a senha, recriptografar o material das carteiras de forma consistente, preservando as mesmas chaves e endereços. Não criar novas carteiras.
+
+8. Visualização e exportação
+
+Em Minhas Carteiras, mostrar separadamente:
+
+• Carteira de Depósitos.
+• Carteira BETTEX / Recebimentos do Staking.
+
+Para cada uma, permitir visualizar e copiar o endereço e a chave pública, além de exportar a chave privada e um backup criptografado em formato compatível com ferramentas externas.
+
+Distinguir endereço de recebimento de chave pública: são informações diferentes.
+
+Exigir a senha atual para revelar ou exportar chaves privadas, mesmo com a sessão aberta. Fazer a descriptografia no cliente.
+
+Antes da exportação, mostrar:
+
+“Quem tiver sua chave privada poderá controlar os ativos dessa carteira. Nunca compartilhe essa chave. A BETTEX e seu suporte nunca solicitarão sua chave privada.”
+
+Manter as chaves privadas ocultas por padrão. Não enviá-las por e-mail nem incluí-las em relatórios ou exportações gerais da conta.
+
+9. Integração com o staking
+
+Associar a carteira BETTEX do usuário ao destino dos recebimentos do staking.
+
+Manter registros distintos de:
+
+• Saldo disponível na carteira.
+• Valor alocado em staking.
+• Rendimentos apurados.
+• Rendimentos disponíveis para recebimento.
+• Distribuições efetivamente pagas.
+
+Não apresentar um rendimento apurado como se já estivesse depositado na carteira.
+
+Não executar staking, aprovações de token ou transferências automaticamente durante o cadastro. Essas operações exigem uma ação posterior e explícita do usuário.
+
+Não inventar taxas de rendimento, garantias de lucro ou regras de distribuição. Integrar as regras e contratos existentes. Se ainda não existirem, deixar a integração pendente e indicar claramente o que falta.
+
+10. Verificação e entrega
+
+Verificar os cenários essenciais:
+
+• Cadastro cria duas carteiras com endereços diferentes.
+• Usuários diferentes recebem carteiras diferentes.
+• Falhas e novas tentativas não duplicam carteiras.
+• Alterar nome ou e-mail preserva as carteiras.
+• Alterar senha preserva as chaves e permite acesso com a nova senha.
+• Exportação exige a senha atual e permite validar o endereço correspondente.
+• Não existe confirmação de e-mail, recuperação de senha ou KYC.
+• Nenhuma chave privada ou senha aparece em logs.
+• Rede e contrato do USDC estão identificados corretamente.
+• Recebimentos do staking usam a carteira destinada a essa finalidade.
+
+Implemente o fluxo completo e apresente o que foi alterado, o que foi verificado e quais integrações permanecem pendentes. Não apresente saldos simulados ou carteiras fictícias como se fossem reais.

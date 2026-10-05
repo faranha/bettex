@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BETTEX — Verificação dos históricos</title><style>
+body{font:16px/1.6 system-ui,sans-serif;max-width:900px;margin:32px auto;padding:0 20px;color:#18212b;background:#fff}h1,h2{line-height:1.25}h1{font-size:30px}.result{padding:16px;border-left:4px solid #16734b;background:#eef8f2}li{margin:8px 0}code{background:#f2f4f7;padding:2px 5px}.note{border-left:4px solid #b7791f;padding:12px 16px;background:#fff9ed}small{color:#526273}
+</style></head><body>
+<h1>BETTEX — Históricos financeiros e de atividades</h1>
+<p class="result"><strong>Implementação verificada, com limitações explícitas da fase ALFA.</strong> Os erros de carregamento e de filtro por período encontrados no navegador foram corrigidos. O filtro corrigido e o acesso administrativo passaram pela API autenticada e por verificações automatizadas no PostgreSQL.</p>
+<h2>Implementação</h2><ul>
+<li>Diário persistente compartilhado, protegido contra alteração e exclusão. Transições, correções e permissões preservam a trilha; valores monetários são strings de unidades inteiras.</li>
+<li>Seis consultas: Geral, Swapping, Participação/Staking, Distribuições, Atividades e Segurança, Tesouraria e Pools. Filtros e paginação no servidor; detalhes correlacionados, horários de Brasília e textos PT/EN/ES.</li>
+<li>Registros automáticos de conta, aceites, autenticação, perfil/senha, carteiras, autorização e resultado de exportação, solicitações e etapas de execução, fatos comprovados da EVM local, participação e movimentos do motor demonstrativo.</li>
+<li>Tesouraria: principal de vendas ligado à compra, alocações, retornos líquidos, custos, retenção, pool de distribuição e reserva de recompra existentes na emulação. Transparência pública agregada sem atividades privadas.</li>
+</ul>
+<h2>Percurso confirmado no navegador</h2><ul>
+<li>Conta de teste: recebimento de <strong>25 USDC de teste</strong>, uma compra de <strong>100 BETTEX</strong>, com <strong>5 USDC de principal + 2,5 USDC de tarifa</strong>. Saldo final: <strong>17,5 USDC e 100 BETTEX</strong>; preço preservado: <strong>0,05 USDC/BETTEX</strong>.</li>
+<li>Participação automática registrada sem transferência fictícia de staking. A compra preservou sua correlação com 11 etapas relacionadas.</li>
+<li>Alteração de perfil, autorização e resultado da exportação criptografada, logout/login. O download foi interceptado e cancelado: nenhum arquivo de backup foi salvo, aberto ou inspecionado.</li>
+<li>Após reiniciar somente a API, os mesmos 40 registros, metadados e saldos persistiram. A EVM local não foi reiniciada.</li>
+<li>Paginação: os 35 registros então existentes foram percorridos em 18 páginas de tamanho 2, sem duplicação ou omissão.</li>
+<li>Em contexto demo separado: prévia de distribuição de 0 USDC marcada como cálculo/simulação, não pagamento; envio emulado de 1 BETTEX. A operação não alterou os saldos nem o histórico nativos.</li>
+<li>Privacidade: anônimo recebeu 401; usuário sem permissão administrativa recebeu 403; outra conta não recebeu registros alheios por correlação, carteira ou cursor. Não foram encontrados campos de segredos no histórico.</li>
+</ul>
+<h2>Correções e verificações finais</h2><ul>
+<li><strong>Erro 503:</strong> corrigida a interpretação dos horários devolvidos como texto pelas consultas SQL brutas.</li>
+<li><strong>Filtro por período:</strong> corrigida a conversão de datas ISO da URL antes da validação. Consulta autenticada retornou 200 e encontrou o principal da compra no intervalo UTC 08:50–08:53. Os campos da interface agora indicam Brasília UTC−3; esse intervalo corresponde a 05:50–05:53 nos campos.</li>
+<li><strong>Administração:</strong> fixture sintética verificou 403 sem permissão, 200 com concessão persistida e 403 após revogação. Concessão e revogação ficaram registradas; permissão e sessão temporárias foram removidas.</li>
+<li>Integração SQL: sete registros com horário idêntico, páginas de tamanho 2, exclusão de inserção posterior do conjunto paginado, isolamento de proprietário, proteção append-only e projeção de correção consistente entre lista e detalhe.</li>
+<li>Testes de adaptadores, sem gravar fatos financeiros fictícios no banco: preço de swap imediato, retorno líquido descontando custo e três destinações de pool por período.</li>
+<li>TypeScript, testes de unidades exatas, catálogo de idiomas e compilação de produção do frontend passaram. As verificações finais das correções utilizaram HTTP e testes automatizados, sem repetir todo o percurso de navegador.</li>
+</ul>
+<h2>Migração, recuperação e lacunas</h2>
+<p>A migração idempotente foi aplicada ao <strong>banco de desenvolvimento</strong>. Antes de usar outro banco, aplicar a migração <code>migrate:history</code> após o schema-base. A aplicação não cria esse schema automaticamente em produção.</p>
+<p>Operações anteriores recuperáveis utilizam evidências dos contratos/eventos locais e registros existentes; entradas reconstruídas mostram a origem. Não foram inventados login, aceite ou autorização antigos. O início de captura é informado sem afirmar completude de ações que ocorreram fora da aplicação.</p>
+<div class="note"><strong>Limitações:</strong> a execução nativa verificada usa EVM local 31337. Distribuições nativas, financiamento e saques em blockchain pública continuam indisponíveis. O motor demo legado usa aritmética JavaScript e não é um ledger de produção; seus registros são explicitamente simulados. Mudanças realizadas diretamente no Clerk, fora da aplicação, não são capturadas por este percurso. Reorganização real da blockchain e pagamento real de lucro não foram provocados neste teste.</div>
+<p><small>Relatório sanitizado: sem identidade pessoal, endereços de carteira, hashes de transação, cursores, credenciais, chaves privadas ou conteúdo de backups. Não houve nova compra para concluir as verificações.</small></p>
+</body></html>

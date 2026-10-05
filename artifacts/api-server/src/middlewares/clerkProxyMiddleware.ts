@@ -23,6 +23,8 @@ export function clerkProxyMiddleware(): RequestHandler {
     return (_req, _res, next) => next();
   }
   return createProxyMiddleware({
+    // Express already mounted this path. Never interpret client input as a glob.
+    pathFilter: () => true,
     target: CLERK_FAPI,
     changeOrigin: true,
     selfHandleResponse: true,

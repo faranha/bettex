@@ -1,0 +1,55 @@
+Faça uma revisão integral de todos os prompts anteriores e conclua os requisitos pendentes da BETTEX antes de ampliar o escopo.
+
+1. RECONSTRUA OS REQUISITOS
+
+Revise o histórico de instruções disponível, a documentação interna, as decisões registradas, o código, as migrações, os contratos e as configurações.
+
+Crie uma matriz única com cada requisito solicitado, sua fonte, implementação correspondente, evidência de verificação e estado: concluído, parcial, ausente ou bloqueado.
+
+Inclua cadastro, acesso, carteiras, testnets, depósitos, reservas de teste, emissão, alocações, vesting, swapping, staking, tesouraria, distribuições, históricos, segurança e organização do código.
+
+Não considere um requisito concluído apenas porque existe uma tela, arquivo ou contrato. Verifique seu funcionamento e sua integração ao percurso completo.
+
+2. RESOLVA AS LACUNAS COM AUTONOMIA
+
+Identifique informações faltantes, perguntas sem resposta, premissas provisórias, TODOs, mocks e integrações que foram deixadas para depois.
+
+Você está autorizado a tomar decisões técnicas necessárias para concluir os requisitos já solicitados. Pesquise primeiro a documentação interna e depois fontes oficiais externas.
+
+Escolha a solução mais simples, segura e compatível com a arquitetura existente. Registre a decisão, sua justificativa e os componentes afetados.
+
+Não volte a pedir informações que já possam ser encontradas ou inferidas com segurança. Não deixe decisões técnicas rotineiras paralisarem a implementação.
+
+Para parâmetros econômicos ainda indefinidos, adote configurações reversíveis e explicitamente identificadas como hipóteses de teste. Não transforme essas hipóteses em termos definitivos nem contrarie decisões expressas sobre oferta, direitos, vesting ou destinação dos recursos.
+
+Quando houver conflito, priorize a instrução explícita mais recente e a documentação canônica vigente. Preserve a rastreabilidade da resolução.
+
+3. EXECUTE ATÉ FECHAR AS PENDÊNCIAS
+
+Corrija, integre e verifique cada item parcial ou ausente.
+
+Substitua mocks quando houver uma integração real disponível. Mantenha simulações apenas onde forem necessárias e identifique-as claramente.
+
+Não deixe uma funcionalidade incompleta porque faltava uma escolha técnica que você pode fazer autonomamente.
+
+Não invente credenciais, permissões, transações ou resultados. Quando houver um impedimento externo real, conclua todas as partes independentes e prepare a etapa restante, indicando a ação mínima necessária.
+
+Respeite a arquitetura e evite reescritas ou componentes duplicados.
+
+4. COMPROVE A CONCLUSÃO
+
+Execute os fluxos pela interface e confira seus efeitos no banco e na blockchain:
+
+Cadastro → login → saldo de teste → depósito → compra de BETTEX → participação em staking → recebimento na tesouraria → distribuição de teste → históricos → logout e novo acesso.
+
+Verifique segurança, isolamento entre usuários, persistência, falhas, retomada e prevenção de duplicações.
+
+Atualize a matriz com evidências reais. Diferencie testes locais de verificações em testnets públicas.
+
+ENTREGA
+
+Apresente o que estava pendente, quais decisões tomou, o que executou e o que verificou.
+
+O objetivo é encerrar os requisitos anteriores, não produzir outra lista de tarefas.
+
+Nenhum requisito pode desaparecer da revisão: ele deve estar concluído e comprovado ou identificado como bloqueado por um impedimento concreto, com a solução já preparada até onde for possível.

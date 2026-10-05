@@ -1,0 +1,63 @@
+Replit, esta instrução complementa o prompt de integração com Allora e Polymarket e substitui qualquer orientação anterior para decidir autonomamente sobre impedimentos ou informações ausentes.
+
+A partir de agora, trabalharemos em conjunto. Execute o que estiver claramente definido e disponível. Quando encontrar uma dificuldade que não consiga resolver com o código e a documentação existentes, documente e solicite minha participação antes de avançar na parte afetada.
+
+1. O QUE VOCÊ NÃO PODE FAZER
+
+• Não inventar credenciais, endpoints, dados, inferências, probabilidades ou resultados.
+• Não substituir uma integração real por mock ou simulação sem minha autorização explícita.
+• Não trocar plataforma, fonte, ativo, rede ou estratégia para contornar uma dificuldade sem me consultar.
+• Não assumir decisões econômicas, permissões ou regras ausentes.
+• Não reduzir controles de segurança para fazer uma integração funcionar.
+• Não contratar serviços pagos, criar contas externas ou aceitar termos em meu nome sem autorização.
+• Não executar trading real nem movimentar recursos reais.
+• Não declarar concluída uma integração que está apenas preparada, simulada ou parcialmente verificada.
+• Não deixar uma dependência oculta nem avançar como se uma informação ausente tivesse sido fornecida.
+
+2. DOCUMENTE O QUE FALTA
+
+Mantenha um registro de pendências na documentação canônica do projeto.
+
+Para cada pendência, informe:
+
+• O que falta.
+• Qual funcionalidade depende disso.
+• O que você consultou ou tentou.
+• Qual impedimento encontrou.
+• Qual informação, acesso, configuração ou decisão preciso fornecer.
+• Como verificará que o impedimento foi resolvido.
+
+Inclua credenciais, permissões, disponibilidade de tópicos, limitações de APIs, dúvidas sobre os dados e definições metodológicas necessárias.
+
+3. SOLICITE MINHA PARTICIPAÇÃO
+
+Quando houver um bloqueio, faça uma solicitação específica e acionável.
+
+Não diga apenas “preciso de uma API”. Informe qual serviço, qual tipo de credencial, as permissões mínimas, onde obtê-la e onde configurá-la.
+
+Nunca peça que eu cole senhas, chaves privadas, frases-semente ou credenciais no chat. Oriente o uso do mecanismo de secrets apropriado.
+
+Quando faltar uma decisão, explique as opções, recomende uma delas e apresente seu impacto. Aguarde minha resposta antes de implementar a escolha.
+
+Agrupe solicitações relacionadas para evitar perguntas fragmentadas.
+
+4. CONTINUE SOMENTE O QUE FOR INDEPENDENTE
+
+Enquanto aguarda minha participação, avance nas partes que não dependem do bloqueio.
+
+Não execute etapas dependentes usando suposições, valores fictícios ou soluções alternativas não autorizadas.
+
+Diferencie claramente:
+
+• Implementado.
+• Verificado com dados reais.
+• Preparado, mas aguardando configuração.
+• Bloqueado, aguardando minha participação.
+
+5. ENTREGA E ACOMPANHAMENTO
+
+Em cada atualização, apresente o que funciona, o que falta e o que precisa de mim.
+
+Preserve essas pendências entre etapas e marque-as como resolvidas somente após verificação.
+
+O objetivo é construir a integração real em conjunto, com dificuldades visíveis e decisões explícitas, sem aparentar conclusão quando ainda faltam condições para executar o trabalho.

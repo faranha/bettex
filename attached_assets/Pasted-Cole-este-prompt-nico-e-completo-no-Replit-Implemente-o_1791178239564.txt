@@ -1,0 +1,321 @@
+Cole este prompt único e completo no Replit:
+
+Implemente o processo de criação de conta da BETTEX e prepare seu ambiente de testes multirrede. O objetivo é testar cadastro, carteiras, depósitos, compra de tokens, staking e integrações dos agentes sem gastar dinheiro real com criptomoedas ou gas.
+
+Examine primeiro o código, as configurações e a documentação disponíveis no projeto. Integre a implementação à arquitetura existente, evitando funcionalidades duplicadas.
+
+Não entregue apenas um plano: implemente tudo que puder ser realizado e verifique o resultado. Diferencie claramente funcionalidades implementadas, integrações verificadas e dependências pendentes.
+
+1. DOCUMENTAÇÃO E DEFINIÇÃO DAS INTEGRAÇÕES
+
+Consulte a documentação oficial atual de cada tecnologia utilizada pela BETTEX, incluindo:
+
+• Ethereum.
+• Arbitrum.
+• Robinhood Chain.
+• A plataforma de IA referida no projeto como “Lora”.
+• Outras redes e serviços necessários aos agentes já definidos no projeto.
+
+Resolva a identificação de “Lora” usando a documentação e as referências existentes. Allora e Aurora são plataformas distintas: não trate uma como sinônimo da outra. Se as referências não permitirem identificar a plataforma, registre essa dúvida e continue as integrações independentes dela.
+
+Use como pontos de partida:
+
+• Ethereum: https://ethereum.org/developers/
+• Arbitrum: https://docs.arbitrum.io/
+• Robinhood Chain: https://docs.robinhood.com/chain/
+• Allora, se for a plataforma utilizada: https://docs.allora.network/
+• Aurora, se for a plataforma utilizada: https://doc.aurora.dev/
+• Circle e USDC: https://developers.circle.com/
+
+Valide os endereços, parâmetros e recursos atuais na documentação oficial. Não invente RPCs, chain IDs, contratos, faucets ou APIs.
+
+Crie um inventário das integrações necessárias, indicando para cada uma:
+
+• Função dentro da BETTEX.
+• Rede e ambiente.
+• Tipo de carteira ou conta exigida.
+• Necessidade de credencial de API.
+• Necessidade de conta por usuário ou apenas por agente/sistema.
+• Ativo utilizado para taxas.
+• Disponibilidade de testnet ou sandbox.
+• Documentação utilizada e data da verificação.
+
+Diferencie acesso à Robinhood Chain de uma conta de corretora ou de uma API de negociação da Robinhood. Configurar uma carteira na blockchain não concede acesso automático aos demais serviços.
+
+2. AMBIENTE MULTIRREDE DE TESTES
+
+Configure Arbitrum Sepolia e Robinhood Chain Testnet.
+
+Configure também a testnet da plataforma identificada como “Lora”, quando necessária à integração, e os demais ambientes de teste exigidos pela arquitetura.
+
+Ethereum Sepolia deve ser incluída quando necessária para testes diretos de Ethereum ou para alguma integração.
+
+Utilize exclusivamente ativos sem valor financeiro.
+
+Separe desenvolvimento local, testnets públicas e produção. Contratos, saldos, eventos, transações e credenciais precisam estar associados ao ambiente e à rede correspondente.
+
+Não habilite mainnet, não compre criptomoedas e não contrate serviços pagos.
+
+Exiba permanentemente:
+
+“Ambiente de testes — ativos sem valor financeiro.”
+
+Mostre também a rede utilizada em cada operação.
+
+3. CRIAÇÃO DA CONTA DO USUÁRIO
+
+O cadastro deve solicitar:
+
+• Nome de exibição.
+• E-mail.
+• Senha.
+• Confirmação da senha.
+
+Nesta versão:
+
+• Não existe confirmação de e-mail.
+• Não existe recuperação ou redefinição de senha.
+• Não existe KYC.
+
+Não solicitar documentos, selfie ou verificação de identidade.
+
+Utilize o e-mail como identificador de login, validando formato e unicidade, sem apresentá-lo como verificado.
+
+Antes de concluir o cadastro, mostrar:
+
+“A BETTEX não oferece recuperação de senha nesta versão. Se você esquecer sua senha, não será possível redefini-la ou recuperar o acesso à sua conta pelo aplicativo. Seu e-mail não será confirmado e não poderá ser utilizado para recuperar sua senha. Guarde sua senha e exporte um backup seguro das suas carteiras.”
+
+Exigir uma caixa de confirmação desmarcada por padrão:
+
+“Entendo que não existe recuperação de senha e que sou responsável por guardar minha senha e o backup das minhas carteiras.”
+
+Registrar a versão do aviso e a data do aceite.
+
+Não implementar “Esqueci minha senha”, recuperação pelo suporte ou qualquer mecanismo oculto de redefinição.
+
+4. CARTEIRAS E CONTAS NECESSÁRIAS
+
+Criar, no mínimo, duas carteiras distintas por usuário:
+
+• Carteira de Depósitos: recebe USDC ou o ativo de teste configurado e é utilizada para pagar compras.
+• Carteira BETTEX: exclusiva daquele usuário para receber tokens do projeto e distribuições de staking.
+
+Essas carteiras pertencem ao usuário. Não são a tesouraria da empresa nem contas compartilhadas.
+
+As duas finalidades precisam ter endereços e chaves distintos.
+
+Para cada rede adicional, provisionar as carteiras ou contas que forem efetivamente necessárias ao usuário, conforme a documentação e a arquitetura.
+
+Nas redes EVM, a mesma chave pode representar o mesmo endereço em redes diferentes. Defina e documente a política de reutilização ou separação de chaves. Mesmo quando um endereço for reutilizado, mantenha saldos, contratos, permissões e histórico separados por rede.
+
+Não confunda dois registros do mesmo endereço na mesma rede com duas carteiras distintas.
+
+Quando uma rede utilizar outro modelo de contas, implemente seu formato nativo conforme a documentação.
+
+Não crie automaticamente para cada usuário contas técnicas que sejam necessárias apenas ao sistema ou aos agentes. Contas de workers, implantação, distribuição e execução dos agentes devem ser provisionadas separadamente.
+
+Utilize um ID interno imutável para associar o usuário às carteiras.
+
+Modele a relação como um usuário com várias carteiras e várias associações de rede. Não limite o banco a apenas dois campos de endereço.
+
+5. SEGURANÇA DAS CHAVES
+
+Utilize bibliotecas consolidadas e aleatoriedade criptograficamente segura.
+
+Nunca derive chaves de nome, e-mail, senha ou ID do usuário.
+
+Para carteiras pessoais, prefira geração, descriptografia e assinatura no cliente, com persistência do material criptografado necessário ao acesso em outros dispositivos.
+
+Não envie chaves privadas ou frases-semente em texto puro ao servidor. Não mantenha uma chave administrativa capaz de descriptografar as carteiras pessoais.
+
+Proteja o material com criptografia autenticada e derivação de chave apropriada a partir da senha. Utilize um mecanismo separado de hash para autenticação.
+
+Contas operacionais dos agentes e da infraestrutura podem exigir assinatura no servidor. Mantenha suas credenciais em secrets, separadas das carteiras pessoais, com permissões limitadas à função necessária.
+
+Nunca exponha senhas, chaves privadas ou frases-semente em logs, analytics, mensagens de erro, repositório ou respostas comuns da API.
+
+Se a arquitetura existente não permitir cumprir esse modelo, registre o impedimento antes de substituir o modelo de controle das chaves.
+
+6. CONSISTÊNCIA DO CADASTRO
+
+O cadastro deve provisionar a conta e as carteiras pessoais obrigatórias de forma idempotente.
+
+Falhas e novas tentativas não podem duplicar carteiras nem substituir endereços já atribuídos.
+
+Diferencie:
+
+• Carteira gerada.
+• Conta registrada na rede, quando esse registro for necessário.
+• Carteira abastecida.
+• Integração operacional.
+
+Não dependa de saldo no faucet para criar uma carteira EVM.
+
+Integrações opcionais ou indisponíveis devem aparecer como pendentes sem impedir o uso das funcionalidades já prontas.
+
+7. PERFIL, SEGURANÇA E EXPORTAÇÃO
+
+No painel, permitir:
+
+• Alterar nome de exibição.
+• Alterar e-mail mediante confirmação da senha atual, sem verificação por mensagem nesta versão.
+• Alterar senha mediante confirmação da senha atual.
+• Visualizar as carteiras, suas finalidades e redes.
+• Copiar endereços de recebimento.
+• Visualizar e exportar chaves públicas.
+• Exportar chaves privadas e backups criptografados das carteiras pessoais.
+
+Distinguir endereço de recebimento de chave pública.
+
+Exigir a senha atual para revelar ou exportar material privado. Fazer a descriptografia no cliente e manter esse material oculto por padrão.
+
+Mostrar antes da exportação:
+
+“Quem tiver sua chave privada ou frase-semente poderá controlar os ativos correspondentes. Nunca compartilhe essas informações. A BETTEX e seu suporte nunca solicitarão suas chaves privadas.”
+
+Alterar nome, e-mail ou senha não pode mudar as carteiras, os endereços ou a propriedade dos ativos.
+
+Na alteração de senha, recriptografar o material preservando as mesmas chaves, com tratamento consistente de falhas.
+
+Repetir na área de Segurança que não existe recuperação de senha.
+
+Esclarecer que o backup de uma carteira pode permitir acesso externo aos ativos controlados por suas chaves, mas não recupera automaticamente a conta do aplicativo nem todas as funcionalidades de contratos específicos.
+
+8. ATIVOS E ABASTECIMENTO DE TESTE
+
+Para cada rede, identificar o ativo nativo utilizado para taxas e os tokens disponíveis para testes.
+
+Na Arbitrum Sepolia, utilizar USDC de teste da Circle, verificando seu contrato oficial.
+
+Nas demais redes, utilizar USDC de teste oficial somente quando houver suporte documentado. Caso contrário, implantar um MockUSDC claramente identificado como token de teste, sem vínculo com a Circle ou promessa de resgate.
+
+Implantar BETTEX de teste nas redes onde a compra, transferência ou staking do token precisam ser testados. Não replicar o token em todas as redes sem uma função definida.
+
+Prepare carteiras operacionais de distribuição e implantação, separadas das carteiras pessoais.
+
+Abasteça-as com faucets gratuitos quando possível.
+
+Automatize somente por mecanismos oficialmente permitidos. Não contorne CAPTCHA, limites ou requisitos de acesso.
+
+Se houver uma etapa manual inevitável, deixe o restante preparado e apresente o link oficial, a rede, o endereço a abastecer e o ativo necessário.
+
+Não afirme que uma conta foi registrada, abastecida ou que um contrato foi implantado sem verificar o resultado.
+
+9. BOTÃO “RECEBER SALDO DE TESTE”
+
+Adicione um botão que distribua os ativos necessários ao usuário na rede selecionada:
+
+• USDC de teste ou MockUSDC.
+• Ativo nativo de teste para pagar taxas nas carteiras que enviarão transações.
+
+Configure quantidades e limites por rede.
+
+Implemente controles contra abuso além de limites por usuário, pois o cadastro não verifica identidade ou propriedade do e-mail.
+
+A distribuição deve ser idempotente e mostrar os estados solicitado, em processamento, confirmado ou falhou.
+
+Não lançar um recebimento como confirmado antes da confirmação on-chain.
+
+Se faltar saldo ou o faucet estiver indisponível, informe o motivo e permita tentar novamente sem duplicar pagamentos.
+
+10. DEPÓSITOS E COMPRA DE TOKENS
+
+Permita depósitos externos de ativos de teste, além do abastecimento pelo aplicativo.
+
+Mostre endereço, QR code, rede e contrato do token.
+
+Detecte depósitos pela blockchain. Valide rede, contrato, destinatário, valor e confirmação.
+
+Identifique transferências por transação e índice do evento para evitar duplicação.
+
+Implemente a compra:
+
+• Usuário escolhe a quantidade.
+• Aplicativo mostra preço de teste, valor total e estimativa de gas.
+• Usuário confirma.
+• Carteira de depósitos autoriza o gasto necessário, quando aplicável.
+• Contrato de venda recebe o pagamento.
+• Token BETTEX de teste é entregue à carteira BETTEX do usuário.
+
+Na compra dentro da mesma rede, utilize uma operação atômica para pagamento e entrega, com destinatário distinto da carteira pagadora.
+
+Não utilizar aprovação ilimitada por padrão.
+
+Utilizar aritmética inteira e os decimais corretos dos contratos.
+
+Não presumir que um saldo em uma rede possa comprar tokens em outra. Compras entre redes exigem uma integração específica. Se ela não existir, restringir a compra à mesma rede e explicar isso na interface.
+
+11. STAKING E RENDIMENTOS SIMULADOS
+
+Implemente aprovação, entrada, consulta e saída do staking conforme as regras existentes.
+
+Se as regras finais ainda não estiverem definidas, utilizar parâmetros configuráveis exclusivos do ambiente de teste, identificados como simulação.
+
+Abasteça o contrato de distribuição com ativos de teste e realize distribuições controladas para validar o fluxo.
+
+Não apresente esses pagamentos como lucro real dos agentes ou garantia de rendimento.
+
+Direcione os pagamentos à carteira BETTEX do usuário na rede correta.
+
+Mostre separadamente:
+
+• Saldo disponível.
+• Tokens em staking.
+• Rendimentos simulados apurados.
+• Valores disponíveis para recebimento.
+• Distribuições efetivamente pagas.
+
+Não executar compras, aprovações, staking ou transferências automaticamente no cadastro.
+
+12. CONTAS E INTEGRAÇÕES DOS AGENTES
+
+Para cada agente existente no projeto, determine pela documentação quais contas, carteiras, registros de rede e credenciais são necessários.
+
+Provisione contas técnicas de teste quando permitido e necessário.
+
+Diferencie utilização de uma API de inferência de participação como worker ou validador de uma rede. Não crie contas por usuário para uma integração que só exige uma credencial do sistema.
+
+Para serviços de negociação ou mercados externos, confirme a existência de sandbox ou testnet. Quando não houver, implemente um adaptador de simulação explicitamente identificado.
+
+Não execute operações financeiras reais para testar um agente.
+
+Se uma conta externa exigir cadastro manual, consentimento ou verificação de identidade, registre a dependência. A ausência de KYC no aplicativo não elimina requisitos de serviços externos.
+
+13. AMBIENTE LOCAL SEM DEPENDÊNCIA DE FAUCETS
+
+Prepare uma blockchain EVM local com contas abastecidas de ETH fictício, MockUSDC, BETTEX e contratos de venda e staking.
+
+Ela deve permitir testar o fluxo principal sem dinheiro real e sem depender de faucets.
+
+Para integrações não EVM, utilize ferramentas locais ou mocks compatíveis com a documentação disponível, identificando as limitações.
+
+Mantenha dados locais separados das testnets públicas.
+
+Não apresente uma simulação local como integração verificada com uma rede pública.
+
+14. PAINEL ADMINISTRATIVO E VERIFICAÇÃO
+
+Crie uma área administrativa protegida para consultar:
+
+• Redes e integrações habilitadas.
+• Contratos e endpoints.
+• Contas técnicas e suas funções.
+• Saldos das distribuidoras.
+• Disponibilidade dos ativos de teste.
+• Transações pendentes ou com falha.
+• Dependências manuais.
+• Parâmetros e limites de teste.
+
+Não exponha material privado nesse painel.
+
+Verifique os fluxos essenciais: cadastro, carteiras distintas, alterações de perfil, alteração de senha, exportação, abastecimento, depósitos, compra, recebimento, staking, distribuições e prevenção de duplicações.
+
+Verifique também a separação dos saldos por rede, a proteção dos segredos e o bloqueio de operações em produção.
+
+Ao terminar, entregue uma tabela por integração indicando o que está configurado, provisionado, abastecido, verificado ou pendente.
+
+Inclua endereços públicos dos contratos, redes utilizadas e transações que comprovem os testes realizados.
+
+Forneça instruções simples para eu criar uma conta, receber saldo fictício e testar o fluxo completo.
+
+Não declare o ambiente multirrede concluído se alguma integração obrigatória estiver apenas simulada ou pendente. Informe precisamente o que funciona e o que falta.

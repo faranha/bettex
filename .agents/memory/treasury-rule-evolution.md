@@ -13,4 +13,4 @@ O criador pediu “regras claras multisig pra movimentacoes seguindo liberdade o
 
 **Why:** O controle de custódia deve coexistir com liberdade operacional, não transformar cada investimento ou pagamento já autorizado em uma nova aprovação humana.
 
-**How to apply:** Separar aprovação da política, custódia e execução por mandato limitado. Não apresentar uma regra administrativa como bloqueio técnico já implementado; distinguir o multisig institucional da autocustódia pessoal.
+**How to apply:** Separar aprovação da política, custódia e execução por mandato limitado. Afirmar bloqueios técnicos apenas no ambiente efetivamente comprovado; prova de controle em EVM local não equivale a multisig institucional, testnet pública ou custódia de produção.

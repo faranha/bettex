@@ -1,0 +1,210 @@
+O foco é validar o primeiro fluxo funcional dentro da arquitetura existente: cadastro, acesso, banco de dados, carteiras, conexões com testnets e depósitos. Vou tratar “STT” como o ativo de teste que o Replit deve identificar no projeto, sem presumir que seja USDC ou criar outro token.
+
+Implemente e verifique o primeiro fluxo funcional da BETTEX: criação e acesso à conta, persistência no banco, provisionamento de carteiras, conexões com testnets e depósitos de ativos de teste.
+
+RESPEITE A ARQUITETURA EXISTENTE
+
+Antes de alterar código, leia as decisões arquiteturais, regras canônicas, documentação e implementação existentes.
+
+“Primeiro módulo” significa aqui a primeira capacidade funcional que estamos entregando. Não é uma instrução para inventar um novo módulo arquitetural.
+
+Não crie uma arquitetura paralela, outro sistema de autenticação, banco independente, serviço isolado ou nova estrutura de pastas sem necessidade demonstrada.
+
+Encaixe as responsabilidades nos componentes já previstos. Preserve a arquitetura orientada a eventos, o processamento determinístico, a idempotência e os registros de auditoria conforme as regras do projeto.
+
+Se encontrar uma decisão ausente, documente a escolha mínima necessária. Se encontrar uma contradição relevante, identifique-a sem redesenhar silenciosamente o sistema.
+
+ESCOPO DESTA ENTREGA
+
+Deixar pronto e verificado:
+
+• Cadastro.
+• Login, logout e persistência segura da sessão.
+• Perfil e alteração de senha.
+• Estrutura persistente do banco e suas migrações.
+• Associação entre usuários, carteiras e redes.
+• Conexões com as testnets necessárias.
+• Reserva operacional de ativos de teste.
+• Distribuição de saldo de teste.
+• Depósitos e consulta de saldos.
+• Histórico e auditoria.
+
+Preparar os pontos de integração para compra de tokens, staking e agentes, respeitando a arquitetura. Não implementar esses serviços completos nesta entrega, salvo se já forem dependências necessárias do fluxo existente.
+
+1. IDENTIFICAR REDES E ATIVOS
+
+Consulte a documentação oficial atual e as referências do projeto para configurar:
+
+• Arbitrum Sepolia.
+• Robinhood Chain Testnet.
+• A testnet da plataforma chamada “Lora” no projeto.
+• Outras redes obrigatórias para este fluxo.
+
+Identifique pela documentação se “Lora” significa Allora, Aurora ou outra plataforma. Não confunda essas tecnologias. Se não houver evidência suficiente, deixe essa integração explicitamente pendente e continue as demais.
+
+Identifique também o ativo referido como “STT”. Confira se é um token já definido no projeto ou uma referência ao USDC/ativo de teste.
+
+Não invente um token chamado STT apenas por causa desta instrução. Se o significado não puder ser confirmado, mantenha o ativo configurável e registre a dúvida.
+
+Para cada rede, configure ambiente, identificador de rede, endpoints, explorador, ativo de gas, tokens aceitos e contratos verificados.
+
+Diferencie uma conexão RPC funcional de uma integração capaz de assinar, transmitir e confirmar transações.
+
+2. CADASTRO E ACESSO
+
+Implemente nome, e-mail, senha e confirmação de senha.
+
+Nesta versão não há confirmação de e-mail, recuperação de senha ou KYC.
+
+Exija aceite explícito do aviso:
+
+“A BETTEX não oferece recuperação de senha nesta versão. Se você esquecer sua senha, não será possível redefini-la ou recuperar o acesso à sua conta pelo aplicativo. Seu e-mail não será confirmado e não poderá ser utilizado para recuperar sua senha. Guarde sua senha e exporte um backup seguro das suas carteiras.”
+
+Registre versão e data do aceite.
+
+Implemente autenticação com hash de senha adequado, proteção contra tentativas abusivas, expiração de sessão e logout que invalide a sessão correspondente.
+
+Não registrar senhas ou segredos nos logs.
+
+Permita alterar nome, e-mail e senha. Alterações sensíveis exigem a senha atual. A alteração de e-mail deve atualizar o login sem alterar o ID do usuário nem suas carteiras.
+
+3. ESTRUTURA DO BANCO
+
+Utilize o banco e os padrões de persistência já adotados pelo sistema.
+
+Crie ou ajuste migrações para representar estas responsabilidades dentro do modelo existente:
+
+• Usuário com ID imutável, perfil, identificador de login e estado do cadastro.
+• Credenciais e sessões.
+• Aceites dos avisos.
+• Redes e ambientes.
+• Carteiras pessoais e suas finalidades.
+• Associação das carteiras às redes.
+• Material criptografado necessário ao acesso às carteiras.
+• Ativos e contratos por rede.
+• Contas operacionais de distribuição.
+• Solicitações de abastecimento.
+• Transações e transferências observadas.
+• Depósitos, confirmações e eventuais reversões.
+• Histórico de auditoria.
+
+Não use apenas dois campos de endereço na tabela de usuários. O modelo deve permitir várias carteiras e redes.
+
+Defina chaves estrangeiras, restrições de unicidade e índices necessários. Impeça carteiras órfãs, vínculos incorretos e processamento duplicado.
+
+A identificação única de uma transferência deve incluir rede, transação e índice do evento, ou equivalente da rede utilizada.
+
+Use representação exata dos valores financeiros, com unidades inteiras e decimais definidos por ativo. Não utilize ponto flutuante.
+
+Saldos persistidos devem ser projeções reconciliáveis com a blockchain. Não trate um saldo arbitrário no banco como prova de depósito.
+
+4. CARTEIRAS E VÍNCULO COM O USUÁRIO
+
+Cada usuário deve receber, no mínimo:
+
+• Carteira de Depósitos.
+• Carteira BETTEX, destinada aos tokens do projeto e futuros recebimentos do staking.
+
+Essas duas carteiras precisam ter endereços e chaves distintos.
+
+Provisione outras contas pessoais apenas quando a arquitetura e a documentação exigirem. Contas de agentes, workers e infraestrutura devem permanecer separadas.
+
+Documente a política de reutilização de endereços entre redes EVM. Mesmo com endereço igual, saldos e histórico devem permanecer separados por rede.
+
+Utilize geração criptograficamente segura. Nunca derive chaves de senha, nome, e-mail ou ID.
+
+Preserve o modelo de controle das chaves definido no projeto. Para as carteiras pessoais, mantenha a geração, descriptografia e assinatura no cliente e armazene apenas material criptografado quando necessário.
+
+Não envie chaves privadas em texto puro ao servidor.
+
+O usuário deve conseguir visualizar endereços e chaves públicas e exportar chaves privadas ou backups compatíveis, mediante senha atual.
+
+Alterar a senha deve preservar as mesmas chaves e endereços e recriptografar o material de forma consistente.
+
+5. PROVISIONAMENTO CONSISTENTE
+
+Implemente estados claros para cadastro e provisionamento.
+
+Se a criação de uma carteira ou associação falhar, permita retomar sem duplicar o usuário ou gerar novas carteiras no lugar das já atribuídas.
+
+Siga o mecanismo existente de eventos e persistência confiável. Garanta que uma alteração no banco não deixe de produzir o evento necessário nem produza efeitos financeiros duplicados.
+
+Uma carteira EVM pode ser gerada sem saldo e sem transação na blockchain. Diferencie geração, registro on-chain quando necessário, abastecimento e disponibilidade operacional.
+
+Não bloqueie o cadastro por indisponibilidade de faucet.
+
+6. RESERVA DE ATIVOS DE TESTE
+
+Prepare contas operacionais separadas para manter e distribuir:
+
+• O ativo de teste identificado no projeto.
+• O ativo nativo necessário ao gas em cada rede.
+
+Obtenha ativos gratuitamente pelos faucets oficiais disponíveis. Não compre criptomoedas, não use mainnet e não contrate serviços pagos.
+
+Se não houver versão oficial do ativo numa rede, um token mock pode ser utilizado, desde que identificado claramente e separado do ativo oficial.
+
+Automatize faucets somente por meios permitidos. Se houver CAPTCHA ou etapa manual, prepare tudo e apresente a ação exata necessária.
+
+Mostre saldo disponível, distribuição pendente e condição de reserva insuficiente por rede e ativo.
+
+Não confunda reserva operacional de testes com tesouraria de produção ou fundos dos usuários.
+
+7. ABASTECIMENTO E DEPÓSITOS
+
+Adicione “Receber saldo de teste”.
+
+Distribua o ativo de teste à carteira de depósitos e gas às carteiras que precisarão transmitir operações.
+
+Implemente limites e proteção contra abuso, considerando que não há e-mail verificado ou KYC.
+
+Registre solicitação, envio, hash, confirmação ou falha. Novas tentativas não podem gerar pagamentos duplicados.
+
+Permita também depósitos externos na rede de teste.
+
+Mostre endereço, QR code, rede e ativo aceito.
+
+Observe a blockchain e valide contrato, destinatário, valor e confirmação. Não aceite um hash informado pelo usuário como prova suficiente.
+
+Trate atrasos, falhas de RPC, reinício do processamento e reorganizações da blockchain. Reconcilie os registros sem duplicar depósitos.
+
+No painel, diferencie saldo confirmado e depósitos pendentes.
+
+8. VERIFICAÇÃO REAL
+
+Execute testes que comprovem:
+
+• Cadastro persiste corretamente no banco.
+• Login funciona com as credenciais criadas.
+• Credenciais inválidas são recusadas.
+• Logout invalida a sessão.
+• Usuários não conseguem consultar dados ou exportar chaves de outros usuários.
+• As duas carteiras são distintas e pertencem ao usuário correto.
+• Alterações de perfil preservam os vínculos.
+• Alteração de senha preserva as carteiras e o acesso ao material criptografado.
+• Retentativas de provisionamento não criam duplicações.
+• Conexões retornam a rede esperada.
+• Abastecimento e depósitos são confirmados e registrados uma única vez.
+• Reinícios preservam dados e permitem retomar o processamento.
+• Nenhum segredo aparece em logs ou respostas da API.
+
+Nas testnets disponíveis e abastecidas, execute uma transferência real de teste e verifique sua confirmação no explorador.
+
+Quando isso não for possível, execute o cenário local e identifique explicitamente que a verificação pública está pendente. Não apresente mocks como conexões reais.
+
+9. ENTREGA
+
+Entregue o fluxo funcionando dentro da arquitetura existente.
+
+Apresente:
+
+• Componentes existentes alterados e respectivas responsabilidades.
+• Migrações e relações do banco.
+• Redes e ativos configurados.
+• Contas operacionais e situação da reserva de testes.
+• Resultado das verificações.
+• Evidências das transações públicas de teste.
+• Pendências objetivas e ações manuais inevitáveis.
+• Passos para criar uma conta, entrar, receber saldo e conferir um depósito.
+
+Mantenha interfaces e eventos preparados para ampliar posteriormente compra de tokens, staking e serviços dos agentes, sem redesenhar a base de usuários, carteiras e redes.

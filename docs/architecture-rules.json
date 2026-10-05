@@ -7,7 +7,8 @@
     "risk": ["ledger", "wallets"],
     "execution": ["risk", "ledger", "wallets"],
     "reconciliation": ["execution", "ledger", "wallets"],
-    "audit": []
+    "audit": [],
+    "simulation": ["agents", "risk", "execution", "ledger", "reconciliation"]
   },
   "layers": {
     "domain": ["domain"],
@@ -17,6 +18,7 @@
     "public": ["domain", "application"]
   },
   "purePackages": ["@workspace/contracts", "decimal.js", "big.js"],
+  "typeContracts": ["artifacts/api-server/src/modules/risk/domain/policy-model.ts"],
   "legacyFiles": [
     "artifacts/api-server/src/lib/account-identity.ts",
     "artifacts/api-server/src/lib/demo-store.ts",

@@ -1,0 +1,175 @@
+Sim: a emissão inicial deve separar as alocações, e somente a parcela pública liberada pelo vesting deve ficar disponível para compra. Fundador e investidores precisam de destinos próprios, sujeitos às respectivas regras de bloqueio.
+
+Há uma distinção importante: se o pool começa apenas com BTX, sem USDC, a primeira operação é uma venda de BTX por USDC. Um AMM convencional precisa de reservas dos dois ativos. Portanto, devemos programar esse pool interno conforme o mecanismo definido na documentação, sem presumir que será um AMM.
+
+Também precisamos separar emissão de liberação: podemos emitir toda a oferta inicialmente e manter os tokens bloqueados em contratos de vesting. As liberações tornam parcelas disponíveis; não exigem emitir novos tokens a cada período. O documento que conferimos estabelece horizonte de 36 meses, mas não define a cadência. Não podemos presumir que a primeira parcela seja automaticamente 1/36.
+
+Cole este prompt no Replit:
+
+Implemente a emissão inicial, a alocação, o vesting e o pool interno de compra de BTX da BETTEX no ambiente de testes.
+
+O foco desta entrega é emissão, bloqueio, liberação e compra. Prepare a integração futura com staking, mas não implemente ainda sua operação completa.
+
+1. PESQUISAR ANTES DE IMPLEMENTAR
+
+Pesquise e leia a documentação interna existente, incluindo tokenomia, emissão, vesting, venda pública, swapping, tesouraria e regras arquiteturais.
+
+Confirme também o nome e símbolo oficiais do token. Este prompt utiliza BTX como referência, mas a implementação deve seguir a definição vigente no projeto.
+
+Identifique as fontes de cada requisito e diferencie decisões definitivas de parâmetros temporários de teste.
+
+Confira as alocações documentadas de 65% público, 20% fundador e 15% investidores, sobre oferta total de 1 bilhão. Se houver uma revisão posterior vigente, utilize-a e registre a fonte.
+
+A documentação conhecida estabelece horizonte de 36 meses, mas não define necessariamente início, cliff, periodicidade ou tamanho das parcelas. Pesquise essas definições antes de programar.
+
+Não interprete “36 meses” automaticamente como 36 parcelas iguais. Se o calendário não estiver definido, implemente o mecanismo configurável e utilize um calendário exclusivamente de teste, explicitamente identificado. Não o apresente como regra final.
+
+2. RESPEITAR A ARQUITETURA
+
+Integre a implementação aos contratos, componentes, banco e eventos existentes.
+
+Não crie uma arquitetura paralela nem substitua silenciosamente decisões anteriores.
+
+Utilize a rede de testes definida pela documentação e configuração vigente. A proposta atual é Arbitrum Sepolia.
+
+3. EMISSÃO E ALOCAÇÃO INICIAL
+
+Separe emissão, alocação, liberação e venda como operações distintas.
+
+Se a documentação confirmar oferta integralmente emitida no início:
+
+• Emitir a oferta total uma única vez.
+• Destinar a alocação pública ao mecanismo de custódia e vesting público.
+• Destinar a alocação do fundador ao seu mecanismo de vesting.
+• Destinar a alocação dos investidores ao seu mecanismo de vesting.
+• Não permitir emissão adicional para abastecer compras.
+
+As alocações não públicas devem ficar separadas do estoque público. Podem utilizar contratos de vesting distintos ou outro mecanismo equivalente previsto na arquitetura; não basta separar carteiras se os titulares puderem movimentar livremente tokens que deveriam estar bloqueados.
+
+Garanta que a soma das alocações corresponda exatamente à oferta emitida.
+
+4. VESTING E ESTOQUE DISPONÍVEL
+
+Implemente o calendário encontrado na documentação.
+
+Os tokens públicos ainda bloqueados não podem ser vendidos, retirados administrativamente ou utilizados como liquidez disponível.
+
+Somente parcelas efetivamente liberadas podem abastecer o estoque vendável do pool interno.
+
+O pool pode receber parcelas liberadas de um contrato de vesting separado ou manter o estoque com bloqueio interno verificável, conforme a arquitetura existente.
+
+Em qualquer desenho, diferencie:
+
+• Alocação pública total.
+• Quantidade bloqueada.
+• Quantidade liberada.
+• Quantidade vendida.
+• Estoque liberado ainda disponível.
+
+Não conte uma parcela duas vezes ao executar liberações repetidas.
+
+Não implemente um segundo vesting para compradores sem encontrar essa regra na documentação. Vesting da alocação pública e bloqueio dos tokens comprados são decisões diferentes.
+
+5. POOL INTERNO DE COMPRA / SWAPPING
+
+O pool é destinado ao ambiente interno da BETTEX e começa com BTX liberado, sem aporte inicial de USDC.
+
+Não implementar um AMM de duas reservas como se já existisse liquidez em USDC.
+
+Pesquise qual mecanismo de preço a documentação prevê: preço definido, curva de compra ou outro modelo. Não escolha uma curva econômica arbitrariamente.
+
+Se não houver regra definitiva, utilize preço configurável exclusivamente para teste.
+
+O fluxo inicial deve permitir:
+
+• Usuário paga USDC de teste pela carteira de depósitos.
+• Pool entrega BTX liberado à carteira BTX do usuário.
+• Pagamento segue a destinação documentada.
+• Falta de estoque ou qualquer falha reverte a compra inteira.
+
+Compra e entrega devem ocorrer atomicamente na mesma rede.
+
+Não habilite automaticamente venda de BTX de volta por USDC. Isso exigiria regras de preço, reserva, liquidez e destinação do capital que precisam estar documentadas.
+
+Se 100% do principal da venda deve ir à tesouraria, encaminhe-o dessa forma. Não retenha esse mesmo USDC como reserva de recompra nem o conte em dois destinos simultaneamente.
+
+6. DEFINIR O SIGNIFICADO DE “FECHADO”
+
+Implemente o acesso conforme as regras documentadas.
+
+Uma interface exclusiva do aplicativo não torna um contrato público inacessível por outras interfaces.
+
+Se o pool deve aceitar apenas usuários autorizados da BETTEX, aplique autorização verificável no contrato, utilizando o mecanismo compatível com a arquitetura, como permissões ou autorizações assinadas com proteção contra reutilização.
+
+Vincule pagador e destinatário autorizado corretamente. Não coloque um segredo compartilhado no navegador.
+
+Essa autorização não deve ser apresentada como KYC.
+
+7. PERMISSÕES E SEGURANÇA
+
+Defina explicitamente quem pode:
+
+• Administrar o pool.
+• Pausar compras.
+• Alterar parâmetros de teste.
+• Executar liberações.
+• Alterar destinos, caso essa possibilidade seja autorizada.
+• Atualizar contratos, caso exista arquitetura de upgrade aprovada.
+
+Não permita que permissões administrativas comuns contornem o vesting.
+
+Documente qualquer poder de upgrade que possa alterar essas garantias.
+
+Utilize bibliotecas consolidadas, operações seguras com ERC-20, valores inteiros e tratamento correto dos decimais.
+
+Proteja as chaves operacionais e mantenha-as separadas das carteiras pessoais.
+
+8. BANCO, EVENTOS E PAINEL
+
+Integre emissão, alocações, vesting, liberações e compras ao banco e ao processamento de eventos existentes.
+
+Registre rede, contratos, versão, transações e eventos de forma idempotente.
+
+Mostre no painel:
+
+• Oferta total.
+• Alocações.
+• Tokens bloqueados e liberados.
+• Estoque público disponível.
+• Próxima liberação, quando definida.
+• Preço e condições de teste.
+• Compras confirmadas.
+• USDC encaminhado à tesouraria.
+
+Confirme esses dados pela blockchain. Não apresente projeções do banco como evidência suficiente.
+
+9. FUTURA INTEGRAÇÃO COM STAKING
+
+Prepare os pontos de integração com o futuro contrato de staking, preservando a distinção entre tokens bloqueados, liberados e elegíveis.
+
+Não conecte as carteiras de forma que o sistema possa movimentar seus tokens sem autorização.
+
+Não implemente recompensas ou elegibilidade não definidas nesta entrega.
+
+10. TESTAR E ENTREGAR
+
+Verifique:
+
+• Emissão única e alocações corretas.
+• Bloqueio antes das datas de liberação.
+• Limites exatos nas datas e quantidades liberadas.
+• Ausência de duplicação nas liberações.
+• Compra limitada ao estoque liberado.
+• Pagamento e entrega atômicos.
+• Destinação correta do USDC.
+• Restrição de acesso ao pool.
+• Ausência de recompra ou resgate não previstos.
+• Impossibilidade de utilizar alocações do fundador e investidores na venda pública.
+
+Use controle de tempo nos testes locais para verificar o calendário, sem esperar meses reais.
+
+Depois, execute uma compra na testnet com ativos gratuitos, quando houver abastecimento disponível.
+
+Entregue os contratos, suas fontes documentais, endereços públicos, evidências dos testes e as decisões ainda pendentes.
+
+Não declare o vesting definitivo implementado se estiver utilizando apenas um calendário de simulação.

@@ -5,8 +5,12 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { DemoProfileProvider } from './demoProfileProvider';
 
 export interface DemoProfile {
+  authenticated?: boolean;
+  provider?: DemoProfileProvider;
+  canViewTreasuryHistory?: boolean;
   name: string;
   email: string;
   memberSince: string;

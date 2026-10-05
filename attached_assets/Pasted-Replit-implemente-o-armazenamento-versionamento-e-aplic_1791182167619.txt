@@ -1,0 +1,158 @@
+Replit, implemente o armazenamento, versionamento e aplicação das políticas de trading, análise de alpha e alocação da BETTEX.
+
+As políticas não podem existir apenas nos prompts dos agentes nem estar duplicadas em diferentes componentes. Precisamos de uma fonte canônica, versões rastreáveis e aplicação consistente do especialista até a execução.
+
+1. RESPEITE A ARQUITETURA EXISTENTE
+
+Leia primeiro a documentação, as decisões arquiteturais e o código atual.
+
+Identifique onde estas responsabilidades se encaixam. Reutilize banco, mecanismos de eventos, configuração e auditoria existentes. Não crie um serviço independente ou arquitetura paralela sem necessidade.
+
+2. DEFINA ONDE CADA INFORMAÇÃO FICA
+
+Adote a seguinte separação, compatibilizando-a com os padrões existentes:
+
+• Documentação versionada no Git: princípios, metodologia, responsabilidades e decisões arquiteturais.
+• Arquivos estruturados versionados no Git: definições executáveis das políticas e estratégias.
+• Banco de dados: versões publicadas, aprovações, ativações por ambiente e histórico de alterações.
+• Banco e armazenamento de arquivos quando necessário: evidências, oportunidades, decisões, ordens, posições e resultados.
+
+Defina o fluxo de publicação: uma definição revisada no Git é validada e publicada como versão imutável no banco. A operação utiliza explicitamente uma versão publicada.
+
+Não mantenha duas fontes editáveis concorrentes. Mudanças de parâmetros que alterem o comportamento devem gerar uma nova versão ou revisão rastreável.
+
+3. HIERARQUIA DAS POLÍTICAS
+
+Estruture três camadas:
+
+A. Política global da Tesouraria e Governança:
+Reservas, exposição, permissões, capital disponível, obrigações e controles de suspensão.
+
+B. Política da estratégia:
+Mercados elegíveis, metodologia de análise, critérios de entrada, dimensionamento, manutenção e saída.
+
+C. Configuração do especialista:
+Ativo, fontes, horizonte e parâmetros específicos de BTC, ETH ou SOL.
+
+Camadas inferiores podem restringir controles superiores, mas não afrouxá-los.
+
+Implemente regras explícitas de composição por campo. Não use uma simples sobrescrita de configurações que permita remover limites superiores.
+
+Uma oportunidade atraente não autoriza o BETTEX a contornar a política da tesouraria.
+
+4. CONTEÚDO DAS POLÍTICAS
+
+Pesquise primeiro as regras internas já definidas.
+
+Represente, conforme aplicável:
+
+• Mercados, instrumentos e ativos permitidos.
+• Fontes autorizadas e validade dos dados.
+• Metodologia de previsão e avaliação de incerteza.
+• Critérios de captura e qualificação de alpha.
+• Custos, spread, slippage e liquidez.
+• Limiares de entrada e tamanho da posição.
+• Limites de exposição e correlação.
+• Condições de manutenção, redução e saída.
+• Regras de suspensão.
+• Tratamento de posições abertas após mudanças de política.
+
+Não armazene código arbitrário executável como configuração. Utilize estruturas tipadas, validadas por schema, e implementações identificadas por versão.
+
+Parâmetros ainda indefinidos podem receber valores configuráveis exclusivamente para simulação, com justificativa registrada. Não os apresente como política definitiva.
+
+5. REGISTRO E CICLO DE VIDA
+
+Cada versão deve conter:
+
+• Identificador e versão.
+• Tipo, escopo e ambiente.
+• Versão do schema.
+• Conteúdo validado e hash.
+• Referência ao commit de origem.
+• Autor e justificativa.
+• Aprovação exigida e responsável.
+• Estado e datas de publicação e vigência.
+• Versão anterior e relação de substituição.
+
+Diferencie rascunho, validada, aprovada, ativa, substituída e revogada conforme o fluxo existente.
+
+Versões publicadas devem ser imutáveis. Alterações geram novas versões.
+
+Ativação e rollback devem ser autorizados, atômicos e auditados. Rollback muda a configuração vigente; não apaga decisões nem operações anteriores.
+
+6. RESOLUÇÃO E APLICAÇÃO CENTRALIZADAS
+
+Implemente um resolvedor no componente adequado da arquitetura.
+
+Ele deve produzir a política efetiva a partir de:
+
+Tesouraria + estratégia + especialista + ambiente.
+
+Retorne as versões utilizadas, a configuração resultante e seu identificador verificável.
+
+Especialistas, agentes de mercado e BETTEX devem utilizar esse mecanismo, sem copiar regras para implementações divergentes.
+
+Cada oportunidade preserva a política utilizada na análise. Antes de executar, valide também os controles vigentes e registre eventuais diferenças.
+
+Se a mudança invalidar a proposta, rejeite-a ou solicite nova análise.
+
+Na ausência de política válida, schema compatível ou configuração obrigatória, bloqueie novas alocações e registre o motivo. Preserve o acompanhamento das posições existentes.
+
+7. EVIDÊNCIAS E DECISÕES
+
+Para cada oportunidade e decisão, preserve:
+
+• Políticas, modelos e implementações utilizados.
+• Dados de origem, fontes e horários.
+• Evidências ou referências a snapshots imutáveis.
+• Cálculos, custos, incerteza e capital solicitado.
+• Controles aprovados ou reprovados.
+• Decisão, ator e justificativa.
+• Correlação com reserva, ordem, posição e resultado.
+
+Um link para uma API cujo conteúdo muda não substitui o registro da informação efetivamente utilizada.
+
+Use armazenamento de arquivos para evidências volumosas quando necessário, mantendo no banco referência, hash e metadados.
+
+Diferencie justificativa em linguagem natural de resultado determinístico dos controles. Uma explicação da IA não substitui a validação.
+
+8. POSIÇÕES ABERTAS E MUDANÇAS
+
+Cada posição mantém referência à estratégia original e ao plano de saída.
+
+Defina explicitamente como novas políticas afetam posições abertas. Não substitua silenciosamente seus parâmetros históricos.
+
+Controles emergenciais podem bloquear novas entradas ou exigir avaliação de redução, conforme as regras aprovadas.
+
+Registre toda reavaliação, alteração autorizada e ação resultante.
+
+9. PERMISSÕES E INTERFACE
+
+Separe leitura, proposta de alteração, aprovação, ativação e revogação.
+
+Agentes podem consultar políticas e propor alterações quando permitido, mas não aprovar ou flexibilizar suas próprias restrições.
+
+Disponibilize uma interface administrativa protegida para consultar versões, diferenças, vigência, aprovações e operações afetadas.
+
+Não exponha segredos nas políticas ou evidências. Credenciais ficam no mecanismo de secrets.
+
+10. VERIFICAÇÃO E ENTREGA
+
+Verifique:
+
+• Publicação idempotente de versões.
+• Validação de schema e rejeição de configuração inválida.
+• Impossibilidade de especialista afrouxar limites superiores.
+• Imutabilidade das versões publicadas.
+• Ativação e rollback autorizados.
+• Revalidação de propostas após alteração de política.
+• Preservação das regras históricas de posições abertas.
+• Bloqueio de novas alocações quando faltar política válida.
+• Rastreabilidade da análise até o resultado.
+
+Implemente a documentação, os schemas, as migrações, o resolvedor e sua integração aos agentes e à tesouraria.
+
+Entregue um exemplo completo com BTC, ETH e SOL demonstrando quais políticas foram aplicadas, como uma oportunidade foi avaliada e por que a alocação foi aceita ou rejeitada.
+
+O resultado deve permitir reconstruir cada decisão financeira sem depender da memória de uma conversa ou de um prompt antigo.

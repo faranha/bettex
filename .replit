@@ -20,6 +20,10 @@ author = "agent"
 task = "workflow.run"
 args = "pitch-research"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "bettex-local-evm"
+
 [[workflows.workflow]]
 name = "pitch-research"
 author = "agent"
@@ -30,6 +34,17 @@ args = "pnpm --filter @workspace/bettex-site run check:pitch-research"
 
 [workflows.workflow.metadata]
 isValidation = true
+
+[[workflows.workflow]]
+name = "bettex-local-evm"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pnpm --filter @workspace/bettex-contracts run local:runtime"
 
 [agent]
 stack = "PNPM_WORKSPACE"

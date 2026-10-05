@@ -1,0 +1,161 @@
+Replit, integre a visão inicial do alpha da BETTEX a um ambiente de simulação funcional para validar o painel e os fluxos na prática.
+
+A definição do alpha ainda está em construção. Esta instrução fixa o escopo inicial dos agentes de trading e autoriza uma simulação identificada para testar a experiência. Não substitui nem elimina requisitos anteriores.
+
+1. AGENTES DE TRADING DO ALPHA
+
+A hierarquia inicial é:
+
+BETTEX, orquestrador → Agente de Mercado de Previsões → Especialistas BTC, ETH e SOL.
+
+Os especialistas analisam eventos relacionados a Bitcoin, Ethereum e Solana dentro do mercado de previsões. Isso não significa necessariamente comprar diretamente esses ativos.
+
+O agente de mercado qualifica as oportunidades. O BETTEX compara e decide a alocação. Tesouraria e Governança aplicam os controles antes da execução.
+
+Outros agentes de trading ficam desabilitados. Podem aparecer como “Em desenvolvimento”, sem atividade fictícia apresentada como real.
+
+2. VISÃO DO PRODUTO AINDA ABERTA
+
+Preserve os requisitos acumulados: painel ao vivo, fila de oportunidades, decisões, ordens, posições abertas, tesouraria, governança, carteiras, depósitos, compra de BETTEX, staking, distribuições, históricos e segurança.
+
+Não trate essa lista como uma especificação final ou exaustiva. Ainda definiremos outras funcionalidades e detalhes.
+
+Adapte o produto ao ramo ativo de mercado de previsões sem reduzir o restante do sistema.
+
+3. SIMULAÇÃO AUTORIZADA PARA VALIDAÇÃO
+
+Crie um modo explícito de simulação para validar interface, estados, histórico e comportamento.
+
+Essa autorização permite dados e operações simulados somente nesse modo. Não autoriza substituir silenciosamente integrações reais por mocks no funcionamento normal do alpha.
+
+Diferencie:
+
+• Simulação: eventos e operações gerados para validação.
+• Testnet: transações realmente executadas em uma blockchain de testes.
+• Dados reais com execução simulada: análise de mercado real sem enviar ordens.
+
+Mostre permanentemente o modo ativo. Não apresente resultados simulados como lucro realizado, transações públicas ou evidência de vantagem econômica.
+
+4. SIMULAÇÃO INTEGRADA À ARQUITETURA
+
+Leia a documentação e reutilize os modelos, eventos, controles e componentes existentes.
+
+Utilize adaptadores de simulação nas fronteiras de dados e execução, preservando o fluxo interno de análise, decisão, contabilidade e apresentação.
+
+Não monte apenas números estáticos nas telas nem crie uma aplicação paralela para demonstração.
+
+Identifique todos os registros simulados com ambiente e ID do cenário ou execução. Isole saldos, históricos, filas e reservas dos demais ambientes.
+
+A simulação nunca deve utilizar chaves ou enviar ordens e transferências reais.
+
+5. CENÁRIO INICIAL COMPLETO
+
+Prepare uma execução reproduzível contendo:
+
+• Conta e carteiras de teste.
+• Depósito simulado.
+• Compra simulada de BETTEX.
+• Encaminhamento do principal à tesouraria.
+• Participação em staking conforme o mecanismo definido.
+• Oportunidades de BTC, ETH e SOL.
+• Qualificação pelo agente de mercado.
+• Comparação e decisão do BETTEX.
+• Aprovação ou rejeição pelos controles da tesouraria.
+• Reserva de capital.
+• Ordens e preenchimentos.
+• Posições abertas.
+• Atualizações de preço e resultado não realizado.
+• Encerramento e resultado realizado.
+• Apuração e distribuição simuladas, quando permitidas pelas regras.
+
+Não invente regras econômicas definitivas para completar o cenário. Identifique parâmetros provisórios e solicite minha decisão quando faltar uma regra indispensável.
+
+6. PAINEL AO VIVO E POSIÇÕES
+
+Faça os eventos da simulação atualizarem o painel ao vivo.
+
+Mostre:
+
+• Especialista de origem e estado da análise.
+• Fila de oportunidades.
+• Motivos de seleção, rejeição ou expiração.
+• Capital disponível, reservado e comprometido.
+• Ordens pendentes e preenchimentos parciais.
+• Todas as posições abertas.
+• Expectativa original e expectativa atualizada.
+• Resultado não realizado e realizado, separadamente.
+• Plano de saída e estado da execução.
+• Efeitos na tesouraria.
+
+As posições devem permanecer abertas entre etapas. Não simule todas as operações como abertura e fechamento instantâneos.
+
+Preserve a estimativa original para comparar com o resultado posterior.
+
+7. HISTÓRICOS SIMULADOS E NOVAS OPERAÇÕES
+
+Gere um histórico inicial coerente a partir dos eventos do cenário, incluindo movimentações financeiras e atividades da conta.
+
+Depois permita executar novas ações simuladas pela interface. Elas devem passar pelos mesmos controles e acrescentar registros persistentes aos históricos.
+
+Não sobrescreva o histórico inicial a cada atualização.
+
+Inclua filtros, paginação e detalhes correlacionando oportunidade, decisão, ordem, posição, movimentação e distribuição.
+
+Os registros devem sobreviver ao reinício e continuar explicitamente identificados como simulados.
+
+8. CONTROLES DA SIMULAÇÃO
+
+Disponibilize controles protegidos para:
+
+• Iniciar um cenário.
+• Avançar etapas.
+• Pausar e retomar.
+• Gerar novas oportunidades.
+• Atualizar condições de mercado.
+• Simular falhas.
+• Reiniciar somente os dados daquela execução.
+
+Utilize relógio controlável e parâmetros reproduzíveis. Uma nova execução deve ter identificação própria.
+
+A limpeza da simulação não pode afetar usuários, registros ou saldos de outros ambientes.
+
+9. CENÁRIOS DE FALHA
+
+Inclua casos de:
+
+• Saldo insuficiente.
+• Proposta vencida ou duplicada.
+• Ausência de oportunidade adequada.
+• Rejeição por reservas ou exposição.
+• Mudança de preço antes da execução.
+• Preenchimento parcial.
+• Saída sem liquidez.
+• Falha de integração.
+• Pagamento pendente ou com falha.
+• Reinício durante o processamento.
+
+Verifique mensagens, estados, retomada e prevenção de duplicações.
+
+10. DOCUMENTAÇÃO E COLABORAÇÃO
+
+Documente separadamente:
+
+• Escopo definido dos agentes de trading.
+• Funcionalidades acumuladas do produto.
+• Cenários e parâmetros da simulação.
+• Integrações realmente verificadas.
+• Lacunas e decisões futuras do alpha.
+
+Se encontrar um impedimento ou informação indispensável ausente, explique o que falta e solicite minha participação. Continue apenas nas partes independentes.
+
+Não declare a definição do produto alpha encerrada.
+
+11. ENTREGA
+
+Entregue a simulação utilizável no painel, o histórico inicial e a possibilidade de criar novas operações simuladas.
+
+Execute o percurso pela interface e verifique persistência, consistência dos valores, estados e isolamento entre ambientes.
+
+Informe como acessar, iniciar e repetir cada cenário, o que foi validado e quais detalhes ainda precisamos definir juntos.
+
+O objetivo é observar o funcionamento do produto, identificar problemas e refinar a interface e as regras antes de ampliar a operação.

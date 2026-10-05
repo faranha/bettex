@@ -1,0 +1,212 @@
+Implemente o histórico financeiro e de atividades da BETTEX, integrado aos fluxos existentes de conta, carteiras, depósitos, saques, swapping, staking, tesouraria e distribuição de lucros.
+
+Esses registros devem começar a ser produzidos agora, durante cada operação. Não basta criar telas de histórico ou reconstruir informações informalmente depois.
+
+1. RESPEITAR A ARQUITETURA E PESQUISAR A DOCUMENTAÇÃO
+
+Leia primeiro a documentação interna vigente e examine o banco, os eventos, os contratos e os mecanismos de auditoria existentes.
+
+Encaixe os históricos na arquitetura atual. Não crie sistemas paralelos de logs ou tabelas duplicadas para cada tela.
+
+Preserve processamento determinístico, idempotência, rastreabilidade e segregação por usuário, rede e ambiente.
+
+Use BETTEX como nome do projeto e do token. Identifique corretamente os ativos pela configuração existente.
+
+2. REGISTROS DISTINTOS, MAS RELACIONADOS
+
+Diferencie:
+
+• Movimentação financeira: transferência ou mudança de posição, como depósito, compra, saque, entrada em staking e recebimento de distribuição.
+• Atividade da conta: ação como login, alteração de perfil, exportação de backup ou solicitação de operação.
+• Processamento automático: ação executada pelo sistema, contrato ou agente.
+• Registro técnico: diagnóstico interno necessário para operar o sistema.
+
+Uma operação pode produzir registros relacionados nesses grupos. Utilize um identificador de correlação para permitir acompanhar seu percurso sem contabilizá-la várias vezes.
+
+Por exemplo, uma compra pode relacionar solicitação, aprovação de USDC, transação de compra, recebimento de BETTEX, envio do principal à tesouraria e ativação da participação.
+
+Não transforme cada etapa técnica em uma nova compra ou movimentação econômica.
+
+3. HISTÓRICO FINANCEIRO DO USUÁRIO
+
+Registre e permita consultar:
+
+• Depósitos externos.
+• Recebimentos gratuitos de ativos de teste.
+• Saques e transferências para fora.
+• Transferências entre carteiras próprias.
+• Compras e eventuais vendas ou swaps suportados.
+• Taxas e gas, quando identificáveis.
+• Entradas e saídas do staking.
+• Alterações automáticas de participação e elegibilidade.
+• Distribuições apuradas, disponibilizadas e efetivamente pagas.
+• Correções e reversões.
+
+Diferencie recebimento na carteira de transferência interna e mudança de elegibilidade. Uma entrada automática em participação sem transferência on-chain não deve aparecer como um envio fictício de tokens.
+
+Não confunda saque financeiro com exportação de chaves ou backup.
+
+4. HISTÓRICO DO SWAPPING
+
+Para cada compra ou troca, preserve:
+
+• Identificação da operação.
+• Usuário e carteiras envolvidos.
+• Rede e ambiente.
+• Ativo e quantidade pagos.
+• Ativo e quantidade recebidos.
+• Preço executado e sua unidade.
+• Principal, tarifa e gas, quando aplicáveis.
+• Pool ou contrato utilizado.
+• Destinação do principal à tesouraria.
+• Data da solicitação e confirmação.
+• Estado e motivo de falha.
+• Transações e eventos relacionados.
+
+Preserve os valores efetivamente executados. Não recalcule o preço histórico usando a cotação atual.
+
+Mostre um resumo na lista e o percurso completo no detalhe da operação.
+
+5. HISTÓRICO DO STAKING
+
+Registre entradas, saídas, início e fim de elegibilidade, alterações de quantidade e ações automáticas.
+
+Identifique o mecanismo real utilizado: depósito em contrato ou participação baseada no saldo da carteira.
+
+Mantenha o histórico necessário para reproduzir quantidade e tempo elegíveis em cada período.
+
+Registre a regra e sua versão. Não sobrescreva o passado quando uma configuração mudar.
+
+6. HISTÓRICO DAS DISTRIBUIÇÕES
+
+Relacione cada distribuição ao período de apuração e registre:
+
+• Identificador do período.
+• Pool global destinado aos participantes.
+• Peso elegível do usuário.
+• Valor individual calculado.
+• Ativo e rede de pagamento.
+• Estado: apurado, aprovado, disponível, enviado, confirmado, suspenso ou falhou, conforme o fluxo existente.
+• Transações de pagamento.
+• Ajustes e motivos.
+
+Diferencie rendimento apurado de valor recebido. Tentativas de pagamento não podem aparecer como múltiplos rendimentos.
+
+Preserve direitos pendentes quando uma tentativa falhar, conforme as regras documentadas.
+
+7. HISTÓRICO DA TESOURARIA E DOS POOLS
+
+Registre os recebimentos das vendas, alocações, retornos, custos, distribuições, reservas de recompra e demais movimentos existentes.
+
+Relacione a compra do usuário ao recebimento correspondente na tesouraria.
+
+Separe histórico administrativo detalhado de transparência pública agregada. Não exponha identidade, e-mail ou atividades privadas de outros usuários.
+
+Evite contar transferências internas como novas entradas de capital ou lucro.
+
+8. ATIVIDADES DA CONTA E AUTOMAÇÕES
+
+Registre as ações relevantes:
+
+• Criação da conta e aceites.
+• Login, logout e tentativas relevantes de autenticação.
+• Alteração de nome, e-mail e senha.
+• Criação e associação de carteiras.
+• Solicitação de exportação de material privado.
+• Solicitações financeiras.
+• Autorizações e alterações administrativas.
+• Ações automáticas com efeito financeiro ou sobre a conta.
+
+Identifique o ator: usuário, administrador, sistema, contrato ou agente.
+
+Para automações, registre o evento disparador, a regra utilizada, o alvo, o resultado e a operação relacionada.
+
+Não registre cada clique, renderização ou navegação como atividade relevante.
+
+Nunca armazene senhas, chaves privadas, frases-semente, tokens de sessão ou conteúdo de backups nos históricos.
+
+Na exportação de chaves, registre a autorização e a ação executada sem guardar o material exportado. Não afirme que o arquivo foi salvo pelo usuário se isso não puder ser confirmado.
+
+9. PERSISTÊNCIA E CONSISTÊNCIA
+
+Implemente migrações e relações conforme os padrões existentes.
+
+Registre valores financeiros em unidades exatas, com ativo e decimais definidos. Não use ponto flutuante.
+
+Mantenha identificadores estáveis e relações entre operação, usuário, carteira, contrato, período e evento.
+
+Separe horário da solicitação, horário do evento on-chain e horário de processamento. Utilize UTC na persistência e apresente o fuso ao usuário.
+
+Para eventos blockchain, registre rede, hash, bloco e índice do evento ou equivalente.
+
+Garanta restrições de unicidade, processamento idempotente e retomada após falhas.
+
+Preserve eventos de auditoria sem sobrescrita silenciosa. Atualizações de estado podem utilizar projeções mutáveis, desde que suas transições permaneçam registradas.
+
+Correções precisam de registros vinculados ao original. Reorganizações da blockchain devem produzir estados e ajustes rastreáveis.
+
+10. TELAS, FILTROS E PAGINAÇÃO
+
+Disponibilize:
+
+• Histórico geral do usuário.
+• Histórico de swapping.
+• Histórico de staking.
+• Histórico de distribuições.
+• Atividades e segurança da conta.
+• Histórico administrativo da tesouraria e dos pools.
+
+Essas telas devem consultar os registros compartilhados adequados, evitando cópias inconsistentes.
+
+Implemente paginação no servidor, seguindo o padrão existente. Use ordenação estável por data e identificador; não carregue todo o histórico no navegador.
+
+Permita filtros por período, tipo, estado, ativo, rede e carteira, quando aplicáveis.
+
+Inclua detalhes da operação e links para o explorador correto. Identifique explicitamente ações internas que não possuem transação on-chain.
+
+Não exponha logs técnicos brutos na interface comum.
+
+11. DADOS ANTERIORES
+
+Recupere operações anteriores pelos contratos, eventos e registros existentes quando houver evidência suficiente.
+
+Identifique registros reconstruídos e sua origem.
+
+Não invente login, aceite, autorização, instante de solicitação ou atividade interna que não tenha sido registrada.
+
+Informe a partir de quando o histórico está completo e quais lacunas anteriores permanecem.
+
+12. AUTORIZAÇÃO E PRIVACIDADE
+
+O usuário só pode consultar seus próprios registros privados.
+
+Valide autorização no servidor; não dependa de filtros enviados pelo navegador.
+
+Restrinja o histórico administrativo por função.
+
+Defina tratamento e retenção dos dados sensíveis conforme as regras existentes. Não replique informações pessoais desnecessárias em todos os eventos.
+
+13. VERIFICAÇÃO DE PONTA A PONTA
+
+Execute um percurso com uma conta de teste:
+
+Cadastro → login → recebimento de ativo de teste → compra de BETTEX → participação automática → distribuição simulada → transferência de saída, se suportada → alteração de perfil → exportação de backup → logout.
+
+Confira os registros correspondentes, os vínculos entre etapas e os valores efetivamente confirmados.
+
+Verifique também:
+
+• Falhas e novas tentativas sem duplicação.
+• Ações automáticas com ator e origem identificados.
+• Persistência após reinício.
+• Paginação sem itens repetidos ou omitidos por ordenação instável.
+• Usuários sem acesso aos históricos alheios.
+• Ausência de segredos nos registros.
+• Reconciliação entre histórico, banco e blockchain.
+• Separação entre simulação local, testnet e produção.
+
+Entregue a implementação funcional, as migrações, as telas e o resultado das verificações.
+
+Explique quais eventos já são registrados automaticamente, quais históricos anteriores puderam ser recuperados e quais lacunas continuam existentes.
+
+O critério de conclusão é que cada operação relevante gere um registro persistente, rastreável e consultável no histórico adequado.

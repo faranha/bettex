@@ -9,7 +9,7 @@ BETTEX usa React/Vite, Express, Clerk e PostgreSQL/Drizzle. A identidade é real
 - Identidade, sessões, vínculo de propriedade e dados de conta.
 - Integridade de comandos, propostas, decisões e resultados persistidos.
 - Segredos da infraestrutura e credenciais do provedor de autenticação.
-- Futuros fundos, chaves, mandatos e obrigações: ainda não operados pelo app.
+- Chaves pessoais já existem: cofre cifrado persistido, descriptografia/assinatura/exportação no cliente. Recursos locais são ativos sem valor; fundos, mandatos e obrigações de produção ainda não são operados.
 
 ## Trust Boundaries
 
@@ -52,4 +52,4 @@ BETTEX usa React/Vite, Express, Clerk e PostgreSQL/Drizzle. A identidade é real
 
 ## Limits
 
-Revisão arquitetural, sem varredura de dependências/segredos, teste de invasão ou auditoria on-chain. CORS, CSRF, autorização entre serviços, controles distribuídos, signer e recuperação financeira precisam de validação antes da produção.
+Revisão interna de segurança realizada conforme [relatório](docs/security-review-2026-10-05.md): scanners, segredos/Git, controles HTTP, testes negativos isolados e restauração de fixtures. Não é teste de invasão externo nem auditoria independente on-chain. Controles distribuídos, IAM externo, signer/ledger de produção e recuperação da infraestrutura pública permanecem gates; dinheiro real continua não autorizado.

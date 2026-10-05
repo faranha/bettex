@@ -2,9 +2,12 @@
 - [Raster asset inspection](raster-asset-inspection.md) — verify logo identity and real alpha; use font-free contact sheets.
 - [Artifact validation environment](artifact-validation-env.md) — manual builds need artifact-scoped runtime variables; do not persist them globally.
 - [Testes nativos TypeScript](native-typescript-tests.md) — o ESM do Node e a compilação empacotada resolvem imports de formas diferentes; verificar ambos.
+- [Raw SQL timestamps](raw-sql-timestamps.md) — raw Drizzle queries may return strings; normalize runtime values and preserve cursor precision.
+- [Comparação de evidências JSONB](jsonb-evidence-comparison.md) — PostgreSQL reordena chaves; identidade precisa de comparação estrutural após persistência.
 - [Production build validation](production-build-validation.md) — source checks miss rendered narrative and regenerated export mismatches; verify the full build before publishing.
 - [Concurrent media edits](concurrent-media-edits.md) — await image-edit jobs before unrelated workspace writes; a later completion can replace new files.
 - [Polymarket market-data source](polymarket-market-data-source.md) — official MCP reads documentation only; Gamma is the public market-data API.
+- [Previsões sem operação presumida](prediction-paper-safety.md) — observar livros BTC/ETH/SOL não valida vantagem; exigir modelo do evento, custos e mandato simulado antes de propor.
 - [Content source precedence](content-source-precedence.md) — approved product rules take precedence over stale whitepaper economics in the Git baseline.
 - [Revisable hero artwork](revisable-hero-artwork.md) — replace the whole diagram layer when changing coverage; partial overlays can look disconnected.
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
@@ -28,7 +31,7 @@
 - [Ações da carteira](wallet-action-context.md) — entradas e saídas junto de cada saldo; USDC/BETTEX com conversão nos dois sentidos; saque não limitado ao rendimento.
 - [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
-- [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; BTEX é a IA principal; históricos de sugestões e decisões consultáveis.
+- [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; históricos de sugestões e decisões consultáveis.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
 - [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
 - [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
@@ -47,10 +50,13 @@
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
 - [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.
 - [Cabeçalhos das seções](homepage-section-headers.md) — não reintroduzir as faixas informativas decorativas acima de História e Roadmap.
-- [Consistência dos heros](homepage-hero-accent.md) — homepage segue a barra azul na borda esquerda dos heros do Pitch.
+- [Consistência dos heros](homepage-hero-accent.md) — barra azul só nas aberturas com imagem, como no Pitch; não em toda seção.
 - [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
 - [Apresentação do fundador](documentation-founder-presentation.md) — documentação com retrato integrado e sem aspas; Pitch com biografia profissional em terceira pessoa.
 - [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.
 - [Responsive text verification](responsive-text-verification.md) — text-range bounds include font leading; distinguish compact heading lines from actual collisions.
 - [Observações editoriais](document-observations.md) — notas agrupadas no fim de cada bloco, sem repetição ou interrupção do conteúdo principal.
 - [Horário do Brasil](brazil-time-display.md) — exibir horários em São Paulo, sem rótulo UTC; preservar cálculos e instantes internos dos ciclos.
+- [Evidências de contratos](test-contract-evidence.md) — EVM local não prova compra pública; runtime equivalente também exige validar vínculos imutáveis.
+- [Isolamento de testes](integration-test-isolation.md) — fixtures não podem compartilhar dados ou sequências do app; cópia de tabelas não preserva todos os invariantes.
+- [Detalhes opacos no OpenAPI](openapi-opaque-run-details.md) — o Zod gerado pode remover additionalProperties; preservar detalhes da execução após validar o envelope.

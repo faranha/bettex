@@ -1,0 +1,140 @@
+Replit, antes de aprofundar o desenvolvimento dos agentes, formalize a hierarquia abaixo na documentação canônica da BETTEX e alinhe a implementação existente a ela.
+
+Leia primeiro a documentação, as decisões arquiteturais e o código atual. Esta instrução define responsabilidades; não exige transformar cada agente em um serviço independente nem autoriza criar uma arquitetura paralela.
+
+1. AGENTE BETTEX: ORQUESTRADOR
+
+O agente BETTEX ocupa o nível superior.
+
+Ele recebe oportunidades dos agentes de trading, compara as alternativas e decide quais selecionar e quanto capital alocar, respeitando os controles de Tesouraria e Governança.
+
+Pode rejeitar todas as propostas e manter os recursos disponíveis.
+
+Não crie uma camada adicional de análise entre os agentes de trading e o BETTEX que duplique essa responsabilidade.
+
+2. AGENTES DE TRADING: ESPECIALIZAÇÃO POR MERCADO
+
+Os agentes de trading são subagentes do BETTEX, organizados por mercado ou domínio, conforme os nomes aprovados na documentação existente.
+
+Exemplos de domínios:
+
+• Mercado de previsões.
+• Trading de cripto.
+• Apostas esportivas.
+
+Cada agente de mercado deve:
+
+• Coordenar seus subagentes especialistas.
+• Utilizar as integrações necessárias.
+• Receber e validar análises.
+• Qualificar as oportunidades disponíveis.
+• Apresentar ao BETTEX suas melhores propostas.
+
+Esses agentes não decidem a alocação global dos recursos da tesouraria.
+
+3. SUBAGENTES ESPECIALISTAS
+
+Cada agente de mercado pode possuir especialistas por ativo, evento ou estratégia.
+
+O primeiro ramo ativo será:
+
+BETTEX → Agente de Mercado de Previsões → Subagente Especialista BTC.
+
+O especialista BTC analisa oportunidades relacionadas ao BTC dentro do mercado de previsões e entrega seus resultados ao agente responsável por esse mercado.
+
+O agente de mercado valida e qualifica essas oportunidades antes de encaminhá-las ao BETTEX.
+
+“Subagente” indica uma posição relativa na hierarquia: o agente de mercado é subagente do BETTEX; o especialista BTC é subagente do agente de mercado.
+
+4. FLUXO DE INFORMAÇÃO E DECISÃO
+
+As análises e oportunidades sobem pela hierarquia. Mandatos, limites e decisões descem.
+
+Adote estas responsabilidades:
+
+• Especialista analisa.
+• Agente de mercado valida, qualifica e prioriza dentro de seu domínio.
+• BETTEX compara oportunidades entre os domínios, seleciona e decide a alocação.
+• Tesouraria e Governança validam e impõem os controles financeiros e de autorização.
+• O mecanismo de execução autorizado realiza a operação e confirma seu resultado.
+
+Qualquer nível pode rejeitar uma proposta, solicitar atualização ou informar que não encontrou uma oportunidade adequada.
+
+Allora, APIs de mercados, oráculos e outras integrações são ferramentas e fontes utilizadas pelos agentes. Não são automaticamente novos níveis da hierarquia.
+
+5. TESOURARIA E GOVERNANÇA
+
+Preserve a responsabilidade já definida de Tesouraria e Governança como controle transversal.
+
+Ela verifica reservas, obrigações, exposição, permissões e limites antes da execução. Não compete com os agentes de trading por oportunidades.
+
+A decisão do BETTEX não pode contornar esses controles.
+
+Nenhum especialista recebe acesso irrestrito aos recursos ou às chaves da tesouraria. Nenhum agente pode ampliar suas próprias permissões.
+
+Separe proposta, decisão, autorização, execução e confirmação. Uma resposta de IA não substitui uma autorização válida nem uma verificação determinística.
+
+6. FORMATO COMUM DAS OPORTUNIDADES
+
+Defina um contrato de dados compartilhado para propostas, contendo:
+
+• Identificador e origem.
+• Agente de mercado e especialista responsáveis.
+• Mercado, instrumento e operação proposta.
+• Fontes, horários e evidências.
+• Modelo, metodologia e versão utilizados.
+• Preço executável, custos e liquidez.
+• Retorno estimado e incerteza.
+• Riscos, perda potencial e capital necessário.
+• Horizonte da operação.
+• Validade e condições de invalidação.
+• Estado da proposta e justificativas das decisões.
+
+Diferencie fatos observados, estimativas e informações ausentes.
+
+Não compare oportunidades apenas por notas arbitrárias de confiança ou pelo maior retorno nominal. Considere custos, risco, prazo, liquidez, exposição e correlação.
+
+Preserve a rastreabilidade entre análise, proposta, decisão, alocação, execução e resultado.
+
+7. PRIMEIRO ALPHA
+
+Ative somente:
+
+BETTEX → Mercado de Previsões → Especialista BTC.
+
+Desabilite os demais agentes mock nas rotinas e telas do alpha publicado. Eles podem aparecer como planejados ou indisponíveis, mas não devem produzir oportunidades, operações ou lucros fictícios.
+
+Mocks e fixtures podem permanecer nos testes internos.
+
+Utilize dados reais nas integrações disponíveis. Se a execução estiver simulada, identifique-a claramente e mantenha seus resultados separados da contabilidade financeira real da tesouraria.
+
+Na indisponibilidade de uma fonte, informe a falha ou ausência de dados. Não substitua silenciosamente informações reais por dados inventados.
+
+8. DOCUMENTAÇÃO E IMPLEMENTAÇÃO
+
+Registre a hierarquia, nomenclatura, responsabilidades, interfaces, permissões e eventos na documentação canônica existente.
+
+Mapeie os componentes atuais para esses papéis. Identifique duplicações e responsabilidades conflitantes e corrija-as com mudanças mínimas.
+
+Não invente novos nomes quando já houver nomes aprovados no projeto.
+
+Resolva autonomamente decisões técnicas necessárias, documentando a justificativa. Preserve as decisões econômicas e arquiteturais expressas.
+
+Implemente os contratos de dados, encaminhamento de propostas, controles e estados necessários para tornar essa hierarquia funcional, sem aprofundar ainda novas estratégias.
+
+9. VERIFICAÇÃO E ENTREGA
+
+Verifique que:
+
+• O especialista BTC encaminha análises ao agente de mercado de previsões.
+• O agente de mercado valida e encaminha propostas ao BETTEX.
+• O BETTEX compara, seleciona ou rejeita propostas.
+• Tesouraria e Governança bloqueiam decisões incompatíveis com os controles.
+• A execução exige autorização válida.
+• Propostas vencidas ou duplicadas não geram operações indevidas.
+• Todas as etapas ficam registradas e correlacionadas.
+• Agentes desabilitados não produzem atividade fictícia no alpha.
+
+Entregue a documentação atualizada, o alinhamento da implementação, as verificações realizadas e as pendências concretas.
+
+Consolide essa base antes de ampliar para outros mercados ou aprofundar o desenvolvimento das estratégias.

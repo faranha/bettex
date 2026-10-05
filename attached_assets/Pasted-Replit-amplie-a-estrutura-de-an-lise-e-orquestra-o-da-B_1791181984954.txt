@@ -1,0 +1,204 @@
+Replit, amplie a estrutura de análise e orquestração da BETTEX para operar com três especialistas, uma fila persistente de oportunidades e acompanhamento completo das posições.
+
+Antes de automatizar operações, formalize as estratégias e suas regras de entrada, manutenção e saída, derivadas dos controles da tesouraria.
+
+1. PESQUISA E ARQUITETURA
+
+Leia a documentação interna vigente, as regras da tesouraria, a hierarquia dos agentes e a implementação existente.
+
+Integre esta entrega aos componentes atuais. Não crie uma arquitetura paralela.
+
+O agente BETTEX é o orquestrador. Os agentes de mercado coordenam especialistas e apresentam oportunidades. Tesouraria e Governança impõem os controles sobre as decisões.
+
+2. TRÊS ESPECIALISTAS INICIAIS
+
+Estruture o primeiro ramo:
+
+BETTEX → Agente de Mercado de Previsões → Especialistas BTC, ETH e SOL.
+
+Cada especialista deve analisar eventos relacionados ao seu ativo dentro desse mercado. Não confunda análise de um evento com compra direta do ativo subjacente.
+
+Verifique quais dados, inferências e mercados realmente estão disponíveis para cada ativo. Não presuma que uma integração existente para BTC também suporta ETH e SOL.
+
+Implemente os três especialistas, mas habilite a produção de propostas somente com fontes verificadas. Na ausência de suporte, mostre indisponibilidade; não utilize mocks no alpha publicado.
+
+3. POLÍTICA DE ESTRATÉGIAS
+
+Crie uma especificação versionada de estratégias utilizando as regras de base da tesouraria.
+
+Diferencie:
+
+• Política global: reservas, permissões, exposição e obrigações.
+• Estratégia: quais oportunidades procurar e como avaliar entrada e saída.
+• Parâmetros por especialista: ativo, fontes, horizonte e mercados elegíveis.
+
+Cada estratégia deve definir:
+
+• Hipótese de vantagem e evidências necessárias.
+• Mercados e instrumentos permitidos.
+• Horizonte compatível com as fontes de previsão.
+• Qualidade e validade mínima dos dados.
+• Metodologia de estimativa de probabilidade.
+• Custos, spread, slippage e liquidez.
+• Critérios de entrada.
+• Dimensionamento e perda máxima.
+• Condições de manutenção, redução e saída.
+• Condições de invalidação e suspensão.
+
+Não transforme uma previsão de preço em probabilidade de resolução sem metodologia validada.
+
+Se limites numéricos ainda não estiverem definidos, adote parâmetros conservadores e configuráveis exclusivamente para simulação, registre a justificativa e não os apresente como decisões econômicas definitivas.
+
+Os especialistas e o BETTEX devem utilizar a mesma versão aplicável da política. Não duplique regras divergentes entre componentes.
+
+4. FILA DE OPORTUNIDADES
+
+Implemente uma fila persistente para receber propostas qualificadas pelo agente de mercado.
+
+“Alpha” significa aqui uma hipótese de vantagem sobre o preço executável, após custos. Não é lucro comprovado.
+
+Cada proposta deve incluir:
+
+• Identificador e chave de deduplicação.
+• Especialista, mercado, evento e lado da operação.
+• Evidências e horários das fontes.
+• Probabilidade estimada e incerteza.
+• Preço executável por tamanho de ordem.
+• Custos e vantagem líquida estimada.
+• Capital solicitado, horizonte e riscos.
+• Estratégia e versão.
+• Plano de saída.
+• Prazo de validade.
+
+Implemente estados rastreáveis: recebida, validada, aguardando decisão, selecionada, rejeitada, expirada e encaminhada à execução, conforme os padrões existentes.
+
+Não confunda oportunidade, ordem e posição: são entidades diferentes.
+
+Defina prioridade, expiração, retentativas e controle de concorrência. Preserve a sequência das decisões para permitir reproduzir por que uma proposta foi escolhida.
+
+5. DECISÃO DE ALOCAÇÃO
+
+O BETTEX deve comparar propostas válidas considerando:
+
+• Vantagem líquida e incerteza.
+• Liquidez e tamanho executável.
+• Capital disponível após reservas e obrigações.
+• Tempo de comprometimento.
+• Exposição existente e correlação.
+• Ordens pendentes e posições abertas.
+• Limites por ativo, evento, estratégia e contraparte.
+
+BTC, ETH e SOL não devem ser tratados automaticamente como riscos independentes.
+
+Manter recursos disponíveis é uma decisão válida.
+
+Antes de executar, atualize preço, liquidez, validade e controles. Uma proposta aprovada pode deixar de ser executável.
+
+Reserve o capital de forma consistente para impedir que decisões concorrentes utilizem o mesmo saldo. Libere reservas não utilizadas após cancelamento, falha ou expiração.
+
+6. ORDENS E POSIÇÕES
+
+Modele o ciclo completo:
+
+Decisão → autorização → ordem → preenchimento parcial ou total → posição aberta → redução ou saída → liquidação.
+
+Uma ordem enviada não é uma posição confirmada. Registre quantidades efetivamente executadas.
+
+Para cada posição, preserve:
+
+• Origem da proposta e decisão.
+• Instrumento, lado, quantidade e custo de entrada.
+• Taxas e capital comprometido.
+• Estratégia e expectativa original.
+• Avaliações posteriores.
+• Preço atual e sua fonte.
+• Valor estimado de saída para a quantidade disponível.
+• Resultado realizado e não realizado.
+• Condições de saída e estado de resolução.
+
+Suporte posições que permanecem abertas por vários ciclos, preenchimentos parciais e indisponibilidade de liquidez.
+
+7. ENTRADA, MANUTENÇÃO E SAÍDA
+
+O plano de saída deve existir antes da abertura.
+
+Conforme a estratégia, avalie:
+
+• Manutenção até a resolução do evento.
+• Realização antecipada.
+• Redução quando a vantagem desaparecer.
+• Saída por invalidação da hipótese.
+• Limites de perda, tempo ou exposição.
+• Pausa por dados vencidos ou falha operacional.
+
+Não prometa execução de stop ou saída imediata quando não houver liquidez.
+
+Separe gatilho de saída, ordem enviada e saída confirmada.
+
+Evite trocas frequentes motivadas por pequenas oscilações; avalie custos e critérios de reentrada.
+
+8. RETORNO ESPERADO VERSUS ATUAL
+
+No painel, diferencie:
+
+• Retorno esperado estimado na entrada.
+• Expectativa atualizada.
+• Resultado não realizado estimado.
+• Resultado efetivamente realizado.
+
+Mantenha a estimativa original para comparação; não a sobrescreva com previsões posteriores.
+
+Use preço executável ou estimativa conservadora de liquidação, considerando tamanho, custos e liquidez. Se houver apenas preço indicativo, identifique essa limitação.
+
+Um contrato de previsão pode variar de preço antes da resolução. Isso não equivale a lucro recebido.
+
+Informe horário da avaliação e dados desatualizados.
+
+9. REVISÃO DO PAINEL DE LIVE TRADING
+
+Integre ao painel:
+
+• Fila de oportunidades e motivos de seleção ou rejeição.
+• Decisões de alocação.
+• Ordens pendentes e preenchimentos.
+• Todas as posições abertas.
+• Capital disponível, reservado e comprometido.
+• Exposição agregada por ativo e estratégia.
+• Expectativa original versus resultado atual.
+• Saídas planejadas, solicitadas e confirmadas.
+• Histórico de posições encerradas.
+
+Permita acessar o percurso completo da análise à liquidação, com filtros e paginação no servidor.
+
+Identifique claramente execução simulada. Não apresente paper trading como operação financeira real.
+
+10. INTEGRAÇÃO COM A TESOURARIA
+
+Atualize a tesouraria para representar ordens pendentes, capital reservado, posições abertas e obrigações de liquidação.
+
+Comprar uma posição não transforma automaticamente seu custo em prejuízo; valorização não realizada não é lucro distribuível.
+
+Não use recursos comprometidos para novas alocações ou distribuições.
+
+Reconcile saldos e posições com a fonte operacional e registre divergências.
+
+11. VERIFICAÇÃO E ENTREGA
+
+Teste situações com oportunidades simultâneas de BTC, ETH e SOL, incluindo:
+
+• Escolha entre propostas concorrentes.
+• Rejeição de todas.
+• Capital insuficiente.
+• Exposição correlacionada excessiva.
+• Proposta duplicada ou vencida.
+• Mudança de preço antes da execução.
+• Preenchimento parcial.
+• Posição mantida por vários ciclos.
+• Saída sem liquidez.
+• Reinício e retomada sem operação duplicada.
+
+Use fixtures apenas em testes internos e dados reais no alpha quando disponíveis. Mantenha a execução simulada até concluir as validações e a autorização correspondente.
+
+Entregue a documentação das estratégias, fila funcional, decisão de alocação, gestão de posições e painel integrado.
+
+Registre quais escolhas técnicas tomou autonomamente, quais fontes verificou e quais limitações permanecem. Não declare vantagem econômica comprovada apenas porque a integração funciona.

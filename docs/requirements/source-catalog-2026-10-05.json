@@ -1,0 +1,2608 @@
+[
+  {
+    "path": "attached_assets/Pasted-01-INTERFACE-Saldos-USDC-e-BETTEX-Exibe-os-ativos-separ_1790897090715.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "content",
+          "line": 3,
+          "requirement": "Exibir ativos separados, estimativa de valor financeiro, custos, valores líquidos e participação automática"
+        },
+        {
+          "domain": "content",
+          "line": 3,
+          "requirement": "Não converter o saldo USDC na interface"
+        },
+        {
+          "domain": "accounts",
+          "line": 7,
+          "requirement": "Autenticar a conta do usuário"
+        },
+        {
+          "domain": "history",
+          "line": 7,
+          "requirement": "Registrar lançamentos em USDC e BETTEX corrigíveis por ajuste identificado"
+        },
+        {
+          "domain": "history",
+          "line": 7,
+          "requirement": "Calcular limites e saldos elegíveis"
+        },
+        {
+          "domain": "contracts",
+          "line": 7,
+          "requirement": "Processar compras e impedir pedidos repetidos"
+        },
+        {
+          "domain": "contracts",
+          "line": 11,
+          "requirement": "Formalizar regras de acesso ao capital, reservas e autorizações via smart contract"
+        },
+        {
+          "domain": "security",
+          "line": 11,
+          "requirement": "Operar somente após aprovação independente de risco"
+        },
+        {
+          "domain": "participation",
+          "line": 11,
+          "requirement": "Aplicar split automático de 75% lucro para tesouraria e 25% para staking"
+        },
+        {
+          "domain": "history",
+          "line": 15,
+          "requirement": "Conciliar transferências de USDC/BETTEX e recebimento on-ramp"
+        },
+        {
+          "domain": "security",
+          "line": 15,
+          "requirement": "Aprovação de operadores autorizados para intervenções críticas, pausas e conciliações"
+        },
+        {
+          "domain": "research",
+          "line": 18,
+          "requirement": "Priorizar operações com base em dados de mercado, limites e reservas vigentes"
+        },
+        {
+          "domain": "history",
+          "line": 20,
+          "requirement": "Identificar registros contábeis com identificador único, conta, ativo, rede, origem, destino, valor, custos, estado e referência"
+        },
+        {
+          "domain": "contracts",
+          "line": 20,
+          "requirement": "Registrar compra com débito USDC e crédito BETTEX simultâneos"
+        },
+        {
+          "domain": "architecture",
+          "line": 20,
+          "requirement": "Garantir idempotência das operações via identificador único"
+        },
+        {
+          "domain": "security",
+          "line": 22,
+          "requirement": "Congelar fluxo e gerar investigação em caso de divergência de conciliação"
+        },
+        {
+          "domain": "security",
+          "line": 22,
+          "requirement": "Proibir saldo artificial em caso de inconsistência"
+        },
+        {
+          "domain": "architecture",
+          "line": 25,
+          "requirement": "Separar leitura de preços, proposta de ordem, aprovação de risco e execução no conector Robinhood"
+        },
+        {
+          "domain": "research",
+          "line": 36,
+          "requirement": "Consultar preços e estimativas de cotação em modo apenas leitura"
+        },
+        {
+          "domain": "research",
+          "line": 40,
+          "requirement": "Cruzar dados de preços, liquidez e exposição para propor ordem"
+        },
+        {
+          "domain": "security",
+          "line": 44,
+          "requirement": "Núcleo de risco deve aprovar ou recusar ordens antes do envio"
+        },
+        {
+          "domain": "security",
+          "line": 48,
+          "requirement": "Restringir credenciais do conector apenas à operação"
+        },
+        {
+          "domain": "contracts",
+          "line": 55,
+          "requirement": "Enviar ou cancelar ordens de criptoativos na conta operacional"
+        },
+        {
+          "domain": "history",
+          "line": 59,
+          "requirement": "Ler estado das ordens e posições da conta"
+        },
+        {
+          "domain": "history",
+          "line": 63,
+          "requirement": "Conferir registros do projeto com estado da plataforma"
+        },
+        {
+          "domain": "research",
+          "line": 67,
+          "requirement": "Consultar inferências da Allora por API, registrando origem e horário"
+        },
+        {
+          "domain": "research",
+          "line": 67,
+          "requirement": "Normalizar valores recebidos e tratar intervalos de confiança da Allora"
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Agora-o-momento-de-revisar-corrigir-e-estabelecer-verif_1791180059662.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "architecture",
+          "line": 7,
+          "requirement": "Ler documentação interna, regras canônicas e decisões arquiteturais vigentes"
+        },
+        {
+          "domain": "architecture",
+          "line": 9,
+          "requirement": "Mapear responsabilidades e fronteiras de confiança dos componentes do sistema"
+        },
+        {
+          "domain": "architecture",
+          "line": 11,
+          "requirement": "Corrigir problemas dentro da estrutura existente sem reescrita geral"
+        },
+        {
+          "domain": "security",
+          "line": 15,
+          "requirement": "Utilizar OWASP ASVS e documentação oficial para revisão de riscos"
+        },
+        {
+          "domain": "security",
+          "line": 17,
+          "requirement": "Priorizar proteção contra exposição de dados e manipulação de valores/operações"
+        },
+        {
+          "domain": "security",
+          "line": 21,
+          "requirement": "Revisar autenticação, sessões, logout e alterações sensíveis"
+        },
+        {
+          "domain": "security",
+          "line": 22,
+          "requirement": "Implementar autorização no servidor para cada usuário, carteira e operação"
+        },
+        {
+          "domain": "security",
+          "line": 23,
+          "requirement": "Validar permissões administrativas e de agentes"
+        },
+        {
+          "domain": "security",
+          "line": 24,
+          "requirement": "Validar entradas, injeções, XSS, CSRF, CORS e chamadas externas"
+        },
+        {
+          "domain": "security",
+          "line": 25,
+          "requirement": "Implementar limites contra abuso em login, cadastro e distribuição de ativos"
+        },
+        {
+          "domain": "security",
+          "line": 26,
+          "requirement": "Proteger APIs, páginas de diagnóstico, backups e endpoints expostos"
+        },
+        {
+          "domain": "security",
+          "line": 27,
+          "requirement": "Segregar ambientes de testnet e produção e validar dependências"
+        },
+        {
+          "domain": "security",
+          "line": 33,
+          "requirement": "Remover exposição de segredos em histórico Git, logs e artefatos"
+        },
+        {
+          "domain": "security",
+          "line": 35,
+          "requirement": "Revogar credenciais expostas após remoção do código"
+        },
+        {
+          "domain": "security",
+          "line": 37,
+          "requirement": "Manter segredos operacionais fora do repositório e frontend"
+        },
+        {
+          "domain": "security",
+          "line": 39,
+          "requirement": "Criptografar carteiras pessoais e realizar hash de senhas"
+        },
+        {
+          "domain": "security",
+          "line": 43,
+          "requirement": "Restringir acessos ao repositório, banco e ambiente de implantação"
+        },
+        {
+          "domain": "contracts",
+          "line": 47,
+          "requirement": "Verificar emissão, vesting, compra, staking, tesouraria e distribuições"
+        },
+        {
+          "domain": "contracts",
+          "line": 51,
+          "requirement": "Validar permissões de emissão, pausa, administração e upgrade"
+        },
+        {
+          "domain": "contracts",
+          "line": 52,
+          "requirement": "Proteger inicialização e armazenamento em contratos proxy"
+        },
+        {
+          "domain": "contracts",
+          "line": 53,
+          "requirement": "Garantir a impossibilidade de contornar vesting"
+        },
+        {
+          "domain": "contracts",
+          "line": 54,
+          "requirement": "Validar ativo, rede, preço, destinatário e autorização"
+        },
+        {
+          "domain": "contracts",
+          "line": 55,
+          "requirement": "Proteger contra reentrância, reutilização de assinaturas e pagamentos duplicados"
+        },
+        {
+          "domain": "contracts",
+          "line": 56,
+          "requirement": "Validar decimais, arredondamentos e limites de valores"
+        },
+        {
+          "domain": "history",
+          "line": 57,
+          "requirement": "Implementar reconciliação entre blockchain, banco e histórico"
+        },
+        {
+          "domain": "contracts",
+          "line": 58,
+          "requirement": "Tratar falhas, concorrência e reorganizações de blockchain"
+        },
+        {
+          "domain": "architecture",
+          "line": 67,
+          "requirement": "Centralizar lógica financeira em implementações reutilizáveis"
+        },
+        {
+          "domain": "architecture",
+          "line": 69,
+          "requirement": "Utilizar migrações versionadas e restrições de integridade no banco"
+        },
+        {
+          "domain": "architecture",
+          "line": 70,
+          "requirement": "Utilizar valores financeiros exatos sem ponto flutuante"
+        },
+        {
+          "domain": "history",
+          "line": 72,
+          "requirement": "Correlacionar histórico e auditoria às operações"
+        },
+        {
+          "domain": "architecture",
+          "line": 76,
+          "requirement": "Atualizar documentação junto com cada alteração"
+        },
+        {
+          "domain": "security",
+          "line": 82,
+          "requirement": "Configurar lint, tipos, análise de dependências e detecção de segredos"
+        },
+        {
+          "domain": "security",
+          "line": 84,
+          "requirement": "Executar testes de autorização, isolamento, chaves e integridade financeira"
+        },
+        {
+          "domain": "security",
+          "line": 88,
+          "requirement": "Utilizar ambiente isolado com ativos de teste"
+        },
+        {
+          "domain": "security",
+          "line": 90,
+          "requirement": "Documentar e testar backup, restauração e revogação de sessões"
+        },
+        {
+          "domain": "security",
+          "line": 94,
+          "requirement": "Registrar problemas com gravidade, evidência, impacto e correção"
+        },
+        {
+          "domain": "security",
+          "line": 96,
+          "requirement": "Executar testes de regressão dos fluxos existentes"
+        },
+        {
+          "domain": "history",
+          "line": 104,
+          "requirement": "Apresentar relatório de problemas, resultados de testes e riscos"
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted--BETTEX-Core-A-BETTEX-um-sistema-de-orquestra-o-de-agen_1790711703156.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "security",
+          "line": 5,
+          "requirement": "Verificar limites de risco antes de autorizar a execução de operações"
+        },
+        {
+          "domain": "history",
+          "line": 5,
+          "requirement": "Registrar o resultado das operações executadas"
+        },
+        {
+          "domain": "treasury",
+          "line": 5,
+          "requirement": "Acompanhar o capital alocado de cada agente"
+        },
+        {
+          "domain": "architecture",
+          "line": 7,
+          "requirement": "Implementar integrações para interoperabilidade entre múltiplas blockchains e APIs"
+        },
+        {
+          "domain": "history",
+          "line": 11,
+          "requirement": "Registrar propostas de operação contendo preço, valor e justificativa"
+        },
+        {
+          "domain": "security",
+          "line": 12,
+          "requirement": "Aplicar limites de capital, exposição e perda antes do envio de ordens"
+        },
+        {
+          "domain": "architecture",
+          "line": 12,
+          "requirement": "Capacidade de reduzir ou interromper individualmente um agente sem afetar os outros"
+        },
+        {
+          "domain": "history",
+          "line": 13,
+          "requirement": "Registrar a execução efetiva, taxas e resultados das operações"
+        },
+        {
+          "domain": "treasury",
+          "line": 14,
+          "requirement": "Identificar separadamente ganhos, perdas, capital e histórico por agente"
+        },
+        {
+          "domain": "treasury",
+          "line": 14,
+          "requirement": "Impedir distribuição de lucro por agente antes da recuperação de perdas anteriores"
+        },
+        {
+          "domain": "participation",
+          "line": 15,
+          "requirement": "Implementar staking unificado para contribuições dos agentes"
+        },
+        {
+          "domain": "participation",
+          "line": 15,
+          "requirement": "Exibir ao usuário a origem das contribuições por agente no staking"
+        },
+        {
+          "domain": "security",
+          "line": 22,
+          "requirement": "Exigir mandato separado e identificação pública para operações do TRADIX com o token BETTEX"
+        },
+        {
+          "domain": "architecture",
+          "line": 26,
+          "requirement": "Manter sistema comum de coordenação de agentes, capital e risco"
+        },
+        {
+          "domain": "content",
+          "line": 28,
+          "requirement": "Fornecer interface única para acompanhamento de agentes, tokens e staking"
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Cole-este-prompt-nico-e-completo-no-Replit-Implemente-o_1791178239564.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "accounts",
+          "line": 3,
+          "requirement": "Implementar processo de cadastro e ambiente de testes multirrede"
+        },
+        {
+          "domain": "architecture",
+          "line": 32,
+          "requirement": "Criar inventário detalhado das integrações necessárias"
+        },
+        {
+          "domain": "architecture",
+          "line": 47,
+          "requirement": "Configurar Arbitrum Sepolia e Robinhood Chain Testnet"
+        },
+        {
+          "domain": "architecture",
+          "line": 55,
+          "requirement": "Isolar ambientes de desenvolvimento, testnet e produção"
+        },
+        {
+          "domain": "content",
+          "line": 59,
+          "requirement": "Exibir alerta de ambiente de teste e rede utilizada"
+        },
+        {
+          "domain": "accounts",
+          "line": 67,
+          "requirement": "Solicitar nome, e-mail, senha e confirmação de senha no cadastro"
+        },
+        {
+          "domain": "accounts",
+          "line": 82,
+          "requirement": "Validar formato e unicidade do e-mail no login"
+        },
+        {
+          "domain": "content",
+          "line": 86,
+          "requirement": "Mostrar aviso de inexistência de recuperação de senha"
+        },
+        {
+          "domain": "accounts",
+          "line": 88,
+          "requirement": "Exigir aceite de checkbox sobre responsabilidade de backup"
+        },
+        {
+          "domain": "wallets",
+          "line": 98,
+          "requirement": "Criar carteira de depósitos e carteira BETTEX por usuário"
+        },
+        {
+          "domain": "wallets",
+          "line": 105,
+          "requirement": "Garantir endereços e chaves distintas para cada finalidade"
+        },
+        {
+          "domain": "history",
+          "line": 109,
+          "requirement": "Manter saldos e históricos separados por rede"
+        },
+        {
+          "domain": "accounts",
+          "line": 117,
+          "requirement": "Usar ID interno imutável para associar usuário e carteiras"
+        },
+        {
+          "domain": "security",
+          "line": 123,
+          "requirement": "Utilizar bibliotecas de criptografia segura para chaves"
+        },
+        {
+          "domain": "wallets",
+          "line": 127,
+          "requirement": "Gerar e assinar operações no lado do cliente"
+        },
+        {
+          "domain": "security",
+          "line": 129,
+          "requirement": "Não enviar chaves privadas ou sementes em texto puro ao servidor"
+        },
+        {
+          "domain": "security",
+          "line": 131,
+          "requirement": "Criptografar material privado com derivação de chave da senha"
+        },
+        {
+          "domain": "security",
+          "line": 135,
+          "requirement": "Proibir exposição de senhas e chaves em logs ou API"
+        },
+        {
+          "domain": "accounts",
+          "line": 141,
+          "requirement": "Provisionar contas e carteiras de forma idempotente"
+        },
+        {
+          "domain": "accounts",
+          "line": 158,
+          "requirement": "Permitir edição de perfil e visualização de carteiras"
+        },
+        {
+          "domain": "wallets",
+          "line": 166,
+          "requirement": "Permitir exportação de chaves privadas e backups criptografados"
+        },
+        {
+          "domain": "security",
+          "line": 170,
+          "requirement": "Exigir senha atual para revelar material privado"
+        },
+        {
+          "domain": "contracts",
+          "line": 188,
+          "requirement": "Utilizar USDC de teste oficial ou MockUSDC para testes"
+        },
+        {
+          "domain": "contracts",
+          "line": 192,
+          "requirement": "Implantar token BETTEX de teste apenas onde necessário"
+        },
+        {
+          "domain": "treasury",
+          "line": 204,
+          "requirement": "Implementar botão para distribuição de saldo de teste"
+        },
+        {
+          "domain": "history",
+          "line": 215,
+          "requirement": "Mostrar estados de processamento on-chain para distribuição"
+        },
+        {
+          "domain": "history",
+          "line": 223,
+          "requirement": "Permitir depósitos externos com validação na blockchain"
+        },
+        {
+          "domain": "participation",
+          "line": 231,
+          "requirement": "Implementar fluxo de compra de tokens com validação de gas e preço"
+        },
+        {
+          "domain": "contracts",
+          "line": 240,
+          "requirement": "Realizar operações atômicas para pagamento e entrega de tokens"
+        },
+        {
+          "domain": "security",
+          "line": 242,
+          "requirement": "Evitar aprovações ilimitadas de tokens"
+        },
+        {
+          "domain": "participation",
+          "line": 250,
+          "requirement": "Implementar funções de entrada e saída de staking"
+        },
+        {
+          "domain": "history",
+          "line": 262,
+          "requirement": "Exibir saldo, staking e rendimentos de forma segregada"
+        },
+        {
+          "domain": "architecture",
+          "line": 272,
+          "requirement": "Provisionar contas técnicas para agentes conforme documentação"
+        },
+        {
+          "domain": "architecture",
+          "line": 286,
+          "requirement": "Preparar blockchain EVM local com dados fictícios"
+        },
+        {
+          "domain": "architecture",
+          "line": 298,
+          "requirement": "Criar painel administrativo para consulta de rede e contratos"
+        },
+        {
+          "domain": "history",
+          "line": 315,
+          "requirement": "Entregar tabela final de status de todas as integrações"
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Copie-e-envie-ao-Replit-Atualize-a-documenta-o-do-BETTE_1791051269156.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "content",
+          "line": 3,
+          "requirement": "Atualizar documentação, gráficos, diagramas, tabelas e textos do BETTEX."
+        },
+        {
+          "domain": "treasury",
+          "line": 9,
+          "requirement": "Alocar 50% do lucro líquido distribuível para retenção e reinvestimento na tesouraria."
+        },
+        {
+          "domain": "participation",
+          "line": 10,
+          "requirement": "Alocar 25% do lucro líquido distribuível para distribuição diária aos stakers."
+        },
+        {
+          "domain": "wallets",
+          "line": 11,
+          "requirement": "Alocar 25% do lucro líquido distribuível para carteira exclusiva de recompra de BETTEX."
+        },
+        {
+          "domain": "treasury",
+          "line": 15,
+          "requirement": "Retenção de 100% do lucro na tesouraria em caso de insuficiência de reserva ou liquidez."
+        },
+        {
+          "domain": "wallets",
+          "line": 19,
+          "requirement": "Transferir 25% da destinação de recompra em USDC diariamente para carteira exclusiva segregada."
+        },
+        {
+          "domain": "wallets",
+          "line": 23,
+          "requirement": "Limitar o uso da carteira de recompra exclusivamente para compra de BETTEX."
+        },
+        {
+          "domain": "wallets",
+          "line": 25,
+          "requirement": "Proibir financiamento de operações, distribuições ou despesas corporativas pela carteira de recompra."
+        },
+        {
+          "domain": "treasury",
+          "line": 27,
+          "requirement": "Proibir contagem da carteira de recompra como reserva defensiva ou capital disponível."
+        },
+        {
+          "domain": "treasury",
+          "line": 29,
+          "requirement": "Distinguir contabilmente valores destinados, transferidos, comprometidos e gastos."
+        },
+        {
+          "domain": "contracts",
+          "line": 33,
+          "requirement": "Centralizar decisão de execução de recompra na administração."
+        },
+        {
+          "domain": "security",
+          "line": 37,
+          "requirement": "Manter multisig e controles existentes para movimentação de recursos."
+        },
+        {
+          "domain": "history",
+          "line": 39,
+          "requirement": "Publicar operações de recompra apenas após sua execução e conciliação."
+        },
+        {
+          "domain": "security",
+          "line": 49,
+          "requirement": "Implementar restrição de uso da carteira tecnicamente verificável on-chain."
+        },
+        {
+          "domain": "history",
+          "line": 55,
+          "requirement": "Reportar lucro distribuível apurado por dia com memória de cálculo."
+        },
+        {
+          "domain": "history",
+          "line": 57,
+          "requirement": "Registrar transferências para carteira de recompra e identificadores associados."
+        },
+        {
+          "domain": "history",
+          "line": 58,
+          "requirement": "Exibir saldo acumulado disponível e valores comprometidos na carteira de recompra."
+        },
+        {
+          "domain": "history",
+          "line": 59,
+          "requirement": "Manter histórico de recompras com data, USDC gasto, BETTEX adquirido, preço médio e custos."
+        },
+        {
+          "domain": "architecture",
+          "line": 64,
+          "requirement": "Identificar mecanismos de registro e contratos não implementados como previstos."
+        },
+        {
+          "domain": "content",
+          "line": 70,
+          "requirement": "Representar graficamente a distribuição de 50% tesouraria, 25% stakers e 25% recompra."
+        },
+        {
+          "domain": "content",
+          "line": 72,
+          "requirement": "Representar carteira de recompra como componente com etapa de autorização administrativa."
+        },
+        {
+          "domain": "research",
+          "line": 80,
+          "requirement": "Sinalizar destino dos tokens recomprados como pendente e identificar queima para revisão."
+        },
+        {
+          "domain": "content",
+          "line": 82,
+          "requirement": "Entregar resumo de arquivos e gráficos atualizados, além das pendências de implementação."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Copie-e-envie-ao-Replit-Estabele-a-uma-base-can-nica-de_1791157842565.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "content",
+          "line": 11,
+          "requirement": "Criar AGENTS.md para regras arquiteturais e instruções."
+        },
+        {
+          "domain": "content",
+          "line": 12,
+          "requirement": "Criar docs/architecture.md com mapa de módulos e dependências."
+        },
+        {
+          "domain": "content",
+          "line": 13,
+          "requirement": "Criar docs/decisions para registro de decisões arquiteturais."
+        },
+        {
+          "domain": "research",
+          "line": 15,
+          "requirement": "Configurar agente de desenvolvimento para consultar documentação de arquitetura."
+        },
+        {
+          "domain": "architecture",
+          "line": 19,
+          "requirement": "Organizar o sistema pelos domínios: usuários, carteiras, contabilidade, agentes, estratégias, risco e execução."
+        },
+        {
+          "domain": "architecture",
+          "line": 21,
+          "requirement": "Cada domínio deve ser proprietário de suas regras e dados sem concentrar lógica em utils ou services."
+        },
+        {
+          "domain": "contracts",
+          "line": 27,
+          "requirement": "Utilizar interfaces e adaptadores para acesso a carteiras, blockchains, corretoras e IAs."
+        },
+        {
+          "domain": "architecture",
+          "line": 31,
+          "requirement": "Comunicar entre módulos exclusivamente via interfaces públicas ou eventos com contratos explícitos."
+        },
+        {
+          "domain": "contracts",
+          "line": 39,
+          "requirement": "Implementar fluxo obrigatório: Agente propõe, motor de risco autoriza e executor realiza."
+        },
+        {
+          "domain": "security",
+          "line": 41,
+          "requirement": "Impedir IA de assinar transações, acessar chaves ou contornar controles de risco."
+        },
+        {
+          "domain": "security",
+          "line": 41,
+          "requirement": "Aplicar limites financeiros e permissões por código determinístico."
+        },
+        {
+          "domain": "security",
+          "line": 43,
+          "requirement": "Bloquear operações financeiras se validação obrigatória falhar ou estiver indisponível."
+        },
+        {
+          "domain": "contracts",
+          "line": 43,
+          "requirement": "Definir procedimentos de cancelamento, recuperação e redução de exposição."
+        },
+        {
+          "domain": "history",
+          "line": 47,
+          "requirement": "Toda operação financeira deve ter identificador único, estados explícitos e histórico auditável."
+        },
+        {
+          "domain": "security",
+          "line": 47,
+          "requirement": "Implementar proteção contra execução duplicada de operações financeiras."
+        },
+        {
+          "domain": "contracts",
+          "line": 49,
+          "requirement": "Reconciliar resultados externos incertos antes de reenviar mensagens."
+        },
+        {
+          "domain": "contracts",
+          "line": 51,
+          "requirement": "Utilizar valores com precisão exata e identificação de ativo e rede."
+        },
+        {
+          "domain": "wallets",
+          "line": 51,
+          "requirement": "Diferenciar saldo disponível, reservado e confirmado."
+        },
+        {
+          "domain": "contracts",
+          "line": 55,
+          "requirement": "Utilizar blockchain e corretora como fontes de verdade externas."
+        },
+        {
+          "domain": "contracts",
+          "line": 55,
+          "requirement": "Reconciliar livro-razão interno com fontes externas."
+        },
+        {
+          "domain": "history",
+          "line": 57,
+          "requirement": "Preservar histórico de correções contábeis via lançamentos compensatórios."
+        },
+        {
+          "domain": "security",
+          "line": 61,
+          "requirement": "Manter chaves e credenciais fora do código, logs e contexto de IA."
+        },
+        {
+          "domain": "security",
+          "line": 61,
+          "requirement": "Aplicar princípio de menor privilégio."
+        },
+        {
+          "domain": "history",
+          "line": 63,
+          "requirement": "Registrar proposta, decisão de risco, execução e resultado com identificador único."
+        },
+        {
+          "domain": "architecture",
+          "line": 63,
+          "requirement": "Separar ambientes de desenvolvimento, simulação e produção."
+        },
+        {
+          "domain": "security",
+          "line": 74,
+          "requirement": "Validar permissões, cálculos, duplicação e recuperação de falhas em novas implementações."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Entendi-Cada-cadastro-deve-criar-uma-conta-no-aplicativ_1791177846853.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "accounts",
+          "line": 11,
+          "requirement": "Realizar cadastro criando conta e duas carteiras distintas."
+        },
+        {
+          "domain": "wallets",
+          "line": 14,
+          "requirement": "Criar carteira de depósito compatível com Ethereum e USDC."
+        },
+        {
+          "domain": "wallets",
+          "line": 15,
+          "requirement": "Criar carteira dedicada para projeto BETTEX e recebimentos de staking."
+        },
+        {
+          "domain": "architecture",
+          "line": 19,
+          "requirement": "Arquitetura deve suportar expansão futura para mais carteiras."
+        },
+        {
+          "domain": "contracts",
+          "line": 25,
+          "requirement": "Diferenciar explicitamente redes Ethereum Mainnet e Arbitrum."
+        },
+        {
+          "domain": "contracts",
+          "line": 27,
+          "requirement": "Configurar rede como variável e usar rede de testes durante desenvolvimento."
+        },
+        {
+          "domain": "wallets",
+          "line": 29,
+          "requirement": "Registrar metadados de cada carteira (usuário, finalidade, endereço, chave, rede)."
+        },
+        {
+          "domain": "contracts",
+          "line": 31,
+          "requirement": "Configurar USDC via endereço oficial de contrato, não por nome."
+        },
+        {
+          "domain": "wallets",
+          "line": 33,
+          "requirement": "Exibir dados de depósito (endereço, QR, ativo, rede) com aviso de rede correta."
+        },
+        {
+          "domain": "accounts",
+          "line": 40,
+          "requirement": "Coletar e-mail no cadastro sem obrigatoriedade de confirmação."
+        },
+        {
+          "domain": "security",
+          "line": 48,
+          "requirement": "Não implementar KYC ou verificação de identidade nesta etapa."
+        },
+        {
+          "domain": "accounts",
+          "line": 50,
+          "requirement": "Validar formato e unicidade do e-mail sem verificação de propriedade."
+        },
+        {
+          "domain": "security",
+          "line": 54,
+          "requirement": "Não implementar qualquer fluxo de recuperação de senha."
+        },
+        {
+          "domain": "content",
+          "line": 60,
+          "requirement": "Exibir aviso sobre ausência de recuperação de senha antes do cadastro."
+        },
+        {
+          "domain": "content",
+          "line": 62,
+          "requirement": "Exigir caixa de confirmação de ciência sobre ausência de recuperação."
+        },
+        {
+          "domain": "history",
+          "line": 66,
+          "requirement": "Registrar versão do aviso e data de aceite do usuário."
+        },
+        {
+          "domain": "security",
+          "line": 74,
+          "requirement": "Gerar carteiras com biblioteca consolidada e aleatoriedade segura."
+        },
+        {
+          "domain": "security",
+          "line": 76,
+          "requirement": "Não derivar chaves de dados pessoais ou reutilizar carteiras entre usuários."
+        },
+        {
+          "domain": "architecture",
+          "line": 78,
+          "requirement": "Preferir geração e assinatura no lado do cliente."
+        },
+        {
+          "domain": "security",
+          "line": 80,
+          "requirement": "Não armazenar chaves privadas em texto puro ou chaves administrativas."
+        },
+        {
+          "domain": "security",
+          "line": 82,
+          "requirement": "Utilizar criptografia autenticada e hash adequado para proteção de chaves."
+        },
+        {
+          "domain": "security",
+          "line": 84,
+          "requirement": "Não exibir senhas ou chaves em logs, analytics ou APIs."
+        },
+        {
+          "domain": "accounts",
+          "line": 90,
+          "requirement": "Executar fluxo de cadastro atômico (usuário, carteiras e associações)."
+        },
+        {
+          "domain": "security",
+          "line": 94,
+          "requirement": "Permitir retomar cadastro sem criar carteiras duplicadas em caso de falha."
+        },
+        {
+          "domain": "contracts",
+          "line": 96,
+          "requirement": "Não cobrar gas ou enviar fundos para criação de carteira."
+        },
+        {
+          "domain": "accounts",
+          "line": 104,
+          "requirement": "Permitir alteração de nome de exibição no perfil."
+        },
+        {
+          "domain": "accounts",
+          "line": 105,
+          "requirement": "Permitir alteração de e-mail mediante senha atual."
+        },
+        {
+          "domain": "accounts",
+          "line": 106,
+          "requirement": "Permitir alteração de senha mediante senha atual."
+        },
+        {
+          "domain": "accounts",
+          "line": 110,
+          "requirement": "Usar ID interno imutável para associar usuário a carteiras."
+        },
+        {
+          "domain": "security",
+          "line": 112,
+          "requirement": "Recriptografar carteiras ao alterar senha sem criar novas chaves."
+        },
+        {
+          "domain": "wallets",
+          "line": 121,
+          "requirement": "Permitir exportação de chaves privadas e backup em formato compatível."
+        },
+        {
+          "domain": "security",
+          "line": 125,
+          "requirement": "Exigir senha atual para revelar chaves e realizar descriptografia no cliente."
+        },
+        {
+          "domain": "content",
+          "line": 127,
+          "requirement": "Exibir aviso de segurança antes da exportação de chaves."
+        },
+        {
+          "domain": "security",
+          "line": 131,
+          "requirement": "Manter chaves privadas ocultas por padrão e fora de exportações gerais."
+        },
+        {
+          "domain": "participation",
+          "line": 135,
+          "requirement": "Associar carteira BETTEX ao recebimento de staking."
+        },
+        {
+          "domain": "treasury",
+          "line": 137,
+          "requirement": "Manter registros separados de saldos, alocação e rendimentos."
+        },
+        {
+          "domain": "participation",
+          "line": 147,
+          "requirement": "Não automatizar staking ou transferências sem ação explícita."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Entendido-A-base-ser-consultada-pela-pr-pria-IA-que-des_1791158184347.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "architecture",
+          "line": 3,
+          "requirement": "Implementar base interna de documentação técnica oficial atualizável e consultável pelo agente."
+        },
+        {
+          "domain": "content",
+          "line": 15,
+          "requirement": "Cadastrar fontes oficiais iniciais: Arbitrum, Ethereum, Allora, Robinhood e Polymarket."
+        },
+        {
+          "domain": "research",
+          "line": 25,
+          "requirement": "Descobrir e validar repositórios, APIs, SDKs e especificações vinculados às fontes oficiais."
+        },
+        {
+          "domain": "content",
+          "line": 27,
+          "requirement": "Priorizar formatos Markdown, OpenAPI, sitemaps e arquivos llms.txt para extração."
+        },
+        {
+          "domain": "content",
+          "line": 31,
+          "requirement": "Coletar documentação oficial evitando duplicações, publicidade e conteúdo sem relação técnica."
+        },
+        {
+          "domain": "contracts",
+          "line": 33,
+          "requirement": "Incluir padrões ERC, EIPs, Solidity e bibliotecas utilizadas no projeto para Ethereum."
+        },
+        {
+          "domain": "history",
+          "line": 35,
+          "requirement": "Registrar cobertura da coleta detalhando documentos, falhas e lacunas."
+        },
+        {
+          "domain": "security",
+          "line": 37,
+          "requirement": "Respeitar limites de acesso das fontes sem contornar autenticação ou bloqueios."
+        },
+        {
+          "domain": "architecture",
+          "line": 41,
+          "requirement": "Utilizar armazenamento persistente separado de arquivos temporários."
+        },
+        {
+          "domain": "content",
+          "line": 43,
+          "requirement": "Preservar conteúdo original e versão normalizada para consulta por máquina."
+        },
+        {
+          "domain": "history",
+          "line": 45,
+          "requirement": "Registrar metadados específicos para cada documento coletado."
+        },
+        {
+          "domain": "history",
+          "line": 52,
+          "requirement": "Preservar versões anteriores e isolar resumos ou análises da IA do texto oficial."
+        },
+        {
+          "domain": "architecture",
+          "line": 56,
+          "requirement": "Disponibilizar ferramenta interna via CLI ou função executável pelo agente."
+        },
+        {
+          "domain": "content",
+          "line": 58,
+          "requirement": "Implementar recuperação de trechos por plataforma, assunto e versão com metadados."
+        },
+        {
+          "domain": "architecture",
+          "line": 62,
+          "requirement": "Consultar base e conferir compatibilidade antes de implementar ou modificar integrações."
+        },
+        {
+          "domain": "history",
+          "line": 68,
+          "requirement": "Registrar as referências documentais utilizadas na documentação técnica de cada alteração."
+        },
+        {
+          "domain": "architecture",
+          "line": 74,
+          "requirement": "Implementar agendador persistente para verificação diária de atualização das fontes."
+        },
+        {
+          "domain": "content",
+          "line": 76,
+          "requirement": "Baixar apenas dados alterados utilizando hashes, commits ou mecanismos HTTP."
+        },
+        {
+          "domain": "security",
+          "line": 78,
+          "requirement": "Implementar proteção contra concorrência, retentativas com espera progressiva e recuperação de falhas."
+        },
+        {
+          "domain": "history",
+          "line": 84,
+          "requirement": "Preservar comparação entre versões e identificar mudanças de impacto técnico."
+        },
+        {
+          "domain": "security",
+          "line": 92,
+          "requirement": "Tratar documentos como referência, ignorando comandos injetados de modificação ou acesso."
+        },
+        {
+          "domain": "security",
+          "line": 94,
+          "requirement": "Não armazenar chaves, credenciais ou dados de usuários na base de documentação."
+        },
+        {
+          "domain": "architecture",
+          "line": 98,
+          "requirement": "Atualizar AGENTS.md e documentação arquitetural com diretrizes do módulo."
+        },
+        {
+          "domain": "architecture",
+          "line": 108,
+          "requirement": "Validar coleta, consulta, sincronização, detecção de alterações e recuperação de falhas."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Execu-o-da-rodada-e-USDC-confirmado-na-carteira-Cada-ro_1791059880906.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "contracts",
+          "line": 1,
+          "requirement": "Rodada diária UTC executada e USDC confirmado na carteira do titular."
+        },
+        {
+          "domain": "participation",
+          "line": 2,
+          "requirement": "Rodadas são únicas e independentes; encerradas não reabrem, não somam lucros ou pesos entre si."
+        },
+        {
+          "domain": "treasury",
+          "line": 4,
+          "requirement": "Valores não pagos ficam na tesouraria; autorizações não executadas são encerradas sem migração."
+        },
+        {
+          "domain": "security",
+          "line": 6,
+          "requirement": "Cancelamento de autorização bloqueia envio antigo e registra efeitos uma única vez."
+        },
+        {
+          "domain": "participation",
+          "line": 8,
+          "requirement": "Saída de BETTEX cancela créditos acumulados do ciclo ainda não pagos."
+        },
+        {
+          "domain": "participation",
+          "line": 10,
+          "requirement": "Saída de BETTEX cancela créditos apurados, autorizados e pagamentos pendentes."
+        },
+        {
+          "domain": "wallets",
+          "line": 12,
+          "requirement": "Saque de USDC não cancela créditos de staking."
+        },
+        {
+          "domain": "treasury",
+          "line": 14,
+          "requirement": "Frações não executáveis retornam à tesouraria, sem acúmulo ou redistribuição."
+        },
+        {
+          "domain": "security",
+          "line": 16,
+          "requirement": "Revalidar ausência de saída de BETTEX antes de iniciar pagamento."
+        },
+        {
+          "domain": "treasury",
+          "line": 18,
+          "requirement": "Validar tributos e retenções antes de iniciar o pagamento."
+        },
+        {
+          "domain": "participation",
+          "line": 20,
+          "requirement": "Pagamento autorizado apenas enquanto a rodada estiver em execução."
+        },
+        {
+          "domain": "architecture",
+          "line": 22,
+          "requirement": "Reservar parcelas e executor em decisão indivisível antes do envio."
+        },
+        {
+          "domain": "security",
+          "line": 24,
+          "requirement": "Somente executor registrado pode iniciar pagamento após revalidar valores e liquidez."
+        },
+        {
+          "domain": "contracts",
+          "line": 26,
+          "requirement": "Autorização vinculada a identificador, revisão e conteúdo de uma única rodada."
+        },
+        {
+          "domain": "treasury",
+          "line": 28,
+          "requirement": "Pagamento exige recursos para principal e custos discriminados sem valores inventados."
+        },
+        {
+          "domain": "history",
+          "line": 30,
+          "requirement": "Concluir tentativa exige distinguir recebimentos, custos e recursos não utilizados."
+        },
+        {
+          "domain": "wallets",
+          "line": 32,
+          "requirement": "USDC reconhecido apenas após transferência on-chain confirmada e conciliada."
+        },
+        {
+          "domain": "security",
+          "line": 34,
+          "requirement": "Confirmar recebimento exige critério validado para a rede pertinente."
+        },
+        {
+          "domain": "history",
+          "line": 36,
+          "requirement": "Confirmação invalidada coloca parcela em conciliação sem contá-la em dois estados."
+        },
+        {
+          "domain": "wallets",
+          "line": 38,
+          "requirement": "Invalidação não autoriza reenvio automático ou débito na carteira."
+        },
+        {
+          "domain": "treasury",
+          "line": 40,
+          "requirement": "Obrigação reconhecida uma única vez na apuração."
+        },
+        {
+          "domain": "wallets",
+          "line": 42,
+          "requirement": "Valor em execução e saldo recebido não somam como dois valores disponíveis."
+        },
+        {
+          "domain": "history",
+          "line": 46,
+          "requirement": "Pagamento indevido já realizado é distinguido de excesso não enviado."
+        },
+        {
+          "domain": "wallets",
+          "line": 48,
+          "requirement": "Tarifa fixa de US$ 2,50 para saque de USDC."
+        },
+        {
+          "domain": "participation",
+          "line": 59,
+          "requirement": "Saída de BETTEX impede restauração de direitos, complementos ou reenvios cancelados."
+        },
+        {
+          "domain": "history",
+          "line": 61,
+          "requirement": "Erro de apuração corrigido por ajuste identificado e único vinculado à rodada original."
+        },
+        {
+          "domain": "treasury",
+          "line": 63,
+          "requirement": "Excesso de crédito não enviado é corrigido na obrigação pendente."
+        },
+        {
+          "domain": "treasury",
+          "line": 65,
+          "requirement": "Pagamento a maior recebido não gera cobrança automática ou dívida futura."
+        },
+        {
+          "domain": "history",
+          "line": 69,
+          "requirement": "Correções sucessivas registram apenas a variação efetiva."
+        },
+        {
+          "domain": "participation",
+          "line": 73,
+          "requirement": "Pagamento a menor ajustável apenas durante a execução da própria rodada."
+        },
+        {
+          "domain": "security",
+          "line": 75,
+          "requirement": "Ajustes de pagamento exigem revalidação de tributos e saída de BETTEX."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Fa-a-a-BETTEX-funcionar-de-ponta-a-ponta-no-aplicativo-_1791179736119.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "contracts",
+          "line": 3,
+          "requirement": "Integrar token, pool de compra, staking e tesouraria para fluxo ponta a ponta"
+        },
+        {
+          "domain": "architecture",
+          "line": 13,
+          "requirement": "Respeitar arquitetura existente, corrigir módulos em vez de recriar"
+        },
+        {
+          "domain": "content",
+          "line": 15,
+          "requirement": "Utilizar nome BETTEX e identificar ativos corretamente conforme documentação"
+        },
+        {
+          "domain": "wallets",
+          "line": 19,
+          "requirement": "Exibir endereço de depósito, rede, ativo, QR code e histórico na interface"
+        },
+        {
+          "domain": "wallets",
+          "line": 28,
+          "requirement": "Implementar função para receber ativos de teste via blockchain"
+        },
+        {
+          "domain": "wallets",
+          "line": 30,
+          "requirement": "Distribuir gas de teste para carteiras de operação"
+        },
+        {
+          "domain": "history",
+          "line": 32,
+          "requirement": "Exibir estados de transação: solicitado, enviado, confirmado ou falhou"
+        },
+        {
+          "domain": "wallets",
+          "line": 34,
+          "requirement": "Atualizar saldo via integração com blockchain após confirmação"
+        },
+        {
+          "domain": "history",
+          "line": 36,
+          "requirement": "Diferenciar distribuição gratuita de depósitos externos no histórico"
+        },
+        {
+          "domain": "contracts",
+          "line": 40,
+          "requirement": "Conectar interface ao pool ou contrato de venda real"
+        },
+        {
+          "domain": "participation",
+          "line": 42,
+          "requirement": "Exibir resumo da compra com valores, tarifas, gas e destinatário antes de confirmar"
+        },
+        {
+          "domain": "contracts",
+          "line": 52,
+          "requirement": "Verificar saldo, aprovação, estoque de vesting e disponibilidade do contrato"
+        },
+        {
+          "domain": "security",
+          "line": 54,
+          "requirement": "Executar autorização de gasto (approve) e compra sem usar aprovação ilimitada"
+        },
+        {
+          "domain": "contracts",
+          "line": 56,
+          "requirement": "Garantir que pagamento saia da carteira de depósitos e tokens cheguem à do usuário"
+        },
+        {
+          "domain": "contracts",
+          "line": 58,
+          "requirement": "Aguardar confirmação on-chain para considerar compra concluída"
+        },
+        {
+          "domain": "security",
+          "line": 60,
+          "requirement": "Impedir cliques repetidos que causem compras duplicadas"
+        },
+        {
+          "domain": "contracts",
+          "line": 62,
+          "requirement": "Não habilitar funções de troca não suportadas pelo pool"
+        },
+        {
+          "domain": "participation",
+          "line": 66,
+          "requirement": "Implementar e respeitar o mecanismo de staking automático definido"
+        },
+        {
+          "domain": "participation",
+          "line": 68,
+          "requirement": "Exibir saldo, participação, elegibilidade e rendimentos no painel"
+        },
+        {
+          "domain": "participation",
+          "line": 79,
+          "requirement": "Integrar autorização de usuário para staking de forma clara"
+        },
+        {
+          "domain": "treasury",
+          "line": 85,
+          "requirement": "Encaminhar automaticamente o principal à tesouraria após compra"
+        },
+        {
+          "domain": "treasury",
+          "line": 87,
+          "requirement": "Monitorar estados pendentes de transferência para tesouraria"
+        },
+        {
+          "domain": "history",
+          "line": 91,
+          "requirement": "Exibir detalhes financeiros de cada compra na interface"
+        },
+        {
+          "domain": "treasury",
+          "line": 99,
+          "requirement": "Permitir consulta on-chain de saldo e métricas da tesouraria"
+        },
+        {
+          "domain": "security",
+          "line": 113,
+          "requirement": "Agregar dados sem expor informações pessoais de usuários"
+        },
+        {
+          "domain": "history",
+          "line": 119,
+          "requirement": "Utilizar eventos on-chain para reconciliação e confirmação financeira"
+        },
+        {
+          "domain": "history",
+          "line": 121,
+          "requirement": "Registrar metadados de transação (rede, hash, participantes, estados)"
+        },
+        {
+          "domain": "security",
+          "line": 123,
+          "requirement": "Garantir idempotência e tratamento de falhas em transações"
+        },
+        {
+          "domain": "history",
+          "line": 125,
+          "requirement": "Garantir consistência entre histórico, saldos e estados de participação"
+        },
+        {
+          "domain": "accounts",
+          "line": 134,
+          "requirement": "Persistir dados conciliados para visualização em diferentes dispositivos"
+        },
+        {
+          "domain": "content",
+          "line": 142,
+          "requirement": "Exibir mensagens de erro úteis para falhas de rede, saldo ou assinatura"
+        },
+        {
+          "domain": "content",
+          "line": 146,
+          "requirement": "Manter aviso de ambiente de testes visível"
+        },
+        {
+          "domain": "security",
+          "line": 150,
+          "requirement": "Ocultar chaves privadas e detalhes internos em telas comuns"
+        },
+        {
+          "domain": "research",
+          "line": 154,
+          "requirement": "Realizar teste de percurso completo com conta de teste"
+        },
+        {
+          "domain": "history",
+          "line": 168,
+          "requirement": "Comparar valores on-chain vs banco e considerar gas na reconciliação"
+        },
+        {
+          "domain": "contracts",
+          "line": 170,
+          "requirement": "Usar exclusivamente testnets e ativos gratuitos"
+        },
+        {
+          "domain": "research",
+          "line": 178,
+          "requirement": "Apresentar evidências, logs e passos de teste na entrega final"
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Fa-a-uma-revis-o-integral-de-todos-os-prompts-anteriore_1791180145655.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "architecture",
+          "line": 1,
+          "requirement": "Revisão integral de prompts anteriores e conclusão de pendências"
+        },
+        {
+          "domain": "research",
+          "line": 5,
+          "requirement": "Revisar histórico, documentação, código, migrações, contratos e configurações"
+        },
+        {
+          "domain": "architecture",
+          "line": 7,
+          "requirement": "Criar matriz de rastreabilidade com status e evidências de cada requisito"
+        },
+        {
+          "domain": "accounts",
+          "line": 9,
+          "requirement": "Implementar cadastro, acesso e suporte a carteiras"
+        },
+        {
+          "domain": "wallets",
+          "line": 9,
+          "requirement": "Implementar testnets, depósitos e reservas de teste"
+        },
+        {
+          "domain": "contracts",
+          "line": 9,
+          "requirement": "Implementar emissão, alocações e vesting"
+        },
+        {
+          "domain": "participation",
+          "line": 9,
+          "requirement": "Implementar swapping e staking"
+        },
+        {
+          "domain": "treasury",
+          "line": 9,
+          "requirement": "Implementar gestão de tesouraria e distribuições"
+        },
+        {
+          "domain": "history",
+          "line": 9,
+          "requirement": "Implementar registros de históricos e segurança"
+        },
+        {
+          "domain": "architecture",
+          "line": 9,
+          "requirement": "Organizar o código do projeto"
+        },
+        {
+          "domain": "security",
+          "line": 11,
+          "requirement": "Verificar funcionamento e integração completa de funcionalidades"
+        },
+        {
+          "domain": "research",
+          "line": 15,
+          "requirement": "Identificar e documentar lacunas, TODOs e mocks"
+        },
+        {
+          "domain": "architecture",
+          "line": 19,
+          "requirement": "Registrar decisões técnicas, justificativas e componentes afetados"
+        },
+        {
+          "domain": "treasury",
+          "line": 23,
+          "requirement": "Adotar configurações reversíveis para parâmetros econômicos indefinidos"
+        },
+        {
+          "domain": "architecture",
+          "line": 31,
+          "requirement": "Substituir mocks por integrações reais"
+        },
+        {
+          "domain": "security",
+          "line": 41,
+          "requirement": "Validar fluxos de interface no banco e na blockchain"
+        },
+        {
+          "domain": "content",
+          "line": 43,
+          "requirement": "Executar fluxo: cadastro, login, depósito, compra, staking, tesouraria, distribuição e histórico"
+        },
+        {
+          "domain": "security",
+          "line": 45,
+          "requirement": "Verificar segurança, isolamento, persistência e prevenção de duplicações"
+        },
+        {
+          "domain": "security",
+          "line": 47,
+          "requirement": "Diferenciar testes locais de verificações em testnets públicas"
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Fra-es-n-o-execut-veis-do-rateio-n-o-s-o-pagas-nem-fica_1791059541235.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "treasury",
+          "line": 1,
+          "requirement": "Frações não executáveis do rateio retornam à tesouraria, não sendo pagas, acumuladas ou redistribuídas."
+        },
+        {
+          "domain": "contracts",
+          "line": 3,
+          "requirement": "O cálculo de rateio deve utilizar precisão exata, ajustando a parcela pagável para baixo conforme a precisão do ativo e do conector."
+        },
+        {
+          "domain": "history",
+          "line": 3,
+          "requirement": "O registro deve identificar o cálculo, valor executável e frações retornadas à tesouraria, separando retenções tributárias do rateio."
+        },
+        {
+          "domain": "treasury",
+          "line": 5,
+          "requirement": "A tesouraria deve reter 50% do valor, destinar 25% ao rateio e 25% à carteira exclusiva de recompra."
+        },
+        {
+          "domain": "contracts",
+          "line": 5,
+          "requirement": "O pagamento efetivo deve excluir frações não executáveis e créditos cancelados por saída de BETTEX."
+        },
+        {
+          "domain": "treasury",
+          "line": 7,
+          "requirement": "Valores não pagos após o encerramento da rodada devem permanecer na tesouraria, sem migração para rodadas futuras."
+        },
+        {
+          "domain": "history",
+          "line": 7,
+          "requirement": "Transferências incertas ou não enviadas não devem reabrir rateios encerrados nem constituir créditos de novas rodadas."
+        },
+        {
+          "domain": "contracts",
+          "line": 9,
+          "requirement": "Apenas valores executáveis e autorizados podem ser pagos durante a rodada, sem consolidar parcelas de períodos diferentes."
+        },
+        {
+          "domain": "security",
+          "line": 9,
+          "requirement": "Envios incertos devem ser mantidos para conciliação sem presumir recuperação ou reenvio."
+        },
+        {
+          "domain": "treasury",
+          "line": 11,
+          "requirement": "Se a soma dos pesos elegíveis for zero, o lucro deve permanecer 100% na tesouraria."
+        },
+        {
+          "domain": "participation",
+          "line": 13,
+          "requirement": "Saída de BETTEX (saque, venda, transferência) deve cancelar todos os créditos de ciclo acumulados e zerar o peso do participante."
+        },
+        {
+          "domain": "participation",
+          "line": 15,
+          "requirement": "O cancelamento por saída de BETTEX deve zerar créditos executáveis e autorizados, com retorno das frações à tesouraria."
+        },
+        {
+          "domain": "history",
+          "line": 15,
+          "requirement": "O cancelamento deve ser registrado por titular e ciclo, vedando a transferência de direitos a novos participantes."
+        },
+        {
+          "domain": "wallets",
+          "line": 17,
+          "requirement": "Saques de USDC não devem cancelar créditos de staking."
+        },
+        {
+          "domain": "treasury",
+          "line": 19,
+          "requirement": "Lucros não pagos em rodadas encerradas devem permanecer na tesouraria sem liberação futura para staking."
+        },
+        {
+          "domain": "participation",
+          "line": 21,
+          "requirement": "Tokens não liberados e estoque institucional devem ser excluídos do cálculo de participação."
+        },
+        {
+          "domain": "participation",
+          "line": 21,
+          "requirement": "Tokens de fundadores e investidores devem seguir os mesmos critérios de elegibilidade dos demais titulares."
+        },
+        {
+          "domain": "participation",
+          "line": 23,
+          "requirement": "A participação deve ser recalculada após a confirmação de entrada, sem recuperação de peso ou créditos pretéritos."
+        },
+        {
+          "domain": "history",
+          "line": 27,
+          "requirement": "O histórico deve registrar intervalos de saldo, pesos elegíveis, parcelas executáveis, pagamentos e encerramento de rodada."
+        },
+        {
+          "domain": "wallets",
+          "line": 27,
+          "requirement": "Valores não recebidos durante a execução não devem compor o saldo disponível na Carteira USDC."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Implemente-o-hist-rico-financeiro-e-de-atividades-da-BE_1791179913215.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "history",
+          "line": 1,
+          "requirement": "Implementar histórico de atividades e financeiro integrado aos fluxos de conta, carteiras, depósitos, saques, swapping, staking, tesouraria e distribuição."
+        },
+        {
+          "domain": "architecture",
+          "line": 9,
+          "requirement": "Integrar históricos na arquitetura atual sem sistemas paralelos ou tabelas duplicadas."
+        },
+        {
+          "domain": "security",
+          "line": 11,
+          "requirement": "Garantir processamento determinístico, idempotência, rastreabilidade e segregação por usuário, rede e ambiente."
+        },
+        {
+          "domain": "contracts",
+          "line": 13,
+          "requirement": "Utilizar BETTEX como nome do token e identificar ativos pela configuração existente."
+        },
+        {
+          "domain": "history",
+          "line": 19,
+          "requirement": "Registrar movimentações financeiras como depósitos, compras, saques, entrada em staking e recebimentos de distribuição."
+        },
+        {
+          "domain": "accounts",
+          "line": 20,
+          "requirement": "Registrar atividades da conta como login, alteração de perfil, exportação de backup e solicitação de operação."
+        },
+        {
+          "domain": "history",
+          "line": 21,
+          "requirement": "Registrar processamento automático executado por sistema, contrato ou agente."
+        },
+        {
+          "domain": "history",
+          "line": 22,
+          "requirement": "Registrar dados técnicos de diagnóstico para operação do sistema."
+        },
+        {
+          "domain": "architecture",
+          "line": 24,
+          "requirement": "Utilizar identificador de correlação para vincular registros de uma mesma operação."
+        },
+        {
+          "domain": "history",
+          "line": 32,
+          "requirement": "Permitir consulta ao histórico financeiro do usuário."
+        },
+        {
+          "domain": "history",
+          "line": 51,
+          "requirement": "Preservar detalhes técnicos de cada compra ou troca (swapping)."
+        },
+        {
+          "domain": "history",
+          "line": 66,
+          "requirement": "Preservar valores efetivamente executados sem recalcular com cotação atual."
+        },
+        {
+          "domain": "participation",
+          "line": 72,
+          "requirement": "Registrar eventos de staking, incluindo alterações de quantidade e ações automáticas."
+        },
+        {
+          "domain": "participation",
+          "line": 78,
+          "requirement": "Registrar versões de regras de staking e não sobrescrever históricos ao mudar configurações."
+        },
+        {
+          "domain": "treasury",
+          "line": 82,
+          "requirement": "Relacionar distribuições ao período de apuração e registrar detalhes de pagamento."
+        },
+        {
+          "domain": "treasury",
+          "line": 99,
+          "requirement": "Registrar movimentos da tesouraria e pools (vendas, alocações, retornos, custos, reservas)."
+        },
+        {
+          "domain": "treasury",
+          "line": 103,
+          "requirement": "Separar histórico administrativo detalhado de transparência pública agregada."
+        },
+        {
+          "domain": "accounts",
+          "line": 109,
+          "requirement": "Registrar ações relevantes da conta (criação, login, alterações, carteiras, solicitações)."
+        },
+        {
+          "domain": "security",
+          "line": 126,
+          "requirement": "Proibir armazenamento de senhas, chaves privadas, frases-semente ou tokens de sessão nos históricos."
+        },
+        {
+          "domain": "contracts",
+          "line": 134,
+          "requirement": "Registrar valores financeiros em unidades exatas sem usar ponto flutuante."
+        },
+        {
+          "domain": "history",
+          "line": 138,
+          "requirement": "Utilizar fuso horário UTC na persistência de datas e apresentar fuso local ao usuário."
+        },
+        {
+          "domain": "contracts",
+          "line": 140,
+          "requirement": "Registrar metadados de eventos blockchain (rede, hash, bloco, índice)."
+        },
+        {
+          "domain": "security",
+          "line": 142,
+          "requirement": "Garantir restrições de unicidade e capacidade de retomada após falhas."
+        },
+        {
+          "domain": "content",
+          "line": 161,
+          "requirement": "Implementar paginação no servidor com ordenação estável por data e identificador."
+        },
+        {
+          "domain": "content",
+          "line": 163,
+          "requirement": "Implementar filtros por período, tipo, estado, ativo, rede e carteira."
+        },
+        {
+          "domain": "security",
+          "line": 181,
+          "requirement": "Restringir consulta de registros privados apenas ao próprio usuário."
+        },
+        {
+          "domain": "security",
+          "line": 183,
+          "requirement": "Validar autorização no servidor (não confiar em filtros do navegador)."
+        },
+        {
+          "domain": "security",
+          "line": 185,
+          "requirement": "Restringir histórico administrativo por função."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Implemente-os-pr-ximos-passos-da-BETTEX-estrutura-da-te_1791179519489.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "treasury",
+          "line": 1,
+          "requirement": "Implementar tesouraria, staking, apuração e distribuição em ambiente de testes."
+        },
+        {
+          "domain": "content",
+          "line": 3,
+          "requirement": "Utilizar o nome BETTEX; não utilizar abreviações."
+        },
+        {
+          "domain": "architecture",
+          "line": 5,
+          "requirement": "Dar continuidade ao cadastro, carteiras, emissão, vesting e pool de compra."
+        },
+        {
+          "domain": "research",
+          "line": 9,
+          "requirement": "Pesquisar documentação interna e código existente antes de implementar."
+        },
+        {
+          "domain": "architecture",
+          "line": 26,
+          "requirement": "Encaixar responsabilidades nos componentes existentes, garantindo eventos, determinismo e idempotência."
+        },
+        {
+          "domain": "architecture",
+          "line": 28,
+          "requirement": "Não reimplemente cadastro, carteiras ou contratos existentes sem necessidade."
+        },
+        {
+          "domain": "participation",
+          "line": 36,
+          "requirement": "Definir o modelo de staking (tokens na carteira vs. contrato de depósito)."
+        },
+        {
+          "domain": "participation",
+          "line": 42,
+          "requirement": "Utilizar quantidade e tempo de BETTEX para elegibilidade; não usar saldo em dólares sem autorização explícita."
+        },
+        {
+          "domain": "security",
+          "line": 46,
+          "requirement": "Proteger chaves e garantir que experiências automáticas usem autorização prévia, sem acesso irrestrito."
+        },
+        {
+          "domain": "history",
+          "line": 48,
+          "requirement": "Implementar acompanhamento histórico de saldo para modelos baseados em saldo."
+        },
+        {
+          "domain": "treasury",
+          "line": 52,
+          "requirement": "Implementar controlador determinístico da tesouraria."
+        },
+        {
+          "domain": "treasury",
+          "line": 54,
+          "requirement": "Reconciliar fluxos de capital, reservas, alocações, custos e resultados na tesouraria."
+        },
+        {
+          "domain": "treasury",
+          "line": 70,
+          "requirement": "Evitar contagem dupla de recursos (reserva vs. capital alocado vs. verba de recompra)."
+        },
+        {
+          "domain": "treasury",
+          "line": 72,
+          "requirement": "Diferenciar disponibilidade contábil de saldo transferível por rede."
+        },
+        {
+          "domain": "wallets",
+          "line": 78,
+          "requirement": "Definir destinos das contas para tesouraria, pagamentos, recompra e receita operacional."
+        },
+        {
+          "domain": "wallets",
+          "line": 80,
+          "requirement": "Segregar recursos por contas, contratos ou registros verificáveis."
+        },
+        {
+          "domain": "security",
+          "line": 84,
+          "requirement": "Identificar níveis de autorização para alocação, pausa, apuração e pagamentos."
+        },
+        {
+          "domain": "security",
+          "line": 86,
+          "requirement": "Proteger credenciais em secrets, separadas das chaves pessoais."
+        },
+        {
+          "domain": "security",
+          "line": 88,
+          "requirement": "Não permitir que IAs alterem saldos ou autorizem transferências diretamente."
+        },
+        {
+          "domain": "treasury",
+          "line": 94,
+          "requirement": "Destinar 100% da venda primária à tesouraria, com tarifa separada para a companhia."
+        },
+        {
+          "domain": "treasury",
+          "line": 96,
+          "requirement": "Destinar aportes vinculados a investidores (50% companhia, 50% tesouraria)."
+        },
+        {
+          "domain": "treasury",
+          "line": 97,
+          "requirement": "Manter reserva defensiva mínima de 50% do patrimônio líquido."
+        },
+        {
+          "domain": "treasury",
+          "line": 99,
+          "requirement": "Dividir lucro elegível: 50% retenção, 25% participantes, 25% recompra."
+        },
+        {
+          "domain": "treasury",
+          "line": 100,
+          "requirement": "Realizar apuração e alocação diárias."
+        },
+        {
+          "domain": "treasury",
+          "line": 101,
+          "requirement": "Executar recompras via decisão administrativa manual."
+        },
+        {
+          "domain": "treasury",
+          "line": 102,
+          "requirement": "Reter integralmente o lucro em caso de falha nos controles financeiros."
+        },
+        {
+          "domain": "treasury",
+          "line": 112,
+          "requirement": "Implementar apuração reproduzível por período baseada em registros conciliados."
+        },
+        {
+          "domain": "treasury",
+          "line": 118,
+          "requirement": "Não distribuir resultados não realizados."
+        },
+        {
+          "domain": "treasury",
+          "line": 120,
+          "requirement": "Verificar custos, obrigações e liquidez antes de liberar pagamentos."
+        },
+        {
+          "domain": "history",
+          "line": 128,
+          "requirement": "Manter trilha de auditoria para correções em períodos encerrados."
+        },
+        {
+          "domain": "participation",
+          "line": 134,
+          "requirement": "Excluir tokens bloqueados ou institucionais do rateio de participação."
+        },
+        {
+          "domain": "history",
+          "line": 136,
+          "requirement": "Registrar mudanças de elegibilidade com referência temporal."
+        },
+        {
+          "domain": "wallets",
+          "line": 157,
+          "requirement": "Realizar pagamentos na carteira BETTEX cadastrada, na rede correta."
+        },
+        {
+          "domain": "treasury",
+          "line": 171,
+          "requirement": "Preservar direito ao pagamento em caso de falha, evitando duplicidade."
+        },
+        {
+          "domain": "treasury",
+          "line": 173,
+          "requirement": "Definir tratamento de resíduos de arredondamento para pagamentos em USDC."
+        },
+        {
+          "domain": "security",
+          "line": 181,
+          "requirement": "Limitar recursos e permissões dos agentes, sem acesso total à tesouraria."
+        },
+        {
+          "domain": "wallets",
+          "line": 185,
+          "requirement": "Respeitar segregação de redes para pagamentos."
+        },
+        {
+          "domain": "architecture",
+          "line": 187,
+          "requirement": "Utilizar agentes simulados para testes de contabilidade."
+        },
+        {
+          "domain": "treasury",
+          "line": 205,
+          "requirement": "Utilizar registros de partidas dobradas para consistência contábil."
+        },
+        {
+          "domain": "history",
+          "line": 209,
+          "requirement": "Garantir reconstrução de saldos a partir de registros de origem."
+        },
+        {
+          "domain": "content",
+          "line": 213,
+          "requirement": "Exibir painel do usuário com saldos, participação, elegibilidade e pagamentos."
+        },
+        {
+          "domain": "content",
+          "line": 224,
+          "requirement": "Exibir painel administrativo com patrimônio, reservas, alocações e situação de pagamentos."
+        },
+        {
+          "domain": "architecture",
+          "line": 230,
+          "requirement": "Utilizar ativos de teste; diferenciar simulações de transações na testnet."
+        },
+        {
+          "domain": "architecture",
+          "line": 249,
+          "requirement": "Executar ciclo completo de teste, do recebimento de capital ao pagamento em USDC."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-O-foco-validar-o-primeiro-fluxo-funcional-dentro-da-arq_1791178496701.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "accounts",
+          "line": 21,
+          "requirement": "Implementar fluxo de cadastro de usuários."
+        },
+        {
+          "domain": "accounts",
+          "line": 22,
+          "requirement": "Implementar login, logout e persistência segura de sessão."
+        },
+        {
+          "domain": "accounts",
+          "line": 23,
+          "requirement": "Implementar gestão de perfil e alteração de senha."
+        },
+        {
+          "domain": "accounts",
+          "line": 24,
+          "requirement": "Criar estrutura persistente do banco e migrações."
+        },
+        {
+          "domain": "accounts",
+          "line": 25,
+          "requirement": "Associar usuários, carteiras e redes no banco."
+        },
+        {
+          "domain": "wallets",
+          "line": 26,
+          "requirement": "Configurar conexões com as testnets necessárias."
+        },
+        {
+          "domain": "treasury",
+          "line": 27,
+          "requirement": "Implementar reserva operacional de ativos de teste."
+        },
+        {
+          "domain": "treasury",
+          "line": 28,
+          "requirement": "Implementar distribuição de saldo de teste."
+        },
+        {
+          "domain": "wallets",
+          "line": 29,
+          "requirement": "Implementar funcionalidade de depósitos e consulta de saldo."
+        },
+        {
+          "domain": "history",
+          "line": 30,
+          "requirement": "Implementar histórico de transações e auditoria."
+        },
+        {
+          "domain": "contracts",
+          "line": 49,
+          "requirement": "Configurar ambiente, ID de rede, endpoints, explorador, ativo de gas, tokens e contratos."
+        },
+        {
+          "domain": "contracts",
+          "line": 51,
+          "requirement": "Diferenciar conexão RPC funcional de integração de assinatura e transação."
+        },
+        {
+          "domain": "accounts",
+          "line": 55,
+          "requirement": "Implementar campos de nome, e-mail e senha no cadastro."
+        },
+        {
+          "domain": "accounts",
+          "line": 59,
+          "requirement": "Exigir aceite explícito do aviso de ausência de recuperação de senha."
+        },
+        {
+          "domain": "history",
+          "line": 63,
+          "requirement": "Registrar versão e data do aceite dos avisos."
+        },
+        {
+          "domain": "security",
+          "line": 65,
+          "requirement": "Implementar hash de senha, proteção anti-abuso e expiração de sessão."
+        },
+        {
+          "domain": "security",
+          "line": 67,
+          "requirement": "Proibir registro de senhas ou segredos em logs."
+        },
+        {
+          "domain": "accounts",
+          "line": 69,
+          "requirement": "Exigir senha atual para alterações sensíveis de perfil."
+        },
+        {
+          "domain": "accounts",
+          "line": 77,
+          "requirement": "Modelar usuário com ID imutável e estado de cadastro."
+        },
+        {
+          "domain": "wallets",
+          "line": 81,
+          "requirement": "Modelar carteiras pessoais e finalidades."
+        },
+        {
+          "domain": "security",
+          "line": 83,
+          "requirement": "Armazenar material criptografado para acesso às carteiras."
+        },
+        {
+          "domain": "treasury",
+          "line": 85,
+          "requirement": "Modelar contas operacionais de distribuição."
+        },
+        {
+          "domain": "security",
+          "line": 93,
+          "requirement": "Impedir carteiras órfãs, vínculos incorretos e duplicação."
+        },
+        {
+          "domain": "architecture",
+          "line": 97,
+          "requirement": "Utilizar unidades inteiras e decimais para valores financeiros sem ponto flutuante."
+        },
+        {
+          "domain": "wallets",
+          "line": 99,
+          "requirement": "Reconciliar saldos persistidos com a blockchain."
+        },
+        {
+          "domain": "wallets",
+          "line": 105,
+          "requirement": "Criar carteira de depósitos para cada usuário."
+        },
+        {
+          "domain": "wallets",
+          "line": 106,
+          "requirement": "Criar carteira BETTEX para tokens e staking para cada usuário."
+        },
+        {
+          "domain": "security",
+          "line": 114,
+          "requirement": "Utilizar geração de chaves criptograficamente segura sem derivar de senhas."
+        },
+        {
+          "domain": "security",
+          "line": 116,
+          "requirement": "Manter geração, descriptografia e assinatura no lado do cliente."
+        },
+        {
+          "domain": "security",
+          "line": 120,
+          "requirement": "Permitir exportação de chaves privadas e backups mediante senha."
+        },
+        {
+          "domain": "security",
+          "line": 122,
+          "requirement": "Recriptografar material de chaves após alteração de senha."
+        },
+        {
+          "domain": "architecture",
+          "line": 128,
+          "requirement": "Permitir retomada de provisionamento em caso de falha."
+        },
+        {
+          "domain": "treasury",
+          "line": 147,
+          "requirement": "Automatizar faucet apenas por meios permitidos."
+        },
+        {
+          "domain": "treasury",
+          "line": 149,
+          "requirement": "Exibir saldo disponível e status de reservas por rede."
+        },
+        {
+          "domain": "security",
+          "line": 159,
+          "requirement": "Implementar limites e proteção contra abuso no recebimento de ativos."
+        },
+        {
+          "domain": "security",
+          "line": 167,
+          "requirement": "Validar contrato, destinatário, valor e confirmação na blockchain."
+        },
+        {
+          "domain": "architecture",
+          "line": 169,
+          "requirement": "Tratar falhas de RPC e reorganizações de blockchain na conciliação."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Sim-a-emiss-o-inicial-deve-separar-as-aloca-es-e-soment_1791178994163.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "contracts",
+          "line": 35,
+          "requirement": "Emitir oferta total uma única vez."
+        },
+        {
+          "domain": "contracts",
+          "line": 42,
+          "requirement": "Destinar alocação pública ao mecanismo de custódia e vesting."
+        },
+        {
+          "domain": "contracts",
+          "line": 43,
+          "requirement": "Destinar alocação do fundador ao seu mecanismo de vesting."
+        },
+        {
+          "domain": "contracts",
+          "line": 44,
+          "requirement": "Destinar alocação dos investidores ao seu mecanismo de vesting."
+        },
+        {
+          "domain": "contracts",
+          "line": 45,
+          "requirement": "Proibir emissão adicional para abastecer compras."
+        },
+        {
+          "domain": "contracts",
+          "line": 47,
+          "requirement": "Separar alocações não públicas do estoque público via contratos distintos."
+        },
+        {
+          "domain": "contracts",
+          "line": 49,
+          "requirement": "Garantir soma das alocações igual à oferta emitida."
+        },
+        {
+          "domain": "participation",
+          "line": 57,
+          "requirement": "Abastecer estoque vendável apenas com parcelas liberadas do vesting."
+        },
+        {
+          "domain": "contracts",
+          "line": 69,
+          "requirement": "Evitar contagem duplicada em liberações repetidas."
+        },
+        {
+          "domain": "treasury",
+          "line": 75,
+          "requirement": "Iniciar pool interno sem aporte inicial de USDC."
+        },
+        {
+          "domain": "participation",
+          "line": 85,
+          "requirement": "Permitir pagamento com USDC de teste para carteira de depósitos."
+        },
+        {
+          "domain": "participation",
+          "line": 86,
+          "requirement": "Entregar BTX liberado à carteira do usuário."
+        },
+        {
+          "domain": "participation",
+          "line": 88,
+          "requirement": "Reverter compra em caso de falha ou falta de estoque."
+        },
+        {
+          "domain": "participation",
+          "line": 90,
+          "requirement": "Executar compra e entrega atomicamente na mesma rede."
+        },
+        {
+          "domain": "treasury",
+          "line": 94,
+          "requirement": "Encaminhar 100% do principal da venda à tesouraria."
+        },
+        {
+          "domain": "security",
+          "line": 102,
+          "requirement": "Aplicar autorização verificável em contrato para usuários da BETTEX."
+        },
+        {
+          "domain": "security",
+          "line": 112,
+          "requirement": "Definir administração do pool."
+        },
+        {
+          "domain": "security",
+          "line": 113,
+          "requirement": "Definir controle para pausar compras."
+        },
+        {
+          "domain": "security",
+          "line": 114,
+          "requirement": "Definir alteração de parâmetros de teste."
+        },
+        {
+          "domain": "security",
+          "line": 115,
+          "requirement": "Definir execução de liberações."
+        },
+        {
+          "domain": "security",
+          "line": 116,
+          "requirement": "Definir alteração de destinos se autorizada."
+        },
+        {
+          "domain": "security",
+          "line": 117,
+          "requirement": "Definir atualização de contratos se houver arquitetura aprovada."
+        },
+        {
+          "domain": "security",
+          "line": 123,
+          "requirement": "Utilizar bibliotecas consolidadas com tratamento correto de decimais e inteiros."
+        },
+        {
+          "domain": "security",
+          "line": 125,
+          "requirement": "Separar chaves operacionais das carteiras pessoais."
+        },
+        {
+          "domain": "history",
+          "line": 129,
+          "requirement": "Integrar eventos ao banco e processamento existente."
+        },
+        {
+          "domain": "history",
+          "line": 131,
+          "requirement": "Registrar rede, contratos e transações de forma idempotente."
+        },
+        {
+          "domain": "content",
+          "line": 133,
+          "requirement": "Exibir dados de oferta, alocações e estoque no painel."
+        },
+        {
+          "domain": "content",
+          "line": 144,
+          "requirement": "Confirmar dados do painel via blockchain."
+        },
+        {
+          "domain": "participation",
+          "line": 148,
+          "requirement": "Preservar distinção de tokens para integração com staking."
+        },
+        {
+          "domain": "research",
+          "line": 169,
+          "requirement": "Utilizar controle de tempo em testes locais para validar calendário."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Sim-A-pesquisa-na-nossa-documenta-o-deve-vir-antes-da-i_1791178741097.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "research",
+          "line": 5,
+          "requirement": "Pesquisar documentação interna do projeto antes da implementação do contrato."
+        },
+        {
+          "domain": "research",
+          "line": 7,
+          "requirement": "Localizar e ler especificações, arquitetura, regras, tokenomia, tesouraria, vendas, staking, liberações, permissões e integrações."
+        },
+        {
+          "domain": "research",
+          "line": 9,
+          "requirement": "Identificar validade, substituição e status de pendência de documentos do projeto."
+        },
+        {
+          "domain": "contracts",
+          "line": 13,
+          "requirement": "Definir rede de implantação do token."
+        },
+        {
+          "domain": "contracts",
+          "line": 14,
+          "requirement": "Definir padrão do contrato e oferta total do token."
+        },
+        {
+          "domain": "contracts",
+          "line": 15,
+          "requirement": "Definir alocações e restrições de circulação de tokens."
+        },
+        {
+          "domain": "security",
+          "line": 16,
+          "requirement": "Definir funções administrativas para gerir, pausar ou atualizar contratos."
+        },
+        {
+          "domain": "participation",
+          "line": 17,
+          "requirement": "Definir lógica de recebimento de USDC e entrega de tokens BETTEX."
+        },
+        {
+          "domain": "treasury",
+          "line": 18,
+          "requirement": "Definir destino do capital principal e tarifas coletadas."
+        },
+        {
+          "domain": "contracts",
+          "line": 19,
+          "requirement": "Definir relação entre contrato, tesouraria, carteiras de usuários e staking."
+        },
+        {
+          "domain": "architecture",
+          "line": 20,
+          "requirement": "Garantir evolução da implementação dentro da arquitetura existente."
+        },
+        {
+          "domain": "history",
+          "line": 22,
+          "requirement": "Registrar requisitos com referência a arquivos e seções, distinguindo decisões de testes."
+        },
+        {
+          "domain": "research",
+          "line": 24,
+          "requirement": "Consultar documentação oficial de tecnologias para implementação técnica."
+        },
+        {
+          "domain": "history",
+          "line": 26,
+          "requirement": "Registrar conflitos de documentação em vez de escolher versões arbitrariamente."
+        },
+        {
+          "domain": "contracts",
+          "line": 28,
+          "requirement": "Separar parâmetros de teste de regras de negócio definitivas."
+        },
+        {
+          "domain": "content",
+          "line": 30,
+          "requirement": "Produzir especificação contendo requisitos, fontes, lacunas e desenho antes da implementação."
+        },
+        {
+          "domain": "history",
+          "line": 32,
+          "requirement": "Demonstrar conformidade do contrato com documentação na entrega e listar decisões pendentes."
+        }
+      ]
+    }
+  },
+  {
+    "path": "attached_assets/Pasted-Tese-central-do-fundador-A-IA-e-a-rob-tica-v-o-substitu_1791057133685.txt",
+    "requirements": {
+      "items": [
+        {
+          "domain": "participation",
+          "line": 3,
+          "requirement": "Prover acesso a estratégias de investimento geridas por IA."
+        },
+        {
+          "domain": "architecture",
+          "line": 3,
+          "requirement": "Garantir que a economia programável opere com regras compreensíveis."
+        },
+        {
+          "domain": "security",
+          "line": 3,
+          "requirement": "Implementar controles humanos nas operações."
+        },
+        {
+          "domain": "security",
+          "line": 3,
+          "requirement": "Assegurar mecanismos de prestação de contas (accountability)."
+        },
+        {
+          "domain": "treasury",
+          "line": 9,
+          "requirement": "Definir regras de tesouraria para a participação nos lucros elegíveis."
+        },
+        {
+          "domain": "accounts",
+          "line": 9,
+          "requirement": "Estabelecer que o token e seus créditos pertencem ao titular conforme regras específicas."
+        },
+        {
+          "domain": "content",
+          "line": 11,
+          "requirement": "Utilizar linguagem acessível para comunicação do projeto."
+        }
+      ]
+    }
+  }
+]
