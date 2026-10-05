@@ -1,53 +1,53 @@
-# Percurso integrado de testes BETTEX
+# BETTEX integrated test path
 
-## Fontes e decisões
+## Sources and decisions
 
-| Requisito | Fonte e seção | Estado |
+| Requirement | Source and section | Status |
 | --- | --- | --- |
-| Carteiras pessoais, sessão, cofre e propriedade | `docs/decisions/0006-personal-test-wallets.md`, §§ conta, cofre e associação inicial; `replit.md` §102 | Aprovado. Reutilizar; sem migração Clerk. |
-| Principal da compra na tesouraria e taxa separada | `replit.md` §§89, 92, 115; `BettexPrimarySale.sol`, `_purchase` e `APP_FEE_USDC` | Aprovado. Efeitos confirmados em eventos ERC-20 da mesma compra. |
-| Vesting público predefinido | `docs/contracts/bettex-testnet-spec.md`; `TestnetSchedule.sol`, `releasedGroups`; `BettexPrimarySale.sol`, `inventory` | Aprovado; o fixture local utiliza 36 datas mensais, não emissão adicional. |
-| Quantidade × tempo, carteira oficial, rodada UTC | `replit.md` §§101, 104; §105 para saídas | Aprovado: modelo por saldo, sem depósito custodial; entradas não são retroativas, saída parcial cancela peso anterior. |
-| Usar unidades inteiras e fonte conciliada | `docs/architecture.md`, Fontes de verdade/Operação/Falhas; decisão 0002 | Aplicado aos valores do percurso. Não equivale a ledger patrimonial completo. |
-| Repetição/reinício/resposta perdida | `replit.md` §172; `docs/architecture.md` §§72, 82 | Uma etapa reserva nonce/executor antes do conector. Confirmada/incerta não é reenviada. |
-| Reservas/apuração/distribuição | `replit.md` §§90, 95, 154–174 | Regras aprovadas, controlador/apuração desta entrega anterior ainda incompletos. Indisponíveis, não zeros inventados. |
-| USDC na carteira de ganhos | `replit.md` §90 vs anexo antigo §157 | Divergência identificada. Este percurso não realiza pagamentos de staking nem escolhe novo destino. |
+| Personal wallets, session, vault and ownership | `docs/decisions/0006-personal-test-wallets.md`, §§ account, vault and initial association; `replit.md` §102 | Approved. Reuse; no Clerk migration. |
+| Principal of the purchase in the treasury and separate fee | `replit.md` §§89, 92, 115; `BettexPrimarySale.sol`, `_purchase` and `APP_FEE_USDC` | Approved. Effects confirmed in ERC-20 events of the same purchase. |
+| Predefined public vesting | `docs/contracts/bettex-testnet-spec.md`; `TestnetSchedule.sol`, `releasedGroups`; `BettexPrimarySale.sol`, `inventory` | Approved; the local fixture uses 36 monthly dates, not additional issuance. |
+| Quantity × time, official wallet, UTC round | `replit.md` §§101, 104; §105 for outputs | Approved: balance-based model, no custodial deposit; entries are not retroactive, partial exit cancels previous weight. |
+| Use whole units and reconciled source | `docs/architecture.md`, Sources of truth/Operation/Failures; decision 0002 | Applied to path values. Does not equate to a complete equity ledger. |
+| Repetition/restart/lost response | `replit.md` §172; `docs/architecture.md` §§72, 82 | A step reserves nonce/executor before the connector. Confirmed/uncertain is not resent. |
+| Reserves/clearing/distribution | `replit.md` §§90, 95, 154–174 | Approved rules, controller/clearing of this previous delivery still incomplete. Unavailable, no invented zeros. |
+| USDC in earnings wallet | `replit.md` §90 vs old annex §157 | Divergence identified. This path does not perform staking payments nor choose a new destination. |
 
-“STC” não é um ativo encontrado na documentação/configuração vigente. O ativo implementado é USDC de teste com 6 decimais, separado de BETTEX com 18 decimais. O fixture local não é o USDC Circle público.
+“STC” is not an asset found in current documentation/configuration. The implemented asset is test USDC with 6 decimals, separate from BETTEX with 18 decimals. The local fixture is not the public Circle USDC.
 
-## Ambiente e limites
+## Environment and limits
 
-- Sessão: cadastro existente em `/testes/conta`, apenas desenvolvimento.
-- Rede disponível para o percurso verificado: **EVM local 31337**, não testnet pública.
-- A associação local exige consentimento explícito no recebimento de saldo de teste. Cadastro continua criando a associação original Arbitrum Sepolia.
-- Reserva local: MockUSDC já emitido no fixture (100.000 USDC fictícios) e ETH de gênese do nó. Receber saldo transfere da reserva, não altera saldo SQL nem cunha moedas a cada pedido.
-- Abastecimento: 25 USDC, 0,003 ETH na carteira pagadora e 0,001 ETH na Carteira BETTEX; uma solicitação por conta/dia/execução local. Os valores são exclusivamente parâmetros do fixture, não tarifa ou política financeira de produção.
-- Cotação local inicial: 0,05 USDC por BETTEX; a tela lê o preço do contrato, não de uma constante de interface. Taxa do canal de aplicativo: 2,50 USDC, conforme contrato existente.
-- Para conferir recibos, o critério local é execução bem-sucedida, contrato/ativo/origem/destino/valor e evento exatos, bloco/índice/hash canônicos. Não aplicar esse critério à Sepolia pública sem política própria.
-- Saída e reentrada no aplicativo e reinício do backend preservam registros PostgreSQL e a conciliação com o mesmo nó. Reiniciar o **nó EVM local** inicia outra cadeia; registros anteriores são preservados/identificados como outra execução, sem presumir saldo atual.
-- Implantação pública, reserva pública financiada, assinatura institucional autorizada e política de confirmação pública continuam pendentes.
+- Session: existing registration in `/testes/conta`, development only.
+- Network available for the verified path: **local EVM 31337**, not public testnet.
+- Local association requires explicit consent upon receipt of test balance. Registration continues creating the original Arbitrum Sepolia association.
+- Local reserve: MockUSDC already issued in the fixture (100,000 fictional USDC) and node genesis ETH. Receiving balance transfers from the reserve, it does not change SQL balance nor mint coins at each request.
+- Supply: 25 USDC, 0.003 ETH in the payer wallet and 0.001 ETH in the BETTEX Wallet; one request per account/day/local execution. The values are exclusively fixture parameters, not a tariff or production financial policy.
+- Initial local quote: 0.05 USDC per BETTEX; the screen reads the contract price, not an interface constant. Application channel fee: 2.50 USDC, per existing contract.
+- To check receipts, the local criterion is successful execution, exact contract/asset/origin/destination/value and event, canonical block/index/hash. Do not apply this criterion to public Sepolia without its own policy.
+- Exit and reentry to the application and backend restart preserve PostgreSQL records and reconciliation with the same node. Restarting the **local EVM node** starts another chain; previous records are preserved/identified as another execution, without presuming current balance.
+- Public deployment, funded public reserve, authorized institutional signature and public confirmation policy remain pending.
 
-## Repetir pela interface
+## Repeat via interface
 
-1. Abrir `/testes/conta`, criar conta, guardar senha e aceitar o aviso de ausência de recuperação.
-2. Na aba Operações, conferir rede, endereço, ativo e QR de Depositar.
-3. Aceitar o uso da EVM local e clicar em **Receber saldo de teste**. Aguardar os eventos confirmados e conferir USDC/gas.
-4. Informar **100 BETTEX**, clicar em Cotar compra: principal **5 USDC**, taxa **2,50 USDC**, total **7,50 USDC**, gas separado e Carteira BETTEX destinatária.
-5. Confirmar os dados e a senha para a aprovação exata; ela não compra tokens.
-6. Confirmar novamente a compra final após a estimativa de gas da compra estar disponível.
-7. Conferir **17,50 USDC** restantes, **100 BETTEX** recebidos/elegíveis, início e peso temporal, principal **5 USDC** efetivamente recebido pela tesouraria e taxa separada.
-8. Consultar hashes/blocos/índices no histórico. Sair e entrar novamente; os mesmos registros devem permanecer.
+1. Open `/testes/conta`, create account, save password and accept the warning of absence of recovery.
+2. In the Operations tab, check network, address, asset and Deposit QR.
+3. Accept the use of the local EVM and click **Receive test balance**. Wait for the confirmed events and check USDC/gas.
+4. Inform **100 BETTEX**, click Quote purchase: principal **5 USDC**, fee **2.50 USDC**, total **7.50 USDC**, separate gas and recipient BETTEX Wallet.
+5. Confirm the data and password for the exact approval; it does not buy tokens.
+6. Confirm the final purchase again after the purchase gas estimate is available.
+7. Check remaining **17.50 USDC**, **100 BETTEX** received/eligible, start and temporal weight, principal **5 USDC** effectively received by the treasury and separate fee.
+8. Consult hashes/blocks/indices in history. Log out and log in again; the same records must remain.
 
-9. Executar/retomar **Distribuição de teste**: resultado sintético global limitado a 1 USDC por rodada UTC. Se este for o único peso elegível, recebe 0,25 USDC; reexecutar não duplica o hash nem o saldo. Consultar a entrada em Distribuições no histórico compartilhado.
+9. Execute/resume **Test distribution**: global synthetic result limited to 1 USDC per UTC round. If this is the only eligible weight, it receives 0.25 USDC; re-executing does not duplicate the hash or the balance. Consult the entry in Distributions in the shared history.
 
-O journal USDC/BETTEX reconstrói e concilia saldos de carteiras/tesouraria em unidades inteiras, com reversões auditadas em reorganização. Não oferece recompra automática, conversão inversa on-chain ou lucro de trading real. Ver [limites da liquidação local](../decisions/0010-local-round-settlement.md) e [matriz da revisão](../requirements/review-2026-10-05.md). Valores do demo emulado não são evidência da EVM. Pagamento local por EOA não garante atomicidade contra saída concorrente de BETTEX ou virada de rodada durante o envio; não está autorizado para finanças públicas.
+The USDC/BETTEX journal reconstructs and reconciles wallet/treasury balances in whole units, with reversals audited in reorganization. It does not offer automatic repurchase, on-chain inverse conversion or real trading profit. See [local settlement limits](../decisions/0010-local-round-settlement.md) and [review matrix](../requirements/review-2026-10-05.md). Emulated demo values are not evidence of the EVM. Local payment via EOA does not guarantee atomicity against concurrent BETTEX exit or round flip during submission; it is not authorized for public finance.
 
-## Referências técnicas oficiais
+## Official technical references
 
-- https://ethereum.org/en/developers/docs/apis/json-rpc/ — balances, logs, receipts, nonce e raw transactions.
-- https://docs.ethers.org/v6/api/providers/ — consultas e recibos; `/api/wallet/` e `/api/transaction/` — assinatura no navegador e transações.
-- https://hardhat.org/docs/reference/network-manager — EVM simulada de desenvolvimento.
-- https://www.postgresql.org/docs/current/explicit-locking.html — exclusão/locks duráveis do executor e nonce.
-- https://developers.circle.com/stablecoins/usdc-contract-addresses — identificação da configuração Sepolia existente, não do fixture MockUSDC.
+- https://ethereum.org/en/developers/docs/apis/json-rpc/ — balances, logs, receipts, nonce and raw transactions.
+- https://docs.ethers.org/v6/api/providers/ — queries and receipts; `/api/wallet/` and `/api/transaction/` — browser signing and transactions.
+- https://hardhat.org/docs/reference/network-manager — simulated development EVM.
+- https://www.postgresql.org/docs/current/explicit-locking.html — durable executor and nonce deletion/locks.
+- https://developers.circle.com/stablecoins/usdc-contract-addresses — identification of existing Sepolia configuration, not MockUSDC fixture.
 
-As fontes internas são normativas para economia; referências externas explicam a integração técnica, não aprovam novos percentuais.
+Internal sources are normative for economics; external references explain technical integration, they do not approve new percentages.

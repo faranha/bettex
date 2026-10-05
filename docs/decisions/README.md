@@ -1,20 +1,21 @@
-# Registro canônico de decisões
+# Canonical decision register
 
-Antes de alterar fronteiras, fontes de verdade, dados, segurança ou dependências, registrar contexto, decisão, alternativas, consequências e critérios de migração.
+Before changing boundaries, sources of truth, data, security or dependencies, register context, decision, alternatives, consequences and migration criteria.
 
-1. [Contextos modulares e evolução para serviços](0001-service-boundaries.md).
-2. [Ledger separado da emulação](0002-financial-core.md).
-3. [Custódia e isolamento de assinatura](0003-wallet-signing.md).
-4. [Documentação canônica, dependências e legado](0004-canonical-boundaries.md).
-5. [Documentação oficial para desenvolvimento](0005-technical-documentation.md).
-6. [Contas de teste e carteiras pessoais](0006-personal-test-wallets.md).
-7. [Biblioteca de contratos exclusivamente de teste](0007-testnet-contract-library.md).
-8. [Observação blockchain no painel existente](0008-test-contract-observation.md).
-9. [Percurso nativo blockchain](0009-native-blockchain-journey.md).
-10. [Rodada e liquidação local de teste](0010-local-round-settlement.md).
-11. [Controle modular de Tesouraria e Governança](0011-treasury-governance-control.md).
-12. [Hierarquia BETTEX e primeiro ramo BTC](0012-agent-hierarchy.md).
-13. [Versionamento e composição de políticas](0010-trading-policy-versioning.md).
-14. [Execuções isoladas de simulação](0013-simulation-executions.md).
+1. [Modular contexts and service evolution](0001-service-boundaries.md).
+2. [Ledger separated from emulation](0002-financial-core.md).
+3. [Custody and signing isolation](0003-wallet-signing.md).
+4. [Canonical documentation, dependencies and legacy](0004-canonical-boundaries.md).
+5. [Official documentation for development](0005-technical-documentation.md).
+6. [Test accounts and personal wallets](0006-personal-test-wallets.md).
+7. [Contract library exclusively for testing](0007-testnet-contract-library.md).
+8. [Blockchain observation in the existing dashboard](0008-test-contract-observation.md).
+9. [Native blockchain journey](0009-native-blockchain-journey.md).
+10. [Local test round and settlement](0010-local-round-settlement.md).
+11. [Modular Treasury and Governance control](0011-treasury-governance-control.md).
+12. [BETTEX hierarchy and first BTC branch](0012-agent-hierarchy.md).
+13. [Versioning and policy composition](0010-trading-policy-versioning.md).
+14. [Isolated simulation executions](0013-simulation-executions.md).
+15. [Coordinated development synchronization and clean-clone execution](0014-development-synchronization.md).
 
-Os caminhos antigos em `docs/adr/` permanecem para compatibilidade, apontando para estes registros. Status adotado indica regra de desenvolvimento, não recurso financeiro implementado.
+The old paths in `docs/adr/` remain for compatibility, pointing to these records. Adopted status indicates a development rule, not an implemented financial feature.

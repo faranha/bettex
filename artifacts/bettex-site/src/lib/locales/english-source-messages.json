@@ -1,0 +1,82 @@
+{
+  "Technology references": {
+    "pt": "Referências tecnológicas",
+    "en": "Technology references",
+    "es": "Referencias tecnológicas"
+  },
+  "Amount too high for this demonstration.": {
+    "en": "Amount too high for this demonstration.",
+    "es": "Cantidad muy alta para esta demostración.",
+    "pt": "Quantidade muito alta para esta demonstração."
+  },
+  "Could not determine the next UTC period of the demonstration.": {
+    "en": "Could not determine the next UTC period of the demonstration.",
+    "es": "No fue posible determinar el próximo período UTC de la demostración.",
+    "pt": "Não foi possível determinar o próximo período UTC da demonstração."
+  },
+  "Could not load preview image:": {
+    "en": "Could not load preview image:",
+    "es": "No fue posible cargar la imagen de la vista previa:",
+    "pt": "Não foi possível carregar a imagem da prévia:"
+  },
+  "Could not read community button preference.": {
+    "en": "Could not read community button preference.",
+    "es": "No se pudo leer la preferencia del botón de la comunidad.",
+    "pt": "Não foi possível ler a preferência do botão da comunidade."
+  },
+  "Could not save community button preference.": {
+    "en": "Could not save community button preference.",
+    "es": "No se pudo guardar la preferencia del botón de la comunidad.",
+    "pt": "Não foi possível salvar a preferência do botão da comunidade."
+  },
+  "Demonstration is limited to 12 distribution periods.": {
+    "en": "Demonstration is limited to 12 distribution periods.",
+    "es": "La demostración está limitada a 12 períodos de distribución.",
+    "pt": "A demonstração está limitada a 12 períodos de distribuição."
+  },
+  "Insufficient BETTEX balance in personal wallet.": {
+    "en": "Insufficient BETTEX balance in personal wallet.",
+    "es": "Saldo BETTEX insuficiente en la billetera personal.",
+    "pt": "Saldo BETTEX insuficiente na carteira pessoal."
+  },
+  "Insufficient USDC balance in allocated wallet.": {
+    "en": "Insufficient USDC balance in allocated wallet.",
+    "es": "Saldo USDC insuficiente en la billetera asignada.",
+    "pt": "Saldo USDC insuficiente na carteira alocada."
+  },
+  "Insufficient USDC balance in personal wallet.": {
+    "en": "Insufficient USDC balance in personal wallet.",
+    "es": "Saldo USDC insuficiente en la billetera personal.",
+    "pt": "Saldo USDC insuficiente na carteira pessoal."
+  },
+  "Invalid state to save demonstration of the wallet.": {
+    "en": "Invalid state to save demonstration of the wallet.",
+    "es": "Estado inválido para guardar la demostración de la cartera.",
+    "pt": "Estado inválido para salvar a demonstração da carteira."
+  },
+  "Invalid time for this demonstration.": {
+    "en": "Invalid time for this demonstration.",
+    "es": "Horario inválido para esta demostración.",
+    "pt": "Horário inválido para esta demonstração."
+  },
+  "Participation history for this demonstration has reached its limit.": {
+    "en": "Participation history for this demonstration has reached its limit.",
+    "es": "El histórico de participación de esta demostración alcanzó su límite.",
+    "pt": "O histórico de participação desta demonstração atingiu seu limite."
+  },
+  "Provide a valid EVM address for the Arbitrum One network.": {
+    "en": "Provide a valid EVM address for the Arbitrum One network.",
+    "es": "Informe una dirección EVM válida para la red Arbitrum One.",
+    "pt": "Informe um endereço EVM válido para a rede Arbitrum One."
+  },
+  "Transaction time cannot precede an already registered participation change.": {
+    "en": "Transaction time cannot precede an already registered participation change.",
+    "es": "El horario del movimiento no puede anteceder a un cambio de participación ya registrado.",
+    "pt": "O horário da movimentação não pode anteceder uma alteração de participação já registrada."
+  },
+  "Value too high for this demonstration.": {
+    "en": "Value too high for this demonstration.",
+    "es": "Valor muy alto para esta demostración.",
+    "pt": "Valor muito alto para esta demonstração."
+  }
+}

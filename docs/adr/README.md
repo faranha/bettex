@@ -1,3 +1,3 @@
-# Decisões arquiteturais — caminho anterior
+# Architectural decisions — previous path
 
-O registro canônico está em [docs/decisions](../decisions/README.md). Este índice permanece para compatibilidade; não criar decisões paralelas aqui.
+The canonical register is at [docs/decisions](../decisions/README.md). This index remains for compatibility; do not create parallel decisions here.

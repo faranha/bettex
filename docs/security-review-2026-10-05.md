@@ -1,68 +1,68 @@
-# BETTEX — revisão interna de segurança e organização
+# BETTEX — internal security and organization review
 
-## Escopo e fontes
+## Scope and sources
 
-Revisão da implementação vigente, com correções na arquitetura existente. Homepage, economia, contas existentes, dinheiro real e runtime EVM do app não foram alterados por testes.
+Review of the current implementation, with corrections to the existing architecture. Homepage, economy, existing accounts, real money, and app EVM runtime were not changed by tests.
 
-Referências oficiais consultadas:
-- [OWASP ASVS 5.0.0](https://owasp.org/www-project-application-security-verification-standard/): autenticação/sessão, autorização, validação, proteção de dados, comunicação e configuração. Cobertura parcial orientada a riscos; não certificação por requisito.
-- [OpenZeppelin 5.x: permissões](https://docs.openzeppelin.com/contracts/5.x/access-control), aplicado à versão instalada **5.6.1**.
-- [Express: segurança de produção](https://expressjs.com/en/advanced/best-practice-security.html).
-- Base oficial interna: inventário de versões e consulta Robinhood; exemplos publicados da [documentação oficial](https://docs.robinhood.com/crypto/trading/) não são credenciais operacionais BETTEX.
+Official references consulted:
+- [OWASP ASVS 5.0.0](https://owasp.org/www-project-application-security-verification-standard/): authentication/session, authorization, validation, data protection, communication, and configuration. Partial coverage oriented by risks; not certification by requirement.
+- [OpenZeppelin 5.x: permissions](https://docs.openzeppelin.com/contracts/5.x/access-control), applied to the installed version **5.6.1**.
+- [Express: production security](https://expressjs.com/en/advanced/best-practice-security.html).
+- Internal official base: version inventory and Robinhood query; examples published in the [official documentation](https://docs.robinhood.com/crypto/trading/) are not BETTEX operational credentials.
 
-## Mapa e fronteiras verificadas
+## Verified map and boundaries
 
-| Componente | Responsabilidade / fronteira |
+| Component | Responsibility / boundary |
 |---|---|
-| React/Vite e conta inline | Navegador não confiável; carteira descriptografada e assinada apenas localmente; não determina saldo/autorização |
-| Express / OpenAPI-Zod | Autenticação, origem, schema, propriedade e tradução HTTP; composição dos adaptadores existentes |
-| Accounts / Clerk | Sessão nativa opaca/hash/TTL/scrypt e identidade Clerk verificada; não mesclar usuários por e-mail |
-| Wallets | Dois endereços/cofre cifrado/metadados; associação local explícita; nenhum private key no backend |
-| PostgreSQL / audit | Transações, revisões, unicidade, nonces/idempotência e journal append-only; demonstrativo não vira ledger real |
-| Execution / reconciliation | Operações pertencem à conta; assinatura vinculada ao draft; recibos/blocos/efeitos/epoch conferidos |
-| Ledger atual | Participação × tempo com inteiros; ainda não é ledger patrimonial nem distribuição de lucros real |
-| Agentes / Allora / risco | Inferência e propostas não autorizam assinatura; execução atual emulada, sem trading real |
-| Contratos de teste | Supply fixa, vesting, venda em unidades exatas, comprador/destino autorizados, reentrância/replay/pausa/owner |
-| Infraestrutura | Frontend público, API, EVM auxiliar local; Git/IAM/provedor/produção são fronteiras administrativas externas |
+| React/Vite and inline account | Untrusted browser; wallet decrypted and signed only locally; does not determine balance/authorization |
+| Express / OpenAPI-Zod | Authentication, origin, schema, property, and HTTP translation; composition of existing adapters |
+| Accounts / Clerk | Opaque native session/hash/TTL/scrypt and verified Clerk identity; do not merge users by email |
+| Wallets | Two addresses/encrypted vault/metadata; explicit local association; no private key on the backend |
+| PostgreSQL / audit | Transactions, revisions, uniqueness, nonces/idempotence, and journal append-only; statement does not become a real ledger |
+| Execution / reconciliation | Operations belong to the account; signature linked to draft; receipts/blocks/effects/epoch checked |
+| Current ledger | Participation × time with integers; not yet a patrimonial ledger nor real profit distribution |
+| Agents / Allora / risk | Inference and proposals do not authorize signature; current execution emulated, without real trading |
+| Test contracts | Fixed supply, vesting, sale in exact units, authorized buyer/destination, reentrancy/replay/pause/owner |
+| Infrastructure | Public frontend, API, local auxiliary EVM; Git/IAM/provider/production are external administrative boundaries |
 
-## Problemas e correções
+## Problems and corrections
 
-| Gravidade | Componente/evidência | Impacto | Correção | Verificação |
+| Severity | Component/evidence | Impact | Correction | Verification |
 |---|---|---|---|---|
-| Alta | `app.ts`: CORS refletia qualquer origin com credentials; várias mutações dependiam só de Sec-Fetch-Site | Leitura indevida em cenários de cookie elegível/origem hostil; proteção HTTP desigual | Allowlist exata, reject de origem hostil/ausente nas escritas, JSON no app, authorizedParties Clerk; protocolo do proxy preservado | HTTP e testes negativos, origens falsas/HTTP/sufixo/porta/form/CSRF |
-| Alta (scanner) | 5 alertas altos/3 moderados em dependências, inicialmente | DoS e outras falhas em pacotes diretos/transitivos | ethers 6.17.0, Orval 8.39.0 e overrides compatíveis tmp 0.2.7, fast-uri 3.1.8, brace-expansion 5.0.12; firewall/idade preservados | Audit contínuo e build/testes |
-| Média | `demo.ts` registrava Error bruto; parser Express podia retornar detalhes | SQL/params/input/stack em falhas | Logs por código e handler JSON sanitizado; limite 64 KiB | Erros 400/413/500 sem conteúdo sensível |
-| Média | Cofre/carteira sem FK ao proprietário no banco | Órfãos e perda de garantia de integridade fora do transporte | FKs e migração aditiva versionada; órfão falha, não é apagado | FK 23503 em fixture; validação no desenvolvimento |
-| Média | Logout nativo podia conservar sessão Clerk simultânea | Retorno involuntário à outra identidade em dispositivo compartilhado | Encerrar Clerk antes da sessão nativa e bloquear material privado local | Regressão de sessão/HTTP; callback explícito no app |
-| Média | Frontend sem CSP/headers e proteção explícita de arquivos internos | Defesa insuficiente contra injeção/exposição acidental de artefatos | CSP sem eval/event handlers, hash de inline aprovado, nosniff/referrer/permissions; negar dotfiles/backups/maps/symlinks externos | Servidor estático e regressão |
-| Média | Sem pausa global nos broadcasts | Operações pendentes poderiam continuar a enviar após uma pausa de transporte | Pausa no HTTP financeiro e antes de ambos os broadcasts, mantendo conciliação | Testes de pausa e pontos de envio |
-| Organização | Verificador falhava em fachada com infraestrutura e DTO de transporte | Fronteiras inconsistentes/documentação desatualizada | Composição no adaptador existente; DTO só no transporte; mapa/canônicos atualizados | `check:architecture` e regressões |
+| High | `app.ts`: CORS reflected any origin with credentials; various mutations depended only on Sec-Fetch-Site | Undue reading in eligible cookie/hostile origin scenarios; uneven HTTP protection | Exact allowlist, reject hostile/absent origin in writes, JSON in app, Clerk authorizedParties; proxy protocol preserved | HTTP and negative tests, fake/HTTP/suffix/port/form/CSRF origins |
+| High (scanner) | 5 high/3 moderate alerts in dependencies, initially | DoS and other failures in direct/transitive packages | ethers 6.17.0, Orval 8.39.0, and compatible overrides tmp 0.2.7, fast-uri 3.1.8, brace-expansion 5.0.12; firewall/age preserved | Continuous audit and build/tests |
+| Medium | `demo.ts` logged raw Error; Express parser could return details | SQL/params/input/stack in failures | Logs by code and sanitized JSON handler; 64 KiB limit | Errors 400/413/500 without sensitive content |
+| Medium | Vault/wallet without FK to the owner in the database | Orphans and loss of integrity guarantee outside transport | FKs and versioned additive migration; orphan fails, is not deleted | FK 23503 in fixture; validation in development |
+| Medium | Native logout could preserve simultaneous Clerk session | Involuntary return to another identity on shared device | Terminate Clerk before native session and block local private material | Session/HTTP regression; explicit callback in app |
+| Medium | Frontend without CSP/headers and explicit protection of internal files | Insufficient defense against injection/accidental exposure of artifacts | CSP without eval/event handlers, approved inline hash, nosniff/referrer/permissions; deny dotfiles/backups/maps/external symlinks | Static server and regression |
+| Medium | No global pause on broadcasts | Pending operations could continue to send after a transport pause | Pause in financial HTTP and before both broadcasts, maintaining reconciliation | Pause tests and sending points |
+| Organization | Verifier failed in facade with infrastructure and transport DTO | Inconsistent boundaries/outdated documentation | Composition in the existing adapter; DTO only in transport; map/canonicals updated | `check:architecture` and regressions |
 
-## Verificações permanentes e executadas
+## Permanent and executed checks
 
-- Três scanners: dependências, SAST e privacidade/dataflow. Inicial: 5 altos/3 moderados de dependências, 1 médio SAST, 0 dataflow.
-- Scan offline conservador de padrões de segredo: workspace, builds, todos os blobs textuais acessíveis no Git e logs locais; somente metadados, nunca valores. Não detecta toda PII/entropia. Um exemplo público de documentação foi classificado por hash exato, não permitido genericamente em código de execução.
-- `pnpm quality`: lint, arquitetura, documentação oficial, codegen, tipos, testes de contas/cofres/execução/histórico, EVM descartável, backend/frontend, localização e bundles.
-- HTTP real sobre schema vazio separado: dados próprios, history de outro owner não retornado, export de carteira alheia 403, admin 403, CSRF 403, senha incorreta 401 e sessão revogada.
-- Backup/restauração real `pg_dump`/`pg_restore`: somente fixtures; cofres criptografados, hashes de sessão e journal preservados. Defaults seriais têm sequências próprias; FKs são reaplicadas, pois LIKE não copia foreign keys/triggers.
-- Contratos: supply/vesting, owner/transferência em duas etapas/pausa, destinatário, limite/preço, rollback por falha, reentrância e replay por comprador; assinatura, nonce, idempotência, efeitos e reorganização nas regras de execução.
-- Testes de cofre: senha/tamper, integridade dos mesmos endereços após troca de senha e ausência de plaintext nas estruturas persistidas.
-- Regressão completa local: **148 testes automatizados** passaram, além das verificações HTTP e da restauração PostgreSQL. Endurecimento adicional do servidor estático verificado separadamente. CI preparada com PostgreSQL efêmero/client 16; runner GitHub não executado nesta sessão. Bootstrap SDK sintético em ambiente sem chaves cobre sessão nativa, não autenticação real Clerk.
+- Three scanners: dependencies, SAST, and privacy/dataflow. Initial: 5 high/3 moderate dependencies, 1 medium SAST, 0 dataflow.
+- Conservative offline secret pattern scan: workspace, builds, all text blobs accessible in Git and local logs; only metadata, never values. Does not detect all PII/entropy. A public documentation example was classified by exact hash, not allowed generically in execution code.
+- `pnpm quality`: lint, architecture, official documentation, codegen, types, account/vault/execution/history tests, disposable EVM, backend/frontend, localization, and bundles.
+- Real HTTP over separate empty schema: own data, history of another owner not returned, 403 foreign wallet export, 403 admin, 403 CSRF, 401 incorrect password, and revoked session.
+- Real backup/restore `pg_dump`/`pg_restore`: fixtures only; encrypted vaults, session hashes, and journal preserved. Serial defaults have own sequences; FKs are reapplied, as LIKE does not copy foreign keys/triggers.
+- Contracts: supply/vesting, owner/two-step transfer/pause, recipient, limit/price, rollback on failure, reentrancy, and replay by buyer; signature, nonce, idempotence, effects, and reorganization in execution rules.
+- Vault tests: password/tamper, integrity of the same addresses after password change, and absence of plaintext in persisted structures.
+- Complete local regression: **148 automated tests** passed, in addition to HTTP checks and PostgreSQL restoration. Additional static server hardening verified separately. CI prepared with ephemeral PostgreSQL/client 16; GitHub runner not executed in this session. Synthetic SDK bootstrap in keyless environment covers native session, not real Clerk authentication.
 
-## Riscos e limitações restantes
+## Remaining risks and limitations
 
-1. **Braces 3.0.3 / GHSA-vfj7-8cjw-p6xm (alto upstream, sem patch)**: fonte oficial confirma recursão sobre patterns profundamente aninhados. Proxy usa filtro-função, não glob; fast-glob/codegen recebem patterns do código/desenvolvedor, não de requisições. Exceção apenas desse advisory, expira **2026-11-05**. Proibido aceitar glob de usuário/IA. Reavaliar se mudar uso/dependências. O scanner continua mostrando esse alto; não foi “corrigido” nem ocultado.
-2. SAST médio de fixation em cookie demonstrativo: cookie identifica experiência anônima, não sessão autenticada. Identidade verificada e bloqueio de browser já reivindicado impedem uso desse token como autorização. Sessão nativa é aleatória/hash/expira/revoga. Triagem interna, não prova de resistência a todas as formas de cookie tossing.
-3. Limites de abuse de alguns percursos continuam em memória/IP de proxy; autenticação nativa usa limites persistidos. Não escalar/publicar recursos sensíveis sem limiter distribuído e validação da identidade de proxy.
-4. JavaScript não garante zeroização de strings/clipboard. XSS/dispositivo comprometido podem expor material descriptografado; export intencional é responsabilidade do titular, com aviso e reautenticação.
-5. IAM/branches/DB roles/backups de produção/revogação externa não foram alterados, por falta de acesso administrativo conectado. Runbook define ações.
-6. Contas nativas/execução local seguem development-only. Sem password recovery/KYC conforme decisão da versão; legado Clerk preservado. Não habilitar isso em produção por mera troca de NODE_ENV.
-7. Demonstração ainda tem números de ponto flutuante para saldos/cotações emulados; não migrar esses valores para dinheiro real. Contratos/execução/participação/histórico financeiro on-chain usam inteiros/strings exatos. Ledger patrimonial, staking financeiro/distribuição real, reorg profundo e disaster recovery público não estão entregues.
-8. Contratos diretos, sem proxy/upgrades nem initializer externo; mint só construtor, vesting protegido. Revisão/testes internos não substituem auditoria independente, controle multisig público e validação de deployment/funding.
-9. Encerramento de duas sessões reais simultâneas (Clerk+nativa) não exercitado no navegador nesta revisão; composição conferida e logout nativo verificado por HTTP.
+1. **Braces 3.0.3 / GHSA-vfj7-8cjw-p6xm (high upstream, no patch)**: official source confirms recursion on deeply nested patterns. Proxy uses filter-function, not glob; fast-glob/codegen receive patterns from code/developer, not requests. Exception only for this advisory, expires **2026-11-05**. Forbidden to accept user/AI glob. Reevaluate if changing usage/dependencies. Scanner continues to show this high; it was not “fixed” or hidden.
+2. Medium SAST of fixation in demo cookie: cookie identifies anonymous experience, not authenticated session. Verified identity and browser blocking already claimed prevent use of this token as authorization. Native session is random/hash/expires/revokes. Internal triage, not proof of resistance to all forms of cookie tossing.
+3. Abuse limits for some paths continue in proxy memory/IP; native authentication uses persisted limits. Do not scale/publish sensitive resources without distributed limiter and proxy identity validation.
+4. JavaScript does not guarantee zeroization of strings/clipboard. XSS/compromised device can expose decrypted material; intentional export is the holder's responsibility, with warning and re-authentication.
+5. IAM/branches/DB roles/production backups/external revocation were not changed, due to lack of connected administrative access. Runbook defines actions.
+6. Native accounts/local execution follow development-only. No password recovery/KYC as per version decision; legacy Clerk preserved. Do not enable this in production by merely changing NODE_ENV.
+7. Demonstration still has floating-point numbers for emulated balances/quotes; do not migrate these values to real money. On-chain contracts/execution/participation/financial history use exact integers/strings. Patrimonial ledger, financial staking/real distribution, deep reorg, and public disaster recovery are not delivered.
+8. Direct contracts, without proxy/upgrades or external initializer; mint only constructor, vesting protected. Internal review/tests do not replace independent audit, public multisig control, and deployment/funding validation.
+9. Closing of two simultaneous real sessions (Clerk+native) not exercised in the browser in this review; composition checked and native logout verified by HTTP.
 
-## Condições para continuar
+## Conditions to continue
 
-Desenvolvimento demonstrativo pode continuar se `pnpm quality` passar, não houver alto/crítico explorável pendente e a exceção expirada não estiver sendo ignorada. Alterar imports/globs, autenticação, cofre ou finanças exige regressão proporcional e atualização desses canônicos.
+Demonstrative development may continue if `pnpm quality` passes, there is no pending exploitable high/critical, and the expired exception is not being ignored. Changing imports/globs, authentication, vault, or finance requires proportional regression and update of these canonicals.
 
-Antes de novos serviços financeiros/produção: limiter/IAM/backup externo testado, ledger exato, signer/mandatos isolados, redes/contratos/destinos aprovados, conciliação/recuperação verificadas e auditoria independente. CI verde não autoriza mainnet.
+Before new financial services/production: limiter/IAM/external backup tested, exact ledger, isolated signer/mandates, approved networks/contracts/destinations, reconciliation/recovery verified, and independent audit. Green CI does not authorize mainnet.

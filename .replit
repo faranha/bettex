@@ -24,6 +24,10 @@ args = "pitch-research"
 task = "workflow.run"
 args = "bettex-local-evm"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "github-sync"
+
 [[workflows.workflow]]
 name = "pitch-research"
 author = "agent"
@@ -45,6 +49,17 @@ outputType = "console"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "pnpm --filter @workspace/bettex-contracts run local:runtime"
+
+[[workflows.workflow]]
+name = "github-sync"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pnpm sync:watch"
+
+[workflows.workflow.metadata]
+outputType = "console"
 
 [agent]
 stack = "PNPM_WORKSPACE"

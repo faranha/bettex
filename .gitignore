@@ -62,3 +62,18 @@ __pycache__/
 /lib/bettex-contracts/build/
 /lib/bettex-contracts/cache/
 /lib/bettex-contracts/artifacts/
+
+# Private workspace state and generated review output.
+/.config/
+/.conversation/
+/.pythonlibs/
+*.log
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+/data/runtime/
+/screenshots/
+# Uploaded instructions are not product source. Existing assets remain intact.
+/attached_assets/Pasted-*.txt
+/attached_assets/*.zip

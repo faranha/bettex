@@ -1,9 +1,10 @@
 import { useSyncExternalStore } from 'react';
 import catalogue from './locales/translations.json';
+import englishSourceMessages from './locales/english-source-messages.json';
 
 export type Locale = 'pt' | 'en' | 'es';
-type Translation = { en: string; es: string };
-const messages = catalogue as Record<string, Translation>;
+type Translation = { en: string; es: string; pt?: string };
+const messages = { ...catalogue, ...englishSourceMessages } as Record<string, Translation>;
 const listeners = new Set<() => void>();
 let locale: Locale = typeof window === 'undefined' ? 'pt' : localeFromPath(window.location.pathname);
 export const observedMessages = new Set<string>();
@@ -37,7 +38,7 @@ export function t(text: string): string {
   const key = normalize(text);
   if (!key || (unchanged.test(key) && (!/\d/.test(key) || !messages[key] || locale === 'pt')) || /^https?:\/\//.test(key)) return text;
   observedMessages.add(key);
-  if (locale === 'pt') return ptOverrides[key] ?? text;
+  if (locale === 'pt') return messages[key]?.pt ?? ptOverrides[key] ?? text;
   if (translatedValues[locale].has(key)) return text;
   const source = messages[key] ? key : folded.get(key.toLocaleLowerCase());
   let result = source ? messages[source][locale] : undefined;

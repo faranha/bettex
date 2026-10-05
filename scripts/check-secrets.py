@@ -1,6 +1,7 @@
 """Conservative offline secret scan. Never print matched values or source lines."""
 import argparse
 import hashlib
+import os
 import pathlib
 import re
 import subprocess
@@ -51,14 +52,25 @@ def main():
     parser.add_argument("--logs", action="store_true")
     args = parser.parse_args()
     findings, files = [], 0
-    for path in ROOT.rglob("*"):
-        if not path.is_file() or path.is_symlink() or any(part in EXCLUDED for part in path.relative_to(ROOT).parts):
-            continue
-        if path.suffix.lower() not in TEXT and not path.name.startswith(".env"):
-            continue
-        data = path.read_bytes()
-        findings.extend(inspect(data, str(path.relative_to(ROOT))))
-        files += 1
+    tracked = set(subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT).decode().split("\0"))
+    # Prune before descending: rglob still traverses every installed dependency
+    # and cache even when individual files are skipped afterwards.
+    for directory, folders, names in os.walk(ROOT, followlinks=False):
+        folders[:] = [name for name in folders if name not in EXCLUDED]
+        for name in names:
+            path = pathlib.Path(directory) / name
+            relative = str(path.relative_to(ROOT))
+            if not path.is_file() or path.is_symlink():
+                continue
+            if path.suffix.lower() not in TEXT and not path.name.startswith(".env"):
+                continue
+            # Locally populated, ignored environment files are legitimate secret
+            # storage. A tracked/staged environment file is never exempt.
+            if name.startswith(".env") and name != ".env.example" and relative not in tracked:
+                continue
+            data = path.read_bytes()
+            findings.extend(inspect(data, relative))
+            files += 1
     if args.history:
         listing = subprocess.check_output(["git", "rev-list", "--objects", "--all"], cwd=ROOT).splitlines()
         blobs = {}

@@ -1,17 +1,17 @@
-# Assinatura isolada e custódia a decidir
+# Isolated signature and custody to be decided
 
-**Status:** isolamento obrigatório; escolha de custódia/provedor pendente.
+**Status:** mandatory isolation; choice of custody/provider pending.
 
-## Contexto
+## Context
 
-O produto exige carteira Arbitrum vinculada à identidade, recuperação e exportação. Ainda não implementadas. Exportação depende do modelo de conta/custódia.
+The product requires an Arbitrum wallet linked to identity, recovery, and export. Not yet implemented. Export depends on the account/custody model.
 
-## Decisão
+## Decision
 
-IA nunca recebe chaves, assina ou envia payload arbitrário ao signer. Serviço isolado valida autorização determinística, mandato, rede, contrato, destino, limites, replay e revogação.
+AI never receives keys, signs, or sends arbitrary payloads to the signer. Isolated service validates deterministic authorization, mandate, network, contract, destination, limits, replay, and revocation.
 
-Antes da implementação, aprovar custódia, proprietário do signer, exportação, recuperação, autenticação reforçada e procedimentos de incidente. SDKs e provedores são adaptadores, não núcleo de regras.
+Before implementation, approve custody, signer owner, export, recovery, enhanced authentication, and incident procedures. SDKs and providers are adapters, not the core of rules.
 
-## Alternativas e consequências
+## Alternatives and consequences
 
-Rejeitada guarda improvisada de chaves no motor ou PostgreSQL. Não escolher MPC, ERC-4337 ou custódia interna por novidade: validar requisitos e responsabilidade operacional.
+Rejected improvised key storage in the engine or PostgreSQL. Do not choose MPC, ERC-4337, or internal custody due to novelty: validate requirements and operational responsibility.

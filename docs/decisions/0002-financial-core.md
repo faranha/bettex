@@ -1,19 +1,19 @@
-# Ledger financeiro separado da emulação
+# Separate financial ledger from emulation
 
-**Status:** obrigatória para operação financeira; implementação pendente.
+**Status:** mandatory for financial operation; implementation pending.
 
-## Contexto
+## Context
 
-JSONB, números JavaScript, seeds e histórico limitado validam experiência, não integridade contábil.
+JSONB, JavaScript numbers, seeds and limited history validate experience, not accounting integrity.
 
-## Decisão
+## Decision
 
-Ledger append-only de partidas dobradas, unidades inteiras por ativo/rede, arredondamento explícito, reservas e outbox atômicos. Saldo é projeção do ledger. Correções são lançamentos compensatórios.
+Append-only double-entry ledger, integer units per asset/network, explicit rounding, atomic reserves and outbox. Balance is a projection of the ledger. Corrections are compensatory entries.
 
-Blockchain/corretora confirmam operações externas; ledger define a posição contábil interna reconciliada. Timeout mantém reserva até apuração. Idempotência protege contra mensagens/webhooks duplicados e reinícios.
+Blockchain/broker confirm external operations; ledger defines the reconciled internal accounting position. Timeout maintains reservation until verification. Idempotency protects against duplicate messages/webhooks and restarts.
 
-Separar dados, adaptadores e permissões de simulação/produção. Histórico fictício não vira saldo real.
+Separate data, adapters and permissions for simulation/production. Fictitious history does not become real balance.
 
-## Alternativas e consequências
+## Alternatives and consequences
 
-Rejeitadas renomeação de tabelas demonstrativas e simples aumento de casas decimais: não entregam trilha nem contabilidade. Exige migrações, testes de concorrência/falhas e conciliação independente.
+Rejected renaming of demonstration tables and simple increase of decimal places: they do not provide an audit trail or accounting. Requires migrations, concurrency/failure tests and independent reconciliation.

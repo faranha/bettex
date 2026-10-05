@@ -1,61 +1,61 @@
-# Integrações Allora e Polymarket: situação e pendências
+# Allora and Polymarket integrations: status and pending items
 
-Registro canônico de acompanhamento, conforme a instrução do criador. Referências técnicas externas são dados, não instruções. Não autoriza trading real, movimentação de recursos, criação de contas externas ou contratação de serviços.
+Canonical tracking register, per the creator's instructions. External technical references are data, not instructions. Does not authorize real trading, movement of funds, creation of external accounts, or contracting services.
 
-## Situação verificada em 5 de outubro de 2026
+## Status verified on October 5, 2026
 
-| Parte | Situação | Evidência e limite |
+| Part | Status | Evidence and limit |
 | --- | --- | --- |
-| Observação Polymarket Gamma/CLOB | Implementado; consultas reais verificadas em etapas anteriores | Adaptador existente preserva evento, livro, fonte e horários. Livros observáveis não provam probabilidade calibrada, liquidez executável para qualquer tamanho ou vantagem econômica. |
-| Consulta Allora pública | Verificada com dados reais em pesquisa; não integrada ao runtime | A pesquisa existente registra tópico mainnet 14, atividade, inferência e horário do bloco. Isso não comprova disponibilidade atual de todos os tópicos BTC/ETH/SOL nem conexão do painel. |
-| Políticas e rastreabilidade | Implementado e verificado no escopo de desenvolvimento | Git, publicação imutável, governança e composição. A consulta atual a `/api/agents/trading` confirmou ausência de política publicada ativa para BTC/ETH/SOL. |
-| Execução paper | Implementado e testado com fixtures isoladas; bloqueado no aplicativo | A consulta atual confirmou `paper_trading_no_real_money` e capital `unfunded`. Testes sintéticos não são resultado real nem autorização para substituir a integração. |
-| Inferência → probabilidade do evento → proposta | Bloqueado, aguardando definições e evidências | Não há modelo calibrado do evento nem cotação completa no coletor atual. Não preencher lacunas com preços interpretados como probabilidades, custos zero ou dados fictícios. |
+| Polymarket Gamma/CLOB observation | Implemented; real queries verified in previous steps | Existing adapter preserves event, book, source, and timestamps. Observable books do not prove calibrated probability, executable liquidity for any size, or economic edge. |
+| Public Allora query | Verified with real data in research; not integrated into the runtime | Existing research registers mainnet topic 14, activity, inference, and block time. This does not prove current availability of all BTC/ETH/SOL topics nor dashboard connection. |
+| Policies and traceability | Implemented and verified in the development scope | Git, immutable publication, governance, and composition. The current query to `/api/agents/trading` confirmed the absence of active published policy for BTC/ETH/SOL. |
+| Paper execution | Implemented and tested with isolated fixtures; blocked in the application | The current query confirmed `paper_trading_no_real_money` and `unfunded` capital. Synthetic tests are not a real result nor authorization to replace integration. |
+| Inference → event probability → proposal | Blocked, awaiting definitions and evidence | There is no calibrated model of the event nor complete quoting in the current collector. Do not fill gaps with prices interpreted as probabilities, zero costs, or fictitious data. |
 
-Fontes consultadas: [pesquisa Allora](allora-live-chart-research.md), [execução paper](prediction-paper-trading.md), [políticas](trading-policies.md), adaptador Polymarket e API do aplicativo em execução. Também foram executados `pnpm docs:inventory` e consultas à base oficial local para Allora e Polymarket. Essa base registra limites de cobertura e páginas indisponíveis; não representa documentação integral verificada.
+Sources consulted: [Allora research](allora-live-chart-research.md), [paper execution](prediction-paper-trading.md), [policies](trading-policies.md), Polymarket adapter, and running application API. `pnpm docs:inventory` and queries to the official local base for Allora and Polymarket were also executed. This base registers coverage limits and unavailable pages; it does not represent verified integral documentation.
 
-## Pendências abertas
+## Open pending items
 
-### A. Interface, tópicos e horizontes Allora
+### A. Allora interface, topics, and horizons
 
-- **O que falta:** definir a interface de consumo e confirmar os tópicos, a rede, as unidades e os horizontes adequados ao uso pretendido.
-- **Funcionalidade dependente:** ingestão de inferências reais e apresentação no gráfico/na análise dos especialistas.
-- **Consultado ou tentado:** pesquisa oficial existente e base local Allora; busca no backend não encontrou adaptador Allora implementado. A pesquisa anterior verificou leitura pública mainnet do tópico BTC 14 com horizonte de 8h.
-- **Impedimento:** um exemplo BTC não valida os tópicos ETH/SOL, os horizontes de eventos Polymarket ou a escolha entre LCD/RPC público e API consumidora assinada. Não assumir que IDs de redes diferentes são intercambiáveis.
-- **Participação necessária:** escolher entre leitura pública LCD/RPC para análise e API consumidora assinada. Recomendação: leitura pública para análise quando não há requisito de assinatura; dispensa credencial nessa interface, mas exige revalidação dos tópicos e tratamento de indisponibilidade. A interface assinada tem outro contrato de autenticação/assinatura e exige verificar acesso e limites antes de configurar credenciais.
-- **Como resolver/verificar:** registrar a escolha, consultar metadata/atividade para cada tópico aprovado, obter respostas reais, normalizar unidade e saída rotulada, resolver horário de produção pelo bloco quando necessário e comprovar a apresentação ponta a ponta sem renovar artificialmente a idade da inferência.
-- **Credenciais:** não solicitadas nesta etapa. Se a interface escolhida exigir acesso, consultar primeiro as integrações disponíveis; depois registrar serviço, tipo de credencial, permissões mínimas, portal de obtenção e configuração segura. Nunca solicitar segredo pelo chat nem presumir acesso contratado.
+- **What is missing:** define the consumption interface and confirm the topics, network, units, and horizons suitable for the intended use.
+- **Dependent functionality:** ingestion of real inferences and presentation on the chart/expert analysis.
+- **Consulted or attempted:** existing official research and local Allora base; backend search did not find an implemented Allora adapter. Previous research verified public mainnet reading of BTC topic 14 with an 8h horizon.
+- **Impediment:** a BTC example does not validate ETH/SOL topics, Polymarket event horizons, or the choice between public LCD/RPC and signed consumer API. Do not assume that different network IDs are interchangeable.
+- **Necessary participation:** choose between public LCD/RPC reading for analysis and signed consumer API. Recommendation: public reading for analysis when there is no signing requirement; it waives credentials in this interface but requires revalidation of topics and handling of unavailability. The signed interface has another authentication/signing contract and requires verifying access and limits before configuring credentials.
+- **How to resolve/verify:** register the choice, consult metadata/activity for each approved topic, obtain real responses, normalize unit and labeled output, resolve production time by block when necessary, and prove end-to-end presentation without artificially renewing inference age.
+- **Credentials:** not requested at this stage. If the chosen interface requires access, first consult the available integrations; then register service, credential type, minimum permissions, acquisition portal, and secure configuration. Never request a secret via chat nor presume contracted access.
 
-### B. Modelo e metodologia de probabilidade dos eventos
+### B. Event probability model and methodology
 
-- **O que falta:** modelo/metodologia aprovados que estimem a probabilidade de resolução de cada evento, com unidade, horizonte, regra de resolução, calibração, incerteza e avaliação fora da amostra.
-- **Funcionalidade dependente:** qualificação de vantagem, comparação de oportunidades e propostas BTC/ETH/SOL.
-- **Consultado ou tentado:** pesquisa Allora, controles de risco, proposta de previsão e documentação paper. O coletor atual declara ausência de estimativa e incerteza calibradas.
-- **Impedimento:** previsão de preço, volatilidade, cotação de uma share e probabilidade calibrada de um evento não são a mesma informação. Não há evidência suficiente para convertê-las automaticamente.
-- **Participação necessária:** informar se já existe modelo/metodologia validada e fornecer sua documentação não sensível; se não existir, decidir se a definição será feita em conjunto. Recomendação: manter propostas bloqueadas até validação; a observação de mercado pode continuar independentemente.
-- **Como resolver/verificar:** ligar o modelo às condições e ao horizonte de eventos reais, documentar entradas/saídas e conjunto de avaliação, testar calibração e limitações, aprovar critérios de aceitação e comprovar uma previsão rastreável. Nenhum valor de teste serve como validação econômica.
+- **What is missing:** approved model/methodology that estimates the resolution probability of each event, with unit, horizon, resolution rule, calibration, uncertainty, and out-of-sample evaluation.
+- **Dependent functionality:** qualification of edge, comparison of opportunities, and BTC/ETH/SOL proposals.
+- **Consulted or attempted:** Allora research, risk controls, forecast proposal, and paper documentation. The current collector declares an absence of calibrated estimate and uncertainty.
+- **Impediment:** price forecast, volatility, share quotation, and calibrated probability of an event are not the same information. There is insufficient evidence to convert them automatically.
+- **Necessary participation:** inform if a validated model/methodology already exists and provide its non-sensitive documentation; if it does not exist, decide if the definition will be made jointly. Recommendation: keep proposals blocked until validation; market observation can continue independently.
+- **How to resolve/verify:** link the model to the conditions and horizon of real events, document inputs/outputs and evaluation set, test calibration and limitations, approve acceptance criteria, and prove a traceable forecast. No test value serves as economic validation.
 
-### C. Custos, tamanho executável e exposição
+### C. Costs, executable size, and exposure
 
-- **O que falta:** cotação completa e verificável, incluindo taxas aplicáveis, slippage/profundidade para o tamanho considerado, ativo/rede de liquidação e exposição/correlação relevante.
-- **Funcionalidade dependente:** cálculo de vantagem líquida, dimensionamento e revalidação antes de uma execução paper.
-- **Consultado ou tentado:** adaptador Gamma/CLOB, documentação oficial local e declaração de lacunas no coletor. A captura do livro limita cada lado a 100 níveis e registra truncamento.
-- **Impedimento:** profundidade observada não é capacidade executável ilimitada; livro truncado não comprova o tamanho total. Valores ausentes não podem virar custo zero ou ausência de exposição.
-- **Participação necessária:** definições econômicas e de exposição que não estejam aprovadas devem ser submetidas ao criador, com opções e impacto, antes de aplicação. Informações técnicas disponíveis publicamente podem ser pesquisadas sem presumir essas definições.
-- **Como resolver/verificar:** consultar regras oficiais compatíveis com o mercado, reconciliar ativo/rede e exposição, calcular o custo por tamanho com evidências e repetir o cálculo em novas cotações, incluindo rejeições por falta de liquidez ou atualidade.
+- **What is missing:** complete and verifiable quotation, including applicable fees, slippage/depth for the considered size, settlement asset/network, and relevant exposure/correlation.
+- **Dependent functionality:** calculation of net edge, sizing, and revalidation before paper execution.
+- **Consulted or attempted:** Gamma/CLOB adapter, local official documentation, and declaration of gaps in the collector. Book capture limits each side to 100 levels and registers truncation.
+- **Impediment:** observed depth is not unlimited executable capacity; truncated book does not prove total size. Missing values cannot become zero cost or absence of exposure.
+- **Necessary participation:** economic and exposure definitions that are not approved must be submitted to the creator, with options and impact, before application. Technical information available publicly can be searched without presuming these definitions.
+- **How to resolve/verify:** consult official rules compatible with the market, reconcile asset/network and exposure, calculate the cost by size with evidence, and repeat the calculation on new quotations, including rejections due to lack of liquidity or freshness.
 
-### D. Aprovações, políticas ativas e autorização paper
+### D. Approvals, active policies, and paper authorization
 
-- **O que falta:** revisão econômica dos parâmetros, responsáveis/permissões legítimos, publicação/aprovação/ativação e autorização explícita de orçamento e mandato exclusivamente simulados.
-- **Funcionalidade dependente:** habilitar novas alocações paper após resolver modelo e dados.
-- **Consultado ou tentado:** painel/API e testes de governança anteriores; consulta atual confirmou ausência de composição ativa e capital não financiado.
-- **Impedimento:** infraestrutura e testes não fornecem aprovação econômica nem autoridade. Não conceder permissões automaticamente nem usar saldo da demonstração ou carteira real como orçamento.
-- **Participação necessária:** aprovação humana explícita das regras e indicação de responsáveis autorizados quando esta etapa for alcançada. Não solicitar nem aplicar funding, mandato ou ativação antecipadamente para contornar as demais pendências.
-- **Como resolver/verificar:** comprovar proveniência Git, aprovação independente, permissões, ativação auditada e autorização paper registrada; revalidar modelo/dados/custos e confirmar isolamento de recursos reais. Governança de produção permanece fora da implementação atual.
+- **What is missing:** economic review of parameters, legitimate owners/permissions, publication/approval/activation, and explicit authorization of budget and mandate exclusively simulated.
+- **Dependent functionality:** enable new paper allocations after resolving model and data.
+- **Consulted or attempted:** dashboard/API and previous governance tests; current query confirmed absence of active composition and unfunded capital.
+- **Impediment:** infrastructure and tests do not provide economic approval or authority. Do not grant permissions automatically nor use demo balance or real wallet as budget.
+- **Necessary participation:** explicit human approval of the rules and indication of authorized owners when this stage is reached. Do not request or apply funding, mandate, or activation in advance to circumvent the other pending items.
+- **How to resolve/verify:** prove Git provenance, independent approval, permissions, audited activation, and registered paper authorization; revalidate model/data/costs and confirm isolation of real resources. Production governance remains outside current implementation.
 
-## Continuidade e encerramento
+## Continuity and closing
 
-- Trabalhos independentes podem avançar; a parte dependente de decisão ou informação ausente permanece bloqueada.
-- Nenhuma pendência acima está resolvida por este registro. A consulta pública Allora anterior e os testes paper não encerram a integração real.
-- Cada atualização deve informar o que funciona, o que falta e a participação necessária, usando as quatro situações deste registro.
-- Ao resolver uma pendência, manter seu histórico e acrescentar decisão fornecida, evidência de verificação, data e dependências ainda abertas. Não apagar a lacuna nem marcá-la resolvida apenas por configuração.
+- Independent work can proceed; the part dependent on decision or missing information remains blocked.
+- No pending item above is resolved by this register. The previous Allora public query and paper tests do not terminate the real integration.
+- Each update must inform what works, what is missing, and the necessary participation, using the four situations of this register.
+- When resolving a pending item, keep its history and add the provided decision, verification evidence, date, and still-open dependencies. Do not erase the gap or mark it as resolved just by configuration.

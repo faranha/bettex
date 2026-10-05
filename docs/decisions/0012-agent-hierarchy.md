@@ -1,9 +1,9 @@
-# Hierarquia BETTEX e primeiro ramo BTC
+# BETTEX Hierarchy and first BTC branch
 
-**Decisão:** especialista BTC → Mercado de Previsões → BETTEX; Tesouraria/Governança transversal. Oportunidades tipadas e evidenciadas, encaminhamento/decisões persistidos, autorização/executor existentes.
+**Decision:** BTC specialist → Prediction Market → BETTEX; Treasury/Governance transversal. Typed and evidenced opportunities, persisted forwarding/decisions, existing authorization/executor.
 
-**Why:** instrução do criador de 5 de outubro de 2026 exige separar seleção de oportunidades de autoridade financeira; emulação não pode se apresentar como atividade do alpha.
+**Why:** creator instruction of October 5, 2026, requires separating opportunity selection from financial authority; emulation cannot present itself as alpha activity.
 
-**Aplicação:** manter monólito modular; fontes públicas Gamma/CLOB por adaptador. Não inventar modelo/retorno/custo/exposição. Ausência bloqueia seleção/execução. Desativar a emulação em produção sem apagar históricos; demo pública permanece placeholder.
+**Application:** maintain modular monolith; public Gamma/CLOB sources via adapter. Do not invent model/return/cost/exposure. Absence blocks selection/execution. Disable emulation in production without deleting histories; public demo remains a placeholder.
 
-**Limite:** alocação de teste não é execução de ordem Polymarket. Não criar multisig, novos direitos econômicos, nomes comerciais ou serviços por agente.
+**Limit:** test allocation is not Polymarket order execution. Do not create multisig, new economic rights, trade names, or agent-based services.

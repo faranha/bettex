@@ -1,126 +1,126 @@
-# Arquitetura canônica da BETTEX
+# BETTEX canonical architecture
 
-O contexto `simulation` possui apenas execuções de cenários identificados e coordena as APIs públicas de `agents`, `risk`, `execution`, `ledger` e `reconciliation`. Seus registros e relógio são isolados dos demais ambientes. Ver [decisão de execuções isoladas](decisions/0013-simulation-executions.md).
+The `simulation` context only contains identified scenario executions and coordinates the public APIs for `agents`, `risk`, `execution`, `ledger` and `reconciliation`. Its logs and clock are isolated from other environments. See [isolated executions decision](decisions/0013-simulation-executions.md).
 
-Integrações Allora/Polymarket seguem a [regra de colaboração e o registro canônico de pendências](integration-pendencies.md). Impedimentos não resolvidos exigem participação do criador; não autorizar substituições, inferências ou escolhas econômicas para contorná-los.
+Allora/Polymarket integrations follow the [collaboration rule and the canonical registry of pending items](integration-pendencies.md). Unresolved impediments require participation from the creator; do not authorize substitutions, inferences, or economic choices to circumvent them.
 
-Este é o mapa normativo dos domínios, dependências e fontes de verdade. Consultar antes de implementar. [AGENTS.md](../AGENTS.md) define a rotina; [decisions/](decisions/README.md), as decisões. O [documento de apoio](architecture/README.md) descreve os gates financeiros e a evolução para serviços.
+This is the normative map of domains, dependencies, and sources of truth. Consult before implementing. [AGENTS.md](../AGENTS.md) defines the routine; [decisions/](decisions/README.md), the decisions. The [support document](architecture/README.md) describes financial gates and the evolution toward services.
 
-## Estado atual, sem confundir intenção com implementação
+## Current state, without confusing intention with implementation
 
-O monorepo existente usa React/Vite, OpenAPI/Orval/Zod, Express, Clerk e PostgreSQL/Drizzle. Identidade e persistência são reais. A demonstração interna de desenvolvimento mantém saldos, operações, cotações e orquestração emulados; produção bloqueia essa API/timer e mostra placeholders. Não existe ledger patrimonial completo nem assinatura financeira de produção. As contas nativas de desenvolvimento estão integradas a `/demo/minha-conta`, com duas carteiras EVM reais geradas no cliente. Sua associação inicial é Arbitrum Sepolia; o titular pode aceitar associação adicional à EVM local 31337 para abastecimento e compras de teste realmente executadas e conciliadas. Esses dados não são os saldos emulados da demonstração.
+The existing monorepo uses React/Vite, OpenAPI/Orval/Zod, Express, Clerk, and PostgreSQL/Drizzle. Identity and persistence are real. The internal development demonstration keeps balances, operations, quotes, and orchestration emulated; production blocks this API/timer and shows placeholders. There is no complete equity ledger nor production financial signature. Native development accounts are integrated into `/demo/minha-conta`, with two real EVM wallets generated on the client. Their initial association is Arbitrum Sepolia; the holder can accept additional association to the local EVM 31337 for testing supplies and purchases that are actually executed and reconciled. These data are not the emulated balances of the demonstration.
 
-O Roadmap define ALFA seed com token/contratos/agentes, captação e formalização depois e BETA com go to market. Essa intenção de produto não prova que a infraestrutura financeira já existe.
+The Roadmap defines ALFA seed with token/contracts/agents, fundraising and formalization afterwards, and BETA with go to market. This product intention does not prove that the financial infrastructure already exists.
 
-Os módulos abaixo são fronteiras obrigatórias para a migração incremental, **não pastas/serviços já implementados**. Não renomear JSONB demonstrativo para apresentá-lo como ledger.
+The modules below are mandatory boundaries for incremental migration, **not already implemented folders/services**. Do not rename demonstrative JSONB to present it as a ledger.
 
-## Mapa e propriedade
+## Map and ownership
 
-| Módulo | Domínio, regras e dados próprios | Dependências diretas permitidas via API pública |
+| Module | Domain, rules and own data | Direct dependencies allowed via public API |
 | --- | --- | --- |
-| `accounts` | Usuários, identidade interna, vínculo externo, permissões e ciclo da conta | Nenhuma |
-| `wallets` | Contas/endereço/rede, modelo de custódia, recuperação e exportação; porta restrita de assinatura | `accounts` |
-| `ledger` | Contabilidade, lançamentos, contas contábeis, obrigações, reservas e saldos derivados | `accounts` |
-| `agents` | Especialista → mercado → BETTEX; propostas, evidências e seleção | `risk` |
-| `risk` | Mandatos, limites, autorização determinística e política de tesouraria | `ledger`, `wallets` |
-| `execution` | Ordens, tentativas, adaptadores e resultado externo ainda não conciliado | `risk`, `ledger`, `wallets` |
-| `reconciliation` | Confirmações externas, fills, divergências e reorganizações | `execution`, `ledger`, `wallets` |
-| `audit` | Trilha durável de propostas, decisões, tentativas e resultados | Nenhuma; consome contratos de eventos |
+| `accounts` | Users, internal identity, external link, permissions and account cycle | None |
+| `wallets` | Accounts/address/network, custody model, recovery and export; restricted signature port | `accounts` |
+| `ledger` | Accounting, entries, accounting accounts, obligations, reserves and derived balances | `accounts` |
+| `agents` | Specialist → market → BETTEX; proposals, evidence and selection | `risk` |
+| `risk` | Mandates, limits, deterministic authorization and treasury policy | `ledger`, `wallets` |
+| `execution` | Orders, attempts, adapters and external result not yet reconciled | `risk`, `ledger`, `wallets` |
+| `reconciliation` | External confirmations, fills, divergences and reorganizations | `execution`, `ledger`, `wallets` |
+| `audit` | Durable trail of proposals, decisions, attempts and results | None; consumes event contracts |
 
-Acesso permitido não concede acesso a tabelas internas. `agents` só solicita avaliação ao contrato público de risco; nunca chama carteira, ledger, executor ou signer diretamente. Estratégias não têm autoridade financeira. Eventos de integração não criam dependência reversa entre domínios.
+Permitted access does not grant access to internal tables. `agents` only requests evaluation from the public risk contract; it never calls wallet, ledger, executor, or signer directly. Strategies do not have financial authority. Integration events do not create a reverse dependency between domains.
 
-[Hierarquia canônica](agent-hierarchy.md): primeiro ramo BETTEX → Mercado de Previsões → especialistas BTC, ETH e SOL. [Estratégia simulada](prediction-paper-trading.md) compartilha a política de risco e a hierarquia existentes: a fila pertence a `agents`, controles a `risk`, orçamento simulado a `ledger`, ordens/posições a `execution`, conferência a `reconciliation` e eventos ao `audit`. Tesouraria é controle transversal, não concorrente por oportunidades. Emulação é exclusiva de desenvolvimento/testes; produção não gera sua atividade e a demo pública mostra placeholders.
+[Canonical hierarchy](agent-hierarchy.md): first branch BETTEX → Prediction Market → BTC, ETH, and SOL specialists. [Simulated strategy](prediction-paper-trading.md) shares the existing risk policy and hierarchy: the queue belongs to `agents`, controls to `risk`, simulated budget to `ledger`, orders/positions to `execution`, conference to `reconciliation`, and events to `audit`. Treasury is a transversal control, not competing for opportunities. Emulation is exclusive to development/tests; production does not generate its activity and the public demo shows placeholders.
 
-## Camadas
+## Layers
 
 ```text
-artifacts/api-server/src/modules/<domínio>/
-  index.ts         API pública: contratos, portas e casos de uso
-  domain/          invariantes, entidades, estados e políticas puras
-  application/     fluxos e coordenação via portas
-  infrastructure/  repositórios e adaptadores de fornecedores
-  transport/       HTTP, mensagens e tradução dos contratos
+artifacts/api-server/src/modules/<domain>/
+  index.ts         Public API: contracts, ports and use cases
+  domain/          invariants, entities, states and pure policies
+  application/     flows and coordination via ports
+  infrastructure/  repositories and vendor adapters
+  transport/       HTTP, messages and contract translation
 ```
 
-- `domain` depende apenas do próprio domínio e de contratos/primitivas puros aprovados.
-- `application` depende do próprio domínio/aplicação e das APIs públicas permitidas; não de adaptadores concretos.
-- `infrastructure` implementa portas do próprio domínio/aplicação.
-- `transport` invoca aplicação e usa contratos; não concentra decisão financeira.
-- Validadores gerados `@workspace/api-zod` são contratos de transporte permitidos, não fornecedores externos nem dependências permitidas no domínio puro.
-- `index.ts` não exporta repositórios, schemas internos, SDKs ou handlers como API de domínio.
-- Composição/injeção de adaptadores fica fora das regras centrais.
-- Fornecedores são acessados por adaptadores de infraestrutura; trocar fornecedor não muda a regra central.
-- Contracts compartilhados não contêm decisões de risco, saldo ou estratégias.
-- Não são permitidos ciclos de imports, mesmo entre arquivos do mesmo módulo.
-- Repositórios usam a conexão `db` e schemas do próprio contexto; imports globais/namespace que exponham tabelas de todos os contextos não são API pública.
+- `domain` depends only on its own domain and approved pure contracts/primitives.
+- `application` depends on its own domain/application and allowed public APIs; not on concrete adapters.
+- `infrastructure` implements ports of its own domain/application.
+- `transport` invokes application and uses contracts; it does not concentrate financial decisions.
+- Validators generated by `@workspace/api-zod` are allowed transport contracts, not external vendors or dependencies allowed in the pure domain.
+- `index.ts` does not export repositories, internal schemas, SDKs, or handlers as a domain API.
+- Adapter composition/injection stays outside the central rules.
+- Vendors are accessed by infrastructure adapters; changing a vendor does not change the central rule.
+- Shared contracts do not contain risk decisions, balances, or strategies.
+- Import cycles are not allowed, even between files in the same module.
+- Repositories use the `db` connection and schemas of their own context; global/namespace imports that expose tables from all contexts are not public API.
 
-Interfaces HTTP continuam em `lib/api-spec`; tipos/validadores são gerados nas bibliotecas existentes. Contratos de eventos podem ganhar biblioteca própria quando usados, sem scaffolding vazio.
+HTTP interfaces continue in `lib/api-spec`; types/validators are generated in existing libraries. Event contracts can gain their own library when used, without empty scaffolding.
 
-## Fontes de verdade
+## Sources of truth
 
-| Informação | Fonte autoritativa |
+| Information | Authoritative source |
 | --- | --- |
-| Autenticação externa | Clerk, verificado pelo backend; nunca claims arbitrárias do cliente |
-| Conta pessoal de testes | `accounts`, com scrypt, sessão opaca, consentimento e bloqueio fora de desenvolvimento; não migra identidade Clerk |
-| Carteiras pessoais de testes | `wallets`, com metadados públicos e cofre criptografado; chave e descriptografia exclusivamente no navegador |
-| Propriedade/permissões internas | `accounts`, derivadas e verificadas no servidor |
-| Transação on-chain confirmada | Blockchain correta, contratos permitidos e política de confirmações/reorganizações |
-| Ordem/fill externo | Corretora/provedor autorizado e suas confirmações conciliadas |
-| Posição contábil da plataforma | Ledger interno, reconciliado com fontes externas |
-| Mandato e autorização | Política versionada aprovada e decisão determinística de `risk` |
-| Estado demonstrativo atual | Backend/PostgreSQL demonstrativo; não saldo financeiro real |
+| External authentication | Clerk, verified by backend; never arbitrary client claims |
+| Personal test account | `accounts`, with scrypt, opaque session, consent and lockout outside of development; does not migrate Clerk identity |
+| Personal test wallets | `wallets`, with public metadata and encrypted vault; key and decryption exclusively in the browser |
+| Internal ownership/permissions | `accounts`, derived and verified on the server |
+| Confirmed on-chain transaction | Correct blockchain, permitted contracts and confirmation/reorganization policy |
+| External order/fill | Authorized brokerage/provider and its reconciled confirmations |
+| Platform accounting position | Internal ledger, reconciled with external sources |
+| Mandate and authorization | Approved versioned policy and deterministic decision from `risk` |
+| Current demonstrative state | Backend/PostgreSQL demonstrative; not real financial balance |
 
-UI, cache, preço de tela, mensagem de agente e resposta isolada do executor não substituem essas fontes.
+UI, cache, screen price, agent message, and isolated executor response do not substitute these sources.
 
-## Operação e rastreabilidade
+## Operation and traceability
 
-`proposta → autorização de risco → reserva → tentativa de execução → confirmação/conciliação → lançamento final`.
+`proposal → risk authorization → reserve → execution attempt → confirmation/reconciliation → final entry`.
 
-Cada operação possui `operationId`, identidade/escopo, chave de idempotência e estados explícitos; propostas, decisões, tentativas e eventos têm seus próprios IDs vinculados. O estado “resultado incerto” mantém a reserva até conciliação. Uma mensagem repetida não cria outra execução.
+Each operation has `operationId`, identity/scope, idempotency key, and explicit states; proposals, decisions, attempts, and events have their own linked IDs. The “uncertain result” state maintains the reserve until reconciliation. A repeated message does not create another execution.
 
-Usar unidades inteiras por ativo, serializadas como strings, rede/contrato/escala explícitos e arredondamento definido. Distinguir saldo confirmado, saldo reservado e saldo disponível. Reserva, lançamento e outbox são atômicos; saldo deriva dos lançamentos, não de mutação de um número no frontend.
+Use integer units per asset, serialized as strings, explicit network/contract/scale, and defined rounding. Distinguish confirmed balance, reserved balance, and available balance. Reserve, entry, and outbox are atomic; balance derives from entries, not from mutation of a number in the frontend.
 
-Registro de proposta/evidência, mandato/versão, decisão/motivo, tentativa e resultado é durável. Compensações preservam o passado. Descartar logs de tela não apaga comandos, decisões ou lançamentos.
+Registry of proposal/evidence, mandate/version, decision/motive, attempt, and result is durable. Compensations preserve the past. Discarding screen logs does not erase commands, decisions, or entries.
 
-## Falhas, cancelamento e recuperação
+## Failures, cancellation and recovery
 
-- Sem validação obrigatória de risco, fonte confiável ou autorização: bloquear novas ordens e novas exposições.
-- Cancelamento exige ordem identificada, autorização própria e confirmação externa; pedido de cancelamento não prova cancelamento.
-- Timeout/reinício exige consulta e conciliação pelo mesmo identificador antes de reenviar.
-- Redução de exposição exige mandato de emergência pré-aprovado, limites determinísticos e auditoria. Não concede assinatura irrestrita ao agente.
-- Revogação/interrupção bloqueia novas operações, preservando leitura, conciliação e procedimentos seguros autorizados.
-- Operações de recuperação não dispensam verificações de identidade, rede, destino e idempotência.
+- Without mandatory risk validation, trusted source, or authorization: block new orders and new exposures.
+- Cancellation requires identified order, own authorization, and external confirmation; cancellation request does not prove cancellation.
+- Timeout/restart requires query and reconciliation by the same identifier before resending.
+- Exposure reduction requires pre-approved emergency mandate, deterministic limits, and audit. It does not grant unrestricted signature to the agent.
+- Revocation/interruption blocks new operations, preserving reading, reconciliation, and authorized safe procedures.
+- Recovery operations do not dispense with identity, network, destination, and idempotency checks.
 
-## Legado e evolução
+## Legacy and evolution
 
-### Cadastro pessoal integrado
+### Integrated personal registration
 
-[Decisão de carteiras pessoais de testes](decisions/0006-personal-test-wallets.md): `/testes/conta` redireciona à conta dentro do app. Contas Clerk existentes são preservadas, sem migração por e-mail; identidade nativa válida tem precedência. O ponto de composição `routes/test-accounts.ts` injeta os adaptadores dos dois contextos e coordena uma única transação para cadastro e troca de senha. Os módulos não acessam as tabelas internas um do outro. O compositor legado `lib/account-identity.ts` resolve o adaptador nativo, sem reexportar infraestrutura pela API pública de `accounts`. Cofre criptografado não é autorização para uma IA operar uma carteira. Ledger patrimonial e distribuição financeira real continuam pendentes; contratos de teste estão descritos abaixo.
+[Personal test wallets decision](decisions/0006-personal-test-wallets.md): `/testes/conta` redirects to the account within the app. Existing Clerk accounts are preserved, without email migration; valid native identity has precedence. The composition point `routes/test-accounts.ts` injects the adapters of the two contexts and coordinates a single transaction for registration and password change. Modules do not access each other's internal tables. The legacy compositor `lib/account-identity.ts` resolves the native adapter, without re-exporting infrastructure through the `accounts` public API. Encrypted vault is not authorization for an AI to operate a wallet. Equity ledger and real financial distribution remain pending; test contracts are described below.
 
-### Biblioteca on-chain exclusivamente de teste
+### Exclusively test on-chain library
 
-[Decisão de contratos de teste](decisions/0007-testnet-contract-library.md) e [especificação com fontes](contracts/bettex-testnet-spec.md): `lib/bettex-contracts` contém fontes Solidity, compilação/ABI e verificação EVM local. Seu nó auxiliar de desenvolvimento está documentado na [decisão do percurso](decisions/0009-native-blockchain-journey.md), sem autenticação ou banco paralelos. Os contratos são adaptadores on-chain consumidos pelas fronteiras existentes; não implementam ledger patrimonial ou distribuição de resultados completos. Não há autorização de mainnet nem implantação pública nessa configuração.
+[Test contracts decision](decisions/0007-testnet-contract-library.md) and [specification with sources](contracts/bettex-testnet-spec.md): `lib/bettex-contracts` contains Solidity sources, compilation/ABI, and local EVM verification. Its auxiliary development node is documented in the [journey decision](decisions/0009-native-blockchain-journey.md), without parallel authentication or database. The contracts are on-chain adapters consumed by existing boundaries; they do not implement equity ledger or full results distribution. There is no mainnet authorization or public deployment in this configuration.
 
-[Observação dos contratos](decisions/0008-test-contract-observation.md): `reconciliation` é proprietário dos vínculos por conta e evidências EVM. O painel usa Clerk existente, lê Arbitrum Sepolia, valida runtime/bloco e não substitui ledger por saldos externos. A compra é assinada exclusivamente pela carteira do usuário, com proteção de rede, orçamento exato e idempotência; implantação/funding públicos continuam pendentes.
+[Contracts observation](decisions/0008-test-contract-observation.md): `reconciliation` is the owner of account links and EVM evidence. The dashboard uses existing Clerk, reads Arbitrum Sepolia, validates runtime/block, and does not replace ledger with external balances. The purchase is signed exclusively by the user's wallet, with network protection, exact budget, and idempotency; public deployment/funding remain pending.
 
-[Percurso nativo blockchain](decisions/0009-native-blockchain-journey.md): `/demo/minha-conta` reúne cadastro/cofre/sessão; o caminho antigo só redireciona. `wallets` possui a associação local explícita, adapter RPC e assinatura pessoal restrita; `execution` possui operações/etapas/nonce/executor persistidos antes do envio; `reconciliation` valida runtime, recebimentos e hashes dos blocos e conserva evidências de eventos; `ledger` calcula saldo elegível × tempo, registra partidas dobradas USDC/BETTEX e verifica saldos contra a cadeia. A [rodada de teste](decisions/0010-local-round-settlement.md) apura resultado sintético explicitamente limitado, reserva obrigações, paga USDC local e segrega verba de recompra. Isso não é apuração de lucro externo nem ledger de estratégias reais. A EVM local usa MockUSDC gratuito e é identificada como local; reinício do nó é uma nova cadeia, não restauração de saldos anteriores.
+[Native blockchain journey](decisions/0009-native-blockchain-journey.md): `/demo/minha-conta` gathers registration/vault/session; the old path only redirects. `wallets` has the explicit local association, RPC adapter, and restricted personal signature; `execution` has operations/steps/nonce/executor persisted before sending; `reconciliation` validates runtime, receipts, and block hashes and keeps event evidence; `ledger` calculates eligible balance × time, records double entries USDC/BETTEX, and verifies balances against the chain. The [test round](decisions/0010-local-round-settlement.md) calculates synthetic result explicitly limited, reserves obligations, pays local USDC, and segregates repurchase funds. This is not external profit calculation nor real strategy ledger. Local EVM uses free MockUSDC and is identified as local; node restart is a new chain, not restoration of previous balances.
 
-### Suporte de engenharia: documentação oficial
+### Engineering support: official documentation
 
-`tools/technical-docs/` coleta, versiona e consulta referências técnicas públicas. É uma ferramenta de desenvolvimento fora dos domínios financeiros, sem rotas HTTP ou interface. Armazena apenas documentos oficiais em `data/technical-docs/`; não lê contas, credenciais ou dados de usuários.
+`tools/technical-docs/` collects, versions, and queries public technical references. It is a development tool outside financial domains, without HTTP routes or interface. It stores only official documents in `data/technical-docs/`; it does not read accounts, credentials, or user data.
 
-Antes de mudar integração, consultar `pnpm docs:query --platform <plataforma> --query "<assunto>"`, verificar versões utilizadas e registrar referências na documentação da alteração. Atualização/recuperação e cobertura são descritas em [technical-documentation.md](technical-documentation.md). Política de implantação e persistência: [decisão correspondente](decisions/0005-technical-documentation.md).
+Before changing integration, consult `pnpm docs:query --platform <platform> --query "<subject>"`, verify used versions, and register references in the documentation of the change. Update/recovery and coverage are described in [technical-documentation.md](technical-documentation.md). Deployment and persistence policy: [corresponding decision](decisions/0005-technical-documentation.md).
 
-A [decisão de migração incremental](decisions/0004-canonical-boundaries.md) registra os arquivos mistos atuais, seus responsáveis e critérios para retirar exceções. Não colocar novas regras em pastas genéricas nem duplicar regras no frontend.
+The [incremental migration decision](decisions/0004-canonical-boundaries.md) records current mixed files, their owners, and criteria for removing exceptions. Do not put new rules in generic folders nor duplicate rules in the frontend.
 
-A lista executável de dependências está em [architecture-rules.json](architecture-rules.json). `pnpm check:architecture` bloqueia novos arquivos genéricos não registrados, dependências/camadas inválidas, acesso a internos de outros módulos e ciclos no código modular do backend.
+The executable dependency list is in [architecture-rules.json](architecture-rules.json). `pnpm check:architecture` blocks new unregistered generic files, invalid dependencies/layers, access to internals of other modules, and cycles in the modular backend code.
 
-Esse verificador é estático e limitado à base Express: não prova propriedade em SQL dinâmico, autorização em runtime ou segurança dos fornecedores. Testes e revisão continuam obrigatórios. Os serviços futuros precisam ser incluídos explicitamente na verificação ao serem criados.
+This verifier is static and limited to the Express base: it does not prove ownership in dynamic SQL, runtime authorization, or vendor security. Tests and review remain mandatory. Future services must be included explicitly in the verification as they are created.
 
-Mudanças do mapa, dependências ou exceções exigem decisão explícita em `docs/decisions/`, atualização deste documento, do manifesto e dos testes antes de implementação.
+Changes to the map, dependencies, or exceptions require an explicit decision in `docs/decisions/`, update of this document, the manifest, and the tests before implementation.
 
-### Tesouraria e Governança
+### Treasury and Governance
 
-A [capacidade canônica de controle](treasury-governance.md) e a [decisão de integração](decisions/0011-treasury-governance-control.md) distribuem análise/proposta em `agents`, autorização/políticas em `risk`, reservas/obrigações em `ledger`, permissões em `accounts`, movimentação em `execution` e evidência em `audit`/`reconciliation`/`wallets`.
+The [canonical control capability](treasury-governance.md) and the [integration decision](decisions/0011-treasury-governance-control.md) distribute analysis/proposal in `agents`, authorization/policies in `risk`, reserves/obligations in `ledger`, permissions in `accounts`, movement in `execution`, and evidence in `audit`/`reconciliation`/`wallets`.
 
-As rotas `treasury-governance` e `treasury-resources` são composição, não um domínio financeiro paralelo. A porta do agente expõe somente observação e proposta. O mesmo lock da tesouraria protege alocações e liquidação de rodadas; versões e reservas são persistidas antes do envio. A implementação comprovada é **local, de desenvolvimento e com ativos de teste**; não representa governança institucional, voto dos titulares ou implantação em rede pública.
+The `treasury-governance` and `treasury-resources` routes are composition, not a parallel financial domain. The agent port exposes only observation and proposal. The same treasury lock protects allocations and round settlement; versions and reserves are persisted before sending. The proven implementation is **local, for development, and with test assets**; it does not represent institutional governance, holder voting, or public network deployment.

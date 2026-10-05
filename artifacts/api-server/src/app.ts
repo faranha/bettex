@@ -35,15 +35,22 @@ app.use(cors({ credentials: true, origin: (origin, callback) => callback(null, a
 app.use(CLERK_PROXY_PATH, clerkProxyMiddleware());
 app.use(express.json({ limit: "64kb" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  clerkMiddleware((req) => ({
-    authorizedParties: [...trustedOrigins()],
-    publishableKey: publishableKeyFromHost(
-      getClerkProxyHost(req) ?? "",
-      process.env.CLERK_PUBLISHABLE_KEY,
-    ),
-  })),
-);
+// A clean development clone supports native test accounts without a Clerk tenant.
+// Production still installs Clerk unconditionally and fails closed if misconfigured.
+const clerkConfigured = Boolean(process.env.CLERK_SECRET_KEY && process.env.CLERK_PUBLISHABLE_KEY);
+if (process.env.NODE_ENV !== "development" || clerkConfigured) {
+  app.use(
+    clerkMiddleware((req) => ({
+      authorizedParties: [...trustedOrigins()],
+      publishableKey: publishableKeyFromHost(
+        getClerkProxyHost(req) ?? "",
+        process.env.CLERK_PUBLISHABLE_KEY,
+      ),
+    })),
+  );
+} else {
+  logger.warn("Clerk is not configured: only native development test-account authentication is available.");
+}
 
 app.use("/api", router);
 app.use(safeHttpError);

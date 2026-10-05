@@ -1,28 +1,28 @@
-# Rodada e liquidação local de teste
+# Test round and local settlement
 
-## Fontes e resolução
+## Sources and resolution
 
-Prompts de tesouraria, percurso completo e históricos em attached_assets, revisão integral vigente; replit.md (rodadas únicas, saídas, frações, split), docs/architecture.md e decisões 0007/0009.
+Treasury prompts, full path and histories in attached_assets, current full review; replit.md (single rounds, exits, fractions, split), docs/architecture.md and decisions 0007/0009.
 
-Participação segue saldo BETTEX × tempo confirmado, sem novo contrato de custódia. Apuração/pagamentos pertencem a ledger; execução usa o executor e journal existentes; assinatura operacional permanece no adaptador local wallets. Nenhuma chave pessoal passa ao servidor.
+Participation follows BETTEX balance × confirmed time, without a new custody contract. Calculation/payments belong to ledger; execution uses the existing executor and journal; operational signature remains in the local wallets adapter. No personal key passes to the server.
 
-## Hipóteses reversíveis exclusivas do teste
+## Exclusive reversible test hypotheses
 
-- Uma injeção de resultado **sintético de 1 USDC de teste** por rodada UTC e epoch. A transferência reserva→tesouraria é evidência de funding, não prova de lucro externo.
-- Sem custos/tributos/posições externos simulados escondidos: zero, identificados como hipótese. Não se confunde venda primária com resultado.
-- Exigência defensiva zero exclusivamente nesta fixture sem estratégias abertas; risco bloqueia split sem liquidez após outras obrigações. Nunca usar esse mandato para políticas de produção.
-- Split aprovado 50% retenção, 25% participantes, 25% recompra; micro-unidades inteiras, restos retidos. Peso zero não divide.
-- Destino de recompra: sétima conta operacional da EVM local, divulgada como destino de teste, sem compra automática de tokens. Não é receita da companhia.
-- Snapshot de pesos somente após funding confirmado; obrigação pendente não vira saldo. Validação de saída antes de cada envio. Rodada encerrada não autoriza novo envio; só concilia os iniciados.
+- A synthetic result injection of **1 test USDC** per UTC round and epoch. The reserve→treasury transfer is evidence of funding, not proof of external profit.
+- No hidden simulated external costs/taxes/positions: zero, identified as a hypothesis. Primary sale is not to be confused with result.
+- Zero defensive requirement exclusively in this fixture without open strategies; risk blocks split without liquidity after other obligations. Never use this mandate for production policies.
+- Split approved 50% retention, 25% participants, 25% repurchase; whole micro-units, remainders retained. Zero weight does not split.
+- Repurchase destination: seventh operational account of the local EVM, disclosed as a test destination, without automatic token purchase. It is not company revenue.
+- Snapshot of weights only after funding confirmed; pending obligation does not become balance. Exit validation before each submission. Closed round does not authorize new submission; only reconciles those initiated.
 
-Fundamento: usuário autorizou configurações reversíveis de teste para parâmetros indefinidos, mas não novas regras econômicas. Não permite dinheiro real, trading real ou afirmar deploy em Arbitrum Sepolia.
+Basis: user authorized reversible test configurations for undefined parameters, but not new economic rules. It does not allow real money, real trading, or claiming deployment on Arbitrum Sepolia.
 
-## Segurança
+## Security
 
-Somente development + runtime atestado 31337, associação explícita, sessão/CSRF/origem válidos. Usuário pode disparar o mandato de teste limitado, não escolher valor, destino, rede, owner ou saldo. Journal/nonce persistidos antes do broadcast; resultado incerto bloqueia reenvio. Só o titular vê seus pagamentos. Reservas, principal e resultado têm registros distintos.
+Only development + attested runtime 31337, explicit association, valid session/CSRF/origin. User may trigger the limited test mandate, not choose value, destination, network, owner, or balance. Journal/nonce persisted before broadcast; uncertain result blocks resubmission. Only the holder sees their payments. Reserves, principal, and result have distinct records.
 
-## Contabilidade e conciliação
+## Accounting and reconciliation
 
-Transferências USDC/BETTEX têm partidas dobradas por ativo em `ledger`, com micro-unidades/18 decimais, origem/destino, epoch, hash/bloco/log e tempo do evento. Mints de teste são origem emissora, não resultado comercial. Saldo da carteira e da tesouraria é reconstruído pelo journal e comparado ao snapshot on-chain; divergência bloqueia resposta financeira, sem saldo artificial. Reorganizações verificadas produzem lançamentos reversores ligados ao original, não edição do passado. ETH de gás continua discriminado nos receipts, sem conversão inventada em custo USDC. Isso é contabilidade do ambiente local, não contabilidade de ordens externas de produção.
+USDC/BETTEX transfers have double-entry bookkeeping by asset in `ledger`, with micro-units/18 decimals, source/destination, epoch, hash/block/log, and event time. Test mints are issuer origin, not commercial result. Wallet and treasury balance is reconstructed by the journal and compared to the on-chain snapshot; divergence blocks financial response, without artificial balance. Verified reorganizations produce reversing entries linked to the original, not editing the past. Gas ETH remains discriminated in receipts, without invented conversion into USDC cost. This is local environment accounting, not accounting of external production orders.
 
-Referências: Ethereum JSON-RPC `eth_sendTransaction` e recibos, fonte oficial `github.com/ethereum/execution-apis`, revisão consultada pela base local em 2026-10-05; ethers instalado 6.17.0. Fonte técnica é documentação, não prova de uma operação BETTEX.
+References: Ethereum JSON-RPC `eth_sendTransaction` and receipts, official source `github.com/ethereum/execution-apis`, revision consulted by local base on 2026-10-05; ethers installed 6.17.0. Technical source is documentation, not proof of a BETTEX operation.

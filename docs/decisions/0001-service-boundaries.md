@@ -1,17 +1,17 @@
-# Contextos modulares e extração gradual de serviços
+# Modular contexts and gradual service extraction
 
-**Status:** adotada como regra de desenvolvimento; migração estrutural pendente.
+**Status:** adopted as a development rule; structural migration pending.
 
-## Contexto
+## Context
 
-A API existente é monolítica e o estado financeiro é demonstrativo. Distribuir processos sem precisão, autorização e recuperação apenas amplia o risco.
+The existing API is monolithic and the financial state is demonstrative. Distributing processes without precision, authorization, and recovery only increases risk.
 
-## Decisão
+## Decision
 
-Adotar os contextos e dependências de [architecture.md](../architecture.md), com interfaces públicas, propriedade de dados e migração incremental. Preservar artifacts, banco e rotas durante a evolução.
+Adopt the contexts and dependencies from [architecture.md](../architecture.md), with public interfaces, data ownership, and incremental migration. Preserve artifacts, database, and routes during evolution.
 
-Isolar assinatura antes de qualquer transação real. Extrair outros serviços por segurança, carga ou disponibilidade comprovadas, com outbox, idempotência e observabilidade.
+Isolate signature before any real transaction. Extract other services for proven safety, load, or availability, with outbox, idempotency, and observability.
 
-## Alternativas e consequências
+## Alternatives and consequences
 
-Rejeitada decomposição total imediata: exigiria operação distribuída antes de existir núcleo financeiro confiável. Módulos não autorizam chaves junto dos agentes. Extrações futuras precisam de implantação e verificação próprias.
+Rejected immediate total decomposition: would require distributed operation before a reliable financial core exists. Modules do not authorize keys with agents. Future extractions require their own deployment and verification.

@@ -1,31 +1,31 @@
-# Base canônica e migração incremental do legado
+# Canonical base and incremental legacy migration
 
-**Status:** adotada; organização física completa pendente.
+**Status:** adopted; complete physical organization pending.
 
-## Contexto
+## Context
 
-O criador forneceu regras de arquitetura obrigatórias. Já existem documentos e código aproveitáveis; duplicar fontes normativas ou reescrever toda a aplicação seria contraproducente.
+The creator provided mandatory architectural rules. Usable documents and code already exist; duplicating normative sources or rewriting the entire application would be counterproductive.
 
-## Decisão e justificativa
+## Decision and justification
 
-`AGENTS.md` orienta implementações, `docs/architecture.md` define mapa/dependências/fontes de verdade e `docs/decisions/` registra justificativas. `replit.md` exige sua consulta antes de alterações. Documentos anteriores são apoio ou encaminhamentos, não registros concorrentes.
+`AGENTS.md` guides implementations, `docs/architecture.md` defines the map/dependencies/sources of truth, and `docs/decisions/` registers justifications. `replit.md` requires its consultation before changes. Previous documents are support or referrals, not concurrent records.
 
-Novas regras pertencem aos contextos do mapa. Exceções atuais são explícitas:
+New rules belong to the map contexts. Current exceptions are explicit:
 
-| Arquivo em `artifacts/api-server/src/lib/` | Responsabilidade atual | Destino/retirada da exceção |
+| File in `artifacts/api-server/src/lib/` | Current responsibility | Exception destination/removal |
 | --- | --- | --- |
-| `account-identity.ts` | Identidade e adaptador Clerk, acoplado a tipos demonstrativos | `accounts`, separando porta de identidade do adaptador |
-| `demo-state.ts` | Contas, saldos, rodadas e liquidação emulados | Separar emulação das regras de `wallets`/`ledger`; nunca migrar seed para saldo real |
-| `orchestrator.ts` | Propostas, orçamento e progresso emulados | `agents` e `risk`, sem duplicar a regra de autorização |
-| `demo-store.ts` | Persistência, transações e vínculo demonstrativo | Repositórios/casos de uso dos proprietários, preservando atomicidade e isolamento |
-| `logger.ts` | Utilitário técnico de logs, sem regra de negócio | Pode permanecer como infraestrutura compartilhada com finalidade explícita |
+| `account-identity.ts` | Identity and Clerk adapter, coupled to demo types | `accounts`, separating identity port from adapter |
+| `demo-state.ts` | Emulated accounts, balances, rounds and settlement | Separate emulation from `wallets`/`ledger` rules; never migrate seed to real balance |
+| `orchestrator.ts` | Emulated proposals, budget and progress | `agents` and `risk`, without duplicating the authorization rule |
+| `demo-store.ts` | Persistence, transactions and demo binding | Owners' repositories/use cases, preserving atomicity and isolation |
+| `logger.ts` | Technical log utility, no business rule | Can remain as shared infrastructure with explicit purpose |
 
-Esses arquivos são dívida registrada, não exemplo para novos domínios. Alterações de manutenção exigem revisão e testes; não adicionar novos arquivos genéricos ou retirar controles silenciosamente.
+These files are registered debt, not examples for new domains. Maintenance changes require review and testing; do not add new generic files or remove controls silently.
 
-## Verificação e consequências
+## Verification and consequences
 
-Manifesto e verificador estático aplicam o mapa a novos módulos e rejeitam arquivos genéricos não registrados. Há testes do verificador e integração com `pnpm quality`/CI.
+Manifest and static verifier apply the map to new modules and reject unregistered generic files. There are verifier tests and integration with `pnpm quality`/CI.
 
-O verificador não certifica SQL dinâmico, saldo, segurança ou produção. Aceite de cada migração exige testes de autorização, contratos, idempotência, concorrência e recuperação, atualização dos documentos e remoção da exceção correspondente.
+The verifier does not certify dynamic SQL, balance, security or production. Acceptance of each migration requires authorization tests, contracts, idempotency, concurrency and recovery, updating the documents and removing the corresponding exception.
 
-Não se muda banco, ativa dinheiro real, cria folders vazios ou executa refatoração ampla nesta decisão. Políticas aprovadas permitem automação limitada, não assinatura humana por ordem.
+Do not change database, activate real money, create empty folders or execute broad refactoring in this decision. Approved policies allow limited automation, not human signature by order.

@@ -1,12 +1,12 @@
-# Validação da base técnica
+# Technical base validation
 
-Registro da implementação e coleta real em 5 de outubro de 2026. Não certifica integrações financeiras nem cobertura integral.
+Registration of implementation and actual collection on October 5, 2026. Does not certify financial integrations or full coverage.
 
-## Cobertura do lote verificado
+## Verified batch coverage
 
-Textos únicos por hash da representação normalizada; controles, árvores de repositório e exports agregados não entram nessa contagem. URLs alternativas podem apontar para o mesmo texto.
+Unique texts by normalized representation hash; controls, repository trees, and aggregated exports are not included in this count. Alternative URLs may point to the same text.
 
-| Plataforma | Textos técnicos únicos | URLs técnicas preservadas |
+| Platform | Unique technical texts | Preserved technical URLs |
 | --- | ---: | ---: |
 | Arbitrum | 974 | 988 |
 | Ethereum | 514 | 627 |
@@ -14,32 +14,32 @@ Textos únicos por hash da representação normalizada; controles, árvores de r
 | Robinhood | 2 | 4 |
 | Polymarket | 582 | 586 |
 
-A contagem é um snapshot, não um teto. A continuação da coleta Ethereum estava em andamento após esse lote, com 1.356 recursos pendentes. Consultar `pnpm docs:status` para o estado posterior.
+The count is a snapshot, not a ceiling. Ethereum collection continuation was in progress after this batch, with 1,356 pending resources. Consult `pnpm docs:status` for the subsequent state.
 
-Falhas de recursos/descoberta no snapshot: Arbitrum 61, Ethereum 268, Allora 2, Robinhood 1 e Polymarket 9. Isso inclui endpoints auxiliares sem conteúdo técnico, referências ausentes, bloqueios HTTP e índices de SDK/repositórios não verificados. Não significa indisponibilidade de todos os documentos da plataforma.
+Resource/discovery failures in the snapshot: Arbitrum 61, Ethereum 268, Allora 2, Robinhood 1, and Polymarket 9. This includes auxiliary endpoints without technical content, missing references, HTTP blocks, and unverified SDK/repository indices. It does not mean unavailability of all platform documents.
 
-Exclusões registradas: idiomas duplicados, assets/conteúdo fora do escopo, domínios/proprietários não validados, referências malformadas e endpoints opcionais inexistentes. **A base é parcial.**
+Registered exclusions: duplicate languages, out-of-scope assets/content, unvalidated domains/owners, malformed references, and non-existent optional endpoints. **The base is partial.**
 
-## Evidências executadas
+## Executed evidence
 
-- Coleta HTTPS real nas cinco fontes. Robinhood: JSON OpenAPI publicado em módulos de página oficiais, lido sem executar JavaScript.
-- Consultas executadas pelo agente: Allora (`signed inference authentication`), Polymarket (`Gamma API authentication`), Robinhood (`authentication signature`) e Ethereum (`transaction gas`). Retornaram trecho, URL/origem, datas, versão disponível e hash.
-- Após repetir sincronização: as **2.120 referências do baseline** mantiveram o mesmo hash com o mesmo identificador de revisão; **zero grupos de revisões duplicadas** por documento/hash e nenhuma perda do baseline.
-- **23 testes** da ferramenta aprovados: mudança controlada e consulta histórica, preservação da última cópia válida, recuperação de falha, bloqueio concorrente, persistência, 304, deduplicação, procedência, robots, SSRF e dados externos sem autoridade.
-- Integridade verificada: SQLite `ok`; nenhuma falha de hash nos originais e textos normalizados do lote.
-- `pnpm quality` aprovado, incluindo arquitetura, testes, TypeScript, backend, build/localização e documentos do frontend. A etapa da ferramenta também foi reexecutada após seu último ajuste.
-- Homepage permaneceu carregando; não foi acrescentada interface para a base.
+- Actual HTTPS collection from the five sources. Robinhood: OpenAPI JSON published in official page modules, read without executing JavaScript.
+- Queries executed by the agent: Allora (`signed inference authentication`), Polymarket (`Gamma API authentication`), Robinhood (`authentication signature`), and Ethereum (`transaction gas`). Returned snippet, URL/origin, dates, available version, and hash.
+- After repeating synchronization: the **2,120 baseline references** maintained the same hash with the same revision identifier; **zero duplicate revision groups** per document/hash and no loss of baseline.
+- **23 tool tests** passed: controlled change and historical query, last valid copy preservation, failure recovery, concurrent locking, persistence, 304, deduplication, provenance, robots, SSRF, and unauthorized external data.
+- Integrity verified: SQLite `ok`; no hash failures in the batch's originals and normalized texts.
+- `pnpm quality` passed, including architecture, tests, TypeScript, backend, build/localization, and frontend documents. The tool step was also re-executed after its last adjustment.
+- Homepage remained loading; no interface was added for the base.
 
-## Versões e impacto
+## Versions and impact
 
-Inventário não encontrou SDK correspondente adotado nem fonte/configuração Solidity no escopo atual. Portanto não foi presumida compatibilidade de versões nem adotado compilador.
+Inventory found no corresponding adopted SDK nor Solidity source/configuration in the current scope. Therefore, version compatibility was not presumed nor was a compiler adopted.
 
-Git blob/tree são identificadores próprios, não commits. Onde o publicador não fornece versão, o resultado declara documentação atual sem versão explícita. Diff oficial e classificação/impacto potencial derivados são separados; coleta não altera código operacional, dependências ou produção.
+Git blob/tree are proprietary identifiers, not commits. Where the publisher does not provide a version, the result declares current documentation without an explicit version. Official diff and derived classification/potential impact are separate; collection does not alter operational code, dependencies, or production.
 
-## Agendamento real
+## Actual scheduling
 
-**Diário inativo.** Há comando de sincronização e contrato de integração em `tools/technical-docs/schedule.json`. A continuação em segundo plano é coleta inicial limitada, não scheduler.
+**Inactive daily.** There is a synchronization command and integration contract in `tools/technical-docs/schedule.json`. The background continuation is limited initial collection, not a scheduler.
 
-Job publicado requer armazenamento compartilhado durável, separado dos dados financeiros, e autorização de publicação. O workspace atual e o disco de um Scheduled Deployment não devem ser presumidos compartilhados ou persistentes entre execuções publicadas.
+Published job requires durable shared storage, separate from financial data, and publication authorization. The current workspace and the disk of a Scheduled Deployment should not be presumed shared or persistent between published executions.
 
-Procedimentos e responsabilidades: [base técnica](technical-documentation.md), `AGENTS.md` e decisão arquitetural 0005.
+Procedures and responsibilities: [technical base](technical-documentation.md), `AGENTS.md` and architectural decision 0005.

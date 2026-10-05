@@ -1,0 +1,9 @@
+{
+  "remote": "origin",
+  "branch": "development/bettex",
+  "debounceSeconds": 90,
+  "pollSeconds": 10,
+  "retryBaseSeconds": 15,
+  "retryMaxSeconds": 900,
+  "checkCommand": ["pnpm", "sync:check"]
+}

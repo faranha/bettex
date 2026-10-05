@@ -1,114 +1,114 @@
-# Modelo de trading BETTEX: pesquisa das APIs oficiais
+# BETTEX trading model: official API research
 
-Documentação consultada em 5 de outubro de 2026. Esta é a especificação da próxima evolução do motor, não uma declaração de integrações já implementadas. O motor atual continua emulado e não envia ordens a plataformas externas.
+Documentation consulted on October 5, 2026. This is the specification for the next engine evolution, not a declaration of already implemented integrations. The current engine remains emulated and does not send orders to external platforms.
 
-## Direção do produto
+## Product direction
 
-- Esportes e previsões: Polymarket, com agentes especializados separados sobre o mesmo conector.
-- Meme coins: Robinhood ou FOMO. Confirmar a identidade da FOMO antes de definir seu conector.
-- Central da IA e Live Trading são uma única experiência, sem avatares ou chat com o usuário.
-- Transparência entra nos detalhes e no percurso das operações; não constitui uma área de navegação.
-- Navegação: Meu painel e Central da IA; Minha Conta como ícone à direita, ao lado da comunidade. Tesouraria, participação pessoal e resultados do projeto permanecem diretamente no painel, sem destinos ou abas alternativas.
-- Não reescrever homepage, Pitch ou documentação comercial em consequência desta pesquisa.
+- Sports and predictions: Polymarket, with separate specialized agents on the same connector.
+- Meme coins: Robinhood or FOMO. Confirm the identity of FOMO before defining its connector.
+- AI Hub and Live Trading are a single experience, without avatars or user chat.
+- Transparency enters into the details and the path of operations; it does not constitute a navigation area.
+- Navigation: My dashboard and AI Hub; My Account as an icon on the right, next to the community. Treasury, personal participation, and project results remain directly on the dashboard, without alternative destinations or tabs.
+- Do not rewrite the homepage, Pitch, or commercial documentation as a result of this research.
 
 ## Polymarket
 
-### Superfícies documentadas
+### Documented surfaces
 
-- Gamma: eventos, mercados, regras, estado, resultados e identificadores dos tokens.
-- CLOB REST: livros de ofertas, preços, ordens e restrições por mercado.
-- Market WebSocket: livro, preços, negócios, mudança de tick e ciclo de vida do mercado.
-- User WebSocket: ordens e execuções autenticadas de uma conta.
-- Sports WebSocket: placar, período, andamento/fim da partida, slug e horário da atualização. Conectar não exige autenticação nem frame de inscrição. Responder ao ping do servidor com pong.
-- Data API: posições e atividade. Conferir a versão e a forma de paginação antes de implementar; a documentação inclui migração v1 → v2.
+- Gamma: events, markets, rules, state, results, and token identifiers.
+- CLOB REST: order books, prices, orders, and restrictions per market.
+- Market WebSocket: book, prices, trades, tick change, and market lifecycle.
+- User WebSocket: authenticated orders and executions of an account.
+- Sports WebSocket: scoreboard, period, progress/end of match, slug, and update time. Connecting does not require authentication or subscription frame. Respond to the server ping with pong.
+- Data API: positions and activity. Check the version and pagination form before implementing; the documentation includes v1 → v2 migration.
 
-### Modelo de domínio
+### Domain model
 
-Separar Event, Market, OutcomeToken, BookSnapshot, Order, Fill, Position e Resolution. Não confundir evento com mercado nem condição com token negociável. Guardar os identificadores externos originais e a versão do contrato consumido.
+Separate Event, Market, OutcomeToken, BookSnapshot, Order, Fill, Position, and Resolution. Do not confuse event with market or condition with tradable token. Keep the original external identifiers and the version of the consumed contract.
 
-Cada resultado tem um token negociável. O preço é um preço por participação; sua interpretação como probabilidade de mercado não é a confiança do agente. A confiança/estimativa de um modelo precisa de origem, versão e avaliação própria.
+Each outcome has a tradable token. The price is a price per share; its interpretation as a market probability is not the agent's confidence. A model's confidence/estimate needs origin, version, and its own evaluation.
 
-Ordens são limitadas. GTC/GTD podem permanecer no livro; FOK exige execução integral ou cancelamento; FAK permite parcial e cancela o restante. Uma ordem post-only que atravessa o spread é rejeitada. Não completar uma ordem apenas porque decorreram seis segundos.
+Orders are limit orders. GTC/GTD may remain in the book; FOK requires full execution or cancellation; FAK allows partial and cancels the remainder. A post-only order that crosses the spread is rejected. Do not complete an order just because six seconds have elapsed.
 
-Guardar preço-limite, quantidade solicitada/executada/restante, validade, maker/taker, fills, custos, estado externo e estado normalizado. Cancelar apenas o saldo não executado; nunca desfazer fills já confirmados.
+Keep limit price, requested/executed/remaining quantity, validity, maker/taker, fills, costs, external state, and normalized state. Cancel only the unexecuted balance; never undo already confirmed fills.
 
-Não supor que bids/asks estão ordenados com o melhor preço primeiro: a documentação REST descreve bids ascendentes e asks descendentes. Normalizar e ordenar explicitamente antes de calcular melhor preço, profundidade e impacto.
+Do not assume that bids/asks are ordered with the best price first: the REST documentation describes ascending bids and descending asks. Normalize and sort explicitly before calculating best price, depth, and impact.
 
-Respeitar tick_size, min_order_size, neg_risk, disponibilidade do mercado e parâmetros de taxas. A documentação consultada inclui ticks 0.005 e 0.0025, além dos tamanhos mais comuns; não reduzir validação a número de casas decimais.
+Respect tick_size, min_order_size, neg_risk, market availability, and fee parameters. The documentation consulted includes 0.005 and 0.0025 ticks, in addition to the most common sizes; do not reduce validation to the number of decimal places.
 
-Alguns mercados esportivos têm atraso configurado de execução. Durante o atraso pendente, cancelamento pode não ser permitido. Não confundir esses casos com o atraso de 250 ms indicado para alguns mercados de cripto/finanças.
+Some sports markets have a configured execution delay. During the pending delay, cancellation may not be allowed. Do not confuse these cases with the 250 ms delay indicated for some crypto/finance markets.
 
-Ordens e negócios possuem estados diferentes:
+Orders and trades have different states:
 
-- Ordem: live, matched, delayed, unmatched, além de rejeição/cancelamento conforme a superfície.
-- Negócio: MATCHED → MINED → CONFIRMED, ou RETRYING/FAILED.
-- Resultado do evento: proposto, contestado e resolvido, conforme regras/oráculo.
+- Order: live, matched, delayed, unmatched, as well as rejection/cancellation according to the surface.
+- Trade: MATCHED → MINED → CONFIRMED, or RETRYING/FAILED.
+- Event result: proposed, contested, and resolved, according to rules/oracle.
 
-Placar final não equivale a resolução confirmada. Manter posição aberta até venda confirmada ou resgate válido após resolução. Posição vencedora normalmente resgata $1 por token; perdedora $0; a documentação prevê resolução excepcional 50/50. Não inventar resolução com base no título ou no relógio.
+Final scoreboard does not equate to confirmed resolution. Keep position open until confirmed sale or valid redemption after resolution. Winning position normally redeems $1 per token; losing $0; the documentation provides for exceptional 50/50 resolution. Do not invent resolution based on title or clock.
 
-### Colateral e taxas
+### Collateral and fees
 
-A documentação consultada identifica **pUSD** como colateral de trading e descreve wrapping/unwrapping de USDC.e na Polygon. Distinguir USDC da conta BETTEX, USDC.e e pUSD do provedor; conversão de apresentação não é transferência/conversão executada. Revalidar contratos, ativo aceito e rota de funding antes de qualquer integração autenticada.
+The documentation consulted identifies **pUSD** as trading collateral and describes wrapping/unwrapping of USDC.e on Polygon. Distinguish USDC of the BETTEX account, USDC.e, and pUSD of the provider; presentation conversion is not executed transfer/conversion. Revalidate contracts, accepted asset, and funding route before any authenticated integration.
 
-Taxas variam por mercado. A página consultada apresenta `shares × feeRate × price × (1 − price)` para takers, com parâmetros por categoria, enquanto makers não pagam essa taxa. Ler os parâmetros efetivos do mercado e guardar sua origem/horário; não tratar a tabela editorial como taxa universal permanente.
+Fees vary by market. The consulted page presents `shares × feeRate × price × (1 − price)` for takers, with parameters by category, while makers do not pay this fee. Read the effective market parameters and keep their origin/time; do not treat the editorial table as a permanent universal fee.
 
-Marcação de posição usa preço executável e custos estimados, não último preço arbitrário. Lucro realizado só surge de venda/resgate confirmado e conciliado. Manter exposição, reservas e resultados não realizados fora do resultado distribuível.
+Position marking uses executable price and estimated costs, not arbitrary last price. Realized profit only arises from confirmed and reconciled sale/redemption. Keep exposure, reserves, and unrealized results out of the distributable result.
 
-### Informações e gráficos possíveis
+### Information and possible charts
 
-- Esportes: evento, placar/período quando disponíveis, preço de cada resultado, volume/liquidez, book, prazo/regras e estado da posição.
-- Previsões: pergunta, resultados, preço histórico, liquidez, data e regras de resolução.
-- Gráficos: preço/probabilidade por resultado; profundidade do livro; exposição por mercado; custo e valor líquido estimado da posição. Estimativa do agente não vem da API de preços e não deve ser fabricada.
+- Sports: event, score/period when available, price of each outcome, volume/liquidity, book, deadline/rules, and position state.
+- Predictions: question, outcomes, historical price, liquidity, resolution date, and rules.
+- Charts: price/probability per outcome; book depth; exposure per market; cost and estimated net value of the position. Agent estimate does not come from the price API and must not be manufactured.
 
 ## Robinhood Crypto Trading API
 
-Existe documentação oficial de versões v1 e v2. A documentação e o suporte consultados informam disponibilidade para clientes Robinhood Crypto nos Estados Unidos, conforme elegibilidade da conta/jurisdição.
+There is official v1 and v2 version documentation. The documentation and support consulted inform availability for Robinhood Crypto customers in the United States, according to account/jurisdiction eligibility.
 
-As consultas de mercado também exigem autenticação. Não existe, nesta pesquisa, fundamento para tratar sua API de quotes como fonte pública anônima. Não solicitar nem criar chaves para esta prototipação.
+Market queries also require authentication. There is, in this research, no basis for treating its quotes API as an anonymous public source. Do not request or create keys for this prototyping.
 
-### Modelo e diferenças relevantes
+### Relevant model and differences
 
-- Pares: `symbol`, `asset_code`, `quote_code`, incrementos, máximo, mínimo, estado e `is_api_tradable`. Na v2, os endpoints consultados aceitam pares USD habilitados. Não inferir suporte a qualquer meme coin nem usar BTC/USDC como se fosse um par Robinhood confirmado.
-- Quote v2: bid/ask não incluem necessariamente tamanho e taxa. Consultar estimated_price para quantidade específica; ainda é estimativa, não garantia.
-- Quote v1: campos descrevem spread embutido. Não somar novamente um spread já incluído.
-- Conta: buying power, moeda, estado, elegibilidade e, na v2, tier de taxa.
-- Ordem: `client_order_id` para idempotência, buy/sell, market/limit/stop_loss/stop_limit, configurações correspondentes, fills, preço médio, quantidade executada e taxa efetiva.
-- Holdings: total e disponível para negociação; não vender quantidades já comprometidas.
-- Estados de ordem documentados incluem open, pending, filled, canceled e failed. Guardar execuções separadas; quantidade parcial não se torna zero porque o restante foi cancelado.
+- Pairs: `symbol`, `asset_code`, `quote_code`, increments, maximum, minimum, state, and `is_api_tradable`. In v2, the endpoints consulted accept enabled USD pairs. Do not infer support for any meme coin or use BTC/USDC as if it were a confirmed Robinhood pair.
+- Quote v2: bid/ask does not necessarily include size and fee. Consult estimated_price for specific quantity; it is still an estimate, not a guarantee.
+- Quote v1: fields describe embedded spread. Do not add again a spread already included.
+- Account: buying power, currency, state, eligibility, and, in v2, fee tier.
+- Order: `client_order_id` for idempotency, buy/sell, market/limit/stop_loss/stop_limit, corresponding settings, fills, average price, executed quantity, and effective fee.
+- Holdings: total and available for trading; do not sell already committed quantities.
+- Documented order states include open, pending, filled, canceled, and failed. Keep separate executions; partial quantity does not become zero because the remainder was canceled.
 
-Usar uma interface comum de execução não significa nivelar todas as plataformas: conta Robinhood em USD não é carteira pUSD na Polygon. Funding, preços, taxas, restrições, liquidação e reconciliação precisam de adaptadores próprios.
+Using a common execution interface does not mean leveling all platforms: Robinhood USD account is not pUSD wallet on Polygon. Funding, prices, fees, restrictions, settlement, and reconciliation need their own adapters.
 
-Gráficos sustentáveis: série de quotes próprios com data/origem; entrada/saída; quantidade e exposição por ativo; resultado realizado/não realizado; preço estimado × preço médio efetivo. OHLC/volume não devem ser inventados a partir de um único bid/ask: exigir fonte apropriada e sua identificação.
+Sustainable charts: series of own quotes with date/origin; entry/exit; quantity and exposure per asset; realized/unrealized result; estimated price × effective average price. OHLC/volume must not be invented from a single bid/ask: require appropriate source and its identification.
 
-## FOMO: ponto ainda não confirmado
+## FOMO: point not yet confirmed
 
-Foi encontrado o produto de trading `fomo.family`, cuja página oficial descreve negociação de meme coins e tokens, plataforma multichain e funções sociais. Não foi localizada nesta pesquisa documentação oficial pública que autorize inferir uma API de execução.
+The trading product `fomo.family` was found, whose official page describes meme coin and token trading, multichain platform, and social functions. No official public documentation that authorizes inferring an execution API was located in this research.
 
-Resultados como fomoapi.io e getfomoapi.fun se identificam como serviços independentes/não oficiais de dados sociais. Não os apresentar como API oficial da FOMO nem como autorização para executar trades.
+Results such as fomoapi.io and getfomoapi.fun identify themselves as independent/unofficial social data services. Do not present them as an official FOMO API nor as authorization to execute trades.
 
-`fomo.com` e sua documentação pertencem a outro produto de marketing/social proof; não usar essa API para modelar negociação de criptomoedas.
+`fomo.com` and its documentation belong to another marketing/social proof product; do not use this API to model cryptocurrency trading.
 
-Confirmar o endereço da FOMO pretendida. Se for fomo.family, manter execução como capacidade não verificada até obter documentação oficial ou confirmação do provedor. Não automatizar app/web privado, capturar sessões ou contornar controles de acesso para criar um conector.
+Confirm the address of the intended FOMO. If it is fomo.family, keep execution as an unverified capability until official documentation or provider confirmation is obtained. Do not automate private app/web, capture sessions, or bypass access controls to create a connector.
 
-## Banco e comunicação
+## Bank and communication
 
-Guardar histórico durável em tabelas de instrumentos, snapshots, propostas, decisões, ordens, fills, posições, conciliações e mensagens. A janela curta do painel não deve excluir a trilha financeira histórica. Não substituir a estrutura de contas/movimentações atual nem apagar dados ao evoluir o motor.
+Keep durable history in tables of instruments, snapshots, proposals, decisions, orders, fills, positions, reconciliations, and messages. The dashboard's short window must not exclude the historical financial trail. Do not replace the current account/transaction structure or erase data when evolving the engine.
 
-Mensagem entre agentes: id, correlationId da operação, causationId, origem/destino, tipo, payload validado, createdAt, deadline, estado e tentativas. Exemplos: oportunidade detectada → avaliação de risco → reserva → ordem → fill → confirmação → conciliação.
+Message between agents: id, operation correlationId, causationId, origin/destination, type, validated payload, createdAt, deadline, state, and attempts. Examples: opportunity detected → risk assessment → reserve → order → fill → confirmation → reconciliation.
 
-Consumidores idempotentes, transições condicionais, prazo para cotação e bloqueio de dados vencidos. Repetição de mensagem não repete débito, reserva ou execução. Ordem enviada com resultado desconhecido exige conciliação antes de nova tentativa.
+Idempotent consumers, conditional transitions, deadline for quotation, and expired data blocking. Message repetition does not repeat debit, reserve, or execution. Order sent with unknown result requires reconciliation before new attempt.
 
-Conservar mandatos limitados aprovados por humanos. Aprovação operacional da IA dentro do mandato não é aprovação humana de cada ordem. Exibir bloqueios, rejeições, perdas e tempos sem oportunidades; não produzir apenas histórias positivas.
+Conserve limited mandates approved by humans. Operational AI approval within the mandate is not human approval of every order. Display blocks, rejections, losses, and times without opportunities; do not produce only positive stories.
 
-## Prototipação e promoção ao aplicativo
+## Prototyping and promotion to the application
 
-Primeiro implementar adaptadores de leitura, contratos validados e execução paper. Dados devem carregar `sourceMode` (live/replay/emulated), provider, horário de origem, horário de coleta e estado de atualização. Não misturar lucro simulado com posição real nem esconder falhas com números fabricados.
+First, implement read adapters, validated contracts, and paper execution. Data must carry `sourceMode` (live/replay/emulated), provider, origin time, collection time, and update state. Do not mix simulated profit with real position or hide failures with manufactured numbers.
 
-Separar propostas estratégicas, risk/treasury gating e executor. O executor do protótipo não possui credenciais nem caminho para submissão real. Conexão autenticada, acesso financeiro e trading real exigem etapa explícita posterior, além de conta/jurisdição, termos, segurança, reconciliação e teste de falhas.
+Separate strategic proposals, risk/treasury gating, and executor. The prototype executor has no credentials or path for real submission. Authenticated connection, financial access, and real trading require an explicit subsequent stage, in addition to account/jurisdiction, terms, security, reconciliation, and failure testing.
 
-Não copiar SDK antigo de memória: a documentação Polymarket consultada inclui clientes unificados e páginas de migração. Verificar interfaces efetivas e contrato HTTP antes de instalar dependências.
+Do not copy old memory SDK: the Polymarket documentation consulted includes unified clients and migration pages. Verify effective interfaces and HTTP contract before installing dependencies.
 
-## Fontes consultadas
+## Sources consulted
 
 - https://docs.polymarket.com/getting-started/api
 - https://docs.polymarket.com/market-data/overview

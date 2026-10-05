@@ -2,54 +2,54 @@
 
 ## Project Overview
 
-BETTEX usa React/Vite, Express, Clerk e PostgreSQL/Drizzle. A identidade é real; a experiência financeira persistida é emulada. Este modelo cobre a base atual e os limites exigidos para a futura infraestrutura cripto; não afirma que as proteções-alvo já existem.
+BETTEX uses React/Vite, Express, Clerk and PostgreSQL/Drizzle. Identity is real; persistent financial experience is emulated. This model covers the current base and the boundaries required for future crypto infrastructure; it does not claim that target protections already exist.
 
 ## Assets
 
-- Identidade, sessões, vínculo de propriedade e dados de conta.
-- Integridade de comandos, propostas, decisões e resultados persistidos.
-- Segredos da infraestrutura e credenciais do provedor de autenticação.
-- Chaves pessoais já existem: cofre cifrado persistido, descriptografia/assinatura/exportação no cliente. Recursos locais são ativos sem valor; fundos, mandatos e obrigações de produção ainda não são operados.
+- Identity, sessions, ownership binding and account data.
+- Integrity of commands, proposals, decisions and persisted results.
+- Infrastructure secrets and authentication provider credentials.
+- Personal keys already exist: persisted encrypted vault, client-side decryption/signing/export. Local resources are assets of no value; funds, mandates and production obligations are not yet operated.
 
 ## Trust Boundaries
 
-1. Navegador não confiável → API: autenticação, propriedade, schema e autorização.
-2. API → Clerk: identidade externa verificada; cliente não fornece identidade autoritativa.
-3. API/motor → PostgreSQL: transações atuais; futuro ledger e outbox atômicos.
-4. Agentes/dados externos → BTEX/risco: dados não são instruções de execução.
-5. Executor → signer: autorização restrita; nenhum pedido arbitrário de assinatura.
-6. Blockchain/provedores → conciliação: respostas externas podem atrasar, duplicar ou divergir.
+1. Untrusted browser → API: authentication, ownership, schema and authorization.
+2. API → Clerk: verified external identity; client does not provide authoritative identity.
+3. API/engine → PostgreSQL: current transactions; future atomic ledger and outbox.
+4. External agents/data → BTEX/risk: data are not execution instructions.
+5. Executor → signer: restricted authorization; no arbitrary signing requests.
+6. Blockchain/providers → reconciliation: external responses may delay, duplicate or diverge.
 
 ## Threat Categories
 
-| Categoria | Ameaça específica | Garantia exigida |
+| Category | Specific threat | Required guarantee |
 | --- | --- | --- |
-| Spoofing | Apropriar-se da conta por ID/cookie/claims fornecidos pelo cliente | Propriedade verificada no servidor; sessão inválida não vira identidade verificada |
-| Tampering | Alterar quantias, destino, preço, proposta ou política | Schema, semântica, cotação/TTL e mandato verificados; dinheiro autoritativo não vem do React |
-| Repudiation | Perder histórico, decisão, retry ou resultado | Auditoria durável e correlacionada; limite de tela nunca apaga comando pendente |
-| Information disclosure | Expor sessões, PII ou futuras chaves em logs/repos/prompts | Redação, acesso mínimo e isolamento do signer; revisão do histórico antes de GitHub público |
-| Denial of service | Criar carga de contas/consultas e bloquear o motor compartilhado | Limites distribuídos, isolamento de workers e métricas; limiter em memória não basta em produção |
-| Elevation of privilege | Agente ultrapassar mandato ou solicitar transferência arbitrária | Agente só propõe; autorização e assinatura independentes, allowlists e revogação |
+| Spoofing | Hijacking the account via ID/cookie/claims provided by the client | Server-side verified ownership; invalid session does not become verified identity |
+| Tampering | Altering amounts, destination, price, proposal or policy | Schema, semantics, quote/TTL and mandate verified; authoritative money does not come from React |
+| Repudiation | Losing history, decision, retry or result | Durable and correlated audit; UI limit never clears pending command |
+| Information disclosure | Exposing sessions, PII or future keys in logs/repos/prompts | Redaction, minimal access and signer isolation; history review before public GitHub |
+| Denial of service | Creating load of accounts/queries and blocking the shared engine | Distributed limits, worker isolation and metrics; in-memory limiter is not enough in production |
+| Elevation of privilege | Agent exceeding mandate or requesting arbitrary transfer | Agent only proposes; independent authorization and signing, allowlists and revocation |
 
 ## Required Security Guarantees
 
-- Escritas de conta exigem identidade/propriedade válida; anonimato só autoriza a experiência demonstrativa.
-- Reuso de idempotência com outro payload é erro. Retries não duplicam lançamentos nem ordens.
-- Falha/timeout de provedor não é prova de que a operação não aconteceu.
-- Reservas persistem enquanto a execução estiver incerta; divergências interrompem execução segura.
-- Reorganizações e confirmações de blockchain são modeladas e conciliadas por política.
-- Importação de dados emulados para saldo real é proibida.
-- Mudanças de risco precisam de política aprovada, versionada e auditável.
-- Custódia/exportação/recuperação e autorização de mainnet exigem decisões/revisões explícitas.
+- Account writes require valid identity/ownership; anonymity only authorizes the demonstration experience.
+- Idempotency reuse with a different payload is an error. Retries do not duplicate transactions or orders.
+- Provider failure/timeout is not proof that the operation did not happen.
+- Reserves persist while execution is uncertain; divergences halt secure execution.
+- Blockchain reorganizations and confirmations are modeled and reconciled by policy.
+- Importing emulated data to real balance is prohibited.
+- Risk changes require approved, versioned and auditable policy.
+- Custody/export/recovery and mainnet authorization require explicit decisions/reviews.
 
 ## Scan Anchors
 
-- `artifacts/api-server/src/lib/account-identity.ts`: verificação de identidade.
-- `artifacts/api-server/src/routes/demo.ts`: cookie, mutações, limites e fronteira HTTP.
-- `artifacts/api-server/src/lib/demo-store.ts`: vínculo, transações e idempotência.
-- `artifacts/api-server/src/lib/orchestrator.ts`: propostas e política ilustrativa.
-- `lib/db/src/schema/demo.ts`: persistência demonstrativa, não ledger.
+- `artifacts/api-server/src/lib/account-identity.ts`: identity verification.
+- `artifacts/api-server/src/routes/demo.ts`: cookie, mutations, limits and HTTP boundary.
+- `artifacts/api-server/src/lib/demo-store.ts`: binding, transactions and idempotency.
+- `artifacts/api-server/src/lib/orchestrator.ts`: proposals and illustrative policy.
+- `lib/db/src/schema/demo.ts`: demonstrative persistence, not ledger.
 
 ## Limits
 
-Revisão interna de segurança realizada conforme [relatório](docs/security-review-2026-10-05.md): scanners, segredos/Git, controles HTTP, testes negativos isolados e restauração de fixtures. Não é teste de invasão externo nem auditoria independente on-chain. Controles distribuídos, IAM externo, signer/ledger de produção e recuperação da infraestrutura pública permanecem gates; dinheiro real continua não autorizado.
+Internal security review performed according to [report](docs/security-review-2026-10-05.md): scanners, secrets/Git, HTTP controls, isolated negative tests and fixture restoration. This is not an external penetration test nor an independent on-chain audit. Distributed controls, external IAM, production signer/ledger and public infrastructure recovery remain gates; real money remains unauthorized.

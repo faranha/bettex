@@ -1,19 +1,19 @@
-# Percurso blockchain com as carteiras pessoais existentes
+# Blockchain journey with existing personal wallets
 
-**Status:** desenvolvimento local; sem implantação pública.
+**Status:** local development; no public deployment.
 
-O pedido de ponta a ponta substitui a entrega limitada a observação. Os contratos Solidity existentes serão reutilizados, sem novo token, AMM, staking custodial ou autenticação.
+The end-to-end order replaces delivery limited to observation. Existing Solidity contracts will be reused, without new token, AMM, custodial staking, or authentication.
 
-O percurso utiliza a sessão nativa e o cofre pessoal já existentes em `/testes/conta`: são as carteiras desse cadastro que podem pagar e receber sem exigir importação manual em outra carteira. Isso não migra nem apaga contas Clerk. Formulários cancelados não representam escolhas.
+The journey uses the native session and the personal vault already existing in `/testes/conta`: these are the wallets from this registry that can pay and receive without requiring manual import into another wallet. This does not migrate or delete Clerk accounts. Cancelled forms do not represent choices.
 
-Participação é o modelo de saldo disponível na Carteira BETTEX, sem depósito adicional: replit.md, “todo BETTEX disponível na carteira oficial”, e regras de saída/rodadas. O início vem de eventos confirmados, não de saldo USD ou do instante de abertura da tela. Rendimentos permanecem sem apuração enquanto não existir liquidação conciliada; não reutilizar os rendimentos emulados.
+Participation is the available balance model in the BETTEX Wallet, without additional deposit: replit.md, “all BETTEX available in the official wallet”, and exit/round rules. The start comes from confirmed events, not from USD balance or the instant the screen is opened. Yields remain without assessment while there is no reconciled liquidation; do not reuse emulated yields.
 
-Não existe implantação pública/reserva operacional financiada na configuração atual. Para demonstrar operações reais sem fingir transações Sepolia, uma EVM local de desenvolvimento executa os contratos existentes e o MockUSDC restrito à rede 31337. O aplicativo identifica explicitamente essa rede como local, não como Arbitrum Sepolia. Seu RPC não é exposto ao navegador: leituras e retransmissão de transações pessoais assinadas passam pelo acesso nativo e CSRF existentes.
+There is no public deployment/funded operational reserve in the current configuration. To demonstrate real operations without faking Sepolia transactions, a local development EVM executes the existing contracts and the MockUSDC restricted to network 31337. The application explicitly identifies this network as local, not as Arbitrum Sepolia. Its RPC is not exposed to the browser: reads and retransmission of signed personal transactions pass through existing native access and CSRF.
 
-O operador da EVM local usa a conta desbloqueada do nó para abastecer USDC/ETH fictícios; nenhuma chave operacional ou pessoal é carregada em código, logs ou contexto da IA. Chaves pessoais continuam cifradas e são utilizadas apenas pelo titular no navegador, com senha e autorização explícita para os dados exatos da transação.
+The local EVM operator uses the node's unlocked account to supply dummy USDC/ETH; no operational or personal key is loaded into code, logs, or AI context. Personal keys remain encrypted and are used only by the holder in the browser, with password and explicit authorization for the exact transaction data.
 
-Operações e etapas pertencem a `execution`, com reserva de nonce/executor persistida antes do envio. Hash conhecido antes de broadcast e/ou origem+nonce permitem conciliar resposta perdida. Reinício/timeout não autoriza novo envio. Evidências/participação e saldos são confirmados por RPC, sem projeção demonstrativa.
+Operations and steps belong to `execution`, with nonce/executor reservation persisted before submission. Hash known before broadcast and/or origin+nonce allow reconciling a lost response. Restart/timeout does not authorize resubmission. Evidence/participation and balances are confirmed by RPC, without demonstrative projection.
 
-A EVM local não promete persistência após reinício do próprio nó. Cada execução possui identificação própria; operações de outra execução são conservadas, mas não apresentadas como confirmação na cadeia atual. Publicação e teste público dependem de contratos/endereço/reserva financiada/assinador operacional autorizado, não são substituídos por essa demonstração.
+The local EVM does not promise persistence after the node itself restarts. Each execution has its own identification; operations from another execution are preserved but not presented as confirmation on the current chain. Publication and public testing depend on contracts/address/funded reserve/authorized operational signer, and are not replaced by this demonstration.
 
-Fontes internas: AGENTS.md §§ Fluxo/Integridade; decisões 0002, 0003, 0006–0008; replit.md §§ participação automática, cancelamentos, reservas; Solidity BettexPrimarySale §§ inventory/buyTo; cadastro e cofre pessoais existentes. Referências externas: Ethereum JSON-RPC (eth_sendRawTransaction, eth_getTransactionReceipt, eth_getLogs), documentação ethers 6 (Transaction, Wallet, Provider), Hardhat 3 EDR e PostgreSQL locks/transactions. Não é implementada movimentação em mainnet.
+Internal sources: AGENTS.md §§ Flow/Integrity; decisions 0002, 0003, 0006–0008; replit.md §§ automatic participation, cancellations, reservations; Solidity BettexPrimarySale §§ inventory/buyTo; existing personal registry and vault. External references: Ethereum JSON-RPC (eth_sendRawTransaction, eth_getTransactionReceipt, eth_getLogs), ethers 6 documentation (Transaction, Wallet, Provider), Hardhat 3 EDR and PostgreSQL locks/transactions. No movement on mainnet is implemented.
