@@ -1,3 +1,3 @@
-# Contextos modulares — caminho anterior
+# Modular contexts — previous path
 
-Consultar e manter a [decisão canônica](../decisions/0001-service-boundaries.md).
+Consult the [canonical decision](../decisions/0001-service-boundaries.md).

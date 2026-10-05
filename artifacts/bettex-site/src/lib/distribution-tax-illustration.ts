@@ -1,6 +1,6 @@
 import { profitAllocation } from './profit-allocation-policy';
 
-/** Simulação documental. Não determina tributos legais nem autoriza pagamentos. */
+/** Document simulation. Does not determine legal taxes nor authorize payments. */
 export function calculateTaxIllustration(input: {
   resultAfterCosts: number;
   entityTaxes: number | null;

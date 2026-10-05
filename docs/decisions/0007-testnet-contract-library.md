@@ -1,11 +1,11 @@
-# Contratos de teste como biblioteca da arquitetura existente
+# Test contracts as a library of the existing architecture
 
-**Status:** ensaio local, implantação pública bloqueada.
+**Status:** local trial, public deployment blocked.
 
-Não havia Solidity, configuração de compilador ou contratos instalados. Criar `lib/bettex-contracts` é necessário para manter fontes, compilação reproduzível, ABI e testes da capacidade on-chain, sem inventar outro domínio, serviço, banco ou autenticação.
+There was no Solidity, compiler configuration, or installed contracts. Creating `lib/bettex-contracts` is necessary to maintain sources, reproducible compilation, ABI, and testing of on-chain capability, without inventing another domain, service, database, or authentication.
 
-Fontes seguem a [especificação pesquisada](../contracts/bettex-testnet-spec.md). Wallets mantém geração/assinatura pessoal; execution adapta as chamadas; reconciliation verifica rede/contrato/evento/confirmacões; audit consome eventos. A biblioteca não importa tabelas internas nem substitui ledger por saldo ERC-20.
+Sources follow the [researched specification](../contracts/bettex-testnet-spec.md). Wallets maintain personal generation/signing; execution adapts the calls; reconciliation verifies network/contract/event/confirmations; audit consumes events. The library does not import internal tables nor replace the ledger with an ERC-20 balance.
 
-Token/cofres não possuem upgrade, mint pós-construtor ou resgate discricionário. A venda começa pausada e tem administração explícita em duas etapas. Datas, destinos e preço ficam imutáveis nesta versão de teste para evitar alteração silenciosa da economia. Calendário, preço, quórum e timelock definitivos ainda exigem decisão.
+Token/vaults do not have upgrades, post-constructor minting, or discretionary redemption. The sale begins paused and has explicit two-stage administration. Dates, destinations, and price remain immutable in this test version to avoid silent changes to the economy. Final calendar, price, quorum, and timelock still require a decision.
 
-Rejeitados token genérico com todo supply na carteira do criador, mint ilimitado, vesting linear em segundos, compra sem divisão preço/tarifa, assinatura por IA e implantação automática. Testar em EVM local não autoriza transações públicas.
+Rejected: generic token with full supply in the creator's wallet, unlimited minting, linear vesting in seconds, purchase without price/fee splitting, AI signing, and automatic deployment. Testing on a local EVM does not authorize public transactions.

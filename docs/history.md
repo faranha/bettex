@@ -1,41 +1,41 @@
-# Históricos BETTEX
+# BETTEX History
 
-## Fonte e escopo
+## Source and scope
 
-O domínio audit mantém um único diário persistente, compartilhado pelas seis consultas. Accounts, wallets, execution, ledger e reconciliation mantêm suas responsabilidades. Portas injetadas na composição registram transições da execução na mesma transação PostgreSQL; conta e emulação também gravam efeito e diário atomicamente. Confirmações externas exigem recibos e blocos canônicos; o observador retoma a ingestão idempotente após falha.
+The audit domain maintains a single persistent journal, shared by the six queries. Accounts, wallets, execution, ledger, and reconciliation maintain their responsibilities. Ports injected into the composition record execution transitions in the same PostgreSQL transaction; account and emulation also record effect and journal atomically. External confirmations require receipts and canonical blocks; the observer resumes idempotent ingestion after failure.
 
-Valores do diário são strings de unidades inteiras: USDC 6 casas, BETTEX 18 e ETH 18. Isso não converte o motor demonstrativo legado, que usa números JavaScript, em um ledger de produção. Seus fatos permanecem identificados como simulação, sem dinheiro real. Preços executados novos são capturados na solicitação e preservados, não recalculados na confirmação.
+Journal values are strings of integer units: USDC 6 places, BETTEX 18, and ETH 18. This does not convert the legacy demo engine, which uses JavaScript numbers, into a production ledger. Its facts remain identified as simulation, without real money. New executed prices are captured in the request and preserved, not recalculated on confirmation.
 
-Compras locais têm um único fato financeiro do usuário. Aprovação, envio, principal da tesouraria e participação são etapas correlacionadas. Participação é baseada no saldo da carteira e quantidade × segundos, com cancelamento do peso anterior na saída conforme a regra vigente. Não existe transferência fictícia para staking.
+Local purchases have a single user financial fact. Approval, submission, treasury principal, and participation are correlated steps. Participation is based on wallet balance and quantity × seconds, with cancellation of the previous weight upon exit according to the current rule. There is no fictitious transfer for staking.
 
-As distribuições nativas ainda não existem; não são inventadas. O encerramento diário do motor demo registra cálculo e pagamentos emulados existentes. A prévia manual apenas apura uma estimativa na simulação: não credita saldo, não disponibiliza direitos e não confirma pagamento.
+Native distributions do not yet exist; they are not invented. The demo engine's daily closing records existing emulation calculations and payments. The manual preview only calculates an estimate in the simulation: it does not credit balance, does not make rights available, and does not confirm payment.
 
-## Migração e operação
+## Migration and operation
 
-Aplicar o schema-base existente e executar `pnpm --filter @workspace/db migrate:history` no banco explicitamente selecionado. A migração é idempotente, não apaga dados e não concede permissões. Em desenvolvimento existe inicialização compatível com o padrão dos percursos nativos; produção não executa DDL automaticamente.
+Apply the existing base schema and run `pnpm --filter @workspace/db migrate:history` on the explicitly selected database. The migration is idempotent, does not erase data, and does not grant permissions. In development, there is initialization compatible with the native path standard; production does not execute DDL automatically.
 
-O diário tem unicidade determinística, índice por proprietário/data/ID, índice de correlação e proteção PostgreSQL contra UPDATE/DELETE. Correções são eventos vinculados. Paginação por cursor usa data e ID, snapshot de sequência e escopo/filtros vinculados: eventos inseridos entre páginas não mudam o conjunto em andamento.
+The journal has deterministic uniqueness, an index by owner/date/ID, a correlation index, and PostgreSQL protection against UPDATE/DELETE. Corrections are linked events. Cursor pagination uses date and ID, sequence snapshot, and linked scope/filters: events inserted between pages do not change the set in progress.
 
-O observador local captura os eventos das carteiras explicitamente associadas a 31337 a cada 15 segundos, mesmo com o navegador fechado. Test accounts e o observador não são habilitados em produção. A consulta apresenta os registros persistidos e um aviso explícito se a reconciliação não puder verificar o estado atual.
+The local observer captures events from wallets explicitly associated with 31337 every 15 seconds, even with the browser closed. Test accounts and the observer are not enabled in production. The query presents the persisted records and an explicit warning if the reconciliation cannot verify the current state.
 
-## Acesso e privacidade
+## Access and privacy
 
-A sessão determina o proprietário no servidor. A conta pessoal agora entra no próprio demo: perfil, segurança, carteiras, operações locais e histórico ficam em Minha conta. Sua sessão também determina a identidade do painel e dos saldos emulados. Contas Clerk/browser existentes são preservadas; não há fusão por e-mail nem apropriação de dados de outra conta. IDs de usuário enviados pelo navegador não escolhem o proprietário. Dados técnicos não aparecem no histórico comum.
+The session determines the owner on the server. The personal account now enters the demo itself: profile, security, wallets, local operations, and history are kept in My Account. Your session also determines the identity of the dashboard and emulated balances. Existing Clerk/browser accounts are preserved; there is no merging by email nor appropriation of data from another account. User IDs sent by the browser do not choose the owner. Technical data does not appear in the common history.
 
-O detalhamento administrativo exige a permissão persistida `treasury_history` em `test_account_permissions`, vinculada à conta existente. Nenhuma conta ganha esse acesso no cadastro, pelo navegador ou por variável de ambiente. A concessão depende de administração autorizada da base; não há tela de autoelevação. Dados públicos de contrato/tesouraria existentes continuam agregados e não recebem atividades privadas.
+Administrative detailing requires the persisted `treasury_history` permission in `test_account_permissions`, linked to the existing account. No account gains this access at registration, via the browser, or via environment variable. The grant depends on authorized base administration; there is no self-elevation screen. Existing public contract/treasury data remains aggregated and does not receive private activities.
 
-A migração captura concessões, revogações e alterações dessa permissão na mesma transação da administração da base. O alvo recebe o evento privado e a administração recebe sua projeção restrita, sem copiar nome, e-mail ou credenciais. O ator identifica a administração autorizada da base, não afirma conhecer a pessoa que executou o SQL.
+The migration captures grants, revocations, and changes to this permission in the same transaction as the base administration. The target receives the private event and the administration receives its restricted projection, without copying name, email, or credentials. The actor identifies the authorized base administration, does not claim to know the person who executed the SQL.
 
-Não se registram senha, segredo de carteira, frase-semente, cookie, sessão, ciphertext ou conteúdo de backup. Perfil registra somente o campo alterado, sem replicar nomes/e-mails. Falhas usam códigos limitados, não stack traces ou parâmetros SQL. Exportação registra autorização e execução reportada pelo cliente, nunca confirmação de que um arquivo foi salvo.
+No password, wallet secret, seed phrase, cookie, session, ciphertext, or backup content is recorded. Profile records only the changed field, without replicating names/emails. Failures use limited codes, not stack traces or SQL parameters. Export records authorization and execution reported by the client, never confirmation that a file was saved.
 
-Não há exclusão automática dos fatos financeiros/auditoria. Enquanto as regras vigentes não definirem prazo adicional, não inventar um período de retenção nem apagar a trilha. Dados pessoais seguem nas fontes de identidade existentes; alterações de retenção/anonymização exigem política aprovada.
+There is no automatic deletion of financial/audit facts. As long as current rules do not define an additional deadline, do not invent a retention period or erase the trail. Personal data remains in existing identity sources; changes to retention/anonymization require an approved policy.
 
-## Recuperação e lacunas
+## Recovery and gaps
 
-Eventos comprovados da EVM local são recuperados com hash, bloco, índice, origem e selo reconstruído quando anteriores ao início de captura. Histórico JSON demonstrativo recuperado/semeado é explicitamente não autoritativo. Atividades antigas não comprovadas não são fabricadas: login, consentimento, autorização e instante original de solicitação podem estar ausentes.
+Proven EVM local events are recovered with hash, block, index, source, and rebuilt stamp when prior to the start of capture. Recovered/seeded demo JSON history is explicitly non-authoritative. Old unproven activities are not fabricated: login, consent, authorization, and original request instant may be absent.
 
-O diário informa seu início de captura. Isso não afirma completude para operações ainda inexistentes, redes não conectadas, ações Clerk fora da aplicação ou material descartado antes da migração. Para uma sessão pessoal, a consulta reúne apenas os registros nativos e emulados dessa mesma conta, com os ambientes identificados; identidades Clerk distintas não são fundidas. Saldos emulados não representam saldo na blockchain local nem em rede pública.
+The journal informs its capture start. This does not claim completeness for operations that do not yet exist, unconnected networks, Clerk actions outside the application, or material discarded before migration. For a personal account session, the query gathers only the native and emulated records of that same account, with the environments identified; distinct Clerk identities are not merged. Emulated balances do not represent balance on the local blockchain or on a public network.
 
-## Administração do demo
+## Demo administration
 
-A concessão administrativa é feita fora do navegador e permanece no diário. O provisionamento de desenvolvimento usa o cadastro normal e gera o mesmo cofre criptografado de carteiras; recebe credenciais somente pela entrada padrão, sem gravá-las no código ou nos logs. O crédito inicial emulado e a participação são registrados na mesma transação dos saldos. Reexecutar o provisionamento não duplica o crédito nem substitui as carteiras.
+The administrative grant is done outside the browser and remains in the journal. Development provisioning uses the normal registry and generates the same encrypted wallet vault; it receives credentials only via standard input, without writing them to code or logs. The initial emulated credit and participation are recorded in the same transaction as the balances. Rerunning provisioning does not duplicate the credit or replace the wallets.

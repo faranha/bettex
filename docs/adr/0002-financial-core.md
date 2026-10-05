@@ -1,3 +1,3 @@
-# Ledger financeiro — caminho anterior
+# Financial ledger — previous path
 
-Consultar e manter a [decisão canônica](../decisions/0002-financial-core.md).
+Consult and maintain the [canonical decision](../decisions/0002-financial-core.md).

@@ -27,7 +27,7 @@ export function FloatingCommunityCTA() {
     try {
       setDismissed(sessionStorage.getItem('bettex-community-dismissed') === 'true');
     } catch (error) {
-      console.warn('Não foi possível ler a preferência do botão da comunidade.', error);
+      console.warn("Could not read community button preference.", error);
     }
   }, []);
 
@@ -36,7 +36,7 @@ export function FloatingCommunityCTA() {
     try {
       sessionStorage.setItem('bettex-community-dismissed', 'true');
     } catch (error) {
-      console.warn('Não foi possível salvar a preferência do botão da comunidade.', error);
+      console.warn("Could not save community button preference.", error);
     }
   };
 

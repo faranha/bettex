@@ -82,7 +82,7 @@ async function main() {
     await provision(JSON.parse(raw));
     raw = "";
   } catch {
-    console.error("Não foi possível preparar a conta administrativa; nenhum segredo foi registrado.");
+    console.error("Could not prepare administrative account; no secret registered.");
     process.exitCode = 1;
   } finally { await pool.end(); }
 }

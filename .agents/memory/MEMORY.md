@@ -26,6 +26,7 @@
 - [Overlays mobile](mobile-chart-overlays.md) — largura e posição dos tooltips precisam caber no gráfico, inclusive após expandir sanfonas.
 - [Render-time localization](render-time-localization.md) — exclude app JSX runtimes from Vite prebundling; fragments and cloned elements need rendered-text audits.
 - [Large localization edits](large-localization-edits.md) — failed large saves can leave source ahead of translations; prepare and save separately, then audit coverage.
+- [Technical document translation](technical-document-translation.md) — bounded LLM rewrites can insert citations or alter URLs; audit structure, links and numeric fidelity before saving.
 - [Elegibilidade ao lucro](profit-entitlement-rules.md) — cada rodada paga ou não paga, sem retorno ou acumulação; saídas cancelam direitos e frações vão à tesouraria.
 - [Demonstração e fase ALFA](demo-prototype-scope.md) — banco básico e emulação automática; app claro, suporte no Telegram; sem dinheiro real.
 - [Navegação do piloto](demo-navigation.md) — saldo e extrato em página própria; painel com atividade e participação; Tesouraria e Minha conta separadas.

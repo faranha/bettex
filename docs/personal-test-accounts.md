@@ -1,48 +1,48 @@
-# Conta pessoal e carteiras de testes
+# Personal account and test wallets
 
-## Acesso simples
+## Simple access
 
-No preview de desenvolvimento, abra **Minha conta → Conta e carteiras de testes**, ou `/testes/conta`.
+In the development preview, open **My account → Account and test wallets**, or `/testes/conta`.
 
-1. Informe nome, e-mail, senha de pelo menos 12 caracteres e a confirmação.
-2. Leia o aviso de que não existe recuperação e marque o aceite.
-3. Clique em **Criar conta e carteiras de teste**.
-4. Em **Minhas carteiras**, copie o endereço público da carteira desejada. Não confunda endereço com chave pública ou chave privada.
-5. Para guardar um backup, escolha **Baixar backup criptografado (recomendado)**. Leia os avisos, informe a senha atual e marque a responsabilidade.
+1. Enter name, email, password of at least 12 characters, and confirmation.
+2. Read the notice that there is no recovery and check the acceptance.
+3. Click **Create account and test wallets**.
+4. Under **My wallets**, copy the public address of the desired wallet. Do not confuse address with public key or private key.
+5. To save a backup, choose **Download encrypted backup (recommended)**. Read the notices, enter the current password, and mark the responsibility.
 
-Os segredos não aparecem no cadastro. Revelar, copiar chave privada, baixar arquivo sem criptografia e baixar backup são ações separadas, cada uma com senha e confirmação nova. A chave revelada é ocultada ao sair da aba/página ou após 60 segundos. Sair da conta também a oculta. Ocultar a aba cancela operações privadas ainda em andamento.
+The secrets do not appear in the registration. Revealing, copying the private key, downloading an unencrypted file, and downloading a backup are separate actions, each with a new password and confirmation. The revealed key is hidden upon leaving the tab/page or after 60 seconds. Signing out of the account also hides it. Hiding the tab cancels private operations still in progress.
 
-Nunca compartilhe chaves, senhas ou backups com supostos atendentes. Não aceite acesso remoto nem compartilhe a tela ao mostrar segredos. Um arquivo sem criptografia ou conteúdo copiado pode ser lido por outras pessoas/aplicativos. Guarde a senha e uma cópia criptografada em local seguro: perdê-las pode impedir acesso. O suporte não pode redefinir a senha desse novo cadastro.
+Never share keys, passwords, or backups with alleged attendants. Do not accept remote access or share your screen when showing secrets. An unencrypted file or copied content can be read by other people/applications. Keep the password and an encrypted copy in a safe place: losing them may prevent access. Support cannot reset the password for this new registration.
 
-## Separação e verdade dos estados
+## Separation and truth of states
 
-Este fluxo possui contas de desenvolvimento próprias, sem migração automática de contas Clerk nem histórico financeiro demonstrativo. Não pede confirmação de e-mail, documentos ou selfie. O e-mail não é apresentado como verificado.
+This flow has its own development accounts, without automatic Clerk account migration or demonstrative financial history. It does not request email confirmation, documents, or selfies. The email is not presented as verified.
 
-As duas carteiras são EVM reais, pessoais e distintas. Criar endereço não é uma transação e não exige gas. A associação inicial é **Arbitrum Sepolia, chain ID 421614**, não Ethereum Mainnet. Chaves e endereços permanecem iguais após mudança de perfil ou senha.
+Both wallets are real, personal, and distinct EVM wallets. Creating an address is not a transaction and does not require gas. The initial association is **Arbitrum Sepolia, chain ID 421614**, not Ethereum Mainnet. Keys and addresses remain the same after changing profile or password.
 
-| Parte | Estado e limite |
+| Part | State and limit |
 | --- | --- |
-| Cadastro e login | Implementados, PostgreSQL, sessão opaca de uma hora, sem recuperação |
-| Duas carteiras | Geradas no navegador; metadados separados por finalidade e associações de rede |
-| Proteção | Cofre AES-GCM/PBKDF2; hash scrypt separado; servidor não recebe as chaves em texto puro |
-| Perfil, e-mail e senha | Implementados; e-mail/senha exigem senha atual; recriptografia e atualização atômicas |
-| Exportação | Chave pública, chave privada e JSON Keystore V3 individual; segredo oculto por padrão |
-| USDC de teste | Contrato oficial identificado, não representa depósito detectado nem saldo confirmado |
-| Consulta de saldo e depósitos | Pendentes de adaptador RPC e conciliação; não são simulados como reais |
-| BETTEX e staking | Destino pessoal identificado pela finalidade da carteira; contratos/recebimentos on-chain pendentes |
-| Robinhood Chain e Allora | Não provisionadas por este fluxo; contas de agentes não são carteiras pessoais |
-| Produção/mainnet | Novo cadastro bloqueado fora de desenvolvimento; nenhum envio financeiro habilitado |
+| Registration and login | Implemented, PostgreSQL, one-hour opaque session, no recovery |
+| Two wallets | Generated in the browser; metadata separated by purpose and network associations |
+| Protection | AES-GCM/PBKDF2 vault; separate scrypt hash; server does not receive keys in plain text |
+| Profile, email and password | Implemented; email/password require current password; atomic re-encryption and update |
+| Export | Public key, private key, and individual JSON Keystore V3; secret hidden by default |
+| Test USDC | Official contract identified, does not represent detected deposit nor confirmed balance |
+| Balance query and deposits | Pending RPC adapter and reconciliation; are not simulated as real |
+| BETTEX and staking | Personal destination identified by wallet purpose; on-chain contracts/receipts pending |
+| Robinhood Chain and Allora | Not provisioned by this flow; agent accounts are not personal wallets |
+| Production/mainnet | New registration blocked outside development; no financial sending enabled |
 
-USDC de teste: `0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d`, conforme Circle. Não envie ativos reais. Um backup pode abrir a carteira em ferramenta externa compatível; não recupera a conta BETTEX nem garante acesso a posições específicas de contratos. Se a senha mudar, backups anteriormente exportados continuam protegidos pela senha usada na exportação; exporte novos backups se necessário e proteja/remova com segurança as cópias antigas.
+Test USDC: `0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d`, as per Circle. Do not send real assets. A backup can open the wallet in a compatible external tool; it does not recover the BETTEX account nor guarantee access to specific contract positions. If the password changes, previously exported backups remain protected by the password used during export; export new backups if necessary and protect/securely remove old copies.
 
-Não há transações de abastecimento, venda ou staking para apresentar: nenhuma foi executada. Isso não é a entrega concluída do ambiente financeiro multirrede.
+There are no supply, sale, or staking transactions to present: none have been executed. This is not the completed delivery of the multi-network financial environment.
 
-## Verificação
+## Verification
 
 - `pnpm --filter @workspace/api-server check:accounts`
 - `pnpm --filter @workspace/bettex-site check:wallets`
 - `pnpm quality`
 
-Os testes criptográficos comparam chaves somente em memória, sem incluí-las em logs. A validação de navegador usa apenas contas sintéticas e não registra imagens de segredos revelados. SQL/tokens/senhas/corpos de requisição não são incluídos nas mensagens de erro do novo fluxo.
+The cryptographic tests compare keys only in memory, without including them in logs. Browser validation uses only synthetic accounts and does not record images of revealed secrets. SQL/tokens/passwords/request bodies are not included in the error messages of the new flow.
 
-Decisão e fontes: [carteiras pessoais](decisions/0006-personal-test-wallets.md).
+Decision and sources: [personal wallets](decisions/0006-personal-test-wallets.md).

@@ -19,11 +19,20 @@ if ((canonicalPath in seo.pages || /^\/(?:en|es)(?:\/(?:pitch|demo|documentation
 }
 setLocale(localeFromPath(window.location.pathname));
 document.documentElement.lang = localeFromPath(window.location.pathname) === 'pt' ? 'pt-BR' : localeFromPath(window.location.pathname);
-if (canonicalPath === '/' && !window.location.hash) {
+// Keep legacy Portuguese URLs and saved language choices. First-time visitors
+// enter the English version; localization identifiers and translations stay intact.
+if (!/^\/(?:en|es)(?:\/|$)/.test(canonicalPath)) {
+  const currentUrl = `${prefix}${canonicalPath}${window.location.search}${window.location.hash}`;
+  const redirect = (language: 'en' | 'es') => {
+    const destination = localizedUrl(currentUrl, language);
+    if (destination !== currentUrl) window.location.replace(destination);
+  };
   try {
-    const preferred = localStorage.getItem('bettex.locale');
-    if (preferred === 'en' || preferred === 'es') window.location.replace(localizedUrl(`${prefix}/`, preferred));
-  } catch { /* Locale URLs still work when storage is unavailable. */ }
+    const preferred = localStorage.getItem('bettex.locale') ?? 'en';
+    if (preferred === 'en' || preferred === 'es') redirect(preferred);
+  } catch {
+    redirect('en');
+  }
 }
 
 createRoot(document.getElementById('root')!, {

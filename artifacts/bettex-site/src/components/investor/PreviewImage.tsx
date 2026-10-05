@@ -20,7 +20,7 @@ function RetryingImage({ src, onError, ...props }: Props) {
   return (
     <img {...props} src={imageSrc} onError={event => {
       if (attempt >= retryDelays.length) {
-        console.error('Não foi possível carregar a imagem da prévia:', src);
+        console.error("Could not load preview image:", src);
         onError?.(event);
         return;
       }

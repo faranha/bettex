@@ -1,51 +1,51 @@
-# Segurança
+# Security
 
-## Escopo atual
+## Current scope
 
-BETTEX tem identidade real, contas nativas integradas ao app, carteiras EVM pessoais criptografadas no cliente e dados persistidos de uma experiência financeira emulada. Há assinatura pessoal e execução exclusivamente na EVM local 31337; não há signer de produção, ledger patrimonial completo ou distribuição financeira real. A associação inicial Arbitrum Sepolia não prova implantação nem compra pública. Contas nativas continuam bloqueadas fora de desenvolvimento.
+BETTEX has real identity, native accounts integrated into the app, personal EVM wallets encrypted on the client, and data persisted from an emulated financial experience. There is personal signing and execution exclusively on local EVM 31337; there is no production signer, full equity ledger, or real financial distribution. The initial Arbitrum Sepolia association does not prove deployment or public purchase. Native accounts remain blocked outside of development.
 
-Referência desta revisão interna: **OWASP ASVS 5.0.0**, versão estável confirmada na fonte oficial. OpenZeppelin **5.6.1**, Solidity **0.8.37**, ethers **6.17.0**. Não é certificação ASVS nem auditoria independente de contratos. Resultados e limites: [revisão interna](docs/security-review-2026-10-05.md).
+Reference for this internal review: **OWASP ASVS 5.0.0**, stable version confirmed at the official source. OpenZeppelin **5.6.1**, Solidity **0.8.37**, ethers **6.17.0**. This is not an ASVS certification or independent contract audit. Results and limits: [internal review](docs/security-review-2026-10-05.md).
 
-## Regras obrigatórias desta versão
+## Mandatory rules for this version
 
-- Preservar ausência de recuperação de senha e KYC das contas nativas. Troca de senha requer senha anterior, revisionamento, recriptografia do mesmo cofre e revogação das sessões anteriores. Não trocar hash administrativamente: isso não recupera chaves.
-- Toda identidade/propriedade/permissão vem do servidor. Administração atual concede leitura de tesouraria, não exportação de chaves alheias nem assinatura financeira irrestrita.
-- Origens exatas, sem confiar em Host encaminhado; escritas do app exigem origem aprovada e JSON. Clerk conserva seu protocolo, com a mesma fronteira de origem.
-- Identificadores financeiros, decimais e destinatários são validados contra o mandato/operação persistida; IA e navegador não autorizam fundos.
-- Segredos fora do Git/frontend/logs; erros públicos não carregam SQL, stacks ou corpos. Exportação privada é ação explícita local, com reautenticação; preferir backup criptografado.
-- Testes de segurança usam esquema PostgreSQL vazio isolado, sequências próprias, chaves/contas geradas para fixtures e EVM descartável. Nunca reiniciar o runtime EVM do app para executar testes.
-- Migrações versionadas e aditivas; registros órfãos bloqueiam a migração, não são apagados. Histórico é append-only; correções contábeis exigem compensações.
-- Não habilitar dinheiro real enquanto faltarem os gates financeiros e a revisão independente abaixo.
+- Preserve the absence of password recovery and KYC for native accounts. Password exchange requires the previous password, versioning, re-encryption of the same vault, and revocation of previous sessions. Do not change hash administratively: this does not recover keys.
+- All identity/property/permission comes from the server. Current administration grants treasury reading, not export of third-party keys or unrestricted financial signing.
+- Exact origins, without trusting forwarded Host; app writes require approved origin and JSON. Clerk maintains its protocol, with the same origin boundary.
+- Financial identifiers, decimals, and recipients are validated against the mandate/persisted operation; AI and browser do not authorize funds.
+- Secrets outside of Git/frontend/logs; public errors do not carry SQL, stacks, or bodies. Private export is an explicit local action, with re-authentication; prefer encrypted backup.
+- Security tests use an isolated empty PostgreSQL schema, own sequences, keys/accounts generated for fixtures, and disposable EVM. Never restart the app's EVM runtime to run tests.
+- Versioned and additive migrations; orphaned records block migration, they are not erased. History is append-only; accounting corrections require offsets.
+- Do not enable real money while the financial gates and the independent review below are missing.
 
-## Comunicação de vulnerabilidades
+## Vulnerability reporting
 
-Usar o relato privado de vulnerabilidades do GitHub se habilitado. Se não estiver, solicitar um canal privado aos mantenedores antes de transmitir detalhes. Não publicar exploração, dados de terceiros ou credenciais em issues, logs ou no Telegram público.
+Use GitHub's private vulnerability reporting if enabled. If not, request a private channel from the maintainers before transmitting details. Do not publish exploits, third-party data, or credentials in issues, logs, or on public Telegram.
 
-A habilitação desse canal, proteção de branches e política de aprovação dependem da administração do repositório; não foram ativadas por esta mudança.
+The enablement of this channel, branch protection, and approval policy depend on repository administration; they were not activated by this change.
 
-## Requisitos para desenvolvimento
+## Requirements for development
 
-- Verificação de identidade/propriedade no backend, não apenas na interface.
-- Revisão de CORS, CSRF, sessão, autorização, limites de requisição e fronteira de proxy antes de produção.
-- Limitação de custo e isolamento para processamento de contas/agentes; o limite em memória do processo não é controle distribuído.
-- Redação de logs; segredos fora do código, frontend e histórico Git.
-- `pnpm quality` bloqueia lint de segurança, tipos, build, fronteiras, segredos no workspace/bundles/histórico Git, dependências altas/críticas não aceitas e regressões de contas, carteiras, execução e contratos. A CI usa o mesmo comando, sem credenciais de Git persistidas.
-- A exceção de `braces` é específica, documentada e expira em 2026-11-05; novas vulnerabilidades não são ignoradas. SAST e análise de privacidade foram executados nesta revisão, mas não são agendados automaticamente por essa CI.
-- Preservar dados após falhas, restarts e retries; restaurar backups em teste.
+- Identity/property verification on the backend, not just in the interface.
+- Review of CORS, CSRF, session, authorization, request limits, and proxy boundary before production.
+- Cost limiting and isolation for account/agent processing; the process memory limit is not a distributed control.
+- Log redaction; secrets outside code, frontend, and Git history.
+- `pnpm quality` blocks security lint, types, build, boundaries, secrets in workspace/bundles/Git history, unaccepted high/critical dependencies, and regressions of accounts, wallets, execution, and contracts. CI uses the same command, without persisted Git credentials.
+- The `braces` exception is specific, documented, and expires on 2026-11-05; new vulnerabilities are not ignored. SAST and privacy analysis were performed in this review, but are not automatically scheduled by this CI.
+- Preserve data after failures, restarts, and retries; restore backups in test.
 
-## Gates adicionais para operações cripto reais
+## Additional gates for real crypto operations
 
-1. Escolha aprovada de custódia, exportação/recuperação e responsabilidade por chaves.
-2. Assinatura isolada dos agentes, com lista de redes/contratos/destinos permitidos, limites e revogação.
-3. Mandatos e política de risco versionados, aprovados pela liderança da Fundação.
-4. Ledger de partidas dobradas, unidades inteiras, reserva atômica e trilha imutável.
-5. Provedores e contratos confirmados; validação de rede, token, cotação, TTL, nonce, gas e slippage.
-6. Testes de falha, concorrência, duplicidade, execução incerta e reorganização de blockchain.
-7. Conciliação independente e interrupção segura quando a fonte externa diverge do ledger.
-8. Revisão independente dos contratos e da infraestrutura antes de autorização explícita para mainnet.
+1. Approved choice of custody, export/recovery, and key responsibility.
+2. Isolated agent signing, with a list of permitted networks/contracts/destinations, limits, and revocation.
+3. Versioned mandates and risk policy, approved by the Foundation's leadership.
+4. Double-entry ledger, whole units, atomic reserve, and immutable trail.
+5. Confirmed providers and contracts; network validation, token, quote, TTL, nonce, gas, and slippage.
+6. Failover, concurrency, duplication, uncertain execution, and blockchain reorganization tests.
+7. Independent reconciliation and safe interruption when the external source diverges from the ledger.
+8. Independent review of contracts and infrastructure before explicit authorization for mainnet.
 
-## Operação e recuperação
+## Operation and recovery
 
-Procedimentos, limites e restauração de teste: [runbook](docs/security-operations.md).
+Procedures, limits, and test restoration: [runbook](docs/security-operations.md).
 
-Consultar [modelo de ameaças](threat_model.md) e [arquitetura canônica](docs/architecture.md).
+Consult [threat model](threat_model.md) and [canonical architecture](docs/architecture.md).

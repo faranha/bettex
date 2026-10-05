@@ -1,80 +1,80 @@
-# Especificação curta — contratos BETTEX de teste
+# Short Specification — BETTEX test contracts
 
-Pesquisa registrada em 2026-10-05, **antes de escrever os contratos**.
+Research registered on 2026-10-05, **before writing the contracts**.
 
-## Fontes e precedência
+## Sources and precedence
 
-As regras vigentes do criador em `replit.md` prevalecem sobre whitepapers antigos. A fonte técnica externa orienta código, não muda economia. O pedido atual permite implementar e verificar contratos de teste; não autoriza mainnet, pagamentos reais ou publicação automática.
+The prevailing creator rules in `replit.md` take precedence over old whitepapers. The external technical source guides code, it does not change economics. The current request allows implementing and verifying test contracts; it does not authorize mainnet, real payments, or automatic publication.
 
-| Requisito | Fonte interna, seção | Decisão e implementação proposta |
+| Requirement | Internal source, section | Decision and proposed implementation |
 | --- | --- | --- |
-| Arbitrum para o token | `WhitepaperChapters.tsx`, `documentacao-rede`; `docs/personal-test-accounts.md`, rede | Alvo público de teste: Arbitrum Sepolia 421614. Execução nesta entrega somente EVM local 31337 |
-| Oferta 1.000.000.000; 65/20/15 | `src/lib/tokenomics.ts`; `documentacao-emissao` | ERC-20, emissão única no construtor; alocações de 650/200/150 milhões integralmente bloqueadas |
-| Toda emissão sob vesting | `VestingSchedule.tsx`, `documentacao-vesting` | Três destinações desde a emissão; nenhuma recebe tudo antecipadamente |
-| Parcela 1 na abertura; 36 parcelas | `VestingSchedule.tsx`, parágrafos 1–3; `src/lib/vesting.ts` | Datas imutáveis; cumulativo `floor(50.000.000 × mês / 36) × 13/4/3` em tokens inteiros. Não usar liberação contínua do VestingWallet padrão |
-| Estoque público não é vendido nem lucro | `SaleChannels.tsx`, Venda pública | Estoque de 65% fica no contrato de venda; quota liberada limita vendas; não existe saque administrativo desse estoque |
-| Preço público vai integralmente à tesouraria | `SaleChannels.tsx`; `replit.md`, venda a corretoras | Transferências USDC distintas: preço à tesouraria, tarifa ao caixa operacional; compra e entrega atômicas |
-| Tarifa US$2,50 no aplicativo | `ServiceFees.tsx`; `replit.md`, taxas confirmadas 03/10/2026 | 2.500.000 unidades do USDC de seis decimais; nenhuma cobrança em BETTEX, nenhuma queima na compra |
-| Venda direta a corretoras | `SaleChannels.tsx`; `replit.md`, venda pública | Caminho separado autorizado pela administração, com preço explicitamente aceito pelo comprador; não acrescenta automaticamente a tarifa do aplicativo |
-| Fundador pode destinar liberados; investidores sem quarta alocação | `VestingSchedule.tsx`; `replit.md`, Fundador e equipe | Dois cofres com beneficiários imutáveis; concessões individuais/captação não implementadas |
-| Taxas separadas de yield | `replit.md`, taxas e recompras; `DocumentationGovernance.tsx` | Contrato não chama split 50/25/25 nem trata venda como lucro |
-| Recompra seguida de queima definitiva | `replit.md`, Política aprovada de recompras | Queima voluntária do saldo próprio/permitido; não implantar motor de recompra |
-| Autocustódia | decisão `0006-personal-test-wallets.md` | Contrato não recebe senhas/chaves nem mantém custódia das carteiras pessoais |
-| Administração e multisig | `DocumentationGovernance.tsx`, Custódia e versões | Token sem administrador/mint/update; somente venda pausável, ownership em duas etapas. Administrador EOA apenas nos testes locais; público exige configuração de multisig e revisão |
-| Arquitetura e eventos | `AGENTS.md`; decisões 0001–0004; `docs/architecture.md` | Biblioteca de contratos, não novo serviço/contexto/autenticação. ABI e eventos são fronteira para wallets/execution/reconciliation/audit; nenhum saldo emulado importado |
-| Futuro staking | `replit.md`, saída cancela direitos; `documentacao-staking` | Apenas eventos ERC-20 Transfer/Burn para futura conciliação. Nenhuma promessa de que o contrato atual implementa staking/eligibilidade/rateio |
-| Pool fechado e duas carteiras | anexo `Pasted-Sim-a-emiss-o-inicial-deve-separar-as-aloca-es-e-soment_1791178994163.txt`, §§5–6 | Allowlist on-chain de pagador/destinatário, revogável; `buyTo` recebe USDC do pagador e entrega BETTEX somente ao destino autorizado. Não é KYC |
-| Estoque distinto da alocação | mesmo anexo, §4 | Getter `inventory` distingue alocação total, bloqueada, liberada, vendida e saldo disponível; não há AMM, reserva USDC ou venda de volta |
+| Arbitrum for the token | `WhitepaperChapters.tsx`, `documentacao-rede`; `docs/personal-test-accounts.md`, network | Public test target: Arbitrum Sepolia 421614. Execution in this delivery only local EVM 31337 |
+| Supply 1,000,000,000; 65/20/15 | `src/lib/tokenomics.ts`; `documentacao-emissao` | ERC-20, single issuance in the constructor; 650/200/150 million allocations fully locked |
+| All issuance under vesting | `VestingSchedule.tsx`, `documentacao-vesting` | Three destinations since issuance; none receive everything in advance |
+| Installment 1 at opening; 36 installments | `VestingSchedule.tsx`, paragraphs 1–3; `src/lib/vesting.ts` | Immutable dates; cumulative `floor(50,000,000 × month / 36) × 13/4/3` in whole tokens. Do not use continuous release of standard VestingWallet |
+| Public inventory is not sold nor profit | `SaleChannels.tsx`, Public sale | 65% inventory remains in the sale contract; released quota limits sales; there is no administrative withdrawal of this inventory |
+| Public price goes entirely to the treasury | `SaleChannels.tsx`; `replit.md`, sale to brokerages | Distinct USDC transfers: price to treasury, fee to operational cash; atomic purchase and delivery |
+| US$2.50 fee in the app | `ServiceFees.tsx`; `replit.md`, fees confirmed 10/03/2026 | 2,500,000 units of the six-decimal USDC; no charge in BETTEX, no burn on purchase |
+| Direct sale to brokerages | `SaleChannels.tsx`; `replit.md`, public sale | Separate path authorized by administration, with price explicitly accepted by the buyer; does not automatically add the app fee |
+| Founder can allocate released; investors without fourth allocation | `VestingSchedule.tsx`; `replit.md`, Founder and team | Two vaults with immutable beneficiaries; individual concessions/fundraising not implemented |
+| Separate yield fees | `replit.md`, fees and repurchases; `DocumentationGovernance.tsx` | Contract does not call 50/25/25 split nor treat sale as profit |
+| Repurchase followed by definitive burn | `replit.md`, Approved repurchase policy | Voluntary burn of own/permitted balance; do not deploy repurchase engine |
+| Self-custody | decision `0006-personal-test-wallets.md` | Contract does not receive passwords/keys nor maintain custody of personal wallets |
+| Administration and multisig | `DocumentationGovernance.tsx`, Custody and versions | Token without administrator/mint/update; only pausable sale, two-step ownership. EOA administrator only in local tests; public requires multisig configuration and review |
+| Architecture and events | `AGENTS.md`; decisions 0001–0004; `docs/architecture.md` | Contract library, not new service/context/authentication. ABI and events are boundary for wallets/execution/reconciliation/audit; no emulated balance imported |
+| Future staking | `replit.md`, exit cancels rights; `documentacao-staking` | Only ERC-20 Transfer/Burn events for future reconciliation. No promise that the current contract implements staking/eligibility/prorating |
+| Closed pool and two wallets | attachment `Pasted-Sim-a-emiss-o-inicial-deve-separar-as-aloca-es-e-soment_1791178994163.txt`, §§5–6 | On-chain payer/recipient allowlist, revocable; `buyTo` receives USDC from payer and delivers BETTEX only to authorized destination. It is not KYC |
+| Inventory distinct from allocation | same attachment, §4 | Getter `inventory` distinguishes total, locked, released, sold, and available balance; there is no AMM, USDC reserve, or buy-back |
 
-Os caminhos de componentes e lib nesta tabela são relativos a `artifacts/bettex-site/src/`.
+The component and lib paths in this table are relative to `artifacts/bettex-site/src/`.
 
-## Lacunas e configurações estritamente temporárias
+## Gaps and strictly temporary configurations
 
-- “BTEX” identifica a IA principal em outras áreas; o token documentado é BETTEX. Nome **BETTEX Testnet**, símbolo **tBETTEX** e 18 decimais são convenções técnicas deste ensaio, não nova decisão de ticker econômico.
-- Data de abertura e timestamps dos 36 meses não estão aprovados. O contrato recebe 36 timestamps imutáveis, estritamente crescentes com intervalos de 28–31 dias. Fixtures usam calendário UTC mensal com ajuste ao último dia; não se estabelece uma data comercial ou regra de fuso definitiva.
-- Preço em USDC por token inteiro não está aprovado. Fixtures usam preço hipotético; nenhum preço histórico fiat é convertido em oferta. Não há oráculo, alteração administrativa de preço nem venda de frações nesta primeira implementação.
-- Representantes, endereços, quórum de multisig e eventual timelock não estão aprovados. Venda começa pausada. Pausa não altera vesting nem congela transferências pessoais.
-- Contratos não são atualizáveis. Evolução depende de nova implantação revisada e plano explícito, não proxy/backdoor que altere direitos.
-- Regra atual de aportes **anjo** (100% produto/tecnologia/marketing, sem retirada do fundador, `replit.md`) prevalece sobre frases antigas de livre alocação. Não se implementa captação de investidores por esse contrato.
-- “STT” permanece não identificado e não é criado ou equiparado a USDC. USDC de teste usado nos ensaios é identificado separadamente.
-- Allora não é Aurora; Robinhood e Allora não são destinos de emissão deste contrato. Sem bridge, emissão duplicada multirrede ou integração inventada.
-- Sem contrato de staking, ledger, funding, gas subsidy, risco automatizado, distribuição de lucro ou recompra completos nesta entrega.
+- “BTEX” identifies the primary AI in other areas; the documented token is BETTEX. Name **BETTEX Testnet**, symbol **tBETTEX** and 18 decimals are technical conventions of this trial, not a new economic ticker decision.
+- Opening date and timestamps for the 36 months are not approved. The contract receives 36 immutable timestamps, strictly increasing with 28–31 day intervals. Fixtures use monthly UTC calendar with adjustment to the last day; no commercial date or definitive timezone rule is established.
+- Price in USDC per whole token is not approved. Fixtures use hypothetical price; no historical fiat price is converted into supply. There is no oracle, administrative price change, or sale of fractions in this first implementation.
+- Representatives, addresses, multisig quorum, and eventual timelock are not approved. Sale starts paused. Pause does not alter vesting nor freeze personal transfers.
+- Contracts are not upgradeable. Evolution depends on new reviewed deployment and explicit plan, not proxy/backdoor that alters rights.
+- Current **angel** contribution rule (100% product/technology/marketing, no founder withdrawal, `replit.md`) prevails over old phrases of free allocation. Investor fundraising is not implemented by this contract.
+- “STT” remains unidentified and is not created or equated to USDC. Test USDC used in the trials is identified separately.
+- Allora is not Aurora; Robinhood and Allora are not issuance destinations of this contract. No bridge, multi-network duplicated issuance, or invented integration.
+- No staking contract, ledger, funding, gas subsidy, automated risk, profit distribution, or full repurchases in this delivery.
 
-## Fontes externas verificadas
+## Verified external sources
 
-- Corpus Arbitrum, `quickstart-create-a-token.mdx`, versão `git-blob:f06398aa9a8f580725ee50c541f3801a08919fe2`, conferida 2026-10-05: RPC `https://sepolia.arbitrum.io/rpc`, chain 421614, explorador `https://sepolia.arbiscan.io/`.
-- https://docs.openzeppelin.com/contracts/5.x/erc20 — ERC-20, unidades e extensão de queima.
-- https://docs.openzeppelin.com/contracts/5.x/access-control — ownership, contratos como administradores, transferência em duas etapas.
-- https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20 — SafeERC20; contratos USDC podem reverter por bloqueio/pausa.
-- https://hardhat.org/docs/reference/configuration — rede EDR local; nenhuma configuração HTTP ou conta pública.
-- https://developers.circle.com/stablecoins/usdc-contract-addresses — USDC de Arbitrum Sepolia `0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d`; não usar endereço mainnet.
+- Arbitrum Corpus, `quickstart-create-a-token.mdx`, version `git-blob:f06398aa9a8f580725ee50c541f3801a08919fe2`, checked 2026-10-05: RPC `https://sepolia.arbitrum.io/rpc`, chain 421614, explorer `https://sepolia.arbiscan.io/`.
+- https://docs.openzeppelin.com/contracts/5.x/erc20 — ERC-20, units and burn extension.
+- https://docs.openzeppelin.com/contracts/5.x/access-control — ownership, contracts as administrators, two-step transfer.
+- https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20 — SafeERC20; USDC contracts can revert due to block/pause.
+- https://hardhat.org/docs/reference/configuration — local EDR network; no HTTP configuration or public account.
+- https://developers.circle.com/stablecoins/usdc-contract-addresses — Arbitrum Sepolia USDC `0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d`; do not use mainnet address.
 
-Versões fixadas: Solidity/solc **0.8.37**, OpenZeppelin Contracts **5.6.1**, Hardhat **3.18.1**, ethers **6.16.0** e esbuild **0.28.2**. Compilação IR otimizada (200 runs), alvo EVM Shanghai, limites EIP-170/3860 verificados. A lista oficial de bugs do Solidity foi consultada (`https://docs.soliditylang.org/en/latest/bugs.html`); usar versão publicada atual, não nightly. A base retornou também documentos ERC antigos; eles **não** são utilizados como única referência técnica para ERC-20 atual.
+Pinned versions: Solidity/solc **0.8.37**, OpenZeppelin Contracts **5.6.1**, Hardhat **3.18.1**, ethers **6.16.0** and esbuild **0.28.2**. Optimized IR compilation (200 runs), target EVM Shanghai, verified EIP-170/3860 limits. The official Solidity bug list was consulted (`https://docs.soliditylang.org/en/latest/bugs.html`); use current published version, not nightly. The base also returned old ERC documents; they **are not** used as the sole technical reference for current ERC-20.
 
-## Desenho e critérios de verificação
+## Design and verification criteria
 
-`BettexTestToken` cria oferta única, `BettexPrimarySale` guarda 65%, dois `BettexAllocationVault` guardam 20/15%. Todos bloqueiam implantação fora de 31337/421614. MockUSDC somente local; em Sepolia a venda exige o endereço oficial, código existente, seis decimais e administrador contratual.
+`BettexTestToken` creates single supply, `BettexPrimarySale` holds 65%, two `BettexAllocationVault` hold 20/15%. All block deployment outside 31337/421614. MockUSDC local only; in Sepolia the sale requires the official address, existing code, six decimals, and contractual administrator.
 
-A data da primeira parcela não pode estar no passado na implantação. Uma venda direta exige intenção explícita revogável do comprador (quantidade/teto/operationId), aprovação USDC e execução autorizada pela administração. Ownership público não pode ser transferido para EOA; renúncia administrativa é bloqueada. Exigir código contratual **não prova** quórum/multisig válido: sua validação permanece obrigatória antes de implantação pública.
+The date of the first installment cannot be in the past at deployment. A direct sale requires explicit revocable intent from the buyer (amount/ceiling/operationId), USDC approval, and execution authorized by the administration. Public ownership cannot be transferred to EOA; administrative renunciation is blocked. Requiring contractual code **does not prove** valid quorum/multisig: its validation remains mandatory before public deployment.
 
-Testar: bloqueio mainnet; construtores inválidos; oferta e ausência de mint; três cofre/estoque; limites dos 36 meses e proporções; primeira parcela; catch-up sem duplicação; venda pausada; permissões; split de USDC exato; idempotência; rollback completo em falha; queima sem emissão; transferência pessoal sem tarifa; persistência e confirmação dos eventos EVM locais.
+Test: mainnet block; invalid constructors; supply and absence of mint; three vaults/inventory; 36-month limits and proportions; first installment; catch-up without duplication; paused sale; permissions; exact USDC split; idempotency; full rollback on failure; burn without issuance; personal transfer without fee; persistence and confirmation of local EVM events.
 
-**Barreira de publicação:** não incluir comando de broadcast nem assinatura pública. Implantação pública permanece pendente de datas, preço de teste aprovado, endereços, multisig/timelock e revisão de segurança. Testes locais não equivalem a auditoria independente ou confirmação em explorador público.
+**Publication barrier:** do not include broadcast command or public signature. Public deployment remains pending dates, approved test price, addresses, multisig/timelock, and security review. Local tests are not equivalent to independent audit or confirmation on public explorer.
 
-## Resultado da verificação local
+## Local verification result
 
-Em 2026-10-05: **19 testes aprovados**, com transações, receipts e eventos da EVM local. Comparação automática de **todas as 36 parcelas** com `src/lib/vesting.ts` compilado diretamente da aplicação. Inclui rollback da transferência do preço quando a transferência da tarifa falha, rejeição de compras duplicadas, intents revogáveis de corretoras, reentrada durante pagamento, isolamento dos IDs por comprador, autorização/revogação de acesso e pagamento/entrega em duas carteiras distintas. O teste adicional exercita leitor blockchain, runtime verificado, isolamento de contas e o helper real da compra do cliente; uma resposta perdida depois da execução é conciliada sem segunda assinatura/pagamento. A suíte não lê chaves de usuários nem chama RPC público. A EVM emulada com chainId Sepolia não é implantação pública.
+On 2026-10-05: **19 tests approved**, with local EVM transactions, receipts, and events. Automatic comparison of **all 36 installments** with `src/lib/vesting.ts` compiled directly from the application. Includes rollback of price transfer when fee transfer fails, rejection of duplicate purchases, revocable brokerage intents, re-entry during payment, isolation of IDs per buyer, access authorization/revocation, and payment/delivery in two distinct wallets. The additional test exercises blockchain reader, verified runtime, account isolation, and the client's real purchase helper; a lost response after execution is reconciled without second signature/payment. The suite does not read user keys or call public RPC. The emulated EVM with Sepolia chainId is not a public deployment.
 
-Executar `pnpm --filter @workspace/bettex-contracts test` e `pnpm --filter @workspace/bettex-contracts build`. Ambos foram incorporados ao verificador existente `scripts/validate-development.mjs`. A execução local não cria saldo financeiro real ou confirma a operação da plataforma inteira.
+Execute `pnpm --filter @workspace/bettex-contracts test` and `pnpm --filter @workspace/bettex-contracts build`. Both were incorporated into the existing validator `scripts/validate-development.mjs`. Local execution does not create real financial balance or confirm the entire platform's operation.
 
-## Integração e limites do fluxo completo
+## Integration and full flow limits
 
-O segundo anexo também exige persistência/processamento de eventos e painel. A [decisão de observação](../decisions/0008-test-contract-observation.md) registra a integração em `reconciliation`, API tipada e painel na página existente de saldo/histórico. Configuração é vinculada à identidade Clerk já verificada; eventos EVM são persistidos idempotentemente por rede/endereço/tx/log/hash do bloco. O runtime é comparado com as fontes compiladas, ignorando apenas os slots imutáveis informados pelo compilador. Todas as leituras usam o mesmo bloco e seu hash é conferido novamente. Falha não retorna saldo demonstrativo nem snapshot velho como evidência nova.
+The second attachment also requires event persistence/processing and dashboard. The [observation decision](../decisions/0008-test-contract-observation.md) registers the integration in `reconciliation`, typed API, and dashboard on the existing balance/history page. Configuration is linked to Clerk identity already verified; EVM events are persisted idempotently by network/address/tx/log/block hash. The runtime is compared with compiled sources, ignoring only immutable slots reported by the compiler. All reads use the same block and its hash is checked again. Failure does not return demonstrative balance or old snapshot as new evidence.
 
-O painel aceita endereço já implantado; sem endereço configurado não mostra números financeiros. Histórico exibido cobre até 2.000 blocos e 50 eventos recentes, explicitamente parcial; o banco não substitui verificação blockchain nem constitui ledger. Eventos anteriores/orfanados são conservados como observações, não retornados como confirmação atual. O principal encaminhado é calculado a partir de `sold` e preço imutável lidos no bloco verificado, equivalente às transferências do contrato; não representa saldo livre da tesouraria.
+The dashboard accepts already deployed address; without configured address it does not show financial numbers. Displayed history covers up to 2,000 blocks and 50 recent events, explicitly partial; the database does not replace blockchain verification or constitute a ledger. Previous/orphaned events are conserved as observations, not returned as current confirmation. The forwarded principal is calculated from `sold` and immutable price read in the verified block, equivalent to contract transfers; it does not represent treasury's free balance.
 
-A compra pelo painel pede assinatura na carteira do próprio usuário: rede obrigatória 421614, pagador/destino previamente autorizados, USDC/ETH gratuitos, aprovação USDC limitada ao total e `buyTo` com nonce persistido. Resultado incerto bloqueia nova submissão e consulta `processed`/receipt antes de continuar. Não há chaves no servidor/IA, recompra ou ligação ao ledger emulado.
+The purchase via dashboard asks for signature in the user's own wallet: mandatory network 421614, previously authorized payer/destination, free USDC/ETH, USDC approval limited to total, and `buyTo` with persisted nonce. Uncertain result blocks new submission and queries `processed`/receipt before continuing. There are no keys on server/AI, repurchase, or link to emulated ledger.
 
-O novo fluxo usa o Clerk existente e não cria autenticação adicional. A conta nativa isolada anterior não foi migrada/excluída; uma unificação global permanece sem decisão do criador, e o cancelamento do formulário não é uma escolha. Ainda **não** há endereços públicos ou compra em explorador: antes da implantação faltam datas/preço/endereços/administração aprovados e abastecimento gratuito. Não apresentar esta entrega como fluxo público já operante.
+The new flow uses existing Clerk and does not create additional authentication. The previous isolated native account was not migrated/deleted; a global unification remains without creator decision, and form cancellation is not a choice. There are still **no** public addresses or purchase in explorer: before deployment, approved dates/price/addresses/administration and free supply are missing. Do not present this delivery as an already operating public flow.
 
-A afirmação genérica do segundo anexo de que a cadência não estava definida foi confrontada com a fonte atual `VestingSchedule.tsx` e `lib/vesting.ts`, que definem explicitamente as 36 parcelas mensais e sua fórmula. O desenho usa essa decisão vigente, mantendo apenas timestamps/preço/contas como configurações de teste.
+The second attachment's generic claim that the cadence was undefined was confronted with the current source `VestingSchedule.tsx` and `lib/vesting.ts`, which explicitly define the 36 monthly installments and their formula. The design uses this prevailing decision, keeping only timestamps/price/accounts as test configurations.

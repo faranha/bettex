@@ -1,4 +1,4 @@
-// Única definição vigente; liberação não representa venda ou operação executada.
+// Only current definition; release does not represent sale or executed operation.
 export const tokenomics = {
   maxSupply: 1_000_000_000,
   publicSaleAllocation: 650_000_000,

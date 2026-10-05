@@ -1,3 +1,3 @@
-# Custódia e assinatura — caminho anterior
+# Custody and signing — previous path
 
-Consultar e manter a [decisão canônica](../decisions/0003-wallet-signing.md).
+Consult and maintain the [canonical decision](../decisions/0003-wallet-signing.md).

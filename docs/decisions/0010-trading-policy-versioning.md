@@ -1,11 +1,11 @@
-# Definições publicadas e composição de políticas
+# Published definitions and policy composition
 
-As definições estruturadas pertencem ao domínio de risco; a configuração editável fica no Git. O banco conserva cópias publicadas imutáveis, aprovações, ativações por ambiente e histórico append-only. Aplicações consomem exclusivamente composições publicadas para autorizar novas entradas.
+Structured definitions belong to the risk domain; the editable configuration resides in Git. The database stores immutable published copies, approvals, environment-specific activations, and an append-only history. Applications exclusively consume published compositions to authorize new entries.
 
-**Por quê:** parâmetros duplicados em agentes e execução podem divergir; simples sobrescritas permitem remover limites superiores. A composição tem ordem parcial explícita por campo e produz identidade verificável, preservada com evidências e decisões.
+**Why:** duplicated parameters in agents and execution can diverge; simple overrides allow removing upper limits. The composition has an explicit partial order by field and produces a verifiable identity, preserved with evidence and decisions.
 
-O contrato de tipos `risk/domain/policy-model.ts` é compartilhável somente por imports TypeScript de tipo, para agentes e execução já autorizados a depender de risco. O verificador arquitetural permite apenas esse arquivo explicitamente registrado e somente imports apagados na compilação. Imports de valores continuam seguindo os índices públicos e as camadas existentes. Não se cria um pacote/serviço compartilhado nem dependência executável entre domínios para transportar metadados.
+The type contract `risk/domain/policy-model.ts` is shareable only via TypeScript type imports, for agents and execution already authorized to depend on risk. The architectural verifier allows only this explicitly registered file and only type-erased imports. Value imports continue to follow public indices and existing layers. No shared package/service or executable dependency between domains is created to transport metadata.
 
-Clock e geração de IDs entram no serviço por portas; Git, hashing, SQL e autenticação ficam em adaptadores/composição. Definições JSON não contêm funções executáveis.
+Clock and ID generation enter the service via ports; Git, hashing, SQL, and authentication remain in adapters/composition. JSON definitions do not contain executable functions.
 
-Ativação e execução paper compartilham o lock do subledger. Posições mantêm o plano histórico; controles emergenciais só restringem manutenção/saída. Rollback não reescreve o passado. O primeiro painel usa a governança de desenvolvimento existente e não habilita administração de produção.
+Activation and paper execution share the subledger lock. Positions maintain the historical plan; emergency controls only restrict maintenance/exit. Rollback does not rewrite the past. The first dashboard uses existing development governance and does not enable production administration.

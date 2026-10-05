@@ -1,11 +1,11 @@
-# Observação dos contratos de teste no aplicativo existente
+# Observation of test contracts in the existing application
 
-**Status:** desenvolvimento; implantação pública ainda depende de aprovação e abastecimento.
+**Status:** development; public deployment still depends on approval and funding.
 
-O anexo de emissão também exige banco e painel. A observação pertence a `reconciliation`, não ao ledger demonstrativo. O transporte usa a identidade Clerk já verificada no aplicativo; nenhum login, carteira ou serviço financeiro paralelo será criado. O cadastro nativo anterior permanece isolado e não será migrado ou apagado sem decisão do criador.
+The issuance attachment also requires a bank and dashboard. The observation belongs to `reconciliation`, not the demonstration ledger. Transport uses the Clerk identity already verified in the application; no parallel login, wallet, or financial service will be created. The previous native registration remains isolated and will not be migrated or deleted without the creator's decision.
 
-O usuário autenticado pode vincular um endereço público de contrato de teste à sua própria conta. A leitura é exclusivamente Arbitrum Sepolia no RPC oficial, valida bytecode contra esta versão dos contratos e consulta estado em bloco identificado. Registro de um endereço não concede administração, custódia ou autorização de compra.
+The authenticated user can link a public test contract address to their own account. Reading is exclusively Arbitrum Sepolia on the official RPC, validates bytecode against this version of the contracts, and queries state in an identified block. Registration of an address does not grant administration, custody, or purchase authorization.
 
-O banco guarda configuração e evidências observadas (rede, endereço, versão, bloco/hash, transação/log), com chaves idempotentes. Estado apresentado é lido da blockchain; não reaproveitar saldos da demonstração. Eventos são provisórios e precisam de reconciliação, não prova de finalização L1 ou ledger financeiro.
+The bank stores configuration and observed evidence (network, address, version, block/hash, transaction/log), with idempotent keys. Presented state is read from the blockchain; do not reuse demonstration balances. Events are provisional and require reconciliation, not L1 finality proof or a financial ledger.
 
-Sem contrato configurado, apresentar ausência de implantação, não zeros simulados. Blockchain indisponível bloqueia resultado; não retornar snapshot antigo como confirmação nova. Não emitir, implantar, autorizar pagadores ou movimentar fundos automaticamente. O contrato já suporta compra assinada pelo titular com duas carteiras, mas a execução pública depende de implantação, autorização e funding gratuitos ainda ausentes.
+Without a configured contract, present the absence of deployment, not simulated zeros. Blockchain unavailability blocks results; do not return an old snapshot as a new confirmation. Do not issue, deploy, authorize payers, or move funds automatically. The contract already supports purchases signed by the holder with two wallets, but public execution depends on deployment, authorization, and free funding which are still absent.

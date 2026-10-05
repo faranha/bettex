@@ -86,6 +86,10 @@ export default defineConfig({
     strictPort: true,
     host: '0.0.0.0',
     allowedHosts: true,
+    // Opt-in clean-clone routing only. Replit's managed proxy remains unchanged.
+    ...(process.env.REPL_ID === undefined && process.env.BETTEX_LOCAL_API_PROXY
+      ? { proxy: { '/api': { target: process.env.BETTEX_LOCAL_API_PROXY, changeOrigin: false } } }
+      : {}),
     fs: {
       strict: true,
     },

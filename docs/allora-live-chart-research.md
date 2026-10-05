@@ -1,102 +1,102 @@
-# Allora: inferências e gráficos para o painel BETTEX
+# Allora: inferences and charts for the BETTEX dashboard
 
-Pesquisa de documentação oficial e consultas públicas realizadas em 5 de outubro de 2026. Este documento não implica que o dashboard já foi conectado à Allora.
+Official documentation research and public queries performed on October 5, 2026. This document does not imply that the dashboard has already been connected to Allora.
 
-O registro canônico de pendências, decisões necessárias e evidências para encerramento está em [Integrações Allora e Polymarket](integration-pendencies.md). As consultas descritas aqui são evidências daquela pesquisa, não disponibilidade atual presumida nem escolha autorizada de interface.
+The canonical registry of pending items, necessary decisions, and evidence for closure is at [Integrações Allora e Polymarket](integration-pendencies.md). The queries described here are evidence of that research, not presumed current availability nor authorized interface choice.
 
-## Conclusão
+## Conclusion
 
-Allora é uma rede de inferência, não um chat e não uma bolsa. Consumir uma inferência não executa uma ordem. A visualização principal deve mostrar o mercado observado e a previsão correspondente, deixando decisões, risco, execução e resultados em camadas distintas.
+Allora is an inference network, not a chat and not an exchange. Consuming an inference does not execute an order. The main visualization must show the observed market and the corresponding prediction, leaving decisions, risk, execution, and results in distinct layers.
 
-A leitura pública da mainnet funcionou neste ambiente sem credenciais:
+The public mainnet reading worked in this environment without credentials:
 
 - GET `/emissions/v10/topics/14`: BTC/USD — Price Prediction — 8h.
-- GET `/emissions/v10/is_topic_active/14`: retornou ativo.
-- GET `/emissions/v10/latest_network_inferences/14`: retornou consenso, inferências individuais e bloco.
-- RPC `/block?height=<bloco da inferência>`: retornou horário do bloco.
+- GET `/emissions/v10/is_topic_active/14`: returned active.
+- GET `/emissions/v10/latest_network_inferences/14`: returned consensus, individual inferences, and block.
+- RPC `/block?height=<inference block>`: returned block time.
 
-Essas consultas foram feitas nos domínios oficiais `allora-api.mainnet.allora.network` e `allora-rpc.mainnet.allora.network`. Não publicar endereços de workers nem transformar um preço previsto em recomendação automática de compra.
+These queries were performed on the official domains `allora-api.mainnet.allora.network` and `allora-rpc.mainnet.allora.network`. Do not publish worker addresses or transform a predicted price into an automatic buy recommendation.
 
-## Duas interfaces diferentes
+## Two different interfaces
 
-### API de consumo com assinatura
+### Consumption API with signature
 
-Base oficial: `https://api.allora.network/v2`.
+Official base: `https://api.allora.network/v2`.
 
-O quickstart usa `/allora/consumer/ethereum-11155111?allora_topic_id=69`, com `x-api-key`. A chave própria é obtida no portal do desenvolvedor. Checar uma integração disponível antes de solicitar configuração de segredo. Nunca expor a chave ao navegador.
+The quickstart uses `/allora/consumer/ethereum-11155111?allora_topic_id=69`, with `x-api-key`. The personal key is obtained from the developer portal. Check for an available integration before requesting secret configuration. Never expose the key to the browser.
 
-Retorna `network_inference_normalized`, valor inteiro fixo, `token_decimals`, tópico, timestamp e assinatura. O único formato de assinatura enumerado na documentação TypeScript consultada é Ethereum Sepolia; isso não significa que a operação de trading BETTEX ocorra nessa rede.
+It returns `network_inference_normalized`, a fixed integer value, `token_decimals`, topic, timestamp, and signature. The only signature format enumerated in the TypeScript documentation consulted is Ethereum Sepolia; this does not mean that the BETTEX trading operation occurs on that network.
 
-SDK TypeScript: `@alloralabs/allora-sdk`, importado pela raiz, não pelo subpath `/v2`. Configurar explicitamente baseAPIUrl para o domínio atual: a documentação informa que o default ainda aponta para um host legado.
+TypeScript SDK: `@alloralabs/allora-sdk`, imported from the root, not from the `/v2` subpath. Explicitly configure baseAPIUrl to the current domain: documentation states the default still points to a legacy host.
 
-### Cosmos LCD / RPC públicos
+### Cosmos LCD / Public RPC
 
-O manifesto `/api/networks.json` da documentação informa v0.17.0, namespace `emissions/v10`, para mainnet e testnet. Uma frase na página geral da API ainda menciona v9 na mainnet; usar o manifesto atual e conferir o endpoint efetivo.
+The documentation's `/api/networks.json` manifest reports v0.17.0, namespace `emissions/v10`, for mainnet and testnet. One sentence on the general API page still mentions v9 on mainnet; use the current manifest and check the effective endpoint.
 
-A inferência é um bundle rotulado: `combined_value` contém entradas `{label_id,label_name,value}`; a regressão de uma saída usa `y`. `inferer_values` e `forecaster_values` também são rotulados. Não tratar `combined_value` como escalar.
+The inference is a labeled bundle: `combined_value` contains entries `{label_id,label_name,value}`; regression of an output uses `y`. `inferer_values` and `forecaster_values` are also labeled. Do not treat `combined_value` as a scalar.
 
-Não há timestamp diretamente nessa resposta; resolver o bloco informado e guardar horário de produção separado do horário de coleta. Polling bem-sucedido não torna uma inferência antiga nova.
+There is no timestamp directly in this response; resolve the informed block and save production time separate from collection time. Successful polling does not make an old inference new.
 
-## O que está documentado
+## What is documented
 
-A lista publicada de tópicos inclui preço, log-retorno e volatilidade para ativos como BTC, ETH e SOL; também existem tópicos de NEAR e XRP, entre outros. Os horizontes variam por tarefa e por rede. IDs não são intercambiáveis entre testnet e mainnet.
+The published list of topics includes price, log-return, and volatility for assets such as BTC, ETH, and SOL; there are also NEAR and XRP topics, among others. Horizons vary by task and by network. IDs are not interchangeable between testnet and mainnet.
 
-Exemplos da lista publicada:
+Examples from the published list:
 
-- Mainnet: BTC/ETH/SOL com preço previsto em 8h.
-- Mainnet: volatilidade BTC/ETH/XRP/SOL em 15 minutos.
-- Testnet: preço em horizontes curtos e playground BTC, inclusive 5 minutos.
+- Mainnet: BTC/ETH/SOL with price predicted in 8h.
+- Mainnet: BTC/ETH/XRP/SOL volatility in 15 minutes.
+- Testnet: price in short horizons and BTC playground, including 5 minutes.
 
-A lista é um snapshot editorial; checar atividade, metadata, unidade, horizonte e atualidade em cada tópico escolhido. Distinguir horizonte da previsão de frequência de atualização. Um tópico “8h” pode publicar novas inferências a cada epoch, não a cada oito horas.
+The list is an editorial snapshot; check activity, metadata, unit, horizon, and currency on each chosen topic. Distinguish prediction horizon from update frequency. An "8h" topic may publish new inferences every epoch, not every eight hours.
 
-Não foi encontrado nessa lista um serviço pronto de previsão esportiva nem de preço de qualquer meme coin arbitrária. Allora admite tarefas próprias, inclusive saídas múltiplas/classificação na versão documentada; criar uma tarefa esportiva exige modelo, participantes, rótulos, fonte de verdade e avaliação. Não enviar uma pergunta textual como se a API fosse um LLM genérico.
+No ready-made service for sports prediction or price for any arbitrary meme coin was found in this list. Allora admits proprietary tasks, including multiple outputs/classification in the documented version; creating a sports task requires a model, participants, labels, ground truth, and evaluation. Do not send a textual question as if the API were a generic LLM.
 
-## Limites de incerteza e avaliação
+## Uncertainty limits and evaluation
 
-O SDK declara campos de intervalos, mas sua documentação informa que os endpoints consumidores atualmente não os populam. O LCD de latest inference também não retorna intervalos ou pesos individuais.
+The SDK declares interval fields, but its documentation states that consumer endpoints currently do not populate them. The latest inference LCD also does not return intervals or individual weights.
 
-Não desenhar uma faixa de confiança oficial se a resposta não a contiver. Pode-se mostrar a dispersão das inferências individuais disponíveis, rotulada como dispersão dos modelos, nunca como probabilidade de acerto ou intervalo calibrado do preço futuro. Não confundir consenso com garantia.
+Do not draw an official confidence band if the response does not contain it. One may show the dispersion of individual available inferences, labeled as model dispersion, never as a probability of being correct or a calibrated interval of the future price. Do not confuse consensus with a guarantee.
 
-Para avaliar previsão versus resultado, preservar cada previsão com origem, rede, tópico, bloco, horário, horizonte, unidades e valor alvo. Quando o horizonte vencer, confrontar com uma fonte de preço observada adequada. Não substituir retrospectivamente a previsão antiga pela nova.
+To evaluate prediction versus result, preserve each prediction with origin, network, topic, block, time, horizon, units, and target value. When the horizon expires, compare it with an adequate observed price source. Do not retrospectively replace the old prediction with the new one.
 
-## Gráficos possíveis
+## Possible charts
 
-### 1. Mercado versus Allora
+### 1. Market versus Allora
 
-- Preço observado em linha ou candles, a partir de uma fonte de mercado identificada.
-- Inferência como ponto/linha tracejada no horizonte correto.
-- Marca de chegada de uma nova inferência apenas quando o bloco/epoch realmente mudar.
-- Dispersão dos modelos, se exibida, com rótulo próprio.
-- Evento de decisão/entrada/saída apenas quando existir registro correspondente; preço previsto não é ordem executada.
-- Abrir a Central da IA mantendo o ativo/tópico de contexto.
+- Observed price in line or candles, from an identified market source.
+- Inference as point/dashed line on the correct horizon.
+- New inference arrival mark only when the block/epoch actually changes.
+- Model dispersion, if displayed, with its own label.
+- Decision/entry/exit event only when there is a corresponding record; predicted price is not an executed order.
+- Open the AI Central while maintaining the context asset/topic.
 
-Allora não é a fonte de candles pelo simples fato de retornar uma previsão. O SDK Go documenta OHLC, mas o cliente TypeScript não apresenta essa capacidade. Candles exigem fonte de mercado ou dados Atlas apropriados; uma consulta de preço isolada não produz volume/OHLC.
+Allora is not the source for candles simply because it returns a prediction. The Go SDK documents OHLC, but the TypeScript client does not present this capability. Candles require a market source or appropriate Atlas data; an isolated price query does not produce volume/OHLC.
 
-### 2. Probabilidades da Polymarket
+### 2. Polymarket probabilities
 
-- Preço por resultado ao longo do tempo e unidades de 0–100%.
-- Mercado/pergunta/evento e regras de resolução identificados.
-- Spreads e liquidez/depth em contexto, sem chamar preço de probabilidade objetiva.
-- Para esportes, placar/período do feed esportivo são contexto; não equivalem a resolução do mercado.
-- Curva de estimativa própria somente se existir um modelo real compatível. Allora BTC/USD não prevê um jogo de futebol.
+- Price per outcome over time and 0–100% units.
+- Market/question/event and resolution rules identified.
+- Spreads and liquidity/depth in context, without calling price objective probability.
+- For sports, scoreboard/period from the sports feed are context; they do not equate to market resolution.
+- Proprietary estimation curve only if there is a real compatible model. Allora BTC/USD does not predict a soccer game.
 
-### 3. Risco/volatilidade e atuação
+### 3. Risk/volatility and performance
 
-- Volatilidade prevista da Allora, respeitando unidade e horizonte.
-- Exposição e restrições reais do executor paper como informações separadas.
-- Ajuda a mostrar por que a IA operou ou ficou de fora; não aplicar uma previsão de SOL/USD como se fosse previsão de uma meme coin específica.
+- Allora predicted volatility, respecting unit and horizon.
+- Exposure and real constraints of the paper executor as separate information.
+- Helps to show why the AI operated or stayed out; do not apply a SOL/USD prediction as if it were a prediction for a specific meme coin.
 
-### Composição recomendada
+### Recommended composition
 
-Uma área “IA em ação”, sem quatro cartões de resumo como conteúdo principal. Visões compactas dos três mercados com um gráfico em destaque: cripto/Allora, esportes/Polymarket e previsões/Polymarket. Atualizações suaves ligadas a dados novos, variação positiva e negativa, horário/origem e clique para aprofundar na Central. Não forçar movimento aleatório para parecer ativo.
+An "AI in action" area, without four summary cards as main content. Compact views of the three markets with a featured chart: crypto/Allora, sports/Polymarket, and predictions/Polymarket. Smooth updates linked to new data, positive and negative variation, time/origin, and click to deepen in the Central. Do not force random movement to look active.
 
 ## FOMO
 
-Nesta pesquisa a plataforma considerada foi fomo.family, ainda sem confirmação explícita do endereço pelo criador. A central oficial de ajuda foi encontrada e lida em suas coleções Trading e Features. Ela documenta taxas, PnL, histórico, descoberta de tokens, redes e feed social.
+In this research, the platform considered was fomo.family, still without explicit confirmation of the address by the creator. The official help center was found and read in its Trading and Features collections. It documents fees, PnL, history, token discovery, networks, and social feed.
 
-Não foi localizada documentação oficial pública de uma API de dados/execução. A interface visual e artigos de ajuda não constituem um contrato de API. Não usar um serviço independente de scraping/social como se fosse conector oficial. Para candles de meme coins, confirmar o provedor e a fonte de mercado antes de conectar.
+No official public documentation of a data/execution API was located. The visual interface and help articles do not constitute an API contract. Do not use an independent scraping/social service as if it were an official connector. For meme coin candles, confirm the provider and market source before connecting.
 
-## Fontes
+## Sources
 
 - https://docs.allora.network/get-started/quickstart-consume
 - https://docs.allora.network/consume/api

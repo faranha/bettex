@@ -404,7 +404,7 @@ export function loadWalletDemo(): { state: WalletDemoState; warning: string | nu
 }
 
 export function saveWalletDemo(state: WalletDemoState): void {
-  if (!isValidState(state)) throw new Error('Estado inválido para salvar a demonstração da carteira.');
+  if (!isValidState(state)) throw new Error("Invalid state to save demonstration of the wallet.");
   if (typeof window !== 'undefined') window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
@@ -426,7 +426,7 @@ export function parseUsdc(input: string): number | null {
 }
 
 function validateNow(now: number): void {
-  if (!isSafeAmount(now)) throw new Error('Horário inválido para esta demonstração.');
+  if (!isSafeAmount(now)) throw new Error("Invalid time for this demonstration.");
 }
 
 function validateTokenAmount(amountCents: number): void {
@@ -469,10 +469,10 @@ function withStakeChange(
 ): WalletDemoState {
   const latest = state.stakeChanges[state.stakeChanges.length - 1];
   if (state.stakeChanges.length >= 100_000) {
-    throw new Error('O histórico de participação desta demonstração atingiu seu limite.');
+    throw new Error("Participation history for this demonstration has reached its limit.");
   }
   if (latest && now < latest.at) {
-    throw new Error('O horário da movimentação não pode anteceder uma alteração de participação já registrada.');
+    throw new Error("Transaction time cannot precede an already registered participation change.");
   }
   return {
     ...state,
@@ -493,7 +493,7 @@ export function requestTransfer(
   const source = isDeposit ? state.personalTokensCents : state.allocatedTokensCents;
   const destination = isDeposit ? state.allocatedTokensCents : state.personalTokensCents;
   const nextDestination = destination + amountCents;
-  if (!Number.isSafeInteger(nextDestination)) throw new Error('Quantidade muito alta para esta demonstração.');
+  if (!Number.isSafeInteger(nextDestination)) throw new Error("Amount too high for this demonstration.");
   if (amountCents > source) throw new Error('Saldo insuficiente na origem.');
 
   let updated: WalletDemoState = {
@@ -516,7 +516,7 @@ export function depositIntoPersonal(state: WalletDemoState, amountCents: number,
   validateNow(now);
   validateTokenAmount(amountCents);
   const personalTokensCents = state.personalTokensCents + amountCents;
-  if (!Number.isSafeInteger(personalTokensCents)) throw new Error('Quantidade muito alta para esta demonstração.');
+  if (!Number.isSafeInteger(personalTokensCents)) throw new Error("Amount too high for this demonstration.");
   return addMovement({ ...state, personalTokensCents }, {
     kind: 'externalDeposit',
     amountCents,
@@ -536,7 +536,7 @@ export function withdrawFromWallet(
   validateNow(now);
   validateTokenAmount(amountCents);
   if (kind !== 'externalWithdraw') throw new Error('Tipo de saque inválido.');
-  if (amountCents > state.personalTokensCents) throw new Error('Saldo BETTEX insuficiente na carteira pessoal.');
+  if (amountCents > state.personalTokensCents) throw new Error("Insufficient BETTEX balance in personal wallet.");
   const updated = withStakeChange(
     { ...state, personalTokensCents: state.personalTokensCents - amountCents },
     state.allocatedTokensCents,
@@ -556,9 +556,9 @@ export function withdrawFromWallet(
 export function transferProfit(state: WalletDemoState, amountCents: number, now: number): WalletDemoState {
   validateNow(now);
   validateUsdcAmount(amountCents);
-  if (amountCents > state.allocatedUsdcCents) throw new Error('Saldo USDC insuficiente na carteira alocada.');
+  if (amountCents > state.allocatedUsdcCents) throw new Error("Insufficient USDC balance in allocated wallet.");
   const personalUsdcCents = state.personalUsdcCents + amountCents;
-  if (!Number.isSafeInteger(personalUsdcCents)) throw new Error('Valor muito alto para esta demonstração.');
+  if (!Number.isSafeInteger(personalUsdcCents)) throw new Error("Value too high for this demonstration.");
   return addMovement({
     ...state,
     allocatedUsdcCents: state.allocatedUsdcCents - amountCents,
@@ -581,10 +581,10 @@ export function withdrawProfit(
 ): WalletDemoState {
   validateNow(now);
   validateUsdcAmount(amountCents);
-  if (!isValidEvmAddress(address)) throw new Error('Informe um endereço EVM válido para a rede Arbitrum One.');
-  if (amountCents > state.personalUsdcCents) throw new Error('Saldo USDC insuficiente na carteira pessoal.');
+  if (!isValidEvmAddress(address)) throw new Error("Provide a valid EVM address for the Arbitrum One network.");
+  if (amountCents > state.personalUsdcCents) throw new Error("Insufficient USDC balance in personal wallet.");
   const totalUsdcWithdrawnCents = state.totalUsdcWithdrawnCents + amountCents;
-  if (!Number.isSafeInteger(totalUsdcWithdrawnCents)) throw new Error('Valor muito alto para esta demonstração.');
+  if (!Number.isSafeInteger(totalUsdcWithdrawnCents)) throw new Error("Value too high for this demonstration.");
   return addMovement({
     ...state,
     personalUsdcCents: state.personalUsdcCents - amountCents,
@@ -675,21 +675,21 @@ function roundedWeightedDistributionCents(
 export function simulateMonthlyDistribution(state: WalletDemoState, now: number): WalletDemoState {
   validateNow(now);
   if (state.distributionPeriods >= MAX_DISTRIBUTION_PERIODS) {
-    throw new Error('A demonstração está limitada a 12 períodos de distribuição.');
+    throw new Error("Demonstration is limited to 12 distribution periods.");
   }
   let periodStartAt = state.nextDistributionStartAt ?? utcMonthStartAt(now);
   const historicPeriodEndAt = Date.UTC(2025, 1, 1);
   if (periodStartAt < historicPeriodEndAt) periodStartAt = historicPeriodEndAt;
   const periodEndAt = nextUtcMonthStartAt(periodStartAt);
   if (!isSafeAmount(periodEndAt) || periodEndAt <= periodStartAt) {
-    throw new Error('Não foi possível determinar o próximo período UTC da demonstração.');
+    throw new Error("Could not determine the next UTC period of the demonstration.");
   }
   const periodIndex = state.distributionPeriods + 1;
   const amountCents = roundedWeightedDistributionCents(state, periodStartAt, periodEndAt, now);
   const allocatedUsdcCents = state.allocatedUsdcCents + amountCents;
   const totalUsdcDistributedCents = state.totalUsdcDistributedCents + amountCents;
   if (!Number.isSafeInteger(allocatedUsdcCents) || !Number.isSafeInteger(totalUsdcDistributedCents)) {
-    throw new Error('Valor muito alto para esta demonstração.');
+    throw new Error("Value too high for this demonstration.");
   }
   const updated = {
     ...state,

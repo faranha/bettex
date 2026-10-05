@@ -3,7 +3,8 @@ import fs from 'node:fs';
 const root = new URL('../src/lib/locales/', import.meta.url);
 const source = JSON.parse(fs.readFileSync(new URL('source.json', root), 'utf8'));
 const catalog = fs.readFileSync(new URL('translations.json', root), 'utf8');
-const messages = JSON.parse(catalog);
+const messages = { ...JSON.parse(catalog),
+  ...JSON.parse(fs.readFileSync(new URL('english-source-messages.json', root), 'utf8')) };
 const failures = [];
 const seen = new Set();
 let depth = 0;

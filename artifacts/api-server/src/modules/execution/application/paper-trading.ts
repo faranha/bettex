@@ -162,7 +162,7 @@ export function paperTrading(ports:PaperPorts){
           .filter(f=>f.id.endsWith(`:${q.id}`)).reduce((n,f)=>n+BigInt(f.sharesUnits),0n);
         const depth=BigInt(q.availableSharesUnits)>used?BigInt(q.availableSharesUnits)-used:0n;
         const remaining=BigInt(o.quantityUnits)-BigInt(o.filledUnits);
-        let quantity=remaining<depth?remaining:depth;
+        const quantity=remaining<depth?remaining:depth;
         o.attempts++;o.nextAttemptAt=new Date(now()+policy.retrySeconds*1000).toISOString();
         if(quantity===0n){o.reason="no_executable_liquidity";
           if(o.positionId){const p=s.positions.find(p=>p.id===o.positionId);if(p)p.exitState="blocked_liquidity";}

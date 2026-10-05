@@ -1,13 +1,13 @@
-# Tesouraria e Governança como capacidade transversal
+# Treasury and Governance as a cross-cutting capability
 
-**Fonte:** instrução de implementação do agente de Tesouraria e Governança de 5 de outubro de 2026; arquitetura canônica e regras da Fundação.
+**Source:** Treasury and Governance agent implementation instruction of October 5, 2026; canonical architecture and Foundation rules.
 
-**Decisão:** distribuir a capacidade entre agents/risk/ledger/execution/accounts/audit. Agente propõe; risk decide deterministicamente com política versionada. Duas identidades humanas segregam proposta/aprovação. Mudanças administrativas têm ativação explícita. Acrescentar reservas contábeis persistidas, serialização por epoch compartilhada com rodadas locais e reutilizar journal/nonce/recibos do executor existente.
+**Decision:** distribute the capability among agents/risk/ledger/execution/accounts/audit. Agent proposes; risk decides deterministically with versioned policy. Two human identities segregate proposal/approval. Administrative changes have explicit activation. Add persisted accounting reserves, epoch-based serialization shared with local rounds, and reuse the existing executor's journal/nonce/receipts.
 
-**Why:** LLM não é autoridade financeira; processo em memória ou apenas aprovação de tela não evita dupla utilização, revogação de permissão ou envio duplicado após falha.
+**Why:** LLM is not a financial authority; in-memory process or screen-only approval does not prevent double-spending, permission revocation, or duplicate submission after failure.
 
-**Hipóteses de teste:** política inicial pausada, 0,50 USDC defensivo, 0,25 máximo individual, 0,50 por dia UTC, destino oitava conta do nó local; sem produção/multisig/voto presumidos. Valores versionáveis, não termos econômicos definitivos. Não atribuir automaticamente papéis a contas existentes.
+**Test Hypotheses:** initial policy paused, 0.50 USDC defensive, 0.25 individual maximum, 0.50 per UTC day, destination is the eighth account of the local node; no production/multisig/assumed vote. Versionable values, not definitive economic terms. Do not automatically assign roles to existing accounts.
 
-**Componentes:** API pública de risco/agente, ledger de reservas, permissões existentes de accounts, composição HTTP com portas/adaptadores existentes, OpenAPI gerado, histórico durável.
+**Components:** public risk/agent API, reserves ledger, existing accounts permissions, HTTP composition with existing ports/adapters, generated OpenAPI, durable history.
 
-**Verificação:** ciclo HTTP/banco/receipt num ambiente descartável; negações, concorrência, pausa, incerteza e retomada. Testnet pública depende de operação/custódia/funding autorizados, não se finge execução pública usando localhost.
+**Verification:** HTTP/database/receipt cycle in a disposable environment; denials, concurrency, pause, uncertainty, and resumption. Public testnet depends on authorized operation/custody/funding; do not fake public execution using localhost.

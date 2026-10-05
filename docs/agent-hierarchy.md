@@ -1,77 +1,77 @@
-# Hierarquia dos agentes BETTEX
+# BETTEX Agent Hierarchy
 
-Documento canônico complementar à [arquitetura](architecture.md) e ao [controle de Tesouraria](treasury-governance.md). Fonte: [instrução do criador](../attached_assets/Pasted-Replit-antes-de-aprofundar-o-desenvolvimento-dos-agente_1791181766428.txt).
+Canonical document complementary to the [architecture](architecture.md) and [Treasury control](treasury-governance.md). Source: [creator instruction](../attached_assets/Pasted-Replit-antes-de-aprofundar-o-desenvolvimento-dos-agente_1791181766428.txt).
 
-## Responsabilidades e nomes
+## Responsibilities and names
 
 ```text
-BETTEX — orquestrador
-└── Mercado de Previsões (predictions)
-    ├── Especialista BTC (btc)
-    ├── Especialista ETH (eth)
-    └── Especialista SOL (sol)
+BETTEX — orchestrator
+└── Prediction Market (predictions)
+    ├── BTC Specialist (btc)
+    ├── ETH Specialist (eth)
+    └── SOL Specialist (sol)
 ```
 
-BETTEX é a nomenclatura canônica desta instrução; BTEX, encontrado no material anterior e na emulação interna, é o mesmo papel, não outro agente. Trading de cripto (`crypto`), Apostas esportivas (`sports`) e o ramo de bônus legado (`bonus`) permanecem indisponíveis no alpha operacional. Não se criam serviços independentes nem uma segunda camada de seleção.
+BETTEX is the canonical nomenclature for this instruction; BTEX, found in previous material and internal emulation, is the same role, not another agent. Crypto trading (`crypto`), sports betting (`sports`), and the legacy bonus branch (`bonus`) remain unavailable in the operational alpha. Independent services or a second selection layer are not created.
 
-- Especialista: observa/anota evidências, estimativas e lacunas; encaminha ao mercado.
-- Mercado: valida identidade, domínio, fontes, atualidade, preço, liquidez, custos, modelo, risco e horizonte; qualifica/prioriza apenas seu domínio.
-- BETTEX: compara propostas qualificadas, considerando capital, custos líquidos, perda, prazo, liquidez, exposição e correlação; seleciona ou mantém o capital disponível. Pode exigir atualização ou rejeitar tudo.
-- Tesouraria/Governança (`risk`): impõe política, pausa, reservas, obrigações, destino e permissões. Não procura oportunidades nem seleciona investimentos.
-- Executor existente: exige autorização atual; confirmação local prova alocação de teste, não uma ordem Polymarket ou lucro.
+- Specialist: observes/notes evidence, estimates, and gaps; forwards to the market.
+- Market: validates identity, domain, sources, timeliness, price, liquidity, costs, model, risk, and horizon; qualifies/prioritizes only its domain.
+- BETTEX: compares qualified proposals, considering capital, net costs, loss, deadline, liquidity, exposure, and correlation; selects or maintains available capital. May require updates or reject everything.
+- Treasury/Governance (`risk`): imposes policy, pauses, reserves, obligations, destination, and permissions. Does not seek opportunities nor select investments.
+- Existing executor: requires current authorization; local confirmation proves test allocation, not a Polymarket order or profit.
 
-Allora, Gamma, CLOB e oráculos são fontes/ferramentas, não níveis hierárquicos. Nenhum agente recebe chaves ou concede privilégios. Não alterar regras econômicas.
+Allora, Gamma, CLOB, and oracles are sources/tools, not hierarchical levels. No agent receives keys or grants privileges. Do not alter economic rules.
 
-## Contrato comum e estados
+## Common contract and states
 
-`Opportunity` na API pública de `agents` é imutável por identificador de evidência. Contém origem, mercado/especialista, instrumento/intenção, fontes/horários/hash, metodologia/versão, preço/custos/liquidez, retorno/incerteza, riscos/perda/capital, horizonte/validade/invalidação e correlação. Cada dado é `observed`, `estimated` (com método) ou `missing` (com motivo). Não substituir ausência por zero.
+`Opportunity` in the public `agents` API is immutable by evidence identifier. It contains origin, market/specialist, instrument/intention, sources/schedules/hash, methodology/version, price/costs/liquidity, return/uncertainty, risks/loss/capital, horizon/validity/invalidation, and correlation. Each piece of data is `observed`, `estimated` (with method), or `missing` (with reason). Do not replace absence with zero.
 
-Registros distinguem oportunidade, decisão BETTEX e proposta financeira. Estados: `needs_update`, `qualified`, `rejected`, `selected`, `awaiting_authorization`, `allocation_authorized`, `allocation_uncertain`, `allocation_confirmed`, `expired`. Especialista → mercado → BETTEX têm eventos próprios e a mesma correlação. Alocação usa `alpha:<opportunityId>` como ID de governança, vínculo durável com seus eventos/nonce/receipt.
+Records distinguish opportunity, BETTEX decision, and financial proposal. States: `needs_update`, `qualified`, `rejected`, `selected`, `awaiting_authorization`, `allocation_authorized`, `allocation_uncertain`, `allocation_confirmed`, `expired`. Specialist → market → BETTEX have their own events and the same correlation. Allocation uses `alpha:<opportunityId>` as governance ID, a durable link with its events/nonce/receipt.
 
-Selecionar não autoriza nem reserva. O controlador existente reserva na aprovação humana segregada e revalida antes de enviar. Propostas alpha vencidas/incompletas ou sem decisão BETTEX persistida não podem ser aprovadas/executadas. Repetição recupera a mesma proposta financeira, não outra transação. Confirmação continua consultando o journal/receipt; não se usa o status do agente como prova.
+Selecting does not authorize or reserve. The existing controller reserves upon segregated human approval and revalidates before sending. Expired/incomplete alpha proposals or those without a persisted BETTEX decision cannot be approved/executed. Repetition retrieves the same financial proposal, not another transaction. Confirmation continues to query the journal/receipt; agent status is not used as proof.
 
-O ramo **simulado**, documentado em [Estratégia de eventos e subledger](prediction-paper-trading.md), tem reserva própria, inteiramente separada: a seleção na comparação simulada pode reservar um orçamento *paper* previamente aprovado; jamais reserva a carteira nativa nem autoriza a operação financeira legada. BTC, ETH e SOL compartilham limite correlacionado. Na ausência de modelo calibrado, método de taxas e orçamento aprovado, a coleta continua observacional e nenhuma ordem é criada.
+The **simulated** branch, documented in [Event strategy and subledger](prediction-paper-trading.md), has its own, entirely separate reserve: selection in the simulated comparison may reserve a previously approved *paper* budget; it never reserves the native wallet nor authorizes the legacy financial operation. BTC, ETH, and SOL share a correlated limit. In the absence of a calibrated model, fee method, and approved budget, collection remains observational and no order is created.
 
-## Mapeamento e decisões técnicas
+## Mapping and technical decisions
 
-| Existente | Alinhamento |
+| Existing | Alignment |
 |---|---|
-| `modules/agents` | Contrato puro, especialista/mercado/BETTEX e portas; armazenamento/fonte na infraestrutura do próprio domínio |
-| `lib/orchestrator.ts`, `demo-state.ts` | Emulação interna preservada, sem atividade no processo de produção |
-| Agente de Tesouraria que alocava o máximo disponível | Substituído por observação de controles; seleção pertence exclusivamente ao BETTEX |
-| `/treasury/governance` | `analyze` compara propostas do alpha e encaminha a seleção à API de risco; aprovar/executar continua segregado |
-| `audit` | Eventos duráveis pela composição, sem dependência reversa ou novo histórico paralelo |
-| Demo pública | Placeholders “Aplicativo em breve, em desenvolvimento”, incluindo subpáginas; nenhum fluxo operacional publicado na UI |
+| `modules/agents` | Pure contract, specialist/market/BETTEX and ports; storage/source in the domain's own infrastructure |
+| `lib/orchestrator.ts`, `demo-state.ts` | Internal emulation preserved, no activity in the production process |
+| Treasury agent that allocated the maximum available | Replaced by observation of controls; selection belongs exclusively to BETTEX |
+| `/treasury/governance` | `analyze` compares alpha proposals and forwards the selection to the risk API; approve/execute remains segregated |
+| `audit` | Durable events by composition, without reverse dependency or new parallel history |
+| Public demo | “App coming soon, in development” placeholders, including subpages; no operational flow published in the UI |
 
-O contrato de oportunidades é público em `agents`; o contrato HTTP está no OpenAPI existente. A composição injeta armazenamento, auditoria e controle de risco. Tabelas de oportunidades não são ledger financeiro.
+The opportunities contract is public in `agents`; the HTTP contract is in the existing OpenAPI. The composition injects storage, auditing, and risk control. Opportunity tables are not a financial ledger.
 
-O Mercado prioriza as oportunidades qualificadas do lote; BETTEX reavalia o conjunto e o orçamento. O comparador técnico usa retorno líquido de custos dividido por perda potencial mais amplitude de incerteza e pelo horizonte, com inteiros e desempate por ID. Liquidez e exposição são filtros obrigatórios, não notas de confiança. Esse critério organiza propostas completas; não cria estimativas nem substitui a futura validação do modelo.
+The Market prioritizes qualified opportunities in the batch; BETTEX re-evaluates the set and the budget. The technical comparator uses net return of costs divided by potential loss plus margin of uncertainty and by the horizon, using integers and tie-breaking by ID. Liquidity and exposure are mandatory filters, not confidence scores. This criterion organizes complete proposals; it does not create estimates nor replace future model validation.
 
-`GET /api/agents/alpha` disponibiliza registro de agentes, disponibilidade da fonte e até 50 oportunidades com estados/evidências, sem saldos pessoais. O worker coleta somente BTC via Gamma/CLOB no processo existente. A seleção é persistida antes do encaminhamento independente a risco; retomada usa os mesmos termos e ID. Aprovação e novo envio verificam validade e book/mercado atuais; reconciliação de envio já iniciado permanece no executor original.
+`GET /api/agents/alpha` makes available a register of agents, source availability, and up to 50 opportunities with states/evidence, without personal balances. The worker collects only BTC via Gamma/CLOB in the existing process. Selection is persisted before independent forwarding to risk; resumption uses the same terms and ID. Approval and resubmission verify validity and current book/market; reconciliation of a submission already initiated remains in the original executor.
 
-**Justificativa:** a base permite qualificar/decidir sem inventar estratégia probabilística nem tratar um book como previsão. A primeira fonte utiliza Gamma para descoberta e CLOB para asks; preços indicativos Gamma não são preço executável. Fonte: [descoberta](https://docs.polymarket.com/market-data/discover-markets.md), [books](https://docs.polymarket.com/market-data/prices-order-books.md), [taxas](https://docs.polymarket.com/trading/fees.md).
+**Justification:** the basis allows qualifying/deciding without inventing a probabilistic strategy or treating a book as a forecast. The first source uses Gamma for discovery and CLOB for asks; Gamma indicative prices are not executable price. Source: [discovery](https://docs.polymarket.com/market-data/discover-markets.md), [books](https://docs.polymarket.com/market-data/prices-order-books.md), [fees](https://docs.polymarket.com/trading/fees.md).
 
-## Primeiro alpha e falhas
+## First alpha and failures
 
-Somente `predictions/btc` coleta dados reais. Sem asks, fonte válida, custos/modelo/estimativas/capital/correlação definidos, a oportunidade pede atualização e BETTEX não aloca. A observação inicial não inventa esses dados; não há modelo de probabilidade calibrado implementado. Preço/volume de book não bastam para estimar retorno.
+Only `predictions/btc` collects real data. Without asks, a valid source, and defined costs/model/estimates/capital/correlation, the opportunity requests an update and BETTEX does not allocate. Initial observation does not invent this data; there is no implemented calibrated probability model. Book price/volume do not suffice to estimate return.
 
-Consulta periódica limitada, com timeout; falha de fonte é persistida, sem fallback fictício. Evidência tem timestamp de origem separado da coleta; repetir a mesma evidência não a renova. Falha preserva registros antigos identificados por idade/validade, nunca os apresenta como novos. Exposição externa não conciliada é informação ausente, não exposição zero.
+Limited periodic query with timeout; source failure is persisted, without fictitious fallback. Evidence has an origin timestamp separate from collection; repeating the same evidence does not renew it. Failure preserves old records identified by age/validity, never presenting them as new. Unreconciled external exposure is missing information, not zero exposure.
 
-Mocks ficam nas fixtures e na demonstração interna de desenvolvimento. Produção não inicia o timer demonstrativo e bloqueia sua API antes de gerar identidade, saldos ou operações. Não se apagam dados históricos existentes.
+Mocks remain in fixtures and the internal development demo. Production does not start the demo timer and blocks its API before generating identity, balances, or operations. Existing historical data is not erased.
 
-## Pendências concretas
+## Concrete pendencies
 
-- Estratégia/modelo BTC calibrado, custos completos, moeda/rede de liquidação, intenção e tamanho de ordem, correlação/exposição externa conciliada.
-- Allora ainda não conectada ao fluxo: uma previsão BTC/USD não é probabilidade de resolução do mercado.
-- Ordens Polymarket, assinatura/custódia, funding e confirmação de fills não implementados. Alocação USDC local não os comprova.
-- Testnet pública e controle institucional mantêm as dependências documentadas em Tesouraria.
+- Calibrated BTC strategy/model, complete costs, settlement currency/network, order intention and size, reconciled external correlation/exposure.
+- Allora not yet connected to the flow: a BTC/USD forecast is not a market resolution probability.
+- Polymarket orders, signature/custody, funding, and confirmation of fills not implemented. Local USDC allocation does not prove them.
+- Public Testnet and institutional control maintain dependencies documented in Treasury.
 
-Essas lacunas bloqueiam operações, não são preenchidas com mocks. Consolidar o ramo antes de ampliar mercados/estratégias.
+These gaps block operations; they are not filled with mocks. Consolidate the branch before expanding markets/strategies.
 
-## Verificações realizadas
+## Verifications performed
 
-- Validação geral do workspace: arquitetura, contratos gerados, tipos, segurança, regras econômicas e builds backend/frontend aprovados.
-- 11 testes específicos: encaminhamento, prioridade, comparação/rejeição, pausa/limites/capital/exposição, autorização, validade, duplicação, retomada e ausência de fontes/preço.
-- HTTP/PostgreSQL/EVM em schema e cadeia descartáveis: controles financeiros, autorização segregada, pausa, alocação local confirmada, retomada sem outra transação e quarentena após reorg. Registros/eventos do alpha sobreviveram ao reinício sem repetir eventos; produção bloqueou a API/timer demonstrativos.
-- A fixture EVM é chain ID 31337 e usa fontes de teste declaradas. Ela não comprova modelo BTC, ordem/fill Polymarket, lucro ou compra em testnet pública. Permissões, saldos e EVM do aplicativo principal não foram usados para esse teste.
-- Coleta real confirmada em 05/10/2026 por `GET /api/agents/alpha`: HTTP 200, fonte `observed`, quatro observações Gamma/CLOB, todas `needs_update` com modelo/capital explicitamente ausentes. Somente Previsões/BTC ativo; nenhum encaminhamento financeiro ou lucro produzido.
+- General workspace validation: architecture, generated contracts, types, security, economic rules, and backend/frontend builds approved.
+- 11 specific tests: forwarding, priority, comparison/rejection, pause/limits/capital/exposure, authorization, validity, duplication, resumption, and absence of sources/price.
+- HTTP/PostgreSQL/EVM in disposable schema and chain: financial controls, segregated authorization, pause, local allocation confirmed, resumption without another transaction, and quarantine after reorg. Alpha records/events survived restart without repeating events; production blocked demo API/timer.
+- The EVM fixture is chain ID 31337 and uses declared test sources. It does not prove BTC model, Polymarket order/fill, profit, or purchase on public testnet. Application permissions, balances, and main EVM were not used for this test.
+- Real collection confirmed on 10/05/2026 by `GET /api/agents/alpha`: HTTP 200, source `observed`, four Gamma/CLOB observations, all `needs_update` with model/capital explicitly missing. Only Predictions/BTC active; no financial forwarding or profit produced.
