@@ -1,0 +1,15 @@
+{
+  "id": "prediction-eth",
+  "version": 1,
+  "type": "specialist",
+  "scope": "eth",
+  "schemaVersion": 1,
+  "name": "Especialista em eventos ETH",
+  "implementation": "polymarket-event-observer/1",
+  "justification": "Observa eventos ETH nas fontes Gamma/CLOB autorizadas. Busca textual apenas descobre eventos; não comprova elegibilidade nem vantagem econômica.",
+  "previousVersion": null,
+  "openPositions": "preserve_original_exit_and_apply_emergency_controls",
+  "search": "ethereum",
+  "horizon": "event_resolution",
+  "controls": { "allowedAssets": ["eth"], "maxHorizonSeconds": 86400 }
+}
