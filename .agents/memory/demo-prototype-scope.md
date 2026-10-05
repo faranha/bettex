@@ -40,3 +40,9 @@ Na homepage, a área “Conheça o app da BETTEX” deve ser um banner simples c
 **Why:** O criador disse que “nós já temos um demo” e pediu “Acesse o demo ao vivo agora mesmo”, sem precisar mostrar aquelas telas.
 
 **How to apply:** Não reconstruir o showcase de telas na homepage ao melhorar o banner. A prioridade visual das telas sobre ilustrações se aplica somente às áreas que continuam apresentando telas, não exige reintroduzi-las na homepage.
+
+A página pública de entrada do app deve apresentar “Em breve” ou “Em desenvolvimento” e o slider com as telas do aplicativo, em vez de cartões vazios que parecem carregamento.
+
+**Why:** O criador pediu uma landing page melhor nessa página e a volta do slider anterior com as telas do app em desenvolvimento.
+
+**How to apply:** Aplicar à apresentação pública do app, não ao banner da homepage. Identificar as telas como ilustrativas, preservar o dashboard funcional de desenvolvimento e não dar a entender que operações financeiras reais já estão disponíveis.
