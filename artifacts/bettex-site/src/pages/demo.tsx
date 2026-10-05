@@ -19,9 +19,13 @@ import { PolicyAdminPanel } from '@/components/alpha-trading/PolicyAdminPanel';
 import { SimulationPanel } from '@/components/simulation/SimulationPanel';
 import '@/components/demo/demo.css';
 import { PublicDemoPage } from '@/components/demo/PublicDemoPage';
+import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 
 export function DemoPage() {
-  return import.meta.env.PROD ? <PublicDemoPage /> : <DevelopmentDemoPage />;
+  // A read-only presentation preview; normal development routes stay operational.
+  const publicPreview = import.meta.env.DEV && typeof window !== 'undefined'
+    && new URLSearchParams(window.location.search).get('preview') === 'public';
+  return import.meta.env.PROD || publicPreview ? <PublicDemoPage /> : <DevelopmentDemoPage />;
 }
 function DevelopmentDemoPage() {
   const { x, loc } = useX();
@@ -61,7 +65,7 @@ function ClientDemoPage() {
       <nav aria-label={x('Áreas do app', 'App areas', 'Áreas de la app')} className="mx-auto flex max-w-5xl gap-1 overflow-x-auto px-3">
         <div className="grid min-w-0 flex-1 grid-cols-2 sm:flex">{tabs.map(([k, l]) => <Link key={k} href={demoPath(k, loc)} data-testid={`nav-${k}`} aria-current={tab === k ? 'page' : undefined} onClick={() => window.scrollTo({ top: 0 })} className={`${tabBtn(tab === k)} inline-flex items-center`}>{l}</Link>)}</div>
         <div className="ml-auto flex shrink-0 items-center gap-1">
-          <a href="https://t.me/bettextoken" target="_blank" rel="noopener noreferrer" aria-label={x('Comunidade no Telegram', 'Community on Telegram', 'Comunidad en Telegram')} title={x('Comunidade no Telegram', 'Community on Telegram', 'Comunidad en Telegram')} data-testid="link-app-community" className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-2 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:px-3"><Send className="h-5 w-5" aria-hidden="true" /><span className="hidden sm:inline">{x('Comunidade', 'Community', 'Comunidad')}</span></a>
+          <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" aria-label={x('Comunidade no Telegram', 'Community on Telegram', 'Comunidad en Telegram')} title={x('Comunidade no Telegram', 'Community on Telegram', 'Comunidad en Telegram')} data-testid="link-app-community" className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-2 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:px-3"><Send className="h-5 w-5" aria-hidden="true" /><span className="hidden sm:inline">{x('Comunidade', 'Community', 'Comunidad')}</span></a>
         </div>
       </nav></div>
     <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 px-3 pt-5 sm:px-5">

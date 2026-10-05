@@ -3,7 +3,7 @@ import { after, test } from 'node:test';
 import { request } from 'node:http';
 import { createSiteServer } from './serve.mjs';
 import { routes, seo, canonicalPath } from './seo.mjs';
-import { mkdtemp, writeFile, symlink, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, writeFile, symlink, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
@@ -114,6 +114,13 @@ test('CSP allows only hashed inline scripts and denies private artifacts and esc
     assert.ok(csp.includes(`'sha256-${createHash('sha256').update(script).digest('base64')}'`));
     assert.ok(csp.includes("script-src-attr 'none'"));
     assert.ok(!csp.includes("'unsafe-eval'"));
+    // Preview uses Vite, so it cannot expose a deployment-only frame-src block.
+    const videoComponent = await readFile(new URL('../src/components/pitch/EmploymentIncomeProblem.tsx', import.meta.url), 'utf8');
+    const videoSrc = videoComponent.match(/src="(https:\/\/[^"]+\/embed\/[^"]+)"/)?.[1];
+    assert.ok(videoSrc, 'Pitch must retain its embedded reference video');
+    const frameSources = csp.split('; ').find(d => d.startsWith('frame-src '))?.split(' ').slice(1) ?? [];
+    assert.ok(frameSources.includes(new URL(videoSrc).origin), 'Published CSP must allow the actual Pitch video origin');
+    assert.ok(!frameSources.includes('*') && !frameSources.includes('https:'), 'Do not permit arbitrary iframe providers');
     assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
     for (const file of ['.env', 'backup.dump', 'escaped.txt']) {
       assert.equal((await fetch(`${url}/${file}`)).status, 404, file);

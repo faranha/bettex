@@ -1,10 +1,10 @@
 ---
 name: Consistência visual dos heros
-description: A barra lateral azul da homepage deve seguir os heros com imagem do Pitch, não todas as seções.
+description: Barra azul na abertura e em toda a extensão de Nova Economia e Mercados, sem generalizar para outras seções.
 ---
 
-Mostrar a barra azul apenas na abertura e nos blocos editoriais que funcionem como heros com imagem de fundo, seguindo o Pitch. Não aplicá-la automaticamente a todas as seções ou a blocos de conteúdo comuns.
+Mostrar a barra azul na abertura da homepage, seguindo o Pitch. Na seção “A IA vai substituir os trabalhadores” (Nova Economia), ela deve cobrir toda a área, não apenas o título. A seção “A IA da BETTEX coordena. Os robôs executam.” (Mercados) também deve ter a barra. Não aplicá-la automaticamente a todas as seções ou a blocos de conteúdo comuns.
 
-**Why:** Depois de pedir consistência entre os heros, o usuário esclareceu que no Pitch a barra aparece somente em momentos específicos; a regra generalizada na homepage contrariava esse padrão.
+**Why:** O usuário rejeitou a aplicação generalizada e depois apontou por imagens os dois ajustes específicos: “nessa parte pode por a barra azul em toda essa area” na Nova Economia e “aqui faltou a barra” em Mercados.
 
-**How to apply:** Ao editar ou acrescentar uma seção, comparar sua função visual com a capa ou o hero de capítulo do Pitch. Aplicar a barra só na abertura com imagem/título, não a uma lista ou corpo que continue abaixo; não usar uma regra abrangente por seção. Preservar conteúdo e composição; não levar a barra à faixa de marcas, à navegação, aos blocos de conteúdo ou ao rodapé.
+**How to apply:** Preservar as três áreas aprovadas (abertura, Nova Economia e Mercados), com barra contínua nos dois blocos explicitamente apontados. Para outras seções, comparar sua função com a capa ou o hero de capítulo do Pitch, sem usar uma regra abrangente. Preservar conteúdo e composição; não levar a barra à faixa de marcas, à navegação, aos blocos comuns ou ao rodapé.

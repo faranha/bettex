@@ -1,1 +1,1 @@
-export const TELEGRAM_COMMUNITY_URL = 'https://t.me/bettextoken';
+export const TELEGRAM_COMMUNITY_URL = 'https://t.me/bettexbrasil';

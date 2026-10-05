@@ -21,6 +21,7 @@
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
 - [Âncoras e navegação fixa](navigation-anchor-offsets.md) — mudanças de altura precisam considerar rolagem JavaScript e índice fixo, não apenas scroll-margin.
 - [SEO e roteamento estático](seo-static-routing.md) — validar HTTP inicial por rota; reescritas genéricas podem apagar o HTML pré-renderizado.
+- [Embeds em produção](production-embed-policy.md) — o preview Vite não aplica a CSP publicada; verificar o domínio do iframe contra frame-src do servidor.
 - [Domínio oficial](official-domain.md) — bettex.ai confirmado pelo criador; bettex.replit.app deve redirecionar preservando a página.
 - [Overlays mobile](mobile-chart-overlays.md) — largura e posição dos tooltips precisam caber no gráfico, inclusive após expandir sanfonas.
 - [Render-time localization](render-time-localization.md) — exclude app JSX runtimes from Vite prebundling; fragments and cloned elements need rendered-text audits.
@@ -50,7 +51,7 @@
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
 - [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.
 - [Cabeçalhos das seções](homepage-section-headers.md) — não reintroduzir as faixas informativas decorativas acima de História e Roadmap.
-- [Consistência dos heros](homepage-hero-accent.md) — barra azul só nas aberturas com imagem, como no Pitch; não em toda seção.
+- [Consistência dos heros](homepage-hero-accent.md) — barra azul na abertura e em toda Nova Economia e Mercados; não generalizar para outras seções.
 - [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
 - [Apresentação do fundador](documentation-founder-presentation.md) — documentação com retrato integrado e sem aspas; Pitch com biografia profissional em terceira pessoa.
 - [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.
