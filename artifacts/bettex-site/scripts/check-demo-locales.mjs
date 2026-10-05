@@ -13,6 +13,8 @@ const tradingRoot = path.resolve(root, '../alpha-trading');
 files.push(...fs.readdirSync(tradingRoot).filter(f => /\.(ts|tsx)$/.test(f)).map(f => path.join(tradingRoot, f)));
 const simulationRoot = path.resolve(root, '../simulation');
 files.push(...fs.readdirSync(simulationRoot).filter(f => /\.(ts|tsx)$/.test(f) && !f.endsWith('.test.ts')).map(f => path.join(simulationRoot, f)));
+const operationsRoot = path.resolve(root, '../agent-operations');
+files.push(...fs.readdirSync(operationsRoot).filter(f => /\.(ts|tsx)$/.test(f)).map(f => path.join(operationsRoot, f)));
 const failures = [];
 let tuples = 0;
 const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|BETTEX|USDC|BTC|ETH|SOL|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;
@@ -26,6 +28,14 @@ for (const file of files) {
     failures.push(`${path.basename(file)}:${source.getLineAndCharacterOfPosition(node.getStart(source)).line + 1}: ${message}`);
   }
   function walk(node) {
+    if (file === path.join(operationsRoot, 'copy.ts') && ts.isArrayLiteralExpression(node) &&
+      node.elements.every(e => ts.isStringLiteral(e))) {
+      const owner = ts.isAsExpression(node.parent) ? node.parent.parent : node.parent;
+      if (!(ts.isVariableDeclaration(owner) && owner.name.getText(source) === 'IDS')) {
+        tuples++;
+        if (node.elements.length !== 3 || node.elements.some(e => !e.text.trim())) report(node, 'Agent copy must provide non-empty PT, EN, ES tuples.');
+      }
+    }
     if (ts.isIdentifier(node) && forbidden.has(node.text)) {
       let owner = node.parent;
       while (owner && !ts.isFunctionDeclaration(owner)) owner = owner.parent;

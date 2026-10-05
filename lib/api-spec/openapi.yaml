@@ -11,6 +11,27 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /agents/center:
+    get:
+      operationId: getAgentCenter
+      tags: [agents]
+      parameters:
+        - name: agentId
+          in: query
+          schema: { type: string }
+        - name: before
+          in: query
+          schema: { type: string, pattern: "^[0-9]{1,20}$" }
+      responses:
+        "200":
+          description: Persisted operational analysis, never financial authorization
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AgentCenter" }
+        "400":
+          description: Unknown agent
+        "503":
+          description: Operational evidence unavailable
   /agents/allora/{asset}:
     get:
       operationId: getAlloraAnalysis
@@ -387,6 +408,68 @@ paths:
               schema: { $ref: "#/components/schemas/NativeTestJourney" }
 components:
   schemas:
+    AgentEvidence:
+      type: object
+      required: [source, url, producedAt, targetAt, blockHeight, value, unit]
+      properties:
+        source: { type: string }
+        url: { type: string }
+        producedAt: { type: string }
+        targetAt: { type: string }
+        blockHeight: { type: string }
+        value: { type: string }
+        unit: { type: string }
+    AgentFact:
+      type: object
+      required: [code, value]
+      properties:
+        code: { type: string }
+        value: { type: string }
+    AgentRun:
+      type: object
+      required: [id, cycleId, upstreamRunIds, agentId, startedAt, completedAt, durationMs, status, decision, findings, facts, evidence]
+      properties:
+        id: { type: string }
+        cycleId: { type: string }
+        upstreamRunIds: { type: array, items: { type: string } }
+        agentId: { type: string }
+        startedAt: { type: string }
+        completedAt: { type: string }
+        durationMs: { type: integer }
+        status: { type: string, enum: [healthy, degraded, failed] }
+        decision: { type: string, enum: [monitor, hold, block] }
+        findings: { type: array, items: { type: string } }
+        facts: { type: array, items: { $ref: "#/components/schemas/AgentFact" } }
+        evidence: { type: array, items: { $ref: "#/components/schemas/AgentEvidence" } }
+    AgentWorker:
+      type: object
+      required: [id, parentId, dependencies, inputs, outputs, rules, permissions, cadenceSeconds, executionAllowed, activity, runCount, latest]
+      properties:
+        id: { type: string }
+        parentId: { type: ["string", "null"] }
+        dependencies: { type: array, items: { type: string } }
+        inputs: { type: array, items: { type: string } }
+        outputs: { type: array, items: { type: string } }
+        rules: { type: array, items: { type: string } }
+        permissions: { type: array, items: { type: string } }
+        cadenceSeconds: { type: integer }
+        executionAllowed: { type: boolean }
+        activity: { type: string, enum: [running, stale, not_started] }
+        runCount: { type: integer }
+        latest:
+          anyOf:
+            - $ref: "#/components/schemas/AgentRun"
+            - type: "null"
+    AgentCenter:
+      type: object
+      required: [mode, asOf, agents, history, hasMore, nextBefore]
+      properties:
+        mode: { type: string, enum: [read_only_and_paper_no_real_money] }
+        asOf: { type: string }
+        agents: { type: array, items: { $ref: "#/components/schemas/AgentWorker" } }
+        history: { type: array, items: { $ref: "#/components/schemas/AgentRun" } }
+        hasMore: { type: boolean }
+        nextBefore: { type: ["string", "null"] }
     AlloraObservation:
       type: object
       required: [asset, topicId, network, unit, horizonSeconds, price, blockHeight, producedAt, targetAt, source, authentication, uncertainty]

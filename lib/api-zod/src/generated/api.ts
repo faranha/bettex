@@ -8,6 +8,85 @@
 import * as zod from 'zod';
 
 
+export const getAgentCenterQueryBeforeRegExp = new RegExp('^[0-9]{1,20}$');
+
+
+export const GetAgentCenterQueryParams = zod.object({
+  "agentId": zod.coerce.string().optional(),
+  "before": zod.coerce.string().regex(getAgentCenterQueryBeforeRegExp).optional()
+})
+
+export const GetAgentCenterResponse = zod.object({
+  "mode": zod.enum(['read_only_and_paper_no_real_money']),
+  "asOf": zod.string(),
+  "agents": zod.array(zod.object({
+  "id": zod.string(),
+  "parentId": zod.string().nullable(),
+  "dependencies": zod.array(zod.string()),
+  "inputs": zod.array(zod.string()),
+  "outputs": zod.array(zod.string()),
+  "rules": zod.array(zod.string()),
+  "permissions": zod.array(zod.string()),
+  "cadenceSeconds": zod.number().int(),
+  "executionAllowed": zod.boolean(),
+  "activity": zod.enum(['running', 'stale', 'not_started']),
+  "runCount": zod.number().int(),
+  "latest": zod.union([zod.object({
+  "id": zod.string(),
+  "cycleId": zod.string(),
+  "upstreamRunIds": zod.array(zod.string()),
+  "agentId": zod.string(),
+  "startedAt": zod.string(),
+  "completedAt": zod.string(),
+  "durationMs": zod.number().int(),
+  "status": zod.enum(['healthy', 'degraded', 'failed']),
+  "decision": zod.enum(['monitor', 'hold', 'block']),
+  "findings": zod.array(zod.string()),
+  "facts": zod.array(zod.object({
+  "code": zod.string(),
+  "value": zod.string()
+})),
+  "evidence": zod.array(zod.object({
+  "source": zod.string(),
+  "url": zod.string(),
+  "producedAt": zod.string(),
+  "targetAt": zod.string(),
+  "blockHeight": zod.string(),
+  "value": zod.string(),
+  "unit": zod.string()
+}))
+}),zod.null()])
+})),
+  "history": zod.array(zod.object({
+  "id": zod.string(),
+  "cycleId": zod.string(),
+  "upstreamRunIds": zod.array(zod.string()),
+  "agentId": zod.string(),
+  "startedAt": zod.string(),
+  "completedAt": zod.string(),
+  "durationMs": zod.number().int(),
+  "status": zod.enum(['healthy', 'degraded', 'failed']),
+  "decision": zod.enum(['monitor', 'hold', 'block']),
+  "findings": zod.array(zod.string()),
+  "facts": zod.array(zod.object({
+  "code": zod.string(),
+  "value": zod.string()
+})),
+  "evidence": zod.array(zod.object({
+  "source": zod.string(),
+  "url": zod.string(),
+  "producedAt": zod.string(),
+  "targetAt": zod.string(),
+  "blockHeight": zod.string(),
+  "value": zod.string(),
+  "unit": zod.string()
+}))
+})),
+  "hasMore": zod.boolean(),
+  "nextBefore": zod.string().nullable()
+})
+
+
 export const GetAlloraAnalysisParams = zod.object({
   "asset": zod.enum(['BTC', 'ETH', 'SOL'])
 })

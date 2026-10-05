@@ -7,6 +7,7 @@ import {logger} from "../lib/logger";
 import {ensurePaperRuntime,paperPipeline} from "./paper-runtime";
 import {db} from "@workspace/db";
 import {effectiveTradingPolicy} from "../modules/risk/infrastructure/effective-policy";
+import {runAgentOperationsCycle} from "./agent-operations-runtime";
 export const alphaRecords=alphaStore(async(r,client)=>{
   const d=r.decisions.at(-1)!;
   const localAllocation=!!r.governanceProposalId && (d.layer==="risk" || d.layer==="execution");
@@ -77,7 +78,11 @@ export function startAlphaScripts(){
     if(busy)return;busy=true;
     try{await collectAlpha();}
     catch{logger.warn({code:"alpha_observation_unavailable"},"Prediction specialist source/store unavailable; no mock fallback");}
-    finally{busy=false;}
+    finally{
+      try{await runAgentOperationsCycle();}
+      catch{logger.warn({code:"agent_operations_unavailable"},"Agent cycle could not be persisted; no synthetic heartbeat");}
+      busy=false;
+    }
   };
   void tick();
   const timer=setInterval(()=>void tick(),60000);timer.unref();return timer;
