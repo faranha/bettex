@@ -10,11 +10,20 @@ export function MarketsFloorSection() {
         <div className="markets-floor__wrap markets-floor__hero-grid">
           <div className="markets-floor__hero-copy">
             <p className="robot-floor__eyebrow">Mercados BETTEX</p>
-            <h2 id="robot-floor-title" className="robot-floor__title">A IA da BETTEX coordena.<br /><em>Os robôs executam.</em></h2>
-            <p className="robot-floor__note">Nenhuma equipe age sozinha. Cada pedido passa pela IA da BETTEX, nossa IA central. Ela analisa as oportunidades e autoriza os robôs a executar.</p>
+            <h2 id="robot-floor-title" className="robot-floor__title"><span className="mf-line">A IA da BETTEX coordena.</span><em className="mf-line">Os agentes executam.</em></h2>
+            <p className="robot-floor__note"><span className="mf-line">A IA analisa e autoriza.</span><span className="mf-line">Os agentes executam dentro dos limites.</span></p>
           </div>
           <div className="markets-floor__hero-art" aria-hidden="true">
-            <img src={`${import.meta.env.BASE_URL}agents/bettex-intelligence-brain.webp`} alt="" loading="lazy" />
+            <svg className="mf-rings" viewBox="0 0 400 400" fill="none">
+              <circle cx="200" cy="200" r="190" stroke="rgba(95,134,255,.35)" strokeDasharray="2 8" />
+              <circle cx="200" cy="200" r="145" stroke="rgba(95,134,255,.5)" />
+              <circle cx="200" cy="200" r="100" stroke="rgba(95,134,255,.3)" strokeDasharray="14 10" />
+              <path d="M200 10V390M10 200H390" stroke="rgba(95,134,255,.18)" />
+            </svg>
+            <img className="mf-agent mf-agent--a" src={`${import.meta.env.BASE_URL}agents/sportix-serious.webp`} alt="" loading="lazy" />
+            <img className="mf-agent mf-agent--b" src={`${import.meta.env.BASE_URL}agents/tradix-serious.webp`} alt="" loading="lazy" />
+            <img className="mf-agent mf-agent--c" src={`${import.meta.env.BASE_URL}agents/predix-serious.webp`} alt="" loading="lazy" />
+            <img className="mf-brain" src={`${import.meta.env.BASE_URL}agents/bettex-intelligence-brain.webp`} alt="" loading="lazy" />
           </div>
         </div>
       </div>
