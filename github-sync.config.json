@@ -1,6 +1,7 @@
 {
   "remote": "origin",
   "branch": "development/bettex",
+  "authorizedPublicRepository": "faranha/bettex",
   "debounceSeconds": 90,
   "pollSeconds": 10,
   "retryBaseSeconds": 15,

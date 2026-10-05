@@ -2,10 +2,18 @@
 
 ## Current activation state
 
-**Automatic synchronization implemented locally; activation pending GitHub connection.**
+**Automatic synchronization implemented locally; activation pending authenticated Git transport.**
 
-The inspected repository has Replit internal backup/task remotes, not a GitHub
-`origin`. No authorized GitHub connection was available during implementation.
+The creator explicitly authorized upload to public `faranha/bettex`, without
+changing its visibility or `main`. The repository-specific
+`authorizedPublicRepository` configuration permits this destination only.
+Other public repositories remain blocked. The GitHub API connection is healthy,
+but native Git push authentication is not configured; the connector also denied
+temporary deploy-key creation. No upload has been verified.
+
+During initial implementation, the repository had only Replit internal
+backup/task remotes and no authorized GitHub connection. The creator has now
+selected `https://github.com/faranha/bettex.git` as credential-free `origin`.
 The configured development branch is `development/bettex`. Existing history is
 preserved. No repository was made public, no production branch was merged, and
 no deployment was initiated.
@@ -30,6 +38,9 @@ sanitized logs, never tracked files.
 - Anonymous GitHub visibility checks reject public repositories and fail closed
   on service/rate-limit errors. An anonymous 404 is accepted only together with
   the authenticated Git fetch proving repository access; no API token is sent.
+- The creator may explicitly authorize one public owner/repository through
+  `authorizedPublicRepository`. This is an exact-match exception, not a global
+  public-upload bypass; changing the destination requires separate authorization.
 - The full staged index is checked for secret patterns, excluded artifacts,
   symlinks/nested repositories, and oversized files.
 - Reachable Git history is scanned before a push, including secrets removed
@@ -59,7 +70,8 @@ not evidence of GitHub activation.
 
 1. Connect GitHub through Replit's supported connection flow.
 2. Supply an existing **private** repository URL or choose private repository
-   creation. Keep the license/asset ownership review separate from visibility.
+   creation. Public upload requires explicit creator authorization for the exact
+   destination. Keep the license/asset ownership review separate from visibility.
 3. Authorize Git transport with Replit's Git provider credential manager, SSH
    agent, or Git Credential Manager. An API-only connection is not proof that
    command-line Git can push. Grant repository contents read/write and the

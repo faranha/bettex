@@ -14,6 +14,10 @@ export function context(root = process.cwd(), overrides = {}) {
   if (!/^[\w.-]+$/.test(config.remote) || !/^development\/[\w./-]+$/.test(config.branch)) {
     throw new Error('Use a named remote and a development/* branch; production branches are never synchronization targets.');
   }
+  if (config.authorizedPublicRepository !== undefined &&
+      !/^[\w.-]+\/[\w.-]+$/.test(config.authorizedPublicRepository)) {
+    throw new Error('Public upload authorization must name one exact GitHub owner/repository.');
+  }
   for (const key of ['debounceSeconds', 'pollSeconds', 'retryBaseSeconds', 'retryMaxSeconds']) {
     if (!Number.isFinite(config[key]) || config[key] <= 0) throw new Error(`Invalid synchronization setting: ${key}`);
   }
@@ -138,7 +142,7 @@ export async function synchronize(ctx, { message, background = false, stableDela
     if (git(ctx.root, ['diff', '--cached', '--name-only']).trim()) {
       return save(ctx, { phase: 'blocked-index', error: 'User-staged changes are present; finish or unstage them intentionally. They were not modified.', nextRetryAt: null });
     }
-    if (!ctx.config.allowLocalRemote) await requireNonPublicRemote(remote(ctx));
+    if (!ctx.config.allowLocalRemote) await requireNonPublicRemote(remote(ctx), fetch, ctx.config.authorizedPublicRepository);
     const initial = fingerprint(ctx);
     await sleep(stableDelayMs);
     if (initial !== fingerprint(ctx)) return save(ctx, { phase: 'waiting-for-stable-writes', nextRetryAt: null });
@@ -188,7 +192,7 @@ export async function synchronize(ctx, { message, background = false, stableDela
     const latest = counts(ctx);
     if (latest.behind > 0) return save(ctx, { phase: 'conflict', error: 'Remote advanced during synchronization. Local commit retained; update the development branch explicitly.', nextRetryAt: null });
     const head = tip(ctx, 'HEAD');
-    if (!ctx.config.allowLocalRemote) await requireNonPublicRemote(remote(ctx));
+    if (!ctx.config.allowLocalRemote) await requireNonPublicRemote(remote(ctx), fetch, ctx.config.authorizedPublicRepository);
     const historyFindings = inspectHistory(ctx.root, state(ctx).lastHistoryCheckedCommit);
     if (historyFindings.length) { save(ctx, { findings: historyFindings }); throw new Error('guard'); }
     save(ctx, { lastHistoryCheckedCommit: head });

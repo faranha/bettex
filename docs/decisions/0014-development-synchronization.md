@@ -20,6 +20,10 @@ GitHub authorization/private repository selection are external prerequisites.
 Internal Replit remotes never count as GitHub. An inactive workspace cannot
 provide always-on synchronization.
 
+The creator subsequently authorized public upload to `faranha/bettex`, leaving
+its visibility and `main` unchanged. An exact owner/repository configuration
+allows this destination; other public destinations retain the default rejection.
+
 Provide a Linux clean-clone launcher with explicit ports and an opt-in Vite API
 proxy only outside Replit. Retain Replit's existing artifact routing.
 Development without Clerk keys may use existing native test-account
@@ -46,5 +50,5 @@ Isolated real Git remotes cover automatic detection/push, remote verification,
 no-op behavior, coordinated triggers, failed pushes, recovery, secret history,
 staging ownership and conflict resolution. Clean-copy installation/build/startup
 uses a separate temporary PostgreSQL cluster without production credentials.
-Only a verified push to the actual authorized private GitHub remote activates
+Only a verified push to the actual authorized GitHub remote activates
 the operational synchronization claim.
