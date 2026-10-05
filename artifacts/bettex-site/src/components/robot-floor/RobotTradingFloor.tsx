@@ -216,14 +216,6 @@ export function RobotTradingFloor() {
 
   return (
     <div ref={rootRef} className="robot-floor" data-testid="section-robot-floor">
-      <div className="robot-floor__head">
-        <div>
-          <p className="robot-floor__eyebrow">Mercados BETTEX</p>
-           <h2 id="robot-floor-title" className="robot-floor__title">A IA da BETTEX coordena.<br /><em>Os robôs executam.</em></h2>
-        </div>
-         <p className="robot-floor__note">Nenhuma equipe age sozinha. Cada pedido passa pela IA da BETTEX, nossa IA central. Ela analisa as oportunidades e autoriza os robôs a executar.</p>
-      </div>
-
       <div className="robot-floor__stage">
         <div className="robot-floor__controls">
         <button type="button" className="robot-floor__toggle" onClick={() => setPlaying(p => !p)} aria-pressed={!playing} data-testid="button-robot-floor-toggle">
