@@ -1,4 +1,7 @@
 {
+  "Os agentes executam.": { "en": "The agents execute.", "es": "Los agentes ejecutan." },
+  "A IA analisa e autoriza.": { "en": "The AI analyzes and authorizes.", "es": "La IA analiza y autoriza." },
+  "Os agentes executam dentro dos limites.": { "en": "The agents execute within limits.", "es": "Los agentes ejecutan dentro de los límites." },
   "ALFA · SEED": { "en": "ALPHA · SEED", "es": "ALFA · SEED" },
   "Outubro de 2026": { "en": "October 2026", "es": "Octubre de 2026" },
   "ALFA com token e audiência semente": { "en": "ALPHA with token and seed audience", "es": "ALFA con token y audiencia semilla" },
