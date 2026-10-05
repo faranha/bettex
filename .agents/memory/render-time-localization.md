@@ -110,3 +110,9 @@ Technical iframe permissions and request policies must not be treated as transla
 **Why:** Embedding a video caused the locale audit to demand translations for browser permission and referrer-policy values. Translating those values would be incorrect.
 
 **How to apply:** When the audit reports non-visible HTML configuration, exempt the technical attribute from extraction rather than add fake translations. Keep accessible titles and visible captions localized.
+
+Isolated application screens with explicit PT/EN/ES tuples must use the tuple audit, not the site's source-message catalogue.
+
+**Why:** Scanning all three literal alternatives as catalogue source strings creates false translation gaps, including demands to translate English into English. Excluding a screen without adding it to the tuple audit would instead leave it unchecked.
+
+**How to apply:** When extending the isolated app UI, include the new surface in its three-language/JSX audit and exclude it from the prose catalogue extractor together. Verify the full build, not only TypeScript.

@@ -9,13 +9,19 @@ const template = await readFile(path.join(output, 'index.html'), 'utf8');
 if (!template.includes('<div id="root"></div>')) {
   throw new Error('Prerender needs a fresh Vite build with an empty root. Run the full build; do not reuse already prerendered index.html.');
 }
-const server = await createServer({ configFile: path.join(root, 'vite.config.ts'), server: { middlewareMode: true }, appType: 'custom' });
+// SSR must match the public client build, not Vite's default development-mode demo.
+const server = await createServer({ configFile: path.join(root, 'vite.config.ts'), mode: 'production',
+  define: { 'import.meta.env.PROD': true, 'import.meta.env.DEV': false },
+  server: { middlewareMode: true }, appType: 'custom' });
 try {
   const { render } = await server.ssrLoadModule('/src/entry-server.tsx');
   const base = process.env.BASE_PATH.replace(/\/$/, '');
   for (const [route, page] of Object.entries(routes)) {
     const body = render(`${base}${route}`);
     if (!body.includes('<h1')) throw new Error(`Prerender failed: no H1 for ${route}`);
+    if (/^\/(?:(?:en|es)\/)?demo(?:\/|$)/.test(route) && !body.includes('data-testid="public-demo"')) {
+      throw new Error(`Public demo must render placeholders without the operational dashboard: ${route}`);
+    }
     const directory = path.join(output, route === '/' ? '' : route.slice(1));
     await mkdir(directory, { recursive: true });
     const html = withMetadata(template, route).replace(/<html([^>]*)lang="[^"]*"/, `<html$1lang="${page.language === 'pt' ? 'pt-BR' : page.language}"`).replace('<div id="root"></div>', `<div id="root">${body}</div>`);

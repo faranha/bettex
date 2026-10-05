@@ -27,6 +27,7 @@ Não interpretar a interface, os testes ou este repositório como autorização 
 4. [Regras de desenvolvimento](CONTRIBUTING.md).
 5. [Segurança](SECURITY.md) e [modelo de ameaças](threat_model.md).
 6. [Instruções obrigatórias para agentes de desenvolvimento](AGENTS.md).
+7. [Base oficial de documentação consultada pela IA](docs/technical-documentation.md).
 
 ## Organização atual
 

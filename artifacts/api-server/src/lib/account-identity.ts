@@ -1,11 +1,16 @@
 import { clerkClient, getAuth } from "@clerk/express";
 import type { Request } from "express";
 import type { AccountIdentity } from "./demo-store";
+import { personalAccountIdentity } from "../modules/accounts/infrastructure/session-identity";
 
-type VerifiedProfile = Required<Pick<AccountIdentity, "userId" | "name" | "email" | "memberSince">>;
+type VerifiedProfile = Required<Pick<AccountIdentity, "name" | "email" | "memberSince">> & Pick<AccountIdentity, "userId" | "nativeAccountId">;
 const cache = new Map<string, { profile: VerifiedProfile; expires: number }>();
 
 export async function verifiedAccount(req: Request): Promise<VerifiedProfile | undefined> {
+  const sessionToken = req.headers.cookie?.split(";").map(value => value.trim())
+    .find(value => value.startsWith("bettex_test_session="))?.slice("bettex_test_session=".length) ?? "";
+  const personal = await personalAccountIdentity(sessionToken);
+  if (personal) return { nativeAccountId: personal.id, name: personal.displayName, email: personal.email, memberSince: personal.acceptedAt.toISOString() };
   const { userId } = getAuth(req);
   if (!userId) return undefined;
   const saved = cache.get(userId);
@@ -26,6 +31,7 @@ export async function verifiedAccount(req: Request): Promise<VerifiedProfile | u
 }
 
 export async function updateAccountName(req: Request, name: string) {
+  if ((await verifiedAccount(req))?.nativeAccountId) throw new Error("native_profile_command_required");
   const { userId } = getAuth(req);
   if (userId) {
     await verifiedAccount(req);

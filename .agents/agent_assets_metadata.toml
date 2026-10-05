@@ -448,3 +448,73 @@ mtime_ms = 1791112216867
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/48a54f0e-53ca-49f2-8763-6b1ec4327a24/193b2039-debd-4c94-9bac-2b897a0a3795"
 storage_version_token = "1791112237402088"
 content_type = "image/jpeg"
+
+[[outputs]]
+id = "H6xgiNMPlWZnt5yVohlhk"
+uri = "file://artifacts/bettex-site/test-evidence/native-journey-report.html"
+type = "html"
+title = "BETTEX — comprovantes do percurso local"
+description = "Valores confirmados, hashes, recibos, persistência e limitações. EVM local 31337; não é evidência de testnet pública."
+logical_id = "32e133ff-84d8-48b1-b177-74d7c2ff27bd"
+content_hash = "sha256:c36f424d220acdce2f6b8d592053a709ed7951731b237410fa5c778e03719a0d"
+size = 4944
+mtime_ms = 1791188524510
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/32e133ff-84d8-48b1-b177-74d7c2ff27bd/407523d2-f973-48ae-a81d-22bc99a345ec"
+storage_version_token = "1791188590947319"
+content_type = "text/html"
+
+[[outputs]]
+id = "qJQieGhaUHxacCbxEvbPc"
+uri = "file://artifacts/bettex-site/test-evidence/history-final.html"
+type = "html"
+title = "BETTEX — Resultado das verificações"
+description = "Relatório sanitizado com percurso de teste, correções confirmadas, migração, privacidade e limitações."
+logical_id = "1cb8fcb3-b6df-4e41-8f90-e25f93f6dda7"
+content_hash = "sha256:f2b1653382c69045eb8574477eb13f2d19084476550e67de398f4e07e3ccf44d"
+size = 6201
+mtime_ms = 1791192360247
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/1cb8fcb3-b6df-4e41-8f90-e25f93f6dda7/696d7c47-a74e-488b-8678-43304bc35255"
+storage_version_token = "1791192507267053"
+content_type = "text/html"
+
+[[outputs]]
+id = "mV6qKxcVYZ8B0WF-7Uust"
+uri = "file://docs/requirements/review-2026-10-05.csv"
+type = "table"
+title = "Matriz rastreável BETTEX"
+description = "496 cláusulas dos prompts disponíveis, com fonte, linha, estado, escopo, evidência de família e bloqueios. Contém pendências explícitas; não é certificação de produção."
+logical_id = "8922ae61-a920-4ca2-ad46-9fc15ad9e5a6"
+content_hash = "sha256:e9670c37968eaae30c31511161cb0f0875779d6914a276b76aaded76b18489c7"
+size = 238149
+mtime_ms = 1791201698834
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8922ae61-a920-4ca2-ad46-9fc15ad9e5a6/fb70549a-a7cd-409d-8a56-e2b4f4f3bb0d"
+storage_version_token = "1791202207359310"
+content_type = "text/csv"
+
+[[outputs]]
+id = "qhZCHVTfDDc1AcsXiQfSi"
+uri = "file://docs/treasury-governance.md"
+type = "text"
+title = "Tesouraria e Governança — documentação e prova local"
+description = "Componentes, regras, permissões, decisões e evidências do ciclo verificado com ativos de teste."
+logical_id = "b8bb99bf-e8f7-46c8-8f77-3d4e9b14e0ad"
+content_hash = "sha256:e405b4317d1f17f8890b24d9db9446ea4e2f3202d19cef1c54bf876d6c8f0945"
+size = 13008
+mtime_ms = 1791204928902
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/b8bb99bf-e8f7-46c8-8f77-3d4e9b14e0ad/7681dca9-fbee-4b54-9743-2a6463994d14"
+storage_version_token = "1791205058106379"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "tbUUxJcnmyjc_Cccznhol"
+uri = "file://docs/agent-hierarchy.md"
+type = "text"
+title = "Hierarquia dos agentes BETTEX"
+description = "Documentação canônica da hierarquia, estados, fontes, controles e pendências do primeiro alpha."
+logical_id = "8d0b7e52-5072-4b4b-9326-bb619e7efb1d"
+content_hash = "sha256:019cf1117ec37f3c3d308eea8b8b685bdda1d51283d682002807576bb8483720"
+size = 8360
+mtime_ms = 1791207631733
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8d0b7e52-5072-4b4b-9326-bb619e7efb1d/af54fa21-dcac-4a22-9a7b-a2c6cf6c3810"
+storage_version_token = "1791207648051575"
+content_type = "text/markdown"

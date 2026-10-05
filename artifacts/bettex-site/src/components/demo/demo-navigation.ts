@@ -1,4 +1,4 @@
-export type DemoView = 'home' | 'central' | 'wallet' | 'treasury' | 'account';
+export type DemoView = 'home' | 'central' | 'wallet' | 'treasury' | 'account' | 'simulation';
 type Language = 'pt' | 'en' | 'es';
 const index = { pt: 0, en: 1, es: 2 };
 const labels = {
@@ -6,6 +6,7 @@ const labels = {
   central: ['Central da IA', 'AI Center', 'Central de IA'],
   wallet: ['Saldo e histórico', 'Balance and history', 'Saldo e historial'],
   treasury: ['Tesouraria', 'Treasury', 'Tesorería'],
+  simulation: ['Simulação', 'Simulation', 'Simulación'],
   account: ['Minha conta', 'My account', 'Mi cuenta'],
 };
 export function demoView(path: string): DemoView | undefined {
@@ -14,6 +15,7 @@ export function demoView(path: string): DemoView | undefined {
   if (normalized === '/demo/central') return 'central';
   if (['/demo/saldo', '/demo/balance'].includes(normalized)) return 'wallet';
   if (['/demo/tesouraria', '/demo/treasury', '/demo/tesoreria'].includes(normalized)) return 'treasury';
+  if (['/demo/simulacao', '/demo/simulation', '/demo/simulacion'].includes(normalized)) return 'simulation';
   if (/^\/demo\/(?:minha-conta|account|mi-cuenta)(?:\/.*)?$/.test(normalized)) return 'account';
   return undefined;
 }
@@ -21,6 +23,7 @@ export function demoPath(view: DemoView, language: Language) {
   if (view === 'home') return '/demo';
   if (view === 'central') return '/demo/central';
   if (view === 'wallet') return ['/demo/saldo', '/demo/balance', '/demo/saldo'][index[language]];
+  if (view === 'simulation') return ['/demo/simulacao', '/demo/simulation', '/demo/simulacion'][index[language]];
   if (view === 'account') return ['/demo/minha-conta', '/demo/account', '/demo/mi-cuenta'][index[language]];
   return ['/demo/tesouraria', '/demo/treasury', '/demo/tesoreria'][index[language]];
 }

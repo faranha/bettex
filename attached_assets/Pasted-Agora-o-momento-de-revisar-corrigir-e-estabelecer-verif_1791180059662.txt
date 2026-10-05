@@ -1,0 +1,112 @@
+Agora é o momento de revisar, corrigir e estabelecer verificações permanentes antes de ampliar os serviços. O prompt abaixo usa OWASP ASVS como referência para a aplicação e OpenZeppelin para permissões e contratos. 
+
+Realize uma revisão de segurança e organização da BETTEX antes de desenvolver novas funcionalidades. Examine, corrija e verifique a implementação existente; não entregue apenas recomendações.
+
+1. RESPEITE A ARQUITETURA
+
+Leia primeiro a documentação interna, regras canônicas e decisões arquiteturais vigentes.
+
+Mapeie frontend, backend, banco, contratos, carteiras, agentes, integrações e infraestrutura. Identifique suas responsabilidades e fronteiras de confiança.
+
+Não crie uma arquitetura paralela nem faça uma reescrita geral. Corrija problemas dentro da estrutura existente, documentando alterações necessárias.
+
+2. REVISE OS RISCOS REAIS
+
+Use a versão atual do OWASP ASVS e a documentação oficial das tecnologias utilizadas.
+
+Priorize exposição de dados pessoais, roubo de credenciais ou chaves, acesso a contas alheias, movimentação indevida de recursos, manipulação de valores e duplicação de operações.
+
+Revise:
+
+• Autenticação, sessões, logout e alterações sensíveis.
+• Autorização no servidor para cada usuário, carteira e operação.
+• Permissões administrativas e dos agentes.
+• Validação de entradas, injeção, XSS, CSRF, CORS e chamadas externas.
+• Limites contra abuso no login, cadastro e distribuição de ativos de teste.
+• APIs, páginas de diagnóstico, backups, arquivos e endpoints expostos.
+• Dependências, configuração de implantação e separação entre testnet e produção.
+
+Não considere esconder um botão como controle de autorização.
+
+3. PROTEJA CÓDIGO, DADOS E SEGREDOS
+
+Revise repositório, histórico Git, configurações, artefatos de build, logs e bundles do navegador procurando exposição de segredos, sem imprimir seus valores.
+
+Se encontrar credenciais expostas, remova a exposição e providencie revogação ou rotação quando possível. Apagar do código não invalida uma credencial comprometida.
+
+Mantenha segredos operacionais fora do repositório e do frontend. Não exponha chaves privadas, frases-semente, senhas, tokens de sessão ou dados pessoais desnecessários.
+
+Verifique criptografia das carteiras pessoais, derivação de chave, hash das senhas e alteração de senha preservando as carteiras.
+
+A ausência de recuperação de senha e de KYC é uma decisão desta versão: preserve-a sem reduzir os controles de segurança.
+
+Restrinja acessos ao repositório, banco e ambiente de implantação conforme as funções necessárias. Código enviado ao navegador e contratos públicos não podem ser tratados como secretos.
+
+4. REVISE OS FLUXOS FINANCEIROS E CONTRATOS
+
+Verifique emissão, vesting, compra, staking, tesouraria e distribuições.
+
+Confirme:
+
+• Permissões de emissão, pausa, administração e upgrade.
+• Proteção da inicialização e compatibilidade de armazenamento, quando houver proxies.
+• Impossibilidade de contornar vesting.
+• Validação de ativo, rede, preço, destinatário e autorização.
+• Proteção contra reentrância, reutilização de assinaturas e pagamentos duplicados.
+• Decimais, arredondamentos e limites de valores.
+• Reconciliação entre blockchain, banco e histórico.
+• Tratamento de falhas, concorrência e reorganizações da blockchain.
+
+Não confie em valores, direitos ou estados financeiros informados pelo navegador ou por uma resposta de IA.
+
+5. ORGANIZE O DESENVOLVIMENTO
+
+Consolide regras curtas e obrigatórias na documentação canônica existente:
+
+• Responsabilidades claras e dependências permitidas entre componentes.
+• Lógica financeira centralizada em implementações reutilizáveis.
+• Interfaces e eventos explícitos.
+• Migrações versionadas e restrições de integridade no banco.
+• Valores financeiros exatos, sem ponto flutuante.
+• Erros padronizados sem exposição de detalhes sensíveis.
+• Histórico e auditoria correlacionados às operações.
+• Dependências justificadas e versões reproduzíveis.
+• Remoção cuidadosa de código morto e duplicações.
+• Decisões arquiteturais relevantes documentadas.
+• Documentação atualizada junto com cada alteração.
+
+Não crie abstrações ou frameworks sem necessidade concreta.
+
+6. ESTABELEÇA VERIFICAÇÕES PERMANENTES
+
+Configure verificações automáticas adequadas à stack: lint, tipos, build, análise de dependências e detecção de segredos.
+
+Inclua testes significativos para autorização, isolamento entre usuários, proteção das chaves, integridade financeira e permissões dos contratos.
+
+Teste tentativas de consultar dados de outra conta, exportar suas chaves, alterar destinatários, repetir operações e executar ações administrativas sem permissão.
+
+Utilize ambiente isolado e ativos de teste. Não execute testes destrutivos sobre dados ou serviços reais.
+
+Documente backup, restauração, revogação de sessões, rotação de credenciais e pausa das operações financeiras. Verifique a restauração em ambiente de teste.
+
+7. CORRIJA E COMPROVE
+
+Para cada problema, registre gravidade, componente, evidência sem segredos, impacto, correção e verificação.
+
+Corrija autonomamente os problemas dentro do escopo autorizado e execute regressão dos fluxos existentes.
+
+Não avance em novas funcionalidades enquanto houver falhas críticas ou altas capazes de expor dados, comprometer contas ou movimentar recursos indevidamente. Continue trabalhando nas correções.
+
+Se algo depender de acesso externo ou decisão pendente, prepare a solução e informe exatamente o impedimento.
+
+ENTREGA
+
+Apresente um relatório curto com:
+
+• Problemas encontrados e corrigidos.
+• Verificações executadas e seus resultados.
+• Riscos e limitações restantes.
+• Regras de desenvolvimento consolidadas e sua localização.
+• Condições concretas para continuar o desenvolvimento.
+
+Não declare a aplicação “segura” apenas porque scanners passaram. Diferencie revisão interna, testes automatizados e auditoria independente de contratos.

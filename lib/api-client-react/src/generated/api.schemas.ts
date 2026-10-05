@@ -5,6 +5,1645 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export type SimulationCommandInputAction = typeof SimulationCommandInputAction[keyof typeof SimulationCommandInputAction];
+
+
+export const SimulationCommandInputAction = {
+  start: 'start',
+  advance: 'advance',
+  pause: 'pause',
+  resume: 'resume',
+  generate: 'generate',
+  market: 'market',
+  failure: 'failure',
+  deposit: 'deposit',
+  purchase: 'purchase',
+  withdraw: 'withdraw',
+  reset: 'reset',
+  clock: 'clock',
+} as const;
+
+export type SimulationCommandInputScenario = typeof SimulationCommandInputScenario[keyof typeof SimulationCommandInputScenario];
+
+
+export const SimulationCommandInputScenario = {
+  complete: 'complete',
+  insufficient_balance: 'insufficient_balance',
+  expired_duplicate: 'expired_duplicate',
+  no_opportunity: 'no_opportunity',
+  exposure: 'exposure',
+  price_change: 'price_change',
+  partial_fill: 'partial_fill',
+  no_liquidity: 'no_liquidity',
+  integration_failure: 'integration_failure',
+  payment_failure: 'payment_failure',
+  restart: 'restart',
+} as const;
+
+export type SimulationCommandInputFailure = typeof SimulationCommandInputFailure[keyof typeof SimulationCommandInputFailure];
+
+
+export const SimulationCommandInputFailure = {
+  insufficient_balance: 'insufficient_balance',
+  expired_duplicate: 'expired_duplicate',
+  no_opportunity: 'no_opportunity',
+  exposure: 'exposure',
+  price_change: 'price_change',
+  partial_fill: 'partial_fill',
+  no_liquidity: 'no_liquidity',
+  integration_failure: 'integration_failure',
+  payment_failure: 'payment_failure',
+  restart: 'restart',
+} as const;
+
+export interface SimulationCommandInput {
+  /**
+     * @minLength 16
+     * @maxLength 160
+     */
+  csrf: string;
+  /**
+     * @minLength 8
+     * @maxLength 120
+     */
+  requestId: string;
+  action: SimulationCommandInputAction;
+  /** @maxLength 120 */
+  runId?: string;
+  /** @minimum 0 */
+  expectedRevision?: number;
+  scenario?: SimulationCommandInputScenario;
+  /** @pattern ^[1-9][0-9]{0,12}$ */
+  amountUnits?: string;
+  /**
+     * @minimum 1
+     * @maximum 86400
+     */
+  seconds?: number;
+  failure?: SimulationCommandInputFailure;
+}
+
+export type SimulationRunEnvironment = typeof SimulationRunEnvironment[keyof typeof SimulationRunEnvironment];
+
+
+export const SimulationRunEnvironment = {
+  simulation: 'simulation',
+} as const;
+
+export interface SimulationRun {
+  id: string;
+  environment: SimulationRunEnvironment;
+  scenario: string;
+  stage: number;
+  revision: number;
+  paused: boolean;
+  clock: number;
+  [key: string]: unknown;
+ }
+
+export type SimulationSnapshotMode = typeof SimulationSnapshotMode[keyof typeof SimulationSnapshotMode];
+
+
+export const SimulationSnapshotMode = {
+  simulation: 'simulation',
+} as const;
+
+export type SimulationSnapshotEventsItem = { [key: string]: unknown };
+
+export interface SimulationSnapshot {
+  mode: SimulationSnapshotMode;
+  runs: SimulationRun[];
+  run: SimulationRun | null;
+  events: SimulationSnapshotEventsItem[];
+  total: number;
+  offset: number;
+  hasMore: boolean;
+}
+
+export type TradingPolicyControlsMode = typeof TradingPolicyControlsMode[keyof typeof TradingPolicyControlsMode];
+
+
+export const TradingPolicyControlsMode = {
+  simulation_only: 'simulation_only',
+} as const;
+
+export type TradingPolicyControlsAllowedAssetsItem = typeof TradingPolicyControlsAllowedAssetsItem[keyof typeof TradingPolicyControlsAllowedAssetsItem];
+
+
+export const TradingPolicyControlsAllowedAssetsItem = {
+  btc: 'btc',
+  eth: 'eth',
+  sol: 'sol',
+} as const;
+
+export type TradingPolicyControlsAllowedProvidersItem = typeof TradingPolicyControlsAllowedProvidersItem[keyof typeof TradingPolicyControlsAllowedProvidersItem];
+
+
+export const TradingPolicyControlsAllowedProvidersItem = {
+  polymarket_gamma_clob: 'polymarket_gamma_clob',
+} as const;
+
+export type TradingPolicyControlsAllowedMarketsItem = typeof TradingPolicyControlsAllowedMarketsItem[keyof typeof TradingPolicyControlsAllowedMarketsItem];
+
+
+export const TradingPolicyControlsAllowedMarketsItem = {
+  prediction: 'prediction',
+} as const;
+
+export interface TradingPolicyControls {
+  mode?: TradingPolicyControlsMode;
+  paused?: boolean;
+  /** @pattern ^(0|[1-9][0-9]{0,39})$ */
+  maxOrderUnits?: string;
+  /** @pattern ^(0|[1-9][0-9]{0,39})$ */
+  maxCorrelatedUnits?: string;
+  /** @pattern ^(0|[1-9][0-9]{0,39})$ */
+  maxPortfolioUnits?: string;
+  /** @pattern ^(0|[1-9][0-9]{0,39})$ */
+  defensiveUnits?: string;
+  /** @pattern ^(0|[1-9][0-9]{0,39})$ */
+  maxAssetUnits?: string;
+  /** @pattern ^(0|[1-9][0-9]{0,39})$ */
+  maxEventUnits?: string;
+  /** @pattern ^(0|[1-9][0-9]{0,39})$ */
+  maxStrategyUnits?: string;
+  /** @pattern ^(0|[1-9][0-9]{0,39})$ */
+  maxCounterpartyUnits?: string;
+  /**
+     * @minimum 1
+     * @maximum 3600
+     */
+  maxQuoteAgeSeconds?: number;
+  /**
+     * @minimum 1
+     * @maximum 3600
+     */
+  maxSourceAgeSeconds?: number;
+  /**
+     * @minimum 1
+     * @maximum 604800
+     */
+  maxHorizonSeconds?: number;
+  /**
+     * @minimum 1
+     * @maximum 10
+     */
+  maxAttempts?: number;
+  /**
+     * @minimum 1
+     * @maximum 3600
+     */
+  retrySeconds?: number;
+  /**
+     * @minimum 0
+     * @maximum 10000
+     */
+  minimumNetEdgeBps?: number;
+  /**
+     * @minimum 0
+     * @maximum 10000
+     */
+  exitHysteresisBps?: number;
+  /**
+     * @minimum 1
+     * @maximum 604800
+     */
+  reentryCooldownSeconds?: number;
+  /**
+     * @minimum 1
+     * @maximum 604800
+     */
+  maximumHoldSeconds?: number;
+  /**
+     * @minimum 1
+     * @maximum 10000
+     */
+  maximumLossBps?: number;
+  /** @minItems 1 */
+  allowedAssets?: TradingPolicyControlsAllowedAssetsItem[];
+  /** @minItems 1 */
+  allowedProviders?: TradingPolicyControlsAllowedProvidersItem[];
+  /** @minItems 1 */
+  allowedMarkets?: TradingPolicyControlsAllowedMarketsItem[];
+  requireCalibratedModel?: true;
+  requireCompleteCosts?: true;
+  requireExitPlan?: true;
+  requireReconciliation?: true;
+}
+
+export type TradingPolicyDefinitionType = typeof TradingPolicyDefinitionType[keyof typeof TradingPolicyDefinitionType];
+
+
+export const TradingPolicyDefinitionType = {
+  treasury: 'treasury',
+  strategy: 'strategy',
+  specialist: 'specialist',
+} as const;
+
+export type TradingPolicyDefinitionScope = typeof TradingPolicyDefinitionScope[keyof typeof TradingPolicyDefinitionScope];
+
+
+export const TradingPolicyDefinitionScope = {
+  global: 'global',
+  predictions: 'predictions',
+  btc: 'btc',
+  eth: 'eth',
+  sol: 'sol',
+} as const;
+
+export type TradingPolicyDefinitionSchemaVersion = typeof TradingPolicyDefinitionSchemaVersion[keyof typeof TradingPolicyDefinitionSchemaVersion];
+
+
+export const TradingPolicyDefinitionSchemaVersion = {
+  NUMBER_1: 1,
+} as const;
+
+export type TradingPolicyDefinitionImplementation = typeof TradingPolicyDefinitionImplementation[keyof typeof TradingPolicyDefinitionImplementation];
+
+
+export const TradingPolicyDefinitionImplementation = {
+  'treasury-paper-controls/1': 'treasury-paper-controls/1',
+  'calibrated-event-lower-bound/1': 'calibrated-event-lower-bound/1',
+  'polymarket-event-observer/1': 'polymarket-event-observer/1',
+} as const;
+
+export type TradingPolicyDefinitionOpenPositions = typeof TradingPolicyDefinitionOpenPositions[keyof typeof TradingPolicyDefinitionOpenPositions];
+
+
+export const TradingPolicyDefinitionOpenPositions = {
+  preserve_original_exit_and_apply_emergency_controls: 'preserve_original_exit_and_apply_emergency_controls',
+} as const;
+
+export type TradingPolicyDefinitionSearch = typeof TradingPolicyDefinitionSearch[keyof typeof TradingPolicyDefinitionSearch];
+
+
+export const TradingPolicyDefinitionSearch = {
+  bitcoin: 'bitcoin',
+  ethereum: 'ethereum',
+  solana: 'solana',
+} as const;
+
+export type TradingPolicyDefinitionHorizon = typeof TradingPolicyDefinitionHorizon[keyof typeof TradingPolicyDefinitionHorizon];
+
+
+export const TradingPolicyDefinitionHorizon = {
+  event_resolution: 'event_resolution',
+} as const;
+
+export interface TradingPolicyDefinition {
+  /** @pattern ^[a-z][a-z0-9-]{2,70}$ */
+  id: string;
+  /**
+     * @minimum 1
+     * @maximum 1000000
+     */
+  version: number;
+  type: TradingPolicyDefinitionType;
+  scope: TradingPolicyDefinitionScope;
+  schemaVersion: TradingPolicyDefinitionSchemaVersion;
+  /**
+     * @minLength 3
+     * @maxLength 160
+     */
+  name: string;
+  implementation: TradingPolicyDefinitionImplementation;
+  /**
+     * @minLength 20
+     * @maxLength 2000
+     */
+  justification: string;
+  /**
+     * @maxLength 200
+     * @nullable
+     */
+  previousVersion?: string | null;
+  openPositions: TradingPolicyDefinitionOpenPositions;
+  controls: TradingPolicyControls;
+  search?: TradingPolicyDefinitionSearch;
+  horizon?: TradingPolicyDefinitionHorizon;
+}
+
+export type TradingPolicyVersionEnvironment = typeof TradingPolicyVersionEnvironment[keyof typeof TradingPolicyVersionEnvironment];
+
+
+export const TradingPolicyVersionEnvironment = {
+  development: 'development',
+  production: 'production',
+} as const;
+
+export type TradingPolicyVersionState = typeof TradingPolicyVersionState[keyof typeof TradingPolicyVersionState];
+
+
+export const TradingPolicyVersionState = {
+  validated: 'validated',
+  approved: 'approved',
+  active: 'active',
+  superseded: 'superseded',
+  revoked: 'revoked',
+} as const;
+
+export interface TradingPolicyVersion {
+  id: string;
+  environment: TradingPolicyVersionEnvironment;
+  definition: TradingPolicyDefinition;
+  contentHash: string;
+  sourceCommit: string;
+  sourcePath: string;
+  author: string;
+  justification: string;
+  publishedAt: string;
+  state: TradingPolicyVersionState;
+  approvalRequired: boolean;
+  /** @nullable */
+  approver?: string | null;
+  /** @nullable */
+  approvedAt?: string | null;
+  /** @nullable */
+  activatedAt?: string | null;
+  /** @nullable */
+  replacedBy?: string | null;
+}
+
+export type TradingPolicySourceState = typeof TradingPolicySourceState[keyof typeof TradingPolicySourceState];
+
+
+export const TradingPolicySourceState = {
+  draft: 'draft',
+  committed: 'committed',
+} as const;
+
+export interface TradingPolicySource {
+  key: string;
+  definition: TradingPolicyDefinition;
+  contentHash: string;
+  /** @nullable */
+  sourceCommit: string | null;
+  state: TradingPolicySourceState;
+}
+
+export type TradingEffectivePolicyAsset = typeof TradingEffectivePolicyAsset[keyof typeof TradingEffectivePolicyAsset];
+
+
+export const TradingEffectivePolicyAsset = {
+  btc: 'btc',
+  eth: 'eth',
+  sol: 'sol',
+} as const;
+
+export type TradingEffectivePolicyStatus = typeof TradingEffectivePolicyStatus[keyof typeof TradingEffectivePolicyStatus];
+
+
+export const TradingEffectivePolicyStatus = {
+  active: 'active',
+  blocked: 'blocked',
+} as const;
+
+export type TradingEffectivePolicyReference = { [key: string]: unknown };
+
+export type TradingEffectivePolicyConfiguration = { [key: string]: unknown };
+
+export interface TradingEffectivePolicy {
+  asset: TradingEffectivePolicyAsset;
+  status: TradingEffectivePolicyStatus;
+  reason: string;
+  reference?: TradingEffectivePolicyReference;
+  configuration?: TradingEffectivePolicyConfiguration;
+}
+
+export type TradingPolicyChangeActorType = typeof TradingPolicyChangeActorType[keyof typeof TradingPolicyChangeActorType];
+
+
+export const TradingPolicyChangeActorType = {
+  human: 'human',
+  agent: 'agent',
+} as const;
+
+export type TradingPolicyChangeDifferencesItem = { [key: string]: unknown };
+
+export interface TradingPolicyChange {
+  id: string;
+  action: string;
+  actor: string;
+  actorType: TradingPolicyChangeActorType;
+  reason: string;
+  at: string;
+  revision: number;
+  /** @nullable */
+  versionId?: string | null;
+  differences?: TradingPolicyChangeDifferencesItem[];
+}
+
+export type TradingAffectedOperationKind = typeof TradingAffectedOperationKind[keyof typeof TradingAffectedOperationKind];
+
+
+export const TradingAffectedOperationKind = {
+  opportunity: 'opportunity',
+  order: 'order',
+  position: 'position',
+} as const;
+
+export interface TradingAffectedOperation {
+  id: string;
+  kind: TradingAffectedOperationKind;
+  state: string;
+  /** @nullable */
+  originalEffectiveId?: string | null;
+  /** @nullable */
+  currentEffectiveId?: string | null;
+  action: string;
+}
+
+export type TradingPolicySnapshotEnvironment = typeof TradingPolicySnapshotEnvironment[keyof typeof TradingPolicySnapshotEnvironment];
+
+
+export const TradingPolicySnapshotEnvironment = {
+  development: 'development',
+  production: 'production',
+} as const;
+
+export interface TradingPolicySnapshot {
+  environment: TradingPolicySnapshotEnvironment;
+  revision: number;
+  permissions: string[];
+  sources: TradingPolicySource[];
+  versions: TradingPolicyVersion[];
+  effective: TradingEffectivePolicy[];
+  changes: TradingPolicyChange[];
+  affected: TradingAffectedOperation[];
+  asOf: string;
+}
+
+export type TradingPolicyCommandInputAction = typeof TradingPolicyCommandInputAction[keyof typeof TradingPolicyCommandInputAction];
+
+
+export const TradingPolicyCommandInputAction = {
+  propose: 'propose',
+  publish: 'publish',
+  approve: 'approve',
+  activate: 'activate',
+  rollback: 'rollback',
+  revoke: 'revoke',
+} as const;
+
+export type TradingPolicyCommandInputEnvironment = typeof TradingPolicyCommandInputEnvironment[keyof typeof TradingPolicyCommandInputEnvironment];
+
+
+export const TradingPolicyCommandInputEnvironment = {
+  development: 'development',
+  production: 'production',
+} as const;
+
+export type TradingPolicyCommandInputKey = typeof TradingPolicyCommandInputKey[keyof typeof TradingPolicyCommandInputKey];
+
+
+export const TradingPolicyCommandInputKey = {
+  global: 'global',
+  strategy: 'strategy',
+  btc: 'btc',
+  eth: 'eth',
+  sol: 'sol',
+} as const;
+
+export interface TradingPolicyCommandInput {
+  /**
+     * @minLength 1
+     * @maxLength 200
+     */
+  csrf: string;
+  action: TradingPolicyCommandInputAction;
+  environment: TradingPolicyCommandInputEnvironment;
+  key?: TradingPolicyCommandInputKey;
+  /** @maxLength 200 */
+  versionId?: string;
+  /** @pattern ^[a-f0-9]{40}$ */
+  sourceCommit?: string;
+  /**
+     * @minLength 12
+     * @maxLength 2000
+     */
+  reason: string;
+  /** @minimum 0 */
+  expectedRevision: number;
+}
+
+export type TradingPolicyReferenceEnvironment = typeof TradingPolicyReferenceEnvironment[keyof typeof TradingPolicyReferenceEnvironment];
+
+
+export const TradingPolicyReferenceEnvironment = {
+  development: 'development',
+  production: 'production',
+} as const;
+
+export type TradingPolicyReferenceVersions = {
+  treasury: string;
+  strategy: string;
+  specialist: string;
+};
+
+export type TradingPolicyReferenceHashes = {
+  treasury: string;
+  strategy: string;
+  specialist: string;
+};
+
+export type TradingPolicyReferenceImplementations = {
+  treasury: string;
+  strategy: string;
+  specialist: string;
+};
+
+export interface TradingPolicyReference {
+  effectiveId: string;
+  environment: TradingPolicyReferenceEnvironment;
+  revision: number;
+  versions: TradingPolicyReferenceVersions;
+  hashes: TradingPolicyReferenceHashes;
+  implementations: TradingPolicyReferenceImplementations;
+  exitTreatment: string;
+}
+
+export type AlphaDatumKind = typeof AlphaDatumKind[keyof typeof AlphaDatumKind];
+
+
+export const AlphaDatumKind = {
+  observed: 'observed',
+  estimated: 'estimated',
+  missing: 'missing',
+} as const;
+
+export interface AlphaDatum {
+  kind: AlphaDatumKind;
+  value?: unknown;
+  method?: string;
+  reason?: string;
+}
+
+export type AlphaOpportunityOriginNature = typeof AlphaOpportunityOriginNature[keyof typeof AlphaOpportunityOriginNature];
+
+
+export const AlphaOpportunityOriginNature = {
+  real_market_data: 'real_market_data',
+  internal_fixture: 'internal_fixture',
+} as const;
+
+export type AlphaOpportunityOrigin = {
+  provider: string;
+  snapshotId: string;
+  nature: AlphaOpportunityOriginNature;
+};
+
+export type AlphaOpportunityInstrument = {
+  id: string;
+  name: string;
+  outcome: string;
+  settlementAsset: AlphaDatum;
+};
+
+export type AlphaOpportunitySourcesItem = {
+  url: string;
+  producedAt: string;
+  collectedAt: string;
+  evidence: string;
+};
+
+export type AlphaOpportunitySourceSnapshotsItem = { [key: string]: unknown };
+
+export interface AlphaOpportunity {
+  id: string;
+  marketAgent: string;
+  specialist: string;
+  market: string;
+  origin: AlphaOpportunityOrigin;
+  instrument: AlphaOpportunityInstrument;
+  operation: AlphaDatum;
+  sources: AlphaOpportunitySourcesItem[];
+  model: AlphaDatum;
+  executablePrice: AlphaDatum;
+  costs: AlphaDatum;
+  liquidity: AlphaDatum;
+  estimatedReturn: AlphaDatum;
+  uncertainty: AlphaDatum;
+  risks: string[];
+  potentialLossUnits: AlphaDatum;
+  capitalUnits: AlphaDatum;
+  horizonSeconds: AlphaDatum;
+  correlation: AlphaDatum;
+  validUntil: string;
+  invalidationConditions: string[];
+  strategyVersion?: string;
+  policyVersion?: string;
+  deduplicationKey?: string;
+  policyEffectiveId?: string;
+  policyReference?: TradingPolicyReference;
+  sourceSnapshots?: AlphaOpportunitySourceSnapshotsItem[];
+  probability?: AlphaDatum;
+  orderQuote?: AlphaDatum;
+  exitPlan?: AlphaDatum;
+}
+
+export type AlphaOpportunityRecordState = typeof AlphaOpportunityRecordState[keyof typeof AlphaOpportunityRecordState];
+
+
+export const AlphaOpportunityRecordState = {
+  needs_update: 'needs_update',
+  qualified: 'qualified',
+  rejected: 'rejected',
+  selected: 'selected',
+  awaiting_authorization: 'awaiting_authorization',
+  allocation_authorized: 'allocation_authorized',
+  allocation_uncertain: 'allocation_uncertain',
+  allocation_confirmed: 'allocation_confirmed',
+  expired: 'expired',
+} as const;
+
+export type AlphaOpportunityRecordDecisionsItemLayer = typeof AlphaOpportunityRecordDecisionsItemLayer[keyof typeof AlphaOpportunityRecordDecisionsItemLayer];
+
+
+export const AlphaOpportunityRecordDecisionsItemLayer = {
+  specialist: 'specialist',
+  market: 'market',
+  BETTEX: 'BETTEX',
+  risk: 'risk',
+  execution: 'execution',
+} as const;
+
+export type AlphaOpportunityRecordDecisionsItem = {
+  layer: AlphaOpportunityRecordDecisionsItemLayer;
+  reason: string;
+  at: string;
+};
+
+export type AlphaOpportunityRecordQueueState = typeof AlphaOpportunityRecordQueueState[keyof typeof AlphaOpportunityRecordQueueState];
+
+
+export const AlphaOpportunityRecordQueueState = {
+  received: 'received',
+  validated: 'validated',
+  awaiting_decision: 'awaiting_decision',
+  selected: 'selected',
+  rejected: 'rejected',
+  expired: 'expired',
+  forwarded_to_execution: 'forwarded_to_execution',
+} as const;
+
+export interface AlphaOpportunityRecord {
+  opportunity: AlphaOpportunity;
+  state: AlphaOpportunityRecordState;
+  revision: number;
+  reason: string;
+  correlationId: string;
+  decisions: AlphaOpportunityRecordDecisionsItem[];
+  allocationUnits?: string;
+  governanceProposalId?: string;
+  transactionHash?: string;
+  queueState?: AlphaOpportunityRecordQueueState;
+  strategyVersion?: string;
+  priority?: string;
+  attempts?: number;
+  nextAttemptAt?: string;
+}
+
+export type AlphaAgentsSnapshotOrchestrator = {
+  id: string;
+  name: string;
+  mode: string;
+};
+
+export type AlphaAgentsSnapshotAgentsItemStatus = typeof AlphaAgentsSnapshotAgentsItemStatus[keyof typeof AlphaAgentsSnapshotAgentsItemStatus];
+
+
+export const AlphaAgentsSnapshotAgentsItemStatus = {
+  active: 'active',
+  planned: 'planned',
+  unavailable: 'unavailable',
+} as const;
+
+export type AlphaAgentsSnapshotAgentsItem = {
+  id: string;
+  name: string;
+  status: AlphaAgentsSnapshotAgentsItemStatus;
+  specialists: string[];
+};
+
+export type AlphaAgentsSnapshotSourceStatus = typeof AlphaAgentsSnapshotSourceStatus[keyof typeof AlphaAgentsSnapshotSourceStatus];
+
+
+export const AlphaAgentsSnapshotSourceStatus = {
+  not_collected: 'not_collected',
+  observed: 'observed',
+  partial: 'partial',
+  unavailable: 'unavailable',
+  no_btc_markets: 'no_btc_markets',
+  no_eligible_markets: 'no_eligible_markets',
+} as const;
+
+export type AlphaAgentsSnapshotSource = {
+  status: AlphaAgentsSnapshotSourceStatus;
+  attemptedAt: string;
+  opportunityCount: number;
+  error?: string;
+};
+
+export interface AlphaAgentsSnapshot {
+  orchestrator: AlphaAgentsSnapshotOrchestrator;
+  agents: AlphaAgentsSnapshotAgentsItem[];
+  source: AlphaAgentsSnapshotSource;
+  opportunities: AlphaOpportunityRecord[];
+}
+
+export type AlphaTradingPolicyMode = typeof AlphaTradingPolicyMode[keyof typeof AlphaTradingPolicyMode];
+
+
+export const AlphaTradingPolicyMode = {
+  simulation_only: 'simulation_only',
+} as const;
+
+export type AlphaTradingPolicyEnvironment = typeof AlphaTradingPolicyEnvironment[keyof typeof AlphaTradingPolicyEnvironment];
+
+
+export const AlphaTradingPolicyEnvironment = {
+  development: 'development',
+  production: 'production',
+} as const;
+
+export interface AlphaTradingPolicy {
+  version: string;
+  strategyVersion: string;
+  name: string;
+  mode: AlphaTradingPolicyMode;
+  maxOrderUnits: string;
+  maxCorrelatedUnits: string;
+  maxPortfolioUnits: string;
+  defensiveUnits: string;
+  maxQuoteAgeSeconds: number;
+  rules: string[];
+  published?: boolean;
+  effectiveId?: string;
+  specialistVersion?: string;
+  environment?: AlphaTradingPolicyEnvironment;
+}
+
+export type AlphaTradingSpecialistAsset = typeof AlphaTradingSpecialistAsset[keyof typeof AlphaTradingSpecialistAsset];
+
+
+export const AlphaTradingSpecialistAsset = {
+  btc: 'btc',
+  eth: 'eth',
+  sol: 'sol',
+} as const;
+
+export type AlphaTradingSpecialistProposalStatus = typeof AlphaTradingSpecialistProposalStatus[keyof typeof AlphaTradingSpecialistProposalStatus];
+
+
+export const AlphaTradingSpecialistProposalStatus = {
+  blocked: 'blocked',
+  enabled: 'enabled',
+} as const;
+
+export interface AlphaTradingSpecialist {
+  asset: AlphaTradingSpecialistAsset;
+  sourceStatus: string;
+  proposalStatus: AlphaTradingSpecialistProposalStatus;
+  reason: string;
+  attemptedAt: string;
+  observationCount: number;
+  sources: string[];
+}
+
+export type AlphaTradingCapitalStatus = typeof AlphaTradingCapitalStatus[keyof typeof AlphaTradingCapitalStatus];
+
+
+export const AlphaTradingCapitalStatus = {
+  unfunded: 'unfunded',
+  reconciled: 'reconciled',
+  divergence: 'divergence',
+} as const;
+
+export type AlphaTradingCapitalDistributableUnits = typeof AlphaTradingCapitalDistributableUnits[keyof typeof AlphaTradingCapitalDistributableUnits];
+
+
+export const AlphaTradingCapitalDistributableUnits = {
+  NUMBER_0: '0',
+} as const;
+
+export type AlphaTradingCapitalExposureItem = {
+  asset: string;
+  strategyVersion: string;
+  units: string;
+};
+
+export interface AlphaTradingCapital {
+  status: AlphaTradingCapitalStatus;
+  /** @nullable */
+  cashUnits: string | null;
+  /** @nullable */
+  availableUnits: string | null;
+  reservedUnits: string;
+  committedUnits: string;
+  obligationsUnits: string;
+  realizedUnits: string;
+  distributableUnits: AlphaTradingCapitalDistributableUnits;
+  reconciliation: string;
+  exposure: AlphaTradingCapitalExposureItem[];
+}
+
+export type AlphaTradingDecisionState = typeof AlphaTradingDecisionState[keyof typeof AlphaTradingDecisionState];
+
+
+export const AlphaTradingDecisionState = {
+  selected: 'selected',
+  rejected: 'rejected',
+  hold: 'hold',
+} as const;
+
+export type AlphaTradingDecisionPolicySnapshot = { [key: string]: unknown };
+
+export interface AlphaTradingDecision {
+  id: string;
+  opportunityId: string;
+  asset: string;
+  state: AlphaTradingDecisionState;
+  reason: string;
+  at: string;
+  policyVersion: string;
+  strategyVersion: string;
+  rank: number;
+  requestedUnits: string;
+  policyReference?: TradingPolicyReference;
+  policySnapshot?: AlphaTradingDecisionPolicySnapshot;
+}
+
+export interface AlphaTradingFill {
+  id: string;
+  at: string;
+  sharesUnits: string;
+  cashUnits: string;
+  feesUnits: string;
+  price: string;
+  source: string;
+}
+
+export type AlphaTradingOrderDirection = typeof AlphaTradingOrderDirection[keyof typeof AlphaTradingOrderDirection];
+
+
+export const AlphaTradingOrderDirection = {
+  buy: 'buy',
+  sell: 'sell',
+} as const;
+
+export type AlphaTradingOrderState = typeof AlphaTradingOrderState[keyof typeof AlphaTradingOrderState];
+
+
+export const AlphaTradingOrderState = {
+  pending: 'pending',
+  partial: 'partial',
+  filled: 'filled',
+  cancelled: 'cancelled',
+  expired: 'expired',
+  failed: 'failed',
+} as const;
+
+export type AlphaTradingOrderSubmittedQuote = { [key: string]: unknown };
+
+export type AlphaTradingOrderFillQuotesItem = { [key: string]: unknown };
+
+export interface AlphaTradingOrder {
+  id: string;
+  opportunityId: string;
+  decisionId: string;
+  positionId?: string;
+  asset: string;
+  instrumentId: string;
+  outcome: string;
+  direction: AlphaTradingOrderDirection;
+  state: AlphaTradingOrderState;
+  quantityUnits: string;
+  filledUnits: string;
+  reservedUnits: string;
+  policyVersion: string;
+  strategyVersion: string;
+  createdAt: string;
+  updatedAt: string;
+  reason: string;
+  fills: AlphaTradingFill[];
+  policyReference?: TradingPolicyReference;
+  submittedQuote?: AlphaTradingOrderSubmittedQuote;
+  fillQuotes?: AlphaTradingOrderFillQuotesItem[];
+}
+
+export type AlphaTradingValuationKind = typeof AlphaTradingValuationKind[keyof typeof AlphaTradingValuationKind];
+
+
+export const AlphaTradingValuationKind = {
+  executable: 'executable',
+  conservative: 'conservative',
+  indicative: 'indicative',
+  unavailable: 'unavailable',
+} as const;
+
+export type AlphaTradingValuationAction = typeof AlphaTradingValuationAction[keyof typeof AlphaTradingValuationAction];
+
+
+export const AlphaTradingValuationAction = {
+  hold: 'hold',
+  pause: 'pause',
+  reduce: 'reduce',
+  exit: 'exit',
+} as const;
+
+export interface AlphaTradingValuation {
+  at: string;
+  source: string;
+  /**
+     * Observed or indicative micro-USDC per event share, not an asset spot price
+     * @nullable
+     */
+  priceUnits: string | null;
+  /** @nullable */
+  producedAt: string | null;
+  kind: AlphaTradingValuationKind;
+  stale: boolean;
+  quantityUnits: string;
+  liquidatableUnits: string;
+  /** @nullable */
+  exitValueUnits: string | null;
+  /** @nullable */
+  unrealizedUnits: string | null;
+  /** @nullable */
+  updatedExpectedUnits: string | null;
+  action: AlphaTradingValuationAction;
+  reason: string;
+}
+
+export type AlphaTradingPositionState = typeof AlphaTradingPositionState[keyof typeof AlphaTradingPositionState];
+
+
+export const AlphaTradingPositionState = {
+  open: 'open',
+  reducing: 'reducing',
+  closed: 'closed',
+  settled: 'settled',
+} as const;
+
+export type AlphaTradingPositionExitState = typeof AlphaTradingPositionExitState[keyof typeof AlphaTradingPositionExitState];
+
+
+export const AlphaTradingPositionExitState = {
+  planned: 'planned',
+  triggered: 'triggered',
+  requested: 'requested',
+  partial: 'partial',
+  confirmed: 'confirmed',
+  blocked_liquidity: 'blocked_liquidity',
+} as const;
+
+export type AlphaTradingPositionResolutionState = typeof AlphaTradingPositionResolutionState[keyof typeof AlphaTradingPositionResolutionState];
+
+
+export const AlphaTradingPositionResolutionState = {
+  unresolved: 'unresolved',
+  resolved: 'resolved',
+  settlement_pending: 'settlement_pending',
+  settled: 'settled',
+} as const;
+
+export type AlphaTradingPositionPolicySnapshot = { [key: string]: unknown };
+
+export interface AlphaTradingPosition {
+  id: string;
+  opportunityId: string;
+  decisionId: string;
+  orderId: string;
+  asset: string;
+  event: string;
+  instrumentId: string;
+  outcome: string;
+  state: AlphaTradingPositionState;
+  quantityUnits: string;
+  entryCostUnits: string;
+  entryFeesUnits: string;
+  committedUnits: string;
+  originalExpectedUnits: string;
+  realizedUnits: string;
+  strategyVersion: string;
+  policyVersion: string;
+  openedAt: string;
+  updatedAt: string;
+  closedAt?: string;
+  exitPlan: string;
+  exitState: AlphaTradingPositionExitState;
+  resolutionState: AlphaTradingPositionResolutionState;
+  valuations: AlphaTradingValuation[];
+  policyReference?: TradingPolicyReference;
+  policySnapshot?: AlphaTradingPositionPolicySnapshot;
+}
+
+export type AlphaTradingJourneyMode = typeof AlphaTradingJourneyMode[keyof typeof AlphaTradingJourneyMode];
+
+
+export const AlphaTradingJourneyMode = {
+  paper_trading_no_real_money: 'paper_trading_no_real_money',
+} as const;
+
+export type AlphaTradingJourneyEventsItemDifferencesItem = {
+  field: string;
+  before: unknown;
+  after: unknown;
+};
+
+export type AlphaTradingJourneyEventsItem = {
+  at: string;
+  stage: string;
+  reason: string;
+  sequence: number;
+  policyReference?: TradingPolicyReference;
+  currentPolicyId?: string;
+  differences?: AlphaTradingJourneyEventsItemDifferencesItem[];
+};
+
+export interface AlphaTradingJourney {
+  mode: AlphaTradingJourneyMode;
+  opportunity: AlphaOpportunityRecord;
+  decisions: AlphaTradingDecision[];
+  orders: AlphaTradingOrder[];
+  positions: AlphaTradingPosition[];
+  events: AlphaTradingJourneyEventsItem[];
+}
+
+export type AlphaTradingSnapshotMode = typeof AlphaTradingSnapshotMode[keyof typeof AlphaTradingSnapshotMode];
+
+
+export const AlphaTradingSnapshotMode = {
+  paper_trading_no_real_money: 'paper_trading_no_real_money',
+} as const;
+
+export type AlphaTradingSnapshotPage = {
+  view: string;
+  total: number;
+  hasMore: boolean;
+  /** @nullable */
+  nextCursor: string | null;
+};
+
+export interface AlphaTradingSnapshot {
+  mode: AlphaTradingSnapshotMode;
+  asOf: string;
+  policy: AlphaTradingPolicy;
+  effectivePolicies?: TradingEffectivePolicy[];
+  specialists: AlphaTradingSpecialist[];
+  capital: AlphaTradingCapital;
+  opportunities: AlphaOpportunityRecord[];
+  decisions: AlphaTradingDecision[];
+  orders: AlphaTradingOrder[];
+  positions: AlphaTradingPosition[];
+  page: AlphaTradingSnapshotPage;
+}
+
+export interface TreasuryGovernancePolicy {
+  /** @pattern ^(0|[1-9][0-9]{0,39})$ */
+  defensiveUnits: string;
+  /** @pattern ^[1-9][0-9]{0,39}$ */
+  maxAllocationUnits: string;
+  /** @pattern ^[1-9][0-9]{0,39}$ */
+  dailyLimitUnits: string;
+  /**
+     * @minItems 1
+     * @maxItems 10
+     * @items.pattern ^0x[0-9a-fA-F]{40}$
+     */
+  destinations: string[];
+}
+
+export type TreasuryGovernancePermissionPermission = typeof TreasuryGovernancePermissionPermission[keyof typeof TreasuryGovernancePermissionPermission];
+
+
+export const TreasuryGovernancePermissionPermission = {
+  treasury_view: 'treasury_view',
+  treasury_propose: 'treasury_propose',
+  treasury_approve: 'treasury_approve',
+  treasury_execute: 'treasury_execute',
+  treasury_pause: 'treasury_pause',
+  treasury_policy: 'treasury_policy',
+  treasury_activate: 'treasury_activate',
+} as const;
+
+export interface TreasuryGovernancePermission {
+  /**
+     * @minLength 1
+     * @maxLength 100
+     */
+  target: string;
+  permission: TreasuryGovernancePermissionPermission;
+  grant: boolean;
+}
+
+export type TreasuryGovernanceCommandBodyAction = typeof TreasuryGovernanceCommandBodyAction[keyof typeof TreasuryGovernanceCommandBodyAction];
+
+
+export const TreasuryGovernanceCommandBodyAction = {
+  analyze: 'analyze',
+  propose: 'propose',
+  approve: 'approve',
+  reject: 'reject',
+  execute: 'execute',
+  pause: 'pause',
+  resume: 'resume',
+} as const;
+
+export type TreasuryGovernanceCommandBodyKind = typeof TreasuryGovernanceCommandBodyKind[keyof typeof TreasuryGovernanceCommandBodyKind];
+
+
+export const TreasuryGovernanceCommandBodyKind = {
+  allocation: 'allocation',
+  policy: 'policy',
+  permission: 'permission',
+} as const;
+
+export interface TreasuryGovernanceCommandBody {
+  /**
+     * @minLength 1
+     * @maxLength 200
+     */
+  csrf: string;
+  action: TreasuryGovernanceCommandBodyAction;
+  /** @pattern ^[A-Za-z0-9:_-]{1,100}$ */
+  id: string;
+  /**
+     * @minLength 1
+     * @maxLength 500
+     */
+  reason: string;
+  kind?: TreasuryGovernanceCommandBodyKind;
+  /** @pattern ^[1-9][0-9]{0,39}$ */
+  units?: string;
+  /** @pattern ^0x[0-9a-fA-F]{40}$ */
+  destination?: string;
+  policy?: TreasuryGovernancePolicy;
+  permission?: TreasuryGovernancePermission;
+}
+
+export interface TreasuryGovernanceResponse { [key: string]: unknown }
+
+export interface HistoryAggregate {
+  environment: string;
+  chainId: number;
+  capitalUnits: string;
+  decimals: number;
+  operationCount: string;
+}
+
+export interface HistoryDistributionInput {
+  requestId: string;
+}
+
+export type HistoryEntryData = { [key: string]: unknown };
+
+export interface HistoryEntry {
+  id: string;
+  correlationId: string;
+  category: string;
+  kind: string;
+  state: string;
+  actor: string;
+  environment: string;
+  /** @nullable */
+  chainId?: number | null;
+  /** @nullable */
+  asset?: string | null;
+  /** @nullable */
+  wallet?: string | null;
+  /** @nullable */
+  transactionHash?: string | null;
+  /** @nullable */
+  blockHash?: string | null;
+  /** @nullable */
+  blockNumber?: number | null;
+  /** @nullable */
+  logIndex?: number | null;
+  occurredAt: string;
+  /** @nullable */
+  requestedAt?: string | null;
+  processedAt: string;
+  reconstructed: boolean;
+  source: string;
+  /** @nullable */
+  parentId?: string | null;
+  data: HistoryEntryData;
+}
+
+export type HistoryPageSyncState = typeof HistoryPageSyncState[keyof typeof HistoryPageSyncState];
+
+
+export const HistoryPageSyncState = {
+  current: 'current',
+  unavailable: 'unavailable',
+} as const;
+
+export interface HistoryPage {
+  items: HistoryEntry[];
+  /** @nullable */
+  nextCursor: string | null;
+  completeFrom: string;
+  limitations: string[];
+  timezone: string;
+  syncState?: HistoryPageSyncState;
+  warning?: string;
+}
+
+export interface NativeTestTransaction {
+  chainId: number;
+  nonce: number;
+  to: string;
+  data: string;
+  value: string;
+  gasLimit: string;
+  gasPrice: string;
+}
+
+export interface NativeTestStage {
+  name: string;
+  state: string;
+  /** @nullable */
+  transactionHash?: string | null;
+  draft?: NativeTestTransaction;
+}
+
+export type NativeTestOperationKind = typeof NativeTestOperationKind[keyof typeof NativeTestOperationKind];
+
+
+export const NativeTestOperationKind = {
+  fund: 'fund',
+  purchase: 'purchase',
+  distribution: 'distribution',
+} as const;
+
+export interface NativeTestOperation {
+  id: string;
+  kind: NativeTestOperationKind;
+  quantity: string;
+  principal: string;
+  fee: string;
+  createdAt: string;
+  stages: NativeTestStage[];
+}
+
+export type NativeTestJourneyCommandAction = typeof NativeTestJourneyCommandAction[keyof typeof NativeTestJourneyCommandAction];
+
+
+export const NativeTestJourneyCommandAction = {
+  fund: 'fund',
+  quote: 'quote',
+  sign: 'sign',
+  'distribution-test': 'distribution-test',
+} as const;
+
+export type NativeTestJourneyCommandStage = typeof NativeTestJourneyCommandStage[keyof typeof NativeTestJourneyCommandStage];
+
+
+export const NativeTestJourneyCommandStage = {
+  approve: 'approve',
+  buy: 'buy',
+} as const;
+
+export interface NativeTestJourneyCommand {
+  action: NativeTestJourneyCommandAction;
+  csrf: string;
+  acknowledgeLocal?: boolean;
+  operationId?: string;
+  /** @pattern ^[1-9][0-9]{0,8}$ */
+  quantity?: string;
+  stage?: NativeTestJourneyCommandStage;
+  /**
+     * @maxLength 8192
+     * @pattern ^0x[0-9a-fA-F]+$
+     */
+  signedTransaction?: string;
+}
+
+export type NativeTestJourneyEnvironment = typeof NativeTestJourneyEnvironment[keyof typeof NativeTestJourneyEnvironment];
+
+
+export const NativeTestJourneyEnvironment = {
+  local_evm: 'local_evm',
+} as const;
+
+export type NativeTestJourneySettlementSource = typeof NativeTestJourneySettlementSource[keyof typeof NativeTestJourneySettlementSource];
+
+
+export const NativeTestJourneySettlementSource = {
+  synthetic_local_test: 'synthetic_local_test',
+} as const;
+
+export type NativeTestJourneySettlement = {
+  id: string;
+  source: NativeTestJourneySettlementSource;
+  resultUnits: string;
+  retainedUnits: string;
+  buybackUnits: string;
+  buybackAddress: string;
+  buybackState: string;
+  /** @nullable */
+  buybackTransactionHash: string | null;
+  pendingUnits: string;
+  paidUnits: string;
+  ownUnits: string;
+  ownState: string;
+  /** @nullable */
+  ownTransactionHash: string | null;
+  /** @nullable */
+  snapshotBlock: number | null;
+  /** @nullable */
+  snapshotHash: string | null;
+};
+
+export type NativeTestJourneyBalances = {
+  usdc: string;
+  bettex: string;
+  depositGas: string;
+  bettexGas: string;
+};
+
+export type NativeTestJourneySale = {
+  address: string;
+  token: string;
+  usdc: string;
+  price: string;
+  fee: string;
+  available: string;
+  sold: string;
+  paused: boolean;
+  reserveUsdc: string;
+};
+
+export type NativeTestJourneyTreasury = {
+  address: string;
+  operatingAddress: string;
+  balanceUsdc: string;
+  principalUsdc: string;
+  soldBettex: string;
+  accountingAvailable: boolean;
+};
+
+export type NativeTestJourneyParticipation = {
+  model: string;
+  balance: string;
+  eligible: string;
+  tokenSeconds: string;
+  /** @nullable */
+  startedAt: number | null;
+  roundStart: number;
+  roundEnd: number;
+  settlement: string;
+  assessedUsdc: string;
+  availableUsdc: string;
+  paidUsdc: string;
+};
+
+export type NativeTestJourneyEventsItemKind = typeof NativeTestJourneyEventsItemKind[keyof typeof NativeTestJourneyEventsItemKind];
+
+
+export const NativeTestJourneyEventsItemKind = {
+  free_test_funding: 'free_test_funding',
+  external_deposit: 'external_deposit',
+  purchase: 'purchase',
+} as const;
+
+export type NativeTestJourneyEventsItem = {
+  id: string;
+  kind: NativeTestJourneyEventsItemKind;
+  hash: string;
+  blockNumber: number;
+  blockHash: string;
+  logIndex: number;
+  timestamp: number;
+  value: string;
+  bettex?: string;
+  principal?: string;
+  fee?: string;
+  treasuryReceived?: string;
+  gasWei?: string;
+};
+
+export interface NativeTestJourney {
+  epoch: string;
+  chainId: number;
+  environment: NativeTestJourneyEnvironment;
+  updatedAt: string;
+  blockHash: string;
+  blockNumber: number;
+  depositWallet: string;
+  bettexWallet: string;
+  archivedCount: number;
+  settlement: NativeTestJourneySettlement;
+  balances: NativeTestJourneyBalances;
+  sale: NativeTestJourneySale;
+  treasury: NativeTestJourneyTreasury;
+  participation: NativeTestJourneyParticipation;
+  events: NativeTestJourneyEventsItem[];
+  operations: NativeTestOperation[];
+}
+
+export interface TestContractInput {
+  /** @pattern ^0x[a-fA-F0-9]{40}$ */
+  address: string;
+}
+
+export interface TestContractEvent {
+  name: string;
+  transactionHash: string;
+  blockHash: string;
+  blockNumber: number;
+  logIndex: number;
+  address: string;
+  values: string;
+}
+
+export type TestContractAllocationKind = typeof TestContractAllocationKind[keyof typeof TestContractAllocationKind];
+
+
+export const TestContractAllocationKind = {
+  public: 'public',
+  founder: 'founder',
+  investors: 'investors',
+} as const;
+
+export interface TestContractAllocation {
+  kind: TestContractAllocationKind;
+  address: string;
+  beneficiary: string;
+  total: string;
+  released: string;
+  locked: string;
+  available: string;
+}
+
+export interface TestContractState {
+  configured: boolean;
+  chainId: number;
+  version: string;
+  address?: string;
+  symbol?: string;
+  blockNumber?: number;
+  blockHash?: string;
+  paused?: boolean;
+  totalSupply?: string;
+  sold?: string;
+  priceUsdc?: string;
+  feeUsdc?: string;
+  treasury?: string;
+  operatingWallet?: string;
+  nextRelease?: number;
+  currentMonth?: number;
+  historyFromBlock?: number;
+  historyPartial?: boolean;
+  allocations: TestContractAllocation[];
+  events: TestContractEvent[];
+}
+
+export type WalletVaultEnvelopeVersion = typeof WalletVaultEnvelopeVersion[keyof typeof WalletVaultEnvelopeVersion];
+
+
+export const WalletVaultEnvelopeVersion = {
+  NUMBER_1: 1,
+} as const;
+
+export type WalletVaultEnvelopeIterations = typeof WalletVaultEnvelopeIterations[keyof typeof WalletVaultEnvelopeIterations];
+
+
+export const WalletVaultEnvelopeIterations = {
+  NUMBER_600000: 600000,
+} as const;
+
+export interface WalletVaultEnvelope {
+  version: WalletVaultEnvelopeVersion;
+  iterations: WalletVaultEnvelopeIterations;
+  /** @maxLength 44 */
+  salt: string;
+  /** @maxLength 24 */
+  iv: string;
+  /**
+     * @minLength 80
+     * @maxLength 12000
+     */
+  ciphertext: string;
+  registrationId: string;
+}
+
+export type PersonalTestWalletPurpose = typeof PersonalTestWalletPurpose[keyof typeof PersonalTestWalletPurpose];
+
+
+export const PersonalTestWalletPurpose = {
+  deposits: 'deposits',
+  bettex: 'bettex',
+} as const;
+
+export type PersonalTestWalletChainIdsItem = typeof PersonalTestWalletChainIdsItem[keyof typeof PersonalTestWalletChainIdsItem];
+
+
+export const PersonalTestWalletChainIdsItem = {
+  NUMBER_421614: 421614,
+  NUMBER_31337: 31337,
+} as const;
+
+export interface PersonalTestWallet {
+  id: string;
+  purpose: PersonalTestWalletPurpose;
+  /** @pattern ^0x[0-9a-fA-F]{40}$ */
+  address: string;
+  /** @pattern ^0x04[0-9a-fA-F]{128}$ */
+  publicKey: string;
+  /**
+     * @minItems 1
+     * @maxItems 2
+     */
+  chainIds: PersonalTestWalletChainIdsItem[];
+}
+
+export interface TestAccountIdentity {
+  id: string;
+  displayName: string;
+  email: string;
+  emailVerified: false;
+  revision: number;
+  acceptedAt: string;
+  noticeVersion: string;
+}
+
+export interface TestAccountSnapshot {
+  enabled: boolean;
+  isAdmin?: boolean;
+  account: TestAccountIdentity | null;
+  wallets: PersonalTestWallet[];
+  vault: WalletVaultEnvelope | null;
+  csrf: string;
+}
+
+export type TestAccountCommandAction = typeof TestAccountCommandAction[keyof typeof TestAccountCommandAction];
+
+
+export const TestAccountCommandAction = {
+  signup: 'signup',
+  signin: 'signin',
+  signout: 'signout',
+  name: 'name',
+  email: 'email',
+  password: 'password',
+  reauth: 'reauth',
+  'private-request': 'private-request',
+  'private-result': 'private-result',
+} as const;
+
+export type TestAccountCommandPrivateAction = typeof TestAccountCommandPrivateAction[keyof typeof TestAccountCommandPrivateAction];
+
+
+export const TestAccountCommandPrivateAction = {
+  reveal: 'reveal',
+  copy: 'copy',
+  'private-download': 'private-download',
+  'encrypted-backup': 'encrypted-backup',
+} as const;
+
+export type TestAccountCommandResultState = typeof TestAccountCommandResultState[keyof typeof TestAccountCommandResultState];
+
+
+export const TestAccountCommandResultState = {
+  initiated: 'initiated',
+  failed: 'failed',
+} as const;
+
+export interface TestAccountCommand {
+  action: TestAccountCommandAction;
+  requestId?: string;
+  walletId?: string;
+  privateAction?: TestAccountCommandPrivateAction;
+  resultState?: TestAccountCommandResultState;
+  /**
+     * @minLength 2
+     * @maxLength 60
+     */
+  displayName?: string;
+  /** @maxLength 254 */
+  email?: string;
+  /** @maxLength 128 */
+  password?: string;
+  /**
+     * @minLength 12
+     * @maxLength 128
+     */
+  newPassword?: string;
+  registrationId?: string;
+  accepted?: boolean;
+  noticeVersion?: string;
+  revision?: number;
+  csrf?: string;
+  /**
+     * @minItems 2
+     * @maxItems 2
+     */
+  wallets?: PersonalTestWallet[];
+  vault?: WalletVaultEnvelope;
+}
+
 export interface DemoProfileInput {
   /**
      * @minLength 2
@@ -45,7 +1684,19 @@ export interface DemoMovementInput {
   destination?: string;
 }
 
+export type DemoProfileProvider = typeof DemoProfileProvider[keyof typeof DemoProfileProvider];
+
+
+export const DemoProfileProvider = {
+  anonymous: 'anonymous',
+  native: 'native',
+  clerk: 'clerk',
+} as const;
+
 export interface DemoProfile {
+  authenticated?: boolean;
+  provider?: DemoProfileProvider;
+  canViewTreasuryHistory?: boolean;
   name: string;
   email: string;
   memberSince: string;
@@ -355,4 +2006,300 @@ export interface DemoDashboard {
 export interface HealthStatus {
   status: string;
 }
+
+export type GetSimulationParams = {
+runId?: string;
+kind?: string;
+/**
+ * @minimum 0
+ */
+offset?: number;
+};
+
+export type GetTradingPoliciesParams = {
+environment?: GetTradingPoliciesEnvironment;
+};
+
+export type GetTradingPoliciesEnvironment = typeof GetTradingPoliciesEnvironment[keyof typeof GetTradingPoliciesEnvironment];
+
+
+export const GetTradingPoliciesEnvironment = {
+  development: 'development',
+  production: 'production',
+} as const;
+
+export type GetAlphaTradingParams = {
+view?: GetAlphaTradingView;
+asset?: GetAlphaTradingAsset;
+/**
+ * @maxLength 40
+ */
+state?: string;
+/**
+ * @maxLength 400
+ */
+cursor?: string;
+/**
+ * @minimum 1
+ * @maximum 50
+ */
+limit?: number;
+};
+
+export type GetAlphaTradingView = typeof GetAlphaTradingView[keyof typeof GetAlphaTradingView];
+
+
+export const GetAlphaTradingView = {
+  opportunities: 'opportunities',
+  decisions: 'decisions',
+  orders: 'orders',
+  positions: 'positions',
+  closed: 'closed',
+} as const;
+
+export type GetAlphaTradingAsset = typeof GetAlphaTradingAsset[keyof typeof GetAlphaTradingAsset];
+
+
+export const GetAlphaTradingAsset = {
+  btc: 'btc',
+  eth: 'eth',
+  sol: 'sol',
+} as const;
+
+export type GetTestHistoryParams = {
+view?: GetTestHistoryView;
+environment?: GetTestHistoryEnvironment;
+category?: GetTestHistoryCategory;
+/**
+ * @maxLength 40
+ */
+state?: string;
+asset?: GetTestHistoryAsset;
+/**
+ * @minimum 1
+ */
+chainId?: number;
+/**
+ * @maxLength 100
+ */
+wallet?: string;
+from?: string;
+to?: string;
+/**
+ * @maxLength 60
+ */
+kind?: string;
+/**
+ * @maxLength 100
+ */
+correlationId?: string;
+/**
+ * @maxLength 2000
+ */
+cursor?: string;
+/**
+ * @minimum 1
+ * @maximum 50
+ */
+limit?: number;
+};
+
+export type GetTestHistoryView = typeof GetTestHistoryView[keyof typeof GetTestHistoryView];
+
+
+export const GetTestHistoryView = {
+  general: 'general',
+  swapping: 'swapping',
+  staking: 'staking',
+  distributions: 'distributions',
+  activity: 'activity',
+  treasury: 'treasury',
+} as const;
+
+export type GetTestHistoryEnvironment = typeof GetTestHistoryEnvironment[keyof typeof GetTestHistoryEnvironment];
+
+
+export const GetTestHistoryEnvironment = {
+  account_test: 'account_test',
+  local_evm: 'local_evm',
+  simulation: 'simulation',
+  testnet: 'testnet',
+  production: 'production',
+} as const;
+
+export type GetTestHistoryCategory = typeof GetTestHistoryCategory[keyof typeof GetTestHistoryCategory];
+
+
+export const GetTestHistoryCategory = {
+  financial: 'financial',
+  activity: 'activity',
+  automatic: 'automatic',
+} as const;
+
+export type GetTestHistoryAsset = typeof GetTestHistoryAsset[keyof typeof GetTestHistoryAsset];
+
+
+export const GetTestHistoryAsset = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+  ETH: 'ETH',
+} as const;
+
+export type GetDemoHistoryParams = {
+view?: GetDemoHistoryView;
+environment?: GetDemoHistoryEnvironment;
+category?: GetDemoHistoryCategory;
+/**
+ * @maxLength 40
+ */
+state?: string;
+asset?: GetDemoHistoryAsset;
+/**
+ * @minimum 1
+ */
+chainId?: number;
+/**
+ * @maxLength 100
+ */
+wallet?: string;
+from?: string;
+to?: string;
+/**
+ * @maxLength 60
+ */
+kind?: string;
+/**
+ * @maxLength 100
+ */
+correlationId?: string;
+/**
+ * @maxLength 2000
+ */
+cursor?: string;
+/**
+ * @minimum 1
+ * @maximum 50
+ */
+limit?: number;
+};
+
+export type GetDemoHistoryView = typeof GetDemoHistoryView[keyof typeof GetDemoHistoryView];
+
+
+export const GetDemoHistoryView = {
+  general: 'general',
+  swapping: 'swapping',
+  staking: 'staking',
+  distributions: 'distributions',
+  activity: 'activity',
+  treasury: 'treasury',
+} as const;
+
+export type GetDemoHistoryEnvironment = typeof GetDemoHistoryEnvironment[keyof typeof GetDemoHistoryEnvironment];
+
+
+export const GetDemoHistoryEnvironment = {
+  account_test: 'account_test',
+  local_evm: 'local_evm',
+  simulation: 'simulation',
+  testnet: 'testnet',
+  production: 'production',
+} as const;
+
+export type GetDemoHistoryCategory = typeof GetDemoHistoryCategory[keyof typeof GetDemoHistoryCategory];
+
+
+export const GetDemoHistoryCategory = {
+  financial: 'financial',
+  activity: 'activity',
+  automatic: 'automatic',
+} as const;
+
+export type GetDemoHistoryAsset = typeof GetDemoHistoryAsset[keyof typeof GetDemoHistoryAsset];
+
+
+export const GetDemoHistoryAsset = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+  ETH: 'ETH',
+} as const;
+
+export type GetTreasuryHistoryParams = {
+view?: GetTreasuryHistoryView;
+environment?: GetTreasuryHistoryEnvironment;
+category?: GetTreasuryHistoryCategory;
+/**
+ * @maxLength 40
+ */
+state?: string;
+asset?: GetTreasuryHistoryAsset;
+/**
+ * @minimum 1
+ */
+chainId?: number;
+/**
+ * @maxLength 100
+ */
+wallet?: string;
+from?: string;
+to?: string;
+/**
+ * @maxLength 60
+ */
+kind?: string;
+/**
+ * @maxLength 100
+ */
+correlationId?: string;
+/**
+ * @maxLength 2000
+ */
+cursor?: string;
+/**
+ * @minimum 1
+ * @maximum 50
+ */
+limit?: number;
+};
+
+export type GetTreasuryHistoryView = typeof GetTreasuryHistoryView[keyof typeof GetTreasuryHistoryView];
+
+
+export const GetTreasuryHistoryView = {
+  general: 'general',
+  swapping: 'swapping',
+  staking: 'staking',
+  distributions: 'distributions',
+  activity: 'activity',
+  treasury: 'treasury',
+} as const;
+
+export type GetTreasuryHistoryEnvironment = typeof GetTreasuryHistoryEnvironment[keyof typeof GetTreasuryHistoryEnvironment];
+
+
+export const GetTreasuryHistoryEnvironment = {
+  account_test: 'account_test',
+  local_evm: 'local_evm',
+  simulation: 'simulation',
+  testnet: 'testnet',
+  production: 'production',
+} as const;
+
+export type GetTreasuryHistoryCategory = typeof GetTreasuryHistoryCategory[keyof typeof GetTreasuryHistoryCategory];
+
+
+export const GetTreasuryHistoryCategory = {
+  financial: 'financial',
+  activity: 'activity',
+  automatic: 'automatic',
+} as const;
+
+export type GetTreasuryHistoryAsset = typeof GetTreasuryHistoryAsset[keyof typeof GetTreasuryHistoryAsset];
+
+
+export const GetTreasuryHistoryAsset = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+  ETH: 'ETH',
+} as const;
 

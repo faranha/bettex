@@ -2,6 +2,8 @@
 
 Pesquisa de documentação oficial e consultas públicas realizadas em 5 de outubro de 2026. Este documento não implica que o dashboard já foi conectado à Allora.
 
+O registro canônico de pendências, decisões necessárias e evidências para encerramento está em [Integrações Allora e Polymarket](integration-pendencies.md). As consultas descritas aqui são evidências daquela pesquisa, não disponibilidade atual presumida nem escolha autorizada de interface.
+
 ## Conclusão
 
 Allora é uma rede de inferência, não um chat e não uma bolsa. Consumir uma inferência não executa uma ordem. A visualização principal deve mostrar o mercado observado e a previsão correspondente, deixando decisões, risco, execução e resultados em camadas distintas.

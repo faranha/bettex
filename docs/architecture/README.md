@@ -10,7 +10,7 @@ A arquitetura-alvo separa responsabilidades antes de multiplicar processos. As f
 
 ## Contextos e propriedade
 
-O mapa único de módulos, responsabilidades, dados e dependências é mantido em [docs/architecture.md](../architecture.md). BTEX pertence à coordenação de agentes; risco/tesouraria autorizam; execução e assinatura permanecem distintos. Não criar mapas concorrentes neste documento de apoio.
+O mapa único de módulos, responsabilidades, dados e dependências é mantido em [docs/architecture.md](../architecture.md). BETTEX coordena e seleciona; especialista BTC entrega ao Mercado de Previsões, que valida e encaminha ao BETTEX. Risco/tesouraria autorizam; execução e assinatura permanecem distintos. Ver [hierarquia](../agent-hierarchy.md). Não criar mapas concorrentes neste documento de apoio.
 
 ## Fluxo-alvo
 
@@ -19,8 +19,9 @@ flowchart LR
   UI[App] --> API[API autenticada]
   API --> Accounts[Contas]
   API --> Ledger[Ledger]
-  Agents[Agentes produtores] --> Proposals[Propostas duráveis]
-  Proposals --> BTEX[BTEX]
+  BTC[Especialista BTC] --> Market[Mercado de Previsões]
+  Market --> Proposals[Propostas duráveis qualificadas]
+  Proposals --> BTEX[BETTEX]
   BTEX --> Risk[Risco e mandatos]
   Risk --> Reserve[Reserva atômica no ledger]
   Reserve --> Outbox[Outbox transacional]

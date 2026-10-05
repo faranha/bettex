@@ -1,6 +1,8 @@
 import app from "./app";
 import { logger } from "./lib/logger";
 import { startDemoScripts } from "./lib/demo-store";
+import { startNativeHistoryObserver } from "./routes/native-history-runtime";
+import { startAlphaScripts } from "./routes/alpha-runtime";
 
 const rawPort = process.env["PORT"];
 
@@ -24,4 +26,6 @@ app.listen(port, (err) => {
 
   logger.info({ port }, "Server listening");
   startDemoScripts();
+  startNativeHistoryObserver();
+  startAlphaScripts();
 });

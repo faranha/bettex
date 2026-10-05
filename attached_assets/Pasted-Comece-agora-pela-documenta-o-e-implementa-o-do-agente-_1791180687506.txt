@@ -1,0 +1,88 @@
+Comece agora pela documentação e implementação do agente de Tesouraria e Governança da BETTEX. Ele é a primeira capacidade de controle a ser estruturada antes de ampliar os agentes que operam recursos.
+
+1. PESQUISE E RESPEITE A ARQUITETURA
+
+Leia a documentação interna, decisões vigentes e implementações de tesouraria, staking, contratos, permissões e auditoria.
+
+Identifique como essa responsabilidade se encaixa na arquitetura existente. O nome “agente de Tesouraria e Governança” não autoriza criar um sistema paralelo nem concentrar todas as funções em um único componente.
+
+Reutilize os mecanismos existentes de eventos, processamento determinístico e persistência.
+
+2. CRIE A DOCUMENTAÇÃO CANÔNICA
+
+Documente, no local previsto pelo projeto:
+
+• Objetivo e limites do agente.
+• Componentes com os quais interage.
+• Contas, carteiras e contratos sob seu controle.
+• Dados de entrada e eventos produzidos.
+• Regras financeiras e invariantes.
+• Papéis, permissões e aprovações.
+• Estados das decisões e operações.
+• Tratamento de falhas, reconciliação e auditoria.
+• Critérios de teste e conclusão.
+
+Relacione cada regra à sua fonte. Identifique hipóteses de teste e decisões ainda não formalizadas.
+
+3. RESPONSABILIDADES DA TESOURARIA
+
+O agente deve acompanhar patrimônio, reservas, obrigações, recursos disponíveis, alocações aos agentes, resultados conciliados e distribuições.
+
+Deve validar as condições financeiras antes de autorizar movimentações e impedir dupla utilização dos mesmos recursos.
+
+Depósitos e receitas da venda de BETTEX são entradas de capital, não lucro.
+
+Implemente as regras documentadas de reserva, retenção, distribuição e recompra. Não invente rendimento nem contabilize como realizado um resultado sem evidência.
+
+4. RESPONSABILIDADES DE GOVERNANÇA
+
+Governança significa controlar como decisões são propostas, autorizadas, executadas e auditadas.
+
+Defina, conforme a documentação:
+
+• Quem pode propor e aprovar alterações.
+• Quais ações podem ser automáticas.
+• Quais exigem aprovação administrativa.
+• Quem pode pausar operações.
+• Como parâmetros são versionados.
+• Como permissões e destinos são alterados.
+• Como decisões entram em vigor.
+
+Não presuma que os titulares de BETTEX possuem voto. A documentação conhecida não concede voto societário; qualquer mecanismo de votação precisa de uma decisão explícita.
+
+Não permita que o agente amplie suas próprias permissões ou aprove a própria proposta quando houver exigência de segregação.
+
+5. NÚCLEO DETERMINÍSTICO
+
+As decisões financeiras executáveis devem seguir regras explícitas e verificáveis.
+
+Uma IA pode analisar, explicar e propor ações. Sua resposta não pode, por si só, autorizar transferências, modificar direitos econômicos ou contornar controles.
+
+Separe proposta, validação, autorização, execução e confirmação. Registre ator, regra, versão, justificativa e resultado.
+
+Execute novamente as validações relevantes antes da movimentação, evitando agir sobre saldos ou permissões desatualizados.
+
+6. PRIMEIRA IMPLEMENTAÇÃO EM TESTNET
+
+Após documentar, implemente um primeiro ciclo funcional:
+
+• Ler e reconciliar os recursos da tesouraria.
+• Registrar entradas de capital.
+• Consultar reservas e obrigações.
+• Receber uma proposta de alocação de teste.
+• Validar limites e permissões.
+• Autorizar ou rejeitar com justificativa.
+• Executar a operação permitida com ativos de teste.
+• Confirmar o resultado e registrar o histórico.
+
+Inclua pausa operacional, prevenção de duplicações e retomada após falhas.
+
+Não opere com dinheiro real.
+
+7. ENTREGA
+
+Entregue a documentação junto com a implementação verificada.
+
+Mostre onde cada responsabilidade foi integrada, as decisões tomadas e as evidências do ciclo de teste.
+
+O resultado deve ser uma base funcional de Tesouraria e Governança que permita conectar os próximos agentes sob limites claros, sem conceder acesso irrestrito aos recursos da BETTEX.

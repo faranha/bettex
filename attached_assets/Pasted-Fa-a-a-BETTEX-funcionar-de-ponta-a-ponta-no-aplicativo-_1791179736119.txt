@@ -1,0 +1,187 @@
+Faça a BETTEX funcionar de ponta a ponta no aplicativo.
+
+Já existem implementações do token, do pool de compra, do staking e da tesouraria. O desafio agora é integrar essas peças para que um usuário consiga depositar ativos de teste, comprar BETTEX, visualizar sua participação automática e conferir a destinação do pagamento à tesouraria.
+
+Não entregue apenas contratos, telas ou uma proposta: entregue um percurso funcional e verificado.
+
+1. EXAMINE O QUE EXISTE
+
+Leia a documentação interna vigente, as regras arquiteturais, o código, os contratos implantados e suas configurações.
+
+Identifique quais funcionalidades estão implementadas, quais são apenas interfaces e quais integrações estão incompletas.
+
+Respeite a arquitetura existente. Não recrie contratos, autenticação, banco ou módulos para contornar problemas de integração. Corrija as peças existentes quando possível.
+
+Utilize o nome BETTEX. Identifique na documentação qual ativo corresponde à referência “STC”; não invente um novo token. Se o ativo configurado for USDC de teste, apresente-o corretamente.
+
+2. FLUXO “DEPOSITAR”
+
+O usuário deve conseguir clicar em “Depositar” e encontrar:
+
+• Seu endereço de depósito.
+• A rede utilizada.
+• O ativo aceito.
+• QR code e opção de copiar endereço.
+• Histórico de depósitos.
+• Opção “Receber saldo de teste”.
+
+Essa última opção deve enviar ativos fictícios pela blockchain de testes, a partir da reserva operacional existente. Não basta aumentar um número no banco.
+
+Distribua também gas de teste às carteiras que precisarão transmitir operações.
+
+Mostre os estados solicitado, enviado, confirmado e falhou. Informe reserva insuficiente ou indisponibilidade sem simular sucesso.
+
+Depois da confirmação, atualize o saldo pela integração com a blockchain.
+
+Mantenha distribuição gratuita e depósito externo identificados separadamente no histórico.
+
+3. FLUXO “COMPRAR BETTEX”
+
+Conecte a interface ao pool ou contrato de venda realmente existente.
+
+Antes da confirmação, mostre:
+
+• Quantidade de BETTEX.
+• Preço vigente no ambiente de teste.
+• Valor principal.
+• Tarifa separada, quando aplicável.
+• Estimativa de gas.
+• Total necessário.
+• Carteira destinatária.
+
+Verifique saldo, aprovação, estoque liberado pelo vesting e disponibilidade do contrato.
+
+Execute a autorização de gasto quando necessária e depois a compra. Não use aprovação ilimitada por padrão.
+
+O pagamento deve sair da carteira de depósitos e os tokens chegar à carteira BETTEX do usuário, conforme a arquitetura.
+
+Não apresente uma solicitação enviada como compra concluída. Aguarde confirmação e valide os eventos.
+
+Impeça cliques repetidos de provocarem compras involuntariamente duplicadas.
+
+Não habilite recompra ou troca inversa se o pool existente não oferecer essa função.
+
+4. STAKING AUTOMÁTICO VISÍVEL
+
+Pesquise e respeite o mecanismo de staking automático já definido e implementado.
+
+Após a compra, o painel deve mostrar corretamente:
+
+• Saldo de BETTEX.
+• Quantidade em participação automática.
+• Quantidade efetivamente elegível.
+• Momento de início da participação.
+• Valores bloqueados ou pendentes, se existirem.
+• Rendimentos apurados, disponíveis e pagos.
+
+Não confunda saldo na carteira, tokens depositados em contrato e quantidade elegível.
+
+Se o mecanismo exigir uma transação adicional ou autorização do usuário, integre essa etapa de forma clara. Não declare staking ativo enquanto ela estiver pendente.
+
+Mostre a quantidade de tokens como informação principal. Se houver equivalente em USDC, identifique a fonte e o horário do preço utilizado. Esse equivalente não é saldo em dólares nem garantia de resgate.
+
+5. TESOURARIA FUNCIONANDO
+
+Cada compra confirmada deve encaminhar automaticamente o principal à tesouraria conforme as regras documentadas.
+
+Se a implementação encaminhar o pagamento em uma etapa posterior, acompanhe essa etapa até sua confirmação e mostre o estado pendente. Não declare que a tesouraria recebeu antes disso.
+
+Tarifas destinadas à companhia devem permanecer separadas.
+
+No detalhe da compra, mostre:
+
+• BETTEX recebido.
+• USDC pago como principal.
+• Tarifa.
+• Valor efetivamente recebido pela tesouraria.
+• Transação ou transações correspondentes.
+
+Na área de transparência, permita consultar:
+
+• Saldo on-chain da tesouraria, por rede e ativo.
+• Total de principal recebido das vendas confirmadas.
+• Recursos alocados ou comprometidos, quando disponíveis.
+• Reserva e obrigações conforme a contabilidade existente.
+• Data da última atualização.
+
+Não confunda saldo de uma carteira com patrimônio total da tesouraria.
+
+Não apresente capital recebido pelas vendas como lucro.
+
+Diferencie estoque vendido de BETTEX, volume financeiro das vendas e saldo atual da tesouraria. São medidas distintas.
+
+Mostre dados agregados sem expor informações pessoais de outros usuários.
+
+6. BANCO, EVENTOS E RECONCILIAÇÃO
+
+Integre esses fluxos ao modelo existente de usuários, carteiras, redes, ativos, compras, staking e tesouraria.
+
+Utilize eventos on-chain e consultas verificáveis para confirmar os efeitos financeiros.
+
+Registre rede, hash, índice do evento, valores, participantes e estados de processamento.
+
+Garanta idempotência, tratamento de falhas, reorganizações e retomada após reinício.
+
+Uma transação confirmada deve atualizar consistentemente:
+
+• Histórico da compra.
+• Saldo ou recebimento de BETTEX.
+• Estado da participação.
+• Recebimento da tesouraria.
+
+Essas atualizações podem ocorrer em etapas, mas devem ter estados rastreáveis e reconciliação. Não esconda divergências.
+
+Ao reabrir o aplicativo ou entrar em outro dispositivo, o usuário deve encontrar os mesmos dados persistidos e conciliados.
+
+7. EXPERIÊNCIA DO USUÁRIO
+
+Complete o percurso sem exigir que o usuário use ferramentas de desenvolvimento ou conheça os contratos.
+
+Utilize ações claras: Depositar, Receber saldo de teste, Comprar BETTEX, Ver participação e Ver tesouraria.
+
+Mostre mensagens úteis para falta de gas, saldo insuficiente, estoque indisponível, rejeição da assinatura e falha de rede.
+
+Não solicite novamente uma assinatura já confirmada apenas porque a atualização da interface atrasou.
+
+Mantenha visível:
+
+“Ambiente de testes — ativos sem valor financeiro.”
+
+Não exponha chaves privadas ou detalhes internos desnecessários nas telas comuns.
+
+8. VERIFICAÇÃO DE PONTA A PONTA
+
+Execute o percurso real pela interface, com uma conta de teste:
+
+1. Criar conta e entrar.
+2. Clicar em Depositar.
+3. Receber ativo e gas de teste.
+4. Conferir o depósito confirmado.
+5. Comprar BETTEX.
+6. Conferir os tokens recebidos.
+7. Conferir a participação automática conforme as regras.
+8. Conferir o principal recebido pela tesouraria.
+9. Sair, entrar novamente e verificar a persistência dos dados.
+
+Verifique também falhas relevantes e novas tentativas sem duplicação.
+
+Compare valores antes e depois na blockchain e no banco. Considere o gas separadamente ao reconciliar o ativo nativo.
+
+Use exclusivamente testnets e ativos gratuitos.
+
+Não substitua transações públicas por saldos fictícios de interface. Se só conseguir testar localmente, declare essa limitação e deixe explícito o que falta para verificar a testnet.
+
+9. CRITÉRIO DE CONCLUSÃO
+
+A entrega só está funcional quando os botões executam as operações, os efeitos são confirmados, os dados persistem e o usuário consegue acompanhar o percurso completo.
+
+Ao terminar, apresente:
+
+• O que foi integrado e corrigido.
+• O resultado do percurso pela interface.
+• As transações que comprovam depósito, compra e recebimento na tesouraria.
+• A evidência de participação automática.
+• As divergências ou dependências ainda existentes.
+• Os passos simples para eu repetir o teste.
+
+Não declare sucesso com base apenas em compilação, testes unitários, telas prontas ou chamadas simuladas. Conclua a integração e demonstre o funcionamento.

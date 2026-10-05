@@ -11,6 +11,265 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /simulation:
+    get:
+      operationId: getSimulation
+      tags: [simulation]
+      parameters:
+        - { in: query, name: runId, schema: { type: string } }
+        - { in: query, name: kind, schema: { type: string } }
+        - { in: query, name: offset, schema: { type: integer, minimum: 0, default: 0 } }
+      responses:
+        "200":
+          description: Owner-scoped simulation runs and paginated history
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SimulationSnapshot" }
+    post:
+      operationId: commandSimulation
+      tags: [simulation]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/SimulationCommandInput" }
+      responses:
+        "200":
+          description: Committed simulation execution
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SimulationSnapshot" }
+  /treasury/policies:
+    get:
+      operationId: getTradingPolicies
+      tags: [treasury]
+      parameters:
+        - { in: query, name: environment, schema: { type: string, enum: [development, production], default: development } }
+      responses:
+        "200":
+          description: Protected policy registry and deterministic effective policies
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TradingPolicySnapshot" }
+        "401": { description: Session required }
+        "403": { description: Permission required }
+    post:
+      operationId: commandTradingPolicies
+      tags: [treasury]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/TradingPolicyCommandInput" }
+      responses:
+        "200":
+          description: Updated policy registry
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TradingPolicySnapshot" }
+        "400": { description: Invalid definition or command }
+        "403": { description: Authorization denied }
+        "409": { description: "Version, approval or activation conflict" }
+  /agents/alpha:
+    get:
+      operationId: getAlphaAgents
+      summary: Real BTC prediction-market observations and hierarchy states, never financial balances
+      responses:
+        "200":
+          description: Alpha registry, source availability and evidenced opportunities
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AlphaAgentsSnapshot" }
+        "503":
+          description: Durable observation store unavailable; no fabricated fallback
+  /agents/trading:
+    get:
+      operationId: getAlphaTrading
+      tags: [agents]
+      parameters:
+        - { name: view, in: query, schema: { type: string, enum: [opportunities, decisions, orders, positions, closed], default: opportunities } }
+        - { name: asset, in: query, schema: { type: string, enum: [btc, eth, sol] } }
+        - { name: state, in: query, schema: { type: string, maxLength: 40 } }
+        - { name: cursor, in: query, schema: { type: string, maxLength: 400 } }
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 50, default: 15 } }
+      responses:
+        "200":
+          description: Real observations and separate paper-execution accounting; never distributable profit
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AlphaTradingSnapshot" }
+        "400": { description: Invalid filter or cursor }
+        "503": { description: Store unavailable; no fictitious fallback }
+  /agents/trading/journey/{id}:
+    get:
+      operationId: getAlphaTradingJourney
+      tags: [agents]
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, maxLength: 110 } }
+      responses:
+        "200":
+          description: Evidence, decisions, authorization, orders, fills, valuations and settlement for one opportunity
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AlphaTradingJourney" }
+        "404": { description: Unknown journey }
+        "503": { description: Store unavailable }
+  /treasury/governance:
+    get:
+      operationId: getTreasuryGovernance
+      responses:
+        "200":
+          description: Permissioned reconciled local treasury controller; not public testnet or production
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TreasuryGovernanceResponse" }
+    post:
+      operationId: commandTreasuryGovernance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/TreasuryGovernanceCommandBody" }
+      responses:
+        "200":
+          description: Persisted proposal, deterministic authorization, activation or reconciled execution result
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TreasuryGovernanceResponse" }
+  /history/transparency:
+    get:
+      operationId: getHistoryTransparency
+      responses:
+        "200":
+          description: Aggregated capital from confirmed treasury receipts, excluding reversals and internal transfers
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/HistoryAggregate" }
+  /account/history:
+    get:
+      operationId: getTestHistory
+      parameters: &historyParameters
+        - { name: view, in: query, schema: { type: string, enum: [general, swapping, staking, distributions, activity, treasury] } }
+        - { name: environment, in: query, schema: { type: string, enum: [account_test, local_evm, simulation, testnet, production] } }
+        - { name: category, in: query, schema: { type: string, enum: [financial, activity, automatic] } }
+        - { name: state, in: query, schema: { type: string, maxLength: 40 } }
+        - { name: asset, in: query, schema: { type: string, enum: [USDC, BETTEX, ETH] } }
+        - { name: chainId, in: query, schema: { type: integer, minimum: 1 } }
+        - { name: wallet, in: query, schema: { type: string, maxLength: 100 } }
+        - { name: from, in: query, schema: { type: string, format: date-time } }
+        - { name: to, in: query, schema: { type: string, format: date-time } }
+        - { name: kind, in: query, schema: { type: string, maxLength: 60 } }
+        - { name: correlationId, in: query, schema: { type: string, maxLength: 100 } }
+        - { name: cursor, in: query, schema: { type: string, maxLength: 2000 } }
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 50, default: 20 } }
+      responses: &historyResponses
+        "200":
+          description: Authorized paginated shared journal
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/HistoryPage" }
+        "400": { description: Invalid filters or cursor }
+        "401": { description: Session required }
+        "403": { description: Permission required }
+  /demo/history:
+    get:
+      operationId: getDemoHistory
+      parameters: *historyParameters
+      responses: *historyResponses
+  /account/history/admin:
+    get:
+      operationId: getTreasuryHistory
+      parameters: *historyParameters
+      responses: *historyResponses
+  /demo/history/distribution-preview:
+    post:
+      operationId: previewHistoryDistribution
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HistoryDistributionInput"
+      responses:
+        "200": { description: Simulation calculation recorded without payout or new rights }
+        "403": { description: Development simulation only }
+  /test-contract:
+    get:
+      operationId: getTestContract
+      tags: [test-contract]
+      responses:
+        "200":
+          description: Blockchain-verified test contract state or explicit missing configuration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TestContractState"
+        "401":
+          description: Existing application login required
+        "503":
+          description: Blockchain could not be verified
+    post:
+      operationId: observeTestContract
+      tags: [test-contract]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TestContractInput"
+      responses:
+        "200":
+          description: Validated contract linked to this existing account
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TestContractState"
+        "400":
+          description: Invalid address or source mismatch
+        "401":
+          description: Existing application login required
+        "503":
+          description: Blockchain could not be verified
+  /account/session:
+    get:
+      operationId: getTestAccountSession
+      tags: [test-account]
+      responses:
+        "200":
+          description: Test-only account and encrypted personal vault
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TestAccountSnapshot"
+  /account/commands:
+    post:
+      operationId: testAccountCommand
+      tags: [test-account]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TestAccountCommand"
+      responses:
+        "200":
+          description: Updated account, no plaintext keys
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TestAccountSnapshot"
+        "400":
+          description: Invalid input
+        "401":
+          description: Invalid credentials
+        "403":
+          description: Test environment or session not authorized
+        "409":
+          description: Duplicate email or stale vault revision
+        "429":
+          description: Attempt limit exceeded
   /demo/dashboard:
     get:
       operationId: getDemoDashboard
@@ -73,8 +332,929 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /account/execution:
+    get:
+      operationId: getNativeTestJourney
+      responses:
+        "200":
+          description: Confirmed development-chain data for the authenticated personal wallets
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/NativeTestJourney" }
+    post:
+      operationId: nativeTestJourneyCommand
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/NativeTestJourneyCommand" }
+      responses:
+        "200":
+          description: Persisted operation state, not necessarily confirmation
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/NativeTestJourney" }
 components:
   schemas:
+    SimulationCommandInput:
+      type: object
+      additionalProperties: false
+      required: [csrf, requestId, action]
+      properties:
+        csrf: { type: string, minLength: 16, maxLength: 160 }
+        requestId: { type: string, minLength: 8, maxLength: 120 }
+        action: { type: string, enum: [start, advance, pause, resume, generate, market, failure, deposit, purchase, withdraw, reset, clock] }
+        runId: { type: string, maxLength: 120 }
+        expectedRevision: { type: integer, minimum: 0 }
+        scenario: { type: string, enum: [complete, insufficient_balance, expired_duplicate, no_opportunity, exposure, price_change, partial_fill, no_liquidity, integration_failure, payment_failure, restart] }
+        amountUnits: { type: string, pattern: "^[1-9][0-9]{0,12}$" }
+        seconds: { type: integer, minimum: 1, maximum: 86400 }
+        failure: { type: string, enum: [insufficient_balance, expired_duplicate, no_opportunity, exposure, price_change, partial_fill, no_liquidity, integration_failure, payment_failure, restart] }
+    SimulationRun:
+      type: object
+      additionalProperties: true
+      required: [id, environment, scenario, stage, revision, paused, clock]
+      properties:
+        id: { type: string }
+        environment: { type: string, enum: [simulation] }
+        scenario: { type: string }
+        stage: { type: integer }
+        revision: { type: integer }
+        paused: { type: boolean }
+        clock: { type: integer }
+    SimulationSnapshot:
+      type: object
+      additionalProperties: false
+      required: [mode, runs, run, events, total, offset, hasMore]
+      properties:
+        mode: { type: string, enum: [simulation] }
+        runs: { type: array, items: { $ref: "#/components/schemas/SimulationRun" } }
+        run:
+          oneOf:
+            - { $ref: "#/components/schemas/SimulationRun" }
+            - { type: "null" }
+        events: { type: array, items: { type: object, additionalProperties: true } }
+        total: { type: integer }
+        offset: { type: integer }
+        hasMore: { type: boolean }
+    TradingPolicyControls:
+      type: object
+      additionalProperties: false
+      properties:
+        mode: { type: string, enum: [simulation_only] }
+        paused: { type: boolean }
+        maxOrderUnits: { type: string, pattern: "^(0|[1-9][0-9]{0,39})$" }
+        maxCorrelatedUnits: { type: string, pattern: "^(0|[1-9][0-9]{0,39})$" }
+        maxPortfolioUnits: { type: string, pattern: "^(0|[1-9][0-9]{0,39})$" }
+        defensiveUnits: { type: string, pattern: "^(0|[1-9][0-9]{0,39})$" }
+        maxAssetUnits: { type: string, pattern: "^(0|[1-9][0-9]{0,39})$" }
+        maxEventUnits: { type: string, pattern: "^(0|[1-9][0-9]{0,39})$" }
+        maxStrategyUnits: { type: string, pattern: "^(0|[1-9][0-9]{0,39})$" }
+        maxCounterpartyUnits: { type: string, pattern: "^(0|[1-9][0-9]{0,39})$" }
+        maxQuoteAgeSeconds: { type: integer, minimum: 1, maximum: 3600 }
+        maxSourceAgeSeconds: { type: integer, minimum: 1, maximum: 3600 }
+        maxHorizonSeconds: { type: integer, minimum: 1, maximum: 604800 }
+        maxAttempts: { type: integer, minimum: 1, maximum: 10 }
+        retrySeconds: { type: integer, minimum: 1, maximum: 3600 }
+        minimumNetEdgeBps: { type: integer, minimum: 0, maximum: 10000 }
+        exitHysteresisBps: { type: integer, minimum: 0, maximum: 10000 }
+        reentryCooldownSeconds: { type: integer, minimum: 1, maximum: 604800 }
+        maximumHoldSeconds: { type: integer, minimum: 1, maximum: 604800 }
+        maximumLossBps: { type: integer, minimum: 1, maximum: 10000 }
+        allowedAssets: { type: array, minItems: 1, uniqueItems: true, items: { type: string, enum: [btc, eth, sol] } }
+        allowedProviders: { type: array, minItems: 1, uniqueItems: true, items: { type: string, enum: [polymarket_gamma_clob] } }
+        allowedMarkets: { type: array, minItems: 1, uniqueItems: true, items: { type: string, enum: [prediction] } }
+        requireCalibratedModel: { type: boolean, const: true }
+        requireCompleteCosts: { type: boolean, const: true }
+        requireExitPlan: { type: boolean, const: true }
+        requireReconciliation: { type: boolean, const: true }
+    TradingPolicyDefinition:
+      type: object
+      additionalProperties: false
+      required: [id, version, type, scope, schemaVersion, name, implementation, justification, controls, openPositions]
+      properties:
+        id: { type: string, pattern: "^[a-z][a-z0-9-]{2,70}$" }
+        version: { type: integer, minimum: 1, maximum: 1000000 }
+        type: { type: string, enum: [treasury, strategy, specialist] }
+        scope: { type: string, enum: [global, predictions, btc, eth, sol] }
+        schemaVersion: { type: integer, enum: [1] }
+        name: { type: string, minLength: 3, maxLength: 160 }
+        implementation: { type: string, enum: [treasury-paper-controls/1, calibrated-event-lower-bound/1, polymarket-event-observer/1] }
+        justification: { type: string, minLength: 20, maxLength: 2000 }
+        previousVersion: { type: ["string", "null"], maxLength: 200 }
+        openPositions: { type: string, enum: [preserve_original_exit_and_apply_emergency_controls] }
+        controls: { $ref: "#/components/schemas/TradingPolicyControls" }
+        search: { type: string, enum: [bitcoin, ethereum, solana] }
+        horizon: { type: string, enum: [event_resolution] }
+    TradingPolicyVersion:
+      type: object
+      required: [id, environment, definition, contentHash, sourceCommit, sourcePath, author, justification, publishedAt, state, approvalRequired]
+      properties:
+        id: { type: string }
+        environment: { type: string, enum: [development, production] }
+        definition: { $ref: "#/components/schemas/TradingPolicyDefinition" }
+        contentHash: { type: string }
+        sourceCommit: { type: string }
+        sourcePath: { type: string }
+        author: { type: string }
+        justification: { type: string }
+        publishedAt: { type: string }
+        state: { type: string, enum: [validated, approved, active, superseded, revoked] }
+        approvalRequired: { type: boolean }
+        approver: { type: ["string", "null"] }
+        approvedAt: { type: ["string", "null"] }
+        activatedAt: { type: ["string", "null"] }
+        replacedBy: { type: ["string", "null"] }
+    TradingPolicySource:
+      type: object
+      required: [key, definition, contentHash, sourceCommit, state]
+      properties:
+        key: { type: string }
+        definition: { $ref: "#/components/schemas/TradingPolicyDefinition" }
+        contentHash: { type: string }
+        sourceCommit: { type: ["string", "null"] }
+        state: { type: string, enum: [draft, committed] }
+    TradingEffectivePolicy:
+      type: object
+      required: [asset, status, reason]
+      properties:
+        asset: { type: string, enum: [btc, eth, sol] }
+        status: { type: string, enum: [active, blocked] }
+        reason: { type: string }
+        reference: { type: object, additionalProperties: true }
+        configuration: { type: object, additionalProperties: true }
+    TradingPolicyChange:
+      type: object
+      required: [id, action, actor, actorType, reason, at, revision]
+      properties:
+        id: { type: string }
+        action: { type: string }
+        actor: { type: string }
+        actorType: { type: string, enum: [human, agent] }
+        reason: { type: string }
+        at: { type: string }
+        revision: { type: integer }
+        versionId: { type: ["string", "null"] }
+        differences: { type: array, items: { type: object, additionalProperties: true } }
+    TradingAffectedOperation:
+      type: object
+      required: [id, kind, state, action]
+      properties:
+        id: { type: string }
+        kind: { type: string, enum: [opportunity, order, position] }
+        state: { type: string }
+        originalEffectiveId: { type: ["string", "null"] }
+        currentEffectiveId: { type: ["string", "null"] }
+        action: { type: string }
+    TradingPolicySnapshot:
+      type: object
+      required: [environment, revision, permissions, sources, versions, effective, changes, affected, asOf]
+      properties:
+        environment: { type: string, enum: [development, production] }
+        revision: { type: integer }
+        permissions: { type: array, items: { type: string } }
+        sources: { type: array, items: { $ref: "#/components/schemas/TradingPolicySource" } }
+        versions: { type: array, items: { $ref: "#/components/schemas/TradingPolicyVersion" } }
+        effective: { type: array, items: { $ref: "#/components/schemas/TradingEffectivePolicy" } }
+        changes: { type: array, items: { $ref: "#/components/schemas/TradingPolicyChange" } }
+        affected: { type: array, items: { $ref: "#/components/schemas/TradingAffectedOperation" } }
+        asOf: { type: string }
+    TradingPolicyCommandInput:
+      type: object
+      additionalProperties: false
+      required: [csrf, action, environment, reason, expectedRevision]
+      properties:
+        csrf: { type: string, minLength: 1, maxLength: 200 }
+        action: { type: string, enum: [propose, publish, approve, activate, rollback, revoke] }
+        environment: { type: string, enum: [development, production] }
+        key: { type: string, enum: [global, strategy, btc, eth, sol] }
+        versionId: { type: string, maxLength: 200 }
+        sourceCommit: { type: string, pattern: "^[a-f0-9]{40}$" }
+        reason: { type: string, minLength: 12, maxLength: 2000 }
+        expectedRevision: { type: integer, minimum: 0 }
+    TradingPolicyReference:
+      type: object
+      required: [effectiveId, environment, revision, versions, hashes, implementations, exitTreatment]
+      properties:
+        effectiveId: { type: string }
+        environment: { type: string, enum: [development, production] }
+        revision: { type: integer }
+        versions:
+          type: object
+          required: [treasury, strategy, specialist]
+          properties:
+            treasury: { type: string }
+            strategy: { type: string }
+            specialist: { type: string }
+        hashes:
+          type: object
+          required: [treasury, strategy, specialist]
+          properties:
+            treasury: { type: string }
+            strategy: { type: string }
+            specialist: { type: string }
+        implementations:
+          type: object
+          required: [treasury, strategy, specialist]
+          properties:
+            treasury: { type: string }
+            strategy: { type: string }
+            specialist: { type: string }
+        exitTreatment: { type: string }
+    AlphaDatum:
+      type: object
+      required: [kind]
+      properties:
+        kind: { type: string, enum: [observed, estimated, missing] }
+        value: {}
+        method: { type: string }
+        reason: { type: string }
+      additionalProperties: false
+    AlphaOpportunity:
+      type: object
+      required: [id, marketAgent, specialist, market, origin, instrument, operation, sources, model, executablePrice, costs, liquidity, estimatedReturn, uncertainty, risks, potentialLossUnits, capitalUnits, horizonSeconds, correlation, validUntil, invalidationConditions]
+      properties:
+        id: { type: string }
+        marketAgent: { type: string }
+        specialist: { type: string }
+        market: { type: string }
+        origin:
+          type: object
+          required: [provider, snapshotId, nature]
+          properties:
+            provider: { type: string }
+            snapshotId: { type: string }
+            nature: { type: string, enum: [real_market_data, internal_fixture] }
+        instrument:
+          type: object
+          required: [id, name, outcome, settlementAsset]
+          properties:
+            id: { type: string }
+            name: { type: string }
+            outcome: { type: string }
+            settlementAsset: { $ref: "#/components/schemas/AlphaDatum" }
+        operation: { $ref: "#/components/schemas/AlphaDatum" }
+        sources:
+          type: array
+          items:
+            type: object
+            required: [url, producedAt, collectedAt, evidence]
+            properties:
+              url: { type: string }
+              producedAt: { type: string }
+              collectedAt: { type: string }
+              evidence: { type: string }
+        model: { $ref: "#/components/schemas/AlphaDatum" }
+        executablePrice: { $ref: "#/components/schemas/AlphaDatum" }
+        costs: { $ref: "#/components/schemas/AlphaDatum" }
+        liquidity: { $ref: "#/components/schemas/AlphaDatum" }
+        estimatedReturn: { $ref: "#/components/schemas/AlphaDatum" }
+        uncertainty: { $ref: "#/components/schemas/AlphaDatum" }
+        risks: { type: array, items: { type: string } }
+        potentialLossUnits: { $ref: "#/components/schemas/AlphaDatum" }
+        capitalUnits: { $ref: "#/components/schemas/AlphaDatum" }
+        horizonSeconds: { $ref: "#/components/schemas/AlphaDatum" }
+        correlation: { $ref: "#/components/schemas/AlphaDatum" }
+        validUntil: { type: string }
+        invalidationConditions: { type: array, items: { type: string } }
+        strategyVersion: { type: string }
+        policyVersion: { type: string }
+        deduplicationKey: { type: string }
+        policyEffectiveId: { type: string }
+        policyReference: { $ref: "#/components/schemas/TradingPolicyReference" }
+        sourceSnapshots:
+          type: array
+          items: { type: object, additionalProperties: true }
+        probability: { $ref: "#/components/schemas/AlphaDatum" }
+        orderQuote: { $ref: "#/components/schemas/AlphaDatum" }
+        exitPlan: { $ref: "#/components/schemas/AlphaDatum" }
+    AlphaOpportunityRecord:
+      type: object
+      required: [opportunity, state, revision, reason, correlationId, decisions]
+      properties:
+        opportunity: { $ref: "#/components/schemas/AlphaOpportunity" }
+        state: { type: string, enum: [needs_update, qualified, rejected, selected, awaiting_authorization, allocation_authorized, allocation_uncertain, allocation_confirmed, expired] }
+        revision: { type: integer }
+        reason: { type: string }
+        correlationId: { type: string }
+        decisions:
+          type: array
+          items:
+            type: object
+            required: [layer, reason, at]
+            properties:
+              layer: { type: string, enum: [specialist, market, BETTEX, risk, execution] }
+              reason: { type: string }
+              at: { type: string }
+        allocationUnits: { type: string }
+        governanceProposalId: { type: string }
+        transactionHash: { type: string }
+        queueState: { type: string, enum: [received, validated, awaiting_decision, selected, rejected, expired, forwarded_to_execution] }
+        strategyVersion: { type: string }
+        priority: { type: string }
+        attempts: { type: integer }
+        nextAttemptAt: { type: string }
+    AlphaAgentsSnapshot:
+      type: object
+      required: [orchestrator, agents, source, opportunities]
+      properties:
+        orchestrator:
+          type: object
+          required: [id, name, mode]
+          properties:
+            id: { type: string }
+            name: { type: string }
+            mode: { type: string }
+        agents:
+          type: array
+          items:
+            type: object
+            required: [id, name, status, specialists]
+            properties:
+              id: { type: string }
+              name: { type: string }
+              status: { type: string, enum: [active, planned, unavailable] }
+              specialists: { type: array, items: { type: string } }
+        source:
+          type: object
+          required: [status, attemptedAt, opportunityCount]
+          properties:
+            status: { type: string, enum: [not_collected, observed, partial, unavailable, no_btc_markets, no_eligible_markets] }
+            attemptedAt: { type: string }
+            opportunityCount: { type: integer }
+            error: { type: string }
+        opportunities:
+          type: array
+          items: { $ref: "#/components/schemas/AlphaOpportunityRecord" }
+    AlphaTradingPolicy:
+      type: object
+      required: [version, strategyVersion, name, mode, maxOrderUnits, maxCorrelatedUnits, maxPortfolioUnits, defensiveUnits, maxQuoteAgeSeconds, rules]
+      properties:
+        version: { type: string }
+        strategyVersion: { type: string }
+        name: { type: string }
+        mode: { type: string, enum: [simulation_only] }
+        maxOrderUnits: { type: string }
+        maxCorrelatedUnits: { type: string }
+        maxPortfolioUnits: { type: string }
+        defensiveUnits: { type: string }
+        maxQuoteAgeSeconds: { type: integer }
+        rules: { type: array, items: { type: string } }
+        published: { type: boolean }
+        effectiveId: { type: string }
+        specialistVersion: { type: string }
+        environment: { type: string, enum: [development, production] }
+    AlphaTradingSpecialist:
+      type: object
+      required: [asset, sourceStatus, proposalStatus, reason, attemptedAt, observationCount, sources]
+      properties:
+        asset: { type: string, enum: [btc, eth, sol] }
+        sourceStatus: { type: string }
+        proposalStatus: { type: string, enum: [blocked, enabled] }
+        reason: { type: string }
+        attemptedAt: { type: string }
+        observationCount: { type: integer }
+        sources: { type: array, items: { type: string } }
+    AlphaTradingCapital:
+      type: object
+      required: [status, cashUnits, availableUnits, reservedUnits, committedUnits, obligationsUnits, realizedUnits, distributableUnits, reconciliation, exposure]
+      properties:
+        status: { type: string, enum: [unfunded, reconciled, divergence] }
+        cashUnits: { type: string, nullable: true }
+        availableUnits: { type: string, nullable: true }
+        reservedUnits: { type: string }
+        committedUnits: { type: string }
+        obligationsUnits: { type: string }
+        realizedUnits: { type: string }
+        distributableUnits: { type: string, enum: ["0"] }
+        reconciliation: { type: string }
+        exposure:
+          type: array
+          items:
+            type: object
+            required: [asset, strategyVersion, units]
+            properties:
+              asset: { type: string }
+              strategyVersion: { type: string }
+              units: { type: string }
+    AlphaTradingDecision:
+      type: object
+      required: [id, opportunityId, asset, state, reason, at, policyVersion, strategyVersion, rank, requestedUnits]
+      properties:
+        id: { type: string }
+        opportunityId: { type: string }
+        asset: { type: string }
+        state: { type: string, enum: [selected, rejected, hold] }
+        reason: { type: string }
+        at: { type: string }
+        policyVersion: { type: string }
+        strategyVersion: { type: string }
+        rank: { type: integer }
+        requestedUnits: { type: string }
+        policyReference: { $ref: "#/components/schemas/TradingPolicyReference" }
+        policySnapshot: { type: object, additionalProperties: true }
+    AlphaTradingFill:
+      type: object
+      required: [id, at, sharesUnits, cashUnits, feesUnits, price, source]
+      properties:
+        id: { type: string }
+        at: { type: string }
+        sharesUnits: { type: string }
+        cashUnits: { type: string }
+        feesUnits: { type: string }
+        price: { type: string }
+        source: { type: string }
+    AlphaTradingOrder:
+      type: object
+      required: [id, opportunityId, decisionId, asset, instrumentId, outcome, direction, state, quantityUnits, filledUnits, reservedUnits, policyVersion, strategyVersion, createdAt, updatedAt, fills, reason]
+      properties:
+        id: { type: string }
+        opportunityId: { type: string }
+        decisionId: { type: string }
+        positionId: { type: string }
+        asset: { type: string }
+        instrumentId: { type: string }
+        outcome: { type: string }
+        direction: { type: string, enum: [buy, sell] }
+        state: { type: string, enum: [pending, partial, filled, cancelled, expired, failed] }
+        quantityUnits: { type: string }
+        filledUnits: { type: string }
+        reservedUnits: { type: string }
+        policyVersion: { type: string }
+        strategyVersion: { type: string }
+        createdAt: { type: string }
+        updatedAt: { type: string }
+        reason: { type: string }
+        fills: { type: array, items: { $ref: "#/components/schemas/AlphaTradingFill" } }
+        policyReference: { $ref: "#/components/schemas/TradingPolicyReference" }
+        submittedQuote: { type: object, additionalProperties: true }
+        fillQuotes: { type: array, items: { type: object, additionalProperties: true } }
+    AlphaTradingValuation:
+      type: object
+      required: [at, source, priceUnits, producedAt, kind, stale, quantityUnits, liquidatableUnits, exitValueUnits, unrealizedUnits, updatedExpectedUnits, action, reason]
+      properties:
+        at: { type: string }
+        source: { type: string }
+        priceUnits: { type: string, nullable: true, description: "Observed or indicative micro-USDC per event share, not an asset spot price" }
+        producedAt: { type: string, nullable: true }
+        kind: { type: string, enum: [executable, conservative, indicative, unavailable] }
+        stale: { type: boolean }
+        quantityUnits: { type: string }
+        liquidatableUnits: { type: string }
+        exitValueUnits: { type: string, nullable: true }
+        unrealizedUnits: { type: string, nullable: true }
+        updatedExpectedUnits: { type: string, nullable: true }
+        action: { type: string, enum: [hold, pause, reduce, exit] }
+        reason: { type: string }
+    AlphaTradingPosition:
+      type: object
+      required: [id, opportunityId, decisionId, orderId, asset, event, instrumentId, outcome, state, quantityUnits, entryCostUnits, entryFeesUnits, committedUnits, originalExpectedUnits, realizedUnits, strategyVersion, policyVersion, openedAt, updatedAt, exitPlan, exitState, resolutionState, valuations]
+      properties:
+        id: { type: string }
+        opportunityId: { type: string }
+        decisionId: { type: string }
+        orderId: { type: string }
+        asset: { type: string }
+        event: { type: string }
+        instrumentId: { type: string }
+        outcome: { type: string }
+        state: { type: string, enum: [open, reducing, closed, settled] }
+        quantityUnits: { type: string }
+        entryCostUnits: { type: string }
+        entryFeesUnits: { type: string }
+        committedUnits: { type: string }
+        originalExpectedUnits: { type: string }
+        realizedUnits: { type: string }
+        strategyVersion: { type: string }
+        policyVersion: { type: string }
+        openedAt: { type: string }
+        updatedAt: { type: string }
+        closedAt: { type: string }
+        exitPlan: { type: string }
+        exitState: { type: string, enum: [planned, triggered, requested, partial, confirmed, blocked_liquidity] }
+        resolutionState: { type: string, enum: [unresolved, resolved, settlement_pending, settled] }
+        valuations: { type: array, items: { $ref: "#/components/schemas/AlphaTradingValuation" } }
+        policyReference: { $ref: "#/components/schemas/TradingPolicyReference" }
+        policySnapshot: { type: object, additionalProperties: true }
+    AlphaTradingJourney:
+      type: object
+      required: [mode, opportunity, decisions, orders, positions, events]
+      properties:
+        mode: { type: string, enum: [paper_trading_no_real_money] }
+        opportunity: { $ref: "#/components/schemas/AlphaOpportunityRecord" }
+        decisions: { type: array, items: { $ref: "#/components/schemas/AlphaTradingDecision" } }
+        orders: { type: array, items: { $ref: "#/components/schemas/AlphaTradingOrder" } }
+        positions: { type: array, items: { $ref: "#/components/schemas/AlphaTradingPosition" } }
+        events:
+          type: array
+          items:
+            type: object
+            required: [at, stage, reason, sequence]
+            properties:
+              at: { type: string }
+              stage: { type: string }
+              reason: { type: string }
+              sequence: { type: integer }
+              policyReference: { $ref: "#/components/schemas/TradingPolicyReference" }
+              currentPolicyId: { type: string }
+              differences:
+                type: array
+                items:
+                  type: object
+                  required: [field, before, after]
+                  properties:
+                    field: { type: string }
+                    before: {}
+                    after: {}
+    AlphaTradingSnapshot:
+      type: object
+      required: [mode, asOf, policy, specialists, capital, opportunities, decisions, orders, positions, page]
+      properties:
+        mode: { type: string, enum: [paper_trading_no_real_money] }
+        asOf: { type: string }
+        policy: { $ref: "#/components/schemas/AlphaTradingPolicy" }
+        effectivePolicies: { type: array, items: { $ref: "#/components/schemas/TradingEffectivePolicy" } }
+        specialists: { type: array, items: { $ref: "#/components/schemas/AlphaTradingSpecialist" } }
+        capital: { $ref: "#/components/schemas/AlphaTradingCapital" }
+        opportunities: { type: array, items: { $ref: "#/components/schemas/AlphaOpportunityRecord" } }
+        decisions: { type: array, items: { $ref: "#/components/schemas/AlphaTradingDecision" } }
+        orders: { type: array, items: { $ref: "#/components/schemas/AlphaTradingOrder" } }
+        positions: { type: array, items: { $ref: "#/components/schemas/AlphaTradingPosition" } }
+        page:
+          type: object
+          required: [view, total, hasMore, nextCursor]
+          properties:
+            view: { type: string }
+            total: { type: integer }
+            hasMore: { type: boolean }
+            nextCursor: { type: string, nullable: true }
+    TreasuryGovernancePolicy:
+      type: object
+      required: [defensiveUnits, maxAllocationUnits, dailyLimitUnits, destinations]
+      properties:
+        defensiveUnits: { type: string, pattern: "^(0|[1-9][0-9]{0,39})$" }
+        maxAllocationUnits: { type: string, pattern: "^[1-9][0-9]{0,39}$" }
+        dailyLimitUnits: { type: string, pattern: "^[1-9][0-9]{0,39}$" }
+        destinations:
+          type: array
+          minItems: 1
+          maxItems: 10
+          items: { type: string, pattern: "^0x[0-9a-fA-F]{40}$" }
+    TreasuryGovernancePermission:
+      type: object
+      required: [target, permission, grant]
+      properties:
+        target: { type: string, minLength: 1, maxLength: 100 }
+        permission: { type: string, enum: [treasury_view, treasury_propose, treasury_approve, treasury_execute, treasury_pause, treasury_policy, treasury_activate] }
+        grant: { type: boolean }
+    TreasuryGovernanceCommandBody:
+      type: object
+      required: [csrf, action, id, reason]
+      properties:
+        csrf: { type: string, minLength: 1, maxLength: 200 }
+        action: { type: string, enum: [analyze, propose, approve, reject, execute, pause, resume] }
+        id: { type: string, pattern: "^[A-Za-z0-9:_-]{1,100}$" }
+        reason: { type: string, minLength: 1, maxLength: 500 }
+        kind: { type: string, enum: [allocation, policy, permission] }
+        units: { type: string, pattern: "^[1-9][0-9]{0,39}$" }
+        destination: { type: string, pattern: "^0x[0-9a-fA-F]{40}$" }
+        policy: { $ref: "#/components/schemas/TreasuryGovernancePolicy" }
+        permission: { $ref: "#/components/schemas/TreasuryGovernancePermission" }
+    TreasuryGovernanceResponse:
+      type: object
+      additionalProperties: true
+    HistoryAggregate:
+      type: object
+      required: [environment, chainId, capitalUnits, decimals, operationCount]
+      properties:
+        environment: { type: string }
+        chainId: { type: integer }
+        capitalUnits: { type: string }
+        decimals: { type: integer }
+        operationCount: { type: string }
+    HistoryDistributionInput:
+      type: object
+      additionalProperties: false
+      required: [requestId]
+      properties:
+        requestId: { type: string, format: uuid }
+    HistoryEntry:
+      type: object
+      required: [id, correlationId, category, kind, state, actor, environment, occurredAt, processedAt, reconstructed, source, data]
+      properties:
+        id: { type: string }
+        correlationId: { type: string }
+        category: { type: string }
+        kind: { type: string }
+        state: { type: string }
+        actor: { type: string }
+        environment: { type: string }
+        chainId: { type: [integer, "null"] }
+        asset: { type: [string, "null"] }
+        wallet: { type: [string, "null"] }
+        transactionHash: { type: [string, "null"] }
+        blockHash: { type: [string, "null"] }
+        blockNumber: { type: [integer, "null"] }
+        logIndex: { type: [integer, "null"] }
+        occurredAt: { type: string, format: date-time }
+        requestedAt: { type: [string, "null"], format: date-time }
+        processedAt: { type: string, format: date-time }
+        reconstructed: { type: boolean }
+        source: { type: string }
+        parentId: { type: [string, "null"] }
+        data: { type: object, additionalProperties: true }
+    HistoryPage:
+      type: object
+      required: [items, nextCursor, completeFrom, limitations, timezone]
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/HistoryEntry" } }
+        nextCursor: { type: [string, "null"] }
+        completeFrom: { type: string, format: date-time }
+        limitations: { type: array, items: { type: string } }
+        timezone: { type: string }
+        syncState: { type: string, enum: [current, unavailable] }
+        warning: { type: string }
+    NativeTestTransaction:
+      type: object
+      required: [chainId, to, data, value, nonce, gasLimit, gasPrice]
+      properties:
+        chainId: { type: integer }
+        nonce: { type: integer }
+        to: { type: string }
+        data: { type: string }
+        value: { type: string }
+        gasLimit: { type: string }
+        gasPrice: { type: string }
+    NativeTestStage:
+      type: object
+      required: [name, state]
+      properties:
+        name: { type: string }
+        state: { type: string }
+        transactionHash: { type: string, nullable: true }
+        draft: { $ref: "#/components/schemas/NativeTestTransaction" }
+    NativeTestOperation:
+      type: object
+      required: [id, kind, quantity, principal, fee, createdAt, stages]
+      properties:
+        id: { type: string }
+        kind: { type: string, enum: [fund, purchase, distribution] }
+        quantity: { type: string }
+        principal: { type: string }
+        fee: { type: string }
+        createdAt: { type: string }
+        stages:
+          type: array
+          items: { $ref: "#/components/schemas/NativeTestStage" }
+    NativeTestJourneyCommand:
+      type: object
+      required: [action, csrf]
+      properties:
+        action: { type: string, enum: [fund, quote, sign, distribution-test] }
+        csrf: { type: string }
+        acknowledgeLocal: { type: boolean }
+        operationId: { type: string }
+        quantity: { type: string, pattern: "^[1-9][0-9]{0,8}$" }
+        stage: { type: string, enum: [approve, buy] }
+        signedTransaction: { type: string, maxLength: 8192, pattern: "^0x[0-9a-fA-F]+$" }
+    NativeTestJourney:
+      type: object
+      required: [epoch, chainId, environment, updatedAt, blockHash, blockNumber, depositWallet, bettexWallet, balances, sale, treasury, participation, settlement, events, operations, archivedCount]
+      properties:
+        epoch: { type: string }
+        chainId: { type: integer }
+        environment: { type: string, enum: [local_evm] }
+        updatedAt: { type: string }
+        blockHash: { type: string }
+        blockNumber: { type: integer }
+        depositWallet: { type: string }
+        bettexWallet: { type: string }
+        archivedCount: { type: integer }
+        settlement:
+          type: object
+          required: [id, source, resultUnits, retainedUnits, buybackUnits, buybackAddress, buybackState, buybackTransactionHash, pendingUnits, paidUnits, ownUnits, ownState, ownTransactionHash, snapshotBlock, snapshotHash]
+          properties:
+            id: { type: string }
+            source: { type: string, enum: [synthetic_local_test] }
+            resultUnits: { type: string }
+            retainedUnits: { type: string }
+            buybackUnits: { type: string }
+            buybackAddress: { type: string }
+            buybackState: { type: string }
+            buybackTransactionHash: { type: ["string", "null"] }
+            pendingUnits: { type: string }
+            paidUnits: { type: string }
+            ownUnits: { type: string }
+            ownState: { type: string }
+            ownTransactionHash: { type: ["string", "null"] }
+            snapshotBlock: { type: ["integer", "null"] }
+            snapshotHash: { type: ["string", "null"] }
+        balances:
+          type: object
+          required: [usdc, bettex, depositGas, bettexGas]
+          properties:
+            usdc: { type: string }
+            bettex: { type: string }
+            depositGas: { type: string }
+            bettexGas: { type: string }
+        sale:
+          type: object
+          required: [address, token, usdc, price, fee, available, sold, paused, reserveUsdc]
+          properties:
+            address: { type: string }
+            token: { type: string }
+            usdc: { type: string }
+            price: { type: string }
+            fee: { type: string }
+            available: { type: string }
+            sold: { type: string }
+            paused: { type: boolean }
+            reserveUsdc: { type: string }
+        treasury:
+          type: object
+          required: [address, operatingAddress, balanceUsdc, principalUsdc, soldBettex, accountingAvailable]
+          properties:
+            address: { type: string }
+            operatingAddress: { type: string }
+            balanceUsdc: { type: string }
+            principalUsdc: { type: string }
+            soldBettex: { type: string }
+            accountingAvailable: { type: boolean }
+        participation:
+          type: object
+          required: [model, balance, eligible, tokenSeconds, startedAt, roundStart, roundEnd, settlement, assessedUsdc, availableUsdc, paidUsdc]
+          properties:
+            model: { type: string }
+            balance: { type: string }
+            eligible: { type: string }
+            tokenSeconds: { type: string }
+            startedAt: { type: integer, nullable: true }
+            roundStart: { type: integer }
+            roundEnd: { type: integer }
+            settlement: { type: string }
+            assessedUsdc: { type: string }
+            availableUsdc: { type: string }
+            paidUsdc: { type: string }
+        events:
+          type: array
+          items:
+            type: object
+            required: [id, kind, hash, blockNumber, blockHash, logIndex, timestamp, value]
+            properties:
+              id: { type: string }
+              kind: { type: string, enum: [free_test_funding, external_deposit, purchase] }
+              hash: { type: string }
+              blockNumber: { type: integer }
+              blockHash: { type: string }
+              logIndex: { type: integer }
+              timestamp: { type: integer }
+              value: { type: string }
+              bettex: { type: string }
+              principal: { type: string }
+              fee: { type: string }
+              treasuryReceived: { type: string }
+              gasWei: { type: string }
+        operations:
+          type: array
+          items: { $ref: "#/components/schemas/NativeTestOperation" }
+    TestContractInput:
+      type: object
+      required: [address]
+      properties:
+        address: { type: string, pattern: "^0x[a-fA-F0-9]{40}$" }
+    TestContractEvent:
+      type: object
+      required: [name, transactionHash, blockHash, blockNumber, logIndex, address, values]
+      properties:
+        name: { type: string }
+        transactionHash: { type: string }
+        blockHash: { type: string }
+        blockNumber: { type: integer }
+        logIndex: { type: integer }
+        address: { type: string }
+        values: { type: string }
+    TestContractAllocation:
+      type: object
+      required: [kind, address, beneficiary, total, released, locked, available]
+      properties:
+        kind: { type: string, enum: [public, founder, investors] }
+        address: { type: string }
+        beneficiary: { type: string }
+        total: { type: string }
+        released: { type: string }
+        locked: { type: string }
+        available: { type: string }
+    TestContractState:
+      type: object
+      required: [configured, chainId, version, allocations, events]
+      properties:
+        configured: { type: boolean }
+        chainId: { type: integer }
+        version: { type: string }
+        address: { type: string }
+        symbol: { type: string }
+        blockNumber: { type: integer }
+        blockHash: { type: string }
+        paused: { type: boolean }
+        totalSupply: { type: string }
+        sold: { type: string }
+        priceUsdc: { type: string }
+        feeUsdc: { type: string }
+        treasury: { type: string }
+        operatingWallet: { type: string }
+        nextRelease: { type: integer }
+        currentMonth: { type: integer }
+        historyFromBlock: { type: integer }
+        historyPartial: { type: boolean }
+        allocations:
+          type: array
+          items:
+            $ref: "#/components/schemas/TestContractAllocation"
+        events:
+          type: array
+          items:
+            $ref: "#/components/schemas/TestContractEvent"
+    WalletVaultEnvelope:
+      type: object
+      additionalProperties: false
+      required: [version, iterations, salt, iv, ciphertext, registrationId]
+      properties:
+        version: { type: integer, enum: [1] }
+        iterations: { type: integer, enum: [600000] }
+        salt: { type: string, maxLength: 44 }
+        iv: { type: string, maxLength: 24 }
+        ciphertext: { type: string, minLength: 80, maxLength: 12000 }
+        registrationId: { type: string, format: uuid }
+    PersonalTestWallet:
+      type: object
+      additionalProperties: false
+      required: [id, purpose, address, publicKey, chainIds]
+      properties:
+        id: { type: string, format: uuid }
+        purpose: { type: string, enum: [deposits, bettex] }
+        address: { type: string, pattern: "^0x[0-9a-fA-F]{40}$" }
+        publicKey: { type: string, pattern: "^0x04[0-9a-fA-F]{128}$" }
+        chainIds:
+          type: array
+          minItems: 1
+          maxItems: 2
+          items: { type: integer, enum: [421614, 31337] }
+    TestAccountIdentity:
+      type: object
+      required: [id, displayName, email, emailVerified, revision, acceptedAt, noticeVersion]
+      properties:
+        id: { type: string }
+        displayName: { type: string }
+        email: { type: string }
+        emailVerified: { type: boolean, enum: [false] }
+        revision: { type: integer }
+        acceptedAt: { type: string }
+        noticeVersion: { type: string }
+    TestAccountSnapshot:
+      type: object
+      required: [enabled, account, wallets, vault, csrf]
+      properties:
+        enabled: { type: boolean }
+        isAdmin: { type: boolean }
+        account:
+          allOf:
+            - $ref: "#/components/schemas/TestAccountIdentity"
+          nullable: true
+        wallets:
+          type: array
+          items: { $ref: "#/components/schemas/PersonalTestWallet" }
+        vault:
+          allOf:
+            - $ref: "#/components/schemas/WalletVaultEnvelope"
+          nullable: true
+        csrf: { type: string }
+    TestAccountCommand:
+      type: object
+      additionalProperties: false
+      required: [action]
+      properties:
+        action:
+          type: string
+          enum: [signup, signin, signout, name, email, password, reauth, private-request, private-result]
+        requestId: { type: string, format: uuid }
+        walletId: { type: string, format: uuid }
+        privateAction: { type: string, enum: [reveal, copy, private-download, encrypted-backup] }
+        resultState: { type: string, enum: [initiated, failed] }
+        displayName: { type: string, minLength: 2, maxLength: 60 }
+        email: { type: string, format: email, maxLength: 254 }
+        password: { type: string, maxLength: 128 }
+        newPassword: { type: string, minLength: 12, maxLength: 128 }
+        registrationId: { type: string, format: uuid }
+        accepted: { type: boolean }
+        noticeVersion: { type: string }
+        revision: { type: integer }
+        csrf: { type: string }
+        wallets:
+          type: array
+          minItems: 2
+          maxItems: 2
+          items: { $ref: "#/components/schemas/PersonalTestWallet" }
+        vault: { $ref: "#/components/schemas/WalletVaultEnvelope" }
     DemoProfileInput:
       type: object
       required: [name]
@@ -93,6 +1273,9 @@ components:
       type: object
       required: [name, email, memberSince, accountId]
       properties:
+        authenticated: { type: boolean }
+        provider: { type: string, enum: [anonymous, native, clerk] }
+        canViewTreasuryHistory: { type: boolean }
         name: { type: string }
         email: { type: string }
         memberSince: { type: string }

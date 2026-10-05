@@ -12,9 +12,13 @@ export function NewEconomySection() {
   return (
     <section id="nova-economia" className="ne-section" aria-labelledby="ne-heading" data-testid="section-nova-economia">
       <div className="ne-bg" aria-hidden="true" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}new-economy-workplace.webp)` }} />
+      <div className="ne-hero">
+        <div className="ne-wrap">
+          <p className="ne-bridge">Das apostas ao futuro do trabalho, a tecnologia já muda as regras. Na BETTEX, você muda o jogo: para de perder e começa a ganhar.</p>
+          <h2 id="ne-heading">{thesis.statement} <em>Faça parte dessa conversa. Proteja-se da mudança. Proteja a sua família.</em></h2>
+        </div>
+      </div>
       <div className="ne-wrap">
-        <p className="ne-bridge">Das apostas ao futuro do trabalho, a tecnologia já muda as regras. Na BETTEX, você muda o jogo: para de perder e começa a ganhar.</p>
-        <h2 id="ne-heading">{thesis.statement} <em>Faça parte dessa conversa. Proteja-se da mudança. Proteja a sua família.</em></h2>
         <ol className="ne-list">
           {points.map((p) => (
             <li key={p.n} className="ne-item">

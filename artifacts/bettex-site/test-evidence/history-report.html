@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BETTEX History Follow-up E2E Report</title>
+  <style>
+    body{font:16px/1.55 system-ui,sans-serif;max-width:920px;margin:32px auto;padding:0 18px;color:#18212b}
+    h1,h2{line-height:1.2} .verdict{padding:14px 16px;border-left:5px solid #b42318;background:#fff1f0}
+    .ok{color:#16734b} .issue{color:#a2251a} li{margin:.35em 0} code{background:#f2f4f7;padding:.1em .3em}
+  </style>
+</head>
+<body>
+  <h1>BETTEX History Follow-up E2E</h1>
+  <p>Route tested: <code>/testes/conta</code>. Testing resumed in the existing native account session. Successful funding and purchase were not repeated.</p>
+  <p class="verdict"><strong>Original browser finding: date filtering returned HTTP 400; subsequently fixed.</strong> This page preserves the browser observations. The consolidated history-final.html report records post-fix authenticated HTTP/database checks, including the matching period and positive/revoked administrative access. The full browser journey was not repeated.</p>
+
+  <h2>Reproduction</h2>
+  <ol>
+    <li>Open the native account’s <strong>Histórico → Geral</strong> view with filters cleared.</li>
+    <li>Set the date interval to <code>2026-10-05T08:50</code> through <code>2026-10-05T08:53</code> in the UTC browser context. This corresponds to 05:50–05:53 Brasília and brackets the purchase at 05:51:48 Brasília, after the 05:44:48 coverage start.</li>
+    <li>The panel displays “Não foi possível carregar o histórico.” and the browser reports HTTP 400. Clearing filters restores the records.</li>
+  </ol>
+
+  <h2>Verified</h2>
+  <ul>
+    <li class="ok">Existing native funding/purchase were confirmed: 25.0 test USDC funded; one 100 BETTEX purchase with 5.0 USDC principal and 2.5 USDC fee. Post-restart balances remained 17.5 USDC and 100 BETTEX.</li>
+    <li class="ok">History recovered after retry following the reported 503 fix. General, swapping, staking, distributions, activity, and treasury views were exercised. Swapping returned three records and excluded free funding; native staking showed participation, native distributions were explicitly unavailable/empty, and non-admin treasury access returned 403.</li>
+    <li class="ok">A purchase filter combination (type, financial category, BETTEX asset, confirmed status, local environment, and chain ID 31337) returned exactly one purchase. Its snapshot preserved 7.5 USDC paid, 100 BETTEX received, 5.0 principal, 2.5 fee, 0.05 USDC/BETTEX price, and gas/receipt details.</li>
+    <li class="ok">Cursor pagination at limit 2 returned all 35 then-existing history IDs across 18 pages, with no duplicates or omissions. A’s authorized correlation query returned 11 matching owner-timeline items.</li>
+    <li class="ok">Privacy checks: anonymous history returned 401; non-admin treasury returned 403. A second synthetic account could not read A’s record through correlation or wallet filtering; a foreign owner cursor returned 400. No foreign A record appeared in B’s history.</li>
+    <li class="ok">Profile-name change saved and produced a <code>profile_changed</code> history event. Logout/login restored the same owner and profile.</li>
+    <li class="ok">Encrypted-backup authorization produced the expected authorized/result journal events. The browser download event was intercepted and canceled; the test did not save, open, or inspect a backup file or its contents.</li>
+    <li class="ok">Only <code>artifacts/api-server: API Server</code> was restarted, once. Afterward the same 40 history IDs, purchase/funding metadata, and native balances persisted. The local EVM workflow was not restarted or modified.</li>
+    <li class="ok">In a fresh, separate demo context, the HistoryPanel preview created a <strong>Calculado</strong>, <strong>Simulação</strong> distribution entry for 0 USDC, not a payment. A 1 BETTEX demo outgoing action reduced only the demo balance, generated demo/simulation history, and did not alter native history or balances.</li>
+  </ul>
+
+  <h2>Notes and limitations</h2>
+  <ul>
+    <li>Malformed cursor, limit above 50, and invalid asset returned 400. Probes with unsupported-looking type/state/period/network/environment values were inconsistent (some returned 200); exact OpenAPI constraints could not be inspected because the attempted document routes were unavailable.</li>
+    <li>Positive admin treasury visibility was not tested because no admin test fixture was available. The native account correctly received 403.</li>
+    <li>The encrypted export was deliberately canceled and its contents were not inspected. No screenshots are attached because logged-in views expose account identity or wallet information.</li>
+    <li>No native funding or purchase was repeated; no chain state was changed by the demo test.</li>
+  </ul>
+  <p>Sanitized machine-readable summary: <code>history-summary.json</code>. No credentials, account identifiers, wallet addresses, transaction hashes, cursors, private keys, or backup contents are included in this report.</p>
+</body>
+</html>

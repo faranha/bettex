@@ -160,3 +160,8 @@ overrides:
   esbuild: "0.28.2"
   # orval pins js-yaml to an exact version older than the CVE fix (>=4.3.2)
   js-yaml: '4.3.2'
+  # Latest solc still requests the older tmp; same-minor security fix.
+  tmp: '0.2.7'
+  # Keep ajv's supported major instead of forcing the incompatible fast-uri v4.
+  fast-uri@3: '3.1.8'
+  brace-expansion@5: '5.0.12'

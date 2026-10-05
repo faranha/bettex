@@ -1,0 +1,15 @@
+{
+  "id": "prediction-sol",
+  "version": 1,
+  "type": "specialist",
+  "scope": "sol",
+  "schemaVersion": 1,
+  "name": "Especialista em eventos SOL",
+  "implementation": "polymarket-event-observer/1",
+  "justification": "Observa eventos SOL nas fontes Gamma/CLOB autorizadas. Busca textual apenas descobre eventos; não comprova elegibilidade nem vantagem econômica.",
+  "previousVersion": null,
+  "openPositions": "preserve_original_exit_and_apply_emergency_controls",
+  "search": "solana",
+  "horizon": "event_resolution",
+  "controls": { "allowedAssets": ["sol"], "maxHorizonSeconds": 86400 }
+}

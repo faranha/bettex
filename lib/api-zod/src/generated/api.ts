@@ -8,6 +8,2002 @@
 import * as zod from 'zod';
 
 
+export const getSimulationQueryOffsetDefault = 0;
+export const getSimulationQueryOffsetMin = 0;
+
+
+
+export const GetSimulationQueryParams = zod.object({
+  "runId": zod.coerce.string().optional(),
+  "kind": zod.coerce.string().optional(),
+  "offset": zod.coerce.number().int().min(getSimulationQueryOffsetMin).default(getSimulationQueryOffsetDefault)
+})
+
+export const GetSimulationResponse = zod.object({
+  "mode": zod.enum(['simulation']),
+  "runs": zod.array(zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['simulation']),
+  "scenario": zod.string(),
+  "stage": zod.number().int(),
+  "revision": zod.number().int(),
+  "paused": zod.boolean(),
+  "clock": zod.number().int()
+})),
+  "run": zod.union([zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['simulation']),
+  "scenario": zod.string(),
+  "stage": zod.number().int(),
+  "revision": zod.number().int(),
+  "paused": zod.boolean(),
+  "clock": zod.number().int()
+}),zod.null()]),
+  "events": zod.array(zod.record(zod.string(), zod.unknown())),
+  "total": zod.number().int(),
+  "offset": zod.number().int(),
+  "hasMore": zod.boolean()
+})
+
+
+export const commandSimulationBodyCsrfMin = 16;
+export const commandSimulationBodyCsrfMax = 160;
+
+export const commandSimulationBodyRequestIdMin = 8;
+export const commandSimulationBodyRequestIdMax = 120;
+
+export const commandSimulationBodyRunIdMax = 120;
+
+export const commandSimulationBodyExpectedRevisionMin = 0;
+
+export const commandSimulationBodyAmountUnitsRegExp = new RegExp('^[1-9][0-9]{0,12}$');
+export const commandSimulationBodySecondsMax = 86400;
+
+
+
+export const CommandSimulationBody = zod.object({
+  "csrf": zod.string().min(commandSimulationBodyCsrfMin).max(commandSimulationBodyCsrfMax),
+  "requestId": zod.string().min(commandSimulationBodyRequestIdMin).max(commandSimulationBodyRequestIdMax),
+  "action": zod.enum(['start', 'advance', 'pause', 'resume', 'generate', 'market', 'failure', 'deposit', 'purchase', 'withdraw', 'reset', 'clock']),
+  "runId": zod.string().max(commandSimulationBodyRunIdMax).optional(),
+  "expectedRevision": zod.number().int().min(commandSimulationBodyExpectedRevisionMin).optional(),
+  "scenario": zod.enum(['complete', 'insufficient_balance', 'expired_duplicate', 'no_opportunity', 'exposure', 'price_change', 'partial_fill', 'no_liquidity', 'integration_failure', 'payment_failure', 'restart']).optional(),
+  "amountUnits": zod.string().regex(commandSimulationBodyAmountUnitsRegExp).optional(),
+  "seconds": zod.number().int().min(1).max(commandSimulationBodySecondsMax).optional(),
+  "failure": zod.enum(['insufficient_balance', 'expired_duplicate', 'no_opportunity', 'exposure', 'price_change', 'partial_fill', 'no_liquidity', 'integration_failure', 'payment_failure', 'restart']).optional()
+})
+
+export const CommandSimulationResponse = zod.object({
+  "mode": zod.enum(['simulation']),
+  "runs": zod.array(zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['simulation']),
+  "scenario": zod.string(),
+  "stage": zod.number().int(),
+  "revision": zod.number().int(),
+  "paused": zod.boolean(),
+  "clock": zod.number().int()
+})),
+  "run": zod.union([zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['simulation']),
+  "scenario": zod.string(),
+  "stage": zod.number().int(),
+  "revision": zod.number().int(),
+  "paused": zod.boolean(),
+  "clock": zod.number().int()
+}),zod.null()]),
+  "events": zod.array(zod.record(zod.string(), zod.unknown())),
+  "total": zod.number().int(),
+  "offset": zod.number().int(),
+  "hasMore": zod.boolean()
+})
+
+
+export const getTradingPoliciesQueryEnvironmentDefault = `development`;
+
+export const GetTradingPoliciesQueryParams = zod.object({
+  "environment": zod.enum(['development', 'production']).default(getTradingPoliciesQueryEnvironmentDefault)
+})
+
+export const getTradingPoliciesResponseSourcesItemDefinitionIdRegExp = new RegExp('^[a-z][a-z0-9-]{2,70}$');
+export const getTradingPoliciesResponseSourcesItemDefinitionVersionMax = 1000000;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionNameMin = 3;
+export const getTradingPoliciesResponseSourcesItemDefinitionNameMax = 160;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionJustificationMin = 20;
+export const getTradingPoliciesResponseSourcesItemDefinitionJustificationMax = 2000;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionPreviousVersionMax = 200;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxOrderUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxCorrelatedUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxPortfolioUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsDefensiveUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxAssetUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxEventUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxStrategyUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxCounterpartyUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxQuoteAgeSecondsMax = 3600;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxSourceAgeSecondsMax = 3600;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxHorizonSecondsMax = 604800;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaxAttemptsMax = 10;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsRetrySecondsMax = 3600;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMinimumNetEdgeBpsMin = 0;
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMinimumNetEdgeBpsMax = 10000;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsExitHysteresisBpsMin = 0;
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsExitHysteresisBpsMax = 10000;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsReentryCooldownSecondsMax = 604800;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaximumHoldSecondsMax = 604800;
+
+export const getTradingPoliciesResponseSourcesItemDefinitionControlsMaximumLossBpsMax = 10000;
+
+
+
+
+export const getTradingPoliciesResponseVersionsItemDefinitionIdRegExp = new RegExp('^[a-z][a-z0-9-]{2,70}$');
+export const getTradingPoliciesResponseVersionsItemDefinitionVersionMax = 1000000;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionNameMin = 3;
+export const getTradingPoliciesResponseVersionsItemDefinitionNameMax = 160;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionJustificationMin = 20;
+export const getTradingPoliciesResponseVersionsItemDefinitionJustificationMax = 2000;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionPreviousVersionMax = 200;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxOrderUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxCorrelatedUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxPortfolioUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsDefensiveUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxAssetUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxEventUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxStrategyUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxCounterpartyUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxQuoteAgeSecondsMax = 3600;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxSourceAgeSecondsMax = 3600;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxHorizonSecondsMax = 604800;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaxAttemptsMax = 10;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsRetrySecondsMax = 3600;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMinimumNetEdgeBpsMin = 0;
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMinimumNetEdgeBpsMax = 10000;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsExitHysteresisBpsMin = 0;
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsExitHysteresisBpsMax = 10000;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsReentryCooldownSecondsMax = 604800;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaximumHoldSecondsMax = 604800;
+
+export const getTradingPoliciesResponseVersionsItemDefinitionControlsMaximumLossBpsMax = 10000;
+
+
+
+
+
+
+export const GetTradingPoliciesResponse = zod.object({
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "permissions": zod.array(zod.string()),
+  "sources": zod.array(zod.object({
+  "key": zod.string(),
+  "definition": zod.object({
+  "id": zod.string().regex(getTradingPoliciesResponseSourcesItemDefinitionIdRegExp),
+  "version": zod.number().int().min(1).max(getTradingPoliciesResponseSourcesItemDefinitionVersionMax),
+  "type": zod.enum(['treasury', 'strategy', 'specialist']),
+  "scope": zod.enum(['global', 'predictions', 'btc', 'eth', 'sol']),
+  "schemaVersion": zod.literal(1),
+  "name": zod.string().min(getTradingPoliciesResponseSourcesItemDefinitionNameMin).max(getTradingPoliciesResponseSourcesItemDefinitionNameMax),
+  "implementation": zod.enum(['treasury-paper-controls/1', 'calibrated-event-lower-bound/1', 'polymarket-event-observer/1']),
+  "justification": zod.string().min(getTradingPoliciesResponseSourcesItemDefinitionJustificationMin).max(getTradingPoliciesResponseSourcesItemDefinitionJustificationMax),
+  "previousVersion": zod.string().max(getTradingPoliciesResponseSourcesItemDefinitionPreviousVersionMax).nullish(),
+  "openPositions": zod.enum(['preserve_original_exit_and_apply_emergency_controls']),
+  "controls": zod.object({
+  "mode": zod.enum(['simulation_only']).optional(),
+  "paused": zod.boolean().optional(),
+  "maxOrderUnits": zod.string().regex(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxOrderUnitsRegExp).optional(),
+  "maxCorrelatedUnits": zod.string().regex(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxCorrelatedUnitsRegExp).optional(),
+  "maxPortfolioUnits": zod.string().regex(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxPortfolioUnitsRegExp).optional(),
+  "defensiveUnits": zod.string().regex(getTradingPoliciesResponseSourcesItemDefinitionControlsDefensiveUnitsRegExp).optional(),
+  "maxAssetUnits": zod.string().regex(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxAssetUnitsRegExp).optional(),
+  "maxEventUnits": zod.string().regex(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxEventUnitsRegExp).optional(),
+  "maxStrategyUnits": zod.string().regex(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxStrategyUnitsRegExp).optional(),
+  "maxCounterpartyUnits": zod.string().regex(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxCounterpartyUnitsRegExp).optional(),
+  "maxQuoteAgeSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxQuoteAgeSecondsMax).optional(),
+  "maxSourceAgeSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxSourceAgeSecondsMax).optional(),
+  "maxHorizonSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxHorizonSecondsMax).optional(),
+  "maxAttempts": zod.number().int().min(1).max(getTradingPoliciesResponseSourcesItemDefinitionControlsMaxAttemptsMax).optional(),
+  "retrySeconds": zod.number().int().min(1).max(getTradingPoliciesResponseSourcesItemDefinitionControlsRetrySecondsMax).optional(),
+  "minimumNetEdgeBps": zod.number().int().min(getTradingPoliciesResponseSourcesItemDefinitionControlsMinimumNetEdgeBpsMin).max(getTradingPoliciesResponseSourcesItemDefinitionControlsMinimumNetEdgeBpsMax).optional(),
+  "exitHysteresisBps": zod.number().int().min(getTradingPoliciesResponseSourcesItemDefinitionControlsExitHysteresisBpsMin).max(getTradingPoliciesResponseSourcesItemDefinitionControlsExitHysteresisBpsMax).optional(),
+  "reentryCooldownSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseSourcesItemDefinitionControlsReentryCooldownSecondsMax).optional(),
+  "maximumHoldSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseSourcesItemDefinitionControlsMaximumHoldSecondsMax).optional(),
+  "maximumLossBps": zod.number().int().min(1).max(getTradingPoliciesResponseSourcesItemDefinitionControlsMaximumLossBpsMax).optional(),
+  "allowedAssets": zod.array(zod.enum(['btc', 'eth', 'sol'])).min(1).optional(),
+  "allowedProviders": zod.array(zod.enum(['polymarket_gamma_clob'])).min(1).optional(),
+  "allowedMarkets": zod.array(zod.enum(['prediction'])).min(1).optional(),
+  "requireCalibratedModel": zod.literal(true).optional(),
+  "requireCompleteCosts": zod.literal(true).optional(),
+  "requireExitPlan": zod.literal(true).optional(),
+  "requireReconciliation": zod.literal(true).optional()
+}),
+  "search": zod.enum(['bitcoin', 'ethereum', 'solana']).optional(),
+  "horizon": zod.enum(['event_resolution']).optional()
+}),
+  "contentHash": zod.string(),
+  "sourceCommit": zod.string().nullable(),
+  "state": zod.enum(['draft', 'committed'])
+})),
+  "versions": zod.array(zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "definition": zod.object({
+  "id": zod.string().regex(getTradingPoliciesResponseVersionsItemDefinitionIdRegExp),
+  "version": zod.number().int().min(1).max(getTradingPoliciesResponseVersionsItemDefinitionVersionMax),
+  "type": zod.enum(['treasury', 'strategy', 'specialist']),
+  "scope": zod.enum(['global', 'predictions', 'btc', 'eth', 'sol']),
+  "schemaVersion": zod.literal(1),
+  "name": zod.string().min(getTradingPoliciesResponseVersionsItemDefinitionNameMin).max(getTradingPoliciesResponseVersionsItemDefinitionNameMax),
+  "implementation": zod.enum(['treasury-paper-controls/1', 'calibrated-event-lower-bound/1', 'polymarket-event-observer/1']),
+  "justification": zod.string().min(getTradingPoliciesResponseVersionsItemDefinitionJustificationMin).max(getTradingPoliciesResponseVersionsItemDefinitionJustificationMax),
+  "previousVersion": zod.string().max(getTradingPoliciesResponseVersionsItemDefinitionPreviousVersionMax).nullish(),
+  "openPositions": zod.enum(['preserve_original_exit_and_apply_emergency_controls']),
+  "controls": zod.object({
+  "mode": zod.enum(['simulation_only']).optional(),
+  "paused": zod.boolean().optional(),
+  "maxOrderUnits": zod.string().regex(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxOrderUnitsRegExp).optional(),
+  "maxCorrelatedUnits": zod.string().regex(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxCorrelatedUnitsRegExp).optional(),
+  "maxPortfolioUnits": zod.string().regex(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxPortfolioUnitsRegExp).optional(),
+  "defensiveUnits": zod.string().regex(getTradingPoliciesResponseVersionsItemDefinitionControlsDefensiveUnitsRegExp).optional(),
+  "maxAssetUnits": zod.string().regex(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxAssetUnitsRegExp).optional(),
+  "maxEventUnits": zod.string().regex(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxEventUnitsRegExp).optional(),
+  "maxStrategyUnits": zod.string().regex(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxStrategyUnitsRegExp).optional(),
+  "maxCounterpartyUnits": zod.string().regex(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxCounterpartyUnitsRegExp).optional(),
+  "maxQuoteAgeSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxQuoteAgeSecondsMax).optional(),
+  "maxSourceAgeSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxSourceAgeSecondsMax).optional(),
+  "maxHorizonSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxHorizonSecondsMax).optional(),
+  "maxAttempts": zod.number().int().min(1).max(getTradingPoliciesResponseVersionsItemDefinitionControlsMaxAttemptsMax).optional(),
+  "retrySeconds": zod.number().int().min(1).max(getTradingPoliciesResponseVersionsItemDefinitionControlsRetrySecondsMax).optional(),
+  "minimumNetEdgeBps": zod.number().int().min(getTradingPoliciesResponseVersionsItemDefinitionControlsMinimumNetEdgeBpsMin).max(getTradingPoliciesResponseVersionsItemDefinitionControlsMinimumNetEdgeBpsMax).optional(),
+  "exitHysteresisBps": zod.number().int().min(getTradingPoliciesResponseVersionsItemDefinitionControlsExitHysteresisBpsMin).max(getTradingPoliciesResponseVersionsItemDefinitionControlsExitHysteresisBpsMax).optional(),
+  "reentryCooldownSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseVersionsItemDefinitionControlsReentryCooldownSecondsMax).optional(),
+  "maximumHoldSeconds": zod.number().int().min(1).max(getTradingPoliciesResponseVersionsItemDefinitionControlsMaximumHoldSecondsMax).optional(),
+  "maximumLossBps": zod.number().int().min(1).max(getTradingPoliciesResponseVersionsItemDefinitionControlsMaximumLossBpsMax).optional(),
+  "allowedAssets": zod.array(zod.enum(['btc', 'eth', 'sol'])).min(1).optional(),
+  "allowedProviders": zod.array(zod.enum(['polymarket_gamma_clob'])).min(1).optional(),
+  "allowedMarkets": zod.array(zod.enum(['prediction'])).min(1).optional(),
+  "requireCalibratedModel": zod.literal(true).optional(),
+  "requireCompleteCosts": zod.literal(true).optional(),
+  "requireExitPlan": zod.literal(true).optional(),
+  "requireReconciliation": zod.literal(true).optional()
+}),
+  "search": zod.enum(['bitcoin', 'ethereum', 'solana']).optional(),
+  "horizon": zod.enum(['event_resolution']).optional()
+}),
+  "contentHash": zod.string(),
+  "sourceCommit": zod.string(),
+  "sourcePath": zod.string(),
+  "author": zod.string(),
+  "justification": zod.string(),
+  "publishedAt": zod.string(),
+  "state": zod.enum(['validated', 'approved', 'active', 'superseded', 'revoked']),
+  "approvalRequired": zod.boolean(),
+  "approver": zod.string().nullish(),
+  "approvedAt": zod.string().nullish(),
+  "activatedAt": zod.string().nullish(),
+  "replacedBy": zod.string().nullish()
+})),
+  "effective": zod.array(zod.object({
+  "asset": zod.enum(['btc', 'eth', 'sol']),
+  "status": zod.enum(['active', 'blocked']),
+  "reason": zod.string(),
+  "reference": zod.record(zod.string(), zod.unknown()).optional(),
+  "configuration": zod.record(zod.string(), zod.unknown()).optional()
+})),
+  "changes": zod.array(zod.object({
+  "id": zod.string(),
+  "action": zod.string(),
+  "actor": zod.string(),
+  "actorType": zod.enum(['human', 'agent']),
+  "reason": zod.string(),
+  "at": zod.string(),
+  "revision": zod.number().int(),
+  "versionId": zod.string().nullish(),
+  "differences": zod.array(zod.record(zod.string(), zod.unknown())).optional()
+})),
+  "affected": zod.array(zod.object({
+  "id": zod.string(),
+  "kind": zod.enum(['opportunity', 'order', 'position']),
+  "state": zod.string(),
+  "originalEffectiveId": zod.string().nullish(),
+  "currentEffectiveId": zod.string().nullish(),
+  "action": zod.string()
+})),
+  "asOf": zod.string()
+})
+
+
+export const commandTradingPoliciesBodyCsrfMax = 200;
+
+export const commandTradingPoliciesBodyVersionIdMax = 200;
+
+export const commandTradingPoliciesBodySourceCommitRegExp = new RegExp('^[a-f0-9]{40}$');
+export const commandTradingPoliciesBodyReasonMin = 12;
+export const commandTradingPoliciesBodyReasonMax = 2000;
+
+export const commandTradingPoliciesBodyExpectedRevisionMin = 0;
+
+
+
+export const CommandTradingPoliciesBody = zod.object({
+  "csrf": zod.string().min(1).max(commandTradingPoliciesBodyCsrfMax),
+  "action": zod.enum(['propose', 'publish', 'approve', 'activate', 'rollback', 'revoke']),
+  "environment": zod.enum(['development', 'production']),
+  "key": zod.enum(['global', 'strategy', 'btc', 'eth', 'sol']).optional(),
+  "versionId": zod.string().max(commandTradingPoliciesBodyVersionIdMax).optional(),
+  "sourceCommit": zod.string().regex(commandTradingPoliciesBodySourceCommitRegExp).optional(),
+  "reason": zod.string().min(commandTradingPoliciesBodyReasonMin).max(commandTradingPoliciesBodyReasonMax),
+  "expectedRevision": zod.number().int().min(commandTradingPoliciesBodyExpectedRevisionMin)
+})
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionIdRegExp = new RegExp('^[a-z][a-z0-9-]{2,70}$');
+export const commandTradingPoliciesResponseSourcesItemDefinitionVersionMax = 1000000;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionNameMin = 3;
+export const commandTradingPoliciesResponseSourcesItemDefinitionNameMax = 160;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionJustificationMin = 20;
+export const commandTradingPoliciesResponseSourcesItemDefinitionJustificationMax = 2000;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionPreviousVersionMax = 200;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxOrderUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxCorrelatedUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxPortfolioUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsDefensiveUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxAssetUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxEventUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxStrategyUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxCounterpartyUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxQuoteAgeSecondsMax = 3600;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxSourceAgeSecondsMax = 3600;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxHorizonSecondsMax = 604800;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxAttemptsMax = 10;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsRetrySecondsMax = 3600;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMinimumNetEdgeBpsMin = 0;
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMinimumNetEdgeBpsMax = 10000;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsExitHysteresisBpsMin = 0;
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsExitHysteresisBpsMax = 10000;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsReentryCooldownSecondsMax = 604800;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaximumHoldSecondsMax = 604800;
+
+export const commandTradingPoliciesResponseSourcesItemDefinitionControlsMaximumLossBpsMax = 10000;
+
+
+
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionIdRegExp = new RegExp('^[a-z][a-z0-9-]{2,70}$');
+export const commandTradingPoliciesResponseVersionsItemDefinitionVersionMax = 1000000;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionNameMin = 3;
+export const commandTradingPoliciesResponseVersionsItemDefinitionNameMax = 160;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionJustificationMin = 20;
+export const commandTradingPoliciesResponseVersionsItemDefinitionJustificationMax = 2000;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionPreviousVersionMax = 200;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxOrderUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxCorrelatedUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxPortfolioUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsDefensiveUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxAssetUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxEventUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxStrategyUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxCounterpartyUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxQuoteAgeSecondsMax = 3600;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxSourceAgeSecondsMax = 3600;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxHorizonSecondsMax = 604800;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxAttemptsMax = 10;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsRetrySecondsMax = 3600;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMinimumNetEdgeBpsMin = 0;
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMinimumNetEdgeBpsMax = 10000;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsExitHysteresisBpsMin = 0;
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsExitHysteresisBpsMax = 10000;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsReentryCooldownSecondsMax = 604800;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaximumHoldSecondsMax = 604800;
+
+export const commandTradingPoliciesResponseVersionsItemDefinitionControlsMaximumLossBpsMax = 10000;
+
+
+
+
+
+
+export const CommandTradingPoliciesResponse = zod.object({
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "permissions": zod.array(zod.string()),
+  "sources": zod.array(zod.object({
+  "key": zod.string(),
+  "definition": zod.object({
+  "id": zod.string().regex(commandTradingPoliciesResponseSourcesItemDefinitionIdRegExp),
+  "version": zod.number().int().min(1).max(commandTradingPoliciesResponseSourcesItemDefinitionVersionMax),
+  "type": zod.enum(['treasury', 'strategy', 'specialist']),
+  "scope": zod.enum(['global', 'predictions', 'btc', 'eth', 'sol']),
+  "schemaVersion": zod.literal(1),
+  "name": zod.string().min(commandTradingPoliciesResponseSourcesItemDefinitionNameMin).max(commandTradingPoliciesResponseSourcesItemDefinitionNameMax),
+  "implementation": zod.enum(['treasury-paper-controls/1', 'calibrated-event-lower-bound/1', 'polymarket-event-observer/1']),
+  "justification": zod.string().min(commandTradingPoliciesResponseSourcesItemDefinitionJustificationMin).max(commandTradingPoliciesResponseSourcesItemDefinitionJustificationMax),
+  "previousVersion": zod.string().max(commandTradingPoliciesResponseSourcesItemDefinitionPreviousVersionMax).nullish(),
+  "openPositions": zod.enum(['preserve_original_exit_and_apply_emergency_controls']),
+  "controls": zod.object({
+  "mode": zod.enum(['simulation_only']).optional(),
+  "paused": zod.boolean().optional(),
+  "maxOrderUnits": zod.string().regex(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxOrderUnitsRegExp).optional(),
+  "maxCorrelatedUnits": zod.string().regex(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxCorrelatedUnitsRegExp).optional(),
+  "maxPortfolioUnits": zod.string().regex(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxPortfolioUnitsRegExp).optional(),
+  "defensiveUnits": zod.string().regex(commandTradingPoliciesResponseSourcesItemDefinitionControlsDefensiveUnitsRegExp).optional(),
+  "maxAssetUnits": zod.string().regex(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxAssetUnitsRegExp).optional(),
+  "maxEventUnits": zod.string().regex(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxEventUnitsRegExp).optional(),
+  "maxStrategyUnits": zod.string().regex(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxStrategyUnitsRegExp).optional(),
+  "maxCounterpartyUnits": zod.string().regex(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxCounterpartyUnitsRegExp).optional(),
+  "maxQuoteAgeSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxQuoteAgeSecondsMax).optional(),
+  "maxSourceAgeSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxSourceAgeSecondsMax).optional(),
+  "maxHorizonSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxHorizonSecondsMax).optional(),
+  "maxAttempts": zod.number().int().min(1).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaxAttemptsMax).optional(),
+  "retrySeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsRetrySecondsMax).optional(),
+  "minimumNetEdgeBps": zod.number().int().min(commandTradingPoliciesResponseSourcesItemDefinitionControlsMinimumNetEdgeBpsMin).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsMinimumNetEdgeBpsMax).optional(),
+  "exitHysteresisBps": zod.number().int().min(commandTradingPoliciesResponseSourcesItemDefinitionControlsExitHysteresisBpsMin).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsExitHysteresisBpsMax).optional(),
+  "reentryCooldownSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsReentryCooldownSecondsMax).optional(),
+  "maximumHoldSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaximumHoldSecondsMax).optional(),
+  "maximumLossBps": zod.number().int().min(1).max(commandTradingPoliciesResponseSourcesItemDefinitionControlsMaximumLossBpsMax).optional(),
+  "allowedAssets": zod.array(zod.enum(['btc', 'eth', 'sol'])).min(1).optional(),
+  "allowedProviders": zod.array(zod.enum(['polymarket_gamma_clob'])).min(1).optional(),
+  "allowedMarkets": zod.array(zod.enum(['prediction'])).min(1).optional(),
+  "requireCalibratedModel": zod.literal(true).optional(),
+  "requireCompleteCosts": zod.literal(true).optional(),
+  "requireExitPlan": zod.literal(true).optional(),
+  "requireReconciliation": zod.literal(true).optional()
+}),
+  "search": zod.enum(['bitcoin', 'ethereum', 'solana']).optional(),
+  "horizon": zod.enum(['event_resolution']).optional()
+}),
+  "contentHash": zod.string(),
+  "sourceCommit": zod.string().nullable(),
+  "state": zod.enum(['draft', 'committed'])
+})),
+  "versions": zod.array(zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "definition": zod.object({
+  "id": zod.string().regex(commandTradingPoliciesResponseVersionsItemDefinitionIdRegExp),
+  "version": zod.number().int().min(1).max(commandTradingPoliciesResponseVersionsItemDefinitionVersionMax),
+  "type": zod.enum(['treasury', 'strategy', 'specialist']),
+  "scope": zod.enum(['global', 'predictions', 'btc', 'eth', 'sol']),
+  "schemaVersion": zod.literal(1),
+  "name": zod.string().min(commandTradingPoliciesResponseVersionsItemDefinitionNameMin).max(commandTradingPoliciesResponseVersionsItemDefinitionNameMax),
+  "implementation": zod.enum(['treasury-paper-controls/1', 'calibrated-event-lower-bound/1', 'polymarket-event-observer/1']),
+  "justification": zod.string().min(commandTradingPoliciesResponseVersionsItemDefinitionJustificationMin).max(commandTradingPoliciesResponseVersionsItemDefinitionJustificationMax),
+  "previousVersion": zod.string().max(commandTradingPoliciesResponseVersionsItemDefinitionPreviousVersionMax).nullish(),
+  "openPositions": zod.enum(['preserve_original_exit_and_apply_emergency_controls']),
+  "controls": zod.object({
+  "mode": zod.enum(['simulation_only']).optional(),
+  "paused": zod.boolean().optional(),
+  "maxOrderUnits": zod.string().regex(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxOrderUnitsRegExp).optional(),
+  "maxCorrelatedUnits": zod.string().regex(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxCorrelatedUnitsRegExp).optional(),
+  "maxPortfolioUnits": zod.string().regex(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxPortfolioUnitsRegExp).optional(),
+  "defensiveUnits": zod.string().regex(commandTradingPoliciesResponseVersionsItemDefinitionControlsDefensiveUnitsRegExp).optional(),
+  "maxAssetUnits": zod.string().regex(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxAssetUnitsRegExp).optional(),
+  "maxEventUnits": zod.string().regex(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxEventUnitsRegExp).optional(),
+  "maxStrategyUnits": zod.string().regex(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxStrategyUnitsRegExp).optional(),
+  "maxCounterpartyUnits": zod.string().regex(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxCounterpartyUnitsRegExp).optional(),
+  "maxQuoteAgeSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxQuoteAgeSecondsMax).optional(),
+  "maxSourceAgeSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxSourceAgeSecondsMax).optional(),
+  "maxHorizonSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxHorizonSecondsMax).optional(),
+  "maxAttempts": zod.number().int().min(1).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaxAttemptsMax).optional(),
+  "retrySeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsRetrySecondsMax).optional(),
+  "minimumNetEdgeBps": zod.number().int().min(commandTradingPoliciesResponseVersionsItemDefinitionControlsMinimumNetEdgeBpsMin).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsMinimumNetEdgeBpsMax).optional(),
+  "exitHysteresisBps": zod.number().int().min(commandTradingPoliciesResponseVersionsItemDefinitionControlsExitHysteresisBpsMin).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsExitHysteresisBpsMax).optional(),
+  "reentryCooldownSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsReentryCooldownSecondsMax).optional(),
+  "maximumHoldSeconds": zod.number().int().min(1).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaximumHoldSecondsMax).optional(),
+  "maximumLossBps": zod.number().int().min(1).max(commandTradingPoliciesResponseVersionsItemDefinitionControlsMaximumLossBpsMax).optional(),
+  "allowedAssets": zod.array(zod.enum(['btc', 'eth', 'sol'])).min(1).optional(),
+  "allowedProviders": zod.array(zod.enum(['polymarket_gamma_clob'])).min(1).optional(),
+  "allowedMarkets": zod.array(zod.enum(['prediction'])).min(1).optional(),
+  "requireCalibratedModel": zod.literal(true).optional(),
+  "requireCompleteCosts": zod.literal(true).optional(),
+  "requireExitPlan": zod.literal(true).optional(),
+  "requireReconciliation": zod.literal(true).optional()
+}),
+  "search": zod.enum(['bitcoin', 'ethereum', 'solana']).optional(),
+  "horizon": zod.enum(['event_resolution']).optional()
+}),
+  "contentHash": zod.string(),
+  "sourceCommit": zod.string(),
+  "sourcePath": zod.string(),
+  "author": zod.string(),
+  "justification": zod.string(),
+  "publishedAt": zod.string(),
+  "state": zod.enum(['validated', 'approved', 'active', 'superseded', 'revoked']),
+  "approvalRequired": zod.boolean(),
+  "approver": zod.string().nullish(),
+  "approvedAt": zod.string().nullish(),
+  "activatedAt": zod.string().nullish(),
+  "replacedBy": zod.string().nullish()
+})),
+  "effective": zod.array(zod.object({
+  "asset": zod.enum(['btc', 'eth', 'sol']),
+  "status": zod.enum(['active', 'blocked']),
+  "reason": zod.string(),
+  "reference": zod.record(zod.string(), zod.unknown()).optional(),
+  "configuration": zod.record(zod.string(), zod.unknown()).optional()
+})),
+  "changes": zod.array(zod.object({
+  "id": zod.string(),
+  "action": zod.string(),
+  "actor": zod.string(),
+  "actorType": zod.enum(['human', 'agent']),
+  "reason": zod.string(),
+  "at": zod.string(),
+  "revision": zod.number().int(),
+  "versionId": zod.string().nullish(),
+  "differences": zod.array(zod.record(zod.string(), zod.unknown())).optional()
+})),
+  "affected": zod.array(zod.object({
+  "id": zod.string(),
+  "kind": zod.enum(['opportunity', 'order', 'position']),
+  "state": zod.string(),
+  "originalEffectiveId": zod.string().nullish(),
+  "currentEffectiveId": zod.string().nullish(),
+  "action": zod.string()
+})),
+  "asOf": zod.string()
+})
+
+
+/**
+ * @summary Real BTC prediction-market observations and hierarchy states, never financial balances
+ */
+export const GetAlphaAgentsResponse = zod.object({
+  "orchestrator": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "mode": zod.string()
+}),
+  "agents": zod.array(zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "status": zod.enum(['active', 'planned', 'unavailable']),
+  "specialists": zod.array(zod.string())
+})),
+  "source": zod.object({
+  "status": zod.enum(['not_collected', 'observed', 'partial', 'unavailable', 'no_btc_markets', 'no_eligible_markets']),
+  "attemptedAt": zod.string(),
+  "opportunityCount": zod.number().int(),
+  "error": zod.string().optional()
+}),
+  "opportunities": zod.array(zod.object({
+  "opportunity": zod.object({
+  "id": zod.string(),
+  "marketAgent": zod.string(),
+  "specialist": zod.string(),
+  "market": zod.string(),
+  "origin": zod.object({
+  "provider": zod.string(),
+  "snapshotId": zod.string(),
+  "nature": zod.enum(['real_market_data', 'internal_fixture'])
+}),
+  "instrument": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "outcome": zod.string(),
+  "settlementAsset": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+})
+}),
+  "operation": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "sources": zod.array(zod.object({
+  "url": zod.string(),
+  "producedAt": zod.string(),
+  "collectedAt": zod.string(),
+  "evidence": zod.string()
+})),
+  "model": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "executablePrice": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "costs": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "liquidity": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "estimatedReturn": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "uncertainty": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "risks": zod.array(zod.string()),
+  "potentialLossUnits": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "capitalUnits": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "horizonSeconds": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "correlation": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "validUntil": zod.string(),
+  "invalidationConditions": zod.array(zod.string()),
+  "strategyVersion": zod.string().optional(),
+  "policyVersion": zod.string().optional(),
+  "deduplicationKey": zod.string().optional(),
+  "policyEffectiveId": zod.string().optional(),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "sourceSnapshots": zod.array(zod.record(zod.string(), zod.unknown())).optional(),
+  "probability": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}).optional(),
+  "orderQuote": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}).optional(),
+  "exitPlan": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}).optional()
+}),
+  "state": zod.enum(['needs_update', 'qualified', 'rejected', 'selected', 'awaiting_authorization', 'allocation_authorized', 'allocation_uncertain', 'allocation_confirmed', 'expired']),
+  "revision": zod.number().int(),
+  "reason": zod.string(),
+  "correlationId": zod.string(),
+  "decisions": zod.array(zod.object({
+  "layer": zod.enum(['specialist', 'market', 'BETTEX', 'risk', 'execution']),
+  "reason": zod.string(),
+  "at": zod.string()
+})),
+  "allocationUnits": zod.string().optional(),
+  "governanceProposalId": zod.string().optional(),
+  "transactionHash": zod.string().optional(),
+  "queueState": zod.enum(['received', 'validated', 'awaiting_decision', 'selected', 'rejected', 'expired', 'forwarded_to_execution']).optional(),
+  "strategyVersion": zod.string().optional(),
+  "priority": zod.string().optional(),
+  "attempts": zod.number().int().optional(),
+  "nextAttemptAt": zod.string().optional()
+}))
+})
+
+
+export const getAlphaTradingQueryViewDefault = `opportunities`;
+export const getAlphaTradingQueryStateMax = 40;
+
+export const getAlphaTradingQueryCursorMax = 400;
+
+export const getAlphaTradingQueryLimitDefault = 15;
+export const getAlphaTradingQueryLimitMax = 50;
+
+
+
+export const GetAlphaTradingQueryParams = zod.object({
+  "view": zod.enum(['opportunities', 'decisions', 'orders', 'positions', 'closed']).default(getAlphaTradingQueryViewDefault),
+  "asset": zod.enum(['btc', 'eth', 'sol']).optional(),
+  "state": zod.coerce.string().max(getAlphaTradingQueryStateMax).optional(),
+  "cursor": zod.coerce.string().max(getAlphaTradingQueryCursorMax).optional(),
+  "limit": zod.coerce.number().int().min(1).max(getAlphaTradingQueryLimitMax).default(getAlphaTradingQueryLimitDefault)
+})
+
+export const GetAlphaTradingResponse = zod.object({
+  "mode": zod.enum(['paper_trading_no_real_money']),
+  "asOf": zod.string(),
+  "policy": zod.object({
+  "version": zod.string(),
+  "strategyVersion": zod.string(),
+  "name": zod.string(),
+  "mode": zod.enum(['simulation_only']),
+  "maxOrderUnits": zod.string(),
+  "maxCorrelatedUnits": zod.string(),
+  "maxPortfolioUnits": zod.string(),
+  "defensiveUnits": zod.string(),
+  "maxQuoteAgeSeconds": zod.number().int(),
+  "rules": zod.array(zod.string()),
+  "published": zod.boolean().optional(),
+  "effectiveId": zod.string().optional(),
+  "specialistVersion": zod.string().optional(),
+  "environment": zod.enum(['development', 'production']).optional()
+}),
+  "effectivePolicies": zod.array(zod.object({
+  "asset": zod.enum(['btc', 'eth', 'sol']),
+  "status": zod.enum(['active', 'blocked']),
+  "reason": zod.string(),
+  "reference": zod.record(zod.string(), zod.unknown()).optional(),
+  "configuration": zod.record(zod.string(), zod.unknown()).optional()
+})).optional(),
+  "specialists": zod.array(zod.object({
+  "asset": zod.enum(['btc', 'eth', 'sol']),
+  "sourceStatus": zod.string(),
+  "proposalStatus": zod.enum(['blocked', 'enabled']),
+  "reason": zod.string(),
+  "attemptedAt": zod.string(),
+  "observationCount": zod.number().int(),
+  "sources": zod.array(zod.string())
+})),
+  "capital": zod.object({
+  "status": zod.enum(['unfunded', 'reconciled', 'divergence']),
+  "cashUnits": zod.string().nullable(),
+  "availableUnits": zod.string().nullable(),
+  "reservedUnits": zod.string(),
+  "committedUnits": zod.string(),
+  "obligationsUnits": zod.string(),
+  "realizedUnits": zod.string(),
+  "distributableUnits": zod.enum(['0']),
+  "reconciliation": zod.string(),
+  "exposure": zod.array(zod.object({
+  "asset": zod.string(),
+  "strategyVersion": zod.string(),
+  "units": zod.string()
+}))
+}),
+  "opportunities": zod.array(zod.object({
+  "opportunity": zod.object({
+  "id": zod.string(),
+  "marketAgent": zod.string(),
+  "specialist": zod.string(),
+  "market": zod.string(),
+  "origin": zod.object({
+  "provider": zod.string(),
+  "snapshotId": zod.string(),
+  "nature": zod.enum(['real_market_data', 'internal_fixture'])
+}),
+  "instrument": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "outcome": zod.string(),
+  "settlementAsset": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+})
+}),
+  "operation": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "sources": zod.array(zod.object({
+  "url": zod.string(),
+  "producedAt": zod.string(),
+  "collectedAt": zod.string(),
+  "evidence": zod.string()
+})),
+  "model": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "executablePrice": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "costs": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "liquidity": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "estimatedReturn": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "uncertainty": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "risks": zod.array(zod.string()),
+  "potentialLossUnits": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "capitalUnits": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "horizonSeconds": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "correlation": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "validUntil": zod.string(),
+  "invalidationConditions": zod.array(zod.string()),
+  "strategyVersion": zod.string().optional(),
+  "policyVersion": zod.string().optional(),
+  "deduplicationKey": zod.string().optional(),
+  "policyEffectiveId": zod.string().optional(),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "sourceSnapshots": zod.array(zod.record(zod.string(), zod.unknown())).optional(),
+  "probability": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}).optional(),
+  "orderQuote": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}).optional(),
+  "exitPlan": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}).optional()
+}),
+  "state": zod.enum(['needs_update', 'qualified', 'rejected', 'selected', 'awaiting_authorization', 'allocation_authorized', 'allocation_uncertain', 'allocation_confirmed', 'expired']),
+  "revision": zod.number().int(),
+  "reason": zod.string(),
+  "correlationId": zod.string(),
+  "decisions": zod.array(zod.object({
+  "layer": zod.enum(['specialist', 'market', 'BETTEX', 'risk', 'execution']),
+  "reason": zod.string(),
+  "at": zod.string()
+})),
+  "allocationUnits": zod.string().optional(),
+  "governanceProposalId": zod.string().optional(),
+  "transactionHash": zod.string().optional(),
+  "queueState": zod.enum(['received', 'validated', 'awaiting_decision', 'selected', 'rejected', 'expired', 'forwarded_to_execution']).optional(),
+  "strategyVersion": zod.string().optional(),
+  "priority": zod.string().optional(),
+  "attempts": zod.number().int().optional(),
+  "nextAttemptAt": zod.string().optional()
+})),
+  "decisions": zod.array(zod.object({
+  "id": zod.string(),
+  "opportunityId": zod.string(),
+  "asset": zod.string(),
+  "state": zod.enum(['selected', 'rejected', 'hold']),
+  "reason": zod.string(),
+  "at": zod.string(),
+  "policyVersion": zod.string(),
+  "strategyVersion": zod.string(),
+  "rank": zod.number().int(),
+  "requestedUnits": zod.string(),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "policySnapshot": zod.record(zod.string(), zod.unknown()).optional()
+})),
+  "orders": zod.array(zod.object({
+  "id": zod.string(),
+  "opportunityId": zod.string(),
+  "decisionId": zod.string(),
+  "positionId": zod.string().optional(),
+  "asset": zod.string(),
+  "instrumentId": zod.string(),
+  "outcome": zod.string(),
+  "direction": zod.enum(['buy', 'sell']),
+  "state": zod.enum(['pending', 'partial', 'filled', 'cancelled', 'expired', 'failed']),
+  "quantityUnits": zod.string(),
+  "filledUnits": zod.string(),
+  "reservedUnits": zod.string(),
+  "policyVersion": zod.string(),
+  "strategyVersion": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string(),
+  "reason": zod.string(),
+  "fills": zod.array(zod.object({
+  "id": zod.string(),
+  "at": zod.string(),
+  "sharesUnits": zod.string(),
+  "cashUnits": zod.string(),
+  "feesUnits": zod.string(),
+  "price": zod.string(),
+  "source": zod.string()
+})),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "submittedQuote": zod.record(zod.string(), zod.unknown()).optional(),
+  "fillQuotes": zod.array(zod.record(zod.string(), zod.unknown())).optional()
+})),
+  "positions": zod.array(zod.object({
+  "id": zod.string(),
+  "opportunityId": zod.string(),
+  "decisionId": zod.string(),
+  "orderId": zod.string(),
+  "asset": zod.string(),
+  "event": zod.string(),
+  "instrumentId": zod.string(),
+  "outcome": zod.string(),
+  "state": zod.enum(['open', 'reducing', 'closed', 'settled']),
+  "quantityUnits": zod.string(),
+  "entryCostUnits": zod.string(),
+  "entryFeesUnits": zod.string(),
+  "committedUnits": zod.string(),
+  "originalExpectedUnits": zod.string(),
+  "realizedUnits": zod.string(),
+  "strategyVersion": zod.string(),
+  "policyVersion": zod.string(),
+  "openedAt": zod.string(),
+  "updatedAt": zod.string(),
+  "closedAt": zod.string().optional(),
+  "exitPlan": zod.string(),
+  "exitState": zod.enum(['planned', 'triggered', 'requested', 'partial', 'confirmed', 'blocked_liquidity']),
+  "resolutionState": zod.enum(['unresolved', 'resolved', 'settlement_pending', 'settled']),
+  "valuations": zod.array(zod.object({
+  "at": zod.string(),
+  "source": zod.string(),
+  "priceUnits": zod.string().nullable().describe('Observed or indicative micro-USDC per event share, not an asset spot price'),
+  "producedAt": zod.string().nullable(),
+  "kind": zod.enum(['executable', 'conservative', 'indicative', 'unavailable']),
+  "stale": zod.boolean(),
+  "quantityUnits": zod.string(),
+  "liquidatableUnits": zod.string(),
+  "exitValueUnits": zod.string().nullable(),
+  "unrealizedUnits": zod.string().nullable(),
+  "updatedExpectedUnits": zod.string().nullable(),
+  "action": zod.enum(['hold', 'pause', 'reduce', 'exit']),
+  "reason": zod.string()
+})),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "policySnapshot": zod.record(zod.string(), zod.unknown()).optional()
+})),
+  "page": zod.object({
+  "view": zod.string(),
+  "total": zod.number().int(),
+  "hasMore": zod.boolean(),
+  "nextCursor": zod.string().nullable()
+})
+})
+
+
+export const getAlphaTradingJourneyPathIdMax = 110;
+
+
+
+export const GetAlphaTradingJourneyParams = zod.object({
+  "id": zod.coerce.string().max(getAlphaTradingJourneyPathIdMax)
+})
+
+export const GetAlphaTradingJourneyResponse = zod.object({
+  "mode": zod.enum(['paper_trading_no_real_money']),
+  "opportunity": zod.object({
+  "opportunity": zod.object({
+  "id": zod.string(),
+  "marketAgent": zod.string(),
+  "specialist": zod.string(),
+  "market": zod.string(),
+  "origin": zod.object({
+  "provider": zod.string(),
+  "snapshotId": zod.string(),
+  "nature": zod.enum(['real_market_data', 'internal_fixture'])
+}),
+  "instrument": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "outcome": zod.string(),
+  "settlementAsset": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+})
+}),
+  "operation": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "sources": zod.array(zod.object({
+  "url": zod.string(),
+  "producedAt": zod.string(),
+  "collectedAt": zod.string(),
+  "evidence": zod.string()
+})),
+  "model": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "executablePrice": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "costs": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "liquidity": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "estimatedReturn": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "uncertainty": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "risks": zod.array(zod.string()),
+  "potentialLossUnits": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "capitalUnits": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "horizonSeconds": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "correlation": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}),
+  "validUntil": zod.string(),
+  "invalidationConditions": zod.array(zod.string()),
+  "strategyVersion": zod.string().optional(),
+  "policyVersion": zod.string().optional(),
+  "deduplicationKey": zod.string().optional(),
+  "policyEffectiveId": zod.string().optional(),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "sourceSnapshots": zod.array(zod.record(zod.string(), zod.unknown())).optional(),
+  "probability": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}).optional(),
+  "orderQuote": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}).optional(),
+  "exitPlan": zod.object({
+  "kind": zod.enum(['observed', 'estimated', 'missing']),
+  "value": zod.unknown().optional(),
+  "method": zod.string().optional(),
+  "reason": zod.string().optional()
+}).optional()
+}),
+  "state": zod.enum(['needs_update', 'qualified', 'rejected', 'selected', 'awaiting_authorization', 'allocation_authorized', 'allocation_uncertain', 'allocation_confirmed', 'expired']),
+  "revision": zod.number().int(),
+  "reason": zod.string(),
+  "correlationId": zod.string(),
+  "decisions": zod.array(zod.object({
+  "layer": zod.enum(['specialist', 'market', 'BETTEX', 'risk', 'execution']),
+  "reason": zod.string(),
+  "at": zod.string()
+})),
+  "allocationUnits": zod.string().optional(),
+  "governanceProposalId": zod.string().optional(),
+  "transactionHash": zod.string().optional(),
+  "queueState": zod.enum(['received', 'validated', 'awaiting_decision', 'selected', 'rejected', 'expired', 'forwarded_to_execution']).optional(),
+  "strategyVersion": zod.string().optional(),
+  "priority": zod.string().optional(),
+  "attempts": zod.number().int().optional(),
+  "nextAttemptAt": zod.string().optional()
+}),
+  "decisions": zod.array(zod.object({
+  "id": zod.string(),
+  "opportunityId": zod.string(),
+  "asset": zod.string(),
+  "state": zod.enum(['selected', 'rejected', 'hold']),
+  "reason": zod.string(),
+  "at": zod.string(),
+  "policyVersion": zod.string(),
+  "strategyVersion": zod.string(),
+  "rank": zod.number().int(),
+  "requestedUnits": zod.string(),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "policySnapshot": zod.record(zod.string(), zod.unknown()).optional()
+})),
+  "orders": zod.array(zod.object({
+  "id": zod.string(),
+  "opportunityId": zod.string(),
+  "decisionId": zod.string(),
+  "positionId": zod.string().optional(),
+  "asset": zod.string(),
+  "instrumentId": zod.string(),
+  "outcome": zod.string(),
+  "direction": zod.enum(['buy', 'sell']),
+  "state": zod.enum(['pending', 'partial', 'filled', 'cancelled', 'expired', 'failed']),
+  "quantityUnits": zod.string(),
+  "filledUnits": zod.string(),
+  "reservedUnits": zod.string(),
+  "policyVersion": zod.string(),
+  "strategyVersion": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string(),
+  "reason": zod.string(),
+  "fills": zod.array(zod.object({
+  "id": zod.string(),
+  "at": zod.string(),
+  "sharesUnits": zod.string(),
+  "cashUnits": zod.string(),
+  "feesUnits": zod.string(),
+  "price": zod.string(),
+  "source": zod.string()
+})),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "submittedQuote": zod.record(zod.string(), zod.unknown()).optional(),
+  "fillQuotes": zod.array(zod.record(zod.string(), zod.unknown())).optional()
+})),
+  "positions": zod.array(zod.object({
+  "id": zod.string(),
+  "opportunityId": zod.string(),
+  "decisionId": zod.string(),
+  "orderId": zod.string(),
+  "asset": zod.string(),
+  "event": zod.string(),
+  "instrumentId": zod.string(),
+  "outcome": zod.string(),
+  "state": zod.enum(['open', 'reducing', 'closed', 'settled']),
+  "quantityUnits": zod.string(),
+  "entryCostUnits": zod.string(),
+  "entryFeesUnits": zod.string(),
+  "committedUnits": zod.string(),
+  "originalExpectedUnits": zod.string(),
+  "realizedUnits": zod.string(),
+  "strategyVersion": zod.string(),
+  "policyVersion": zod.string(),
+  "openedAt": zod.string(),
+  "updatedAt": zod.string(),
+  "closedAt": zod.string().optional(),
+  "exitPlan": zod.string(),
+  "exitState": zod.enum(['planned', 'triggered', 'requested', 'partial', 'confirmed', 'blocked_liquidity']),
+  "resolutionState": zod.enum(['unresolved', 'resolved', 'settlement_pending', 'settled']),
+  "valuations": zod.array(zod.object({
+  "at": zod.string(),
+  "source": zod.string(),
+  "priceUnits": zod.string().nullable().describe('Observed or indicative micro-USDC per event share, not an asset spot price'),
+  "producedAt": zod.string().nullable(),
+  "kind": zod.enum(['executable', 'conservative', 'indicative', 'unavailable']),
+  "stale": zod.boolean(),
+  "quantityUnits": zod.string(),
+  "liquidatableUnits": zod.string(),
+  "exitValueUnits": zod.string().nullable(),
+  "unrealizedUnits": zod.string().nullable(),
+  "updatedExpectedUnits": zod.string().nullable(),
+  "action": zod.enum(['hold', 'pause', 'reduce', 'exit']),
+  "reason": zod.string()
+})),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "policySnapshot": zod.record(zod.string(), zod.unknown()).optional()
+})),
+  "events": zod.array(zod.object({
+  "at": zod.string(),
+  "stage": zod.string(),
+  "reason": zod.string(),
+  "sequence": zod.number().int(),
+  "policyReference": zod.object({
+  "effectiveId": zod.string(),
+  "environment": zod.enum(['development', 'production']),
+  "revision": zod.number().int(),
+  "versions": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "hashes": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "implementations": zod.object({
+  "treasury": zod.string(),
+  "strategy": zod.string(),
+  "specialist": zod.string()
+}),
+  "exitTreatment": zod.string()
+}).optional(),
+  "currentPolicyId": zod.string().optional(),
+  "differences": zod.array(zod.object({
+  "field": zod.string(),
+  "before": zod.unknown(),
+  "after": zod.unknown()
+})).optional()
+}))
+})
+
+
+export const GetTreasuryGovernanceResponse = zod.record(zod.string(), zod.unknown())
+
+
+export const commandTreasuryGovernanceBodyCsrfMax = 200;
+
+export const commandTreasuryGovernanceBodyIdRegExp = new RegExp('^[A-Za-z0-9:_-]{1,100}$');
+export const commandTreasuryGovernanceBodyReasonMax = 500;
+
+export const commandTreasuryGovernanceBodyUnitsRegExp = new RegExp('^[1-9][0-9]{0,39}$');
+export const commandTreasuryGovernanceBodyDestinationRegExp = new RegExp('^0x[0-9a-fA-F]{40}$');
+export const commandTreasuryGovernanceBodyPolicyDefensiveUnitsRegExp = new RegExp('^(0|[1-9][0-9]{0,39})$');
+export const commandTreasuryGovernanceBodyPolicyMaxAllocationUnitsRegExp = new RegExp('^[1-9][0-9]{0,39}$');
+export const commandTreasuryGovernanceBodyPolicyDailyLimitUnitsRegExp = new RegExp('^[1-9][0-9]{0,39}$');
+export const commandTreasuryGovernanceBodyPolicyDestinationsItemRegExp = new RegExp('^0x[0-9a-fA-F]{40}$');
+export const commandTreasuryGovernanceBodyPolicyDestinationsMax = 10;
+
+export const commandTreasuryGovernanceBodyPermissionTargetMax = 100;
+
+
+
+export const CommandTreasuryGovernanceBody = zod.object({
+  "csrf": zod.string().min(1).max(commandTreasuryGovernanceBodyCsrfMax),
+  "action": zod.enum(['analyze', 'propose', 'approve', 'reject', 'execute', 'pause', 'resume']),
+  "id": zod.string().regex(commandTreasuryGovernanceBodyIdRegExp),
+  "reason": zod.string().min(1).max(commandTreasuryGovernanceBodyReasonMax),
+  "kind": zod.enum(['allocation', 'policy', 'permission']).optional(),
+  "units": zod.string().regex(commandTreasuryGovernanceBodyUnitsRegExp).optional(),
+  "destination": zod.string().regex(commandTreasuryGovernanceBodyDestinationRegExp).optional(),
+  "policy": zod.object({
+  "defensiveUnits": zod.string().regex(commandTreasuryGovernanceBodyPolicyDefensiveUnitsRegExp),
+  "maxAllocationUnits": zod.string().regex(commandTreasuryGovernanceBodyPolicyMaxAllocationUnitsRegExp),
+  "dailyLimitUnits": zod.string().regex(commandTreasuryGovernanceBodyPolicyDailyLimitUnitsRegExp),
+  "destinations": zod.array(zod.string().regex(commandTreasuryGovernanceBodyPolicyDestinationsItemRegExp)).min(1).max(commandTreasuryGovernanceBodyPolicyDestinationsMax)
+}).optional(),
+  "permission": zod.object({
+  "target": zod.string().min(1).max(commandTreasuryGovernanceBodyPermissionTargetMax),
+  "permission": zod.enum(['treasury_view', 'treasury_propose', 'treasury_approve', 'treasury_execute', 'treasury_pause', 'treasury_policy', 'treasury_activate']),
+  "grant": zod.boolean()
+}).optional()
+})
+
+export const CommandTreasuryGovernanceResponse = zod.record(zod.string(), zod.unknown())
+
+
+export const GetHistoryTransparencyResponseItem = zod.object({
+  "environment": zod.string(),
+  "chainId": zod.number().int(),
+  "capitalUnits": zod.string(),
+  "decimals": zod.number().int(),
+  "operationCount": zod.string()
+})
+export const GetHistoryTransparencyResponse = zod.array(GetHistoryTransparencyResponseItem)
+
+
+export const getTestHistoryQueryStateMax = 40;
+
+
+export const getTestHistoryQueryWalletMax = 100;
+
+export const getTestHistoryQueryKindMax = 60;
+
+export const getTestHistoryQueryCorrelationIdMax = 100;
+
+export const getTestHistoryQueryCursorMax = 2000;
+
+export const getTestHistoryQueryLimitDefault = 20;
+export const getTestHistoryQueryLimitMax = 50;
+
+
+
+export const GetTestHistoryQueryParams = zod.object({
+  "view": zod.enum(['general', 'swapping', 'staking', 'distributions', 'activity', 'treasury']).optional(),
+  "environment": zod.enum(['account_test', 'local_evm', 'simulation', 'testnet', 'production']).optional(),
+  "category": zod.enum(['financial', 'activity', 'automatic']).optional(),
+  "state": zod.coerce.string().max(getTestHistoryQueryStateMax).optional(),
+  "asset": zod.enum(['USDC', 'BETTEX', 'ETH']).optional(),
+  "chainId": zod.coerce.number().int().min(1).optional(),
+  "wallet": zod.coerce.string().max(getTestHistoryQueryWalletMax).optional(),
+  "from": zod.date().optional(),
+  "to": zod.date().optional(),
+  "kind": zod.coerce.string().max(getTestHistoryQueryKindMax).optional(),
+  "correlationId": zod.coerce.string().max(getTestHistoryQueryCorrelationIdMax).optional(),
+  "cursor": zod.coerce.string().max(getTestHistoryQueryCursorMax).optional(),
+  "limit": zod.coerce.number().int().min(1).max(getTestHistoryQueryLimitMax).default(getTestHistoryQueryLimitDefault)
+})
+
+export const GetTestHistoryResponse = zod.object({
+  "items": zod.array(zod.object({
+  "id": zod.string(),
+  "correlationId": zod.string(),
+  "category": zod.string(),
+  "kind": zod.string(),
+  "state": zod.string(),
+  "actor": zod.string(),
+  "environment": zod.string(),
+  "chainId": zod.number().int().nullish(),
+  "asset": zod.string().nullish(),
+  "wallet": zod.string().nullish(),
+  "transactionHash": zod.string().nullish(),
+  "blockHash": zod.string().nullish(),
+  "blockNumber": zod.number().int().nullish(),
+  "logIndex": zod.number().int().nullish(),
+  "occurredAt": zod.coerce.date(),
+  "requestedAt": zod.coerce.date().nullish(),
+  "processedAt": zod.coerce.date(),
+  "reconstructed": zod.boolean(),
+  "source": zod.string(),
+  "parentId": zod.string().nullish(),
+  "data": zod.record(zod.string(), zod.unknown())
+})),
+  "nextCursor": zod.string().nullable(),
+  "completeFrom": zod.coerce.date(),
+  "limitations": zod.array(zod.string()),
+  "timezone": zod.string(),
+  "syncState": zod.enum(['current', 'unavailable']).optional(),
+  "warning": zod.string().optional()
+})
+
+
+export const getDemoHistoryQueryStateMax = 40;
+
+
+export const getDemoHistoryQueryWalletMax = 100;
+
+export const getDemoHistoryQueryKindMax = 60;
+
+export const getDemoHistoryQueryCorrelationIdMax = 100;
+
+export const getDemoHistoryQueryCursorMax = 2000;
+
+export const getDemoHistoryQueryLimitDefault = 20;
+export const getDemoHistoryQueryLimitMax = 50;
+
+
+
+export const GetDemoHistoryQueryParams = zod.object({
+  "view": zod.enum(['general', 'swapping', 'staking', 'distributions', 'activity', 'treasury']).optional(),
+  "environment": zod.enum(['account_test', 'local_evm', 'simulation', 'testnet', 'production']).optional(),
+  "category": zod.enum(['financial', 'activity', 'automatic']).optional(),
+  "state": zod.coerce.string().max(getDemoHistoryQueryStateMax).optional(),
+  "asset": zod.enum(['USDC', 'BETTEX', 'ETH']).optional(),
+  "chainId": zod.coerce.number().int().min(1).optional(),
+  "wallet": zod.coerce.string().max(getDemoHistoryQueryWalletMax).optional(),
+  "from": zod.date().optional(),
+  "to": zod.date().optional(),
+  "kind": zod.coerce.string().max(getDemoHistoryQueryKindMax).optional(),
+  "correlationId": zod.coerce.string().max(getDemoHistoryQueryCorrelationIdMax).optional(),
+  "cursor": zod.coerce.string().max(getDemoHistoryQueryCursorMax).optional(),
+  "limit": zod.coerce.number().int().min(1).max(getDemoHistoryQueryLimitMax).default(getDemoHistoryQueryLimitDefault)
+})
+
+export const GetDemoHistoryResponse = zod.object({
+  "items": zod.array(zod.object({
+  "id": zod.string(),
+  "correlationId": zod.string(),
+  "category": zod.string(),
+  "kind": zod.string(),
+  "state": zod.string(),
+  "actor": zod.string(),
+  "environment": zod.string(),
+  "chainId": zod.number().int().nullish(),
+  "asset": zod.string().nullish(),
+  "wallet": zod.string().nullish(),
+  "transactionHash": zod.string().nullish(),
+  "blockHash": zod.string().nullish(),
+  "blockNumber": zod.number().int().nullish(),
+  "logIndex": zod.number().int().nullish(),
+  "occurredAt": zod.coerce.date(),
+  "requestedAt": zod.coerce.date().nullish(),
+  "processedAt": zod.coerce.date(),
+  "reconstructed": zod.boolean(),
+  "source": zod.string(),
+  "parentId": zod.string().nullish(),
+  "data": zod.record(zod.string(), zod.unknown())
+})),
+  "nextCursor": zod.string().nullable(),
+  "completeFrom": zod.coerce.date(),
+  "limitations": zod.array(zod.string()),
+  "timezone": zod.string(),
+  "syncState": zod.enum(['current', 'unavailable']).optional(),
+  "warning": zod.string().optional()
+})
+
+
+export const getTreasuryHistoryQueryStateMax = 40;
+
+
+export const getTreasuryHistoryQueryWalletMax = 100;
+
+export const getTreasuryHistoryQueryKindMax = 60;
+
+export const getTreasuryHistoryQueryCorrelationIdMax = 100;
+
+export const getTreasuryHistoryQueryCursorMax = 2000;
+
+export const getTreasuryHistoryQueryLimitDefault = 20;
+export const getTreasuryHistoryQueryLimitMax = 50;
+
+
+
+export const GetTreasuryHistoryQueryParams = zod.object({
+  "view": zod.enum(['general', 'swapping', 'staking', 'distributions', 'activity', 'treasury']).optional(),
+  "environment": zod.enum(['account_test', 'local_evm', 'simulation', 'testnet', 'production']).optional(),
+  "category": zod.enum(['financial', 'activity', 'automatic']).optional(),
+  "state": zod.coerce.string().max(getTreasuryHistoryQueryStateMax).optional(),
+  "asset": zod.enum(['USDC', 'BETTEX', 'ETH']).optional(),
+  "chainId": zod.coerce.number().int().min(1).optional(),
+  "wallet": zod.coerce.string().max(getTreasuryHistoryQueryWalletMax).optional(),
+  "from": zod.date().optional(),
+  "to": zod.date().optional(),
+  "kind": zod.coerce.string().max(getTreasuryHistoryQueryKindMax).optional(),
+  "correlationId": zod.coerce.string().max(getTreasuryHistoryQueryCorrelationIdMax).optional(),
+  "cursor": zod.coerce.string().max(getTreasuryHistoryQueryCursorMax).optional(),
+  "limit": zod.coerce.number().int().min(1).max(getTreasuryHistoryQueryLimitMax).default(getTreasuryHistoryQueryLimitDefault)
+})
+
+export const GetTreasuryHistoryResponse = zod.object({
+  "items": zod.array(zod.object({
+  "id": zod.string(),
+  "correlationId": zod.string(),
+  "category": zod.string(),
+  "kind": zod.string(),
+  "state": zod.string(),
+  "actor": zod.string(),
+  "environment": zod.string(),
+  "chainId": zod.number().int().nullish(),
+  "asset": zod.string().nullish(),
+  "wallet": zod.string().nullish(),
+  "transactionHash": zod.string().nullish(),
+  "blockHash": zod.string().nullish(),
+  "blockNumber": zod.number().int().nullish(),
+  "logIndex": zod.number().int().nullish(),
+  "occurredAt": zod.coerce.date(),
+  "requestedAt": zod.coerce.date().nullish(),
+  "processedAt": zod.coerce.date(),
+  "reconstructed": zod.boolean(),
+  "source": zod.string(),
+  "parentId": zod.string().nullish(),
+  "data": zod.record(zod.string(), zod.unknown())
+})),
+  "nextCursor": zod.string().nullable(),
+  "completeFrom": zod.coerce.date(),
+  "limitations": zod.array(zod.string()),
+  "timezone": zod.string(),
+  "syncState": zod.enum(['current', 'unavailable']).optional(),
+  "warning": zod.string().optional()
+})
+
+
+export const PreviewHistoryDistributionBody = zod.object({
+  "requestId": zod.string().uuid()
+})
+
+export const PreviewHistoryDistributionResponse = zod.unknown()
+
+
+export const GetTestContractResponse = zod.object({
+  "configured": zod.boolean(),
+  "chainId": zod.number().int(),
+  "version": zod.string(),
+  "address": zod.string().optional(),
+  "symbol": zod.string().optional(),
+  "blockNumber": zod.number().int().optional(),
+  "blockHash": zod.string().optional(),
+  "paused": zod.boolean().optional(),
+  "totalSupply": zod.string().optional(),
+  "sold": zod.string().optional(),
+  "priceUsdc": zod.string().optional(),
+  "feeUsdc": zod.string().optional(),
+  "treasury": zod.string().optional(),
+  "operatingWallet": zod.string().optional(),
+  "nextRelease": zod.number().int().optional(),
+  "currentMonth": zod.number().int().optional(),
+  "historyFromBlock": zod.number().int().optional(),
+  "historyPartial": zod.boolean().optional(),
+  "allocations": zod.array(zod.object({
+  "kind": zod.enum(['public', 'founder', 'investors']),
+  "address": zod.string(),
+  "beneficiary": zod.string(),
+  "total": zod.string(),
+  "released": zod.string(),
+  "locked": zod.string(),
+  "available": zod.string()
+})),
+  "events": zod.array(zod.object({
+  "name": zod.string(),
+  "transactionHash": zod.string(),
+  "blockHash": zod.string(),
+  "blockNumber": zod.number().int(),
+  "logIndex": zod.number().int(),
+  "address": zod.string(),
+  "values": zod.string()
+}))
+})
+
+
+export const observeTestContractBodyAddressRegExp = new RegExp('^0x[a-fA-F0-9]{40}$');
+
+
+export const ObserveTestContractBody = zod.object({
+  "address": zod.string().regex(observeTestContractBodyAddressRegExp)
+})
+
+export const ObserveTestContractResponse = zod.object({
+  "configured": zod.boolean(),
+  "chainId": zod.number().int(),
+  "version": zod.string(),
+  "address": zod.string().optional(),
+  "symbol": zod.string().optional(),
+  "blockNumber": zod.number().int().optional(),
+  "blockHash": zod.string().optional(),
+  "paused": zod.boolean().optional(),
+  "totalSupply": zod.string().optional(),
+  "sold": zod.string().optional(),
+  "priceUsdc": zod.string().optional(),
+  "feeUsdc": zod.string().optional(),
+  "treasury": zod.string().optional(),
+  "operatingWallet": zod.string().optional(),
+  "nextRelease": zod.number().int().optional(),
+  "currentMonth": zod.number().int().optional(),
+  "historyFromBlock": zod.number().int().optional(),
+  "historyPartial": zod.boolean().optional(),
+  "allocations": zod.array(zod.object({
+  "kind": zod.enum(['public', 'founder', 'investors']),
+  "address": zod.string(),
+  "beneficiary": zod.string(),
+  "total": zod.string(),
+  "released": zod.string(),
+  "locked": zod.string(),
+  "available": zod.string()
+})),
+  "events": zod.array(zod.object({
+  "name": zod.string(),
+  "transactionHash": zod.string(),
+  "blockHash": zod.string(),
+  "blockNumber": zod.number().int(),
+  "logIndex": zod.number().int(),
+  "address": zod.string(),
+  "values": zod.string()
+}))
+})
+
+
+export const getTestAccountSessionResponseWalletsItemAddressRegExp = new RegExp('^0x[0-9a-fA-F]{40}$');
+export const getTestAccountSessionResponseWalletsItemPublicKeyRegExp = new RegExp('^0x04[0-9a-fA-F]{128}$');
+export const getTestAccountSessionResponseWalletsItemChainIdsMax = 2;
+
+export const getTestAccountSessionResponseVaultOneSaltMax = 44;
+
+export const getTestAccountSessionResponseVaultOneIvMax = 24;
+
+export const getTestAccountSessionResponseVaultOneCiphertextMin = 80;
+export const getTestAccountSessionResponseVaultOneCiphertextMax = 12000;
+
+
+
+export const GetTestAccountSessionResponse = zod.object({
+  "enabled": zod.boolean(),
+  "isAdmin": zod.boolean().optional(),
+  "account": zod.union([zod.object({
+  "id": zod.string(),
+  "displayName": zod.string(),
+  "email": zod.string(),
+  "emailVerified": zod.literal(false),
+  "revision": zod.number().int(),
+  "acceptedAt": zod.string(),
+  "noticeVersion": zod.string()
+}),zod.null()]),
+  "wallets": zod.array(zod.object({
+  "id": zod.string().uuid(),
+  "purpose": zod.enum(['deposits', 'bettex']),
+  "address": zod.string().regex(getTestAccountSessionResponseWalletsItemAddressRegExp),
+  "publicKey": zod.string().regex(getTestAccountSessionResponseWalletsItemPublicKeyRegExp),
+  "chainIds": zod.array(zod.union([zod.literal(421614),zod.literal(31337)])).min(1).max(getTestAccountSessionResponseWalletsItemChainIdsMax)
+})),
+  "vault": zod.union([zod.object({
+  "version": zod.literal(1),
+  "iterations": zod.literal(600000),
+  "salt": zod.string().max(getTestAccountSessionResponseVaultOneSaltMax),
+  "iv": zod.string().max(getTestAccountSessionResponseVaultOneIvMax),
+  "ciphertext": zod.string().min(getTestAccountSessionResponseVaultOneCiphertextMin).max(getTestAccountSessionResponseVaultOneCiphertextMax),
+  "registrationId": zod.string().uuid()
+}),zod.null()]),
+  "csrf": zod.string()
+})
+
+
+export const testAccountCommandBodyDisplayNameMin = 2;
+export const testAccountCommandBodyDisplayNameMax = 60;
+
+export const testAccountCommandBodyEmailMax = 254;
+
+export const testAccountCommandBodyPasswordMax = 128;
+
+export const testAccountCommandBodyNewPasswordMin = 12;
+export const testAccountCommandBodyNewPasswordMax = 128;
+
+export const testAccountCommandBodyWalletsItemAddressRegExp = new RegExp('^0x[0-9a-fA-F]{40}$');
+export const testAccountCommandBodyWalletsItemPublicKeyRegExp = new RegExp('^0x04[0-9a-fA-F]{128}$');
+export const testAccountCommandBodyWalletsItemChainIdsMax = 2;
+
+export const testAccountCommandBodyWalletsMin = 2;
+export const testAccountCommandBodyWalletsMax = 2;
+
+export const testAccountCommandBodyVaultSaltMax = 44;
+
+export const testAccountCommandBodyVaultIvMax = 24;
+
+export const testAccountCommandBodyVaultCiphertextMin = 80;
+export const testAccountCommandBodyVaultCiphertextMax = 12000;
+
+
+
+export const TestAccountCommandBody = zod.object({
+  "action": zod.enum(['signup', 'signin', 'signout', 'name', 'email', 'password', 'reauth', 'private-request', 'private-result']),
+  "requestId": zod.string().uuid().optional(),
+  "walletId": zod.string().uuid().optional(),
+  "privateAction": zod.enum(['reveal', 'copy', 'private-download', 'encrypted-backup']).optional(),
+  "resultState": zod.enum(['initiated', 'failed']).optional(),
+  "displayName": zod.string().min(testAccountCommandBodyDisplayNameMin).max(testAccountCommandBodyDisplayNameMax).optional(),
+  "email": zod.string().email().max(testAccountCommandBodyEmailMax).optional(),
+  "password": zod.string().max(testAccountCommandBodyPasswordMax).optional(),
+  "newPassword": zod.string().min(testAccountCommandBodyNewPasswordMin).max(testAccountCommandBodyNewPasswordMax).optional(),
+  "registrationId": zod.string().uuid().optional(),
+  "accepted": zod.boolean().optional(),
+  "noticeVersion": zod.string().optional(),
+  "revision": zod.number().int().optional(),
+  "csrf": zod.string().optional(),
+  "wallets": zod.array(zod.object({
+  "id": zod.string().uuid(),
+  "purpose": zod.enum(['deposits', 'bettex']),
+  "address": zod.string().regex(testAccountCommandBodyWalletsItemAddressRegExp),
+  "publicKey": zod.string().regex(testAccountCommandBodyWalletsItemPublicKeyRegExp),
+  "chainIds": zod.array(zod.union([zod.literal(421614),zod.literal(31337)])).min(1).max(testAccountCommandBodyWalletsItemChainIdsMax)
+})).min(testAccountCommandBodyWalletsMin).max(testAccountCommandBodyWalletsMax).optional(),
+  "vault": zod.object({
+  "version": zod.literal(1),
+  "iterations": zod.literal(600000),
+  "salt": zod.string().max(testAccountCommandBodyVaultSaltMax),
+  "iv": zod.string().max(testAccountCommandBodyVaultIvMax),
+  "ciphertext": zod.string().min(testAccountCommandBodyVaultCiphertextMin).max(testAccountCommandBodyVaultCiphertextMax),
+  "registrationId": zod.string().uuid()
+}).optional()
+})
+
+export const testAccountCommandResponseWalletsItemAddressRegExp = new RegExp('^0x[0-9a-fA-F]{40}$');
+export const testAccountCommandResponseWalletsItemPublicKeyRegExp = new RegExp('^0x04[0-9a-fA-F]{128}$');
+export const testAccountCommandResponseWalletsItemChainIdsMax = 2;
+
+export const testAccountCommandResponseVaultOneSaltMax = 44;
+
+export const testAccountCommandResponseVaultOneIvMax = 24;
+
+export const testAccountCommandResponseVaultOneCiphertextMin = 80;
+export const testAccountCommandResponseVaultOneCiphertextMax = 12000;
+
+
+
+export const TestAccountCommandResponse = zod.object({
+  "enabled": zod.boolean(),
+  "isAdmin": zod.boolean().optional(),
+  "account": zod.union([zod.object({
+  "id": zod.string(),
+  "displayName": zod.string(),
+  "email": zod.string(),
+  "emailVerified": zod.literal(false),
+  "revision": zod.number().int(),
+  "acceptedAt": zod.string(),
+  "noticeVersion": zod.string()
+}),zod.null()]),
+  "wallets": zod.array(zod.object({
+  "id": zod.string().uuid(),
+  "purpose": zod.enum(['deposits', 'bettex']),
+  "address": zod.string().regex(testAccountCommandResponseWalletsItemAddressRegExp),
+  "publicKey": zod.string().regex(testAccountCommandResponseWalletsItemPublicKeyRegExp),
+  "chainIds": zod.array(zod.union([zod.literal(421614),zod.literal(31337)])).min(1).max(testAccountCommandResponseWalletsItemChainIdsMax)
+})),
+  "vault": zod.union([zod.object({
+  "version": zod.literal(1),
+  "iterations": zod.literal(600000),
+  "salt": zod.string().max(testAccountCommandResponseVaultOneSaltMax),
+  "iv": zod.string().max(testAccountCommandResponseVaultOneIvMax),
+  "ciphertext": zod.string().min(testAccountCommandResponseVaultOneCiphertextMin).max(testAccountCommandResponseVaultOneCiphertextMax),
+  "registrationId": zod.string().uuid()
+}),zod.null()]),
+  "csrf": zod.string()
+})
+
+
 /**
  * @summary Persistent personal dashboard and live agent activity
  */
@@ -19,6 +2015,9 @@ export const getDemoDashboardResponseStakingSharePercentMax = 100;
 export const GetDemoDashboardResponse = zod.object({
   "serverNow": zod.string(),
   "profile": zod.object({
+  "authenticated": zod.boolean().optional(),
+  "provider": zod.enum(['anonymous', 'native', 'clerk']).optional(),
+  "canViewTreasuryHistory": zod.boolean().optional(),
   "name": zod.string(),
   "email": zod.string(),
   "memberSince": zod.string(),
@@ -155,6 +2154,9 @@ export const createDemoMovementResponseStakingSharePercentMax = 100;
 export const CreateDemoMovementResponse = zod.object({
   "serverNow": zod.string(),
   "profile": zod.object({
+  "authenticated": zod.boolean().optional(),
+  "provider": zod.enum(['anonymous', 'native', 'clerk']).optional(),
+  "canViewTreasuryHistory": zod.boolean().optional(),
   "name": zod.string(),
   "email": zod.string(),
   "memberSince": zod.string(),
@@ -282,6 +2284,9 @@ export const updateDemoProfileResponseStakingSharePercentMax = 100;
 export const UpdateDemoProfileResponse = zod.object({
   "serverNow": zod.string(),
   "profile": zod.object({
+  "authenticated": zod.boolean().optional(),
+  "provider": zod.enum(['anonymous', 'native', 'clerk']).optional(),
+  "canViewTreasuryHistory": zod.boolean().optional(),
   "name": zod.string(),
   "email": zod.string(),
   "memberSince": zod.string(),
@@ -398,6 +2403,233 @@ export const UpdateDemoProfileResponse = zod.object({
  */
 export const HealthCheckResponse = zod.object({
   "status": zod.string()
+})
+
+
+export const GetNativeTestJourneyResponse = zod.object({
+  "epoch": zod.string(),
+  "chainId": zod.number().int(),
+  "environment": zod.enum(['local_evm']),
+  "updatedAt": zod.string(),
+  "blockHash": zod.string(),
+  "blockNumber": zod.number().int(),
+  "depositWallet": zod.string(),
+  "bettexWallet": zod.string(),
+  "archivedCount": zod.number().int(),
+  "settlement": zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['synthetic_local_test']),
+  "resultUnits": zod.string(),
+  "retainedUnits": zod.string(),
+  "buybackUnits": zod.string(),
+  "buybackAddress": zod.string(),
+  "buybackState": zod.string(),
+  "buybackTransactionHash": zod.string().nullable(),
+  "pendingUnits": zod.string(),
+  "paidUnits": zod.string(),
+  "ownUnits": zod.string(),
+  "ownState": zod.string(),
+  "ownTransactionHash": zod.string().nullable(),
+  "snapshotBlock": zod.number().int().nullable(),
+  "snapshotHash": zod.string().nullable()
+}),
+  "balances": zod.object({
+  "usdc": zod.string(),
+  "bettex": zod.string(),
+  "depositGas": zod.string(),
+  "bettexGas": zod.string()
+}),
+  "sale": zod.object({
+  "address": zod.string(),
+  "token": zod.string(),
+  "usdc": zod.string(),
+  "price": zod.string(),
+  "fee": zod.string(),
+  "available": zod.string(),
+  "sold": zod.string(),
+  "paused": zod.boolean(),
+  "reserveUsdc": zod.string()
+}),
+  "treasury": zod.object({
+  "address": zod.string(),
+  "operatingAddress": zod.string(),
+  "balanceUsdc": zod.string(),
+  "principalUsdc": zod.string(),
+  "soldBettex": zod.string(),
+  "accountingAvailable": zod.boolean()
+}),
+  "participation": zod.object({
+  "model": zod.string(),
+  "balance": zod.string(),
+  "eligible": zod.string(),
+  "tokenSeconds": zod.string(),
+  "startedAt": zod.number().int().nullable(),
+  "roundStart": zod.number().int(),
+  "roundEnd": zod.number().int(),
+  "settlement": zod.string(),
+  "assessedUsdc": zod.string(),
+  "availableUsdc": zod.string(),
+  "paidUsdc": zod.string()
+}),
+  "events": zod.array(zod.object({
+  "id": zod.string(),
+  "kind": zod.enum(['free_test_funding', 'external_deposit', 'purchase']),
+  "hash": zod.string(),
+  "blockNumber": zod.number().int(),
+  "blockHash": zod.string(),
+  "logIndex": zod.number().int(),
+  "timestamp": zod.number().int(),
+  "value": zod.string(),
+  "bettex": zod.string().optional(),
+  "principal": zod.string().optional(),
+  "fee": zod.string().optional(),
+  "treasuryReceived": zod.string().optional(),
+  "gasWei": zod.string().optional()
+})),
+  "operations": zod.array(zod.object({
+  "id": zod.string(),
+  "kind": zod.enum(['fund', 'purchase', 'distribution']),
+  "quantity": zod.string(),
+  "principal": zod.string(),
+  "fee": zod.string(),
+  "createdAt": zod.string(),
+  "stages": zod.array(zod.object({
+  "name": zod.string(),
+  "state": zod.string(),
+  "transactionHash": zod.string().nullish(),
+  "draft": zod.object({
+  "chainId": zod.number().int(),
+  "nonce": zod.number().int(),
+  "to": zod.string(),
+  "data": zod.string(),
+  "value": zod.string(),
+  "gasLimit": zod.string(),
+  "gasPrice": zod.string()
+}).optional()
+}))
+}))
+})
+
+
+export const nativeTestJourneyCommandBodyQuantityRegExp = new RegExp('^[1-9][0-9]{0,8}$');
+export const nativeTestJourneyCommandBodySignedTransactionMax = 8192;
+
+
+export const nativeTestJourneyCommandBodySignedTransactionRegExp = new RegExp('^0x[0-9a-fA-F]+$');
+
+
+export const NativeTestJourneyCommandBody = zod.object({
+  "action": zod.enum(['fund', 'quote', 'sign', 'distribution-test']),
+  "csrf": zod.string(),
+  "acknowledgeLocal": zod.boolean().optional(),
+  "operationId": zod.string().optional(),
+  "quantity": zod.string().regex(nativeTestJourneyCommandBodyQuantityRegExp).optional(),
+  "stage": zod.enum(['approve', 'buy']).optional(),
+  "signedTransaction": zod.string().max(nativeTestJourneyCommandBodySignedTransactionMax).regex(nativeTestJourneyCommandBodySignedTransactionRegExp).optional()
+})
+
+export const NativeTestJourneyCommandResponse = zod.object({
+  "epoch": zod.string(),
+  "chainId": zod.number().int(),
+  "environment": zod.enum(['local_evm']),
+  "updatedAt": zod.string(),
+  "blockHash": zod.string(),
+  "blockNumber": zod.number().int(),
+  "depositWallet": zod.string(),
+  "bettexWallet": zod.string(),
+  "archivedCount": zod.number().int(),
+  "settlement": zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['synthetic_local_test']),
+  "resultUnits": zod.string(),
+  "retainedUnits": zod.string(),
+  "buybackUnits": zod.string(),
+  "buybackAddress": zod.string(),
+  "buybackState": zod.string(),
+  "buybackTransactionHash": zod.string().nullable(),
+  "pendingUnits": zod.string(),
+  "paidUnits": zod.string(),
+  "ownUnits": zod.string(),
+  "ownState": zod.string(),
+  "ownTransactionHash": zod.string().nullable(),
+  "snapshotBlock": zod.number().int().nullable(),
+  "snapshotHash": zod.string().nullable()
+}),
+  "balances": zod.object({
+  "usdc": zod.string(),
+  "bettex": zod.string(),
+  "depositGas": zod.string(),
+  "bettexGas": zod.string()
+}),
+  "sale": zod.object({
+  "address": zod.string(),
+  "token": zod.string(),
+  "usdc": zod.string(),
+  "price": zod.string(),
+  "fee": zod.string(),
+  "available": zod.string(),
+  "sold": zod.string(),
+  "paused": zod.boolean(),
+  "reserveUsdc": zod.string()
+}),
+  "treasury": zod.object({
+  "address": zod.string(),
+  "operatingAddress": zod.string(),
+  "balanceUsdc": zod.string(),
+  "principalUsdc": zod.string(),
+  "soldBettex": zod.string(),
+  "accountingAvailable": zod.boolean()
+}),
+  "participation": zod.object({
+  "model": zod.string(),
+  "balance": zod.string(),
+  "eligible": zod.string(),
+  "tokenSeconds": zod.string(),
+  "startedAt": zod.number().int().nullable(),
+  "roundStart": zod.number().int(),
+  "roundEnd": zod.number().int(),
+  "settlement": zod.string(),
+  "assessedUsdc": zod.string(),
+  "availableUsdc": zod.string(),
+  "paidUsdc": zod.string()
+}),
+  "events": zod.array(zod.object({
+  "id": zod.string(),
+  "kind": zod.enum(['free_test_funding', 'external_deposit', 'purchase']),
+  "hash": zod.string(),
+  "blockNumber": zod.number().int(),
+  "blockHash": zod.string(),
+  "logIndex": zod.number().int(),
+  "timestamp": zod.number().int(),
+  "value": zod.string(),
+  "bettex": zod.string().optional(),
+  "principal": zod.string().optional(),
+  "fee": zod.string().optional(),
+  "treasuryReceived": zod.string().optional(),
+  "gasWei": zod.string().optional()
+})),
+  "operations": zod.array(zod.object({
+  "id": zod.string(),
+  "kind": zod.enum(['fund', 'purchase', 'distribution']),
+  "quantity": zod.string(),
+  "principal": zod.string(),
+  "fee": zod.string(),
+  "createdAt": zod.string(),
+  "stages": zod.array(zod.object({
+  "name": zod.string(),
+  "state": zod.string(),
+  "transactionHash": zod.string().nullish(),
+  "draft": zod.object({
+  "chainId": zod.number().int(),
+  "nonce": zod.number().int(),
+  "to": zod.string(),
+  "data": zod.string(),
+  "value": zod.string(),
+  "gasLimit": zod.string(),
+  "gasPrice": zod.string()
+}).optional()
+}))
+}))
 })
 
 

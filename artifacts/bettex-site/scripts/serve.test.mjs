@@ -3,6 +3,10 @@ import { after, test } from 'node:test';
 import { request } from 'node:http';
 import { createSiteServer } from './serve.mjs';
 import { routes, seo, canonicalPath } from './seo.mjs';
+import { mkdtemp, writeFile, symlink, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
 
 const server = createSiteServer();
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -92,6 +96,32 @@ test('static assets, discovery files, byte ranges and HEAD work', async () => {
   const head = await get('/pitch/', {}, 'HEAD');
   assert.equal(head.status, 200);
   assert.equal(head.body, '');
+});
+test('CSP allows only hashed inline scripts and denies private artifacts and escaped symlinks', async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'bettex-static-security-'));
+  const script = 'console.log("public-fixture");';
+  await writeFile(path.join(directory, 'index.html'), `<script>${script}</script>`);
+  await writeFile(path.join(directory, '.env'), 'not-a-real-secret');
+  await writeFile(path.join(directory, 'backup.dump'), 'fixture');
+  await symlink('/etc/hostname', path.join(directory, 'escaped.txt'));
+  const isolated = createSiteServer(directory);
+  await new Promise(resolve => isolated.listen(0, '127.0.0.1', resolve));
+  try {
+    const url = `http://127.0.0.1:${isolated.address().port}`;
+    const response = await fetch(url);
+    assert.equal(response.status, 200);
+    const csp = response.headers.get('content-security-policy');
+    assert.ok(csp.includes(`'sha256-${createHash('sha256').update(script).digest('base64')}'`));
+    assert.ok(csp.includes("script-src-attr 'none'"));
+    assert.ok(!csp.includes("'unsafe-eval'"));
+    assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
+    for (const file of ['.env', 'backup.dump', 'escaped.txt']) {
+      assert.equal((await fetch(`${url}/${file}`)).status, 404, file);
+    }
+  } finally {
+    await new Promise(resolve => isolated.close(resolve));
+    await rm(directory, { recursive: true, force: true });
+  }
 });
 test('unknown pages return real noindex 404, malformed paths and traversal are rejected', async () => {
   const missing = await get('/missing-page');

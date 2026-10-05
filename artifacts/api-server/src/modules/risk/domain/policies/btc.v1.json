@@ -1,0 +1,15 @@
+{
+  "id": "prediction-btc",
+  "version": 1,
+  "type": "specialist",
+  "scope": "btc",
+  "schemaVersion": 1,
+  "name": "Especialista em eventos BTC",
+  "implementation": "polymarket-event-observer/1",
+  "justification": "Observa eventos BTC nas fontes Gamma/CLOB autorizadas. Busca textual apenas descobre eventos; não comprova elegibilidade nem vantagem econômica.",
+  "previousVersion": null,
+  "openPositions": "preserve_original_exit_and_apply_emergency_controls",
+  "search": "bitcoin",
+  "horizon": "event_resolution",
+  "controls": { "allowedAssets": ["btc"], "maxHorizonSeconds": 86400 }
+}

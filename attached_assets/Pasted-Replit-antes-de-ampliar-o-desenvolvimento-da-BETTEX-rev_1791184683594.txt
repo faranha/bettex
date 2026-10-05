@@ -1,0 +1,113 @@
+Replit, antes de ampliar o desenvolvimento da BETTEX, revise o estado real do sistema e organize os próximos passos. Muitas etapas podem ter ficado incompletas por falta de informações, credenciais ou decisões. Precisamos identificar e resolver essas dependências juntos.
+
+1. REVISE TODOS OS REQUISITOS ANTERIORES
+
+Leia os prompts disponíveis, a documentação canônica, o código, as migrações, os contratos e as configurações.
+
+Monte uma matriz contendo:
+
+• Requisito e sua fonte.
+• Implementação existente.
+• Estado: ausente, parcial, implementado sem verificação, verificado localmente ou verificado em integração real.
+• Evidência da verificação.
+• Impedimento.
+• Próxima ação.
+• Informação ou decisão que precisa de mim.
+
+Identifique separadamente simulações e mocks. Não considere telas, arquivos ou contratos isolados como prova de funcionamento completo.
+
+2. APRESENTE O QUE PRECISA DE MIM
+
+Agrupe as pendências em:
+
+• Credenciais e acessos.
+• Configurações externas.
+• Regras econômicas.
+• Estratégias e controles de risco.
+• Decisões de produto.
+• Problemas técnicos.
+
+Para cada solicitação, explique exatamente o que falta, qual etapa depende disso e como fornecer ou decidir.
+
+Quando houver opções, recomende uma e explique seu impacto.
+
+Credenciais devem ser configuradas em secrets, nunca enviadas pelo chat.
+
+Não invente informações, altere plataformas, reduza controles ou substitua integrações reais por mocks para contornar bloqueios. Aguarde minha resposta nas partes dependentes e continue nas independentes.
+
+3. VALIDE O PERCURSO FINANCEIRO DE TESTE
+
+Confira pela interface, pelo banco e pelos contratos:
+
+Cadastro → login → depósito de ativo de teste → compra de BETTEX → participação em staking → recebimento do principal na tesouraria → históricos.
+
+Verifique valores, permissões, persistência, estados pendentes, falhas e prevenção de duplicações.
+
+Diferencie participação em staking, saldo na carteira e rendimento recebido.
+
+Se faltar uma regra indispensável, registre e me consulte antes de assumir seu significado.
+
+4. CONCLUA A SIMULAÇÃO DO PAINEL
+
+Prepare um cenário reproduzível com:
+
+• Especialistas BTC, ETH e SOL.
+• Oportunidades e fila.
+• Qualificação pelo agente de mercado de previsões.
+• Decisões do BETTEX.
+• Controles de Tesouraria e Governança.
+• Reserva de capital.
+• Ordens e preenchimentos parciais.
+• Posições que permanecem abertas.
+• Retorno esperado versus resultado atual.
+• Saídas, liquidação e históricos.
+
+Permita criar novas operações simuladas após o histórico inicial.
+
+Identifique permanentemente a simulação e isole seus dados. Ela não pode movimentar recursos reais nem gerar lucros na contabilidade real.
+
+5. VERIFIQUE AS INTEGRAÇÕES REAIS
+
+Examine Allora e Polymarket e identifique o que falta para conectá-las.
+
+Confirme fontes, credenciais, tópicos, ativos, horizontes, mercados, regras de resolução, preços e liquidez disponíveis.
+
+Implemente e verifique o percurso de dados reais até os especialistas. Não presuma que suporte a BTC implica suporte a ETH e SOL.
+
+Quando uma fonte estiver indisponível, mostre esse estado sem fabricar dados.
+
+6. CONSOLIDE AS ESTRATÉGIAS COMIGO
+
+A partir das fontes realmente disponíveis, identifique as decisões necessárias sobre:
+
+• Como estimar e validar uma oportunidade.
+• Quando entrar, manter, reduzir e sair.
+• Como dimensionar posições.
+• Limites de exposição e correlação.
+• Reservas e condições de suspensão.
+
+Pesquise primeiro as regras já documentadas. Apresente somente as decisões ainda ausentes, com recomendações fundamentadas.
+
+Não transforme uma previsão pontual em probabilidade de resultado sem metodologia validada.
+
+7. EXECUTE UM CICLO INTEGRADO
+
+Quando as dependências necessárias estiverem resolvidas, execute:
+
+Dados reais → análise dos especialistas → qualificação pelo agente de mercado → fila → decisão do BETTEX → controles da tesouraria → execução simulada → acompanhamento da posição → encerramento → histórico.
+
+A hierarquia ativa permanece:
+
+BETTEX → Agente de Mercado de Previsões → Especialistas BTC, ETH e SOL.
+
+Outros agentes de trading continuam desabilitados. Isso não limita as demais funcionalidades do produto alpha, cuja definição permanece em construção.
+
+8. ENTREGA E CONTINUIDADE
+
+Entregue primeiro o diagnóstico e as solicitações que precisam da minha participação. Em seguida, implemente e verifique as partes independentes já autorizadas.
+
+Atualize a matriz conforme resolver cada item. Não encerre apenas com outra lista de tarefas.
+
+Preserve a arquitetura existente e os requisitos acumulados. Não remova funcionalidades porque não foram repetidas neste prompt.
+
+Ao final, informe o que está funcionando, as evidências, os bloqueios restantes e a próxima decisão concreta que precisamos tomar juntos.

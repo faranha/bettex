@@ -47,3 +47,18 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Persistent public documentation corpus: not temporary, not shipped with the app.
+/data/technical-docs/
+/data/docs-backup-*/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.dump
+*.backup
+/backups/
+/lib/bettex-contracts/build/
+/lib/bettex-contracts/cache/
+/lib/bettex-contracts/artifacts/

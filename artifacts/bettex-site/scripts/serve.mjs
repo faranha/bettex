@@ -1,6 +1,7 @@
 import { createServer } from 'node:http';
-import { createReadStream, existsSync } from 'node:fs';
-import { stat, readFile } from 'node:fs/promises';
+import { createReadStream, existsSync, readFileSync } from 'node:fs';
+import { stat, readFile, realpath } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -19,7 +20,29 @@ const mime = {
 };
 
 export function createSiteServer(root = publicRoot) {
+  const index = existsSync(path.join(root, 'index.html')) ? readFileSync(path.join(root, 'index.html'), 'utf8') : '';
+  const inlineHashes = [...index.matchAll(/<script>([\s\S]*?)<\/script>/g)]
+    .map(([, script]) => `'sha256-${createHash('sha256').update(script).digest('base64')}'`).join(' ');
   return createServer(async (req, res) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Referrer-Policy', 'no-referrer');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    // Deployment CSP: no arbitrary base URLs, plugins or inline event handlers.
+    // Clerk's proxy is same-origin; hosted Clerk and Turnstile remain explicit.
+    res.setHeader('Content-Security-Policy', [
+      "default-src 'self'",
+      "base-uri 'none'",
+      "object-src 'none'",
+      `script-src 'self' ${inlineHashes} https://*.clerk.accounts.dev https://*.clerk.com https://clerk.bettex.ai https://challenges.cloudflare.com`,
+      "script-src-attr 'none'",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' data: https://fonts.gstatic.com",
+      "img-src 'self' data: blob: https:",
+      "connect-src 'self' https://*.clerk.accounts.dev https://*.clerk.com https://clerk.bettex.ai https://challenges.cloudflare.com",
+      "frame-src 'self' https://*.clerk.accounts.dev https://*.clerk.com https://challenges.cloudflare.com",
+      "frame-ancestors 'self'",
+      "form-action 'self'",
+    ].join('; '));
     try {
       // Replit's proxy can forward the visitor's original host in this header.
       const hosts = [req.headers.host, req.headers['x-forwarded-host']]
@@ -70,6 +93,13 @@ export function createSiteServer(root = publicRoot) {
         res.end(html);
         return;
       }
+      if (pathname.split('/').some(segment => segment === '..')) {
+        res.writeHead(400); res.end('Endereço inválido'); return;
+      }
+      if (pathname.split('/').some(segment => segment.startsWith('.'))
+        || /\.(?:map|sql|dump|backup|key|pem|env)(?:\/|$)/i.test(pathname)) {
+        res.writeHead(404); res.end(); return;
+      }
       let file = path.resolve(root, `.${pathname}`);
       if (file !== root && !file.startsWith(root + path.sep)) {
         res.writeHead(400);
@@ -80,6 +110,12 @@ export function createSiteServer(root = publicRoot) {
         if (error.code === 'ENOENT' || error.code === 'ENOTDIR') return null;
         throw error;
       });
+      if (info) {
+        const resolved = await realpath(file), resolvedRoot = await realpath(root);
+        if (resolved !== resolvedRoot && !resolved.startsWith(resolvedRoot + path.sep)) {
+          res.writeHead(404); res.end(); return;
+        }
+      }
       if (info?.isDirectory()) {
         if (!pathname.endsWith('/')) {
           res.writeHead(301, { Location: url.pathname + '/' + url.search });
