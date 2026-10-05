@@ -20,3 +20,9 @@ O criador exige um helper com procedimentos, estados e regra de decisão da orqu
 **Why:** O criador perguntou “Como é que você vai decidir o que fazer? Qual é a regra?” e exigiu ver “o que aquele agente sugeriu”, não apenas um quadro com informações gerais.
 
 **How to apply:** Exibir a proposta armazenada e o motivo da avaliação, não preencher um registro antigo com detalhes inventados. Manter o detalhe junto do item selecionado no celular. Limites e ranqueamento da emulação não são política aprovada para dinheiro real; a política real continua sujeita à liderança da Fundação.
+
+O criador exige revisar o dashboard e os elementos visuais do sistema, revisar a documentação dos agentes e documentar os helpers.
+
+**Why:** Reiterou expressamente as três exigências com “Não se esqueça”; a ajuda não deve ficar fora da revisão.
+
+**How to apply:** Incluir ajuda contextual e utilitários de apresentação/navegação na documentação. Conferir os textos contra o procedimento que realmente executa, distinguindo relatórios de observação, propostas emuladas e ações financeiras.

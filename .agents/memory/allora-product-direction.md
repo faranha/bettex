@@ -5,6 +5,12 @@ description: Direção do criador para inferência e gráficos do painel; difere
 
 O criador quer começar a trabalhar com a Allora e chamar suas inferências. No painel, não quer “Resumo da operação” como cartões/texto principal: quer gráfico ao vivo, visualmente vivo, que abra a Central da IA ao clicar.
 
+O criador exige Allora conectada às análises dos agentes, não apenas um gráfico de consultas; dashboard completo, todos os agentes previstos, documentação detalhada por agente e tooltips.
+
+**Why:** O criador corrigiu explicitamente a entrega que mostrava a fonte sem integrá-la aos agentes e disse que o sistema estava longe de estar completo.
+
+**How to apply:** Organizar e executar a integração operacional; distinguir execução do serviço, análise, proposta e autorização financeira. Não apresentar cartões, metadados ou leitura de preço como agentes prontos para operar.
+
 **Why:** O criador disse que ninguém vai ler o resumo e que as pessoas querem ver o que está acontecendo ao vivo. Exigiu ler a API da Allora antes de decidir a visualização.
 
 **How to apply:** Planejar a visualização a partir de dados efetivamente disponíveis e distinguir mercado observado, inferência e decisão/execução. Não simular uma previsão e atribuí-la à Allora.

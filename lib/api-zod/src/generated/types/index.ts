@@ -6,6 +6,15 @@
  * OpenAPI spec version: 0.1.0
  */
 
+export * from './agentCenter';
+export * from './agentCenterMode';
+export * from './agentEvidence';
+export * from './agentFact';
+export * from './agentRun';
+export * from './agentRunDecision';
+export * from './agentRunStatus';
+export * from './agentWorker';
+export * from './agentWorkerActivity';
 export * from './alloraObservation';
 export * from './alloraObservationAsset';
 export * from './alloraObservationAuthentication';
@@ -98,6 +107,7 @@ export * from './demoRoundStatus';
 export * from './demoStaking';
 export * from './demoStakingStatus';
 export * from './demoTreasury';
+export * from './getAgentCenterParams';
 export * from './getAlloraAnalysis200';
 export * from './getAlloraAnalysis200Observation';
 export * from './getAlloraAnalysis200ObservationStatus';

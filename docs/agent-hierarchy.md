@@ -12,7 +12,9 @@ BETTEX — orchestrator
     └── SOL Specialist (sol)
 ```
 
-BETTEX is the canonical nomenclature for this instruction; BTEX, found in previous material and internal emulation, is the same role, not another agent. Crypto trading (`crypto`), sports betting (`sports`), and the legacy bonus branch (`bonus`) remain unavailable in the operational alpha. Independent services or a second selection layer are not created.
+BETTEX is the canonical nomenclature for this instruction; BTEX, found in previous material and internal emulation, is the same role, not another agent. This tree describes financial proposal routing, not the entire monitoring inventory. The [operational manual](agents-operations.md) documents the 13 deterministic services: BETTEX, treasury, governance, risk, execution, reconciliation, predictions, BTC, ETH, SOL, sports, crypto and bonus. Controls remain independent of opportunity selection; there is no second financial selection layer.
+
+Sports now discovers public events but lacks a validated event model. Crypto and bonus diagnose missing configuration without commercial provider inputs. Their observation procedures run; their financial strategies and execution integrations remain unavailable. Contextual help and formatting/navigation helpers are documented in [helpers.md](helpers.md).
 
 - Specialist: observes/notes evidence, estimates, and gaps; forwards to the market.
 - Market: validates identity, domain, sources, timeliness, price, liquidity, costs, model, risk, and horizon; qualifies/prioritizes only its domain.
@@ -53,7 +55,7 @@ The Market prioritizes qualified opportunities in the batch; BETTEX re-evaluates
 
 ## First alpha and failures
 
-Only `predictions/btc` collects real data. Without asks, a valid source, and defined costs/model/estimates/capital/correlation, the opportunity requests an update and BETTEX does not allocate. Initial observation does not invent this data; there is no implemented calibrated probability model. Book price/volume do not suffice to estimate return.
+BTC, ETH and SOL collect real Allora forecasts and original Polymarket evidence; sports performs public event discovery. Collection is not financial qualification. Without asks, a valid source, and defined costs/model/estimates/capital/correlation, the opportunity requests an update and BETTEX does not allocate. Observation does not invent this data; there is no implemented calibrated probability model. Book price/volume do not suffice to estimate return.
 
 Limited periodic query with timeout; source failure is persisted, without fictitious fallback. Evidence has an origin timestamp separate from collection; repeating the same evidence does not renew it. Failure preserves old records identified by age/validity, never presenting them as new. Unreconciled external exposure is missing information, not zero exposure.
 
@@ -62,7 +64,7 @@ Mocks remain in fixtures and the internal development demo. Production does not 
 ## Concrete pendencies
 
 - Calibrated BTC strategy/model, complete costs, settlement currency/network, order intention and size, reconciled external correlation/exposure.
-- Allora not yet connected to the flow: a BTC/USD forecast is not a market resolution probability.
+- Allora is connected to the chart and BTC/ETH/SOL analysis services; mapping a USD price forecast to a calibrated market-resolution probability remains unimplemented.
 - Polymarket orders, signature/custody, funding, and confirmation of fills not implemented. Local USDC allocation does not prove them.
 - Public Testnet and institutional control maintain dependencies documented in Treasury.
 

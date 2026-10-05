@@ -20,12 +20,14 @@ import type {
 } from '@tanstack/react-query';
 
 import type {
+  AgentCenter,
   AlphaAgentsSnapshot,
   AlphaTradingJourney,
   AlphaTradingSnapshot,
   DemoDashboard,
   DemoMovementInput,
   DemoProfileInput,
+  GetAgentCenterParams,
   GetAlloraAnalysis200,
   GetAlphaTradingParams,
   GetDemoHistoryParams,
@@ -77,6 +79,84 @@ const withQueryKey = <T extends object, K>(query: T, queryKey: K): T & { queryKe
   }
   return result;
 };
+
+export const getGetAgentCenterUrl = (params?: GetAgentCenterParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/agents/center?${stringifiedParams}` : `/api/agents/center`
+}
+
+export const getAgentCenter = async (params?: GetAgentCenterParams, options?: Parameters<typeof customFetch>[1]): Promise<AgentCenter> => {
+
+  return customFetch<AgentCenter>(getGetAgentCenterUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetAgentCenterQueryKey = (params?: GetAgentCenterParams,) => {
+    return [
+    `/api/agents/center`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetAgentCenterQueryOptions = <TData = Awaited<ReturnType<typeof getAgentCenter>>, TError = ErrorType<void>>(params?: GetAgentCenterParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAgentCenter>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetAgentCenterQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getAgentCenter>>> = ({ signal }) => getAgentCenter(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getAgentCenter>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetAgentCenterQueryResult = NonNullable<Awaited<ReturnType<typeof getAgentCenter>>>
+export type GetAgentCenterQueryError = ErrorType<void>
+
+
+
+export function useGetAgentCenter<TData = Awaited<ReturnType<typeof getAgentCenter>>, TError = ErrorType<void>>(
+ params?: GetAgentCenterParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAgentCenter>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetAgentCenterQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getGetAlloraAnalysisUrl = (asset: 'BTC' | 'ETH' | 'SOL',) => {
 

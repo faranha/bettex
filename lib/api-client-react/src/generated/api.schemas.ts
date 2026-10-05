@@ -5,6 +5,96 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export interface AgentEvidence {
+  source: string;
+  url: string;
+  producedAt: string;
+  targetAt: string;
+  blockHeight: string;
+  value: string;
+  unit: string;
+}
+
+export interface AgentFact {
+  code: string;
+  value: string;
+}
+
+export type AgentRunStatus = typeof AgentRunStatus[keyof typeof AgentRunStatus];
+
+
+export const AgentRunStatus = {
+  healthy: 'healthy',
+  degraded: 'degraded',
+  failed: 'failed',
+} as const;
+
+export type AgentRunDecision = typeof AgentRunDecision[keyof typeof AgentRunDecision];
+
+
+export const AgentRunDecision = {
+  monitor: 'monitor',
+  hold: 'hold',
+  block: 'block',
+} as const;
+
+export interface AgentRun {
+  id: string;
+  cycleId: string;
+  upstreamRunIds: string[];
+  agentId: string;
+  startedAt: string;
+  completedAt: string;
+  durationMs: number;
+  status: AgentRunStatus;
+  decision: AgentRunDecision;
+  findings: string[];
+  facts: AgentFact[];
+  evidence: AgentEvidence[];
+}
+
+export type AgentWorkerActivity = typeof AgentWorkerActivity[keyof typeof AgentWorkerActivity];
+
+
+export const AgentWorkerActivity = {
+  running: 'running',
+  stale: 'stale',
+  not_started: 'not_started',
+} as const;
+
+export interface AgentWorker {
+  id: string;
+  /** @nullable */
+  parentId: string | null;
+  dependencies: string[];
+  inputs: string[];
+  outputs: string[];
+  rules: string[];
+  permissions: string[];
+  cadenceSeconds: number;
+  executionAllowed: boolean;
+  activity: AgentWorkerActivity;
+  runCount: number;
+  latest: AgentRun | null;
+}
+
+export type AgentCenterMode = typeof AgentCenterMode[keyof typeof AgentCenterMode];
+
+
+export const AgentCenterMode = {
+  read_only_and_paper_no_real_money: 'read_only_and_paper_no_real_money',
+} as const;
+
+export interface AgentCenter {
+  mode: AgentCenterMode;
+  asOf: string;
+  agents: AgentWorker[];
+  history: AgentRun[];
+  hasMore: boolean;
+  /** @nullable */
+  nextBefore: string | null;
+}
+
 export type AlloraObservationAsset = typeof AlloraObservationAsset[keyof typeof AlloraObservationAsset];
 
 
@@ -2103,6 +2193,14 @@ export interface DemoDashboard {
 export interface HealthStatus {
   status: string;
 }
+
+export type GetAgentCenterParams = {
+agentId?: string;
+/**
+ * @pattern ^[0-9]{1,20}$
+ */
+before?: string;
+};
 
 export type GetAlloraAnalysis200ObservationStatus = typeof GetAlloraAnalysis200ObservationStatus[keyof typeof GetAlloraAnalysis200ObservationStatus];
 
