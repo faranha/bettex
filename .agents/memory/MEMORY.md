@@ -62,4 +62,4 @@
 - [Evidências de contratos](test-contract-evidence.md) — EVM local não prova compra pública; runtime equivalente também exige validar vínculos imutáveis.
 - [Isolamento de testes](integration-test-isolation.md) — fixtures não podem compartilhar dados ou sequências do app; cópia de tabelas não preserva todos os invariantes.
 - [Detalhes opacos no OpenAPI](openapi-opaque-run-details.md) — o Zod gerado pode remover additionalProperties; preservar detalhes da execução após validar o envelope.
-- [GitHub publication authorization](github-publication-authorization.md) — keep faranha/bettex public; the creator explicitly declined uploads and visibility changes.
+- [GitHub publication authorization](github-publication-authorization.md) — creator authorized upload to public faranha/bettex; preserve visibility and development-only targeting.

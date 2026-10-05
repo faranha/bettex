@@ -213,3 +213,12 @@ test('public repositories and unavailable privacy checks fail closed without cre
   await assert.rejects(requireNonPublicRemote(url, response(200, false)), /public-repository/);
   await assert.rejects(requireNonPublicRemote(url, response(403)), /privacy-check/);
 });
+test('explicit public upload authorization permits only the exact repository and all supported URL forms', async () => {
+  const unused = async () => { throw new Error('No privacy API request is needed for an explicitly authorized public repository.'); };
+  for (const url of ['https://github.com/example/approved.git', 'git@github.com:example/approved.git',
+    'ssh://git@github.com/example/approved.git']) {
+    await requireNonPublicRemote(url, unused, 'example/approved');
+  }
+  await assert.rejects(requireNonPublicRemote('https://github.com/example/other.git',
+    async () => ({ status: 200, json: async () => ({ private: false }) }), 'example/approved'), /public-repository/);
+});

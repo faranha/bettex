@@ -110,11 +110,13 @@ export function safeRemote(url, allowLocal = false) {
       /^ssh:\/\/git@github\.com\/[\w.-]+\/[\w.-]+(?:\.git)?$/.test(url)) return url;
   throw new Error('Remote must be a credential-free GitHub URL. Replit internal remotes are not GitHub.');
 }
-export async function requireNonPublicRemote(url, fetcher = fetch) {
+export async function requireNonPublicRemote(url, fetcher = fetch, authorizedPublicRepository) {
   safeRemote(url);
   const normalized = url.replace(/^git@github\.com:/, 'https://github.com/')
     .replace(/^ssh:\/\/git@github\.com\//, 'https://github.com/');
   const repository = new URL(normalized).pathname.replace(/\.git$/, '');
+  // An explicit owner/repository authorization is not a global public-upload bypass.
+  if (authorizedPublicRepository === repository.slice(1)) return;
   const response = await fetcher(`https://api.github.com/repos${repository}`, {
     headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'BETTEX-development-sync' },
     signal: AbortSignal.timeout(10_000), redirect: 'error',

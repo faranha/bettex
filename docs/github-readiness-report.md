@@ -2,12 +2,15 @@
 
 ## Disposition
 
-**Automatic synchronization implemented locally; activation pending GitHub connection.**
+**Automatic synchronization implemented locally; activation pending authenticated Git transport.**
 
 - Development branch: `development/bettex`.
-- Actual GitHub repository: not configured; no `origin` was available.
+- GitHub destination: public `faranha/bettex`, now explicitly authorized by the
+  creator. Public visibility and `main` must remain unchanged.
 - GitHub verified remote commit: **none**. No upload is claimed.
-- Background `github-sync` workflow: running, explicitly pending connection.
+- GitHub API connection: healthy. Native Git push authentication is missing.
+  Repository-scoped temporary deploy-key creation was denied by the connector
+  with HTTP 403; temporary local key material was removed.
 - Existing Git history preserved; no production merge, force push, deployment,
   real funding or real-provider trade.
 
@@ -39,7 +42,7 @@
 | Check | Result |
 | --- | --- |
 | `pnpm quality` | Passed locally: lint, secret/dependency/architecture checks, references, generated clients, TypeScript, backend/domain/account security, local contracts, frontend/localization, static server and withdrawal policy |
-| `pnpm sync:test` | 15 tests passed, including isolated real-Git remotes, the running watcher automatically pushing an outside-task change and fail-closed privacy checks |
+| `pnpm sync:test` | 16 tests passed, including isolated real-Git remotes, the running watcher automatically pushing an outside-task change, fail-closed privacy checks and exact-repository public authorization |
 | Local remote evidence | Tests assert the remote advertises the resulting commit; no-op repeats do not add commits; failure/conflict cases preserve work |
 | Frozen clean-copy installation | Passed with a newly installed dependency tree, no copied installed dependencies |
 | Clean-copy `pnpm typecheck` and full `pnpm build` | Passed with documented runtime/port context |
@@ -61,9 +64,11 @@ against the approved Pitch and the English first-visit default.
 
 ## Remaining external steps
 
-1. Authorize GitHub through Replit's supported connection flow.
-2. Supply/select a **private** repository; no license/publication choice is made
-   automatically. Preserve existing history and inspect any existing remote.
+1. Link GitHub for native Git transport through Replit account settings
+   (Connected Services / Git provider) and the project Git pane. The existing
+   API-only connector has already been authorized.
+2. Use the creator-authorized `faranha/bettex` destination and development branch.
+   No license choice or visibility change is made automatically.
 3. Enable supported Git transport credentials with repository contents and
    required workflow permissions. Do not put credentials in remote URLs/code.
 4. Set the credential-free `origin`, use `development/bettex`, run `sync:once`,
