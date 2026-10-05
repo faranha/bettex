@@ -1,4 +1,5 @@
 import { JsonRpcProvider, Contract, Interface, Transaction, keccak256, toQuantity } from "ethers";
+import { matchesContractRuntime } from "@workspace/bettex-contracts/runtime";
 
 // Per-process disposable EVM fixture; never redirect production or workspace config.
 const URL = process.env.NODE_ENV === "development" && process.env.BETTEX_LOCAL_FIXTURE_URL
@@ -21,16 +22,21 @@ const saleInterface = new Interface([
 ]);
 export type LocalMetadata = {
   epoch: string; environment: string; chainId: number; token: string; sale: string; usdc: string;
-  treasury: string; operating: string; reserve: string; deploymentBlock: number;
+  treasury: string; operating: string; reserve: string; deploymentBlock: number; distributionGuard?: string;
 };
 export const journeyChain = {
   provider, erc, saleInterface,
-  encode(kind: "approve" | "buy" | "authorize" | "transfer", values: unknown[]) {
+  encode(kind: "approve" | "buy" | "authorize" | "transfer" | "withdraw" | "guard-pay", values: unknown[]) {
+    if (kind === "guard-pay") return new Interface(["function pay(bytes32,uint256,address,address,uint256,uint256)"])
+      .encodeFunctionData("pay", values);
+    if (kind === "withdraw") return new Interface(["function withdraw(address,address,uint256,bytes32)"])
+      .encodeFunctionData("withdraw", values);
     return (kind === "buy" || kind === "authorize" ? saleInterface : erc)
       .encodeFunctionData({ approve: "approve", buy: "buyTo", authorize: "authorizeBuyer", transfer: "transfer" }[kind], values);
   },
   async verifyEffects(name: string, hash: string, meta: LocalMetadata, draft: Record<string, string | number>,
-    operation: { id: string; quantity: string; principal: string; fee: string }) {
+    operation: { id: string; quantity: string; principal: string; fee: string;
+      intent?: { asset: "USDC" | "BETTEX"; destination: string; units: string; executor: string; deposit: string; holder: string } }) {
     const receipt = await provider.getTransactionReceipt(hash);
     if (!receipt || receipt.status !== 1) throw new Error("receipt_pending");
     const matches = (token: string, from: string, to: string, value: string) => receipt.logs.some(log => {
@@ -41,7 +47,38 @@ export const journeyChain = {
           && String(parsed.args[1]).toLowerCase() === to.toLowerCase() && String(parsed.args[2]) === value;
       } catch { return false; }
     });
-    if (name === "buy") {
+    if (["withdraw", "approve-usdc-withdraw", "approve-bettex-withdraw"].includes(name)) {
+      const intent = operation.intent;
+      if (!intent) throw new Error("withdrawal_intent_missing");
+      if (name === "withdraw") {
+        const iface = new Interface(["event Withdrawal(bytes32 indexed operationId,address indexed payer,address indexed recipient,address asset,address holder,uint256 amount,uint256 fee)"]);
+        const events = receipt.logs.filter(l => l.address.toLowerCase() === intent.executor.toLowerCase())
+          .map(l => { try { return iface.parseLog(l); } catch { return null; } });
+        const event = events.find(e => e?.name === "Withdrawal");
+        const asset = intent.asset === "USDC" ? meta.usdc : meta.token;
+        const sender = intent.asset === "USDC" ? intent.deposit : intent.holder;
+        if (!event || String(event.args[0]) !== operation.id
+          || String(event.args[1]).toLowerCase() !== intent.deposit.toLowerCase()
+          || String(event.args[2]).toLowerCase() !== intent.destination.toLowerCase()
+          || String(event.args[3]).toLowerCase() !== asset.toLowerCase()
+          || String(event.args[4]).toLowerCase() !== intent.holder.toLowerCase()
+          || String(event.args[5]) !== intent.units || String(event.args[6]) !== operation.fee
+          || !matches(meta.usdc, intent.deposit, meta.operating, operation.fee)
+          || !matches(asset, sender, intent.destination, intent.units)) throw new Error("withdrawal_effects_mismatch");
+      } else {
+        const asset = name === "approve-bettex-withdraw" ? meta.token : meta.usdc;
+        const sender = name === "approve-bettex-withdraw" ? intent.holder : intent.deposit;
+        const expected = name === "approve-bettex-withdraw" ? intent.units
+          : String(BigInt(operation.fee) + (intent.asset === "USDC" ? BigInt(intent.units) : 0n));
+        if (!receipt.logs.some(l => {
+          if (l.address.toLowerCase() !== asset.toLowerCase()) return false;
+          try { const e = erc.parseLog(l); return e?.name === "Approval"
+            && String(e.args[0]).toLowerCase() === sender.toLowerCase()
+            && String(e.args[1]).toLowerCase() === intent.executor.toLowerCase()
+            && String(e.args[2]) === expected; } catch { return false; }
+        })) throw new Error("approval_effects_mismatch");
+      }
+    } else if (name === "buy") {
       const intent = saleInterface.parseTransaction({ data: String(draft.data) })!;
       const purchase = receipt.logs.filter(log => log.address.toLowerCase() === meta.sale.toLowerCase())
         .map(log => { try { return saleInterface.parseLog(log); } catch { return null; } })
@@ -55,6 +92,19 @@ export const journeyChain = {
         || !matches(meta.usdc, String(purchase.args[1]), meta.treasury, operation.principal)
         || !matches(meta.usdc, String(purchase.args[1]), meta.operating, operation.fee)) throw new Error("purchase_effects_mismatch");
     } else if (name === "distribution") {
+      if (meta.distributionGuard && String(draft.to).toLowerCase() === meta.distributionGuard.toLowerCase()) {
+        const iface = new Interface(["function pay(bytes32,uint256,address,address,uint256,uint256)",
+          "event Paid(bytes32 indexed id,uint256 indexed roundStart,address indexed holder,address recipient,uint256 units)"]);
+        const intent = iface.parseTransaction({ data: String(draft.data) })!;
+        const event = receipt.logs.filter(l => l.address.toLowerCase() === meta.distributionGuard!.toLowerCase())
+          .map(l => { try { return iface.parseLog(l); } catch { return null; } }).find(e => e?.name === "Paid");
+        if (!event || String(event.args[0]) !== operation.id || String(event.args[1]) !== String(intent.args[1])
+          || String(event.args[2]).toLowerCase() !== String(intent.args[2]).toLowerCase()
+          || String(event.args[3]).toLowerCase() !== String(intent.args[3]).toLowerCase()
+          || String(event.args[4]) !== operation.principal
+          || !matches(meta.usdc, meta.treasury, String(intent.args[3]), operation.principal)) throw new Error("distribution_effects_mismatch");
+        return;
+      }
       const intent = erc.parseTransaction({ data: String(draft.data) })!;
       const tx = await provider.getTransaction(hash);
       if (!tx || String(intent.args[1]) !== operation.principal
@@ -84,7 +134,31 @@ export const journeyChain = {
     if (result.chainId !== 31337 || result.environment !== "local_evm" || (await provider.getNetwork()).chainId !== 31337n) {
       throw new Error("wrong_network");
     }
+    if (result.distributionGuard) {
+      if (!matchesContractRuntime(await provider.getCode(result.distributionGuard), "BettexTestDistributionGuard")
+        || !matchesContractRuntime(await provider.getCode(result.token), "BettexGuardedTestToken")) throw new Error("invalid_source");
+      const guard = new Contract(result.distributionGuard, [
+        "function token() view returns(address)", "function usdc() view returns(address)",
+        "function treasury() view returns(address)", "function owner() view returns(address)",
+      ], provider);
+      const values = await Promise.all(["token", "usdc", "treasury", "owner"].map(n => guard.getFunction(n)()));
+      if (values.some((v, i) => String(v).toLowerCase() !== [result.token, result.usdc, result.treasury, result.treasury][i]!.toLowerCase())) throw new Error("invalid_source");
+    }
     return result;
+  },
+  async exitNonce(meta: LocalMetadata, holder: string, blockTag: number) {
+    return String(await new Contract(meta.token, ["function exitNonce(address) view returns(uint256)"], provider)
+      .getFunction("exitNonce")(holder, { blockTag }));
+  },
+  async authorizeRound(meta: LocalMetadata, start: number, budget: string) {
+    if (!meta.distributionGuard || process.env.NODE_ENV !== "development"
+      || process.env.BETTEX_EXECUTION_PAUSED === "true") throw new Error("operations_paused");
+    const guard = new Contract(meta.distributionGuard, ["function budgets(uint256) view returns(uint256)",
+      "function authorizeRound(uint256,uint256)"], await provider.getSigner(meta.treasury));
+    const existing = BigInt(await guard.getFunction("budgets")(start));
+    if (existing > 0n) { if (existing !== BigInt(budget)) throw new Error("operation_conflict"); return; }
+    const receipt = await (await guard.getFunction("authorizeRound")(start, BigInt(budget))).wait();
+    if (!receipt || receipt.status !== 1) throw new Error("receipt_pending");
   },
   async draft(sender: string, to: string, data: string, value = "0") {
     const request = { from: sender, to, data, value: BigInt(value) };
@@ -131,8 +205,8 @@ export const journeyChain = {
   async balance(token: string, address: string, blockTag: number) {
     return String(await new Contract(token, erc, provider).getFunction("balanceOf")(address, { blockTag }));
   },
-  async allowance(meta: LocalMetadata, address: string) {
-    return BigInt(await new Contract(meta.usdc, erc, provider).getFunction("allowance")(address, meta.sale));
+  async allowance(meta: LocalMetadata, address: string, token = meta.usdc, spender = meta.sale) {
+    return BigInt(await new Contract(token, erc, provider).getFunction("allowance")(address, spender));
   },
   async sale(meta: LocalMetadata, blockTag: number) {
     const contract = new Contract(meta.sale, saleInterface, provider);

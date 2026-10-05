@@ -17,5 +17,6 @@ Before changing boundaries, sources of truth, data, security or dependencies, re
 13. [Versioning and policy composition](0010-trading-policy-versioning.md).
 14. [Isolated simulation executions](0013-simulation-executions.md).
 15. [Coordinated development synchronization and clean-clone execution](0014-development-synchronization.md).
+16. [Local withdrawals, atomic entitlement gate and read-only Allora](0015-local-withdrawals-atomic-guard-allora.md).
 
 The old paths in `docs/adr/` remain for compatibility, pointing to these records. Adopted status indicates a development rule, not an implemented financial feature.

@@ -13,4 +13,5 @@ export const NativeTestOperationKind = {
   fund: 'fund',
   purchase: 'purchase',
   distribution: 'distribution',
+  withdrawal: 'withdrawal',
 } as const;

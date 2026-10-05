@@ -1,6 +1,7 @@
 import { db } from "@workspace/db";
 import { testJourneyOperations as operations, testJourneyStages as stages } from "../../../../../../lib/db/src/schema/execution";
 import { and, eq, sql } from "drizzle-orm";
+import type { WithdrawalIntent } from "../application/native-journey";
 
 export const journeyStore = {
   recorder: undefined as undefined | ((client: unknown, event: { accountId: string; correlationId: string; kind: string; state: string; data: Record<string, string>; key: string }) => Promise<void>),
@@ -15,6 +16,19 @@ export const journeyStore = {
       executor text, start_block integer NOT NULL, updated_at timestamptz NOT NULL DEFAULT now(),
       UNIQUE(epoch,sender,nonce)
     )`);
+    await db.execute(sql`CREATE TABLE IF NOT EXISTS test_journey_intents (
+      operation_id text PRIMARY KEY REFERENCES test_journey_operations(id), intent jsonb NOT NULL
+    )`);
+  },
+  async intent(id: string, intent: WithdrawalIntent) {
+    const rows = await db.execute(sql`INSERT INTO test_journey_intents (operation_id,intent)
+      VALUES (${id},${JSON.stringify(intent)}::jsonb) ON CONFLICT (operation_id) DO UPDATE
+      SET intent=test_journey_intents.intent WHERE test_journey_intents.intent=EXCLUDED.intent RETURNING operation_id`);
+    if (!rows.rows.length) throw new Error("operation_conflict");
+  },
+  async readIntent(id: string): Promise<WithdrawalIntent | undefined> {
+    const rows = await db.execute(sql`SELECT intent FROM test_journey_intents WHERE operation_id=${id}`);
+    return rows.rows[0]?.intent as WithdrawalIntent | undefined;
   },
   async create(accountId: string, epoch: string, id: string, kind: string, quantity = "0", principal = "0", fee = "0") {
     await db.transaction(async tx => {
@@ -23,19 +37,19 @@ export const journeyStore = {
         state: "requested", key: `intent:${id}`, data: { operationKind: kind, quantity, principalUnits: principal, feeUnits: fee, epoch } });
     });
     const [row] = await db.select().from(operations).where(and(eq(operations.id, id), eq(operations.accountId, accountId), eq(operations.epoch, epoch)));
-    if (!row || row.quantity !== quantity || row.kind !== kind) throw new Error("operation_conflict");
-    return row;
+    if (!row || row.quantity !== quantity || row.kind !== kind || row.principal !== principal || row.fee !== fee) throw new Error("operation_conflict");
+    return { ...row, intent: await this.readIntent(row.id) };
   },
   async owned(accountId: string, epoch: string, id: string) {
     const [row] = await db.select().from(operations).where(and(eq(operations.id, id), eq(operations.accountId, accountId), eq(operations.epoch, epoch)));
     if (!row) throw new Error("operation_not_found");
-    return row;
+    return { ...row, intent: await this.readIntent(row.id) };
   },
   async list(accountId: string, epoch: string) {
     const rows = await db.select().from(operations).where(eq(operations.accountId, accountId));
     const active = rows.filter(row => row.epoch === epoch);
     return { archivedCount: rows.length - active.length, operations: await Promise.all(active.map(async row => ({
-      ...row, stages: await db.select().from(stages).where(eq(stages.operationId, row.id)),
+      ...row, intent: await this.readIntent(row.id), stages: await db.select().from(stages).where(eq(stages.operationId, row.id)),
     }))) };
   },
   async stage(operationId: string, name: string) {

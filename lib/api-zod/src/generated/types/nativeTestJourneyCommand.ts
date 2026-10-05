@@ -6,6 +6,7 @@
  * OpenAPI spec version: 0.1.0
  */
 import type { NativeTestJourneyCommandAction } from './nativeTestJourneyCommandAction';
+import type { NativeTestJourneyCommandAsset } from './nativeTestJourneyCommandAsset';
 import type { NativeTestJourneyCommandStage } from './nativeTestJourneyCommandStage';
 
 export interface NativeTestJourneyCommand {
@@ -16,6 +17,11 @@ export interface NativeTestJourneyCommand {
   /** @pattern ^[1-9][0-9]{0,8}$ */
   quantity?: string;
   stage?: NativeTestJourneyCommandStage;
+  asset?: NativeTestJourneyCommandAsset;
+  /** @pattern ^0x[0-9a-fA-F]{40}$ */
+  destination?: string;
+  /** @pattern ^[1-9][0-9]{0,77}$ */
+  units?: string;
   /**
      * @maxLength 8192
      * @pattern ^0x[0-9a-fA-F]+$

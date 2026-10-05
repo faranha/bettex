@@ -1,5 +1,7 @@
 import { Contract, Interface, JsonRpcProvider, getAddress, type Provider } from "ethers";
 import artifacts from "@workspace/bettex-contracts/verified-artifacts" with { type: "json" };
+import { matchesContractRuntime } from "@workspace/bettex-contracts/runtime";
+export { matchesContractRuntime } from "@workspace/bettex-contracts/runtime";
 import type { TestContractState, TestContractAllocation } from "@workspace/api-zod";
 import {
   InvalidTestContract, TEST_CONTRACT_CHAIN, TEST_CONTRACT_VERSION,
@@ -11,21 +13,6 @@ const rpc = new JsonRpcProvider("https://sepolia.arbitrum.io/rpc", undefined, {
   batchMaxCount: 20, cacheTimeout: -1,
 });
 const usdcAddress = "0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d";
-
-// Runtime comparison excludes only compiler-declared immutable slots.
-export function matchesContractRuntime(code: string, name: ArtifactName) {
-  const artifact = artifacts[name];
-  if (code.length !== artifact.runtime.length) return false;
-  const normalize = (value: string) => {
-    let bytes = value.slice(2).toLowerCase();
-    for (const references of Object.values(artifact.immutableReferences)) {
-      for (const ref of references) bytes = bytes.slice(0, ref.start * 2)
-        + "0".repeat(ref.length * 2) + bytes.slice((ref.start + ref.length) * 2);
-    }
-    return bytes;
-  };
-  return normalize(code) === normalize(artifact.runtime);
-}
 
 export function createTestContractReader(provider: Provider = rpc, expectedChain = TEST_CONTRACT_CHAIN): ContractReader {
   return {
@@ -44,7 +31,9 @@ export function createTestContractReader(provider: Provider = rpc, expectedChain
       };
       const call = async (contract: Contract, name: string, args: unknown[] = []): Promise<any> =>
         contract.getFunction(name)(...args, { blockTag });
-      const token = await open(address, "BettexTestToken");
+      const tokenCode = await provider.getCode(address, blockTag);
+      const token = await open(address, matchesContractRuntime(tokenCode, "BettexGuardedTestToken")
+        ? "BettexGuardedTestToken" : "BettexTestToken");
       const [saleAddress, founderAddress, investorAddress, totalSupply, symbol, genesis] = await Promise.all([
         call(token, "publicSale"), call(token, "founderVault"), call(token, "investorVault"),
         call(token, "totalSupply"), call(token, "symbol"), call(token, "GENESIS_SUPPLY"),

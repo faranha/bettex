@@ -8,6 +8,7 @@ import { useFmt, card, KV, Tag } from './format';
 import { AlphaTradingCapitalPanel } from './CapitalPanel';
 import { OpportunityCard, DecisionCard, OrderCard, PositionCard } from './Records';
 import { Journey } from './Journey';
+import { AlloraAnalysis } from '@/components/demo/AlloraAnalysis';
 
 export { AlphaTradingCapitalPanel };
 type View = NonNullable<GetAlphaTradingParams['view']>;
@@ -44,6 +45,7 @@ export function AlphaTradingPanel() {
         <p className="mt-1 text-sm text-[#5B6B85]">{x('Como a IA considera eventos de previsão, com evidências. Resultados simulados, nunca lucro distribuível.', 'How the AI considers prediction events, with evidence. Simulated results, never distributable profit.', 'Cómo la IA considera eventos de predicción, con evidencias. Resultados simulados, nunca ganancia distribuible.')}</p></div>
       {q.isLoading && !d && <div className="grid gap-3" aria-busy="true">{[0, 1, 2].map(i => <div key={i} className="dcard h-28 animate-pulse" />)}</div>}
       {q.isError && <div role="alert" className="dcard grid justify-items-start gap-3 p-6"><p className="font-bold">{x('Não conseguimos carregar os dados reais.', 'We could not load the real data.', 'No pudimos cargar los datos reales.')}</p><button type="button" data-testid="button-retry" onClick={() => void q.refetch()} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white"><RefreshCw className="h-4 w-4" aria-hidden="true" />{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button></div>}
+      <AlloraAnalysis />
       {d && <>
         <section className={card}>
           <h2 className="font-bold">{x('Políticas efetivas por especialista', 'Effective policies by specialist', 'Políticas efectivas por especialista')}</h2>

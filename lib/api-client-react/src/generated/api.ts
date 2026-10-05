@@ -26,6 +26,7 @@ import type {
   DemoDashboard,
   DemoMovementInput,
   DemoProfileInput,
+  GetAlloraAnalysis200,
   GetAlphaTradingParams,
   GetDemoHistoryParams,
   GetSimulationParams,
@@ -76,6 +77,77 @@ const withQueryKey = <T extends object, K>(query: T, queryKey: K): T & { queryKe
   }
   return result;
 };
+
+export const getGetAlloraAnalysisUrl = (asset: 'BTC' | 'ETH' | 'SOL',) => {
+
+
+
+
+  return `/api/agents/allora/${asset}`
+}
+
+export const getAlloraAnalysis = async (asset: 'BTC' | 'ETH' | 'SOL', options?: Parameters<typeof customFetch>[1]): Promise<GetAlloraAnalysis200> => {
+
+  return customFetch<GetAlloraAnalysis200>(getGetAlloraAnalysisUrl(asset),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetAlloraAnalysisQueryKey = (asset: 'BTC' | 'ETH' | 'SOL',) => {
+    return [
+    `/api/agents/allora/${asset}`
+    ] as const;
+    }
+
+
+export const getGetAlloraAnalysisQueryOptions = <TData = Awaited<ReturnType<typeof getAlloraAnalysis>>, TError = ErrorType<void>>(asset: 'BTC' | 'ETH' | 'SOL', options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAlloraAnalysis>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetAlloraAnalysisQueryKey(asset);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getAlloraAnalysis>>> = ({ signal }) => getAlloraAnalysis(asset, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: asset !== null && asset !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getAlloraAnalysis>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetAlloraAnalysisQueryResult = NonNullable<Awaited<ReturnType<typeof getAlloraAnalysis>>>
+export type GetAlloraAnalysisQueryError = ErrorType<void>
+
+
+
+export function useGetAlloraAnalysis<TData = Awaited<ReturnType<typeof getAlloraAnalysis>>, TError = ErrorType<void>>(
+ asset: 'BTC' | 'ETH' | 'SOL', options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAlloraAnalysis>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetAlloraAnalysisQueryOptions(asset,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getGetSimulationUrl = (params?: GetSimulationParams,) => {
   const normalizedParams = new URLSearchParams();

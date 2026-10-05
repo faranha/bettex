@@ -4,12 +4,13 @@
   "private": true,
   "type": "module",
   "exports": {
+    "./runtime": "./src/runtime.ts",
     "./verified-artifacts": "./src/verified-artifacts.json"
   },
   "scripts": {
     "build": "node scripts/compile.mjs",
     "local:runtime": "node scripts/local-runtime.mjs",
-    "test": "node --test test/contracts.test.mjs test/app-flow.test.mjs"
+    "test": "node --test test/contracts.test.mjs test/app-flow.test.mjs test/wallet-services.test.mjs"
   },
   "devDependencies": {
     "@openzeppelin/contracts": "5.6.1",

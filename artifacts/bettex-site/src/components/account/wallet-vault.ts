@@ -138,3 +138,44 @@ export async function signPersonalTestPurchase(vault: WalletVaultEnvelope, walle
     return await signer.signTransaction({ ...draft, type: 0 });
   } finally { secrets.splice(0); }
 }
+
+/** Atomic local withdrawal only, with exact approvals and both wallet bindings. */
+export async function signPersonalTestWithdrawal(vault: WalletVaultEnvelope, wallets: PersonalTestWallet[],
+  password: string, draft: NativeTestTransaction, intent: {
+    asset: 'USDC' | 'BETTEX'; destination: string; units: string; executor: string; deposit: string; holder: string;
+    stage: string; usdc: string; token: string; fee: string; operationId: string;
+  }): Promise<string> {
+  const deposit = wallets.find(w => w.purpose === 'deposits');
+  const holder = wallets.find(w => w.purpose === 'bettex');
+  if (!deposit || !holder || deposit.address.toLowerCase() !== intent.deposit.toLowerCase()
+    || holder.address.toLowerCase() !== intent.holder.toLowerCase() || draft.chainId !== 31337
+    || BigInt(draft.value) !== 0n || BigInt(draft.gasLimit) > 1_000_000n
+    || BigInt(draft.gasPrice) * BigInt(draft.gasLimit) > 3_000_000_000_000_000n
+    || intent.fee !== '2500000') throw new Error('transaction_mismatch');
+  const erc = new Interface(['function approve(address,uint256) returns(bool)']);
+  const service = new Interface(['function withdraw(address,address,uint256,bytes32)']);
+  let signingWallet = deposit;
+  if (intent.stage === 'approve-bettex-withdraw' || intent.stage === 'approve-usdc-withdraw') {
+    const tokenApproval = intent.stage === 'approve-bettex-withdraw';
+    if (tokenApproval && intent.asset !== 'BETTEX') throw new Error('transaction_mismatch');
+    signingWallet = tokenApproval ? holder : deposit;
+    const parsed = erc.parseTransaction({ data: draft.data });
+    const amount = tokenApproval ? intent.units
+      : String(BigInt(intent.fee) + (intent.asset === 'USDC' ? BigInt(intent.units) : 0n));
+    if (draft.to.toLowerCase() !== (tokenApproval ? intent.token : intent.usdc).toLowerCase()
+      || !parsed || String(parsed.args[0]).toLowerCase() !== intent.executor.toLowerCase()
+      || String(parsed.args[1]) !== amount) throw new Error('transaction_mismatch');
+  } else if (intent.stage === 'withdraw') {
+    const parsed = service.parseTransaction({ data: draft.data });
+    if (draft.to.toLowerCase() !== intent.executor.toLowerCase() || !parsed
+      || String(parsed.args[0]).toLowerCase() !== (intent.asset === 'USDC' ? intent.usdc : intent.token).toLowerCase()
+      || String(parsed.args[1]).toLowerCase() !== intent.destination.toLowerCase()
+      || String(parsed.args[2]) !== intent.units || String(parsed.args[3]) !== intent.operationId) throw new Error('transaction_mismatch');
+  } else throw new Error('transaction_mismatch');
+  const secrets = await open(vault, password, wallets);
+  try {
+    const secret = secrets.find(w => w.id === signingWallet.id);
+    if (!secret) throw new Error('vault_invalid');
+    return await new Wallet(secret.privateKey).signTransaction({ ...draft, type: 0 });
+  } finally { secrets.splice(0); }
+}

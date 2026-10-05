@@ -8,6 +8,45 @@
 import * as zod from 'zod';
 
 
+export const GetAlloraAnalysisParams = zod.object({
+  "asset": zod.enum(['BTC', 'ETH', 'SOL'])
+})
+
+export const GetAlloraAnalysisResponse = zod.object({
+  "observation": zod.object({
+  "asset": zod.enum(['BTC', 'ETH', 'SOL']),
+  "topicId": zod.number().int(),
+  "network": zod.enum(['allora-mainnet-1']),
+  "unit": zod.enum(['USD']),
+  "horizonSeconds": zod.number().int(),
+  "price": zod.string(),
+  "blockHeight": zod.string(),
+  "producedAt": zod.string(),
+  "targetAt": zod.string(),
+  "source": zod.string(),
+  "authentication": zod.enum(['public_unsigned']),
+  "uncertainty": zod.enum(['unavailable'])
+}).and(zod.object({
+  "observedAt": zod.string(),
+  "status": zod.enum(['current', 'stale'])
+})),
+  "history": zod.array(zod.object({
+  "asset": zod.enum(['BTC', 'ETH', 'SOL']),
+  "topicId": zod.number().int(),
+  "network": zod.enum(['allora-mainnet-1']),
+  "unit": zod.enum(['USD']),
+  "horizonSeconds": zod.number().int(),
+  "price": zod.string(),
+  "blockHeight": zod.string(),
+  "producedAt": zod.string(),
+  "targetAt": zod.string(),
+  "source": zod.string(),
+  "authentication": zod.enum(['public_unsigned']),
+  "uncertainty": zod.enum(['unavailable'])
+}))
+})
+
+
 export const getSimulationQueryOffsetDefault = 0;
 export const getSimulationQueryOffsetMin = 0;
 
@@ -2431,7 +2470,8 @@ export const GetNativeTestJourneyResponse = zod.object({
   "ownState": zod.string(),
   "ownTransactionHash": zod.string().nullable(),
   "snapshotBlock": zod.number().int().nullable(),
-  "snapshotHash": zod.string().nullable()
+  "snapshotHash": zod.string().nullable(),
+  "atomicProtection": zod.enum(['on_chain_exit_nonce', 'legacy_runtime_blocked']).optional()
 }),
   "balances": zod.object({
   "usdc": zod.string(),
@@ -2488,7 +2528,15 @@ export const GetNativeTestJourneyResponse = zod.object({
 })),
   "operations": zod.array(zod.object({
   "id": zod.string(),
-  "kind": zod.enum(['fund', 'purchase', 'distribution']),
+  "kind": zod.enum(['fund', 'purchase', 'distribution', 'withdrawal']),
+  "intent": zod.object({
+  "asset": zod.enum(['USDC', 'BETTEX']),
+  "destination": zod.string(),
+  "units": zod.string(),
+  "executor": zod.string(),
+  "deposit": zod.string(),
+  "holder": zod.string()
+}).optional(),
   "quantity": zod.string(),
   "principal": zod.string(),
   "fee": zod.string(),
@@ -2512,6 +2560,8 @@ export const GetNativeTestJourneyResponse = zod.object({
 
 
 export const nativeTestJourneyCommandBodyQuantityRegExp = new RegExp('^[1-9][0-9]{0,8}$');
+export const nativeTestJourneyCommandBodyDestinationRegExp = new RegExp('^0x[0-9a-fA-F]{40}$');
+export const nativeTestJourneyCommandBodyUnitsRegExp = new RegExp('^[1-9][0-9]{0,77}$');
 export const nativeTestJourneyCommandBodySignedTransactionMax = 8192;
 
 
@@ -2519,12 +2569,15 @@ export const nativeTestJourneyCommandBodySignedTransactionRegExp = new RegExp('^
 
 
 export const NativeTestJourneyCommandBody = zod.object({
-  "action": zod.enum(['fund', 'quote', 'sign', 'distribution-test']),
+  "action": zod.enum(['fund', 'quote', 'sign', 'distribution-test', 'quote-withdrawal']),
   "csrf": zod.string(),
   "acknowledgeLocal": zod.boolean().optional(),
   "operationId": zod.string().optional(),
   "quantity": zod.string().regex(nativeTestJourneyCommandBodyQuantityRegExp).optional(),
-  "stage": zod.enum(['approve', 'buy']).optional(),
+  "stage": zod.enum(['approve', 'buy', 'approve-usdc-withdraw', 'approve-bettex-withdraw', 'withdraw']).optional(),
+  "asset": zod.enum(['USDC', 'BETTEX']).optional(),
+  "destination": zod.string().regex(nativeTestJourneyCommandBodyDestinationRegExp).optional(),
+  "units": zod.string().regex(nativeTestJourneyCommandBodyUnitsRegExp).optional(),
   "signedTransaction": zod.string().max(nativeTestJourneyCommandBodySignedTransactionMax).regex(nativeTestJourneyCommandBodySignedTransactionRegExp).optional()
 })
 
@@ -2553,7 +2606,8 @@ export const NativeTestJourneyCommandResponse = zod.object({
   "ownState": zod.string(),
   "ownTransactionHash": zod.string().nullable(),
   "snapshotBlock": zod.number().int().nullable(),
-  "snapshotHash": zod.string().nullable()
+  "snapshotHash": zod.string().nullable(),
+  "atomicProtection": zod.enum(['on_chain_exit_nonce', 'legacy_runtime_blocked']).optional()
 }),
   "balances": zod.object({
   "usdc": zod.string(),
@@ -2610,7 +2664,15 @@ export const NativeTestJourneyCommandResponse = zod.object({
 })),
   "operations": zod.array(zod.object({
   "id": zod.string(),
-  "kind": zod.enum(['fund', 'purchase', 'distribution']),
+  "kind": zod.enum(['fund', 'purchase', 'distribution', 'withdrawal']),
+  "intent": zod.object({
+  "asset": zod.enum(['USDC', 'BETTEX']),
+  "destination": zod.string(),
+  "units": zod.string(),
+  "executor": zod.string(),
+  "deposit": zod.string(),
+  "holder": zod.string()
+}).optional(),
   "quantity": zod.string(),
   "principal": zod.string(),
   "fee": zod.string(),

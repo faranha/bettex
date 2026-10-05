@@ -10,8 +10,9 @@ import { localRoundAllowed } from "../modules/risk";
 import { withTreasuryLock, treasuryProtection } from "../modules/ledger/infrastructure/treasury-reservations";
 
 type TransferPort = { transferTest(account: string, meta: LocalMetadata, id: string, sender: string,
-  to: string, units: string, submit: boolean): Promise<{ confirmed: boolean;
-  stage: { state: string; transactionHash: string | null } | undefined }> };
+  to: string, units: string, submit: boolean, condition?: { holder: string; nonce: string; roundStart: number }): Promise<{ confirmed: boolean;
+   stage: { state: string; transactionHash: string | null } | undefined }>;
+};
 const hash = (value: string) => keccak256(toUtf8Bytes(value));
 const resultUnits = "1000000"; // Explicit synthetic fixture, never read from client.
 export async function localRound(accountId: string, meta: LocalMetadata, flow: TransferPort, submit: boolean, previous?: RoundRow) {
@@ -80,6 +81,8 @@ async function runLocalRound(accountId: string, meta: LocalMetadata, flow: Trans
   }
   if (round.plan) {
     const plan = round.plan;
+    if (submit && meta.distributionGuard && BigInt(plan.participants) > 0n
+      && block.timestamp < Number(round.ends_at)) await journeyChain.authorizeRound(meta, start, plan.participants);
     for (const payment of await localRoundStore.payouts(id)) {
       if (["cancelled", "expired", "failed"].includes(payment.state)) continue;
       const material = await walletsStore().read(payment.account_id);
@@ -101,7 +104,9 @@ async function runLocalRound(accountId: string, meta: LocalMetadata, flow: Trans
         continue;
       }
       const result = await flow.transferTest(payment.account_id, meta, hash(payment.operation_id),
-        meta.treasury, payment.wallet, payment.units, submit && !exited && now.timestamp < Number(round.ends_at));
+        meta.treasury, payment.wallet, payment.units, submit && !exited && now.timestamp < Number(round.ends_at),
+        meta.distributionGuard ? { holder: holder.address, roundStart: start,
+          nonce: await journeyChain.exitNonce(meta, holder.address, round.snapshot_block!) } : undefined);
       const state = result.confirmed ? "paid" : result.stage?.state ?? "pending";
       await localRoundStore.state(id, payment.account_id, state, result.stage?.transactionHash ?? null);
       await appendHistory({ key: `round:${payment.operation_id}:${state}`, subject: `native:${payment.account_id}`,
