@@ -1,64 +1,68 @@
 /** @jsxImportSource react */
-import { useEffect, useReducer, useRef, useState } from 'react';
-import { Pause, Play, RotateCcw, SkipForward, FastForward } from 'lucide-react';
-import { createInitialState, demoReducer, MAX_SCENARIO_STEP } from '@/components/demo/model';
-import { Btn, useX, Example } from '@/components/demo/ui';
-import { Dashboard, History, Profile } from '@/components/demo/Personal';
-import { Central } from '@/components/demo/Central';
-import { Live } from '@/components/demo/Live';
-import { Rounds } from '@/components/demo/Rounds';
-import { Treasury } from '@/components/demo/Treasury';
-import { Transparency } from '@/components/demo/Transparency';
-import { Community } from '@/components/demo/Community';
+import { useState } from 'react';
+import { useLocation, Link } from 'wouter';
+import { useAuth } from '@clerk/react';
+import { AccountSheet } from '@/components/account/AccountSheet';
+import { RefreshCw, Send } from 'lucide-react';
+import { useGetDemoDashboard, getGetDemoDashboardQueryKey } from '@workspace/api-client-react';
+import { useX } from '@/components/demo/ui';
+import { Rates, MovementSheet, useClock, type Kind, type Asset } from '@/components/demo/fin';
+import { H, TreasuryBlock, Rounds } from '@/components/demo/Views';
+import { CycleLive, useCycleHistory, type CycleMode } from '@/components/demo/CycleLive';
+import { Console } from '@/components/demo/Console';
+import { AgentFlow } from '@/components/demo/AgentFlow';
+import { WalletPage } from '@/components/demo/WalletPage';
+import { demoView, demoPath, demoLabel, type DemoView } from '@/components/demo/demo-navigation';
+import '@/components/demo/demo.css';
 
 export function DemoPage() {
-  const [state, dispatch] = useReducer(demoReducer, undefined, createInitialState);
-  const [area, setArea] = useState('home');
-  const [rk, setRk] = useState(0);
-  const h1 = useRef<HTMLHeadingElement>(null);
-  const first = useRef(true);
-  const { x, tx } = useX();
-  useEffect(() => { if (first.current) { first.current = false; return; } h1.current?.focus(); }, [area]);
-  useEffect(() => {
-    if (!state.running) return;
-    const id = window.setInterval(() => dispatch({ type: 'TICK' }), 6000);
-    return () => window.clearInterval(id);
-  }, [state.running]);
-  const ended = state.step >= MAX_SCENARIO_STEP;
-  const areas: [string, string][] = [['home', x('Meu painel', 'My dashboard', 'Mi panel')], ['central', x('Central da IA', 'AI Center', 'Central de IA')], ['live', 'Live Trading'], ['rounds', x('Participação e resultados', 'Participation and results', 'Participación y resultados')], ['treasury', x('Tesouraria', 'Treasury', 'Tesorería')], ['transparency', x('Transparência', 'Transparency', 'Transparencia')], ['community', x('Comunidade', 'Community', 'Comunidad')], ['history', x('Histórico pessoal', 'Personal history', 'Historial personal')], ['profile', x('Perfil e ajuda', 'Profile and help', 'Perfil y ayuda')]];
-  const phase = state.step < 3 ? x('Captação de oportunidades', 'Opportunity intake', 'Captación de oportunidades') : state.step < 6 ? x('Execução e acompanhamento', 'Execution and monitoring', 'Ejecución y seguimiento') : state.step < MAX_SCENARIO_STEP ? x('Conciliação e correções', 'Reconciliation and corrections', 'Conciliación y correcciones') : x('Fim do cenário preparado', 'End of prepared scenario', 'Fin del escenario preparado');
-  return <main className="min-h-[calc(100dvh-var(--site-header-h))] bg-[#070B1F] text-[#F4F1E8]">
-    <div className="mx-auto grid max-w-[1400px] gap-4 px-3 py-4 sm:px-5 lg:grid-cols-[220px_1fr]">
-      <aside className="min-w-0 lg:sticky lg:top-[calc(var(--site-header-h)+12px)] lg:self-start">
-        <div className="rounded-2xl border border-white/10 bg-[#0C1536] p-3">
-          <div className="flex flex-wrap items-center gap-2"><span className="mono text-[10px] font-bold uppercase tracking-widest text-[#F2B632]">{x('Centro de operações', 'Operations center', 'Centro de operaciones')}</span><Example /></div>
-          <p className="mono mt-2 text-sm font-bold" data-testid="text-clock">T+{state.clock}h · {x('passo', 'step', 'paso')} {state.step}/{MAX_SCENARIO_STEP}</p>
-          <p className="text-xs text-[#9AA9D6]">{phase}</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <Btn testid="button-run" tone={state.running ? 'warn' : 'primary'} disabled={ended && !state.running} onClick={() => dispatch({ type: 'RUN', value: !state.running })}>{state.running ? <Pause className="h-3.5 w-3.5" aria-hidden="true" /> : <Play className="h-3.5 w-3.5" aria-hidden="true" />}{state.running ? x('Pausar', 'Pause', 'Pausar') : x('Autoplay', 'Autoplay', 'Autoplay')}</Btn>
-            <Btn testid="button-tick" tone="ghost" onClick={() => dispatch({ type: 'TICK' })}><SkipForward className="h-3.5 w-3.5" aria-hidden="true" />{x('Avançar 1 h', 'Advance 1 h', 'Avanzar 1 h')}</Btn>
-            <Btn testid="button-tick-24" tone="ghost" onClick={() => { for (let i = 0; i < 24; i++) dispatch({ type: 'TICK' }); }}><FastForward className="h-3.5 w-3.5" aria-hidden="true" />{x('Avançar 24 h', 'Advance 24 h', 'Avanzar 24 h')}</Btn>
-            <Btn testid="button-reset" tone="ghost" onClick={() => { dispatch({ type: 'RESET' }); setArea('home'); setRk(k => k + 1); }}><RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />{x('Reiniciar tudo', 'Reset everything', 'Reiniciar todo')}</Btn>
-          </div>
+  const { x, loc } = useX();
+  const [path] = useLocation();
+  return typeof window === 'undefined' ? <main className="demo-root min-h-96 p-6"><h1 className="sr-only">{demoLabel(demoView(path) ?? 'home', loc)}</h1><p>{x('Carregando seu painel…', 'Loading your dashboard…', 'Cargando tu panel…')}</p></main> : <ClientDemoPage />;
+}
+function ClientDemoPage() {
+  const { x, loc } = useX();
+  const [path, navigate] = useLocation();
+  const tab = demoView(path) ?? 'home';
+  const { isLoaded } = useAuth();
+  const q = useGetDemoDashboard({ query: { queryKey: getGetDemoDashboardQueryKey(), enabled: isLoaded, refetchInterval: 4000, refetchIntervalInBackground: false, retry: 1 } });
+  const d = q.data;
+  const now = useClock(d);
+  const pts = useCycleHistory(d); const [cmode, setCmode] = useState<CycleMode>('capital');
+  const [mv, setMv] = useState<{ kind: Kind; asset: Asset } | null>(null); const [lastMv, setLastMv] = useState<{ kind: Kind; asset: Asset } | null>(null); const open = (kind: Kind, asset: Asset) => { const v = { kind, asset }; setLastMv(v); setMv(v); };
+  const banner = <div className="bg-[#1B2A41] py-1 text-center text-[11px] font-semibold tracking-wide text-[#F5F1E8]" data-testid="banner-demo">{x('versão demonstrativa', 'demo version', 'versión demostrativa')}</div>;
+  if (!d) return <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))]"><h1 className="sr-only">{x('Meu painel', 'My dashboard', 'Mi panel')}</h1>{banner}<div className="mx-auto max-w-5xl p-4 sm:p-6">{q.isError ? <div role="alert" className="dcard grid justify-items-start gap-3 p-6"><p className="font-bold">{x('Não conseguimos carregar seus dados.', 'We could not load your data.', 'No pudimos cargar tus datos.')}</p><button type="button" data-testid="button-retry" onClick={() => void q.refetch()} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white"><RefreshCw className="h-4 w-4" aria-hidden="true" />{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button></div> : <div className="grid gap-3" aria-busy="true" aria-label={x('Carregando', 'Loading', 'Cargando')}>{[0, 1, 2].map(i => <div key={i} className="dcard h-28 animate-pulse" />)}</div>}</div></main>;
+  const h = new Date().getHours();
+  const greet = h < 12 ? x('Bom dia', 'Good morning', 'Buenos días') : h < 18 ? x('Boa tarde', 'Good afternoon', 'Buenas tardes') : x('Boa noite', 'Good evening', 'Buenas noches');
+  const b = d.balances;
+  const tabs: [DemoView, string][] = [['home', x('Meu painel', 'My dashboard', 'Mi panel')], ['central', x('Central da IA', 'AI Center', 'Central de IA')], ['wallet', x('Saldo e histórico', 'Balance and history', 'Saldo e historial')], ['treasury', x('Tesouraria', 'Treasury', 'Tesorería')], ['account', x('Minha conta', 'My account', 'Mi cuenta')]];
+  const tabBtn = (on: boolean) => `min-h-11 shrink-0 border-b-2 px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:px-4 ${on ? 'border-[#0E7C6B] text-[#0A6657]' : 'border-transparent text-[#5B6B85] hover:text-[#1B2A41]'}`;
+  const sec = 'dcard p-4 sm:p-5';
+  return <Rates.Provider value={{ r: b.brlPerUsdc, bu: b.bettexUsdc }}><main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10">
+    <div className="sticky top-[var(--site-header-h)] z-30 border-b border-[#E4DCCB] bg-[#FBF8F0]/95 backdrop-blur">{banner}
+      <nav aria-label={x('Áreas do app', 'App areas', 'Áreas de la app')} className="mx-auto flex max-w-5xl gap-1 overflow-x-auto px-3">
+        <div className="grid min-w-0 flex-1 grid-cols-2 sm:flex">{tabs.map(([k, l]) => <Link key={k} href={demoPath(k, loc)} data-testid={`nav-${k}`} aria-current={tab === k ? 'page' : undefined} onClick={() => window.scrollTo({ top: 0 })} className={`${tabBtn(tab === k)} inline-flex items-center`}>{l}</Link>)}</div>
+        <div className="ml-auto flex shrink-0 items-center gap-1">
+          <a href="https://t.me/bettextoken" target="_blank" rel="noopener noreferrer" aria-label={x('Comunidade no Telegram', 'Community on Telegram', 'Comunidad en Telegram')} title={x('Comunidade no Telegram', 'Community on Telegram', 'Comunidad en Telegram')} data-testid="link-app-community" className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-2 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:px-3"><Send className="h-5 w-5" aria-hidden="true" /><span className="hidden sm:inline">{x('Comunidade', 'Community', 'Comunidad')}</span></a>
         </div>
-        <nav aria-label={x('Áreas do demo', 'Demo areas', 'Áreas del demo')} className="mt-3 flex gap-1.5 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
-          {areas.map(([k, l]) => <button key={k} type="button" aria-current={area === k ? 'page' : undefined} onClick={() => setArea(k)} data-testid={`nav-${k}`} className={`min-h-11 shrink-0 rounded-xl px-3 text-left text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#36E0D0] ${area === k ? 'bg-[#F2B632] text-[#070B1F]' : 'border border-white/10 bg-[#0C1536] hover:bg-white/10'}`}>{l}</button>)}
-        </nav>
-      </aside>
-      <div className="min-w-0" key={rk}>
-        <h1 ref={h1} tabIndex={-1} className="display mb-3 text-2xl font-extrabold tracking-tight outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#36E0D0]" data-testid="text-area-title">{areas.find(a => a[0] === area)?.[1]}</h1>
-        {state.error && <div role="alert" className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[#FF8A45]/60 bg-[#FF8A45]/10 p-3 text-sm"><span>{tx(state.error)}</span><Btn tone="ghost" onClick={() => dispatch({ type: 'CLEAR_ERROR' })}>{x('Entendi', 'Dismiss', 'Entendido')}</Btn></div>}
-        {area === 'home' && <Dashboard state={state} dispatch={dispatch} go={setArea} />}
-        {area === 'central' && <Central state={state} dispatch={dispatch} />}
-        {area === 'live' && <Live state={state} dispatch={dispatch} />}
-        {area === 'rounds' && <Rounds state={state} dispatch={dispatch} />}
-        {area === 'treasury' && <Treasury state={state} dispatch={dispatch} />}
-        {area === 'transparency' && <Transparency state={state} dispatch={dispatch} />}
-        {area === 'community' && <Community state={state} dispatch={dispatch} />}
-        {area === 'history' && <History state={state} dispatch={dispatch} />}
-        {area === 'profile' && <Profile state={state} dispatch={dispatch} />}
-      </div>
+      </nav></div>
+    <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 px-3 pt-5 sm:px-5">
+      {tab === 'home' && <>
+        <div><p className="text-sm text-[#5B6B85]">{greet},</p><h1 className="display break-words text-3xl font-extrabold tracking-tight" data-testid="text-greeting-name">{d.profile.name}</h1><p className="mt-1 break-all text-xs text-[#5B6B85]">{d.profile.email} · {d.profile.accountId}</p></div>
+        <section><H sub={x('Dados emulados da demonstração.', 'Emulated demo data.', 'Datos emulados de la demostración.')}>{x('Central ao vivo e próximo ciclo', 'Live Center and next cycle', 'Central en vivo y próximo ciclo')}</H><CycleLive d={d} now={now} pts={pts} mode={cmode} setMode={setCmode} onOpen={() => { navigate(demoPath('central', loc)); window.scrollTo({ top: 0 }); }} /></section></>}
+      {tab === 'central' && <>
+        <h1 className="display text-2xl font-extrabold">{x('Central da IA', 'AI Center', 'Central de IA')}</h1>
+        <AgentFlow />
+        <Console d={d} /></>}
+      {tab === 'treasury' && <div className="grid gap-4" data-testid="page-treasury">
+        <div><h1 className="display text-2xl font-extrabold">{x('Tesouraria', 'Treasury', 'Tesorería')}</h1><p className="mt-1 text-sm text-[#5B6B85]">{x('Ativos, reserva e resultados do projeto.', 'Project assets, reserves and results.', 'Activos, reserva y resultados del proyecto.')}</p></div>
+        <TreasuryBlock d={d} />
+        <section className={sec}><H>{x('Rodadas', 'Rounds', 'Rondas')}</H><Rounds d={d} /></section>
+      </div>}
+      {tab === 'wallet' && <WalletPage d={d} onWallet={open} />}
+      {tab === 'account' && <AccountSheet d={d} />}
     </div>
-  </main>;
+    <MovementSheet kind={mv?.kind ?? null} initialAsset={(mv ?? lastMv)?.asset} d={d} onClose={() => setMv(null)} />
+  </main></Rates.Provider>;
 }
 export default DemoPage;

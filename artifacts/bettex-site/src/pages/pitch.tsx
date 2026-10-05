@@ -205,12 +205,12 @@ export function PitchPage() {
 
     <RoadmapSection id="pitch-roadmap" />
 
-    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="A fase ALFA está em andamento: validação da demanda pelo produto com um lançamento mock e o demo da BETTEX." n="08" kicker="Fase atual e próximos passos" dark title={<>Fase atual. <span className="text-[#F2B632]">ALFA</span></>}>
+    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="O ALFA reúne uma audiência semente; o go to market acompanha o lançamento do BETA em janeiro de 2027." n="08" kicker="Fase atual e próximos passos" dark title={<>Fase atual. <span className="text-[#F2B632]">ALFA</span></>}>
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
         <span className="mono">FASE ATUAL · ALFA</span>
-        <strong>Validação da demanda em andamento</strong>
-        <p>A validação da demanda já está em andamento com um demo. Esta é a fase atual do projeto; o demo é demonstrativo e não realiza operações financeiras reais.</p>
-        <a href={`${BASE}/demo`}>Acessar o demo para validação</a>
+        <strong>ALFA seed com audiência inicial</strong>
+        <p>O ALFA está previsto para outubro de 2026, com token, contratos básicos e primeiros agentes. A captação e a formalização vêm em novembro; o BETA e o go to market, em janeiro de 2027.</p>
+        <a href="#pitch-roadmap">Ver etapas e features no Roadmap</a>
       </aside>
       <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.</p>
       <FounderLaunchFunnel />

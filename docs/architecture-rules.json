@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "accounts": [],
+    "wallets": ["accounts"],
+    "ledger": ["accounts"],
+    "agents": ["risk"],
+    "risk": ["ledger", "wallets"],
+    "execution": ["risk", "ledger", "wallets"],
+    "reconciliation": ["execution", "ledger", "wallets"],
+    "audit": []
+  },
+  "layers": {
+    "domain": ["domain"],
+    "application": ["domain", "application"],
+    "infrastructure": ["domain", "application", "infrastructure"],
+    "transport": ["domain", "application", "transport"],
+    "public": ["domain", "application"]
+  },
+  "purePackages": ["@workspace/contracts", "decimal.js", "big.js"],
+  "legacyFiles": [
+    "artifacts/api-server/src/lib/account-identity.ts",
+    "artifacts/api-server/src/lib/demo-store.ts",
+    "artifacts/api-server/src/lib/demo-state.ts",
+    "artifacts/api-server/src/lib/orchestrator.ts",
+    "artifacts/api-server/src/lib/logger.ts"
+  ]
+}

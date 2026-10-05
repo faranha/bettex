@@ -39,6 +39,37 @@ export function createSiteServer(root = publicRoot) {
       }
       const url = new URL(req.url ?? '/', 'http://localhost');
       const pathname = decodeURIComponent(url.pathname);
+      // Dedicated app pages must also open directly and after a reload.
+      const appPage = pathname.match(/^\/(?:(en|es)\/)?demo\/(central|saldo|balance|tesouraria|treasury|tesoreria|minha-conta|account|mi-cuenta)\/?$/)
+        || pathname.match(/^\/(?:(en|es)\/)?demo\/(minha-conta|account|mi-cuenta)\/.+$/);
+      if (appPage) {
+        const language = appPage[1] || 'pt';
+        const title = appPage[2] === 'central'
+          ? { pt: 'Central da IA', en: 'AI Center', es: 'Central de IA' }[language]
+          : ['minha-conta', 'account', 'mi-cuenta'].includes(appPage[2])
+            ? { pt: 'Minha conta', en: 'My account', es: 'Mi cuenta' }[language]
+            : ['saldo', 'balance'].includes(appPage[2])
+              ? { pt: 'Saldo e histórico', en: 'Balance and history', es: 'Saldo e historial' }[language]
+            : { pt: 'Tesouraria', en: 'Treasury', es: 'Tesorería' }[language];
+        const shell = path.join(root, language === 'pt' ? 'demo/index.html' : `${language}/demo/index.html`);
+        const html = (await readFile(shell, 'utf8'))
+          .replace(/<title>[^<]*<\/title>/i, `<title>${title} | BETTEX</title>`)
+          .replace(/<h1([^>]*)>[^<]*<\/h1>/i, `<h1$1>${title}</h1>`)
+          .replace(/<meta\s+name=["']robots["'][^>]*>/i, '<meta name="robots" content="noindex,nofollow">')
+          .replace(/(<link\s+rel=["']canonical["']\s+href=["'])[^"']+/, `$1${officialOrigin}${pathname.replace(/\/?$/, '/')}`);
+        res.writeHead(200, { 'Content-Type': mime['.html'], 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' });
+        res.end(req.method === 'HEAD' ? undefined : html);
+        return;
+      }
+      // Clerk's embedded flows have callback/verification subpaths. Serve their
+      // app shell explicitly, without turning missing public pages into a SPA.
+      if (/^\/(?:(?:en|es)\/)?sign-(?:in|up)(?:\/|$)/.test(pathname)) {
+        const html = (await readFile(path.join(root, 'index.html'), 'utf8'))
+          .replace(/<meta\s+name=["']robots["'][^>]*>/i, '<meta name="robots" content="noindex,nofollow">');
+        res.writeHead(200, { 'Content-Type': mime['.html'], 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' });
+        res.end(html);
+        return;
+      }
       let file = path.resolve(root, `.${pathname}`);
       if (file !== root && !file.startsWith(root + path.sep)) {
         res.writeHead(400);

@@ -1,17 +1,29 @@
 ---
 name: Escopo da demonstração BETTEX
-description: A reconstrução do demo foi solicitada como protótipo visual, sem banco de dados.
+description: Demonstração com banco básico, emulação automática e área operacional clara, sem dinheiro real.
 ---
 
-O criador definiu para a demonstração: “não tem banco de dados, é tudo protótipo visual, design”. Pediu planejamento completo antes da reconstrução, com base nas regras documentadas.
+O criador substituiu o escopo anterior de protótipo sem banco: a demonstração precisa de um banco de dados básico e scripts que emulem resultados, trocas e relacionamentos entre agentes em tempo real, sem controles de avançar horas.
 
-**Why:** A solicitação é demonstrar o software, não implementar uma operação financeira real.
+**Why:** O usuário pediu explicitamente persistência e emulação automática em vez de avanço manual do cenário.
 
-**How to apply:** Não introduzir banco de dados, autenticação real, custódia, pagamentos, envio blockchain ou operações reais de agentes como parte dessa demonstração. Apresentar os comportamentos como simulações visuais e respeitar as correções mais recentes do criador sobre as regras.
+**How to apply:** Persistir dados fictícios e seguir relógio real, sem autenticação financeira, custódia, pagamentos, envio blockchain ou operações reais. Preservar as regras documentadas de staking e ciclos independentes.
 
-A fase atual do projeto é ALFA; a validação da demanda já está em andamento com um lançamento mock usando um demo, antes da preparação técnica e jurídica. O Roadmap deve identificar essa fase com “Estamos aqui”. O logotipo no topo e no rodapé deve incluir o selo ALFA.
+A área operacional do app é light mode; o cabeçalho e o restante do site não precisam mudar. A única identificação da demonstração é a faixa “versão demonstrativa” no lugar do submenu, sem avisos repetidos.
 
-**Why:** O criador definiu expressamente a fase atual e pediu comunicar a validação em andamento, junto dos dois selos.
+**Why:** O criador aprovou o tom claro e restringiu a mudança à área operacional.
+
+**How to apply:** Usar overlays para ações pessoais, helpers para termos, nome/dados básicos e saudação; sempre exibir equivalências em reais. Priorizar resumo operacional, status/tempo/valor do staking e contador do próximo ciclo no dashboard, com poucas opções de navegação.
+
+Não há suporte dentro do aplicativo; suporte é pela comunidade no Telegram.
+
+**Why:** O usuário disse “Suporte é pela comunidade” e pediu encaminhar as pessoas ao Telegram.
+
+**How to apply:** Direcionar suporte e comunidade ao Telegram aprovado; explicações contextuais de campos não são um chat interno de suporte.
+
+A identificação pública permanece ALFA. O criador definiu o ALFA como produto seed com token, contratos básicos e primeiros agentes, não apenas lançamento mock. O cronograma vigente e a lista de features a detalhar estão em replit.md. A experiência emulada existente não prova que essas capacidades já foram implementadas. O Roadmap identifica a fase com “Estamos aqui”, e topo/rodapé preservam o selo.
+
+**Why:** O criador manteve a comunicação ALFA, declarou a entrada no desenvolvimento e definiu “a fase alpha já vai ter o token”, com audiência semente; o go to market acompanha o BETA.
 
 **How to apply:** Distinguir o demo em validação das metas futuras de compradores e usuários. Manter ALFA junto da marca nas duas posições enquanto essa for a fase definida pelo criador, sem afirmar operações financeiras reais. A abertura de Go to market no Pitch apresenta “Fase atual — ALFA”. O mesmo Roadmap da homepage, com etapas e cronograma iguais, aparece em seção independente imediatamente antes de Go to market, com item próprio no menu e fundo branco de ponta a ponta, sem container claro dentro de uma área escura.
 
