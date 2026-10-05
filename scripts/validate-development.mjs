@@ -23,6 +23,7 @@ const steps = [
   ['History: isolation, allowed data and accuracy', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'check:history']],
   ['Treasury and governance: authority, reserves and resumption', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'check:treasury']],
   ['BETTEX hierarchy, sources, validity and alpha controls', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'check:agents']],
+  ['Allora source identity, task, horizon and failure handling', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'check:allora']],
   ['Encryption and wallet preservation', 'pnpm', ['--filter', '@workspace/bettex-site', 'run', 'check:wallets']],
   ['Test contracts, tokenomics and local EVM transactions', 'pnpm', ['--filter', '@workspace/bettex-contracts', 'test']],
   ['Reproducible build and test contract ABI', 'pnpm', ['--filter', '@workspace/bettex-contracts', 'build']],

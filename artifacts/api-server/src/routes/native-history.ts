@@ -53,13 +53,15 @@ export async function recordNativeHistory(accountId: string, meta: LocalMetadata
     const occurredAt = new Date(e.timestamp * 1000), key = `native:${meta.epoch}:${e.hash}:${e.logIndex}:${e.blockHash}`;
     const purchase = mine.find(p => p.hash === e.hash);
     const fund = operations.find(o => o.kind === "fund" && o.stages.some(s => s.name === "usdc-deposit" && s.transactionHash === e.hash));
-    const correlationId = purchase?.operationId ?? fund?.id ?? `chain:${e.hash}`;
+    const withdrawal = operations.find(o => o.kind === "withdrawal" && o.stages.some(s => s.name === "withdraw" && s.transactionHash === e.hash));
+    const correlationId = purchase?.operationId ?? fund?.id ?? withdrawal?.id ?? `chain:${e.hash}`;
     const incoming = [deposit, holder].some(w => w.toLowerCase() === e.to.toLowerCase());
     const internal = [deposit, holder].some(w => w.toLowerCase() === e.from.toLowerCase()) && incoming;
     if (!purchasedHashes.has(e.hash)) await appendHistory({ ...base, key, correlationId, category: "financial", actor: fund ? "system" : "contract",
-      kind: fund ? "free_test_funding" : internal ? "internal_transfer" : incoming ? "external_deposit" : "outgoing_transfer",
+      kind: fund ? "free_test_funding" : withdrawal && e.to.toLowerCase() === meta.operating.toLowerCase() ? "service_fee"
+        : internal ? "internal_transfer" : incoming ? "external_deposit" : "outgoing_transfer",
       state: "confirmed", asset: e.asset, wallet: incoming ? e.to : e.from, transactionHash: e.hash, blockHash: e.blockHash,
-      blockNumber: e.blockNumber, logIndex: e.logIndex, occurredAt, requestedAt: fund?.createdAt, reconstructed: occurredAt < cutover,
+      blockNumber: e.blockNumber, logIndex: e.logIndex, occurredAt, requestedAt: fund?.createdAt ?? withdrawal?.createdAt, reconstructed: occurredAt < cutover,
       data: { amountUnits: e.value, decimals: e.decimals, from: e.from, to: e.to, contract: e.asset === "USDC" ? meta.usdc : meta.token } });
     if (e.asset === "BETTEX") {
       if (e.from.toLowerCase() === e.to.toLowerCase()) continue;

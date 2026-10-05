@@ -12,4 +12,7 @@ export type NativeTestJourneyCommandStage = typeof NativeTestJourneyCommandStage
 export const NativeTestJourneyCommandStage = {
   approve: 'approve',
   buy: 'buy',
+  'approve-usdc-withdraw': 'approve-usdc-withdraw',
+  'approve-bettex-withdraw': 'approve-bettex-withdraw',
+  withdraw: 'withdraw',
 } as const;

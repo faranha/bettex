@@ -22,3 +22,11 @@ O percurso com aprovação explícita deve conservar a operação até a confirm
 **Why:** a primeira verificação integrada encontrou dois critérios de UI incompatíveis com etapas criadas progressivamente, interrompendo o percurso após aprovação real.
 
 **How to apply:** ao mudar estados/etapas da compra, verificar reload após aprovação, etapa final ausente e compra enviada/incerta, mantendo o mesmo identificador e sem solicitar outra aprovação.
+
+## Token imutável e proteção de direitos
+
+Não reiniciar nem substituir uma cadeia existente apenas para acrescentar um hook atômico ao token. Preparar a versão compatível em ambiente isolado e bloquear o caminho inseguro na versão anterior até uma transição deliberada.
+
+**Why:** adicionar rastreamento de saídas a um token imutável exige outro deployment; um restart implícito destruiria saldos e a relação entre os recibos persistidos e a cadeia.
+
+**How to apply:** distinguir proteção comprovada em uma nova cadeia de proteção efetivamente ativa na cadeia do app. Preservar a época e os saldos existentes; não apresentar testes isolados como migração concluída.

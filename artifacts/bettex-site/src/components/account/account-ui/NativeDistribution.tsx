@@ -19,6 +19,7 @@ export function NativeDistribution({ j, snap, onJourney }: {
     finally { locked.current = false; setBusy(false); }
   };
   const s = j.settlement;
+  const protectedRuntime = s.atomicProtection === 'on_chain_exit_nonce';
   const state = s.ownState === 'paid' ? x('Recebido', 'Received', 'Recibido')
     : s.ownState === 'not_started' ? x('Não iniciada', 'Not started', 'No iniciada')
     : s.ownState === 'not_eligible' ? x('Sem peso elegível nesta apuração', 'No eligible weight in this assessment', 'Sin peso elegible en este cálculo')
@@ -27,10 +28,11 @@ export function NativeDistribution({ j, snap, onJourney }: {
   return <section className="rounded-2xl border border-[#E4DCCB] bg-white p-4" data-testid="native-distribution">
     <h2 className="display text-lg font-extrabold">{x('Distribuição de teste', 'Test distribution', 'Distribución de prueba')}</h2>
     <p className="mt-2 text-xs text-[#5B6B85]">{x('Resultado sintético limitado a 1 USDC TESTE por rodada. Transferências reais na EVM local, sem lucro de trading real.', 'Synthetic result limited to 1 USDC TESTE per round. Actual transfers on the local EVM, with no real trading profit.', 'Resultado sintético limitado a 1 USDC TESTE por ronda. Transferencias reales en la EVM local, sin beneficio de trading real.')}</p>
+    {!protectedRuntime && <p role="status" className="mt-2 text-xs text-[#B4421A]">{x('Esta cadeia usa o token anterior, sem proteção atômica de direitos. Novas distribuições estão bloqueadas. Os saldos foram preservados; a versão protegida exige uma nova cadeia de testes.', 'This chain uses the previous token, without atomic entitlement protection. New distributions are blocked. Balances are preserved; the protected version requires a new test chain.', 'Esta cadena usa el token anterior, sin protección atómica de derechos. Nuevas distribuciones están bloqueadas. Los saldos se conservan; la versión protegida requiere una nueva cadena de pruebas.')}</p>}
     <p className="my-3 text-sm font-semibold" data-testid="native-distribution-state">{state} · {formatUnits(BigInt(s.ownUnits), 6)} USDC TESTE</p>
     {s.ownTransactionHash && <p className="mono mb-3 break-all text-xs" data-testid="native-distribution-hash">{s.ownTransactionHash}</p>}
     {error && <p role="alert" className="mb-3 text-sm text-[#B4421A]">{error}</p>}
-    <button type="button" data-testid="button-native-distribution" disabled={busy || BigInt(j.balances.bettex) === 0n}
+    <button type="button" data-testid="button-native-distribution" disabled={busy || !protectedRuntime || BigInt(j.balances.bettex) === 0n}
       className="min-h-11 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white disabled:opacity-50"
       onClick={() => void run()}>{busy ? x('Aguarde…', 'Please wait…', 'Espera…') : x('Executar / retomar rodada de teste', 'Execute / resume test round', 'Ejecutar / reanudar ronda de prueba')}</button>
   </section>;

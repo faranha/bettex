@@ -16,6 +16,14 @@ Sources consulted: [Allora research](allora-live-chart-research.md), [paper exec
 
 ## Open pending items
 
+### Independent execution update — October 5, 2026
+
+The public Allora consumer is now integrated into the backend and the AI Central panel. It reads BTC topic 14, ETH topic 9 and SOL topic 10, each specifically `Price Prediction - 8h`, using official mainnet LCD/RPC v10. Each successful query validates metadata, activity, the single `y` consensus value, block/network and real production time. Observations are persisted with source identity and displayed as collected forecast history, not market price history.
+
+This resolves the missing public ingestion/UI adapter in item A, not the signed consumer interface or item B's event model. No Allora estimate feeds the emulated scenario, no confidence interval is invented, and unavailable or incompatible sources return an explicit error.
+
+Native local USDC withdrawals and BETTEX sending are also integrated. BETTEX → USDC redemption remains blocked without approved pricing/liquidity. Atomic payout protection is integrated for new guarded runtimes and verified independently; the existing chain is preserved and legacy payouts are blocked rather than reset. See [decision](decisions/0015-local-withdrawals-atomic-guard-allora.md) and the updated review below.
+
 ### A. Allora interface, topics, and horizons
 
 - **What is missing:** define the consumption interface and confirm the topics, network, units, and horizons suitable for the intended use.

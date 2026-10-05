@@ -16,6 +16,7 @@ import { appendHistory, ensureHistorySchema, type HistoryClient } from "../modul
 import { recordNativeHistory } from "./native-history";
 import { localRound } from "./local-round";
 import { chainJournal } from "../modules/ledger/infrastructure/chain-journal";
+import { localWalletService } from "../modules/wallets/infrastructure/local-wallet-service";
 
 const router = Router();
 const treasurySystemAccounts=new Set(["local-round-system","treasury-governance-system","treasury-governance-capital"]);
@@ -80,11 +81,20 @@ router.all(["/account/execution", "/test-account/journey"], async (req, res) => 
       } else {
         if (!deposit.chainIds.includes(31337) || !holder.chainIds.includes(31337)) throw new Error("local_acknowledgement_required");
         if (body.action === "distribution-test") {
+          if (!meta.distributionGuard) throw new Error("guarded_runtime_required");
           await appendHistory({ key: `local-round-request:${randomUUID()}`, subject: `native:${session.accountId}`,
             correlationId: auditCorrelation, category: "activity", kind: "test_distribution_requested", state: "requested",
             actor: "user", environment: "local_evm", chainId: 31337, epoch: meta.epoch, source: "ledger",
             data: { trigger: "explicit_test_mandate_request" } });
           await localRound(session.accountId, meta, flow, true);
+        } else if (body.action === "quote-withdrawal") {
+          if (!body.operationId || !body.asset || !body.units || !body.destination) throw new Error("invalid_input");
+          const block = await journeyChain.provider.getBlockNumber();
+          const executor = await localWalletService(meta);
+          await flow.withdrawal(session.accountId, meta, body.operationId, { asset: body.asset,
+            units: body.units, destination: body.destination, executor, deposit: deposit.address, holder: holder.address },
+          { usdc: await journeyChain.balance(meta.usdc, deposit.address, block),
+            bettex: await journeyChain.balance(meta.token, holder.address, block) });
         } else if (body.action === "quote") {
           if (!body.operationId || !body.quantity) throw new Error("invalid_quantity");
           const block = await journeyChain.provider.getBlockNumber();
@@ -158,14 +168,18 @@ router.all(["/account/execution", "/test-account/journey"], async (req, res) => 
         soldBettex: sale.sold, accountingAvailable: true },
       participation: { ...participation, settlement: settlement.ownState,
         assessedUsdc: settlement.ownUnits, paidUsdc: settlement.ownState === "paid" ? settlement.ownUnits : "0",
-        availableUsdc: usdc }, settlement, events, archivedCount: list.archivedCount,
+        availableUsdc: usdc }, settlement: { ...settlement,
+        atomicProtection: meta.distributionGuard ? "on_chain_exit_nonce" : "legacy_runtime_blocked" },
+      events, archivedCount: list.archivedCount,
       operations: list.operations.map(o => ({ ...o, stages: o.stages.map(s => ({
         name: s.name, state: s.state, transactionHash: s.transactionHash, draft: s.state === "requested" ? s.draft : undefined,
       })) })),
     });
   } catch (error) {
     const known = new Set(["reserve_insufficient", "local_acknowledgement_required", "wrong_network", "invalid_quantity", "sale_paused",
-      "inventory_insufficient", "usdc_insufficient", "previous_purchase_pending", "operation_conflict", "quote_changed", "transaction_mismatch", "chain_reorganized", "gas_insufficient"]);
+      "inventory_insufficient", "usdc_insufficient", "bettex_insufficient", "invalid_destination", "previous_withdrawal_pending",
+      "previous_purchase_pending", "operation_conflict", "quote_changed", "transaction_mismatch", "chain_reorganized", "gas_insufficient",
+      "guarded_runtime_required"]);
     const code = error instanceof Error && known.has(error.message) ? error.message : "service_unavailable";
     if (auditAccount && req.method === "POST") await appendHistory({
       key: `native:attempt:${randomUUID()}`, subject: `native:${auditAccount}`, correlationId: auditCorrelation,

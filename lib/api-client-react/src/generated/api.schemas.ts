@@ -5,6 +5,58 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export type AlloraObservationAsset = typeof AlloraObservationAsset[keyof typeof AlloraObservationAsset];
+
+
+export const AlloraObservationAsset = {
+  BTC: 'BTC',
+  ETH: 'ETH',
+  SOL: 'SOL',
+} as const;
+
+export type AlloraObservationNetwork = typeof AlloraObservationNetwork[keyof typeof AlloraObservationNetwork];
+
+
+export const AlloraObservationNetwork = {
+  'allora-mainnet-1': 'allora-mainnet-1',
+} as const;
+
+export type AlloraObservationUnit = typeof AlloraObservationUnit[keyof typeof AlloraObservationUnit];
+
+
+export const AlloraObservationUnit = {
+  USD: 'USD',
+} as const;
+
+export type AlloraObservationAuthentication = typeof AlloraObservationAuthentication[keyof typeof AlloraObservationAuthentication];
+
+
+export const AlloraObservationAuthentication = {
+  public_unsigned: 'public_unsigned',
+} as const;
+
+export type AlloraObservationUncertainty = typeof AlloraObservationUncertainty[keyof typeof AlloraObservationUncertainty];
+
+
+export const AlloraObservationUncertainty = {
+  unavailable: 'unavailable',
+} as const;
+
+export interface AlloraObservation {
+  asset: AlloraObservationAsset;
+  topicId: number;
+  network: AlloraObservationNetwork;
+  unit: AlloraObservationUnit;
+  horizonSeconds: number;
+  price: string;
+  blockHeight: string;
+  producedAt: string;
+  targetAt: string;
+  source: string;
+  authentication: AlloraObservationAuthentication;
+  uncertainty: AlloraObservationUncertainty;
+}
+
 export type SimulationCommandInputAction = typeof SimulationCommandInputAction[keyof typeof SimulationCommandInputAction];
 
 
@@ -1275,11 +1327,30 @@ export const NativeTestOperationKind = {
   fund: 'fund',
   purchase: 'purchase',
   distribution: 'distribution',
+  withdrawal: 'withdrawal',
 } as const;
+
+export type NativeTestOperationIntentAsset = typeof NativeTestOperationIntentAsset[keyof typeof NativeTestOperationIntentAsset];
+
+
+export const NativeTestOperationIntentAsset = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+} as const;
+
+export type NativeTestOperationIntent = {
+  asset: NativeTestOperationIntentAsset;
+  destination: string;
+  units: string;
+  executor: string;
+  deposit: string;
+  holder: string;
+};
 
 export interface NativeTestOperation {
   id: string;
   kind: NativeTestOperationKind;
+  intent?: NativeTestOperationIntent;
   quantity: string;
   principal: string;
   fee: string;
@@ -1295,6 +1366,7 @@ export const NativeTestJourneyCommandAction = {
   quote: 'quote',
   sign: 'sign',
   'distribution-test': 'distribution-test',
+  'quote-withdrawal': 'quote-withdrawal',
 } as const;
 
 export type NativeTestJourneyCommandStage = typeof NativeTestJourneyCommandStage[keyof typeof NativeTestJourneyCommandStage];
@@ -1303,6 +1375,17 @@ export type NativeTestJourneyCommandStage = typeof NativeTestJourneyCommandStage
 export const NativeTestJourneyCommandStage = {
   approve: 'approve',
   buy: 'buy',
+  'approve-usdc-withdraw': 'approve-usdc-withdraw',
+  'approve-bettex-withdraw': 'approve-bettex-withdraw',
+  withdraw: 'withdraw',
+} as const;
+
+export type NativeTestJourneyCommandAsset = typeof NativeTestJourneyCommandAsset[keyof typeof NativeTestJourneyCommandAsset];
+
+
+export const NativeTestJourneyCommandAsset = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
 } as const;
 
 export interface NativeTestJourneyCommand {
@@ -1313,6 +1396,11 @@ export interface NativeTestJourneyCommand {
   /** @pattern ^[1-9][0-9]{0,8}$ */
   quantity?: string;
   stage?: NativeTestJourneyCommandStage;
+  asset?: NativeTestJourneyCommandAsset;
+  /** @pattern ^0x[0-9a-fA-F]{40}$ */
+  destination?: string;
+  /** @pattern ^[1-9][0-9]{0,77}$ */
+  units?: string;
   /**
      * @maxLength 8192
      * @pattern ^0x[0-9a-fA-F]+$
@@ -1332,6 +1420,14 @@ export type NativeTestJourneySettlementSource = typeof NativeTestJourneySettleme
 
 export const NativeTestJourneySettlementSource = {
   synthetic_local_test: 'synthetic_local_test',
+} as const;
+
+export type NativeTestJourneySettlementAtomicProtection = typeof NativeTestJourneySettlementAtomicProtection[keyof typeof NativeTestJourneySettlementAtomicProtection];
+
+
+export const NativeTestJourneySettlementAtomicProtection = {
+  on_chain_exit_nonce: 'on_chain_exit_nonce',
+  legacy_runtime_blocked: 'legacy_runtime_blocked',
 } as const;
 
 export type NativeTestJourneySettlement = {
@@ -1354,6 +1450,7 @@ export type NativeTestJourneySettlement = {
   snapshotBlock: number | null;
   /** @nullable */
   snapshotHash: string | null;
+  atomicProtection?: NativeTestJourneySettlementAtomicProtection;
 };
 
 export type NativeTestJourneyBalances = {
@@ -2006,6 +2103,24 @@ export interface DemoDashboard {
 export interface HealthStatus {
   status: string;
 }
+
+export type GetAlloraAnalysis200ObservationStatus = typeof GetAlloraAnalysis200ObservationStatus[keyof typeof GetAlloraAnalysis200ObservationStatus];
+
+
+export const GetAlloraAnalysis200ObservationStatus = {
+  current: 'current',
+  stale: 'stale',
+} as const;
+
+export type GetAlloraAnalysis200Observation = AlloraObservation & {
+  observedAt: string;
+  status: GetAlloraAnalysis200ObservationStatus;
+};
+
+export type GetAlloraAnalysis200 = {
+  observation: GetAlloraAnalysis200Observation;
+  history: AlloraObservation[];
+};
 
 export type GetSimulationParams = {
 runId?: string;

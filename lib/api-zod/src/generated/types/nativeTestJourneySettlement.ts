@@ -5,6 +5,7 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { NativeTestJourneySettlementAtomicProtection } from './nativeTestJourneySettlementAtomicProtection';
 import type { NativeTestJourneySettlementSource } from './nativeTestJourneySettlementSource';
 
 export type NativeTestJourneySettlement = {
@@ -27,4 +28,5 @@ export type NativeTestJourneySettlement = {
   snapshotBlock: number | null;
   /** @nullable */
   snapshotHash: string | null;
+  atomicProtection?: NativeTestJourneySettlementAtomicProtection;
 };

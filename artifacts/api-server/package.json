@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "check:agents": "node --test scripts/alpha-hierarchy.test.mjs",
+    "check:allora": "node --test scripts/allora-public.test.mjs",
     "check:paper": "node --test scripts/paper-trading.test.mjs",
     "check:trading-policies": "node --test scripts/trading-policy.test.mjs",
     "check:treasury": "node --test scripts/treasury-governance.test.mjs",

@@ -51,6 +51,11 @@ function fixtures({ loss = false, noEvidence = false } = {}) {
       if (!op || op.account !== account || op.epoch !== epoch) throw new Error('operation_not_found');
       return op;
     },
+    async intent(id, value) {
+      const op = operations.get(id);
+      if (op.intent && JSON.stringify(op.intent) !== JSON.stringify(value)) throw new Error('operation_conflict');
+      op.intent = structuredClone(value);
+    },
     async list(account, epoch) { return { archivedCount: 0, operations: [...operations.values()].filter(o => o.account === account && o.epoch === epoch)
       .map(o => ({ ...o, stages: [...stages.values()].filter(s => s.operationId === o.id).map(s => structuredClone(s)) })) }; },
     async stage(operation, name) { return structuredClone(stages.get(`${operation}:${name}`)); },
@@ -80,6 +85,28 @@ function fixtures({ loss = false, noEvidence = false } = {}) {
   const ports = { store, chain, executorId: 'executor', hashId: s => s, async verifyEffects() {} };
   return { store, stages, flow: nativeJourney(ports), other: nativeJourney({ ...ports, executorId: 'other' }), calls: () => calls };
 }
+const withdrawalIntent = { asset: 'USDC', destination: '0x' + 'a'.repeat(40), units: '1000000',
+  executor: 'executor', deposit: 'deposit', holder: 'holder' };
+test('withdrawal immutable intent, exact allowance and progressive signing survive reload', async () => {
+  const f = fixtures(), id = '0x' + '1'.repeat(64), balances = { usdc: '25000000', bettex: '0' };
+  await f.flow.withdrawal('account', meta, id, withdrawalIntent, balances);
+  assert.equal((await f.store.stage(id, 'approve-usdc-withdraw')).draft.data, JSON.stringify(['approve', 'executor', '3500000']));
+  await assert.rejects(f.other.withdrawal('account', meta, id, { ...withdrawalIntent, destination: '0x' + 'b'.repeat(40) }, balances), /operation_conflict/);
+  await f.flow.sign('account', meta, id, 'approve-usdc-withdraw', 'raw');
+  await f.other.withdrawal('account', meta, id, withdrawalIntent, balances);
+  assert.ok(await f.store.stage(id, 'withdraw'));
+  await f.flow.sign('account', meta, id, 'withdraw', 'raw');
+  await f.other.sign('account', meta, id, 'withdraw', 'raw');
+  assert.equal(f.calls(), 2, 'one approval and one withdrawal broadcast');
+});
+test('withdrawal rejects wrong destinations, insufficient fee and missing ownership', async () => {
+  const f = fixtures(), id = '0x' + '2'.repeat(64);
+  await assert.rejects(f.flow.withdrawal('account', meta, id, withdrawalIntent, { usdc: '1000000', bettex: '0' }), /usdc_insufficient/);
+  await assert.rejects(f.flow.withdrawal('account', meta, id, { ...withdrawalIntent, destination: '0x' + '0'.repeat(40) }, { usdc: '25000000', bettex: '0' }), /invalid_destination/);
+  await f.flow.withdrawal('account', meta, id, withdrawalIntent, { usdc: '25000000', bettex: '0' });
+  await assert.rejects(f.flow.sign('other', meta, id, 'approve-usdc-withdraw', 'raw'), /operation_not_found/);
+  assert.equal(f.calls(), 0);
+});
 test('lost operator response recovers four original transactions; retry sends nothing', async () => {
   const f = fixtures({ loss: true });
   await f.flow.fund('account', meta, 'deposit', 'holder', '100000000', true);

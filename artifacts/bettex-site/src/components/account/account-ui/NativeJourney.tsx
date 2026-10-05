@@ -10,6 +10,7 @@ import { useX } from '@/components/demo/ui';
 import { requestNativeFunding, requestNativeQuote, signNativeJourney, requestNativeDistribution } from '../native-journey-client';
 import { findPurchaseInProgress, purchaseNeedsQuote } from '../native-journey-status';
 import { NativeDistribution } from './NativeDistribution';
+import { NativeWithdrawal } from './NativeWithdrawal';
 
 const btn = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white hover:bg-[#0A6657] disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B]';
 const btn2 = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#0E7C6B] bg-white px-4 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5] disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B]';
@@ -79,6 +80,7 @@ export function NativeJourney({ snap }: { snap: TestAccountSnapshot }) {
     <Purchase j={j} snap={snap} onJourney={apply} />
     <Participation j={j} />
     <NativeDistribution j={j} snap={snap} onJourney={apply} />
+    <NativeWithdrawal j={j} snap={snap} onJourney={apply} />
     <Treasury j={j} />
     <Events j={j} />
   </>;

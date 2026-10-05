@@ -36,6 +36,7 @@ try {
   isolated.searchParams.set('options', `-csearch_path=${schema},pg_catalog`);
   process.env.DATABASE_URL = isolated.toString();
   process.env.NODE_ENV = 'development';
+  process.env.BETTEX_GUARDED_TEST_RUNTIME = 'true';
   process.env.BETTEX_LOCAL_FIXTURE_URL = 'http://127.0.0.1:13001';
   if (!process.env.CLERK_SECRET_KEY) throw new Error('existing_sdk_configuration_required');
   child = spawn('pnpm', ['--filter','@workspace/bettex-contracts','run','local:runtime'], {

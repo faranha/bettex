@@ -14,4 +14,5 @@ export const NativeTestJourneyCommandAction = {
   quote: 'quote',
   sign: 'sign',
   'distribution-test': 'distribution-test',
+  'quote-withdrawal': 'quote-withdrawal',
 } as const;

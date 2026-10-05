@@ -15,7 +15,7 @@ const simulationRoot = path.resolve(root, '../simulation');
 files.push(...fs.readdirSync(simulationRoot).filter(f => /\.(ts|tsx)$/.test(f) && !f.endsWith('.test.ts')).map(f => path.join(simulationRoot, f)));
 const failures = [];
 let tuples = 0;
-const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|BETTEX|USDC|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;
+const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|BETTEX|USDC|BTC|ETH|SOL|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;
 const neutral = text => universal.test(text) || !/[A-Za-zÀ-ÿ]/.test(text.replace(/\b(?:USDC|BETTEX|UTC|D|T|h|v)\b|T\+/g, ''));
 const forbidden = new Set(['generateKey', 'signTransaction', 'signMessage']);
 for (const file of files) {
@@ -30,11 +30,11 @@ for (const file of files) {
       let owner = node.parent;
       while (owner && !ts.isFunctionDeclaration(owner)) owner = owner.parent;
       // Approved isolated native-test signer, not a general demo-wallet exception.
-      const localPurchaseSigner = node.text === 'signTransaction'
+      const localPurposeSigner = node.text === 'signTransaction'
         && file === path.join(accountRoot, 'wallet-vault.ts')
-        && owner?.name?.text === 'signPersonalTestPurchase'
+        && ['signPersonalTestPurchase', 'signPersonalTestWithdrawal'].includes(owner?.name?.text)
         && owner.getText(source).includes('draft.chainId !== 31337');
-      if (!localPurchaseSigner) report(node, `Forbidden real wallet operation: ${node.text}`);
+      if (!localPurposeSigner) report(node, `Forbidden real wallet operation: ${node.text}`);
     }
     if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && ['x', 'tr'].includes(node.expression.text)) {
       tuples++;

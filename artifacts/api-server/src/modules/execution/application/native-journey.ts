@@ -1,11 +1,15 @@
 // Concrete SDK logic is in wallet infrastructure. These are injected ports only.
 type Receipt = { hash: string; status: number | null };
 type Metadata = { epoch: string; chainId: number; environment: string; reserve: string; treasury: string;
-  operating: string; usdc: string; token: string; sale: string; deploymentBlock: number };
+  operating: string; usdc: string; token: string; sale: string; deploymentBlock: number; distributionGuard?: string };
+type PayoutCondition = { holder: string; nonce: string; roundStart: number };
 type Draft = Record<string, string | number>;
 type Stage = { id: string; operationId: string; name: string; state: string; sender: string; nonce: number;
   transactionHash: string | null; draft: unknown; startBlock: number };
-type Operation = { id: string; kind: string; quantity: string; principal: string; fee: string; stages: Stage[] };
+export type WithdrawalIntent = { asset: "USDC" | "BETTEX"; destination: string; units: string;
+  executor: string; deposit: string; holder: string };
+type Operation = { id: string; kind: string; quantity: string; principal: string; fee: string; stages: Stage[];
+  intent?: WithdrawalIntent };
 interface JourneyPorts {
   store: {
     create(account: string, epoch: string, id: string, kind: string, quantity?: string, principal?: string, fee?: string): Promise<unknown>;
@@ -15,16 +19,17 @@ interface JourneyPorts {
     plan(operation: string, epoch: string, name: string, sender: string, nonce: number, block: number, draft: Draft): Promise<Stage>;
     arm(id: string, executor: string, hash?: string): Promise<Stage | null>;
     state(id: string, state: string, hash?: string): Promise<void>;
+    intent?(id: string, intent: WithdrawalIntent): Promise<void>;
   };
   chain: {
     draft(sender: string, to: string, data: string, value?: string): Promise<{ nonce: number; block: number; draft: Draft }>;
-    allowance(meta: Metadata, address: string): Promise<bigint>;
+    allowance(meta: Metadata, address: string, token?: string, spender?: string): Promise<bigint>;
     sendOperator(draft: Draft, sender: string): Promise<string>;
     validateSigned(raw: string, sender: string, draft: Draft): string;
     sendSigned(raw: string): Promise<string>;
     verifyReceipt(hash: string, sender: string, draft: Draft): Promise<Receipt | null>;
     recover(sender: string, nonce: number, block: number): Promise<{ hash: string } | null>;
-    encode(kind: "approve" | "buy" | "authorize" | "transfer", values: unknown[]): string;
+    encode(kind: "approve" | "buy" | "authorize" | "transfer" | "withdraw" | "guard-pay", values: unknown[]): string;
   };
   executorId: string;
   hashId(value: string): string;
@@ -65,19 +70,23 @@ export function nativeJourney(ports: JourneyPorts) {
     return (await store.stage(operation.id, name))?.state === "confirmed";
   }
   return {
-    async transferTest(accountId: string, meta: Metadata, id: string, sender: string, recipient: string, units: string, submit: boolean) {
+    async transferTest(accountId: string, meta: Metadata, id: string, sender: string, recipient: string, units: string,
+      submit: boolean, condition?: PayoutCondition) {
       if (meta.chainId !== 31337 || !/^[1-9]\d*$/.test(units)
         || ![meta.reserve, meta.treasury].some(a => a.toLowerCase() === sender.toLowerCase())) throw new Error("invalid_test_transfer");
       await store.create(accountId, meta.epoch, id, "distribution", "0", units);
       const operation = await store.owned(accountId, meta.epoch, id);
       if (operation.principal !== units) throw new Error("operation_conflict");
+      if (condition && (!meta.distributionGuard || sender.toLowerCase() !== meta.treasury.toLowerCase())) throw new Error("invalid_test_transfer");
+      const target = condition ? meta.distributionGuard! : meta.usdc;
+      const data = condition ? chain.encode("guard-pay", [id, condition.roundStart, condition.holder,
+        recipient, BigInt(condition.nonce), BigInt(units)]) : chain.encode("transfer", [recipient, BigInt(units)]);
       const existing = await store.stage(id, "distribution");
       if (existing) {
         const draft = existing.draft as Draft;
-        if (draft.to !== meta.usdc || draft.data !== chain.encode("transfer", [recipient, BigInt(units)])) throw new Error("operation_conflict");
+        if (draft.to !== target || draft.data !== data) throw new Error("operation_conflict");
       }
-      const confirmed = await operatorStage(operation, meta, "distribution", meta.usdc,
-        chain.encode("transfer", [recipient, BigInt(units)]), "0", sender, submit);
+      const confirmed = await operatorStage(operation, meta, "distribution", target, data, "0", sender, submit);
       return { confirmed, stage: await store.stage(id, "distribution") };
     },
     async reconcileAll(accountId: string, meta: Metadata) {
@@ -123,10 +132,59 @@ export function nativeJourney(ports: JourneyPorts) {
       const draft = await chain.draft(deposit, name === "approve" ? meta.usdc : meta.sale, data);
       await store.plan(id, meta.epoch, name, deposit, draft.nonce, draft.block, draft.draft);
     },
+    async withdrawal(accountId: string, meta: Metadata, id: string, intent: WithdrawalIntent,
+      balances: { usdc: string; bettex: string }) {
+      if (meta.chainId !== 31337 || !/^0x[0-9a-f]{64}$/i.test(id) || !store.intent
+        || !/^[1-9]\d{0,77}$/.test(intent.units) || BigInt(intent.units) >= 2n ** 256n
+        || !["USDC", "BETTEX"].includes(intent.asset)
+        || !/^0x[0-9a-f]{40}$/i.test(intent.destination)
+        || [intent.deposit, intent.holder, intent.executor, meta.usdc, meta.token, meta.sale,
+          meta.operating, meta.treasury, meta.reserve, "0x" + "0".repeat(40)]
+          .some(a => a.toLowerCase() === intent.destination.toLowerCase())) throw new Error("invalid_destination");
+      const fee = 2_500_000n, units = BigInt(intent.units);
+      const total = fee + (intent.asset === "USDC" ? units : 0n);
+      const existing = await store.stage(id, "withdraw");
+      if (existing?.state === "confirmed") {
+        await store.owned(accountId, meta.epoch, id);
+        await store.intent(id, intent);
+        return;
+      }
+      if (BigInt(balances.usdc) < total) throw new Error("usdc_insufficient");
+      if (intent.asset === "BETTEX" && BigInt(balances.bettex) < units) throw new Error("bettex_insufficient");
+      const list = await store.list(accountId, meta.epoch);
+      if (list.operations.some(o => o.id !== id && o.kind === "withdrawal"
+        && !o.stages.some(s => s.name === "withdraw" && s.state === "confirmed")
+        && !o.stages.some(s => s.state === "failed"))) throw new Error("previous_withdrawal_pending");
+      await store.create(accountId, meta.epoch, id, "withdrawal", intent.units,
+        intent.asset === "USDC" ? intent.units : "0", String(fee));
+      await store.intent(id, intent);
+      const steps = [
+        ...(intent.asset === "BETTEX" ? [{ name: "approve-bettex-withdraw", sender: intent.holder,
+          token: meta.token, amount: units }] : []),
+        { name: "approve-usdc-withdraw", sender: intent.deposit, token: meta.usdc, amount: total },
+      ];
+      for (const step of steps) {
+        if (await chain.allowance(meta, step.sender, step.token, intent.executor) >= step.amount) continue;
+        const stage = await store.stage(id, step.name);
+        if (!stage) {
+          const draft = await chain.draft(step.sender, step.token, chain.encode("approve", [intent.executor, step.amount]));
+          await store.plan(id, meta.epoch, step.name, step.sender, draft.nonce, draft.block, draft.draft);
+        }
+        return;
+      }
+      if (!existing) {
+        const draft = await chain.draft(intent.deposit, intent.executor, chain.encode("withdraw", [
+          intent.asset === "USDC" ? meta.usdc : meta.token, intent.destination, units, id,
+        ]));
+        await store.plan(id, meta.epoch, "withdraw", intent.deposit, draft.nonce, draft.block, draft.draft);
+      }
+    },
     async sign(accountId: string, meta: Metadata, id: string, name: string, raw: string) {
       const operation = await store.owned(accountId, meta.epoch, id);
       const stage = await store.stage(id, name);
-      if (!stage || operation.kind !== "purchase" || !["approve", "buy"].includes(name)) throw new Error("operation_not_found");
+      const permitted = operation.kind === "purchase" ? ["approve", "buy"]
+        : operation.kind === "withdrawal" ? ["approve-usdc-withdraw", "approve-bettex-withdraw", "withdraw"] : [];
+      if (!stage || !permitted.includes(name)) throw new Error("operation_not_found");
       const hash = chain.validateSigned(raw, stage.sender, stage.draft as Draft);
       const armed = await store.arm(stage.id, ports.executorId, hash);
       if (armed) {
