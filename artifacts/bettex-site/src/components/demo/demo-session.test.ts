@@ -11,7 +11,11 @@ test('demo reset lives inside the blue environment banner, not a separate strip'
   const controls = readFileSync(new URL('./DemoTabControls.tsx', import.meta.url), 'utf8');
   assert.match(page, /DemoEnvironmentBanner actions=\{<DemoTabControls \/>\}/);
   assert.doesNotMatch(page, /<><DemoTabControls \/><DevelopmentDemoPage \/><\/>/);
-  assert.match(banner, /grid-cols-\[minmax\(0,1fr\)_auto\]/);
+   assert.match(banner, /max-w-5xl items-center gap-2 whitespace-nowrap/);
+   assert.doesNotMatch(banner, /overflow-x-auto|w-max|min-w-full/);
+   assert.doesNotMatch(banner, /flex-wrap|grid-cols/);
+   assert.match(controls, /flex items-center gap-2 whitespace-nowrap/);
+   assert.doesNotMatch(controls, /flex-col/);
   assert.doesNotMatch(controls, /bg-\[#FBF8F0\]/);
   assert.match(controls, /window\.confirm/);
 });
@@ -38,7 +42,9 @@ test('profile access lives in the options bar, with history inside wallets and n
    const header = readFileSync(new URL('../app/AppHeader.tsx', import.meta.url), 'utf8');
    const mobile = readFileSync(new URL('./MobileAreaNav.tsx', import.meta.url), 'utf8');
    assert.match(header, /<AppProfileLink \/>/);
-   assert.match(mobile, /<AppProfileLink \/>/);
+   assert.doesNotMatch(mobile, /<AppProfileLink \/>/);
+   assert.ok(header.indexOf('<AppProfileLink />') < header.indexOf('<LanguageSelector '));
+   assert.ok(header.indexOf('<AppProfileLink />') < header.indexOf('data-testid="app-nav-desktop"'));
    assert.match(profileLink, /\?tab=profile/);
    assert.match(profileLink, /aria-label=.*Open my profile details/);
    assert.match(profileLink, /profile\.nickname\?\.trim\(\) \|\| data\?\.profile\.name/);

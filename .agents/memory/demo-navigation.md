@@ -9,11 +9,11 @@ Personal wallets and balances belong at the top of the main app dashboard, befor
 
 **How to apply:** Keep personal wallets first, without a separate greeting block. Do not let prioritizing market or agent activity push the player's balances below those sections; preserve My account and Treasury, with statements inside My account → History, without repeating wallet cards there.
 
-Keep the demo environment notice and restart controls in one blue band, split into status information and demo controls columns.
+Keep the demo environment notice and restart controls in one compact blue band, all on a single line.
 
-**Why:** The creator asked to combine the two strips into one row and put “Restart demo” on the blue row.
+**Why:** The creator asked to combine the two strips and put “Restart demo” on the blue row, then explicitly required all of that band's contents to fit on one line.
 
-**How to apply:** Do not restore a separate light-colored restart strip above the environment notice. Preserve the tab-scope notice, restart confirmation and responsive layout.
+**How to apply:** Do not restore a separate restart strip or stacked notice/control layout. Keep the band's contents inside the same layout width as the header and dashboard, without horizontal scrolling or width extrapolation. Preserve testnet status, the no-real-money warning, simulated balance/operation notice, public contract link, tab scope and restart confirmation; use compact accessible controls on small screens.
 
 Tudo fica no mesmo demo, no mesmo app BETTEX. Minha participação fica ao lado do gráfico ao vivo. A Tesouraria deve ter uma página própria e um item visível no menu, reunindo resultados do projeto, reserva e demais informações financeiras. Não substituir essa página por uma seção recolhida no painel. A visão ao vivo destaca quanto o sistema está efetivamente investindo e apostando naquele momento, não o patrimônio total ou os resultados do projeto. Central da IA e Live Trading são uma única área, sem bonequinhos nem chat. Transparência integra a visão de trading e os detalhes de cada operação, sem item próprio no menu. As finanças pessoais ficam em Minha conta, sem área independente no menu. Histórico reúne extratos e registros, sem repetir os cartões de saldo ou o bloco Minhas carteiras. A restrição anterior que escondia informações pessoais do dashboard foi substituída; a direção atual está no início de replit.md. Minha conta deve aparecer com esse nome e abrir um painel completo, não apenas um ícone ou janela lateral; a comunidade continua acessível em todas as áreas.
 
@@ -41,7 +41,7 @@ No dashboard, o criador prefere o histórico dentro do bloco de saldos, com bot�
 
 **Why:** O criador considera que My Account está ocupando muito espaço. Depois de pedir um ícone junto ao nome, pediu mover esse bloco para a barra de opções para não ocupar espaço no dashboard.
 
-**How to apply:** Usar nome e acesso compacto ao perfil na barra de opções, no desktop e mobile; não reintroduzir saudação separada, painel expandido de dados pessoais ou cabeçalho redundante de My Account. Manter carteiras e histórico acessíveis, sem expor todos os filtros e registros por padrão. Preservar as fontes separadas de conta nativa e sessão demo, além das ações de carteira e do perfil completo.
+**How to apply:** Usar nome e acesso compacto ao perfil na primeira linha do cabeçalho, junto das opções de idioma e voltar ao site, no desktop e mobile; não na linha de navegação das áreas. O criador definiu que esse acesso substituirá o botão de login no futuro. Não reintroduzir saudação separada, painel expandido de dados pessoais ou cabeçalho redundante de My Account. Manter carteiras e histórico acessíveis, sem expor todos os filtros e registros por padrão. Preservar as fontes separadas de conta nativa e sessão demo, além das ações de carteira e do perfil completo.
 
 O criador quer “Next Cycle” logo abaixo das carteiras no dashboard, antes dos outros blocos.
 

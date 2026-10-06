@@ -2,6 +2,7 @@
 import type { ReactNode } from 'react';
 import { useX } from './ui';
 import { useGetDemoTestnet } from '@workspace/api-client-react';
+import { ExternalLink } from 'lucide-react';
 
 /** LIVE requires verified public bytecode, operator binding and a recent confirmed checkpoint. */
 export function DemoEnvironmentBanner({ actions }: { actions?: ReactNode } = {}) {
@@ -18,30 +19,27 @@ export function DemoEnvironmentBanner({ actions }: { actions?: ReactNode } = {})
         : data?.status === 'validating'
           ? x('VALIDANDO A TESTNET', 'VERIFYING TESTNET', 'VERIFICANDO LA TESTNET')
           : x('CONEXÃO COM TESTNET INDISPONÍVEL', 'TESTNET CONNECTION UNAVAILABLE', 'CONEXIÓN CON TESTNET NO DISPONIBLE');
-  return <section data-testid="banner-demo" aria-label={x('Ambiente de demonstração', 'Demo environment', 'Entorno de demostración')} className="border-b border-[#34445B] bg-[#1B2A41] px-3 py-3 text-[#F5F1E8]">
-    <div className={`mx-auto grid max-w-5xl items-center gap-3 sm:gap-6 ${actions ? 'grid-cols-[minmax(0,1fr)_auto]' : 'grid-cols-1'}`}>
-    <div className="min-w-0">
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-extrabold tracking-wide sm:text-xs">
-      <span data-testid="testnet-live-status" role="status" className={`inline-flex items-center gap-2 ${live ? 'text-[#83ECC2]' : 'text-[#FFD38B]'}`}>
+  return <section data-testid="banner-demo" aria-label={x('Ambiente de demonstração', 'Demo environment', 'Entorno de demostración')} className="border-b border-[#34445B] bg-[#1B2A41] px-3 py-1 text-[#F5F1E8]">
+    <div className="mx-auto flex w-full min-w-0 max-w-5xl items-center gap-2 whitespace-nowrap text-[11px]">
+      <span data-testid="testnet-live-status" role="status" title={label} className={`inline-flex min-w-0 items-center gap-1.5 text-[10px] font-extrabold ${live ? 'text-[#83ECC2]' : 'text-[#FFD38B]'}`}>
         <span aria-hidden="true" className="relative inline-flex h-2.5 w-2.5 shrink-0">
           <span className={`absolute inset-0 rounded-full opacity-50 motion-safe:animate-ping ${live ? 'bg-[#83ECC2]' : 'bg-[#F4BB58]'}`} />
           <span className={`relative h-2.5 w-2.5 rounded-full ${live ? 'bg-[#83ECC2]' : 'bg-[#F4BB58]'}`} />
         </span>
-        {label}
+        <span className="hidden truncate sm:inline">{label}</span>
+        <span className="truncate sm:hidden">{live ? x('LIVE · TESTNET', 'LIVE · TESTNET', 'LIVE · TESTNET') : x('TESTNET · OFFLINE', 'TESTNET · OFFLINE', 'TESTNET · OFFLINE')}</span>
       </span>
-      <span className="rounded-full border border-[#F5F1E8]/20 px-2.5 py-1">
-        {x('ALFA · SEM DINHEIRO REAL', 'ALPHA · NO REAL MONEY', 'ALFA · SIN DINERO REAL')}
+      <span className="shrink-0 rounded-full border border-[#F5F1E8]/20 px-2 py-1 text-[10px] font-extrabold">
+        <span className="hidden sm:inline">{x('ALFA · SEM DINHEIRO REAL', 'ALPHA · NO REAL MONEY', 'ALFA · SIN DINERO REAL')}</span>
+        <span className="sm:hidden">{x('SEM DINHEIRO REAL', 'NO REAL MONEY', 'SIN DINERO REAL')}</span>
       </span>
-    </div>
-    <p className="mt-2 max-w-2xl text-xs leading-relaxed text-[#D6DEEB]">
-      {live ? x('Arbitrum Sepolia · Registro de atividade na blockchain. Saldos e operações financeiras do demo são simulados.', 'Arbitrum Sepolia · Blockchain activity records. Demo balances and financial operations are simulated.', 'Arbitrum Sepolia · Registro de actividad en la blockchain. Los saldos y las operaciones financieras del demo son simulados.')
-        : x('Teste o app com saldos e operações simulados. Não há movimentação de dinheiro real.', 'Try the app with simulated balances and operations. No real money is moved.', 'Prueba la app con saldos y operaciones simulados. No se mueve dinero real.')}
-      {live && data?.explorerUrl && <a href={data.explorerUrl} target="_blank" rel="noopener noreferrer" data-testid="link-testnet-contract" className="ml-2 inline-block rounded font-bold text-[#83ECC2] underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-        {x('Ver contrato público', 'View public contract', 'Ver contrato público')}
-      </a>}
+    <p className="sr-only lg:not-sr-only lg:min-w-0 lg:flex-1 lg:truncate lg:text-[#D6DEEB]" title={x('Arbitrum Sepolia · Saldos e operações simulados.', 'Arbitrum Sepolia · Simulated balances and operations.', 'Arbitrum Sepolia · Saldos y operaciones simulados.')}>
+      {live && 'Arbitrum Sepolia · '}{x('Saldos e operações simulados.', 'Simulated balances and operations.', 'Saldos y operaciones simulados.')}
     </p>
-    </div>
-    {actions && <div className="max-w-32 sm:max-w-none">{actions}</div>}
+      {live && data?.explorerUrl && <a href={data.explorerUrl} target="_blank" rel="noopener noreferrer" data-testid="link-testnet-contract" title={x('Ver contrato público', 'View public contract', 'Ver contrato público')} className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded font-bold text-[#83ECC2] underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+        <span className="sr-only sm:not-sr-only">{x('Ver contrato público', 'View public contract', 'Ver contrato público')}</span><ExternalLink className="h-4 w-4 sm:hidden" aria-hidden="true" />
+      </a>}
+    {actions && <div className="ml-auto shrink-0">{actions}</div>}
     </div>
   </section>;
 }

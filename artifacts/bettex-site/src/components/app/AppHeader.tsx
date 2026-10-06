@@ -35,14 +35,15 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
     <div className="mx-auto flex h-14 max-w-5xl items-center gap-2 px-3 sm:gap-4">
       <Link href={demoPath('home', loc)} aria-label={x('BETTEX, meu painel', 'BETTEX, my dashboard', 'BETTEX, mi panel')} data-testid="link-app-brand" className="flex min-w-0 shrink-0 items-center gap-2 rounded-lg">
         <BettexMark className="h-7 w-7" />
-        <span className="text-base font-extrabold tracking-wide text-[#1B2A41]">BETTEX</span>
-        <span className="rounded-full border border-[#0E7C6B] bg-[#E9EEE5] px-2 py-0.5 text-[10px] font-extrabold tracking-widest text-[#0A6657]">{x('ALFA', 'ALPHA', 'ALFA')}</span>
+        <span className="hidden text-base font-extrabold tracking-wide text-[#1B2A41] min-[360px]:inline">BETTEX</span>
+        <span className="hidden rounded-full border border-[#0E7C6B] bg-[#E9EEE5] px-2 py-0.5 text-[10px] font-extrabold tracking-widest text-[#0A6657] sm:inline">{x('ALFA', 'ALPHA', 'ALFA')}</span>
       </Link>
       <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+        <AppProfileLink />
         <a href={siteHref} data-testid="link-back-to-website" className="inline-flex min-h-11 items-center gap-1 rounded-full px-2 text-xs font-semibold text-[#5B6B85] hover:text-[#0A6657]">
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
-          <span className="hidden min-[400px]:inline">{x('Voltar ao site', 'Back to website', 'Volver al sitio')}</span>
-          <span className="min-[400px]:hidden sr-only">{x('Voltar ao site', 'Back to website', 'Volver al sitio')}</span>
+          <span className="hidden sm:inline">{x('Voltar ao site', 'Back to website', 'Volver al sitio')}</span>
+          <span className="sr-only sm:hidden">{x('Voltar ao site', 'Back to website', 'Volver al sitio')}</span>
         </a>
         <LanguageSelector className="app-header__lang" />
       </div>
@@ -52,7 +53,6 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
         {APP_AREAS.map(k => <Link key={k} href={demoPath(k, loc)} data-testid={`nav-${k}`} aria-current={view === k ? 'page' : undefined}
           onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
           className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-lg px-3 text-[13px] font-bold ${view === k ? 'bg-[#E9EEE5] text-[#0A6657] shadow-[inset_0_-2px_0_#0E7C6B]' : 'text-[#44546E] hover:bg-[#F1EBDD] hover:text-[#1B2A41]'}`}>{demoLabel(k, loc)}</Link>)}
-        <AppProfileLink />
         <AppExchangeRates className="ml-auto py-1" />
       </nav>
     </div>
