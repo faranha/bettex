@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { usdcUnits, tokenUnits, journeyMatchesSnapshot, snapshotMatchesProfile } from './personal-native.ts';
+import { usdcUnits, tokenUnits, journeyMatchesSnapshot, snapshotMatchesProfile, canReadNativeJourney } from './personal-native.ts';
 
 test('exact unit formatting without Number()', () => {
   assert.equal(usdcUnits('1234567'), '1.234567');
@@ -26,4 +26,19 @@ test('cached native identity cannot replace a guest, Clerk or another native own
   assert.equal(snapshotMatchesProfile(snap, { ...profile, authenticated: false } as never), false);
   assert.equal(snapshotMatchesProfile(snap, { ...profile, provider: 'clerk' } as never), false);
   assert.equal(snapshotMatchesProfile(undefined, profile as never), false);
+});
+
+test('public local-chain readings do not require association or grant operation permission', () => {
+  const wallets = [
+    { purpose: 'deposits', address: '0x' + 'a'.repeat(40), chainIds: [421614] },
+    { purpose: 'bettex', address: '0x' + 'b'.repeat(40), chainIds: [421614] },
+  ];
+  const snap = { enabled: true, account: { id: 'owner-a' }, wallets };
+  assert.equal(canReadNativeJourney(snap as never), true);
+  assert.deepEqual(wallets.map(wallet => wallet.chainIds), [[421614], [421614]]);
+  assert.equal(canReadNativeJourney({ ...snap, enabled: false } as never), false);
+  assert.equal(canReadNativeJourney({ ...snap, account: null } as never), false);
+  assert.equal(canReadNativeJourney({ ...snap, wallets: wallets.slice(0, 1) } as never), false);
+  assert.equal(canReadNativeJourney({ ...snap, wallets: [wallets[0], wallets[0]] } as never), false);
+  assert.equal(canReadNativeJourney(undefined), false);
 });

@@ -2,7 +2,53 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { seedAccount, seedEngine, tickEngine, submitMovement, settleMovements, closeCycles, dashboard, accountWeight, DAY, utcStart } from "../src/lib/demo-state.ts";
 const now = Date.UTC(2026, 9, 5, 10, 0, 0);
-const input = (kind, amount, asset = "USDC") => ({ requestId: "67ea8cd5-8780-468a-8444-aa07c2d74bba", kind, amount, asset, destination: "external" });
+const input = (kind, amount, asset = "USDC") => ({ requestId: "67ea8cd5-8780-468a-8444-aa07c2d74bba", kind, amount, asset, destination: "0x0000000000000000000000000000000000000001" });
+
+test("closed-round stake snapshots explain payments, stay frozen and remain account-scoped", () => {
+  const a = seedAccount(now), b = seedAccount(now), engine = seedEngine(now);
+  b.bettex = 25000; b.lots = [{ amount: 25000, since: engine.dayAt }];
+  engine.treasury.cycleResultUsdc = 1000;
+  const end = engine.dayAt + DAY;
+  closeCycles(engine, [a, b], end);
+  const own = dashboard(a, engine, end, [a, b]).rounds[0];
+  const other = dashboard(b, engine, end, [a, b]).rounds[0];
+  assert.equal(own.source, "calculated_simulation");
+  assert.equal(own.participationSnapshot.ownEligibleTokens, 12500);
+  assert.equal(other.participationSnapshot.ownEligibleTokens, 25000);
+  assert.equal(own.participationSnapshot.totalEligibleTokens, 8037500);
+  const s = own.participationSnapshot;
+  assert.equal(s.receivedUsdc, Math.floor(own.stakingUsdc * s.ownTokenSeconds / s.totalTokenSeconds * 1e6) / 1e6);
+  assert.equal(s.payoutSharePercent, 100 * s.ownTokenSeconds / s.totalTokenSeconds);
+  const saved = JSON.stringify(s), balance = a.usdc;
+  a.bettex = 7;
+  assert.equal(JSON.stringify(dashboard(a, engine, end, [a, b]).rounds[0].participationSnapshot), saved);
+  closeCycles(engine, [a, b], end);
+  assert.equal(a.usdc, balance);
+});
+
+test("preloaded demo payments have no fabricated historical stake snapshot", () => {
+  const a = seedAccount(now), engine = seedEngine(now);
+  const d = dashboard(a, engine, now);
+  assert.equal(a.history[0].amount, 12.8);
+  assert.equal(d.rounds[0].source, "seeded_demo");
+  assert.equal(d.rounds[0].participationSnapshot, undefined);
+});
+
+test("staking reports eligible-token totals and allocation without conflating payout weights", () => {
+  const a = seedAccount(now), b = seedAccount(now), engine = seedEngine(now);
+  engine.treasury.cycleResultUsdc = 1000;
+  const snapshot = dashboard(a, engine, now, [a, b]);
+  const total = 8_000_000 + a.bettex + b.bettex;
+  assert.equal(snapshot.staking.totalEligibleTokens, total);
+  assert.equal(snapshot.staking.tokenSharePercent, 100 * a.bettex / total);
+  assert.equal(snapshot.staking.poolAllocationUsdc, 250);
+  assert.equal(snapshot.staking.estimatedUsdc, Math.round(250 * snapshot.staking.sharePercent / 100 * 1e6) / 1e6);
+  engine.treasury.cycleResultUsdc = -100;
+  const loss = dashboard(a, engine, now, [a, b]);
+  assert.equal(loss.staking.poolAllocationUsdc, 0);
+  assert.equal(loss.staking.estimatedUsdc, 0);
+  assert.equal(loss.treasury.cycleResultUsdc, -100);
+});
 
 test("history retention never drops pending credits and settlement does not credit twice", () => {
   const account = seedAccount(now), engine = seedEngine(now);

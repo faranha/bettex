@@ -1,19 +1,24 @@
 import { randomUUID } from "node:crypto";
 import type { DemoDashboard, DemoMovement, DemoMovementInput, DemoOperation, DemoEvent, DemoRound } from "@workspace/api-zod";
 import { createProposalOperation, progressOrchestration, orchestratorBudget, TERMINAL } from "./orchestrator.ts";
+import { treasuryRoundSnapshot, ensureTreasuryTracking, recordOperatorFee, type TreasuryTracking } from "./treasury-round.ts";
 
 export const DAY = 86_400_000;
 export const roundMoney = (value: number) => Math.round(value * 1e6) / 1e6;
 export const utcStart = (now: number) => Math.floor(now / DAY) * DAY;
 const iso = (now: number) => new Date(now).toISOString();
-const communityWeight = 8_000_000 * 86_400;
+const communityTokens = 8_000_000;
+const communityWeight = communityTokens * 86_400;
 export type AccountState = {
   profile: DemoDashboard["profile"];
+  avatarUpload?: { objectPath: string; expiresAt: number; size: number; contentType: string };
   usdc: number; bettex: number; receivedYield: number;
   lots: { amount: number; since: number }[];
   history: DemoMovement[];
+  roundParticipation?: Record<string, NonNullable<DemoDashboard["rounds"][number]["participationSnapshot"]>>;
 };
 export type EngineState = {
+  treasuryTracking?: TreasuryTracking;
   tickAt: number; sequence: number; dayAt: number;
   price: number; brl: number;
   operations: DemoOperation[]; events: DemoEvent[];
@@ -50,8 +55,8 @@ export function seedEngine(now: number): EngineState {
     ],
     treasury: { assetsUsdc: 240000, reserveUsdc: 60000, committedUsdc: 430, realizedUsdc: 1860, cycleResultUsdc: 1860 },
     rounds: [
-      { id: iso(utcStart(now) - DAY).slice(0, 10), endedAt: iso(utcStart(now)), status: "paid", eligibleUsdc: 1840, treasuryUsdc: 920, stakingUsdc: 460, buybackUsdc: 460 },
-      { id: iso(utcStart(now) - 2 * DAY).slice(0, 10), endedAt: iso(utcStart(now) - DAY), status: "retained", eligibleUsdc: 0, treasuryUsdc: 0, stakingUsdc: 0, buybackUsdc: 0 },
+      { id: iso(utcStart(now) - DAY).slice(0, 10), endedAt: iso(utcStart(now)), status: "paid", eligibleUsdc: 1840, treasuryUsdc: 920, stakingUsdc: 460, buybackUsdc: 460, source: "seeded_demo" },
+      { id: iso(utcStart(now) - 2 * DAY).slice(0, 10), endedAt: iso(utcStart(now) - DAY), status: "retained", eligibleUsdc: 0, treasuryUsdc: 0, stakingUsdc: 0, buybackUsdc: 0, source: "seeded_demo" },
     ],
   };
 }
@@ -73,19 +78,30 @@ export function closeCycles(engine: EngineState, accounts: AccountState[], now: 
     const pays = eligible > 0 && reservesPass && total > 0;
     const staking = pays ? roundMoney(eligible * 0.25) : 0;
     const id = iso(engine.dayAt).slice(0, 10);
+    const totalEligibleTokens = communityTokens + accounts.reduce((sum, account) => sum + account.bettex, 0);
     for (const [index, account] of accounts.entries()) {
       const net = Math.floor(staking * weights[index]! / total * 1e6) / 1e6;
+      account.roundParticipation ??= {};
+      account.roundParticipation[id] = {
+        ownEligibleTokens: account.bettex, totalEligibleTokens,
+        ownTokenSeconds: weights[index]!, totalTokenSeconds: total,
+        payoutSharePercent: total > 0 ? 100 * weights[index]! / total : 0,
+        receivedUsdc: net, startedAt: iso(engine.dayAt), endedAt: iso(end),
+      };
+      account.roundParticipation = Object.fromEntries(Object.entries(account.roundParticipation).sort(([a], [b]) => b.localeCompare(a)).slice(0, 14));
       if (net > 0) {
         account.usdc = roundMoney(account.usdc + net);
         account.receivedYield = roundMoney(account.receivedYield + net);
         account.history.unshift({ id: `ROUND-${id}-${account.profile.accountId}`, kind: "distribution", asset: "USDC", amount: net, feeUsdc: 0, at: iso(end), status: "confirmed", destination: "" });
       }
     }
-    engine.rounds.unshift({ id, endedAt: iso(end), status: pays ? "paid" : "retained", eligibleUsdc: eligible, treasuryUsdc: pays ? eligible * .5 : eligible, stakingUsdc: staking, buybackUsdc: pays ? eligible * .25 : 0 });
+    const treasurySnapshot = treasuryRoundSnapshot(engine, now);
+    engine.rounds.unshift({ id, endedAt: iso(end), status: pays ? "paid" : "retained", eligibleUsdc: eligible, treasuryUsdc: pays ? eligible * .5 : eligible, stakingUsdc: staking, buybackUsdc: pays ? eligible * .25 : 0, source: "calculated_simulation", treasurySnapshot });
     engine.rounds = engine.rounds.slice(0, 14);
     event(engine, end, "treasury", "orchestrator", "cycle_closed", id);
     engine.dayAt = end;
     engine.treasury.cycleResultUsdc = 0;
+    ensureTreasuryTracking(engine, end, true);
   }
 }
 // The clock is wall time. This script emulates signals, risk, execution and
@@ -116,7 +132,10 @@ export function submitMovement(account: AccountState, engine: EngineState, input
   if (!["receive", "onramp", "swap", "withdraw", "send"].includes(kind) || !["USDC", "BETTEX"].includes(asset) ||
     (["onramp", "withdraw"].includes(kind) && asset !== "USDC") || !Number.isFinite(amount) || amount < .000001 || amount > 100000 ||
     !Number.isFinite(engine.price) || engine.price <= 0) throw new DemoInputError("invalid_movement");
-  if ((kind === "send" || kind === "withdraw") && !input.destination?.trim()) throw new DemoInputError("invalid_movement");
+  if ((kind === "send" || kind === "withdraw") &&
+    (!/^0x[0-9a-fA-F]{40}$/.test(input.destination?.trim() ?? "") || /^0x0{40}$/i.test(input.destination?.trim() ?? ""))) {
+    throw new DemoInputError("invalid_movement");
+  }
   const sourceUsdc = asset === "BETTEX" ? amount * engine.price : amount;
   const fee = kind === "receive" ? 0 : roundMoney(sourceUsdc * (kind === "onramp" ? .002 : kind === "swap" ? .001 : .0005));
   const reverseSwap = kind === "swap" && asset === "BETTEX";
@@ -138,7 +157,7 @@ export function submitMovement(account: AccountState, engine: EngineState, input
   // Conversion output is locked now, in either direction, not on settlement.
   account.history.unshift({ id: input.requestId, kind, asset: outputAsset, amount: outputAmount, feeUsdc: fee, at: iso(now), status: "pending", destination: input.destination?.trim() ?? "", ...(kind === "swap" ? { sourceAsset: asset, sourceAmount: amount } : {}) });
 }
-export function settleMovements(account: AccountState, now: number) {
+export function settleMovements(account: AccountState, now: number, engine?: EngineState) {
   for (const movement of account.history) {
     if (movement.status !== "pending" || now - Date.parse(movement.at) < 6000) continue;
     if (["receive", "onramp", "swap"].includes(movement.kind)) {
@@ -148,6 +167,7 @@ export function settleMovements(account: AccountState, now: number) {
       } else account.usdc = roundMoney(account.usdc + movement.amount);
     }
     movement.status = "confirmed";
+    if (engine) recordOperatorFee(engine, movement, now);
   }
   // A display-history limit must never discard commands still awaiting settlement.
   let completed = 0;
@@ -156,12 +176,15 @@ export function settleMovements(account: AccountState, now: number) {
 export function dashboard(account: AccountState, engine: EngineState, now: number, allAccounts: AccountState[] = [account]): DemoDashboard {
   const weight = accountWeight(account, engine.dayAt, now);
   const totalWeight = communityWeight + allAccounts.reduce((sum, item) => sum + accountWeight(item, engine.dayAt, now), 0);
+  const totalEligibleTokens = communityTokens + allAccounts.reduce((sum, item) => sum + item.bettex, 0);
+  const tokenSharePercent = totalEligibleTokens > 0 ? 100 * account.bettex / totalEligibleTokens : 0;
+  const poolAllocationUsdc = roundMoney(Math.max(0, engine.treasury.cycleResultUsdc) * .25);
   const estimate = Math.max(0, engine.treasury.cycleResultUsdc) * .25 * weight / totalWeight;
   return {
     serverNow: iso(now), profile: account.profile,
     balances: { usdc: account.usdc, bettex: account.bettex, receivedYield: account.receivedYield, brlPerUsdc: engine.brl, bettexUsdc: engine.price, updatedAt: iso(engine.tickAt) },
-    staking: { eligibleTokens: account.bettex, since: account.lots.length ? iso(Math.min(...account.lots.map(lot => lot.since))) : null, weightTokenSeconds: weight, sharePercent: totalWeight > 0 ? 100 * weight / totalWeight : 0, cycleStartedAt: iso(engine.dayAt), nextCycleAt: iso(engine.dayAt + DAY), estimatedUsdc: roundMoney(estimate), status: account.bettex > 0 ? "active" : "inactive" },
-    operations: engine.operations, events: engine.events, history: account.history, treasury: engine.treasury, rounds: engine.rounds,
+    staking: { eligibleTokens: account.bettex, totalEligibleTokens, tokenSharePercent, poolAllocationUsdc, since: account.lots.length ? iso(Math.min(...account.lots.map(lot => lot.since))) : null, weightTokenSeconds: weight, sharePercent: totalWeight > 0 ? 100 * weight / totalWeight : 0, cycleStartedAt: iso(engine.dayAt), nextCycleAt: iso(engine.dayAt + DAY), estimatedUsdc: roundMoney(estimate), status: account.bettex > 0 ? "active" : "inactive" },
+    operations: engine.operations, events: engine.events, history: account.history, treasury: { ...engine.treasury, currentRound: treasuryRoundSnapshot(engine, now) }, rounds: engine.rounds.map(round => ({ ...round, participationSnapshot: round.source === "calculated_simulation" && account.roundParticipation?.[round.id]?.endedAt === round.endedAt ? account.roundParticipation[round.id] : undefined })),
     orchestratorBudget: orchestratorBudget(engine),
   };
 }

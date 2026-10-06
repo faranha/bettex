@@ -476,6 +476,41 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DemoDashboard"
+  /demo/profile/avatar/upload-url:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
+    post:
+      operationId: requestDemoProfileAvatar
+      tags: [demo]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfileAvatarUploadInput"
+      responses:
+        "200":
+          description: Scoped profile-picture upload
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfileAvatarUpload"
+  /profile-pictures/{id}:
+    get:
+      operationId: getProfilePicture
+      tags: [demo]
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        "200":
+          description: Validated profile picture
+          content:
+            image/png:
+              schema: { type: string, format: binary }
+            image/jpeg:
+              schema: { type: string, format: binary }
+            image/webp:
+              schema: { type: string, format: binary }
   /healthz:
     get:
       operationId: healthCheck
@@ -1620,6 +1655,21 @@ components:
       required: [name]
       properties:
         name: { type: string, minLength: 2, maxLength: 60 }
+        email: { type: string, format: email, maxLength: 254 }
+        nickname: { type: string, maxLength: 32 }
+        avatarPath: { type: ["string", "null"], maxLength: 100, pattern: "^/objects/uploads/[a-f0-9-]{36}$" }
+    ProfileAvatarUploadInput:
+      type: object
+      required: [size, contentType]
+      properties:
+        size: { type: integer, minimum: 1, maximum: 5242880 }
+        contentType: { type: string, enum: [image/png, image/jpeg, image/webp] }
+    ProfileAvatarUpload:
+      type: object
+      required: [uploadURL, objectPath]
+      properties:
+        uploadURL: { type: string }
+        objectPath: { type: string }
     DemoMovementInput:
       type: object
       required: [requestId, kind, amount, asset]
@@ -1637,6 +1687,8 @@ components:
         provider: { type: string, enum: [anonymous, native, clerk] }
         canViewTreasuryHistory: { type: boolean }
         name: { type: string }
+        nickname: { type: string }
+        avatarPath: { type: ["string", "null"] }
         email: { type: string }
         memberSince: { type: string }
         accountId: { type: string }
@@ -1655,6 +1707,9 @@ components:
       required: [eligibleTokens, since, weightTokenSeconds, sharePercent, cycleStartedAt, nextCycleAt, estimatedUsdc, status]
       properties:
         eligibleTokens: { type: number }
+        totalEligibleTokens: { type: number, minimum: 0, description: Total participating BETTEX in the simulated pool, including its seeded community. }
+        tokenSharePercent: { type: number, minimum: 0, maximum: 100, description: Current eligible-token share, distinct from time-weighted payout participation. }
+        poolAllocationUsdc: { type: number, minimum: 0, description: Provisional 25 percent share of positive current-cycle profit; not a guaranteed or settled payout. }
         since: { type: ["string", "null"] }
         weightTokenSeconds: { type: number }
         sharePercent: { type: number, minimum: 0, maximum: 100 }
@@ -1765,6 +1820,7 @@ components:
         committedUsdc: { type: number }
         realizedUsdc: { type: number }
         cycleResultUsdc: { type: number }
+        currentRound: { $ref: "#/components/schemas/DemoTreasuryRound" }
     DemoRound:
       type: object
       required: [id, endedAt, status, eligibleUsdc, stakingUsdc, treasuryUsdc, buybackUsdc]
@@ -1776,6 +1832,53 @@ components:
         stakingUsdc: { type: number }
         treasuryUsdc: { type: number }
         buybackUsdc: { type: number }
+        source: { type: string, enum: [seeded_demo, calculated_simulation] }
+        treasurySnapshot: { $ref: "#/components/schemas/DemoTreasuryRound" }
+        participationSnapshot: { $ref: "#/components/schemas/DemoRoundParticipationSnapshot" }
+    DemoTreasuryRound:
+      type: object
+      required: [id, startedAt, endsAt, assetsUsdc, reserveUsdc, workingUsdc, committedUsdc, availableUsdc, realizedNetUsdc, unrealizedUsdc, expectedCommittedNetUsdc, targetNetUsdc, feesCollectedUsdc, feeTrackingSince, feeBreakdown, executionCostsUsdc, closedOperations, openingAssetsUsdc, coverage, feesOwner]
+      properties:
+        id: { type: string }
+        startedAt: { type: string }
+        endsAt: { type: string }
+        assetsUsdc: { type: number }
+        reserveUsdc: { type: number }
+        workingUsdc: { type: number }
+        committedUsdc: { type: number }
+        availableUsdc: { type: number }
+        realizedNetUsdc: { type: number, description: Settled net investment result of this round, after execution costs; excludes operator service fees. }
+        unrealizedUsdc: { type: number, description: Indicative gross result of unsettled positions; not distributable. }
+        expectedCommittedNetUsdc: { type: number, description: Sum of proposal expected net results for currently committed positions, not an approved target or guarantee. }
+        targetNetUsdc: { type: [number, "null"], description: Approved fixed round target; null when not configured. }
+        feesCollectedUsdc: { type: [number, "null"], description: Recorded operator service fees from confirmed simulated wallet operations, not treasury investment profit. }
+        feeTrackingSince: { type: [string, "null"] }
+        feeBreakdown: { $ref: "#/components/schemas/DemoTreasuryFeeBreakdown" }
+        executionCostsUsdc: { type: [number, "null"] }
+        closedOperations: { type: [integer, "null"] }
+        openingAssetsUsdc: { type: [number, "null"] }
+        coverage: { type: string, enum: [complete, partial] }
+        feesOwner: { type: string, enum: [operating_company] }
+    DemoTreasuryFeeBreakdown:
+      type: object
+      required: [onramp, swap, withdraw, send]
+      properties:
+        onramp: { type: number }
+        swap: { type: number }
+        withdraw: { type: number }
+        send: { type: number }
+    DemoRoundParticipationSnapshot:
+      type: object
+      required: [ownEligibleTokens, totalEligibleTokens, ownTokenSeconds, totalTokenSeconds, payoutSharePercent, receivedUsdc, startedAt, endedAt]
+      properties:
+        ownEligibleTokens: { type: number, minimum: 0, description: Own eligible BETTEX balance at round close, not necessarily held throughout the round. }
+        totalEligibleTokens: { type: number, minimum: 0, description: Pool eligible BETTEX balance at round close, including simulated community tokens. }
+        ownTokenSeconds: { type: number, minimum: 0 }
+        totalTokenSeconds: { type: number, minimum: 0 }
+        payoutSharePercent: { type: number, minimum: 0, maximum: 100 }
+        receivedUsdc: { type: number, minimum: 0 }
+        startedAt: { type: string }
+        endedAt: { type: string }
     DemoDashboard:
       type: object
       required: [serverNow, profile, balances, staking, operations, events, history, treasury, rounds]

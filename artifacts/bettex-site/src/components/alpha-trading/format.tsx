@@ -66,7 +66,7 @@ const D: Record<string, [string, string, string]> = {
   paper_operational_records_divergence: ['Posições e livro simulado divergem', 'Paper positions and ledger diverge', 'Las posiciones y el libro simulado divergen'],
   eligible_simulation_proposal: ['Proposta elegível apenas para simulação', 'Eligible for simulation only', 'Propuesta elegible solo para simulación'],
   stale: ['Defasada', 'Stale', 'Desactualizada'],
-  paper_journal_reconciled_no_real_money: ['Diário simulado reconciliado, sem dinheiro real', 'Paper journal reconciled, no real money', 'Diario simulado conciliado, sin dinero real'],
+  paper_journal_reconciled_no_real_money: ['Diário reconciliado', 'Journal reconciled', 'Diario conciliado'],
   paper_partial_fill_confirmed: ['Execução parcial simulada confirmada', 'Paper partial fill confirmed', 'Ejecución parcial simulada confirmada'],
   paper_fill_confirmed: ['Execução simulada confirmada', 'Paper fill confirmed', 'Ejecución simulada confirmada'],
   hold_until_resolution: ['Manter até a resolução', 'Hold until resolution', 'Mantener hasta la resolución'],

@@ -1,5 +1,6 @@
 /** @jsxImportSource react */
 import { useLocale } from '@/lib/i18n';
+import { roundTerminology } from '@/lib/round-terminology';
 import type { ReactNode } from 'react';
 import type { AgentId, Status, Text } from './types';
 
@@ -8,7 +9,7 @@ export function useX(): { x: X; tx: (t: Text) => string; n: (v: number, d?: numb
   const loc = useLocale() as 'pt' | 'en' | 'es';
   const i = loc === 'pt' ? 0 : loc === 'en' ? 1 : 2;
   const fl = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
-  return { loc, x: (a, b, c) => [a, b, c][i], tx: t => t[i], n: (v, d = 2) => v.toLocaleString(fl, { minimumFractionDigits: d, maximumFractionDigits: d }) };
+  return { loc, x: (a, b, c) => roundTerminology([a, b, c][i], loc), tx: t => roundTerminology(t[i], loc), n: (v, d = 2) => v.toLocaleString(fl, { minimumFractionDigits: d, maximumFractionDigits: d }) };
 }
 export const AGENTS: Record<AgentId, { name: Text; color: string; role: Text }> = {
   orchestrator: { name: ['BTEX', 'BTEX', 'BTEX'], color: '#5F86FF', role: ['Recebe, prioriza e pede análise', 'Receives, prioritizes, requests analysis', 'Recibe, prioriza y pide análisis'] },

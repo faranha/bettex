@@ -7,6 +7,11 @@ const root = path.resolve(import.meta.dirname, '../src/components/demo');
 const files = fs.readdirSync(root).filter(f => /\.(ts|tsx)$/.test(f) && !f.endsWith('.test.ts')).map(f => path.join(root, f));
 files.push(path.resolve(root, '../../pages/demo.tsx'));
 files.push(path.resolve(root, '../../pages/auth.tsx'));
+files.push(path.resolve(root, '../history/WalletStatement.tsx'));
+files.push(path.resolve(root, '../app/AppHeader.tsx'));
+for (const file of ['wallet-history-model.ts', 'wallet-history-export.ts', 'wallet-history-examples.ts', 'use-wallet-history.ts', 'history-pagination.ts']) {
+  files.push(path.resolve(root, '../history', file));
+}
 const accountRoot = path.resolve(root, '../account');
 files.push(...fs.readdirSync(accountRoot).filter(f => /\.(ts|tsx)$/.test(f)).map(f => path.join(accountRoot, f)));
 const tradingRoot = path.resolve(root, '../alpha-trading');
@@ -20,7 +25,7 @@ files.push(...fs.readdirSync(liveMarketsRoot).filter(f => /\.(ts|tsx)$/.test(f))
 const failures = [];
 let tuples = 0;
 const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|BETTEX|USDC|BTC|ETH|SOL|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;
-const neutral = text => universal.test(text) || !/[A-Za-zÀ-ÿ]/.test(text.replace(/\b(?:USDC|BETTEX|UTC|D|T|h|v)\b|T\+/g, ''));
+const neutral = text => universal.test(text) || /^(?:ID|Hash):$/.test(text) || !/[A-Za-zÀ-ÿ]/.test(text.replace(/\b(?:USD|BRL|USDC|BETTEX|ETH|UTC|D|T|h|v)\b|T\+/g, ''));
 const forbidden = new Set(['generateKey', 'signTransaction', 'signMessage']);
 for (const file of files) {
   const raw = fs.readFileSync(file, 'utf8');
@@ -46,7 +51,15 @@ for (const file of files) {
         && file === path.join(accountRoot, 'wallet-vault.ts')
         && ['signPersonalTestPurchase', 'signPersonalTestWithdrawal'].includes(owner?.name?.text)
         && owner.getText(source).includes('draft.chainId !== 31337');
-      if (!localPurposeSigner) report(node, `Forbidden real wallet operation: ${node.text}`);
+      // AES-GCM device encryption only, not a transaction-signing or custody exemption.
+      const deviceEncryptionKey = node.text === 'generateKey'
+        && file === path.join(accountRoot, 'device-wallet-store.ts')
+        && owner?.name?.text === 'createOrRead'
+        && ts.isCallExpression(node.parent.parent)
+        && node.parent.parent.expression.getText(source) === 'crypto.subtle.generateKey'
+        && node.parent.parent.arguments[0]?.getText(source).includes("'AES-GCM'")
+        && node.parent.parent.arguments[1]?.getText(source) === 'false';
+      if (!localPurposeSigner && !deviceEncryptionKey) report(node, `Forbidden real wallet operation: ${node.text}`);
     }
     if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && ['x', 'tr'].includes(node.expression.text)) {
       tuples++;

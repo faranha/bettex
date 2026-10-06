@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { demoTabIdentity } from "./demo-tab-session.ts";
+import { demoTabIdentity } from "../modules/simulation/infrastructure/demo-tab-session.ts";
 
 test("different tabs have different demo identities; reload retains identity", () => {
   const a = "a".repeat(64), b = "b".repeat(64);

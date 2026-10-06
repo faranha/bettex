@@ -18,6 +18,13 @@ export const agentDefinitions = [
   rules:[...new Set([...d.rules,"no_real_money","no_key_access"])]}));
 
 export type AgentEvidence = {source:string;url:string;producedAt:string;targetAt:string;blockHeight:string;value:string;unit:string};
+/** Historical API names include service workers. ALFA agents are Predictions + BTC/ETH/SOL only. */
+const inactiveAlphaIds = new Set(["sports","crypto","bonus"]);
+const controlIds = new Set(["treasury","governance","risk","execution","reconciliation"]);
+export const alphaWorkerDefinitions = agentDefinitions
+  .filter(d => !inactiveAlphaIds.has(d.id))
+  .map(d => ({...d, parentId:controlIds.has(d.id)?null:d.parentId,
+    dependencies:d.dependencies.filter(id => !inactiveAlphaIds.has(id))}));
 export type AgentFact = {code:string;value:string};
 export type AgentAssessment = {
   status:"healthy"|"degraded"|"failed";decision:"monitor"|"hold"|"block";

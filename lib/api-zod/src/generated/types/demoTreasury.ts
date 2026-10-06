@@ -5,6 +5,7 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { DemoTreasuryRound } from './demoTreasuryRound';
 
 export interface DemoTreasury {
   assetsUsdc: number;
@@ -12,4 +13,5 @@ export interface DemoTreasury {
   committedUsdc: number;
   realizedUsdc: number;
   cycleResultUsdc: number;
+  currentRound?: DemoTreasuryRound;
 }

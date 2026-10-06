@@ -33,7 +33,7 @@ const STATUS: Record<string, [string, string, string]> = {
 };
 const ENV: Record<string, [string, string, string]> = {
   local_evm: ['Blockchain local (EVM 31337)', 'Local blockchain (EVM 31337)', 'Blockchain local (EVM 31337)'],
-  account_test: ['Atividade da conta de teste', 'Test account activity', 'Actividad de la cuenta de prueba'],
+  account_test: ['Atividade da conta', 'Account activity', 'Actividad de la cuenta'],
   simulation: ['Simulação', 'Simulation', 'Simulación'],
   testnet: ['Testnet pública', 'Public testnet', 'Testnet pública'],
   production: ['Produção pública', 'Public production', 'Producción pública'],

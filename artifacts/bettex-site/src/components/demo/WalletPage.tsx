@@ -1,56 +1,27 @@
 /** @jsxImportSource react */
+import type { ReactNode } from 'react';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from './ui';
-import { Money, type Asset, type Kind } from './fin';
-import { WalletAction } from './WalletAction';
-import { History } from './Views';
 import { PreviousCycle } from './PreviousCycle';
 import { HistoryPanel } from '../history/HistoryPanel';
-import { NativeWalletsCard } from './NativeWalletsCard';
+import { WalletStatement } from '../history/WalletStatement';
 import { TestContractPanel } from './TestContractPanel';
 import { isDemoSession } from './demo-session';
-import { DemoWalletsCard } from './DemoWalletsCard';
-import { TestPeriodNotice } from './TestPeriodNotice';
 import { NativeParticipationCard } from './NativeParticipationCard';
 
-export function WalletPage({ d, onWallet }: { d: DemoDashboard; onWallet: (kind: Kind, asset: Asset) => void }) {
+export function WalletPage({ d, historyPanel }: { d: DemoDashboard; historyPanel?: ReactNode }) {
   const { x } = useX();
-  const b = d.balances;
-  const usdcActions: [Kind, string, string][] = [
-    ['onramp', 'add-credit', x('Adicionar crédito', 'Add credit', 'Agregar crédito')],
-    ['withdraw', 'withdraw-usdc', x('Sacar dólares para carteira cripto', 'Withdraw dollars to crypto wallet', 'Retirar dólares a cartera cripto')],
-    ['swap', 'swap-usdc', x('Converter USDC em BETTEX', 'Convert USDC to BETTEX', 'Convertir USDC en BETTEX')],
-  ];
-  const bettexActions: [Kind, string, string][] = [
-    ['receive', 'add-bettex', x('Adicionar BETTEX', 'Add BETTEX', 'Agregar BETTEX')],
-    ['send', 'send-bettex', x('Transferir BETTEX para carteira externa', 'Transfer BETTEX to external wallet', 'Transferir BETTEX a cartera externa')],
-    ['swap', 'swap-bettex', x('Converter BETTEX em USDC', 'Convert BETTEX to USDC', 'Convertir BETTEX en USDC')],
-  ];
-  const card = (asset: Asset, title: string, value: number, acts: typeof usdcActions) => (
-    <section className="dcard p-4 sm:p-5" data-testid={`wallet-${asset.toLowerCase()}`}>
-      <p className="text-xs font-semibold text-[#5B6B85]">{title}</p>
-      <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
-        <Money v={value} a={asset} big />
-        <div className="flex shrink-0 gap-2">
-          {acts.map(([k, id, label]) => <WalletAction key={id} kind={k} asset={asset} id={id} label={label} onOpen={onWallet} />)}
-        </div>
-      </div>
-    </section>
-  );
   return <div className="grid gap-4" data-testid="page-wallet">
-    <h1 className="display text-2xl font-extrabold tracking-tight" data-testid="text-wallet-title">{x('Saldo e histórico', 'Balance and history', 'Saldo e historial')}</h1>
-    <div className="grid gap-3 md:grid-cols-2">
-      {card('USDC', x('Saldo em dólares', 'Dollar balance', 'Saldo en dólares'), b.usdc, usdcActions)}
-      {card('BETTEX', x('Saldo em BETTEX', 'BETTEX balance', 'Saldo en BETTEX'), b.bettex, bettexActions)}
-    </div>
-    {isDemoSession(d.profile) ? <DemoWalletsCard d={d} onWallet={onWallet} /> : <NativeWalletsCard profile={d.profile} />}
-    <PreviousCycle d={d} />
-    {isDemoSession(d.profile) ? <TestPeriodNotice /> : d.profile.provider === 'native' ? <NativeParticipationCard profile={d.profile} /> : <TestContractPanel />}
-    <section className="dcard p-4 sm:p-5">
-      <h3 className="display mb-2 text-base font-extrabold">{x('Extrato', 'Statement', 'Extracto')}</h3>
-      <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-[#5B6B85]"><span>{x('Total recebido em ciclos anteriores', 'Total received in past cycles', 'Total recibido en ciclos anteriores')}</span><Money v={b.receivedYield} a="USDC" /></div>
-      <History d={d} />
-    </section>
-    <div className="dcard p-4 sm:p-5"><HistoryPanel mode={d.profile.provider === 'native' ? 'native' : 'demo'} accountKey={d.profile.accountId} /></div>
+    <h2 className="display text-xl font-extrabold tracking-tight" data-testid="text-wallet-title">{x('Histórico', 'History', 'Historial')}</h2>
+    {!isDemoSession(d.profile) && (d.profile.provider === 'native' ? <NativeParticipationCard profile={d.profile} /> : <TestContractPanel />)}
+    <WalletStatement key={d.profile.accountId} d={d} />
+    <details className="dcard p-4 sm:p-5">
+      <summary className="cursor-pointer text-sm font-bold">{x('Detalhes do ciclo anterior', 'Previous cycle details', 'Detalles del ciclo anterior')}</summary>
+      <div className="mt-4"><PreviousCycle d={d} /></div>
+    </details>
+    <details className="dcard p-4 sm:p-5">
+      <summary className="cursor-pointer text-sm font-bold">{x('Auditoria detalhada e operações relacionadas', 'Detailed audit and related operations', 'Auditoría detallada y operaciones relacionadas')}</summary>
+      <div className="mt-4">{historyPanel ?? <HistoryPanel mode={d.profile.provider === 'native' ? 'native' : 'demo'} accountKey={d.profile.accountId} />}</div>
+    </details>
   </div>;
 }

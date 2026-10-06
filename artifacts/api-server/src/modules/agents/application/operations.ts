@@ -79,9 +79,9 @@ export function assessAgent(id:string,c:OperationsContext):AgentAssessment {
   throw new Error("unknown_agent");
 }
 /** Execute the dependency graph, passing actual assessment outputs to its parent services. */
-export function assessAllAgents(context:OperationsContext):Record<string,AgentAssessment>{
+export function assessAllAgents(context:OperationsContext, definitions = agentDefinitions):Record<string,AgentAssessment>{
   const upstream:Record<string,AgentAssessment>={};
-  const pending=[...agentDefinitions];
+  const pending=[...definitions];
   while(pending.length){
     const index=pending.findIndex(d=>d.dependencies.every(id=>upstream[id]));
     if(index===-1)throw new Error("agent_dependency_cycle");

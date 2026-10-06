@@ -2,7 +2,7 @@ import { Router } from "express";
 import { sql } from "drizzle-orm";
 import { db } from "@workspace/db";
 import { GetDemoTestnetActivityResponse } from "@workspace/api-zod";
-import { publicTestnetStatus } from "../modules/public-testnet/status";
+import { publicTestnetStatus } from "../modules/public-testnet/infrastructure/status";
 
 const router = Router();
 router.get("/demo/testnet", async (_req, res) => {

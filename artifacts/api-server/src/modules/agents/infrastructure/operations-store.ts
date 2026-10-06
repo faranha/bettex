@@ -1,6 +1,6 @@
 import {db} from "@workspace/db";
 import {sql} from "drizzle-orm";
-import {agentDefinitions,workerActivity,type AgentRun} from "../domain/operations";
+import {alphaWorkerDefinitions,workerActivity,type AgentRun} from "../domain/operations";
 type Client=Pick<typeof db,"execute">;
 let ready:Promise<void>|undefined;
 export function ensureOperationsStore():Promise<void>{
@@ -33,7 +33,7 @@ export async function readAgentCenter(agentId?:string,before?:string){
       ORDER BY sequence DESC LIMIT 41`)).rows;
     const page=records.slice(0,40);
     return {mode:"read_only_and_paper_no_real_money",asOf:new Date(now).toISOString(),
-      agents:agentDefinitions.map(d=>{
+      agents:alphaWorkerDefinitions.map(d=>{
         const row=latest.find(r=>r.agent_id===d.id),run=row?.record as AgentRun|undefined;
         return {...d,latest:run??null,activity:workerActivity(run??null,now),runCount:Number(row?.run_count??0)};
       }),history:page.map(r=>r.record),hasMore:records.length>40,nextBefore:records.length>40?String(page.at(-1)!.cursor):null};

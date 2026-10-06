@@ -6,8 +6,8 @@ function sample(): Input {
   return {
     staking: { cycleStartedAt: '2026-10-05T00:00:00Z' },
     rounds: [
-      { id: '2026-10-03', endedAt: '2026-10-04T00:00:00Z', status: 'paid' },
-      { id: '2026-10-04', endedAt: '2026-10-05T00:00:00Z', status: 'paid' },
+      { id: '2026-10-03', endedAt: '2026-10-04T00:00:00Z', status: 'paid', eligibleUsdc: 1840, stakingUsdc: 460 },
+      { id: '2026-10-04', endedAt: '2026-10-05T00:00:00Z', status: 'paid', eligibleUsdc: 1840, stakingUsdc: 460 },
     ],
     history: [
       { kind: 'distribution', asset: 'USDC', status: 'confirmed', at: '2026-10-04T00:00:00Z', amount: 100 },
@@ -21,6 +21,19 @@ test('previous cycle shows only this account’s confirmed distribution at the l
   const value = previousCycle(sample());
   assert.equal(value?.round.id, '2026-10-04');
   assert.equal(value?.received, 12.8);
+});
+test('saved calculation is authoritative even when seeded credits share the boundary', () => {
+  const d = sample();
+  d.rounds[1]!.participationSnapshot = {
+    ownEligibleTokens: 12500, totalEligibleTokens: 8012500, ownTokenSeconds: 1080000000,
+    totalTokenSeconds: 8012500 * 86400, payoutSharePercent: 12500 / 8012500 * 100,
+    receivedUsdc: 0.389408, startedAt: '2026-10-04T00:00:00Z', endedAt: '2026-10-05T00:00:00Z',
+  };
+  assert.equal(previousCycle(d)?.received, 0.389408);
+  d.history = [];
+  assert.equal(previousCycle(d)?.received, 0.389408);
+  d.rounds[1]!.participationSnapshot.receivedUsdc = 0;
+  assert.equal(previousCycle(d)?.received, 0);
 });
 test('older rounds are not substituted for an absent previous cycle', () => {
   const d = sample();

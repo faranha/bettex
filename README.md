@@ -14,7 +14,7 @@ approved blockchain, economics or alpha agent architecture.
 | Capability | State and limitations |
 | --- | --- |
 | Public site, Pitch and documentation | Implemented; English is the first-visit default, with Portuguese/Spanish preserved |
-| Public demo | In-development landing; legacy screens are explicitly illustrative |
+| Public app/demo | Canonical `/app` dashboard with live market reads and explicitly emulated financial activity; native account checks are development-only |
 | Clerk identity and sessions | Existing adapter; tenant configuration is an external dependency |
 | Native development test accounts | Implemented; consent, isolated sessions and browser-encrypted EVM wallet vaults |
 | PostgreSQL persistence and HTTP contracts | Drizzle, OpenAPI/Orval, generated React clients and Zod validators |
@@ -24,7 +24,7 @@ approved blockchain, economics or alpha agent architecture.
 | Solidity contracts | Source, compilation and isolated local-EVM tests; no public deployment/mainnet claim |
 | Public-testnet observation | Arbitrum Sepolia adapter/association; deployment/funding and end-to-end evidence remain separate |
 | Allora / live trading providers | Research/read capabilities and explicit unresolved integration gates; no invented connectivity |
-| GitHub synchronization | Local coordinated automation; activation pending an authorized private GitHub remote |
+| GitHub synchronization | Configured for the creator-authorized public `faranha/bettex`, branch `development/bettex`; authenticated push remains required |
 
 See [simulation](docs/simulation.md) and [integration blockers](docs/integration-pendencies.md)
 before interpreting balances, histories, transactions, approvals or performance.
@@ -105,8 +105,9 @@ check staged content, run verification, create nonempty development checkpoints,
 fetch/push safely and verify the resulting remote commit. Failed pushes preserve
 work and retry. Divergence requires explicit human recovery.
 
-**Automatic synchronization implemented locally; activation pending GitHub
-connection.** GitHub Actions does not upload local Replit edits. A stopped
+**Automatic synchronization implemented locally; activation pending native Git
+push authentication.** The API connector alone does not authorize Git transport.
+GitHub Actions does not upload local Replit edits. A stopped
 workspace cannot run the watcher. See [activation and operations](docs/github-sync.md).
 
 ## Technical and grant review
@@ -118,11 +119,13 @@ workspace cannot run the watcher. See [activation and operations](docs/github-sy
 5. [Security policy](SECURITY.md), [threat model](threat_model.md) and [security operations](docs/security-operations.md).
 6. [Preparation and verification report](docs/github-readiness-report.md).
 
-Public product/demo destination: [bettex.ai/en/demo/](https://bettex.ai/en/demo/).
-It describes an in-development app, not live financial execution. The managed
+Public product/app destination: [bettex.ai/en/app](https://bettex.ai/en/app).
+It is an ALFA demonstration, not live financial execution. The managed
 workspace preview is the development surface.
 
-Keep the repository private unless the owner explicitly authorizes publication.
+The owner explicitly authorized public upload to `faranha/bettex` only. Preserve
+that destination, its visibility and `main`; synchronization targets only
+`development/bettex`. Do not generalize this permission to other repositories.
 No repository-wide license file was found; existing package `license` metadata
 is preserved, not treated as proof of redistribution rights. Uploaded assets,
 third-party research and source material require provenance/ownership review

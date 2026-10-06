@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from 'react';
 import catalogue from './locales/translations.json';
 import englishSourceMessages from './locales/english-source-messages.json';
+import { roundTerminology } from './round-terminology';
 
 export type Locale = 'pt' | 'en' | 'es';
 type Translation = { en: string; es: string; pt?: string };
@@ -27,7 +28,10 @@ export function useLocale() {
   return useSyncExternalStore(listener => { listeners.add(listener); return () => listeners.delete(listener); }, getLocale, getLocale);
 }
 const folded = new Map(Object.keys(messages).map(key => [key.toLocaleLowerCase(), key]));
-const translatedValues = { en: new Set(Object.values(messages).map(value => normalize(value.en))), es: new Set(Object.values(messages).map(value => normalize(value.es))) };
+const translatedValues = {
+  en: new Set(Object.values(messages).flatMap(value => [normalize(value.en), normalize(roundTerminology(value.en, 'en'))])),
+  es: new Set(Object.values(messages).flatMap(value => [normalize(value.es), normalize(roundTerminology(value.es, 'es'))])),
+};
 const patterns = Object.keys(messages).filter(key => /\{\d+\}/.test(key)).map(key => ({
   key,
   regex: new RegExp('^' + key.split(/(\{\d+\})/).map(part => /^\{\d+\}$/.test(part) ? '(.+?)' : part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('') + '$'),
@@ -35,6 +39,9 @@ const patterns = Object.keys(messages).filter(key => /\{\d+\}/.test(key)).map(ke
 const unchanged = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…]+|BETTEX|USDC|USD|BRL|ETH|BTC|ARB|API|MCP|HTTP|HTTPS|JSON|CSV|PDF|XLSX|English|Español|Português)$/;
 const ptOverrides: Record<string, string> = { Close: 'Fechar', Loading: 'Carregando', 'Loading...': 'Carregando...', Previous: 'Anterior', Next: 'Próximo' };
 export function t(text: string): string {
+  return roundTerminology(translateMessage(text), locale);
+}
+function translateMessage(text: string): string {
   const key = normalize(text);
   if (!key || (unchanged.test(key) && (!/\d/.test(key) || !messages[key] || locale === 'pt')) || /^https?:\/\//.test(key)) return text;
   observedMessages.add(key);
@@ -67,14 +74,13 @@ export function localizedUrl(href: string, next: Locale = locale): string {
   const clean = pathname.replace(/^\/(?:en|es)(?=\/|$)/, '').replace(/\/$/, '') || '/';
   const canonical = clean.replace(/^\/demo(?=\/|$)/, '/app');
   const page = canonical === '/documentation' || canonical === '/documentacion' ? '/documentacao' :
-    ['/app/simulacao', '/app/simulation', '/app/simulacion'].includes(canonical) ? '/app/simulacao' : canonical;
+    ['/app/simulacao', '/app/simulation', '/app/simulacion'].includes(canonical) ? '/app' : canonical;
   if (!['/', '/pitch', '/documentacao', '/app'].includes(page) && !page.startsWith('/app/')) {
     if (next !== 'pt' && page === '/downloads/bettex-taxas-fundacao.xlsx') return `${base}/downloads/bettex-taxas-fundacao-${next}.xlsx${suffix}`;
     if (next !== 'pt' && /^\/downloads\/bettex-entidade-unica\.(pdf|docx|html|md)$/.test(page)) return `${base}${page.replace(/\.([a-z]+)$/, `-${next}.$1`)}${suffix}`;
     return href;
   }
-  const translated = page === '/documentacao' ? next === 'en' ? '/documentation' : next === 'es' ? '/documentacion' : page :
-    page === '/app/simulacao' ? next === 'en' ? '/app/simulation' : next === 'es' ? '/app/simulacion' : page : page;
+  const translated = page === '/documentacao' ? next === 'en' ? '/documentation' : next === 'es' ? '/documentacion' : page : page;
   return `${base}${next === 'pt' ? '' : `/${next}`}${translated}${suffix}`;
 }
 export function changeLocale(next: Locale) {

@@ -2,12 +2,15 @@
 import type { AlphaOpportunityRecord, AlphaTradingDecision, AlphaTradingOrder, AlphaTradingPosition } from '@workspace/api-client-react';
 import { useFmt, KV, Tag } from './format';
 import {PolicyEvidence} from './PolicyEvidence';
+import { Radar } from 'lucide-react';
 
 const box = 'rounded-xl border border-[#E4DCCB] bg-[#FBF8F0] p-3';
 
 export function OpportunityCard({ r, onJourney }: { r: AlphaOpportunityRecord; onJourney: (id: string) => void }) {
   const f = useFmt(); const { x } = f; const o = r.opportunity;
   return <li className={box}>
+    <p className="mb-2 flex items-center gap-1.5 text-xs font-bold text-[#0A6657]"><Radar className="h-4 w-4" aria-hidden="true" />{x('Mercados de Previsão', 'Prediction Markets', 'Mercados de Predicción')} → {o.specialist.toUpperCase()}</p>
+    <p className="break-all font-mono text-[11px] text-[#5B6B85]">{x('Pedido', 'Request', 'Pedido')}: {o.id}</p>
     <div className="flex flex-wrap items-center gap-2"><Tag>{f.code(r.state)}</Tag>{r.queueState && <Tag>{f.code(r.queueState)}</Tag>}<Tag warn={o.origin.nature !== 'real_market_data'}>{f.code(o.origin.nature)}</Tag></div>
     <p className="mt-2 break-words font-bold">{o.market}</p>
     <p className="text-xs text-[#5B6B85]">{o.instrument.name} · {o.instrument.outcome} · {o.specialist}</p>
@@ -33,7 +36,10 @@ export function OpportunityCard({ r, onJourney }: { r: AlphaOpportunityRecord; o
 
 export function DecisionCard({ d, onJourney }: { d: AlphaTradingDecision; onJourney: (id: string) => void }) {
   const f = useFmt(); const { x } = f;
-  return <li className={box}><div className="flex flex-wrap items-center gap-2"><Tag warn={d.state === 'rejected'}>{f.code(d.state)}</Tag><span className="text-xs">{f.code(d.asset)} · #{d.rank}</span></div>
+  return <li className={box}>
+    <p className="mb-2 flex items-center gap-1.5 text-xs font-bold text-[#0A6657]"><Radar className="h-4 w-4" aria-hidden="true" />{x('Mercados de Previsão', 'Prediction Markets', 'Mercados de Predicción')} → {d.asset.toUpperCase()}</p>
+    <p className="mb-2 break-all font-mono text-[11px] text-[#5B6B85]">{x('Pedido', 'Request', 'Pedido')}: {d.opportunityId} · {x('Decisão', 'Decision', 'Decisión')}: {d.id}</p>
+    <div className="flex flex-wrap items-center gap-2"><Tag warn={d.state === 'rejected'}>{f.code(d.state)}</Tag><span className="text-xs">{f.code(d.asset)} · #{d.rank}</span></div>
     <p className="mt-1 text-sm">{f.reason(d.reason)}</p>
     <dl className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3"><KV k={x('Solicitado', 'Requested', 'Solicitado')} v={f.units(d.requestedUnits)} /><KV k={x('Quando', 'When', 'Cuándo')} v={f.date(d.at)} /><KV k={x('Política', 'Policy', 'Política')} v={`${d.policyVersion} / ${d.strategyVersion}`} /></dl>
     <PolicyEvidence reference={d.policyReference}/>

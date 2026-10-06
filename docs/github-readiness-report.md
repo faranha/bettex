@@ -4,6 +4,31 @@
 
 **Automatic synchronization implemented locally; activation pending authenticated Git transport.**
 
+## Readiness recheck — 2026-10-06
+
+- The full development runner completed all 33 verification groups: 32 passed
+  initially; its sole architectural-map failure was corrected and the failed
+  group passed its focused rerun. No failing check was disabled.
+- Lint, workspace typechecking, backend rebuild and demo-tab identity tests
+  passed again after the infrastructure-file relocation. Generated OpenAPI
+  client/Zod files remained unchanged.
+- Source, reachable Git history and generated bundles passed the secret-pattern
+  scans with zero findings. This is not an exhaustive privacy or rights audit.
+- The synchronization guard now distinguishes official Starknet documentation
+  sections named `build` from generated build output. A regression verifies
+  retained documentation, continued secret blocking, and exclusion of nested
+  dependencies and actual compiled output.
+- The authenticated native-account dashboard was browser-verified separately:
+  ownership, reload, wallet addresses, own history, consistent local read-only
+  balances and clearing personal data on logout. No funds were moved or private
+  keys revealed; this is not public-Sepolia balance or real-money evidence.
+- A push dry run targeting only `development/bettex` failed with a GitHub
+  authentication error. **No GitHub upload or Actions run is claimed.**
+- The watcher was intentionally paused for this preparation. Connect native Git
+  credentials before resuming it. Preserve the public destination and `main`.
+
+## Previous preparation record
+
 - Development branch: `development/bettex`.
 - GitHub destination: public `faranha/bettex`, now explicitly authorized by the
   creator. Public visibility and `main` must remain unchanged.
@@ -57,10 +82,11 @@ The secret review is not an entropy scan, exhaustive privacy/asset-rights audit,
 independent security audit or financial-operational certification.
 
 An existing, separate `pitch-research` workflow was already failing before this
-preparation: its smoke test expects an obsolete Portuguese heading. It is not
-part of `pnpm quality`, was not disabled, and remains an explicitly reported
-test-maintenance limitation. Its expected copy and locale setup need review
-against the approved Pitch and the English first-visit default.
+recheck. Its latest reported failure flags research-card text outside the
+viewport at 320px. It is not part of `pnpm quality` or the GitHub CI gate, was
+not disabled, and remains an explicitly reported visual-test limitation.
+Review its visibility assertions against the current horizontal presentation
+before claiming that this separate visual check passes.
 
 ## Remaining external steps
 

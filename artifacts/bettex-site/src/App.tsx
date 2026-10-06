@@ -31,7 +31,7 @@ import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { PitchSectionNav } from '@/components/pitch/PitchSectionNav';
 import { HomeSectionNav } from '@/components/HomeSectionNav';
 import { AppHeader } from '@/components/app/AppHeader';
-import { demoView } from '@/components/demo/demo-navigation';
+import { demoView, isRemovedSimulationPath } from '@/components/demo/demo-navigation';
 
 const queryClient = new QueryClient();
 import { AccountAuthProvider } from '@/components/account/AuthProvider';
@@ -359,6 +359,7 @@ function Pitch() {
 
 function Demo() {
   const [path] = useLocation();
+  if (isRemovedSimulationPath(path)) return <Redirect to={`/app${typeof window === 'undefined' ? '' : window.location.search}`} />;
   return demoView(path) ? <div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><DemoPage /></div> : <NotFound />;
 }
 
@@ -377,9 +378,10 @@ function HomeRoute() {
 function LegacyDemoRedirect() {
   const [path, navigate] = useLocation();
   useEffect(() => {
-    if (demoView(path)) navigate(path.replace(/^\/demo/, '/app') + window.location.search + window.location.hash, { replace: true });
+    if (isRemovedSimulationPath(path)) navigate('/app' + window.location.search, { replace: true });
+    else if (demoView(path)) navigate(path.replace(/^\/demo/, '/app') + window.location.search + window.location.hash, { replace: true });
   }, [path, navigate]);
-  return demoView(path) ? null : <NotFound />;
+  return demoView(path) || isRemovedSimulationPath(path) ? null : <NotFound />;
 }
 
 /** The old account URL has no page: reload the canonical app route cleanly. */

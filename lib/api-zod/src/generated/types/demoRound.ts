@@ -5,7 +5,10 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { DemoRoundParticipationSnapshot } from './demoRoundParticipationSnapshot';
+import type { DemoRoundSource } from './demoRoundSource';
 import type { DemoRoundStatus } from './demoRoundStatus';
+import type { DemoTreasuryRound } from './demoTreasuryRound';
 
 export interface DemoRound {
   id: string;
@@ -15,4 +18,7 @@ export interface DemoRound {
   stakingUsdc: number;
   treasuryUsdc: number;
   buybackUsdc: number;
+  source?: DemoRoundSource;
+  treasurySnapshot?: DemoTreasuryRound;
+  participationSnapshot?: DemoRoundParticipationSnapshot;
 }

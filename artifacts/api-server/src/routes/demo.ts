@@ -1,6 +1,6 @@
 import { Router, type Request, type Response } from "express";
 import { createHash, randomBytes, randomUUID, timingSafeEqual } from "node:crypto";
-import { CreateDemoMovementBody, UpdateDemoProfileBody, GetDemoDashboardResponse } from "@workspace/api-zod";
+import { CreateDemoMovementBody, UpdateDemoProfileBody, GetDemoDashboardResponse, RequestDemoProfileAvatarBody, RequestDemoProfileAvatarResponse } from "@workspace/api-zod";
 import { loadDashboard, ClaimedBrowserAccountError } from "../lib/demo-store";
 import { verifiedAccount, updateAccountName } from "../lib/account-identity";
 import { DemoInputError } from "../lib/demo-state";
@@ -11,7 +11,8 @@ import { canReadTreasuryHistory } from "../modules/accounts/infrastructure/histo
 import { CommandSimulationBody, GetSimulationResponse } from "@workspace/api-zod";
 import { simulationSnapshot, mutateSimulation } from "../modules/simulation/infrastructure/scenario-store";
 import { permittedOrigin } from "./test-accounts";
-import { demoTabIdentity } from "../lib/demo-tab-session";
+import { demoTabIdentity } from "../modules/simulation/infrastructure/demo-tab-session";
+import { avatarStorage, ProfileAvatarError, validateProfileAvatar, serveProfileAvatar, validAvatarId, removeProfileAvatar } from "../lib/profile-avatar";
 
 const router = Router();
 const cookieName = "bettex_demo";
@@ -79,6 +80,7 @@ async function userDashboard(req: Request, res: Response, command?: Parameters<t
   }
 }
 function errorResponse(req: Request, res: Response, error: unknown) {
+  if (error instanceof ProfileAvatarError) { res.status(400).json({ error: "invalid_avatar" }); return; }
   if (error instanceof DemoInputError) { res.status(400).json({ error: error.message }); return; }
   if (error instanceof Error && ["email_verification_required", "account_unavailable"].includes(error.message)) {
     res.status(403).json({ error: error.message }); return;
@@ -150,13 +152,46 @@ router.post("/demo/movements", async (req, res) => {
     if (result) res.json(GetDemoDashboardResponse.parse(result));
   } catch (error) { errorResponse(req, res, error); }
 });
+router.post("/demo/profile/avatar/upload-url", async (req, res) => {
+  const input = RequestDemoProfileAvatarBody.safeParse(req.body);
+  if (!input.success) { res.status(400).json({ error: "invalid_avatar" }); return; }
+  try {
+    // Identity is resolved from the native/Clerk session or the isolated demo credential,
+    // never from a client-provided owner/account id.
+    await userDashboard(req, res);
+    if (!res.locals.demoHistorySubject) { res.status(403).json({ error: "authentication_required" }); return; }
+    const uploadURL = await avatarStorage.getObjectEntityUploadURL();
+    const objectPath = avatarStorage.normalizeObjectEntityPath(uploadURL);
+    const result = await userDashboard(req, res, { avatarUpload: { ...input.data, objectPath, expiresAt: Date.now() + 15 * 60_000 } });
+    if (result) res.json(RequestDemoProfileAvatarResponse.parse({ uploadURL, objectPath }));
+  } catch (error) { errorResponse(req, res, error); }
+});
+router.get("/profile-pictures/:id", async (req, res) => {
+  if (!validAvatarId(req.params.id)) { res.sendStatus(404); return; }
+  try { await serveProfileAvatar(req.params.id, res); }
+  catch { if (!res.headersSent) res.sendStatus(404); }
+});
 router.patch("/demo/profile", async (req, res) => {
   const input = UpdateDemoProfileBody.safeParse(req.body);
   if (!input.success || input.data.name.trim().length < 2) { res.status(400).json({ error: "invalid_profile" }); return; }
   try {
-    if (process.env.NODE_ENV !== "production") await updateAccountName(req, input.data.name);
-    const result = await userDashboard(req, res, { name: input.data.name });
-    if (result) res.json(GetDemoDashboardResponse.parse(result));
+    let previousAvatar: string | null | undefined;
+    if (input.data.avatarPath !== undefined) {
+      const current = await userDashboard(req, res);
+      if (!current || !res.locals.demoHistorySubject) return;
+      previousAvatar = current.profile.avatarPath;
+      if (input.data.avatarPath !== null) await validateProfileAvatar(res.locals.demoHistorySubject, input.data.avatarPath);
+    }
+    if (process.env.NODE_ENV !== "production" && input.data.email === undefined && input.data.nickname === undefined && input.data.avatarPath === undefined) await updateAccountName(req, input.data.name);
+    const result = await userDashboard(req, res, input.data);
+    if (result) {
+      res.json(GetDemoDashboardResponse.parse(result));
+      if (previousAvatar && previousAvatar !== input.data.avatarPath) {
+        void removeProfileAvatar(previousAvatar, res.locals.demoHistorySubject).catch(() => {
+          req.log.warn({ code: "avatar_cleanup_failed" }, "Previous profile picture cleanup failed");
+        });
+      }
+    }
   } catch (error) { errorResponse(req, res, error); }
 });
 export default router;

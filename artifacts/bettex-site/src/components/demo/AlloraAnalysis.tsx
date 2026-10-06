@@ -20,7 +20,7 @@ export function AlloraAnalysis() {
       <h2 className="display text-lg font-extrabold">{x('Allora · inferências reais', 'Allora · live inferences', 'Allora · inferencias reales')}</h2>
       <label className="text-xs font-bold">{x('Ativo', 'Asset', 'Activo')} <select value={asset} onChange={e => setAsset(e.target.value as typeof asset)} className="min-h-11 rounded-lg border border-[#D8CFBB] bg-white px-3"><option>BTC</option><option>ETH</option><option>SOL</option></select></label>
     </div>
-    <p className="text-xs text-[#5B6B85]">{x('Leitura pública da mainnet Allora, separada do cenário emulado. Previsão de preço em USD para 8 horas; não é probabilidade de evento nem ordem de investimento.', 'Public Allora mainnet data, separate from the emulated scenario. USD price forecast for 8 hours; not an event probability or investment order.', 'Lectura pública de mainnet Allora, separada del escenario emulado. Previsión de precio en USD a 8 horas; no es probabilidad de evento ni orden de inversión.')}</p>
+    <p className="text-xs text-[#5B6B85]">{x('Allora mainnet · previsão de preço em USD para 8 horas.', 'Allora mainnet · 8-hour USD price forecast.', 'Allora mainnet · previsión de precio en USD a 8 horas.')}</p>
     {query.isLoading ? <p role="status">{x('Consultando a fonte…', 'Reading the source…', 'Consultando la fuente…')}</p>
       : query.isError || !observation ? <p role="alert">{x('Fonte indisponível ou resposta incompatível. Nenhuma inferência foi inventada.', 'Source unavailable or incompatible response. No inference was fabricated.', 'Fuente no disponible o respuesta incompatible. No se inventó ninguna inferencia.')}</p>
       : <>

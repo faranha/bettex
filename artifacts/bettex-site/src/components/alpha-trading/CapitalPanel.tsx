@@ -8,9 +8,8 @@ export function AlphaTradingCapitalPanel() {
   const f = useFmt(); const { x } = f;
   const q = useGetAlphaTrading(CAP, { query: { queryKey: getGetAlphaTradingQueryKey(CAP), refetchInterval: 15000, retry: 1 } });
   const d = q.data;
-  return <section className={card} data-testid="alpha-capital" aria-label={x('Projeção de capital simulado', 'Paper capital projection', 'Proyección de capital simulado')}>
-    <h2 className="display text-lg font-extrabold">{x('Projeção de capital simulado', 'Paper capital projection', 'Proyección de capital simulado')}</h2>
-    <p className="mt-1 text-sm text-[#5B6B85]">{x('Simulação, sem dinheiro real. Separado dos saldos emulados e nativos; não é lucro distribuível.', 'Simulation, no real money. Separate from emulated and native balances; not distributable profit.', 'Simulación, sin dinero real. Separado de los saldos emulados y nativos; no es ganancia distribuible.')}</p>
+  return <section className={card} data-testid="alpha-capital" aria-label={x('Projeção de capital', 'Capital projection', 'Proyección de capital')}>
+    <h2 className="display text-lg font-extrabold">{x('Projeção de capital', 'Capital projection', 'Proyección de capital')}</h2>
     {q.isLoading && <div className="mt-3 h-24 animate-pulse rounded-xl bg-[#E4DCCB]/60" aria-busy="true" />}
     {q.isError && <div role="alert" className="mt-3 grid justify-items-start gap-2"><p className="font-bold">{x('Não conseguimos carregar a projeção.', 'Could not load the projection.', 'No pudimos cargar la proyección.')}</p><button type="button" onClick={() => void q.refetch()} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white"><RefreshCw className="h-4 w-4" aria-hidden="true" />{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button></div>}
     {d && <div className="mt-3 grid gap-3">

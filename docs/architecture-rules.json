@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "accounts": [],
+    "public-testnet": [],
     "wallets": ["accounts"],
     "ledger": ["accounts"],
     "agents": ["risk"],
