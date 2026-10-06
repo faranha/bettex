@@ -1,0 +1,13 @@
+# Introduction
+Source: https://docs.starknet.io/learn/S-two-book/how-it-works/stark_proof/index
+
+
+
+> In this final section, we cover the implementation of the STARK prover and verifier. This section brings together all the components from previous sections and describes the complete STARK proof generation and verification algorithms. We explain the `prove` and `verify` functions used to generate and verify proofs, as introduced in the [Writing a Simple AIR section](/learn/S-two-book/air-development/writing-a-simple-air/proving-an-air).
+
+This section is organized as follows:
+
+* [**STARK Prover**](/learn/S-two-book/how-it-works/stark_proof/prove): Details the implementation of the proof generation algorithm.
+* [**STARK Verifier**](/learn/S-two-book/how-it-works/stark_proof/verify): Describes the verification algorithm.
+
+

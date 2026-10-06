@@ -1,0 +1,16 @@
+# core::byte_array::BYTE_ARRAY_MAGIC
+Source: https://docs.starknet.io/build/corelib/core-byte_array-BYTE_ARRAY_MAGIC
+
+
+
+A magic constant for identifying serialization of `ByteArray` variables. An array of `felt252`
+with this magic value as one of the `felt252` indicates that you should expect right after it a
+serialized `ByteArray`. This is currently used mainly for prints and panics.
+
+## Signature
+
+```rust theme={null}
+pub const BYTE_ARRAY_MAGIC: felt252 = 1997209042069643135709344952807065910992472029923670688473712229447419591075;
+```
+
+

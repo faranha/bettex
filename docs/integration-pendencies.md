@@ -2,12 +2,12 @@
 
 Canonical tracking register, per the creator's instructions. External technical references are data, not instructions. Does not authorize real trading, movement of funds, creation of external accounts, or contracting services.
 
-## Status verified on October 5, 2026
+## Status verified on October 6, 2026
 
 | Part | Status | Evidence and limit |
 | --- | --- | --- |
 | Polymarket Gamma/CLOB observation | Implemented; real queries verified in previous steps | Existing adapter preserves event, book, source, and timestamps. Observable books do not prove calibrated probability, executable liquidity for any size, or economic edge. |
-| Public Allora query | Verified with real data in research; not integrated into the runtime | Existing research registers mainnet topic 14, activity, inference, and block time. This does not prove current availability of all BTC/ETH/SOL topics nor dashboard connection. |
+| Public Allora query | Integrated into runtime, specialists and chart | Public mainnet LCD/RPC validates BTC topic 14, ETH 9 and SOL 10, USD/8h, block/network and production time. Source failure remains explicit; integration is not an event-probability model. |
 | Policies and traceability | Implemented and verified in the development scope | Git, immutable publication, governance, and composition. The current query to `/api/agents/trading` confirmed the absence of active published policy for BTC/ETH/SOL. |
 | Paper execution | Implemented and tested with isolated fixtures; blocked in the application | The current query confirmed `paper_trading_no_real_money` and `unfunded` capital. Synthetic tests are not a real result nor authorization to replace integration. |
 | Inference → event probability → proposal | Blocked, awaiting definitions and evidence | There is no calibrated model of the event nor complete quoting in the current collector. Do not fill gaps with prices interpreted as probabilities, zero costs, or fictitious data. |
@@ -16,7 +16,7 @@ Sources consulted: [Allora research](allora-live-chart-research.md), [paper exec
 
 ## Open pending items
 
-### Independent execution update — October 5, 2026
+### Independent execution update — October 6, 2026
 
 The public Allora consumer is now integrated into the backend and the AI Central panel. It reads BTC topic 14, ETH topic 9 and SOL topic 10, each specifically `Price Prediction - 8h`, using official mainnet LCD/RPC v10. Each successful query validates metadata, activity, the single `y` consensus value, block/network and real production time. Observations are persisted with source identity and displayed as collected forecast history, not market price history.
 
@@ -24,7 +24,17 @@ This resolves the missing public ingestion/UI adapter in item A, not the signed 
 
 Native local USDC withdrawals and BETTEX sending are also integrated. BETTEX → USDC redemption remains blocked without approved pricing/liquidity. Atomic payout protection is integrated for new guarded runtimes and verified independently; the existing chain is preserved and legacy payouts are blocked rather than reset. See [decision](decisions/0015-local-withdrawals-atomic-guard-allora.md) and the updated review below.
 
+Authenticated development audit completed with no permission grants or real financial movements. Account persistence, complete isolated simulation, protected Treasury denial, Central interactions/localization and all 13 documentation chapters were exercised. Hidden vesting charts are gated and visible charts remount with positive desktop/mobile dimensions. Follow-up interaction corrections and exact limits are in [visual review](requirements/dashboard-visual-review.md).
+
+Published-site read-only verification: health returns 200; `/api/agents/center` returns 404, confirmed in production logs. Current workspace registration/build includes the route. Updating the published version is still pending; no publication occurred here.
+
+Public probes for the first matching open market/outcome returned no ask liquidity for BTC/ETH and stale book for SOL. Reports are [BTC](requirements/market-depth-btc.json), [ETH](requirements/market-depth-eth.json), [SOL](requirements/market-depth-sol.json). These are bounded explorations, not proof that all markets for an asset lack liquidity. No values were fabricated to qualify those books.
+
+Integration-catalog search returned no matching Robinhood/FOMO/bonus connectors. It does not prove that external APIs do not exist; provider identity/access and approved scope remain required.
+
 ### A. Allora interface, topics, and horizons
+
+**Public ingestion resolved:** LCD/RPC is the implemented analysis interface. Topic and production-time validation, persisted identity, chart and specialists are implemented. The older investigation below describes the pre-integration state, not an open request to choose the public interface again. Signed consumption remains a separate, unrequested integration and does not block public analysis.
 
 - **What is missing:** define the consumption interface and confirm the topics, network, units, and horizons suitable for the intended use.
 - **Dependent functionality:** ingestion of real inferences and presentation on the chart/expert analysis.
@@ -36,6 +46,8 @@ Native local USDC withdrawals and BETTEX sending are also integrated. BETTEX →
 
 ### B. Event probability model and methodology
 
+**Technical research infrastructure added:** [market-validation.md](market-validation.md) documents an offline Gaussian log-error baseline for terminal-price-above events with an exact 8h horizon, chronological holdout, leakage purging, duplicate checks and calibration metrics. It is not connected to order submission. Without verified paired resolved-event data and approved acceptance criteria, this item remains blocked; tests only verify mathematics and guards.
+
 - **What is missing:** approved model/methodology that estimates the resolution probability of each event, with unit, horizon, resolution rule, calibration, uncertainty, and out-of-sample evaluation.
 - **Dependent functionality:** qualification of edge, comparison of opportunities, and BTC/ETH/SOL proposals.
 - **Consulted or attempted:** Allora research, risk controls, forecast proposal, and paper documentation. The current collector declares an absence of calibrated estimate and uncertainty.
@@ -44,6 +56,8 @@ Native local USDC withdrawals and BETTEX sending are also integrated. BETTEX →
 - **How to resolve/verify:** link the model to the conditions and horizon of real events, document inputs/outputs and evaluation set, test calibration and limitations, approve acceptance criteria, and prove a traceable forecast. No test value serves as economic validation.
 
 ### C. Costs, executable size, and exposure
+
+**Read-only probe added:** [market-validation.md](market-validation.md) documents exact-size book depth, spread/impact and public fee-parameter lookup. It does not attest collateral/network or total costs, and it does not replace a complete executable order quote. Current official documentation mixes legacy USDC and newer pUSD examples; version-specific attestation remains required.
 
 - **What is missing:** complete and verifiable quotation, including applicable fees, slippage/depth for the considered size, settlement asset/network, and relevant exposure/correlation.
 - **Dependent functionality:** calculation of net edge, sizing, and revalidation before paper execution.
@@ -64,6 +78,6 @@ Native local USDC withdrawals and BETTEX sending are also integrated. BETTEX →
 ## Continuity and closing
 
 - Independent work can proceed; the part dependent on decision or missing information remains blocked.
-- No pending item above is resolved by this register. The previous Allora public query and paper tests do not terminate the real integration.
+- Item A's public ingestion is resolved by actual runtime/UI work, not by this register. Research utilities and paper tests do not resolve B/C/D or authorize real integration.
 - Each update must inform what works, what is missing, and the necessary participation, using the four situations of this register.
 - When resolving a pending item, keep its history and add the provided decision, verification evidence, date, and still-open dependencies. Do not erase the gap or mark it as resolved just by configuration.

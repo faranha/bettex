@@ -1,0 +1,50 @@
+# core::iter::traits::collect::Extend
+Source: https://docs.starknet.io/build/corelib/core-iter-traits-collect-Extend
+
+
+
+Extend a collection with the contents of an iterator.
+Iterators produce a series of values, and collections can also be thought
+of as a series of values. The `Extend` trait bridges this gap, allowing you
+to extend a collection by including the contents of that iterator. When
+extending a collection with an already existing key, that entry is updated
+or, in the case of collections that permit multiple entries with equal
+keys, that entry is inserted.
+
+## Signature
+
+```rust theme={null}
+pub trait Extend
+```
+
+## Examples
+
+Basic usage:
+
+```rust theme={null}
+let mut arr = array![1, 2];
+
+arr.extend(array![3, 4, 5]);
+
+assert_eq!(arr, array![1, 2, 3, 4, 5]);
+```
+
+## Trait functions
+
+### extend
+
+Extends a collection with the contents of an iterator.
+
+#### Signature
+
+```rust theme={null}
+fn extend,
+    +TypeEqual,
+    +Destruct,
+    +Destruct,
+>(
+    ref self: T, iter: I,
+)
+```
+
+

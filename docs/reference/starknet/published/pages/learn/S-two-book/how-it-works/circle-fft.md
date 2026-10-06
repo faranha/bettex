@@ -1,0 +1,17 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.starknet.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Introduction
+
+> This section introduces the Circle FFT algorithm, used to interpolate bivariate polynomials over the circle domain using a divide-and-conquer approach.
+
+This section is organized as follows:
+
+* **[Algorithm](/learn/S-two-book/how-it-works/circle-fft/algorithm)**: Overview of the Circle FFT algorithm with concrete examples showing the three-step interpolation process.
+* **[Twiddles](/learn/S-two-book/how-it-works/circle-fft/twiddles)**: Precomputation and storage of twiddle values required for efficient FFT operations.
+* **[Interpolate](/learn/S-two-book/how-it-works/circle-fft/interpolation)**: Detailed implementation walkthrough of the interpolation function with code breakdown.
+* **[Basis and Dimension Gap](/learn/S-two-book/how-it-works/circle-fft/basis)**: FFT basis for Circle FFT and analysis of the dimension gap in circle polynomial spaces.
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

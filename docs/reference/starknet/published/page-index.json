@@ -1,0 +1,3107 @@
+[
+  {
+    "url": "https://docs.starknet.io/",
+    "path": "published/pages/_home.md",
+    "source": "https://docs.starknet.io/index.md"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-RangeCheck",
+    "path": "published/pages/build/corelib/core-RangeCheck.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-SegmentArena",
+    "path": "published/pages/build/corelib/core-SegmentArena.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-assert",
+    "path": "published/pages/build/corelib/core-assert.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-blake-blake2s_compress",
+    "path": "published/pages/build/corelib/core-blake-blake2s_compress.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-blake-blake2s_finalize",
+    "path": "published/pages/build/corelib/core-blake-blake2s_finalize.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-bool",
+    "path": "published/pages/build/corelib/core-bool.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-boolean-BoolTrait",
+    "path": "published/pages/build/corelib/core-boolean-BoolTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-box-Box",
+    "path": "published/pages/build/corelib/core-box-Box.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-box-BoxTrait",
+    "path": "published/pages/build/corelib/core-box-BoxTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-byte_array-BYTE_ARRAY_MAGIC",
+    "path": "published/pages/build/corelib/core-byte_array-BYTE_ARRAY_MAGIC.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-byte_array-ByteArray",
+    "path": "published/pages/build/corelib/core-byte_array-ByteArray.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-byte_array-ByteArrayImpl",
+    "path": "published/pages/build/corelib/core-byte_array-ByteArrayImpl.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-byte_array-ByteArrayIter",
+    "path": "published/pages/build/corelib/core-byte_array-ByteArrayIter.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-byte_array-ByteArrayTrait",
+    "path": "published/pages/build/corelib/core-byte_array-ByteArrayTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-bytes_31-Bytes31Impl",
+    "path": "published/pages/build/corelib/core-bytes_31-Bytes31Impl.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-bytes_31-Bytes31Trait",
+    "path": "published/pages/build/corelib/core-bytes_31-Bytes31Trait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-bytes_31-bytes31",
+    "path": "published/pages/build/corelib/core-bytes_31-bytes31.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-AddInputResult",
+    "path": "published/pages/build/corelib/core-circuit-AddInputResult.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-AddInputResultTrait",
+    "path": "published/pages/build/corelib/core-circuit-AddInputResultTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-AddMod",
+    "path": "published/pages/build/corelib/core-circuit-AddMod.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-Circuit",
+    "path": "published/pages/build/corelib/core-circuit-Circuit.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-CircuitDefinition",
+    "path": "published/pages/build/corelib/core-circuit-CircuitDefinition.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-CircuitElement",
+    "path": "published/pages/build/corelib/core-circuit-CircuitElement.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-CircuitElementCopy",
+    "path": "published/pages/build/corelib/core-circuit-CircuitElementCopy.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-CircuitElementDrop",
+    "path": "published/pages/build/corelib/core-circuit-CircuitElementDrop.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-CircuitElementTrait",
+    "path": "published/pages/build/corelib/core-circuit-CircuitElementTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-CircuitInput",
+    "path": "published/pages/build/corelib/core-circuit-CircuitInput.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-CircuitInputs",
+    "path": "published/pages/build/corelib/core-circuit-CircuitInputs.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-CircuitModulus",
+    "path": "published/pages/build/corelib/core-circuit-CircuitModulus.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-CircuitOutputsTrait",
+    "path": "published/pages/build/corelib/core-circuit-CircuitOutputsTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-ConstOne",
+    "path": "published/pages/build/corelib/core-circuit-ConstOne.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-ConstZero",
+    "path": "published/pages/build/corelib/core-circuit-ConstZero.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-DestructFailureGuarantee",
+    "path": "published/pages/build/corelib/core-circuit-DestructFailureGuarantee.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-EvalCircuitTrait",
+    "path": "published/pages/build/corelib/core-circuit-EvalCircuitTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-MulMod",
+    "path": "published/pages/build/corelib/core-circuit-MulMod.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-RangeCheck96",
+    "path": "published/pages/build/corelib/core-circuit-RangeCheck96.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-circuit_add",
+    "path": "published/pages/build/corelib/core-circuit-circuit_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-circuit_inverse",
+    "path": "published/pages/build/corelib/core-circuit-circuit_inverse.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-circuit_mul",
+    "path": "published/pages/build/corelib/core-circuit-circuit_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-circuit_sub",
+    "path": "published/pages/build/corelib/core-circuit-circuit_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-u384",
+    "path": "published/pages/build/corelib/core-circuit-u384.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-circuit-u96",
+    "path": "published/pages/build/corelib/core-circuit-u96.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-clone-Clone",
+    "path": "published/pages/build/corelib/core-clone-Clone.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-cmp-max",
+    "path": "published/pages/build/corelib/core-cmp-max.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-cmp-min",
+    "path": "published/pages/build/corelib/core-cmp-min.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-cmp-minmax",
+    "path": "published/pages/build/corelib/core-cmp-minmax.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-debug-print_byte_array_as_string",
+    "path": "published/pages/build/corelib/core-debug-print_byte_array_as_string.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-EcOp",
+    "path": "published/pages/build/corelib/core-ec-EcOp.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-EcPoint",
+    "path": "published/pages/build/corelib/core-ec-EcPoint.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-EcPointImpl",
+    "path": "published/pages/build/corelib/core-ec-EcPointImpl.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-EcPointTrait",
+    "path": "published/pages/build/corelib/core-ec-EcPointTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-EcState",
+    "path": "published/pages/build/corelib/core-ec-EcState.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-EcStateImpl",
+    "path": "published/pages/build/corelib/core-ec-EcStateImpl.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-EcStateTrait",
+    "path": "published/pages/build/corelib/core-ec-EcStateTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-NonZeroEcPoint",
+    "path": "published/pages/build/corelib/core-ec-NonZeroEcPoint.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-ec_point_unwrap",
+    "path": "published/pages/build/corelib/core-ec-ec_point_unwrap.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-stark_curve-ALPHA",
+    "path": "published/pages/build/corelib/core-ec-stark_curve-ALPHA.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-stark_curve-BETA",
+    "path": "published/pages/build/corelib/core-ec-stark_curve-BETA.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-stark_curve-GEN_X",
+    "path": "published/pages/build/corelib/core-ec-stark_curve-GEN_X.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-stark_curve-GEN_Y",
+    "path": "published/pages/build/corelib/core-ec-stark_curve-GEN_Y.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ec-stark_curve-ORDER",
+    "path": "published/pages/build/corelib/core-ec-stark_curve-ORDER.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ecdsa-check_ecdsa_signature",
+    "path": "published/pages/build/corelib/core-ecdsa-check_ecdsa_signature.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ecdsa-recover_public_key",
+    "path": "published/pages/build/corelib/core-ecdsa-recover_public_key.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-felt252",
+    "path": "published/pages/build/corelib/core-felt252.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-felt252_div",
+    "path": "published/pages/build/corelib/core-felt252_div.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-fmt-Debug",
+    "path": "published/pages/build/corelib/core-fmt-Debug.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-fmt-Display",
+    "path": "published/pages/build/corelib/core-fmt-Display.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-fmt-Error",
+    "path": "published/pages/build/corelib/core-fmt-Error.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-fmt-Formatter",
+    "path": "published/pages/build/corelib/core-fmt-Formatter.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-fmt-LowerHex",
+    "path": "published/pages/build/corelib/core-fmt-LowerHex.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-fmt-into_felt252_based",
+    "path": "published/pages/build/corelib/core-fmt-into_felt252_based.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-gas-BuiltinCosts",
+    "path": "published/pages/build/corelib/core-gas-BuiltinCosts.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-gas-GasBuiltin",
+    "path": "published/pages/build/corelib/core-gas-GasBuiltin.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-gas-GasReserve",
+    "path": "published/pages/build/corelib/core-gas-GasReserve.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-gas-gas_reserve_create",
+    "path": "published/pages/build/corelib/core-gas-gas_reserve_create.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-gas-gas_reserve_utilize",
+    "path": "published/pages/build/corelib/core-gas-gas_reserve_utilize.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-gas-get_builtin_costs",
+    "path": "published/pages/build/corelib/core-gas-get_builtin_costs.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-gas-redeposit_gas",
+    "path": "published/pages/build/corelib/core-gas-redeposit_gas.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-gas-withdraw_gas",
+    "path": "published/pages/build/corelib/core-gas-withdraw_gas.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-gas-withdraw_gas_all",
+    "path": "published/pages/build/corelib/core-gas-withdraw_gas_all.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-hash-Hash",
+    "path": "published/pages/build/corelib/core-hash-Hash.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-hash-HashStateExTrait",
+    "path": "published/pages/build/corelib/core-hash-HashStateExTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-hash-HashStateTrait",
+    "path": "published/pages/build/corelib/core-hash-HashStateTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-hash-LegacyHash",
+    "path": "published/pages/build/corelib/core-hash-LegacyHash.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-hash-into_felt252_based",
+    "path": "published/pages/build/corelib/core-hash-into_felt252_based.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-Bitwise",
+    "path": "published/pages/build/corelib/core-integer-Bitwise.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-BoundedInt",
+    "path": "published/pages/build/corelib/core-integer-BoundedInt.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-NumericLiteral",
+    "path": "published/pages/build/corelib/core-integer-NumericLiteral.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-U128MulGuarantee",
+    "path": "published/pages/build/corelib/core-integer-U128MulGuarantee.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i128",
+    "path": "published/pages/build/corelib/core-integer-i128.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i128_diff",
+    "path": "published/pages/build/corelib/core-integer-i128_diff.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i16",
+    "path": "published/pages/build/corelib/core-integer-i16.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i16_diff",
+    "path": "published/pages/build/corelib/core-integer-i16_diff.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i16_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-i16_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i32",
+    "path": "published/pages/build/corelib/core-integer-i32.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i32_diff",
+    "path": "published/pages/build/corelib/core-integer-i32_diff.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i32_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-i32_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i64",
+    "path": "published/pages/build/corelib/core-integer-i64.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i64_diff",
+    "path": "published/pages/build/corelib/core-integer-i64_diff.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i64_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-i64_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i8",
+    "path": "published/pages/build/corelib/core-integer-i8.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i8_diff",
+    "path": "published/pages/build/corelib/core-integer-i8_diff.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-i8_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-i8_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128",
+    "path": "published/pages/build/corelib/core-integer-u128.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128_byte_reverse",
+    "path": "published/pages/build/corelib/core-integer-u128_byte_reverse.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128_overflowing_add",
+    "path": "published/pages/build/corelib/core-integer-u128_overflowing_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128_overflowing_mul",
+    "path": "published/pages/build/corelib/core-integer-u128_overflowing_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128_overflowing_sub",
+    "path": "published/pages/build/corelib/core-integer-u128_overflowing_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128_safe_divmod",
+    "path": "published/pages/build/corelib/core-integer-u128_safe_divmod.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128_sqrt",
+    "path": "published/pages/build/corelib/core-integer-u128_sqrt.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-u128_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128_wrapping_add",
+    "path": "published/pages/build/corelib/core-integer-u128_wrapping_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u128_wrapping_sub",
+    "path": "published/pages/build/corelib/core-integer-u128_wrapping_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u16",
+    "path": "published/pages/build/corelib/core-integer-u16.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u16_overflowing_add",
+    "path": "published/pages/build/corelib/core-integer-u16_overflowing_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u16_overflowing_sub",
+    "path": "published/pages/build/corelib/core-integer-u16_overflowing_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u16_safe_divmod",
+    "path": "published/pages/build/corelib/core-integer-u16_safe_divmod.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u16_sqrt",
+    "path": "published/pages/build/corelib/core-integer-u16_sqrt.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u16_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-u16_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u16_wrapping_add",
+    "path": "published/pages/build/corelib/core-integer-u16_wrapping_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u16_wrapping_sub",
+    "path": "published/pages/build/corelib/core-integer-u16_wrapping_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u256",
+    "path": "published/pages/build/corelib/core-integer-u256.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u256_overflow_mul",
+    "path": "published/pages/build/corelib/core-integer-u256_overflow_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u256_overflow_sub",
+    "path": "published/pages/build/corelib/core-integer-u256_overflow_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u256_overflowing_add",
+    "path": "published/pages/build/corelib/core-integer-u256_overflowing_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u256_overflowing_mul",
+    "path": "published/pages/build/corelib/core-integer-u256_overflowing_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u256_overflowing_sub",
+    "path": "published/pages/build/corelib/core-integer-u256_overflowing_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u256_sqrt",
+    "path": "published/pages/build/corelib/core-integer-u256_sqrt.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u256_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-u256_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u32",
+    "path": "published/pages/build/corelib/core-integer-u32.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u32_overflowing_add",
+    "path": "published/pages/build/corelib/core-integer-u32_overflowing_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u32_overflowing_sub",
+    "path": "published/pages/build/corelib/core-integer-u32_overflowing_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u32_safe_divmod",
+    "path": "published/pages/build/corelib/core-integer-u32_safe_divmod.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u32_sqrt",
+    "path": "published/pages/build/corelib/core-integer-u32_sqrt.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u32_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-u32_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u32_wrapping_add",
+    "path": "published/pages/build/corelib/core-integer-u32_wrapping_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u32_wrapping_sub",
+    "path": "published/pages/build/corelib/core-integer-u32_wrapping_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u512",
+    "path": "published/pages/build/corelib/core-integer-u512.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u512_safe_div_rem_by_u256",
+    "path": "published/pages/build/corelib/core-integer-u512_safe_div_rem_by_u256.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u64",
+    "path": "published/pages/build/corelib/core-integer-u64.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u64_overflowing_add",
+    "path": "published/pages/build/corelib/core-integer-u64_overflowing_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u64_overflowing_sub",
+    "path": "published/pages/build/corelib/core-integer-u64_overflowing_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u64_safe_divmod",
+    "path": "published/pages/build/corelib/core-integer-u64_safe_divmod.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u64_sqrt",
+    "path": "published/pages/build/corelib/core-integer-u64_sqrt.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u64_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-u64_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u64_wrapping_add",
+    "path": "published/pages/build/corelib/core-integer-u64_wrapping_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u64_wrapping_sub",
+    "path": "published/pages/build/corelib/core-integer-u64_wrapping_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u8",
+    "path": "published/pages/build/corelib/core-integer-u8.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u8_overflowing_add",
+    "path": "published/pages/build/corelib/core-integer-u8_overflowing_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u8_overflowing_sub",
+    "path": "published/pages/build/corelib/core-integer-u8_overflowing_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u8_safe_divmod",
+    "path": "published/pages/build/corelib/core-integer-u8_safe_divmod.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u8_sqrt",
+    "path": "published/pages/build/corelib/core-integer-u8_sqrt.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u8_wide_mul",
+    "path": "published/pages/build/corelib/core-integer-u8_wide_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u8_wrapping_add",
+    "path": "published/pages/build/corelib/core-integer-u8_wrapping_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-integer-u8_wrapping_sub",
+    "path": "published/pages/build/corelib/core-integer-u8_wrapping_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-DestructWith",
+    "path": "published/pages/build/corelib/core-internal-DestructWith.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-DropWith",
+    "path": "published/pages/build/corelib/core-internal-DropWith.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-InferDestruct",
+    "path": "published/pages/build/corelib/core-internal-InferDestruct.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-InferDrop",
+    "path": "published/pages/build/corelib/core-internal-InferDrop.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-LoopResult",
+    "path": "published/pages/build/corelib/core-internal-LoopResult.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-OptionRev",
+    "path": "published/pages/build/corelib/core-internal-OptionRev.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-AddHelper",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-AddHelper.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-ConstrainHelper",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-ConstrainHelper.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-DivRemHelper",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-DivRemHelper.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-MulHelper",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-MulHelper.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-NegateHelper",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-NegateHelper.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-SubHelper",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-SubHelper.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-TrimMaxHelper",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-TrimMaxHelper.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-TrimMinHelper",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-TrimMinHelper.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-UnitInt",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-UnitInt.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-bounded_int_add",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-bounded_int_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-bounded_int_constrain",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-bounded_int_constrain.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-bounded_int_div_rem",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-bounded_int_div_rem.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-bounded_int_is_zero",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-bounded_int_is_zero.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-bounded_int_mul",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-bounded_int_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-bounded_int_sub",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-bounded_int_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-bounded_int_trim_max",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-bounded_int_trim_max.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-bounded_int_trim_min",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-bounded_int_trim_min.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-downcast",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-downcast.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-bounded_int-upcast",
+    "path": "published/pages/build/corelib/core-internal-bounded_int-upcast.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-require_implicit",
+    "path": "published/pages/build/corelib/core-internal-require_implicit.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-internal-revoke_ap_tracking",
+    "path": "published/pages/build/corelib/core-internal-revoke_ap_tracking.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-iter-adapters-peekable-PeekableTrait",
+    "path": "published/pages/build/corelib/core-iter-adapters-peekable-PeekableTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-iter-adapters-zip-zip",
+    "path": "published/pages/build/corelib/core-iter-adapters-zip-zip.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-iter-traits-collect-Extend",
+    "path": "published/pages/build/corelib/core-iter-traits-collect-Extend.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-iter-traits-collect-FromIterator",
+    "path": "published/pages/build/corelib/core-iter-traits-collect-FromIterator.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-iter-traits-collect-IntoIterator",
+    "path": "published/pages/build/corelib/core-iter-traits-collect-IntoIterator.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-iter-traits-iterator-Iterator",
+    "path": "published/pages/build/corelib/core-iter-traits-iterator-Iterator.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-keccak-cairo_keccak",
+    "path": "published/pages/build/corelib/core-keccak-cairo_keccak.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-keccak-compute_keccak_byte_array",
+    "path": "published/pages/build/corelib/core-keccak-compute_keccak_byte_array.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-keccak-keccak_u256s_be_inputs",
+    "path": "published/pages/build/corelib/core-keccak-keccak_u256s_be_inputs.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-keccak-keccak_u256s_le_inputs",
+    "path": "published/pages/build/corelib/core-keccak-keccak_u256s_le_inputs.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-math-egcd",
+    "path": "published/pages/build/corelib/core-math-egcd.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-math-inv_mod",
+    "path": "published/pages/build/corelib/core-math-inv_mod.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-math-u256_div_mod_n",
+    "path": "published/pages/build/corelib/core-math-u256_div_mod_n.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-math-u256_inv_mod",
+    "path": "published/pages/build/corelib/core-math-u256_inv_mod.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-math-u256_mul_mod_n",
+    "path": "published/pages/build/corelib/core-math-u256_mul_mod_n.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-metaprogramming-TypeEqual",
+    "path": "published/pages/build/corelib/core-metaprogramming-TypeEqual.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-never",
+    "path": "published/pages/build/corelib/core-never.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-nullable-FromNullableResult",
+    "path": "published/pages/build/corelib/core-nullable-FromNullableResult.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-nullable-Nullable",
+    "path": "published/pages/build/corelib/core-nullable-Nullable.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-nullable-NullableTrait",
+    "path": "published/pages/build/corelib/core-nullable-NullableTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-nullable-match_nullable",
+    "path": "published/pages/build/corelib/core-nullable-match_nullable.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-nullable-null",
+    "path": "published/pages/build/corelib/core-nullable-null.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-bit_size-BitSize",
+    "path": "published/pages/build/corelib/core-num-traits-bit_size-BitSize.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-bounded-Bounded",
+    "path": "published/pages/build/corelib/core-num-traits-bounded-Bounded.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-one-One",
+    "path": "published/pages/build/corelib/core-num-traits-one-One.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-checked-CheckedAdd",
+    "path": "published/pages/build/corelib/core-num-traits-ops-checked-CheckedAdd.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-divrem-DivRem",
+    "path": "published/pages/build/corelib/core-num-traits-ops-divrem-DivRem.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-overflowing-OverflowingAdd",
+    "path": "published/pages/build/corelib/core-num-traits-ops-overflowing-OverflowingAdd.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-overflowing-OverflowingMul",
+    "path": "published/pages/build/corelib/core-num-traits-ops-overflowing-OverflowingMul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-pow-Pow",
+    "path": "published/pages/build/corelib/core-num-traits-ops-pow-Pow.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-saturating-SaturatingAdd",
+    "path": "published/pages/build/corelib/core-num-traits-ops-saturating-SaturatingAdd.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-saturating-SaturatingMul",
+    "path": "published/pages/build/corelib/core-num-traits-ops-saturating-SaturatingMul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-saturating-SaturatingSub",
+    "path": "published/pages/build/corelib/core-num-traits-ops-saturating-SaturatingSub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-sqrt-Sqrt",
+    "path": "published/pages/build/corelib/core-num-traits-ops-sqrt-Sqrt.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-widesquare-WideSquare",
+    "path": "published/pages/build/corelib/core-num-traits-ops-widesquare-WideSquare.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-wrapping-WrappingAdd",
+    "path": "published/pages/build/corelib/core-num-traits-ops-wrapping-WrappingAdd.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-wrapping-WrappingMul",
+    "path": "published/pages/build/corelib/core-num-traits-ops-wrapping-WrappingMul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-ops-wrapping-WrappingSub",
+    "path": "published/pages/build/corelib/core-num-traits-ops-wrapping-WrappingSub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-num-traits-zero-Zero",
+    "path": "published/pages/build/corelib/core-num-traits-zero-Zero.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-arith-AddAssign",
+    "path": "published/pages/build/corelib/core-ops-arith-AddAssign.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-arith-DivAssign",
+    "path": "published/pages/build/corelib/core-ops-arith-DivAssign.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-arith-MulAssign",
+    "path": "published/pages/build/corelib/core-ops-arith-MulAssign.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-arith-RemAssign",
+    "path": "published/pages/build/corelib/core-ops-arith-RemAssign.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-arith-SubAssign",
+    "path": "published/pages/build/corelib/core-ops-arith-SubAssign.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-deref-Deref",
+    "path": "published/pages/build/corelib/core-ops-deref-Deref.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-deref-DerefMut",
+    "path": "published/pages/build/corelib/core-ops-deref-DerefMut.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-function-Fn",
+    "path": "published/pages/build/corelib/core-ops-function-Fn.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-function-FnOnce",
+    "path": "published/pages/build/corelib/core-ops-function-FnOnce.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-index-Index",
+    "path": "published/pages/build/corelib/core-ops-index-Index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-index-IndexView",
+    "path": "published/pages/build/corelib/core-ops-index-IndexView.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-range-Range",
+    "path": "published/pages/build/corelib/core-ops-range-Range.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-range-RangeInclusive",
+    "path": "published/pages/build/corelib/core-ops-range-RangeInclusive.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-range-RangeInclusiveIterator",
+    "path": "published/pages/build/corelib/core-ops-range-RangeInclusiveIterator.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-range-RangeInclusiveTrait",
+    "path": "published/pages/build/corelib/core-ops-range-RangeInclusiveTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-range-RangeIterator",
+    "path": "published/pages/build/corelib/core-ops-range-RangeIterator.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-ops-range-RangeTrait",
+    "path": "published/pages/build/corelib/core-ops-range-RangeTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-option-Option",
+    "path": "published/pages/build/corelib/core-option-Option.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-option-OptionTrait",
+    "path": "published/pages/build/corelib/core-option-OptionTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-panic_with_const_felt252",
+    "path": "published/pages/build/corelib/core-panic_with_const_felt252.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-panic_with_felt252",
+    "path": "published/pages/build/corelib/core-panic_with_felt252.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-panics-Panic",
+    "path": "published/pages/build/corelib/core-panics-Panic.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-panics-PanicResult",
+    "path": "published/pages/build/corelib/core-panics-PanicResult.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-panics-panic_with_byte_array",
+    "path": "published/pages/build/corelib/core-panics-panic_with_byte_array.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-pedersen-HashState",
+    "path": "published/pages/build/corelib/core-pedersen-HashState.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-pedersen-Pedersen",
+    "path": "published/pages/build/corelib/core-pedersen-Pedersen.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-pedersen-PedersenImpl",
+    "path": "published/pages/build/corelib/core-pedersen-PedersenImpl.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-pedersen-PedersenTrait",
+    "path": "published/pages/build/corelib/core-pedersen-PedersenTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-poseidon-HashState",
+    "path": "published/pages/build/corelib/core-poseidon-HashState.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-poseidon-Poseidon",
+    "path": "published/pages/build/corelib/core-poseidon-Poseidon.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-poseidon-PoseidonImpl",
+    "path": "published/pages/build/corelib/core-poseidon-PoseidonImpl.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-poseidon-PoseidonTrait",
+    "path": "published/pages/build/corelib/core-poseidon-PoseidonTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-poseidon-hades_permutation",
+    "path": "published/pages/build/corelib/core-poseidon-hades_permutation.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-poseidon-poseidon_hash_span",
+    "path": "published/pages/build/corelib/core-poseidon-poseidon_hash_span.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-qm31-QM31Trait",
+    "path": "published/pages/build/corelib/core-qm31-QM31Trait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-qm31-m31_ops",
+    "path": "published/pages/build/corelib/core-qm31-m31_ops.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-qm31-m31_ops-m31_add",
+    "path": "published/pages/build/corelib/core-qm31-m31_ops-m31_add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-qm31-m31_ops-m31_div",
+    "path": "published/pages/build/corelib/core-qm31-m31_ops-m31_div.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-qm31-m31_ops-m31_mul",
+    "path": "published/pages/build/corelib/core-qm31-m31_ops-m31_mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-qm31-m31_ops-m31_sub",
+    "path": "published/pages/build/corelib/core-qm31-m31_ops-m31_sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-qm31-qm31",
+    "path": "published/pages/build/corelib/core-qm31-qm31.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-qm31-qm31_const",
+    "path": "published/pages/build/corelib/core-qm31-qm31_const.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-serde-Serde",
+    "path": "published/pages/build/corelib/core-serde-Serde.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-serde-into_felt252_based",
+    "path": "published/pages/build/corelib/core-serde-into_felt252_based.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-sha256-compute_sha256_byte_array",
+    "path": "published/pages/build/corelib/core-sha256-compute_sha256_byte_array.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-sha256-compute_sha256_u32_array",
+    "path": "published/pages/build/corelib/core-sha256-compute_sha256_u32_array.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-SyscallResult",
+    "path": "published/pages/build/corelib/core-starknet-SyscallResult.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-SyscallResultTrait",
+    "path": "published/pages/build/corelib/core-starknet-SyscallResultTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-System",
+    "path": "published/pages/build/corelib/core-starknet-System.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-VALIDATED",
+    "path": "published/pages/build/corelib/core-starknet-VALIDATED.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-account-AccountContract",
+    "path": "published/pages/build/corelib/core-starknet-account-AccountContract.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-account-AccountContractDispatcher",
+    "path": "published/pages/build/corelib/core-starknet-account-AccountContractDispatcher.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-account-AccountContractDispatcherTrait",
+    "path": "published/pages/build/corelib/core-starknet-account-AccountContractDispatcherTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-account-AccountContractLibraryDispatcher",
+    "path": "published/pages/build/corelib/core-starknet-account-AccountContractLibraryDispatcher.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-account-AccountContractSafeDispatcher",
+    "path": "published/pages/build/corelib/core-starknet-account-AccountContractSafeDispatcher.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-account-AccountContractSafeDispatcherTrait",
+    "path": "published/pages/build/corelib/core-starknet-account-AccountContractSafeDispatcherTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-account-AccountContractSafeLibraryDispatcher",
+    "path": "published/pages/build/corelib/core-starknet-account-AccountContractSafeLibraryDispatcher.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-account-Call",
+    "path": "published/pages/build/corelib/core-starknet-account-Call.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-class_hash-ClassHash",
+    "path": "published/pages/build/corelib/core-starknet-class_hash-ClassHash.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-class_hash-class_hash_const",
+    "path": "published/pages/build/corelib/core-starknet-class_hash-class_hash_const.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-contract_address-ContractAddress",
+    "path": "published/pages/build/corelib/core-starknet-contract_address-ContractAddress.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-eth_address-EthAddress",
+    "path": "published/pages/build/corelib/core-starknet-eth_address-EthAddress.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-eth_signature-is_eth_signature_valid",
+    "path": "published/pages/build/corelib/core-starknet-eth_signature-is_eth_signature_valid.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-eth_signature-public_key_point_to_eth_address",
+    "path": "published/pages/build/corelib/core-starknet-eth_signature-public_key_point_to_eth_address.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-eth_signature-verify_eth_signature",
+    "path": "published/pages/build/corelib/core-starknet-eth_signature-verify_eth_signature.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-event-Event",
+    "path": "published/pages/build/corelib/core-starknet-event-Event.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-event-EventEmitter",
+    "path": "published/pages/build/corelib/core-starknet-event-EventEmitter.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-BlockInfo",
+    "path": "published/pages/build/corelib/core-starknet-info-BlockInfo.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-get_block_info",
+    "path": "published/pages/build/corelib/core-starknet-info-get_block_info.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-get_block_number",
+    "path": "published/pages/build/corelib/core-starknet-info-get_block_number.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-get_block_timestamp",
+    "path": "published/pages/build/corelib/core-starknet-info-get_block_timestamp.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-get_caller_address",
+    "path": "published/pages/build/corelib/core-starknet-info-get_caller_address.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-get_contract_address",
+    "path": "published/pages/build/corelib/core-starknet-info-get_contract_address.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-get_execution_info",
+    "path": "published/pages/build/corelib/core-starknet-info-get_execution_info.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-get_tx_info",
+    "path": "published/pages/build/corelib/core-starknet-info-get_tx_info.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-v2-ExecutionInfo",
+    "path": "published/pages/build/corelib/core-starknet-info-v2-ExecutionInfo.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-v2-ResourceBounds",
+    "path": "published/pages/build/corelib/core-starknet-info-v2-ResourceBounds.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-info-v2-TxInfo",
+    "path": "published/pages/build/corelib/core-starknet-info-v2-TxInfo.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-secp256_trait-Secp256PointTrait",
+    "path": "published/pages/build/corelib/core-starknet-secp256_trait-Secp256PointTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-secp256_trait-Secp256Trait",
+    "path": "published/pages/build/corelib/core-starknet-secp256_trait-Secp256Trait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-secp256_trait-Signature",
+    "path": "published/pages/build/corelib/core-starknet-secp256_trait-Signature.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-secp256k1-Secp256k1Point",
+    "path": "published/pages/build/corelib/core-starknet-secp256k1-Secp256k1Point.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-secp256r1-Secp256r1Point",
+    "path": "published/pages/build/corelib/core-starknet-secp256r1-Secp256r1Point.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-IntoIterRange",
+    "path": "published/pages/build/corelib/core-starknet-storage-IntoIterRange.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-Mutable",
+    "path": "published/pages/build/corelib/core-starknet-storage-Mutable.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-PendingStoragePath",
+    "path": "published/pages/build/corelib/core-starknet-storage-PendingStoragePath.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-PendingStoragePathTrait",
+    "path": "published/pages/build/corelib/core-starknet-storage-PendingStoragePathTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StorableStoragePointerReadAccess",
+    "path": "published/pages/build/corelib/core-starknet-storage-StorableStoragePointerReadAccess.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StorageAsPath",
+    "path": "published/pages/build/corelib/core-starknet-storage-StorageAsPath.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StorageAsPointer",
+    "path": "published/pages/build/corelib/core-starknet-storage-StorageAsPointer.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StorageNodeDeref",
+    "path": "published/pages/build/corelib/core-starknet-storage-StorageNodeDeref.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StorageNodeMutDeref",
+    "path": "published/pages/build/corelib/core-starknet-storage-StorageNodeMutDeref.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StoragePath",
+    "path": "published/pages/build/corelib/core-starknet-storage-StoragePath.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StoragePathMutableConversion",
+    "path": "published/pages/build/corelib/core-starknet-storage-StoragePathMutableConversion.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StoragePointer",
+    "path": "published/pages/build/corelib/core-starknet-storage-StoragePointer.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StoragePointer0Offset",
+    "path": "published/pages/build/corelib/core-starknet-storage-StoragePointer0Offset.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StoragePointerReadAccess",
+    "path": "published/pages/build/corelib/core-starknet-storage-StoragePointerReadAccess.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-StoragePointerWriteAccess",
+    "path": "published/pages/build/corelib/core-starknet-storage-StoragePointerWriteAccess.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-SubPointersDeref",
+    "path": "published/pages/build/corelib/core-starknet-storage-SubPointersDeref.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-SubPointersMutDeref",
+    "path": "published/pages/build/corelib/core-starknet-storage-SubPointersMutDeref.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-ValidStorageTypeTrait",
+    "path": "published/pages/build/corelib/core-starknet-storage-ValidStorageTypeTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-map-Map",
+    "path": "published/pages/build/corelib/core-starknet-storage-map-Map.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-map-StorageMapReadAccess",
+    "path": "published/pages/build/corelib/core-starknet-storage-map-StorageMapReadAccess.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-map-StorageMapWriteAccess",
+    "path": "published/pages/build/corelib/core-starknet-storage-map-StorageMapWriteAccess.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-map-StoragePathEntry",
+    "path": "published/pages/build/corelib/core-starknet-storage-map-StoragePathEntry.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-storage_base-FlattenedStorage",
+    "path": "published/pages/build/corelib/core-starknet-storage-storage_base-FlattenedStorage.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-storage_base-StorageBase",
+    "path": "published/pages/build/corelib/core-starknet-storage-storage_base-StorageBase.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-storage_base-StorageTrait",
+    "path": "published/pages/build/corelib/core-starknet-storage-storage_base-StorageTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-storage_base-StorageTraitMut",
+    "path": "published/pages/build/corelib/core-starknet-storage-storage_base-StorageTraitMut.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-storage_node-StorageNode",
+    "path": "published/pages/build/corelib/core-starknet-storage-storage_node-StorageNode.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-storage_node-StorageNodeMut",
+    "path": "published/pages/build/corelib/core-starknet-storage-storage_node-StorageNodeMut.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-sub_pointers-SubPointers",
+    "path": "published/pages/build/corelib/core-starknet-storage-sub_pointers-SubPointers.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-sub_pointers-SubPointersForward",
+    "path": "published/pages/build/corelib/core-starknet-storage-sub_pointers-SubPointersForward.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-sub_pointers-SubPointersMut",
+    "path": "published/pages/build/corelib/core-starknet-storage-sub_pointers-SubPointersMut.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-sub_pointers-SubPointersMutForward",
+    "path": "published/pages/build/corelib/core-starknet-storage-sub_pointers-SubPointersMutForward.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-vec-MutableVecTrait",
+    "path": "published/pages/build/corelib/core-starknet-storage-vec-MutableVecTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-vec-Vec",
+    "path": "published/pages/build/corelib/core-starknet-storage-vec-Vec.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-vec-VecIter",
+    "path": "published/pages/build/corelib/core-starknet-storage-vec-VecIter.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage-vec-VecTrait",
+    "path": "published/pages/build/corelib/core-starknet-storage-vec-VecTrait.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage_access-StorageAddress",
+    "path": "published/pages/build/corelib/core-starknet-storage_access-StorageAddress.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage_access-StorageBaseAddress",
+    "path": "published/pages/build/corelib/core-starknet-storage_access-StorageBaseAddress.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage_access-Store",
+    "path": "published/pages/build/corelib/core-starknet-storage_access-Store.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage_access-StorePacking",
+    "path": "published/pages/build/corelib/core-starknet-storage_access-StorePacking.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage_access-storage_address_from_base",
+    "path": "published/pages/build/corelib/core-starknet-storage_access-storage_address_from_base.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage_access-storage_address_from_base_and_offset",
+    "path": "published/pages/build/corelib/core-starknet-storage_access-storage_address_from_base_and_offset.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage_access-storage_base_address_const",
+    "path": "published/pages/build/corelib/core-starknet-storage_access-storage_base_address_const.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-storage_access-storage_base_address_from_felt252",
+    "path": "published/pages/build/corelib/core-starknet-storage_access-storage_base_address_from_felt252.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-call_contract_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-call_contract_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-deploy_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-deploy_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-emit_event_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-emit_event_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-get_block_hash_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-get_block_hash_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-get_class_hash_at_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-get_class_hash_at_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-get_execution_info_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-get_execution_info_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-get_execution_info_v2_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-get_execution_info_v2_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-keccak_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-keccak_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-library_call_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-library_call_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-meta_tx_v0_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-meta_tx_v0_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-replace_class_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-replace_class_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-send_message_to_l1_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-send_message_to_l1_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-sha256_process_block_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-sha256_process_block_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-storage_read_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-storage_read_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-syscalls-storage_write_syscall",
+    "path": "published/pages/build/corelib/core-starknet-syscalls-storage_write_syscall.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-cheatcode",
+    "path": "published/pages/build/corelib/core-starknet-testing-cheatcode.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-pop_l2_to_l1_message",
+    "path": "published/pages/build/corelib/core-starknet-testing-pop_l2_to_l1_message.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-pop_log",
+    "path": "published/pages/build/corelib/core-starknet-testing-pop_log.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-pop_log_raw",
+    "path": "published/pages/build/corelib/core-starknet-testing-pop_log_raw.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_account_contract_address",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_account_contract_address.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_block_hash",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_block_hash.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_block_number",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_block_number.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_block_timestamp",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_block_timestamp.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_caller_address",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_caller_address.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_chain_id",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_chain_id.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_contract_address",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_contract_address.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_max_fee",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_max_fee.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_nonce",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_nonce.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_sequencer_address",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_sequencer_address.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_signature",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_signature.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_transaction_hash",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_transaction_hash.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-starknet-testing-set_version",
+    "path": "published/pages/build/corelib/core-starknet-testing-set_version.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-string-StringLiteral",
+    "path": "published/pages/build/corelib/core-string-StringLiteral.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-testing-get_available_gas",
+    "path": "published/pages/build/corelib/core-testing-get_available_gas.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-testing-get_unspent_gas",
+    "path": "published/pages/build/corelib/core-testing-get_unspent_gas.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-to_byte_array-AppendFormattedToByteArray",
+    "path": "published/pages/build/corelib/core-to_byte_array-AppendFormattedToByteArray.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-to_byte_array-FormatAsByteArray",
+    "path": "published/pages/build/corelib/core-to_byte_array-FormatAsByteArray.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Add",
+    "path": "published/pages/build/corelib/core-traits-Add.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-AddEq",
+    "path": "published/pages/build/corelib/core-traits-AddEq.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-BitAnd",
+    "path": "published/pages/build/corelib/core-traits-BitAnd.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-BitNot",
+    "path": "published/pages/build/corelib/core-traits-BitNot.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-BitOr",
+    "path": "published/pages/build/corelib/core-traits-BitOr.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-BitXor",
+    "path": "published/pages/build/corelib/core-traits-BitXor.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Copy",
+    "path": "published/pages/build/corelib/core-traits-Copy.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Default",
+    "path": "published/pages/build/corelib/core-traits-Default.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Destruct",
+    "path": "published/pages/build/corelib/core-traits-Destruct.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Div",
+    "path": "published/pages/build/corelib/core-traits-Div.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-DivEq",
+    "path": "published/pages/build/corelib/core-traits-DivEq.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-DivRem",
+    "path": "published/pages/build/corelib/core-traits-DivRem.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Drop",
+    "path": "published/pages/build/corelib/core-traits-Drop.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Felt252DictValue",
+    "path": "published/pages/build/corelib/core-traits-Felt252DictValue.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Index",
+    "path": "published/pages/build/corelib/core-traits-Index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-IndexView",
+    "path": "published/pages/build/corelib/core-traits-IndexView.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Into",
+    "path": "published/pages/build/corelib/core-traits-Into.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Mul",
+    "path": "published/pages/build/corelib/core-traits-Mul.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-MulEq",
+    "path": "published/pages/build/corelib/core-traits-MulEq.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Neg",
+    "path": "published/pages/build/corelib/core-traits-Neg.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Not",
+    "path": "published/pages/build/corelib/core-traits-Not.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-PanicDestruct",
+    "path": "published/pages/build/corelib/core-traits-PanicDestruct.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-PartialEq",
+    "path": "published/pages/build/corelib/core-traits-PartialEq.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-PartialOrd",
+    "path": "published/pages/build/corelib/core-traits-PartialOrd.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Rem",
+    "path": "published/pages/build/corelib/core-traits-Rem.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-RemEq",
+    "path": "published/pages/build/corelib/core-traits-RemEq.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-Sub",
+    "path": "published/pages/build/corelib/core-traits-Sub.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-SubEq",
+    "path": "published/pages/build/corelib/core-traits-SubEq.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-traits-TryInto",
+    "path": "published/pages/build/corelib/core-traits-TryInto.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-usize",
+    "path": "published/pages/build/corelib/core-usize.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/core-zeroable-NonZero",
+    "path": "published/pages/build/corelib/core-zeroable-NonZero.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/corelib/intro",
+    "path": "published/pages/build/corelib/intro.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/quickstart/appendix",
+    "path": "published/pages/build/quickstart/appendix.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/quickstart/devnet",
+    "path": "published/pages/build/quickstart/devnet.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/quickstart/environment-setup",
+    "path": "published/pages/build/quickstart/environment-setup.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/quickstart/hellostarknet",
+    "path": "published/pages/build/quickstart/hellostarknet.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/quickstart/next-steps",
+    "path": "published/pages/build/quickstart/next-steps.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/quickstart/overview",
+    "path": "published/pages/build/quickstart/overview.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/quickstart/sepolia",
+    "path": "published/pages/build/quickstart/sepolia.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example",
+    "path": "published/pages/build/starknet-by-example.md",
+    "source": "https://docs.starknet.io/build/starknet-by-example.md"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/account-abstraction",
+    "path": "published/pages/build/starknet-by-example/advanced/account-abstraction.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/commit-reveal",
+    "path": "published/pages/build/starknet-by-example/advanced/commit-reveal.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/hash-solidity-compatible",
+    "path": "published/pages/build/starknet-by-example/advanced/hash-solidity-compatible.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/hashing",
+    "path": "published/pages/build/starknet-by-example/advanced/hashing.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/library-calls",
+    "path": "published/pages/build/starknet-by-example/advanced/library-calls.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/plugins",
+    "path": "published/pages/build/starknet-by-example/advanced/plugins.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/sierra-ir",
+    "path": "published/pages/build/starknet-by-example/advanced/sierra-ir.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/signature-verification",
+    "path": "published/pages/build/starknet-by-example/advanced/signature-verification.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/store-using-packing",
+    "path": "published/pages/build/starknet-by-example/advanced/store-using-packing.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/struct-mapping-key",
+    "path": "published/pages/build/starknet-by-example/advanced/struct-mapping-key.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/verify-proofs",
+    "path": "published/pages/build/starknet-by-example/advanced/verify-proofs.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/advanced/write-to-any-slot",
+    "path": "published/pages/build/starknet-by-example/advanced/write-to-any-slot.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/advanced-factory",
+    "path": "published/pages/build/starknet-by-example/applications/advanced-factory.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/constant-product-amm",
+    "path": "published/pages/build/starknet-by-example/applications/constant-product-amm.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/crowdfunding",
+    "path": "published/pages/build/starknet-by-example/applications/crowdfunding.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/erc20",
+    "path": "published/pages/build/starknet-by-example/applications/erc20.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/erc721",
+    "path": "published/pages/build/starknet-by-example/applications/erc721.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/factory",
+    "path": "published/pages/build/starknet-by-example/applications/factory.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/l1-l2-token-bridge",
+    "path": "published/pages/build/starknet-by-example/applications/l1-l2-token-bridge.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/merkle-tree",
+    "path": "published/pages/build/starknet-by-example/applications/merkle-tree.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/nft-dutch-auction",
+    "path": "published/pages/build/starknet-by-example/applications/nft-dutch-auction.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/random-number-generator",
+    "path": "published/pages/build/starknet-by-example/applications/random-number-generator.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/simple-storage",
+    "path": "published/pages/build/starknet-by-example/applications/simple-storage.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/simple-vault",
+    "path": "published/pages/build/starknet-by-example/applications/simple-vault.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/staking",
+    "path": "published/pages/build/starknet-by-example/applications/staking.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/timelock",
+    "path": "published/pages/build/starknet-by-example/applications/timelock.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/applications/upgradeable-contract",
+    "path": "published/pages/build/starknet-by-example/applications/upgradeable-contract.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/calling-other-contracts",
+    "path": "published/pages/build/starknet-by-example/basic/calling-other-contracts.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/components/collisions",
+    "path": "published/pages/build/starknet-by-example/basic/components/collisions.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/components/dependencies",
+    "path": "published/pages/build/starknet-by-example/basic/components/dependencies.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/components/intro",
+    "path": "published/pages/build/starknet-by-example/basic/components/intro.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/components/ownable",
+    "path": "published/pages/build/starknet-by-example/basic/components/ownable.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/constructor",
+    "path": "published/pages/build/starknet-by-example/basic/constructor.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/counter",
+    "path": "published/pages/build/starknet-by-example/basic/counter.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/custom-types-in-entrypoints",
+    "path": "published/pages/build/starknet-by-example/basic/custom-types-in-entrypoints.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/documentation",
+    "path": "published/pages/build/starknet-by-example/basic/documentation.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/errors",
+    "path": "published/pages/build/starknet-by-example/basic/errors.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/events",
+    "path": "published/pages/build/starknet-by-example/basic/events.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/mappings",
+    "path": "published/pages/build/starknet-by-example/basic/mappings.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/storage",
+    "path": "published/pages/build/starknet-by-example/basic/storage.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/storing-custom-types",
+    "path": "published/pages/build/starknet-by-example/basic/storing-custom-types.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/variables",
+    "path": "published/pages/build/starknet-by-example/basic/variables.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/basic/visibility-mutability",
+    "path": "published/pages/build/starknet-by-example/basic/visibility-mutability.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-by-example/index",
+    "path": "published/pages/build/starknet-by-example/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/anonymous-defi",
+    "path": "published/pages/build/starknet-privacy/anonymous-defi.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/architecture",
+    "path": "published/pages/build/starknet-privacy/architecture.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/compliance",
+    "path": "published/pages/build/starknet-privacy/compliance.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/discovery",
+    "path": "published/pages/build/starknet-privacy/discovery.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/encryption-and-keys",
+    "path": "published/pages/build/starknet-privacy/encryption-and-keys.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/glossary",
+    "path": "published/pages/build/starknet-privacy/glossary.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/notes-and-nullifiers",
+    "path": "published/pages/build/starknet-privacy/notes-and-nullifiers.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/overview",
+    "path": "published/pages/build/starknet-privacy/overview.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/paymasters",
+    "path": "published/pages/build/starknet-privacy/paymasters.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/proving",
+    "path": "published/pages/build/starknet-privacy/proving.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/security",
+    "path": "published/pages/build/starknet-privacy/security.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/strk20-by-example",
+    "path": "published/pages/build/starknet-privacy/strk20-by-example.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/transaction-flow",
+    "path": "published/pages/build/starknet-privacy/transaction-flow.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starknet-privacy/troubleshooting",
+    "path": "published/pages/build/starknet-privacy/troubleshooting.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/api-reference",
+    "path": "published/pages/build/starkzap/api-reference.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/awesome-starkzap",
+    "path": "published/pages/build/starkzap/awesome-starkzap.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/bridging",
+    "path": "published/pages/build/starkzap/bridging.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/configuration",
+    "path": "published/pages/build/starkzap/configuration.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/connecting-wallets",
+    "path": "published/pages/build/starkzap/connecting-wallets.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/dollar-cost-average",
+    "path": "published/pages/build/starkzap/dollar-cost-average.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/erc20",
+    "path": "published/pages/build/starkzap/erc20.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/examples",
+    "path": "published/pages/build/starkzap/examples.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/glossary",
+    "path": "published/pages/build/starkzap/glossary.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/installation",
+    "path": "published/pages/build/starkzap/installation.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/integrations/avnu-paymaster",
+    "path": "published/pages/build/starkzap/integrations/avnu-paymaster.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/integrations/cartridge-controller",
+    "path": "published/pages/build/starkzap/integrations/cartridge-controller.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/integrations/privy",
+    "path": "published/pages/build/starkzap/integrations/privy.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/lending",
+    "path": "published/pages/build/starkzap/lending.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/lst-staking",
+    "path": "published/pages/build/starkzap/lst-staking.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/overview",
+    "path": "published/pages/build/starkzap/overview.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/paymasters",
+    "path": "published/pages/build/starkzap/paymasters.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/privacy/overview",
+    "path": "published/pages/build/starkzap/privacy/overview.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/privacy/strk20",
+    "path": "published/pages/build/starkzap/privacy/strk20.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/privacy/tongo",
+    "path": "published/pages/build/starkzap/privacy/tongo.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/quick-start",
+    "path": "published/pages/build/starkzap/quick-start.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/react-native",
+    "path": "published/pages/build/starkzap/react-native.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/staking",
+    "path": "published/pages/build/starkzap/staking.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/swap",
+    "path": "published/pages/build/starkzap/swap.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/transactions",
+    "path": "published/pages/build/starkzap/transactions.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/troubleshooting",
+    "path": "published/pages/build/starkzap/troubleshooting.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/troves",
+    "path": "published/pages/build/starkzap/troves.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/tx-builder",
+    "path": "published/pages/build/starkzap/tx-builder.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/build/starkzap/using-llms",
+    "path": "published/pages/build/starkzap/using-llms.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/index",
+    "path": "published/pages/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development",
+    "path": "published/pages/learn/S-two-book/air-development.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/air-development.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/additional-examples",
+    "path": "published/pages/learn/S-two-book/air-development/additional-examples.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/air-development/additional-examples.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/additional-examples/index",
+    "path": "published/pages/learn/S-two-book/air-development/additional-examples/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/components",
+    "path": "published/pages/learn/S-two-book/air-development/components.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/air-development/components.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/components/index",
+    "path": "published/pages/learn/S-two-book/air-development/components/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/dynamic-lookups",
+    "path": "published/pages/learn/S-two-book/air-development/dynamic-lookups.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/air-development/dynamic-lookups.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/dynamic-lookups/index",
+    "path": "published/pages/learn/S-two-book/air-development/dynamic-lookups/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/index",
+    "path": "published/pages/learn/S-two-book/air-development/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/local-row-constraints",
+    "path": "published/pages/learn/S-two-book/air-development/local-row-constraints.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/air-development/local-row-constraints.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/local-row-constraints/index",
+    "path": "published/pages/learn/S-two-book/air-development/local-row-constraints/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/preprocessed-trace",
+    "path": "published/pages/learn/S-two-book/air-development/preprocessed-trace.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/air-development/preprocessed-trace.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/preprocessed-trace/index",
+    "path": "published/pages/learn/S-two-book/air-development/preprocessed-trace/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/static-lookups",
+    "path": "published/pages/learn/S-two-book/air-development/static-lookups.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/air-development/static-lookups.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/static-lookups/index",
+    "path": "published/pages/learn/S-two-book/air-development/static-lookups/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air",
+    "path": "published/pages/learn/S-two-book/air-development/writing-a-simple-air.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air/committing-to-the-trace-polynomials",
+    "path": "published/pages/learn/S-two-book/air-development/writing-a-simple-air/committing-to-the-trace-polynomials.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air/constraints-over-trace-polynomials",
+    "path": "published/pages/learn/S-two-book/air-development/writing-a-simple-air/constraints-over-trace-polynomials.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air/from-spreadsheet-to-trace-polynomials",
+    "path": "published/pages/learn/S-two-book/air-development/writing-a-simple-air/from-spreadsheet-to-trace-polynomials.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air/hello-world",
+    "path": "published/pages/learn/S-two-book/air-development/writing-a-simple-air/hello-world.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air/index",
+    "path": "published/pages/learn/S-two-book/air-development/writing-a-simple-air/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air/proving-an-air",
+    "path": "published/pages/learn/S-two-book/air-development/writing-a-simple-air/proving-an-air.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air/writing-a-spreadsheet",
+    "path": "published/pages/learn/S-two-book/air-development/writing-a-simple-air/writing-a-spreadsheet.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/awesome-stwo",
+    "path": "published/pages/learn/S-two-book/awesome-stwo.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/awesome-stwo.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/awesome-stwo/index",
+    "path": "published/pages/learn/S-two-book/awesome-stwo/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/benchmarks",
+    "path": "published/pages/learn/S-two-book/benchmarks.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/benchmarks.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/benchmarks/index",
+    "path": "published/pages/learn/S-two-book/benchmarks/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air",
+    "path": "published/pages/learn/S-two-book/cairo-air.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/cairo-air.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air/add-opcode",
+    "path": "published/pages/learn/S-two-book/cairo-air/add-opcode.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/cairo-air/add-opcode.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air/add-opcode/index",
+    "path": "published/pages/learn/S-two-book/cairo-air/add-opcode/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air/basic-building-blocks",
+    "path": "published/pages/learn/S-two-book/cairo-air/basic-building-blocks.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/cairo-air/basic-building-blocks.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air/basic-building-blocks/index",
+    "path": "published/pages/learn/S-two-book/cairo-air/basic-building-blocks/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air/cairo",
+    "path": "published/pages/learn/S-two-book/cairo-air/cairo.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/cairo-air/cairo.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air/cairo/index",
+    "path": "published/pages/learn/S-two-book/cairo-air/cairo/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air/index",
+    "path": "published/pages/learn/S-two-book/cairo-air/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air/main-components",
+    "path": "published/pages/learn/S-two-book/cairo-air/main-components.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/cairo-air/main-components.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/cairo-air/main-components/index",
+    "path": "published/pages/learn/S-two-book/cairo-air/main-components/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works",
+    "path": "published/pages/learn/S-two-book/how-it-works.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/how-it-works.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/air",
+    "path": "published/pages/learn/S-two-book/how-it-works/air.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/how-it-works/air.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/air/components",
+    "path": "published/pages/learn/S-two-book/how-it-works/air/components.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/air/index",
+    "path": "published/pages/learn/S-two-book/how-it-works/air/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/air/overview",
+    "path": "published/pages/learn/S-two-book/how-it-works/air/overview.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/air/prover_components",
+    "path": "published/pages/learn/S-two-book/how-it-works/air/prover_components.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fft",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fft.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fft.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fft/algorithm",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fft/algorithm.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fft/basis",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fft/basis.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fft/index",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fft/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fft/interpolation",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fft/interpolation.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fft/twiddles",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fft/twiddles.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fri",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fri.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fri.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fri/fri_prover",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fri/fri_prover.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fri/fri_verifier",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fri/fri_verifier.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fri/index",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fri/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-fri/overview",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-fri/overview.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-group",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-group.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-polynomials",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-polynomials.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-polynomials.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-polynomials/columns",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-polynomials/columns.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-polynomials/evals-and-poly",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-polynomials/evals-and-poly.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-polynomials/index",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-polynomials/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/circle-polynomials/secure-evals-and-poly",
+    "path": "published/pages/learn/S-two-book/how-it-works/circle-polynomials/secure-evals-and-poly.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/index",
+    "path": "published/pages/learn/S-two-book/how-it-works/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/lookups",
+    "path": "published/pages/learn/S-two-book/how-it-works/lookups.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/mersenne-prime",
+    "path": "published/pages/learn/S-two-book/how-it-works/mersenne-prime.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/pcs",
+    "path": "published/pages/learn/S-two-book/how-it-works/pcs.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/how-it-works/pcs.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/pcs/index",
+    "path": "published/pages/learn/S-two-book/how-it-works/pcs/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/pcs/overview",
+    "path": "published/pages/learn/S-two-book/how-it-works/pcs/overview.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/pcs/prover",
+    "path": "published/pages/learn/S-two-book/how-it-works/pcs/prover.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/pcs/verifier",
+    "path": "published/pages/learn/S-two-book/how-it-works/pcs/verifier.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/stark_proof",
+    "path": "published/pages/learn/S-two-book/how-it-works/stark_proof.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/how-it-works/stark_proof.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/stark_proof/index",
+    "path": "published/pages/learn/S-two-book/how-it-works/stark_proof/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/stark_proof/prove",
+    "path": "published/pages/learn/S-two-book/how-it-works/stark_proof/prove.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/stark_proof/verify",
+    "path": "published/pages/learn/S-two-book/how-it-works/stark_proof/verify.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/vcs",
+    "path": "published/pages/learn/S-two-book/how-it-works/vcs.md",
+    "source": "https://docs.starknet.io/learn/S-two-book/how-it-works/vcs.md"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/vcs/hash_functions",
+    "path": "published/pages/learn/S-two-book/how-it-works/vcs/hash_functions.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/vcs/index",
+    "path": "published/pages/learn/S-two-book/how-it-works/vcs/index.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/vcs/merkle_prover",
+    "path": "published/pages/learn/S-two-book/how-it-works/vcs/merkle_prover.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/how-it-works/vcs/merkle_verifier",
+    "path": "published/pages/learn/S-two-book/how-it-works/vcs/merkle_verifier.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/introduction",
+    "path": "published/pages/learn/S-two-book/introduction.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/why-stwo",
+    "path": "published/pages/learn/S-two-book/why-stwo.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/S-two-book/why-use-a-proof-system",
+    "path": "published/pages/learn/S-two-book/why-use-a-proof-system.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/cheatsheets/chain-info",
+    "path": "published/pages/learn/cheatsheets/chain-info.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/cheatsheets/compatibility",
+    "path": "published/pages/learn/cheatsheets/compatibility.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/cheatsheets/integrations",
+    "path": "published/pages/learn/cheatsheets/integrations.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/cheatsheets/messaging-reference",
+    "path": "published/pages/learn/cheatsheets/messaging-reference.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/cheatsheets/starkgate-reference",
+    "path": "published/pages/learn/cheatsheets/starkgate-reference.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/cheatsheets/tools",
+    "path": "published/pages/learn/cheatsheets/tools.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/cheatsheets/transactions-reference",
+    "path": "published/pages/learn/cheatsheets/transactions-reference.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/cheatsheets/version-notes",
+    "path": "published/pages/learn/cheatsheets/version-notes.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/accounts",
+    "path": "published/pages/learn/protocol/accounts.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/blocks",
+    "path": "published/pages/learn/protocol/blocks.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/cryptography",
+    "path": "published/pages/learn/protocol/cryptography.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/data-availability",
+    "path": "published/pages/learn/protocol/data-availability.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/fees",
+    "path": "published/pages/learn/protocol/fees.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/intro",
+    "path": "published/pages/learn/protocol/intro.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/messaging",
+    "path": "published/pages/learn/protocol/messaging.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/security-council",
+    "path": "published/pages/learn/protocol/security-council.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/sharp",
+    "path": "published/pages/learn/protocol/sharp.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/snos",
+    "path": "published/pages/learn/protocol/snos.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/staking",
+    "path": "published/pages/learn/protocol/staking.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/starkgate",
+    "path": "published/pages/learn/protocol/starkgate.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/state",
+    "path": "published/pages/learn/protocol/state.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/strk",
+    "path": "published/pages/learn/protocol/strk.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/learn/protocol/transactions",
+    "path": "published/pages/learn/protocol/transactions.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/secure/quickstart/attesting-to-blocks",
+    "path": "published/pages/secure/quickstart/attesting-to-blocks.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/secure/quickstart/becoming-a-validator",
+    "path": "published/pages/secure/quickstart/becoming-a-validator.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/secure/quickstart/next-steps",
+    "path": "published/pages/secure/quickstart/next-steps.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/secure/quickstart/overview",
+    "path": "published/pages/secure/quickstart/overview.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  },
+  {
+    "url": "https://docs.starknet.io/secure/quickstart/running-a-node",
+    "path": "published/pages/secure/quickstart/running-a-node.md",
+    "source": "https://docs.starknet.io/llms-full.txt"
+  }
+]

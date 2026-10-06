@@ -1,0 +1,14 @@
+# core::ec::stark_curve::GEN_Y
+Source: https://docs.starknet.io/build/corelib/core-ec-stark_curve-GEN_Y
+
+
+
+The y coordinate of the generator point used in the ECDSA signature.
+
+## Signature
+
+```rust theme={null}
+pub const GEN_Y: felt252 = 152666792071518830868575557812948353041420400780739481342941381225525861407;
+```
+
+

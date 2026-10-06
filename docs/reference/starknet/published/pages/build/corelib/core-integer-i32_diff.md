@@ -1,0 +1,14 @@
+# core::integer::i32_diff
+Source: https://docs.starknet.io/build/corelib/core-integer-i32_diff
+
+
+
+If `lhs` >= `rhs` returns `Ok(lhs - rhs)` else returns `Err(2**32 + lhs - rhs)`.
+
+## Signature
+
+```rust theme={null}
+pub extern fn i32_diff(lhs: i32, rhs: i32) -> Result implicits(RangeCheck) nopanic;
+```
+
+

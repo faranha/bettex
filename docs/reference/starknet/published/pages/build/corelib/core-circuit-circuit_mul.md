@@ -1,0 +1,35 @@
+# core::circuit::circuit_mul
+Source: https://docs.starknet.io/build/corelib/core-circuit-circuit_mul
+
+
+
+Creates a new circuit element representing multiplication modulo p of two input circuits.
+This function combines two circuit elements using modular multiplication, creating a new circuit
+element that represents their product modulo the circuit's modulus.
+
+## Signature
+
+```rust theme={null}
+pub fn circuit_mul, +CircuitElementTrait>(
+    lhs: CircuitElement, rhs: CircuitElement,
+) -> CircuitElement>
+```
+
+#### Arguments
+
+* `lhs` - Left-hand side circuit element
+* `rhs` - Right-hand side circuit element
+
+#### Returns
+
+A new circuit element representing `(lhs * rhs) mod p`
+
+## Examples
+
+```rust theme={null}
+let a = CircuitElement::> {};
+let b = CircuitElement::> {};
+let product = circuit_mul(a, b);
+```
+
+

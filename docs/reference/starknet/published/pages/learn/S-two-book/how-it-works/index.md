@@ -1,0 +1,21 @@
+# Introduction
+Source: https://docs.starknet.io/learn/S-two-book/how-it-works/index
+
+
+
+> This section provides an overview of the core components and protocols that make up S-two. It is intended for readers who want to understand the technical details and inner workings of the system implementation. Throughout this section, we describe the implementation as available in this [commit](https://github.com/starkware-libs/stwo/tree/0790eba46b8af5697083d84fb75bd34b08a0b31f).
+
+The following topics are covered:
+
+* [**Mersenne Primes**](/learn/S-two-book/how-it-works/mersenne-prime): Introduction to the Mersenne31 prime field used in S-two for efficient arithmetic.
+* [**Circle Group**](/learn/S-two-book/how-it-works/circle-group): Explains the algebraic structure underlying FFT and polynomial operations.
+* [**Circle Polynomials**](/learn/S-two-book/how-it-works/circle-polynomials/index): Details the representation and evaluation of polynomials in the circle group.
+* [**Circle FFT**](/learn/S-two-book/how-it-works/circle-fft/index): Describes the fast Fourier transform algorithm adapted for the circle group.
+* [**Vector Commitment Scheme**](/learn/S-two-book/how-it-works/vcs/index): Covers the use of Merkle trees for committing to vectors and enabling efficient proofs of inclusion.
+* [**AIR to Composition Polynomial**](/learn/S-two-book/how-it-works/air/index): Shows how algebraic constraints are encoded as polynomials for proof generation.
+* [**Circle FRI**](/learn/S-two-book/how-it-works/circle-fri/index): Explains the FRI protocol for low-degree testing of polynomials over the circle group.
+* [**Polynomial Commitment Scheme**](/learn/S-two-book/how-it-works/pcs/index): Describes the protocol for committing to and opening polynomials with soundness guarantees.
+* [**Proof Generation and Verification**](/learn/S-two-book/how-it-works/stark_proof/index): Walks through the process of generating and verifying a STARK proof in S-two.
+* [**Lookups**](/learn/S-two-book/how-it-works/lookups): Discusses lookup arguments and their implementation in S-two for efficient constraint checking.
+
+

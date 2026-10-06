@@ -1,0 +1,308 @@
+# Cartridge Controller
+Source: https://docs.starknet.io/build/starkzap/integrations/cartridge-controller
+
+Use Cartridge Controller with network-safe session configuration
+
+<img alt="Cartridge controller integration hero" />
+
+## Overview
+
+[Cartridge Controller](https://docs.cartridge.gg/controller/overview) is specialized for gaming applications and provides a powerful abstraction layer for managing account access and ownership on Starknet. Cartridge enables:
+
+* **Social Login**: Users can sign in with social accounts (Google, Twitter, etc.)
+* **Passkey Authentication**: Biometric authentication (Face ID, Touch ID, Windows Hello)
+* **Policy-Based Access**: Define policies for what contracts/methods can be called
+* **Delegated Transactions**: Users can approve transactions without managing keys directly
+* **Built-in Paymaster**: **Policy-bound sponsorship** — Cartridge can sponsor fees for calls that match **approved policies** (and eligible session / SNIP-9 paths), not every arbitrary transaction.
+
+Starkzap integrates with Cartridge for gaming-style flows: **web** uses `@cartridge/controller`; **React Native / Expo** uses `starkzap-native` with a **native session adapter** (register it before connecting) when your package version supports native Cartridge.
+
+## StarkZap integration
+
+When StarkZap connects Cartridge, it forwards your SDK network configuration (for example `rpcUrl` and `chainId`) into the Cartridge flow so you typically configure the network once on `new StarkZap(...)`.
+
+<Warning>
+  **Network alignment is not auto-validated.** You must use the same `rpcUrl` / `chainId` (or `network` preset) you intend the Cartridge session and paymaster to target. The SDK forwards these values but does **not** verify that some other tab, deep link, or preset was opened on a different chain. Mismatches often show up as SNIP-9 or paymaster errors.
+</Warning>
+
+You do not need to pass chain settings again when calling `sdk.connectCartridge()` or `sdk.onboard({ strategy: "cartridge" })` on the same `StarkZap` instance.
+
+## Web (browser) vs React Native
+
+|                | **Web**                               | **React Native / Expo**                                                                                                                              |
+| -------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Package        | `starkzap` + `@cartridge/controller`  | `starkzap-native` (depends on `starkzap`)                                                                                                            |
+| UX             | Controller popup / embedded flow      | In-app browser / deep link **session** flow                                                                                                          |
+| Before connect | Install `@cartridge/controller`       | [React Native setup](/build/starkzap/react-native): Metro `withStarkzap`, **register** the native Cartridge adapter when your SDK version exports it |
+| Import         | `import { StarkZap } from "starkzap"` | `import { StarkZap } from "starkzap-native"`                                                                                                         |
+
+## React Native / Expo (native Cartridge session)
+
+1. Follow [React Native Integration](/build/starkzap/react-native) for Metro (`withStarkzap`) and dependencies.
+2. **Register** the native Cartridge adapter once at startup before `connectCartridge` / `onboard({ strategy: "cartridge" })` (for example `registerCartridgeTsAdapter` / `registerCartridgeNativeAdapter` — exact exports depend on your `starkzap-native` version).
+3. Pass **policies** and/or a Cartridge **preset** that resolves policies for your chain.
+4. **Onboarding:** native Cartridge often defaults to **`deploy: "never"`** or recommends it when deployment differs from the browser Controller; pass `deploy: "if_needed"` explicitly if you need core-style deployment checks.
+5. **Sponsored execution** on native is tied to the session wallet (commonly **`feeMode: { type: "paymaster" }`** only; `gasToken` is not supported on native Cartridge).
+
+See the `examples/tic-tac-toe` app in the [Starkzap repository](https://github.com/keep-starknet-strange/starkzap) when available for a full Expo reference.
+
+## Why Use Cartridge?
+
+* ✅ **Perfect for Gaming**: Specialized for gaming applications with session-based transactions
+* ✅ **Gasless-style UX for approved calls**: Built-in paymaster can sponsor **policy-matching** transactions after users approve policies
+* ✅ **Better UX**: No seed phrases or private key management
+* ✅ **Social Login**: Users sign in with familiar accounts (Google, Twitter, etc.)
+* ✅ **Biometric Auth**: Face ID, Touch ID, Windows Hello support
+* ✅ **Policy Control**: Define what contracts/methods users can interact with
+* ✅ **Session Management**: Users approve policies once, then transactions happen automatically
+
+<Info>
+  **Key value:** Unlike Privy or private-key flows (which often use AVNU Paymaster for sponsorship), Cartridge can sponsor **policy-approved** calls through its paymaster/session stack—so matching game or token operations stay gasless after users approve policies. Other calls may still require user fees or extra steps.
+</Info>
+
+## Setup (web browser)
+
+### 1. Install Cartridge Controller
+
+For **web**, install the Controller peer used by `starkzap`:
+
+```bash theme={null}
+npm install @cartridge/controller
+```
+
+### 2. Initialize SDK
+
+```typescript theme={null}
+import { StarkZap, OnboardStrategy } from "starkzap";
+
+const sdk = new StarkZap({ network: "mainnet" });
+```
+
+## Integration (web)
+
+### Basic Connection
+
+Connect a wallet using Cartridge Controller. Define policies that specify what contracts/methods can be called, and all matching transactions will be automatically sponsored (gasless) by Cartridge's built-in paymaster:
+
+```typescript theme={null}
+const onboard = await sdk.onboard({
+  strategy: OnboardStrategy.Cartridge,
+  cartridge: {
+    policies: [
+      {
+        target: "0xTOKEN_CONTRACT",
+        method: "transfer",
+      },
+      {
+        target: "0xGAME_CONTRACT",
+        method: "play_card",
+      },
+    ],
+  },
+  deploy: "if_needed",
+});
+
+const wallet = onboard.wallet;
+```
+
+### Using Policies
+
+Policies define what contracts and methods can be called in paymastered transactions. Users approve these policies once when connecting, and then all transactions matching those policies are automatically sponsored by Cartridge's paymaster:
+
+```typescript theme={null}
+const policies = [
+  // Allow transfers from a specific token contract
+  {
+    target: "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d", // STRK
+    method: "transfer",
+  },
+  // Allow game operations
+  {
+    target: "0xGAME_CONTRACT",
+    method: "play_card",
+  },
+  {
+    target: "0xGAME_CONTRACT",
+    method: "claim_rewards",
+  },
+  // Allow staking operations
+  {
+    target: "0xSTAKING_CONTRACT",
+    method: "enter_delegation_pool",
+  },
+];
+
+const wallet = await sdk.connectCartridge({ policies });
+
+// All transactions matching these policies are automatically paymastered
+// No user approval needed for individual transactions
+```
+
+### Session Registration
+
+When users connect and approve policies, a session is automatically registered. For paymastered transactions, sessions can be registered without requiring additional signatures—the initial policy approval is sufficient. This enables seamless, gasless transaction execution:
+
+```typescript theme={null}
+// User connects and approves policies
+const onboard = await sdk.onboard({
+  strategy: OnboardStrategy.Cartridge,
+  cartridge: { policies },
+});
+
+// Session is automatically registered
+// All transactions matching policies are paymastered automatically
+const wallet = onboard.wallet;
+
+// Execute transactions - no approval prompts, no gas fees
+await wallet.execute([call]);
+```
+
+### Accessing Controller Features
+
+Get access to Cartridge-specific features:
+
+```typescript theme={null}
+const wallet = await sdk.connectCartridge({ policies });
+
+// Access the controller
+const controller = wallet.getController();
+
+// Open user profile
+controller.openProfile();
+
+// Check if user is authenticated
+const isAuthenticated = controller.isAuthenticated();
+```
+
+## Complete Example
+
+```typescript theme={null}
+import { StarkZap, OnboardStrategy, Amount, fromAddress, mainnetTokens } from "starkzap";
+
+const sdk = new StarkZap({ network: "mainnet" });
+
+// Define policies for what the user can do
+// All transactions matching these policies will be automatically paymastered
+const policies = [
+  {
+    target: mainnetTokens.STRK.address,
+    method: "transfer",
+  },
+  {
+    target: "0xGAME_CONTRACT",
+    method: "play_card",
+  },
+];
+
+// Connect with Cartridge
+// User approves policies once, session is registered automatically
+const onboard = await sdk.onboard({
+  strategy: OnboardStrategy.Cartridge,
+  cartridge: { policies },
+  deploy: "if_needed",
+});
+
+const wallet = onboard.wallet;
+
+// Use the wallet like any other
+const balance = await wallet.balanceOf(mainnetTokens.STRK);
+console.log(`Balance: ${balance.toFormatted()}`);
+
+// Transfer tokens - automatically paymastered (no approval, no gas fees)
+// Because it matches the approved policy
+const tx = await wallet.transfer(mainnetTokens.STRK, [
+  {
+    to: fromAddress("0xRECIPIENT"),
+    amount: Amount.parse("10", mainnetTokens.STRK),
+  },
+]);
+
+await tx.wait();
+console.log("Transfer complete! (Gas paid by Cartridge)");
+```
+
+## User Flow (web)
+
+1. **User clicks "Connect with Cartridge"**
+2. **Cartridge popup appears** with social login options
+3. **User signs in** with Google, Twitter, or passkey
+4. **Wallet is created** and connected automatically
+5. **User approves policies** - Defines what contracts/methods can be called
+6. **Session is registered** - Automatically registered for paymastered transactions
+7. **Transactions execute automatically** - All transactions matching policies are paymastered (gasless) without additional approval
+
+## Policy Management
+
+### How Policies Work with Paymaster
+
+Policies serve two purposes:
+
+1. **Security**: Define what contracts/methods can be called
+2. **Paymaster eligibility**: Only transactions matching policies are automatically paymastered
+
+When a transaction matches an approved policy, it's automatically sponsored by Cartridge's paymaster. Transactions outside the policies require user approval and may not be paymastered.
+
+### Dynamic Policies
+
+You can update policies based on user actions. Note that updating policies requires reconnection and user approval:
+
+```typescript theme={null}
+// Initial connection with basic policies
+const wallet = await sdk.connectCartridge({
+  policies: [
+    { target: TOKEN_ADDRESS, method: "transfer" },
+  ],
+});
+
+// Later, add more policies (requires reconnection and user approval)
+const updatedWallet = await sdk.connectCartridge({
+  policies: [
+    { target: TOKEN_ADDRESS, method: "transfer" },
+    { target: GAME_ADDRESS, method: "play_card" },
+    { target: STAKING_ADDRESS, method: "enter_delegation_pool" },
+  ],
+});
+
+// New session is registered with expanded policies
+// All matching transactions are automatically paymastered
+```
+
+### Policy Best Practices
+
+1. **Be specific**: Only allow the methods users actually need
+2. **Start minimal**: Begin with basic policies, add more as needed
+3. **Explain policies**: Let users know what they're approving and that matching transactions will be gasless
+4. **Group related operations**: Put related game actions in the same policy set
+5. **Review regularly**: Update policies based on user feedback and game features
+
+## Error Handling
+
+```typescript theme={null}
+try {
+  const wallet = await sdk.connectCartridge({ policies });
+} catch (error) {
+  if (error.message.includes("popup")) {
+    console.error("User blocked popup or closed window");
+  } else if (error.message.includes("authentication")) {
+    console.error("Authentication failed");
+  } else {
+    console.error("Connection failed:", error);
+  }
+}
+```
+
+## Resources
+
+* [Cartridge Controller Documentation](https://docs.cartridge.gg/controller/overview)
+* [Cartridge Website](https://cartridge.gg)
+* [Policy Documentation](https://docs.cartridge.gg/controller/policies)
+
+## Best Practices
+
+1. **Request minimal permissions** - Only ask for what users need
+2. **Handle popup blockers** - Guide users if popups are blocked
+3. **Provide clear instructions** - Explain the connection process
+4. **Test on multiple browsers** - Ensure compatibility
+5. **Monitor user experience** - Track connection success rates
+
+

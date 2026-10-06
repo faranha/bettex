@@ -1,0 +1,20 @@
+# core::starknet::syscalls::get_execution_info_v2_syscall
+Source: https://docs.starknet.io/build/corelib/core-starknet-syscalls-get_execution_info_v2_syscall
+
+
+
+Gets information about the current execution, version 2.
+This syscall should not be called directly. Instead, use
+`starknet::info::get_execution_info`.
+
+## Signature
+
+```rust theme={null}
+pub extern fn get_execution_info_v2_syscall() -> Result, Array> implicits(GasBuiltin, System) nopanic;
+```
+
+#### Returns
+
+* A box containing the current V2 execution information.
+
+

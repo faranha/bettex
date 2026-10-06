@@ -1,5 +1,6 @@
-import { BriefcaseBusiness, Clock3, ExternalLink, Globe2, ShieldAlert, TrendingDown, UsersRound, type LucideIcon } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { BriefcaseBusiness, ChevronLeft, ChevronRight, Clock3, ExternalLink, Globe2, ShieldAlert, TrendingDown, UsersRound, type LucideIcon } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useX } from '@/components/demo/ui';
 import './LaborSignals.css';
 
 const BLS = 'https://www.bls.gov/news.release/pdf/empsit.pdf';
@@ -18,8 +19,30 @@ function Signal({ icon: Icon, label, value, title, children, href, source }: {
 }
 
 export function LaborSignals() {
+  const { x } = useX();
+  const ref = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const [total, setTotal] = useState(0);
+  const sync = useCallback(() => {
+    const el = ref.current; if (!el) return;
+    const kids = Array.from(el.children) as HTMLElement[];
+    setTotal(kids.length);
+    let best = 0, d = Infinity;
+    const left = el.getBoundingClientRect().left;
+    kids.forEach((k, i) => { const v = Math.abs(k.getBoundingClientRect().left - left); if (v < d) { d = v; best = i; } });
+    if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 2) best = kids.length - 1;
+    setActive(best);
+  }, []);
+  useEffect(() => { sync(); window.addEventListener('resize', sync); return () => window.removeEventListener('resize', sync); }, [sync]);
+  const go = (i: number) => {
+    const el = ref.current; if (!el) return;
+    const k = el.children[Math.max(0, Math.min(total - 1, i))] as HTMLElement | undefined; if (!k) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollTo({ left: el.scrollLeft + k.getBoundingClientRect().left - el.getBoundingClientRect().left, behavior: reduce ? 'auto' : 'smooth' });
+  };
   return <>
-    <div className="fu-signals">
+    <div className="fu-signals" data-i18n="translated" ref={ref} onScroll={sync} tabIndex={0} role="region" aria-roledescription={x('Carrossel', 'carousel', 'carrusel')} aria-label={x('Dados do mercado de trabalho', 'Labor market data', 'Datos del mercado laboral')}
+      onKeyDown={e => { if (e.target !== e.currentTarget) return; if (e.key === 'ArrowRight') { e.preventDefault(); go(active + 1); } else if (e.key === 'ArrowLeft') { e.preventDefault(); go(active - 1); } }}>
       <Signal icon={BriefcaseBusiness} label="EUA · setembro de 2026" value="−129 mil" title="Empregos eliminados no setor financeiro" href={BLS} source="BLS, 2 out. 2026">
         <p>O setor financeiro perdeu 129 mil postos desde o pico de maio de 2025. Só seguros e atividades relacionadas respondem por 90 mil dessas perdas.</p>
         <p>A economia criou +29 mil empregos não agrícolas em setembro, após média de apenas 45 mil por mês nos 12 meses anteriores. Há criação líquida, mas ela não impede perdas em setores inteiros.</p>
@@ -45,6 +68,14 @@ export function LaborSignals() {
         <p>São 37,5% dos ocupados, incluindo trabalhadores sem carteira e pessoas por conta própria sem CNPJ. A informalidade era de 37,3% no trimestre de março a maio.</p>
         <p>Mesmo com desemprego de 5,3%, milhões seguem sem vínculo formal. O problema não é apenas conseguir trabalho, mas a proteção de quem depende dessa renda.</p>
       </Signal>
+    </div>
+    <div className="fu-signal-nav">
+      <button type="button" data-i18n="translated" className="fu-nav-btn" onClick={() => go(active - 1)} disabled={active === 0} aria-label={x('Dado anterior', 'Previous data card', 'Dato anterior')}><ChevronLeft aria-hidden="true" /></button>
+      <div className="fu-nav-mid">
+        <span className="mono fu-nav-count" aria-live="polite">{active + 1} / {total}</span>
+        <div className="fu-nav-dots">{Array.from({ length: total }, (_, i) => <button key={i} type="button" data-i18n="translated" className={'fu-dot' + (i === active ? ' on' : '')} onClick={() => go(i)} aria-label={`${x('Ir para o dado', 'Go to data card', 'Ir al dato')} ${i + 1}`} aria-current={i === active ? 'true' : undefined} />)}</div>
+      </div>
+      <button type="button" data-i18n="translated" className="fu-nav-btn" onClick={() => go(active + 1)} disabled={active === total - 1} aria-label={x('Próximo dado', 'Next data card', 'Siguiente dato')}><ChevronRight aria-hidden="true" /></button>
     </div>
     <p className="fu-signal-method">Dados disponíveis em 4 de outubro de 2026. São indicadores de populações, períodos e metodologias diferentes, não valores para somar. Eles mostram perdas e vulnerabilidade, mas não provam que a IA causou esses resultados. Desemprego mede pessoas sem trabalho que procuram e estão disponíveis, não a quantidade de vagas abertas.</p>
   </>;

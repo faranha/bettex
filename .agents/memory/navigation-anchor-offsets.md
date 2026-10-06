@@ -3,6 +3,18 @@ name: Deslocamento das âncoras sob navegação fixa
 description: Ao mudar a altura da navegação, conferir a rolagem JavaScript e o índice fixo, não apenas scroll-margin.
 ---
 
+No mobile, o menu principal do hambúrguer deve abrir diretamente abaixo da linha principal do header, sobre qualquer submenu da página, nunca abaixo dele.
+
+**Why:** O criador explicou que as páginas acessadas pelo hambúrguer são primárias e o menu principal não pode parecer secundário.
+
+**How to apply:** Preservar a altura e a seleção do submenu por trás do overlay, bloqueando sua interação enquanto o menu principal estiver aberto. Fechar o overlay restaura o submenu sem alterar fragmento, seção ou rolagem.
+
+Ao verificar headers sticky, distinguir rolagem induzida pela automação de uma alteração causada pelo produto.
+
+**Why:** O clique por seletor do Playwright rolou a página antes de acionar o botão; um clique de ponteiro nas coordenadas visíveis do mesmo botão não alterou a posição. O efeito parecia uma regressão de navegação.
+
+**How to apply:** Para simular um toque num botão já visível do header, usar sua posição no viewport e comparar fragmento, seleção e rolagem antes de abrir, durante o overlay e depois de fechar.
+
 Uma mudança na altura da navegação precisa ser refletida também no cálculo da rolagem por JavaScript e no espaço ocupado por índices fixos.
 
 **Why:** A barra móvel em duas linhas deixou títulos da documentação escondidos mesmo depois de corrigir a variável de altura e o CSS. O cálculo JavaScript ainda descontava a altura antiga e não considerava o intervalo antes do índice.

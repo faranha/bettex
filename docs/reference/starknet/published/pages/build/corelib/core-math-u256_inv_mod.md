@@ -1,0 +1,24 @@
+# core::math::u256_inv_mod
+Source: https://docs.starknet.io/build/corelib/core-math-u256_inv_mod
+
+
+
+Returns the inverse of `a` modulo `n`, or `None` if `a` is not invertible modulo `n`.
+All `a`s will be considered not invertible for `n == 1`.
+
+## Signature
+
+```rust theme={null}
+pub fn u256_inv_mod(a: u256, n: NonZero) -> Option>
+```
+
+## Examples
+
+```rust theme={null}
+use core::math::u256_inv_mod;
+
+let inv = u256_inv_mod(3, 17);
+assert!(inv == Some(6));
+```
+
+

@@ -15,6 +15,8 @@ const simulationRoot = path.resolve(root, '../simulation');
 files.push(...fs.readdirSync(simulationRoot).filter(f => /\.(ts|tsx)$/.test(f) && !f.endsWith('.test.ts')).map(f => path.join(simulationRoot, f)));
 const operationsRoot = path.resolve(root, '../agent-operations');
 files.push(...fs.readdirSync(operationsRoot).filter(f => /\.(ts|tsx)$/.test(f)).map(f => path.join(operationsRoot, f)));
+const liveMarketsRoot = path.resolve(root, '../live-markets');
+files.push(...fs.readdirSync(liveMarketsRoot).filter(f => /\.(ts|tsx)$/.test(f)).map(f => path.join(liveMarketsRoot, f)));
 const failures = [];
 let tuples = 0;
 const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|BETTEX|USDC|BTC|ETH|SOL|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;

@@ -1,0 +1,16 @@
+# Introduction
+Source: https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air/index
+
+
+
+<div>
+  <img alt="" />
+
+  *Figure 1: Proving lifecycle in S-two*
+</div>
+
+Welcome to the guide for writing AIRs in S-two!
+
+In this section, we will go through the process of writing a simple AIR from scratch. This requires some understanding of the proving lifecycle in S-two, so we added a diagram showing a high-level overview of the whole process. As we go through each step, please note that the diagram may contain more steps than the code. This is because there are steps that are abstracted away by the S-two implementation, but are necessary to understand the code that we write when creating an AIR.
+
+

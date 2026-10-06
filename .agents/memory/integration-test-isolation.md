@@ -14,3 +14,9 @@ Para provar retomada depois de trocar o backend, preservar a mesma cadeia e o me
 **Why:** Um novo funding/pagamento em outra cadeia pode dar falso positivo de recuperação, mesmo quando o saldo final coincide.
 
 **How to apply:** Comparar hashes e saldos já existentes antes/depois da troca do backend; limpar a fixture só após capturar e conferir seus recibos.
+
+Uma fixture nova precisa das migrações reais que estabelecem auditoria de permissões e outros invariantes, não apenas dos inicializadores de tabelas do runtime.
+
+**Why:** Inicializadores de tabelas podem bastar para consultas comuns, mas omitir triggers instalados por migrações; isso gera falsos negativos de auditoria em um schema recém-criado.
+
+**How to apply:** Aplicar as migrações pertinentes exclusivamente na conexão isolada e criar os próprios registros para cada asserção HTTP; não depender de histórico previamente existente no aplicativo.

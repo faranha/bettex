@@ -1,5 +1,5 @@
 import { Router, type Request, type Response } from "express";
-import { createHash, randomBytes } from "node:crypto";
+import { createHash, randomBytes, randomUUID, timingSafeEqual } from "node:crypto";
 import { CreateDemoMovementBody, UpdateDemoProfileBody, GetDemoDashboardResponse } from "@workspace/api-zod";
 import { loadDashboard, ClaimedBrowserAccountError } from "../lib/demo-store";
 import { verifiedAccount, updateAccountName } from "../lib/account-identity";
@@ -8,6 +8,9 @@ import { historyPage } from "../modules/audit/infrastructure/history-store";
 import { PreviewHistoryDistributionBody } from "@workspace/api-zod";
 import { historyQuery } from "../modules/audit/transport/history-filters";
 import { canReadTreasuryHistory } from "../modules/accounts/infrastructure/history-permission";
+import { CommandSimulationBody, GetSimulationResponse } from "@workspace/api-zod";
+import { simulationSnapshot, mutateSimulation } from "../modules/simulation/infrastructure/scenario-store";
+import { permittedOrigin } from "./test-accounts";
 
 const router = Router();
 const cookieName = "bettex_demo";
@@ -48,6 +51,7 @@ async function userDashboard(req: Request, res: Response, command?: Parameters<t
   res.locals.nativeHistorySubject = user?.nativeAccountId ? `native:${user.nativeAccountId}` : undefined;
   res.locals.nativeAccountId = user?.nativeAccountId;
   const browserId = accountId(req, res);
+  res.locals.demoBrowserId = browserId;
   try {
     const result = await loadDashboard({ browserId, ...user }, command, id => { res.locals.demoHistorySubject = `demo:${id}`; });
     if (result) result.profile.canViewTreasuryHistory = !!user?.nativeAccountId && await canReadTreasuryHistory(user.nativeAccountId);
@@ -55,6 +59,7 @@ async function userDashboard(req: Request, res: Response, command?: Parameters<t
   } catch (error) {
     if (!(error instanceof ClaimedBrowserAccountError)) throw error;
     const freshId = accountId(req, res, true);
+    res.locals.demoBrowserId = freshId;
     if (command) {
       res.status(403).json({ error: "authentication_required" });
       return undefined;
@@ -74,6 +79,36 @@ router.get("/demo/dashboard", async (req, res) => {
   try {
     res.json(GetDemoDashboardResponse.parse(await userDashboard(req, res)));
   } catch (error) { errorResponse(req, res, error); }
+});
+// This namespace only runs the pure emulated scenario engine. It grants no native account rights.
+router.all("/demo/simulation", async (req, res) => {
+  res.set("Cache-Control", "private, no-store");
+  try {
+    if (!["GET", "POST"].includes(req.method)) { res.sendStatus(405); return; }
+    await userDashboard(req, res);
+    if (!res.locals.demoHistorySubject) { res.status(403).json({ code: "session_unavailable" }); return; }
+    const owner = `browser-simulation:${res.locals.demoHistorySubject}`;
+    const csrf = createHash("sha256").update(`simulation-csrf:${res.locals.demoBrowserId}`).digest("hex");
+    let id = typeof req.query.runId === "string" ? req.query.runId : undefined;
+    if (req.method === "POST") {
+      if (!permittedOrigin(req) || !req.is("application/json")) { res.status(403).json({ code: "origin_not_allowed" }); return; }
+      const parsed = CommandSimulationBody.safeParse(req.body);
+      if (!parsed.success) { res.status(400).json({ code: "invalid_simulation_command" }); return; }
+      const a = Buffer.from(parsed.data.csrf), b = Buffer.from(csrf);
+      if (a.length !== b.length || !timingSafeEqual(a, b)) { res.status(403).json({ code: "csrf_invalid" }); return; }
+      const { csrf: unused, ...terms } = parsed.data;
+      const hash = createHash("sha256").update(JSON.stringify(terms)).digest("hex");
+      id = await mutateSimulation(owner, terms, hash, `sim:${randomUUID()}`);
+    }
+    const offset = Number(req.query.offset ?? 0);
+    if (!Number.isSafeInteger(offset) || offset < 0 || offset > 1000000) { res.status(400).json({ code: "invalid_offset" }); return; }
+    const state = await simulationSnapshot(owner, id, typeof req.query.kind === "string" ? req.query.kind : undefined, offset);
+    res.json({ ...GetSimulationResponse.parse(state), run: state.run, csrf });
+  } catch (error) {
+    const code = error instanceof Error ? error.message : "simulation_unavailable";
+    const known = ["simulation_not_found", "simulation_run_required", "simulation_revision_changed", "simulation_idempotency_conflict", "simulation_paused", "invalid_amount", "unknown_simulation_action"];
+    res.status(code === "simulation_not_found" ? 404 : known.includes(code) ? 409 : 503).json({ code: known.includes(code) ? code : "simulation_unavailable" });
+  }
 });
 router.get("/demo/history", async (req, res) => {
   try {

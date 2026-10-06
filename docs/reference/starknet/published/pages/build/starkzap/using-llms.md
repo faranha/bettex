@@ -1,0 +1,52 @@
+# AI-Powered Development
+Source: https://docs.starknet.io/build/starkzap/using-llms
+
+Configure Cursor IDE and MCP using Starkzap's internal standards for smarter coding.
+
+## Overview
+
+Maximize development speed by providing Cursor and LLMs with the full context of the Starkzap codebase using our built-in AI configuration files.
+
+## 1. Cursor IDE Setup
+
+### Add Project Rules
+
+For the best experience, Cursor needs to understand our coding standards (ESM, Strict TS, and Path Aliases).
+
+1. Copy the contents of `CLAUDE.md` from the root of the [repository](https://github.com/keep-starknet-strange/starkzap).
+2. Paste them into a `.cursorrules` file in your project root.
+3. This allows Cursor to automatically use the correct commands (like `npm run typecheck`) and follow our internal `<conventions>`.
+
+### Add External Documentation
+
+Add the Starkzap API reference to Cursor's indexed docs:
+
+1. **Settings > Features > Docs**
+2. **Add new doc**
+3. URL: `https://docs.starkzap.com/llms-full.txt` (or your local `docs/export/` path)
+
+***
+
+## 2. Using the Agent Model (MCP)
+
+If you are using the **Model Context Protocol (MCP)** with Claude or Cursor:
+
+* **Context Loading:** Point your filesystem MCP to `CLAUDE.md` and `AGENTS.md`.
+* **Workflow Alignment:** The AI will now understand the `Coordinator -> Executor -> Reviewer` workflow defined in our repo, making it better at planning complex features.
+
+***
+
+## 3. Common AI Commands
+
+Inside Cursor Chat (Cmd+L or Ctrl+L), you can now use specific context:
+
+* **"Check my types"**: The AI will know to run `npm run typecheck` based on `CLAUDE.md`.
+* **"Generate a new token preset"**: The AI will point you to `npm run generate:tokens` instead of suggesting manual edits.
+* **"@docs Starkzap how to batch transactions"**: Uses the indexed documentation for accurate SDK syntax.
+
+## Next Steps
+
+* Review the **Development Workflow** in [CLAUDE.md](https://github.com/keep-starknet-strange/starkzap/blob/main/CLAUDE.md)
+* Learn about **Multi-agent coordination** in [AGENTS.md](https://github.com/keep-starknet-strange/starkzap/blob/main/AGENTS.md)
+
+

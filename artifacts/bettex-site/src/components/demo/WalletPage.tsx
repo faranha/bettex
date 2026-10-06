@@ -6,7 +6,12 @@ import { WalletAction } from './WalletAction';
 import { History } from './Views';
 import { PreviousCycle } from './PreviousCycle';
 import { HistoryPanel } from '../history/HistoryPanel';
+import { NativeWalletsCard } from './NativeWalletsCard';
 import { TestContractPanel } from './TestContractPanel';
+import { isDemoSession } from './demo-session';
+import { DemoWalletsCard } from './DemoWalletsCard';
+import { TestPeriodNotice } from './TestPeriodNotice';
+import { NativeParticipationCard } from './NativeParticipationCard';
 
 export function WalletPage({ d, onWallet }: { d: DemoDashboard; onWallet: (kind: Kind, asset: Asset) => void }) {
   const { x } = useX();
@@ -38,13 +43,14 @@ export function WalletPage({ d, onWallet }: { d: DemoDashboard; onWallet: (kind:
       {card('USDC', x('Saldo em dólares', 'Dollar balance', 'Saldo en dólares'), b.usdc, usdcActions)}
       {card('BETTEX', x('Saldo em BETTEX', 'BETTEX balance', 'Saldo en BETTEX'), b.bettex, bettexActions)}
     </div>
+    {isDemoSession(d.profile) ? <DemoWalletsCard d={d} onWallet={onWallet} /> : <NativeWalletsCard profile={d.profile} />}
     <PreviousCycle d={d} />
-    <TestContractPanel />
+    {isDemoSession(d.profile) ? <TestPeriodNotice /> : d.profile.provider === 'native' ? <NativeParticipationCard profile={d.profile} /> : <TestContractPanel />}
     <section className="dcard p-4 sm:p-5">
       <h3 className="display mb-2 text-base font-extrabold">{x('Extrato', 'Statement', 'Extracto')}</h3>
       <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-[#5B6B85]"><span>{x('Total recebido em ciclos anteriores', 'Total received in past cycles', 'Total recibido en ciclos anteriores')}</span><Money v={b.receivedYield} a="USDC" /></div>
       <History d={d} />
     </section>
-    <div className="dcard p-4 sm:p-5"><HistoryPanel mode="demo" accountKey={d.profile.accountId} /></div>
+    <div className="dcard p-4 sm:p-5"><HistoryPanel mode={d.profile.provider === 'native' ? 'native' : 'demo'} accountKey={d.profile.accountId} /></div>
   </div>;
 }

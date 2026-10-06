@@ -1,5 +1,7 @@
 # BETTEX canonical architecture
 
+Real language-model analysis belongs to `agents`, via its inference port and infrastructure adapter, with persisted provenance separate from deterministic controls. See [real agent reasoning](decisions/0016-real-agent-reasoning.md).
+
 The `simulation` context only contains identified scenario executions and coordinates the public APIs for `agents`, `risk`, `execution`, `ledger` and `reconciliation`. Its logs and clock are isolated from other environments. See [isolated executions decision](decisions/0013-simulation-executions.md).
 
 Allora/Polymarket integrations follow the [collaboration rule and the canonical registry of pending items](integration-pendencies.md). Unresolved impediments require participation from the creator; do not authorize substitutions, inferences, or economic choices to circumvent them.

@@ -1,0 +1,14 @@
+# core::starknet::storage_access::storage_address_from_base_and_offset
+Source: https://docs.starknet.io/build/corelib/core-starknet-storage_access-storage_address_from_base_and_offset
+
+
+
+Sums the base address and the offset to return a storage address.
+
+## Signature
+
+```rust theme={null}
+pub extern fn storage_address_from_base_and_offset(base: StorageBaseAddress, offset: u8) -> StorageAddress nopanic;
+```
+
+

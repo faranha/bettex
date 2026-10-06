@@ -1,7 +1,8 @@
 import { ExternalLink } from 'lucide-react';
+import { MobileDataCarousel } from './MobileDataCarousel';
 
 export function AgenticProblemMetrics() {
-  return <div className="pb-problem__agentic-metrics">
+  return <MobileDataCarousel id="economia-agentica-dados" className="pb-problem__agentic-metrics" labels={['Dados da economia agêntica', 'Agentic economy data', 'Datos de la economía agéntica']}>
     <article>
       <p className="mono pb-problem__agentic-label">Economia agêntica</p>
       <p className="display pb-problem__agentic-value">15%</p>
@@ -23,5 +24,5 @@ export function AgenticProblemMetrics() {
       <p>Na região, a falta de acesso digital dificulta ganhos com IA nesses postos. Pessoas humildes têm menos recursos para se adaptar e participar dessa economia.</p>
       <a href="https://www.ilo.org/publications/buffer-or-bottleneck-employment-exposure-generative-ai-and-digital-divide" target="_blank" rel="noopener noreferrer">OIT / Banco Mundial · estudo, 2024<ExternalLink aria-hidden="true" /></a>
     </article>
-  </div>;
+  </MobileDataCarousel>;
 }

@@ -13,7 +13,7 @@ const forbidden = /(?:^|\/)(?:node_modules|dist|build|coverage|__pycache__|\.cac
 export function git(root, args, options = {}) {
   return execFileSync('git', args, { cwd: root, encoding: 'utf8', timeout: 45_000,
     maxBuffer: 30 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'],
-    env: { ...process.env, GIT_TERMINAL_PROMPT: '0', GCM_INTERACTIVE: 'never' }, ...options });
+    env: { ...process.env, GIT_OPTIONAL_LOCKS: '0', GIT_TERMINAL_PROMPT: '0', GCM_INTERACTIVE: 'never' }, ...options });
 }
 export function inspect(data, label) {
   const findings = [];

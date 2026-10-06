@@ -493,3 +493,11 @@
 @media (prefers-reduced-motion: reduce) {
   .whitepaper__content.is-single .whitepaper__chapter { animation: none; }
 }
+
+/* Mobile documentation bar lives in the site header; the in-body index is hidden. */
+.documentation-mobile-slot { display: none; }
+@media (max-width: 768px) {
+  .documentation-mobile-slot { display: block; }
+  .whitepaper__aside { display: none; }
+  .whitepaper__body { padding-top: 30px; }
+}

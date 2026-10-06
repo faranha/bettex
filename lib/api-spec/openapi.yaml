@@ -11,6 +11,18 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /markets/live:
+    get:
+      operationId: getMarketLive
+      tags: [markets]
+      summary: Public BTC, ETH and SOL spot observations; not trade executions
+      responses:
+        "200":
+          description: Live, stale or unavailable prices with their original timestamps
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MarketLiveSnapshot"
   /agents/center:
     get:
       operationId: getAgentCenter
@@ -63,6 +75,63 @@ paths:
                     items: { $ref: "#/components/schemas/AlloraObservation" }
         "400": { description: Unsupported asset }
         "503": { description: Source unavailable or incompatible; no synthetic fallback }
+  /agents/reasoning:
+    get:
+      operationId: getAgentReasoning
+      tags: [agents]
+      parameters:
+        - { in: query, name: agentId, required: true, schema: { type: string } }
+        - { in: query, name: language, required: true, schema: { type: string, enum: [pt, en, es] } }
+      responses:
+        "200":
+          description: Persisted real language-model reports, not deterministic rule executions
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AgentReasoningHistory" }
+    post:
+      operationId: createAgentReasoning
+      tags: [agents]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/AgentReasoningInput" }
+      responses:
+        "200":
+          description: Validated AI analysis with captured source evidence and model provenance
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AgentReasoningReport" }
+        "429": { description: Rate or concurrency limit reached }
+        "503": { description: Inference unavailable; no rule-based substitute }
+  /demo/simulation:
+    get:
+      operationId: getDemoSimulation
+      tags: [simulation]
+      parameters:
+        - { in: query, name: runId, schema: { type: string } }
+        - { in: query, name: kind, schema: { type: string } }
+        - { in: query, name: offset, schema: { type: integer, minimum: 0, default: 0 } }
+      responses:
+        "200":
+          description: Browser-scoped emulated simulation, separate from native accounts
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SimulationSnapshot" }
+    post:
+      operationId: commandDemoSimulation
+      tags: [simulation]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/SimulationCommandInput" }
+      responses:
+        "200":
+          description: Committed browser-scoped emulated scenario
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SimulationSnapshot" }
   /simulation:
     get:
       operationId: getSimulation
@@ -408,6 +477,42 @@ paths:
               schema: { $ref: "#/components/schemas/NativeTestJourney" }
 components:
   schemas:
+    MarketPricePoint:
+      type: object
+      required: [time, value]
+      properties:
+        time: { type: number, description: "Candle opening time in epoch milliseconds" }
+        value: { type: number, description: "Actual five-minute candle closing price in USD" }
+    MarketLiveAsset:
+      type: object
+      required: [symbol, name, product, currency, status, price, change24h, high24h, low24h, observedAt, tradeAt, historyStatus, history]
+      properties:
+        symbol: { type: string, enum: [BTC, ETH, SOL] }
+        name: { type: string }
+        product: { type: string }
+        currency: { type: string, enum: [USD] }
+        status: { type: string, enum: [live, stale, unavailable] }
+        price: { type: string, nullable: true }
+        change24h: { type: number, nullable: true }
+        high24h: { type: string, nullable: true }
+        low24h: { type: string, nullable: true }
+        observedAt: { type: string, nullable: true }
+        tradeAt: { type: string, nullable: true }
+        historyStatus: { type: string, enum: [available, stale, unavailable] }
+        history:
+          type: array
+          items: { $ref: "#/components/schemas/MarketPricePoint" }
+    MarketLiveSnapshot:
+      type: object
+      required: [generatedAt, source, sourceUrl, refreshIntervalMs, assets]
+      properties:
+        generatedAt: { type: string }
+        source: { type: string }
+        sourceUrl: { type: string }
+        refreshIntervalMs: { type: integer }
+        assets:
+          type: array
+          items: { $ref: "#/components/schemas/MarketLiveAsset" }
     AgentEvidence:
       type: object
       required: [source, url, producedAt, targetAt, blockHeight, value, unit]
@@ -512,11 +617,53 @@ components:
         revision: { type: integer }
         paused: { type: boolean }
         clock: { type: integer }
+    AgentReasoningInput:
+      type: object
+      additionalProperties: false
+      required: [agentId, language]
+      properties:
+        agentId: { type: string, maxLength: 30 }
+        language: { type: string, enum: [pt, en, es] }
+    AgentReasoningAnalysis:
+      type: object
+      additionalProperties: false
+      required: [summary, observations, uncertainties, nextSteps, recommendation, evidenceIndices]
+      properties:
+        summary: { type: string, minLength: 1, maxLength: 2400 }
+        observations: { type: array, maxItems: 8, items: { type: string, maxLength: 1200 } }
+        uncertainties: { type: array, maxItems: 8, items: { type: string, maxLength: 1200 } }
+        nextSteps: { type: array, maxItems: 8, items: { type: string, maxLength: 1200 } }
+        recommendation: { type: string, enum: [monitor, abstain, review] }
+        evidenceIndices: { type: array, maxItems: 20, items: { type: integer, minimum: 0 } }
+    AgentReasoningReport:
+      type: object
+      additionalProperties: false
+      required: [id, agentId, language, createdAt, model, provider, providerResponseId, sourceRunId, sourceAt, evidence, analysis, executionAllowed]
+      properties:
+        id: { type: string }
+        agentId: { type: string }
+        language: { type: string, enum: [pt, en, es] }
+        createdAt: { type: string, format: date-time }
+        model: { type: string }
+        provider: { type: string, enum: [openai] }
+        providerResponseId: { type: string }
+        sourceRunId: { type: [string, "null"] }
+        sourceAt: { type: string, format: date-time }
+        evidence: { type: array, items: { $ref: "#/components/schemas/AgentEvidence" } }
+        analysis: { $ref: "#/components/schemas/AgentReasoningAnalysis" }
+        executionAllowed: { type: boolean, enum: [false] }
+    AgentReasoningHistory:
+      type: object
+      additionalProperties: false
+      required: [reports]
+      properties:
+        reports: { type: array, items: { $ref: "#/components/schemas/AgentReasoningReport" } }
     SimulationSnapshot:
       type: object
       additionalProperties: false
       required: [mode, runs, run, events, total, offset, hasMore]
       properties:
+        csrf: { type: string, description: "Browser-demo simulation CSRF token, never a native authentication credential" }
         mode: { type: string, enum: [simulation] }
         runs: { type: array, items: { $ref: "#/components/schemas/SimulationRun" } }
         run:

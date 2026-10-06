@@ -1,0 +1,54 @@
+# core::traits::BitNot
+Source: https://docs.starknet.io/build/corelib/core-traits-BitNot
+
+
+
+The bitwise NOT operator `~`.
+
+## Signature
+
+```rust theme={null}
+pub trait BitNot
+```
+
+## Examples
+
+An implementation of `BitNot` for a wrapper around `u8`.
+
+```rust theme={null}
+use core::traits::BitNot;
+
+#[derive(Drop, PartialEq)]
+struct Wrapper {
+    u8: u8,
+}
+
+impl BitNotWrapper of BitNot {
+    fn bitnot(a: Wrapper) -> Wrapper {
+        Wrapper { u8: ~a.u8 }
+    }
+}
+
+assert!(~Wrapper { u8: 0 } == Wrapper { u8 : 255 });
+assert!(~Wrapper { u8: 1 } == Wrapper { u8 : 254 });
+```
+
+## Trait functions
+
+### bitnot
+
+Performs the `~` operation.
+
+#### Signature
+
+```rust theme={null}
+fn bitnot(a: T) -> T
+```
+
+#### Examples
+
+```rust theme={null}
+assert!(~1_u8 == 254);
+```
+
+

@@ -1,0 +1,66 @@
+# core::ops::deref::DerefMut
+Source: https://docs.starknet.io/build/corelib/core-ops-deref-DerefMut
+
+
+
+A trait for dereferencing in mutable contexts.
+This trait is similar to `Deref` but specifically handles cases where the value
+accessed is mutable. Despite its name, `DerefMut` does NOT allow modifying the
+inner value - it only indicates that the container itself is mutable.
+
+## Signature
+
+```rust theme={null}
+pub trait DerefMut
+```
+
+## Examples
+
+```rust theme={null}
+#[derive(Copy, Drop)]
+struct MutWrapper {
+    value: T
+}
+
+impl MutWrapperDerefMut> of DerefMut> {
+    type Target = T;
+    fn deref_mut(ref self: MutWrapper) -> T {
+        self.value
+    }
+}
+
+// This will work since x is mutable
+let mut x = MutWrapper { value: 42 };
+let val = x.deref_mut();
+assert!(val == 42);
+
+// This would fail to compile since y is not mutable
+let y = MutWrapper { value: 42 };
+let val = y.deref_mut(); // Compile error
+```
+
+## Trait functions
+
+### deref\_mut
+
+Returns the dereferenced value.
+
+#### Signature
+
+```rust theme={null}
+fn deref_mut(ref self: T) -> DerefMutTarget
+```
+
+## Trait types
+
+### Target
+
+The type of the dereferenced value.
+
+#### Signature
+
+```rust theme={null}
+type Target;
+```
+
+
