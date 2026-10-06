@@ -51,6 +51,7 @@ try {
   assert.ok(sitemap.startsWith('<?xml'));
   assert.equal((sitemap.match(/<loc>/g) ?? []).length, 9);
   assert.ok(!sitemap.includes('/demo'));
+  assert.ok(!sitemap.includes('/app'));
   const missing = await fetch(origin + '/pagina-inexistente');
   assert.equal(missing.status, 404, 'Unknown routes must return a real 404');
   assert.ok((await missing.text()).includes('noindex, follow'));

@@ -1,15 +1,12 @@
 /** @jsxImportSource react */
 import { useState } from 'react';
 import { RefreshCw } from 'lucide-react';
-import { Link } from 'wouter';
-import { demoPath, type DemoView } from '@/components/demo/demo-navigation';
 import { useGetAlphaTrading, getGetAlphaTradingQueryKey, type GetAlphaTradingParams, type AlphaTradingSnapshot } from '@workspace/api-client-react';
 import { useFmt, card, KV, Tag } from './format';
 import { AlphaTradingCapitalPanel } from './CapitalPanel';
 import { OpportunityCard, DecisionCard, OrderCard, PositionCard } from './Records';
 import { Journey } from './Journey';
 import { AgentOperationsDashboard } from '@/components/agent-operations/AgentOperationsDashboard';
-import { MobileAreaNav } from '@/components/demo/MobileAreaNav';
 import { AlloraAnalysis } from '@/components/demo/AlloraAnalysis';
 
 export { AlphaTradingCapitalPanel };
@@ -35,16 +32,13 @@ export function AlphaTradingPanel() {
   const params: GetAlphaTradingParams = { view, limit: 15, ...(asset ? { asset } : {}), ...(state.trim() ? { state: state.trim() } : {}), ...(cursor ? { cursor } : {}) };
   const q = useGetAlphaTrading(params, { query: { queryKey: getGetAlphaTradingQueryKey(params), refetchInterval: 15000, retry: 1, placeholderData: p => p } });
   const d: AlphaTradingSnapshot | undefined = q.data;
-  const links: [DemoView, string][] = [['home', x('Meu painel', 'My dashboard', 'Mi panel')], ['wallet', x('Saldo e histórico', 'Balance and history', 'Saldo e historial')], ['treasury', x('Tesouraria', 'Treasury', 'Tesorería')], ['account', x('Minha conta', 'My account', 'Mi cuenta')]];
   const reset = () => setCursors([]);
   const label: Record<View, string> = { opportunities: x('Oportunidades', 'Opportunities', 'Oportunidades'), decisions: x('Decisões', 'Decisions', 'Decisiones'), orders: x('Ordens', 'Orders', 'Órdenes'), positions: x('Posições abertas', 'Open positions', 'Posiciones abiertas'), closed: x('Encerradas', 'Closed', 'Cerradas') };
   const items = d ? (view === 'opportunities' ? d.opportunities : view === 'decisions' ? d.decisions : view === 'orders' ? d.orders : d.positions) : [];
   return <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10" data-testid="alpha-trading">
     <div className="bg-[#1B2A41] py-1 text-center text-[11px] font-semibold tracking-wide text-[#F5F1E8]">{x('desenvolvimento · simulação sem dinheiro real', 'development · simulation, no real money', 'desarrollo · simulación sin dinero real')}</div>
     <div className="mx-auto grid max-w-5xl gap-4 px-3 pt-5 sm:px-5">
-      <MobileAreaNav current="central" className="-mx-3 w-[calc(100%+1.5rem)]" />
       <p role="status" className="text-xs font-bold text-[#0A6657]" data-testid="alpha-test-period">{x('ALFA · período de testes · sem dinheiro real', 'ALFA · testing period · no real money', 'ALFA · período de pruebas · sin dinero real')}</p>
-      <nav aria-label={x('Áreas do app', 'App areas', 'Áreas de la app')} className="hidden flex-wrap gap-2 sm:flex">{links.map(([k, l]) => <Link key={k} href={demoPath(k, f.loc)} data-testid={`nav-${k}`} className="inline-flex min-h-11 items-center rounded-full border border-[#E4DCCB] px-4 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5]">{l}</Link>)}</nav>
       <div><h1 className="display text-2xl font-extrabold">{x('Central da IA', 'AI Center', 'Central de IA')}</h1>
         <p className="mt-1 text-sm text-[#5B6B85]">{x('Como a IA considera eventos de previsão, com evidências. Resultados simulados, nunca lucro distribuível.', 'How the AI considers prediction events, with evidence. Simulated results, never distributable profit.', 'Cómo la IA considera eventos de predicción, con evidencias. Resultados simulados, nunca ganancia distribuible.')}</p></div>
       <AgentOperationsDashboard />

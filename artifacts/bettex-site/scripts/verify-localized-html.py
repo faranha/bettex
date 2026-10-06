@@ -25,7 +25,7 @@ class VisibleText(HTMLParser):
 
 failures = []
 for language, documentation in (("en", "documentation"), ("es", "documentacion")):
-    for page in ("index", "pitch", documentation, "demo"):
+    for page in ("index", "pitch", documentation, "app"):
         file = root / "dist/public" / language / f"{page}.html"
         parser = VisibleText()
         parser.feed(file.read_text())
