@@ -6,7 +6,6 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, Dia
 import { useX } from '@/components/demo/ui';
 import { demoLabel, demoPath, type DemoView } from '@/components/demo/demo-navigation';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
-import { AppProfileLink } from '@/components/app/AppProfileLink';
 
 export const APP_AREAS: DemoView[] = ['home', 'central', 'treasury', 'account'];
 
@@ -21,7 +20,6 @@ export function MobileAreaNav({ current, className = '' }: { current: DemoView; 
   const focus = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]';
   return <div className={`mx-auto flex max-w-5xl items-center gap-2 px-3 sm:hidden ${className}`} data-testid="app-nav-mobile">
     <p className="min-w-0 flex-1 truncate border-l-4 border-[#0E7C6B] pl-2 text-sm font-bold text-[#0A6657]" data-testid="text-current-area">{demoLabel(current, loc)}</p>
-    <AppProfileLink />
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <button type="button" aria-label={areas} data-testid="button-app-areas" className={`inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border border-[#E4DCCB] bg-[#FFFCF6] px-4 text-sm font-bold text-[#1B2A41] ${focus}`}>{menu}<ChevronDown className="h-4 w-4" aria-hidden="true" /></button>
