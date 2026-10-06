@@ -10,7 +10,7 @@ export const simulationLabels:Record<string,[string,string,string]>={
   partial_fill:['Execução parcial','Partial fill','Ejecución parcial'],
   no_liquidity:['Sem liquidez na saída','No exit liquidity','Sin liquidez en la salida'],
   integration_failure:['Falha de integração simulada','Simulated integration failure','Fallo de integración simulado'],
-  payment_failure:['Falha de pagamento simulada','Simulated payment failure','Fallo de pago simulado'],
+  payment_failure:['Falha no repasse de lucro do ciclo','Cycle profit payout failure','Fallo en el reparto de beneficios del ciclo'],
   restart:['Interrupção e retomada','Interruption and resumption','Interrupción y reanudación'],
   crypto_correlated:['Ativos cripto correlacionados','Correlated crypto assets','Criptoactivos correlacionados'],
   'crypto-correlated':['Ativos cripto correlacionados','Correlated crypto assets','Criptoactivos correlacionados'],

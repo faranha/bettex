@@ -518,3 +518,17 @@ mtime_ms = 1791207631733
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8d0b7e52-5072-4b4b-9326-bb619e7efb1d/af54fa21-dcac-4a22-9a7b-a2c6cf6c3810"
 storage_version_token = "1791207648051575"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "Faoh3UG8GBIZCFC876e0V"
+uri = "file://docs/requirements/e2e-development-report.html"
+type = "html"
+title = "BETTEX — relatório de testes e correções"
+description = "Resultados das duas baterias, correções executadas, cobertura no navegador e pendências verificadas."
+logical_id = "bb5d859e-3781-4626-a175-fb0eb9225b9e"
+content_hash = "sha256:4845d5f64cf0ab0d2100771dc193261a54b493b40ac7c4126524b28707a94f46"
+size = 8903
+mtime_ms = 1791270252851
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/bb5d859e-3781-4626-a175-fb0eb9225b9e/038017f4-6a58-46ca-b6d3-29f666dbfb5c"
+storage_version_token = "1791270292726253"
+content_type = "text/html"

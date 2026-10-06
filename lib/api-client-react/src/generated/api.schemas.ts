@@ -5,6 +5,77 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export interface MarketPricePoint {
+  /** Candle opening time in epoch milliseconds */
+  time: number;
+  /** Actual five-minute candle closing price in USD */
+  value: number;
+}
+
+export type MarketLiveAssetSymbol = typeof MarketLiveAssetSymbol[keyof typeof MarketLiveAssetSymbol];
+
+
+export const MarketLiveAssetSymbol = {
+  BTC: 'BTC',
+  ETH: 'ETH',
+  SOL: 'SOL',
+} as const;
+
+export type MarketLiveAssetCurrency = typeof MarketLiveAssetCurrency[keyof typeof MarketLiveAssetCurrency];
+
+
+export const MarketLiveAssetCurrency = {
+  USD: 'USD',
+} as const;
+
+export type MarketLiveAssetStatus = typeof MarketLiveAssetStatus[keyof typeof MarketLiveAssetStatus];
+
+
+export const MarketLiveAssetStatus = {
+  live: 'live',
+  stale: 'stale',
+  unavailable: 'unavailable',
+} as const;
+
+export type MarketLiveAssetHistoryStatus = typeof MarketLiveAssetHistoryStatus[keyof typeof MarketLiveAssetHistoryStatus];
+
+
+export const MarketLiveAssetHistoryStatus = {
+  available: 'available',
+  stale: 'stale',
+  unavailable: 'unavailable',
+} as const;
+
+export interface MarketLiveAsset {
+  symbol: MarketLiveAssetSymbol;
+  name: string;
+  product: string;
+  currency: MarketLiveAssetCurrency;
+  status: MarketLiveAssetStatus;
+  /** @nullable */
+  price: string | null;
+  /** @nullable */
+  change24h: number | null;
+  /** @nullable */
+  high24h: string | null;
+  /** @nullable */
+  low24h: string | null;
+  /** @nullable */
+  observedAt: string | null;
+  /** @nullable */
+  tradeAt: string | null;
+  historyStatus: MarketLiveAssetHistoryStatus;
+  history: MarketPricePoint[];
+}
+
+export interface MarketLiveSnapshot {
+  generatedAt: string;
+  source: string;
+  sourceUrl: string;
+  refreshIntervalMs: number;
+  assets: MarketLiveAsset[];
+}
+
 export interface AgentEvidence {
   source: string;
   url: string;
@@ -243,6 +314,95 @@ export interface SimulationRun {
   [key: string]: unknown;
  }
 
+export type AgentReasoningInputLanguage = typeof AgentReasoningInputLanguage[keyof typeof AgentReasoningInputLanguage];
+
+
+export const AgentReasoningInputLanguage = {
+  pt: 'pt',
+  en: 'en',
+  es: 'es',
+} as const;
+
+export interface AgentReasoningInput {
+  /** @maxLength 30 */
+  agentId: string;
+  language: AgentReasoningInputLanguage;
+}
+
+export type AgentReasoningAnalysisRecommendation = typeof AgentReasoningAnalysisRecommendation[keyof typeof AgentReasoningAnalysisRecommendation];
+
+
+export const AgentReasoningAnalysisRecommendation = {
+  monitor: 'monitor',
+  abstain: 'abstain',
+  review: 'review',
+} as const;
+
+export interface AgentReasoningAnalysis {
+  /**
+     * @minLength 1
+     * @maxLength 2400
+     */
+  summary: string;
+  /**
+     * @maxItems 8
+     * @items.maxLength 1200
+     */
+  observations: string[];
+  /**
+     * @maxItems 8
+     * @items.maxLength 1200
+     */
+  uncertainties: string[];
+  /**
+     * @maxItems 8
+     * @items.maxLength 1200
+     */
+  nextSteps: string[];
+  recommendation: AgentReasoningAnalysisRecommendation;
+  /**
+     * @maxItems 20
+     * @items.minimum 0
+     */
+  evidenceIndices: number[];
+}
+
+export type AgentReasoningReportLanguage = typeof AgentReasoningReportLanguage[keyof typeof AgentReasoningReportLanguage];
+
+
+export const AgentReasoningReportLanguage = {
+  pt: 'pt',
+  en: 'en',
+  es: 'es',
+} as const;
+
+export type AgentReasoningReportProvider = typeof AgentReasoningReportProvider[keyof typeof AgentReasoningReportProvider];
+
+
+export const AgentReasoningReportProvider = {
+  openai: 'openai',
+} as const;
+
+export interface AgentReasoningReport {
+  id: string;
+  agentId: string;
+  language: AgentReasoningReportLanguage;
+  createdAt: string;
+  model: string;
+  provider: AgentReasoningReportProvider;
+  providerResponseId: string;
+  /** @nullable */
+  sourceRunId: string | null;
+  sourceAt: string;
+  evidence: AgentEvidence[];
+  analysis: AgentReasoningAnalysis;
+  executionAllowed: false;
+}
+
+export interface AgentReasoningHistory {
+  reports: AgentReasoningReport[];
+}
+
 export type SimulationSnapshotMode = typeof SimulationSnapshotMode[keyof typeof SimulationSnapshotMode];
 
 
@@ -253,6 +413,8 @@ export const SimulationSnapshotMode = {
 export type SimulationSnapshotEventsItem = { [key: string]: unknown };
 
 export interface SimulationSnapshot {
+  /** Browser-demo simulation CSRF token, never a native authentication credential */
+  csrf?: string;
   mode: SimulationSnapshotMode;
   runs: SimulationRun[];
   run: SimulationRun | null;
@@ -2218,6 +2380,29 @@ export type GetAlloraAnalysis200Observation = AlloraObservation & {
 export type GetAlloraAnalysis200 = {
   observation: GetAlloraAnalysis200Observation;
   history: AlloraObservation[];
+};
+
+export type GetAgentReasoningParams = {
+agentId: string;
+language: GetAgentReasoningLanguage;
+};
+
+export type GetAgentReasoningLanguage = typeof GetAgentReasoningLanguage[keyof typeof GetAgentReasoningLanguage];
+
+
+export const GetAgentReasoningLanguage = {
+  pt: 'pt',
+  en: 'en',
+  es: 'es',
+} as const;
+
+export type GetDemoSimulationParams = {
+runId?: string;
+kind?: string;
+/**
+ * @minimum 0
+ */
+offset?: number;
 };
 
 export type GetSimulationParams = {

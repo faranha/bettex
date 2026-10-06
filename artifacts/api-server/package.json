@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check:reasoning": "node --test scripts/agent-reasoning.test.mjs",
     "check:agents": "node --test scripts/alpha-hierarchy.test.mjs",
     "check:allora": "node --test scripts/allora-public.test.mjs",
     "check:agent-operations": "node --test scripts/agent-operations.test.mjs",
@@ -23,6 +24,7 @@
     "check:security": "node --test scripts/http-security.test.mjs && node scripts/security-isolation.mjs"
   },
   "dependencies": {
+    "@workspace/integrations-openai-ai-server": "workspace:*",
     "@clerk/express": "^2.1.75",
     "@clerk/shared": "^4.38.0",
     "@workspace/api-zod": "workspace:*",

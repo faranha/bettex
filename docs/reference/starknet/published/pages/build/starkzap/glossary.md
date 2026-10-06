@@ -1,0 +1,295 @@
+# Glossary
+Source: https://docs.starknet.io/build/starkzap/glossary
+
+Web3 terminology explained in web2-friendly terms
+
+## Key Concepts for Web2 Developers
+
+If you're new to blockchain development, here are the key terms you'll encounter, explained using familiar web2 concepts:
+
+### Wallet
+
+**Web2 Equivalent:** Bank account or user account
+
+A wallet is like a bank account on the blockchain. It has:
+
+* An **address** (like an account number) - where you receive funds
+* A **private key** (like a password) - used to authorize transactions
+* A **public key** (like a username) - derived from the private key, can be shared
+
+Unlike a bank account, users control their wallet directly—there's no bank in the middle.
+
+### Signer
+
+**Web2 Equivalent:** Authentication/Authorization system
+
+A signer is what proves you own a wallet and authorizes transactions. Think of it like:
+
+* **OAuth tokens** - prove you're logged in
+* **API keys** - authorize API calls
+* **Digital signatures** - prove you authorized a transaction
+
+The SDK supports different signer types:
+
+* **Private Key Signer** - Like storing a password locally (for servers only)
+* **Privy Signer** - Like OAuth, keys managed by a service
+* **Cartridge Signer** - Like social login, keys managed by Cartridge
+
+### RPC (Remote Procedure Call)
+
+**Web2 Equivalent:** API endpoint
+
+An RPC endpoint is like a REST API endpoint, but for blockchain operations. It's how your app communicates with the blockchain network to:
+
+* Read data (like checking balances)
+* Submit transactions (like sending tokens)
+* Query the network state
+
+Think of it like calling `fetch()` to a blockchain API instead of your own backend.
+
+### Network / Chain
+
+**Web2 Equivalent:** Environment (production, staging, development)
+
+* **Mainnet** = Production - Real money, real transactions
+* **Testnet (Sepolia)** = Staging - Fake money for testing
+* **Devnet** = Local development - Your own test blockchain
+
+Just like you have `production`, `staging`, and `localhost` environments.
+
+### Gas / Transaction Fees
+
+**Web2 Equivalent:** Credit card processing fees or API usage costs
+
+Gas is the fee paid to process transactions on the blockchain. Think of it like:
+
+* Credit card processing fees (2-3% per transaction)
+* AWS API Gateway costs (pay per request)
+* Stripe transaction fees
+
+With the SDK, you can:
+
+* **User pays** - User covers the gas fee (like normal)
+* **Sponsored** - You pay the gas fee for users (like offering free shipping)
+
+### Address
+
+**Web2 Equivalent:** Account number, email address, or user ID
+
+An address is a unique identifier for a wallet on the blockchain. It's like:
+
+* A bank account number (where you send money)
+* An email address (where you send messages)
+* A user ID in your database
+
+Example: `0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d`
+
+### Private Key
+
+**Web2 Equivalent:** Password or secret key
+
+A private key is a secret that proves you own a wallet. It's like:
+
+* A password for your bank account
+* An API secret key
+* A JWT signing key
+
+**⚠️ Never share your private key!** It's like sharing your password—anyone with it can control your wallet.
+
+### Public Key
+
+**Web2 Equivalent:** Username or public identifier
+
+A public key is derived from a private key and can be shared. It's like:
+
+* A username (public, can be shared)
+* An email address (public identifier)
+* A user ID (public reference)
+
+Unlike a private key, sharing your public key is safe.
+
+### Transaction
+
+**Web2 Equivalent:** API request or database operation
+
+A transaction is an operation on the blockchain, like:
+
+* Sending tokens (like a bank transfer)
+* Calling a smart contract function (like an API call)
+* Deploying a contract (like deploying a service)
+
+Transactions are:
+
+* **Immutable** - Once confirmed, can't be changed (like a database commit)
+* **Public** - Anyone can see them (like public API logs)
+* **Atomic** - Either fully succeed or fully fail (like database transactions)
+
+### Deploy
+
+**Web2 Equivalent:** Creating an account or provisioning a service
+
+On Starknet, wallets are smart contracts that need to be "deployed" (created on the blockchain) before they can be used. It's like:
+
+* Creating a new user account in your database
+* Provisioning a new AWS service
+* Setting up a new bank account
+
+The SDK handles this automatically with `deploy: "if_needed"`.
+
+### Token / ERC20
+
+**Web2 Equivalent:** Currency or digital asset
+
+A token is like a currency or digital asset on the blockchain. Think of it like:
+
+* **Bitcoin** - A cryptocurrency
+* **USDC** - A stablecoin (like digital dollars)
+* **STRK** - Starknet's native token
+* **Custom tokens** - Like loyalty points or in-game currency
+
+The SDK makes it easy to send and receive any token, just like sending money via Venmo or PayPal.
+
+### Staking
+
+**Web2 Equivalent:** Savings account or investment
+
+Staking is like putting money in a savings account that earns interest. You:
+
+* Lock up tokens (like depositing money)
+* Earn rewards over time (like interest)
+* Can withdraw later (like closing the account)
+
+The SDK handles all the complexity—you just call `wallet.enterPool()`.
+
+### Smart Contract
+
+**Web2 Equivalent:** Backend service or API
+
+A smart contract is code that runs on the blockchain. Think of it like:
+
+* A backend API endpoint
+* A microservice
+* A database stored procedure
+
+Unlike traditional code, smart contracts:
+
+* Run on the blockchain (decentralized)
+* Can't be changed once deployed (immutable)
+* Execute automatically when called
+
+### Account Preset
+
+**Web2 Equivalent:** Account type or user role
+
+An account preset defines what type of wallet account to create. It's like:
+
+* Choosing between "Personal" vs "Business" account types
+* Selecting a user role (admin, user, guest)
+* Picking a subscription tier
+
+Different presets have different features and security models (like OpenZeppelin, Argent, Braavos).
+
+## Privacy terms
+
+Starkzap supports two independent privacy protocols. See [Choosing a privacy protocol](/build/starkzap/privacy/overview) for which to use.
+
+### STRK20 privacy pool
+
+**Web2 Equivalent:** A pooled clearing account
+
+One contract holding balances for every token. Instead of a public balance on your own account, your funds sit in the pool as private **notes** that only you can find. Because the pool moves the funds on your behalf, your account does not appear on the transaction. Hides amounts, sender, and recipient. See [STRK20](/build/starkzap/privacy/strk20).
+
+### Tongo
+
+**Web2 Equivalent:** An account with the balance column encrypted
+
+A separate protocol, one contract per token, where your balance stays on your own account but is stored encrypted. Hides amounts only — you still send the transaction yourself, so your address is visible. See [Tongo](/build/starkzap/privacy/tongo).
+
+### Note
+
+**Web2 Equivalent:** An individual banknote, rather than a balance
+
+The unit of private value in the STRK20 pool. A private balance is a *set* of notes, not a single number, and spending means proving you own specific notes. Spending part of a note produces change, called **surplus**, which returns to you as a new private note.
+
+### Viewing key
+
+**Web2 Equivalent:** A read-only API key for your own data
+
+The key that lets you find and decrypt your own notes, and lets others send to you. Starkzap derives it from your signing key rather than storing it, so it survives a wallet reinstall with nothing to back up. The pool keeps the first key an account registers and it cannot be replaced.
+
+### Proving service
+
+**Web2 Equivalent:** An external service that notarizes a claim
+
+The remote service that builds the cryptographic proof for each private transaction. It also screens deposits. Named `prover` in configuration.
+
+### Discovery service
+
+**Web2 Equivalent:** A search index over encrypted data
+
+The service that indexes encrypted on-chain state so your wallet can find its own notes. Named `discovery` in configuration.
+
+### Relayer
+
+**Web2 Equivalent:** A courier who posts your letter for you
+
+The party that submits your private transaction. Because the relayer sends it, the relayer's address appears on-chain instead of yours — that is what keeps your account off-chain. Distinct from the **forwarder**, which is the party that receives the fee.
+
+### Pool fee
+
+**Web2 Equivalent:** A service charge, separate from postage
+
+A fee the pool charges, withdrawn from your private balance inside the proof. It is separate from gas, and transaction simulation does not include it — so quote it and show it to users explicitly.
+
+### Screening
+
+**Web2 Equivalent:** A sanctions check at account opening
+
+A check the proving service runs against deposit sources before producing a proof. A rejection is final; if screening is unavailable, deposits fail closed rather than proceeding unchecked.
+
+## Common Patterns
+
+### Checking a Balance
+
+**Web2 Equivalent:** `SELECT balance FROM accounts WHERE user_id = ?`
+
+```typescript theme={null}
+const balance = await wallet.balanceOf(STRK);
+// Like: const balance = await db.query('SELECT balance...');
+```
+
+### Sending Tokens
+
+**Web2 Equivalent:** `UPDATE accounts SET balance = balance - amount WHERE user_id = ?`
+
+```typescript theme={null}
+await wallet.transfer(STRK, [{ to: recipient, amount }]);
+// Like: await paymentService.sendMoney(userId, recipientId, amount);
+```
+
+### Waiting for Confirmation
+
+**Web2 Equivalent:** Polling an API until a job completes
+
+```typescript theme={null}
+const tx = await wallet.transfer(...);
+await tx.wait(); // Wait for blockchain confirmation
+// Like: await pollUntilComplete(jobId);
+```
+
+## Still Confused?
+
+If you're still unsure about a term, think of it this way:
+
+* **Blockchain** = A distributed database that everyone can read/write
+* **Wallet** = A user account on that database
+* **Transaction** = A write operation to that database
+* **Token** = A number in that database representing value
+
+The SDK abstracts away most of the complexity—you mostly just need to know:
+
+1. Connect a wallet (like logging in)
+2. Check balances (like querying a database)
+3. Send tokens (like making an API call)
+
+

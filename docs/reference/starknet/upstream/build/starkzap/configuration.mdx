@@ -1,0 +1,306 @@
+---
+title: Network, RPC, Staking, Bridging, and Logging
+description: "Configure networks, RPC providers, staking, bridging, and logging for the SDK"
+icon: cog
+---
+
+## Overview
+
+The `StarkZap` accepts configuration through a single options object. You can use network presets for simplicity, or provide explicit RPC URLs and chain IDs for custom setups.
+
+<Info>
+  **New to blockchain?** An **RPC** (Remote Procedure Call) is like an API endpoint for the blockchain—it's how your app communicates with the network. A **network** is like an environment (production, staging, development). See the [Glossary](/build/starkzap/glossary) for more web2-friendly explanations.
+</Info>
+
+<AccordionGroup>
+  <Accordion title="Network">
+    The simplest way to configure the SDK is using network presets. Think of networks like environments:
+
+    - **mainnet** = Production (real money, real transactions)
+    - **sepolia** = Staging/Testnet (fake money for testing)
+    - **devnet** = Local development (your own test blockchain)
+
+    ```typescript
+    import { StarkZap } from "starkzap";
+
+    // Mainnet
+    const sdk = new StarkZap({ network: "mainnet" });
+
+    // Sepolia testnet
+    const sdk = new StarkZap({ network: "sepolia" });
+
+    // Local devnet (starknet-devnet-rs)
+    const sdk = new StarkZap({ network: "devnet" });
+    ```
+
+    ### Available Presets
+
+    | Preset    | Chain ID     | RPC                                           | Explorer                         |
+    | --------- | ------------ | --------------------------------------------- | -------------------------------- |
+    | `mainnet` | `SN_MAIN`    | `https://api.cartridge.gg/x/starknet/mainnet` | `https://voyager.online`         |
+    | `sepolia` | `SN_SEPOLIA` | `https://api.cartridge.gg/x/starknet/sepolia` | `https://sepolia.voyager.online` |
+    | `devnet`  | `SN_SEPOLIA` | `http://localhost:5050`                       | —                                |
+
+    ### Using Network Objects
+
+    You can also pass a custom `NetworkPreset` object:
+
+    ```typescript
+    import { StarkZap, networks } from "starkzap";
+
+    const sdk = new StarkZap({ network: networks.mainnet });
+    ```
+  </Accordion>
+
+  <Accordion title="RPC">
+    If you run your own blockchain node or use a different RPC provider (like using a different API endpoint):
+
+    <Info>
+      An **RPC provider** is like choosing which API server to use. Just like you might use AWS, Google Cloud, or your own servers, you can use different RPC providers to connect to the blockchain.
+    </Info>
+
+    ```typescript
+    import { StarkZap, ChainId } from "starkzap";
+
+    const sdk = new StarkZap({
+      rpcUrl: "https://starknet-mainnet.infura.io/v3/YOUR_KEY",
+      chainId: ChainId.MAINNET,
+    });
+    ```
+
+    <Note>
+      `rpcUrl` and `chainId` override values from `network` if both are provided.
+    </Note>
+
+    <Note>
+      Plain `http://` is accepted only for loopback hosts (`localhost`, `127.0.0.1`, `[::1]`), which is what the `devnet` preset uses. Any other plain-http host is refused. If a device or emulator reaches a devnet or proxy over your LAN, set `allowInsecureHttp: true` on the SDK config. It applies to `rpcUrl`, the Cartridge URLs and the Privy `serverUrl`; the privacy module has its own flag. Never set it in a production build.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Staking">
+
+    Enable staking functionality to let users earn passive income by staking their tokens. When configured, users can:
+
+    - 💰 **Stake tokens** in validator pools and earn rewards over time (like earning interest on a savings account)
+    - 📈 **Grow their holdings** as rewards accumulate automatically
+    - 🔄 **Manage their positions** by adding more tokens, claiming rewards, or exiting pools
+    - 🏦 **Support network security** while earning passive income
+
+    Staking works out of the box using chain-aware staking contract presets:
+
+    ```typescript
+    import { StarkZap } from "starkzap";
+
+    const sdk = new StarkZap({
+      network: "mainnet",
+    });
+    ```
+
+    If needed, you can override the default preset:
+
+    ```typescript
+    import { StarkZap, fromAddress } from "starkzap";
+
+    const sdk = new StarkZap({
+      network: "mainnet",
+      staking: {
+        contract: fromAddress(
+          "0x00ca1702e64c81d9a07b86bd2c540188d92a2c73cf5cc0e508d949015e7e84a7"
+        ),
+      },
+    });
+    ```
+
+    <Info>
+      **Ready to implement staking?** See the [Staking & Delegation Guide](/build/starkzap/staking) for complete instructions on how users can stake tokens, claim rewards, and manage their positions.
+    </Info>
+  </Accordion>
+
+  <Accordion title="Bridging">
+    Configure optional cross-chain bridge settings when depositing assets from Ethereum or Solana into Starknet.
+
+    ```typescript
+    import { StarkZap } from "starkzap";
+
+    const sdk = new StarkZap({
+      network: "mainnet",
+      bridging: {
+        ethereumRpcUrl: "https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY",
+        solanaRpcUrl: "https://solana-mainnet.g.alchemy.com/v2/YOUR_KEY",
+        layerZeroApiKey: "YOUR_LAYERZERO_API_KEY", // for OFT routes
+        layerswapApiKey: "YOUR_LAYERSWAP_API_KEY", // for Layerswap routes + token discovery
+      },
+    });
+    ```
+
+    - `ethereumRpcUrl`: Custom Ethereum RPC for bridge fee/balance operations
+    - `solanaRpcUrl`: Custom Solana RPC (falls back to cluster URL if omitted)
+    - `layerZeroApiKey`: Required for OFT/OFT-migrated routes
+    - `layerswapApiKey`: Required for Layerswap routes and Layerswap token discovery
+    - `layerswapBaseUrl`: Optional Layerswap API base URL (defaults to `https://api.layerswap.io`)
+    - `layerswapAllowedContracts`: Starknet contracts Layerswap may call in a withdrawal besides the bridge token. Unset, only the token transfer is signed. See [Bridging](/build/starkzap/bridging) before listing anything.
+
+    <Warning>
+      OFT routes require `bridging.layerZeroApiKey` and are supported on mainnet bridge routes only.
+    </Warning>
+
+    <Warning>
+      Layerswap routes and Layerswap token discovery require `bridging.layerswapApiKey`. Keys are environment-scoped — use a Mainnet key with Starknet Mainnet and a Testnet key with Starknet Sepolia.
+    </Warning>
+
+    <Info>
+      For the full deposit flow (`getBridgingTokens`, external wallet adapters, fee estimate, deposit), see the [Bridging Guide](/build/starkzap/bridging).
+    </Info>
+  </Accordion>
+
+  <Accordion title="Logging">
+    Configure optional SDK diagnostics when you need visibility into wallet, bridge, and transaction flows during development or debugging. Logging is opt-in and the SDK stays silent by default.
+
+    ```typescript
+    import { StarkZap } from "starkzap";
+
+    const sdk = new StarkZap({
+      network: "mainnet",
+      logging: {
+        logger: console,
+      },
+    });
+    ```
+
+    StarkZap accepts any console-compatible logger with `debug`, `info`, `warn`, and `error` methods. You can also filter logs inside the SDK with `logLevel`:
+
+    ```typescript
+    import { StarkZap } from "starkzap";
+    import pino from "pino";
+
+    const sdk = new StarkZap({
+      network: "mainnet",
+      logging: {
+        logger: pino(),
+        logLevel: "warn",
+      },
+    });
+    ```
+
+    - Omit `logging` to keep the SDK completely silent
+    - Omit `logLevel` to forward all log levels to your logger
+    - Supported levels are `trace`, `debug`, `info`, `warn`, `error`, `fatal`, and `silent`
+  </Accordion>
+</AccordionGroup>
+
+## Complete Configuration Example
+
+Here's an example with all optional features configured:
+
+### Using Network Preset
+
+```typescript
+import { StarkZap, fromAddress } from "starkzap";
+
+const sdk = new StarkZap({
+  // Network configuration
+  network: "mainnet",
+
+  // Optional: SDK diagnostics
+  logging: {
+    logger: console,
+    logLevel: "info",
+  },
+  
+  // Optional: override staking contract preset
+  staking: {
+    contract: fromAddress(
+      "0x00ca1702e64c81d9a07b86bd2c540188d92a2c73cf5cc0e508d949015e7e84a7"
+    ),
+  },
+  bridging: {
+    ethereumRpcUrl: "https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY",
+    layerZeroApiKey: "YOUR_LAYERZERO_API_KEY",
+  },
+});
+```
+
+### Using Custom RPC
+
+```typescript
+import { StarkZap, ChainId, fromAddress } from "starkzap";
+
+const sdk = new StarkZap({
+  // Custom RPC configuration
+  rpcUrl: "https://starknet-mainnet.infura.io/v3/YOUR_KEY",
+  chainId: ChainId.MAINNET,
+
+  // Optional: SDK diagnostics
+  logging: {
+    logger: console,
+  },
+  
+  // Optional: override staking contract preset
+  staking: {
+    contract: fromAddress(
+      "0x00ca1702e64c81d9a07b86bd2c540188d92a2c73cf5cc0e508d949015e7e84a7"
+    ),
+  },
+  bridging: {
+    solanaRpcUrl: "https://solana-mainnet.g.alchemy.com/v2/YOUR_KEY",
+  },
+});
+```
+
+<Note>
+  For paymaster configuration, see the [Paymasters Guide](/build/starkzap/paymasters) for detailed setup instructions for AVNU Paymaster or Cartridge's built-in paymaster.
+</Note>
+
+## Configuration Type Reference
+
+```typescript
+interface SDKConfig {
+  // Network (choose one)
+  network?: NetworkName | NetworkPreset;
+  rpcUrl?: string;
+  chainId?: ChainId;
+  allowInsecureHttp?: boolean; // accept plain http:// off loopback; dev only
+
+  // Optional features
+  paymaster?: PaymasterOptions; // { nodeUrl?: string; default?: boolean; headers?: object }
+  explorer?: ExplorerConfig;
+  staking?: StakingConfig;
+  bridging?: BridgingConfig;
+  logging?: LoggerConfig;
+}
+
+interface StakingConfig {
+  contract: Address; // optional override
+}
+
+interface BridgingConfig {
+  layerZeroApiKey?: string; // OFT/OFT-migrated routes
+  layerswapApiKey?: string; // Layerswap routes + token discovery
+  layerswapBaseUrl?: string; // defaults to https://api.layerswap.io
+  layerswapAllowedContracts?: readonly Address[]; // extra contracts Layerswap may call; unset = transfer only
+  ethereumRpcUrl?: string;
+  solanaRpcUrl?: string;
+}
+
+interface LoggerConfig {
+  logger: {
+    debug(message: string, ...args: unknown[]): void;
+    info(message: string, ...args: unknown[]): void;
+    warn(message: string, ...args: unknown[]): void;
+    error(message: string, ...args: unknown[]): void;
+  };
+  logLevel?: "trace" | "debug" | "info" | "warn" | "error" | "fatal" | "silent";
+}
+```
+
+<Note>
+  For paymaster configuration details, see the [Paymasters Guide](/build/starkzap/paymasters).
+</Note>
+
+## Next Steps
+
+- Set up [Paymasters](/build/starkzap/paymasters) for gasless transactions
+- Enable [Staking & Delegation](/build/starkzap/staking) so users can earn passive income
+- Configure [Bridging](/build/starkzap/bridging) for Ethereum/Solana deposits into and withdrawals out of Starknet
+- Learn about [Connecting Wallets](/build/starkzap/connecting-wallets) with different signers
+- Configure [Account Presets](/build/starkzap/connecting-wallets#account-presets) for your use case

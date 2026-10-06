@@ -42,6 +42,29 @@ test("all named failure scenarios produce explicit outcomes without fictitious c
     assert.equal(r.account.receivedUnits,"0",scenario);
   }
 });
+test("insufficient-balance recovery requires a funded purchase, then completes without duplicate payout",async()=>{
+  const r=createScenario("simulation-unit-balance-recovery","insufficient_balance");
+  await step(r,2);
+  assert.equal(r.account.bettexUnits,"0");
+  assert.equal(r.paper.ledger.cashUnits,null);
+  assert.ok(r.events.some(e=>e.kind==="movement"&&e.state==="rejected"));
+  await commandScenario(r,{action:"deposit",amountUnits:"1500000000"});
+  assert.equal(r.paper.ledger.cashUnits,null,"account deposit is not treasury capital");
+  await commandScenario(r,{action:"purchase",amountUnits:"1500000000"});
+  assert.equal(r.paper.ledger.cashUnits,"1500000000");
+  assert.ok(BigInt(r.paper.ledger.cashUnits)>BigInt(r.paper.ledger.defensiveUnits));
+  await step(r,5);
+  assert.equal(r.stage,7);
+  assert.equal(r.paper.positions.length,1);
+  assert.equal(r.paper.positions[0].state,"closed");
+  assert.equal(r.rounds.length,1);
+  assert.equal(r.rounds[0].status,"paid");
+  assert.equal(r.account.receivedUnits,"7500000");
+  await step(r,2);
+  assert.equal(r.rounds.length,1);
+  assert.equal(r.account.receivedUnits,"7500000");
+  assert.equal(r.paper.ledger.obligationsUnits,"0");
+});
 test("partial fill persists, later fill is not duplicated; illiquid exits preserve open positions",async()=>{
   const partial=createScenario("simulation-unit-partial","partial_fill");await step(partial,5);
   assert.equal(partial.paper.orders[0].state,"partial");
@@ -58,8 +81,13 @@ test("partial fill persists, later fill is not duplicated; illiquid exits preser
   assert.ok(illiquid.paper.positions.every(x=>x.state==="closed"));
 });
 test("payment failure is pending liability, retries once and BETTEX exits cancel unpaid rights",async()=>{
-  const r=createScenario("simulation-unit-payment","payment_failure");await step(r,7);
+  const r=createScenario("simulation-unit-payment","payment_failure");await step(r,2);
+  // This scenario fails the cycle's profit payout, not the initial simulated deposit.
+  assert.ok(BigInt(r.account.usdcUnits)>0n);
+  assert.equal(r.account.receivedUnits,"0");
+  await step(r,5);
   assert.equal(r.rounds[0].status,"failed");assert.equal(r.paper.ledger.obligationsUnits,"7500000");
+  assert.equal(r.account.receivedUnits,"0");
   const saved=JSON.parse(JSON.stringify(r));await commandScenario(saved,{action:"market"});await step(saved,2);
   assert.equal(saved.account.receivedUnits,"7500000");assert.equal(saved.paper.ledger.obligationsUnits,"0");
   const cancel=createScenario("simulation-unit-cancel","payment_failure");await step(cancel,7);

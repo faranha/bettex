@@ -4,6 +4,7 @@
 
 - The Treasury and Governance agent is the first control capacity to be structured before expanding the agents that operate resources.
 - The public version of the site must maintain the demo area with placeholders and the notice “App coming soon, in development”. Test functions remain in the development environment.
+- The development dashboard must be complete: the creator's own account data, details, personal wallets and balances must be visible in the main overview. Keep the dedicated balance/history, account, treasury and operations pages as well. This supersedes older instructions to hide personal data and balances from the dashboard. Do not remove existing dashboard information or functions without authorization; distinguish native test-chain readings from emulated balances.
 
 - The creator declared that we have moved from prototyping into development. Before new features, organize architecture, accounts, agents, and rules for technical evaluation by third parties on GitHub.
 - Before implementing, it is mandatory to consult `AGENTS.md`, `docs/architecture.md`, and relevant decisions in `docs/decisions/`. These are the canonical documents; old paths in `docs/adr/` are redirects. Also apply `CONTRIBUTING.md`, `SECURITY.md`, and `threat_model.md`.

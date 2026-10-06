@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
-import { flushSync } from 'react-dom';
+import { createPortal, flushSync } from 'react-dom';
 import { ChapterContent, chapters } from './WhitepaperChapters';
+import { ChapterVisibility } from './ChapterVisibility';
 import { t, useLocale } from '@/lib/i18n';
 import { collectOutline, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
 import './WhitepaperSection.css';
@@ -21,6 +22,8 @@ export function WhitepaperSection() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const [slot, setSlot] = useState<HTMLElement | null>(null);
+  useEffect(() => { setSlot(document.getElementById('documentation-mobile-slot')); }, []);
   const total = String(chapters.length).padStart(2, '0');
 
   const scrollToId = useCallback((id: string, smooth: boolean) => {
@@ -177,6 +180,12 @@ export function WhitepaperSection() {
     if (mobile && wasOpen && id === 'documentacao-indice') menuButtonRef.current?.focus({ preventScroll: true });
   }
 
+  function selectFromBar(id: string) {
+    window.dispatchEvent(new Event('bettex:close-public-menu'));
+    if (window.location.hash !== `#${id}`) window.history.pushState(null, '', `#${id}`);
+    requestAnimationFrame(() => requestAnimationFrame(() => scrollToId(id, true)));
+  }
+
   const activeChapter = outline[active] ?? outline[0];
   const activeItem = activeChapter?.items.find(i => i.id === activeId);
   const crumbs: { label: string; id: string }[] = [{ label: t('Documentação'), id: 'documentacao' }, { label: `${activeChapter.number.padStart(2, '0')} ${activeChapter.title}`, id: activeChapter.id }];
@@ -188,7 +197,24 @@ export function WhitepaperSection() {
     chain.forEach(c => crumbs.push({ label: `${c.number} ${c.title}`, id: c.id }));
   }
 
+  const bar = slot && createPortal(
+    <nav className="pitch-subnav" aria-label={t('Capítulos da documentação')} data-testid="documentation-section-nav">
+      <div className="page-wrap">
+        <div className="pitch-subnav-mobile">
+          <span className="mono" data-i18n="translated">{t('Documentação')}</span>
+          <select value={activeItem ? activeItem.id : activeChapter.id} onChange={e => selectFromBar(e.target.value)} aria-label={t('Capítulos da documentação')} data-testid="documentation-section-select">
+            {outline.map((c, i) => [
+              <option key={c.id} value={c.id} data-i18n="translated">{`${String(i + 1).padStart(2, '0')} ${c.title}`}</option>,
+              ...(i === active ? c.items.map(sub => <option key={sub.id} value={sub.id} data-i18n="translated">{`${'\u00a0\u00a0'.repeat(sub.level)}${sub.number} ${sub.title}`}</option>) : []),
+            ])}
+          </select>
+        </div>
+      </div>
+    </nav>, slot);
+
   return (
+    <>
+    {bar}
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
       <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO TÉCNICA · v1</span><span>UM AGENTE · {total} CAPÍTULOS</span></div>
       <header className="whitepaper__hero page-wrap">
@@ -266,7 +292,9 @@ export function WhitepaperSection() {
                   <h2 id={`title-${chapter.id}`}>{chapter.title}<span className="whitepaper__title-period">.</span></h2>
                   <p>{chapter.subtitle}</p>
                 </header>
-                <ChapterContent index={index} />
+                <ChapterVisibility.Provider value={!enhanced || index === selected}>
+                  <ChapterContent index={index} />
+                </ChapterVisibility.Provider>
                 <nav className="whitepaper__chapter-pagination" aria-label="Capítulos da documentação">
                   {index > 0 ? (
                     <a href={`#${chapters[index - 1].id}`} rel="prev" onClick={(e) => jump(e, chapters[index - 1].id)} data-testid={`link-prev-${chapter.id}`}>
@@ -286,6 +314,7 @@ export function WhitepaperSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

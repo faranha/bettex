@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BETTEX — testes e correções em desenvolvimento</title>
+<style>
+body{font:16px/1.6 system-ui,sans-serif;color:#192332;background:#f3f5f8;margin:0;padding:24px}main{max-width:920px;margin:auto;background:white;padding:32px;border-radius:12px}h1{font-size:28px;line-height:1.25}h2{font-size:21px;margin-top:30px}table{border-collapse:collapse;width:100%}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #dce2ea;padding:12px 8px}th{background:#f3f5f8}code{overflow-wrap:anywhere;font-size:13px}.ok{background:#eaf6ef;padding:16px;border-left:4px solid #268354}.limit{background:#fff6de;padding:16px;border-left:4px solid #b18419}li{margin:8px 0}small{color:#586779}@media(max-width:600px){body{padding:8px}main{padding:18px}table{font-size:14px}}
+</style>
+<main>
+<h1>BETTEX: testes e correções em desenvolvimento</h1>
+<p><small>6 de outubro de 2026 · Ambiente de desenvolvimento · Sem publicação</small></p>
+<p class="ok"><strong>Segunda bateria completa: 32 grupos aprovados, nenhuma falha.</strong> Verificações adicionais: 24 combinações de idioma/largura no Pitch, 26 verificações dos capítulos da documentação, 6 testes de simulação e 17 testes do sincronizador.</p>
+<h2>Execução antes e depois das correções</h2>
+<p>A primeira bateria executou 31 grupos: 30 passaram e um falhou no bloqueio de dependências vulneráveis. Depois da ampliação da cobertura e das correções, a bateria completa executou 32 grupos, todos aprovados. Os testes adicionais de simulação e sincronização foram executados novamente após seus últimos ajustes.</p>
+<p>Evidências locais: <code>.local/e2e/baseline.json</code>, <code>.local/e2e/final.json</code>, <code>/tmp/bettex-e2e-final.log</code>, <code>/tmp/bettex-balance-recovery.log</code> e <code>/tmp/bettex-sync-final.log</code>. Os arquivos em <code>/tmp</code> são temporários.</p>
+<h2>Correções executadas</h2>
+<ul>
+<li><strong>Dependências:</strong> atualização direcionada de source-map-js para 1.2.2 e proxy-addr para 2.0.8. Auditoria final sem alertas altos/críticos não aceitos; a exceção preexistente de braces permanece com validade até 5 de novembro de 2026. Isso não equivale a ausência de toda vulnerabilidade.</li>
+<li><strong>Geração do cliente da API:</strong> configuração do Orval para a versão 5 das consultas, regeneração dos clientes e aprovação do TypeScript e dos builds.</li>
+<li><strong>Histórico:</strong> teste HTTP independente do banco já populado do aplicativo, com schema próprio, migração real e dados próprios. Permissão negada, concessão e revogação verificadas: 403 → 200 → 403, incluindo registro de auditoria, datas e paginação.</li>
+<li><strong>Sincronizador:</strong> corrigido lock antigo cujo PID havia sido reutilizado por outro processo. Identidade de boot/inicialização protege processos realmente ativos. Acrescentado diagnóstico da etapa que falha, sem expor stderr ou credenciais. O serviço voltou a iniciar.</li>
+<li><strong>Verificador do Pitch:</strong> atualização de expectativas antigas para o conteúdo aprovado, seleção explícita de idioma e distinção entre navegação interna e referências externas. Mantidas as verificações de percentuais, amostra, metodologia, limitações, segurança dos links externos e disposição do texto.</li>
+<li><strong>Bateria geral:</strong> adicionadas verificações de paper trading, políticas, cenários, pesquisa, histórico HTTP e sincronização; execução contínua com relatório e opção de repetir somente grupos reprovados.</li>
+</ul>
+<h2>Cobertura confirmada</h2>
+<table>
+<thead><tr><th>Área</th><th>Evidência</th></tr></thead>
+<tbody>
+<tr><td>Páginas e idiomas</td><td>Home, Pitch e documentação exercitados no navegador. Pitch: português, inglês e espanhol em 8 larguras, de 320 a 1440 px; 24 combinações aprovadas, sem erros de execução detectados nesse verificador.</td></tr>
+<tr><td>Documentação</td><td>Os 13 capítulos renderizaram com conteúdo visível e sem overflow horizontal em 1280 e 390 px: 26/26. Âncoras de staking/emissão, menu mobile e tooltip do vesting também foram exercitados. Essa conferência não é uma revisão visual individual de todas as figuras.</td></tr>
+<tr><td>Downloads</td><td>PDF e DOCX em espanhol baixados com sucesso, sem abrir manualmente seu conteúdo. XLSX em espanhol baixado e aberto como pacote XML: abas Tasas, Vesting e Reglas presentes, sem erros de fórmula armazenados. Não houve recálculo independente em Excel.</td></tr>
+<tr><td>Conta</td><td>Conta sintética persistiu após reload; logout, login inválido com 401 e novo login válido confirmados. Nenhuma senha foi alterada ou divulgada.</td></tr>
+<tr><td>Carteiras e contratos</td><td>Testes de criptografia, preservação, execução, reconciliação, ABI e transações em EVM isolada aprovados. Não foram movimentados fundos da cadeia compartilhada nem exportadas chaves no navegador.</td></tr>
+<tr><td>Central da IA</td><td>Agentes BTC/ETH/SOL, filtros, atualização e paginação exercitados. Erro 500 injetado somente no navegador manteve os dados em cache com aviso; remoção do erro e resposta 200 eliminaram o aviso.</td></tr>
+<tr><td>Simulação</td><td>Jornada completa, falha de pagamento com obrigação preservada e pagamento único de 7,50, rejeição de quotes expiradas, duplicidade bloqueada e retomada após falta de liquidez confirmadas. Tudo em execuções simuladas.</td></tr>
+<tr><td>Saldo insuficiente</td><td>Rejeição segura observada no navegador. Teste adicional do motor confirmou que depósito na conta não é capital da tesouraria: após compra financiada suficiente, a jornada completou e pagou uma única vez. A retomada final por cliques daquela execução específica não foi concluída.</td></tr>
+<tr><td>Tesouraria e histórico</td><td>Usuário comum recebeu 403 sem controles administrativos. Integrações isoladas verificaram aprovação, reservas, revogação de acesso, precisão, isolamento e retomada sem alterar permissões do aplicativo.</td></tr>
+<tr><td>Pesquisa e integrações</td><td>Verificados precisão do livro, isolamento do modelo/holdout, identidade/tarefa/horizonte do Allora, cadeia dos serviços dos agentes e bloqueios quando falta evidência. Isso não demonstra vantagem financeira real nem execução em todas as plataformas.</td></tr>
+<tr><td>Build e segurança</td><td>Lint, fronteiras arquiteturais, TypeScript, geração, frontend, API, contratos e verificações de segredos aprovados. Busca final por padrões em 1715 arquivos/blobs sem achados; não foi auditoria de entropia ou dados pessoais.</td></tr>
+</tbody></table>
+<h2>Limites e pendências</h2>
+<div class="limit">
+<ul>
+<li><strong>Envio ao GitHub ainda bloqueado:</strong> o processo inicia e seus 17 testes passam, mas o transporte de escrita real falhou por autenticação indisponível em teste <code>--dry-run</code>. Nenhum upload ocorreu nesse teste. Conexão instalada não comprova autenticação do Git CLI.</li>
+<li><strong>Produção não atualizada:</strong> a ausência da rota da Central na versão publicada, registrada na revisão anterior, não foi resolvida por publicação automática. A aprovação aqui é do desenvolvimento, não de todas as rotas publicadas.</li>
+<li><strong>Dinheiro real e readiness financeiro:</strong> continuam fora desta validação. Faltam evidência pareada de eventos, validação econômica, políticas/mandatos, aprovação regulatória/custódia e confirmação de identidade/acesso de FOMO.</li>
+<li><strong>Saldo público demonstrativo:</strong> a página sem login exibe valores identificados como demonstração/reconstrução, sem identidade privada observada. Não foi comprovado vazamento e não se mudou a política de acesso.</li>
+<li><strong>Observações visuais:</strong> o convite flutuante do Telegram pode cobrir conteúdo próximo ao rodapé no mobile; seu botão de fechar funcionou. A documentação teve um frame inicial vazio antes de carregar. Nenhum desses pontos foi tratado como falha funcional confirmada.</li>
+</ul>
+</div>
+<h2>Preservação do ambiente</h2>
+<p>O aplicativo e a API foram reiniciados e voltaram a servir. A captura final do Pitch carregou sem erro JavaScript fatal. Não houve publicação, operações financeiras reais, exposição de chaves ou mudança de permissões/políticas dos usuários do aplicativo. Concessões de teste ocorreram somente em fixtures isoladas, removidas ao término.</p>
+<p><strong>Conclusão:</strong> a bateria de desenvolvimento está aprovada no escopo descrito. Não há base para afirmar que todas as integrações reais, todas as interações possíveis ou a operação financeira em produção estão aprovadas.</p>
+</main>
+</html>

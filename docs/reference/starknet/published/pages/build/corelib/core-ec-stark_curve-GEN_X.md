@@ -1,0 +1,14 @@
+# core::ec::stark_curve::GEN_X
+Source: https://docs.starknet.io/build/corelib/core-ec-stark_curve-GEN_X
+
+
+
+The x coordinate of the generator point used in the ECDSA signature.
+
+## Signature
+
+```rust theme={null}
+pub const GEN_X: felt252 = 874739451078007766457464989774322083649278607533249481151382481072868806602;
+```
+
+

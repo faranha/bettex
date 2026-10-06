@@ -3,6 +3,12 @@ name: Render-time localization pitfalls
 description: Browser/SSR differences and React fragment handling when localizing existing JSX.
 ---
 
+Explicitly localized strings from `x(...)` must bypass the automatic JSX prose translator, including dynamic accessibility labels.
+
+**Why:** New English carousel labels were translated a second time and caused a missing-translation exception that crashed the Pitch, despite passing TypeScript checks.
+
+**How to apply:** Mark the native elements carrying explicitly localized labels with `data-i18n="translated"`. Keep catalogue localization enabled for existing content; verify a rendered non-Portuguese route rather than relying on types or catalogue checks alone.
+
 Already localized monetary amounts must bypass prose translation whether the currency is before or after the number, including negative amounts.
 
 **Why:** Spanish currency formatting places US$ after the amount; treating it as missing prose translation crashed the entire Pitch even with complete source-catalogue coverage.

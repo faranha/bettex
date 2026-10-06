@@ -42,8 +42,34 @@ function log(ctx, message) {
   appendFileSync(file, `${new Date().toISOString()} ${message}\n`, { mode: 0o600 });
 }
 function alive(pid) {
-  if (!Number.isInteger(pid)) return false;
+  if (!Number.isInteger(pid) || pid <= 0) return false;
   try { process.kill(pid, 0); return true; } catch (error) { return error.code === 'EPERM'; }
+}
+function processIdentity(pid) {
+  try {
+    const stat = readFileSync(`/proc/${pid}/stat`, 'utf8');
+    const ticks = stat.slice(stat.lastIndexOf(')') + 1).trim().split(/\s+/)[19];
+    return `${readFileSync('/proc/sys/kernel/random/boot_id', 'utf8').trim()}:${ticks}`;
+  } catch { return null; }
+}
+function ownerAlive(owner, lock) {
+  if (!alive(owner?.pid)) return false;
+  const identity = processIdentity(owner.pid);
+  if (owner.identity && identity) return owner.identity === identity;
+  // Legacy locks recorded only PID. A PID born after that lock cannot be its owner.
+  // Fail closed if procfs/sysconf is unavailable; never steal an unverified live lock.
+  if (identity && !owner.identity) {
+    try {
+      const hz = Number(spawnSync('getconf', ['CLK_TCK'], { encoding: 'utf8' }).stdout);
+      const uptime = Number(readFileSync('/proc/uptime', 'utf8').split(' ')[0]);
+      const ticks = Number(identity.split(':').at(-1));
+      if (hz > 0 && Number.isFinite(uptime) && Number.isFinite(ticks)) {
+        const startedAt = Date.now() - (uptime - ticks / hz) * 1000;
+        if (startedAt > statSync(lock).mtimeMs + 5000) return false;
+      }
+    } catch { /* Unknown identity remains protected. */ }
+  }
+  return true;
 }
 export function acquire(ctx, name = 'operation.lock') {
   const lock = path.join(ctx.directory, name);
@@ -52,11 +78,11 @@ export function acquire(ctx, name = 'operation.lock') {
     let owner;
     try { owner = JSON.parse(readFileSync(path.join(lock, 'owner.json'), 'utf8')); } catch {}
     // A process may be between mkdir and writing its owner; do not steal a fresh lock.
-    if (alive(owner?.pid) || Date.now() - statSync(lock).mtimeMs < 30_000) return null;
+    if (ownerAlive(owner, lock) || Date.now() - statSync(lock).mtimeMs < 30_000) return null;
     rmSync(lock, { recursive: true, force: true });
     try { mkdirSync(lock); } catch { return null; }
   }
-  writeFileSync(path.join(lock, 'owner.json'), JSON.stringify({ pid: process.pid }), { mode: 0o600 });
+  writeFileSync(path.join(lock, 'owner.json'), JSON.stringify({ pid: process.pid, identity: processIdentity(process.pid) }), { mode: 0o600 });
   return () => rmSync(lock, { recursive: true, force: true });
 }
 export function fingerprint(ctx) {
@@ -86,7 +112,7 @@ export function status(ctx) {
   let repository = null;
   try { repository = remote(ctx); } catch {}
   let running = false;
-  try { running = alive(JSON.parse(readFileSync(path.join(ctx.directory, 'daemon.lock/owner.json'), 'utf8')).pid); } catch {}
+  try { const lock = path.join(ctx.directory, 'daemon.lock'); running = ownerAlive(JSON.parse(readFileSync(path.join(lock, 'owner.json'), 'utf8')), lock); } catch {}
   return { ...state(ctx), repository, branch: ctx.config.branch,
     currentBranch: git(ctx.root, ['branch', '--show-current']).trim(),
     running, paused: existsSync(path.join(ctx.directory, 'paused')),
@@ -129,6 +155,7 @@ export async function synchronize(ctx, { message, background = false, stableDela
   if (!release) return { phase: 'busy', error: 'Another coordinated synchronization is running.' };
   let ownsIndex = false;
   let ownedTree;
+  let failureStep = 'preflight';
   try {
     if (existsSync(path.join(ctx.directory, 'paused'))) return save(ctx, { phase: 'paused' });
     if (background && state(ctx).nextRetryAt && Date.now() < Date.parse(state(ctx).nextRetryAt)) return state(ctx);
@@ -146,6 +173,7 @@ export async function synchronize(ctx, { message, background = false, stableDela
     const initial = fingerprint(ctx);
     await sleep(stableDelayMs);
     if (initial !== fingerprint(ctx)) return save(ctx, { phase: 'waiting-for-stable-writes', nextRetryAt: null });
+    failureStep = 'fetch';
     fetchRemote(ctx);
     const { ahead, behind } = counts(ctx);
     if (behind > 0 && ahead > 0) {
@@ -158,6 +186,7 @@ export async function synchronize(ctx, { message, background = false, stableDela
     }
     dirty = git(ctx.root, ['status', '--porcelain=v1']).trim();
     if (dirty) {
+      failureStep = 'stage-and-scan';
       git(ctx.root, ['add', '-A']);
       ownsIndex = true;
       ownedTree = git(ctx.root, ['write-tree']).trim();
@@ -169,6 +198,7 @@ export async function synchronize(ctx, { message, background = false, stableDela
       const stagedTree = git(ctx.root, ['write-tree']).trim();
       const stableFiles = fingerprint(ctx);
       const [command, ...args] = ctx.config.checkCommand;
+      failureStep = 'checks';
       const check = spawnSync(command, args, { cwd: ctx.root, timeout: 240_000,
         stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 8 * 1024 * 1024,
         env: { ...process.env, BETTEX_EXECUTION_PAUSED: 'true' } });
@@ -178,6 +208,7 @@ export async function synchronize(ctx, { message, background = false, stableDela
         return save(ctx, { phase: 'waiting-for-stable-writes', error: 'Files changed while checks ran; checkpoint deferred.', nextRetryAt: null });
       }
       if (git(ctx.root, ['diff', '--cached', '--name-only']).trim()) {
+        failureStep = 'commit';
         git(ctx.root, ['commit', '-m', checkpointMessage(ctx, message)]);
         ownsIndex = false;
         save(ctx, { lastCommit: tip(ctx, 'HEAD'), lastCommitAt: new Date().toISOString() });
@@ -188,11 +219,13 @@ export async function synchronize(ctx, { message, background = false, stableDela
       if (findings.length) { save(ctx, { findings }); throw new Error('guard'); }
     }
     // Fetch again: another developer may have pushed while checks ran.
+    failureStep = 'fetch';
     fetchRemote(ctx);
     const latest = counts(ctx);
     if (latest.behind > 0) return save(ctx, { phase: 'conflict', error: 'Remote advanced during synchronization. Local commit retained; update the development branch explicitly.', nextRetryAt: null });
     const head = tip(ctx, 'HEAD');
     if (!ctx.config.allowLocalRemote) await requireNonPublicRemote(remote(ctx), fetch, ctx.config.authorizedPublicRepository);
+    failureStep = 'history-scan';
     const historyFindings = inspectHistory(ctx.root, state(ctx).lastHistoryCheckedCommit);
     if (historyFindings.length) { save(ctx, { findings: historyFindings }); throw new Error('guard'); }
     save(ctx, { lastHistoryCheckedCommit: head });
@@ -203,7 +236,9 @@ export async function synchronize(ctx, { message, background = false, stableDela
         lastVerifiedRepository: remote(ctx), lastRemoteVerificationAt: new Date().toISOString(),
         error: null, attempts: 0, nextRetryAt: null, findings: [] });
     }
+    failureStep = 'push';
     git(ctx.root, ['push', ctx.config.remote, `HEAD:refs/heads/${ctx.config.branch}`]);
+    failureStep = 'verify';
     const advertised = git(ctx.root, ['ls-remote', '--heads', ctx.config.remote, `refs/heads/${ctx.config.branch}`]).trim().split(/\s+/)[0];
     if (advertised !== head) throw new Error('verification');
     git(ctx.root, ['update-ref', ref(ctx), head]);
@@ -225,6 +260,7 @@ export async function synchronize(ctx, { message, background = false, stableDela
     };
     log(ctx, `synchronization failed: ${category}; retry in ${delay}s`);
     return save(ctx, { phase: 'retrying', error: descriptions[category], attempts,
+      lastFailureStep: failureStep, lastFailureExitCode: Number.isInteger(error.status) ? error.status : null,
       nextRetryAt: new Date(Date.now() + delay * 1000).toISOString() });
   } finally {
     try {

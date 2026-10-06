@@ -1,0 +1,15 @@
+# core::internal::bounded_int::downcast
+Source: https://docs.starknet.io/build/corelib/core-internal-bounded_int-downcast
+
+
+
+Downcasts `FromType` to `ToType` - for types where conversion may fail.
+If done for wrong types would cause a compiler panic at the Sierra stage.
+
+## Signature
+
+```rust theme={null}
+pub extern fn downcast(x: FromType) -> Option implicits(RangeCheck) nopanic;
+```
+
+

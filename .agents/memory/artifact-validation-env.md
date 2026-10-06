@@ -26,3 +26,9 @@ TypeScript project references can retain previously emitted declarations after a
 **Why:** A new schema field was present in source but consumer typechecking continued to reject it until the referenced library was rebuilt.
 
 **How to apply:** Rebuild affected referenced libraries before checking their consumers. A consumer's standalone no-emit check does not regenerate dependency declarations.
+
+An opaque diagnostic-client failure does not establish a production HTTP failure or outage.
+
+**Why:** A diagnostic runner reported only failed requests while an independent HTTP client reached the same deployment. Swallowed exceptions hid whether the request had even reached the server.
+
+**How to apply:** Preserve safe error classifications and distinguish missing response from actual HTTP status. Confirm with an independent HTTP client and deployment logs before changing production code; do not weaken TLS or CSP to make a probe work.

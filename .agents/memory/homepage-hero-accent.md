@@ -3,11 +3,17 @@ name: Consistência visual dos heros
 description: Nova Economia mantém sua barra integral; Mercados tem barra apenas no hero e limite de duas linhas no título e subtítulo.
 ---
 
-Mostrar a barra azul na abertura da homepage, seguindo o Pitch. Na seção “A IA vai substituir os trabalhadores” (Nova Economia), ela deve cobrir toda a área, conforme o pedido específico. Em Mercados, a barra fica somente no hero, não no restante da seção. Não aplicá-la automaticamente a todas as seções ou a blocos de conteúdo comuns.
+No desktop, mostrar a barra azul na abertura da homepage, seguindo o Pitch. Na seção “A IA vai substituir os trabalhadores” (Nova Economia), ela deve cobrir toda a área, conforme o pedido específico. Em Mercados, a barra fica somente no hero, não no restante da seção. Não aplicá-la automaticamente a todas as seções ou a blocos de conteúdo comuns.
 
 **Why:** O usuário aprovou a barra integral na Nova Economia e depois corrigiu Mercados explicitamente: “the blue bar on the left must be only in the hero not the whole section”.
 
 **How to apply:** Preservar a abertura e a exceção explícita da Nova Economia. Limitar a barra de Mercados ao hero; animação e conteúdo abaixo não recebem barra. Para outras seções, comparar sua função com a capa ou o hero de capítulo do Pitch, sem usar uma regra abrangente. Não levar a barra à faixa de marcas, navegação ou rodapé.
+
+Mobile heroes on both the homepage and Pitch must omit the decorative blue left rail. This overrides the earlier mobile treatment, including the homepage section rails; desktop remains unchanged.
+
+**Why:** The creator explicitly rejected the mobile left-column treatment as visually cluttered and aesthetically poor.
+
+**How to apply:** Keep the hero content, background artwork and navigation intact. Do not reintroduce the left rail in mobile covers or chapter heroes; the Nova Economia and Mercados rail rules above apply only on desktop.
 
 Mercados também precisa de um hero próprio de abertura, não apenas do título pequeno junto da animação.
 

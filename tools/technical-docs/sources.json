@@ -1,6 +1,14 @@
 {
   "schema_version": 1,
   "platforms": {
+    "starknet": {
+      "root": "https://docs.starknet.io/",
+      "hosts": ["docs.starknet.io"],
+      "owners": ["starknet-io"],
+      "proof": "Creator requested Starknet documentation. GitHub API verifies starknet-io/starknet-docs, whose homepage is https://docs.starknet.io. Its docs.json footer links to the same repository.",
+      "repositories": ["starknet-io/starknet-docs"],
+      "paths": ["/"]
+    },
     "arbitrum": {
       "root": "https://docs.arbitrum.io/",
       "hosts": ["docs.arbitrum.io"],

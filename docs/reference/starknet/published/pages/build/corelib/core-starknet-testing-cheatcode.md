@@ -1,0 +1,26 @@
+# core::starknet::testing::cheatcode
+Source: https://docs.starknet.io/build/corelib/core-starknet-testing-cheatcode
+
+
+
+A general cheatcode function used to simplify implementation of Starknet testing functions.
+This is the base function used by testing utilities to interact with the test
+environment. External users can implement custom cheatcodes by injecting a custom
+`CairoHintProcessor` in the runner.
+
+## Signature
+
+```rust theme={null}
+pub extern fn cheatcode(input: Span) -> Span nopanic;
+```
+
+#### Arguments
+
+`selector` - The cheatcode identifier.
+`input` - Input parameters for the cheatcode.
+
+#### Returns
+
+* A span containing the cheatcode's output
+
+

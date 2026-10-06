@@ -1,0 +1,37 @@
+# Hello World
+Source: https://docs.starknet.io/learn/S-two-book/air-development/writing-a-simple-air/hello-world
+
+
+
+Let's first set up a Rust project with S-two.
+
+```bash theme={null}
+$ cargo new stwo-example
+```
+
+We need to specify the nightly Rust version to use S-two.
+
+```bash theme={null}
+$ echo -e "[toolchain]\nchannel = \"nightly-2025-01-02\"" > rust-toolchain.toml
+```
+
+Now let's edit the `Cargo.toml` file as follows:
+
+```rust,ignore theme={null}
+[package]
+name = "stwo-examples"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+stwo = { git = "https://github.com/starkware-libs/stwo.git", rev = "75a6b0ac9bcc7101d8658445dded51923ab2586f", features = ["prover"]}
+stwo-constraint-framework = { git = "https://github.com/starkware-libs/stwo.git", rev = "75a6b0ac9bcc7101d8658445dded51923ab2586f", package = "stwo-constraint-framework", features = ["prover"] }
+num-traits = "0.2.17"
+itertools = "0.12.0"
+rand = "0.8.5"
+```
+
+We are all set!
+
+

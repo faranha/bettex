@@ -2,7 +2,7 @@
 
 ## 1. O que foi ativado
 
-A Central da IA e o painel apresentam serviços determinísticos de análise e controle, com execução automática e persistência. Não são personagens em uma animação, modelos de linguagem, uma simulação de inferências Allora, nem permissão para operar fundos reais.
+The AI Center contains two separate layers: automatically executed rule-based operational checks and actual language-model reasoning, generated on request for the selected agent. Allora supplies real external inferences. The OpenAI reasoning layer interprets the latest captured evidence, retains model/provider provenance and persists its own reports; it never substitutes a scripted answer when inference fails. Neither layer grants permission to operate real funds. See [real agent reasoning](decisions/0016-real-agent-reasoning.md) for its boundaries and current on-demand scope.
 
 O ciclo é iniciado pelo servidor, não por quem abre a página. A periodicidade nominal é 60 segundos. Se uma coleta exceder esse intervalo, não começa um ciclo concorrente: aguarda a conclusão e tenta novamente no próximo intervalo. Um bloqueio transacional PostgreSQL impede dois processos de gravarem ciclos sobrepostos. Cada rodada tem identificador próprio; cada relatório guarda o ciclo e os relatórios das dependências que alimentaram sua análise.
 

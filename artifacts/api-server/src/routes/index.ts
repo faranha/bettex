@@ -12,6 +12,7 @@ import tradingPoliciesRouter from "./trading-policies";
 import simulationRouter from "./simulation";
 import alloraRouter from "./allora";
 import agentOperationsRouter from "./agent-operations";
+import marketLiveRouter from "./market-live";
 
 const router: IRouter = Router();
 
@@ -28,5 +29,6 @@ router.use(tradingPoliciesRouter);
 router.use(simulationRouter);
 router.use(alloraRouter);
 router.use(agentOperationsRouter);
+router.use(marketLiveRouter);
 
 export default router;

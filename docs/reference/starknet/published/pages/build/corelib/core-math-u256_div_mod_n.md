@@ -1,0 +1,23 @@
+# core::math::u256_div_mod_n
+Source: https://docs.starknet.io/build/corelib/core-math-u256_div_mod_n
+
+
+
+Returns `a / b (mod n)`, or `None` if `b` is not invertible modulo `n`.
+
+## Signature
+
+```rust theme={null}
+pub fn u256_div_mod_n(a: u256, b: u256, n: NonZero) -> Option
+```
+
+## Examples
+
+```rust theme={null}
+use core::math::u256_inv_mod;
+
+let result = u256_div_mod_n(17, 7, 29);
+assert!(result == Some(19));
+```
+
+

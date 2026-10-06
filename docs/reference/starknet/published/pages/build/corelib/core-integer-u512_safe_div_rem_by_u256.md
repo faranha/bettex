@@ -1,0 +1,14 @@
+# core::integer::u512_safe_div_rem_by_u256
+Source: https://docs.starknet.io/build/corelib/core-integer-u512_safe_div_rem_by_u256
+
+
+
+Calculates division with remainder of a u512 by a non-zero u256.
+
+## Signature
+
+```rust theme={null}
+pub fn u512_safe_div_rem_by_u256(lhs: u512, rhs: NonZero) -> (u512, u256)
+```
+
+

@@ -1,0 +1,19 @@
+# core::starknet::syscalls::send_message_to_l1_syscall
+Source: https://docs.starknet.io/build/corelib/core-starknet-syscalls-send_message_to_l1_syscall
+
+
+
+Sends a message to L1.
+
+## Signature
+
+```rust theme={null}
+pub extern fn send_message_to_l1_syscall(to_address: felt252, payload: Span) -> Result> implicits(GasBuiltin, System) nopanic;
+```
+
+#### Arguments
+
+* `to_address` - The recipient's L1 address.
+* `payload` - The content of the message.
+
+

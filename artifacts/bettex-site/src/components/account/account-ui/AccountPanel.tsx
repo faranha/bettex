@@ -31,7 +31,11 @@ export function AccountPanel({ onLogout }: { onLogout?: () => Promise<void> } = 
   // Identity or profile changed: drop every cache bound to the previous owner and refetch the active ones.
   const refresh = () => { void qc.resetQueries(); };
   const snap = session.data as TestAccountSnapshot | undefined;
-  const [tab, setTab] = useState<Tab>('profile');
+  const [tab, setTab] = useState<Tab>(() => {
+    const requested = typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('tab');
+    const tabs: Tab[] = ['operations', 'policies', 'profile', 'security', 'wallets', 'history'];
+    return tabs.find(value => value === requested) ?? 'profile';
+  });
 
 
 

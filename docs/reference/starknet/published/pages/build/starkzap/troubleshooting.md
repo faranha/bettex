@@ -1,0 +1,262 @@
+# Troubleshooting
+Source: https://docs.starknet.io/build/starkzap/troubleshooting
+
+Common issues and solutions when using Starkzap
+
+## Common Issues
+
+### "No staking contract configured for chain ..."
+
+**Problem:** The SDK has no staking contract for the current chain, or you set a custom `staking.contract` that doesn't match.
+
+**Solution:** Remove the custom override to use chain-aware defaults, or set the correct contract for your network:
+
+```typescript theme={null}
+import { StarkZap } from "starkzap";
+
+// Recommended: use built-in chain-aware staking preset
+const sdk = new StarkZap({ network: "mainnet" });
+```
+
+### Transaction Submits but Explorer URL Points to Wrong Explorer
+
+**Problem:** Transactions execute successfully but `tx.explorerUrl` points to the default explorer (Voyager) instead of your preferred one.
+
+**Solution:** Configure the `explorer` in your SDK config to use your preferred provider:
+
+```typescript theme={null}
+const sdk = new StarkZap({
+  network: "mainnet",
+  explorer: { provider: "starkscan" }, // or "voyager" (default)
+});
+```
+
+### React Native Random Values/Text Encoding Issues
+
+**Problem:** Errors related to random value generation or text encoding in React Native.
+
+**Solution:** Use the React Native setup guide and Metro wrapper, which handles required polyfills and resolver compatibility.
+
+1. Follow [React Native Integration](/build/starkzap/react-native)
+2. Ensure your `metro.config.js` is wrapped with `withStarkzap(...)`
+3. Clear Metro cache after dependency changes (`npx expo start -c`)
+
+If you still need manual installation checks, make sure these packages are present:
+
+```bash theme={null}
+npm install react-native-get-random-values fast-text-encoding buffer @ethersproject/shims
+```
+
+If not using `withStarkzap`, import polyfills in your entrypoint (e.g. `index.js` or `App.tsx`):
+
+```typescript theme={null}
+import "react-native-get-random-values";
+import "fast-text-encoding";
+import "@ethersproject/shims";
+```
+
+### Account Not Deployed Error
+
+**Problem:** Getting errors about account not being deployed when trying to execute transactions.
+
+**Solution:** Ensure the account is deployed before executing transactions:
+
+```typescript theme={null}
+// Option 1: Use ensureReady
+await wallet.ensureReady({ deploy: "if_needed" });
+
+// Option 2: Deploy explicitly
+if (!(await wallet.isDeployed())) {
+  await wallet.deploy();
+}
+
+// Option 3: Use onboard API which handles this automatically
+const onboard = await sdk.onboard({
+  strategy: OnboardStrategy.Signer,
+  account: { signer },
+  deploy: "if_needed",
+});
+```
+
+### Privy Signer Backend Not Responding
+
+**Problem:** Privy signer fails with network errors or timeouts.
+
+**Solution:**
+
+1. Verify your backend endpoint is accessible
+2. Ensure the endpoint accepts POST requests with `{ walletId, hash }`
+3. Check that the endpoint returns `{ signature }` in the correct format
+4. Verify CORS settings if calling from a browser
+
+Example backend endpoint:
+
+```typescript theme={null}
+// Express.js example
+app.post("/api/wallet/sign", async (req, res) => {
+  const { walletId, hash } = req.body;
+  const signature = await privyClient.wallets().rawSign(walletId, {
+    params: { hash },
+  });
+  res.json({ signature });
+});
+```
+
+### Cartridge Connection Fails
+
+**Problem:** Cartridge wallet connection doesn't work or popup doesn't appear.
+
+**Solution:**
+
+1. Ensure `@cartridge/controller` is installed
+2. Check that you're calling `connectCartridge` in a browser environment
+3. Verify network configuration matches Cartridge's supported networks
+4. Check browser console for Cartridge-specific errors
+
+### Bridge Token Loading Fails
+
+**Problem:** `sdk.getBridgingTokens()` throws an error or returns no tokens.
+
+**Solution:**
+
+1. Verify the SDK chain config is correct (`SN_MAIN` vs `SN_SEPOLIA`) and matches your intended environment
+2. Confirm network access to the token API endpoint used by the SDK
+3. Install required optional deps for the chains you use:
+   * Ethereum routes: `ethers`
+   * Solana routes: `@solana/web3.js` (and Hyperlane packages for Solana bridge operations)
+
+```bash theme={null}
+npm install ethers @solana/web3.js @hyperlane-xyz/sdk @hyperlane-xyz/registry @hyperlane-xyz/utils
+```
+
+### OFT Bridge Fails with LayerZero API Key Error
+
+**Problem:** You see an error like:
+`OFT bridging requires a LayerZero API key. Set "bridging.layerZeroApiKey"...`
+
+**Solution:**
+
+1. Set `bridging.layerZeroApiKey` in `new StarkZap({ ... })`
+2. Use a mainnet route for OFT/OFT-migrated bridge flows
+
+```typescript theme={null}
+const sdk = new StarkZap({
+  network: "mainnet",
+  bridging: {
+    layerZeroApiKey: "YOUR_LAYERZERO_API_KEY",
+  },
+});
+```
+
+### Bridge Deposit Fails with Chain Mismatch
+
+**Problem:** Deposit fails with errors indicating token chain and external wallet chain do not match.
+
+**Solution:**
+
+1. Ensure the selected `BridgeToken.chain` matches the connected external wallet type
+2. Ensure external wallet network and Starknet network pairing is valid (mainnet with mainnet, testnet with testnet)
+3. Recreate connected external wallets with `ConnectedEthereumWallet.from(...)` / `ConnectedSolanaWallet.from(...)` after network switch
+
+### Amount Arithmetic Errors
+
+**Problem:** Getting errors when performing arithmetic on amounts.
+
+**Solution:** Ensure amounts have compatible decimals and symbols:
+
+```typescript theme={null}
+// ❌ This will throw
+const a = Amount.parse("10", STRK); // 18 decimals
+const b = Amount.parse("5", USDC); // 6 decimals
+const c = a.add(b); // Error: incompatible amounts
+
+// ✅ Use amounts with same token
+const a = Amount.parse("10", STRK);
+const b = Amount.parse("5", STRK);
+const c = a.add(b); // Works!
+```
+
+### Transaction Fails in Preflight but Not in Execution
+
+**Problem:** Preflight simulation shows errors, but transaction would succeed.
+
+**Solution:** Preflight uses the current state, which may differ from execution time. This is normal - preflight is a best-effort check. Always handle transaction failures gracefully:
+
+```typescript theme={null}
+try {
+  const tx = await wallet.execute(calls);
+  await tx.wait();
+} catch (error) {
+  // Handle error appropriately
+  console.error("Transaction failed:", error);
+}
+```
+
+### TypeScript Type Errors
+
+**Problem:** TypeScript complains about type mismatches.
+
+**Solution:** Ensure you're using the correct types:
+
+```typescript theme={null}
+import { Address, Amount, ChainId } from "starkzap";
+
+// Use fromAddress for addresses
+const addr: Address = fromAddress("0x...");
+
+// Use Amount.parse for amounts
+const amount: Amount = Amount.parse("10", STRK);
+
+// Use ChainId constants
+const chainId = ChainId.MAINNET;
+```
+
+### Network Configuration Issues
+
+**Problem:** SDK can't connect to the network or wrong network is used.
+
+**Solution:** Verify your network configuration:
+
+```typescript theme={null}
+// Check current chain ID
+const chainId = wallet.getChainId();
+console.log(chainId.toLiteral()); // "SN_MAIN" or "SN_SEPOLIA"
+
+// Verify RPC URL
+const provider = sdk.getProvider();
+const chainIdFromProvider = await provider.getChainId();
+```
+
+### Fee Estimation Fails
+
+**Problem:** `estimateFee()` throws errors.
+
+**Solution:**
+
+1. Ensure the account is deployed
+2. Verify the calls are valid
+3. Check that you have sufficient balance for fees
+4. Try using `preflight()` first to catch call errors
+
+## Getting More Help
+
+If you're still experiencing issues:
+
+1. Check the [API Reference](/build/starkzap/api-reference) for detailed method signatures
+2. Review the [Examples](/build/starkzap/examples) for working code samples
+3. Ask for help in the [Starknet Discord community](https://discord.gg/starknet-community)
+4. Browse the [Starknet community forum](https://community.starknet.io/)
+
+## Reporting Issues
+
+If you find a bug or have a feature request:
+
+1. Check if the issue is already reported
+2. Create a detailed issue report with:
+   * SDK version
+   * Runtime environment (Node.js, browser, React Native)
+   * Steps to reproduce
+   * Expected vs actual behavior
+   * Error messages and stack traces
+
+

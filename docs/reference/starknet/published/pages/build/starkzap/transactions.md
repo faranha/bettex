@@ -1,0 +1,233 @@
+# Executing Transactions
+Source: https://docs.starknet.io/build/starkzap/transactions
+
+Send transactions, batch operations, simulate transactions, and handle fees
+
+## Overview
+
+Transaction execution is the process of sending operations to the Starknet blockchain. Starkzap provides multiple ways to execute transactions, from simple contract calls to complex batched operations.
+
+**What is a transaction?** A transaction is a request to execute a function on a smart contract deployed on Starknet. Think of it like calling an API endpoint—you're invoking a function on a deployed contract that performs some action (like transferring tokens, updating state, or executing business logic).
+
+**Requirements:**
+
+* A smart contract must be deployed on Starknet before you can execute transactions against it
+* Your wallet account must be deployed (the SDK handles this automatically with `deploy: "if_needed"`)
+* Sufficient balance to pay for gas fees (unless using a paymaster for sponsored transactions)
+
+<Info>
+  **Want to deploy your own smart contracts?** This guide focuses on executing transactions against existing contracts. If you need to create and deploy your own smart contracts, check out the [Starknet Quickstart Guide](https://docs.starknet.io/build/quickstart/overview) for comprehensive tutorials on smart contract development with Cairo.
+</Info>
+
+This guide covers all transaction execution patterns for interacting with deployed smart contracts.
+
+## Direct Execution
+
+Use `wallet.execute()` for arbitrary contract calls:
+
+```typescript theme={null}
+import type { Call } from "starknet";
+
+const call: Call = {
+  contractAddress: "0xCONTRACT_ADDRESS",
+  entrypoint: "transfer",
+  calldata: ["0xRECIPIENT", "1000000", "0"],
+};
+
+const tx = await wallet.execute([call]);
+await tx.wait();
+```
+
+### Multiple Calls (Atomic Batching)
+
+Multiple calls execute atomically in a single transaction:
+
+```typescript theme={null}
+const tx = await wallet.execute([approveCall, swapCall, transferCall]);
+await tx.wait();
+```
+
+All calls succeed or fail together — no partial execution.
+
+## Transaction Tracking
+
+Every `execute()`, `deploy()`, or `transfer()` call returns a `Tx` object:
+
+```typescript theme={null}
+const tx = await wallet.execute(calls);
+
+// Transaction hash
+console.log(tx.hash); // "0x..."
+
+// Block explorer link
+console.log(tx.explorerUrl); // "https://voyager.online/tx/0x..."
+
+// Wait for confirmation (L2 acceptance)
+await tx.wait();
+
+// Wait for L1 finality
+await tx.wait({
+  successStates: [TransactionFinalityStatus.ACCEPTED_ON_L1],
+});
+
+// Get full receipt
+const receipt = await tx.receipt();
+console.log(receipt.actual_fee);
+
+// Watch status changes in real-time
+const unsubscribe = tx.watch(({ finality, execution }) => {
+  console.log(`Status: ${finality} (${execution})`);
+  // "RECEIVED" → "ACCEPTED_ON_L2" → "ACCEPTED_ON_L1"
+});
+
+// Stop watching early if needed
+unsubscribe();
+```
+
+## Paymaster Transactions (Sponsored / Gasless)
+
+If the SDK is configured with a paymaster, use `feeMode: { type: "paymaster" }`:
+
+```typescript theme={null}
+// Per-transaction sponsorship
+const tx = await wallet.execute([call], { feeMode: { type: "paymaster" } });
+
+// Or set as default when connecting
+const wallet = await sdk.connectWallet({
+  account: { signer },
+  feeMode: { type: "paymaster" },
+});
+
+// Now all transactions are sponsored by default
+const tx = await wallet.execute([call]); // sponsored automatically
+```
+
+<Info>
+  The SDK works seamlessly with [AVNU Paymaster](https://docs.avnu.fi/docs/paymaster/index) for sponsored transactions. See the [AVNU Paymaster Integration](/build/starkzap/integrations/avnu-paymaster) guide for setup instructions.
+</Info>
+
+<Note>
+  **Cartridge:** On **web** Controller and **native** session flows, matching calls can be paymastered per Cartridge's session / SNIP-9 rules after users approve **policies**. You typically do **not** configure AVNU for those paths. Arbitrary calls outside approved policies are not guaranteed to be sponsored. On React Native, sponsored execution is commonly tied to **`feeMode: { type: "paymaster" }`** on the session wallet. See [Cartridge Controller](/build/starkzap/integrations/cartridge-controller) and [React Native Integration](/build/starkzap/react-native).
+</Note>
+
+<Note>
+  `feeMode: "sponsored"` is still supported as a deprecated alias for backward compatibility.
+</Note>
+
+## Preflight Simulation
+
+Simulate transactions before sending to check for errors:
+
+```typescript theme={null}
+const result = await wallet.preflight({ calls });
+if (!result.ok) {
+  console.error(result.reason);
+} else {
+  const tx = await wallet.execute(calls);
+  await tx.wait();
+}
+```
+
+<Note>
+  Always preflight non-trivial batches before submitting to catch errors early.
+</Note>
+
+## Transaction Builder
+
+For batching multiple operations into a single atomic transaction, use the `TxBuilder`. This is especially useful for complex operations that need to execute together.
+
+<Info>
+  **For detailed TxBuilder documentation**, see the [Tx Builder](/build/starkzap/tx-builder) guide which covers all builder methods, preflight simulation, fee estimation, and best practices.
+</Info>
+
+Quick example:
+
+```typescript theme={null}
+const tx = await wallet
+  .tx()
+  .transfer(USDC, { to: alice, amount })
+  .stake(poolAddress, stakeAmount)
+  .send();
+await tx.wait();
+```
+
+## Fee Modes
+
+### User Pays (Default)
+
+```typescript theme={null}
+const tx = await wallet.execute(calls, { feeMode: "user_pays" });
+```
+
+The user's account pays for transaction fees.
+
+### Paymaster (Sponsored / Gasless)
+
+```typescript theme={null}
+const tx = await wallet.execute(calls, { feeMode: { type: "paymaster" } });
+```
+
+The paymaster path covers transaction fees (sponsored) or lets users pay with a supported gas token.
+
+```typescript theme={null}
+import { fromAddress } from "starkzap";
+
+const tx = await wallet.execute(calls, {
+  feeMode: {
+    type: "paymaster",
+    gasToken: fromAddress("0x053c91253bc96bfed3be381a97265e250ed0a2e2cbf1a54898ad0d2f7982f78f"),
+  },
+});
+```
+
+<Note>
+  **Cartridge:** Policy-matching calls can be paymastered per Cartridge session rules; arbitrary calls are not guaranteed sponsored. You typically do not configure AVNU for Cartridge paths. See [Cartridge Controller](/build/starkzap/integrations/cartridge-controller) and [React Native Integration](/build/starkzap/react-native).
+</Note>
+
+## Transaction Status
+
+Transactions go through several states:
+
+1. **RECEIVED** - Transaction received by the sequencer
+2. **ACCEPTED\_ON\_L2** - Transaction accepted on L2 (most common success state)
+3. **ACCEPTED\_ON\_L1** - Transaction finalized on L1
+
+```typescript theme={null}
+// Wait for L2 acceptance (default)
+await tx.wait();
+
+// Wait for L1 finality
+await tx.wait({
+  successStates: [TransactionFinalityStatus.ACCEPTED_ON_L1],
+});
+```
+
+## Error Handling
+
+Always handle transaction errors:
+
+```typescript theme={null}
+try {
+  const tx = await wallet.execute(calls);
+  await tx.wait();
+  console.log("Transaction successful!");
+} catch (error) {
+  console.error("Transaction failed:", error);
+}
+```
+
+## Best Practices
+
+1. **Always preflight** non-trivial batches before submitting
+2. **Use the transaction builder** for complex operations to save gas
+3. **Handle errors gracefully** and provide user feedback
+4. **Standardize fee behavior** (`user_pays` vs `paymaster`) per flow
+5. **Wait for appropriate confirmation** based on your use case
+
+## Next Steps
+
+* Learn about [ERC20 Token Operations](/build/starkzap/erc20)
+* Explore [Staking & Delegation](/build/starkzap/staking)
+* Check the [API Reference](/build/starkzap/api-reference) for detailed method signatures
+
+

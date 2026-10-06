@@ -56,3 +56,9 @@ A simulação de lançamento deve permanecer escondida no Pitch, com o conteúdo
 **Why:** O criador pediu “remova a simulação, deixe ela escondida”.
 
 **How to apply:** Não exibir a simulação no Pitch nem reintroduzi-la durante reorganizações; preservar os demais conteúdos e gráficos.
+
+No mobile, os quadros de dados da economia real em Ambiente externo e os dados da economia agêntica em Problema devem ser sliders horizontais, mantendo todos os dados e fontes. No desktop, preservar as grades de quadros.
+
+**Why:** O criador pediu um slider para economizar espaço vertical no celular e solicitou a mesma estratégia para todos os dados da economia agêntica.
+
+**How to apply:** Preservar leitura e links de cada quadro, permitir deslizar e navegar pelos controles, sem transformar os gráficos ou outros conteúdos do capítulo em slides automaticamente.

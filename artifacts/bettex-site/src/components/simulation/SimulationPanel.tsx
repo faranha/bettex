@@ -6,11 +6,13 @@ import { RefreshCw } from 'lucide-react';
 import {
   useGetSimulation, useCommandSimulation, useGetTestAccountSession, getGetSimulationQueryKey,
   type GetSimulationParams, type SimulationSnapshot, type SimulationCommandInput, type TestAccountSnapshot,
+  useGetDemoDashboard, useGetDemoSimulation, useCommandDemoSimulation, getGetDemoSimulationQueryKey,
 } from '@workspace/api-client-react';
 import { useX } from '@/components/demo/ui';
 import { codeLabel } from '@/components/alpha-trading/format';
 import { simulationText, simulationMoney } from './labels';
 import { demoPath } from '@/components/demo/demo-navigation';
+import { isDemoSession } from '@/components/demo/demo-session';
 
 type Rec = Record<string, unknown>;
 interface RunView {
@@ -82,10 +84,11 @@ function Num({ k, v, id }: { k: string; v: string; id: string }) {
 export function SimulationPanel() {
   const { x, loc, lab, money, date, val } = useL();
   const qc = useQueryClient();
-  const session = useGetTestAccountSession({ query: { retry: false, queryKey: ['test-account-session'] } });
+  const dashboard = useGetDemoDashboard({ query: { retry: false } });
+  const demo = !!dashboard.data && isDemoSession(dashboard.data.profile);
+  const session = useGetTestAccountSession({ query: { enabled: !!dashboard.data && !demo, retry: false, queryKey: ['test-account-session'] } });
   const snap = session.data as TestAccountSnapshot | undefined;
-  const accountId = (snap?.account as { id?: string } | null | undefined)?.id ?? null;
-  const csrf = snap?.csrf ?? '';
+  const accountId = demo ? `demo:${dashboard.data!.profile.accountId}` : (snap?.account as { id?: string } | null | undefined)?.id ?? null;
   const storeKey = accountId ? `bettex:simulation:run:${accountId}` : null;
   const [runId, setRunId] = useState<string | undefined>();
   const [ready, setReady] = useState(false);
@@ -100,17 +103,26 @@ export function SimulationPanel() {
     setReady(false); setKind(''); setOffset(0); setErr(null); setConfirm(false);
     setRunId(storeKey ? localStorage.getItem(storeKey) ?? undefined : undefined);
     qc.removeQueries({ queryKey: ['/api/simulation'] });
+    qc.removeQueries({ queryKey: ['/api/demo/simulation'] });
     if (!session.isLoading) setReady(true);
   }, [storeKey, session.isLoading, qc]);
   const select = (id: string | undefined) => { setRunId(id); setOffset(0); setConfirm(false); if (storeKey) { if (id) localStorage.setItem(storeKey, id); else localStorage.removeItem(storeKey); } };
 
   const enabled = ready && !!accountId;
-  const live = (params: GetSimulationParams) => ({ query: { queryKey: [...getGetSimulationQueryKey(params), accountId ?? 'none'] as const, enabled, refetchInterval: 2000, refetchIntervalInBackground: false, retry: false, placeholderData: (p: SimulationSnapshot | undefined) => p } });
+  const live = (params: GetSimulationParams) => ({ query: { queryKey: [...getGetSimulationQueryKey(params), accountId ?? 'none'] as const, enabled: enabled && !demo, refetchInterval: 2000, refetchIntervalInBackground: false, retry: false } });
+  const demoLive = (params: GetSimulationParams) => ({ query: { queryKey: [...getGetDemoSimulationQueryKey(params), accountId ?? 'none'] as const, enabled: enabled && demo, refetchInterval: 2000, refetchIntervalInBackground: false, retry: false } });
   const liveParams: GetSimulationParams = runId ? { runId } : {};
   const histParams: GetSimulationParams = { ...(runId ? { runId } : {}), ...(kind ? { kind } : {}), offset };
-  const q = useGetSimulation(liveParams, live(liveParams));
-  const h = useGetSimulation(histParams, live(histParams));
-  const cmd = useCommandSimulation();
+  const nativeQ = useGetSimulation(liveParams, live(liveParams));
+  const nativeH = useGetSimulation(histParams, live(histParams));
+  const demoQ = useGetDemoSimulation(liveParams, demoLive(liveParams));
+  const demoH = useGetDemoSimulation(histParams, demoLive(histParams));
+  const nativeCmd = useCommandSimulation();
+  const demoCmd = useCommandDemoSimulation();
+  const q = demo ? demoQ : nativeQ;
+  const h = demo ? demoH : nativeH;
+  const cmd = demo ? demoCmd : nativeCmd;
+  const csrf = demo ? q.data?.csrf ?? '' : snap?.csrf ?? '';
   const d = q.data as SimulationSnapshot | undefined;
   const run = (d?.run ?? null) as RunView | null;
   const hd = h.data as SimulationSnapshot | undefined;
@@ -141,7 +153,7 @@ export function SimulationPanel() {
       if ((extra.action === 'start' || extra.action === 'reset') && res.run) select(res.run.id);
       setConfirm(false);
     } catch (e) { setErr(msg(e)); }
-    finally { await qc.invalidateQueries({ queryKey: ['/api/simulation'] }); }
+    finally { await qc.invalidateQueries({ queryKey: [demo ? '/api/demo/simulation' : '/api/simulation'] }); }
   };
   const busy = cmd.isPending;
   const sampleUnits = toUnits(amount);
@@ -160,8 +172,8 @@ export function SimulationPanel() {
     <p className="mt-2 text-xs text-[#5B6B85]" data-testid="text-provisional">{x('Todos os parâmetros são fixtures provisórios, não evidência econômica. Valores em unidades de 1e6.', 'All parameters are provisional fixtures, not economic evidence. Values use 1e6 units.', 'Todos los parámetros son fixtures provisionales, no evidencia económica. Valores en unidades de 1e6.')}</p>
   </div>;
 
-  if (session.isLoading) return <div className="mx-auto max-w-5xl grid gap-3 p-4" aria-busy="true">{[0, 1, 2].map(i => <div key={i} className="h-24 animate-pulse rounded-2xl bg-[#F0E9DA]" />)}</div>;
-  if (session.isError || !snap?.enabled || !accountId) return <div className="mx-auto grid max-w-5xl gap-4 px-3 pt-5 sm:px-5">{header}
+  if (dashboard.isLoading || (!demo && session.isLoading)) return <div className="mx-auto max-w-5xl grid gap-3 p-4" aria-busy="true">{[0, 1, 2].map(i => <div key={i} className="h-24 animate-pulse rounded-2xl bg-[#F0E9DA]" />)}</div>;
+  if (dashboard.isError || (!demo && (session.isError || !snap?.enabled)) || !accountId) return <div className="mx-auto grid max-w-5xl gap-4 px-3 pt-5 sm:px-5">{header}
     <div role="alert" className={card} data-testid="status-session-required"><p className="font-bold">{session.isError ? x('Não foi possível carregar a sessão.', 'Could not load the session.', 'No se pudo cargar la sesión.') : x('Sessão de teste necessária', 'Test session required', 'Sesión de prueba necesaria')}</p>
       <p className="mt-1 text-sm text-[#5B6B85]">{x('A simulação pertence à sua conta de teste.', 'The simulation belongs to your test account.', 'La simulación pertenece a tu cuenta de prueba.')}</p>
       <div className="mt-3 flex gap-2"><Link href={demoPath('account', loc)} data-testid="link-account" className={btn}>{x('Minha conta', 'My account', 'Mi cuenta')}</Link>{session.isError && <button type="button" className={btn2} onClick={() => void session.refetch()}>{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button>}</div></div></div>;

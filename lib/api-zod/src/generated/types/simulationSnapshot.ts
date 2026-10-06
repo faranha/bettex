@@ -10,6 +10,8 @@ import type { SimulationSnapshotEventsItem } from './simulationSnapshotEventsIte
 import type { SimulationSnapshotMode } from './simulationSnapshotMode';
 
 export interface SimulationSnapshot {
+  /** Browser-demo simulation CSRF token, never a native authentication credential */
+  csrf?: string;
   mode: SimulationSnapshotMode;
   runs: SimulationRun[];
   run: SimulationRun | null;

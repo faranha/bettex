@@ -7,11 +7,14 @@ import { Loader2, LogOut, ShieldCheck, AlertTriangle } from 'lucide-react';
 import { useX } from '@/components/demo/ui';
 import { AccountPanel } from './account-ui/AccountPanel';
 import { demoPath } from '@/components/demo/demo-navigation';
+import { isDemoSession } from '@/components/demo/demo-session';
+import { DemoAccountPanel } from '@/components/demo/DemoAccountPanel';
+import type { Asset, Kind } from '@/components/demo/fin';
 
 const primary = 'inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white hover:bg-[#0A6657] disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B]';
 type Provider = 'native' | 'clerk-signin' | 'clerk-signup';
 
-export function AccountSheet({ d }: { d: DemoDashboard }) {
+export function AccountSheet({ d, onWallet }: { d: DemoDashboard; onWallet: (kind: Kind, asset: Asset) => void }) {
   const { x, loc } = useX();
   const qc = useQueryClient();
   const { isLoaded, isSignedIn } = useUser();
@@ -36,6 +39,9 @@ export function AccountSheet({ d }: { d: DemoDashboard }) {
     setOut('loading');
     try { await clerk.signOut({ redirectUrl: `${home}${demoPath('account', loc)}` }); } catch { setOut('error'); }
   };
+  // The browser-scoped demo is already active. Explicit provider links retain actual account testing.
+  const explicitProvider = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('provider');
+  if (isDemoSession(d.profile) && !explicitProvider) return <DemoAccountPanel d={d} onWallet={onWallet} />;
 
   const note = <div className="flex gap-3 rounded-2xl bg-[#EFF6F2] p-3 text-xs leading-relaxed text-[#1B2A41]">
     <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C6B]" aria-hidden="true" />
@@ -45,7 +51,7 @@ export function AccountSheet({ d }: { d: DemoDashboard }) {
   const panel = <>
       <header className="flex items-start justify-between gap-3 border-b border-[#E4DCCB] p-4 sm:px-6">
         <div><h1 className="display text-xl font-extrabold">{x('Minha conta', 'My account', 'Mi cuenta')}</h1>
-          <p className="mt-1 text-sm text-[#5B6B85]">{x('Entrar, criar conta, perfil, carteiras, operações e histórico.', 'Sign in, create account, profile, wallets, operations and history.', 'Entrar, crear cuenta, perfil, carteras, operaciones e historial.')}</p></div>
+          <p className="mt-1 text-sm text-[#5B6B85]">{x('Perfil, carteiras, operações, segurança e histórico de testes.', 'Profile, wallets, operations, security and test history.', 'Perfil, carteras, operaciones, seguridad e historial de pruebas.')}</p></div>
       </header>
       <div className="min-w-0 p-4 sm:p-6">
          {native ? <AccountPanel onLogout={async () => { if (isSignedIn) await clerk.signOut(); }} />

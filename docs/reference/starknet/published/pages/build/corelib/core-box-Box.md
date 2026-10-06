@@ -1,0 +1,15 @@
+# core::box::Box
+Source: https://docs.starknet.io/build/corelib/core-box-Box
+
+
+
+A `Box` is a type that points to a wrapped value.
+It allows for cheap moving around of the value, as its size is small, and may wrap a large size.
+
+## Signature
+
+```rust theme={null}
+pub extern type Box;
+```
+
+

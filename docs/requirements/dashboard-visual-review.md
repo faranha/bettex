@@ -1,6 +1,6 @@
 # Revisão do dashboard, documentação e helpers
 
-## Escopo efetivamente revisado
+## Revisão inicial
 
 | Superfície | Revisão |
 |---|---|
@@ -42,3 +42,36 @@ A auditoria de código verificou controles nomeados, foco visível, texto altern
 - As novas ajudas mantêm o componente de interação já verificado anteriormente; seus novos textos foram conferidos por código e idiomas, não por uma nova passagem interativa de navegador.
 - A documentação pública registra avisos iniciais de dimensão zero de gráficos em conteúdo não visível; a captura inicial renderizou. As figuras escondidas não foram abertas uma a uma nesta revisão.
 - Inferência de preço, saúde do serviço e relatório de controle continuam sem equivaler a modelo calibrado ou autorização financeira.
+
+## Verificação interativa — 6 de outubro de 2026
+
+Os limites de acesso/figuras acima pertencem à revisão inicial, não ao estado após esta passagem.
+
+- Criada conta nativa sintética exclusiva de desenvolvimento, com aceite de ausência de recuperação; perfil retornou após recarga. Apenas informações públicas das carteiras foram vistas; nenhuma chave/backup foi exibida ou exportada.
+- Percurso completo da simulação isolada concluído e histórico consultado. O cenário foi reiniciado, sem movimentar dinheiro real. Administração protegida da Tesouraria respondeu 403; não houve concessão de permissões.
+- Central: seleção, quatro ajudas contextuais, ajuda por agente, foco/Enter, fechamento externo, atualização, busca/filtros sem resultados e paginação de histórico exercitados. Textos PT/EN/ES conferidos.
+- Todos os 13 capítulos foram navegados. Os dois gráficos de vesting não montam em capítulo oculto; no capítulo ativo apresentaram dimensões positivas (786×320 desktop; 326×270 mobile), sem aviso de dimensão zero. Tooltips dos meses 1/36 couberam no mobile.
+- Menus públicos de Pitch e Home espanhóis abriram com links/idioma corretos e fecharam pelo X.
+
+### Problemas encontrados e mudanças
+
+- Falha de atualização da Central não apareceu na passagem inicial. O aviso agora considera também a primeira falha durante retry, preservando o recibo antigo com indicação explícita.
+- Seleção mobile não levou ao detalhe na passagem inicial. O alvo agora é uma referência local do componente, com rolagem após o layout confirmado e sem animação interrompível; tocar o agente já selecionado também abre/posiciona o detalhe.
+- Escape/toque externo não fechavam o menu público. O cabeçalho compartilhado agora remove o menu nesses dois casos; Escape devolve foco ao botão.
+- O teste interpretou `payment_failure` como falha do depósito. Conferência da implementação e testes demonstra que este cenário falha **no repasse de lucro do ciclo**, preservando sua obrigação; o depósito inicial é esperado e isolado. O rótulo foi explicitado em PT/EN/ES e acrescentadas asserções do depósito positivo e ausência de recebimento de lucro enquanto o repasse falha. Nenhuma regra financeira foi alterada.
+
+A confirmação visual restrita das três correções de interação **passou**:
+
+- Mobile 390×844: BTC e depois ETH selecionados com detalhe posicionado abaixo da navegação fixa.
+- Interceptor exclusivamente no navegador confirmou dois GETs 500 com query `agentId`; após dois segundos o aviso apareceu mantendo o recibo em cache. Ao remover o interceptor e atualizar, o aviso desapareceu.
+- Pitch espanhol: Escape fechou menu/devolveu foco; toque externo também fechou. Home espanhola: Escape fechou o mesmo cabeçalho e devolveu foco.
+
+Essa confirmação não repetiu cadastro, não criou atores e não alterou fundos, permissões, políticas ou históricos.
+
+### Produção e pesquisa financeira
+
+- `https://bettex.ai/api/healthz`: 200. `/api/agents/center`: 404, confirmado por corpo HTTP e logs de produção. O runtime publicado não oferece essa rota; atualizar a versão publicada continua pendente. Não houve publicação nesta execução.
+- Documentação publicada carregou em captura externa. Não houve login, alteração de dados ou política em produção.
+- Pitch espanhol registrou mensagens TrustedHTML/WebGPU sem impedir renderização. Não foi comprovada origem no código do produto; não houve enfraquecimento de CSP/TLS para silenciá-las.
+- Build frontend de produção e build da API aprovados; testes de políticas, paper, agentes, operações, Allora, contas e carteiras aprovados. A simulação tem cinco testes, inclusive falha de repasse e retomada.
+- Ferramentas novas de pesquisa/validação e bloqueios externos em [market-validation.md](../market-validation.md). O modelo não foi validado economicamente e os livros exploratórios não constituem cotações completas.

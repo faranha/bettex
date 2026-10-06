@@ -1,0 +1,18 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.starknet.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Introduction
+
+> In STARK protocols, the prover first interpolates the computation trace as polynomials over some domain, then evaluates those interpolated polynomials over a larger domain. Finally, the prover commits to those evaluations using a vector commitment scheme.
+>
+> S-two uses a Merkle tree-based vector commitment scheme that enables efficient commitment to multiple columns of data and generation of Merkle proofs for queried elements. This section covers the complete workflow: from hash function implementations to the commitment and decommitment processes.
+
+This section is organized as follows:
+
+* **[Hash Functions](/learn/S-two-book/how-it-works/vcs/hash_functions)**: Overview of the hash function traits and implementations used in Merkle trees.
+* **[Merkle Prover](/learn/S-two-book/how-it-works/vcs/merkle_prover)**: The commitment process that builds Merkle trees from column data and the decommitment process that generates proofs for queried elements.
+* **[Merkle Verifier](/learn/S-two-book/how-it-works/vcs/merkle_verifier)**: The verification process that checks the validity of Merkle proofs against a committed root.
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

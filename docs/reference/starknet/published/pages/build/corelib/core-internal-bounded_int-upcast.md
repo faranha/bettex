@@ -1,0 +1,15 @@
+# core::internal::bounded_int::upcast
+Source: https://docs.starknet.io/build/corelib/core-internal-bounded_int-upcast
+
+
+
+Upcasts `FromType` to `ToType` - for types where conversion is always legal.
+If done for wrong types would cause a compiler panic at the Sierra stage.
+
+## Signature
+
+```rust theme={null}
+pub extern fn upcast(x: FromType) -> ToType nopanic;
+```
+
+

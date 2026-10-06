@@ -1,0 +1,31 @@
+# Transaction flow
+Source: https://docs.starknet.io/build/starknet-privacy/transaction-flow
+
+Action compilation, ordering constraints, and per-token balance invariants
+
+## Pipeline
+
+1. Build client-side actions.
+2. Generate proof over compiled server-side actions.
+3. Submit (directly or via paymaster).
+4. Contract verifies and executes.
+
+## Why fixed ordering exists
+
+Ordering (`SetViewingKey -> OpenChannel -> OpenSubchannel -> Deposit -> UseNote -> CreateNote -> Withdraw`) reduces state-machine ambiguity and closes classes of ordering bugs where the same semantic operation could be encoded in multiple inconsistent sequences.
+
+## Per-token temporary balance
+
+Within one transaction, each token keeps a temporary balance:
+
+* `Deposit` and `UseNote` increase it.
+* `CreateNote` and `Withdraw` decrease it.
+
+Invariant:
+
+* it must never go negative during execution,
+* and **must end at 0** at the end of transaction.
+
+"Must end at 0" means all temporary inflows are fully matched by outflows in that transaction; no unaccounted residual value remains.
+
+

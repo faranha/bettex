@@ -1,0 +1,17 @@
+# core::gas::withdraw_gas_all
+Source: https://docs.starknet.io/build/corelib/core-gas-withdraw_gas_all
+
+
+
+Same as `withdraw_gas`, but directly receives `BuiltinCosts`, which enables optimizations
+by removing the need for repeated internal calls for fetching the table of constants that may
+internally happen in calls to `withdraw_gas`.
+Should be used with caution.
+
+## Signature
+
+```rust theme={null}
+pub extern fn withdraw_gas_all(costs: BuiltinCosts) -> Option implicits(RangeCheck, GasBuiltin) nopanic;
+```
+
+

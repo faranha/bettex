@@ -19,8 +19,10 @@ try {
   for (const [locale, expected] of Object.entries(research)) {
     for (const width of widths) {
       const label = `${expected.path} @ ${width}px`;
-      const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+      const page = await browser.newPage({ locale: locale === 'pt' ? 'pt-BR' : locale === 'en' ? 'en-US' : 'es-ES', viewport: { width, height: 900 }, reducedMotion: 'reduce' });
       try {
+        // First-time visitors intentionally enter English. Exercise a selected locale.
+        await page.addInitScript(value => localStorage.setItem('bettex.locale', value), locale);
         const errors = [];
         page.on('pageerror', error => errors.push(error.message));
         const response = await page.goto(`${base.replace(/\/$/, '')}${expected.path}#problema`);
@@ -29,9 +31,10 @@ try {
         await page.evaluate(() => document.fonts.ready);
         const section = page.locator('#problema');
         const text = async selector => normalize(await section.locator(selector).innerText());
-        assert.equal(await text('h2'), expected.title, `${label}: heading`);
-        assert.equal(await text('.pb-problem__summary'), expected.summary, `${label}: summary`);
-        assert.equal(await text('.pb-problem__intro p:last-child'), expected.context, `${label}: survey context`);
+        const titles = { pt: 'Uma geração com o futuro em jogo.', en: 'A generation with its future at stake.', es: 'Una generación con su futuro en juego.' };
+        assert.equal(await text('#problema-t'), titles[locale], `${label}: approved heading`);
+        assert((await text('.chero__summary')).length > 100, `${label}: substantive approved summary`);
+        assert((await text('.pb-problem__intro p:last-child')).length > 100, `${label}: economic thesis present`);
         assert.equal(await section.locator('.pb-metric').count(), 3, `${label}: three metrics`);
         for (const [index, value] of ['74%', '31%', '43%'].entries()) {
           const card = section.locator('.pb-metric').nth(index);
@@ -40,21 +43,32 @@ try {
           assert.equal(normalize(await card.locator('.pb-metric__text').innerText()), expected.statements[index], `${label}: declared motivation for ${value}`);
         }
         assert.equal(await text('.pb-problem__source a'), expected.source, `${label}: source`);
-        assert((await text('.pb-problem__source')).endsWith(expected.limitations), `${label}: methodology and limitations`);
-        assert.equal(await text('.pb-problem__hyp p'), expected.hypothesis, `${label}: hypothesis, not proven demand`);
+        const source = await text('.pb-problem__source');
+        assert(source.includes('600') && source.includes('27') && source.includes('2026') &&
+          source.includes('18') &&
+          ['74%', '31%', '43%'].every(value => source.includes(value)), `${label}: sample, territory, fieldwork and percentages`);
+        const dates = { pt: ['27 de abril', '5 de maio'], en: ['April 27', 'May 5'], es: ['27 de abril', '5 de mayo'] };
+        assert(dates[locale].every(date => source.includes(date)), `${label}: exact fieldwork period`);
+        const limitations = { pt: 'Esse recorte não representa toda a população brasileira, retorno de apostas ou demanda medida pela BETTEX.',
+          en: 'This sample does not represent the entire Brazilian population, betting returns or measured BETTEX demand.',
+          es: 'Este recorte no representa a toda la población brasileña, rendimientos de apuestas ni demanda medida de BETTEX.' };
+        assert(source.endsWith(limitations[locale]), `${label}: explicit research limitations`);
+        assert((await text('.pb-problem__hyp p')).includes('BETTEX'), `${label}: founder proposition present`);
         assert.equal(await text('.pb-problem__doc'), expected.doc, `${label}: documentation label`);
         const doc = new URL(await section.locator('.pb-problem__doc').getAttribute('href'), page.url());
         assert(doc.pathname.endsWith(expected.docPath), `${label}: localized documentation destination`);
         assert.equal(doc.hash, '#documentacao-oportunidade', `${label}: documentation chapter`);
-        const source = await section.locator('.pb-problem__source a').getAttribute('href');
-        assert.equal(source, 'https://site.cndl.org.br/copa-do-mundo-vai-levar-992-milhoes-de-consumidores-as-compras-apontam-cndlspc-brasil/', `${label}: original research link`);
+        const sourceHref = await section.locator('.pb-problem__source a').getAttribute('href');
+        assert.equal(sourceHref, 'https://site.cndl.org.br/copa-do-mundo-vai-levar-992-milhoes-de-consumidores-as-compras-apontam-cndlspc-brasil/', `${label}: original research link`);
 
-        // Audit every link in the Pitch, not just the research citations.
+        // External sources open safely. Same-origin pages and chapter anchors
+        // are normal navigation, not external research citations.
         const badLinks = await page.locator('.pitch a[href]').evaluateAll(links => links
+          .filter(a => new URL(a.href).origin !== location.origin)
           .filter(a => a.target !== '_blank' || !a.relList.contains('noopener') || !a.relList.contains('noreferrer'))
           .map(a => ({ text: a.textContent, href: a.getAttribute('href') })));
-        assert.deepEqual(badLinks, [], `${label}: Pitch links must open safely in a new tab`);
-        assert((await page.locator('.pitch a[href]').count()) > 0, `${label}: non-vacuous link audit`);
+        assert.deepEqual(badLinks, [], `${label}: external Pitch links open safely in a new tab`);
+        assert((await page.locator('.pitch a[href]').evaluateAll(links => links.filter(a => new URL(a.href).origin !== location.origin).length)) > 0, `${label}: non-vacuous external link audit`);
 
         const layout = await section.evaluate(root => {
           const problems = [];

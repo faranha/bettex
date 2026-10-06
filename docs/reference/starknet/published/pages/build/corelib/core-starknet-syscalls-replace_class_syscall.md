@@ -1,0 +1,24 @@
+# core::starknet::syscalls::replace_class_syscall
+Source: https://docs.starknet.io/build/corelib/core-starknet-syscalls-replace_class_syscall
+
+
+
+Replaces the class hash of the current contract, instantly modifying its entrypoints.
+The new class becomes effective only after the current function call completes.
+The remaining code in the current function will continue executing from the old class.
+The new class will be used:
+
+* In subsequent transactions
+* If the contract is called via `call_contract` syscall later in the same transaction
+
+## Signature
+
+```rust theme={null}
+pub extern fn replace_class_syscall(class_hash: ClassHash) -> Result> implicits(GasBuiltin, System) nopanic;
+```
+
+#### Arguments
+
+* `class_hash` - The class hash that should replace the current one.
+
+

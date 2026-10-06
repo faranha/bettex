@@ -1,0 +1,27 @@
+# core::testing::get_unspent_gas
+Source: https://docs.starknet.io/build/corelib/core-testing-get_unspent_gas
+
+
+
+Returns the amount of gas available in the `GasBuiltin`, as well as the amount of gas unused in
+the local wallet.
+Useful for asserting that a certain amount of gas was used.
+Note: This function call costs exactly `2300` gas, so this may be ignored in calculations.
+
+## Examples
+
+```rust theme={null}
+use core::testing::get_unspent_gas;
+
+fn gas_heavy_function() {
+    // ... some gas-intensive code
+}
+
+fn test_gas_consumption() {
+    let gas_before = get_unspent_gas();
+    gas_heavy_function();
+    let gas_after = get_unspent_gas();
+    assert!(gas_after - gas_before  u128 implicits(GasBuiltin) nopanic;
+```
+
+

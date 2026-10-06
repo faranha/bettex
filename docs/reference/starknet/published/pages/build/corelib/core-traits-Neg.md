@@ -1,0 +1,64 @@
+# core::traits::Neg
+Source: https://docs.starknet.io/build/corelib/core-traits-Neg
+
+
+
+The unary negation operator `-`.
+
+## Signature
+
+```rust theme={null}
+pub trait Neg
+```
+
+## Examples
+
+An implementation of `Neg` for `Sign`, which allows the use of `-` to
+negate its value.
+
+```rust theme={null}
+#[derive(Copy, Drop, PartialEq)]
+enum Sign {
+    Negative,
+    Zero,
+    Positive,
+}
+
+impl SignNeg of Neg {
+    fn neg(a: Sign) -> Sign {
+        match a {
+            Sign::Negative => Sign::Positive,
+            Sign::Zero => Sign::Zero,
+            Sign::Positive => Sign::Negative,
+        }
+    }
+}
+
+// A negative positive is a negative
+assert!(-Sign::Positive == Sign::Negative);
+// A double negative is a positive
+assert!(-Sign::Negative == Sign::Positive);
+// Zero is its own negation
+assert!(-Sign::Zero == Sign::Zero);
+```
+
+## Trait functions
+
+### neg
+
+Performs the unary `-` operation.
+
+#### Signature
+
+```rust theme={null}
+fn neg(a: T) -> T
+```
+
+#### Examples
+
+```rust theme={null}
+let x: i8 = 1;
+assert!(-x == -1);
+```
+
+

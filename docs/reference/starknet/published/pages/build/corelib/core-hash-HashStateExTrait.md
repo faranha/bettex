@@ -1,0 +1,45 @@
+# core::hash::HashStateExTrait
+Source: https://docs.starknet.io/build/corelib/core-hash-HashStateExTrait
+
+
+
+Extension trait for hash state accumulators.
+This trait adds the `update_with` method to hash states, allowing you to directly hash values of
+any type T that implements `Hash`, rather than having to manually convert values to felt252
+first. This provides a more ergonomic API when working with complex types.
+
+## Signature
+
+```rust theme={null}
+pub trait HashStateExTrait
+```
+
+## Trait functions
+
+### update\_with
+
+Updates the hash state with the given value and returns the updated state.
+
+#### Signature
+
+```rust theme={null}
+fn update_with(self: S, value: T) -> S
+```
+
+#### Examples
+
+```rust theme={null}
+use core::pedersen::PedersenTrait;
+use core::hash::HashStateExTrait;
+
+#[derive(Copy, Drop, Hash)]
+struct Point { x: u32, y: u32 }
+
+let point = Point { x: 1, y: 2 };
+let hash = PedersenTrait::new(0)
+    .update_with(point)
+    .update_with(42)
+    .finalize();
+```
+
+

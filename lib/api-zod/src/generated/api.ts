@@ -8,6 +8,35 @@
 import * as zod from 'zod';
 
 
+/**
+ * @summary Public BTC, ETH and SOL spot observations; not trade executions
+ */
+export const GetMarketLiveResponse = zod.object({
+  "generatedAt": zod.string(),
+  "source": zod.string(),
+  "sourceUrl": zod.string(),
+  "refreshIntervalMs": zod.number().int(),
+  "assets": zod.array(zod.object({
+  "symbol": zod.enum(['BTC', 'ETH', 'SOL']),
+  "name": zod.string(),
+  "product": zod.string(),
+  "currency": zod.enum(['USD']),
+  "status": zod.enum(['live', 'stale', 'unavailable']),
+  "price": zod.string().nullable(),
+  "change24h": zod.number().nullable(),
+  "high24h": zod.string().nullable(),
+  "low24h": zod.string().nullable(),
+  "observedAt": zod.string().nullable(),
+  "tradeAt": zod.string().nullable(),
+  "historyStatus": zod.enum(['available', 'stale', 'unavailable']),
+  "history": zod.array(zod.object({
+  "time": zod.number().describe('Candle opening time in epoch milliseconds'),
+  "value": zod.number().describe('Actual five-minute candle closing price in USD')
+}))
+}))
+})
+
+
 export const getAgentCenterQueryBeforeRegExp = new RegExp('^[0-9]{1,20}$');
 
 
@@ -126,6 +155,218 @@ export const GetAlloraAnalysisResponse = zod.object({
 })
 
 
+export const GetAgentReasoningQueryParams = zod.object({
+  "agentId": zod.coerce.string(),
+  "language": zod.enum(['pt', 'en', 'es'])
+})
+
+export const getAgentReasoningResponseReportsItemAnalysisSummaryMax = 2400;
+
+export const getAgentReasoningResponseReportsItemAnalysisObservationsItemMax = 1200;
+
+export const getAgentReasoningResponseReportsItemAnalysisObservationsMax = 8;
+
+export const getAgentReasoningResponseReportsItemAnalysisUncertaintiesItemMax = 1200;
+
+export const getAgentReasoningResponseReportsItemAnalysisUncertaintiesMax = 8;
+
+export const getAgentReasoningResponseReportsItemAnalysisNextStepsItemMax = 1200;
+
+export const getAgentReasoningResponseReportsItemAnalysisNextStepsMax = 8;
+
+export const getAgentReasoningResponseReportsItemAnalysisEvidenceIndicesItemMin = 0;
+
+export const getAgentReasoningResponseReportsItemAnalysisEvidenceIndicesMax = 20;
+
+
+
+export const GetAgentReasoningResponse = zod.object({
+  "reports": zod.array(zod.object({
+  "id": zod.string(),
+  "agentId": zod.string(),
+  "language": zod.enum(['pt', 'en', 'es']),
+  "createdAt": zod.coerce.date(),
+  "model": zod.string(),
+  "provider": zod.enum(['openai']),
+  "providerResponseId": zod.string(),
+  "sourceRunId": zod.string().nullable(),
+  "sourceAt": zod.coerce.date(),
+  "evidence": zod.array(zod.object({
+  "source": zod.string(),
+  "url": zod.string(),
+  "producedAt": zod.string(),
+  "targetAt": zod.string(),
+  "blockHeight": zod.string(),
+  "value": zod.string(),
+  "unit": zod.string()
+})),
+  "analysis": zod.object({
+  "summary": zod.string().min(1).max(getAgentReasoningResponseReportsItemAnalysisSummaryMax),
+  "observations": zod.array(zod.string().max(getAgentReasoningResponseReportsItemAnalysisObservationsItemMax)).max(getAgentReasoningResponseReportsItemAnalysisObservationsMax),
+  "uncertainties": zod.array(zod.string().max(getAgentReasoningResponseReportsItemAnalysisUncertaintiesItemMax)).max(getAgentReasoningResponseReportsItemAnalysisUncertaintiesMax),
+  "nextSteps": zod.array(zod.string().max(getAgentReasoningResponseReportsItemAnalysisNextStepsItemMax)).max(getAgentReasoningResponseReportsItemAnalysisNextStepsMax),
+  "recommendation": zod.enum(['monitor', 'abstain', 'review']),
+  "evidenceIndices": zod.array(zod.number().int().min(getAgentReasoningResponseReportsItemAnalysisEvidenceIndicesItemMin)).max(getAgentReasoningResponseReportsItemAnalysisEvidenceIndicesMax)
+}),
+  "executionAllowed": zod.literal(false)
+}))
+})
+
+
+export const createAgentReasoningBodyAgentIdMax = 30;
+
+
+
+export const CreateAgentReasoningBody = zod.object({
+  "agentId": zod.string().max(createAgentReasoningBodyAgentIdMax),
+  "language": zod.enum(['pt', 'en', 'es'])
+})
+
+export const createAgentReasoningResponseAnalysisSummaryMax = 2400;
+
+export const createAgentReasoningResponseAnalysisObservationsItemMax = 1200;
+
+export const createAgentReasoningResponseAnalysisObservationsMax = 8;
+
+export const createAgentReasoningResponseAnalysisUncertaintiesItemMax = 1200;
+
+export const createAgentReasoningResponseAnalysisUncertaintiesMax = 8;
+
+export const createAgentReasoningResponseAnalysisNextStepsItemMax = 1200;
+
+export const createAgentReasoningResponseAnalysisNextStepsMax = 8;
+
+export const createAgentReasoningResponseAnalysisEvidenceIndicesItemMin = 0;
+
+export const createAgentReasoningResponseAnalysisEvidenceIndicesMax = 20;
+
+
+
+export const CreateAgentReasoningResponse = zod.object({
+  "id": zod.string(),
+  "agentId": zod.string(),
+  "language": zod.enum(['pt', 'en', 'es']),
+  "createdAt": zod.coerce.date(),
+  "model": zod.string(),
+  "provider": zod.enum(['openai']),
+  "providerResponseId": zod.string(),
+  "sourceRunId": zod.string().nullable(),
+  "sourceAt": zod.coerce.date(),
+  "evidence": zod.array(zod.object({
+  "source": zod.string(),
+  "url": zod.string(),
+  "producedAt": zod.string(),
+  "targetAt": zod.string(),
+  "blockHeight": zod.string(),
+  "value": zod.string(),
+  "unit": zod.string()
+})),
+  "analysis": zod.object({
+  "summary": zod.string().min(1).max(createAgentReasoningResponseAnalysisSummaryMax),
+  "observations": zod.array(zod.string().max(createAgentReasoningResponseAnalysisObservationsItemMax)).max(createAgentReasoningResponseAnalysisObservationsMax),
+  "uncertainties": zod.array(zod.string().max(createAgentReasoningResponseAnalysisUncertaintiesItemMax)).max(createAgentReasoningResponseAnalysisUncertaintiesMax),
+  "nextSteps": zod.array(zod.string().max(createAgentReasoningResponseAnalysisNextStepsItemMax)).max(createAgentReasoningResponseAnalysisNextStepsMax),
+  "recommendation": zod.enum(['monitor', 'abstain', 'review']),
+  "evidenceIndices": zod.array(zod.number().int().min(createAgentReasoningResponseAnalysisEvidenceIndicesItemMin)).max(createAgentReasoningResponseAnalysisEvidenceIndicesMax)
+}),
+  "executionAllowed": zod.literal(false)
+})
+
+
+export const getDemoSimulationQueryOffsetDefault = 0;
+export const getDemoSimulationQueryOffsetMin = 0;
+
+
+
+export const GetDemoSimulationQueryParams = zod.object({
+  "runId": zod.coerce.string().optional(),
+  "kind": zod.coerce.string().optional(),
+  "offset": zod.coerce.number().int().min(getDemoSimulationQueryOffsetMin).default(getDemoSimulationQueryOffsetDefault)
+})
+
+export const GetDemoSimulationResponse = zod.object({
+  "csrf": zod.string().optional().describe('Browser-demo simulation CSRF token, never a native authentication credential'),
+  "mode": zod.enum(['simulation']),
+  "runs": zod.array(zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['simulation']),
+  "scenario": zod.string(),
+  "stage": zod.number().int(),
+  "revision": zod.number().int(),
+  "paused": zod.boolean(),
+  "clock": zod.number().int()
+})),
+  "run": zod.union([zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['simulation']),
+  "scenario": zod.string(),
+  "stage": zod.number().int(),
+  "revision": zod.number().int(),
+  "paused": zod.boolean(),
+  "clock": zod.number().int()
+}),zod.null()]),
+  "events": zod.array(zod.record(zod.string(), zod.unknown())),
+  "total": zod.number().int(),
+  "offset": zod.number().int(),
+  "hasMore": zod.boolean()
+})
+
+
+export const commandDemoSimulationBodyCsrfMin = 16;
+export const commandDemoSimulationBodyCsrfMax = 160;
+
+export const commandDemoSimulationBodyRequestIdMin = 8;
+export const commandDemoSimulationBodyRequestIdMax = 120;
+
+export const commandDemoSimulationBodyRunIdMax = 120;
+
+export const commandDemoSimulationBodyExpectedRevisionMin = 0;
+
+export const commandDemoSimulationBodyAmountUnitsRegExp = new RegExp('^[1-9][0-9]{0,12}$');
+export const commandDemoSimulationBodySecondsMax = 86400;
+
+
+
+export const CommandDemoSimulationBody = zod.object({
+  "csrf": zod.string().min(commandDemoSimulationBodyCsrfMin).max(commandDemoSimulationBodyCsrfMax),
+  "requestId": zod.string().min(commandDemoSimulationBodyRequestIdMin).max(commandDemoSimulationBodyRequestIdMax),
+  "action": zod.enum(['start', 'advance', 'pause', 'resume', 'generate', 'market', 'failure', 'deposit', 'purchase', 'withdraw', 'reset', 'clock']),
+  "runId": zod.string().max(commandDemoSimulationBodyRunIdMax).optional(),
+  "expectedRevision": zod.number().int().min(commandDemoSimulationBodyExpectedRevisionMin).optional(),
+  "scenario": zod.enum(['complete', 'insufficient_balance', 'expired_duplicate', 'no_opportunity', 'exposure', 'price_change', 'partial_fill', 'no_liquidity', 'integration_failure', 'payment_failure', 'restart']).optional(),
+  "amountUnits": zod.string().regex(commandDemoSimulationBodyAmountUnitsRegExp).optional(),
+  "seconds": zod.number().int().min(1).max(commandDemoSimulationBodySecondsMax).optional(),
+  "failure": zod.enum(['insufficient_balance', 'expired_duplicate', 'no_opportunity', 'exposure', 'price_change', 'partial_fill', 'no_liquidity', 'integration_failure', 'payment_failure', 'restart']).optional()
+})
+
+export const CommandDemoSimulationResponse = zod.object({
+  "csrf": zod.string().optional().describe('Browser-demo simulation CSRF token, never a native authentication credential'),
+  "mode": zod.enum(['simulation']),
+  "runs": zod.array(zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['simulation']),
+  "scenario": zod.string(),
+  "stage": zod.number().int(),
+  "revision": zod.number().int(),
+  "paused": zod.boolean(),
+  "clock": zod.number().int()
+})),
+  "run": zod.union([zod.object({
+  "id": zod.string(),
+  "environment": zod.enum(['simulation']),
+  "scenario": zod.string(),
+  "stage": zod.number().int(),
+  "revision": zod.number().int(),
+  "paused": zod.boolean(),
+  "clock": zod.number().int()
+}),zod.null()]),
+  "events": zod.array(zod.record(zod.string(), zod.unknown())),
+  "total": zod.number().int(),
+  "offset": zod.number().int(),
+  "hasMore": zod.boolean()
+})
+
+
 export const getSimulationQueryOffsetDefault = 0;
 export const getSimulationQueryOffsetMin = 0;
 
@@ -138,6 +379,7 @@ export const GetSimulationQueryParams = zod.object({
 })
 
 export const GetSimulationResponse = zod.object({
+  "csrf": zod.string().optional().describe('Browser-demo simulation CSRF token, never a native authentication credential'),
   "mode": zod.enum(['simulation']),
   "runs": zod.array(zod.object({
   "id": zod.string(),
@@ -192,6 +434,7 @@ export const CommandSimulationBody = zod.object({
 })
 
 export const CommandSimulationResponse = zod.object({
+  "csrf": zod.string().optional().describe('Browser-demo simulation CSRF token, never a native authentication credential'),
   "mode": zod.enum(['simulation']),
   "runs": zod.array(zod.object({
   "id": zod.string(),

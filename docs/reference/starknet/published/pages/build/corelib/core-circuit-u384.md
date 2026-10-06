@@ -1,0 +1,63 @@
+# core::circuit::u384
+Source: https://docs.starknet.io/build/corelib/core-circuit-u384
+
+
+
+A 384-bit unsigned integer, used for circuit values.
+
+## Signature
+
+```rust theme={null}
+
+#[derive(Copy, Drop, Debug, PartialEq)]
+pub struct u384 {
+    pub limb0: BoundedInt,
+    pub limb1: BoundedInt,
+    pub limb2: BoundedInt,
+    pub limb3: BoundedInt,
+}
+```
+
+## Members
+
+### limb0
+
+The least significant 96 bits
+
+#### Signature
+
+```rust theme={null}
+pub limb0: BoundedInt
+```
+
+### limb1
+
+Bits 96-191
+
+#### Signature
+
+```rust theme={null}
+pub limb1: BoundedInt
+```
+
+### limb2
+
+Bits 192-287
+
+#### Signature
+
+```rust theme={null}
+pub limb2: BoundedInt
+```
+
+### limb3
+
+The most significant 96 bits
+
+#### Signature
+
+```rust theme={null}
+pub limb3: BoundedInt
+```
+
+

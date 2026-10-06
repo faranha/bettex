@@ -14,10 +14,12 @@
 - [Regras da tesouraria](treasury-rule-evolution.md) — humanos aprovam políticas; mandatos limitados preservam liberdade operacional sem aprovação de cada operação.
 - [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
 - [Identidade e posicionamento](bettex-economic-identity.md) — produto de tecnologia, não fundo, em todo o projeto; usuário, não investidor; comunidade COM IA é meio do funil.
+- [Engajamento com mercados](homepage-market-engagement.md) — competir com cassinos por uma experiência amigável e animada; acompanhar BTC, SOL, Ethereum e agentes com dados reais.
 - [Telegram flutuante](community-floating-button.md) — convite no canto inferior direito de todas as páginas, desktop e mobile, com opção de fechar.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
 - [Fontes de pesquisa](research-source-verification.md) — conferir artigo e metodologia, não apenas status HTTP; preservar URLs canônicas e consultar materiais já enviados.
+- [Direção Starknet](starknet-reference-direction.md) — trabalho adicional solicitado pelo criador; igualdade de contagens dos índices não garante cobertura das mesmas páginas.
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
 - [Âncoras e navegação fixa](navigation-anchor-offsets.md) — mudanças de altura precisam considerar rolagem JavaScript e índice fixo, não apenas scroll-margin.
 - [SEO e roteamento estático](seo-static-routing.md) — validar HTTP inicial por rota; reescritas genéricas podem apagar o HTML pré-renderizado.
@@ -34,6 +36,7 @@
 - [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
 - [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; históricos de sugestões e decisões consultáveis.
+- [Real agent intelligence](real-agent-intelligence.md) — real AI inference is required; rule-based checks are controls, not a substitute for agent intelligence.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
 - [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
 - [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
@@ -63,3 +66,5 @@
 - [Isolamento de testes](integration-test-isolation.md) — fixtures não podem compartilhar dados ou sequências do app; cópia de tabelas não preserva todos os invariantes.
 - [Detalhes opacos no OpenAPI](openapi-opaque-run-details.md) — o Zod gerado pode remover additionalProperties; preservar detalhes da execução após validar o envelope.
 - [GitHub publication authorization](github-publication-authorization.md) — creator authorized upload to public faranha/bettex; preserve visibility and development-only targeting.
+- [Identidade de locks](process-lock-identity.md) — locks sobrevivem a trocas de runtime; um PID reutilizado não comprova que o serviço original está ativo.
+- [Distributed-service target](distributed-service-target.md) — creator requires distributed microservices aligned with canonical guidance; reconcile the extraction decision before restructuring.

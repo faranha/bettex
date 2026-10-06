@@ -1,0 +1,16 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.starknet.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Introduction
+
+> This section introduces the Circle FRI protocol, which is used to check proximity to low-degree polynomials. We provide a technical overview, walk through a concrete example, and detail the implementation of both the prover and verifier.
+
+This section is organized as follows:
+
+* **[Technical Overview](/learn/S-two-book/how-it-works/circle-fri/overview)**: Explains the mathematical foundations and protocol steps of Circle FRI, including a multi-table example and security analysis.
+* **[FRI Prover](/learn/S-two-book/how-it-works/circle-fri/fri_prover)**: Describes the implementation of the prover, including protocol configuration, commitment, and decommitment phases.
+* **[FRI Verifier](/learn/S-two-book/how-it-works/circle-fri/fri_verifier)**: Details the verifier's implementation, covering query generation and verification logic.
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

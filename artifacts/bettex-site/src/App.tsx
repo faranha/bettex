@@ -28,6 +28,7 @@ import { chapters } from '@/components/WhitepaperChapters';
 import { FloatingCommunityCTA, TelegramIcon } from '@/components/CommunityCTA';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
+import { LiveMarketsSection } from '@/components/live-markets/LiveMarketsSection';
 import { PitchSectionNav } from '@/components/pitch/PitchSectionNav';
 import { HomeSectionNav } from '@/components/HomeSectionNav';
 
@@ -107,9 +108,40 @@ function SiteHeader() {
   }, []);
 
   useEffect(() => {
+    const close = () => setMenuOpen(false);
+    window.addEventListener('bettex:close-public-menu', close);
+    return () => window.removeEventListener('bettex:close-public-menu', close);
+  }, []);
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1280px)');
+    const closeOnDesktop = () => { if (desktop.matches) setMenuOpen(false); };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
     setMenuOpen(false);
     if (!window.location.hash) window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const dismissOutside = (event: PointerEvent) => {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setMenuOpen(false);
+    };
+    const dismissEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setMenuOpen(false);
+      headerRef.current?.querySelector<HTMLButtonElement>('[data-testid="public-menu-toggle"]')?.focus();
+    };
+    document.addEventListener('pointerdown', dismissOutside);
+    document.addEventListener('keydown', dismissEscape);
+    return () => {
+      document.removeEventListener('pointerdown', dismissOutside);
+      document.removeEventListener('keydown', dismissEscape);
+    };
+  }, [menuOpen]);
 
   return <header ref={headerRef} className="site-header sticky top-0 z-40 border-b border-[#2B59FF]/30 bg-[#070B1F]/95 text-[#F4F1E8] backdrop-blur-lg">
     <div className="page-wrap flex h-14 items-center justify-between gap-3">
@@ -118,12 +150,15 @@ function SiteHeader() {
         <MainLinks className="" />
       </nav>
       <div className="hidden xl:flex"><LanguageSelector /></div>
-      <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 max-sm:ml-auto xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
+      <button type="button" data-testid="public-menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 max-sm:ml-auto xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
-    {/\/pitch\/?$/.test(location) && <PitchSectionNav onNavigate={() => setMenuOpen(false)} menuOpen={menuOpen} />}
-    {location.replace(/\/$/, '') === '' && <HomeSectionNav onNavigate={() => setMenuOpen(false)} menuOpen={menuOpen} />}
-    {menuOpen && <nav className="page-wrap absolute inset-x-0 top-full mx-auto flex max-h-[calc(100dvh-var(--home-sticky-h,var(--pitch-sticky-h,var(--site-header-h))))] flex-col gap-1 overflow-y-auto rounded-b-lg border border-[#2B59FF]/30 bg-[#070B1F] py-3 shadow-xl xl:hidden" aria-label="Navegação móvel">
-      <section className="mt-2 border-t border-[#2B59FF]/30 pt-3" aria-label="Páginas do projeto">
+    <div inert={menuOpen}>
+      {/\/pitch\/?$/.test(location) && <PitchSectionNav onNavigate={() => setMenuOpen(false)} menuOpen={menuOpen} />}
+      {location.replace(/\/$/, '') === '' && <HomeSectionNav onNavigate={() => setMenuOpen(false)} menuOpen={menuOpen} />}
+      {/^\/(documentacao|documentation|documentacion)\/?$/.test(location) && <div id="documentation-mobile-slot" className="documentation-mobile-slot" />}
+    </div>
+    {menuOpen && <nav data-testid="public-mobile-menu" className="page-wrap absolute inset-x-0 top-[var(--site-header-h,57px)] z-20 mx-auto flex max-h-[calc(100dvh-var(--site-header-h,57px))] flex-col gap-1 overflow-y-auto rounded-b-lg border border-[#2B59FF]/30 bg-[#070B1F] pb-3 shadow-xl xl:hidden" aria-label="Navegação móvel">
+      <section className="pt-3" aria-label="Páginas do projeto">
         <h2 className="mb-3 px-2 text-xs font-bold uppercase tracking-wider text-[#c5d2f1]">Páginas do projeto</h2>
         <div className="grid gap-2 sm:grid-cols-3">
           <MainLinks uniform onNavigate={() => setMenuOpen(false)} className="" />
@@ -304,6 +339,7 @@ function Home() {
       </section>
 
       <TechnologyNetworks />
+      <LiveMarketsSection />
       <HumanStorySection />
       <NewEconomySection />
 

@@ -69,6 +69,7 @@ O tooltip do gráfico Allora apresenta horário de produção e preço USD do po
 | `factText` | Mesmo arquivo | Código/valor → previsão USD com duas casas, unidades exatas ou texto | Arredondamento é apenas visual; histórico/API conservam a precisão original |
 | `age` e cálculo de frescor | Mesmo arquivo | Horário do recibo e idade da última resposta → tempo decorrido | Não congelar recibo recente após falha de atualização; três minutos é a janela de atividade, não o horizonte Allora |
 | `RunBody`, `RunCard`, `Forecast`, `Row`, `docs` | Mesmo arquivo | Dados persistidos → elementos de relatório/lista/manual | São funções de renderização; não criar novos tipos de componente a cada polling e perder foco/detalhes |
+| `ChapterVisibility` | `components/ChapterVisibility.ts` | Capítulo ativo → contexto de visibilidade dos gráficos | Preserva conteúdo/índice e estado do leitor; não mede gráficos Recharts dentro de capítulo oculto |
 
 ## 4. Revisão e diagnóstico
 
@@ -81,3 +82,5 @@ Ao modificar um helper, conferir:
 5. Ausência de efeito financeiro em uma ajuda ou função de apresentação.
 
 As responsabilidades e entradas dos 13 serviços estão em [agents-operations.md](agents-operations.md). O fluxo financeiro e suas exigências continuam em [agent-hierarchy.md](agent-hierarchy.md), não nos tooltips.
+
+Os utilitários offline de avaliação de modelo e profundidade estão documentados em [market-validation.md](market-validation.md). Não são helpers de autorização nem componentes do ciclo operacional.

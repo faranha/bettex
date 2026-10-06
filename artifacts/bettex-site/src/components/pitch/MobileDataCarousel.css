@@ -1,0 +1,25 @@
+.mobile-data-carousel { min-width: 0; max-width: 900px; }
+.mobile-data-carousel__controls { display: none; }
+@media (max-width: 767px) {
+  .mobile-data-carousel .mobile-data-carousel__track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    margin-bottom: 14px;
+  }
+  .mobile-data-carousel__track::-webkit-scrollbar { display: none; }
+  .mobile-data-carousel__track > article { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+  .mobile-data-carousel__controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .mobile-data-carousel__controls > button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #f2b63266; border-radius: 8px; background: #13204f; color: #f2b632; cursor: pointer; }
+  .mobile-data-carousel__controls > button:disabled { opacity: .35; cursor: default; }
+  .mobile-data-carousel__controls svg { width: 20px; height: 20px; }
+  .mobile-data-carousel__position { display: grid; justify-items: center; gap: 2px; color: #f4f1e8; font-size: 11px; }
+  .mobile-data-carousel__dots { display: flex; }
+  .mobile-data-carousel__dots button { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+  .mobile-data-carousel__dots span { width: 8px; height: 8px; border-radius: 50%; background: #f4f1e855; }
+  .mobile-data-carousel__dots [aria-current="true"] span { background: #f2b632; }
+  .mobile-data-carousel :focus-visible { outline: 2px solid #f2b632; outline-offset: 3px; }
+}

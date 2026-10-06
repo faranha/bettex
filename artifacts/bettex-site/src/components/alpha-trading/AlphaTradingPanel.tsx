@@ -9,6 +9,7 @@ import { AlphaTradingCapitalPanel } from './CapitalPanel';
 import { OpportunityCard, DecisionCard, OrderCard, PositionCard } from './Records';
 import { Journey } from './Journey';
 import { AgentOperationsDashboard } from '@/components/agent-operations/AgentOperationsDashboard';
+import { MobileAreaNav } from '@/components/demo/MobileAreaNav';
 import { AlloraAnalysis } from '@/components/demo/AlloraAnalysis';
 
 export { AlphaTradingCapitalPanel };
@@ -41,7 +42,9 @@ export function AlphaTradingPanel() {
   return <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10" data-testid="alpha-trading">
     <div className="bg-[#1B2A41] py-1 text-center text-[11px] font-semibold tracking-wide text-[#F5F1E8]">{x('desenvolvimento · simulação sem dinheiro real', 'development · simulation, no real money', 'desarrollo · simulación sin dinero real')}</div>
     <div className="mx-auto grid max-w-5xl gap-4 px-3 pt-5 sm:px-5">
-      <nav aria-label={x('Áreas do app', 'App areas', 'Áreas de la app')} className="flex flex-wrap gap-2">{links.map(([k, l]) => <Link key={k} href={demoPath(k, f.loc)} data-testid={`nav-${k}`} className="inline-flex min-h-11 items-center rounded-full border border-[#E4DCCB] px-4 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5]">{l}</Link>)}</nav>
+      <MobileAreaNav current="central" className="-mx-3 w-[calc(100%+1.5rem)]" />
+      <p role="status" className="text-xs font-bold text-[#0A6657]" data-testid="alpha-test-period">{x('ALFA · período de testes · sem dinheiro real', 'ALFA · testing period · no real money', 'ALFA · período de pruebas · sin dinero real')}</p>
+      <nav aria-label={x('Áreas do app', 'App areas', 'Áreas de la app')} className="hidden flex-wrap gap-2 sm:flex">{links.map(([k, l]) => <Link key={k} href={demoPath(k, f.loc)} data-testid={`nav-${k}`} className="inline-flex min-h-11 items-center rounded-full border border-[#E4DCCB] px-4 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5]">{l}</Link>)}</nav>
       <div><h1 className="display text-2xl font-extrabold">{x('Central da IA', 'AI Center', 'Central de IA')}</h1>
         <p className="mt-1 text-sm text-[#5B6B85]">{x('Como a IA considera eventos de previsão, com evidências. Resultados simulados, nunca lucro distribuível.', 'How the AI considers prediction events, with evidence. Simulated results, never distributable profit.', 'Cómo la IA considera eventos de predicción, con evidencias. Resultados simulados, nunca ganancia distribuible.')}</p></div>
       <AgentOperationsDashboard />

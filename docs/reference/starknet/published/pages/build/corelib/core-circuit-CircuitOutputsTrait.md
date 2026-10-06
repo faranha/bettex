@@ -1,0 +1,56 @@
+# core::circuit::CircuitOutputsTrait
+Source: https://docs.starknet.io/build/corelib/core-circuit-CircuitOutputsTrait
+
+
+
+A trait for retrieving output values from a circuit evaluation.
+This trait provides methods to access the output values of a circuit after
+successful evaluation.
+
+## Signature
+
+```rust theme={null}
+pub trait CircuitOutputsTrait
+```
+
+## Examples
+
+```rust theme={null}
+let a = CircuitElement::> {};
+let b = CircuitElement::> {};
+let modulus = TryInto::::try_into([2, 0, 0, 0]).unwrap();
+let circuit = (a,b).new_inputs()
+    .next([10, 0, 0, 0])
+    .next([11, 0, 0, 0])
+    .done()
+    .eval(modulus)
+    .unwrap();
+let a_mod_2 = circuit.get_output(a); // Returns the output value of `a mod 2`
+let b_mod_2 = circuit.get_output(b); // Returns the output value of `b mod 2`
+assert!(a_mod_2 == 0.into());
+assert!(b_mod_2 == 1.into());
+```
+
+## Trait functions
+
+### get\_output
+
+Gets the output value for a specific circuit element.
+
+#### Signature
+
+```rust theme={null}
+fn get_output(
+    self: Outputs, output: OutputElement,
+) -> u384
+```
+
+#### Arguments
+
+* `output` - The circuit element to get the output for
+
+#### Returns
+
+The output value as a u384
+
+

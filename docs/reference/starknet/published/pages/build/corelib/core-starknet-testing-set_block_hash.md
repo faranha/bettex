@@ -1,0 +1,22 @@
+# core::starknet::testing::set_block_hash
+Source: https://docs.starknet.io/build/corelib/core-starknet-testing-set_block_hash
+
+
+
+Set the hash for a block.
+
+## Signature
+
+```rust theme={null}
+pub fn set_block_hash(block_number: u64, value: felt252)
+```
+
+#### Arguments
+
+`block_number` - The targeted block number.
+`value` - The block hash to set.
+After a call to `set_block_hash`, `starknet::syscalls::get_block_hash_syscall` for the
+block\_number will return the set value.
+Unset blocks values call would fail.
+
+

@@ -1,19 +1,36 @@
 import { build } from "esbuild";
 import { createRequire } from "node:module";
+import { randomUUID } from "node:crypto";
+import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 const require = createRequire(new URL("../../../lib/db/package.json", import.meta.url));
+const requireApi = createRequire(new URL("../package.json", import.meta.url));
+const { Pool } = require("pg");
+const admin = new Pool({ connectionString: process.env.DATABASE_URL });
+const schema = `history_fixture_${randomUUID().replaceAll("-", "")}`;
+let fixturePool, server;
+try {
+await admin.query(`CREATE SCHEMA "${schema}"`);
+const isolated = new URL(process.env.DATABASE_URL);
+isolated.searchParams.set("options", `-csearch_path=${schema},pg_catalog`);
+process.env.DATABASE_URL = isolated.toString();
+process.env.NODE_ENV = "development";
 const built = await build({
-  stdin: { contents: `export {historyPage,historyDetail,appendHistory,ensureHistorySchema,historyTransparency} from "./src/modules/audit/infrastructure/history-store"; export {recordDemoMovements,recordDemoPools,recordDemoTreasury} from "./src/modules/audit/infrastructure/demo-recorder"; export {historyQuery} from "./src/modules/audit/transport/history-filters"; export {accountsStore} from "./src/modules/accounts/infrastructure/store"; export {canReadTreasuryHistory} from "./src/modules/accounts/infrastructure/history-permission"; export {db,pool} from "@workspace/db";`,
+  stdin: { contents: `export {default as app} from "./src/app"; export {historyPage,historyDetail,appendHistory,ensureHistorySchema,historyTransparency} from "./src/modules/audit/infrastructure/history-store"; export {recordDemoMovements,recordDemoPools,recordDemoTreasury} from "./src/modules/audit/infrastructure/demo-recorder"; export {historyQuery} from "./src/modules/audit/transport/history-filters"; export {accountsStore,ensureAccountsSchema} from "./src/modules/accounts/infrastructure/store"; export {ensureWalletsSchema} from "./src/modules/wallets/infrastructure/store"; export {canReadTreasuryHistory} from "./src/modules/accounts/infrastructure/history-permission"; export {db,pool} from "@workspace/db";`,
     resolveDir: new URL("..", import.meta.url).pathname },
-  bundle: true, platform: "node", format: "cjs", write: false, external: ["pg"], logLevel: "silent",
+  bundle: true, platform: "node", format: "cjs", write: false, external: ["pg", "express", "cors", "pino", "pino-http", "@clerk/express", "@clerk/shared/keys", "http-proxy-middleware"], logLevel: "silent",
 });
 const mod = { exports: {} };
-new Function("require", "module", "exports", built.outputFiles[0].text)(require, mod, mod.exports);
+new Function("require", "module", "exports", built.outputFiles[0].text)(name => name === "pg" ? require(name) : requireApi(name), mod, mod.exports);
 const { historyPage, historyDetail, appendHistory, ensureHistorySchema, historyTransparency, historyQuery, accountsStore, canReadTreasuryHistory,
-  recordDemoMovements, recordDemoPools, recordDemoTreasury, db, pool } = mod.exports;
+  recordDemoMovements, recordDemoPools, recordDemoTreasury, db, pool, app, ensureAccountsSchema, ensureWalletsSchema } = mod.exports;
+fixturePool = pool;
+assert.equal((await pool.query("SELECT current_schema() AS schema")).rows[0].schema, schema);
 const { sql } = require("drizzle-orm");
-try {
+  await ensureAccountsSchema();
+  await ensureWalletsSchema();
   await ensureHistorySchema();
+  await pool.query(readFileSync(new URL("../../../lib/db/migrations/20261005_history.sql", import.meta.url), "utf8"));
   const dates = historyQuery.parse({ from: "2026-10-05T08:50:00.000Z", to: "2026-10-05T08:53:00.000Z" });
   assert.ok(dates.from instanceof Date);
   assert.equal(dates.from.toISOString(), "2026-10-05T08:50:00.000Z");
@@ -62,14 +79,23 @@ try {
   assert.ok(captured.filter(row => row.visibility === "admin").every(row => row.data.capitalInflow === "false"));
   console.log("PASS adapter-only (no fake financial database writes): immediate swap price preserved, net return excludes cost, three period pools; correction projection agrees in list and detail.");
   console.log("PASS: HTTP date decoding and reversed/invalid periods, exact period includes 8 matching rows, raw PostgreSQL timestamps, 7 tied-date records across pages, snapshot excludes new insert, owner/cursor isolation, append-only trigger, public aggregation privacy.");
-  if (process.env.VERIFY_HISTORY_HTTP === "1") {
+  {
+    // HTTP assertions must read their own fixture, never rely on an app's populated treasury.
+    await recordDemoTreasury(db, [], [{ ...base, status: "open" }]);
+    await recordDemoTreasury(db, [{ ...base, status: "open" }], [{ ...base, status: "closed" }]);
+    await appendHistory({ key: `${subject}:principal`, subject: "treasury:simulation", visibility: "admin",
+      correlationId: `${subject}:purchase`, category: "financial", kind: "treasury_principal",
+      state: "confirmed", actor: "system", asset: "USDC", environment: "simulation",
+      source: "isolated_fixture", occurredAt: at, data: { amountUnits: "20000000", decimals: "6", capitalInflow: "true" } });
+    server = app.listen(0, "127.0.0.1");
+    await new Promise(resolve => server.once("listening", resolve));
     const id = `history-acl-${crypto.randomUUID()}`;
     try {
       await db.execute(sql`INSERT INTO test_accounts(id,registration_id,email,display_name,password_hash,notice_version,accepted_at)
         VALUES(${id},${id},${`${id}@example.invalid`},'Synthetic ACL verification','disabled-test-fixture','verification',now())`);
       const session = await accountsStore().newSession(id);
       const headers = { Cookie: `bettex_test_session=${session.token}` };
-      const url = `https://${process.env.REPLIT_DEV_DOMAIN}/api/test-account/history/admin`;
+      const url = `http://127.0.0.1:${server.address().port}/api/test-account/history/admin`;
       assert.equal((await fetch(url, { headers })).status, 403);
       await canReadTreasuryHistory(id); // Initialize default-deny permission storage.
       await db.execute(sql`INSERT INTO test_account_permissions(account_id,permission) VALUES(${id},'treasury_history')`);
@@ -93,5 +119,14 @@ try {
     }
   }
 } catch (error) {
-  console.error("History integration failed:", error?.code ?? error?.message ?? "unknown"); process.exitCode = 1;
-} finally { await pool.end(); }
+  const frame = error?.stack?.split("\n").find(line => line.includes("history-store-integration.mjs:"));
+  const primitive = value => typeof value === "number" || typeof value === "boolean" ? value : "[redacted]";
+  console.error("History integration failed:", error?.code ?? error?.name ?? "unknown",
+    { actual: primitive(error.actual), expected: primitive(error.expected), frame }, "(details redacted)");
+  process.exitCode = 1;
+} finally {
+  if (server) await new Promise(resolve => server.close(resolve));
+  await fixturePool?.end();
+  await admin.query(`DROP SCHEMA IF EXISTS "${schema}" CASCADE`);
+  await admin.end();
+}

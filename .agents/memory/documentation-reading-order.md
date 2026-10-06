@@ -3,6 +3,12 @@ name: Ordem de leitura da documentação
 description: Ordem dos capítulos e leitura compacta da documentação técnica.
 ---
 
+No mobile, o menu da documentação deve seguir o submenu das demais páginas: uma barra imediatamente abaixo do header principal, com acesso aos capítulos e às subseções da área selecionada. Não manter um segundo índice mobile dentro do conteúdo; preservar o índice lateral no desktop.
+
+**Why:** O criador pediu a mesma estrutura de submenu usada nas outras páginas, no lugar do menu de capítulos mostrado no corpo da documentação.
+
+**How to apply:** Manter a seleção vinculada ao leitor existente e considerar a altura real do header com a barra ao navegar para capítulos e subseções. Preservar links diretos, histórico e a leitura de um capítulo por vez.
+
 A seção chama “Entidade e negócios”, não “Identidade e negócios”, e deve vir imediatamente depois de “Visão do projeto”, nunca no fim.
 
 **Why:** O criador corrigiu explicitamente o nome e a posição dessa seção.
