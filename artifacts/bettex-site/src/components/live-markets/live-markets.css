@@ -1,4 +1,6 @@
 .lm { background: #070B1F; color: #F4F1E8; padding: 72px 0; border-block: 4px solid #F2B632; }
+.lm.lm--app { min-width: 0; padding: 20px; border: 1px solid #2B59FF55; border-radius: 20px; }
+.lm--app .lm__title { font-size: clamp(1.5rem, 3vw, 2rem); }
 .lm__wrap { display: grid; gap: 24px; }
 .lm__head { max-width: 760px; }
 .lm__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .2em; color: #36E0D0; }

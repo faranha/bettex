@@ -28,7 +28,6 @@ import { chapters } from '@/components/WhitepaperChapters';
 import { FloatingCommunityCTA, TelegramIcon } from '@/components/CommunityCTA';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
-import { LiveMarketsSection } from '@/components/live-markets/LiveMarketsSection';
 import { PitchSectionNav } from '@/components/pitch/PitchSectionNav';
 import { HomeSectionNav } from '@/components/HomeSectionNav';
 import { AppHeader } from '@/components/app/AppHeader';
@@ -339,7 +338,6 @@ function Home() {
       </section>
 
       <TechnologyNetworks />
-      <LiveMarketsSection />
       <HumanStorySection />
       <NewEconomySection />
 

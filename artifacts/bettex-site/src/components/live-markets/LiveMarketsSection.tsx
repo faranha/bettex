@@ -94,8 +94,8 @@ export function LiveMarketsSection() {
 
   const retry = () => { void q.refetch(); };
 
-  return <section id="mercados-ao-vivo" className="lm" aria-labelledby="lm-title" data-testid="section-live-markets">
-    <div className="page-wrap lm__wrap">
+  return <section id="mercados-ao-vivo" className="lm lm--app" aria-labelledby="lm-title" data-testid="section-live-markets">
+    <div className="lm__wrap">
       <header className="lm__head">
         <span className="mono lm__eyebrow">{x('MERCADOS AO VIVO', 'LIVE MARKETS', 'MERCADOS EN VIVO')}</span>
         <h2 id="lm-title" className="display lm__title">{x('BTC, ETH e SOL em tempo real.', 'BTC, ETH and SOL in real time.', 'BTC, ETH y SOL en tiempo real.')}</h2>
@@ -181,8 +181,7 @@ export function LiveMarketsSection() {
           <p className="lm__note">{x('Preços de referência. Análises ALFA; sem execução com dinheiro real.', 'Reference prices. ALFA analysis; no real-money execution.', 'Precios de referencia. Análisis ALFA; sin ejecución con dinero real.')}</p>
         </div>
         <div className="lm__cta">
-          <a className="lm__btn lm__btn--gold" data-testid="link-markets-central" href={localizedUrl(`${BASE}/demo/central`)}>{x('Ver a Central de agentes', 'Open the agent Central', 'Abrir la Central de agentes')}<ArrowRight size={16} aria-hidden="true" /></a>
-          <a className="lm__btn" data-testid="link-markets-participation" href="#participacao">{x('Como participar', 'How to take part', 'Cómo participar')}</a>
+          <a className="lm__btn lm__btn--gold" data-testid="link-markets-central" href={localizedUrl(`${BASE}/app/central`)}>{x('Ver a Central de agentes', 'Open the agent Central', 'Abrir la Central de agentes')}<ArrowRight size={16} aria-hidden="true" /></a>
         </div>
       </aside>
     </div>

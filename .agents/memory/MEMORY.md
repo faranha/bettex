@@ -14,7 +14,7 @@
 - [Regras da tesouraria](treasury-rule-evolution.md) — humanos aprovam políticas; mandatos limitados preservam liberdade operacional sem aprovação de cada operação.
 - [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
 - [Identidade e posicionamento](bettex-economic-identity.md) — produto de tecnologia, não fundo, em todo o projeto; usuário, não investidor; comunidade COM IA é meio do funil.
-- [Engajamento com mercados](homepage-market-engagement.md) — competir com cassinos por uma experiência amigável e animada; acompanhar BTC, SOL, Ethereum e agentes com dados reais.
+- [Engajamento com mercados no app](homepage-market-engagement.md) — painel operacional de BTC, SOL, ETH e agentes pertence ao app, não à homepage.
 - [Telegram flutuante](community-floating-button.md) — convite no canto inferior direito de todas as páginas, desktop e mobile, com opção de fechar.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
