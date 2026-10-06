@@ -105,6 +105,8 @@ paths:
         "429": { description: Rate or concurrency limit reached }
         "503": { description: Inference unavailable; no rule-based substitute }
   /demo/simulation:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
     get:
       operationId: getDemoSimulation
       tags: [simulation]
@@ -295,6 +297,8 @@ paths:
         "401": { description: Session required }
         "403": { description: Permission required }
   /demo/history:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
     get:
       operationId: getDemoHistory
       parameters: *historyParameters
@@ -305,6 +309,8 @@ paths:
       parameters: *historyParameters
       responses: *historyResponses
   /demo/history/distribution-preview:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
     post:
       operationId: previewHistoryDistribution
       requestBody:
@@ -391,11 +397,37 @@ paths:
           description: Duplicate email or stale vault revision
         "429":
           description: Attempt limit exceeded
+  /demo/testnet:
+    get:
+      operationId: getDemoTestnet
+      tags: [demo]
+      summary: Verified public-testnet demo activity registry; not financial settlement
+      responses:
+        "200":
+          description: Public RPC and registry verification, including unavailable states
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DemoTestnet"
+  /demo/testnet-activity:
+    get:
+      operationId: getDemoTestnetActivity
+      tags: [demo]
+      summary: Anonymous aggregate demo activity without identities, balances or capabilities
+      responses:
+        "200":
+          description: Non-personal aggregate observations for testnet checkpoints
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DemoTestnetActivity"
   /demo/dashboard:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
     get:
       operationId: getDemoDashboard
       tags: [demo]
-      summary: Persistent personal dashboard and live agent activity
+      summary: Tab-scoped demo dashboard and live agent activity
       responses:
         "200":
           description: Current dashboard
@@ -404,6 +436,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/DemoDashboard"
   /demo/movements:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
     post:
       operationId: createDemoMovement
       tags: [demo]
@@ -424,6 +458,8 @@ paths:
         "400":
           description: Invalid amount or insufficient balance
   /demo/profile:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
     patch:
       operationId: updateDemoProfile
       tags: [demo]
@@ -476,7 +512,40 @@ paths:
             application/json:
               schema: { $ref: "#/components/schemas/NativeTestJourney" }
 components:
+  parameters:
+    DemoTabSession:
+      in: header
+      name: X-Bettex-Demo-Session
+      required: false
+      description: Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{64}$"
   schemas:
+    DemoTestnet:
+      type: object
+      required: [status, chainId, network, contractAddress, operatorAddress, explorerUrl, latestBlock, lastCheckpointAt, checkpointCount, financialOperations, contractPurpose]
+      properties:
+        status:
+          type: string
+          enum: [preparing, validating, live, unavailable]
+        chainId: { type: integer, enum: [421614] }
+        network: { type: string, enum: [Arbitrum Sepolia] }
+        contractAddress: { type: [string, "null"] }
+        operatorAddress: { type: [string, "null"] }
+        explorerUrl: { type: [string, "null"] }
+        latestBlock: { type: [integer, "null"] }
+        lastCheckpointAt: { type: [string, "null"], format: date-time }
+        checkpointCount: { type: [integer, "null"] }
+        financialOperations: { type: string, enum: [simulated] }
+        contractPurpose: { type: string, enum: [demo_activity_registry] }
+    DemoTestnetActivity:
+      type: object
+      required: [sessions, movements, updatedAt]
+      properties:
+        sessions: { type: integer, minimum: 0 }
+        movements: { type: integer, minimum: 0 }
+        updatedAt: { type: [string, "null"] }
     MarketPricePoint:
       type: object
       required: [time, value]

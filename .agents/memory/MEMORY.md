@@ -22,6 +22,7 @@
 - [Direção Starknet](starknet-reference-direction.md) — trabalho adicional solicitado pelo criador; igualdade de contagens dos índices não garante cobertura das mesmas páginas.
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.
 - [Âncoras e navegação fixa](navigation-anchor-offsets.md) — mudanças de altura precisam considerar rolagem JavaScript e índice fixo, não apenas scroll-margin.
+- [Menus de seções no mobile](mobile-section-menu-style.md) — lista aberta com a identidade BETTEX; o popup nativo do iPhone não atende à estilização solicitada.
 - [SEO e roteamento estático](seo-static-routing.md) — validar HTTP inicial por rota; reescritas genéricas podem apagar o HTML pré-renderizado.
 - [Embeds em produção](production-embed-policy.md) — o preview Vite não aplica a CSP publicada; verificar o domínio do iframe contra frame-src do servidor.
 - [Domínio oficial](official-domain.md) — bettex.ai confirmado pelo criador; bettex.replit.app deve redirecionar preservando a página.

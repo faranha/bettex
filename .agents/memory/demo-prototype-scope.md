@@ -3,6 +3,12 @@ name: Escopo da demonstração BETTEX
 description: Demonstração com banco básico, emulação automática e área operacional clara, sem dinheiro real.
 ---
 
+O demo anônimo deve ter uma instância independente por aba, sem cadastro. Recarregar e navegar preservam o teste; abrir uma nova aba ou reiniciar o demo cria uma conta limpa sem alterar outras abas nem contas reais.
+
+**Why:** O criador escolheu uma instância por aba para permitir testes livres, validação e apresentações ao vivo para investidores.
+
+**How to apply:** Separar os dados pessoais simulados por sessão da aba, inclusive quando o navegador duplica uma aba e copia seu armazenamento. A identidade anônima do demo nunca concede autenticação, permissões financeiras ou acesso ao histórico privado.
+
 O criador substituiu o escopo anterior de protótipo sem banco: a demonstração precisa de um banco de dados básico e scripts que emulem resultados, trocas e relacionamentos entre agentes em tempo real, sem controles de avançar horas.
 
 **Why:** O usuário pediu explicitamente persistência e emulação automática em vez de avanço manual do cenário.

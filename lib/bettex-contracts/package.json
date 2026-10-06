@@ -10,6 +10,8 @@
   "scripts": {
     "build": "node scripts/compile.mjs",
     "local:runtime": "node scripts/local-runtime.mjs",
+    "public:prepare": "node scripts/public-demo-runtime.mjs --prepare",
+    "public:runtime": "node scripts/public-demo-runtime.mjs --watch",
     "test": "node --test test/contracts.test.mjs test/app-flow.test.mjs test/wallet-services.test.mjs"
   },
   "devDependencies": {

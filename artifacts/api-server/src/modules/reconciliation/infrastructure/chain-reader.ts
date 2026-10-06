@@ -9,7 +9,7 @@ import {
 } from "../application/test-contracts";
 
 type ArtifactName = keyof typeof artifacts;
-const rpc = new JsonRpcProvider("https://sepolia.arbitrum.io/rpc", undefined, {
+const rpc = new JsonRpcProvider("https://sepolia-rollup.arbitrum.io/rpc", undefined, {
   batchMaxCount: 20, cacheTimeout: -1,
 });
 const usdcAddress = "0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d";

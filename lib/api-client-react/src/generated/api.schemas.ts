@@ -5,6 +5,73 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export type DemoTestnetStatus = typeof DemoTestnetStatus[keyof typeof DemoTestnetStatus];
+
+
+export const DemoTestnetStatus = {
+  preparing: 'preparing',
+  validating: 'validating',
+  live: 'live',
+  unavailable: 'unavailable',
+} as const;
+
+export type DemoTestnetChainId = typeof DemoTestnetChainId[keyof typeof DemoTestnetChainId];
+
+
+export const DemoTestnetChainId = {
+  NUMBER_421614: 421614,
+} as const;
+
+export type DemoTestnetNetwork = typeof DemoTestnetNetwork[keyof typeof DemoTestnetNetwork];
+
+
+export const DemoTestnetNetwork = {
+  Arbitrum_Sepolia: 'Arbitrum Sepolia',
+} as const;
+
+export type DemoTestnetFinancialOperations = typeof DemoTestnetFinancialOperations[keyof typeof DemoTestnetFinancialOperations];
+
+
+export const DemoTestnetFinancialOperations = {
+  simulated: 'simulated',
+} as const;
+
+export type DemoTestnetContractPurpose = typeof DemoTestnetContractPurpose[keyof typeof DemoTestnetContractPurpose];
+
+
+export const DemoTestnetContractPurpose = {
+  demo_activity_registry: 'demo_activity_registry',
+} as const;
+
+export interface DemoTestnet {
+  status: DemoTestnetStatus;
+  chainId: DemoTestnetChainId;
+  network: DemoTestnetNetwork;
+  /** @nullable */
+  contractAddress: string | null;
+  /** @nullable */
+  operatorAddress: string | null;
+  /** @nullable */
+  explorerUrl: string | null;
+  /** @nullable */
+  latestBlock: number | null;
+  /** @nullable */
+  lastCheckpointAt: string | null;
+  /** @nullable */
+  checkpointCount: number | null;
+  financialOperations: DemoTestnetFinancialOperations;
+  contractPurpose: DemoTestnetContractPurpose;
+}
+
+export interface DemoTestnetActivity {
+  /** @minimum 0 */
+  sessions: number;
+  /** @minimum 0 */
+  movements: number;
+  /** @nullable */
+  updatedAt: string | null;
+}
+
 export interface MarketPricePoint {
   /** Candle opening time in epoch milliseconds */
   time: number;
@@ -2355,6 +2422,11 @@ export interface DemoDashboard {
 export interface HealthStatus {
   status: string;
 }
+
+/**
+ * Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.
+ */
+export type DemoTabSessionParameter = string;
 
 export type GetAgentCenterParams = {
 agentId?: string;

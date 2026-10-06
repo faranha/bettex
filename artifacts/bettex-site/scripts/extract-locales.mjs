@@ -19,7 +19,8 @@ function scan(file) {
   if (file.includes('/components/demo/') || file.includes('/components/account/') ||
     file.includes('/components/alpha-trading/') || file.includes('/components/simulation/') ||
     file.includes('/components/agent-operations/') || file.includes('/components/live-markets/') ||
-    file.endsWith('/pages/demo.tsx') || file.endsWith('/pages/auth.tsx') || /\.test\.tsx?$/.test(file)) return;
+    file.endsWith('/pages/demo.tsx') || file.endsWith('/pages/auth.tsx') ||
+    file.endsWith('/lib/demo-tab-session.ts') || /\.test\.tsx?$/.test(file)) return;
   if (file.endsWith('.json') && !file.includes('/locales/')) {
     function visit(value) { if (typeof value === 'string') add(value); else if (value && typeof value === 'object') Object.values(value).forEach(visit); }
     visit(JSON.parse(fs.readFileSync(file, 'utf8'))); return;
@@ -28,6 +29,15 @@ function scan(file) {
   const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   function visit(node) {
     if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) return;
+    // Explicit PT/EN/ES labels already have their translations; media queries
+    // are browser configuration, not prose passed to the JSX translator.
+    if (ts.isCallExpression(node) && (
+      (ts.isIdentifier(node.expression) && node.expression.text === 'x' &&
+        node.arguments.length === 3 && node.arguments.every(arg => ts.isStringLiteral(arg) || ts.isNoSubstitutionTemplateLiteral(arg))) ||
+      (ts.isPropertyAccessExpression(node.expression) && ['matchMedia', 'getElementById'].includes(node.expression.name.text))
+    )) return;
+    if (ts.isJsxAttribute(node) && node.name.getText(source) === 'labels' &&
+      node.parent.parent.tagName?.getText(source) === 'MobileDataCarousel') return;
     if (ts.isPropertyAssignment(node) && node.name.getText(source).replace(/^['"]|['"]$/g, '') === 'id' && ts.isStringLiteral(node.initializer)) return;
     if (ts.isJsxElement(node) && ['style', 'script'].includes(node.openingElement.tagName.getText(source))) return;
     if (ts.isJsxAttribute(node) && ['className','id','key','href','src','d','viewBox','transform','style','align','allow','referrerPolicy','loading','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath'].includes(node.name.getText(source))) return;

@@ -1,6 +1,7 @@
 import { Router, type IRouter } from "express";
 import healthRouter from "./health";
 import demoRouter from "./demo";
+import demoTestnetRouter from "./demo-testnet";
 import testAccountsRouter from "./test-accounts";
 import testContractRouter from "./test-contract";
 import nativeJourneyRouter from "./native-journey";
@@ -17,6 +18,7 @@ import marketLiveRouter from "./market-live";
 const router: IRouter = Router();
 
 router.use(healthRouter);
+router.use(demoTestnetRouter);
 router.use(demoRouter);
 router.use(testAccountsRouter);
 router.use(testContractRouter);
