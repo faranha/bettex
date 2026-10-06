@@ -19,6 +19,9 @@ try {
   for (const [route, page] of Object.entries(routes)) {
     const body = render(`${base}${route}`);
     if (!body.includes('<h1')) throw new Error(`Prerender failed: no H1 for ${route}`);
+    if (/^\/(?:(?:en|es)\/?)?$/.test(route) && body.includes('data-testid="section-live-markets"')) {
+      throw new Error(`The operational live-market dashboard belongs in the app, not the homepage: ${route}`);
+    }
     if (/^\/(?:(?:en|es)\/)?app(?:\/|$)/.test(route) &&
       (!body.includes('demo-root') || body.includes('site-footer') || !body.includes('data-testid="app-header"') || body.includes('data-testid="text-greeting-name"') || body.includes('data-testid="reset-demo-session"'))) {
       throw new Error(`Demo SSR must render only a loading shell, never a visitor's account or session controls: ${route}`);
