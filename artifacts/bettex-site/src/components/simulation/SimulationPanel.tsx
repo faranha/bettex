@@ -133,7 +133,7 @@ export function SimulationPanel() {
 
   const msg = (e: unknown) => {
     const code = String((e as { data?: { code?: string } })?.data?.code ?? (e as Error)?.message ?? '');
-    const M: [string, string][] = [['session_required', x('Sessão de teste necessária. Entre em Minha conta.', 'Test session required. Sign in under My account.', 'Sesión de prueba necesaria. Entra en Mi cuenta.')],
+    const M: [string, string][] = [['session_required', x('Sessão necessária. Entre em Minha conta.', 'Session required. Sign in under My account.', 'Sesión necesaria. Entra en Mi cuenta.')],
       ['simulation_revision_changed', x('A execução mudou em outra ação. Dados atualizados; tente de novo.', 'The run changed elsewhere. Data refreshed; try again.', 'La ejecución cambió en otro lugar. Datos actualizados; intenta de nuevo.')],
       ['simulation_paused', x('Execução pausada. Retome para continuar.', 'Run is paused. Resume to continue.', 'Ejecución en pausa. Reanuda para continuar.')],
       ['invalid_amount', x('Valor inválido.', 'Invalid amount.', 'Monto inválido.')],
@@ -174,8 +174,8 @@ export function SimulationPanel() {
 
   if (dashboard.isLoading || (!demo && session.isLoading)) return <div className="mx-auto max-w-5xl grid gap-3 p-4" aria-busy="true">{[0, 1, 2].map(i => <div key={i} className="h-24 animate-pulse rounded-2xl bg-[#F0E9DA]" />)}</div>;
   if (dashboard.isError || (!demo && (session.isError || !snap?.enabled)) || !accountId) return <div className="mx-auto grid max-w-5xl gap-4 px-3 pt-5 sm:px-5">{header}
-    <div role="alert" className={card} data-testid="status-session-required"><p className="font-bold">{session.isError ? x('Não foi possível carregar a sessão.', 'Could not load the session.', 'No se pudo cargar la sesión.') : x('Sessão de teste necessária', 'Test session required', 'Sesión de prueba necesaria')}</p>
-      <p className="mt-1 text-sm text-[#5B6B85]">{x('A simulação pertence à sua conta de teste.', 'The simulation belongs to your test account.', 'La simulación pertenece a tu cuenta de prueba.')}</p>
+    <div role="alert" className={card} data-testid="status-session-required"><p className="font-bold">{session.isError ? x('Não foi possível carregar a sessão.', 'Could not load the session.', 'No se pudo cargar la sesión.') : x('Sessão necessária', 'Session required', 'Sesión necesaria')}</p>
+      <p className="mt-1 text-sm text-[#5B6B85]">{x('A simulação pertence à sua conta.', 'The simulation belongs to your account.', 'La simulación pertenece a tu cuenta.')}</p>
       <div className="mt-3 flex gap-2"><Link href={demoPath('account', loc)} data-testid="link-account" className={btn}>{x('Minha conta', 'My account', 'Mi cuenta')}</Link>{session.isError && <button type="button" className={btn2} onClick={() => void session.refetch()}>{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button>}</div></div></div>;
 
   const l = (run?.paper?.ledger ?? {}) as Rec;

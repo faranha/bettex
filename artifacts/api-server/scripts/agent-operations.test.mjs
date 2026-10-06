@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {build} from "esbuild";
 const bundle=await build({entryPoints:["src/modules/agents/application/operations.ts"],bundle:true,write:false,platform:"node",format:"esm"});
 const {assessAgent,assessAllAgents}=await import(`data:text/javascript;base64,${Buffer.from(bundle.outputFiles[0].text).toString("base64")}`);
-const {agentDefinitions,workerActivity}=await import("../src/modules/agents/domain/operations.ts");
+const {agentDefinitions,alphaWorkerDefinitions,workerActivity}=await import("../src/modules/agents/domain/operations.ts");
 const now=Date.parse("2026-10-06T12:00:00Z");
 function context(){
   return {now,specialists:Object.fromEntries(["btc","eth","sol"].map(a=>[a,{
@@ -16,6 +16,20 @@ function context(){
   paper:{status:"reconciled",availableUnits:"100000000",reservedUnits:"1000000",obligationsUnits:"0",orders:1,pendingOrders:1,positions:0},
   opportunities:{total:3,qualified:0,selected:0},sports:[]};
 }
+test("ALFA schedules only the prediction family, independent BETTEX and essential controls",()=>{
+  const ids=alphaWorkerDefinitions.map(d=>d.id);
+  assert.equal(ids.length,10);
+  for(const id of ["sports","crypto","bonus"])assert.ok(!ids.includes(id));
+  assert.equal(alphaWorkerDefinitions.find(d=>d.id==="bettex").parentId,null);
+  for(const id of ["treasury","governance","risk","execution","reconciliation"])
+    assert.equal(alphaWorkerDefinitions.find(d=>d.id===id).parentId,null);
+  for(const id of ["btc","eth","sol"])
+    assert.equal(alphaWorkerDefinitions.find(d=>d.id===id).parentId,"predictions");
+  for(const d of alphaWorkerDefinitions)for(const id of d.dependencies)assert.ok(ids.includes(id));
+  const reports=assessAllAgents(context(),alphaWorkerDefinitions);
+  assert.deepEqual(Object.keys(reports).sort(),[...ids].sort());
+  assert.equal(reports.bettex.facts.find(f=>f.code==="upstream_assessments").value,"5");
+});
 test("all 13 workers are distinct, linked to known dependencies, and cannot execute funds",()=>{
   assert.equal(agentDefinitions.length,13);
   const ids=new Set(agentDefinitions.map(a=>a.id));

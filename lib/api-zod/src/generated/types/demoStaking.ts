@@ -9,6 +9,22 @@ import type { DemoStakingStatus } from './demoStakingStatus';
 
 export interface DemoStaking {
   eligibleTokens: number;
+  /**
+     * Total participating BETTEX in the simulated pool
+     * @minimum 0
+     */
+  totalEligibleTokens?: number;
+  /**
+     * Current eligible-token share
+     * @minimum 0
+     * @maximum 100
+     */
+  tokenSharePercent?: number;
+  /**
+     * Provisional 25 percent share of positive current-cycle profit; not a guaranteed or settled payout.
+     * @minimum 0
+     */
+  poolAllocationUsdc?: number;
   /** @nullable */
   since: string | null;
   weightTokenSeconds: number;

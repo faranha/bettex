@@ -24,3 +24,14 @@ of the connector token's administration permissions or native Git credentials.
 **How to apply:** Verify effective transport permissions with a credential-safe
 Git dry run. Do not reauthorize a healthy API connector merely to repair missing
 native Git credentials; use Replit's Git-provider connection flow.
+
+Official reference corpora may use `build` for authoring documentation and
+`BUILD` for source build definitions. Generic generated-file exclusions must
+not prevent publishing the creator-requested reference corpus.
+
+**Why:** The synchronization guard classified retained Starknet documentation
+as compiled output and blocked the complete repository even without secrets.
+
+**How to apply:** Review narrowly scoped reference-path exceptions rather than
+disabling the guard or deleting the corpus. Keep content/history secret scans,
+size limits, and nested dependency/runtime exclusions active.

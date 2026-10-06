@@ -8,13 +8,15 @@ import { MobileAreaNav, APP_AREAS } from '@/components/demo/MobileAreaNav';
 import { useX } from '@/components/demo/ui';
 import { demoLabel, demoPath, demoView, type DemoView } from '@/components/demo/demo-navigation';
 import { localizedUrl } from '@/lib/i18n';
+import { AppExchangeRates } from './AppExchangeRates';
 import './AppHeader.css';
 
 export function AppHeader({ current, className = '' }: { current?: DemoView; className?: string }) {
   const { x, loc } = useX();
   const [path] = useLocation();
   const ref = useRef<HTMLElement>(null);
-  const view: DemoView = current ?? demoView(path) ?? 'home';
+  const detected: DemoView = current ?? demoView(path) ?? 'home';
+  const view: DemoView = detected === 'wallet' ? 'account' : detected;
 
   useEffect(() => {
     const el = ref.current;
@@ -33,7 +35,7 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
       <Link href={demoPath('home', loc)} aria-label={x('BETTEX, meu painel', 'BETTEX, my dashboard', 'BETTEX, mi panel')} data-testid="link-app-brand" className="flex min-w-0 shrink-0 items-center gap-2 rounded-lg">
         <BettexMark className="h-7 w-7" />
         <span className="text-base font-extrabold tracking-wide text-[#1B2A41]">BETTEX</span>
-        <span className="rounded-full border border-[#0E7C6B] bg-[#E9EEE5] px-2 py-0.5 text-[10px] font-extrabold tracking-widest text-[#0A6657]">ALFA</span>
+        <span className="rounded-full border border-[#0E7C6B] bg-[#E9EEE5] px-2 py-0.5 text-[10px] font-extrabold tracking-widest text-[#0A6657]">{x('ALFA', 'ALPHA', 'ALFA')}</span>
       </Link>
       <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
         <a href={siteHref} data-testid="link-back-to-website" className="inline-flex min-h-11 items-center gap-1 rounded-full px-2 text-xs font-semibold text-[#5B6B85] hover:text-[#0A6657]">
@@ -49,9 +51,11 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
         {APP_AREAS.map(k => <Link key={k} href={demoPath(k, loc)} data-testid={`nav-${k}`} aria-current={view === k ? 'page' : undefined}
           onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
           className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-lg px-3 text-[13px] font-bold ${view === k ? 'bg-[#E9EEE5] text-[#0A6657] shadow-[inset_0_-2px_0_#0E7C6B]' : 'text-[#44546E] hover:bg-[#F1EBDD] hover:text-[#1B2A41]'}`}>{demoLabel(k, loc)}</Link>)}
+        <AppExchangeRates className="ml-auto py-1" />
       </nav>
     </div>
     <div className="border-t border-[#EFE8D8] py-1.5 sm:hidden"><MobileAreaNav current={view} /></div>
+    <div className="border-t border-[#EFE8D8] px-3 py-1.5 sm:hidden"><AppExchangeRates /></div>
   </header>;
 }
 

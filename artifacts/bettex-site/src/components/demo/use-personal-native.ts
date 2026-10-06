@@ -1,5 +1,5 @@
 import { useGetTestAccountSession, useGetNativeTestJourney, getGetNativeTestJourneyQueryKey, type DemoProfile, type NativeTestJourney, type TestAccountSnapshot } from '@workspace/api-client-react';
-import { journeyMatchesSnapshot, snapshotMatchesProfile } from './personal-native';
+import { canReadNativeJourney, journeyMatchesSnapshot, snapshotMatchesProfile } from './personal-native';
 
 export type NativeState = 'loading' | 'session-error' | 'unavailable' | 'guest' | 'ready';
 /** Single source for the personal wallet/native data, sharing cache keys with AccountPanel/NativeJourney. */
@@ -10,7 +10,7 @@ export function usePersonalNative(profile: DemoProfile) {
   const snap = snapshotMatchesProfile(rawSnapshot, profile) ? rawSnapshot : undefined;
   const ownerId = snap?.account?.id;
   const localAssociated = !!snap && snap.wallets.length === 2 && snap.wallets.every(w => w.chainIds.includes(31337));
-  const enabled = !!ownerId && localAssociated;
+  const enabled = canReadNativeJourney(snap);
   const journey = useGetNativeTestJourney({ query: { queryKey: [...getGetNativeTestJourneyQueryKey(), ownerId], enabled, refetchInterval: 30000, refetchIntervalInBackground: false, retry: false }, request: { credentials: 'same-origin' } });
   const raw = enabled ? (journey.data as NativeTestJourney | undefined) : undefined;
   const j = journeyMatchesSnapshot(raw, snap) ? raw : undefined;

@@ -2,7 +2,7 @@
 import {randomUUID} from "node:crypto";
 import {db} from "@workspace/db";
 import {sql} from "drizzle-orm";
-import {agentDefinitions,type AgentEvidence,type OperationsContext} from "../modules/agents/domain/operations";
+import {alphaWorkerDefinitions,type OperationsContext} from "../modules/agents/domain/operations";
 import {assessAllAgents} from "../modules/agents/application/operations";
 import {ensureOperationsStore,saveAgentRun} from "../modules/agents/infrastructure/operations-store";
 import {collectAlloraObservation} from "../modules/agents/infrastructure/allora-observations";
@@ -14,31 +14,11 @@ import {ensurePaperRuntime,readPaperState} from "./paper-runtime";
 import {ensureAlphaStore} from "../modules/agents/infrastructure/alpha-store";
 import type {OpportunityRecord} from "../modules/agents";
 type Client=Pick<typeof db,"execute">;
-/** Discovery only: sports matches are not executable quotes, odds, calibrated probabilities or orders. */
-async function sportsEvidence():Promise<AgentEvidence[]>{
-  const url="https://gamma-api.polymarket.com/public-search?q=sports&events_status=active&limit_per_type=5";
-  const response=await fetch(url,{signal:AbortSignal.timeout(8000),redirect:"error"});
-  if(!response.ok)throw new Error("sports_source_unavailable");
-  const text=await response.text();
-  if(text.length>1_000_000)throw new Error("sports_source_incompatible");
-  const data=JSON.parse(text) as {events?:{title?:string;slug?:string;updatedAt?:string;endDate?:string;
-    tags?:{slug?:string}[];markets?:{active?:boolean;closed?:boolean}[]}[]};
-  if(!Array.isArray(data.events))throw new Error("sports_source_incompatible");
-  const iso=(v?:string)=>v&&Number.isFinite(Date.parse(v))?new Date(v).toISOString():"";
-  return data.events.filter(e=>typeof e.title==="string"&&typeof e.slug==="string"&&
-    (e.tags?.some(t=>/\b(sports|nba|nfl|soccer|tennis|cricket|nhl|mlb)\b/i.test(t.slug??""))||
-      /\b(sports|nba|nfl|soccer|tennis|cricket|nhl|mlb)\b/i.test(e.title))&&
-    e.markets?.some(m=>m.active===true&&m.closed===false)).slice(0,5).map(e=>({
-      source:"polymarket:sports",url:`https://polymarket.com/event/${encodeURIComponent(e.slug!)}`,
-      producedAt:iso(e.updatedAt),targetAt:iso(e.endDate),blockHeight:"",value:e.title!.slice(0,250),unit:"market",
-    }));
-}
 async function context(client:Client):Promise<OperationsContext>{
   const c:OperationsContext={now:Date.now(),specialists:{}};
   const forecasts=Promise.all(["BTC","ETH","SOL"].map(async asset=>{
     try{const data=await collectAlloraObservation(asset as "BTC"|"ETH"|"SOL");return {asset,data};}catch{return {asset};}
   }));
-  const sports=sportsEvidence().then(e=>{c.sports=e;},()=>{});
   await ensureAlphaStore();
   const sources=(await client.execute(sql`SELECT id,status FROM agents_alpha_source`)).rows;
   for(const asset of ["btc","eth","sol"]){
@@ -84,7 +64,6 @@ async function context(client:Client):Promise<OperationsContext>{
       positions:state.positions.filter(p=>p.state!=="closed"&&p.state!=="settled").length};
   }catch{/* An unavailable financial source must be a failed service result, not zero cash. */}
   for(const f of await forecasts)if(f.data)c.specialists[f.asset.toLowerCase()].forecast=f.data.observation;
-  await sports;
   c.now=Date.now();
   return c;
 }
@@ -96,7 +75,7 @@ export async function runAgentOperationsCycle():Promise<void>{
     if(lock?.acquired!==true)return;
     const started=Date.now();
     const cycleId=randomUUID();
-    const runIds=new Map(agentDefinitions.map(d=>[d.id,randomUUID()]));
+    const runIds=new Map(alphaWorkerDefinitions.map(d=>[d.id,randomUUID()]));
     let snapshot:OperationsContext|undefined;
     await client.execute(sql`SAVEPOINT source_snapshot`);
     try{
@@ -108,8 +87,8 @@ export async function runAgentOperationsCycle():Promise<void>{
       snapshot=undefined;
       // A failed SQL source must not leave the transaction aborted and unable to record service failures.
     }
-    const assessments=snapshot?assessAllAgents(snapshot):undefined;
-    for(const definition of agentDefinitions){
+    const assessments=snapshot?assessAllAgents(snapshot,alphaWorkerDefinitions):undefined;
+    for(const definition of alphaWorkerDefinitions){
       const completed=Date.now();
       const assessment=assessments?assessments[definition.id]:
         {status:"failed" as const,decision:"block" as const,findings:["cycle_failed"],facts:[],evidence:[]};

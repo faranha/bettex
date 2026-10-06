@@ -2066,6 +2066,39 @@ export interface DemoProfileInput {
      * @maxLength 60
      */
   name: string;
+  /** @maxLength 254 */
+  email?: string;
+  /** @maxLength 32 */
+  nickname?: string;
+  /**
+     * @maxLength 100
+     * @nullable
+     * @pattern ^/objects/uploads/[a-f0-9-]{36}$
+     */
+  avatarPath?: string | null;
+}
+
+export type ProfileAvatarUploadInputContentType = typeof ProfileAvatarUploadInputContentType[keyof typeof ProfileAvatarUploadInputContentType];
+
+
+export const ProfileAvatarUploadInputContentType = {
+  'image/png': 'image/png',
+  'image/jpeg': 'image/jpeg',
+  'image/webp': 'image/webp',
+} as const;
+
+export interface ProfileAvatarUploadInput {
+  /**
+     * @minimum 1
+     * @maximum 5242880
+     */
+  size: number;
+  contentType: ProfileAvatarUploadInputContentType;
+}
+
+export interface ProfileAvatarUpload {
+  uploadURL: string;
+  objectPath: string;
 }
 
 export type DemoMovementInputKind = typeof DemoMovementInputKind[keyof typeof DemoMovementInputKind];
@@ -2114,6 +2147,9 @@ export interface DemoProfile {
   provider?: DemoProfileProvider;
   canViewTreasuryHistory?: boolean;
   name: string;
+  nickname?: string;
+  /** @nullable */
+  avatarPath?: string | null;
   email: string;
   memberSince: string;
   accountId: string;
@@ -2138,6 +2174,22 @@ export const DemoStakingStatus = {
 
 export interface DemoStaking {
   eligibleTokens: number;
+  /**
+     * Total participating BETTEX in the simulated pool
+     * @minimum 0
+     */
+  totalEligibleTokens?: number;
+  /**
+     * Current eligible-token share
+     * @minimum 0
+     * @maximum 100
+     */
+  tokenSharePercent?: number;
+  /**
+     * Provisional 25 percent share of positive current-cycle profit; not a guaranteed or settled payout.
+     * @minimum 0
+     */
+  poolAllocationUsdc?: number;
   /** @nullable */
   since: string | null;
   weightTokenSeconds: number;
@@ -2380,12 +2432,73 @@ export interface DemoMovement {
   sourceAmount?: number;
 }
 
+export interface DemoTreasuryFeeBreakdown {
+  onramp: number;
+  swap: number;
+  withdraw: number;
+  send: number;
+}
+
+export type DemoTreasuryRoundCoverage = typeof DemoTreasuryRoundCoverage[keyof typeof DemoTreasuryRoundCoverage];
+
+
+export const DemoTreasuryRoundCoverage = {
+  complete: 'complete',
+  partial: 'partial',
+} as const;
+
+export type DemoTreasuryRoundFeesOwner = typeof DemoTreasuryRoundFeesOwner[keyof typeof DemoTreasuryRoundFeesOwner];
+
+
+export const DemoTreasuryRoundFeesOwner = {
+  operating_company: 'operating_company',
+} as const;
+
+export interface DemoTreasuryRound {
+  id: string;
+  startedAt: string;
+  endsAt: string;
+  assetsUsdc: number;
+  reserveUsdc: number;
+  workingUsdc: number;
+  committedUsdc: number;
+  availableUsdc: number;
+  /** Settled net investment result of this round */
+  realizedNetUsdc: number;
+  /** Indicative gross result of unsettled positions; not distributable. */
+  unrealizedUsdc: number;
+  /** Sum of proposal expected net results for currently committed positions */
+  expectedCommittedNetUsdc: number;
+  /**
+     * Approved fixed round target; null when not configured.
+     * @nullable
+     */
+  targetNetUsdc: number | null;
+  /**
+     * Recorded operator service fees from confirmed simulated wallet operations
+     * @nullable
+     */
+  feesCollectedUsdc: number | null;
+  /** @nullable */
+  feeTrackingSince: string | null;
+  feeBreakdown: DemoTreasuryFeeBreakdown;
+  /** @nullable */
+  executionCostsUsdc: number | null;
+  /** @nullable */
+  closedOperations: number | null;
+  /** @nullable */
+  openingAssetsUsdc: number | null;
+  coverage: DemoTreasuryRoundCoverage;
+  feesOwner: DemoTreasuryRoundFeesOwner;
+}
+
 export interface DemoTreasury {
   assetsUsdc: number;
   reserveUsdc: number;
   committedUsdc: number;
   realizedUsdc: number;
   cycleResultUsdc: number;
+  currentRound?: DemoTreasuryRound;
 }
 
 export type DemoRoundStatus = typeof DemoRoundStatus[keyof typeof DemoRoundStatus];
@@ -2396,6 +2509,40 @@ export const DemoRoundStatus = {
   retained: 'retained',
 } as const;
 
+export type DemoRoundSource = typeof DemoRoundSource[keyof typeof DemoRoundSource];
+
+
+export const DemoRoundSource = {
+  seeded_demo: 'seeded_demo',
+  calculated_simulation: 'calculated_simulation',
+} as const;
+
+export interface DemoRoundParticipationSnapshot {
+  /**
+     * Own eligible BETTEX balance at round close
+     * @minimum 0
+     */
+  ownEligibleTokens: number;
+  /**
+     * Pool eligible BETTEX balance at round close
+     * @minimum 0
+     */
+  totalEligibleTokens: number;
+  /** @minimum 0 */
+  ownTokenSeconds: number;
+  /** @minimum 0 */
+  totalTokenSeconds: number;
+  /**
+     * @minimum 0
+     * @maximum 100
+     */
+  payoutSharePercent: number;
+  /** @minimum 0 */
+  receivedUsdc: number;
+  startedAt: string;
+  endedAt: string;
+}
+
 export interface DemoRound {
   id: string;
   endedAt: string;
@@ -2404,6 +2551,9 @@ export interface DemoRound {
   stakingUsdc: number;
   treasuryUsdc: number;
   buybackUsdc: number;
+  source?: DemoRoundSource;
+  treasurySnapshot?: DemoTreasuryRound;
+  participationSnapshot?: DemoRoundParticipationSnapshot;
 }
 
 export interface DemoDashboard {

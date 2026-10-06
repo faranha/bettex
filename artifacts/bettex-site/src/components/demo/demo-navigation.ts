@@ -1,11 +1,13 @@
-export type DemoView = 'home' | 'central' | 'wallet' | 'treasury' | 'account' | 'simulation';
-export type DemoAccountTab = 'profile' | 'wallets' | 'operations' | 'security' | 'history';
+export type DemoView = 'home' | 'central' | 'wallet' | 'treasury' | 'account';
+export type DemoAccountTab = 'profile' | 'wallets' | 'history';
 export function demoAccountTab(path: string, search = ''): DemoAccountTab {
-  const tabs: DemoAccountTab[] = ['profile', 'wallets', 'operations', 'security', 'history'];
+  const tabs: DemoAccountTab[] = ['profile', 'wallets', 'history'];
   const detail = path.match(/\/(?:app|demo)\/(?:minha-conta|account|mi-cuenta)\/([^/]+)/)?.[1];
   const query = new URLSearchParams(search).get('tab');
-  return tabs.includes(detail as DemoAccountTab) ? detail as DemoAccountTab
-    : tabs.includes(query as DemoAccountTab) ? query as DemoAccountTab : 'profile';
+  const requested = detail ?? query;
+  if (requested === 'operations') return 'wallets';
+  if (requested === 'security') return 'profile';
+  return tabs.includes(requested as DemoAccountTab) ? requested as DemoAccountTab : 'profile';
 }
 type Language = 'pt' | 'en' | 'es';
 const index = { pt: 0, en: 1, es: 2 };
@@ -14,7 +16,6 @@ const labels = {
   central: ['Central da IA', 'AI Center', 'Central de IA'],
   wallet: ['Saldo e histórico', 'Balance and history', 'Saldo e historial'],
   treasury: ['Tesouraria', 'Treasury', 'Tesorería'],
-  simulation: ['Simulação', 'Simulation', 'Simulación'],
   account: ['Minha conta', 'My account', 'Mi cuenta'],
 };
 export function demoView(path: string): DemoView | undefined {
@@ -23,15 +24,13 @@ export function demoView(path: string): DemoView | undefined {
   if (normalized === '/demo/central') return 'central';
   if (['/demo/saldo', '/demo/balance'].includes(normalized)) return 'wallet';
   if (['/demo/tesouraria', '/demo/treasury', '/demo/tesoreria'].includes(normalized)) return 'treasury';
-  if (['/demo/simulacao', '/demo/simulation', '/demo/simulacion'].includes(normalized)) return 'simulation';
   if (/^\/demo\/(?:minha-conta|account|mi-cuenta)(?:\/.*)?$/.test(normalized)) return 'account';
   return undefined;
 }
-export function demoPath(view: DemoView, language: Language) {
+export function demoPath(view: DemoView, language: Language): string {
   if (view === 'home') return '/app';
   if (view === 'central') return '/app/central';
-  if (view === 'wallet') return ['/app/saldo', '/app/balance', '/app/saldo'][index[language]];
-  if (view === 'simulation') return ['/app/simulacao', '/app/simulation', '/app/simulacion'][index[language]];
+  if (view === 'wallet') return `${demoPath('account', language)}/history`;
   if (view === 'account') return ['/app/minha-conta', '/app/account', '/app/mi-cuenta'][index[language]];
   return ['/app/tesouraria', '/app/treasury', '/app/tesoreria'][index[language]];
 }
@@ -40,4 +39,8 @@ export function demoLabel(view: DemoView, language: Language) {
 }
 export function demoPageTitle(view: DemoView, language: Language) {
   return `${demoLabel(view, language)} | BETTEX`;
+}
+/** Old bookmarks redirect to the dashboard; there is no Simulation product area. */
+export function isRemovedSimulationPath(path: string) {
+  return /^\/(?:(?:en|es)\/)?(?:app|demo)\/(?:simulacao|simulation|simulacion)\/?$/.test(path);
 }

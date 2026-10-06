@@ -25,11 +25,9 @@ export function DemoTabControls() {
       window.location.reload();
     } catch { setFailed(true); setResetting(false); }
   };
-  return <div className="demo-root border-b border-[#E4DCCB] bg-[#FBF8F0]">
-    <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-2 px-3 py-2">
-      <span className="text-xs text-[#5B6B85]" data-testid="demo-tab-scope">{x('Demo independente nesta aba', 'Independent demo in this tab', 'Demo independiente en esta pestaña')}</span>
-      <button type="button" data-testid="reset-demo-session" disabled={resetting || mutating > 0} onClick={() => void reset()} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#C7D0DD] px-3 text-sm font-bold text-[#13204F] disabled:opacity-50"><RotateCcw size={16} aria-hidden="true" />{resetting ? x('Reiniciando…', 'Restarting…', 'Reiniciando…') : x('Reiniciar demo', 'Restart demo', 'Reiniciar demo')}</button>
-      {failed && <p role="alert" className="w-full text-sm text-[#8E2A1D]">{x('Não foi possível reiniciar. Seu teste atual foi mantido.', 'Could not restart. Your current test was preserved.', 'No se pudo reiniciar. Se conservó la prueba actual.')}</p>}
-    </div>
+  return <div className="flex flex-col items-end gap-2 text-right">
+      <span className="text-[11px] text-[#D6DEEB] sm:text-xs" data-testid="demo-tab-scope">{x('Demo independente nesta aba', 'Independent demo in this tab', 'Demo independiente en esta pestaña')}</span>
+      <button type="button" data-testid="reset-demo-session" disabled={resetting || mutating > 0} onClick={() => void reset()} className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg border border-white/25 px-2 text-xs font-bold text-[#F5F1E8] transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#83ECC2] disabled:opacity-50 sm:gap-2 sm:px-3 sm:text-sm"><RotateCcw size={16} className="shrink-0" aria-hidden="true" />{resetting ? x('Reiniciando…', 'Restarting…', 'Reiniciando…') : x('Reiniciar demo', 'Restart demo', 'Reiniciar demo')}</button>
+      {failed && <p role="alert" className="text-xs text-[#FFD38B]">{x('Não foi possível reiniciar. Seu teste atual foi mantido.', 'Could not restart. Your current test was preserved.', 'No se pudo reiniciar. Se conservó la prueba actual.')}</p>}
   </div>;
 }

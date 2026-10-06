@@ -16,6 +16,13 @@ export function snapshotMatchesProfile(snap: TestAccountSnapshot | undefined, pr
     && snap?.enabled === true && snap.account?.id === profile.accountId;
 }
 
+/** Public-address reads do not grant permission to operate on the local chain. */
+export function canReadNativeJourney(snap: TestAccountSnapshot | undefined): boolean {
+  return snap?.enabled === true && !!snap.account && snap.wallets.length === 2
+    && ['deposits', 'bettex'].every(purpose => snap.wallets.some(wallet =>
+      wallet.purpose === purpose && /^0x[0-9a-f]{40}$/i.test(wallet.address)));
+}
+
 /** True only when the journey wallets are exactly the current snapshot owner's public wallets. */
 export function journeyMatchesSnapshot(j: NativeTestJourney | undefined, snap: TestAccountSnapshot | undefined): boolean {
   if (!j || j.chainId !== 31337 || j.environment !== 'local_evm' || !snap?.account) return false;

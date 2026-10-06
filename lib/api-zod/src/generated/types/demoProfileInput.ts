@@ -12,4 +12,14 @@ export interface DemoProfileInput {
      * @maxLength 60
      */
   name: string;
+  /** @maxLength 254 */
+  email?: string;
+  /** @maxLength 32 */
+  nickname?: string;
+  /**
+     * @maxLength 100
+     * @nullable
+     * @pattern ^/objects/uploads/[a-f0-9-]{36}$
+     */
+  avatarPath?: string | null;
 }

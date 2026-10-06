@@ -20,6 +20,10 @@ function scan(file) {
     file.includes('/components/alpha-trading/') || file.includes('/components/simulation/') ||
     file.includes('/components/agent-operations/') || file.includes('/components/live-markets/') ||
     file.endsWith('/pages/demo.tsx') || file.endsWith('/pages/auth.tsx') ||
+     file.endsWith('/components/history/WalletStatement.tsx') ||
+     file.endsWith('/components/app/AppHeader.tsx') ||
+     (file.includes('/components/history/') && /\/(?:wallet-history-(?:model|export|examples)|use-wallet-history|history-pagination)\.ts$/.test(file)) ||
+     file.endsWith('/lib/round-terminology.ts') ||
     file.endsWith('/lib/demo-tab-session.ts') || /\.test\.tsx?$/.test(file)) return;
   if (file.endsWith('.json') && !file.includes('/locales/')) {
     function visit(value) { if (typeof value === 'string') add(value); else if (value && typeof value === 'object') Object.values(value).forEach(visit); }
@@ -29,11 +33,14 @@ function scan(file) {
   const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   function visit(node) {
     if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) return;
+    // Compiler-only literal types (e.g. financial field names in Pick<T, K>)
+    // are erased and never passed to the page's translation runtime.
+    if (ts.isLiteralTypeNode(node)) return;
     // Explicit PT/EN/ES labels already have their translations; media queries
     // are browser configuration, not prose passed to the JSX translator.
     if (ts.isCallExpression(node) && (
       (ts.isIdentifier(node.expression) && node.expression.text === 'x' &&
-        node.arguments.length === 3 && node.arguments.every(arg => ts.isStringLiteral(arg) || ts.isNoSubstitutionTemplateLiteral(arg))) ||
+         node.arguments.length === 3 && node.arguments.every(arg => ts.isStringLiteral(arg) || ts.isNoSubstitutionTemplateLiteral(arg) || ts.isTemplateExpression(arg))) ||
       (ts.isPropertyAccessExpression(node.expression) && ['matchMedia', 'getElementById'].includes(node.expression.name.text))
     )) return;
     if (ts.isJsxAttribute(node) && node.name.getText(source) === 'labels' &&

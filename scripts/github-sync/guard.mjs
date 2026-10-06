@@ -10,6 +10,17 @@ const rules = [
   ['literal-secret', /\b(?:SESSION_SECRET|CLERK_SECRET_KEY|[A-Z_]*API_KEY|PRIVATE_KEY)\b["']?\s*[:=]\s*["'][A-Za-z0-9_$/+=.-]{20,}["']/g],
 ];
 const forbidden = /(?:^|\/)(?:node_modules|dist|build|coverage|__pycache__|\.cache|\.local|\.config|\.conversation|\.pythonlibs|backups)(?:\/|$)|(?:^|\/)\.env(?:\.|$)|\.(?:log|dump|backup|sqlite3?|pem|key|pyc|tsbuildinfo)$/i;
+export function excludedFile(file) {
+  // Starknet's official documentation calls its authoring section "build".
+  // Remove only that segment from exclusion matching; all other safety rules
+  // and full content/history scans still apply to these retained references.
+  const documentation = /^docs\/reference\/starknet\/(?:upstream|published\/pages)\/build\/.+\.(?:md|mdx)$/i.test(file)
+    || file === 'docs/reference/starknet/upstream/build/mintify_files.zip'
+    || file === 'docs/reference/starknet/upstream/archive/cairozero/hello-cairozero/BUILD';
+  const candidate = documentation
+    ? file.replace('/build/', '/documentation-section/').replace(/\/BUILD$/, '/build-definition') : file;
+  return forbidden.test(candidate) && path.basename(file) !== '.env.example';
+}
 export function git(root, args, options = {}) {
   return execFileSync('git', args, { cwd: root, encoding: 'utf8', timeout: 45_000,
     maxBuffer: 30 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'],
@@ -38,7 +49,7 @@ export function inspectIndex(root) {
     const [header, file] = entry.split('\t');
     const [mode, oid, stage] = header.split(' ');
     if (stage !== '0') throw new Error('Unresolved index conflicts; resolve them before synchronization.');
-    if (forbidden.test(file) && path.basename(file) !== '.env.example') findings.push({ path: file, category: 'excluded-file' });
+    if (excludedFile(file)) findings.push({ path: file, category: 'excluded-file' });
     if (mode === '120000' || mode === '160000') {
       findings.push({ path: file, category: 'symlink-or-nested-repository-review-required' });
       continue;

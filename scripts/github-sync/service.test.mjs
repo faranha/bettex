@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'nod
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { context, synchronize, status, acquire, pause, watch } from './service.mjs';
-import { git, inspect, safeRemote, requireNonPublicRemote } from './guard.mjs';
+import { git, inspect, inspectIndex, safeRemote, requireNonPublicRemote } from './guard.mjs';
 
 function fixture(t, options = {}) {
   const directory = mkdtempSync(path.join(tmpdir(), 'bettex-sync-test-'));
@@ -23,6 +23,31 @@ function fixture(t, options = {}) {
     checkCommand: [process.execPath, '-e', 'process.exit(0)'], ...options }) };
 }
 const sync = (ctx, options = {}) => synchronize(ctx, { stableDelayMs: 20, ...options });
+test('official documentation build sections are source, not generated output; safety checks remain active', t => {
+  const { root } = fixture(t);
+  const docs = 'docs/reference/starknet/upstream/build';
+  mkdirSync(path.join(root, docs), { recursive: true });
+  writeFileSync(path.join(root, docs, 'guide.mdx'), '# Public authoring reference\n');
+  const buildDefinition = 'docs/reference/starknet/upstream/archive/cairozero/hello-cairozero';
+  mkdirSync(path.join(root, buildDefinition), { recursive: true });
+  writeFileSync(path.join(root, buildDefinition, 'BUILD'), '# Public source build definition\n');
+  git(root, ['add', '-A']);
+  assert.deepEqual(inspectIndex(root), []);
+  const fake = 'ghp_' + 'a'.repeat(36);
+  writeFileSync(path.join(root, docs, 'unsafe.md'), fake);
+  mkdirSync(path.join(root, docs, 'node_modules'), { recursive: true });
+  writeFileSync(path.join(root, docs, 'node_modules', 'unsafe.md'), '# Not source\n');
+  mkdirSync(path.join(root, 'artifacts/example/build'), { recursive: true });
+  writeFileSync(path.join(root, 'artifacts/example/build', 'output.md'), '# Generated\n');
+  git(root, ['add', '-A']);
+  // Global Git ignores must not hide intentionally unsafe fixture entries.
+  git(root, ['add', '-f', `${docs}/node_modules/unsafe.md`, 'artifacts/example/build/output.md']);
+  const findings = inspectIndex(root);
+  assert.ok(findings.some(item => item.category === 'provider-token' && item.path.endsWith('/unsafe.md')));
+  assert.ok(findings.some(item => item.category === 'excluded-file' && item.path.includes('/node_modules/')));
+  assert.ok(findings.some(item => item.category === 'excluded-file' && item.path === 'artifacts/example/build/output.md'));
+  assert.ok(!JSON.stringify(findings).includes(fake));
+});
 test('creates, pushes and verifies checkpoints; unchanged files never create empty commits', async t => {
   const { root, bare, ctx } = fixture(t);
   writeFileSync(path.join(root, 'feature.txt'), 'Harmless development feature\n');

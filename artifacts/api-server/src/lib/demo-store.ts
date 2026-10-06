@@ -2,6 +2,7 @@ import { and, eq, isNull } from "drizzle-orm";
 import { db, demoAccounts, demoEngine, demoCommands } from "@workspace/db";
 import type { DemoMovementInput } from "@workspace/api-zod";
 import { logger } from "./logger";
+import { ensureTreasuryTracking } from "./treasury-round";
 import { ensureHistorySchema, appendHistory } from "../modules/audit/infrastructure/history-store";
 import { recordDemoMovements, recordDemoAutomations, recordDemoRound, recordDemoTreasury, recordDemoPools } from "../modules/audit/infrastructure/demo-recorder";
 import { decimalUnits } from "../modules/audit";
@@ -10,7 +11,7 @@ import {
   submitMovement, DemoInputError, accountWeight, DAY, type AccountState, type EngineState, utcStart,
 } from "./demo-state";
 
-type Command = { movement: DemoMovementInput } | { name: string } | { distributionPreview: string };
+type Command = { movement: DemoMovementInput } | { name: string; email?: string; nickname?: string; avatarPath?: string | null } | { distributionPreview: string } | { avatarUpload: NonNullable<AccountState["avatarUpload"]> };
 export type AccountIdentity = {
   browserId: string;
   tabScoped?: boolean;
@@ -32,6 +33,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     await tx.insert(demoEngine).values({ id: "main", state: seedEngine(now) }).onConflictDoNothing();
     const [engineRow] = await tx.select().from(demoEngine).where(eq(demoEngine.id, "main")).for("update");
     const engine = engineRow!.state as EngineState;
+    ensureTreasuryTracking(engine, now);
     // All instances acquire the same DB lock; timers cannot duplicate execution.
     if (engine.dayAt < utcStart(now)) {
       const accounts = await tx.select().from(demoAccounts).for("update");
@@ -64,7 +66,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
         const state = row.state as AccountState;
         if (state.history.some(movement => movement.status === "pending")) {
           const before = structuredClone(state.history);
-          settleMovements(state, now);
+          settleMovements(state, now, engine);
           await recordDemoMovements(tx, row.id, before, state.history, undefined, undefined, now);
           await tx.update(demoAccounts).set({ state, updatedAt: new Date(now) }).where(eq(demoAccounts.id, row.id));
         }
@@ -104,7 +106,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     const initialHistory = structuredClone(account.history);
     // Recover legacy JSON facts once, explicitly non-authoritative simulation.
     await recordDemoMovements(tx, accountId, [], initialHistory);
-    settleMovements(account, now);
+    settleMovements(account, now, engine);
     const operationPrice = String(engine.price);
     if (command && "movement" in command) {
       const input = command.movement;
@@ -133,10 +135,25 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
         await tx.insert(demoCommands).values({ accountId, requestId: input.requestId, input });
       }
     } else if (command && "name" in command) {
+      if (command.email !== undefined && (actor.userId || actor.nativeAccountId)) {
+        throw new DemoInputError("managed_profile_required");
+      }
       account.profile.name = command.name.trim();
+      if (command.email !== undefined) account.profile.email = command.email.trim();
+      if (command.nickname !== undefined) account.profile.nickname = command.nickname.trim();
+      if (command.avatarPath !== undefined) {
+        if (command.avatarPath !== null && command.avatarPath !== account.profile.avatarPath
+          && (account.avatarUpload?.objectPath !== command.avatarPath || account.avatarUpload.expiresAt < now)) {
+          throw new DemoInputError("invalid_avatar");
+        }
+        account.profile.avatarPath = command.avatarPath;
+        delete account.avatarUpload;
+      }
       await appendHistory({ key: `demo:profile:${accountId}:${now}`, subject: `demo:${accountId}`, correlationId: `profile:${now}`,
         category: "activity", kind: "profile_changed", state: "confirmed", actor: "user", environment: "simulation",
-        source: "demo_profile", data: { field: "name" } }, tx);
+        source: "demo_profile", data: { field: command.email !== undefined ? "profile" : "name" } }, tx);
+    } else if (command && "avatarUpload" in command) {
+      account.avatarUpload = command.avatarUpload;
     } else if (command && "distributionPreview" in command) {
       const all = await tx.select({ state: demoAccounts.state }).from(demoAccounts);
       const preview = dashboard(account, engine, now, all.map(a => a.state as AccountState));

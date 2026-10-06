@@ -4,6 +4,8 @@ Real language-model analysis belongs to `agents`, via its inference port and inf
 
 The `simulation` context only contains identified scenario executions and coordinates the public APIs for `agents`, `risk`, `execution`, `ledger` and `reconciliation`. Its logs and clock are isolated from other environments. See [isolated executions decision](decisions/0013-simulation-executions.md).
 
+Anonymous demo-tab identity hashing is a simulation infrastructure adapter. The `public-testnet` context contains the read-only Arbitrum Sepolia activity-registry adapter; it is not a financial execution service and grants no account or trading permissions.
+
 Allora/Polymarket integrations follow the [collaboration rule and the canonical registry of pending items](integration-pendencies.md). Unresolved impediments require participation from the creator; do not authorize substitutions, inferences, or economic choices to circumvent them.
 
 This is the normative map of domains, dependencies, and sources of truth. Consult before implementing. [AGENTS.md](../AGENTS.md) defines the routine; [decisions/](decisions/README.md), the decisions. The [support document](architecture/README.md) describes financial gates and the evolution toward services.

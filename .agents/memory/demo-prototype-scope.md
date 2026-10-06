@@ -1,6 +1,6 @@
 ---
 name: Escopo da demonstração BETTEX
-description: Demonstração com banco básico, emulação automática e área operacional clara, sem dinheiro real.
+description: Saldos e carteiras on-chain como requisito atual; isolamento por aba, fase ALFA e avisos restritos ao cabeçalho.
 ---
 
 O demo anônimo deve ter uma instância independente por aba, sem cadastro. Recarregar e navegar preservam o teste; abrir uma nova aba ou reiniciar o demo cria uma conta limpa sem alterar outras abas nem contas reais.
@@ -9,17 +9,23 @@ O demo anônimo deve ter uma instância independente por aba, sem cadastro. Reca
 
 **How to apply:** Separar os dados pessoais simulados por sessão da aba, inclusive quando o navegador duplica uma aba e copia seu armazenamento. A identidade anônima do demo nunca concede autenticação, permissões financeiras ou acesso ao histórico privado.
 
-O criador substituiu o escopo anterior de protótipo sem banco: a demonstração precisa de um banco de dados básico e scripts que emulem resultados, trocas e relacionamentos entre agentes em tempo real, sem controles de avançar horas.
+O requisito atual do criador é “there is no internal balance, everything is on chain”, com staking possível apenas dentro do app. A exigência atual substitui a apresentação anterior de saldos pessoais como emulação persistida.
 
-**Why:** O usuário pediu explicitamente persistência e emulação automática em vez de avanço manual do cenário.
+**Why:** O criador corrigiu expressamente a explicação de saldos internos ao pedir a exportação das carteiras.
 
-**How to apply:** Persistir dados fictícios e seguir relógio real, sem autenticação financeira, custódia, pagamentos, envio blockchain ou operações reais. Preservar as regras documentadas de staking e ciclos independentes.
+**How to apply:** Não apresentar registros simulados como prova de saldo blockchain nem criar carteiras sem vínculo com os fundos mostrados. Usar a rede e os contratos confirmados para ler e movimentar os saldos pessoais; preservar identidade, regras de staking e ciclos. A fase ALFA não autoriza movimentações de dinheiro real.
 
-A área operacional do app é light mode; o cabeçalho e o restante do site não precisam mudar. A única identificação da demonstração é a faixa “versão demonstrativa” no lugar do submenu, sem avisos repetidos.
+A área operacional do app é light mode; o restante do site não precisa mudar. A identificação ALFA/sem dinheiro real fica apenas na faixa azul do cabeçalho do app. Não repetir avisos, selos de teste ou qualificadores demo/emulado nos cartões, títulos, ações, modais ou páginas.
 
-**Why:** O criador aprovou o tom claro e restringiu a mudança à área operacional.
+**Why:** O criador aprovou o tom claro e restringiu a mudança à área operacional. Reiterou: “dont add test everywhere, we have that already on the header, REMOVE other warnings please, everywhere”.
 
-**How to apply:** Usar overlays para ações pessoais, helpers para termos, nome/dados básicos e saudação; sempre exibir equivalências em reais. Priorizar resumo operacional, status/tempo/valor do staking e contador do próximo ciclo no dashboard, com poucas opções de navegação.
+**How to apply:** Usar rótulos normais de conta e carteira. Manter identificação de rede/origem dos saldos e erros ou confirmações de segurança funcionais, sem transformá-los em avisos genéricos repetidos. A remoção visual não muda simulação, permissões ou salvaguardas. Usar overlays para ações pessoais, helpers para termos, nome/dados básicos e saudação; sempre exibir equivalências em reais.
+
+Avisos específicos de transferência devem aparecer onde a pessoa informa o destino: ativo, rede, formato de endereço e risco de perda permanente por destino incompatível.
+
+**Why:** O criador pediu instruções claras sobre o tipo de carteira, perguntou se era ETH e exigiu aviso de perda ao usar destino incompatível. Isso não revoga a proibição de avisos genéricos ALFA/teste repetidos.
+
+**How to apply:** Distinguir token de gás e rede de referência do produto da rede real de execução. Um endereço 0x válido não comprova suporte à rede ou ao token; nunca afirmar que essa compatibilidade foi validada apenas pelo formato.
 
 Não há suporte dentro do aplicativo; suporte é pela comunidade no Telegram.
 

@@ -2437,8 +2437,28 @@ export const GetDemoDashboardHeader = zod.object({
   "X-Bettex-Demo-Session": zod.string().regex(getDemoDashboardHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
 })
 
+export const getDemoDashboardResponseStakingTotalEligibleTokensMin = 0;
+
+export const getDemoDashboardResponseStakingTokenSharePercentMin = 0;
+export const getDemoDashboardResponseStakingTokenSharePercentMax = 100;
+
+export const getDemoDashboardResponseStakingPoolAllocationUsdcMin = 0;
+
 export const getDemoDashboardResponseStakingSharePercentMin = 0;
 export const getDemoDashboardResponseStakingSharePercentMax = 100;
+
+export const getDemoDashboardResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin = 0;
+
+export const getDemoDashboardResponseRoundsItemParticipationSnapshotTotalEligibleTokensMin = 0;
+
+export const getDemoDashboardResponseRoundsItemParticipationSnapshotOwnTokenSecondsMin = 0;
+
+export const getDemoDashboardResponseRoundsItemParticipationSnapshotTotalTokenSecondsMin = 0;
+
+export const getDemoDashboardResponseRoundsItemParticipationSnapshotPayoutSharePercentMin = 0;
+export const getDemoDashboardResponseRoundsItemParticipationSnapshotPayoutSharePercentMax = 100;
+
+export const getDemoDashboardResponseRoundsItemParticipationSnapshotReceivedUsdcMin = 0;
 
 
 
@@ -2449,6 +2469,8 @@ export const GetDemoDashboardResponse = zod.object({
   "provider": zod.enum(['anonymous', 'native', 'clerk']).optional(),
   "canViewTreasuryHistory": zod.boolean().optional(),
   "name": zod.string(),
+  "nickname": zod.string().optional(),
+  "avatarPath": zod.string().nullish(),
   "email": zod.string(),
   "memberSince": zod.string(),
   "accountId": zod.string()
@@ -2463,6 +2485,9 @@ export const GetDemoDashboardResponse = zod.object({
 }),
   "staking": zod.object({
   "eligibleTokens": zod.number(),
+  "totalEligibleTokens": zod.number().min(getDemoDashboardResponseStakingTotalEligibleTokensMin).optional().describe('Total participating BETTEX in the simulated pool'),
+  "tokenSharePercent": zod.number().min(getDemoDashboardResponseStakingTokenSharePercentMin).max(getDemoDashboardResponseStakingTokenSharePercentMax).optional().describe('Current eligible-token share'),
+  "poolAllocationUsdc": zod.number().min(getDemoDashboardResponseStakingPoolAllocationUsdcMin).optional().describe('Provisional 25 percent share of positive current-cycle profit; not a guaranteed or settled payout.'),
   "since": zod.string().nullable(),
   "weightTokenSeconds": zod.number(),
   "sharePercent": zod.number().min(getDemoDashboardResponseStakingSharePercentMin).max(getDemoDashboardResponseStakingSharePercentMax),
@@ -2544,7 +2569,34 @@ export const GetDemoDashboardResponse = zod.object({
   "reserveUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "realizedUsdc": zod.number(),
-  "cycleResultUsdc": zod.number()
+  "cycleResultUsdc": zod.number(),
+  "currentRound": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional()
 }),
   "rounds": zod.array(zod.object({
   "id": zod.string(),
@@ -2553,7 +2605,45 @@ export const GetDemoDashboardResponse = zod.object({
   "eligibleUsdc": zod.number(),
   "stakingUsdc": zod.number(),
   "treasuryUsdc": zod.number(),
-  "buybackUsdc": zod.number()
+  "buybackUsdc": zod.number(),
+  "source": zod.enum(['seeded_demo', 'calculated_simulation']).optional(),
+  "treasurySnapshot": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional(),
+  "participationSnapshot": zod.object({
+  "ownEligibleTokens": zod.number().min(getDemoDashboardResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin).describe('Own eligible BETTEX balance at round close'),
+  "totalEligibleTokens": zod.number().min(getDemoDashboardResponseRoundsItemParticipationSnapshotTotalEligibleTokensMin).describe('Pool eligible BETTEX balance at round close'),
+  "ownTokenSeconds": zod.number().min(getDemoDashboardResponseRoundsItemParticipationSnapshotOwnTokenSecondsMin),
+  "totalTokenSeconds": zod.number().min(getDemoDashboardResponseRoundsItemParticipationSnapshotTotalTokenSecondsMin),
+  "payoutSharePercent": zod.number().min(getDemoDashboardResponseRoundsItemParticipationSnapshotPayoutSharePercentMin).max(getDemoDashboardResponseRoundsItemParticipationSnapshotPayoutSharePercentMax),
+  "receivedUsdc": zod.number().min(getDemoDashboardResponseRoundsItemParticipationSnapshotReceivedUsdcMin),
+  "startedAt": zod.string(),
+  "endedAt": zod.string()
+}).optional()
 }))
 })
 
@@ -2583,8 +2673,28 @@ export const CreateDemoMovementBody = zod.object({
   "destination": zod.string().max(createDemoMovementBodyDestinationMax).optional()
 })
 
+export const createDemoMovementResponseStakingTotalEligibleTokensMin = 0;
+
+export const createDemoMovementResponseStakingTokenSharePercentMin = 0;
+export const createDemoMovementResponseStakingTokenSharePercentMax = 100;
+
+export const createDemoMovementResponseStakingPoolAllocationUsdcMin = 0;
+
 export const createDemoMovementResponseStakingSharePercentMin = 0;
 export const createDemoMovementResponseStakingSharePercentMax = 100;
+
+export const createDemoMovementResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin = 0;
+
+export const createDemoMovementResponseRoundsItemParticipationSnapshotTotalEligibleTokensMin = 0;
+
+export const createDemoMovementResponseRoundsItemParticipationSnapshotOwnTokenSecondsMin = 0;
+
+export const createDemoMovementResponseRoundsItemParticipationSnapshotTotalTokenSecondsMin = 0;
+
+export const createDemoMovementResponseRoundsItemParticipationSnapshotPayoutSharePercentMin = 0;
+export const createDemoMovementResponseRoundsItemParticipationSnapshotPayoutSharePercentMax = 100;
+
+export const createDemoMovementResponseRoundsItemParticipationSnapshotReceivedUsdcMin = 0;
 
 
 
@@ -2595,6 +2705,8 @@ export const CreateDemoMovementResponse = zod.object({
   "provider": zod.enum(['anonymous', 'native', 'clerk']).optional(),
   "canViewTreasuryHistory": zod.boolean().optional(),
   "name": zod.string(),
+  "nickname": zod.string().optional(),
+  "avatarPath": zod.string().nullish(),
   "email": zod.string(),
   "memberSince": zod.string(),
   "accountId": zod.string()
@@ -2609,6 +2721,9 @@ export const CreateDemoMovementResponse = zod.object({
 }),
   "staking": zod.object({
   "eligibleTokens": zod.number(),
+  "totalEligibleTokens": zod.number().min(createDemoMovementResponseStakingTotalEligibleTokensMin).optional().describe('Total participating BETTEX in the simulated pool'),
+  "tokenSharePercent": zod.number().min(createDemoMovementResponseStakingTokenSharePercentMin).max(createDemoMovementResponseStakingTokenSharePercentMax).optional().describe('Current eligible-token share'),
+  "poolAllocationUsdc": zod.number().min(createDemoMovementResponseStakingPoolAllocationUsdcMin).optional().describe('Provisional 25 percent share of positive current-cycle profit; not a guaranteed or settled payout.'),
   "since": zod.string().nullable(),
   "weightTokenSeconds": zod.number(),
   "sharePercent": zod.number().min(createDemoMovementResponseStakingSharePercentMin).max(createDemoMovementResponseStakingSharePercentMax),
@@ -2690,7 +2805,34 @@ export const CreateDemoMovementResponse = zod.object({
   "reserveUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "realizedUsdc": zod.number(),
-  "cycleResultUsdc": zod.number()
+  "cycleResultUsdc": zod.number(),
+  "currentRound": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional()
 }),
   "rounds": zod.array(zod.object({
   "id": zod.string(),
@@ -2699,7 +2841,45 @@ export const CreateDemoMovementResponse = zod.object({
   "eligibleUsdc": zod.number(),
   "stakingUsdc": zod.number(),
   "treasuryUsdc": zod.number(),
-  "buybackUsdc": zod.number()
+  "buybackUsdc": zod.number(),
+  "source": zod.enum(['seeded_demo', 'calculated_simulation']).optional(),
+  "treasurySnapshot": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional(),
+  "participationSnapshot": zod.object({
+  "ownEligibleTokens": zod.number().min(createDemoMovementResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin).describe('Own eligible BETTEX balance at round close'),
+  "totalEligibleTokens": zod.number().min(createDemoMovementResponseRoundsItemParticipationSnapshotTotalEligibleTokensMin).describe('Pool eligible BETTEX balance at round close'),
+  "ownTokenSeconds": zod.number().min(createDemoMovementResponseRoundsItemParticipationSnapshotOwnTokenSecondsMin),
+  "totalTokenSeconds": zod.number().min(createDemoMovementResponseRoundsItemParticipationSnapshotTotalTokenSecondsMin),
+  "payoutSharePercent": zod.number().min(createDemoMovementResponseRoundsItemParticipationSnapshotPayoutSharePercentMin).max(createDemoMovementResponseRoundsItemParticipationSnapshotPayoutSharePercentMax),
+  "receivedUsdc": zod.number().min(createDemoMovementResponseRoundsItemParticipationSnapshotReceivedUsdcMin),
+  "startedAt": zod.string(),
+  "endedAt": zod.string()
+}).optional()
 }))
 })
 
@@ -2714,14 +2894,45 @@ export const UpdateDemoProfileHeader = zod.object({
 export const updateDemoProfileBodyNameMin = 2;
 export const updateDemoProfileBodyNameMax = 60;
 
+export const updateDemoProfileBodyEmailMax = 254;
+
+export const updateDemoProfileBodyNicknameMax = 32;
+
+export const updateDemoProfileBodyAvatarPathMax = 100;
+
+
+export const updateDemoProfileBodyAvatarPathRegExp = new RegExp('^/objects/uploads/[a-f0-9-]{36}$');
 
 
 export const UpdateDemoProfileBody = zod.object({
-  "name": zod.string().min(updateDemoProfileBodyNameMin).max(updateDemoProfileBodyNameMax)
+  "name": zod.string().min(updateDemoProfileBodyNameMin).max(updateDemoProfileBodyNameMax),
+  "email": zod.string().email().max(updateDemoProfileBodyEmailMax).optional(),
+  "nickname": zod.string().max(updateDemoProfileBodyNicknameMax).optional(),
+  "avatarPath": zod.string().max(updateDemoProfileBodyAvatarPathMax).regex(updateDemoProfileBodyAvatarPathRegExp).nullish()
 })
+
+export const updateDemoProfileResponseStakingTotalEligibleTokensMin = 0;
+
+export const updateDemoProfileResponseStakingTokenSharePercentMin = 0;
+export const updateDemoProfileResponseStakingTokenSharePercentMax = 100;
+
+export const updateDemoProfileResponseStakingPoolAllocationUsdcMin = 0;
 
 export const updateDemoProfileResponseStakingSharePercentMin = 0;
 export const updateDemoProfileResponseStakingSharePercentMax = 100;
+
+export const updateDemoProfileResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin = 0;
+
+export const updateDemoProfileResponseRoundsItemParticipationSnapshotTotalEligibleTokensMin = 0;
+
+export const updateDemoProfileResponseRoundsItemParticipationSnapshotOwnTokenSecondsMin = 0;
+
+export const updateDemoProfileResponseRoundsItemParticipationSnapshotTotalTokenSecondsMin = 0;
+
+export const updateDemoProfileResponseRoundsItemParticipationSnapshotPayoutSharePercentMin = 0;
+export const updateDemoProfileResponseRoundsItemParticipationSnapshotPayoutSharePercentMax = 100;
+
+export const updateDemoProfileResponseRoundsItemParticipationSnapshotReceivedUsdcMin = 0;
 
 
 
@@ -2732,6 +2943,8 @@ export const UpdateDemoProfileResponse = zod.object({
   "provider": zod.enum(['anonymous', 'native', 'clerk']).optional(),
   "canViewTreasuryHistory": zod.boolean().optional(),
   "name": zod.string(),
+  "nickname": zod.string().optional(),
+  "avatarPath": zod.string().nullish(),
   "email": zod.string(),
   "memberSince": zod.string(),
   "accountId": zod.string()
@@ -2746,6 +2959,9 @@ export const UpdateDemoProfileResponse = zod.object({
 }),
   "staking": zod.object({
   "eligibleTokens": zod.number(),
+  "totalEligibleTokens": zod.number().min(updateDemoProfileResponseStakingTotalEligibleTokensMin).optional().describe('Total participating BETTEX in the simulated pool'),
+  "tokenSharePercent": zod.number().min(updateDemoProfileResponseStakingTokenSharePercentMin).max(updateDemoProfileResponseStakingTokenSharePercentMax).optional().describe('Current eligible-token share'),
+  "poolAllocationUsdc": zod.number().min(updateDemoProfileResponseStakingPoolAllocationUsdcMin).optional().describe('Provisional 25 percent share of positive current-cycle profit; not a guaranteed or settled payout.'),
   "since": zod.string().nullable(),
   "weightTokenSeconds": zod.number(),
   "sharePercent": zod.number().min(updateDemoProfileResponseStakingSharePercentMin).max(updateDemoProfileResponseStakingSharePercentMax),
@@ -2827,7 +3043,34 @@ export const UpdateDemoProfileResponse = zod.object({
   "reserveUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "realizedUsdc": zod.number(),
-  "cycleResultUsdc": zod.number()
+  "cycleResultUsdc": zod.number(),
+  "currentRound": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional()
 }),
   "rounds": zod.array(zod.object({
   "id": zod.string(),
@@ -2836,9 +3079,76 @@ export const UpdateDemoProfileResponse = zod.object({
   "eligibleUsdc": zod.number(),
   "stakingUsdc": zod.number(),
   "treasuryUsdc": zod.number(),
-  "buybackUsdc": zod.number()
+  "buybackUsdc": zod.number(),
+  "source": zod.enum(['seeded_demo', 'calculated_simulation']).optional(),
+  "treasurySnapshot": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional(),
+  "participationSnapshot": zod.object({
+  "ownEligibleTokens": zod.number().min(updateDemoProfileResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin).describe('Own eligible BETTEX balance at round close'),
+  "totalEligibleTokens": zod.number().min(updateDemoProfileResponseRoundsItemParticipationSnapshotTotalEligibleTokensMin).describe('Pool eligible BETTEX balance at round close'),
+  "ownTokenSeconds": zod.number().min(updateDemoProfileResponseRoundsItemParticipationSnapshotOwnTokenSecondsMin),
+  "totalTokenSeconds": zod.number().min(updateDemoProfileResponseRoundsItemParticipationSnapshotTotalTokenSecondsMin),
+  "payoutSharePercent": zod.number().min(updateDemoProfileResponseRoundsItemParticipationSnapshotPayoutSharePercentMin).max(updateDemoProfileResponseRoundsItemParticipationSnapshotPayoutSharePercentMax),
+  "receivedUsdc": zod.number().min(updateDemoProfileResponseRoundsItemParticipationSnapshotReceivedUsdcMin),
+  "startedAt": zod.string(),
+  "endedAt": zod.string()
+}).optional()
 }))
 })
+
+
+export const requestDemoProfileAvatarHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const RequestDemoProfileAvatarHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(requestDemoProfileAvatarHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
+export const requestDemoProfileAvatarBodySizeMax = 5242880;
+
+
+
+export const RequestDemoProfileAvatarBody = zod.object({
+  "size": zod.number().int().min(1).max(requestDemoProfileAvatarBodySizeMax),
+  "contentType": zod.enum(['image/png', 'image/jpeg', 'image/webp'])
+})
+
+export const RequestDemoProfileAvatarResponse = zod.object({
+  "uploadURL": zod.string(),
+  "objectPath": zod.string()
+})
+
+
+export const GetProfilePictureParams = zod.object({
+  "id": zod.coerce.string().uuid()
+})
+
+export const GetProfilePictureResponse = zod.unknown()
 
 
 /**

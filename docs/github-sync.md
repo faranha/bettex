@@ -11,6 +11,13 @@ Other public repositories remain blocked. The GitHub API connection is healthy,
 but native Git push authentication is not configured; the connector also denied
 temporary deploy-key creation. No upload has been verified.
 
+Readiness check on 2026-10-06: a development-branch push dry run was rejected
+with an authentication error. The watcher is intentionally paused while the
+creator connects native Git transport; do not resume it before authorization.
+Official Starknet documentation sections named `build` are retained source,
+not compiled output. Their content and history still pass through the same
+secret, file-size and excluded-path checks.
+
 During initial implementation, the repository had only Replit internal
 backup/task remotes and no authorized GitHub connection. The creator has now
 selected `https://github.com/faranha/bettex.git` as credential-free `origin`.
@@ -92,7 +99,15 @@ not evidence of GitHub activation.
    must not appear in the URL. Git author identity is deliberately not guessed
    or replaced by automation.
 
-5. Verify `lastPushCommit` against the real GitHub branch and confirm Actions
+5. Once credentials work, resume the paused watcher and synchronize:
+
+   ```sh
+   pnpm sync:resume
+   pnpm sync:once -- "Prepare BETTEX for GitHub review"
+   pnpm sync:status
+   ```
+
+6. Verify `lastPushCommit` against the real GitHub branch and confirm Actions
    runs. Only then describe automatic synchronization as active.
 
 Before the first upload, review retained historic uploads and asset provenance.

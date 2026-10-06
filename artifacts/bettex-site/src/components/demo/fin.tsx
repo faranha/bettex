@@ -6,6 +6,7 @@ import { useCreateDemoMovement, useUpdateDemoProfile, getGetDemoDashboardQueryKe
 import { CircleHelp, X, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useX } from './ui';
+import { DepositAddress } from './DepositAddress';
 
 export const Rates = createContext({ r: 5, bu: 1 });
 export type Asset = 'USDC' | 'BETTEX';
@@ -55,28 +56,27 @@ const primary = 'inline-flex min-h-11 w-full items-center justify-center gap-2 r
 export type Kind = 'receive' | 'onramp' | 'swap' | 'withdraw' | 'send';
 
 export function MovementSheet({ kind, initialAsset, d, onClose }: { kind: Kind | null; initialAsset?: Asset; d: DemoDashboard; onClose: () => void }) {
-  const { x, tx, loc } = useX(); const { num, brl } = useMoney(); const em = useErrMsg(); const qc = useQueryClient();
-  const m = useCreateDemoMovement(); const { r } = useContext(Rates);
-  const [method, setMethod] = useState<'pix' | 'crypto'>('pix'); const [amt, setAmt] = useState(''); const [dest, setDest] = useState('');
+  const { x, tx } = useX(); const { num, brl } = useMoney(); const em = useErrMsg(); const qc = useQueryClient();
+  const m = useCreateDemoMovement();
+  const [amt, setAmt] = useState(''); const [dest, setDest] = useState('');
   const [err, setErr] = useState(''); const [ok, setOk] = useState(false); const rid = useRef<string | null>(null);
   const retryInput = useRef<DemoMovementInput | null>(null);
-  useEffect(() => { setMethod('pix'); setAmt(''); setDest(''); setErr(''); setOk(false); rid.current = null; retryInput.current = null; }, [kind, initialAsset]);
+  useEffect(() => { setAmt(''); setDest(''); setErr(''); setOk(false); rid.current = null; retryInput.current = null; }, [kind, initialAsset]);
   const touch = () => { rid.current = null; retryInput.current = null; setErr(''); setOk(false); };
   const k0: Kind = kind ?? 'receive';
   const a: Asset = k0 === 'onramp' || k0 === 'withdraw' ? 'USDC' : k0 === 'send' ? 'BETTEX' : (initialAsset ?? 'USDC');
-  const pix = k0 === 'onramp' && method === 'pix';
-  const k: Kind = k0 === 'onramp' && method === 'crypto' ? 'receive' : k0;
+  const k: Kind = k0 === 'onramp' ? 'receive' : k0;
   const bu = d.balances.bettexUsdc; const U = d.balances.usdc; const B = d.balances.bettex;
   const n = Number(amt.replace(',', '.')) || 0;
-  const usdIn = pix ? Math.round((n / r) * 1e6) / 1e6 : n; // BRL -> USD snapshot
-  const amount = pix ? usdIn : n;
+  const amount = n;
   const rd = (v: number) => Math.round(v * 1e6) / 1e6;
   const needDest = k === 'send' || k === 'withdraw';
+  const validDest = /^0x[0-9a-fA-F]{40}$/.test(dest.trim()) && !/^0x0{40}$/i.test(dest.trim());
   const swapB = k === 'swap' && a === 'BETTEX';
-  const feeUsd = rd(k === 'onramp' || pix ? amount * .002 : k === 'swap' ? (swapB ? amount * bu : amount) * .001 : k === 'withdraw' ? amount * .0005 : k === 'send' ? amount * bu * .0005 : 0);
+  const feeUsd = rd(k === 'swap' ? (swapB ? amount * bu : amount) * .001 : k === 'withdraw' ? amount * .0005 : k === 'send' ? amount * bu * .0005 : 0);
   const max = Math.min(100000, k === 'swap' ? (swapB ? B : U / 1.001) : k === 'withdraw' ? U / 1.0005 : k === 'send' ? Math.min(B, U / (bu * .0005)) : 100000);
-  const over = k !== 'receive' && !pix && n > max + 1e-9;
-  const valid = amount >= 0.000001 && amount <= 100000 && (!needDest || dest.trim().length > 0);
+  const over = k !== 'receive' && n > max + 1e-9;
+  const valid = amount >= 0.000001 && amount <= 100000 && (!needDest || validDest);
   const outflow = k === 'send' || swapB;
   const Tt: Record<string, [string, string, string]> = {
     'onramp': ['Adicionar crédito', 'Add credit', 'Agregar crédito'],
@@ -88,11 +88,11 @@ export function MovementSheet({ kind, initialAsset, d, onClose }: { kind: Kind |
     'send': ['Transferir BETTEX para carteira externa', 'Transfer BETTEX to external wallet', 'Transferir BETTEX a cartera externa'],
   };
   const key = k0 === 'swap' || k0 === 'receive' ? `${k0}-${a}` : k0;
-  const title = tx(Tt[key]);
-  const desc = k0 === 'onramp' ? x('Pague em reais via Pix ou deposite USDC de uma carteira cripto.', 'Pay in reais via Pix or deposit USDC from a crypto wallet.', 'Paga en reales vía Pix o deposita USDC desde una cartera cripto.')
+  const title = k0 === 'withdraw' ? x('Sacar USDC', 'Withdraw USDC', 'Retirar USDC') : tx(Tt[key]);
+  const desc = k0 === 'onramp' || (k0 === 'receive' && a === 'USDC') ? x('Adicione USDC à sua carteira em dólares.', 'Add USDC to your dollar wallet.', 'Agrega USDC a tu cartera en dólares.')
     : k0 === 'receive' ? x('Receba BETTEX de uma carteira externa. Entra na participação só após a confirmação.', 'Receive BETTEX from an external wallet. It joins staking only after confirmation.', 'Recibe BETTEX de una cartera externa. Entra en participación solo tras la confirmación.')
     : k0 === 'swap' ? x('A taxa é travada ao enviar e a conversão conclui em cerca de 6 segundos.', 'The rate locks on submit and the conversion settles in about 6 seconds.', 'La tasa se fija al enviar y la conversión concluye en unos 6 segundos.')
-    : k0 === 'withdraw' ? x('Sai do seu saldo total em USDC para uma carteira cripto externa.', 'Comes from your full USDC balance to an external crypto wallet.', 'Sale de tu saldo total en USDC a una cartera cripto externa.')
+    : k0 === 'withdraw' ? x('Você retira USDC, um token ERC-20, não ETH. Use uma carteira que aceite USDC na rede Arbitrum One.', 'You withdraw USDC, an ERC-20 token, not ETH. Use a wallet that accepts USDC on the Arbitrum One network.', 'Retiras USDC, un token ERC-20, no ETH. Usa una cartera que acepte USDC en la red Arbitrum One.')
     : x('Envia tokens BETTEX para uma carteira externa. A taxa é cobrada em USDC.', 'Sends BETTEX tokens to an external wallet. The fee is charged in USDC.', 'Envía tokens BETTEX a una cartera externa. La tarifa se cobra en USDC.');
   const submit = async () => {
     if (m.isPending || (!retryInput.current && (!valid || over))) return;
@@ -109,22 +109,28 @@ export function MovementSheet({ kind, initialAsset, d, onClose }: { kind: Kind |
   const feeLine = `${num(feeUsd, feeUsd > 0 && feeUsd < .01 ? 6 : 4)} USDC ≈ ${brl('USDC', feeUsd)}`;
   let from = ''; let to = '';
   if (n > 0) {
-    if (pix) { from = `${n.toLocaleString(loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES', { style: 'currency', currency: 'BRL' })} (≈ ${num(usdIn, 2)} USD)`; to = fmt(Math.max(0, usdIn - feeUsd), 'USDC'); }
-    else if (k === 'receive') { from = fmt(n, a); to = fmt(n, a); }
+    if (k === 'receive') { from = fmt(n, a); to = fmt(n, a); }
     else if (k === 'swap') { from = fmt(n + (swapB ? 0 : feeUsd), a); to = swapB ? fmt(Math.max(0, n * bu - feeUsd), 'USDC') : fmt(n / bu, 'BETTEX'); }
     else if (k === 'withdraw') { from = fmt(n + feeUsd, 'USDC'); to = `${num(n, 2)} USDC → ${dest.trim() || '…'}`; }
     else { from = fmt(n, 'BETTEX'); to = `${num(n, 4)} BETTEX → ${dest.trim() || '…'}`; }
   }
-  const amtLabel = pix ? x('Valor em reais (R$)', 'Amount in reais (R$)', 'Monto en reales (R$)') : `${k === 'swap' ? x('Quantidade a converter', 'Amount to convert', 'Cantidad a convertir') : x('Quantidade', 'Amount', 'Cantidad')} (${a})`;
-  const seg = (on: boolean) => `min-h-11 flex-1 rounded-lg text-sm font-bold ${on ? 'bg-[#0E7C6B] text-white' : 'bg-[#F0E9DA] text-[#1B2A41]'}`;
+  const amtLabel = `${k === 'swap' ? x('Quantidade a converter', 'Amount to convert', 'Cantidad a convertir') : x('Quantidade', 'Amount', 'Cantidad')} (${a})`;
   return <Sheet open={!!kind} onClose={onClose} title={title} desc={desc}>
     <form className="mt-4 grid gap-3" onSubmit={e => { e.preventDefault(); void submit(); }}>
-      {k0 === 'onramp' && <div role="group" aria-label={x('Forma de depósito', 'Deposit method', 'Forma de depósito')} className="flex gap-2"><button type="button" disabled={m.isPending} data-testid="button-method-pix" aria-pressed={method === 'pix'} onClick={() => { touch(); setAmt(''); setMethod('pix'); }} className={seg(method === 'pix')}>{x('Pix', 'Pix', 'Pix')}</button><button type="button" disabled={m.isPending} data-testid="button-method-crypto" aria-pressed={method === 'crypto'} onClick={() => { touch(); setAmt(''); setMethod('crypto'); }} className={seg(method === 'crypto')}>{x('Depósito cripto', 'Crypto deposit', 'Depósito cripto')}</button></div>}
       <p className="rounded-xl bg-[#F5F1E8] px-3 py-2 text-xs font-bold text-[#1B2A41]" data-testid="text-fixed-asset">{x('Ativo', 'Asset', 'Activo')}: {a}</p>
+      {k === 'receive' && kind && <DepositAddress key={`${d.profile.accountId}-${a}`} d={d} asset={a} />}
+      {needDest && <div className="rounded-xl border border-[#E4DCCB] p-3 text-xs" data-testid="withdrawal-network">
+        <p className="font-bold">{x('Rede de referência: Arbitrum One · 42161', 'Reference network: Arbitrum One · 42161', 'Red de referencia: Arbitrum One · 42161')}</p>
+        <p className="mt-1 text-[#5B6B85]">{x('Rede de segunda camada do Ethereum. Use MetaMask, Rabby ou outra carteira EVM com Arbitrum One. Em uma corretora, confirme que o depósito aceita o ativo acima nessa rede. Não selecione Ethereum mainnet, BNB Chain ou Solana.', 'Ethereum layer-2 network. Use MetaMask, Rabby or another EVM wallet with Arbitrum One. For an exchange, confirm that deposits support the asset above on this network. Do not select Ethereum mainnet, BNB Chain or Solana.', 'Red de segunda capa de Ethereum. Usa MetaMask, Rabby u otra cartera EVM con Arbitrum One. En un exchange, confirma que el depósito admite el activo anterior en esta red. No selecciones Ethereum mainnet, BNB Chain ni Solana.')}</p>
+      </div>}
       <label className="grid gap-1 text-sm font-semibold">{amtLabel}<input disabled={m.isPending} data-testid="input-amount" inputMode="decimal" className={inp} value={amt} onChange={e => { touch(); setAmt(e.target.value); }} placeholder="0,00" /></label>
-      {k !== 'receive' && !pix && <p className="text-xs text-[#5B6B85]">{x('Máximo: ', 'Max: ', 'Máximo: ')}{fmt(Math.max(0, max), a)}</p>}
-      {pix && <p className="text-xs text-[#5B6B85]">{x('Cotação do momento: ', 'Current rate: ', 'Cotización actual: ')}{`${num(r, 2)} BRL / USD`}</p>}
-      {needDest && <label className="grid gap-1 text-sm font-semibold">{x('Carteira de destino', 'Destination wallet', 'Cartera de destino')}<input disabled={m.isPending} data-testid="input-destination" maxLength={120} className={inp} value={dest} onChange={e => { touch(); setDest(e.target.value); }} /></label>}
+      {k !== 'receive' && <p className="text-xs text-[#5B6B85]">{x('Máximo: ', 'Max: ', 'Máximo: ')}{fmt(Math.max(0, max), a)}</p>}
+      {needDest && <div className="grid gap-2">
+        <label className="grid gap-1 text-sm font-semibold">{x('Endereço da carteira na Arbitrum One', 'Wallet address on Arbitrum One', 'Dirección de cartera en Arbitrum One')}<input disabled={m.isPending} data-testid="input-destination" placeholder={x('0x…', '0x…', '0x…')} maxLength={42} autoComplete="off" spellCheck={false} aria-describedby="destination-help destination-risk" aria-invalid={dest.trim().length > 0 && !validDest} className={inp} value={dest} onChange={e => { touch(); setDest(e.target.value); }} /></label>
+        <p id="destination-help" className="text-xs text-[#5B6B85]">{x('O endereço começa com 0x e tem mais 40 caracteres hexadecimais. O formato é igual ao do Ethereum, mas isso não confirma a rede: confira com a carteira ou corretora de destino.', 'The address starts with 0x followed by 40 hexadecimal characters. It uses the same format as Ethereum, but that does not confirm the network: check with the receiving wallet or exchange.', 'La dirección empieza con 0x seguido de 40 caracteres hexadecimales. Tiene el mismo formato que Ethereum, pero eso no confirma la red: verifica con la cartera o exchange de destino.')}</p>
+        {dest.trim().length > 0 && !validDest && <p role="alert" className="text-xs font-semibold text-[#B4421A]">{x('Informe um endereço EVM válido. Não use chave Pix, e-mail, endereço Bitcoin ou Solana.', 'Enter a valid EVM address. Do not use a Pix key, email, Bitcoin or Solana address.', 'Introduce una dirección EVM válida. No uses una clave Pix, email ni dirección de Bitcoin o Solana.')}</p>}
+        <p id="destination-risk" role="note" data-testid="warning-destination-network" className="rounded-xl border border-[#E7B98A] bg-[#FFF3E3] p-3 text-xs font-semibold leading-relaxed text-[#6B3A10]">{x('Atenção: enviar para endereço errado, rede diferente ou carteira que não aceite este ativo pode causar perda permanente dos fundos. Confira ativo, rede e endereço antes de confirmar.', 'Warning: sending to a wrong address, a different network or a wallet that does not support this asset can permanently lose your funds. Check the asset, network and address before confirming.', 'Atención: enviar a una dirección incorrecta, otra red o una cartera que no admita este activo puede causar la pérdida permanente de los fondos. Verifica activo, red y dirección antes de confirmar.')}</p>
+      </div>}
       {n > 0 && <div className="rounded-xl bg-[#EFF6F2] p-3 text-sm" data-testid="text-preview">
         <p><span className="text-xs font-bold text-[#5B6B85]">{x('Você envia', 'You send', 'Envías')}: </span>{from}</p>
         <p className="mt-1"><span className="text-xs font-bold text-[#5B6B85]">{x('Você recebe', 'You receive', 'Recibes')}: </span>{to}</p>
@@ -135,21 +141,22 @@ export function MovementSheet({ kind, initialAsset, d, onClose }: { kind: Kind |
       {err && <p role="alert" className="flex items-start gap-2 text-sm font-semibold text-[#B4421A]"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{err}</p>}
       {ok && <p role="status" className="flex items-start gap-2 text-sm font-semibold text-[#0E7C6B]"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{x('Recebido! A confirmação aparece em Saldo e histórico em alguns segundos.', 'Received! Confirmation shows under Balance and history in a few seconds.', '¡Recibido! La confirmación aparece en Saldo e historial en unos segundos.')}</p>}
       <button type="submit" data-testid="button-submit-movement" disabled={m.isPending || (!retryInput.current && (!valid || over))} className={primary}>{m.isPending && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}{m.isPending ? x('Enviando…', 'Sending…', 'Enviando…') : err && rid.current ? x('Tentar de novo', 'Try again', 'Reintentar') : title}</button>
-      <p className="text-xs text-[#5B6B85]">{x('Demonstração: depósitos, saques e conversões são emulados. Nenhuma carteira ou pagamento real é acionado.', 'Demo: deposits, withdrawals and conversions are emulated. No real wallet or payment is used.', 'Demostración: depósitos, retiros y conversiones son emulados. No se utiliza ninguna cartera ni pago real.')}</p>
     </form></Sheet>;
 }
 
 export function ProfileSheet({ open, d, onClose }: { open: boolean; d: DemoDashboard; onClose: () => void }) {
   const { x, loc } = useX(); const qc = useQueryClient(); const u = useUpdateDemoProfile();
   const [name, setName] = useState(d.profile.name); const [err, setErr] = useState(false);
-  useEffect(() => { if (open) { setName(d.profile.name); setErr(false); } }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
-  const ok = name.trim().length >= 2 && name.trim().length <= 60;
-  const save = async () => { if (!ok || u.isPending) return; try { const s = await u.mutateAsync({ data: { name: name.trim() } }); qc.setQueryData(getGetDemoDashboardQueryKey(), s); onClose(); } catch { setErr(true); } };
+  const [email, setEmail] = useState(d.profile.email);
+  useEffect(() => { if (open) { setName(d.profile.name); setEmail(d.profile.email); setErr(false); } }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+  const ok = name.trim().length >= 2 && name.trim().length <= 60 && email.trim().length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  const save = async () => { if (!ok || u.isPending) return; try { const s = await u.mutateAsync({ data: { name: name.trim(), email: email.trim() } }); qc.setQueryData(getGetDemoDashboardQueryKey(), s); onClose(); } catch { setErr(true); } };
   const since = useMemo(() => new Date(d.profile.memberSince).toLocaleDateString(loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES', { dateStyle: 'long' }), [d.profile.memberSince, loc]);
   return <Sheet open={open} onClose={onClose} title={x('Minha conta', 'My account', 'Mi cuenta')} desc={x('Altere como você aparece no painel.', 'Change how you appear on the dashboard.', 'Cambia cómo apareces en el panel.')}>
     <form className="mt-4 grid gap-3" onSubmit={e => { e.preventDefault(); void save(); }}>
       <label className="grid gap-1 text-sm font-semibold">{x('Nome', 'Name', 'Nombre')}<input data-testid="input-name" className={inp} minLength={2} maxLength={60} value={name} onChange={e => { setName(e.target.value); setErr(false); }} /></label>
-      <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm"><dt className="text-[#5B6B85]">{x('E-mail', 'Email', 'Correo electrónico')}</dt><dd className="break-all">{d.profile.email}</dd><dt className="text-[#5B6B85]">{x('Membro desde', 'Member since', 'Miembro desde')}</dt><dd>{since}</dd><dt className="text-[#5B6B85]">{x('ID da conta', 'Account ID', 'ID de cuenta')}</dt><dd className="mono break-all">{d.profile.accountId}</dd></dl>
+      <label className="grid gap-1 text-sm font-semibold">{x('E-mail', 'Email', 'Correo electrónico')}<input data-testid="input-profile-email" type="email" autoComplete="email" required maxLength={254} className={inp} value={email} onChange={e => { setEmail(e.target.value); setErr(false); }} /></label>
+      <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm"><dt className="text-[#5B6B85]">{x('Membro desde', 'Member since', 'Miembro desde')}</dt><dd>{since}</dd><dt className="text-[#5B6B85]">{x('ID da conta', 'Account ID', 'ID de cuenta')}</dt><dd className="mono break-all">{d.profile.accountId}</dd></dl>
       {err && <p role="alert" className="text-sm font-semibold text-[#B4421A]">{x('Não foi possível salvar. Tente de novo.', 'Could not save. Try again.', 'No se pudo guardar. Intenta de nuevo.')}</p>}
       <button type="submit" data-testid="button-save-name" disabled={!ok || u.isPending} className={primary}>{u.isPending && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}{x('Salvar', 'Save', 'Guardar')}</button>
     </form></Sheet>;

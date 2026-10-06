@@ -13,8 +13,7 @@ export function ProposalDetail({ operation }: { operation: DemoOperation }) {
   const dt = (s: string) => `${formatBrazilDateTime(s, fl)} · ${x('Horário do Brasil', 'Brazil time', 'Horario de Brasil')}`;
   const qty = (v: number) => v.toLocaleString(fl, { maximumFractionDigits: 8 });
   const row = (k: string, v: string, id: string) => <div className="min-w-0"><dt className="text-xs text-[#5B6B85]">{k}</dt><dd className="mono break-words text-xs font-bold" data-testid={id}>{v}</dd></div>;
-  const banner = <p className="rounded-xl border border-dashed border-[#D8CFBB] bg-[#F5F1E8] p-2.5 text-xs" data-testid="banner-emulated">{x('Emulado: preços, partidas fictícias e resultados são exemplos. Sem Allora e sem ordens reais.', 'Emulated: prices, fictional matches and results are examples. No Allora and no real orders.', 'Emulado: precios, partidos ficticios y resultados son ejemplos. Sin Allora y sin órdenes reales.')}</p>;
-  if (!p) return <div className="grid gap-2" data-testid="proposal-detail">{banner}<p className="rounded-xl bg-[#F5F1E8] p-3 text-xs text-[#5B6B85]" data-testid="text-proposal-unavailable">{x('Detalhes da proposta indisponíveis: esta operação legada não guardou uma proposta.', 'Proposal details unavailable: this legacy operation stored no proposal.', 'Detalles de la propuesta no disponibles: esta operación heredada no guardó una propuesta.')}</p></div>;
+  if (!p) return <div className="grid gap-2" data-testid="proposal-detail"><p className="rounded-xl bg-[#F5F1E8] p-3 text-xs text-[#5B6B85]" data-testid="text-proposal-unavailable">{x('Detalhes da proposta indisponíveis: esta operação legada não guardou uma proposta.', 'Proposal details unavailable: this legacy operation stored no proposal.', 'Detalles de la propuesta no disponibles: esta operación heredada no guardó una propuesta.')}</p></div>;
   const type = ({
     spot_buy: x('Compra à vista', 'Spot buy', 'Compra spot'),
     sports_coverage: x('Cobertura esportiva', 'Sports coverage', 'Cobertura deportiva'),
@@ -27,9 +26,9 @@ export function ProposalDetail({ operation }: { operation: DemoOperation }) {
     qualify_bonus: x('Qualificar bônus', 'Qualify bonus', 'Calificar bono'),
   } as Record<string, string>)[k] ?? k;
   const ven = (k: string) => ({
-    crypto_demo: x('Cripto (demo)', 'Crypto (demo)', 'Cripto (demo)'),
-    polymarket_demo: x('Polymarket (demo)', 'Polymarket (demo)', 'Polymarket (demo)'),
-    bonus_demo: x('Bônus (demo)', 'Bonus (demo)', 'Bono (demo)'),
+    crypto_demo: x('Cripto', 'Crypto', 'Cripto'),
+    polymarket_demo: 'Polymarket',
+    bonus_demo: x('Bônus', 'Bonus', 'Bono'),
   } as Record<string, string>)[k] ?? k;
   const sel = (k: string) => k === 'home' ? (p.homeTeam ?? x('Mandante', 'Home', 'Local'))
     : k === 'away' ? (p.awayTeam ?? x('Visitante', 'Away', 'Visitante'))
@@ -50,7 +49,6 @@ export function ProposalDetail({ operation }: { operation: DemoOperation }) {
   } as Record<string, string>)[a.reason] ?? a.reason : '';
   const hasMatch = !!(p.homeTeam && p.awayTeam);
   return <div className="grid gap-3" data-testid="proposal-detail">
-    {banner}
     <div>
       <h4 className="display text-sm font-extrabold" data-testid="text-proposal-type">{type}</h4>
       {hasMatch && <p className="text-xs" data-testid="text-proposal-match">{p.homeTeam} × {p.awayTeam}{p.eventAt ? ` · ${dt(p.eventAt)}` : ''}</p>}

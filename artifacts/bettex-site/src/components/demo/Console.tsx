@@ -40,7 +40,7 @@ export function Console({ d }: { d: DemoDashboard }) {
   return <div className="grid grid-cols-1 gap-4" data-testid="console-root">
     <OrchestratorHelp d={d} />
     <div className="dcard flex flex-wrap items-center justify-between gap-3 p-4">
-      <div className="flex items-center gap-3"><span className="console-dot" aria-hidden="true" /><div><p className="text-sm font-bold">{x('Demonstração ao vivo', 'Live demonstration', 'Demostración en vivo')} · {tm(d.serverNow)} · {zone}</p><p className="text-xs text-[#5B6B85]">{x('Operações e eventos emulados; não são ordens reais.', 'Emulated operations and events; these are not real orders.', 'Operaciones y eventos emulados; no son órdenes reales.')}</p></div></div>
+      <div className="flex items-center gap-3"><span className="console-dot" aria-hidden="true" /><div><p className="text-sm font-bold">{x('Atividade ao vivo', 'Live activity', 'Actividad en vivo')} · {tm(d.serverNow)} · {zone}</p></div></div>
       <p className="mono text-xs text-[#5B6B85]" data-testid="text-console-count">{nAct} {x('ativas', 'active', 'activas')} · {d.operations.length} {x('operações', 'operations', 'operaciones')} · {d.events.length} {x('eventos', 'events', 'eventos')}</p></div>
     <div className="flex flex-wrap gap-2" role="group" aria-label={x('Filtrar por agente', 'Filter by agent', 'Filtrar por agente')}>
       <button type="button" data-testid="filter-agent-all" aria-pressed={agent === 'all'} onClick={() => setAgent('all')} className={chip(agent === 'all')}>{x('Todos os agentes', 'All agents', 'Todos los agentes')}</button>

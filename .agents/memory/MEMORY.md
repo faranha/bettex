@@ -32,12 +32,14 @@
 - [Technical document translation](technical-document-translation.md) — bounded LLM rewrites can insert citations or alter URLs; audit structure, links and numeric fidelity before saving.
 - [Elegibilidade ao lucro](profit-entitlement-rules.md) — cada rodada paga ou não paga, sem retorno ou acumulação; saídas cancelam direitos e frações vão à tesouraria.
 - [Demonstração e fase ALFA](demo-prototype-scope.md) — banco básico e emulação automática; app claro, suporte no Telegram; sem dinheiro real.
-- [Navegação do piloto](demo-navigation.md) — saldo e extrato em página própria; painel com atividade e participação; Tesouraria e Minha conta separadas.
+- [Navegação do piloto](demo-navigation.md) — extrato em Minha conta → Histórico, sem repetir cartões de carteira; painel com atividade e participação; Tesouraria separada.
 - [Separação site/app](site-app-separation.md) — experiências distintas no mesmo projeto; voltar ao site precisa funcionar também para usuários autenticados.
 - [Ações da carteira](wallet-action-context.md) — entradas e saídas junto de cada saldo; USDC/BETTEX com conversão nos dois sentidos; saque não limitado ao rendimento.
+- [Staking no aplicativo](app-staking-presentation.md) — corredor horizontal no dashboard e Carteiras; posição própria, total do pool, lucro, alocação, gráficos e fogo.
 - [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
 - [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; históricos de sugestões e decisões consultáveis.
+- [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — independent BETTEX above Predictions/BTC/ETH/SOL jobs; operational controls are not agents.
 - [Real agent intelligence](real-agent-intelligence.md) — real AI inference is required; rule-based checks are controls, not a substitute for agent intelligence.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
 - [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
@@ -70,3 +72,8 @@
 - [GitHub publication authorization](github-publication-authorization.md) — creator authorized upload to public faranha/bettex; preserve visibility and development-only targeting.
 - [Identidade de locks](process-lock-identity.md) — locks sobrevivem a trocas de runtime; um PID reutilizado não comprova que o serviço original está ativo.
 - [Distributed-service target](distributed-service-target.md) — creator requires distributed microservices aligned with canonical guidance; reconcile the extraction decision before restructuring.
+- [Consulta nativa e autorização](native-read-authorization.md) — consultar endereços públicos não associa carteiras nem autoriza operações; não confundir saldo local com Sepolia pública.
+- [Extrato das carteiras](wallet-history-scope.md) — downloads do arquivo completo, rendimento, tags e filtros por carteira/tipo; BRL junto do valor, taxas e exemplos separados.
+- [Tesouraria por rodada](treasury-presentation.md) — ativos hierárquicos, realizado da rodada e histórico salvo; receita de tarifas da operadora separada; projeção de capital adiada.
+- [Localization catalog scope](localization-catalog-scope.md) — isolated multilingual tuples need their own audit; compiler types and grammar dictionaries are not page copy.
+- [Continuous test emulation](continuous-test-emulation.md) — no Simulation product area; independent, ongoing randomized test scripts with 24-hour evidence.

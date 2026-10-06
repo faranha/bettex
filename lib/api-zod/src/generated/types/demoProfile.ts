@@ -12,6 +12,9 @@ export interface DemoProfile {
   provider?: DemoProfileProvider;
   canViewTreasuryHistory?: boolean;
   name: string;
+  nickname?: string;
+  /** @nullable */
+  avatarPath?: string | null;
   email: string;
   memberSince: string;
   accountId: string;

@@ -32,3 +32,27 @@ O fluxo deve ser fácil e simples porque “as pessoas são leigas nesse assunto
 **Why:** O criador reforçou explicitamente simplicidade, controle das carteiras pelo usuário e proteção na exportação.
 
 **How to apply:** Usar linguagem direta, distinguir endereço público de segredo e explicar que backup de carteira não recupera automaticamente a conta do aplicativo. Não pedir segredos por suporte nem acrescentar passos técnicos desnecessários ao cadastro.
+
+Exportar deve mostrar o endereço, a chave pública e a chave privada da carteira já usada pela conta, sem criar outra carteira, exigir senha de carteira separada ou acrescentar um painel de “chaves e backups”.
+
+**Why:** O criador corrigiu explicitamente: “private and public key thats all”, “if I click on export I should see it all” e rejeitou a senha e o painel adicionais.
+
+**How to apply:** Vincular a exportação às mesmas carteiras que detêm os saldos on-chain. Manter proteção pela identidade autorizada, segredo oculto antes da ação e ocultação automática, sem passos extras não pedidos. Preservar quaisquer cofres existentes; dados já criptografados não podem ser descartados nem substituídos para contornar a senha.
+
+A rede escolhida para saldos e movimentações da conta é Arbitrum Sepolia, não a EVM local nem Arbitrum One.
+
+**Why:** O criador selecionou expressamente Arbitrum Sepolia ao esclarecer a origem das carteiras e dos saldos.
+
+**How to apply:** Não confundir um registro público de atividade ou execução local com operações financeiras nessa rede. Preservar carteiras existentes; a escolha da rede não autoriza substituí-las nem operar na mainnet.
+
+O perfil em Minha conta deve oferecer apelido e foto, com o mascote BETTEX como imagem inicial e opção de restaurá-lo. O apelido é de apresentação e não substitui a identidade da conta ou da carteira.
+
+**Why:** O criador pediu um lugar para nickname e picture, e um mascote BETTEX como imagem inicial, mantendo os requisitos anteriores de identidade real.
+
+**How to apply:** Disponibilizar esses controles no Perfil, preservar nome e e-mail existentes e não alterar carteiras ou chaves ao personalizar a aparência. Manter os perfis de demonstração e contas autenticadas isolados.
+
+As chaves pública e privada de todas as carteiras devem começar mascaradas, com revelação por botão de olho e cópia disponível após a revelação.
+
+**Why:** O criador pediu “put it hashed unless the eye button is clicked to see, and then copy” para ambas as chaves, em todas as carteiras.
+
+**How to apply:** “Hashed” nessa interface significa ocultar visualmente, não substituir as chaves por hashes criptográficos. Não revelar uma chave só por abrir o painel; não remover a senha de carteiras criptografadas existentes.

@@ -4,7 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { getGetNativeTestJourneyQueryKey, useGetNativeTestJourney, type NativeTestJourney, type NativeTestOperation, type NativeTestStage, type TestAccountSnapshot } from '@workspace/api-client-react';
 import { formatUnits, keccak256, toUtf8Bytes } from 'ethers';
 import QRCode from 'qrcode';
-import { Copy, AlertTriangle } from 'lucide-react';
+import { Copy } from 'lucide-react';
 import { inp } from '@/components/demo/fin';
 import { useX } from '@/components/demo/ui';
 import { requestNativeFunding, requestNativeQuote, signNativeJourney, requestNativeDistribution } from '../native-journey-client';
@@ -85,11 +85,6 @@ export function NativeJourney({ snap }: { snap: TestAccountSnapshot }) {
     <Events j={j} />
   </>;
   return <section className="grid gap-4" data-testid="native-journey">
-    <div role="note" className="flex gap-3 rounded-2xl border border-[#E7B98A] bg-[#FFF3E3] p-3 text-xs leading-relaxed text-[#6B3A10]">
-      <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-      <div className="grid gap-1"><p className="font-bold">{x('Ambiente de testes — ativos sem valor financeiro.', 'Test environment — assets have no financial value.', 'Entorno de pruebas — activos sin valor financiero.')}</p>
-        <p>{x('EVM LOCAL 31337, não é a Sepolia pública. Reiniciar o nó cria outra cadeia; registros anteriores ficam arquivados, mas não restauram saldos.', 'LOCAL EVM 31337, not public Sepolia. Restarting the node creates another chain; previous records are archived but do not restore balances.', 'EVM LOCAL 31337, no es la Sepolia pública. Reiniciar el nodo crea otra cadena; los registros anteriores se archivan, pero no restauran saldos.')}</p></div>
-    </div>
     {body}
   </section>;
 }
@@ -97,7 +92,7 @@ export function NativeJourney({ snap }: { snap: TestAccountSnapshot }) {
 function Network({ j }: { j: NativeTestJourney }) {
   const { x } = useX();
   return <div className={card} data-testid="native-network">
-    <h2 className="display text-lg font-extrabold">{x('Saldos on-chain reais (teste)', 'Real on-chain balances (test)', 'Saldos on-chain reales (prueba)')}</h2>
+    <h2 className="display text-lg font-extrabold">{x('Saldos on-chain', 'On-chain balances', 'Saldos on-chain')}</h2>
     <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-xs">
       <Row k={x('Rede', 'Network', 'Red')} v={`EVM LOCAL (chainId ${j.chainId})`} />
       <Row k={x('Execução da cadeia', 'Chain instance', 'Instancia de cadena')} v={j.epoch} mono />
@@ -126,7 +121,7 @@ function Deposit({ j, snap, onJourney }: { j: NativeTestJourney; snap: TestAccou
   };
   const pending = j.operations.some(o => o.kind === 'fund' && o.stages.some(s => !DEAD.includes(s.state) && s.state !== 'confirmed'));
   return <div className={`${card} grid gap-4`} data-testid="native-deposit">
-    <h2 className="display text-lg font-extrabold">{x('Depositar USDC TESTE', 'Deposit USDC TESTE', 'Depositar USDC TESTE')}</h2>
+    <h2 className="display text-lg font-extrabold">{x('Depositar USDC', 'Deposit USDC', 'Depositar USDC')}</h2>
     <div className="grid gap-4 sm:grid-cols-[auto_1fr]">
       {qr ? <img src={qr} width={160} height={160} alt={x('QR do endereço de depósito', 'Deposit address QR code', 'QR de la dirección de depósito')} className="rounded-lg border border-[#E4DCCB]" /> : <div className="h-40 w-40 animate-pulse rounded-lg bg-[#F0E9DA]" />}
       <div className="grid min-w-0 gap-2">
@@ -138,12 +133,12 @@ function Deposit({ j, snap, onJourney }: { j: NativeTestJourney; snap: TestAccou
       </div>
     </div>
     <div className="grid gap-2 rounded-xl border border-[#E4DCCB] bg-[#FBF8F0] p-3">
-      <p className="text-sm font-bold">{x('Receber saldo de teste', 'Receive test balance', 'Recibir saldo de prueba')}</p>
+      <p className="text-sm font-bold">{x('Receber saldo', 'Receive balance', 'Recibir saldo')}</p>
       <label className="flex items-start gap-3 text-xs leading-relaxed"><input data-testid="check-native-local" type="checkbox" className="mt-0.5 h-5 w-5 shrink-0 accent-[#0E7C6B]" checked={ack} onChange={e => setAck(e.target.checked)} />
         <span>{x('Entendo que esta é uma EVM LOCAL, não a Sepolia pública, e que reiniciar o nó reinicia a blockchain e apaga saldos e histórico.', 'I understand this is a LOCAL EVM, not public Sepolia, and that restarting the node resets the blockchain and erases balances and history.', 'Entiendo que es una EVM LOCAL, no la Sepolia pública, y que reiniciar el nodo reinicia la blockchain y borra saldos e historial.')}</span></label>
       {err && <p role="alert" className="text-sm font-semibold text-[#B4421A]">{err}</p>}
       {pending && <p role="status" className="text-xs font-semibold text-[#8A6A2F]">{x('Financiamento em andamento. Aguarde a confirmação.', 'Funding in progress. Wait for confirmation.', 'Fondeo en curso. Espera la confirmación.')}</p>}
-      <button type="button" data-testid="button-native-fund" className={`${btn} w-fit`} disabled={!ack || busy || pending} onClick={() => void fund()}>{busy ? x('Aguarde…', 'Please wait…', 'Espera…') : x('Receber saldo de teste', 'Receive test balance', 'Recibir saldo de prueba')}</button>
+      <button type="button" data-testid="button-native-fund" className={`${btn} w-fit`} disabled={!ack || busy || pending} onClick={() => void fund()}>{busy ? x('Aguarde…', 'Please wait…', 'Espera…') : x('Receber saldo', 'Receive balance', 'Recibir saldo')}</button>
       <p className="text-xs text-[#5B6B85]">{x('O saldo só muda após confirmação on-chain, vista no snapshot.', 'The balance only changes after on-chain confirmation, shown in the snapshot.', 'El saldo solo cambia tras la confirmación on-chain, visible en el snapshot.')}</p>
     </div>
   </div>;

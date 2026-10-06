@@ -1,5 +1,6 @@
 import type { DemoOperation, DemoOrchestratorBudget, DemoProposal } from "@workspace/api-zod";
 import type { EngineState } from "./demo-state";
+import { recordTreasurySettlement } from "./treasury-round.ts";
 
 const money = (n: number) => Math.round(n * 1e6) / 1e6;
 const iso = (n: number) => new Date(n).toISOString();
@@ -106,6 +107,7 @@ export function progressOrchestration(engine: EngineState, now: number,
       engine.treasury.assetsUsdc = money(engine.treasury.assetsUsdc + net);
       engine.treasury.realizedUsdc = money(engine.treasury.realizedUsdc + net);
       engine.treasury.cycleResultUsdc = money(engine.treasury.cycleResultUsdc + net);
+      recordTreasurySettlement(engine, op, now);
       set(op, "closed"); emit(op.agent, "treasury", "reconciliation", op.id);
     }
   }
