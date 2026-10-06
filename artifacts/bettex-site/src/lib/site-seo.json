@@ -19,7 +19,7 @@
       "image": "documentation",
       "index": true
     },
-    "/demo": {
+    "/app": {
       "title": "Demo BETTEX | Protótipo de participação e resultados",
       "description": "Explore o protótipo visual da BETTEX: participação, resultados e cenários simulados. Entenda as regras do token, sem dinheiro real ou operações financeiras.",
       "image": "demo",

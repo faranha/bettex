@@ -1,5 +1,7 @@
 /** @jsxImportSource react */
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'wouter';
+import { demoAccountTab, demoPath, type DemoAccountTab } from './demo-navigation';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { Download } from 'lucide-react';
 import { useX } from './ui';
@@ -8,19 +10,25 @@ import { WalletAction } from './WalletAction';
 import { History } from './Views';
 import { DemoWalletsCard } from './DemoWalletsCard';
 
-type Tab = 'profile' | 'wallets' | 'operations' | 'security' | 'history';
+type Tab = DemoAccountTab;
 const tabs: Tab[] = ['profile', 'wallets', 'operations', 'security', 'history'];
 const btn = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#0E7C6B] bg-white px-4 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5]';
 
 function initialTab(): Tab {
   if (typeof window === 'undefined') return 'profile';
-  const t = new URLSearchParams(window.location.search).get('tab');
-  return tabs.includes(t as Tab) ? (t as Tab) : 'profile';
+  return demoAccountTab(window.location.pathname, window.location.search);
 }
 
 export function DemoAccountPanel({ d, onWallet }: { d: DemoDashboard; onWallet: (kind: Kind, asset: Asset) => void }) {
   const { x, loc } = useX();
   const [tab, setTab] = useState<Tab>(initialTab);
+  const [path, navigate] = useLocation();
+  const tablist = useRef<HTMLDivElement>(null);
+  useEffect(() => { setTab(initialTab()); }, [path]);
+  useEffect(() => {
+    tablist.current?.querySelector<HTMLElement>('[aria-selected="true"]')
+      ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }, [tab]);
   const [edit, setEdit] = useState(false);
   const p = d.profile; const b = d.balances;
   const fl = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
@@ -54,8 +62,13 @@ export function DemoAccountPanel({ d, onWallet }: { d: DemoDashboard; onWallet: 
       </div>
       <p className="mt-1 text-xs text-[#5B6B85]">{x('Período de teste · ALFA · sem dinheiro real. Saldos e movimentos são emulados.', 'Test period · ALFA · no real money. Balances and movements are emulated.', 'Período de prueba · ALFA · sin dinero real. Saldos y movimientos son emulados.')}</p>
     </header>
-    <div role="tablist" className="flex gap-1 overflow-x-auto rounded-2xl bg-[#F0E9DA] p-1">
-      {tabs.map(t => <button key={t} role="tab" type="button" aria-selected={tab === t} data-testid={`tab-demo-${t}`} onClick={() => setTab(t)}
+    <div ref={tablist} role="tablist" className="flex min-w-0 max-w-full gap-1 overflow-x-auto rounded-2xl bg-[#F0E9DA] p-1">
+      {tabs.map(t => <button key={t} role="tab" type="button" aria-selected={tab === t} data-testid={`tab-demo-${t}`} onClick={() => {
+        setTab(t);
+        const query = new URLSearchParams(window.location.search);
+        query.delete('tab');
+        navigate(`${demoPath('account', loc)}/${t}${query.size ? `?${query}` : ''}`, { replace: true });
+      }}
         className={`min-h-11 flex-1 whitespace-nowrap rounded-xl px-3 text-sm font-bold ${tab === t ? 'bg-[#0E7C6B] text-white' : 'text-[#1B2A41]'}`}>{labels[t]}</button>)}
     </div>
     {tab === 'profile' && <section className="dcard p-4 sm:p-5" data-testid="demo-tab-profile">

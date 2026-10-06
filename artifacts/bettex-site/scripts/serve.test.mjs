@@ -24,13 +24,21 @@ test('dedicated app destinations load their localized shell directly', async () 
     ['/en/demo/account/security', 'My account'],
     ['/es/demo/mi-cuenta/profile', 'Mi cuenta'],
   ]) {
-    const res = await get(url);
+    const canonical = url.replace('/demo', '/app');
+    const res = await get(canonical);
     assert.equal(res.status, 200);
     assert.match(res.body, new RegExp(`<title>${title} \\| BETTEX</title>`));
     assert.match(res.headers['x-robots-tag'], /noindex/);
-    assert.ok(res.body.includes(`href="https://bettex.ai${url}/"`));
+    assert.ok(res.body.includes(`href="https://bettex.ai${canonical}/"`));
   }
   assert.equal((await get('/demo/unknown')).status, 404);
+});
+test('legacy demo URLs redirect to the same app area and preserve query parameters', async () => {
+  for (const url of ['/demo', '/en/demo/central', '/es/demo/mi-cuenta/security', '/demo/saldo', '/en/demo/simulation']) {
+    const res = await get(`${url}?preview=public`);
+    assert.equal(res.status, 308);
+    assert.equal(res.headers.location, `${url.replace('/demo', '/app')}?preview=public`);
+  }
 });
 function get(url, headers = {}, method = 'GET') {
   return new Promise((resolve, reject) => {
@@ -140,9 +148,9 @@ test('unknown pages return real noindex 404, malformed paths and traversal are r
 });
 test('personal balance and history reload directly in all languages without indexing', async () => {
   for (const [route, title] of [
-    ['/demo/saldo', 'Saldo e histórico'],
-    ['/en/demo/balance', 'Balance and history'],
-    ['/es/demo/saldo', 'Saldo e historial'],
+    ['/app/saldo', 'Saldo e histórico'],
+    ['/en/app/balance', 'Balance and history'],
+    ['/es/app/saldo', 'Saldo e historial'],
   ]) {
     for (const suffix of ['', '/']) {
       const res = await get(route + suffix);

@@ -31,15 +31,17 @@ import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { LiveMarketsSection } from '@/components/live-markets/LiveMarketsSection';
 import { PitchSectionNav } from '@/components/pitch/PitchSectionNav';
 import { HomeSectionNav } from '@/components/HomeSectionNav';
+import { AppHeader } from '@/components/app/AppHeader';
+import { demoView } from '@/components/demo/demo-navigation';
 
 const queryClient = new QueryClient();
-import { AccountAuthProvider, AuthenticatedHome } from '@/components/account/AuthProvider';
+import { AccountAuthProvider } from '@/components/account/AuthProvider';
 import { SignInPage, SignUpPage } from '@/pages/auth';
 
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 const HOME_PATH = `${BASE_PATH}/`;
 const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
-const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR APP', href: '/demo' }] as const;
+const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR APP', href: '/app' }] as const;
 const legacyChapterIds = new Set<string>(chapters.map(({ id }) => id));
 const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
 type Market = {
@@ -66,11 +68,11 @@ function usePageLinkProps() {
 
 function Logo() {
   const linkProps = usePageLinkProps();
-  return <a {...linkProps} href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX ALFA, voltar ao início">
-    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[#768BB5]/30 bg-[#0D1530] shadow-[0_3px_10px_rgba(0,9,33,.12)]">
-      <BettexMark slate className="block h-[26px] w-[26px]" />
+  return <a {...linkProps} href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 max-[359px]:gap-1.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX ALFA, voltar ao início">
+    <span className="grid h-9 w-9 max-[359px]:h-7 max-[359px]:w-7 shrink-0 place-items-center rounded-lg border border-[#768BB5]/30 bg-[#0D1530] shadow-[0_3px_10px_rgba(0,9,33,.12)]">
+      <BettexMark slate className="block h-[26px] w-[26px] max-[359px]:h-[22px] max-[359px]:w-[22px]" />
     </span>
-    <span className="display text-[22px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
+    <span className="display text-[22px] max-[359px]:text-[18px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
     <span data-i18n="raw" data-testid="brand-alpha-badge" className="mono shrink-0 rounded border border-[#F2B632]/60 bg-[#F2B632]/10 px-1.5 py-1 text-[9px] font-bold leading-none tracking-[.12em] text-[#F2B632]">ALFA</span>
   </a>;
 }
@@ -80,7 +82,7 @@ function MainLinks({ className, onNavigate, uniform = false }: { className: stri
   const linkProps = usePageLinkProps();
   return <>{mainLinks.map(({ label, href }) => {
     const active = location === href || (href === '/documentacao' && ['/documentation', '/documentacion'].includes(location));
-    const appLink = href === '/demo';
+    const appLink = href === '/app';
     return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`site-page-link ${appLink ? 'site-page-link--app' : uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{label}{appLink && <ArrowRight size={16} aria-hidden="true" />}</a>;
   })}</>;
 }
@@ -150,7 +152,8 @@ function SiteHeader() {
         <MainLinks className="" />
       </nav>
       <div className="hidden xl:flex"><LanguageSelector /></div>
-      <button type="button" data-testid="public-menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 max-sm:ml-auto xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
+      <a href={localizedUrl(`${BASE_PATH}/app`)} data-testid="launch-app-mobile" className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md border border-[#F2B632] bg-[#F2B632] px-3 max-[359px]:px-2 text-[11px] font-extrabold text-[#070B1F] hover:bg-[#FFD16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AAC3EE] xl:hidden">{t('ABRIR APP')}<ArrowRight size={14} aria-hidden="true" className="max-[359px]:hidden" /></a>
+      <button type="button" data-testid="public-menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     <div inert={menuOpen}>
       {/\/pitch\/?$/.test(location) && <PitchSectionNav onNavigate={() => setMenuOpen(false)} menuOpen={menuOpen} />}
@@ -357,7 +360,8 @@ function Pitch() {
 }
 
 function Demo() {
-  return <SitePage compactFooter><DemoPage /></SitePage>;
+  const [path] = useLocation();
+  return demoView(path) ? <div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><DemoPage /></div> : <NotFound />;
 }
 
 function Documentation() {
@@ -369,7 +373,15 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
   return <ErrorBoundary resetKey={location}>{children}</ErrorBoundary>;
 }
 function HomeRoute() {
-  return typeof window === 'undefined' ? <Home /> : <AuthenticatedHome><Home /></AuthenticatedHome>;
+  return <Home />;
+}
+
+function LegacyDemoRedirect() {
+  const [path, navigate] = useLocation();
+  useEffect(() => {
+    if (demoView(path)) navigate(path.replace(/^\/demo/, '/app') + window.location.search + window.location.hash, { replace: true });
+  }, [path, navigate]);
+  return demoView(path) ? null : <NotFound />;
 }
 
 /** The old account URL has no page: reload the canonical app route cleanly. */
@@ -384,7 +396,7 @@ function Redirect({ to }: { to: string }) {
 function App({ ssrPath }: { ssrPath?: string } = {}) {
   const language = useLocale();
   const base = `${BASE_PATH}${language === 'pt' ? '' : `/${language}`}`;
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><AccountAuthProvider><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={HomeRoute} /><Route path="/pitch" component={Pitch} /><Route path="/testes/conta"><Redirect to="/demo/minha-conta" /></Route><Route path="/demo" component={Demo} /><Route path="/demo/central" component={Demo} /><Route path="/demo/saldo" component={Demo} /><Route path="/demo/balance" component={Demo} /><Route path="/demo/tesouraria" component={Demo} /><Route path="/demo/treasury" component={Demo} /><Route path="/demo/tesoreria" component={Demo} /><Route path="/demo/simulacao" component={Demo} /><Route path="/demo/simulation" component={Demo} /><Route path="/demo/simulacion" component={Demo} /><Route path="/demo/minha-conta/*?" component={Demo} /><Route path="/demo/account/*?" component={Demo} /><Route path="/demo/mi-cuenta/*?" component={Demo} /><Route path="/sign-in/*?" component={SignInPage} /><Route path="/sign-up/*?" component={SignUpPage} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></AccountAuthProvider></WouterRouter><FloatingCommunityCTA /><Toaster /></TooltipProvider></QueryClientProvider>;
+  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><AccountAuthProvider><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={HomeRoute} /><Route path="/pitch" component={Pitch} /><Route path="/testes/conta"><Redirect to="/app/minha-conta" /></Route><Route path="/app/*?" component={Demo} /><Route path="/demo/*?" component={LegacyDemoRedirect} /><Route path="/sign-in/*?" component={SignInPage} /><Route path="/sign-up/*?" component={SignUpPage} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></AccountAuthProvider></WouterRouter><FloatingCommunityCTA /><Toaster /></TooltipProvider></QueryClientProvider>;
 }
 
 export default App;

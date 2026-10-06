@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useLocation, Link } from 'wouter';
 import { AccountSheet } from '@/components/account/AccountSheet';
-import { RefreshCw, Send } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 import { useGetDemoDashboard, getGetDemoDashboardQueryKey } from '@workspace/api-client-react';
 import { useX } from '@/components/demo/ui';
 import { Rates, MovementSheet, useClock, type Kind, type Asset } from '@/components/demo/fin';
@@ -13,15 +13,13 @@ import { AgentFlow } from '@/components/demo/AgentFlow';
 import { HistoryPanel } from '@/components/history/HistoryPanel';
 import { PersonalOverview } from '@/components/demo/PersonalOverview';
 import { WalletPage } from '@/components/demo/WalletPage';
-import { demoView, demoPath, demoLabel, type DemoView } from '@/components/demo/demo-navigation';
+import { demoView, demoPath, demoLabel } from '@/components/demo/demo-navigation';
 import { AlphaTradingPanel, AlphaTradingCapitalPanel } from '@/components/alpha-trading/AlphaTradingPanel';
 import { AgentOperationsDashboard } from '@/components/agent-operations/AgentOperationsDashboard';
 import { PolicyAdminPanel } from '@/components/alpha-trading/PolicyAdminPanel';
 import { SimulationPanel } from '@/components/simulation/SimulationPanel';
-import { MobileAreaNav } from '@/components/demo/MobileAreaNav';
 import '@/components/demo/demo.css';
 import { PublicDemoPage } from '@/components/demo/PublicDemoPage';
-import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 import { isDemoSession } from '@/components/demo/demo-session';
 import { DemoTabControls } from '@/components/demo/DemoTabControls';
 import { DemoEnvironmentBanner } from '@/components/demo/DemoEnvironmentBanner';
@@ -40,10 +38,7 @@ function DevelopmentDemoPage() {
   return typeof window === 'undefined' ? <main className="demo-root min-h-96 p-6"><h1 className="sr-only">{demoLabel(demoView(path) ?? 'home', loc)}</h1><p>{x('Carregando seu painel…', 'Loading your dashboard…', 'Cargando tu panel…')}</p></main> : <ClientDemoPage />;
 }
 function SimulationPage() {
-  const { x, loc } = useX();
-  const tabs: DemoView[] = ['home', 'central', 'wallet', 'treasury', 'simulation', 'account'];
   return <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10"><DemoEnvironmentBanner />
-    <MobileAreaNav current="simulation" className="py-1" /><nav aria-label={x('Áreas do app', 'App areas', 'Áreas de la app')} className="mx-auto hidden max-w-5xl gap-1 px-3 sm:flex sm:flex-wrap">{tabs.map(k => <Link key={k} href={demoPath(k, loc)} data-testid={`nav-${k}`} aria-current={k === 'simulation' ? 'page' : undefined} className={`inline-flex min-h-11 min-w-0 items-center justify-center border-b-2 px-2 text-center text-sm font-bold sm:justify-start sm:px-3 ${k === 'simulation' ? 'border-[#0E7C6B] text-[#0A6657]' : 'border-transparent text-[#5B6B85]'}`}>{demoLabel(k, loc)}</Link>)}</nav>
     <SimulationPanel /></main>;
 }
 function ClientDemoPage() {
@@ -61,18 +56,9 @@ function ClientDemoPage() {
   const h = new Date().getHours();
   const greet = h < 12 ? x('Bom dia', 'Good morning', 'Buenos días') : h < 18 ? x('Boa tarde', 'Good afternoon', 'Buenas tardes') : x('Boa noite', 'Good evening', 'Buenas noches');
   const b = d.balances;
-  const tabs: [DemoView, string][] = [['home', x('Meu painel', 'My dashboard', 'Mi panel')], ['central', x('Central da IA', 'AI Center', 'Central de IA')], ['wallet', x('Saldo e histórico', 'Balance and history', 'Saldo e historial')], ['simulation', x('Simulação', 'Simulation', 'Simulación')], ['treasury', x('Tesouraria', 'Treasury', 'Tesorería')], ['account', x('Minha conta', 'My account', 'Mi cuenta')]];
-  const tabBtn = (on: boolean) => `min-h-11 shrink-0 border-b-2 px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:px-4 ${on ? 'border-[#0E7C6B] text-[#0A6657]' : 'border-transparent text-[#5B6B85] hover:text-[#1B2A41]'}`;
   const sec = 'dcard p-4 sm:p-5';
   return <Rates.Provider value={{ r: b.brlPerUsdc, bu: b.bettexUsdc }}><main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10">
-    <div className="sticky top-[var(--site-header-h)] z-30 border-b border-[#E4DCCB] bg-[#FBF8F0]/95 backdrop-blur">{banner}
-      <MobileAreaNav current={tab} />
-      <nav aria-label={x('Áreas do app', 'App areas', 'Áreas de la app')} className="mx-auto hidden max-w-5xl gap-1 overflow-x-auto px-3 sm:flex">
-        <div className="grid min-w-0 flex-1 grid-cols-2 sm:flex">{tabs.map(([k, l]) => <Link key={k} href={demoPath(k, loc)} data-testid={`nav-${k}`} aria-current={tab === k ? 'page' : undefined} onClick={() => window.scrollTo({ top: 0 })} className={`${tabBtn(tab === k)} inline-flex items-center`}>{l}</Link>)}</div>
-        <div className="ml-auto flex shrink-0 items-center gap-1">
-          <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" aria-label={x('Comunidade no Telegram', 'Community on Telegram', 'Comunidad en Telegram')} title={x('Comunidade no Telegram', 'Community on Telegram', 'Comunidad en Telegram')} data-testid="link-app-community" className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full px-2 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:px-3"><Send className="h-5 w-5" aria-hidden="true" /><span className="hidden sm:inline">{x('Comunidade', 'Community', 'Comunidad')}</span></a>
-        </div>
-      </nav></div>
+    {banner}
     <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 px-3 pt-5 sm:px-5">
       {tab === 'home' && <>
         <div><p className="text-sm text-[#5B6B85]">{greet},</p><h1 className="display break-words text-3xl font-extrabold tracking-tight" data-testid="text-greeting-name">{d.profile.name}</h1><p className="mt-1 break-all text-xs text-[#5B6B85]">{d.profile.email} · {d.profile.accountId}{isDemoSession(d.profile) && <span className="mt-1 block font-bold text-[#0A6657]">{x('Conta demo · sessão de teste ativa', 'Demo account · test session active', 'Cuenta demo · sesión de prueba activa')}</span>}</p></div>

@@ -11,7 +11,7 @@ export function PageMetadata() {
     const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     const key = ['/documentation', '/documentacion'].includes(location) ? '/documentacao' : location.replace(/\/$/, '') || '/';
     const view = demoView(location);
-    const page = seo.pages[(view ? '/demo' : key) as keyof typeof seo.pages];
+    const page = seo.pages[(view ? '/app' : key) as keyof typeof seo.pages];
     const title = view && view !== 'home' ? demoPageTitle(view, language) : t(page?.title ?? 'Página não encontrada | BETTEX');
     const description = page ? t(page.description) : t('A página solicitada não foi encontrada.');
     const path = localizedUrl(`${base}${page ? key : location}`);

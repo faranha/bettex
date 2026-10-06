@@ -62,9 +62,15 @@ export function createSiteServer(root = publicRoot) {
       }
       const url = new URL(req.url ?? '/', 'http://localhost');
       const pathname = decodeURIComponent(url.pathname);
+      const legacyApp = pathname.match(/^\/(?:(en|es)\/)?demo(\/.*)?$/);
+      if (legacyApp && /^(?:\/?|\/(?:central|saldo|balance|tesouraria|treasury|tesoreria|simulacao|simulation|simulacion)\/?|\/(?:minha-conta|account|mi-cuenta)(?:\/.*)?)$/.test(legacyApp[2] ?? '')) {
+        res.writeHead(308, { Location: `${legacyApp[1] ? `/${legacyApp[1]}` : ''}/app${legacyApp[2] ?? ''}${url.search}`, 'Cache-Control': 'no-store' });
+        res.end();
+        return;
+      }
       // Dedicated app pages must also open directly and after a reload.
-      const appPage = pathname.match(/^\/(?:(en|es)\/)?demo\/(central|saldo|balance|tesouraria|treasury|tesoreria|minha-conta|account|mi-cuenta)\/?$/)
-        || pathname.match(/^\/(?:(en|es)\/)?demo\/(minha-conta|account|mi-cuenta)\/.+$/);
+      const appPage = pathname.match(/^\/(?:(en|es)\/)?app\/(central|saldo|balance|tesouraria|treasury|tesoreria|minha-conta|account|mi-cuenta|simulacao|simulation|simulacion)\/?$/)
+        || pathname.match(/^\/(?:(en|es)\/)?app\/(minha-conta|account|mi-cuenta)\/.+$/);
       if (appPage) {
         const language = appPage[1] || 'pt';
         const title = appPage[2] === 'central'
@@ -73,8 +79,10 @@ export function createSiteServer(root = publicRoot) {
             ? { pt: 'Minha conta', en: 'My account', es: 'Mi cuenta' }[language]
             : ['saldo', 'balance'].includes(appPage[2])
               ? { pt: 'Saldo e histórico', en: 'Balance and history', es: 'Saldo e historial' }[language]
+            : ['simulacao', 'simulation', 'simulacion'].includes(appPage[2])
+              ? { pt: 'Simulação', en: 'Simulation', es: 'Simulación' }[language]
             : { pt: 'Tesouraria', en: 'Treasury', es: 'Tesorería' }[language];
-        const shell = path.join(root, language === 'pt' ? 'demo/index.html' : `${language}/demo/index.html`);
+        const shell = path.join(root, language === 'pt' ? 'app/index.html' : `${language}/app/index.html`);
         const html = (await readFile(shell, 'utf8'))
           .replace(/<title>[^<]*<\/title>/i, `<title>${title} | BETTEX</title>`)
           .replace(/<h1([^>]*)>[^<]*<\/h1>/i, `<h1$1>${title}</h1>`)

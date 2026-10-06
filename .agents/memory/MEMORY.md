@@ -33,6 +33,7 @@
 - [Elegibilidade ao lucro](profit-entitlement-rules.md) — cada rodada paga ou não paga, sem retorno ou acumulação; saídas cancelam direitos e frações vão à tesouraria.
 - [Demonstração e fase ALFA](demo-prototype-scope.md) — banco básico e emulação automática; app claro, suporte no Telegram; sem dinheiro real.
 - [Navegação do piloto](demo-navigation.md) — saldo e extrato em página própria; painel com atividade e participação; Tesouraria e Minha conta separadas.
+- [Separação site/app](site-app-separation.md) — experiências distintas no mesmo projeto; voltar ao site precisa funcionar também para usuários autenticados.
 - [Ações da carteira](wallet-action-context.md) — entradas e saídas junto de cada saldo; USDC/BETTEX com conversão nos dois sentidos; saque não limitado ao rendimento.
 - [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.

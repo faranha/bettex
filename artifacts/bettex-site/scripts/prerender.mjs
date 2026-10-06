@@ -19,8 +19,8 @@ try {
   for (const [route, page] of Object.entries(routes)) {
     const body = render(`${base}${route}`);
     if (!body.includes('<h1')) throw new Error(`Prerender failed: no H1 for ${route}`);
-    if (/^\/(?:(?:en|es)\/)?demo(?:\/|$)/.test(route) &&
-      (!body.includes('demo-root') || body.includes('data-testid="text-greeting-name"') || body.includes('data-testid="reset-demo-session"'))) {
+    if (/^\/(?:(?:en|es)\/)?app(?:\/|$)/.test(route) &&
+      (!body.includes('demo-root') || body.includes('site-footer') || !body.includes('data-testid="app-header"') || body.includes('data-testid="text-greeting-name"') || body.includes('data-testid="reset-demo-session"'))) {
       throw new Error(`Demo SSR must render only a loading shell, never a visitor's account or session controls: ${route}`);
     }
     const directory = path.join(output, route === '/' ? '' : route.slice(1));

@@ -1,0 +1,7 @@
+.app-header{position:sticky;top:0;z-index:40;background:rgba(251,248,240,.96);border-bottom:1px solid #E4DCCB;backdrop-filter:blur(8px)}
+.app-header a:focus-visible{outline:2px solid #0E7C6B;outline-offset:2px}
+.app-header .lang-selector.app-header__lang{height:40px;border-color:#E4DCCB;border-radius:999px;color:#1B2A41;background:#FFFCF6}
+.app-header .lang-selector.app-header__lang:hover,.app-header .lang-selector.app-header__lang[data-state=open]{border-color:#0E7C6B;background:#E9EEE5}
+.app-header .lang-selector.app-header__lang:focus-visible{outline-color:#0E7C6B}
+.app-header .lang-selector.app-header__lang .lang-selector__chevron{color:#5B6B85}
+@media(max-width:359px){.app-header .lang-selector.app-header__lang .lang-selector__chevron{display:none}}
