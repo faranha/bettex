@@ -9,6 +9,7 @@ import { useX } from '@/components/demo/ui';
 import { demoLabel, demoPath, demoView, type DemoView } from '@/components/demo/demo-navigation';
 import { localizedUrl } from '@/lib/i18n';
 import { AppExchangeRates } from './AppExchangeRates';
+import { AppProfileLink } from './AppProfileLink';
 import './AppHeader.css';
 
 export function AppHeader({ current, className = '' }: { current?: DemoView; className?: string }) {
@@ -51,6 +52,7 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
         {APP_AREAS.map(k => <Link key={k} href={demoPath(k, loc)} data-testid={`nav-${k}`} aria-current={view === k ? 'page' : undefined}
           onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
           className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-lg px-3 text-[13px] font-bold ${view === k ? 'bg-[#E9EEE5] text-[#0A6657] shadow-[inset_0_-2px_0_#0E7C6B]' : 'text-[#44546E] hover:bg-[#F1EBDD] hover:text-[#1B2A41]'}`}>{demoLabel(k, loc)}</Link>)}
+        <AppProfileLink />
         <AppExchangeRates className="ml-auto py-1" />
       </nav>
     </div>
