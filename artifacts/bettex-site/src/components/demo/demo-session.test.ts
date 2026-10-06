@@ -30,14 +30,19 @@ test('player data precede agent trading, not a generic crypto price viewer', () 
   assert.doesNotMatch(home, /LiveMarketsSection/);
   assert.match(home, /My participation and next cycle/);
 });
-test('dashboard uses a profile icon beside the name, with history inside wallets and no expanded account details', () => {
+test('profile access lives in the options bar, with history inside wallets and no dashboard greeting block', () => {
   const source = readFileSync(new URL('./PersonalOverview.tsx', import.meta.url), 'utf8');
   const page = readFileSync(new URL('../../pages/demo.tsx', import.meta.url), 'utf8');
   const home = page.slice(page.indexOf("{tab === 'home'"), page.indexOf("{tab === 'central'"));
-  assert.ok(home.indexOf('data-testid="link-account-full"') > home.indexOf('data-testid="text-greeting-name"'));
-  assert.ok(home.indexOf('data-testid="link-account-full"') < home.indexOf('<PersonalOverview '));
-  assert.match(home, /\?tab=profile/);
-  assert.match(home, /aria-label=.*Open my profile details/);
+   const profileLink = readFileSync(new URL('../app/AppProfileLink.tsx', import.meta.url), 'utf8');
+   const header = readFileSync(new URL('../app/AppHeader.tsx', import.meta.url), 'utf8');
+   const mobile = readFileSync(new URL('./MobileAreaNav.tsx', import.meta.url), 'utf8');
+   assert.match(header, /<AppProfileLink \/>/);
+   assert.match(mobile, /<AppProfileLink \/>/);
+   assert.match(profileLink, /\?tab=profile/);
+   assert.match(profileLink, /aria-label=.*Open my profile details/);
+   assert.match(profileLink, /profile\.nickname\?\.trim\(\) \|\| data\?\.profile\.name/);
+   assert.doesNotMatch(home, /text-greeting-name|link-account-full|ProfileAvatar|greet/);
   assert.doesNotMatch(home, /d\.profile\.email|d\.profile\.accountId/);
   assert.doesNotMatch(source, /My account overview|UserRound|<Link /);
   assert.match(source, /headerActions=\{historyButton\}/);

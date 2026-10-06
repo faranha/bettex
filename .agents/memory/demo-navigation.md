@@ -3,11 +3,11 @@ name: Organização aprovada do piloto
 description: Escopo e organização confirmados para o piloto visual BETTEX.
 ---
 
-Player account details, personal wallets and balances belong at the top of the main app dashboard, before markets and agent activity.
+Personal wallets and balances belong at the top of the main app dashboard, before markets and agent activity. The compact name and profile access belong in the system options bar, not in a separate dashboard greeting block.
 
 **Why:** The creator corrected the markets-first arrangement: “in any casino, the details of the gambler or player are on top” and “we should move data to the top”.
 
-**How to apply:** Keep the greeting and personal overview first. Do not let prioritizing market or agent activity push the player's data below those sections; preserve My account and Treasury, with statements inside My account → History, without repeating wallet cards there.
+**How to apply:** Keep personal wallets first, without a separate greeting block. Do not let prioritizing market or agent activity push the player's balances below those sections; preserve My account and Treasury, with statements inside My account → History, without repeating wallet cards there.
 
 Keep the demo environment notice and restart controls in one blue band, split into status information and demo controls columns.
 
@@ -37,11 +37,11 @@ O usuário demo deve ser considerado já logado em tudo que for necessário na d
 
 **How to apply:** Abrir o percurso de demonstração com sessão de teste ativa, sem cadastro ou login obrigatórios. Isso não autoriza usar a identidade de outro usuário, conceder permissões administrativas ou dispensar a autenticação de operações reais. Preservar a distinção entre sessão simulada e conta nativa/Clerk. A simulação deve ter um escopo próprio da sessão demo: apenas mudar rótulos no dashboard deixa o simulador dependente da conta nativa e bloqueia o percurso.
 
-No dashboard, o criador prefere o histórico dentro do bloco de saldos, com botão ou ícone claro. Inicialmente chamou esse bloco de “My account overview”, mas depois pediu retirar a apresentação expandida de My Account: o nome já aparece na saudação e deve ter um ícone ao lado que abre os detalhes. Os detalhes pessoais ficam no perfil, não expandidos no dashboard. Não repetir um painel completo de atividade recente fora das carteiras.
+No dashboard, o criador prefere o histórico dentro do bloco de saldos, com botão ou ícone claro. A identidade e o acesso compacto ao perfil devem ficar na barra de opções do sistema, sem um bloco de saudação acima das carteiras. Os detalhes pessoais ficam no perfil, não expandidos no dashboard. Não repetir um painel completo de atividade recente fora das carteiras.
 
-**Why:** O criador considera que My Account está ocupando muito espaço e pediu um ícone junto ao nome para acessar os detalhes.
+**Why:** O criador considera que My Account está ocupando muito espaço. Depois de pedir um ícone junto ao nome, pediu mover esse bloco para a barra de opções para não ocupar espaço no dashboard.
 
-**How to apply:** Usar acesso compacto ao perfil ao lado da saudação; não reintroduzir um painel expandido de dados pessoais ou cabeçalho redundante de My Account. Manter carteiras e histórico acessíveis, sem expor todos os filtros e registros por padrão. Preservar as fontes separadas de conta nativa e sessão demo, além das ações de carteira e do perfil completo.
+**How to apply:** Usar nome e acesso compacto ao perfil na barra de opções, no desktop e mobile; não reintroduzir saudação separada, painel expandido de dados pessoais ou cabeçalho redundante de My Account. Manter carteiras e histórico acessíveis, sem expor todos os filtros e registros por padrão. Preservar as fontes separadas de conta nativa e sessão demo, além das ações de carteira e do perfil completo.
 
 O criador quer “Next Cycle” logo abaixo das carteiras no dashboard, antes dos outros blocos.
 

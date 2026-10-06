@@ -1,9 +1,8 @@
 /** @jsxImportSource react */
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'wouter';
+import { useLocation } from 'wouter';
 import { AccountSheet } from '@/components/account/AccountSheet';
-import { ProfileAvatar } from '@/components/account/ProfileIdentityEditor';
-import { RefreshCw, UserRound } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 import { useGetDemoDashboard, getGetDemoDashboardQueryKey } from '@workspace/api-client-react';
 import { useX } from '@/components/demo/ui';
 import { Rates, MovementSheet, useClock, type Kind, type Asset } from '@/components/demo/fin';
@@ -53,18 +52,13 @@ function ClientDemoPage() {
   const [mv, setMv] = useState<{ kind: Kind; asset: Asset } | null>(null); const [lastMv, setLastMv] = useState<{ kind: Kind; asset: Asset } | null>(null); const open = (kind: Kind, asset: Asset) => { const v = { kind, asset }; setLastMv(v); setMv(v); };
   const banner = <DemoEnvironmentBanner actions={<DemoTabControls />} />;
   if (!d) return <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))]"><h1 className="sr-only">{x('Meu painel', 'My dashboard', 'Mi panel')}</h1>{banner}<div className="mx-auto max-w-5xl p-4 sm:p-6">{q.isError ? <div role="alert" className="dcard grid justify-items-start gap-3 p-6"><p className="font-bold">{x('Não conseguimos carregar seus dados.', 'We could not load your data.', 'No pudimos cargar tus datos.')}</p><button type="button" data-testid="button-retry" onClick={() => void q.refetch()} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white"><RefreshCw className="h-4 w-4" aria-hidden="true" />{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button></div> : <div className="grid gap-3" aria-busy="true" aria-label={x('Carregando', 'Loading', 'Cargando')}>{[0, 1, 2].map(i => <div key={i} className="dcard h-28 animate-pulse" />)}</div>}</div></main>;
-  const h = new Date().getHours();
-  const greet = h < 12 ? x('Bom dia', 'Good morning', 'Buenos días') : h < 18 ? x('Boa tarde', 'Good afternoon', 'Buenas tardes') : x('Boa noite', 'Good evening', 'Buenas noches');
   const b = d.balances;
   const sec = 'dcard p-4 sm:p-5';
   return <Rates.Provider value={{ r: b.brlPerUsdc, bu: b.bettexUsdc }}><main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10">
     {banner}
     <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 px-3 pt-5 sm:px-5">
       {tab === 'home' && <>
-        <div className="flex items-center gap-3"><ProfileAvatar path={d.profile.avatarPath} size={56} /><div className="min-w-0"><p className="text-sm text-[#5B6B85]">{greet},</p>
-          <div className="flex flex-wrap items-center gap-2"><h1 className="display min-w-0 break-words text-3xl font-extrabold tracking-tight" data-testid="text-greeting-name">{d.profile.nickname?.trim() || d.profile.name}</h1>
-            <Link href={`${demoPath('account', loc)}?tab=profile`} data-testid="link-account-full" aria-label={x('Abrir detalhes do meu perfil', 'Open my profile details', 'Abrir detalles de mi perfil')} title={x('Perfil', 'Profile', 'Perfil')} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#0E7C6B]/30 text-[#0A6657] hover:bg-[#E9EEE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]"><UserRound className="h-5 w-5" aria-hidden="true" /></Link>
-          </div></div></div>
+        <h1 className="sr-only">{x('Meu painel', 'My dashboard', 'Mi panel')}</h1>
         <PersonalOverview d={d} onWallet={open} />
         <section><H>{x('Minha participação e próximo ciclo', 'My participation and next cycle', 'Mi participación y próximo ciclo')}</H><CycleLive d={d} now={now} pts={pts} mode={cmode} setMode={setCmode} onOpen={() => { navigate(demoPath('central', loc)); window.scrollTo({ top: 0 }); }} /></section>
         <StakingCorridor d={d} />
