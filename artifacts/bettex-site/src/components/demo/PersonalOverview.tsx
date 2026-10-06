@@ -26,14 +26,14 @@ export function PersonalOverview({ d, onWallet }: { d: DemoDashboard; onWallet: 
     ['id', x('ID da conta', 'Account ID', 'ID de cuenta'), authenticated ? acc?.id ?? p.accountId : x('Demonstração sem login', 'Demo without sign-in', 'Demostración sin sesión')], ['since', x('Membro desde', 'Member since', 'Miembro desde'), authenticated ? since : x('Disponível após entrar', 'Available after signing in', 'Disponible al entrar')],
     ['auth', x('Acesso', 'Access', 'Acceso'), demo ? x('Sessão de teste ativa · período ALFA', 'Test session active · ALFA period', 'Sesión de prueba activa · período ALFA') : p.authenticated ? x('Sessão ativa', 'Active session', 'Sesión activa') : x('Sessão indisponível', 'Session unavailable', 'Sesión no disponible')],
   ];
-  return <div className="grid gap-4" data-testid="personal-overview">
-    <section className="dcard p-4 sm:p-5" data-testid="overview-account">
+  return <div className="grid gap-3 sm:gap-4" data-testid="personal-overview">
+    <section className="dcard p-3 sm:p-4" data-testid="overview-account">
       <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="display text-lg font-extrabold">{x('Minha conta', 'My account', 'Mi cuenta')}</h2>
          <Link href={demoPath('account', loc)} data-testid="link-account-full" className={lk}>{demo ? x('Gerenciar conta de teste', 'Manage test account', 'Gestionar cuenta de prueba') : x('Conta, segurança e exportar chaves', 'Account, security and key export', 'Cuenta, seguridad y exportar claves')}</Link></div>
-      <dl className="mt-3 grid gap-x-4 gap-y-2 text-sm sm:grid-cols-[auto_1fr]">{rows.map(([k, l, v]) => <div key={k} className="contents"><dt className="text-[#5B6B85]">{l}</dt><dd className="min-w-0 break-all font-bold" data-testid={`text-account-${k}`}>{v}</dd></div>)}</dl>
+      <dl className="mt-2 grid grid-cols-1 gap-x-4 gap-y-1.5 text-sm min-[480px]:grid-cols-2 lg:grid-cols-3">{rows.map(([k, l, v]) => <div key={k} className="min-w-0"><dt className="text-xs text-[#5B6B85]">{l}</dt><dd className="min-w-0 break-all font-bold" data-testid={`text-account-${k}`}>{v}</dd></div>)}</dl>
     </section>
-    {demo ? <DemoWalletsCard d={d} onWallet={onWallet} /> : <><NativeWalletsCard profile={d.profile} /><NativeParticipationCard profile={d.profile} /></>}
-    <section className="dcard p-4 sm:p-5" data-testid="overview-demo-balances">
+    {demo ? <DemoWalletsCard d={d} onWallet={onWallet} showReceivedYield /> : <><NativeWalletsCard profile={d.profile} /><NativeParticipationCard profile={d.profile} /></>}
+    {!demo && <section className="dcard p-4 sm:p-5" data-testid="overview-demo-balances">
       <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="display text-lg font-extrabold">{x('Saldos da demonstração', 'Demo balances', 'Saldos de la demostración')}</h2>
         <span data-testid="label-source-demo" className="rounded-full bg-[#DDEBE4] px-2.5 py-0.5 text-xs font-bold text-[#0A6657]">{x('Emulado · não é cadeia nem dinheiro real', 'Emulated · not chain nor real money', 'Emulado · no es cadena ni dinero real')}</span></div>
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -42,7 +42,7 @@ export function PersonalOverview({ d, onWallet }: { d: DemoDashboard; onWallet: 
             <div className="mt-1 flex flex-wrap items-end justify-between gap-2"><Money v={v} a={a} big /><div className="flex gap-2">{acts.map(([k, id, l]) => <WalletAction key={`ov-${id}`} kind={k} asset={a} id={`ov-${id}`} label={l} onOpen={onWallet} />)}</div></div></div>)}
       </div>
       <p className="mt-3 text-xs text-[#5B6B85]">{x('Rendimento já recebido (emulado)', 'Yield already received (emulated)', 'Rendimiento ya recibido (emulado)')}: <b>{b.receivedYield.toLocaleString(loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDC</b></p>
-    </section>
+    </section>}
     <section className="dcard p-4 sm:p-5" data-testid="overview-activity">
       <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="display text-lg font-extrabold">{x('Atividade recente', 'Recent activity', 'Actividad reciente')}</h2><Link href={demoPath('wallet', loc)} data-testid="link-full-history" className={lk}>{x('Ver saldo e histórico completo', 'See full balance and history', 'Ver saldo e historial completo')}</Link></div>
       {snap?.account ? <HistoryPanel mode="native" accountKey={snap.account.id} />
