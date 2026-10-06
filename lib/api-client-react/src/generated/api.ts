@@ -35,6 +35,8 @@ import type {
   DemoDashboard,
   DemoMovementInput,
   DemoProfileInput,
+  DemoTestnet,
+  DemoTestnetActivity,
   GetAgentCenterParams,
   GetAgentReasoningParams,
   GetAlloraAnalysis200,
@@ -2437,6 +2439,208 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
       return useMutation(getTestAccountCommandMutationOptions(options), queryClient);
     }
 
+export const getGetDemoTestnetUrl = () => {
+
+
+
+
+  return `/api/demo/testnet`
+}
+
+/**
+ * @summary Verified public-testnet demo activity registry; not financial settlement
+ */
+export const getDemoTestnet = async ( options?: Parameters<typeof customFetch>[1]): Promise<DemoTestnet> => {
+
+  return customFetch<DemoTestnet>(getGetDemoTestnetUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDemoTestnetQueryKey = () => {
+    return [
+    `/api/demo/testnet`
+    ] as const;
+    }
+
+
+export const getGetDemoTestnetQueryOptions = <TData = Awaited<ReturnType<typeof getDemoTestnet>>, TError = ErrorType<unknown>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnet>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDemoTestnetQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoTestnet>>> = ({ signal }) => getDemoTestnet({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnet>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetDemoTestnetQueryResult = NonNullable<Awaited<ReturnType<typeof getDemoTestnet>>>
+export type GetDemoTestnetQueryError = ErrorType<unknown>
+
+
+export function useGetDemoTestnet<TData = Awaited<ReturnType<typeof getDemoTestnet>>, TError = ErrorType<unknown>>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnet>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoTestnet>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoTestnet>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoTestnet<TData = Awaited<ReturnType<typeof getDemoTestnet>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnet>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoTestnet>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoTestnet>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoTestnet<TData = Awaited<ReturnType<typeof getDemoTestnet>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnet>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+/**
+ * @summary Verified public-testnet demo activity registry; not financial settlement
+ */
+
+export function useGetDemoTestnet<TData = Awaited<ReturnType<typeof getDemoTestnet>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnet>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetDemoTestnetQueryOptions(options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetDemoTestnetActivityUrl = () => {
+
+
+
+
+  return `/api/demo/testnet-activity`
+}
+
+/**
+ * @summary Anonymous aggregate demo activity without identities, balances or capabilities
+ */
+export const getDemoTestnetActivity = async ( options?: Parameters<typeof customFetch>[1]): Promise<DemoTestnetActivity> => {
+
+  return customFetch<DemoTestnetActivity>(getGetDemoTestnetActivityUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDemoTestnetActivityQueryKey = () => {
+    return [
+    `/api/demo/testnet-activity`
+    ] as const;
+    }
+
+
+export const getGetDemoTestnetActivityQueryOptions = <TData = Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError = ErrorType<unknown>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDemoTestnetActivityQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoTestnetActivity>>> = ({ signal }) => getDemoTestnetActivity({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetDemoTestnetActivityQueryResult = NonNullable<Awaited<ReturnType<typeof getDemoTestnetActivity>>>
+export type GetDemoTestnetActivityQueryError = ErrorType<unknown>
+
+
+export function useGetDemoTestnetActivity<TData = Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError = ErrorType<unknown>>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoTestnetActivity>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoTestnetActivity>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoTestnetActivity<TData = Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoTestnetActivity>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoTestnetActivity>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoTestnetActivity<TData = Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+/**
+ * @summary Anonymous aggregate demo activity without identities, balances or capabilities
+ */
+
+export function useGetDemoTestnetActivity<TData = Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTestnetActivity>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetDemoTestnetActivityQueryOptions(options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
 export const getGetDemoDashboardUrl = () => {
 
 
@@ -2446,7 +2650,7 @@ export const getGetDemoDashboardUrl = () => {
 }
 
 /**
- * @summary Persistent personal dashboard and live agent activity
+ * @summary Tab-scoped demo dashboard and live agent activity
  */
 export const getDemoDashboard = async ( options?: Parameters<typeof customFetch>[1]): Promise<DemoDashboard> => {
 
@@ -2517,7 +2721,7 @@ export function useGetDemoDashboard<TData = Awaited<ReturnType<typeof getDemoDas
  , queryClient?: QueryClient
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
- * @summary Persistent personal dashboard and live agent activity
+ * @summary Tab-scoped demo dashboard and live agent activity
  */
 
 export function useGetDemoDashboard<TData = Awaited<ReturnType<typeof getDemoDashboard>>, TError = ErrorType<unknown>>(

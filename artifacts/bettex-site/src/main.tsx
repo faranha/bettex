@@ -6,6 +6,12 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import './index.css';
 import seo from './lib/site-seo.json';
 import { localeFromPath, localizedUrl, setLocale } from './lib/i18n';
+import { setRequestHeadersGetter } from '@workspace/api-client-react';
+import { demoTabToken, demoTabRequestHeaders } from './lib/demo-tab-session';
+
+// Claim early so a duplicated tab cannot inherit another live tab's demo.
+void demoTabToken().catch(() => { /* Demo requests expose storage/isolation errors. */ });
+setRequestHeadersGetter(demoTabRequestHeaders);
 
 // Static hosts may use a directory index or a physical .html file.
 // Normalize before mounting so Wouter and canonical metadata stay consistent.

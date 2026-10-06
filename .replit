@@ -28,6 +28,10 @@ args = "bettex-local-evm"
 task = "workflow.run"
 args = "github-sync"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "bettex-public-testnet"
+
 [[workflows.workflow]]
 name = "pitch-research"
 author = "agent"
@@ -61,6 +65,17 @@ args = "pnpm sync:watch"
 [workflows.workflow.metadata]
 outputType = "console"
 
+[[workflows.workflow]]
+name = "bettex-public-testnet"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "BETTEX_TESTNET_ACTIVITY_URL=http://127.0.0.1:8080/api/demo/testnet-activity pnpm --filter @workspace/bettex-contracts run public:runtime"
+
+[workflows.workflow.metadata]
+outputType = "console"
+
 [agent]
 stack = "PNPM_WORKSPACE"
 expertMode = true
@@ -75,3 +90,9 @@ externalPort = 80
 
 [nix]
 channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+BETTEX_PUBLIC_DEMO_OPERATOR_ADDRESS = "0x078E12110CF7b7C33de6fd59dBa4C240f8ED3F56"
+BETTEX_PUBLIC_DEMO_CONTRACT_ADDRESS = "0x111903a2F5DCefe434f0e14EeD3FFA2f383Cc4C8"

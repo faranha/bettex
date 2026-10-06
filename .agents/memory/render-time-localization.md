@@ -3,6 +3,12 @@ name: Render-time localization pitfalls
 description: Browser/SSR differences and React fragment handling when localizing existing JSX.
 ---
 
+A extração de mensagens deve distinguir texto exibido de identificadores de transporte, consultas de mídia e traduções explícitas em três idiomas.
+
+**Why:** A validação de publicação tratou rótulos PT/EN/ES já traduzidos, IDs de portal e chaves da sessão demo como mensagens sem tradução, bloqueando uma interface válida.
+
+**How to apply:** Preservar a auditoria do catálogo para prosa traduzida automaticamente, mas não adicionar identificadores técnicos ao catálogo. Tuplas explicitamente localizadas devem manter sua cobertura dos três idiomas e ser verificadas no componente consumidor.
+
 Explicitly localized strings from `x(...)` must bypass the automatic JSX prose translator, including dynamic accessibility labels.
 
 **Why:** New English carousel labels were translated a second time and caused a missing-translation exception that crashed the Pitch, despite passing TypeScript checks.

@@ -17,6 +17,11 @@ const DEFAULT_JSON_ACCEPT = "application/json, application/problem+json";
 
 let _baseUrl: string | null = null;
 let _authTokenGetter: AuthTokenGetter | null = null;
+type RequestHeadersGetter = (url: string) => Promise<HeadersInit | null> | HeadersInit | null;
+let _requestHeadersGetter: RequestHeadersGetter | null = null;
+export function setRequestHeadersGetter(getter: RequestHeadersGetter | null): void {
+  _requestHeadersGetter = getter;
+}
 
 /**
  * Set a base URL that is prepended to every relative request URL
@@ -359,6 +364,12 @@ export async function customFetch<T = unknown>(
   }
 
   const requestInfo = { method, url: resolveUrl(input) };
+  if (_requestHeadersGetter) {
+    const extra = await _requestHeadersGetter(requestInfo.url);
+    if (extra) new Headers(extra).forEach((value, key) => {
+      if (!headers.has(key)) headers.set(key, value);
+    });
+  }
 
   const response = await fetch(input, { ...init, method, headers });
 

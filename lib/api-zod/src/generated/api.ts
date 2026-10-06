@@ -284,6 +284,13 @@ export const GetDemoSimulationQueryParams = zod.object({
   "offset": zod.coerce.number().int().min(getDemoSimulationQueryOffsetMin).default(getDemoSimulationQueryOffsetDefault)
 })
 
+export const getDemoSimulationHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const GetDemoSimulationHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(getDemoSimulationHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
 export const GetDemoSimulationResponse = zod.object({
   "csrf": zod.string().optional().describe('Browser-demo simulation CSRF token, never a native authentication credential'),
   "mode": zod.enum(['simulation']),
@@ -311,6 +318,13 @@ export const GetDemoSimulationResponse = zod.object({
   "hasMore": zod.boolean()
 })
 
+
+export const commandDemoSimulationHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const CommandDemoSimulationHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(commandDemoSimulationHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
 
 export const commandDemoSimulationBodyCsrfMin = 16;
 export const commandDemoSimulationBodyCsrfMax = 160;
@@ -2027,6 +2041,13 @@ export const GetDemoHistoryQueryParams = zod.object({
   "limit": zod.coerce.number().int().min(1).max(getDemoHistoryQueryLimitMax).default(getDemoHistoryQueryLimitDefault)
 })
 
+export const getDemoHistoryHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const GetDemoHistoryHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(getDemoHistoryHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
 export const GetDemoHistoryResponse = zod.object({
   "items": zod.array(zod.object({
   "id": zod.string(),
@@ -2124,6 +2145,13 @@ export const GetTreasuryHistoryResponse = zod.object({
   "warning": zod.string().optional()
 })
 
+
+export const previewHistoryDistributionHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const PreviewHistoryDistributionHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(previewHistoryDistributionHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
 
 export const PreviewHistoryDistributionBody = zod.object({
   "requestId": zod.string().uuid()
@@ -2366,8 +2394,49 @@ export const TestAccountCommandResponse = zod.object({
 
 
 /**
- * @summary Persistent personal dashboard and live agent activity
+ * @summary Verified public-testnet demo activity registry; not financial settlement
  */
+export const GetDemoTestnetResponse = zod.object({
+  "status": zod.enum(['preparing', 'validating', 'live', 'unavailable']),
+  "chainId": zod.literal(421614),
+  "network": zod.enum(['Arbitrum Sepolia']),
+  "contractAddress": zod.string().nullable(),
+  "operatorAddress": zod.string().nullable(),
+  "explorerUrl": zod.string().nullable(),
+  "latestBlock": zod.number().int().nullable(),
+  "lastCheckpointAt": zod.coerce.date().nullable(),
+  "checkpointCount": zod.number().int().nullable(),
+  "financialOperations": zod.enum(['simulated']),
+  "contractPurpose": zod.enum(['demo_activity_registry'])
+})
+
+
+/**
+ * @summary Anonymous aggregate demo activity without identities, balances or capabilities
+ */
+export const getDemoTestnetActivityResponseSessionsMin = 0;
+
+export const getDemoTestnetActivityResponseMovementsMin = 0;
+
+
+
+export const GetDemoTestnetActivityResponse = zod.object({
+  "sessions": zod.number().int().min(getDemoTestnetActivityResponseSessionsMin),
+  "movements": zod.number().int().min(getDemoTestnetActivityResponseMovementsMin),
+  "updatedAt": zod.string().nullable()
+})
+
+
+/**
+ * @summary Tab-scoped demo dashboard and live agent activity
+ */
+export const getDemoDashboardHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const GetDemoDashboardHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(getDemoDashboardHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
 export const getDemoDashboardResponseStakingSharePercentMin = 0;
 export const getDemoDashboardResponseStakingSharePercentMax = 100;
 
@@ -2492,6 +2561,13 @@ export const GetDemoDashboardResponse = zod.object({
 /**
  * @summary Submit a fictitious personal movement
  */
+export const createDemoMovementHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const CreateDemoMovementHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(createDemoMovementHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
 export const createDemoMovementBodyAmountMin = 0.000001;
 export const createDemoMovementBodyAmountMax = 100000;
 
@@ -2627,6 +2703,13 @@ export const CreateDemoMovementResponse = zod.object({
 }))
 })
 
+
+export const updateDemoProfileHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const UpdateDemoProfileHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(updateDemoProfileHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
 
 export const updateDemoProfileBodyNameMin = 2;
 export const updateDemoProfileBodyNameMax = 60;

@@ -23,12 +23,14 @@ import '@/components/demo/demo.css';
 import { PublicDemoPage } from '@/components/demo/PublicDemoPage';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 import { isDemoSession } from '@/components/demo/demo-session';
+import { DemoTabControls } from '@/components/demo/DemoTabControls';
+import { DemoEnvironmentBanner } from '@/components/demo/DemoEnvironmentBanner';
 
 export function DemoPage() {
   // A read-only presentation preview; normal development routes stay operational.
   const publicPreview = import.meta.env.DEV && typeof window !== 'undefined'
     && new URLSearchParams(window.location.search).get('preview') === 'public';
-  return import.meta.env.PROD || publicPreview ? <PublicDemoPage /> : <DevelopmentDemoPage />;
+  return publicPreview ? <PublicDemoPage /> : <><DemoTabControls /><DevelopmentDemoPage /></>;
 }
 function DevelopmentDemoPage() {
   const { x, loc } = useX();
@@ -40,7 +42,7 @@ function DevelopmentDemoPage() {
 function SimulationPage() {
   const { x, loc } = useX();
   const tabs: DemoView[] = ['home', 'central', 'wallet', 'treasury', 'simulation', 'account'];
-  return <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10"><div className="bg-[#1B2A41] py-1 text-center text-[11px] font-semibold tracking-wide text-[#F5F1E8]">{x('ALFA · período de testes · sem dinheiro real', 'ALFA · testing period · no real money', 'ALFA · período de pruebas · sin dinero real')}</div>
+  return <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10"><DemoEnvironmentBanner />
     <MobileAreaNav current="simulation" className="py-1" /><nav aria-label={x('Áreas do app', 'App areas', 'Áreas de la app')} className="mx-auto hidden max-w-5xl gap-1 px-3 sm:flex sm:flex-wrap">{tabs.map(k => <Link key={k} href={demoPath(k, loc)} data-testid={`nav-${k}`} aria-current={k === 'simulation' ? 'page' : undefined} className={`inline-flex min-h-11 min-w-0 items-center justify-center border-b-2 px-2 text-center text-sm font-bold sm:justify-start sm:px-3 ${k === 'simulation' ? 'border-[#0E7C6B] text-[#0A6657]' : 'border-transparent text-[#5B6B85]'}`}>{demoLabel(k, loc)}</Link>)}</nav>
     <SimulationPanel /></main>;
 }
@@ -53,7 +55,7 @@ function ClientDemoPage() {
   const now = useClock(d);
   const pts = useCycleHistory(d); const [cmode, setCmode] = useState<CycleMode>('capital');
   const [mv, setMv] = useState<{ kind: Kind; asset: Asset } | null>(null); const [lastMv, setLastMv] = useState<{ kind: Kind; asset: Asset } | null>(null); const open = (kind: Kind, asset: Asset) => { const v = { kind, asset }; setLastMv(v); setMv(v); };
-  const banner = <div className="bg-[#1B2A41] py-1 text-center text-[11px] font-semibold tracking-wide text-[#F5F1E8]" data-testid="banner-demo">{x('ALFA · período de testes · sem dinheiro real', 'ALFA · testing period · no real money', 'ALFA · período de pruebas · sin dinero real')}</div>;
+  const banner = <DemoEnvironmentBanner />;
   if (tab === 'simulation') return <SimulationPage />;
   if (!d) return <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))]"><h1 className="sr-only">{x('Meu painel', 'My dashboard', 'Mi panel')}</h1>{banner}<div className="mx-auto max-w-5xl p-4 sm:p-6">{q.isError ? <div role="alert" className="dcard grid justify-items-start gap-3 p-6"><p className="font-bold">{x('Não conseguimos carregar seus dados.', 'We could not load your data.', 'No pudimos cargar tus datos.')}</p><button type="button" data-testid="button-retry" onClick={() => void q.refetch()} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white"><RefreshCw className="h-4 w-4" aria-hidden="true" />{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button></div> : <div className="grid gap-3" aria-busy="true" aria-label={x('Carregando', 'Loading', 'Cargando')}>{[0, 1, 2].map(i => <div key={i} className="dcard h-28 animate-pulse" />)}</div>}</div></main>;
   const h = new Date().getHours();

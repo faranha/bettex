@@ -13,6 +13,7 @@ import {
 type Command = { movement: DemoMovementInput } | { name: string } | { distributionPreview: string };
 export type AccountIdentity = {
   browserId: string;
+  tabScoped?: boolean;
   userId?: string;
   nativeAccountId?: string;
   name?: string;
@@ -21,7 +22,10 @@ export type AccountIdentity = {
 };
 export class ClaimedBrowserAccountError extends Error {}
 export async function loadDashboard(identity?: string | AccountIdentity, command?: Command, resolved?: (id: string) => void) {
-  if(process.env.NODE_ENV==="production")throw new Error("demo_internal_only");
+  if (process.env.NODE_ENV === "production" &&
+    (typeof identity !== "object" || !identity?.tabScoped || identity.userId || identity.nativeAccountId)) {
+    throw new Error("demo_internal_only");
+  }
   await ensureHistorySchema();
   return db.transaction(async tx => {
     const now = Date.now();

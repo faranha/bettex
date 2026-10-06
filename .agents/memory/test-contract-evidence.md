@@ -3,6 +3,26 @@ name: Evidence for test contracts
 description: Boundaries between local EVM proofs, testnet observations and public deployment.
 ---
 
+## Identificação pública do app
+
+O usuário escolheu o selo “LIVE · TESTNET PÚBLICA”, com destaque pulsante, em vez de “LIVE · TESTNET SIMULADA”.
+
+**Why:** O usuário escolheu conectar e validar uma rede pública antes de exibir esse selo.
+
+**How to apply:** Não confundir conectividade RPC ou execução local com o app operando em contratos públicos. Manter explícito o que continua simulado.
+
+Se não houver endereço implantado, o criador exige que o agente crie a implantação, em vez de pedir que ele encontre um endereço inexistente.
+
+**Why:** O usuário corrigiu explicitamente essa transferência de responsabilidade.
+
+**How to apply:** Fazer o trabalho técnico e buscar recursos gratuitos de teste quando possível; pedir ao usuário apenas ações externas que realmente dependam dele, nunca inventar confirmações públicas.
+
+O registro público de atividade da ALFA não comprova emissão, venda, saques ou distribuição do token econômico em contratos públicos.
+
+**Why:** A demonstração pode registrar atividade real na rede sem alterar a economia ou usar parâmetros comerciais ainda não aprovados.
+
+**How to apply:** Preservar a distinção na UI e nas entregas: LIVE identifica a conexão e o registro de atividade; saldos e operações financeiras permanecem simulados.
+
 Local EVM tests, even with an Arbitrum Sepolia chain ID, do not constitute public deployment or a public purchase. Confirm public funding and approved parameters before treating testnet execution as delivered.
 
 **Why:** This delivery required database, panel and a real purchase path as well as Solidity; local receipts alone could be mistaken for completion of the public stage.

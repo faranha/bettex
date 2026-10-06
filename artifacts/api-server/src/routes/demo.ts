@@ -11,16 +11,24 @@ import { canReadTreasuryHistory } from "../modules/accounts/infrastructure/histo
 import { CommandSimulationBody, GetSimulationResponse } from "@workspace/api-zod";
 import { simulationSnapshot, mutateSimulation } from "../modules/simulation/infrastructure/scenario-store";
 import { permittedOrigin } from "./test-accounts";
+import { demoTabIdentity } from "../lib/demo-tab-session";
 
 const router = Router();
 const cookieName = "bettex_demo";
 const requests = new Map<string, { count: number; reset: number }>();
 router.use("/demo", (req, res, next) => {
-  if(process.env.NODE_ENV==="production"){
+  const tab = req.headers["x-bettex-demo-session"];
+  if (tab !== undefined && (typeof tab !== "string" || !/^[a-f0-9]{64}$/.test(tab))) {
+    res.status(400).json({ error: "invalid_demo_tab_session" }); return;
+  }
+  if(process.env.NODE_ENV==="production" && !tab){
     res.status(403).json({error:"app_in_development"});return;
   }
   if (req.method !== "GET" && req.headers["sec-fetch-site"] === "cross-site") {
     res.status(403).json({ error: "invalid_movement" }); return;
+  }
+  if (req.method !== "GET" && (!permittedOrigin(req) || !req.is("application/json"))) {
+    res.status(403).json({ error: "origin_not_allowed" }); return;
   }
   const now = Date.now();
   // Background polling must not consume the budget for account mutations.
@@ -37,7 +45,9 @@ router.use("/demo", (req, res, next) => {
   res.set("Cache-Control", "no-store");
   next();
 });
-function accountId(req: Request, res: Response, rotate = false) {
+function accountId(req: Request, res: Response, rotate = false, authenticated = false) {
+  const tab = demoTabIdentity(req.headers["x-bettex-demo-session"], authenticated);
+  if (tab) return tab;
   const raw = req.headers.cookie?.split(";").map(value => value.trim()).find(value => value.startsWith(`${cookieName}=`))?.slice(cookieName.length + 1);
   const token = !rotate && raw && /^[a-f0-9]{64}$/.test(raw) ? raw : randomBytes(32).toString("hex");
   if (token !== raw) res.cookie(cookieName, token, {
@@ -47,13 +57,14 @@ function accountId(req: Request, res: Response, rotate = false) {
   return createHash("sha256").update(token).digest("hex");
 }
 async function userDashboard(req: Request, res: Response, command?: Parameters<typeof loadDashboard>[1]) {
-  const user = await verifiedAccount(req);
+  // Public demos never inherit real account permissions or balances.
+  const user = process.env.NODE_ENV === "production" ? undefined : await verifiedAccount(req);
   res.locals.nativeHistorySubject = user?.nativeAccountId ? `native:${user.nativeAccountId}` : undefined;
   res.locals.nativeAccountId = user?.nativeAccountId;
-  const browserId = accountId(req, res);
+  const browserId = accountId(req, res, false, !!user);
   res.locals.demoBrowserId = browserId;
   try {
-    const result = await loadDashboard({ browserId, ...user }, command, id => { res.locals.demoHistorySubject = `demo:${id}`; });
+    const result = await loadDashboard({ browserId, ...user, tabScoped: !!req.headers["x-bettex-demo-session"] }, command, id => { res.locals.demoHistorySubject = `demo:${id}`; });
     if (result) result.profile.canViewTreasuryHistory = !!user?.nativeAccountId && await canReadTreasuryHistory(user.nativeAccountId);
     return result;
   } catch (error) {
@@ -143,7 +154,7 @@ router.patch("/demo/profile", async (req, res) => {
   const input = UpdateDemoProfileBody.safeParse(req.body);
   if (!input.success || input.data.name.trim().length < 2) { res.status(400).json({ error: "invalid_profile" }); return; }
   try {
-    await updateAccountName(req, input.data.name);
+    if (process.env.NODE_ENV !== "production") await updateAccountName(req, input.data.name);
     const result = await userDashboard(req, res, { name: input.data.name });
     if (result) res.json(GetDemoDashboardResponse.parse(result));
   } catch (error) { errorResponse(req, res, error); }

@@ -158,12 +158,9 @@ function SiteHeader() {
       {/^\/(documentacao|documentation|documentacion)\/?$/.test(location) && <div id="documentation-mobile-slot" className="documentation-mobile-slot" />}
     </div>
     {menuOpen && <nav data-testid="public-mobile-menu" className="page-wrap absolute inset-x-0 top-[var(--site-header-h,57px)] z-20 mx-auto flex max-h-[calc(100dvh-var(--site-header-h,57px))] flex-col gap-1 overflow-y-auto rounded-b-lg border border-[#2B59FF]/30 bg-[#070B1F] pb-3 shadow-xl xl:hidden" aria-label="Navegação móvel">
-      <section className="pt-3" aria-label="Páginas do projeto">
-        <h2 className="mb-3 px-2 text-xs font-bold uppercase tracking-wider text-[#c5d2f1]">Páginas do projeto</h2>
-        <div className="grid gap-2 sm:grid-cols-3">
-          <MainLinks uniform onNavigate={() => setMenuOpen(false)} className="" />
-        </div>
-      </section>
+      <div className="grid gap-2 pt-3 sm:grid-cols-3">
+        <MainLinks uniform onNavigate={() => setMenuOpen(false)} className="" />
+      </div>
       <div className="mt-2 flex min-h-14 items-center justify-between gap-3 border-t border-[#2B59FF]/30 px-2 pt-3">
         <span className="text-[15px] font-bold">Selecionar idioma</span>
         <LanguageSelector />
