@@ -57,4 +57,5 @@
 .lm__link { text-decoration: underline; color: #F2B632; min-height: 24px; }
 @media (min-width: 900px) { .lm__agent { grid-template-columns: 1fr auto; align-items: center; } .lm { padding: 96px 0; } }
 @media (max-width: 520px) { .lm__tabs { gap: 6px; } .lm__tab { padding: 10px 8px; } .lm__chart { height: 230px; } }
+@media (max-width: 360px) { .lm.lm--app { padding: 12px; } .lm__tabs { gap: 4px; } .lm__tab { padding: 8px 6px; } .lm__tab-name { display: none; } .lm__tab-price { font-size: .6875rem; white-space: nowrap; } .lm__chart { height: 190px; } .lm__panel { padding: 12px; } .lm__stats { gap: 8px 16px; } }
 @media (prefers-reduced-motion: reduce) { .lm *, .lm *::before { animation: none !important; transition: none !important; } }

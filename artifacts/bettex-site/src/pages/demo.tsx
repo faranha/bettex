@@ -63,9 +63,10 @@ function ClientDemoPage() {
     <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 px-3 pt-5 sm:px-5">
       {tab === 'home' && <>
         <div><p className="text-sm text-[#5B6B85]">{greet},</p><h1 className="display break-words text-3xl font-extrabold tracking-tight" data-testid="text-greeting-name">{d.profile.name}</h1><p className="mt-1 break-all text-xs text-[#5B6B85]">{d.profile.email} · {d.profile.accountId}{isDemoSession(d.profile) && <span className="mt-1 block font-bold text-[#0A6657]">{x('Conta demo · sessão de teste ativa', 'Demo account · test session active', 'Cuenta demo · sesión de prueba activa')}</span>}</p></div>
-        <PersonalOverview d={d} onWallet={open} />
         <LiveMarketsSection />
-        <section><H sub={x('Dados emulados da demonstração.', 'Emulated demo data.', 'Datos emulados de la demostración.')}>{x('Central ao vivo e próximo ciclo', 'Live Center and next cycle', 'Central en vivo y próximo ciclo')}</H><CycleLive d={d} now={now} pts={pts} mode={cmode} setMode={setCmode} onOpen={() => { navigate(demoPath('central', loc)); window.scrollTo({ top: 0 }); }} /></section><AgentOperationsDashboard compact /></>}
+        <AgentOperationsDashboard compact />
+        <PersonalOverview d={d} onWallet={open} />
+        <section><H sub={x('Dados emulados da demonstração.', 'Emulated demo data.', 'Datos emulados de la demostración.')}>{x('Central ao vivo e próximo ciclo', 'Live Center and next cycle', 'Central en vivo y próximo ciclo')}</H><CycleLive d={d} now={now} pts={pts} mode={cmode} setMode={setCmode} onOpen={() => { navigate(demoPath('central', loc)); window.scrollTo({ top: 0 }); }} /></section></>}
       {tab === 'central' && <>
         <h1 className="display text-2xl font-extrabold">{x('Central da IA', 'AI Center', 'Central de IA')}</h1>
         <AgentFlow />
