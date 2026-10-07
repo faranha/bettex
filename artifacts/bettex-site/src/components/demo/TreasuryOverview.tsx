@@ -11,6 +11,9 @@ import { useX } from './ui';
 import { TreasuryCycle } from './TreasuryCycle';
 import { Money, Term, useMoney } from './fin';
 import { BurnWalletPanel } from './BurnWalletPanel';
+import { TreasurySwapPool } from './TreasurySwapPool';
+import { TreasuryWallets } from './TreasuryWallets';
+import { historyQuery } from '../history/history-selection';
 
 const box = 'rounded-2xl border border-[#E4DCCB] bg-[#FFFCF6] p-3 sm:p-4';
 
@@ -47,7 +50,7 @@ export function AssetAllocation({ r, className = 'dcard p-4 sm:p-5' }: { r: Demo
   ;
 }
 
-function StatementOverview({ d, from }: { d: DemoDashboard; from: string }) {
+export function StatementOverview({ d, from }: { d: DemoDashboard; from: string }) {
   const { x, loc } = useX();
   const params = { from, to: brazilDate(d.serverNow), account: 'treasury' as const, asset: 'USDC' as const };
   const q = useGetDemoTreasuryStatement(params, { query: { queryKey: ['/api/demo/treasury/statement', params], staleTime: 10_000, refetchInterval: 20_000 } });
@@ -56,7 +59,7 @@ function StatementOverview({ d, from }: { d: DemoDashboard; from: string }) {
     <div className="mb-3 flex items-start justify-between gap-3">
       <div className="min-w-0"><h2 className="display text-lg font-extrabold">{x('Movimento do período', 'Period movement', 'Movimiento del período')}</h2>
         <p className="mt-1 text-xs text-[#5B6B85]">{x('Cobertura parcial, com liquidações modeladas. Não é fluxo de caixa verificado.', 'Partial coverage, with modeled settlements. Not verified cash flow.', 'Cobertura parcial, con liquidaciones modeladas. No es flujo de caja verificado.')}</p></div>
-      <Link href={`${demoPath('wallet', loc)}#treasury-statement`} data-testid="link-treasury-statement" aria-label={label} title={label} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#D8CFBB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#F0E9DA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]"><FileText className="h-5 w-5" aria-hidden="true" /></Link>
+      <Link href={`${demoPath('wallet', loc)}${historyQuery('treasury', { treasuryAccount: 'treasury', treasuryAsset: 'USDC' })}#treasury-statement`} data-testid="link-treasury-statement" aria-label={label} title={label} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#D8CFBB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#F0E9DA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]"><FileText className="h-5 w-5" aria-hidden="true" /></Link>
     </div>
     {q.isLoading ? <div className="h-24 animate-pulse rounded-2xl bg-[#EEE9DD]" aria-busy="true" />
       : q.isError || !q.data ? <div role="alert" className="flex flex-wrap items-center gap-2 rounded-xl bg-[#F6DADA] p-3 text-sm text-[#8C2B2B]"><span>{x('Não foi possível carregar o movimento.', 'Could not load the movement.', 'No se pudo cargar el movimiento.')}</span><button type="button" className="min-h-11 rounded-xl border border-[#8C2B2B] px-3 font-bold" onClick={() => void q.refetch()}>{x('Tentar novamente', 'Try again', 'Reintentar')}</button></div>
@@ -74,7 +77,9 @@ export function TreasuryOverview({ d }: { d: DemoDashboard }) {
   return <section data-testid="treasury-overview" className="grid gap-4">
     <p className="rounded-xl bg-[#EFF6F2] px-3 py-2 text-xs font-semibold text-[#0A6657]">{sim}</p>
 
-    <AssetAllocation r={r} />
+    <TreasuryWallets d={d} r={r} />
+
+    <TreasurySwapPool d={d} />
 
     <StatementOverview d={d} from={brazilDate(r.startedAt)} />
 

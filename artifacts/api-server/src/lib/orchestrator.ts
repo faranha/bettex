@@ -2,15 +2,16 @@ import type { DemoOperation, DemoOrchestratorBudget, DemoProposal } from "@works
 import type { EngineState } from "./demo-state";
 import { recordTreasurySettlement } from "./treasury-round.ts";
 import { randomInt } from "node:crypto";
+import { APPROVED_CAPITAL_STATUSES } from "./agent-wallet-allocation.ts";
 
 const money = (n: number) => Math.round(n * 1e6) / 1e6;
 const iso = (n: number) => new Date(n).toISOString();
 export const TERMINAL = new Set(["closed", "rejected", "expired", "cancelled", "failed"]);
-export const RESERVED = new Set(["approved", "validated", "executing", "open", "result", "reconciling"]);
+export const RESERVED = APPROVED_CAPITAL_STATUSES;
 
 // Illustrative ALFA parameters, not an approved policy for real trading.
 export function orchestratorBudget(engine: EngineState): DemoOrchestratorBudget {
-  const workingUsdc = Math.max(0, engine.treasury.assetsUsdc - engine.treasury.reserveUsdc);
+  const workingUsdc = Math.max(0, engine.treasury.assetsUsdc - engine.treasury.reserveUsdc - (engine.swapPool?.reserveUsdc ?? 0));
   const reservedUsdc = money(engine.operations.filter(o => RESERVED.has(o.status)).reduce((n, o) => n + o.capitalUsdc, 0));
   return { workingUsdc, reservedUsdc, availableUsdc: Math.max(0, money(workingUsdc - reservedUsdc)),
     perOperationLimitUsdc: workingUsdc * .1, perAgentLimitUsdc: workingUsdc * .4,

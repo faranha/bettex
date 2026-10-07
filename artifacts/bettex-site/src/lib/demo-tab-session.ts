@@ -44,6 +44,13 @@ export function demoTabToken(): Promise<string> {
       const saved = sessionStorage.getItem(KEY);
       return claim(saved && /^[a-f0-9]{64}$/.test(saved) ? saved : freshToken());
     });
+    const attempt = pending;
+    // A temporary storage/lock rejection must not poison every later request.
+    // Retry the normal ownership check; never fall back to another tab's cookie
+    // or rotate an already-saved capability just to hide an initialization error.
+    void attempt.catch(() => {
+      if (pending === attempt) pending = null;
+    });
   }
   return pending;
 }

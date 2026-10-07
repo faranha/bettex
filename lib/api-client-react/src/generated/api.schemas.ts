@@ -2139,6 +2139,11 @@ export interface DemoMovementInput {
      * @maximum 100000
      */
   amount: number;
+  /**
+     * Minimum net swap output accepted by the user
+     * @minimum 0.000001
+     */
+  minimumOutputAmount?: number;
   /** @maxLength 120 */
   destination?: string;
 }
@@ -2490,6 +2495,109 @@ export interface DemoMovement {
   sourceAmount?: number;
 }
 
+export type TreasuryTestWalletPageChainId = typeof TreasuryTestWalletPageChainId[keyof typeof TreasuryTestWalletPageChainId];
+
+
+export const TreasuryTestWalletPageChainId = {
+  NUMBER_421614: 421614,
+} as const;
+
+export type TreasuryTestWalletPageNetwork = typeof TreasuryTestWalletPageNetwork[keyof typeof TreasuryTestWalletPageNetwork];
+
+
+export const TreasuryTestWalletPageNetwork = {
+  arbitrum_sepolia: 'arbitrum_sepolia',
+} as const;
+
+export type TreasuryTestWalletPageFinancialOperations = typeof TreasuryTestWalletPageFinancialOperations[keyof typeof TreasuryTestWalletPageFinancialOperations];
+
+
+export const TreasuryTestWalletPageFinancialOperations = {
+  simulation: 'simulation',
+} as const;
+
+export type TreasuryTestWalletPageSource = typeof TreasuryTestWalletPageSource[keyof typeof TreasuryTestWalletPageSource];
+
+
+export const TreasuryTestWalletPageSource = {
+  assigned_test_wallets: 'assigned_test_wallets',
+} as const;
+
+export type TreasuryTestWalletPurpose = typeof TreasuryTestWalletPurpose[keyof typeof TreasuryTestWalletPurpose];
+
+
+export const TreasuryTestWalletPurpose = {
+  operational: 'operational',
+  reserve: 'reserve',
+  buyback: 'buyback',
+  crypto_agent: 'crypto_agent',
+} as const;
+
+export interface TreasuryTestWallet {
+  id: string;
+  purpose: TreasuryTestWalletPurpose;
+  /** @pattern ^0x[0-9a-fA-F]{40}$ */
+  address: string;
+  createdAt: string;
+}
+
+export interface TreasuryTestWalletPage {
+  /**
+     * @minItems 4
+     * @maxItems 4
+     */
+  wallets: TreasuryTestWallet[];
+  chainId: TreasuryTestWalletPageChainId;
+  network: TreasuryTestWalletPageNetwork;
+  financialOperations: TreasuryTestWalletPageFinancialOperations;
+  source: TreasuryTestWalletPageSource;
+}
+
+export type DemoAgentWalletAllocationAgent = typeof DemoAgentWalletAllocationAgent[keyof typeof DemoAgentWalletAllocationAgent];
+
+
+export const DemoAgentWalletAllocationAgent = {
+  crypto: 'crypto',
+} as const;
+
+export type DemoAgentWalletAllocationWalletPurpose = typeof DemoAgentWalletAllocationWalletPurpose[keyof typeof DemoAgentWalletAllocationWalletPurpose];
+
+
+export const DemoAgentWalletAllocationWalletPurpose = {
+  crypto_agent: 'crypto_agent',
+} as const;
+
+/**
+ * No separate free budget is assigned; approved position capital only.
+ */
+export type DemoAgentWalletAllocationAvailableUsdc = typeof DemoAgentWalletAllocationAvailableUsdc[keyof typeof DemoAgentWalletAllocationAvailableUsdc];
+
+
+export const DemoAgentWalletAllocationAvailableUsdc = {
+  NUMBER_0: 0,
+} as const;
+
+export type DemoAgentWalletAllocationSource = typeof DemoAgentWalletAllocationSource[keyof typeof DemoAgentWalletAllocationSource];
+
+
+export const DemoAgentWalletAllocationSource = {
+  approved_operations: 'approved_operations',
+} as const;
+
+export interface DemoAgentWalletAllocation {
+  agent: DemoAgentWalletAllocationAgent;
+  walletPurpose: DemoAgentWalletAllocationWalletPurpose;
+  /** @minimum 0 */
+  allocatedUsdc: number;
+  /** @minimum 0 */
+  committedUsdc: number;
+  /** No separate free budget is assigned; approved position capital only. */
+  availableUsdc: DemoAgentWalletAllocationAvailableUsdc;
+  /** @minimum 0 */
+  activePositions: number;
+  source: DemoAgentWalletAllocationSource;
+}
+
 export interface DemoTreasuryFeeBreakdown {
   onramp: number;
   swap: number;
@@ -2522,6 +2630,14 @@ export interface DemoTreasuryRound {
   workingUsdc: number;
   committedUsdc: number;
   availableUsdc: number;
+  /** Pool cash is included in assets but excluded from operational and agent cash. */
+  poolUsdc?: number;
+  /** Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots. */
+  operationalWalletUsdc?: number;
+  /** Committed capital outside the Crypto agent wallet. Not an extra allocation. */
+  operationalWalletCommittedUsdc?: number;
+  /** Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data. */
+  agentAllocations?: DemoAgentWalletAllocation[];
   /** Settled net investment result of this round */
   realizedNetUsdc: number;
   /** Indicative gross result of unsettled positions; not distributable. */
@@ -2600,6 +2716,31 @@ export interface DemoBurnSummary {
   entries: DemoBurnEntry[];
 }
 
+export type DemoSwapPoolSource = typeof DemoSwapPoolSource[keyof typeof DemoSwapPoolSource];
+
+
+export const DemoSwapPoolSource = {
+  constant_product_demo: 'constant_product_demo',
+} as const;
+
+export interface DemoSwapPool {
+  id: string;
+  source: DemoSwapPoolSource;
+  /**
+     * Null until an actual AMM contract exists; this pool is simulation only.
+     * @nullable
+     */
+  contractAddress: string | null;
+  reserveUsdc: number;
+  reserveBettex: number;
+  initialReserveUsdc: number;
+  initialReserveBettex: number;
+  spotPriceUsdc: number;
+  totalVolumeUsdc: number;
+  swapCount: number;
+  updatedAt: string;
+}
+
 export interface DemoTreasury {
   assetsUsdc: number;
   reserveUsdc: number;
@@ -2608,6 +2749,44 @@ export interface DemoTreasury {
   cycleResultUsdc: number;
   currentRound?: DemoTreasuryRound;
   burn?: DemoBurnSummary;
+  swapPool?: DemoSwapPool;
+}
+
+export type DemoSwapQuoteSource = typeof DemoSwapQuoteSource[keyof typeof DemoSwapQuoteSource];
+
+
+export const DemoSwapQuoteSource = {
+  constant_product_demo: 'constant_product_demo',
+} as const;
+
+export type DemoSwapQuoteAssetIn = typeof DemoSwapQuoteAssetIn[keyof typeof DemoSwapQuoteAssetIn];
+
+
+export const DemoSwapQuoteAssetIn = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+} as const;
+
+export type DemoSwapQuoteAssetOut = typeof DemoSwapQuoteAssetOut[keyof typeof DemoSwapQuoteAssetOut];
+
+
+export const DemoSwapQuoteAssetOut = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+} as const;
+
+export interface DemoSwapQuote {
+  source: DemoSwapQuoteSource;
+  assetIn: DemoSwapQuoteAssetIn;
+  assetOut: DemoSwapQuoteAssetOut;
+  amountIn: number;
+  amountOut: number;
+  grossOutputAmount: number;
+  feeUsdc: number;
+  spotPriceUsdc: number;
+  executionPriceUsdc: number;
+  priceImpactPercent: number;
+  poolVersion: number;
 }
 
 export interface DemoLotteryParticipation {
@@ -3436,5 +3615,22 @@ export const GetTreasuryHistoryAsset = {
   USDC: 'USDC',
   BETTEX: 'BETTEX',
   ETH: 'ETH',
+} as const;
+
+export type GetDemoSwapQuoteParams = {
+asset: GetDemoSwapQuoteAsset;
+/**
+ * @minimum 0.000001
+ * @maximum 100000
+ */
+amount: number;
+};
+
+export type GetDemoSwapQuoteAsset = typeof GetDemoSwapQuoteAsset[keyof typeof GetDemoSwapQuoteAsset];
+
+
+export const GetDemoSwapQuoteAsset = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
 } as const;
 

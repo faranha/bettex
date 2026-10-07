@@ -55,14 +55,16 @@ test('burned tokens have their own flame block without fabricated quantities or 
   assert.match(wallets, /<EarningsWalletCard.*<BurnedTokensCard/);
   assert.doesNotMatch(card, /receivedYield|buybackUsdc|bettexUsdc|v=\{0\}/);
 });
-test('each demo and native wallet exposes a labeled icon link to the matching profile history filter', () => {
+test('each demo and native wallet exposes a labeled icon link to its selected history filter', () => {
   const link = readFileSync(new URL('../demo/WalletHistoryLink.tsx', import.meta.url), 'utf8');
   const wallets = readFileSync(new URL('../demo/DemoWalletsCard.tsx', import.meta.url), 'utf8');
   const native = readFileSync(new URL('../demo/NativeWalletsCard.tsx', import.meta.url), 'utf8');
   assert.match(link, /demoPath\('wallet', loc\)/);
-  assert.match(link, /\?wallet=\$\{wallet\}/);
+  assert.match(link, /historyQuery\('wallets', \{ wallet \}\)/);
+  assert.match(link, /#wallet-statement/);
   assert.match(link, /<History/);
-  assert.match(link, /x\('Histórico', 'History', 'Historial'\)/);
+  assert.match(link, /aria-label=\{label\}/);
+  assert.match(link, /Open history: \$\{name\}/);
   assert.match(wallets, /<WalletHistoryLink wallet=\{asset/);
   assert.match(native, /<WalletHistoryLink wallet=\{w.purpose === 'deposits' \? 'USDC' : 'BETTEX'\}/);
 });

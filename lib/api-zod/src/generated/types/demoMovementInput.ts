@@ -19,6 +19,11 @@ export interface DemoMovementInput {
      * @maximum 100000
      */
   amount: number;
+  /**
+     * Minimum net swap output accepted by the user
+     * @minimum 0.000001
+     */
+  minimumOutputAmount?: number;
   /** @maxLength 120 */
   destination?: string;
 }

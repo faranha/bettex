@@ -1,5 +1,5 @@
 import { and, eq, isNull } from "drizzle-orm";
-import { randomUUID } from "node:crypto";
+import { randomUUID, createHash } from "node:crypto";
 import { ensureProfileNickname } from "../modules/accounts/domain/nickname";
 import { db, demoAccounts, demoEngine, demoCommands } from "@workspace/db";
 import type { DemoMovementInput } from "@workspace/api-zod";
@@ -12,13 +12,14 @@ import { prepareScheduledAccount } from "./scheduled-demo-account";
 import { separateEarningsWallet } from "./earnings-wallet";
 import { ensureDemoLottery, advanceDemoLottery } from "./demo-lottery";
 import { advanceDemoBurnStory } from "./demo-burn-story";
+import { recordTreasuryCashMovement } from "./treasury-statement-store";
 import { ensureRoundArchiveSchema, archiveRounds, archiveParticipation } from "./round-archive-store";
 import { ensureHistorySchema, appendHistory } from "../modules/audit/infrastructure/history-store";
 import { recordDemoMovements, recordDemoAutomations, recordDemoRound, recordDemoTreasury, recordDemoPools } from "../modules/audit/infrastructure/demo-recorder";
 import { decimalUnits } from "../modules/audit";
 import {
   seedAccount, seedEngine, dashboard, closeCycles, settleMovements,
-  submitMovement, DemoInputError, accountWeight, DAY, type AccountState, type EngineState,
+  submitMovement, DemoInputError, accountWeight, DAY, ensureDemoSwapPool, roundMoney, type AccountState, type EngineState,
 } from "./demo-state";
 
 type Command = { movement: DemoMovementInput } | { lottery: { participating: boolean; confirmed: boolean } } | { name: string; email?: string; nickname?: string; avatarPath?: string | null } | { distributionPreview: string } | { avatarUpload: NonNullable<AccountState["avatarUpload"]> };
@@ -51,6 +52,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     // automated display scenario, never customer wallets, commands or balances.
     if (!engine.scheduledStory) await flushTreasuryActivity(tx, engine);
     ensureScheduledStory(engine, now);
+    ensureDemoSwapPool(engine, now);
     ensureTreasuryTracking(engine, now);
     ensureDemoLottery(engine, now);
     advanceDemoBurnStory(engine, now);
@@ -62,7 +64,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
       advanceDemoLottery(engine, states, now);
       for (const [i, row] of rows.entries()) {
         if (states[i]!.history.length !== before[i]!.length) {
-          await recordDemoMovements(tx, row.id, before[i]!, states[i]!.history, String(engine.price * 2), undefined, now);
+          await recordDemoMovements(tx, row.id, before[i]!, states[i]!.history, String(roundMoney(engine.price * 2)), undefined, now);
           await tx.update(demoAccounts).set({ state: states[i]!, updatedAt: new Date(now) }).where(eq(demoAccounts.id, row.id));
         }
       }
@@ -155,7 +157,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     // Recover legacy JSON facts once, explicitly non-authoritative simulation.
     await recordDemoMovements(tx, accountId, [], initialHistory);
     settleMovements(account, now, engine);
-    const operationPrice = String(engine.price);
+    let operationPrice = String(roundMoney(engine.price));
     if (command && "lottery" in command) {
       if (actor.nativeAccountId || account.profile.provider === "native" || !engine.burnLottery) throw new DemoInputError("lottery_unavailable");
       if (command.lottery.participating && !command.lottery.confirmed) throw new DemoInputError("lottery_confirmation_required");
@@ -173,18 +175,32 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
       const [existing] = await tx.select().from(demoCommands).where(and(eq(demoCommands.accountId, accountId), eq(demoCommands.requestId, input.requestId)));
       if (existing) {
         const saved = existing.input as DemoMovementInput;
-        if (saved.kind !== input.kind || saved.asset !== input.asset || saved.amount !== input.amount || (saved.sourceWallet ?? "dollar") !== (input.sourceWallet ?? "dollar") || (saved.destination ?? "") !== (input.destination ?? "")) {
+        if (saved.kind !== input.kind || saved.asset !== input.asset || saved.amount !== input.amount || saved.minimumOutputAmount !== input.minimumOutputAmount || (saved.sourceWallet ?? "dollar") !== (input.sourceWallet ?? "dollar") || (saved.destination ?? "") !== (input.destination ?? "")) {
           throw new DemoInputError("invalid_movement");
         }
       } else {
+        const poolBefore = input.kind === "swap" ? structuredClone(engine.swapPool!) : null;
         submitMovement(account, engine, input, now);
+        if (poolBefore) {
+          const cashDelta = roundMoney(engine.swapPool!.reserveUsdc - poolBefore.reserveUsdc);
+          const tokenDelta = roundMoney(engine.swapPool!.reserveBettex - poolBefore.reserveBettex);
+          operationPrice = String(roundMoney(Math.abs(cashDelta / tokenDelta)));
+          const reference = `POOL-SWAP-${createHash("sha256").update(`${accountId}:${input.requestId}`).digest("hex")}`;
+          await recordTreasuryCashMovement(tx, {
+            id: reference, at: new Date(now).toISOString(), account: "treasury", asset: "USDC",
+            amount: cashDelta.toFixed(6), category: "transfer", reference,
+            counterparty: "BETTEX/USDC AMM", source: "recorded_simulation",
+            internal: false, income: false, principal: null, status: "recorded",
+          });
+        }
          await appendHistory({ key: `demo:${accountId}:${input.requestId}:pending`, subject: `demo:${accountId}`,
            correlationId: `demo:${accountId}:${input.requestId}`, category: "activity", actor: "user",
            kind: "financial_requested", state: "pending", asset: input.asset, environment: "simulation", source: "demo_engine",
            occurredAt: new Date(now), requestedAt: new Date(now),
             data: { operationKind: input.kind, sourceWallet: input.sourceWallet ?? "dollar", ...(input.kind === "transfer" ? { targetWallet: "dollar" } : {}), feeUnits: decimalUnits(String(account.history.find(m => m.id === input.requestId)!.feeUsdc), 6), paidAsset: input.asset, paidUnits: decimalUnits(String(input.amount), input.asset === "USDC" ? 6 : 18),
              amountUnits: decimalUnits(String(input.amount), input.asset === "USDC" ? 6 : 18), decimals: input.asset === "USDC" ? "6" : "18",
-             priceUnits: decimalUnits(operationPrice, 6), priceDecimals: "6", priceUnit: "USDC/BETTEX", mechanism: "simulation" } }, tx);
+             priceUnits: decimalUnits(operationPrice, 6), priceDecimals: "6", priceUnit: "USDC/BETTEX", mechanism: input.kind === "swap" ? "constant_product_demo" : "simulation",
+             ...(poolBefore ? { poolId: engine.swapPool!.id, minimumOutputAmount: input.minimumOutputAmount === undefined ? null : String(input.minimumOutputAmount), poolVersion: String(engine.swapPool!.swapCount) } : {}) } }, tx);
         if (input.asset === "BETTEX" && ["send", "withdraw", "swap"].includes(input.kind)) await appendHistory({
           key: `demo:${accountId}:${input.requestId}:participation:exit`, subject: `demo:${accountId}`,
           correlationId: `demo:${accountId}:${input.requestId}`, category: "automatic", actor: "system",

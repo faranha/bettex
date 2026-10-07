@@ -102,7 +102,7 @@ test("swap debits now, fixes its rate, and enters staking only on confirmation",
   assert.equal(account.bettex, original);
   engine.price = .1;
   settleMovements(account, now + 6000);
-  assert.equal(account.bettex, original + 2500);
+  assert.equal(account.bettex, original + 2490.039840);
   assert.equal(account.lots.at(-1).since, now + 6000);
 });
 test("a partial BETTEX exit resets all prior unpaid weight", () => {
@@ -178,12 +178,12 @@ test("BETTEX sale locks net USDC proceeds, resets staking and needs no USD fee b
   assert.equal(account.history[0].sourceAmount, 500);
   assert.equal(account.history[0].asset, "USDC");
   assert.equal(account.history[0].feeUsdc, 2.5);
-  assert.equal(account.history[0].amount, 17.5);
+  assert.equal(account.history[0].amount, 17.484012);
   engine.price = .2;
   settleMovements(account, now + 6000);
-  assert.equal(account.usdc, 17.5);
+  assert.equal(account.usdc, 17.484012);
   settleMovements(account, now + 12000);
-  assert.equal(account.usdc, 17.5);
+  assert.equal(account.usdc, 17.484012);
 });
 test("USD withdrawal can withdraw principal, requires a destination and keeps staking", () => {
   const account = seedAccount(now), engine = seedEngine(now);

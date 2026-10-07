@@ -5,6 +5,7 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { DemoAgentWalletAllocation } from './demoAgentWalletAllocation';
 import type { DemoTreasuryFeeBreakdown } from './demoTreasuryFeeBreakdown';
 import type { DemoTreasuryRoundCoverage } from './demoTreasuryRoundCoverage';
 import type { DemoTreasuryRoundFeesOwner } from './demoTreasuryRoundFeesOwner';
@@ -18,6 +19,14 @@ export interface DemoTreasuryRound {
   workingUsdc: number;
   committedUsdc: number;
   availableUsdc: number;
+  /** Pool cash is included in assets but excluded from operational and agent cash. */
+  poolUsdc?: number;
+  /** Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots. */
+  operationalWalletUsdc?: number;
+  /** Committed capital outside the Crypto agent wallet. Not an extra allocation. */
+  operationalWalletCommittedUsdc?: number;
+  /** Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data. */
+  agentAllocations?: DemoAgentWalletAllocation[];
   /** Settled net investment result of this round */
   realizedNetUsdc: number;
   /** Indicative gross result of unsettled positions; not distributable. */

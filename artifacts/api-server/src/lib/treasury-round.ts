@@ -1,6 +1,7 @@
 import type { DemoTreasuryRound, DemoMovement, DemoOperation } from "@workspace/api-zod";
 import type { EngineState } from "./demo-state.ts";
 import { RESERVED } from "./orchestrator.ts";
+import { cryptoAgentAllocation } from "./agent-wallet-allocation.ts";
 
 const DAY = 86400000;
 const money = (v: number) => Math.round(v * 1e6) / 1e6;
@@ -9,6 +10,7 @@ export type TreasuryTracking = {
   fees: DemoTreasuryRound["feeBreakdown"]; executionCosts: number; closed: number;
   scenarioReady?: boolean; nextCommunityFeeAt?: number;
   scriptedFeeCount?: number;
+  liquidityCashDelta?: number;
 };
 export function ensureTreasuryTracking(engine: EngineState, now: number, complete = false) {
   if (engine.treasuryTracking?.dayAt === engine.dayAt) return engine.treasuryTracking;
@@ -46,13 +48,18 @@ export function treasuryRoundSnapshot(engine: EngineState, now: number): DemoTre
   const tracking = ensureTreasuryTracking(engine, now);
   const committed = engine.operations.filter(o => RESERVED.has(o.status));
   const committedUsdc = money(committed.reduce((sum, o) => sum + o.capitalUsdc, 0));
-  const workingUsdc = money(engine.treasury.assetsUsdc - engine.treasury.reserveUsdc);
+  const poolUsdc = engine.swapPool?.reserveUsdc ?? 0;
+  const workingUsdc = money(engine.treasury.assetsUsdc - engine.treasury.reserveUsdc - poolUsdc);
+  const allocation = cryptoAgentAllocation(committed);
   const recorded = tracking.since < engine.dayAt + DAY;
   return {
     id: new Date(engine.dayAt).toISOString().slice(0, 10),
     startedAt: new Date(engine.dayAt).toISOString(), endsAt: new Date(engine.dayAt + DAY).toISOString(),
-    assetsUsdc: engine.treasury.assetsUsdc, reserveUsdc: engine.treasury.reserveUsdc,
+    assetsUsdc: engine.treasury.assetsUsdc, reserveUsdc: engine.treasury.reserveUsdc, poolUsdc,
     workingUsdc, committedUsdc, availableUsdc: money(workingUsdc - committedUsdc),
+    operationalWalletUsdc: money(workingUsdc - allocation.allocatedUsdc),
+    operationalWalletCommittedUsdc: money(committedUsdc - allocation.committedUsdc),
+    agentAllocations: [allocation],
     realizedNetUsdc: engine.treasury.cycleResultUsdc,
     unrealizedUsdc: money(committed.filter(o => ["open","result","reconciling"].includes(o.status)).reduce((sum, o) => sum + o.pnlUsdc, 0)),
     expectedCommittedNetUsdc: money(committed.reduce((sum, o) => sum + (o.proposal?.expectedNetUsdc ?? 0), 0)),

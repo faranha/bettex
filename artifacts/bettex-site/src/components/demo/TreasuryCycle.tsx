@@ -6,6 +6,7 @@ import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from './ui';
 import { Money, Term } from './fin';
 import { TreasuryRoundHeader } from './TreasuryRoundHeader';
+import { AgentRoundAllocation } from './AgentRoundAllocation';
 import { demoPath } from './demo-navigation';
 
 const box = 'rounded-2xl border border-[#E4DCCB] bg-[#FFFCF6] p-3 sm:p-4';
@@ -22,6 +23,7 @@ export function RoundSummary({ r, serverNow, showOperatorFees = false, headerAct
   return <>
     <p className="mb-2 text-xs font-semibold text-[#8A641D]">{x('Roteiro predefinido do demo · 16h às 16h, horário de São Paulo · histórico modelado e fixo.', 'Predefined demo storyline · 16:00–16:00 São Paulo time · fixed modeled history.', 'Guion predefinido del demo · 16:00–16:00, hora de São Paulo · historial modelado y fijo.')}</p>
     <TreasuryRoundHeader round={r} serverNow={serverNow} action={headerAction} />
+    <AgentRoundAllocation r={r} />
     <div className="mt-3 grid gap-3 sm:grid-cols-2">
       <Metric id="treasury-round-realized" label={x('Realizado líquido', 'Realized net', 'Realizado neto')} tip={x('Resultado já liquidado desta rodada, depois dos custos de execução.', 'Settled result of this round after execution costs.', 'Resultado liquidado de esta ronda tras costos de ejecución.')} help={x('Só posições liquidadas nesta rodada. Exclui tarifas do operador. Base do lucro elegível.', 'Only positions settled this round. Excludes operator fees. Basis of eligible profit.', 'Solo posiciones liquidadas en esta ronda. Excluye tarifas del operador. Base de la ganancia elegible.')}><Money v={r.realizedNetUsdc} a="USDC" big signed precision={prec(r.realizedNetUsdc)} /></Metric>
       <Metric label={x('Não realizado', 'Unrealized', 'No realizado')} tip={x('Indicação de posições ainda abertas.', 'Indication from still-open positions.', 'Indicación de posiciones aún abiertas.')} help={x('Apenas indicação: não pode ser distribuído.', 'Indication only: it cannot be distributed.', 'Solo indicación: no se puede distribuir.')}><Money v={r.unrealizedUsdc} a="USDC" signed /></Metric>

@@ -4,8 +4,12 @@ import { Link } from 'wouter';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from './ui';
-import { AssetAllocation } from './TreasuryOverview';
-import { RoundSummary } from './TreasuryCycle';
+import { StatementOverview } from './TreasuryOverview';
+import { TreasurySwapPool } from './TreasurySwapPool';
+import { TreasuryCycle } from './TreasuryCycle';
+import { TreasuryWallets } from './TreasuryWallets';
+import { BurnWalletPanel } from './BurnWalletPanel';
+import { brazilDate } from '../history/TreasuryStatement';
 import { demoPath } from './demo-navigation';
 
 export function TreasurySlider({ d }: { d: DemoDashboard }) {
@@ -13,13 +17,20 @@ export function TreasurySlider({ d }: { d: DemoDashboard }) {
   const [i, setI] = useState(0);
   const start = useRef<number | null>(null);
   const r = d.treasury.currentRound;
-  const names = [x('Composição dos ativos', 'Asset allocation', 'Composición de activos'), x('Rodada atual', 'Current round', 'Ronda actual')];
-  const go = (n: number) => setI(Math.max(0, Math.min(1, n)));
+  const slides = [
+    { id: 'wallets', name: x('Carteiras da Tesouraria', 'Treasury wallets', 'Carteras de la Tesorería'), content: r ? <TreasuryWallets d={d} r={r} /> : null },
+    { id: 'statement', name: x('Movimento financeiro', 'Financial movement', 'Movimiento financiero'), content: r ? <StatementOverview d={d} from={brazilDate(r.startedAt)} /> : null },
+    { id: 'burn', name: x('Recompra e queima', 'Buyback and burn', 'Recompra y quema'), content: r ? <BurnWalletPanel d={d} /> : null },
+    { id: 'pool', name: x('Pool de conversão', 'Swap pool', 'Pool de conversión'), content: r ? <TreasurySwapPool d={d} /> : null },
+    { id: 'round', name: x('Rodada atual', 'Current round', 'Ronda actual'), content: r ? <TreasuryCycle d={d} /> : null },
+  ];
+  const last = slides.length - 1;
+  const go = (n: number) => setI(Math.max(0, Math.min(last, n)));
   const onKey = (e: KeyboardEvent) => {
     if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1); }
     else if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1); }
     else if (e.key === 'Home') { e.preventDefault(); go(0); }
-    else if (e.key === 'End') { e.preventDefault(); go(1); }
+    else if (e.key === 'End') { e.preventDefault(); go(last); }
   };
   const up = (e: PointerEvent) => {
     if (start.current == null) return;
@@ -35,13 +46,12 @@ export function TreasurySlider({ d }: { d: DemoDashboard }) {
     </div>
     <div className="mt-3 touch-pan-y" onPointerDown={e => { start.current = e.clientX; }} onPointerUp={up} onPointerCancel={() => { start.current = null; }} aria-live="polite">
       {!r ? <p data-testid="treasury-slider-unavailable" className="rounded-xl bg-[#F5F1E8] p-3 text-sm text-[#5B6B85]">{x('Detalhes da rodada atual indisponíveis agora.', 'Current round details are unavailable right now.', 'Detalles de la ronda actual no disponibles ahora.')}</p> :
-        i === 0 ? <div role="group" aria-roledescription="slide" aria-label={`1 / 2: ${names[0]}`} data-testid="treasury-slide-allocation"><AssetAllocation r={r} className="rounded-2xl border border-[#E4DCCB] p-3 sm:p-4" /></div>
-        : <div role="group" aria-roledescription="slide" aria-label={`2 / 2: ${names[1]}`} data-testid="treasury-slide-round" className="rounded-2xl border border-[#E4DCCB] p-3 sm:p-4"><RoundSummary r={r} serverNow={d.serverNow} /></div>}
+        <div role="group" aria-roledescription="slide" aria-label={`${i + 1} / ${slides.length}: ${slides[i].name}`} data-testid={`treasury-slide-${slides[i].id}`}>{slides[i].content}</div>}
     </div>
     <div className="mt-3 flex items-center justify-center gap-3">
       <button type="button" data-testid="treasury-slider-prev" className={arrow} disabled={i === 0} onClick={() => go(i - 1)} aria-label={x('Slide anterior', 'Previous slide', 'Diapositiva anterior')}><ChevronLeft className="h-5 w-5" aria-hidden="true" /></button>
-      <div className="flex gap-1" role="group" aria-label={x('Escolher slide', 'Choose slide', 'Elegir diapositiva')}>{names.map((n, k) => <button key={n} type="button" data-testid={`treasury-slider-dot-${k}`} aria-label={n} aria-current={i === k ? 'true' : undefined} onClick={() => go(k)} className="grid h-11 w-8 place-items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]"><span className={`block h-2.5 rounded-full transition-[width,background-color] motion-reduce:transition-none ${i === k ? 'w-6 bg-[#0E7C6B]' : 'w-2.5 bg-[#C9DCD3]'}`} /></button>)}</div>
-      <button type="button" data-testid="treasury-slider-next" className={arrow} disabled={i === 1} onClick={() => go(i + 1)} aria-label={x('Próximo slide', 'Next slide', 'Siguiente diapositiva')}><ChevronRight className="h-5 w-5" aria-hidden="true" /></button>
+      <div className="flex gap-1" role="group" aria-label={x('Escolher slide', 'Choose slide', 'Elegir diapositiva')}>{slides.map((slide, k) => <button key={slide.id} type="button" data-testid={`treasury-slider-dot-${k}`} aria-label={slide.name} aria-current={i === k ? 'true' : undefined} onClick={() => go(k)} className="grid h-11 w-8 place-items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]"><span className={`block h-2.5 rounded-full transition-[width,background-color] motion-reduce:transition-none ${i === k ? 'w-6 bg-[#0E7C6B]' : 'w-2.5 bg-[#C9DCD3]'}`} /></button>)}</div>
+      <button type="button" data-testid="treasury-slider-next" className={arrow} disabled={i === last} onClick={() => go(i + 1)} aria-label={x('Próximo slide', 'Next slide', 'Siguiente diapositiva')}><ChevronRight className="h-5 w-5" aria-hidden="true" /></button>
     </div>
   </section>;
 }

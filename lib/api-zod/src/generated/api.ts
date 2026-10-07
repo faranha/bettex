@@ -1934,6 +1934,29 @@ export const CommandTreasuryGovernanceBody = zod.object({
 export const CommandTreasuryGovernanceResponse = zod.record(zod.string(), zod.unknown())
 
 
+/**
+ * @summary Persistent assigned Treasury and Crypto agent test wallets; public descriptors only, no funding or signing
+ */
+export const getDemoTreasuryWalletsResponseWalletsItemAddressRegExp = new RegExp('^0x[0-9a-fA-F]{40}$');
+export const getDemoTreasuryWalletsResponseWalletsMin = 4;
+export const getDemoTreasuryWalletsResponseWalletsMax = 4;
+
+
+
+export const GetDemoTreasuryWalletsResponse = zod.object({
+  "wallets": zod.array(zod.object({
+  "id": zod.string(),
+  "purpose": zod.enum(['operational', 'reserve', 'buyback', 'crypto_agent']),
+  "address": zod.string().regex(getDemoTreasuryWalletsResponseWalletsItemAddressRegExp),
+  "createdAt": zod.coerce.date()
+})).min(getDemoTreasuryWalletsResponseWalletsMin).max(getDemoTreasuryWalletsResponseWalletsMax),
+  "chainId": zod.literal(421614),
+  "network": zod.enum(['arbitrum_sepolia']),
+  "financialOperations": zod.enum(['simulation']),
+  "source": zod.enum(['assigned_test_wallets'])
+})
+
+
 export const getDemoTreasuryStatementQueryAssetDefault = `all`;
 export const getDemoTreasuryStatementQueryAccountDefault = `all`;
 export const getDemoTreasuryStatementQueryCategoryDefault = `all`;
@@ -2173,6 +2196,12 @@ export const GetDemoRoundArchiveHeader = zod.object({
   "X-Bettex-Demo-Session": zod.string().regex(getDemoRoundArchiveHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
 })
 
+export const getDemoRoundArchiveResponseItemsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const getDemoRoundArchiveResponseItemsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const getDemoRoundArchiveResponseItemsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin = 0;
+
 export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotOwnEligibleTokensMin = 0;
 
 export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotTotalEligibleTokensMin = 0;
@@ -2185,6 +2214,12 @@ export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotPayoutShar
 export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotPayoutSharePercentMax = 100;
 
 export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotReceivedUsdcMin = 0;
+
+export const getDemoRoundArchiveResponseSelectedOneTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const getDemoRoundArchiveResponseSelectedOneTreasurySnapshotAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const getDemoRoundArchiveResponseSelectedOneTreasurySnapshotAgentAllocationsItemActivePositionsMin = 0;
 
 export const getDemoRoundArchiveResponseSelectedOneParticipationSnapshotOwnEligibleTokensMin = 0;
 
@@ -2220,6 +2255,18 @@ export const GetDemoRoundArchiveResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(getDemoRoundArchiveResponseItemsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(getDemoRoundArchiveResponseItemsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(getDemoRoundArchiveResponseItemsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
@@ -2271,6 +2318,18 @@ export const GetDemoRoundArchiveResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(getDemoRoundArchiveResponseSelectedOneTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(getDemoRoundArchiveResponseSelectedOneTreasurySnapshotAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(getDemoRoundArchiveResponseSelectedOneTreasurySnapshotAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
@@ -2752,6 +2811,18 @@ export const getDemoDashboardResponseStakingPoolAllocationUsdcMin = 0;
 export const getDemoDashboardResponseStakingSharePercentMin = 0;
 export const getDemoDashboardResponseStakingSharePercentMax = 100;
 
+export const getDemoDashboardResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const getDemoDashboardResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const getDemoDashboardResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin = 0;
+
+export const getDemoDashboardResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const getDemoDashboardResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const getDemoDashboardResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin = 0;
+
 export const getDemoDashboardResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin = 0;
 
 export const getDemoDashboardResponseRoundsItemParticipationSnapshotTotalEligibleTokensMin = 0;
@@ -2923,6 +2994,18 @@ export const GetDemoDashboardResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(getDemoDashboardResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(getDemoDashboardResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(getDemoDashboardResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
@@ -2960,6 +3043,19 @@ export const GetDemoDashboardResponse = zod.object({
   "tokensBettex": zod.number(),
   "source": zod.enum(['modeled_demo'])
 }))
+}).optional(),
+  "swapPool": zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['constant_product_demo']),
+  "contractAddress": zod.string().nullable().describe('Null until an actual AMM contract exists; this pool is simulation only.'),
+  "reserveUsdc": zod.number(),
+  "reserveBettex": zod.number(),
+  "initialReserveUsdc": zod.number(),
+  "initialReserveBettex": zod.number(),
+  "spotPriceUsdc": zod.number(),
+  "totalVolumeUsdc": zod.number(),
+  "swapCount": zod.number().int(),
+  "updatedAt": zod.string()
 }).optional()
 }),
   "rounds": zod.array(zod.object({
@@ -2980,6 +3076,18 @@ export const GetDemoDashboardResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(getDemoDashboardResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(getDemoDashboardResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(getDemoDashboardResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
@@ -3047,6 +3155,18 @@ export const updateDemoLotteryParticipationResponseStakingPoolAllocationUsdcMin 
 
 export const updateDemoLotteryParticipationResponseStakingSharePercentMin = 0;
 export const updateDemoLotteryParticipationResponseStakingSharePercentMax = 100;
+
+export const updateDemoLotteryParticipationResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const updateDemoLotteryParticipationResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const updateDemoLotteryParticipationResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin = 0;
+
+export const updateDemoLotteryParticipationResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const updateDemoLotteryParticipationResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const updateDemoLotteryParticipationResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin = 0;
 
 export const updateDemoLotteryParticipationResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin = 0;
 
@@ -3219,6 +3339,18 @@ export const UpdateDemoLotteryParticipationResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(updateDemoLotteryParticipationResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(updateDemoLotteryParticipationResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(updateDemoLotteryParticipationResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
@@ -3256,6 +3388,19 @@ export const UpdateDemoLotteryParticipationResponse = zod.object({
   "tokensBettex": zod.number(),
   "source": zod.enum(['modeled_demo'])
 }))
+}).optional(),
+  "swapPool": zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['constant_product_demo']),
+  "contractAddress": zod.string().nullable().describe('Null until an actual AMM contract exists; this pool is simulation only.'),
+  "reserveUsdc": zod.number(),
+  "reserveBettex": zod.number(),
+  "initialReserveUsdc": zod.number(),
+  "initialReserveBettex": zod.number(),
+  "spotPriceUsdc": zod.number(),
+  "totalVolumeUsdc": zod.number(),
+  "swapCount": zod.number().int(),
+  "updatedAt": zod.string()
 }).optional()
 }),
   "rounds": zod.array(zod.object({
@@ -3276,6 +3421,18 @@ export const UpdateDemoLotteryParticipationResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(updateDemoLotteryParticipationResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(updateDemoLotteryParticipationResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(updateDemoLotteryParticipationResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
@@ -3322,6 +3479,8 @@ export const CreateDemoMovementHeader = zod.object({
 export const createDemoMovementBodyAmountMin = 0.000001;
 export const createDemoMovementBodyAmountMax = 100000;
 
+export const createDemoMovementBodyMinimumOutputAmountMin = 0.000001;
+
 export const createDemoMovementBodyDestinationMax = 120;
 
 
@@ -3332,6 +3491,7 @@ export const CreateDemoMovementBody = zod.object({
   "sourceWallet": zod.enum(['dollar', 'earnings']).optional(),
   "asset": zod.enum(['USDC', 'BETTEX']),
   "amount": zod.number().min(createDemoMovementBodyAmountMin).max(createDemoMovementBodyAmountMax),
+  "minimumOutputAmount": zod.number().min(createDemoMovementBodyMinimumOutputAmountMin).optional().describe('Minimum net swap output accepted by the user'),
   "destination": zod.string().max(createDemoMovementBodyDestinationMax).optional()
 })
 
@@ -3354,6 +3514,18 @@ export const createDemoMovementResponseStakingPoolAllocationUsdcMin = 0;
 
 export const createDemoMovementResponseStakingSharePercentMin = 0;
 export const createDemoMovementResponseStakingSharePercentMax = 100;
+
+export const createDemoMovementResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const createDemoMovementResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const createDemoMovementResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin = 0;
+
+export const createDemoMovementResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const createDemoMovementResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const createDemoMovementResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin = 0;
 
 export const createDemoMovementResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin = 0;
 
@@ -3526,6 +3698,18 @@ export const CreateDemoMovementResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(createDemoMovementResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(createDemoMovementResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(createDemoMovementResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
@@ -3563,6 +3747,19 @@ export const CreateDemoMovementResponse = zod.object({
   "tokensBettex": zod.number(),
   "source": zod.enum(['modeled_demo'])
 }))
+}).optional(),
+  "swapPool": zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['constant_product_demo']),
+  "contractAddress": zod.string().nullable().describe('Null until an actual AMM contract exists; this pool is simulation only.'),
+  "reserveUsdc": zod.number(),
+  "reserveBettex": zod.number(),
+  "initialReserveUsdc": zod.number(),
+  "initialReserveBettex": zod.number(),
+  "spotPriceUsdc": zod.number(),
+  "totalVolumeUsdc": zod.number(),
+  "swapCount": zod.number().int(),
+  "updatedAt": zod.string()
 }).optional()
 }),
   "rounds": zod.array(zod.object({
@@ -3583,6 +3780,18 @@ export const CreateDemoMovementResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(createDemoMovementResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(createDemoMovementResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(createDemoMovementResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
@@ -3613,6 +3822,41 @@ export const CreateDemoMovementResponse = zod.object({
   "endedAt": zod.string()
 }).optional()
 }))
+})
+
+
+/**
+ * @summary Quote a simulated constant-product BETTEX/USDC swap
+ */
+export const getDemoSwapQuoteQueryAmountMin = 0.000001;
+export const getDemoSwapQuoteQueryAmountMax = 100000;
+
+
+
+export const GetDemoSwapQuoteQueryParams = zod.object({
+  "asset": zod.enum(['USDC', 'BETTEX']),
+  "amount": zod.coerce.number().min(getDemoSwapQuoteQueryAmountMin).max(getDemoSwapQuoteQueryAmountMax)
+})
+
+export const getDemoSwapQuoteHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const GetDemoSwapQuoteHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(getDemoSwapQuoteHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
+export const GetDemoSwapQuoteResponse = zod.object({
+  "source": zod.enum(['constant_product_demo']),
+  "assetIn": zod.enum(['USDC', 'BETTEX']),
+  "assetOut": zod.enum(['USDC', 'BETTEX']),
+  "amountIn": zod.number(),
+  "amountOut": zod.number(),
+  "grossOutputAmount": zod.number(),
+  "feeUsdc": zod.number(),
+  "spotPriceUsdc": zod.number(),
+  "executionPriceUsdc": zod.number(),
+  "priceImpactPercent": zod.number(),
+  "poolVersion": zod.number().int()
 })
 
 
@@ -3662,6 +3906,18 @@ export const updateDemoProfileResponseStakingPoolAllocationUsdcMin = 0;
 
 export const updateDemoProfileResponseStakingSharePercentMin = 0;
 export const updateDemoProfileResponseStakingSharePercentMax = 100;
+
+export const updateDemoProfileResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const updateDemoProfileResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const updateDemoProfileResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin = 0;
+
+export const updateDemoProfileResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const updateDemoProfileResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const updateDemoProfileResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin = 0;
 
 export const updateDemoProfileResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin = 0;
 
@@ -3834,6 +4090,18 @@ export const UpdateDemoProfileResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(updateDemoProfileResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(updateDemoProfileResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(updateDemoProfileResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
@@ -3871,6 +4139,19 @@ export const UpdateDemoProfileResponse = zod.object({
   "tokensBettex": zod.number(),
   "source": zod.enum(['modeled_demo'])
 }))
+}).optional(),
+  "swapPool": zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['constant_product_demo']),
+  "contractAddress": zod.string().nullable().describe('Null until an actual AMM contract exists; this pool is simulation only.'),
+  "reserveUsdc": zod.number(),
+  "reserveBettex": zod.number(),
+  "initialReserveUsdc": zod.number(),
+  "initialReserveBettex": zod.number(),
+  "spotPriceUsdc": zod.number(),
+  "totalVolumeUsdc": zod.number(),
+  "swapCount": zod.number().int(),
+  "updatedAt": zod.string()
 }).optional()
 }),
   "rounds": zod.array(zod.object({
@@ -3891,6 +4172,18 @@ export const UpdateDemoProfileResponse = zod.object({
   "workingUsdc": zod.number(),
   "committedUsdc": zod.number(),
   "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(updateDemoProfileResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(updateDemoProfileResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(updateDemoProfileResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
   "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
   "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
   "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),

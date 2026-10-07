@@ -1,5 +1,4 @@
 /** @jsxImportSource react */
-import { CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Coins, Database, Activity } from 'lucide-react';
 import { Link } from 'wouter';
 import { demoPath } from './demo-navigation';
@@ -10,13 +9,12 @@ import { useStakingCorridor } from './use-staking-corridor';
 import { Term } from './fin';
 import { StakingRoundClock } from './StakingRoundClock';
 import { RoundIdentity } from './RoundIdentity';
+import { StakingMinuteChart } from './StakingMinuteChart';
 
-const MUTED = '#5B6B85';
 export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; showAgents?: boolean }) {
   const { x, loc } = useX();
   const { data: v, points, loading, timeline } = useStakingCorridor(d);
   const fl = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
-  const p2 = (n: number) => String(Math.floor(n)).padStart(2, '0');
   const end = v.nextCycleAt ? Date.parse(v.nextCycleAt) : NaN;
   const num = (n: number, dg = 2) => n.toLocaleString(fl, { minimumFractionDigits: dg, maximumFractionDigits: dg });
   const usd = (n: number) => `${num(n)} USDC`;
@@ -32,14 +30,6 @@ export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; s
   const start = v.cycleStartedAt ? Date.parse(v.cycleStartedAt) : NaN;
   const hasDomain = Number.isFinite(start) && Number.isFinite(end) && end > start;
   const t0 = hasDomain ? start : points[0]?.at ?? 0;
-  const t1 = hasDomain ? end : points[points.length - 1]?.at ?? 1;
-  const hl = (t: number) => `${Math.round((t - t0) / 3600000)}h`;
-  const elapsedLabel = (t: number) => {
-    const minutes = Math.max(0, Math.round((t - t0) / 60000));
-    return `${Math.floor(minutes / 60)}h ${p2(minutes % 60)}m`;
-  };
-  const ticks = Array.from({ length: 7 }, (_, i) => t0 + (t1 - t0) * i / 6);
-  const cursor = timeline ? t0 + timeline.elapsedMinutes * 60000 : null;
   const cur = v.estimatedOwnUsdc;
   const proj = timeline ? timeline.projectedOwnUsdc : null;
   const signed = (n: number) => `${n > 0 ? '+' : ''}${usd(n)}`;
@@ -63,23 +53,8 @@ export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; s
     </div>
     <div className="grid gap-3 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
       <div className="flex min-w-0 flex-col rounded-xl border border-[#E4DCCB] p-3" data-testid="staking-chart-history">
-        <h3 className="text-sm font-bold"><Term tip={x('No demo, o gráfico usa o mesmo roteiro e resultado da tesouraria, de 16h às 16h de São Paulo. Linhas sólidas: eventos já programados e registrados; tracejada: restante do roteiro, não previsão de mercado. Nenhum dinheiro real é movimentado.', 'In the demo, this chart uses the same storyline and result as the treasury, from 16:00 to 16:00 São Paulo time. Solid lines: scheduled events already recorded; dashed: the remaining storyline, not a market forecast. No real money moves.', 'En el demo, el gráfico usa el mismo guion y resultado que la tesorería, de 16:00 a 16:00 de São Paulo. Líneas sólidas: eventos programados ya registrados; discontinua: resto del guion, no previsión de mercado. No se mueve dinero real.')}>{x('Lucro e alocação no ciclo de 24h', 'Profit and allocation over the 24h cycle', 'Ganancia y asignación en el ciclo de 24h')}</Term></h3>
-        <div className="mt-2 h-60 min-h-[220px] lg:h-auto lg:flex-1">
-          {points.length === 0 ? <p className="grid h-full place-content-center px-4 text-center text-sm text-[#5B6B85]">{native ? na : x('Carregando ciclo…', 'Loading cycle…', 'Cargando ciclo…')}</p> :
-            <ResponsiveContainer width="100%" height="100%"><LineChart data={points} margin={{ top: 8, right: 12, bottom: 0, left: 0 }}>
-              <CartesianGrid stroke="#E4DCCB" strokeDasharray="3 3" />
-              <XAxis dataKey="at" type="number" scale="linear" domain={[t0, t1]} ticks={ticks} tickFormatter={hl} tick={{ fontSize: 11, fill: MUTED }} />
-              <YAxis width={56} domain={['auto', 'auto']} tickFormatter={(n: number) => n.toLocaleString(fl, { maximumFractionDigits: 0 })} tick={{ fontSize: 11, fill: MUTED }} />
-              <Tooltip labelFormatter={(t: number) => elapsedLabel(t)} wrapperStyle={{ maxWidth: 'min(260px, 80vw)' }} formatter={(n: number, k: string) => [usd(n), k === 'profit' ? x('Lucro líquido', 'Net profit', 'Ganancia neta') : k === 'allocated' ? x('Alocação', 'Allocation', 'Asignación') : x('Projeção', 'Projection', 'Proyección')]} />
-              <ReferenceLine y={0} stroke="#1B2A41" strokeWidth={1.5} />
-              <ReferenceLine x={t1} stroke="#5B6B85" strokeDasharray="3 3" />
-              {cursor !== null && <ReferenceLine x={cursor} stroke="#0E7C6B" strokeWidth={2} label={{ value: elapsedLabel(cursor), position: 'insideTopLeft', fontSize: 11, fill: '#0E7C6B' }} />}
-              <Line type="linear" dataKey="profit" stroke="#0A2342" strokeWidth={2} isAnimationActive={false} dot={false} connectNulls={false} />
-              <Line type="linear" dataKey="allocated" stroke="#C98A12" strokeWidth={2} isAnimationActive={false} dot={false} connectNulls={false} />
-              <Line type="linear" dataKey="forecast" stroke="#0E7C6B" strokeWidth={2} strokeDasharray="5 4" isAnimationActive={false} dot={false} connectNulls={false} />
-            </LineChart></ResponsiveContainer>}
-        </div>
-        <p className="mt-1 flex flex-wrap gap-x-4 text-[11px] text-[#5B6B85]"><span><span className="mr-1 inline-block h-0.5 w-4 bg-[#0A2342] align-middle" />{x('Lucro líquido', 'Net profit', 'Ganancia neta')}</span><span><span className="mr-1 inline-block h-0.5 w-4 bg-[#C98A12] align-middle" />{x('Alocação', 'Allocation', 'Asignación')}</span><span><span className="mr-1 inline-block h-0 w-4 border-t-2 border-dashed border-[#0E7C6B] align-middle" />{x('Projeção', 'Projection', 'Proyección')}</span></p>
+        <h3 className="text-sm font-bold"><Term tip={x('Cada registro mostra a diferença entre o resultado líquido no início e no fim daquela hora, não o total da rodada. O demo segue o roteiro da tesouraria, de 16h às 16h de São Paulo. Horas incompletas são identificadas; projeções não são tratadas como registros. Nenhum dinheiro real é movimentado.', 'Each record shows the difference between net results at the beginning and end of that hour, not the round total. The demo follows the treasury storyline, from 16:00 to 16:00 São Paulo time. Incomplete hours are identified; projections are not treated as records. No real money moves.', 'Cada registro muestra la diferencia entre el resultado neto al inicio y al final de esa hora, no el total de la ronda. El demo sigue el guion de la tesorería, de 16:00 a 16:00 de São Paulo. Las horas incompletas se identifican; las proyecciones no se tratan como registros. No se mueve dinero real.')}>{x('Resultado do staking por hora', 'Hourly staking result', 'Resultado del staking por hora')}</Term></h3>
+        <StakingMinuteChart points={points} t0={t0} timeline={timeline} empty={native ? na : x('Carregando ciclo…', 'Loading cycle…', 'Cargando ciclo…')} fl={fl} usd={usd} />
         <Link href={demoPath('central', loc)} data-testid="staking-live-trading" className="group mt-2 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#0E7C6B] px-4 py-3 text-sm font-extrabold text-white transition-colors hover:bg-[#0A6657]">
           <Activity className="h-5 w-5 shrink-0" aria-hidden="true" /><span>{x('Trades ao vivo', 'Live trades', 'Trades en vivo')}</span>
         </Link>

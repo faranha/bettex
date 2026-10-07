@@ -10,6 +10,7 @@ import { advanceScheduledStory, scheduledStakingTimeline } from "./scheduled-dem
 import { separateEarningsWallet, TRANSACTION_FEE_USDC } from "./earnings-wallet.ts";
 import { demoBurnSnapshot, type DemoBurnState } from "./demo-burn-story.ts";
 import { demoLotterySnapshot, type DemoLotteryState } from "./demo-lottery.ts";
+import { createDemoSwapPool, quoteDemoSwap, executeDemoSwap } from "./demo-swap-pool.ts";
 
 export const DAY = 86_400_000;
 export const roundMoney = (value: number) => Math.round(value * 1e6) / 1e6;
@@ -30,6 +31,7 @@ export type AccountState = {
   roundParticipation?: Record<string, NonNullable<DemoDashboard["rounds"][number]["participationSnapshot"]>>;
 };
 export type EngineState = {
+  swapPool?: NonNullable<DemoDashboard["treasury"]["swapPool"]>;
   burnLottery?: DemoLotteryState;
   burnStory?: DemoBurnState;
   scheduledStory?: 1;
@@ -93,7 +95,7 @@ export function closeCycles(engine: EngineState, accounts: AccountState[], now: 
     const weights = accounts.map(account => accountWeight(account, engine.dayAt, end));
     const total = communityWeight + weights.reduce((a, b) => a + b, 0);
     const eligible = Math.max(0, roundMoney(engine.treasury.cycleResultUsdc));
-    const reservesPass = engine.treasury.assetsUsdc - engine.treasury.committedUsdc >= engine.treasury.reserveUsdc;
+    const reservesPass = engine.treasury.assetsUsdc - (engine.swapPool?.reserveUsdc ?? 0) - engine.treasury.committedUsdc >= engine.treasury.reserveUsdc;
     const pays = eligible > 0 && reservesPass && total > 0;
     const staking = pays ? roundMoney(eligible * 0.25) : 0;
     const id = iso(engine.dayAt).slice(0, 10);
@@ -128,7 +130,7 @@ export function tickEngine(engine: EngineState, now: number) {
   if (now - engine.tickAt < 6000) return;
   engine.tickAt = now;
   engine.sequence++;
-  engine.price = roundMoney(Math.max(.035, Math.min(.045, engine.price * (1 + (randomInt(0, 20001) / 10000 - 1) * .0008))));
+  engine.price = engine.swapPool ? engine.swapPool.reserveUsdc / engine.swapPool.reserveBettex : roundMoney(Math.max(.035, Math.min(.045, engine.price * (1 + (randomInt(0, 20001) / 10000 - 1) * .0008))));
   engine.brl = roundMoney(Math.max(5, Math.min(5.6, engine.brl + (randomInt(0, 20001) / 10000 - 1) * .004)));
   progressOrchestration(engine, now, (from, to, kind, id) => event(engine, now, from, to, kind, id));
   const activeCount = engine.operations.filter(op => !TERMINAL.has(op.status) && op.status !== "awaiting_data").length;
@@ -145,6 +147,13 @@ export function tickEngine(engine: EngineState, now: number) {
   engine.treasury.committedUsdc = orchestratorBudget(engine).reservedUsdc;
 }
 export class DemoInputError extends Error {}
+export function ensureDemoSwapPool(engine: EngineState, now: number) {
+  const available = engine.treasury.assetsUsdc - engine.treasury.reserveUsdc - engine.treasury.committedUsdc;
+  if (!engine.swapPool && available < .000001) return undefined;
+  engine.swapPool ??= createDemoSwapPool(available, now);
+  engine.price = engine.swapPool.reserveUsdc / engine.swapPool.reserveBettex;
+  return engine.swapPool;
+}
 export function submitMovement(account: AccountState, engine: EngineState, input: DemoMovementInput, now: number) {
   separateEarningsWallet(account);
   const { kind, amount, asset } = input;
@@ -157,17 +166,33 @@ export function submitMovement(account: AccountState, engine: EngineState, input
     (!/^0x[0-9a-fA-F]{40}$/.test(input.destination?.trim() ?? "") || /^0x0{40}$/i.test(input.destination?.trim() ?? ""))) {
     throw new DemoInputError("invalid_movement");
   }
-  const sourceUsdc = asset === "BETTEX" ? amount * engine.price : amount;
   const fee = ["receive", "onramp"].includes(kind) ? 0 : TRANSACTION_FEE_USDC;
   const reverseSwap = kind === "swap" && asset === "BETTEX";
+  let swapQuote;
+  if (kind === "swap") {
+    try {
+      const pool = ensureDemoSwapPool(engine, now);
+      if (!pool) throw new DemoInputError("pool_liquidity_unavailable");
+      swapQuote = quoteDemoSwap(pool, asset, amount, fee);
+    }
+    catch (error) { throw new DemoInputError(error instanceof Error ? error.message : "invalid_movement"); }
+    if (input.minimumOutputAmount !== undefined && (!Number.isFinite(input.minimumOutputAmount) || input.minimumOutputAmount <= 0 || swapQuote.amountOut < input.minimumOutputAmount)) throw new DemoInputError("pool_quote_changed");
+  }
   const outputAsset = kind === "swap" ? (reverseSwap ? "USDC" : "BETTEX") : asset;
   // A sale pays its fee from USD proceeds, not from an unrelated USD balance.
-  const outputAmount = kind === "swap" ? roundMoney(reverseSwap ? sourceUsdc - fee : amount / engine.price) : kind === "onramp" ? roundMoney(amount - fee) : amount;
+  const outputAmount = swapQuote ? swapQuote.amountOut : kind === "onramp" ? roundMoney(amount - fee) : amount;
   if (outputAmount <= 0) throw new DemoInputError("invalid_movement");
   const debit = kind === "swap" || kind === "withdraw" || kind === "send" || kind === "transfer";
   const usdcCost = debit && !reverseSwap ? roundMoney(asset === "USDC" ? amount + fee : fee) : 0;
   const tokenCost = debit && asset === "BETTEX" ? amount : 0;
   if ((earnings ? account.receivedYield : account.usdc) < usdcCost || account.bettex < tokenCost) throw new DemoInputError("insufficient_balance");
+  if (swapQuote) {
+    const delta = executeDemoSwap(engine.swapPool!, swapQuote, now);
+    engine.treasury.assetsUsdc = roundMoney(engine.treasury.assetsUsdc + delta);
+    const tracking = ensureTreasuryTracking(engine, now);
+    tracking.liquidityCashDelta = roundMoney((tracking.liquidityCashDelta ?? 0) + delta);
+    engine.price = engine.swapPool!.spotPriceUsdc;
+  }
   if (earnings) account.receivedYield = roundMoney(account.receivedYield - usdcCost);
   else account.usdc = roundMoney(account.usdc - usdcCost);
   if (tokenCost > 0) {
@@ -207,7 +232,7 @@ export function dashboard(account: AccountState, engine: EngineState, now: numbe
     lottery: demoLotterySnapshot(engine, account, allAccounts, now),
     balances: { usdc: account.usdc, bettex: account.bettex, receivedYield: account.receivedYield, brlPerUsdc: engine.brl, bettexUsdc: engine.price, updatedAt: iso(engine.tickAt) },
     staking: { chartScenario: engine.scheduledStory && !(account.profile.authenticated && account.profile.provider === "native") ? scheduledStakingTimeline(engine, now) : account.stakingTimeline ? stakingTimelineSnapshot(account.stakingTimeline) : null, eligibleTokens: account.bettex, totalEligibleTokens, tokenSharePercent, poolAllocationUsdc, since: account.lots.length ? iso(Math.min(...account.lots.map(lot => lot.since))) : null, weightTokenSeconds: weight, sharePercent: totalWeight > 0 ? 100 * weight / totalWeight : 0, cycleStartedAt: iso(engine.dayAt), nextCycleAt: iso(engine.dayAt + DAY), estimatedUsdc: roundMoney(estimate), status: account.bettex > 0 ? "active" : "inactive" },
-    operations: engine.operations, events: engine.events, history: account.history, treasury: { ...engine.treasury, burn: account.profile.provider === "native" ? undefined : demoBurnSnapshot(engine, now), currentRound: treasuryRoundSnapshot(engine, now) }, rounds: engine.rounds.map(round => ({ ...round, participationSnapshot: (round.source === "calculated_simulation" || account.scriptedAccount && round.source === "seeded_demo") && account.roundParticipation?.[round.id]?.endedAt === round.endedAt ? account.roundParticipation[round.id] : undefined })),
+    operations: engine.operations, events: engine.events, history: account.history, treasury: { ...engine.treasury, swapPool: engine.swapPool, burn: account.profile.provider === "native" ? undefined : demoBurnSnapshot(engine, now), currentRound: treasuryRoundSnapshot(engine, now) }, rounds: engine.rounds.map(round => ({ ...round, participationSnapshot: (round.source === "calculated_simulation" || account.scriptedAccount && round.source === "seeded_demo") && account.roundParticipation?.[round.id]?.endedAt === round.endedAt ? account.roundParticipation[round.id] : undefined })),
     orchestratorBudget: orchestratorBudget(engine),
   };
 }

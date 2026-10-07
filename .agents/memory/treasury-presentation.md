@@ -11,6 +11,24 @@ O criador exige visão hierárquica dos ativos: reserva é parte do total, assim
 
 A projeção de capital em paper foi expressamente adiada para outro assunto.
 
+A área Tesouraria deve apresentar o dinheiro dentro de carteiras claramente identificadas: carteira operacional da tesouraria, carteira de reserva distinta e carteira específica de recompra. Cada uma precisa mostrar seu endereço e os saldos correspondentes.
+
+**Why:** O criador pediu explicitamente que a reserva e a recompra sejam carteiras distintas e disse “nós temos que ver o dinheiro dentro de carteiras”.
+
+**How to apply:** Não tratar a reserva apenas como um indicador dentro do saldo operacional. Preservar a composição do total sem dupla contagem e distinguir saldos simulados do aplicativo de fundos efetivamente existentes na blockchain.
+
+O criador escolheu criar três carteiras de teste, não cadastrar endereços existentes nem movimentar dinheiro real.
+
+**Why:** Na escolha entre carteiras existentes e novas, respondeu “Criar três carteiras de teste”.
+
+**How to apply:** Tratar os endereços atribuídos como carteiras de teste. Essa escolha não aprova custódia de produção, financiamento on-chain ou operações com ativos reais.
+
+A Tesouraria também deve apresentar uma carteira do agente Cripto e o valor alocado na rodada. O criador escolheu usar o capital reservado nas operações aprovadas, não definir um orçamento separado.
+
+**Why:** Pediu “uma carteira para o agente” com “o valor alocado aquele agente ... no round” e selecionou “Capital das operações aprovadas”.
+
+**How to apply:** A alocação acompanha as posições aprovadas e deixa de estar reservada ao encerrar ou cancelar. Não confundir o limite de exposição com saldo; separar essa parcela da carteira operacional sem dupla contagem. Não inventar a alocação de rodadas antigas sem registro nem ativar agentes futuros.
+
 Os blocos “Capital projection” e “Treasury policies” não devem aparecer na página da Tesouraria.
 
 **Why:** O criador enviou uma imagem desses dois blocos e pediu removê-los da Tesouraria.
@@ -22,6 +40,24 @@ Os blocos “Capital projection” e “Treasury policies” não devem aparecer
 **How to apply:** Não usar esse pedido de clareza da Tesouraria como autorização para adicionar uma projeção de capital ou alterar regras econômicas.
 
 O bloco da rodada atual na Tesouraria deve mostrar apenas indicadores consolidados e grandes números, sem abas ou listas de operações. Detalhes das posições, tarifas e rodadas anteriores ficam na área Histórico, com paginação para centenas de posições por dia.
+
+A oferta de compra de BETTEX pelo site deve ter uma carteira e/ou uma pool de swapping de BETTEX apresentada também na Tesouraria.
+
+**Why:** O criador afirmou que, se vamos oferecer a oportunidade de comprar BETTEX no site, essa estrutura precisa existir e estar na Tesouraria.
+
+**How to apply:** Definir a estrutura de venda/conversão conforme o modelo escolhido, sem tratar a carteira de recompra e queima como substituta nem apresentar uma pool inexistente como operacional.
+
+O criador selecionou “Pool BETTEX/USDC”, com o escopo inicial de implementação no demo, sem dinheiro real.
+
+**Why:** A escolha foi feita no formulário que distinguia a pool de liquidez de uma carteira de venda e explicitava esse escopo.
+
+**How to apply:** Preservar a distinção entre a pool simulada e um AMM implantado. Essa escolha não autoriza movimentar dinheiro real nem afirmar que há contrato público de liquidez.
+
+Essa separação vale também para contas com permissões especiais; elas não devem ganhar painéis extras de histórico dentro da Tesouraria.
+
+**Why:** O criador voltou a apontar uma lista de rodadas na Tesouraria e pediu que fosse removida.
+
+**How to apply:** Preservar as permissões de consulta na página Histórico, sem usá-las como exceção à apresentação consolidada da Tesouraria.
 
 O extrato da Tesouraria deve cobrir todas as entradas, saídas e transações financeiras, inclusive rendimentos de outros investimentos da própria Tesouraria.
 

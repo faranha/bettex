@@ -40,7 +40,7 @@ test("operator fee receipts book once on confirmation, exclude seed credits and 
   const round = treasuryRoundSnapshot(engine, now + 6000);
   assert.equal(round.feesCollectedUsdc, 2.5); assert.equal(round.feeBreakdown.swap, 2.5);
   assert.equal(round.feesOwner, "operating_company");
-  assert.equal(engine.treasury.assetsUsdc, assets); assert.equal(engine.treasury.cycleResultUsdc, net);
+  assert.equal(engine.treasury.assetsUsdc, assets + 100); assert.equal(engine.treasury.cycleResultUsdc, net);
   settleMovements(account, now + 12000, engine);
   assert.equal(treasuryRoundSnapshot(engine, now).feesCollectedUsdc, 2.5);
 });

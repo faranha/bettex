@@ -29,7 +29,11 @@ test('wallets and history are primary areas; personal Profile is accessed only t
 test('account history keeps statements but does not repeat balances or wallet cards', () => {
   const history = r('./WalletPage.tsx');
   assert.doesNotMatch(history, /WalletAction|TokenIcon|DemoWalletsCard|NativeWalletsCard|tk-card/);
-  assert.match(history, /<PreviousCycle d=\{d\}/);
+  assert.match(history, /area === 'rounds'/);
+  assert.match(history, /<RoundHistory/);
+  assert.match(history, /area === 'wallets'/);
+  assert.match(history, /area === 'treasury'/);
+  assert.doesNotMatch(history, /<PreviousCycle/);
   assert.match(history, /<WalletStatement key=\{d\.profile\.accountId\} d=\{d\}/);
   assert.match(history, /<HistoryPanel/);
   assert.match(r('./WalletsDashboard.tsx'), /<ProtectedDemoWallets/);

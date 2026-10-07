@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import * as D from '@radix-ui/react-dialog';
 import { useQueryClient } from '@tanstack/react-query';
-import { useCreateDemoMovement, getGetDemoDashboardQueryKey, type DemoDashboard, type DemoMovementInput } from '@workspace/api-client-react';
+import { useCreateDemoMovement, useGetDemoSwapQuote, getGetDemoDashboardQueryKey, type DemoDashboard, type DemoMovementInput } from '@workspace/api-client-react';
 import { CircleHelp, X, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useX } from './ui';
@@ -39,6 +39,9 @@ export function useErrMsg() {
   const { x } = useX();
   return (c: string) => c === 'insufficient_balance' ? x('Saldo insuficiente para esta operação.', 'Insufficient balance for this operation.', 'Saldo insuficiente para esta operación.')
     : c === 'invalid_movement' ? x('Movimentação inválida. Confira valor e destino.', 'Invalid movement. Check amount and destination.', 'Movimiento inválido. Revise monto y destino.')
+    : c === 'pool_quote_changed' ? x('A cotação mudou além do limite aceito. Confira a nova estimativa e tente novamente.', 'The quote moved beyond your accepted limit. Review the new estimate and try again.', 'La cotización cambió más allá del límite aceptado. Revisa la nueva estimación e inténtalo de nuevo.')
+    : c === 'pool_liquidity_unavailable' ? x('A pool está sem liquidez disponível.', 'The pool has no available liquidity.', 'La pool no tiene liquidez disponible.')
+    : c === 'swap_amount_below_fee' ? x('O valor recebido não cobre a taxa da conversão.', 'The proceeds do not cover the conversion fee.', 'El importe recibido no cubre la tarifa de conversión.')
     : c === 'yield_exceeded' ? x('O valor excede o rendimento recebido disponível.', 'Amount exceeds the received yield available.', 'El monto excede el rendimiento recibido disponible.')
     : c === 'engine_unavailable' ? x('O motor está indisponível agora. Tente de novo em instantes.', 'The engine is unavailable right now. Try again shortly.', 'El motor no está disponible ahora. Intente de nuevo en instantes.')
     : x('Não foi possível confirmar o envio. Tente novamente: não duplicaremos a operação.', 'Could not confirm submission. Retry: it will not be duplicated.', 'No se pudo confirmar el envío. Reintente: no se duplicará.');
@@ -67,7 +70,7 @@ export function MovementSheet({ kind, initialAsset, d, onClose }: { kind: Kind |
   const earnings = k0 === 'earnings-transfer';
   const a: Asset = earnings || k0 === 'onramp' || k0 === 'withdraw' ? 'USDC' : k0 === 'send' ? 'BETTEX' : (initialAsset ?? 'USDC');
   const k: DemoMovementInput['kind'] = k0 === 'onramp' ? 'receive' : k0 === 'earnings-transfer' ? 'transfer' : k0;
-  const bu = d.balances.bettexUsdc; const U = d.balances.usdc; const B = d.balances.bettex;
+  const U = d.balances.usdc; const B = d.balances.bettex;
   const n = Number(amt.replace(',', '.')) || 0;
   const amount = n;
   const rd = (v: number) => Math.round(v * 1e6) / 1e6;
@@ -77,8 +80,15 @@ export function MovementSheet({ kind, initialAsset, d, onClose }: { kind: Kind |
   const feeUsd = k === 'receive' ? 0 : 2.5;
   const spendable = earnings ? d.balances.receivedYield : U;
   const max = Math.min(100000, k === 'swap' ? (swapB ? B : Math.max(0, U - feeUsd)) : k === 'withdraw' || k === 'transfer' ? Math.max(0, spendable - feeUsd) : k === 'send' ? (U >= feeUsd ? B : 0) : 100000);
-  const over = n > 0 && k !== 'receive' && (n > max + 1e-9 || (swapB && n * bu <= feeUsd));
+  const over = n > 0 && k !== 'receive' && n > max + 1e-9;
   const valid = amount >= 0.000001 && amount <= 100000 && rd(amount) === amount && (!needDest || validDest);
+  const quote = useGetDemoSwapQuote({ asset: a, amount }, { query: {
+    queryKey: ['demo-swap-quote', d.profile.accountId, a, amount],
+    enabled: !!kind && k === 'swap' && valid && !over && !ok,
+    refetchInterval: 5000, staleTime: 0, retry: false,
+  }, request: { credentials: 'same-origin' } });
+  const quoteReady = quote.isSuccess && !quote.isError && quote.data.assetIn === a && quote.data.amountIn === amount;
+  const minimumOutput = quoteReady ? Number((BigInt(Math.round(quote.data.amountOut * 1e6)) * 99n + 99n) / 100n) / 1e6 : 0;
   const outflow = k === 'send' || swapB;
   const Tt: Record<string, [string, string, string]> = {
     'onramp': ['Adicionar crédito', 'Add credit', 'Agregar crédito'],
@@ -95,26 +105,26 @@ export function MovementSheet({ kind, initialAsset, d, onClose }: { kind: Kind |
   const desc = earnings ? x('Mova USDC dos rendimentos para sua carteira em dólares. Valor e taxa saem dos rendimentos.', 'Move USDC from earnings to your dollar wallet. The amount and fee are debited from earnings.', 'Mueve USDC de ganancias a tu cartera en dólares. El importe y la tarifa salen de las ganancias.')
     : k0 === 'onramp' || (k0 === 'receive' && a === 'USDC') ? x('Adicione USDC à sua carteira em dólares.', 'Add USDC to your dollar wallet.', 'Agrega USDC a tu cartera en dólares.')
     : k0 === 'receive' ? x('Receba BETTEX de uma carteira externa. Entra na participação só após a confirmação.', 'Receive BETTEX from an external wallet. It joins staking only after confirmation.', 'Recibe BETTEX de una cartera externa. Entra en participación solo tras la confirmación.')
-    : k0 === 'swap' ? x('A taxa é travada ao enviar e a conversão conclui em cerca de 6 segundos.', 'The rate locks on submit and the conversion settles in about 6 seconds.', 'La tasa se fija al enviar y la conversión concluye en unos 6 segundos.')
+    : k0 === 'swap' ? x('Conversão pela pool BETTEX/USDC simulada. A cotação varia com as reservas e fica travada no envio; a confirmação leva cerca de 6 segundos.', 'Conversion through the simulated BETTEX/USDC pool. The quote varies with reserves and locks on submit; confirmation takes about 6 seconds.', 'Conversión mediante la pool BETTEX/USDC simulada. La cotización varía con las reservas y se fija al enviar; la confirmación tarda unos 6 segundos.')
     : k0 === 'withdraw' ? x('Você retira USDC, um token ERC-20, não ETH. Use uma carteira que aceite USDC na rede Arbitrum One.', 'You withdraw USDC, an ERC-20 token, not ETH. Use a wallet that accepts USDC on the Arbitrum One network.', 'Retiras USDC, un token ERC-20, no ETH. Usa una cartera que acepte USDC en la red Arbitrum One.')
     : x('Envia tokens BETTEX para uma carteira externa. A taxa é cobrada em USDC.', 'Sends BETTEX tokens to an external wallet. The fee is charged in USDC.', 'Envía tokens BETTEX a una cartera externa. La tarifa se cobra en USDC.');
   const submit = async () => {
-    if (m.isPending || (!retryInput.current && (!valid || over))) return;
+    if (m.isPending || (!retryInput.current && (!valid || over || (k === 'swap' && (!quoteReady || minimumOutput <= 0))))) return;
     if (!rid.current) rid.current = crypto.randomUUID();
-    const data: DemoMovementInput = retryInput.current ?? { requestId: rid.current, kind: k, asset: a, amount, ...(earnings ? { sourceWallet: 'earnings' as const } : {}), ...(needDest ? { destination: dest.trim() } : {}) };
+    const data: DemoMovementInput = retryInput.current ?? { requestId: rid.current, kind: k, asset: a, amount, ...(k === 'swap' ? { minimumOutputAmount: minimumOutput } : {}), ...(earnings ? { sourceWallet: 'earnings' as const } : {}), ...(needDest ? { destination: dest.trim() } : {}) };
     retryInput.current = data;
     try {
       const snap = await m.mutateAsync({ data }); qc.setQueryData(getGetDemoDashboardQueryKey(), snap); void qc.invalidateQueries({ queryKey: getGetDemoDashboardQueryKey() });
       setOk(true); setErr(''); rid.current = null; retryInput.current = null; setAmt('');
-    } catch (e) { const c = errCode(e); setErr(em(c)); if (c !== 'network') { rid.current = null; retryInput.current = null; } }
+    } catch (e) { const c = errCode(e); setErr(em(c)); if (c === 'pool_quote_changed') void quote.refetch(); if (c !== 'network') { rid.current = null; retryInput.current = null; } }
   };
   const dec = (as: Asset) => (as === 'USDC' ? 2 : 4);
-  const fmt = (v: number, as: Asset) => `${num(v, dec(as))} ${as} ≈ ${brl(as, v)}`;
+  const fmt = (v: number, as: Asset) => `${num(v, k === 'swap' ? 6 : dec(as))} ${as} ≈ ${brl(as, v)}`;
   const feeLine = `${num(feeUsd, feeUsd > 0 && feeUsd < .01 ? 6 : 4)} USDC ≈ ${brl('USDC', feeUsd)}`;
   let from = ''; let to = '';
   if (n > 0) {
     if (k === 'receive') { from = fmt(n, a); to = fmt(n, a); }
-    else if (k === 'swap') { from = fmt(n + (swapB ? 0 : feeUsd), a); to = swapB ? fmt(Math.max(0, n * bu - feeUsd), 'USDC') : fmt(n / bu, 'BETTEX'); }
+    else if (k === 'swap') { from = fmt(n + (swapB ? 0 : feeUsd), a); to = quoteReady ? fmt(quote.data.amountOut, swapB ? 'USDC' : 'BETTEX') : '…'; }
     else if (k === 'withdraw') { from = fmt(n + feeUsd, 'USDC'); to = `${num(n, 2)} USDC → ${dest.trim() || '…'}`; }
     else if (k === 'transfer') { from = fmt(n + feeUsd, 'USDC'); to = `${fmt(n, 'USDC')} → ${x('Carteira em dólares', 'Dollar wallet', 'Cartera en dólares')}`; }
     else { from = fmt(n, 'BETTEX'); to = `${num(n, 4)} BETTEX → ${dest.trim() || '…'}`; }
@@ -146,10 +156,17 @@ export function MovementSheet({ kind, initialAsset, d, onClose }: { kind: Kind |
         {feeUsd > 0 && <p className="mt-2 text-xs text-[#5B6B85]">{x('Taxa', 'Fee', 'Tarifa')}: {feeLine}{k === 'send' && <> · {x('Débito em dólares', 'Dollar wallet debit', 'Débito en dólares')}: {fmt(feeUsd, 'USDC')}</>}</p>}</div>}
       {k === 'receive' && a === 'BETTEX' && <p className="text-xs text-[#5B6B85]">{x('Os tokens recebidos só entram na participação na confirmação.', 'Received tokens join staking only on confirmation.', 'Los tokens recibidos entran en participación solo en la confirmación.')}</p>}
       {outflow && <p className="rounded-xl bg-amber-50 p-3 text-xs text-amber-900" data-testid="text-outflow-warning">{x('Qualquer saída de BETTEX, mesmo parcial, zera o peso anterior e a elegibilidade ainda não paga.', 'Any BETTEX outflow, even partial, resets prior weight and unpaid eligibility.', 'Cualquier salida de BETTEX, aunque sea parcial, reinicia el peso anterior y la elegibilidad aún no pagada.')}</p>}
+      {k === 'swap' && valid && !over && !ok && <div className="rounded-xl border border-[#D8CFBB] p-3 text-xs text-[#5B6B85]" data-testid="swap-pool-quote">
+        {quoteReady ? <>
+          <p>{x('Impacto de preço', 'Price impact', 'Impacto de precio')}: <strong>{num(quote.data.priceImpactPercent, 2)}%</strong></p>
+          <p className="mt-1">{x('Recebimento mínimo', 'Minimum received', 'Recepción mínima')}: <strong>{fmt(minimumOutput, quote.data.assetOut)}</strong></p>
+          <p className="mt-2">{x('Se a cotação piorar mais de 1% até o envio, a conversão será recusada. Não há taxa adicional da pool.', 'If the quote worsens by more than 1% before submission, the conversion is rejected. There is no additional pool fee.', 'Si la cotización empeora más del 1% antes del envío, se rechaza la conversión. No hay tarifa adicional de la pool.')}</p>
+        </> : quote.isError ? <p role="alert">{em(errCode(quote.error))}<button type="button" className="ml-2 min-h-11 font-bold text-[#0E7C6B]" onClick={() => void quote.refetch()}>{x('Atualizar cotação', 'Refresh quote', 'Actualizar cotización')}</button></p> : <p role="status">{x('Consultando a pool…', 'Quoting the pool…', 'Consultando la pool…')}</p>}
+      </div>}
       {over && <p role="alert" className="text-sm font-semibold text-[#B4421A]">{em('insufficient_balance')}</p>}
       {err && <p role="alert" className="flex items-start gap-2 text-sm font-semibold text-[#B4421A]"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{err}</p>}
       {ok && <p role="status" className="flex items-start gap-2 text-sm font-semibold text-[#0E7C6B]"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{x('Recebido! A confirmação aparece em Saldo e histórico em alguns segundos.', 'Received! Confirmation shows under Balance and history in a few seconds.', '¡Recibido! La confirmación aparece en Saldo e historial en unos segundos.')}</p>}
-      <button type="submit" data-testid="button-submit-movement" disabled={m.isPending || (!retryInput.current && (!valid || over))} className={primary}>{m.isPending && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}{m.isPending ? x('Enviando…', 'Sending…', 'Enviando…') : err && rid.current ? x('Tentar de novo', 'Try again', 'Reintentar') : title}</button>
+      <button type="submit" data-testid="button-submit-movement" disabled={m.isPending || (!retryInput.current && (!valid || over || (k === 'swap' && (!quoteReady || minimumOutput <= 0))))} className={primary}>{m.isPending && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}{m.isPending ? x('Enviando…', 'Sending…', 'Enviando…') : err && rid.current ? x('Tentar de novo', 'Try again', 'Reintentar') : title}</button>
     </form></Sheet>;
 }
 

@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { useEffect, useMemo, useState } from 'react';
-import { useSearch } from 'wouter';
+import { useLocation, useSearch } from 'wouter';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from '@/components/demo/ui';
 import { isDemoSession } from '@/components/demo/demo-session';
@@ -8,6 +8,8 @@ import { formatBrazilDateTime } from '@/components/demo/brazil-time';
 import { useWalletHistory } from './use-wallet-history';
 import { brlReference, decimalQuantity, filterWalletHistory, walletFilterFromSearch, type WalletHistoryRow } from './wallet-history-model';
 import { downloadWalletHistory } from './wallet-history-export';
+import { demoPath } from '../demo/demo-navigation';
+import { historyQuery } from './history-selection';
 
 type T3 = [string, string, string];
 const TYPES: Record<string, T3> = {
@@ -69,11 +71,17 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
   const nativeOk = !isDemoSession(d.profile) && d.profile.provider === 'native';
   const [mode, setMode] = useState<'native' | 'demo'>(nativeOk ? 'native' : 'demo');
   const routeSearch = useSearch();
+  const [, navigate] = useLocation();
   const [wallet, setWallet] = useState(() => walletFilterFromSearch(routeSearch));
-  useEffect(() => { setWallet(walletFilterFromSearch(routeSearch)); }, [routeSearch]);
   const [type, setType] = useState('');
   const [state, setState] = useState('');
   const [search, setSearch] = useState('');
+  useEffect(() => {
+    setWallet(walletFilterFromSearch(routeSearch)); setType(''); setState(''); setSearch('');
+  }, [routeSearch]);
+  const selectWallet = (next: string) => {
+    navigate(`${demoPath('wallet', loc)}${historyQuery('wallets', next ? { wallet: next } : {})}#wallet-statement`);
+  };
   const q = useWalletHistory(mode, d.profile.accountId);
   const actual = useMemo(() => q.data?.rows ?? [], [q.data]);
   const base = actual;
@@ -82,7 +90,7 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
   const states = useMemo(() => [...new Set(base.map(r => r.state))].sort(), [base]);
   const addresses = useMemo(() => [...new Set(base.map(r => r.walletAddress).filter((a): a is string => !!a))].sort(), [base]);
   const types = useMemo(() => [...new Set([...Object.keys(TYPES), ...base.map(r => r.type)])], [base]);
-  const reset = () => { setWallet(''); setType(''); setState(''); setSearch(''); };
+  const reset = () => { setWallet(''); setType(''); setState(''); setSearch(''); selectWallet(''); };
   const filtered = !!(wallet || type || state || search.trim());
 
   const tl = (m: Record<string, T3>, k: string, fb: T3) => { const v = m[k]; return v ? v[loc === 'pt' ? 0 : loc === 'en' ? 1 : 2] : tx(fb); };
@@ -196,7 +204,7 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
       <h4 className="text-sm font-extrabold">{x('Filtrar registros', 'Filter records', 'Filtrar registros')}</h4>
       <div className="grid min-w-0 gap-2 sm:grid-cols-2 lg:grid-cols-4">
       <label className={lbl}>{x('Carteira', 'Wallet', 'Billetera')}
-        <select id="filter-statement-wallet" data-testid="filter-statement-wallet" className={sel} value={wallet} onChange={e => setWallet(e.target.value)}>
+        <select id="filter-statement-wallet" data-testid="filter-statement-wallet" className={sel} value={wallet} onChange={e => selectWallet(e.target.value)}>
           <option value="">{x('Todas as carteiras', 'All wallets', 'Todas las billeteras')}</option>
           <option value="earnings">{x('Rendimentos', 'Earnings', 'Ganancias')}</option><option value="USDC">USDC</option><option value="BETTEX">BETTEX</option><option value="ETH">{x('ETH', 'ETH', 'ETH')} ({x('gás', 'gas', 'gas')})</option>
           {addresses.map(address => <option key={address} value={address}>{x('Endereço', 'Address', 'Dirección')} · {address}</option>)}

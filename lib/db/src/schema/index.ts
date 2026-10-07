@@ -27,3 +27,4 @@ export * from "./accounts";
 export * from "./wallets";
 export * from "./reconciliation";
 export * from "./execution";
+export * from "./treasury-wallets";
