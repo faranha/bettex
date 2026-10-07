@@ -20,3 +20,9 @@ Os atalhos de histórico de todas as áreas usam apenas o ícone, sem rótulo vi
 **Why:** O criador preferiu o padrão mais simples do sorteio diário e pediu aplicá-lo aos outros botões de histórico.
 
 **How to apply:** Manter os destinos e ações existentes, nomes acessíveis e dicas traduzidas. A regra é para atalhos de histórico, não para remover títulos de páginas ou nomes de áreas na navegação.
+
+No cartão da Loteria de queima, os acessos à Tesouraria e ao Histórico devem ser compactos, sem atalhos de histórico duplicados nem uma área extra só para esses acessos.
+
+**Why:** O criador apontou o espaço excessivo ocupado pelos acessos e corrigiu: “history is duplicated”.
+
+**How to apply:** Agrupar os atalhos na área do cabeçalho, preservar nomes acessíveis e não remover saldo, timer, participação ou informações da loteria para reduzir a altura.

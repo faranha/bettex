@@ -11,10 +11,12 @@ export function BurnedTokensCard({ d }: { d: DemoDashboard }) {
   const { x, loc } = useX();
   const fl = burnFl(loc);
   const b = burnOf(d);
+  if (d.lottery && d.profile.provider !== 'native') {
+    return <article className="min-w-0" data-testid="demo-wallet-burned"><LotteryCard d={d} /></article>;
+  }
   const btn = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] px-3 text-sm font-bold text-[#1B2A41]';
   return <article className="grid content-start gap-2 rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="demo-wallet-burned">
     <h3 className="text-sm font-bold text-[#1B2A41]">{d.profile.provider === 'native' ? x('Tokens queimados', 'Burned tokens', 'Tokens quemados') : 'Burn Lottery'}</h3>
-    {d.lottery && d.profile.provider !== 'native' && <LotteryCard d={d} />}
     {d.profile.provider === 'native' && (b ? <>
       <p className="display break-words text-2xl font-extrabold tabular-nums text-[#1B2A41]" data-testid="burned-tokens-value">{nf(fl, b.totalBurnedBettex, 0)} <span className="mono text-[0.55em]">BETTEX</span></p>
       <p className="flex items-center gap-1 text-[11px] font-semibold text-[#5B6B85]"><Flame className="h-3.5 w-3.5 text-[#D9591B]" aria-hidden="true" />{x('Total acumulado queimado', 'Cumulative burned total', 'Total acumulado quemado')}</p>

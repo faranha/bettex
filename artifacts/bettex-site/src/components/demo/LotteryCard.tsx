@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'wouter';
-import { History } from 'lucide-react';
+import { History, Landmark } from 'lucide-react';
 import { getGetDemoDashboardQueryKey, useUpdateDemoLotteryParticipation, type DemoDashboard } from '@workspace/api-client-react';
 import { demoPath } from './demo-navigation';
 import { useX } from './ui';
@@ -52,7 +52,10 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
         <p className="text-xs text-[#C5D2F1]" data-testid="lottery-next-draw">{x('Próximo sorteio', 'Next draw', 'Próximo sorteo')} ({drawTime} · São Paulo · 24h)</p>
         <p className="bl-timer display text-3xl font-extrabold" data-testid="lottery-timer">{left ?? x('Indisponível', 'Unavailable', 'No disponible')}</p>
       </div>
-      <Link href={`${demoPath('wallet', loc)}#lottery-history`} data-testid="link-lottery-history" aria-label={historyLabel} title={historyLabel} className="bl-hist self-start focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><History className="h-5 w-5" aria-hidden="true" /></Link>
+      <div className="flex shrink-0 flex-col gap-1 self-start">
+        <Link href={demoPath('treasury', loc)} data-testid="link-burned-treasury" aria-label={x('Ver Tesouraria', 'View Treasury', 'Ver Tesorería')} title={x('Ver Tesouraria', 'View Treasury', 'Ver Tesorería')} className="bl-hist focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><Landmark className="h-5 w-5" aria-hidden="true" /></Link>
+        <Link href={`${demoPath('wallet', loc)}#lottery-history`} data-testid="link-lottery-history" aria-label={historyLabel} title={historyLabel} className="bl-hist focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><History className="h-5 w-5" aria-hidden="true" /></Link>
+      </div>
     </div>
     <div className="grid min-w-0 gap-1.5" data-testid="lottery-explanation">
       <p className="text-sm leading-relaxed text-[#F4F1E8]">{x(
