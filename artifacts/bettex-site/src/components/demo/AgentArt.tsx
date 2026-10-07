@@ -1,47 +1,81 @@
 /** @jsxImportSource react */
+import { BrainEnergy } from '../technology/BrainEnergy';
+
+const frame = { className: 'agx-art', viewBox: '0 0 200 76', 'aria-hidden': true, focusable: 'false' } as const;
+
+function Net({ c, d }: { c: string; d: string }) {
+  return <g fill="none" stroke={c} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" opacity=".7" className="agx-net">
+    <path d={d} /><path d="M4 12 18 20 14 32M196 14 184 24" />
+    <circle cx="18" cy="20" r="1.8" fill={c} stroke="none" /><circle cx="14" cy="32" r="1.4" fill={c} stroke="none" /><circle cx="184" cy="24" r="1.8" fill={c} stroke="none" />
+  </g>;
+}
+
 export function CryptoBarsArt() {
   const h = [30, 46, 38, 62, 50, 78, 58, 90, 70, 100, 80, 66];
   return <svg className="agx-cbg" viewBox="0 0 240 100" preserveAspectRatio="none" aria-hidden focusable="false">
-    <defs><linearGradient id="agx-cb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#7FA2FF" /><stop offset="1" stopColor="#2B59FF" stopOpacity=".35" /></linearGradient></defs>
+    <defs><linearGradient id="agx-cb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#38BDF8" /><stop offset="1" stopColor="#4F46E5" stopOpacity=".35" /></linearGradient></defs>
     {h.map((v, i) => <g key={i}>
-      <rect x={6 + i * 19.5} y={100 - v} width="13" height={v} rx="2.5" fill="url(#agx-cb)" opacity={0.35 + (i % 4) * 0.12} />
-      <rect x={6 + i * 19.5} y={100 - v} width="13" height="3" rx="1.5" fill="#B8CBFF" opacity=".7" />
+      <rect x={6 + i * 19.5} y={100 - v} width="13" height={v} rx="2.5" fill="url(#agx-cb)" opacity={0.3 + (i % 4) * 0.1} />
+      <rect x={6 + i * 19.5} y={100 - v} width="13" height="2" rx="1" fill="#BAE6FD" opacity=".7" />
     </g>)}
+    <path d="M6 70 45 52 84 60 123 30 162 38 201 8" fill="none" stroke="#7DD3FC" strokeWidth=".9" opacity=".6" vectorEffect="non-scaling-stroke" />
   </svg>;
 }
 
+export function SportsBrainArt({ label, l1, l2 }: { label: string; l1: string; l2: string }) {
+  const base = import.meta.env.BASE_URL;
+  return <div className="agx-brainart" role="img" aria-label={label}>
+    <svg className="agx-links" viewBox="0 0 320 220" aria-hidden focusable="false" fill="none" strokeLinecap="round">
+      <g stroke="#FB923C" strokeWidth="1" opacity=".75"><path d="M92 62 128 84M92 150 126 128M232 74 200 90M236 158 204 134" /></g>
+      <g fill="#FDBA74"><circle cx="92" cy="62" r="2.5" /><circle cx="92" cy="150" r="2.5" /><circle cx="232" cy="74" r="2.5" /><circle cx="236" cy="158" r="2.5" /></g>
+      <g transform="translate(10 40)"><rect width="82" height="48" rx="10" fill="rgba(20,8,16,.75)" stroke="rgba(251,146,60,.55)" />
+        {[16, 30, 22, 38, 28].map((v, i) => <rect key={i} x={10 + i * 13} y={42 - v} width="8" height={v} rx="2" fill={i === 3 ? '#FBBF24' : '#FB923C'} opacity={i === 3 ? 1 : .7} />)}</g>
+      <g transform="translate(10 128)"><rect width="82" height="44" rx="10" fill="rgba(20,8,16,.75)" stroke="rgba(244,114,182,.5)" />
+        <path d="M10 32 24 24 38 28 54 14 72 10" stroke="#F472B6" strokeWidth="2" /><circle cx="72" cy="10" r="3" fill="#F472B6" stroke="none" /></g>
+      <g transform="translate(232 56)"><rect width="78" height="36" rx="10" fill="rgba(20,8,16,.75)" stroke="rgba(94,234,212,.5)" /><circle cx="22" cy="18" r="9" stroke="#5EEAD4" strokeWidth="1.6" /><path d="M22 12v12M16 18h12" stroke="#5EEAD4" strokeWidth="1" /><rect x="38" y="13" width="30" height="4" rx="2" fill="#5EEAD4" opacity=".6" stroke="none" /><rect x="38" y="21" width="20" height="3" rx="1.5" fill="#5EEAD4" opacity=".35" stroke="none" /></g>
+      <g transform="translate(232 140)"><rect width="78" height="36" rx="10" fill="rgba(20,8,16,.75)" stroke="rgba(251,191,36,.5)" /><rect x="10" y="9" width="58" height="18" rx="4" stroke="#FBBF24" strokeWidth="1.2" /><path d="M39 9v18M10 18h58" stroke="#FBBF24" strokeWidth="1" opacity=".6" /></g>
+    </svg>
+    <div className="agx-brainbox">
+      <img className="agx-brainimg" src={`${base}agents/bettex-intelligence-brain.webp`} alt="" width={640} height={640} loading="lazy" decoding="async" />
+      <BrainEnergy />
+    </div>
+    <span className="agx-chip agx-chip-a" aria-hidden>{l1}</span>
+    <span className="agx-chip agx-chip-b" aria-hidden>{l2}</span>
+  </div>;
+}
+
 export function PredictionArt() {
-  return <svg className="agx-art" viewBox="0 0 200 76" aria-hidden focusable="false">
+  return <svg {...frame}>
     <defs>
-      <linearGradient id="agx-p1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#6F93FF" /><stop offset="1" stopColor="#2B59FF" /></linearGradient>
-      <linearGradient id="agx-p2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#FFD56B" /><stop offset="1" stopColor="#F2B632" /></linearGradient>
+      <linearGradient id="agx-p1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#C4B5FD" /><stop offset="1" stopColor="#6D28D9" /></linearGradient>
+      <linearGradient id="agx-p3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#2A1A5E" /><stop offset="1" stopColor="#150B3A" /></linearGradient>
     </defs>
-    <g transform="translate(96 8) rotate(8 40 30)"><rect width="84" height="58" rx="9" fill="#1B3A9E" stroke="#8FB0FF" /><rect x="10" y="12" width="40" height="6" rx="3" fill="#8FB0FF" /><rect x="10" y="24" width="56" height="5" rx="2.5" fill="#4E73D8" /><rect x="10" y="35" width="30" height="5" rx="2.5" fill="#4E73D8" /><circle cx="66" cy="44" r="8" fill="url(#agx-p2)" /></g>
-    <g transform="translate(14 6) rotate(-6 36 32)">
-      <rect y="3" width="76" height="62" rx="10" fill="#0A1233" opacity=".5" />
-      <rect width="76" height="62" rx="10" fill="#F4F1E8" />
-      <path d="M0 10a10 10 0 0 1 10-10h56a10 10 0 0 1 10 10v10H0z" fill="url(#agx-p1)" />
-      <rect x="18" y="-4" width="5" height="12" rx="2.5" fill="#F2B632" /><rect x="53" y="-4" width="5" height="12" rx="2.5" fill="#F2B632" />
-      {[0, 1, 2, 3, 4, 5, 6, 7].map(i => <rect key={i} x={9 + (i % 4) * 15} y={27 + Math.floor(i / 4) * 14} width="10" height="9" rx="2.5" fill={i === 5 ? 'url(#agx-p2)' : '#C9D3F5'} />)}
-    </g>
-    <g transform="translate(150 44)"><circle r="14" fill="#F2B632" stroke="#0A1233" strokeWidth="2" /><path d="M0-8V0l6 4" fill="none" stroke="#0A1233" strokeWidth="2.5" strokeLinecap="round" /></g>
+    <Net c="#A78BFA" d="M18 20 60 8 104 18 150 6 184 24" />
+    <g transform="translate(112 12) rotate(7 40 30)"><rect width="76" height="52" rx="8" fill="url(#agx-p3)" stroke="#8B5CF6" /><rect x="9" y="10" width="34" height="5" rx="2.5" fill="#A78BFA" /><rect x="9" y="22" width="52" height="4" rx="2" fill="#6D4FD0" /><rect x="9" y="32" width="28" height="4" rx="2" fill="#6D4FD0" /><circle cx="60" cy="40" r="5" fill="#22D3EE" /></g>
+    <g transform="translate(30 10) rotate(-5 36 30)"><rect y="4" width="80" height="60" rx="9" fill="#08031F" opacity=".55" />
+      <rect width="80" height="60" rx="9" fill="url(#agx-p3)" stroke="#A78BFA" strokeWidth="1.2" /><path d="M0 9a9 9 0 0 1 9-9h62a9 9 0 0 1 9 9v10H0z" fill="url(#agx-p1)" />
+      <rect x="19" y="-4" width="4" height="11" rx="2" fill="#DDD6FE" /><rect x="57" y="-4" width="4" height="11" rx="2" fill="#DDD6FE" />
+      {[0, 1, 2, 3, 4, 5, 6, 7].map(i => <rect key={i} x={9 + (i % 4) * 16} y={26 + Math.floor(i / 4) * 16} width="11" height="10" rx="2.5" fill={i === 5 ? '#22D3EE' : i === 2 ? '#E879F9' : '#4B3A93'} opacity={i === 5 || i === 2 ? 1 : .9} />)}</g>
+    <circle cx="166" cy="54" r="11" fill="#150B3A" stroke="#22D3EE" strokeWidth="1.5" /><path d="M166 48v6l5 3" fill="none" stroke="#22D3EE" strokeWidth="2" strokeLinecap="round" />
   </svg>;
 }
 
 export function CasinoArt() {
-  return <svg className="agx-art" viewBox="0 0 200 76" aria-hidden focusable="false">
+  return <svg {...frame}>
     <defs>
-      <linearGradient id="agx-c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#FFD56B" /><stop offset="1" stopColor="#E89A1C" /></linearGradient>
-      <linearGradient id="agx-c2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#4A73FF" /><stop offset="1" stopColor="#2B59FF" /></linearGradient>
+      <linearGradient id="agx-c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#FDE68A" /><stop offset="1" stopColor="#D97706" /></linearGradient>
+      <linearGradient id="agx-c2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#F472B6" /><stop offset="1" stopColor="#9D174D" /></linearGradient>
+      <linearGradient id="agx-c3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#EC4899" /><stop offset="1" stopColor="#701A75" /></linearGradient>
     </defs>
-    <ellipse cx="100" cy="70" rx="60" ry="5" fill="#0A1233" opacity=".45" />
-    <path d="M62 34h76v32a4 4 0 0 1-4 4H66a4 4 0 0 1-4-4z" fill="url(#agx-c2)" />
-    <path d="M62 34l14-9h62l0 9z" fill="#6F93FF" opacity=".0" />
-    <rect x="56" y="22" width="88" height="16" rx="4" fill="#6F93FF" />
-    <rect x="93" y="22" width="14" height="48" fill="url(#agx-c1)" />
-    <path d="M100 22c-10-18-30-14-24-4 4 6 16 4 24 4zM100 22c10-18 30-14 24-4-4 6-16 4-24 4z" fill="#F2B632" stroke="#0A1233" strokeWidth="1.5" />
-    <circle cx="100" cy="22" r="5" fill="#FFD56B" stroke="#0A1233" strokeWidth="1.5" />
-    <g className="agx-conf"><circle cx="30" cy="22" r="7" fill="#F2B632" stroke="#0A1233" strokeWidth="1.5" /><circle cx="172" cy="30" r="9" fill="#F2B632" stroke="#0A1233" strokeWidth="1.5" /><circle cx="172" cy="30" r="4" fill="none" stroke="#0A1233" strokeWidth="1.5" />
-      <rect x="44" y="48" width="8" height="8" rx="2" fill="#8FB0FF" transform="rotate(25 48 52)" /><rect x="158" y="8" width="8" height="8" rx="2" fill="#FFF" transform="rotate(-20 162 12)" /><path d="M20 50l4 8 4-8z" fill="#6F93FF" /><path d="M146 54l3 6 3-6z" fill="#FFD56B" /></g>
+    <Net c="#F472B6" d="M18 20 56 10 96 22 150 8 184 24" />
+    <ellipse cx="100" cy="70" rx="48" ry="4" fill="#12020E" opacity=".6" />
+    <path d="M62 38h76v30a4 4 0 0 1-4 4H66a4 4 0 0 1-4-4z" fill="url(#agx-c3)" />
+    <path d="M62 38h38v34H66a4 4 0 0 1-4-4z" fill="#000" opacity=".12" />
+    <rect x="56" y="26" width="88" height="15" rx="4" fill="url(#agx-c2)" /><rect x="56" y="26" width="88" height="4" rx="2" fill="#fff" opacity=".25" />
+    <rect x="93" y="26" width="14" height="46" fill="url(#agx-c1)" />
+    <path d="M100 26c-10-17-28-14-22-4 4 6 14 4 22 4zM100 26c10-17 28-14 22-4-4 6-14 4-22 4z" fill="url(#agx-c1)" stroke="#92400E" strokeWidth="1" />
+    <circle cx="100" cy="26" r="4.5" fill="#FDE68A" stroke="#92400E" strokeWidth="1" />
+    <g className="agx-conf"><circle cx="164" cy="34" r="9" fill="url(#agx-c1)" stroke="#92400E" strokeWidth="1.2" /><circle cx="164" cy="34" r="4" fill="none" stroke="#92400E" strokeWidth="1" />
+      <rect x="40" y="30" width="7" height="7" rx="2" fill="#22D3EE" transform="rotate(25 44 34)" /><rect x="150" y="10" width="7" height="7" rx="2" fill="#E9D5FF" transform="rotate(-20 154 14)" /><path d="M170 56l3 7 3-7z" fill="#F472B6" /><path d="M52 52l3 7 3-7z" fill="#FBBF24" /></g>
   </svg>;
 }

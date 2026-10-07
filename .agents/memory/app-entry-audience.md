@@ -32,3 +32,9 @@ As artes dos cartões são decoração, sem legendas “ilustrativo”, “no li
 **Why:** O criador corrigiu explicitamente os avisos adicionados pelo agente: “Eu não estou lhe pedindo pra colocar essas mensagens que é ilustrativo, que não é live data” e definiu o tema de cada arte.
 
 **How to apply:** Não reintroduzir avisos de dados nas artes decorativas, nem transformá-las em métricas ou resultados fictícios. Essa direção não altera o estado de disponibilidade dos agentes.
+
+A seção dos agentes precisa de variedade de cores e identidade de IA com o cérebro e os raios já criados na homepage; não usar azul e amarelo em todos os cartões nem repetir mascotes de robôs.
+
+**Why:** O criador reiterou que “está tudo azul e amarelo” e “está faltando cor”. Após experimentar robôs, rejeitou o resultado como “infantil demais” e pediu “o cérebro, os raios que a gente criou lá na homepage”.
+
+**How to apply:** Reutilizar a arte realista do cérebro e os raios da homepage, sem personagens repetidos ou visual infantil. Preservar cores distintas, destaque de Esportes, cartões compactos e a rejeição anterior ao fundo verde de Cripto.
