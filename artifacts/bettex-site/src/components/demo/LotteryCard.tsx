@@ -60,11 +60,6 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
         'Each day, the draw can buy your staked BETTEX for 2× the quoted price. You receive USDC, and the bought tokens are burned.',
         'Cada día, el sorteo puede comprar tus BETTEX en stake por 2× el precio cotizado. Recibes USDC y los tokens comprados se queman.',
       )}</p>
-      <p className="text-xs leading-relaxed text-[#C5D2F1]">{x(
-        'Opcional, sem venda garantida. Vender reduz seu stake e cancela direitos não pagos da rodada. Neste demo, tudo é simulado.',
-        'Optional, with no guaranteed sale. Selling reduces your stake and cancels unpaid rights for the round. Everything is simulated in this demo.',
-        'Opcional, sin venta garantizada. Vender reduce tu stake y cancela los derechos no pagados de la ronda. En esta demo, todo es simulado.',
-      )}</p>
     </div>
     <div className="bl-ticket" data-testid="lottery-round-balance" data-round-id={d.treasury.currentRound?.id}>
       <p className="text-xs font-bold text-[#7A3A06]"><Term tip={x('25% do lucro realizado líquido positivo da rodada atual. Valor provisório, não liquidado; rodada negativa aloca zero. O saldo acumulado da carteira de queima é separado e não muda com esta leitura.', '25% of the current round’s positive realized net profit. Provisional, not settled; a negative round allocates zero. Accumulated burn-wallet cash is separate and does not change with this reading.', '25% de la ganancia neta realizada positiva de la ronda actual. Provisional, no liquidado; una ronda negativa asigna cero. El efectivo acumulado de la cartera de quema es separado y no cambia con esta lectura.')}>{x('Saldo da loteria · rodada atual', 'Lottery balance · current round', 'Saldo de la lotería · ronda actual')}</Term></p>
