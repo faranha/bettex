@@ -38,7 +38,7 @@ function ValueViz({ label }: { label: string }) {
   </svg>;
 }
 
-export function AgentShowcase({ variant = 'light', onEnter }: { variant?: 'light' | 'dark'; onEnter?: () => void }) {
+export function AgentShowcase({ variant = 'light', onEnter, showDisclaimer = true }: { variant?: 'light' | 'dark'; onEnter?: () => void; showDisclaimer?: boolean }) {
   const { x, loc } = useX();
   const off = [
     { id: 'prediction', bars: [60, 40, 52, 48, 38, 62, 45], Icon: Vote, color: '#6B5FA8', name: x('Mercados de previsão', 'Prediction Markets', 'Mercados de predicción'), tag: x('Probabilidades', 'Probabilities', 'Probabilidades'), desc: x('Próximo lançamento. Ainda não está ativo nesta demo.', 'Next release. Not active in this demo yet.', 'Próximo lanzamiento. Aún no está activo en esta demo.') },
@@ -48,7 +48,7 @@ export function AgentShowcase({ variant = 'light', onEnter }: { variant?: 'light
   const sportsNext = x('Ainda não disponível', 'Not live yet', 'Aún no disponible');
   const sports = [x('Futebol', 'Football', 'Fútbol'), x('Basquete', 'Basketball', 'Baloncesto'), x('Tênis', 'Tennis', 'Tenis'), 'UFC'];
   return <section className={`agx flex flex-col p-4 sm:p-6 ${variant === 'dark' ? 'agx-dark' : 'dcard'}`} data-variant={variant} data-testid="panel-agent-showcase" aria-labelledby="agx-title">
-    <p className="agx-kick">{x('Demo ALFA, sem dinheiro real', 'ALPHA demo, no real money', 'Demo ALFA, sin dinero real')}</p>
+    {showDisclaimer && <p className="agx-kick">{x('Demo ALFA, sem dinheiro real', 'ALPHA demo, no real money', 'Demo ALFA, sin dinero real')}</p>}
     <h2 id="agx-title" className="agx-title">{x('Vem aí: Esportes com Value Betting', 'Coming next: Sports Value Betting', 'Próximamente: Deportes con Value Betting')}</h2>
     <article data-testid="card-agent-sports" aria-disabled="true" data-next="true" className="agx-hero">
       <div>
