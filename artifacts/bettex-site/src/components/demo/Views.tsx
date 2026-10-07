@@ -5,6 +5,7 @@ import type { DemoDashboard } from '@workspace/api-client-react';
 import { AGENTS, useX } from './ui';
 import { Money, Term, useMoney, type Kind } from './fin';
 import { formatBrazilDateTime, formatBrazilTime } from './brazil-time';
+import { RoundIdentity } from './RoundIdentity';
 
 const card = 'dcard p-4 sm:p-5';
 export const H = ({ children, sub }: { children: ReactNode; sub?: ReactNode }) => <div className="mb-3"><h2 className="display text-lg font-extrabold tracking-tight">{children}</h2>{sub && <p className="text-sm text-[#5B6B85]">{sub}</p>}</div>;
@@ -57,7 +58,7 @@ export function TreasuryBlock({ d }: { d: DemoDashboard }) {
 }
 export function Rounds({ d }: { d: DemoDashboard }) {
   const { x } = useX(); const tm = useTime();
-  return <div className="overflow-x-auto"><table className="w-full min-w-[640px] text-left text-sm"><thead className="text-xs text-[#5B6B85]"><tr><th className="py-2">{x('Rodada', 'Round', 'Ronda')}</th><th>{x('Estado', 'Status', 'Estado')}</th><th>{x('Elegível', 'Eligible', 'Elegible')}</th><th>{x('Participação', 'Staking', 'Participación')}</th><th>{x('Tesouraria', 'Treasury', 'Tesorería')}</th><th><Term tip={x('BETTEX comprado no mercado e queimado de forma permanente.', 'BETTEX bought on the market and permanently burned.', 'BETTEX comprado en el mercado y quemado permanentemente.')}>{x('Recompra', 'Buyback', 'Recompra')}</Term></th></tr></thead><tbody className="divide-y divide-[#EBE3D1]">{d.rounds.map(r => <tr key={r.id} data-testid={`row-round-${r.id}`}><td className="py-3"><b>{r.id}</b><br /><span className="text-xs text-[#5B6B85]">{tm(r.endedAt, true)}</span></td><td>{r.status === 'paid' ? x('Distribuída', 'Paid', 'Distribuida') : x('Retida', 'Retained', 'Retenida')}</td><td><Money v={r.eligibleUsdc} a="USDC" /></td><td><Money v={r.stakingUsdc} a="USDC" /></td><td><Money v={r.treasuryUsdc} a="USDC" /></td><td><Money v={r.buybackUsdc} a="USDC" /></td></tr>)}</tbody></table></div>;
+  return <div className="overflow-x-auto"><table className="w-full min-w-[640px] text-left text-sm"><thead className="text-xs text-[#5B6B85]"><tr><th className="py-2">{x('ID da rodada', 'Round ID', 'ID de la ronda')}</th><th>{x('Estado', 'Status', 'Estado')}</th><th>{x('Elegível', 'Eligible', 'Elegible')}</th><th>{x('Participação', 'Staking', 'Participación')}</th><th>{x('Tesouraria', 'Treasury', 'Tesorería')}</th><th><Term tip={x('BETTEX comprado no mercado e queimado de forma permanente.', 'BETTEX bought on the market and permanently burned.', 'BETTEX comprado en el mercado y quemado permanentemente.')}>{x('Recompra', 'Buyback', 'Recompra')}</Term></th></tr></thead><tbody className="divide-y divide-[#EBE3D1]">{d.rounds.map(r => <tr key={r.id} data-testid={`row-round-${r.id}`}><td className="py-3"><RoundIdentity id={r.id} /><br /><span className="text-xs text-[#5B6B85]">{tm(r.endedAt, true)}</span></td><td>{r.status === 'paid' ? x('Distribuída', 'Paid', 'Distribuida') : x('Retida', 'Retained', 'Retenida')}</td><td><Money v={r.eligibleUsdc} a="USDC" /></td><td><Money v={r.stakingUsdc} a="USDC" /></td><td><Money v={r.treasuryUsdc} a="USDC" /></td><td><Money v={r.buybackUsdc} a="USDC" /></td></tr>)}</tbody></table></div>;
 }
 export function Staking({ d, now }: { d: DemoDashboard; now: () => number }) {
   const { x, loc } = useX(); const { num } = useMoney(); const s = d.staking;

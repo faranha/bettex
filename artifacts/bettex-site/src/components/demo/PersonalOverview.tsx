@@ -13,14 +13,15 @@ import { isDemoSession } from './demo-session';
 import { DemoWalletsCard } from './DemoWalletsCard';
 import { EarningsWalletCard } from './EarningsWalletCard';
 
-const lk = 'inline-flex min-h-11 items-center rounded-xl border border-[#0E7C6B] bg-white px-4 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5]';
+const lk = 'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#0E7C6B] bg-white text-[#0A6657] hover:bg-[#E9EEE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current';
 export function PersonalOverview({ d, onWallet }: { d: DemoDashboard; onWallet: (k: Kind, a: Asset) => void }) {
   const { x, loc } = useX(); const { snap } = usePersonalNative(d.profile);
   const [showHistory, setShowHistory] = useState(false);
   const p = d.profile; const b = d.balances;
   const demo = isDemoSession(p);
   const historyAccount = demo ? p.accountId : snap?.account?.id;
-  const historyButton = <button type="button" data-testid="button-account-history" aria-expanded={showHistory} aria-controls="overview-history" onClick={() => setShowHistory(v => !v)} className={`${lk} gap-2`}><HistoryIcon className="h-4 w-4" aria-hidden="true" />{x('Histórico', 'History', 'Historial')}</button>;
+  const historyLabel = x('Histórico da conta', 'Account history', 'Historial de la cuenta');
+  const historyButton = <button type="button" data-testid="button-account-history" aria-label={historyLabel} title={historyLabel} aria-expanded={showHistory} aria-controls="overview-history" onClick={() => setShowHistory(v => !v)} className={lk}><HistoryIcon className="h-5 w-5" aria-hidden="true" /></button>;
   return <div className="grid gap-3 sm:gap-4" data-testid="personal-overview">
     <section className="grid gap-3" data-testid="overview-account">
     {demo ? <DemoWalletsCard d={d} onWallet={onWallet} showReceivedYield showHeading={false} headerActions={historyButton} /> : <><NativeWalletsCard profile={d.profile} showHeading={false} headerActions={historyButton} /><NativeParticipationCard profile={d.profile} /></>}

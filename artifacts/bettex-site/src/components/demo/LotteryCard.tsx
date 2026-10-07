@@ -2,10 +2,15 @@
 import { useEffect, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'wouter';
+import { History } from 'lucide-react';
 import { getGetDemoDashboardQueryKey, useUpdateDemoLotteryParticipation, type DemoDashboard } from '@workspace/api-client-react';
 import { demoPath } from './demo-navigation';
 import { useX } from './ui';
 import { burnFl, nf } from './burn-format';
+import { Term } from './fin';
+import { formatBrazilDateTime } from './brazil-time';
+import { lotteryRoundBalance } from './lottery-balance';
+import { BurnLotteryFlame } from './BurnLotteryArt';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 function useCountdown(target: string, serverNow: string) {
@@ -28,28 +33,50 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
   const [open, setOpen] = useState(false);
   const lot = d.profile.provider === 'native' ? undefined : d.lottery;
   const left = useCountdown(lot?.nextDrawAt ?? '', d.serverNow);
+  const roundBalance = lotteryRoundBalance(d.treasury.currentRound?.realizedNetUsdc);
   if (!lot) return null;
+  const drawTime = Number.isFinite(Date.parse(lot.nextDrawAt))
+    ? formatBrazilDateTime(lot.nextDrawAt, fl, { hour: '2-digit', minute: '2-digit' })
+    : x('Indisponível', 'Unavailable', 'No disponible');
+  const historyLabel = x('Histórico da loteria', 'Lottery history', 'Historial de la lotería');
   const send = (participating: boolean, confirmed: boolean) => m.mutate({ data: { participating, confirmed } }, {
     onSuccess: snap => { qc.setQueryData(getGetDemoDashboardQueryKey(), snap); void qc.invalidateQueries({ queryKey: getGetDemoDashboardQueryKey() }); setOpen(false); },
   });
   const onToggle = () => { if (m.isPending) return; if (lot.participating) send(false, false); else { m.reset(); setOpen(true); } };
   const btn = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] px-3 text-sm font-bold text-[#1B2A41] disabled:opacity-50';
-  return <div className="grid gap-2 border-t border-[#E4DCCB] pt-3" data-testid="lottery-card">
-    <div className="flex flex-wrap items-baseline justify-between gap-2">
-      <h4 className="text-sm font-extrabold text-[#1B2A41]">{x('Sorteio diário', 'Daily draw', 'Sorteo diario')}</h4>
-      <span className="text-[11px] font-semibold text-[#5B6B85]">{x('Simulado', 'Simulated', 'Simulado')}</span>
+  return <div className="bl-card grid gap-3" data-testid="lottery-card">
+    <div className="flex items-center gap-3">
+      <BurnLotteryFlame lit={lot.participating} />
+      <div className="min-w-0 flex-1">
+        <h4 className="display text-lg font-extrabold leading-tight text-[#F4F1E8]">{x('Sorteio diário', 'Daily draw', 'Sorteo diario')}</h4>
+        <p className="text-xs text-[#C5D2F1]" data-testid="lottery-next-draw">{x('Próximo sorteio', 'Next draw', 'Próximo sorteo')} ({drawTime} · São Paulo · 24h)</p>
+        <p className="bl-timer display text-3xl font-extrabold" data-testid="lottery-timer">{left ?? x('Indisponível', 'Unavailable', 'No disponible')}</p>
+      </div>
+      <Link href={`${demoPath('wallet', loc)}#lottery-history`} data-testid="link-lottery-history" aria-label={historyLabel} title={historyLabel} className="bl-hist self-start focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><History className="h-5 w-5" aria-hidden="true" /></Link>
     </div>
-    <p className="text-xs text-[#5B6B85]">{x('Próximo sorteio (04h de São Paulo)', 'Next draw (04:00 São Paulo)', 'Próximo sorteo (04h de São Paulo)')}</p>
-    <p className="display text-2xl font-extrabold tabular-nums text-[#1B2A41]" data-testid="lottery-timer">{left ?? x('Indisponível', 'Unavailable', 'No disponible')}</p>
-    <p className="text-xs text-[#5B6B85]">{x('Preço de compra', 'Purchase price', 'Precio de compra')}: {nf(fl, lot.purchasePriceUsdc, 4)} USDC · <strong>2×</strong> {x('o preço de mercado', 'market price', 'el precio de mercado')} · {x('Participantes', 'Participants', 'Participantes')}: {lot.participants}</p>
-    <label className="flex min-h-11 items-center gap-2 text-sm font-semibold text-[#1B2A41]">
-      <input type="checkbox" checked={lot.participating} disabled={m.isPending || (!lot.participating && !lot.eligible)} onChange={onToggle} data-testid="lottery-participation-checkbox" className="h-5 w-5" />
+    <div className="grid min-w-0 gap-1.5" data-testid="lottery-explanation">
+      <p className="text-sm leading-relaxed text-[#F4F1E8]">{x(
+        'Todo dia, o sorteio pode comprar seus BETTEX em stake por 2× o preço cotado. Você recebe USDC, e os tokens comprados são queimados.',
+        'Each day, the draw can buy your staked BETTEX for 2× the quoted price. You receive USDC, and the bought tokens are burned.',
+        'Cada día, el sorteo puede comprar tus BETTEX en stake por 2× el precio cotizado. Recibes USDC y los tokens comprados se queman.',
+      )}</p>
+      <p className="text-xs leading-relaxed text-[#C5D2F1]">{x(
+        'Opcional, sem venda garantida. Vender reduz seu stake e cancela direitos não pagos da rodada. Neste demo, tudo é simulado.',
+        'Optional, with no guaranteed sale. Selling reduces your stake and cancels unpaid rights for the round. Everything is simulated in this demo.',
+        'Opcional, sin venta garantizada. Vender reduce tu stake y cancela los derechos no pagados de la ronda. En esta demo, todo es simulado.',
+      )}</p>
+    </div>
+    <div className="bl-ticket" data-testid="lottery-round-balance" data-round-id={d.treasury.currentRound?.id}>
+      <p className="text-xs font-bold text-[#7A3A06]"><Term tip={x('25% do lucro realizado líquido positivo da rodada atual. Valor provisório, não liquidado; rodada negativa aloca zero. O saldo acumulado da carteira de queima é separado e não muda com esta leitura.', '25% of the current round’s positive realized net profit. Provisional, not settled; a negative round allocates zero. Accumulated burn-wallet cash is separate and does not change with this reading.', '25% de la ganancia neta realizada positiva de la ronda actual. Provisional, no liquidado; una ronda negativa asigna cero. El efectivo acumulado de la cartera de quema es separado y no cambia con esta lectura.')}>{x('Saldo da loteria · rodada atual', 'Lottery balance · current round', 'Saldo de la lotería · ronda actual')}</Term></p>
+      <p className="display mt-1 break-words text-2xl font-extrabold tabular-nums text-[#070B1F]" data-testid="lottery-usdc-balance">{roundBalance === null ? x('Indisponível', 'Unavailable', 'No disponible') : <>{nf(fl, roundBalance)} <span className="mono text-[0.55em]">USDC</span></>}</p>
+    </div>
+    <label className={`bl-join ${lot.participating ? 'is-on' : ''} ${m.isPending || (!lot.participating && !lot.eligible) ? 'is-disabled' : ''}`}>
+      <input type="checkbox" checked={lot.participating} disabled={m.isPending || (!lot.participating && !lot.eligible)} onChange={onToggle} data-testid="lottery-participation-checkbox" className="bl-check" />
       {x('Participar da Loteria de queima', 'Join the Burn Lottery', 'Participar en la Lotería de quema')}
     </label>
-    {!lot.eligible && !lot.participating && <p className="text-xs text-[#5B6B85]">{x('Sem BETTEX em stake elegível.', 'No eligible staked BETTEX.', 'Sin BETTEX en stake elegible.')}</p>}
-    {m.isPending && !open && <p className="text-xs text-[#5B6B85]" data-testid="lottery-loading">{x('Salvando...', 'Saving...', 'Guardando...')}</p>}
-    {m.isError && !open && <p role="alert" className="text-xs font-semibold text-[#A12D2D]" data-testid="lottery-error">{x('Não foi possível atualizar a participação.', 'Could not update participation.', 'No se pudo actualizar la participación.')}</p>}
-    <p className="text-[11px] text-[#5B6B85]">{x('Preço de referência modelado, sem ordem real nem execução on-chain.', 'Modeled reference price, no real order or on-chain execution.', 'Precio de referencia modelado, sin orden real ni ejecución on-chain.')}</p>
+    {!lot.eligible && !lot.participating && <p className="text-xs text-[#C5D2F1]">{x('Sem BETTEX em stake elegível.', 'No eligible staked BETTEX.', 'Sin BETTEX en stake elegible.')}</p>}
+    {m.isPending && !open && <p className="text-xs text-[#C5D2F1]" data-testid="lottery-loading">{x('Salvando...', 'Saving...', 'Guardando...')}</p>}
+    {m.isError && !open && <p role="alert" className="text-xs font-semibold text-[#FFB4A8]" data-testid="lottery-error">{x('Não foi possível atualizar a participação.', 'Could not update participation.', 'No se pudo actualizar la participación.')}</p>}
     <Dialog open={open} onOpenChange={value => { if (!m.isPending) setOpen(value); }}>
       <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] max-w-md overflow-y-auto rounded-2xl bg-[#FFFCF6] p-4 text-[#1B2A41] shadow-xl" data-testid="lottery-confirm-dialog">
         <DialogTitle className="display text-base font-extrabold text-[#1B2A41]">{x('Confirmar participação', 'Confirm participation', 'Confirmar participación')}</DialogTitle>
@@ -68,6 +95,5 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
         </div>
       </DialogContent>
     </Dialog>
-    <Link href={`${demoPath('wallet', loc)}#lottery-history`} data-testid="link-lottery-history" className="text-sm font-bold text-[#1B2A41] underline">{x('Histórico da loteria', 'Lottery history', 'Historial de la lotería')}</Link>
   </div>;
 }

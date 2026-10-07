@@ -1,6 +1,19 @@
 import type { StakingTimeline } from './staking-model.ts';
 
 const DAY = 86400000;
+/** Treasury progress uses the recorded interval, never the visitor's arrival time. */
+export function roundIntervalReading(startedAt: string, endsAt: string, now: number) {
+  const start = Date.parse(startedAt);
+  const end = Date.parse(endsAt);
+  if (!Number.isFinite(start) || !Number.isFinite(end) || !Number.isFinite(now) || end <= start) {
+    return { remainingMs: null, progress: null };
+  }
+  return {
+    remainingMs: Math.max(0, end - now),
+    progress: Math.min(1, Math.max(0, (now - start) / (end - start))),
+  };
+}
+
 /** The round deadline is authoritative; chart ticks never accelerate or pause time. */
 export function stakingClockReading(nextCycleAt: string | null, timeline: StakingTimeline | null, now: number) {
   const end = nextCycleAt ? Date.parse(nextCycleAt) : NaN;

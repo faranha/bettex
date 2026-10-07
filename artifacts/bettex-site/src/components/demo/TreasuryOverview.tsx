@@ -1,12 +1,16 @@
 /** @jsxImportSource react */
 import { useState, type ReactNode } from 'react';
-import { AlertTriangle, ChevronDown } from 'lucide-react';
+import { AlertTriangle, History, ChevronDown } from 'lucide-react';
+import { Link } from 'wouter';
 import type { DemoDashboard, DemoTreasuryRound } from '@workspace/api-client-react';
 import { useX } from './ui';
 import { TreasuryCycle } from './TreasuryCycle';
 import { Money, Term, useMoney } from './fin';
 import { formatBrazilDateTime } from './brazil-time';
 import { BurnWalletPanel } from './BurnWalletPanel';
+import { RoundIdentity } from './RoundIdentity';
+import { demoPath } from './demo-navigation';
+import { roundHistoryQuery } from '../history/round-history-selection';
 
 const box = 'rounded-2xl border border-[#E4DCCB] bg-[#FFFCF6] p-3 sm:p-4';
 
@@ -71,9 +75,12 @@ export function TreasuryOverview({ d }: { d: DemoDashboard }) {
       <p className="text-xs text-[#5B6B85]">{x('Fotos imutáveis gravadas no encerramento. Rodadas antigas sem foto mostram Não registrado.', 'Immutable snapshots saved at closing. Older rounds without one show Not recorded.', 'Fotos inmutables guardadas al cierre. Rondas antiguas sin foto muestran No registrado.')}</p>
       {!d.rounds.length ? <p className="mt-3 rounded-xl bg-[#F5F1E8] p-3 text-sm text-[#5B6B85]">{x('Nenhuma rodada encerrada ainda.', 'No closed rounds yet.', 'Aún no hay rondas cerradas.')}</p> :
         <ul className="mt-3 grid gap-2">{d.rounds.map(p => { const s = p.treasurySnapshot; const o = open === p.id; return <li key={p.id} data-testid={`treasury-past-${p.id}`} className={box}>
-          <button type="button" aria-expanded={o} onClick={() => setOpen(o ? null : p.id)} className="flex min-h-11 w-full items-center justify-between gap-2 text-left">
-            <span><b className="text-sm">{p.id}</b><span className="block text-xs text-[#5B6B85]">{dt(p.endedAt)} · {p.status === 'paid' ? x('Distribuída', 'Paid', 'Distribuida') : x('Retida', 'Retained', 'Retenida')}</span></span>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+          <button type="button" aria-expanded={o} onClick={() => setOpen(o ? null : p.id)} className="flex min-h-11 min-w-0 flex-1 items-center justify-between gap-2 text-left">
+            <span className="min-w-0"><RoundIdentity id={p.id} testId="treasury-history-round-id" /><span className="mt-1 block text-xs text-[#5B6B85]">{dt(p.endedAt)} · {p.status === 'paid' ? x('Distribuída', 'Paid', 'Distribuida') : x('Retida', 'Retained', 'Retenida')}</span></span>
             <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${o ? 'rotate-180' : ''}`} aria-hidden="true" /></button>
+          <Link href={`${demoPath('wallet', loc)}${roundHistoryQuery(p.id)}#round-history`} data-testid={`round-history-link-${p.id}`} aria-label={x(`Histórico completo da rodada ${p.id}`, `Full history for round ${p.id}`, `Historial completo de la ronda ${p.id}`)} title={x(`Histórico completo da rodada ${p.id}`, `Full history for round ${p.id}`, `Historial completo de la ronda ${p.id}`)} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#D8CFBB] text-[#1B2A41] transition-colors hover:border-[#C9A24A] hover:bg-[#F0E9DA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2B59FF]"><History className="h-5 w-5" aria-hidden="true" /></Link>
+          </div>
           {o && <div className="mt-2 grid gap-3 border-t border-[#EBE3D1] pt-3 text-sm">
             <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">{([[x('Ativos', 'Assets', 'Activos'), s?.assetsUsdc], [x('Reserva', 'Reserve', 'Reserva'), s?.reserveUsdc], [x('Comprometido', 'Committed', 'Comprometido'), s?.committedUsdc], [x('Livre', 'Free', 'Libre'), s?.availableUsdc], [x('Resultado líquido', 'Net result', 'Resultado neto'), s?.realizedNetUsdc], [x('Custos', 'Costs', 'Costos'), s?.executionCostsUsdc], [x('Tarifas do operador', 'Operator fees', 'Tarifas del operador'), s?.feesCollectedUsdc]] as [string, number | null | undefined][]).map(([l, v]) => <div key={l}><dt className="text-xs text-[#5B6B85]">{l}</dt><dd className="font-bold">{plain(v)}</dd></div>)}
               <div><dt className="text-xs text-[#5B6B85]">{x('Posições encerradas', 'Closed positions', 'Posiciones cerradas')}</dt><dd className="font-bold" data-testid={`past-round-closed-${p.id}`}>{s?.closedOperations == null ? NR : s.closedOperations.toLocaleString(fl)}</dd></div>

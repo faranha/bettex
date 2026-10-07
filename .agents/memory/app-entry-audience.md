@@ -27,17 +27,17 @@ Os cartões secundários de Cripto, Previsões e Cassino devem ser compactos. N�
 
 **How to apply:** Manter o destaque principal em Esportes e evitar alturas infladas nos cartões secundários.
 
-As artes dos cartões são decoração, sem legendas “ilustrativo”, “no live data” ou equivalentes: Cripto usa barras no fundo; Mercados de previsão representa eventos futuros; Cassino usa um presente/pacote de bônus. Usar mais cor.
+As artes dos cartões são decoração, sem legendas “ilustrativo”, “no live data” ou equivalentes: Cripto usa barras no fundo; Mercados de previsão representa eventos futuros; Cassino usa um presente/pacote de bônus.
 
 **Why:** O criador corrigiu explicitamente os avisos adicionados pelo agente: “Eu não estou lhe pedindo pra colocar essas mensagens que é ilustrativo, que não é live data” e definiu o tema de cada arte.
 
 **How to apply:** Não reintroduzir avisos de dados nas artes decorativas, nem transformá-las em métricas ou resultados fictícios. Essa direção não altera o estado de disponibilidade dos agentes.
 
-A seção dos agentes precisa de variedade de cores e identidade de IA com o cérebro e os raios já criados na homepage; não usar azul e amarelo em todos os cartões nem repetir mascotes de robôs.
+A seção mantém a identidade de IA com o cérebro e os raios da homepage, sem mascotes de robôs. Os três cartões secundários — Cripto, Mercados de previsão e Cassino — voltam à paleta azul e amarelo, sutil.
 
-**Why:** O criador reiterou que “está tudo azul e amarelo” e “está faltando cor”. Após experimentar robôs, rejeitou o resultado como “infantil demais” e pediu “o cérebro, os raios que a gente criou lá na homepage”.
+**Why:** O criador rejeitou robôs como “infantil demais” e pediu o cérebro e os raios da homepage. Após experimentar cores variadas, definiu para os três cartões secundários: “fall back in this section to the original coloring, more blue and yellow, subtle”.
 
-**How to apply:** Reutilizar a arte realista do cérebro e os raios da homepage, sem personagens repetidos ou visual infantil. Preservar cores distintas, destaque de Esportes, cartões compactos e a rejeição anterior ao fundo verde de Cripto.
+**How to apply:** Preservar o destaque e as artes de Esportes, sem redesenhar o hero por essa mudança de paleta. Nos cartões secundários e suas ilustrações, usar azuis sóbrios e amarelo discreto, sem fundos rosa/roxo ou brilhos saturados. Manter os cartões compactos e não retomar o fundo verde de Cripto.
 
 No primeiro cartão de Esportes, futebol deve ser o assunto visual principal; o cérebro e os raios ficam como acessórios secundários.
 
