@@ -259,6 +259,52 @@ paths:
           content:
             application/json:
               schema: { $ref: "#/components/schemas/TreasuryGovernanceResponse" }
+  /demo/treasury/statement:
+    get:
+      operationId: getDemoTreasuryStatement
+      tags: [demo]
+      parameters:
+        - { name: from, in: query, required: true, schema: { type: string, format: date } }
+        - { name: to, in: query, required: true, schema: { type: string, format: date } }
+        - { name: asset, in: query, schema: { type: string, enum: [all, USDC, BETTEX], default: all } }
+        - { name: account, in: query, schema: { type: string, enum: [all, treasury, buyback], default: all } }
+        - { name: category, in: query, schema: { type: string, default: all, maxLength: 40 } }
+        - { name: direction, in: query, schema: { type: string, enum: [all, in, out], default: all } }
+        - { name: search, in: query, schema: { type: string, maxLength: 100 } }
+        - { name: page, in: query, schema: { type: integer, minimum: 1, maximum: 100000, default: 1 } }
+        - { name: asOf, in: query, schema: { type: string, format: date-time } }
+        - { name: snapshot, in: query, schema: { type: string, pattern: '^\d{1,20}$' } }
+      responses:
+        "200":
+          description: Available recorded Treasury statement. Simulation only; incomplete sources are disclosed.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TreasuryStatementPage" }
+        "400": { description: Invalid filters or period exceeding 31 days }
+        "503": { description: Statement unavailable }
+  /demo/treasury/statement/export:
+    get:
+      operationId: exportDemoTreasuryStatement
+      tags: [demo]
+      parameters:
+        - { name: from, in: query, required: true, schema: { type: string, format: date } }
+        - { name: to, in: query, required: true, schema: { type: string, format: date } }
+        - { name: asset, in: query, schema: { type: string, enum: [all, USDC, BETTEX], default: all } }
+        - { name: account, in: query, schema: { type: string, enum: [all, treasury, buyback], default: all } }
+        - { name: category, in: query, schema: { type: string, default: all, maxLength: 40 } }
+        - { name: direction, in: query, schema: { type: string, enum: [all, in, out], default: all } }
+        - { name: search, in: query, schema: { type: string, maxLength: 100 } }
+        - { name: asOf, in: query, schema: { type: string, format: date-time } }
+        - { name: snapshot, in: query, schema: { type: string, pattern: '^\d{1,20}$' } }
+        - { name: locale, in: query, schema: { type: string, enum: [pt, en, es], default: en } }
+      responses:
+        "200":
+          description: Complete filtered statement export, not just the visible page.
+          content:
+            text/csv:
+              schema: { type: string }
+        "400": { description: Invalid filters }
+        "503": { description: Statement unavailable }
   /demo/treasury/activity:
     get:
       operationId: getDemoTreasuryActivity
@@ -2022,6 +2068,53 @@ components:
         pageSize: { type: integer }
         snapshot: { type: string }
         source: { type: string, enum: [emulated] }
+    TreasuryStatementEntry:
+      type: object
+      required: [id, at, account, asset, amount, category, reference, counterparty, source, internal, income, principal, status]
+      properties:
+        id: { type: string }
+        at: { type: string }
+        account: { type: string, enum: [treasury, buyback] }
+        asset: { type: string, enum: [USDC, BETTEX] }
+        amount: { type: string, description: Signed exact decimal asset quantity }
+        category: { type: string }
+        reference: { type: string }
+        counterparty: { type: string }
+        source: { type: string, enum: [modeled_settlement, modeled_demo, recorded_simulation] }
+        internal: { type: boolean }
+        income: { type: boolean }
+        principal: { type: ["string", "null"] }
+        status: { type: string, enum: [recorded] }
+    TreasuryStatementBalance:
+      type: object
+      required: [account, asset, opening, inflows, outflows, closing, income, otherIncome, reconciled]
+      properties:
+        account: { type: string, enum: [treasury, buyback] }
+        asset: { type: string, enum: [USDC, BETTEX] }
+        opening: { type: ["string", "null"] }
+        inflows: { type: string }
+        outflows: { type: string }
+        closing: { type: ["string", "null"] }
+        income: { type: string }
+        otherIncome: { type: ["string", "null"], description: Null means the other-investment source is not available }
+        reconciled: { type: boolean }
+    TreasuryStatementPage:
+      type: object
+      required: [items, balances, total, page, totalPages, pageSize, from, to, asOf, snapshot, coverage, missingSources, source]
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/TreasuryStatementEntry" } }
+        balances: { type: array, items: { $ref: "#/components/schemas/TreasuryStatementBalance" } }
+        total: { type: integer }
+        page: { type: integer }
+        totalPages: { type: integer }
+        pageSize: { type: integer }
+        from: { type: string }
+        to: { type: string }
+        asOf: { type: string }
+        snapshot: { type: string }
+        coverage: { type: string, enum: [partial] }
+        missingSources: { type: array, items: { type: string } }
+        source: { type: string, enum: [simulation] }
     DemoTreasuryActivityItem:
       type: object
       required: [id, at, kind, source, agent, market, capitalUsdc, grossUsdc, costUsdc, netUsdc, feeKind, feeUsdc]

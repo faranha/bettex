@@ -1934,6 +1934,101 @@ export const CommandTreasuryGovernanceBody = zod.object({
 export const CommandTreasuryGovernanceResponse = zod.record(zod.string(), zod.unknown())
 
 
+export const getDemoTreasuryStatementQueryAssetDefault = `all`;
+export const getDemoTreasuryStatementQueryAccountDefault = `all`;
+export const getDemoTreasuryStatementQueryCategoryDefault = `all`;
+export const getDemoTreasuryStatementQueryCategoryMax = 40;
+
+export const getDemoTreasuryStatementQueryDirectionDefault = `all`;
+export const getDemoTreasuryStatementQuerySearchMax = 100;
+
+export const getDemoTreasuryStatementQueryPageDefault = 1;
+export const getDemoTreasuryStatementQueryPageMax = 100000;
+
+export const getDemoTreasuryStatementQuerySnapshotRegExp = new RegExp('^\\d{1,20}$');
+
+
+export const GetDemoTreasuryStatementQueryParams = zod.object({
+  "from": zod.date(),
+  "to": zod.date(),
+  "asset": zod.enum(['all', 'USDC', 'BETTEX']).default(getDemoTreasuryStatementQueryAssetDefault),
+  "account": zod.enum(['all', 'treasury', 'buyback']).default(getDemoTreasuryStatementQueryAccountDefault),
+  "category": zod.coerce.string().max(getDemoTreasuryStatementQueryCategoryMax).default(getDemoTreasuryStatementQueryCategoryDefault),
+  "direction": zod.enum(['all', 'in', 'out']).default(getDemoTreasuryStatementQueryDirectionDefault),
+  "search": zod.coerce.string().max(getDemoTreasuryStatementQuerySearchMax).optional(),
+  "page": zod.coerce.number().int().min(1).max(getDemoTreasuryStatementQueryPageMax).default(getDemoTreasuryStatementQueryPageDefault),
+  "asOf": zod.date().optional(),
+  "snapshot": zod.coerce.string().regex(getDemoTreasuryStatementQuerySnapshotRegExp).optional()
+})
+
+export const GetDemoTreasuryStatementResponse = zod.object({
+  "items": zod.array(zod.object({
+  "id": zod.string(),
+  "at": zod.string(),
+  "account": zod.enum(['treasury', 'buyback']),
+  "asset": zod.enum(['USDC', 'BETTEX']),
+  "amount": zod.string().describe('Signed exact decimal asset quantity'),
+  "category": zod.string(),
+  "reference": zod.string(),
+  "counterparty": zod.string(),
+  "source": zod.enum(['modeled_settlement', 'modeled_demo', 'recorded_simulation']),
+  "internal": zod.boolean(),
+  "income": zod.boolean(),
+  "principal": zod.string().nullable(),
+  "status": zod.enum(['recorded'])
+})),
+  "balances": zod.array(zod.object({
+  "account": zod.enum(['treasury', 'buyback']),
+  "asset": zod.enum(['USDC', 'BETTEX']),
+  "opening": zod.string().nullable(),
+  "inflows": zod.string(),
+  "outflows": zod.string(),
+  "closing": zod.string().nullable(),
+  "income": zod.string(),
+  "otherIncome": zod.string().nullable().describe('Null means the other-investment source is not available'),
+  "reconciled": zod.boolean()
+})),
+  "total": zod.number().int(),
+  "page": zod.number().int(),
+  "totalPages": zod.number().int(),
+  "pageSize": zod.number().int(),
+  "from": zod.string(),
+  "to": zod.string(),
+  "asOf": zod.string(),
+  "snapshot": zod.string(),
+  "coverage": zod.enum(['partial']),
+  "missingSources": zod.array(zod.string()),
+  "source": zod.enum(['simulation'])
+})
+
+
+export const exportDemoTreasuryStatementQueryAssetDefault = `all`;
+export const exportDemoTreasuryStatementQueryAccountDefault = `all`;
+export const exportDemoTreasuryStatementQueryCategoryDefault = `all`;
+export const exportDemoTreasuryStatementQueryCategoryMax = 40;
+
+export const exportDemoTreasuryStatementQueryDirectionDefault = `all`;
+export const exportDemoTreasuryStatementQuerySearchMax = 100;
+
+export const exportDemoTreasuryStatementQuerySnapshotRegExp = new RegExp('^\\d{1,20}$');
+export const exportDemoTreasuryStatementQueryLocaleDefault = `en`;
+
+export const ExportDemoTreasuryStatementQueryParams = zod.object({
+  "from": zod.date(),
+  "to": zod.date(),
+  "asset": zod.enum(['all', 'USDC', 'BETTEX']).default(exportDemoTreasuryStatementQueryAssetDefault),
+  "account": zod.enum(['all', 'treasury', 'buyback']).default(exportDemoTreasuryStatementQueryAccountDefault),
+  "category": zod.coerce.string().max(exportDemoTreasuryStatementQueryCategoryMax).default(exportDemoTreasuryStatementQueryCategoryDefault),
+  "direction": zod.enum(['all', 'in', 'out']).default(exportDemoTreasuryStatementQueryDirectionDefault),
+  "search": zod.coerce.string().max(exportDemoTreasuryStatementQuerySearchMax).optional(),
+  "asOf": zod.date().optional(),
+  "snapshot": zod.coerce.string().regex(exportDemoTreasuryStatementQuerySnapshotRegExp).optional(),
+  "locale": zod.enum(['pt', 'en', 'es']).default(exportDemoTreasuryStatementQueryLocaleDefault)
+})
+
+export const ExportDemoTreasuryStatementResponse = zod.unknown()
+
+
 export const getDemoTreasuryActivityQueryRoundIdRegExp = new RegExp('^\\d{4}-\\d{2}-\\d{2}$');
 export const getDemoTreasuryActivityQueryViewDefault = `history`;
 export const getDemoTreasuryActivityQueryPageDefault = 1;

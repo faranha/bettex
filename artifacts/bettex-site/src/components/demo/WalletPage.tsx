@@ -7,6 +7,7 @@ import { WalletStatement } from '../history/WalletStatement';
 import { TestContractPanel } from './TestContractPanel';
 import { isDemoSession } from './demo-session';
 import { NativeParticipationCard } from './NativeParticipationCard';
+import { TreasuryStatement } from '../history/TreasuryStatement';
 import { RoundHistory } from '../history/RoundHistory';
 
 export function WalletPage({ d, historyPanel }: { d: DemoDashboard; historyPanel?: ReactNode }) {
@@ -15,6 +16,7 @@ export function WalletPage({ d, historyPanel }: { d: DemoDashboard; historyPanel
     <h2 className="display text-xl font-extrabold tracking-tight" data-testid="text-wallet-title">{x('Histórico', 'History', 'Historial')}</h2>
     {!isDemoSession(d.profile) && (d.profile.provider === 'native' ? <NativeParticipationCard profile={d.profile} /> : <TestContractPanel />)}
     <RoundHistory key={`round-history-${d.profile.accountId}`} d={d} />
+    <TreasuryStatement serverNow={d.serverNow} roundStartedAt={d.treasury.currentRound?.startedAt} />
     <WalletStatement key={d.profile.accountId} d={d} />
     <details className="dcard p-4 sm:p-5">
       <summary className="cursor-pointer text-sm font-bold">{x('Auditoria detalhada e operações relacionadas', 'Detailed audit and related operations', 'Auditoría detallada y operaciones relacionadas')}</summary>
