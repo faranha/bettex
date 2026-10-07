@@ -27,7 +27,7 @@ function ClientAuthPage({ mode }: { mode: 'sign-in' | 'sign-up' }) {
   const name = x('BETTEX ALFA', 'BETTEX ALPHA', 'BETTEX ALFA');
 
   return <main className="auth-page demo-root" data-mode={mode}>
-    <div className="auth-photo" style={{ backgroundImage: `url(${base}hero-football-background.jpg)` }} aria-hidden="true" />
+    <div className="auth-photo" style={{ backgroundImage: `url(${base}auth-sportsbook-fullbleed.jpg)` }} aria-hidden="true" />
     <div className="auth-pattern" aria-hidden="true" />
     <header className="auth-header">
       <a href={home} className="auth-brand" aria-label={name}><BettexMark className="auth-mark" /><span>{name}</span></a>
@@ -45,7 +45,6 @@ function ClientAuthPage({ mode }: { mode: 'sign-in' | 'sign-up' }) {
         <span>{x('Entrar no demo', 'Enter the demo', 'Entrar en la demo')}</span>
         <span className="auth-cta-icon"><ArrowRight className="h-5 w-5" aria-hidden="true" /></span>
       </button>
-      <p className="auth-tag"><i aria-hidden="true" />{x('Demonstração · sem dinheiro real', 'Demo · no real money', 'Demostración · sin dinero real')}</p>
     </section>
     <div className="auth-figure"><img className="auth-phone" src={`${base}hero-person-centered.webp`} alt="" aria-hidden="true" width={514} height={968} /></div>
     </div>

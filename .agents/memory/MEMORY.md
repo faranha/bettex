@@ -79,5 +79,5 @@
 - [Tesouraria por rodada](treasury-presentation.md) — abas e histórico corrente paginado; emulação rotulada e persistida sem visitante; tarifas separadas do lucro.
 - [Localization catalog scope](localization-catalog-scope.md) — isolated multilingual tuples need their own audit; compiler types and grammar dictionaries are not page copy.
 - [Roteiro do demo](continuous-test-emulation.md) — timeline predefinida de 24 horas reais; não reintroduzir emulação aleatória como fonte financeira do app.
-- [Público da entrada do app](app-entry-audience.md) — homem em primeiro plano, somente futebol ao fundo; Esportes é o próximo mercado, com foco em value betting.
+- [Público da entrada do app](app-entry-audience.md) — homem em primeiro plano, apostas multi-esporte ao fundo; Esportes é o próximo mercado, com foco em value betting.
 - [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.

@@ -177,7 +177,7 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
     {!compact && <div className="site-footer__cta relative overflow-hidden bg-[#2B59FF]">
       <div aria-hidden="true" className="site-footer__sports">
-        <img src={`${import.meta.env.BASE_URL}footer-stadium.jpg`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
+        <img src={`${import.meta.env.BASE_URL}footer-betting-scene.jpg`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
       </div>
       <div className="page-wrap relative">
         <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">
@@ -192,7 +192,7 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             </div>
           </div>
           <div className="relative z-10 mx-auto w-full max-w-[400px] self-end lg:max-w-[540px] lg:justify-self-end">
-            <img src={`${import.meta.env.BASE_URL}footer-community.webp`} width={900} height={858} alt="" aria-hidden="true" loading="lazy" decoding="async" className="relative block h-auto w-full drop-shadow-[0_14px_24px_rgba(7,11,31,.35)]" />
+            <div className="h-[260px] lg:h-[420px]" aria-hidden="true" />
           </div>
         </div>
       </div>

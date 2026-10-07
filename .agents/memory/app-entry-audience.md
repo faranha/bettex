@@ -1,16 +1,16 @@
 ---
 name: Público da entrada do aplicativo
-description: Futebol como referência visual de aquisição para a entrada do demo BETTEX.
+description: Ambiente de apostas esportivas multi-esporte na entrada do demo BETTEX.
 ---
 
-A entrada do aplicativo deve mostrar apenas futebol no fundo, mantendo o homem original em primeiro plano. Não misturar com lutas UFC/MMA.
+A entrada do aplicativo deve usar um ambiente de apostas esportivas multi-esporte no fundo, mantendo o homem original em primeiro plano. Não limitar o cenário a um jogo de futebol.
 
-**Why:** O criador revisou a direção anterior que misturava futebol e lutas: enviou a tela de entrada e pediu “vamos focar no futebol chama o agente novamente”.
+**Why:** Após experimentar futebol apenas, o criador enviou a tela de entrada e pediu “lets try a sports betting background not just soccer”.
 
-**How to apply:** Priorizar um cenário de futebol na entrada do demo, sem modificar a homepage institucional por consequência. A referência esportiva é de aquisição e não autoriza ativar o agente de esportes nem executar apostas reais.
+**How to apply:** Usar um cenário coerente de sportsbook/lounge com diferentes esportes e painéis de odds, sem modificar a homepage institucional por consequência. Conferir os esportes efetivamente visíveis no enquadramento mobile: a fotografia inteira pode mostrar vários, mas o recorte `cover` preservar só futebol. A referência esportiva é de aquisição e não autoriza ativar o agente de esportes nem executar apostas reais.
 
-Esportes é o próximo mercado depois de Cripto, com foco em value betting. Essa prioridade deve aparecer claramente na apresentação dos agentes.
+Esportes, com foco em value betting, é o próximo lançamento e a principal atração para o público. Deve receber mais destaque visual do que Cripto, que já está disponível no demo.
 
-**Why:** O criador definiu: “Value betting, thats the focus of sports, next market - make sure Sports is next and that shows”.
+**Why:** O criador reforçou: “the next release is the sports value betting agent, and that's what the audience really wants” e pediu “visual hype around it more than crypto”.
 
-**How to apply:** Apresentar Esportes antes dos demais mercados futuros, com indicação explícita de próximo mercado e foco em value betting. Não confundir próximo mercado com agente já ativo nem prometer data de lançamento.
+**How to apply:** Destacar Esportes/Value Betting como protagonista, com Cripto em posição secundária de disponível agora. Preservar Previsões e Cassino como futuros/desativados. Manter a chamada de próximo lançamento, sem habilitar Esportes, inventar data ou sugerir que o CTA do demo cripto abre apostas esportivas.

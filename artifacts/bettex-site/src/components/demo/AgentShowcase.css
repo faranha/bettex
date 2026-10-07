@@ -1,0 +1,38 @@
+.agx{--ink:#1B2A41;--mut:#5B6B85;--pn:#FFFCF6;--pb:#E4DCCB;--cr-bg:#EEF3FF;--cr-bd:#B9C8F5}
+.agx-dark{--ink:#F4F1E8;--mut:#9AA7CF;--pn:#10173A;--pb:#2A3466;--cr-bg:#0E1536;--cr-bd:#2B3F8F}
+.agx-kick{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0A6657}
+.agx-dark .agx-kick{color:#F2B632}
+.agx-title{margin-top:4px;font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1.1;font-weight:800;color:var(--ink)}
+.agx-sub{margin-top:8px;max-width:640px;font-size:.95rem;color:var(--mut)}
+.agx-hero{position:relative;overflow:hidden;margin-top:20px;display:grid;gap:16px;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;padding:clamp(18px,3vw,32px);border-radius:24px;border:1.5px solid #C9A24A;color:#F4F1E8;background:radial-gradient(circle at 85% 20%,rgba(43,89,255,.45),transparent 50%),linear-gradient(150deg,#0A1233,#0F1E55 70%,#14246B);box-shadow:0 24px 50px -26px rgba(43,89,255,.7)}
+.agx-hero h3{font-size:clamp(1.7rem,4.2vw,2.8rem);line-height:1.04;font-weight:800;margin-top:12px}
+.agx-hero h3 em{font-style:normal;color:#F2B632}
+.agx-hero p{margin-top:10px;font-size:.95rem;line-height:1.5;color:#C9D3F5;max-width:480px}
+.agx-next{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.agx-badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:#F2B632;color:#0A1233}
+.agx-badge-2{background:rgba(244,241,232,.1);color:#E8D9AE;border:1px solid rgba(242,182,50,.45)}
+.agx-sports{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0;list-style:none}
+.agx-sports li{border-radius:999px;border:1px solid rgba(151,182,255,.35);padding:3px 11px;font-size:12px;font-weight:700;color:#C9D3F5}
+.agx-note{margin-top:12px;font-size:12px!important;color:#9AA7CF!important}
+.agx-viz{width:100%;height:auto;display:block;filter:drop-shadow(0 16px 28px rgba(43,89,255,.25));animation:agx-art-float 5s ease-in-out infinite}
+@keyframes agx-art-float{50%{transform:translateY(-5px)}}
+.agx-row{display:grid;gap:12px;margin-top:12px;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.agx-crypto{display:flex;flex-direction:column;gap:8px;border-radius:20px;border:1px solid var(--cr-bd);background:var(--cr-bg);padding:16px;color:var(--ink)}
+.agx-crypto h3{font-size:1.35rem;font-weight:800}
+.agx-crypto p{font-size:.85rem;color:var(--mut)}
+.agx-live{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;border-radius:999px;background:#0E7C6B;color:#fff;padding:3px 11px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.agx-live .console-dot{background:#fff!important}
+.agx-tick{display:flex;gap:8px;flex-wrap:wrap}
+.agx-tick span{border:1px solid var(--cr-bd);border-radius:8px;padding:2px 9px;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--ink)}
+.agx-cta{display:inline-flex;min-height:44px;max-width:100%;align-self:flex-start;align-items:center;gap:8px;border-radius:12px;background:#0E7C6B;color:#fff;padding:0 16px;font-size:.85rem;font-weight:700}
+.agx-cta:hover{background:#0A6657}
+.agx-dark .agx-cta{background:#2B59FF}.agx-dark .agx-cta:hover{background:#1E44D6}
+.agx-list{display:grid;gap:8px;margin:0;padding:0;list-style:none;align-content:start}
+.agx-off{display:flex;align-items:center;gap:10px;border-radius:14px;border:1px dashed var(--pb);background:transparent;padding:10px;opacity:.8}
+.agx-off .agx-ic{display:flex;height:36px;width:36px;flex:none;align-items:center;justify-content:center;border-radius:10px;background:rgba(127,127,160,.16);color:var(--mut)}
+.agx-off b{display:block;font-size:.85rem;color:var(--ink)}
+.agx-off small{display:block;font-size:11px;color:var(--mut)}
+.agx-off .agx-st{margin-left:auto;display:inline-flex;align-items:center;gap:4px;border-radius:999px;background:rgba(127,127,160,.18);padding:2px 8px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+@media(max-width:820px){.agx-hero,.agx-row{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:480px){.agx-off{flex-wrap:wrap}.agx-off .agx-st{margin-left:46px}}
+@media(prefers-reduced-motion:reduce){.agx-viz{animation:none}}
