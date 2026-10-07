@@ -102,3 +102,9 @@
 .agx-off[data-agent=casino] .agx-ic{background:rgba(244,114,182,.2);color:#F9A8D4}
 .agx-art{filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}
 @media(prefers-reduced-motion:reduce){.agx-brainbox .brain-energy__blue,.agx-brainbox .brain-energy__gold{animation:none;opacity:1}}
+
+/* soccer-first: brain as small accessory */
+.agx-brainbox{left:auto;right:1%;top:0;width:25%;transform:none}
+.agx-brainbox::before{background:radial-gradient(ellipse,rgba(54,183,255,.35),transparent 70%)}
+.agx-chip-a{left:auto;right:1%;top:auto;bottom:auto;transform:none;top:calc(25% * 1.45 + 2px);font-size:8px}
+.agx-chip-b{left:2%;transform:none;bottom:2px;font-size:8px;color:#FDE68A;text-shadow:0 1px 2px #000}

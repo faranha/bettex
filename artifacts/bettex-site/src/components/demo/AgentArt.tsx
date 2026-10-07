@@ -24,19 +24,32 @@ export function CryptoBarsArt() {
 
 export function SportsBrainArt({ label, l1, l2 }: { label: string; l1: string; l2: string }) {
   const base = import.meta.env.BASE_URL;
+  const pent = (cx: number, cy: number, r: number, rot: number) => Array.from({ length: 5 }, (_, i) => { const t = (rot + i * 72) * Math.PI / 180; return `${(cx + r * Math.cos(t)).toFixed(1)},${(cy + r * Math.sin(t)).toFixed(1)}`; }).join(' ');
   return <div className="agx-brainart" role="img" aria-label={label}>
-    <svg className="agx-links" viewBox="0 0 320 220" aria-hidden focusable="false" fill="none" strokeLinecap="round">
-      <g stroke="#FB923C" strokeWidth="1" opacity=".75"><path d="M92 62 128 84M92 150 126 128M232 74 200 90M236 158 204 134" /></g>
-      <g fill="#FDBA74"><circle cx="92" cy="62" r="2.5" /><circle cx="92" cy="150" r="2.5" /><circle cx="232" cy="74" r="2.5" /><circle cx="236" cy="158" r="2.5" /></g>
-      <g transform="translate(10 40)"><rect width="82" height="48" rx="10" fill="rgba(20,8,16,.75)" stroke="rgba(251,146,60,.55)" />
-        {[16, 30, 22, 38, 28].map((v, i) => <rect key={i} x={10 + i * 13} y={42 - v} width="8" height={v} rx="2" fill={i === 3 ? '#FBBF24' : '#FB923C'} opacity={i === 3 ? 1 : .7} />)}</g>
-      <g transform="translate(10 128)"><rect width="82" height="44" rx="10" fill="rgba(20,8,16,.75)" stroke="rgba(244,114,182,.5)" />
-        <path d="M10 32 24 24 38 28 54 14 72 10" stroke="#F472B6" strokeWidth="2" /><circle cx="72" cy="10" r="3" fill="#F472B6" stroke="none" /></g>
-      <g transform="translate(232 56)"><rect width="78" height="36" rx="10" fill="rgba(20,8,16,.75)" stroke="rgba(94,234,212,.5)" /><circle cx="22" cy="18" r="9" stroke="#5EEAD4" strokeWidth="1.6" /><path d="M22 12v12M16 18h12" stroke="#5EEAD4" strokeWidth="1" /><rect x="38" y="13" width="30" height="4" rx="2" fill="#5EEAD4" opacity=".6" stroke="none" /><rect x="38" y="21" width="20" height="3" rx="1.5" fill="#5EEAD4" opacity=".35" stroke="none" /></g>
-      <g transform="translate(232 140)"><rect width="78" height="36" rx="10" fill="rgba(20,8,16,.75)" stroke="rgba(251,191,36,.5)" /><rect x="10" y="9" width="58" height="18" rx="4" stroke="#FBBF24" strokeWidth="1.2" /><path d="M39 9v18M10 18h58" stroke="#FBBF24" strokeWidth="1" opacity=".6" /></g>
+    <svg className="agx-links" viewBox="0 0 320 220" aria-hidden focusable="false" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <defs>
+        <linearGradient id="agx-pitch" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#0F4A2B" /><stop offset="1" stopColor="#1F8A47" /></linearGradient>
+        <radialGradient id="agx-ball" cx=".35" cy=".3" r=".85"><stop offset="0" stopColor="#FFFFFF" /><stop offset=".6" stopColor="#E4E7EE" /><stop offset="1" stopColor="#8E96AA" /></radialGradient>
+        <clipPath id="agx-pc"><path d="M60 52H260L312 212H8Z" /></clipPath>
+      </defs>
+      <path d="M60 52H260L312 212H8Z" fill="url(#agx-pitch)" />
+      <g clipPath="url(#agx-pc)">{[0, 1, 2, 3, 4].map(i => <rect key={i} x="0" y={52 + i * 32} width="320" height="16" fill="#fff" opacity=".05" />)}</g>
+      <path d="M60 52H260L312 212H8Z" stroke="#E9F7EC" strokeWidth="1.6" opacity=".75" />
+      <path d="M10 140H310M126 52 106 98H214L194 52" stroke="#E9F7EC" strokeWidth="1.4" opacity=".6" />
+      <ellipse cx="160" cy="140" rx="52" ry="14" stroke="#E9F7EC" strokeWidth="1.4" opacity=".6" />
+      <g stroke="#FB923C" strokeWidth="1.6" strokeDasharray="4 5" opacity=".95"><path d="M70 196C96 160 120 150 150 128" /><path d="M250 190C232 150 214 118 200 96" /><path d="M110 112C130 96 160 88 188 90" /></g>
+      {[[70, 196], [250, 190], [110, 112]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="6" fill="#FB923C" stroke="#2A1208" strokeWidth="1.5" />)}
+      {[[200, 96], [188, 90], [96, 150]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5" fill="#E8EEF9" stroke="#1B2540" strokeWidth="1.5" opacity=".92" />)}
+      <ellipse cx="150" cy="190" rx="52" ry="8" fill="#03140A" opacity=".5" />
+      <circle cx="150" cy="140" r="46" fill="url(#agx-ball)" />
+      <polygon points={pent(150, 140, 15, -90)} fill="#141A2B" />
+      {[-90, -18, 54, 126, 198].map((d, i) => { const t = d * Math.PI / 180; const x = 150 + 31 * Math.cos(t), y = 140 + 31 * Math.sin(t); return <g key={i}><path d={`M${150 + 15 * Math.cos(t)} ${140 + 15 * Math.sin(t)}L${x} ${y}`} stroke="#141A2B" strokeWidth="2" /><polygon points={pent(150 + 41 * Math.cos(t), 140 + 41 * Math.sin(t), 8, d + 180)} fill="#141A2B" opacity=".9" /></g>; })}
+      <circle cx="150" cy="140" r="46" stroke="#fff" strokeWidth="1.5" opacity=".5" />
+      <path d="M126 112a40 40 0 0 1 36-14" stroke="#fff" strokeWidth="4" opacity=".55" />
+      <g transform="translate(12 74)" stroke="#E9F7EC" strokeWidth="2" opacity=".85"><path d="M0 0H26V40H0M6 6H20V34H6" /></g>
     </svg>
     <div className="agx-brainbox">
-      <img className="agx-brainimg" src={`${base}agents/bettex-intelligence-brain.webp`} alt="" width={640} height={640} loading="lazy" decoding="async" />
+      <img className="agx-brainimg" src={`${base}agents/bettex-intelligence-brain.webp`} alt="" width={640} height={640} decoding="async" />
       <BrainEnergy />
     </div>
     <span className="agx-chip agx-chip-a" aria-hidden>{l1}</span>

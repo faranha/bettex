@@ -38,3 +38,9 @@ A seção dos agentes precisa de variedade de cores e identidade de IA com o cé
 **Why:** O criador reiterou que “está tudo azul e amarelo” e “está faltando cor”. Após experimentar robôs, rejeitou o resultado como “infantil demais” e pediu “o cérebro, os raios que a gente criou lá na homepage”.
 
 **How to apply:** Reutilizar a arte realista do cérebro e os raios da homepage, sem personagens repetidos ou visual infantil. Preservar cores distintas, destaque de Esportes, cartões compactos e a rejeição anterior ao fundo verde de Cripto.
+
+No primeiro cartão de Esportes, futebol deve ser o assunto visual principal; o cérebro e os raios ficam como acessórios secundários.
+
+**Why:** O criador apontou o cartão e definiu: “this first section must relate to soccer, the brain can come afterwards, can be accessory”.
+
+**How to apply:** Priorizar bola, campo e elementos de futebol na arte de Esportes, sem remover os exemplos de outras modalidades nem alterar o fundo MMA do hero por causa dessa orientação.
