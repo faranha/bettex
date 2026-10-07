@@ -48,7 +48,7 @@ function ClientAuthPage({ mode }: { mode: 'sign-in' | 'sign-up' }) {
     </section>
     <div className="auth-figure"><img className="auth-phone" src={`${base}hero-person-centered.webp`} alt="" aria-hidden="true" width={514} height={968} /></div>
     </div>
-    <div className="auth-agents"><AgentShowcase variant="dark" onEnter={() => { qc.clear(); startAppSession(); }} /></div>
+    <div className="auth-agents"><AgentShowcase variant="dark" showDisclaimer={false} onEnter={() => { qc.clear(); startAppSession(); }} /></div>
   </main>;
 }
 export const SignInPage = () => <AuthPage mode="sign-in" />;
