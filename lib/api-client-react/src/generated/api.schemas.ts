@@ -2789,6 +2789,120 @@ export interface DemoTreasuryActivityPage {
   source: DemoTreasuryActivityPageSource;
 }
 
+export type TreasuryStatementEntryAccount = typeof TreasuryStatementEntryAccount[keyof typeof TreasuryStatementEntryAccount];
+
+
+export const TreasuryStatementEntryAccount = {
+  treasury: 'treasury',
+  buyback: 'buyback',
+} as const;
+
+export type TreasuryStatementEntryAsset = typeof TreasuryStatementEntryAsset[keyof typeof TreasuryStatementEntryAsset];
+
+
+export const TreasuryStatementEntryAsset = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+} as const;
+
+export type TreasuryStatementEntrySource = typeof TreasuryStatementEntrySource[keyof typeof TreasuryStatementEntrySource];
+
+
+export const TreasuryStatementEntrySource = {
+  modeled_settlement: 'modeled_settlement',
+  modeled_demo: 'modeled_demo',
+  recorded_simulation: 'recorded_simulation',
+} as const;
+
+export type TreasuryStatementEntryStatus = typeof TreasuryStatementEntryStatus[keyof typeof TreasuryStatementEntryStatus];
+
+
+export const TreasuryStatementEntryStatus = {
+  recorded: 'recorded',
+} as const;
+
+export interface TreasuryStatementEntry {
+  id: string;
+  at: string;
+  account: TreasuryStatementEntryAccount;
+  asset: TreasuryStatementEntryAsset;
+  /** Signed exact decimal asset quantity */
+  amount: string;
+  category: string;
+  reference: string;
+  counterparty: string;
+  source: TreasuryStatementEntrySource;
+  internal: boolean;
+  income: boolean;
+  /** @nullable */
+  principal: string | null;
+  status: TreasuryStatementEntryStatus;
+}
+
+export type TreasuryStatementBalanceAccount = typeof TreasuryStatementBalanceAccount[keyof typeof TreasuryStatementBalanceAccount];
+
+
+export const TreasuryStatementBalanceAccount = {
+  treasury: 'treasury',
+  buyback: 'buyback',
+} as const;
+
+export type TreasuryStatementBalanceAsset = typeof TreasuryStatementBalanceAsset[keyof typeof TreasuryStatementBalanceAsset];
+
+
+export const TreasuryStatementBalanceAsset = {
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+} as const;
+
+export interface TreasuryStatementBalance {
+  account: TreasuryStatementBalanceAccount;
+  asset: TreasuryStatementBalanceAsset;
+  /** @nullable */
+  opening: string | null;
+  inflows: string;
+  outflows: string;
+  /** @nullable */
+  closing: string | null;
+  income: string;
+  /**
+     * Null means the other-investment source is not available
+     * @nullable
+     */
+  otherIncome: string | null;
+  reconciled: boolean;
+}
+
+export type TreasuryStatementPageCoverage = typeof TreasuryStatementPageCoverage[keyof typeof TreasuryStatementPageCoverage];
+
+
+export const TreasuryStatementPageCoverage = {
+  partial: 'partial',
+} as const;
+
+export type TreasuryStatementPageSource = typeof TreasuryStatementPageSource[keyof typeof TreasuryStatementPageSource];
+
+
+export const TreasuryStatementPageSource = {
+  simulation: 'simulation',
+} as const;
+
+export interface TreasuryStatementPage {
+  items: TreasuryStatementEntry[];
+  balances: TreasuryStatementBalance[];
+  total: number;
+  page: number;
+  totalPages: number;
+  pageSize: number;
+  from: string;
+  to: string;
+  asOf: string;
+  snapshot: string;
+  coverage: TreasuryStatementPageCoverage;
+  missingSources: string[];
+  source: TreasuryStatementPageSource;
+}
+
 export interface DemoRoundArchivePage {
   items: DemoRound[];
   page: number;
@@ -2926,6 +3040,117 @@ export const GetAlphaTradingAsset = {
   btc: 'btc',
   eth: 'eth',
   sol: 'sol',
+} as const;
+
+export type GetDemoTreasuryStatementParams = {
+from: string;
+to: string;
+asset?: GetDemoTreasuryStatementAsset;
+account?: GetDemoTreasuryStatementAccount;
+/**
+ * @maxLength 40
+ */
+category?: string;
+direction?: GetDemoTreasuryStatementDirection;
+/**
+ * @maxLength 100
+ */
+search?: string;
+/**
+ * @minimum 1
+ * @maximum 100000
+ */
+page?: number;
+asOf?: string;
+/**
+ * @pattern ^\d{1,20}$
+ */
+snapshot?: string;
+};
+
+export type GetDemoTreasuryStatementAsset = typeof GetDemoTreasuryStatementAsset[keyof typeof GetDemoTreasuryStatementAsset];
+
+
+export const GetDemoTreasuryStatementAsset = {
+  all: 'all',
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+} as const;
+
+export type GetDemoTreasuryStatementAccount = typeof GetDemoTreasuryStatementAccount[keyof typeof GetDemoTreasuryStatementAccount];
+
+
+export const GetDemoTreasuryStatementAccount = {
+  all: 'all',
+  treasury: 'treasury',
+  buyback: 'buyback',
+} as const;
+
+export type GetDemoTreasuryStatementDirection = typeof GetDemoTreasuryStatementDirection[keyof typeof GetDemoTreasuryStatementDirection];
+
+
+export const GetDemoTreasuryStatementDirection = {
+  all: 'all',
+  in: 'in',
+  out: 'out',
+} as const;
+
+export type ExportDemoTreasuryStatementParams = {
+from: string;
+to: string;
+asset?: ExportDemoTreasuryStatementAsset;
+account?: ExportDemoTreasuryStatementAccount;
+/**
+ * @maxLength 40
+ */
+category?: string;
+direction?: ExportDemoTreasuryStatementDirection;
+/**
+ * @maxLength 100
+ */
+search?: string;
+asOf?: string;
+/**
+ * @pattern ^\d{1,20}$
+ */
+snapshot?: string;
+locale?: ExportDemoTreasuryStatementLocale;
+};
+
+export type ExportDemoTreasuryStatementAsset = typeof ExportDemoTreasuryStatementAsset[keyof typeof ExportDemoTreasuryStatementAsset];
+
+
+export const ExportDemoTreasuryStatementAsset = {
+  all: 'all',
+  USDC: 'USDC',
+  BETTEX: 'BETTEX',
+} as const;
+
+export type ExportDemoTreasuryStatementAccount = typeof ExportDemoTreasuryStatementAccount[keyof typeof ExportDemoTreasuryStatementAccount];
+
+
+export const ExportDemoTreasuryStatementAccount = {
+  all: 'all',
+  treasury: 'treasury',
+  buyback: 'buyback',
+} as const;
+
+export type ExportDemoTreasuryStatementDirection = typeof ExportDemoTreasuryStatementDirection[keyof typeof ExportDemoTreasuryStatementDirection];
+
+
+export const ExportDemoTreasuryStatementDirection = {
+  all: 'all',
+  in: 'in',
+  out: 'out',
+} as const;
+
+export type ExportDemoTreasuryStatementLocale = typeof ExportDemoTreasuryStatementLocale[keyof typeof ExportDemoTreasuryStatementLocale];
+
+
+export const ExportDemoTreasuryStatementLocale = {
+  pt: 'pt',
+  en: 'en',
+  es: 'es',
 } as const;
 
 export type GetDemoTreasuryActivityParams = {

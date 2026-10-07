@@ -15,6 +15,8 @@ import { demoTabIdentity } from "../modules/simulation/infrastructure/demo-tab-s
 import { avatarStorage, ProfileAvatarError, validateProfileAvatar, serveProfileAvatar, validAvatarId, removeProfileAvatar } from "../lib/profile-avatar";
 import { GetDemoRoundArchiveQueryParams, GetDemoRoundArchiveResponse } from "@workspace/api-zod";
 import { roundArchivePage } from "../lib/round-archive-store";
+import { statementFilters } from "../lib/treasury-statement";
+import { treasuryStatement, treasuryStatementCsv } from "../lib/treasury-statement-store";
 
 const router = Router();
 const cookieName = "bettex_demo";
@@ -131,6 +133,23 @@ router.all("/demo/simulation", async (req, res) => {
     const code = error instanceof Error ? error.message : "simulation_unavailable";
     const known = ["simulation_not_found", "simulation_run_required", "simulation_revision_changed", "simulation_idempotency_conflict", "simulation_paused", "invalid_amount", "unknown_simulation_action"];
     res.status(code === "simulation_not_found" ? 404 : known.includes(code) ? 409 : 503).json({ code: known.includes(code) ? code : "simulation_unavailable" });
+  }
+});
+for (const exportCsv of [false, true]) router.get(`/demo/treasury/statement${exportCsv ? "/export" : ""}`, async (req, res) => {
+  res.set("Cache-Control", "no-store");
+  try {
+    const filters = statementFilters(req.query);
+    await userDashboard(req, res);
+    const result = await treasuryStatement(filters);
+    if (exportCsv) {
+      res.set("Content-Disposition", `attachment; filename="treasury-${filters.from}-${filters.to}.csv"`);
+      res.type("text/csv").send(treasuryStatementCsv(result.entries, filters.locale));
+    } else res.json(result.page);
+  } catch (error) {
+    if (error instanceof Error && error.message === "invalid_statement_filters") {
+      res.status(400).json({ code: "invalid_statement_filters" }); return;
+    }
+    errorResponse(req, res, error);
   }
 });
 router.get("/demo/treasury/activity", async (req, res) => {
