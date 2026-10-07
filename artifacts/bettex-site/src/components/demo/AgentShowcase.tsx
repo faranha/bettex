@@ -5,6 +5,13 @@ import { demoPath } from './demo-navigation';
 import { useX } from './ui';
 import './AgentShowcase.css';
 
+function Bars({ h, label }: { h: number[]; label: string }) {
+  return <div>
+    <div className="agx-bars" aria-hidden>{h.map((v, i) => <i key={i} style={{ height: `${v}%` }} />)}</div>
+    <span className="agx-ill">{label}</span>
+  </div>;
+}
+
 function ValueViz({ label }: { label: string }) {
   const { x } = useX();
   return <svg className="agx-viz" viewBox="0 0 320 220" role="img" aria-label={label}>
@@ -34,11 +41,12 @@ function ValueViz({ label }: { label: string }) {
 export function AgentShowcase({ variant = 'light', onEnter }: { variant?: 'light' | 'dark'; onEnter?: () => void }) {
   const { x, loc } = useX();
   const off = [
-    { id: 'prediction', Icon: Vote, color: '#6B5FA8', name: x('Mercados de previsão', 'Prediction Markets', 'Mercados de predicción'), tag: x('Probabilidades', 'Probabilities', 'Probabilidades') },
-    { id: 'casino', Icon: Dices, color: '#A8453F', name: x('Cassino', 'Casino', 'Casino'), tag: x('Rodadas e mesas', 'Rounds and tables', 'Rondas y mesas') },
+    { id: 'prediction', bars: [60, 40, 52, 48, 38, 62, 45], Icon: Vote, color: '#6B5FA8', name: x('Mercados de previsão', 'Prediction Markets', 'Mercados de predicción'), tag: x('Probabilidades', 'Probabilities', 'Probabilidades'), desc: x('Próximo lançamento. Ainda não está ativo nesta demo.', 'Next release. Not active in this demo yet.', 'Próximo lanzamiento. Aún no está activo en esta demo.') },
+    { id: 'casino', bars: [30, 45, 60, 75, 60, 45, 30], Icon: Dices, color: '#A8453F', name: x('Cassino', 'Casino', 'Casino'), tag: x('Rodadas e mesas', 'Rounds and tables', 'Rondas y mesas'), desc: x('Próximo lançamento. Ainda não está ativo nesta demo.', 'Next release. Not active in this demo yet.', 'Próximo lanzamiento. Aún no está activo en esta demo.') },
   ];
+  const ill = x('Ilustrativo · não são dados reais', 'Illustrative · not live data', 'Ilustrativo · no son datos reales');
   const sportsNext = x('Ainda não disponível', 'Not live yet', 'Aún no disponible');
-  const sports = [x('Futebol', 'Football', 'Fútbol'), x('Basquete', 'Basketball', 'Baloncesto'), x('Tênis', 'Tennis', 'Tenis')];
+  const sports = [x('Futebol', 'Football', 'Fútbol'), x('Basquete', 'Basketball', 'Baloncesto'), x('Tênis', 'Tennis', 'Tenis'), 'UFC'];
   return <section className={`agx flex flex-col p-4 sm:p-6 ${variant === 'dark' ? 'agx-dark' : 'dcard'}`} data-variant={variant} data-testid="panel-agent-showcase" aria-labelledby="agx-title">
     <p className="agx-kick">{x('Demo ALFA, sem dinheiro real', 'ALPHA demo, no real money', 'Demo ALFA, sin dinero real')}</p>
     <h2 id="agx-title" className="agx-title">{x('Vem aí: Esportes com Value Betting', 'Coming next: Sports Value Betting', 'Próximamente: Deportes con Value Betting')}</h2>
@@ -57,19 +65,23 @@ export function AgentShowcase({ variant = 'light', onEnter }: { variant?: 'light
     </article>
     <div className="agx-row">
       <article data-testid="card-agent-crypto" className="agx-crypto">
-        <span data-testid="status-agent-crypto" className="agx-live"><span className="console-dot !h-1.5 !w-1.5" />{x('Disponível agora', 'Available now', 'Disponible ahora')}</span>
-        <h3>{x('Cripto', 'Crypto', 'Cripto')}</h3>
-        <p>{x('Demo ativa com BTC, ETH e SOL. Acompanhe as decisões na Central da IA.', 'Active demo with BTC, ETH and SOL. Follow the decisions in the AI Center.', 'Demo activa con BTC, ETH y SOL. Sigue las decisiones en la Central de IA.')}</p>
-        <div className="agx-tick" aria-label="BTC ETH SOL"><span>BTC</span><span>ETH</span><span>SOL</span></div>
+        <div className="agx-head"><span data-testid="status-agent-crypto" className="agx-live"><span className="console-dot !h-1.5 !w-1.5" />{x('Disponível agora', 'Available now', 'Disponible ahora')}</span><h3>{x('Cripto', 'Crypto', 'Cripto')}</h3></div>
+        <div className="agx-mid">
+          <div className="agx-midtx">
+            <p>{x('Demo ativa com BTC, ETH e SOL. Acompanhe as decisões na Central da IA.', 'Active demo with BTC, ETH and SOL. Follow the decisions in the AI Center.', 'Demo activa con BTC, ETH y SOL. Sigue las decisiones en la Central de IA.')}</p>
+            <div className="agx-tick" aria-label="BTC ETH SOL"><span>BTC</span><span>ETH</span><span>SOL</span></div>
+          </div>
+          <Bars h={[35, 55, 42, 70, 58, 85, 66]} label={ill} />
+        </div>
         <Link href={demoPath('central', loc)} onClick={onEnter} data-testid="link-agent-showcase-central" className="group agx-cta">{onEnter ? x('Entrar no demo cripto da Central da IA', 'Enter the crypto AI Center demo', 'Entrar en la demo cripto de la Central de IA') : x('Abrir a Central da IA (cripto)', 'Open the AI Center (crypto)', 'Abrir la Central de IA (cripto)')}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden /></Link>
       </article>
       <ul className="agx-list">
-        {off.map(a => <li key={a.id} data-testid={`card-agent-${a.id}`} aria-disabled="true" className="agx-off pointer-events-none select-none">
-          <span className="agx-ic"><a.Icon className="h-4 w-4" aria-hidden /></span>
-          <span className="min-w-0"><b>{a.name}</b><small>{a.tag}</small></span>
-          <span data-testid={`status-agent-${a.id}`} className="agx-st"><Lock className="h-3 w-3" aria-hidden />{x('Futuro · desativado', 'Future · disabled', 'Futuro · desactivado')}</span>
+        {off.map(a => <li key={a.id} data-testid={`card-agent-${a.id}`} aria-disabled="true" className="agx-off pointer-events-none select-none" style={{ ['--agx-c' as string]: a.color }}>
+          <span className="agx-top"><span className="agx-ic"><a.Icon className="h-5 w-5" aria-hidden /></span>
+          <span data-testid={`status-agent-${a.id}`} className="agx-st"><Lock className="h-3 w-3" aria-hidden />{x('Futuro · desativado', 'Future · disabled', 'Futuro · desactivado')}</span></span>
+          <span className="agx-tx"><b>{a.name}</b><small>{a.tag}</small></span>
+          <Bars h={a.bars} label={ill} />
         </li>)}
-        <li className="px-1 text-xs" style={{ color: 'var(--mut)' }}>{x('Apenas Cripto está ativo durante a ALFA.', 'Only Crypto is active during ALPHA.', 'Solo Cripto está activo durante la ALFA.')}</li>
       </ul>
     </div>
   </section>;
