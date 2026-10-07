@@ -7,10 +7,12 @@
  */
 import type { DemoMovementInputAsset } from './demoMovementInputAsset';
 import type { DemoMovementInputKind } from './demoMovementInputKind';
+import type { DemoMovementInputSourceWallet } from './demoMovementInputSourceWallet';
 
 export interface DemoMovementInput {
   requestId: string;
   kind: DemoMovementInputKind;
+  sourceWallet?: DemoMovementInputSourceWallet;
   asset: DemoMovementInputAsset;
   /**
      * @minimum 0.000001

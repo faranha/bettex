@@ -7,13 +7,15 @@ const money = (v: number) => Math.round(v * 1e6) / 1e6;
 export type TreasuryTracking = {
   dayAt: number; since: number; complete: boolean; openingAssets: number | null;
   fees: DemoTreasuryRound["feeBreakdown"]; executionCosts: number; closed: number;
+  scenarioReady?: boolean; nextCommunityFeeAt?: number;
+  scriptedFeeCount?: number;
 };
 export function ensureTreasuryTracking(engine: EngineState, now: number, complete = false) {
   if (engine.treasuryTracking?.dayAt === engine.dayAt) return engine.treasuryTracking;
   engine.treasuryTracking = {
     dayAt: engine.dayAt, since: now, complete,
     openingAssets: complete ? engine.treasury.assetsUsdc : null,
-    fees: { onramp: 0, swap: 0, withdraw: 0, send: 0 }, executionCosts: 0, closed: 0,
+    fees: { onramp: 0, swap: 0, withdraw: 0, send: 0, transfer: 0 }, executionCosts: 0, closed: 0,
   };
   return engine.treasuryTracking;
 }
@@ -21,12 +23,23 @@ export function recordTreasurySettlement(engine: EngineState, op: DemoOperation,
   const tracking = ensureTreasuryTracking(engine, now);
   tracking.closed++;
   tracking.executionCosts = money(tracking.executionCosts + (op.proposal?.feesUsdc ?? .12));
+  (engine.pendingTreasuryActivity ??= []).push({
+    id: op.id, at: new Date(now).toISOString(), kind: "position_closed", source: "emulated",
+    agent: op.agent, market: op.market, capitalUsdc: op.capitalUsdc, grossUsdc: op.pnlUsdc,
+    costUsdc: op.proposal?.feesUsdc ?? .12, netUsdc: money(op.pnlUsdc - (op.proposal?.feesUsdc ?? .12)),
+    feeKind: null, feeUsdc: null,
+  });
 }
 export function recordOperatorFee(engine: EngineState, movement: DemoMovement, now: number) {
-  if (!(movement.kind in { onramp: 1, swap: 1, withdraw: 1, send: 1 }) || !Number.isFinite(movement.feeUsdc) || movement.feeUsdc <= 0) return;
+  if (!(movement.kind in { onramp: 1, swap: 1, withdraw: 1, send: 1, transfer: 1 }) || !Number.isFinite(movement.feeUsdc) || movement.feeUsdc <= 0) return;
   const tracking = ensureTreasuryTracking(engine, now);
   const key = movement.kind as keyof TreasuryTracking["fees"];
-  tracking.fees[key] = money(tracking.fees[key] + movement.feeUsdc);
+  tracking.fees[key] = money((tracking.fees[key] ?? 0) + movement.feeUsdc);
+  (engine.pendingTreasuryActivity ??= []).push({
+    id: `FEE-${movement.id}`, at: new Date(now).toISOString(), kind: "operator_fee", source: "emulated",
+    agent: null, market: null, capitalUsdc: null, grossUsdc: null, costUsdc: null, netUsdc: null,
+    feeKind: key, feeUsdc: movement.feeUsdc,
+  });
   // Fees belong to the operating company. Do not inflate treasury assets or eligible profit.
 }
 export function treasuryRoundSnapshot(engine: EngineState, now: number): DemoTreasuryRound {

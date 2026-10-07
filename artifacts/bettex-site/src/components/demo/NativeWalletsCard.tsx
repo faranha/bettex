@@ -8,6 +8,7 @@ import { useX } from './ui';
 import { demoPath } from './demo-navigation';
 import { tokenUnits, usdcUnits } from './personal-native';
 import { usePersonalNative } from './use-personal-native';
+import { WalletHistoryLink } from './WalletHistoryLink';
 
 const card = 'dcard p-4 sm:p-5';
 function Addr({ id, value }: { id: string; value: string }) {
@@ -22,7 +23,7 @@ export function NativeWalletsCard({ profile, showHeading = true, headerActions }
   const unavail = x('indisponível', 'unavailable', 'no disponible');
   const head = <div className="flex flex-wrap items-center justify-between gap-2">{showHeading && <h2 className="display flex items-center gap-2 text-lg font-extrabold"><Wallet className="h-5 w-5 text-[#0E7C6B]" aria-hidden="true" />{x('Minhas carteiras', 'My wallets', 'Mis carteras')}</h2>}
     <span data-testid="label-source-native" className="text-xs text-[#5B6B85]">{x('EVM local · 31337', 'Local EVM · 31337', 'EVM local · 31337')}</span>{headerActions}</div>;
-  const manage = <Link href={`${demoPath('account', loc)}?tab=wallets`} data-testid="link-manage-wallets" className="inline-flex min-h-11 items-center rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white hover:bg-[#0A6657]">{x('Gerenciar conta, chaves e operações', 'Manage account, keys and operations', 'Gestionar cuenta, claves y operaciones')}</Link>;
+  const manage = <Link href={demoPath('home', loc)} data-testid="link-manage-wallets" className="inline-flex min-h-11 items-center rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white hover:bg-[#0A6657]">{x('Gerenciar carteiras, chaves e operações', 'Manage wallets, keys and operations', 'Gestionar carteras, claves y operaciones')}</Link>;
   if (p.state === 'loading') return <section className={card} aria-busy="true" data-testid="native-wallets-loading">{head}<div className="mt-3 h-24 animate-pulse rounded-xl bg-[#F0E9DA]" /></section>;
   if (p.state === 'session-error') return <section className={card} role="alert" data-testid="native-wallets-error">{head}<p className="mt-2 text-sm font-semibold text-[#B4421A]">{x('Não foi possível carregar suas carteiras. Nenhum saldo é inferido.', 'Could not load your wallets. No balance is inferred.', 'No se pudieron cargar tus carteras. No se infiere ningún saldo.')}</p><button type="button" data-testid="button-retry-wallets" onClick={p.retry} className="mt-3 inline-flex min-h-11 items-center rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white">{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button></section>;
   if (p.state === 'unavailable') return <section className={card} data-testid="native-wallets-unavailable">{head}<p className="mt-2 text-sm text-[#5B6B85]">{x('Carteiras não estão ativas neste ambiente.', 'Wallets are not active in this environment.', 'Las carteras no están activas en este entorno.')}</p></section>;
@@ -42,6 +43,7 @@ export function NativeWalletsCard({ profile, showHeading = true, headerActions }
       <p className="text-xs text-[#5B6B85]">{x('Redes', 'Networks', 'Redes')}: {net(w.chainIds)}</p>
       <p className="display break-all text-lg font-extrabold tabular-nums" data-testid={`text-native-balance-${w.purpose}`}>{bal(w.purpose)}</p>
       <p className="break-all text-xs text-[#5B6B85]">{x('Gás', 'Gas', 'Gas')}: <span data-testid={`text-native-gas-${w.purpose}`}>{gas(w.purpose)}</span></p>
+      <WalletHistoryLink wallet={w.purpose === 'deposits' ? 'USDC' : 'BETTEX'} id={`button-native-wallet-history-${w.purpose}`} />
     </article>)}</div>
     {j && <p className="mt-2 text-xs text-[#5B6B85]">{x('Bloco', 'Block', 'Bloque')} {j.blockNumber} · {x('Rede', 'Network', 'Red')} {j.chainId} · {new Date(j.updatedAt).toLocaleString(loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES', { timeZone: 'America/Sao_Paulo' })} · {x('horário de Brasília', 'Brasília time', 'hora de Brasilia')}</p>}
     <div className="mt-3 flex flex-wrap gap-2">{manage}</div>

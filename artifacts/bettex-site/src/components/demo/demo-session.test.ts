@@ -5,6 +5,14 @@ import type { DemoProfile } from '@workspace/api-client-react';
 import { readFileSync } from 'node:fs';
 
 const profile: DemoProfile = { name: 'Demo', email: 'demo@example.com', accountId: 'test-browser', memberSince: '2026-10-06T00:00:00Z' };
+test('app footer omits the homepage promotional section while keeping shared navigation', () => {
+  const app = readFileSync(new URL('../../App.tsx', import.meta.url), 'utf8');
+  assert.match(app, /<AppHeader \/><DemoPage \/><SiteFooter compact \/>/);
+  assert.match(app, /\{!compact && <div className="site-footer__cta/);
+  assert.match(app, /function Home\(\)[\s\S]*?return <SitePage>/);
+  assert.match(app, /footer-community\.webp/);
+  assert.match(app, /data-testid="link-community-footer-nav"/);
+});
 test('demo reset lives inside the blue environment banner, not a separate strip', () => {
   const page = readFileSync(new URL('../../pages/demo.tsx', import.meta.url), 'utf8');
   const banner = readFileSync(new URL('./DemoEnvironmentBanner.tsx', import.meta.url), 'utf8');
@@ -45,8 +53,12 @@ test('profile access lives in the options bar, with history inside wallets and n
    assert.doesNotMatch(mobile, /<AppProfileLink \/>/);
    assert.ok(header.indexOf('<AppProfileLink />') < header.indexOf('<LanguageSelector '));
    assert.ok(header.indexOf('<AppProfileLink />') < header.indexOf('data-testid="app-nav-desktop"'));
-   assert.match(profileLink, /\?tab=profile/);
-   assert.match(profileLink, /aria-label=.*Open my profile details/);
+   assert.match(profileLink, /DropdownMenuTrigger/);
+   assert.match(profileLink, /aria-label=.*Open my account menu/);
+   assert.match(profileLink, /account-menu-logout/);
+   assert.match(profileLink, /'profile'.*UserRound/);
+   assert.match(profileLink, /'wallets'.*Wallet/);
+   assert.match(profileLink, /'history'.*History/);
    assert.match(profileLink, /profile\.nickname\?\.trim\(\) \|\| data\?\.profile\.name/);
    assert.doesNotMatch(home, /text-greeting-name|link-account-full|ProfileAvatar|greet/);
   assert.doesNotMatch(home, /d\.profile\.email|d\.profile\.accountId/);

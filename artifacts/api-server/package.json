@@ -18,8 +18,8 @@
     "build": "node ./build.mjs",
     "start": "node --enable-source-maps ./dist/index.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "check:demo": "node --test scripts/demo-state.test.mjs scripts/orchestrator.test.mjs scripts/treasury-round.test.mjs",
-    "check:accounts": "node --test scripts/personal-accounts.test.mjs",
+    "check:demo": "node --test scripts/demo-state.test.mjs scripts/orchestrator.test.mjs scripts/treasury-round.test.mjs scripts/staking-timeline.test.mjs scripts/scheduled-demo-story.test.mjs scripts/earnings-wallet.test.mjs",
+    "check:accounts": "node --test scripts/personal-accounts.test.mjs scripts/nickname.test.mjs",
     "check:journey": "node --test scripts/native-journey.test.mjs scripts/local-round.test.mjs",
     "check:security": "node --test scripts/http-security.test.mjs && node scripts/security-isolation.mjs"
   },

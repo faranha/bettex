@@ -8,10 +8,13 @@ import { Download, KeyRound, LogOut, ShieldAlert, Copy, Coins, Wallet as WalletI
 import { inp } from '@/components/demo/fin';
 import { useX } from '@/components/demo/ui';
 import { demoPath, demoAccountTab } from '@/components/demo/demo-navigation';
+import { endAppSession } from '@/lib/app-session';
 import { WalletKeyRow } from '../WalletKeyRow';
+import { WalletHistoryLink } from '@/components/demo/WalletHistoryLink';
 import { HistoryPanel } from '../../history/HistoryPanel';
 import { PolicyAdminPanel } from '../../alpha-trading/PolicyAdminPanel';
 import { NativeJourney } from './NativeJourney';
+import { EditProfileSheet } from '../EditProfileSheet';
 import { downloadFile, type PrivateWalletAction } from '../wallet-vault';
 import {
   createTestAccount, signInTestAccount, signOutTestAccount, saveTestName,
@@ -26,7 +29,7 @@ const REVEAL_MS = 60000;
 
 type Tab = 'policies' | 'profile' | 'wallets' | 'history';
 
-export function AccountPanel({ onLogout, renderHistory, profileContent, walletContent }: { onLogout?: () => Promise<void>; renderHistory?: (history: ReactNode) => ReactNode; profileContent?: ReactNode; walletContent?: ReactNode } = {}) {
+export function AccountPanel({ section, onLogout, renderHistory, profileContent, profileEditContent, walletContent }: { section?: Tab; onLogout?: () => Promise<void>; renderHistory?: (history: ReactNode) => ReactNode; profileContent?: ReactNode; profileEditContent?: ReactNode; walletContent?: ReactNode } = {}) {
   const { x, loc } = useX();
   const session = useGetTestAccountSession({ query: { retry: false, queryKey: ['test-account-session'] } });
   const qc = useQueryClient();
@@ -43,6 +46,7 @@ export function AccountPanel({ onLogout, renderHistory, profileContent, walletCo
   }, [path]);
   const [tab, setTab] = useState<Tab>(readTab);
   useEffect(() => {
+    if (section) return;
     const next = readTab();
     setTab(next);
     const query = new URLSearchParams(window.location.search);
@@ -51,7 +55,7 @@ export function AccountPanel({ onLogout, renderHistory, profileContent, walletCo
       query.delete('tab');
       navigate(`${demoPath('account', loc)}/${next}${query.size ? `?${query}` : ''}`, { replace: true });
     }
-  }, [readTab, path, loc, navigate]);
+  }, [section, readTab, path, loc, navigate]);
   const selectTab = (next: Tab) => {
     setTab(next);
     const query = new URLSearchParams(window.location.search);
@@ -70,7 +74,7 @@ export function AccountPanel({ onLogout, renderHistory, profileContent, walletCo
     <p className="text-sm font-bold">{x('Contas indisponíveis', 'Accounts unavailable', 'Cuentas no disponibles')}</p>
     <p className="mt-1 text-sm text-[#5B6B85]">{x('Este recurso não está ativo neste ambiente. Nenhuma chave é gerada.', 'This feature is not active in this environment. No keys are generated.', 'Esta función no está activa en este entorno. No se genera ninguna clave.')}</p></div>;
   else if (!snap.account) body = <Guest onDone={refresh} />;
-  else body = <Signed snap={snap} tab={tab} setTab={selectTab} onDone={refresh} onLogout={onLogout} renderHistory={renderHistory} profileContent={profileContent} walletContent={walletContent} />;
+  else body = <Signed snap={snap} tab={section ?? tab} showNavigation={!section} setTab={selectTab} onDone={refresh} onLogout={onLogout} renderHistory={renderHistory} profileContent={profileContent} profileEditContent={profileEditContent} walletContent={walletContent} />;
 
   return <div data-testid="panel-account" className="grid min-w-0 content-start gap-4">
     {body}
@@ -130,10 +134,12 @@ function Guest({ onDone }: { onDone: () => void }) {
   </section>;
 }
 
-function Signed({ snap, tab, setTab, onDone, onLogout, renderHistory, profileContent, walletContent }: { profileContent?: ReactNode; walletContent?: ReactNode; snap: TestAccountSnapshot; tab: Tab; setTab: (t: Tab) => void; onDone: () => void; onLogout?: () => Promise<void>; renderHistory?: (history: ReactNode) => ReactNode }) {
+function Signed({ snap, tab, showNavigation, setTab, onDone, onLogout, renderHistory, profileContent, profileEditContent, walletContent }: { showNavigation: boolean; profileContent?: ReactNode; profileEditContent?: ReactNode; walletContent?: ReactNode; snap: TestAccountSnapshot; tab: Tab; setTab: (t: Tab) => void; onDone: () => void; onLogout?: () => Promise<void>; renderHistory?: (history: ReactNode) => ReactNode }) {
   const { x } = useX();
+  const client = useQueryClient();
+  const [, navigate] = useLocation();
   const [busy, setBusy] = useState(false); const [err, setErr] = useState(false);
-  const out = async () => { window.dispatchEvent(new Event('bettex-wallet-lock')); setBusy(true); setErr(false); try { await onLogout?.(); await signOutTestAccount(snap); onDone(); } catch { setErr(true); } finally { setBusy(false); } };
+  const out = async () => { window.dispatchEvent(new Event('bettex-wallet-lock')); setBusy(true); setErr(false); try { await client.cancelQueries(); await onLogout?.(); await signOutTestAccount(snap); endAppSession(); client.clear(); navigate('/sign-in', { replace: true }); } catch { setErr(true); } finally { setBusy(false); } };
   const tabs: [Tab, string, ReactNode][] = [
     ['profile', x('Perfil', 'Profile', 'Perfil'), <UserRound key="p" className="h-4 w-4" aria-hidden="true" />],
     ['wallets', x('Minhas carteiras', 'My wallets', 'Mis carteras'), <WalletIcon key="w" className="h-4 w-4" aria-hidden="true" />],
@@ -141,17 +147,17 @@ function Signed({ snap, tab, setTab, onDone, onLogout, renderHistory, profileCon
     ['history', x('Histórico', 'History', 'Historial'), <Coins key="h" className="h-4 w-4" aria-hidden="true" />],
   ];
   return <div className="grid gap-4">
-    <div className="flex items-center justify-between gap-3">
+    {(showNavigation || tab === 'profile') && <div className="flex items-center justify-between gap-3">
       <p className="text-sm"><span className="font-bold">{snap.account?.displayName}</span> <span className="break-all text-[#5B6B85]">{snap.account?.email}</span></p>
       <button type="button" data-testid="button-sign-out" className={btn2} disabled={busy} onClick={() => void out()}><LogOut className="h-4 w-4" aria-hidden="true" />{x('Sair', 'Sign out', 'Salir')}</button>
-    </div>
+    </div>}
     {err && <p role="alert" className="text-sm font-semibold text-[#B4421A]">{x('Não foi possível sair. Tente de novo.', 'Could not sign out. Try again.', 'No se pudo salir. Intenta de nuevo.')}</p>}
-    <div role="tablist" className="grid grid-cols-2 gap-1 sm:grid-cols-4 sm:gap-2">
+    {showNavigation && <div role="tablist" className="grid grid-cols-2 gap-1 sm:grid-cols-4 sm:gap-2">
       {tabs.map(([k, l, ic]) => <button key={k} type="button" role="tab" aria-selected={tab === k} data-testid={`tab-${k}`} onClick={() => setTab(k)}
         className={`flex min-h-11 items-center justify-center gap-1 rounded-xl px-2 text-xs font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:text-sm ${tab === k ? 'bg-[#0E7C6B] text-white' : 'bg-[#F0E9DA]'}`}>{ic}{l}</button>)}
-    </div>
+    </div>}
     {tab === 'policies' && <PolicyAdminPanel />}
-    {tab === 'profile' && <>{profileContent}<Profile snap={snap} onDone={onDone} /><details className={card}>
+    {tab === 'profile' && <>{profileContent}<Profile snap={snap} onDone={onDone} editContent={profileEditContent} /><details className={card}>
       <summary className="cursor-pointer text-sm font-bold">{x('Alterar senha', 'Change password', 'Cambiar contraseña')}</summary>
       <div className="mt-4"><Security snap={snap} onDone={onDone} /></div>
     </details></>}
@@ -162,16 +168,27 @@ function Signed({ snap, tab, setTab, onDone, onLogout, renderHistory, profileCon
   </div>;
 }
 
-function Profile({ snap, onDone }: { snap: TestAccountSnapshot; onDone: () => void }) {
+function Profile({ snap, onDone, editContent }: { snap: TestAccountSnapshot; onDone: () => void; editContent?: ReactNode }) {
   const { x } = useX();
   const [name, setName] = useState(snap.account?.displayName ?? '');
   const [email, setEmail] = useState(snap.account?.email ?? '');
   const [pw, setPw] = useState('');
+  const [editing, setEditing] = useState(false);
+  useEffect(() => {
+    if (editing) { setName(snap.account?.displayName ?? ''); setEmail(snap.account?.email ?? ''); setPw(''); setMsg(''); }
+  }, [editing]); // eslint-disable-line react-hooks/exhaustive-deps
   const [msg, setMsg] = useState<'' | 'ok' | 'err'>(''); const [busy, setBusy] = useState(false);
   const fail = x('Não foi possível salvar. Tente de novo.', 'Could not save. Try again.', 'No se pudo guardar. Intenta de nuevo.');
   const okm = x('Alterações salvas.', 'Changes saved.', 'Cambios guardados.');
   const run = async (f: () => Promise<unknown>) => { setBusy(true); setMsg(''); try { await f(); setMsg('ok'); onDone(); } catch { setMsg('err'); } finally { setPw(''); setBusy(false); } };
   return <section className="grid gap-4">
+    <dl className="grid min-w-0 grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+      <dt className="text-[#5B6B85]">{x('Nome', 'Name', 'Nombre')}</dt><dd className="break-all font-bold">{snap.account?.displayName}</dd>
+      <dt className="text-[#5B6B85]">{x('E-mail', 'Email', 'Correo electrónico')}</dt><dd className="break-all font-bold">{snap.account?.email}</dd>
+    </dl>
+    <button type="button" data-testid="button-edit-name" className={btn2} onClick={() => setEditing(true)}>{x('Editar perfil', 'Edit profile', 'Editar perfil')}</button>
+    <EditProfileSheet open={editing} onClose={() => { if (!busy) setEditing(false); }}>
+    {editContent}
     <form className={`${card} grid gap-3`} onSubmit={e => { e.preventDefault(); void run(() => saveTestName(snap, name.trim())); }}>
       <Field label={x('Nome', 'Name', 'Nombre')}><input data-testid="input-profile-name" className={inp} autoComplete="name" minLength={2} maxLength={60} value={name} onChange={e => setName(e.target.value)} /></Field>
       <button type="submit" data-testid="button-save-name" className={btn} disabled={busy || name.trim().length < 2}>{x('Salvar nome', 'Save name', 'Guardar nombre')}</button>
@@ -183,6 +200,7 @@ function Profile({ snap, onDone }: { snap: TestAccountSnapshot; onDone: () => vo
       <button type="submit" data-testid="button-save-email" className={btn} disabled={busy || !pw || !email.includes('@')}>{x('Alterar e-mail', 'Change email', 'Cambiar correo')}</button>
     </form>
     {msg && <p role={msg === 'err' ? 'alert' : 'status'} className={`text-sm font-semibold ${msg === 'err' ? 'text-[#B4421A]' : 'text-[#0E7C6B]'}`}>{msg === 'err' ? fail : okm}</p>}
+    </EditProfileSheet>
   </section>;
 }
 
@@ -265,6 +283,7 @@ function WalletCard({ w, snap }: { w: PersonalTestWallet; snap: TestAccountSnaps
       </div>
     </div>
     <PrivatePanel w={w} snap={snap} />
+    <WalletHistoryLink wallet={w.purpose === 'deposits' ? 'USDC' : 'BETTEX'} id={`button-native-wallet-history-${w.purpose}`} className="border-[#0E7C6B] bg-white text-[#0A6657] hover:bg-[#E9EEE5]" />
   </article>;
 }
 

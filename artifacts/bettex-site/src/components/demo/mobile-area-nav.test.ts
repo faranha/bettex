@@ -14,11 +14,16 @@ test('app pages use the shared mobile area nav and keep desktop nav hidden on mo
   assert.doesNotMatch(r('../alpha-trading/AlphaTradingPanel.tsx'), /<nav[^>]*className="flex flex-wrap/);
 });
 
-test('balance and history belong to My account, with no independent desktop or mobile area', () => {
-  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'central', 'treasury', 'account'\]/);
-  assert.match(r('./DemoAccountPanel.tsx'), /tab === 'history'.*<WalletPage d=\{d\}/);
-  assert.doesNotMatch(r('../../pages/demo.tsx'), /tab === 'wallet' && <WalletPage/);
-  assert.match(r('../../pages/demo.tsx'), /tab === 'wallet'.*navigate.*replace: true/);
+test('wallets and history are primary areas; personal Profile is accessed only through the top menu', () => {
+  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'wallet', 'central', 'treasury'\]/);
+  const page = r('../../pages/demo.tsx');
+  assert.match(page, /tab === 'home' && <WalletsDashboard/);
+  assert.match(page, /tab === 'wallet' && <AccountHistoryPage/);
+  assert.doesNotMatch(page, /PersonalOverview|CycleLive|TradingOverview|<AgentOperationsDashboard/);
+  const menu = r('../app/AppProfileLink.tsx');
+  assert.doesNotMatch(menu, /tab: 'wallets'|tab: 'history'/);
+  assert.match(menu, /tab: 'profile'/);
+  assert.match(menu, /logout/);
 });
 
 test('account history keeps statements but does not repeat balances or wallet cards', () => {
@@ -27,14 +32,20 @@ test('account history keeps statements but does not repeat balances or wallet ca
   assert.match(history, /<PreviousCycle d=\{d\}/);
   assert.match(history, /<WalletStatement key=\{d\.profile\.accountId\} d=\{d\}/);
   assert.match(history, /<HistoryPanel/);
-  assert.match(r('./DemoAccountPanel.tsx'), /tab === 'wallets'.*<ProtectedDemoWallets/);
+  assert.match(r('./WalletsDashboard.tsx'), /<ProtectedDemoWallets/);
 });
 
-test('ALFA account tabs do not duplicate wallet actions or offer the demo security area', () => {
+test('Profile has only identity data; native finance uses controlled sections on the new destinations', () => {
   const demo = r('./DemoAccountPanel.tsx');
-  assert.match(demo, /const tabs: Tab\[\] = \['profile', 'wallets', 'history'\]/);
-  assert.doesNotMatch(demo, /demo-tab-operations|demo-tab-security|exportJson|WalletAction|<Money/);
+  assert.doesNotMatch(demo, /role="tablist"|ProtectedDemoWallets|WalletPage|StakingCorridor|WalletAction|<Money/);
+  assert.match(demo, /ProfileIdentitySummary/);
+  const account = r('../account/AccountSheet.tsx');
+  assert.doesNotMatch(account, /WalletPage|ProtectedDemoWallets|StakingCorridor/);
+  assert.match(account, /section="profile"/);
   const native = r('../account/account-ui/AccountPanel.tsx');
   assert.doesNotMatch(native, /\['operations',|\['security',|tab === 'operations'|tab === 'security'/);
   assert.match(native, /tab === 'wallets'.*<NativeJourney snap=\{snap\}/);
+  assert.match(native, /tab=\{section \?\? tab\} showNavigation=\{!section\}/);
+  assert.match(r('./WalletsDashboard.tsx'), /section="wallets"/);
+  assert.match(r('./WalletsDashboard.tsx'), /section="history"/);
 });

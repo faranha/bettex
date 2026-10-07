@@ -7,7 +7,7 @@ import { useX } from '@/components/demo/ui';
 import { demoLabel, demoPath, type DemoView } from '@/components/demo/demo-navigation';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 
-export const APP_AREAS: DemoView[] = ['home', 'central', 'treasury', 'account'];
+export const APP_AREAS: DemoView[] = ['home', 'wallet', 'central', 'treasury'];
 
 /** Mobile-only (<640px): one compact row with the current area and an Areas button; destinations show only while open. */
 export function MobileAreaNav({ current, className = '' }: { current: DemoView; className?: string }) {

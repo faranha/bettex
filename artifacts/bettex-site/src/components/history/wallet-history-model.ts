@@ -9,7 +9,7 @@ export type WalletHistoryRow = {
   walletAddress: string | null; transactionHash: string | null; details: Record<string, string>;
 };
 const DEC: Record<string, number> = { USDC: 6, BETTEX: 18, ETH: 18 };
-const SAFE = ['operationKind', 'stage', 'action', 'privateAction', 'periodId', 'reason', 'ruleVersion', 'from', 'to', 'targetWallet', 'trigger', 'previousState', 'priceUnits', 'priceDecimals', 'priceUnit', 'gasWei', 'quantityUnits', 'eligibleUnits', 'poolUnits', 'weightUnits', 'weightDecimals', 'principalUnits', 'capitalUnits', 'resultUnits', 'resultDecimals', 'costUnits', 'costDecimals'] as const;
+const SAFE = ['sourceWallet', 'operationKind', 'stage', 'action', 'privateAction', 'periodId', 'reason', 'ruleVersion', 'from', 'to', 'targetWallet', 'trigger', 'previousState', 'priceUnits', 'priceDecimals', 'priceUnit', 'gasWei', 'quantityUnits', 'eligibleUnits', 'poolUnits', 'weightUnits', 'weightDecimals', 'principalUnits', 'capitalUnits', 'resultUnits', 'resultDecimals', 'costUnits', 'costDecimals'] as const;
 export function decimalQuantity(raw: unknown, decimals: unknown): string | null {
   if (typeof raw !== 'string' || !/^-?\d+$/.test(raw)) return null;
   const dec = Number(decimals);
@@ -75,9 +75,13 @@ export function brlReference(row: WalletHistoryRow, d: DemoDashboard, fee = fals
   return null;
 }
 export type WalletHistoryFilters = { wallet: string; type: string; state: string; search: string };
+export function walletFilterFromSearch(search: string): string {
+  const wallet = new URLSearchParams(search).get('wallet') ?? '';
+  return ['earnings', 'USDC', 'BETTEX', 'ETH'].includes(wallet) ? wallet : '';
+}
 export function filterWalletHistory(rows: WalletHistoryRow[], f: WalletHistoryFilters): WalletHistoryRow[] {
   const term = f.search.trim().toLowerCase();
-  return rows.filter(r => (!f.wallet || r.wallets.includes(f.wallet as WalletAsset)
+  return rows.filter(r => (!f.wallet || (f.wallet === 'earnings' && (r.details.sourceWallet === 'earnings' || r.type === 'yield')) || r.wallets.includes(f.wallet as WalletAsset)
     || [r.walletAddress, r.details.targetWallet, r.details.from, r.details.to].some(a => a?.toLowerCase() === f.wallet.toLowerCase()))
     && (!f.type || r.type === f.type) && (!f.state || r.state === f.state)
     && (!term || [r.id, r.transactionHash, r.walletAddress, r.kind, r.correlationId].some(v => v?.toLowerCase().includes(term))));

@@ -32,7 +32,7 @@
 - [Technical document translation](technical-document-translation.md) — bounded LLM rewrites can insert citations or alter URLs; audit structure, links and numeric fidelity before saving.
 - [Elegibilidade ao lucro](profit-entitlement-rules.md) — cada rodada paga ou não paga, sem retorno ou acumulação; saídas cancelam direitos e frações vão à tesouraria.
 - [Demonstração e fase ALFA](demo-prototype-scope.md) — banco básico e emulação automática; app claro, suporte no Telegram; sem dinheiro real.
-- [Navegação do piloto](demo-navigation.md) — extrato em Minha conta → Histórico, sem repetir cartões de carteira; painel com atividade e participação; Tesouraria separada.
+- [Navegação do app](demo-navigation.md) — replit.md define as áreas atuais; preservar extrato sem cartões duplicados, acesso compacto ao perfil e aviso do demo.
 - [Separação site/app](site-app-separation.md) — experiências distintas no mesmo projeto; voltar ao site precisa funcionar também para usuários autenticados.
 - [Ações da carteira](wallet-action-context.md) — entradas e saídas junto de cada saldo; USDC/BETTEX com conversão nos dois sentidos; saque não limitado ao rendimento.
 - [Staking no aplicativo](app-staking-presentation.md) — corredor horizontal no dashboard e Carteiras; posição própria, total do pool, lucro, alocação, gráficos e fogo.
@@ -65,7 +65,7 @@
 - [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.
 - [Responsive text verification](responsive-text-verification.md) — text-range bounds include font leading; distinguish compact heading lines from actual collisions.
 - [Observações editoriais](document-observations.md) — notas agrupadas no fim de cada bloco, sem repetição ou interrupção do conteúdo principal.
-- [Horário do Brasil](brazil-time-display.md) — exibir horários em São Paulo, sem rótulo UTC; preservar cálculos e instantes internos dos ciclos.
+- [Horário do Brasil](brazil-time-display.md) — horários em São Paulo; demo de 16h às 16h em 24 horas reais, sem alterar registros ou contratos nativos.
 - [Evidências de contratos](test-contract-evidence.md) — EVM local não prova compra pública; runtime equivalente também exige validar vínculos imutáveis.
 - [Isolamento de testes](integration-test-isolation.md) — fixtures não podem compartilhar dados ou sequências do app; cópia de tabelas não preserva todos os invariantes.
 - [Detalhes opacos no OpenAPI](openapi-opaque-run-details.md) — o Zod gerado pode remover additionalProperties; preservar detalhes da execução após validar o envelope.
@@ -74,6 +74,6 @@
 - [Distributed-service target](distributed-service-target.md) — creator requires distributed microservices aligned with canonical guidance; reconcile the extraction decision before restructuring.
 - [Consulta nativa e autorização](native-read-authorization.md) — consultar endereços públicos não associa carteiras nem autoriza operações; não confundir saldo local com Sepolia pública.
 - [Extrato das carteiras](wallet-history-scope.md) — downloads do arquivo completo, rendimento, tags e filtros por carteira/tipo; BRL junto do valor, taxas e exemplos separados.
-- [Tesouraria por rodada](treasury-presentation.md) — ativos hierárquicos, realizado da rodada e histórico salvo; receita de tarifas da operadora separada; projeção de capital adiada.
+- [Tesouraria por rodada](treasury-presentation.md) — abas e histórico corrente paginado; emulação rotulada e persistida sem visitante; tarifas separadas do lucro.
 - [Localization catalog scope](localization-catalog-scope.md) — isolated multilingual tuples need their own audit; compiler types and grammar dictionaries are not page copy.
-- [Continuous test emulation](continuous-test-emulation.md) — no Simulation product area; independent, ongoing randomized test scripts with 24-hour evidence.
+- [Roteiro do demo](continuous-test-emulation.md) — timeline predefinida de 24 horas reais; não reintroduzir emulação aleatória como fonte financeira do app.

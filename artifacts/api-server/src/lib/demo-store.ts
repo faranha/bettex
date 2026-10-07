@@ -1,14 +1,21 @@
 import { and, eq, isNull } from "drizzle-orm";
+import { randomUUID } from "node:crypto";
+import { ensureProfileNickname } from "../modules/accounts/domain/nickname";
 import { db, demoAccounts, demoEngine, demoCommands } from "@workspace/db";
 import type { DemoMovementInput } from "@workspace/api-zod";
 import { logger } from "./logger";
 import { ensureTreasuryTracking } from "./treasury-round";
+import { flushTreasuryActivity } from "./treasury-activity-store";
+import { advanceScheduledStory, ensureScheduledStory } from "./scheduled-demo-story";
+import { demoCycleStart } from "./demo-cycle-clock";
+import { prepareScheduledAccount } from "./scheduled-demo-account";
+import { separateEarningsWallet } from "./earnings-wallet";
 import { ensureHistorySchema, appendHistory } from "../modules/audit/infrastructure/history-store";
 import { recordDemoMovements, recordDemoAutomations, recordDemoRound, recordDemoTreasury, recordDemoPools } from "../modules/audit/infrastructure/demo-recorder";
 import { decimalUnits } from "../modules/audit";
 import {
-  seedAccount, seedEngine, dashboard, tickEngine, closeCycles, settleMovements,
-  submitMovement, DemoInputError, accountWeight, DAY, type AccountState, type EngineState, utcStart,
+  seedAccount, seedEngine, dashboard, closeCycles, settleMovements,
+  submitMovement, DemoInputError, accountWeight, DAY, type AccountState, type EngineState,
 } from "./demo-state";
 
 type Command = { movement: DemoMovementInput } | { name: string; email?: string; nickname?: string; avatarPath?: string | null } | { distributionPreview: string } | { avatarUpload: NonNullable<AccountState["avatarUpload"]> };
@@ -22,8 +29,11 @@ export type AccountIdentity = {
   memberSince?: string;
 };
 export class ClaimedBrowserAccountError extends Error {}
-export async function loadDashboard(identity?: string | AccountIdentity, command?: Command, resolved?: (id: string) => void) {
-  if (process.env.NODE_ENV === "production" &&
+const INTERNAL_DEMO_RUNTIME = Symbol("internal-demo-runtime");
+const seedDemoAccount = (now: number) => { const account = seedAccount(now); prepareScheduledAccount(account, now); return account; };
+export async function loadDashboard(identity?: string | AccountIdentity, command?: Command, resolved?: (id: string) => void, runtimeToken?: symbol) {
+  const internalTick = runtimeToken === INTERNAL_DEMO_RUNTIME && identity === undefined && command === undefined;
+  if (process.env.NODE_ENV === "production" && !internalTick &&
     (typeof identity !== "object" || !identity?.tabScoped || identity.userId || identity.nativeAccountId)) {
     throw new Error("demo_internal_only");
   }
@@ -33,30 +43,35 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     await tx.insert(demoEngine).values({ id: "main", state: seedEngine(now) }).onConflictDoNothing();
     const [engineRow] = await tx.select().from(demoEngine).where(eq(demoEngine.id, "main")).for("update");
     const engine = engineRow!.state as EngineState;
+    // Keep the previous append-only journal and snapshots; replace only the
+    // automated display scenario, never customer wallets, commands or balances.
+    if (!engine.scheduledStory) await flushTreasuryActivity(tx, engine);
+    ensureScheduledStory(engine, now);
     ensureTreasuryTracking(engine, now);
     // All instances acquire the same DB lock; timers cannot duplicate execution.
-    if (engine.dayAt < utcStart(now)) {
+    if (engine.dayAt < demoCycleStart(now)) {
       const accounts = await tx.select().from(demoAccounts).for("update");
       const states = accounts.map(row => row.state as AccountState);
+      states.forEach(separateEarningsWallet);
       const previousHistories = states.map(state => structuredClone(state.history));
       const previousRoundIds = new Set(engine.rounds.map(r => r.id));
       closeCycles(engine, states, now);
-      for (const cycle of engine.rounds.filter(c => !previousRoundIds.has(c.id))) await recordDemoPools(tx, cycle);
+      for (const cycle of engine.rounds.filter(c => !previousRoundIds.has(c.id))) await recordDemoPools(tx, cycle, "scheduled:");
       for (const [index, row] of accounts.entries()) {
         await recordDemoMovements(tx, row.id, previousHistories[index]!, states[index]!.history, undefined,
           states[index]!.history.filter(m => !previousHistories[index]!.some(old => old.id === m.id)).map(m => m.id), now);
         for (const cycle of engine.rounds.filter(c => !previousRoundIds.has(c.id))) {
           const end = Date.parse(cycle.endedAt);
-          const payment = states[index]!.history.find(m => m.id === `ROUND-${cycle.id}-${states[index]!.profile.accountId}`);
+          const payment = states[index]!.history.find(m => m.id === `SCRIPT-ROUND-${cycle.id}-${states[index]!.profile.accountId}`);
           await recordDemoRound(tx, row.id, cycle.id, cycle.endedAt, String(cycle.stakingUsdc),
             String(accountWeight(states[index]!, end - DAY, end)), String(payment?.amount ?? 0), !!payment,
-            payment?.id ?? `ROUND-${cycle.id}-${states[index]!.profile.accountId}`);
+            payment?.id ?? `SCRIPT-ROUND-${cycle.id}-${states[index]!.profile.accountId}`);
         }
         await tx.update(demoAccounts).set({ state: states[index]!, updatedAt: new Date(now) }).where(eq(demoAccounts.id, row.id));
       }
     }
     const beforeOperations = structuredClone(engine.operations);
-    tickEngine(engine, now);
+    advanceScheduledStory(engine, now);
     await recordDemoTreasury(tx, beforeOperations, engine.operations);
     await recordDemoAutomations(tx, engine.events);
     // Settle personal transfers on the script timer, even when the UI is closed.
@@ -64,6 +79,8 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
       const rows = await tx.select().from(demoAccounts).for("update");
       for (const row of rows) {
         const state = row.state as AccountState;
+        // Chart values now come from the shared cycle ledger, not a private
+        // accelerated/random scenario for each account.
         if (state.history.some(movement => movement.status === "pending")) {
           const before = structuredClone(state.history);
           settleMovements(state, now, engine);
@@ -71,6 +88,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
           await tx.update(demoAccounts).set({ state, updatedAt: new Date(now) }).where(eq(demoAccounts.id, row.id));
         }
       }
+      await flushTreasuryActivity(tx, engine);
       await tx.update(demoEngine).set({ state: engine, updatedAt: new Date(now) }).where(eq(demoEngine.id, "main"));
       return null;
     }
@@ -81,20 +99,20 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
       if (owned) {
         accountId = owned.id;
       } else {
-        await tx.insert(demoAccounts).values({ id: accountId, state: seedAccount(now) }).onConflictDoNothing();
+        await tx.insert(demoAccounts).values({ id: accountId, state: seedDemoAccount(now) }).onConflictDoNothing();
         const [claimed] = await tx.update(demoAccounts).set({ clerkUserId: actor.userId })
           .where(and(eq(demoAccounts.id, accountId), isNull(demoAccounts.clerkUserId))).returning({ id: demoAccounts.id });
         if (!claimed) {
           // A different authenticated user can never inherit this browser's owned balance.
           accountId = `clerk:${actor.userId}`;
-          await tx.insert(demoAccounts).values({ id: accountId, clerkUserId: actor.userId, state: seedAccount(now) }).onConflictDoNothing();
+          await tx.insert(demoAccounts).values({ id: accountId, clerkUserId: actor.userId, state: seedDemoAccount(now) }).onConflictDoNothing();
         }
       }
     } else if (!actor.nativeAccountId) {
       const [browser] = await tx.select({ owner: demoAccounts.clerkUserId }).from(demoAccounts).where(eq(demoAccounts.id, accountId));
       if (browser?.owner) throw new ClaimedBrowserAccountError();
     }
-    const opening = seedAccount(now);
+    const opening = actor.nativeAccountId ? seedAccount(now) : seedDemoAccount(now);
     if (actor.nativeAccountId) {
       opening.usdc = 0; opening.bettex = 0; opening.receivedYield = 0; opening.lots = []; opening.history = [];
       opening.profile.accountId = actor.nativeAccountId;
@@ -102,6 +120,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     await tx.insert(demoAccounts).values({ id: accountId, state: opening }).onConflictDoNothing();
     const [row] = await tx.select().from(demoAccounts).where(eq(demoAccounts.id, accountId)).for("update");
     const account = row!.state as AccountState;
+    separateEarningsWallet(account);
     resolved?.(accountId);
     const initialHistory = structuredClone(account.history);
     // Recover legacy JSON facts once, explicitly non-authoritative simulation.
@@ -113,7 +132,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
       const [existing] = await tx.select().from(demoCommands).where(and(eq(demoCommands.accountId, accountId), eq(demoCommands.requestId, input.requestId)));
       if (existing) {
         const saved = existing.input as DemoMovementInput;
-        if (saved.kind !== input.kind || saved.asset !== input.asset || saved.amount !== input.amount || (saved.destination ?? "") !== (input.destination ?? "")) {
+        if (saved.kind !== input.kind || saved.asset !== input.asset || saved.amount !== input.amount || (saved.sourceWallet ?? "dollar") !== (input.sourceWallet ?? "dollar") || (saved.destination ?? "") !== (input.destination ?? "")) {
           throw new DemoInputError("invalid_movement");
         }
       } else {
@@ -122,7 +141,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
            correlationId: `demo:${accountId}:${input.requestId}`, category: "activity", actor: "user",
            kind: "financial_requested", state: "pending", asset: input.asset, environment: "simulation", source: "demo_engine",
            occurredAt: new Date(now), requestedAt: new Date(now),
-           data: { operationKind: input.kind, paidAsset: input.asset, paidUnits: decimalUnits(String(input.amount), input.asset === "USDC" ? 6 : 18),
+            data: { operationKind: input.kind, sourceWallet: input.sourceWallet ?? "dollar", ...(input.kind === "transfer" ? { targetWallet: "dollar" } : {}), feeUnits: decimalUnits(String(account.history.find(m => m.id === input.requestId)!.feeUsdc), 6), paidAsset: input.asset, paidUnits: decimalUnits(String(input.amount), input.asset === "USDC" ? 6 : 18),
              amountUnits: decimalUnits(String(input.amount), input.asset === "USDC" ? 6 : 18), decimals: input.asset === "USDC" ? "6" : "18",
              priceUnits: decimalUnits(operationPrice, 6), priceDecimals: "6", priceUnit: "USDC/BETTEX", mechanism: "simulation" } }, tx);
         if (input.asset === "BETTEX" && ["send", "withdraw", "swap"].includes(input.kind)) await appendHistory({
@@ -171,9 +190,12 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     }
     account.profile.authenticated = !!(actor.nativeAccountId || actor.userId);
     account.profile.provider = actor.nativeAccountId ? "native" : actor.userId ? "clerk" : "anonymous";
+    // Persist generated nicknames for existing accounts as well as new ones.
+    ensureProfileNickname(account.profile, randomUUID);
     await recordDemoMovements(tx, accountId, initialHistory, account.history, operationPrice,
       command && "movement" in command ? command.movement.requestId : undefined, now);
     await tx.update(demoAccounts).set({ state: account, updatedAt: new Date(now) }).where(eq(demoAccounts.id, accountId));
+    await flushTreasuryActivity(tx, engine);
     await tx.update(demoEngine).set({ state: engine, updatedAt: new Date(now) }).where(eq(demoEngine.id, "main"));
     const allAccounts = await tx.select({ state: demoAccounts.state }).from(demoAccounts);
     return dashboard(account, engine, now, allAccounts.map(item => item.state as AccountState));
@@ -182,12 +204,14 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
 
 let busy = false;
 export function startDemoScripts() {
-  if(process.env.NODE_ENV!=="development")return undefined;
+  if(process.env.NODE_ENV!=="development" && process.env.NODE_ENV!=="production")return undefined;
   const timer = setInterval(async () => {
     if (busy) return;
     busy = true;
     try {
-      await loadDashboard();
+      // Private scheduler capability: advance the simulated engine and pending
+      // demo transfers without impersonating or creating a customer account.
+      await loadDashboard(undefined, undefined, undefined, INTERNAL_DEMO_RUNTIME);
     } catch (error) {
       logger.error({ err: error }, "Demo emulation tick failed");
     } finally {

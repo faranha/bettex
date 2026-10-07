@@ -1,56 +1,52 @@
 ---
-name: Organização aprovada do piloto
-description: Escopo e organização confirmados para o piloto visual BETTEX.
+name: App navigation preservation
+description: Preserved navigation constraints; replit.md defines the current app areas, not the superseded mixed dashboard.
 ---
 
-Personal wallets and balances belong at the top of the main app dashboard, before markets and agent activity. The compact name and profile access belong in the system options bar, not in a separate dashboard greeting block.
+Follow the current application direction in replit.md, not older instructions about the mixed dashboard or finance tabs under My Account.
 
-**Why:** The creator corrected the markets-first arrangement: “in any casino, the details of the gambler or player are on top” and “we should move data to the top”.
+**Why:** The creator explicitly retired the previous dashboard and changed the ownership of the Wallets, History and Profile destinations.
 
-**How to apply:** Keep personal wallets first, without a separate greeting block. Do not let prioritizing market or agent activity push the player's balances below those sections; preserve My account and Treasury, with statements inside My account → History, without repeating wallet cards there.
+**How to apply:** Consult the current direction before reorganizing menus. Do not restore the old dashboard or Profile finance tabs from historical notes. Moving a destination does not authorize recreating wallets, changing account identity or weakening key-export protections.
 
-Keep the demo environment notice and restart controls in one compact blue band, all on a single line.
+History contains statements and records without repeating balance cards or the complete wallet block.
 
-**Why:** The creator asked to combine the two strips and put “Restart demo” on the blue row, then explicitly required all of that band's contents to fit on one line.
+**Why:** The creator explicitly rejected those duplicated cards in History. Moving History into the main menu does not reverse that content decision.
 
-**How to apply:** Do not restore a separate restart strip or stacked notice/control layout. Keep the band's contents inside the same layout width as the header and dashboard, without horizontal scrolling or width extrapolation. Preserve testnet status, the no-real-money warning, simulated balance/operation notice, public contract link, tab scope and restart confirmation; use compact accessible controls on small screens.
+**How to apply:** Keep personal financial records separate from Treasury results and preserve wallet-filtered access.
 
-Tudo fica no mesmo demo, no mesmo app BETTEX. Minha participação fica ao lado do gráfico ao vivo. A Tesouraria deve ter uma página própria e um item visível no menu, reunindo resultados do projeto, reserva e demais informações financeiras. Não substituir essa página por uma seção recolhida no painel. A visão ao vivo destaca quanto o sistema está efetivamente investindo e apostando naquele momento, não o patrimônio total ou os resultados do projeto. Central da IA e Live Trading são uma única área, sem bonequinhos nem chat. Transparência integra a visão de trading e os detalhes de cada operação, sem item próprio no menu. As finanças pessoais ficam em Minha conta, sem área independente no menu. Histórico reúne extratos e registros, sem repetir os cartões de saldo ou o bloco Minhas carteiras. A restrição anterior que escondia informações pessoais do dashboard foi substituída; a direção atual está no início de replit.md. Minha conta deve aparecer com esse nome e abrir um painel completo, não apenas um ícone ou janela lateral; a comunidade continua acessível em todas as áreas.
+Keep the demo environment notice and restart controls in one compact blue band, on one line and within the app layout width.
 
-**Why:** O criador unificou Central da IA/Live Trading/transparência e pediu que resultado do projeto e reserva ficassem na Tesouraria, destacando ao vivo somente quanto está em stake e sendo apostado pelo sistema. Corrigiu explicitamente a remoção da página de Tesouraria: “tem que ter a página da tesouraria”. Depois pediu “Minha conta” por nome no menu, com um painel completo ao abrir.
+**Why:** The creator asked to merge the strips and explicitly rejected a stacked layout.
 
-**How to apply:** Não criar outro produto ou app separado para esses percursos. Preservar a página de Tesouraria e seu acesso direto no menu em todos os idiomas, sem espalhar seus indicadores pela visão ao vivo. Não confundir capital ainda em análise, reserva ou resultados históricos com dinheiro efetivamente colocado em operações. Preservar os direitos/créditos pessoais e a coluna do próximo ciclo. Minha Conta não deve depender da página selecionada; suporte é externo na comunidade do Telegram.
+**How to apply:** Preserve the testnet status, no-real-money warning, simulated-operation notice, public contract link, tab scope and restart confirmation through compact accessible controls.
 
-**Why:** O criador substituiu a página independente por Minha conta e depois pediu retirar de Histórico os cartões de saldo e o bloco Minhas carteiras marcados na captura de tela.
+Do not restore a permanently stacked, multi-line mobile destination menu.
 
-**How to apply:** Manter extratos e registros em Minha conta → Histórico, para demonstração e contas autenticadas; preservar os controles de carteira na aba Carteiras, sem repeti-los em Histórico. Encaminhar os links antigos da área independente para Histórico, preservando idioma e identidade. Não confundir finanças pessoais com Tesouraria.
+**Why:** The creator said it occupied too much screen space and covered content while scrolling.
 
-O criador rejeitou o menu mobile permanentemente empilhado em várias linhas e exigiu boas práticas de navegação.
+**How to apply:** Keep every area accessible through the compact menu without removing content or changing desktop to compensate.
 
-**Why:** O menu de três linhas ocupava uma parte grande da tela e cobria o conteúdo durante a rolagem.
+The demo is active after explicit entry as Alex, without repeated login prompts inside it.
 
-**How to apply:** Não reintroduzir grades de destinos ou menus quebrados em várias linhas no cabeçalho persistente do app mobile. Manter todas as áreas acessíveis sem remover conteúdo ou alterar o desktop para compensar.
+**Why:** The creator requested a dedicated entry page and logout returning there, while hiding real signup/login forms “for now”, not deleting account infrastructure.
 
-O usuário demo deve ser considerado já logado em tudo que for necessário na demonstração, com o período de testes explícito.
+**How to apply:** Do not silently reactivate Alex after logout or reload. Keep demo, native and Clerk identities distinct.
 
-**Why:** O criador rejeitou a exigência de “Sign in” dentro da demonstração e pediu sessão já ativa para o usuário demo.
+Keep the app entry page visual and inspired by the existing homepage artwork.
 
-**How to apply:** Abrir o percurso de demonstração com sessão de teste ativa, sem cadastro ou login obrigatórios. Isso não autoriza usar a identidade de outro usuário, conceder permissões administrativas ou dispensar a autenticação de operações reais. Preservar a distinção entre sessão simulada e conta nativa/Clerk. A simulação deve ter um escopo próprio da sessão demo: apenas mudar rótulos no dashboard deixa o simulador dependente da conta nativa e bloqueia o percurso.
+**Why:** The creator called the first form-dominated entry “dead” and requested the homepage as visual inspiration.
 
-No dashboard, o criador prefere o histórico dentro do bloco de saldos, com botão ou ícone claro. A identidade e o acesso compacto ao perfil devem ficar na barra de opções do sistema, sem um bloco de saudação acima das carteiras. Os detalhes pessoais ficam no perfil, não expandidos no dashboard. Não repetir um painel completo de atividade recente fora das carteiras.
+**How to apply:** Preserve the entry/logout path and existing BETTEX artwork; do not change the homepage to compensate.
 
-**Why:** O criador considera que My Account está ocupando muito espaço. Depois de pedir um ícone junto ao nome, pediu mover esse bloco para a barra de opções para não ocupar espaço no dashboard.
+Keep compact identity/profile access in the system options bar rather than a separate dashboard greeting block.
 
-**How to apply:** Usar nome e acesso compacto ao perfil na primeira linha do cabeçalho, junto das opções de idioma e voltar ao site, no desktop e mobile; não na linha de navegação das áreas. O criador definiu que esse acesso substituirá o botão de login no futuro. Não reintroduzir saudação separada, painel expandido de dados pessoais ou cabeçalho redundante de My Account. Manter carteiras e histórico acessíveis, sem expor todos os filtros e registros por padrão. Preservar as fontes separadas de conta nativa e sessão demo, além das ações de carteira e do perfil completo.
+**Why:** The creator said the account block occupied too much space and explicitly moved it beside the language and back-to-site controls.
 
-O criador quer “Next Cycle” logo abaixo das carteiras no dashboard, antes dos outros blocos.
+**How to apply:** Do not reintroduce expanded personal-data headers on the wallet dashboard.
 
-**Why:** Pediu essa posição explicitamente e deixou o trabalho no conteúdo para depois.
+Removing the old Operations/Security navigation does not remove effective account or wallet protections.
 
-**How to apply:** Preservar essa ordem ao reorganizar o dashboard; mudanças de posição não autorizam reescrever o conteúdo.
+**Why:** The creator rejected duplicated Operations UI and the standalone Security area for ALPHA, not its safeguards.
 
-Na ALFA, retirar as abas Operações e Segurança de Minha conta. As ações financeiras e a exportação de chaves pertencem à aba Carteiras; Perfil e Histórico continuam disponíveis.
-
-**Why:** O criador rejeitou Operações por duplicar o painel de carteiras e definiu que a área de Segurança mostrada na captura “is not for the ALFA”.
-
-**How to apply:** Não recriar esses painéis redundantes. Preservar autenticação e proteções efetivas das contas e chaves; retirar uma aba não autoriza remover essas garantias.
+**How to apply:** Preserve authentication, safe key export and account security without recreating redundant finance tabs.

@@ -1,12 +1,70 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { walletHistoryRow, decimalQuantity, filterWalletHistory, brlReference } from './wallet-history-model.ts';
+import { readFileSync } from 'node:fs';
+import { walletHistoryRow, decimalQuantity, filterWalletHistory, brlReference, walletFilterFromSearch } from './wallet-history-model.ts';
 import { collectWalletHistory } from './history-pagination.ts';
+import { shouldRetryWalletHistory } from './history-query-policy.ts';
 import { exportWalletHistory, safeCsvCell } from './wallet-history-export.ts';
 import { walletHistoryExamples } from './wallet-history-examples.ts';
 import type { HistoryEntry, HistoryPage, DemoDashboard } from '@workspace/api-client-react';
 
 const now = '2026-10-06T00:00:00Z';
+test('earnings history links select the wallet, include past credits and reset on navigation', () => {
+  assert.equal(walletFilterFromSearch('?wallet=earnings'), 'earnings');
+  assert.equal(walletFilterFromSearch('wallet=USDC'), 'USDC');
+  assert.equal(walletFilterFromSearch('?wallet=BETTEX'), 'BETTEX');
+  assert.equal(walletFilterFromSearch(''), '');
+  assert.equal(walletFilterFromSearch('?wallet=unsupported'), '');
+  const credit = walletHistoryRow(entry({ kind: 'distribution', data: { amountUnits: '1000000', decimals: 6 } }));
+  const transfer = walletHistoryRow(entry({ id: 'TRANSFER', kind: 'transfer', data: { sourceWallet: 'earnings', amountUnits: '2000000', decimals: 6 } }));
+  const unrelated = walletHistoryRow(entry({ id: 'DEPOSIT', kind: 'receive', data: { amountUnits: '1000000', decimals: 6 } }));
+  assert.deepEqual(filterWalletHistory([credit, transfer, unrelated], { wallet: 'earnings', type: '', state: '', search: '' }).map(r => r.id), [credit.id, transfer.id]);
+});
+test('earnings offers only an internal dollar-wallet transfer, never an external withdrawal', () => {
+  const card = readFileSync(new URL('../demo/EarningsWalletCard.tsx', import.meta.url), 'utf8');
+  const form = readFileSync(new URL('../demo/fin.tsx', import.meta.url), 'utf8');
+  assert.equal((card.match(/<WalletAction /g) ?? []).length, 1);
+  assert.match(card, /kind="earnings-transfer"/);
+  assert.doesNotMatch(card + form, /earnings-withdraw/);
+  assert.match(form, /const needDest = k === 'send' \|\| k === 'withdraw';/);
+});
+test('earnings wallet is full-width with paid and projected round values, fire icons, filtered history and no card fee', () => {
+  const card = readFileSync(new URL('../demo/EarningsWalletCard.tsx', import.meta.url), 'utf8');
+  assert.match(card, /col-span-full/);
+  assert.match(card, /previousCycle\(d\)\?\.received/);
+  assert.match(card, /scenarioStakingView\(d\)\?\.timeline.projectedOwnUsdc/);
+  assert.match(card, /<Flame/);
+  assert.match(card, /earnings-last-round/);
+  assert.match(card, /earnings-current-projection/);
+  assert.match(card, /button-earnings-history/);
+  assert.match(card, /WalletHistoryLink wallet="earnings"/);
+  assert.match(card, /not guaranteed and not yet received/);
+  assert.doesNotMatch(card, /2[.,]50|fee|taxa|comisión/i);
+});
+test('each demo and native wallet exposes a labeled icon link to the matching profile history filter', () => {
+  const link = readFileSync(new URL('../demo/WalletHistoryLink.tsx', import.meta.url), 'utf8');
+  const wallets = readFileSync(new URL('../demo/DemoWalletsCard.tsx', import.meta.url), 'utf8');
+  const native = readFileSync(new URL('../demo/NativeWalletsCard.tsx', import.meta.url), 'utf8');
+  assert.match(link, /demoPath\('wallet', loc\)/);
+  assert.match(link, /\?wallet=\$\{wallet\}/);
+  assert.match(link, /<History/);
+  assert.match(link, /x\('Histórico', 'History', 'Historial'\)/);
+  assert.match(wallets, /<WalletHistoryLink wallet=\{asset/);
+  assert.match(native, /<WalletHistoryLink wallet=\{w.purpose === 'deposits' \? 'USDC' : 'BETTEX'\}/);
+});
+test('request audit records cannot imply a second fee or an unfinished settlement', () => {
+  const source = readFileSync(new URL('./WalletStatement.tsx', import.meta.url), 'utf8');
+  assert.match(source, /const pending = !requestRecord/);
+  assert.match(source, /const noCredit = BAD\.has\(r\.state\);/);
+  assert.match(source, /Request logged/);
+  assert.match(source, /this is not a second charge/);
+  assert.match(source, /Quoted fee/);
+});
+test('money retains exact read-only amounts and a blank conversion does not trigger an overdraw alert', () => {
+  const source = readFileSync(new URL('../demo/fin.tsx', import.meta.url), 'utf8');
+  assert.match(source, /data-amount=\{v\} data-asset=\{a\}/);
+  assert.match(source, /const over = n > 0 &&/);
+});
 const d = { balances: { brlPerUsdc: 5.25, bettexUsdc: .04 } } as DemoDashboard;
 function entry(patch: Partial<HistoryEntry> = {}): HistoryEntry {
   return {
@@ -92,18 +150,38 @@ test('illustrative examples cannot leak into actual-record exports', () => {
 });
 test('full archives traverse every cursor, de-duplicate records and sort newest first', async () => {
   const calls: (string | undefined)[] = [];
-  const rows = await collectWalletHistory(async cursor => {
+  const result = await collectWalletHistory(async cursor => {
     calls.push(cursor);
     return cursor ? page([entry(), entry({ id: 'TWO', occurredAt: '2026-10-07T00:00:00Z' })]) : page([entry()], 'page-two');
   });
   assert.deepEqual(calls, [undefined, 'page-two']);
-  assert.deepEqual(rows.map(r => r.id), ['TWO','ONE']);
+  assert.deepEqual(result.rows.map(r => r.id), ['TWO','ONE']);
+  assert.equal(result.syncUnavailable, false);
 });
 test('paging failures never produce a partial archive or an infinite export', async () => {
   await assert.rejects(collectWalletHistory(async () => page([entry()], 'same-cursor')), /history_cursor_repeated/);
-  await assert.rejects(collectWalletHistory(async () => ({ ...page([entry()]), syncState: 'unavailable' })), /history_unavailable/);
   await assert.rejects(collectWalletHistory(async cursor => {
     if (cursor) throw new Error('network_failed');
     return page([entry()], 'next');
   }), /network_failed/);
+});
+test('live-sync outages preserve saved records and their exact transaction states across all pages', async () => {
+  const result = await collectWalletHistory(async cursor => cursor
+    ? page([entry({ id: 'TWO', state: 'pending' })])
+    : { ...page([entry()], 'next'), syncState: 'unavailable' });
+  assert.equal(result.syncUnavailable, true);
+  assert.equal(result.rows.length, 2);
+  assert.equal(result.rows.find(r => r.id === 'ONE')?.state, 'confirmed');
+  assert.equal(result.rows.find(r => r.id === 'TWO')?.state, 'pending');
+});
+test('empty saved history retains the live-sync warning rather than implying current chain coverage', async () => {
+  const result = await collectWalletHistory(async () => ({ ...page([]), syncState: 'unavailable' }));
+  assert.deepEqual(result, { rows: [], syncUnavailable: true });
+});
+test('temporary history requests retry twice; auth, bad responses and corrupt paging never retry', () => {
+  for (const status of [408, 429, 500, 503]) assert.equal(shouldRetryWalletHistory(0, { status }), true);
+  assert.equal(shouldRetryWalletHistory(1, new TypeError('Failed to fetch')), true);
+  assert.equal(shouldRetryWalletHistory(2, { status: 503 }), false);
+  for (const status of [200, 400, 401, 403, 404, 422]) assert.equal(shouldRetryWalletHistory(0, { status }), false);
+  assert.equal(shouldRetryWalletHistory(0, new Error('history_cursor_repeated')), false);
 });

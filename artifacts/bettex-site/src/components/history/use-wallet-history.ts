@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getDemoHistory, getTestHistory } from '@workspace/api-client-react';
 import { collectWalletHistory } from './history-pagination';
+import { shouldRetryWalletHistory } from './history-query-policy';
 
 export async function readAllWalletHistory(mode: 'demo' | 'native', signal?: AbortSignal) {
   return collectWalletHistory(async cursor => {
@@ -11,8 +12,9 @@ export async function readAllWalletHistory(mode: 'demo' | 'native', signal?: Abo
 }
 export function useWalletHistory(mode: 'demo' | 'native', accountKey: string) {
   return useQuery({
-    queryKey: ['wallet-statement', mode, accountKey],
+    queryKey: ['wallet-statement', mode, accountKey, 'with-sync-status'],
     queryFn: ({ signal }) => readAllWalletHistory(mode, signal),
-    staleTime: 15000, refetchInterval: 30000, retry: false,
+    staleTime: 15000, refetchInterval: 30000,
+    retry: shouldRetryWalletHistory, retryDelay: attempt => Math.min(1000 * 2 ** attempt, 3000),
   });
 }

@@ -41,6 +41,40 @@ export function demoStakingView(d: DemoDashboard): StakingView {
   };
 }
 
+export type StakingChartSample = { at: number; profit: number | null; allocated: number | null; forecast?: number | null };
+export type StakingTimeline = {
+  elapsedMinutes: number; tick: number; nextTickAt: string; tickIntervalMs: number;
+  minutesPerTick: number; projectedOwnUsdc: number | null;
+};
+export function scenarioStakingView(d: DemoDashboard) {
+  const scenario = d.staking.chartScenario;
+  if (!scenario || (d.profile.authenticated && d.profile.provider === 'native')) return null;
+  const start = Date.parse(scenario.roundStartedAt);
+  const current = scenario.points.find(p => p.elapsedMinutes === scenario.elapsedMinutes);
+  const last = scenario.points.at(-1);
+  if (!Number.isFinite(start) || !current || !last || !Number.isFinite(current.profitUsdc) || !Number.isFinite(last.profitUsdc)) return null;
+  // A chart is not a separate source of financial truth. Reject an old,
+  // independent scenario instead of replacing treasury and account values.
+  if (scenario.roundStartedAt !== d.staking.cycleStartedAt
+    || new Date(start + 86400000).toISOString() !== new Date(d.staking.nextCycleAt).toISOString()
+    || current.profitUsdc !== d.treasury.cycleResultUsdc) return null;
+  const weightPercent = finite(d.staking.sharePercent);
+  const weight = weightPercent === null ? null : Math.min(1, Math.max(0, weightPercent / 100));
+  const view = demoStakingView(d);
+  const points: StakingChartSample[] = scenario.points.map(p => ({
+    at: start + p.elapsedMinutes * 60000,
+    profit: p.elapsedMinutes <= scenario.elapsedMinutes ? p.profitUsdc : null,
+    allocated: p.elapsedMinutes <= scenario.elapsedMinutes ? Math.max(0, p.profitUsdc) * 0.25 : null,
+    forecast: p.elapsedMinutes >= scenario.elapsedMinutes ? p.profitUsdc : null,
+  }));
+  const timeline: StakingTimeline = {
+    elapsedMinutes: scenario.elapsedMinutes, tick: scenario.tick, nextTickAt: scenario.nextTickAt,
+    tickIntervalMs: scenario.tickIntervalMs, minutesPerTick: scenario.minutesPerTick,
+    projectedOwnUsdc: weight === null ? null : Math.max(0, last.profitUsdc) * 0.25 * weight,
+  };
+  return { view, points, timeline };
+}
+
 export function nativeStakingView(j?: NativeTestJourney, stale = false): StakingView {
   const p = j?.participation;
   return {

@@ -8,11 +8,13 @@
 import type { DemoMovementAsset } from './demoMovementAsset';
 import type { DemoMovementKind } from './demoMovementKind';
 import type { DemoMovementSourceAsset } from './demoMovementSourceAsset';
+import type { DemoMovementSourceWallet } from './demoMovementSourceWallet';
 import type { DemoMovementStatus } from './demoMovementStatus';
 
 export interface DemoMovement {
   id: string;
   kind: DemoMovementKind;
+  sourceWallet?: DemoMovementSourceWallet;
   asset: DemoMovementAsset;
   amount: number;
   feeUsdc: number;

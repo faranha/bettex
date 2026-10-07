@@ -3,6 +3,18 @@ name: Gestão de conta e demonstração financeira
 description: Autenticação verdadeira convivendo com movimentações demonstrativas.
 ---
 
+All accounts must receive a generated nickname, shown after login and editable through Edit profile. The field must state that nicknames are private now but will be publicly visible in the future.
+
+**Why:** The creator explicitly required generated nicknames for all accounts, replacement with the user's own nickname, and notice of the future public visibility.
+
+**How to apply:** Keep nicknames separate from legal/display names and email addresses; do not regenerate a saved nickname on login or expose profiles publicly before that future feature is introduced.
+
+“EDIT PROFILE must be the single source of truth and place for editing the profile.”
+
+**Why:** The creator identified a conflict between the inline nickname/picture editor and the separate profile dialog.
+
+**How to apply:** Keep the profile overview read-only. All name, email, nickname and picture editing must be entered through Edit profile; do not reintroduce parallel editing locations.
+
 Todas as funcionalidades desenvolvidas devem estar no app demo existente. Controles de conta carregam na própria página Minha conta, não em páginas ou diretórios de produto separados para testes. A conta administrativa de demonstração deve ter acesso a todos os recursos desenvolvidos e suas carteiras devem ser geradas automaticamente.
 
 **Why:** O criador corrigiu expressamente a entrega de uma página isolada de conta de testes e reiterou que o próprio app demo é o ambiente de teste.

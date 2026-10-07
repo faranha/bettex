@@ -37,12 +37,14 @@ import type {
   DemoProfileInput,
   DemoTestnet,
   DemoTestnetActivity,
+  DemoTreasuryActivityPage,
   GetAgentCenterParams,
   GetAgentReasoningParams,
   GetAlloraAnalysis200,
   GetAlphaTradingParams,
   GetDemoHistoryParams,
   GetDemoSimulationParams,
+  GetDemoTreasuryActivityParams,
   GetSimulationParams,
   GetTestHistoryParams,
   GetTradingPoliciesParams,
@@ -1603,6 +1605,108 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
       > => {
       return useMutation(getCommandTreasuryGovernanceMutationOptions(options), queryClient);
     }
+
+export const getGetDemoTreasuryActivityUrl = (params: GetDemoTreasuryActivityParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/demo/treasury/activity?${stringifiedParams}` : `/api/demo/treasury/activity`
+}
+
+export const getDemoTreasuryActivity = async (params: GetDemoTreasuryActivityParams, options?: Parameters<typeof customFetch>[1]): Promise<DemoTreasuryActivityPage> => {
+
+  return customFetch<DemoTreasuryActivityPage>(getGetDemoTreasuryActivityUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDemoTreasuryActivityQueryKey = (params?: GetDemoTreasuryActivityParams,) => {
+    return [
+    `/api/demo/treasury/activity`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetDemoTreasuryActivityQueryOptions = <TData = Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError = ErrorType<void>>(params: GetDemoTreasuryActivityParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDemoTreasuryActivityQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoTreasuryActivity>>> = ({ signal }) => getDemoTreasuryActivity(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetDemoTreasuryActivityQueryResult = NonNullable<Awaited<ReturnType<typeof getDemoTreasuryActivity>>>
+export type GetDemoTreasuryActivityQueryError = ErrorType<void>
+
+
+export function useGetDemoTreasuryActivity<TData = Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError = ErrorType<void>>(
+ params: GetDemoTreasuryActivityParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoTreasuryActivity>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoTreasuryActivity>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoTreasuryActivity<TData = Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError = ErrorType<void>>(
+ params: GetDemoTreasuryActivityParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoTreasuryActivity>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoTreasuryActivity>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoTreasuryActivity<TData = Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError = ErrorType<void>>(
+ params: GetDemoTreasuryActivityParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+
+export function useGetDemoTreasuryActivity<TData = Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError = ErrorType<void>>(
+ params: GetDemoTreasuryActivityParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryActivity>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetDemoTreasuryActivityQueryOptions(params,options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getGetHistoryTransparencyUrl = () => {
 

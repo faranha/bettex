@@ -1,80 +1,61 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { demoView, demoPath, demoPageTitle, demoAccountTab, isRemovedSimulationPath } from './demo-navigation.ts';
+import { demoView, demoPath, demoPageTitle, demoAccountTab, demoRedirect, isRemovedSimulationPath } from './demo-navigation.ts';
 
-test('treasury is a dedicated localized destination, including on reload', () => {
+test('wallets dashboard, history, AI Center, Treasury and personal Profile have independent reloadable routes', () => {
   for (const language of ['pt', 'en', 'es'] as const) {
-    assert.equal(demoView(demoPath('treasury', language)), 'treasury');
-    assert.equal(demoView(demoPath('treasury', language) + '/'), 'treasury');
-    assert.equal(demoView(demoPath('central', language)), 'central');
-    assert.equal(demoView(demoPath('home', language)), 'home');
-    assert.equal(demoView(demoPath('account', language)), 'account');
-    assert.equal(demoView(demoPath('wallet', language)), 'account');
-    assert.equal(demoView(demoPath('wallet', language) + '/'), 'account');
-    assert.equal(demoAccountTab(demoPath('wallet', language)), 'history');
-  }
-  assert.equal(demoPageTitle('treasury', 'pt'), 'Tesouraria | BETTEX');
-  assert.equal(demoPageTitle('treasury', 'en'), 'Treasury | BETTEX');
-  assert.equal(demoPageTitle('treasury', 'es'), 'Tesorería | BETTEX');
-  assert.equal(demoView('/demo/unknown'), undefined);
-});
-test('removed simulation destinations are not product views and only their exact bookmarks redirect', () => {
-  for (const prefix of ['', '/en', '/es']) {
-    for (const root of ['/app', '/demo']) {
-      for (const slug of ['simulacao', 'simulation', 'simulacion']) {
-        const path = `${prefix}${root}/${slug}`;
-        assert.equal(isRemovedSimulationPath(path), true);
-        assert.equal(isRemovedSimulationPath(`${path}/`), true);
-        assert.equal(demoView(`${root}/${slug}`), undefined);
-        assert.equal(isRemovedSimulationPath(`${path}/unrelated`), false);
-      }
+    for (const view of ['home', 'wallet', 'central', 'treasury', 'account'] as const) {
+      const path = demoPath(view, language);
+      assert.equal(demoView(path), view);
+      assert.equal(demoView(path + '/'), view);
+      assert.equal(demoView(path.replace('/app', '/demo')), view);
+      assert.equal(demoRedirect(path, language, '?wallet=earnings'), null);
     }
   }
-  assert.equal(isRemovedSimulationPath('/app/treasury'), false);
-});
-test('balance and history links point inside My account, not a separate app area', () => {
-  assert.equal(demoPageTitle('wallet', 'pt'), 'Saldo e histórico | BETTEX');
-  assert.equal(demoPageTitle('wallet', 'en'), 'Balance and history | BETTEX');
-  assert.equal(demoPageTitle('wallet', 'es'), 'Saldo e historial | BETTEX');
-  for (const language of ['pt', 'en', 'es'] as const) {
-    assert.equal(demoPath('wallet', language), `${demoPath('account', language)}/history`);
-  }
-  assert.notEqual(demoPath('wallet', 'pt'), demoPath('home', 'pt'));
-});
-test('profile and security details stay in the account area', () => {
-  for (const language of ['pt', 'en', 'es'] as const) {
-    for (const detail of ['/security', '/profile', '/security/password', '/profile/email-address']) {
-      assert.equal(demoView(demoPath('account', language) + detail), 'account');
-    }
-  }
-  assert.equal(demoView('/demo/accounting'), undefined);
-  assert.equal(demoView('/demo/central/security'), undefined);
-});
-test('app URLs are canonical while all legacy demo destinations remain recognizable', () => {
-  for (const language of ['pt', 'en', 'es'] as const) {
-    for (const view of ['home', 'central', 'wallet', 'treasury', 'account'] as const) {
-      const canonical = demoPath(view, language);
-      assert.ok(canonical.startsWith('/app'));
-      assert.equal(demoView(canonical), view === 'wallet' ? 'account' : view);
-      assert.equal(demoView(canonical.replace('/app', '/demo')), view === 'wallet' ? 'account' : view);
-    }
-  }
+  assert.equal(demoPageTitle('home', 'pt'), 'Carteiras | BETTEX');
+  assert.equal(demoPageTitle('wallet', 'en'), 'History | BETTEX');
+  assert.equal(demoPageTitle('wallet', 'es'), 'Historial | BETTEX');
+  assert.equal(demoPageTitle('account', 'pt'), 'Perfil | BETTEX');
   assert.equal(demoView('/app/unknown'), undefined);
-  for (const legacy of ['/app/saldo', '/app/balance', '/demo/saldo', '/demo/balance']) {
-    assert.equal(demoView(legacy), 'wallet');
+});
+test('old profile finance paths and query tabs migrate without losing filters or anchors', () => {
+  for (const language of ['pt', 'en', 'es'] as const) {
+    for (const root of ['/app/minha-conta', '/app/account', '/app/mi-cuenta', '/demo/account']) {
+      assert.equal(demoRedirect(`${root}/wallets`, language), '/app');
+      assert.equal(demoRedirect(root, language, '?tab=operations'), '/app');
+      assert.equal(demoRedirect(`${root}/history`, language, '?wallet=earnings', '#wallet-statement'),
+        `${demoPath('wallet', language)}?wallet=earnings#wallet-statement`);
+      assert.equal(demoRedirect(root, language, '?tab=history&wallet=USDC'),
+        `${demoPath('wallet', language)}?wallet=USDC`);
+      assert.equal(demoRedirect(`${root}/profile`, language), demoPath('account', language));
+      assert.equal(demoRedirect(`${root}/security/password`, language), demoPath('account', language));
+      assert.equal(demoRedirect(`${root}/policies`, language), `${demoPath('treasury', language)}?tab=policies`);
+    }
+    for (const legacy of ['/app/saldo', '/app/balance']) {
+      assert.equal(demoRedirect(legacy, language, '?wallet=BETTEX'), `${demoPath('wallet', language)}?wallet=BETTEX`);
+    }
+    assert.equal(demoRedirect('/app/wallets', language), '/app');
+    assert.equal(demoRedirect('/app/account', language, '?provider=clerk-signin'), null);
   }
 });
-test('deep account links select the right tab across languages and legacy aliases', () => {
+test('history links follow a changed language without redirect loops or dropped wallet filters', () => {
+  assert.equal(demoRedirect('/app/historico', 'en', '?wallet=USDC'), '/app/history?wallet=USDC');
+  assert.equal(demoRedirect('/app/history', 'en', '?wallet=USDC'), null);
+  assert.equal(demoRedirect('/app/history', 'es', '?wallet=USDC'), '/app/historial?wallet=USDC');
+});
+test('legacy account tabs are parsed for migration, not displayed as Profile sections', () => {
+  assert.equal(demoAccountTab('/app/account', '?tab=history'), 'history');
+  assert.equal(demoAccountTab('/app/account/operations'), 'wallets');
+  assert.equal(demoAccountTab('/app/account/security'), 'profile');
+  assert.equal(demoAccountTab('/app/account/unknown'), 'profile');
+});
+test('removed simulation bookmarks redirect to the new wallets dashboard without adding an area', () => {
   for (const root of ['/app', '/demo', '/en/app', '/es/demo']) {
-    for (const account of ['account', 'minha-conta', 'mi-cuenta']) {
-      assert.equal(demoAccountTab(`${root}/${account}/security`), 'profile');
-      assert.equal(demoAccountTab(`${root}/${account}/security/password`), 'profile');
-      assert.equal(demoAccountTab(`${root}/${account}/operations`), 'wallets');
-      assert.equal(demoAccountTab(`${root}/${account}`, '?tab=operations'), 'wallets');
-      assert.equal(demoAccountTab(`${root}/${account}`, '?tab=security'), 'profile');
-      assert.equal(demoAccountTab(`${root}/${account}/profile`, '?tab=security'), 'profile');
-      assert.equal(demoAccountTab(`${root}/${account}`, '?tab=history'), 'history');
-      assert.equal(demoAccountTab(`${root}/${account}/unknown`), 'profile');
+    for (const slug of ['simulacao', 'simulation', 'simulacion']) {
+      const path = `${root}/${slug}`;
+      assert.equal(isRemovedSimulationPath(path), true);
+      assert.equal(isRemovedSimulationPath(`${path}/unrelated`), false);
+      assert.equal(demoRedirect(path, 'pt'), '/app');
     }
   }
 });

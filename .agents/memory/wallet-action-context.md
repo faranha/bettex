@@ -3,6 +3,30 @@ name: Ações contextualizadas da carteira
 description: Organização exigida pelo criador para entradas, saídas e conversões de USDC e BETTEX.
 ---
 
+The earnings wallet is separate from the dollar wallet. It accepts earnings only and has exactly one financial action: transfer USDC to the dollar wallet. It cannot withdraw externally, accept deposits, or convert directly to BETTEX.
+
+**Why:** The creator clarified: “withdrawal of earnings is made to the USD wallet never outside it so the transfer to the usdc wallet alone is enough here.”
+
+**How to apply:** Offer only the internal transfer on earnings, without an external-address field. Reject external earnings withdrawals server-side. External withdrawals remain available from the dollar wallet.
+
+The transaction fee is **2.50 USDC per transaction**, except depositing BETTEX and USDC.
+
+**Why:** The creator requested “2,50 per transaction” and confirmed “2.50 USDC per transaction,” not BRL.
+
+**How to apply:** Display fees before confirmation on transaction pages and enforce them server-side; earnings transfers pay their fee from earnings. Keep historical fees intact and network gas separate.
+
+The earnings wallet must use the full width, show past-round earnings and the current-round projection, provide a history button, and use fire icons with an exciting presentation. Fee copy belongs only on the transactional screen, not this wallet card.
+
+**Why:** The creator requested these presentation details and explicitly said “only show it on the transactional screen.”
+
+**How to apply:** Preserve the distinction between paid historical earnings and non-guaranteed estimates. The history shortcut must open the earnings-filtered statement; keep the single internal-transfer action.
+
+Cada carteira, inclusive a de rendimentos, deve ter seu próprio botão de histórico com ícone para abrir a área de histórico da conta.
+
+**Why:** O criador pediu “dentro de cada carteira inclusive da nova de earnings” um ícone e uma opção de histórico.
+
+**How to apply:** Abrir o histórico filtrado pela carteira correspondente. Histórico é navegação, não uma nova movimentação financeira.
+
 As ações devem ficar visualmente relacionadas ao saldo correspondente, não numa barra genérica separada. USDC: adicionar crédito, sacar dólares para uma carteira cripto e converter em BETTEX. BETTEX: adicionar tokens, transferir para uma carteira e converter em USDC. A conversão precisa estar disponível nos dois sentidos.
 
 As carteiras BETTEX e USDC precisam ter identidades visuais distintas, com cores, fundos e ícones próprios de cada ativo.

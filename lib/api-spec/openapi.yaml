@@ -259,6 +259,24 @@ paths:
           content:
             application/json:
               schema: { $ref: "#/components/schemas/TreasuryGovernanceResponse" }
+  /demo/treasury/activity:
+    get:
+      operationId: getDemoTreasuryActivity
+      tags: [demo]
+      parameters:
+        - { name: roundId, in: query, required: true, schema: { type: string, pattern: '^\d{4}-\d{2}-\d{2}$' } }
+        - { name: view, in: query, schema: { type: string, enum: [closed, fees, history], default: history } }
+        - { name: page, in: query, schema: { type: integer, minimum: 1, maximum: 100000, default: 1 } }
+        - { name: pageSize, in: query, schema: { type: integer, minimum: 1, maximum: 50, default: 20 } }
+        - { name: snapshot, in: query, schema: { type: string, pattern: '^\d+$', maxLength: 20 } }
+      responses:
+        "200":
+          description: Paginated persisted emulated treasury activity, never native wallet transactions.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DemoTreasuryActivityPage" }
+        "400": { description: Invalid pagination or round }
+        "503": { description: Ledger unavailable }
   /history/transparency:
     get:
       operationId: getHistoryTransparency
@@ -1675,7 +1693,8 @@ components:
       required: [requestId, kind, amount, asset]
       properties:
         requestId: { type: string, format: uuid }
-        kind: { type: string, enum: [receive, onramp, swap, withdraw, send] }
+        kind: { type: string, enum: [receive, onramp, swap, withdraw, send, transfer] }
+        sourceWallet: { type: string, enum: [dollar, earnings] }
         asset: { type: string, enum: [USDC, BETTEX] }
         amount: { type: number, minimum: 0.000001, maximum: 100000 }
         destination: { type: string, maxLength: 120 }
@@ -1702,10 +1721,35 @@ components:
         brlPerUsdc: { type: number }
         bettexUsdc: { type: number }
         updatedAt: { type: string }
+    StakingChartPoint:
+      type: object
+      required: [elapsedMinutes, profitUsdc]
+      properties:
+        elapsedMinutes: { type: integer, minimum: 0, maximum: 1440 }
+        profitUsdc: { type: number }
+    StakingChartScenario:
+      type: object
+      required: [source, roundStartedAt, nextTickAt, elapsedMinutes, tick, tickIntervalMs, minutesPerTick, points]
+      properties:
+        source: { type: string, enum: [test_scenario] }
+        roundStartedAt: { type: string, description: ISO 8601 timestamp marking the emulated round start. }
+        nextTickAt: { type: string, description: ISO 8601 wall-clock timestamp for the next test tick. }
+        elapsedMinutes: { type: integer, minimum: 0, maximum: 1440 }
+        tick: { type: integer, minimum: 0 }
+        tickIntervalMs: { type: integer, minimum: 1 }
+        minutesPerTick: { type: integer, minimum: 1 }
+        points:
+          type: array
+          items: { $ref: "#/components/schemas/StakingChartPoint" }
     DemoStaking:
       type: object
       required: [eligibleTokens, since, weightTokenSeconds, sharePercent, cycleStartedAt, nextCycleAt, estimatedUsdc, status]
       properties:
+        chartScenario:
+          anyOf:
+            - { $ref: "#/components/schemas/StakingChartScenario" }
+            - { type: "null" }
+          description: Isolated randomized chart emulation, never an actual trading result or ledger payout.
         eligibleTokens: { type: number }
         totalEligibleTokens: { type: number, minimum: 0, description: Total participating BETTEX in the simulated pool, including its seeded community. }
         tokenSharePercent: { type: number, minimum: 0, maximum: 100, description: Current eligible-token share, distinct from time-weighted payout participation. }
@@ -1797,7 +1841,8 @@ components:
       required: [id, kind, asset, amount, feeUsdc, at, status, destination]
       properties:
         id: { type: string }
-        kind: { type: string, enum: [receive, onramp, swap, withdraw, send, distribution] }
+        kind: { type: string, enum: [receive, onramp, swap, withdraw, send, distribution, transfer] }
+        sourceWallet: { type: string, enum: [dollar, earnings] }
         asset: { type: string, enum: [USDC, BETTEX] }
         amount: { type: number }
         feeUsdc: { type: number }
@@ -1859,6 +1904,36 @@ components:
         openingAssetsUsdc: { type: [number, "null"] }
         coverage: { type: string, enum: [complete, partial] }
         feesOwner: { type: string, enum: [operating_company] }
+    DemoTreasuryActivityPage:
+      type: object
+      required: [roundId, items, total, totalPages, page, pageSize, snapshot, source]
+      properties:
+        roundId: { type: string }
+        items:
+          type: array
+          items: { $ref: "#/components/schemas/DemoTreasuryActivityItem" }
+        total: { type: integer }
+        totalPages: { type: integer }
+        page: { type: integer }
+        pageSize: { type: integer }
+        snapshot: { type: string }
+        source: { type: string, enum: [emulated] }
+    DemoTreasuryActivityItem:
+      type: object
+      required: [id, at, kind, source, agent, market, capitalUsdc, grossUsdc, costUsdc, netUsdc, feeKind, feeUsdc]
+      properties:
+        id: { type: string }
+        at: { type: string, format: date-time }
+        kind: { type: string, enum: [position_closed, operator_fee, checkpoint] }
+        source: { type: string, enum: [emulated, modeled_baseline, recorded_checkpoint] }
+        agent: { type: [string, "null"] }
+        market: { type: [string, "null"] }
+        capitalUsdc: { type: [number, "null"] }
+        grossUsdc: { type: [number, "null"] }
+        costUsdc: { type: [number, "null"] }
+        netUsdc: { type: [number, "null"] }
+        feeKind: { type: [string, "null"], enum: [onramp, swap, withdraw, send, transfer, null] }
+        feeUsdc: { type: [number, "null"] }
     DemoTreasuryFeeBreakdown:
       type: object
       required: [onramp, swap, withdraw, send]
@@ -1867,6 +1942,7 @@ components:
         swap: { type: number }
         withdraw: { type: number }
         send: { type: number }
+        transfer: { type: number }
     DemoRoundParticipationSnapshot:
       type: object
       required: [ownEligibleTokens, totalEligibleTokens, ownTokenSeconds, totalTokenSeconds, payoutSharePercent, receivedUsdc, startedAt, endedAt]

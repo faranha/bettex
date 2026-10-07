@@ -2,7 +2,7 @@ import { appendHistory, type HistoryClient } from "./history-store";
 import { decimalUnits } from "../domain/history";
 import { sql } from "drizzle-orm";
 import { historyId } from "./history-store";
-type Movement = { id: string; kind: string; status: string; asset: string; amount: number; feeUsdc: number; at: string; sourceAsset?: string; sourceAmount?: number };
+type Movement = { id: string; kind: string; status: string; asset: string; amount: number; feeUsdc: number; at: string; sourceAsset?: string; sourceAmount?: number; sourceWallet?: string };
 export async function recordDemoMovements(client: HistoryClient, accountId: string, before: Movement[], after: Movement[], price?: string, requestId?: string | string[], eventTime?: number) {
   const subject = `demo:${accountId}`;
   for (const movement of after) {
@@ -16,6 +16,8 @@ export async function recordDemoMovements(client: HistoryClient, accountId: stri
     const data = { ...prior, operationKind: movement.kind, amountUnits: units, decimals: movement.asset === "USDC" ? "6" : "18",
       receivedAsset: movement.asset, receivedUnits: units, receivedDecimals: movement.asset === "USDC" ? "6" : "18",
       feeUnits: decimalUnits(String(movement.feeUsdc), 6), mechanism: "simulation",
+      sourceWallet: movement.sourceWallet ?? (movement.kind === "distribution" ? "earnings" : "dollar"),
+      ...(movement.kind === "transfer" ? { targetWallet: "dollar" } : {}),
       ...(movement.sourceAsset && movement.sourceAmount !== undefined ? {
         paidAsset: movement.sourceAsset, paidUnits: decimalUnits(String(movement.sourceAmount), movement.sourceAsset === "USDC" ? 6 : 18),
         paidDecimals: movement.sourceAsset === "USDC" ? "6" : "18",
@@ -56,13 +58,13 @@ export async function recordDemoRound(client: HistoryClient, accountId: string, 
       trigger: "daily_cycle_close", paid: paid ? "true" : "false", reason: paid ? "existing_automatic_policy" : "no_positive_result_or_reserve_guard" } }, client);
 }
 type Operation = { id: string; status: string; agent: string; capitalUsdc: number; pnlUsdc: number; updatedAt: string; proposal?: { feesUsdc: number } };
-export async function recordDemoPools(client: HistoryClient, cycle: { id: string; endedAt: string; status: string; treasuryUsdc: number; stakingUsdc: number; buybackUsdc: number }) {
+export async function recordDemoPools(client: HistoryClient, cycle: { id: string; endedAt: string; status: string; treasuryUsdc: number; stakingUsdc: number; buybackUsdc: number }, namespace = "") {
   for (const [kind, amount, state] of [
     ["treasury_retention", cycle.treasuryUsdc, "confirmed"],
     ["treasury_distribution_pool", cycle.stakingUsdc, cycle.status === "paid" ? "available" : "suspended"],
     ["buyback_reserve", cycle.buybackUsdc, "reserved"],
-  ] as const) await appendHistory({ key: `demo:pool:${cycle.id}:${kind}`, subject: "treasury:simulation", visibility: "admin",
-    correlationId: `demo:period:${cycle.id}`, category: "financial", kind, state, actor: "system", environment: "simulation",
+  ] as const) await appendHistory({ key: `demo:${namespace}pool:${cycle.id}:${kind}`, subject: "treasury:simulation", visibility: "admin",
+    correlationId: `demo:${namespace}period:${cycle.id}`, category: "financial", kind, state, actor: "system", environment: "simulation",
     asset: "USDC", source: "demo_engine", occurredAt: new Date(cycle.endedAt),
     data: { amountUnits: decimalUnits(String(amount), 6), decimals: "6", periodId: cycle.id,
       ruleVersion: "demo-model-v1", capitalInflow: "false", mechanism: "simulation", trigger: "daily_cycle_close" } }, client);
