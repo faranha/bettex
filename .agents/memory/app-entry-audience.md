@@ -25,4 +25,10 @@ Os cartões secundários de Cripto, Previsões e Cassino devem ser compactos. N�
 
 **Why:** Após testar o verde, o criador disse “green is not good really” e pediu gráficos de barras e os três contêineres mais baixos, por haver espaço vazio demais.
 
-**How to apply:** Manter o destaque principal em Esportes e evitar alturas infladas nos cartões secundários. Previews decorativos precisam estar identificados como ilustrativos, nunca como resultados reais.
+**How to apply:** Manter o destaque principal em Esportes e evitar alturas infladas nos cartões secundários.
+
+As artes dos cartões são decoração, sem legendas “ilustrativo”, “no live data” ou equivalentes: Cripto usa barras no fundo; Mercados de previsão representa eventos futuros; Cassino usa um presente/pacote de bônus. Usar mais cor.
+
+**Why:** O criador corrigiu explicitamente os avisos adicionados pelo agente: “Eu não estou lhe pedindo pra colocar essas mensagens que é ilustrativo, que não é live data” e definiu o tema de cada arte.
+
+**How to apply:** Não reintroduzir avisos de dados nas artes decorativas, nem transformá-las em métricas ou resultados fictícios. Essa direção não altera o estado de disponibilidade dos agentes.
