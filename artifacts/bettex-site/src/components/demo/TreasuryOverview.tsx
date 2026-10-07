@@ -17,26 +17,10 @@ function Metric({ id, label, tip, help, children, tone }: { id?: string; label: 
   </div>;
 }
 
-export function TreasuryOverview({ d }: { d: DemoDashboard }) {
-  const { x, tx, loc } = useX(); const { num } = useMoney();
-  const [open, setOpen] = useState<string | null>(null);
-  const r = d.treasury.currentRound;
-  const fl = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
-  const dt = (s: string) => formatBrazilDateTime(s, fl, { dateStyle: 'medium', timeStyle: 'short' });
-  const NR = x('Não registrado', 'Not recorded', 'No registrado');
-  const precision = (v: number) => v !== 0 && Math.abs(v) < .01 ? 6 : 2;
-  const plain = (v: number | null | undefined, signed = false) => v == null ? NR : `${signed && v > 0 ? '+' : ''}${num(v, precision(v))} USDC`;
-  const sim = x('Tesouraria simulada, sem EVM nativo nem dinheiro real.', 'Simulated treasury, no native EVM and no real cash.', 'Tesorería simulada, sin EVM nativo ni dinero real.');
-  const fee = (b: DemoTreasuryRound['feeBreakdown'], f: (v: number) => ReactNode) => <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-xs sm:grid-cols-4">{([['onramp', x('Saldo adicionado', 'Balance added', 'Saldo agregado')], ['swap', x('Troca', 'Swap', 'Cambio')], ['withdraw', x('Saque USDC', 'USDC withdrawal', 'Retiro USDC')], ['send', x('Envio', 'Send', 'Envío')]] as const).map(([k, l]) => <div key={k}><dt className="text-[#5B6B85]">{l}</dt><dd className="font-bold">{f(b[k])}</dd></div>)}</dl>;
-
-  if (!r) return <TreasuryCycle d={d} />;
-
+export function AssetAllocation({ r, className = 'dcard p-4 sm:p-5' }: { r: DemoTreasuryRound; className?: string }) {
+  const { x } = useX(); const { num } = useMoney();
   const short = r.availableUsdc < 0;
-
-  return <section data-testid="treasury-overview" className="grid gap-4">
-    <p className="rounded-xl bg-[#EFF6F2] px-3 py-2 text-xs font-semibold text-[#0A6657]">{sim}</p>
-
-    <div className="dcard p-4 sm:p-5">
+  return <div className={className} data-testid="treasury-allocation">
       <h2 className="display text-lg font-extrabold">{x('Composição dos ativos', 'Asset allocation', 'Composición de activos')}</h2>
       <p className="mt-1 text-sm text-[#5B6B85]">{x('Ativos = Reserva protegida + Comprometido + Disponível. Nada é contado duas vezes.', 'Assets = Protected reserve + Committed + Available. Nothing is counted twice.', 'Activos = Reserva protegida + Comprometido + Disponible. Nada se cuenta dos veces.')}</p>
       <Metric id="treasury-assets-total" label={x('Ativos totais', 'Total assets', 'Activos totales')} tip={x('Tudo que a tesouraria simulada detém agora.', 'Everything the simulated treasury holds now.', 'Todo lo que tiene la tesorería simulada ahora.')} help={x('Inclui a reserva protegida e o capital operacional.', 'Includes protected reserve and working capital.', 'Incluye reserva protegida y capital operativo.')}><Money v={r.assetsUsdc} a="USDC" big /></Metric>
@@ -55,6 +39,27 @@ export function TreasuryOverview({ d }: { d: DemoDashboard }) {
       <p className="mt-3 text-xs mono text-[#5B6B85]">{num(r.assetsUsdc)} = {num(r.reserveUsdc)} + {num(r.committedUsdc)} + {num(r.availableUsdc)}</p>
       {short && <p role="alert" data-testid="treasury-shortfall" className="mt-2 flex items-start gap-2 rounded-xl border border-[#E7B98A] bg-[#FFF3E3] p-3 text-sm font-semibold text-[#6B3A10]"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{x(`Reserva violada: faltam ${num(-r.availableUsdc)} USDC para cobrir reserva e compromissos. Novas posições ficam bloqueadas e não há distribuição enquanto isso durar.`, `Reserve breach: ${num(-r.availableUsdc)} USDC short of covering reserve and commitments. New positions stay blocked and no distribution happens meanwhile.`, `Reserva vulnerada: faltan ${num(-r.availableUsdc)} USDC para cubrir reserva y compromisos. Las nuevas posiciones quedan bloqueadas y no hay distribución mientras tanto.`)}</p>}
     </div>
+  ;
+}
+
+export function TreasuryOverview({ d }: { d: DemoDashboard }) {
+  const { x, tx, loc } = useX(); const { num } = useMoney();
+  const [open, setOpen] = useState<string | null>(null);
+  const r = d.treasury.currentRound;
+  const fl = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
+  const dt = (s: string) => formatBrazilDateTime(s, fl, { dateStyle: 'medium', timeStyle: 'short' });
+  const NR = x('Não registrado', 'Not recorded', 'No registrado');
+  const precision = (v: number) => v !== 0 && Math.abs(v) < .01 ? 6 : 2;
+  const plain = (v: number | null | undefined, signed = false) => v == null ? NR : `${signed && v > 0 ? '+' : ''}${num(v, precision(v))} USDC`;
+  const sim = x('Tesouraria simulada, sem EVM nativo nem dinheiro real.', 'Simulated treasury, no native EVM and no real cash.', 'Tesorería simulada, sin EVM nativo ni dinero real.');
+  const fee = (b: DemoTreasuryRound['feeBreakdown'], f: (v: number) => ReactNode) => <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-xs sm:grid-cols-4">{([['onramp', x('Saldo adicionado', 'Balance added', 'Saldo agregado')], ['swap', x('Troca', 'Swap', 'Cambio')], ['withdraw', x('Saque USDC', 'USDC withdrawal', 'Retiro USDC')], ['send', x('Envio', 'Send', 'Envío')]] as const).map(([k, l]) => <div key={k}><dt className="text-[#5B6B85]">{l}</dt><dd className="font-bold">{f(b[k])}</dd></div>)}</dl>;
+
+  if (!r) return <TreasuryCycle d={d} />;
+
+  return <section data-testid="treasury-overview" className="grid gap-4">
+    <p className="rounded-xl bg-[#EFF6F2] px-3 py-2 text-xs font-semibold text-[#0A6657]">{sim}</p>
+
+    <AssetAllocation r={r} />
 
     <TreasuryCycle d={d} />
 

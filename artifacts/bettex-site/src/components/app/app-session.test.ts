@@ -20,9 +20,21 @@ test('logout terminates real sessions, locks wallets, clears caches, and returns
   assert.match(logout, /client\.clear\(\)/);
   assert.match(logout, /navigate\('\/sign-in', \{ replace: true \}\)/);
 });
-test('ALFA entry exposes only the Alex demo, without credential or signup forms', () => {
+test('ALFA entry exposes only the demo, without credential or signup forms', () => {
   const auth = read('../../pages/auth.tsx');
   assert.match(auth, /startAppSession\(\)/);
   assert.match(auth, /navigate\('\/app'/);
   assert.doesNotMatch(auth, /<SignIn |<SignUp |NativeSignIn|NativeSignUp|<input|<form|signInTestAccount|<AccountPanel/);
+});
+test('app entrance shares the app footer and presents a sports-oriented demo without a fictional-person explanation', () => {
+  const app = read('../../App.tsx');
+  const auth = read('../../pages/auth.tsx');
+  assert.match(app, /function SignInEntry\(\)[\s\S]*?<SignInPage \/><SiteFooter compact \/>/);
+  assert.match(app, /function SignUpEntry\(\)[\s\S]*?<SignUpPage \/><SiteFooter compact \/>/);
+  assert.match(app, /path="\/sign-in\/\*\?" component=\{SignInEntry\}/);
+  assert.match(app, /path="\/sign-up\/\*\?" component=\{SignUpEntry\}/);
+  assert.match(auth, /Pare de apostar e comece a investir agora com a Bettex/);
+  assert.match(auth, /app-entry-sports\.jpg/);
+  assert.match(auth, /Demonstração com dados simulados/);
+  assert.doesNotMatch(auth, /Meet the BETTEX app through Alex|pessoa fictícia|hero-person-phone|hero-person-centered/);
 });

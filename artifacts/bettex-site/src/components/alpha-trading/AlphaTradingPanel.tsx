@@ -73,7 +73,7 @@ export function AlphaTradingPanel() {
         <AgentOperationsDashboard scope="orchestrator" />
         <div className="mt-4"><RecordsSection views={['opportunities', 'decisions']} onJourney={setJid}
           title={x('Pedidos recebidos, comparações e decisões', 'Received requests, comparisons and decisions', 'Pedidos recibidos, comparaciones y decisiones')}
-          intro={x('Registros reais de pedidos dos agentes de previsão e das decisões da BETTEX. Sem registros, nada é inventado.', 'Real records of prediction-agent requests and BETTEX decisions. With no records, nothing is invented.', 'Registros reales de pedidos de los agentes de predicción y de las decisiones de BETTEX. Sin registros, no se inventa nada.')} /></div>
+          intro={x('Registros reais de pedidos do agente Cripto e seus especialistas e das decisões da BETTEX. Sem registros, nada é inventado.', 'Real records of requests from the Crypto agent and its specialists and BETTEX decisions. With no records, nothing is invented.', 'Registros reales de pedidos del agente Cripto y sus especialistas y de las decisiones de BETTEX. Sin registros, no se inventa nada.')} /></div>
         {jid && <div className="mt-4"><Journey key={jid} id={jid} onClose={() => setJid(null)} /></div>}
       </section>
       <section className={card} data-testid="section-active-agents"><AgentOperationsDashboard scope="agents" /></section>

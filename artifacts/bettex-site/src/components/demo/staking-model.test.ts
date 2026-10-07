@@ -43,11 +43,26 @@ test('missing native pool figures never become simulated figures or zeros', () =
 
 test('staking is a full-width section integrated in dashboard and all wallet views', () => {
   const read = (file: string) => readFileSync(new URL(file, import.meta.url), 'utf8');
-  assert.match(read('../../pages/demo.tsx'), /<StakingCorridor d=\{d\}/);
-  assert.match(read('./DemoAccountPanel.tsx'), /tab === 'wallets'.*<StakingCorridor d=\{d\}/);
-  assert.match(read('../account/AccountSheet.tsx'), /walletContent=\{<StakingCorridor d=\{d\}/);
+  assert.match(read('../../pages/demo.tsx'), /<WalletsDashboard d=\{d\}/);
+  const dashboard = read('./WalletsDashboard.tsx');
+  assert.match(dashboard, /walletContent=\{<StakingCorridor d=\{d\} showAgents/);
+  assert.equal((dashboard.match(/<StakingCorridor d=\{d\} showAgents/g) ?? []).length, 2);
   assert.match(read('./StakingCorridor.tsx'), /staking-corridor/);
   assert.doesNotMatch(read('./StakingCorridor.tsx'), /position:\s*fixed|w-\[3[0-9][0-9]px\]/);
+});
+test('live trades is below the chart and dashboard agents follow the chart-clock row without a duplicate top block', () => {
+  const read = (file: string) => readFileSync(new URL(file, import.meta.url), 'utf8');
+  const corridor = read('./StakingCorridor.tsx');
+  const clock = read('./StakingRoundClock.tsx');
+  const dashboard = read('./WalletsDashboard.tsx');
+  assert.doesNotMatch(clock, /staking-live-trading|demoPath|<Link/);
+  assert.doesNotMatch(dashboard, /AgentShowcase/);
+  assert.match(corridor, /showAgents = false/);
+  const chart = corridor.indexOf('data-testid="staking-chart-history"');
+  const liveTrades = corridor.indexOf('data-testid="staking-live-trading"');
+  const sideClock = corridor.indexOf('<StakingRoundClock');
+  const agents = corridor.indexOf('{showAgents && <AgentShowcase');
+  assert.ok(chart >= 0 && liveTrades > chart && sideClock > liveTrades && agents > sideClock);
 });
 
 test('scenario keeps realized path separate from forecast, uses payout weight, and never debits losses', () => {

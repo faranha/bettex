@@ -1,8 +1,6 @@
 /** @jsxImportSource react */
 import { useEffect, useRef, useState } from 'react';
-import { Flame, Activity } from 'lucide-react';
-import { Link } from 'wouter';
-import { demoPath } from './demo-navigation';
+import { Flame } from 'lucide-react';
 import { useX } from './ui';
 import { Term } from './fin';
 import type { StakingTimeline } from './staking-model';
@@ -14,7 +12,7 @@ export function StakingRoundClock({ serverNow, nextCycleAt, native, timeline, cu
   serverNow: string | undefined; nextCycleAt: string | null; native: boolean; timeline: StakingTimeline | null;
   current: number | null; projected: number | null; loading: boolean; na: string; fl: string;
 }) {
-  const { x, loc } = useX();
+  const { x } = useX();
   const [, setN] = useState(0);
   const anchor = useRef<{ cycle: string | null; reading: RoundClockAnchor | null }>({ cycle: null, reading: null });
   const sn = serverNow ? Date.parse(serverNow) : NaN;
@@ -58,9 +56,6 @@ export function StakingRoundClock({ serverNow, nextCycleAt, native, timeline, cu
           <div className="flex items-start gap-0.5">{unit(hh, x('H', 'H', 'H'))}<span className="display text-lg font-extrabold text-[#C98A12]" aria-hidden="true">:</span>{unit(mm, x('MIN', 'MIN', 'MIN'))}<span className="display text-lg font-extrabold text-[#C98A12]" aria-hidden="true">:</span>{unit(ss, x('SEG', 'SEC', 'SEG'))}</div>
         </div>
       </div>
-      <Link href={demoPath('central', loc)} data-testid="staking-live-trading" className="group flex min-w-0 flex-1 items-center justify-between gap-2 rounded-xl bg-[#0E7C6B] px-4 py-3 text-sm font-extrabold text-white transition-colors hover:bg-[#0A6657]">
-        <span className="flex items-center gap-2"><Activity className="h-5 w-5 shrink-0" aria-hidden="true" />{x('Trades ao vivo', 'Live trades', 'Trades en vivo')}</span>
-      </Link>
     </div>
     {elapsed !== null && <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#E4DCCB]" data-testid="staking-progress" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(frac * 100)}><div className="h-full rounded-full bg-[#0E7C6B]" style={{ width: `${frac * 100}%` }} /></div>}
   </div>;

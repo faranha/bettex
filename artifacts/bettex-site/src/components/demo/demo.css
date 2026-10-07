@@ -25,3 +25,23 @@
 .demo-root .tk-usdc .bg-\[\#F5F1E8\]{background:#fff;color:#0D2F5C}
 .tk-icon{display:inline-flex;height:32px;width:32px;flex:none;border-radius:50%;overflow:hidden}
 .tk-icon-bettex{background:#F6EFD8;padding:3px;box-shadow:0 0 0 2px #C9A24A}
+.agx{position:relative;overflow:hidden;background:linear-gradient(160deg,#FFFCF6,#F1EBDD)}
+.agx-on{position:relative;overflow:hidden;background:linear-gradient(145deg,#0B2A2A,#0E4D43 55%,#0E7C6B);color:#F4FFF9;box-shadow:0 18px 40px -18px rgba(14,124,107,.7)}
+.agx-on::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent,rgba(246,215,126,.28),transparent 30%);animation:agx-spin 9s linear infinite}
+.agx-on::after{content:"";position:absolute;inset:1px;border-radius:inherit;background:linear-gradient(145deg,#0B2A2A,#0E4D43 60%,#0E7C6B);z-index:0}
+.agx-on>*{position:relative;z-index:1}
+.agx-coin{display:inline-flex;height:30px;width:30px;align-items:center;justify-content:center;border-radius:50%;border:1.5px solid #F6D77E;color:#F6D77E;font-size:10px;font-weight:800;animation:agx-float 4s ease-in-out infinite}
+.agx-coin:nth-child(2){animation-delay:.6s}.agx-coin:nth-child(3){animation-delay:1.2s}
+.agx-off{background:repeating-linear-gradient(135deg,#EFEAE0 0 10px,#E7E0D2 10px 20px)}
+@keyframes agx-spin{to{transform:rotate(360deg)}}
+@keyframes agx-float{50%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.agx-on::before,.agx-coin{animation:none}}
+.agx{max-width:100%}
+.agx-dark{border:1px solid rgba(244,241,232,.16);border-radius:28px;background:linear-gradient(160deg,rgba(12,21,54,.82),rgba(7,11,31,.9));backdrop-filter:blur(6px);color:#F4F1E8}
+.agx-dark h2{color:#F4F1E8}.agx-dark>p:first-child{color:#F2B632}
+.agx-dark .agx-off{background:repeating-linear-gradient(135deg,#1A2140 0 10px,#151B38 10px 20px);border-color:#4A5478}
+.agx-dark .agx-off .text-\[\#3F4B60\]{color:#C9D3F5}.agx-dark .agx-off .text-\[\#5B6B85\],.agx-dark li.px-1{color:#9AA7CF}
+.agx-dark .agx-off>span:first-child{background:#262E52}
+.agx-dark .agx-off [data-testid^=status-]{background:#262E52;color:#C9D3F5}
+.agx-dark [data-testid=link-agent-showcase-central]{background:#2B59FF;color:#fff}
+.agx-dark [data-testid=link-agent-showcase-central]:hover{background:#1E44D6}
