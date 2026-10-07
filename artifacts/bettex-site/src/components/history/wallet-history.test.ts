@@ -23,8 +23,9 @@ test('earnings history links select the wallet, include past credits and reset o
 test('earnings offers only an internal dollar-wallet transfer, never an external withdrawal', () => {
   const card = readFileSync(new URL('../demo/EarningsWalletCard.tsx', import.meta.url), 'utf8');
   const form = readFileSync(new URL('../demo/fin.tsx', import.meta.url), 'utf8');
-  assert.equal((card.match(/<WalletAction /g) ?? []).length, 1);
-  assert.match(card, /kind="earnings-transfer"/);
+  assert.equal((card.match(/onWallet\('earnings-transfer', 'USDC'\)/g) ?? []).length, 1);
+  assert.match(card, /data-testid="button-earnings-transfer"/);
+  assert.match(card, /bg-\[#0E7C6B\]/);
   assert.doesNotMatch(card + form, /earnings-withdraw/);
   assert.match(form, /const needDest = k === 'send' \|\| k === 'withdraw';/);
 });

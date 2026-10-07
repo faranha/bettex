@@ -7,6 +7,7 @@
  */
 import type { DemoBalances } from './demoBalances';
 import type { DemoEvent } from './demoEvent';
+import type { DemoLottery } from './demoLottery';
 import type { DemoMovement } from './demoMovement';
 import type { DemoOperation } from './demoOperation';
 import type { DemoOrchestratorBudget } from './demoOrchestratorBudget';
@@ -17,6 +18,7 @@ import type { DemoTreasury } from './demoTreasury';
 
 export interface DemoDashboard {
   serverNow: string;
+  lottery?: DemoLottery;
   profile: DemoProfile;
   balances: DemoBalances;
   staking: DemoStaking;

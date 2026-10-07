@@ -9,6 +9,12 @@ The app must share the website's compact navigation footer, but not the large bl
 
 **How to apply:** Keep navigation, community links and language controls aligned. Omit the entire promotional image/message section from app routes; preserve it on the homepage. Do not introduce a separate app-footer design.
 
+Na chamada “Deixe de ser refém das bets e vire dono do jogo”, o fundo atrás das três pessoas deve ter tema de futebol, mantendo as pessoas.
+
+**Why:** O criador pediu futebol também nessa seção da homepage antes do rodapé e disse que pode deixar “aquela galera ali”.
+
+**How to apply:** Trocar apenas o fundo dessa chamada. Preservar o retrato do grupo, os textos e a navegação compacta do rodapé.
+
 O rodapé não deve exibir o bloco “Redes do fundador”, seu nome ou os links pessoais desse bloco.
 
 **Why:** O criador mostrou o bloco no rodapé e pediu sua remoção.

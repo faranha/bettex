@@ -4,6 +4,7 @@ import type { TreasuryActivityItem } from "./treasury-activity.ts";
 import { createProposalOperation, RESERVED } from "./orchestrator.ts";
 import { ensureTreasuryTracking, treasuryRoundSnapshot } from "./treasury-round.ts";
 import { DEMO_DAY, demoCycleStart, demoCycleId } from "./demo-cycle-clock.ts";
+import { advanceDemoBurnStory } from "./demo-burn-story.ts";
 
 const money = (n: number) => Math.round(n * 1e6) / 1e6;
 const iso = (n: number) => new Date(n).toISOString();
@@ -113,6 +114,7 @@ export function advanceScheduledStory(engine: EngineState, now: number) {
       toAgent: kind === "approved" ? o.agent : "orchestrator", kind, reference: o.id,
     }));
   }).sort((a, b) => b.at.localeCompare(a.at)).slice(0, 40);
+  advanceDemoBurnStory(engine, now);
 }
 /** Replace only the automated demo story, retaining customer states and old journals. */
 export function ensureScheduledStory(engine: EngineState, now: number) {

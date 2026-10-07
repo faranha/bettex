@@ -1,6 +1,6 @@
 import { Router, type Request, type Response } from "express";
 import { createHash, randomBytes, randomUUID, timingSafeEqual } from "node:crypto";
-import { CreateDemoMovementBody, UpdateDemoProfileBody, GetDemoDashboardResponse, RequestDemoProfileAvatarBody, RequestDemoProfileAvatarResponse } from "@workspace/api-zod";
+import { CreateDemoMovementBody, UpdateDemoProfileBody, GetDemoDashboardResponse, RequestDemoProfileAvatarBody, RequestDemoProfileAvatarResponse, UpdateDemoLotteryParticipationBody } from "@workspace/api-zod";
 import { loadDashboard, ClaimedBrowserAccountError } from "../lib/demo-store";
 import { verifiedAccount, updateAccountName } from "../lib/account-identity";
 import { DemoInputError } from "../lib/demo-state";
@@ -91,6 +91,14 @@ function errorResponse(req: Request, res: Response, error: unknown) {
 router.get("/demo/dashboard", async (req, res) => {
   try {
     res.json(GetDemoDashboardResponse.parse(await userDashboard(req, res)));
+  } catch (error) { errorResponse(req, res, error); }
+});
+router.post("/demo/lottery/participation", async (req, res) => {
+  if (!permittedOrigin(req) || !req.is("application/json")) { res.status(403).json({ error: "origin_not_allowed" }); return; }
+  const parsed = UpdateDemoLotteryParticipationBody.safeParse(req.body);
+  if (!parsed.success) { res.status(400).json({ error: "invalid_lottery_participation" }); return; }
+  try {
+    res.json(GetDemoDashboardResponse.parse(await userDashboard(req, res, { lottery: parsed.data })));
   } catch (error) { errorResponse(req, res, error); }
 });
 // This namespace only runs the pure emulated scenario engine. It grants no native account rights.

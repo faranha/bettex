@@ -36,5 +36,13 @@ test('app entrance shares the app footer and presents a sports-oriented demo wit
   assert.match(auth, /Pare de apostar e comece a investir agora com a Bettex/);
   assert.match(auth, /app-entry-sports\.jpg/);
   assert.match(auth, /Demonstração com dados simulados/);
-  assert.doesNotMatch(auth, /Meet the BETTEX app through Alex|pessoa fictícia|hero-person-phone|hero-person-centered/);
+  assert.doesNotMatch(auth, /Meet the BETTEX app through Alex|pessoa fictícia|hero-person-phone/);
+  assert.match(auth, /hero-person-centered\.webp/);
+});
+test('shared agent showcase prioritizes Sports value betting as next without enabling it', () => {
+  const showcase = read('../demo/AgentShowcase.tsx');
+  assert.ok(showcase.indexOf("id: 'sports'") < showcase.indexOf("id: 'prediction'"));
+  assert.match(showcase, /id: 'sports'.*Value betting.*next: true/);
+  assert.match(showcase, /aria-disabled="true" data-next=/);
+  assert.match(showcase, /Next · disabled/);
 });

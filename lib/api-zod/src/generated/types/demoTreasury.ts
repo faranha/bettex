@@ -5,6 +5,7 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { DemoBurnSummary } from './demoBurnSummary';
 import type { DemoTreasuryRound } from './demoTreasuryRound';
 
 export interface DemoTreasury {
@@ -14,4 +15,5 @@ export interface DemoTreasury {
   realizedUsdc: number;
   cycleResultUsdc: number;
   currentRound?: DemoTreasuryRound;
+  burn?: DemoBurnSummary;
 }

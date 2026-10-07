@@ -14,3 +14,9 @@ No mobile, não apresentar o botão “Ampliar cena” nem a cena ampliada com r
 **Why:** O criador mostrou a cena ampliada no celular e pediu para tirar esse botão.
 
 **How to apply:** Não reintroduzir o modo de ampliação ao revisar a animação mobile. Preservar a animação e a apresentação desktop.
+
+A apresentação dos bots em “Múltiplos mercados” na homepage começa por Ações e cripto, seguida de Esportes; depois ficam Previsões e iGaming.
+
+**Why:** O criador pediu começar por “Stocks and Crypto, depois Sports” nessa área da homepage.
+
+**How to apply:** Manter a ordem dos cartões e dos slides mobile consistente, inclusive nos rótulos de navegação traduzidos. Não aplicar essa reorganização a outras áreas sem pedido.

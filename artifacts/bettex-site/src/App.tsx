@@ -55,9 +55,9 @@ type Market = {
 };
 
 const markets: Market[] = [
-  { name: 'Previsões', kind: 'predictions', icon: Radar, visual: 'símbolo de cenários ramificados', area: 'Previsões', intro: 'Mercados de previsão.', detail: 'Analisa probabilidades, cenários e preços em eventos futuros.' },
   { name: 'Ações e cripto', kind: 'trading', icon: ChartCandlestick, visual: 'símbolo de gráfico de negociação', area: 'Ações e cripto', intro: 'Negociação de ações e criptoativos.', detail: 'Compara tendências, liquidez e risco antes de negociar ativos financeiros.' },
   { name: 'Esportes', kind: 'sports', icon: Trophy, visual: 'símbolo de bola esportiva', area: 'Esportes', intro: 'Surebet automatizada.', detail: 'Compara cotações entre casas de apostas e automatiza a execução de apostas combinadas.' },
+  { name: 'Previsões', kind: 'predictions', icon: Radar, visual: 'símbolo de cenários ramificados', area: 'Previsões', intro: 'Mercados de previsão.', detail: 'Analisa probabilidades, cenários e preços em eventos futuros.' },
   { name: 'iGaming', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'iGaming', intro: 'Exploração automatizada de bônus.', detail: 'Analisa as regras dos bônus e automatiza os métodos para aproveitar as ofertas disponíveis.' },
 ];
 
@@ -176,28 +176,8 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
   const linkProps = usePageLinkProps();
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
     {!compact && <div className="site-footer__cta relative overflow-hidden bg-[#2B59FF]">
-      <div aria-hidden="true" className="site-footer__tech">
-        <svg className="site-footer__tech-svg" viewBox="0 0 800 560" preserveAspectRatio="xMaxYMax slice" focusable="false">
-          <circle className="halo" cx="470" cy="330" r="190" />
-          <circle className="halo" cx="470" cy="330" r="270" strokeDasharray="2 9" />
-          <path className="trace" d="M0 110H150L190 70H330L370 110H520" />
-          <path className="trace trace--soft" d="M40 200H210L250 240H360" />
-          <path className="trace" d="M800 90H690L650 130H560V210" />
-          <path className="trace trace--gold" d="M800 250H720L690 280V400" />
-          <path className="trace trace--soft" d="M0 470H180L220 430H320" />
-          <path className="trace" d="M800 500H640L600 460H520" />
-          <path className="trace trace--soft" d="M300 0V40L340 80" />
-          <path className="trace trace--soft" d="M620 0V60L660 100" />
-          <circle className="node" cx="520" cy="110" r="5" />
-          <circle className="node" cx="190" cy="70" r="4" />
-          <circle className="node" cx="360" cy="240" r="4" />
-          <circle className="node" cx="560" cy="210" r="5" />
-          <circle className="node node--gold" cx="690" cy="400" r="6" />
-          <circle className="node" cx="320" cy="430" r="4" />
-          <circle className="node" cx="520" cy="460" r="5" />
-          <circle className="node node--gold" cx="650" cy="130" r="4" />
-          <circle className="node" cx="340" cy="80" r="3.5" />
-        </svg>
+      <div aria-hidden="true" className="site-footer__sports">
+        <img src={`${import.meta.env.BASE_URL}footer-stadium.jpg`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
       </div>
       <div className="page-wrap relative">
         <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">
@@ -212,7 +192,6 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             </div>
           </div>
           <div className="relative z-10 mx-auto w-full max-w-[400px] self-end lg:max-w-[540px] lg:justify-self-end">
-            <div aria-hidden="true" className="absolute inset-x-[8%] bottom-0 top-[18%] rounded-t-full bg-[#1E44D6]/60" />
             <img src={`${import.meta.env.BASE_URL}footer-community.webp`} width={900} height={858} alt="" aria-hidden="true" loading="lazy" decoding="async" className="relative block h-auto w-full drop-shadow-[0_14px_24px_rgba(7,11,31,.35)]" />
           </div>
         </div>
@@ -319,6 +298,9 @@ function Home() {
     <main className="home-page">
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#F4F1E8]">
         <div className="hero-intro-stage relative">
+        <div className="home-hero-background" aria-hidden="true">
+          <img src={`${import.meta.env.BASE_URL}hero-football-background.jpg`} alt="" width={1024} height={1024} loading="eager" decoding="async" />
+        </div>
         <div className="page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[730px] xl:py-16">
           <div className="entrance relative z-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#5a8bfc]/35 bg-[#2B59FF]/15 px-4 py-2 text-[11px] font-bold text-[#F4F1E8]"><span className="h-2 w-2 rounded-full bg-[#36E0D0]" /> COMUNIDADE DE INVESTIMENTO COM IA</div>

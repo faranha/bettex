@@ -8,6 +8,8 @@ import { treasuryRoundSnapshot, ensureTreasuryTracking, recordOperatorFee, type 
 import { demoCycleStart } from "./demo-cycle-clock.ts";
 import { advanceScheduledStory, scheduledStakingTimeline } from "./scheduled-demo-story.ts";
 import { separateEarningsWallet, TRANSACTION_FEE_USDC } from "./earnings-wallet.ts";
+import { demoBurnSnapshot, type DemoBurnState } from "./demo-burn-story.ts";
+import { demoLotterySnapshot, type DemoLotteryState } from "./demo-lottery.ts";
 
 export const DAY = 86_400_000;
 export const roundMoney = (value: number) => Math.round(value * 1e6) / 1e6;
@@ -16,6 +18,7 @@ const iso = (now: number) => new Date(now).toISOString();
 const communityTokens = 8_000_000;
 const communityWeight = communityTokens * 86_400;
 export type AccountState = {
+  lotteryConsent?: { participating: boolean; confirmedAt: string };
   scriptedAccount?: 1;
   earningsSeparated?: 1;
   stakingTimeline?: StakingTimelineState;
@@ -27,6 +30,8 @@ export type AccountState = {
   roundParticipation?: Record<string, NonNullable<DemoDashboard["rounds"][number]["participationSnapshot"]>>;
 };
 export type EngineState = {
+  burnLottery?: DemoLotteryState;
+  burnStory?: DemoBurnState;
   scheduledStory?: 1;
   legacyRounds?: DemoRound[];
   pendingTreasuryActivity?: TreasuryActivityItem[];
@@ -201,9 +206,10 @@ export function dashboard(account: AccountState, engine: EngineState, now: numbe
   const estimate = Math.max(0, engine.treasury.cycleResultUsdc) * .25 * weight / totalWeight;
   return {
     serverNow: iso(now), profile: account.profile,
+    lottery: demoLotterySnapshot(engine, account, allAccounts, now),
     balances: { usdc: account.usdc, bettex: account.bettex, receivedYield: account.receivedYield, brlPerUsdc: engine.brl, bettexUsdc: engine.price, updatedAt: iso(engine.tickAt) },
     staking: { chartScenario: engine.scheduledStory && !(account.profile.authenticated && account.profile.provider === "native") ? scheduledStakingTimeline(engine, now) : account.stakingTimeline ? stakingTimelineSnapshot(account.stakingTimeline) : null, eligibleTokens: account.bettex, totalEligibleTokens, tokenSharePercent, poolAllocationUsdc, since: account.lots.length ? iso(Math.min(...account.lots.map(lot => lot.since))) : null, weightTokenSeconds: weight, sharePercent: totalWeight > 0 ? 100 * weight / totalWeight : 0, cycleStartedAt: iso(engine.dayAt), nextCycleAt: iso(engine.dayAt + DAY), estimatedUsdc: roundMoney(estimate), status: account.bettex > 0 ? "active" : "inactive" },
-    operations: engine.operations, events: engine.events, history: account.history, treasury: { ...engine.treasury, currentRound: treasuryRoundSnapshot(engine, now) }, rounds: engine.rounds.map(round => ({ ...round, participationSnapshot: (round.source === "calculated_simulation" || account.scriptedAccount && round.source === "seeded_demo") && account.roundParticipation?.[round.id]?.endedAt === round.endedAt ? account.roundParticipation[round.id] : undefined })),
+    operations: engine.operations, events: engine.events, history: account.history, treasury: { ...engine.treasury, burn: account.profile.provider === "native" ? undefined : demoBurnSnapshot(engine, now), currentRound: treasuryRoundSnapshot(engine, now) }, rounds: engine.rounds.map(round => ({ ...round, participationSnapshot: (round.source === "calculated_simulation" || account.scriptedAccount && round.source === "seeded_demo") && account.roundParticipation?.[round.id]?.endedAt === round.endedAt ? account.roundParticipation[round.id] : undefined })),
     orchestratorBudget: orchestratorBudget(engine),
   };
 }
