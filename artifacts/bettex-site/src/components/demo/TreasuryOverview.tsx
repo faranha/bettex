@@ -6,6 +6,7 @@ import { useX } from './ui';
 import { TreasuryCycle } from './TreasuryCycle';
 import { Money, Term, useMoney } from './fin';
 import { formatBrazilDateTime } from './brazil-time';
+import { BurnWalletPanel } from './BurnWalletPanel';
 
 const box = 'rounded-2xl border border-[#E4DCCB] bg-[#FFFCF6] p-3 sm:p-4';
 
@@ -60,6 +61,8 @@ export function TreasuryOverview({ d }: { d: DemoDashboard }) {
     <p className="rounded-xl bg-[#EFF6F2] px-3 py-2 text-xs font-semibold text-[#0A6657]">{sim}</p>
 
     <AssetAllocation r={r} />
+
+    <BurnWalletPanel d={d} />
 
     <TreasuryCycle d={d} />
 

@@ -10,6 +10,8 @@ import { advanceScheduledStory, ensureScheduledStory } from "./scheduled-demo-st
 import { demoCycleStart } from "./demo-cycle-clock";
 import { prepareScheduledAccount } from "./scheduled-demo-account";
 import { separateEarningsWallet } from "./earnings-wallet";
+import { ensureDemoLottery, advanceDemoLottery } from "./demo-lottery";
+import { advanceDemoBurnStory } from "./demo-burn-story";
 import { ensureHistorySchema, appendHistory } from "../modules/audit/infrastructure/history-store";
 import { recordDemoMovements, recordDemoAutomations, recordDemoRound, recordDemoTreasury, recordDemoPools } from "../modules/audit/infrastructure/demo-recorder";
 import { decimalUnits } from "../modules/audit";
@@ -18,7 +20,7 @@ import {
   submitMovement, DemoInputError, accountWeight, DAY, type AccountState, type EngineState,
 } from "./demo-state";
 
-type Command = { movement: DemoMovementInput } | { name: string; email?: string; nickname?: string; avatarPath?: string | null } | { distributionPreview: string } | { avatarUpload: NonNullable<AccountState["avatarUpload"]> };
+type Command = { movement: DemoMovementInput } | { lottery: { participating: boolean; confirmed: boolean } } | { name: string; email?: string; nickname?: string; avatarPath?: string | null } | { distributionPreview: string } | { avatarUpload: NonNullable<AccountState["avatarUpload"]> };
 export type AccountIdentity = {
   browserId: string;
   tabScoped?: boolean;
@@ -48,6 +50,28 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     if (!engine.scheduledStory) await flushTreasuryActivity(tx, engine);
     ensureScheduledStory(engine, now);
     ensureTreasuryTracking(engine, now);
+    ensureDemoLottery(engine, now);
+    advanceDemoBurnStory(engine, now);
+    if (engine.burnLottery && engine.burnLottery.nextDrawAt <= now) {
+      const rows = await tx.select().from(demoAccounts).for("update");
+      const states = rows.map(row => row.state as AccountState);
+      const before = states.map(state => structuredClone(state.history));
+      const count = engine.burnLottery.draws.length;
+      advanceDemoLottery(engine, states, now);
+      for (const [i, row] of rows.entries()) {
+        if (states[i]!.history.length !== before[i]!.length) {
+          await recordDemoMovements(tx, row.id, before[i]!, states[i]!.history, String(engine.price * 2), undefined, now);
+          await tx.update(demoAccounts).set({ state: states[i]!, updatedAt: new Date(now) }).where(eq(demoAccounts.id, row.id));
+        }
+      }
+      for (const draw of engine.burnLottery.draws.slice(count)) {
+        await appendHistory({ key: draw.id, subject: "treasury:demo", correlationId: draw.id, category: "automatic",
+          kind: "burn_lottery_draw", state: "confirmed", actor: "system", environment: "simulation",
+          source: "demo_burn_lottery", occurredAt: new Date(draw.executedAt),
+          data: { drawId: draw.id, status: draw.status, spentUsdc: String(draw.spentUsdc),
+            walletCount: String(draw.purchases.length), remainingUsdc: String(draw.remainingUsdc) } }, tx);
+      }
+    }
     // All instances acquire the same DB lock; timers cannot duplicate execution.
     if (engine.dayAt < demoCycleStart(now)) {
       const accounts = await tx.select().from(demoAccounts).for("update");
@@ -127,6 +151,18 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     await recordDemoMovements(tx, accountId, [], initialHistory);
     settleMovements(account, now, engine);
     const operationPrice = String(engine.price);
+    if (command && "lottery" in command) {
+      if (actor.nativeAccountId || account.profile.provider === "native" || !engine.burnLottery) throw new DemoInputError("lottery_unavailable");
+      if (command.lottery.participating && !command.lottery.confirmed) throw new DemoInputError("lottery_confirmation_required");
+      if (command.lottery.participating !== !!account.lotteryConsent?.participating) {
+        account.lotteryConsent = { participating: command.lottery.participating, confirmedAt: new Date(now).toISOString() };
+        await appendHistory({ key: `lottery-consent:${accountId}:${randomUUID()}`, subject: `demo:${accountId}`,
+          correlationId: `lottery-consent:${accountId}:${now}`, category: "activity", kind: "burn_lottery_participation",
+          state: "confirmed", actor: "user", environment: "simulation", source: "demo_burn_lottery",
+          data: { participating: String(command.lottery.participating), premiumPercent: "100",
+            selection: "wallets_without_replacement", unpaidWeightResetOnSale: "true" } }, tx);
+      }
+    }
     if (command && "movement" in command) {
       const input = command.movement;
       const [existing] = await tx.select().from(demoCommands).where(and(eq(demoCommands.accountId, accountId), eq(demoCommands.requestId, input.requestId)));

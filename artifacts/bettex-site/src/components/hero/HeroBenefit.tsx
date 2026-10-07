@@ -4,8 +4,7 @@ import './HeroBenefit.css';
 export function HeroBenefit() {
   const base = import.meta.env.BASE_URL;
   return (
-    <div className="hero-benefit entrance entrance-delay" role="group" aria-label="Homem diante de um site de apostas, ao lado de um recorte de notícia">
-      <img className="hero-benefit__site" src={`${base}hero-casino-site.webp`} alt="" aria-hidden="true" width={1000} height={1000} loading="eager" decoding="async" />
+    <div className="hero-benefit entrance entrance-delay" role="group" aria-label="Homem em primeiro plano, com um jogo de futebol ao fundo e um recorte de notícia">
       <div className="hero-benefit__person">
         <img
           src={`${base}hero-person-centered.webp`}

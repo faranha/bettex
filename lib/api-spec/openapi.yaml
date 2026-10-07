@@ -453,6 +453,24 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DemoDashboard"
+  /demo/lottery/participation:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
+    post:
+      operationId: updateDemoLotteryParticipation
+      tags: [demo]
+      summary: Confirm optional daily modeled burn lottery participation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/DemoLotteryParticipation" }
+      responses:
+        "200":
+          description: Updated dashboard
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DemoDashboard" }
   /demo/movements:
     parameters:
       - $ref: "#/components/parameters/DemoTabSession"
@@ -1866,6 +1884,76 @@ components:
         realizedUsdc: { type: number }
         cycleResultUsdc: { type: number }
         currentRound: { $ref: "#/components/schemas/DemoTreasuryRound" }
+        burn: { $ref: "#/components/schemas/DemoBurnSummary" }
+    DemoBurnSummary:
+      type: object
+      required: [source, walletId, address, walletUsdc, walletBettex, totalBurnedBettex, referencePriceUsdc, updatedAt, entries]
+      properties:
+        source: { type: string, enum: [modeled_demo] }
+        walletId: { type: string }
+        address: { type: [string, "null"], description: Null for the mock wallet; never a fabricated blockchain address. }
+        walletUsdc: { type: number }
+        walletBettex: { type: number }
+        totalBurnedBettex: { type: number }
+        referencePriceUsdc: { type: number }
+        updatedAt: { type: string }
+        entries:
+          type: array
+          items: { $ref: "#/components/schemas/DemoBurnEntry" }
+    DemoBurnEntry:
+      type: object
+      required: [id, roundId, at, kind, amountUsdc, tokensBettex, source]
+      properties:
+        id: { type: string }
+        roundId: { type: string }
+        at: { type: string }
+        kind: { type: string, enum: [wallet_funded, tokens_purchased, tokens_burned] }
+        amountUsdc: { type: number }
+        tokensBettex: { type: number }
+        source: { type: string, enum: [modeled_demo] }
+    DemoLotteryParticipation:
+      type: object
+      required: [participating, confirmed]
+      properties:
+        participating: { type: boolean }
+        confirmed: { type: boolean }
+    DemoLotteryPurchase:
+      type: object
+      required: [walletLabel, tokensBettex, paidUsdc, isOwn]
+      properties:
+        walletLabel: { type: string }
+        tokensBettex: { type: number }
+        paidUsdc: { type: number }
+        isOwn: { type: boolean }
+    DemoLotteryDraw:
+      type: object
+      required: [id, scheduledAt, executedAt, status, budgetUsdc, spentUsdc, remainingUsdc, referencePriceUsdc, purchasePriceUsdc, purchases]
+      properties:
+        id: { type: string }
+        scheduledAt: { type: string }
+        executedAt: { type: string }
+        status: { type: string, enum: [executed, no_budget, no_participants] }
+        budgetUsdc: { type: number }
+        spentUsdc: { type: number }
+        remainingUsdc: { type: number }
+        referencePriceUsdc: { type: number }
+        purchasePriceUsdc: { type: number }
+        purchases:
+          type: array
+          items: { $ref: "#/components/schemas/DemoLotteryPurchase" }
+    DemoLottery:
+      type: object
+      required: [source, nextDrawAt, purchasePriceUsdc, participating, eligible, participants, draws]
+      properties:
+        source: { type: string, enum: [modeled_demo] }
+        nextDrawAt: { type: string }
+        purchasePriceUsdc: { type: number }
+        participating: { type: boolean }
+        eligible: { type: boolean }
+        participants: { type: integer }
+        draws:
+          type: array
+          items: { $ref: "#/components/schemas/DemoLotteryDraw" }
     DemoRound:
       type: object
       required: [id, endedAt, status, eligibleUsdc, stakingUsdc, treasuryUsdc, buybackUsdc]
@@ -1960,6 +2048,7 @@ components:
       required: [serverNow, profile, balances, staking, operations, events, history, treasury, rounds]
       properties:
         serverNow: { type: string }
+        lottery: { $ref: "#/components/schemas/DemoLottery" }
         profile: { $ref: "#/components/schemas/DemoProfile" }
         balances: { $ref: "#/components/schemas/DemoBalances" }
         staking: { $ref: "#/components/schemas/DemoStaking" }

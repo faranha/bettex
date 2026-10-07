@@ -2551,6 +2551,55 @@ export interface DemoTreasuryRound {
   feesOwner: DemoTreasuryRoundFeesOwner;
 }
 
+export type DemoBurnSummarySource = typeof DemoBurnSummarySource[keyof typeof DemoBurnSummarySource];
+
+
+export const DemoBurnSummarySource = {
+  modeled_demo: 'modeled_demo',
+} as const;
+
+export type DemoBurnEntryKind = typeof DemoBurnEntryKind[keyof typeof DemoBurnEntryKind];
+
+
+export const DemoBurnEntryKind = {
+  wallet_funded: 'wallet_funded',
+  tokens_purchased: 'tokens_purchased',
+  tokens_burned: 'tokens_burned',
+} as const;
+
+export type DemoBurnEntrySource = typeof DemoBurnEntrySource[keyof typeof DemoBurnEntrySource];
+
+
+export const DemoBurnEntrySource = {
+  modeled_demo: 'modeled_demo',
+} as const;
+
+export interface DemoBurnEntry {
+  id: string;
+  roundId: string;
+  at: string;
+  kind: DemoBurnEntryKind;
+  amountUsdc: number;
+  tokensBettex: number;
+  source: DemoBurnEntrySource;
+}
+
+export interface DemoBurnSummary {
+  source: DemoBurnSummarySource;
+  walletId: string;
+  /**
+     * Null for the mock wallet; never a fabricated blockchain address.
+     * @nullable
+     */
+  address: string | null;
+  walletUsdc: number;
+  walletBettex: number;
+  totalBurnedBettex: number;
+  referencePriceUsdc: number;
+  updatedAt: string;
+  entries: DemoBurnEntry[];
+}
+
 export interface DemoTreasury {
   assetsUsdc: number;
   reserveUsdc: number;
@@ -2558,6 +2607,58 @@ export interface DemoTreasury {
   realizedUsdc: number;
   cycleResultUsdc: number;
   currentRound?: DemoTreasuryRound;
+  burn?: DemoBurnSummary;
+}
+
+export interface DemoLotteryParticipation {
+  participating: boolean;
+  confirmed: boolean;
+}
+
+export interface DemoLotteryPurchase {
+  walletLabel: string;
+  tokensBettex: number;
+  paidUsdc: number;
+  isOwn: boolean;
+}
+
+export type DemoLotteryDrawStatus = typeof DemoLotteryDrawStatus[keyof typeof DemoLotteryDrawStatus];
+
+
+export const DemoLotteryDrawStatus = {
+  executed: 'executed',
+  no_budget: 'no_budget',
+  no_participants: 'no_participants',
+} as const;
+
+export interface DemoLotteryDraw {
+  id: string;
+  scheduledAt: string;
+  executedAt: string;
+  status: DemoLotteryDrawStatus;
+  budgetUsdc: number;
+  spentUsdc: number;
+  remainingUsdc: number;
+  referencePriceUsdc: number;
+  purchasePriceUsdc: number;
+  purchases: DemoLotteryPurchase[];
+}
+
+export type DemoLotterySource = typeof DemoLotterySource[keyof typeof DemoLotterySource];
+
+
+export const DemoLotterySource = {
+  modeled_demo: 'modeled_demo',
+} as const;
+
+export interface DemoLottery {
+  source: DemoLotterySource;
+  nextDrawAt: string;
+  purchasePriceUsdc: number;
+  participating: boolean;
+  eligible: boolean;
+  participants: number;
+  draws: DemoLotteryDraw[];
 }
 
 export type DemoRoundStatus = typeof DemoRoundStatus[keyof typeof DemoRoundStatus];
@@ -2690,6 +2791,7 @@ export interface DemoTreasuryActivityPage {
 
 export interface DemoDashboard {
   serverNow: string;
+  lottery?: DemoLottery;
   profile: DemoProfile;
   balances: DemoBalances;
   staking: DemoStaking;

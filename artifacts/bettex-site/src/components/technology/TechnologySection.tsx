@@ -5,9 +5,9 @@ import { BrainEnergy } from './BrainEnergy';
 import './TechnologySection.css';
 
 const SLIDE_LABELS = [
-  'Ir para o slide 1: Previsões',
-  'Ir para o slide 2: Ações e cripto',
-  'Ir para o slide 3: Esportes',
+  'Ir para o slide 1: Ações e cripto',
+  'Ir para o slide 2: Esportes',
+  'Ir para o slide 3: Previsões',
   'Ir para o slide 4: iGaming',
   'Ir para o slide 5: Carteira USDC',
 ];

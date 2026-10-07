@@ -70,6 +70,7 @@
 - [Evidências de contratos](test-contract-evidence.md) — EVM local não prova compra pública; runtime equivalente também exige validar vínculos imutáveis.
 - [Isolamento de testes](integration-test-isolation.md) — fixtures não podem compartilhar dados ou sequências do app; cópia de tabelas não preserva todos os invariantes.
 - [Detalhes opacos no OpenAPI](openapi-opaque-run-details.md) — o Zod gerado pode remover additionalProperties; preservar detalhes da execução após validar o envelope.
+- [API request body codegen](api-request-body-codegen.md) — named component schemas avoid duplicate validator/type exports for new mutations.
 - [GitHub publication authorization](github-publication-authorization.md) — creator authorized upload to public faranha/bettex; preserve visibility and development-only targeting.
 - [Identidade de locks](process-lock-identity.md) — locks sobrevivem a trocas de runtime; um PID reutilizado não comprova que o serviço original está ativo.
 - [Distributed-service target](distributed-service-target.md) — creator requires distributed microservices aligned with canonical guidance; reconcile the extraction decision before restructuring.
@@ -78,4 +79,5 @@
 - [Tesouraria por rodada](treasury-presentation.md) — abas e histórico corrente paginado; emulação rotulada e persistida sem visitante; tarifas separadas do lucro.
 - [Localization catalog scope](localization-catalog-scope.md) — isolated multilingual tuples need their own audit; compiler types and grammar dictionaries are not page copy.
 - [Roteiro do demo](continuous-test-emulation.md) — timeline predefinida de 24 horas reais; não reintroduzir emulação aleatória como fonte financeira do app.
-- [Público da entrada do app](app-entry-audience.md) — futebol e UFC/MMA como referências visuais de aquisição; o criador espera mais tração nesse público.
+- [Público da entrada do app](app-entry-audience.md) — homem em primeiro plano, somente futebol ao fundo; Esportes é o próximo mercado, com foco em value betting.
+- [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.

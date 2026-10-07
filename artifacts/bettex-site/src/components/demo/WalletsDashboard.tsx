@@ -4,6 +4,8 @@ import { AccountPanel } from '@/components/account/account-ui/AccountPanel';
 import { ProtectedDemoWallets } from '@/components/account/ProtectedDemoWallets';
 import { StakingCorridor } from './StakingCorridor';
 import { WalletPage } from './WalletPage';
+import { BurnHistory } from './BurnHistory';
+import { LotteryHistory } from './LotteryHistory';
 import { TreasurySlider } from './TreasurySlider';
 import { useX } from './ui';
 import type { Asset, Kind } from './fin';
@@ -21,6 +23,6 @@ export function WalletsDashboard({ d, onWallet }: { d: DemoDashboard; onWallet: 
 
 export function AccountHistoryPage({ d }: { d: DemoDashboard }) {
   return d.profile.provider === 'native'
-    ? <AccountPanel section="history" renderHistory={panel => <WalletPage d={d} historyPanel={panel} />} />
-    : <WalletPage d={d} />;
+    ? <AccountPanel section="history" renderHistory={panel => <WalletPage d={d} historyPanel={panel} extra={<><LotteryHistory d={d} /><BurnHistory d={d} /></>} />} />
+    : <WalletPage d={d} extra={<><LotteryHistory d={d} /><BurnHistory d={d} /></>} />;
 }

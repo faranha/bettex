@@ -7,8 +7,8 @@ import { useX } from './ui';
 export function AgentShowcase({ variant = 'light', onEnter }: { variant?: 'light' | 'dark'; onEnter?: () => void }) {
   const { x, loc } = useX();
   const off = [
+    { id: 'sports', Icon: Trophy, color: '#B8692F', name: x('Esportes', 'Sports', 'Deportes'), tag: x('Value betting: apostas de valor', 'Value betting', 'Value betting: apuestas de valor'), next: true },
     { id: 'prediction', Icon: Vote, color: '#6B5FA8', name: x('Mercados de previsão', 'Prediction Markets', 'Mercados de predicción'), tag: x('Probabilidades', 'Probabilities', 'Probabilidades') },
-    { id: 'sports', Icon: Trophy, color: '#B8692F', name: x('Esportes', 'Sports', 'Deportes'), tag: x('Odds e jogos', 'Odds and games', 'Cuotas y juegos') },
     { id: 'casino', Icon: Dices, color: '#A8453F', name: x('Cassino', 'Casino', 'Casino'), tag: x('Rodadas e mesas', 'Rounds and tables', 'Rondas y mesas') },
   ];
   return <section className={`agx flex flex-col p-4 sm:p-6 ${variant === 'dark' ? 'agx-dark' : 'dcard'}`} data-variant={variant} data-testid="panel-agent-showcase" aria-labelledby="agx-title">
@@ -28,10 +28,10 @@ export function AgentShowcase({ variant = 'light', onEnter }: { variant?: 'light
         </div>
       </article>
       <ul className="grid gap-3">
-        {off.map(a => <li key={a.id} data-testid={`card-agent-${a.id}`} aria-disabled="true" className="agx-off pointer-events-none flex select-none items-center gap-3 rounded-2xl border border-dashed border-[#BDB39C] p-3">
+        {off.map(a => <li key={a.id} data-testid={`card-agent-${a.id}`} aria-disabled="true" data-next={a.next ? 'true' : undefined} className="agx-off pointer-events-none flex select-none items-center gap-3 rounded-2xl border border-dashed border-[#BDB39C] p-3">
           <span className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-[#DDD5C3] grayscale" style={{ color: a.color }}><a.Icon className="h-5 w-5" aria-hidden /></span>
           <span className="min-w-0 flex-1"><span className="block font-extrabold text-[#3F4B60]">{a.name}</span><span className="block text-xs text-[#5B6B85]">{a.tag}</span></span>
-          <span data-testid={`status-agent-${a.id}`} className="inline-flex items-center gap-1 rounded-full bg-[#D9D2C0] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#4A566B]"><Lock className="h-3 w-3" aria-hidden />{x('Desativado', 'Disabled', 'Desactivado')}</span>
+          <span data-testid={`status-agent-${a.id}`} className="inline-flex items-center gap-1 rounded-full bg-[#D9D2C0] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#4A566B]"><Lock className="h-3 w-3" aria-hidden />{a.next ? x('Próximo · desativado', 'Next · disabled', 'Próximo · desactivado') : x('Desativado', 'Disabled', 'Desactivado')}</span>
         </li>)}
         <li className="px-1 text-xs text-[#5B6B85]">{x('Os outros agentes ficam desativados durante a ALFA.', 'The other agents stay disabled during ALPHA.', 'Los otros agentes siguen desactivados durante la ALFA.')}</li>
       </ul>
