@@ -78,11 +78,11 @@ export function advanceScheduledStory(engine: EngineState, now: number) {
   }
   t.scriptedFeeCount = feeCount;
   engine.treasury.cycleResultUsdc = storyNetAt(start, now);
-  engine.treasury.assetsUsdc = money(t.openingAssets! + engine.treasury.cycleResultUsdc);
+  engine.treasury.assetsUsdc = money(t.openingAssets! + engine.treasury.cycleResultUsdc + (t.liquidityCashDelta ?? 0));
   engine.treasury.realizedUsdc = money(engine.rounds.reduce((s, r) => s + (r.treasurySnapshot?.realizedNetUsdc ?? 0), 0) + engine.treasury.cycleResultUsdc);
   engine.tickAt = now;
-  // Fixed reference quotes, shared by all screens; never random price walks.
-  engine.price = .04; engine.brl = 5.25;
+  // Pool quotes follow persisted reserves; the legacy scenario uses a fixed reference.
+  engine.price = engine.swapPool ? engine.swapPool.reserveUsdc / engine.swapPool.reserveBettex : .04; engine.brl = 5.25;
   const ops: DemoOperation[] = [];
   for (let i = Math.max(0, count - 12); i < Math.min(COUNT, count + 6); i++) {
     const row = storyPosition(start, i), close = Date.parse(row.at), open = Math.max(start, close - 600000);
@@ -140,8 +140,9 @@ export function ensureScheduledStory(engine: EngineState, now: number) {
 /** Chart values come from exactly the same scheduled position ledger. */
 export function scheduledStakingTimeline(engine: EngineState, now: number) {
   const start = engine.dayAt, elapsedMinutes = Math.min(1440, Math.max(0, Math.floor((now - start) / 60000)));
-  const minutes = Array.from({ length: 241 }, (_, i) => i * 6).filter(m => m !== elapsedMinutes);
-  minutes.push(elapsedMinutes); minutes.sort((a, b) => a - b);
+  // Sampling cadence is independent of the two-minute settlement cadence:
+  // every minute is present, including flat minutes without a settlement.
+  const minutes = Array.from({ length: 1441 }, (_, i) => i);
   return { source: "test_scenario" as const, roundStartedAt: iso(start), nextTickAt: iso(start + (elapsedMinutes + 1) * 60000),
     elapsedMinutes, tick: Math.floor(elapsedMinutes), tickIntervalMs: 60000, minutesPerTick: 1,
     points: minutes.map(minute => ({ elapsedMinutes: minute, profitUsdc: minute === elapsedMinutes ? engine.treasury.cycleResultUsdc : storyNetAt(start, start + minute * 60000) })) };

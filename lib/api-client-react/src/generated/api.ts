@@ -37,6 +37,7 @@ import type {
   DemoMovementInput,
   DemoProfileInput,
   DemoRoundArchivePage,
+  DemoSwapQuote,
   DemoTestnet,
   DemoTestnetActivity,
   DemoTreasuryActivityPage,
@@ -48,6 +49,7 @@ import type {
   GetDemoHistoryParams,
   GetDemoRoundArchiveParams,
   GetDemoSimulationParams,
+  GetDemoSwapQuoteParams,
   GetDemoTreasuryActivityParams,
   GetDemoTreasuryStatementParams,
   GetSimulationParams,
@@ -73,7 +75,8 @@ import type {
   TradingPolicySnapshot,
   TreasuryGovernanceCommandBody,
   TreasuryGovernanceResponse,
-  TreasuryStatementPage
+  TreasuryStatementPage,
+  TreasuryTestWalletPage
 } from './api.schemas';
 
 import { customFetch } from '../custom-fetch';
@@ -1611,6 +1614,107 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
       > => {
       return useMutation(getCommandTreasuryGovernanceMutationOptions(options), queryClient);
     }
+
+export const getGetDemoTreasuryWalletsUrl = () => {
+
+
+
+
+  return `/api/demo/treasury/wallets`
+}
+
+/**
+ * @summary Persistent assigned Treasury and Crypto agent test wallets; public descriptors only, no funding or signing
+ */
+export const getDemoTreasuryWallets = async ( options?: Parameters<typeof customFetch>[1]): Promise<TreasuryTestWalletPage> => {
+
+  return customFetch<TreasuryTestWalletPage>(getGetDemoTreasuryWalletsUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDemoTreasuryWalletsQueryKey = () => {
+    return [
+    `/api/demo/treasury/wallets`
+    ] as const;
+    }
+
+
+export const getGetDemoTreasuryWalletsQueryOptions = <TData = Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError = ErrorType<void>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDemoTreasuryWalletsQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoTreasuryWallets>>> = ({ signal }) => getDemoTreasuryWallets({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetDemoTreasuryWalletsQueryResult = NonNullable<Awaited<ReturnType<typeof getDemoTreasuryWallets>>>
+export type GetDemoTreasuryWalletsQueryError = ErrorType<void>
+
+
+export function useGetDemoTreasuryWallets<TData = Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError = ErrorType<void>>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoTreasuryWallets>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoTreasuryWallets>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoTreasuryWallets<TData = Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError = ErrorType<void>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoTreasuryWallets>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoTreasuryWallets>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoTreasuryWallets<TData = Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError = ErrorType<void>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+/**
+ * @summary Persistent assigned Treasury and Crypto agent test wallets; public descriptors only, no funding or signing
+ */
+
+export function useGetDemoTreasuryWallets<TData = Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError = ErrorType<void>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoTreasuryWallets>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetDemoTreasuryWalletsQueryOptions(options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getGetDemoTreasuryStatementUrl = (params: GetDemoTreasuryStatementParams,) => {
   const normalizedParams = new URLSearchParams();
@@ -3335,6 +3439,114 @@ export const useCreateDemoMovement = <TError = ErrorType<void>,
       > => {
       return useMutation(getCreateDemoMovementMutationOptions(options), queryClient);
     }
+
+export const getGetDemoSwapQuoteUrl = (params: GetDemoSwapQuoteParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/demo/swap-quote?${stringifiedParams}` : `/api/demo/swap-quote`
+}
+
+/**
+ * @summary Quote a simulated constant-product BETTEX/USDC swap
+ */
+export const getDemoSwapQuote = async (params: GetDemoSwapQuoteParams, options?: Parameters<typeof customFetch>[1]): Promise<DemoSwapQuote> => {
+
+  return customFetch<DemoSwapQuote>(getGetDemoSwapQuoteUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDemoSwapQuoteQueryKey = (params?: GetDemoSwapQuoteParams,) => {
+    return [
+    `/api/demo/swap-quote`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetDemoSwapQuoteQueryOptions = <TData = Awaited<ReturnType<typeof getDemoSwapQuote>>, TError = ErrorType<void>>(params: GetDemoSwapQuoteParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoSwapQuote>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDemoSwapQuoteQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoSwapQuote>>> = ({ signal }) => getDemoSwapQuote(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDemoSwapQuote>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetDemoSwapQuoteQueryResult = NonNullable<Awaited<ReturnType<typeof getDemoSwapQuote>>>
+export type GetDemoSwapQuoteQueryError = ErrorType<void>
+
+
+export function useGetDemoSwapQuote<TData = Awaited<ReturnType<typeof getDemoSwapQuote>>, TError = ErrorType<void>>(
+ params: GetDemoSwapQuoteParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoSwapQuote>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoSwapQuote>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoSwapQuote>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoSwapQuote<TData = Awaited<ReturnType<typeof getDemoSwapQuote>>, TError = ErrorType<void>>(
+ params: GetDemoSwapQuoteParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoSwapQuote>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoSwapQuote>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoSwapQuote>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoSwapQuote<TData = Awaited<ReturnType<typeof getDemoSwapQuote>>, TError = ErrorType<void>>(
+ params: GetDemoSwapQuoteParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoSwapQuote>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+/**
+ * @summary Quote a simulated constant-product BETTEX/USDC swap
+ */
+
+export function useGetDemoSwapQuote<TData = Awaited<ReturnType<typeof getDemoSwapQuote>>, TError = ErrorType<void>>(
+ params: GetDemoSwapQuoteParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoSwapQuote>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetDemoSwapQuoteQueryOptions(params,options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getUpdateDemoProfileUrl = () => {
 

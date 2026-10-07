@@ -68,3 +68,9 @@ As chaves pública e privada de todas as carteiras devem começar mascaradas, co
 **Why:** O criador pediu “put it hashed unless the eye button is clicked to see, and then copy” para ambas as chaves, em todas as carteiras.
 
 **How to apply:** “Hashed” nessa interface significa ocultar visualmente, não substituir as chaves por hashes criptográficos. Não revelar uma chave só por abrir o painel; não remover a senha de carteiras criptografadas existentes.
+
+A exportação nos cartões das carteiras deve ser um ícone discreto de chave no topo, não um botão largo em destaque.
+
+**Why:** O criador pediu “export wallet pode ser um icone de chave em cima, nao precisa ter esse destaque todo”.
+
+**How to apply:** Preservar a função e as proteções de exportação, com nome acessível e identificação ao passar o mouse; reduzir apenas o destaque visual.

@@ -43,7 +43,13 @@ The staking chart follows the shared scheduled 24-hour demo storyline, including
 
 **Why:** The creator subsequently standardized the demo to a predefined timeline from 16:00 to 16:00 São Paulo time and rejected the accelerated, tick-driven clock.
 
-**How to apply:** Preserve historical data before the first visit and label future points as projections. Use the shared browser-independent scheduled story, not separate randomized financial emulation. Keep it isolated from native protocol data and real payouts.
+**How to apply:** Preserve historical data before the first visit. Use the shared browser-independent scheduled story, not separate randomized financial emulation. Keep it isolated from native protocol data and real payouts. The creator now wants the chart to show hourly records, not cumulative totals; future projections must not be presented as hourly records.
+
+O gráfico do staking deve mostrar o resultado de cada hora: se aquela hora foi positiva ou negativa, não o total acumulado da rodada. Deve ter opção de gráfico diferente.
+
+**Why:** O criador disse “tem que ser registro por hora, se naquela hora foi positivo ou negativo, nao do total” e pediu “opcao de grafico diferente tambem”.
+
+**How to apply:** Usar variação líquida entre as leituras do intervalo, permitindo uma hora verde mesmo com a rodada acumulada negativa. Não inventar lucros para animar o gráfico, não alterar o cálculo do pagamento e identificar intervalos incompletos. Preservar escolhas de visualização.
 
 Below staking in the app, show the Sports Value Betting promotion without the secondary Crypto, Prediction Markets and Casino row.
 

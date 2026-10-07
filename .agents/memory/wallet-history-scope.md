@@ -9,6 +9,12 @@ O Histórico deve reunir transações e operações relacionadas às carteiras d
 
 **How to apply:** Exportar o arquivo histórico armazenado, não apenas as últimas movimentações exibidas. Preservar a origem dos registros e distinguir solicitações de créditos concluídos. Não reintroduzir a opção de exemplos ilustrativos: a tela e seus downloads usam os registros armazenados da fonte selecionada. A cotação simulada não é preço de mercado do token nativo nem preço histórico de execução.
 
+Cada carteira, saldo e opção de histórico deve ter uma contraparte na área Histórico. Ao clicar no atalho, carregar diretamente aquela opção já selecionada.
+
+**Why:** O criador pediu isso explicitamente, citando o saldo da carteira BETTEX e a carteira de recompra.
+
+**How to apply:** Preservar a correspondência entre a origem do atalho e a área, carteira, conta, ativo ou aba selecionada no destino. Não levar todos os atalhos para um histórico genérico nem confundir carteiras pessoais com a conta de recompra.
+
 A leitura do extrato salvo não deve depender da disponibilidade da sincronização ao vivo da blockchain.
 
 **Why:** Os runtimes da blockchain podem ficar offline independentemente do banco do histórico; tratar falta de atualização como perda do arquivo provocou falhas recorrentes no extrato.

@@ -62,7 +62,7 @@ test("earnings cannot accept deposits, convert tokens, or overdraw amount plus f
   assert.throws(() => submitMovement(account(), seedEngine(now), input("transfer"), now), /invalid_movement/);
   assert.throws(() => submitMovement(account(), seedEngine(now), input("transfer", "USDC", { sourceWallet: "earnings", amount: 18 }), now), /insufficient_balance/);
   assert.throws(() => submitMovement(account(), seedEngine(now), input("send", "BETTEX", { amount: 1001 }), now), /insufficient_balance/);
-  assert.throws(() => submitMovement(account(), seedEngine(now), input("swap", "BETTEX", { amount: 50 }), now), /invalid_movement/);
+  assert.throws(() => submitMovement(account(), seedEngine(now), input("swap", "BETTEX", { amount: 50 }), now), /swap_amount_below_fee/);
 });
 test("new cycle distributions credit the earnings wallet, never dollars", () => {
   const a = account(), e = seedEngine(now);

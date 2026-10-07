@@ -327,6 +327,26 @@ async function parseSuccessBody(
   }
 }
 
+function reportRequestFailure(
+  request: { method: string; url: string },
+  stage: "headers" | "network" | "http" | "decode",
+  error: unknown,
+  status?: number,
+) {
+  if (typeof window === "undefined" || (error instanceof Error && error.name === "AbortError")) return;
+  let route = "other_api";
+  try {
+    const pathname = new URL(request.url, window.location.origin).pathname;
+    // Report only these fixed routes: never query strings, identities, headers,
+    // response bodies, or exception messages that could contain private data.
+    if (/^\/api\/demo\/(?:dashboard|rounds|history|treasury\/(?:activity|statement))$/.test(pathname)) route = pathname;
+  } catch { /* A malformed URL must not prevent reporting the original failure. */ }
+  console.warn("[BETTEX API request failed]", {
+    method: request.method, route, stage, status,
+    errorType: error instanceof Error ? error.name : "UnknownError",
+  });
+}
+
 export async function customFetch<T = unknown>(
   input: RequestInfo | URL,
   options: CustomFetchOptions = {},
@@ -365,18 +385,36 @@ export async function customFetch<T = unknown>(
 
   const requestInfo = { method, url: resolveUrl(input) };
   if (_requestHeadersGetter) {
-    const extra = await _requestHeadersGetter(requestInfo.url);
-    if (extra) new Headers(extra).forEach((value, key) => {
-      if (!headers.has(key)) headers.set(key, value);
-    });
+    try {
+      const extra = await _requestHeadersGetter(requestInfo.url);
+      if (extra) new Headers(extra).forEach((value, key) => {
+        if (!headers.has(key)) headers.set(key, value);
+      });
+    } catch (error) {
+      reportRequestFailure(requestInfo, "headers", error);
+      throw error;
+    }
   }
 
-  const response = await fetch(input, { ...init, method, headers });
+  let response: Response;
+  try {
+    response = await fetch(input, { ...init, method, headers });
+  } catch (error) {
+    reportRequestFailure(requestInfo, "network", error);
+    throw error;
+  }
 
   if (!response.ok) {
     const errorData = await parseErrorBody(response, method);
-    throw new ApiError(response, errorData, requestInfo);
+    const error = new ApiError(response, errorData, requestInfo);
+    reportRequestFailure(requestInfo, "http", error, response.status);
+    throw error;
   }
 
-  return (await parseSuccessBody(response, responseType, requestInfo)) as T;
+  try {
+    return (await parseSuccessBody(response, responseType, requestInfo)) as T;
+  } catch (error) {
+    reportRequestFailure(requestInfo, "decode", error, response.status);
+    throw error;
+  }
 }

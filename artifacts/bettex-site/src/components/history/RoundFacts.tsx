@@ -4,6 +4,7 @@ import type { DemoRound, DemoTreasuryRound } from '@workspace/api-client-react';
 import { useX } from '../demo/ui';
 import { useMoney } from '../demo/fin';
 import { formatBrazilDateTime } from '../demo/brazil-time';
+import { AgentRoundAllocation } from '../demo/AgentRoundAllocation';
 
 export function useRoundFmt() {
   const { x, loc } = useX(); const { num, fl } = useMoney();
@@ -27,9 +28,11 @@ export function Fact({ label, children, wide }: { label: string; children: React
 
 export function SnapshotFacts({ s, missing }: { s: DemoTreasuryRound | undefined; missing: boolean }) {
   const { x, NR, usdc, dt, fl } = useRoundFmt();
-  if (!s) return <p role="status" data-testid="round-no-snapshot" className="rounded-xl border border-[#E7B98A] bg-[#FFF3E3] p-3 text-sm font-semibold text-[#6B3A10]">{missing ? x('Sem foto de tesouraria: valores financeiros desta rodada Não registrados. Cifras atuais nunca preenchem o passado.', 'No treasury snapshot: this round\'s financial figures are Not recorded. Current figures never fill in the past.', 'Sin foto de tesorería: las cifras financieras de esta ronda No registradas. Las cifras actuales nunca rellenan el pasado.') : NR}</p>;
+  if (!s) return <div className="grid gap-2"><p role="status" data-testid="round-no-snapshot" className="rounded-xl border border-[#E7B98A] bg-[#FFF3E3] p-3 text-sm font-semibold text-[#6B3A10]">{missing ? x('Sem foto de tesouraria: valores financeiros desta rodada Não registrados. Cifras atuais nunca preenchem o passado.', 'No treasury snapshot: this round\'s financial figures are Not recorded. Current figures never fill in the past.', 'Sin foto de tesorería: las cifras financieras de esta ronda No registradas. Las cifras actuales nunca rellenan el pasado.') : NR}</p>
+    <p data-testid="round-crypto-unrecorded" className="rounded-xl bg-[#F5F1E8] p-3 text-sm font-semibold text-[#5B6B85]">{x('Alocação do agente Cripto: não registrada nesta rodada.', 'Crypto agent allocation: not recorded in this round.', 'Asignación del agente Cripto: no registrada en esta ronda.')}</p></div>;
   const f = s.feeBreakdown;
   return <div className="grid min-w-0 gap-2" data-testid="round-snapshot-facts">
+    <AgentRoundAllocation r={s} />
     <Group title={x('Período', 'Period', 'Período')}>
       <Fact label={x('Início', 'Start', 'Inicio')}>{dt(s.startedAt)}</Fact><Fact label={x('Fim', 'End', 'Fin')}>{dt(s.endsAt)}</Fact>
       <Fact label={x('Cobertura', 'Coverage', 'Cobertura')}>{s.coverage === 'complete' ? x('Completa', 'Complete', 'Completa') : x('Parcial', 'Partial', 'Parcial')}</Fact></Group>

@@ -1,12 +1,30 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { seedEngine, seedAccount, closeCycles, dashboard, submitMovement, settleMovements } from "../src/lib/demo-state.ts";
-import { ensureScheduledStory, advanceScheduledStory, storyOpeningAssets, storyFinalNet } from "../src/lib/scheduled-demo-story.ts";
+import { ensureScheduledStory, advanceScheduledStory, storyOpeningAssets, storyFinalNet, scheduledStakingTimeline, storyNetAt } from "../src/lib/scheduled-demo-story.ts";
 import { prepareScheduledAccount } from "../src/lib/scheduled-demo-account.ts";
 import { DEMO_DAY, demoCycleStart, demoCycleId, demoCycleFromId } from "../src/lib/demo-cycle-clock.ts";
 
 const start = Date.UTC(2026, 9, 7, 19), money = n => Math.round(n * 1e6) / 1e6;
 const story = now => { const e = seedEngine(now); ensureScheduledStory(e, now); return e; };
+test("staking has one truthful sample per minute without creating extra settlements", () => {
+  for (const minute of [0, 1, 6, 61, 1439, 1440]) {
+    const now = start + minute * 60000;
+    const e = story(Math.min(now, start + DEMO_DAY - 1));
+    const before = JSON.stringify(e);
+    const chart = scheduledStakingTimeline(e, now);
+    assert.equal(chart.points.length, 1441);
+    assert.deepEqual(chart.points.map(p => p.elapsedMinutes), Array.from({ length: 1441 }, (_, i) => i));
+    assert.equal(chart.elapsedMinutes, minute);
+    assert.equal(chart.tickIntervalMs, 60000);
+    assert.equal(chart.minutesPerTick, 1);
+    assert.equal(Date.parse(chart.nextTickAt), start + (minute + 1) * 60000);
+    assert.equal(chart.points[minute].profitUsdc, e.treasury.cycleResultUsdc);
+    assert.equal(chart.points[3].profitUsdc, minute === 3 ? e.treasury.cycleResultUsdc : storyNetAt(start, start + 3 * 60000));
+    assert.equal(chart.points[2].profitUsdc, chart.points[3].profitUsdc, "a flat minute does not invent profit");
+    assert.equal(JSON.stringify(e), before, "chart reads do not mutate the ledger");
+  }
+});
 test("demo cycles open at 16 Sao Paulo, not midnight, and close exactly 24 hours later", () => {
   assert.equal(demoCycleStart(start - 1), start - DEMO_DAY);
   assert.equal(demoCycleStart(start), start);
@@ -100,7 +118,7 @@ test("manual transfers remain interactive and their fees stay outside scripted i
   const e = story(start + 3600000), a = seedAccount(start), assets = e.treasury.assetsUsdc, net = e.treasury.cycleResultUsdc;
   submitMovement(a, e, { requestId: "manual", kind: "swap", asset: "USDC", amount: 10 }, start + 3600000);
   settleMovements(a, start + 3606000, e);
-  assert.equal(e.treasury.assetsUsdc, assets); assert.equal(e.treasury.cycleResultUsdc, net);
+  assert.equal(e.treasury.assetsUsdc, assets + 10); assert.equal(e.treasury.cycleResultUsdc, net);
   const feeBefore = e.treasuryTracking.fees.swap;
   advanceScheduledStory(e, start + 3606000);
   assert.equal(e.treasuryTracking.fees.swap, feeBefore);

@@ -8,7 +8,6 @@ import { useGetDemoDashboard, getGetDemoDashboardQueryKey } from '@workspace/api
 import { useX } from '@/components/demo/ui';
 import { Rates, MovementSheet, type Kind, type Asset } from '@/components/demo/fin';
 import { TreasuryOverview } from '@/components/demo/TreasuryOverview';
-import { HistoryPanel } from '@/components/history/HistoryPanel';
 import { demoView, demoLabel, demoRedirect } from '@/components/demo/demo-navigation';
 import { AlphaTradingPanel } from '@/components/alpha-trading/AlphaTradingPanel';
 import '@/components/demo/demo.css';
@@ -53,7 +52,6 @@ function ClientDemoPage() {
       {tab === 'treasury' && <div className="grid gap-4" data-testid="page-treasury">
         <div><h1 className="display text-2xl font-extrabold">{x('Tesouraria', 'Treasury', 'Tesorería')}</h1><p className="mt-1 text-sm text-[#5B6B85]">{x('Ativos, reserva e resultados do projeto.', 'Project assets, reserves and results.', 'Activos, reserva y resultados del proyecto.')}</p></div>
         <TreasuryOverview d={d} />
-        {d.profile.canViewTreasuryHistory && <div className={sec}><HistoryPanel mode="demo" accountKey={d.profile.accountId} initialView="treasury" treasuryAccess /></div>}
         {d.profile.provider === 'native' && <details className={sec} open={new URLSearchParams(search).get('tab') === 'policies'}>
           <summary className="cursor-pointer text-sm font-bold">{x('Políticas', 'Policies', 'Políticas')}</summary>
           <div className="mt-4"><AccountPanel section="policies" /></div>

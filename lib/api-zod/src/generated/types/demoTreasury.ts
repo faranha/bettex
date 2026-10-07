@@ -6,6 +6,7 @@
  * OpenAPI spec version: 0.1.0
  */
 import type { DemoBurnSummary } from './demoBurnSummary';
+import type { DemoSwapPool } from './demoSwapPool';
 import type { DemoTreasuryRound } from './demoTreasuryRound';
 
 export interface DemoTreasury {
@@ -16,4 +17,5 @@ export interface DemoTreasury {
   cycleResultUsdc: number;
   currentRound?: DemoTreasuryRound;
   burn?: DemoBurnSummary;
+  swapPool?: DemoSwapPool;
 }

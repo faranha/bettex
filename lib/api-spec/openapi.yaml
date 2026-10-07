@@ -259,6 +259,21 @@ paths:
           content:
             application/json:
               schema: { $ref: "#/components/schemas/TreasuryGovernanceResponse" }
+  /demo/treasury/wallets:
+    get:
+      operationId: getDemoTreasuryWallets
+      tags: [demo]
+      summary: Persistent assigned Treasury and Crypto agent test wallets; public descriptors only, no funding or signing
+      responses:
+        "200":
+          description: Distinct test addresses for the simulated Treasury and active Crypto agent
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TreasuryTestWalletPage" }
+        "409":
+          description: Native protocol session cannot use simulated Treasury wallets
+        "503":
+          description: Test wallet provisioning unavailable; no fabricated addresses returned
   /demo/treasury/statement:
     get:
       operationId: getDemoTreasuryStatement
@@ -555,6 +570,24 @@ paths:
                 $ref: "#/components/schemas/DemoDashboard"
         "400":
           description: Invalid amount or insufficient balance
+  /demo/swap-quote:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
+    get:
+      operationId: getDemoSwapQuote
+      tags: [demo]
+      summary: Quote a simulated constant-product BETTEX/USDC swap
+      parameters:
+        - { name: asset, in: query, required: true, schema: { type: string, enum: [USDC, BETTEX] } }
+        - { name: amount, in: query, required: true, schema: { type: number, minimum: 0.000001, maximum: 100000 } }
+      responses:
+        "200":
+          description: Executable estimate from the current simulated pool reserves
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DemoSwapQuote" }
+        "400":
+          description: Invalid amount, unavailable liquidity or proceeds below the service fee
   /demo/profile:
     parameters:
       - $ref: "#/components/parameters/DemoTabSession"
@@ -1777,6 +1810,7 @@ components:
         sourceWallet: { type: string, enum: [dollar, earnings] }
         asset: { type: string, enum: [USDC, BETTEX] }
         amount: { type: number, minimum: 0.000001, maximum: 100000 }
+        minimumOutputAmount: { type: number, minimum: 0.000001, description: Minimum net swap output accepted by the user, checked atomically against current pool reserves. }
         destination: { type: string, maxLength: 120 }
     DemoProfile:
       type: object
@@ -1936,6 +1970,27 @@ components:
         sourceAmount:
           type: number
           description: Source quantity locked when a conversion was submitted.
+    TreasuryTestWalletPage:
+      type: object
+      required: [wallets, chainId, network, financialOperations, source]
+      properties:
+        wallets:
+          type: array
+          minItems: 4
+          maxItems: 4
+          items: { $ref: "#/components/schemas/TreasuryTestWallet" }
+        chainId: { type: integer, enum: [421614] }
+        network: { type: string, enum: [arbitrum_sepolia] }
+        financialOperations: { type: string, enum: [simulation] }
+        source: { type: string, enum: [assigned_test_wallets] }
+    TreasuryTestWallet:
+      type: object
+      required: [id, purpose, address, createdAt]
+      properties:
+        id: { type: string }
+        purpose: { type: string, enum: [operational, reserve, buyback, crypto_agent] }
+        address: { type: string, pattern: '^0x[0-9a-fA-F]{40}$' }
+        createdAt: { type: string, format: date-time }
     DemoTreasury:
       type: object
       required: [assetsUsdc, reserveUsdc, committedUsdc, realizedUsdc, cycleResultUsdc]
@@ -1947,6 +2002,37 @@ components:
         cycleResultUsdc: { type: number }
         currentRound: { $ref: "#/components/schemas/DemoTreasuryRound" }
         burn: { $ref: "#/components/schemas/DemoBurnSummary" }
+        swapPool: { $ref: "#/components/schemas/DemoSwapPool" }
+    DemoSwapPool:
+      type: object
+      required: [id, source, contractAddress, reserveUsdc, reserveBettex, initialReserveUsdc, initialReserveBettex, spotPriceUsdc, totalVolumeUsdc, swapCount, updatedAt]
+      properties:
+        id: { type: string }
+        source: { type: string, enum: [constant_product_demo] }
+        contractAddress: { type: [string, "null"], description: Null until an actual AMM contract exists; this pool is simulation only. }
+        reserveUsdc: { type: number }
+        reserveBettex: { type: number }
+        initialReserveUsdc: { type: number }
+        initialReserveBettex: { type: number }
+        spotPriceUsdc: { type: number }
+        totalVolumeUsdc: { type: number }
+        swapCount: { type: integer }
+        updatedAt: { type: string }
+    DemoSwapQuote:
+      type: object
+      required: [source, assetIn, assetOut, amountIn, amountOut, grossOutputAmount, feeUsdc, spotPriceUsdc, executionPriceUsdc, priceImpactPercent, poolVersion]
+      properties:
+        source: { type: string, enum: [constant_product_demo] }
+        assetIn: { type: string, enum: [USDC, BETTEX] }
+        assetOut: { type: string, enum: [USDC, BETTEX] }
+        amountIn: { type: number }
+        amountOut: { type: number }
+        grossOutputAmount: { type: number }
+        feeUsdc: { type: number }
+        spotPriceUsdc: { type: number }
+        executionPriceUsdc: { type: number }
+        priceImpactPercent: { type: number }
+        poolVersion: { type: integer }
     DemoBurnSummary:
       type: object
       required: [source, walletId, address, walletUsdc, walletBettex, totalBurnedBettex, referencePriceUsdc, updatedAt, entries]
@@ -2042,6 +2128,17 @@ components:
         workingUsdc: { type: number }
         committedUsdc: { type: number }
         availableUsdc: { type: number }
+        poolUsdc: { type: number, description: Pool cash is included in assets but excluded from operational and agent cash. }
+        operationalWalletUsdc:
+          type: number
+          description: Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.
+        operationalWalletCommittedUsdc:
+          type: number
+          description: Committed capital outside the Crypto agent wallet. Not an extra allocation.
+        agentAllocations:
+          type: array
+          description: Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.
+          items: { $ref: "#/components/schemas/DemoAgentWalletAllocation" }
         realizedNetUsdc: { type: number, description: Settled net investment result of this round, after execution costs; excludes operator service fees. }
         unrealizedUsdc: { type: number, description: Indicative gross result of unsettled positions; not distributable. }
         expectedCommittedNetUsdc: { type: number, description: Sum of proposal expected net results for currently committed positions, not an approved target or guarantee. }
@@ -2054,6 +2151,17 @@ components:
         openingAssetsUsdc: { type: [number, "null"] }
         coverage: { type: string, enum: [complete, partial] }
         feesOwner: { type: string, enum: [operating_company] }
+    DemoAgentWalletAllocation:
+      type: object
+      required: [agent, walletPurpose, allocatedUsdc, committedUsdc, availableUsdc, activePositions, source]
+      properties:
+        agent: { type: string, enum: [crypto] }
+        walletPurpose: { type: string, enum: [crypto_agent] }
+        allocatedUsdc: { type: number, minimum: 0 }
+        committedUsdc: { type: number, minimum: 0 }
+        availableUsdc: { type: number, enum: [0], description: No separate free budget is assigned; approved position capital only. }
+        activePositions: { type: integer, minimum: 0 }
+        source: { type: string, enum: [approved_operations] }
     DemoTreasuryActivityPage:
       type: object
       required: [roundId, items, total, totalPages, page, pageSize, snapshot, source]

@@ -97,7 +97,8 @@ test('scenario keeps realized path separate from forecast, uses payout weight, a
 
 test('staking presentation uses helpers and earnings cards, not a share donut or inline payout weight', () => {
   const source = readFileSync(new URL('./StakingCorridor.tsx', import.meta.url), 'utf8');
-  const presentation = source + readFileSync(new URL('./StakingRoundClock.tsx', import.meta.url), 'utf8');
+  const chart = readFileSync(new URL('./StakingMinuteChart.tsx', import.meta.url), 'utf8');
+  const presentation = source + chart + readFileSync(new URL('./StakingRoundClock.tsx', import.meta.url), 'utf8');
   assert.doesNotMatch(presentation, /PieChart|<Pie |staking-chart-share|<p[^>]*>.*Payout weight/);
   assert.match(source, /Math\.floor\(v\.myTokens\), 0/);
   assert.match(presentation, /staking-current-earnings/);
@@ -107,5 +108,7 @@ test('staking presentation uses helpers and earnings cards, not a share donut or
   assert.match(presentation, /staking-live-trading/);
   assert.match(presentation, /demoPath\('central', loc\)/);
   assert.match(source, /<Term tip=/);
-  assert.match(source, /dataKey="forecast"/);
+  assert.match(chart, /dataKey="forecast"/);
+  assert.match(chart, /<Bar dataKey="profit"/);
+  assert.match(chart, /staking-chart-tick/);
 });

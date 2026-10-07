@@ -75,9 +75,10 @@
 - [Identidade de locks](process-lock-identity.md) — locks sobrevivem a trocas de runtime; um PID reutilizado não comprova que o serviço original está ativo.
 - [Distributed-service target](distributed-service-target.md) — creator requires distributed microservices aligned with canonical guidance; reconcile the extraction decision before restructuring.
 - [Consulta nativa e autorização](native-read-authorization.md) — consultar endereços públicos não associa carteiras nem autoriza operações; não confundir saldo local com Sepolia pública.
-- [Extrato das carteiras](wallet-history-scope.md) — downloads do arquivo completo, rendimento, tags e filtros por carteira/tipo; BRL junto do valor, taxas e exemplos separados.
-- [Tesouraria por rodada](treasury-presentation.md) — abas e histórico corrente paginado; emulação rotulada e persistida sem visitante; tarifas separadas do lucro.
+- [Extrato das carteiras](wallet-history-scope.md) — atalhos pré-selecionados, downloads completos e filtros; BRL junto do valor, taxas separadas.
+- [Tesouraria e carteiras](treasury-presentation.md) — operacional, reserva e recompra em carteiras de teste distintas; totais sem dupla contagem e histórico separado.
 - [Localization catalog scope](localization-catalog-scope.md) — isolated multilingual tuples need their own audit; compiler types and grammar dictionaries are not page copy.
 - [Roteiro do demo](continuous-test-emulation.md) — timeline predefinida de 24 horas reais; não reintroduzir emulação aleatória como fonte financeira do app.
 - [Público da entrada do app](app-entry-audience.md) — homem preservado, um único esporte discreto ao fundo; Esportes/Value Betting é o protagonista do próximo lançamento.
 - [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.
+- [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.

@@ -1,4 +1,6 @@
 import { Router, type Request, type Response } from "express";
+import { quoteDemoSwap } from "../lib/demo-swap-pool";
+import { TRANSACTION_FEE_USDC } from "../lib/earnings-wallet";
 import { createHash, randomBytes, randomUUID, timingSafeEqual } from "node:crypto";
 import { CreateDemoMovementBody, UpdateDemoProfileBody, GetDemoDashboardResponse, RequestDemoProfileAvatarBody, RequestDemoProfileAvatarResponse, UpdateDemoLotteryParticipationBody } from "@workspace/api-zod";
 import { loadDashboard, ClaimedBrowserAccountError } from "../lib/demo-store";
@@ -17,6 +19,7 @@ import { GetDemoRoundArchiveQueryParams, GetDemoRoundArchiveResponse } from "@wo
 import { roundArchivePage } from "../lib/round-archive-store";
 import { statementFilters } from "../lib/treasury-statement";
 import { treasuryStatement, treasuryStatementCsv } from "../lib/treasury-statement-store";
+import { treasuryTestWalletPage } from "../modules/wallets/infrastructure/treasury-test-wallet-store";
 
 const router = Router();
 const cookieName = "bettex_demo";
@@ -49,6 +52,19 @@ router.use("/demo", (req, res, next) => {
   } else requests.set(key, { count: 1, reset: now + 60000 });
   res.set("Cache-Control", "no-store");
   next();
+});
+router.get("/demo/swap-quote", async (req, res) => {
+  try {
+    const snapshot = await userDashboard(req, res);
+    if (!snapshot?.treasury.swapPool) { res.status(400).json({ error: "pool_liquidity_unavailable" }); return; }
+    const quote = quoteDemoSwap(snapshot.treasury.swapPool, String(req.query.asset), Number(req.query.amount), TRANSACTION_FEE_USDC);
+    res.json(quote);
+  } catch (error) {
+    if (error instanceof Error && ["invalid_movement", "pool_liquidity_unavailable", "swap_amount_below_fee"].includes(error.message)) {
+      res.status(400).json({ error: error.message }); return;
+    }
+    throw error;
+  }
 });
 function accountId(req: Request, res: Response, rotate = false, authenticated = false) {
   const tab = demoTabIdentity(req.headers["x-bettex-demo-session"], authenticated);
@@ -133,6 +149,20 @@ router.all("/demo/simulation", async (req, res) => {
     const code = error instanceof Error ? error.message : "simulation_unavailable";
     const known = ["simulation_not_found", "simulation_run_required", "simulation_revision_changed", "simulation_idempotency_conflict", "simulation_paused", "invalid_amount", "unknown_simulation_action"];
     res.status(code === "simulation_not_found" ? 404 : known.includes(code) ? 409 : 503).json({ code: known.includes(code) ? code : "simulation_unavailable" });
+  }
+});
+router.get("/demo/treasury/wallets", async (req, res) => {
+  try {
+    const dashboard = await userDashboard(req, res);
+    if (!dashboard || res.headersSent) return;
+    if (dashboard.profile.provider === "native") {
+      res.status(409).json({ code: "simulated_treasury_wallets_only" }); return;
+    }
+    res.json(await treasuryTestWalletPage());
+  } catch {
+    // Never include vault material or crypto-library exception inputs in logs.
+    req.log.error({ code: "treasury_test_wallets_unavailable" }, "Test Treasury wallets unavailable");
+    res.status(503).json({ code: "treasury_test_wallets_unavailable" });
   }
 });
 for (const exportCsv of [false, true]) router.get(`/demo/treasury/statement${exportCsv ? "/export" : ""}`, async (req, res) => {

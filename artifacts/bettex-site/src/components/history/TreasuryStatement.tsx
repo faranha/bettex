@@ -1,10 +1,14 @@
 /** @jsxImportSource react */
 import { useEffect, useMemo, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { useGetDemoTreasuryStatement, exportDemoTreasuryStatement, type GetDemoTreasuryStatementParams, type TreasuryStatementEntry } from '@workspace/api-client-react';
+import { useLocation, useSearch } from 'wouter';
+import { useGetDemoTreasuryStatement, exportDemoTreasuryStatement, type DemoDashboard, type GetDemoTreasuryStatementParams, type TreasuryStatementEntry } from '@workspace/api-client-react';
 import { useX } from '@/components/demo/ui';
 import { formatBrazilDateTime, BRAZIL_TIME_ZONE } from '@/components/demo/brazil-time';
 import { TreasuryStatementSummary, useStmtFmt } from './TreasuryStatementSummary';
+import { demoPath } from '../demo/demo-navigation';
+import { historyQuery, treasuryFiltersFromSearch, treasuryWalletFromSearch } from './history-selection';
+import { TreasuryWalletHistoryContext } from './TreasuryWalletHistoryContext';
 
 type T3 = [string, string, string];
 export const brazilDate = (v: string | number | Date) => new Date(v).toLocaleDateString('en-CA', { timeZone: BRAZIL_TIME_ZONE });
@@ -47,46 +51,19 @@ const PARTIES: Record<string, T3> = {
   bonus: ['Bônus', 'Bonus', 'Bonos'],
 };
 
-export function TreasuryStatement({ serverNow, roundStartedAt }: { serverNow: string; roundStartedAt?: string }) {
+export function TreasuryStatement({ dashboard, serverNow, roundStartedAt }: { dashboard: DemoDashboard; serverNow: string; roundStartedAt?: string }) {
   const { x, tx, loc } = useX(); const { fl, qty } = useStmtFmt();
   const queryClient = useQueryClient();
-  useEffect(() => {
-    if (window.location.hash !== '#treasury-statement') return;
-    const target = document.getElementById('treasury-statement');
-    if (!target) return;
-    let stopped = false, frame = 0;
-    const scroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        if (stopped) return;
-        const header = document.querySelector('[data-testid="app-header"]');
-        const offset = Math.max(0, header?.getBoundingClientRect().bottom ?? 0) + 12;
-        window.scrollTo({ top: Math.max(0, window.scrollY + target.getBoundingClientRect().top - offset), behavior: 'instant' });
-      });
-    };
-    // The earlier round panel loads asynchronously and can move this anchor
-    // after the route mounts. Follow only that initial layout stabilization.
-    const observer = new ResizeObserver(scroll);
-    if (target.previousElementSibling) observer.observe(target.previousElementSibling);
-    observer.observe(target);
-    const stop = () => { stopped = true; cancelAnimationFrame(frame); observer.disconnect(); };
-    const timer = window.setTimeout(stop, 2500);
-    window.addEventListener('wheel', stop, { once: true, passive: true });
-    window.addEventListener('touchstart', stop, { once: true, passive: true });
-    window.addEventListener('keydown', stop, { once: true });
-    scroll();
-    return () => {
-      stop(); clearTimeout(timer);
-      window.removeEventListener('wheel', stop);
-      window.removeEventListener('touchstart', stop);
-      window.removeEventListener('keydown', stop);
-    };
-  }, []);
+  const routeSearch = useSearch(); const [, navigate] = useLocation();
+  const walletScope = treasuryWalletFromSearch(routeSearch);
+  const reserveOnly = walletScope === 'reserve';
+  const allocationOnly = walletScope === 'crypto_agent';
+  const noTransferLedger = reserveOnly || allocationOnly;
   const today = brazilDate(serverNow);
   const [from, setFrom] = useState(() => roundStartedAt ? brazilDate(roundStartedAt) : today);
   const [to, setTo] = useState(today);
-  const [asset, setAsset] = useState<'all' | 'USDC' | 'BETTEX'>('all');
-  const [account, setAccount] = useState<'all' | 'treasury' | 'buyback'>('all');
+  const [asset, setAsset] = useState(() => treasuryFiltersFromSearch(routeSearch).asset);
+  const [account, setAccount] = useState(() => treasuryFiltersFromSearch(routeSearch).account);
   const [category, setCategory] = useState('');
   const [direction, setDirection] = useState<'all' | 'in' | 'out'>('all');
   const [search, setSearch] = useState('');
@@ -94,18 +71,33 @@ export function TreasuryStatement({ serverNow, roundStartedAt }: { serverNow: st
   const [snap, setSnap] = useState<{ snapshot: string; asOf: string } | null>(null);
   const [busy, setBusy] = useState(false);
   const [exportError, setExportError] = useState(false);
+  useEffect(() => {
+    const filters = treasuryFiltersFromSearch(routeSearch);
+    setAccount(filters.account); setAsset(filters.asset);
+    setCategory(''); setDirection('all'); setSearch(''); setPage(1); setSnap(null);
+  }, [routeSearch]);
+  const selectAccount = (nextAccount: typeof account, nextAsset: typeof asset) => {
+    const sameWallet = walletScope === 'buyback' && nextAccount === 'buyback' || (walletScope === 'operational' || walletScope === 'crypto_agent') && nextAccount === 'treasury';
+    navigate(`${demoPath('wallet', loc)}${historyQuery('treasury', { treasuryAccount: nextAccount, treasuryAsset: nextAsset, ...(sameWallet && walletScope ? { treasuryWallet: walletScope } : {}) })}#treasury-statement`);
+  };
+  const selectWalletScope = (scope: typeof walletScope) => {
+    navigate(`${demoPath('wallet', loc)}${historyQuery('treasury', {
+      treasuryAccount: scope === 'operational' || scope === 'crypto_agent' ? 'treasury' : scope === 'buyback' ? 'buyback' : 'all',
+      treasuryAsset: scope ? 'USDC' : 'all', ...(scope ? { treasuryWallet: scope } : {}),
+    })}#treasury-statement`);
+  };
 
   const days = Math.round((Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 864e5);
   const validRange = /^\d{4}-\d{2}-\d{2}$/.test(from) && /^\d{4}-\d{2}-\d{2}$/.test(to) && days >= 0 && days <= 30;
   const filterParams = { from, to, asset, account, direction, ...(category ? { category } : {}), ...(search.trim() ? { search: search.trim().slice(0, 100) } : {}) };
   const params: GetDemoTreasuryStatementParams = { ...filterParams, page, ...(snap ? snap : {}) };
-  const q = useGetDemoTreasuryStatement(params, { query: { enabled: validRange, queryKey: ['/api/demo/treasury/statement', params], staleTime: 10_000, refetchInterval: snap ? false : 20_000 } });
-  const data = q.data;
+  const q = useGetDemoTreasuryStatement(params, { query: { enabled: validRange && !noTransferLedger, queryKey: ['/api/demo/treasury/statement', params], staleTime: 10_000, refetchInterval: snap || noTransferLedger ? false : 20_000 } });
+  const data = noTransferLedger ? undefined : q.data;
 
   const change = <T,>(set: (v: T) => void) => (v: T) => { set(v); setPage(1); setSnap(null); };
   const goPage = (p: number) => { if (data) setSnap({ snapshot: data.snapshot, asOf: data.asOf }); setPage(p); };
   const refresh = () => { setSnap(null); setPage(1); void queryClient.invalidateQueries({ queryKey: ['/api/demo/treasury/statement'] }); };
-  const reset = () => { setCategory(''); setDirection('all'); setSearch(''); setAsset('all'); setAccount('all'); setPage(1); setSnap(null); };
+  const reset = () => { setCategory(''); setDirection('all'); setSearch(''); setAsset('all'); setAccount('all'); setPage(1); setSnap(null); selectAccount('all', 'all'); };
 
   const tl = (m: Record<string, T3>, k: string) => (m[k] ? tx(m[k]) : k);
   const filtered = category || direction !== 'all' || search.trim() || asset !== 'all' || account !== 'all';
@@ -157,17 +149,39 @@ export function TreasuryStatement({ serverNow, roundStartedAt }: { serverNow: st
   const items = useMemo(() => data?.items ?? [], [data]);
   return <section id="treasury-statement" className="dcard grid min-w-0 w-full scroll-mt-36 gap-4 p-4 sm:p-5" data-testid="treasury-statement">
     <div className="min-w-0">
-      <h3 className="display text-lg font-extrabold">{x('Extrato da tesouraria comunitária', 'Community treasury statement', 'Extracto de la tesorería comunitaria')}</h3>
+      <h3 className="display text-lg font-extrabold">{allocationOnly ? x('Histórico da carteira do agente Cripto', 'Crypto agent wallet history', 'Historial de la cartera del agente Cripto')
+        : walletScope === 'reserve' ? x('Histórico da carteira de reserva', 'Reserve wallet history', 'Historial de la cartera de reserva')
+        : walletScope === 'operational' ? x('Histórico da carteira operacional', 'Operational wallet history', 'Historial de la cartera operativa')
+        : walletScope === 'buyback' ? x('Histórico da carteira de recompra', 'Buyback wallet history', 'Historial de la cartera de recompra')
+        : x('Extrato da tesouraria comunitária', 'Community treasury statement', 'Extracto de la tesorería comunitaria')}</h3>
       <p className="mt-1 max-w-3xl text-xs text-[#5B6B85]">{x('Simulação. Mostra apenas a tesouraria e a conta de recompra; a receita da operadora e as carteiras pessoais ficam fora. Não é um fluxo de caixa completo verificado: há liquidações modeladas e fontes ausentes.', 'Simulation. Shows only the treasury and the buyback account; operator revenue and personal wallets are excluded. This is not a verified complete cash flow: it includes modeled settlements and missing sources.', 'Simulación. Muestra solo la tesorería y la cuenta de recompra; los ingresos de la operadora y las billeteras personales quedan fuera. No es un flujo de caja completo verificado: incluye liquidaciones modeladas y fuentes ausentes.')}</p>
     </div>
 
-    <div className="grid min-w-0 gap-3 rounded-2xl border border-[#E4DCCB] bg-[#FBF8F0] p-3 sm:p-4" data-testid="treasury-statement-filters">
+    <label className={lbl}>{x('Carteira da tesouraria', 'Treasury wallet', 'Cartera de la tesorería')}
+      <select data-testid="treasury-filter-wallet" className={sel} value={walletScope ?? ''} onChange={e => selectWalletScope((e.target.value || null) as typeof walletScope)}>
+        <option value="">{x('Extrato consolidado', 'Consolidated statement', 'Extracto consolidado')}</option>
+        <option value="operational">{x('Carteira operacional', 'Operational wallet', 'Cartera operativa')}</option>
+        <option value="reserve">{x('Carteira de reserva', 'Reserve wallet', 'Cartera de reserva')}</option>
+        <option value="buyback">{x('Carteira de recompra', 'Buyback wallet', 'Cartera de recompra')}</option>
+        <option value="crypto_agent">{x('Carteira do agente Cripto', 'Crypto agent wallet', 'Cartera del agente Cripto')}</option>
+      </select>
+    </label>
+    {walletScope && <TreasuryWalletHistoryContext d={dashboard} purpose={walletScope} />}
+    {allocationOnly && <div role="status" data-testid="treasury-crypto-history-allocation" className="grid gap-2 rounded-2xl border border-[#E5CC87] bg-[#FFF5D9] p-4 text-sm text-[#73531B]">
+      <p>{x('A alocação acompanha o capital reservado nas operações aprovadas do Cripto. Ao encerrar ou cancelar uma posição, esse capital deixa de estar reservado ao agente. Não é um orçamento fixo nem o limite de exposição. Não há transferências on-chain ou um extrato de caixa segregado para essa carteira.', 'Allocation follows capital reserved in approved Crypto operations. Once a position closes or is cancelled, its capital is no longer reserved for the agent. It is not a fixed budget or the exposure limit. There are no on-chain transfers or a separate cash statement for this wallet.', 'La asignación sigue el capital reservado en operaciones aprobadas de Cripto. Al cerrar o cancelar una posición, el capital deja de estar reservado para el agente. No es un presupuesto fijo ni el límite de exposición. No hay transferencias on-chain ni un extracto de caja separado para esta cartera.')}</p>
+      <a className="min-h-11 self-start py-2 font-bold underline" href={`${demoPath('wallet', loc)}${historyQuery('rounds')}`}>{x('Consultar alocações e atividades das rodadas', 'View round allocations and activities', 'Consultar asignaciones y actividades de las rondas')}</a>
+    </div>}
+    {reserveOnly && <div role="status" data-testid="treasury-reserve-history-unrecorded" className="rounded-2xl border border-[#E5CC87] bg-[#FFF5D9] p-4 text-sm text-[#73531B]">
+      {x('A reserva está separada na alocação atual, mas ainda não há registros de transferências exclusivos dessa carteira. Não foram criados aportes ou saques históricos fictícios. O extrato completo da tesouraria pode ser consultado na opção Tesouraria e recompra.', 'The reserve is separated in the current allocation, but there are no separate transfer records for this wallet yet. No fictitious historical deposits or withdrawals were created. The full treasury statement is available under Treasury and buyback.', 'La reserva está separada en la asignación actual, pero aún no hay registros de transferencias exclusivos de esta cartera. No se crearon depósitos o retiros históricos ficticios. El extracto completo está disponible en Tesorería y recompra.')}
+    </div>}
+    {walletScope === 'operational' && <p className="rounded-xl bg-[#FFF5D9] p-3 text-xs text-[#73531B]">{x('Os lançamentos abaixo são movimentos registrados do modelo operacional, inclusive anteriores à atribuição desse endereço. Não são transações executadas por essa carteira na blockchain. O resumo consolidado, que inclui a reserva, fica no extrato geral da tesouraria.', 'The entries below are recorded movements from the operational model, including entries before this address was assigned. They are not blockchain transactions executed by this wallet. The consolidated summary, including the reserve, remains in the general treasury statement.', 'Los asientos siguientes son movimientos registrados del modelo operativo, incluso anteriores a la asignación de esta dirección. No son transacciones blockchain ejecutadas por esta cartera. El resumen consolidado, incluida la reserva, permanece en el extracto general.')}</p>}
+    {!noTransferLedger && <div className="grid min-w-0 gap-3 rounded-2xl border border-[#E4DCCB] bg-[#FBF8F0] p-3 sm:p-4" data-testid="treasury-statement-filters">
       <div className="grid min-w-0 gap-2 sm:grid-cols-2 lg:grid-cols-4">
         <label className={lbl}>{x('De', 'From', 'Desde')}<input type="date" data-testid="treasury-filter-from" className={sel} value={from} max={to} onChange={e => change(setFrom)(e.target.value)} /></label>
         <label className={lbl}>{x('Até', 'To', 'Hasta')}<input type="date" data-testid="treasury-filter-to" className={sel} value={to} min={from} onChange={e => change(setTo)(e.target.value)} /></label>
-        <label className={lbl}>{x('Conta', 'Account', 'Cuenta')}<select data-testid="treasury-filter-account" className={sel} value={account} onChange={e => change(setAccount)(e.target.value as typeof account)}>
+        <label className={lbl}>{x('Conta', 'Account', 'Cuenta')}<select data-testid="treasury-filter-account" className={sel} value={account} onChange={e => selectAccount(e.target.value as typeof account, asset)}>
           <option value="all">{x('Todas as contas', 'All accounts', 'Todas las cuentas')}</option><option value="treasury">{x('Tesouraria', 'Treasury', 'Tesorería')}</option><option value="buyback">{x('Recompra', 'Buyback', 'Recompra')}</option></select></label>
-        <label className={lbl}>{x('Ativo', 'Asset', 'Activo')}<select data-testid="treasury-filter-asset" className={sel} value={asset} onChange={e => change(setAsset)(e.target.value as typeof asset)}>
+        <label className={lbl}>{x('Ativo', 'Asset', 'Activo')}<select data-testid="treasury-filter-asset" className={sel} value={asset} onChange={e => selectAccount(account, e.target.value as typeof asset)}>
           <option value="all">{x('Todos os ativos', 'All assets', 'Todos los activos')}</option><option value="USDC">USDC</option><option value="BETTEX">BETTEX</option></select></label>
         <label className={lbl}>{x('Categoria', 'Category', 'Categoría')}<select data-testid="treasury-filter-category" className={sel} value={category} onChange={e => change(setCategory)(e.target.value)}>
           <option value="">{x('Todas as categorias', 'All categories', 'Todas las categorías')}</option>
@@ -184,10 +198,10 @@ export function TreasuryStatement({ serverNow, roundStartedAt }: { serverNow: st
       <p className="text-xs text-[#5B6B85]">{x('Período máximo de 31 dias. O CSV inclui todos os lançamentos do filtro, não só a página visível.', 'Maximum period 31 days. The CSV includes every entry matching the filters, not just the visible page.', 'Período máximo de 31 días. El CSV incluye todos los asientos del filtro, no solo la página visible.')}</p>
       {!validRange && <p role="alert" data-testid="treasury-range-error" className="rounded-xl bg-[#FFF5D9] p-3 text-sm font-semibold text-[#73531B]">{x('Escolha um período válido de até 31 dias.', 'Choose a valid period of up to 31 days.', 'Elige un período válido de hasta 31 días.')}</p>}
       {exportError && <p role="alert" data-testid="treasury-export-error" className="rounded-xl bg-[#F6DADA] p-3 text-sm text-[#8C2B2B]">{x('Não foi possível gerar o CSV. Tente novamente.', 'Could not generate the CSV. Try again.', 'No se pudo generar el CSV. Inténtalo de nuevo.')}</p>}
-    </div>
+    </div>}
 
-    {validRange && q.isLoading && <div className="grid gap-2" aria-busy="true" data-testid="treasury-statement-loading"><span className="sr-only" role="status">{x('Carregando extrato', 'Loading statement', 'Cargando extracto')}</span>{[0, 1, 2].map(i => <div key={i} className="h-24 animate-pulse rounded-2xl bg-[#EEE9DD]" />)}</div>}
-    {validRange && q.isError && <div role="alert" data-testid="treasury-statement-error" className="grid justify-items-start gap-2 rounded-2xl bg-[#F6DADA] p-4 text-sm text-[#8C2B2B]">
+    {!noTransferLedger && validRange && q.isLoading && <div className="grid gap-2" aria-busy="true" data-testid="treasury-statement-loading"><span className="sr-only" role="status">{x('Carregando extrato', 'Loading statement', 'Cargando extracto')}</span>{[0, 1, 2].map(i => <div key={i} className="h-24 animate-pulse rounded-2xl bg-[#EEE9DD]" />)}</div>}
+    {!noTransferLedger && validRange && q.isError && <div role="alert" data-testid="treasury-statement-error" className="grid justify-items-start gap-2 rounded-2xl bg-[#F6DADA] p-4 text-sm text-[#8C2B2B]">
       <p>{x('Não foi possível carregar o extrato da tesouraria.', 'Could not load the treasury statement.', 'No se pudo cargar el extracto de la tesorería.')}</p>
       <button type="button" className={btn} onClick={refresh}>{x('Tentar novamente', 'Try again', 'Reintentar')}</button></div>}
 
@@ -198,7 +212,7 @@ export function TreasuryStatement({ serverNow, roundStartedAt }: { serverNow: st
         {data.missingSources.length > 0 && <p>{x('Fontes ausentes', 'Missing sources', 'Fuentes ausentes')}: {data.missingSources.map(s => tl(MISSING, s)).join(', ')}</p>}
         <p>{x('Posição em', 'As of', 'Posición a')} {formatBrazilDateTime(data.asOf, fl)}</p>
       </div>
-      <TreasuryStatementSummary data={data} />
+      {walletScope !== 'operational' && <TreasuryStatementSummary data={data} />}
       <p className="text-xs text-[#5B6B85]" aria-live="polite" data-testid="treasury-statement-count">
         {x(`${data.total} lançamentos · página ${data.page} de ${Math.max(1, data.totalPages)}`, `${data.total} entries · page ${data.page} of ${Math.max(1, data.totalPages)}`, `${data.total} asientos · página ${data.page} de ${Math.max(1, data.totalPages)}`)}{q.isFetching ? ` · ${x('Atualizando', 'Refreshing', 'Actualizando')}` : ''}
       </p>

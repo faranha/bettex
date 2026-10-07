@@ -19,11 +19,15 @@ export function useStakingCorridor(d: DemoDashboard) {
       setHistory({ key: cycleKey, points: [] });
       return;
     }
-    const point = { at, profit: data.cycleProfitUsdc, allocated: data.roundAllocationUsdc };
+    const start = Date.parse(data.cycleStartedAt ?? '');
+    const base = Number.isFinite(start) ? start : 0;
+    const point = { at: base + Math.floor((at - base) / 60000) * 60000, profit: data.cycleProfitUsdc, allocated: data.roundAllocationUsdc };
     setHistory(previous => {
       const points = previous.key === cycleKey ? previous.points : [];
-      if (points.at(-1)?.at === at) return previous.key === cycleKey ? previous : { key: cycleKey, points };
-      return { key: cycleKey, points: [...points, point].slice(-90) };
+      const last = points.at(-1);
+      if (last && last.at > point.at) return previous;
+      if (last?.at === point.at) return { key: cycleKey, points: [...points.slice(0, -1), point] };
+      return { key: cycleKey, points: [...points, point].slice(-1441) };
     });
   }, [cycleKey, data.readingAt, data.cycleProfitUsdc, data.roundAllocationUsdc, scenario]);
   return {

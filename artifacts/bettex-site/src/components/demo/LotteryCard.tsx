@@ -46,7 +46,7 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
   });
   const onToggle = () => { if (m.isPending) return; if (lot.participating) send(false, false); else { m.reset(); setOpen(true); } };
   const btn = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] px-3 text-sm font-bold text-[#1B2A41] disabled:opacity-50';
-  return <div className="bl-card grid gap-3" data-testid="lottery-card">
+  return <div className="bl-card grid content-start gap-3" data-testid="lottery-card">
     <div className="flex items-center gap-3">
       <BurnLotteryFlame lit={lot.participating} />
       <div className="min-w-0 flex-1">
