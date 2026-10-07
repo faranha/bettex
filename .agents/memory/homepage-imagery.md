@@ -17,7 +17,9 @@ Na abertura da homepage, o fundo deve mostrar jogo de futebol e ocupar todo o ba
 
 **Why:** O criador pediu substituir cassino por futebol e corrigiu o enquadramento: “o fundo do futebol tem que ocupar todo o background amigo nao uma parte dele apenas”.
 
-**How to apply:** Usar uma camada de futebol de ponta a ponta no hero, também no mobile, preservando o homem, o recorte da notícia e os textos em primeiro plano. O degradê deve dar contraste sem transformar a fotografia em um retângulo separado. Não estender a troca a outras páginas ou mercados sem pedido.
+**How to apply:** Usar uma camada de futebol de ponta a ponta no hero, também no mobile, preservando o homem, o recorte da notícia e os textos em primeiro plano. O degradê deve dar contraste sem transformar a fotografia em um retângulo separado. O futebol deve ficar suavizado e sob uma camada escura mais opaca, sem competir com o homem e a notícia. Não estender a troca a outras páginas ou mercados sem pedido.
+
+**Why:** Sobre o hero de futebol preenchendo todo o fundo, o criador corrigiu: “needs to be more opaque the background, its not mixing well with the character in front”.
 
 **How to apply:** Nas demais imagens editoriais, alinhar a fotografia e seu degradê aos limites do conteúdo, inclusive em telas largas e no celular. O fundo do hero é a exceção: ocupa toda a largura.
 
@@ -27,11 +29,11 @@ A ilustração da IA no cartão da Carteira BETTEX deve ser séria, como um cér
 
 **How to apply:** Preservar essa direção para essa ilustração. Não estender a rejeição automaticamente à animação de outros agentes ou aos demais robôs do site.
 
-No CTA final da homepage, o cenário de futebol precisa se encaixar nos três personagens recortados em primeiro plano: perspectiva, escala e iluminação coerentes, sem jogadores enormes sobrepostos ao grupo.
+No CTA final da homepage, mostrar contexto de apostas em futebol e alguém usando o celular, não um grupo posando num campo como uma academia de treinamento. Personagens e cenário precisam ter perspectiva, escala e iluminação coerentes.
 
-**Why:** O criador rejeitou a montagem com um jogador grande atrás do grupo: “the placement of the background is terrible, the cutout characters need to fit the background and vice versa”.
+**Why:** O criador rejeitou a montagem incompatível entre fundo e grupo e depois esclareceu: “looks like a coaching academy, we need to see the betting” e “change a bit the background and the characters and add someone doing something on their mobile”.
 
-**How to apply:** Compor o estádio em função do grupo, usando espaço livre atrás das pessoas e conferindo a relação entre horizonte e personagens no desktop e no celular. Não reutilizar uma cena de ação próxima apenas porque ela já aparece no hero.
+**How to apply:** Preferir uma cena natural de torcedores acompanhando futebol e consultando uma aposta no celular, com o aparelho visível no desktop e no mobile. Evitar poses de equipe técnica, mistura de recortes desconectados e jogadores enormes atrás das pessoas. A referência de apostas não autoriza ativar Esportes nem afirmar que BETTEX já executa essas apostas.
 
 O símbolo e a moldura do logo no cabeçalho e no rodapé devem ficar sem amarelo, com acabamento mais discreto e elegante.
 

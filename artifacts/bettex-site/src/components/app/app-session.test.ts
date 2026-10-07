@@ -34,15 +34,19 @@ test('app entrance shares the app footer and presents a sports-oriented demo wit
   assert.match(app, /path="\/sign-in\/\*\?" component=\{SignInEntry\}/);
   assert.match(app, /path="\/sign-up\/\*\?" component=\{SignUpEntry\}/);
   assert.match(auth, /Pare de apostar e comece a investir agora com a Bettex/);
-  assert.match(auth, /app-entry-sports\.jpg/);
+  assert.match(auth, /auth-sportsbook-fullbleed\.jpg/);
   assert.match(auth, /Demonstração com dados simulados/);
   assert.doesNotMatch(auth, /Meet the BETTEX app through Alex|pessoa fictícia|hero-person-phone/);
   assert.match(auth, /hero-person-centered\.webp/);
 });
 test('shared agent showcase prioritizes Sports value betting as next without enabling it', () => {
   const showcase = read('../demo/AgentShowcase.tsx');
-  assert.ok(showcase.indexOf("id: 'sports'") < showcase.indexOf("id: 'prediction'"));
-  assert.match(showcase, /id: 'sports'.*Value betting.*next: true/);
-  assert.match(showcase, /aria-disabled="true" data-next=/);
-  assert.match(showcase, /Next · disabled/);
+  assert.ok(showcase.indexOf('data-testid="card-agent-sports"') < showcase.indexOf('data-testid="card-agent-crypto"'));
+  assert.match(showcase, /card-agent-sports" aria-disabled="true" data-next="true" className="agx-hero"/);
+  assert.match(showcase, /Coming next: Sports Value Betting/);
+  assert.match(showcase, /Not live yet/);
+  assert.match(showcase, /Not active in this demo yet/);
+  assert.match(showcase, /card-agent-crypto" className="agx-crypto"/);
+  assert.match(showcase, /Enter the crypto AI Center demo/);
+  assert.doesNotMatch(showcase, /Four agents\. Crypto is already active|54%|FAIR 1\.85/);
 });
