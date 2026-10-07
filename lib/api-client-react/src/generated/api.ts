@@ -36,6 +36,7 @@ import type {
   DemoLotteryParticipation,
   DemoMovementInput,
   DemoProfileInput,
+  DemoRoundArchivePage,
   DemoTestnet,
   DemoTestnetActivity,
   DemoTreasuryActivityPage,
@@ -44,6 +45,7 @@ import type {
   GetAlloraAnalysis200,
   GetAlphaTradingParams,
   GetDemoHistoryParams,
+  GetDemoRoundArchiveParams,
   GetDemoSimulationParams,
   GetDemoTreasuryActivityParams,
   GetSimulationParams,
@@ -1894,6 +1896,108 @@ export function useGetTestHistory<TData = Awaited<ReturnType<typeof getTestHisto
  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
   const queryOptions = getGetTestHistoryQueryOptions(params,options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetDemoRoundArchiveUrl = (params?: GetDemoRoundArchiveParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/demo/rounds?${stringifiedParams}` : `/api/demo/rounds`
+}
+
+export const getDemoRoundArchive = async (params?: GetDemoRoundArchiveParams, options?: Parameters<typeof customFetch>[1]): Promise<DemoRoundArchivePage> => {
+
+  return customFetch<DemoRoundArchivePage>(getGetDemoRoundArchiveUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDemoRoundArchiveQueryKey = (params?: GetDemoRoundArchiveParams,) => {
+    return [
+    `/api/demo/rounds`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetDemoRoundArchiveQueryOptions = <TData = Awaited<ReturnType<typeof getDemoRoundArchive>>, TError = ErrorType<void>>(params?: GetDemoRoundArchiveParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoRoundArchive>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDemoRoundArchiveQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoRoundArchive>>> = ({ signal }) => getDemoRoundArchive(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDemoRoundArchive>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetDemoRoundArchiveQueryResult = NonNullable<Awaited<ReturnType<typeof getDemoRoundArchive>>>
+export type GetDemoRoundArchiveQueryError = ErrorType<void>
+
+
+export function useGetDemoRoundArchive<TData = Awaited<ReturnType<typeof getDemoRoundArchive>>, TError = ErrorType<void>>(
+ params: undefined |  GetDemoRoundArchiveParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoRoundArchive>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoRoundArchive>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoRoundArchive>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoRoundArchive<TData = Awaited<ReturnType<typeof getDemoRoundArchive>>, TError = ErrorType<void>>(
+ params?: GetDemoRoundArchiveParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoRoundArchive>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoRoundArchive>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoRoundArchive>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoRoundArchive<TData = Awaited<ReturnType<typeof getDemoRoundArchive>>, TError = ErrorType<void>>(
+ params?: GetDemoRoundArchiveParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoRoundArchive>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+
+export function useGetDemoRoundArchive<TData = Awaited<ReturnType<typeof getDemoRoundArchive>>, TError = ErrorType<void>>(
+ params?: GetDemoRoundArchiveParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoRoundArchive>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetDemoRoundArchiveQueryOptions(params,options)
 
   const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 

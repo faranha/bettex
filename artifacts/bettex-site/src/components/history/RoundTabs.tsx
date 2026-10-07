@@ -1,21 +1,28 @@
 /** @jsxImportSource react */
-import { useRef, useState, type KeyboardEvent } from 'react';
+import { useRef, type KeyboardEvent } from 'react';
+import { useSearch, useLocation } from 'wouter';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from '../demo/ui';
 import { TreasuryActivity } from '../demo/TreasuryActivity';
 import { BurnHistory } from '../demo/BurnHistory';
 import { LotteryHistory } from '../demo/LotteryHistory';
 import { RoundPositions } from './RoundPositions';
+import { demoPath } from '../demo/demo-navigation';
 
 type Tab = 'positions' | 'history' | 'closed' | 'fees' | 'burn' | 'lottery';
 type Win = { id: string; startedAt: string; endsAt: string } | null;
 
 export function RoundTabs({ d, roundId, current, roundWindow: win }: { d: DemoDashboard; roundId: string; current: boolean; roundWindow: Win }) {
-  const { x } = useX();
+  const { x, loc } = useX();
+  const search = useSearch(); const [, navigate] = useLocation();
   const tabs: Tab[] = [...(current ? ['positions' as const] : []), 'history', 'closed', 'fees', 'burn', 'lottery'];
-  const [tab, setTab] = useState<Tab>('history');
+  const requested = new URLSearchParams(search).get('roundTab');
+  const setTab = (tab: Tab) => {
+    const params = new URLSearchParams(search); params.set('roundTab', tab);
+    navigate(`${demoPath('wallet', loc)}?${params.toString()}#rh-panel-${tab}`);
+  };
   const refs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const active = tabs.includes(tab) ? tab : 'history';
+  const active = tabs.find(tab => tab === requested) ?? 'history';
   const label: Record<Tab, string> = { positions: x('Posições atuais', 'Current positions', 'Posiciones actuales'), history: x('Histórico', 'History', 'Historial'), closed: x('Encerradas', 'Closed positions', 'Cerradas'), fees: x('Tarifas', 'Operator fees', 'Tarifas'), burn: x('Queima', 'Burn', 'Quema'), lottery: x('Loteria', 'Lottery', 'Lotería') };
   const onKey = (e: KeyboardEvent, i: number) => {
     const n = e.key === 'ArrowRight' ? (i + 1) % tabs.length : e.key === 'ArrowLeft' ? (i + tabs.length - 1) % tabs.length : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : -1;

@@ -27,7 +27,7 @@ export function BurnHistory({ d, roundId, embedded = false }: { d: DemoDashboard
     a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
     a.download = 'bettex-burn-journal-modeled.csv'; a.click(); URL.revokeObjectURL(a.href);
   };
-  if (!b) return <section className="dcard grid gap-2 p-4 sm:p-5" data-testid="burn-history"><h3 className="display flex items-center gap-2 text-base font-extrabold"><Flame className="h-5 w-5 text-[#D9591B]" aria-hidden="true" />{x('Diário de recompra e queima', 'Buyback-and-burn journal', 'Diario de recompra y quema')}</h3>
+  if (!b) return <section className="dcard grid gap-2 p-4 sm:p-5" data-testid={embedded ? 'round-burn-history' : 'burn-history'}><h3 className="display flex items-center gap-2 text-base font-extrabold"><Flame className="h-5 w-5 text-[#D9591B]" aria-hidden="true" />{x('Diário de recompra e queima', 'Buyback-and-burn journal', 'Diario de recompra y quema')}</h3>
     <p className="rounded-xl bg-[#F5F1E8] p-3 text-sm font-semibold text-[#5B6B85]">{d.profile.provider === 'native' ? x('Indisponível no protocolo nativo.', 'Unavailable in the native protocol.', 'No disponible en el protocolo nativo.') : x('Não registrado.', 'Not recorded.', 'No registrado.')}</p></section>;
   return <section id={embedded ? undefined : 'burn-history'} className="dcard grid gap-3 p-4 sm:p-5" data-testid={embedded ? 'round-burn-history' : 'burn-history'}>
     <div className="flex flex-wrap items-start justify-between gap-2">

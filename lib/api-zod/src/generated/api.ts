@@ -2056,6 +2056,159 @@ export const GetTestHistoryResponse = zod.object({
 })
 
 
+export const getDemoRoundArchiveQueryPageDefault = 1;
+
+export const getDemoRoundArchiveQueryPageSizeDefault = 10;
+export const getDemoRoundArchiveQueryPageSizeMax = 50;
+
+export const getDemoRoundArchiveQueryRoundMax = 100;
+
+
+
+export const GetDemoRoundArchiveQueryParams = zod.object({
+  "page": zod.coerce.number().int().min(1).default(getDemoRoundArchiveQueryPageDefault),
+  "pageSize": zod.coerce.number().int().min(1).max(getDemoRoundArchiveQueryPageSizeMax).default(getDemoRoundArchiveQueryPageSizeDefault),
+  "round": zod.coerce.string().max(getDemoRoundArchiveQueryRoundMax).optional()
+})
+
+export const getDemoRoundArchiveHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const GetDemoRoundArchiveHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(getDemoRoundArchiveHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
+export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotOwnEligibleTokensMin = 0;
+
+export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotTotalEligibleTokensMin = 0;
+
+export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotOwnTokenSecondsMin = 0;
+
+export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotTotalTokenSecondsMin = 0;
+
+export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotPayoutSharePercentMin = 0;
+export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotPayoutSharePercentMax = 100;
+
+export const getDemoRoundArchiveResponseItemsItemParticipationSnapshotReceivedUsdcMin = 0;
+
+export const getDemoRoundArchiveResponseSelectedOneParticipationSnapshotOwnEligibleTokensMin = 0;
+
+export const getDemoRoundArchiveResponseSelectedOneParticipationSnapshotTotalEligibleTokensMin = 0;
+
+export const getDemoRoundArchiveResponseSelectedOneParticipationSnapshotOwnTokenSecondsMin = 0;
+
+export const getDemoRoundArchiveResponseSelectedOneParticipationSnapshotTotalTokenSecondsMin = 0;
+
+export const getDemoRoundArchiveResponseSelectedOneParticipationSnapshotPayoutSharePercentMin = 0;
+export const getDemoRoundArchiveResponseSelectedOneParticipationSnapshotPayoutSharePercentMax = 100;
+
+export const getDemoRoundArchiveResponseSelectedOneParticipationSnapshotReceivedUsdcMin = 0;
+
+
+
+export const GetDemoRoundArchiveResponse = zod.object({
+  "items": zod.array(zod.object({
+  "id": zod.string(),
+  "endedAt": zod.string(),
+  "status": zod.enum(['paid', 'retained']),
+  "eligibleUsdc": zod.number(),
+  "stakingUsdc": zod.number(),
+  "treasuryUsdc": zod.number(),
+  "buybackUsdc": zod.number(),
+  "source": zod.enum(['seeded_demo', 'calculated_simulation']).optional(),
+  "treasurySnapshot": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number(),
+  "transfer": zod.number().optional()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional(),
+  "participationSnapshot": zod.object({
+  "ownEligibleTokens": zod.number().min(getDemoRoundArchiveResponseItemsItemParticipationSnapshotOwnEligibleTokensMin).describe('Own eligible BETTEX balance at round close'),
+  "totalEligibleTokens": zod.number().min(getDemoRoundArchiveResponseItemsItemParticipationSnapshotTotalEligibleTokensMin).describe('Pool eligible BETTEX balance at round close'),
+  "ownTokenSeconds": zod.number().min(getDemoRoundArchiveResponseItemsItemParticipationSnapshotOwnTokenSecondsMin),
+  "totalTokenSeconds": zod.number().min(getDemoRoundArchiveResponseItemsItemParticipationSnapshotTotalTokenSecondsMin),
+  "payoutSharePercent": zod.number().min(getDemoRoundArchiveResponseItemsItemParticipationSnapshotPayoutSharePercentMin).max(getDemoRoundArchiveResponseItemsItemParticipationSnapshotPayoutSharePercentMax),
+  "receivedUsdc": zod.number().min(getDemoRoundArchiveResponseItemsItemParticipationSnapshotReceivedUsdcMin),
+  "startedAt": zod.string(),
+  "endedAt": zod.string()
+}).optional()
+})),
+  "page": zod.number().int(),
+  "pageSize": zod.number().int(),
+  "total": zod.number().int(),
+  "selected": zod.union([zod.object({
+  "id": zod.string(),
+  "endedAt": zod.string(),
+  "status": zod.enum(['paid', 'retained']),
+  "eligibleUsdc": zod.number(),
+  "stakingUsdc": zod.number(),
+  "treasuryUsdc": zod.number(),
+  "buybackUsdc": zod.number(),
+  "source": zod.enum(['seeded_demo', 'calculated_simulation']).optional(),
+  "treasurySnapshot": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number(),
+  "transfer": zod.number().optional()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional(),
+  "participationSnapshot": zod.object({
+  "ownEligibleTokens": zod.number().min(getDemoRoundArchiveResponseSelectedOneParticipationSnapshotOwnEligibleTokensMin).describe('Own eligible BETTEX balance at round close'),
+  "totalEligibleTokens": zod.number().min(getDemoRoundArchiveResponseSelectedOneParticipationSnapshotTotalEligibleTokensMin).describe('Pool eligible BETTEX balance at round close'),
+  "ownTokenSeconds": zod.number().min(getDemoRoundArchiveResponseSelectedOneParticipationSnapshotOwnTokenSecondsMin),
+  "totalTokenSeconds": zod.number().min(getDemoRoundArchiveResponseSelectedOneParticipationSnapshotTotalTokenSecondsMin),
+  "payoutSharePercent": zod.number().min(getDemoRoundArchiveResponseSelectedOneParticipationSnapshotPayoutSharePercentMin).max(getDemoRoundArchiveResponseSelectedOneParticipationSnapshotPayoutSharePercentMax),
+  "receivedUsdc": zod.number().min(getDemoRoundArchiveResponseSelectedOneParticipationSnapshotReceivedUsdcMin),
+  "startedAt": zod.string(),
+  "endedAt": zod.string()
+}).optional()
+}),zod.null()])
+})
+
+
 export const getDemoHistoryQueryStateMax = 40;
 
 

@@ -2789,6 +2789,14 @@ export interface DemoTreasuryActivityPage {
   source: DemoTreasuryActivityPageSource;
 }
 
+export interface DemoRoundArchivePage {
+  items: DemoRound[];
+  page: number;
+  pageSize: number;
+  total: number;
+  selected: DemoRound | null;
+}
+
 export interface DemoDashboard {
   serverNow: string;
   lottery?: DemoLottery;
@@ -3030,6 +3038,22 @@ export const GetTestHistoryAsset = {
   BETTEX: 'BETTEX',
   ETH: 'ETH',
 } as const;
+
+export type GetDemoRoundArchiveParams = {
+/**
+ * @minimum 1
+ */
+page?: number;
+/**
+ * @minimum 1
+ * @maximum 50
+ */
+pageSize?: number;
+/**
+ * @maxLength 100
+ */
+round?: string;
+};
 
 export type GetDemoHistoryParams = {
 view?: GetDemoHistoryView;

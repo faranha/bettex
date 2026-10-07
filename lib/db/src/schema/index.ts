@@ -22,6 +22,7 @@ export * from "./audit";
 //   export type Post = typeof postsTable.$inferSelect;
 
 export * from "./demo";
+export * from "./round-archive";
 export * from "./accounts";
 export * from "./wallets";
 export * from "./reconciliation";

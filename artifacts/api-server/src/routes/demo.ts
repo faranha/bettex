@@ -13,6 +13,8 @@ import { simulationSnapshot, mutateSimulation } from "../modules/simulation/infr
 import { permittedOrigin } from "./test-accounts";
 import { demoTabIdentity } from "../modules/simulation/infrastructure/demo-tab-session";
 import { avatarStorage, ProfileAvatarError, validateProfileAvatar, serveProfileAvatar, validAvatarId, removeProfileAvatar } from "../lib/profile-avatar";
+import { GetDemoRoundArchiveQueryParams, GetDemoRoundArchiveResponse } from "@workspace/api-zod";
+import { roundArchivePage } from "../lib/round-archive-store";
 
 const router = Router();
 const cookieName = "bettex_demo";
@@ -146,6 +148,18 @@ router.get("/demo/treasury/activity", async (req, res) => {
     await userDashboard(req, res);
     const { treasuryActivityPage } = await import("../lib/treasury-activity-store");
     res.json(await treasuryActivityPage(roundId, view as "closed" | "fees" | "history", page, pageSize, snapshot));
+  } catch (error) { errorResponse(req, res, error); }
+});
+router.get("/demo/rounds", async (req, res) => {
+  try {
+    const input = GetDemoRoundArchiveQueryParams.safeParse(req.query);
+    if (!input.success) { res.status(400).json({ error: "invalid_pagination" }); return; }
+    const dashboard = await userDashboard(req, res);
+    if (!dashboard || dashboard.profile.provider === "native") {
+      res.status(403).json({ error: "unavailable_in_native_protocol" }); return;
+    }
+    const subject = String(res.locals.demoHistorySubject).replace(/^demo:/, "");
+    res.json(GetDemoRoundArchiveResponse.parse(await roundArchivePage(subject, input.data.page ?? 1, input.data.pageSize ?? 10, input.data.round)));
   } catch (error) { errorResponse(req, res, error); }
 });
 router.get("/demo/history", async (req, res) => {

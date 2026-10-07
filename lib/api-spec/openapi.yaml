@@ -314,6 +314,22 @@ paths:
         "400": { description: Invalid filters or cursor }
         "401": { description: Session required }
         "403": { description: Permission required }
+  /demo/rounds:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
+    get:
+      operationId: getDemoRoundArchive
+      parameters:
+        - { name: page, in: query, schema: { type: integer, minimum: 1, default: 1 } }
+        - { name: pageSize, in: query, schema: { type: integer, minimum: 1, maximum: 50, default: 10 } }
+        - { name: round, in: query, schema: { type: string, maxLength: 100 } }
+      responses:
+        "200":
+          description: Persisted closed rounds, newest first, with account-scoped participation
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DemoRoundArchivePage" }
+        "400": { description: Invalid pagination }
   /demo/history:
     parameters:
       - $ref: "#/components/parameters/DemoTabSession"
@@ -2043,6 +2059,20 @@ components:
         receivedUsdc: { type: number, minimum: 0 }
         startedAt: { type: string }
         endedAt: { type: string }
+    DemoRoundArchivePage:
+      type: object
+      required: [items, page, pageSize, total, selected]
+      properties:
+        items:
+          type: array
+          items: { $ref: "#/components/schemas/DemoRound" }
+        page: { type: integer }
+        pageSize: { type: integer }
+        total: { type: integer }
+        selected:
+          anyOf:
+            - { $ref: "#/components/schemas/DemoRound" }
+            - { type: "null" }
     DemoDashboard:
       type: object
       required: [serverNow, profile, balances, staking, operations, events, history, treasury, rounds]
