@@ -12,6 +12,7 @@ import { prepareScheduledAccount } from "./scheduled-demo-account";
 import { separateEarningsWallet } from "./earnings-wallet";
 import { ensureDemoLottery, advanceDemoLottery } from "./demo-lottery";
 import { advanceDemoBurnStory } from "./demo-burn-story";
+import { ensureRoundArchiveSchema, archiveRounds, archiveParticipation } from "./round-archive-store";
 import { ensureHistorySchema, appendHistory } from "../modules/audit/infrastructure/history-store";
 import { recordDemoMovements, recordDemoAutomations, recordDemoRound, recordDemoTreasury, recordDemoPools } from "../modules/audit/infrastructure/demo-recorder";
 import { decimalUnits } from "../modules/audit";
@@ -40,6 +41,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     throw new Error("demo_internal_only");
   }
   await ensureHistorySchema();
+  await ensureRoundArchiveSchema();
   return db.transaction(async tx => {
     const now = Date.now();
     await tx.insert(demoEngine).values({ id: "main", state: seedEngine(now) }).onConflictDoNothing();
@@ -91,10 +93,13 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
             String(accountWeight(states[index]!, end - DAY, end)), String(payment?.amount ?? 0), !!payment,
             payment?.id ?? `SCRIPT-ROUND-${cycle.id}-${states[index]!.profile.accountId}`);
         }
+        await archiveParticipation(tx, row.id, states[index]!);
         await tx.update(demoAccounts).set({ state: states[index]!, updatedAt: new Date(now) }).where(eq(demoAccounts.id, row.id));
       }
     }
     const beforeOperations = structuredClone(engine.operations);
+    await archiveRounds(tx, engine);
+    engine.rounds = engine.rounds.slice(0, 14);
     advanceScheduledStory(engine, now);
     await recordDemoTreasury(tx, beforeOperations, engine.operations);
     await recordDemoAutomations(tx, engine.events);
@@ -230,6 +235,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     ensureProfileNickname(account.profile, randomUUID);
     await recordDemoMovements(tx, accountId, initialHistory, account.history, operationPrice,
       command && "movement" in command ? command.movement.requestId : undefined, now);
+    await archiveParticipation(tx, accountId, account);
     await tx.update(demoAccounts).set({ state: account, updatedAt: new Date(now) }).where(eq(demoAccounts.id, accountId));
     await flushTreasuryActivity(tx, engine);
     await tx.update(demoEngine).set({ state: engine, updatedAt: new Date(now) }).where(eq(demoEngine.id, "main"));

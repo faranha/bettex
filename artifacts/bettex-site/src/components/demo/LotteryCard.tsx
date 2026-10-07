@@ -39,6 +39,8 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
     ? formatBrazilDateTime(lot.nextDrawAt, fl, { hour: '2-digit', minute: '2-digit' })
     : x('Indisponível', 'Unavailable', 'No disponible');
   const historyLabel = x('Histórico da loteria', 'Lottery history', 'Historial de la lotería');
+  const historyParams = new URLSearchParams({ roundTab: 'lottery' });
+  if (d.treasury.currentRound) historyParams.set('round', d.treasury.currentRound.id);
   const send = (participating: boolean, confirmed: boolean) => m.mutate({ data: { participating, confirmed } }, {
     onSuccess: snap => { qc.setQueryData(getGetDemoDashboardQueryKey(), snap); void qc.invalidateQueries({ queryKey: getGetDemoDashboardQueryKey() }); setOpen(false); },
   });
@@ -54,7 +56,7 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
       </div>
       <div className="flex shrink-0 flex-col gap-1 self-start">
         <Link href={demoPath('treasury', loc)} data-testid="link-burned-treasury" aria-label={x('Ver Tesouraria', 'View Treasury', 'Ver Tesorería')} title={x('Ver Tesouraria', 'View Treasury', 'Ver Tesorería')} className="bl-hist focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><Landmark className="h-5 w-5" aria-hidden="true" /></Link>
-        <Link href={`${demoPath('wallet', loc)}#lottery-history`} data-testid="link-lottery-history" aria-label={historyLabel} title={historyLabel} className="bl-hist focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><History className="h-5 w-5" aria-hidden="true" /></Link>
+        <Link href={`${demoPath('wallet', loc)}?${historyParams.toString()}#rh-panel-lottery`} data-testid="link-lottery-history" aria-label={historyLabel} title={historyLabel} className="bl-hist focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><History className="h-5 w-5" aria-hidden="true" /></Link>
       </div>
     </div>
     <div className="grid min-w-0 gap-1.5" data-testid="lottery-explanation">

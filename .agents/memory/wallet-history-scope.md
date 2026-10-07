@@ -26,3 +26,27 @@ No cartão da Loteria de queima, os acessos à Tesouraria e ao Histórico devem 
 **Why:** O criador apontou o espaço excessivo ocupado pelos acessos e corrigiu: “history is duplicated”.
 
 **How to apply:** Agrupar os atalhos na área do cabeçalho, preservar nomes acessíveis e não remover saldo, timer, participação ou informações da loteria para reduzir a altura.
+
+O histórico da Loteria de queima deve existir apenas dentro do histórico por rodada, sem um segundo bloco independente na página Histórico.
+
+**Why:** O criador apontou o bloco duplicado e disse “this is already inside the round history area”.
+
+**How to apply:** O atalho da loteria abre a aba Loteria da rodada correspondente. Preservar os registros e filtros por rodada; remover apenas a apresentação duplicada.
+
+O diário de recompra e queima também deve ser agregado ao histórico por rodada, sem um bloco independente.
+
+**Why:** O criador apontou esse diário e pediu “this must be aggregated into the round history”.
+
+**How to apply:** Usar a aba Queima para os eventos da rodada selecionada, preservando filtros, paginação e exportação CSV. Os atalhos abrem essa aba, não um segundo diário.
+
+Não exibir uma seção independente de detalhes da rodada anterior na página Histórico.
+
+**Why:** O criador disse “this is not needed, previous rounds are inside the round history”.
+
+**How to apply:** Consultar rodadas anteriores pelo arquivo de rodadas, preservando seus detalhes e registros; não reintroduzir o resumo duplicado abaixo do extrato.
+
+No Histórico, o arquivo de rodadas deve ficar depois da apresentação da rodada atual, não antes dela.
+
+**Why:** O criador mostrou a lista do arquivo e pediu “isso pode ser depois do current no history”.
+
+**How to apply:** Priorizar os detalhes da rodada selecionada acima do arquivo. Preservar busca e paginação; selecionar uma rodada leva aos detalhes, paginar mantém o foco no arquivo.

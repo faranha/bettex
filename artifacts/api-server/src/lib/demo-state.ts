@@ -107,7 +107,6 @@ export function closeCycles(engine: EngineState, accounts: AccountState[], now: 
         payoutSharePercent: total > 0 ? 100 * weights[index]! / total : 0,
         receivedUsdc: net, startedAt: iso(engine.dayAt), endedAt: iso(end),
       };
-      account.roundParticipation = Object.fromEntries(Object.entries(account.roundParticipation).sort(([a], [b]) => b.localeCompare(a)).slice(0, 14));
       if (net > 0) {
         separateEarningsWallet(account);
         account.receivedYield = roundMoney(account.receivedYield + net);
@@ -116,7 +115,6 @@ export function closeCycles(engine: EngineState, accounts: AccountState[], now: 
     }
     const treasurySnapshot = treasuryRoundSnapshot(engine, now);
     engine.rounds.unshift({ id, endedAt: iso(end), status: pays ? "paid" : "retained", eligibleUsdc: eligible, treasuryUsdc: pays ? eligible * .5 : eligible, stakingUsdc: staking, buybackUsdc: pays ? eligible * .25 : 0, source: "calculated_simulation", treasurySnapshot });
-    engine.rounds = engine.rounds.slice(0, 14);
     event(engine, end, "treasury", "orchestrator", "cycle_closed", id);
     engine.dayAt = end;
     if (engine.scheduledStory) engine.treasury.assetsUsdc = roundMoney(engine.treasury.assetsUsdc - staking - (pays ? eligible * .25 : 0));

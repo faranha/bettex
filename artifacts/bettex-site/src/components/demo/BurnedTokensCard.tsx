@@ -31,7 +31,7 @@ export function BurnedTokensCard({ d }: { d: DemoDashboard }) {
     {d.profile.provider !== 'native' && !d.lottery && <p className="border-t border-[#E4DCCB] pt-2 text-xs text-[#5B6B85]" data-testid="lottery-unavailable">{x('Loteria de queima indisponível.', 'Burn Lottery unavailable.', 'Lotería de quema no disponible.')}</p>}
     <div className="flex flex-wrap gap-2">
       <Link href={demoPath('treasury', loc)} data-testid="link-burned-treasury" className={btn}>{x('Ver Tesouraria', 'View Treasury', 'Ver Tesorería')}</Link>
-      {b && <Link href={`${demoPath('wallet', loc)}#burn-history`} data-testid="link-burned-history" aria-label={x('Diário de queima', 'Burn journal', 'Diario de quema')} title={x('Diário de queima', 'Burn journal', 'Diario de quema')} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#F0E9DA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"><History className="h-5 w-5" aria-hidden="true" /></Link>}
+      {b && <Link href={`${demoPath('wallet', loc)}?roundTab=burn#rh-panel-burn`} data-testid="link-burned-history" aria-label={x('Diário de queima', 'Burn journal', 'Diario de quema')} title={x('Diário de queima', 'Burn journal', 'Diario de quema')} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#F0E9DA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"><History className="h-5 w-5" aria-hidden="true" /></Link>}
     </div>
   </article>;
 }

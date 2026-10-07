@@ -32,7 +32,7 @@ export function BurnWalletPanel({ d }: { d: DemoDashboard }) {
         <div><dt className="font-bold text-[#5B6B85]">{x('Atualizado em', 'Updated at', 'Actualizado en')}</dt><dd>{formatBrazilDateTime(b.updatedAt, fl)} {x('(São Paulo)', '(São Paulo)', '(São Paulo)')}</dd></div>
       </dl>
       <p className="text-xs text-[#5B6B85]">{x('Modelo de demonstração, sem transações reais. Os prazos de compra e queima são um roteiro autoral, não política econômica.', 'Demonstration model, no real transactions. Buy and burn timings are an authored script, not economic policy.', 'Modelo de demostración, sin transacciones reales. Los plazos de compra y quema son un guion autoral, no política económica.')}</p>
-      <Link href={`${demoPath('wallet', loc)}#burn-history`} data-testid="link-treasury-burn-journal" className="inline-flex min-h-11 items-center justify-center self-start rounded-xl bg-[#D9591B] px-4 text-sm font-bold text-white hover:bg-[#B84A15]">{x('Abrir diário de recompra e queima', 'Open buyback-and-burn journal', 'Abrir diario de recompra y quema')}</Link>
+      <Link href={`${demoPath('wallet', loc)}?roundTab=burn#rh-panel-burn`} data-testid="link-treasury-burn-journal" className="inline-flex min-h-11 items-center justify-center self-start rounded-xl bg-[#D9591B] px-4 text-sm font-bold text-white hover:bg-[#B84A15]">{x('Abrir diário de recompra e queima', 'Open buyback-and-burn journal', 'Abrir diario de recompra y quema')}</Link>
     </>}
   </section>;
 }
