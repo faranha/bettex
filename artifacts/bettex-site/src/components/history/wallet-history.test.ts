@@ -28,18 +28,31 @@ test('earnings offers only an internal dollar-wallet transfer, never an external
   assert.doesNotMatch(card + form, /earnings-withdraw/);
   assert.match(form, /const needDest = k === 'send' \|\| k === 'withdraw';/);
 });
-test('earnings wallet is full-width with paid and projected round values, fire icons, filtered history and no card fee', () => {
+test('earnings wallet is a compact green piggy bank with distinct paid and projected values, filtered history and no card fee', () => {
   const card = readFileSync(new URL('../demo/EarningsWalletCard.tsx', import.meta.url), 'utf8');
-  assert.match(card, /col-span-full/);
+  assert.doesNotMatch(card, /col-span-full/);
   assert.match(card, /previousCycle\(d\)\?\.received/);
   assert.match(card, /scenarioStakingView\(d\)\?\.timeline.projectedOwnUsdc/);
-  assert.match(card, /<Flame/);
+  assert.match(card, /<PiggyBank/);
+  assert.doesNotMatch(card, /Flame|TokenIcon/);
+  assert.doesNotMatch(card, /<section/);
   assert.match(card, /earnings-last-round/);
   assert.match(card, /earnings-current-projection/);
   assert.match(card, /button-earnings-history/);
   assert.match(card, /WalletHistoryLink wallet="earnings"/);
   assert.match(card, /not guaranteed and not yet received/);
   assert.doesNotMatch(card, /2[.,]50|fee|taxa|comisión/i);
+});
+test('burned tokens have their own flame block without fabricated quantities or a buyback-budget conversion', () => {
+  const card = readFileSync(new URL('../demo/BurnedTokensCard.tsx', import.meta.url), 'utf8');
+  const wallets = readFileSync(new URL('../demo/DemoWalletsCard.tsx', import.meta.url), 'utf8');
+  assert.match(card, /<Flame/);
+  assert.match(card, /burned-tokens-value/);
+  assert.match(card, /Not recorded/);
+  assert.match(card, /Buyback budgets do not count as burns/);
+  assert.match(card, /demoPath\('treasury', loc\)/);
+  assert.match(wallets, /<EarningsWalletCard.*<BurnedTokensCard/);
+  assert.doesNotMatch(card, /receivedYield|buybackUsdc|bettexUsdc|v=\{0\}/);
 });
 test('each demo and native wallet exposes a labeled icon link to the matching profile history filter', () => {
   const link = readFileSync(new URL('../demo/WalletHistoryLink.tsx', import.meta.url), 'utf8');

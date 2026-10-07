@@ -1,6 +1,9 @@
 /** @jsxImportSource react */
 import { CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { Flame, Database } from 'lucide-react';
+import { Flame, Database, Activity } from 'lucide-react';
+import { Link } from 'wouter';
+import { demoPath } from './demo-navigation';
+import { AgentShowcase } from './AgentShowcase';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from './ui';
 import { useStakingCorridor } from './use-staking-corridor';
@@ -8,7 +11,7 @@ import { Term } from './fin';
 import { StakingRoundClock } from './StakingRoundClock';
 
 const MUTED = '#5B6B85';
-export function StakingCorridor({ d }: { d: DemoDashboard }) {
+export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; showAgents?: boolean }) {
   const { x, loc } = useX();
   const { data: v, points, loading, timeline } = useStakingCorridor(d);
   const fl = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
@@ -75,8 +78,12 @@ export function StakingCorridor({ d }: { d: DemoDashboard }) {
             </LineChart></ResponsiveContainer>}
         </div>
         <p className="mt-1 flex flex-wrap gap-x-4 text-[11px] text-[#5B6B85]"><span><span className="mr-1 inline-block h-0.5 w-4 bg-[#0A2342] align-middle" />{x('Lucro líquido', 'Net profit', 'Ganancia neta')}</span><span><span className="mr-1 inline-block h-0.5 w-4 bg-[#C98A12] align-middle" />{x('Alocação', 'Allocation', 'Asignación')}</span><span><span className="mr-1 inline-block h-0 w-4 border-t-2 border-dashed border-[#0E7C6B] align-middle" />{x('Projeção', 'Projection', 'Proyección')}</span></p>
+        <Link href={demoPath('central', loc)} data-testid="staking-live-trading" className="group mt-3 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#0E7C6B] px-4 py-3 text-sm font-extrabold text-white transition-colors hover:bg-[#0A6657]">
+          <Activity className="h-5 w-5 shrink-0" aria-hidden="true" /><span>{x('Trades ao vivo', 'Live trades', 'Trades en vivo')}</span>
+        </Link>
       </div>
       <StakingRoundClock serverNow={d.serverNow} nextCycleAt={v.nextCycleAt} native={native} timeline={timeline} current={cur} projected={proj} loading={!!loading} na={na} fl={fl} />
     </div>
+    {showAgents && <AgentShowcase />}
   </section>;
 }

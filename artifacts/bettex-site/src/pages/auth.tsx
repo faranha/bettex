@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useX } from '@/components/demo/ui';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { startAppSession } from '@/lib/app-session';
+import { AgentShowcase } from '@/components/demo/AgentShowcase';
 import { BettexMark } from '@/components/BettexMark';
 import './auth.css';
 
@@ -26,7 +27,7 @@ function ClientAuthPage({ mode }: { mode: 'sign-in' | 'sign-up' }) {
   const name = x('BETTEX ALFA', 'BETTEX ALPHA', 'BETTEX ALFA');
 
   return <main className="auth-page demo-root" data-mode={mode}>
-    <img className="auth-photo" src={`${base}hero-person-phone.webp`} alt="" aria-hidden="true" />
+    <div className="auth-photo" style={{ backgroundImage: `url(${base}app-entry-sports.jpg)` }} aria-hidden="true" />
     <div className="auth-pattern" aria-hidden="true" />
     <header className="auth-header">
       <a href={home} className="auth-brand" aria-label={name}><BettexMark className="auth-mark" /><span>{name}</span></a>
@@ -37,15 +38,15 @@ function ClientAuthPage({ mode }: { mode: 'sign-in' | 'sign-up' }) {
     </header>
     <section className="auth-hero">
       <p className="auth-kicker">{x('Ambiente de testes', 'Test environment', 'Entorno de pruebas')}</p>
-      <h1 className="auth-title">{x('Sua participação, na palma da mão.', 'Your participation, in the palm of your hand.', 'Tu participación, en la palma de tu mano.')}</h1>
-      <p className="auth-lead">{x('Conheça o aplicativo BETTEX com Alex, uma pessoa fictícia e dados de exemplo.', 'Meet the BETTEX app through Alex, a fictional person with sample data.', 'Conoce la aplicación BETTEX con Alex, una persona ficticia con datos de ejemplo.')}</p>
+      <h1 className="auth-title">{x('Pare de apostar e comece a investir agora com a Bettex.', 'Stop betting and start investing now with Bettex.', 'Deja de apostar y empieza a invertir ahora con Bettex.')}</h1>
+      <p className="auth-lead">{x('Demonstração com dados simulados', 'Demo with simulated data', 'Demostración con datos simulados')}</p>
       <button type="button" data-testid="button-demo-alex" className="auth-cta" onClick={enter}>
-        <span>{x('Entrar como Alex', 'Enter as Alex', 'Entrar como Alex')}</span>
+        <span>{x('Entrar no demo', 'Enter the demo', 'Entrar en la demo')}</span>
         <span className="auth-cta-icon"><ArrowRight className="h-5 w-5" aria-hidden="true" /></span>
       </button>
       <p className="auth-tag"><i aria-hidden="true" />{x('Demonstração · sem dinheiro real', 'Demo · no real money', 'Demostración · sin dinero real')}</p>
     </section>
-    <img className="auth-phone" src={`${base}hero-person-centered.webp`} alt="" aria-hidden="true" />
+    <div className="auth-agents"><AgentShowcase variant="dark" onEnter={() => { qc.clear(); startAppSession(); }} /></div>
   </main>;
 }
 export const SignInPage = () => <AuthPage mode="sign-in" />;

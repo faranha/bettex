@@ -27,11 +27,11 @@ BETTEX amounts are whole tokens, not fractional tokens. In staking, explanatory 
 
 **How to apply:** Keep token-count displays integral while preserving USDC precision and the distinction between ownership share and payout weight. Helpers must explain provisional versus received earnings and that a negative round pays zero without deducting tokens.
 
-The area beside the 24-hour chart needs a compact clock running naturally in real time, with larger current and projected earnings and a direct button to detailed live trading in the AI Center. Do not show technical tick counters or tick-triggered flashes.
+The area beside the 24-hour chart needs a compact clock running naturally in real time, with larger current and projected earnings. The direct Live trades button belongs below the chart, not beside the clock. Do not show technical tick counters or tick-triggered flashes.
 
-**Why:** The creator corrected the previous presentation: “esse relogio esta acelerado”, “esta muito grande”, “esta travando tambem, com ticks, deixa rodar naturalmente” and asked to enlarge current and projected earnings.
+**Why:** The creator corrected the previous presentation: “esse relogio esta acelerado”, “esta muito grande”, “esta travando tambem, com ticks, deixa rodar naturalmente” and asked to enlarge current and projected earnings. Subsequently clarified: “live trades tem que ser um botao abaixo”, specifically below the chart.
 
-**How to apply:** Use the actual round deadline and real seconds, independently of chart cadence. Cached or delayed server samples must not rewind or pause the countdown. Keep a small dial, prominent personal values, and accessible live-trading access. Do not imply guaranteed payment.
+**How to apply:** Use the actual round deadline and real seconds, independently of chart cadence. Cached or delayed server samples must not rewind or pause the countdown. Keep a small dial, prominent personal values, and accessible live-trading access below the chart. Do not imply guaranteed payment.
 
 The staking chart follows the shared scheduled 24-hour demo storyline, including historical losses and recovery. The chart's event cadence must never change the clock's real-time speed.
 

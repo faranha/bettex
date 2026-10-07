@@ -35,11 +35,12 @@
 - [Navegação do app](demo-navigation.md) — replit.md define as áreas atuais; preservar extrato sem cartões duplicados, acesso compacto ao perfil e aviso do demo.
 - [Separação site/app](site-app-separation.md) — experiências distintas no mesmo projeto; voltar ao site precisa funcionar também para usuários autenticados.
 - [Ações da carteira](wallet-action-context.md) — entradas e saídas junto de cada saldo; USDC/BETTEX com conversão nos dois sentidos; saque não limitado ao rendimento.
+- [Símbolos das carteiras](wallet-card-symbols.md) — rendimentos em bloco único compacto verde com cofrinho; fogo no bloco separado de tokens queimados.
 - [Staking no aplicativo](app-staking-presentation.md) — corredor horizontal no dashboard e Carteiras; posição própria, total do pool, lucro, alocação, gráficos e fogo.
 - [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
 - [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; históricos de sugestões e decisões consultáveis.
-- [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — independent BETTEX above Predictions/BTC/ETH/SOL jobs; operational controls are not agents.
+- [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — BETTEX acima de Cripto/BTC/ETH/SOL; preservar IDs de protocolo e separar controles de agentes.
 - [Real agent intelligence](real-agent-intelligence.md) — real AI inference is required; rule-based checks are controls, not a substitute for agent intelligence.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
 - [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
@@ -77,3 +78,4 @@
 - [Tesouraria por rodada](treasury-presentation.md) — abas e histórico corrente paginado; emulação rotulada e persistida sem visitante; tarifas separadas do lucro.
 - [Localization catalog scope](localization-catalog-scope.md) — isolated multilingual tuples need their own audit; compiler types and grammar dictionaries are not page copy.
 - [Roteiro do demo](continuous-test-emulation.md) — timeline predefinida de 24 horas reais; não reintroduzir emulação aleatória como fonte financeira do app.
+- [Público da entrada do app](app-entry-audience.md) — futebol e UFC/MMA como referências visuais de aquisição; o criador espera mais tração nesse público.

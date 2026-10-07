@@ -41,7 +41,7 @@ import { SignInPage, SignUpPage } from '@/pages/auth';
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 const HOME_PATH = `${BASE_PATH}/`;
 const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
-const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR APP', href: '/app' }] as const;
+const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR DEMO', href: '/app' }] as const;
 const legacyChapterIds = new Set<string>(chapters.map(({ id }) => id));
 const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
 type Market = {
@@ -152,7 +152,7 @@ function SiteHeader() {
         <MainLinks className="" />
       </nav>
       <div className="hidden xl:flex"><LanguageSelector /></div>
-      <a href={localizedUrl(`${BASE_PATH}/app`)} data-testid="launch-app-mobile" className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md border border-[#F2B632] bg-[#F2B632] px-3 max-[359px]:px-2 text-[11px] font-extrabold text-[#070B1F] hover:bg-[#FFD16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AAC3EE] xl:hidden">{t('ABRIR APP')}<ArrowRight size={14} aria-hidden="true" className="max-[359px]:hidden" /></a>
+      <a href={localizedUrl(`${BASE_PATH}/app`)} data-testid="launch-app-mobile" className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md border border-[#F2B632] bg-[#F2B632] px-3 max-[359px]:px-2 text-[11px] font-extrabold text-[#070B1F] hover:bg-[#FFD16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AAC3EE] xl:hidden">{t('ABRIR DEMO')}<ArrowRight size={14} aria-hidden="true" className="max-[359px]:hidden" /></a>
       <button type="button" data-testid="public-menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     <div inert={menuOpen}>
@@ -381,6 +381,14 @@ function HomeRoute() {
   return <Home />;
 }
 
+function SignInEntry() {
+  return <><SignInPage /><SiteFooter compact /></>;
+}
+
+function SignUpEntry() {
+  return <><SignUpPage /><SiteFooter compact /></>;
+}
+
 function LegacyDemoRedirect() {
   const [path, navigate] = useLocation();
   useEffect(() => {
@@ -402,7 +410,7 @@ function Redirect({ to }: { to: string }) {
 function App({ ssrPath }: { ssrPath?: string } = {}) {
   const language = useLocale();
   const base = `${BASE_PATH}${language === 'pt' ? '' : `/${language}`}`;
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><AccountAuthProvider><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={HomeRoute} /><Route path="/pitch" component={Pitch} /><Route path="/testes/conta"><Redirect to="/app/minha-conta" /></Route><Route path="/app/*?" component={Demo} /><Route path="/demo/*?" component={LegacyDemoRedirect} /><Route path="/sign-in/*?" component={SignInPage} /><Route path="/sign-up/*?" component={SignUpPage} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></AccountAuthProvider></WouterRouter><FloatingCommunityCTA /><Toaster /></TooltipProvider></QueryClientProvider>;
+  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={base} ssrPath={ssrPath}><AccountAuthProvider><PageMetadata /><RoutedErrorBoundary><Switch><Route path="/" component={HomeRoute} /><Route path="/pitch" component={Pitch} /><Route path="/testes/conta"><Redirect to="/app/minha-conta" /></Route><Route path="/app/*?" component={Demo} /><Route path="/demo/*?" component={LegacyDemoRedirect} /><Route path="/sign-in/*?" component={SignInEntry} /><Route path="/sign-up/*?" component={SignUpEntry} /><Route path="/documentacao" component={Documentation} /><Route path="/documentation" component={Documentation} /><Route path="/documentacion" component={Documentation} /><Route component={NotFound} /></Switch></RoutedErrorBoundary></AccountAuthProvider></WouterRouter><FloatingCommunityCTA /><Toaster /></TooltipProvider></QueryClientProvider>;
 }
 
 export default App;

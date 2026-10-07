@@ -6,6 +6,7 @@ import { Money, type Asset, type Kind } from './fin';
 import { WalletAction } from './WalletAction';
 import { TokenIcon } from './TokenIcon';
 import { Download } from 'lucide-react';
+import { BurnedTokensCard } from './BurnedTokensCard';
 import { EarningsWalletCard } from './EarningsWalletCard';
 import { WalletHistoryLink } from './WalletHistoryLink';
 
@@ -22,6 +23,6 @@ export function DemoWalletsCard({ d, onWallet, showReceivedYield = false, showHe
         <WalletAction kind="swap" asset={asset} id={`demo-swap-${asset}`} label={x('Converter', 'Convert', 'Convertir')} onOpen={onWallet} />
         <WalletHistoryLink wallet={asset} id={`button-wallet-history-${asset.toLowerCase()}`} /></div>
       {onExport && <button type="button" onClick={() => onExport(asset)} data-testid={`button-export-wallet-${asset}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-current px-3 text-sm font-bold"><Download className="h-4 w-4" aria-hidden="true" />{x('Exportar carteira', 'Export wallet', 'Exportar cartera')}</button>}
-    </article>)}<EarningsWalletCard d={d} onWallet={onWallet} /></div>
+    </article>)}<EarningsWalletCard d={d} onWallet={onWallet} /><BurnedTokensCard /></div>
   </section>;
 }
