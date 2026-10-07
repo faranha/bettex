@@ -41,6 +41,12 @@ A identificação pública permanece ALFA. O criador definiu o ALFA como produto
 
 **Why da separação:** O criador pediu o Roadmap antes de Go to market, com seção e item próprios no menu, e esclareceu “Não quero esse container claro, o fundo é claro”.
 
+O token da fase ALFA é um token de teste em testnet, não um token real em produção.
+
+**Why:** O criador corrigiu a apresentação do Roadmap: “test token, test net, not live token”.
+
+**How to apply:** Qualificar o token do ALFA como de teste em todas as línguas e distinguir testes de emissão em produção, dinheiro real e liquidez pública. A fase ALFA continua incluindo token e contratos de teste, não apenas um mock.
+
 No mobile, as telas devem aparecer antes das imagens, ícones e símbolos que exemplificam cada área.
 
 **Why:** O criador disse que as ilustrações antes da tela dificultam ver o demo.

@@ -8,12 +8,14 @@ import { WalletStatement } from '../history/WalletStatement';
 import { TestContractPanel } from './TestContractPanel';
 import { isDemoSession } from './demo-session';
 import { NativeParticipationCard } from './NativeParticipationCard';
+import { RoundHistory } from '../history/RoundHistory';
 
 export function WalletPage({ d, historyPanel, extra }: { d: DemoDashboard; historyPanel?: ReactNode; extra?: ReactNode }) {
   const { x } = useX();
-  return <div className="grid gap-4" data-testid="page-wallet">
+  return <div className="grid min-w-0 w-full gap-4" data-testid="page-wallet">
     <h2 className="display text-xl font-extrabold tracking-tight" data-testid="text-wallet-title">{x('Histórico', 'History', 'Historial')}</h2>
     {!isDemoSession(d.profile) && (d.profile.provider === 'native' ? <NativeParticipationCard profile={d.profile} /> : <TestContractPanel />)}
+    <RoundHistory key={`round-history-${d.profile.accountId}`} d={d} />
     <WalletStatement key={d.profile.accountId} d={d} />
     {extra}
     <details className="dcard p-4 sm:p-5">

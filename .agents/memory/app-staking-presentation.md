@@ -7,7 +7,13 @@ Staking deve ser um corredor horizontal de largura total, não uma coluna latera
 
 **Why:** O criador pediu staking nas duas áreas e corrigiu expressamente “not a column a corridor”.
 
-**How to apply:** Incluir o total próprio de BETTEX em participação, sua porcentagem do total, o total participante do pool, o lucro líquido já gerado no ciclo e a alocação dessa rodada, com gráficos e ícones de fogo. No celular, reorganizar o conteúdo sem criar transbordamento.
+**How to apply:** Incluir o total próprio de BETTEX em participação, sua porcentagem do total, o total participante do pool, o lucro líquido já gerado no ciclo e a alocação dessa rodada, com gráficos e ícones de moedas, não fogo. No celular, reorganizar o conteúdo sem criar transbordamento.
+
+Staking representa ganhos passivos, não queima de tokens. Usar moedas nos símbolos do staking, inclusive no painel com gráfico, no relógio e na arte decorativa; reservar fogo para queima.
+
+**Why:** O criador corrigiu “staking is not burning is earning passively” e pediu outro símbolo no dashboard com gráfico.
+
+**How to apply:** Preservar os dados, projeções, elegibilidade e avisos existentes; esta distinção visual não autoriza prometer rendimentos garantidos.
 
 A porcentagem dos tokens próprios no pool é distinta do peso por tempo usado para apurar pagamentos. Alocação provisória e projeção não são saldo recebido nem promessa de lucro.
 
@@ -29,12 +35,24 @@ BETTEX amounts are whole tokens, not fractional tokens. In staking, explanatory 
 
 The area beside the 24-hour chart needs a compact clock running naturally in real time, with larger current and projected earnings. The direct Live trades button belongs below the chart, not beside the clock. Do not show technical tick counters or tick-triggered flashes.
 
-**Why:** The creator corrected the previous presentation: “esse relogio esta acelerado”, “esta muito grande”, “esta travando tambem, com ticks, deixa rodar naturalmente” and asked to enlarge current and projected earnings. Subsequently clarified: “live trades tem que ser um botao abaixo”, specifically below the chart.
+**Why:** The creator corrected the previous presentation: “esse relogio esta acelerado”, “esta muito grande”, “esta travando tambem, com ticks, deixa rodar naturalmente” and asked to enlarge current and projected earnings. Subsequently clarified: “live trades tem que ser um botao abaixo”, specifically below the chart. Later asked to optimize the watch and remove the large unused area below the chart.
 
-**How to apply:** Use the actual round deadline and real seconds, independently of chart cadence. Cached or delayed server samples must not rewind or pause the countdown. Keep a small dial, prominent personal values, and accessible live-trading access below the chart. Do not imply guaranteed payment.
+**How to apply:** Use the actual round deadline and real seconds, independently of chart cadence. Cached or delayed server samples must not rewind or pause the countdown. Keep a small dial, prominent personal values, and accessible live-trading access below the chart. The watch must not inflate the chart row and leave a large empty bottom; use available space efficiently on desktop and mobile. Do not imply guaranteed payment.
 
 The staking chart follows the shared scheduled 24-hour demo storyline, including historical losses and recovery. The chart's event cadence must never change the clock's real-time speed.
 
 **Why:** The creator subsequently standardized the demo to a predefined timeline from 16:00 to 16:00 São Paulo time and rejected the accelerated, tick-driven clock.
 
 **How to apply:** Preserve historical data before the first visit and label future points as projections. Use the shared browser-independent scheduled story, not separate randomized financial emulation. Keep it isolated from native protocol data and real payouts.
+
+Below staking in the app, show the Sports Value Betting promotion without the secondary Crypto, Prediction Markets and Casino row.
+
+**Why:** The creator circled that row in the app screenshot and asked to remove the section below the sports value system with the other bots.
+
+**How to apply:** Keep Sports and staking intact. This removal targets the in-app promotion, not the separately designed login landing.
+
+The round-clock card should have a playful but very subdued background, without distracting from reading.
+
+**Why:** The creator asked to make this card “more fun” while ensuring the background does not disturb reading.
+
+**How to apply:** Keep decorative artwork behind the countdown, earnings and progress bar, with low contrast and clear foreground text. This preference applies to the round-clock card, not a redesign of the entire app.

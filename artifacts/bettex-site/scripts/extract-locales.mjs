@@ -21,8 +21,9 @@ function scan(file) {
     file.includes('/components/agent-operations/') || file.includes('/components/live-markets/') ||
     file.endsWith('/pages/demo.tsx') || file.endsWith('/pages/auth.tsx') ||
      file.endsWith('/components/history/WalletStatement.tsx') ||
+     (file.includes('/components/history/') && /\/(?:RoundHistory|RoundFacts|RoundTabs|RoundPositions)\.tsx$/.test(file)) ||
      file.endsWith('/components/app/AppHeader.tsx') ||
-     (file.includes('/components/history/') && /\/(?:wallet-history-(?:model|export|examples)|use-wallet-history|history-pagination)\.ts$/.test(file)) ||
+     (file.includes('/components/history/') && /\/(?:wallet-history-(?:model|export|examples)|use-wallet-history|history-pagination|round-history-selection)\.ts$/.test(file)) ||
      file.endsWith('/lib/round-terminology.ts') ||
     file.endsWith('/lib/demo-tab-session.ts') || /\.test\.tsx?$/.test(file)) return;
   if (file.endsWith('.json') && !file.includes('/locales/')) {

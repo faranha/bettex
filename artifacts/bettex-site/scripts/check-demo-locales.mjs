@@ -8,6 +8,9 @@ const files = fs.readdirSync(root).filter(f => /\.(ts|tsx)$/.test(f) && !f.endsW
 files.push(path.resolve(root, '../../pages/demo.tsx'));
 files.push(path.resolve(root, '../../pages/auth.tsx'));
 files.push(path.resolve(root, '../history/WalletStatement.tsx'));
+for (const file of ['RoundHistory.tsx', 'RoundFacts.tsx', 'RoundTabs.tsx', 'RoundPositions.tsx']) {
+  files.push(path.resolve(root, '../history', file));
+}
 files.push(path.resolve(root, '../app/AppHeader.tsx'));
 for (const file of ['wallet-history-model.ts', 'wallet-history-export.ts', 'wallet-history-examples.ts', 'use-wallet-history.ts', 'history-pagination.ts']) {
   files.push(path.resolve(root, '../history', file));
@@ -25,7 +28,7 @@ files.push(...fs.readdirSync(liveMarketsRoot).filter(f => /\.(ts|tsx)$/.test(f))
 const failures = [];
 let tuples = 0;
 const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|BETTEX|USDC|BTC|ETH|SOL|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;
-const neutral = text => universal.test(text) || /^(?:ID|Hash):$/.test(text) || !/[A-Za-zÀ-ÿ]/.test(text.replace(/\b(?:USD|BRL|USDC|BETTEX|ETH|UTC|D|T|h|v)\b|T\+/g, ''));
+const neutral = text => universal.test(text) || /^(?:ID|Hash):$/.test(text) || !/[A-Za-zÀ-ÿ]/.test(text.replace(/\b(?:USD|BRL|USDC|BETTEX|BTC|ETH|SOL|UTC|D|T|h|v)\b|\b\d+h\b|São Paulo|T\+/g, ''));
 const forbidden = new Set(['generateKey', 'signTransaction', 'signMessage']);
 for (const file of files) {
   const raw = fs.readFileSync(file, 'utf8');

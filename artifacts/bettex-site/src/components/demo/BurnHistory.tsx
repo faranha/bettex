@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Download, Flame } from 'lucide-react';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from './ui';
@@ -9,13 +9,14 @@ import { formatBrazilDateTime } from './brazil-time';
 const PAGE = 8;
 type K = 'all' | 'wallet_funded' | 'tokens_purchased' | 'tokens_burned';
 
-export function BurnHistory({ d }: { d: DemoDashboard }) {
+export function BurnHistory({ d, roundId, embedded = false }: { d: DemoDashboard; roundId?: string; embedded?: boolean }) {
   const { x, loc } = useX();
   const fl = burnFl(loc);
   const b = burnOf(d);
   const [kind, setKind] = useState<K>('all');
   const [page, setPage] = useState(0);
-  const rows = useMemo(() => (b?.entries ?? []).filter(e => kind === 'all' || e.kind === kind).slice().sort((a, c) => Date.parse(c.at) - Date.parse(a.at)), [b, kind]);
+  useEffect(() => { setPage(0); }, [roundId]);
+  const rows = useMemo(() => (b?.entries ?? []).filter(e => (!roundId || e.roundId === roundId) && (kind === 'all' || e.kind === kind)).slice().sort((a, c) => Date.parse(c.at) - Date.parse(a.at)), [b, kind, roundId]);
   const pages = Math.max(1, Math.ceil(rows.length / PAGE));
   const cur = Math.min(page, pages - 1);
   const label = (k: string) => k === 'wallet_funded' ? x('Carteira financiada', 'Wallet funded', 'Cartera financiada') : k === 'tokens_purchased' ? x('Tokens comprados', 'Tokens purchased', 'Tokens comprados') : x('Queima permanente simulada', 'Permanent simulated burn', 'Quema permanente simulada');
@@ -28,7 +29,7 @@ export function BurnHistory({ d }: { d: DemoDashboard }) {
   };
   if (!b) return <section className="dcard grid gap-2 p-4 sm:p-5" data-testid="burn-history"><h3 className="display flex items-center gap-2 text-base font-extrabold"><Flame className="h-5 w-5 text-[#D9591B]" aria-hidden="true" />{x('Diário de recompra e queima', 'Buyback-and-burn journal', 'Diario de recompra y quema')}</h3>
     <p className="rounded-xl bg-[#F5F1E8] p-3 text-sm font-semibold text-[#5B6B85]">{d.profile.provider === 'native' ? x('Indisponível no protocolo nativo.', 'Unavailable in the native protocol.', 'No disponible en el protocolo nativo.') : x('Não registrado.', 'Not recorded.', 'No registrado.')}</p></section>;
-  return <section id="burn-history" className="dcard grid gap-3 p-4 sm:p-5" data-testid="burn-history">
+  return <section id={embedded ? undefined : 'burn-history'} className="dcard grid gap-3 p-4 sm:p-5" data-testid={embedded ? 'round-burn-history' : 'burn-history'}>
     <div className="flex flex-wrap items-start justify-between gap-2">
       <h3 className="display flex items-center gap-2 text-base font-extrabold"><Flame className="h-5 w-5 text-[#D9591B]" aria-hidden="true" />{x('Diário de recompra e queima', 'Buyback-and-burn journal', 'Diario de recompra y quema')}</h3>
       <button type="button" onClick={exportCsv} data-testid="button-export-burn" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[#E8A56B] px-3 text-sm font-bold text-[#8F3A0E]"><Download className="h-4 w-4" aria-hidden="true" />{x('Exportar CSV', 'Export CSV', 'Exportar CSV')}</button>

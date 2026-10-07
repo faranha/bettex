@@ -7,4 +7,4 @@ O criador pediu que a carteira de rendimentos seja um único bloco compacto, ver
 
 **Why:** Ao ver o cartão de rendimentos com fogo, o criador considerou a apresentação alta demais e associou o fogo à queima de tokens.
 
-**How to apply:** Aplicar essa distinção aos cartões das carteiras. Compactar sem misturar saldo recebido com projeção estimada. Não interpretar a correção do fogo neste cartão como remoção dos ícones da apresentação de staking.
+**How to apply:** Aplicar essa distinção aos cartões das carteiras. Compactar sem misturar saldo recebido com projeção estimada. Para os símbolos do staking, seguir a regra específica em app-staking-presentation.md.

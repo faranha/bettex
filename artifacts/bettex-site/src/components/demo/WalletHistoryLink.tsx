@@ -11,10 +11,10 @@ export function WalletHistoryLink({ wallet, id, className = 'border-current bg-w
 }) {
   const { x, loc } = useX();
   const name = wallet === 'earnings' ? x('Rendimentos', 'Earnings', 'Ganancias') : wallet;
+  const label = x(`Abrir histórico: ${name}`, `Open history: ${name}`, `Abrir historial: ${name}`);
   return <Link href={`${demoPath('wallet', loc)}?wallet=${wallet}`} data-testid={id}
-    aria-label={x(`Abrir histórico: ${name}`, `Open history: ${name}`, `Abrir historial: ${name}`)}
-    className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${className}`}>
-    <History className="h-4 w-4 shrink-0" aria-hidden="true" />
-    {x('Histórico', 'History', 'Historial')}
+    aria-label={label} title={label}
+    className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${className}`}>
+    <History className="h-5 w-5 shrink-0" aria-hidden="true" />
   </Link>;
 }

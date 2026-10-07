@@ -15,6 +15,12 @@ History contains statements and records without repeating balance cards or the c
 
 **How to apply:** Keep personal financial records separate from Treasury results and preserve wallet-filtered access.
 
+History must use the same containers and organization as the rest of the platform, not loose controls on the page background.
+
+**Why:** The creator pointed to My wallets as the reference and said History was not using the same containers and was poorly organized.
+
+**How to apply:** Keep statement headings, export controls, filters and records inside coherent platform cards. Preserve all data, downloads and filters; matching the wallet container does not mean duplicating wallet balances.
+
 Keep the demo environment notice and restart controls in one compact blue band, on one line and within the app layout width.
 
 **Why:** The creator asked to merge the strips and explicitly rejected a stacked layout.

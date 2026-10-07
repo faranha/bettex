@@ -5,6 +5,7 @@ import { AGENTS, useX } from './ui';
 import { Money, Term, useMoney } from './fin';
 import { formatBrazilDateTime } from './brazil-time';
 import { TreasuryActivity } from './TreasuryActivity';
+import { TreasuryRoundHeader } from './TreasuryRoundHeader';
 
 const ACTIVE = ['approved', 'validated', 'executing', 'open', 'result', 'reconciling'];
 const TABS = ['fees', 'committed', 'closed', 'history'] as const;
@@ -16,18 +17,13 @@ function Metric({ id, label, tip, help, children }: { id?: string; label: string
 }
 
 export function RoundSummary({ r, serverNow }: { r: NonNullable<DemoDashboard['treasury']['currentRound']>; serverNow: string }) {
-  const { x, loc } = useX(); const { num } = useMoney(); void num;
-  const fl = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
-  const dt = (s: string) => formatBrazilDateTime(s, fl, { dateStyle: 'medium', timeStyle: 'short' });
+  const { x } = useX();
   const prec = (v: number) => (v !== 0 && Math.abs(v) < .01 ? 6 : 2);
   const NR = x('Não registrado', 'Not recorded', 'No registrado');
   const U = (v: number | null | undefined, signed = false) => v == null ? <span className="text-sm font-bold text-[#5B6B85]">{NR}</span> : <Money v={v} a="USDC" signed={signed} precision={prec(v)} />;
-  const left = Math.max(0, Date.parse(r.endsAt) - Date.parse(serverNow));
-  const hrs = Math.floor(left / 3600000); const mins = Math.floor((left % 3600000) / 60000);
   return <>
     <p className="mb-2 text-xs font-semibold text-[#8A641D]">{x('Roteiro predefinido do demo · 16h às 16h, horário de São Paulo · histórico modelado e fixo.', 'Predefined demo storyline · 16:00–16:00 São Paulo time · fixed modeled history.', 'Guion predefinido del demo · 16:00–16:00, hora de São Paulo · historial modelado y fijo.')}</p>
-    <h2 className="display text-lg font-extrabold">{x('Rodada atual', 'Current round', 'Ronda actual')} <span className="mono text-xs font-semibold text-[#5B6B85]">{r.id}</span></h2>
-    <p className="text-xs text-[#5B6B85]">{dt(r.startedAt)} → {dt(r.endsAt)} · {x('Horário do Brasil', 'Brazil time', 'Horario de Brasil')} · {x(`faltam ${hrs} h ${mins} min`, `${hrs} h ${mins} min left`, `faltan ${hrs} h ${mins} min`)}</p>
+    <TreasuryRoundHeader round={r} serverNow={serverNow} />
     <div className="mt-3 grid gap-3 sm:grid-cols-2">
       <Metric id="treasury-round-realized" label={x('Realizado líquido', 'Realized net', 'Realizado neto')} tip={x('Resultado já liquidado desta rodada, depois dos custos de execução.', 'Settled result of this round after execution costs.', 'Resultado liquidado de esta ronda tras costos de ejecución.')} help={x('Só posições liquidadas nesta rodada. Exclui tarifas do operador. Base do lucro elegível.', 'Only positions settled this round. Excludes operator fees. Basis of eligible profit.', 'Solo posiciones liquidadas en esta ronda. Excluye tarifas del operador. Base de la ganancia elegible.')}><Money v={r.realizedNetUsdc} a="USDC" big signed precision={prec(r.realizedNetUsdc)} /></Metric>
       <Metric label={x('Não realizado', 'Unrealized', 'No realizado')} tip={x('Indicação de posições ainda abertas.', 'Indication from still-open positions.', 'Indicación de posiciones aún abiertas.')} help={x('Apenas indicação: não pode ser distribuído.', 'Indication only: it cannot be distributed.', 'Solo indicación: no se puede distribuir.')}><Money v={r.unrealizedUsdc} a="USDC" signed /></Metric>

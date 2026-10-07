@@ -1,12 +1,34 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { stakingClockReading, syncRoundClock, roundServerTime } from './staking-clock.ts';
+import { stakingClockReading, syncRoundClock, roundServerTime, roundIntervalReading } from './staking-clock.ts';
 import type { StakingTimeline } from './staking-model.ts';
 
 const start = Date.UTC(2026, 9, 7, 12);
 const end = new Date(start + 8 * 3600000).toISOString();
 const timeline: StakingTimeline = { elapsedMinutes: 960, tick: 160, nextTickAt: new Date(start + 6000).toISOString(),
   tickIntervalMs: 6000, minutesPerTick: 6, projectedOwnUsdc: 0.4 };
+
+test('treasury countdown and progress use the same recorded 24-hour interval', () => {
+  const opening = new Date(start).toISOString();
+  const closing = new Date(start + 86400000).toISOString();
+  assert.deepEqual(roundIntervalReading(opening, closing, start), { remainingMs: 86400000, progress: 0 });
+  assert.deepEqual(roundIntervalReading(opening, closing, start + 43200000), { remainingMs: 43200000, progress: 0.5 });
+  const before = roundIntervalReading(opening, closing, start + 1000);
+  const after = roundIntervalReading(opening, closing, start + 2000);
+  assert.equal(before.remainingMs! - after.remainingMs!, 1000);
+  assert.ok(after.progress! > before.progress!);
+  assert.deepEqual(roundIntervalReading(opening, closing, start + 86400000), { remainingMs: 0, progress: 1 });
+  assert.deepEqual(roundIntervalReading(opening, closing, start + 90000000), { remainingMs: 0, progress: 1 });
+});
+test('treasury progress respects actual bounds, including shorter rounds and unavailable timestamps', () => {
+  const opening = new Date(start).toISOString();
+  const closing = new Date(start + 3600000).toISOString();
+  assert.equal(roundIntervalReading(opening, closing, start + 1800000).progress, 0.5);
+  assert.equal(roundIntervalReading(opening, closing, start - 1000).progress, 0);
+  for (const [s, e, n] of [['invalid', closing, start], [opening, 'invalid', start], [opening, opening, start], [closing, opening, start], [opening, closing, NaN]] as const) {
+    assert.deepEqual(roundIntervalReading(s, e, n), { remainingMs: null, progress: null });
+  }
+});
 
 test('even accelerated chart fixtures count one real second per second, without a tick-boundary freeze', () => {
   const opening = stakingClockReading(end, timeline, start);

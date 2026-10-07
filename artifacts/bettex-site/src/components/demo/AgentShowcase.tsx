@@ -8,14 +8,14 @@ import './AgentShowcase.css';
 
 function ValueViz({ label }: { label: string }) {
   const { x } = useX();
-  return <SportsBrainArt label={label} l1={x('ANÁLISE COM IA', 'AI ANALYSIS', 'ANÁLISIS CON IA')} l2={x('ODDS · PROBABILIDADE', 'ODDS · PROBABILITY', 'CUOTAS · PROBABILIDAD')} />;
+  return <SportsBrainArt label={label} l1={x('TRADING COM IA', 'AI TRADING', 'TRADING CON IA')} l2={x('ODDS · PROBABILIDADE', 'ODDS · PROBABILITY', 'CUOTAS · PROBABILIDAD')} />;
 }
 
-export function AgentShowcase({ variant = 'light', onEnter, showDisclaimer = true }: { variant?: 'light' | 'dark'; onEnter?: () => void; showDisclaimer?: boolean }) {
+export function AgentShowcase({ variant = 'light', onEnter, showDisclaimer = true, showOtherAgents = true }: { variant?: 'light' | 'dark'; onEnter?: () => void; showDisclaimer?: boolean; showOtherAgents?: boolean }) {
   const { x, loc } = useX();
   const off = [
-    { id: 'prediction', Art: PredictionArt, Icon: Vote, color: '#A78BFA', name: x('Mercados de previsão', 'Prediction Markets', 'Mercados de predicción'), tag: x('Probabilidades', 'Probabilities', 'Probabilidades'), desc: x('Próximo lançamento. Ainda não está ativo nesta demo.', 'Next release. Not active in this demo yet.', 'Próximo lanzamiento. Aún no está activo en esta demo.') },
-    { id: 'casino', Art: CasinoArt, Icon: Dices, color: '#FF4FA3', name: x('Cassino', 'Casino', 'Casino'), tag: x('Rodadas e mesas', 'Rounds and tables', 'Rondas y mesas'), desc: x('Próximo lançamento. Ainda não está ativo nesta demo.', 'Next release. Not active in this demo yet.', 'Próximo lanzamiento. Aún no está activo en esta demo.') },
+    { id: 'prediction', Art: PredictionArt, Icon: Vote, color: '#99B0D5', name: x('Mercados de previsão', 'Prediction Markets', 'Mercados de predicción'), tag: x('Probabilidades', 'Probabilities', 'Probabilidades'), desc: x('Próximo lançamento. Ainda não está ativo nesta demo.', 'Next release. Not active in this demo yet.', 'Próximo lanzamiento. Aún no está activo en esta demo.') },
+    { id: 'casino', Art: CasinoArt, Icon: Dices, color: '#D7BE70', name: x('Cassino', 'Casino', 'Casino'), tag: x('Rodadas e mesas', 'Rounds and tables', 'Rondas y mesas'), desc: x('Próximo lançamento. Ainda não está ativo nesta demo.', 'Next release. Not active in this demo yet.', 'Próximo lanzamiento. Aún no está activo en esta demo.') },
   ];
   const sportsNext = x('Ainda não disponível', 'Not live yet', 'Aún no disponible');
   const sports = [x('Futebol', 'Football', 'Fútbol'), x('Basquete', 'Basketball', 'Baloncesto'), x('Tênis', 'Tennis', 'Tenis'), 'UFC'];
@@ -35,7 +35,7 @@ export function AgentShowcase({ variant = 'light', onEnter, showDisclaimer = tru
       </div>
       <ValueViz label={x('Ilustração: odds, probabilidade e oportunidade de valor', 'Illustration: odds, probability and value opportunity', 'Ilustración: cuotas, probabilidad y oportunidad de valor')} />
     </article>
-    <div className="agx-row">
+    {showOtherAgents && <div className="agx-row">
       <article data-testid="card-agent-crypto" className="agx-crypto"><CryptoBarsArt />
         <div className="agx-head"><span data-testid="status-agent-crypto" className="agx-live"><span className="console-dot !h-1.5 !w-1.5" />{x('Disponível agora', 'Available now', 'Disponible ahora')}</span><h3>{x('Cripto', 'Crypto', 'Cripto')}</h3></div>
         <div className="agx-mid">
@@ -54,6 +54,6 @@ export function AgentShowcase({ variant = 'light', onEnter, showDisclaimer = tru
           <a.Art />
         </li>)}
       </ul>
-    </div>
+    </div>}
   </section>;
 }

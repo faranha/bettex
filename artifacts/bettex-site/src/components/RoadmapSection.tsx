@@ -9,23 +9,23 @@ const stops = [
     tag: 'ALFA · SEED',
     date: 'Outubro de 2026',
     dateTime: '2026-10',
-    title: 'ALFA com token e audiência semente',
-    description: 'Colocar o produto em operação com uma audiência semente, contratos básicos, a IA BTEX e um agente de trading básico com Allora. Emitir o token e disponibilizá-lo gradualmente em uma pool de liquidez, sem venda TGE.',
+    title: 'ALFA com token de teste e audiência semente',
+    description: 'Validar o produto com uma audiência semente, token de teste e contratos básicos em testnet, a IA BTEX e um agente de trading básico com Allora. Usar apenas tokens de teste, sem dinheiro real, venda TGE ou lançamento do token em produção.',
     current: true,
   },
   {
-    tag: 'CAPTAÇÃO E FORMALIZAÇÃO',
+    tag: 'PRÉ-VENDA · CAPTAÇÃO · FORMALIZAÇÃO',
     date: 'Novembro de 2026',
     dateTime: '2026-11',
-    title: 'Investidores e estruturação da empresa',
-    description: 'Captar investidores-anjo, formalizar a empresa e estruturar o negócio para a próxima fase.',
+    title: 'Pré-venda, investidores e estruturação da empresa',
+    description: 'Realizar a pré-venda do token, captar investidores-anjo, formalizar a empresa e estruturar o negócio para a próxima fase.',
   },
   {
-    tag: 'BETA · GO TO MARKET',
+    tag: 'BETA · TGE · GO TO MARKET',
     date: 'Janeiro de 2027',
     dateTime: '2027-01',
-    title: 'Lançamento do BETA e go to market',
-    description: 'Lançar a versão BETA e iniciar o go to market. Ampliar o acesso ao produto a partir dos testes e aprendizados do ALFA.',
+    title: 'Lançamento do BETA, TGE e go to market',
+    description: 'Lançar a versão BETA, realizar o evento de geração do token (TGE) e iniciar o go to market. Ampliar o acesso ao produto a partir dos testes e aprendizados do ALFA.',
     featured: true,
   },
   {
@@ -70,7 +70,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
           </div>
           <div className="roadmap__intro-side">
             <span className="roadmap__intro-index" aria-hidden="true">01 → {total}</span>
-            <p>ALFA seed em outubro de 2026, com token e primeiros agentes. Captação e formalização em novembro de 2026. BETA e go to market em janeiro de 2027.</p>
+            <p>ALFA seed em outubro de 2026, com token de teste em testnet e primeiros agentes. Pré-venda, captação e formalização em novembro de 2026. BETA, TGE e go to market em janeiro de 2027.</p>
           </div>
         </header>
 

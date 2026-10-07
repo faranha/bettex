@@ -32,3 +32,15 @@ O registro financeiro e o avanço do estado devem ser confirmados na mesma trans
 **Why:** Salvar apenas o estado em uma execução de fundo pode deixar posições encerradas fora do arquivo paginado até a próxima visita. Isso viola a emulação independente e acumula uma fila desnecessária no estado.
 
 **How to apply:** Verificar todos os percursos de retorno da execução, não apenas requisições da interface. O agendador interno não deve criar usuários fictícios adicionais nem aceitar comandos ou impersonar uma conta.
+
+O topo do resumo da rodada deve mostrar um contador ao vivo, progresso do período e um ID explícito. Rodadas atuais e passadas precisam exibir seus IDs também no histórico.
+
+**Why:** O criador pediu esses três elementos no resumo da Tesouraria para saber quando a rodada termina e identificar todas as rodadas.
+
+**How to apply:** Usar o identificador persistido, sem criar uma segunda numeração só na interface nem renumerar registros antigos. O ID deve coincidir entre resumo, atividade e histórico. Contador e progresso seguem os instantes reais de abertura e encerramento, não o momento da visita nem os ticks do gráfico.
+
+O histórico deve ser completo por rodada, com todos os detalhes registrados. O link ao lado da rodada na Tesouraria abre a página Histórico com essa rodada selecionada.
+
+**Why:** O criador pediu “history per round full round history with all details, and this link will take to the history page”.
+
+**How to apply:** Preservar a seleção ao navegar e recarregar. Reunir a foto financeira, distribuição, participação e atividades da mesma rodada; não misturar dados atuais com rodadas passadas. Uma fonte de resumo `seeded_demo` não prova ausência de registros individuais: pode existir um arquivo persistido do roteiro. A disponibilidade deve vir dos registros efetivamente retidos, nunca de uma suposição baseada na origem do resumo.

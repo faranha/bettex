@@ -13,12 +13,12 @@ function Net({ c, d }: { c: string; d: string }) {
 export function CryptoBarsArt() {
   const h = [30, 46, 38, 62, 50, 78, 58, 90, 70, 100, 80, 66];
   return <svg className="agx-cbg" viewBox="0 0 240 100" preserveAspectRatio="none" aria-hidden focusable="false">
-    <defs><linearGradient id="agx-cb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#38BDF8" /><stop offset="1" stopColor="#4F46E5" stopOpacity=".35" /></linearGradient></defs>
+    <defs><linearGradient id="agx-cb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#8BA8CD" /><stop offset="1" stopColor="#375781" stopOpacity=".35" /></linearGradient></defs>
     {h.map((v, i) => <g key={i}>
       <rect x={6 + i * 19.5} y={100 - v} width="13" height={v} rx="2.5" fill="url(#agx-cb)" opacity={0.3 + (i % 4) * 0.1} />
-      <rect x={6 + i * 19.5} y={100 - v} width="13" height="2" rx="1" fill="#BAE6FD" opacity=".7" />
+      <rect x={6 + i * 19.5} y={100 - v} width="13" height="2" rx="1" fill="#C3D1E5" opacity=".7" />
     </g>)}
-    <path d="M6 70 45 52 84 60 123 30 162 38 201 8" fill="none" stroke="#7DD3FC" strokeWidth=".9" opacity=".6" vectorEffect="non-scaling-stroke" />
+    <path d="M6 70 45 52 84 60 123 30 162 38 201 8" fill="none" stroke="#8BA8CD" strokeWidth=".9" opacity=".6" vectorEffect="non-scaling-stroke" />
   </svg>;
 }
 
@@ -60,28 +60,28 @@ export function SportsBrainArt({ label, l1, l2 }: { label: string; l1: string; l
 export function PredictionArt() {
   return <svg {...frame}>
     <defs>
-      <linearGradient id="agx-p1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#C4B5FD" /><stop offset="1" stopColor="#6D28D9" /></linearGradient>
-      <linearGradient id="agx-p3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#2A1A5E" /><stop offset="1" stopColor="#150B3A" /></linearGradient>
+      <linearGradient id="agx-p1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#B7C9E2" /><stop offset="1" stopColor="#5274A0" /></linearGradient>
+      <linearGradient id="agx-p3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#1D304F" /><stop offset="1" stopColor="#101C34" /></linearGradient>
     </defs>
-    <Net c="#A78BFA" d="M18 20 60 8 104 18 150 6 184 24" />
-    <g transform="translate(112 12) rotate(7 40 30)"><rect width="76" height="52" rx="8" fill="url(#agx-p3)" stroke="#8B5CF6" /><rect x="9" y="10" width="34" height="5" rx="2.5" fill="#A78BFA" /><rect x="9" y="22" width="52" height="4" rx="2" fill="#6D4FD0" /><rect x="9" y="32" width="28" height="4" rx="2" fill="#6D4FD0" /><circle cx="60" cy="40" r="5" fill="#22D3EE" /></g>
-    <g transform="translate(30 10) rotate(-5 36 30)"><rect y="4" width="80" height="60" rx="9" fill="#08031F" opacity=".55" />
-      <rect width="80" height="60" rx="9" fill="url(#agx-p3)" stroke="#A78BFA" strokeWidth="1.2" /><path d="M0 9a9 9 0 0 1 9-9h62a9 9 0 0 1 9 9v10H0z" fill="url(#agx-p1)" />
-      <rect x="19" y="-4" width="4" height="11" rx="2" fill="#DDD6FE" /><rect x="57" y="-4" width="4" height="11" rx="2" fill="#DDD6FE" />
-      {[0, 1, 2, 3, 4, 5, 6, 7].map(i => <rect key={i} x={9 + (i % 4) * 16} y={26 + Math.floor(i / 4) * 16} width="11" height="10" rx="2.5" fill={i === 5 ? '#22D3EE' : i === 2 ? '#E879F9' : '#4B3A93'} opacity={i === 5 || i === 2 ? 1 : .9} />)}</g>
-    <circle cx="166" cy="54" r="11" fill="#150B3A" stroke="#22D3EE" strokeWidth="1.5" /><path d="M166 48v6l5 3" fill="none" stroke="#22D3EE" strokeWidth="2" strokeLinecap="round" />
+    <Net c="#8BA8CD" d="M18 20 60 8 104 18 150 6 184 24" />
+    <g transform="translate(112 12) rotate(7 40 30)"><rect width="76" height="52" rx="8" fill="url(#agx-p3)" stroke="#6583AC" /><rect x="9" y="10" width="34" height="5" rx="2.5" fill="#8BA8CD" /><rect x="9" y="22" width="52" height="4" rx="2" fill="#5274A0" /><rect x="9" y="32" width="28" height="4" rx="2" fill="#5274A0" /><circle cx="60" cy="40" r="5" fill="#D7BE70" /></g>
+    <g transform="translate(30 10) rotate(-5 36 30)"><rect y="4" width="80" height="60" rx="9" fill="#0B1526" opacity=".55" />
+      <rect width="80" height="60" rx="9" fill="url(#agx-p3)" stroke="#8BA8CD" strokeWidth="1.2" /><path d="M0 9a9 9 0 0 1 9-9h62a9 9 0 0 1 9 9v10H0z" fill="url(#agx-p1)" />
+      <rect x="19" y="-4" width="4" height="11" rx="2" fill="#D6DFED" /><rect x="57" y="-4" width="4" height="11" rx="2" fill="#D6DFED" />
+      {[0, 1, 2, 3, 4, 5, 6, 7].map(i => <rect key={i} x={9 + (i % 4) * 16} y={26 + Math.floor(i / 4) * 16} width="11" height="10" rx="2.5" fill={i === 5 ? '#D7BE70' : i === 2 ? '#9AB2D1' : '#3E587F'} opacity={i === 5 || i === 2 ? 1 : .9} />)}</g>
+    <circle cx="166" cy="54" r="11" fill="#101C34" stroke="#D7BE70" strokeWidth="1.5" /><path d="M166 48v6l5 3" fill="none" stroke="#D7BE70" strokeWidth="2" strokeLinecap="round" />
   </svg>;
 }
 
 export function CasinoArt() {
   return <svg {...frame}>
     <defs>
-      <linearGradient id="agx-c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#FDE68A" /><stop offset="1" stopColor="#D97706" /></linearGradient>
-      <linearGradient id="agx-c2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#F472B6" /><stop offset="1" stopColor="#9D174D" /></linearGradient>
-      <linearGradient id="agx-c3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#EC4899" /><stop offset="1" stopColor="#701A75" /></linearGradient>
+      <linearGradient id="agx-c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#E1CB81" /><stop offset="1" stopColor="#AC8A3E" /></linearGradient>
+      <linearGradient id="agx-c2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#8DA8CF" /><stop offset="1" stopColor="#375781" /></linearGradient>
+      <linearGradient id="agx-c3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#47658C" /><stop offset="1" stopColor="#203750" /></linearGradient>
     </defs>
-    <Net c="#F472B6" d="M18 20 56 10 96 22 150 8 184 24" />
-    <ellipse cx="100" cy="70" rx="48" ry="4" fill="#12020E" opacity=".6" />
+    <Net c="#7894BD" d="M18 20 56 10 96 22 150 8 184 24" />
+    <ellipse cx="100" cy="70" rx="48" ry="4" fill="#0B1526" opacity=".6" />
     <path d="M62 38h76v30a4 4 0 0 1-4 4H66a4 4 0 0 1-4-4z" fill="url(#agx-c3)" />
     <path d="M62 38h38v34H66a4 4 0 0 1-4-4z" fill="#000" opacity=".12" />
     <rect x="56" y="26" width="88" height="15" rx="4" fill="url(#agx-c2)" /><rect x="56" y="26" width="88" height="4" rx="2" fill="#fff" opacity=".25" />
@@ -89,6 +89,6 @@ export function CasinoArt() {
     <path d="M100 26c-10-17-28-14-22-4 4 6 14 4 22 4zM100 26c10-17 28-14 22-4-4 6-14 4-22 4z" fill="url(#agx-c1)" stroke="#92400E" strokeWidth="1" />
     <circle cx="100" cy="26" r="4.5" fill="#FDE68A" stroke="#92400E" strokeWidth="1" />
     <g className="agx-conf"><circle cx="164" cy="34" r="9" fill="url(#agx-c1)" stroke="#92400E" strokeWidth="1.2" /><circle cx="164" cy="34" r="4" fill="none" stroke="#92400E" strokeWidth="1" />
-      <rect x="40" y="30" width="7" height="7" rx="2" fill="#22D3EE" transform="rotate(25 44 34)" /><rect x="150" y="10" width="7" height="7" rx="2" fill="#E9D5FF" transform="rotate(-20 154 14)" /><path d="M170 56l3 7 3-7z" fill="#F472B6" /><path d="M52 52l3 7 3-7z" fill="#FBBF24" /></g>
+      <rect x="40" y="30" width="7" height="7" rx="2" fill="#94AFCF" transform="rotate(25 44 34)" /><rect x="150" y="10" width="7" height="7" rx="2" fill="#D6DFED" transform="rotate(-20 154 14)" /><path d="M170 56l3 7 3-7z" fill="#D7BE70" /><path d="M52 52l3 7 3-7z" fill="#D7BE70" /></g>
   </svg>;
 }

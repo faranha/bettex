@@ -35,9 +35,9 @@
 
 ## Current Roadmap: ALFA seed, funding, BETA
 
-- October 2026: ALFA seed in operation with seed audience, token emitted/available gradually via pool, without TGE sale, basic contracts, BTEX AI, and basic trading agent with Allora. Do not present ALFA as a mere mock launch without a token.
-- November 2026: angel investor funding, formalization, and company structuring.
-- January 2027: BETA launch and go-to-market. The broad go-to-market belongs to BETA, not ALFA seed.
+- October 2026: ALFA seed validation with a seed audience, test token and basic contracts on testnet, BTEX AI, and basic trading agent with Allora. This is a test token, not a live production token: no real money, TGE sale or production token launch in ALFA. Do not present ALFA as a mere mock launch without a test token.
+- November 2026: token pre-sale, angel investor funding, formalization, and company structuring.
+- January 2027: BETA launch, token generation event (TGE), and go-to-market. The TGE and broad go-to-market belong to BETA, not ALFA seed.
 - Preserve subsequent stages: markets in February 2027, open query in March, new agents in June, and BETTEX Bank in December 2027.
 - Same milestones on the homepage and in the Pitch. Inside ALFA and BETA, static box “Coming soon, features”, without opening a list. The creator postponed the inclusion of features for both. Do not invent feature lists.
 - These rules replace previous schedules for token launch in December and preparation prior to ALFA. The public schedule does not state that contracts have already been issued nor does it authorize automatic activation of financial operations.
