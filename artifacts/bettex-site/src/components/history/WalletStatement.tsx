@@ -1,11 +1,12 @@
 /** @jsxImportSource react */
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearch } from 'wouter';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from '@/components/demo/ui';
 import { isDemoSession } from '@/components/demo/demo-session';
 import { formatBrazilDateTime } from '@/components/demo/brazil-time';
 import { useWalletHistory } from './use-wallet-history';
-import { brlReference, decimalQuantity, filterWalletHistory, type WalletHistoryRow } from './wallet-history-model';
+import { brlReference, decimalQuantity, filterWalletHistory, walletFilterFromSearch, type WalletHistoryRow } from './wallet-history-model';
 import { downloadWalletHistory } from './wallet-history-export';
 import { walletHistoryExamples } from './wallet-history-examples';
 
@@ -69,12 +70,14 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
   const nativeOk = !isDemoSession(d.profile) && d.profile.provider === 'native';
   const [mode, setMode] = useState<'native' | 'demo'>(nativeOk ? 'native' : 'demo');
   const [examples, setExamples] = useState(false);
-  const [wallet, setWallet] = useState('');
+  const routeSearch = useSearch();
+  const [wallet, setWallet] = useState(() => walletFilterFromSearch(routeSearch));
+  useEffect(() => { setWallet(walletFilterFromSearch(routeSearch)); }, [routeSearch]);
   const [type, setType] = useState('');
   const [state, setState] = useState('');
   const [search, setSearch] = useState('');
   const q = useWalletHistory(mode, d.profile.accountId);
-  const actual = useMemo(() => q.data ?? [], [q.data]);
+  const actual = useMemo(() => q.data?.rows ?? [], [q.data]);
   const sample = useMemo(() => walletHistoryExamples(d.serverNow), [d.serverNow]);
   const base = examples ? sample : actual;
   const filters = { wallet, type, state, search };
@@ -110,18 +113,21 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
   const row = (r: WalletHistoryRow) => {
     const kindLabel = KINDS[r.kind] ? tl(KINDS, r.kind, TYPES.operation) : typeLabel(r.type);
     const swapLike = r.type === 'swap' || r.type === 'purchase';
-    const pending = !GOOD.has(r.state) && !BAD.has(r.state) && r.state !== 'simulated';
+    const requestRecord = r.kind === 'financial_requested';
+    const pending = !requestRecord && !GOOD.has(r.state) && !BAD.has(r.state) && r.state !== 'simulated';
     const sCls = GOOD.has(r.state) ? 'bg-[#DDF0E4] text-[#0A6657]' : BAD.has(r.state) ? 'bg-[#F6DADA] text-[#8C2B2B]' : 'bg-[#F0E9DA] text-[#5B6B85]';
-    const noCredit = BAD.has(r.state) || r.kind === 'financial_requested' && r.state !== 'completed';
+    const noCredit = BAD.has(r.state);
     const hasFee = r.feeUsdc !== null && Number(r.feeUsdc) !== 0;
     return <li key={r.id} data-testid={`statement-row-${r.id}`} className="grid min-w-0 gap-3 rounded-2xl border border-[#E4DCCB] bg-white p-3 sm:p-4 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1.3fr)_minmax(0,1fr)]">
       <div className="min-w-0">
         <div className="flex flex-wrap gap-1.5">
           <span className={`${chip} ${TYPE_TONE[r.type] ?? 'bg-[#EEE9DD] text-[#3D4A63]'}`}>{typeLabel(r.type)}</span>
-          <span className={`${chip} ${sCls}`}>{stateLabel(r.state)}</span>
+          <span className={`${chip} ${sCls}`}>{requestRecord && !BAD.has(r.state) ? x('Solicitação registrada', 'Request logged', 'Solicitud registrada') : stateLabel(r.state)}</span>
           {r.example && <span className={`${chip} bg-[#F6E8CC] text-[#7A5410]`}>{x('Exemplo, não é saldo', 'Example, not a balance', 'Ejemplo, no es saldo')}</span>}
           {r.reconstructed && <span className={`${chip} bg-[#E3E8F7] text-[#2F4A9A]`}>{x('Reconstruído', 'Reconstructed', 'Reconstruido')}</span>}
           {r.wallets.map(w => <span key={w} className={`${chip} border border-[#E4DCCB] text-[#3D4A63]`}>{x('Carteira', 'Wallet', 'Billetera')} {w}</span>)}
+          {r.details.sourceWallet === 'earnings' && <span className={`${chip} border border-[#D9BD7D] bg-[#FFF5D9]`}>{x('Carteira de rendimentos', 'Earnings wallet', 'Cartera de ganancias')}</span>}
+          {r.kind === 'transfer' && r.details.targetWallet === 'dollar' && <span className={`${chip} border border-[#E4DCCB]`}>{x('Destino: carteira em dólares', 'Destination: dollar wallet', 'Destino: cartera en dólares')}</span>}
         </div>
         <p className="mt-2 break-words text-sm font-bold">{kindLabel}</p>
         <p className="text-xs text-[#5B6B85]">{dt(r.at)} · {x('Horário de Brasília', 'Brasília time', 'Hora de Brasilia')}</p>
@@ -136,12 +142,13 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
           : <p className="mt-1 break-words text-base font-extrabold tabular-nums">{qty(r.amount, r.asset)} {r.asset ?? ''}</p>}
         {swapLike && !r.paidAmount && r.asset && <p className="text-xs text-[#5B6B85]">{x('Afeta USDC e BETTEX', 'Affects USDC and BETTEX', 'Afecta USDC y BETTEX')}</p>}
         {brlLine(r, false)}
+        {requestRecord && <p className="mt-1 text-xs text-[#5B6B85]">{x('Registro da solicitação. A liquidação aparece no comprovante separado; não é uma segunda cobrança.', 'Request audit record. Settlement appears in its separate receipt; this is not a second charge.', 'Registro de la solicitud. La liquidación aparece en su comprobante separado; no es un segundo cobro.')}</p>}
         {pending && <p className="mt-1 text-xs font-semibold text-[#7A5410]">{x('Ainda não é um crédito concluído', 'Not a completed credit yet', 'Aún no es un crédito completado')}</p>}
         {noCredit && <p className="mt-1 text-xs font-semibold text-[#8C2B2B]">{x('Solicitação sem crédito concluído', 'Request without completed credit', 'Solicitud sin crédito completado')}</p>}
       </div>
       <div className="grid min-w-0 content-start gap-2">
         <div className="min-w-0 rounded-xl border border-dashed border-[#D9CFB8] p-3">
-          <p className="text-[11px] font-bold uppercase tracking-wide text-[#5B6B85]">{x('Taxa', 'Fee', 'Comisión')}</p>
+          <p className="text-[11px] font-bold uppercase tracking-wide text-[#5B6B85]">{requestRecord ? x('Taxa cotada', 'Quoted fee', 'Comisión cotizada') : x('Taxa', 'Fee', 'Comisión')}</p>
           {hasFee ? <><p className="break-words text-sm font-bold tabular-nums">{qty(r.feeUsdc, 'USDC')} USDC</p>{brlLine(r, true)}</> : <p className="text-sm text-[#8A94A6]">{r.feeUsdc === null ? x('Taxa em USDC não registrada', 'USDC fee not recorded', 'Comisión en USDC no registrada') : x('Sem taxa em USDC', 'No USDC fee', 'Sin comisión en USDC')}</p>}
           {r.details.gasWei && <p className="mt-1 break-all text-xs tabular-nums">{x('Gás da rede', 'Network gas', 'Gas de la red')}: {qty(decimalQuantity(r.details.gasWei, 18))} ETH</p>}
         </div>
@@ -203,7 +210,7 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
       <label className={lbl}>{x('Carteira', 'Wallet', 'Billetera')}
         <select id="filter-statement-wallet" data-testid="filter-statement-wallet" className={sel} value={wallet} onChange={e => setWallet(e.target.value)}>
           <option value="">{x('Todas as carteiras', 'All wallets', 'Todas las billeteras')}</option>
-          <option value="USDC">USDC</option><option value="BETTEX">BETTEX</option><option value="ETH">{x('ETH', 'ETH', 'ETH')} ({x('gás', 'gas', 'gas')})</option>
+          <option value="earnings">{x('Rendimentos', 'Earnings', 'Ganancias')}</option><option value="USDC">USDC</option><option value="BETTEX">BETTEX</option><option value="ETH">{x('ETH', 'ETH', 'ETH')} ({x('gás', 'gas', 'gas')})</option>
           {addresses.map(address => <option key={address} value={address}>{x('Endereço', 'Address', 'Dirección')} · {address}</option>)}
         </select></label>
       <label className={lbl}>{x('Tipo de transação', 'Transaction type', 'Tipo de transacción')}
@@ -226,12 +233,17 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
         <p>{x('Não foi possível carregar o extrato.', 'Could not load the statement.', 'No se pudo cargar el extracto.')}</p>
         <button type="button" className={btn} onClick={() => q.refetch()}>{x('Tentar novamente', 'Try again', 'Reintentar')}</button></div> : null}
 
+    {!examples && !q.isError && q.data?.syncUnavailable && <div role="status" className="grid justify-items-start gap-2 rounded-2xl border border-[#E5CC87] bg-[#FFF5D9] p-4 text-sm text-[#73531B]" data-testid="statement-sync-warning">
+      <p>{x('A sincronização ao vivo está indisponível. Exibindo registros salvos; atividades recentes da blockchain podem não aparecer.', 'Live sync is unavailable. Showing saved records; recent blockchain activity may be missing.', 'La sincronización en vivo no está disponible. Se muestran registros guardados; puede faltar actividad reciente de la blockchain.')}</p>
+      <button type="button" className={btn} disabled={q.isFetching} onClick={() => void q.refetch()}>{x('Tentar sincronizar', 'Retry sync', 'Reintentar sincronización')}</button>
+    </div>}
+
     {(examples || (!q.isLoading && !q.isError)) && <>
       <p className="text-xs text-[#5B6B85]" aria-live="polite" data-testid="statement-count">
         {x(`${rows.length} de ${base.length} registros`, `${rows.length} of ${base.length} records`, `${rows.length} de ${base.length} registros`)}{!examples && q.isFetching ? ` · ${x('Atualizando', 'Refreshing', 'Actualizando')}` : ''}
       </p>
       {rows.length === 0 ? <div className="grid justify-items-center gap-2 rounded-2xl border border-dashed border-[#D9CFB8] p-8 text-center" data-testid="statement-empty">
-        <p className="text-sm font-bold">{filtered ? x('Nenhum registro com esses filtros.', 'No records match these filters.', 'Ningún registro coincide con estos filtros.') : x('Nenhuma transação ainda.', 'No transactions yet.', 'Aún no hay transacciones.')}</p>
+        <p className="text-sm font-bold">{filtered ? x('Nenhum registro com esses filtros.', 'No records match these filters.', 'Ningún registro coincide con estos filtros.') : !examples && q.data?.syncUnavailable ? x('Nenhuma transação salva ainda.', 'No saved transactions yet.', 'Aún no hay transacciones guardadas.') : x('Nenhuma transação ainda.', 'No transactions yet.', 'Aún no hay transacciones.')}</p>
         {filtered && <button type="button" className={btn} data-testid="statement-reset" onClick={reset}>{x('Limpar filtros', 'Reset filters', 'Limpiar filtros')}</button>}
       </div> : <ul className="grid min-w-0 gap-3">{rows.map(row)}</ul>}
     </>}

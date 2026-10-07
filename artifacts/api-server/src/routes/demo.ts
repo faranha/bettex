@@ -123,6 +123,23 @@ router.all("/demo/simulation", async (req, res) => {
     res.status(code === "simulation_not_found" ? 404 : known.includes(code) ? 409 : 503).json({ code: known.includes(code) ? code : "simulation_unavailable" });
   }
 });
+router.get("/demo/treasury/activity", async (req, res) => {
+  const roundId = String(req.query.roundId ?? ""), view = String(req.query.view ?? "history");
+  const page = Number(req.query.page ?? 1), pageSize = Number(req.query.pageSize ?? 20);
+  const snapshot = req.query.snapshot === undefined ? undefined : String(req.query.snapshot);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(roundId) || !Number.isFinite(Date.parse(`${roundId}T00:00:00Z`))
+    || new Date(`${roundId}T00:00:00Z`).toISOString().slice(0, 10) !== roundId
+    || !["closed", "fees", "history"].includes(view) || !Number.isInteger(page) || page < 1 || page > 100000
+    || !Number.isInteger(pageSize) || pageSize < 1 || pageSize > 50 || snapshot !== undefined && !/^\d{1,20}$/.test(snapshot)) {
+    res.status(400).json({ code: "invalid_filters" }); return;
+  }
+  res.set("Cache-Control", "no-store");
+  try {
+    await userDashboard(req, res);
+    const { treasuryActivityPage } = await import("../lib/treasury-activity-store");
+    res.json(await treasuryActivityPage(roundId, view as "closed" | "fees" | "history", page, pageSize, snapshot));
+  } catch (error) { errorResponse(req, res, error); }
+});
 router.get("/demo/history", async (req, res) => {
   try {
     const filters = historyQuery.safeParse(req.query);
@@ -173,7 +190,7 @@ router.get("/profile-pictures/:id", async (req, res) => {
 });
 router.patch("/demo/profile", async (req, res) => {
   const input = UpdateDemoProfileBody.safeParse(req.body);
-  if (!input.success || input.data.name.trim().length < 2) { res.status(400).json({ error: "invalid_profile" }); return; }
+  if (!input.success || input.data.name.trim().length < 2 || (input.data.nickname !== undefined && !input.data.nickname.trim())) { res.status(400).json({ error: "invalid_profile" }); return; }
   try {
     let previousAvatar: string | null | undefined;
     if (input.data.avatarPath !== undefined) {

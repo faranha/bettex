@@ -16,4 +16,5 @@ export const DemoMovementKind = {
   withdraw: 'withdraw',
   send: 'send',
   distribution: 'distribution',
+  transfer: 'transfer',
 } as const;

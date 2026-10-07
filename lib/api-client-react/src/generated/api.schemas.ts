@@ -2110,6 +2110,15 @@ export const DemoMovementInputKind = {
   swap: 'swap',
   withdraw: 'withdraw',
   send: 'send',
+  transfer: 'transfer',
+} as const;
+
+export type DemoMovementInputSourceWallet = typeof DemoMovementInputSourceWallet[keyof typeof DemoMovementInputSourceWallet];
+
+
+export const DemoMovementInputSourceWallet = {
+  dollar: 'dollar',
+  earnings: 'earnings',
 } as const;
 
 export type DemoMovementInputAsset = typeof DemoMovementInputAsset[keyof typeof DemoMovementInputAsset];
@@ -2123,6 +2132,7 @@ export const DemoMovementInputAsset = {
 export interface DemoMovementInput {
   requestId: string;
   kind: DemoMovementInputKind;
+  sourceWallet?: DemoMovementInputSourceWallet;
   asset: DemoMovementInputAsset;
   /**
      * @minimum 0.000001
@@ -2164,6 +2174,42 @@ export interface DemoBalances {
   updatedAt: string;
 }
 
+export interface StakingChartPoint {
+  /**
+     * @minimum 0
+     * @maximum 1440
+     */
+  elapsedMinutes: number;
+  profitUsdc: number;
+}
+
+export type StakingChartScenarioSource = typeof StakingChartScenarioSource[keyof typeof StakingChartScenarioSource];
+
+
+export const StakingChartScenarioSource = {
+  test_scenario: 'test_scenario',
+} as const;
+
+export interface StakingChartScenario {
+  source: StakingChartScenarioSource;
+  /** ISO 8601 timestamp marking the emulated round start. */
+  roundStartedAt: string;
+  /** ISO 8601 wall-clock timestamp for the next test tick. */
+  nextTickAt: string;
+  /**
+     * @minimum 0
+     * @maximum 1440
+     */
+  elapsedMinutes: number;
+  /** @minimum 0 */
+  tick: number;
+  /** @minimum 1 */
+  tickIntervalMs: number;
+  /** @minimum 1 */
+  minutesPerTick: number;
+  points: StakingChartPoint[];
+}
+
 export type DemoStakingStatus = typeof DemoStakingStatus[keyof typeof DemoStakingStatus];
 
 
@@ -2173,6 +2219,8 @@ export const DemoStakingStatus = {
 } as const;
 
 export interface DemoStaking {
+  /** Isolated randomized chart emulation, never an actual trading result or ledger payout. */
+  chartScenario?: StakingChartScenario | null;
   eligibleTokens: number;
   /**
      * Total participating BETTEX in the simulated pool
@@ -2387,6 +2435,15 @@ export const DemoMovementKind = {
   withdraw: 'withdraw',
   send: 'send',
   distribution: 'distribution',
+  transfer: 'transfer',
+} as const;
+
+export type DemoMovementSourceWallet = typeof DemoMovementSourceWallet[keyof typeof DemoMovementSourceWallet];
+
+
+export const DemoMovementSourceWallet = {
+  dollar: 'dollar',
+  earnings: 'earnings',
 } as const;
 
 export type DemoMovementAsset = typeof DemoMovementAsset[keyof typeof DemoMovementAsset];
@@ -2420,6 +2477,7 @@ export const DemoMovementSourceAsset = {
 export interface DemoMovement {
   id: string;
   kind: DemoMovementKind;
+  sourceWallet?: DemoMovementSourceWallet;
   asset: DemoMovementAsset;
   amount: number;
   feeUsdc: number;
@@ -2437,6 +2495,7 @@ export interface DemoTreasuryFeeBreakdown {
   swap: number;
   withdraw: number;
   send: number;
+  transfer?: number;
 }
 
 export type DemoTreasuryRoundCoverage = typeof DemoTreasuryRoundCoverage[keyof typeof DemoTreasuryRoundCoverage];
@@ -2554,6 +2613,79 @@ export interface DemoRound {
   source?: DemoRoundSource;
   treasurySnapshot?: DemoTreasuryRound;
   participationSnapshot?: DemoRoundParticipationSnapshot;
+}
+
+export type DemoTreasuryActivityPageSource = typeof DemoTreasuryActivityPageSource[keyof typeof DemoTreasuryActivityPageSource];
+
+
+export const DemoTreasuryActivityPageSource = {
+  emulated: 'emulated',
+} as const;
+
+export type DemoTreasuryActivityItemKind = typeof DemoTreasuryActivityItemKind[keyof typeof DemoTreasuryActivityItemKind];
+
+
+export const DemoTreasuryActivityItemKind = {
+  position_closed: 'position_closed',
+  operator_fee: 'operator_fee',
+  checkpoint: 'checkpoint',
+} as const;
+
+export type DemoTreasuryActivityItemSource = typeof DemoTreasuryActivityItemSource[keyof typeof DemoTreasuryActivityItemSource];
+
+
+export const DemoTreasuryActivityItemSource = {
+  emulated: 'emulated',
+  modeled_baseline: 'modeled_baseline',
+  recorded_checkpoint: 'recorded_checkpoint',
+} as const;
+
+/**
+ * @nullable
+ */
+export type DemoTreasuryActivityItemFeeKind = typeof DemoTreasuryActivityItemFeeKind[keyof typeof DemoTreasuryActivityItemFeeKind] | null;
+
+
+export const DemoTreasuryActivityItemFeeKind = {
+  onramp: 'onramp',
+  swap: 'swap',
+  withdraw: 'withdraw',
+  send: 'send',
+  transfer: 'transfer',
+} as const;
+
+export interface DemoTreasuryActivityItem {
+  id: string;
+  at: string;
+  kind: DemoTreasuryActivityItemKind;
+  source: DemoTreasuryActivityItemSource;
+  /** @nullable */
+  agent: string | null;
+  /** @nullable */
+  market: string | null;
+  /** @nullable */
+  capitalUsdc: number | null;
+  /** @nullable */
+  grossUsdc: number | null;
+  /** @nullable */
+  costUsdc: number | null;
+  /** @nullable */
+  netUsdc: number | null;
+  /** @nullable */
+  feeKind: DemoTreasuryActivityItemFeeKind;
+  /** @nullable */
+  feeUsdc: number | null;
+}
+
+export interface DemoTreasuryActivityPage {
+  roundId: string;
+  items: DemoTreasuryActivityItem[];
+  total: number;
+  totalPages: number;
+  page: number;
+  pageSize: number;
+  snapshot: string;
+  source: DemoTreasuryActivityPageSource;
 }
 
 export interface DemoDashboard {
@@ -2684,6 +2816,38 @@ export const GetAlphaTradingAsset = {
   btc: 'btc',
   eth: 'eth',
   sol: 'sol',
+} as const;
+
+export type GetDemoTreasuryActivityParams = {
+/**
+ * @pattern ^\d{4}-\d{2}-\d{2}$
+ */
+roundId: string;
+view?: GetDemoTreasuryActivityView;
+/**
+ * @minimum 1
+ * @maximum 100000
+ */
+page?: number;
+/**
+ * @minimum 1
+ * @maximum 50
+ */
+pageSize?: number;
+/**
+ * @maxLength 20
+ * @pattern ^\d+$
+ */
+snapshot?: string;
+};
+
+export type GetDemoTreasuryActivityView = typeof GetDemoTreasuryActivityView[keyof typeof GetDemoTreasuryActivityView];
+
+
+export const GetDemoTreasuryActivityView = {
+  closed: 'closed',
+  fees: 'fees',
+  history: 'history',
 } as const;
 
 export type GetTestHistoryParams = {

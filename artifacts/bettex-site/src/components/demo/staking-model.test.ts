@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import type { DemoDashboard, NativeTestJourney } from '@workspace/api-client-react';
-import { demoStakingView, nativeStakingView } from './staking-model.ts';
+import { demoStakingView, nativeStakingView, scenarioStakingView } from './staking-model.ts';
 
 test('token ownership share, time-weighted payout share and generated profit stay distinct', () => {
   const d = {
@@ -48,4 +48,49 @@ test('staking is a full-width section integrated in dashboard and all wallet vie
   assert.match(read('../account/AccountSheet.tsx'), /walletContent=\{<StakingCorridor d=\{d\}/);
   assert.match(read('./StakingCorridor.tsx'), /staking-corridor/);
   assert.doesNotMatch(read('./StakingCorridor.tsx'), /position:\s*fixed|w-\[3[0-9][0-9]px\]/);
+});
+
+test('scenario keeps realized path separate from forecast, uses payout weight, and never debits losses', () => {
+  const d = {
+    serverNow: '2026-10-07T11:00:00Z', profile: { authenticated: false, provider: 'anonymous' },
+    treasury: { cycleResultUsdc: -800 },
+    staking: { eligibleTokens: 12500, totalEligibleTokens: 8000000, sharePercent: 0.1, tokenSharePercent: 0.2,
+      poolAllocationUsdc: 0, estimatedUsdc: 0, status: 'active', cycleStartedAt: '2026-10-06T19:00:00Z',
+      nextCycleAt: '2026-10-07T19:00:00Z', chartScenario: {
+        source: 'test_scenario', roundStartedAt: '2026-10-06T19:00:00Z', nextTickAt: '2026-10-07T11:01:00Z',
+        elapsedMinutes: 960, tick: 960, tickIntervalMs: 60000, minutesPerTick: 1,
+        points: [{ elapsedMinutes: 0, profitUsdc: 0 }, { elapsedMinutes: 240, profitUsdc: -6500 },
+          { elapsedMinutes: 960, profitUsdc: -800 }, { elapsedMinutes: 1440, profitUsdc: 1600 }],
+      },
+    },
+  } as DemoDashboard;
+  const s = scenarioStakingView(d)!;
+  assert.equal(s.view.cycleProfitUsdc, -800);
+  assert.equal(s.view.estimatedOwnUsdc, 0);
+  assert.equal(s.view.roundAllocationUsdc, 0);
+  assert.equal(s.timeline.projectedOwnUsdc, 0.4);
+  assert.equal(s.points.at(-1)!.profit, null);
+  assert.equal(s.points.at(-1)!.forecast, 1600);
+  assert.equal(s.points[1]!.forecast, null);
+  assert.equal(d.treasury.cycleResultUsdc, -800);
+  d.treasury.cycleResultUsdc = 3000;
+  assert.equal(scenarioStakingView(d), null, 'an independent chart must not override authoritative treasury values');
+  d.treasury.cycleResultUsdc = -800;
+  d.profile.authenticated = true; d.profile.provider = 'native';
+  assert.equal(scenarioStakingView(d), null);
+});
+
+test('staking presentation uses helpers and earnings cards, not a share donut or inline payout weight', () => {
+  const source = readFileSync(new URL('./StakingCorridor.tsx', import.meta.url), 'utf8');
+  const presentation = source + readFileSync(new URL('./StakingRoundClock.tsx', import.meta.url), 'utf8');
+  assert.doesNotMatch(presentation, /PieChart|<Pie |staking-chart-share|<p[^>]*>.*Payout weight/);
+  assert.match(source, /Math\.floor\(v\.myTokens\), 0/);
+  assert.match(presentation, /staking-current-earnings/);
+  assert.match(presentation, /staking-projected-earnings/);
+  assert.doesNotMatch(presentation, /staking-ticker|animate-ping|timeline\?\.tick/);
+  assert.match(presentation, /staking-round-clock/);
+  assert.match(presentation, /staking-live-trading/);
+  assert.match(presentation, /demoPath\('central', loc\)/);
+  assert.match(source, /<Term tip=/);
+  assert.match(source, /dataKey="forecast"/);
 });

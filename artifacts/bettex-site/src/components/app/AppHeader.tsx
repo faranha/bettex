@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'wouter';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, History } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { MobileAreaNav, APP_AREAS } from '@/components/demo/MobileAreaNav';
@@ -17,7 +17,7 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
   const [path] = useLocation();
   const ref = useRef<HTMLElement>(null);
   const detected: DemoView = current ?? demoView(path) ?? 'home';
-  const view: DemoView = detected === 'wallet' ? 'account' : detected;
+  const view: DemoView = detected;
 
   useEffect(() => {
     const el = ref.current;
@@ -39,6 +39,10 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
         <span className="hidden rounded-full border border-[#0E7C6B] bg-[#E9EEE5] px-2 py-0.5 text-[10px] font-extrabold tracking-widest text-[#0A6657] sm:inline">{x('ALFA', 'ALPHA', 'ALFA')}</span>
       </Link>
       <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+        <Link href={demoPath('wallet', loc)} data-testid="link-app-history" aria-label={x('Abrir histórico', 'Open history', 'Abrir historial')} title={x('Histórico', 'History', 'Historial')} className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-[#E4DCCB] bg-[#FBF8F0] px-2 text-xs font-bold text-[#0A6657] hover:bg-[#E9EEE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B]">
+          <History className="h-4 w-4" aria-hidden="true" />
+          <span className="hidden sm:inline">{x('Histórico', 'History', 'Historial')}</span>
+        </Link>
         <AppProfileLink />
         <a href={siteHref} data-testid="link-back-to-website" className="inline-flex min-h-11 items-center gap-1 rounded-full px-2 text-xs font-semibold text-[#5B6B85] hover:text-[#0A6657]">
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />

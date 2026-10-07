@@ -9,6 +9,7 @@ const icons: Record<Kind, LucideIcon> = {
   withdraw: ArrowUpFromLine,
   send: Send,
   swap: ArrowLeftRight,
+  'earnings-transfer': ArrowLeftRight,
 };
 
 export function WalletAction({ kind, asset, label, id, onOpen }: {

@@ -18,7 +18,6 @@ export function AppExchangeRates({ className = '' }: { className?: string }) {
   });
   const label = x('Cotações simuladas', 'Simulated rates', 'Cotizaciones simuladas');
   return <div className={`min-w-0 text-[#44546E] ${className}`} data-testid="app-exchange-rates" aria-label={label}>
-    <p className="text-[10px] leading-4 text-[#5B6B85]">{label}</p>
     {rates ? <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold leading-5 tabular-nums">
       <span className="whitespace-nowrap" data-testid="rate-usd-brl">{x('1 USD =', '1 USD =', '1 USD =')} <strong className="text-[#1B2A41]">{brl(rates.usdBrl)}</strong></span>
       <span className="whitespace-nowrap" data-testid="rate-bettex">{x('1 BETTEX =', '1 BETTEX =', '1 BETTEX =')} <strong className="text-[#1B2A41]">{`US$ ${n(rates.bettexUsd, 4)}`}</strong>{' · '}<strong className="text-[#1B2A41]">{brl(rates.bettexBrl)}</strong></span>

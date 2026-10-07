@@ -3,6 +3,12 @@ name: Escopo do rodapé
 description: Rodapé compacto com convite ao Telegram, sem redes pessoais do fundador.
 ---
 
+The app must share the website's compact navigation footer, but not the large blue promotional section with the community image.
+
+**Why:** The creator asked for the website footer in the app, then clarified that the image/message section belongs to the homepage, not the app footer.
+
+**How to apply:** Keep navigation, community links and language controls aligned. Omit the entire promotional image/message section from app routes; preserve it on the homepage. Do not introduce a separate app-footer design.
+
 O rodapé não deve exibir o bloco “Redes do fundador”, seu nome ou os links pessoais desse bloco.
 
 **Why:** O criador mostrou o bloco no rodapé e pediu sua remoção.

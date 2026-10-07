@@ -6,8 +6,11 @@
  * OpenAPI spec version: 0.1.0
  */
 import type { DemoStakingStatus } from './demoStakingStatus';
+import type { StakingChartScenario } from './stakingChartScenario';
 
 export interface DemoStaking {
+  /** Isolated randomized chart emulation, never an actual trading result or ledger payout. */
+  chartScenario?: StakingChartScenario | null;
   eligibleTokens: number;
   /**
      * Total participating BETTEX in the simulated pool

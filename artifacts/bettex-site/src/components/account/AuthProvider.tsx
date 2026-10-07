@@ -77,8 +77,8 @@ function ProviderWithRoutes({ children }: { children: ReactNode }) {
     localization={language === 'pt' ? ptBR : language === 'es' ? esES : enUS}
     signInUrl={`${basePath}/sign-in`}
     signUpUrl={`${basePath}/sign-up`}
-    signInFallbackRedirectUrl={`${basePath}/demo`}
-    signUpFallbackRedirectUrl={`${basePath}/demo`}
+    signInFallbackRedirectUrl={`${basePath}/app`}
+    signUpFallbackRedirectUrl={`${basePath}/app`}
     routerPush={(to) => setLocation(stripBase(to))}
     routerReplace={(to) => setLocation(stripBase(to), { replace: true })}
   ><CacheInvalidator />{children}</ClerkProvider>;

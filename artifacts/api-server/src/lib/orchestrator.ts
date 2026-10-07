@@ -1,6 +1,7 @@
 import type { DemoOperation, DemoOrchestratorBudget, DemoProposal } from "@workspace/api-zod";
 import type { EngineState } from "./demo-state";
 import { recordTreasurySettlement } from "./treasury-round.ts";
+import { randomInt } from "node:crypto";
 
 const money = (n: number) => Math.round(n * 1e6) / 1e6;
 const iso = (n: number) => new Date(n).toISOString();
@@ -99,7 +100,7 @@ export function progressOrchestration(engine: EngineState, now: number,
       set(op, "executing"); emit(op.agent, "orchestrator", "order", op.id);
     } else if (op.status === "executing") set(op, "open");
     else if (op.status === "open") {
-      op.pnlUsdc = money(op.capitalUsdc * .013 * Math.sin(engine.sequence / 2));
+      op.pnlUsdc = money(op.capitalUsdc * .013 * (randomInt(0, 20001) / 10000 - 1));
       set(op, "result"); emit(op.agent, "orchestrator", "result", op.id);
     } else if (op.status === "result") set(op, "reconciling");
     else if (op.status === "reconciling") {

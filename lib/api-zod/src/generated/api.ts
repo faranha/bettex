@@ -1934,6 +1934,53 @@ export const CommandTreasuryGovernanceBody = zod.object({
 export const CommandTreasuryGovernanceResponse = zod.record(zod.string(), zod.unknown())
 
 
+export const getDemoTreasuryActivityQueryRoundIdRegExp = new RegExp('^\\d{4}-\\d{2}-\\d{2}$');
+export const getDemoTreasuryActivityQueryViewDefault = `history`;
+export const getDemoTreasuryActivityQueryPageDefault = 1;
+export const getDemoTreasuryActivityQueryPageMax = 100000;
+
+export const getDemoTreasuryActivityQueryPageSizeDefault = 20;
+export const getDemoTreasuryActivityQueryPageSizeMax = 50;
+
+export const getDemoTreasuryActivityQuerySnapshotMax = 20;
+
+
+export const getDemoTreasuryActivityQuerySnapshotRegExp = new RegExp('^\\d+$');
+
+
+export const GetDemoTreasuryActivityQueryParams = zod.object({
+  "roundId": zod.coerce.string().regex(getDemoTreasuryActivityQueryRoundIdRegExp),
+  "view": zod.enum(['closed', 'fees', 'history']).default(getDemoTreasuryActivityQueryViewDefault),
+  "page": zod.coerce.number().int().min(1).max(getDemoTreasuryActivityQueryPageMax).default(getDemoTreasuryActivityQueryPageDefault),
+  "pageSize": zod.coerce.number().int().min(1).max(getDemoTreasuryActivityQueryPageSizeMax).default(getDemoTreasuryActivityQueryPageSizeDefault),
+  "snapshot": zod.coerce.string().max(getDemoTreasuryActivityQuerySnapshotMax).regex(getDemoTreasuryActivityQuerySnapshotRegExp).optional()
+})
+
+export const GetDemoTreasuryActivityResponse = zod.object({
+  "roundId": zod.string(),
+  "items": zod.array(zod.object({
+  "id": zod.string(),
+  "at": zod.coerce.date(),
+  "kind": zod.enum(['position_closed', 'operator_fee', 'checkpoint']),
+  "source": zod.enum(['emulated', 'modeled_baseline', 'recorded_checkpoint']),
+  "agent": zod.string().nullable(),
+  "market": zod.string().nullable(),
+  "capitalUsdc": zod.number().nullable(),
+  "grossUsdc": zod.number().nullable(),
+  "costUsdc": zod.number().nullable(),
+  "netUsdc": zod.number().nullable(),
+  "feeKind": zod.union([zod.literal('onramp'),zod.literal('swap'),zod.literal('withdraw'),zod.literal('send'),zod.literal('transfer'),zod.literal(null)]).nullable(),
+  "feeUsdc": zod.number().nullable()
+})),
+  "total": zod.number().int(),
+  "totalPages": zod.number().int(),
+  "page": zod.number().int(),
+  "pageSize": zod.number().int(),
+  "snapshot": zod.string(),
+  "source": zod.enum(['emulated'])
+})
+
+
 export const GetHistoryTransparencyResponseItem = zod.object({
   "environment": zod.string(),
   "chainId": zod.number().int(),
@@ -2437,6 +2484,16 @@ export const GetDemoDashboardHeader = zod.object({
   "X-Bettex-Demo-Session": zod.string().regex(getDemoDashboardHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
 })
 
+export const getDemoDashboardResponseStakingChartScenarioOneElapsedMinutesMin = 0;
+export const getDemoDashboardResponseStakingChartScenarioOneElapsedMinutesMax = 1440;
+
+export const getDemoDashboardResponseStakingChartScenarioOneTickMin = 0;
+
+
+
+export const getDemoDashboardResponseStakingChartScenarioOnePointsItemElapsedMinutesMin = 0;
+export const getDemoDashboardResponseStakingChartScenarioOnePointsItemElapsedMinutesMax = 1440;
+
 export const getDemoDashboardResponseStakingTotalEligibleTokensMin = 0;
 
 export const getDemoDashboardResponseStakingTokenSharePercentMin = 0;
@@ -2484,6 +2541,19 @@ export const GetDemoDashboardResponse = zod.object({
   "updatedAt": zod.string()
 }),
   "staking": zod.object({
+  "chartScenario": zod.union([zod.object({
+  "source": zod.enum(['test_scenario']),
+  "roundStartedAt": zod.string().describe('ISO 8601 timestamp marking the emulated round start.'),
+  "nextTickAt": zod.string().describe('ISO 8601 wall-clock timestamp for the next test tick.'),
+  "elapsedMinutes": zod.number().int().min(getDemoDashboardResponseStakingChartScenarioOneElapsedMinutesMin).max(getDemoDashboardResponseStakingChartScenarioOneElapsedMinutesMax),
+  "tick": zod.number().int().min(getDemoDashboardResponseStakingChartScenarioOneTickMin),
+  "tickIntervalMs": zod.number().int().min(1),
+  "minutesPerTick": zod.number().int().min(1),
+  "points": zod.array(zod.object({
+  "elapsedMinutes": zod.number().int().min(getDemoDashboardResponseStakingChartScenarioOnePointsItemElapsedMinutesMin).max(getDemoDashboardResponseStakingChartScenarioOnePointsItemElapsedMinutesMax),
+  "profitUsdc": zod.number()
+}))
+}),zod.null()]).optional().describe('Isolated randomized chart emulation, never an actual trading result or ledger payout.'),
   "eligibleTokens": zod.number(),
   "totalEligibleTokens": zod.number().min(getDemoDashboardResponseStakingTotalEligibleTokensMin).optional().describe('Total participating BETTEX in the simulated pool'),
   "tokenSharePercent": zod.number().min(getDemoDashboardResponseStakingTokenSharePercentMin).max(getDemoDashboardResponseStakingTokenSharePercentMax).optional().describe('Current eligible-token share'),
@@ -2554,7 +2624,8 @@ export const GetDemoDashboardResponse = zod.object({
 })),
   "history": zod.array(zod.object({
   "id": zod.string(),
-  "kind": zod.enum(['receive', 'onramp', 'swap', 'withdraw', 'send', 'distribution']),
+  "kind": zod.enum(['receive', 'onramp', 'swap', 'withdraw', 'send', 'distribution', 'transfer']),
+  "sourceWallet": zod.enum(['dollar', 'earnings']).optional(),
   "asset": zod.enum(['USDC', 'BETTEX']),
   "amount": zod.number(),
   "feeUsdc": zod.number(),
@@ -2589,7 +2660,8 @@ export const GetDemoDashboardResponse = zod.object({
   "onramp": zod.number(),
   "swap": zod.number(),
   "withdraw": zod.number(),
-  "send": zod.number()
+  "send": zod.number(),
+  "transfer": zod.number().optional()
 }),
   "executionCostsUsdc": zod.number().nullable(),
   "closedOperations": zod.number().int().nullable(),
@@ -2626,7 +2698,8 @@ export const GetDemoDashboardResponse = zod.object({
   "onramp": zod.number(),
   "swap": zod.number(),
   "withdraw": zod.number(),
-  "send": zod.number()
+  "send": zod.number(),
+  "transfer": zod.number().optional()
 }),
   "executionCostsUsdc": zod.number().nullable(),
   "closedOperations": zod.number().int().nullable(),
@@ -2667,11 +2740,22 @@ export const createDemoMovementBodyDestinationMax = 120;
 
 export const CreateDemoMovementBody = zod.object({
   "requestId": zod.string().uuid(),
-  "kind": zod.enum(['receive', 'onramp', 'swap', 'withdraw', 'send']),
+  "kind": zod.enum(['receive', 'onramp', 'swap', 'withdraw', 'send', 'transfer']),
+  "sourceWallet": zod.enum(['dollar', 'earnings']).optional(),
   "asset": zod.enum(['USDC', 'BETTEX']),
   "amount": zod.number().min(createDemoMovementBodyAmountMin).max(createDemoMovementBodyAmountMax),
   "destination": zod.string().max(createDemoMovementBodyDestinationMax).optional()
 })
+
+export const createDemoMovementResponseStakingChartScenarioOneElapsedMinutesMin = 0;
+export const createDemoMovementResponseStakingChartScenarioOneElapsedMinutesMax = 1440;
+
+export const createDemoMovementResponseStakingChartScenarioOneTickMin = 0;
+
+
+
+export const createDemoMovementResponseStakingChartScenarioOnePointsItemElapsedMinutesMin = 0;
+export const createDemoMovementResponseStakingChartScenarioOnePointsItemElapsedMinutesMax = 1440;
 
 export const createDemoMovementResponseStakingTotalEligibleTokensMin = 0;
 
@@ -2720,6 +2804,19 @@ export const CreateDemoMovementResponse = zod.object({
   "updatedAt": zod.string()
 }),
   "staking": zod.object({
+  "chartScenario": zod.union([zod.object({
+  "source": zod.enum(['test_scenario']),
+  "roundStartedAt": zod.string().describe('ISO 8601 timestamp marking the emulated round start.'),
+  "nextTickAt": zod.string().describe('ISO 8601 wall-clock timestamp for the next test tick.'),
+  "elapsedMinutes": zod.number().int().min(createDemoMovementResponseStakingChartScenarioOneElapsedMinutesMin).max(createDemoMovementResponseStakingChartScenarioOneElapsedMinutesMax),
+  "tick": zod.number().int().min(createDemoMovementResponseStakingChartScenarioOneTickMin),
+  "tickIntervalMs": zod.number().int().min(1),
+  "minutesPerTick": zod.number().int().min(1),
+  "points": zod.array(zod.object({
+  "elapsedMinutes": zod.number().int().min(createDemoMovementResponseStakingChartScenarioOnePointsItemElapsedMinutesMin).max(createDemoMovementResponseStakingChartScenarioOnePointsItemElapsedMinutesMax),
+  "profitUsdc": zod.number()
+}))
+}),zod.null()]).optional().describe('Isolated randomized chart emulation, never an actual trading result or ledger payout.'),
   "eligibleTokens": zod.number(),
   "totalEligibleTokens": zod.number().min(createDemoMovementResponseStakingTotalEligibleTokensMin).optional().describe('Total participating BETTEX in the simulated pool'),
   "tokenSharePercent": zod.number().min(createDemoMovementResponseStakingTokenSharePercentMin).max(createDemoMovementResponseStakingTokenSharePercentMax).optional().describe('Current eligible-token share'),
@@ -2790,7 +2887,8 @@ export const CreateDemoMovementResponse = zod.object({
 })),
   "history": zod.array(zod.object({
   "id": zod.string(),
-  "kind": zod.enum(['receive', 'onramp', 'swap', 'withdraw', 'send', 'distribution']),
+  "kind": zod.enum(['receive', 'onramp', 'swap', 'withdraw', 'send', 'distribution', 'transfer']),
+  "sourceWallet": zod.enum(['dollar', 'earnings']).optional(),
   "asset": zod.enum(['USDC', 'BETTEX']),
   "amount": zod.number(),
   "feeUsdc": zod.number(),
@@ -2825,7 +2923,8 @@ export const CreateDemoMovementResponse = zod.object({
   "onramp": zod.number(),
   "swap": zod.number(),
   "withdraw": zod.number(),
-  "send": zod.number()
+  "send": zod.number(),
+  "transfer": zod.number().optional()
 }),
   "executionCostsUsdc": zod.number().nullable(),
   "closedOperations": zod.number().int().nullable(),
@@ -2862,7 +2961,8 @@ export const CreateDemoMovementResponse = zod.object({
   "onramp": zod.number(),
   "swap": zod.number(),
   "withdraw": zod.number(),
-  "send": zod.number()
+  "send": zod.number(),
+  "transfer": zod.number().optional()
 }),
   "executionCostsUsdc": zod.number().nullable(),
   "closedOperations": zod.number().int().nullable(),
@@ -2911,6 +3011,16 @@ export const UpdateDemoProfileBody = zod.object({
   "avatarPath": zod.string().max(updateDemoProfileBodyAvatarPathMax).regex(updateDemoProfileBodyAvatarPathRegExp).nullish()
 })
 
+export const updateDemoProfileResponseStakingChartScenarioOneElapsedMinutesMin = 0;
+export const updateDemoProfileResponseStakingChartScenarioOneElapsedMinutesMax = 1440;
+
+export const updateDemoProfileResponseStakingChartScenarioOneTickMin = 0;
+
+
+
+export const updateDemoProfileResponseStakingChartScenarioOnePointsItemElapsedMinutesMin = 0;
+export const updateDemoProfileResponseStakingChartScenarioOnePointsItemElapsedMinutesMax = 1440;
+
 export const updateDemoProfileResponseStakingTotalEligibleTokensMin = 0;
 
 export const updateDemoProfileResponseStakingTokenSharePercentMin = 0;
@@ -2958,6 +3068,19 @@ export const UpdateDemoProfileResponse = zod.object({
   "updatedAt": zod.string()
 }),
   "staking": zod.object({
+  "chartScenario": zod.union([zod.object({
+  "source": zod.enum(['test_scenario']),
+  "roundStartedAt": zod.string().describe('ISO 8601 timestamp marking the emulated round start.'),
+  "nextTickAt": zod.string().describe('ISO 8601 wall-clock timestamp for the next test tick.'),
+  "elapsedMinutes": zod.number().int().min(updateDemoProfileResponseStakingChartScenarioOneElapsedMinutesMin).max(updateDemoProfileResponseStakingChartScenarioOneElapsedMinutesMax),
+  "tick": zod.number().int().min(updateDemoProfileResponseStakingChartScenarioOneTickMin),
+  "tickIntervalMs": zod.number().int().min(1),
+  "minutesPerTick": zod.number().int().min(1),
+  "points": zod.array(zod.object({
+  "elapsedMinutes": zod.number().int().min(updateDemoProfileResponseStakingChartScenarioOnePointsItemElapsedMinutesMin).max(updateDemoProfileResponseStakingChartScenarioOnePointsItemElapsedMinutesMax),
+  "profitUsdc": zod.number()
+}))
+}),zod.null()]).optional().describe('Isolated randomized chart emulation, never an actual trading result or ledger payout.'),
   "eligibleTokens": zod.number(),
   "totalEligibleTokens": zod.number().min(updateDemoProfileResponseStakingTotalEligibleTokensMin).optional().describe('Total participating BETTEX in the simulated pool'),
   "tokenSharePercent": zod.number().min(updateDemoProfileResponseStakingTokenSharePercentMin).max(updateDemoProfileResponseStakingTokenSharePercentMax).optional().describe('Current eligible-token share'),
@@ -3028,7 +3151,8 @@ export const UpdateDemoProfileResponse = zod.object({
 })),
   "history": zod.array(zod.object({
   "id": zod.string(),
-  "kind": zod.enum(['receive', 'onramp', 'swap', 'withdraw', 'send', 'distribution']),
+  "kind": zod.enum(['receive', 'onramp', 'swap', 'withdraw', 'send', 'distribution', 'transfer']),
+  "sourceWallet": zod.enum(['dollar', 'earnings']).optional(),
   "asset": zod.enum(['USDC', 'BETTEX']),
   "amount": zod.number(),
   "feeUsdc": zod.number(),
@@ -3063,7 +3187,8 @@ export const UpdateDemoProfileResponse = zod.object({
   "onramp": zod.number(),
   "swap": zod.number(),
   "withdraw": zod.number(),
-  "send": zod.number()
+  "send": zod.number(),
+  "transfer": zod.number().optional()
 }),
   "executionCostsUsdc": zod.number().nullable(),
   "closedOperations": zod.number().int().nullable(),
@@ -3100,7 +3225,8 @@ export const UpdateDemoProfileResponse = zod.object({
   "onramp": zod.number(),
   "swap": zod.number(),
   "withdraw": zod.number(),
-  "send": zod.number()
+  "send": zod.number(),
+  "transfer": zod.number().optional()
 }),
   "executionCostsUsdc": zod.number().nullable(),
   "closedOperations": zod.number().int().nullable(),

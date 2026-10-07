@@ -15,4 +15,5 @@ export const DemoMovementInputKind = {
   swap: 'swap',
   withdraw: 'withdraw',
   send: 'send',
+  transfer: 'transfer',
 } as const;

@@ -1,10 +1,10 @@
 ---
 name: Continuous test emulation
-description: Creator rejects a user-facing Simulation area and requires independent ongoing randomized test scripts.
+description: The app demo uses a predefined real-time daily story; independent randomized testing is not the app's financial narrative.
 ---
 
-The creator said: “we do not want a simulation area”; they want scripts that emulate the service live continuously for 24 hours, independently, with variable and random events.
+The creator's latest choice is a “Predefined 24-hour timeline”: prepared events appear with the clock, from 16:00 to 16:00 São Paulo time. Current and past demo data must follow one consistent story, not independently randomized live emulation or a frozen snapshot.
 
-**Why:** “If we cannot create simulations that we can run independently, ongoing, randomly, then we don't understand the service we are providing.”
+**Why:** The creator said “emulate everything live its not possible, lets standardize this.” This supersedes the earlier request for randomly emulated app financial data.
 
-**How to apply:** Keep emulation in background test tooling, not an app navigation area. Assess/browser-independent execution, varied workloads, accounting invariants, persistence and restart recovery. Do not equate fixed sine-wave/modulo sequences with random emulation, fixture models with real AI intelligence, or a short accelerated test with a completed 24-hour wall-clock run. Keep test funds/accounts isolated from native wallets and real-money operations.
+**How to apply:** Keep demo treasury, charts, cycles and modeled history on the shared scheduled story. Replay due events after downtime without repeating payouts. Preserve user-triggered transactions, balances, and immutable legacy/native records. Label prepared data as modeled, not real AI/exchange evidence. Independent randomized test tooling may remain, but must not drive the app narrative or create a Simulation navigation area.

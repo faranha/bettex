@@ -31,6 +31,7 @@ import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { PitchSectionNav } from '@/components/pitch/PitchSectionNav';
 import { HomeSectionNav } from '@/components/HomeSectionNav';
 import { AppHeader } from '@/components/app/AppHeader';
+import { AppSessionGate } from '@/components/app/AppSessionGate';
 import { demoView, isRemovedSimulationPath } from '@/components/demo/demo-navigation';
 
 const queryClient = new QueryClient();
@@ -174,7 +175,7 @@ function SiteHeader() {
 function SiteFooter({ compact = false }: { compact?: boolean }) {
   const linkProps = usePageLinkProps();
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
-    <div className={`site-footer__cta relative overflow-hidden bg-[#2B59FF] ${compact ? 'hidden' : ''}`}>
+    {!compact && <div className="site-footer__cta relative overflow-hidden bg-[#2B59FF]">
       <div aria-hidden="true" className="site-footer__tech">
         <svg className="site-footer__tech-svg" viewBox="0 0 800 560" preserveAspectRatio="xMaxYMax slice" focusable="false">
           <circle className="halo" cx="470" cy="330" r="190" />
@@ -216,7 +217,7 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
           </div>
         </div>
       </div>
-    </div>
+    </div>}
     <div className="h-1 bg-[#F2B632]" aria-hidden="true" />
     <div className="page-wrap relative">
       <div className="sf-nav">
@@ -360,7 +361,12 @@ function Pitch() {
 function Demo() {
   const [path] = useLocation();
   if (isRemovedSimulationPath(path)) return <Redirect to={`/app${typeof window === 'undefined' ? '' : window.location.search}`} />;
-  return demoView(path) ? <div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><DemoPage /></div> : <NotFound />;
+  if (path === '/app/login') return <Redirect to="/sign-in" />;
+  if (!demoView(path)) return <NotFound />;
+  const shell = <div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><DemoPage /><SiteFooter compact /></div>;
+  if (typeof window === 'undefined') return <main className="demo-root min-h-96" />;
+  if (import.meta.env.DEV && new URLSearchParams(window.location.search).get('preview') === 'public') return shell;
+  return <AppSessionGate>{shell}</AppSessionGate>;
 }
 
 function Documentation() {

@@ -20,3 +20,21 @@ O cartão de ciclo anterior precisa explicar a posição histórica própria, o 
 **Why:** O criador perguntou quanto tinha em staking e quanto estava no pool para justificar o valor recebido. Créditos pré-carregados da demonstração não provam um retorno calculado.
 
 **How to apply:** Preservar a base histórica de cada ciclo encerrado e diferenciar exemplos pré-carregados de ciclos calculados. Se o registro antigo não contém essa base, mostrar a indisponibilidade; não inventar posições para fazer um crédito antigo parecer consistente.
+
+BETTEX amounts are whole tokens, not fractional tokens. In staking, explanatory copy belongs in accessible helpers attached to the container labels, not repeated subtitles or an inline time-weighted payout percentage. Personal earnings need separate current-day and projected amounts, not a share-composition donut.
+
+**Why:** The creator explicitly said “we dont break tokens in fractions”, rejected the inline explanations and share donut, and asked to see current earnings and projected earnings.
+
+**How to apply:** Keep token-count displays integral while preserving USDC precision and the distinction between ownership share and payout weight. Helpers must explain provisional versus received earnings and that a negative round pays zero without deducting tokens.
+
+The area beside the 24-hour chart needs a compact clock running naturally in real time, with larger current and projected earnings and a direct button to detailed live trading in the AI Center. Do not show technical tick counters or tick-triggered flashes.
+
+**Why:** The creator corrected the previous presentation: “esse relogio esta acelerado”, “esta muito grande”, “esta travando tambem, com ticks, deixa rodar naturalmente” and asked to enlarge current and projected earnings.
+
+**How to apply:** Use the actual round deadline and real seconds, independently of chart cadence. Cached or delayed server samples must not rewind or pause the countdown. Keep a small dial, prominent personal values, and accessible live-trading access. Do not imply guaranteed payment.
+
+The staking chart follows the shared scheduled 24-hour demo storyline, including historical losses and recovery. The chart's event cadence must never change the clock's real-time speed.
+
+**Why:** The creator subsequently standardized the demo to a predefined timeline from 16:00 to 16:00 São Paulo time and rejected the accelerated, tick-driven clock.
+
+**How to apply:** Preserve historical data before the first visit and label future points as projections. Use the shared browser-independent scheduled story, not separate randomized financial emulation. Keep it isolated from native protocol data and real payouts.

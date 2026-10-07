@@ -11,4 +11,5 @@ export interface DemoTreasuryFeeBreakdown {
   swap: number;
   withdraw: number;
   send: number;
+  transfer?: number;
 }

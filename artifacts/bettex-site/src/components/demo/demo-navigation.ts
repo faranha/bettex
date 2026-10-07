@@ -12,17 +12,17 @@ export function demoAccountTab(path: string, search = ''): DemoAccountTab {
 type Language = 'pt' | 'en' | 'es';
 const index = { pt: 0, en: 1, es: 2 };
 const labels = {
-  home: ['Meu painel', 'My dashboard', 'Mi panel'],
+  home: ['Carteiras', 'Wallets', 'Carteras'],
   central: ['Central da IA', 'AI Center', 'Central de IA'],
-  wallet: ['Saldo e histórico', 'Balance and history', 'Saldo e historial'],
+  wallet: ['Histórico', 'History', 'Historial'],
   treasury: ['Tesouraria', 'Treasury', 'Tesorería'],
-  account: ['Minha conta', 'My account', 'Mi cuenta'],
+  account: ['Perfil', 'Profile', 'Perfil'],
 };
 export function demoView(path: string): DemoView | undefined {
   const normalized = path.replace(/^\/app(?=\/|$)/, '/demo').replace(/\/+$/, '');
-  if (normalized === '/demo') return 'home';
+  if (['/demo', '/demo/carteiras', '/demo/wallets', '/demo/carteras'].includes(normalized)) return 'home';
   if (normalized === '/demo/central') return 'central';
-  if (['/demo/saldo', '/demo/balance'].includes(normalized)) return 'wallet';
+  if (['/demo/historico', '/demo/history', '/demo/historial', '/demo/saldo', '/demo/balance'].includes(normalized)) return 'wallet';
   if (['/demo/tesouraria', '/demo/treasury', '/demo/tesoreria'].includes(normalized)) return 'treasury';
   if (/^\/demo\/(?:minha-conta|account|mi-cuenta)(?:\/.*)?$/.test(normalized)) return 'account';
   return undefined;
@@ -30,9 +30,29 @@ export function demoView(path: string): DemoView | undefined {
 export function demoPath(view: DemoView, language: Language): string {
   if (view === 'home') return '/app';
   if (view === 'central') return '/app/central';
-  if (view === 'wallet') return `${demoPath('account', language)}/history`;
+  if (view === 'wallet') return ['/app/historico', '/app/history', '/app/historial'][index[language]];
   if (view === 'account') return ['/app/minha-conta', '/app/account', '/app/mi-cuenta'][index[language]];
   return ['/app/tesouraria', '/app/treasury', '/app/tesoreria'][index[language]];
+}
+/** Keep old bookmarks and wallet filters while moving finance out of Profile. */
+export function demoRedirect(path: string, language: Language, search = '', hash = ''): string | null {
+  const normalized = path.replace(/^\/(?:en|es)(?=\/)/, '').replace(/^\/demo(?=\/|$)/, '/app').replace(/\/+$/, '');
+  const query = new URLSearchParams(search);
+  let destination: string | undefined;
+  if (/^\/app\/(?:minha-conta|account|mi-cuenta)(?:\/|$)/.test(normalized)) {
+    const requested = normalized.match(/\/(?:minha-conta|account|mi-cuenta)\/([^/]+)/)?.[1] ?? query.get('tab');
+    if (requested === 'wallets' || requested === 'operations') destination = demoPath('home', language);
+    else if (requested === 'history') destination = demoPath('wallet', language);
+    else if (requested === 'policies') destination = demoPath('treasury', language);
+    else if (requested === 'profile' || requested === 'security') destination = demoPath('account', language);
+    if (destination) query.delete('tab');
+    if (requested === 'policies') query.set('tab', 'policies');
+  } else if (['/app/carteiras', '/app/wallets', '/app/carteras'].includes(normalized) || isRemovedSimulationPath(normalized)) {
+    destination = demoPath('home', language);
+  } else if (demoView(normalized) === 'wallet' && normalized !== demoPath('wallet', language)) {
+    destination = demoPath('wallet', language);
+  }
+  return destination ? `${destination}${query.size ? `?${query}` : ''}${hash}` : null;
 }
 export function demoLabel(view: DemoView, language: Language) {
   return labels[view][index[language]];
