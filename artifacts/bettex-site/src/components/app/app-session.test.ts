@@ -34,7 +34,7 @@ test('app entrance shares the app footer and presents a sports-oriented demo wit
   assert.match(app, /path="\/sign-in\/\*\?" component=\{SignInEntry\}/);
   assert.match(app, /path="\/sign-up\/\*\?" component=\{SignUpEntry\}/);
   assert.match(auth, /Pare de apostar e comece a investir agora com a Bettex/);
-  assert.match(auth, /auth-sportsbook-fullbleed\.jpg/);
+  assert.match(auth, /auth-mma-octagon\.jpg/);
   assert.match(auth, /Demonstração com dados simulados/);
   assert.doesNotMatch(auth, /Meet the BETTEX app through Alex|pessoa fictícia|hero-person-phone/);
   assert.match(auth, /hero-person-centered\.webp/);
