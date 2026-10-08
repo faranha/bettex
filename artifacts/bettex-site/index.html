@@ -3,10 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <script>
-      if (window.location.hostname.toLowerCase().replace(/\.$/, '') === 'bettex.replit.app') {
+      (() => {
+        const { hostname, pathname, search, hash } = window.location;
+        if (hostname.toLowerCase().replace(/\.$/, '') === 'bettex.replit.app') {
+          document.documentElement.style.display = 'none';
+          window.location.replace('https://bettex.ai' + pathname + search + hash);
+          return;
+        }
+        const prefix = '%BASE_URL%'.replace(/\/$/, '');
+        if (prefix && !pathname.startsWith(prefix + '/') && pathname !== prefix) return;
+        const relative = pathname.slice(prefix.length);
+        const normalized = relative.replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+        const canonical = normalized === '/index' ? '/' : normalized;
+        // Explicit language URLs win over saved preferences.
+        const explicit = canonical.match(/^\/(en|es)(?:\/|$)/);
+        document.documentElement.lang = explicit ? explicit[1] : 'pt-BR';
+        if (explicit) return;
+        let preferred;
+        try { preferred = localStorage.getItem('bettex.locale'); } catch { return; }
+        // Portuguese is the default, including when browser storage is blocked.
+        if (preferred !== 'en' && preferred !== 'es') return;
+        const page = canonical.replace(/^\/demo(?=\/|$)/, '/app');
+        const target = page === '/documentation' || page === '/documentacion' ? '/documentacao' :
+          ['/app/simulacao', '/app/simulation', '/app/simulacion'].includes(page) ? '/app' : page;
+        if (!['/', '/pitch', '/documentacao', '/app'].includes(target) && !target.startsWith('/app/')) return;
+        const translated = target === '/documentacao' ? preferred === 'en' ? '/documentation' : '/documentacion' : target;
+        // Run before the body is parsed; never paint Portuguese during a saved-language redirect.
         document.documentElement.style.display = 'none';
-        window.location.replace('https://bettex.ai' + window.location.pathname + window.location.search + window.location.hash);
-      }
+        try { window.location.replace(prefix + '/' + preferred + translated + search + hash); }
+        catch { document.documentElement.style.display = ''; }
+      })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#070B1F" />
