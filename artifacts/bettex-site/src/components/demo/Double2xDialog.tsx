@@ -39,6 +39,7 @@ export function Double2xDialog({ open, onOpenChange, balanceUsdc = 0 }: { open: 
   const [err, setErr] = useState<string | null>(null);
   const attempt = useRef<{ id: string; color: Color; stake: number } | null>(null);
   const d = q.data;
+  const simulation = d?.executionMode === 'simulation';
   const cd = useCountdown(d?.nextPlayAt);
   const prevPending = useRef(false);
 
@@ -87,7 +88,7 @@ export function Double2xDialog({ open, onOpenChange, balanceUsdc = 0 }: { open: 
     });
   };
 
-  const stLabel = (p: Double2xPlay) => p.status === 'won' ? x('Ganhou', 'Won', 'Ganó') : p.status === 'lost' ? x('Perdeu', 'Lost', 'Perdió') : p.status === 'refunded' ? x('Devolvida', 'Refunded', 'Devuelta') : x('Pendente na rede', 'Pending on chain', 'Pendiente en la red');
+  const stLabel = (p: Double2xPlay) => p.status === 'won' ? x('Ganhou', 'Won', 'Ganó') : p.status === 'lost' ? x('Perdeu', 'Lost', 'Perdió') : p.status === 'refunded' ? x('Devolvida', 'Refunded', 'Devuelta') : p.executionMode === 'simulation' ? x('Processando simulação', 'Processing simulation', 'Procesando simulación') : x('Pendente na rede', 'Pending on chain', 'Pendiente en la red');
   const cl = (c?: string) => c === 'red' ? x('Vermelho', 'Red', 'Rojo') : c === 'black' ? x('Preto', 'Black', 'Negro') : '-';
   const dot = (c?: string) => <span className={`inline-block h-3 w-3 rounded-full border border-[#1B2A41]/30 ${c === 'red' ? 'bg-[#C63D3D]' : c === 'black' ? 'bg-[#1B2A41]' : 'bg-transparent'}`} aria-hidden="true" />;
   const fmt = (s: string) => new Date(s).toLocaleString(loc === 'pt' ? 'pt-BR' : loc === 'es' ? 'es-ES' : 'en-US');
@@ -95,11 +96,13 @@ export function Double2xDialog({ open, onOpenChange, balanceUsdc = 0 }: { open: 
   return <Dialog open={open} onOpenChange={onOpenChange}>
     <DialogContent className="max-h-[90dvh] w-[calc(100vw_-_1.5rem)] max-w-lg overflow-y-auto rounded-2xl bg-[#FFFCF6] p-4 text-[#1B2A41] shadow-xl" data-testid="double2x-dialog">
       <DialogTitle className="display text-base font-extrabold">{x('Double 2X', 'Double 2X', 'Double 2X')}</DialogTitle>
-      <DialogDescription className="text-xs text-[#3F4F68]">{x('Cara ou coroa de cores, 50/50, em teste. Arbitrum Sepolia com tUSDC isolado em escrow que espelha rendimentos simulados do ALFA. Não é protocolo nativo nem USDC real.', 'Colour coin-flip, 50/50, in test mode. Arbitrum Sepolia with isolated tUSDC escrow mirroring simulated ALFA earnings. Not the native protocol and not real USDC.', 'Cara o cruz de colores, 50/50, en prueba. Arbitrum Sepolia con tUSDC aislado en escrow que replica ganancias simuladas de ALFA. No es protocolo nativo ni USDC real.')}</DialogDescription>
+      <DialogDescription className="text-xs text-[#3F4F68]">{simulation
+        ? x('Cara ou coroa de cores, 50/50. Modo simulado, sem transação na blockchain, usando apenas rendimentos simulados do ALFA.', 'Colour coin-flip, 50/50. Simulation mode, without a blockchain transaction, using only simulated ALFA earnings.', 'Cara o cruz de colores, 50/50. Modo simulado, sin transacción en la blockchain, usando solo ganancias simuladas de ALFA.')
+        : x('Cara ou coroa de cores, 50/50, em teste. Arbitrum Sepolia com tUSDC isolado em escrow que espelha rendimentos simulados do ALFA. Não é protocolo nativo nem USDC real.', 'Colour coin-flip, 50/50, in test mode. Arbitrum Sepolia with isolated tUSDC escrow mirroring simulated ALFA earnings. Not the native protocol and not real USDC.', 'Cara o cruz de colores, 50/50, en prueba. Arbitrum Sepolia con tUSDC aislado en escrow que replica ganancias simuladas de ALFA. No es protocolo nativo ni USDC real.')}</DialogDescription>
       <ul className="grid gap-1 text-[11px] text-[#3F4F68]">
         <li>{x('RTP de 100%: 50% de chance, sem taxa de jogo. A tesouraria paga os ganhos e recebe as perdas.', '100% RTP: 50% chance, no game fee. The treasury pays wins and receives losses.', 'RTP del 100%: 50% de probabilidad, sin comisión de juego. La tesorería paga las ganancias y recibe las pérdidas.')}</li>
-        <li>{x('A plataforma patrocina o gás de teste em ETH. Uma jogada a cada 24 horas.', 'The platform sponsors test ETH gas. One play per rolling 24 hours.', 'La plataforma patrocina el gas de prueba en ETH. Una jugada cada 24 horas.')}</li>
-        <li>{x('O resultado só aparece após a liquidação na rede; nada é exibido antes disso.', 'The result appears only after on-chain settlement; nothing is shown before.', 'El resultado aparece solo tras la liquidación en la red; nada se muestra antes.')}</li>
+        <li>{simulation ? x('Sem gás de teste: simulação ativada. Uma jogada a cada 24 horas.', 'No test gas: simulation enabled. One play per rolling 24 hours.', 'Sin gas de prueba: simulación activada. Una jugada cada 24 horas.') : x('A plataforma patrocina o gás de teste em ETH. Uma jogada a cada 24 horas.', 'The platform sponsors test ETH gas. One play per rolling 24 hours.', 'La plataforma patrocina el gas de prueba en ETH. Una jugada cada 24 horas.')}</li>
+        <li>{simulation ? x('O resultado simulado fica registrado no histórico do demo.', 'The simulated result is recorded in demo history.', 'El resultado simulado se registra en el historial del demo.') : x('O resultado só aparece após a liquidação na rede; nada é exibido antes disso.', 'The result appears only after on-chain settlement; nothing is shown before.', 'El resultado aparece solo tras la liquidación en la red; nada se muestra antes.')}</li>
       </ul>
 
       {!d && !q.isError && <p role="status" className="text-xs text-[#3F4F68]" data-testid="double2x-loading">{x('Verificando a disponibilidade do jogo na rede...', 'Checking game availability on the network...', 'Comprobando la disponibilidad del juego en la red...')}</p>}
@@ -111,8 +114,8 @@ export function Double2xDialog({ open, onOpenChange, balanceUsdc = 0 }: { open: 
           <span data-testid="double2x-stake"><Money v={stake} a="USDC" /></span>
         </div>
         <div className="text-xs font-semibold">{x('Pagamento bruto possível', 'Possible gross payout', 'Pago bruto posible')}: <span data-testid="double2x-payout"><Money v={stake * 2} a="USDC" /></span></div>
-        {d?.pending && <p role="status" className="rounded-lg bg-[#FBF6EA] p-2 text-xs font-semibold text-[#8A5A12]" data-testid="double2x-pending">{x('Jogada pendente na rede. Aguardando liquidação; o saldo fica reservado.', 'Play pending on chain. Awaiting settlement; the balance stays reserved.', 'Jugada pendiente en la red. Esperando liquidación; el saldo queda reservado.')}</p>}
-        {d && !d.pending && d.reason !== 'ready' && <p role="status" className="rounded-lg bg-[#FBF6EA] p-2 text-xs font-semibold text-[#8A5A12]" data-testid="double2x-reason">{reasons[d.reason]}</p>}
+        {d?.pending && <p role="status" className="rounded-lg bg-[#FBF6EA] p-2 text-xs font-semibold text-[#8A5A12]" data-testid="double2x-pending">{d.plays.some(p => p.status === 'pending' && p.executionMode === 'simulation') ? x('Processando a jogada simulada; o saldo fica reservado.', 'Processing the simulated play; the balance stays reserved.', 'Procesando la jugada simulada; el saldo queda reservado.') : x('Jogada pendente na rede. Aguardando liquidação; o saldo fica reservado.', 'Play pending on chain. Awaiting settlement; the balance stays reserved.', 'Jugada pendiente en la red. Esperando liquidación; el saldo queda reservado.')}</p>}
+        {d && !d.pending && d.reason !== 'ready' && !simulation && <p role="status" className="rounded-lg bg-[#FBF6EA] p-2 text-xs font-semibold text-[#8A5A12]" data-testid="double2x-reason">{reasons[d.reason]}</p>}
         {cd && <p role="timer" className="text-xs font-semibold text-[#3F4F68]" data-testid="double2x-cooldown">{x('Próxima jogada em', 'Next play in', 'Próxima jugada en')} <span className="mono">{cd}</span></p>}
         <fieldset disabled={locked || !!d?.pending} className="grid grid-cols-2 gap-2">
           <legend className="mb-1 text-xs font-bold">{x('Escolha uma cor', 'Choose a colour', 'Elige un color')}</legend>
@@ -137,6 +140,7 @@ export function Double2xDialog({ open, onOpenChange, balanceUsdc = 0 }: { open: 
         <ul className="grid gap-2">
           {d?.plays.map(p => <li key={p.id} className="grid gap-1 rounded-lg border border-[#1B2A41]/15 bg-white p-2 text-xs" data-testid={`double2x-play-${p.id}`}>
             <div className="flex flex-wrap items-center justify-between gap-1"><b>{stLabel(p)}</b><time dateTime={p.requestedAt} className="text-[#3F4F68]">{fmt(p.requestedAt)}</time></div>
+            <span className="text-[10px] font-bold text-[#0A6657]">{p.executionMode === 'simulation' ? x('Simulação', 'Simulation', 'Simulación') : 'Arbitrum Sepolia'}</span>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <span className="inline-flex items-center gap-1">{x('Escolha', 'Chosen', 'Elegido')}: {dot(p.color)}{cl(p.color)}</span>
               <span className="inline-flex items-center gap-1">{x('Resultado', 'Result', 'Resultado')}: {dot(p.result)}{cl(p.result)}</span>
@@ -146,8 +150,8 @@ export function Double2xDialog({ open, onOpenChange, balanceUsdc = 0 }: { open: 
               <span>{x('Pagamento', 'Payout', 'Pago')}: <Money v={p.payoutUsdc} a="USDC" /></span>
             </div>
             <div className="flex flex-wrap gap-x-3">
-              {p.requestHash && <a className="mono underline" href={TX + p.requestHash} target="_blank" rel="noopener noreferrer">{x('Pedido', 'Request', 'Pedido')} {short(p.requestHash)}</a>}
-              {p.settlementHash && <a className="mono underline" href={TX + p.settlementHash} target="_blank" rel="noopener noreferrer">{x('Liquidação', 'Settlement', 'Liquidación')} {short(p.settlementHash)}</a>}
+              {p.executionMode !== 'simulation' && p.requestHash && <a className="mono underline" href={TX + p.requestHash} target="_blank" rel="noopener noreferrer">{x('Pedido', 'Request', 'Pedido')} {short(p.requestHash)}</a>}
+              {p.executionMode !== 'simulation' && p.settlementHash && <a className="mono underline" href={TX + p.settlementHash} target="_blank" rel="noopener noreferrer">{x('Liquidação', 'Settlement', 'Liquidación')} {short(p.settlementHash)}</a>}
             </div>
           </li>)}
         </ul>

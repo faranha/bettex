@@ -3187,6 +3187,7 @@ export const GetDemoDouble2xHeader = zod.object({
 export const GetDemoDouble2xResponse = zod.object({
   "chainId": zod.number().int(),
   "network": zod.string(),
+  "executionMode": zod.enum(['testnet', 'simulation']).optional(),
   "gameAddress": zod.string().optional(),
   "tokenAddress": zod.string().optional(),
   "treasuryAddress": zod.string().optional(),
@@ -3198,6 +3199,7 @@ export const GetDemoDouble2xResponse = zod.object({
   "nextPlayAt": zod.string().nullable(),
   "plays": zod.array(zod.object({
   "id": zod.string(),
+  "executionMode": zod.enum(['testnet', 'simulation']).optional(),
   "color": zod.enum(['red', 'black']),
   "result": zod.enum(['red', 'black']).optional(),
   "stakeUsdc": zod.number(),
@@ -3235,6 +3237,7 @@ export const PlayDemoDouble2xBody = zod.object({
 export const PlayDemoDouble2xResponse = zod.object({
   "chainId": zod.number().int(),
   "network": zod.string(),
+  "executionMode": zod.enum(['testnet', 'simulation']).optional(),
   "gameAddress": zod.string().optional(),
   "tokenAddress": zod.string().optional(),
   "treasuryAddress": zod.string().optional(),
@@ -3246,6 +3249,7 @@ export const PlayDemoDouble2xResponse = zod.object({
   "nextPlayAt": zod.string().nullable(),
   "plays": zod.array(zod.object({
   "id": zod.string(),
+  "executionMode": zod.enum(['testnet', 'simulation']).optional(),
   "color": zod.enum(['red', 'black']),
   "result": zod.enum(['red', 'black']).optional(),
   "stakeUsdc": zod.number(),

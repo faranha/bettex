@@ -1,9 +1,10 @@
 import { db, demoAccounts, demoEngine } from "@workspace/db";
 import { eq, sql } from "drizzle-orm";
 import { keccak256 } from "ethers";
+import { randomInt } from "node:crypto";
 import type { DemoDouble2x, Double2xPlay } from "@workspace/api-zod";
 import type { AccountState, EngineState } from "./demo-state";
-import { finishDouble2x } from "./double2x-rules";
+import { double2xExecutionMode, finishDouble2x } from "./double2x-rules";
 import { doubleChain, doubleSigner, doubleProvider, gamePlayerKey, gameRequestKey } from "./double2x-chain";
 import { appendHistory, ensureHistorySchema } from "../modules/audit/infrastructure/history-store";
 import { recordTreasuryCashMovement } from "./treasury-statement-store";
@@ -26,12 +27,14 @@ export async function doubleSnapshot(id: string): Promise<DemoDouble2x> {
   try { chain = await doubleChain(); if (chain) reason = chain.reason; }
   catch (e) { reason = (e as NodeJS.ErrnoException).code === "ENOENT" ? "deploying" : "testnet_unavailable"; }
   if (account.profile.provider === "native") reason = "native_account_unavailable";
+  const executionMode = double2xExecutionMode(reason, account.profile.provider);
+  const ready = reason === "ready" || executionMode === "simulation";
   const pending = plays.some(p => p.status === "pending");
   const next = plays.find(p => p.status !== "refunded")?.nextPlayAt ?? null;
-  return { chainId: 421614, network: "Arbitrum Sepolia", ready: reason === "ready", reason,
-    balanceUsdc: account.receivedYield, canPlay: reason === "ready" && account.receivedYield > 0 && !pending && (!next || Date.parse(next) <= Date.now()),
+  return { chainId: executionMode === "simulation" ? 0 : 421614, network: executionMode === "simulation" ? "Simulation" : "Arbitrum Sepolia", executionMode, ready, reason,
+    balanceUsdc: account.receivedYield, canPlay: ready && account.receivedYield > 0 && !pending && (!next || Date.parse(next) <= Date.now()),
     pending, nextPlayAt: next, plays,
-    ...(chain ? { gameAddress: chain.manifest.gameAddress, tokenAddress: chain.manifest.tokenAddress, treasuryAddress: chain.manifest.treasuryAddress } : {}) };
+    ...(chain && executionMode === "testnet" ? { gameAddress: chain.manifest.gameAddress, tokenAddress: chain.manifest.tokenAddress, treasuryAddress: chain.manifest.treasuryAddress } : {}) };
 }
 async function updatePlay(id: string, playId: string, patch: Partial<StoredDoublePlay>, result?: "red" | "black" | "refunded") {
   await ensureHistorySchema();
@@ -49,17 +52,17 @@ async function updatePlay(id: string, playId: string, patch: Partial<StoredDoubl
       delete play.signedRequest;
       const data = { sourceWallet: "earnings", quantityUnits: String(Math.round(done.stakeUsdc * 1e6)),
         payoutUnits: String(Math.round(done.payoutUsdc * 1e6)), decimals: "6", color: done.color,
-        result: done.result ?? "refunded", chainId: "421614", requestHash: done.requestHash ?? "",
+        result: done.result ?? "refunded", executionMode: done.executionMode ?? "testnet", chainId: done.executionMode === "simulation" ? "0" : "421614", requestHash: done.requestHash ?? "",
         transactionHash: done.settlementHash ?? done.requestHash ?? "", feeUnits: "0" };
       await appendHistory({ key: `double2x:${id}:${playId}:settled`, subject: `demo:${id}`, correlationId: `double2x:${id}:${playId}`,
         category: "financial", kind: `double2x_${done.status}`, state: "confirmed", actor: "system", asset: "USDC",
-        environment: "simulation", source: "double2x_testnet_mirror", occurredAt: new Date(done.settledAt!), data }, tx);
+        environment: "simulation", source: done.executionMode === "simulation" ? "double2x_simulation" : "double2x_testnet_mirror", occurredAt: new Date(done.settledAt!), data }, tx);
       if (result !== "refunded") {
         const amount = done.status === "won" ? -done.stakeUsdc : done.stakeUsdc;
         await recordTreasuryCashMovement(tx, {
           id: `double2x:${id}:${playId}:treasury`, at: done.settledAt!, asset: "USDC", account: "treasury",
           category: "transfer", amount: String(amount), principal: null,
-          income: false, reference: done.settlementHash!, source: "recorded_simulation",
+          income: false, reference: done.settlementHash ?? `double2x:${id}:${playId}`, source: "recorded_simulation",
           counterparty: "Double 2X", internal: false, status: "recorded",
         });
       }
@@ -67,6 +70,13 @@ async function updatePlay(id: string, playId: string, patch: Partial<StoredDoubl
     }
     await tx.update(demoAccounts).set({ state: account, updatedAt: new Date() }).where(eq(demoAccounts.id, id));
   });
+}
+export async function settleSimulatedDouble(id: string) {
+  const account = await accountState(id);
+  const play = account.double2x?.plays.find(p => p.status === "pending" && p.executionMode === "simulation") as StoredDoublePlay | undefined;
+  // Never substitute a mock for a signed/broadcast transaction.
+  if (!play || play.signedRequest || play.requestHash || account.profile.provider === "native") return;
+  await updatePlay(id, play.id, {}, randomInt(2) === 0 ? "red" : "black");
 }
 let queue = Promise.resolve();
 export function reconcileDouble(id: string) {
@@ -78,6 +88,7 @@ async function reconcileAccount(id: string) {
   const account = await accountState(id);
   const play = account.double2x?.plays.find(p => p.status === "pending") as StoredDoublePlay | undefined;
   if (!play) return;
+  if (play.executionMode === "simulation") { await settleSimulatedDouble(id); return; }
   const chain = await doubleChain();
   if (!chain) return;
   const key = gameRequestKey(id, play.id);

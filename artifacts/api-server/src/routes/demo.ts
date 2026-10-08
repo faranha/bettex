@@ -22,7 +22,7 @@ import { statementFilters } from "../lib/treasury-statement";
 import { treasuryStatement, treasuryStatementCsv } from "../lib/treasury-statement-store";
 import { treasuryTestWalletPage } from "../modules/wallets/infrastructure/treasury-test-wallet-store";
 import { PlayDemoDouble2xBody } from "@workspace/api-zod";
-import { doubleSnapshot, reconcileDouble, startDouble2xWorker } from "../lib/double2x-store";
+import { doubleSnapshot, reconcileDouble, settleSimulatedDouble, startDouble2xWorker } from "../lib/double2x-store";
 
 const router = Router();
 startDouble2xWorker();
@@ -61,6 +61,7 @@ router.get("/demo/double2x", async (req, res) => {
   try {
     if (!await userDashboard(req, res)) return;
     const id = String(res.locals.demoHistorySubject).slice(5);
+    await settleSimulatedDouble(id);
     void reconcileDouble(id).catch(() => req.log.warn({ code: "double2x_pending" }, "Double 2X settlement will retry"));
     res.json(await doubleSnapshot(id));
   } catch (e) { errorResponse(req, res, e); }
@@ -78,7 +79,8 @@ router.post("/demo/double2x", async (req, res) => {
       res.status(409).json({ error: before.pending ? "double2x_pending" : before.nextPlayAt && Date.parse(before.nextPlayAt) > Date.now()
         ? "double2x_daily_limit" : before.balanceUsdc <= 0 ? "double2x_no_earnings" : `double2x_${before.reason}` }); return;
     }
-    if (!await userDashboard(req, res, { double2x: parsed.data })) return;
+    if (!await userDashboard(req, res, { double2x: { ...parsed.data, executionMode: before.executionMode ?? "testnet" } })) return;
+    await settleSimulatedDouble(id);
     void reconcileDouble(id).catch(() => req.log.warn({ code: "double2x_pending" }, "Double 2X settlement will retry"));
     res.json(await doubleSnapshot(id));
   } catch (e) { errorResponse(req, res, e); }

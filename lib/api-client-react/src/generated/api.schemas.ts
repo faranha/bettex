@@ -21,6 +21,14 @@ export interface Double2xPlayInput {
   expectedStakeUsdc: number;
 }
 
+export type Double2xPlayExecutionMode = typeof Double2xPlayExecutionMode[keyof typeof Double2xPlayExecutionMode];
+
+
+export const Double2xPlayExecutionMode = {
+  testnet: 'testnet',
+  simulation: 'simulation',
+} as const;
+
 export type Double2xPlayColor = typeof Double2xPlayColor[keyof typeof Double2xPlayColor];
 
 
@@ -49,6 +57,7 @@ export const Double2xPlayStatus = {
 
 export interface Double2xPlay {
   id: string;
+  executionMode?: Double2xPlayExecutionMode;
   color: Double2xPlayColor;
   result?: Double2xPlayResult;
   stakeUsdc: number;
@@ -62,6 +71,14 @@ export interface Double2xPlay {
   sequence?: string;
   error?: string;
 }
+
+export type DemoDouble2xExecutionMode = typeof DemoDouble2xExecutionMode[keyof typeof DemoDouble2xExecutionMode];
+
+
+export const DemoDouble2xExecutionMode = {
+  testnet: 'testnet',
+  simulation: 'simulation',
+} as const;
 
 export type DemoDouble2xReason = typeof DemoDouble2xReason[keyof typeof DemoDouble2xReason];
 
@@ -78,6 +95,7 @@ export const DemoDouble2xReason = {
 export interface DemoDouble2x {
   chainId: number;
   network: string;
+  executionMode?: DemoDouble2xExecutionMode;
   gameAddress?: string;
   tokenAddress?: string;
   treasuryAddress?: string;

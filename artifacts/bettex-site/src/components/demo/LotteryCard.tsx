@@ -13,6 +13,7 @@ import { lotteryRoundBalance } from './lottery-balance';
 import { LotteryEntries } from './LotteryEntries';
 import { BurnLotteryFlame } from './BurnLotteryArt';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { WalletCardDetails } from './WalletCardDetails';
 
 function useCountdown(target: string, serverNow: string) {
   const [offset, setOffset] = useState(() => Date.parse(serverNow) - Date.now());
@@ -65,18 +66,19 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
         <Link href={`${demoPath('wallet', loc)}?${historyParams.toString()}#rh-panel-lottery`} data-testid="link-lottery-history" aria-label={historyLabel} title={historyLabel} className="bl-hist focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><History className="h-5 w-5" aria-hidden="true" /></Link>
       </div>
     </div>
+    <div className="bl-ticket" data-testid="lottery-round-balance" data-round-id={d.treasury.currentRound?.id}>
+      <div className="text-xs font-bold text-[#7A3A06]"><WalletHelp id="lottery-budget" label={x('Saldo da loteria · rodada atual', 'Lottery balance · current round', 'Saldo de la lotería · ronda actual')}>
+        <p>{x('25% do lucro realizado líquido positivo da rodada atual. Valor provisório, não liquidado; rodada negativa aloca zero. O saldo acumulado da carteira de queima é separado. Este valor não é seu saldo pessoal nem um prêmio garantido.', '25% of the current round’s positive realized net profit. Provisional, not settled; a negative round allocates zero. Accumulated burn-wallet cash is separate. This is not your personal balance or a guaranteed prize.', '25% de la ganancia neta realizada positiva de la ronda actual. Provisional, no liquidado; una ronda negativa asigna cero. El efectivo acumulado de la cartera de quema es separado. Este importe no es tu saldo personal ni un premio garantizado.')}</p>
+      </WalletHelp></div>
+      <p className="display mt-1 break-words text-2xl font-extrabold tabular-nums text-[#070B1F]" data-testid="lottery-usdc-balance">{roundBalance === null ? x('Indisponível', 'Unavailable', 'No disponible') : <>{nf(fl, roundBalance)} <span className="mono text-[0.55em]">USDC</span></>}</p>
+    </div>
+    <WalletCardDetails id="lottery" dark label={x('Detalhes da loteria de queima', 'Burn Lottery details', 'Detalles de la lotería de quema')}>
     <div className="grid min-w-0 gap-1.5" data-testid="lottery-explanation">
       <p className="text-sm leading-relaxed text-[#F4F1E8]">{x(
         'Todo dia, o sorteio pode comprar seus BETTEX em stake por 2× o preço cotado. Você recebe USDC, e os tokens comprados são queimados.',
         'Each day, the draw can buy your staked BETTEX for 2× the quoted price. You receive USDC, and the bought tokens are burned.',
         'Cada día, el sorteo puede comprar tus BETTEX en stake por 2× el precio cotizado. Recibes USDC y los tokens comprados se queman.',
       )}</p>
-    </div>
-    <div className="bl-ticket" data-testid="lottery-round-balance" data-round-id={d.treasury.currentRound?.id}>
-      <div className="text-xs font-bold text-[#7A3A06]"><WalletHelp id="lottery-budget" label={x('Saldo da loteria · rodada atual', 'Lottery balance · current round', 'Saldo de la lotería · ronda actual')}>
-        <p>{x('25% do lucro realizado líquido positivo da rodada atual. Valor provisório, não liquidado; rodada negativa aloca zero. O saldo acumulado da carteira de queima é separado. Este valor não é seu saldo pessoal nem um prêmio garantido.', '25% of the current round’s positive realized net profit. Provisional, not settled; a negative round allocates zero. Accumulated burn-wallet cash is separate. This is not your personal balance or a guaranteed prize.', '25% de la ganancia neta realizada positiva de la ronda actual. Provisional, no liquidado; una ronda negativa asigna cero. El efectivo acumulado de la cartera de quema es separado. Este importe no es tu saldo personal ni un premio garantizado.')}</p>
-      </WalletHelp></div>
-      <p className="display mt-1 break-words text-2xl font-extrabold tabular-nums text-[#070B1F]" data-testid="lottery-usdc-balance">{roundBalance === null ? x('Indisponível', 'Unavailable', 'No disponible') : <>{nf(fl, roundBalance)} <span className="mono text-[0.55em]">USDC</span></>}</p>
     </div>
     <label className={`bl-join ${lot.participating ? 'is-on' : ''} ${m.isPending || (!lot.participating && !lot.eligible) ? 'is-disabled' : ''}`}>
       <input type="checkbox" checked={lot.participating} disabled={m.isPending || (!lot.participating && !lot.eligible)} onChange={onToggle} data-testid="lottery-participation-checkbox" className="bl-check" />
@@ -102,6 +104,7 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
     {!lot.eligible && !lot.participating && <p className="text-xs text-[#C5D2F1]">{x('Sem BETTEX em stake elegível.', 'No eligible staked BETTEX.', 'Sin BETTEX en stake elegible.')}</p>}
     {m.isPending && !open && <p className="text-xs text-[#C5D2F1]" data-testid="lottery-loading">{x('Salvando...', 'Saving...', 'Guardando...')}</p>}
     {m.isError && !open && <p role="alert" className="text-xs font-semibold text-[#FFB4A8]" data-testid="lottery-error">{x('Não foi possível atualizar a participação.', 'Could not update participation.', 'No se pudo actualizar la participación.')}</p>}
+    </WalletCardDetails>
     <Dialog open={open} onOpenChange={value => { if (!m.isPending) setOpen(value); }}>
       <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] max-w-md overflow-y-auto rounded-2xl bg-[#FFFCF6] p-4 text-[#1B2A41] shadow-xl" data-testid="lottery-confirm-dialog">
         <DialogTitle className="display text-base font-extrabold text-[#1B2A41]">{x('Confirmar participação', 'Confirm participation', 'Confirmar participación')}</DialogTitle>

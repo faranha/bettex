@@ -9,7 +9,7 @@ Correct choices double the earnings-wallet balance, paid from the treasury. Losi
 
 **Why:** The creator explicitly requested these mechanics and placement.
 
-**How to apply:** Preserve these rules when implementing the game and its history. Do not substitute activity registration or simulated outcomes for the requested on-chain settlement.
+**How to apply:** Preserve these rules when implementing the game and its history. Use on-chain settlement when test gas is available; the creator subsequently authorized the explicit simulation fallback below.
 
 The creator selected public Arbitrum Sepolia with test tokens, not real-money mainnet play.
 
@@ -21,10 +21,16 @@ Sponsor oracle fees and gas separately from the player's stake. Public randomnes
 
 **Why:** A 100% RTP game requires unbiased outcomes and no game fee; balance growth during confirmation must not increase the amount risked without renewed consent.
 
-**How to apply:** Require public oracle settlement evidence before crediting a result, and reject stale-balance consent rather than silently wagering a larger balance.
+**How to apply:** Require public oracle settlement evidence before crediting an on-chain result, and reject stale-balance consent rather than silently wagering a larger balance. Explicitly simulated plays do not claim oracle evidence.
 
 Verify test ETH after actual game execution, not only after deployment. Reserve enough for both the oracle fee and the requesting transaction; keep the existing public activity writer funded separately.
 
 **Why:** The first publicly settled game passed, but its combined native costs left the game below the next-play threshold even though initial deployment funding had looked sufficient.
 
 **How to apply:** Account for ongoing randomness costs and replenish only test ETH. An Ethereum Sepolia bridge receipt does not yet prove the deposit is available on Arbitrum Sepolia.
+
+Use a mock game when sponsored test gas is unavailable. Clearly distinguish simulation from on-chain plays; do not invent transaction hashes or replace a signed/pending blockchain transaction with a simulated outcome. Keep the earnings stake, 50/50 result, treasury accounting and rolling 24-hour limit.
+
+**Why:** The creator explicitly requested “make this mock if we dont have gas” after the gas warning blocked the demo.
+
+**How to apply:** This changes the prior prohibition on mock outcomes only for the no-test-gas fallback, using simulated ALFA earnings and never native or real-money wallets.

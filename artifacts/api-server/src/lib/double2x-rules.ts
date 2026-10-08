@@ -4,7 +4,11 @@ import type { Double2xPlay } from "@workspace/api-zod";
 import { treasuryRoundSnapshot } from "./treasury-round.ts";
 
 export type Double2xState = { plays: Double2xPlay[] };
-export type Double2xInput = { requestId: string; color: "red" | "black"; confirmed: boolean; expectedStakeUsdc: number };
+export type Double2xInput = { requestId: string; color: "red" | "black"; confirmed: boolean; expectedStakeUsdc: number; executionMode?: "testnet" | "simulation" };
+// Server-owned: clients cannot select a cheaper execution mode.
+export function double2xExecutionMode(reason: string, provider?: string) {
+  return reason === "test_gas_unavailable" && provider !== "native" ? "simulation" as const : "testnet" as const;
+}
 export function reserveDouble2x(account: AccountState, engine: EngineState, input: Double2xInput, now: number) {
   if (!input.confirmed) throw new DemoInputError("double2x_confirmation_required");
   if (account.profile.provider === "native") throw new DemoInputError("double2x_native_account_unavailable");
@@ -20,7 +24,7 @@ export function reserveDouble2x(account: AccountState, engine: EngineState, inpu
   if (!(stake > 0)) throw new DemoInputError("double2x_no_earnings");
   if (!Number.isSafeInteger(Math.round(stake * 1e6)) || Math.round(stake * 1e6) !== Math.round(input.expectedStakeUsdc * 1e6)) throw new DemoInputError("double2x_balance_changed");
   if (treasuryRoundSnapshot(engine, now).availableUsdc - (engine.double2xReservedUsdc ?? 0) < stake) throw new DemoInputError("double2x_treasury_unavailable");
-  const play: Double2xPlay = { id: input.requestId, color: input.color, stakeUsdc: stake,
+  const play: Double2xPlay = { id: input.requestId, executionMode: input.executionMode ?? "testnet", color: input.color, stakeUsdc: stake,
     payoutUsdc: 0, status: "pending", requestedAt: new Date(now).toISOString(), nextPlayAt: new Date(now + DAY).toISOString() };
   account.receivedYield = roundMoney(account.receivedYield - stake);
   engine.double2xReservedUsdc = roundMoney((engine.double2xReservedUsdc ?? 0) + stake);
