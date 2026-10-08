@@ -8,6 +8,28 @@ const filters = (override = {}) => ({ ...statementFilters({ from: "2026-10-07", 
 const positions = [{ id: "P1", at, kind: "position_closed", agent: "sports", market: "A vs B",
   capitalUsdc: "500.000001", grossUsdc: "12.345678", costUsdc: "0.123456" },
 { id: "OPERATOR", at, kind: "operator_fee", grossUsdc: "2000" }];
+test("wallet filters separate Crypto settlements from Operational and preserve the consolidated ledger", () => {
+  const sample = [...positions,
+    { ...positions[0], id: "CRYPTO", agent: "crypto", market: "SOL/USDC" },
+    { ...positions[0], id: "BTC", agent: "predictions", market: "BTC up or down" },
+    { ...positions[0], id: "ETH", agent: "predictions", market: "ETH/USDC" },
+    { ...positions[0], id: "SOL", agent: "predictions", market: "SOL-USD" },
+    { ...positions[0], id: "POLITICS", agent: "predictions", market: "Election" }];
+  const entries = treasuryStatementEntries(sample,
+    [{ id: "R1", endedAt: at, stakingUsdc: 2, buybackUsdc: 1 }],
+    [{ id: "B1", at, roundId: "R1", kind: "wallet_funded", amountUsdc: 1, tokensBettex: 0 }]);
+  const ids = wallet => matchingStatementEntries(entries, filters({ wallet })).map(e => e.id).sort();
+  assert.deepEqual(ids("crypto_agent"), ["BTC:cost", "BTC:result", "CRYPTO:cost", "CRYPTO:result", "ETH:cost", "ETH:result", "SOL:cost", "SOL:result"]);
+  assert.deepEqual(ids("operational"), ["P1:cost", "P1:result", "POLITICS:cost", "POLITICS:result", "R1:buyback-funding", "R1:distribution"]);
+  assert.deepEqual(ids("buyback"), ["B1:USDC"]);
+  assert.deepEqual(ids("reserve"), []);
+  assert.deepEqual([...ids("crypto_agent"), ...ids("operational"), ...ids("buyback")].sort(), ids("all"));
+  for (const wallet of ["operational", "reserve", "crypto_agent"]) {
+    assert.deepEqual(statementBalances(entries, filters({ wallet }), new Map([["treasury:USDC", 1000000n]])), []);
+    assert.equal(statementFilters({ from: "2026-10-07", to: "2026-10-07", wallet }).wallet, wallet);
+  }
+  assert.throws(() => statementFilters({ from: "2026-10-07", to: "2026-10-07", wallet: "unknown" }));
+});
 test("exact decimal arithmetic never rounds ledger quantities or uses floating point", () => {
   assert.equal(statementUnits("9007199254740993.000001"), 9007199254740993000001n);
   assert.equal(statementDecimal(-12n), "-0.000012");

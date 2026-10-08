@@ -62,3 +62,9 @@ O app deve mostrar as equivalências de uma unidade: dólar em real e BETTEX em 
 **Why:** O criador pediu “1=?” para dólar/real e as duas conversões de uma unidade BETTEX, marcando o espaço à direita da navegação.
 
 **How to apply:** As cotações visíveis e a avaliação dos saldos devem usar a mesma referência. Não apresentar parâmetros simulados como preços reais de mercado nem inventar números quando a referência estiver indisponível.
+
+A área inteira das carteiras precisa de helpers com explicações, não apenas nomes ou títulos das ações.
+
+**Why:** O criador apontou: “faltam helpers em toda a area das carteiras, nao tem explicacao de nada”.
+
+**How to apply:** Preservar explicações de saldos, indicadores, participação na rodada, endereços e ações ao ampliar as carteiras. Os helpers precisam ser acessíveis por toque e teclado e acompanhar o idioma selecionado; abrir ajuda nunca deve executar uma operação financeira nem revelar chaves.

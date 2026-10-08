@@ -11,6 +11,7 @@ import { demoCycleStart } from "./demo-cycle-clock";
 import { prepareScheduledAccount } from "./scheduled-demo-account";
 import { separateEarningsWallet } from "./earnings-wallet";
 import { ensureDemoLottery, advanceDemoLottery } from "./demo-lottery";
+import { ensureLotteryEntries, buyLotteryEntries } from "./demo-lottery-entries";
 import { advanceDemoBurnStory } from "./demo-burn-story";
 import { recordTreasuryCashMovement } from "./treasury-statement-store";
 import { ensureRoundArchiveSchema, archiveRounds, archiveParticipation } from "./round-archive-store";
@@ -22,7 +23,7 @@ import {
   submitMovement, DemoInputError, accountWeight, DAY, ensureDemoSwapPool, roundMoney, type AccountState, type EngineState,
 } from "./demo-state";
 
-type Command = { movement: DemoMovementInput } | { lottery: { participating: boolean; confirmed: boolean } } | { name: string; email?: string; nickname?: string; avatarPath?: string | null } | { distributionPreview: string } | { avatarUpload: NonNullable<AccountState["avatarUpload"]> };
+type Command = { lotteryEntries: { requestId: string; quantity: number; confirmed: boolean; drawAt: string } } | { movement: DemoMovementInput } | { lottery: { participating: boolean; confirmed: boolean } } | { name: string; email?: string; nickname?: string; avatarPath?: string | null } | { distributionPreview: string } | { avatarUpload: NonNullable<AccountState["avatarUpload"]> };
 export type AccountIdentity = {
   browserId: string;
   tabScoped?: boolean;
@@ -65,8 +66,8 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
       for (const [i, row] of rows.entries()) {
         if (states[i]!.history.length !== before[i]!.length) {
           await recordDemoMovements(tx, row.id, before[i]!, states[i]!.history, String(roundMoney(engine.price * 2)), undefined, now);
-          await tx.update(demoAccounts).set({ state: states[i]!, updatedAt: new Date(now) }).where(eq(demoAccounts.id, row.id));
         }
+        await tx.update(demoAccounts).set({ state: states[i]!, updatedAt: new Date(now) }).where(eq(demoAccounts.id, row.id));
       }
       for (const draw of engine.burnLottery.draws.slice(count)) {
         await appendHistory({ key: draw.id, subject: "treasury:demo", correlationId: draw.id, category: "automatic",
@@ -158,6 +159,7 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     await recordDemoMovements(tx, accountId, [], initialHistory);
     settleMovements(account, now, engine);
     let operationPrice = String(roundMoney(engine.price));
+    let lotteryEntryResult: import("@workspace/api-zod").DemoLotteryEntryReceipt | undefined;
     if (command && "lottery" in command) {
       if (actor.nativeAccountId || account.profile.provider === "native" || !engine.burnLottery) throw new DemoInputError("lottery_unavailable");
       if (command.lottery.participating && !command.lottery.confirmed) throw new DemoInputError("lottery_confirmation_required");
@@ -167,9 +169,57 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
           correlationId: `lottery-consent:${accountId}:${now}`, category: "activity", kind: "burn_lottery_participation",
           state: "confirmed", actor: "user", environment: "simulation", source: "demo_burn_lottery",
           data: { participating: String(command.lottery.participating), premiumPercent: "100",
-            selection: "wallets_without_replacement", unpaidWeightResetOnSale: "true" } }, tx);
+            selection: "equal_weight_numbers_wallets_without_replacement", unpaidWeightResetOnSale: "true" } }, tx);
       }
     }
+    if (command && "lotteryEntries" in command) {
+      const input = command.lotteryEntries;
+      if (actor.nativeAccountId || account.profile.provider === "native") throw new DemoInputError("lottery_unavailable");
+      if (!input.confirmed) throw new DemoInputError("lottery_confirmation_required");
+      const [existing] = await tx.select().from(demoCommands).where(and(eq(demoCommands.accountId, accountId), eq(demoCommands.requestId, input.requestId)));
+      if (existing) {
+        const saved = existing.input as Record<string, unknown>;
+        if (saved.kind !== "lottery_entries" || saved.quantity !== input.quantity || saved.drawAt !== input.drawAt) throw new DemoInputError("invalid_lottery_purchase");
+        const receipt = saved.receipt as typeof lotteryEntryResult;
+        if (!receipt || receipt.requestId !== input.requestId || receipt.quantity !== input.quantity) throw new DemoInputError("lottery_receipt_unavailable");
+        lotteryEntryResult = receipt;
+      } else {
+        if (!engine.burnLottery || input.drawAt !== new Date(engine.burnLottery.nextDrawAt).toISOString()) throw new DemoInputError("lottery_draw_closed");
+        let receipt;
+        try { receipt = buyLotteryEntries(engine, account, input.quantity, input.requestId, now, accountId); }
+        catch (error) { throw new DemoInputError(error instanceof Error ? error.message : "invalid_lottery_purchase"); }
+        lotteryEntryResult = receipt;
+        const tracking = ensureTreasuryTracking(engine, now);
+        tracking.liquidityCashDelta = roundMoney((tracking.liquidityCashDelta ?? 0) + receipt.paidUsdc);
+        await recordTreasuryCashMovement(tx, {
+          id: `LOTTERY-ENTRY-POOL-${createHash("sha256").update(`${accountId}:${input.requestId}`).digest("hex")}`,
+          at: receipt.createdAt, account: "treasury", asset: "USDC", amount: receipt.paidUsdc.toFixed(6),
+          category: "transfer", reference: input.requestId, counterparty: "BETTEX/USDC AMM",
+          source: "recorded_simulation", internal: false, income: false, principal: null, status: "recorded",
+        });
+        await appendHistory({
+          key: `lottery-entries:${accountId}:${input.requestId}`, subject: `demo:${accountId}`,
+          correlationId: `demo:${accountId}:${input.requestId}`, category: "activity",
+          kind: "lottery_entries_purchased", state: "confirmed", actor: "user", asset: "USDC",
+          environment: "simulation", source: "demo_burn_lottery", occurredAt: new Date(now),
+          data: { sourceWallet: "dollar", entryCount: String(receipt.quantity), entryNumbers: receipt.numbers.join(", "),
+            paidAsset: "USDC", paidUnits: decimalUnits(String(receipt.paidUsdc), 6), paidDecimals: "6",
+            burnedUnits: decimalUnits(String(receipt.burnedBettex), 18), drawAt: new Date(engine.burnLottery!.nextDrawAt).toISOString(),
+            feeUnits: "0", allProceedsBurned: "true", stakingPreserved: "true" },
+        }, tx);
+        await tx.insert(demoCommands).values({ accountId, requestId: input.requestId, input: { ...input, kind: "lottery_entries", receipt } });
+      }
+    }
+    const previousFree = account.lotteryEntries?.drawAt === new Date(engine.burnLottery?.nextDrawAt ?? now).toISOString()
+      ? account.lotteryEntries.entries.find(e => e.type === "free") : undefined;
+    const lotteryEntries = ensureLotteryEntries(engine, account, now);
+    const free = lotteryEntries?.entries.find(e => e.type === "free");
+    if (free && !previousFree) await appendHistory({
+      key: `lottery-free:${accountId}:${lotteryEntries!.drawAt}`, subject: `demo:${accountId}`,
+      correlationId: `lottery-free:${accountId}:${lotteryEntries!.drawAt}`, category: "activity",
+      kind: "lottery_free_entry", state: "confirmed", actor: "system", environment: "simulation", source: "demo_burn_lottery",
+      data: { entryNumbers: free.number, entryCount: "1", drawAt: lotteryEntries!.drawAt },
+    }, tx);
     if (command && "movement" in command) {
       const input = command.movement;
       const [existing] = await tx.select().from(demoCommands).where(and(eq(demoCommands.accountId, accountId), eq(demoCommands.requestId, input.requestId)));
@@ -256,7 +306,9 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     await flushTreasuryActivity(tx, engine);
     await tx.update(demoEngine).set({ state: engine, updatedAt: new Date(now) }).where(eq(demoEngine.id, "main"));
     const allAccounts = await tx.select({ state: demoAccounts.state }).from(demoAccounts);
-    return dashboard(account, engine, now, allAccounts.map(item => item.state as AccountState));
+    const result = dashboard(account, engine, now, allAccounts.map(item => item.state as AccountState));
+    if (result.lottery && lotteryEntryResult) result.lottery.purchaseResult = lotteryEntryResult;
+    return result;
   });
 }
 

@@ -6,6 +6,7 @@ import { CreateDemoMovementBody, UpdateDemoProfileBody, GetDemoDashboardResponse
 import { loadDashboard, ClaimedBrowserAccountError } from "../lib/demo-store";
 import { verifiedAccount, updateAccountName } from "../lib/account-identity";
 import { DemoInputError } from "../lib/demo-state";
+import { BuyDemoLotteryEntriesBody } from "@workspace/api-zod";
 import { historyPage } from "../modules/audit/infrastructure/history-store";
 import { PreviewHistoryDistributionBody } from "@workspace/api-zod";
 import { historyQuery } from "../modules/audit/transport/history-filters";
@@ -120,6 +121,15 @@ router.post("/demo/lottery/participation", async (req, res) => {
   try {
     res.json(GetDemoDashboardResponse.parse(await userDashboard(req, res, { lottery: parsed.data })));
   } catch (error) { errorResponse(req, res, error); }
+});
+router.post("/demo/lottery/entries", async (req, res) => {
+  if (!permittedOrigin(req) || !req.is("application/json")) { res.status(403).json({ error: "origin_not_allowed" }); return; }
+  const parsed = BuyDemoLotteryEntriesBody.safeParse(req.body);
+  if (!parsed.success || Object.keys(req.body).some(key => !["requestId", "quantity", "confirmed", "drawAt"].includes(key))) {
+    res.status(400).json({ error: "invalid_lottery_purchase" }); return;
+  }
+  try { res.json(GetDemoDashboardResponse.parse(await userDashboard(req, res, { lotteryEntries: parsed.data }))); }
+  catch (error) { errorResponse(req, res, error); }
 });
 // This namespace only runs the pure emulated scenario engine. It grants no native account rights.
 router.all("/demo/simulation", async (req, res) => {

@@ -1,4 +1,13 @@
 export const DEC: Record<string, number> = { USDC: 6, BETTEX: 18, ETH: 18 };
+export function historyLegDecimals(data: Record<string, unknown>, leg: 'paid' | 'received', fallbackAsset?: string | null): number {
+  const explicit = data[`${leg}Decimals`];
+  const decimals = typeof explicit === 'number' ? explicit : typeof explicit === 'string' && /^\d{1,2}$/.test(explicit) ? Number(explicit) : NaN;
+  if (Number.isInteger(decimals) && decimals >= 0 && decimals <= 36) return decimals;
+  const asset = typeof data[`${leg}Asset`] === 'string' ? data[`${leg}Asset`] as string : fallbackAsset ?? '';
+  if (DEC[asset] !== undefined) return DEC[asset]!;
+  const common = typeof data.decimals === 'number' ? data.decimals : typeof data.decimals === 'string' && /^\d{1,2}$/.test(data.decimals) ? Number(data.decimals) : NaN;
+  return Number.isInteger(common) && common >= 0 && common <= 36 ? common : 18;
+}
 export function formatUnits(raw: unknown, decimals: number): string {
   let s = typeof raw === 'string' ? raw : typeof raw === 'number' && Number.isInteger(raw) ? String(raw) : '';
   if (!/^-?\d+$/.test(s) || !Number.isInteger(decimals) || decimals < 0 || decimals > 36) return '—';

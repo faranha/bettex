@@ -89,7 +89,11 @@ test("persisted draws cannot repeat on reads, restart or next day; private accou
   advanceDemoLottery(restarted, [a], drawAt + 86_400_000, () => 0);
   assert.equal(restarted.burnLottery!.draws.length, 2);
   assert.equal(restarted.burnLottery!.draws[1]!.status, "no_budget");
-  assert.equal(JSON.stringify(a), saved);
+   const { lotteryEntries, ...financial } = a;
+   const { lotteryEntries: previousEntries, ...previousFinancial } = JSON.parse(saved);
+   assert.deepEqual(financial, previousFinancial, "a no-budget draw never changes wallet finances");
+   assert.equal(lotteryEntries!.entries.length, 1, "the next daily draw receives a fresh free number");
+   assert.notEqual(lotteryEntries!.entries[0]!.number, previousEntries.entries[0].number);
 });
 test("lottery stops future authored buybacks without erasing completed legacy burns", () => {
   const engine = frame();

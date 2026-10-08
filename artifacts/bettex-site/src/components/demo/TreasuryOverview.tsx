@@ -9,7 +9,9 @@ import { TreasuryStatementSummary } from '../history/TreasuryStatementSummary';
 import type { DemoDashboard, DemoTreasuryRound } from '@workspace/api-client-react';
 import { useX } from './ui';
 import { TreasuryCycle } from './TreasuryCycle';
-import { Money, Term, useMoney } from './fin';
+import { Money, useMoney } from './fin';
+import { TreasuryTerm as Term } from './TreasuryHelp';
+import { WalletHelp } from './WalletHelp';
 import { BurnWalletPanel } from './BurnWalletPanel';
 import { TreasurySwapPool } from './TreasurySwapPool';
 import { TreasuryWallets } from './TreasuryWallets';
@@ -57,7 +59,7 @@ export function StatementOverview({ d, from }: { d: DemoDashboard; from: string 
   const label = x('Abrir extrato da tesouraria no Histórico', 'Open treasury statement in History', 'Abrir extracto de la tesorería en Historial');
   return <section data-testid="treasury-statement-overview" className="dcard p-4 sm:p-5">
     <div className="mb-3 flex items-start justify-between gap-3">
-      <div className="min-w-0"><h2 className="display text-lg font-extrabold">{x('Movimento do período', 'Period movement', 'Movimiento del período')}</h2>
+      <div className="min-w-0"><h2 className="display text-lg font-extrabold"><WalletHelp id="treasury-movement" label={x('Movimento do período', 'Period movement', 'Movimiento del período')}><p>{x('Resumo dos lançamentos registrados no período indicado, por conta e ativo. Entradas e saídas não são sinônimos de lucro ou prejuízo. A cobertura é parcial e inclui liquidações modeladas; não é uma comprovação de caixa real. O botão de extrato abre os registros detalhados no Histórico.', 'Summary of recorded entries for the stated period, by account and asset. Inflows and outflows are not the same as profit or loss. Coverage is partial and includes modeled settlements; it is not proof of real cash. The statement button opens detailed records in History.', 'Resumen de movimientos registrados en el período indicado, por cuenta y activo. Las entradas y salidas no equivalen a ganancias o pérdidas. La cobertura es parcial e incluye liquidaciones modeladas; no prueba caja real. El botón de extracto abre los registros detallados en Historial.')}</p></WalletHelp></h2>
         <p className="mt-1 text-xs text-[#5B6B85]">{x('Cobertura parcial, com liquidações modeladas. Não é fluxo de caixa verificado.', 'Partial coverage, with modeled settlements. Not verified cash flow.', 'Cobertura parcial, con liquidaciones modeladas. No es flujo de caja verificado.')}</p></div>
       <Link href={`${demoPath('wallet', loc)}${historyQuery('treasury', { treasuryAccount: 'treasury', treasuryAsset: 'USDC' })}#treasury-statement`} data-testid="link-treasury-statement" aria-label={label} title={label} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#D8CFBB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#F0E9DA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]"><FileText className="h-5 w-5" aria-hidden="true" /></Link>
     </div>
@@ -68,16 +70,12 @@ export function StatementOverview({ d, from }: { d: DemoDashboard; from: string 
 }
 
 export function TreasuryOverview({ d }: { d: DemoDashboard }) {
-  const { x } = useX();
   const r = d.treasury.currentRound;
-  const sim = x('Tesouraria simulada, sem EVM nativo nem dinheiro real.', 'Simulated treasury, no native EVM and no real cash.', 'Tesorería simulada, sin EVM nativo ni dinero real.');
 
   if (!r) return <TreasuryCycle d={d} />;
 
   return <section data-testid="treasury-overview" className="grid gap-4">
-    <p className="rounded-xl bg-[#EFF6F2] px-3 py-2 text-xs font-semibold text-[#0A6657]">{sim}</p>
-
-    <TreasuryWallets d={d} r={r} />
+    <TreasuryWallets d={d} r={r} layout="vertical" />
 
     <TreasurySwapPool d={d} />
 

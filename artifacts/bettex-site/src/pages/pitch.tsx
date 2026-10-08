@@ -13,6 +13,7 @@ import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
 import { TokenValueMechanisms } from '@/components/pitch/TokenValueMechanisms';
 import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
 import { RoadmapSection } from '@/components/RoadmapSection';
+import { DemoAppLink } from '@/components/DemoAppLink';
 import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipationFlow';
 import { PitchObservations } from '@/components/pitch/PitchObservations';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
@@ -207,10 +208,10 @@ export function PitchPage() {
 
     <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="O ALFA reúne uma audiência semente; o go to market acompanha o lançamento do BETA em janeiro de 2027." n="08" kicker="Fase atual e próximos passos" dark title={<>Fase atual. <span className="text-[#F2B632]">ALFA</span></>}>
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
-        <span className="mono">FASE ATUAL · ALFA</span>
+        <DemoAppLink className="mono">FASE ATUAL · ALFA</DemoAppLink>
         <strong>ALFA seed com audiência inicial</strong>
         <p>O ALFA está previsto para outubro de 2026, com token, contratos básicos e primeiros agentes. A captação e a formalização vêm em novembro; o BETA e o go to market, em janeiro de 2027.</p>
-        <a href="#pitch-roadmap">Ver etapas e features no Roadmap</a>
+        <DemoAppLink data-testid="pitch-open-alpha-demo" />
       </aside>
       <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.</p>
       <FounderLaunchFunnel />

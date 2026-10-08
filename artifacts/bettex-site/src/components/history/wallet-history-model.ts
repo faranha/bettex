@@ -77,7 +77,7 @@ export function brlReference(row: WalletHistoryRow, d: DemoDashboard, fee = fals
 export type WalletHistoryFilters = { wallet: string; type: string; state: string; search: string };
 export function walletFilterFromSearch(search: string): string {
   const wallet = new URLSearchParams(search).get('wallet') ?? '';
-  return ['earnings', 'USDC', 'BETTEX', 'ETH'].includes(wallet) || /^0x[0-9a-f]{40}$/i.test(wallet) ? wallet : '';
+  return ['earnings', 'USDC', 'BETTEX'].includes(wallet) || /^0x[0-9a-f]{40}$/i.test(wallet) ? wallet : '';
 }
 export function filterWalletHistory(rows: WalletHistoryRow[], f: WalletHistoryFilters): WalletHistoryRow[] {
   const term = f.search.trim().toLowerCase();

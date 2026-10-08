@@ -29,20 +29,28 @@ router.all("/agents/reasoning", async (req, res) => {
   if (inferenceBusy || (nextRequest.get(key) ?? 0) > now) { res.set("Retry-After", "30"); res.status(429).json({ code: "reasoning_busy" }); return; }
   nextRequest.set(key, now + 30000);
   inferenceBusy = true;
+  let stage: "sources" | "inference" | "contract" | "storage" = "sources";
   try {
     const center = await readAgentCenter(agentId);
     const agent = center.agents.find(item => item.id === agentId)!;
+    stage = "inference";
     const report = await reasonAgent({
       agentId, language, sourceAt: center.asOf, rules: agent.rules, dependencies: agent.dependencies,
       run: agent.latest ? structuredClone(agent.latest) : null,
     }, openaiReasoning, `ai:${randomUUID()}`);
+    stage = "contract";
     const validated = CreateAgentReasoningResponse.parse(report);
+    stage = "storage";
     await saveReasoning(report);
     res.json(validated);
   } catch (error) {
     const status = (error as { status?: unknown })?.status;
     const failure = error instanceof Error && ["invalid_model_output", "invalid_model_evidence", "unsupported_model_recommendation", "missing_model_provenance", "inference_incomplete"].includes(error.message) ? error.message : "provider_or_storage_failure";
-    req.log.warn({ code: "reasoning_inference_unavailable", failure, providerStatus: typeof status === "number" ? status : undefined }, "Real model inference failed; no deterministic substitute");
+    const databaseCode = (error as { code?: unknown })?.code;
+    req.log.warn({ code: "reasoning_inference_unavailable", stage, failure,
+      providerStatus: typeof status === "number" ? status : undefined,
+      databaseCode: stage === "storage" && typeof databaseCode === "string" && /^[A-Z0-9]{5}$/.test(databaseCode) ? databaseCode : undefined,
+    }, "Real analysis failed; no deterministic substitute");
     res.status(503).json({ code: "reasoning_inference_unavailable" });
   } finally { inferenceBusy = false; }
 });

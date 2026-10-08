@@ -33,9 +33,10 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
   const siteHref = localizedUrl(import.meta.env.BASE_URL, loc);
   return <header ref={ref} className={`app-header ${className}`} data-testid="app-header">
     <div className="mx-auto flex h-14 max-w-5xl items-center gap-2 px-3 sm:gap-4">
+      <MobileAreaNav current={view} />
       <Link href={demoPath('home', loc)} aria-label={x('BETTEX, meu painel', 'BETTEX, my dashboard', 'BETTEX, mi panel')} data-testid="link-app-brand" className="flex min-w-0 shrink-0 items-center gap-2 rounded-lg">
         <BettexMark className="h-7 w-7" />
-        <span className="hidden text-base font-extrabold tracking-wide text-[#1B2A41] min-[360px]:inline">BETTEX</span>
+        <span className="hidden text-base font-extrabold tracking-wide text-[#1B2A41] sm:inline">BETTEX</span>
         <span className="hidden rounded-full border border-[#0E7C6B] bg-[#E9EEE5] px-2 py-0.5 text-[10px] font-extrabold tracking-widest text-[#0A6657] sm:inline">{x('ALFA', 'ALPHA', 'ALFA')}</span>
       </Link>
       <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
@@ -56,7 +57,7 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
         <AppExchangeRates className="ml-auto py-1" />
       </nav>
     </div>
-    <div className="border-t border-[#EFE8D8] py-1.5 sm:hidden"><MobileAreaNav current={view} /></div>
+    <div className="border-t border-[#EFE8D8] px-3 py-1.5 sm:hidden"><p className="truncate border-l-4 border-[#0E7C6B] pl-2 text-sm font-bold text-[#0A6657]" data-testid="text-current-area">{demoLabel(view, loc)}</p></div>
     <div className="border-t border-[#EFE8D8] px-3 py-1.5 sm:hidden"><AppExchangeRates /></div>
   </header>;
 }

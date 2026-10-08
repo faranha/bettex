@@ -11,7 +11,7 @@ import type { Asset, Kind } from './fin';
 export function WalletsDashboard({ d, onWallet }: { d: DemoDashboard; onWallet: (kind: Kind, asset: Asset) => void }) {
   const { x } = useX();
   return <div className="grid min-w-0 gap-4" data-testid="page-wallets-dashboard">
-    <h1 className="sr-only">{x('Carteiras', 'Wallets', 'Carteras')}</h1>
+    <h1 className="sr-only">{x('Dashboard', 'Dashboard', 'Dashboard')}</h1>
     {d.profile.provider === 'native'
       ? <AccountPanel section="wallets" walletContent={<StakingCorridor d={d} showAgents />} />
       : <><ProtectedDemoWallets key={d.profile.accountId} d={d} onWallet={onWallet} /><StakingCorridor d={d} showAgents /></>}

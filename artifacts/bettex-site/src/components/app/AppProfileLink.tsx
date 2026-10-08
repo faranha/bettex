@@ -29,7 +29,7 @@ export function AppProfileLink() {
     <DropdownMenuTrigger asChild><button type="button" data-testid="link-account-full"
       aria-label={x('Abrir menu da minha conta', 'Open my account menu', 'Abrir menú de mi cuenta')}
       className="inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full px-2 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]">
-      <span className="max-w-16 truncate sm:max-w-24" data-testid="text-header-profile-name">{name || x('Minha conta', 'My account', 'Mi cuenta')}</span>
+      <span className="hidden max-w-16 truncate min-[360px]:inline sm:max-w-24" data-testid="text-header-profile-name">{name || x('Minha conta', 'My account', 'Mi cuenta')}</span>
       <UserRound className="h-5 w-5 shrink-0" aria-hidden="true" />
       <ChevronDown className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden="true" />
     </button></DropdownMenuTrigger>

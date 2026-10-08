@@ -6,6 +6,8 @@
  * OpenAPI spec version: 0.1.0
  */
 import type { DemoLotteryDraw } from './demoLotteryDraw';
+import type { DemoLotteryEntry } from './demoLotteryEntry';
+import type { DemoLotteryEntryReceipt } from './demoLotteryEntryReceipt';
 import type { DemoLotterySource } from './demoLotterySource';
 
 export interface DemoLottery {
@@ -15,5 +17,9 @@ export interface DemoLottery {
   participating: boolean;
   eligible: boolean;
   participants: number;
+  entryPriceUsdc: number;
+  purchaseResult?: DemoLotteryEntryReceipt;
+  entries: DemoLotteryEntry[];
+  entryReceipts: DemoLotteryEntryReceipt[];
   draws: DemoLotteryDraw[];
 }

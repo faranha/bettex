@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, ArrowDownRight, Minus, RefreshCw } from 'luci
 import { useGetMarketLive, getGetMarketLiveQueryKey, useGetAgentCenter, getGetAgentCenterQueryKey, type MarketLiveAsset } from '@workspace/api-client-react';
 import { useX } from '@/components/demo/ui';
 import { localizedUrl } from '@/lib/i18n';
+import { DemoAppLink } from '@/components/DemoAppLink';
 import './live-markets.css';
 
 const SYMBOLS = ['BTC', 'ETH', 'SOL'] as const;
@@ -172,7 +173,7 @@ export function LiveMarketsSection() {
 
       <aside className="lm__agent" aria-label={x('Monitoramento do agente', 'Agent monitoring', 'Monitoreo del agente')} data-testid="panel-agent">
         <div>
-          <span className="mono lm__eyebrow lm__eyebrow--gold">{x('ALFA', 'ALFA', 'ALFA')} · {x('SOMENTE LEITURA', 'READ-ONLY', 'SOLO LECTURA')}</span>
+          <span className="mono lm__eyebrow lm__eyebrow--gold"><DemoAppLink className="underline underline-offset-4">{x('ALFA', 'ALFA', 'ALFA')}</DemoAppLink> · {x('SOMENTE LEITURA', 'READ-ONLY', 'SOLO LECTURA')}</span>
           <h3 className="display lm__agent-title">{x(`Agente ${sel}`, `${sel} agent`, `Agente ${sel}`)}</h3>
           {ag.isLoading ? <p className="lm__agent-line">{x('Carregando status...', 'Loading status...', 'Cargando estado...')}</p>
             : ag.isError ? <p className="lm__agent-line" role="alert">{x('Status do agente indisponível agora.', 'Agent status unavailable right now.', 'Estado del agente no disponible ahora.')} <button type="button" className="lm__link" onClick={() => void ag.refetch()}>{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button></p>

@@ -10,7 +10,6 @@ test('app footer omits the homepage promotional section while keeping shared nav
   assert.match(app, /<AppHeader \/><DemoPage \/><SiteFooter compact \/>/);
   assert.match(app, /\{!compact && <div className="site-footer__cta/);
   assert.match(app, /function Home\(\)[\s\S]*?return <SitePage>/);
-  assert.match(app, /footer-community\.webp/);
   assert.match(app, /data-testid="link-community-footer-nav"/);
 });
 test('demo reset lives inside the blue environment banner, not a separate strip', () => {
@@ -27,20 +26,16 @@ test('demo reset lives inside the blue environment banner, not a separate strip'
   assert.doesNotMatch(controls, /bg-\[#FBF8F0\]/);
   assert.match(controls, /window\.confirm/);
 });
-test('player data precede agent trading, not a generic crypto price viewer', () => {
+test('dashboard keeps personal wallets and staking together; agent trading belongs to AI Center', () => {
   const source = readFileSync(new URL('../../pages/demo.tsx', import.meta.url), 'utf8');
-  const home = source.slice(source.indexOf("{tab === 'home'"), source.indexOf("{tab === 'central'"));
-  const personal = home.indexOf('<PersonalOverview ');
-  const nextCycle = home.indexOf('<CycleLive ');
-  const staking = home.indexOf('<StakingCorridor ');
-  const trading = home.indexOf('<TradingOverview ');
-  const agents = home.indexOf('<AgentOperationsDashboard ');
-  assert.ok(personal >= 0 && trading > personal && agents > trading);
-  assert.ok(nextCycle > personal && nextCycle < staking && staking < trading);
-  assert.match(home, /PersonalOverview d=\{d\} onWallet=\{open\}/);
-  assert.doesNotMatch(home, /PersonalRecentActivity/);
-  assert.doesNotMatch(home, /LiveMarketsSection/);
-  assert.match(home, /My participation and next cycle/);
+  const wallets = readFileSync(new URL('./WalletsDashboard.tsx', import.meta.url), 'utf8');
+  assert.match(source, /tab === 'home' && <WalletsDashboard d=\{d\} onWallet=\{open\}/);
+  assert.match(source, /=== 'central'\) return <><DemoEnvironmentBanner actions=\{<DemoTabControls \/>}/);
+  assert.match(source, /<AlphaTradingPanel \/>/);
+  assert.match(wallets, /<ProtectedDemoWallets key=\{d\.profile\.accountId\} d=\{d\} onWallet=\{onWallet\} \/><StakingCorridor d=\{d\} showAgents \/>/);
+  assert.match(wallets, /<AccountPanel section="wallets" walletContent=\{<StakingCorridor d=\{d\} showAgents \/>}/);
+  assert.match(wallets, /<TreasurySlider d=\{d\} \/>/);
+  assert.doesNotMatch(wallets, /<TradingOverview|<LiveMarketsSection|PersonalRecentActivity/);
 });
 test('profile access lives in the options bar, with history inside wallets and no dashboard greeting block', () => {
   const source = readFileSync(new URL('./PersonalOverview.tsx', import.meta.url), 'utf8');
@@ -57,14 +52,14 @@ test('profile access lives in the options bar, with history inside wallets and n
    assert.match(profileLink, /aria-label=.*Open my account menu/);
    assert.match(profileLink, /account-menu-logout/);
    assert.match(profileLink, /'profile'.*UserRound/);
-   assert.match(profileLink, /'wallets'.*Wallet/);
-   assert.match(profileLink, /'history'.*History/);
+   assert.doesNotMatch(profileLink, /'wallets'.*Wallet|'history'.*History/);
+   assert.match(page, /tab === 'wallet' && <AccountHistoryPage d=\{d\}/);
    assert.match(profileLink, /profile\.nickname\?\.trim\(\) \|\| data\?\.profile\.name/);
    assert.doesNotMatch(home, /text-greeting-name|link-account-full|ProfileAvatar|greet/);
   assert.doesNotMatch(home, /d\.profile\.email|d\.profile\.accountId/);
   assert.doesNotMatch(source, /My account overview|UserRound|<Link /);
   assert.match(source, /headerActions=\{historyButton\}/);
-  assert.match(source, /data-testid="button-account-history" aria-expanded=\{showHistory\} aria-controls="overview-history"/);
+   assert.match(source, /data-testid="button-account-history"[^>]*aria-expanded=\{showHistory\} aria-controls="overview-history"/);
   assert.match(source, /setShowHistory\(v => !v\)/);
   assert.match(source, /hidden=\{!showHistory\}/);
   assert.match(source, /showHistory && \(historyAccount \? <HistoryPanel mode=\{demo \? 'demo' : 'native'\}/);

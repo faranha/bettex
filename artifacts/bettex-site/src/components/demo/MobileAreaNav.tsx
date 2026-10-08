@@ -1,30 +1,35 @@
 /** @jsxImportSource react */
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { ChevronDown, Send, X } from 'lucide-react';
+import { Menu, Send, X } from 'lucide-react';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useX } from '@/components/demo/ui';
 import { demoLabel, demoPath, type DemoView } from '@/components/demo/demo-navigation';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 
-export const APP_AREAS: DemoView[] = ['home', 'wallet', 'central', 'treasury'];
+export const APP_AREAS: DemoView[] = ['home', 'central', 'wallet', 'treasury'];
 
-/** Mobile-only (<640px): one compact row with the current area and an Areas button; destinations show only while open. */
+/** Mobile-only hamburger in the system header, opening a side drawer. */
 export function MobileAreaNav({ current, className = '' }: { current: DemoView; className?: string }) {
   const { x, loc } = useX();
   const [path] = useLocation();
   const [open, setOpen] = useState(false);
   useEffect(() => { setOpen(false); }, [path, loc]);
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 640px)');
+    const closeOnDesktop = () => { if (desktop.matches) setOpen(false); };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, []);
   const areas = x('Áreas do app', 'App areas', 'Áreas de la app');
-  const menu = x('Áreas', 'Areas', 'Áreas');
+  const menu = x('Abrir menu', 'Open menu', 'Abrir menú');
   const focus = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]';
-  return <div className={`mx-auto flex max-w-5xl items-center gap-2 px-3 sm:hidden ${className}`} data-testid="app-nav-mobile">
-    <p className="min-w-0 flex-1 truncate border-l-4 border-[#0E7C6B] pl-2 text-sm font-bold text-[#0A6657]" data-testid="text-current-area">{demoLabel(current, loc)}</p>
+  return <div className={`shrink-0 sm:hidden ${className}`} data-testid="app-nav-mobile">
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button type="button" aria-label={areas} data-testid="button-app-areas" className={`inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border border-[#E4DCCB] bg-[#FFFCF6] px-4 text-sm font-bold text-[#1B2A41] ${focus}`}>{menu}<ChevronDown className="h-4 w-4" aria-hidden="true" /></button>
+        <button type="button" aria-label={menu} data-testid="button-app-areas" className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] text-[#1B2A41] ${focus}`}><Menu className="h-5 w-5" aria-hidden="true" /></button>
       </DialogTrigger>
-      <DialogContent className="top-0 max-h-[100dvh] w-full max-w-none translate-x-[-50%] translate-y-0 gap-2 overflow-y-auto rounded-b-2xl border-[#E4DCCB] bg-[#FBF8F0] p-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] text-[#1B2A41] data-[state=closed]:slide-out-to-top-[10%] data-[state=open]:slide-in-from-top-[10%] [&>button.absolute]:hidden">
+      <DialogContent data-testid="app-menu-drawer" className="left-0 top-0 flex h-[100dvh] max-h-[100dvh] w-[min(20rem,calc(100vw-2rem))] max-w-none translate-x-0 translate-y-0 flex-col gap-3 overflow-y-auto rounded-none rounded-r-2xl border-[#E4DCCB] bg-[#FBF8F0] p-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] text-[#1B2A41] data-[state=closed]:zoom-out-100 data-[state=open]:zoom-in-100 data-[state=closed]:slide-out-to-left-full data-[state=open]:slide-in-from-left-full data-[state=closed]:slide-out-to-top-0 data-[state=open]:slide-in-from-top-0 [&>button.absolute]:hidden">
         <div className="flex items-center justify-between gap-2"><DialogTitle className="text-base font-extrabold">{areas}</DialogTitle>
           <DialogClose aria-label={x('Fechar áreas', 'Close areas', 'Cerrar áreas')} data-testid="button-app-areas-close" className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full hover:bg-[#E9EEE5] ${focus}`}><X className="h-5 w-5" aria-hidden="true" /></DialogClose></div>
         <DialogDescription className="sr-only">{x('Escolha uma área do app.', 'Choose an app area.', 'Elige un área de la app.')}</DialogDescription>

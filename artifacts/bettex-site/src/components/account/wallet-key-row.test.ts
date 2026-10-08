@@ -3,6 +3,20 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 const source = (name: string) => readFileSync(new URL(name, import.meta.url), 'utf8');
 
+test('wallet key icon toggles the same export panel closed and switches directly to another wallet', () => {
+  const demo = source('./ProtectedDemoWallets.tsx');
+  const expression = demo.match(/setSelected\(current => (current\?\.id === wallet\?\.id \? undefined : wallet)\)/);
+  assert.ok(expression, 'Export must use a functional toggle of the selected wallet');
+  const toggle = new Function('current', 'wallet', `return ${expression[1]};`);
+  const usdc = { id: 'test-usdc' };
+  const bettex = { id: 'test-bettex' };
+  assert.equal(toggle(undefined, usdc), usdc);
+  assert.equal(toggle(usdc, usdc), undefined);
+  assert.equal(toggle(usdc, bettex), bettex);
+  assert.equal(toggle(bettex, bettex), undefined);
+  assert.equal(toggle(undefined, bettex), bettex);
+});
+
 test('keys are masked until explicitly revealed, and copying requires a visible key', () => {
   const row = source('./WalletKeyRow.tsx');
   assert.match(row, /useState\(false\)/);

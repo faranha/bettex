@@ -15,6 +15,12 @@ Cada carteira, saldo e opção de histórico deve ter uma contraparte na área H
 
 **How to apply:** Preservar a correspondência entre a origem do atalho e a área, carteira, conta, ativo ou aba selecionada no destino. Não levar todos os atalhos para um histórico genérico nem confundir carteiras pessoais com a conta de recompra.
 
+There is no separate GAS wallet. Do not offer ETH/GAS as a wallet in the wallet-history dropdown.
+
+**Why:** The creator stated “we have no such thing” and requested removal of the GAS wallet option.
+
+**How to apply:** Keep actual network-fee records intact, but do not represent them as a separate user wallet or restore the removed filter through old links.
+
 A leitura do extrato salvo não deve depender da disponibilidade da sincronização ao vivo da blockchain.
 
 **Why:** Os runtimes da blockchain podem ficar offline independentemente do banco do histórico; tratar falta de atualização como perda do arquivo provocou falhas recorrentes no extrato.

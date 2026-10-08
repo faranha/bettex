@@ -2723,9 +2723,32 @@ export const DemoSwapPoolSource = {
   constant_product_demo: 'constant_product_demo',
 } as const;
 
+export type DemoAmmContractRuntime = typeof DemoAmmContractRuntime[keyof typeof DemoAmmContractRuntime];
+
+
+export const DemoAmmContractRuntime = {
+  server_simulation: 'server_simulation',
+} as const;
+
+export type DemoAmmContractStatus = typeof DemoAmmContractStatus[keyof typeof DemoAmmContractStatus];
+
+
+export const DemoAmmContractStatus = {
+  active: 'active',
+} as const;
+
+export interface DemoAmmContract {
+  id: string;
+  name: string;
+  version: string;
+  runtime: DemoAmmContractRuntime;
+  status: DemoAmmContractStatus;
+}
+
 export interface DemoSwapPool {
   id: string;
   source: DemoSwapPoolSource;
+  contract: DemoAmmContract;
   /**
      * Null until an actual AMM contract exists; this pool is simulation only.
      * @nullable
@@ -2794,11 +2817,50 @@ export interface DemoLotteryParticipation {
   confirmed: boolean;
 }
 
+export interface DemoLotteryEntryOrder {
+  requestId: string;
+  /**
+     * @minimum 1
+     * @maximum 100
+     */
+  quantity: number;
+  confirmed: true;
+  /**
+     * @minLength 20
+     * @maxLength 32
+     */
+  drawAt: string;
+}
+
+export type DemoLotteryEntryType = typeof DemoLotteryEntryType[keyof typeof DemoLotteryEntryType];
+
+
+export const DemoLotteryEntryType = {
+  free: 'free',
+  paid: 'paid',
+} as const;
+
+export interface DemoLotteryEntry {
+  number: string;
+  type: DemoLotteryEntryType;
+  createdAt: string;
+}
+
+export interface DemoLotteryEntryReceipt {
+  requestId: string;
+  quantity: number;
+  paidUsdc: number;
+  burnedBettex: number;
+  createdAt: string;
+  numbers: string[];
+}
+
 export interface DemoLotteryPurchase {
   walletLabel: string;
   tokensBettex: number;
   paidUsdc: number;
   isOwn: boolean;
+  winningNumber?: string;
 }
 
 export type DemoLotteryDrawStatus = typeof DemoLotteryDrawStatus[keyof typeof DemoLotteryDrawStatus];
@@ -2837,6 +2899,10 @@ export interface DemoLottery {
   participating: boolean;
   eligible: boolean;
   participants: number;
+  entryPriceUsdc: number;
+  purchaseResult?: DemoLotteryEntryReceipt;
+  entries: DemoLotteryEntry[];
+  entryReceipts: DemoLotteryEntryReceipt[];
   draws: DemoLotteryDraw[];
 }
 
@@ -3226,6 +3292,7 @@ from: string;
 to: string;
 asset?: GetDemoTreasuryStatementAsset;
 account?: GetDemoTreasuryStatementAccount;
+wallet?: GetDemoTreasuryStatementWallet;
 /**
  * @maxLength 40
  */
@@ -3265,6 +3332,17 @@ export const GetDemoTreasuryStatementAccount = {
   buyback: 'buyback',
 } as const;
 
+export type GetDemoTreasuryStatementWallet = typeof GetDemoTreasuryStatementWallet[keyof typeof GetDemoTreasuryStatementWallet];
+
+
+export const GetDemoTreasuryStatementWallet = {
+  all: 'all',
+  operational: 'operational',
+  reserve: 'reserve',
+  crypto_agent: 'crypto_agent',
+  buyback: 'buyback',
+} as const;
+
 export type GetDemoTreasuryStatementDirection = typeof GetDemoTreasuryStatementDirection[keyof typeof GetDemoTreasuryStatementDirection];
 
 
@@ -3279,6 +3357,7 @@ from: string;
 to: string;
 asset?: ExportDemoTreasuryStatementAsset;
 account?: ExportDemoTreasuryStatementAccount;
+wallet?: ExportDemoTreasuryStatementWallet;
 /**
  * @maxLength 40
  */
@@ -3311,6 +3390,17 @@ export type ExportDemoTreasuryStatementAccount = typeof ExportDemoTreasuryStatem
 export const ExportDemoTreasuryStatementAccount = {
   all: 'all',
   treasury: 'treasury',
+  buyback: 'buyback',
+} as const;
+
+export type ExportDemoTreasuryStatementWallet = typeof ExportDemoTreasuryStatementWallet[keyof typeof ExportDemoTreasuryStatementWallet];
+
+
+export const ExportDemoTreasuryStatementWallet = {
+  all: 'all',
+  operational: 'operational',
+  reserve: 'reserve',
+  crypto_agent: 'crypto_agent',
   buyback: 'buyback',
 } as const;
 
@@ -3388,7 +3478,7 @@ to?: string;
  */
 kind?: string;
 /**
- * @maxLength 100
+ * @maxLength 256
  */
 correlationId?: string;
 /**
@@ -3483,7 +3573,7 @@ to?: string;
  */
 kind?: string;
 /**
- * @maxLength 100
+ * @maxLength 256
  */
 correlationId?: string;
 /**
@@ -3562,7 +3652,7 @@ to?: string;
  */
 kind?: string;
 /**
- * @maxLength 100
+ * @maxLength 256
  */
 correlationId?: string;
 /**

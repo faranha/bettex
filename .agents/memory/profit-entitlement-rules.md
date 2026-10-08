@@ -3,6 +3,18 @@ name: Regras de perdas e elegibilidade ao lucro
 description: Correções explícitas do criador sobre perdas, lucro anterior e peso após saída.
 ---
 
+Entradas durante uma rodada não devem contar no staking dessa mesma rodada. No cartão de rendimentos, mostrar quanto do saldo da carteira participa da rodada atual e quanto ficou fora.
+
+**Why:** O criador explicou: “posso depositar durante o ciclo e aquele deposito nao vai contar” e pediu tornar essa diferença clara no espaço disponível do cartão.
+
+**How to apply:** Não equiparar automaticamente o saldo atual da carteira à quantidade elegível da rodada. Conferir a elegibilidade real usada no cálculo antes de apresentar o valor ou afirmar que novas entradas estão excluídas.
+
+O criador autorizou corrigir o cálculo do demo junto com a divisão no cartão. A regra vale para as novas apurações; resultados de rodadas já encerradas devem ser preservados. A confirmação foi sobre o demo, não uma autorização para alterar contratos nativos.
+
+**Why:** Escolheu “Sim, corrigir o cálculo e mostrar a divisão no cartão”, após ser informado de que o demo anterior atribuía peso proporcional às entradas durante a rodada.
+
+**How to apply:** Excluir entradas liquidadas depois da abertura tanto da participação exibida quanto do rateio do demo. Saldo mantido passa a poder participar na rodada seguinte. Preservar o cancelamento integral dos direitos não pagos quando houver saída de BETTEX. No protocolo nativo, apresentar a elegibilidade realmente informada, sem substituí-la por valores do demo.
+
 O criador definiu: “nao aceitamos deficit, perdas sao permanentes”.
 
 O criador definiu: “cada rodada eh unica e nao retorna, nem soma, nem cumula, ou paga ou nao paga”.

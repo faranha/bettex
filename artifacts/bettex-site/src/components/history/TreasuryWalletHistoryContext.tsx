@@ -23,7 +23,7 @@ export function TreasuryWalletHistoryContext({ d, purpose }: { d: DemoDashboard;
         <p className="mt-1 text-xs text-[#5B6B85]">Arbitrum Sepolia · {x('Endereço atribuído em', 'Address assigned on', 'Dirección asignada el')} {formatBrazilDateTime(wallet.createdAt, fl)}</p>
       </div>}
     {round && <div className="flex flex-wrap gap-x-6 gap-y-2" data-testid="treasury-history-wallet-balance">
-      {value === undefined ? <p>{x('Saldo não registrado', 'Balance not recorded', 'Saldo no registrado')}</p> : <Money v={value} a="USDC" big />}
+      {value == null ? <p>{x('Saldo não registrado', 'Balance not recorded', 'Saldo no registrado')}</p> : <Money v={value} a="USDC" big />}
       {purpose === 'buyback' && burn && <Money v={burn.walletBettex} a="BETTEX" big />}
     </div>}
     {purpose === 'crypto_agent' && allocation && <p className="text-xs text-[#5B6B85]">{x(

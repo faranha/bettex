@@ -3,6 +3,12 @@ name: Escopo da demonstração BETTEX
 description: Saldos e carteiras on-chain como requisito atual; isolamento por aba, fase ALFA e avisos restritos ao cabeçalho.
 ---
 
+No site, os selos de ALFA e os avisos de “coming” para features, inclusive no roadmap, devem oferecer um link para abrir o demo do app.
+
+**Why:** O criador pediu substituir esses avisos por acesso ao demo.
+
+**How to apply:** Preservar o idioma selecionado, a entrada explícita no demo e a distinção entre o ALFA disponível e as entregas futuras. Não transformar referências narrativas ao ALFA em promessas de funcionalidades lançadas.
+
 O demo anônimo deve ter uma instância independente por aba, sem cadastro. Recarregar e navegar preservam o teste; abrir uma nova aba ou reiniciar o demo cria uma conta limpa sem alterar outras abas nem contas reais.
 
 **Why:** O criador escolheu uma instância por aba para permitir testes livres, validação e apresentações ao vivo para investidores.

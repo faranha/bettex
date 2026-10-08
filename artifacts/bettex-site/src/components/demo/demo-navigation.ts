@@ -12,7 +12,7 @@ export function demoAccountTab(path: string, search = ''): DemoAccountTab {
 type Language = 'pt' | 'en' | 'es';
 const index = { pt: 0, en: 1, es: 2 };
 const labels = {
-  home: ['Carteiras', 'Wallets', 'Carteras'],
+  home: ['Dashboard', 'Dashboard', 'Dashboard'],
   central: ['Central da IA', 'AI Center', 'Central de IA'],
   wallet: ['Histórico', 'History', 'Historial'],
   treasury: ['Tesouraria', 'Treasury', 'Tesorería'],

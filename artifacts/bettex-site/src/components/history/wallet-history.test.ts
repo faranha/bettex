@@ -7,8 +7,52 @@ import { shouldRetryWalletHistory } from './history-query-policy.ts';
 import { exportWalletHistory, safeCsvCell } from './wallet-history-export.ts';
 import { walletHistoryExamples } from './wallet-history-examples.ts';
 import type { HistoryEntry, HistoryPage, DemoDashboard } from '@workspace/api-client-react';
+import { walletAllocation, walletAllocationRows } from './treasury-wallet-history-model.ts';
+import type { DemoTreasuryRound, DemoRound } from '@workspace/api-client-react';
 
 const now = '2026-10-06T00:00:00Z';
+test('Treasury wallet history uses its saved allocations without backfilling old rounds', () => {
+  const snapshot = { id: 'current', startedAt: now, reserveUsdc: 50, operationalWalletUsdc: 90,
+    agentAllocations: [{ agent: 'crypto', allocatedUsdc: 10 }] } as DemoTreasuryRound;
+  const old = { ...snapshot, id: 'old', reserveUsdc: 25, operationalWalletUsdc: 70,
+    agentAllocations: [{ ...snapshot.agentAllocations![0], allocatedUsdc: 5 }] } as DemoTreasuryRound;
+  const rounds = [
+    { id: 'old', endedAt: now, treasurySnapshot: old },
+    { id: 'legacy', endedAt: now },
+    { id: 'current', endedAt: now, treasurySnapshot: snapshot },
+  ] as DemoRound[];
+  const rows = walletAllocationRows(snapshot, rounds);
+  assert.deepEqual(rows.map(r => r.id), ['current', 'old', 'legacy']);
+  assert.equal(walletAllocation(rows[1].snapshot, 'reserve'), 25);
+  assert.equal(walletAllocation(rows[1].snapshot, 'operational'), 70);
+  assert.equal(walletAllocation(rows[1].snapshot, 'crypto_agent'), 5);
+  for (const wallet of ['reserve', 'operational', 'crypto_agent'] as const) assert.equal(walletAllocation(rows[2].snapshot, wallet), null);
+  const legacy = { ...snapshot, operationalWalletUsdc: undefined, agentAllocations: undefined };
+  assert.equal(walletAllocation(legacy, 'operational'), null);
+  assert.equal(walletAllocation(legacy, 'crypto_agent'), null);
+  assert.equal(walletAllocation({ ...snapshot, reserveUsdc: 0 }, 'reserve'), 0);
+  const panel = readFileSync(new URL('./TreasuryStatement.tsx', import.meta.url), 'utf8');
+  assert.match(panel, /wallet: walletScope \?\? 'all'/);
+  assert.match(panel, /TreasuryWalletRoundHistory key=\{walletScope\}/);
+  assert.match(panel, /const noTransferLedger = reserveOnly;/);
+  assert.match(panel, /setFrom\(roundStartedAt \? brazilDate\(roundStartedAt\) : today\); setTo\(today\);/);
+});
+test('demo distribution audit reads scheduled calculations without a manual simulation action', () => {
+  const source = readFileSync(new URL('./HistoryPanel.tsx', import.meta.url), 'utf8');
+  assert.doesNotMatch(source, /button-simulate-distribution|previewHistoryDistribution|runSim|No simulation recorded yet/);
+  assert.match(source, /const q = usePage\(mode, accountKey, view, apiFilters, cursor\)/);
+});
+
+test('wallet filters do not offer a separate gas wallet or retain its legacy selection', () => {
+  const source = readFileSync(new URL('./WalletStatement.tsx', import.meta.url), 'utf8');
+  assert.doesNotMatch(source, /<option\s+value="(?:ETH|GAS|gas)"/);
+  assert.equal(walletFilterFromSearch('?wallet=ETH'), '');
+  assert.equal(walletFilterFromSearch('?wallet=GAS'), '');
+  for (const wallet of ['earnings', 'USDC', 'BETTEX']) {
+    assert.equal(walletFilterFromSearch(`?wallet=${wallet}`), wallet);
+  }
+});
+
 test('earnings history links select the wallet, include past credits and reset on navigation', () => {
   assert.equal(walletFilterFromSearch('?wallet=earnings'), 'earnings');
   assert.equal(walletFilterFromSearch('wallet=USDC'), 'USDC');

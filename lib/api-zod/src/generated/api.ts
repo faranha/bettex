@@ -1959,6 +1959,7 @@ export const GetDemoTreasuryWalletsResponse = zod.object({
 
 export const getDemoTreasuryStatementQueryAssetDefault = `all`;
 export const getDemoTreasuryStatementQueryAccountDefault = `all`;
+export const getDemoTreasuryStatementQueryWalletDefault = `all`;
 export const getDemoTreasuryStatementQueryCategoryDefault = `all`;
 export const getDemoTreasuryStatementQueryCategoryMax = 40;
 
@@ -1976,6 +1977,7 @@ export const GetDemoTreasuryStatementQueryParams = zod.object({
   "to": zod.date(),
   "asset": zod.enum(['all', 'USDC', 'BETTEX']).default(getDemoTreasuryStatementQueryAssetDefault),
   "account": zod.enum(['all', 'treasury', 'buyback']).default(getDemoTreasuryStatementQueryAccountDefault),
+  "wallet": zod.enum(['all', 'operational', 'reserve', 'crypto_agent', 'buyback']).default(getDemoTreasuryStatementQueryWalletDefault),
   "category": zod.coerce.string().max(getDemoTreasuryStatementQueryCategoryMax).default(getDemoTreasuryStatementQueryCategoryDefault),
   "direction": zod.enum(['all', 'in', 'out']).default(getDemoTreasuryStatementQueryDirectionDefault),
   "search": zod.coerce.string().max(getDemoTreasuryStatementQuerySearchMax).optional(),
@@ -2027,6 +2029,7 @@ export const GetDemoTreasuryStatementResponse = zod.object({
 
 export const exportDemoTreasuryStatementQueryAssetDefault = `all`;
 export const exportDemoTreasuryStatementQueryAccountDefault = `all`;
+export const exportDemoTreasuryStatementQueryWalletDefault = `all`;
 export const exportDemoTreasuryStatementQueryCategoryDefault = `all`;
 export const exportDemoTreasuryStatementQueryCategoryMax = 40;
 
@@ -2041,6 +2044,7 @@ export const ExportDemoTreasuryStatementQueryParams = zod.object({
   "to": zod.date(),
   "asset": zod.enum(['all', 'USDC', 'BETTEX']).default(exportDemoTreasuryStatementQueryAssetDefault),
   "account": zod.enum(['all', 'treasury', 'buyback']).default(exportDemoTreasuryStatementQueryAccountDefault),
+  "wallet": zod.enum(['all', 'operational', 'reserve', 'crypto_agent', 'buyback']).default(exportDemoTreasuryStatementQueryWalletDefault),
   "category": zod.coerce.string().max(exportDemoTreasuryStatementQueryCategoryMax).default(exportDemoTreasuryStatementQueryCategoryDefault),
   "direction": zod.enum(['all', 'in', 'out']).default(exportDemoTreasuryStatementQueryDirectionDefault),
   "search": zod.coerce.string().max(exportDemoTreasuryStatementQuerySearchMax).optional(),
@@ -2116,7 +2120,7 @@ export const getTestHistoryQueryWalletMax = 100;
 
 export const getTestHistoryQueryKindMax = 60;
 
-export const getTestHistoryQueryCorrelationIdMax = 100;
+export const getTestHistoryQueryCorrelationIdMax = 256;
 
 export const getTestHistoryQueryCursorMax = 2000;
 
@@ -2370,7 +2374,7 @@ export const getDemoHistoryQueryWalletMax = 100;
 
 export const getDemoHistoryQueryKindMax = 60;
 
-export const getDemoHistoryQueryCorrelationIdMax = 100;
+export const getDemoHistoryQueryCorrelationIdMax = 256;
 
 export const getDemoHistoryQueryCursorMax = 2000;
 
@@ -2442,7 +2446,7 @@ export const getTreasuryHistoryQueryWalletMax = 100;
 
 export const getTreasuryHistoryQueryKindMax = 60;
 
-export const getTreasuryHistoryQueryCorrelationIdMax = 100;
+export const getTreasuryHistoryQueryCorrelationIdMax = 256;
 
 export const getTreasuryHistoryQueryCursorMax = 2000;
 
@@ -2847,6 +2851,28 @@ export const GetDemoDashboardResponse = zod.object({
   "participating": zod.boolean(),
   "eligible": zod.boolean(),
   "participants": zod.number().int(),
+  "entryPriceUsdc": zod.number(),
+  "purchaseResult": zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+}).optional(),
+  "entries": zod.array(zod.object({
+  "number": zod.string(),
+  "type": zod.enum(['free', 'paid']),
+  "createdAt": zod.string()
+})),
+  "entryReceipts": zod.array(zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+})),
   "draws": zod.array(zod.object({
   "id": zod.string(),
   "scheduledAt": zod.string(),
@@ -2861,7 +2887,8 @@ export const GetDemoDashboardResponse = zod.object({
   "walletLabel": zod.string(),
   "tokensBettex": zod.number(),
   "paidUsdc": zod.number(),
-  "isOwn": zod.boolean()
+  "isOwn": zod.boolean(),
+  "winningNumber": zod.string().optional()
 }))
 }))
 }).optional(),
@@ -3047,6 +3074,13 @@ export const GetDemoDashboardResponse = zod.object({
   "swapPool": zod.object({
   "id": zod.string(),
   "source": zod.enum(['constant_product_demo']),
+  "contract": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "version": zod.string(),
+  "runtime": zod.enum(['server_simulation']),
+  "status": zod.enum(['active'])
+}),
   "contractAddress": zod.string().nullable().describe('Null until an actual AMM contract exists; this pool is simulation only.'),
   "reserveUsdc": zod.number(),
   "reserveBettex": zod.number(),
@@ -3192,6 +3226,28 @@ export const UpdateDemoLotteryParticipationResponse = zod.object({
   "participating": zod.boolean(),
   "eligible": zod.boolean(),
   "participants": zod.number().int(),
+  "entryPriceUsdc": zod.number(),
+  "purchaseResult": zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+}).optional(),
+  "entries": zod.array(zod.object({
+  "number": zod.string(),
+  "type": zod.enum(['free', 'paid']),
+  "createdAt": zod.string()
+})),
+  "entryReceipts": zod.array(zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+})),
   "draws": zod.array(zod.object({
   "id": zod.string(),
   "scheduledAt": zod.string(),
@@ -3206,7 +3262,8 @@ export const UpdateDemoLotteryParticipationResponse = zod.object({
   "walletLabel": zod.string(),
   "tokensBettex": zod.number(),
   "paidUsdc": zod.number(),
-  "isOwn": zod.boolean()
+  "isOwn": zod.boolean(),
+  "winningNumber": zod.string().optional()
 }))
 }))
 }).optional(),
@@ -3392,6 +3449,13 @@ export const UpdateDemoLotteryParticipationResponse = zod.object({
   "swapPool": zod.object({
   "id": zod.string(),
   "source": zod.enum(['constant_product_demo']),
+  "contract": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "version": zod.string(),
+  "runtime": zod.enum(['server_simulation']),
+  "status": zod.enum(['active'])
+}),
   "contractAddress": zod.string().nullable().describe('Null until an actual AMM contract exists; this pool is simulation only.'),
   "reserveUsdc": zod.number(),
   "reserveBettex": zod.number(),
@@ -3459,6 +3523,390 @@ export const UpdateDemoLotteryParticipationResponse = zod.object({
   "totalTokenSeconds": zod.number().min(updateDemoLotteryParticipationResponseRoundsItemParticipationSnapshotTotalTokenSecondsMin),
   "payoutSharePercent": zod.number().min(updateDemoLotteryParticipationResponseRoundsItemParticipationSnapshotPayoutSharePercentMin).max(updateDemoLotteryParticipationResponseRoundsItemParticipationSnapshotPayoutSharePercentMax),
   "receivedUsdc": zod.number().min(updateDemoLotteryParticipationResponseRoundsItemParticipationSnapshotReceivedUsdcMin),
+  "startedAt": zod.string(),
+  "endedAt": zod.string()
+}).optional()
+}))
+})
+
+
+/**
+ * @summary Buy modeled lottery numbers at 1 USDC each and burn the acquired BETTEX
+ */
+export const buyDemoLotteryEntriesHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const BuyDemoLotteryEntriesHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(buyDemoLotteryEntriesHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
+export const buyDemoLotteryEntriesBodyQuantityMax = 100;
+
+export const buyDemoLotteryEntriesBodyDrawAtMin = 20;
+export const buyDemoLotteryEntriesBodyDrawAtMax = 32;
+
+
+
+export const BuyDemoLotteryEntriesBody = zod.object({
+  "requestId": zod.string().uuid(),
+  "quantity": zod.number().int().min(1).max(buyDemoLotteryEntriesBodyQuantityMax),
+  "confirmed": zod.literal(true),
+  "drawAt": zod.string().min(buyDemoLotteryEntriesBodyDrawAtMin).max(buyDemoLotteryEntriesBodyDrawAtMax)
+})
+
+export const buyDemoLotteryEntriesResponseStakingChartScenarioOneElapsedMinutesMin = 0;
+export const buyDemoLotteryEntriesResponseStakingChartScenarioOneElapsedMinutesMax = 1440;
+
+export const buyDemoLotteryEntriesResponseStakingChartScenarioOneTickMin = 0;
+
+
+
+export const buyDemoLotteryEntriesResponseStakingChartScenarioOnePointsItemElapsedMinutesMin = 0;
+export const buyDemoLotteryEntriesResponseStakingChartScenarioOnePointsItemElapsedMinutesMax = 1440;
+
+export const buyDemoLotteryEntriesResponseStakingTotalEligibleTokensMin = 0;
+
+export const buyDemoLotteryEntriesResponseStakingTokenSharePercentMin = 0;
+export const buyDemoLotteryEntriesResponseStakingTokenSharePercentMax = 100;
+
+export const buyDemoLotteryEntriesResponseStakingPoolAllocationUsdcMin = 0;
+
+export const buyDemoLotteryEntriesResponseStakingSharePercentMin = 0;
+export const buyDemoLotteryEntriesResponseStakingSharePercentMax = 100;
+
+export const buyDemoLotteryEntriesResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const buyDemoLotteryEntriesResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const buyDemoLotteryEntriesResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin = 0;
+
+export const buyDemoLotteryEntriesResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin = 0;
+
+export const buyDemoLotteryEntriesResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin = 0;
+
+export const buyDemoLotteryEntriesResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin = 0;
+
+export const buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin = 0;
+
+export const buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotTotalEligibleTokensMin = 0;
+
+export const buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotOwnTokenSecondsMin = 0;
+
+export const buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotTotalTokenSecondsMin = 0;
+
+export const buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotPayoutSharePercentMin = 0;
+export const buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotPayoutSharePercentMax = 100;
+
+export const buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotReceivedUsdcMin = 0;
+
+
+
+export const BuyDemoLotteryEntriesResponse = zod.object({
+  "serverNow": zod.string(),
+  "lottery": zod.object({
+  "source": zod.enum(['modeled_demo']),
+  "nextDrawAt": zod.string(),
+  "purchasePriceUsdc": zod.number(),
+  "participating": zod.boolean(),
+  "eligible": zod.boolean(),
+  "participants": zod.number().int(),
+  "entryPriceUsdc": zod.number(),
+  "purchaseResult": zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+}).optional(),
+  "entries": zod.array(zod.object({
+  "number": zod.string(),
+  "type": zod.enum(['free', 'paid']),
+  "createdAt": zod.string()
+})),
+  "entryReceipts": zod.array(zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+})),
+  "draws": zod.array(zod.object({
+  "id": zod.string(),
+  "scheduledAt": zod.string(),
+  "executedAt": zod.string(),
+  "status": zod.enum(['executed', 'no_budget', 'no_participants']),
+  "budgetUsdc": zod.number(),
+  "spentUsdc": zod.number(),
+  "remainingUsdc": zod.number(),
+  "referencePriceUsdc": zod.number(),
+  "purchasePriceUsdc": zod.number(),
+  "purchases": zod.array(zod.object({
+  "walletLabel": zod.string(),
+  "tokensBettex": zod.number(),
+  "paidUsdc": zod.number(),
+  "isOwn": zod.boolean(),
+  "winningNumber": zod.string().optional()
+}))
+}))
+}).optional(),
+  "profile": zod.object({
+  "authenticated": zod.boolean().optional(),
+  "provider": zod.enum(['anonymous', 'native', 'clerk']).optional(),
+  "canViewTreasuryHistory": zod.boolean().optional(),
+  "name": zod.string(),
+  "nickname": zod.string().optional(),
+  "avatarPath": zod.string().nullish(),
+  "email": zod.string(),
+  "memberSince": zod.string(),
+  "accountId": zod.string()
+}),
+  "balances": zod.object({
+  "usdc": zod.number(),
+  "bettex": zod.number(),
+  "receivedYield": zod.number(),
+  "brlPerUsdc": zod.number(),
+  "bettexUsdc": zod.number(),
+  "updatedAt": zod.string()
+}),
+  "staking": zod.object({
+  "chartScenario": zod.union([zod.object({
+  "source": zod.enum(['test_scenario']),
+  "roundStartedAt": zod.string().describe('ISO 8601 timestamp marking the emulated round start.'),
+  "nextTickAt": zod.string().describe('ISO 8601 wall-clock timestamp for the next test tick.'),
+  "elapsedMinutes": zod.number().int().min(buyDemoLotteryEntriesResponseStakingChartScenarioOneElapsedMinutesMin).max(buyDemoLotteryEntriesResponseStakingChartScenarioOneElapsedMinutesMax),
+  "tick": zod.number().int().min(buyDemoLotteryEntriesResponseStakingChartScenarioOneTickMin),
+  "tickIntervalMs": zod.number().int().min(1),
+  "minutesPerTick": zod.number().int().min(1),
+  "points": zod.array(zod.object({
+  "elapsedMinutes": zod.number().int().min(buyDemoLotteryEntriesResponseStakingChartScenarioOnePointsItemElapsedMinutesMin).max(buyDemoLotteryEntriesResponseStakingChartScenarioOnePointsItemElapsedMinutesMax),
+  "profitUsdc": zod.number()
+}))
+}),zod.null()]).optional().describe('Isolated randomized chart emulation, never an actual trading result or ledger payout.'),
+  "eligibleTokens": zod.number(),
+  "totalEligibleTokens": zod.number().min(buyDemoLotteryEntriesResponseStakingTotalEligibleTokensMin).optional().describe('Total participating BETTEX in the simulated pool'),
+  "tokenSharePercent": zod.number().min(buyDemoLotteryEntriesResponseStakingTokenSharePercentMin).max(buyDemoLotteryEntriesResponseStakingTokenSharePercentMax).optional().describe('Current eligible-token share'),
+  "poolAllocationUsdc": zod.number().min(buyDemoLotteryEntriesResponseStakingPoolAllocationUsdcMin).optional().describe('Provisional 25 percent share of positive current-cycle profit; not a guaranteed or settled payout.'),
+  "since": zod.string().nullable(),
+  "weightTokenSeconds": zod.number(),
+  "sharePercent": zod.number().min(buyDemoLotteryEntriesResponseStakingSharePercentMin).max(buyDemoLotteryEntriesResponseStakingSharePercentMax),
+  "cycleStartedAt": zod.string(),
+  "nextCycleAt": zod.string(),
+  "estimatedUsdc": zod.number(),
+  "status": zod.enum(['active', 'inactive'])
+}),
+  "operations": zod.array(zod.object({
+  "id": zod.string(),
+  "agent": zod.enum(['predictions', 'crypto', 'sports', 'bonus']),
+  "market": zod.string(),
+  "status": zod.enum(['queued', 'analyzing', 'awaiting_data', 'comparing', 'awaiting_budget', 'approved', 'validated', 'executing', 'open', 'result', 'reconciling', 'closed', 'rejected', 'expired', 'cancelled', 'failed']),
+  "capitalUsdc": zod.number(),
+  "pnlUsdc": zod.number(),
+  "updatedAt": zod.string(),
+  "proposal": zod.object({
+  "source": zod.enum(['emulated']),
+  "type": zod.enum(['spot_buy', 'sports_coverage', 'prediction_buy', 'bonus_qualifying']),
+  "generatedAt": zod.string(),
+  "validUntil": zod.string(),
+  "durationHours": zod.number(),
+  "expectedNetUsdc": zod.number(),
+  "maxLossUsdc": zod.number(),
+  "feesUsdc": zod.number(),
+  "targetPriceUsdc": zod.number().optional(),
+  "homeTeam": zod.string().optional(),
+  "awayTeam": zod.string().optional(),
+  "eventAt": zod.string().optional(),
+  "legs": zod.array(zod.object({
+  "instrument": zod.string(),
+  "action": zod.enum(['buy_spot', 'buy_yes', 'qualify_bonus']),
+  "selection": zod.enum(['asset', 'home', 'draw', 'away', 'yes', 'bonus']),
+  "venue": zod.enum(['crypto_demo', 'polymarket_demo', 'bonus_demo']),
+  "amountUsdc": zod.number(),
+  "priceUsdc": zod.number(),
+  "quantity": zod.number()
+}))
+}).optional(),
+  "assessment": zod.object({
+  "reason": zod.enum(['comparison', 'selected_score', 'missing_data', 'invalid_proposal', 'non_positive_estimate', 'allocation_limit', 'exposure_limit', 'awaiting_budget', 'expired_quote']),
+  "score": zod.number(),
+  "comparedWith": zod.array(zod.string()),
+  "availableUsdc": zod.number(),
+  "evaluatedAt": zod.string()
+}).optional()
+})),
+  "orchestratorBudget": zod.object({
+  "workingUsdc": zod.number(),
+  "reservedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "perOperationLimitUsdc": zod.number(),
+  "perAgentLimitUsdc": zod.number(),
+  "perOperationPercent": zod.number(),
+  "perAgentPercent": zod.number()
+}).optional(),
+  "events": zod.array(zod.object({
+  "id": zod.string(),
+  "at": zod.string(),
+  "fromAgent": zod.string(),
+  "toAgent": zod.string(),
+  "kind": zod.enum(['signal', 'risk_check', 'approved', 'order', 'result', 'rejected', 'reconciliation', 'cycle_closed']),
+  "reference": zod.string()
+})),
+  "history": zod.array(zod.object({
+  "id": zod.string(),
+  "kind": zod.enum(['receive', 'onramp', 'swap', 'withdraw', 'send', 'distribution', 'transfer']),
+  "sourceWallet": zod.enum(['dollar', 'earnings']).optional(),
+  "asset": zod.enum(['USDC', 'BETTEX']),
+  "amount": zod.number(),
+  "feeUsdc": zod.number(),
+  "at": zod.string(),
+  "status": zod.enum(['pending', 'confirmed', 'failed']),
+  "destination": zod.string(),
+  "sourceAsset": zod.enum(['USDC', 'BETTEX']).optional().describe('Source asset for a conversion; asset is the asset received.'),
+  "sourceAmount": zod.number().optional().describe('Source quantity locked when a conversion was submitted.')
+})),
+  "treasury": zod.object({
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "realizedUsdc": zod.number(),
+  "cycleResultUsdc": zod.number(),
+  "currentRound": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(buyDemoLotteryEntriesResponseTreasuryCurrentRoundAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(buyDemoLotteryEntriesResponseTreasuryCurrentRoundAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(buyDemoLotteryEntriesResponseTreasuryCurrentRoundAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number(),
+  "transfer": zod.number().optional()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional(),
+  "burn": zod.object({
+  "source": zod.enum(['modeled_demo']),
+  "walletId": zod.string(),
+  "address": zod.string().nullable().describe('Null for the mock wallet; never a fabricated blockchain address.'),
+  "walletUsdc": zod.number(),
+  "walletBettex": zod.number(),
+  "totalBurnedBettex": zod.number(),
+  "referencePriceUsdc": zod.number(),
+  "updatedAt": zod.string(),
+  "entries": zod.array(zod.object({
+  "id": zod.string(),
+  "roundId": zod.string(),
+  "at": zod.string(),
+  "kind": zod.enum(['wallet_funded', 'tokens_purchased', 'tokens_burned']),
+  "amountUsdc": zod.number(),
+  "tokensBettex": zod.number(),
+  "source": zod.enum(['modeled_demo'])
+}))
+}).optional(),
+  "swapPool": zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['constant_product_demo']),
+  "contract": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "version": zod.string(),
+  "runtime": zod.enum(['server_simulation']),
+  "status": zod.enum(['active'])
+}),
+  "contractAddress": zod.string().nullable().describe('Null until an actual AMM contract exists; this pool is simulation only.'),
+  "reserveUsdc": zod.number(),
+  "reserveBettex": zod.number(),
+  "initialReserveUsdc": zod.number(),
+  "initialReserveBettex": zod.number(),
+  "spotPriceUsdc": zod.number(),
+  "totalVolumeUsdc": zod.number(),
+  "swapCount": zod.number().int(),
+  "updatedAt": zod.string()
+}).optional()
+}),
+  "rounds": zod.array(zod.object({
+  "id": zod.string(),
+  "endedAt": zod.string(),
+  "status": zod.enum(['paid', 'retained']),
+  "eligibleUsdc": zod.number(),
+  "stakingUsdc": zod.number(),
+  "treasuryUsdc": zod.number(),
+  "buybackUsdc": zod.number(),
+  "source": zod.enum(['seeded_demo', 'calculated_simulation']).optional(),
+  "treasurySnapshot": zod.object({
+  "id": zod.string(),
+  "startedAt": zod.string(),
+  "endsAt": zod.string(),
+  "assetsUsdc": zod.number(),
+  "reserveUsdc": zod.number(),
+  "workingUsdc": zod.number(),
+  "committedUsdc": zod.number(),
+  "availableUsdc": zod.number(),
+  "poolUsdc": zod.number().optional().describe('Pool cash is included in assets but excluded from operational and agent cash.'),
+  "operationalWalletUsdc": zod.number().optional().describe('Working capital remaining in the operational wallet after attributing approved Crypto positions to the agent wallet. Absent in legacy snapshots.'),
+  "operationalWalletCommittedUsdc": zod.number().optional().describe('Committed capital outside the Crypto agent wallet. Not an extra allocation.'),
+  "agentAllocations": zod.array(zod.object({
+  "agent": zod.enum(['crypto']),
+  "walletPurpose": zod.enum(['crypto_agent']),
+  "allocatedUsdc": zod.number().min(buyDemoLotteryEntriesResponseRoundsItemTreasurySnapshotAgentAllocationsItemAllocatedUsdcMin),
+  "committedUsdc": zod.number().min(buyDemoLotteryEntriesResponseRoundsItemTreasurySnapshotAgentAllocationsItemCommittedUsdcMin),
+  "availableUsdc": zod.literal(0).describe('No separate free budget is assigned; approved position capital only.'),
+  "activePositions": zod.number().int().min(buyDemoLotteryEntriesResponseRoundsItemTreasurySnapshotAgentAllocationsItemActivePositionsMin),
+  "source": zod.enum(['approved_operations'])
+})).optional().describe('Recorded allocations at the round snapshot instant; absent in older snapshots, never reconstructed from current data.'),
+  "realizedNetUsdc": zod.number().describe('Settled net investment result of this round'),
+  "unrealizedUsdc": zod.number().describe('Indicative gross result of unsettled positions; not distributable.'),
+  "expectedCommittedNetUsdc": zod.number().describe('Sum of proposal expected net results for currently committed positions'),
+  "targetNetUsdc": zod.number().nullable().describe('Approved fixed round target; null when not configured.'),
+  "feesCollectedUsdc": zod.number().nullable().describe('Recorded operator service fees from confirmed simulated wallet operations'),
+  "feeTrackingSince": zod.string().nullable(),
+  "feeBreakdown": zod.object({
+  "onramp": zod.number(),
+  "swap": zod.number(),
+  "withdraw": zod.number(),
+  "send": zod.number(),
+  "transfer": zod.number().optional()
+}),
+  "executionCostsUsdc": zod.number().nullable(),
+  "closedOperations": zod.number().int().nullable(),
+  "openingAssetsUsdc": zod.number().nullable(),
+  "coverage": zod.enum(['complete', 'partial']),
+  "feesOwner": zod.enum(['operating_company'])
+}).optional(),
+  "participationSnapshot": zod.object({
+  "ownEligibleTokens": zod.number().min(buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotOwnEligibleTokensMin).describe('Own eligible BETTEX balance at round close'),
+  "totalEligibleTokens": zod.number().min(buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotTotalEligibleTokensMin).describe('Pool eligible BETTEX balance at round close'),
+  "ownTokenSeconds": zod.number().min(buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotOwnTokenSecondsMin),
+  "totalTokenSeconds": zod.number().min(buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotTotalTokenSecondsMin),
+  "payoutSharePercent": zod.number().min(buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotPayoutSharePercentMin).max(buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotPayoutSharePercentMax),
+  "receivedUsdc": zod.number().min(buyDemoLotteryEntriesResponseRoundsItemParticipationSnapshotReceivedUsdcMin),
   "startedAt": zod.string(),
   "endedAt": zod.string()
 }).optional()
@@ -3551,6 +3999,28 @@ export const CreateDemoMovementResponse = zod.object({
   "participating": zod.boolean(),
   "eligible": zod.boolean(),
   "participants": zod.number().int(),
+  "entryPriceUsdc": zod.number(),
+  "purchaseResult": zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+}).optional(),
+  "entries": zod.array(zod.object({
+  "number": zod.string(),
+  "type": zod.enum(['free', 'paid']),
+  "createdAt": zod.string()
+})),
+  "entryReceipts": zod.array(zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+})),
   "draws": zod.array(zod.object({
   "id": zod.string(),
   "scheduledAt": zod.string(),
@@ -3565,7 +4035,8 @@ export const CreateDemoMovementResponse = zod.object({
   "walletLabel": zod.string(),
   "tokensBettex": zod.number(),
   "paidUsdc": zod.number(),
-  "isOwn": zod.boolean()
+  "isOwn": zod.boolean(),
+  "winningNumber": zod.string().optional()
 }))
 }))
 }).optional(),
@@ -3751,6 +4222,13 @@ export const CreateDemoMovementResponse = zod.object({
   "swapPool": zod.object({
   "id": zod.string(),
   "source": zod.enum(['constant_product_demo']),
+  "contract": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "version": zod.string(),
+  "runtime": zod.enum(['server_simulation']),
+  "status": zod.enum(['active'])
+}),
   "contractAddress": zod.string().nullable().describe('Null until an actual AMM contract exists; this pool is simulation only.'),
   "reserveUsdc": zod.number(),
   "reserveBettex": zod.number(),
@@ -3943,6 +4421,28 @@ export const UpdateDemoProfileResponse = zod.object({
   "participating": zod.boolean(),
   "eligible": zod.boolean(),
   "participants": zod.number().int(),
+  "entryPriceUsdc": zod.number(),
+  "purchaseResult": zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+}).optional(),
+  "entries": zod.array(zod.object({
+  "number": zod.string(),
+  "type": zod.enum(['free', 'paid']),
+  "createdAt": zod.string()
+})),
+  "entryReceipts": zod.array(zod.object({
+  "requestId": zod.string(),
+  "quantity": zod.number().int(),
+  "paidUsdc": zod.number(),
+  "burnedBettex": zod.number(),
+  "createdAt": zod.string(),
+  "numbers": zod.array(zod.string())
+})),
   "draws": zod.array(zod.object({
   "id": zod.string(),
   "scheduledAt": zod.string(),
@@ -3957,7 +4457,8 @@ export const UpdateDemoProfileResponse = zod.object({
   "walletLabel": zod.string(),
   "tokensBettex": zod.number(),
   "paidUsdc": zod.number(),
-  "isOwn": zod.boolean()
+  "isOwn": zod.boolean(),
+  "winningNumber": zod.string().optional()
 }))
 }))
 }).optional(),
@@ -4143,6 +4644,13 @@ export const UpdateDemoProfileResponse = zod.object({
   "swapPool": zod.object({
   "id": zod.string(),
   "source": zod.enum(['constant_product_demo']),
+  "contract": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "version": zod.string(),
+  "runtime": zod.enum(['server_simulation']),
+  "status": zod.enum(['active'])
+}),
   "contractAddress": zod.string().nullable().describe('Null until an actual AMM contract exists; this pool is simulation only.'),
   "reserveUsdc": zod.number(),
   "reserveBettex": zod.number(),

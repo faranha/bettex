@@ -1,8 +1,57 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { seedAccount, seedEngine, tickEngine, submitMovement, settleMovements, closeCycles, dashboard, accountWeight, DAY, utcStart } from "../src/lib/demo-state.ts";
+import { seedAccount, seedEngine, tickEngine, submitMovement, settleMovements, closeCycles, dashboard, accountWeight, accountEligibleTokens, DAY, utcStart } from "../src/lib/demo-state.ts";
 const now = Date.UTC(2026, 9, 5, 10, 0, 0);
 const input = (kind, amount, asset = "USDC") => ({ requestId: "67ea8cd5-8780-468a-8444-aa07c2d74bba", kind, amount, asset, destination: "0x0000000000000000000000000000000000000001" });
+
+test("round cutoff excludes late tokens from eligibility, forecasts and payments until the next round", () => {
+  const a = seedAccount(now), late = seedAccount(now), engine = seedEngine(now);
+  const start = engine.dayAt, end = start + DAY;
+  a.bettex = 1500; a.lots = [{ amount: 1000, since: start }, { amount: 500, since: start + 1 }];
+  late.bettex = 500; late.lots = [{ amount: 500, since: start + 1 }];
+  engine.treasury.cycleResultUsdc = 1000;
+  const accounts = [a, late], before = late.receivedYield;
+  const current = dashboard(a, engine, now, accounts);
+  assert.equal(current.balances.bettex, 1500);
+  assert.equal(current.staking.eligibleTokens, 1000);
+  assert.equal(current.staking.totalEligibleTokens, 8001000);
+  assert.equal(current.staking.tokenSharePercent, 100 * 1000 / 8001000);
+  assert.equal(accountWeight(a, start, end), 1000 * 86400);
+  assert.equal(accountWeight(late, start, end), 0);
+  const excluded = dashboard(late, engine, now, accounts);
+  assert.equal(excluded.staking.estimatedUsdc, 0);
+  assert.equal(excluded.staking.status, "inactive");
+  const archived = JSON.stringify(engine.rounds);
+  dashboard(a, engine, now, accounts);
+  assert.equal(JSON.stringify(engine.rounds), archived);
+  closeCycles(engine, accounts, end);
+  assert.equal(late.receivedYield, before);
+  const previous = dashboard(a, engine, end, accounts).rounds[0].participationSnapshot;
+  assert.equal(previous.ownEligibleTokens, 1000);
+  assert.equal(previous.totalEligibleTokens, 8001000);
+  assert.equal(previous.receivedUsdc, Math.floor(250 * 1000 / 8001000 * 1e6) / 1e6);
+  assert.equal(dashboard(a, engine, end, accounts).staking.eligibleTokens, 1500);
+  assert.equal(dashboard(late, engine, end, accounts).staking.eligibleTokens, 500);
+  assert.equal(dashboard(a, engine, end, accounts).staking.totalEligibleTokens, 8002000);
+  const frozen = JSON.stringify(previous);
+  closeCycles(engine, accounts, end);
+  assert.equal(JSON.stringify(dashboard(a, engine, end, accounts).rounds[0].participationSnapshot), frozen);
+});
+
+test("settled deposits do not change current eligibility; any BETTEX exit cancels all current rights", () => {
+  const a = seedAccount(now), engine = seedEngine(now), original = a.bettex;
+  submitMovement(a, engine, input("receive", 100, "BETTEX"), now);
+  settleMovements(a, now + 6000, engine);
+  assert.equal(a.bettex, original + 100);
+  assert.equal(accountEligibleTokens(a, engine.dayAt), original);
+  const weight = accountWeight(a, engine.dayAt, now + 6000);
+  assert.equal(weight, original * (now + 6000 - engine.dayAt) / 1000);
+  submitMovement(a, engine, { ...input("send", 1, "BETTEX"), requestId: "cutoff-exit" }, now + 7000);
+  assert.equal(accountEligibleTokens(a, engine.dayAt), 0);
+  assert.equal(accountWeight(a, engine.dayAt, now + 8000), 0);
+  assert.equal(dashboard(a, engine, now + 8000).staking.estimatedUsdc, 0);
+  assert.equal(accountEligibleTokens(a, engine.dayAt + DAY), a.bettex);
+});
 
 test("closed-round stake snapshots explain payments, stay frozen and remain account-scoped", () => {
   const a = seedAccount(now), b = seedAccount(now), engine = seedEngine(now);

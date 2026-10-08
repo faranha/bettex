@@ -10,6 +10,7 @@ import { brlReference, decimalQuantity, filterWalletHistory, walletFilterFromSea
 import { downloadWalletHistory } from './wallet-history-export';
 import { demoPath } from '../demo/demo-navigation';
 import { historyQuery } from './history-selection';
+import { WalletHelp } from '../demo/WalletHelp';
 
 type T3 = [string, string, string];
 const TYPES: Record<string, T3> = {
@@ -176,7 +177,10 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
   return <section id="wallet-statement" className="dcard grid min-w-0 w-full gap-4 p-4 sm:p-5" data-testid="wallet-statement">
     <div className="flex flex-wrap items-start justify-between gap-3">
       <div className="min-w-0">
-        <h3 className="display text-lg font-extrabold">{x('Extrato da carteira', 'Wallet statement', 'Extracto de la billetera')}</h3>
+        <h3 className="display text-lg font-extrabold"><WalletHelp id="statement" label={x('Extrato da carteira', 'Wallet statement', 'Extracto de la billetera')}>
+          <p>{x('Histórico de movimentos e rendimentos da sua conta. A fonte indicada distingue registros da simulação e registros nativos; não são somados como se fossem o mesmo saldo. Os atalhos de histórico de cada carteira já selecionam o filtro correspondente.', 'History of your account’s movements and earnings. The displayed source distinguishes simulation and native records; they are not added together as one balance. Each wallet’s history shortcut preselects its corresponding filter.', 'Historial de movimientos y ganancias de tu cuenta. La fuente indicada distingue registros de simulación y nativos; no se suman como si fueran un mismo saldo. El acceso al historial de cada cartera preselecciona su filtro correspondiente.')}</p>
+          <p>{x('Cada lançamento mostra sua quantidade, ativo e status. A equivalência em reais é aproximada pela referência atual, não pelo preço histórico de execução. Taxas são identificadas separadamente; não confunda um pedido pendente com uma operação confirmada.', 'Each entry shows its quantity, asset and status. The BRL equivalent is approximate at the current reference rate, not the historical execution price. Fees are identified separately; do not confuse a pending request with a confirmed operation.', 'Cada movimiento muestra su cantidad, activo y estado. La equivalencia en reales es aproximada con la referencia actual, no con el precio histórico de ejecución. Las tarifas se identifican por separado; no confundas una solicitud pendiente con una operación confirmada.')}</p>
+        </WalletHelp></h3>
         <p className="mt-1 max-w-2xl text-xs text-[#5B6B85]">{x('Valores em BRL são estimativas a taxas simuladas atuais, não o preço de execução histórico. Cotação BETTEX nativa em BRL e ETH não estão disponíveis.', 'BRL values are estimates at current simulated rates, not the historical execution price. Native BETTEX BRL quote and ETH are unavailable.', 'Los valores en BRL son estimaciones a tasas simuladas actuales, no el precio de ejecución histórico. La cotización nativa de BETTEX en BRL y ETH no están disponibles.')}</p>
       </div>
       <span className={`${chip} ${mode === 'native' ? 'bg-[#DDF0E4] text-[#0A6657]' : 'bg-[#F0E9DA] text-[#5B6B85]'}`} data-testid="statement-source">
@@ -190,7 +194,10 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
     </div>}
 
     <div className="grid gap-2 rounded-2xl border border-[#E4DCCB] bg-[#F5F1E8] p-3 sm:p-4" data-testid="statement-downloads">
-      <p className="text-sm font-extrabold">{x('Baixar extrato', 'Download statement', 'Descargar extracto')}</p>
+      <div className="text-sm font-extrabold"><WalletHelp id="statement-downloads" label={x('Baixar extrato', 'Download statement', 'Descargar extracto')}>
+        <p>{x('Todos os registros exporta os registros carregados da fonte selecionada, ignorando os filtros. Filtrados exporta somente os resultados dos filtros atuais, incluindo os que ficam abaixo da tela.', 'All records exports loaded records from the selected source, ignoring filters. Filtered exports only matches for the current filters, including entries below the viewport.', 'Todos los registros exporta los registros cargados de la fuente seleccionada, ignorando los filtros. Filtrados exporta solo los resultados de los filtros actuales, incluidos los que están debajo de la pantalla.')}</p>
+        <p>{x('CSV é adequado para planilhas; JSON preserva dados estruturados para análise. Baixar não movimenta saldo. O arquivo pode conter endereços e seu histórico financeiro: compartilhe com cuidado. Registros da simulação não comprovam transações com dinheiro real.', 'CSV is suitable for spreadsheets; JSON preserves structured data for analysis. Downloading does not move funds. Files may contain addresses and your financial history: share carefully. Simulation records do not prove real-money transactions.', 'CSV es adecuado para hojas de cálculo; JSON conserva datos estructurados para análisis. Descargar no mueve saldo. El archivo puede contener direcciones y tu historial financiero: compártelo con cuidado. Los registros de simulación no prueban transacciones con dinero real.')}</p>
+      </WalletHelp></div>
       <p className="text-xs text-[#5B6B85]">{x(`Todos os ${actual.length} registros reais carregados (inclui rendimento e todas as operações de carteira).`, `All ${actual.length} loaded actual records (includes yield and every wallet operation).`, `Los ${actual.length} registros reales cargados (incluye rendimiento y todas las operaciones).`)}</p>
       <div className="grid gap-2 sm:grid-cols-2 lg:flex lg:flex-wrap">
         <button type="button" id="statement-download-all-csv" data-testid="statement-download-all-csv" className={btnP} disabled={q.isLoading || q.isError || !actual.length} onClick={() => dl(actual, 'csv')}>{x('Todos os registros (CSV)', 'All records (CSV)', 'Todos los registros (CSV)')}</button>
@@ -201,12 +208,15 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
     </div>
 
     <div className="grid min-w-0 gap-3 rounded-2xl border border-[#E4DCCB] bg-[#FBF8F0] p-3 sm:p-4" data-testid="statement-filters">
-      <h4 className="text-sm font-extrabold">{x('Filtrar registros', 'Filter records', 'Filtrar registros')}</h4>
+      <h4 className="text-sm font-extrabold"><WalletHelp id="statement-filters" label={x('Filtrar registros', 'Filter records', 'Filtrar registros')}>
+        <p>{x('Carteira limita o extrato a USDC, BETTEX, rendimentos ou um endereço. Tipo de transação seleciona a natureza do movimento, como depósito, envio ou conversão. Status seleciona a etapa registrada: pendente, confirmado, concluído ou falha, por exemplo.', 'Wallet limits the statement to USDC, BETTEX, earnings or an address. Transaction type selects the movement category, such as deposit, send or conversion. Status selects the recorded stage, such as pending, confirmed, completed or failed.', 'Cartera limita el extracto a USDC, BETTEX, ganancias o una dirección. Tipo de transacción selecciona la categoría del movimiento, como depósito, envío o conversión. Estado selecciona la etapa registrada, como pendiente, confirmado, completado o fallido.')}</p>
+        <p>{x('A busca encontra ID, hash ou endereço. Os filtros se combinam e não alteram operações ou saldos. Nenhum resultado pode significar apenas que os filtros não correspondem a registros. Para ampliar a consulta, selecione Todas as carteiras, Todos os tipos e Todos os status e limpe a busca.', 'Search finds an ID, hash or address. Filters combine and do not change operations or balances. No matches may simply mean the filters do not match records. Broaden the query with All wallets, All types and All statuses and clear the search.', 'La búsqueda encuentra ID, hash o dirección. Los filtros se combinan y no alteran operaciones ni saldos. Ningún resultado puede significar solo que los filtros no coinciden con registros. Amplía la consulta seleccionando Todas las carteras, Todos los tipos y Todos los estados y vacía la búsqueda.')}</p>
+      </WalletHelp></h4>
       <div className="grid min-w-0 gap-2 sm:grid-cols-2 lg:grid-cols-4">
       <label className={lbl}>{x('Carteira', 'Wallet', 'Billetera')}
         <select id="filter-statement-wallet" data-testid="filter-statement-wallet" className={sel} value={wallet} onChange={e => selectWallet(e.target.value)}>
           <option value="">{x('Todas as carteiras', 'All wallets', 'Todas las billeteras')}</option>
-          <option value="earnings">{x('Rendimentos', 'Earnings', 'Ganancias')}</option><option value="USDC">USDC</option><option value="BETTEX">BETTEX</option><option value="ETH">{x('ETH', 'ETH', 'ETH')} ({x('gás', 'gas', 'gas')})</option>
+          <option value="earnings">{x('Rendimentos', 'Earnings', 'Ganancias')}</option><option value="USDC">USDC</option><option value="BETTEX">BETTEX</option>
           {addresses.map(address => <option key={address} value={address}>{x('Endereço', 'Address', 'Dirección')} · {address}</option>)}
         </select></label>
       <label className={lbl}>{x('Tipo de transação', 'Transaction type', 'Tipo de transacción')}

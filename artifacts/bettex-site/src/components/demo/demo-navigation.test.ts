@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { demoView, demoPath, demoPageTitle, demoAccountTab, demoRedirect, isRemovedSimulationPath } from './demo-navigation.ts';
+import { demoView, demoPath, demoLabel, demoPageTitle, demoAccountTab, demoRedirect, isRemovedSimulationPath } from './demo-navigation.ts';
 
 test('wallets dashboard, history, AI Center, Treasury and personal Profile have independent reloadable routes', () => {
   for (const language of ['pt', 'en', 'es'] as const) {
@@ -12,7 +12,10 @@ test('wallets dashboard, history, AI Center, Treasury and personal Profile have 
       assert.equal(demoRedirect(path, language, '?wallet=earnings'), null);
     }
   }
-  assert.equal(demoPageTitle('home', 'pt'), 'Carteiras | BETTEX');
+  for (const language of ['pt', 'en', 'es'] as const) {
+    assert.equal(demoLabel('home', language), 'Dashboard');
+    assert.equal(demoPageTitle('home', language), 'Dashboard | BETTEX');
+  }
   assert.equal(demoPageTitle('wallet', 'en'), 'History | BETTEX');
   assert.equal(demoPageTitle('wallet', 'es'), 'Historial | BETTEX');
   assert.equal(demoPageTitle('account', 'pt'), 'Perfil | BETTEX');

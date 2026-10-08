@@ -203,7 +203,8 @@
 .roadmap__features summary:focus-visible { outline: 2px solid #2b59ff; outline-offset: 3px; border-radius: 8px; }
 .roadmap__features[open] summary { border-bottom: 1px solid #5f86ff33; }
 .roadmap__place .roadmap__features p { margin: 0; padding: 12px 15px; font-size: 13px; }
-.roadmap__features--soon { padding: 12px 15px; font-weight: 700; }
+.roadmap__features--demo { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 12px 15px; font-weight: 700; text-decoration: none; transition: background .15s; }
+.roadmap__features--demo:hover { background: #2b59ff18; }
 .roadmap__stop--featured .roadmap__features { background: #5f86ff18; border-color: #5f86ff66; color: #f2b632; }
 .roadmap__stop--featured .roadmap__pin {
   background: var(--roadmap-coral);

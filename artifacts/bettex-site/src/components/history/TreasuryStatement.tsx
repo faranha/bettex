@@ -9,6 +9,7 @@ import { TreasuryStatementSummary, useStmtFmt } from './TreasuryStatementSummary
 import { demoPath } from '../demo/demo-navigation';
 import { historyQuery, treasuryFiltersFromSearch, treasuryWalletFromSearch } from './history-selection';
 import { TreasuryWalletHistoryContext } from './TreasuryWalletHistoryContext';
+import { TreasuryWalletRoundHistory } from './TreasuryWalletRoundHistory';
 
 type T3 = [string, string, string];
 export const brazilDate = (v: string | number | Date) => new Date(v).toLocaleDateString('en-CA', { timeZone: BRAZIL_TIME_ZONE });
@@ -58,7 +59,7 @@ export function TreasuryStatement({ dashboard, serverNow, roundStartedAt }: { da
   const walletScope = treasuryWalletFromSearch(routeSearch);
   const reserveOnly = walletScope === 'reserve';
   const allocationOnly = walletScope === 'crypto_agent';
-  const noTransferLedger = reserveOnly || allocationOnly;
+  const noTransferLedger = reserveOnly;
   const today = brazilDate(serverNow);
   const [from, setFrom] = useState(() => roundStartedAt ? brazilDate(roundStartedAt) : today);
   const [to, setTo] = useState(today);
@@ -74,6 +75,7 @@ export function TreasuryStatement({ dashboard, serverNow, roundStartedAt }: { da
   useEffect(() => {
     const filters = treasuryFiltersFromSearch(routeSearch);
     setAccount(filters.account); setAsset(filters.asset);
+    setFrom(roundStartedAt ? brazilDate(roundStartedAt) : today); setTo(today);
     setCategory(''); setDirection('all'); setSearch(''); setPage(1); setSnap(null);
   }, [routeSearch]);
   const selectAccount = (nextAccount: typeof account, nextAsset: typeof asset) => {
@@ -89,7 +91,7 @@ export function TreasuryStatement({ dashboard, serverNow, roundStartedAt }: { da
 
   const days = Math.round((Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 864e5);
   const validRange = /^\d{4}-\d{2}-\d{2}$/.test(from) && /^\d{4}-\d{2}-\d{2}$/.test(to) && days >= 0 && days <= 30;
-  const filterParams = { from, to, asset, account, direction, ...(category ? { category } : {}), ...(search.trim() ? { search: search.trim().slice(0, 100) } : {}) };
+  const filterParams: Omit<GetDemoTreasuryStatementParams, 'page' | 'snapshot' | 'asOf'> = { from, to, asset, account, wallet: walletScope ?? 'all', direction, ...(category ? { category } : {}), ...(search.trim() ? { search: search.trim().slice(0, 100) } : {}) };
   const params: GetDemoTreasuryStatementParams = { ...filterParams, page, ...(snap ? snap : {}) };
   const q = useGetDemoTreasuryStatement(params, { query: { enabled: validRange && !noTransferLedger, queryKey: ['/api/demo/treasury/statement', params], staleTime: 10_000, refetchInterval: snap || noTransferLedger ? false : 20_000 } });
   const data = noTransferLedger ? undefined : q.data;
@@ -167,8 +169,9 @@ export function TreasuryStatement({ dashboard, serverNow, roundStartedAt }: { da
       </select>
     </label>
     {walletScope && <TreasuryWalletHistoryContext d={dashboard} purpose={walletScope} />}
+    {walletScope && walletScope !== 'buyback' && <TreasuryWalletRoundHistory key={walletScope} d={dashboard} purpose={walletScope} />}
     {allocationOnly && <div role="status" data-testid="treasury-crypto-history-allocation" className="grid gap-2 rounded-2xl border border-[#E5CC87] bg-[#FFF5D9] p-4 text-sm text-[#73531B]">
-      <p>{x('A alocação acompanha o capital reservado nas operações aprovadas do Cripto. Ao encerrar ou cancelar uma posição, esse capital deixa de estar reservado ao agente. Não é um orçamento fixo nem o limite de exposição. Não há transferências on-chain ou um extrato de caixa segregado para essa carteira.', 'Allocation follows capital reserved in approved Crypto operations. Once a position closes or is cancelled, its capital is no longer reserved for the agent. It is not a fixed budget or the exposure limit. There are no on-chain transfers or a separate cash statement for this wallet.', 'La asignación sigue el capital reservado en operaciones aprobadas de Cripto. Al cerrar o cancelar una posición, el capital deja de estar reservado para el agente. No es un presupuesto fijo ni el límite de exposición. No hay transferencias on-chain ni un extracto de caja separado para esta cartera.')}</p>
+      <p>{x('A alocação acompanha as posições aprovadas do Cripto. As fotos salvas mostram o capital reservado por rodada; os lançamentos abaixo mostram resultados e custos registrados dessas posições. Não são transferências on-chain nem um saldo de caixa reconciliado.', 'Allocation follows approved Crypto positions. Saved snapshots show reserved capital by round; the entries below show recorded results and costs of those positions. They are not on-chain transfers or a reconciled cash balance.', 'La asignación sigue las posiciones aprobadas de Cripto. Las fotos guardadas muestran el capital reservado por ronda; los asientos inferiores muestran resultados y costos registrados de esas posiciones. No son transferencias on-chain ni un saldo de caja conciliado.')}</p>
       <a className="min-h-11 self-start py-2 font-bold underline" href={`${demoPath('wallet', loc)}${historyQuery('rounds')}`}>{x('Consultar alocações e atividades das rodadas', 'View round allocations and activities', 'Consultar asignaciones y actividades de las rondas')}</a>
     </div>}
     {reserveOnly && <div role="status" data-testid="treasury-reserve-history-unrecorded" className="rounded-2xl border border-[#E5CC87] bg-[#FFF5D9] p-4 text-sm text-[#73531B]">
@@ -212,7 +215,7 @@ export function TreasuryStatement({ dashboard, serverNow, roundStartedAt }: { da
         {data.missingSources.length > 0 && <p>{x('Fontes ausentes', 'Missing sources', 'Fuentes ausentes')}: {data.missingSources.map(s => tl(MISSING, s)).join(', ')}</p>}
         <p>{x('Posição em', 'As of', 'Posición a')} {formatBrazilDateTime(data.asOf, fl)}</p>
       </div>
-      {walletScope !== 'operational' && <TreasuryStatementSummary data={data} />}
+      {data.balances.length > 0 && <TreasuryStatementSummary data={data} />}
       <p className="text-xs text-[#5B6B85]" aria-live="polite" data-testid="treasury-statement-count">
         {x(`${data.total} lançamentos · página ${data.page} de ${Math.max(1, data.totalPages)}`, `${data.total} entries · page ${data.page} of ${Math.max(1, data.totalPages)}`, `${data.total} asientos · página ${data.page} de ${Math.max(1, data.totalPages)}`)}{q.isFetching ? ` · ${x('Atualizando', 'Refreshing', 'Actualizando')}` : ''}
       </p>

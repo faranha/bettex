@@ -13,6 +13,7 @@
     "check:treasury": "node --test scripts/treasury-governance.test.mjs",
     "check:treasury-integration": "node scripts/treasury-governance-integration.mjs",
     "check:history": "node --test scripts/history.test.mjs",
+    "check:lottery": "node --test src/lib/demo-lottery.test.ts src/lib/demo-lottery-entries.test.ts && node scripts/lottery-entry-integration.mjs",
     "check:history-store": "node scripts/history-store-integration.mjs",
     "dev": "export NODE_ENV=development && pnpm run build && pnpm run start",
     "build": "node ./build.mjs",

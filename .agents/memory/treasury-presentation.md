@@ -3,6 +3,18 @@ name: Tesouraria por rodada
 description: Hierarquia de ativos, significado dos resultados, receita de serviços e escopo das projeções.
 ---
 
+Helpers explicativos devem cobrir a Tesouraria tanto dentro da home quanto na página própria, não apenas as carteiras pessoais.
+
+**Why:** O criador reforçou: “faltam helpers na treasury area dentro da home e tambem na area de treasury”.
+
+**How to apply:** Cada novo indicador da Tesouraria deve ter uma explicação acessível por toque e teclado nas duas apresentações, quando aparecer em ambas. Não basta nomear a métrica ou deixar a explicação disponível apenas no desktop.
+
+Não deve haver rolagem lateral na Tesouraria, em hipótese alguma: nem na home do app nem na página própria, no desktop ou no mobile. No slider, usar uma carteira por item quando necessário.
+
+**Why:** O criador proibiu expressamente a rolagem lateral e mostrou a barra de rolagem interna das carteiras como problema.
+
+**How to apply:** Fazer cartões, valores e controles caberem na largura disponível; manter todas as carteiras e ações acessíveis. Não apenas esconder uma barra de rolagem ou cortar conteúdo.
+
 O criador exige visão hierárquica dos ativos: reserva é parte do total, assim como o capital operacional comprometido/disponível. Realizado deve representar investimentos reconciliados da rodada atual, não o acumulado histórico. A área precisa explicar cada métrica, mostrar compromissos e estimativas/target atuais e permitir consultar o estado salvo da tesouraria e as taxas das rodadas anteriores.
 
 **Why:** O criador considerou os cartões independentes confusos e pediu planejar e executar a melhoria completa da Tesouraria.
@@ -11,17 +23,41 @@ O criador exige visão hierárquica dos ativos: reserva é parte do total, assim
 
 A projeção de capital em paper foi expressamente adiada para outro assunto.
 
-A área Tesouraria deve apresentar o dinheiro dentro de carteiras claramente identificadas: carteira operacional da tesouraria, carteira de reserva distinta e carteira específica de recompra. Cada uma precisa mostrar seu endereço e os saldos correspondentes.
+A área Tesouraria deve apresentar o dinheiro dentro de carteiras claramente identificadas: carteira operacional da tesouraria, carteira de reserva distinta e carteira específica de recompra. Cada uma precisa oferecer seu endereço em um helper acessível e mostrar os saldos correspondentes.
 
 **Why:** O criador pediu explicitamente que a reserva e a recompra sejam carteiras distintas e disse “nós temos que ver o dinheiro dentro de carteiras”.
 
 **How to apply:** Não tratar a reserva apenas como um indicador dentro do saldo operacional. Preservar a composição do total sem dupla contagem e distinguir saldos simulados do aplicativo de fundos efetivamente existentes na blockchain.
+
+Treasury wallets should be presented vertically on the dedicated Treasury page and horizontally on the app homepage. Remove repeated “Simulated” badges and prominent button labels; wallet details belong in helpers.
+
+**Why:** The creator asked to improve distribution, remove repeated labels and use helpers, then specified “vertical presentation ... keep it horizontal on the homepage tho”.
+
+**How to apply:** Preserve actual values, accounting and action behavior. Use icon-only actions with accessible names, retain addresses and details in touch/keyboard-accessible helpers, and keep one clear test-only notice rather than labeling every card.
+
+Do not display the two numeric asset-composition equations alongside the Treasury wallets, including inside helpers.
+
+**Why:** The creator showed the two numeric breakdown lines and asked to remove them as well.
+
+**How to apply:** Keep wallet balances and accounting intact; explain composition in words without repeating those numeric equations.
 
 O criador escolheu criar três carteiras de teste, não cadastrar endereços existentes nem movimentar dinheiro real.
 
 **Why:** Na escolha entre carteiras existentes e novas, respondeu “Criar três carteiras de teste”.
 
 **How to apply:** Tratar os endereços atribuídos como carteiras de teste. Essa escolha não aprova custódia de produção, financiamento on-chain ou operações com ativos reais.
+
+When reflecting new Treasury wallets in history, distinguish recorded settlements from saved allocation snapshots. Missing allocations in older rounds remain unknown; current wallet values must not fill historical gaps.
+
+**Why:** The creator asked to review all history so the new Treasury wallets are reflected there. Those wallets were introduced after some existing rounds, and allocation ownership is not evidence of an executed cash transfer.
+
+**How to apply:** Scope statement records and downloads to the selected wallet, preserve the consolidated view, and show saved allocations separately from cash movements. Never relabel consolidated Treasury opening/closing balances as independently reconciled balances of its partitions.
+
+Keep the detailed current-round summary out of the homepage Treasury slider; retain it on the full Treasury page.
+
+**Why:** The creator showed the current-round, Crypto-allocation and results slide and said it is not needed in the homepage slider.
+
+**How to apply:** Preserve the other homepage Treasury slides and its full-page link; do not remove the underlying calculations or the dedicated Treasury summary.
 
 A Tesouraria também deve apresentar uma carteira do agente Cripto e o valor alocado na rodada. O criador escolheu usar o capital reservado nas operações aprovadas, não definir um orçamento separado.
 

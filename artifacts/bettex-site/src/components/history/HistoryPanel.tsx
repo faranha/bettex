@@ -2,11 +2,11 @@
 import { useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
-  getHistoryTransparency, getTestHistory, getDemoHistory, getTreasuryHistory, previewHistoryDistribution,
+  getHistoryTransparency, getTestHistory, getDemoHistory, getTreasuryHistory,
   type HistoryEntry, type HistoryPage, type GetTestHistoryParams,
 } from '@workspace/api-client-react';
 import { useX } from '@/components/demo/ui';
-import { ALLOWED, DEC, formatUnits, fmtTime } from './format';
+import { ALLOWED, DEC, formatUnits, fmtTime, historyLegDecimals } from './format';
 
 type Mode = 'native' | 'demo';
 type View = 'general' | 'swapping' | 'staking' | 'distributions' | 'activity' | 'treasury';
@@ -42,6 +42,8 @@ const CAT: Record<string, [string, string, string]> = {
   financial: ['Financeiro', 'Financial', 'Financiero'], activity: ['Atividade', 'Activity', 'Actividad'], automatic: ['Automático', 'Automatic', 'Automático'],
 };
 const KIND: Record<string, [string, string, string]> = {
+  lottery_entries_purchased: ['Números da loteria comprados', 'Lottery entries purchased', 'Números de lotería comprados'],
+  lottery_free_entry: ['Número gratuito da loteria', 'Free lottery number', 'Número gratuito de lotería'],
   deposit: ['Depósito', 'Deposit', 'Depósito'], purchase: ['Compra de BETTEX', 'BETTEX purchase', 'Compra de BETTEX'],
   swap: ['Conversão', 'Swap', 'Conversión'], stake: ['Aplicação', 'Stake', 'Aplicación'], unstake: ['Resgate', 'Unstake', 'Rescate'],
   distribution: ['Distribuição', 'Distribution', 'Distribución'], transfer: ['Transferência', 'Transfer', 'Transferencia'],
@@ -164,8 +166,12 @@ function Data({ e }: { e: HistoryEntry }) {
     rows.push([label, `${v} ${a}`.trim()]);
   };
   if (typeof d.stage === 'string') rows.push([x('Etapa', 'Stage', 'Etapa'), pick(STAGE, d.stage, loc, pick(KIND, d.stage, loc))]);
-  amt(x('Pago', 'Paid', 'Pagado'), d.paidUnits, d.paidAsset);
-  amt(x('Recebido', 'Received', 'Recibido'), d.receivedUnits, d.receivedAsset);
+  amt(x('Pago', 'Paid', 'Pagado'), d.paidUnits, d.paidAsset, historyLegDecimals(d, 'paid', e.asset));
+  amt(x('Recebido', 'Received', 'Recibido'), d.receivedUnits, d.receivedAsset, historyLegDecimals(d, 'received', e.asset));
+  if (d.burnedUnits != null) amt(x('BETTEX comprado e queimado', 'BETTEX bought and burned', 'BETTEX comprado y quemado'), d.burnedUnits, 'BETTEX', 18);
+  if (typeof d.entryCount === 'string') rows.push([x('Entradas', 'Entries', 'Entradas'), d.entryCount]);
+  if (typeof d.entryNumbers === 'string') rows.push([x('Números da loteria', 'Lottery numbers', 'Números de lotería'), d.entryNumbers]);
+  if (typeof d.drawAt === 'string') rows.push([x('Sorteio', 'Draw', 'Sorteo'), fmtTime(d.drawAt, loc)]);
   amt(x('Principal', 'Principal', 'Principal'), d.principalUnits, d.paidAsset ?? 'USDC', DEC[String(d.paidAsset ?? 'USDC')] ?? 6);
   amt(x('Taxa', 'Fee', 'Comisión'), d.feeUnits, 'USDC', 6);
   amt(x('Quantidade', 'Quantity', 'Cantidad'), d.quantityUnits, e.asset);
@@ -266,7 +272,6 @@ export function HistoryPanel({ mode, accountKey, initialView, treasuryAccess = f
   const views = mode === 'demo' && !treasuryAccess ? VIEWS.filter(v => v !== 'treasury') : VIEWS;
   const [view, setView] = useState<View>(initialView && (mode !== 'demo' || treasuryAccess || initialView !== 'treasury') ? initialView : 'general');
   const [filters, setFilters] = useState<Filters>(EMPTY);
-  const [sim, setSim] = useState<'idle' | 'busy' | 'ok' | 'err'>('idle');
   const apiFilters = useMemo(() => toApi(filters), [filters]);
   const scope = JSON.stringify([mode, accountKey, view, apiFilters]);
   const [pg, setPg] = useState<{ k: string; s: (string | null)[] }>({ k: scope, s: [null] });
@@ -282,10 +287,6 @@ export function HistoryPanel({ mode, accountKey, initialView, treasuryAccess = f
     return Object.entries(m);
   }, [items]);
   const setF = (k: keyof Filters) => (ev: { target: { value: string } }) => setFilters(f => ({ ...f, [k]: ev.target.value }));
-  const runSim = async () => {
-    setSim('busy');
-    try { await previewHistoryDistribution({ requestId: crypto.randomUUID() }); setSim('ok'); void q.refetch(); } catch { setSim('err'); }
-  };
   return <section className="grid gap-3" data-testid={`panel-history-${mode}`}>
     <h2 className="display text-lg font-extrabold">{x('Histórico', 'History', 'Historial')}</h2>
     {(view === 'general' || view === 'treasury') && <Transparency />}
@@ -315,12 +316,6 @@ export function HistoryPanel({ mode, accountKey, initialView, treasuryAccess = f
       <input maxLength={100} placeholder={x('Carteira', 'Wallet', 'Cartera')} aria-label={x('Carteira', 'Wallet', 'Cartera')} data-testid="input-history-wallet" className={`${sel} w-44`} value={filters.wallet} onChange={setF('wallet')} />
       <button type="button" className={btn} data-testid="button-history-clear" onClick={() => setFilters(EMPTY)}>{x('Limpar filtros', 'Clear filters', 'Limpiar filtros')}</button>
     </div>
-    {mode === 'demo' && view === 'distributions' && <div className="grid gap-2 rounded-xl border border-[#E7B98A] bg-[#FFF3E3] p-3 text-xs text-[#6B3A10]">
-      <p>{x('Simulação de cálculo apenas: não é pagamento nem direito financeiro.', 'Calculation simulation only: not a payout or a financial claim.', 'Solo simulación de cálculo: no es un pago ni un derecho financiero.')}</p>
-      <button type="button" data-testid="button-simulate-distribution" className={`${btnP} w-fit`} disabled={sim === 'busy'} onClick={() => void runSim()}>{x('Simular apuração', 'Simulate calculation', 'Simular cálculo')}</button>
-      {sim === 'ok' && <p role="status" className="font-semibold">{x('Simulação registrada.', 'Simulation recorded.', 'Simulación registrada.')}</p>}
-      {sim === 'err' && <p role="alert" className="font-semibold text-[#B4421A]">{x('Não foi possível simular.', 'Could not simulate.', 'No se pudo simular.')}</p>}
-    </div>}
     {q.isLoading && <div aria-busy="true" className="grid gap-2">{[0, 1, 2].map(i => <div key={i} className="h-16 animate-pulse rounded-xl bg-[#F0E9DA]" />)}</div>}
     {restricted && <p role="status" data-testid="status-history-restricted" className="rounded-xl bg-[#FFF3E3] p-3 text-sm text-[#6B3A10]">{x('Acesso restrito: esta visão não mostra todos os dados financeiros.', 'Restricted access: this view does not show all financial data.', 'Acceso restringido: esta vista no muestra todos los datos financieros.')}</p>}
     {q.isError && !restricted && <div role="alert" className="rounded-xl border border-[#E4DCCB] bg-white p-3"><p className="text-sm font-semibold text-[#B4421A]">{x('Não foi possível carregar o histórico.', 'Could not load the history.', 'No se pudo cargar el historial.')}</p><button type="button" className={`${btnP} mt-2`} onClick={() => void q.refetch()}>{x('Tentar de novo', 'Try again', 'Intentar de nuevo')}</button></div>}
@@ -335,7 +330,7 @@ export function HistoryPanel({ mode, accountKey, initialView, treasuryAccess = f
       {items.length === 0 && <div role="status" className="rounded-xl border border-dashed border-[#E4DCCB] p-4 text-sm text-[#5B6B85]" data-testid="status-history-empty">
         {view === 'distributions' ? (mode === 'native'
           ? x('Nenhuma distribuição registrada neste filtro. Rodadas de teste usam resultado sintético e EVM local, sem lucro de trading real.', 'No distribution recorded for this filter. Test rounds use synthetic results and the local EVM, with no real trading profit.', 'No hay distribución registrada en este filtro. Las rondas de prueba usan resultados sintéticos y la EVM local, sin beneficio de trading real.')
-          : x('Nenhuma simulação registrada ainda.', 'No simulation recorded yet.', 'Aún no hay simulaciones registradas.'))
+          : x('Nenhuma distribuição registrada neste filtro.', 'No distribution recorded for this filter.', 'No hay distribuciones registradas con este filtro.'))
           : x('Nenhum registro neste filtro.', 'No records for this filter.', 'Ningún registro con este filtro.')}</div>}
       <ul className="grid gap-2">{items.map(e => <Row key={e.id} e={e} mode={mode} accountKey={accountKey} view={view} />)}</ul>
       <div className="flex gap-2">

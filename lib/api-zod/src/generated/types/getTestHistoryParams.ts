@@ -34,7 +34,7 @@ to?: Date;
  */
 kind?: string;
 /**
- * @maxLength 100
+ * @maxLength 256
  */
 correlationId?: string;
 /**

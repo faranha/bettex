@@ -43,10 +43,11 @@ export function ProtectedDemoWallets({ d, onWallet }: {
     };
   }, [selected]);
   const addresses = Object.fromEntries(wallets.map(w => [w.purpose === 'deposits' ? 'USDC' : 'BETTEX', w.address]));
-  return <div className="grid gap-4 pb-24 sm:pb-4">
+  return <div className="grid gap-4 sm:pb-4">
     <DemoWalletsCard d={d} onWallet={onWallet} addresses={addresses} onExport={wallets.length === 2 ? (asset: Asset) => {
       setError(false);
-      setSelected(wallets.find(w => w.purpose === (asset === 'USDC' ? 'deposits' : 'bettex')));
+      const wallet = wallets.find(w => w.purpose === (asset === 'USDC' ? 'deposits' : 'bettex'));
+      setSelected(current => current?.id === wallet?.id ? undefined : wallet);
     } : undefined} />
     {error && <p role="alert" className="text-sm text-[#B4421A]">{x('Não foi possível abrir a carteira. Nenhuma chave foi substituída.', 'Could not open the wallet. No keys were replaced.', 'No se pudo abrir la cartera. No se reemplazó ninguna clave.')}</p>}
     {selected && <WalletExport key={selected.id} wallet={selected} accountId={d.profile.accountId} legacy={legacy} onClose={() => window.dispatchEvent(new Event('bettex-wallet-lock'))} />}

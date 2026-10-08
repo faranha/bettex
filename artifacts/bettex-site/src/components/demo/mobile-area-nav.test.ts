@@ -6,7 +6,7 @@ test('app pages use the shared mobile area nav and keep desktop nav hidden on mo
   assert.match(r('./MobileAreaNav.tsx'), /sm:hidden/);
   const header = r('../app/AppHeader.tsx');
   assert.match(header, /<MobileAreaNav current=\{view\}/);
-  assert.match(header, /className="[^"]*sm:hidden"><MobileAreaNav/);
+  assert.match(header, /className="[^"]*h-14[^"]*">\s*<MobileAreaNav/);
   assert.match(header, /className="hidden[^"]*sm:block"/);
   assert.match(r('../../App.tsx'), /data-testid="app-shell"><AppHeader \/><DemoPage \/>/);
   assert.doesNotMatch(r('../../pages/demo.tsx'), /<MobileAreaNav/);
@@ -14,8 +14,28 @@ test('app pages use the shared mobile area nav and keep desktop nav hidden on mo
   assert.doesNotMatch(r('../alpha-trading/AlphaTradingPanel.tsx'), /<nav[^>]*className="flex flex-wrap/);
 });
 
-test('wallets and history are primary areas; personal Profile is accessed only through the top menu', () => {
-  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'wallet', 'central', 'treasury'\]/);
+test('mobile system menu is a hamburger side drawer, not an Areas dropdown', () => {
+  const nav = r('./MobileAreaNav.tsx');
+  assert.match(nav, /<Menu className=/);
+  assert.doesNotMatch(nav, /ChevronDown/);
+  assert.match(nav, /data-testid="app-menu-drawer"/);
+  assert.match(nav, /h-\[100dvh\]/);
+  assert.match(nav, /slide-in-from-left-full/);
+  assert.match(nav, /setOpen\(false\)/);
+  assert.match(nav, /<DialogClose/);
+  assert.match(r('../app/AppHeader.tsx'), /data-testid="text-current-area"/);
+});
+
+test('dashboard wallets do not reserve obsolete mobile footer space before staking', () => {
+  const wallets = r('../account/ProtectedDemoWallets.tsx');
+  assert.doesNotMatch(wallets, /pb-24/);
+  assert.match(wallets, /grid gap-4 sm:pb-4/);
+  assert.match(r('./WalletsDashboard.tsx'), /grid min-w-0 gap-4/);
+});
+
+test('AI Center immediately follows Wallets in the shared desktop and mobile menu; Profile stays in the top menu', () => {
+  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'central', 'wallet', 'treasury'\]/);
+  assert.match(r('../app/AppHeader.tsx'), /APP_AREAS\.map/);
   const page = r('../../pages/demo.tsx');
   assert.match(page, /tab === 'home' && <WalletsDashboard/);
   assert.match(page, /tab === 'wallet' && <AccountHistoryPage/);
