@@ -63,7 +63,7 @@ export function treasuryRoundSnapshot(engine: EngineState, now: number): DemoTre
     realizedNetUsdc: engine.treasury.cycleResultUsdc,
     unrealizedUsdc: money(committed.filter(o => ["open","result","reconciling"].includes(o.status)).reduce((sum, o) => sum + o.pnlUsdc, 0)),
     expectedCommittedNetUsdc: money(committed.reduce((sum, o) => sum + (o.proposal?.expectedNetUsdc ?? 0), 0)),
-    targetNetUsdc: null,
+    targetNetUsdc: engine.scheduledStory ? 2500 : null,
     feesCollectedUsdc: recorded ? money(Object.values(tracking.fees).reduce((sum, value) => sum + value, 0)) : null,
     feeTrackingSince: recorded ? new Date(tracking.since).toISOString() : null,
     feeBreakdown: { ...tracking.fees },

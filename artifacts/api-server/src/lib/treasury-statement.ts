@@ -88,6 +88,8 @@ export function treasuryStatementEntries(activity: Activity[], rounds: ClosedRou
       add(`${b.id}:BETTEX`, b.at, "buyback", "BETTEX", statementUnits(b.tokensBettex),
         "token_purchase", b.roundId, entryPayment ? "BETTEX/USDC AMM" : "market", "modeled_demo");
     }
+    if (b.kind === "tokens_received") add(`${b.id}:BETTEX`, b.at, "buyback", "BETTEX", statementUnits(b.tokensBettex),
+      "transfer", b.roundId, "participation", "modeled_demo", false);
     if (b.kind === "tokens_burned") add(`${b.id}:BETTEX`, b.at, "buyback", "BETTEX", -statementUnits(b.tokensBettex),
       "token_burn", b.roundId, "burn", "modeled_demo");
   }

@@ -7,7 +7,7 @@ import { burnOf, burnFl, nf } from './burn-format';
 import { formatBrazilDateTime } from './brazil-time';
 
 const PAGE = 8;
-type K = 'all' | 'wallet_funded' | 'tokens_purchased' | 'tokens_burned';
+type K = 'all' | 'wallet_funded' | 'tokens_received' | 'tokens_purchased' | 'tokens_burned';
 
 export function BurnHistory({ d, roundId, embedded = false }: { d: DemoDashboard; roundId?: string; embedded?: boolean }) {
   const { x, loc } = useX();
@@ -19,7 +19,7 @@ export function BurnHistory({ d, roundId, embedded = false }: { d: DemoDashboard
   const rows = useMemo(() => (b?.entries ?? []).filter(e => (!roundId || e.roundId === roundId) && (kind === 'all' || e.kind === kind)).slice().sort((a, c) => Date.parse(c.at) - Date.parse(a.at)), [b, kind, roundId]);
   const pages = Math.max(1, Math.ceil(rows.length / PAGE));
   const cur = Math.min(page, pages - 1);
-  const label = (k: string) => k === 'wallet_funded' ? x('Carteira financiada', 'Wallet funded', 'Cartera financiada') : k === 'tokens_purchased' ? x('Tokens comprados', 'Tokens purchased', 'Tokens comprados') : x('Queima permanente simulada', 'Permanent simulated burn', 'Quema permanente simulada');
+  const label = (k: string) => k === 'wallet_funded' ? x('Carteira financiada', 'Wallet funded', 'Cartera financiada') : k === 'tokens_received' ? x('BETTEX recebido por números', 'BETTEX received for entries', 'BETTEX recibido por números') : k === 'tokens_purchased' ? x('Tokens comprados', 'Tokens purchased', 'Tokens comprados') : x('Queima permanente simulada', 'Permanent simulated burn', 'Quema permanente simulada');
   const exportCsv = () => {
     const q = (s: string) => `"${s.replace(/"/g, '""')}"`;
     const csv = ['id,round,at_sao_paulo,event,usdc,bettex,source', ...rows.map(e => [q(e.id), q(e.roundId), q(formatBrazilDateTime(e.at, 'en-US')), q(e.kind), e.amountUsdc, e.tokensBettex, q(e.source)].join(','))].join('\n');
@@ -40,6 +40,7 @@ export function BurnHistory({ d, roundId, embedded = false }: { d: DemoDashboard
         <option value="all">{x('Todos', 'All', 'Todos')}</option>
         <option value="wallet_funded">{label('wallet_funded')}</option>
         <option value="tokens_purchased">{label('tokens_purchased')}</option>
+        <option value="tokens_received">{label('tokens_received')}</option>
         <option value="tokens_burned">{label('tokens_burned')}</option>
       </select></label>
     {rows.length === 0 ? <p className="rounded-xl bg-[#F5F1E8] p-3 text-sm text-[#5B6B85]">{x('Nenhum evento registrado.', 'No events recorded.', 'Ningún evento registrado.')}</p> :

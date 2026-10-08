@@ -62,6 +62,19 @@ test("distribution and internal funding have separate owners; burns have no USDC
   assert.equal(balances.find(b => b.account === "buyback" && b.asset === "USDC").closing, "5.000000");
   assert.equal(balances.find(b => b.asset === "BETTEX").closing, "0.000000");
 });
+test("BETTEX entry funding and direct burn reconcile without USDC flows, income or an AMM purchase", () => {
+  const entries = treasuryStatementEntries([], [], [
+    { id: "LOTTERY-ENTRIES-direct-01", at, roundId: "R", kind: "tokens_received", amountUsdc: 0, tokensBettex: 1001 },
+    { id: "LOTTERY-ENTRIES-direct-02", at, roundId: "R", kind: "tokens_burned", amountUsdc: 0, tokensBettex: 1001 },
+  ]);
+  assert.equal(entries.length, 2);
+  assert.ok(entries.every(e => e.asset === "BETTEX" && !e.income && !e.internal));
+  assert.equal(entries.find(e => e.category === "transfer").amount, "1001.000000");
+  assert.equal(entries.find(e => e.category === "token_burn").amount, "-1001.000000");
+  const balances = statementBalances(entries, filters(), new Map([["buyback:BETTEX", 0n], ["buyback:USDC", 12500000n]]));
+  assert.equal(balances.find(b => b.asset === "BETTEX").closing, "0.000000");
+  assert.equal(balances.find(b => b.account === "buyback" && b.asset === "USDC").closing, "12.500000");
+});
 test("income supports other Treasury investments, excludes returned principal, and reports unavailable sources", () => {
   const entries = treasuryStatementEntries(positions, [], []);
   const template = entries[0];

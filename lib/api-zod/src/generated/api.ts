@@ -2795,6 +2795,14 @@ export const GetDemoDashboardHeader = zod.object({
   "X-Bettex-Demo-Session": zod.string().regex(getDemoDashboardHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
 })
 
+export const getDemoDashboardResponseLotteryOwnActiveNumbersMin = 0;
+
+export const getDemoDashboardResponseLotteryTotalActiveNumbersMin = 0;
+
+export const getDemoDashboardResponseLotteryNumberSharePercentMin = 0;
+export const getDemoDashboardResponseLotteryNumberSharePercentMax = 100;
+
+
 export const getDemoDashboardResponseStakingChartScenarioOneElapsedMinutesMin = 0;
 export const getDemoDashboardResponseStakingChartScenarioOneElapsedMinutesMax = 1440;
 
@@ -2851,24 +2859,38 @@ export const GetDemoDashboardResponse = zod.object({
   "participating": zod.boolean(),
   "eligible": zod.boolean(),
   "participants": zod.number().int(),
-  "entryPriceUsdc": zod.number(),
+  "entryPriceBettex": zod.number(),
+  "entryPaymentAsset": zod.enum(['BETTEX']),
+  "entryBalanceBettex": zod.number(),
+  "ownActiveNumbers": zod.number().int().min(getDemoDashboardResponseLotteryOwnActiveNumbersMin).describe('Active numbers belonging to this wallet in the upcoming draw.'),
+  "totalActiveNumbers": zod.number().int().min(getDemoDashboardResponseLotteryTotalActiveNumbersMin).describe('Total numbers of opted-in eligible simulated wallets in the upcoming draw.'),
+  "numberSharePercent": zod.number().min(getDemoDashboardResponseLotteryNumberSharePercentMin).max(getDemoDashboardResponseLotteryNumberSharePercentMax).describe('Share of active numbers and first-selection weight; not a guaranteed payout or the probability of any win across multiple selections.'),
   "purchaseResult": zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
 }).optional(),
   "entries": zod.array(zod.object({
   "number": zod.string(),
+  "quantity": zod.number().int().min(1).optional().describe('Contiguous number range starting at number. Omitted for legacy single entries.'),
   "type": zod.enum(['free', 'paid']),
   "createdAt": zod.string()
 })),
   "entryReceipts": zod.array(zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
@@ -3065,7 +3087,7 @@ export const GetDemoDashboardResponse = zod.object({
   "id": zod.string(),
   "roundId": zod.string(),
   "at": zod.string(),
-  "kind": zod.enum(['wallet_funded', 'tokens_purchased', 'tokens_burned']),
+  "kind": zod.enum(['wallet_funded', 'tokens_received', 'tokens_purchased', 'tokens_burned']),
   "amountUsdc": zod.number(),
   "tokensBettex": zod.number(),
   "source": zod.enum(['modeled_demo'])
@@ -3155,6 +3177,91 @@ export const GetDemoDashboardResponse = zod.object({
 })
 
 
+export const getDemoDouble2xHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const GetDemoDouble2xHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(getDemoDouble2xHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
+export const GetDemoDouble2xResponse = zod.object({
+  "chainId": zod.number().int(),
+  "network": zod.string(),
+  "gameAddress": zod.string().optional(),
+  "tokenAddress": zod.string().optional(),
+  "treasuryAddress": zod.string().optional(),
+  "ready": zod.boolean(),
+  "reason": zod.enum(['ready', 'deploying', 'test_gas_unavailable', 'treasury_unavailable', 'testnet_unavailable', 'native_account_unavailable']),
+  "balanceUsdc": zod.number(),
+  "canPlay": zod.boolean(),
+  "pending": zod.boolean(),
+  "nextPlayAt": zod.string().nullable(),
+  "plays": zod.array(zod.object({
+  "id": zod.string(),
+  "color": zod.enum(['red', 'black']),
+  "result": zod.enum(['red', 'black']).optional(),
+  "stakeUsdc": zod.number(),
+  "payoutUsdc": zod.number(),
+  "status": zod.enum(['pending', 'won', 'lost', 'refunded']),
+  "requestedAt": zod.string(),
+  "nextPlayAt": zod.string(),
+  "settledAt": zod.string().optional(),
+  "requestHash": zod.string().optional(),
+  "settlementHash": zod.string().optional(),
+  "sequence": zod.string().optional(),
+  "error": zod.string().optional()
+}))
+})
+
+
+export const playDemoDouble2xHeaderXBettexDemoSessionRegExp = new RegExp('^[a-f0-9]{64}$');
+
+
+export const PlayDemoDouble2xHeader = zod.object({
+  "X-Bettex-Demo-Session": zod.string().regex(playDemoDouble2xHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
+})
+
+export const playDemoDouble2xBodyExpectedStakeUsdcMin = 0.000001;
+
+
+
+export const PlayDemoDouble2xBody = zod.object({
+  "requestId": zod.string().uuid(),
+  "color": zod.enum(['red', 'black']),
+  "confirmed": zod.boolean(),
+  "expectedStakeUsdc": zod.number().min(playDemoDouble2xBodyExpectedStakeUsdcMin)
+})
+
+export const PlayDemoDouble2xResponse = zod.object({
+  "chainId": zod.number().int(),
+  "network": zod.string(),
+  "gameAddress": zod.string().optional(),
+  "tokenAddress": zod.string().optional(),
+  "treasuryAddress": zod.string().optional(),
+  "ready": zod.boolean(),
+  "reason": zod.enum(['ready', 'deploying', 'test_gas_unavailable', 'treasury_unavailable', 'testnet_unavailable', 'native_account_unavailable']),
+  "balanceUsdc": zod.number(),
+  "canPlay": zod.boolean(),
+  "pending": zod.boolean(),
+  "nextPlayAt": zod.string().nullable(),
+  "plays": zod.array(zod.object({
+  "id": zod.string(),
+  "color": zod.enum(['red', 'black']),
+  "result": zod.enum(['red', 'black']).optional(),
+  "stakeUsdc": zod.number(),
+  "payoutUsdc": zod.number(),
+  "status": zod.enum(['pending', 'won', 'lost', 'refunded']),
+  "requestedAt": zod.string(),
+  "nextPlayAt": zod.string(),
+  "settledAt": zod.string().optional(),
+  "requestHash": zod.string().optional(),
+  "settlementHash": zod.string().optional(),
+  "sequence": zod.string().optional(),
+  "error": zod.string().optional()
+}))
+})
+
+
 /**
  * @summary Confirm optional daily modeled burn lottery participation
  */
@@ -3169,6 +3276,14 @@ export const UpdateDemoLotteryParticipationBody = zod.object({
   "participating": zod.boolean(),
   "confirmed": zod.boolean()
 })
+
+export const updateDemoLotteryParticipationResponseLotteryOwnActiveNumbersMin = 0;
+
+export const updateDemoLotteryParticipationResponseLotteryTotalActiveNumbersMin = 0;
+
+export const updateDemoLotteryParticipationResponseLotteryNumberSharePercentMin = 0;
+export const updateDemoLotteryParticipationResponseLotteryNumberSharePercentMax = 100;
+
 
 export const updateDemoLotteryParticipationResponseStakingChartScenarioOneElapsedMinutesMin = 0;
 export const updateDemoLotteryParticipationResponseStakingChartScenarioOneElapsedMinutesMax = 1440;
@@ -3226,24 +3341,38 @@ export const UpdateDemoLotteryParticipationResponse = zod.object({
   "participating": zod.boolean(),
   "eligible": zod.boolean(),
   "participants": zod.number().int(),
-  "entryPriceUsdc": zod.number(),
+  "entryPriceBettex": zod.number(),
+  "entryPaymentAsset": zod.enum(['BETTEX']),
+  "entryBalanceBettex": zod.number(),
+  "ownActiveNumbers": zod.number().int().min(updateDemoLotteryParticipationResponseLotteryOwnActiveNumbersMin).describe('Active numbers belonging to this wallet in the upcoming draw.'),
+  "totalActiveNumbers": zod.number().int().min(updateDemoLotteryParticipationResponseLotteryTotalActiveNumbersMin).describe('Total numbers of opted-in eligible simulated wallets in the upcoming draw.'),
+  "numberSharePercent": zod.number().min(updateDemoLotteryParticipationResponseLotteryNumberSharePercentMin).max(updateDemoLotteryParticipationResponseLotteryNumberSharePercentMax).describe('Share of active numbers and first-selection weight; not a guaranteed payout or the probability of any win across multiple selections.'),
   "purchaseResult": zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
 }).optional(),
   "entries": zod.array(zod.object({
   "number": zod.string(),
+  "quantity": zod.number().int().min(1).optional().describe('Contiguous number range starting at number. Omitted for legacy single entries.'),
   "type": zod.enum(['free', 'paid']),
   "createdAt": zod.string()
 })),
   "entryReceipts": zod.array(zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
@@ -3440,7 +3569,7 @@ export const UpdateDemoLotteryParticipationResponse = zod.object({
   "id": zod.string(),
   "roundId": zod.string(),
   "at": zod.string(),
-  "kind": zod.enum(['wallet_funded', 'tokens_purchased', 'tokens_burned']),
+  "kind": zod.enum(['wallet_funded', 'tokens_received', 'tokens_purchased', 'tokens_burned']),
   "amountUsdc": zod.number(),
   "tokensBettex": zod.number(),
   "source": zod.enum(['modeled_demo'])
@@ -3540,7 +3669,6 @@ export const BuyDemoLotteryEntriesHeader = zod.object({
   "X-Bettex-Demo-Session": zod.string().regex(buyDemoLotteryEntriesHeaderXBettexDemoSessionRegExp).optional().describe('Random 256-bit tab capability for emulated demo data only. Required for public demos; never grants real account rights. Rotating it starts a fresh anonymous demo.')
 })
 
-export const buyDemoLotteryEntriesBodyQuantityMax = 100;
 
 export const buyDemoLotteryEntriesBodyDrawAtMin = 20;
 export const buyDemoLotteryEntriesBodyDrawAtMax = 32;
@@ -3549,10 +3677,19 @@ export const buyDemoLotteryEntriesBodyDrawAtMax = 32;
 
 export const BuyDemoLotteryEntriesBody = zod.object({
   "requestId": zod.string().uuid(),
-  "quantity": zod.number().int().min(1).max(buyDemoLotteryEntriesBodyQuantityMax),
+  "quantity": zod.number().int().min(1),
+  "paymentAsset": zod.enum(['BETTEX']),
   "confirmed": zod.literal(true),
   "drawAt": zod.string().min(buyDemoLotteryEntriesBodyDrawAtMin).max(buyDemoLotteryEntriesBodyDrawAtMax)
 })
+
+export const buyDemoLotteryEntriesResponseLotteryOwnActiveNumbersMin = 0;
+
+export const buyDemoLotteryEntriesResponseLotteryTotalActiveNumbersMin = 0;
+
+export const buyDemoLotteryEntriesResponseLotteryNumberSharePercentMin = 0;
+export const buyDemoLotteryEntriesResponseLotteryNumberSharePercentMax = 100;
+
 
 export const buyDemoLotteryEntriesResponseStakingChartScenarioOneElapsedMinutesMin = 0;
 export const buyDemoLotteryEntriesResponseStakingChartScenarioOneElapsedMinutesMax = 1440;
@@ -3610,24 +3747,38 @@ export const BuyDemoLotteryEntriesResponse = zod.object({
   "participating": zod.boolean(),
   "eligible": zod.boolean(),
   "participants": zod.number().int(),
-  "entryPriceUsdc": zod.number(),
+  "entryPriceBettex": zod.number(),
+  "entryPaymentAsset": zod.enum(['BETTEX']),
+  "entryBalanceBettex": zod.number(),
+  "ownActiveNumbers": zod.number().int().min(buyDemoLotteryEntriesResponseLotteryOwnActiveNumbersMin).describe('Active numbers belonging to this wallet in the upcoming draw.'),
+  "totalActiveNumbers": zod.number().int().min(buyDemoLotteryEntriesResponseLotteryTotalActiveNumbersMin).describe('Total numbers of opted-in eligible simulated wallets in the upcoming draw.'),
+  "numberSharePercent": zod.number().min(buyDemoLotteryEntriesResponseLotteryNumberSharePercentMin).max(buyDemoLotteryEntriesResponseLotteryNumberSharePercentMax).describe('Share of active numbers and first-selection weight; not a guaranteed payout or the probability of any win across multiple selections.'),
   "purchaseResult": zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
 }).optional(),
   "entries": zod.array(zod.object({
   "number": zod.string(),
+  "quantity": zod.number().int().min(1).optional().describe('Contiguous number range starting at number. Omitted for legacy single entries.'),
   "type": zod.enum(['free', 'paid']),
   "createdAt": zod.string()
 })),
   "entryReceipts": zod.array(zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
@@ -3824,7 +3975,7 @@ export const BuyDemoLotteryEntriesResponse = zod.object({
   "id": zod.string(),
   "roundId": zod.string(),
   "at": zod.string(),
-  "kind": zod.enum(['wallet_funded', 'tokens_purchased', 'tokens_burned']),
+  "kind": zod.enum(['wallet_funded', 'tokens_received', 'tokens_purchased', 'tokens_burned']),
   "amountUsdc": zod.number(),
   "tokensBettex": zod.number(),
   "source": zod.enum(['modeled_demo'])
@@ -3943,6 +4094,14 @@ export const CreateDemoMovementBody = zod.object({
   "destination": zod.string().max(createDemoMovementBodyDestinationMax).optional()
 })
 
+export const createDemoMovementResponseLotteryOwnActiveNumbersMin = 0;
+
+export const createDemoMovementResponseLotteryTotalActiveNumbersMin = 0;
+
+export const createDemoMovementResponseLotteryNumberSharePercentMin = 0;
+export const createDemoMovementResponseLotteryNumberSharePercentMax = 100;
+
+
 export const createDemoMovementResponseStakingChartScenarioOneElapsedMinutesMin = 0;
 export const createDemoMovementResponseStakingChartScenarioOneElapsedMinutesMax = 1440;
 
@@ -3999,24 +4158,38 @@ export const CreateDemoMovementResponse = zod.object({
   "participating": zod.boolean(),
   "eligible": zod.boolean(),
   "participants": zod.number().int(),
-  "entryPriceUsdc": zod.number(),
+  "entryPriceBettex": zod.number(),
+  "entryPaymentAsset": zod.enum(['BETTEX']),
+  "entryBalanceBettex": zod.number(),
+  "ownActiveNumbers": zod.number().int().min(createDemoMovementResponseLotteryOwnActiveNumbersMin).describe('Active numbers belonging to this wallet in the upcoming draw.'),
+  "totalActiveNumbers": zod.number().int().min(createDemoMovementResponseLotteryTotalActiveNumbersMin).describe('Total numbers of opted-in eligible simulated wallets in the upcoming draw.'),
+  "numberSharePercent": zod.number().min(createDemoMovementResponseLotteryNumberSharePercentMin).max(createDemoMovementResponseLotteryNumberSharePercentMax).describe('Share of active numbers and first-selection weight; not a guaranteed payout or the probability of any win across multiple selections.'),
   "purchaseResult": zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
 }).optional(),
   "entries": zod.array(zod.object({
   "number": zod.string(),
+  "quantity": zod.number().int().min(1).optional().describe('Contiguous number range starting at number. Omitted for legacy single entries.'),
   "type": zod.enum(['free', 'paid']),
   "createdAt": zod.string()
 })),
   "entryReceipts": zod.array(zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
@@ -4213,7 +4386,7 @@ export const CreateDemoMovementResponse = zod.object({
   "id": zod.string(),
   "roundId": zod.string(),
   "at": zod.string(),
-  "kind": zod.enum(['wallet_funded', 'tokens_purchased', 'tokens_burned']),
+  "kind": zod.enum(['wallet_funded', 'tokens_received', 'tokens_purchased', 'tokens_burned']),
   "amountUsdc": zod.number(),
   "tokensBettex": zod.number(),
   "source": zod.enum(['modeled_demo'])
@@ -4365,6 +4538,14 @@ export const UpdateDemoProfileBody = zod.object({
   "avatarPath": zod.string().max(updateDemoProfileBodyAvatarPathMax).regex(updateDemoProfileBodyAvatarPathRegExp).nullish()
 })
 
+export const updateDemoProfileResponseLotteryOwnActiveNumbersMin = 0;
+
+export const updateDemoProfileResponseLotteryTotalActiveNumbersMin = 0;
+
+export const updateDemoProfileResponseLotteryNumberSharePercentMin = 0;
+export const updateDemoProfileResponseLotteryNumberSharePercentMax = 100;
+
+
 export const updateDemoProfileResponseStakingChartScenarioOneElapsedMinutesMin = 0;
 export const updateDemoProfileResponseStakingChartScenarioOneElapsedMinutesMax = 1440;
 
@@ -4421,24 +4602,38 @@ export const UpdateDemoProfileResponse = zod.object({
   "participating": zod.boolean(),
   "eligible": zod.boolean(),
   "participants": zod.number().int(),
-  "entryPriceUsdc": zod.number(),
+  "entryPriceBettex": zod.number(),
+  "entryPaymentAsset": zod.enum(['BETTEX']),
+  "entryBalanceBettex": zod.number(),
+  "ownActiveNumbers": zod.number().int().min(updateDemoProfileResponseLotteryOwnActiveNumbersMin).describe('Active numbers belonging to this wallet in the upcoming draw.'),
+  "totalActiveNumbers": zod.number().int().min(updateDemoProfileResponseLotteryTotalActiveNumbersMin).describe('Total numbers of opted-in eligible simulated wallets in the upcoming draw.'),
+  "numberSharePercent": zod.number().min(updateDemoProfileResponseLotteryNumberSharePercentMin).max(updateDemoProfileResponseLotteryNumberSharePercentMax).describe('Share of active numbers and first-selection weight; not a guaranteed payout or the probability of any win across multiple selections.'),
   "purchaseResult": zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
 }).optional(),
   "entries": zod.array(zod.object({
   "number": zod.string(),
+  "quantity": zod.number().int().min(1).optional().describe('Contiguous number range starting at number. Omitted for legacy single entries.'),
   "type": zod.enum(['free', 'paid']),
   "createdAt": zod.string()
 })),
   "entryReceipts": zod.array(zod.object({
   "requestId": zod.string(),
   "quantity": zod.number().int(),
-  "paidUsdc": zod.number(),
+  "paidUsdc": zod.number().optional(),
+  "paidAsset": zod.enum(['BETTEX', 'USDC']),
+  "paidAmount": zod.number(),
+  "firstNumber": zod.string().optional(),
+  "lastNumber": zod.string().optional(),
   "burnedBettex": zod.number(),
   "createdAt": zod.string(),
   "numbers": zod.array(zod.string())
@@ -4635,7 +4830,7 @@ export const UpdateDemoProfileResponse = zod.object({
   "id": zod.string(),
   "roundId": zod.string(),
   "at": zod.string(),
-  "kind": zod.enum(['wallet_funded', 'tokens_purchased', 'tokens_burned']),
+  "kind": zod.enum(['wallet_funded', 'tokens_received', 'tokens_purchased', 'tokens_burned']),
   "amountUsdc": zod.number(),
   "tokensBettex": zod.number(),
   "source": zod.enum(['modeled_demo'])

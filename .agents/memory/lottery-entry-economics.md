@@ -5,12 +5,24 @@ description: Free numbers for staked wallets, purchased additional entries, and 
 
 Each wallet with staked BETTEX gets one free lottery number. Additional numbers or entries can be purchased, and are generated once bought. All money paid in the lottery is burned.
 
-The creator selected USDC and a price of 1 USDC per extra entry. Spend USDC to buy and burn BETTEX, preserving the user's existing staking.
+Extra entries are paid in BETTEX, not USDC. Burn all BETTEX paid directly, without an AMM purchase. “There is no limit of numbers”: quantity starts at 1 with no per-order or per-draw business cap. Never display a capped counter such as “0/1000”.
 
-**Why:** The creator explicitly requested these lottery rules.
+**Why:** The creator corrected the payment rule: “this is in BETTEX, people pay in BETTEX and all sold is burnt, and it is 1 to infinite”, and repeated “there is no limit of numbers” when showing the old capped counter.
+
+Lottery payments keep the existing BETTEX exit rule: reduce the BETTEX wallet balance and cancel all current-round unpaid staking earnings/weight, including the remaining balance's prior weight. Already received USDC is not clawed back.
+
+**Why:** The creator chose “Keep the existing exit rule” after being told the effects of burning from the staking-linked BETTEX wallet.
+
+**How to apply:** Warn before confirmation; do not claim purchases preserve staking entitlements. No arbitrary order/draw caps; large ticket quantities must not require allocating an object per number.
 
 Use “Burn Lottery”, not “Daily draw”, as the lottery-card heading.
 
 **Why:** The creator requested this name.
 
 **How to apply:** Distinguish the free staking entry from purchased additional entries. Generate purchased numbers only after successful payment, show them to the user, and account for all entry payments as burning rather than operating revenue or additional prize funding.
+
+Keep the lottery card compact; detailed personal numbers belong in an overlay opened by “Your numbers”, not a permanently expanded section.
+
+**Why:** The creator said the numbers section was cluttering the screen and increasing the interface height.
+
+**How to apply:** Preserve access to free numbers, purchased numbers, receipts and extra-number purchases without expanding the main card.

@@ -532,6 +532,34 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DemoDashboard"
+  /demo/double2x:
+    get:
+      operationId: getDemoDouble2x
+      tags: [demo]
+      parameters:
+        - $ref: "#/components/parameters/DemoTabSession"
+      responses:
+        "200":
+          description: Isolated public-testnet game and persistent history
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DemoDouble2x" }
+    post:
+      operationId: playDemoDouble2x
+      tags: [demo]
+      parameters:
+        - $ref: "#/components/parameters/DemoTabSession"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/Double2xPlayInput" }
+      responses:
+        "200":
+          description: Persisted reservation; polling observes public settlement
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DemoDouble2x" }
   /demo/lottery/participation:
     parameters:
       - $ref: "#/components/parameters/DemoTabSession"
@@ -708,6 +736,49 @@ components:
         type: string
         pattern: "^[a-f0-9]{64}$"
   schemas:
+    Double2xPlayInput:
+      type: object
+      required: [requestId, color, confirmed, expectedStakeUsdc]
+      properties:
+        requestId: { type: string, format: uuid }
+        color: { type: string, enum: [red, black] }
+        confirmed: { type: boolean }
+        expectedStakeUsdc: { type: number, minimum: 0.000001 }
+    Double2xPlay:
+      type: object
+      required: [id, color, stakeUsdc, payoutUsdc, status, requestedAt, nextPlayAt]
+      properties:
+        id: { type: string }
+        color: { type: string, enum: [red, black] }
+        result: { type: string, enum: [red, black] }
+        stakeUsdc: { type: number }
+        payoutUsdc: { type: number }
+        status: { type: string, enum: [pending, won, lost, refunded] }
+        requestedAt: { type: string }
+        nextPlayAt: { type: string }
+        settledAt: { type: string }
+        requestHash: { type: string }
+        settlementHash: { type: string }
+        sequence: { type: string }
+        error: { type: string }
+    DemoDouble2x:
+      type: object
+      required: [chainId, network, ready, reason, balanceUsdc, canPlay, pending, nextPlayAt, plays]
+      properties:
+        chainId: { type: integer }
+        network: { type: string }
+        gameAddress: { type: string }
+        tokenAddress: { type: string }
+        treasuryAddress: { type: string }
+        ready: { type: boolean }
+        reason: { type: string, enum: [ready, deploying, test_gas_unavailable, treasury_unavailable, testnet_unavailable, native_account_unavailable] }
+        balanceUsdc: { type: number }
+        canPlay: { type: boolean }
+        pending: { type: boolean }
+        nextPlayAt: { type: ["string", "null"] }
+        plays:
+          type: array
+          items: { $ref: "#/components/schemas/Double2xPlay" }
     DemoTestnet:
       type: object
       required: [status, chainId, network, contractAddress, operatorAddress, explorerUrl, latestBlock, lastCheckpointAt, checkpointCount, financialOperations, contractPurpose]
@@ -2085,7 +2156,7 @@ components:
         id: { type: string }
         roundId: { type: string }
         at: { type: string }
-        kind: { type: string, enum: [wallet_funded, tokens_purchased, tokens_burned] }
+        kind: { type: string, enum: [wallet_funded, tokens_received, tokens_purchased, tokens_burned] }
         amountUsdc: { type: number }
         tokensBettex: { type: number }
         source: { type: string, enum: [modeled_demo] }
@@ -2098,10 +2169,11 @@ components:
     DemoLotteryEntryOrder:
       type: object
       additionalProperties: false
-      required: [requestId, quantity, confirmed, drawAt]
+      required: [requestId, quantity, paymentAsset, confirmed, drawAt]
       properties:
         requestId: { type: string, format: uuid }
-        quantity: { type: integer, minimum: 1, maximum: 100 }
+        quantity: { type: integer, minimum: 1 }
+        paymentAsset: { type: string, enum: [BETTEX] }
         confirmed: { type: boolean, enum: [true] }
         drawAt: { type: string, minLength: 20, maxLength: 32 }
     DemoLotteryEntry:
@@ -2109,15 +2181,20 @@ components:
       required: [number, type, createdAt]
       properties:
         number: { type: string }
+        quantity: { type: integer, minimum: 1, description: Contiguous number range starting at number. Omitted for legacy single entries. }
         type: { type: string, enum: [free, paid] }
         createdAt: { type: string }
     DemoLotteryEntryReceipt:
       type: object
-      required: [requestId, quantity, paidUsdc, burnedBettex, createdAt, numbers]
+      required: [requestId, quantity, paidAsset, paidAmount, burnedBettex, createdAt, numbers]
       properties:
         requestId: { type: string }
         quantity: { type: integer }
         paidUsdc: { type: number }
+        paidAsset: { type: string, enum: [BETTEX, USDC] }
+        paidAmount: { type: number }
+        firstNumber: { type: string }
+        lastNumber: { type: string }
         burnedBettex: { type: number }
         createdAt: { type: string }
         numbers:
@@ -2150,7 +2227,7 @@ components:
           items: { $ref: "#/components/schemas/DemoLotteryPurchase" }
     DemoLottery:
       type: object
-      required: [source, nextDrawAt, purchasePriceUsdc, participating, eligible, participants, draws, entryPriceUsdc, entries, entryReceipts]
+      required: [source, nextDrawAt, purchasePriceUsdc, participating, eligible, participants, draws, entryPriceBettex, entryPaymentAsset, entryBalanceBettex, ownActiveNumbers, totalActiveNumbers, numberSharePercent, entries, entryReceipts]
       properties:
         source: { type: string, enum: [modeled_demo] }
         nextDrawAt: { type: string }
@@ -2158,7 +2235,12 @@ components:
         participating: { type: boolean }
         eligible: { type: boolean }
         participants: { type: integer }
-        entryPriceUsdc: { type: number }
+        entryPriceBettex: { type: number }
+        entryPaymentAsset: { type: string, enum: [BETTEX] }
+        entryBalanceBettex: { type: number }
+        ownActiveNumbers: { type: integer, minimum: 0, description: Active numbers belonging to this wallet in the upcoming draw. }
+        totalActiveNumbers: { type: integer, minimum: 0, description: Total numbers of opted-in eligible simulated wallets in the upcoming draw. }
+        numberSharePercent: { type: number, minimum: 0, maximum: 100, description: Share of active numbers and first-selection weight; not a guaranteed payout or the probability of any win across multiple selections. }
         purchaseResult: { $ref: "#/components/schemas/DemoLotteryEntryReceipt" }
         entries:
           type: array

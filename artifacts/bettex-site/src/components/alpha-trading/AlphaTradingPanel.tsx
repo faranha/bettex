@@ -44,7 +44,7 @@ function RecordsSection({ views, title, intro, onJourney }: { views: View[]; tit
             <select aria-label={x('Estado', 'State', 'Estado')} className={sel} value={state} onChange={e => { setState(e.target.value); reset(); }}><option value="">{x('Todos os estados', 'All states', 'Todos los estados')}</option>{STATES[view].map(s => <option key={s} value={s}>{s === 'awaiting_decision' && view === 'opportunities' ? x('Qualificada (aguardando decisão)', 'Qualified (awaiting decision)', 'Calificada (esperando decisión)') : f.code(s)}</option>)}</select>
           </div>
           <p className="mt-2 text-xs text-[#5B6B85]">{data.page.total} {x('registros', 'records', 'registros')} · {label[view]}</p>
-          {items.length === 0 ? <p className="mt-3 rounded-xl border border-dashed border-[#E4DCCB] p-6 text-center text-sm text-[#5B6B85]">{x('Nenhum registro real para estes filtros.', 'No real records for these filters.', 'Ningún registro real para estos filtros.')}</p> :
+          {items.length === 0 ? <p className="mt-3 rounded-xl border border-dashed border-[#E4DCCB] p-6 text-center text-sm text-[#5B6B85]">{x('Nenhum registro para estes filtros.', 'No records for these filters.', 'Ningún registro para estos filtros.')}</p> :
             <ul className="mt-3 grid max-h-[36rem] gap-3 overflow-y-auto pr-1">
               {view === 'opportunities' && data.opportunities.map(r => <OpportunityCard key={r.opportunity.id} r={r} onJourney={onJourney} />)}
               {view === 'decisions' && data.decisions.map(r => <DecisionCard key={r.id} d={r} onJourney={onJourney} />)}
@@ -68,12 +68,12 @@ export function AlphaTradingPanel() {
   return <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10" data-testid="alpha-trading">
     <div className="mx-auto grid max-w-5xl gap-4 px-3 pt-5 sm:px-5">
       <div><h1 className="display text-2xl font-extrabold">{x('Central da IA', 'AI Center', 'Central de IA')}</h1>
-        <p className="mt-1 text-sm text-[#5B6B85]">{x('Como a IA considera eventos de previsão, com evidências. Resultados simulados, nunca lucro distribuível.', 'How the AI considers prediction events, with evidence. Simulated results, never distributable profit.', 'Cómo la IA considera eventos de predicción, con evidencias. Resultados simulados, nunca ganancia distribuible.')}</p></div>
+        <p className="mt-1 text-sm text-[#5B6B85]">{x('Do sinal à decisão: pedidos, execução e acompanhamento das posições.', 'From signal to decision: requests, execution and position monitoring.', 'De la señal a la decisión: pedidos, ejecución y seguimiento de posiciones.')}</p></div>
       <section className={card} data-testid="section-bettex-orchestration" aria-labelledby="h-bettex"><h2 id="h-bettex" className="sr-only">BETTEX</h2>
         <AgentOperationsDashboard scope="orchestrator" />
         <div className="mt-4"><RecordsSection views={['opportunities', 'decisions']} onJourney={setJid}
           title={x('Pedidos recebidos, comparações e decisões', 'Received requests, comparisons and decisions', 'Pedidos recibidos, comparaciones y decisiones')}
-          intro={x('Registros reais de pedidos do agente Cripto e seus especialistas e das decisões da BETTEX. Sem registros, nada é inventado.', 'Real records of requests from the Crypto agent and its specialists and BETTEX decisions. With no records, nothing is invented.', 'Registros reales de pedidos del agente Cripto y sus especialistas y de las decisiones de BETTEX. Sin registros, no se inventa nada.')} /></div>
+          intro={x('Pedidos do agente Cripto e seus especialistas, comparados e encaminhados pela BETTEX.', 'Requests from the Crypto agent and its specialists, compared and routed by BETTEX.', 'Pedidos del agente Cripto y sus especialistas, comparados y encaminados por BETTEX.')} /></div>
         {jid && <div className="mt-4"><Journey key={jid} id={jid} onClose={() => setJid(null)} /></div>}
       </section>
       <section className={card} data-testid="section-active-agents"><AgentOperationsDashboard scope="agents" /></section>

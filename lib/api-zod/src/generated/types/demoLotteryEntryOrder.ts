@@ -5,14 +5,13 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { DemoLotteryEntryOrderPaymentAsset } from './demoLotteryEntryOrderPaymentAsset';
 
 export interface DemoLotteryEntryOrder {
   requestId: string;
-  /**
-     * @minimum 1
-     * @maximum 100
-     */
+  /** @minimum 1 */
   quantity: number;
+  paymentAsset: DemoLotteryEntryOrderPaymentAsset;
   confirmed: true;
   /**
      * @minLength 20

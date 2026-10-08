@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "node scripts/check-demo-locales.mjs && node scripts/check-locales.mjs && node scripts/check-round-policy.mjs && node scripts/check-profit-allocation.mjs && node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs && node scripts/check-documentation-runtime.mjs && python scripts/test_pitch_narrative.py && python scripts/localize-downloads.py && vite build --config vite.config.ts && node scripts/prerender.mjs && python scripts/verify-localized-html.py && python scripts/verify-documentation-html.py",
+    "build": "node scripts/check-demo-locales.mjs && node scripts/check-locales.mjs && node scripts/check-round-policy.mjs && node scripts/check-profit-allocation.mjs && node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs && node scripts/check-documentation-runtime.mjs && python scripts/test_pitch_narrative.py && python scripts/localize-downloads.py && vite build --config vite.config.ts && node scripts/prerender.mjs && python scripts/verify-localized-html.py && python scripts/verify-documentation-html.py && python scripts/check-founder-privacy.py",
     "check:demo": "node scripts/check-demo-locales.mjs && node --test src/components/demo/model.test.ts src/components/demo/demo-session.test.ts src/components/demo/personal-native.test.ts src/components/demo/mobile-area-nav.test.ts src/components/demo/demo-navigation.test.ts src/components/demo/staking-model.test.ts src/components/demo/staking-minute-chart.test.ts src/components/demo/previous-cycle.test.ts src/components/history/wallet-history.test.ts src/components/history/history-selection.test.ts src/components/app/exchange-rates.test.ts src/components/account/wallet-key-row.test.ts src/lib/round-terminology.test.ts src/components/history/round-history-selection.test.ts",
     "check:wallets": "node --test scripts/personal-wallets.test.mjs",
+    "check:burn-analytics": "node --test src/components/demo/burn-analytics.test.ts",
     "check:allocation": "node scripts/extract-locales.mjs && node scripts/check-profit-allocation.mjs",
     "check:rounds": "node scripts/check-round-policy.mjs",
     "check:docs": "node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs",

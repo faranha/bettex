@@ -62,7 +62,7 @@ def text_of(node, *, navigation=False, ancestors=()):
     # Do not exempt arbitrary blockquotes or the founder's whole section.
     if node.tag == "blockquote" and any(
         parent.tag == "figure" and parent.has_class("fp")
-        and any(child.tag == "figcaption" and "Fred Azevedo" in text_of(child)
+        and any(child.tag == "figcaption" and "Fundador da BETTEX" in text_of(child)
                 for child in descendants(parent))
         for parent in ancestors
     ):

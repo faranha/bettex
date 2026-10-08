@@ -1,28 +1,100 @@
 {
-  "Os agentes executam.": { "en": "The agents execute.", "es": "Los agentes ejecutan." },
-  "A IA analisa e autoriza.": { "en": "The AI analyzes and authorizes.", "es": "La IA analiza y autoriza." },
-  "Os agentes executam dentro dos limites.": { "en": "The agents execute within limits.", "es": "Los agentes ejecutan dentro de los límites." },
-  "ALFA · SEED": { "en": "ALPHA · SEED", "es": "ALFA · SEED" },
-  "Outubro de 2026": { "en": "October 2026", "es": "Octubre de 2026" },
-  "ALFA com token de teste e audiência semente": { "en": "ALPHA with a test token and seed audience", "es": "ALFA con token de prueba y audiencia semilla" },
-  "Validar o produto com uma audiência semente, token de teste e contratos básicos em testnet, a IA BTEX e um agente de trading básico com Allora. Usar apenas tokens de teste, sem dinheiro real, venda TGE ou lançamento do token em produção.": { "en": "Validate the product with a seed audience, a test token and basic contracts on testnet, BTEX AI and a basic trading agent using Allora. Use test tokens only, with no real money, TGE sale or production token launch.", "es": "Validar el producto con una audiencia semilla, token de prueba y contratos básicos en testnet, la IA BTEX y un agente de trading básico con Allora. Usar solo tokens de prueba, sin dinero real, venta TGE ni lanzamiento del token en producción." },
-  "PRÉ-VENDA · CAPTAÇÃO · FORMALIZAÇÃO": { "en": "PRE-SALE · FUNDRAISING · INCORPORATION", "es": "PREVENTA · CAPTACIÓN · FORMALIZACIÓN" },
-  "Novembro de 2026": { "en": "November 2026", "es": "Noviembre de 2026" },
-  "Pré-venda, investidores e estruturação da empresa": { "en": "Pre-sale, investors and company setup", "es": "Preventa, inversores y estructuración de la empresa" },
-  "Realizar a pré-venda do token, captar investidores-anjo, formalizar a empresa e estruturar o negócio para a próxima fase.": { "en": "Hold the token pre-sale, raise capital from angel investors, incorporate the company and structure the business for the next phase.", "es": "Realizar la preventa del token, captar inversores ángeles, formalizar la empresa y estructurar el negocio para la siguiente fase." },
-  "BETA · GO TO MARKET": { "en": "BETA · GO TO MARKET", "es": "BETA · GO TO MARKET" },
-  "Janeiro de 2027": { "en": "January 2027", "es": "Enero de 2027" },
-  "BETA · TGE · GO TO MARKET": { "en": "BETA · TGE · GO TO MARKET", "es": "BETA · TGE · GO TO MARKET" },
-  "Lançamento do BETA, TGE e go to market": { "en": "BETA launch, TGE and go to market", "es": "Lanzamiento del BETA, TGE y go to market" },
-  "Lançar a versão BETA, realizar o evento de geração do token (TGE) e iniciar o go to market. Ampliar o acesso ao produto a partir dos testes e aprendizados do ALFA.": { "en": "Launch the BETA version, hold the token generation event (TGE) and begin the go to market. Expand access to the product based on ALPHA testing and learnings.", "es": "Lanzar la versión BETA, realizar el evento de generación del token (TGE) e iniciar el go to market. Ampliar el acceso al producto a partir de las pruebas y aprendizajes del ALFA." },
-  "ALFA seed em outubro de 2026, com token de teste em testnet e primeiros agentes. Pré-venda, captação e formalização em novembro de 2026. BETA, TGE e go to market em janeiro de 2027.": { "en": "Seed ALPHA in October 2026, with a test token on testnet and initial agents. Pre-sale, fundraising and incorporation in November 2026. BETA, TGE and go to market in January 2027.", "es": "ALFA seed en octubre de 2026, con token de prueba en testnet y primeros agentes. Preventa, captación y formalización en noviembre de 2026. BETA, TGE y go to market en enero de 2027." },
-  "Features do ALFA": { "en": "ALPHA features", "es": "Funciones del ALFA" },
-  "Em breve, a lista detalhada de features do ALFA.": { "en": "The detailed ALPHA feature list is coming soon.", "es": "Próximamente, la lista detallada de funciones del ALFA." },
-  "Em breve, features": { "en": "Features coming soon", "es": "Próximamente, funciones" },
-  "O ALFA reúne uma audiência semente; o go to market acompanha o lançamento do BETA em janeiro de 2027.": { "en": "ALPHA brings together a seed audience; the go to market accompanies the BETA launch in January 2027.", "es": "El ALFA reúne una audiencia semilla; el go to market acompaña el lanzamiento del BETA en enero de 2027." },
-  "ALFA seed com audiência inicial": { "en": "Seed ALPHA with initial audience", "es": "ALFA seed con audiencia inicial" },
-  "O ALFA está previsto para outubro de 2026, com token, contratos básicos e primeiros agentes. A captação e a formalização vêm em novembro; o BETA e o go to market, em janeiro de 2027.": { "en": "ALPHA is planned for October 2026, with token, basic contracts and initial agents. Fundraising and incorporation follow in November; BETA and the go to market in January 2027.", "es": "El ALFA está previsto para octubre de 2026, con token, contratos básicos y primeros agentes. La captación y formalización llegan en noviembre; el BETA y el go to market, en enero de 2027." },
-  "Ver etapas e features no Roadmap": { "en": "View stages and features in the Roadmap", "es": "Ver etapas y funciones en el Roadmap" },
+  "Os agentes executam.": {
+    "en": "The agents execute.",
+    "es": "Los agentes ejecutan."
+  },
+  "A IA analisa e autoriza.": {
+    "en": "The AI analyzes and authorizes.",
+    "es": "La IA analiza y autoriza."
+  },
+  "Os agentes executam dentro dos limites.": {
+    "en": "The agents execute within limits.",
+    "es": "Los agentes ejecutan dentro de los límites."
+  },
+  "ALFA · SEED": {
+    "en": "ALPHA · SEED",
+    "es": "ALFA · SEED"
+  },
+  "Outubro de 2026": {
+    "en": "October 2026",
+    "es": "Octubre de 2026"
+  },
+  "ALFA com token de teste e audiência semente": {
+    "en": "ALPHA with a test token and seed audience",
+    "es": "ALFA con token de prueba y audiencia semilla"
+  },
+  "Validar o produto com uma audiência semente, token de teste e contratos básicos em testnet, a IA BTEX e um agente de trading básico com Allora. Usar apenas tokens de teste, sem dinheiro real, venda TGE ou lançamento do token em produção.": {
+    "en": "Validate the product with a seed audience, a test token and basic contracts on testnet, BTEX AI and a basic trading agent using Allora. Use test tokens only, with no real money, TGE sale or production token launch.",
+    "es": "Validar el producto con una audiencia semilla, token de prueba y contratos básicos en testnet, la IA BTEX y un agente de trading básico con Allora. Usar solo tokens de prueba, sin dinero real, venta TGE ni lanzamiento del token en producción."
+  },
+  "PRÉ-VENDA · CAPTAÇÃO · FORMALIZAÇÃO": {
+    "en": "PRE-SALE · FUNDRAISING · INCORPORATION",
+    "es": "PREVENTA · CAPTACIÓN · FORMALIZACIÓN"
+  },
+  "Novembro de 2026": {
+    "en": "November 2026",
+    "es": "Noviembre de 2026"
+  },
+  "Pré-venda, investidores e estruturação da empresa": {
+    "en": "Pre-sale, investors and company setup",
+    "es": "Preventa, inversores y estructuración de la empresa"
+  },
+  "Realizar a pré-venda do token, captar investidores-anjo, formalizar a empresa e estruturar o negócio para a próxima fase.": {
+    "en": "Hold the token pre-sale, raise capital from angel investors, incorporate the company and structure the business for the next phase.",
+    "es": "Realizar la preventa del token, captar inversores ángeles, formalizar la empresa y estructurar el negocio para la siguiente fase."
+  },
+  "BETA · GO TO MARKET": {
+    "en": "BETA · GO TO MARKET",
+    "es": "BETA · GO TO MARKET"
+  },
+  "Janeiro de 2027": {
+    "en": "January 2027",
+    "es": "Enero de 2027"
+  },
+  "BETA · TGE · GO TO MARKET": {
+    "en": "BETA · TGE · GO TO MARKET",
+    "es": "BETA · TGE · GO TO MARKET"
+  },
+  "Lançamento do BETA, TGE e go to market": {
+    "en": "BETA launch, TGE and go to market",
+    "es": "Lanzamiento del BETA, TGE y go to market"
+  },
+  "Lançar a versão BETA, realizar o evento de geração do token (TGE) e iniciar o go to market. Ampliar o acesso ao produto a partir dos testes e aprendizados do ALFA.": {
+    "en": "Launch the BETA version, hold the token generation event (TGE) and begin the go to market. Expand access to the product based on ALPHA testing and learnings.",
+    "es": "Lanzar la versión BETA, realizar el evento de generación del token (TGE) e iniciar el go to market. Ampliar el acceso al producto a partir de las pruebas y aprendizajes del ALFA."
+  },
+  "ALFA seed em outubro de 2026, com token de teste em testnet e primeiros agentes. Pré-venda, captação e formalização em novembro de 2026. BETA, TGE e go to market em janeiro de 2027.": {
+    "en": "Seed ALPHA in October 2026, with a test token on testnet and initial agents. Pre-sale, fundraising and incorporation in November 2026. BETA, TGE and go to market in January 2027.",
+    "es": "ALFA seed en octubre de 2026, con token de prueba en testnet y primeros agentes. Preventa, captación y formalización en noviembre de 2026. BETA, TGE y go to market en enero de 2027."
+  },
+  "Features do ALFA": {
+    "en": "ALPHA features",
+    "es": "Funciones del ALFA"
+  },
+  "Em breve, a lista detalhada de features do ALFA.": {
+    "en": "The detailed ALPHA feature list is coming soon.",
+    "es": "Próximamente, la lista detallada de funciones del ALFA."
+  },
+  "Em breve, features": {
+    "en": "Features coming soon",
+    "es": "Próximamente, funciones"
+  },
+  "O ALFA reúne uma audiência semente; o go to market acompanha o lançamento do BETA em janeiro de 2027.": {
+    "en": "ALPHA brings together a seed audience; the go to market accompanies the BETA launch in January 2027.",
+    "es": "El ALFA reúne una audiencia semilla; el go to market acompaña el lanzamiento del BETA en enero de 2027."
+  },
+  "ALFA seed com audiência inicial": {
+    "en": "Seed ALPHA with initial audience",
+    "es": "ALFA seed con audiencia inicial"
+  },
+  "O ALFA está previsto para outubro de 2026, com token, contratos básicos e primeiros agentes. A captação e a formalização vêm em novembro; o BETA e o go to market, em janeiro de 2027.": {
+    "en": "ALPHA is planned for October 2026, with token, basic contracts and initial agents. Fundraising and incorporation follow in November; BETA and the go to market in January 2027.",
+    "es": "El ALFA está previsto para octubre de 2026, con token, contratos básicos y primeros agentes. La captación y formalización llegan en noviembre; el BETA y el go to market, en enero de 2027."
+  },
+  "Ver etapas e features no Roadmap": {
+    "en": "View stages and features in the Roadmap",
+    "es": "Ver etapas y funciones en el Roadmap"
+  },
   "Pessoas sorrindo e interagindo com notebook, tablet e celular, em um recorte sem fundo com elementos tecnológicos": {
     "en": "People smiling and interacting with a laptop, tablet and phone, in a background-free cutout with technological elements",
     "es": "Personas sonriendo e interactuando con un portátil, una tableta y un teléfono, en un recorte sin fondo con elementos tecnológicos"
@@ -78,14 +150,6 @@
   "Fundador · experiência e trajetória": {
     "en": "Founder · experience and background",
     "es": "Fundador · experiencia y trayectoria"
-  },
-  "Estes números descrevem os canais pessoais do fundador, não métricas de uso ou demanda da BETTEX.": {
-    "en": "These figures describe the founder’s personal channels, not BETTEX usage or demand metrics.",
-    "es": "Estas cifras describen los canales personales del fundador, no las métricas de uso o demanda de BETTEX."
-  },
-  "Fred Azevedo é fundador do SOS Jogador, influenciador e administrador da BETTEX. Tem experiência com comunidade, conteúdo e ferramentas digitais.": {
-    "en": "Fred Azevedo is the founder of SOS Jogador, an influencer and BETTEX’s administrator. He has experience with communities, content and digital tools.",
-    "es": "Fred Azevedo es fundador de SOS Jogador, influenciador y administrador de BETTEX. Tiene experiencia con comunidades, contenido y herramientas digitales."
   },
   "A validação da demanda já está em andamento com um demo. Esta é a fase atual do projeto; o demo é demonstrativo e não realiza operações financeiras reais.": {
     "en": "Demand validation is already underway with a demo. This is the current phase of the project; the demo is for demonstration purposes and does not perform real financial operations.",
@@ -143,10 +207,6 @@
     "en": "Feedback and validation",
     "es": "Retroalimentación y validación"
   },
-  "Fred Azevedo financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.": {
-    "en": "Fred Azevedo is funding the initial plan with his current budget, at no acquisition cost to BETTEX. The goal is to validate product demand, interest in the proposal, and the user experience.",
-    "es": "Fred Azevedo financia el plan inicial con su presupuesto actual, sin costo de adquisición para BETTEX. El objetivo es validar la demanda del producto, el interés en la propuesta y la experiencia de uso."
-  },
   "Fundador à frente da BETTEX.": {
     "en": "Founder leading BETTEX.",
     "es": "Fundador al frente de BETTEX."
@@ -170,10 +230,6 @@
   "Plano inicial de validação da demanda": {
     "en": "Initial demand validation plan",
     "es": "Plan inicial de validación de la demanda"
-  },
-  "Plano inicial financiado por Fred Azevedo com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, a compreensão da proposta e a experiência de uso. A validação já está em andamento com um demo, na fase ALFA do projeto.": {
-    "en": "Initial plan funded by Fred Azevedo with his current budget, at no acquisition cost to BETTEX. The goal is to validate product demand, comprehension of the proposal, and the user experience. Validation is already underway with a demo, in the ALFA phase of the project.",
-    "es": "Plan inicial financiado por Fred Azevedo con su presupuesto actual, sin costo de adquisición para BETTEX. El objetivo es validar la demanda del producto, la comprensión de la propuesta y la experiencia de uso. La validación ya está en marcha con una demo, en la fase ALFA del proyecto."
   },
   "Testar o uso do aplicativo em um ambiente demonstrativo.": {
     "en": "Test the application in a demo environment.",
@@ -2279,10 +2335,6 @@
     "en": "Use of capital",
     "es": "Destino del capital"
   },
-  "Fred Azevedo não recebe salário ou pró-labore nem faz retiradas do caixa da empresa. Seus únicos ganhos na BETTEX são os eventuais ganhos com seus próprios tokens, sujeitos às mesmas regras dos demais titulares e sem retorno garantido.": {
-    "en": "Fred Azevedo receives no salary or management compensation and makes no withdrawals from the company’s cash. His only earnings from BETTEX are potential earnings from his own tokens, subject to the same rules as other holders and with no guaranteed return.",
-    "es": "Fred Azevedo no recibe salario ni remuneración por administración, ni realiza retiros de la caja de la empresa. Sus únicos ingresos de BETTEX son las posibles ganancias de sus propios tokens, sujetos a las mismas reglas que los demás titulares y sin rentabilidad garantizada."
-  },
   "Ganhos somente com seus tokens": {
     "en": "Earnings only from his tokens",
     "es": "Ganancias solo con sus tokens"
@@ -2315,10 +2367,6 @@
     "en": "BETTEX app",
     "es": "Aplicación BETTEX"
   },
-  "Aquisição orgânica nos primeiros três meses de operação, financiada por Fred Azevedo com seu orçamento corrente, sem custo de aquisição para a BETTEX. O funil parte do Instagram, passa pela comunidade no Telegram e leva ao aplicativo BETTEX para trazer os primeiros compradores e usuários e validar o produto.": {
-    "en": "Organic acquisition during the first three months of operation, funded by Fred Azevedo from his ongoing budget, with no acquisition cost to BETTEX. The funnel starts on Instagram, passes through the Telegram community and leads to the BETTEX app to bring in the first buyers and users and validate the product.",
-    "es": "Adquisición orgánica durante los primeros tres meses de operación, financiada por Fred Azevedo con su presupuesto corriente, sin costo de adquisición para BETTEX. El embudo parte de Instagram, pasa por la comunidad en Telegram y lleva a la aplicación BETTEX para atraer a los primeros compradores y usuarios y validar el producto."
-  },
   "Aquisição orgânica.": {
     "en": "Organic acquisition.",
     "es": "Adquisición orgánica."
@@ -2342,10 +2390,6 @@
   "Financiada pelo fundador.": {
     "en": "Funded by the founder.",
     "es": "Financiada por el fundador."
-  },
-  "Fred Azevedo vai financiar a aquisição inicial com seu orçamento corrente. Sua audiência no Instagram entra na comunidade do Telegram e segue para o aplicativo BETTEX, trazendo os primeiros compradores e usuários para validar o produto, sem cobrar esse custo da empresa.": {
-    "en": "Fred Azevedo will fund initial acquisition from his ongoing budget. His Instagram audience joins the Telegram community and moves to the BETTEX app, bringing in the first buyers and users to validate the product without charging this cost to the company.",
-    "es": "Fred Azevedo financiará la adquisición inicial con su presupuesto corriente. Su audiencia de Instagram entra en la comunidad de Telegram y pasa a la aplicación BETTEX, atrayendo a los primeros compradores y usuarios para validar el producto, sin cobrar este costo a la empresa."
   },
   "Lançamento orgânico financiado pelo fundador": {
     "en": "Founder-funded organic launch",
@@ -2402,10 +2446,6 @@
   ". Vídeos curtos, transmissões, conteúdo aprofundado e atualizações levam ao site. A comunidade no Telegram esclarece dúvidas e mantém o relacionamento.": {
     "en": ". Short videos, livestreams, in-depth content and updates lead to the website. The Telegram community answers questions and maintains the relationship.",
     "es": ". Videos cortos, transmisiones, contenido detallado y actualizaciones llevan al sitio. La comunidad en Telegram resuelve dudas y mantiene la relación."
-  },
-  "A entrada no mercado parte da audiência de Fred Azevedo e da comunidade do SOS Jogador. O conteúdo atrai o apostador brasileiro; o Telegram aprofunda o relacionamento e conduz o retorno ao site para conhecer a BETTEX, entender seus custos e riscos e iniciar uma participação elegível.": {
-    "en": "Market entry starts with Fred Azevedo’s audience and the SOS Jogador community. Content attracts Brazilian bettors; Telegram deepens the relationship and brings them back to the website to learn about BETTEX, understand its costs and risks and begin eligible participation.",
-    "es": "La entrada al mercado parte de la audiencia de Fred Azevedo y la comunidad de SOS Jogador. El contenido atrae al apostador brasileño; Telegram profundiza la relación y conduce el regreso al sitio para conocer BETTEX, entender sus costos y riesgos e iniciar una participación elegible."
   },
   "Acompanhar o primeiro uso útil e o retorno após 7 e 30 dias. Relatórios com ganhos, perdas ou ausência de lucro, suporte e atualizações com adesão voluntária. Sem promessa de renda, recuperação de perdas ou pressão para comprar tokens.": {
     "en": "Track the first useful interaction and return after 7 and 30 days. Reports covering gains, losses or no profit, support and opt-in updates. No promise of income, recovery of losses or pressure to buy tokens.",
@@ -2590,10 +2630,6 @@
   "Experiência internacional e comunidade própria": {
     "en": "International experience and an established community",
     "es": "Experiencia internacional y comunidad propia"
-  },
-  "Fred Azevedo é o fundador da BETTEX e tem experiência no lançamento de diversas operações ao redor do mundo. Influenciador reconhecido no Brasil, reúne uma grande comunidade e canais próprios de relacionamento com seu público.": {
-    "en": "Fred Azevedo is BETTEX’s founder and has experience launching multiple operations around the world. A recognized influencer in Brazil, he has built a large community and his own channels for engaging with his audience.",
-    "es": "Fred Azevedo es el fundador de BETTEX y cuenta con experiencia en el lanzamiento de diversas operaciones en todo el mundo. Influenciador reconocido en Brasil, reúne una gran comunidad y canales propios para relacionarse con su público."
   },
   "Informações e métricas declaradas pelo fundador, sem auditoria independente. As audiências podem se sobrepor; seguidores e engajamento não são clientes, alcance garantido ou conversão.": {
     "en": "Information and metrics reported by the founder, without independent auditing. Audiences may overlap; followers and engagement are not customers, guaranteed reach or conversion.",
@@ -4623,10 +4659,6 @@
     "en": "Founder of BETTEX",
     "es": "Fundador de BETTEX"
   },
-  "Ver o LinkedIn de Fred Azevedo": {
-    "en": "View Fred Azevedo's LinkedIn profile",
-    "es": "Ver el perfil de Fred Azevedo en LinkedIn"
-  },
   "mais de {0}": {
     "en": "more than {0}",
     "es": "más de {0}"
@@ -4707,17 +4739,9 @@
     "en": "Instead of choosing individual bets, the proposal is to participate, through a token, in a treasury with AI-managed investment strategies.",
     "es": "En lugar de elegir apuestas individuales, la propuesta es participar, mediante un token, en una tesorería con estrategias de inversión gestionadas por IA."
   },
-  "O mercado inicial é o Brasil. A estratégia de aquisição começa pela audiência e comunidade de Fred Azevedo, fundador do SOS Jogador, com a meta dos primeiros 1.000 usuários.": {
-    "en": "The initial market is Brazil. The acquisition strategy starts with the audience and community of Fred Azevedo, founder of Player SOS, with a goal of reaching the first 1,000 users.",
-    "es": "El mercado inicial es Brasil. La estrategia de adquisición comienza con la audiencia y la comunidad de Fred Azevedo, fundador de SOS Jugador, con la meta de alcanzar los primeros 1.000 usuarios."
-  },
   "O mercado inicial é o Brasil. A estratégia de onboarding começa pela audiência e comunidade de": {
     "en": "The initial market is Brazil. The onboarding strategy starts with the audience and community of",
     "es": "El mercado inicial es Brasil. La estrategia de onboarding comienza con la audiencia y la comunidad de"
-  },
-  ", fundador do SOS Jogador, com a meta dos primeiros 1.000 usuários.": {
-    "en": ", founder of SOS Jogador, with a goal of the first 1,000 users.",
-    "es": ", fundador de SOS Jogador, con la meta de los primeros 1.000 usuarios."
   },
   ", fundador do": {
     "en": ", founder of",
@@ -4726,10 +4750,6 @@
   ", com a meta dos primeiros 1.000 usuários.": {
     "en": ", with a goal of the first 1,000 users.",
     "es": ", con la meta de los primeros 1.000 usuarios."
-  },
-  "Instagram de Fred Azevedo": {
-    "en": "Fred Azevedo's Instagram",
-    "es": "Instagram de Fred Azevedo"
   },
   "A BETTEX chegou para te ajudar a atravessar grandes períodos de incerteza.": {
     "en": "BETTEX is here to help you through long periods of uncertainty.",
@@ -4759,10 +4779,6 @@
     "en": "With BETTEX, you share in profits from AI-managed strategies, following the project's rules. Technology can work in your favor too.",
     "es": "Con BETTEX, participas en las ganancias de estrategias gestionadas por IA, siguiendo las reglas del proyecto. La tecnología también puede trabajar a tu favor."
   },
-  "Retrato de Fred Azevedo, fundador da BETTEX": {
-    "en": "Portrait of Fred Azevedo, founder of BETTEX",
-    "es": "Retrato de Fred Azevedo, fundador de BETTEX"
-  },
   "markets": {
     "en": "markets",
     "es": "markets"
@@ -4770,10 +4786,6 @@
   "LinkedIn": {
     "en": "LinkedIn",
     "es": "LinkedIn"
-  },
-  "Redes de Fred Azevedo": {
-    "en": "Fred Azevedo's social profiles",
-    "es": "Redes sociales de Fred Azevedo"
   },
   "Redes do fundador": {
     "en": "Founder's social profiles",
@@ -8119,10 +8131,6 @@
     "en": "Discover BETTEX",
     "es": "Conocer BETTEX"
   },
-  "Conheça Fred Azevedo, a tese da BETTEX, a aquisição inicial no Brasil e o modelo de negócio proposto. Confira premissas, etapas de validação e riscos do projeto.": {
-    "en": "Get to know Fred Azevedo, the BETTEX thesis, the initial acquisition in Brazil, and the proposed business model. Check project assumptions, validation steps, and risks.",
-    "es": "Conozca a Fred Azevedo, la tesis de la BETTEX, la adquisición inicial en Brasil y el modelo de negocio propuesto. Confira premisas, etapas de validación y riesgos del proyecto."
-  },
   "Conheça a tecnologia:": {
     "en": "Get to know the technology:",
     "es": "Conozca la tecnología:"
@@ -9163,10 +9171,6 @@
     "en": "Cycle steps",
     "es": "Etapas del ciclo"
   },
-  "Eu sou o Fred Azevedo. Tenho o maior canal de jogo responsável do Brasil. Minha ideia para a BETTEX é uma empresa founder-led.": {
-    "en": "I am Fred Azevedo. I have the largest responsible gaming channel in Brazil. My idea for BETTEX is a founder-led company.",
-    "es": "Yo soy Fred Azevedo. Tengo el mayor canal de juego responsable de Brasil. Mi idea para BETTEX es una empresa founder-led."
-  },
   "Evento esportivo": {
     "en": "Sporting event",
     "es": "Evento deportivo"
@@ -9499,14 +9503,6 @@
     "en": "Non-executable allocation fractions are not paid nor do they remain pending for the beneficiary: they return to the treasury. They do not accumulate for future rounds, do not make up subsequent payments, and are not redistributed among participants.",
     "es": "Las fracciones no ejecutables del reparto no se pagan ni quedan pendientes del beneficiario: regresan a la tesorería. No se acumulan para rondas futuras, no componen pagos posteriores y no se redistribuyen entre participantes."
   },
-  "Fred Azevedo": {
-    "en": "Fred Azevedo",
-    "es": "Fred Azevedo"
-  },
-  "Fred Azevedo é fundador do SOS Jogador, influenciador e administrador da BETTEX. Sua experiência com comunidade, conteúdo e ferramentas digitais conduz a distribuição inicial pelos próprios canais e audiência.": {
-    "en": "Fred Azevedo is the founder of SOS Jogador, influencer, and BETTEX administrator. His experience with community, content, and digital tools drives the initial distribution through his own channels and audience.",
-    "es": "Fred Azevedo es fundador de SOS Jogador, influencer y administrador de BETTEX. Su experiencia con comunidad, contenido y herramientas digitales conduce la distribución inicial por los propios canales y audiencia."
-  },
   "Fred conduz aquisição pelos próprios canais e audiência, com IA e serviços externos necessários. Lançamento inclui impulsionamento, parcerias, segurança, mídia paga nos perfis do fundador e redes próprias.": {
     "en": "Fred drives acquisition through his own channels and audience, with AI and necessary external services. Launch includes boosting, partnerships, security, and paid media on the founder's profiles and own networks.",
     "es": "Fred conduce adquisición por los propios canales y audiencia, con IA y servicios externos necesarios. Lanzamiento incluye impulsión, alianzas, seguridad, medios pagados en los perfiles del fundador y redes propias."
@@ -9799,10 +9795,6 @@
     "en": "Optional inferences enter as signals in opportunity evaluation; the choice remains with the BETTEX AI.",
     "es": "Inferencias opcionales entran como señales en la evaluación de las oportunidades; la elección continúa con la IA BETTEX."
   },
-  "Informações e métricas declaradas pelo fundador, sem auditoria independente. A afirmação de maior canal é do fundador. As audiências podem se sobrepor; seguidores e engajamento não são clientes, alcance garantido ou conversão.": {
-    "en": "Information and metrics declared by the founder, without independent audit. The claim of largest channel is from the founder. Audiences may overlap; followers and engagement are not customers, guaranteed reach, or conversion.",
-    "es": "Informaciones y métricas declaradas por el fundador, sin auditoría independiente. La afirmación de mayor canal es del fundador. Las audiencias pueden sobreponerse; seguidores y engagement no son clientes, alcance garantizado o conversión."
-  },
   "Informe o valor, inclusive zero": {
     "en": "Report the value, including zero",
     "es": "Informe el valor, inclusive cero"
@@ -10014,10 +10006,6 @@
   "Limites globais e por mercado, autorizações e pausas de segurança.": {
     "en": "Global and market limits, authorizations, and security pauses.",
     "es": "Límites globales y por mercado, autorizaciones y pausas de seguridad."
-  },
-  "LinkedIn de Fred Azevedo": {
-    "en": "Fred Azevedo's LinkedIn",
-    "es": "LinkedIn de Fred Azevedo"
   },
   "Links do projeto": {
     "en": "Project links",
@@ -12755,10 +12743,6 @@
     "en": "YES",
     "es": "SÍ"
   },
-  "SOS Jogador": {
-    "en": "SOS Jogador",
-    "es": "SOS Jogador"
-  },
   "STAKING": {
     "en": "STAKING",
     "es": "STAKING"
@@ -13906,10 +13890,6 @@
   "Uma rota, passo a passo": {
     "en": "One route, step by step",
     "es": "Una ruta, paso a paso"
-  },
-  "Uma única empresa comercial privada de capital fechado a constituir, administrada pelo fundador Fred Azevedo em modelo full stack AI, sem funcionários. Serviços externos especializados são contratados por necessidade, não posições internas.": {
-    "en": "A single private, closely-held commercial company to be incorporated, managed by the founder Fred Azevedo in a full stack AI model, with no employees. Specialized external services are contracted by need, not internal positions.",
-    "es": "Una única empresa comercial privada de capital cerrado a constituir, administrada por el fundador Fred Azevedo en modelo full stack AI, sin empleados. Servicios externos especializados son contratados por necesidad, no posiciones internas."
   },
   "Usa USDC no swap oficial da venda pública. Após confirmação, recebe os BETTEX; a tarifa separada segue a política oficial e vai ao caixa operacional.": {
     "en": "Uses USDC in the official public sale swap. After confirmation, receives the BETTEX; the separate fee follows the official policy and goes to the operational cash box.",
@@ -17671,555 +17651,2828 @@
     "en": "for buybacks and burns",
     "es": "para recompra y quema"
   },
-  "Pendente": { "en": "Pending", "es": "Pendiente" },
-  "Pending": { "en": "Pending", "es": "Pendiente" },
-  "Pendiente": { "en": "Pending", "es": "Pendiente" },
-  "Solicitado": { "en": "Requested", "es": "Solicitado" },
-  "Requested": { "en": "Requested", "es": "Solicitado" },
-  "Em processamento": { "en": "Processing", "es": "En proceso" },
-  "Processing": { "en": "Processing", "es": "En proceso" },
-  "En proceso": { "en": "Processing", "es": "En proceso" },
-  "Enviado à rede": { "en": "Submitted to network", "es": "Enviado a la red" },
-  "Submitted to network": { "en": "Submitted to network", "es": "Enviado a la red" },
-  "Enviado a la red": { "en": "Submitted to network", "es": "Enviado a la red" },
-  "Enviando": { "en": "Sending", "es": "Enviando" },
-  "Sending": { "en": "Sending", "es": "Enviando" },
-  "Calculado": { "en": "Calculated", "es": "Calculado" },
-  "Calculated": { "en": "Calculated", "es": "Calculado" },
-  "Autorizado": { "en": "Authorized", "es": "Autorizado" },
-  "Authorized": { "en": "Authorized", "es": "Autorizado" },
-  "Iniciado": { "en": "Initiated", "es": "Iniciado" },
-  "Initiated": { "en": "Initiated", "es": "Iniciado" },
-  "Estornado": { "en": "Reversed", "es": "Revertido (estorno)" },
-  "Reversed": { "en": "Reversed", "es": "Revertido (estorno)" },
-  "Revertido (estorno)": { "en": "Reversed", "es": "Revertido (estorno)" },
-  "Confirmado": { "en": "Confirmed", "es": "Confirmado" },
-  "Confirmed": { "en": "Confirmed", "es": "Confirmado" },
-  "Concluído": { "en": "Completed", "es": "Completado" },
-  "Completed": { "en": "Completed", "es": "Completado" },
-  "Completado": { "en": "Completed", "es": "Completado" },
-  "Liquidado": { "en": "Settled", "es": "Liquidado" },
-  "Settled": { "en": "Settled", "es": "Liquidado" },
-  "Falhou": { "en": "Failed", "es": "Fallido" },
-  "Failed": { "en": "Failed", "es": "Fallido" },
-  "Fallido": { "en": "Failed", "es": "Fallido" },
-  "Recusado": { "en": "Rejected", "es": "Rechazado" },
-  "Rejected": { "en": "Rejected", "es": "Rechazado" },
-  "Rechazado": { "en": "Rejected", "es": "Rechazado" },
-  "Cancelado": { "en": "Cancelled", "es": "Cancelado" },
-  "Cancelled": { "en": "Cancelled", "es": "Cancelado" },
-  "Revertido": { "en": "Reverted", "es": "Revertido" },
-  "Reverted": { "en": "Reverted", "es": "Revertido" },
-  "Simulado": { "en": "Simulated", "es": "Simulado" },
-  "Simulated": { "en": "Simulated", "es": "Simulado" },
-  "Registrado": { "en": "Recorded", "es": "Registrado" },
-  "Recorded": { "en": "Recorded", "es": "Registrado" },
-  "Incerto": { "en": "Uncertain", "es": "Incierto" },
-  "Uncertain": { "en": "Uncertain", "es": "Incierto" },
-  "Incierto": { "en": "Uncertain", "es": "Incierto" },
-  "Expirado": { "en": "Expired", "es": "Expirado" },
-  "Expired": { "en": "Expired", "es": "Expirado" },
-  "Parcial": { "en": "Partial", "es": "Parcial" },
-  "Partial": { "en": "Partial", "es": "Parcial" },
-  "Blockchain local (EVM 31337)": { "en": "Local blockchain (EVM 31337)", "es": "Blockchain local (EVM 31337)" },
-  "Local blockchain (EVM 31337)": { "en": "Local blockchain (EVM 31337)", "es": "Blockchain local (EVM 31337)" },
-  "Atividade da conta": { "en": "Account activity", "es": "Actividad de la cuenta" },
-  "Account activity": { "en": "Account activity", "es": "Actividad de la cuenta" },
-  "Actividad de la cuenta": { "en": "Account activity", "es": "Actividad de la cuenta" },
-  "Simulação": { "en": "Simulation", "es": "Simulación" },
-  "Simulation": { "en": "Simulation", "es": "Simulación" },
-  "Simulación": { "en": "Simulation", "es": "Simulación" },
-  "Testnet pública": { "en": "Public testnet", "es": "Testnet pública" },
-  "Public testnet": { "en": "Public testnet", "es": "Testnet pública" },
-  "Produção pública": { "en": "Public production", "es": "Producción pública" },
-  "Public production": { "en": "Public production", "es": "Producción pública" },
-  "Producción pública": { "en": "Public production", "es": "Producción pública" },
-  "Financeiro": { "en": "Financial", "es": "Financiero" },
-  "Financial": { "en": "Financial", "es": "Financiero" },
-  "Financiero": { "en": "Financial", "es": "Financiero" },
-  "Atividade": { "en": "Activity", "es": "Actividad" },
-  "Activity": { "en": "Activity", "es": "Actividad" },
-  "Actividad": { "en": "Activity", "es": "Actividad" },
-  "Automático": { "en": "Automatic", "es": "Automático" },
-  "Automatic": { "en": "Automatic", "es": "Automático" },
-  "Depósito": { "en": "Deposit", "es": "Depósito" },
-  "Deposit": { "en": "Deposit", "es": "Depósito" },
-  "BETTEX purchase": { "en": "BETTEX purchase", "es": "Compra de BETTEX" },
-  "Conversão": { "en": "Swap", "es": "Conversión" },
-  "Conversión": { "en": "Swap", "es": "Conversión" },
-  "Aplicação": { "en": "Stake", "es": "Aplicación" },
-  "Stake": { "en": "Stake", "es": "Aplicación" },
-  "Aplicación": { "en": "Stake", "es": "Aplicación" },
-  "Resgate": { "en": "Unstake", "es": "Rescate" },
-  "Unstake": { "en": "Unstake", "es": "Rescate" },
-  "Rescate": { "en": "Unstake", "es": "Rescate" },
-  "Distribuição": { "en": "Distribution", "es": "Distribución" },
-  "Distribution": { "en": "Distribution", "es": "Distribución" },
-  "Distribución": { "en": "Distribution", "es": "Distribución" },
-  "Transferência": { "en": "Transfer", "es": "Transferencia" },
-  "Transfer": { "en": "Transfer", "es": "Transferencia" },
-  "Transferencia": { "en": "Transfer", "es": "Transferencia" },
-  "Sign-in": { "en": "Sign-in", "es": "Inicio de sesión" },
-  "Inicio de sesión": { "en": "Sign-in", "es": "Inicio de sesión" },
-  "Sign-out": { "en": "Sign-out", "es": "Cierre de sesión" },
-  "Cierre de sesión": { "en": "Sign-out", "es": "Cierre de sesión" },
-  "Aceite": { "en": "Consent", "es": "Aceptación" },
-  "Consent": { "en": "Consent", "es": "Aceptación" },
-  "Aceptación": { "en": "Consent", "es": "Aceptación" },
-  "Recarga gratuita de teste": { "en": "Free test funding", "es": "Recarga gratuita de prueba" },
-  "Free test funding": { "en": "Free test funding", "es": "Recarga gratuita de prueba" },
-  "Recarga gratuita de prueba": { "en": "Free test funding", "es": "Recarga gratuita de prueba" },
-  "Depósito externo": { "en": "External deposit", "es": "Depósito externo" },
-  "External deposit": { "en": "External deposit", "es": "Depósito externo" },
-  "Transferência enviada": { "en": "Outgoing transfer", "es": "Transferencia enviada" },
-  "Outgoing transfer": { "en": "Outgoing transfer", "es": "Transferencia enviada" },
-  "Transferencia enviada": { "en": "Outgoing transfer", "es": "Transferencia enviada" },
-  "Transferência interna": { "en": "Internal transfer", "es": "Transferencia interna" },
-  "Internal transfer": { "en": "Internal transfer", "es": "Transferencia interna" },
-  "Transferencia interna": { "en": "Internal transfer", "es": "Transferencia interna" },
-  "Execução solicitada": { "en": "Execution requested", "es": "Ejecución solicitada" },
-  "Execution requested": { "en": "Execution requested", "es": "Ejecución solicitada" },
-  "Ejecución solicitada": { "en": "Execution requested", "es": "Ejecución solicitada" },
-  "Mudança de etapa da execução": { "en": "Execution step change", "es": "Cambio de etapa de la ejecución" },
-  "Execution step change": { "en": "Execution step change", "es": "Cambio de etapa de la ejecución" },
-  "Cambio de etapa de la ejecución": { "en": "Execution step change", "es": "Cambio de etapa de la ejecución" },
-  "Operação financeira solicitada": { "en": "Financial operation requested", "es": "Operación financiera solicitada" },
-  "Financial operation requested": { "en": "Financial operation requested", "es": "Operación financiera solicitada" },
-  "Operación financiera solicitada": { "en": "Financial operation requested", "es": "Operación financiera solicitada" },
-  "Conta criada": { "en": "Account created", "es": "Cuenta creada" },
-  "Account created": { "en": "Account created", "es": "Cuenta creada" },
-  "Cuenta creada": { "en": "Account created", "es": "Cuenta creada" },
-  "Aceite registrado": { "en": "Consent accepted", "es": "Aceptación registrada" },
-  "Consent accepted": { "en": "Consent accepted", "es": "Aceptación registrada" },
-  "Aceptación registrada": { "en": "Consent accepted", "es": "Aceptación registrada" },
-  "Carteiras criadas": { "en": "Wallets created", "es": "Carteras creadas" },
-  "Wallets created": { "en": "Wallets created", "es": "Carteras creadas" },
-  "Carteras creadas": { "en": "Wallets created", "es": "Carteras creadas" },
-  "Perfil alterado": { "en": "Profile changed", "es": "Perfil cambiado" },
-  "Profile changed": { "en": "Profile changed", "es": "Perfil cambiado" },
-  "Perfil cambiado": { "en": "Profile changed", "es": "Perfil cambiado" },
-  "Senha alterada": { "en": "Password changed", "es": "Contraseña cambiada" },
-  "Password changed": { "en": "Password changed", "es": "Contraseña cambiada" },
-  "Contraseña cambiada": { "en": "Password changed", "es": "Contraseña cambiada" },
-  "Autorização de ação privada": { "en": "Private action authorization", "es": "Autorización de acción privada" },
-  "Private action authorization": { "en": "Private action authorization", "es": "Autorización de acción privada" },
-  "Autorización de acción privada": { "en": "Private action authorization", "es": "Autorización de acción privada" },
-  "Exportação privada autorizada": { "en": "Private export authorized", "es": "Exportación privada autorizada" },
-  "Private export authorized": { "en": "Private export authorized", "es": "Exportación privada autorizada" },
-  "Exportación privada autorizada": { "en": "Private export authorized", "es": "Exportación privada autorizada" },
-  "Resultado da exportação privada": { "en": "Private export result", "es": "Resultado de la exportación privada" },
-  "Private export result": { "en": "Private export result", "es": "Resultado de la exportación privada" },
-  "Resultado de la exportación privada": { "en": "Private export result", "es": "Resultado de la exportación privada" },
-  "Tentativa na conta": { "en": "Account attempt", "es": "Intento en la cuenta" },
-  "Account attempt": { "en": "Account attempt", "es": "Intento en la cuenta" },
-  "Intento en la cuenta": { "en": "Account attempt", "es": "Intento en la cuenta" },
-  "Processamento por agente": { "en": "Agent processing", "es": "Procesamiento por agente" },
-  "Agent processing": { "en": "Agent processing", "es": "Procesamiento por agente" },
-  "Procesamiento por agente": { "en": "Agent processing", "es": "Procesamiento por agente" },
-  "Distribuição calculada (simulação ou apuração)": { "en": "Distribution calculated (simulation or calculation)", "es": "Distribución calculada (simulación o cálculo)" },
-  "Distribution calculated (simulation or calculation)": { "en": "Distribution calculated (simulation or calculation)", "es": "Distribución calculada (simulación o cálculo)" },
-  "Distribución calculada (simulación o cálculo)": { "en": "Distribution calculated (simulation or calculation)", "es": "Distribución calculada (simulación o cálculo)" },
-  "Principal da tesouraria": { "en": "Treasury principal", "es": "Principal de la tesorería" },
-  "Treasury principal": { "en": "Treasury principal", "es": "Principal de la tesorería" },
-  "Principal de la tesorería": { "en": "Treasury principal", "es": "Principal de la tesorería" },
-  "Estorno": { "en": "Reversal", "es": "Reversión" },
-  "Reversal": { "en": "Reversal", "es": "Reversión" },
-  "Reversión": { "en": "Reversal", "es": "Reversión" },
-  "Carteiras associadas": { "en": "Wallets associated", "es": "Carteras asociadas" },
-  "Wallets associated": { "en": "Wallets associated", "es": "Carteras asociadas" },
-  "Carteras asociadas": { "en": "Wallets associated", "es": "Carteras asociadas" },
-  "Saque": { "en": "Withdrawal", "es": "Retiro" },
-  "Withdrawal": { "en": "Withdrawal", "es": "Retiro" },
-  "Retiro": { "en": "Withdrawal", "es": "Retiro" },
-  "Backup de carteira": { "en": "Wallet backup", "es": "Copia de cartera" },
-  "Wallet backup": { "en": "Wallet backup", "es": "Copia de cartera" },
-  "Copia de cartera": { "en": "Wallet backup", "es": "Copia de cartera" },
-  "Sistema": { "en": "System", "es": "Sistema" },
-  "System": { "en": "System", "es": "Sistema" },
-  "Contrato": { "en": "Contract", "es": "Contrato" },
-  "Contract": { "en": "Contract", "es": "Contrato" },
-  "Você": { "en": "You", "es": "Tú" },
-  "You": { "en": "You", "es": "Tú" },
-  "Tú": { "en": "You", "es": "Tú" },
-  "Agente": { "en": "Agent", "es": "Agente" },
-  "Agent": { "en": "Agent", "es": "Agente" },
-  "Recibo da blockchain": { "en": "Blockchain receipt", "es": "Recibo de la blockchain" },
-  "Blockchain receipt": { "en": "Blockchain receipt", "es": "Recibo de la blockchain" },
-  "Recibo de la blockchain": { "en": "Blockchain receipt", "es": "Recibo de la blockchain" },
-  "Registro da conta": { "en": "Account record", "es": "Registro de la cuenta" },
-  "Account record": { "en": "Account record", "es": "Registro de la cuenta" },
-  "Registro de la cuenta": { "en": "Account record", "es": "Registro de la cuenta" },
-  "Execução": { "en": "Execution", "es": "Ejecución" },
-  "Execution": { "en": "Execution", "es": "Ejecución" },
-  "Ejecución": { "en": "Execution", "es": "Ejecución" },
-  "Motor da demonstração": { "en": "Demo engine", "es": "Motor de la demostración" },
-  "Demo engine": { "en": "Demo engine", "es": "Motor de la demostración" },
-  "Motor de la demostración": { "en": "Demo engine", "es": "Motor de la demostración" },
-  "Prévia do modelo da demonstração": { "en": "Demo model preview", "es": "Vista previa del modelo de la demostración" },
-  "Demo model preview": { "en": "Demo model preview", "es": "Vista previa del modelo de la demostración" },
-  "Vista previa del modelo de la demostración": { "en": "Demo model preview", "es": "Vista previa del modelo de la demostración" },
-  "Demonstração recuperada ou semeada": { "en": "Demo recovered or seeded", "es": "Demostración recuperada o sembrada" },
-  "Demo recovered or seeded": { "en": "Demo recovered or seeded", "es": "Demostración recuperada o sembrada" },
-  "Demostración recuperada o sembrada": { "en": "Demo recovered or seeded", "es": "Demostración recuperada o sembrada" },
-  "Reconciliação": { "en": "Reconciliation", "es": "Reconciliación" },
-  "Reconciliation": { "en": "Reconciliation", "es": "Reconciliación" },
-  "Reconciliación": { "en": "Reconciliation", "es": "Reconciliación" },
-  "Entradas e aceites anteriores a esta data são desconhecidos.": { "en": "Sign-ins and consents before this date are unknown.", "es": "Los inicios de sesión y aceptaciones anteriores a esta fecha son desconocidos." },
-  "Sign-ins and consents before this date are unknown.": { "en": "Sign-ins and consents before this date are unknown.", "es": "Los inicios de sesión y aceptaciones anteriores a esta fecha son desconocidos." },
-  "Los inicios de sesión y aceptaciones anteriores a esta fecha son desconocidos.": { "en": "Sign-ins and consents before this date are unknown.", "es": "Los inicios de sesión y aceptaciones anteriores a esta fecha son desconocidos." },
-  "Alguns itens foram reconstruídos a partir de registros existentes.": { "en": "Some items were reconstructed from existing records.", "es": "Algunos elementos se reconstruyeron a partir de registros existentes." },
-  "Some items were reconstructed from existing records.": { "en": "Some items were reconstructed from existing records.", "es": "Algunos elementos se reconstruyeron a partir de registros existentes." },
-  "Algunos elementos se reconstruyeron a partir de registros existentes.": { "en": "Some items were reconstructed from existing records.", "es": "Algunos elementos se reconstruyeron a partir de registros existentes." },
-  "Distribuições não estão disponíveis para contas nativas.": { "en": "Distributions are not available for native accounts.", "es": "Las distribuciones no están disponibles para cuentas nativas." },
-  "Distributions are not available for native accounts.": { "en": "Distributions are not available for native accounts.", "es": "Las distribuciones no están disponibles para cuentas nativas." },
-  "Las distribuciones no están disponibles para cuentas nativas.": { "en": "Distributions are not available for native accounts.", "es": "Las distribuciones no están disponibles para cuentas nativas." },
-  "Dados da demonstração são simulados.": { "en": "Demo data is simulated.", "es": "Los datos de la demostración son simulados." },
-  "Demo data is simulated.": { "en": "Demo data is simulated.", "es": "Los datos de la demostración son simulados." },
-  "Los datos de la demostración son simulados.": { "en": "Demo data is simulated.", "es": "Los datos de la demostración son simulados." },
-  "Registros da cadeia local não são da rede pública.": { "en": "Local chain records are not from the public network.", "es": "Los registros de la cadena local no son de la red pública." },
-  "Local chain records are not from the public network.": { "en": "Local chain records are not from the public network.", "es": "Los registros de la cadena local no son de la red pública." },
-  "Los registros de la cadena local no son de la red pública.": { "en": "Local chain records are not from the public network.", "es": "Los registros de la cadena local no son de la red pública." },
-  "A sincronização está indisponível; os dados mostrados foram capturados e podem não estar atuais.": { "en": "Sync is unavailable; the data shown was captured and may not be current.", "es": "La sincronización no está disponible; los datos mostrados fueron capturados y pueden no estar actualizados." },
-  "Sync is unavailable; the data shown was captured and may not be current.": { "en": "Sync is unavailable; the data shown was captured and may not be current.", "es": "La sincronización no está disponible; los datos mostrados fueron capturados y pueden no estar actualizados." },
-  "La sincronización no está disponible; los datos mostrados fueron capturados y pueden no estar actualizados.": { "en": "Sync is unavailable; the data shown was captured and may not be current.", "es": "La sincronización no está disponible; los datos mostrados fueron capturados y pueden no estar actualizados." },
-  "Visão restrita: nem todos os dados financeiros são exibidos.": { "en": "Restricted view: not all financial data is shown.", "es": "Vista restringida: no se muestran todos los datos financieros." },
-  "Restricted view: not all financial data is shown.": { "en": "Restricted view: not all financial data is shown.", "es": "Vista restringida: no se muestran todos los datos financieros." },
-  "Vista restringida: no se muestran todos los datos financieros.": { "en": "Restricted view: not all financial data is shown.", "es": "Vista restringida: no se muestran todos los datos financieros." },
-  "Pedido": { "en": "Request", "es": "Solicitud" },
-  "Request": { "en": "Request", "es": "Solicitud" },
-  "Solicitud": { "en": "Request", "es": "Solicitud" },
-  "Authorization": { "en": "Authorization", "es": "Autorización" },
-  "Autorización": { "en": "Authorization", "es": "Autorización" },
-  "Envio": { "en": "Sending", "es": "Envío" },
-  "Envío": { "en": "Sending", "es": "Envío" },
-  "Confirmação": { "en": "Confirmation", "es": "Confirmación" },
-  "Confirmation": { "en": "Confirmation", "es": "Confirmación" },
-  "Confirmación": { "en": "Confirmation", "es": "Confirmación" },
-  "Cálculo": { "en": "Calculation", "es": "Cálculo" },
-  "Calculation": { "en": "Calculation", "es": "Cálculo" },
-  "Start": { "en": "Start", "es": "Inicio" },
-  "Inicio": { "en": "Start", "es": "Inicio" },
-  "Compra": { "en": "Purchase", "es": "Compra" },
-  "Purchase": { "en": "Purchase", "es": "Compra" },
-  "Taxa": { "en": "Fee", "es": "Comisión" },
-  "Fee": { "en": "Fee", "es": "Comisión" },
-  "Comisión": { "en": "Fee", "es": "Comisión" },
-  "Liquidação": { "en": "Settlement", "es": "Liquidación" },
-  "Settlement": { "en": "Settlement", "es": "Liquidación" },
-  "Liquidación": { "en": "Settlement", "es": "Liquidación" },
-  "Falha": { "en": "Failure", "es": "Fallo" },
-  "Failure": { "en": "Failure", "es": "Fallo" },
-  "Fallo": { "en": "Failure", "es": "Fallo" },
-  "Versão da regra": { "en": "Rule version", "es": "Versión de la regla" },
-  "Rule version": { "en": "Rule version", "es": "Versión de la regla" },
-  "Versión de la regla": { "en": "Rule version", "es": "Versión de la regla" },
-  "Period": { "en": "Period", "es": "Período" },
-  "Motivo": { "en": "Reason", "es": "Motivo" },
-  "Reason": { "en": "Reason", "es": "Motivo" },
-  "Carteira de destino": { "en": "Target wallet", "es": "Cartera de destino" },
-  "Target wallet": { "en": "Target wallet", "es": "Cartera de destino" },
-  "Cartera de destino": { "en": "Target wallet", "es": "Cartera de destino" },
-  "Origem": { "en": "From", "es": "Origen" },
-  "From": { "en": "From", "es": "Origen" },
-  "Origen": { "en": "From", "es": "Origen" },
-  "Destino": { "en": "To", "es": "Destino" },
-  "To": { "en": "To", "es": "Destino" },
-  "Gatilho": { "en": "Trigger", "es": "Disparador" },
-  "Trigger": { "en": "Trigger", "es": "Disparador" },
-  "Disparador": { "en": "Trigger", "es": "Disparador" },
-  "Situação anterior": { "en": "Previous status", "es": "Estado anterior" },
-  "Previous status": { "en": "Previous status", "es": "Estado anterior" },
-  "Estado anterior": { "en": "Previous status", "es": "Estado anterior" },
-  "Geral": { "en": "General", "es": "General" },
-  "General": { "en": "General", "es": "General" },
-  "Conversões": { "en": "Swapping", "es": "Conversiones" },
-  "Swapping": { "en": "Swapping", "es": "Conversiones" },
-  "Conversiones": { "en": "Swapping", "es": "Conversiones" },
-  "Aplicações": { "en": "Staking", "es": "Aplicaciones" },
-  "Staking": { "en": "Staking", "es": "Aplicaciones" },
-  "Aplicaciones": { "en": "Staking", "es": "Aplicaciones" },
-  "Distribuições": { "en": "Distributions", "es": "Distribuciones" },
-  "Distributions": { "en": "Distributions", "es": "Distribuciones" },
-  "Distribuciones": { "en": "Distributions", "es": "Distribuciones" },
-  "Treasury": { "en": "Treasury", "es": "Tesorería" },
-  "Tesorería": { "en": "Treasury", "es": "Tesorería" },
-  "Stage": { "en": "Stage", "es": "Etapa" },
-  "Pago": { "en": "Paid", "es": "Pagado" },
-  "Paid": { "en": "Paid", "es": "Pagado" },
-  "Pagado": { "en": "Paid", "es": "Pagado" },
-  "Recebido": { "en": "Received", "es": "Recibido" },
-  "Received": { "en": "Received", "es": "Recibido" },
-  "Recibido": { "en": "Received", "es": "Recibido" },
-  "Principal": { "en": "Principal", "es": "Principal" },
-  "Quantity": { "en": "Quantity", "es": "Cantidad" },
-  "Cantidad": { "en": "Quantity", "es": "Cantidad" },
-  "Elegível": { "en": "Eligible", "es": "Elegible" },
-  "Eligible": { "en": "Eligible", "es": "Elegible" },
-  "Elegible": { "en": "Eligible", "es": "Elegible" },
-  "Pool": { "en": "Pool", "es": "Pool" },
-  "Peso": { "en": "Weight", "es": "Peso" },
-  "Weight": { "en": "Weight", "es": "Peso" },
-  "Amount": { "en": "Amount", "es": "Monto" },
-  "Monto": { "en": "Amount", "es": "Monto" },
-  "Gás": { "en": "Gas", "es": "Gas" },
-  "Gas": { "en": "Gas", "es": "Gas" },
-  "Preço": { "en": "Price", "es": "Precio" },
-  "Price": { "en": "Price", "es": "Precio" },
-  "Precio": { "en": "Price", "es": "Precio" },
-  "Transação": { "en": "Transaction", "es": "Transacción" },
-  "Transaction": { "en": "Transaction", "es": "Transacción" },
-  "Transacción": { "en": "Transaction", "es": "Transacción" },
-  "Ver no Arbiscan Sepolia": { "en": "View on Sepolia Arbiscan", "es": "Ver en Arbiscan Sepolia" },
-  "View on Sepolia Arbiscan": { "en": "View on Sepolia Arbiscan", "es": "Ver en Arbiscan Sepolia" },
-  "Ver en Arbiscan Sepolia": { "en": "View on Sepolia Arbiscan", "es": "Ver en Arbiscan Sepolia" },
-  "Reconstruído": { "en": "Reconstructed", "es": "Reconstruido" },
-  "Reconstructed": { "en": "Reconstructed", "es": "Reconstruido" },
-  "Reconstruido": { "en": "Reconstructed", "es": "Reconstruido" },
-  "Horário de Brasília": { "en": "Brasília time", "es": "Hora de Brasilia" },
-  "Brasília time": { "en": "Brasília time", "es": "Hora de Brasilia" },
-  "Hora de Brasilia": { "en": "Brasília time", "es": "Hora de Brasilia" },
-  "Ocultar detalhe": { "en": "Hide detail", "es": "Ocultar detalle" },
-  "Hide detail": { "en": "Hide detail", "es": "Ocultar detalle" },
-  "Ocultar detalle": { "en": "Hide detail", "es": "Ocultar detalle" },
-  "Ver detalhe": { "en": "View detail", "es": "Ver detalle" },
-  "View detail": { "en": "View detail", "es": "Ver detalle" },
-  "Ver detalle": { "en": "View detail", "es": "Ver detalle" },
-  "Processamento": { "en": "Processing", "es": "Procesamiento" },
-  "Procesamiento": { "en": "Processing", "es": "Procesamiento" },
-  "On-chain": { "en": "On-chain", "es": "On-chain" },
-  "Automático interno, sem registro on-chain": { "en": "Automatic internal, no on-chain record", "es": "Automático interno, sin registro on-chain" },
-  "Automatic internal, no on-chain record": { "en": "Automatic internal, no on-chain record", "es": "Automático interno, sin registro on-chain" },
-  "Automático interno, sin registro on-chain": { "en": "Automatic internal, no on-chain record", "es": "Automático interno, sin registro on-chain" },
-  "Correlação": { "en": "Correlation", "es": "Correlación" },
-  "Correlation": { "en": "Correlation", "es": "Correlación" },
-  "Correlación": { "en": "Correlation", "es": "Correlación" },
-  "Não foi possível carregar a linha do tempo.": { "en": "Could not load the timeline.", "es": "No se pudo cargar la línea de tiempo." },
-  "Could not load the timeline.": { "en": "Could not load the timeline.", "es": "No se pudo cargar la línea de tiempo." },
-  "No se pudo cargar la línea de tiempo.": { "en": "Could not load the timeline.", "es": "No se pudo cargar la línea de tiempo." },
-  "Tentar de novo": { "en": "Try again", "es": "Intentar de nuevo" },
-  "Intentar de nuevo": { "en": "Try again", "es": "Intentar de nuevo" },
-  "Anterior": { "en": "Previous", "es": "Anterior" },
-  "Próxima": { "en": "Next", "es": "Siguiente" },
-  "Siguiente": { "en": "Next", "es": "Siguiente" },
-  "Capital confirmado na tesouraria": { "en": "Confirmed capital in the treasury", "es": "Capital confirmado en la tesorería" },
-  "Confirmed capital in the treasury": { "en": "Confirmed capital in the treasury", "es": "Capital confirmado en la tesorería" },
-  "Capital confirmado en la tesorería": { "en": "Confirmed capital in the treasury", "es": "Capital confirmado en la tesorería" },
-  "Agregado público por ambiente. Capital da cadeia local não é capital real e não é somado a outros ambientes.": { "en": "Public aggregate per environment. Local chain capital is not real capital and is not added to other environments.", "es": "Agregado público por entorno. El capital de la cadena local no es capital real y no se suma a otros entornos." },
-  "Public aggregate per environment. Local chain capital is not real capital and is not added to other environments.": { "en": "Public aggregate per environment. Local chain capital is not real capital and is not added to other environments.", "es": "Agregado público por entorno. El capital de la cadena local no es capital real y no se suma a otros entornos." },
-  "Agregado público por entorno. El capital de la cadena local no es capital real y no se suma a otros entornos.": { "en": "Public aggregate per environment. Local chain capital is not real capital and is not added to other environments.", "es": "Agregado público por entorno. El capital de la cadena local no es capital real y no se suma a otros entornos." },
-  "Nenhum capital confirmado ainda.": { "en": "No confirmed capital yet.", "es": "Aún no hay capital confirmado." },
-  "No confirmed capital yet.": { "en": "No confirmed capital yet.", "es": "Aún no hay capital confirmado." },
-  "Aún no hay capital confirmado.": { "en": "No confirmed capital yet.", "es": "Aún no hay capital confirmado." },
-  "operações": { "en": "operations", "es": "operaciones" },
-  "operations": { "en": "operations", "es": "operaciones" },
-  "operaciones": { "en": "operations", "es": "operaciones" },
-  "History": { "en": "History", "es": "Historial" },
-  "Historial": { "en": "History", "es": "Historial" },
-  "Ambiente": { "en": "Environment", "es": "Entorno" },
-  "Environment": { "en": "Environment", "es": "Entorno" },
-  "Entorno": { "en": "Environment", "es": "Entorno" },
-  "Todos os ambientes": { "en": "All environments", "es": "Todos los entornos" },
-  "All environments": { "en": "All environments", "es": "Todos los entornos" },
-  "Todos los entornos": { "en": "All environments", "es": "Todos los entornos" },
-  "Categoria": { "en": "Category", "es": "Categoría" },
-  "Category": { "en": "Category", "es": "Categoría" },
-  "Categoría": { "en": "Category", "es": "Categoría" },
-  "Todas as categorias": { "en": "All categories", "es": "Todas las categorías" },
-  "All categories": { "en": "All categories", "es": "Todas las categorías" },
-  "Todas las categorías": { "en": "All categories", "es": "Todas las categorías" },
-  "Ativo": { "en": "Asset", "es": "Activo" },
-  "Asset": { "en": "Asset", "es": "Activo" },
-  "Activo": { "en": "Asset", "es": "Activo" },
-  "Todos os ativos": { "en": "All assets", "es": "Todos los activos" },
-  "All assets": { "en": "All assets", "es": "Todos los activos" },
-  "Todos los activos": { "en": "All assets", "es": "Todos los activos" },
-  "ETH": { "en": "BETTEX", "es": "ETH" },
-  "Situação": { "en": "Status", "es": "Estado" },
-  "Estado": { "en": "Status", "es": "Estado" },
-  "Todas as situações": { "en": "All statuses", "es": "Todos los estados" },
-  "All statuses": { "en": "All statuses", "es": "Todos los estados" },
-  "Todos los estados": { "en": "All statuses", "es": "Todos los estados" },
-  "De (data e hora)": { "en": "From (date and time)", "es": "Desde (fecha y hora)" },
-  "From (date and time)": { "en": "From (date and time)", "es": "Desde (fecha y hora)" },
-  "Desde (fecha y hora)": { "en": "From (date and time)", "es": "Desde (fecha y hora)" },
-  "Até (data e hora)": { "en": "To (date and time)", "es": "Hasta (fecha y hora)" },
-  "To (date and time)": { "en": "To (date and time)", "es": "Hasta (fecha y hora)" },
-  "Hasta (fecha y hora)": { "en": "To (date and time)", "es": "Hasta (fecha y hora)" },
-  "Tipo": { "en": "Type", "es": "Tipo" },
-  "Type": { "en": "Type", "es": "Tipo" },
-  "Todos os tipos": { "en": "All types", "es": "Todos los tipos" },
-  "All types": { "en": "All types", "es": "Todos los tipos" },
-  "Todos los tipos": { "en": "All types", "es": "Todos los tipos" },
-  "Rede (chainId)": { "en": "Network (chainId)", "es": "Red (chainId)" },
-  "Network (chainId)": { "en": "Network (chainId)", "es": "Red (chainId)" },
-  "Red (chainId)": { "en": "Network (chainId)", "es": "Red (chainId)" },
-  "Wallet": { "en": "Wallet", "es": "Cartera" },
-  "Cartera": { "en": "Wallet", "es": "Cartera" },
-  "Limpar filtros": { "en": "Clear filters", "es": "Limpiar filtros" },
-  "Clear filters": { "en": "Clear filters", "es": "Limpiar filtros" },
-  "Limpiar filtros": { "en": "Clear filters", "es": "Limpiar filtros" },
-  "Simulação de cálculo apenas: não é pagamento nem direito financeiro.": { "en": "Calculation simulation only: not a payout or a financial claim.", "es": "Solo simulación de cálculo: no es un pago ni un derecho financiero." },
-  "Calculation simulation only: not a payout or a financial claim.": { "en": "Calculation simulation only: not a payout or a financial claim.", "es": "Solo simulación de cálculo: no es un pago ni un derecho financiero." },
-  "Solo simulación de cálculo: no es un pago ni un derecho financiero.": { "en": "Calculation simulation only: not a payout or a financial claim.", "es": "Solo simulación de cálculo: no es un pago ni un derecho financiero." },
-  "Simular apuração": { "en": "Simulate calculation", "es": "Simular cálculo" },
-  "Simulate calculation": { "en": "Simulate calculation", "es": "Simular cálculo" },
-  "Simular cálculo": { "en": "Simulate calculation", "es": "Simular cálculo" },
-  "Simulação registrada.": { "en": "Simulation recorded.", "es": "Simulación registrada." },
-  "Simulation recorded.": { "en": "Simulation recorded.", "es": "Simulación registrada." },
-  "Simulación registrada.": { "en": "Simulation recorded.", "es": "Simulación registrada." },
-  "Não foi possível simular.": { "en": "Could not simulate.", "es": "No se pudo simular." },
-  "Could not simulate.": { "en": "Could not simulate.", "es": "No se pudo simular." },
-  "No se pudo simular.": { "en": "Could not simulate.", "es": "No se pudo simular." },
-  "Acesso restrito: esta visão não mostra todos os dados financeiros.": { "en": "Restricted access: this view does not show all financial data.", "es": "Acceso restringido: esta vista no muestra todos los datos financieros." },
-  "Restricted access: this view does not show all financial data.": { "en": "Restricted access: this view does not show all financial data.", "es": "Acceso restringido: esta vista no muestra todos los datos financieros." },
-  "Acceso restringido: esta vista no muestra todos los datos financieros.": { "en": "Restricted access: this view does not show all financial data.", "es": "Acceso restringido: esta vista no muestra todos los datos financieros." },
-  "Não foi possível carregar o histórico.": { "en": "Could not load the history.", "es": "No se pudo cargar el historial." },
-  "Could not load the history.": { "en": "Could not load the history.", "es": "No se pudo cargar el historial." },
-  "No se pudo cargar el historial.": { "en": "Could not load the history.", "es": "No se pudo cargar el historial." },
-  "Cobertura desde": { "en": "Coverage from", "es": "Cobertura desde" },
-  "Coverage from": { "en": "Coverage from", "es": "Cobertura desde" },
-  "Registros anteriores (entradas e aceites antes dessa data) são desconhecidos; itens reconstruídos têm selo próprio.": { "en": "Earlier records (sign-ins and consents before that date) are unknown; reconstructed items carry their own badge.", "es": "Los registros anteriores (inicios de sesión y aceptaciones previos) son desconocidos; los elementos reconstruidos tienen su propia insignia." },
-  "Earlier records (sign-ins and consents before that date) are unknown; reconstructed items carry their own badge.": { "en": "Earlier records (sign-ins and consents before that date) are unknown; reconstructed items carry their own badge.", "es": "Los registros anteriores (inicios de sesión y aceptaciones previos) son desconocidos; los elementos reconstruidos tienen su propia insignia." },
-  "Los registros anteriores (inicios de sesión y aceptaciones previos) son desconocidos; los elementos reconstruidos tienen su propia insignia.": { "en": "Earlier records (sign-ins and consents before that date) are unknown; reconstructed items carry their own badge.", "es": "Los registros anteriores (inicios de sesión y aceptaciones previos) son desconocidos; los elementos reconstruidos tienen su propia insignia." },
-  "Há uma limitação de cobertura não detalhada.": { "en": "There is an unspecified coverage limitation.", "es": "Hay una limitación de cobertura sin detallar." },
-  "There is an unspecified coverage limitation.": { "en": "There is an unspecified coverage limitation.", "es": "Hay una limitación de cobertura sin detallar." },
-  "Hay una limitación de cobertura sin detallar.": { "en": "There is an unspecified coverage limitation.", "es": "Hay una limitación de cobertura sin detallar." },
-  "Distribuições ainda não estão disponíveis para contas de teste nativas. Nenhuma distribuição real foi apurada.": { "en": "Distributions are not yet available for native test accounts. No real distribution has been calculated.", "es": "Las distribuciones aún no están disponibles para cuentas de prueba nativas. No se ha calculado ninguna distribución real." },
-  "Distributions are not yet available for native test accounts. No real distribution has been calculated.": { "en": "Distributions are not yet available for native test accounts. No real distribution has been calculated.", "es": "Las distribuciones aún no están disponibles para cuentas de prueba nativas. No se ha calculado ninguna distribución real." },
-  "Las distribuciones aún no están disponibles para cuentas de prueba nativas. No se ha calculado ninguna distribución real.": { "en": "Distributions are not yet available for native test accounts. No real distribution has been calculated.", "es": "Las distribuciones aún no están disponibles para cuentas de prueba nativas. No se ha calculado ninguna distribución real." },
-  "Nenhuma simulação registrada ainda.": { "en": "No simulation recorded yet.", "es": "Aún no hay simulaciones registradas." },
-  "No simulation recorded yet.": { "en": "No simulation recorded yet.", "es": "Aún no hay simulaciones registradas." },
-  "Aún no hay simulaciones registradas.": { "en": "No simulation recorded yet.", "es": "Aún no hay simulaciones registradas." },
-  "Nenhum registro neste filtro.": { "en": "No records for this filter.", "es": "Ningún registro con este filtro." },
-  "No records for this filter.": { "en": "No records for this filter.", "es": "Ningún registro con este filtro." },
-  "Ningún registro con este filtro.": { "en": "No records for this filter.", "es": "Ningún registro con este filtro." },
-  "LOCAL": { "en": "LOCAL", "es": "LOCAL" },
-  "activity": { "en": "activity", "es": "activity" },
-  "amountUnits": { "en": "amountUnits", "es": "amountUnits" },
-  "asset": { "en": "asset", "es": "asset" },
-  "busy": { "en": "busy", "es": "busy" },
-  "category": { "en": "category", "es": "category" },
-  "chainId": { "en": "chainId", "es": "chainId" },
-  "decimals": { "en": "decimals", "es": "decimals" },
-  "distributions": { "en": "distributions", "es": "distributions" },
-  "eligibleUnits": { "en": "eligibleUnits", "es": "eligibleUnits" },
-  "en-US": { "en": "en-US", "es": "en-US" },
-  "environment": { "en": "environment", "es": "environment" },
-  "err": { "en": "err", "es": "err" },
-  "es-ES": { "en": "es-ES", "es": "es-ES" },
-  "feeUnits": { "en": "feeUnits", "es": "feeUnits" },
-  "from": { "en": "from", "es": "from" },
-  "gasWei": { "en": "gasWei", "es": "gasWei" },
-  "general": { "en": "general", "es": "general" },
-  "history-transparency": { "en": "history-transparency", "es": "history-transparency" },
-  "kind": { "en": "kind", "es": "kind" },
-  "medium": { "en": "medium", "es": "medium" },
-  "native": { "en": "native", "es": "native" },
-  "number": { "en": "number", "es": "number" },
-  "paidAsset": { "en": "paidAsset", "es": "paidAsset" },
-  "paidUnits": { "en": "paidUnits", "es": "paidUnits" },
-  "periodId": { "en": "periodId", "es": "periodId" },
-  "poolUnits": { "en": "poolUnits", "es": "poolUnits" },
-  "previousState": { "en": "previousState", "es": "previousState" },
-  "priceDecimals": { "en": "priceDecimals", "es": "priceDecimals" },
-  "priceUnits": { "en": "priceUnits", "es": "priceUnits" },
-  "principalUnits": { "en": "principalUnits", "es": "principalUnits" },
-  "quantityUnits": { "en": "quantityUnits", "es": "quantityUnits" },
-  "reason": { "en": "reason", "es": "reason" },
-  "receivedAsset": { "en": "receivedAsset", "es": "receivedAsset" },
-  "receivedUnits": { "en": "receivedUnits", "es": "receivedUnits" },
-  "ruleVersion": { "en": "ruleVersion", "es": "ruleVersion" },
-  "same-origin": { "en": "same-origin", "es": "same-origin" },
-  "staking": { "en": "staking", "es": "staking" },
-  "state": { "en": "state", "es": "state" },
-  "swapping": { "en": "swapping", "es": "swapping" },
-  "sync_unavailable": { "en": "sync_unavailable", "es": "sync_unavailable" },
-  "targetWallet": { "en": "targetWallet", "es": "targetWallet" },
-  "to": { "en": "to", "es": "to" },
-  "treasury": { "en": "treasury", "es": "treasury" },
-  "unavailable": { "en": "unavailable", "es": "unavailable" },
-  "wallet": { "en": "wallet", "es": "wallet" },
-  "weightUnits": { "en": "weightUnits", "es": "weightUnits" },
-  "{0} ETH": { "en": "{0} ETH", "es": "{0} ETH" },
-  "· LOCAL": { "en": "· LOCAL", "es": "· LOCAL" },
-  "Aprovado": { "en": "Approved", "es": "Aprobado" },
-  "Approved": { "en": "Approved", "es": "Aprobado" },
-  "Aprobado": { "en": "Approved", "es": "Aprobado" },
-  "Aberto": { "en": "Open", "es": "Abierto" },
-  "Open": { "en": "Open", "es": "Abierto" },
-  "Abierto": { "en": "Open", "es": "Abierto" },
-  "Encerrado": { "en": "Closed", "es": "Cerrado" },
-  "Closed": { "en": "Closed", "es": "Cerrado" },
-  "Cerrado": { "en": "Closed", "es": "Cerrado" },
-  "Reservado": { "en": "Reserved", "es": "Reservado" },
-  "Reserved": { "en": "Reserved", "es": "Reservado" },
-  "Permissão administrativa alterada": { "en": "Administrative permission changed", "es": "Permiso administrativo cambiado" },
-  "Administrative permission changed": { "en": "Administrative permission changed", "es": "Permiso administrativo cambiado" },
-  "Permiso administrativo cambiado": { "en": "Administrative permission changed", "es": "Permiso administrativo cambiado" },
-  "Reserva da tesouraria": { "en": "Treasury reservation", "es": "Reserva de la tesorería" },
-  "Treasury reservation": { "en": "Treasury reservation", "es": "Reserva de la tesorería" },
-  "Reserva de la tesorería": { "en": "Treasury reservation", "es": "Reserva de la tesorería" },
-  "Alocação da tesouraria": { "en": "Treasury allocation", "es": "Asignación de la tesorería" },
-  "Treasury allocation": { "en": "Treasury allocation", "es": "Asignación de la tesorería" },
-  "Asignación de la tesorería": { "en": "Treasury allocation", "es": "Asignación de la tesorería" },
-  "Retorno à tesouraria": { "en": "Treasury return", "es": "Retorno a la tesorería" },
-  "Treasury return": { "en": "Treasury return", "es": "Retorno a la tesorería" },
-  "Retorno a la tesorería": { "en": "Treasury return", "es": "Retorno a la tesorería" },
-  "Custo da tesouraria": { "en": "Treasury cost", "es": "Costo de la tesorería" },
-  "Treasury cost": { "en": "Treasury cost", "es": "Costo de la tesorería" },
-  "Costo de la tesorería": { "en": "Treasury cost", "es": "Costo de la tesorería" },
-  "Retenção da tesouraria": { "en": "Treasury retention", "es": "Retención de la tesorería" },
-  "Treasury retention": { "en": "Treasury retention", "es": "Retención de la tesorería" },
-  "Retención de la tesorería": { "en": "Treasury retention", "es": "Retención de la tesorería" },
-  "Pool de distribuição da tesouraria": { "en": "Treasury distribution pool", "es": "Pool de distribución de la tesorería" },
-  "Treasury distribution pool": { "en": "Treasury distribution pool", "es": "Pool de distribución de la tesorería" },
-  "Pool de distribución de la tesorería": { "en": "Treasury distribution pool", "es": "Pool de distribución de la tesorería" },
-  "Reserva de recompra": { "en": "Buyback reserve", "es": "Reserva de recompra" },
-  "Buyback reserve": { "en": "Buyback reserve", "es": "Reserva de recompra" },
-  "Correção de execução": { "en": "Execution correction", "es": "Corrección de ejecución" },
-  "Execution correction": { "en": "Execution correction", "es": "Corrección de ejecución" },
-  "Corrección de ejecución": { "en": "Execution correction", "es": "Corrección de ejecución" },
-  "Administração de permissões": { "en": "Permission administration", "es": "Administración de permisos" },
-  "Permission administration": { "en": "Permission administration", "es": "Administración de permisos" },
-  "Administración de permisos": { "en": "Permission administration", "es": "Administración de permisos" },
-  "Backup criptografado": { "en": "Encrypted backup", "es": "Copia cifrada" },
-  "Encrypted backup": { "en": "Encrypted backup", "es": "Copia cifrada" },
-  "Copia cifrada": { "en": "Encrypted backup", "es": "Copia cifrada" },
-  "Revelar chave": { "en": "Reveal key", "es": "Revelar clave" },
-  "Reveal key": { "en": "Reveal key", "es": "Revelar clave" },
-  "Revelar clave": { "en": "Reveal key", "es": "Revelar clave" },
-  "Copiar chave": { "en": "Copy key", "es": "Copiar clave" },
-  "Copy key": { "en": "Copy key", "es": "Copiar clave" },
-  "Copiar clave": { "en": "Copy key", "es": "Copiar clave" },
-  "Download de chave": { "en": "Key download", "es": "Descarga de clave" },
-  "Key download": { "en": "Key download", "es": "Descarga de clave" },
-  "Descarga de clave": { "en": "Key download", "es": "Descarga de clave" },
-  "Custo": { "en": "Cost", "es": "Costo" },
-  "Cost": { "en": "Cost", "es": "Costo" },
-  "Costo": { "en": "Cost", "es": "Costo" },
-  "Result": { "en": "Result", "es": "Resultado" },
-  "Capital": { "en": "Capital", "es": "Capital" },
-  "Ação privada": { "en": "Private action", "es": "Acción privada" },
-  "Private action": { "en": "Private action", "es": "Acción privada" },
-  "Acción privada": { "en": "Private action", "es": "Acción privada" },
-  "Permissão": { "en": "Permission", "es": "Permiso" },
-  "Permission": { "en": "Permission", "es": "Permiso" },
-  "Permiso": { "en": "Permission", "es": "Permiso" },
-  "Alteração": { "en": "Change", "es": "Cambio" },
-  "Change": { "en": "Change", "es": "Cambio" },
-  "Cambio": { "en": "Change", "es": "Cambio" },
-  "De (data e hora, Horário de Brasília UTC-3)": { "en": "From (date and time, Brasília time UTC-3)", "es": "Desde (fecha y hora, hora de Brasilia UTC-3)" },
-  "From (date and time, Brasília time UTC-3)": { "en": "From (date and time, Brasília time UTC-3)", "es": "Desde (fecha y hora, hora de Brasilia UTC-3)" },
-  "Desde (fecha y hora, hora de Brasilia UTC-3)": { "en": "From (date and time, Brasília time UTC-3)", "es": "Desde (fecha y hora, hora de Brasilia UTC-3)" },
-  "Até (data e hora, Horário de Brasília UTC-3)": { "en": "To (date and time, Brasília time UTC-3)", "es": "Hasta (fecha y hora, hora de Brasilia UTC-3)" },
-  "To (date and time, Brasília time UTC-3)": { "en": "To (date and time, Brasília time UTC-3)", "es": "Hasta (fecha y hora, hora de Brasilia UTC-3)" },
-  "Hasta (fecha y hora, hora de Brasilia UTC-3)": { "en": "To (date and time, Brasília time UTC-3)", "es": "Hasta (fecha y hora, hora de Brasilia UTC-3)" },
-  "action": { "en": "action", "es": "action" },
-  "encrypted-backup": { "en": "encrypted-backup", "es": "encrypted-backup" },
-  "permission": { "en": "permission", "es": "permission" },
-  "private-download": { "en": "private-download", "es": "private-download" },
-  "privateAction": { "en": "privateAction", "es": "privateAction" },
-  "Nenhuma distribuição registrada neste filtro. Rodadas de teste usam resultado sintético e EVM local, sem lucro de trading real.": { "en": "No distribution recorded for this filter. Test rounds use synthetic results and the local EVM, with no real trading profit.", "es": "No hay distribución registrada en este filtro. Las rondas de prueba usan resultados sintéticos y la EVM local, sin beneficio de trading real." },
-  "No distribution recorded for this filter. Test rounds use synthetic results and the local EVM, with no real trading profit.": { "en": "No distribution recorded for this filter. Test rounds use synthetic results and the local EVM, with no real trading profit.", "es": "No hay distribución registrada en este filtro. Las rondas de prueba usan resultados sintéticos y la EVM local, sin beneficio de trading real." },
-  "No hay distribución registrada en este filtro. Las rondas de prueba usan resultados sintéticos y la EVM local, sin beneficio de trading real.": { "en": "No distribution recorded for this filter. Test rounds use synthetic results and the local EVM, with no real trading profit.", "es": "No hay distribución registrada en este filtro. Las rondas de prueba usan resultados sintéticos y la EVM local, sin beneficio de trading real." }
+  "Pendente": {
+    "en": "Pending",
+    "es": "Pendiente"
+  },
+  "Pending": {
+    "en": "Pending",
+    "es": "Pendiente"
+  },
+  "Pendiente": {
+    "en": "Pending",
+    "es": "Pendiente"
+  },
+  "Solicitado": {
+    "en": "Requested",
+    "es": "Solicitado"
+  },
+  "Requested": {
+    "en": "Requested",
+    "es": "Solicitado"
+  },
+  "Em processamento": {
+    "en": "Processing",
+    "es": "En proceso"
+  },
+  "Processing": {
+    "en": "Processing",
+    "es": "En proceso"
+  },
+  "En proceso": {
+    "en": "Processing",
+    "es": "En proceso"
+  },
+  "Enviado à rede": {
+    "en": "Submitted to network",
+    "es": "Enviado a la red"
+  },
+  "Submitted to network": {
+    "en": "Submitted to network",
+    "es": "Enviado a la red"
+  },
+  "Enviado a la red": {
+    "en": "Submitted to network",
+    "es": "Enviado a la red"
+  },
+  "Enviando": {
+    "en": "Sending",
+    "es": "Enviando"
+  },
+  "Sending": {
+    "en": "Sending",
+    "es": "Enviando"
+  },
+  "Calculado": {
+    "en": "Calculated",
+    "es": "Calculado"
+  },
+  "Calculated": {
+    "en": "Calculated",
+    "es": "Calculado"
+  },
+  "Autorizado": {
+    "en": "Authorized",
+    "es": "Autorizado"
+  },
+  "Authorized": {
+    "en": "Authorized",
+    "es": "Autorizado"
+  },
+  "Iniciado": {
+    "en": "Initiated",
+    "es": "Iniciado"
+  },
+  "Initiated": {
+    "en": "Initiated",
+    "es": "Iniciado"
+  },
+  "Estornado": {
+    "en": "Reversed",
+    "es": "Revertido (estorno)"
+  },
+  "Reversed": {
+    "en": "Reversed",
+    "es": "Revertido (estorno)"
+  },
+  "Revertido (estorno)": {
+    "en": "Reversed",
+    "es": "Revertido (estorno)"
+  },
+  "Confirmado": {
+    "en": "Confirmed",
+    "es": "Confirmado"
+  },
+  "Confirmed": {
+    "en": "Confirmed",
+    "es": "Confirmado"
+  },
+  "Concluído": {
+    "en": "Completed",
+    "es": "Completado"
+  },
+  "Completed": {
+    "en": "Completed",
+    "es": "Completado"
+  },
+  "Completado": {
+    "en": "Completed",
+    "es": "Completado"
+  },
+  "Liquidado": {
+    "en": "Settled",
+    "es": "Liquidado"
+  },
+  "Settled": {
+    "en": "Settled",
+    "es": "Liquidado"
+  },
+  "Falhou": {
+    "en": "Failed",
+    "es": "Fallido"
+  },
+  "Failed": {
+    "en": "Failed",
+    "es": "Fallido"
+  },
+  "Fallido": {
+    "en": "Failed",
+    "es": "Fallido"
+  },
+  "Recusado": {
+    "en": "Rejected",
+    "es": "Rechazado"
+  },
+  "Rejected": {
+    "en": "Rejected",
+    "es": "Rechazado"
+  },
+  "Rechazado": {
+    "en": "Rejected",
+    "es": "Rechazado"
+  },
+  "Cancelado": {
+    "en": "Cancelled",
+    "es": "Cancelado"
+  },
+  "Cancelled": {
+    "en": "Cancelled",
+    "es": "Cancelado"
+  },
+  "Revertido": {
+    "en": "Reverted",
+    "es": "Revertido"
+  },
+  "Reverted": {
+    "en": "Reverted",
+    "es": "Revertido"
+  },
+  "Simulado": {
+    "en": "Simulated",
+    "es": "Simulado"
+  },
+  "Simulated": {
+    "en": "Simulated",
+    "es": "Simulado"
+  },
+  "Registrado": {
+    "en": "Recorded",
+    "es": "Registrado"
+  },
+  "Recorded": {
+    "en": "Recorded",
+    "es": "Registrado"
+  },
+  "Incerto": {
+    "en": "Uncertain",
+    "es": "Incierto"
+  },
+  "Uncertain": {
+    "en": "Uncertain",
+    "es": "Incierto"
+  },
+  "Incierto": {
+    "en": "Uncertain",
+    "es": "Incierto"
+  },
+  "Expirado": {
+    "en": "Expired",
+    "es": "Expirado"
+  },
+  "Expired": {
+    "en": "Expired",
+    "es": "Expirado"
+  },
+  "Parcial": {
+    "en": "Partial",
+    "es": "Parcial"
+  },
+  "Partial": {
+    "en": "Partial",
+    "es": "Parcial"
+  },
+  "Blockchain local (EVM 31337)": {
+    "en": "Local blockchain (EVM 31337)",
+    "es": "Blockchain local (EVM 31337)"
+  },
+  "Local blockchain (EVM 31337)": {
+    "en": "Local blockchain (EVM 31337)",
+    "es": "Blockchain local (EVM 31337)"
+  },
+  "Atividade da conta": {
+    "en": "Account activity",
+    "es": "Actividad de la cuenta"
+  },
+  "Account activity": {
+    "en": "Account activity",
+    "es": "Actividad de la cuenta"
+  },
+  "Actividad de la cuenta": {
+    "en": "Account activity",
+    "es": "Actividad de la cuenta"
+  },
+  "Simulação": {
+    "en": "Simulation",
+    "es": "Simulación"
+  },
+  "Simulation": {
+    "en": "Simulation",
+    "es": "Simulación"
+  },
+  "Simulación": {
+    "en": "Simulation",
+    "es": "Simulación"
+  },
+  "Testnet pública": {
+    "en": "Public testnet",
+    "es": "Testnet pública"
+  },
+  "Public testnet": {
+    "en": "Public testnet",
+    "es": "Testnet pública"
+  },
+  "Produção pública": {
+    "en": "Public production",
+    "es": "Producción pública"
+  },
+  "Public production": {
+    "en": "Public production",
+    "es": "Producción pública"
+  },
+  "Producción pública": {
+    "en": "Public production",
+    "es": "Producción pública"
+  },
+  "Financeiro": {
+    "en": "Financial",
+    "es": "Financiero"
+  },
+  "Financial": {
+    "en": "Financial",
+    "es": "Financiero"
+  },
+  "Financiero": {
+    "en": "Financial",
+    "es": "Financiero"
+  },
+  "Atividade": {
+    "en": "Activity",
+    "es": "Actividad"
+  },
+  "Activity": {
+    "en": "Activity",
+    "es": "Actividad"
+  },
+  "Actividad": {
+    "en": "Activity",
+    "es": "Actividad"
+  },
+  "Automático": {
+    "en": "Automatic",
+    "es": "Automático"
+  },
+  "Automatic": {
+    "en": "Automatic",
+    "es": "Automático"
+  },
+  "Depósito": {
+    "en": "Deposit",
+    "es": "Depósito"
+  },
+  "Deposit": {
+    "en": "Deposit",
+    "es": "Depósito"
+  },
+  "BETTEX purchase": {
+    "en": "BETTEX purchase",
+    "es": "Compra de BETTEX"
+  },
+  "Conversão": {
+    "en": "Swap",
+    "es": "Conversión"
+  },
+  "Conversión": {
+    "en": "Swap",
+    "es": "Conversión"
+  },
+  "Aplicação": {
+    "en": "Stake",
+    "es": "Aplicación"
+  },
+  "Stake": {
+    "en": "Stake",
+    "es": "Aplicación"
+  },
+  "Aplicación": {
+    "en": "Stake",
+    "es": "Aplicación"
+  },
+  "Resgate": {
+    "en": "Unstake",
+    "es": "Rescate"
+  },
+  "Unstake": {
+    "en": "Unstake",
+    "es": "Rescate"
+  },
+  "Rescate": {
+    "en": "Unstake",
+    "es": "Rescate"
+  },
+  "Distribuição": {
+    "en": "Distribution",
+    "es": "Distribución"
+  },
+  "Distribution": {
+    "en": "Distribution",
+    "es": "Distribución"
+  },
+  "Distribución": {
+    "en": "Distribution",
+    "es": "Distribución"
+  },
+  "Transferência": {
+    "en": "Transfer",
+    "es": "Transferencia"
+  },
+  "Transfer": {
+    "en": "Transfer",
+    "es": "Transferencia"
+  },
+  "Transferencia": {
+    "en": "Transfer",
+    "es": "Transferencia"
+  },
+  "Sign-in": {
+    "en": "Sign-in",
+    "es": "Inicio de sesión"
+  },
+  "Inicio de sesión": {
+    "en": "Sign-in",
+    "es": "Inicio de sesión"
+  },
+  "Sign-out": {
+    "en": "Sign-out",
+    "es": "Cierre de sesión"
+  },
+  "Cierre de sesión": {
+    "en": "Sign-out",
+    "es": "Cierre de sesión"
+  },
+  "Aceite": {
+    "en": "Consent",
+    "es": "Aceptación"
+  },
+  "Consent": {
+    "en": "Consent",
+    "es": "Aceptación"
+  },
+  "Aceptación": {
+    "en": "Consent",
+    "es": "Aceptación"
+  },
+  "Recarga gratuita de teste": {
+    "en": "Free test funding",
+    "es": "Recarga gratuita de prueba"
+  },
+  "Free test funding": {
+    "en": "Free test funding",
+    "es": "Recarga gratuita de prueba"
+  },
+  "Recarga gratuita de prueba": {
+    "en": "Free test funding",
+    "es": "Recarga gratuita de prueba"
+  },
+  "Depósito externo": {
+    "en": "External deposit",
+    "es": "Depósito externo"
+  },
+  "External deposit": {
+    "en": "External deposit",
+    "es": "Depósito externo"
+  },
+  "Transferência enviada": {
+    "en": "Outgoing transfer",
+    "es": "Transferencia enviada"
+  },
+  "Outgoing transfer": {
+    "en": "Outgoing transfer",
+    "es": "Transferencia enviada"
+  },
+  "Transferencia enviada": {
+    "en": "Outgoing transfer",
+    "es": "Transferencia enviada"
+  },
+  "Transferência interna": {
+    "en": "Internal transfer",
+    "es": "Transferencia interna"
+  },
+  "Internal transfer": {
+    "en": "Internal transfer",
+    "es": "Transferencia interna"
+  },
+  "Transferencia interna": {
+    "en": "Internal transfer",
+    "es": "Transferencia interna"
+  },
+  "Execução solicitada": {
+    "en": "Execution requested",
+    "es": "Ejecución solicitada"
+  },
+  "Execution requested": {
+    "en": "Execution requested",
+    "es": "Ejecución solicitada"
+  },
+  "Ejecución solicitada": {
+    "en": "Execution requested",
+    "es": "Ejecución solicitada"
+  },
+  "Mudança de etapa da execução": {
+    "en": "Execution step change",
+    "es": "Cambio de etapa de la ejecución"
+  },
+  "Execution step change": {
+    "en": "Execution step change",
+    "es": "Cambio de etapa de la ejecución"
+  },
+  "Cambio de etapa de la ejecución": {
+    "en": "Execution step change",
+    "es": "Cambio de etapa de la ejecución"
+  },
+  "Operação financeira solicitada": {
+    "en": "Financial operation requested",
+    "es": "Operación financiera solicitada"
+  },
+  "Financial operation requested": {
+    "en": "Financial operation requested",
+    "es": "Operación financiera solicitada"
+  },
+  "Operación financiera solicitada": {
+    "en": "Financial operation requested",
+    "es": "Operación financiera solicitada"
+  },
+  "Conta criada": {
+    "en": "Account created",
+    "es": "Cuenta creada"
+  },
+  "Account created": {
+    "en": "Account created",
+    "es": "Cuenta creada"
+  },
+  "Cuenta creada": {
+    "en": "Account created",
+    "es": "Cuenta creada"
+  },
+  "Aceite registrado": {
+    "en": "Consent accepted",
+    "es": "Aceptación registrada"
+  },
+  "Consent accepted": {
+    "en": "Consent accepted",
+    "es": "Aceptación registrada"
+  },
+  "Aceptación registrada": {
+    "en": "Consent accepted",
+    "es": "Aceptación registrada"
+  },
+  "Carteiras criadas": {
+    "en": "Wallets created",
+    "es": "Carteras creadas"
+  },
+  "Wallets created": {
+    "en": "Wallets created",
+    "es": "Carteras creadas"
+  },
+  "Carteras creadas": {
+    "en": "Wallets created",
+    "es": "Carteras creadas"
+  },
+  "Perfil alterado": {
+    "en": "Profile changed",
+    "es": "Perfil cambiado"
+  },
+  "Profile changed": {
+    "en": "Profile changed",
+    "es": "Perfil cambiado"
+  },
+  "Perfil cambiado": {
+    "en": "Profile changed",
+    "es": "Perfil cambiado"
+  },
+  "Senha alterada": {
+    "en": "Password changed",
+    "es": "Contraseña cambiada"
+  },
+  "Password changed": {
+    "en": "Password changed",
+    "es": "Contraseña cambiada"
+  },
+  "Contraseña cambiada": {
+    "en": "Password changed",
+    "es": "Contraseña cambiada"
+  },
+  "Autorização de ação privada": {
+    "en": "Private action authorization",
+    "es": "Autorización de acción privada"
+  },
+  "Private action authorization": {
+    "en": "Private action authorization",
+    "es": "Autorización de acción privada"
+  },
+  "Autorización de acción privada": {
+    "en": "Private action authorization",
+    "es": "Autorización de acción privada"
+  },
+  "Exportação privada autorizada": {
+    "en": "Private export authorized",
+    "es": "Exportación privada autorizada"
+  },
+  "Private export authorized": {
+    "en": "Private export authorized",
+    "es": "Exportación privada autorizada"
+  },
+  "Exportación privada autorizada": {
+    "en": "Private export authorized",
+    "es": "Exportación privada autorizada"
+  },
+  "Resultado da exportação privada": {
+    "en": "Private export result",
+    "es": "Resultado de la exportación privada"
+  },
+  "Private export result": {
+    "en": "Private export result",
+    "es": "Resultado de la exportación privada"
+  },
+  "Resultado de la exportación privada": {
+    "en": "Private export result",
+    "es": "Resultado de la exportación privada"
+  },
+  "Tentativa na conta": {
+    "en": "Account attempt",
+    "es": "Intento en la cuenta"
+  },
+  "Account attempt": {
+    "en": "Account attempt",
+    "es": "Intento en la cuenta"
+  },
+  "Intento en la cuenta": {
+    "en": "Account attempt",
+    "es": "Intento en la cuenta"
+  },
+  "Processamento por agente": {
+    "en": "Agent processing",
+    "es": "Procesamiento por agente"
+  },
+  "Agent processing": {
+    "en": "Agent processing",
+    "es": "Procesamiento por agente"
+  },
+  "Procesamiento por agente": {
+    "en": "Agent processing",
+    "es": "Procesamiento por agente"
+  },
+  "Distribuição calculada (simulação ou apuração)": {
+    "en": "Distribution calculated (simulation or calculation)",
+    "es": "Distribución calculada (simulación o cálculo)"
+  },
+  "Distribution calculated (simulation or calculation)": {
+    "en": "Distribution calculated (simulation or calculation)",
+    "es": "Distribución calculada (simulación o cálculo)"
+  },
+  "Distribución calculada (simulación o cálculo)": {
+    "en": "Distribution calculated (simulation or calculation)",
+    "es": "Distribución calculada (simulación o cálculo)"
+  },
+  "Principal da tesouraria": {
+    "en": "Treasury principal",
+    "es": "Principal de la tesorería"
+  },
+  "Treasury principal": {
+    "en": "Treasury principal",
+    "es": "Principal de la tesorería"
+  },
+  "Principal de la tesorería": {
+    "en": "Treasury principal",
+    "es": "Principal de la tesorería"
+  },
+  "Estorno": {
+    "en": "Reversal",
+    "es": "Reversión"
+  },
+  "Reversal": {
+    "en": "Reversal",
+    "es": "Reversión"
+  },
+  "Reversión": {
+    "en": "Reversal",
+    "es": "Reversión"
+  },
+  "Carteiras associadas": {
+    "en": "Wallets associated",
+    "es": "Carteras asociadas"
+  },
+  "Wallets associated": {
+    "en": "Wallets associated",
+    "es": "Carteras asociadas"
+  },
+  "Carteras asociadas": {
+    "en": "Wallets associated",
+    "es": "Carteras asociadas"
+  },
+  "Saque": {
+    "en": "Withdrawal",
+    "es": "Retiro"
+  },
+  "Withdrawal": {
+    "en": "Withdrawal",
+    "es": "Retiro"
+  },
+  "Retiro": {
+    "en": "Withdrawal",
+    "es": "Retiro"
+  },
+  "Backup de carteira": {
+    "en": "Wallet backup",
+    "es": "Copia de cartera"
+  },
+  "Wallet backup": {
+    "en": "Wallet backup",
+    "es": "Copia de cartera"
+  },
+  "Copia de cartera": {
+    "en": "Wallet backup",
+    "es": "Copia de cartera"
+  },
+  "Sistema": {
+    "en": "System",
+    "es": "Sistema"
+  },
+  "System": {
+    "en": "System",
+    "es": "Sistema"
+  },
+  "Contrato": {
+    "en": "Contract",
+    "es": "Contrato"
+  },
+  "Contract": {
+    "en": "Contract",
+    "es": "Contrato"
+  },
+  "Você": {
+    "en": "You",
+    "es": "Tú"
+  },
+  "You": {
+    "en": "You",
+    "es": "Tú"
+  },
+  "Tú": {
+    "en": "You",
+    "es": "Tú"
+  },
+  "Agente": {
+    "en": "Agent",
+    "es": "Agente"
+  },
+  "Agent": {
+    "en": "Agent",
+    "es": "Agente"
+  },
+  "Recibo da blockchain": {
+    "en": "Blockchain receipt",
+    "es": "Recibo de la blockchain"
+  },
+  "Blockchain receipt": {
+    "en": "Blockchain receipt",
+    "es": "Recibo de la blockchain"
+  },
+  "Recibo de la blockchain": {
+    "en": "Blockchain receipt",
+    "es": "Recibo de la blockchain"
+  },
+  "Registro da conta": {
+    "en": "Account record",
+    "es": "Registro de la cuenta"
+  },
+  "Account record": {
+    "en": "Account record",
+    "es": "Registro de la cuenta"
+  },
+  "Registro de la cuenta": {
+    "en": "Account record",
+    "es": "Registro de la cuenta"
+  },
+  "Execução": {
+    "en": "Execution",
+    "es": "Ejecución"
+  },
+  "Execution": {
+    "en": "Execution",
+    "es": "Ejecución"
+  },
+  "Ejecución": {
+    "en": "Execution",
+    "es": "Ejecución"
+  },
+  "Motor da demonstração": {
+    "en": "Demo engine",
+    "es": "Motor de la demostración"
+  },
+  "Demo engine": {
+    "en": "Demo engine",
+    "es": "Motor de la demostración"
+  },
+  "Motor de la demostración": {
+    "en": "Demo engine",
+    "es": "Motor de la demostración"
+  },
+  "Prévia do modelo da demonstração": {
+    "en": "Demo model preview",
+    "es": "Vista previa del modelo de la demostración"
+  },
+  "Demo model preview": {
+    "en": "Demo model preview",
+    "es": "Vista previa del modelo de la demostración"
+  },
+  "Vista previa del modelo de la demostración": {
+    "en": "Demo model preview",
+    "es": "Vista previa del modelo de la demostración"
+  },
+  "Demonstração recuperada ou semeada": {
+    "en": "Demo recovered or seeded",
+    "es": "Demostración recuperada o sembrada"
+  },
+  "Demo recovered or seeded": {
+    "en": "Demo recovered or seeded",
+    "es": "Demostración recuperada o sembrada"
+  },
+  "Demostración recuperada o sembrada": {
+    "en": "Demo recovered or seeded",
+    "es": "Demostración recuperada o sembrada"
+  },
+  "Reconciliação": {
+    "en": "Reconciliation",
+    "es": "Reconciliación"
+  },
+  "Reconciliation": {
+    "en": "Reconciliation",
+    "es": "Reconciliación"
+  },
+  "Reconciliación": {
+    "en": "Reconciliation",
+    "es": "Reconciliación"
+  },
+  "Entradas e aceites anteriores a esta data são desconhecidos.": {
+    "en": "Sign-ins and consents before this date are unknown.",
+    "es": "Los inicios de sesión y aceptaciones anteriores a esta fecha son desconocidos."
+  },
+  "Sign-ins and consents before this date are unknown.": {
+    "en": "Sign-ins and consents before this date are unknown.",
+    "es": "Los inicios de sesión y aceptaciones anteriores a esta fecha son desconocidos."
+  },
+  "Los inicios de sesión y aceptaciones anteriores a esta fecha son desconocidos.": {
+    "en": "Sign-ins and consents before this date are unknown.",
+    "es": "Los inicios de sesión y aceptaciones anteriores a esta fecha son desconocidos."
+  },
+  "Alguns itens foram reconstruídos a partir de registros existentes.": {
+    "en": "Some items were reconstructed from existing records.",
+    "es": "Algunos elementos se reconstruyeron a partir de registros existentes."
+  },
+  "Some items were reconstructed from existing records.": {
+    "en": "Some items were reconstructed from existing records.",
+    "es": "Algunos elementos se reconstruyeron a partir de registros existentes."
+  },
+  "Algunos elementos se reconstruyeron a partir de registros existentes.": {
+    "en": "Some items were reconstructed from existing records.",
+    "es": "Algunos elementos se reconstruyeron a partir de registros existentes."
+  },
+  "Distribuições não estão disponíveis para contas nativas.": {
+    "en": "Distributions are not available for native accounts.",
+    "es": "Las distribuciones no están disponibles para cuentas nativas."
+  },
+  "Distributions are not available for native accounts.": {
+    "en": "Distributions are not available for native accounts.",
+    "es": "Las distribuciones no están disponibles para cuentas nativas."
+  },
+  "Las distribuciones no están disponibles para cuentas nativas.": {
+    "en": "Distributions are not available for native accounts.",
+    "es": "Las distribuciones no están disponibles para cuentas nativas."
+  },
+  "Dados da demonstração são simulados.": {
+    "en": "Demo data is simulated.",
+    "es": "Los datos de la demostración son simulados."
+  },
+  "Demo data is simulated.": {
+    "en": "Demo data is simulated.",
+    "es": "Los datos de la demostración son simulados."
+  },
+  "Los datos de la demostración son simulados.": {
+    "en": "Demo data is simulated.",
+    "es": "Los datos de la demostración son simulados."
+  },
+  "Registros da cadeia local não são da rede pública.": {
+    "en": "Local chain records are not from the public network.",
+    "es": "Los registros de la cadena local no son de la red pública."
+  },
+  "Local chain records are not from the public network.": {
+    "en": "Local chain records are not from the public network.",
+    "es": "Los registros de la cadena local no son de la red pública."
+  },
+  "Los registros de la cadena local no son de la red pública.": {
+    "en": "Local chain records are not from the public network.",
+    "es": "Los registros de la cadena local no son de la red pública."
+  },
+  "A sincronização está indisponível; os dados mostrados foram capturados e podem não estar atuais.": {
+    "en": "Sync is unavailable; the data shown was captured and may not be current.",
+    "es": "La sincronización no está disponible; los datos mostrados fueron capturados y pueden no estar actualizados."
+  },
+  "Sync is unavailable; the data shown was captured and may not be current.": {
+    "en": "Sync is unavailable; the data shown was captured and may not be current.",
+    "es": "La sincronización no está disponible; los datos mostrados fueron capturados y pueden no estar actualizados."
+  },
+  "La sincronización no está disponible; los datos mostrados fueron capturados y pueden no estar actualizados.": {
+    "en": "Sync is unavailable; the data shown was captured and may not be current.",
+    "es": "La sincronización no está disponible; los datos mostrados fueron capturados y pueden no estar actualizados."
+  },
+  "Visão restrita: nem todos os dados financeiros são exibidos.": {
+    "en": "Restricted view: not all financial data is shown.",
+    "es": "Vista restringida: no se muestran todos los datos financieros."
+  },
+  "Restricted view: not all financial data is shown.": {
+    "en": "Restricted view: not all financial data is shown.",
+    "es": "Vista restringida: no se muestran todos los datos financieros."
+  },
+  "Vista restringida: no se muestran todos los datos financieros.": {
+    "en": "Restricted view: not all financial data is shown.",
+    "es": "Vista restringida: no se muestran todos los datos financieros."
+  },
+  "Pedido": {
+    "en": "Request",
+    "es": "Solicitud"
+  },
+  "Request": {
+    "en": "Request",
+    "es": "Solicitud"
+  },
+  "Solicitud": {
+    "en": "Request",
+    "es": "Solicitud"
+  },
+  "Authorization": {
+    "en": "Authorization",
+    "es": "Autorización"
+  },
+  "Autorización": {
+    "en": "Authorization",
+    "es": "Autorización"
+  },
+  "Envio": {
+    "en": "Sending",
+    "es": "Envío"
+  },
+  "Envío": {
+    "en": "Sending",
+    "es": "Envío"
+  },
+  "Confirmação": {
+    "en": "Confirmation",
+    "es": "Confirmación"
+  },
+  "Confirmation": {
+    "en": "Confirmation",
+    "es": "Confirmación"
+  },
+  "Confirmación": {
+    "en": "Confirmation",
+    "es": "Confirmación"
+  },
+  "Cálculo": {
+    "en": "Calculation",
+    "es": "Cálculo"
+  },
+  "Calculation": {
+    "en": "Calculation",
+    "es": "Cálculo"
+  },
+  "Start": {
+    "en": "Start",
+    "es": "Inicio"
+  },
+  "Inicio": {
+    "en": "Start",
+    "es": "Inicio"
+  },
+  "Compra": {
+    "en": "Purchase",
+    "es": "Compra"
+  },
+  "Purchase": {
+    "en": "Purchase",
+    "es": "Compra"
+  },
+  "Taxa": {
+    "en": "Fee",
+    "es": "Comisión"
+  },
+  "Fee": {
+    "en": "Fee",
+    "es": "Comisión"
+  },
+  "Comisión": {
+    "en": "Fee",
+    "es": "Comisión"
+  },
+  "Liquidação": {
+    "en": "Settlement",
+    "es": "Liquidación"
+  },
+  "Settlement": {
+    "en": "Settlement",
+    "es": "Liquidación"
+  },
+  "Liquidación": {
+    "en": "Settlement",
+    "es": "Liquidación"
+  },
+  "Falha": {
+    "en": "Failure",
+    "es": "Fallo"
+  },
+  "Failure": {
+    "en": "Failure",
+    "es": "Fallo"
+  },
+  "Fallo": {
+    "en": "Failure",
+    "es": "Fallo"
+  },
+  "Versão da regra": {
+    "en": "Rule version",
+    "es": "Versión de la regla"
+  },
+  "Rule version": {
+    "en": "Rule version",
+    "es": "Versión de la regla"
+  },
+  "Versión de la regla": {
+    "en": "Rule version",
+    "es": "Versión de la regla"
+  },
+  "Period": {
+    "en": "Period",
+    "es": "Período"
+  },
+  "Motivo": {
+    "en": "Reason",
+    "es": "Motivo"
+  },
+  "Reason": {
+    "en": "Reason",
+    "es": "Motivo"
+  },
+  "Carteira de destino": {
+    "en": "Target wallet",
+    "es": "Cartera de destino"
+  },
+  "Target wallet": {
+    "en": "Target wallet",
+    "es": "Cartera de destino"
+  },
+  "Cartera de destino": {
+    "en": "Target wallet",
+    "es": "Cartera de destino"
+  },
+  "Origem": {
+    "en": "From",
+    "es": "Origen"
+  },
+  "From": {
+    "en": "From",
+    "es": "Origen"
+  },
+  "Origen": {
+    "en": "From",
+    "es": "Origen"
+  },
+  "Destino": {
+    "en": "To",
+    "es": "Destino"
+  },
+  "To": {
+    "en": "To",
+    "es": "Destino"
+  },
+  "Gatilho": {
+    "en": "Trigger",
+    "es": "Disparador"
+  },
+  "Trigger": {
+    "en": "Trigger",
+    "es": "Disparador"
+  },
+  "Disparador": {
+    "en": "Trigger",
+    "es": "Disparador"
+  },
+  "Situação anterior": {
+    "en": "Previous status",
+    "es": "Estado anterior"
+  },
+  "Previous status": {
+    "en": "Previous status",
+    "es": "Estado anterior"
+  },
+  "Estado anterior": {
+    "en": "Previous status",
+    "es": "Estado anterior"
+  },
+  "Geral": {
+    "en": "General",
+    "es": "General"
+  },
+  "General": {
+    "en": "General",
+    "es": "General"
+  },
+  "Conversões": {
+    "en": "Swapping",
+    "es": "Conversiones"
+  },
+  "Swapping": {
+    "en": "Swapping",
+    "es": "Conversiones"
+  },
+  "Conversiones": {
+    "en": "Swapping",
+    "es": "Conversiones"
+  },
+  "Aplicações": {
+    "en": "Staking",
+    "es": "Aplicaciones"
+  },
+  "Staking": {
+    "en": "Staking",
+    "es": "Aplicaciones"
+  },
+  "Aplicaciones": {
+    "en": "Staking",
+    "es": "Aplicaciones"
+  },
+  "Distribuições": {
+    "en": "Distributions",
+    "es": "Distribuciones"
+  },
+  "Distributions": {
+    "en": "Distributions",
+    "es": "Distribuciones"
+  },
+  "Distribuciones": {
+    "en": "Distributions",
+    "es": "Distribuciones"
+  },
+  "Treasury": {
+    "en": "Treasury",
+    "es": "Tesorería"
+  },
+  "Tesorería": {
+    "en": "Treasury",
+    "es": "Tesorería"
+  },
+  "Stage": {
+    "en": "Stage",
+    "es": "Etapa"
+  },
+  "Pago": {
+    "en": "Paid",
+    "es": "Pagado"
+  },
+  "Paid": {
+    "en": "Paid",
+    "es": "Pagado"
+  },
+  "Pagado": {
+    "en": "Paid",
+    "es": "Pagado"
+  },
+  "Recebido": {
+    "en": "Received",
+    "es": "Recibido"
+  },
+  "Received": {
+    "en": "Received",
+    "es": "Recibido"
+  },
+  "Recibido": {
+    "en": "Received",
+    "es": "Recibido"
+  },
+  "Principal": {
+    "en": "Principal",
+    "es": "Principal"
+  },
+  "Quantity": {
+    "en": "Quantity",
+    "es": "Cantidad"
+  },
+  "Cantidad": {
+    "en": "Quantity",
+    "es": "Cantidad"
+  },
+  "Elegível": {
+    "en": "Eligible",
+    "es": "Elegible"
+  },
+  "Eligible": {
+    "en": "Eligible",
+    "es": "Elegible"
+  },
+  "Elegible": {
+    "en": "Eligible",
+    "es": "Elegible"
+  },
+  "Pool": {
+    "en": "Pool",
+    "es": "Pool"
+  },
+  "Peso": {
+    "en": "Weight",
+    "es": "Peso"
+  },
+  "Weight": {
+    "en": "Weight",
+    "es": "Peso"
+  },
+  "Amount": {
+    "en": "Amount",
+    "es": "Monto"
+  },
+  "Monto": {
+    "en": "Amount",
+    "es": "Monto"
+  },
+  "Gás": {
+    "en": "Gas",
+    "es": "Gas"
+  },
+  "Gas": {
+    "en": "Gas",
+    "es": "Gas"
+  },
+  "Preço": {
+    "en": "Price",
+    "es": "Precio"
+  },
+  "Price": {
+    "en": "Price",
+    "es": "Precio"
+  },
+  "Precio": {
+    "en": "Price",
+    "es": "Precio"
+  },
+  "Transação": {
+    "en": "Transaction",
+    "es": "Transacción"
+  },
+  "Transaction": {
+    "en": "Transaction",
+    "es": "Transacción"
+  },
+  "Transacción": {
+    "en": "Transaction",
+    "es": "Transacción"
+  },
+  "Ver no Arbiscan Sepolia": {
+    "en": "View on Sepolia Arbiscan",
+    "es": "Ver en Arbiscan Sepolia"
+  },
+  "View on Sepolia Arbiscan": {
+    "en": "View on Sepolia Arbiscan",
+    "es": "Ver en Arbiscan Sepolia"
+  },
+  "Ver en Arbiscan Sepolia": {
+    "en": "View on Sepolia Arbiscan",
+    "es": "Ver en Arbiscan Sepolia"
+  },
+  "Reconstruído": {
+    "en": "Reconstructed",
+    "es": "Reconstruido"
+  },
+  "Reconstructed": {
+    "en": "Reconstructed",
+    "es": "Reconstruido"
+  },
+  "Reconstruido": {
+    "en": "Reconstructed",
+    "es": "Reconstruido"
+  },
+  "Horário de Brasília": {
+    "en": "Brasília time",
+    "es": "Hora de Brasilia"
+  },
+  "Brasília time": {
+    "en": "Brasília time",
+    "es": "Hora de Brasilia"
+  },
+  "Hora de Brasilia": {
+    "en": "Brasília time",
+    "es": "Hora de Brasilia"
+  },
+  "Ocultar detalhe": {
+    "en": "Hide detail",
+    "es": "Ocultar detalle"
+  },
+  "Hide detail": {
+    "en": "Hide detail",
+    "es": "Ocultar detalle"
+  },
+  "Ocultar detalle": {
+    "en": "Hide detail",
+    "es": "Ocultar detalle"
+  },
+  "Ver detalhe": {
+    "en": "View detail",
+    "es": "Ver detalle"
+  },
+  "View detail": {
+    "en": "View detail",
+    "es": "Ver detalle"
+  },
+  "Ver detalle": {
+    "en": "View detail",
+    "es": "Ver detalle"
+  },
+  "Processamento": {
+    "en": "Processing",
+    "es": "Procesamiento"
+  },
+  "Procesamiento": {
+    "en": "Processing",
+    "es": "Procesamiento"
+  },
+  "On-chain": {
+    "en": "On-chain",
+    "es": "On-chain"
+  },
+  "Automático interno, sem registro on-chain": {
+    "en": "Automatic internal, no on-chain record",
+    "es": "Automático interno, sin registro on-chain"
+  },
+  "Automatic internal, no on-chain record": {
+    "en": "Automatic internal, no on-chain record",
+    "es": "Automático interno, sin registro on-chain"
+  },
+  "Automático interno, sin registro on-chain": {
+    "en": "Automatic internal, no on-chain record",
+    "es": "Automático interno, sin registro on-chain"
+  },
+  "Correlação": {
+    "en": "Correlation",
+    "es": "Correlación"
+  },
+  "Correlation": {
+    "en": "Correlation",
+    "es": "Correlación"
+  },
+  "Correlación": {
+    "en": "Correlation",
+    "es": "Correlación"
+  },
+  "Não foi possível carregar a linha do tempo.": {
+    "en": "Could not load the timeline.",
+    "es": "No se pudo cargar la línea de tiempo."
+  },
+  "Could not load the timeline.": {
+    "en": "Could not load the timeline.",
+    "es": "No se pudo cargar la línea de tiempo."
+  },
+  "No se pudo cargar la línea de tiempo.": {
+    "en": "Could not load the timeline.",
+    "es": "No se pudo cargar la línea de tiempo."
+  },
+  "Tentar de novo": {
+    "en": "Try again",
+    "es": "Intentar de nuevo"
+  },
+  "Intentar de nuevo": {
+    "en": "Try again",
+    "es": "Intentar de nuevo"
+  },
+  "Anterior": {
+    "en": "Previous",
+    "es": "Anterior"
+  },
+  "Próxima": {
+    "en": "Next",
+    "es": "Siguiente"
+  },
+  "Siguiente": {
+    "en": "Next",
+    "es": "Siguiente"
+  },
+  "Capital confirmado na tesouraria": {
+    "en": "Confirmed capital in the treasury",
+    "es": "Capital confirmado en la tesorería"
+  },
+  "Confirmed capital in the treasury": {
+    "en": "Confirmed capital in the treasury",
+    "es": "Capital confirmado en la tesorería"
+  },
+  "Capital confirmado en la tesorería": {
+    "en": "Confirmed capital in the treasury",
+    "es": "Capital confirmado en la tesorería"
+  },
+  "Agregado público por ambiente. Capital da cadeia local não é capital real e não é somado a outros ambientes.": {
+    "en": "Public aggregate per environment. Local chain capital is not real capital and is not added to other environments.",
+    "es": "Agregado público por entorno. El capital de la cadena local no es capital real y no se suma a otros entornos."
+  },
+  "Public aggregate per environment. Local chain capital is not real capital and is not added to other environments.": {
+    "en": "Public aggregate per environment. Local chain capital is not real capital and is not added to other environments.",
+    "es": "Agregado público por entorno. El capital de la cadena local no es capital real y no se suma a otros entornos."
+  },
+  "Agregado público por entorno. El capital de la cadena local no es capital real y no se suma a otros entornos.": {
+    "en": "Public aggregate per environment. Local chain capital is not real capital and is not added to other environments.",
+    "es": "Agregado público por entorno. El capital de la cadena local no es capital real y no se suma a otros entornos."
+  },
+  "Nenhum capital confirmado ainda.": {
+    "en": "No confirmed capital yet.",
+    "es": "Aún no hay capital confirmado."
+  },
+  "No confirmed capital yet.": {
+    "en": "No confirmed capital yet.",
+    "es": "Aún no hay capital confirmado."
+  },
+  "Aún no hay capital confirmado.": {
+    "en": "No confirmed capital yet.",
+    "es": "Aún no hay capital confirmado."
+  },
+  "operações": {
+    "en": "operations",
+    "es": "operaciones"
+  },
+  "operations": {
+    "en": "operations",
+    "es": "operaciones"
+  },
+  "operaciones": {
+    "en": "operations",
+    "es": "operaciones"
+  },
+  "History": {
+    "en": "History",
+    "es": "Historial"
+  },
+  "Historial": {
+    "en": "History",
+    "es": "Historial"
+  },
+  "Ambiente": {
+    "en": "Environment",
+    "es": "Entorno"
+  },
+  "Environment": {
+    "en": "Environment",
+    "es": "Entorno"
+  },
+  "Entorno": {
+    "en": "Environment",
+    "es": "Entorno"
+  },
+  "Todos os ambientes": {
+    "en": "All environments",
+    "es": "Todos los entornos"
+  },
+  "All environments": {
+    "en": "All environments",
+    "es": "Todos los entornos"
+  },
+  "Todos los entornos": {
+    "en": "All environments",
+    "es": "Todos los entornos"
+  },
+  "Categoria": {
+    "en": "Category",
+    "es": "Categoría"
+  },
+  "Category": {
+    "en": "Category",
+    "es": "Categoría"
+  },
+  "Categoría": {
+    "en": "Category",
+    "es": "Categoría"
+  },
+  "Todas as categorias": {
+    "en": "All categories",
+    "es": "Todas las categorías"
+  },
+  "All categories": {
+    "en": "All categories",
+    "es": "Todas las categorías"
+  },
+  "Todas las categorías": {
+    "en": "All categories",
+    "es": "Todas las categorías"
+  },
+  "Ativo": {
+    "en": "Asset",
+    "es": "Activo"
+  },
+  "Asset": {
+    "en": "Asset",
+    "es": "Activo"
+  },
+  "Activo": {
+    "en": "Asset",
+    "es": "Activo"
+  },
+  "Todos os ativos": {
+    "en": "All assets",
+    "es": "Todos los activos"
+  },
+  "All assets": {
+    "en": "All assets",
+    "es": "Todos los activos"
+  },
+  "Todos los activos": {
+    "en": "All assets",
+    "es": "Todos los activos"
+  },
+  "ETH": {
+    "en": "BETTEX",
+    "es": "ETH"
+  },
+  "Situação": {
+    "en": "Status",
+    "es": "Estado"
+  },
+  "Estado": {
+    "en": "Status",
+    "es": "Estado"
+  },
+  "Todas as situações": {
+    "en": "All statuses",
+    "es": "Todos los estados"
+  },
+  "All statuses": {
+    "en": "All statuses",
+    "es": "Todos los estados"
+  },
+  "Todos los estados": {
+    "en": "All statuses",
+    "es": "Todos los estados"
+  },
+  "De (data e hora)": {
+    "en": "From (date and time)",
+    "es": "Desde (fecha y hora)"
+  },
+  "From (date and time)": {
+    "en": "From (date and time)",
+    "es": "Desde (fecha y hora)"
+  },
+  "Desde (fecha y hora)": {
+    "en": "From (date and time)",
+    "es": "Desde (fecha y hora)"
+  },
+  "Até (data e hora)": {
+    "en": "To (date and time)",
+    "es": "Hasta (fecha y hora)"
+  },
+  "To (date and time)": {
+    "en": "To (date and time)",
+    "es": "Hasta (fecha y hora)"
+  },
+  "Hasta (fecha y hora)": {
+    "en": "To (date and time)",
+    "es": "Hasta (fecha y hora)"
+  },
+  "Tipo": {
+    "en": "Type",
+    "es": "Tipo"
+  },
+  "Type": {
+    "en": "Type",
+    "es": "Tipo"
+  },
+  "Todos os tipos": {
+    "en": "All types",
+    "es": "Todos los tipos"
+  },
+  "All types": {
+    "en": "All types",
+    "es": "Todos los tipos"
+  },
+  "Todos los tipos": {
+    "en": "All types",
+    "es": "Todos los tipos"
+  },
+  "Rede (chainId)": {
+    "en": "Network (chainId)",
+    "es": "Red (chainId)"
+  },
+  "Network (chainId)": {
+    "en": "Network (chainId)",
+    "es": "Red (chainId)"
+  },
+  "Red (chainId)": {
+    "en": "Network (chainId)",
+    "es": "Red (chainId)"
+  },
+  "Wallet": {
+    "en": "Wallet",
+    "es": "Cartera"
+  },
+  "Cartera": {
+    "en": "Wallet",
+    "es": "Cartera"
+  },
+  "Limpar filtros": {
+    "en": "Clear filters",
+    "es": "Limpiar filtros"
+  },
+  "Clear filters": {
+    "en": "Clear filters",
+    "es": "Limpiar filtros"
+  },
+  "Limpiar filtros": {
+    "en": "Clear filters",
+    "es": "Limpiar filtros"
+  },
+  "Simulação de cálculo apenas: não é pagamento nem direito financeiro.": {
+    "en": "Calculation simulation only: not a payout or a financial claim.",
+    "es": "Solo simulación de cálculo: no es un pago ni un derecho financiero."
+  },
+  "Calculation simulation only: not a payout or a financial claim.": {
+    "en": "Calculation simulation only: not a payout or a financial claim.",
+    "es": "Solo simulación de cálculo: no es un pago ni un derecho financiero."
+  },
+  "Solo simulación de cálculo: no es un pago ni un derecho financiero.": {
+    "en": "Calculation simulation only: not a payout or a financial claim.",
+    "es": "Solo simulación de cálculo: no es un pago ni un derecho financiero."
+  },
+  "Simular apuração": {
+    "en": "Simulate calculation",
+    "es": "Simular cálculo"
+  },
+  "Simulate calculation": {
+    "en": "Simulate calculation",
+    "es": "Simular cálculo"
+  },
+  "Simular cálculo": {
+    "en": "Simulate calculation",
+    "es": "Simular cálculo"
+  },
+  "Simulação registrada.": {
+    "en": "Simulation recorded.",
+    "es": "Simulación registrada."
+  },
+  "Simulation recorded.": {
+    "en": "Simulation recorded.",
+    "es": "Simulación registrada."
+  },
+  "Simulación registrada.": {
+    "en": "Simulation recorded.",
+    "es": "Simulación registrada."
+  },
+  "Não foi possível simular.": {
+    "en": "Could not simulate.",
+    "es": "No se pudo simular."
+  },
+  "Could not simulate.": {
+    "en": "Could not simulate.",
+    "es": "No se pudo simular."
+  },
+  "No se pudo simular.": {
+    "en": "Could not simulate.",
+    "es": "No se pudo simular."
+  },
+  "Acesso restrito: esta visão não mostra todos os dados financeiros.": {
+    "en": "Restricted access: this view does not show all financial data.",
+    "es": "Acceso restringido: esta vista no muestra todos los datos financieros."
+  },
+  "Restricted access: this view does not show all financial data.": {
+    "en": "Restricted access: this view does not show all financial data.",
+    "es": "Acceso restringido: esta vista no muestra todos los datos financieros."
+  },
+  "Acceso restringido: esta vista no muestra todos los datos financieros.": {
+    "en": "Restricted access: this view does not show all financial data.",
+    "es": "Acceso restringido: esta vista no muestra todos los datos financieros."
+  },
+  "Não foi possível carregar o histórico.": {
+    "en": "Could not load the history.",
+    "es": "No se pudo cargar el historial."
+  },
+  "Could not load the history.": {
+    "en": "Could not load the history.",
+    "es": "No se pudo cargar el historial."
+  },
+  "No se pudo cargar el historial.": {
+    "en": "Could not load the history.",
+    "es": "No se pudo cargar el historial."
+  },
+  "Cobertura desde": {
+    "en": "Coverage from",
+    "es": "Cobertura desde"
+  },
+  "Coverage from": {
+    "en": "Coverage from",
+    "es": "Cobertura desde"
+  },
+  "Registros anteriores (entradas e aceites antes dessa data) são desconhecidos; itens reconstruídos têm selo próprio.": {
+    "en": "Earlier records (sign-ins and consents before that date) are unknown; reconstructed items carry their own badge.",
+    "es": "Los registros anteriores (inicios de sesión y aceptaciones previos) son desconocidos; los elementos reconstruidos tienen su propia insignia."
+  },
+  "Earlier records (sign-ins and consents before that date) are unknown; reconstructed items carry their own badge.": {
+    "en": "Earlier records (sign-ins and consents before that date) are unknown; reconstructed items carry their own badge.",
+    "es": "Los registros anteriores (inicios de sesión y aceptaciones previos) son desconocidos; los elementos reconstruidos tienen su propia insignia."
+  },
+  "Los registros anteriores (inicios de sesión y aceptaciones previos) son desconocidos; los elementos reconstruidos tienen su propia insignia.": {
+    "en": "Earlier records (sign-ins and consents before that date) are unknown; reconstructed items carry their own badge.",
+    "es": "Los registros anteriores (inicios de sesión y aceptaciones previos) son desconocidos; los elementos reconstruidos tienen su propia insignia."
+  },
+  "Há uma limitação de cobertura não detalhada.": {
+    "en": "There is an unspecified coverage limitation.",
+    "es": "Hay una limitación de cobertura sin detallar."
+  },
+  "There is an unspecified coverage limitation.": {
+    "en": "There is an unspecified coverage limitation.",
+    "es": "Hay una limitación de cobertura sin detallar."
+  },
+  "Hay una limitación de cobertura sin detallar.": {
+    "en": "There is an unspecified coverage limitation.",
+    "es": "Hay una limitación de cobertura sin detallar."
+  },
+  "Distribuições ainda não estão disponíveis para contas de teste nativas. Nenhuma distribuição real foi apurada.": {
+    "en": "Distributions are not yet available for native test accounts. No real distribution has been calculated.",
+    "es": "Las distribuciones aún no están disponibles para cuentas de prueba nativas. No se ha calculado ninguna distribución real."
+  },
+  "Distributions are not yet available for native test accounts. No real distribution has been calculated.": {
+    "en": "Distributions are not yet available for native test accounts. No real distribution has been calculated.",
+    "es": "Las distribuciones aún no están disponibles para cuentas de prueba nativas. No se ha calculado ninguna distribución real."
+  },
+  "Las distribuciones aún no están disponibles para cuentas de prueba nativas. No se ha calculado ninguna distribución real.": {
+    "en": "Distributions are not yet available for native test accounts. No real distribution has been calculated.",
+    "es": "Las distribuciones aún no están disponibles para cuentas de prueba nativas. No se ha calculado ninguna distribución real."
+  },
+  "Nenhuma simulação registrada ainda.": {
+    "en": "No simulation recorded yet.",
+    "es": "Aún no hay simulaciones registradas."
+  },
+  "No simulation recorded yet.": {
+    "en": "No simulation recorded yet.",
+    "es": "Aún no hay simulaciones registradas."
+  },
+  "Aún no hay simulaciones registradas.": {
+    "en": "No simulation recorded yet.",
+    "es": "Aún no hay simulaciones registradas."
+  },
+  "Nenhum registro neste filtro.": {
+    "en": "No records for this filter.",
+    "es": "Ningún registro con este filtro."
+  },
+  "No records for this filter.": {
+    "en": "No records for this filter.",
+    "es": "Ningún registro con este filtro."
+  },
+  "Ningún registro con este filtro.": {
+    "en": "No records for this filter.",
+    "es": "Ningún registro con este filtro."
+  },
+  "LOCAL": {
+    "en": "LOCAL",
+    "es": "LOCAL"
+  },
+  "activity": {
+    "en": "activity",
+    "es": "activity"
+  },
+  "amountUnits": {
+    "en": "amountUnits",
+    "es": "amountUnits"
+  },
+  "asset": {
+    "en": "asset",
+    "es": "asset"
+  },
+  "busy": {
+    "en": "busy",
+    "es": "busy"
+  },
+  "category": {
+    "en": "category",
+    "es": "category"
+  },
+  "chainId": {
+    "en": "chainId",
+    "es": "chainId"
+  },
+  "decimals": {
+    "en": "decimals",
+    "es": "decimals"
+  },
+  "distributions": {
+    "en": "distributions",
+    "es": "distributions"
+  },
+  "eligibleUnits": {
+    "en": "eligibleUnits",
+    "es": "eligibleUnits"
+  },
+  "en-US": {
+    "en": "en-US",
+    "es": "en-US"
+  },
+  "environment": {
+    "en": "environment",
+    "es": "environment"
+  },
+  "err": {
+    "en": "err",
+    "es": "err"
+  },
+  "es-ES": {
+    "en": "es-ES",
+    "es": "es-ES"
+  },
+  "feeUnits": {
+    "en": "feeUnits",
+    "es": "feeUnits"
+  },
+  "from": {
+    "en": "from",
+    "es": "from"
+  },
+  "gasWei": {
+    "en": "gasWei",
+    "es": "gasWei"
+  },
+  "general": {
+    "en": "general",
+    "es": "general"
+  },
+  "history-transparency": {
+    "en": "history-transparency",
+    "es": "history-transparency"
+  },
+  "kind": {
+    "en": "kind",
+    "es": "kind"
+  },
+  "medium": {
+    "en": "medium",
+    "es": "medium"
+  },
+  "native": {
+    "en": "native",
+    "es": "native"
+  },
+  "number": {
+    "en": "number",
+    "es": "number"
+  },
+  "paidAsset": {
+    "en": "paidAsset",
+    "es": "paidAsset"
+  },
+  "paidUnits": {
+    "en": "paidUnits",
+    "es": "paidUnits"
+  },
+  "periodId": {
+    "en": "periodId",
+    "es": "periodId"
+  },
+  "poolUnits": {
+    "en": "poolUnits",
+    "es": "poolUnits"
+  },
+  "previousState": {
+    "en": "previousState",
+    "es": "previousState"
+  },
+  "priceDecimals": {
+    "en": "priceDecimals",
+    "es": "priceDecimals"
+  },
+  "priceUnits": {
+    "en": "priceUnits",
+    "es": "priceUnits"
+  },
+  "principalUnits": {
+    "en": "principalUnits",
+    "es": "principalUnits"
+  },
+  "quantityUnits": {
+    "en": "quantityUnits",
+    "es": "quantityUnits"
+  },
+  "reason": {
+    "en": "reason",
+    "es": "reason"
+  },
+  "receivedAsset": {
+    "en": "receivedAsset",
+    "es": "receivedAsset"
+  },
+  "receivedUnits": {
+    "en": "receivedUnits",
+    "es": "receivedUnits"
+  },
+  "ruleVersion": {
+    "en": "ruleVersion",
+    "es": "ruleVersion"
+  },
+  "same-origin": {
+    "en": "same-origin",
+    "es": "same-origin"
+  },
+  "staking": {
+    "en": "staking",
+    "es": "staking"
+  },
+  "state": {
+    "en": "state",
+    "es": "state"
+  },
+  "swapping": {
+    "en": "swapping",
+    "es": "swapping"
+  },
+  "sync_unavailable": {
+    "en": "sync_unavailable",
+    "es": "sync_unavailable"
+  },
+  "targetWallet": {
+    "en": "targetWallet",
+    "es": "targetWallet"
+  },
+  "to": {
+    "en": "to",
+    "es": "to"
+  },
+  "treasury": {
+    "en": "treasury",
+    "es": "treasury"
+  },
+  "unavailable": {
+    "en": "unavailable",
+    "es": "unavailable"
+  },
+  "wallet": {
+    "en": "wallet",
+    "es": "wallet"
+  },
+  "weightUnits": {
+    "en": "weightUnits",
+    "es": "weightUnits"
+  },
+  "{0} ETH": {
+    "en": "{0} ETH",
+    "es": "{0} ETH"
+  },
+  "· LOCAL": {
+    "en": "· LOCAL",
+    "es": "· LOCAL"
+  },
+  "Aprovado": {
+    "en": "Approved",
+    "es": "Aprobado"
+  },
+  "Approved": {
+    "en": "Approved",
+    "es": "Aprobado"
+  },
+  "Aprobado": {
+    "en": "Approved",
+    "es": "Aprobado"
+  },
+  "Aberto": {
+    "en": "Open",
+    "es": "Abierto"
+  },
+  "Open": {
+    "en": "Open",
+    "es": "Abierto"
+  },
+  "Abierto": {
+    "en": "Open",
+    "es": "Abierto"
+  },
+  "Encerrado": {
+    "en": "Closed",
+    "es": "Cerrado"
+  },
+  "Closed": {
+    "en": "Closed",
+    "es": "Cerrado"
+  },
+  "Cerrado": {
+    "en": "Closed",
+    "es": "Cerrado"
+  },
+  "Reservado": {
+    "en": "Reserved",
+    "es": "Reservado"
+  },
+  "Reserved": {
+    "en": "Reserved",
+    "es": "Reservado"
+  },
+  "Permissão administrativa alterada": {
+    "en": "Administrative permission changed",
+    "es": "Permiso administrativo cambiado"
+  },
+  "Administrative permission changed": {
+    "en": "Administrative permission changed",
+    "es": "Permiso administrativo cambiado"
+  },
+  "Permiso administrativo cambiado": {
+    "en": "Administrative permission changed",
+    "es": "Permiso administrativo cambiado"
+  },
+  "Reserva da tesouraria": {
+    "en": "Treasury reservation",
+    "es": "Reserva de la tesorería"
+  },
+  "Treasury reservation": {
+    "en": "Treasury reservation",
+    "es": "Reserva de la tesorería"
+  },
+  "Reserva de la tesorería": {
+    "en": "Treasury reservation",
+    "es": "Reserva de la tesorería"
+  },
+  "Alocação da tesouraria": {
+    "en": "Treasury allocation",
+    "es": "Asignación de la tesorería"
+  },
+  "Treasury allocation": {
+    "en": "Treasury allocation",
+    "es": "Asignación de la tesorería"
+  },
+  "Asignación de la tesorería": {
+    "en": "Treasury allocation",
+    "es": "Asignación de la tesorería"
+  },
+  "Retorno à tesouraria": {
+    "en": "Treasury return",
+    "es": "Retorno a la tesorería"
+  },
+  "Treasury return": {
+    "en": "Treasury return",
+    "es": "Retorno a la tesorería"
+  },
+  "Retorno a la tesorería": {
+    "en": "Treasury return",
+    "es": "Retorno a la tesorería"
+  },
+  "Custo da tesouraria": {
+    "en": "Treasury cost",
+    "es": "Costo de la tesorería"
+  },
+  "Treasury cost": {
+    "en": "Treasury cost",
+    "es": "Costo de la tesorería"
+  },
+  "Costo de la tesorería": {
+    "en": "Treasury cost",
+    "es": "Costo de la tesorería"
+  },
+  "Retenção da tesouraria": {
+    "en": "Treasury retention",
+    "es": "Retención de la tesorería"
+  },
+  "Treasury retention": {
+    "en": "Treasury retention",
+    "es": "Retención de la tesorería"
+  },
+  "Retención de la tesorería": {
+    "en": "Treasury retention",
+    "es": "Retención de la tesorería"
+  },
+  "Pool de distribuição da tesouraria": {
+    "en": "Treasury distribution pool",
+    "es": "Pool de distribución de la tesorería"
+  },
+  "Treasury distribution pool": {
+    "en": "Treasury distribution pool",
+    "es": "Pool de distribución de la tesorería"
+  },
+  "Pool de distribución de la tesorería": {
+    "en": "Treasury distribution pool",
+    "es": "Pool de distribución de la tesorería"
+  },
+  "Reserva de recompra": {
+    "en": "Buyback reserve",
+    "es": "Reserva de recompra"
+  },
+  "Buyback reserve": {
+    "en": "Buyback reserve",
+    "es": "Reserva de recompra"
+  },
+  "Correção de execução": {
+    "en": "Execution correction",
+    "es": "Corrección de ejecución"
+  },
+  "Execution correction": {
+    "en": "Execution correction",
+    "es": "Corrección de ejecución"
+  },
+  "Corrección de ejecución": {
+    "en": "Execution correction",
+    "es": "Corrección de ejecución"
+  },
+  "Administração de permissões": {
+    "en": "Permission administration",
+    "es": "Administración de permisos"
+  },
+  "Permission administration": {
+    "en": "Permission administration",
+    "es": "Administración de permisos"
+  },
+  "Administración de permisos": {
+    "en": "Permission administration",
+    "es": "Administración de permisos"
+  },
+  "Backup criptografado": {
+    "en": "Encrypted backup",
+    "es": "Copia cifrada"
+  },
+  "Encrypted backup": {
+    "en": "Encrypted backup",
+    "es": "Copia cifrada"
+  },
+  "Copia cifrada": {
+    "en": "Encrypted backup",
+    "es": "Copia cifrada"
+  },
+  "Revelar chave": {
+    "en": "Reveal key",
+    "es": "Revelar clave"
+  },
+  "Reveal key": {
+    "en": "Reveal key",
+    "es": "Revelar clave"
+  },
+  "Revelar clave": {
+    "en": "Reveal key",
+    "es": "Revelar clave"
+  },
+  "Copiar chave": {
+    "en": "Copy key",
+    "es": "Copiar clave"
+  },
+  "Copy key": {
+    "en": "Copy key",
+    "es": "Copiar clave"
+  },
+  "Copiar clave": {
+    "en": "Copy key",
+    "es": "Copiar clave"
+  },
+  "Download de chave": {
+    "en": "Key download",
+    "es": "Descarga de clave"
+  },
+  "Key download": {
+    "en": "Key download",
+    "es": "Descarga de clave"
+  },
+  "Descarga de clave": {
+    "en": "Key download",
+    "es": "Descarga de clave"
+  },
+  "Custo": {
+    "en": "Cost",
+    "es": "Costo"
+  },
+  "Cost": {
+    "en": "Cost",
+    "es": "Costo"
+  },
+  "Costo": {
+    "en": "Cost",
+    "es": "Costo"
+  },
+  "Result": {
+    "en": "Result",
+    "es": "Resultado"
+  },
+  "Capital": {
+    "en": "Capital",
+    "es": "Capital"
+  },
+  "Ação privada": {
+    "en": "Private action",
+    "es": "Acción privada"
+  },
+  "Private action": {
+    "en": "Private action",
+    "es": "Acción privada"
+  },
+  "Acción privada": {
+    "en": "Private action",
+    "es": "Acción privada"
+  },
+  "Permissão": {
+    "en": "Permission",
+    "es": "Permiso"
+  },
+  "Permission": {
+    "en": "Permission",
+    "es": "Permiso"
+  },
+  "Permiso": {
+    "en": "Permission",
+    "es": "Permiso"
+  },
+  "Alteração": {
+    "en": "Change",
+    "es": "Cambio"
+  },
+  "Change": {
+    "en": "Change",
+    "es": "Cambio"
+  },
+  "Cambio": {
+    "en": "Change",
+    "es": "Cambio"
+  },
+  "De (data e hora, Horário de Brasília UTC-3)": {
+    "en": "From (date and time, Brasília time UTC-3)",
+    "es": "Desde (fecha y hora, hora de Brasilia UTC-3)"
+  },
+  "From (date and time, Brasília time UTC-3)": {
+    "en": "From (date and time, Brasília time UTC-3)",
+    "es": "Desde (fecha y hora, hora de Brasilia UTC-3)"
+  },
+  "Desde (fecha y hora, hora de Brasilia UTC-3)": {
+    "en": "From (date and time, Brasília time UTC-3)",
+    "es": "Desde (fecha y hora, hora de Brasilia UTC-3)"
+  },
+  "Até (data e hora, Horário de Brasília UTC-3)": {
+    "en": "To (date and time, Brasília time UTC-3)",
+    "es": "Hasta (fecha y hora, hora de Brasilia UTC-3)"
+  },
+  "To (date and time, Brasília time UTC-3)": {
+    "en": "To (date and time, Brasília time UTC-3)",
+    "es": "Hasta (fecha y hora, hora de Brasilia UTC-3)"
+  },
+  "Hasta (fecha y hora, hora de Brasilia UTC-3)": {
+    "en": "To (date and time, Brasília time UTC-3)",
+    "es": "Hasta (fecha y hora, hora de Brasilia UTC-3)"
+  },
+  "action": {
+    "en": "action",
+    "es": "action"
+  },
+  "encrypted-backup": {
+    "en": "encrypted-backup",
+    "es": "encrypted-backup"
+  },
+  "permission": {
+    "en": "permission",
+    "es": "permission"
+  },
+  "private-download": {
+    "en": "private-download",
+    "es": "private-download"
+  },
+  "privateAction": {
+    "en": "privateAction",
+    "es": "privateAction"
+  },
+  "Nenhuma distribuição registrada neste filtro. Rodadas de teste usam resultado sintético e EVM local, sem lucro de trading real.": {
+    "en": "No distribution recorded for this filter. Test rounds use synthetic results and the local EVM, with no real trading profit.",
+    "es": "No hay distribución registrada en este filtro. Las rondas de prueba usan resultados sintéticos y la EVM local, sin beneficio de trading real."
+  },
+  "No distribution recorded for this filter. Test rounds use synthetic results and the local EVM, with no real trading profit.": {
+    "en": "No distribution recorded for this filter. Test rounds use synthetic results and the local EVM, with no real trading profit.",
+    "es": "No hay distribución registrada en este filtro. Las rondas de prueba usan resultados sintéticos y la EVM local, sin beneficio de trading real."
+  },
+  "No hay distribución registrada en este filtro. Las rondas de prueba usan resultados sintéticos y la EVM local, sin beneficio de trading real.": {
+    "en": "No distribution recorded for this filter. Test rounds use synthetic results and the local EVM, with no real trading profit.",
+    "es": "No hay distribución registrada en este filtro. Las rondas de prueba usan resultados sintéticos y la EVM local, sin beneficio de trading real."
+  },
+  "O fundador": {
+    "en": "The founder",
+    "es": "El fundador"
+  },
+  "Experiência de mercado e audiência própria": {
+    "en": "Market experience and an established audience",
+    "es": "Experiencia en el mercado y audiencia propia"
+  },
+  "Fundador da BETTEX · identidade reservada": {
+    "en": "BETTEX founder · identity undisclosed",
+    "es": "Fundador de BETTEX · identidad reservada"
+  },
+  "Experiência": {
+    "en": "Experience",
+    "es": "Experiencia"
+  },
+  "Audiência": {
+    "en": "Audience",
+    "es": "Audiencia"
+  },
+  "Estratégia": {
+    "en": "Strategy",
+    "es": "Estrategia"
+  },
+  "Trajetória no mercado e no desenvolvimento de operações.": {
+    "en": "A background in the market and in developing operations.",
+    "es": "Trayectoria en el mercado y en el desarrollo de operaciones."
+  },
+  "Comunidade própria e canais de relacionamento com o público.": {
+    "en": "An established community and channels for engaging with the audience.",
+    "es": "Comunidad propia y canales de relación con el público."
+  },
+  "Coordenação do projeto, com IA e serviços especializados.": {
+    "en": "Project coordination, with AI and specialized services.",
+    "es": "Coordinación del proyecto, con IA y servicios especializados."
+  },
+  "A identidade do fundador permanece reservada nesta fase do projeto.": {
+    "en": "The founder’s identity remains undisclosed at this stage of the project.",
+    "es": "La identidad del fundador permanece reservada en esta fase del proyecto."
+  },
+  "Experiência e atuação no Pitch": {
+    "en": "Experience and role in the Pitch",
+    "es": "Experiencia y actuación en el Pitch"
+  },
+  "Ilustração de tecnologia e desenvolvimento do projeto BETTEX": {
+    "en": "Illustration of technology and development of the BETTEX project",
+    "es": "Ilustración de tecnología y desarrollo del proyecto BETTEX"
+  },
+  "Tecnologia, comunidade e inteligência artificial": {
+    "en": "Technology, community and artificial intelligence",
+    "es": "Tecnología, comunidad e inteligencia artificial"
+  },
+  "O fundador tem experiência no mercado e no desenvolvimento de operações. Mantém uma audiência própria e canais de relacionamento com comunidades, que podem apoiar a divulgação e a validação da BETTEX. Sua atuação combina definição da estratégia e coordenação do projeto, com IA e serviços especializados.": {
+    "en": "The founder has experience in the market and in developing operations. He maintains an established audience and channels for engaging with communities, which can support BETTEX’s outreach and validation. His role combines strategy definition and project coordination, with AI and specialized services.",
+    "es": "El fundador tiene experiencia en el mercado y en el desarrollo de operaciones. Mantiene una audiencia propia y canales de relación con comunidades, que pueden apoyar la difusión y la validación de BETTEX. Su actuación combina la definición de la estrategia y la coordinación del proyecto, con IA y servicios especializados."
+  },
+  "O fundador não recebe salário ou pró-labore nem faz retiradas do caixa da empresa. Seus únicos ganhos na BETTEX são os eventuais ganhos com seus próprios tokens, sujeitos às mesmas regras dos demais titulares e sem retorno garantido.": {
+    "en": "The founder receives no salary or management compensation and makes no withdrawals from the company’s cash. His only earnings from BETTEX are potential earnings from his own tokens, subject to the same rules as other holders and with no guaranteed return.",
+    "es": "El fundador no recibe salario ni remuneración por administración, ni realiza retiros de la caja de la empresa. Sus únicos ingresos de BETTEX son las posibles ganancias de sus propios tokens, sujetos a las mismas reglas que los demás titulares y sin rentabilidad garantizada."
+  },
+  "O fundador financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.": {
+    "en": "The founder is funding the initial plan with his current budget, at no acquisition cost to BETTEX. The goal is to validate product demand, interest in the proposal, and the user experience.",
+    "es": "El fundador financia el plan inicial con su presupuesto actual, sin costo de adquisición para BETTEX. El objetivo es validar la demanda del producto, el interés en la propuesta y la experiencia de uso."
+  },
+  "Uma única empresa comercial privada de capital fechado a constituir, administrada pelo fundador em modelo full stack AI, sem funcionários. Serviços externos especializados são contratados por necessidade, não posições internas.": {
+    "en": "A single private, closely-held commercial company to be incorporated, managed by the founder in a full stack AI model, with no employees. Specialized external services are contracted by need, not internal positions.",
+    "es": "Una única empresa comercial privada de capital cerrado a constituir, administrada por el fundador en modelo full stack AI, sin empleados. Servicios externos especializados son contratados por necesidad, no posiciones internas."
+  },
+  "Saldo reservado para Double 2X": {
+    "en": "Balance reserved for Double 2X",
+    "es": "Saldo reservado para Double 2X"
+  },
+  "Balance reserved for Double 2X": {
+    "en": "Balance reserved for Double 2X",
+    "es": "Saldo reservado para Double 2X"
+  },
+  "Double 2X: ganho": {
+    "en": "Double 2X: win",
+    "es": "Double 2X: ganancia"
+  },
+  "Double 2X: win": {
+    "en": "Double 2X: win",
+    "es": "Double 2X: ganancia"
+  },
+  "Double 2X: ganancia": {
+    "en": "Double 2X: win",
+    "es": "Double 2X: ganancia"
+  },
+  "Double 2X: perda": {
+    "en": "Double 2X: loss",
+    "es": "Double 2X: pérdida"
+  },
+  "Double 2X: loss": {
+    "en": "Double 2X: loss",
+    "es": "Double 2X: pérdida"
+  },
+  "Double 2X: pérdida": {
+    "en": "Double 2X: loss",
+    "es": "Double 2X: pérdida"
+  },
+  "Double 2X: saldo devolvido": {
+    "en": "Double 2X: balance refunded",
+    "es": "Double 2X: saldo devuelto"
+  },
+  "Double 2X: balance refunded": {
+    "en": "Double 2X: balance refunded",
+    "es": "Double 2X: saldo devuelto"
+  },
+  "Double 2X: saldo devuelto": {
+    "en": "Double 2X: balance refunded",
+    "es": "Double 2X: saldo devuelto"
+  },
+  "Números da loteria comprados": {
+    "en": "Lottery entries purchased",
+    "es": "Números de lotería comprados"
+  },
+  "Lottery entries purchased": {
+    "en": "Lottery entries purchased",
+    "es": "Números de lotería comprados"
+  },
+  "Números de lotería comprados": {
+    "en": "Lottery entries purchased",
+    "es": "Números de lotería comprados"
+  },
+  "Número gratuito da loteria": {
+    "en": "Free lottery number",
+    "es": "Número gratuito de lotería"
+  },
+  "Free lottery number": {
+    "en": "Free lottery number",
+    "es": "Número gratuito de lotería"
+  },
+  "Número gratuito de lotería": {
+    "en": "Free lottery number",
+    "es": "Número gratuito de lotería"
+  },
+  "Resultado realizado de investimento": {
+    "en": "Realized investment result",
+    "es": "Resultado realizado de inversión"
+  },
+  "Realized investment result": {
+    "en": "Realized investment result",
+    "es": "Resultado realizado de inversión"
+  },
+  "Resultado realizado de inversión": {
+    "en": "Realized investment result",
+    "es": "Resultado realizado de inversión"
+  },
+  "Custo de execução": {
+    "en": "Execution cost",
+    "es": "Costo de ejecución"
+  },
+  "Execution cost": {
+    "en": "Execution cost",
+    "es": "Costo de ejecución"
+  },
+  "Costo de ejecución": {
+    "en": "Execution cost",
+    "es": "Costo de ejecución"
+  },
+  "Financiamento da recompra": {
+    "en": "Buyback funding",
+    "es": "Fondeo de recompra"
+  },
+  "Buyback funding": {
+    "en": "Buyback funding",
+    "es": "Fondeo de recompra"
+  },
+  "Fondeo de recompra": {
+    "en": "Buyback funding",
+    "es": "Fondeo de recompra"
+  },
+  "Compra da recompra": {
+    "en": "Buyback purchase",
+    "es": "Compra de recompra"
+  },
+  "Buyback purchase": {
+    "en": "Buyback purchase",
+    "es": "Compra de recompra"
+  },
+  "Compra de recompra": {
+    "en": "Buyback purchase",
+    "es": "Compra de recompra"
+  },
+  "Compra de tokens": {
+    "en": "Token purchase",
+    "es": "Compra de tokens"
+  },
+  "Token purchase": {
+    "en": "Token purchase",
+    "es": "Compra de tokens"
+  },
+  "Queima de tokens": {
+    "en": "Token burn",
+    "es": "Quema de tokens"
+  },
+  "Token burn": {
+    "en": "Token burn",
+    "es": "Quema de tokens"
+  },
+  "Quema de tokens": {
+    "en": "Token burn",
+    "es": "Quema de tokens"
+  },
+  "Compra no sorteio": {
+    "en": "Lottery purchase",
+    "es": "Compra en sorteo"
+  },
+  "Lottery purchase": {
+    "en": "Lottery purchase",
+    "es": "Compra en sorteo"
+  },
+  "Compra en sorteo": {
+    "en": "Lottery purchase",
+    "es": "Compra en sorteo"
+  },
+  "Renda de investimento": {
+    "en": "Investment income",
+    "es": "Ingreso de inversión"
+  },
+  "Investment income": {
+    "en": "Investment income",
+    "es": "Ingreso de inversión"
+  },
+  "Ingreso de inversión": {
+    "en": "Investment income",
+    "es": "Ingreso de inversión"
+  },
+  "Capital recebido": {
+    "en": "Capital received",
+    "es": "Capital recibido"
+  },
+  "Capital received": {
+    "en": "Capital received",
+    "es": "Capital recibido"
+  },
+  "Capital recibido": {
+    "en": "Capital received",
+    "es": "Capital recibido"
+  },
+  "Aporte em investimento": {
+    "en": "Investment funding",
+    "es": "Aporte a inversión"
+  },
+  "Investment funding": {
+    "en": "Investment funding",
+    "es": "Aporte a inversión"
+  },
+  "Aporte a inversión": {
+    "en": "Investment funding",
+    "es": "Aporte a inversión"
+  },
+  "Retorno de principal": {
+    "en": "Principal return",
+    "es": "Retorno de principal"
+  },
+  "Principal return": {
+    "en": "Principal return",
+    "es": "Retorno de principal"
+  },
+  "Liquidação modelada": {
+    "en": "Modeled settlement",
+    "es": "Liquidación modelada"
+  },
+  "Modeled settlement": {
+    "en": "Modeled settlement",
+    "es": "Liquidación modelada"
+  },
+  "Liquidación modelada": {
+    "en": "Modeled settlement",
+    "es": "Liquidación modelada"
+  },
+  "Demonstração modelada": {
+    "en": "Modeled demo",
+    "es": "Demostración modelada"
+  },
+  "Modeled demo": {
+    "en": "Modeled demo",
+    "es": "Demostración modelada"
+  },
+  "Demostración modelada": {
+    "en": "Modeled demo",
+    "es": "Demostración modelada"
+  },
+  "Registro da simulação": {
+    "en": "Simulation record",
+    "es": "Registro de la simulación"
+  },
+  "Simulation record": {
+    "en": "Simulation record",
+    "es": "Registro de la simulación"
+  },
+  "Registro de la simulación": {
+    "en": "Simulation record",
+    "es": "Registro de la simulación"
+  },
+  "Outros investimentos": {
+    "en": "Other investments",
+    "es": "Otras inversiones"
+  },
+  "Other investments": {
+    "en": "Other investments",
+    "es": "Otras inversiones"
+  },
+  "Otras inversiones": {
+    "en": "Other investments",
+    "es": "Otras inversiones"
+  },
+  "Horários originais de aportes e retornos de principal": {
+    "en": "Original funding and principal-return times",
+    "es": "Horarios originales de aportes y retornos de principal"
+  },
+  "Original funding and principal-return times": {
+    "en": "Original funding and principal-return times",
+    "es": "Horarios originales de aportes y retornos de principal"
+  },
+  "Horarios originales de aportes y retornos de principal": {
+    "en": "Original funding and principal-return times",
+    "es": "Horarios originales de aportes y retornos de principal"
+  },
+  "Transações nativas e fontes externas": {
+    "en": "Native transactions and external sources",
+    "es": "Transacciones nativas y fuentes externas"
+  },
+  "Native transactions and external sources": {
+    "en": "Native transactions and external sources",
+    "es": "Transacciones nativas y fuentes externas"
+  },
+  "Transacciones nativas y fuentes externas": {
+    "en": "Native transactions and external sources",
+    "es": "Transacciones nativas y fuentes externas"
+  },
+  "Recompra": {
+    "en": "Buyback",
+    "es": "Recompra"
+  },
+  "Buyback": {
+    "en": "Buyback",
+    "es": "Recompra"
+  },
+  "Participation": {
+    "en": "Participation",
+    "es": "Participación"
+  },
+  "Participación": {
+    "en": "Participation",
+    "es": "Participación"
+  },
+  "Mercado": {
+    "en": "Market",
+    "es": "Mercado"
+  },
+  "Market": {
+    "en": "Market",
+    "es": "Mercado"
+  },
+  "Queima": {
+    "en": "Burn",
+    "es": "Quema"
+  },
+  "Burn": {
+    "en": "Burn",
+    "es": "Quema"
+  },
+  "Quema": {
+    "en": "Burn",
+    "es": "Quema"
+  },
+  "Cripto": {
+    "en": "Crypto",
+    "es": "Cripto"
+  },
+  "Crypto": {
+    "en": "Crypto",
+    "es": "Cripto"
+  },
+  "Predictions": {
+    "en": "Predictions",
+    "es": "Predicciones"
+  },
+  "Predicciones": {
+    "en": "Predictions",
+    "es": "Predicciones"
+  },
+  "Sports": {
+    "en": "Sports",
+    "es": "Deportes"
+  },
+  "Deportes": {
+    "en": "Sports",
+    "es": "Deportes"
+  },
+  "Bonus": {
+    "en": "Bonus",
+    "es": "Bonos"
+  },
+  "Bonos": {
+    "en": "Bonus",
+    "es": "Bonos"
+  },
+  "Arbitrum Sepolia ·": {
+    "en": "Arbitrum Sepolia ·",
+    "es": "Arbitrum Sepolia ·"
+  },
+  "Homem diante de um site de apostas, ao lado de um recorte de notícia": {
+    "en": "Man looking at a betting website beside a news excerpt",
+    "es": "Hombre frente a un sitio de apuestas, junto a un recorte de noticia"
+  },
+  "Man looking at a betting website beside a news excerpt": {
+    "en": "Man looking at a betting website beside a news excerpt",
+    "es": "Hombre frente a un sitio de apuestas, junto a un recorte de noticia"
+  },
+  "Hombre frente a un sitio de apuestas, junto a un recorte de noticia": {
+    "en": "Man looking at a betting website beside a news excerpt",
+    "es": "Hombre frente a un sitio de apuestas, junto a un recorte de noticia"
+  },
+  "Ir para o slide 1: Previsões": {
+    "en": "Go to slide 1: Predictions",
+    "es": "Ir a la diapositiva 1: Predicciones"
+  },
+  "Go to slide 1: Predictions": {
+    "en": "Go to slide 1: Predictions",
+    "es": "Ir a la diapositiva 1: Predicciones"
+  },
+  "Ir a la diapositiva 1: Predicciones": {
+    "en": "Go to slide 1: Predictions",
+    "es": "Ir a la diapositiva 1: Predicciones"
+  },
+  "Ir para o slide 2: Ações e cripto": {
+    "en": "Go to slide 2: Stocks and crypto",
+    "es": "Ir a la diapositiva 2: Acciones y cripto"
+  },
+  "Go to slide 2: Stocks and crypto": {
+    "en": "Go to slide 2: Stocks and crypto",
+    "es": "Ir a la diapositiva 2: Acciones y cripto"
+  },
+  "Ir a la diapositiva 2: Acciones y cripto": {
+    "en": "Go to slide 2: Stocks and crypto",
+    "es": "Ir a la diapositiva 2: Acciones y cripto"
+  },
+  "Ir para o slide 3: Esportes": {
+    "en": "Go to slide 3: Sports",
+    "es": "Ir a la diapositiva 3: Deportes"
+  },
+  "Go to slide 3: Sports": {
+    "en": "Go to slide 3: Sports",
+    "es": "Ir a la diapositiva 3: Deportes"
+  },
+  "Ir a la diapositiva 3: Deportes": {
+    "en": "Go to slide 3: Sports",
+    "es": "Ir a la diapositiva 3: Deportes"
+  },
+  "Plano inicial financiado pelo fundador com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, a compreensão da proposta e a experiência de uso. A validação já está em andamento com um demo, na fase ALFA do projeto.": {
+    "en": "Initial plan funded by the founder with his current budget, at no acquisition cost to BETTEX. The goal is to validate product demand, understanding of the proposal and the user experience. Validation is already underway with a demo in the project’s ALFA phase.",
+    "es": "Plan inicial financiado por el fundador con su presupuesto actual, sin costo de adquisición para BETTEX. El objetivo es validar la demanda del producto, la comprensión de la propuesta y la experiencia de uso. La validación ya está en marcha con una demo en la fase ALFA del proyecto."
+  },
+  "Initial plan funded by the founder with his current budget, at no acquisition cost to BETTEX. The goal is to validate product demand, understanding of the proposal and the user experience. Validation is already underway with a demo in the project’s ALFA phase.": {
+    "en": "Initial plan funded by the founder with his current budget, at no acquisition cost to BETTEX. The goal is to validate product demand, understanding of the proposal and the user experience. Validation is already underway with a demo in the project’s ALFA phase.",
+    "es": "Plan inicial financiado por el fundador con su presupuesto actual, sin costo de adquisición para BETTEX. El objetivo es validar la demanda del producto, la comprensión de la propuesta y la experiencia de uso. La validación ya está en marcha con una demo en la fase ALFA del proyecto."
+  },
+  "Plan inicial financiado por el fundador con su presupuesto actual, sin costo de adquisición para BETTEX. El objetivo es validar la demanda del producto, la comprensión de la propuesta y la experiencia de uso. La validación ya está en marcha con una demo en la fase ALFA del proyecto.": {
+    "en": "Initial plan funded by the founder with his current budget, at no acquisition cost to BETTEX. The goal is to validate product demand, understanding of the proposal and the user experience. Validation is already underway with a demo in the project’s ALFA phase.",
+    "es": "Plan inicial financiado por el fundador con su presupuesto actual, sin costo de adquisición para BETTEX. El objetivo es validar la demanda del producto, la comprensión de la propuesta y la experiencia de uso. La validación ya está en marcha con una demo en la fase ALFA del proyecto."
+  },
+  "all": {
+    "en": "all",
+    "es": "all"
+  },
+  "archive_changed": {
+    "en": "archive_changed",
+    "es": "archive_changed"
+  },
+  "audit": {
+    "en": "audit",
+    "es": "audit"
+  },
+  "bettex-app-session": {
+    "en": "bettex-app-session",
+    "es": "bettex-app-session"
+  },
+  "bettex-wallet-lock": {
+    "en": "bettex-wallet-lock",
+    "es": "bettex-wallet-lock"
+  },
+  "bettex.app.demo-active": {
+    "en": "bettex.app.demo-active",
+    "es": "bettex.app.demo-active"
+  },
+  "buyback": {
+    "en": "buyback",
+    "es": "buyback"
+  },
+  "crypto": {
+    "en": "crypto",
+    "es": "crypto"
+  },
+  "crypto_agent": {
+    "en": "crypto_agent",
+    "es": "crypto_agent"
+  },
+  "current_allocation": {
+    "en": "current_allocation",
+    "es": "current_allocation"
+  },
+  "en-CA": {
+    "en": "en-CA",
+    "es": "en-CA"
+  },
+  "history-audit": {
+    "en": "history-audit",
+    "es": "history-audit"
+  },
+  "include": {
+    "en": "include",
+    "es": "include"
+  },
+  "incomplete_archive": {
+    "en": "incomplete_archive",
+    "es": "incomplete_archive"
+  },
+  "investment_result": {
+    "en": "investment_result",
+    "es": "investment_result"
+  },
+  "min-w-0": {
+    "en": "min-w-0",
+    "es": "min-w-0"
+  },
+  "operational": {
+    "en": "operational",
+    "es": "operational"
+  },
+  "paid": {
+    "en": "paid",
+    "es": "paid"
+  },
+  "participation_exit": {
+    "en": "participation_exit",
+    "es": "participation_exit"
+  },
+  "preview": {
+    "en": "preview",
+    "es": "preview"
+  },
+  "profile": {
+    "en": "profile",
+    "es": "profile"
+  },
+  "public": {
+    "en": "public",
+    "es": "public"
+  },
+  "received": {
+    "en": "received",
+    "es": "received"
+  },
+  "reserve": {
+    "en": "reserve",
+    "es": "reserve"
+  },
+  "round-history": {
+    "en": "round-history",
+    "es": "round-history"
+  },
+  "rounds": {
+    "en": "rounds",
+    "es": "rounds"
+  },
+  "saved_round_allocation": {
+    "en": "saved_round_allocation",
+    "es": "saved_round_allocation"
+  },
+  "simulation": {
+    "en": "simulation",
+    "es": "simulation"
+  },
+  "status": {
+    "en": "status",
+    "es": "status"
+  },
+  "test-account-session": {
+    "en": "test-account-session",
+    "es": "test-account-session"
+  },
+  "text": {
+    "en": "text",
+    "es": "text"
+  },
+  "touchstart": {
+    "en": "touchstart",
+    "es": "touchstart"
+  },
+  "treasury-statement": {
+    "en": "treasury-statement",
+    "es": "treasury-statement"
+  },
+  "treasuryAccount": {
+    "en": "treasuryAccount",
+    "es": "treasuryAccount"
+  },
+  "treasuryAsset": {
+    "en": "treasuryAsset",
+    "es": "treasuryAsset"
+  },
+  "treasuryWallet": {
+    "en": "treasuryWallet",
+    "es": "treasuryWallet"
+  },
+  "wallet-statement": {
+    "en": "wallet-statement",
+    "es": "wallet-statement"
+  },
+  "wallets": {
+    "en": "wallets",
+    "es": "wallets"
+  },
+  "wheel": {
+    "en": "wheel",
+    "es": "wheel"
+  }
 }

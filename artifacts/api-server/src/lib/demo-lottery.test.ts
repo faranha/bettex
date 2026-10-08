@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { advanceDemoLottery, demoLotterySnapshot, ensureDemoLottery } from "./demo-lottery.ts";
 import { advanceDemoBurnStory, demoBurnSnapshot } from "./demo-burn-story.ts";
 import type { AccountState, EngineState } from "./demo-state.ts";
+import { buyLotteryEntries, ensureLotteryEntries } from "./demo-lottery-entries.ts";
 
 const opening = Date.parse("2026-10-07T19:00:00Z"), drawAt = opening + 43_200_000;
 function frame(cash = 10) {
@@ -20,6 +21,47 @@ function wallet(id: string, tokens: number, opted = true) {
     lotteryConsent: { participating: opted, confirmedAt: new Date(opening).toISOString() },
   } as unknown as AccountState;
 }
+test("lottery share counts every paid-range number and the free number, not wallets or array rows", () => {
+  const engine = frame(), a = wallet("share-a", 5000), b = wallet("share-b", 20);
+  buyLotteryEntries(engine, a, 1001, "share-order", opening, "share-a");
+  ensureLotteryEntries(engine, b, opening);
+  b.lotteryEntries!.entries.push({ number: "legacy", type: "paid", createdAt: new Date(opening).toISOString() });
+  const snapshot = demoLotterySnapshot(engine, a, [a, b], opening)!;
+  assert.equal(snapshot.ownActiveNumbers, 1002);
+  assert.equal(snapshot.totalActiveNumbers, 1004);
+  assert.equal(snapshot.numberSharePercent, 1002 / 1004 * 100);
+  assert.equal(a.lotteryEntries!.entries.length, 2);
+  b.lotteryConsent!.participating = false;
+  assert.equal(demoLotterySnapshot(engine, a, [a, b], opening)!.numberSharePercent, 100);
+  assert.equal(demoLotterySnapshot(engine, a, [], opening)!.numberSharePercent, 100);
+});
+test("inactive, unstaked, future-consent and native wallets contribute no active lottery share", () => {
+  const engine = frame(), a = wallet("inactive-a", 100, false), b = wallet("active-b", 100);
+  const native = wallet("native", 100); native.profile.provider = "native";
+  const late = wallet("late", 100); late.lotteryConsent!.confirmedAt = new Date(opening + 1).toISOString();
+  const empty = wallet("empty", 0);
+  const snapshot = demoLotterySnapshot(engine, a, [a, b, native, late, empty], opening)!;
+  assert.equal(snapshot.ownActiveNumbers, 0);
+  assert.equal(snapshot.totalActiveNumbers, 1);
+  assert.equal(snapshot.numberSharePercent, 0);
+  assert.equal(demoLotterySnapshot(engine, native, [a, b, native], opening), undefined);
+  b.bettex = 0; b.lots = [];
+  assert.equal(demoLotterySnapshot(engine, a, [a, b, native, late, empty], opening)!.totalActiveNumbers, 0);
+  assert.equal(demoLotterySnapshot(engine, a, [], opening)!.numberSharePercent, 0);
+});
+test("share excludes expired or future paid numbers and counts the guaranteed free number for legacy eligible wallets", () => {
+  const engine = frame(), a = wallet("legacy-a", 100), b = wallet("future-b", 100);
+  a.lotteryEntries = { drawAt: new Date(drawAt - 86_400_000).toISOString(), receipts: [],
+    entries: [{ number: "old", quantity: 90000, type: "paid", createdAt: new Date(opening - 1).toISOString() }] };
+  ensureLotteryEntries(engine, b, opening);
+  b.lotteryEntries!.entries.push({ number: "future", quantity: 90000, type: "paid", createdAt: new Date(opening + 1).toISOString() });
+  const before = structuredClone({ engine, a, b });
+  const snapshot = demoLotterySnapshot(engine, a, [a, b], opening)!;
+  assert.equal(snapshot.ownActiveNumbers, 1);
+  assert.equal(snapshot.totalActiveNumbers, 2);
+  assert.equal(snapshot.numberSharePercent, 50);
+  assert.deepEqual({ engine, a, b }, before, "displaying share never allocates numbers or changes financial state");
+});
 test("daily draw is at the real staking midpoint, 04h Sao Paulo; initial rollout never backfills sales", () => {
   const engine = frame();
   assert.equal(new Date(engine.burnLottery!.nextDrawAt).toISOString(), "2026-10-08T07:00:00.000Z");

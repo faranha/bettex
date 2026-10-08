@@ -9,6 +9,11 @@ import type { DemoLotteryEntryType } from './demoLotteryEntryType';
 
 export interface DemoLotteryEntry {
   number: string;
+  /**
+     * Contiguous number range starting at number. Omitted for legacy single entries.
+     * @minimum 1
+     */
+  quantity?: number;
   type: DemoLotteryEntryType;
   createdAt: string;
 }

@@ -3,7 +3,6 @@ import { ArrowRight, CircuitBoard, ExternalLink, ReceiptText, Landmark } from 'l
 import g from '@/lib/growth-strategy.json';
 import { FounderProfile } from '@/components/FounderProfile';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
-import { founderSocials } from '@/lib/founder-socials';
 import { ProblemSection } from '@/components/pitch/ProblemSection';
 import { AudienceSection } from '@/components/pitch/AudienceSection';
 import { FutureSections } from '@/components/pitch/FutureSections';
@@ -24,7 +23,6 @@ import './pitch.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
-const LINKEDIN = founderSocials.find(({ name }) => name === 'LinkedIn')!.href;
 
 function Sec({ id, n, kicker, title, dark = false, summary, hero, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; hero?: string; children: ReactNode }) {
   return <section id={id} aria-labelledby={`${id}-t`} className={`slide ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
@@ -90,13 +88,10 @@ export function PitchPage() {
               <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
             </div>
           </div>
-          <figure className="cover__fred pitch-rise">
-            <a className="cover__photo-link" href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="Ver o LinkedIn de Fred Azevedo">
-              <img src={`${BASE}/fred-azevedo.png`} alt="Retrato de Fred Azevedo, fundador da BETTEX" width={400} height={400} loading="eager" decoding="async" fetchPriority="high" />
-            </a>
+          <figure className="cover__project pitch-rise">
+            <img src={`${BASE}/pitch-illustrations/pitch-software-development.webp`} alt="Ilustração de tecnologia e desenvolvimento do projeto BETTEX" width={400} height={400} loading="eager" decoding="async" fetchPriority="high" />
             <figcaption className="mono">
-              <span><strong>Fred Azevedo</strong><small>Fundador da BETTEX</small></span>
-              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="Ver o LinkedIn de Fred Azevedo">LinkedIn<ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" /></a>
+              <span><strong>BETTEX</strong><small>Tecnologia, comunidade e inteligência artificial</small></span>
             </figcaption>
           </figure>
         </div>
@@ -213,7 +208,7 @@ export function PitchPage() {
         <p>O ALFA está previsto para outubro de 2026, com token, contratos básicos e primeiros agentes. A captação e a formalização vêm em novembro; o BETA e o go to market, em janeiro de 2027.</p>
         <DemoAppLink data-testid="pitch-open-alpha-demo" />
       </aside>
-      <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">Fred Azevedo financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.</p>
+      <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">O fundador financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.</p>
       <FounderLaunchFunnel />
       {/* Launch simulation intentionally unpublished; its component is retained for future reactivation. */}
       <div className="pitch-community" id="pitch-community">

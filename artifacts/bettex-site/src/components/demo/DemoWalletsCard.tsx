@@ -5,7 +5,7 @@ import { useX } from './ui';
 import { Money, type Asset, type Kind } from './fin';
 import { WalletAction } from './WalletAction';
 import { TokenIcon } from './TokenIcon';
-import { KeyRound } from 'lucide-react';
+import { BookUser, KeyRound } from 'lucide-react';
 import { BurnedTokensCard } from './BurnedTokensCard';
 import { EarningsWalletCard } from './EarningsWalletCard';
 import { WalletHistoryLink } from './WalletHistoryLink';
@@ -26,10 +26,10 @@ export function DemoWalletsCard({ d, onWallet, showReceivedYield = false, showHe
         </WalletHelp></h3>
         {onExport && <button type="button" onClick={() => onExport(asset)} data-testid={`button-export-wallet-${asset}`} aria-label={x('Exportar carteira', 'Export wallet', 'Exportar cartera')} title={x('Exportar carteira', 'Export wallet', 'Exportar cartera')} className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg opacity-70 transition-opacity hover:bg-white/10 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-current"><KeyRound className="h-4 w-4" aria-hidden="true" /></button>}
       </div>
-      {addresses?.[asset] && <div className="mono break-all text-xs text-[#5B6B85]" data-testid={`wallet-address-${asset}`}><WalletHelp id={`address-${asset}`} label={x('Endereço público', 'Public address', 'Dirección pública')}>
+      {addresses?.[asset] && <div className="flex items-center gap-1.5 text-xs text-[#5B6B85]" data-testid={`wallet-address-${asset}`}><WalletHelp id={`address-${asset}`} label={x('Endereço público', 'Public address', 'Dirección pública')} iconOnly icon={<BookUser className="h-4 w-4" aria-hidden="true" />}>
         <p>{x(`Endereço para receber ${asset} nesta carteira. Pode ser compartilhado para recebimento; não é sua chave privada. Confira o ativo e a rede indicados no formulário antes de enviar.`, `Address for receiving ${asset} in this wallet. It can be shared to receive funds; it is not your private key. Check the asset and network shown in the form before sending.`, `Dirección para recibir ${asset} en esta cartera. Se puede compartir para recibir fondos; no es tu clave privada. Comprueba el activo y la red del formulario antes de enviar.`)}</p>
         <p>{x('No ALFA, use somente ativos de teste. Não envie fundos reais a este endereço.', 'In ALPHA, use test assets only. Do not send real funds to this address.', 'En ALFA, utiliza solo activos de prueba. No envíes fondos reales a esta dirección.')}</p>
-      </WalletHelp>: {addresses[asset]}</div>}
+      </WalletHelp><span className="mono min-w-0 break-all">{addresses[asset]}</span></div>}
       <Money v={asset === 'USDC' ? d.balances.usdc : d.balances.bettex} a={asset} big />
       <div className="flex flex-wrap gap-2"><WalletAction kind={asset === 'USDC' ? 'onramp' : 'receive'} asset={asset} id={`demo-add-${asset}`} label={x('Adicionar saldo', 'Add balance', 'Agregar saldo')} onOpen={onWallet} />
         <WalletAction kind={asset === 'USDC' ? 'withdraw' : 'send'} asset={asset} id={`demo-out-${asset}`} label={x('Retirar', 'Withdraw', 'Retirar')} onOpen={onWallet} />

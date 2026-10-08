@@ -5,6 +5,92 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export type Double2xPlayInputColor = typeof Double2xPlayInputColor[keyof typeof Double2xPlayInputColor];
+
+
+export const Double2xPlayInputColor = {
+  red: 'red',
+  black: 'black',
+} as const;
+
+export interface Double2xPlayInput {
+  requestId: string;
+  color: Double2xPlayInputColor;
+  confirmed: boolean;
+  /** @minimum 0.000001 */
+  expectedStakeUsdc: number;
+}
+
+export type Double2xPlayColor = typeof Double2xPlayColor[keyof typeof Double2xPlayColor];
+
+
+export const Double2xPlayColor = {
+  red: 'red',
+  black: 'black',
+} as const;
+
+export type Double2xPlayResult = typeof Double2xPlayResult[keyof typeof Double2xPlayResult];
+
+
+export const Double2xPlayResult = {
+  red: 'red',
+  black: 'black',
+} as const;
+
+export type Double2xPlayStatus = typeof Double2xPlayStatus[keyof typeof Double2xPlayStatus];
+
+
+export const Double2xPlayStatus = {
+  pending: 'pending',
+  won: 'won',
+  lost: 'lost',
+  refunded: 'refunded',
+} as const;
+
+export interface Double2xPlay {
+  id: string;
+  color: Double2xPlayColor;
+  result?: Double2xPlayResult;
+  stakeUsdc: number;
+  payoutUsdc: number;
+  status: Double2xPlayStatus;
+  requestedAt: string;
+  nextPlayAt: string;
+  settledAt?: string;
+  requestHash?: string;
+  settlementHash?: string;
+  sequence?: string;
+  error?: string;
+}
+
+export type DemoDouble2xReason = typeof DemoDouble2xReason[keyof typeof DemoDouble2xReason];
+
+
+export const DemoDouble2xReason = {
+  ready: 'ready',
+  deploying: 'deploying',
+  test_gas_unavailable: 'test_gas_unavailable',
+  treasury_unavailable: 'treasury_unavailable',
+  testnet_unavailable: 'testnet_unavailable',
+  native_account_unavailable: 'native_account_unavailable',
+} as const;
+
+export interface DemoDouble2x {
+  chainId: number;
+  network: string;
+  gameAddress?: string;
+  tokenAddress?: string;
+  treasuryAddress?: string;
+  ready: boolean;
+  reason: DemoDouble2xReason;
+  balanceUsdc: number;
+  canPlay: boolean;
+  pending: boolean;
+  /** @nullable */
+  nextPlayAt: string | null;
+  plays: Double2xPlay[];
+}
+
 export type DemoTestnetStatus = typeof DemoTestnetStatus[keyof typeof DemoTestnetStatus];
 
 
@@ -2679,6 +2765,7 @@ export type DemoBurnEntryKind = typeof DemoBurnEntryKind[keyof typeof DemoBurnEn
 
 export const DemoBurnEntryKind = {
   wallet_funded: 'wallet_funded',
+  tokens_received: 'tokens_received',
   tokens_purchased: 'tokens_purchased',
   tokens_burned: 'tokens_burned',
 } as const;
@@ -2817,13 +2904,18 @@ export interface DemoLotteryParticipation {
   confirmed: boolean;
 }
 
+export type DemoLotteryEntryOrderPaymentAsset = typeof DemoLotteryEntryOrderPaymentAsset[keyof typeof DemoLotteryEntryOrderPaymentAsset];
+
+
+export const DemoLotteryEntryOrderPaymentAsset = {
+  BETTEX: 'BETTEX',
+} as const;
+
 export interface DemoLotteryEntryOrder {
   requestId: string;
-  /**
-     * @minimum 1
-     * @maximum 100
-     */
+  /** @minimum 1 */
   quantity: number;
+  paymentAsset: DemoLotteryEntryOrderPaymentAsset;
   confirmed: true;
   /**
      * @minLength 20
@@ -2842,14 +2934,31 @@ export const DemoLotteryEntryType = {
 
 export interface DemoLotteryEntry {
   number: string;
+  /**
+     * Contiguous number range starting at number. Omitted for legacy single entries.
+     * @minimum 1
+     */
+  quantity?: number;
   type: DemoLotteryEntryType;
   createdAt: string;
 }
 
+export type DemoLotteryEntryReceiptPaidAsset = typeof DemoLotteryEntryReceiptPaidAsset[keyof typeof DemoLotteryEntryReceiptPaidAsset];
+
+
+export const DemoLotteryEntryReceiptPaidAsset = {
+  BETTEX: 'BETTEX',
+  USDC: 'USDC',
+} as const;
+
 export interface DemoLotteryEntryReceipt {
   requestId: string;
   quantity: number;
-  paidUsdc: number;
+  paidUsdc?: number;
+  paidAsset: DemoLotteryEntryReceiptPaidAsset;
+  paidAmount: number;
+  firstNumber?: string;
+  lastNumber?: string;
   burnedBettex: number;
   createdAt: string;
   numbers: string[];
@@ -2892,6 +3001,13 @@ export const DemoLotterySource = {
   modeled_demo: 'modeled_demo',
 } as const;
 
+export type DemoLotteryEntryPaymentAsset = typeof DemoLotteryEntryPaymentAsset[keyof typeof DemoLotteryEntryPaymentAsset];
+
+
+export const DemoLotteryEntryPaymentAsset = {
+  BETTEX: 'BETTEX',
+} as const;
+
 export interface DemoLottery {
   source: DemoLotterySource;
   nextDrawAt: string;
@@ -2899,7 +3015,25 @@ export interface DemoLottery {
   participating: boolean;
   eligible: boolean;
   participants: number;
-  entryPriceUsdc: number;
+  entryPriceBettex: number;
+  entryPaymentAsset: DemoLotteryEntryPaymentAsset;
+  entryBalanceBettex: number;
+  /**
+     * Active numbers belonging to this wallet in the upcoming draw.
+     * @minimum 0
+     */
+  ownActiveNumbers: number;
+  /**
+     * Total numbers of opted-in eligible simulated wallets in the upcoming draw.
+     * @minimum 0
+     */
+  totalActiveNumbers: number;
+  /**
+     * Share of active numbers and first-selection weight; not a guaranteed payout or the probability of any win across multiple selections.
+     * @minimum 0
+     * @maximum 100
+     */
+  numberSharePercent: number;
   purchaseResult?: DemoLotteryEntryReceipt;
   entries: DemoLotteryEntry[];
   entryReceipts: DemoLotteryEntryReceipt[];

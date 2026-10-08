@@ -9,6 +9,12 @@ O total de BETTEX queimado e a carteira de recompra/queima são diferentes. Most
 
 **How to apply:** A carteira exclusiva recebe a destinação documentada de lucro elegível, não tarifas da operadora nem dinheiro pessoal. Orçamento não é aquisição; aquisição não é queima. Os exemplos do demo devem compartilhar um livro persistente e ser explicitamente simulados, sem contaminar dados do protocolo nativo ou inventar endereço blockchain. O cronograma de eventos simulados não define política financeira.
 
+O painel de recompra e queima deve apresentar totais da rodada atual e do histórico completo, detalhes dos recursos e gráficos. Não usar “permanente, simulado” junto ao título do total queimado; manter a identificação geral de demonstração.
+
+**Why:** O criador pediu explicitamente o “total do round”, o “total de sempre”, mais dados e gráficos, e a remoção desse qualificativo.
+
+**How to apply:** Separar totais efetivamente registrados da alocação provisória da rodada. Uma rodada sem eventos não apaga a queima histórica. Gráficos devem partir dos registros, sem inventar operações para preencher a visualização.
+
 A Burn Lottery acontece diariamente no meio do ciclo de stake. Compra BETTEX por 100% a mais que o preço de mercado, de várias carteiras em stake que optaram por participar, até consumir o USDC disponível ou acabar o saldo elegível. A participação exige seleção e confirmação; não presumir consentimento.
 
 **Why:** O criador definiu a compra a 2× o preço de mercado e esclareceu: “vai comprando de varias carteiras até acabar o saldo de USDC da loteria”.

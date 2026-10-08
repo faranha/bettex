@@ -18,16 +18,16 @@ export function OpportunityCard({ r, onJourney }: { r: AlphaOpportunityRecord; o
     <dl className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
       <KV k={x('Operação', 'Operation', 'Operación')} v={f.datum(o.operation)} />
       <KV k={x('Preço executável', 'Executable price', 'Precio ejecutable')} v={f.datum(o.executablePrice)} />
-      <KV k={x('Custos', 'Costs', 'Costos')} v={f.datum(o.costs)} />
-      <KV k={x('Liquidez', 'Liquidity', 'Liquidez')} v={f.datum(o.liquidity)} />
-      <KV k={x('Retorno estimado', 'Estimated return', 'Retorno estimado')} v={f.datum(o.estimatedReturn)} />
+      <KV k={x('Custos', 'Costs', 'Costos')} v={o.origin.nature === 'internal_fixture' ? f.moneyDatum(o.costs) : f.datum(o.costs)} />
+      <KV k={x('Liquidez', 'Liquidity', 'Liquidez')} v={o.origin.nature === 'internal_fixture' ? f.moneyDatum(o.liquidity) : f.datum(o.liquidity)} />
+      <KV k={x('Retorno estimado', 'Estimated return', 'Retorno estimado')} v={o.origin.nature === 'internal_fixture' ? f.moneyDatum(o.estimatedReturn) : f.datum(o.estimatedReturn)} />
       <KV k={x('Incerteza', 'Uncertainty', 'Incertidumbre')} v={f.datum(o.uncertainty)} />
-      <KV k={x('Perda potencial', 'Potential loss', 'Pérdida potencial')} v={f.datum(o.potentialLossUnits)} />
-      <KV k={x('Capital', 'Capital', 'Capital')} v={f.datum(o.capitalUnits)} />
+      <KV k={x('Perda potencial', 'Potential loss', 'Pérdida potencial')} v={f.moneyDatum(o.potentialLossUnits)} />
+      <KV k={x('Capital', 'Capital', 'Capital')} v={f.moneyDatum(o.capitalUnits)} />
       <KV k={x('Válida até', 'Valid until', 'Válida hasta')} v={f.date(o.validUntil)} />
     </dl>
-    {o.risks.length > 0 && <p className="mt-2 text-xs"><b>{x('Riscos: ', 'Risks: ', 'Riesgos: ')}</b>{o.risks.join('; ')}</p>}
-    {o.invalidationConditions.length > 0 && <p className="mt-1 text-xs"><b>{x('Invalidação: ', 'Invalidation: ', 'Invalidación: ')}</b>{o.invalidationConditions.join('; ')}</p>}
+    {o.risks.length > 0 && <p className="mt-2 text-xs"><b>{x('Riscos: ', 'Risks: ', 'Riesgos: ')}</b>{o.risks.map(f.code).join('; ')}</p>}
+    {o.invalidationConditions.length > 0 && <p className="mt-1 text-xs"><b>{x('Invalidação: ', 'Invalidation: ', 'Invalidación: ')}</b>{o.invalidationConditions.map(f.code).join('; ')}</p>}
     {o.sources.length > 0 && <ul className="mt-1 text-xs text-[#5B6B85]">{o.sources.map((s, i) => <li key={i} className="break-all">{s.url} · {f.date(s.collectedAt)} · {s.evidence}</li>)}</ul>}
     <PolicyEvidence reference={o.policyReference}/>
     <button type="button" onClick={() => onJourney(o.id)} className="mt-2 min-h-11 rounded-xl border border-[#0E7C6B] px-3 text-sm font-bold text-[#0A6657]">{x('Ver percurso completo', 'View full journey', 'Ver recorrido completo')}</button>
@@ -76,7 +76,7 @@ export function PositionCard({ p, onJourney }: { p: AlphaTradingPosition; onJour
       <KV k={x('Aberta em', 'Opened', 'Abierta')} v={f.date(p.openedAt)} />
       {p.closedAt && <KV k={x('Encerrada em', 'Closed', 'Cerrada')} v={f.date(p.closedAt)} />}
     </dl>
-    <p className="mt-2 text-xs"><b>{x('Plano de saída: ', 'Exit plan: ', 'Plan de salida: ')}</b>{p.exitPlan}</p>
+    <p className="mt-2 text-xs"><b>{x('Plano de saída: ', 'Exit plan: ', 'Plan de salida: ')}</b>{f.reason(p.exitPlan)}</p>
     {v ? <p className="mt-1 text-xs text-[#5B6B85]">{x('Avaliação em', 'Valuation as of', 'Valoración al')} {f.date(v.at)} · {f.code(v.kind)} · {f.code(v.action)} · {x('Preço por cota', 'Price per share', 'Precio por cuota')}: {v.priceUnits === null ? x('indisponível', 'unavailable', 'no disponible') : f.units(v.priceUnits)} · {x('Fonte em', 'Source as of', 'Fuente en')} {f.date(v.producedAt)} · {v.source} · {x('liquidável', 'liquidatable', 'liquidable')} {f.shares(v.liquidatableUnits)}/{f.shares(v.quantityUnits)} · {f.reason(v.reason)}</p> : <p className="mt-1 text-xs text-[#5B6B85]">{x('Sem avaliação registrada.', 'No valuation recorded.', 'Sin valoración registrada.')}</p>}
     {onJourney && <button type="button" onClick={() => onJourney(p.opportunityId)} className="mt-2 min-h-11 rounded-xl border border-[#0E7C6B] px-3 text-sm font-bold text-[#0A6657]">{x('Ver percurso', 'View journey', 'Ver recorrido')}</button>}
   </li>;

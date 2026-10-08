@@ -62,7 +62,7 @@
 - [Cabeçalhos das seções](homepage-section-headers.md) — não reintroduzir as faixas informativas decorativas acima de História e Roadmap.
 - [Consistência dos heros](homepage-hero-accent.md) — Mercados: barra só no hero, título/subtítulo 2 + 2 linhas; Nova Economia mantém a exceção de barra integral.
 - [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
-- [Apresentação do fundador](documentation-founder-presentation.md) — documentação com retrato integrado e sem aspas; Pitch com biografia profissional em terceira pessoa.
+- [Apresentação do fundador](documentation-founder-presentation.md) — identidade reservada; biografia anônima, sem retrato, redes pessoais ou contagens de seguidores.
 - [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.
 - [Responsive text verification](responsive-text-verification.md) — text-range bounds include font leading; distinguish compact heading lines from actual collisions.
 - [Observações editoriais](document-observations.md) — notas agrupadas no fim de cada bloco, sem repetição ou interrupção do conteúdo principal.
@@ -83,3 +83,4 @@
 - [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.
 - [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.
 - [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.
+- [Double 2X game](double-2x-game.md) — on-chain red/black earnings game; 100% RTP, rolling 24-hour limit, treasury-funded wins and treasury-received losses.
