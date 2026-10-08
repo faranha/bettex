@@ -9,12 +9,14 @@ import type { ExportDemoTreasuryStatementAccount } from './exportDemoTreasurySta
 import type { ExportDemoTreasuryStatementAsset } from './exportDemoTreasuryStatementAsset';
 import type { ExportDemoTreasuryStatementDirection } from './exportDemoTreasuryStatementDirection';
 import type { ExportDemoTreasuryStatementLocale } from './exportDemoTreasuryStatementLocale';
+import type { ExportDemoTreasuryStatementWallet } from './exportDemoTreasuryStatementWallet';
 
 export type ExportDemoTreasuryStatementParams = {
 from: Date;
 to: Date;
 asset?: ExportDemoTreasuryStatementAsset;
 account?: ExportDemoTreasuryStatementAccount;
+wallet?: ExportDemoTreasuryStatementWallet;
 /**
  * @maxLength 40
  */

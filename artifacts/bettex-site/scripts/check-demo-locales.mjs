@@ -27,7 +27,7 @@ const liveMarketsRoot = path.resolve(root, '../live-markets');
 files.push(...fs.readdirSync(liveMarketsRoot).filter(f => /\.(ts|tsx)$/.test(f)).map(f => path.join(liveMarketsRoot, f)));
 const failures = [];
 let tuples = 0;
-const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|BETTEX|USDC|BTC|ETH|SOL|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;
+const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|(?:·\s*)?x\s*·\s*y\s*=\s*k|BETTEX|USDC|BTC|ETH|SOL|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;
 const neutral = text => universal.test(text) || /^(?:ID|Hash):$/.test(text) || !/[A-Za-zÀ-ÿ]/.test(text.replace(/\b(?:USD|BRL|USDC|BETTEX|BTC|ETH|SOL|UTC|D|T|h|v)\b|\b\d+h\b|São Paulo|T\+/g, ''));
 const forbidden = new Set(['generateKey', 'signTransaction', 'signMessage']);
 for (const file of files) {

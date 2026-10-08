@@ -9,6 +9,12 @@ Follow the current application direction in replit.md, not older instructions ab
 
 **How to apply:** Consult the current direction before reorganizing menus. Do not restore the old dashboard or Profile finance tabs from historical notes. Moving a destination does not authorize recreating wallets, changing account identity or weakening key-export protections.
 
+AI Center must be immediately beside Dashboard (formerly Wallets) in the app menu, before History.
+
+**Why:** The creator explicitly said “AI center must be right beside wallets in the meny”, then renamed that page to “Dashboard”.
+
+**How to apply:** Preserve this ordering in desktop and mobile menus without changing the destinations themselves.
+
 History contains statements and records without repeating balance cards or the complete wallet block.
 
 **Why:** The creator explicitly rejected those duplicated cards in History. Moving History into the main menu does not reverse that content decision.
@@ -27,11 +33,11 @@ Keep the demo environment notice and restart controls in one compact blue band, 
 
 **How to apply:** Preserve the testnet status, no-real-money warning, simulated-operation notice, public contract link, tab scope and restart confirmation through compact accessible controls.
 
-Do not restore a permanently stacked, multi-line mobile destination menu.
+Use a hamburger with a side drawer in the mobile system header, not an “Areas” dropdown or a permanently stacked destination menu.
 
-**Why:** The creator said it occupied too much screen space and covered content while scrolling.
+**Why:** The creator said the stacked menu occupied too much screen space and covered content while scrolling; later explicitly requested a hamburger instead of the “weird dropdown”.
 
-**How to apply:** Keep every area accessible through the compact menu without removing content or changing desktop to compensate.
+**How to apply:** Keep every area accessible in the side drawer, preserving the current area label, account controls and desktop navigation. Keep mobile dashboard sections close together without obsolete bottom-navigation spacing.
 
 The demo is active after explicit entry as Alex, without repeated login prompts inside it.
 

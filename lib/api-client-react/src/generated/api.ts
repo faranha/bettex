@@ -33,6 +33,7 @@ import type {
   AlphaTradingJourney,
   AlphaTradingSnapshot,
   DemoDashboard,
+  DemoLotteryEntryOrder,
   DemoLotteryParticipation,
   DemoMovementInput,
   DemoProfileInput,
@@ -3350,6 +3351,94 @@ export const useUpdateDemoLotteryParticipation = <TError = ErrorType<unknown>,
         TContext
       > => {
       return useMutation(getUpdateDemoLotteryParticipationMutationOptions(options), queryClient);
+    }
+
+export const getBuyDemoLotteryEntriesUrl = () => {
+
+
+
+
+  return `/api/demo/lottery/entries`
+}
+
+/**
+ * @summary Buy modeled lottery numbers at 1 USDC each and burn the acquired BETTEX
+ */
+export const buyDemoLotteryEntries = async (demoLotteryEntryOrder: DemoLotteryEntryOrder, options?: Parameters<typeof customFetch>[1]): Promise<DemoDashboard> => {
+
+    const getHeaders = (h?: NonNullable<RequestInit['headers']>): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(h as Iterable<Iterable<string>>, (entry) => Array.from(entry) as [string, string]),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<string | readonly string[] | undefined>(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+return customFetch<DemoDashboard>(getBuyDemoLotteryEntriesUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...getHeaders(options?.headers) },
+    body: JSON.stringify(demoLotteryEntryOrder)
+  }
+);}
+
+
+
+
+
+export const getBuyDemoLotteryEntriesMutationKey = () => ['buyDemoLotteryEntries'] as const;
+
+export const getBuyDemoLotteryEntriesMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof buyDemoLotteryEntries>>, TError,BuyDemoLotteryEntriesMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof buyDemoLotteryEntries>>, TError,BuyDemoLotteryEntriesMutationVariables, TContext> => {
+
+const mutationKey = getBuyDemoLotteryEntriesMutationKey();
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof buyDemoLotteryEntries>>, BuyDemoLotteryEntriesMutationVariables> = (props) => {
+          const {data} = props ?? {};
+
+          return  buyDemoLotteryEntries(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type BuyDemoLotteryEntriesMutationResult = NonNullable<Awaited<ReturnType<typeof buyDemoLotteryEntries>>>
+    export type BuyDemoLotteryEntriesMutationBody = BodyType<DemoLotteryEntryOrder>
+    export type BuyDemoLotteryEntriesMutationError = ErrorType<unknown>
+    export type BuyDemoLotteryEntriesMutationVariables = {data: BodyType<DemoLotteryEntryOrder>}
+
+    /**
+ * @summary Buy modeled lottery numbers at 1 USDC each and burn the acquired BETTEX
+ */
+export const useBuyDemoLotteryEntries = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof buyDemoLotteryEntries>>, TError,BuyDemoLotteryEntriesMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient): UseMutationResult<
+        Awaited<ReturnType<typeof buyDemoLotteryEntries>>,
+        TError,
+        BuyDemoLotteryEntriesMutationVariables,
+        TContext
+      > => {
+      return useMutation(getBuyDemoLotteryEntriesMutationOptions(options), queryClient);
     }
 
 export const getCreateDemoMovementUrl = () => {

@@ -5,6 +5,12 @@ description: Boundaries between local EVM proofs, testnet observations and publi
 
 ## Identificação pública do app
 
+O contrato AMM deve existir, mesmo que seja um mock, em vez de apresentar “nenhum contrato”.
+
+**Why:** O criador pediu “AMM contract should exist even if fake”.
+
+**How to apply:** Usar um mock executável e uma identidade estável na simulação. Identificar claramente o runtime simulado, sem inventar endereço Ethereum nem afirmar implantação on-chain.
+
 O usuário escolheu o selo “LIVE · TESTNET PÚBLICA”, com destaque pulsante, em vez de “LIVE · TESTNET SIMULADA”.
 
 **Why:** O usuário escolheu conectar e validar uma rede pública antes de exibir esse selo.

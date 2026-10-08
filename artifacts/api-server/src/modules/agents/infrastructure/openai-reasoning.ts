@@ -1,23 +1,15 @@
 import { openai } from "@workspace/integrations-openai-ai-server";
 import type { ReasoningContext, ReasoningModel } from "../domain/reasoning";
+import { reasoningSchema } from "./reasoning-schema";
 
 const model = "gpt-5.4-mini";
-const array = { type: "array", items: { type: "string" } };
-const schema = {
-  type: "object", additionalProperties: false,
-  required: ["summary", "observations", "uncertainties", "nextSteps", "recommendation", "evidenceIndices"],
-  properties: {
-    summary: { type: "string" }, observations: array, uncertainties: array, nextSteps: array,
-    recommendation: { type: "string", enum: ["monitor", "abstain", "review"] },
-    evidenceIndices: { type: "array", items: { type: "integer" } },
-  },
-};
 
 export const openaiReasoning: ReasoningModel = {
   async infer(context: ReasoningContext) {
+    const evidenceCount = context.run?.evidence?.length ?? 0;
     const response = await openai.chat.completions.create({
-      model, reasoning_effort: "low", max_completion_tokens: 2400,
-      response_format: { type: "json_schema", json_schema: { name: "agent_analysis", strict: true, schema } },
+      model, reasoning_effort: "low", max_completion_tokens: 8192,
+      response_format: { type: "json_schema", json_schema: { name: "agent_analysis", strict: true, schema: reasoningSchema(evidenceCount) } },
       messages: [
         { role: "system", content: `You are the ${context.agentId} specialist within BETTEX, a technology product in ALFA tests.
 Analyze the supplied observations using actual reasoning, not a generic restatement of rule codes.
@@ -31,6 +23,8 @@ Check observation dates: stale or missing data must be described explicitly. The
 When no source evidence is provided choose abstain or review, never monitor. If a validated event model is missing, request one rather than inventing it.
 recommendation is research-only: monitor, abstain, or human/research review; none permits trading, signing, payment or changing policies.
 Return a concise summary, observations, uncertainties, nextSteps, recommendation and zero-based evidenceIndices citing ONLY supplied evidence.
+The ONLY citable evidence array is context.run.evidence, containing ${evidenceCount} items. Rules, dependencies, statistics and nested metadata are NOT entries in this array.
+${evidenceCount === 0 ? "There are no citable evidence entries. evidenceIndices MUST be empty and recommendation MUST be abstain or review." : `Every evidence index must be between 0 and ${evidenceCount - 1}.`}
 Do not provide hidden chain-of-thought; provide concise conclusions and factual justifications.` },
         { role: "user", content: JSON.stringify(context) },
       ],

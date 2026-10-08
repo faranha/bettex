@@ -20,3 +20,9 @@ Uma fixture nova precisa das migrações reais que estabelecem auditoria de perm
 **Why:** Inicializadores de tabelas podem bastar para consultas comuns, mas omitir triggers instalados por migrações; isso gera falsos negativos de auditoria em um schema recém-criado.
 
 **How to apply:** Aplicar as migrações pertinentes exclusivamente na conexão isolada e criar os próprios registros para cada asserção HTTP; não depender de histórico previamente existente no aplicativo.
+
+Comparações entre a interface e a API do demo devem observar a resposta da requisição real da aba, ou reproduzir exatamente sua identidade de sessão. Uma consulta HTTP sem o contexto da aba pode ler outra conta de demonstração.
+
+**Why:** Um teste apontou saldo divergente após um depósito, mas a consulta avulsa estava lendo outra conta inicial. A resposta do polling da própria interface confirmou o saldo correto e persistido.
+
+**How to apply:** Capturar a resposta emitida pelo cliente da aplicação e conferir que pertence à identidade exibida antes de concluir que existe falha de persistência. Não imprimir nem salvar capacidades de sessão.

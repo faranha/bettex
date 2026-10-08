@@ -7,9 +7,10 @@ import { getGetDemoDashboardQueryKey, useUpdateDemoLotteryParticipation, type De
 import { demoPath } from './demo-navigation';
 import { useX } from './ui';
 import { burnFl, nf } from './burn-format';
-import { Term } from './fin';
+import { WalletHelp } from './WalletHelp';
 import { formatBrazilDateTime } from './brazil-time';
 import { lotteryRoundBalance } from './lottery-balance';
+import { LotteryEntries } from './LotteryEntries';
 import { BurnLotteryFlame } from './BurnLotteryArt';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
@@ -50,8 +51,12 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
     <div className="flex items-center gap-3">
       <BurnLotteryFlame lit={lot.participating} />
       <div className="min-w-0 flex-1">
-        <h4 className="display text-lg font-extrabold leading-tight text-[#F4F1E8]">{x('Sorteio diário', 'Daily draw', 'Sorteo diario')}</h4>
-        <p className="text-xs text-[#C5D2F1]" data-testid="lottery-next-draw">{x('Próximo sorteio', 'Next draw', 'Próximo sorteo')} ({drawTime} · São Paulo · 24h)</p>
+        <h4 className="display text-lg font-extrabold leading-tight text-[#F4F1E8]"><WalletHelp id="lottery" label={x('Loteria de queima', 'Burn Lottery', 'Lotería de quema')}>
+          <p>{x('Participação opcional na loteria simulada de recompra e queima. O sorteio pode selecionar BETTEX elegíveis para compra por 2× a cotação, com pagamento em USDC. Não há garantia de seleção ou de pagamento. Os botões à direita abrem a Tesouraria e o histórico de sorteios.', 'Optional participation in the simulated buyback-and-burn lottery. The draw may select eligible BETTEX for purchase at 2× the quoted price, paying USDC. Selection or payment is not guaranteed. The buttons on the right open Treasury and draw history.', 'Participación opcional en la lotería simulada de recompra y quema. El sorteo puede seleccionar BETTEX elegibles para comprarlos a 2× la cotización, pagando USDC. La selección o el pago no están garantizados. Los botones a la derecha abren Tesorería y el historial de sorteos.')}</p>
+        </WalletHelp></h4>
+        <div className="text-xs text-[#C5D2F1]" data-testid="lottery-next-draw"><WalletHelp id="lottery-time" label={x('Próximo sorteio', 'Next draw', 'Próximo sorteo')}>
+          <p>{x('Contagem até o próximo sorteio programado. O horário é de São Paulo e os sorteios são diários. Chegar ao horário não garante que sua carteira seja selecionada; consulte o resultado no histórico.', 'Countdown to the next scheduled draw. Times use São Paulo time and draws are daily. Reaching the draw time does not guarantee your wallet is selected; check results in history.', 'Cuenta atrás hasta el próximo sorteo programado. Los horarios son de São Paulo y los sorteos son diarios. Llegar a la hora no garantiza que se seleccione tu cartera; consulta el resultado en el historial.')}</p>
+        </WalletHelp> ({drawTime} · São Paulo · 24h)</div>
         <p className="bl-timer display text-3xl font-extrabold" data-testid="lottery-timer">{left ?? x('Indisponível', 'Unavailable', 'No disponible')}</p>
       </div>
       <div className="flex shrink-0 flex-col gap-1 self-start">
@@ -67,13 +72,19 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
       )}</p>
     </div>
     <div className="bl-ticket" data-testid="lottery-round-balance" data-round-id={d.treasury.currentRound?.id}>
-      <p className="text-xs font-bold text-[#7A3A06]"><Term tip={x('25% do lucro realizado líquido positivo da rodada atual. Valor provisório, não liquidado; rodada negativa aloca zero. O saldo acumulado da carteira de queima é separado e não muda com esta leitura.', '25% of the current round’s positive realized net profit. Provisional, not settled; a negative round allocates zero. Accumulated burn-wallet cash is separate and does not change with this reading.', '25% de la ganancia neta realizada positiva de la ronda actual. Provisional, no liquidado; una ronda negativa asigna cero. El efectivo acumulado de la cartera de quema es separado y no cambia con esta lectura.')}>{x('Saldo da loteria · rodada atual', 'Lottery balance · current round', 'Saldo de la lotería · ronda actual')}</Term></p>
+      <div className="text-xs font-bold text-[#7A3A06]"><WalletHelp id="lottery-budget" label={x('Saldo da loteria · rodada atual', 'Lottery balance · current round', 'Saldo de la lotería · ronda actual')}>
+        <p>{x('25% do lucro realizado líquido positivo da rodada atual. Valor provisório, não liquidado; rodada negativa aloca zero. O saldo acumulado da carteira de queima é separado. Este valor não é seu saldo pessoal nem um prêmio garantido.', '25% of the current round’s positive realized net profit. Provisional, not settled; a negative round allocates zero. Accumulated burn-wallet cash is separate. This is not your personal balance or a guaranteed prize.', '25% de la ganancia neta realizada positiva de la ronda actual. Provisional, no liquidado; una ronda negativa asigna cero. El efectivo acumulado de la cartera de quema es separado. Este importe no es tu saldo personal ni un premio garantizado.')}</p>
+      </WalletHelp></div>
       <p className="display mt-1 break-words text-2xl font-extrabold tabular-nums text-[#070B1F]" data-testid="lottery-usdc-balance">{roundBalance === null ? x('Indisponível', 'Unavailable', 'No disponible') : <>{nf(fl, roundBalance)} <span className="mono text-[0.55em]">USDC</span></>}</p>
     </div>
     <label className={`bl-join ${lot.participating ? 'is-on' : ''} ${m.isPending || (!lot.participating && !lot.eligible) ? 'is-disabled' : ''}`}>
       <input type="checkbox" checked={lot.participating} disabled={m.isPending || (!lot.participating && !lot.eligible)} onChange={onToggle} data-testid="lottery-participation-checkbox" className="bl-check" />
       {x('Participar da Loteria de queima', 'Join the Burn Lottery', 'Participar en la Lotería de quema')}
     </label>
+    <LotteryEntries lot={lot} />
+    <div className="text-xs text-[#C5D2F1]"><WalletHelp id="lottery-participation" label={x('Como funciona a participação', 'How participation works', 'Cómo funciona la participación')}>
+      <p>{x('Participar é opcional e exige confirmação das condições. O checkbox indica sua escolha, não uma seleção vencedora. Sem BETTEX elegível, não é possível aderir. Desmarcar interrompe a participação futura; resultados já executados permanecem no histórico.', 'Joining is optional and requires confirming the terms. The checkbox shows your choice, not a winning selection. Without eligible BETTEX, you cannot join. Unchecking stops future participation; executed results remain in history.', 'Participar es opcional y requiere confirmar las condiciones. La casilla indica tu elección, no una selección ganadora. Sin BETTEX elegible no puedes participar. Desmarcar detiene la participación futura; los resultados ejecutados permanecen en el historial.')}</p>
+    </WalletHelp></div>
     {!lot.eligible && !lot.participating && <p className="text-xs text-[#C5D2F1]">{x('Sem BETTEX em stake elegível.', 'No eligible staked BETTEX.', 'Sin BETTEX en stake elegible.')}</p>}
     {m.isPending && !open && <p className="text-xs text-[#C5D2F1]" data-testid="lottery-loading">{x('Salvando...', 'Saving...', 'Guardando...')}</p>}
     {m.isError && !open && <p role="alert" className="text-xs font-semibold text-[#FFB4A8]" data-testid="lottery-error">{x('Não foi possível atualizar a participação.', 'Could not update participation.', 'No se pudo actualizar la participación.')}</p>}
@@ -83,7 +94,7 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
         <DialogDescription className="sr-only">{x('Condições de participação opcional na Burn Lottery simulada.', 'Terms of optional participation in the simulated Burn Lottery.', 'Condiciones de participación opcional en Burn Lottery simulada.')}</DialogDescription>
         <ul className="mt-2 grid list-disc gap-1.5 pl-5 text-sm text-[#1B2A41]">
           <li>{x('Compras automáticas diárias a 2x o preço de mercado cotado.', 'Automatic daily purchases at twice the quoted market price.', 'Compras automáticas diarias a 2x el precio de mercado cotizado.')}</li>
-          <li>{x('Ordem aleatória de carteiras, sem reposição; compra de várias carteiras em stake que aderiram, até esgotar o USDC disponível ou os saldos elegíveis.', 'Random wallet order without replacement; buys from multiple opted-in staked wallets until available USDC is exhausted or no eligible balances remain.', 'Orden aleatorio de carteras, sin reposición; compra de varias carteras en stake adheridas hasta agotar el USDC disponible o los saldos elegibles.')}</li>
+          <li>{x('Toda carteira em stake recebe um número grátis, ativado ao aderir. Números comprados têm o mesmo peso. Cada carteira vence e vende no máximo uma vez por sorteio, até esgotar o USDC ou os saldos elegíveis.', 'Every staked wallet receives a free number, activated by joining. Purchased numbers have equal weight. Each wallet wins and sells at most once per draw, until USDC is exhausted or no eligible balances remain.', 'Toda cartera en stake recibe un número gratis, activado al participar. Los números comprados tienen el mismo peso. Cada cartera gana y vende como máximo una vez por sorteo, hasta agotar el USDC o los saldos elegibles.')}</li>
           <li>{x('Cada venda reduz o BETTEX em stake e paga USDC simulado à carteira em dólar.', 'Each sale reduces staked BETTEX and pays simulated USDC to the dollar wallet.', 'Cada venta reduce el BETTEX en stake y paga USDC simulado a la cartera en dólares.')}</li>
           <li>{x('Cancela todo peso/direito não pago do ciclo atual, inclusive o restante.', 'Cancels all prior unpaid weight/rights of the current cycle, including the remainder.', 'Cancela todo peso/derecho no pagado del ciclo actual, incluido el remanente.')}</li>
           <li>{x('A participação continua até você desmarcar. Valores modelados, sem transações reais.', 'Participation continues until you uncheck. Modeled values, no real transactions.', 'La participación continúa hasta que desmarques. Valores modelados, sin transacciones reales.')}</li>

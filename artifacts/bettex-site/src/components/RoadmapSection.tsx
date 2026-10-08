@@ -1,5 +1,6 @@
-import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark } from 'lucide-react';
+import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark, ArrowRight } from 'lucide-react';
 import { CommunityCTA } from './CommunityCTA';
+import { DemoAppLink } from './DemoAppLink';
 import './RoadmapSection.css';
 
 const icons = [FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark];
@@ -97,14 +98,13 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
                   <span className="roadmap__icon" aria-hidden="true"><Icon strokeWidth={2.2} /></span>
                   <div className="roadmap__place-top">
                     <span className="roadmap__place-number">{number}<span> / {total}</span></span>
-                    <span className="roadmap__place-tag">{stop.tag}</span>
+                    {current ? <DemoAppLink className="roadmap__place-tag underline underline-offset-4">{stop.tag}</DemoAppLink> : <span className="roadmap__place-tag">{stop.tag}</span>}
                   </div>
                   <time className="roadmap__place-date" dateTime={stop.dateTime}>{stop.date}</time>
                   {current && <span className="roadmap__current-badge" data-testid="roadmap-current-phase">Estamos aqui</span>}
                   <h3>{stop.title}</h3>
                   <p>{stop.description}</p>
-                  {index === 0 && <div className="roadmap__features roadmap__features--soon" data-testid="roadmap-alpha-features">Em breve, features</div>}
-                  {index === 2 && <div className="roadmap__features roadmap__features--soon" data-testid="roadmap-beta-features">Em breve, features</div>}
+                  {(index === 0 || index === 2) && <DemoAppLink className="roadmap__features roadmap__features--demo" data-testid={index === 0 ? 'roadmap-alpha-features' : 'roadmap-beta-features'}><span>Abrir o demo</span><ArrowRight size={16} aria-hidden="true" /></DemoAppLink>}
                 </article>
               </li>
               );

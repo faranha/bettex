@@ -11,4 +11,5 @@ export interface DemoLotteryPurchase {
   tokensBettex: number;
   paidUsdc: number;
   isOwn: boolean;
+  winningNumber?: string;
 }

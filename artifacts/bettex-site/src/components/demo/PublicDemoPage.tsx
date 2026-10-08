@@ -3,6 +3,7 @@ import { useRef, useState, type KeyboardEvent, type TouchEvent } from 'react';
 import { Link } from 'wouter';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { BettexMark } from '@/components/BettexMark';
+import { DemoAppLink } from '@/components/DemoAppLink';
 import { PhoneScreen } from '@/components/investor/PhoneScreens';
 import type { ScreenId } from '@/components/investor/presentationData';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
@@ -58,9 +59,9 @@ export function PublicDemoPage() {
   return <main className="demo-root investor-preview public-app-landing min-h-[calc(100dvh-var(--site-header-h))]" data-testid="public-demo">
     <div className="investor-preview__wrap">
       <header className="investor-preview__intro">
-        <p className="investor-preview__eyebrow">{x('Em desenvolvimento', 'Under development', 'En desarrollo')} · {x('Em breve', 'Coming soon', 'Próximamente')}</p>
+        <p className="investor-preview__eyebrow">{x('Em desenvolvimento', 'Under development', 'En desarrollo')} · <DemoAppLink className="underline underline-offset-4" /></p>
         <h1 className="investor-preview__title">
-          {x('O app BETTEX', 'The BETTEX app', 'La app BETTEX')} <em>{x('está a caminho.', 'is on its way.', 'está en camino.')}</em>
+          {x('O app BETTEX', 'The BETTEX app', 'La app BETTEX')} <em>{x('no demo ALFA.', 'in the ALPHA demo.', 'en el demo ALFA.')}</em>
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#13204F]">
           {x('Tecnologia para apostadores brasileiros usarem operações assistidas por IA e participarem pelo token BETTEX. O app ainda está em desenvolvimento; estas telas mostram o que estamos construindo.',
@@ -78,7 +79,7 @@ export function PublicDemoPage() {
             </div>
           </div>
           <div className="ip-copy" aria-live="polite">
-            <p className="ip-group__label" style={{ color: '#F2B632' }}>{i + 1} / {n} · {x('Em breve', 'Coming soon', 'Próximamente')}</p>
+            <p className="ip-group__label" style={{ color: '#F2B632' }}>{i + 1} / {n} · <DemoAppLink className="underline underline-offset-4" /></p>
             <h3>{s.title[idx]}</h3>
             <p>{s.text[idx]}</p>
             <div className="mt-5 flex items-center gap-3">
@@ -95,7 +96,7 @@ export function PublicDemoPage() {
           onTouchStart={e => { touch.current = e.touches[0].clientX; }} onTouchEnd={onEnd}>
           <div className={`ip-phone${s.id === 'resultados' || s.id === 'historico' ? ' ip-phone--performance' : ''}`}>
             <div className="ip-phone__notch" />
-            <div className="ip-phone__bar"><span className="ip-phone__logo" aria-hidden="true"><BettexMark /></span>BETTEX<i>{x('Em breve', 'Coming soon', 'Próximamente')}</i></div>
+            <div className="ip-phone__bar"><span className="ip-phone__logo" aria-hidden="true"><BettexMark /></span>BETTEX<i><DemoAppLink /></i></div>
             <div className="ip-screen" key={s.id}><PhoneScreen id={s.id} /></div>
           </div>
           <p className="ip-device__caption">{x('Prévia ilustrativa · Em desenvolvimento', 'Illustrative preview · Under development', 'Vista ilustrativa · En desarrollo')}</p>

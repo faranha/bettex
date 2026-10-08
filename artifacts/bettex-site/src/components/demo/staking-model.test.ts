@@ -108,7 +108,9 @@ test('staking presentation uses helpers and earnings cards, not a share donut or
   assert.match(presentation, /staking-live-trading/);
   assert.match(presentation, /demoPath\('central', loc\)/);
   assert.match(source, /<Term tip=/);
-  assert.match(chart, /dataKey="forecast"/);
+  assert.match(chart, /hourlyRows/);
+  assert.doesNotMatch(chart, /dataKey="forecast"/);
+  assert.match(chart, /staking-chart-type-/);
   assert.match(chart, /<Bar dataKey="profit"/);
   assert.match(chart, /staking-chart-tick/);
 });

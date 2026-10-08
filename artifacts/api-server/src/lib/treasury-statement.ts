@@ -6,6 +6,7 @@ export const STATEMENT_CATEGORIES = ["investment_result", "execution_cost", "dis
 export type StatementCategory = typeof STATEMENT_CATEGORIES[number];
 export type StatementFilters = {
   from: string; to: string; asset: "all" | "USDC" | "BETTEX"; account: "all" | "treasury" | "buyback";
+  wallet?: "all" | "operational" | "reserve" | "crypto_agent" | "buyback";
   category: string; direction: "all" | "in" | "out"; search: string; page: number;
   asOf?: string; snapshot?: string; locale: "pt" | "en" | "es";
 };
@@ -34,17 +35,18 @@ export function statementFilters(query: Record<string, unknown>): StatementFilte
     return String(query[key] ?? fallback);
   };
   const from = get("from"), to = get("to"); statementPeriod(from, to);
-  const asset = get("asset", "all"), account = get("account", "all"), category = get("category", "all");
+  const asset = get("asset", "all"), account = get("account", "all"), category = get("category", "all"), wallet = get("wallet", "all");
   const direction = get("direction", "all"), search = get("search").trim(), page = Number(get("page", "1"));
   const asOf = get("asOf") || undefined, snapshot = get("snapshot") || undefined, locale = get("locale", "en");
   if (!["all", "USDC", "BETTEX"].includes(asset) || !["all", "treasury", "buyback"].includes(account)
+    || !["all", "operational", "reserve", "crypto_agent", "buyback"].includes(wallet)
     || category !== "all" && !STATEMENT_CATEGORIES.includes(category as StatementCategory)
     || !["all", "in", "out"].includes(direction) || search.length > 100
     || !Number.isInteger(page) || page < 1 || page > 100000
     || snapshot !== undefined && !/^\d{1,20}$/.test(snapshot)
     || asOf !== undefined && (!Number.isFinite(Date.parse(asOf)) || Date.parse(asOf) > Date.now() + 1000)
     || !["pt", "en", "es"].includes(locale)) throw new Error("invalid_statement_filters");
-  return { from, to, asset, account, category, direction, search, page, asOf, snapshot, locale } as StatementFilters;
+  return { from, to, asset, account, wallet, category, direction, search, page, asOf, snapshot, locale } as StatementFilters;
 }
 type Activity = { id: string; at: string; kind: string; agent?: string | null; market?: string | null;
   capitalUsdc?: string | number | null; grossUsdc?: string | number | null; costUsdc?: string | number | null };
@@ -76,20 +78,30 @@ export function treasuryStatementEntries(activity: Activity[], rounds: ClosedRou
       "buyback_funding", r.id, "buyback", "modeled_demo", true);
   }
   for (const b of burn) {
+    const entryPayment = b.id.startsWith("LOTTERY-ENTRIES-");
     if (b.kind === "wallet_funded") add(`${b.id}:USDC`, b.at, "buyback", "USDC", statementUnits(b.amountUsdc),
-      "buyback_funding", b.roundId, "treasury", "modeled_demo", true);
+      "buyback_funding", b.roundId, entryPayment ? "participation" : "treasury", "modeled_demo", !entryPayment);
     if (b.kind === "tokens_purchased") {
       const category = b.id.startsWith("DEMO-LOTTERY-") ? "lottery_purchase" : "buyback_purchase";
       add(`${b.id}:USDC`, b.at, "buyback", "USDC", -statementUnits(b.amountUsdc),
-        category, b.roundId, category === "lottery_purchase" ? "participation" : "market", "modeled_demo");
+        category, b.roundId, category === "lottery_purchase" ? "participation" : entryPayment ? "BETTEX/USDC AMM" : "market", "modeled_demo");
       add(`${b.id}:BETTEX`, b.at, "buyback", "BETTEX", statementUnits(b.tokensBettex),
-        "token_purchase", b.roundId, "market", "modeled_demo");
+        "token_purchase", b.roundId, entryPayment ? "BETTEX/USDC AMM" : "market", "modeled_demo");
     }
     if (b.kind === "tokens_burned") add(`${b.id}:BETTEX`, b.at, "buyback", "BETTEX", -statementUnits(b.tokensBettex),
       "token_burn", b.roundId, "burn", "modeled_demo");
   }
   return result;
 }
+export function statementEntryWallet(e: TreasuryStatementEntry): "operational" | "crypto_agent" | "buyback" {
+  if (e.account === "buyback") return "buyback";
+  // Use the same protocol identity as approved Crypto allocations: Crypto
+  // positions and BTC/ETH/SOL prediction markets, not all prediction markets.
+  const cryptoPosition = ["investment_result", "execution_cost"].includes(e.category)
+    && (/^crypto(?: · |$)/.test(e.counterparty) || /^predictions · (BTC|ETH|SOL)(?:[\s/-]|$)/i.test(e.counterparty));
+  return cryptoPosition ? "crypto_agent" : "operational";
+}
+
 export function matchingStatementEntries(entries: TreasuryStatementEntry[], f: StatementFilters) {
   const { start, end } = statementPeriod(f.from, f.to), ceiling = f.asOf ? Date.parse(f.asOf) : Infinity;
   const search = f.search.toLocaleLowerCase();
@@ -97,6 +109,7 @@ export function matchingStatementEntries(entries: TreasuryStatementEntry[], f: S
     const at = Date.parse(e.at), amount = statementUnits(e.amount);
     return at >= start && at < end && at <= ceiling
       && (f.asset === "all" || e.asset === f.asset) && (f.account === "all" || e.account === f.account)
+      && (!f.wallet || f.wallet === "all" || statementEntryWallet(e) === f.wallet)
       && (f.category === "all" || e.category === f.category)
       && (f.direction === "all" || (f.direction === "in" ? amount > 0n : amount < 0n))
       && (!search || `${e.id} ${e.reference} ${e.counterparty}`.toLocaleLowerCase().includes(search));
@@ -104,9 +117,13 @@ export function matchingStatementEntries(entries: TreasuryStatementEntry[], f: S
 }
 export function statementBalances(entries: TreasuryStatementEntry[], f: StatementFilters,
   opening: Map<string, bigint>, expectedClosing = new Map<string, bigint>()): TreasuryStatementBalance[] {
+  // The partitioned wallets have saved allocation snapshots, not independently
+  // reconciled cash openings. Never relabel consolidated balances as theirs.
+  if (f.wallet && !["all", "buyback"].includes(f.wallet)) return [];
   const { start, end } = statementPeriod(f.from, f.to), ceiling = Math.min(end - 1, Date.parse(f.asOf!));
   return (["treasury:USDC", "buyback:USDC", "buyback:BETTEX"] as const)
     .filter(key => (f.account === "all" || key.startsWith(f.account + ":")) && (f.asset === "all" || key.endsWith(":" + f.asset)))
+    .filter(key => f.wallet !== "buyback" || key.startsWith("buyback:"))
     .map(key => {
       const [account, asset] = key.split(":") as [TreasuryStatementBalance["account"], TreasuryStatementBalance["asset"]];
       const rows = entries.filter(e => e.account === account && e.asset === asset && Date.parse(e.at) >= start && Date.parse(e.at) <= ceiling);

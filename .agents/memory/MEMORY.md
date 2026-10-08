@@ -41,7 +41,7 @@
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
 - [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; históricos de sugestões e decisões consultáveis.
 - [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — BETTEX acima de Cripto/BTC/ETH/SOL; preservar IDs de protocolo e separar controles de agentes.
-- [Real agent intelligence](real-agent-intelligence.md) — real AI inference is required; rule-based checks are controls, not a substitute for agent intelligence.
+- [Real agent intelligence](real-agent-intelligence.md) — real inference is required; bound citations to supplied evidence; fixed-rule controls are not substitute intelligence.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
 - [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
 - [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
@@ -82,3 +82,4 @@
 - [Público da entrada do app](app-entry-audience.md) — homem preservado, um único esporte discreto ao fundo; Esportes/Value Betting é o protagonista do próximo lançamento.
 - [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.
 - [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.
+- [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.

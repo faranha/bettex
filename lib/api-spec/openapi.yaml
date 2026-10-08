@@ -283,6 +283,7 @@ paths:
         - { name: to, in: query, required: true, schema: { type: string, format: date } }
         - { name: asset, in: query, schema: { type: string, enum: [all, USDC, BETTEX], default: all } }
         - { name: account, in: query, schema: { type: string, enum: [all, treasury, buyback], default: all } }
+        - { name: wallet, in: query, schema: { type: string, enum: [all, operational, reserve, crypto_agent, buyback], default: all } }
         - { name: category, in: query, schema: { type: string, default: all, maxLength: 40 } }
         - { name: direction, in: query, schema: { type: string, enum: [all, in, out], default: all } }
         - { name: search, in: query, schema: { type: string, maxLength: 100 } }
@@ -306,6 +307,7 @@ paths:
         - { name: to, in: query, required: true, schema: { type: string, format: date } }
         - { name: asset, in: query, schema: { type: string, enum: [all, USDC, BETTEX], default: all } }
         - { name: account, in: query, schema: { type: string, enum: [all, treasury, buyback], default: all } }
+        - { name: wallet, in: query, schema: { type: string, enum: [all, operational, reserve, crypto_agent, buyback], default: all } }
         - { name: category, in: query, schema: { type: string, default: all, maxLength: 40 } }
         - { name: direction, in: query, schema: { type: string, enum: [all, in, out], default: all } }
         - { name: search, in: query, schema: { type: string, maxLength: 100 } }
@@ -363,7 +365,7 @@ paths:
         - { name: from, in: query, schema: { type: string, format: date-time } }
         - { name: to, in: query, schema: { type: string, format: date-time } }
         - { name: kind, in: query, schema: { type: string, maxLength: 60 } }
-        - { name: correlationId, in: query, schema: { type: string, maxLength: 100 } }
+        - { name: correlationId, in: query, schema: { type: string, maxLength: 256 } }
         - { name: cursor, in: query, schema: { type: string, maxLength: 2000 } }
         - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 50, default: 20 } }
       responses: &historyResponses
@@ -545,6 +547,24 @@ paths:
       responses:
         "200":
           description: Updated dashboard
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DemoDashboard" }
+  /demo/lottery/entries:
+    parameters:
+      - $ref: "#/components/parameters/DemoTabSession"
+    post:
+      operationId: buyDemoLotteryEntries
+      tags: [demo]
+      summary: Buy modeled lottery numbers at 1 USDC each and burn the acquired BETTEX
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/DemoLotteryEntryOrder" }
+      responses:
+        "200":
+          description: Dashboard with generated entries and the recorded simulated burn
           content:
             application/json:
               schema: { $ref: "#/components/schemas/DemoDashboard" }
@@ -2003,12 +2023,22 @@ components:
         currentRound: { $ref: "#/components/schemas/DemoTreasuryRound" }
         burn: { $ref: "#/components/schemas/DemoBurnSummary" }
         swapPool: { $ref: "#/components/schemas/DemoSwapPool" }
+    DemoAmmContract:
+      type: object
+      required: [id, name, version, runtime, status]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        version: { type: string }
+        runtime: { type: string, enum: [server_simulation] }
+        status: { type: string, enum: [active] }
     DemoSwapPool:
       type: object
-      required: [id, source, contractAddress, reserveUsdc, reserveBettex, initialReserveUsdc, initialReserveBettex, spotPriceUsdc, totalVolumeUsdc, swapCount, updatedAt]
+      required: [id, source, contract, contractAddress, reserveUsdc, reserveBettex, initialReserveUsdc, initialReserveBettex, spotPriceUsdc, totalVolumeUsdc, swapCount, updatedAt]
       properties:
         id: { type: string }
         source: { type: string, enum: [constant_product_demo] }
+        contract: { $ref: "#/components/schemas/DemoAmmContract" }
         contractAddress: { type: [string, "null"], description: Null until an actual AMM contract exists; this pool is simulation only. }
         reserveUsdc: { type: number }
         reserveBettex: { type: number }
@@ -2065,6 +2095,34 @@ components:
       properties:
         participating: { type: boolean }
         confirmed: { type: boolean }
+    DemoLotteryEntryOrder:
+      type: object
+      additionalProperties: false
+      required: [requestId, quantity, confirmed, drawAt]
+      properties:
+        requestId: { type: string, format: uuid }
+        quantity: { type: integer, minimum: 1, maximum: 100 }
+        confirmed: { type: boolean, enum: [true] }
+        drawAt: { type: string, minLength: 20, maxLength: 32 }
+    DemoLotteryEntry:
+      type: object
+      required: [number, type, createdAt]
+      properties:
+        number: { type: string }
+        type: { type: string, enum: [free, paid] }
+        createdAt: { type: string }
+    DemoLotteryEntryReceipt:
+      type: object
+      required: [requestId, quantity, paidUsdc, burnedBettex, createdAt, numbers]
+      properties:
+        requestId: { type: string }
+        quantity: { type: integer }
+        paidUsdc: { type: number }
+        burnedBettex: { type: number }
+        createdAt: { type: string }
+        numbers:
+          type: array
+          items: { type: string }
     DemoLotteryPurchase:
       type: object
       required: [walletLabel, tokensBettex, paidUsdc, isOwn]
@@ -2073,6 +2131,7 @@ components:
         tokensBettex: { type: number }
         paidUsdc: { type: number }
         isOwn: { type: boolean }
+        winningNumber: { type: string }
     DemoLotteryDraw:
       type: object
       required: [id, scheduledAt, executedAt, status, budgetUsdc, spentUsdc, remainingUsdc, referencePriceUsdc, purchasePriceUsdc, purchases]
@@ -2091,7 +2150,7 @@ components:
           items: { $ref: "#/components/schemas/DemoLotteryPurchase" }
     DemoLottery:
       type: object
-      required: [source, nextDrawAt, purchasePriceUsdc, participating, eligible, participants, draws]
+      required: [source, nextDrawAt, purchasePriceUsdc, participating, eligible, participants, draws, entryPriceUsdc, entries, entryReceipts]
       properties:
         source: { type: string, enum: [modeled_demo] }
         nextDrawAt: { type: string }
@@ -2099,6 +2158,14 @@ components:
         participating: { type: boolean }
         eligible: { type: boolean }
         participants: { type: integer }
+        entryPriceUsdc: { type: number }
+        purchaseResult: { $ref: "#/components/schemas/DemoLotteryEntryReceipt" }
+        entries:
+          type: array
+          items: { $ref: "#/components/schemas/DemoLotteryEntry" }
+        entryReceipts:
+          type: array
+          items: { $ref: "#/components/schemas/DemoLotteryEntryReceipt" }
         draws:
           type: array
           items: { $ref: "#/components/schemas/DemoLotteryDraw" }

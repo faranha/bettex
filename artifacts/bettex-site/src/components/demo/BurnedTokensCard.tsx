@@ -6,6 +6,7 @@ import { useX } from './ui';
 import { burnOf, burnFl, nf } from './burn-format';
 import { LotteryCard } from './LotteryCard';
 import { Flame, History } from 'lucide-react';
+import { WalletHelp } from './WalletHelp';
 
 export function BurnedTokensCard({ d }: { d: DemoDashboard }) {
   const { x, loc } = useX();
@@ -16,7 +17,9 @@ export function BurnedTokensCard({ d }: { d: DemoDashboard }) {
   }
   const btn = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] px-3 text-sm font-bold text-[#1B2A41]';
   return <article className="grid content-start gap-2 rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="demo-wallet-burned">
-    <h3 className="text-sm font-bold text-[#1B2A41]">{d.profile.provider === 'native' ? x('Tokens queimados', 'Burned tokens', 'Tokens quemados') : 'Burn Lottery'}</h3>
+    <h3 className="text-sm font-bold text-[#1B2A41]"><WalletHelp id="burned" label={d.profile.provider === 'native' ? x('Tokens queimados', 'Burned tokens', 'Tokens quemados') : 'Burn Lottery'}>
+      <p>{x('Total cumulativo de BETTEX já queimados, não um saldo que você pode gastar ou sacar. USDC aguardando recompra e BETTEX aguardando queima são saldos separados; só tokens efetivamente queimados entram no total. Dados não registrados ficam indisponíveis, sem substituir por estimativas. Tesouraria e Histórico abrem os registros correspondentes.', 'Cumulative BETTEX already burned, not a balance you can spend or withdraw. USDC awaiting buyback and BETTEX awaiting burn are separate balances; only actually burned tokens enter the total. Unrecorded data remains unavailable, without substituting estimates. Treasury and History open the corresponding records.', 'Total acumulado de BETTEX ya quemados, no un saldo que puedas gastar o retirar. USDC esperando recompra y BETTEX esperando quema son saldos separados; solo los tokens realmente quemados entran en el total. Los datos no registrados permanecen no disponibles, sin sustituirlos por estimaciones. Tesorería e Historial abren los registros correspondientes.')}</p>
+    </WalletHelp></h3>
     {d.profile.provider === 'native' && (b ? <>
       <p className="display break-words text-2xl font-extrabold tabular-nums text-[#1B2A41]" data-testid="burned-tokens-value">{nf(fl, b.totalBurnedBettex, 0)} <span className="mono text-[0.55em]">BETTEX</span></p>
       <p className="flex items-center gap-1 text-[11px] font-semibold text-[#5B6B85]"><Flame className="h-3.5 w-3.5 text-[#D9591B]" aria-hidden="true" />{x('Total acumulado queimado', 'Cumulative burned total', 'Total acumulado quemado')}</p>

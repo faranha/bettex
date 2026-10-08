@@ -3,13 +3,14 @@ import type { DemoLottery, DemoLotteryDraw, DemoLotteryPurchase } from "@workspa
 import type { AccountState, EngineState } from "./demo-state.ts";
 import { demoCycleStart, DEMO_DAY } from "./demo-cycle-clock.ts";
 import { demoBurnSnapshot } from "./demo-burn-story.ts";
+import { ensureLotteryEntries, hasLotteryStake, LOTTERY_ENTRY_USDC } from "./demo-lottery-entries.ts";
 
 const SCALE = 1_000_000;
 const units = (n: number) => Math.round(n * SCALE);
 const value = (n: number) => n / SCALE;
 type Purchase = Omit<DemoLotteryPurchase, "isOwn"> & { accountId: string };
 type Draw = Omit<DemoLotteryDraw, "purchases"> & { purchases: Purchase[] };
-export type DemoLotteryState = { nextDrawAt: number; draws: Draw[] };
+export type DemoLotteryState = { nextDrawAt: number; draws: Draw[]; nextNumber?: number };
 
 export function ensureDemoLottery(engine: EngineState, now: number) {
   if (!engine.scheduledStory) return;
@@ -19,8 +20,7 @@ export function ensureDemoLottery(engine: EngineState, now: number) {
 }
 
 function eligible(account: AccountState, at: number) {
-  return account.profile.provider !== "native" && account.bettex > 0 &&
-    account.lots.some(lot => lot.amount > 0 && lot.since <= at);
+  return hasLotteryStake(account, at);
 }
 function entered(account: AccountState, at: number) {
   return eligible(account, at) && account.lotteryConsent?.participating === true &&
@@ -40,11 +40,19 @@ export function advanceDemoLottery(engine: EngineState, accounts: AccountState[]
     if (state.draws.some(draw => draw.id === id)) { state.nextDrawAt += DEMO_DAY; continue; }
     let cash = units(demoBurnSnapshot(engine, now)!.walletUsdc);
     const budget = cash;
-    const candidates = accounts.filter(account => entered(account, at));
+    for (const account of accounts) ensureLotteryEntries(engine, account, at);
+    const candidates = accounts.filter(account => entered(account, at)).map(account => ({
+      account, entries: account.lotteryEntries!.entries.filter(entry => Date.parse(entry.createdAt) <= at),
+    })).filter(candidate => candidate.entries.length > 0);
     const purchases: Purchase[] = [];
     while (cash > 0 && candidates.length) {
-      // Every eligible wallet has one entry. Selection is without replacement.
-      const account = candidates.splice(pick(candidates.length), 1)[0]!;
+      // Each number has equal weight. A winning wallet is removed after its sale.
+      const totalEntries = candidates.reduce((n, candidate) => n + candidate.entries.length, 0);
+      let ticketIndex = pick(totalEntries);
+      let candidateIndex = 0;
+      while (ticketIndex >= candidates[candidateIndex]!.entries.length) ticketIndex -= candidates[candidateIndex++]!.entries.length;
+      const { account, entries } = candidates.splice(candidateIndex, 1)[0]!;
+      const winningNumber = entries[ticketIndex]!.number;
       const affordable = Number(BigInt(cash) * BigInt(SCALE) / BigInt(priceUnits));
       const tokenUnits = Math.min(units(account.bettex), affordable);
       if (tokenUnits <= 0) break;
@@ -55,7 +63,7 @@ export function advanceDemoLottery(engine: EngineState, accounts: AccountState[]
       const accountId = account.profile.accountId;
       const label = createHash("sha256").update(accountId).digest("hex").slice(0, 8).toUpperCase();
       const purchaseId = `${id}-${label}`;
-      purchases.push({ accountId, walletLabel: `DEMO-${label}`, tokensBettex: tokens, paidUsdc: paid });
+      purchases.push({ accountId, walletLabel: `DEMO-${label}`, tokensBettex: tokens, paidUsdc: paid, winningNumber });
       account.bettex = value(units(account.bettex) - tokenUnits);
       account.usdc = value(units(account.usdc) + payment);
       // Any BETTEX exit resets ALL prior unpaid weight, also for remaining tokens.
@@ -89,6 +97,9 @@ export function demoLotterySnapshot(engine: EngineState, account: AccountState, 
     purchasePriceUsdc: value(units(engine.price) * 2),
     participating: !!account.lotteryConsent?.participating, eligible: eligible(account, now),
     participants: accounts.filter(a => entered(a, now)).length,
+    entryPriceUsdc: LOTTERY_ENTRY_USDC,
+    entries: account.lotteryEntries?.drawAt === new Date(engine.burnLottery.nextDrawAt).toISOString() ? account.lotteryEntries.entries : [],
+    entryReceipts: account.lotteryEntries?.drawAt === new Date(engine.burnLottery.nextDrawAt).toISOString() ? account.lotteryEntries.receipts : [],
     draws: [...engine.burnLottery.draws].reverse().map(({ purchases, ...draw }) => ({
       ...draw, purchases: purchases.map(({ accountId, ...purchase }) => ({
         ...purchase, isOwn: accountId === account.profile.accountId,

@@ -24,6 +24,7 @@ import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { NewEconomySection } from '@/components/NewEconomySection';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { RoadmapSection } from '@/components/RoadmapSection';
+import { DemoAppLink } from '@/components/DemoAppLink';
 import { chapters } from '@/components/WhitepaperChapters';
 import { FloatingCommunityCTA, TelegramIcon } from '@/components/CommunityCTA';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
@@ -68,13 +69,15 @@ function usePageLinkProps() {
 
 function Logo() {
   const linkProps = usePageLinkProps();
-  return <a {...linkProps} href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 max-[359px]:gap-1.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX ALFA, voltar ao início">
+  return <div className="inline-flex items-center gap-2.5 max-[359px]:gap-1.5">
+    <a {...linkProps} href={homeAnchor('inicio')} className="inline-flex items-center gap-2.5 max-[359px]:gap-1.5 rounded-xl text-[#F4F1E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#AAC3EE]" aria-label="BETTEX, voltar ao início">
     <span className="grid h-9 w-9 max-[359px]:h-7 max-[359px]:w-7 shrink-0 place-items-center rounded-lg border border-[#768BB5]/30 bg-[#0D1530] shadow-[0_3px_10px_rgba(0,9,33,.12)]">
       <BettexMark slate className="block h-[26px] w-[26px] max-[359px]:h-[22px] max-[359px]:w-[22px]" />
     </span>
     <span className="display text-[22px] max-[359px]:text-[18px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
-    <span data-i18n="raw" data-testid="brand-alpha-badge" className="mono shrink-0 rounded border border-[#F2B632]/60 bg-[#F2B632]/10 px-1.5 py-1 text-[9px] font-bold leading-none tracking-[.12em] text-[#F2B632]">ALFA</span>
-  </a>;
+    </a>
+    <DemoAppLink data-i18n="raw" data-testid="brand-alpha-badge" className="inline-flex min-h-11 shrink-0 items-center text-[#F2B632]"><span className="mono rounded border border-[#F2B632]/60 bg-[#F2B632]/10 px-1.5 py-1 text-[9px] font-bold leading-none tracking-[.12em]">ALFA</span></DemoAppLink>
+  </div>;
 }
 
 function MainLinks({ className, onNavigate, uniform = false }: { className: string; onNavigate?: () => void; uniform?: boolean }) {

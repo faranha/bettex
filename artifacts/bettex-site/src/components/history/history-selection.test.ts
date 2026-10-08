@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { historyQuery, selectHistoryArea, treasuryFiltersFromSearch, treasuryWalletFromSearch } from './history-selection.ts';
 
 test('each financial shortcut selects its own history area', () => {
-  for (const wallet of ['USDC', 'BETTEX', 'ETH', 'earnings']) {
+  for (const wallet of ['USDC', 'BETTEX', 'earnings']) {
     const query = historyQuery('wallets', { wallet });
     assert.equal(selectHistoryArea(query), 'wallets');
     assert.equal(new URLSearchParams(query).get('wallet'), wallet);

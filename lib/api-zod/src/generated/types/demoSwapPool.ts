@@ -5,11 +5,13 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { DemoAmmContract } from './demoAmmContract';
 import type { DemoSwapPoolSource } from './demoSwapPoolSource';
 
 export interface DemoSwapPool {
   id: string;
   source: DemoSwapPoolSource;
+  contract: DemoAmmContract;
   /**
      * Null until an actual AMM contract exists; this pool is simulation only.
      * @nullable

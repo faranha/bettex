@@ -8,12 +8,14 @@
 import type { GetDemoTreasuryStatementAccount } from './getDemoTreasuryStatementAccount';
 import type { GetDemoTreasuryStatementAsset } from './getDemoTreasuryStatementAsset';
 import type { GetDemoTreasuryStatementDirection } from './getDemoTreasuryStatementDirection';
+import type { GetDemoTreasuryStatementWallet } from './getDemoTreasuryStatementWallet';
 
 export type GetDemoTreasuryStatementParams = {
 from: Date;
 to: Date;
 asset?: GetDemoTreasuryStatementAsset;
 account?: GetDemoTreasuryStatementAccount;
+wallet?: GetDemoTreasuryStatementWallet;
 /**
  * @maxLength 40
  */
