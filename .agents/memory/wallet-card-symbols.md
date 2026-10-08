@@ -20,3 +20,9 @@ The Earnings wallet and Burn Lottery blocks must have the same height when side 
 **Why:** The creator explicitly corrected the compact layout: “os dois blocos devem ter a mesma altura”.
 
 **How to apply:** Equalize the paired card heights without coupling their independent accordion states; keep mobile stacking responsive.
+
+As duas áreas devem ter estilo semelhante, fontes de tamanhos equivalentes e um porquinho maior e mais animado nos rendimentos.
+
+**Why:** O criador pediu explicitamente essa equivalência após ver os cartões lado a lado.
+
+**How to apply:** Manter verde nos rendimentos e fogo na loteria, mas harmonizar títulos, valores, descrições e escala das ilustrações; respeitar redução de movimento.

@@ -27,17 +27,17 @@ Cada carteira participante tem uma entrada no sorteio, em ordem aleatória sem r
 
 **How to apply:** Não transformar silenciosamente a loteria em sorteio ponderado por tokens. A implementação atual é somente simulada; execução nativa exige autorização e regras correspondentes antes de movimentar dinheiro real.
 
-O cartão da Burn Lottery deve mostrar um saldo referente à rodada atual, igual a 25% do lucro líquido realizado positivo; rodadas negativas alocam zero.
+A alocação financeira referente à rodada atual é igual a 25% do lucro líquido realizado positivo; rodadas negativas alocam zero.
 
 **Why:** O criador pediu o saldo USDC da loteria baseado em 25% do lucro da rodada atual. A aplicação mantém a regra de distribuir apenas lucro positivo.
 
 **How to apply:** Tratar esse indicador como alocação provisória da rodada, distinta do caixa acumulado da carteira de recompra. Não substituir silenciosamente o orçamento liquidado usado nas compras pelo indicador provisório nem somar os dois como dinheiro disponível.
 
-In the demo, the lottery card must always show a positive illustrative amount, including negative or zero-profit rounds.
+Não exibir o bloco “Lottery budget” no cartão Burn Lottery.
 
-**Why:** The creator subsequently said “no demo, sempre tem que ter algum valor na loteria”.
+**Why:** O criador substituiu a exigência anterior de um valor ilustrativo positivo no cartão: “pode remover o lotery budget pra ficar menor a altura do burn”.
 
-**How to apply:** This overrides the card's zero display only for the demo. Label the illustration distinctly from actual draw cash and realized-profit allocation; never change real/native balances or pretend the illustrative amount funds purchases.
+**How to apply:** Preservar timer, histórico, participação e detalhes expansíveis, sem reintroduzir o painel de orçamento. A remoção é visual; não alterar o caixa usado nos sorteios nem a alocação financeira.
 
 No cartão, remover o rótulo “Simulated”, a linha de preço de referência modelado e a linha de preço de compra/participantes. O próximo sorteio usa horário explícito de 24 horas em São Paulo; o histórico é um botão com ícone para a página de histórico.
 
