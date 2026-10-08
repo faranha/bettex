@@ -33,6 +33,12 @@ O cartão da Burn Lottery deve mostrar um saldo referente à rodada atual, igual
 
 **How to apply:** Tratar esse indicador como alocação provisória da rodada, distinta do caixa acumulado da carteira de recompra. Não substituir silenciosamente o orçamento liquidado usado nas compras pelo indicador provisório nem somar os dois como dinheiro disponível.
 
+In the demo, the lottery card must always show a positive illustrative amount, including negative or zero-profit rounds.
+
+**Why:** The creator subsequently said “no demo, sempre tem que ter algum valor na loteria”.
+
+**How to apply:** This overrides the card's zero display only for the demo. Label the illustration distinctly from actual draw cash and realized-profit allocation; never change real/native balances or pretend the illustrative amount funds purchases.
+
 No cartão, remover o rótulo “Simulated”, a linha de preço de referência modelado e a linha de preço de compra/participantes. O próximo sorteio usa horário explícito de 24 horas em São Paulo; o histórico é um botão com ícone para a página de histórico.
 
 **Why:** O criador pediu essas remoções e apresentações no cartão, mantendo a participação acessível.

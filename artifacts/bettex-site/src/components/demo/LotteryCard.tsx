@@ -9,7 +9,7 @@ import { useX } from './ui';
 import { burnFl, nf } from './burn-format';
 import { WalletHelp } from './WalletHelp';
 import { formatBrazilDateTime } from './brazil-time';
-import { lotteryRoundBalance } from './lottery-balance';
+import { demoLotteryPreviewBalance } from './lottery-balance';
 import { LotteryEntries } from './LotteryEntries';
 import { BurnLotteryFlame } from './BurnLotteryArt';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -35,7 +35,7 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
   const [open, setOpen] = useState(false);
   const lot = d.profile.provider === 'native' ? undefined : d.lottery;
   const left = useCountdown(lot?.nextDrawAt ?? '', d.serverNow);
-  const roundBalance = lotteryRoundBalance(d.treasury.currentRound?.realizedNetUsdc);
+  const roundBalance = demoLotteryPreviewBalance(d.treasury.currentRound?.realizedNetUsdc);
   if (!lot) return null;
   const drawTime = Number.isFinite(Date.parse(lot.nextDrawAt))
     ? formatBrazilDateTime(lot.nextDrawAt, fl, { hour: '2-digit', minute: '2-digit' })
@@ -49,7 +49,7 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
   });
   const onToggle = () => { if (m.isPending) return; if (lot.participating) send(false, false); else { m.reset(); setOpen(true); } };
   const btn = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] px-3 text-sm font-bold text-[#1B2A41] disabled:opacity-50';
-  return <div className="bl-card grid content-start gap-3" data-testid="lottery-card">
+  return <div className="bl-card flex flex-col gap-3" data-testid="lottery-card">
     <div className="flex items-center gap-3">
       <BurnLotteryFlame lit={lot.participating} />
       <div className="min-w-0 flex-1">
@@ -67,8 +67,8 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
       </div>
     </div>
     <div className="bl-ticket" data-testid="lottery-round-balance" data-round-id={d.treasury.currentRound?.id}>
-      <div className="text-xs font-bold text-[#7A3A06]"><WalletHelp id="lottery-budget" label={x('Saldo da loteria · rodada atual', 'Lottery balance · current round', 'Saldo de la lotería · ronda actual')}>
-        <p>{x('25% do lucro realizado líquido positivo da rodada atual. Valor provisório, não liquidado; rodada negativa aloca zero. O saldo acumulado da carteira de queima é separado. Este valor não é seu saldo pessoal nem um prêmio garantido.', '25% of the current round’s positive realized net profit. Provisional, not settled; a negative round allocates zero. Accumulated burn-wallet cash is separate. This is not your personal balance or a guaranteed prize.', '25% de la ganancia neta realizada positiva de la ronda actual. Provisional, no liquidado; una ronda negativa asigna cero. El efectivo acumulado de la cartera de quema es separado. Este importe no es tu saldo personal ni un premio garantizado.')}</p>
+      <div className="text-xs font-bold text-[#7A3A06]"><WalletHelp id="lottery-budget" label={x('Verba demonstrativa da loteria', 'Illustrative lottery budget', 'Presupuesto ilustrativo de la lotería')}>
+        <p>{x('Verba ilustrativa do demo: mínimo de 500 USDC simulados, ou 25% do lucro líquido positivo da rodada quando esse valor for maior. Não é caixa disponível para o sorteio, saldo pessoal nem prêmio garantido. A alocação financeira e o orçamento usado nas compras permanecem separados e não são alterados por este valor demonstrativo.', 'Illustrative demo budget: at least 500 simulated USDC, or 25% of the round’s positive net profit when higher. Not available draw cash, a personal balance or a guaranteed prize. Financial allocation and the budget used for purchases remain separate and are not changed by this illustrative amount.', 'Presupuesto ilustrativo del demo: mínimo de 500 USDC simulados, o 25% de la ganancia neta positiva de la ronda si es mayor. No es efectivo disponible para el sorteo, saldo personal ni premio garantizado. La asignación financiera y el presupuesto de compras permanecen separados y no cambian por este importe ilustrativo.')}</p>
       </WalletHelp></div>
       <p className="display mt-1 break-words text-2xl font-extrabold tabular-nums text-[#070B1F]" data-testid="lottery-usdc-balance">{roundBalance === null ? x('Indisponível', 'Unavailable', 'No disponible') : <>{nf(fl, roundBalance)} <span className="mono text-[0.55em]">USDC</span></>}</p>
     </div>

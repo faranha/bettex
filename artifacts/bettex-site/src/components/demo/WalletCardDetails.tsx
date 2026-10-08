@@ -8,7 +8,7 @@ export function WalletCardDetails({ id, label, dark = false, children }: {
   id: string; label: string; dark?: boolean; children: ReactNode;
 }) {
   const { x } = useX();
-  return <details className="group/wallet-details min-w-0" data-testid={`${id}-accordion`}>
+  return <details className="group/wallet-details mt-auto min-w-0" data-testid={`${id}-accordion`}>
     <summary aria-label={label} data-testid={`button-${id}-details`}
       className={`flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-lg border px-3 text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 [&::-webkit-details-marker]:hidden ${dark
         ? 'border-[#F4F1E8]/20 text-[#F4F1E8] hover:bg-white/5 focus-visible:outline-[#AAC3EE]'

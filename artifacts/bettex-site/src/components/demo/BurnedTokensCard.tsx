@@ -13,7 +13,7 @@ export function BurnedTokensCard({ d }: { d: DemoDashboard }) {
   const fl = burnFl(loc);
   const b = burnOf(d);
   if (d.lottery && d.profile.provider !== 'native') {
-    return <article className="grid min-w-0 self-start" data-testid="demo-wallet-burned"><LotteryCard d={d} /></article>;
+    return <article className="grid min-w-0" data-testid="demo-wallet-burned"><LotteryCard d={d} /></article>;
   }
   const btn = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] px-3 text-sm font-bold text-[#1B2A41]';
   return <article className="grid content-start gap-2 rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="demo-wallet-burned">
