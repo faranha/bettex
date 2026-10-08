@@ -21,6 +21,12 @@ The Earnings wallet and Burn Lottery blocks must have the same height when side 
 
 **How to apply:** Equalize the paired card heights without coupling their independent accordion states; keep mobile stacking responsive.
 
+Os botões de expandir ficam abaixo dos cabeçalhos, mesmo quando o cartão vizinho está aberto.
+
+**Why:** O botão da loteria era empurrado para o rodapé do cartão esticado; o espaço vazio fazia parecer que seu conteúdo tinha desaparecido ao expandir os cartões.
+
+**How to apply:** Não usar alinhamento ao rodapé para as sanfonas. Preservar a abertura independente, os formulários montados e a visibilidade dos controles durante atualizações do demo.
+
 As duas áreas devem ter estilo semelhante, fontes de tamanhos equivalentes e um porquinho maior e mais animado nos rendimentos.
 
 **Why:** O criador pediu explicitamente essa equivalência após ver os cartões lado a lado.

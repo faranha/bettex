@@ -49,7 +49,7 @@ O gráfico do staking deve mostrar o resultado de cada hora: se aquela hora foi 
 
 **Why:** O criador disse “tem que ser registro por hora, se naquela hora foi positivo ou negativo, nao do total” e pediu “opcao de grafico diferente tambem”.
 
-**How to apply:** Usar variação líquida entre as leituras do intervalo, permitindo uma hora verde mesmo com a rodada acumulada negativa. Não inventar lucros para animar o gráfico, não alterar o cálculo do pagamento e identificar intervalos incompletos. Preservar escolhas de visualização.
+**How to apply:** Usar variação líquida entre as leituras do intervalo. Preservar perdas horárias, escolhas de visualização e identificação de intervalos incompletos. A exigência posterior de algo positivo no demo deve ser atendida no roteiro modelado e conciliado, não por valores falsos apenas no gráfico. Não alterar a fórmula de pagamento nem substituir resultados nativos.
 
 Below staking in the app, show the Sports Value Betting promotion without the secondary Crypto, Prediction Markets and Casino row.
 

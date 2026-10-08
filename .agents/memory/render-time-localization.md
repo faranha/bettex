@@ -3,6 +3,12 @@ name: Render-time localization pitfalls
 description: Browser/SSR differences and React fragment handling when localizing existing JSX.
 ---
 
+Novos visitantes abrem o site em português. Escolhas manuais de idioma devem continuar preservadas, sem exibir PT antes de redirecionar para EN/ES.
+
+**Why:** O criador relatou a troca automática PT → EN durante o carregamento e escolheu “Português” como padrão para novos visitantes.
+
+**How to apply:** Resolver a preferência antes da primeira exibição do HTML. URLs explicitamente EN/ES prevalecem sobre a preferência salva; armazenamento indisponível não deve forçar inglês.
+
 A extração de mensagens deve distinguir texto exibido de identificadores de transporte, consultas de mídia e traduções explícitas em três idiomas.
 
 **Why:** A validação de publicação tratou rótulos PT/EN/ES já traduzidos, IDs de portal e chaves da sessão demo como mensagens sem tradução, bloqueando uma interface válida.

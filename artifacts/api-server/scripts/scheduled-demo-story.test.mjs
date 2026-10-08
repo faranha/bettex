@@ -38,12 +38,12 @@ test("seven fixed past cycles contain complete frozen stories with reconciled jo
   assert.equal(e.rounds.length, 7);
   for (const r of e.rounds) {
     const p = r.treasurySnapshot;
-    assert.equal(p.closedOperations, 720);
+    assert.equal(p.closedOperations, 721);
     assert.equal(p.coverage, "complete");
     assert.equal(Date.parse(p.endsAt) - Date.parse(p.startedAt), DEMO_DAY);
     assert.equal(p.assetsUsdc, money(p.openingAssetsUsdc + p.realizedNetUsdc));
     const rows = e.pendingTreasuryActivity.filter(row => demoCycleId(demoCycleStart(Date.parse(row.at))) === r.id);
-    assert.equal(rows.filter(row => row.kind === "position_closed").length, 720);
+    assert.equal(rows.filter(row => row.kind === "position_closed").length, 721);
     assert.equal(money(rows.reduce((n, row) => n + (row.netUsdc ?? 0), 0)), p.realizedNetUsdc);
     assert.equal(money(rows.reduce((n, row) => n + (row.costUsdc ?? 0), 0)), p.executionCostsUsdc);
     assert.equal(money(rows.reduce((n, row) => n + (row.feeUsdc ?? 0), 0)), p.feesCollectedUsdc);
@@ -85,7 +85,7 @@ test("boundary catches up, pays eligible demo users once, and preserves past sna
   const before = a.receivedYield, dollars = a.usdc;
   closeCycles(e, [a], start + DEMO_DAY);
   const r = e.rounds[0], frozen = JSON.stringify(r);
-  assert.equal(r.treasurySnapshot.closedOperations, 720);
+  assert.equal(r.treasurySnapshot.closedOperations, 721);
   assert.equal(r.treasurySnapshot.realizedNetUsdc, storyFinalNet(start));
   assert.equal(e.treasury.assetsUsdc, storyOpeningAssets(start + DEMO_DAY));
   assert.equal(a.usdc, dollars);
@@ -124,16 +124,53 @@ test("manual transfers remain interactive and their fees stay outside scripted i
   assert.equal(e.treasuryTracking.fees.swap, feeBefore);
   assert.equal(a.history.find(p=>p.id==="manual").status, "confirmed");
 });
-test("loss cycles retain the result without payouts or token deductions; clock rollback never duplicates costs", () => {
+test("demo opening keeps drawdown cycles positive; clock rollback never duplicates costs", () => {
   const lossStart = start - 2 * DEMO_DAY, e = story(lossStart + 3600000), a = seedAccount(lossStart);
   prepareScheduledAccount(a, lossStart);
   const costs = e.treasuryTracking.executionCosts, rows = e.pendingTreasuryActivity.length;
   advanceScheduledStory(e, lossStart + 3500000);
   assert.equal(e.treasuryTracking.executionCosts, costs);
   assert.equal(e.pendingTreasuryActivity.length, rows);
-  const balance = a.usdc, tokens = a.bettex;
+  const balance = a.usdc, received = a.receivedYield;
   closeCycles(e, [a], lossStart + DEMO_DAY);
-  assert.equal(e.rounds[0].status, "retained");
-  assert.equal(a.usdc, balance); assert.equal(a.bettex, tokens);
+  assert.equal(e.rounds[0].status, "paid");
+  assert.equal(a.usdc, balance);
+  assert.ok(a.receivedYield > received);
   assert.equal(e.treasury.cycleResultUsdc, 0);
+});
+test("every demo minute has positive accumulated profit and an initial positive hourly record", () => {
+  for (let day = 0; day < 7; day++) {
+    const opening = start + day * DEMO_DAY;
+    for (let minute = 0; minute <= 1440; minute++) {
+      assert.ok(storyNetAt(opening, opening + minute * 60000) > 0);
+    }
+    const now = opening + 3 * 3600000, e = story(now), a = seedAccount(now);
+    prepareScheduledAccount(a, now);
+    const d = dashboard(a, e, now), points = d.staking.chartScenario.points;
+    assert.ok(d.staking.poolAllocationUsdc > 0);
+    assert.ok(d.staking.estimatedUsdc > 0);
+    assert.ok(points[60].profitUsdc - points[0].profitUsdc > 0);
+    assert.ok(points[120].profitUsdc - points[60].profitUsdc < 0, "negative hours remain honest");
+  }
+});
+test("an already-running demo gains one opening record without rewriting previous positions or rounds", () => {
+  const now = start + 3 * 3600000, e = story(now);
+  const id = `SCRIPT-POSITIVE-OPEN-${demoCycleId(start)}`;
+  e.pendingTreasuryActivity = e.pendingTreasuryActivity.filter(row => row.id !== id);
+  delete e.treasuryTracking.positiveDemoOpening;
+  e.treasuryTracking.executionCosts -= 200;
+  e.treasury.cycleResultUsdc -= 7000;
+  e.treasury.assetsUsdc -= 7000;
+  e.treasury.realizedUsdc -= 7000;
+  const previous = structuredClone(e.pendingTreasuryActivity), rounds = JSON.stringify(e.rounds);
+  advanceScheduledStory(e, now);
+  assert.deepEqual(e.pendingTreasuryActivity.filter(row => row.id !== id), previous);
+  assert.equal(JSON.stringify(e.rounds), rounds);
+  assert.equal(e.pendingTreasuryActivity.filter(row => row.id === id).length, 1);
+  assert.ok(e.treasury.cycleResultUsdc > 0);
+  const saved = JSON.stringify(e);
+  advanceScheduledStory(e, now);
+  assert.equal(JSON.stringify(e), saved);
+  const rows = e.pendingTreasuryActivity.filter(row => row.kind === "position_closed" && Date.parse(row.at) >= start);
+  assert.equal(money(rows.reduce((sum, row) => sum + row.netUsdc, 0)), e.treasury.cycleResultUsdc);
 });

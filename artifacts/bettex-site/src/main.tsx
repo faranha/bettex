@@ -5,7 +5,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 
 import './index.css';
 import seo from './lib/site-seo.json';
-import { localeFromPath, localizedUrl, setLocale } from './lib/i18n';
+import { localeFromPath, setLocale } from './lib/i18n';
 import { setRequestHeadersGetter } from '@workspace/api-client-react';
 import { demoTabToken, demoTabRequestHeaders } from './lib/demo-tab-session';
 
@@ -25,21 +25,8 @@ if ((canonicalPath in seo.pages || /^\/(?:en|es)(?:\/(?:pitch|demo|documentation
 }
 setLocale(localeFromPath(window.location.pathname));
 document.documentElement.lang = localeFromPath(window.location.pathname) === 'pt' ? 'pt-BR' : localeFromPath(window.location.pathname);
-// Keep legacy Portuguese URLs and saved language choices. First-time visitors
-// enter the English version; localization identifiers and translations stay intact.
-if (!/^\/(?:en|es)(?:\/|$)/.test(canonicalPath)) {
-  const currentUrl = `${prefix}${canonicalPath}${window.location.search}${window.location.hash}`;
-  const redirect = (language: 'en' | 'es') => {
-    const destination = localizedUrl(currentUrl, language);
-    if (destination !== currentUrl) window.location.replace(destination);
-  };
-  try {
-    const preferred = localStorage.getItem('bettex.locale') ?? 'en';
-    if (preferred === 'en' || preferred === 'es') redirect(preferred);
-  } catch {
-    redirect('en');
-  }
-}
+// Saved-language redirects run in the document head before its first paint.
+// The URL is authoritative here; first-time visitors stay in Portuguese.
 
 createRoot(document.getElementById('root')!, {
   // Keeps caught errors off reportError(), which would raise the dev overlay.

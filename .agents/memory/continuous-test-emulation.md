@@ -14,3 +14,9 @@ Maintain simulated calculations automatically for the demo; do not offer a “Si
 **Why:** The creator reiterated “this is a demo” and said to maintain its simulated calculations already rather than offer that button.
 
 **How to apply:** Show the scheduled demo calculation records through the normal history query. Do not create preview calculations on page visits or require a user action to populate the demo.
+
+No demo, sempre tem que ter algo positivo.
+
+**Why:** O criador disse “no demo sempre tem que ter algo postiivo” ao mostrar o staking com resultado acumulado negativo, pool zerado, ganhos atuais zerados e apenas horas negativas.
+
+**How to apply:** Preparar resultados positivos no roteiro financeiro modelado e conciliá-los com os registros, pool e ganhos de participantes elegíveis. Não mascarar perdas horárias nem substituir dados nativos por valores ilustrativos. Preservar movimentos do usuário e resultados já encerrados; resultado positivo no demo não é promessa de retorno real.

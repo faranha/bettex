@@ -12,6 +12,6 @@ export function AppSessionGate({ children }: { children: ReactNode }) {
   const { isLoaded, isSignedIn } = useUser();
   const native = useGetTestAccountSession({ query: { queryKey: ['test-account-session'], enabled: !demoActive && !isSignedIn, retry: 1 } });
   if (demoActive || isSignedIn || native.data?.account) return children;
-  if (!isLoaded || native.isPending) return <main className="demo-root min-h-96 p-6" aria-busy="true"><p>{x('Carregando sua sessão…', 'Loading your session…', 'Cargando tu sesión…')}</p></main>;
+  if (!isLoaded || native.isPending) return <main className="demo-root min-h-96 p-6" aria-busy="true" aria-label={x('Carregando sua sessão…', 'Loading your session…', 'Cargando tu sesión…')} />;
   return <Redirect to="/sign-in" />;
 }

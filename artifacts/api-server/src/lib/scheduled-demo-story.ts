@@ -10,23 +10,30 @@ const money = (n: number) => Math.round(n * 1e6) / 1e6;
 const iso = (n: number) => new Date(n).toISOString();
 const EPOCH = Date.UTC(2026, 9, 1, 19);
 const RESULTS = [1840, -920, 2360, 1450, -610, 2100, 1680] as const;
+// A recorded opening result keeps this authored demo positive through its
+// worst 6,200-USDC drawdown. It is not real trading or a guaranteed return.
+const OPENING_PROFIT = 7000;
+const OPENING_COST = 200;
 const STEP = 120_000;
 const COUNT = DEMO_DAY / STEP;
 const EMPTY = { agent: null, market: null, capitalUsdc: null, grossUsdc: null, costUsdc: null, netUsdc: null, feeKind: null, feeUsdc: null };
 const ordinal = (start: number) => Math.floor((start - EPOCH) / DEMO_DAY);
 const retained = (net: number) => net > 0 ? net * .5 : net;
-export function storyFinalNet(start: number) {
+function underlyingFinalNet(start: number) {
   return RESULTS[((ordinal(start) % RESULTS.length) + RESULTS.length) % RESULTS.length]!;
+}
+export function storyFinalNet(start: number) {
+  return OPENING_PROFIT + underlyingFinalNet(start);
 }
 export function storyOpeningAssets(start: number) {
   const days = ordinal(start), weeks = Math.floor(days / RESULTS.length);
   const remainder = days - weeks * RESULTS.length;
-  return money(240000 + weeks * RESULTS.reduce((s, n) => s + retained(n), 0)
-    + RESULTS.slice(0, remainder).reduce((s, n) => s + retained(n), 0));
+  return money(240000 + weeks * RESULTS.reduce((s, n) => s + retained(OPENING_PROFIT + n), 0)
+    + RESULTS.slice(0, remainder).reduce((s, n) => s + retained(OPENING_PROFIT + n), 0));
 }
 /** Authored narrative: early drawdown, recovery, then the day's fixed outcome. */
 function authoredProfit(start: number, minutes: number) {
-  const result = storyFinalNet(start);
+  const result = underlyingFinalNet(start);
   const anchors = [[0, 0], [240, -6200], [480, -4800], [720, -1800], [960, result * .25], [1200, result * .6], [1440, result]];
   const right = anchors.findIndex(p => p[0]! >= minutes);
   const b = anchors[right < 0 ? anchors.length - 1 : right]!, a = anchors[Math.max(0, right - 1)]!;
@@ -34,7 +41,7 @@ function authoredProfit(start: number, minutes: number) {
 }
 const closedCount = (start: number, now: number) => Math.max(0, Math.min(COUNT, Math.floor((now - start) / STEP) + (now >= start + DEMO_DAY - 1000 ? 1 : 0)));
 export function storyNetAt(start: number, now: number) {
-  return authoredProfit(start, closedCount(start, now) * 2);
+  return OPENING_PROFIT + authoredProfit(start, closedCount(start, now) * 2);
 }
 export function storyPosition(start: number, index: number): TreasuryActivityItem {
   const agent = (["crypto", "predictions", "sports", "bonus"] as const)[index % 4]!;
@@ -66,6 +73,16 @@ export function advanceScheduledStory(engine: EngineState, now: number) {
       at: iso(start), kind: "checkpoint", source: "modeled_baseline", capitalUsdc: t.openingAssets });
   }
   const count = closedCount(start, now), items = engine.pendingTreasuryActivity ??= [];
+  // Append once, including to an already-running demo. Existing positions,
+  // settled rounds, user balances and immutable receipts are not rewritten.
+  if (!t.positiveDemoOpening) {
+    items.push({ ...EMPTY, id: `SCRIPT-POSITIVE-OPEN-${demoCycleId(start)}`,
+      at: iso(start), kind: "position_closed", source: "modeled_baseline",
+      agent: "crypto", market: "DEMO/USDC", capitalUsdc: 100000,
+      grossUsdc: OPENING_PROFIT + OPENING_COST, costUsdc: OPENING_COST, netUsdc: OPENING_PROFIT });
+    t.executionCosts = money(t.executionCosts + OPENING_COST);
+    t.positiveDemoOpening = true;
+  }
   for (let i = t.closed; i < count; i++) {
     const p = storyPosition(start, i); items.push(p);
     t.executionCosts = money(t.executionCosts + p.costUsdc!);
@@ -145,5 +162,6 @@ export function scheduledStakingTimeline(engine: EngineState, now: number) {
   const minutes = Array.from({ length: 1441 }, (_, i) => i);
   return { source: "test_scenario" as const, roundStartedAt: iso(start), nextTickAt: iso(start + (elapsedMinutes + 1) * 60000),
     elapsedMinutes, tick: Math.floor(elapsedMinutes), tickIntervalMs: 60000, minutesPerTick: 1,
-    points: minutes.map(minute => ({ elapsedMinutes: minute, profitUsdc: minute === elapsedMinutes ? engine.treasury.cycleResultUsdc : storyNetAt(start, start + minute * 60000) })) };
+    points: minutes.map(minute => ({ elapsedMinutes: minute, profitUsdc: minute === elapsedMinutes ? engine.treasury.cycleResultUsdc :
+      minute === 0 ? 0 : storyNetAt(start, start + minute * 60000) })) };
 }

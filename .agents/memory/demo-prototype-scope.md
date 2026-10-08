@@ -9,6 +9,12 @@ No site, os selos de ALFA e os avisos de “coming” para features, inclusive n
 
 **How to apply:** Preservar o idioma selecionado, a entrada explícita no demo e a distinção entre o ALFA disponível e as entregas futuras. Não transformar referências narrativas ao ALFA em promessas de funcionalidades lançadas.
 
+Não exibir o texto “Carregando sua sessão” ao entrar no demo.
+
+**Why:** O criador pediu remover esse texto da transição de entrada.
+
+**How to apply:** Manter a verificação da sessão e a indicação de carregamento para acessibilidade, sem mensagem textual visível.
+
 O demo anônimo deve ter uma instância independente por aba, sem cadastro. Recarregar e navegar preservam o teste; abrir uma nova aba ou reiniciar o demo cria uma conta limpa sem alterar outras abas nem contas reais.
 
 **Why:** O criador escolheu uma instância por aba para permitir testes livres, validação e apresentações ao vivo para investidores.

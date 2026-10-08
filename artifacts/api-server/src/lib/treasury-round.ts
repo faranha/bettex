@@ -10,6 +10,7 @@ export type TreasuryTracking = {
   fees: DemoTreasuryRound["feeBreakdown"]; executionCosts: number; closed: number;
   scenarioReady?: boolean; nextCommunityFeeAt?: number;
   scriptedFeeCount?: number;
+  positiveDemoOpening?: boolean;
   liquidityCashDelta?: number;
 };
 export function ensureTreasuryTracking(engine: EngineState, now: number, complete = false) {
@@ -68,7 +69,7 @@ export function treasuryRoundSnapshot(engine: EngineState, now: number): DemoTre
     feeTrackingSince: recorded ? new Date(tracking.since).toISOString() : null,
     feeBreakdown: { ...tracking.fees },
     executionCostsUsdc: tracking.complete ? tracking.executionCosts : null,
-    closedOperations: tracking.complete ? tracking.closed : null,
+    closedOperations: tracking.complete ? tracking.closed + (tracking.positiveDemoOpening ? 1 : 0) : null,
     openingAssetsUsdc: tracking.openingAssets, coverage: tracking.complete ? "complete" : "partial",
     feesOwner: "operating_company",
   };
