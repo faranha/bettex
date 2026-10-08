@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import type { DemoDashboard } from '@workspace/api-client-react';
-import { ArrowRightLeft, PiggyBank } from 'lucide-react';
+import { ArrowRightLeft } from 'lucide-react';
 import { useState } from 'react';
 import { useX } from './ui';
 import { Double2xIcon } from './Double2xIcon';
@@ -12,6 +12,7 @@ import { WalletHistoryLink } from './WalletHistoryLink';
 import { EarningsStakingSummary } from './EarningsStakingSummary';
 import { WalletHelp } from './WalletHelp';
 import { WalletCardDetails } from './WalletCardDetails';
+import { EarningsPigArt } from './EarningsPigArt';
 
 export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet: (kind: Kind, asset: Asset) => void }) {
   const { x } = useX();
@@ -22,18 +23,18 @@ export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet
   const na = x('Indisponível', 'Unavailable', 'No disponible');
   const label = x('Mover para carteira em dólares', 'Move to dollar wallet', 'Mover a cartera en dólares');
   return <article className="flex flex-col gap-3 rounded-xl border border-[#0E7C6B]/40 bg-gradient-to-br from-[#E6F4EE] to-[#CFE8DD] p-3 sm:p-4" data-testid="demo-wallet-earnings">
-    <div className="flex items-start gap-3">
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#0E7C6B] text-white shadow-sm"><PiggyBank className="h-6 w-6" aria-hidden="true" /></span>
+    <div className="flex items-center gap-3">
+      <EarningsPigArt />
       <div className="min-w-0 flex-1">
-        <h3 className="text-sm font-bold text-[#0A6657]"><WalletHelp id="earnings" label={x('Carteira de rendimentos', 'Earnings wallet', 'Cartera de ganancias')}>
+        <h3 className="display text-lg font-extrabold leading-tight text-[#0A6657]"><WalletHelp id="earnings" label={x('Carteira de rendimentos', 'Earnings wallet', 'Cartera de ganancias')}>
           <p>{x('Recebe somente os rendimentos pagos em USDC. É separada da carteira em dólares e do saldo de BETTEX em staking. Não aceita depósitos nem faz conversões ou saques externos diretamente.', 'Receives only paid USDC earnings. It is separate from the dollar wallet and staked BETTEX balance. It does not accept deposits, convert assets or withdraw externally directly.', 'Recibe solo las ganancias pagadas en USDC. Está separada de la cartera en dólares y del saldo BETTEX en staking. No acepta depósitos ni hace conversiones o retiros externos directamente.')}</p>
         </WalletHelp></h3>
-        <div className="text-[11px] font-semibold uppercase tracking-wide text-[#3F6F63]"><WalletHelp id="earnings-balance" label={x('Saldo recebido, disponível', 'Received balance, available', 'Saldo recibido, disponible')}>
+        <div className="text-xs text-[#3F6F63]"><WalletHelp id="earnings-balance" label={x('Saldo recebido, disponível', 'Received balance, available', 'Saldo recibido, disponible')}>
           <p>{x('USDC já recebido e ainda disponível nesta carteira, descontadas as transferências realizadas. Projeções e parcelas ainda não pagas não fazem parte deste saldo. A equivalência em reais é apenas informativa.', 'USDC already received and still available in this wallet, after completed transfers. Forecasts and unpaid amounts are not included in this balance. The BRL equivalent is informational only.', 'USDC ya recibido y aún disponible en esta cartera, descontadas las transferencias realizadas. Las proyecciones y los importes aún no pagados no forman parte de este saldo. La equivalencia en reales es solo informativa.')}</p>
         </WalletHelp></div>
-        <div className="mt-0.5"><Money v={d.balances.receivedYield} a="USDC" big /></div>
+        <div className="tabular-nums text-[#0A6657] [&_[data-amount]]:gap-1 [&_[data-amount]>span:last-child]:text-xs [&_.display]:text-3xl [&_.mono]:rounded-md [&_.mono]:bg-[#0E7C6B]/10 [&_.mono]:px-1.5 [&_.mono]:py-1 [&_.mono]:align-middle [&_.mono]:text-[0.4em] [&_.mono]:text-[#0E7C6B]" data-testid="earnings-balance-highlight"><Money v={d.balances.receivedYield} a="USDC" big /></div>
       </div>
-      <button type="button" onClick={() => setDbl(true)} data-testid="button-double2x-open" aria-label={x('Abrir Double 2X', 'Open Double 2X', 'Abrir Double 2X')} className="-mr-1 -mt-1 grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:h-11 sm:w-11"><Double2xIcon className="h-9 w-9" /></button>
+      <button type="button" onClick={() => setDbl(true)} data-testid="button-double2x-open" aria-label={x('Abrir Double 2X', 'Open Double 2X', 'Abrir Double 2X')} className="-mr-1 -mt-1 grid h-11 w-11 shrink-0 self-start place-items-center rounded-xl transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]"><Double2xIcon className="h-9 w-9" /></button>
     </div>
     <WalletCardDetails id="earnings" label={x('Detalhes da carteira de rendimentos', 'Earnings wallet details', 'Detalles de la cartera de ganancias')}>
     <dl className="grid gap-px overflow-hidden rounded-lg bg-[#0E7C6B]/20 text-xs sm:grid-cols-2">

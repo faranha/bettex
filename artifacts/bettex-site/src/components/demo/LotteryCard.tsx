@@ -9,7 +9,6 @@ import { useX } from './ui';
 import { burnFl, nf } from './burn-format';
 import { WalletHelp } from './WalletHelp';
 import { formatBrazilDateTime } from './brazil-time';
-import { demoLotteryPreviewBalance } from './lottery-balance';
 import { LotteryEntries } from './LotteryEntries';
 import { BurnLotteryFlame } from './BurnLotteryArt';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -35,7 +34,6 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
   const [open, setOpen] = useState(false);
   const lot = d.profile.provider === 'native' ? undefined : d.lottery;
   const left = useCountdown(lot?.nextDrawAt ?? '', d.serverNow);
-  const roundBalance = demoLotteryPreviewBalance(d.treasury.currentRound?.realizedNetUsdc);
   if (!lot) return null;
   const drawTime = Number.isFinite(Date.parse(lot.nextDrawAt))
     ? formatBrazilDateTime(lot.nextDrawAt, fl, { hour: '2-digit', minute: '2-digit' })
@@ -65,12 +63,6 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
         <Link href={demoPath('treasury', loc)} data-testid="link-burned-treasury" aria-label={x('Ver Tesouraria', 'View Treasury', 'Ver Tesorería')} title={x('Ver Tesouraria', 'View Treasury', 'Ver Tesorería')} className="bl-hist focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><Landmark className="h-5 w-5" aria-hidden="true" /></Link>
         <Link href={`${demoPath('wallet', loc)}?${historyParams.toString()}#rh-panel-lottery`} data-testid="link-lottery-history" aria-label={historyLabel} title={historyLabel} className="bl-hist focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#AAC3EE]"><History className="h-5 w-5" aria-hidden="true" /></Link>
       </div>
-    </div>
-    <div className="bl-ticket" data-testid="lottery-round-balance" data-round-id={d.treasury.currentRound?.id}>
-      <div className="text-xs font-bold text-[#7A3A06]"><WalletHelp id="lottery-budget" label={x('Verba demonstrativa da loteria', 'Illustrative lottery budget', 'Presupuesto ilustrativo de la lotería')}>
-        <p>{x('Verba ilustrativa do demo: mínimo de 500 USDC simulados, ou 25% do lucro líquido positivo da rodada quando esse valor for maior. Não é caixa disponível para o sorteio, saldo pessoal nem prêmio garantido. A alocação financeira e o orçamento usado nas compras permanecem separados e não são alterados por este valor demonstrativo.', 'Illustrative demo budget: at least 500 simulated USDC, or 25% of the round’s positive net profit when higher. Not available draw cash, a personal balance or a guaranteed prize. Financial allocation and the budget used for purchases remain separate and are not changed by this illustrative amount.', 'Presupuesto ilustrativo del demo: mínimo de 500 USDC simulados, o 25% de la ganancia neta positiva de la ronda si es mayor. No es efectivo disponible para el sorteo, saldo personal ni premio garantizado. La asignación financiera y el presupuesto de compras permanecen separados y no cambian por este importe ilustrativo.')}</p>
-      </WalletHelp></div>
-      <p className="display mt-1 break-words text-2xl font-extrabold tabular-nums text-[#070B1F]" data-testid="lottery-usdc-balance">{roundBalance === null ? x('Indisponível', 'Unavailable', 'No disponible') : <>{nf(fl, roundBalance)} <span className="mono text-[0.55em]">USDC</span></>}</p>
     </div>
     <WalletCardDetails id="lottery" dark label={x('Detalhes da loteria de queima', 'Burn Lottery details', 'Detalles de la lotería de quema')}>
     <div className="grid min-w-0 gap-1.5" data-testid="lottery-explanation">
