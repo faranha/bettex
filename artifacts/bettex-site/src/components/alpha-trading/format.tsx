@@ -10,11 +10,12 @@ export function useFmt() {
   return {
     x, loc,
     date: (v?: string | null) => (v ? formatBrazilDateTime(v, lc) : x('não informado', 'not provided', 'no informado')),
-    units: (v: string | null | undefined) => (v === null || v === undefined ? x('indisponível', 'unavailable', 'no disponible') : `${dec6(v, lc)} ${x('USDC simulados', 'simulated USDC', 'USDC simulados')}`),
+    units: (v: string | null | undefined) => (v === null || v === undefined ? x('indisponível', 'unavailable', 'no disponible') : `${dec6(v, lc)} USDC`),
     shares: (v: string | null | undefined) => (v === null || v === undefined ? x('indisponível', 'unavailable', 'no disponible') : `${dec6(v, lc)} ${x('cotas', 'shares', 'cuotas')}`),
     reason: (c: string | null | undefined) => reasonText(x, c),
     code: (c: string | null | undefined) => codeLabel(x, c),
     datum: (d: AlphaDatum) => datumText(x, d),
+    moneyDatum: (d: AlphaDatum) => datumText(x, d, lc),
   };
 }
 
@@ -31,6 +32,14 @@ export function reasonText(x: X, c: string | null | undefined) {
   return /^[a-z0-9_]+$/.test(c) ? codeLabel(x, c) : c;
 }
 const D: Record<string, [string, string, string]> = {
+  scheduled_story: ['Roteiro pré-definido', 'Scheduled storyline', 'Guion predefinido'],
+  spot: ['À vista', 'Spot', 'Al contado'],
+  close_at_scheduled_settlement: ['Encerrar na liquidação programada', 'Close at scheduled settlement', 'Cerrar en la liquidación programada'],
+  defined_scenario_not_statistical_forecast: ['Cenário definido, sem intervalo estatístico', 'Defined scenario, no statistical interval', 'Escenario definido, sin intervalo estadístico'],
+  price_variation: ['Variação de preço', 'Price variation', 'Variación de precio'],
+  correlated_crypto_exposure: ['Exposição correlacionada em cripto', 'Correlated crypto exposure', 'Exposición correlacionada en cripto'],
+  price_limit_exceeded: ['Limite de preço excedido', 'Price limit exceeded', 'Límite de precio excedido'],
+  liquidity_insufficient: ['Liquidez insuficiente', 'Insufficient liquidity', 'Liquidez insuficiente'],
   btc: ['Bitcoin', 'Bitcoin', 'Bitcoin'], eth: ['Ethereum', 'Ethereum', 'Ethereum'], sol: ['Solana', 'Solana', 'Solana'],
   observed: ['Observado', 'Observed', 'Observado'], estimated: ['Estimado', 'Estimated', 'Estimado'], missing: ['Ausente', 'Missing', 'Ausente'],
   not_collected: ['Não coletado', 'Not collected', 'No recolectado'], partial: ['Parcial', 'Partial', 'Parcial'], unavailable: ['Indisponível', 'Unavailable', 'No disponible'],
@@ -78,10 +87,11 @@ export function codeLabel(x: X, c: string | null | undefined) {
   if (t) return x(`${t[0]}`, `${t[1]}`, `${t[2]}`);
   return `${x('Limitação informada pela fonte', 'Limitation reported by source', 'Limitación informada por la fuente')} (${c})`;
 }
-export function datumText(x: X, d: AlphaDatum) {
+export function datumText(x: X, d: AlphaDatum, moneyLocale?: string) {
   if (d.kind === 'missing') return `${x('Ausente', 'Missing', 'Ausente')}${d.reason ? `: ${codeLabel(x, d.reason)}` : ''}`;
-  const v = d.value === undefined || d.value === null ? x('sem valor', 'no value', 'sin valor') : typeof d.value === 'object' ? JSON.stringify(d.value) : String(d.value);
-  return `${v} (${codeLabel(x, d.kind)}${d.method ? `, ${d.method}` : ''})`;
+  const raw = d.value === undefined || d.value === null ? x('sem valor', 'no value', 'sin valor') : typeof d.value === 'object' ? JSON.stringify(d.value) : String(d.value);
+  const v = moneyLocale && /^-?\d+$/.test(raw) ? `${dec6(raw, moneyLocale)} USDC` : raw;
+  return `${D[v] ? codeLabel(x, v) : v} (${codeLabel(x, d.kind)}${d.method ? `, ${D[d.method] ? codeLabel(x, d.method) : d.method}` : ''})`;
 }
 export const card = 'dcard p-4 sm:p-5';
 export const mono = 'font-mono text-[11px] uppercase tracking-wider text-[#5B6B85]';

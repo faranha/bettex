@@ -18,7 +18,7 @@ export function FounderLaunchFunnel() {
     </figcaption>
     <div className="flf__fund" data-testid="flf-founder-fund">
       <Wallet aria-hidden="true" size={22} />
-      <div className="flf__fundtxt"><b>Fred Azevedo</b><span>{t('financia a aquisição com seu orçamento corrente')}</span></div>
+      <div className="flf__fundtxt"><b>{t('O fundador')}</b><span>{t('financia a aquisição com seu orçamento corrente')}</span></div>
     </div>
     <ol className="flf__stages">
       {stages.map((s, i) => <Fragment key={s.n}><li className="flf__stage">

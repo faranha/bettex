@@ -27,6 +27,12 @@ A área operacional do app é light mode; o restante do site não precisa mudar.
 
 **How to apply:** Usar rótulos normais de conta e carteira. Manter identificação de rede/origem dos saldos e erros ou confirmações de segurança funcionais, sem transformá-los em avisos genéricos repetidos. A remoção visual não muda simulação, permissões ou salvaguardas. Usar overlays para ações pessoais, helpers para termos, nome/dados básicos e saudação; sempre exibir equivalências em reais.
 
+O demo deve ser profundamente populado em todas as áreas: campos, informações, gráficos e históricos, sem acrescentar mensagens repetitivas dizendo que é demo.
+
+**Why:** O criador pediu “rever todos os campos, todas as informações e garantir que tudo esteja populado, profundamente populado” e reiterou que a interface já deixa o demo claro.
+
+**How to apply:** Revisar a experiência inteira, não apenas o painel recém-editado. Vincular exemplos ao roteiro compartilhado, manter a conciliação e preservar ações pessoais existentes. Lacunas de evidência real ou de contratos nativos não autorizam inventar informações de blockchain ou inferência.
+
 Avisos específicos de transferência devem aparecer onde a pessoa informa o destino: ativo, rede, formato de endereço e risco de perda permanente por destino incompatível.
 
 **Why:** O criador pediu instruções claras sobre o tipo de carteira, perguntou se era ETH e exigiu aviso de perda ao usar destino incompatível. Isso não revoga a proibição de avisos genéricos ALFA/teste repetidos.

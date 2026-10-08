@@ -42,6 +42,10 @@ const CAT: Record<string, [string, string, string]> = {
   financial: ['Financeiro', 'Financial', 'Financiero'], activity: ['Atividade', 'Activity', 'Actividad'], automatic: ['Automático', 'Automatic', 'Automático'],
 };
 const KIND: Record<string, [string, string, string]> = {
+  double2x_reserved: ['Saldo reservado para Double 2X', 'Balance reserved for Double 2X', 'Saldo reservado para Double 2X'],
+  double2x_won: ['Double 2X: ganho', 'Double 2X: win', 'Double 2X: ganancia'],
+  double2x_lost: ['Double 2X: perda', 'Double 2X: loss', 'Double 2X: pérdida'],
+  double2x_refunded: ['Double 2X: saldo devolvido', 'Double 2X: balance refunded', 'Double 2X: saldo devuelto'],
   lottery_entries_purchased: ['Números da loteria comprados', 'Lottery entries purchased', 'Números de lotería comprados'],
   lottery_free_entry: ['Número gratuito da loteria', 'Free lottery number', 'Número gratuito de lotería'],
   deposit: ['Depósito', 'Deposit', 'Depósito'], purchase: ['Compra de BETTEX', 'BETTEX purchase', 'Compra de BETTEX'],
@@ -168,14 +172,18 @@ function Data({ e }: { e: HistoryEntry }) {
   if (typeof d.stage === 'string') rows.push([x('Etapa', 'Stage', 'Etapa'), pick(STAGE, d.stage, loc, pick(KIND, d.stage, loc))]);
   amt(x('Pago', 'Paid', 'Pagado'), d.paidUnits, d.paidAsset, historyLegDecimals(d, 'paid', e.asset));
   amt(x('Recebido', 'Received', 'Recibido'), d.receivedUnits, d.receivedAsset, historyLegDecimals(d, 'received', e.asset));
-  if (d.burnedUnits != null) amt(x('BETTEX comprado e queimado', 'BETTEX bought and burned', 'BETTEX comprado y quemado'), d.burnedUnits, 'BETTEX', 18);
+  if (d.burnedUnits != null) amt(d.paidAsset === 'USDC' ? x('BETTEX comprado e queimado', 'BETTEX bought and burned', 'BETTEX comprado y quemado') : x('BETTEX queimado', 'BETTEX burned', 'BETTEX quemado'), d.burnedUnits, 'BETTEX', 18);
   if (typeof d.entryCount === 'string') rows.push([x('Entradas', 'Entries', 'Entradas'), d.entryCount]);
   if (typeof d.entryNumbers === 'string') rows.push([x('Números da loteria', 'Lottery numbers', 'Números de lotería'), d.entryNumbers]);
   if (typeof d.drawAt === 'string') rows.push([x('Sorteio', 'Draw', 'Sorteo'), fmtTime(d.drawAt, loc)]);
   amt(x('Principal', 'Principal', 'Principal'), d.principalUnits, d.paidAsset ?? 'USDC', DEC[String(d.paidAsset ?? 'USDC')] ?? 6);
   amt(x('Taxa', 'Fee', 'Comisión'), d.feeUnits, 'USDC', 6);
   amt(x('Quantidade', 'Quantity', 'Cantidad'), d.quantityUnits, e.asset);
-  amt(x('Elegível', 'Eligible', 'Elegible'), d.eligibleUnits, e.asset);
+  const cancelledWeight = d.priorWeightCancelled === 'true' || d.priorWeightCancelled === true;
+  amt(e.kind === 'participation_exit' && e.environment === 'simulation' && cancelledWeight
+    ? x('Saldo BETTEX restante', 'Remaining BETTEX balance', 'Saldo BETTEX restante')
+    : x('Elegível', 'Eligible', 'Elegible'), d.eligibleUnits, e.asset);
+  if (cancelledWeight) rows.push([x('Rendimentos não pagos da rodada atual', 'Current-round unpaid earnings', 'Rendimientos pendientes de la ronda actual'), x('Cancelados', 'Cancelled', 'Cancelados')]);
   amt(x('Pool', 'Pool', 'Pool'), d.poolUnits, e.asset);
   amt(x('Peso', 'Weight', 'Peso'), d.weightUnits, 'BETTEX', num(d.weightDecimals) ?? 18);
   amt(x('Valor', 'Amount', 'Monto'), d.amountUnits, e.asset);

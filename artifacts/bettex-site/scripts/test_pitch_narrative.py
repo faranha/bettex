@@ -31,7 +31,7 @@ def fixture(language, narrative="", cover_extra="", audience=None):
       <section id="publico-pitch">{audience}</section>
       <section id="solucao"><p>{narrative}</p></section>
       <figure class="fp"><blockquote>You can invest. Tú puedes. Você participa.</blockquote>
-        <figcaption>Fred Azevedo, fundador</figcaption>
+        <figcaption>Fundador da BETTEX</figcaption>
         <p>Distribuição existente, não tração do produto.</p>
       </figure>
       <nav><a href="#riscos">Your next section</a></nav>
@@ -93,7 +93,7 @@ class PitchNarrativeTests(unittest.TestCase):
                 self.assertEqual(audit_pitch(html, lang), [])
 
     def test_quote_exemption_requires_founder_attribution(self):
-        html = fixture("en").replace("Fred Azevedo, fundador", "Anonymous")
+        html = fixture("en").replace("Fundador da BETTEX", "Anonymous")
         self.assertTrue(audit_pitch(html, "en"))
         html = fixture("en").replace('class="fp"', 'class="other"')
         self.assertTrue(audit_pitch(html, "en"))

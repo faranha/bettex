@@ -349,7 +349,7 @@ function Demo() {
   if (path === '/app/login') return <Redirect to="/sign-in" />;
   if (!demoView(path)) return <NotFound />;
   const shell = <div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><DemoPage /><SiteFooter compact /></div>;
-  if (typeof window === 'undefined') return <main className="demo-root min-h-96" />;
+  if (typeof window === 'undefined') return <div className="min-h-[100dvh] bg-[#FBF8F0]" data-testid="app-shell"><header className="app-header" data-testid="app-header"><span>BETTEX</span></header><main className="demo-root min-h-96" aria-busy="true"><h1 className="sr-only">BETTEX</h1></main></div>;
   if (import.meta.env.DEV && new URLSearchParams(window.location.search).get('preview') === 'public') return shell;
   return <AppSessionGate>{shell}</AppSessionGate>;
 }

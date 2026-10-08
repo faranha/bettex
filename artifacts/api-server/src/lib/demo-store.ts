@@ -1,4 +1,5 @@
 import { and, eq, isNull } from "drizzle-orm";
+import { reserveDouble2x, type Double2xInput } from "./double2x-rules";
 import { randomUUID, createHash } from "node:crypto";
 import { ensureProfileNickname } from "../modules/accounts/domain/nickname";
 import { db, demoAccounts, demoEngine, demoCommands } from "@workspace/db";
@@ -9,9 +10,10 @@ import { flushTreasuryActivity } from "./treasury-activity-store";
 import { advanceScheduledStory, ensureScheduledStory } from "./scheduled-demo-story";
 import { demoCycleStart } from "./demo-cycle-clock";
 import { prepareScheduledAccount } from "./scheduled-demo-account";
+import { populateDemoHistory } from "./demo-history-population";
 import { separateEarningsWallet } from "./earnings-wallet";
 import { ensureDemoLottery, advanceDemoLottery } from "./demo-lottery";
-import { ensureLotteryEntries, buyLotteryEntries } from "./demo-lottery-entries";
+import { ensureLotteryEntries, buyLotteryEntries, normalizeEntryReceipt } from "./demo-lottery-entries";
 import { advanceDemoBurnStory } from "./demo-burn-story";
 import { recordTreasuryCashMovement } from "./treasury-statement-store";
 import { ensureRoundArchiveSchema, archiveRounds, archiveParticipation } from "./round-archive-store";
@@ -23,7 +25,7 @@ import {
   submitMovement, DemoInputError, accountWeight, DAY, ensureDemoSwapPool, roundMoney, type AccountState, type EngineState,
 } from "./demo-state";
 
-type Command = { lotteryEntries: { requestId: string; quantity: number; confirmed: boolean; drawAt: string } } | { movement: DemoMovementInput } | { lottery: { participating: boolean; confirmed: boolean } } | { name: string; email?: string; nickname?: string; avatarPath?: string | null } | { distributionPreview: string } | { avatarUpload: NonNullable<AccountState["avatarUpload"]> };
+type Command = { double2x: Double2xInput } | { lotteryEntries: { requestId: string; quantity: number; paymentAsset: "BETTEX"; confirmed: boolean; drawAt: string } } | { movement: DemoMovementInput } | { lottery: { participating: boolean; confirmed: boolean } } | { name: string; email?: string; nickname?: string; avatarPath?: string | null } | { distributionPreview: string } | { avatarUpload: NonNullable<AccountState["avatarUpload"]> };
 export type AccountIdentity = {
   browserId: string;
   tabScoped?: boolean;
@@ -152,9 +154,19 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     await tx.insert(demoAccounts).values({ id: accountId, state: opening }).onConflictDoNothing();
     const [row] = await tx.select().from(demoAccounts).where(eq(demoAccounts.id, accountId)).for("update");
     const account = row!.state as AccountState;
+    if (!actor.nativeAccountId && !actor.userId) populateDemoHistory(account);
     separateEarningsWallet(account);
     resolved?.(accountId);
     const initialHistory = structuredClone(account.history);
+    if (command && "double2x" in command) {
+      if (actor.nativeAccountId) throw new DemoInputError("double2x_native_account_unavailable");
+      const play = reserveDouble2x(account, engine, command.double2x, now);
+      await appendHistory({ key: `double2x:${accountId}:${play.id}:reserved`, subject: `demo:${accountId}`,
+        correlationId: `double2x:${accountId}:${play.id}`, category: "financial", kind: "double2x_reserved",
+        state: "pending", actor: "user", asset: "USDC", environment: "simulation", source: "double2x_testnet_mirror",
+        data: { sourceWallet: "earnings", quantityUnits: decimalUnits(String(play.stakeUsdc), 6),
+          decimals: "6", color: play.color, chainId: "421614", feeUnits: "0" } }, tx);
+    }
     // Recover legacy JSON facts once, explicitly non-authoritative simulation.
     await recordDemoMovements(tx, accountId, [], initialHistory);
     settleMovements(account, now, engine);
@@ -175,38 +187,37 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
     if (command && "lotteryEntries" in command) {
       const input = command.lotteryEntries;
       if (actor.nativeAccountId || account.profile.provider === "native") throw new DemoInputError("lottery_unavailable");
+      if (input.paymentAsset !== "BETTEX") throw new DemoInputError("invalid_lottery_purchase");
       if (!input.confirmed) throw new DemoInputError("lottery_confirmation_required");
       const [existing] = await tx.select().from(demoCommands).where(and(eq(demoCommands.accountId, accountId), eq(demoCommands.requestId, input.requestId)));
       if (existing) {
         const saved = existing.input as Record<string, unknown>;
-        if (saved.kind !== "lottery_entries" || saved.quantity !== input.quantity || saved.drawAt !== input.drawAt) throw new DemoInputError("invalid_lottery_purchase");
+        if (saved.kind !== "lottery_entries" || saved.quantity !== input.quantity || saved.drawAt !== input.drawAt || saved.paymentAsset !== input.paymentAsset) throw new DemoInputError("invalid_lottery_purchase");
         const receipt = saved.receipt as typeof lotteryEntryResult;
         if (!receipt || receipt.requestId !== input.requestId || receipt.quantity !== input.quantity) throw new DemoInputError("lottery_receipt_unavailable");
-        lotteryEntryResult = receipt;
+        lotteryEntryResult = normalizeEntryReceipt(receipt);
       } else {
         if (!engine.burnLottery || input.drawAt !== new Date(engine.burnLottery.nextDrawAt).toISOString()) throw new DemoInputError("lottery_draw_closed");
         let receipt;
         try { receipt = buyLotteryEntries(engine, account, input.quantity, input.requestId, now, accountId); }
         catch (error) { throw new DemoInputError(error instanceof Error ? error.message : "invalid_lottery_purchase"); }
         lotteryEntryResult = receipt;
-        const tracking = ensureTreasuryTracking(engine, now);
-        tracking.liquidityCashDelta = roundMoney((tracking.liquidityCashDelta ?? 0) + receipt.paidUsdc);
-        await recordTreasuryCashMovement(tx, {
-          id: `LOTTERY-ENTRY-POOL-${createHash("sha256").update(`${accountId}:${input.requestId}`).digest("hex")}`,
-          at: receipt.createdAt, account: "treasury", asset: "USDC", amount: receipt.paidUsdc.toFixed(6),
-          category: "transfer", reference: input.requestId, counterparty: "BETTEX/USDC AMM",
-          source: "recorded_simulation", internal: false, income: false, principal: null, status: "recorded",
-        });
         await appendHistory({
           key: `lottery-entries:${accountId}:${input.requestId}`, subject: `demo:${accountId}`,
           correlationId: `demo:${accountId}:${input.requestId}`, category: "activity",
-          kind: "lottery_entries_purchased", state: "confirmed", actor: "user", asset: "USDC",
+          kind: "lottery_entries_purchased", state: "confirmed", actor: "user", asset: "BETTEX",
           environment: "simulation", source: "demo_burn_lottery", occurredAt: new Date(now),
-          data: { sourceWallet: "dollar", entryCount: String(receipt.quantity), entryNumbers: receipt.numbers.join(", "),
-            paidAsset: "USDC", paidUnits: decimalUnits(String(receipt.paidUsdc), 6), paidDecimals: "6",
+          data: { sourceWallet: "bettex", entryCount: String(receipt.quantity), entryNumbers: `${receipt.firstNumber}–${receipt.lastNumber}`,
+            paidAsset: "BETTEX", paidUnits: decimalUnits(String(receipt.paidAmount), 18), paidDecimals: "18",
             burnedUnits: decimalUnits(String(receipt.burnedBettex), 18), drawAt: new Date(engine.burnLottery!.nextDrawAt).toISOString(),
-            feeUnits: "0", allProceedsBurned: "true", stakingPreserved: "true" },
+            feeUnits: "0", allProceedsBurned: "true", stakingPreserved: "false", priorWeightCancelled: "true" },
         }, tx);
+        await appendHistory({ key: `demo:${accountId}:${input.requestId}:participation:exit`, subject: `demo:${accountId}`,
+          correlationId: `demo:${accountId}:${input.requestId}`, category: "automatic", actor: "system",
+          kind: "participation_exit", state: "confirmed", environment: "simulation", asset: "BETTEX", source: "demo_engine",
+          data: { quantityUnits: decimalUnits(String(receipt.paidAmount), 18), eligibleUnits: decimalUnits(String(account.bettex), 18),
+            decimals: "18", priorWeightCancelled: "true", mechanism: "wallet_balance", ruleVersion: "demo-model-v1",
+            trigger: input.requestId, periodId: new Date(engine.dayAt).toISOString().slice(0, 10) } }, tx);
         await tx.insert(demoCommands).values({ accountId, requestId: input.requestId, input: { ...input, kind: "lottery_entries", receipt } });
       }
     }

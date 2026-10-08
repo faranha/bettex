@@ -74,3 +74,9 @@ A exportação nos cartões das carteiras deve ser um ícone discreto de chave n
 **Why:** O criador pediu “export wallet pode ser um icone de chave em cima, nao precisa ter esse destaque todo”.
 
 **How to apply:** Preservar a função e as proteções de exportação, com nome acessível e identificação ao passar o mouse; reduzir apenas o destaque visual.
+
+Os detalhes e a exportação acessados pela chavezinha dos cartões de carteira devem abrir em overlay, não aumentar a página.
+
+**Why:** O criador esclareceu: “eles podem abrir em overlay, não precisam abrir on page”.
+
+**How to apply:** Esta orientação é para os detalhes da carteira, não para transformar Minha conta inteira em overlay. Preservar chaves inicialmente ocultas e limpar sua revelação ao fechar.

@@ -21,8 +21,11 @@ import { roundArchivePage } from "../lib/round-archive-store";
 import { statementFilters } from "../lib/treasury-statement";
 import { treasuryStatement, treasuryStatementCsv } from "../lib/treasury-statement-store";
 import { treasuryTestWalletPage } from "../modules/wallets/infrastructure/treasury-test-wallet-store";
+import { PlayDemoDouble2xBody } from "@workspace/api-zod";
+import { doubleSnapshot, reconcileDouble, startDouble2xWorker } from "../lib/double2x-store";
 
 const router = Router();
+startDouble2xWorker();
 const cookieName = "bettex_demo";
 const requests = new Map<string, { count: number; reset: number }>();
 router.use("/demo", (req, res, next) => {
@@ -53,6 +56,32 @@ router.use("/demo", (req, res, next) => {
   } else requests.set(key, { count: 1, reset: now + 60000 });
   res.set("Cache-Control", "no-store");
   next();
+});
+router.get("/demo/double2x", async (req, res) => {
+  try {
+    if (!await userDashboard(req, res)) return;
+    const id = String(res.locals.demoHistorySubject).slice(5);
+    void reconcileDouble(id).catch(() => req.log.warn({ code: "double2x_pending" }, "Double 2X settlement will retry"));
+    res.json(await doubleSnapshot(id));
+  } catch (e) { errorResponse(req, res, e); }
+});
+router.post("/demo/double2x", async (req, res) => {
+  try {
+    const parsed = PlayDemoDouble2xBody.safeParse(req.body);
+    if (!parsed.success) { res.status(400).json({ error: "invalid_double2x_play" }); return; }
+    if (!await userDashboard(req, res)) return;
+    const id = String(res.locals.demoHistorySubject).slice(5);
+    const before = await doubleSnapshot(id);
+    // A retry is safe even when the original reservation already used the funds.
+    const duplicate = before.plays.find(p => p.id === parsed.data.requestId);
+    if (!duplicate && !before.canPlay) {
+      res.status(409).json({ error: before.pending ? "double2x_pending" : before.nextPlayAt && Date.parse(before.nextPlayAt) > Date.now()
+        ? "double2x_daily_limit" : before.balanceUsdc <= 0 ? "double2x_no_earnings" : `double2x_${before.reason}` }); return;
+    }
+    if (!await userDashboard(req, res, { double2x: parsed.data })) return;
+    void reconcileDouble(id).catch(() => req.log.warn({ code: "double2x_pending" }, "Double 2X settlement will retry"));
+    res.json(await doubleSnapshot(id));
+  } catch (e) { errorResponse(req, res, e); }
 });
 router.get("/demo/swap-quote", async (req, res) => {
   try {
@@ -125,7 +154,7 @@ router.post("/demo/lottery/participation", async (req, res) => {
 router.post("/demo/lottery/entries", async (req, res) => {
   if (!permittedOrigin(req) || !req.is("application/json")) { res.status(403).json({ error: "origin_not_allowed" }); return; }
   const parsed = BuyDemoLotteryEntriesBody.safeParse(req.body);
-  if (!parsed.success || Object.keys(req.body).some(key => !["requestId", "quantity", "confirmed", "drawAt"].includes(key))) {
+  if (!parsed.success || Object.keys(req.body).some(key => !["requestId", "quantity", "paymentAsset", "confirmed", "drawAt"].includes(key))) {
     res.status(400).json({ error: "invalid_lottery_purchase" }); return;
   }
   try { res.json(GetDemoDashboardResponse.parse(await userDashboard(req, res, { lotteryEntries: parsed.data }))); }

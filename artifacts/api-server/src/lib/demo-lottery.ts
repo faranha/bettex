@@ -1,9 +1,9 @@
-import { createHash, randomInt } from "node:crypto";
+import { createHash, randomBytes } from "node:crypto";
 import type { DemoLottery, DemoLotteryDraw, DemoLotteryPurchase } from "@workspace/api-zod";
 import type { AccountState, EngineState } from "./demo-state.ts";
 import { demoCycleStart, DEMO_DAY } from "./demo-cycle-clock.ts";
 import { demoBurnSnapshot } from "./demo-burn-story.ts";
-import { ensureLotteryEntries, hasLotteryStake, LOTTERY_ENTRY_USDC } from "./demo-lottery-entries.ts";
+import { ensureLotteryEntries, hasLotteryStake, LOTTERY_ENTRY_BETTEX, entryQuantity, normalizeEntryReceipt } from "./demo-lottery-entries.ts";
 
 const SCALE = 1_000_000;
 const units = (n: number) => Math.round(n * SCALE);
@@ -26,9 +26,24 @@ function entered(account: AccountState, at: number) {
   return eligible(account, at) && account.lotteryConsent?.participating === true &&
     Date.parse(account.lotteryConsent.confirmedAt) <= at;
 }
+function activeNumbers(account: AccountState, drawAt: string, now: number) {
+  if (!entered(account, now)) return 0;
+  const entries = account.lotteryEntries?.drawAt === drawAt ? account.lotteryEntries.entries : [];
+  const assigned = entries.filter(entry => Date.parse(entry.createdAt) <= now)
+    .reduce((count, entry) => count + entryQuantity(entry), 0);
+  // The draw guarantees one free number for each eligible wallet. Older or
+  // not-yet-visited accounts may not have its identifier allocated yet.
+  return assigned + (entries.some(entry => entry.type === "free") ? 0 : 1);
+}
 
 /** Called under the shared engine/account transaction lock. Never signs or submits an order. */
-export function advanceDemoLottery(engine: EngineState, accounts: AccountState[], now: number, pick = randomInt) {
+function randomTicket(total: number) {
+  const n = BigInt(total), space = 1n << 64n, ceiling = space - space % n;
+  let sample: bigint;
+  do { sample = randomBytes(8).readBigUInt64BE(); } while (sample >= ceiling);
+  return Number(sample % n);
+}
+export function advanceDemoLottery(engine: EngineState, accounts: AccountState[], now: number, pick = randomTicket) {
   ensureDemoLottery(engine, now);
   const state = engine.burnLottery;
   if (!state || !engine.burnStory || !Number.isFinite(engine.price) || engine.price <= 0) return;
@@ -47,12 +62,15 @@ export function advanceDemoLottery(engine: EngineState, accounts: AccountState[]
     const purchases: Purchase[] = [];
     while (cash > 0 && candidates.length) {
       // Each number has equal weight. A winning wallet is removed after its sale.
-      const totalEntries = candidates.reduce((n, candidate) => n + candidate.entries.length, 0);
+      const count = (entries: typeof candidates[number]["entries"]) => entries.reduce((n, e) => n + entryQuantity(e), 0);
+      const totalEntries = candidates.reduce((n, candidate) => n + count(candidate.entries), 0);
       let ticketIndex = pick(totalEntries);
       let candidateIndex = 0;
-      while (ticketIndex >= candidates[candidateIndex]!.entries.length) ticketIndex -= candidates[candidateIndex++]!.entries.length;
+      while (ticketIndex >= count(candidates[candidateIndex]!.entries)) ticketIndex -= count(candidates[candidateIndex++]!.entries);
       const { account, entries } = candidates.splice(candidateIndex, 1)[0]!;
-      const winningNumber = entries[ticketIndex]!.number;
+      let entryIndex = 0;
+      while (ticketIndex >= entryQuantity(entries[entryIndex]!)) ticketIndex -= entryQuantity(entries[entryIndex++]!);
+      const winningNumber = String(Number(entries[entryIndex]!.number) + ticketIndex).padStart(6, "0");
       const affordable = Number(BigInt(cash) * BigInt(SCALE) / BigInt(priceUnits));
       const tokenUnits = Math.min(units(account.bettex), affordable);
       if (tokenUnits <= 0) break;
@@ -92,14 +110,21 @@ export function advanceDemoLottery(engine: EngineState, accounts: AccountState[]
 
 export function demoLotterySnapshot(engine: EngineState, account: AccountState, accounts: AccountState[], now: number): DemoLottery | undefined {
   if (account.profile.provider === "native" || !engine.burnLottery) return undefined;
+  const drawAt = new Date(engine.burnLottery.nextDrawAt).toISOString();
+  const ownActiveNumbers = activeNumbers(account, drawAt, now);
+  const totalActiveNumbers = ownActiveNumbers + accounts
+    .filter(other => other.profile.accountId !== account.profile.accountId)
+    .reduce((count, other) => count + activeNumbers(other, drawAt, now), 0);
   return {
     source: "modeled_demo", nextDrawAt: new Date(engine.burnLottery.nextDrawAt).toISOString(),
     purchasePriceUsdc: value(units(engine.price) * 2),
     participating: !!account.lotteryConsent?.participating, eligible: eligible(account, now),
     participants: accounts.filter(a => entered(a, now)).length,
-    entryPriceUsdc: LOTTERY_ENTRY_USDC,
+    entryPriceBettex: LOTTERY_ENTRY_BETTEX, entryPaymentAsset: "BETTEX", entryBalanceBettex: account.bettex,
+    ownActiveNumbers, totalActiveNumbers,
+    numberSharePercent: totalActiveNumbers > 0 ? ownActiveNumbers / totalActiveNumbers * 100 : 0,
     entries: account.lotteryEntries?.drawAt === new Date(engine.burnLottery.nextDrawAt).toISOString() ? account.lotteryEntries.entries : [],
-    entryReceipts: account.lotteryEntries?.drawAt === new Date(engine.burnLottery.nextDrawAt).toISOString() ? account.lotteryEntries.receipts : [],
+    entryReceipts: account.lotteryEntries?.drawAt === new Date(engine.burnLottery.nextDrawAt).toISOString() ? account.lotteryEntries.receipts.map(normalizeEntryReceipt) : [],
     draws: [...engine.burnLottery.draws].reverse().map(({ purchases, ...draw }) => ({
       ...draw, purchases: purchases.map(({ accountId, ...purchase }) => ({
         ...purchase, isOwn: accountId === account.profile.accountId,

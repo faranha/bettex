@@ -1,0 +1,9 @@
+.fp.fp--anonymous { display: block; }
+.fp.fp--anonymous .fp__who { margin-top: 1rem; }
+.fp.fp--anonymous .fp__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.5rem; gap: 1rem; }
+.fp.fp--anonymous .fp__grid strong { font-size: 1rem; }
+.fp.fp--anonymous .fp__grid small { display: block; margin-top: .5rem; line-height: 1.6; }
+.fp.fp--anonymous .fp__cap { margin-top: 1rem; }
+@media (max-width: 600px) {
+  .fp.fp--anonymous .fp__grid { grid-template-columns: 1fr; }
+}

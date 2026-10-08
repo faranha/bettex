@@ -10,6 +10,10 @@ import type {OpportunityRecord} from "../modules/agents";
 import {ensureAlphaStore} from "../modules/agents/infrastructure/alpha-store";
 import {ensurePaperRuntime,readPaperState} from "./paper-runtime";
 import {reconcilePaperExecution} from "../modules/reconciliation";
+import {verifiedAccount} from "../lib/account-identity";
+import {demoTabIdentity} from "../modules/simulation/infrastructure/demo-tab-session";
+import {loadDashboard} from "../lib/demo-store";
+import {demoTradingJourneys,demoTradingSnapshot} from "../lib/demo-trading-presentation";
 const router=Router();
 const views=["opportunities","decisions","orders","positions","closed"] as const;
 type View=typeof views[number];
@@ -36,6 +40,14 @@ router.get("/agents/trading",async(req,res)=>{
   let p:ReturnType<typeof params>;
   try{p=params(req.query);}catch{res.status(400).json({code:"invalid_filter_or_cursor"});return;}
   try{
+    const tab=req.headers["x-bettex-demo-session"];
+    if(tab!==undefined&&!await verifiedAccount(req)){
+      const browserId=demoTabIdentity(tab)!;
+      const dashboard=await loadDashboard({browserId,tabScoped:true});
+      if(!dashboard)throw new Error("demo_dashboard_unavailable");
+      res.json(demoTradingSnapshot(dashboard,p));
+      return;
+    }
     await Promise.all([ensureAlphaStore(),ensurePaperRuntime(),ensureTradingPolicyStore()]);
     const output=await db.transaction(async client=>{
       await client.execute(sql`SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY`);
@@ -122,7 +134,10 @@ router.get("/agents/trading",async(req,res)=>{
           at:last.cursor_at,id:last.id,view:p.view,asset:p.asset,state:p.state})).toString("base64url"):null}};
     });
     res.json(GetAlphaTradingResponse.parse(output));
-  }catch{
+  }catch(error){
+    if(error instanceof Error&&["invalid_demo_cursor","invalid_demo_tab_session"].includes(error.message)){
+      res.status(400).json({code:"invalid_filter_or_cursor"});return;
+    }
     req.log.warn({code:"alpha_trading_unavailable"},"Trading evidence unavailable; no mock fallback");
     res.status(503).json({code:"alpha_trading_unavailable"});
   }
@@ -132,6 +147,16 @@ router.get("/agents/trading/journey/:id",async(req,res)=>{
   const id=String(req.params.id);
   if(!/^[a-zA-Z0-9:_-]{1,110}$/.test(id)){res.status(404).json({code:"journey_not_found"});return;}
   try{
+    const tab=req.headers["x-bettex-demo-session"];
+    if(id.startsWith("demo:")&&tab!==undefined&&!await verifiedAccount(req)){
+      const browserId=demoTabIdentity(tab)!;
+      const dashboard=await loadDashboard({browserId,tabScoped:true});
+      if(!dashboard)throw new Error("demo_dashboard_unavailable");
+      const journey=demoTradingJourneys(dashboard)
+        .find(j=>j.opportunity.opportunity.id===id||j.orders.some(o=>o.id===id)||j.positions.some(p=>p.id===id)||j.decisions.some(d=>d.id===id));
+      if(!journey){res.status(404).json({code:"journey_not_found"});return;}
+      res.json(journey);return;
+    }
     await Promise.all([ensureAlphaStore(),ensurePaperRuntime(),ensureTradingPolicyStore()]);
     const output=await db.transaction(async client=>{
       await client.execute(sql`SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY`);

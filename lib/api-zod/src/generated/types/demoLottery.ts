@@ -7,6 +7,7 @@
  */
 import type { DemoLotteryDraw } from './demoLotteryDraw';
 import type { DemoLotteryEntry } from './demoLotteryEntry';
+import type { DemoLotteryEntryPaymentAsset } from './demoLotteryEntryPaymentAsset';
 import type { DemoLotteryEntryReceipt } from './demoLotteryEntryReceipt';
 import type { DemoLotterySource } from './demoLotterySource';
 
@@ -17,7 +18,25 @@ export interface DemoLottery {
   participating: boolean;
   eligible: boolean;
   participants: number;
-  entryPriceUsdc: number;
+  entryPriceBettex: number;
+  entryPaymentAsset: DemoLotteryEntryPaymentAsset;
+  entryBalanceBettex: number;
+  /**
+     * Active numbers belonging to this wallet in the upcoming draw.
+     * @minimum 0
+     */
+  ownActiveNumbers: number;
+  /**
+     * Total numbers of opted-in eligible simulated wallets in the upcoming draw.
+     * @minimum 0
+     */
+  totalActiveNumbers: number;
+  /**
+     * Share of active numbers and first-selection weight; not a guaranteed payout or the probability of any win across multiple selections.
+     * @minimum 0
+     * @maximum 100
+     */
+  numberSharePercent: number;
   purchaseResult?: DemoLotteryEntryReceipt;
   entries: DemoLotteryEntry[];
   entryReceipts: DemoLotteryEntryReceipt[];

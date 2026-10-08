@@ -57,7 +57,7 @@ export function demoTabToken(): Promise<string> {
 
 export async function demoTabRequestHeaders(url: string) {
   const path = new URL(url, window.location.origin).pathname;
-  return /(?:^|\/)api\/demo(?:\/|$)/.test(path)
+  return /(?:^|\/)api\/(?:demo(?:\/|$)|agents\/trading(?:\/|$))/.test(path)
     ? { 'X-Bettex-Demo-Session': await demoTabToken() } : null;
 }
 

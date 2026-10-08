@@ -56,6 +56,7 @@ export function demoBurnSnapshot(engine: EngineState, now: number): DemoBurnSumm
   for (const entry of engine.burnStory.journal) {
     if (entry.kind === "wallet_funded") cash += units(entry.amountUsdc);
     if (entry.kind === "tokens_purchased") { cash -= units(entry.amountUsdc); held += units(entry.tokensBettex); }
+    if (entry.kind === "tokens_received") held += units(entry.tokensBettex);
     if (entry.kind === "tokens_burned") { held -= units(entry.tokensBettex); burned += units(entry.tokensBettex); }
   }
   if (cash < 0 || held < 0) throw new Error("Demo buyback-and-burn journal does not reconcile");

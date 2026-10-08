@@ -21,9 +21,8 @@ export function EntityOrganisation() {
     <h3 className="whitepaper__subhead" id="documentacao-publico">Público e oportunidade</h3>
     <div className="whitepaper__prose"><p>A tese do fundador conecta o deslocamento do trabalho pela automação com brasileiros que tratam apostas como investimento e procuram renda e patrimônio nesses ambientes. A BETTEX organiza uma alternativa de participação econômica com análise de mercados, controles e distribuição de resultados elegíveis.</p><p>Uma possível era de abundância é uma tese, não um fato comprovado. A transição depende de política, instituições e acesso: “a natureza não dá saltos”. A missão considera o caminho entre o presente e essa transformação. O público de entrada é brasileiro; a estrutura do projeto é internacional e as movimentações financeiras usam USDC.</p><p><a href={`${import.meta.env.BASE_URL}pitch#pitch-thesis`}>Tese e oportunidade no Pitch</a> · <a href={`${import.meta.env.BASE_URL}pitch`}>Apresentação do projeto</a></p></div>
     <h3 className="whitepaper__subhead" id="documentacao-fundador">Fundador e administrador</h3>
-    <div className="whitepaper__prose"><p>Fred Azevedo é fundador do SOS Jogador, influenciador e administrador da BETTEX. Tem experiência com comunidade, conteúdo e ferramentas digitais.</p></div>
-    <FounderProfile portrait doc />
-    <div className="whitepaper__prose"><p><a href="https://www.linkedin.com/in/fredazevedo85/" target="_blank" rel="noopener noreferrer">LinkedIn de Fred Azevedo</a> · <a href={`${import.meta.env.BASE_URL}pitch#pitch-founder`}>Trajetória e materiais no Pitch</a></p></div>
+    <FounderProfile doc />
+    <div className="whitepaper__prose"><p><a href={`${import.meta.env.BASE_URL}pitch#pitch-founder`}>Experiência e atuação no Pitch</a></p></div>
     <BusinessPlan />
     <div className="whitepaper__prose"><p><a href={`${import.meta.env.BASE_URL}downloads/bettex-entidade-unica.pdf`} download>Resumo da entidade e regras (PDF)</a> · <a href={`${import.meta.env.BASE_URL}downloads/bettex-entidade-unica.docx`} download>Versão editável (DOCX)</a></p></div>
   </>;

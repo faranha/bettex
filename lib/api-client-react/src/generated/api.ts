@@ -33,6 +33,7 @@ import type {
   AlphaTradingJourney,
   AlphaTradingSnapshot,
   DemoDashboard,
+  DemoDouble2x,
   DemoLotteryEntryOrder,
   DemoLotteryParticipation,
   DemoMovementInput,
@@ -42,6 +43,7 @@ import type {
   DemoTestnet,
   DemoTestnetActivity,
   DemoTreasuryActivityPage,
+  Double2xPlayInput,
   ExportDemoTreasuryStatementParams,
   GetAgentCenterParams,
   GetAgentReasoningParams,
@@ -3264,6 +3266,183 @@ export function useGetDemoDashboard<TData = Awaited<ReturnType<typeof getDemoDas
 
 
 
+
+export const getGetDemoDouble2xUrl = () => {
+
+
+
+
+  return `/api/demo/double2x`
+}
+
+export const getDemoDouble2x = async ( options?: Parameters<typeof customFetch>[1]): Promise<DemoDouble2x> => {
+
+  return customFetch<DemoDouble2x>(getGetDemoDouble2xUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDemoDouble2xQueryKey = () => {
+    return [
+    `/api/demo/double2x`
+    ] as const;
+    }
+
+
+export const getGetDemoDouble2xQueryOptions = <TData = Awaited<ReturnType<typeof getDemoDouble2x>>, TError = ErrorType<unknown>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoDouble2x>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDemoDouble2xQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoDouble2x>>> = ({ signal }) => getDemoDouble2x({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDemoDouble2x>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetDemoDouble2xQueryResult = NonNullable<Awaited<ReturnType<typeof getDemoDouble2x>>>
+export type GetDemoDouble2xQueryError = ErrorType<unknown>
+
+
+export function useGetDemoDouble2x<TData = Awaited<ReturnType<typeof getDemoDouble2x>>, TError = ErrorType<unknown>>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoDouble2x>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoDouble2x>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoDouble2x>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoDouble2x<TData = Awaited<ReturnType<typeof getDemoDouble2x>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoDouble2x>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoDouble2x>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoDouble2x>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoDouble2x<TData = Awaited<ReturnType<typeof getDemoDouble2x>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoDouble2x>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+
+export function useGetDemoDouble2x<TData = Awaited<ReturnType<typeof getDemoDouble2x>>, TError = ErrorType<unknown>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoDouble2x>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetDemoDouble2xQueryOptions(options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getPlayDemoDouble2xUrl = () => {
+
+
+
+
+  return `/api/demo/double2x`
+}
+
+export const playDemoDouble2x = async (double2xPlayInput: Double2xPlayInput, options?: Parameters<typeof customFetch>[1]): Promise<DemoDouble2x> => {
+
+    const getHeaders = (h?: NonNullable<RequestInit['headers']>): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(h as Iterable<Iterable<string>>, (entry) => Array.from(entry) as [string, string]),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<string | readonly string[] | undefined>(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+return customFetch<DemoDouble2x>(getPlayDemoDouble2xUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...getHeaders(options?.headers) },
+    body: JSON.stringify(double2xPlayInput)
+  }
+);}
+
+
+
+
+
+export const getPlayDemoDouble2xMutationKey = () => ['playDemoDouble2x'] as const;
+
+export const getPlayDemoDouble2xMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof playDemoDouble2x>>, TError,PlayDemoDouble2xMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof playDemoDouble2x>>, TError,PlayDemoDouble2xMutationVariables, TContext> => {
+
+const mutationKey = getPlayDemoDouble2xMutationKey();
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof playDemoDouble2x>>, PlayDemoDouble2xMutationVariables> = (props) => {
+          const {data} = props ?? {};
+
+          return  playDemoDouble2x(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type PlayDemoDouble2xMutationResult = NonNullable<Awaited<ReturnType<typeof playDemoDouble2x>>>
+    export type PlayDemoDouble2xMutationBody = BodyType<Double2xPlayInput>
+    export type PlayDemoDouble2xMutationError = ErrorType<unknown>
+    export type PlayDemoDouble2xMutationVariables = {data: BodyType<Double2xPlayInput>}
+
+    export const usePlayDemoDouble2x = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof playDemoDouble2x>>, TError,PlayDemoDouble2xMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient): UseMutationResult<
+        Awaited<ReturnType<typeof playDemoDouble2x>>,
+        TError,
+        PlayDemoDouble2xMutationVariables,
+        TContext
+      > => {
+      return useMutation(getPlayDemoDouble2xMutationOptions(options), queryClient);
+    }
 
 export const getUpdateDemoLotteryParticipationUrl = () => {
 

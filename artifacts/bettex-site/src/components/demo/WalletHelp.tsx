@@ -5,8 +5,8 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { useX } from './ui';
 
 /** Separate help buttons never execute a wallet action. Popovers work on touch too. */
-export function WalletHelp({ id, label, children, iconOnly = false }: {
-  id: string; label: string; children: ReactNode; iconOnly?: boolean;
+export function WalletHelp({ id, label, children, iconOnly = false, icon }: {
+  id: string; label: string; children: ReactNode; iconOnly?: boolean; icon?: ReactNode;
 }) {
   const { x } = useX();
   const [open, setOpen] = useState(false);
@@ -14,7 +14,7 @@ export function WalletHelp({ id, label, children, iconOnly = false }: {
     <PopoverTrigger asChild>
       <button type="button" data-testid={`wallet-help-${id}`} aria-label={x(`${label}: explicação`, `${label}: explanation`, `${label}: explicación`)}
         className={`inline-flex max-w-full items-center gap-1.5 rounded-lg text-left text-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${iconOnly ? 'h-11 w-9 shrink-0 justify-center' : 'min-h-8 min-w-0 shrink'}`}>
-        {!iconOnly && <span className="min-w-0 whitespace-normal break-words">{label}</span>}<CircleHelp className="h-3.5 w-3.5 shrink-0 opacity-80" aria-hidden="true" />
+        {!iconOnly && <span className="min-w-0 whitespace-normal break-words">{label}</span>}{icon ?? <CircleHelp className="h-3.5 w-3.5 shrink-0 opacity-80" aria-hidden="true" />}
       </button>
     </PopoverTrigger>
     <PopoverContent align="start" side="top" collisionPadding={12} onOpenAutoFocus={e => e.preventDefault()}

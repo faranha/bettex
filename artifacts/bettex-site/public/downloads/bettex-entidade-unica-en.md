@@ -4,7 +4,7 @@ Company and administration
 
 BETTEX is a technology product that combines an app, a token and AI agents. The user participates in the project's results according to the token rules, without ownership of the company or treasury.
 
-A single private, closely-held commercial company to be incorporated, managed by the founder Fred Azevedo in a full stack AI model, with no employees. Specialized external services are contracted by need, not internal positions.
+A single private, closely-held commercial company to be incorporated, managed by the founder in a full stack AI model, with no employees. Specialized external services are contracted by need, not internal positions.
 
 The company brings together the token, application, treasury, investments, and program obligations. Final name, corporate structure, and jurisdiction are part of the formalization. Holders own tokens and program rights, not shares, corporate voting, or a redeemable fraction of the treasury.
 
@@ -37,5 +37,3 @@ Treasury, operational cash, exclusive buyback wallet, and personal wallets have 
 Arbitrum provides the network and contracts. Allora is a candidate for inferences, not execution. Robinhood Crypto Trading API requires an eligible account in the United States and authorization; it does not prove access to stocks. Arbitrum/Gamma public queries were verified; other examples without private access are simulations. No real money operations took place.
 
 Commercial plan and launch in the Pitch: https://bettex.ai/en/pitch#publico
-
-https://www.linkedin.com/in/fredazevedo85/

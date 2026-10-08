@@ -75,7 +75,7 @@ export async function treasuryStatement(f: StatementFilters): Promise<{ page: Tr
         const value = burn.reduce((n, e) => {
           if (asset === "USDC") return n + (e.kind === "wallet_funded" ? statementUnits(e.amountUsdc)
             : e.kind === "tokens_purchased" ? -statementUnits(e.amountUsdc) : 0n);
-          return n + (e.kind === "tokens_purchased" ? statementUnits(e.tokensBettex)
+          return n + (e.kind === "tokens_purchased" || e.kind === "tokens_received" ? statementUnits(e.tokensBettex)
             : e.kind === "tokens_burned" ? -statementUnits(e.tokensBettex) : 0n);
         }, 0n);
         expectedClosing.set(`buyback:${asset}`, value);

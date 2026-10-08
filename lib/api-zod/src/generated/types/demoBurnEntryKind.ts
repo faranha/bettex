@@ -11,6 +11,7 @@ export type DemoBurnEntryKind = typeof DemoBurnEntryKind[keyof typeof DemoBurnEn
 
 export const DemoBurnEntryKind = {
   wallet_funded: 'wallet_funded',
+  tokens_received: 'tokens_received',
   tokens_purchased: 'tokens_purchased',
   tokens_burned: 'tokens_burned',
 } as const;

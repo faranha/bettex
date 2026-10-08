@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { useState, type ReactNode } from 'react';
-import { Copy, Wallet } from 'lucide-react';
+import { BookUser, Copy, Wallet } from 'lucide-react';
 import { Link } from 'wouter';
 import type { DemoProfile } from '@workspace/api-client-react';
 import { TokenIcon } from './TokenIcon';
@@ -43,10 +43,9 @@ export function NativeWalletsCard({ profile, showHeading = true, headerActions }
         <p>{x('Saldo lido na cadeia local de testes para esta carteira, não saldo de produção nem dinheiro real. USDC e BETTEX ficam em carteiras distintas. O saldo total de BETTEX pode ser diferente da quantidade elegível da rodada. Dados indisponíveis não são substituídos por valores simulados; uma leitura desatualizada é identificada.', 'Balance read from the local test chain for this wallet, not a production balance or real money. USDC and BETTEX are held in separate wallets. Total BETTEX can differ from the round-eligible amount. Unavailable data is not replaced with simulated figures; stale readings are identified.', 'Saldo leído en la cadena local de pruebas para esta cartera, no saldo de producción ni dinero real. USDC y BETTEX están en carteras distintas. El total BETTEX puede diferir de la cantidad elegible de la ronda. Los datos no disponibles no se sustituyen por cifras simuladas; las lecturas desactualizadas se identifican.')}</p>
         <p>{x('Histórico consulta o extrato desta carteira. Gerenciar abre a área de chaves e operações; consultar um saldo não autoriza movimentações.', 'History opens this wallet’s statement. Manage opens keys and operations; reading a balance does not authorize movements.', 'Historial consulta el extracto de esta cartera. Gestionar abre claves y operaciones; consultar un saldo no autoriza movimientos.')}</p>
       </WalletHelp></div>
-      <div className="text-xs"><WalletHelp id={`native-address-${w.purpose}`} label={x('Endereço público', 'Public address', 'Dirección pública')}>
+      <div className="flex items-center gap-1.5 text-xs"><WalletHelp id={`native-address-${w.purpose}`} label={x('Endereço público', 'Public address', 'Dirección pública')} iconOnly icon={<BookUser className="h-4 w-4" aria-hidden="true" />}>
         <p>{x('Identifica esta carteira e pode ser copiado para recebimentos de teste. Não é uma chave privada. Confira a rede e o ativo no formulário; a mesma aparência de endereço não significa que saldos de redes diferentes sejam iguais. Não envie fundos reais.', 'Identifies this wallet and can be copied for test receipts. It is not a private key. Check the network and asset in the form; an address looking the same does not mean balances on different networks are equal. Do not send real funds.', 'Identifica esta cartera y se puede copiar para recibir activos de prueba. No es una clave privada. Comprueba la red y el activo; que una dirección tenga la misma apariencia no significa que los saldos de distintas redes sean iguales. No envíes fondos reales.')}</p>
-      </WalletHelp></div>
-      <Addr id={w.purpose} value={w.address} />
+      </WalletHelp><div className="min-w-0 flex-1"><Addr id={w.purpose} value={w.address} /></div></div>
       <div className="text-xs text-[#5B6B85]"><WalletHelp id={`native-network-${w.purpose}`} label={x('Redes', 'Networks', 'Redes')}>
         <p>{x('Redes associadas à carteira. EVM local 31337 é a cadeia local de testes; Arbitrum Sepolia é uma rede pública de testes distinta. A leitura exibida aqui vem da cadeia local. Associação a uma rede e autorização de operações são verificações separadas.', 'Networks associated with the wallet. Local EVM 31337 is the local test chain; Arbitrum Sepolia is a separate public test network. The reading shown here comes from the local chain. Network association and operation authorization are separate checks.', 'Redes asociadas a la cartera. EVM local 31337 es la cadena local de pruebas; Arbitrum Sepolia es una red pública de pruebas distinta. La lectura mostrada aquí proviene de la cadena local. La asociación a una red y la autorización de operaciones son comprobaciones separadas.')}</p>
       </WalletHelp>: {net(w.chainIds)}</div>

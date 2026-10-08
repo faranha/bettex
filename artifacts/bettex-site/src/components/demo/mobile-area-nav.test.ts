@@ -33,8 +33,8 @@ test('dashboard wallets do not reserve obsolete mobile footer space before staki
   assert.match(r('./WalletsDashboard.tsx'), /grid min-w-0 gap-4/);
 });
 
-test('AI Center immediately follows Wallets in the shared desktop and mobile menu; Profile stays in the top menu', () => {
-  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'central', 'wallet', 'treasury'\]/);
+test('AI Center follows the dashboard and Treasury precedes History in desktop and mobile menus; Profile stays in the top menu', () => {
+  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'central', 'treasury', 'wallet'\]/);
   assert.match(r('../app/AppHeader.tsx'), /APP_AREAS\.map/);
   const page = r('../../pages/demo.tsx');
   assert.match(page, /tab === 'home' && <WalletsDashboard/);

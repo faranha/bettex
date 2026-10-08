@@ -44,16 +44,22 @@ try {
   assert.equal(initial.lottery.participating, false);
   const joined = await load({ lottery: { participating: true, confirmed: true } });
   const before = await account();
-  const order = { requestId: randomUUID(), quantity: 2, confirmed: true, drawAt: joined.lottery.nextDrawAt };
+  const order = { requestId: randomUUID(), quantity: 1001, paymentAsset: "BETTEX", confirmed: true, drawAt: joined.lottery.nextDrawAt };
+  const poolBefore = structuredClone(joined.treasury.swapPool);
   const [first, replay] = await Promise.all([load({ lotteryEntries: order }), load({ lotteryEntries: order })]);
   assert.deepEqual(first.lottery.purchaseResult, replay.lottery.purchaseResult);
-  assert.equal(first.lottery.purchaseResult.numbers.length, 2);
+  assert.equal(first.lottery.purchaseResult.quantity, 1001);
+  assert.equal(first.lottery.purchaseResult.paidAsset, "BETTEX");
+  assert.equal(first.lottery.purchaseResult.burnedBettex, 1001);
+  assert.deepEqual(first.treasury.swapPool, poolBefore);
   const after = await account();
-  assert.equal(after.usdc, before.usdc - 2);
-  assert.equal(after.bettex, before.bettex);
-  assert.deepEqual(after.lots, before.lots);
+  assert.equal(after.usdc, before.usdc);
+  assert.equal(after.bettex, before.bettex - 1001);
+  assert.equal(after.lots.length, 1);
+  assert.equal(after.lots[0].amount, after.bettex);
+  assert.ok(after.lots[0].since > before.lots[0].since);
   assert.equal(after.receivedYield, before.receivedYield);
-  assert.equal(after.lotteryEntries.entries.length, 3);
+  assert.equal(after.lotteryEntries.entries.reduce((sum, e) => sum + (e.quantity ?? 1), 0), 1002);
   const reloaded = await load();
   assert.deepEqual(reloaded.lottery.entries, first.lottery.entries);
   const saved = await pool.query("SELECT input FROM demo_commands WHERE account_id=$1 AND request_id=$2", [accountId, order.requestId]);
@@ -63,12 +69,14 @@ try {
   assert.equal(audit.rows.filter(row => row.kind === "lottery_entries_purchased").length, 1);
   assert.equal(audit.rows.filter(row => row.kind === "withdraw").length, 1);
   const receipt = audit.rows.find(row => row.kind === "lottery_entries_purchased").data;
-  assert.equal(receipt.paidUnits, "2000000"); assert.equal(receipt.feeUnits, "0");
-  assert.equal(receipt.stakingPreserved, "true"); assert.equal(receipt.allProceedsBurned, "true");
+  assert.equal(receipt.paidAsset, "BETTEX"); assert.equal(receipt.paidUnits, "1001000000000000000000"); assert.equal(receipt.feeUnits, "0");
+  assert.equal(receipt.stakingPreserved, "false"); assert.equal(receipt.priorWeightCancelled, "true"); assert.equal(receipt.allProceedsBurned, "true");
+  assert.equal(audit.rows.filter(row => row.kind === "participation_exit").length, 1);
   for (const bad of [
     { ...order, quantity: 3 },
     { ...order, requestId: randomUUID(), drawAt: "1970-01-01T00:00:00.000Z" },
     { ...order, requestId: randomUUID(), confirmed: false },
+    { ...order, requestId: randomUUID(), paymentAsset: "USDC" },
   ]) {
     const old = await account();
     await assert.rejects(() => load({ lotteryEntries: bad }));
@@ -83,7 +91,7 @@ try {
   assert.equal((await account()).usdc, after.usdc);
   await assert.rejects(() => loadDashboard({ nativeAccountId: `native-fixture-${randomUUID()}`, name: "Fixture", email: "", memberSince: new Date().toISOString() },
     { lotteryEntries: { ...order, requestId: randomUUID() } }), /lottery_unavailable/);
-  console.log("PASS lottery database: concurrent retries charge once, persisted numbers, unchanged staking, zero fees, linked history, rollback, post-round receipt recovery, native rejection.");
+  console.log("PASS BETTEX lottery database: uncapped1001-number order, direct burn, USDC/AMM unchanged, stake exit reset, concurrent retries charge once, persistent ranges, zero fees, audit, rollback, post-round receipt recovery, wrong-asset and native rejection.");
 } finally {
   await fixturePool?.end();
   await admin.query(`DROP SCHEMA IF EXISTS "${schema}" CASCADE`);

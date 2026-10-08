@@ -1,7 +1,10 @@
 /** @jsxImportSource react */
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { ArrowRightLeft, PiggyBank } from 'lucide-react';
+import { useState } from 'react';
 import { useX } from './ui';
+import { Double2xIcon } from './Double2xIcon';
+import { Double2xDialog } from './Double2xDialog';
 import { Money, type Asset, type Kind } from './fin';
 import { previousCycle } from './previous-cycle';
 import { scenarioStakingView } from './staking-model';
@@ -11,6 +14,7 @@ import { WalletHelp } from './WalletHelp';
 
 export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet: (kind: Kind, asset: Asset) => void }) {
   const { x } = useX();
+  const [dbl, setDbl] = useState(false);
   const native = d.profile.authenticated && d.profile.provider === 'native';
   const last = native ? null : previousCycle(d)?.received ?? null;
   const proj = native ? null : scenarioStakingView(d)?.timeline.projectedOwnUsdc ?? null;
@@ -28,6 +32,7 @@ export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet
         </WalletHelp></div>
         <div className="mt-0.5"><Money v={d.balances.receivedYield} a="USDC" big /></div>
       </div>
+      <button type="button" onClick={() => setDbl(true)} data-testid="button-double2x-open" aria-label={x('Abrir Double 2X', 'Open Double 2X', 'Abrir Double 2X')} className="-mr-1 -mt-1 grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:h-11 sm:w-11"><Double2xIcon className="h-9 w-9" /></button>
     </div>
     <dl className="grid gap-px overflow-hidden rounded-lg bg-[#0E7C6B]/20 text-xs sm:grid-cols-2">
       <div className="min-w-0 bg-[#F4FAF6] px-3 py-2">
@@ -55,6 +60,7 @@ export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet
         <p>{x('Transferir move o USDC já recebido para sua própria carteira em dólares. Não envia para um endereço externo e não converte em BETTEX. Confira os valores na tela antes de confirmar. O histórico abre o extrato filtrado pelos rendimentos, sem movimentar saldo.', 'Transfer moves received USDC to your own dollar wallet. It does not send to an external address or convert to BETTEX. Review the amounts in the form before confirming. History opens the earnings-filtered statement without moving funds.', 'Transferir mueve el USDC ya recibido a tu propia cartera en dólares. No envía a una dirección externa ni convierte en BETTEX. Revisa los importes antes de confirmar. El historial abre el extracto filtrado por ganancias sin mover saldo.')}</p>
       </WalletHelp>
     </div>
-    <p className="text-[11px] text-[#3F6F63]">{x('Só rendimentos de ciclos; transferíveis apenas para a carteira em dólares.', 'Cycle earnings only; transferable only to the dollar wallet.', 'Solo ganancias de ciclos; transferibles solo a la cartera en dólares.')}</p>
+    <p className="text-[11px] text-[#3F6F63]">{x('Saldo recebido disponível; transferências apenas para a carteira em dólares.', 'Available received balance; transfers only to the dollar wallet.', 'Saldo recibido disponible; transferencias solo a la cartera en dólares.')}</p>
+    <Double2xDialog open={dbl} onOpenChange={setDbl} balanceUsdc={d.balances.receivedYield} />
   </article>;
 }

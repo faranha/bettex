@@ -100,10 +100,9 @@ for lang in ("pt", "en", "es"):
     pitch_href = pitch_link["href"] if lang == "pt" else pitch_link["href"].replace("/pitch", f"/{lang}/pitch", 1)
     paragraphs.append(f'{t(pitch_link["label"])}: {pitch_href}')
     blocks.append(f'<p><a href="{escape(pitch_href, quote=True)}">{escape(t(pitch_link["label"]))}</a></p>')
-    paragraphs.append("https://www.linkedin.com/in/fredazevedo85/")
     stem = out / f"bettex-entidade-unica{suffix}"
     stem.with_suffix(".md").write_text("\n\n".join(paragraphs))
-    stem.with_suffix(".html").write_text(f'<!doctype html><html lang="{lang}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)}</title><style>body{{font:16px/1.7 Arial;color:#13204f;background:#f4f1e8;max-width:900px;margin:auto;padding:32px}}h2{{margin-top:36px}}a{{color:#2b59ff}}</style><body>{"".join(blocks)}<p><a href="https://www.linkedin.com/in/fredazevedo85/">LinkedIn</a></p></body></html>')
+    stem.with_suffix(".html").write_text(f'<!doctype html><html lang="{lang}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)}</title><style>body{{font:16px/1.7 Arial;color:#13204f;background:#f4f1e8;max-width:900px;margin:auto;padding:32px}}h2{{margin-top:36px}}a{{color:#2b59ff}}</style><body>{"".join(blocks)}</body></html>')
     docx(stem.with_suffix(".docx"), paragraphs, lang)
     pdf(stem.with_suffix(".pdf"), paragraphs)
     labels = materials["workbook"]

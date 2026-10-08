@@ -5,11 +5,16 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { DemoLotteryEntryReceiptPaidAsset } from './demoLotteryEntryReceiptPaidAsset';
 
 export interface DemoLotteryEntryReceipt {
   requestId: string;
   quantity: number;
-  paidUsdc: number;
+  paidUsdc?: number;
+  paidAsset: DemoLotteryEntryReceiptPaidAsset;
+  paidAmount: number;
+  firstNumber?: string;
+  lastNumber?: string;
   burnedBettex: number;
   createdAt: string;
   numbers: string[];

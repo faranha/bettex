@@ -39,6 +39,7 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
   const drawTime = Number.isFinite(Date.parse(lot.nextDrawAt))
     ? formatBrazilDateTime(lot.nextDrawAt, fl, { hour: '2-digit', minute: '2-digit' })
     : x('Indisponível', 'Unavailable', 'No disponible');
+  const ownN = lot.ownActiveNumbers, totalN = lot.totalActiveNumbers, pct = lot.numberSharePercent;
   const historyLabel = x('Histórico da loteria', 'Lottery history', 'Historial de la lotería');
   const historyParams = new URLSearchParams({ roundTab: 'lottery' });
   if (d.treasury.currentRound) historyParams.set('round', d.treasury.currentRound.id);
@@ -82,6 +83,19 @@ export function LotteryCard({ d }: { d: DemoDashboard }) {
       {x('Participar da Loteria de queima', 'Join the Burn Lottery', 'Participar en la Lotería de quema')}
     </label>
     <LotteryEntries lot={lot} />
+    <div className="grid gap-1 rounded-xl border border-[#F4F1E8]/25 px-3 py-2" data-testid="lottery-share" role="group" aria-label={x('Sua participação nos números ativos', 'Your share of active numbers', 'Tu participación en números activos')}>
+      <div className="text-xs font-bold text-[#C5D2F1]">{x('Sua parcela dos números ativos', 'Your share of active numbers', 'Tu parte de los números activos')}</div>
+      {Number.isFinite(ownN) && Number.isFinite(totalN) && Number.isFinite(pct) ? <>
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span className="display text-2xl font-extrabold tabular-nums text-[#F2B632]" data-testid="lottery-share-percent">{ownN > 0 && pct < 0.01 ? '<' : ''}{ownN > 0 && pct < 0.01 ? `${(0.01).toLocaleString(fl, { minimumFractionDigits: 2 })}%` : `${pct.toLocaleString(fl, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`}</span>
+        <span className="text-xs tabular-nums text-[#F4F1E8]" data-testid="lottery-share-count">{x(`${nf(fl, ownN, 0)} de ${nf(fl, totalN, 0)} números ativos`, `${nf(fl, ownN, 0)} of ${nf(fl, totalN, 0)} active numbers`, `${nf(fl, ownN, 0)} de ${nf(fl, totalN, 0)} números activos`)}</span>
+      </div>
+      <p className="text-xs text-[#C5D2F1]">{ownN === 0 ? (totalN === 0
+        ? x('Nenhum número ativo no próximo sorteio. Participe com BETTEX elegível em stake para ativar o seu.', 'No active numbers in the upcoming draw. Join with eligible staked BETTEX to activate yours.', 'No hay números activos en el próximo sorteo. Participa con BETTEX elegible en stake para activar el tuyo.')
+        : x('Você não tem números ativos. Participe com BETTEX elegível em stake para entrar.', 'You have no active numbers. Join with eligible staked BETTEX to take part.', 'No tienes números activos. Participa con BETTEX elegible en stake para entrar.'))
+        : x('Parcela dos números ativos, não uma chance garantida de seleção ou pagamento.', 'Share of active numbers, not a guaranteed selection or payment.', 'Parte de los números activos, no una probabilidad garantizada de selección o pago.')}</p>
+      </> : <p className="text-xs text-[#C5D2F1]">{x('Participação indisponível. Aguarde a atualização dos dados.', 'Share unavailable. Waiting for updated data.', 'Participación no disponible. Espera la actualización de los datos.')}</p>}
+    </div>
     <div className="text-xs text-[#C5D2F1]"><WalletHelp id="lottery-participation" label={x('Como funciona a participação', 'How participation works', 'Cómo funciona la participación')}>
       <p>{x('Participar é opcional e exige confirmação das condições. O checkbox indica sua escolha, não uma seleção vencedora. Sem BETTEX elegível, não é possível aderir. Desmarcar interrompe a participação futura; resultados já executados permanecem no histórico.', 'Joining is optional and requires confirming the terms. The checkbox shows your choice, not a winning selection. Without eligible BETTEX, you cannot join. Unchecking stops future participation; executed results remain in history.', 'Participar es opcional y requiere confirmar las condiciones. La casilla indica tu elección, no una selección ganadora. Sin BETTEX elegible no puedes participar. Desmarcar detiene la participación futura; los resultados ejecutados permanecen en el historial.')}</p>
     </WalletHelp></div>
