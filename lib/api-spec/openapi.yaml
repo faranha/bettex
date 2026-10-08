@@ -749,6 +749,7 @@ components:
       required: [id, color, stakeUsdc, payoutUsdc, status, requestedAt, nextPlayAt]
       properties:
         id: { type: string }
+        executionMode: { type: string, enum: [testnet, simulation] }
         color: { type: string, enum: [red, black] }
         result: { type: string, enum: [red, black] }
         stakeUsdc: { type: number }
@@ -767,6 +768,7 @@ components:
       properties:
         chainId: { type: integer }
         network: { type: string }
+        executionMode: { type: string, enum: [testnet, simulation] }
         gameAddress: { type: string }
         tokenAddress: { type: string }
         treasuryAddress: { type: string }

@@ -6,11 +6,13 @@
  * OpenAPI spec version: 0.1.0
  */
 import type { Double2xPlayColor } from './double2xPlayColor';
+import type { Double2xPlayExecutionMode } from './double2xPlayExecutionMode';
 import type { Double2xPlayResult } from './double2xPlayResult';
 import type { Double2xPlayStatus } from './double2xPlayStatus';
 
 export interface Double2xPlay {
   id: string;
+  executionMode?: Double2xPlayExecutionMode;
   color: Double2xPlayColor;
   result?: Double2xPlayResult;
   stakeUsdc: number;

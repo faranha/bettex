@@ -11,6 +11,7 @@ import { scenarioStakingView } from './staking-model';
 import { WalletHistoryLink } from './WalletHistoryLink';
 import { EarningsStakingSummary } from './EarningsStakingSummary';
 import { WalletHelp } from './WalletHelp';
+import { WalletCardDetails } from './WalletCardDetails';
 
 export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet: (kind: Kind, asset: Asset) => void }) {
   const { x } = useX();
@@ -20,7 +21,7 @@ export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet
   const proj = native ? null : scenarioStakingView(d)?.timeline.projectedOwnUsdc ?? null;
   const na = x('Indisponível', 'Unavailable', 'No disponible');
   const label = x('Mover para carteira em dólares', 'Move to dollar wallet', 'Mover a cartera en dólares');
-  return <article className="grid content-start gap-3 rounded-xl border border-[#0E7C6B]/40 bg-gradient-to-br from-[#E6F4EE] to-[#CFE8DD] p-3 sm:p-4" data-testid="demo-wallet-earnings">
+  return <article className="grid self-start content-start gap-3 rounded-xl border border-[#0E7C6B]/40 bg-gradient-to-br from-[#E6F4EE] to-[#CFE8DD] p-3 sm:p-4" data-testid="demo-wallet-earnings">
     <div className="flex items-start gap-3">
       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#0E7C6B] text-white shadow-sm"><PiggyBank className="h-6 w-6" aria-hidden="true" /></span>
       <div className="min-w-0 flex-1">
@@ -34,6 +35,7 @@ export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet
       </div>
       <button type="button" onClick={() => setDbl(true)} data-testid="button-double2x-open" aria-label={x('Abrir Double 2X', 'Open Double 2X', 'Abrir Double 2X')} className="-mr-1 -mt-1 grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] sm:h-11 sm:w-11"><Double2xIcon className="h-9 w-9" /></button>
     </div>
+    <WalletCardDetails id="earnings" label={x('Detalhes da carteira de rendimentos', 'Earnings wallet details', 'Detalles de la cartera de ganancias')}>
     <dl className="grid gap-px overflow-hidden rounded-lg bg-[#0E7C6B]/20 text-xs sm:grid-cols-2">
       <div className="min-w-0 bg-[#F4FAF6] px-3 py-2">
         <dt className="flex min-w-0 items-center gap-1.5 font-bold text-[#0A6657]"><span className="h-2 w-2 shrink-0 rounded-full bg-[#0E7C6B]" aria-hidden="true" /><WalletHelp id="earnings-last" label={x('Recebido na rodada anterior', 'Received last round', 'Recibido en la ronda anterior')}>
@@ -61,6 +63,7 @@ export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet
       </WalletHelp>
     </div>
     <p className="text-[11px] text-[#3F6F63]">{x('Saldo recebido disponível; transferências apenas para a carteira em dólares.', 'Available received balance; transfers only to the dollar wallet.', 'Saldo recibido disponible; transferencias solo a la cartera en dólares.')}</p>
+    </WalletCardDetails>
     <Double2xDialog open={dbl} onOpenChange={setDbl} balanceUsdc={d.balances.receivedYield} />
   </article>;
 }

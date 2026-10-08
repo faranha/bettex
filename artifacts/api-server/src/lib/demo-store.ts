@@ -163,9 +163,10 @@ export async function loadDashboard(identity?: string | AccountIdentity, command
       const play = reserveDouble2x(account, engine, command.double2x, now);
       await appendHistory({ key: `double2x:${accountId}:${play.id}:reserved`, subject: `demo:${accountId}`,
         correlationId: `double2x:${accountId}:${play.id}`, category: "financial", kind: "double2x_reserved",
-        state: "pending", actor: "user", asset: "USDC", environment: "simulation", source: "double2x_testnet_mirror",
+        state: "pending", actor: "user", asset: "USDC", environment: "simulation", source: play.executionMode === "simulation" ? "double2x_simulation" : "double2x_testnet_mirror",
         data: { sourceWallet: "earnings", quantityUnits: decimalUnits(String(play.stakeUsdc), 6),
-          decimals: "6", color: play.color, chainId: "421614", feeUnits: "0" } }, tx);
+          decimals: "6", color: play.color, ...(play.executionMode ? { executionMode: play.executionMode } : {}),
+          chainId: play.executionMode === "simulation" ? "0" : "421614", feeUnits: "0" } }, tx);
     }
     // Recover legacy JSON facts once, explicitly non-authoritative simulation.
     await recordDemoMovements(tx, accountId, [], initialHistory);

@@ -83,4 +83,4 @@
 - [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.
 - [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.
 - [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.
-- [Double 2X game](double-2x-game.md) — on-chain red/black earnings game; 100% RTP, rolling 24-hour limit, treasury-funded wins and treasury-received losses.
+- [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.

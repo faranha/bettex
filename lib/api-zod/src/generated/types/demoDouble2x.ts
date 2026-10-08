@@ -5,12 +5,14 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { DemoDouble2xExecutionMode } from './demoDouble2xExecutionMode';
 import type { DemoDouble2xReason } from './demoDouble2xReason';
 import type { Double2xPlay } from './double2xPlay';
 
 export interface DemoDouble2x {
   chainId: number;
   network: string;
+  executionMode?: DemoDouble2xExecutionMode;
   gameAddress?: string;
   tokenAddress?: string;
   treasuryAddress?: string;
