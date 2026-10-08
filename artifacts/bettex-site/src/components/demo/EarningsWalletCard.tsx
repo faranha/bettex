@@ -21,7 +21,7 @@ export function EarningsWalletCard({ d, onWallet }: { d: DemoDashboard; onWallet
   const proj = native ? null : scenarioStakingView(d)?.timeline.projectedOwnUsdc ?? null;
   const na = x('Indisponível', 'Unavailable', 'No disponible');
   const label = x('Mover para carteira em dólares', 'Move to dollar wallet', 'Mover a cartera en dólares');
-  return <article className="grid self-start content-start gap-3 rounded-xl border border-[#0E7C6B]/40 bg-gradient-to-br from-[#E6F4EE] to-[#CFE8DD] p-3 sm:p-4" data-testid="demo-wallet-earnings">
+  return <article className="flex flex-col gap-3 rounded-xl border border-[#0E7C6B]/40 bg-gradient-to-br from-[#E6F4EE] to-[#CFE8DD] p-3 sm:p-4" data-testid="demo-wallet-earnings">
     <div className="flex items-start gap-3">
       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#0E7C6B] text-white shadow-sm"><PiggyBank className="h-6 w-6" aria-hidden="true" /></span>
       <div className="min-w-0 flex-1">

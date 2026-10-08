@@ -14,3 +14,9 @@ Use independent expandable accordions for the Earnings wallet and Burn Lottery c
 **Why:** The creator requested “add an accordeon here for both, so they can be expanded” alongside an image of these two cards.
 
 **How to apply:** Preserve the green/dark card identities and all existing information and actions; expanding one must not automatically expand the other.
+
+The Earnings wallet and Burn Lottery blocks must have the same height when side by side.
+
+**Why:** The creator explicitly corrected the compact layout: “os dois blocos devem ter a mesma altura”.
+
+**How to apply:** Equalize the paired card heights without coupling their independent accordion states; keep mobile stacking responsive.
