@@ -23,8 +23,8 @@ try {
       throw new Error(`The operational live-market dashboard belongs in the app, not the homepage: ${route}`);
     }
     if (/^\/(?:(?:en|es)\/)?app(?:\/|$)/.test(route) &&
-      (!body.includes('demo-root') || body.includes('site-footer') || !body.includes('data-testid="app-header"') || body.includes('data-testid="text-greeting-name"') || body.includes('data-testid="reset-demo-session"'))) {
-      throw new Error(`Demo SSR must render only a loading shell, never a visitor's account or session controls: ${route}`);
+      (!body.includes('data-testid="interface-demo-page"') || !body.includes('data-testid="app-header"') || body.includes('data-testid="reset-demo-session"'))) {
+      throw new Error(`Demo SSR must render the local visual fixture, never an operational session: ${route}`);
     }
     const directory = path.join(output, route === '/' ? '' : route.slice(1));
     await mkdir(directory, { recursive: true });

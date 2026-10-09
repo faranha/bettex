@@ -36,7 +36,7 @@ export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; s
   return <section className="dcard grid gap-4 p-4 sm:p-5" data-testid="staking-corridor" aria-label={x('Staking', 'Staking', 'Staking')}>
     <header className="flex flex-wrap items-start justify-between gap-2">
       <h2 className="display flex items-center gap-2 text-lg font-extrabold"><span className="flex">{[0, 1, 2, 3, 4].map(i => coin(i < lit, i))}</span>
-        <Term tip={x('Elegibilidade em autocustódia, não é um cofre bloqueado. Seus BETTEX continuam na sua carteira.', 'Self-custody eligibility, not a locked vault. Your BETTEX stay in your wallet.', 'Elegibilidad en autocustodia, no es una bóveda bloqueada. Tus BETTEX siguen en tu cartera.')}>{x('Staking', 'Staking', 'Staking')}</Term></h2>
+        <Term tip={x('Elegibilidade em autocustódia, não é um cofre bloqueado. Seus BETTEX continuam na sua carteira.', 'Self-custody eligibility, not a locked vault. Your BETTEX stay in your wallet.', 'Elegibilidad en autocustodia, no es una bóveda bloqueada. Tus BETTEX siguen en tu cartera.')}>{x('Staking', 'Staking', 'Participación')}</Term></h2>
       <div className="flex flex-wrap gap-1.5 text-[11px] font-bold">
         {!native && d.treasury.currentRound && <RoundIdentity id={d.treasury.currentRound.id} testId="staking-round-id" />}
         <span className="mono inline-flex items-center gap-1 rounded-full bg-[#F0E9DA] px-2.5 py-1 text-[#5B6B85]" data-testid="staking-source"><Database className="h-3 w-3" aria-hidden="true" />{native ? v.readingAt ? x('EVM local · 31337', 'Local EVM · 31337', 'EVM local · 31337') : x('Carteira nativa', 'Native wallet', 'Cartera nativa') : x('Ambiente de teste', 'Test environment', 'Entorno de prueba')}</span>

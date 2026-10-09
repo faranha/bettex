@@ -86,10 +86,9 @@ function ProviderWithRoutes({ children }: { children: ReactNode }) {
 
 export function AccountAuthProvider({ children }: { children: ReactNode }) {
   // Public prerendering has no browser session or Clerk provider.
-  return typeof window === 'undefined' ? children : <ProviderWithRoutes>{children}</ProviderWithRoutes>;
+  return children;
 }
 
 export function AuthenticatedHome({ children }: { children: ReactNode }) {
-  const { isLoaded, isSignedIn } = useUser();
-  return isLoaded && isSignedIn ? <Redirect to="/demo" /> : children;
+  return children;
 }

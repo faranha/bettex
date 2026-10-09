@@ -5,6 +5,8 @@ import assert from 'node:assert/strict';
 
 const root = path.resolve(import.meta.dirname, '../src/components/demo');
 const files = fs.readdirSync(root).filter(f => /\.(ts|tsx)$/.test(f) && !f.endsWith('.test.ts')).map(f => path.join(root, f));
+const interfaceRoot = path.resolve(root, '../interface-demo');
+files.push(...fs.readdirSync(interfaceRoot).filter(f => /\.(ts|tsx)$/.test(f)).map(f => path.join(interfaceRoot, f)));
 files.push(path.resolve(root, '../../pages/demo.tsx'));
 files.push(path.resolve(root, '../../pages/auth.tsx'));
 files.push(path.resolve(root, '../history/WalletStatement.tsx'));

@@ -30,6 +30,10 @@ app.use(
   }),
 );
 app.disable("x-powered-by");
+app.use("/api", (req, res, next) => {
+  if (["GET", "HEAD", "OPTIONS"].includes(req.method)) return next();
+  res.status(403).json({ error: "interface_demo_only", message: "Demonstração visual: operações desativadas." });
+});
 app.use("/api", requestBoundary);
 app.use(cors({ credentials: true, origin: (origin, callback) => callback(null, allowedOrigin(origin)) }));
 app.use(CLERK_PROXY_PATH, clerkProxyMiddleware());

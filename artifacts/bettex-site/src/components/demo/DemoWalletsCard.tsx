@@ -8,6 +8,7 @@ import { TokenIcon } from './TokenIcon';
 import { BookUser, KeyRound } from 'lucide-react';
 import { BurnedTokensCard } from './BurnedTokensCard';
 import { EarningsWalletCard } from './EarningsWalletCard';
+import { WalletCardDetailsPair } from './WalletCardDetails';
 import { WalletHistoryLink } from './WalletHistoryLink';
 import { WalletHelp } from './WalletHelp';
 import { WalletActionsHelp } from './WalletActionsHelp';
@@ -36,6 +37,6 @@ export function DemoWalletsCard({ d, onWallet, showReceivedYield = false, showHe
         <WalletAction kind="swap" asset={asset} id={`demo-swap-${asset}`} label={x('Converter', 'Convert', 'Convertir')} onOpen={onWallet} />
         <WalletHistoryLink wallet={asset} id={`button-wallet-history-${asset.toLowerCase()}`} />
         <WalletActionsHelp asset={asset} exportAvailable={!!onExport} /></div>
-    </article>)}<EarningsWalletCard d={d} onWallet={onWallet} /><BurnedTokensCard d={d} /></div>
+    </article>)}<WalletCardDetailsPair><EarningsWalletCard d={d} onWallet={onWallet} /><BurnedTokensCard d={d} /></WalletCardDetailsPair></div>
   </section>;
 }

@@ -5,7 +5,7 @@ import { useGetDemoTestnet } from '@workspace/api-client-react';
 import { ExternalLink } from 'lucide-react';
 
 /** LIVE requires verified public bytecode, operator binding and a recent confirmed checkpoint. */
-export function DemoEnvironmentBanner({ actions }: { actions?: ReactNode } = {}) {
+function OperationalTestnetBanner({ actions }: { actions?: ReactNode } = {}) {
   const { x } = useX();
   const query = useGetDemoTestnet({ query: { refetchInterval: 30_000, staleTime: 10_000, retry: 1 } });
   const data = query.data;
@@ -40,6 +40,16 @@ export function DemoEnvironmentBanner({ actions }: { actions?: ReactNode } = {})
         <span className="sr-only sm:not-sr-only">{x('Ver contrato público', 'View public contract', 'Ver contrato público')}</span><ExternalLink className="h-4 w-4 sm:hidden" aria-hidden="true" />
       </a>}
     {actions && <div className="ml-auto shrink-0">{actions}</div>}
+    </div>
+  </section>;
+}
+export function DemoEnvironmentBanner({ actions }: { actions?: ReactNode } = {}) {
+  const { x } = useX();
+  return <section data-testid="banner-demo" className="border-b border-[#34445B] bg-[#1B2A41] px-3 py-2 text-[#F5F1E8]">
+    <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-2 text-[11px]">
+      <span className="font-extrabold text-[#83ECC2]">{x('DEMO · INTERFACE VISUAL', 'DEMO · VISUAL INTERFACE', 'DEMO · INTERFAZ VISUAL')}</span>
+      <span className="rounded-full border border-white/20 px-2 py-1 font-bold">{x('SEM DINHEIRO REAL', 'NO REAL MONEY', 'SIN DINERO REAL')}</span>
+      <p className="text-[#D6DEEB]">{x('Dados ilustrativos · Software em desenvolvimento.', 'Illustrative data · Software in development.', 'Datos ilustrativos · Software en desarrollo.')}</p>{actions}
     </div>
   </section>;
 }
