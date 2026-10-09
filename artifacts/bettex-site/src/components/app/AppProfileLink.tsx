@@ -7,20 +7,15 @@ import { useX } from '@/components/demo/ui';
 import { demoPath } from '@/components/demo/demo-navigation';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useAppLogout } from './use-app-logout';
+import { openDemoNotice, visualDashboard } from '@/components/interface-demo/runtime';
 
 export function AppProfileLink() {
   const { x, loc } = useX();
   const [path] = useLocation();
   const [open, setOpen] = useState(false);
-  const { logout, busy, failed } = useAppLogout();
+  const logout = openDemoNotice, busy = false, failed = false;
   useEffect(() => { setOpen(false); }, [path, loc]);
-  const { data } = useGetDemoDashboard({ query: {
-    queryKey: getGetDemoDashboardQueryKey(),
-    enabled: typeof window !== 'undefined',
-    refetchInterval: 4000,
-    refetchIntervalInBackground: false,
-    retry: 1,
-  } });
+  const data = visualDashboard();
   const name = data?.profile.nickname?.trim() || data?.profile.name;
   const options = [
     { tab: 'profile', icon: UserRound, label: x('Perfil', 'Profile', 'Perfil') },

@@ -16,7 +16,7 @@ function add(value) {
 function scan(file) {
   // The isolated demo owns three-language tuples, not the site catalogue.
   // Its JSX bypasses the site's runtime and is audited by check-demo-locales.
-  if (file.includes('/components/demo/') || file.includes('/components/account/') ||
+  if (file.includes('/components/demo/') || file.includes('/components/interface-demo/') || file.includes('/components/account/') ||
     file.includes('/components/alpha-trading/') || file.includes('/components/simulation/') ||
     file.includes('/components/agent-operations/') || file.includes('/components/live-markets/') ||
     file.endsWith('/pages/demo.tsx') || file.endsWith('/pages/auth.tsx') ||

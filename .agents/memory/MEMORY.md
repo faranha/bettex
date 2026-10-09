@@ -1,3 +1,5 @@
+- [Disponibilidade dos agentes](agent-trading-availability.md) — home e Central da IA: Cripto aberta por padrão; Esportes, Predictions e Cassino em breve.
+- [Demo exclusivamente visual](interface-visual-demo.md) — instrução atual substitui operação, testnet e emulação persistida; ações operacionais abrem aviso com comunidade.
 - [BETTEX checkout eligibility](bettex-checkout-eligibility.md) — confirm processor approval for investment tokens before wiring real purchases.
 - [Raster asset inspection](raster-asset-inspection.md) — verify logo identity and real alpha; use font-free contact sheets.
 - [Artifact validation environment](artifact-validation-env.md) — manual builds need artifact-scoped runtime variables; do not persist them globally.
@@ -35,7 +37,7 @@
 - [Navegação do app](demo-navigation.md) — replit.md define as áreas atuais; preservar extrato sem cartões duplicados, acesso compacto ao perfil e aviso do demo.
 - [Separação site/app](site-app-separation.md) — experiências distintas no mesmo projeto; voltar ao site precisa funcionar também para usuários autenticados.
 - [Ações da carteira](wallet-action-context.md) — entradas e saídas junto de cada saldo; USDC/BETTEX com conversão nos dois sentidos; saque não limitado ao rendimento.
-- [Símbolos das carteiras](wallet-card-symbols.md) — rendimentos em bloco único compacto verde com cofrinho; fogo no bloco separado de tokens queimados.
+- [Dupla das carteiras](wallet-card-symbols.md) — rendimentos verdes com cofrinho e loteria com fogo; os dois cartões expandem e recolhem juntos.
 - [Staking no aplicativo](app-staking-presentation.md) — corredor horizontal no dashboard e Carteiras; posição, pool, lucro, alocação e gráficos; moedas, não fogo.
 - [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.

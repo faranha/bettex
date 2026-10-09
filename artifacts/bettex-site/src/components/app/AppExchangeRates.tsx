@@ -2,17 +2,12 @@
 import { useGetDemoDashboard, getGetDemoDashboardQueryKey } from '@workspace/api-client-react';
 import { useX } from '@/components/demo/ui';
 import { exchangeRates } from './exchange-rates';
+import { visualDashboard } from '@/components/interface-demo/runtime';
 
 export function AppExchangeRates({ className = '' }: { className?: string }) {
   const { x, n } = useX();
-  const query = useGetDemoDashboard({ query: {
-    queryKey: getGetDemoDashboardQueryKey(),
-    enabled: typeof window !== 'undefined',
-    refetchInterval: 4000,
-    refetchIntervalInBackground: false,
-    retry: 1,
-  } });
-  const rates = query.isError ? null : exchangeRates(query.data?.balances);
+  const query = { isPending: false };
+  const rates = exchangeRates(visualDashboard().balances);
   const brl = (value: number) => value.toLocaleString('pt-BR', {
     style: 'currency', currency: 'BRL', minimumFractionDigits: 4, maximumFractionDigits: 4,
   });

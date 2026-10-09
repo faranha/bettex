@@ -9,23 +9,23 @@ O criador pediu que a carteira de rendimentos seja um único bloco compacto, ver
 
 **How to apply:** Aplicar essa distinção aos cartões das carteiras. Compactar sem misturar saldo recebido com projeção estimada. Para os símbolos do staking, seguir a regra específica em app-staking-presentation.md.
 
-Use independent expandable accordions for the Earnings wallet and Burn Lottery cards.
+Os cartões de Rendimentos e Loteria são uma dupla: expandir ou recolher qualquer um deve expandir ou recolher os dois.
 
-**Why:** The creator requested “add an accordeon here for both, so they can be expanded” alongside an image of these two cards.
+**Why:** O criador corrigiu explicitamente a interpretação anterior de sanfonas independentes: “Se um expandir, o outro também tem que expandir, porque eles andam juntos. Eles são uma dupla”.
 
-**How to apply:** Preserve the green/dark card identities and all existing information and actions; expanding one must not automatically expand the other.
+**How to apply:** Compartilhar o estado de abertura entre os dois cartões apresentados juntos, também no celular. Preservar as identidades verde/escura, informações, formulários e ações. Rendimentos quando apresentado sozinho não deve depender de outro cartão.
 
 The Earnings wallet and Burn Lottery blocks must have the same height when side by side.
 
 **Why:** The creator explicitly corrected the compact layout: “os dois blocos devem ter a mesma altura”.
 
-**How to apply:** Equalize the paired card heights without coupling their independent accordion states; keep mobile stacking responsive.
+**How to apply:** Equalize the paired card heights with synchronized accordion states; keep mobile stacking responsive.
 
 Os botões de expandir ficam abaixo dos cabeçalhos, mesmo quando o cartão vizinho está aberto.
 
 **Why:** O botão da loteria era empurrado para o rodapé do cartão esticado; o espaço vazio fazia parecer que seu conteúdo tinha desaparecido ao expandir os cartões.
 
-**How to apply:** Não usar alinhamento ao rodapé para as sanfonas. Preservar a abertura independente, os formulários montados e a visibilidade dos controles durante atualizações do demo.
+**How to apply:** Não usar alinhamento ao rodapé para as sanfonas. Preservar a abertura sincronizada da dupla, os formulários montados e a visibilidade dos controles durante atualizações do demo.
 
 As duas áreas devem ter estilo semelhante, fontes de tamanhos equivalentes e um porquinho maior e mais animado nos rendimentos.
 

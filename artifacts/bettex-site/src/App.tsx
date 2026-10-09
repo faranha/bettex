@@ -1,5 +1,10 @@
 import { type ReactNode, type CSSProperties, useEffect, useRef, useState } from 'react';
 import { PageMetadata } from '@/components/PageMetadata';
+import { InterfaceDemoPage } from '@/components/interface-demo/InterfaceDemoPage';
+import { InterfaceDemoProvider } from '@/components/interface-demo/InterfaceDemoProvider';
+import { DemoActionNotice } from '@/components/interface-demo/DemoActionNotice';
+import { installVisualDemoTransport } from '@/components/interface-demo/runtime';
+installVisualDemoTransport();
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useLocale, localizedUrl, t } from '@/lib/i18n';
 import { ArrowDown, ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
@@ -348,10 +353,7 @@ function Demo() {
   if (isRemovedSimulationPath(path)) return <Redirect to={`/app${typeof window === 'undefined' ? '' : window.location.search}`} />;
   if (path === '/app/login') return <Redirect to="/sign-in" />;
   if (!demoView(path)) return <NotFound />;
-  const shell = <div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><DemoPage /><SiteFooter compact /></div>;
-  if (typeof window === 'undefined') return <div className="min-h-[100dvh] bg-[#FBF8F0]" data-testid="app-shell"><header className="app-header" data-testid="app-header"><span>BETTEX</span></header><main className="demo-root min-h-96" aria-busy="true"><h1 className="sr-only">BETTEX</h1></main></div>;
-  if (import.meta.env.DEV && new URLSearchParams(window.location.search).get('preview') === 'public') return shell;
-  return <AppSessionGate>{shell}</AppSessionGate>;
+  return <InterfaceDemoProvider><div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><InterfaceDemoPage /><SiteFooter compact /></div></InterfaceDemoProvider>;
 }
 
 function Documentation() {
@@ -367,11 +369,12 @@ function HomeRoute() {
 }
 
 function SignInEntry() {
-  return <><SignInPage /><SiteFooter compact /></>;
+  const [, navigate] = useLocation();
+  return <><main className="min-h-[100dvh] bg-[#FBF8F0]"><h1 className="sr-only">BETTEX</h1></main><DemoActionNotice open onOpenChange={open => { if (!open) navigate('/app'); }} /></>;
 }
 
 function SignUpEntry() {
-  return <><SignUpPage /><SiteFooter compact /></>;
+  return <SignInEntry />;
 }
 
 function LegacyDemoRedirect() {

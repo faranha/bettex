@@ -37,7 +37,7 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
       <Link href={demoPath('home', loc)} aria-label={x('BETTEX, meu painel', 'BETTEX, my dashboard', 'BETTEX, mi panel')} data-testid="link-app-brand" className="flex min-w-0 shrink-0 items-center gap-2 rounded-lg">
         <BettexMark className="h-7 w-7" />
         <span className="hidden text-base font-extrabold tracking-wide text-[#1B2A41] sm:inline">BETTEX</span>
-        <span className="hidden rounded-full border border-[#0E7C6B] bg-[#E9EEE5] px-2 py-0.5 text-[10px] font-extrabold tracking-widest text-[#0A6657] sm:inline">{x('ALFA', 'ALPHA', 'ALFA')}</span>
+        <span className="hidden rounded-full border border-[#0E7C6B] bg-[#E9EEE5] px-2 py-0.5 text-[10px] font-extrabold tracking-widest text-[#0A6657] sm:inline">{x('DEMO', 'DEMO', 'DEMO')}</span>
       </Link>
       <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
         <AppProfileLink />

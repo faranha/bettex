@@ -25,7 +25,6 @@ app.listen(port, (err) => {
   }
 
   logger.info({ port }, "Server listening");
-  startDemoScripts();
-  startNativeHistoryObserver();
-  startAlphaScripts();
+  // Interface-only demo: retained operational implementations are not started.
+  // Existing records are preserved; no scheduled financial or agent writes.
 });
