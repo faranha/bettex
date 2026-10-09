@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 2 /Kids [4 0 R 6 0 R] >>
+<< /Type /Pages /Count 3 /Kids [4 0 R 6 0 R 8 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,10 +12,46 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3035 >>
+<< /Length 2929 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — entidad y reglas) Tj T*
+() Tj T*
+(Financiación: origen y destino de los recursos) Tj T*
+() Tj T*
+(Los aportes de inversores ángeles destinan el 100% de los recursos a producto, tecnología y) Tj T*
+(marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone) Tj T*
+(un reparto de financiación: los términos identifican origen, destino y derechos.) Tj T*
+() Tj T*
+(El precio de la venta pública en USDC va íntegramente a la tesorería; la tarifa de servicio) Tj T*
+(separada va a la cuenta operativa. La reventa pertenece al vendedor y no genera nueva captación) Tj T*
+(ni beneficio de la tesorería. Capital, ingresos y resultados no son equivalentes.) Tj T*
+() Tj T*
+(Burn Lottery y Double 2X) Tj T*
+() Tj T*
+(Burn Lottery: un número gratuito por cartera con BETTEX en staking; entradas extra pagadas en) Tj T*
+(BETTEX y quemadas íntegramente, sin financiar premios ni ingresos operativos. No hay límite de) Tj T*
+(negocio de números. El pago es una salida de BETTEX: reinicia todo el peso previo y cancela) Tj T*
+(todos los créditos anteriores aún no pagados de la ronda; el USDC recibido sigue siendo) Tj T*
+(personal.) Tj T*
+() Tj T*
+(Double 2X: juego opcional rojo o negro con USDC de rendimientos ya recibidos, sin usar créditos) Tj T*
+(pendientes. Una jugada cada 24 horas corridas, resultado 50/50 y sin tarifa del juego. Con 10) Tj T*
+(USDC jugados, ganar devuelve 20 en total, ganancia neta de 10 pagada por la tesorería; perder) Tj T*
+(devuelve cero y envía los 10 a la tesorería. Un RTP teórico del 100% no garantiza ganancias por) Tj T*
+(jugada.) Tj T*
+() Tj T*
+(Las reglas de la lotería deben identificar precio, premio, financiación, plazo y probabilidades) Tj T*
+(antes de aceptar entradas. Los juegos no son estrategias de inversión ni promesas de) Tj T*
+(rendimiento; los resultados simulados no prueban ejecución, aleatoriedad pública ni) Tj T*
+(liquidación.) Tj T*
+() Tj T*
+(Ronda operativa y demostración) Tj T*
+() Tj T*
+(El modelo operativo tiene rondas diarias UTC. El demo visual usa un guion distinto, de las) Tj T*
+(16:00 a las 16:00 de São Paulo durante 24 horas reales, sin dinero real ni operaciones. No es) Tj T*
+(una conversión de medianoche UTC ni un cambio de contratos. Las pestañas por mercado no crean) Tj T*
+(pools de staking independientes.) Tj T*
 () Tj T*
 (Empresa y administración) Tj T*
 () Tj T*
@@ -27,6 +63,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (fundador en modelo full stack AI, sin empleados. Servicios externos especializados son) Tj T*
 (contratados por necesidad, no posiciones internas.) Tj T*
 () Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 3251 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (La empresa reúne el token, la aplicación, la tesorería, las inversiones y las obligaciones del) Tj T*
 (programa. El nombre final, la forma societaria y la jurisdicción forman parte de la) Tj T*
 (formalización. Los titulares poseen tokens y derechos del programa, no acciones, voto) Tj T*
@@ -63,16 +109,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Los tributos imputables a la entidad son determinados, descontados y pagados según la) Tj T*
 (obligación aplicable antes de la ganancia elegible y split. Las retenciones aplicables se) Tj T*
-ET
-endstream
-endobj
-6 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
-endobj
-7 0 obj
-<< /Length 1702 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (resuelven antes del crédito líquido. La provisión no es pago; contabilizar y pagar la misma) Tj T*
 (obligación no permite doble deducción. No existe exención personal universal.) Tj T*
 () Tj T*
@@ -85,6 +121,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Las políticas evolucionan por versiones aprobadas. La administración define la política; el) Tj T*
 (multisig 2 de 3 controla la custodia; los ejecutores actúan dentro de los mandatos. Los cambios) Tj T*
 (sensibles esperan al menos 24h; la rutina ya mandatada no exige nueva firma por operación. La) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 883 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (IA no amplía los propios permisos.) Tj T*
 () Tj T*
 (Tesorería, caja operativa, billetera exclusiva de recompra y billeteras personales tienen) Tj T*
@@ -102,16 +148,18 @@ ET
 endstream
 endobj
 xref
-0 8
+0 10
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000218 00000 n 
-0000000344 00000 n 
-0000003431 00000 n 
-0000003557 00000 n 
-trailer << /Size 8 /Root 1 0 R >>
+0000000127 00000 n 
+0000000224 00000 n 
+0000000350 00000 n 
+0000003331 00000 n 
+0000003457 00000 n 
+0000006760 00000 n 
+0000006886 00000 n 
+trailer << /Size 10 /Root 1 0 R >>
 startxref
-5311
+7820
 %%EOF

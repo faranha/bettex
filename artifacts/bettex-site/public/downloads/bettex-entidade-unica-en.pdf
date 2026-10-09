@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 2 /Kids [4 0 R 6 0 R] >>
+<< /Type /Pages /Count 3 /Kids [4 0 R 6 0 R 8 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,10 +12,43 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2934 >>
+<< /Length 2953 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — entity and rules) Tj T*
+() Tj T*
+(Financing: sources and uses of funds) Tj T*
+() Tj T*
+(Angel contributions allocate 100% of funds to product, technology and marketing, with no) Tj T*
+(founder salaries or withdrawals. The 15% token allocation does not impose a funding split:) Tj T*
+(agreements identify sources, uses and rights.) Tj T*
+() Tj T*
+(The USDC public sale price goes entirely to the treasury; a separate service fee goes to the) Tj T*
+(operating account. Resale proceeds belong to the seller and create no new funding or treasury) Tj T*
+(profit. Capital, revenue and profit are not equivalent.) Tj T*
+() Tj T*
+(Burn Lottery and Double 2X) Tj T*
+() Tj T*
+(Burn Lottery: one free number per wallet with staked BETTEX; extra entries paid in BETTEX and) Tj T*
+(fully burned, funding neither prizes nor operating revenue. There is no business cap on) Tj T*
+(numbers. Payment is a BETTEX exit: all prior weight resets and all prior unpaid round credits) Tj T*
+(are cancelled; received USDC remains personal.) Tj T*
+() Tj T*
+(Double 2X: optional red or black game using USDC earnings already received, without pending) Tj T*
+(credits. One play per rolling 24 hours, 50/50 outcome and no game fee. With 10 USDC played, a) Tj T*
+(win returns 20 in total, a net gain of 10 paid by the treasury; a loss returns zero and sends) Tj T*
+(the 10 to the treasury. A theoretical 100% RTP does not guarantee gains per play.) Tj T*
+() Tj T*
+(Lottery rules must identify price, prize, funding, timing and odds before accepting entries.) Tj T*
+(The games are neither investment strategies nor promises of yield; simulated results do not) Tj T*
+(prove execution, public randomness or settlement.) Tj T*
+() Tj T*
+(Operational round and demonstration) Tj T*
+() Tj T*
+(The operational model has daily UTC rounds. The visual demo uses a separate storyline from) Tj T*
+(16:00 to 16:00 São Paulo time over 24 real hours, with no real money or operations. It is not a) Tj T*
+(conversion of UTC midnight or a change to contracts. Market tabs do not create independent) Tj T*
+(staking pools.) Tj T*
 () Tj T*
 (Company and administration) Tj T*
 () Tj T*
@@ -30,6 +63,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (The company brings together the token, application, treasury, investments, and program) Tj T*
 (obligations. Final name, corporate structure, and jurisdiction are part of the formalization.) Tj T*
 (Holders own tokens and program rights, not shares, corporate voting, or a redeemable fraction) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 2997 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (of the treasury.) Tj T*
 () Tj T*
 (The mission expands alternatives for economic participation during the transition of AI and) Tj T*
@@ -63,16 +106,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Taxes attributable to the entity are calculated, deducted, and paid according to the applicable) Tj T*
 (obligation before eligible profit and split. Applicable withholdings are resolved before the) Tj T*
-ET
-endstream
-endobj
-6 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
-endobj
-7 0 obj
-<< /Length 1663 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (net credit. Provision is not payment; accounting for and paying the same obligation does not) Tj T*
 (allow double deduction. There is no universal personal exemption.) Tj T*
 () Tj T*
@@ -88,6 +121,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (permissions.) Tj T*
 () Tj T*
 (Treasury, operational cash, exclusive buyback wallet, and personal wallets have their own) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 733 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (boundaries. Defensive reserve follows the approved policy, without a general minimum fixed at) Tj T*
 (50%. New operations require independent risk, availability, and reconciliation.) Tj T*
 () Tj T*
@@ -102,16 +145,18 @@ ET
 endstream
 endobj
 xref
-0 8
+0 10
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000121 00000 n 
-0000000218 00000 n 
-0000000344 00000 n 
-0000003330 00000 n 
-0000003456 00000 n 
-trailer << /Size 8 /Root 1 0 R >>
+0000000127 00000 n 
+0000000224 00000 n 
+0000000350 00000 n 
+0000003355 00000 n 
+0000003481 00000 n 
+0000006530 00000 n 
+0000006656 00000 n 
+trailer << /Size 10 /Root 1 0 R >>
 startxref
-5171
+7440
 %%EOF

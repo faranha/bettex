@@ -134,3 +134,9 @@ Isolated application screens with explicit PT/EN/ES tuples must use the tuple au
 **Why:** Scanning all three literal alternatives as catalogue source strings creates false translation gaps, including demands to translate English into English. Excluding a screen without adding it to the tuple audit would instead leave it unchecked.
 
 **How to apply:** When extending the isolated app UI, include the new surface in its three-language/JSX audit and exclude it from the prose catalogue extractor together. Verify the full build, not only TypeScript.
+
+An already-localized parent does not disable eager translation of JSX created for its descendants.
+
+**Why:** Explicit PT/EN/ES copy passed source coverage and TypeScript but failed English prerendering: descendant JSX had already tried to translate its English text before the parent exemption was evaluated.
+
+**How to apply:** Fully self-localized components should use the React JSX runtime and translate all visible copy themselves, including shared strings. Mixed components can exempt individual localized text elements. A root-only exemption is insufficient; verify rendered locales.

@@ -3,13 +3,17 @@ import { StakingSchematic } from './docs-diagrams/DocSchematics';
 import { BettexFlow } from './architecture/BettexArchitecture';
 import { distributionRemainderRule } from '@/lib/staking-rounding-policy';
 import { independentRoundRule, retainedRoundProfitRule, closedRoundPaymentRule } from '@/lib/distribution-round-policy';
+import { useLocale } from '@/lib/i18n';
 
 export function StakingDistribution() {
+  const locale = useLocale();
+  const x = (pt: string, en: string, es: string) => locale === 'en' ? en : locale === 'es' ? es : pt;
   return <section id="documentacao-rateio" aria-labelledby="rateio-title">
     <h3 id="rateio-title" className="whitepaper__subhead">Elegibilidade, rodada e peso</h3>
     <div className="whitepaper__prose">
       <p id="documentacao-rodadas-independentes"><strong>{independentRoundRule}</strong></p>
       <p>A rodada diária vai de 00h00 até 00h00 do dia seguinte em UTC. O encerramento pertence à rodada seguinte, sem tempo contado duas vezes. Todo BETTEX disponível na carteira oficial acumula quantidade × tempo elegível desde a confirmação. Tokens não liberados e estoque institucional de venda não participam; fundador e investidores seguem os mesmos critérios dos demais titulares.</p>
+      <p data-i18n="translated">{x('O corte UTC define a rodada do modelo operacional. O roteiro visual do demo vai de 16h a 16h de São Paulo, durante 24 horas reais: é um ciclo ilustrativo distinto, não uma conversão da meia-noite UTC nem alteração dos contratos. As abas de mercado apresentam contribuições para o mesmo pool global, não pools de staking independentes.', 'The UTC cutoff defines the operational-model round. The demo storyline runs from 16:00 to 16:00 São Paulo time over 24 real hours: it is a distinct illustrative cycle, not a conversion of UTC midnight or a change to contracts. Market tabs show contributions to the same global pool, not separate staking pools.', 'El corte UTC define la ronda del modelo operativo. El guion del demo va de las 16:00 a las 16:00 de São Paulo durante 24 horas reales: es un ciclo ilustrativo distinto, no una conversión de medianoche UTC ni un cambio de contratos. Las pestañas de mercados muestran contribuciones al mismo pool global, no pools de staking independientes.')}</p>
     </div>
     <StakingSchematic />
     <h4 className="whitepaper__subhead" id="documentacao-saida-bettex">Entradas e saídas de BETTEX</h4>
