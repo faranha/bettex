@@ -70,7 +70,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3251 >>
+<< /Length 3373 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (La empresa reúne el token, la aplicación, la tesorería, las inversiones y las obligaciones del) Tj T*
@@ -99,9 +99,21 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Staking y secuencia fiscal) Tj T*
 () Tj T*
-(BETTEX disponible en la billetera oficial participa automáticamente. Peso individual = suma de) Tj T*
-(cantidad  x  tiempo elegible. Pago bruto = porción de staking  x  peso individual  /  suma de) Tj T*
-(los pesos elegibles de la propia ronda UTC.) Tj T*
+(Quien entra durante una ronda recibe cero de esa ronda, incluso sobre beneficios generados) Tj T*
+(después de su entrada, y participa solo en la próxima. El saldo confirmado y elegible se fija) Tj T*
+(al inicio; los aumentos durante la ronda solo participan en la siguiente.) Tj T*
+() Tj T*
+(Peso individual = BETTEX elegible al inicio  x  duración completa de la ronda, sin salida. Los) Tj T*
+(nuevos participantes y los saldos recibidos durante una ronda tienen peso cero en ella; los) Tj T*
+(aumentos no alteran el peso del saldo ya elegible. Cualquier salida lleva a cero todo el peso) Tj T*
+(del titular; la participación solo se reinicia en la próxima ronda. Pago bruto = porción de) Tj T*
+(staking  x  peso individual  /  suma de pesos elegibles.) Tj T*
+() Tj T*
+(Ejemplo: A empieza la ronda con 1.000 BETTEX elegibles; B recibe 1.000 a las 12:00. Con) Tj T*
+(beneficio elegible de 1.000 USDC y condiciones cumplidas, la porción de staking de 250 USDC) Tj T*
+(paga 250 a A y cero a B. En la ronda siguiente, ambos elegibles desde el inicio y sin salida) Tj T*
+(reciben 125 USDC cada uno sobre nuevo beneficio elegible de 1.000 USDC. No se recupera ningún) Tj T*
+(beneficio anterior.) Tj T*
 () Tj T*
 (Cada ronda paga o no paga, sin acumulación, reapertura o complemento futuro. Cualquier salida) Tj T*
 (BETTEX, incluso parcial, resetea el peso y cancela derechos aún no pagados. Fracciones no) Tj T*
@@ -109,6 +121,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Los tributos imputables a la entidad son determinados, descontados y pagados según la) Tj T*
 (obligación aplicable antes de la ganancia elegible y split. Las retenciones aplicables se) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 1702 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (resuelven antes del crédito líquido. La provisión no es pago; contabilizar y pagar la misma) Tj T*
 (obligación no permite doble deducción. No existe exención personal universal.) Tj T*
 () Tj T*
@@ -121,16 +143,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Las políticas evolucionan por versiones aprobadas. La administración define la política; el) Tj T*
 (multisig 2 de 3 controla la custodia; los ejecutores actúan dentro de los mandatos. Los cambios) Tj T*
 (sensibles esperan al menos 24h; la rutina ya mandatada no exige nueva firma por operación. La) Tj T*
-ET
-endstream
-endobj
-8 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
-endobj
-9 0 obj
-<< /Length 883 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (IA no amplía los propios permisos.) Tj T*
 () Tj T*
 (Tesorería, caja operativa, billetera exclusiva de recompra y billeteras personales tienen) Tj T*
@@ -157,9 +169,9 @@ xref
 0000000350 00000 n 
 0000003331 00000 n 
 0000003457 00000 n 
-0000006760 00000 n 
-0000006886 00000 n 
+0000006882 00000 n 
+0000007008 00000 n 
 trailer << /Size 10 /Root 1 0 R >>
 startxref
-7820
+8762
 %%EOF

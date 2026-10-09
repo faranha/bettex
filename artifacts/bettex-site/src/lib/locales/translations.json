@@ -20561,6 +20561,114 @@
     "en": "The operational model has daily UTC rounds. The visual demo uses a separate storyline from 16:00 to 16:00 São Paulo time over 24 real hours, with no real money or operations. It is not a conversion of UTC midnight or a change to contracts. Market tabs do not create independent staking pools.",
     "es": "El modelo operativo tiene rondas diarias UTC. El demo visual usa un guion distinto, de las 16:00 a las 16:00 de São Paulo durante 24 horas reales, sin dinero real ni operaciones. No es una conversión de medianoche UTC ni un cambio de contratos. Las pestañas por mercado no crean pools de staking independientes."
   },
+  "Quem entra durante uma rodada não recebe nenhum lucro dessa rodada, nem anterior nem posterior à entrada. A participação começa somente na próxima rodada. BETTEX recebido durante a rodada, inclusive acréscimos de saldo, só se torna elegível na abertura da rodada seguinte; o saldo já elegível não aumenta por esse acréscimo.": {
+    "en": "Anyone joining during a round receives none of that round's profit, whether generated before or after joining. Participation starts only in the next round. BETTEX received during a round, including balance increases, becomes eligible only at the next round's opening; the existing eligible balance does not increase because of that top-up.",
+    "es": "Quien entra durante una ronda no recibe ningún beneficio de esa ronda, ni anterior ni posterior a su entrada. La participación comienza solo en la próxima ronda. El BETTEX recibido durante la ronda, incluidos aumentos del saldo, solo es elegible al inicio de la ronda siguiente; el saldo ya elegible no aumenta por ese ingreso."
+  },
+  "A rodada fixa na abertura o saldo BETTEX confirmado e elegível de cada titular. Tokens bloqueados, estoque institucional e entradas posteriores ficam fora do peso dessa rodada. Sem saída, o peso usa esse saldo elegível por toda a duração da rodada; qualquer saída de BETTEX zera o peso e cancela os créditos anteriores ainda não pagos. Não há participação de meia rodada.": {
+    "en": "Each round fixes every holder's confirmed eligible BETTEX balance at opening. Locked tokens, institutional inventory and later entries are excluded from that round's weight. Without an exit, weight uses that eligible balance for the full round; any BETTEX exit resets weight to zero and cancels prior unpaid credits. There is no half-round participation.",
+    "es": "La ronda fija al inicio el saldo BETTEX confirmado y elegible de cada titular. Los tokens bloqueados, el inventario institucional y las entradas posteriores quedan fuera del peso de esa ronda. Sin salidas, el peso usa ese saldo elegible durante toda la ronda; cualquier salida de BETTEX lleva el peso a cero y cancela los créditos anteriores aún no pagados. No hay participación de media ronda."
+  },
+  "Após uma saída de BETTEX, o saldo remanescente ou uma nova entrada só volta a participar na próxima rodada, se estiver confirmado e elegível na abertura. Não há novo peso nem novos créditos na rodada da saída, e nenhum direito cancelado é recuperado.": {
+    "en": "After a BETTEX exit, the remaining balance or a new entry resumes participation only in the next round, if confirmed and eligible at opening. No new weight or credits arise in the exit round, and no cancelled entitlement is restored.",
+    "es": "Después de una salida de BETTEX, el saldo restante o una nueva entrada solo vuelve a participar en la próxima ronda, si está confirmado y es elegible al inicio. No hay nuevo peso ni nuevos créditos en la ronda de la salida, y no se recupera ningún derecho cancelado."
+  },
+  "A rodada diária vai de 00h00 até 00h00 do dia seguinte em UTC. O encerramento pertence à rodada seguinte, sem tempo contado duas vezes. Fundador e investidores seguem os mesmos critérios dos demais titulares.": {
+    "en": "The daily round runs from 00:00 to 00:00 the following day in UTC. The closing instant belongs to the next round, without double-counting time. The founder and investors follow the same criteria as other holders.",
+    "es": "La ronda diaria va de las 00:00 a las 00:00 del día siguiente en UTC. El instante de cierre pertenece a la ronda siguiente, sin contar el tiempo dos veces. El fundador y los inversores siguen los mismos criterios que los demás titulares."
+  },
+  "Durante a rodada: zero lucro; aguarda a próxima": {
+    "en": "During the round: zero profit; wait for the next",
+    "es": "Durante la ronda: cero beneficio; esperar la próxima"
+  },
+  "Elegibilidade na abertura da rodada": {
+    "en": "Eligibility at the round's opening",
+    "es": "Elegibilidad al inicio de la ronda"
+  },
+  "Saldo elegível na abertura × rodada integral": {
+    "en": "Opening eligible balance × full round",
+    "es": "Saldo elegible al inicio × ronda completa"
+  },
+  "Peso individual = BETTEX elegível na abertura × duração integral da rodada, sem saída": {
+    "en": "Individual weight = BETTEX eligible at opening × full round duration, with no exit",
+    "es": "Peso individual = BETTEX elegible al inicio × duración completa de la ronda, sin salida"
+  },
+  "Entrada durante a rodada ou qualquer saída resulta em peso zero nessa rodada. Todos usam a mesma unidade de tempo. O denominador soma apenas os pesos elegíveis; não usa a emissão, o saldo final nem o saldo de quem chegou durante a rodada.": {
+    "en": "Joining during a round or any exit results in zero weight for that round. Everyone uses the same time unit. The denominator sums only eligible weights; it uses neither issuance, final balances nor balances of those joining during the round.",
+    "es": "Entrar durante la ronda o cualquier salida resulta en peso cero en esa ronda. Todos usan la misma unidad de tiempo. El denominador suma solo los pesos elegibles; no usa la emisión, el saldo final ni el saldo de quien llegó durante la ronda."
+  },
+  "Exemplo: A tem 1.000 BETTEX elegíveis desde a abertura; B recebe 1.000 BETTEX às 12h UTC. Na rodada de 24 horas, A tem 24.000 token-horas e B tem zero. Com 1.000 USDC de lucro elegível e todas as condições atendidas, a parcela de staking é 250 USDC: A recebe 250 e B recebe zero, mesmo que o lucro tenha surgido depois das 12h. Não há crédito para B guardar.": {
+    "en": "Example: A has 1,000 BETTEX eligible from opening; B receives 1,000 BETTEX at 12:00 UTC. In the 24-hour round, A has 24,000 token-hours and B has zero. With 1,000 USDC in eligible profit and all conditions met, the staking share is 250 USDC: A receives 250 and B receives zero, even if profit arose after 12:00. B has no credit to carry forward.",
+    "es": "Ejemplo: A tiene 1.000 BETTEX elegibles desde el inicio; B recibe 1.000 BETTEX a las 12:00 UTC. En la ronda de 24 horas, A tiene 24.000 token-horas y B tiene cero. Con 1.000 USDC de beneficio elegible y todas las condiciones cumplidas, la porción de staking es de 250 USDC: A recibe 250 y B recibe cero, aunque el beneficio haya surgido después de las 12:00. B no tiene crédito para guardar."
+  },
+  "Na rodada seguinte, se ambos tiverem 1.000 BETTEX elegíveis na abertura e nenhuma saída, cada um terá 24.000 token-horas. Com novo lucro elegível de 1.000 USDC, cada um recebe 125 USDC brutos da nova parcela de 250. Isso não paga nenhum lucro da rodada anterior.": {
+    "en": "In the next round, if both have 1,000 eligible BETTEX at opening and neither exits, each has 24,000 token-hours. With new eligible profit of 1,000 USDC, each receives 125 USDC gross from the new 250 share. This pays none of the previous round's profit.",
+    "es": "En la ronda siguiente, si ambos tienen 1.000 BETTEX elegibles al inicio y no hay salidas, cada uno tiene 24.000 token-horas. Con nuevo beneficio elegible de 1.000 USDC, cada uno recibe 125 USDC brutos de la nueva porción de 250. Esto no paga ningún beneficio de la ronda anterior."
+  },
+  "O peso usa BETTEX elegível na abertura × duração integral da rodada UTC, sem saída. Quem entra durante a rodada recebe zero nessa rodada e aguarda a próxima. Qualquer saída de BETTEX, mesmo parcial, zera o peso e cancela créditos ainda não pagos. O recebido só fica disponível após confirmação e conciliação na Carteira USDC.": {
+    "en": "Weight uses BETTEX eligible at opening × full UTC round duration, with no exit. Anyone joining during the round receives zero for that round and waits for the next. Any BETTEX exit, even partial, resets weight and cancels unpaid credits. Received funds become available only after confirmation and reconciliation in the USDC Wallet.",
+    "es": "El peso usa BETTEX elegible al inicio × duración completa de la ronda UTC, sin salida. Quien entra durante la ronda recibe cero en esa ronda y espera la próxima. Cualquier salida de BETTEX, incluso parcial, lleva el peso a cero y cancela créditos aún no pagados. Lo recibido solo está disponible tras confirmación y conciliación en la Cartera USDC."
+  },
+  "O saldo deve estar confirmado e elegível na abertura. Entradas durante a rodada aguardam a próxima.": {
+    "en": "The balance must be confirmed and eligible at opening. Entries during the round wait for the next.",
+    "es": "El saldo debe estar confirmado y ser elegible al inicio. Las entradas durante la ronda esperan la próxima."
+  },
+  "O saldo de BETTEX elegível na abertura e mantido sem saída define o peso no rateio. Quem entra durante a rodada recebe zero nela e espera a próxima. Os tokens em staking não financiam as operações.": {
+    "en": "The BETTEX balance eligible at opening and held without an exit determines allocation weight. Anyone joining during a round receives zero for it and waits for the next. Staked tokens do not fund operations.",
+    "es": "El saldo BETTEX elegible al inicio y mantenido sin salida define el peso en el reparto. Quien entra durante una ronda recibe cero de ella y espera la próxima. Los tokens en staking no financian las operaciones."
+  },
+  "O split usa o lucro líquido realizado e conciliado, após custos e tributos, com reservas, liquidez e elegibilidade atendidas: 50% tesouraria, 25% staking e 25% carteira de recompra. Perdas são permanentes, sem déficit a compensar em rodadas futuras.": {
+    "en": "The split uses realized and reconciled net profit after costs and taxes, with reserve, liquidity and eligibility requirements met: 50% treasury, 25% staking and 25% buyback wallet. Losses are permanent, with no deficit to offset in future rounds.",
+    "es": "El reparto usa el beneficio neto realizado y conciliado, tras costes e impuestos, con reservas, liquidez y elegibilidad cumplidas: 50% tesorería, 25% staking y 25% cartera de recompra. Las pérdidas son permanentes, sin déficit que compensar en rondas futuras."
+  },
+  "Qualquer saída de BETTEX cancela todos os créditos anteriores ainda não pagos do ciclo, inclusive os autorizados, e zera o peso. Entradas durante a rodada só participam da próxima; não recebem nem o lucro anterior nem o posterior da rodada atual. O rateio usa apenas os saldos elegíveis na abertura e mantidos sem saída. Os ganhos são pagos sempre na Carteira USDC, nunca na Carteira BETTEX.": {
+    "en": "Any BETTEX exit cancels all prior unpaid round credits, including authorized credits, and resets weight to zero. Entries during a round participate only in the next; they receive neither earlier nor later profit from the current round. Allocation uses only balances eligible at opening and held without exits. Earnings are always paid to the USDC Wallet, never the BETTEX Wallet.",
+    "es": "Cualquier salida de BETTEX cancela todos los créditos anteriores aún no pagados del ciclo, incluidos los autorizados, y lleva el peso a cero. Las entradas durante una ronda solo participan en la próxima; no reciben ni el beneficio anterior ni el posterior de la ronda actual. El reparto usa solo saldos elegibles al inicio y mantenidos sin salida. Los rendimientos siempre se pagan en la Cartera USDC, nunca en la Cartera BETTEX."
+  },
+  "Quem entra durante a rodada espera a próxima e não recebe nenhum lucro da rodada atual.": {
+    "en": "Anyone joining during a round waits for the next and receives none of the current round's profit.",
+    "es": "Quien entra durante la ronda espera la próxima y no recibe ningún beneficio de la ronda actual."
+  },
+  "Quem entra durante a rodada recebe zero nela e espera a próxima, inclusive para lucros gerados depois da entrada. Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. Fundador e demais usuários seguem os mesmos critérios.": {
+    "en": "Anyone joining during a round receives zero for it and waits for the next, including for profit generated after joining. Locked tokens, public inventory and unavailable amounts are excluded from allocation. The founder and other users follow the same criteria.",
+    "es": "Quien entra durante una ronda recibe cero de ella y espera la próxima, incluso para beneficios generados después de su entrada. Los tokens bloqueados, el inventario público y los valores no disponibles quedan fuera del reparto. El fundador y los demás usuarios siguen los mismos criterios."
+  },
+  "A tarifa não reduz o saldo BETTEX nem a oferta. Entradas durante a rodada aguardam a próxima; não recebem nenhum lucro da rodada atual. Qualquer saída de BETTEX, mesmo parcial, zera o peso e cancela os créditos anteriores ainda não pagos. BETTEX não é capital das estratégias dos agentes nem participação societária. Os ganhos são creditados em USDC, nunca em BETTEX.": {
+    "en": "The fee does not reduce the BETTEX balance or supply. Entries during a round wait for the next; they receive none of the current round's profit. Any BETTEX exit, even partial, resets weight and cancels prior unpaid credits. BETTEX is neither agent strategy capital nor equity. Earnings are credited in USDC, never BETTEX.",
+    "es": "La tarifa no reduce el saldo BETTEX ni la oferta. Las entradas durante una ronda esperan la próxima; no reciben ningún beneficio de la ronda actual. Cualquier salida de BETTEX, incluso parcial, lleva el peso a cero y cancela créditos anteriores aún no pagados. BETTEX no es capital de las estrategias de los agentes ni participación societaria. Los rendimientos se acreditan en USDC, nunca en BETTEX."
+  },
+  "saldo BETTEX confirmado e elegível na abertura participa sem ativação adicional. Entradas durante a rodada recebem zero dela e aguardam a próxima. Qualquer saída, mesmo parcial, cancela todos os créditos anteriores ainda não pagos e zera o peso; o retorno só ocorre na próxima rodada. Ganhos são creditados apenas na Carteira USDC.": {
+    "en": "the confirmed BETTEX balance eligible at opening participates without additional activation. Entries during a round receive zero from it and wait for the next. Any exit, even partial, cancels all prior unpaid credits and resets weight; participation resumes only in the next round. Earnings are credited only to the USDC Wallet.",
+    "es": "el saldo BETTEX confirmado y elegible al inicio participa sin activación adicional. Las entradas durante una ronda reciben cero de ella y esperan la próxima. Cualquier salida, incluso parcial, cancela todos los créditos anteriores aún no pagados y lleva el peso a cero; la participación se reinicia solo en la próxima ronda. Los rendimientos se acreditan únicamente en la Cartera USDC."
+  },
+  "saldo BETTEX elegível na abertura multiplicado pela duração integral da rodada, sem saída. Novos saldos não alteram o peso da rodada atual. O peso não passa para a seguinte.": {
+    "en": "the BETTEX balance eligible at opening multiplied by the full round duration, with no exit. New balances do not alter the current round's weight. Weight does not carry over to the next.",
+    "es": "el saldo BETTEX elegible al inicio multiplicado por la duración completa de la ronda, sin salida. Los nuevos saldos no alteran el peso de la ronda actual. El peso no se traslada a la siguiente."
+  },
+  "Quem entra durante uma rodada recebe zero dessa rodada, mesmo sobre lucros gerados após a entrada, e participa somente da próxima. O saldo confirmado e elegível é fixado na abertura; acréscimos durante a rodada só participam da seguinte.": {
+    "en": "Anyone joining during a round receives zero from that round, even for profit generated after joining, and participates only in the next. The confirmed eligible balance is fixed at opening; increases during the round participate only in the following round.",
+    "es": "Quien entra durante una ronda recibe cero de esa ronda, incluso sobre beneficios generados después de su entrada, y participa solo en la próxima. El saldo confirmado y elegible se fija al inicio; los aumentos durante la ronda solo participan en la siguiente."
+  },
+  "Peso individual = BETTEX elegível na abertura × duração integral da rodada, sem saída. Entrada durante a rodada ou qualquer saída resulta em peso zero. Após saída, o saldo restante ou uma nova entrada espera a próxima rodada. Pagamento bruto = parcela de staking × peso individual ÷ soma dos pesos elegíveis.": {
+    "en": "Individual weight = BETTEX eligible at opening × full round duration, with no exit. Joining during the round or any exit results in zero weight. After an exit, the remaining balance or a new entry waits for the next round. Gross payment = staking share × individual weight ÷ sum of eligible weights.",
+    "es": "Peso individual = BETTEX elegible al inicio × duración completa de la ronda, sin salida. Entrar durante la ronda o cualquier salida resulta en peso cero. Tras una salida, el saldo restante o una nueva entrada espera la próxima ronda. Pago bruto = porción de staking × peso individual ÷ suma de pesos elegibles."
+  },
+  "Exemplo: A começa a rodada com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro elegível de 1.000 USDC e condições atendidas, a parcela de staking de 250 USDC paga 250 a A e zero a B. Na rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.": {
+    "en": "Example: A starts the round with 1,000 eligible BETTEX; B receives 1,000 at 12:00. With eligible profit of 1,000 USDC and conditions met, the 250 USDC staking share pays 250 to A and zero to B. In the next round, both eligible from opening and with no exits receive 125 USDC each from new eligible profit of 1,000 USDC. No previous profit is recovered.",
+    "es": "Ejemplo: A empieza la ronda con 1.000 BETTEX elegibles; B recibe 1.000 a las 12:00. Con beneficio elegible de 1.000 USDC y condiciones cumplidas, la porción de staking de 250 USDC paga 250 a A y cero a B. En la ronda siguiente, ambos elegibles desde el inicio y sin salida reciben 125 USDC cada uno sobre nuevo beneficio elegible de 1.000 USDC. No se recupera ningún beneficio anterior."
+  },
+  "Novos participantes e saldos recebidos durante a rodada têm peso zero nela. Um acréscimo não altera o peso do saldo já elegível na abertura; qualquer saída zera todo o peso do titular. Todos usam a mesma unidade de tempo. O denominador soma apenas os pesos elegíveis, não a emissão nem o saldo final.": {
+    "en": "New participants and balances received during a round have zero weight in it. A top-up does not change the weight of the balance already eligible at opening; any exit resets all of the holder's weight. Everyone uses the same time unit. The denominator sums only eligible weights, not issuance or final balances.",
+    "es": "Los nuevos participantes y los saldos recibidos durante una ronda tienen peso cero en ella. Un aumento no altera el peso del saldo ya elegible al inicio; cualquier salida lleva a cero todo el peso del titular. Todos usan la misma unidad de tiempo. El denominador suma solo los pesos elegibles, no la emisión ni el saldo final."
+  },
+  "Peso individual = BETTEX elegível na abertura × duração integral da rodada, sem saída. Novos participantes e saldos recebidos durante a rodada têm peso zero nela; acréscimos não alteram o peso do saldo já elegível. Qualquer saída zera todo o peso do titular; retorno só na próxima rodada. Pagamento bruto = parcela de staking × peso individual ÷ soma dos pesos elegíveis.": {
+    "en": "Individual weight = BETTEX eligible at opening × full round duration, with no exit. New participants and balances received during a round have zero weight in it; top-ups do not change the weight of the already eligible balance. Any exit resets all of the holder's weight; participation resumes only in the next round. Gross payment = staking share × individual weight ÷ sum of eligible weights.",
+    "es": "Peso individual = BETTEX elegible al inicio × duración completa de la ronda, sin salida. Los nuevos participantes y los saldos recibidos durante una ronda tienen peso cero en ella; los aumentos no alteran el peso del saldo ya elegible. Cualquier salida lleva a cero todo el peso del titular; la participación solo se reinicia en la próxima ronda. Pago bruto = porción de staking × peso individual ÷ suma de pesos elegibles."
+  },
+  "Qualquer saída de BETTEX, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado. Autorizar o direito e confirmar o recebimento em USDC são etapas distintas.": {
+    "en": "Any BETTEX exit, even partial, cancels all prior unpaid round credits and resets accumulated weight. Authorizing an entitlement and confirming USDC receipt are separate stages.",
+    "es": "Cualquier salida de BETTEX, incluso parcial, cancela todos los créditos anteriores aún no pagados del ciclo y lleva a cero el peso acumulado. Autorizar un derecho y confirmar la recepción en USDC son etapas distintas."
+  },
   "wheel": {
     "en": "wheel",
     "es": "wheel"

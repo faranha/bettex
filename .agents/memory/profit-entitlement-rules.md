@@ -3,11 +3,11 @@ name: Regras de perdas e elegibilidade ao lucro
 description: Correções explícitas do criador sobre perdas, lucro anterior e peso após saída.
 ---
 
-Entradas durante uma rodada não devem contar no staking dessa mesma rodada. No cartão de rendimentos, mostrar quanto do saldo da carteira participa da rodada atual e quanto ficou fora.
+Entradas durante uma rodada não recebem NENHUM lucro dela, nem anterior nem posterior à entrada: têm que esperar a próxima rodada. No cartão de rendimentos, mostrar quanto do saldo da carteira participa da rodada atual e quanto ficou fora.
 
-**Why:** O criador explicou: “posso depositar durante o ciclo e aquele deposito nao vai contar” e pediu tornar essa diferença clara no espaço disponível do cartão.
+**Why:** O criador explicou: “posso depositar durante o ciclo e aquele deposito nao vai contar” e pediu tornar essa diferença clara no espaço disponível do cartão. Reiterou expressamente, na revisão da documentação e do Pitch: “NENHUM, TEM QUE ESPERAR A PROXIMA”.
 
-**How to apply:** Não equiparar automaticamente o saldo atual da carteira à quantidade elegível da rodada. Conferir a elegibilidade real usada no cálculo antes de apresentar o valor ou afirmar que novas entradas estão excluídas.
+**How to apply:** Não equiparar automaticamente o saldo atual da carteira à quantidade elegível da rodada. Não ratear lucro integral ou posterior da rodada atual para novos participantes, nem inventar participação por meia rodada. Aplicar a espera pela próxima em textos, desenhos, exemplos e derivados; a revisão documental não autoriza alterar o app ou contratos.
 
 O criador autorizou corrigir o cálculo do demo junto com a divisão no cartão. A regra vale para as novas apurações; resultados de rodadas já encerradas devem ser preservados. A confirmação foi sobre o demo, não uma autorização para alterar contratos nativos.
 

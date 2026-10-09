@@ -38,7 +38,11 @@ Resultado elegível, após tributos e controles, recebe 50% tesouraria, 25% stak
 
 Staking e sequência fiscal
 
-BETTEX disponível na carteira oficial participa automaticamente. Peso individual = soma de quantidade × tempo elegível. Pagamento bruto = parcela de staking × peso individual ÷ soma dos pesos elegíveis da própria rodada UTC.
+Quem entra durante uma rodada recebe zero dessa rodada, mesmo sobre lucros gerados após a entrada, e participa somente da próxima. O saldo confirmado e elegível é fixado na abertura; acréscimos durante a rodada só participam da seguinte.
+
+Peso individual = BETTEX elegível na abertura × duração integral da rodada, sem saída. Novos participantes e saldos recebidos durante a rodada têm peso zero nela; acréscimos não alteram o peso do saldo já elegível. Qualquer saída zera todo o peso do titular; retorno só na próxima rodada. Pagamento bruto = parcela de staking × peso individual ÷ soma dos pesos elegíveis.
+
+Exemplo: A começa a rodada com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro elegível de 1.000 USDC e condições atendidas, a parcela de staking de 250 USDC paga 250 a A e zero a B. Na rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.
 
 Cada rodada paga ou não paga, sem acumulação, reabertura ou complemento futuro. Qualquer saída BETTEX, inclusive parcial, zera o peso e cancela direitos ainda não pagos. Frações não executáveis retornam à tesouraria, sem crédito futuro. USDC recebido continua pessoal.
 

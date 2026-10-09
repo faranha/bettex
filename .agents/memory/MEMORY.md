@@ -32,7 +32,7 @@
 - [Render-time localization](render-time-localization.md) — exclude app JSX runtimes from Vite prebundling; fragments and cloned elements need rendered-text audits.
 - [Large localization edits](large-localization-edits.md) — failed large saves can leave source ahead of translations; prepare and save separately, then audit coverage.
 - [Technical document translation](technical-document-translation.md) — bounded LLM rewrites can insert citations or alter URLs; audit structure, links and numeric fidelity before saving.
-- [Elegibilidade ao lucro](profit-entitlement-rules.md) — cada rodada paga ou não paga, sem retorno ou acumulação; saídas cancelam direitos e frações vão à tesouraria.
+- [Elegibilidade ao lucro](profit-entitlement-rules.md) — entradas esperam a próxima rodada; ciclos sem acumulação; saídas cancelam direitos e frações vão à tesouraria.
 - [Demonstração e fase ALFA](demo-prototype-scope.md) — banco básico e emulação automática; app claro, suporte no Telegram; sem dinheiro real.
 - [Navegação do app](demo-navigation.md) — replit.md define as áreas atuais; preservar extrato sem cartões duplicados, acesso compacto ao perfil e aviso do demo.
 - [Separação site/app](site-app-separation.md) — experiências distintas no mesmo projeto; voltar ao site precisa funcionar também para usuários autenticados.

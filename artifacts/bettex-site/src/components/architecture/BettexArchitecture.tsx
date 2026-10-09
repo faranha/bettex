@@ -80,9 +80,9 @@ const fig2: Step[] = [
     ) },
 ];
 const fig3: Step[] = [
-  { title: 'Carteira BETTEX', text: 'Todo BETTEX disponível na carteira oficial do projeto conta a partir da confirmação do saldo.', tone: 'blue' },
+  { title: 'Carteira BETTEX', text: 'O saldo deve estar confirmado e elegível na abertura. Entradas durante a rodada aguardam a próxima.', tone: 'blue' },
   { title: 'Auto staking', text: 'A participação na piscina fechada é automática. Sem ativação manual nem depósito adicional de tokens.', tone: 'gold', id: 'node-bettex-auto-staking' },
-  { title: 'Rateio diário dos ganhos', text: 'A participação usa BETTEX disponível × tempo elegível na rodada UTC. Qualquer saída de BETTEX, mesmo parcial, zera todo o peso anterior e cancela os créditos do ciclo acumulados até a saída e ainda não pagos. Novas entradas não recebem lucros anteriores. O recebido só fica disponível após confirmação e conciliação na Carteira USDC.', tone: 'teal' },
+  { title: 'Rateio diário dos ganhos', text: 'O peso usa BETTEX elegível na abertura × duração integral da rodada UTC, sem saída. Quem entra durante a rodada recebe zero nessa rodada e aguarda a próxima. Qualquer saída de BETTEX, mesmo parcial, zera o peso e cancela créditos ainda não pagos. O recebido só fica disponível após confirmação e conciliação na Carteira USDC.', tone: 'teal' },
 ];
 const fig4: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Mantém as reservas e a parcela investível, separadas dos saldos pessoais.', tone: 'gold' },
@@ -173,7 +173,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
 
         {(!figure || figure === '3') && <Figure id="figure-bettex-staking" num="3" title={architectureFigureTitles['3']} lead="BETTEX disponível na carteira participa automaticamente. USDC não entra no cálculo do staking.">
           <Steps steps={fig3} label="BETTEX disponível na carteira, auto staking e rateio diário por quantidade e tempo, pago na Carteira USDC" />
-          <p className="ba-fig__foot">Qualquer saída de BETTEX cancela todos os créditos anteriores ainda não pagos do ciclo, inclusive os autorizados, e zera todo o peso anterior. Entradas contam a partir da confirmação do saldo e nunca recebem lucros anteriores à sua elegibilidade. O rateio usa o peso individual elegível dividido pela soma dos pesos elegíveis correspondentes. Os ganhos são pagos sempre na Carteira USDC, nunca na Carteira BETTEX.</p>
+          <p className="ba-fig__foot">Qualquer saída de BETTEX cancela todos os créditos anteriores ainda não pagos do ciclo, inclusive os autorizados, e zera o peso. Entradas durante a rodada só participam da próxima; não recebem nem o lucro anterior nem o posterior da rodada atual. O rateio usa apenas os saldos elegíveis na abertura e mantidos sem saída. Os ganhos são pagos sempre na Carteira USDC, nunca na Carteira BETTEX.</p>
           <p className="ba-fig__foot">A piscina exige acesso ao aplicativo, mas não uma sessão continuamente aberta.</p>
           <p className="ba-fig__foot">Soma dos pesos elegíveis zero impede o split e mantém 100% na tesouraria. Qualquer saída, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado.</p>
           <p className="ba-fig__foot">Cada rodada é única: paga ou não paga. Lucro não distribuído fica na tesouraria e não retorna ao rateio. Resultados e pesos de rodadas diferentes nunca são somados para pagamento.</p>
