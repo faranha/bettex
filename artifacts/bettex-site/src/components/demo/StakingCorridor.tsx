@@ -10,6 +10,7 @@ import { Term } from './fin';
 import { StakingRoundClock } from './StakingRoundClock';
 import { RoundIdentity } from './RoundIdentity';
 import { StakingMinuteChart } from './StakingMinuteChart';
+import { AgentTradingTabs } from '../interface-demo/AgentTradingTabs';
 
 export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; showAgents?: boolean }) {
   const { x, loc } = useX();
@@ -44,6 +45,7 @@ export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; s
         <span className={`rounded-full px-2.5 py-1 ${v.active ? 'bg-[#DDEBE4] text-[#0A6657]' : 'bg-[#F0E9DA] text-[#5B6B85]'}`}>{v.myTokens === null ? x('Dados indisponíveis', 'Data unavailable', 'Datos no disponibles') : v.active ? x('Ativa', 'Active', 'Activa') : x('Inativa', 'Inactive', 'Inactiva')}</span>
       </div>
     </header>
+    <AgentTradingTabs id="staking-agent-tabs">
     <div className="grid grid-cols-2 gap-2 lg:grid-cols-5">
       {metric('staking-mine', x('Meus BETTEX em staking', 'My staked BETTEX', 'Mis BETTEX en staking'), x('Quantidade de BETTEX seus que estão elegíveis neste momento.', 'Amount of your BETTEX that is eligible right now.', 'Cantidad de tus BETTEX elegibles en este momento.'), v.myTokens === null ? null : num(Math.floor(v.myTokens), 0), true)}
       {metric('staking-share', x('% dos tokens elegíveis', '% of eligible tokens', '% de tokens elegibles'), x('Sua parte do saldo de tokens elegíveis. O peso de pagamento é ponderado por tempo e pode diferir.', 'Your share of the eligible token balance. The payout weight is time-weighted and may differ.', 'Tu parte del saldo de tokens elegibles. El peso de pago se pondera por tiempo y puede diferir.') + (v.payoutWeightPercent === null ? '' : ` ${pct(v.payoutWeightPercent)}`), v.sharePercent === null ? null : pct(v.sharePercent), true)}
@@ -62,5 +64,6 @@ export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; s
       <StakingRoundClock serverNow={d.serverNow} nextCycleAt={v.nextCycleAt} native={native} timeline={timeline} current={cur} projected={proj} loading={!!loading} na={na} fl={fl} />
     </div>
     {showAgents && <AgentShowcase showOtherAgents={false} />}
+    </AgentTradingTabs>
   </section>;
 }
