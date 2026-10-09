@@ -38,7 +38,11 @@ El resultado elegible, tras tributos y controles, recibe 50% tesorería, 25% sta
 
 Staking y secuencia fiscal
 
-BETTEX disponible en la billetera oficial participa automáticamente. Peso individual = suma de cantidad × tiempo elegible. Pago bruto = porción de staking × peso individual ÷ suma de los pesos elegibles de la propia ronda UTC.
+Quien entra durante una ronda recibe cero de esa ronda, incluso sobre beneficios generados después de su entrada, y participa solo en la próxima. El saldo confirmado y elegible se fija al inicio; los aumentos durante la ronda solo participan en la siguiente.
+
+Peso individual = BETTEX elegible al inicio × duración completa de la ronda, sin salida. Los nuevos participantes y los saldos recibidos durante una ronda tienen peso cero en ella; los aumentos no alteran el peso del saldo ya elegible. Cualquier salida lleva a cero todo el peso del titular; la participación solo se reinicia en la próxima ronda. Pago bruto = porción de staking × peso individual ÷ suma de pesos elegibles.
+
+Ejemplo: A empieza la ronda con 1.000 BETTEX elegibles; B recibe 1.000 a las 12:00. Con beneficio elegible de 1.000 USDC y condiciones cumplidas, la porción de staking de 250 USDC paga 250 a A y cero a B. En la ronda siguiente, ambos elegibles desde el inicio y sin salida reciben 125 USDC cada uno sobre nuevo beneficio elegible de 1.000 USDC. No se recupera ningún beneficio anterior.
 
 Cada ronda paga o no paga, sin acumulación, reapertura o complemento futuro. Cualquier salida BETTEX, incluso parcial, resetea el peso y cancela derechos aún no pagados. Fracciones no ejecutables regresan a la tesorería, sin crédito futuro. USDC recibido sigue siendo personal.
 

@@ -193,7 +193,7 @@ export function PitchPage() {
       <PitchEditorialSplit dark side="right" image={<PitchEditorialImage dark name="pitch-token-participation" />}>
       <div className="grid gap-4 md:grid-cols-2">
         <Card dark label="Liberação" title="Parcelas mensais durante 36 meses">Todas as alocações começam a liberar no mês da abertura da venda pública e terminam no mês 36. Liberação não significa venda realizada nem início dos investimentos.</Card>
-        <Card dark label="Participação" title="Token disponível × tempo elegível">Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. A liberação de novos tokens pode alterar a participação individual; fundador e demais usuários seguem os mesmos critérios.</Card>
+        <Card dark label="Participação" title="Elegibilidade na abertura da rodada">Quem entra durante a rodada recebe zero nela e espera a próxima, inclusive para lucros gerados depois da entrada. Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. Fundador e demais usuários seguem os mesmos critérios.</Card>
       </div>
       </PitchEditorialSplit>
       <p className="mt-6 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">O titular tem os direitos de participação nos resultados definidos pelo token, não ações da empresa, propriedade da tesouraria, voto societário ou resgate pelo valor patrimonial. Pode ganhar ou perder na revenda, se houver liquidez. Oferta fixa não significa pagamento fixo.</p>

@@ -67,7 +67,7 @@ export function SolutionParticipationFlow() {
               <div className="spf__node spf__node--gold">
                 <Head n="02" Icon={Wallet} />
                 <h3 className="display">{t('Participação pelo staking')}</h3>
-                <p>{t('O saldo de BETTEX e o tempo elegível no aplicativo oficial definem o peso de cada usuário no rateio. Os tokens em staking não financiam as operações.')}</p>
+                <p>{t('O saldo de BETTEX elegível na abertura e mantido sem saída define o peso no rateio. Quem entra durante a rodada recebe zero nela e espera a próxima. Os tokens em staking não financiam as operações.')}</p>
               </div>
             </li>
           </ol>

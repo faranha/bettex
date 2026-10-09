@@ -99,12 +99,12 @@ export function StakingSchematic() {
     <Flow label="Staking automático" nodes={[
       { t: 'BETTEX disponível', s: 'Na carteira oficial', tone: 'blue' },
       { t: 'Participação automática', s: 'Sem ativação nem depósito', tone: 'gold' },
-      { t: 'Rodada diária UTC', s: 'Quantidade × tempo elegível', tone: 'gold' },
+      { t: 'Rodada diária UTC', s: 'Saldo elegível na abertura × rodada integral', tone: 'gold' },
       { t: 'Crédito em USDC', s: 'Líquido após retenções, confirmado na Carteira USDC', tone: 'teal' },
     ]} />
     <Fork from={{ t: 'Entradas e saídas', s: 'Alteram o BETTEX disponível', tone: 'blue' }} to={[
       { t: 'Saída', s: 'Cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado, mesmo quando parcial', tone: 'plain' },
-      { t: 'Entrada', s: 'Conta após a confirmação do saldo, sem lucros anteriores', tone: 'teal' },
+      { t: 'Entrada', s: 'Durante a rodada: zero lucro; aguarda a próxima', tone: 'teal' },
     ]} />
     <Flow label="Destino das frações não executáveis" nodes={[
       { t: 'Frações não executáveis', s: 'Não geram crédito pendente', tone: 'plain' },

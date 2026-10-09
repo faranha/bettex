@@ -70,7 +70,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3084 >>
+<< /Length 3334 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (direitos do programa, não ações, voto societário ou fração resgatável da tesouraria.) Tj T*
@@ -95,9 +95,19 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Staking e sequência fiscal) Tj T*
 () Tj T*
-(BETTEX disponível na carteira oficial participa automaticamente. Peso individual = soma de) Tj T*
-(quantidade  x  tempo elegível. Pagamento bruto = parcela de staking  x  peso individual  /) Tj T*
-(soma dos pesos elegíveis da própria rodada UTC.) Tj T*
+(Quem entra durante uma rodada recebe zero dessa rodada, mesmo sobre lucros gerados após a) Tj T*
+(entrada, e participa somente da próxima. O saldo confirmado e elegível é fixado na abertura;) Tj T*
+(acréscimos durante a rodada só participam da seguinte.) Tj T*
+() Tj T*
+(Peso individual = BETTEX elegível na abertura  x  duração integral da rodada, sem saída. Novos) Tj T*
+(participantes e saldos recebidos durante a rodada têm peso zero nela; acréscimos não alteram o) Tj T*
+(peso do saldo já elegível. Qualquer saída zera todo o peso do titular; retorno só na próxima) Tj T*
+(rodada. Pagamento bruto = parcela de staking  x  peso individual  /  soma dos pesos elegíveis.) Tj T*
+() Tj T*
+(Exemplo: A começa a rodada com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro) Tj T*
+(elegível de 1.000 USDC e condições atendidas, a parcela de staking de 250 USDC paga 250 a A e) Tj T*
+(zero a B. Na rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC) Tj T*
+(cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.) Tj T*
 () Tj T*
 (Cada rodada paga ou não paga, sem acumulação, reabertura ou complemento futuro. Qualquer saída) Tj T*
 (BETTEX, inclusive parcial, zera o peso e cancela direitos ainda não pagos. Frações não) Tj T*
@@ -111,6 +121,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Somente USDC confirmado e conciliado entra no saldo disponível. Envios incertos não autorizam) Tj T*
 (repetição nem são recursos recuperados. Correções mantêm histórico e efeitos únicos, sem débito) Tj T*
 (automático na carteira pessoal.) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 1169 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Governança e integrações) Tj T*
 () Tj T*
@@ -121,16 +141,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Tesouraria, caixa operacional, carteira exclusiva de recompra e carteiras pessoais têm) Tj T*
 (fronteiras próprias. Reserva defensiva segue a política aprovada, sem mínimo geral fixado em) Tj T*
-ET
-endstream
-endobj
-8 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
-endobj
-9 0 obj
-<< /Length 595 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (50%. Novas operações exigem risco independente, disponibilidade e conciliação.) Tj T*
 () Tj T*
 (Arbitrum fornece rede e contratos. Allora é candidata a inferências, não execução. Robinhood) Tj T*
@@ -153,9 +163,9 @@ xref
 0000000350 00000 n 
 0000003360 00000 n 
 0000003486 00000 n 
-0000006622 00000 n 
-0000006748 00000 n 
+0000006872 00000 n 
+0000006998 00000 n 
 trailer << /Size 10 /Root 1 0 R >>
 startxref
-7394
+8219
 %%EOF

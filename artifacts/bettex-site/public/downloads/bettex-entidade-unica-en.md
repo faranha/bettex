@@ -38,7 +38,11 @@ Eligible result, after taxes and controls, receives 50% to treasury, 25% to stak
 
 Staking and fiscal sequence
 
-BETTEX available in the official wallet participates automatically. Individual weight = sum of quantity × eligible time. Gross payment = staking share × individual weight ÷ sum of eligible weights for the specific UTC round.
+Anyone joining during a round receives zero from that round, even for profit generated after joining, and participates only in the next. The confirmed eligible balance is fixed at opening; increases during the round participate only in the following round.
+
+Individual weight = BETTEX eligible at opening × full round duration, with no exit. New participants and balances received during a round have zero weight in it; top-ups do not change the weight of the already eligible balance. Any exit resets all of the holder's weight; participation resumes only in the next round. Gross payment = staking share × individual weight ÷ sum of eligible weights.
+
+Example: A starts the round with 1,000 eligible BETTEX; B receives 1,000 at 12:00. With eligible profit of 1,000 USDC and conditions met, the 250 USDC staking share pays 250 to A and zero to B. In the next round, both eligible from opening and with no exits receive 125 USDC each from new eligible profit of 1,000 USDC. No previous profit is recovered.
 
 Each round pays or does not pay, without accumulation, reopening, or future supplement. Any BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable fractions return to the treasury, without future credit. Received USDC remains personal.
 
