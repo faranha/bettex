@@ -33,7 +33,8 @@ export function installVisualDemoTransport() {
       openDemoNotice();
       return Response.json({ error: 'interface_demo_only' }, { status: 403 });
     }
-    if (!url.pathname.includes('/api/') && url.origin === window.location.origin) return realFetch(input, init);
+    const staticAsset = /\.(?:js|mjs|css|svg|png|jpe?g|webp|gif|ico|woff2?|ttf|map)$/i.test(url.pathname);
+    if (staticAsset && !url.pathname.includes('/api/') && url.origin === window.location.origin) return realFetch(input, init);
     const path = url.pathname.slice(url.pathname.indexOf('/api/'));
     if (path === '/api/demo/dashboard') return Response.json(visualDashboard());
     if (path === '/api/account/session') return Response.json({ account: null });

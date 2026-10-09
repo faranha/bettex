@@ -1,12 +1,9 @@
 import express, { type Express } from "express";
 import cors from "cors";
 import pinoHttp from "pino-http";
-import router from "./routes";
+import healthRouter from "./routes/health";
 import { logger } from "./lib/logger";
-import { clerkMiddleware } from "@clerk/express";
-import { publishableKeyFromHost } from "@clerk/shared/keys";
-import { CLERK_PROXY_PATH, clerkProxyMiddleware, getClerkProxyHost } from "./middlewares/clerkProxyMiddleware";
-import { allowedOrigin, trustedOrigins, requestBoundary, safeHttpError } from "./middlewares/http-security";
+import { allowedOrigin, requestBoundary, safeHttpError } from "./middlewares/http-security";
 
 const app: Express = express();
 
@@ -31,32 +28,22 @@ app.use(
 );
 app.disable("x-powered-by");
 app.use("/api", (req, res, next) => {
-  if (["GET", "HEAD", "OPTIONS"].includes(req.method)) return next();
-  res.status(403).json({ error: "interface_demo_only", message: "Demonstração visual: operações desativadas." });
+  if (req.method === "OPTIONS") return res.sendStatus(204);
+  if (!["GET", "HEAD"].includes(req.method)) {
+    return res.status(403).json({ error: "interface_demo_only", message: "Demonstração visual: operações desativadas." });
+  }
+  if (req.path === "/healthz") return next();
+  if (req.path === "/account/session") return res.json({ account: null });
+  return res.status(410).json({ error: "not_available_in_interface_demo", message: "Os dados fictícios do demo são locais. Não há conexão operacional." });
 });
 app.use("/api", requestBoundary);
 app.use(cors({ credentials: true, origin: (origin, callback) => callback(null, allowedOrigin(origin)) }));
-app.use(CLERK_PROXY_PATH, clerkProxyMiddleware());
 app.use(express.json({ limit: "64kb" }));
 app.use(express.urlencoded({ extended: true }));
-// A clean development clone supports native test accounts without a Clerk tenant.
-// Production still installs Clerk unconditionally and fails closed if misconfigured.
-const clerkConfigured = Boolean(process.env.CLERK_SECRET_KEY && process.env.CLERK_PUBLISHABLE_KEY);
-if (process.env.NODE_ENV !== "development" || clerkConfigured) {
-  app.use(
-    clerkMiddleware((req) => ({
-      authorizedParties: [...trustedOrigins()],
-      publishableKey: publishableKeyFromHost(
-        getClerkProxyHost(req) ?? "",
-        process.env.CLERK_PUBLISHABLE_KEY,
-      ),
-    })),
-  );
-} else {
-  logger.warn("Clerk is not configured: only native development test-account authentication is available.");
-}
-
-app.use("/api", router);
+// Deliberately do not import operational routes or authentication middleware:
+// even their initialization must not access accounts, databases, RPC or testnet.
+// Implementations and existing records remain preserved but unreachable.
+app.use("/api", healthRouter);
 app.use(safeHttpError);
 
 export default app;

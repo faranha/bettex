@@ -22,15 +22,7 @@ args = "pitch-research"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "bettex-local-evm"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
 args = "github-sync"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "bettex-public-testnet"
 
 [[workflows.workflow]]
 name = "pitch-research"
@@ -44,34 +36,12 @@ args = "pnpm --filter @workspace/bettex-site run check:pitch-research"
 isValidation = true
 
 [[workflows.workflow]]
-name = "bettex-local-evm"
-author = "agent"
-
-[workflows.workflow.metadata]
-outputType = "console"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "pnpm --filter @workspace/bettex-contracts run local:runtime"
-
-[[workflows.workflow]]
 name = "github-sync"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "pnpm sync:watch"
-
-[workflows.workflow.metadata]
-outputType = "console"
-
-[[workflows.workflow]]
-name = "bettex-public-testnet"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "BETTEX_TESTNET_ACTIVITY_URL=http://127.0.0.1:8080/api/demo/testnet-activity pnpm --filter @workspace/bettex-contracts run public:runtime"
 
 [workflows.workflow.metadata]
 outputType = "console"
