@@ -1,5 +1,23 @@
 BETTEX — entidad y reglas
 
+Financiación: origen y destino de los recursos
+
+Los aportes de inversores ángeles destinan el 100% de los recursos a producto, tecnología y marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone un reparto de financiación: los términos identifican origen, destino y derechos.
+
+El precio de la venta pública en USDC va íntegramente a la tesorería; la tarifa de servicio separada va a la cuenta operativa. La reventa pertenece al vendedor y no genera nueva captación ni beneficio de la tesorería. Capital, ingresos y resultados no son equivalentes.
+
+Burn Lottery y Double 2X
+
+Burn Lottery: un número gratuito por cartera con BETTEX en staking; entradas extra pagadas en BETTEX y quemadas íntegramente, sin financiar premios ni ingresos operativos. No hay límite de negocio de números. El pago es una salida de BETTEX: reinicia todo el peso previo y cancela todos los créditos anteriores aún no pagados de la ronda; el USDC recibido sigue siendo personal.
+
+Double 2X: juego opcional rojo o negro con USDC de rendimientos ya recibidos, sin usar créditos pendientes. Una jugada cada 24 horas corridas, resultado 50/50 y sin tarifa del juego. Con 10 USDC jugados, ganar devuelve 20 en total, ganancia neta de 10 pagada por la tesorería; perder devuelve cero y envía los 10 a la tesorería. Un RTP teórico del 100% no garantiza ganancias por jugada.
+
+Las reglas de la lotería deben identificar precio, premio, financiación, plazo y probabilidades antes de aceptar entradas. Los juegos no son estrategias de inversión ni promesas de rendimiento; los resultados simulados no prueban ejecución, aleatoriedad pública ni liquidación.
+
+Ronda operativa y demostración
+
+El modelo operativo tiene rondas diarias UTC. El demo visual usa un guion distinto, de las 16:00 a las 16:00 de São Paulo durante 24 horas reales, sin dinero real ni operaciones. No es una conversión de medianoche UTC ni un cambio de contratos. Las pestañas por mercado no crean pools de staking independientes.
+
 Empresa y administración
 
 BETTEX es un producto tecnológico que reúne una aplicación, un token y agentes de IA. El usuario participa en los resultados del proyecto conforme a las reglas del token, sin ser propietario de la empresa ni de la tesorería.

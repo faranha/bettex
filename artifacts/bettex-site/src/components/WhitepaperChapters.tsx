@@ -1,5 +1,7 @@
 import { Fragment, isValidElement, type ReactElement, type ReactNode } from 'react';
 import thesis from '@/lib/new-economy-thesis.json';
+import growthStrategy from '@/lib/growth-strategy.json';
+import { DocumentationGames } from './DocumentationGames';
 import { TechnicalDetails } from './TechnicalDetails';
 import { documentationTokenomics as tokenomics, formatTokenCount } from '@/lib/tokenomics';
 import { BettexFlow, architectureFigureTitles } from '@/components/architecture/BettexArchitecture';
@@ -90,6 +92,7 @@ function RawChapter({ index }: { index: number }) {
         <ProfitAccounting />
         <DistributionSettlement />
         <DistributionCorrections />
+        <DocumentationGames />
       </>;
     case 'documentacao-como-funciona':
       return <>
@@ -97,7 +100,7 @@ function RawChapter({ index }: { index: number }) {
         <div className="whitepaper__prose"><p><a href="#documentacao-publico">Ler a tese e a oportunidade</a></p></div>
         <div className="whitepaper__status-grid">
           <div><span>01 / ECONOMIA DO TOKEN</span><strong>BETTEX e participação</strong><p>Um bilhão de tokens: 65% venda pública, 20% Fundador e equipe e 15% investidores, liberados em 36 meses. <a href="#documentacao-staking">Staking automático</a> por quantidade e tempo elegíveis.</p></div>
-          <div><span>02 / OPERAÇÃO FINANCEIRA</span><strong>Tesouraria multimercado</strong><p>100% do preço dos tokens da venda pública vai à tesouraria. Aportes de investidores têm livre alocação. Reservas e parcela investível seguem as políticas aprovadas, com alocação dinâmica e controle de liquidez.</p></div>
+          <div><span>02 / OPERAÇÃO FINANCEIRA</span><strong>Tesouraria multimercado</strong><p>100% do preço dos tokens da venda pública vai à tesouraria.</p><p>{growthStrategy.launch.angelFundingUse}</p><p>Reservas e parcela investível seguem as políticas aprovadas, com alocação dinâmica e controle de liquidez.</p></div>
           <div><span>03 / ARQUITETURA E CONTROLES</span><strong>Registros conciliados</strong><p>O modelo separa responsabilidades entre aplicativo, serviços, agente, conectores e operação, com registros auditáveis, autorizações explícitas e reconciliação de ativos e obrigações.</p></div>
         </div>
         <DocFacts title="Resumo do modelo" facts={[
@@ -126,7 +129,7 @@ function RawChapter({ index }: { index: number }) {
       return <>
         <DocFacts title="Rede e ativos em resumo" facts={[
           { label: 'REDE DO TOKEN', value: 'Arbitrum One', text: 'Segunda camada do Ethereum, compatível com seu ecossistema.' },
-          { label: 'SALDO FINANCEIRO', value: 'USDC', text: 'Compras, distribuições e saques na versão inicial.' },
+          { label: 'SALDO FINANCEIRO', value: 'USDC', text: 'Compras, distribuições e saques em USDC.' },
           { label: 'PARTICIPAÇÃO', value: 'BETTEX', text: 'Staking por quantidade e tempo elegíveis; taxas em USDC.' },
         ]} />
         <Subhead>Arbitrum One: escala e integração com Ethereum</Subhead>
@@ -136,7 +139,7 @@ function RawChapter({ index }: { index: number }) {
           <p>Conheça a tecnologia: <a href="https://docs.arbitrum.io/" target="_blank" rel="noopener noreferrer">documentação oficial da Arbitrum</a>.</p>
         </div>
         <ArbitrumFlowDiagram />
-        <div className="whitepaper__lead" id="documentacao-operacao-usdc"><span>VERSÃO INICIAL · OPERAÇÃO CRIPTO, VISÃO DE VALOR LOCAL</span><p>Os saldos financeiros, depósitos, saques e distribuições da pessoa são denominados e movimentados em <strong>USDC</strong>. A interface mostra uma <strong>estimativa desse valor na moeda fiduciária da pessoa</strong> para facilitar a leitura. O saque continua em USDC, com referência em dólar: a estimativa não é saldo fiduciário nem valor a receber em moeda local. A entrada com fiat ocorre por provedores externos de on-ramp. Distribuições exigem lucro elegível ao split, considerando posições abertas, conciliação e reservas atendidas.</p></div>
+        <div className="whitepaper__lead" id="documentacao-operacao-usdc"><span>OPERAÇÃO EM USDC · VISÃO DE VALOR LOCAL</span><p>Os saldos financeiros, depósitos, saques e distribuições da pessoa são denominados e movimentados em <strong>USDC</strong>. A interface mostra uma <strong>estimativa desse valor na moeda fiduciária da pessoa</strong> para facilitar a leitura. O saque continua em USDC, com referência em dólar: a estimativa não é saldo fiduciário nem valor a receber em moeda local. A entrada com fiat ocorre por provedores externos de on-ramp. Distribuições exigem lucro elegível ao split, considerando posições abertas, conciliação e reservas atendidas.</p></div>
         <div className="whitepaper__currency-grid">
           <div><span>01 / SALDO E VISÃO DE VALOR</span><strong>USDC</strong><p>Saldo efetivo em USDC, com valor estimado na moeda fiduciária da pessoa na interface. A estimativa não altera o ativo nem a moeda do saque.</p></div>
           <div><span>02 / ENTRADA COM FIAT</span><strong>On-ramp externo</strong><p>O provedor converte a moeda da pessoa em USDC, com sua cotação e seus custos. A BETTEX credita somente o valor líquido recebido e confirmado.</p></div>
@@ -199,7 +202,7 @@ function RawChapter({ index }: { index: number }) {
         <div className="whitepaper__prose">
           <p><strong>BETTEX determina a participação no staking; os serviços são pagos em USDC.</strong> A tarifa não reduz o saldo BETTEX nem a oferta. Entradas contam a partir da confirmação. Qualquer saída de BETTEX, mesmo parcial, zera o peso anterior e cancela os créditos do ciclo acumulados até a saída e ainda não pagos. BETTEX não é capital das estratégias dos agentes nem participação societária. Os ganhos são creditados em USDC, nunca em BETTEX.</p>
           <p>Cada movimento financeiro em <strong>USDC</strong> deve conter identificador único, conta, ativo, rede, origem, destino, valor bruto, custos, valor líquido, estado e referência externa. Após confirmação da liquidação, os lançamentos correspondentes devem ser registrados juntos e uma única vez. Uma mensagem repetida não pode duplicar os efeitos: o mesmo identificador tem um único efeito contábil. Registrar um movimento não confirma uma transferência on-chain ainda pendente.</p>
-          <p>A <strong>venda pública</strong> no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria; a tarifa adicional do aplicativo tem destino operacional próprio. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida. Os aportes de investidores têm livre alocação, conforme <a href="#documentacao-aportes-investidores">Token e emissão</a>.</p>
+          <p>A <strong>venda pública</strong> no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria; a tarifa adicional do aplicativo tem destino operacional próprio. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida.</p><p>{growthStrategy.launch.angelFundingUse} <a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p>
           <p>A conciliação compara USDC recebido, incluindo entradas por on-ramp, saldos e movimentos dos dois ativos, resultados por mercado, custos, reservas e obrigações em USDC. Cada conector informa origem, horário e estado; a visão consolidada permite verificar o risco global. Diferenças devem congelar o fluxo afetado e gerar investigação, nunca saldo artificial. Monitoramento, auditoria e alertas são requisitos operacionais.</p>
         </div>
         <Subhead>Agentes, MCP e APIs de mercado</Subhead>
@@ -256,7 +259,7 @@ function RawChapter({ index }: { index: number }) {
           <Subhead>Venda direta a corretoras para formar a tesouraria</Subhead>
           <div className="whitepaper__prose">
             <p>A parcela de <strong>65% destinada à venda pública pode ser vendida diretamente a corretoras</strong> para formar e capitalizar a tesouraria. Não é obrigatório vender por swaps ou por um pool de liquidez: a venda direta é um canal possível de distribuição dos tokens já liberados.</p>
-            <p><strong>100% dos recursos recebidos nessas vendas, liquidadas em USDC, vão diretamente à tesouraria.</strong> O canal de venda não altera os percentuais de alocação nem o cronograma de vesting de 36 meses. Aportes de investidores e vendas pessoais do fundador têm livre destinação, separada da venda pública.</p>
+            <p><strong>100% dos recursos recebidos nessas vendas, liquidadas em USDC, vão diretamente à tesouraria.</strong> O canal de venda não altera os percentuais de alocação nem o cronograma de vesting de 36 meses. Vendas pessoais do fundador têm livre destinação, separada da venda pública.</p>
             <p>O fluxo de venda à corretora deve identificar a contraparte, a quantidade de BETTEX, o pagamento em USDC e a carteira de entrega, com confirmação, conciliação e registro público da transação. A previsão desse canal não significa parceria, listagem ou integração com uma corretora já ativa.</p>
           </div>
         </div>
@@ -264,10 +267,10 @@ function RawChapter({ index }: { index: number }) {
         <div id="documentacao-aportes-investidores">
           <Subhead>Dinheiro dos investidores e liberdade do fundador</Subhead>
           <div className="whitepaper__aside-callout">
-            <div><span>APORTES DOS INVESTIDORES</span><p>Os recursos vinculados à parcela de 15% têm <strong>livre alocação</strong>, conforme os instrumentos aprovados. Não há split obrigatório entre tesouraria e desenvolvimento.</p></div>
+            <div><span>APORTES DOS INVESTIDORES</span><p>{growthStrategy.launch.angelFundingUse}</p><p><a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p></div>
           </div>
           <div className="whitepaper__rule-pair">
-            <div><span>FUNDADOR / 20% DE LIVRE DESTINAÇÃO</span><p><strong>{formatTokenCount(tokenomics.teamAllocation)} BETTEX</strong> pertencem ao fundador. Após cada liberação do vesting, ele pode usar os tokens como quiser: distribuir ao time, manter em staking, transferir ou vender. Não existe uma divisão obrigatória dessa parcela com o time. A destinação de suas vendas pessoais é livre e não segue o split dos aportes dos investidores.</p></div>
+            <div><span>FUNDADOR / 20% DE LIVRE DESTINAÇÃO</span><p><strong>{formatTokenCount(tokenomics.teamAllocation)} BETTEX</strong> pertencem ao fundador. Após cada liberação do vesting, ele pode usar os tokens como quiser: distribuir ao time, manter em staking, transferir ou vender. Não existe uma divisão obrigatória dessa parcela com o time. A destinação de suas vendas pessoais é livre.</p></div>
             <div><span>INVESTIDORES / 15%</span><p><strong>{formatTokenCount(tokenomics.investorAllocation)} BETTEX</strong> para investidores, com liberação mensal durante 36 meses. Aportes, liberação de tokens e resultados de staking são movimentos distintos.</p></div>
           </div>
         </div>
@@ -359,6 +362,7 @@ function RawChapter({ index }: { index: number }) {
   }
 }
 const topicTitles = new Map<unknown, string>([
+  [DocumentationGames, 'Loteria e Double 2X'],
   [StakingDistribution, 'Distribuição do staking'],
   [BuybackPolicy, 'Recompras de BETTEX'],
   [DistributionTaxes, 'Tributos sobre distribuições'],

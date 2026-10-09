@@ -1,5 +1,23 @@
 BETTEX — entity and rules
 
+Financing: sources and uses of funds
+
+Angel contributions allocate 100% of funds to product, technology and marketing, with no founder salaries or withdrawals. The 15% token allocation does not impose a funding split: agreements identify sources, uses and rights.
+
+The USDC public sale price goes entirely to the treasury; a separate service fee goes to the operating account. Resale proceeds belong to the seller and create no new funding or treasury profit. Capital, revenue and profit are not equivalent.
+
+Burn Lottery and Double 2X
+
+Burn Lottery: one free number per wallet with staked BETTEX; extra entries paid in BETTEX and fully burned, funding neither prizes nor operating revenue. There is no business cap on numbers. Payment is a BETTEX exit: all prior weight resets and all prior unpaid round credits are cancelled; received USDC remains personal.
+
+Double 2X: optional red or black game using USDC earnings already received, without pending credits. One play per rolling 24 hours, 50/50 outcome and no game fee. With 10 USDC played, a win returns 20 in total, a net gain of 10 paid by the treasury; a loss returns zero and sends the 10 to the treasury. A theoretical 100% RTP does not guarantee gains per play.
+
+Lottery rules must identify price, prize, funding, timing and odds before accepting entries. The games are neither investment strategies nor promises of yield; simulated results do not prove execution, public randomness or settlement.
+
+Operational round and demonstration
+
+The operational model has daily UTC rounds. The visual demo uses a separate storyline from 16:00 to 16:00 São Paulo time over 24 real hours, with no real money or operations. It is not a conversion of UTC midnight or a change to contracts. Market tabs do not create independent staking pools.
+
 Company and administration
 
 BETTEX is a technology product that combines an app, a token and AI agents. The user participates in the project's results according to the token rules, without ownership of the company or treasury.

@@ -20471,6 +20471,96 @@
     "en": "wallets",
     "es": "wallets"
   },
+  "10 USDC": { "en": "10 USDC", "es": "10 USDC" },
+  "Burn Lottery": { "en": "Burn Lottery", "es": "Burn Lottery" },
+  "Double 2X": { "en": "Double 2X", "es": "Double 2X" },
+  "c": { "en": "c", "es": "c" },
+  "d": { "en": "d", "es": "d" },
+  "l": { "en": "l", "es": "l" },
+  "w": { "en": "w", "es": "w" },
+  "100% do preço dos tokens da venda pública vai à tesouraria.": {
+    "en": "100% of the public token sale price goes to the treasury.",
+    "es": "El 100% del precio de los tokens de la venta pública va a la tesorería."
+  },
+  "O canal de venda não altera os percentuais de alocação nem o cronograma de vesting de 36 meses. Vendas pessoais do fundador têm livre destinação, separada da venda pública.": {
+    "en": "The sale channel does not change the allocation percentages or the 36-month vesting schedule. The founder freely allocates personal sale proceeds, separately from the public sale.",
+    "es": "El canal de venta no cambia los porcentajes de asignación ni el calendario de vesting de 36 meses. El fundador dispone libremente de los ingresos de sus ventas personales, separados de la venta pública."
+  },
+  "Compras, distribuições e saques em USDC.": {
+    "en": "Purchases, distributions and withdrawals in USDC.",
+    "es": "Compras, distribuciones y retiros en USDC."
+  },
+  "Financiamento: origem e destino dos recursos": {
+    "en": "Financing: sources and uses of funds",
+    "es": "Financiación: origen y destino de los recursos"
+  },
+  "O ALFA apresenta a interface com dados ilustrativos, sem dinheiro real ou execução de operações. A captação e a formalização estão previstas para novembro de 2026; o BETA e o go to market, para janeiro de 2027.": {
+    "en": "ALPHA presents the interface with illustrative data, no real money or execution of operations. Fundraising and formalization are planned for November 2026; BETA and go to market for January 2027.",
+    "es": "ALFA presenta la interfaz con datos ilustrativos, sin dinero real ni ejecución de operaciones. La captación y formalización están previstas para noviembre de 2026; BETA y go to market para enero de 2027."
+  },
+  "O swap oficial vende tokens públicos já liberados no vesting de 36 meses: 100% do preço em USDC vai à tesouraria. Venda direta a corretoras respeita a mesma destinação e agenda. A parcela Fundador e equipe tem livre destinação pelo fundador após liberação, sem concessão automática. Mercados externos não herdam automaticamente a tarifa ou destinação do swap oficial. USDC pessoal não gasto continua fora da tesouraria.": {
+    "en": "The official swap sells public tokens already released under the 36-month vesting: 100% of the USDC price goes to the treasury. Direct exchange sales follow the same destination and schedule. The founder freely allocates the Founder and team portion after release, without automatic grants. External markets do not automatically inherit the official swap fee or destination. Unspent personal USDC stays outside the treasury.",
+    "es": "El swap oficial vende tokens públicos ya liberados por el vesting de 36 meses: el 100% del precio en USDC va a la tesorería. La venta directa a exchanges respeta el mismo destino y calendario. El fundador dispone libremente de la porción Fundador y equipo tras su liberación, sin concesiones automáticas. Los mercados externos no heredan automáticamente la tarifa ni el destino del swap oficial. El USDC personal no gastado permanece fuera de la tesorería."
+  },
+  "OPERAÇÃO EM USDC · VISÃO DE VALOR LOCAL": {
+    "en": "USDC OPERATIONS · LOCAL VALUE VIEW",
+    "es": "OPERACIÓN EN USDC · VISIÓN DEL VALOR LOCAL"
+  },
+  "Produto, tecnologia e marketing": {
+    "en": "Product, technology and marketing",
+    "es": "Producto, tecnología y marketing"
+  },
+  "Aportes-anjo: produto, tecnologia e marketing": {
+    "en": "Angel funding: product, technology and marketing",
+    "es": "Aportes de inversores ángeles: producto, tecnología y marketing"
+  },
+  "Reservas e parcela investível seguem as políticas aprovadas, com alocação dinâmica e controle de liquidez.": {
+    "en": "Reserves and the investable portion follow approved policies, with dynamic allocation and liquidity controls.",
+    "es": "Las reservas y la porción invertible siguen las políticas aprobadas, con asignación dinámica y control de liquidez."
+  },
+  "Revendas pessoais não seguem a destinação da venda pública. O fundador destina livremente suas receitas pessoais após a liberação. Revenda não antecipa emissão nem cria novo vesting para unidades liberadas.": {
+    "en": "Personal resales do not follow the public sale allocation. The founder freely allocates personal proceeds after release. Resale neither accelerates issuance nor creates new vesting for released units.",
+    "es": "Las reventas personales no siguen el destino de la venta pública. El fundador dispone libremente de sus ingresos personales tras la liberación. La reventa no adelanta la emisión ni crea nuevo vesting para unidades liberadas."
+  },
+  "e financiamento documentado, pagando serviços externos e obrigações próprias. Um déficit operacional não autoriza retirada automática da tesouraria.": {
+    "en": "and documented funding, paying for external services and its own obligations. An operating deficit does not authorize automatic treasury withdrawals.",
+    "es": "y financiación documentada, pagando servicios externos y obligaciones propias. Un déficit operativo no autoriza retiros automáticos de la tesorería."
+  },
+  "no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria; a tarifa adicional do aplicativo tem destino operacional próprio. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida.": {
+    "en": "in the app or directly to exchanges delivers only released tokens. 100% of the USDC price goes to the treasury; the additional app fee has its own operating destination. Exchange sales require specific delivery and reconciliation, not presumed integration.",
+    "es": "en la aplicación o directamente a exchanges entrega solo tokens liberados. El 100% del precio en USDC va a la tesorería; la tarifa adicional de la aplicación tiene su propio destino operativo. La venta a exchanges exige entrega y conciliación específicas, no una integración presumida."
+  },
+  "pertencem ao fundador. Após cada liberação do vesting, ele pode usar os tokens como quiser: distribuir ao time, manter em staking, transferir ou vender. Não existe uma divisão obrigatória dessa parcela com o time. A destinação de suas vendas pessoais é livre.": {
+    "en": "belong to the founder. After each vesting release, the founder may allocate the tokens freely: distribute to the team, keep in staking, transfer or sell. There is no mandatory division of this portion with the team. Personal sale proceeds are freely allocated.",
+    "es": "pertenecen al fundador. Después de cada liberación del vesting, puede disponer libremente de los tokens: distribuir al equipo, mantener en staking, transferir o vender. No existe una división obligatoria de esta porción con el equipo. El destino de sus ventas personales es libre."
+  },
+  "Loteria e Double 2X": { "en": "Lottery and Double 2X", "es": "Lotería y Double 2X" },
+  "Burn Lottery e Double 2X": { "en": "Burn Lottery and Double 2X", "es": "Burn Lottery y Double 2X" },
+  "Aportes-anjo destinam 100% dos recursos a produto, tecnologia e marketing, sem salários ou retiradas do fundador. A alocação de 15% dos tokens não impõe split de financiamento: os termos identificam origem, destino e direitos.": {
+    "en": "Angel contributions allocate 100% of funds to product, technology and marketing, with no founder salaries or withdrawals. The 15% token allocation does not impose a funding split: agreements identify sources, uses and rights.",
+    "es": "Los aportes de inversores ángeles destinan el 100% de los recursos a producto, tecnología y marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone un reparto de financiación: los términos identifican origen, destino y derechos."
+  },
+  "Preço da venda pública em USDC vai integralmente à tesouraria; tarifa de serviço separada vai ao caixa operacional. Revenda pertence ao vendedor e não gera nova captação ou lucro da tesouraria. Capital, receita e resultado não são equivalentes.": {
+    "en": "The USDC public sale price goes entirely to the treasury; a separate service fee goes to the operating account. Resale proceeds belong to the seller and create no new funding or treasury profit. Capital, revenue and profit are not equivalent.",
+    "es": "El precio de la venta pública en USDC va íntegramente a la tesorería; la tarifa de servicio separada va a la cuenta operativa. La reventa pertenece al vendedor y no genera nueva captación ni beneficio de la tesorería. Capital, ingresos y resultados no son equivalentes."
+  },
+  "Burn Lottery: um número gratuito por carteira com BETTEX em staking; entradas extras pagas em BETTEX e queimadas integralmente, sem financiar prêmio ou receita operacional. Não há limite de negócio de números. Pagamento é saída BETTEX: zera todo peso anterior e cancela todos os créditos anteriores ainda não pagos da rodada; USDC recebido permanece pessoal.": {
+    "en": "Burn Lottery: one free number per wallet with staked BETTEX; extra entries paid in BETTEX and fully burned, funding neither prizes nor operating revenue. There is no business cap on numbers. Payment is a BETTEX exit: all prior weight resets and all prior unpaid round credits are cancelled; received USDC remains personal.",
+    "es": "Burn Lottery: un número gratuito por cartera con BETTEX en staking; entradas extra pagadas en BETTEX y quemadas íntegramente, sin financiar premios ni ingresos operativos. No hay límite de negocio de números. El pago es una salida de BETTEX: reinicia todo el peso previo y cancela todos los créditos anteriores aún no pagados de la ronda; el USDC recibido sigue siendo personal."
+  },
+  "Double 2X: jogo opcional vermelho ou preto com USDC de rendimentos já recebidos, sem usar créditos pendentes. Uma jogada a cada 24 horas corridas, resultado 50/50 e sem taxa do jogo. Com 10 USDC jogados, vitória devolve 20 no total, ganho líquido 10 pago pela tesouraria; derrota devolve zero e envia os 10 à tesouraria. RTP teórico de 100% não garante ganho por jogada.": {
+    "en": "Double 2X: optional red or black game using USDC earnings already received, without pending credits. One play per rolling 24 hours, 50/50 outcome and no game fee. With 10 USDC played, a win returns 20 in total, a net gain of 10 paid by the treasury; a loss returns zero and sends the 10 to the treasury. A theoretical 100% RTP does not guarantee gains per play.",
+    "es": "Double 2X: juego opcional rojo o negro con USDC de rendimientos ya recibidos, sin usar créditos pendientes. Una jugada cada 24 horas corridas, resultado 50/50 y sin tarifa del juego. Con 10 USDC jugados, ganar devuelve 20 en total, ganancia neta de 10 pagada por la tesorería; perder devuelve cero y envía los 10 a la tesorería. Un RTP teórico del 100% no garantiza ganancias por jugada."
+  },
+  "Regulamento da loteria deve identificar preço, prêmio, financiamento, prazo e probabilidades antes de aceitar entradas. Os jogos não são estratégias de investimento nem promessa de rendimento; resultados simulados não comprovam execução, aleatoriedade pública ou liquidação.": {
+    "en": "Lottery rules must identify price, prize, funding, timing and odds before accepting entries. The games are neither investment strategies nor promises of yield; simulated results do not prove execution, public randomness or settlement.",
+    "es": "Las reglas de la lotería deben identificar precio, premio, financiación, plazo y probabilidades antes de aceptar entradas. Los juegos no son estrategias de inversión ni promesas de rendimiento; los resultados simulados no prueban ejecución, aleatoriedad pública ni liquidación."
+  },
+  "Rodada operacional e demonstração": { "en": "Operational round and demonstration", "es": "Ronda operativa y demostración" },
+  "O modelo operacional tem rodadas diárias UTC. O demo visual usa um roteiro distinto, de 16h a 16h de São Paulo em 24 horas reais, sem dinheiro real ou operações. Não é conversão da meia-noite UTC nem alteração de contratos. Abas por mercado não criam pools de staking independentes.": {
+    "en": "The operational model has daily UTC rounds. The visual demo uses a separate storyline from 16:00 to 16:00 São Paulo time over 24 real hours, with no real money or operations. It is not a conversion of UTC midnight or a change to contracts. Market tabs do not create independent staking pools.",
+    "es": "El modelo operativo tiene rondas diarias UTC. El demo visual usa un guion distinto, de las 16:00 a las 16:00 de São Paulo durante 24 horas reales, sin dinero real ni operaciones. No es una conversión de medianoche UTC ni un cambio de contratos. Las pestañas por mercado no crean pools de staking independientes."
+  },
   "wheel": {
     "en": "wheel",
     "es": "wheel"

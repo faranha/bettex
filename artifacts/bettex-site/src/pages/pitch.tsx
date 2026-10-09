@@ -18,6 +18,7 @@ import { PitchObservations } from '@/components/pitch/PitchObservations';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
 import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
 import { formatCryptoDailyBillions } from '@/components/pitch/marketFlow';
+import { PitchProductResources } from '@/components/pitch/PitchProductResources';
 import { t, useLocale } from '@/lib/i18n';
 import './pitch.css';
 
@@ -112,6 +113,7 @@ export function PitchPage() {
         <p className="display fu-pos-lead">Resgatar o futuro, transformando a aposta em investimento.</p>
       </div>
       <SolutionParticipationFlow />
+       <PitchProductResources />
       <div className="mt-8 rounded-2xl bg-[#070B1F] p-6 text-[#F4F1E8]">
         <span className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#F2B632]">Regra do lucro</span>
         <p className="mt-3 text-[15px] leading-7 text-[#c5d2f1]">Só há lucro elegível após custos reais, tributos, obrigações, avaliação das posições abertas, reservas e liquidez.</p>
@@ -205,7 +207,7 @@ export function PitchPage() {
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
         <DemoAppLink className="mono">FASE ATUAL · ALFA</DemoAppLink>
         <strong>ALFA seed com audiência inicial</strong>
-        <p>O ALFA está previsto para outubro de 2026, com token, contratos básicos e primeiros agentes. A captação e a formalização vêm em novembro; o BETA e o go to market, em janeiro de 2027.</p>
+        <p>O ALFA apresenta a interface com dados ilustrativos, sem dinheiro real ou execução de operações. A captação e a formalização estão previstas para novembro de 2026; o BETA e o go to market, para janeiro de 2027.</p>
         <DemoAppLink data-testid="pitch-open-alpha-demo" />
       </aside>
       <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">O fundador financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.</p>

@@ -22,7 +22,9 @@ for (const [i, row] of vestingSchedule.entries()) {
 assert.deepEqual(totals, { publicSale: 650000000, team: 200000000, investors: 150000000, total: documentationTokenomics.maxSupply });
 const commercialLink = await read('src/components/BusinessPlan.tsx');
 assert.match(commercialLink, /pitch#publico/);
-assert(!/business-plan\.json|DocFacts|<table|<h[234]|MAU/.test(commercialLink), 'Documentation contains only a Pitch link, not launch plans or forecasts.');
+assert(!/business-plan\.json|DocFacts|<table|MAU|100\.000|50\.000/.test(commercialLink), 'Documentation explains funding sources without duplicating launch forecasts.');
+assert.match(commercialLink, /id="documentacao-financiamento-fundacao"/, 'The Pitch financing link must have a documentation destination.');
+assert.match(commercialLink, /g\.launch\.angelFundingUse/, 'Pitch and documentation use the same approved angel-funding copy.');
 const materials = JSON.parse(await read('src/lib/documentation-materials.json'));
 assert(!/piloto|MAU|5\.000 usuários|Capital do piloto/i.test(JSON.stringify(materials)), 'Downloads must not retain launch targets or projections.');
 assert.equal(materials.pitchLink.href, 'https://bettex.ai/pitch#publico');

@@ -135,7 +135,7 @@ export function TokenAllocationSchematic() {
     <Fork from={{ t: '1 bilhão de BETTEX', s: 'Emissão total', tone: 'blue' }} to={[
       { t: 'Venda pública · 65%', s: 'Preço em USDC: 100% para a tesouraria', tone: 'gold' },
       { t: 'Fundador e equipe · 20%', s: 'Livre destinação após cada liberação', tone: 'blue' },
-      { t: 'Investidores · 15%', s: 'Aportes de livre alocação', tone: 'teal' },
+      { t: 'Investidores · 15%', s: 'Aportes-anjo: produto, tecnologia e marketing', tone: 'teal' },
     ]} />
     <div className="ds-vest" role="img" aria-label="Vesting de 36 meses com liberação mensal">
       <span>Vesting · liberação mensal</span>
