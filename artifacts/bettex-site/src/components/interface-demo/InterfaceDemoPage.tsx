@@ -28,7 +28,6 @@ export function InterfaceDemoPage() {
         {view === 'home' && <><h1 className="sr-only">{x('Dashboard', 'Dashboard', 'Dashboard')}</h1>
           <DemoWalletsCard d={d} addresses={MOCK_WALLET_ADDRESSES} onWallet={openDemoNotice} onExport={openDemoNotice} />
           <StakingCorridor d={d} showAgents />
-          <MockCentralPanel compact onAction={openDemoNotice} />
         </>}
         {view === 'central' && <MockCentralPanel onAction={openDemoNotice} />}
         {view === 'wallet' && <MockHistoryPanel key={path} d={d} />}

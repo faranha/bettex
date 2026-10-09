@@ -114,3 +114,21 @@ test('staking presentation uses helpers and earnings cards, not a share donut or
   assert.match(chart, /<Bar dataKey="profit"/);
   assert.match(chart, /staking-chart-tick/);
 });
+
+test('agent tabs belong inside existing staking, without a separate home trading area', () => {
+  const corridor = readFileSync(new URL('./StakingCorridor.tsx', import.meta.url), 'utf8');
+  const home = readFileSync(new URL('../interface-demo/InterfaceDemoPage.tsx', import.meta.url), 'utf8');
+  const tabs = readFileSync(new URL('../interface-demo/AgentTradingTabs.tsx', import.meta.url), 'utf8');
+  const start = corridor.indexOf('<AgentTradingTabs id="staking-agent-tabs">');
+  const end = corridor.indexOf('</AgentTradingTabs>');
+  assert.ok(start > corridor.indexOf('</header>'));
+  assert.ok(start < corridor.indexOf("metric('staking-mine'"));
+  assert.ok(end > corridor.indexOf('<StakingRoundClock'));
+  assert.ok(end < corridor.lastIndexOf('</section>'));
+  assert.match(home, /<StakingCorridor d=\{d\} showAgents \/>/);
+  assert.doesNotMatch(home, /<MockCentralPanel compact/);
+  for (const key of ['crypto', 'sports', 'predictions', 'casino']) {
+    assert.ok(tabs.includes(`key: '${key}'`));
+  }
+  assert.match(tabs, /disabled=\{key !== 'crypto'\}/);
+});
