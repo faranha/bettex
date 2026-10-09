@@ -8,7 +8,7 @@ export function AgentTradingTabs({ children, id }: { children: ReactNode; id: st
   const tabs = [
     { key: 'crypto', label: x('Cripto', 'Crypto', 'Cripto') },
     { key: 'sports', label: x('Esportes', 'Sports', 'Deportes') },
-    { key: 'predictions', label: x('Predictions', 'Predictions', 'Predictions') },
+    { key: 'predictions', label: x('Predictions', 'Predictions', 'Predicciones') },
     { key: 'casino', label: x('Cassino', 'Casino', 'Casino') },
   ];
   return <div className="grid min-w-0 gap-4" data-testid={id}>

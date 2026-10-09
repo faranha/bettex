@@ -27,6 +27,13 @@ try {
   `, resolveDir: resolve(import.meta.dirname, '..'), loader: 'ts' },
     bundle: true, platform: 'node', format: 'esm', outfile });
   const { default: fixture } = await import(pathToFileURL(outfile).href);
-  await writeFile(resolve(import.meta.dirname, '../src/components/interface-demo/fixture.json'), JSON.stringify(fixture));
+  // Avoid even valid-looking EVM destinations or transaction hashes in examples.
+  const mockIdentifiers = value => {
+    if (typeof value === 'string' && /^0x[0-9a-f]+$/i.test(value)) return value.length === 66 ? 'MOCK-TRANSACTION' : 'MOCK-ADDRESS';
+    if (Array.isArray(value)) return value.map(mockIdentifiers);
+    if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, mockIdentifiers(item)]));
+    return value;
+  };
+  await writeFile(resolve(import.meta.dirname, '../src/components/interface-demo/fixture.json'), JSON.stringify(mockIdentifiers(fixture)));
   console.log('Generated visual fixture without network or account access.');
 } finally { await rm(dir, { recursive: true, force: true }); }

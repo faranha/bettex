@@ -12,6 +12,7 @@ import { MockProfilePanel } from './MockProfilePanel';
 import { MockHistoryPanel } from './MockHistoryPanel';
 import { MockTreasuryPanel } from './MockTreasuryPanel';
 import { openDemoNotice, visualDashboard } from './runtime';
+import { MOCK_WALLET_ADDRESSES } from './mock-addresses';
 import '../demo/demo.css';
 
 export function InterfaceDemoPage() {
@@ -25,7 +26,7 @@ export function InterfaceDemoPage() {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 px-3 pt-5 sm:px-5">
         {view === 'account' && <h1 className="sr-only">{x('Perfil', 'Profile', 'Perfil')}</h1>}
         {view === 'home' && <><h1 className="sr-only">{x('Dashboard', 'Dashboard', 'Dashboard')}</h1>
-          <DemoWalletsCard d={d} onWallet={openDemoNotice} onExport={openDemoNotice} />
+          <DemoWalletsCard d={d} addresses={MOCK_WALLET_ADDRESSES} onWallet={openDemoNotice} onExport={openDemoNotice} />
           <StakingCorridor d={d} showAgents />
           <MockCentralPanel compact onAction={openDemoNotice} />
         </>}

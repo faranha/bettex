@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import { useState } from 'react';
 import { useX } from '@/components/demo/ui';
+import { MOCK_WALLET_ADDRESSES } from './mock-addresses';
 
 type Tab = 'prefs' | 'security' | 'wallet';
 const btn = 'inline-flex min-h-11 items-center justify-center rounded-xl bg-[#12372A] px-4 text-sm font-bold text-[#F2C14E] hover:bg-[#0C2A1F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227]';
@@ -37,7 +38,8 @@ export function MockProfilePanel({ onAction }: { onAction: () => void }) {
           {act(x('Alterar senha', 'Change password', 'Cambiar contraseña'))}
         </>}
         {tab === 'wallet' && <>
-          <dl>{row(x('Saldo de exemplo', 'Sample balance', 'Saldo de ejemplo'), 'R$ 1.250,00')}{row(x('Carteira', 'Wallet', 'Cartera'), x('Não conectada', 'Not connected', 'No conectada'))}</dl>
+          <dl>{row(x('Saldo de exemplo', 'Sample balance', 'Saldo de ejemplo'), 'R$ 1.250,00')}{row(x('Carteira fictícia', 'Fictitious wallet', 'Cartera ficticia'), MOCK_WALLET_ADDRESSES.USDC)}</dl>
+          <p className="text-xs text-[#5B6B85]">{x('Endereço mock. Sem rede, conexão de carteira ou depósitos.', 'Mock address. No network, wallet connection or deposits.', 'Dirección mock. Sin red, conexión de cartera ni depósitos.')}</p>
           {act(x('Registrar carteira', 'Register wallet', 'Registrar cartera'))}
           {act(x('Exportar relatório', 'Export report', 'Exportar informe'))}
           {act(x('Fazer depósito', 'Make deposit', 'Hacer depósito'))}
