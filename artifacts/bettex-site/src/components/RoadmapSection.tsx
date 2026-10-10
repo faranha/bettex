@@ -1,45 +1,51 @@
-import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark, ArrowRight } from 'lucide-react';
+import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark, CalendarDays, ArrowRight } from 'lucide-react';
 import { CommunityCTA } from './CommunityCTA';
 import { DemoAppLink } from './DemoAppLink';
 import './RoadmapSection.css';
 
-const icons = [FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark];
+const icons = [ScrollText, FlaskConical, CalendarDays, Rocket, Compass, MessagesSquare, Bot, Landmark];
 
 const stops = [
   {
-    tag: 'ALFA · SEED',
-    date: 'Outubro de 2026',
-    dateTime: '2026-10',
-    title: 'ALFA com token de teste e audiência semente',
-    description: 'Validar o produto com uma audiência semente, token de teste e contratos básicos em testnet, a IA BTEX e um agente de trading básico com Allora. Usar apenas tokens de teste, sem dinheiro real, venda TGE ou lançamento do token em produção.',
-    current: true,
+    tag: 'TOKEN · VENDA PÚBLICA',
+    date: '10 de dezembro de 2026',
+    dateTime: '2026-12-10',
+    title: 'Lançamento público do token BETTEX',
+    description: 'Disponibilizar 15% da emissão total na venda pública inicial, abrir o pool e prever a listagem pública, conforme as condições da oferta. Captar recursos para o projeto e ampliar o conhecimento da BETTEX antes do lançamento do agente.',
   },
   {
-    tag: 'PRÉ-VENDA · CAPTAÇÃO · FORMALIZAÇÃO',
-    date: 'Novembro de 2026',
-    dateTime: '2026-11',
-    title: 'Pré-venda, investidores e estruturação da empresa',
-    description: 'Realizar a pré-venda do token, captar investidores-anjo, formalizar a empresa e estruturar o negócio para a próxima fase.',
-  },
-  {
-    tag: 'BETA · TGE · GO TO MARKET',
-    date: 'Janeiro de 2027',
-    dateTime: '2027-01',
-    title: 'Lançamento do BETA, TGE e go to market',
-    description: 'Lançar a versão BETA, realizar o evento de geração do token (TGE) e iniciar o go to market. Ampliar o acesso ao produto a partir dos testes e aprendizados do ALFA.',
+    tag: 'ALFA · AGENTE · CAPTAÇÃO',
+    date: '1º trimestre de 2027',
+    dateTime: undefined,
+    title: 'ALFA do agente e captação de investidores',
+    description: 'Lançar a versão ALFA do agente entre janeiro e março de 2027, validar o produto com a comunidade e recolher feedback. Captar investidores para a evolução do negócio e avançar na formalização da empresa.',
     featured: true,
   },
   {
+    tag: 'VESTING · LIBERAÇÃO',
+    date: '10 de março de 2027',
+    dateTime: '2027-03-10',
+    title: 'Início do vesting',
+    description: 'Iniciar o vesting três meses após a abertura da venda pública. Os 15% iniciais pertencem à alocação pública; os 85% restantes seguem o cronograma de 36 meses. Este marco não determina a data de estreia do ALFA.',
+  },
+  {
+    tag: 'BETA · GO TO MARKET',
+    date: 'Após o ALFA · data a definir',
+    dateTime: undefined,
+    title: 'Lançamento do BETA e go to market',
+    description: 'Lançar a versão BETA e iniciar o go to market após os testes e aprendizados do ALFA. Ampliar o acesso ao produto, sem repetir o lançamento público do token.',
+  },
+  {
     tag: 'PRIMEIRO MERCADO',
-    date: 'Fevereiro de 2027',
-    dateTime: '2027-02',
+    date: 'Após o BETA · data a definir',
+    dateTime: undefined,
     title: 'Abertura dos mercados',
     description: 'Iniciar a operação em mercados de previsão (prediction markets), com acompanhamento, limites de risco e avaliação dos resultados.',
   },
   {
     tag: 'CONSULTA ABERTA',
-    date: 'Março de 2027',
-    dateTime: '2027-03',
+    date: 'Após a abertura dos mercados',
+    dateTime: undefined,
     title: 'Resultados e próximos passos',
     description: 'Realizar uma consulta aberta para avaliar os resultados da operação e determinar os próximos passos do projeto.',
   },
@@ -71,7 +77,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
           </div>
           <div className="roadmap__intro-side">
             <span className="roadmap__intro-index" aria-hidden="true">01 → {total}</span>
-            <p>ALFA seed em outubro de 2026, com token de teste em testnet e primeiros agentes. Pré-venda, captação e formalização em novembro de 2026. BETA, TGE e go to market em janeiro de 2027.</p>
+            <p>Token para o público em 10 de dezembro de 2026. ALFA do agente e captação de investidores no primeiro trimestre de 2027. Vesting a partir de 10 de março de 2027, três meses após a venda pública.</p>
           </div>
         </header>
 
@@ -85,12 +91,10 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
             {stops.map((stop, index) => {
               const Icon = icons[index];
               const number = String(index + 1).padStart(2, '0');
-              const current = 'current' in stop && stop.current;
               return (
               <li
-                className={`roadmap__stop roadmap__stop--${index + 1}${'featured' in stop ? ' roadmap__stop--featured' : ''}${current ? ' roadmap__stop--current' : ''}`}
+                className={`roadmap__stop roadmap__stop--${index + 1}${'featured' in stop ? ' roadmap__stop--featured' : ''}`}
                 key={stop.title}
-                aria-current={current ? 'step' : undefined}
                 data-testid={`roadmap-step-${index + 1}`}
               >
                 <span className="roadmap__pin" aria-hidden="true"><span /></span>
@@ -98,13 +102,12 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
                   <span className="roadmap__icon" aria-hidden="true"><Icon strokeWidth={2.2} /></span>
                   <div className="roadmap__place-top">
                     <span className="roadmap__place-number">{number}<span> / {total}</span></span>
-                    {current ? <DemoAppLink className="roadmap__place-tag underline underline-offset-4">{stop.tag}</DemoAppLink> : <span className="roadmap__place-tag">{stop.tag}</span>}
+                    <span className="roadmap__place-tag">{stop.tag}</span>
                   </div>
                   <time className="roadmap__place-date" dateTime={stop.dateTime}>{stop.date}</time>
-                  {current && <span className="roadmap__current-badge" data-testid="roadmap-current-phase">Estamos aqui</span>}
                   <h3>{stop.title}</h3>
                   <p>{stop.description}</p>
-                  {(index === 0 || index === 2) && <DemoAppLink className="roadmap__features roadmap__features--demo" data-testid={index === 0 ? 'roadmap-alpha-features' : 'roadmap-beta-features'}><span>Abrir o demo</span><ArrowRight size={16} aria-hidden="true" /></DemoAppLink>}
+                  {(index === 1 || index === 3) && <DemoAppLink className="roadmap__features roadmap__features--demo" data-testid={index === 1 ? 'roadmap-alpha-features' : 'roadmap-beta-features'}><span>Abrir o demo</span><ArrowRight size={16} aria-hidden="true" /></DemoAppLink>}
                 </article>
               </li>
               );
