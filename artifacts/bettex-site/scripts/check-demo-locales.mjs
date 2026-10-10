@@ -30,7 +30,10 @@ files.push(...fs.readdirSync(liveMarketsRoot).filter(f => /\.(ts|tsx)$/.test(f))
 const failures = [];
 let tuples = 0;
 const universal = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…✓✗]+|(?:·\s*)?x\s*·\s*y\s*=\s*k(?:\s*·)?|2X|BETTEX|USDC|BTC|ETH|SOL|Hydra|BETTEX Bank:|Live Trading|Tokenomics|UTC|SAMPLE[-_A-Z0-9]*|ILLUSTRATIVE-NOT-A-CREDENTIAL)$/;
-const neutral = text => universal.test(text) || /^(?:ID|Hash):$/.test(text) || !/[A-Za-zÀ-ÿ]/.test(text.replace(/\b(?:USD|BRL|USDC|BETTEX|BTC|ETH|SOL|UTC|D|T|h|v)\b|\b\d+h\b|São Paulo|T\+/g, ''));
+// SI units, hierarchy entities and stable example policy IDs are not prose.
+// JSX may split a machine identifier around an interpolated version number.
+const protocolText = /^(?:demo-policy-|-effective-\d+|:\s*demo-policy-v\d+\s*\/\s*demo-strategy-v\d+)$/;
+const neutral = text => universal.test(text) || protocolText.test(text) || /^(?:ID|Hash):$/.test(text) || !/[A-Za-zÀ-ÿ]/.test(text.replace(/&(?:gt|lt);|\b(?:USD|BRL|USDC|BETTEX|BTC|ETH|SOL|UTC|D|T|h|s|ms|v)\b|\b\d+h\b|São Paulo|T\+/g, ''));
 const forbidden = new Set(['generateKey', 'signTransaction', 'signMessage']);
 for (const file of files) {
   const raw = fs.readFileSync(file, 'utf8');

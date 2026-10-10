@@ -7,7 +7,7 @@ import { demoView } from '../demo/demo-navigation';
 import { DemoWalletsCard } from '../demo/DemoWalletsCard';
 import { StakingCorridor } from '../demo/StakingCorridor';
 import { DemoEnvironmentBanner } from '../demo/DemoEnvironmentBanner';
-import { MockCentralPanel } from './MockCentralPanel';
+import { CentralDemo } from './CentralDemo';
 import { MockProfilePanel } from './MockProfilePanel';
 import { MockHistoryPanel } from './MockHistoryPanel';
 import { MockTreasuryPanel } from './MockTreasuryPanel';
@@ -29,7 +29,7 @@ export function InterfaceDemoPage() {
           <DemoWalletsCard d={d} addresses={MOCK_WALLET_ADDRESSES} onWallet={openDemoNotice} onExport={openDemoNotice} />
           <StakingCorridor d={d} showAgents />
         </>}
-        {view === 'central' && <MockCentralPanel onAction={openDemoNotice} />}
+        {view === 'central' && <CentralDemo onAction={openDemoNotice} />}
         {view === 'wallet' && <MockHistoryPanel key={path} d={d} />}
         {view === 'treasury' && <MockTreasuryPanel d={d} />}
         {view === 'account' && <MockProfilePanel onAction={openDemoNotice} />}

@@ -16,3 +16,9 @@ O criador reiterou: “não tem nada sendo virado em testnet”, “Substitua po
 **Why:** Apenas parar os serviços não basta: os runtimes de testnet voltaram a rodar numa sessão posterior. Leituras operacionais também podem inicializar serviços ou acessar contas.
 
 **How to apply:** Não manter runtimes blockchain configurados para iniciar; bloquear sua inicialização e não montar rotas operacionais ou autenticação na API. Endereços devem ser identificadores inequivocamente fictícios e não endereços utilizáveis. O botão Demo abre o mesmo aviso das operações.
+
+O criador pediu: “Recuperar a Central completa como demo visual”, após apontar que a lógica da área BETTEX havia desaparecido da interface.
+
+**Why:** A conversão em demo não autoriza substituir a Central completa por um cartão simplificado da orquestradora.
+
+**How to apply:** Preservar a hierarquia, os mandatos, as análises, os pedidos, as decisões e seus percursos consultáveis, usando exemplos locais claramente identificados. Filtros e detalhes funcionam; ações operacionais continuam abrindo o aviso, sem executar nem persistir.
