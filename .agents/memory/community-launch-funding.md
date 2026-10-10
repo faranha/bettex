@@ -1,10 +1,10 @@
 ---
-name: Lançamento fechado e financiamento pela comunidade
-description: Rodada inicial da comunidade BETTEX para financiar o desenvolvimento, antes da abertura ao público.
+name: Venda pública inicial e financiamento pela comunidade
+description: Venda inicial de 15% aberta a qualquer comprador para financiar o negócio, com divulgação para a comunidade.
 ---
 
-O criador definiu um lançamento fechado para a comunidade BETTEX com 15% dos tokens, seguido de lançamento para o restante do público. O valor arrecadado na rodada da comunidade serve para financiar o desenvolvimento do projeto, assim como recursos de investidores; o fundador também participa do financiamento inicial.
+O criador esclareceu que quer uma venda pública inicial de 15% dos tokens: geração inicial e listagem pública para qualquer pessoa comprar, com foco inicial na comunidade BETTEX. Quer usar “a grana do pool para financiar o negocio”. Isso substitui a interpretação anterior de acesso fechado à comunidade. O fundador também participa do financiamento inicial, que não deve depender de investidores externos no começo.
 
-**Why:** O criador explicou que o financiamento inicial não deve depender de investidores externos, pelo menos no começo, e afirmou: “15% é o lançamento pra comunidade”.
+**Why:** O criador explicou: “adicionar uma venda publica de 15% inicial para comunidade, entao a geracao inicial vai ser feita e vamos adicionar numa listagem publica para qualquer um comprar e vamos usar a grana do pool para financiar o negocio”.
 
-**How to apply:** Distinguir a captação da comunidade para desenvolvimento da venda pública destinada à tesouraria. Não presumir que os 15% substituem a alocação de investidores ou saem da alocação pública sem definição expressa do criador. Uma conversa sobre essa estrutura não autoriza implementar vendas ou movimentar recursos.
+**How to apply:** Não descrever essa venda como restrita à comunidade. Distinguir captação para desenvolvimento da venda pública posterior destinada à tesouraria. Não presumir que os 15% substituem investidores, saem da parcela pública ou ampliam a emissão total sem definição expressa do criador. Esclarecer se “pool” significa arrecadação de venda ou liquidez de negociação; não tratar reservas de uma DEX como receita livre. Uma conversa sobre essa estrutura não autoriza implementar vendas ou movimentar recursos.

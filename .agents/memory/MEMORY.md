@@ -87,4 +87,4 @@
 - [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.
 - [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.
 - [Escopo da atualização documental](documentation-update-scope.md) — atualização restrita à documentação e ao Pitch; homepage e aplicativo ficam fora.
-- [Captação da comunidade](community-launch-funding.md) — lançamento fechado de 15% para financiar desenvolvimento, antes da abertura ao público.
+- [Captação da comunidade](community-launch-funding.md) — venda pública inicial de 15%, aberta a qualquer comprador, para financiar o negócio; esclarecer arrecadação versus liquidez.
