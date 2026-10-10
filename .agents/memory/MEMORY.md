@@ -86,5 +86,5 @@
 - [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.
 - [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.
 - [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.
-- [Escopo da atualização documental](documentation-update-scope.md) — atualização restrita à documentação e ao Pitch; homepage e aplicativo ficam fora.
-- [Captação da comunidade](community-launch-funding.md) — emissão parcial e compra pelo fundador no pool; analisar revendas para financiamento, sem substituir por alocação direta.
+- [Escopo da atualização documental](documentation-update-scope.md) — documentação, Pitch e derivados; reorganização do lançamento inclui roadmap da homepage, não o aplicativo.
+- [Captação da comunidade](community-launch-funding.md) — venda pública inicial de 15%; vesting três meses depois; ALFA com captação na segunda etapa, sem plano de trades do fundador.
