@@ -30,7 +30,7 @@ function validate(d: Draft) {
   const price = num(d.price);
   if (!(price > 0 && price <= 10000)) e.price = t('Digite um preço maior que zero e até 10000 USDC.');
   const projectedTokens = (int(d.m1) + int(d.m2) + int(d.m3)) * tk / price;
-  if (!e.price && projectedTokens > PUBLIC_TOKEN_ALLOCATION) e.price = t('Este cenário excede os 650 milhões de tokens da alocação pública. Aumente o preço ou reduza as compras.');
+  if (!e.price && projectedTokens > PUBLIC_TOKEN_ALLOCATION) e.price = t('Este cenário excede os 550 milhões de tokens da comunidade. Aumente o preço ou reduza as compras.');
   const c = num(d.cost);
   if (!(c >= 0 && c <= 100000)) e.cost = t('Digite um valor de 0 a 100000.');
   const g = num(d.gross);
