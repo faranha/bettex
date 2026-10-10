@@ -1,9 +1,9 @@
 ---
 name: Venda pública inicial anterior ao vesting
-description: Direção atual: venda pública de 15%, vesting três meses depois e ALFA com captação como segunda etapa.
+description: Parcela inicial revista para 10%; vesting três meses depois e ALFA com captação como segunda etapa.
 ---
 
-O criador definiu a direção atual: destinar 15% dos tokens à venda pública três meses antes do início do vesting, com abertura de um pool em data anunciada e eventual listagem dos tokens. Qualquer pessoa poderá comprar na listagem. O objetivo é captar recursos e criar awareness; depois entra no ar o ALFA, junto com a captação de investidores, como segunda etapa. Não incorporar à proposta definitiva as alternativas anteriores sobre compras antecipadas ou trades do fundador.
+O criador inicialmente definiu 15% dos tokens para a abertura pública anterior ao vesting; depois revisou a parcela inicial para **10%**, na conversa sobre emissão. Preservar o intervalo de três meses até o vesting e a intenção de acesso inicial pela comunidade e eventual listagem pública. Qualquer pessoa poderá comprar na listagem. O objetivo é captar recursos e criar awareness; depois entra no ar o ALFA, junto com a captação de investidores, como segunda etapa. Não incorporar à proposta definitiva as alternativas anteriores sobre compras antecipadas ou trades do fundador.
 
 **Why:** O criador reiterou: “nós vamos apenas destinar 15% dos tokens para venda pública antes do início do vesting” e “É a segunda etapa, o alfa, junto com a captura de investidores”. Pediu reorganizar e planejar a execução, enfatizando que a mudança de tokenomia é essa listagem pública.
 
@@ -20,3 +20,9 @@ O criador esclareceu que a sequência começa com promoção para a comunidade, 
 **Why:** A descrição anterior tratava os 15% principalmente como disponibilização para venda, sem explicitar a emissão inicial pretendida.
 
 **How to apply:** Separar emissão, distribuição, preço de oferta e liquidez nas discussões e na futura atualização documental. Não presumir que mintar os 15% exige vender todos ou depositá-los num pool. O mecanismo de compra e o preço ainda não foram escolhidos; a conversa não autoriza executar mint ou oferta.
+
+A parcela inicial atual é **10%, substituindo os 15% anteriores**.
+
+**Why:** Na pergunta sobre a emissão inicial, o criador respondeu “10%”.
+
+**How to apply:** Usar 10% nas próximas discussões e na futura atualização autorizada. A resposta não escolheu entre mint integral antecipado e mint por compra, nem definiu preço. Não tratar a conversa como autorização para modificar o site ou executar emissão.
