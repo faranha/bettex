@@ -75,7 +75,6 @@ export function AssetRolesSchematic() {
     <Fork from={{ t: 'USDC', s: 'Ativo financeiro', tone: 'blue' }} to={[
       { t: 'Saldos e compras', tone: 'blue' },
       { t: 'Distribuições e saques', tone: 'teal' },
-      { t: 'Taxas de serviço pagas em USDC', tone: 'gold' },
     ]} />
     <Fork from={{ t: 'BETTEX', s: 'Token de participação', tone: 'gold' }} to={[
       { t: 'Participação automática no staking', tone: 'gold' },
@@ -118,8 +117,8 @@ export function AccountBoundariesSchematic() {
     <Lane label="Venda pública">
       <Flow nodes={[{ t: 'Preço dos tokens', s: 'Em USDC', tone: 'blue' }, { t: 'Tesouraria', s: '100% do preço', tone: 'gold' }]} />
     </Lane>
-    <Lane label="Serviços">
-      <Flow nodes={[{ t: 'Taxas de serviço', s: 'Em USDC', tone: 'blue' }, { t: 'Carteira operacional da entidade', s: 'Fora da tesouraria e do split', tone: 'teal' }]} />
+    <Lane label="Sustentabilidade operacional">
+      <Flow nodes={[{ t: 'Possível contribuição por serviços', s: 'Alternativa em avaliação', tone: 'blue' }, { t: 'Carteira operacional da entidade', s: 'Fora da tesouraria e do split', tone: 'teal' }]} />
     </Lane>
     <Lane label="Resultados">
       <Flow nodes={[{ t: 'Parcela do staking', s: 'Em USDC', tone: 'blue' }, { t: 'Carteira USDC do titular', s: 'Após conciliação', tone: 'teal' }]} />

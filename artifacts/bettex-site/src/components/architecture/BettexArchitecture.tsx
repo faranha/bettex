@@ -63,19 +63,19 @@ const fig1: Step[] = [
         <div><strong>Carteira BETTEX</strong></div>
       </div>
     ) },
-  { title: 'Compra BETTEX', text: 'Usa USDC no swap oficial da venda pública. Após confirmação, recebe os BETTEX; a tarifa separada segue a política oficial e vai ao caixa operacional.', tone: 'gold', badge: 'Swap', id: 'node-bettex-swap',
+  { title: 'Compra BETTEX', text: 'Usa USDC no swap oficial da venda pública. Após confirmação, recebe os BETTEX; não há cobrança de serviço definida.', tone: 'gold', badge: 'Swap', id: 'node-bettex-swap',
     extra: <div className="ba-swap" aria-label="Troca de USDC por BETTEX"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
 ];
 const fig2: Step[] = [
   { title: 'Carteira USDC', text: 'A pessoa usa o USDC disponível e confirmado para comprar BETTEX da venda pública do projeto.', tone: 'blue' },
-  { title: 'Confirma o swap', text: 'Confere preço, quantidade, tarifa conforme política oficial e custos externos em USDC. Valores e destinos precedem a autorização; a tarifa vai ao caixa operacional, sem dedução ou queima de BETTEX.', tone: 'gold', id: 'node-treasury-swap',
+  { title: 'Confirma o swap', text: 'Confere preço, quantidade e custos externos em USDC. Valores e destinos precedem a autorização; uma contribuição operacional é apenas uma possibilidade em avaliação.', tone: 'gold', id: 'node-treasury-swap',
     extra: <div className="ba-swap" aria-label="Compra de BETTEX com USDC"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
-  { title: 'Compra liquidada', text: 'Preço e tarifa em USDC têm destinos separados; o crédito dos BETTEX comprados e os débitos são conciliados juntos uma única vez.', tone: 'teal',
+  { title: 'Compra liquidada', text: 'O preço em USDC vai à tesouraria; o crédito dos BETTEX comprados e os débitos são conciliados juntos uma única vez.', tone: 'teal',
     extra: (
       <div className="ba-entry">
         <div><strong>BETTEX comprado → Titular</strong><p>Recebe a quantidade comprada, sem tarifa deduzida em tokens.</p></div>
-        <div><strong>Tarifa USDC → Caixa operacional</strong><p><a href="#documentacao-taxas">Política oficial de taxas</a>; caixa separado, fora do split.</p></div>
-        <div data-testid="node-bettex-treasury"><strong>Preço USDC → Tesouraria BETTEX</strong><p>Recebe 100% do preço dos tokens da venda pública, separado da tarifa.</p></div>
+        <div><strong>Sustentabilidade operacional</strong><p><a href="#documentacao-taxas">Alternativas em avaliação</a>; sem cobrança definida.</p></div>
+        <div data-testid="node-bettex-treasury"><strong>Preço USDC → Tesouraria BETTEX</strong><p>Recebe 100% do preço dos tokens da comunidade já liberados.</p></div>
       </div>
     ) },
 ];
@@ -110,7 +110,7 @@ const fig5: Step[] = [
 const fig6: Step[] = [
   { title: 'Parcela do staking', text: 'Parcela de 25% do lucro distribuível já separada no desenho 5, vinculada aos resultados e participantes elegíveis. Novos participantes não recebem lucros anteriores. Não há nova apuração ou novo split neste fluxo.', tone: 'blue' },
   { title: 'Retenção e crédito na Carteira USDC', text: 'Direito bruto identificado; retenções aplicáveis são resolvidas e recolhidas antes da disponibilização líquida. Provisão isolada não libera saldo. USDC transferido entra no disponível após confirmação e conciliação, sem nova dedução do tributo já considerado.', tone: 'teal' },
-  { title: 'Saque de USDC do staking', text: 'Movimenta USDC recebido sem repetir a distribuição. A tarifa segue a política oficial, paga em USDC ao caixa operacional, com dedução autorizada e líquido discriminado. Custos externos e retenções são separados. Sem pagamento em moeda local.' },
+  { title: 'Saque de USDC do staking', text: 'Movimenta USDC recebido sem repetir a distribuição. Não há cobrança de serviço definida. Custos externos e retenções são separados. Sem pagamento em moeda local.' },
 ];
 const fig7: Step[] = [
   { title: 'Agentes de IA', text: 'A IA BETTEX coordena agentes que analisam oportunidades e propõem operações nos mercados.', tone: 'blue',
@@ -157,9 +157,9 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
           <Steps steps={fig1} label="Criação da conta, criação das carteiras USDC e BETTEX e compra por swap" />
         </Figure>}
 
-        {(!figure || figure === '2') && <Figure id="figure-bettex-deposit" num="2" title={architectureFigureTitles['2']} lead="Neste desenho, o vendedor é o projeto: BETTEX vai para a Carteira BETTEX; 100% do preço pago em USDC vai à tesouraria, enquanto a tarifa vai ao caixa operacional separado.">
+        {(!figure || figure === '2') && <Figure id="figure-bettex-deposit" num="2" title={architectureFigureTitles['2']} lead="Neste desenho, o vendedor é o projeto: BETTEX vai para a Carteira BETTEX; 100% do preço dos tokens da comunidade pago em USDC vai à tesouraria.">
           <Steps steps={fig2} label="Compra da venda pública: USDC disponível, cotação e confirmação do swap, entrega de BETTEX e envio de USDC à tesouraria" />
-          <p className="ba-fig__foot">Este fluxo não representa revenda entre titulares. Numa revenda, o pagamento vai ao vendedor, sem nova captação para a tesouraria. As tarifas confirmadas de compra primária, saque USDC e envio autônomo BETTEX são pagas em USDC; não atribuir tarifa primária a toda revenda.</p>
+          <p className="ba-fig__foot">Este fluxo não representa revenda entre titulares. Numa revenda, o pagamento vai ao vendedor, sem nova captação para a tesouraria. Uma contribuição por serviços é apenas uma alternativa em avaliação, sem cobrança definida.</p>
           <div className="ba-flow ba-flow--treasury">
             <p className="ba-flow__label">Tesouraria BETTEX · reservas do valor recebido</p>
             <div className="ba-entry ba-reserves" data-testid="node-bettex-reserves">
@@ -195,7 +195,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
           <Steps steps={fig6} label="Parcela do staking já separada pela IA, distribuição pendente até recebimento confirmado na Carteira USDC e saque do USDC recebido" />
           <p className="ba-fig__foot">O registro do direito à distribuição não é saldo on-chain recebido. A obrigação e o posterior pagamento têm efeito único na apuração; a interface não soma o pendente ao saldo já recebido. Custos de rede são identificados separadamente.</p>
           <p className="ba-fig__foot"><a href="#figure-bettex-risk">Ver condições do split no desenho 5</a>.</p>
-          <p className="ba-fig__foot"><a href="#documentacao-taxas">Consultar a política oficial de taxas</a>.</p>
+          <p className="ba-fig__foot"><a href="#documentacao-taxas">Consultar alternativas de sustentabilidade</a>.</p>
         </Figure>}
 
         {(!figure || figure === '7') && <Figure id="figure-bettex-agents" num="7" title={architectureFigureTitles['7']} lead="Agentes de IA → conexões por MCP ou API → execução automática das operações autorizadas.">

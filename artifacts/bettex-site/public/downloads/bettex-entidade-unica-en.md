@@ -22,7 +22,7 @@ Financing: sources and uses of funds
 
 Angel contributions allocate 100% of funds to product, technology and marketing, with no founder salaries or withdrawals. The 15% token allocation does not impose a funding split: agreements identify sources, uses and rights.
 
-The initial 10% mint funds the project, operated directly or by a partner launchpad. Sales of the already released community 55% send 100% of the USDC price to the treasury; separate fees go to the operating account. Resale proceeds belong to the seller. Fundraising, revenue and distributable profit are not equivalent.
+The initial 10% mint funds the project, through its own execution or a partner launchpad. Sales of the released 55% community allocation direct 100% of the price in USDC to the treasury. A service contribution is only an alternative to support operations, with no charge, amount or adoption confirmed. Resale proceeds belong to the seller. Funding, revenue and distributable profit are not equivalent.
 
 Burn Lottery and Double 2X
 

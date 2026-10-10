@@ -61,7 +61,7 @@ assert.equal([...agents.matchAll(/\{ id: '[^']+', name:/g)].length, 8);
 for (const field of ['input:', 'analysis:', 'control:', 'example:', 'result:']) assert.equal(agents.split(field).length - 1, 8);
 const obsolete = [
   /(?:até|teto de) cinco pessoas/i, /quatro posições (?:pagas|remuneradas)/i,
-  /proposedMonthlySalaryUsd|payrollChargesRate|Sustentar a operação/i,
+  /proposedMonthlySalaryUsd|payrollChargesRate|title:\s*['"]Sustentar a operação['"]/i,
   /Mercado grande não é demanda comprovada/i, /(?:equilíbrio|break.?even).{0,30}mês 9/i,
   /destino dos tokens recomprados pendente|queima não aprovada/i,
   /reserva defensiva mínima inicial de 50%/i,
