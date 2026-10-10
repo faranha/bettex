@@ -1,16 +1,16 @@
 ---
 name: Fundação BETTEX
-description: Visão full DEX, sem fundação; comunidade governa, tesouraria sustenta operação e IA assume funções.
+description: Sem entidade formal; administração e domínio dos contratos permanecem, com evolução para gestão integral por IA.
 ---
 
-O criador substituiu a direção de entidade futura pela visão full DEX e totalmente descentralizada: retirar a fundação e a empresa como estrutura central do projeto. A mensagem começou sugerindo duas alternativas, mas terminou explicitamente escolhendo o projeto descentralizado.
+O criador retirou a empresa/fundação formal como estrutura central do projeto. A visão cripto/DEX não significa ausência de administração ou renúncia ao domínio dos contratos.
 
-**Why:** O criador determinou: “retire a fundacao, vamos criar algo totalmente cripto” e “reveja toda a apresentacao e vamos refazer essa parte para full dex, full decentralizado, planeje”.
+**Why:** Após pedir uma visão full DEX, o criador corrigiu expressamente a interpretação: “uma coisa é que vamos ter dominio sobre os contratos, mas ter uma instituicao formal fiscica, regulamentada, pagando impostos, isso eh o que estamos dizendo que nao vamos ter”.
 
-**How to apply:** Revisar apresentação, governança, negócios, financiamento e derivados para essa visão; não manter empresa/fundação como destino obrigatório. Separar visão futura de descentralização tecnicamente comprovada. Cumprir exigências locais por atividade; retirar da oferta o que não possa operar legalmente. O pedido é de planejamento, não autorização para migrar contratos, alterar custódia, publicar ou executar operações.
+**How to apply:** Separar estrutura institucional de controle técnico. Mapear e retirar a narrativa de pessoa jurídica formal, mas não classificar owner, admin, multisig, permissões humanas ou poderes dos fundadores como incompatibilidades a eliminar automaticamente. Não presumir DAO, renúncia de ownership, operação permissionless ou infraestrutura totalmente distribuída. Ausência de entidade não comprova isenção tributária ou dispensa regulatória. O pedido é de levantamento e planejamento, não autorização para mudar custódia, executar operações ou publicar.
 
-Decisões estratégicas passam à comunidade. Os recursos para manter o projeto vêm da própria tesouraria. Os fundadores iniciam o projeto e, ao longo do tempo, também são substituídos por IA.
+Várias decisões serão da comunidade. Os recursos para manter o projeto vêm da própria tesouraria. Os fundadores começam administrando e, ao longo do tempo, suas funções serão substituídas por IA, evoluindo para um serviço todo gerido por IA.
 
 **Why:** O criador definiu: “vamos tratar varias decisoes como da comunidade”, “o dinheiro para manter os negocios, ele vem do proprio treasury” e “os fundadores vao iniciaro projeto mas ao longo do tempo vao ser substituidos por IA tambem”.
 
-**How to apply:** Planejar orçamento operacional aprovado pela comunidade, sem inventar percentual, poderes de saque ou mudar automaticamente o split existente. Definir a transição de funções para IA como gradual e verificável, sem equiparar automação a descentralização ou conceder poderes ilimitados. Quórum, votação, limites de gasto e método de substituição ainda precisam ser definidos.
+**How to apply:** Planejar orçamento da tesouraria sem inventar percentual ou mudar automaticamente o split. Mapear funções administrativas para automação gradual, com controles e limites. Não presumir que cada operação exige votação comunitária ou que toda autoridade será transferida para titulares. Mecanismos de decisão e limites da IA ainda precisam ser definidos.

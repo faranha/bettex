@@ -74,6 +74,7 @@ __pycache__/
 *.key
 /data/runtime/
 /screenshots/
+/generated-artifacts/
 # Uploaded instructions are not product source. Existing assets remain intact.
 /attached_assets/Pasted-*.txt
 /attached_assets/*.zip
