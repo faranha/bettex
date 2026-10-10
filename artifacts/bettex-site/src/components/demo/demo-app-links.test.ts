@@ -13,9 +13,13 @@ test('public ALFA and feature links share the localized app entry', () => {
   assert.doesNotMatch(link, /target="_blank"|localhost|replit\.dev/);
   const roadmap = read('../RoadmapSection.tsx');
   assert.doesNotMatch(roadmap, /Em breve, features|features--soon/);
-  assert.match(roadmap, /index === 0 \|\| index === 2/);
+  assert.match(roadmap, /index === 1 \|\| index === 3/);
   assert.match(roadmap, /<DemoAppLink className="roadmap__features/);
-  assert.match(roadmap, /date: 'Janeiro de 2027'/);
+  assert.match(roadmap, /date: '10 de dezembro de 2026'/);
+  assert.match(roadmap, /date: '1º trimestre de 2027'/);
+  assert.match(roadmap, /date: '10 de março de 2027'/);
+  assert.match(roadmap, /date: 'Após o ALFA · data a definir'/);
+  assert.doesNotMatch(roadmap, /current: true|BETA · TGE|Outubro de 2026|Novembro de 2026|Janeiro de 2027/);
   const app = read('../../App.tsx');
   assert.match(app, /<DemoAppLink[^>]*data-testid="brand-alpha-badge"/);
   assert.match(read('../../pages/pitch.tsx'), /<DemoAppLink data-testid="pitch-open-alpha-demo"/);
