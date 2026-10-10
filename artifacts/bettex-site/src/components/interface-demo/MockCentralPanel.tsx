@@ -22,7 +22,7 @@ function Spark({ data, label }: { data: number[]; label: string }) {
   return <svg role="img" aria-label={label} viewBox="0 0 100 42" preserveAspectRatio="none" className="h-16 w-full"><polyline points={pts} fill="none" stroke="#0E7C6B" strokeWidth="2" vectorEffect="non-scaling-stroke" /></svg>;
 }
 
-export function MockCentralPanel({ onAction, compact = false }: { onAction: () => void; compact?: boolean }) {
+export function MockCentralPanel({ onAction, compact = false, embedded = false }: { onAction: () => void; compact?: boolean; embedded?: boolean }) {
   const { x, loc } = useX();
   const [tab, setTab] = useState<Tab>('crypto');
   const [asset, setAsset] = useState<Asset>('BTC');
@@ -61,14 +61,14 @@ export function MockCentralPanel({ onAction, compact = false }: { onAction: () =
   const rowList = (items: [string, string, string][]) => <ul className="grid gap-2">{items.map(([a, b, c], i) => <li key={i} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[#F0E9DA] p-3 text-sm"><span className="min-w-0 flex-1 font-bold">{a}</span><span className="text-xs text-[#5B6B85]">{b}</span><span className="font-bold text-[#0E7C6B]">{c}</span></li>)}</ul>;
 
   return (
-    <section data-testid={compact ? 'home-trading-panel' : 'mock-central-panel'} className="grid min-w-0 gap-4 rounded-2xl border border-[#E4DCCB] bg-[#FBF6E9] p-3 text-[#12372A] sm:p-6">
-      <header className="flex flex-wrap items-start justify-between gap-2">
+    <section data-testid={compact ? 'home-trading-panel' : embedded ? 'central-markets' : 'mock-central-panel'} className="grid min-w-0 gap-4 rounded-2xl border border-[#E4DCCB] bg-[#FBF6E9] p-3 text-[#12372A] sm:p-6">
+      {!embedded && <header className="flex flex-wrap items-start justify-between gap-2">
         <div><h2 className="text-lg font-bold">{compact ? x('Trading dos agentes', 'Agent trading', 'Trading de agentes') : x('Central de agentes', 'Agent hub', 'Central de agentes')}</h2>
           <p className="text-xs text-[#5B6B85]">{x('Dados ilustrativos de demonstração visual. Nada é executado.', 'Illustrative visual-demo data. Nothing is executed.', 'Datos ilustrativos de demostración visual. No se ejecuta nada.')}</p></div>
         <span className="rounded-full border border-[#C9A227] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-[#8A6D0B]">{x('Exemplo ilustrativo', 'Illustrative example', 'Ejemplo ilustrativo')}</span>
-      </header>
+      </header>}
 
-      {!compact && <div className={`${card} border-[#C9A227]/60`}>
+      {!compact && !embedded && <div className={`${card} border-[#C9A227]/60`}>
         <p className="text-[10px] font-bold uppercase tracking-widest text-[#8A6D0B]">{x('Orquestrador', 'Orchestrator', 'Orquestador')}</p>
         <h3 className="text-base font-bold">BETTEX</h3>
         <p className="text-sm text-[#5B6B85]">{x('Prioriza propostas dos agentes abaixo e registra decisões de exemplo.', 'Prioritizes proposals from the agents below and logs sample decisions.', 'Prioriza propuestas de los agentes abajo y registra decisiones de ejemplo.')}</p>
