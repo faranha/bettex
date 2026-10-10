@@ -14,3 +14,9 @@ O criador confirmou o lançamento público do token em **10 de dezembro de 2026*
 **Why:** Após esclarecer os anos, escolheu explicitamente “Token em 10/12/2026; ALFA no 1º trimestre de 2027”.
 
 **How to apply:** Não antecipar o ALFA para outubro de 2026 nem deixar o BETA ou os mercados antecederem o ALFA. A data exata do ALFA permanece aberta dentro do trimestre; não vinculá-la automaticamente ao início do vesting.
+
+O criador esclareceu que a sequência começa com promoção para a comunidade, seguida de acesso inicial à compra, mesmo com baixo capital. Enfatizou: “Temos que mintar 15%” e “a grande questão [...] é mintar”, distinguindo emissão inicial de venda aberta e levantando a preocupação de vender muito barato.
+
+**Why:** A descrição anterior tratava os 15% principalmente como disponibilização para venda, sem explicitar a emissão inicial pretendida.
+
+**How to apply:** Separar emissão, distribuição, preço de oferta e liquidez nas discussões e na futura atualização documental. Não presumir que mintar os 15% exige vender todos ou depositá-los num pool. O mecanismo de compra e o preço ainda não foram escolhidos; a conversa não autoriza executar mint ou oferta.
