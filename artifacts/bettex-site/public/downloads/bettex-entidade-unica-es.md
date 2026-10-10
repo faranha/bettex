@@ -1,5 +1,23 @@
 BETTEX — entidad y reglas
 
+Adecuación legal y jurídica
+
+Cada lanzamiento de BETTEX debe estar adecuado al entorno jurídico de los mercados donde se ofrecerá la solución. La habilitación de cada agente, funcionalidad y categoría depende de una investigación técnico-legal específica y del cumplimiento de los requisitos aplicables. Una fecha en la hoja de ruta no sustituye esta condición.
+
+El análisis identifica el país de la oferta, el público atendido, la naturaleza de la actividad, la entidad responsable y los proveedores utilizados. El domicilio de la empresa, el lugar de la oferta y el de ejecución se evalúan por separado; un permiso en un país no autoriza la actuación en otro.
+
+La investigación verifica fuentes oficiales, vigencia y alcance de las normas, licencias y autorizaciones necesarias, condiciones de los proveedores, publicidad, protección del usuario, identificación y prevención del lavado de dinero, protección de datos y obligaciones tributarias, según corresponda. Los responsables jurídicos y técnicos registran las evidencias, la fecha del análisis, las condiciones y los controles exigidos.
+
+Cada combinación de agente, actividad y territorio debe tener su alcance documentado: en investigación, restringido o autorizado para el lanzamiento. La habilitación depende de un análisis jurídico favorable, autorizaciones cuando sean exigidas y validación de los controles técnicos. Una investigación pendiente, una prohibición o la falta de autorización necesaria impide la oferta y la operación en ese territorio.
+
+Si el casino o iGaming está prohibido en Brasil en la fecha de la oferta, esa categoría no se ofrecerá al público brasileño. Si los mercados de predicción no pueden ofrecerse legalmente en Brasil, los agentes de esa categoría no se habilitarán para ese mercado. Son ejemplos condicionales: la conclusión depende de la investigación vigente sobre la actividad concreta, no de una afirmación general en esta documentación.
+
+La evaluación también abarca el mint y la oferta del token, su publicidad, los juegos de la aplicación, los servicios financieros y cada integración. La disponibilidad de una API, el uso de blockchain, una licencia extranjera o un launchpad asociado no sustituyen la autorización local. La autorización del mint no autoriza automáticamente los agentes ni las demás funcionalidades.
+
+Antes de cada expansión, la adecuación se reevalúa para el nuevo territorio y la nueva actividad. Los cambios regulatorios, de licencia, proveedor o producto exigen revisión. La pérdida de una condición necesaria suspende las nuevas ofertas y operaciones afectadas; las posiciones y obligaciones existentes reciben un tratamiento específico según la orientación jurídica y los controles de riesgo.
+
+Las condiciones de disponibilidad por territorio deben comunicarse al usuario y reflejarse en los controles de elegibilidad, acceso y ejecución. Se registran las evidencias, los responsables, las condiciones, el plazo de validez o revisión y las decisiones. Esta sección define requisitos para el lanzamiento; no declara licencias obtenidas, dictámenes concluidos ni agentes autorizados.
+
 Financiación: origen y destino de los recursos
 
 Los aportes de inversores ángeles destinan el 100% de los recursos a producto, tecnología y marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone un reparto de financiación: los términos identifican origen, destino y derechos.

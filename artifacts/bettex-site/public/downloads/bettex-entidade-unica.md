@@ -1,5 +1,23 @@
 BETTEX — entidade e regras
 
+Adequação legal e jurídica
+
+Cada lançamento da BETTEX deve ocorrer já adequado ao ambiente jurídico dos mercados onde a solução será oferecida. A liberação de cada agente, funcionalidade e categoria depende de investigação técnico-legal específica e do cumprimento das exigências aplicáveis. Uma data no roadmap não substitui essa condição.
+
+A análise identifica o país de oferta, o público atendido, a natureza da atividade, a entidade responsável e os provedores utilizados. Domicílio da empresa, local da oferta e local de execução são avaliados separadamente; uma permissão em um país não autoriza atuação em outro.
+
+A investigação verifica fontes oficiais, vigência e alcance das normas, licenças e autorizações necessárias, termos dos provedores, publicidade, proteção do usuário, identificação e prevenção à lavagem de dinheiro, proteção de dados e obrigações tributárias, conforme aplicáveis. Os responsáveis jurídicos e técnicos registram as evidências, a data da análise, as condições e os controles exigidos.
+
+Cada combinação de agente, atividade e território deve ter seu escopo documentado: em investigação, restrito ou autorizado para lançamento. A liberação depende de análise jurídica favorável, autorizações quando exigidas e validação dos controles técnicos. Investigação pendente, proibição ou falta de autorização necessária impede a oferta e a operação naquele território.
+
+Se cassino ou iGaming estiver proibido no Brasil na data da oferta, essa categoria não será oferecida ao público brasileiro. Se mercados de previsão não puderem ser oferecidos legalmente no Brasil, os agentes dessa categoria não serão liberados para esse mercado. São exemplos condicionais: a conclusão depende da investigação vigente sobre a atividade concreta, não de uma afirmação geral nesta documentação.
+
+A avaliação abrange também o mint e a oferta do token, sua publicidade, os jogos do aplicativo, os serviços financeiros e cada integração. A disponibilidade de uma API, o uso de blockchain, uma licença estrangeira ou um launchpad parceiro não substituem a autorização local. A autorização do mint não autoriza automaticamente os agentes ou as demais funcionalidades.
+
+Antes de cada expansão, a adequação é reavaliada para o novo território e a nova atividade. Mudanças regulatórias, de licença, provedor ou produto exigem revisão. A perda de uma condição necessária suspende novas ofertas e operações afetadas; posições e obrigações existentes recebem tratamento específico conforme orientação jurídica e controles de risco.
+
+As condições de disponibilidade por território devem ser informadas ao usuário e refletidas nos controles de elegibilidade, acesso e execução. Evidências, responsáveis, condições, prazo de validade ou revisão e decisões ficam registrados. Esta seção define requisitos para lançamento; não declara licenças obtidas, pareceres concluídos ou agentes autorizados.
+
 Financiamento: origem e destino dos recursos
 
 Aportes-anjo destinam 100% dos recursos a produto, tecnologia e marketing, sem salários ou retiradas do fundador. A alocação de 15% dos tokens não impõe split de financiamento: os termos identificam origem, destino e direitos.

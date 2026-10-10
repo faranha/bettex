@@ -20,6 +20,7 @@
 - [Telegram flutuante](community-floating-button.md) — convite no canto inferior direito de todas as páginas, desktop e mobile, com opção de fechar.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
 - [Validação jurídica](legal-commencement-validation.md) — conferir vigência, alcance territorial e identidade da fonte; domicílio não equivale a oferta local.
+- [Liberação jurídica por mercado](legal-market-release-policy.md) — cada lançamento exige adequação local; categorias proibidas ou sem autorização ficam fora da oferta.
 - [Fontes de pesquisa](research-source-verification.md) — conferir artigo e metodologia, não apenas status HTTP; preservar URLs canônicas e consultar materiais já enviados.
 - [Direção Starknet](starknet-reference-direction.md) — trabalho adicional solicitado pelo criador; igualdade de contagens dos índices não garante cobertura das mesmas páginas.
 - [Comparação de cenários](financial-scenario-consistency.md) — o mesmo piso inicial pode esconder métodos incompatíveis; comparar choques e mudanças nas premissas.

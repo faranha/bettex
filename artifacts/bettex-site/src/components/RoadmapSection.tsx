@@ -1,32 +1,39 @@
-import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark, CalendarDays, ArrowRight } from 'lucide-react';
+import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark, CalendarDays, Scale, ArrowRight } from 'lucide-react';
 import { CommunityCTA } from './CommunityCTA';
 import { DemoAppLink } from './DemoAppLink';
 import './RoadmapSection.css';
 
-const icons = [ScrollText, FlaskConical, CalendarDays, Rocket, Compass, MessagesSquare, Bot, Landmark];
+const icons = [Scale, ScrollText, FlaskConical, CalendarDays, Rocket, Compass, MessagesSquare, Bot, Landmark];
 
 const stops = [
+  {
+    tag: 'ADEQUAÇÃO LEGAL E JURÍDICA',
+    date: 'Antes de cada lançamento',
+    dateTime: undefined,
+    title: 'Investigação técnico-legal por mercado',
+    description: 'Verificar as regras locais da oferta do token, da solução e de cada agente antes do lançamento. Cumprir as exigências aplicáveis e validar os controles técnicos. Categorias proibidas, sem autorização necessária ou ainda em investigação não serão oferecidas naquele território. Reavaliar a adequação antes de cada expansão.',
+  },
   {
     tag: 'TOKEN · VENDA PÚBLICA',
     date: '10 de dezembro de 2026',
     dateTime: '2026-12-10',
     title: 'Lançamento público do token BETTEX',
-    description: 'Disponibilizar 15% da emissão total na venda pública inicial, abrir o pool e prever a listagem pública, conforme as condições da oferta. Captar recursos para o projeto e ampliar o conhecimento da BETTEX antes do lançamento do agente.',
+    description: 'Abrir o mint público de até 10% da emissão total, a preço fixo, para financiar o projeto e ampliar o conhecimento da BETTEX. Execução própria ou por launchpad parceiro, sujeita à adequação legal da oferta e à elegibilidade aplicável.',
   },
   {
     tag: 'ALFA · AGENTE · CAPTAÇÃO',
-    date: '1º trimestre de 2027',
-    dateTime: undefined,
+    date: 'Março de 2027',
+    dateTime: '2027-03',
     title: 'ALFA do agente e captação de investidores',
-    description: 'Lançar a versão ALFA do agente entre janeiro e março de 2027, validar o produto com a comunidade e recolher feedback. Captar investidores para a evolução do negócio e avançar na formalização da empresa.',
+    description: 'Lançar o sistema e a versão ALFA do agente em março de 2027, com escopo adequado ao ambiente jurídico local. Liberar somente agentes e funcionalidades validados para cada território. Recolher feedback da comunidade e captar investidores para a evolução do negócio.',
     featured: true,
   },
   {
     tag: 'VESTING · LIBERAÇÃO',
-    date: '10 de março de 2027',
-    dateTime: '2027-03-10',
+    date: 'Março de 2027',
+    dateTime: '2027-03',
     title: 'Início do vesting',
-    description: 'Iniciar o vesting três meses após a abertura da venda pública. Os 15% iniciais pertencem à alocação pública; os 85% restantes seguem o cronograma de 36 meses. Este marco não determina a data de estreia do ALFA.',
+    description: 'Iniciar o vesting de 24 meses: 55% para a comunidade, 20% para fundador e equipe e 15% para investidores. Os 10% do mint público inicial ficam separados. O início acompanha a etapa prevista de lançamento do sistema.',
   },
   {
     tag: 'BETA · GO TO MARKET',
@@ -40,7 +47,7 @@ const stops = [
     date: 'Após o BETA · data a definir',
     dateTime: undefined,
     title: 'Abertura dos mercados',
-    description: 'Iniciar a operação em mercados de previsão (prediction markets), com acompanhamento, limites de risco e avaliação dos resultados.',
+    description: 'Abrir somente as categorias e os agentes com adequação técnico-legal validada para os territórios atendidos, com acompanhamento, limites de risco e avaliação dos resultados. Mercados de previsão dependem dessa análise específica, sem disponibilidade presumida no Brasil.',
   },
   {
     tag: 'CONSULTA ABERTA',
@@ -54,14 +61,14 @@ const stops = [
     date: 'Junho de 2027',
     dateTime: '2027-06',
     title: 'Novos agentes',
-    description: 'Expandir a operação com novos agentes, conforme os resultados e as prioridades definidos na consulta aberta.',
+    description: 'Expandir com novos agentes conforme os resultados e as prioridades da consulta aberta. Cada nova atividade e território exige investigação técnico-legal e validação antes da liberação.',
   },
   {
     tag: 'EXPANSÃO DO APLICATIVO',
     date: 'Dezembro de 2027',
     dateTime: '2027-12',
     title: 'BETTEX Bank',
-    description: 'Uma nova etapa de expansão do aplicativo BETTEX. O formato, os recursos e o alcance dessa evolução permanecem em aberto.',
+    description: 'Uma nova etapa de expansão do aplicativo BETTEX, com estrutura e adequação jurídica próprias antes de qualquer oferta de serviços financeiros. Formato, recursos e alcance permanecem em aberto.',
   },
 ] as const;
 
@@ -77,7 +84,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
           </div>
           <div className="roadmap__intro-side">
             <span className="roadmap__intro-index" aria-hidden="true">01 → {total}</span>
-            <p>Token para o público em 10 de dezembro de 2026. ALFA do agente e captação de investidores no primeiro trimestre de 2027. Vesting a partir de 10 de março de 2027, três meses após a venda pública.</p>
+            <p>Mint público em 10 de dezembro de 2026. Sistema, ALFA e início do vesting de 24 meses previstos para março de 2027. Cada lançamento depende da adequação legal e jurídica da oferta, da atividade e do território atendido.</p>
           </div>
         </header>
 
@@ -107,7 +114,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
                   <time className="roadmap__place-date" dateTime={stop.dateTime}>{stop.date}</time>
                   <h3>{stop.title}</h3>
                   <p>{stop.description}</p>
-                  {(index === 1 || index === 3) && <DemoAppLink className="roadmap__features roadmap__features--demo" data-testid={index === 1 ? 'roadmap-alpha-features' : 'roadmap-beta-features'}><span>Abrir o demo</span><ArrowRight size={16} aria-hidden="true" /></DemoAppLink>}
+                  {(index === 2 || index === 4) && <DemoAppLink className="roadmap__features roadmap__features--demo" data-testid={index === 2 ? 'roadmap-alpha-features' : 'roadmap-beta-features'}><span>Abrir o demo</span><ArrowRight size={16} aria-hidden="true" /></DemoAppLink>}
                 </article>
               </li>
               );
@@ -120,7 +127,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
           <div className="roadmap__closing-mark" aria-hidden="true"><span /><span /><span /></div>
           <div>
             <span className="roadmap__closing-label">O QUE IMPORTA NESTA ROTA</span>
-            <p>As datas indicam o cronograma previsto, não entregas concluídas. Cada avanço depende dos testes e das verificações necessárias, e o planejamento pode ser ajustado. Investir envolve risco e não há rendimento garantido.</p>
+            <p>As datas indicam o cronograma previsto, não entregas concluídas nem autorizações obtidas. Cada lançamento depende de adequação legal e jurídica, testes e controles aplicáveis. Se uma categoria não puder ser oferecida legalmente num território, ela fica fora da oferta local. O planejamento pode ser ajustado. Investir envolve risco e não há rendimento garantido.</p>
             <CommunityCTA source="roadmap" label="Entre na comunidade" note="Acompanhe cada etapa de perto." tone="light" />
           </div>
         </aside>
