@@ -1,7 +1,7 @@
 kind = "web"
 previewPath = "/"
 title = "BETTEX"
-description = "Site institucional BETTEX em português, inglês internacional e espanhol internacional: tese, pitch, documentação, projeções e Demo em breve, sem transações reais."
+description = "Projeto DeFi de trading com IA em português, inglês e espanhol: agente BETTEX, tokenomics, participação, roadmap e documentação; demo exclusivamente visual, sem operações reais."
 version = "1.0.0"
 id = "artifacts/bettex-site"
 router = "path"

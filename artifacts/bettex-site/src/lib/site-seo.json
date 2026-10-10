@@ -2,20 +2,20 @@
   "origin": "https://bettex.ai",
   "pages": {
     "/": {
-      "title": "BETTEX | IA, investimentos e participação nos resultados",
-      "description": "Use IA contra o sistema. BETTEX é o token do nosso agente de inteligência artificial, que analisa e opera em esportes, previsões, iGaming, ações e cripto.",
+      "title": "BETTEX | Projeto DeFi de trading com IA e participação nos resultados",
+      "description": "BETTEX é um projeto DeFi que constrói um agente de trading com IA para vários mercados. O token conecta você à economia do projeto e à distribuição de resultados.",
       "image": "home",
       "index": true
     },
     "/pitch": {
-      "title": "Pitch BETTEX | Fundador, estratégia e modelo de negócio",
-      "description": "Tese da BETTEX, público inicial de apostadores brasileiros, estratégias geridas por IA, modelo de negócio, etapas de validação e riscos do projeto.",
+      "title": "Pitch BETTEX | Agente de trading com IA, tokenomics e roadmap",
+      "description": "Pitch da BETTEX: projeto DeFi que constrói um agente de trading com IA, tokenomics, participação nos resultados, roadmap e riscos.",
       "image": "pitch",
       "index": true
     },
     "/documentacao": {
-      "title": "Documentação BETTEX | Token, tesouraria, regras e riscos",
-      "description": "Consulte a documentação da BETTEX: token, tesouraria, lucros elegíveis, serviços em USDC e plano de negócios. Entenda as hipóteses, regras e riscos do projeto.",
+      "title": "Documentação BETTEX | Tokenomics, participação, roadmap e riscos",
+      "description": "Documentação da BETTEX em seis capítulos: visão, agente e mercados, tokenomics, participação e resultados, roadmap, administração e riscos.",
       "image": "documentation",
       "index": true
     },

@@ -1,5 +1,5 @@
 {
-  "title": "BETTEX — entidade e regras",
+  "title": "BETTEX — regras e administração",
   "pitchLink": {
     "label": "Plano comercial e lançamento no Pitch",
     "href": "https://bettex.ai/pitch#publico"
@@ -9,7 +9,7 @@
       "title": "Adequação legal e jurídica",
       "paragraphs": [
         "Cada lançamento da BETTEX deve ocorrer já adequado ao ambiente jurídico dos mercados onde a solução será oferecida. A liberação de cada agente, funcionalidade e categoria depende de investigação técnico-legal específica e do cumprimento das exigências aplicáveis. Uma data no roadmap não substitui essa condição.",
-        "O projeto nasce descentralizado e a constituição de uma entidade não é prioridade imediata, sem previsão de curto prazo. A análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os provedores. Oferta e execução são avaliadas separadamente; uma permissão em um país não autoriza atuação em outro. Se uma atividade exigir entidade, licença ou autorização, ela não será liberada antes de cumprir essas condições.",
+        "O projeto nasce descentralizado e não planeja uma empresa ou fundação formal como estrutura. A análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os provedores. Oferta e execução são avaliadas separadamente; uma permissão em um país não autoriza atuação em outro. Se uma atividade exigir licença ou autorização, ela não será liberada antes de cumprir essas condições.",
         "A investigação verifica fontes oficiais, vigência e alcance das normas, licenças e autorizações necessárias, termos dos provedores, publicidade, proteção do usuário, identificação e prevenção à lavagem de dinheiro, proteção de dados e obrigações tributárias, conforme aplicáveis. Os responsáveis jurídicos e técnicos registram as evidências, a data da análise, as condições e os controles exigidos.",
         "Cada combinação de agente, atividade e território deve ter seu escopo documentado: em investigação, restrito ou autorizado para lançamento. A liberação depende de análise jurídica favorável, autorizações quando exigidas e validação dos controles técnicos. Investigação pendente, proibição ou falta de autorização necessária impede a oferta e a operação naquele território.",
         "Se cassino ou iGaming estiver proibido no Brasil na data da oferta, essa categoria não será oferecida ao público brasileiro. Se mercados de previsão não puderem ser oferecidos legalmente no Brasil, os agentes dessa categoria não serão liberados para esse mercado. São exemplos condicionais: a conclusão depende da investigação vigente sobre a atividade concreta, não de uma afirmação geral nesta documentação.",
@@ -40,12 +40,12 @@
       ]
     },
     {
-      "title": "Empresa e administração",
+      "title": "Administração e propósito",
       "paragraphs": [
-        "A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA. O usuário participa dos resultados do projeto conforme as regras do token, sem propriedade da empresa ou da tesouraria.",
-        "A BETTEX nasce como projeto descentralizado. A constituição de uma entidade e sua formalização institucional não são prioridades imediatas, não estão previstas para o curto prazo e não têm data definida. A operação será limitada aos mercados onde a atividade for permitida, com as autorizações exigidas quando aplicáveis.",
-        "O fundador coordena o desenvolvimento em modelo full stack AI, sem funcionários. Serviços externos especializados podem ser contratados por necessidade. A descentralização não elimina responsabilidades, controles nem exigências legais; se uma atividade exigir entidade, licença ou autorização, ela não será liberada antes de cumprir essas condições.",
-        "A missão amplia alternativas de participação econômica durante a transição da IA e robótica. Transparência, compreensão, responsabilidade e prestação de contas orientam a operação, sem renda ou proteção de capital garantidas."
+        "A BETTEX é um projeto DeFi que constrói um agente de trading com IA para atuar em diferentes mercados. O token BETTEX conecta os usuários à economia do projeto e à distribuição de resultados, quando houver lucro elegível, sem propriedade da tesouraria nem voto societário.",
+        "Os fundadores administram inicialmente o projeto e mantêm o domínio dos contratos. Funções passam gradualmente para um serviço gerido por IA, com limites e evidências, sem prazo definido. Nenhuma empresa ou fundação formal é planejada; a comunidade participa de decisões ainda a delimitar, sem DAO, voto por token ou renúncia de ownership definidos.",
+        "Serviços externos especializados podem ser contratados por necessidade. A ausência de estrutura formal não elimina responsabilidades, controles nem exigências legais, e não se presume isenção tributária. A operação depende de adequação por atividade e território.",
+        "Transparência, responsabilidade e prestação de contas orientam a operação, sem renda ou proteção de capital garantidas."
       ]
     },
     {
@@ -65,7 +65,7 @@
         "Peso individual = BETTEX elegível na abertura × duração integral da rodada, sem saída. Novos participantes e saldos recebidos durante a rodada têm peso zero nela; acréscimos não alteram o peso do saldo já elegível. Qualquer saída zera todo o peso do titular; retorno só na próxima rodada. Pagamento bruto = parcela de staking × peso individual ÷ soma dos pesos elegíveis.",
         "Exemplo: A começa a rodada com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro elegível de 1.000 USDC e condições atendidas, a parcela de staking de 250 USDC paga 250 a A e zero a B. Na rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.",
         "Cada rodada paga ou não paga, sem acumulação, reabertura ou complemento futuro. Qualquer saída BETTEX, inclusive parcial, zera o peso e cancela direitos ainda não pagos. Frações não executáveis retornam à tesouraria, sem crédito futuro. USDC recebido continua pessoal.",
-        "Tributos imputáveis à entidade são apurados, descontados e recolhidos conforme obrigação aplicável antes do lucro elegível e split. Retenções aplicáveis são resolvidas antes do crédito líquido. Provisão não é recolhimento; contabilizar e pagar a mesma obrigação não permite dupla dedução. Não existe isenção pessoal universal.",
+        "Tributos imputáveis a quem for juridicamente responsável são apurados, descontados e recolhidos conforme obrigação aplicável antes do lucro elegível e split. Retenções aplicáveis são resolvidas antes do crédito líquido. Provisão não é recolhimento; contabilizar e pagar a mesma obrigação não permite dupla dedução. Não existe isenção pessoal universal.",
         "Somente USDC confirmado e conciliado entra no saldo disponível. Envios incertos não autorizam repetição nem são recursos recuperados. Correções mantêm histórico e efeitos únicos, sem débito automático na carteira pessoal."
       ]
     },

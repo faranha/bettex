@@ -11,7 +11,6 @@ export function HumanStorySection() {
           <div className="hs-left">
             <div className="hs-asterisk" aria-hidden="true" />
             <h2 id="hs-heading">Admita: você <em>perde mais do que ganha.</em></h2>
-            <p className="hs-market-context">O mercado está contra você o tempo todo e utiliza a tecnologia para tirar o seu dinheiro. A comunidade BETTEX reúne quem quer mudar essa relação e usar a IA do seu lado.</p>
             <div className="hs-risk-card">
               <p className="hs-risk-label">A IA opera. A comunidade participa.</p>
               <h3>Na BETTEX, não é impulso: a IA faz as operações.</h3>
@@ -24,7 +23,6 @@ export function HumanStorySection() {
 
           <div className="hs-right">
             <p className="hs-right-label">A IA do outro lado da aposta</p>
-            <p className="hs-explanation"><strong>As casas usam IA para conhecer você.</strong></p>
             <div className="hs-collage">
               <NewsClipping className="hs-news" showSource caption="A reportagem mostra como uma casa de apostas usou IA para identificar quem tinha mais chance de perder. Na BETTEX, a comunidade acompanha a tecnologia usada nas operações e participa das decisões." />
             </div>

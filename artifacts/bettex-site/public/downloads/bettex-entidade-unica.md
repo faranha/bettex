@@ -1,10 +1,10 @@
-BETTEX — entidade e regras
+BETTEX — regras e administração
 
 Adequação legal e jurídica
 
 Cada lançamento da BETTEX deve ocorrer já adequado ao ambiente jurídico dos mercados onde a solução será oferecida. A liberação de cada agente, funcionalidade e categoria depende de investigação técnico-legal específica e do cumprimento das exigências aplicáveis. Uma data no roadmap não substitui essa condição.
 
-O projeto nasce descentralizado e a constituição de uma entidade não é prioridade imediata, sem previsão de curto prazo. A análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os provedores. Oferta e execução são avaliadas separadamente; uma permissão em um país não autoriza atuação em outro. Se uma atividade exigir entidade, licença ou autorização, ela não será liberada antes de cumprir essas condições.
+O projeto nasce descentralizado e não planeja uma empresa ou fundação formal como estrutura. A análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os provedores. Oferta e execução são avaliadas separadamente; uma permissão em um país não autoriza atuação em outro. Se uma atividade exigir licença ou autorização, ela não será liberada antes de cumprir essas condições.
 
 A investigação verifica fontes oficiais, vigência e alcance das normas, licenças e autorizações necessárias, termos dos provedores, publicidade, proteção do usuário, identificação e prevenção à lavagem de dinheiro, proteção de dados e obrigações tributárias, conforme aplicáveis. Os responsáveis jurídicos e técnicos registram as evidências, a data da análise, as condições e os controles exigidos.
 
@@ -36,15 +36,15 @@ Rodada operacional e demonstração
 
 O modelo operacional tem rodadas diárias UTC. O demo visual usa um roteiro distinto, de 16h a 16h de São Paulo em 24 horas reais, sem dinheiro real ou operações. Não é conversão da meia-noite UTC nem alteração de contratos. Abas por mercado não criam pools de staking independentes.
 
-Empresa e administração
+Administração e propósito
 
-A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA. O usuário participa dos resultados do projeto conforme as regras do token, sem propriedade da empresa ou da tesouraria.
+A BETTEX é um projeto DeFi que constrói um agente de trading com IA para atuar em diferentes mercados. O token BETTEX conecta os usuários à economia do projeto e à distribuição de resultados, quando houver lucro elegível, sem propriedade da tesouraria nem voto societário.
 
-A BETTEX nasce como projeto descentralizado. A constituição de uma entidade e sua formalização institucional não são prioridades imediatas, não estão previstas para o curto prazo e não têm data definida. A operação será limitada aos mercados onde a atividade for permitida, com as autorizações exigidas quando aplicáveis.
+Os fundadores administram inicialmente o projeto e mantêm o domínio dos contratos. Funções passam gradualmente para um serviço gerido por IA, com limites e evidências, sem prazo definido. Nenhuma empresa ou fundação formal é planejada; a comunidade participa de decisões ainda a delimitar, sem DAO, voto por token ou renúncia de ownership definidos.
 
-O fundador coordena o desenvolvimento em modelo full stack AI, sem funcionários. Serviços externos especializados podem ser contratados por necessidade. A descentralização não elimina responsabilidades, controles nem exigências legais; se uma atividade exigir entidade, licença ou autorização, ela não será liberada antes de cumprir essas condições.
+Serviços externos especializados podem ser contratados por necessidade. A ausência de estrutura formal não elimina responsabilidades, controles nem exigências legais, e não se presume isenção tributária. A operação depende de adequação por atividade e território.
 
-A missão amplia alternativas de participação econômica durante a transição da IA e robótica. Transparência, compreensão, responsabilidade e prestação de contas orientam a operação, sem renda ou proteção de capital garantidas.
+Transparência, responsabilidade e prestação de contas orientam a operação, sem renda ou proteção de capital garantidas.
 
 Token, captação e queima
 
@@ -68,7 +68,7 @@ Exemplo: A começa a rodada com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h.
 
 Cada rodada paga ou não paga, sem acumulação, reabertura ou complemento futuro. Qualquer saída BETTEX, inclusive parcial, zera o peso e cancela direitos ainda não pagos. Frações não executáveis retornam à tesouraria, sem crédito futuro. USDC recebido continua pessoal.
 
-Tributos imputáveis à entidade são apurados, descontados e recolhidos conforme obrigação aplicável antes do lucro elegível e split. Retenções aplicáveis são resolvidas antes do crédito líquido. Provisão não é recolhimento; contabilizar e pagar a mesma obrigação não permite dupla dedução. Não existe isenção pessoal universal.
+Tributos imputáveis a quem for juridicamente responsável são apurados, descontados e recolhidos conforme obrigação aplicável antes do lucro elegível e split. Retenções aplicáveis são resolvidas antes do crédito líquido. Provisão não é recolhimento; contabilizar e pagar a mesma obrigação não permite dupla dedução. Não existe isenção pessoal universal.
 
 Somente USDC confirmado e conciliado entra no saldo disponível. Envios incertos não autorizam repetição nem são recursos recuperados. Correções mantêm histórico e efeitos únicos, sem débito automático na carteira pessoal.
 

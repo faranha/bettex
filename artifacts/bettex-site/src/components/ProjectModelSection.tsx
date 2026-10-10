@@ -215,7 +215,7 @@ export function ProjectModelSection() {
         <div className="pm-head">
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
-            <h2 id="pm-heading" className="pm-title">Compre, ative, lucre.<br /><span>BETTEX é mais que renda extra.</span></h2>
+            <h2 id="pm-heading" className="pm-title">Compre, participe.<br /><span>Receba quando houver lucro elegível.</span></h2>
           </div>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
@@ -229,7 +229,7 @@ export function ProjectModelSection() {
               <span className="pm-index">01 / COMPRA</span>
               <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
               <h3>Compre <em>BETTEX.</em></h3>
-              <p className="pm-detail">Faça sua compra pelo aplicativo e acompanhe seus tokens. Use cartão de crédito, transferências imediatas e mais. Não precisa entender de cripto para entrar na comunidade.</p>
+              <p className="pm-detail">Faça sua compra pelo aplicativo e acompanhe seus tokens. A entrada em moeda local depende de provedor externo habilitado.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / SALDO BETTEX</span>
@@ -237,7 +237,7 @@ export function ProjectModelSection() {
                 <DepositIllustration />
               </div>
               <h3>O token <em>é seu.</em></h3>
-              <p className="pm-detail">Compre BETTEX e participe dos lucros do projeto. Basta comprar e deixar na sua carteira que todo dia a gente paga sua parte dos lucros*. O token continua sendo seu: receber os lucros não faz você perder seus tokens nem deixar de ser dono deles.</p>
+              <p className="pm-detail">Todo BETTEX na carteira oficial participa automaticamente, sem ativação. Quem entra durante uma rodada espera a próxima. Receber a sua parte não tira seus tokens, mas qualquer saída cancela créditos ainda não pagos.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / ANÁLISE E OPERAÇÕES</span>
@@ -245,7 +245,7 @@ export function ProjectModelSection() {
                 <CoordinationIllustration />
               </div>
               <h3>Nossa IA analisa <em>e opera em vários mercados.</em></h3>
-              <p className="pm-detail">Nossa IA cruza análises de diferentes mercados antes de cada operação, segundo critérios e limites de risco.</p>
+              <p className="pm-detail">Um agente BETTEX cruza análises de diferentes mercados antes de cada operação, segundo critérios e limites de risco.</p>
               <div className="pm-agent-list" aria-label="Mercados em que a BETTEX opera">
                 {markets.map((market) => (
                   <div className="pm-agent" key={market}>
@@ -276,7 +276,7 @@ export function ProjectModelSection() {
             <button type="button" className="pm-nav-btn" onClick={() => goTo(active + 1)} disabled={active === STEP_COUNT - 1} aria-label="Próxima etapa" data-testid="button-proxima-etapa"><ArrowRight size={18} aria-hidden="true" /></button>
           </div>
           <div className="pm-panel-foot">
-            <p>*Sem lucro não há distribuição e você não perde os seus tokens.</p>
+            <p>Sem lucro elegível não há distribuição, e os resultados não são garantidos.</p>
           </div>
         </div>
         <CommunityCTA source="participacao" label="Entre na comunidade" note="Tire dúvidas antes de participar." className="!justify-end" />

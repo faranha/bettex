@@ -1,8 +1,18 @@
 # BETTEX
 
-## Institutional positioning — current instruction
+## DeFi, AI trading and editorial scope — current instruction
 
-BETTEX starts as a decentralized project. Establishing an entity and institutional formalization are not immediate priorities, are not planned for the near term and have no set date. This supersedes older descriptions presenting a private company as the immediate project structure. Operations remain limited to legally permitted markets with required authorizations. If an activity requires an entity, license or authorization, it stays unavailable until those requirements are met. This is a content-positioning change, not authorization to change custody, governance powers or execute real operations.
+BETTEX is a DeFi project building an AI trading agent for multiple markets. Present one BETTEX agent publicly, without changing the internal specialists, their protocol identities or the operating architecture. The creator authorized the complete editorial revision described in docs/plans/bettex-defi-ai-detailed-execution.pt.md: shorter documentation centered on tokenomics, aligned homepage, Pitch, roadmap, diagrams, PT/EN/ES, SEO and downloads.
+
+No formal company or foundation is planned as the project structure. Founders initially administer the project and retain control over contracts; the direction is a service progressively managed by AI. This does not require renouncing ownership, abolishing administrative permissions/multisig, creating a DAO, or voting on every operation. Several decisions involve the community, with competencies and mechanisms still to be defined. Absence of an entity does not establish tax exemption or regulatory permission. Operations remain limited to legally permitted markets with required authorizations; a category requiring an unmet entity/license/authorization stays unavailable.
+
+The public documentation has six principal chapters: Vision; Agent and markets; Tokenomics; Participation and results; Roadmap; Administration, security and risks. Preserve access to technical reference and compatibility with old chapter/subsection links. Preserve essential staking/tokenomics drawings and a single visible chapter with its own outline. Public copy describes future goals clearly, not guaranteed returns or financial capabilities proved by the visual demo.
+
+Current public economics: 1 billion BETTEX; initial mint 10%, community 55%, founder/team 20%, investors 15%; 24-month vesting starting in March 2027 as a forecast, initial mint separate; distributable net profit 50% treasury / 25% participants / 25% buyback. Public mint forecast is December 10, 2026; system/ALFA and vesting forecast is March 2027. Preserve eligibility, exit cancellation of unpaid rights, fractions, accounting, conditional buyback/accumulation and burn rules. ALFA has network fees only; a service contribution is an undefined alternative for later community discussion, not a US$2.50 tariff. Maintenance should be funded by treasury, but its accounting source, budget and approval still require definition without silently changing the split or rights.
+
+This authorization is editorial, not permission to modify app behavior, financial rules, contracts, custody, permissions, authentication, operational routes, data, infrastructure or real transactions. The demo remains exclusively visual. Do not publish automatically.
+
+Older clauses below referring to mandatory entity/company/foundation formation, a fourteen-chapter corporate index, fixed service tariffs, former launch dates, or restricting editorial updates to documentation only are historical instructions superseded by this section. Their independent security and economic invariants remain in force unless explicitly replaced above. Do not treat preserved research or legacy test fixtures as current public policy.
 
 ## Application development — current direction
 

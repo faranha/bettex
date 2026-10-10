@@ -1,0 +1,83 @@
+BETTEX — regras e administração
+
+Adequação legal e jurídica
+
+Cada lançamento da BETTEX deve ocorrer já adequado ao ambiente jurídico dos mercados onde a solução será oferecida. A liberação de cada agente, funcionalidade e categoria depende de investigação técnico-legal específica e do cumprimento das exigências aplicáveis. Uma data no roadmap não substitui essa condição.
+
+O projeto nasce descentralizado e não planeja uma empresa ou fundação formal como estrutura. A análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os provedores. Oferta e execução são avaliadas separadamente; uma permissão em um país não autoriza atuação em outro. Se uma atividade exigir licença ou autorização, ela não será liberada antes de cumprir essas condições.
+
+A investigação verifica fontes oficiais, vigência e alcance das normas, licenças e autorizações necessárias, termos dos provedores, publicidade, proteção do usuário, identificação e prevenção à lavagem de dinheiro, proteção de dados e obrigações tributárias, conforme aplicáveis. Os responsáveis jurídicos e técnicos registram as evidências, a data da análise, as condições e os controles exigidos.
+
+Cada combinação de agente, atividade e território deve ter seu escopo documentado: em investigação, restrito ou autorizado para lançamento. A liberação depende de análise jurídica favorável, autorizações quando exigidas e validação dos controles técnicos. Investigação pendente, proibição ou falta de autorização necessária impede a oferta e a operação naquele território.
+
+Se cassino ou iGaming estiver proibido no Brasil na data da oferta, essa categoria não será oferecida ao público brasileiro. Se mercados de previsão não puderem ser oferecidos legalmente no Brasil, os agentes dessa categoria não serão liberados para esse mercado. São exemplos condicionais: a conclusão depende da investigação vigente sobre a atividade concreta, não de uma afirmação geral nesta documentação.
+
+A avaliação abrange também o mint e a oferta do token, sua publicidade, os jogos do aplicativo, os serviços financeiros e cada integração. A disponibilidade de uma API, o uso de blockchain, uma licença estrangeira ou um launchpad parceiro não substituem a autorização local. A autorização do mint não autoriza automaticamente os agentes ou as demais funcionalidades.
+
+Antes de cada expansão, a adequação é reavaliada para o novo território e a nova atividade. Mudanças regulatórias, de licença, provedor ou produto exigem revisão. A perda de uma condição necessária suspende novas ofertas e operações afetadas; posições e obrigações existentes recebem tratamento específico conforme orientação jurídica e controles de risco.
+
+As condições de disponibilidade por território devem ser informadas ao usuário e refletidas nos controles de elegibilidade, acesso e execução. Evidências, responsáveis, condições, prazo de validade ou revisão e decisões ficam registrados. Esta seção define requisitos para lançamento; não declara licenças obtidas, pareceres concluídos ou agentes autorizados.
+
+Financiamento: origem e destino dos recursos
+
+Aportes-anjo destinam 100% dos recursos a produto, tecnologia e marketing, sem salários ou retiradas do fundador. A alocação de 15% dos tokens não impõe split de financiamento: os termos identificam origem, destino e direitos.
+
+O mint inicial de 10% financia o projeto, por execução própria ou launchpad parceiro. As vendas dos 55% da comunidade já liberados destinam 100% do preço em USDC à tesouraria. No ALFA, serão cobradas apenas taxas de rede. A decisão de cobrar ou não uma contribuição por serviços será tomada posteriormente com a comunidade, como possível alternativa para sustentar as operações, sem valor fixado nem adoção confirmada. Revenda pertence ao vendedor. Captação, receita e lucro distribuível não são equivalentes.
+
+Burn Lottery e Double 2X
+
+Burn Lottery: um número gratuito por carteira com BETTEX em staking; entradas extras pagas em BETTEX e queimadas integralmente, sem financiar prêmio ou receita operacional. Não há limite de negócio de números. Pagamento é saída BETTEX: zera todo peso anterior e cancela todos os créditos anteriores ainda não pagos da rodada; USDC recebido permanece pessoal.
+
+Double 2X: jogo opcional vermelho ou preto com USDC de rendimentos já recebidos, sem usar créditos pendentes. Uma jogada a cada 24 horas corridas, resultado 50/50 e sem taxa do jogo. Com 10 USDC jogados, vitória devolve 20 no total, ganho líquido 10 pago pela tesouraria; derrota devolve zero e envia os 10 à tesouraria. RTP teórico de 100% não garante ganho por jogada.
+
+Regulamento da loteria deve identificar preço, prêmio, financiamento, prazo e probabilidades antes de aceitar entradas. Os jogos não são estratégias de investimento nem promessa de rendimento; resultados simulados não comprovam execução, aleatoriedade pública ou liquidação.
+
+Rodada operacional e demonstração
+
+O modelo operacional tem rodadas diárias UTC. O demo visual usa um roteiro distinto, de 16h a 16h de São Paulo em 24 horas reais, sem dinheiro real ou operações. Não é conversão da meia-noite UTC nem alteração de contratos. Abas por mercado não criam pools de staking independentes.
+
+Administração e propósito
+
+A BETTEX é um projeto DeFi que constrói um agente de trading com IA para atuar em diferentes mercados. O token BETTEX conecta os usuários à economia do projeto e à distribuição de resultados, quando houver lucro elegível, sem propriedade da tesouraria nem voto societário.
+
+Os fundadores administram inicialmente o projeto e mantêm o domínio dos contratos. Funções passam gradualmente para um serviço gerido por IA, com limites e evidências, sem prazo definido. Nenhuma empresa ou fundação formal é planejada; a comunidade participa de decisões ainda a delimitar, sem DAO, voto por token ou renúncia de ownership definidos.
+
+Serviços externos especializados podem ser contratados por necessidade. A ausência de estrutura formal não elimina responsabilidades, controles nem exigências legais, e não se presume isenção tributária. A operação depende de adequação por atividade e território.
+
+Transparência, responsabilidade e prestação de contas orientam a operação, sem renda ou proteção de capital garantidas.
+
+Token, captação e queima
+
+Teto de 1 bilhão de BETTEX em quatro destinações: 10% mint público inicial, 55% comunidade, 20% fundador/equipe e 15% investidores. O mint é aberto a preço fixo e financia o projeto. Preço, janela, plataforma e destino da parcela não mintada ainda serão definidos.
+
+Mint público previsto para 10 de dezembro de 2026. Sistema/ALFA e início do vesting previstos para março de 2027. Cada lançamento depende de adequação legal por atividade e território.
+
+Vesting de 900 milhões de BETTEX por 24 meses a partir de março de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O teto inicial de 100 milhões fica separado; liberação não comprova venda ou circulação.
+
+100% do preço em USDC dos tokens da comunidade já liberados vai à tesouraria. Taxas de serviço separadas vão ao caixa operacional. A captação do mint inicial financia o projeto e exige prestação de contas. Mercados externos não herdam automaticamente as condições do swap oficial.
+
+Resultado elegível, após tributos e controles, recebe 50% tesouraria, 25% staking e 25% carteira exclusiva de recompra. Sem pesos, reservas ou liquidez suficientes, 100% fica na tesouraria, sem split futuro. Compra usa autorização administrativa; todo BETTEX adquirido é queimado permanentemente. Carteira exclusiva não é o mecanismo de burn.
+
+Staking e sequência fiscal
+
+Quem entra durante uma rodada recebe zero dessa rodada, mesmo sobre lucros gerados após a entrada, e participa somente da próxima. O saldo confirmado e elegível é fixado na abertura; acréscimos durante a rodada só participam da seguinte.
+
+Peso individual = BETTEX elegível na abertura × duração integral da rodada, sem saída. Novos participantes e saldos recebidos durante a rodada têm peso zero nela; acréscimos não alteram o peso do saldo já elegível. Qualquer saída zera todo o peso do titular; retorno só na próxima rodada. Pagamento bruto = parcela de staking × peso individual ÷ soma dos pesos elegíveis.
+
+Exemplo: A começa a rodada com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro elegível de 1.000 USDC e condições atendidas, a parcela de staking de 250 USDC paga 250 a A e zero a B. Na rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.
+
+Cada rodada paga ou não paga, sem acumulação, reabertura ou complemento futuro. Qualquer saída BETTEX, inclusive parcial, zera o peso e cancela direitos ainda não pagos. Frações não executáveis retornam à tesouraria, sem crédito futuro. USDC recebido continua pessoal.
+
+Tributos imputáveis a quem for juridicamente responsável são apurados, descontados e recolhidos conforme obrigação aplicável antes do lucro elegível e split. Retenções aplicáveis são resolvidas antes do crédito líquido. Provisão não é recolhimento; contabilizar e pagar a mesma obrigação não permite dupla dedução. Não existe isenção pessoal universal.
+
+Somente USDC confirmado e conciliado entra no saldo disponível. Envios incertos não autorizam repetição nem são recursos recuperados. Correções mantêm histórico e efeitos únicos, sem débito automático na carteira pessoal.
+
+Governança e integrações
+
+Políticas evoluem por versões aprovadas. Administração define política; multisig 2 de 3 controla custódia; executores atuam dentro dos mandatos. Mudanças sensíveis aguardam no mínimo 24h; rotina já mandatada não exige nova assinatura por operação. IA não amplia as próprias permissões.
+
+Tesouraria, caixa operacional, carteira exclusiva de recompra e carteiras pessoais têm fronteiras próprias. Reserva defensiva segue a política aprovada, sem mínimo geral fixado em 50%. Novas operações exigem risco independente, disponibilidade e conciliação.
+
+Arbitrum fornece rede e contratos. Allora é candidata a inferências, não execução. Robinhood Crypto Trading API exige conta elegível nos Estados Unidos e autorização; não comprova acesso a ações. Consultas públicas Arbitrum/Gamma foram verificadas; demais exemplos sem acesso privado são simulações. Não houve operações com dinheiro real.
+
+Plano comercial e lançamento no Pitch: https://bettex.ai/pitch#publico

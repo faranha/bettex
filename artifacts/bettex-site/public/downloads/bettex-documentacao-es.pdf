@@ -1,0 +1,252 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 4 /Kids [4 0 R 6 0 R 8 0 R 10 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 3539 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(BETTEX — reglas y administración) Tj T*
+() Tj T*
+(Adecuación legal y jurídica) Tj T*
+() Tj T*
+(Cada lanzamiento de BETTEX debe estar adecuado al entorno jurídico de los mercados donde se) Tj T*
+(ofrecerá la solución. La habilitación de cada agente, funcionalidad y categoría depende de una) Tj T*
+(investigación técnico-legal específica y del cumplimiento de los requisitos aplicables. Una) Tj T*
+(fecha en la hoja de ruta no sustituye esta condición.) Tj T*
+() Tj T*
+(El proyecto nace descentralizado y no planea una empresa ni fundación formal como estructura.) Tj T*
+(El análisis identifica el país de oferta, el público atendido, la actividad, sus responsables y) Tj T*
+(los proveedores. Oferta y ejecución se evalúan por separado; un permiso en un país no autoriza) Tj T*
+(actuar en otro. Si una actividad exige licencia o autorización, no se liberará antes de cumplir) Tj T*
+(esas condiciones.) Tj T*
+() Tj T*
+(La investigación verifica fuentes oficiales, vigencia y alcance de las normas, licencias y) Tj T*
+(autorizaciones necesarias, condiciones de los proveedores, publicidad, protección del usuario,) Tj T*
+(identificación y prevención del lavado de dinero, protección de datos y obligaciones) Tj T*
+(tributarias, según corresponda. Los responsables jurídicos y técnicos registran las evidencias,) Tj T*
+(la fecha del análisis, las condiciones y los controles exigidos.) Tj T*
+() Tj T*
+(Cada combinación de agente, actividad y territorio debe tener su alcance documentado: en) Tj T*
+(investigación, restringido o autorizado para el lanzamiento. La habilitación depende de un) Tj T*
+(análisis jurídico favorable, autorizaciones cuando sean exigidas y validación de los controles) Tj T*
+(técnicos. Una investigación pendiente, una prohibición o la falta de autorización necesaria) Tj T*
+(impide la oferta y la operación en ese territorio.) Tj T*
+() Tj T*
+(Si el casino o iGaming está prohibido en Brasil en la fecha de la oferta, esa categoría no se) Tj T*
+(ofrecerá al público brasileño. Si los mercados de predicción no pueden ofrecerse legalmente en) Tj T*
+(Brasil, los agentes de esa categoría no se habilitarán para ese mercado. Son ejemplos) Tj T*
+(condicionales: la conclusión depende de la investigación vigente sobre la actividad concreta,) Tj T*
+(no de una afirmación general en esta documentación.) Tj T*
+() Tj T*
+(La evaluación también abarca el mint y la oferta del token, su publicidad, los juegos de la) Tj T*
+(aplicación, los servicios financieros y cada integración. La disponibilidad de una API, el uso) Tj T*
+(de blockchain, una licencia extranjera o un launchpad asociado no sustituyen la autorización) Tj T*
+(local. La autorización del mint no autoriza automáticamente los agentes ni las demás) Tj T*
+(funcionalidades.) Tj T*
+() Tj T*
+(Antes de cada expansión, la adecuación se reevalúa para el nuevo territorio y la nueva) Tj T*
+(actividad. Los cambios regulatorios, de licencia, proveedor o producto exigen revisión. La) Tj T*
+(pérdida de una condición necesaria suspende las nuevas ofertas y operaciones afectadas; las) Tj T*
+(posiciones y obligaciones existentes reciben un tratamiento específico según la orientación) Tj T*
+(jurídica y los controles de riesgo.) Tj T*
+() Tj T*
+(Las condiciones de disponibilidad por territorio deben comunicarse al usuario y reflejarse en) Tj T*
+(los controles de elegibilidad, acceso y ejecución. Se registran las evidencias, los) Tj T*
+(responsables, las condiciones, el plazo de validez o revisión y las decisiones. Esta sección) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 3130 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(define requisitos para el lanzamiento; no declara licencias obtenidas, dictámenes concluidos ni) Tj T*
+(agentes autorizados.) Tj T*
+() Tj T*
+(Financiación: origen y destino de los recursos) Tj T*
+() Tj T*
+(Los aportes de inversores ángeles destinan el 100% de los recursos a producto, tecnología y) Tj T*
+(marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone) Tj T*
+(un reparto de financiación: los términos identifican origen, destino y derechos.) Tj T*
+() Tj T*
+(El mint inicial del 10% financia el proyecto, mediante ejecución propia o un launchpad) Tj T*
+(asociado. Las ventas del 55% de la comunidad ya liberado destinan el 100% del precio en USDC a) Tj T*
+(la tesorería. Durante el ALFA, solo se cobrarán tasas de red. La decisión de cobrar o no una) Tj T*
+(contribución por servicios se tomará posteriormente con la comunidad, como posible alternativa) Tj T*
+(para sostener las operaciones, sin importe fijado ni adopción confirmada. Los ingresos de) Tj T*
+(reventa pertenecen al vendedor. Captación, ingresos y beneficio distribuible no son) Tj T*
+(equivalentes.) Tj T*
+() Tj T*
+(Burn Lottery y Double 2X) Tj T*
+() Tj T*
+(Burn Lottery: un número gratuito por cartera con BETTEX en staking; entradas extra pagadas en) Tj T*
+(BETTEX y quemadas íntegramente, sin financiar premios ni ingresos operativos. No hay límite de) Tj T*
+(negocio de números. El pago es una salida de BETTEX: reinicia todo el peso previo y cancela) Tj T*
+(todos los créditos anteriores aún no pagados de la ronda; el USDC recibido sigue siendo) Tj T*
+(personal.) Tj T*
+() Tj T*
+(Double 2X: juego opcional rojo o negro con USDC de rendimientos ya recibidos, sin usar créditos) Tj T*
+(pendientes. Una jugada cada 24 horas corridas, resultado 50/50 y sin tarifa del juego. Con 10) Tj T*
+(USDC jugados, ganar devuelve 20 en total, ganancia neta de 10 pagada por la tesorería; perder) Tj T*
+(devuelve cero y envía los 10 a la tesorería. Un RTP teórico del 100% no garantiza ganancias por) Tj T*
+(jugada.) Tj T*
+() Tj T*
+(Las reglas de la lotería deben identificar precio, premio, financiación, plazo y probabilidades) Tj T*
+(antes de aceptar entradas. Los juegos no son estrategias de inversión ni promesas de) Tj T*
+(rendimiento; los resultados simulados no prueban ejecución, aleatoriedad pública ni) Tj T*
+(liquidación.) Tj T*
+() Tj T*
+(Ronda operativa y demostración) Tj T*
+() Tj T*
+(El modelo operativo tiene rondas diarias UTC. El demo visual usa un guion distinto, de las) Tj T*
+(16:00 a las 16:00 de São Paulo durante 24 horas reales, sin dinero real ni operaciones. No es) Tj T*
+(una conversión de medianoche UTC ni un cambio de contratos. Las pestañas por mercado no crean) Tj T*
+(pools de staking independientes.) Tj T*
+() Tj T*
+(Administración y propósito) Tj T*
+() Tj T*
+(BETTEX es un proyecto DeFi que construye un agente de trading con IA para operar en distintos) Tj T*
+(mercados. El token BETTEX conecta a los usuarios con la economía del proyecto y con la) Tj T*
+(distribución de resultados, cuando haya beneficio elegible, sin propiedad de la tesorería ni) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 3245 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(voto societario.) Tj T*
+() Tj T*
+(Los fundadores administran inicialmente el proyecto y mantienen el dominio de los contratos.) Tj T*
+(Las funciones pasan gradualmente a un servicio gestionado por IA, con límites y evidencias, sin) Tj T*
+(plazo definido. No se planea ninguna empresa ni fundación formal; la comunidad participa en) Tj T*
+(decisiones aún por delimitar, sin DAO, voto por token ni renuncia de ownership definidos.) Tj T*
+() Tj T*
+(Pueden contratarse servicios externos especializados según la necesidad. La ausencia de) Tj T*
+(estructura formal no elimina responsabilidades, controles ni exigencias legales, y no se) Tj T*
+(presume exención tributaria. La operación depende de la adecuación por actividad y territorio.) Tj T*
+() Tj T*
+(La transparencia, la responsabilidad y la rendición de cuentas orientan la operación, sin) Tj T*
+(ingresos ni protección del capital garantizados.) Tj T*
+() Tj T*
+(Token, captación y quema) Tj T*
+() Tj T*
+(Límite de mil millones de BETTEX en cuatro asignaciones: 10% mint público inicial, 55%) Tj T*
+(comunidad, 20% fundador/equipo y 15% inversores. El mint es abierto a precio fijo y financia el) Tj T*
+(proyecto. El precio, la ventana, la plataforma y el destino de la parte no emitida aún se) Tj T*
+(definirán.) Tj T*
+() Tj T*
+(Mint público previsto para el 10 de diciembre de 2026. Sistema/ALFA e inicio del vesting) Tj T*
+(previstos para marzo de 2027. Cada lanzamiento depende de adecuación legal por actividad y) Tj T*
+(territorio.) Tj T*
+() Tj T*
+(Vesting de 900 millones de BETTEX durante 24 meses desde marzo de 2027: comunidad 550 millones,) Tj T*
+(fundador/equipo 200 millones e inversores 150 millones, en grupos enteros 11:4:3. El límite) Tj T*
+(inicial de 100 millones queda separado; la liberación no acredita venta ni circulación.) Tj T*
+() Tj T*
+(El 100% del precio en USDC de los tokens de la comunidad ya liberados va a la tesorería. Las) Tj T*
+(tarifas de servicio separadas van a la cuenta operativa. La captación del mint inicial financia) Tj T*
+(el proyecto y exige rendición de cuentas. Los mercados externos no heredan automáticamente las) Tj T*
+(condiciones del swap oficial.) Tj T*
+() Tj T*
+(El resultado elegible, tras tributos y controles, recibe 50% tesorería, 25% staking y 25%) Tj T*
+(billetera exclusiva de recompra. Sin pesos, reservas o liquidez suficientes, el 100% queda en) Tj T*
+(la tesorería, sin split futuro. La compra usa autorización administrativa; todo BETTEX) Tj T*
+(adquirido es quemado permanentemente. La billetera exclusiva no es el mecanismo de quema.) Tj T*
+() Tj T*
+(Staking y secuencia fiscal) Tj T*
+() Tj T*
+(Quien entra durante una ronda recibe cero de esa ronda, incluso sobre beneficios generados) Tj T*
+(después de su entrada, y participa solo en la próxima. El saldo confirmado y elegible se fija) Tj T*
+(al inicio; los aumentos durante la ronda solo participan en la siguiente.) Tj T*
+() Tj T*
+(Peso individual = BETTEX elegible al inicio  x  duración completa de la ronda, sin salida. Los) Tj T*
+(nuevos participantes y los saldos recibidos durante una ronda tienen peso cero en ella; los) Tj T*
+(aumentos no alteran el peso del saldo ya elegible. Cualquier salida lleva a cero todo el peso) Tj T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 2840 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(del titular; la participación solo se reinicia en la próxima ronda. Pago bruto = porción de) Tj T*
+(staking  x  peso individual  /  suma de pesos elegibles.) Tj T*
+() Tj T*
+(Ejemplo: A empieza la ronda con 1.000 BETTEX elegibles; B recibe 1.000 a las 12:00. Con) Tj T*
+(beneficio elegible de 1.000 USDC y condiciones cumplidas, la porción de staking de 250 USDC) Tj T*
+(paga 250 a A y cero a B. En la ronda siguiente, ambos elegibles desde el inicio y sin salida) Tj T*
+(reciben 125 USDC cada uno sobre nuevo beneficio elegible de 1.000 USDC. No se recupera ningún) Tj T*
+(beneficio anterior.) Tj T*
+() Tj T*
+(Cada ronda paga o no paga, sin acumulación, reapertura o complemento futuro. Cualquier salida) Tj T*
+(BETTEX, incluso parcial, resetea el peso y cancela derechos aún no pagados. Fracciones no) Tj T*
+(ejecutables regresan a la tesorería, sin crédito futuro. USDC recibido sigue siendo personal.) Tj T*
+() Tj T*
+(Los tributos imputables a quien sea jurídicamente responsable son determinados, descontados y) Tj T*
+(pagados según la obligación aplicable antes de la ganancia elegible y split. Las retenciones) Tj T*
+(aplicables se resuelven antes del crédito líquido. La provisión no es pago; contabilizar y) Tj T*
+(pagar la misma obligación no permite doble deducción. No existe exención personal universal.) Tj T*
+() Tj T*
+(Solo USDC confirmado y conciliado entra en el saldo disponible. Los envíos inciertos no) Tj T*
+(autorizan repetición ni son recursos recuperados. Las correcciones mantienen historial y) Tj T*
+(efectos únicos, sin débito automático en la billetera personal.) Tj T*
+() Tj T*
+(Gobernanza e integraciones) Tj T*
+() Tj T*
+(Las políticas evolucionan por versiones aprobadas. La administración define la política; el) Tj T*
+(multisig 2 de 3 controla la custodia; los ejecutores actúan dentro de los mandatos. Los cambios) Tj T*
+(sensibles esperan al menos 24h; la rutina ya mandatada no exige nueva firma por operación. La) Tj T*
+(IA no amplía los propios permisos.) Tj T*
+() Tj T*
+(Tesorería, caja operativa, billetera exclusiva de recompra y billeteras personales tienen) Tj T*
+(fronteras propias. La reserva defensiva sigue la política aprobada, sin un mínimo general) Tj T*
+(fijado en 50%. Nuevas operaciones exigen riesgo independiente, disponibilidad y conciliación.) Tj T*
+() Tj T*
+(Arbitrum proporciona la red y los contratos. Allora es candidata a inferencias, no ejecución.) Tj T*
+(Robinhood Crypto Trading API requiere cuenta elegible en los Estados Unidos y autorización; no) Tj T*
+(prueba acceso a acciones. Consultas públicas Arbitrum/Gamma fueron verificadas; otros ejemplos) Tj T*
+(sin acceso privado son simulaciones. No hubo operaciones con dinero real.) Tj T*
+() Tj T*
+(Plan comercial y lanzamiento en el Pitch: https://bettex.ai/es/pitch#publico) Tj T*
+() Tj T*
+ET
+endstream
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000134 00000 n 
+0000000231 00000 n 
+0000000357 00000 n 
+0000003948 00000 n 
+0000004074 00000 n 
+0000007256 00000 n 
+0000007382 00000 n 
+0000010679 00000 n 
+0000010807 00000 n 
+trailer << /Size 12 /Root 1 0 R >>
+startxref
+13700
+%%EOF

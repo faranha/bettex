@@ -1,79 +1,21 @@
-import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, Landmark, CalendarDays, Scale, ArrowRight } from 'lucide-react';
+import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, ArrowRight } from 'lucide-react';
 import { CommunityCTA } from './CommunityCTA';
 import { DemoAppLink } from './DemoAppLink';
 import './RoadmapSection.css';
 
-const icons = [Scale, ScrollText, FlaskConical, CalendarDays, Rocket, Compass, MessagesSquare, Bot, Landmark];
+const icons = [MessagesSquare, ScrollText, Rocket, FlaskConical, Compass, Bot];
 
-const stops = [
-  {
-    tag: 'ADEQUAÇÃO LEGAL E JURÍDICA',
-    date: 'Antes de cada lançamento',
-    dateTime: undefined,
-    title: 'Investigação técnico-legal por mercado',
-    description: 'Verificar as regras locais da oferta do token, da solução e de cada agente antes do lançamento. Cumprir as exigências aplicáveis e validar os controles técnicos. Categorias proibidas, sem autorização necessária ou ainda em investigação não serão oferecidas naquele território. Reavaliar a adequação antes de cada expansão.',
-  },
-  {
-    tag: 'TOKEN · VENDA PÚBLICA',
-    date: '10 de dezembro de 2026',
-    dateTime: '2026-12-10',
-    title: 'Lançamento público do token BETTEX',
-    description: 'Abrir o mint público de até 10% da emissão total, a preço fixo, para financiar o projeto e ampliar o conhecimento da BETTEX. Execução própria ou por launchpad parceiro, sujeita à adequação legal da oferta e à elegibilidade aplicável.',
-  },
-  {
-    tag: 'ALFA · AGENTE · CAPTAÇÃO',
-    date: 'Março de 2027',
-    dateTime: '2027-03',
-    title: 'ALFA do agente e captação de investidores',
-    description: 'Lançar o sistema e a versão ALFA do agente em março de 2027, com escopo adequado ao ambiente jurídico local. Liberar somente agentes e funcionalidades validados para cada território. Recolher feedback da comunidade e captar investidores para a evolução do negócio.',
-    featured: true,
-  },
-  {
-    tag: 'VESTING · LIBERAÇÃO',
-    date: 'Março de 2027',
-    dateTime: '2027-03',
-    title: 'Início do vesting',
-    description: 'Iniciar o vesting de 24 meses: 55% para a comunidade, 20% para fundador e equipe e 15% para investidores. Os 10% do mint público inicial ficam separados. O início acompanha a etapa prevista de lançamento do sistema.',
-  },
-  {
-    tag: 'BETA · GO TO MARKET',
-    date: 'Após o ALFA · data a definir',
-    dateTime: undefined,
-    title: 'Lançamento do BETA e go to market',
-    description: 'Lançar a versão BETA e iniciar o go to market após os testes e aprendizados do ALFA. Ampliar o acesso ao produto, sem repetir o lançamento público do token.',
-  },
-  {
-    tag: 'PRIMEIRO MERCADO',
-    date: 'Após o BETA · data a definir',
-    dateTime: undefined,
-    title: 'Abertura dos mercados',
-    description: 'Abrir somente as categorias e os agentes com adequação técnico-legal validada para os territórios atendidos, com acompanhamento, limites de risco e avaliação dos resultados. Mercados de previsão dependem dessa análise específica, sem disponibilidade presumida no Brasil.',
-  },
-  {
-    tag: 'CONSULTA ABERTA',
-    date: 'Após a abertura dos mercados',
-    dateTime: undefined,
-    title: 'Resultados e próximos passos',
-    description: 'Realizar uma consulta aberta para avaliar os resultados da operação e determinar os próximos passos do projeto.',
-  },
-  {
-    tag: 'AMPLIAÇÃO',
-    date: 'Junho de 2027',
-    dateTime: '2027-06',
-    title: 'Novos agentes',
-    description: 'Expandir com novos agentes conforme os resultados e as prioridades da consulta aberta. Cada nova atividade e território exige investigação técnico-legal e validação antes da liberação.',
-  },
-  {
-    tag: 'EXPANSÃO DO APLICATIVO',
-    date: 'Dezembro de 2027',
-    dateTime: '2027-12',
-    title: 'BETTEX Bank',
-    description: 'Uma nova etapa de expansão do aplicativo BETTEX, com estrutura e adequação jurídica próprias antes de qualquer oferta de serviços financeiros. Formato, recursos e alcance permanecem em aberto.',
-  },
+export const roadmapStops = [
+  { tag: 'DISPONÍVEL COMO DEMO', date: 'Atual', dateTime: undefined, title: 'Comunidade e preparação', description: 'Interface visual acessível e canal de feedback com a comunidade. O demo não comprova trading nem dinheiro real.' },
+  { tag: 'PREVISTO · MINT PÚBLICO', date: '10 de dezembro de 2026', dateTime: '2026-12-10', title: 'Mint público', description: 'Oferta de até 10% da emissão, a preço fixo, conforme regras, termos e elegibilidade aprovados. Não garante a venda dos 10%.' },
+  { tag: 'PREVISTO · ALFA E VESTING', date: 'Março de 2027', dateTime: '2027-03', title: 'Sistema ALFA e vesting', description: 'Sistema e escopo inicial validados, com captação de investidores e início do vesting de 24 meses. Liberação não significa venda ou circulação, nem abre todos os mercados.', featured: true },
+  { tag: 'PREVISTO · BETA', date: 'Após o ALFA · data a definir', dateTime: undefined, title: 'BETA e go to market', description: 'Evolução do produto a partir das validações do ALFA, ampliando o acesso sem novo lançamento do token.' },
+  { tag: 'EVOLUÇÃO FUTURA', date: 'Gradual · data a definir', dateTime: undefined, title: 'Expansão de mercados', description: 'Cada mercado e território só abre com integração e controles validados e adequação legal. Dados públicos não equivalem a operação autorizada.' },
+  { tag: 'DIREÇÃO FUTURA', date: 'Sem prazo', dateTime: undefined, title: 'Gestão crescente por IA', description: 'Funções administrativas e operacionais passam gradualmente ao agente, com limites e evidências. Fundadores mantêm o domínio dos contratos até decisão separada.' },
 ] as const;
 
 export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
-  const total = String(stops.length).padStart(2, '0');
+  const total = String(roadmapStops.length).padStart(2, '0');
   return (
     <section className="roadmap" id={id} aria-labelledby={`${id}-title`}>
       <div className="roadmap__wrap">
@@ -95,7 +37,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
           </div>
 
           <ol className="roadmap__stops">
-            {stops.map((stop, index) => {
+            {roadmapStops.map((stop, index) => {
               const Icon = icons[index];
               const number = String(index + 1).padStart(2, '0');
               return (
@@ -114,7 +56,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
                   <time className="roadmap__place-date" dateTime={stop.dateTime}>{stop.date}</time>
                   <h3>{stop.title}</h3>
                   <p>{stop.description}</p>
-                  {(index === 2 || index === 4) && <DemoAppLink className="roadmap__features roadmap__features--demo" data-testid={index === 2 ? 'roadmap-alpha-features' : 'roadmap-beta-features'}><span>Abrir o demo</span><ArrowRight size={16} aria-hidden="true" /></DemoAppLink>}
+                  {(index === 0 || index === 2) && <DemoAppLink className="roadmap__features roadmap__features--demo" data-testid={index === 2 ? 'roadmap-alpha-features' : 'roadmap-beta-features'}><span>Abrir o demo</span><ArrowRight size={16} aria-hidden="true" /></DemoAppLink>}
                 </article>
               </li>
               );
@@ -127,7 +69,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
           <div className="roadmap__closing-mark" aria-hidden="true"><span /><span /><span /></div>
           <div>
             <span className="roadmap__closing-label">O QUE IMPORTA NESTA ROTA</span>
-            <p>As datas indicam o cronograma previsto, não entregas concluídas nem autorizações obtidas. Cada lançamento depende de adequação legal e jurídica, testes e controles aplicáveis. Se uma categoria não puder ser oferecida legalmente num território, ela fica fora da oferta local. O planejamento pode ser ajustado. Investir envolve risco e não há rendimento garantido.</p>
+            <p>As datas indicam o cronograma previsto, não entregas concluídas. Oferta e operação dependem de adequação por atividade e território e podem ser ajustadas. Investir envolve risco e não há rendimento garantido.</p>
             <CommunityCTA source="roadmap" label="Entre na comunidade" note="Acompanhe cada etapa de perto." tone="light" />
           </div>
         </aside>

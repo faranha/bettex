@@ -3,14 +3,11 @@ import { t, useLocale } from '@/lib/i18n';
 
 const sections = [
   { id: 'visao', label: 'Início do Pitch' },
-  { id: 'publico-pitch', label: 'Público' },
-  { id: 'problema', label: 'Problema' },
-  { id: 'agora', label: 'Ambiente externo' },
-  { id: 'solucao', label: 'Solução' },
-  { id: 'fundador', label: 'Fundador' },
+  { id: 'publico-pitch', label: 'Público e oportunidade' },
+  { id: 'solucao', label: 'Produto' },
   { id: 'tokenomics', label: 'Tokenomics' },
+  { id: 'publico', label: 'Comunidade e aquisição' },
   { id: 'pitch-roadmap', label: 'Roadmap' },
-  { id: 'publico', label: 'Go to market' },
   { id: 'recursos', label: 'Recursos e riscos' },
 ] as const;
 

@@ -45,6 +45,8 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
     nodes.forEach((node, nodeIndex) => {
       if (node.closest(EXCLUDED) && !node.closest('.whitepaper__vesting')) return;
       if (node.closest('.whitepaper__chapter-head')) return;
+      const reference = node.closest<HTMLDetailsElement>('[data-documentation-reference]');
+      if (reference && !reference.open && node !== reference.querySelector('summary')) return;
       let target: HTMLElement = node;
       let titleHost: HTMLElement = node;
       let depth = 0;

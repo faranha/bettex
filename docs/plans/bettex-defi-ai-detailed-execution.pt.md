@@ -1,6 +1,6 @@
 # BETTEX — plano detalhado da revisão DeFi + IA
 
-Este documento detalha o [plano editorial](bettex-defi-ai-editorial-plan.pt.md). É um roteiro de execução futura: nenhuma mudança no site, aplicativo, contrato ou economia foi aplicada nesta etapa.
+Este documento detalha o [plano editorial](bettex-defi-ai-editorial-plan.pt.md) aprovado. A revisão foi executada no ambiente de desenvolvimento; os resultados e as verificações estão no [relatório de execução](bettex-defi-ai-execution-report.pt.md). Contratos, regras financeiras e publicação permanecem fora do escopo.
 
 ## 1. Resultado pretendido
 
@@ -27,7 +27,7 @@ Não deve exigir que o leitor entenda a estrutura de uma empresa, todos os módu
 - Domínio sobre os contratos e administração inicial permanecem.
 - Evolução para um serviço todo gerido por IA.
 
-### Propostas deste plano, ainda não implementadas
+### Propostas aprovadas para esta execução
 
 - Seis capítulos principais.
 - Metas de redução e limites de extensão.

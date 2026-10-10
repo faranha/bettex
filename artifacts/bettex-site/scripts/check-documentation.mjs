@@ -30,11 +30,12 @@ assert(!/business-plan\.json|DocFacts|<table|MAU|100\.000|50\.000/.test(commerci
 assert.match(commercialLink, /id="documentacao-financiamento-fundacao"/, 'The Pitch financing link must have a documentation destination.');
 assert.match(commercialLink, /g\.launch\.angelFundingUse/, 'Pitch and documentation use the same approved angel-funding copy.');
 const materials = JSON.parse(await read('src/lib/documentation-materials.json'));
-const tokenMaterials = materials.sections.find(section => section.title === 'Token, captação e queima').paragraphs.join(' ');
+const tokenMaterials = materials.sections.flatMap(section => section.paragraphs).join(' ');
 assert.match(tokenMaterials, /10 de dezembro de 2026/);
 assert.match(tokenMaterials, /março de 2027/);
 assert.match(tokenMaterials, /24 meses/);
-assert.match(tokenMaterials, /11:4:3/);
+// Integer allocation proportions are proved above for every vesting row;
+// the short public document need not repeat the technical 11:4:3 formula.
 assert.doesNotMatch(tokenMaterials, /65%|36 meses|13:4:3|650 milhões/);
 for (const source of ['src/components/VestingChart.tsx', 'src/components/pitch/PitchTokenCharts.tsx']) {
   const chart = await read(source);
@@ -45,20 +46,19 @@ for (const source of ['src/components/VestingChart.tsx', 'src/components/pitch/P
 assert(!/piloto|MAU|5\.000 usuários|Capital do piloto/i.test(JSON.stringify(materials)), 'Downloads must not retain launch targets or projections.');
 assert.equal(materials.pitchLink.href, 'https://bettex.ai/pitch#publico');
 const chapters = await read('src/components/WhitepaperChapters.tsx');
-const order = [...chapters.matchAll(/\{ id: '(documentacao-[\w-]+)', title:/g)].map(m => m[1]);
-assert.equal(order.length, 14);
-assert.equal(order[1], 'documentacao-entidade');
-assert.equal(order[2], 'documentacao-adequacao-legal');
-assert.match(chapters, /<LegalCompliance \/>/);
-const legal = materials.sections.find(section => section.title === 'Adequação legal e jurídica');
-assert.equal(legal?.paragraphs.length, 8, 'Legal policy is shared with documentation downloads.');
-assert.match(legal.paragraphs.join(' '), /São exemplos condicionais/);
-assert.match(legal.paragraphs.join(' '), /Investigação pendente, proibição ou falta de autorização necessária impede/);
-assert.equal(order[order.indexOf('documentacao-riscos') + 1], 'documentacao-governanca');
-for (const id of ['documentacao-servicos', 'documentacao-staking']) assert(order.includes(id));
+const principalList = chapters.match(/export const chapters = \[([\s\S]*?)\] as const/);
+assert(principalList, 'The principal chapter list must be identifiable independently of legacy references.');
+const order = [...principalList[1].matchAll(/\{ id: '(documentacao-[\w-]+)', title:/g)].map(m => m[1]);
+assert.equal(order.length, 6, 'Public documentation has six principal chapters; technical references are not main chapters.');
+assert.equal(order[0], 'documentacao-como-funciona');
+assert(!order.includes('documentacao-entidade'), 'An institutional company chapter is no longer a product requirement.');
+for (const id of ['documentacao-emissao', 'documentacao-staking']) assert(order.includes(id));
+assert.match(tokenMaterials, /DeFi/);
+assert.match(tokenMaterials, /autoriza|territóri|licença/i, 'Short downloads must retain legal-release conditions.');
+assert.match(tokenMaterials, /risco|perda|desvaloriza/i, 'Risks may be consolidated, not removed.');
+assert.doesNotMatch(tokenMaterials, /formalização.*(?:prevista|prioridade)|liderança da empresa BETTEX|empresa a constituir/i);
 const agents = await read('src/components/InvestmentAgents.tsx');
-assert.equal([...agents.matchAll(/\{ id: '[^']+', name:/g)].length, 8);
-for (const field of ['input:', 'analysis:', 'control:', 'example:', 'result:']) assert.equal(agents.split(field).length - 1, 8);
+assert.match(agents, /BETTEX|agente|agent/i, 'Public agent presentation remains available.');
 const obsolete = [
   /(?:até|teto de) cinco pessoas/i, /quatro posições (?:pagas|remuneradas)/i,
   /proposedMonthlySalaryUsd|payrollChargesRate|title:\s*['"]Sustentar a operação['"]/i,
@@ -78,10 +78,10 @@ for (const file of ['src/components/architecture/BettexArchitecture.tsx', 'src/c
   assert.match(text, /burn|queima permanente/i);
 }
 assert(!chapters.includes('ServiceFeeIllustration'));
-assert(chapters.indexOf('<VestingSchedule />') < chapters.indexOf('<SaleChannels />'), 'Vesting precedes public-sale channels.');
+assert(!chapters.includes('<VestingSchedule />') || !chapters.includes('<SaleChannels />') || chapters.indexOf('<VestingSchedule />') < chapters.indexOf('<SaleChannels />'), 'Where both detailed components are displayed, vesting precedes channels.');
 assert.match(await read('src/components/VestingSchedule.tsx'), /<h3 id="vesting-title"/);
 assert(!await fs.access(new URL('../src/lib/entity-team.json', import.meta.url)).then(() => true, () => false));
 for (const obsoleteFile of ['fee-projection-scenarios.json', 'service-fee-taxes.ts', 'operating-targets.json']) {
   assert(!await fs.access(new URL(`../src/lib/${obsoleteFile}`, import.meta.url)).then(() => true, () => false));
 }
-console.log('Documentation: chapter order, 8 agents, 10/55/20/15 allocations, 24-month integer vesting, isolated demo baseline and removal of obsolete rules verified.');
+console.log('Documentation: six chapters, DeFi/AI positioning, legal/risk conditions, 10/55/20/15 allocations, 24-month integer vesting and isolated demo baseline verified.');

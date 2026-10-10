@@ -20,3 +20,9 @@ Keep technical CSS class literals in JSX `className` attributes rather than stan
 **Why:** A statement component's standalone CSS class constant was collected as untranslated EN/ES prose and blocked publishing, even though its visible text used complete multilingual tuples.
 
 **How to apply:** Preserve the exact styling selectors; move technical literals into their styling attributes instead of adding fake translations or weakening coverage checks.
+
+Quoted property names in copy dictionaries, routing IDs and locale filename suffixes are identifiers, not visible messages. Audit dictionary values and runtime-observed labels instead.
+
+**Why:** A new short-copy dictionary produced hundreds of false localization failures by collecting its quoted keys; real missing paragraphs and download format labels were mixed into the same report.
+
+**How to apply:** Exclude only verified structural identifiers, preserve runtime collection and multilingual coverage, and check for existing translations before adding entries.

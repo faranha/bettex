@@ -3,6 +3,7 @@ import { createPortal, flushSync } from 'react-dom';
 import { ChapterContent, chapters } from './WhitepaperChapters';
 import { ChapterVisibility } from './ChapterVisibility';
 import { t, useLocale } from '@/lib/i18n';
+import { resolveDocumentationId } from '@/lib/documentation-aliases';
 import { collectOutline, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
 import './WhitepaperSection.css';
 
@@ -26,7 +27,8 @@ export function WhitepaperSection() {
   useEffect(() => { setSlot(document.getElementById('documentation-mobile-slot')); }, []);
   const total = String(chapters.length).padStart(2, '0');
 
-  const scrollToId = useCallback((id: string, smooth: boolean) => {
+  const scrollToId = useCallback((requestedId: string, smooth: boolean) => {
+    const id = resolveDocumentationId(requestedId);
     const el = document.getElementById(id);
     if (!el) return false;
     const owner = el.closest<HTMLElement>('article.whitepaper__chapter');
@@ -58,7 +60,7 @@ export function WhitepaperSection() {
   }, []);
 
   useEffect(() => {
-    const owner = document.getElementById(decodeURIComponent(window.location.hash.slice(1)))?.closest('article.whitepaper__chapter');
+    const owner = document.getElementById(resolveDocumentationId(decodeURIComponent(window.location.hash.slice(1))))?.closest('article.whitepaper__chapter');
     const initial = owner ? chapters.findIndex(chapter => chapter.id === owner.id) : -1;
     setEnhanced(true);
     if (initial >= 0) setSelected(initial);
@@ -94,7 +96,7 @@ export function WhitepaperSection() {
     const schedule = () => { window.clearTimeout(timer); timer = window.setTimeout(rebuild, 120); };
     rebuild();
     const obs = new MutationObserver(schedule);
-    if (root) obs.observe(root, { childList: true, subtree: true, characterData: true });
+    if (root) obs.observe(root, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['open'] });
     return () => { obs.disconnect(); window.clearTimeout(timer); };
   }, [locale]);
 
@@ -128,7 +130,7 @@ export function WhitepaperSection() {
       const anchor = (event.target as Element)?.closest<HTMLAnchorElement>('.whitepaper__content a[href^="#"]');
       if (!anchor || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       const id = decodeURIComponent(anchor.hash.slice(1));
-      if (!document.getElementById(id)) return;
+      if (!document.getElementById(resolveDocumentationId(id))) return;
       event.preventDefault();
       if (window.location.hash !== anchor.hash) window.history.pushState(null, '', anchor.hash);
       scrollToId(id, true);
@@ -216,14 +218,14 @@ export function WhitepaperSection() {
     <>
     {bar}
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
-      <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO TÉCNICA · v1</span><span>UM AGENTE · {total} CAPÍTULOS</span></div>
+      <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO · v1</span><span>UM AGENTE · {total} CAPÍTULOS</span></div>
       <header className="whitepaper__hero page-wrap">
         <div>
-          <p className="whitepaper__eyebrow"><span aria-hidden="true" /> v1 · ARQUITETURA, ECONOMIA E RISCO</p>
+          <p className="whitepaper__eyebrow"><span aria-hidden="true" /> v1 · TOKENOMICS, PARTICIPAÇÃO E RISCO</p>
           <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}{' '}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
-          <p className="whitepaper__hero-lede">A BETTEX é um produto de tecnologia com IA, criado para ampliar o acesso de pessoas comuns a diferentes mercados e à participação nos resultados do projeto, sem precisar operar por conta própria.</p>
+          <p className="whitepaper__hero-lede">A BETTEX é um projeto DeFi que constrói um agente de trading com IA para vários mercados. O token BETTEX organiza a participação econômica e a distribuição de resultados.</p>
         </div>
-        <div className="whitepaper__hero-note"><span>VERSÃO INICIAL · 100% CRIPTO</span><p>A BETTEX é um projeto internacional. O saldo efetivo e as movimentações previstos são em USDC; a interface mostra seu valor estimado na moeda fiduciária da pessoa. O saque interno continua em USDC. BETTEX é o token de participação.</p><p>A entrada em moeda fiduciária depende de um provedor externo de conversão habilitado. Conversão de saldos USDC e pagamentos em moeda fiduciária por serviços próprios da BETTEX pertencem à proposta futura do BETTEX Bank, sujeita a validação específica.</p></div>
+        <div className="whitepaper__hero-note"><span>DEMO VISUAL · USDC</span><p>O demo atual é visual, com dados ilustrativos e sem dinheiro real. Saldos e movimentações previstos são em USDC; BETTEX é o token de participação.</p><p>A entrada em moeda fiduciária depende de um provedor externo habilitado.</p></div>
       </header>
       <div className="whitepaper__body page-wrap" id="documentacao-indice">
         <aside className="whitepaper__aside" aria-label="Índice da documentação">
