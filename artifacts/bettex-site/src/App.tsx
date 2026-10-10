@@ -30,7 +30,7 @@ import { NewEconomySection } from '@/components/NewEconomySection';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
-import { chapters } from '@/components/WhitepaperChapters';
+import { legacyDocumentationHashes } from '@/lib/documentation-aliases';
 import { FloatingCommunityCTA, TelegramIcon } from '@/components/CommunityCTA';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
@@ -48,7 +48,7 @@ const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 const HOME_PATH = `${BASE_PATH}/`;
 const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
 const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR DEMO', href: '/app' }] as const;
-const legacyChapterIds = new Set<string>(chapters.map(({ id }) => id));
+const legacyChapterIds = legacyDocumentationHashes;
 const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
 type Market = {
   name: string;
@@ -154,13 +154,13 @@ function SiteHeader() {
   }, [menuOpen]);
 
   return <header ref={headerRef} className="site-header sticky top-0 z-40 border-b border-[#2B59FF]/30 bg-[#070B1F]/95 text-[#F4F1E8] backdrop-blur-lg">
-    <div className="page-wrap flex h-14 items-center justify-between gap-3">
+    <div className="page-wrap flex h-14 items-center justify-between gap-3 max-[399px]:gap-2">
       <Logo />
       <nav className="site-main-nav ml-auto hidden xl:flex" aria-label="Navegação principal">
         <MainLinks className="" />
       </nav>
       <div className="hidden xl:flex"><LanguageSelector /></div>
-      <a href={localizedUrl(`${BASE_PATH}/app`)} data-testid="launch-app-mobile" className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md border border-[#F2B632] bg-[#F2B632] px-3 max-[359px]:px-2 text-[11px] font-extrabold text-[#070B1F] hover:bg-[#FFD16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AAC3EE] xl:hidden">{t('ABRIR DEMO')}<ArrowRight size={14} aria-hidden="true" className="max-[359px]:hidden" /></a>
+      <a href={localizedUrl(`${BASE_PATH}/app`)} data-testid="launch-app-mobile" className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md border border-[#F2B632] bg-[#F2B632] px-3 max-[399px]:px-2 text-[11px] font-extrabold text-[#070B1F] hover:bg-[#FFD16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AAC3EE] xl:hidden">{t('ABRIR DEMO')}<ArrowRight size={14} aria-hidden="true" className="max-[399px]:hidden" /></a>
       <button type="button" data-testid="public-menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     <div inert={menuOpen}>
@@ -210,7 +210,7 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
       <div className="sf-nav">
         <div className="sf-brand">
           <Logo />
-          <p className="sf-tag mono">COMUNIDADE DE INVESTIMENTO COM IA</p>
+          <p className="sf-tag mono">PROJETO DEFI DE TRADING COM IA</p>
           <div className="sf-actions">
             <LanguageSelector className="sf-lang" showLabel />
             <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="sf-community" data-community-source="footer" data-testid="link-community-footer-nav"><TelegramIcon className="sf-community__icon" /><span>Entre na comunidade</span></a>
@@ -311,13 +311,13 @@ function Home() {
         </div>
         <div className="page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[730px] xl:py-16">
           <div className="entrance relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#5a8bfc]/35 bg-[#2B59FF]/15 px-4 py-2 text-[11px] font-bold text-[#F4F1E8]"><span className="h-2 w-2 rounded-full bg-[#36E0D0]" /> COMUNIDADE DE INVESTIMENTO COM IA</div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#5a8bfc]/35 bg-[#2B59FF]/15 px-4 py-2 text-[11px] font-bold text-[#F4F1E8]"><span className="h-2 w-2 rounded-full bg-[#36E0D0]" /> PROJETO DEFI · TRADING COM IA</div>
             <h1 className="hero-title mt-7 max-w-[690px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold">
               <span className="block">Chega de apostar.</span>{' '}
               <span className="block text-[#F2B632]">Comece a investir.</span>
             </h1>
-            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Uma comunidade pra quem está cansado de só apostar e quer começar a ganhar.</h2>
-            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">Na BETTEX, nossa IA analisa e opera em diferentes mercados. Com nosso token, você participa dos lucros do projeto.</p>
+            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Um projeto DeFi que constrói um agente de trading com IA para vários mercados.</h2>
+            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">O token BETTEX conecta você à economia do projeto e à distribuição de resultados, quando houver lucro elegível.</p>
             <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
               <span>Entenda o projeto</span>
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/20" aria-hidden="true"><ArrowDown size={22} strokeWidth={2.2} /></span>

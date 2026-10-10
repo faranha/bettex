@@ -8,6 +8,7 @@ const normalize = value => value.replace(/\s+/g, ' ').trim();
 function add(value) {
   value = normalize(value);
   if (/^--[a-z\d_-]+$/i.test(value)) return; // CSS custom-property names are not copy.
+  if (/^documentacao-[\w-]+$|^-(en|es)$/.test(value)) return; // Routing ids and localized filename suffixes.
   if (!value || !/[A-Za-zÀ-ÿ]/.test(value) || /^https?:|^[/#@]\S|^\.[a-z]|^#[a-f\d]{3,8}$/i.test(value) || /^[a-z\d_-]+:[^\s]+$/i.test(value)) return;
   if (!value.includes(' ') && /[/[\]{}=]/.test(value)) return;
   if (/(?:bg-|text-|grid-|flex-|border-|rounded-|min-h-|max-w-|aria-|data-testid)/.test(value)) return;
@@ -49,6 +50,8 @@ function scan(file) {
     if (ts.isPropertyAssignment(node) && node.name.getText(source).replace(/^['"]|['"]$/g, '') === 'id' && ts.isStringLiteral(node.initializer)) return;
     if (ts.isJsxElement(node) && ['style', 'script'].includes(node.openingElement.tagName.getText(source))) return;
     if (ts.isJsxAttribute(node) && ['className','id','key','href','src','d','viewBox','transform','style','align','allow','referrerPolicy','loading','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath'].includes(node.name.getText(source))) return;
+    // Quoted object property names identify messages; their values are copy.
+    if (ts.isStringLiteral(node) && ts.isPropertyAssignment(node.parent) && node.parent.name === node) return;
     if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node) || ts.isJsxText(node)) add(node.text);
     if (ts.isTemplateExpression(node)) {
       const text = node.head.text + node.templateSpans.map((span, i) => `{${i}}${span.literal.text}`).join('');

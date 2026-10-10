@@ -1,10 +1,10 @@
-BETTEX — entity and rules
+BETTEX — rules and administration
 
 Legal and regulatory compliance
 
 Every BETTEX launch must already comply with the legal environment of the markets where the solution will be offered. Releasing each agent, feature and category requires a specific technical and legal investigation and compliance with applicable requirements. A roadmap date does not replace this condition.
 
-The project starts decentralized and establishing an entity is not an immediate priority, with no near-term plan. The analysis identifies the offering country, target audience, activity, responsible parties and providers. Offering and execution are assessed separately; permission in one country does not authorize activity in another. If an activity requires an entity, license or authorization, it will not be released until those conditions are met.
+The project is born decentralized and does not plan a formal company or foundation as a structure. The analysis identifies the offering country, the audience served, the activity, those responsible and the providers. Offer and execution are assessed separately; a permit in one country does not authorize activity in another. If an activity requires a license or authorization, it will not be released before meeting those conditions.
 
 The investigation checks official sources, the effective dates and scope of rules, required licenses and authorizations, provider terms, advertising, user protection, identification and anti-money laundering, data protection and tax obligations, as applicable. Legal and technical staff record the evidence, analysis date, conditions and required controls.
 
@@ -36,15 +36,15 @@ Operational round and demonstration
 
 The operational model has daily UTC rounds. The visual demo uses a separate storyline from 16:00 to 16:00 São Paulo time over 24 real hours, with no real money or operations. It is not a conversion of UTC midnight or a change to contracts. Market tabs do not create independent staking pools.
 
-Company and administration
+Administration and purpose
 
-BETTEX is a technology product that combines an app, a token and AI agents. The user participates in the project's results according to the token rules, without ownership of the company or treasury.
+BETTEX is a DeFi project building an AI trading agent to operate in different markets. The BETTEX token connects users to the project economy and to the distribution of results, when there is eligible profit, without ownership of the treasury or any corporate vote.
 
-BETTEX starts as a decentralized project. Establishing an entity and institutional formalization are not immediate priorities, are not planned for the near term and have no set date. Operations will be limited to markets where the activity is permitted, with the required authorizations where applicable.
+The founders initially administer the project and keep ownership of the contracts. Functions gradually move to an AI-managed service, with limits and evidence, with no set deadline. No formal company or foundation is planned; the community takes part in decisions still to be defined, with no DAO, token vote or renunciation of ownership defined.
 
-The founder coordinates development using a full stack AI model, with no employees. Specialized external services may be contracted as needed. Decentralization does not remove responsibilities, controls or legal requirements; if an activity requires an entity, license or authorization, it will not be released until those conditions are met.
+Specialized external services may be hired as needed. The absence of a formal structure does not remove responsibilities, controls or legal requirements, and no tax exemption is presumed. Operation depends on legal fit per activity and territory.
 
-The mission expands alternatives for economic participation during the transition of AI and robotics. Transparency, understanding, responsibility, and accountability guide the operation, without guaranteed income or capital protection.
+Transparency, responsibility and accountability guide the operation, with no guaranteed income or capital protection.
 
 Token, funding, and burn
 
@@ -68,7 +68,7 @@ Example: A starts the round with 1,000 eligible BETTEX; B receives 1,000 at 12:0
 
 Each round pays or does not pay, without accumulation, reopening, or future supplement. Any BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable fractions return to the treasury, without future credit. Received USDC remains personal.
 
-Taxes attributable to the entity are calculated, deducted, and paid according to the applicable obligation before eligible profit and split. Applicable withholdings are resolved before the net credit. Provision is not payment; accounting for and paying the same obligation does not allow double deduction. There is no universal personal exemption.
+Taxes attributable to whoever is legally responsible are calculated, deducted, and paid according to the applicable obligation before eligible profit and split. Applicable withholdings are resolved before the net credit. Provision is not payment; accounting for and paying the same obligation does not allow double deduction. There is no universal personal exemption.
 
 Only confirmed and reconciled USDC enters the available balance. Uncertain sends do not authorize repetition nor are they recovered resources. Corrections maintain history and unique effects, without automatic debit from the personal wallet.
 

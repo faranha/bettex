@@ -503,3 +503,8 @@
   .whitepaper__aside { display: none; }
   .whitepaper__body { padding-top: 30px; }
 }
+
+/* Moved technical reference: collapsed, visually secondary to the main reading. */
+.whitepaper__reference { margin-top: 2.5rem; border: 1px solid rgba(7, 11, 31, .18); border-radius: 14px; background: rgba(255, 255, 255, .45); }
+.whitepaper__reference > summary { cursor: pointer; padding: 1rem 1.25rem; font-weight: 700; font-size: .875rem; min-height: 44px; }
+.whitepaper__reference-body { padding: 0 1.25rem 1.25rem; }

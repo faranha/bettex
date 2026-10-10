@@ -1,7 +1,6 @@
 import { useEffect, type ReactNode } from 'react';
-import { ArrowRight, CircuitBoard, ExternalLink, ReceiptText, Landmark } from 'lucide-react';
+import { ArrowRight, CircuitBoard, ExternalLink } from 'lucide-react';
 import g from '@/lib/growth-strategy.json';
-import { FounderProfile } from '@/components/FounderProfile';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { ProblemSection } from '@/components/pitch/ProblemSection';
 import { AudienceSection } from '@/components/pitch/AudienceSection';
@@ -82,7 +81,8 @@ export function PitchPage() {
         <div className="cover__grid">
           <div className="cover__copy">
             <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Início</span>
-            <h1 className="pitch-rise display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Tecnologia de investimento para o apostador brasileiro, <span className="text-[#F2B632]">gerida por IA.</span></h1>
+            <p className="cover__market mb-4">O apostador brasileiro é o público inicial; a proposta também atende pessoas que já participam do mercado cripto.</p>
+            <h1 className="pitch-rise display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Um projeto DeFi de trading com IA <span className="text-[#F2B632]">para vários mercados.</span></h1>
             <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t(`Mais de 60 milhões de brasileiros formam o público potencial estimado, enquanto o mercado de cripto movimenta cerca de R$ ${cryptoDailyBillions} bilhão em operações diárias e as bets têm uma referência histórica de R$ 600 milhões em depósitos por dia.`)}</strong>{' '}A oportunidade é oferecer um produto de investimento que fale a língua dessas pessoas.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
@@ -106,9 +106,9 @@ export function PitchPage() {
 
     <FutureSections />
 
-    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" summary="Produto de tecnologia com IA, descentralizado desde a origem. Quatro frentes de atuação." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
-      <p className="mb-8 max-w-[800px] text-[15px] leading-7">A BETTEX nasce como projeto descentralizado. A constituição de uma entidade e sua formalização institucional não são prioridades imediatas, não estão previstas para o curto prazo e não têm data definida. A operação será limitada aos mercados onde a atividade for permitida, com as autorizações exigidas quando aplicáveis.</p>
-      <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A oportunidade da BETTEX é oferecer a esses públicos um produto de investimento com experiência familiar, linguagem acessível e estratégias geridas por IA. O objetivo é redirecionar a busca por retorno financeiro das apostas para a participação em resultados de investimentos em mercados de risco.</p>
+    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" summary="Um agente BETTEX, vários mercados e participação econômica por token." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
+      <p className="mb-8 max-w-[800px] text-[15px] leading-7">A BETTEX é um projeto DeFi que constrói um agente de trading com IA para vários mercados. Nenhuma empresa ou fundação formal é planejada: os fundadores administram inicialmente e mantêm o domínio dos contratos, e a gestão evolui gradualmente para um serviço gerido por IA. A operação se limita aos mercados onde a atividade for permitida.</p>
+      <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A oportunidade é oferecer a quem hoje aposta um produto de investimento com linguagem acessível e participação em resultados, sem prometer lucro.</p>
       <div className="fu-position">
         <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
         <p className="display fu-pos-lead">Resgatar o futuro, transformando a aposta em investimento.</p>
@@ -121,10 +121,6 @@ export function PitchPage() {
         <dl className="mt-6 grid gap-4 sm:grid-cols-3">
           {[['50%', 'Tesouraria', 'Retenção e reinvestimento.'], ['25%', 'Stakers', 'Pool global, rateado pelo peso elegível.'], ['25%', 'Carteira de recompra', 'USDC exclusivo para recompras autorizadas.']].map(([share, destination, explanation]) => <div key={destination} className="border-t border-[#5F86FF]/40 pt-4"><dt className="text-sm font-bold">{destination}</dt><dd className="display mt-2 text-4xl font-extrabold text-[#F2B632]">{share}</dd><dd className="mt-2 text-sm leading-6 text-[#c5d2f1]">{explanation}</dd></div>)}
         </dl>
-        <p className="mt-5 text-sm leading-7 text-[#c5d2f1]">
-          <span>Exemplo ilustrativo: 10.000 USDC de lucro elegível destinam 5.000 à tesouraria, 2.500 ao pool global dos stakers e 2.500 à carteira de recompra. Os 25% não são uma taxa de retorno individual. Sem peso elegível ou condições de reserva e liquidez, não há split: 100% fica retido. Rodadas encerradas não acumulam direitos a lucros futuros.</span>{' '}
-          <span>A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. Todos os tokens adquiridos nas recompras são queimados permanentemente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.</span>
-        </p>
       </div>
       <Doc hash="documentacao-oportunidade">Ver regras na documentação</Doc>
 
@@ -137,41 +133,16 @@ export function PitchPage() {
     </Sec>
     </Sec>
 
-    <Sec id="fundador" hero="pitch-illustrations/pitch-startup-team.webp" summary="Experiência no lançamento e na administração de operações, com IA e serviços externos especializados." n="06" kicker="Fundador" dark title={<>Experiência internacional. <span className="text-[#F2B632]">Fundador à frente da BETTEX.</span></>}>
-      <FounderProfile dark portrait noDashes thirdPerson />
-      <div className="mt-6">
-        <Card dark label="Alinhamento do fundador" title="Sem salário. Sem retiradas da empresa.">{g.founder.bettexEarnings}</Card>
-      </div>
-      <Doc dark hash="documentacao-fundador">Apresentação na documentação</Doc>
-    </Sec>
-
     <section id="tokenomics" aria-labelledby="economia-t">
-    <Sec id="economia" hero="pitch-illustrations/pitch-token-participation.webp" summary="Financiamento e sustentabilidade operacional separados dos resultados da tesouraria." n="07" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Receitas, tesouraria e direitos do token.</span></>}>
-      <h3 className="display mb-6 text-2xl font-extrabold">O dinheiro da empresa não se mistura ao da tesouraria.</h3>
+    <Sec id="economia" hero="pitch-illustrations/pitch-token-participation.webp" summary="Financiamento e sustentabilidade operacional separados dos resultados da tesouraria." n="06" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Receitas, tesouraria e direitos do token.</span></>}>
+      <h3 className="display mb-6 text-2xl font-extrabold">Financiamento do projeto e tesouraria ficam separados.</h3>
       <div className="mb-8 grid gap-4 md:grid-cols-2">
         <Card label="Mint público inicial" title="Financiamento do projeto">Mint aberto a preço fixo, separado da comunidade em vesting. Aplicação dos recursos e custos da oferta devem ser documentados antes da abertura.</Card>
         <Card label="Comunidade em vesting" title="100% para a tesouraria">O preço dos tokens da comunidade já liberados financia a tesouraria. A venda não é lucro distribuível; o mint inicial fica separado.</Card>
         <Card label="Investidores-anjo" title="100% para produto, tecnologia e marketing">{g.launch.angelFundingUse}</Card>
         <Card label="Sustentabilidade operacional" title="Decisão com a comunidade">No ALFA, serão cobradas apenas taxas de rede. A decisão de cobrar ou não uma contribuição por serviços será tomada posteriormente com a comunidade, como possível alternativa para sustentar as operações. Não há valor fixado nem adoção confirmada.</Card>
       </div>
-      <div className="pitch-revenue">
-        <article className="pitch-revenue__item">
-          <div className="pitch-revenue__icon" aria-hidden="true"><ReceiptText size={36} strokeWidth={1.6} /></div>
-          <div className="pitch-revenue__copy">
-            <p className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#2B59FF]">Operadora</p>
-            <h3 className="display">Sustentabilidade operacional</h3>
-            <p>No ALFA, apenas taxas de rede. Uma contribuição por serviços será decidida posteriormente com a comunidade e, se adotada, ficará fora da tesouraria e do split 50/25/25.</p>
-          </div>
-        </article>
-        <article className="pitch-revenue__item pitch-revenue__item--treasury">
-          <div className="pitch-revenue__icon" aria-hidden="true"><Landmark size={36} strokeWidth={1.6} /></div>
-          <div className="pitch-revenue__copy">
-            <p className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#2B59FF]">Tesouraria</p>
-            <h3 className="display">Ganhos de investimento</h3>
-            <p>Resultado das estratégias. O preço dos tokens da comunidade já liberados vai à tesouraria; o mint inicial financia o projeto. Recursos operacionais são registrados à parte.</p>
-          </div>
-        </article>
-      </div>
+      <PitchObservations><p>Exemplo ilustrativo: 10.000 USDC de lucro elegível destinam 5.000 à tesouraria, 2.500 ao pool global dos stakers e 2.500 à carteira de recompra. Os 25% não são uma taxa de retorno individual. Sem peso elegível ou condições de reserva e liquidez, não há split: 100% fica retido. Rodadas encerradas não acumulam direitos a lucros futuros.</p><p>A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. Todos os tokens adquiridos nas recompras são queimados permanentemente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.</p></PitchObservations>
       <PitchObservations><p>A decisão de cobrar ou não por serviços será tomada posteriormente com a comunidade e depende de validação jurídica e comercial. Condições e valores deverão ser informados antes de eventual adoção. No ALFA, serão cobradas apenas taxas de rede.</p></PitchObservations>
     </Sec>
 
@@ -196,9 +167,8 @@ export function PitchPage() {
     </Sec>
     </section>
 
-    <RoadmapSection id="pitch-roadmap" />
 
-    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="Comunidade antes do mint público de dezembro de 2026; sistema/ALFA e vesting previstos para março de 2027, sujeitos à adequação jurídica." n="08" kicker="Fase atual e próximos passos" dark title={<>Preparação. <span className="text-[#F2B632]">Comunidade e mint.</span></>}>
+    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="Comunidade antes do mint público de dezembro de 2026; sistema/ALFA e vesting previstos para março de 2027, sujeitos à adequação jurídica." n="07" kicker="Fase atual e próximos passos" dark title={<>Preparação. <span className="text-[#F2B632]">Comunidade e mint.</span></>}>
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
         <DemoAppLink className="mono">DEMO VISUAL DISPONÍVEL</DemoAppLink>
         <strong>Comunidade antes do lançamento</strong>
@@ -219,11 +189,13 @@ export function PitchPage() {
       <PitchObservations dark><p>A validação acompanha a primeira compra elegível, o primeiro uso útil e o retorno dos usuários. Compradores e usuários ativados serão medidos separadamente; a meta não representa resultados já alcançados. Oferta e publicidade dependem de revisão jurídica e elegibilidade.</p></PitchObservations>
     </Sec>
 
-    <Sec id="recursos" hero="pitch-illustrations/pitch-product-development.webp" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="09" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>
+    <RoadmapSection id="pitch-roadmap" />
+
+    <Sec id="recursos" hero="pitch-illustrations/pitch-product-development.webp" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="08" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>
       <PitchEditorialSplit image={<PitchEditorialImage name="pitch-product-development" />}>
       <div className="grid gap-4 md:grid-cols-3">
         <Card label="Destino do capital" title="Tecnologia e marketing, sem salários">{g.launch.angelFundingUse}</Card>
-        <Card label="Alinhamento do fundador" title="Ganhos somente com seus tokens">{g.founder.bettexEarnings}</Card>
+        <Card label="Administração inicial" title="Fundadores administram e evoluem para a IA">Os fundadores administram inicialmente e mantêm o domínio dos contratos; as funções evoluem gradualmente para um serviço gerido por IA, sem empresa ou fundação formal planejada. {g.founder.bettexEarnings}</Card>
         <Card label="Em aberto" title="Valor total e termos">Orçamento e marcos do lançamento ainda serão definidos, assim como o valor total e os termos contratuais. Não há oferta formal de venda de tokens nem participação societária proposta aqui.</Card>
       </div>
       </PitchEditorialSplit>

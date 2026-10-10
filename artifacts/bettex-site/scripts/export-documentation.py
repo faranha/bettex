@@ -110,9 +110,15 @@ for lang in ("pt", "en", "es"):
     fee_rows = [[c["Operação"],t("Valor não definido"),c["Incidência"],c["Escopo"]]] + [[t(f["operation"]),t("Em avaliação"),t(f["basis"]),t(f["scope"])] for f in fees]
     sheets = [(t(labels["fees"]),fee_rows),(t(labels["vesting"]),[[c[x] for x in labels["columns"][4:]]] + vesting),(t(labels["rules"]),[[p] for p in paragraphs])]
     xlsx(out / f"bettex-taxas-fundacao{suffix}.xlsx", sheets)
-    print(f"Exported {lang}: entity and rules PDF/DOCX/HTML/MD with Pitch reference, fees and 24-month vesting; initial mint separate.")
+    # Keep distributed legacy URLs while offering neutral names for the same
+    # current content. Never rewrite the historical research workbook.
+    neutral = out / f"bettex-documentacao{suffix}"
+    for extension in (".md", ".html", ".docx", ".pdf"):
+        shutil.copyfile(stem.with_suffix(extension), neutral.with_suffix(extension))
+    shutil.copyfile(out / f"bettex-taxas-fundacao{suffix}.xlsx",
+                    out / f"bettex-tokenomics{suffix}.xlsx")
+    print(f"Exported {lang}: current DeFi/AI documentation and tokenomics, compatible legacy URLs, 24-month vesting; initial mint separate.")
 
 # Explicitly excluded research download, not an application source.
 for file in out.glob("bettex-publico-oportunidade*.md"):
     file.unlink()
-shutil.copyfile(out / "bettex-taxas-fundacao.xlsx", app.parents[1] / "research/bettex-caixa-operacional.xlsx")

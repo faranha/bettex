@@ -1,4 +1,5 @@
 import { Fragment, isValidElement, type ReactElement, type ReactNode } from 'react';
+import { Children } from 'react';
 import thesis from '@/lib/new-economy-thesis.json';
 import growthStrategy from '@/lib/growth-strategy.json';
 import { DocumentationGames } from './DocumentationGames';
@@ -46,9 +47,14 @@ import { BuybackPolicy } from '@/components/BuybackPolicy';
 import { TokenAllocationSchematic } from '@/components/docs-diagrams/DocSchematics';
 import { DocImage, DocTerms, Dot } from '@/components/DocImage';
 import { FundSecurity } from '@/components/FundSecurity';
+import { DocumentationDownloads } from './DocumentationDownloads';
+import { t } from '@/lib/i18n';
+import { copy as c } from '@/lib/documentation-copy';
+import { roadmapStops } from '@/components/RoadmapSection';
 import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure';
 
-export const chapters = [
+/** Previous 14-chapter list, retained as source history and for reference bodies. */
+const legacyChapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação em USDC, participação automática e controles.' },
   { id: 'documentacao-entidade', title: 'Entidade e negócios', subtitle: 'Origem descentralizada, entidade em etapa posterior e operação limitada aos mercados permitidos.' },
   { id: 'documentacao-adequacao-legal', title: 'Adequação legal e jurídica', subtitle: 'Investigação técnico-legal, disponibilidade territorial e condições para liberar cada agente.' },
@@ -65,6 +71,118 @@ export const chapters = [
   { id: 'documentacao-governanca', title: 'Governança', subtitle: 'Políticas evolutivas, carteiras, custódia, mandatos, recompra e queima definitiva.' },
 ] as const;
 
+export const chapters = [
+  { id: 'documentacao-como-funciona', title: c.visaoTitulo, subtitle: c.visaoSub },
+  { id: 'documentacao-agentes', title: c.agTitulo, subtitle: c.agSub },
+  { id: 'documentacao-emissao', title: c.tkTitulo, subtitle: c.tkSub },
+  { id: 'documentacao-staking', title: c.ptTitulo, subtitle: c.ptSub },
+  { id: 'documentacao-roadmap', title: c.rmTitulo, subtitle: c.rmSub },
+  { id: 'documentacao-riscos', title: c.rkTitulo, subtitle: c.rkSub },
+] as const;
+export const legacyChapterTitles: ReadonlyMap<string, string> = new Map(legacyChapters.map(ch => [ch.id, ch.title]));
+
+function Prose({ children }: { children: ReactNode }) {
+  return <div className="whitepaper__prose"><p>{children}</p></div>;
+}
+function Head({ id, children }: { id?: string; children: ReactNode }) {
+  return <h3 className="whitepaper__subhead" id={id}>{children}</h3>;
+}
+
+/** Moved technical material: kept collapsed, with the old destination ids retained as headings. */
+function Reference({ id, label, parts }: { id: string; label: string; parts: { id?: string; title?: string }[] }) {
+  const nodes: ReactNode[] = [];
+  parts.forEach(part => {
+    const body = LegacyBody({ id: part.id ?? '' });
+    if (part.title) nodes.push(<h3 key={'h' + part.id} className="whitepaper__subhead" id={part.id}>{part.title}</h3>);
+    const kids = isValidElement(body) && body.type === Fragment ? Children.toArray((body as ReactElement<{ children: ReactNode }>).props.children) : Children.toArray(body);
+    kids.forEach(k => nodes.push(k));
+  });
+  return <details className="whitepaper__reference" id={id} data-documentation-reference>
+    <summary>{c.refTec}: {label}</summary>
+    <div className="whitepaper__reference-body">{groupTopics(nodes, titleOf)}</div>
+  </details>;
+}
+
+function MainBody({ id }: { id: string }) {
+  switch (id) {
+    case 'documentacao-agentes':
+      return <>
+        <div className="whitepaper__lead"><p>{c.agP1}</p></div>
+        <Prose>{c.agP2}</Prose><Prose>{c.agP3}</Prose>
+        <DocFacts title={c.agFacts} facts={[
+          { label: c.agF1, value: c.agF1v, text: c.agF1t },
+          { label: c.agF2, value: c.agF2v, text: c.agF2t },
+          { label: c.agF3, value: c.agF3v, text: c.agF3t },
+        ]} />
+        <Prose>{c.agP4}</Prose><Prose>{c.agP5}</Prose>
+        <Reference id="documentacao-referencia-agentes" label={c.refAg} parts={[
+          { id: 'documentacao-rede', title: 'Arbitrum e ativos' }, { id: 'documentacao-acesso', title: 'Acesso ao aplicativo' },
+          { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações' }, { id: 'documentacao-agentes-detalhe', title: 'Agentes de IA' },
+        ]} />
+      </>;
+    case 'documentacao-emissao':
+      return <>
+        <Head id="documentacao-direitos-token">{c.tk1}</Head><Prose>{c.tk1p}</Prose>
+        <Head id="documentacao-oferta">{c.tk2}</Head><Prose>{c.tk2p}</Prose>
+        <TokenAllocationSchematic />
+        <Head id="documentacao-financiamento">{c.tk3}</Head><Prose>{c.tk3p}</Prose>
+        <Head id="documentacao-vesting-resumo">{c.tk4}</Head><Prose>{c.tk4p}</Prose>
+        <VestingSchedule />
+        <Head id="documentacao-tesouraria-manutencao">{c.tk5}</Head><Prose>{c.tk5p}</Prose>
+        <Head id="documentacao-resultados">{c.tk6}</Head><Prose>{c.tk6p}</Prose>
+        <DocFacts title={c.tk6f} cols={3} tone="accent" facts={[
+          { label: c.tk6l1, value: '50%', text: c.tk6a }, { label: c.tk6l2, value: '25%', text: c.tk6b }, { label: c.tk6l3, value: '25%', text: c.tk6c },
+        ]} />
+        <Head id="documentacao-recompra-queima">{c.tk7}</Head><Prose>{c.tk7p}</Prose>
+        <Head id="documentacao-custos-servicos">{c.tk8}</Head><Prose>{c.tk8p}</Prose>
+        <Reference id="documentacao-referencia-tokenomics" label={c.refTok} parts={[{ id: 'documentacao-emissao-detalhe' }, { id: 'documentacao-servicos', title: 'Sustentabilidade operacional' }]} />
+      </>;
+    case 'documentacao-staking':
+      return <>
+        <Head id="documentacao-participar">{c.pt1}</Head><Prose>{c.pt1p}</Prose>
+        <BettexFlow figure="3" />
+        <Head id="documentacao-entrada">{c.pt2}</Head><Prose>{c.pt2p}</Prose>
+        <Head id="documentacao-calculo-pagamento">{c.pt3}</Head><Prose>{c.pt3p}</Prose>
+        <StakingDistribution />
+        <Head id="documentacao-saida">{c.pt4}</Head><Prose>{c.pt4p}</Prose>
+        <Head id="documentacao-fracoes">{c.pt5}</Head><Prose>{c.pt5p}</Prose>
+        <Head id="documentacao-exemplo">{c.pt6}</Head><Prose>{c.pt6p}</Prose>
+        <Head id="documentacao-regras-demo">{c.pt7}</Head><Prose>{c.pt7p}</Prose>
+        <div className="whitepaper__prose"><p><a href="#documentacao-loteria">{c.pt7l}</a></p></div>
+        <Reference id="documentacao-referencia-participacao" label={c.refPart} parts={[{ id: 'documentacao-staking-detalhe' }]} />
+      </>;
+    case 'documentacao-roadmap':
+      return <>
+        <div className="whitepaper__lead"><p>{c.rmP}</p></div>
+        <div className="whitepaper__status-grid" data-testid="documentation-roadmap-milestones">
+          {roadmapStops.map((stop, i) => <div key={stop.title}><span>{String(i + 1).padStart(2, '0')} / {stop.tag}</span><strong>{stop.title}</strong><p>{stop.date}. {stop.description}</p></div>)}
+        </div>
+      </>;
+    case 'documentacao-riscos':
+      return <>
+        <Head id="documentacao-governanca">{c.rk1}</Head><Prose>{c.rk1p}</Prose><Prose>{c.rk1q}</Prose>
+        <Head id="documentacao-seguranca">{c.rk2}</Head><Prose>{c.rk2p}</Prose>
+        <Head id="documentacao-riscos-materiais">{c.rk3}</Head><Prose>{c.rk3p}</Prose>
+        <Head id="documentacao-adequacao">{c.rk4}</Head><Prose>{c.rk4p}</Prose>
+        <Reference id="documentacao-referencia-riscos" label={c.refRisk} parts={[
+          { id: 'documentacao-adequacao-legal', title: 'Adequação legal e jurídica' }, { id: 'documentacao-controles', title: 'Controles de risco' },
+          { id: 'documentacao-implantacao', title: 'Requisitos operacionais e de segurança' }, { id: 'documentacao-riscos-detalhe' },
+        ]} />
+      </>;
+    default:
+      return <>
+        <div className="whitepaper__lead"><p>{c.visaoLead}</p></div>
+        <Prose>{c.visaoP1}</Prose>
+        <DocTerms id="schematic-overview" label={c.visaoEsquema} items={[
+          [c.vTes, c.vTesT], [c.vAg, c.vAgT], [c.vTok, c.vTokT], [c.vPar, c.vParT],
+        ]} />
+        <div className="whitepaper__aside-callout"><span>{c.visaoEstadoK}</span><p>{c.visaoEstado}</p></div>
+        <div className="whitepaper__prose"><p><a href="#documentacao-emissao">{c.visaoLink}</a></p></div>
+        <DocumentationDownloads label={t(c.dlLabel)} summaryLabel={t(c.dlDoc)} tableLabel={t(c.dlTable)} />
+      </>;
+  }
+}
+
 function Subhead({ children }: { children: ReactNode }) {
   return <h3 className="whitepaper__subhead">{children}</h3>;
 }
@@ -76,8 +194,8 @@ function Flow({ label, steps }: { label: string; steps: string[] }) {
   </div>;
 }
 
-function RawChapter({ index }: { index: number }) {
-  switch (chapters[index]?.id) {
+function LegacyBody({ id }: { id: string }) {
+  switch (id) {
     case 'documentacao-entidade':
       return <EntityOrganisation />;
     case 'documentacao-adequacao-legal':
@@ -86,12 +204,10 @@ function RawChapter({ index }: { index: number }) {
       return <DocumentationGovernance />;
     case 'documentacao-servicos':
       return <ServiceFees />;
-    case 'documentacao-staking':
+    case 'documentacao-staking-detalhe':
       return <>
         <h3 className="whitepaper__subhead" id="documentacao-mecanismo-staking">Participação automática e elegibilidade</h3>
         <div className="whitepaper__prose"><p>Todo BETTEX disponível na carteira oficial participa automaticamente, sem ativação ou depósito adicional. A piscina é fechada e exige acesso ao aplicativo, mas não uma sessão continuamente aberta. Exportar chaves preserva autocustódia, não torna a piscina independente. Tokens não liberados e estoque institucional de venda não participam.</p></div>
-        <BettexFlow figure="3" />
-        <StakingDistribution />
         <DistributionTaxes />
         <ProfitAccounting />
         <DistributionSettlement />
@@ -231,9 +347,9 @@ function RawChapter({ index }: { index: number }) {
           <p>Esses desenvolvimentos fazem parte da expansão futura, não de integrações já ativas. Os novos agentes e conectores seguirão os mesmos controles de autorização, risco e reservas, com regras e transações públicas. <strong>BETTEX serve para staking</strong>. BETTEX não será usado como capital de trading, apostas ou promoções.</p>
         </div>
       </>;
-    case 'documentacao-agentes':
+    case 'documentacao-agentes-detalhe':
       return <InvestmentAgents />;
-    case 'documentacao-emissao':
+    case 'documentacao-emissao-detalhe':
       return <>
         <div className="whitepaper__supply">
           <div className="whitepaper__supply-top"><span>EMISSÃO TOTAL</span><strong data-testid="text-documentacao-max-supply">{formatTokenCount(tokenomics.maxSupply)}</strong><small>BETTEX · teto total da emissão aprovada.</small></div>
@@ -246,7 +362,6 @@ function RawChapter({ index }: { index: number }) {
           { label: 'VESTING', value: '24 meses', text: '900 milhões de BETTEX; mint inicial separado.' },
           { label: 'MINT INICIAL', value: 'Preço fixo', text: 'Aberto à comunidade para financiar o projeto.' },
         ]} />
-        <TokenAllocationSchematic />
         <Subhead>Regras e requisitos de emissão</Subhead>
         <div className="whitepaper__rule-pair" data-testid="documentacao-novas-vendas">
           <div><span>EMISSÃO E VENDA / CRONOGRAMA DE VESTING</span><p><strong>O mint inicial tem teto de 100 milhões de BETTEX e preço fixo.</strong> Qualquer pessoa pode participar, observadas as condições legais da oferta. O mint financia o projeto e pode ser executado pela BETTEX ou por um launchpad parceiro. Valor do preço, janela, plataforma e destino dos tokens não mintados ainda serão definidos. Não presumir venda integral, pool aberto ou parceria contratada.</p></div>
@@ -256,7 +371,6 @@ function RawChapter({ index }: { index: number }) {
           <p>A compra no aplicativo é liquidada em USDC após confirmação conciliada. O preço destinado à tesouraria e a quantidade de BETTEX creditada são registrados juntos e uma única vez. Todo BETTEX disponível na carteira oficial passa a participar automaticamente do staking. A aquisição não é investimento dos agentes. A compra credita a carteira gerada com a conta, não um endereço externo escolhido na hora; a venda direta a corretoras tem fluxo próprio. O recibo identifica preço, cotação pertinente, custos externos, tokens adquiridos, destinos e conta.</p>
           <p><strong>BETTEX serve para staking, não pagamento de taxas ou participação societária.</strong> Não é capital das estratégias. O fundador pode vender ou distribuir sua parcela liberada. Novas versões aprofundarão custódia das chaves administrativas, aprovação de mudanças e atualização. Auditoria independente permanece requisito da implementação.</p>
         </div>
-        <VestingSchedule />
         <SaleChannels />
         <TechnicalDetails title="Canais de venda: entrega e conciliação com corretoras">
         <div id="documentacao-venda-corretoras">
@@ -283,13 +397,13 @@ function RawChapter({ index }: { index: number }) {
       </>;
     case 'documentacao-controles':
       return <>
-        <div className="whitepaper__lead"><span>TESOURARIA · AJUSTES SUJEITOS À APROVAÇÃO</span><p><strong>A IA sugere ajustes nas regras da tesouraria e nos controles de risco; as sugestões entram em uma fila para execução e precisam de aprovação da liderança da empresa BETTEX.</strong> O agente da tesouraria propõe otimizações em conjunto com os agentes de investimento, considerando reservas, liquidez e exposição. Essa evolução pode incluir os limites e percentuais apresentados nesta seção, mas nenhuma sugestão altera as regras antes de sua aprovação e execução.</p></div>
+        <div className="whitepaper__lead"><span>TESOURARIA · AJUSTES SUJEITOS À APROVAÇÃO</span><p><strong>A IA sugere ajustes nas regras da tesouraria e nos controles de risco; as sugestões entram em uma fila para execução e precisam de aprovação da administração do projeto.</strong> O agente da tesouraria propõe otimizações em conjunto com os agentes de investimento, considerando reservas, liquidez e exposição. Essa evolução pode incluir os limites e percentuais apresentados nesta seção, mas nenhuma sugestão altera as regras antes de sua aprovação e execução.</p></div>
         <ReservePolicy />
         <InvestmentRiskBase />
         <BettexFlow figure="5" />
         <div className="whitepaper__prose">
-          <p>Os controles aplicam as regras vigentes em cada momento. Enquanto uma sugestão aguarda aprovação ou execução, continuam valendo as regras anteriores. Cada mudança deve registrar a proposta, a justificativa, a aprovação da liderança da empresa BETTEX, a execução e o momento de vigência. As verificações independentes de risco continuam obrigatórias para as operações dos agentes.</p>
-          <p>Os percentuais abaixo são <strong>parâmetros iniciais, cuja alteração depende de aprovação da liderança da empresa BETTEX e execução registrada</strong>, e usam como base o <strong>patrimônio líquido atualizado da parcela investível</strong>, conforme a definição acima, não o patrimônio inteiro nem apenas o caixa livre. São tetos de risco, não percentuais fixos de distribuição dos investimentos entre mercados. Uma verificação central independente das estratégias deve recusar qualquer nova ordem de investimento que ultrapasse um limite vigente. Reduções de posições na pausa por perda diária seguem a <a href="#documentacao-reducao-na-pausa">regra específica de fechamento</a>, sem dispensar os demais controles. <strong>Ordens pendentes contam</strong> nos compromissos e na exposição; registrar a ordem apenas depois de executá-la não basta. O total de exposições correlacionadas é consolidado entre mercados, mesmo quando conectores diferentes estejam envolvidos.</p>
+          <p>Os controles aplicam as regras vigentes em cada momento. Enquanto uma sugestão aguarda aprovação ou execução, continuam valendo as regras anteriores. Cada mudança deve registrar a proposta, a justificativa, a aprovação da administração do projeto, a execução e o momento de vigência. As verificações independentes de risco continuam obrigatórias para as operações dos agentes.</p>
+          <p>Os percentuais abaixo são <strong>parâmetros iniciais, cuja alteração depende de aprovação da administração do projeto e execução registrada</strong>, e usam como base o <strong>patrimônio líquido atualizado da parcela investível</strong>, conforme a definição acima, não o patrimônio inteiro nem apenas o caixa livre. São tetos de risco, não percentuais fixos de distribuição dos investimentos entre mercados. Uma verificação central independente das estratégias deve recusar qualquer nova ordem de investimento que ultrapasse um limite vigente. Reduções de posições na pausa por perda diária seguem a <a href="#documentacao-reducao-na-pausa">regra específica de fechamento</a>, sem dispensar os demais controles. <strong>Ordens pendentes contam</strong> nos compromissos e na exposição; registrar a ordem apenas depois de executá-la não basta. O total de exposições correlacionadas é consolidado entre mercados, mesmo quando conectores diferentes estejam envolvidos.</p>
         </div>
         <div className="whitepaper__limits">
           <div><span>01 / NOVOS COMPROMISSOS POR DIA</span><strong>2% <em>global</em> / 0,5% <em>por mercado</em></strong><p>Soma dos novos compromissos autorizados e com reserva registrada no dia UTC, uma vez por operação. Cancelamento não reduz o acumulado; pedidos recusados antes da autorização e reserva não entram.</p></div>
@@ -335,7 +449,7 @@ function RawChapter({ index }: { index: number }) {
         <div className="whitepaper__lead"><span>REQUISITOS DE OPERAÇÃO SEGURA</span><p>Os componentes financeiros, o agente BETTEX e a infraestrutura de ativos devem operar com controles verificáveis, separação de responsabilidades e capacidade de interromper fluxos inseguros sem perder o histórico contábil.</p></div>
         <FundSecurity />
         <div className="whitepaper__steps">
-          <div><span>01</span><p>Aplicar controle de acesso mínimo, autenticação forte para operadores e segregação de funções. Sugestões da IA para alterar regras da tesouraria ou limites de risco entram em uma fila e só podem ser executadas após aprovação da liderança da empresa BETTEX, com trilha auditável. Mudanças em contratos, permissões e destinos de ativos exigem aprovação por múltiplos responsáveis autorizados pela liderança e registro auditável.</p></div>
+          <div><span>01</span><p>Aplicar controle de acesso mínimo, autenticação forte para operadores e segregação de funções. Sugestões da IA para alterar regras da tesouraria ou limites de risco entram em uma fila e só podem ser executadas após aprovação da administração do projeto, com trilha auditável. Mudanças em contratos, permissões e destinos de ativos exigem aprovação por múltiplos responsáveis autorizados pela liderança e registro auditável.</p></div>
           <div><span>02</span><p>Proteger chaves com armazenamento e procedimentos de recuperação definidos; estabelecer limites de assinatura e política de revogação. Endereços de contratos, ativos e tesouraria devem ser verificados por fontes independentes antes de serem usados.</p></div>
           <div><span>03</span><p>Testar contratos, integrações, indexadores, conectores de mercado e livro contábil contra duplicidade, reordenação de blocos, falha de rede, divergência de saldo, repetição de mensagens e recuperação. Exigir auditoria independente dos contratos e controles de custódia.</p></div>
           <div><span>04</span><p>Monitorar saldos, obrigações, limites globais e por mercado e integrações; emitir alertas acionáveis e manter procedimentos de resposta a incidentes. A pausa de emergência deve bloquear novas ordens sem apagar obrigações já atribuídas; retomada após incidente depende de conciliação e autorização registrada.</p></div>
@@ -346,6 +460,7 @@ function RawChapter({ index }: { index: number }) {
         </TechnicalDetails>
         <div className="whitepaper__prose reading-keep"><p> A compra deve registrar débito de USDC e crédito de BETTEX juntos e uma única vez após a liquidação; cada distribuição é lançada uma única vez em USDC. A continuidade preserva registros imutáveis com ajustes identificados, backups testados e conciliação entre transferências on-chain, recebimentos de on-ramp, saldos dos dois ativos, custos, resultados por mercado, tesouraria e saques. Falhas resultam em estado pendente ou bloqueio, nunca confirmação presumida. Custódia, permissões, integrações e conformidade exigem validação técnica e jurídica. A operação inicial cripto não pressupõe autorização de exchange ou banco; a proposta fiduciária do BETTEX Bank demanda estrutura própria antes de qualquer oferta.</p></div>
       </>;
+    case 'documentacao-riscos-detalhe':
     default:
       return <>
         <div className="whitepaper__prose"><p>As regras econômicas e os controles descritos aqui <strong>não garantem retorno ou proteção do capital</strong>. Serviços, ativos e redes podem falhar ou ficar indisponíveis; stablecoins podem perder valor ou desviar-se de uma paridade de referência. A versão inicial utiliza USDC nos saldos e saques e não oferece resgate fiduciário pela BETTEX. Permanecem riscos de liquidez do token, perdas em qualquer mercado, execução inadequada, custódia, tecnologia e mudança regulatória.</p></div>
@@ -408,7 +523,7 @@ function titleOf(el: ReactElement<{ children?: ReactNode; className?: string; id
 }
 
 export function ChapterContent({ index }: { index: number }) {
-  const raw = RawChapter({ index });
+  const raw = MainBody({ id: chapters[index]?.id ?? '' });
   if (!isValidElement(raw) || raw.type !== Fragment) return raw;
-  return <>{groupTopics((raw as ReactElement<{ children: ReactNode }>).props.children, titleOf)}</>;
+  return <>{groupTopics((raw as ReactElement<{ children: ReactNode }>).props.children, () => 'bare')}</>;
 }

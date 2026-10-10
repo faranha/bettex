@@ -206,7 +206,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
         </Figure>}
 
         {(!figure || figure === '8') && <Figure id="figure-bettex-opportunities" num="8" title={architectureFigureTitles['8']} lead="Coleta oportunidades → compara e escolhe a melhor → investe com autorização → registra todo o ciclo abertamente.">
-          <Steps steps={fig8} stacked label="Coleta de oportunidades nos mercados, comparação e decisão pela melhor oportunidade, investimento automático autorizado e registro público de todo o ciclo" />
+          <Steps steps={fig8} stacked label="Coleta de oportunidades nos mercados, comparação e decisão pela melhor oportunidade, investimento automático autorizado e registro público de toda a rodada" />
           <p className="ba-fig__foot">O registro permite acompanhar quais oportunidades foram coletadas, quais foram selecionadas ou descartadas, os motivos da decisão e o valor investido. A escolha e a alocação são dinâmicas, sem parcelas fixas por mercado; somente operações aprovadas pelo risco seguem para investimento.</p>
           <p className="ba-fig__foot">Sem resposta conclusiva após o envio, o resultado permanece desconhecido: capital e exposição continuam comprometidos, sem reenvio automático. Cancelamento solicitado não libera recursos; somente a parcela comprovadamente livre após conciliação pode ser liberada. Execução parcial é registrada uma vez, mantendo reservado o restante incerto.</p>
           <p className="ba-fig__foot">Cada compromisso autorizado com reserva registrada conta uma vez no dia UTC original. Cancelamento confirmado pode liberar caixa e exposição, mas não devolve o teto diário consumido. A mudança do dia não libera ordens antigas nem as conta novamente.</p>

@@ -20,7 +20,7 @@ export function ReservePolicy() {
         <p>{closedRoundPaymentRule}</p>
         <p>{withdrawalPendingRule}</p>
         <p>Se a soma dos pesos elegíveis da rodada for zero, ela não paga e 100% do lucro fica na tesouraria. Não há parcela de staking, crédito acumulado ou liberação futura. Uma rodada posterior com pesos positivos usa somente seus próprios resultados, conforme a <a href="#documentacao-rodada-sem-pesos">regra para rodada sem pesos elegíveis</a>.</p>
-        <p>Alterações nesses parâmetros seguem a fila de sugestões da IA e a aprovação da liderança da empresa BETTEX, com registro de vigência e sem mudança retroativa de rodadas já apuradas. Sem avaliação ou conciliação confiável, a distribuição não é autorizada.</p>
+        <p>Alterações nesses parâmetros seguem a fila de sugestões da IA e a aprovação da administração do projeto, com registro de vigência e sem mudança retroativa de rodadas já apuradas. Sem avaliação ou conciliação confiável, a distribuição não é autorizada.</p>
       </div>
     </section>
   );

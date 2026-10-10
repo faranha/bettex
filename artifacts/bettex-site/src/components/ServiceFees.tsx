@@ -9,7 +9,7 @@ export function ServiceFees() {
       <p>No ALFA, serão cobradas apenas taxas de rede. A decisão de cobrar ou não uma contribuição por serviços será tomada posteriormente com a comunidade, como possível alternativa para sustentar as operações. Não há valor fixado nem adoção confirmada.</p>
       <p>Se essa alternativa for adotada, condições e valores deverão ser informados previamente. A receita operacional ficará separada do preço dos tokens, do lucro das estratégias e da distribuição aos participantes. Custos externos de rede e de terceiros também deverão ser discriminados.</p>
       <p>Essa possibilidade não altera as quatro destinações do token, o vesting de 24 meses nem os direitos de staking. O demo é apenas visual e não efetua cobranças.</p>
-      <p><a href="#documentacao-entidade">Ver a organização da entidade</a> · <a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p>
+      <p><a href="#documentacao-governanca">Ver a administração do projeto</a> · <a href="#documentacao-financiamento">Financiamento: origem e destino dos recursos</a></p>
       <p><a href={`${import.meta.env.BASE_URL}downloads/bettex-taxas-fundacao.xlsx`} download>Planilha de sustentabilidade e vesting</a></p>
     </div>
     <ServiceFeeTaxes />
