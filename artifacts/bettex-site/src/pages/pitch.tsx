@@ -106,7 +106,8 @@ export function PitchPage() {
 
     <FutureSections />
 
-    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" summary="Produto de tecnologia com IA, operado por uma empresa privada. Quatro frentes de atuação." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
+    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" summary="Produto de tecnologia com IA, descentralizado desde a origem. Quatro frentes de atuação." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
+      <p className="mb-8 max-w-[800px] text-[15px] leading-7">A BETTEX nasce como projeto descentralizado. A constituição de uma entidade e sua formalização institucional não são prioridades imediatas, não estão previstas para o curto prazo e não têm data definida. A operação será limitada aos mercados onde a atividade for permitida, com as autorizações exigidas quando aplicáveis.</p>
       <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A oportunidade da BETTEX é oferecer a esses públicos um produto de investimento com experiência familiar, linguagem acessível e estratégias geridas por IA. O objetivo é redirecionar a busca por retorno financeiro das apostas para a participação em resultados de investimentos em mercados de risco.</p>
       <div className="fu-position">
         <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
@@ -151,7 +152,7 @@ export function PitchPage() {
         <Card label="Mint público inicial" title="Financiamento do projeto">Mint aberto a preço fixo, separado da comunidade em vesting. Aplicação dos recursos e custos da oferta devem ser documentados antes da abertura.</Card>
         <Card label="Comunidade em vesting" title="100% para a tesouraria">O preço dos tokens da comunidade já liberados financia a tesouraria. A venda não é lucro distribuível; o mint inicial fica separado.</Card>
         <Card label="Investidores-anjo" title="100% para produto, tecnologia e marketing">{g.launch.angelFundingUse}</Card>
-        <Card label="Sustentabilidade operacional" title="Alternativa em avaliação">Uma contribuição por serviços pode ajudar a sustentar a operação. Não há cobrança definida, valor fixado ou adoção confirmada.</Card>
+        <Card label="Sustentabilidade operacional" title="Decisão com a comunidade">No ALFA, serão cobradas apenas taxas de rede. A decisão de cobrar ou não uma contribuição por serviços será tomada posteriormente com a comunidade, como possível alternativa para sustentar as operações. Não há valor fixado nem adoção confirmada.</Card>
       </div>
       <div className="pitch-revenue">
         <article className="pitch-revenue__item">
@@ -159,7 +160,7 @@ export function PitchPage() {
           <div className="pitch-revenue__copy">
             <p className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#2B59FF]">Operadora</p>
             <h3 className="display">Sustentabilidade operacional</h3>
-            <p>Financiamento próprio e possíveis alternativas de receita, sujeitos a avaliação. Uma contribuição por serviços, se adotada, fica fora da tesouraria e do split 50/25/25.</p>
+            <p>No ALFA, apenas taxas de rede. Uma contribuição por serviços será decidida posteriormente com a comunidade e, se adotada, ficará fora da tesouraria e do split 50/25/25.</p>
           </div>
         </article>
         <article className="pitch-revenue__item pitch-revenue__item--treasury">
@@ -171,7 +172,7 @@ export function PitchPage() {
           </div>
         </article>
       </div>
-      <PitchObservations><p>Qualquer modelo de receita operacional depende de validação jurídica e comercial. Condições e valores deverão ser informados antes de eventual adoção; custos externos de rede e conversão são separados.</p></PitchObservations>
+      <PitchObservations><p>A decisão de cobrar ou não por serviços será tomada posteriormente com a comunidade e depende de validação jurídica e comercial. Condições e valores deverão ser informados antes de eventual adoção. No ALFA, serão cobradas apenas taxas de rede.</p></PitchObservations>
     </Sec>
 
     <Sec id="token" kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Quatro destinações.</span></>}>

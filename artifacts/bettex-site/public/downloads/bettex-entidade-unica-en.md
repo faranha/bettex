@@ -4,7 +4,7 @@ Legal and regulatory compliance
 
 Every BETTEX launch must already comply with the legal environment of the markets where the solution will be offered. Releasing each agent, feature and category requires a specific technical and legal investigation and compliance with applicable requirements. A roadmap date does not replace this condition.
 
-The analysis identifies the country of the offering, the audience served, the nature of the activity, the responsible entity and the providers used. Company domicile, offering location and execution location are assessed separately; permission in one country does not authorize activity in another.
+The project starts decentralized and establishing an entity is not an immediate priority, with no near-term plan. The analysis identifies the offering country, target audience, activity, responsible parties and providers. Offering and execution are assessed separately; permission in one country does not authorize activity in another. If an activity requires an entity, license or authorization, it will not be released until those conditions are met.
 
 The investigation checks official sources, the effective dates and scope of rules, required licenses and authorizations, provider terms, advertising, user protection, identification and anti-money laundering, data protection and tax obligations, as applicable. Legal and technical staff record the evidence, analysis date, conditions and required controls.
 
@@ -22,7 +22,7 @@ Financing: sources and uses of funds
 
 Angel contributions allocate 100% of funds to product, technology and marketing, with no founder salaries or withdrawals. The 15% token allocation does not impose a funding split: agreements identify sources, uses and rights.
 
-The initial 10% mint funds the project, through its own execution or a partner launchpad. Sales of the released 55% community allocation direct 100% of the price in USDC to the treasury. A service contribution is only an alternative to support operations, with no charge, amount or adoption confirmed. Resale proceeds belong to the seller. Funding, revenue and distributable profit are not equivalent.
+The initial 10% mint finances the project, through direct execution or a partner launchpad. Sales of the already released 55% community allocation direct 100% of the USDC price to the treasury. During ALPHA, only network fees will be charged. Whether to charge a service contribution will be decided later with the community, as a possible alternative to sustain operations, with no amount set or adoption confirmed. Resale proceeds belong to the seller. Funding, revenue and distributable profit are not equivalent.
 
 Burn Lottery and Double 2X
 
@@ -40,9 +40,9 @@ Company and administration
 
 BETTEX is a technology product that combines an app, a token and AI agents. The user participates in the project's results according to the token rules, without ownership of the company or treasury.
 
-A single private, closely-held commercial company to be incorporated, managed by the founder in a full stack AI model, with no employees. Specialized external services are contracted by need, not internal positions.
+BETTEX starts as a decentralized project. Establishing an entity and institutional formalization are not immediate priorities, are not planned for the near term and have no set date. Operations will be limited to markets where the activity is permitted, with the required authorizations where applicable.
 
-The company brings together the token, application, treasury, investments, and program obligations. Final name, corporate structure, and jurisdiction are part of the formalization. Holders own tokens and program rights, not shares, corporate voting, or a redeemable fraction of the treasury.
+The founder coordinates development using a full stack AI model, with no employees. Specialized external services may be contracted as needed. Decentralization does not remove responsibilities, controls or legal requirements; if an activity requires an entity, license or authorization, it will not be released until those conditions are met.
 
 The mission expands alternatives for economic participation during the transition of AI and robotics. Transparency, understanding, responsibility, and accountability guide the operation, without guaranteed income or capital protection.
 

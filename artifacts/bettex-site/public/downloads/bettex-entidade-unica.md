@@ -4,7 +4,7 @@ Adequação legal e jurídica
 
 Cada lançamento da BETTEX deve ocorrer já adequado ao ambiente jurídico dos mercados onde a solução será oferecida. A liberação de cada agente, funcionalidade e categoria depende de investigação técnico-legal específica e do cumprimento das exigências aplicáveis. Uma data no roadmap não substitui essa condição.
 
-A análise identifica o país de oferta, o público atendido, a natureza da atividade, a entidade responsável e os provedores utilizados. Domicílio da empresa, local da oferta e local de execução são avaliados separadamente; uma permissão em um país não autoriza atuação em outro.
+O projeto nasce descentralizado e a constituição de uma entidade não é prioridade imediata, sem previsão de curto prazo. A análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os provedores. Oferta e execução são avaliadas separadamente; uma permissão em um país não autoriza atuação em outro. Se uma atividade exigir entidade, licença ou autorização, ela não será liberada antes de cumprir essas condições.
 
 A investigação verifica fontes oficiais, vigência e alcance das normas, licenças e autorizações necessárias, termos dos provedores, publicidade, proteção do usuário, identificação e prevenção à lavagem de dinheiro, proteção de dados e obrigações tributárias, conforme aplicáveis. Os responsáveis jurídicos e técnicos registram as evidências, a data da análise, as condições e os controles exigidos.
 
@@ -22,7 +22,7 @@ Financiamento: origem e destino dos recursos
 
 Aportes-anjo destinam 100% dos recursos a produto, tecnologia e marketing, sem salários ou retiradas do fundador. A alocação de 15% dos tokens não impõe split de financiamento: os termos identificam origem, destino e direitos.
 
-O mint inicial de 10% financia o projeto, por execução própria ou launchpad parceiro. As vendas dos 55% da comunidade já liberados destinam 100% do preço em USDC à tesouraria. Uma contribuição por serviços é apenas uma alternativa para sustentar a operação, sem cobrança definida, valor fixado ou adoção confirmada. Revenda pertence ao vendedor. Captação, receita e lucro distribuível não são equivalentes.
+O mint inicial de 10% financia o projeto, por execução própria ou launchpad parceiro. As vendas dos 55% da comunidade já liberados destinam 100% do preço em USDC à tesouraria. No ALFA, serão cobradas apenas taxas de rede. A decisão de cobrar ou não uma contribuição por serviços será tomada posteriormente com a comunidade, como possível alternativa para sustentar as operações, sem valor fixado nem adoção confirmada. Revenda pertence ao vendedor. Captação, receita e lucro distribuível não são equivalentes.
 
 Burn Lottery e Double 2X
 
@@ -40,9 +40,9 @@ Empresa e administração
 
 A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA. O usuário participa dos resultados do projeto conforme as regras do token, sem propriedade da empresa ou da tesouraria.
 
-Uma única empresa comercial privada de capital fechado a constituir, administrada pelo fundador em modelo full stack AI, sem funcionários. Serviços externos especializados são contratados por necessidade, não posições internas.
+A BETTEX nasce como projeto descentralizado. A constituição de uma entidade e sua formalização institucional não são prioridades imediatas, não estão previstas para o curto prazo e não têm data definida. A operação será limitada aos mercados onde a atividade for permitida, com as autorizações exigidas quando aplicáveis.
 
-A empresa reúne token, aplicativo, tesouraria, investimentos e obrigações do programa. Nome final, forma societária e jurisdição fazem parte da formalização. Titulares possuem tokens e direitos do programa, não ações, voto societário ou fração resgatável da tesouraria.
+O fundador coordena o desenvolvimento em modelo full stack AI, sem funcionários. Serviços externos especializados podem ser contratados por necessidade. A descentralização não elimina responsabilidades, controles nem exigências legais; se uma atividade exigir entidade, licença ou autorização, ela não será liberada antes de cumprir essas condições.
 
 A missão amplia alternativas de participação econômica durante a transição da IA e robótica. Transparência, compreensão, responsabilidade e prestação de contas orientam a operação, sem renda ou proteção de capital garantidas.
 

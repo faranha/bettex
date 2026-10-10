@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3260 >>
+<< /Length 3413 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — entity and rules) Tj T*
@@ -24,10 +24,11 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (technical and legal investigation and compliance with applicable requirements. A roadmap date) Tj T*
 (does not replace this condition.) Tj T*
 () Tj T*
-(The analysis identifies the country of the offering, the audience served, the nature of the) Tj T*
-(activity, the responsible entity and the providers used. Company domicile, offering location) Tj T*
-(and execution location are assessed separately; permission in one country does not authorize) Tj T*
-(activity in another.) Tj T*
+(The project starts decentralized and establishing an entity is not an immediate priority, with) Tj T*
+(no near-term plan. The analysis identifies the offering country, target audience, activity,) Tj T*
+(responsible parties and providers. Offering and execution are assessed separately; permission) Tj T*
+(in one country does not authorize activity in another. If an activity requires an entity,) Tj T*
+(license or authorization, it will not be released until those conditions are met.) Tj T*
 () Tj T*
 (The investigation checks official sources, the effective dates and scope of rules, required) Tj T*
 (licenses and authorizations, provider terms, advertising, user protection, identification and) Tj T*
@@ -62,7 +63,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (licenses obtained, completed legal opinions or authorized agents.) Tj T*
 () Tj T*
 (Financing: sources and uses of funds) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -70,18 +70,20 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3065 >>
+<< /Length 3153 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
 (Angel contributions allocate 100% of funds to product, technology and marketing, with no) Tj T*
 (founder salaries or withdrawals. The 15% token allocation does not impose a funding split:) Tj T*
 (agreements identify sources, uses and rights.) Tj T*
 () Tj T*
-(The initial 10% mint funds the project, through its own execution or a partner launchpad. Sales) Tj T*
-(of the released 55% community allocation direct 100% of the price in USDC to the treasury. A) Tj T*
-(service contribution is only an alternative to support operations, with no charge, amount or) Tj T*
-(adoption confirmed. Resale proceeds belong to the seller. Funding, revenue and distributable) Tj T*
-(profit are not equivalent.) Tj T*
+(The initial 10% mint finances the project, through direct execution or a partner launchpad.) Tj T*
+(Sales of the already released 55% community allocation direct 100% of the USDC price to the) Tj T*
+(treasury. During ALPHA, only network fees will be charged. Whether to charge a service) Tj T*
+(contribution will be decided later with the community, as a possible alternative to sustain) Tj T*
+(operations, with no amount set or adoption confirmed. Resale proceeds belong to the seller.) Tj T*
+(Funding, revenue and distributable profit are not equivalent.) Tj T*
 () Tj T*
 (Burn Lottery and Double 2X) Tj T*
 () Tj T*
@@ -112,15 +114,13 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (participates in the project's results according to the token rules, without ownership of the) Tj T*
 (company or treasury.) Tj T*
 () Tj T*
-(A single private, closely-held commercial company to be incorporated, managed by the founder in) Tj T*
-(a full stack AI model, with no employees. Specialized external services are contracted by need,) Tj T*
-(not internal positions.) Tj T*
+(BETTEX starts as a decentralized project. Establishing an entity and institutional) Tj T*
+(formalization are not immediate priorities, are not planned for the near term and have no set) Tj T*
+(date. Operations will be limited to markets where the activity is permitted, with the required) Tj T*
+(authorizations where applicable.) Tj T*
 () Tj T*
-(The company brings together the token, application, treasury, investments, and program) Tj T*
-(obligations. Final name, corporate structure, and jurisdiction are part of the formalization.) Tj T*
-(Holders own tokens and program rights, not shares, corporate voting, or a redeemable fraction) Tj T*
-(of the treasury.) Tj T*
-() Tj T*
+(The founder coordinates development using a full stack AI model, with no employees. Specialized) Tj T*
+(external services may be contracted as needed. Decentralization does not remove) Tj T*
 ET
 endstream
 endobj
@@ -128,9 +128,12 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3420 >>
+<< /Length 3402 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(responsibilities, controls or legal requirements; if an activity requires an entity, license or) Tj T*
+(authorization, it will not be released until those conditions are met.) Tj T*
+() Tj T*
 (The mission expands alternatives for economic participation during the transition of AI and) Tj T*
 (robotics. Transparency, understanding, responsibility, and accountability guide the operation,) Tj T*
 (without guaranteed income or capital protection.) Tj T*
@@ -176,9 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Each round pays or does not pay, without accumulation, reopening, or future supplement. Any) Tj T*
 (BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable) Tj T*
-(fractions return to the treasury, without future credit. Received USDC remains personal.) Tj T*
-() Tj T*
-(Taxes attributable to the entity are calculated, deducted, and paid according to the applicable) Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,12 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 1764 >>
+<< /Length 1974 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(fractions return to the treasury, without future credit. Received USDC remains personal.) Tj T*
+() Tj T*
+(Taxes attributable to the entity are calculated, deducted, and paid according to the applicable) Tj T*
 (obligation before eligible profit and split. Applicable withholdings are resolved before the) Tj T*
 (net credit. Provision is not payment; accounting for and paying the same obligation does not) Tj T*
 (allow double deduction. There is no universal personal exemption.) Tj T*
@@ -226,13 +229,13 @@ xref
 0000000134 00000 n 
 0000000231 00000 n 
 0000000357 00000 n 
-0000003669 00000 n 
-0000003795 00000 n 
-0000006912 00000 n 
-0000007038 00000 n 
-0000010510 00000 n 
-0000010638 00000 n 
+0000003822 00000 n 
+0000003948 00000 n 
+0000007153 00000 n 
+0000007279 00000 n 
+0000010733 00000 n 
+0000010861 00000 n 
 trailer << /Size 12 /Root 1 0 R >>
 startxref
-12455
+12888
 %%EOF

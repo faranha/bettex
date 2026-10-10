@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3528 >>
+<< /Length 3558 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — entidad y reglas) Tj T*
@@ -24,10 +24,11 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (investigación técnico-legal específica y del cumplimiento de los requisitos aplicables. Una) Tj T*
 (fecha en la hoja de ruta no sustituye esta condición.) Tj T*
 () Tj T*
-(El análisis identifica el país de la oferta, el público atendido, la naturaleza de la) Tj T*
-(actividad, la entidad responsable y los proveedores utilizados. El domicilio de la empresa, el) Tj T*
-(lugar de la oferta y el de ejecución se evalúan por separado; un permiso en un país no autoriza) Tj T*
-(la actuación en otro.) Tj T*
+(El proyecto nace descentralizado y constituir una entidad no es una prioridad inmediata, sin) Tj T*
+(previsión a corto plazo. El análisis identifica el país de oferta, el público, la actividad,) Tj T*
+(sus responsables y los proveedores. Oferta y ejecución se evalúan por separado; un permiso en) Tj T*
+(un país no autoriza operar en otro. Si una actividad exige entidad, licencia o autorización, no) Tj T*
+(se habilitará antes de cumplir esas condiciones.) Tj T*
 () Tj T*
 (La investigación verifica fuentes oficiales, vigencia y alcance de las normas, licencias y) Tj T*
 (autorizaciones necesarias, condiciones de los proveedores, publicidad, protección del usuario,) Tj T*
@@ -62,7 +63,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Las condiciones de disponibilidad por territorio deben comunicarse al usuario y reflejarse en) Tj T*
 (los controles de elegibilidad, acceso y ejecución. Se registran las evidencias, los) Tj T*
 (responsables, las condiciones, el plazo de validez o revisión y las decisiones. Esta sección) Tj T*
-(define requisitos para el lanzamiento; no declara licencias obtenidas, dictámenes concluidos ni) Tj T*
 ET
 endstream
 endobj
@@ -70,9 +70,10 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3056 >>
+<< /Length 3079 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(define requisitos para el lanzamiento; no declara licencias obtenidas, dictámenes concluidos ni) Tj T*
 (agentes autorizados.) Tj T*
 () Tj T*
 (Financiación: origen y destino de los recursos) Tj T*
@@ -82,10 +83,12 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (un reparto de financiación: los términos identifican origen, destino y derechos.) Tj T*
 () Tj T*
 (El mint inicial del 10% financia el proyecto, mediante ejecución propia o un launchpad) Tj T*
-(asociado. Las ventas de la asignación del 55% de la comunidad ya liberada destinan el 100% del) Tj T*
-(precio en USDC a la tesorería. Una contribución por servicios es solo una alternativa para) Tj T*
-(sostener la operación, sin cobro definido, importe fijado o adopción confirmada. La reventa) Tj T*
-(pertenece al vendedor. Captación, ingresos y beneficio distribuible no son equivalentes.) Tj T*
+(asociado. Las ventas del 55% de la comunidad ya liberado destinan el 100% del precio en USDC a) Tj T*
+(la tesorería. Durante el ALFA, solo se cobrarán tasas de red. La decisión de cobrar o no una) Tj T*
+(contribución por servicios se tomará posteriormente con la comunidad, como posible alternativa) Tj T*
+(para sostener las operaciones, sin importe fijado ni adopción confirmada. Los ingresos de) Tj T*
+(reventa pertenecen al vendedor. Captación, ingresos y beneficio distribuible no son) Tj T*
+(equivalentes.) Tj T*
 () Tj T*
 (Burn Lottery y Double 2X) Tj T*
 () Tj T*
@@ -118,9 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX es un producto tecnológico que reúne una aplicación, un token y agentes de IA. El) Tj T*
 (usuario participa en los resultados del proyecto conforme a las reglas del token, sin ser) Tj T*
 (propietario de la empresa ni de la tesorería.) Tj T*
-() Tj T*
-(Una única empresa comercial privada de capital cerrado a constituir, administrada por el) Tj T*
-(fundador en modelo full stack AI, sin empleados. Servicios externos especializados son) Tj T*
 ET
 endstream
 endobj
@@ -128,15 +128,19 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3210 >>
+<< /Length 3276 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(contratados por necesidad, no posiciones internas.) Tj T*
 () Tj T*
-(La empresa reúne el token, la aplicación, la tesorería, las inversiones y las obligaciones del) Tj T*
-(programa. El nombre final, la forma societaria y la jurisdicción forman parte de la) Tj T*
-(formalización. Los titulares poseen tokens y derechos del programa, no acciones, voto) Tj T*
-(societario o una fracción rescatable de la tesorería.) Tj T*
+(BETTEX nace como proyecto descentralizado. La constitución de una entidad y su formalización) Tj T*
+(institucional no son prioridades inmediatas, no están previstas a corto plazo y no tienen fecha) Tj T*
+(definida. La operación se limitará a los mercados donde la actividad esté permitida, con las) Tj T*
+(autorizaciones exigidas cuando correspondan.) Tj T*
+() Tj T*
+(El fundador coordina el desarrollo con un modelo full stack AI, sin empleados. Los servicios) Tj T*
+(externos especializados podrán contratarse según las necesidades. La descentralización no) Tj T*
+(elimina responsabilidades, controles ni requisitos legales; si una actividad exige entidad,) Tj T*
+(licencia o autorización, no se habilitará antes de cumplir esas condiciones.) Tj T*
 () Tj T*
 (La misión amplía alternativas de participación económica durante la transición de la IA y la) Tj T*
 (robótica. Transparencia, comprensión, responsabilidad y rendición de cuentas orientan la) Tj T*
@@ -175,10 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Peso individual = BETTEX elegible al inicio  x  duración completa de la ronda, sin salida. Los) Tj T*
 (nuevos participantes y los saldos recibidos durante una ronda tienen peso cero en ella; los) Tj T*
-(aumentos no alteran el peso del saldo ya elegible. Cualquier salida lleva a cero todo el peso) Tj T*
-(del titular; la participación solo se reinicia en la próxima ronda. Pago bruto = porción de) Tj T*
-(staking  x  peso individual  /  suma de pesos elegibles.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 2641 >>
+<< /Length 2917 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(aumentos no alteran el peso del saldo ya elegible. Cualquier salida lleva a cero todo el peso) Tj T*
+(del titular; la participación solo se reinicia en la próxima ronda. Pago bruto = porción de) Tj T*
+(staking  x  peso individual  /  suma de pesos elegibles.) Tj T*
+() Tj T*
 (Ejemplo: A empieza la ronda con 1.000 BETTEX elegibles; B recibe 1.000 a las 12:00. Con) Tj T*
 (beneficio elegible de 1.000 USDC y condiciones cumplidas, la porción de staking de 250 USDC) Tj T*
 (paga 250 a A y cero a B. En la ronda siguiente, ambos elegibles desde el inicio y sin salida) Tj T*
@@ -237,13 +241,13 @@ xref
 0000000134 00000 n 
 0000000231 00000 n 
 0000000357 00000 n 
-0000003937 00000 n 
-0000004063 00000 n 
-0000007171 00000 n 
-0000007297 00000 n 
-0000010559 00000 n 
-0000010687 00000 n 
+0000003967 00000 n 
+0000004093 00000 n 
+0000007224 00000 n 
+0000007350 00000 n 
+0000010678 00000 n 
+0000010806 00000 n 
 trailer << /Size 12 /Root 1 0 R >>
 startxref
-13381
+13776
 %%EOF

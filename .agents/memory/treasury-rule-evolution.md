@@ -3,11 +3,11 @@ name: Evolução das regras da tesouraria BETTEX
 description: A tesouraria terá um agente próprio de IA, coordenado com os agentes de investimento.
 ---
 
-A própria tesouraria tem regras que podem evoluir, com sugestões de um agente de IA em conjunto com os agentes de investimento. O usuário substituiu a autonomia de alteração direta por: “a IA pode sugerir, mas as sugestoes entram em fila para execucao, que devem ser aprovadas pela liderança da fundacao”.
+A própria tesouraria tem regras que podem evoluir, com sugestões de um agente de IA em conjunto com os agentes de investimento. Na visão full DEX atual, a comunidade substitui a Fundação como autoridade de governança; mecanismos de votação e competências ainda precisam ser definidos.
 
-**Why:** O usuário definiu que a liderança da Fundação aprova as mudanças; a IA sugere, não altera diretamente as regras.
+**Why:** O criador pediu retirar a Fundação e tratar decisões como da comunidade. Isso substitui a aprovação pela liderança da Fundação, não autoriza alteração unilateral pela IA.
 
-**How to apply:** Preservar a fila de sugestões, aprovação antes da execução e vigência somente após a execução. Não confundir aprovação de alterações de regras com aprovação humana de cada investimento. Não apresentar o fluxo como já implementado.
+**How to apply:** Planejar propostas da IA, decisão comunitária sobre políticas e execução por mandatos limitados. Preservar a fila de sugestões, aprovação antes da execução e vigência somente após a execução. Não confundir aprovação de alterações de regras com votação de cada investimento. Não apresentar governança comunitária on-chain como já implementada.
 
 O criador pediu “regras claras multisig pra movimentacoes seguindo liberdade operacional com boas praticas de mercado” na área da empresa.
 
