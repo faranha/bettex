@@ -22,13 +22,13 @@ export function SolutionParticipationFlow() {
   return <figure className="spf" data-testid="solution-participation-flow">
     <figcaption className="spf__cap">
       <span className="mono">{t('Como a participação se liga à operação')}</span>
-      <p>{t('A aquisição de BETTEX conecta a operação à participação do usuário. O preço da venda pública primária financia a tesouraria; o saldo elegível define o peso no rateio. Os resultados da IA e o peso de cada usuário se encontram na distribuição em USDC, quando a rodada pode pagar.')}</p>
+      <p>{t('A aquisição de BETTEX conecta a operação à participação do usuário. O mint inicial financia o projeto; a venda dos tokens da comunidade já liberados financia a tesouraria. O saldo elegível define o peso na distribuição em USDC, quando a rodada pode pagar.')}</p>
     </figcaption>
     <div className="spf__grid" role="group" aria-label={t('Etapas de participação do usuário')}>
       <article className="spf__node spf__node--light spf__acq">
         <Head n="01" Icon={Coins} />
         <h3 className="display">{t('Aquisição de BETTEX')}</h3>
-        <p>{t('O usuário adquire o token. Somente o preço da venda pública primária vai integralmente à tesouraria; compras em mercado secundário não financiam a tesouraria. A tarifa de serviço é separada.')}</p>
+        <p>{t('O usuário adquire o token. O preço da venda primária da comunidade em vesting vai à tesouraria; o mint inicial e as tarifas ficam separados. Compras em mercado secundário não financiam a tesouraria.')}</p>
       </article>
 
       <div className="spf__lanes">
@@ -36,11 +36,11 @@ export function SolutionParticipationFlow() {
           <h4 id="spf-cap" className="spf__tag mono">{t('Trilha do capital')}</h4>
           <ol className="spf__steps">
             <li className="spf__step spf__step--tre">
-              <Conn label="preço da venda primária" />
+              <Conn label="preço da parcela da comunidade" />
               <div className="spf__node spf__node--treasury">
                 <Head Icon={Landmark} />
                 <h3 className="display">{t('Tesouraria')}</h3>
-                <p>{t('Capital formado pelo preço da venda pública primária.')}</p>
+                <p>{t('Capital formado pelo preço da parcela da comunidade já liberada.')}</p>
               </div>
             </li>
             <li className="spf__step spf__step--ops">

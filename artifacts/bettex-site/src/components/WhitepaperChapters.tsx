@@ -56,7 +56,7 @@ export const chapters = [
   { id: 'documentacao-acesso', title: 'Acesso ao aplicativo', subtitle: 'Carteira gerada com a conta, acesso e autorização de ações financeiras.' },
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Mapa orquestrado, catálogo de conectores, consultas verificadas e demonstrações por plataforma.' },
   { id: 'documentacao-agentes', title: 'Agentes de IA', subtitle: 'Orquestradora, tesouraria, quatro mercados, recompra e queima, governança e exemplos de decisão.' },
-  { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Emissão, alocação 65% / 20% / 15%, agenda de 36 meses, gráficos mensal e acumulado.' },
+  { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Mint inicial de 10%, comunidade 55%, fundador/equipe 20%, investidores 15% e vesting de 24 meses.' },
   { id: 'documentacao-servicos', title: 'Taxas de serviço', subtitle: 'Política oficial de tarifas, encargos, receita operacional e conciliação.' },
   { id: 'documentacao-staking', title: 'Staking e distribuição de resultados', subtitle: 'Participação automática, quantidade e tempo, tributos, rateio, liquidação e encerramento.' },
   { id: 'documentacao-controles', title: 'Controles de risco', subtitle: 'Limites globais e por mercado, autorizações e pausas de segurança.' },
@@ -103,8 +103,8 @@ function RawChapter({ index }: { index: number }) {
         <div className="whitepaper__lead"><span>PRODUTO DE TECNOLOGIA · ECONOMIA PROGRAMÁVEL</span><p>{thesis.purpose}</p><p>A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA para analisar e executar investimentos em previsões, ações e cripto, esportes e iGaming. O capital das operações fica numa tesouraria separada. A estrutura jurídica proposta é uma única empresa privada, ainda a constituir. O token BETTEX dá acesso ao programa de resultados, sem ações ou propriedade proporcional da tesouraria.</p></div>
         <div className="whitepaper__prose"><p><a href="#documentacao-publico">Ler a tese e a oportunidade</a></p></div>
         <div className="whitepaper__status-grid">
-          <div><span>01 / ECONOMIA DO TOKEN</span><strong>BETTEX e participação</strong><p>Um bilhão de tokens: 65% venda pública, 20% Fundador e equipe e 15% investidores, liberados em 36 meses. <a href="#documentacao-staking">Staking automático</a> por quantidade e tempo elegíveis.</p></div>
-          <div><span>02 / OPERAÇÃO FINANCEIRA</span><strong>Tesouraria multimercado</strong><p>100% do preço dos tokens da venda pública vai à tesouraria.</p><p>{growthStrategy.launch.angelFundingUse}</p><p>Reservas e parcela investível seguem as políticas aprovadas, com alocação dinâmica e controle de liquidez.</p></div>
+          <div><span>01 / ECONOMIA DO TOKEN</span><strong>BETTEX e participação</strong><p>Um bilhão de tokens: 10% mint inicial, 55% comunidade, 20% fundador/equipe e 15% investidores. Os 90% posteriores seguem vesting de 24 meses. <a href="#documentacao-staking">Staking automático</a> por quantidade e tempo elegíveis.</p></div>
+          <div><span>02 / OPERAÇÃO FINANCEIRA</span><strong>Tesouraria multimercado</strong><p>O mint inicial financia o projeto. As vendas da parcela de 55% da comunidade destinam o preço em USDC à tesouraria.</p><p>{growthStrategy.launch.angelFundingUse}</p><p>Reservas e parcela investível seguem as políticas aprovadas, com alocação dinâmica e controle de liquidez.</p></div>
           <div><span>03 / ARQUITETURA E CONTROLES</span><strong>Registros conciliados</strong><p>O modelo separa responsabilidades entre aplicativo, serviços, agente, conectores e operação, com registros auditáveis, autorizações explícitas e reconciliação de ativos e obrigações.</p></div>
         </div>
         <DocFacts title="Resumo do modelo" facts={[
@@ -124,7 +124,7 @@ function RawChapter({ index }: { index: number }) {
         <Subhead>Camadas do sistema</Subhead>
         <div className="whitepaper__prose">
           <p><strong>USDC é o ativo financeiro; BETTEX é o token de participação.</strong> A interface pode mostrar uma estimativa em moeda local, mas saldo, crédito e saque continuam em USDC. Entrada fiat ocorre por on-ramp externo, sem conta fiduciária ou off-ramp próprio da BETTEX.</p>
-          <p><strong>Os fluxos de capital e de serviços são separados.</strong> O preço público dos tokens vai à tesouraria; as <a href="#documentacao-taxas">taxas de serviço</a>, pagas em USDC, vão ao caixa operacional. Os tokens não financiam as estratégias. Todo BETTEX adquirido na <a href="#documentacao-recompras">recompra</a> é queimado permanentemente.</p>
+          <p><strong>Os fluxos de capital e de serviços são separados.</strong> O mint inicial financia o projeto; o preço dos tokens da comunidade liberados no vesting vai à tesouraria. As <a href="#documentacao-taxas">taxas de serviço</a>, pagas em USDC, vão ao caixa operacional. Os tokens não são capital das estratégias. Todo BETTEX adquirido na <a href="#documentacao-recompras">recompra</a> é queimado permanentemente.</p>
           <p><strong>Aplicativo e carteiras → API e livro contábil → tesouraria → agentes e conectores.</strong> As análises comparam probabilidades, preços, liquidez, custos e risco. Operações automáticas respeitam mandatos e controles independentes; mudanças de política exigem aprovação humana. Os quatro mercados são o escopo do projeto, não a obrigação de investir em todos ou a confirmação de conectores ativos.</p>
         </div>
         <div className="whitepaper__aside-callout"><span>QUANDO HÁ DISTRIBUIÇÃO</span><p>O split usa o lucro líquido realizado e conciliado, após custos e tributos, com reservas, liquidez e elegibilidade atendidas: 50% tesouraria, 25% staking e 25% carteira de recompra. Perdas são permanentes, sem déficit a compensar em rodadas futuras.</p><p><a href="#documentacao-entrada-proxima-rodada">Quem entra durante a rodada espera a próxima e não recebe nenhum lucro da rodada atual.</a></p><p>Qualquer saída de BETTEX, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado. Autorizar o direito e confirmar o recebimento em USDC são etapas distintas.</p></div>
@@ -206,7 +206,7 @@ function RawChapter({ index }: { index: number }) {
         <div className="whitepaper__prose">
           <p><strong>BETTEX determina a participação no staking; os serviços são pagos em USDC.</strong> A tarifa não reduz o saldo BETTEX nem a oferta. Entradas durante a rodada aguardam a próxima; não recebem nenhum lucro da rodada atual. Qualquer saída de BETTEX, mesmo parcial, zera o peso e cancela os créditos anteriores ainda não pagos. BETTEX não é capital das estratégias dos agentes nem participação societária. Os ganhos são creditados em USDC, nunca em BETTEX.</p>
           <p>Cada movimento financeiro em <strong>USDC</strong> deve conter identificador único, conta, ativo, rede, origem, destino, valor bruto, custos, valor líquido, estado e referência externa. Após confirmação da liquidação, os lançamentos correspondentes devem ser registrados juntos e uma única vez. Uma mensagem repetida não pode duplicar os efeitos: o mesmo identificador tem um único efeito contábil. Registrar um movimento não confirma uma transferência on-chain ainda pendente.</p>
-          <p>A <strong>venda pública</strong> no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria; a tarifa adicional do aplicativo tem destino operacional próprio. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida.</p><p>{growthStrategy.launch.angelFundingUse} <a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p>
+          <p>A <strong>venda dos tokens da comunidade em vesting</strong> no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria; a tarifa adicional do aplicativo tem destino operacional próprio. O mint inicial financia o projeto e fica separado dessa destinação. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida.</p><p>{growthStrategy.launch.angelFundingUse} <a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p>
           <p>A conciliação compara USDC recebido, incluindo entradas por on-ramp, saldos e movimentos dos dois ativos, resultados por mercado, custos, reservas e obrigações em USDC. Cada conector informa origem, horário e estado; a visão consolidada permite verificar o risco global. Diferenças devem congelar o fluxo afetado e gerar investigação, nunca saldo artificial. Monitoramento, auditoria e alertas são requisitos operacionais.</p>
         </div>
         <Subhead>Agentes, MCP e APIs de mercado</Subhead>
@@ -237,20 +237,20 @@ function RawChapter({ index }: { index: number }) {
       return <>
         <div className="whitepaper__supply">
           <div className="whitepaper__supply-top"><span>EMISSÃO TOTAL</span><strong data-testid="text-documentacao-max-supply">{formatTokenCount(tokenomics.maxSupply)}</strong><small>BETTEX · teto total da emissão aprovada.</small></div>
-          <div className="whitepaper__supply-bar" role="img" aria-label="65% venda pública, 20% Fundador e equipe, 15% investidores"><span /><span /><span /></div>
-          <div className="whitepaper__supply-key"><span><i />Venda pública · {formatTokenCount(tokenomics.publicSaleAllocation)} (65%)</span><span><i />Fundador e equipe · {formatTokenCount(tokenomics.teamAllocation)} (20%)</span><span><i />Investidores · {formatTokenCount(tokenomics.investorAllocation)} (15%)</span></div>
+          <div className="whitepaper__supply-bar" role="img" aria-label="10% mint inicial, 55% comunidade, 20% fundador e equipe, 15% investidores"><span /><span /><span /><span /></div>
+          <div className="whitepaper__supply-key"><span><i />Mint inicial · {formatTokenCount(tokenomics.initialMintAllocation)} (10%)</span><span><i />Comunidade · {formatTokenCount(tokenomics.communityAllocation)} (55%)</span><span><i />Fundador e equipe · {formatTokenCount(tokenomics.teamAllocation)} (20%)</span><span><i />Investidores · {formatTokenCount(tokenomics.investorAllocation)} (15%)</span></div>
         </div>
         <DocFacts title="Economia do token em resumo" tone="accent" cols={4} facts={[
           { label: 'EMISSÃO', value: '1 bilhão', text: 'Teto total de BETTEX.' },
-          { label: 'ALOCAÇÃO', value: '65 / 20 / 15', text: 'Venda pública, Fundador e equipe, investidores.' },
-          { label: 'VESTING', value: '36 meses', text: 'Cronograma predefinido de liberação.' },
-          { label: 'VENDA PÚBLICA', value: '100% do preço', text: 'USDC dos tokens vai à tesouraria; tarifa é adicional.' },
+          { label: 'ALOCAÇÃO', value: '10 / 55 / 20 / 15', text: 'Mint inicial, comunidade, fundador/equipe e investidores.' },
+          { label: 'VESTING', value: '24 meses', text: '900 milhões de BETTEX; mint inicial separado.' },
+          { label: 'MINT INICIAL', value: 'Preço fixo', text: 'Aberto à comunidade para financiar o projeto.' },
         ]} />
         <TokenAllocationSchematic />
         <Subhead>Regras e requisitos de emissão</Subhead>
         <div className="whitepaper__rule-pair" data-testid="documentacao-novas-vendas">
-          <div><span>EMISSÃO E VENDA / CRONOGRAMA DE VESTING</span><p><strong>A liberação de BETTEX segue o cronograma predefinido de vesting de 36 meses</strong>, na proporção de 65% para venda pública, 20% para o fundador e 15% para investidores. Não cabe à gestão decidir quando abrir novas liberações nem quantos tokens liberar conforme as reservas: meses e quantidades já estão definidos na agenda. A venda pública utiliza apenas sua parcela liberada, sem antecipar tokens ou ultrapassar o teto de 1 bilhão. Liberação não significa venda realizada.</p></div>
-          <div><span>PREÇO DOS TOKENS DA VENDA PÚBLICA → TESOURARIA</span><p><strong>100% do preço dos tokens, pago em USDC, vai à tesouraria, inclusive nas vendas diretas a corretoras.</strong> A tarifa adicional do aplicativo vai ao caixa operacional e não reduz esse preço. A regra vale para os 65% públicos, não para aportes dos investidores, vendas pessoais do fundador ou ganhos de staking.</p></div>
+          <div><span>EMISSÃO E VENDA / CRONOGRAMA DE VESTING</span><p><strong>O mint inicial tem teto de 100 milhões de BETTEX e preço fixo.</strong> Qualquer pessoa pode participar, observadas as condições legais da oferta. O mint financia o projeto e pode ser executado pela BETTEX ou por um launchpad parceiro. Valor do preço, janela, plataforma e destino dos tokens não mintados ainda serão definidos. Não presumir venda integral, pool aberto ou parceria contratada.</p></div>
+          <div><span>PREÇO DOS TOKENS DA VENDA PÚBLICA → TESOURARIA</span><p><strong>Os 55% da comunidade são uma destinação separada dos 10% do mint.</strong> A venda dos tokens da comunidade já liberados destina 100% do preço em USDC à tesouraria; tarifas de serviço ficam separadas. O mint inicial é captação para financiar o projeto, não lucro distribuível. Sua aplicação e prestação de contas devem identificar origem e destino dos recursos, sem presumir que todo o valor será usado em operações dos agentes.</p></div>
         </div>
         <div className="whitepaper__prose">
           <p>A compra no aplicativo é liquidada em USDC após confirmação conciliada. O preço destinado à tesouraria, a tarifa separada em USDC destinada à entidade e a quantidade de BETTEX creditada são registrados juntos e uma única vez, sem deduzir taxa em tokens. Todo BETTEX disponível na carteira oficial passa a participar automaticamente do staking. A aquisição não é investimento dos agentes. A compra credita a carteira gerada com a conta, não um endereço externo escolhido na hora; a venda direta a corretoras tem fluxo próprio. O recibo identifica preço, tarifa fixa, cotação pertinente, custos, tokens adquiridos, destinos e conta.</p>
@@ -262,8 +262,8 @@ function RawChapter({ index }: { index: number }) {
         <div id="documentacao-venda-corretoras">
           <Subhead>Venda direta a corretoras para formar a tesouraria</Subhead>
           <div className="whitepaper__prose">
-            <p>A parcela de <strong>65% destinada à venda pública pode ser vendida diretamente a corretoras</strong> para formar e capitalizar a tesouraria. Não é obrigatório vender por swaps ou por um pool de liquidez: a venda direta é um canal possível de distribuição dos tokens já liberados.</p>
-            <p><strong>100% dos recursos recebidos nessas vendas, liquidadas em USDC, vão diretamente à tesouraria.</strong> O canal de venda não altera os percentuais de alocação nem o cronograma de vesting de 36 meses. Vendas pessoais do fundador têm livre destinação, separada da venda pública.</p>
+            <p>A parcela de <strong>55% da comunidade pode ser vendida diretamente a corretoras após a liberação no vesting</strong>. Esse canal não substitui o mint inicial aberto a preço fixo nem exige um pool de liquidez.</p>
+            <p><strong>100% dos recursos dessas vendas em USDC vão à tesouraria.</strong> O canal não altera as quatro destinações nem o vesting de 24 meses. Vendas pessoais do fundador têm livre destinação e ficam separadas da captação do projeto.</p>
             <p>O fluxo de venda à corretora deve identificar a contraparte, a quantidade de BETTEX, o pagamento em USDC e a carteira de entrega, com confirmação, conciliação e registro público da transação. A previsão desse canal não significa parceria, listagem ou integração com uma corretora já ativa.</p>
           </div>
         </div>
@@ -275,7 +275,7 @@ function RawChapter({ index }: { index: number }) {
           </div>
           <div className="whitepaper__rule-pair">
             <div><span>FUNDADOR / 20% DE LIVRE DESTINAÇÃO</span><p><strong>{formatTokenCount(tokenomics.teamAllocation)} BETTEX</strong> pertencem ao fundador. Após cada liberação do vesting, ele pode usar os tokens como quiser: distribuir ao time, manter em staking, transferir ou vender. Não existe uma divisão obrigatória dessa parcela com o time. A destinação de suas vendas pessoais é livre.</p></div>
-            <div><span>INVESTIDORES / 15%</span><p><strong>{formatTokenCount(tokenomics.investorAllocation)} BETTEX</strong> para investidores, com liberação mensal durante 36 meses. Aportes, liberação de tokens e resultados de staking são movimentos distintos.</p></div>
+            <div><span>INVESTIDORES / 15%</span><p><strong>{formatTokenCount(tokenomics.investorAllocation)} BETTEX</strong> para investidores, com liberação mensal durante 24 meses. Aportes, liberação de tokens e resultados de staking são movimentos distintos.</p></div>
           </div>
         </div>
         <TokenHolderRights />

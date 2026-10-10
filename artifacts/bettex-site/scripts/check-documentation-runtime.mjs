@@ -27,8 +27,8 @@ try {
     });
     assert.equal(props.tickFormatter(30_000_000), locale === 'pt' ? '30 mi' : '30 M');
     assert.equal(props.labelFormatter(12), { pt: 'Mês 12', en: 'Month 12', es: 'Mes 12' }[locale]);
-    const name = t('Venda pública · 65%');
-    assert.deepEqual(props.formatter(650_000_000, name), ['650000000 BETTEX', name]);
+    const name = t('Comunidade · 55%');
+    assert.deepEqual(props.formatter(550_000_000, name), ['550000000 BETTEX', name]);
     const renderedTitle = { 'data-i18n': 'translated', children: '01 Project vision.' };
     assert.equal(localizeProps(renderedTitle, 'span'), renderedTitle);
   }

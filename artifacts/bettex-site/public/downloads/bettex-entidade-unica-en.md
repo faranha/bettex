@@ -22,7 +22,7 @@ Financing: sources and uses of funds
 
 Angel contributions allocate 100% of funds to product, technology and marketing, with no founder salaries or withdrawals. The 15% token allocation does not impose a funding split: agreements identify sources, uses and rights.
 
-The USDC public sale price goes entirely to the treasury; a separate service fee goes to the operating account. Resale proceeds belong to the seller and create no new funding or treasury profit. Capital, revenue and profit are not equivalent.
+The initial 10% mint funds the project, operated directly or by a partner launchpad. Sales of the already released community 55% send 100% of the USDC price to the treasury; separate fees go to the operating account. Resale proceeds belong to the seller. Fundraising, revenue and distributable profit are not equivalent.
 
 Burn Lottery and Double 2X
 
@@ -48,9 +48,13 @@ The mission expands alternatives for economic participation during the transitio
 
 Token, funding, and burn
 
-1 billion BETTEX issuance: 65% public sale, 20% Founder and team, 15% investors. Monthly vesting for 36 months since public sale opening, with whole groups 13:4:3. Release does not prove sale or circulation.
+Cap of 1 billion BETTEX in four allocations: 10% initial public mint, 55% community, 20% founder/team and 15% investors. The mint is open at a fixed price and funds the project. The price, window, platform and destination of the unminted portion remain to be defined.
 
-100% of the public sale price in USDC goes to the treasury. Separate service fees go to the operating cash. External markets do not automatically inherit the conditions of the official swap.
+Public mint planned for December 10, 2026. System/ALPHA and vesting start planned for March 2027. Each launch requires legal compliance by activity and territory.
+
+Vesting of 900 million BETTEX over 24 months from March 2027: community 550 million, founder/team 200 million and investors 150 million, in whole-token 11:4:3 groups. The initial cap of 100 million remains separate; release does not prove sales or circulation.
+
+100% of the USDC price of already released community tokens goes to the treasury. Separate service fees go to the operating account. Initial mint fundraising funds the project and requires reporting. External markets do not automatically inherit official swap terms.
 
 Eligible result, after taxes and controls, receives 50% to treasury, 25% to staking, and 25% to the exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains in the treasury, without future split. Purchase uses administrative authorization; all acquired BETTEX is burned permanently. The exclusive wallet is not the burn mechanism.
 

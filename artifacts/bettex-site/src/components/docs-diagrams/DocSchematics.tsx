@@ -46,7 +46,7 @@ function Schematic({ id, title, children }: { id: string; title: string; childre
     'schematic-governance': 'Proposta, teste, aprovação, espera e versão vigente delimitam a execução.',
     'schematic-buyback': 'Parcela do resultado financia compras autorizadas; tokens recebidos são queimados.',
     'schematic-vesting': 'A liberação mensal não representa automaticamente venda ou circulação.',
-    'schematic-allocation': 'Três parcelas da emissão; preço público e aportes têm destinos distintos.',
+    'schematic-allocation': 'Quatro destinações: mint inicial separado da comunidade, fundador/equipe e investidores.',
     'schematic-risk-authorization': 'Mandato, avaliação, reserva e liquidez precisam passar antes do envio.',
     'schematic-fees': 'Cada serviço tem fato gerador e pagamento separado do preço dos tokens.',
     'schematic-allora': 'Inferência é insumo de análise, não permissão para movimentar carteira.',
@@ -133,14 +133,15 @@ export function AccountBoundariesSchematic() {
 export function TokenAllocationSchematic() {
   return <Schematic id="schematic-allocation" title="Alocação e destino dos recursos">
     <Fork from={{ t: '1 bilhão de BETTEX', s: 'Emissão total', tone: 'blue' }} to={[
-      { t: 'Venda pública · 65%', s: 'Preço em USDC: 100% para a tesouraria', tone: 'gold' },
+      { t: 'Mint inicial · 10%', s: 'Preço fixo; financia o projeto', tone: 'gold' },
+      { t: 'Comunidade · 55%', s: '550 milhões no vesting', tone: 'gold' },
       { t: 'Fundador e equipe · 20%', s: 'Livre destinação após cada liberação', tone: 'blue' },
       { t: 'Investidores · 15%', s: 'Aportes-anjo: produto, tecnologia e marketing', tone: 'teal' },
     ]} />
-    <div className="ds-vest" role="img" aria-label="Vesting de 36 meses com liberação mensal">
+    <div className="ds-vest" role="img" aria-label="Vesting de 24 meses com liberação mensal">
       <span>Vesting · liberação mensal</span>
-      <i aria-hidden="true">{Array.from({ length: 36 }, (_, k) => <b key={k} />)}</i>
-      <span>36 meses</span>
+      <i aria-hidden="true">{Array.from({ length: 24 }, (_, k) => <b key={k} />)}</i>
+      <span>24 meses</span>
     </div>
   </Schematic>;
 }

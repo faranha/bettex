@@ -1,4 +1,4 @@
-import { documentationTokenomics as tokenomics } from './tokenomics';
+import { tokenomics } from './tokenomics';
 
 // Release whole-token groups of 13:4:3, preserving 65%/20%/15% every month.
 // Cumulative rounding spreads the indivisible remainder across the 36 months.

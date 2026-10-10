@@ -147,8 +147,9 @@ export function PitchPage() {
     <section id="tokenomics" aria-labelledby="economia-t">
     <Sec id="economia" hero="pitch-illustrations/pitch-token-participation.webp" summary="Duas receitas separadas: tarifa fixa de US$ 2,50 em USDC e ganhos de investimento da tesouraria." n="07" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Receitas, tesouraria e direitos do token.</span></>}>
       <h3 className="display mb-6 text-2xl font-extrabold">O dinheiro da empresa não se mistura ao da tesouraria.</h3>
-      <div className="mb-8 grid gap-4 md:grid-cols-3">
-        <Card label="Venda pública primária" title="100% para a tesouraria">O preço dos tokens financia as estratégias. A venda não é lucro distribuível nem receita livre da empresa.</Card>
+      <div className="mb-8 grid gap-4 md:grid-cols-2">
+        <Card label="Mint público inicial" title="Financiamento do projeto">Mint aberto a preço fixo, separado da comunidade em vesting. Aplicação dos recursos e custos da oferta devem ser documentados antes da abertura.</Card>
+        <Card label="Comunidade em vesting" title="100% para a tesouraria">O preço dos tokens da comunidade já liberados financia a tesouraria. A venda não é lucro distribuível; o mint inicial fica separado.</Card>
         <Card label="Investidores-anjo" title="100% para produto, tecnologia e marketing">{g.launch.angelFundingUse}</Card>
         <Card label="Tarifas de serviço" title="100% para o caixa operacional">A tarifa de US$ 2,50 é receita bruta da empresa, antes de custos e tributos, fora do split do lucro da tesouraria.</Card>
       </div>
@@ -166,7 +167,7 @@ export function PitchPage() {
           <div className="pitch-revenue__copy">
             <p className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#2B59FF]">Tesouraria</p>
             <h3 className="display">Ganhos de investimento</h3>
-            <p>Resultado das estratégias. O preço público primário do token vai integralmente à tesouraria; a tarifa é registrada à parte.</p>
+            <p>Resultado das estratégias. O preço dos tokens da comunidade já liberados vai à tesouraria; o mint inicial financia o projeto e a tarifa é registrada à parte.</p>
           </div>
         </article>
       </div>
@@ -181,18 +182,19 @@ export function PitchPage() {
       <PitchObservations><p>Antes de custos externos de rede e conversão. Movimentos de US$ 10 ou 15 e saques frequentes são hipóteses do fundador, não ticket ou disposição medidos. O modelo financeiro ainda não foi recalibrado para tickets pequenos; volumes e CAC antigos não são dados observados.</p></PitchObservations>
     </Sec>
 
-    <Sec id="token" kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Três alocações.</span></>}>
+    <Sec id="token" kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Quatro destinações.</span></>}>
       <PitchTokenCharts />
       <TokenValueMechanisms />
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
-        <Card dark label="Público" title="65% · 650 milhões">Tokens destinados à venda pública, cujo preço primário financia integralmente a tesouraria.</Card>
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <Card dark label="Mint público inicial" title="10% · 100 milhões">Mint aberto a qualquer pessoa, a preço fixo, para financiar o projeto. Execução própria ou por launchpad parceiro, sujeita à adequação legal da oferta.</Card>
+        <Card dark label="Comunidade" title="55% · 550 milhões">Destinação posterior em vesting de 24 meses, separada dos 10% do mint inicial.</Card>
         <Card dark label="Fundador e equipe" title="20% · 200 milhões">Livre destinação após a liberação, sem antecipação do vesting.</Card>
-        <Card dark label="Financiamento inicial" title="15% · 150 milhões">Tokens vinculados ao financiamento inicial, conforme os termos da rodada.</Card>
+        <Card dark label="Investidores" title="15% · 150 milhões">Tokens para investidores, sujeitos ao vesting de 24 meses. Aportes e liberação de tokens seguem condições distintas.</Card>
       </div>
       <div className="mt-8" />
       <PitchEditorialSplit dark side="right" image={<PitchEditorialImage dark name="pitch-token-participation" />}>
       <div className="grid gap-4 md:grid-cols-2">
-        <Card dark label="Liberação" title="Parcelas mensais durante 36 meses">Todas as alocações começam a liberar no mês da abertura da venda pública e terminam no mês 36. Liberação não significa venda realizada nem início dos investimentos.</Card>
+        <Card dark label="Liberação" title="Parcelas mensais durante 24 meses">Vesting dos 90% posteriores a partir de março de 2027: comunidade 55%, fundador/equipe 20% e investidores 15%. O mint inicial fica separado. Liberação não comprova venda ou circulação.</Card>
         <Card dark label="Participação" title="Elegibilidade na abertura da rodada">Quem entra durante a rodada recebe zero nela e espera a próxima, inclusive para lucros gerados depois da entrada. Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. Fundador e demais usuários seguem os mesmos critérios.</Card>
       </div>
       </PitchEditorialSplit>
@@ -203,14 +205,14 @@ export function PitchPage() {
 
     <RoadmapSection id="pitch-roadmap" />
 
-    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="O ALFA reúne uma audiência semente; o go to market acompanha o lançamento do BETA em janeiro de 2027." n="08" kicker="Fase atual e próximos passos" dark title={<>Fase atual. <span className="text-[#F2B632]">ALFA</span></>}>
+    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="Comunidade antes do mint público de dezembro de 2026; sistema/ALFA e vesting previstos para março de 2027, sujeitos à adequação jurídica." n="08" kicker="Fase atual e próximos passos" dark title={<>Preparação. <span className="text-[#F2B632]">Comunidade e mint.</span></>}>
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
-        <DemoAppLink className="mono">FASE ATUAL · ALFA</DemoAppLink>
-        <strong>ALFA seed com audiência inicial</strong>
-        <p>O ALFA apresenta a interface com dados ilustrativos, sem dinheiro real ou execução de operações. A captação e a formalização estão previstas para novembro de 2026; o BETA e o go to market, para janeiro de 2027.</p>
+        <DemoAppLink className="mono">DEMO VISUAL DISPONÍVEL</DemoAppLink>
+        <strong>Comunidade antes do lançamento</strong>
+        <p>O demo apresenta a interface com dados ilustrativos, sem dinheiro real ou execução de operações. O mint público está previsto para 10 de dezembro de 2026; sistema/ALFA, captação de investidores e início do vesting, para março de 2027. BETA e go to market vêm depois do ALFA, com data a definir. Cada lançamento depende de adequação legal por atividade e território.</p>
         <DemoAppLink data-testid="pitch-open-alpha-demo" />
       </aside>
-      <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">O fundador financia o plano inicial com seu orçamento corrente, sem custo de aquisição para a BETTEX. O objetivo é validar a demanda pelo produto, o interesse pela proposta e a experiência de uso.</p>
+      <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">A promoção para a comunidade precede o mint inicial, cuja receita financia o projeto. A abertura pode começar com baixa captação, sem reduzir automaticamente o preço fixo nem exigir a venda de todo o teto. Preço, janela, plataforma e destino da parcela não mintada ainda serão definidos.</p>
       <FounderLaunchFunnel />
       {/* Launch simulation intentionally unpublished; its component is retained for future reactivation. */}
       <div className="pitch-community" id="pitch-community">
