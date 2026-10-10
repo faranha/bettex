@@ -602,3 +602,17 @@ mtime_ms = 1791668560323
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/cdd505b9-4a28-4ae5-9c1a-366c6e1451d1/1529ba29-9fde-485c-ac7d-24443ec9c7c2"
 storage_version_token = "1791668578770821"
 content_type = "text/csv"
+
+[[outputs]]
+id = "GAZ3RQf8nmfAgWwNssfZp"
+uri = "file://docs/plans/bettex-defi-ai-editorial-plan.pt.md"
+type = "text"
+title = "Plano BETTEX: DeFi, trading com IA e tokenomics"
+description = "Análise do que cortar, resumir e preservar; documentação de 14 para 6 capítulos; roadmap unificado; revisão de homepage, Pitch, traduções e downloads. Planejamento, sem alterações no produto."
+logical_id = "6a76d4c2-ad8d-49b1-aebb-5a17673c945b"
+content_hash = "sha256:71901c998c99358c3461a8f2bd37796652eb5d52fa96badce37041149ac8e6e2"
+size = 20336
+mtime_ms = 1791668836006
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/6a76d4c2-ad8d-49b1-aebb-5a17673c945b/fd5d0914-f176-4b13-b186-c93bd9ec0538"
+storage_version_token = "1791668862830325"
+content_type = "text/markdown"
