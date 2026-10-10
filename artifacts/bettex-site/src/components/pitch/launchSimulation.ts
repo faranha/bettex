@@ -1,3 +1,5 @@
+import { documentationTokenomics } from '../../lib/tokenomics.ts';
+
 export interface LaunchAssumptions {
   monthlyNewUsers: readonly [number, number, number];
   initialPurchaseUsd: number;
@@ -13,7 +15,7 @@ export const SERVICE_FEE_USD = 2.5;
 // Illustrative USDC settlement precision; actual connector precision must be validated.
 export const SETTLEMENT_UNITS_PER_USD = 1_000_000;
 export const ILLUSTRATIVE_TOKEN_PRICE_USD = .1;
-export const PUBLIC_TOKEN_ALLOCATION = 650_000_000;
+export const PUBLIC_TOKEN_ALLOCATION = documentationTokenomics.communityAllocation;
 export const DEFAULT_LAUNCH_ASSUMPTIONS: LaunchAssumptions = {
   monthlyNewUsers: [200, 400, 400],
   initialPurchaseUsd: 50,

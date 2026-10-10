@@ -25,7 +25,7 @@ export function ServiceFees() {
     <div className="whitepaper__prose">
       <p>Custos de rede e de terceiros são discriminados, não tarifas institucionais ocultas. O recibo vincula operação, versão, ativos, origem, destino, preço, tarifa, encargos e líquido autorizado. A cotação pertinente à liquidação/contabilidade não presume paridade eterna entre USDC e dólar.</p>
       <p>Reserva não é cobrança concluída. A tarifa e a operação têm referências vinculadas e efeito único; falha comprovada exige correção identificada em USDC. Incerteza exige conciliação, sem nova cobrança ou devolução presumida. Não cobrar tarifa no crédito automático do yield, no depósito simples, na exportação de chaves ou em transferência direta fora do aplicativo.</p>
-      <p>As tarifas não queimam BETTEX, não reduzem a quantidade adquirida, não alteram o vesting ou a emissão de 1 bilhão em 65%/20%/15%. O peso de staking continua a acompanhar quantidade e tempo elegíveis dos tokens pessoais.</p>
+      <p>As tarifas não queimam BETTEX, não reduzem a quantidade adquirida e não alteram o teto de 1 bilhão: 10% mint público inicial, 55% comunidade, 20% fundador/equipe e 15% investidores. O vesting dos últimos três grupos dura 24 meses a partir de março de 2027. O peso de staking continua a acompanhar quantidade e tempo elegíveis dos tokens pessoais.</p>
       <p><a href="#documentacao-entidade">Ver a organização da entidade</a> · <a href="#documentacao-receita-piloto">Ver cenários compactos do piloto</a></p>
       <p><a href={`${import.meta.env.BASE_URL}downloads/bettex-taxas-fundacao.xlsx`} download>Planilha de tarifas, piloto e vesting</a></p>
     </div>
