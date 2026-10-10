@@ -1,0 +1,29 @@
+.cg-stage{position:relative;overflow:hidden;border:1px solid #E4DCCB;border-radius:1.25rem;background:radial-gradient(ellipse at 50% 42%,#E3F1EC 0%,#FBF8F0 55%,#F3EFE3 100%)}
+.cg-stage::before{content:"";position:absolute;inset:0;background-image:radial-gradient(#C9BFA5 1px,transparent 1px);background-size:22px 22px;opacity:.35;pointer-events:none}
+.cg-svg{position:relative;display:block;width:100%;height:auto;max-width:100%}
+.cg-edge-line{fill:none;stroke:#9DB8AE;stroke-width:1.6;transition:stroke .25s,stroke-width .25s,opacity .25s}
+.cg-edge-line.ctl{stroke:#C9B98C;stroke-dasharray:2 6;stroke-linecap:round}
+.cg-edge-line.dim{opacity:.3}
+.cg-edge-line.on{stroke:#0E7C6B;stroke-width:3.2;stroke-dasharray:8 8;animation:cg-flow 1.4s linear infinite}
+.cg-edge-line.ctl.on{stroke:#B07A12}
+@keyframes cg-flow{to{stroke-dashoffset:-32}}
+.cg-hit{cursor:pointer;outline:none}
+.cg-hit .cg-hitpath{fill:none;stroke:transparent;stroke-width:26}
+.cg-hit:hover .cg-edge-line,.cg-hit:focus-visible .cg-edge-line{stroke-width:4;opacity:1}
+.cg-node{cursor:pointer;outline:none}
+.cg-disc{fill:#FFFCF6;stroke:#0E7C6B;stroke-width:1.8;transition:transform .25s,fill .25s}
+.cg-node{transform-box:fill-box}
+.cg-node.ctl .cg-disc{stroke:#B07A12;fill:#FBF0D6}
+.cg-node.sel .cg-disc{fill:#0E7C6B;stroke:#0A6657}
+.cg-node.ctl.sel .cg-disc{fill:#B07A12}
+.cg-node.dim{opacity:.55}
+.cg-node:hover .cg-disc{stroke-width:3}
+.cg-node:focus-visible .cg-ring,.cg-hit:focus-visible .cg-ring{opacity:1}
+.cg-ring{fill:none;stroke:#1B2A41;stroke-width:2.5;stroke-dasharray:4 3;opacity:0}
+.cg-halo{fill:#0E7C6B;opacity:.12;animation:cg-pulse 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes cg-pulse{50%{transform:scale(1.18);opacity:.04}}
+.cg-label{font:700 12px system-ui,sans-serif;fill:#1B2A41;text-anchor:middle;pointer-events:none}
+.cg-sub{font:600 10px system-ui,sans-serif;fill:#5B6B85;text-anchor:middle;pointer-events:none}
+.cg-soon .cg-disc{fill:none;stroke:#B8B2A0;stroke-dasharray:3 4}
+.cg-zone{font:800 10px system-ui,sans-serif;letter-spacing:.14em;fill:#7A5410;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){.cg-edge-line.on,.cg-halo{animation:none}.cg-edge-line,.cg-disc{transition:none}}

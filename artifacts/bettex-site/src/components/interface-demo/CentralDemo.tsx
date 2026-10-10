@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import { useState } from 'react';
 import { useFmt, card } from '../alpha-trading/format';
+import { CentralGraph } from './CentralGraph';
 import { CentralAgents } from './CentralAgents';
 import { CentralBettex } from './CentralBettex';
 import { CentralCapital, CentralForecast } from './CentralCapital';
@@ -12,10 +13,15 @@ import { SPEC_NOTE } from './central-copy';
 export function CentralDemo({ onAction }: { onAction: () => void }) {
   const { x } = useFmt();
   const [jid, setJid] = useState<string | null>(null);
+  const [view, setView] = useState<'graph' | 'panels'>('graph');
   return <div className="grid min-w-0 gap-4" data-testid="alpha-trading">
     <div><h1 className="display text-2xl font-extrabold">{x('Central da IA', 'AI Center', 'Central de IA')}</h1>
       <p className="mt-1 text-sm text-[#5B6B85]">{x('Do sinal à decisão: pedidos, execução e acompanhamento das posições.', 'From signal to decision: requests, execution and position monitoring.', 'De la señal a la decisión: pedidos, ejecución y seguimiento de posiciones.')}</p>
       <p className="mt-2 rounded-xl border border-[#C9A227]/60 bg-[#FBF0D6] p-2 text-xs font-bold text-[#7A5410]" data-testid="central-demo-note">{SPEC_NOTE(x)}</p></div>
+    <div className="flex gap-2" role="group" aria-label={x('Visualização', 'View', 'Vista')}>
+      {(['graph', 'panels'] as const).map(v => <button key={v} type="button" aria-pressed={view === v} data-testid={`button-view-${v}`} onClick={() => setView(v)} className={`min-h-11 rounded-full px-4 text-sm font-bold ${view === v ? 'bg-[#0E7C6B] text-white' : 'border border-[#E4DCCB]'}`}>{v === 'graph' ? x('Grafo', 'Graph', 'Grafo') : x('Painéis', 'Panels', 'Paneles')}</button>)}</div>
+    {view === 'graph' && <CentralGraph onAction={onAction} />}
+    {view === 'panels' && <>
     <section className={card} data-testid="section-bettex-orchestration" aria-labelledby="h-bettex"><h2 id="h-bettex" className="sr-only">BETTEX</h2>
       <div className="grid gap-3">
         <CentralBettex onAction={onAction} />
@@ -43,5 +49,6 @@ export function CentralDemo({ onAction }: { onAction: () => void }) {
       <div className="mt-2"><CentralAgents scope="controls" onAction={onAction} /></div></details>
     <section className={card} data-testid="section-markets"><h2 className="display text-lg font-extrabold">{x('Mercados', 'Markets', 'Mercados')}</h2>
       <div className="mt-3"><MockCentralPanel embedded onAction={onAction} /></div></section>
+    </>}
   </div>;
 }
