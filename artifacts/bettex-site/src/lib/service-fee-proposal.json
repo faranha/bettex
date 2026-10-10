@@ -4,6 +4,6 @@
   "currency": "USD",
   "paymentAsset": "USDC",
   "fees": [
-    { "operation": "Possível contribuição por serviços", "amountUsd": null, "basis": "Em avaliação, sem valor definido", "scope": "Alternativa para sustentar a operação; adoção não confirmada" }
+    { "operation": "Possível contribuição por serviços", "amountUsd": null, "basis": "Em avaliação, sem valor definido", "scope": "No ALFA, apenas taxas de rede. Contribuição por serviços: decisão posterior com a comunidade." }
   ]
 }

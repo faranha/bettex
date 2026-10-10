@@ -1,5 +1,9 @@
 # BETTEX
 
+## Institutional positioning — current instruction
+
+BETTEX starts as a decentralized project. Establishing an entity and institutional formalization are not immediate priorities, are not planned for the near term and have no set date. This supersedes older descriptions presenting a private company as the immediate project structure. Operations remain limited to legally permitted markets with required authorizations. If an activity requires an entity, license or authorization, it stays unavailable until those requirements are met. This is a content-positioning change, not authorization to change custody, governance powers or execute real operations.
+
 ## Application development — current direction
 
 - The Treasury and Governance agent is the first control capacity to be structured before expanding the agents that operate resources.

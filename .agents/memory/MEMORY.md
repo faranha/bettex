@@ -13,8 +13,8 @@
 - [Content source precedence](content-source-precedence.md) — approved product rules take precedence over stale whitepaper economics in the Git baseline.
 - [Revisable hero artwork](revisable-hero-artwork.md) — replace the whole diagram layer when changing coverage; partial overlays can look disconnected.
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
-- [Regras da tesouraria](treasury-rule-evolution.md) — humanos aprovam políticas; mandatos limitados preservam liberdade operacional sem aprovação de cada operação.
-- [Fundação BETTEX](bettex-foundation.md) — entidade a constituir, controladora dos direitos do token e líder dos investimentos, conforme definição do criador.
+- [Regras da tesouraria](treasury-rule-evolution.md) — comunidade decide políticas na visão full DEX; execução por mandatos limitados, sem votação de cada operação.
+- [Visão full DEX](bettex-foundation.md) — sem fundação; comunidade governa, tesouraria sustenta operações e IA substitui gradualmente funções dos fundadores.
 - [Identidade e posicionamento](bettex-economic-identity.md) — produto de tecnologia, não fundo, em todo o projeto; usuário, não investidor; comunidade COM IA é meio do funil.
 - [Engajamento com mercados no app](homepage-market-engagement.md) — painel operacional de BTC, SOL, ETH e agentes pertence ao app, não à homepage.
 - [Telegram flutuante](community-floating-button.md) — convite no canto inferior direito de todas as páginas, desktop e mobile, com opção de fechar.

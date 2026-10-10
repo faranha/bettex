@@ -50,14 +50,14 @@ import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure
 
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação em USDC, participação automática e controles.' },
-  { id: 'documentacao-entidade', title: 'Entidade e negócios', subtitle: 'Empresa privada, missão, público e fundador administrador.' },
+  { id: 'documentacao-entidade', title: 'Entidade e negócios', subtitle: 'Origem descentralizada, entidade em etapa posterior e operação limitada aos mercados permitidos.' },
   { id: 'documentacao-adequacao-legal', title: 'Adequação legal e jurídica', subtitle: 'Investigação técnico-legal, disponibilidade territorial e condições para liberar cada agente.' },
   { id: 'documentacao-rede', title: 'Arbitrum e ativos', subtitle: 'Arbitrum One, carteira do titular, USDC e entrada por on-ramp externo.' },
   { id: 'documentacao-acesso', title: 'Acesso ao aplicativo', subtitle: 'Carteira gerada com a conta, acesso e autorização de ações financeiras.' },
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Mapa orquestrado, catálogo de conectores, consultas verificadas e demonstrações por plataforma.' },
   { id: 'documentacao-agentes', title: 'Agentes de IA', subtitle: 'Orquestradora, tesouraria, quatro mercados, recompra e queima, governança e exemplos de decisão.' },
   { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Mint inicial de 10%, comunidade 55%, fundador/equipe 20%, investidores 15% e vesting de 24 meses.' },
-  { id: 'documentacao-servicos', title: 'Sustentabilidade operacional', subtitle: 'Financiamento próprio e alternativas em avaliação, sem cobrança definida.' },
+  { id: 'documentacao-servicos', title: 'Sustentabilidade operacional', subtitle: 'No ALFA, apenas taxas de rede. Contribuição por serviços: decisão posterior com a comunidade.' },
   { id: 'documentacao-staking', title: 'Staking e distribuição de resultados', subtitle: 'Participação automática, quantidade e tempo, tributos, rateio, liquidação e encerramento.' },
   { id: 'documentacao-controles', title: 'Controles de risco', subtitle: 'Limites globais e por mercado, autorizações e pausas de segurança.' },
   { id: 'documentacao-implantacao', title: 'Requisitos operacionais e de segurança', subtitle: 'Controles técnicos, validações e salvaguardas para operar o modelo.' },
@@ -100,7 +100,7 @@ function RawChapter({ index }: { index: number }) {
       </>;
     case 'documentacao-como-funciona':
       return <>
-        <div className="whitepaper__lead"><span>PRODUTO DE TECNOLOGIA · ECONOMIA PROGRAMÁVEL</span><p>{thesis.purpose}</p><p>A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA para analisar e executar investimentos em previsões, ações e cripto, esportes e iGaming. O capital das operações fica numa tesouraria separada. A estrutura jurídica proposta é uma única empresa privada, ainda a constituir. O token BETTEX dá acesso ao programa de resultados, sem ações ou propriedade proporcional da tesouraria.</p></div>
+        <div className="whitepaper__lead"><span>PRODUTO DE TECNOLOGIA · ECONOMIA PROGRAMÁVEL</span><p>{thesis.purpose}</p><p>A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA para analisar e executar investimentos em previsões, ações e cripto, esportes e iGaming. O capital das operações fica numa tesouraria separada. O token BETTEX dá acesso ao programa de resultados, sem ações ou propriedade proporcional da tesouraria.</p><p>A BETTEX nasce como projeto descentralizado. A constituição de uma entidade e sua formalização institucional não são prioridades imediatas, não estão previstas para o curto prazo e não têm data definida. A operação será limitada aos mercados onde a atividade for permitida, com as autorizações exigidas quando aplicáveis.</p></div>
         <div className="whitepaper__prose"><p><a href="#documentacao-publico">Ler a tese e a oportunidade</a></p></div>
         <div className="whitepaper__status-grid">
           <div><span>01 / ECONOMIA DO TOKEN</span><strong>BETTEX e participação</strong><p>Um bilhão de tokens: 10% mint inicial, 55% comunidade, 20% fundador/equipe e 15% investidores. Os 90% posteriores seguem vesting de 24 meses. <a href="#documentacao-staking">Staking automático</a> por quantidade e tempo elegíveis.</p></div>

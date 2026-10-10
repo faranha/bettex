@@ -4,7 +4,7 @@ Adecuación legal y jurídica
 
 Cada lanzamiento de BETTEX debe estar adecuado al entorno jurídico de los mercados donde se ofrecerá la solución. La habilitación de cada agente, funcionalidad y categoría depende de una investigación técnico-legal específica y del cumplimiento de los requisitos aplicables. Una fecha en la hoja de ruta no sustituye esta condición.
 
-El análisis identifica el país de la oferta, el público atendido, la naturaleza de la actividad, la entidad responsable y los proveedores utilizados. El domicilio de la empresa, el lugar de la oferta y el de ejecución se evalúan por separado; un permiso en un país no autoriza la actuación en otro.
+El proyecto nace descentralizado y constituir una entidad no es una prioridad inmediata, sin previsión a corto plazo. El análisis identifica el país de oferta, el público, la actividad, sus responsables y los proveedores. Oferta y ejecución se evalúan por separado; un permiso en un país no autoriza operar en otro. Si una actividad exige entidad, licencia o autorización, no se habilitará antes de cumplir esas condiciones.
 
 La investigación verifica fuentes oficiales, vigencia y alcance de las normas, licencias y autorizaciones necesarias, condiciones de los proveedores, publicidad, protección del usuario, identificación y prevención del lavado de dinero, protección de datos y obligaciones tributarias, según corresponda. Los responsables jurídicos y técnicos registran las evidencias, la fecha del análisis, las condiciones y los controles exigidos.
 
@@ -22,7 +22,7 @@ Financiación: origen y destino de los recursos
 
 Los aportes de inversores ángeles destinan el 100% de los recursos a producto, tecnología y marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone un reparto de financiación: los términos identifican origen, destino y derechos.
 
-El mint inicial del 10% financia el proyecto, mediante ejecución propia o un launchpad asociado. Las ventas de la asignación del 55% de la comunidad ya liberada destinan el 100% del precio en USDC a la tesorería. Una contribución por servicios es solo una alternativa para sostener la operación, sin cobro definido, importe fijado o adopción confirmada. La reventa pertenece al vendedor. Captación, ingresos y beneficio distribuible no son equivalentes.
+El mint inicial del 10% financia el proyecto, mediante ejecución propia o un launchpad asociado. Las ventas del 55% de la comunidad ya liberado destinan el 100% del precio en USDC a la tesorería. Durante el ALFA, solo se cobrarán tasas de red. La decisión de cobrar o no una contribución por servicios se tomará posteriormente con la comunidad, como posible alternativa para sostener las operaciones, sin importe fijado ni adopción confirmada. Los ingresos de reventa pertenecen al vendedor. Captación, ingresos y beneficio distribuible no son equivalentes.
 
 Burn Lottery y Double 2X
 
@@ -40,9 +40,9 @@ Empresa y administración
 
 BETTEX es un producto tecnológico que reúne una aplicación, un token y agentes de IA. El usuario participa en los resultados del proyecto conforme a las reglas del token, sin ser propietario de la empresa ni de la tesorería.
 
-Una única empresa comercial privada de capital cerrado a constituir, administrada por el fundador en modelo full stack AI, sin empleados. Servicios externos especializados son contratados por necesidad, no posiciones internas.
+BETTEX nace como proyecto descentralizado. La constitución de una entidad y su formalización institucional no son prioridades inmediatas, no están previstas a corto plazo y no tienen fecha definida. La operación se limitará a los mercados donde la actividad esté permitida, con las autorizaciones exigidas cuando correspondan.
 
-La empresa reúne el token, la aplicación, la tesorería, las inversiones y las obligaciones del programa. El nombre final, la forma societaria y la jurisdicción forman parte de la formalización. Los titulares poseen tokens y derechos del programa, no acciones, voto societario o una fracción rescatable de la tesorería.
+El fundador coordina el desarrollo con un modelo full stack AI, sin empleados. Los servicios externos especializados podrán contratarse según las necesidades. La descentralización no elimina responsabilidades, controles ni requisitos legales; si una actividad exige entidad, licencia o autorización, no se habilitará antes de cumplir esas condiciones.
 
 La misión amplía alternativas de participación económica durante la transición de la IA y la robótica. Transparencia, comprensión, responsabilidad y rendición de cuentas orientan la operación, sin ingresos ni protección de capital garantizados.
 
