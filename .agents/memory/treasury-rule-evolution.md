@@ -3,11 +3,11 @@ name: Evolução das regras da tesouraria BETTEX
 description: A tesouraria terá um agente próprio de IA, coordenado com os agentes de investimento.
 ---
 
-A própria tesouraria tem regras que podem evoluir, com sugestões de um agente de IA em conjunto com os agentes de investimento. Na visão full DEX atual, a comunidade substitui a Fundação como autoridade de governança; mecanismos de votação e competências ainda precisam ser definidos.
+A própria tesouraria tem regras que podem evoluir, com sugestões de um agente de IA em conjunto com os agentes de investimento. O criador retirou a entidade formal, não a administração: os fundadores começam administrando e mantêm domínio dos contratos, com evolução para um serviço gerido por IA. Várias decisões serão da comunidade; competências e mecanismos ainda precisam ser definidos.
 
-**Why:** O criador pediu retirar a Fundação e tratar decisões como da comunidade. Isso substitui a aprovação pela liderança da Fundação, não autoriza alteração unilateral pela IA.
+**Why:** O criador corrigiu a equivalência entre descentralização e eliminação de poderes: “vamos ter dominio sobre os contratos” e “comecar administrando e depois ter uma iA pra tudo”.
 
-**How to apply:** Planejar propostas da IA, decisão comunitária sobre políticas e execução por mandatos limitados. Preservar a fila de sugestões, aprovação antes da execução e vigência somente após a execução. Não confundir aprovação de alterações de regras com votação de cada investimento. Não apresentar governança comunitária on-chain como já implementada.
+**How to apply:** Preservar controles e mapear funções humanas para evolução por IA. Distinguir decisões comunitárias, administração e execução por mandato; não tratar permissões administrativas como defeitos a eliminar ou presumir voto on-chain para cada política. A retirada da Fundação não autoriza alteração unilateral pela IA nem muda os poderes existentes neste levantamento.
 
 O criador pediu “regras claras multisig pra movimentacoes seguindo liberdade operacional com boas praticas de mercado” na área da empresa.
 

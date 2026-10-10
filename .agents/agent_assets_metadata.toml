@@ -546,3 +546,59 @@ mtime_ms = 1791582115663
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/4e39611b-0873-4c33-b8f5-9bbccbf7a337/970dda1b-d12a-4682-9663-ec26c9bca04a"
 storage_version_token = "1791582125728785"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "DNsEL7rDnd1m8wu4GH-Sx"
+uri = "file://generated-artifacts/decentralization-audit/mapa-centralizacao.html"
+type = "html"
+title = "Mapa do sistema: instituição, administração e gestão por IA"
+description = "Relatório pesquisável com 72 pontos revisados, situação atual, classificação e referências de arquivo e linha. Mantém domínio dos contratos separado de entidade formal."
+logical_id = "052bdae1-3108-484f-ab12-80015799cfa7"
+content_hash = "sha256:36b5b665bb130792c2c20df954ae5f02ae51bd4b71832e2eb08bf607b0055688"
+size = 180642
+mtime_ms = 1791668560331
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/052bdae1-3108-484f-ab12-80015799cfa7/97eebb0d-6d80-4e82-95ac-b4509ad8417d"
+storage_version_token = "1791668576786652"
+content_type = "text/html"
+
+[[outputs]]
+id = "d8H2CUtob_JPcahO6N-Ek"
+uri = "file://generated-artifacts/decentralization-audit/pontos-revisados.csv"
+type = "table"
+title = "Tabela dos 72 pontos revisados"
+description = "Inventário por elemento para a próxima etapa de planejamento, com evidências e questões ainda não aprovadas."
+logical_id = "d051e70f-32c3-4570-aa01-a0165963cad4"
+content_hash = "sha256:02bcaf81abb953250ef5bab1f6851a56e208c4dfbe1f771a649adfda1674e627"
+size = 53717
+mtime_ms = 1791668560330
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/d051e70f-32c3-4570-aa01-a0165963cad4/9aadce95-6c96-4270-9769-01195aa99fce"
+storage_version_token = "1791668577510142"
+content_type = "text/csv"
+
+[[outputs]]
+id = "4fM_Kgx2V-mYF7_EwJtK6"
+uri = "file://generated-artifacts/decentralization-audit/ocorrencias.csv"
+type = "table"
+title = "Ocorrências para rastreamento completo"
+description = "35.814 candidatos por linha ou nome de arquivo, separados entre código, traduções, downloads, testes, referências e histórico. Não são problemas confirmados."
+logical_id = "30bbb652-8438-4b4a-a37d-4238a48e16e2"
+content_hash = "sha256:f3f81dde99d533f36d6be2828fab4945a42b0800c37b72963f276454b911c356"
+size = 3491005
+mtime_ms = 1791668560299
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/30bbb652-8438-4b4a-a37d-4238a48e16e2/54d742c1-7f3d-4b43-be83-19dd4efbf568"
+storage_version_token = "1791668578184982"
+content_type = "text/csv"
+
+[[outputs]]
+id = "TDkEG6Skj1UABeSlfs3h8"
+uri = "file://generated-artifacts/decentralization-audit/cobertura.csv"
+type = "table"
+title = "Cobertura e limites do levantamento"
+description = "Manifesto de 4.529 arquivos, com resultado de leitura, extração ou exclusão. Imagens estão inventariadas, sem revisão visual exaustiva."
+logical_id = "cdd505b9-4a28-4ae5-9c1a-366c6e1451d1"
+content_hash = "sha256:a5d252d5b1a89649c93341330e9dfd37cfba997c656725fc6f1a2e31e40bda70"
+size = 483488
+mtime_ms = 1791668560323
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/cdd505b9-4a28-4ae5-9c1a-366c6e1451d1/1529ba29-9fde-485c-ac7d-24443ec9c7c2"
+storage_version_token = "1791668578770821"
+content_type = "text/csv"
