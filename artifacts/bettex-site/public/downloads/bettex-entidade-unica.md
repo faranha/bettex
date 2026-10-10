@@ -22,7 +22,7 @@ Financiamento: origem e destino dos recursos
 
 Aportes-anjo destinam 100% dos recursos a produto, tecnologia e marketing, sem salários ou retiradas do fundador. A alocação de 15% dos tokens não impõe split de financiamento: os termos identificam origem, destino e direitos.
 
-Preço da venda pública em USDC vai integralmente à tesouraria; tarifa de serviço separada vai ao caixa operacional. Revenda pertence ao vendedor e não gera nova captação ou lucro da tesouraria. Capital, receita e resultado não são equivalentes.
+O mint inicial de 10% financia o projeto, por execução própria ou launchpad parceiro. As vendas dos 55% da comunidade já liberados destinam 100% do preço em USDC à tesouraria; tarifas separadas vão ao caixa operacional. Revenda pertence ao vendedor. Captação, receita e lucro distribuível não são equivalentes.
 
 Burn Lottery e Double 2X
 
@@ -48,9 +48,13 @@ A missão amplia alternativas de participação econômica durante a transição
 
 Token, captação e queima
 
-Emissão de 1 bilhão de BETTEX: 65% venda pública, 20% Fundador e equipe, 15% investidores. Vesting mensal por 36 meses desde a abertura da venda pública, com grupos inteiros 13:4:3. Liberação não comprova venda ou circulação.
+Teto de 1 bilhão de BETTEX em quatro destinações: 10% mint público inicial, 55% comunidade, 20% fundador/equipe e 15% investidores. O mint é aberto a preço fixo e financia o projeto. Preço, janela, plataforma e destino da parcela não mintada ainda serão definidos.
 
-100% do preço da venda pública em USDC vai à tesouraria. Taxas de serviço separadas vão ao caixa operacional. Mercados externos não herdam automaticamente as condições do swap oficial.
+Mint público previsto para 10 de dezembro de 2026. Sistema/ALFA e início do vesting previstos para março de 2027. Cada lançamento depende de adequação legal por atividade e território.
+
+Vesting de 900 milhões de BETTEX por 24 meses a partir de março de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O teto inicial de 100 milhões fica separado; liberação não comprova venda ou circulação.
+
+100% do preço em USDC dos tokens da comunidade já liberados vai à tesouraria. Taxas de serviço separadas vão ao caixa operacional. A captação do mint inicial financia o projeto e exige prestação de contas. Mercados externos não herdam automaticamente as condições do swap oficial.
 
 Resultado elegível, após tributos e controles, recebe 50% tesouraria, 25% staking e 25% carteira exclusiva de recompra. Sem pesos, reservas ou liquidez suficientes, 100% fica na tesouraria, sem split futuro. Compra usa autorização administrativa; todo BETTEX adquirido é queimado permanentemente. Carteira exclusiva não é o mecanismo de burn.
 

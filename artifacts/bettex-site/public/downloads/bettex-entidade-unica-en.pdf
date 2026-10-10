@@ -70,16 +70,17 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3093 >>
+<< /Length 3076 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (Angel contributions allocate 100% of funds to product, technology and marketing, with no) Tj T*
 (founder salaries or withdrawals. The 15% token allocation does not impose a funding split:) Tj T*
 (agreements identify sources, uses and rights.) Tj T*
 () Tj T*
-(The USDC public sale price goes entirely to the treasury; a separate service fee goes to the) Tj T*
-(operating account. Resale proceeds belong to the seller and create no new funding or treasury) Tj T*
-(profit. Capital, revenue and profit are not equivalent.) Tj T*
+(The initial 10% mint funds the project, operated directly or by a partner launchpad. Sales of) Tj T*
+(the already released community 55% send 100% of the USDC price to the treasury; separate fees) Tj T*
+(go to the operating account. Resale proceeds belong to the seller. Fundraising, revenue and) Tj T*
+(distributable profit are not equivalent.) Tj T*
 () Tj T*
 (Burn Lottery and Double 2X) Tj T*
 () Tj T*
@@ -120,7 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (of the treasury.) Tj T*
 () Tj T*
 (The mission expands alternatives for economic participation during the transition of AI and) Tj T*
-(robotics. Transparency, understanding, responsibility, and accountability guide the operation,) Tj T*
 ET
 endstream
 endobj
@@ -128,20 +128,28 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3195 >>
+<< /Length 3421 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(robotics. Transparency, understanding, responsibility, and accountability guide the operation,) Tj T*
 (without guaranteed income or capital protection.) Tj T*
 () Tj T*
 (Token, funding, and burn) Tj T*
 () Tj T*
-(1 billion BETTEX issuance: 65% public sale, 20% Founder and team, 15% investors. Monthly) Tj T*
-(vesting for 36 months since public sale opening, with whole groups 13:4:3. Release does not) Tj T*
-(prove sale or circulation.) Tj T*
+(Cap of 1 billion BETTEX in four allocations: 10% initial public mint, 55% community, 20%) Tj T*
+(founder/team and 15% investors. The mint is open at a fixed price and funds the project. The) Tj T*
+(price, window, platform and destination of the unminted portion remain to be defined.) Tj T*
 () Tj T*
-(100% of the public sale price in USDC goes to the treasury. Separate service fees go to the) Tj T*
-(operating cash. External markets do not automatically inherit the conditions of the official) Tj T*
-(swap.) Tj T*
+(Public mint planned for December 10, 2026. System/ALPHA and vesting start planned for March) Tj T*
+(2027. Each launch requires legal compliance by activity and territory.) Tj T*
+() Tj T*
+(Vesting of 900 million BETTEX over 24 months from March 2027: community 550 million,) Tj T*
+(founder/team 200 million and investors 150 million, in whole-token 11:4:3 groups. The initial) Tj T*
+(cap of 100 million remains separate; release does not prove sales or circulation.) Tj T*
+() Tj T*
+(100% of the USDC price of already released community tokens goes to the treasury. Separate) Tj T*
+(service fees go to the operating account. Initial mint fundraising funds the project and) Tj T*
+(requires reporting. External markets do not automatically inherit official swap terms.) Tj T*
 () Tj T*
 (Eligible result, after taxes and controls, receives 50% to treasury, 25% to staking, and 25% to) Tj T*
 (the exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains) Tj T*
@@ -171,6 +179,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Taxes attributable to the entity are calculated, deducted, and paid according to the applicable) Tj T*
 (obligation before eligible profit and split. Applicable withholdings are resolved before the) Tj T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 1663 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (net credit. Provision is not payment; accounting for and paying the same obligation does not) Tj T*
 (allow double deduction. There is no universal personal exemption.) Tj T*
 () Tj T*
@@ -179,16 +197,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (effects, without automatic debit from the personal wallet.) Tj T*
 () Tj T*
 (Governance and integrations) Tj T*
-ET
-endstream
-endobj
-10 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
-endobj
-11 0 obj
-<< /Length 1168 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Policies evolve through approved versions. Administration defines policy; 2-of-3 multisig) Tj T*
 (controls custody; executors act within mandates. Sensitive changes wait at least 24h; already) Tj T*
@@ -219,11 +227,11 @@ xref
 0000000357 00000 n 
 0000003669 00000 n 
 0000003795 00000 n 
-0000006940 00000 n 
-0000007066 00000 n 
-0000010313 00000 n 
-0000010441 00000 n 
+0000006923 00000 n 
+0000007049 00000 n 
+0000010522 00000 n 
+0000010650 00000 n 
 trailer << /Size 12 /Root 1 0 R >>
 startxref
-11662
+12366
 %%EOF

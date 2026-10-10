@@ -22,7 +22,7 @@ Financiación: origen y destino de los recursos
 
 Los aportes de inversores ángeles destinan el 100% de los recursos a producto, tecnología y marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone un reparto de financiación: los términos identifican origen, destino y derechos.
 
-El precio de la venta pública en USDC va íntegramente a la tesorería; la tarifa de servicio separada va a la cuenta operativa. La reventa pertenece al vendedor y no genera nueva captación ni beneficio de la tesorería. Capital, ingresos y resultados no son equivalentes.
+El mint inicial del 10% financia el proyecto, por ejecución propia o launchpad asociado. Las ventas del 55% de la comunidad ya liberado destinan el 100% del precio en USDC a la tesorería; las tarifas separadas van a la cuenta operativa. La reventa pertenece al vendedor. Captación, ingresos y beneficio distribuible no son equivalentes.
 
 Burn Lottery y Double 2X
 
@@ -48,9 +48,13 @@ La misión amplía alternativas de participación económica durante la transici
 
 Token, captación y quema
 
-Emisión de 1 billón de BETTEX: 65% venta pública, 20% Fundador y equipo, 15% inversores. Vesting mensual por 36 meses desde la apertura de la venta pública, con grupos enteros 13:4:3. La liberación no comprueba venta o circulación.
+Límite de mil millones de BETTEX en cuatro asignaciones: 10% mint público inicial, 55% comunidad, 20% fundador/equipo y 15% inversores. El mint es abierto a precio fijo y financia el proyecto. El precio, la ventana, la plataforma y el destino de la parte no emitida aún se definirán.
 
-El 100% del precio de la venta pública en USDC va a la tesorería. Las tarifas de servicio separadas van a la caja operativa. Los mercados externos no heredan automáticamente las condiciones del swap oficial.
+Mint público previsto para el 10 de diciembre de 2026. Sistema/ALFA e inicio del vesting previstos para marzo de 2027. Cada lanzamiento depende de adecuación legal por actividad y territorio.
+
+Vesting de 900 millones de BETTEX durante 24 meses desde marzo de 2027: comunidad 550 millones, fundador/equipo 200 millones e inversores 150 millones, en grupos enteros 11:4:3. El límite inicial de 100 millones queda separado; la liberación no acredita venta ni circulación.
+
+El 100% del precio en USDC de los tokens de la comunidad ya liberados va a la tesorería. Las tarifas de servicio separadas van a la cuenta operativa. La captación del mint inicial financia el proyecto y exige rendición de cuentas. Los mercados externos no heredan automáticamente las condiciones del swap oficial.
 
 El resultado elegible, tras tributos y controles, recibe 50% tesorería, 25% staking y 25% billetera exclusiva de recompra. Sin pesos, reservas o liquidez suficientes, el 100% queda en la tesorería, sin split futuro. La compra usa autorización administrativa; todo BETTEX adquirido es quemado permanentemente. La billetera exclusiva no es el mecanismo de quema.
 

@@ -29,7 +29,7 @@ assert.match(pitch, /g\.launch\.angelFundingUse/);
 assert.match(chapters, /growthStrategy\.launch\.angelFundingUse/);
 assert.match(funding, /id="documentacao-financiamento-fundacao"/);
 assert.match(pitch, /hash="documentacao-financiamento-fundacao"/);
-assert.doesNotMatch(JSON.stringify(materials), /100 mil|50 mil|livre aloca|5\.000 usuários|1\.000 MAU/i);
+assert.doesNotMatch(JSON.stringify(materials), /(?:100|50) mil\b|livre aloca|5\.000 usuários|1\.000 MAU/i);
 assert.match(JSON.stringify(materials), /Aportes-anjo destinam 100%/);
 
 assert.match(chapters, /<DocumentationGames \/>/);
@@ -73,7 +73,7 @@ assert.deepEqual(illustrativePayments([a, { ...a }], 250), [125, 125], 'Both eli
 assert.deepEqual(illustrativePayments([a, { ...a, exited: true }], 250), [250, 0], 'Partial exit cancels all current weight');
 assert.deepEqual(illustrativePayments([newcomer], 250), [0], 'No opening-eligible participant: no payment');
 assert.deepEqual(illustrativePayments([{ ...a, laterTopUp: 500 }, { ...a }], 250), [125, 125], 'Mid-round top-up does not alter opening weight');
-assert.match(pitch, /O ALFA apresenta a interface com dados ilustrativos/);
+assert.match(pitch, /O demo apresenta a interface com dados ilustrativos/);
 assert.doesNotMatch(pitch, /O ALFA está previsto.*primeiros agentes/);
 
 const text = materials.sections.flatMap(section => section.paragraphs).join('\n');

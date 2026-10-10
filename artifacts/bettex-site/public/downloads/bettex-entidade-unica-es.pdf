@@ -70,7 +70,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 2924 >>
+<< /Length 2990 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (agentes autorizados.) Tj T*
@@ -81,9 +81,10 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone) Tj T*
 (un reparto de financiación: los términos identifican origen, destino y derechos.) Tj T*
 () Tj T*
-(El precio de la venta pública en USDC va íntegramente a la tesorería; la tarifa de servicio) Tj T*
-(separada va a la cuenta operativa. La reventa pertenece al vendedor y no genera nueva captación) Tj T*
-(ni beneficio de la tesorería. Capital, ingresos y resultados no son equivalentes.) Tj T*
+(El mint inicial del 10% financia el proyecto, por ejecución propia o launchpad asociado. Las) Tj T*
+(ventas del 55% de la comunidad ya liberado destinan el 100% del precio en USDC a la tesorería;) Tj T*
+(las tarifas separadas van a la cuenta operativa. La reventa pertenece al vendedor. Captación,) Tj T*
+(ingresos y beneficio distribuible no son equivalentes.) Tj T*
 () Tj T*
 (Burn Lottery y Double 2X) Tj T*
 () Tj T*
@@ -120,7 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Una única empresa comercial privada de capital cerrado a constituir, administrada por el) Tj T*
 (fundador en modelo full stack AI, sin empleados. Servicios externos especializados son) Tj T*
 (contratados por necesidad, no posiciones internas.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -128,9 +128,10 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3373 >>
+<< /Length 3247 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
 (La empresa reúne el token, la aplicación, la tesorería, las inversiones y las obligaciones del) Tj T*
 (programa. El nombre final, la forma societaria y la jurisdicción forman parte de la) Tj T*
 (formalización. Los titulares poseen tokens y derechos del programa, no acciones, voto) Tj T*
@@ -142,12 +143,22 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Token, captación y quema) Tj T*
 () Tj T*
-(Emisión de 1 billón de BETTEX: 65% venta pública, 20% Fundador y equipo, 15% inversores.) Tj T*
-(Vesting mensual por 36 meses desde la apertura de la venta pública, con grupos enteros 13:4:3.) Tj T*
-(La liberación no comprueba venta o circulación.) Tj T*
+(Límite de mil millones de BETTEX en cuatro asignaciones: 10% mint público inicial, 55%) Tj T*
+(comunidad, 20% fundador/equipo y 15% inversores. El mint es abierto a precio fijo y financia el) Tj T*
+(proyecto. El precio, la ventana, la plataforma y el destino de la parte no emitida aún se) Tj T*
+(definirán.) Tj T*
 () Tj T*
-(El 100% del precio de la venta pública en USDC va a la tesorería. Las tarifas de servicio) Tj T*
-(separadas van a la caja operativa. Los mercados externos no heredan automáticamente las) Tj T*
+(Mint público previsto para el 10 de diciembre de 2026. Sistema/ALFA e inicio del vesting) Tj T*
+(previstos para marzo de 2027. Cada lanzamiento depende de adecuación legal por actividad y) Tj T*
+(territorio.) Tj T*
+() Tj T*
+(Vesting de 900 millones de BETTEX durante 24 meses desde marzo de 2027: comunidad 550 millones,) Tj T*
+(fundador/equipo 200 millones e inversores 150 millones, en grupos enteros 11:4:3. El límite) Tj T*
+(inicial de 100 millones queda separado; la liberación no acredita venta ni circulación.) Tj T*
+() Tj T*
+(El 100% del precio en USDC de los tokens de la comunidad ya liberados va a la tesorería. Las) Tj T*
+(tarifas de servicio separadas van a la cuenta operativa. La captación del mint inicial financia) Tj T*
+(el proyecto y exige rendición de cuentas. Los mercados externos no heredan automáticamente las) Tj T*
 (condiciones del swap oficial.) Tj T*
 () Tj T*
 (El resultado elegible, tras tributos y controles, recibe 50% tesorería, 25% staking y 25%) Tj T*
@@ -168,6 +179,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (staking  x  peso individual  /  suma de pesos elegibles.) Tj T*
 () Tj T*
 (Ejemplo: A empieza la ronda con 1.000 BETTEX elegibles; B recibe 1.000 a las 12:00. Con) Tj T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 2545 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (beneficio elegible de 1.000 USDC y condiciones cumplidas, la porción de staking de 250 USDC) Tj T*
 (paga 250 a A y cero a B. En la ronda siguiente, ambos elegibles desde el inicio y sin salida) Tj T*
 (reciben 125 USDC cada uno sobre nuevo beneficio elegible de 1.000 USDC. No se recupera ningún) Tj T*
@@ -179,16 +200,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Los tributos imputables a la entidad son determinados, descontados y pagados según la) Tj T*
 (obligación aplicable antes de la ganancia elegible y split. Las retenciones aplicables se) Tj T*
-ET
-endstream
-endobj
-10 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
-endobj
-11 0 obj
-<< /Length 1702 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (resuelven antes del crédito líquido. La provisión no es pago; contabilizar y pagar la misma) Tj T*
 (obligación no permite doble deducción. No existe exención personal universal.) Tj T*
 () Tj T*
@@ -227,11 +238,11 @@ xref
 0000000357 00000 n 
 0000003937 00000 n 
 0000004063 00000 n 
-0000007039 00000 n 
-0000007165 00000 n 
-0000010590 00000 n 
-0000010718 00000 n 
+0000007105 00000 n 
+0000007231 00000 n 
+0000010530 00000 n 
+0000010658 00000 n 
 trailer << /Size 12 /Root 1 0 R >>
 startxref
-12473
+13256
 %%EOF

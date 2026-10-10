@@ -76,11 +76,11 @@ def docx(path, paragraphs, lang):
         z.writestr("word/document.xml", f'<w:document xmlns:w="{ns}/wordprocessingml/2006/main"><w:body>{body}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1020" w:right="1020" w:bottom="1134" w:left="1020"/></w:sectPr></w:body></w:document>')
 
 vesting = []
-for month in range(1, 37):
-    cumulative_groups = 50_000_000 * month // 36
-    groups = cumulative_groups - 50_000_000 * (month - 1) // 36
-    vesting.append([month, groups*13, groups*4, groups*3, groups*20, cumulative_groups*13, cumulative_groups*4, cumulative_groups*3, cumulative_groups*20])
-assert vesting[-1][5:] == [650_000_000, 200_000_000, 150_000_000, 1_000_000_000]
+for month in range(1, 25):
+    cumulative_groups = 50_000_000 * month // 24
+    groups = cumulative_groups - 50_000_000 * (month - 1) // 24
+    vesting.append([month, groups*11, groups*4, groups*3, groups*18, cumulative_groups*11, cumulative_groups*4, cumulative_groups*3, cumulative_groups*18])
+assert vesting[-1][5:] == [550_000_000, 200_000_000, 150_000_000, 900_000_000]
 
 for lang in ("pt", "en", "es"):
     def t(text):
@@ -110,7 +110,7 @@ for lang in ("pt", "en", "es"):
     fee_rows = [[c["Operação"],c["Tarifa"],c["Incidência"],c["Escopo"]]] + [[t(f["operation"]),f["amountUsd"],t(f["basis"]),t(f["scope"])] for f in fees]
     sheets = [(t(labels["fees"]),fee_rows),(t(labels["vesting"]),[[c[x] for x in labels["columns"][4:]]] + vesting),(t(labels["rules"]),[[p] for p in paragraphs])]
     xlsx(out / f"bettex-taxas-fundacao{suffix}.xlsx", sheets)
-    print(f"Exported {lang}: entity and rules PDF/DOCX/HTML/MD with Pitch reference, fees and 36-month vesting.")
+    print(f"Exported {lang}: entity and rules PDF/DOCX/HTML/MD with Pitch reference, fees and 24-month vesting; initial mint separate.")
 
 # Explicitly excluded research download, not an application source.
 for file in out.glob("bettex-publico-oportunidade*.md"):

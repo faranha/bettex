@@ -1,20 +1,21 @@
 import { useState, type PointerEvent } from 'react';
 import { Area, AreaChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { tokenomics } from '@/lib/tokenomics';
-import { vestingSchedule } from '@/lib/vesting';
+import { documentationTokenomics as tokenomics } from '@/lib/tokenomics';
+import { documentationVestingSchedule as vestingSchedule } from '@/lib/documentation-vesting';
 import { chartTooltipTrigger, type ChartTooltipTrigger } from '@/lib/chart-input';
 import { getFormatLocale, t, useLocale } from '@/lib/i18n';
 import './PitchTokenCharts.css';
 
 const groups = [
-  { key: 'publicSale', label: 'Público', amount: tokenomics.publicSaleAllocation, color: '#5F86FF' },
+  { key: 'mint', label: 'Mint público inicial', amount: tokenomics.initialMintAllocation, color: '#36E0D0' },
+  { key: 'community', label: 'Comunidade', amount: tokenomics.communityAllocation, color: '#5F86FF' },
   { key: 'team', label: 'Fundador e equipe', amount: tokenomics.teamAllocation, color: '#F2B632' },
-  { key: 'investors', label: 'Financiamento inicial', amount: tokenomics.investorAllocation, color: '#F4F1E8' },
+  { key: 'investors', label: 'Investidores', amount: tokenomics.investorAllocation, color: '#F4F1E8' },
 ] as const;
 
 const data = [
-  { month: 0, publicSale: 0, team: 0, investors: 0 },
-  ...vestingSchedule.map(r => ({ month: r.month, publicSale: r.publicSaleCumulative, team: r.teamCumulative, investors: r.investorsCumulative })),
+  { month: 0, mint: tokenomics.initialMintAllocation, community: 0, team: 0, investors: 0 },
+  ...vestingSchedule.map(r => ({ month: r.month, mint: tokenomics.initialMintAllocation, community: r.communityCumulative, team: r.teamCumulative, investors: r.investorsCumulative })),
 ];
 
 export function PitchTokenCharts() {
@@ -47,13 +48,13 @@ export function PitchTokenCharts() {
       </ul>
     </figure>
     <figure className="ptc__panel">
-      <figcaption><h3>{t('Liberação progressiva acumulada')}</h3><p>{t('Mês 0 a mês 36, em milhões de BETTEX')}</p></figcaption>
+      <figcaption><h3>{t('Liberação progressiva acumulada')}</h3><p>{t('Mês 0 a mês 24, em milhões de BETTEX')}</p></figcaption>
       <ul className="ptc__legend">{groups.map(g => <li key={g.key}><i style={{ background: g.color }} aria-hidden="true" />{t(g.label)}</li>)}</ul>
-      <div className="ptc__area" role="img" aria-label={t('Gráfico de áreas empilhadas da liberação acumulada em 36 meses')} onPointerDownCapture={onDown} onPointerMoveCapture={onMove}>
+      <div className="ptc__area" role="img" aria-label={t('Gráfico da alocação máxima com mint inicial separado e vesting de 24 meses')} onPointerDownCapture={onDown} onPointerMoveCapture={onMove}>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 10, right: 14, bottom: 22, left: 0 }}>
             <CartesianGrid stroke="rgba(197,210,241,.2)" strokeDasharray="3 3" vertical={false} />
-            <XAxis dataKey="month" type="number" domain={[0, 36]} ticks={[0, 6, 12, 18, 24, 30, 36]} tick={{ fill: '#c5d2f1', fontSize: 12 }} stroke="rgba(197,210,241,.4)" label={{ value: t('Meses'), position: 'insideBottom', offset: -14, fill: '#c5d2f1', fontSize: 12 }} />
+            <XAxis dataKey="month" type="number" domain={[0, 24]} ticks={[0, 6, 12, 18, 24]} tick={{ fill: '#c5d2f1', fontSize: 12 }} stroke="rgba(197,210,241,.4)" label={{ value: t('Meses'), position: 'insideBottom', offset: -14, fill: '#c5d2f1', fontSize: 12 }} />
             <YAxis type="number" domain={[0, tokenomics.maxSupply]} ticks={[0, 250e6, 500e6, 750e6, 1e9]} width={58} tickFormatter={v => `${(v / 1e6).toLocaleString(fl)}`} tick={{ fill: '#c5d2f1', fontSize: 12 }} stroke="rgba(197,210,241,.4)" />
             <Tooltip trigger={trigger} position={{ x: 0, y: 0 }} wrapperStyle={{ maxWidth: '100%', pointerEvents: 'none' }} contentStyle={tip}
               labelFormatter={l => Number(l) === 0 ? t('Antes da primeira liberação') : `${t('Mês')} ${l}`}
@@ -62,8 +63,8 @@ export function PitchTokenCharts() {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-      <p className="ptc__note">{t('O topo empilhado é o total liberado: zero antes da primeira liberação e 1 bilhão no mês 36.')}</p>
+      <p className="ptc__note">{t('Cenário de alocação máxima: 100 milhões do teto do mint inicial mais 900 milhões em vesting até o mês 24. Não representa emissão executada.')}</p>
     </figure>
-    <p className="ptc__disclosure">{t('Liberação não comprova venda, circulação ou saldo pessoal. A primeira liberação ocorre na abertura da venda pública e segue até o mês 36.')}</p>
+    <p className="ptc__disclosure">{t('Mint aberto a preço fixo antes do vesting. Liberação mensal a partir de março de 2027 por 24 meses; não comprova venda, circulação ou saldo pessoal.')}</p>
   </div>;
 }
