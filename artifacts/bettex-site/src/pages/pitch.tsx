@@ -145,21 +145,21 @@ export function PitchPage() {
     </Sec>
 
     <section id="tokenomics" aria-labelledby="economia-t">
-    <Sec id="economia" hero="pitch-illustrations/pitch-token-participation.webp" summary="Duas receitas separadas: tarifa fixa de US$ 2,50 em USDC e ganhos de investimento da tesouraria." n="07" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Receitas, tesouraria e direitos do token.</span></>}>
+    <Sec id="economia" hero="pitch-illustrations/pitch-token-participation.webp" summary="Financiamento e sustentabilidade operacional separados dos resultados da tesouraria." n="07" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Receitas, tesouraria e direitos do token.</span></>}>
       <h3 className="display mb-6 text-2xl font-extrabold">O dinheiro da empresa não se mistura ao da tesouraria.</h3>
       <div className="mb-8 grid gap-4 md:grid-cols-2">
         <Card label="Mint público inicial" title="Financiamento do projeto">Mint aberto a preço fixo, separado da comunidade em vesting. Aplicação dos recursos e custos da oferta devem ser documentados antes da abertura.</Card>
         <Card label="Comunidade em vesting" title="100% para a tesouraria">O preço dos tokens da comunidade já liberados financia a tesouraria. A venda não é lucro distribuível; o mint inicial fica separado.</Card>
         <Card label="Investidores-anjo" title="100% para produto, tecnologia e marketing">{g.launch.angelFundingUse}</Card>
-        <Card label="Tarifas de serviço" title="100% para o caixa operacional">A tarifa de US$ 2,50 é receita bruta da empresa, antes de custos e tributos, fora do split do lucro da tesouraria.</Card>
+        <Card label="Sustentabilidade operacional" title="Alternativa em avaliação">Uma contribuição por serviços pode ajudar a sustentar a operação. Não há cobrança definida, valor fixado ou adoção confirmada.</Card>
       </div>
       <div className="pitch-revenue">
         <article className="pitch-revenue__item">
           <div className="pitch-revenue__icon" aria-hidden="true"><ReceiptText size={36} strokeWidth={1.6} /></div>
           <div className="pitch-revenue__copy">
             <p className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#2B59FF]">Operadora</p>
-            <h3 className="display">Tarifa fixa de US$ 2,50 em USDC</h3>
-            <p>Receita de serviço da empresa, em carteira operacional própria, fora da tesouraria e do split 50/25/25. Não é taxa de performance.</p>
+            <h3 className="display">Sustentabilidade operacional</h3>
+            <p>Financiamento próprio e possíveis alternativas de receita, sujeitos a avaliação. Uma contribuição por serviços, se adotada, fica fora da tesouraria e do split 50/25/25.</p>
           </div>
         </article>
         <article className="pitch-revenue__item pitch-revenue__item--treasury">
@@ -167,19 +167,11 @@ export function PitchPage() {
           <div className="pitch-revenue__copy">
             <p className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#2B59FF]">Tesouraria</p>
             <h3 className="display">Ganhos de investimento</h3>
-            <p>Resultado das estratégias. O preço dos tokens da comunidade já liberados vai à tesouraria; o mint inicial financia o projeto e a tarifa é registrada à parte.</p>
+            <p>Resultado das estratégias. O preço dos tokens da comunidade já liberados vai à tesouraria; o mint inicial financia o projeto. Recursos operacionais são registrados à parte.</p>
           </div>
         </article>
       </div>
-      <div className="pitch-cost-examples mt-6 rounded-2xl border border-[#070B1F]/15" role="region" aria-label="Exemplos de custo" tabIndex={0}>
-        <table className="w-full text-left text-sm">
-          <thead className="bg-[#070B1F] text-[#F4F1E8]"><tr><th className="p-3">Movimentação</th><th className="p-3">Tarifa</th><th className="p-3">Resultado</th></tr></thead>
-          <tbody className="text-[#183173]">
-            {[['Saque de US$ 10', 'US$ 2,50', 'US$ 7,50 líquidos'], ['Saque de US$ 15', 'US$ 2,50', 'US$ 12,50 líquidos'], ['Compra de US$ 10', 'US$ 2,50 adicionais', 'US$ 12,50 desembolsados'], ['Compra de US$ 15', 'US$ 2,50 adicionais', 'US$ 17,50 desembolsados']].map((r) => <tr key={r[0]} className="border-t border-[#070B1F]/10">{r.map((c) => <td key={c} className="p-3">{c}</td>)}</tr>)}
-          </tbody>
-        </table>
-      </div>
-      <PitchObservations><p>Antes de custos externos de rede e conversão. Movimentos de US$ 10 ou 15 e saques frequentes são hipóteses do fundador, não ticket ou disposição medidos. O modelo financeiro ainda não foi recalibrado para tickets pequenos; volumes e CAC antigos não são dados observados.</p></PitchObservations>
+      <PitchObservations><p>Qualquer modelo de receita operacional depende de validação jurídica e comercial. Condições e valores deverão ser informados antes de eventual adoção; custos externos de rede e conversão são separados.</p></PitchObservations>
     </Sec>
 
     <Sec id="token" kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Quatro destinações.</span></>}>

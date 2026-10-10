@@ -89,3 +89,4 @@
 - [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.
 - [Escopo da atualização documental](documentation-update-scope.md) — documentação, Pitch e derivados; reorganização do lançamento inclui roadmap da homepage, não o aplicativo.
 - [Captação da comunidade](community-launch-funding.md) — mint aberto de 10% a preço fixo; sistema e vesting de 24 meses previstos para março de 2027.
+- [Sustentabilidade operacional](operational-sustainability-positioning.md) — contribuição por serviços só como alternativa em avaliação, sem cobrança definida ou valor fixado.

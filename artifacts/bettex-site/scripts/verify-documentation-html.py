@@ -34,7 +34,7 @@ class Documentation(HTMLParser):
     def handle_data(self, text):
         if not any(t in ('style','script') for t,_ in self.stack): self.text.append(text)
 
-obsolete=[r'quatro posições',r'cinco pessoas',r'50% para a tesouraria e 50% para capital',r'reserva defensiva mínima inicial de 50%',r'destino.{0,50}pendente de confirmação',r'Sustentar a operação',r'Mercado grande não é demanda comprovada',r'mês 9',r'four paid positions',r'five people',r'four salaried',r'cinco personas',r'cuatro puestos remunerados']
+obsolete=[r'quatro posições',r'cinco pessoas',r'50% para a tesouraria e 50% para capital',r'reserva defensiva mínima inicial de 50%',r'destino.{0,50}pendente de confirmação',r'Mercado grande não é demanda comprovada',r'mês 9',r'four paid positions',r'five people',r'four salaried',r'cinco personas',r'cuatro puestos remunerados']
 for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('es','es/documentacion.html')]:
     html=(app/'dist/public'/file).read_text()
     start=re.search(r'<section\b[^>]*\bid="documentacao"[^>]*>',html).start()
@@ -55,13 +55,14 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     missing=sorted(set(p.hashes)-set(p.ids))
     assert not missing, f"{lang}: broken documentation links {missing}"
     text=' '.join(p.text)
+    assert not re.search(r'<h[1-6][^>]*>\s*Sustentar a operação\s*</h[1-6]>', html, re.I), f"{lang}: obsolete operating plan heading"
     for pattern in obsolete: assert not re.search(pattern,text,re.I), f"{lang}: obsolete {pattern}"
     assert p.agent_count==8, f"{lang}: missing agent explanations"
     print(f"{lang}: 14 chapters, {len(p.diagrams)} essential diagrams, {len(p.illustrations)} illustrations, original drawings preserved, unique ids and {len(p.hashes)} valid internal links.")
 expected_workbooks = {
-    "": ["Taxas", "Vesting", "Regras"],
-    "-en": ["Fees", "Vesting", "Rules"],
-    "-es": ["Tasas", "Vesting", "Reglas"],
+    "": ["Sustentabilidade", "Vesting", "Regras"],
+    "-en": ["Sustainability", "Vesting", "Rules"],
+    "-es": ["Sostenibilidad", "Vesting", "Reglas"],
 }
 for suffix, expected_sheets in expected_workbooks.items():
     file = app/'public/downloads'/f'bettex-taxas-fundacao{suffix}.xlsx'
@@ -74,4 +75,7 @@ for suffix, expected_sheets in expected_workbooks.items():
         assert len(worksheet_files) == len(expected_sheets), f"{file}: missing or unexpected worksheet files"
         raw=' '.join(z.read(n).decode() for n in z.namelist() if n.endswith('.xml'))
         for pattern in obsolete: assert not re.search(pattern,raw,re.I), f"{file}: obsolete material"
-print('Downloads: three localized worksheets for fees, vesting and rules; no old cash-flow simulation.')
+        alternative = z.read('xl/worksheets/sheet1.xml').decode()
+        assert '<v>2.5</v>' not in alternative, f"{file}: fixed fee reintroduced"
+        assert 'Tarifa confirmada' not in raw, f"{file}: confirmed fee reintroduced"
+print('Downloads: sustainability alternatives without fixed fees, vesting and rules; no old cash-flow simulation.')

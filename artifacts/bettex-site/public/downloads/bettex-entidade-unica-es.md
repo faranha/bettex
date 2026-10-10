@@ -22,7 +22,7 @@ Financiación: origen y destino de los recursos
 
 Los aportes de inversores ángeles destinan el 100% de los recursos a producto, tecnología y marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone un reparto de financiación: los términos identifican origen, destino y derechos.
 
-El mint inicial del 10% financia el proyecto, por ejecución propia o launchpad asociado. Las ventas del 55% de la comunidad ya liberado destinan el 100% del precio en USDC a la tesorería; las tarifas separadas van a la cuenta operativa. La reventa pertenece al vendedor. Captación, ingresos y beneficio distribuible no son equivalentes.
+El mint inicial del 10% financia el proyecto, mediante ejecución propia o un launchpad asociado. Las ventas de la asignación del 55% de la comunidad ya liberada destinan el 100% del precio en USDC a la tesorería. Una contribución por servicios es solo una alternativa para sostener la operación, sin cobro definido, importe fijado o adopción confirmada. La reventa pertenece al vendedor. Captación, ingresos y beneficio distribuible no son equivalentes.
 
 Burn Lottery y Double 2X
 

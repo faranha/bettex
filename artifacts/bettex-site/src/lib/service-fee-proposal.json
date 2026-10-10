@@ -1,11 +1,9 @@
 {
-  "status": "documented_not_active",
-  "taxTreatment": "fixed_gross_service_price_no_automatic_gross_up",
+  "status": "alternative_under_evaluation",
+  "taxTreatment": "to_be_evaluated_before_adoption",
   "currency": "USD",
   "paymentAsset": "USDC",
   "fees": [
-    { "operation": "Compra primária de BETTEX pelo aplicativo", "amountUsd": 2.5, "basis": "Por compra concluída, separada do preço dos tokens", "scope": "Tarifa confirmada; entrega integrante da compra sem segunda taxa" },
-    { "operation": "Saque de rendimentos em USDC pelo aplicativo", "amountUsd": 2.5, "basis": "Por saque concluído", "scope": "Tarifa confirmada; não é novo pagamento da distribuição" },
-    { "operation": "Envio autônomo de BETTEX para outra carteira pelo aplicativo", "amountUsd": 2.5, "basis": "Por envio concluído; quantidade de BETTEX não é taxa", "scope": "Tarifa confirmada; exportação e transferência direta fora do app não tarifadas" }
+    { "operation": "Possível contribuição por serviços", "amountUsd": null, "basis": "Em avaliação, sem valor definido", "scope": "Alternativa para sustentar a operação; adoção não confirmada" }
   ]
 }
