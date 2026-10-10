@@ -3,6 +3,12 @@ name: Identidade econômica da BETTEX
 description: Definição econômica e posicionamento público aprovados pelo criador.
 ---
 
+A identidade principal é DeFi com IA: trading com IA, um agente que vai atuar em vários mercados. A apresentação deve ser mais curta, com mais foco na proposta futura e na tokenomics, menos dados acessórios e menos estrutura institucional.
+
+**Why:** O criador definiu: “nosso projeto é DeFi, com IA, um agente, é trading com IA, um agente que vai atuar em vários mercados” e pediu “mais promessas, menos dados, menos estrutura - foco maior na tokenomics”.
+
+**How to apply:** Usar DeFi/trading com IA como posicionamento principal no site, documentação, Pitch, roadmap e derivados. Apresentar um agente BETTEX ao público sem eliminar especialistas internos. Distinguir visão futura de capacidades atuais; não transformar a proposta em garantia de retorno nem cortar regras econômicas essenciais para encurtar o texto.
+
 A apresentação pública prioriza uma “comunidade de investimento com IA”, não “em IA”. A comunidade faz parte do meio do funil: dela as pessoas são convertidas de volta para o site e para a compra dos tokens.
 
 **Why:** O criador corrigiu expressamente “Comunidade de investimento com IA, não em IA”. Depois esclareceu: “a comunidade faz parte do meio do funil, que é dela que a gente converte as pessoas de volta pro site e pra compra dos tokens”, substituindo a definição anterior de comunidade como topo do funil.
@@ -45,7 +51,7 @@ A tese de demanda apresentada pelo criador é: “se a IA tiver resultado positi
 
 **Why:** Essa é a definição econômica do projeto dada pelo usuário, que corrigiu uma avaliação que complicava sua proposta.
 
-**How to apply:** Explicar e avaliar a BETTEX a partir desse mecanismo simples, sem atribuir sofisticação ou adicionar camadas não solicitadas. Usar as decisões em replit.md para estrutura de entidade única, direitos dos titulares, financiamento e alternativas de jurisdição; não tratar a preferência histórica pela Sérvia como escolha definitiva.
+**How to apply:** Explicar e avaliar a BETTEX a partir desse mecanismo simples, sem atribuir sofisticação ou adicionar camadas não solicitadas. Preservar direitos dos titulares e financiamento aprovados, mas seguir a direção atual sem entidade formal e com evolução da administração por IA. Não tratar a preferência histórica pela Sérvia como escolha definitiva.
 
 Na comparação com apostas, é permitido chamar a aquisição de BETTEX de investimento. Isso não redefine a BETTEX como fundo nem muda o nome do usuário para investidor.
 
