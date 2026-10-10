@@ -87,4 +87,4 @@
 - [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.
 - [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.
 - [Escopo da atualização documental](documentation-update-scope.md) — documentação, Pitch e derivados; reorganização do lançamento inclui roadmap da homepage, não o aplicativo.
-- [Captação da comunidade](community-launch-funding.md) — parcela inicial revista para 10%; vesting três meses depois; ALFA com captação na segunda etapa.
+- [Captação da comunidade](community-launch-funding.md) — mint aberto de 10% a preço fixo; sistema e vesting de 24 meses previstos para março de 2027.

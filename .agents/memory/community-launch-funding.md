@@ -1,28 +1,16 @@
 ---
-name: Venda pública inicial anterior ao vesting
-description: Parcela inicial revista para 10%; vesting três meses depois e ALFA com captação como segunda etapa.
+name: Mint público da comunidade e vesting
+description: Mint inicial aberto de 10% a preço fixo; sistema e vesting de 24 meses previstos para março de 2027.
 ---
 
-O criador inicialmente definiu 15% dos tokens para a abertura pública anterior ao vesting; depois revisou a parcela inicial para **10%**, na conversa sobre emissão. Preservar o intervalo de três meses até o vesting e a intenção de acesso inicial pela comunidade e eventual listagem pública. Qualquer pessoa poderá comprar na listagem. O objetivo é captar recursos e criar awareness; depois entra no ar o ALFA, junto com a captação de investidores, como segunda etapa. Não incorporar à proposta definitiva as alternativas anteriores sobre compras antecipadas ou trades do fundador.
+O criador definiu uma emissão inicial de **10%** por mint público aberto: qualquer pessoa pode mintar por preço fixo, observadas as condições legais da oferta. O mint financia o projeto e pode ser executado pela própria BETTEX ou por um launchpad parceiro. Manter **20% para fundador/equipe** e **15% para investidores**. A parcela inicial substitui os 15% discutidos anteriormente; não é uma quarta alocação.
 
-**Why:** O criador reiterou: “nós vamos apenas destinar 15% dos tokens para venda pública antes do início do vesting” e “É a segunda etapa, o alfa, junto com a captura de investidores”. Pediu reorganizar e planejar a execução, enfatizando que a mudança de tokenomia é essa listagem pública.
+**Why:** O criador confirmou “os 10% iniciais sao mint para a comunidade mint aberto qq um pode mintar, a preco fixo” e manteve expressamente as duas alocações privadas.
 
-**How to apply:** Planejar o lançamento antes do ALFA e separar abertura da venda de início do vesting, três meses depois. Preservar emissão máxima, outras alocações e regras não alteradas; não criar uma alocação adicional que faça os percentuais excederem 100%. Não inventar preço ou mecânica de retirada de recursos. Não transformar a oferta de tokens em ações nem presumir enquadramento jurídico. Atualizar documentação, Pitch, derivados e roadmap sem modificar o aplicativo ou executar a oferta.
+**How to apply:** Preservando a emissão máxima de 1 bilhão e a alocação pública total de 65%, o mint tem teto de 100 milhões, e a agenda posterior abrange 550 milhões públicos, 200 milhões de fundador/equipe e 150 milhões de investidores. Distinguir teto de emissão inicial de quantidade efetivamente mintada. O preço, a janela, a plataforma e o destino da parcela não mintada ainda não foram definidos. Não presumir emissão integral antecipada, venda de todo o teto, abertura de pool ou garantia de preço secundário.
 
-O criador confirmou o lançamento público do token em **10 de dezembro de 2026** e o ALFA do agente no **primeiro trimestre de 2027**, mantendo a captação de investidores nessa segunda etapa. O início do vesting decorre do intervalo já definido: **10 de março de 2027**.
+A promoção para a comunidade precede o mint. A abertura pública está prevista para **10 de dezembro de 2026**. O criador passou a prever o lançamento do sistema e o início do vesting para **março de 2027**, com **24 meses de vesting**, substituindo os 36 meses anteriores. A captação de investidores acompanha a etapa ALFA.
 
-**Why:** Após esclarecer os anos, escolheu explicitamente “Token em 10/12/2026; ALFA no 1º trimestre de 2027”.
+**Why:** Confirmou os anos do lançamento público e do ALFA e depois especificou “vesting comeca a partir de marco de 2027 quando devemos lancar nosso sistema” e “vamos ajustar o vesting para 24 meses”.
 
-**How to apply:** Não antecipar o ALFA para outubro de 2026 nem deixar o BETA ou os mercados antecederem o ALFA. A data exata do ALFA permanece aberta dentro do trimestre; não vinculá-la automaticamente ao início do vesting.
-
-O criador esclareceu que a sequência começa com promoção para a comunidade, seguida de acesso inicial à compra, mesmo com baixo capital. Enfatizou: “Temos que mintar 15%” e “a grande questão [...] é mintar”, distinguindo emissão inicial de venda aberta e levantando a preocupação de vender muito barato.
-
-**Why:** A descrição anterior tratava os 15% principalmente como disponibilização para venda, sem explicitar a emissão inicial pretendida.
-
-**How to apply:** Separar emissão, distribuição, preço de oferta e liquidez nas discussões e na futura atualização documental. Não presumir que mintar os 15% exige vender todos ou depositá-los num pool. O mecanismo de compra e o preço ainda não foram escolhidos; a conversa não autoriza executar mint ou oferta.
-
-A parcela inicial atual é **10%, substituindo os 15% anteriores**.
-
-**Why:** Na pergunta sobre a emissão inicial, o criador respondeu “10%”.
-
-**How to apply:** Usar 10% nas próximas discussões e na futura atualização autorizada. A resposta não escolheu entre mint integral antecipado e mint por compra, nem definiu preço. Não tratar a conversa como autorização para modificar o site ou executar emissão.
+**How to apply:** Usar março para o lançamento previsto do sistema e para o início da agenda posterior, sem afirmar entrega concluída ou inventar dia exato. Manter BETA após ALFA e mercados após BETA. Não incorporar compras antecipadas, estoque pessoal ou trades do fundador. A discussão atual define regras, mas não autoriza executar mint, oferta, pool, transferências ou publicação. Para mudanças no site, respeitar o escopo documental e de roadmap já estabelecido, preservando aplicativo e backend.
