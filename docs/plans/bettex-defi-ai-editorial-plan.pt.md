@@ -1,5 +1,7 @@
 # BETTEX — plano de revisão DeFi + trading com IA
 
+O [plano detalhado de execução](bettex-defi-ai-detailed-execution.pt.md) complementa este resumo com composição de capítulos, cortes por área, cobertura dos 72 pontos, compatibilidade, dependências e critérios de aceite.
+
 ## 1. Direção
 
 **BETTEX é um projeto DeFi de trading com IA: um agente que evolui para atuar em vários mercados, conectado a uma economia própria pelo token BETTEX.**

@@ -616,3 +616,17 @@ mtime_ms = 1791668836006
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/6a76d4c2-ad8d-49b1-aebb-5a17673c945b/fd5d0914-f176-4b13-b186-c93bd9ec0538"
 storage_version_token = "1791668862830325"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "IBOJ7sR_CfLw_mYmf051R"
+uri = "file://docs/plans/bettex-defi-ai-detailed-execution.pt.md"
+type = "text"
+title = "BETTEX — plano detalhado de revisão DeFi + IA"
+description = "19 seções com composição dos seis capítulos, cortes por área, roadmap, economia, tratamento dos 72 pontos, compatibilidade dos 14 capítulos atuais, traduções, downloads, dependências e critérios de aceite. Apenas planejamento."
+logical_id = "cf2fcb82-655d-4dac-bf86-cd9fad3eae0a"
+content_hash = "sha256:9927400fd2d95c28d06eaa144953901afb6916eb48bdc1cdce63c218ad90207b"
+size = 43121
+mtime_ms = 1791670843650
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/cf2fcb82-655d-4dac-bf86-cd9fad3eae0a/2f3e8bb9-1a8d-42f4-b93c-c4792b7626ad"
+storage_version_token = "1791670875802485"
+content_type = "text/markdown"
