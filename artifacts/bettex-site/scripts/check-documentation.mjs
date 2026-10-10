@@ -30,8 +30,14 @@ assert(!/piloto|MAU|5\.000 usuários|Capital do piloto/i.test(JSON.stringify(mat
 assert.equal(materials.pitchLink.href, 'https://bettex.ai/pitch#publico');
 const chapters = await read('src/components/WhitepaperChapters.tsx');
 const order = [...chapters.matchAll(/\{ id: '(documentacao-[\w-]+)', title:/g)].map(m => m[1]);
-assert.equal(order.length, 13);
+assert.equal(order.length, 14);
 assert.equal(order[1], 'documentacao-entidade');
+assert.equal(order[2], 'documentacao-adequacao-legal');
+assert.match(chapters, /<LegalCompliance \/>/);
+const legal = materials.sections.find(section => section.title === 'Adequação legal e jurídica');
+assert.equal(legal?.paragraphs.length, 8, 'Legal policy is shared with documentation downloads.');
+assert.match(legal.paragraphs.join(' '), /São exemplos condicionais/);
+assert.match(legal.paragraphs.join(' '), /Investigação pendente, proibição ou falta de autorização necessária impede/);
 assert.equal(order[order.indexOf('documentacao-riscos') + 1], 'documentacao-governanca');
 for (const id of ['documentacao-servicos', 'documentacao-staking']) assert(order.includes(id));
 const agents = await read('src/components/InvestmentAgents.tsx');

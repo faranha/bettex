@@ -2,6 +2,7 @@ import { Fragment, isValidElement, type ReactElement, type ReactNode } from 'rea
 import thesis from '@/lib/new-economy-thesis.json';
 import growthStrategy from '@/lib/growth-strategy.json';
 import { DocumentationGames } from './DocumentationGames';
+import { LegalCompliance } from './LegalCompliance';
 import { TechnicalDetails } from './TechnicalDetails';
 import { documentationTokenomics as tokenomics, formatTokenCount } from '@/lib/tokenomics';
 import { BettexFlow, architectureFigureTitles } from '@/components/architecture/BettexArchitecture';
@@ -50,6 +51,7 @@ import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure
 export const chapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação em USDC, participação automática e controles.' },
   { id: 'documentacao-entidade', title: 'Entidade e negócios', subtitle: 'Empresa privada, missão, público e fundador administrador.' },
+  { id: 'documentacao-adequacao-legal', title: 'Adequação legal e jurídica', subtitle: 'Investigação técnico-legal, disponibilidade territorial e condições para liberar cada agente.' },
   { id: 'documentacao-rede', title: 'Arbitrum e ativos', subtitle: 'Arbitrum One, carteira do titular, USDC e entrada por on-ramp externo.' },
   { id: 'documentacao-acesso', title: 'Acesso ao aplicativo', subtitle: 'Carteira gerada com a conta, acesso e autorização de ações financeiras.' },
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Mapa orquestrado, catálogo de conectores, consultas verificadas e demonstrações por plataforma.' },
@@ -78,6 +80,8 @@ function RawChapter({ index }: { index: number }) {
   switch (chapters[index]?.id) {
     case 'documentacao-entidade':
       return <EntityOrganisation />;
+    case 'documentacao-adequacao-legal':
+      return <LegalCompliance />;
     case 'documentacao-governanca':
       return <DocumentationGovernance />;
     case 'documentacao-servicos':

@@ -43,7 +43,10 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     p=Documentation(); p.feed(html[start:shared_footer.start()] if shared_footer else html[start:])
     duplicates=[id for id,n in Counter(p.ids).items() if n>1]
     assert not duplicates, f"{lang}: duplicate ids {duplicates}"
-    assert len(p.chapters)==13, f"{lang}: chapter count"
+    assert len(p.chapters)==14, f"{lang}: chapter count"
+    assert p.chapters[2]=='documentacao-adequacao-legal', f"{lang}: missing legal compliance chapter"
+    for anchor in ('documentacao-investigacao-tecnico-legal', 'documentacao-disponibilidade-territorial', 'documentacao-revisao-juridica'):
+        assert anchor in p.ids, f"{lang}: missing legal compliance subsection {anchor}"
     required_flows={f'diagram-bettex-flow-{number}' for number in range(1,9)}
     assert required_flows <= p.original_flows, f"{lang}: missing original drawings {required_flows-p.original_flows}"
     assert 8 <= len(p.diagrams) <= 12, f"{lang}: keep essential drawings without diagram overload ({len(p.diagrams)})"
@@ -54,7 +57,7 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     text=' '.join(p.text)
     for pattern in obsolete: assert not re.search(pattern,text,re.I), f"{lang}: obsolete {pattern}"
     assert p.agent_count==8, f"{lang}: missing agent explanations"
-    print(f"{lang}: 13 chapters, {len(p.diagrams)} essential diagrams, {len(p.illustrations)} illustrations, original drawings preserved, unique ids and {len(p.hashes)} valid internal links.")
+    print(f"{lang}: 14 chapters, {len(p.diagrams)} essential diagrams, {len(p.illustrations)} illustrations, original drawings preserved, unique ids and {len(p.hashes)} valid internal links.")
 expected_workbooks = {
     "": ["Taxas", "Vesting", "Regras"],
     "-en": ["Fees", "Vesting", "Rules"],

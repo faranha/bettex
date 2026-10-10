@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 3 /Kids [4 0 R 6 0 R 8 0 R] >>
+<< /Type /Pages /Count 4 /Kids [4 0 R 6 0 R 8 0 R 10 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,13 +12,67 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2953 >>
+<< /Length 3260 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — entity and rules) Tj T*
 () Tj T*
+(Legal and regulatory compliance) Tj T*
+() Tj T*
+(Every BETTEX launch must already comply with the legal environment of the markets where the) Tj T*
+(solution will be offered. Releasing each agent, feature and category requires a specific) Tj T*
+(technical and legal investigation and compliance with applicable requirements. A roadmap date) Tj T*
+(does not replace this condition.) Tj T*
+() Tj T*
+(The analysis identifies the country of the offering, the audience served, the nature of the) Tj T*
+(activity, the responsible entity and the providers used. Company domicile, offering location) Tj T*
+(and execution location are assessed separately; permission in one country does not authorize) Tj T*
+(activity in another.) Tj T*
+() Tj T*
+(The investigation checks official sources, the effective dates and scope of rules, required) Tj T*
+(licenses and authorizations, provider terms, advertising, user protection, identification and) Tj T*
+(anti-money laundering, data protection and tax obligations, as applicable. Legal and technical) Tj T*
+(staff record the evidence, analysis date, conditions and required controls.) Tj T*
+() Tj T*
+(Each combination of agent, activity and territory must have its scope documented: under) Tj T*
+(investigation, restricted or authorized for launch. Release requires a favorable legal) Tj T*
+(assessment, authorizations where required and validated technical controls. A pending) Tj T*
+(investigation, prohibition or missing required authorization prevents offering and operation in) Tj T*
+(that territory.) Tj T*
+() Tj T*
+(If casino or iGaming is prohibited in Brazil at the time of the offering, that category will) Tj T*
+(not be offered to the Brazilian audience. If prediction markets cannot legally be offered in) Tj T*
+(Brazil, agents in that category will not be released for that market. These are conditional) Tj T*
+(examples: the conclusion depends on a current investigation of the specific activity, not a) Tj T*
+(general statement in this documentation.) Tj T*
+() Tj T*
+(The assessment also covers token minting and offering, advertising, in-app games, financial) Tj T*
+(services and each integration. API availability, blockchain use, a foreign license or a partner) Tj T*
+(launchpad do not replace local authorization. Mint authorization does not automatically) Tj T*
+(authorize agents or other features.) Tj T*
+() Tj T*
+(Before each expansion, compliance is reassessed for the new territory and activity. Regulatory,) Tj T*
+(license, provider or product changes require review. Loss of a required condition suspends) Tj T*
+(affected new offerings and operations; existing positions and obligations receive specific) Tj T*
+(treatment under legal guidance and risk controls.) Tj T*
+() Tj T*
+(Territorial availability conditions must be communicated to users and reflected in eligibility,) Tj T*
+(access and execution controls. Evidence, responsible parties, conditions, validity or review) Tj T*
+(periods and decisions are recorded. This section defines launch requirements; it does not claim) Tj T*
+(licenses obtained, completed legal opinions or authorized agents.) Tj T*
+() Tj T*
 (Financing: sources and uses of funds) Tj T*
 () Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 3093 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (Angel contributions allocate 100% of funds to product, technology and marketing, with no) Tj T*
 (founder salaries or withdrawals. The 15% token allocation does not impose a funding split:) Tj T*
 (agreements identify sources, uses and rights.) Tj T*
@@ -63,20 +117,20 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (The company brings together the token, application, treasury, investments, and program) Tj T*
 (obligations. Final name, corporate structure, and jurisdiction are part of the formalization.) Tj T*
 (Holders own tokens and program rights, not shares, corporate voting, or a redeemable fraction) Tj T*
-ET
-endstream
-endobj
-6 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
-endobj
-7 0 obj
-<< /Length 3217 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (of the treasury.) Tj T*
 () Tj T*
 (The mission expands alternatives for economic participation during the transition of AI and) Tj T*
 (robotics. Transparency, understanding, responsibility, and accountability guide the operation,) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 3195 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (without guaranteed income or capital protection.) Tj T*
 () Tj T*
 (Token, funding, and burn) Tj T*
@@ -121,20 +175,20 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (allow double deduction. There is no universal personal exemption.) Tj T*
 () Tj T*
 (Only confirmed and reconciled USDC enters the available balance. Uncertain sends do not) Tj T*
-ET
-endstream
-endobj
-8 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
-endobj
-9 0 obj
-<< /Length 1383 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (authorize repetition nor are they recovered resources. Corrections maintain history and unique) Tj T*
 (effects, without automatic debit from the personal wallet.) Tj T*
 () Tj T*
 (Governance and integrations) Tj T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 1168 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Policies evolve through approved versions. Administration defines policy; 2-of-3 multisig) Tj T*
 (controls custody; executors act within mandates. Sensitive changes wait at least 24h; already) Tj T*
@@ -156,18 +210,20 @@ ET
 endstream
 endobj
 xref
-0 10
+0 12
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000127 00000 n 
-0000000224 00000 n 
-0000000350 00000 n 
-0000003355 00000 n 
-0000003481 00000 n 
-0000006750 00000 n 
-0000006876 00000 n 
-trailer << /Size 10 /Root 1 0 R >>
+0000000134 00000 n 
+0000000231 00000 n 
+0000000357 00000 n 
+0000003669 00000 n 
+0000003795 00000 n 
+0000006940 00000 n 
+0000007066 00000 n 
+0000010313 00000 n 
+0000010441 00000 n 
+trailer << /Size 12 /Root 1 0 R >>
 startxref
-8311
+11662
 %%EOF

@@ -1,4 +1,112 @@
 {
+  "documentacao-adequacao-legal": {
+    "en": "documentacao-adequacao-legal",
+    "es": "documentacao-adequacao-legal"
+  },
+  "Legal compliance documentation is missing or incomplete.": {
+    "en": "Legal compliance documentation is missing or incomplete.",
+    "es": "La documentación de adecuación legal falta o está incompleta."
+  },
+  "Adequação legal e jurídica": {
+    "en": "Legal and regulatory compliance",
+    "es": "Adecuación legal y jurídica"
+  },
+  "Investigação técnico-legal, disponibilidade territorial e condições para liberar cada agente.": {
+    "en": "Technical and legal investigation, territorial availability and conditions for releasing each agent.",
+    "es": "Investigación técnico-legal, disponibilidad territorial y condiciones para habilitar cada agente."
+  },
+  "Investigação técnico-legal e critérios de liberação": {
+    "en": "Technical and legal investigation and release criteria",
+    "es": "Investigación técnico-legal y criterios de habilitación"
+  },
+  "Disponibilidade por mercado e território": {
+    "en": "Availability by market and territory",
+    "es": "Disponibilidad por mercado y territorio"
+  },
+  "Revisão contínua e controles de acesso": {
+    "en": "Ongoing review and access controls",
+    "es": "Revisión continua y controles de acceso"
+  },
+  "Cada lançamento da BETTEX deve ocorrer já adequado ao ambiente jurídico dos mercados onde a solução será oferecida. A liberação de cada agente, funcionalidade e categoria depende de investigação técnico-legal específica e do cumprimento das exigências aplicáveis. Uma data no roadmap não substitui essa condição.": {
+    "en": "Every BETTEX launch must already comply with the legal environment of the markets where the solution will be offered. Releasing each agent, feature and category requires a specific technical and legal investigation and compliance with applicable requirements. A roadmap date does not replace this condition.",
+    "es": "Cada lanzamiento de BETTEX debe estar adecuado al entorno jurídico de los mercados donde se ofrecerá la solución. La habilitación de cada agente, funcionalidad y categoría depende de una investigación técnico-legal específica y del cumplimiento de los requisitos aplicables. Una fecha en la hoja de ruta no sustituye esta condición."
+  },
+  "A análise identifica o país de oferta, o público atendido, a natureza da atividade, a entidade responsável e os provedores utilizados. Domicílio da empresa, local da oferta e local de execução são avaliados separadamente; uma permissão em um país não autoriza atuação em outro.": {
+    "en": "The analysis identifies the country of the offering, the audience served, the nature of the activity, the responsible entity and the providers used. Company domicile, offering location and execution location are assessed separately; permission in one country does not authorize activity in another.",
+    "es": "El análisis identifica el país de la oferta, el público atendido, la naturaleza de la actividad, la entidad responsable y los proveedores utilizados. El domicilio de la empresa, el lugar de la oferta y el de ejecución se evalúan por separado; un permiso en un país no autoriza la actuación en otro."
+  },
+  "A investigação verifica fontes oficiais, vigência e alcance das normas, licenças e autorizações necessárias, termos dos provedores, publicidade, proteção do usuário, identificação e prevenção à lavagem de dinheiro, proteção de dados e obrigações tributárias, conforme aplicáveis. Os responsáveis jurídicos e técnicos registram as evidências, a data da análise, as condições e os controles exigidos.": {
+    "en": "The investigation checks official sources, the effective dates and scope of rules, required licenses and authorizations, provider terms, advertising, user protection, identification and anti-money laundering, data protection and tax obligations, as applicable. Legal and technical staff record the evidence, analysis date, conditions and required controls.",
+    "es": "La investigación verifica fuentes oficiales, vigencia y alcance de las normas, licencias y autorizaciones necesarias, condiciones de los proveedores, publicidad, protección del usuario, identificación y prevención del lavado de dinero, protección de datos y obligaciones tributarias, según corresponda. Los responsables jurídicos y técnicos registran las evidencias, la fecha del análisis, las condiciones y los controles exigidos."
+  },
+  "Cada combinação de agente, atividade e território deve ter seu escopo documentado: em investigação, restrito ou autorizado para lançamento. A liberação depende de análise jurídica favorável, autorizações quando exigidas e validação dos controles técnicos. Investigação pendente, proibição ou falta de autorização necessária impede a oferta e a operação naquele território.": {
+    "en": "Each combination of agent, activity and territory must have its scope documented: under investigation, restricted or authorized for launch. Release requires a favorable legal assessment, authorizations where required and validated technical controls. A pending investigation, prohibition or missing required authorization prevents offering and operation in that territory.",
+    "es": "Cada combinación de agente, actividad y territorio debe tener su alcance documentado: en investigación, restringido o autorizado para el lanzamiento. La habilitación depende de un análisis jurídico favorable, autorizaciones cuando sean exigidas y validación de los controles técnicos. Una investigación pendiente, una prohibición o la falta de autorización necesaria impide la oferta y la operación en ese territorio."
+  },
+  "Se cassino ou iGaming estiver proibido no Brasil na data da oferta, essa categoria não será oferecida ao público brasileiro. Se mercados de previsão não puderem ser oferecidos legalmente no Brasil, os agentes dessa categoria não serão liberados para esse mercado. São exemplos condicionais: a conclusão depende da investigação vigente sobre a atividade concreta, não de uma afirmação geral nesta documentação.": {
+    "en": "If casino or iGaming is prohibited in Brazil at the time of the offering, that category will not be offered to the Brazilian audience. If prediction markets cannot legally be offered in Brazil, agents in that category will not be released for that market. These are conditional examples: the conclusion depends on a current investigation of the specific activity, not a general statement in this documentation.",
+    "es": "Si el casino o iGaming está prohibido en Brasil en la fecha de la oferta, esa categoría no se ofrecerá al público brasileño. Si los mercados de predicción no pueden ofrecerse legalmente en Brasil, los agentes de esa categoría no se habilitarán para ese mercado. Son ejemplos condicionales: la conclusión depende de la investigación vigente sobre la actividad concreta, no de una afirmación general en esta documentación."
+  },
+  "A avaliação abrange também o mint e a oferta do token, sua publicidade, os jogos do aplicativo, os serviços financeiros e cada integração. A disponibilidade de uma API, o uso de blockchain, uma licença estrangeira ou um launchpad parceiro não substituem a autorização local. A autorização do mint não autoriza automaticamente os agentes ou as demais funcionalidades.": {
+    "en": "The assessment also covers token minting and offering, advertising, in-app games, financial services and each integration. API availability, blockchain use, a foreign license or a partner launchpad do not replace local authorization. Mint authorization does not automatically authorize agents or other features.",
+    "es": "La evaluación también abarca el mint y la oferta del token, su publicidad, los juegos de la aplicación, los servicios financieros y cada integración. La disponibilidad de una API, el uso de blockchain, una licencia extranjera o un launchpad asociado no sustituyen la autorización local. La autorización del mint no autoriza automáticamente los agentes ni las demás funcionalidades."
+  },
+  "Antes de cada expansão, a adequação é reavaliada para o novo território e a nova atividade. Mudanças regulatórias, de licença, provedor ou produto exigem revisão. A perda de uma condição necessária suspende novas ofertas e operações afetadas; posições e obrigações existentes recebem tratamento específico conforme orientação jurídica e controles de risco.": {
+    "en": "Before each expansion, compliance is reassessed for the new territory and activity. Regulatory, license, provider or product changes require review. Loss of a required condition suspends affected new offerings and operations; existing positions and obligations receive specific treatment under legal guidance and risk controls.",
+    "es": "Antes de cada expansión, la adecuación se reevalúa para el nuevo territorio y la nueva actividad. Los cambios regulatorios, de licencia, proveedor o producto exigen revisión. La pérdida de una condición necesaria suspende las nuevas ofertas y operaciones afectadas; las posiciones y obligaciones existentes reciben un tratamiento específico según la orientación jurídica y los controles de riesgo."
+  },
+  "As condições de disponibilidade por território devem ser informadas ao usuário e refletidas nos controles de elegibilidade, acesso e execução. Evidências, responsáveis, condições, prazo de validade ou revisão e decisões ficam registrados. Esta seção define requisitos para lançamento; não declara licenças obtidas, pareceres concluídos ou agentes autorizados.": {
+    "en": "Territorial availability conditions must be communicated to users and reflected in eligibility, access and execution controls. Evidence, responsible parties, conditions, validity or review periods and decisions are recorded. This section defines launch requirements; it does not claim licenses obtained, completed legal opinions or authorized agents.",
+    "es": "Las condiciones de disponibilidad por territorio deben comunicarse al usuario y reflejarse en los controles de elegibilidad, acceso y ejecución. Se registran las evidencias, los responsables, las condiciones, el plazo de validez o revisión y las decisiones. Esta sección define requisitos para el lanzamiento; no declara licencias obtenidas, dictámenes concluidos ni agentes autorizados."
+  },
+  "ADEQUAÇÃO LEGAL E JURÍDICA": {
+    "en": "LEGAL AND REGULATORY COMPLIANCE",
+    "es": "ADECUACIÓN LEGAL Y JURÍDICA"
+  },
+  "Antes de cada lançamento": {
+    "en": "Before each launch",
+    "es": "Antes de cada lanzamiento"
+  },
+  "Investigação técnico-legal por mercado": {
+    "en": "Technical and legal investigation by market",
+    "es": "Investigación técnico-legal por mercado"
+  },
+  "Verificar as regras locais da oferta do token, da solução e de cada agente antes do lançamento. Cumprir as exigências aplicáveis e validar os controles técnicos. Categorias proibidas, sem autorização necessária ou ainda em investigação não serão oferecidas naquele território. Reavaliar a adequação antes de cada expansão.": {
+    "en": "Check local rules for the token offering, the solution and each agent before launch. Meet applicable requirements and validate technical controls. Prohibited categories, those lacking required authorization or still under investigation will not be offered in that territory. Reassess compliance before each expansion.",
+    "es": "Verificar las reglas locales de la oferta del token, la solución y cada agente antes del lanzamiento. Cumplir los requisitos aplicables y validar los controles técnicos. Las categorías prohibidas, sin autorización necesaria o aún en investigación no se ofrecerán en ese territorio. Reevaluar la adecuación antes de cada expansión."
+  },
+  "Abrir o mint público de até 10% da emissão total, a preço fixo, para financiar o projeto e ampliar o conhecimento da BETTEX. Execução própria ou por launchpad parceiro, sujeita à adequação legal da oferta e à elegibilidade aplicável.": {
+    "en": "Open public minting for up to 10% of total issuance at a fixed price to fund the project and build awareness of BETTEX. Operated directly or through a partner launchpad, subject to legal compliance of the offering and applicable eligibility.",
+    "es": "Abrir el mint público de hasta el 10% de la emisión total, a precio fijo, para financiar el proyecto y dar a conocer BETTEX. Ejecución propia o mediante un launchpad asociado, sujeta a la adecuación legal de la oferta y la elegibilidad aplicable."
+  },
+  "Lançar o sistema e a versão ALFA do agente em março de 2027, com escopo adequado ao ambiente jurídico local. Liberar somente agentes e funcionalidades validados para cada território. Recolher feedback da comunidade e captar investidores para a evolução do negócio.": {
+    "en": "Launch the system and agent ALPHA version in March 2027 with a scope compliant with the local legal environment. Release only agents and features validated for each territory. Gather community feedback and raise capital from investors to develop the business.",
+    "es": "Lanzar el sistema y la versión ALFA del agente en marzo de 2027, con un alcance adecuado al entorno jurídico local. Habilitar solo agentes y funcionalidades validados para cada territorio. Recoger comentarios de la comunidad y captar inversores para desarrollar el negocio."
+  },
+  "Iniciar o vesting de 24 meses: 55% para a comunidade, 20% para fundador e equipe e 15% para investidores. Os 10% do mint público inicial ficam separados. O início acompanha a etapa prevista de lançamento do sistema.": {
+    "en": "Begin 24-month vesting: 55% for the community, 20% for the founder and team and 15% for investors. The initial public mint's 10% remains separate. Vesting begins alongside the planned system launch stage.",
+    "es": "Iniciar el vesting de 24 meses: 55% para la comunidad, 20% para el fundador y el equipo y 15% para inversores. El 10% del mint público inicial queda separado. El inicio acompaña la etapa prevista de lanzamiento del sistema."
+  },
+  "Abrir somente as categorias e os agentes com adequação técnico-legal validada para os territórios atendidos, com acompanhamento, limites de risco e avaliação dos resultados. Mercados de previsão dependem dessa análise específica, sem disponibilidade presumida no Brasil.": {
+    "en": "Open only categories and agents with validated technical and legal compliance for the territories served, with monitoring, risk limits and results assessment. Prediction markets require this specific analysis, with no assumed availability in Brazil.",
+    "es": "Abrir solo las categorías y los agentes con adecuación técnico-legal validada para los territorios atendidos, con seguimiento, límites de riesgo y evaluación de resultados. Los mercados de predicción dependen de ese análisis específico, sin disponibilidad presumida en Brasil."
+  },
+  "Expandir com novos agentes conforme os resultados e as prioridades da consulta aberta. Cada nova atividade e território exige investigação técnico-legal e validação antes da liberação.": {
+    "en": "Expand with new agents based on the results and priorities of the open consultation. Each new activity and territory requires technical and legal investigation and validation before release.",
+    "es": "Expandir con nuevos agentes según los resultados y las prioridades de la consulta abierta. Cada nueva actividad y territorio exige investigación técnico-legal y validación antes de la habilitación."
+  },
+  "Uma nova etapa de expansão do aplicativo BETTEX, com estrutura e adequação jurídica próprias antes de qualquer oferta de serviços financeiros. Formato, recursos e alcance permanecem em aberto.": {
+    "en": "A new expansion stage for the BETTEX app, with its own structure and legal compliance before any financial services offering. Format, features and scope remain open.",
+    "es": "Una nueva etapa de expansión de la aplicación BETTEX, con estructura y adecuación jurídica propias antes de cualquier oferta de servicios financieros. El formato, los recursos y el alcance siguen abiertos."
+  },
+  "Mint público em 10 de dezembro de 2026. Sistema, ALFA e início do vesting de 24 meses previstos para março de 2027. Cada lançamento depende da adequação legal e jurídica da oferta, da atividade e do território atendido.": {
+    "en": "Public minting on December 10, 2026. The system, ALPHA and start of 24-month vesting are planned for March 2027. Every launch depends on legal and regulatory compliance of the offering, activity and territory served.",
+    "es": "Mint público el 10 de diciembre de 2026. El sistema, el ALFA y el inicio del vesting de 24 meses están previstos para marzo de 2027. Cada lanzamiento depende de la adecuación legal y jurídica de la oferta, la actividad y el territorio atendido."
+  },
+  "As datas indicam o cronograma previsto, não entregas concluídas nem autorizações obtidas. Cada lançamento depende de adequação legal e jurídica, testes e controles aplicáveis. Se uma categoria não puder ser oferecida legalmente num território, ela fica fora da oferta local. O planejamento pode ser ajustado. Investir envolve risco e não há rendimento garantido.": {
+    "en": "Dates indicate the planned schedule, not completed deliveries or obtained authorizations. Each launch requires legal and regulatory compliance, applicable tests and controls. If a category cannot legally be offered in a territory, it is excluded from the local offering. Plans may change. Investing involves risk and no return is guaranteed.",
+    "es": "Las fechas indican el calendario previsto, no entregas concluidas ni autorizaciones obtenidas. Cada lanzamiento depende de adecuación legal y jurídica, pruebas y controles aplicables. Si una categoría no puede ofrecerse legalmente en un territorio, queda fuera de la oferta local. La planificación puede ajustarse. Invertir implica riesgo y no hay rentabilidad garantizada."
+  },
   "TOKEN · VENDA PÚBLICA": {
     "en": "TOKEN · PUBLIC SALE",
     "es": "TOKEN · VENTA PÚBLICA"

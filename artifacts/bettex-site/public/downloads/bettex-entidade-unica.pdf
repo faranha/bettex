@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 3 /Kids [4 0 R 6 0 R 8 0 R] >>
+<< /Type /Pages /Count 4 /Kids [4 0 R 6 0 R 8 0 R 10 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,13 +12,67 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2958 >>
+<< /Length 3382 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — entidade e regras) Tj T*
 () Tj T*
+(Adequação legal e jurídica) Tj T*
+() Tj T*
+(Cada lançamento da BETTEX deve ocorrer já adequado ao ambiente jurídico dos mercados onde a) Tj T*
+(solução será oferecida. A liberação de cada agente, funcionalidade e categoria depende de) Tj T*
+(investigação técnico-legal específica e do cumprimento das exigências aplicáveis. Uma data no) Tj T*
+(roadmap não substitui essa condição.) Tj T*
+() Tj T*
+(A análise identifica o país de oferta, o público atendido, a natureza da atividade, a entidade) Tj T*
+(responsável e os provedores utilizados. Domicílio da empresa, local da oferta e local de) Tj T*
+(execução são avaliados separadamente; uma permissão em um país não autoriza atuação em outro.) Tj T*
+() Tj T*
+(A investigação verifica fontes oficiais, vigência e alcance das normas, licenças e autorizações) Tj T*
+(necessárias, termos dos provedores, publicidade, proteção do usuário, identificação e prevenção) Tj T*
+(à lavagem de dinheiro, proteção de dados e obrigações tributárias, conforme aplicáveis. Os) Tj T*
+(responsáveis jurídicos e técnicos registram as evidências, a data da análise, as condições e os) Tj T*
+(controles exigidos.) Tj T*
+() Tj T*
+(Cada combinação de agente, atividade e território deve ter seu escopo documentado: em) Tj T*
+(investigação, restrito ou autorizado para lançamento. A liberação depende de análise jurídica) Tj T*
+(favorável, autorizações quando exigidas e validação dos controles técnicos. Investigação) Tj T*
+(pendente, proibição ou falta de autorização necessária impede a oferta e a operação naquele) Tj T*
+(território.) Tj T*
+() Tj T*
+(Se cassino ou iGaming estiver proibido no Brasil na data da oferta, essa categoria não será) Tj T*
+(oferecida ao público brasileiro. Se mercados de previsão não puderem ser oferecidos legalmente) Tj T*
+(no Brasil, os agentes dessa categoria não serão liberados para esse mercado. São exemplos) Tj T*
+(condicionais: a conclusão depende da investigação vigente sobre a atividade concreta, não de) Tj T*
+(uma afirmação geral nesta documentação.) Tj T*
+() Tj T*
+(A avaliação abrange também o mint e a oferta do token, sua publicidade, os jogos do aplicativo,) Tj T*
+(os serviços financeiros e cada integração. A disponibilidade de uma API, o uso de blockchain,) Tj T*
+(uma licença estrangeira ou um launchpad parceiro não substituem a autorização local. A) Tj T*
+(autorização do mint não autoriza automaticamente os agentes ou as demais funcionalidades.) Tj T*
+() Tj T*
+(Antes de cada expansão, a adequação é reavaliada para o novo território e a nova atividade.) Tj T*
+(Mudanças regulatórias, de licença, provedor ou produto exigem revisão. A perda de uma condição) Tj T*
+(necessária suspende novas ofertas e operações afetadas; posições e obrigações existentes) Tj T*
+(recebem tratamento específico conforme orientação jurídica e controles de risco.) Tj T*
+() Tj T*
+(As condições de disponibilidade por território devem ser informadas ao usuário e refletidas nos) Tj T*
+(controles de elegibilidade, acesso e execução. Evidências, responsáveis, condições, prazo de) Tj T*
+(validade ou revisão e decisões ficam registrados. Esta seção define requisitos para lançamento;) Tj T*
+(não declara licenças obtidas, pareceres concluídos ou agentes autorizados.) Tj T*
+() Tj T*
 (Financiamento: origem e destino dos recursos) Tj T*
 () Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 3155 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (Aportes-anjo destinam 100% dos recursos a produto, tecnologia e marketing, sem salários ou) Tj T*
 (retiradas do fundador. A alocação de 15% dos tokens não impõe split de financiamento: os termos) Tj T*
 (identificam origem, destino e direitos.) Tj T*
@@ -63,20 +117,20 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (A empresa reúne token, aplicativo, tesouraria, investimentos e obrigações do programa. Nome) Tj T*
 (final, forma societária e jurisdição fazem parte da formalização. Titulares possuem tokens e) Tj T*
-ET
-endstream
-endobj
-6 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
-endobj
-7 0 obj
-<< /Length 3334 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (direitos do programa, não ações, voto societário ou fração resgatável da tesouraria.) Tj T*
 () Tj T*
 (A missão amplia alternativas de participação econômica durante a transição da IA e robótica.) Tj T*
 (Transparência, compreensão, responsabilidade e prestação de contas orientam a operação, sem) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 3178 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (renda ou proteção de capital garantidas.) Tj T*
 () Tj T*
 (Token, captação e queima) Tj T*
@@ -121,20 +175,20 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Somente USDC confirmado e conciliado entra no saldo disponível. Envios incertos não autorizam) Tj T*
 (repetição nem são recursos recuperados. Correções mantêm histórico e efeitos únicos, sem débito) Tj T*
 (automático na carteira pessoal.) Tj T*
-ET
-endstream
-endobj
-8 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
-endobj
-9 0 obj
-<< /Length 1169 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Governança e integrações) Tj T*
 () Tj T*
 (Políticas evoluem por versões aprovadas. Administração define política; multisig 2 de 3) Tj T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 1022 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (controla custódia; executores atuam dentro dos mandatos. Mudanças sensíveis aguardam no mínimo) Tj T*
 (24h; rotina já mandatada não exige nova assinatura por operação. IA não amplia as próprias) Tj T*
 (permissões.) Tj T*
@@ -154,18 +208,20 @@ ET
 endstream
 endobj
 xref
-0 10
+0 12
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000127 00000 n 
-0000000224 00000 n 
-0000000350 00000 n 
-0000003360 00000 n 
-0000003486 00000 n 
-0000006872 00000 n 
-0000006998 00000 n 
-trailer << /Size 10 /Root 1 0 R >>
+0000000134 00000 n 
+0000000231 00000 n 
+0000000357 00000 n 
+0000003791 00000 n 
+0000003917 00000 n 
+0000007124 00000 n 
+0000007250 00000 n 
+0000010480 00000 n 
+0000010608 00000 n 
+trailer << /Size 12 /Root 1 0 R >>
 startxref
-8219
+11683
 %%EOF

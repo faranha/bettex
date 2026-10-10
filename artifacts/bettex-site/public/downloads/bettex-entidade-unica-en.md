@@ -1,5 +1,23 @@
 BETTEX — entity and rules
 
+Legal and regulatory compliance
+
+Every BETTEX launch must already comply with the legal environment of the markets where the solution will be offered. Releasing each agent, feature and category requires a specific technical and legal investigation and compliance with applicable requirements. A roadmap date does not replace this condition.
+
+The analysis identifies the country of the offering, the audience served, the nature of the activity, the responsible entity and the providers used. Company domicile, offering location and execution location are assessed separately; permission in one country does not authorize activity in another.
+
+The investigation checks official sources, the effective dates and scope of rules, required licenses and authorizations, provider terms, advertising, user protection, identification and anti-money laundering, data protection and tax obligations, as applicable. Legal and technical staff record the evidence, analysis date, conditions and required controls.
+
+Each combination of agent, activity and territory must have its scope documented: under investigation, restricted or authorized for launch. Release requires a favorable legal assessment, authorizations where required and validated technical controls. A pending investigation, prohibition or missing required authorization prevents offering and operation in that territory.
+
+If casino or iGaming is prohibited in Brazil at the time of the offering, that category will not be offered to the Brazilian audience. If prediction markets cannot legally be offered in Brazil, agents in that category will not be released for that market. These are conditional examples: the conclusion depends on a current investigation of the specific activity, not a general statement in this documentation.
+
+The assessment also covers token minting and offering, advertising, in-app games, financial services and each integration. API availability, blockchain use, a foreign license or a partner launchpad do not replace local authorization. Mint authorization does not automatically authorize agents or other features.
+
+Before each expansion, compliance is reassessed for the new territory and activity. Regulatory, license, provider or product changes require review. Loss of a required condition suspends affected new offerings and operations; existing positions and obligations receive specific treatment under legal guidance and risk controls.
+
+Territorial availability conditions must be communicated to users and reflected in eligibility, access and execution controls. Evidence, responsible parties, conditions, validity or review periods and decisions are recorded. This section defines launch requirements; it does not claim licenses obtained, completed legal opinions or authorized agents.
+
 Financing: sources and uses of funds
 
 Angel contributions allocate 100% of funds to product, technology and marketing, with no founder salaries or withdrawals. The 15% token allocation does not impose a funding split: agreements identify sources, uses and rights.

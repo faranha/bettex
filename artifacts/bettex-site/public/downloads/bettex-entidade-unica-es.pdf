@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 3 /Kids [4 0 R 6 0 R 8 0 R] >>
+<< /Type /Pages /Count 4 /Kids [4 0 R 6 0 R 8 0 R 10 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,10 +12,68 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2929 >>
+<< /Length 3528 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — entidad y reglas) Tj T*
+() Tj T*
+(Adecuación legal y jurídica) Tj T*
+() Tj T*
+(Cada lanzamiento de BETTEX debe estar adecuado al entorno jurídico de los mercados donde se) Tj T*
+(ofrecerá la solución. La habilitación de cada agente, funcionalidad y categoría depende de una) Tj T*
+(investigación técnico-legal específica y del cumplimiento de los requisitos aplicables. Una) Tj T*
+(fecha en la hoja de ruta no sustituye esta condición.) Tj T*
+() Tj T*
+(El análisis identifica el país de la oferta, el público atendido, la naturaleza de la) Tj T*
+(actividad, la entidad responsable y los proveedores utilizados. El domicilio de la empresa, el) Tj T*
+(lugar de la oferta y el de ejecución se evalúan por separado; un permiso en un país no autoriza) Tj T*
+(la actuación en otro.) Tj T*
+() Tj T*
+(La investigación verifica fuentes oficiales, vigencia y alcance de las normas, licencias y) Tj T*
+(autorizaciones necesarias, condiciones de los proveedores, publicidad, protección del usuario,) Tj T*
+(identificación y prevención del lavado de dinero, protección de datos y obligaciones) Tj T*
+(tributarias, según corresponda. Los responsables jurídicos y técnicos registran las evidencias,) Tj T*
+(la fecha del análisis, las condiciones y los controles exigidos.) Tj T*
+() Tj T*
+(Cada combinación de agente, actividad y territorio debe tener su alcance documentado: en) Tj T*
+(investigación, restringido o autorizado para el lanzamiento. La habilitación depende de un) Tj T*
+(análisis jurídico favorable, autorizaciones cuando sean exigidas y validación de los controles) Tj T*
+(técnicos. Una investigación pendiente, una prohibición o la falta de autorización necesaria) Tj T*
+(impide la oferta y la operación en ese territorio.) Tj T*
+() Tj T*
+(Si el casino o iGaming está prohibido en Brasil en la fecha de la oferta, esa categoría no se) Tj T*
+(ofrecerá al público brasileño. Si los mercados de predicción no pueden ofrecerse legalmente en) Tj T*
+(Brasil, los agentes de esa categoría no se habilitarán para ese mercado. Son ejemplos) Tj T*
+(condicionales: la conclusión depende de la investigación vigente sobre la actividad concreta,) Tj T*
+(no de una afirmación general en esta documentación.) Tj T*
+() Tj T*
+(La evaluación también abarca el mint y la oferta del token, su publicidad, los juegos de la) Tj T*
+(aplicación, los servicios financieros y cada integración. La disponibilidad de una API, el uso) Tj T*
+(de blockchain, una licencia extranjera o un launchpad asociado no sustituyen la autorización) Tj T*
+(local. La autorización del mint no autoriza automáticamente los agentes ni las demás) Tj T*
+(funcionalidades.) Tj T*
+() Tj T*
+(Antes de cada expansión, la adecuación se reevalúa para el nuevo territorio y la nueva) Tj T*
+(actividad. Los cambios regulatorios, de licencia, proveedor o producto exigen revisión. La) Tj T*
+(pérdida de una condición necesaria suspende las nuevas ofertas y operaciones afectadas; las) Tj T*
+(posiciones y obligaciones existentes reciben un tratamiento específico según la orientación) Tj T*
+(jurídica y los controles de riesgo.) Tj T*
+() Tj T*
+(Las condiciones de disponibilidad por territorio deben comunicarse al usuario y reflejarse en) Tj T*
+(los controles de elegibilidad, acceso y ejecución. Se registran las evidencias, los) Tj T*
+(responsables, las condiciones, el plazo de validez o revisión y las decisiones. Esta sección) Tj T*
+(define requisitos para el lanzamiento; no declara licencias obtenidas, dictámenes concluidos ni) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 2924 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(agentes autorizados.) Tj T*
 () Tj T*
 (Financiación: origen y destino de los recursos) Tj T*
 () Tj T*
@@ -66,10 +124,10 @@ BT /F1 10 Tf 14 TL 48 790 Td
 ET
 endstream
 endobj
-6 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
-7 0 obj
+9 0 obj
 << /Length 3373 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
@@ -124,10 +182,10 @@ BT /F1 10 Tf 14 TL 48 790 Td
 ET
 endstream
 endobj
-8 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
-9 0 obj
+11 0 obj
 << /Length 1702 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
@@ -160,18 +218,20 @@ ET
 endstream
 endobj
 xref
-0 10
+0 12
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000127 00000 n 
-0000000224 00000 n 
-0000000350 00000 n 
-0000003331 00000 n 
-0000003457 00000 n 
-0000006882 00000 n 
-0000007008 00000 n 
-trailer << /Size 10 /Root 1 0 R >>
+0000000134 00000 n 
+0000000231 00000 n 
+0000000357 00000 n 
+0000003937 00000 n 
+0000004063 00000 n 
+0000007039 00000 n 
+0000007165 00000 n 
+0000010590 00000 n 
+0000010718 00000 n 
+trailer << /Size 12 /Root 1 0 R >>
 startxref
-8762
+12473
 %%EOF
