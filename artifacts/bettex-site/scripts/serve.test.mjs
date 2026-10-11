@@ -7,6 +7,7 @@ import { mkdtemp, readFile, writeFile, symlink, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
+import { AI_HTTP_AGENTS, AI_ROBOTS_TOKENS, isRestrictedAiAgent, robotsPolicy } from './crawler-policy.mjs';
 
 const server = createSiteServer();
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -51,6 +52,52 @@ function get(url, headers = {}, method = 'GET') {
     req.end();
   });
 }
+
+test('known AI agents cannot retrieve pages, app routes or assets, including HEAD and ranges', async () => {
+  for (const agent of AI_HTTP_AGENTS) {
+    const headers = { 'User-Agent': `Mozilla/5.0 (compatible; ${agent}/1.0)` };
+    for (const url of ['/', '/en/pitch/', '/app/central', '/bettex-mark.svg', '/assets/example.js']) {
+      const response = await get(url, headers);
+      assert.equal(response.status, 403, `${agent}: ${url}`);
+      assert.equal(response.headers['cache-control'], 'private, no-store');
+      assert.match(response.headers.vary, /User-Agent/i);
+      assert.doesNotMatch(response.body, /<html|<svg|BETTEX/);
+    }
+    const head = await get('/pitch/', headers, 'HEAD');
+    assert.equal(head.status, 403);
+    assert.equal(head.body, '');
+    assert.equal((await get('/bettex-mark.svg', { ...headers, Range: 'bytes=0-9' })).status, 403);
+  }
+});
+test('AI agents can read robots.txt, which preserves ordinary search and the canonical sitemap', async () => {
+  const expected = robotsPolicy(seo.origin);
+  assert.equal(await readFile(new URL('../public/robots.txt', import.meta.url), 'utf8'), expected);
+  for (const agent of AI_HTTP_AGENTS) {
+    const response = await get('/robots.txt?policy=1', { 'User-Agent': agent });
+    assert.equal(response.status, 200);
+    assert.equal(response.body, expected);
+    assert.equal(response.headers['cache-control'], 'no-cache');
+  }
+  const head = await get('/robots.txt', { 'User-Agent': 'GPTBot' }, 'HEAD');
+  assert.equal(head.status, 200);
+  assert.equal(head.body, '');
+  const [ordinary, ai] = expected.split('# Restrict');
+  assert.match(ordinary, /User-agent: \*\nAllow: \//);
+  for (const agent of AI_ROBOTS_TOKENS) assert.ok(ai.includes(`User-agent: ${agent}\n`), agent);
+  assert.match(ai, /Disallow: \//);
+  assert.doesNotMatch(ai, /User-agent: (Googlebot|bingbot|Applebot)\n/i);
+  assert.ok(expected.includes(`Sitemap: ${seo.origin}/sitemap.xml`));
+});
+test('search crawlers, social previews and humans keep access without broad bot matching', async () => {
+  for (const agent of ['Googlebot/2.1', 'bingbot/2.0', 'Applebot/0.1', 'TelegramBot', 'facebookexternalhit/1.1', 'Twitterbot/1.0', 'Mozilla/5.0 Chrome/131.0', 'NotClaudeBot/1.0', 'Google-Extended', 'Applebot-Extended']) {
+    assert.equal(isRestrictedAiAgent(agent), false, agent);
+    assert.equal((await get('/', { 'User-Agent': agent })).status, 200, agent);
+  }
+  assert.equal(isRestrictedAiAgent(undefined), false);
+  assert.equal(isRestrictedAiAgent('gPtBoT/1.4'), true);
+  assert.equal((await get('/bettex-mark.svg', { 'User-Agent': 'Googlebot/2.1' })).status, 200);
+  assert.match((await get('/pitch/')).headers.vary, /User-Agent/i);
+});
 
 test('legacy domain permanently redirects with path and complete query intact', async () => {
   for (const url of ['/', '/pitch/', '/en/documentation/?utm_source=telegram&ref=a%2Fb', '/robots.txt', '//example.org/x']) {

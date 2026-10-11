@@ -1,5 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
+import { robotsPolicy, restrictAiCrawler } from './crawler-policy.mjs';
 import { pageSchema } from '../src/lib/seo-schema.ts';
 import { demoView, demoPageTitle, demoPath } from '../src/components/demo/demo-navigation.ts';
 
@@ -75,7 +76,7 @@ export function withMetadata(html, path, overrides) {
 export function discovery() {
   const urls = Object.entries(routes).filter(([, page]) => page.index).map(([path, page]) => `<url><loc>${escape(`${seo.origin}${canonicalPath(path)}`)}</loc>${languages.map(lang => `<xhtml:link rel="alternate" hreflang="${lang === 'pt' ? 'pt-BR' : lang}" href="${seo.origin}${canonicalPath(localizedPath(page.page, lang))}"/>`).join('')}</url>`).join('\n');
   return {
-    robots: `User-agent: *\nAllow: /\nDisallow: /social-preview.html\nSitemap: ${seo.origin}/sitemap.xml\n`,
+    robots: robotsPolicy(seo.origin),
     sitemap: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}</urlset>\n`,
   };
 }
@@ -103,6 +104,7 @@ export function seoPlugin(base) {
     },
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
+        if (restrictAiCrawler(req, res, `${prefix}/robots.txt`)) return;
         if (redirectTrailingSlash(req, res)) return;
         const path = (req.url ?? '').split('?')[0].replace(prefix, '');
         if (path !== '/robots.txt' && path !== '/sitemap.xml') return next();
@@ -113,6 +115,7 @@ export function seoPlugin(base) {
     },
     configurePreviewServer(server) {
       server.middlewares.use((req, res, next) => {
+        if (restrictAiCrawler(req, res, `${prefix}/robots.txt`)) return;
         if (redirectTrailingSlash(req, res)) return;
         let route;
         try { route = decodeURIComponent(new URL(req.url, 'http://localhost').pathname).replace(prefix, '') || '/'; }
