@@ -39,7 +39,6 @@
 .footer-ai__ring { fill: none; stroke: #F2B632; stroke-width: .9; stroke-opacity: .4; transform-box: fill-box; transform-origin: center; animation: footer-ai-pulse 5s ease-in-out infinite; }
 .footer-ai circle[stroke="#2B59FF"] { stroke-width: .9; stroke-opacity: .55; }
 .footer-ai__pulse { transform-box: fill-box; transform-origin: center; animation: footer-ai-pulse 3.4s ease-in-out infinite; }
-.footer-ai__label { font: 700 11px system-ui,sans-serif; letter-spacing: .25px; fill: #F2B632; }
 @keyframes footer-ai-flow { to { stroke-dashoffset: -22; } }
 @keyframes footer-ai-pulse { 50% { transform: scale(1.06); opacity: .24; } }
 @media (max-width: 1023px) { .footer-ai { right: 0; top: auto; bottom: 0; width: 100%; height: 300px; -webkit-mask-image: none; mask-image: none; } }

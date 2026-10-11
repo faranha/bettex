@@ -32,7 +32,7 @@ export function FooterAiGraph() {
     <line className="footer-ai__link" x1="450" y1="130" x2="560" y2="200" />
     <circle cx="380" cy="210" r="120" fill={`url(#${id}c)`} className="footer-ai__halo" opacity=".18" />
     <circle cx="380" cy="210" r="46" className="footer-ai__ring" /><circle cx="380" cy="210" r="30" fill="#070B1F" stroke="#F2B632" strokeWidth="1.1" />
-    <text x="380" y="214" textAnchor="middle" className="footer-ai__label">BETTEX</text>
+    <image href={`${import.meta.env.BASE_URL}bettex-mark-gamblefi.svg`} x="358" y="188" width="44" height="44" preserveAspectRatio="xMidYMid meet" />
     <circle cx="200" cy="90" r="28.5" fill="#9fc0ff" opacity=".18" className="footer-ai__pulse" style={{ animationDelay: "0.0s" }} /><circle cx="200" cy="90" r="15" fill={`url(#${id}n)`} stroke="#2B59FF" strokeWidth="2" />
     <circle cx="230" cy="330" r="24.7" fill="#9fc0ff" opacity=".18" className="footer-ai__pulse" style={{ animationDelay: "0.3s" }} /><circle cx="230" cy="330" r="13" fill={`url(#${id}n)`} stroke="#2B59FF" strokeWidth="2" />
     <circle cx="520" cy="70" r="26.599999999999998" fill="#9fc0ff" opacity=".18" className="footer-ai__pulse" style={{ animationDelay: "0.6s" }} /><circle cx="520" cy="70" r="14" fill={`url(#${id}n)`} stroke="#2B59FF" strokeWidth="2" />
