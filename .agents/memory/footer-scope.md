@@ -27,6 +27,14 @@ O rodapé não deve exibir o bloco “Redes do fundador”, seu nome ou os links
 
 **How to apply:** Manter o rodapé voltado ao projeto. Não estender essa remoção aos perfis do fundador nas seções próprias nem ao LinkedIn aprovado junto ao retrato do pitch.
 
+O perfil https://x.com/bettexai é a comunidade oficial do projeto no X,
+aprovada para o rodapé como “Comunidade no X”.
+
+**Why:** O criador forneceu esse endereço e pediu “como nossa comunidade no X”.
+
+**How to apply:** Tratar esse perfil como canal do projeto, não como rede
+pessoal do fundador. Preservar também o convite ao Telegram no rodapé compartilhado.
+
 O rodapé deve priorizar navegação eficaz e pouca altura, sobretudo no mobile.
 
 **Why:** O criador apontou que o rodapé ocupava muito espaço e não estava eficaz, mostrando os grupos de links empilhados no celular.

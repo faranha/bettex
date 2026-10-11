@@ -13,15 +13,31 @@ Não exibir Central da IA como item do menu principal do app.
 
 **Why:** Depois de integrar a Central à home, o criador corrigiu: “central da IA pode sumir do menu principal”.
 
-**How to apply:** A Central permanece abaixo das carteiras no Painel, acessível pela âncora interna. Não reintroduzir um destino separado no menu desktop ou no menu lateral mobile. Preservar os links antigos.
+**How to apply:** A Central permanece abaixo das carteiras no Painel, acessível pela âncora interna. Não reintroduzir uma página independente no menu desktop ou lateral. No mobile, um atalho agrupado sob Painel pode apontar para essa âncora. Preservar os links antigos.
 
-Tesouraria é um submenu do Painel, não um destino do menu principal.
+Tesouraria é uma página própria no menu principal, fora da página inicial.
 
-**Why:** O criador corrigiu: “tesouraria eh um submenu no painel”.
+**Why:** A orientação anterior de integrar a Tesouraria no Painel foi
+substituída: “Nós vamos tirar a tesouraria da página inicial”, porque o
+atalho no menu hambúrguer dava a impressão de abrir uma página sem fazê-lo.
 
-**How to apply:** Manter a Tesouraria completa dentro do Painel, com suas
-áreas e detalhes acessíveis. Links antigos devem chegar à âncora da
-Tesouraria sem perder os filtros nem a seleção de agentes.
+**How to apply:** Manter a Tesouraria completa na sua própria rota, com
+seleção de página clara no cabeçalho e nos menus. Migrar antigos links
+da âncora do Painel sem perder os filtros, mantendo o conteúdo fora da home.
+
+O menu hambúrguer precisa dar acesso também às seções internas do Painel:
+Carteiras, Central da IA e Participação. Agrupar esses atalhos
+sob Painel, preservando a propriedade das seções; incluir Tesouraria, Histórico,
+Perfil, Voltar ao site e comunidade.
+
+**Why:** Ao ver somente Painel, Histórico e Telegram no menu, o criador
+corrigiu: “não tem todas as áreas”. A solução deve conciliar acesso
+completo com a orientação de manter Central no Painel e a posterior
+separação da Tesouraria.
+
+**How to apply:** Não confundir retirar uma página independente com esconder
+seu acesso do menu mobile. Os atalhos internos precisam fechar o diálogo
+antes do alinhamento final, sem a restauração do foco puxar a página ao topo.
 
 O submenu do Painel deve continuar acessível durante a rolagem, fixo
 abaixo do cabeçalho, também no celular.
@@ -32,6 +48,15 @@ e pediu melhorar a navegabilidade da área Painel.
 **How to apply:** Considerar as alturas reais do cabeçalho e submenu nos
 destinos das âncoras, sem encobrir títulos. Destacar a seção acompanhada
 na rolagem sem reescrever a URL nem perder a seleção dos agentes.
+
+Os submenus de todas as páginas do app devem ser sticky sob o cabeçalho,
+não somente o submenu do Painel.
+
+**Why:** O criador mostrou o Histórico e reiterou: “Os submenus têm que ser sticky”.
+
+**How to apply:** Manter a seleção acessível durante a rolagem em Histórico,
+Tesouraria e Perfil, com rolagem horizontal em telas estreitas, sem cobrir
+conteúdo nem compensar a altura das barras duas vezes em links profundos.
 
 History contains statements and records without repeating balance cards or the complete wallet block.
 

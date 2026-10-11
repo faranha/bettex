@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Bot, CircleDollarSign, ClipboardList, Coins, Dices, GitCompareArrows, Hand, Landmark, Layers, Maximize2, Minimize2, Move3d, Radar, RotateCcw, RotateCw, Scale, ScrollText, ShieldAlert, Target, Trophy, Waypoints, Wallet, Workflow, ZoomIn, ZoomOut, BarChart3, Users, Gem, Flame, Percent, HandCoins, Ticket, History, LayoutDashboard, Milestone, ChevronUp, ChevronDown, type LucideIcon } from 'lucide-react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { Bot, CircleDollarSign, ClipboardList, Coins, Dices, GitCompareArrows, Hand, Landmark, Layers, Maximize2, Minimize2, Move3d, Radar, RotateCcw, RotateCw, Scale, ScrollText, ShieldAlert, Target, Trophy, Waypoints, Wallet, Workflow, ZoomIn, ZoomOut, BarChart3, Users, Gem, Flame, Percent, HandCoins, Ticket, History, LayoutDashboard, Milestone, SlidersHorizontal, ChevronUp, ChevronDown, type LucideIcon } from 'lucide-react';
 import { useGetDemoPolymarket } from '@workspace/api-client-react';
 import { useFmt } from '../alpha-trading/format';
 import { useL } from './CentralAgents';
@@ -82,12 +82,24 @@ export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImme
     cam.api.focusOn(pos(p), narrow ? [w / 2, h * 0.2] : [Math.max(w * 0.3, (w - Math.min(660, w * 0.5)) / 2), h / 2], narrow ? 1 : 1);
   }, [sel?.id, sel?.k, narrow, w, h]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const [dockOpen, setDockOpen] = useState(false); const dockId = useId(); const toggleRef = useRef<HTMLButtonElement>(null);
   const rt = route(sel);
   const keyAct = (fn: () => void) => ({ onClick: fn });
   const tb = 'cg-tool'; const tool = { 'data-demo-local': '' }; const nm = (id: string) => L(nodeOf(id).name);
   void centerOf;
 
-  return <div className="cg-scene" ref={cam.ref} {...cam.handlers} data-testid="graph-scene" data-mode={mode} role="group" tabIndex={-1}
+  const cmds = <>
+      <button type="button" {...tool} className={tb} data-testid="button-graph-zoom-in" aria-label={x('Aproximar', 'Zoom in', 'Acercar')} title={x('Aproximar (+)', 'Zoom in (+)', 'Acercar (+)')} onClick={() => cam.api.zoomBy(1.25)}><ZoomIn aria-hidden="true" /></button>
+      <button type="button" {...tool} className={tb} data-testid="button-graph-zoom-out" aria-label={x('Afastar', 'Zoom out', 'Alejar')} title={x('Afastar (-)', 'Zoom out (-)', 'Alejar (-)')} onClick={() => cam.api.zoomBy(0.8)}><ZoomOut aria-hidden="true" /></button>
+      <button type="button" {...tool} className={tb} data-testid="button-graph-rotate-left" aria-label={x('Girar para a esquerda', 'Orbit left', 'Girar a la izquierda')} onClick={() => cam.api.orbitBy(-0.2, 0)}><RotateCcw aria-hidden="true" /></button>
+      <button type="button" {...tool} className={tb} data-testid="button-graph-rotate-right" aria-label={x('Girar para a direita', 'Orbit right', 'Girar a la derecha')} onClick={() => cam.api.orbitBy(0.2, 0)}><RotateCw aria-hidden="true" /></button>
+      <button type="button" {...tool} className={tb} data-testid="button-graph-tilt-up" aria-label={x('Inclinar para cima', 'Tilt up', 'Inclinar hacia arriba')} onClick={() => cam.api.orbitBy(0, -0.15)}><ChevronUp aria-hidden="true" /></button>
+      <button type="button" {...tool} className={tb} data-testid="button-graph-tilt-down" aria-label={x('Inclinar para baixo', 'Tilt down', 'Inclinar hacia abajo')} onClick={() => cam.api.orbitBy(0, 0.15)}><ChevronDown aria-hidden="true" /></button>
+      <button type="button" {...tool} className={`${tb} ${mode === 'pan' ? 'act' : ''}`} data-testid="button-graph-mode" aria-pressed={mode === 'pan'} aria-label={mode === 'pan' ? x('Modo mover ativo: arrastar desloca a cena', 'Move mode active: dragging pans the scene', 'Modo mover activo: arrastrar desplaza la escena') : x('Modo girar ativo: arrastar gira a cena', 'Orbit mode active: dragging rotates the scene', 'Modo girar activo: arrastrar gira la escena')} title={mode === 'pan' ? x('Mover', 'Move', 'Mover') : x('Girar', 'Orbit', 'Girar')} onClick={() => setMode(m => m === 'pan' ? 'orbit' : 'pan')}>{mode === 'pan' ? <Hand aria-hidden="true" /> : <Move3d aria-hidden="true" />}</button>
+      <button type="button" {...tool} className={tb} data-testid="button-graph-reset" aria-label={x('Reiniciar vista', 'Reset view', 'Reiniciar vista')} title={x('Reiniciar vista (0)', 'Reset view (0)', 'Reiniciar vista (0)')} onClick={cam.api.reset}><span aria-hidden="true" className="cg-r0">1:1</span></button>
+</>;
+  const immBtn = <button type="button" {...tool} className={tb} data-testid="button-graph-immersive" aria-pressed={immersive} aria-label={immersive ? x('Sair da tela ampla', 'Exit wide view', 'Salir de la vista amplia') : x('Tela ampla', 'Wide view', 'Vista amplia')} onClick={onImmersive}>{immersive ? <Minimize2 aria-hidden="true" /> : <Maximize2 aria-hidden="true" />}</button>
+  return <div className="cg-shell"><div className="cg-scene" ref={cam.ref} {...cam.handlers} data-testid="graph-scene" data-mode={mode} role="group" tabIndex={-1}
     aria-label={x('Cena 3D da Central de IA: arraste para girar, use os controles para mover e ampliar', 'AI Center 3D scene: drag to rotate, use the controls to move and zoom', 'Escena 3D de la Central de IA: arrastre para girar, use los controles para mover y ampliar')}>
     <canvas ref={cv} className="cg-canvas" aria-hidden="true" data-testid="graph-canvas" style={{ width: '100%', height: '100%' }} />
     {EDGES.map(e => <button key={e.id} type="button" disabled={e.planned} ref={el => { els.current[`e-${e.id}`] = el; }} data-testid={`graph-edge-${e.id}`} data-focus-key={`e-${e.id}`} aria-pressed={sel?.k === 'edge' && sel.id === e.id}
@@ -98,7 +110,7 @@ export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImme
       return <button key={n.id} type="button" ref={el => { els.current[`n-${n.id}`] = el; }} data-demo-local data-testid={`graph-node-${n.id}`} data-focus-key={`n-${n.id}`} aria-pressed={on} aria-label={`${L(n.name)}, ${L(n.sub)}`}
         className={`cg-node ${n.kind} ${n.group ?? ''} ${on ? 'sel' : ''} ${dim ? 'dim' : ''}`} {...keyAct(() => onSelect({ k: 'node', id: n.id }))}>
         <span className="cg-orb"><I aria-hidden="true" /></span><span className="cg-label"><b>{L(n.name)}</b><i>{L(n.sub)}</i>{n.kind === 'spec' && <small className="cg-public-price">{x('Polymarket', 'Polymarket', 'Polymarket')} · {quote ? `${(quote.yesPrice * 100).toLocaleString(loc, { maximumFractionDigits: 1 })}¢` : x('Sem cotação', 'No quote', 'Sin cotización')}</small>}</span></button>; })}
-    <div className="cg-tools" role="toolbar" aria-label={x('Controles da câmera', 'Camera controls', 'Controles de cámara')}>
+    {!narrow && <div className="cg-tools" role="toolbar" aria-label={x('Controles da câmera', 'Camera controls', 'Controles de cámara')}>
       <button type="button" {...tool} className={tb} data-testid="button-graph-zoom-in" aria-label={x('Aproximar', 'Zoom in', 'Acercar')} title={x('Aproximar (+)', 'Zoom in (+)', 'Acercar (+)')} onClick={() => cam.api.zoomBy(1.25)}><ZoomIn aria-hidden="true" /></button>
       <button type="button" {...tool} className={tb} data-testid="button-graph-zoom-out" aria-label={x('Afastar', 'Zoom out', 'Alejar')} title={x('Afastar (-)', 'Zoom out (-)', 'Alejar (-)')} onClick={() => cam.api.zoomBy(0.8)}><ZoomOut aria-hidden="true" /></button>
       <button type="button" {...tool} className={tb} data-testid="button-graph-rotate-left" aria-label={x('Girar para a esquerda', 'Orbit left', 'Girar a la izquierda')} onClick={() => cam.api.orbitBy(-0.2, 0)}><RotateCcw aria-hidden="true" /></button>
@@ -108,7 +120,15 @@ export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImme
       <button type="button" {...tool} className={`${tb} ${mode === 'pan' ? 'act' : ''}`} data-testid="button-graph-mode" aria-pressed={mode === 'pan'} aria-label={mode === 'pan' ? x('Modo mover ativo: arrastar desloca a cena', 'Move mode active: dragging pans the scene', 'Modo mover activo: arrastrar desplaza la escena') : x('Modo girar ativo: arrastar gira a cena', 'Orbit mode active: dragging rotates the scene', 'Modo girar activo: arrastrar gira la escena')} title={mode === 'pan' ? x('Mover', 'Move', 'Mover') : x('Girar', 'Orbit', 'Girar')} onClick={() => setMode(m => m === 'pan' ? 'orbit' : 'pan')}>{mode === 'pan' ? <Hand aria-hidden="true" /> : <Move3d aria-hidden="true" />}</button>
       <button type="button" {...tool} className={tb} data-testid="button-graph-reset" aria-label={x('Reiniciar vista', 'Reset view', 'Reiniciar vista')} title={x('Reiniciar vista (0)', 'Reset view (0)', 'Reiniciar vista (0)')} onClick={cam.api.reset}><span aria-hidden="true" className="cg-r0">1:1</span></button>
       <button type="button" {...tool} className={tb} data-testid="button-graph-immersive" aria-pressed={immersive} aria-label={immersive ? x('Sair da tela ampla', 'Exit wide view', 'Salir de la vista amplia') : x('Tela ampla', 'Wide view', 'Vista amplia')} onClick={onImmersive}>{immersive ? <Minimize2 aria-hidden="true" /> : <Maximize2 aria-hidden="true" />}</button>
-    </div>
+    </div>}
     <p className="cg-legend" aria-hidden="true"><span className="d c" />{x('Agentes inteligentes', 'Intelligent agents', 'Agentes inteligentes')} <span className="d w" />{x('Em breve, ligado por linha tracejada', 'Upcoming, dashed link', 'Próximamente, enlace discontinuo')}</p>
+    </div>
+    {narrow && <div className="cg-dock" data-demo-local onKeyDown={e => { if (e.key === 'Escape' && dockOpen) { e.stopPropagation(); setDockOpen(false); toggleRef.current?.focus(); } }}>
+      <div className="cg-dock-bar">
+        <button ref={toggleRef} type="button" data-demo-local className="cg-dock-toggle" data-testid="button-graph-controls-toggle" aria-expanded={dockOpen} aria-controls={dockId} onClick={() => setDockOpen(v => !v)}><SlidersHorizontal aria-hidden="true" /><span>{dockOpen ? x('Ocultar câmera', 'Hide camera', 'Ocultar cámara') : x('Câmera', 'Camera', 'Cámara')}</span></button>
+        {immBtn}
+      </div>
+      <div id={dockId} className="cg-dock-panel" role="toolbar" hidden={!dockOpen} aria-label={x('Controles da câmera', 'Camera controls', 'Controles de cámara')}>{cmds}</div>
+    </div>}
   </div>;
 }

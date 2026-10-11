@@ -18,9 +18,9 @@ import { DemoSubmenu, useSection } from './DemoSubmenu';
 const IDS = ['summary', 'assets', 'statement', 'buyback', 'round'] as const;
 
 /** Complete Treasury presentation recovered with local illustrative data only. */
-export function MockTreasuryPanel({ d, embedded = false }: { d: DemoDashboard; embedded?: boolean }) {
+export function MockTreasuryPanel({ d }: { d: DemoDashboard }) {
   const { x } = useX();
-  const [sec, setSec] = useSection(IDS, embedded ? 'treasurySection' : 'section');
+  const [sec, setSec] = useSection(IDS);
   const r = d.treasury.currentRound;
   const items = [
     { id: 'summary' as const, label: x('Resumo', 'Summary', 'Resumen') },
@@ -30,7 +30,7 @@ export function MockTreasuryPanel({ d, embedded = false }: { d: DemoDashboard; e
     { id: 'round' as const, label: x('Rodada', 'Round', 'Ronda') },
   ];
   return <TreasuryDemoProvider><div className="grid min-w-0 gap-4" data-testid="page-treasury-mock">
-    {embedded ? <h2 className="display text-lg font-extrabold">{x('Tesouraria', 'Treasury', 'Tesorería')}</h2> : <h1 className="sr-only">{x('Tesouraria', 'Treasury', 'Tesorería')}</h1>}
+    <h1 className="sr-only">{x('Tesouraria', 'Treasury', 'Tesorería')}</h1>
     {r ? <>
       <DemoSubmenu items={items} value={sec} onChange={setSec} panelId="treasury-panel" testIdPrefix="tab-treasury" label={x('Área da tesouraria', 'Treasury area', 'Área de la tesorería')} />
       <section data-testid="treasury-overview" id="treasury-panel" role="tabpanel" aria-labelledby={`treasury-panel-tab-${sec}`} className="grid min-w-0 gap-4">

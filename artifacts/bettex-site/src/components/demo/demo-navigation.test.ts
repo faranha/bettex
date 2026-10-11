@@ -9,7 +9,7 @@ test('reloadable addresses preserve identity and redirect integrated areas into 
       assert.equal(demoView(path), view);
       assert.equal(demoView(path + '/'), view);
       assert.equal(demoView(path.replace('/app', '/demo')), view);
-      assert.equal(demoRedirect(path, language, '?wallet=earnings'), view === 'central' || view === 'treasury' ? `/app?wallet=earnings#${view}` : null);
+      assert.equal(demoRedirect(path, language, '?wallet=earnings'), view === 'central' ? `/app?wallet=earnings#${view}` : null);
     }
   }
   for (const language of ['pt', 'en', 'es'] as const) {
@@ -33,7 +33,7 @@ test('old profile finance paths and query tabs migrate without losing filters or
         `${demoPath('wallet', language)}?wallet=USDC`);
       assert.equal(demoRedirect(`${root}/profile`, language), demoPath('account', language));
       assert.equal(demoRedirect(`${root}/security/password`, language), demoPath('account', language));
-      assert.equal(demoRedirect(`${root}/policies`, language), `${demoPath('home', language)}?tab=policies#treasury`);
+      assert.equal(demoRedirect(`${root}/policies`, language), `${demoPath('treasury', language)}?tab=policies`);
     }
     for (const legacy of ['/app/saldo', '/app/balance']) {
       assert.equal(demoRedirect(legacy, language, '?wallet=BETTEX'), `${demoPath('wallet', language)}?wallet=BETTEX`);
@@ -70,9 +70,15 @@ test('AI Center links target the home anchor with query before hash', () => {
   assert.equal(demoRedirect('/app', 'pt', '?section=participation'), null);
 });
 
-test('Treasury links and legacy pages reach the Dashboard without losing treasury filters', () => {
+test('Treasury has its own page; old embedded bookmarks preserve filters in all languages', () => {
   for (const language of ['pt', 'en', 'es'] as const) {
-    assert.equal(demoHref('treasury', language, '?node=btc'), '/app?node=btc#treasury');
-    assert.equal(demoRedirect(demoPath('treasury', language), language, '?section=assets&node=btc'), '/app?node=btc&treasurySection=assets#treasury');
+    const treasury = demoPath('treasury', language);
+    assert.equal(demoHref('treasury', language, '?node=btc'), `${treasury}?node=btc`);
+    assert.equal(demoRedirect(treasury, language, '?section=assets&node=btc'), null);
+    assert.equal(demoRedirect('/app', language, '?node=btc&treasurySection=assets', '#treasury'), `${treasury}?node=btc&section=assets`);
+    assert.equal(demoRedirect('/app', language, '', '#treasury'), treasury);
+    assert.equal(demoRedirect('/app', language, '?section=treasury'), treasury);
+    assert.equal(demoRedirect(treasury, language, '?treasurySection=round'), `${treasury}?section=round`);
+    assert.equal(demoRedirect('/app/treasury', language, '?section=assets'), language === 'en' ? null : `${treasury}?section=assets`);
   }
 });

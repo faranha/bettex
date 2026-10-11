@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import { useRef, type KeyboardEvent } from 'react';
+import { useEffect, useRef, type KeyboardEvent } from 'react';
 import { useLocation, useSearch } from 'wouter';
 
 export type SubmenuItem<T extends string = string> = { id: T; label: string };
@@ -9,6 +9,15 @@ export function DemoSubmenu<T extends string>({ items, value, onChange, label, p
   items: SubmenuItem<T>[]; value: T; onChange: (id: T) => void; label: string; panelId?: string; testIdPrefix?: string;
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const bar = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const nav = bar.current;
+    const active = refs.current[items.findIndex(item => item.id === value)];
+    if (!nav || !active) return;
+    const a = active.getBoundingClientRect(), b = nav.getBoundingClientRect();
+    if (a.left < b.left) nav.scrollLeft += a.left - b.left;
+    else if (a.right > b.right) nav.scrollLeft += a.right - b.right;
+  }, [value, items]);
   const onKey = (e: KeyboardEvent) => {
     const n = items.length; const cur = Math.max(0, items.findIndex(i => i.id === value)); let i = cur;
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') i = (cur + 1) % n;
@@ -18,11 +27,11 @@ export function DemoSubmenu<T extends string>({ items, value, onChange, label, p
     else return;
     e.preventDefault(); onChange(items[i].id); refs.current[i]?.focus();
   };
-  return <div role="tablist" aria-label={label} onKeyDown={onKey} className="flex min-w-0 max-w-full flex-wrap gap-2">
+  return <div ref={bar} role="tablist" aria-label={label} onKeyDown={onKey} data-testid="page-submenu" data-submenu={testIdPrefix} className="demo-submenu flex min-w-0 max-w-full gap-2">
     {items.map((a, i) => <button key={a.id} ref={el => { refs.current[i] = el; }} type="button" role="tab" id={panelId ? `${panelId}-tab-${a.id}` : undefined}
       aria-selected={value === a.id} aria-controls={panelId} tabIndex={value === a.id ? 0 : -1}
       data-testid={testIdPrefix ? `${testIdPrefix}-${a.id}` : undefined} onClick={() => onChange(a.id)}
-      className={`min-h-10 max-w-full rounded-xl border px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B] ${value === a.id ? 'border-[#0E7C6B] bg-[#0E7C6B] text-white' : 'border-[#E4DCCB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#E9EEE5]'}`}>{a.label}</button>)}
+      className={`min-h-10 shrink-0 whitespace-nowrap rounded-xl border px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B] ${value === a.id ? 'border-[#0E7C6B] bg-[#0E7C6B] text-white' : 'border-[#E4DCCB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#E9EEE5]'}`}>{a.label}</button>)}
   </div>;
 }
 

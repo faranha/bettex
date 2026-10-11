@@ -27,7 +27,7 @@ export function MockHistoryPanel({ d }: { d: DemoDashboard }) {
   const root = useHistoryAnchor(area, search);
   const areas: { id: HistoryArea; label: string }[] = [
     { id: 'wallets', label: x('Carteiras', 'Wallets', 'Carteras') },
-    { id: 'treasury', label: x('Tesouraria e recompra', 'Treasury and buyback', 'Tesorería y recompra') },
+    { id: 'treasury', label: x('Tesouraria', 'Treasury', 'Tesorería') },
     { id: 'rounds', label: x('Rodadas', 'Rounds', 'Rondas') },
     { id: 'audit', label: x('Auditoria', 'Audit', 'Auditoría') },
   ];

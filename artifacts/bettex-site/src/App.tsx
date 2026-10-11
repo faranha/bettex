@@ -33,7 +33,7 @@ import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
 import { legacyDocumentationHashes } from '@/lib/documentation-aliases';
 import { FloatingCommunityCTA, TelegramIcon } from '@/components/CommunityCTA';
-import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
+import { TELEGRAM_COMMUNITY_URL, X_COMMUNITY_URL } from '@/lib/community';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { PitchSectionNav } from '@/components/pitch/PitchSectionNav';
 import { HomeSectionNav } from '@/components/HomeSectionNav';
@@ -217,6 +217,10 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             <LanguageSelector className="sf-lang" showLabel />
             <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="sf-community" data-community-source="footer" data-testid="link-community-footer-nav"><TelegramIcon className="sf-community__icon" /><span>Entre na comunidade</span></a>
           </div>
+          <a href={X_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-testid="link-community-x-footer" className="inline-flex min-h-10 w-fit items-center gap-2 text-sm font-semibold text-[#e1e7f4] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4F1E8]">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="sf-community__icon" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.153h7.594l5.243 6.932 6.064-6.932ZM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644Z" /></svg>
+            <span>Comunidade no X</span>
+          </a>
         </div>
         <nav aria-label="Explorar o projeto" className="sf-group">
           <h3 className="mono">Explore</h3>

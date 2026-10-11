@@ -34,8 +34,8 @@ test('dashboard wallets do not reserve obsolete mobile footer space before staki
   assert.match(r('./WalletsDashboard.tsx'), /grid min-w-0 gap-4/);
 });
 
-test('main menu keeps Dashboard and History; Treasury and AI Center belong inside Dashboard', () => {
-  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'wallet'\]/);
+test('main menu has Dashboard, Treasury and History; AI Center remains inside Dashboard', () => {
+  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'treasury', 'wallet'\]/);
   assert.match(r('../app/AppHeader.tsx'), /APP_AREAS\.map/);
   const page = r('../../pages/demo.tsx');
   assert.match(page, /tab === 'home' && <WalletsDashboard/);
@@ -53,6 +53,20 @@ test('integrated AI graph is direct content, without the removed support tabs', 
   assert.doesNotMatch(graph, /section === 'agents' &&/);
   assert.match(graph, /data-testid="central-graph"/);
   assert.match(graph, /<CentralInspector/);
+});
+
+test('mobile drawer exposes all dashboard sections, Profile and website without promoting nested areas', () => {
+  const nav = r('./MobileAreaNav.tsx');
+  assert.match(nav, /APP_AREAS: DemoView\[\] = \['home', 'treasury', 'wallet'\]/);
+  assert.match(nav, /k === 'home' && <ul/);
+  assert.match(nav, /PANEL_SECTIONS\.map/);
+  assert.match(nav, /nav-mobile-account/);
+  assert.match(nav, /nav-mobile-website/);
+  assert.match(nav, /search \? `\?\$\{search\}`/);
+  assert.match(nav, /onCloseAutoFocus/);
+  assert.match(nav, /focus\(\{ preventScroll: true \}\)/);
+  assert.match(nav, /requestAnchor\(target\)/);
+  assert.match(nav, /aria-current=\{current === 'home' && activeSection === id \? 'location'/);
 });
 
 test('account history keeps statements but does not repeat balances or wallet cards', () => {
