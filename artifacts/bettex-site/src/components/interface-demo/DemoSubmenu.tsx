@@ -31,6 +31,6 @@ export function useSection<T extends string>(ids: readonly T[], param = 'section
   const search = useSearch(); const [path, navigate] = useLocation();
   const q = new URLSearchParams(search).get(param);
   const value = (ids as readonly string[]).includes(q ?? '') ? q as T : ids[0];
-  const set = (id: T) => { const p = new URLSearchParams(search); p.set(param, id); navigate(`${path}?${p.toString()}`); };
+  const set = (id: T) => { const p = new URLSearchParams(search); p.set(param, id); navigate(`${path}?${p.toString()}${window.location.hash}`); };
   return [value, set];
 }

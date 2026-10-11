@@ -3,6 +3,17 @@ name: Deslocamento das âncoras sob navegação fixa
 description: Ao mudar a altura da navegação, conferir a rolagem JavaScript e o índice fixo, não apenas scroll-margin.
 ---
 
+Aplicar o deslocamento das barras fixas apenas uma vez. `scroll-padding`
+global e `scroll-margin` do destino são cumulativos; rolagem com comportamento
+`auto` também pode herdar o `smooth` do site institucional.
+
+**Why:** O submenu fixo parecia correto, mas as âncoras do Painel continuavam
+terminando antes da seção esperada e o criador reiterou o problema.
+
+**How to apply:** Conferir a posição final contra a borda inferior das barras
+reais em desktop e mobile, incluindo cliques repetidos e links diretos.
+Não presumir que a soma escrita no CSS corresponde à posição final no navegador.
+
 No mobile, o menu principal do hambúrguer deve abrir diretamente abaixo da linha principal do header, sobre qualquer submenu da página, nunca abaixo dele.
 
 **Why:** O criador explicou que as páginas acessadas pelo hambúrguer são primárias e o menu principal não pode parecer secundário.

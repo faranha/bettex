@@ -22,4 +22,15 @@ test('sticky submenu is below the header, above normal content and horizontally 
   const page = readFileSync(new URL('./InterfaceDemoPage.tsx', import.meta.url), 'utf8');
   assert.match(page, /scrollMarginTop: 'calc\(var\(--site-header-h, 56px\) \+ var\(--panel-submenu-h, 56px\) \+ 12px\)'/);
   assert.match(page, /root\.style\.removeProperty\('--panel-submenu-h'\)/);
+  assert.match(page, /event\.preventDefault\(\)/);
+  assert.match(page, /last\.current = target;\s*setActive\(i\.id\);\s*scrollToBlock\(i\.id\)/);
+  assert.match(page, /behavior: 'instant'/);
+  assert.doesNotMatch(page, /el\.scrollIntoView/);
+});
+
+test('Treasury becomes the active panel section once its heading reaches the submenu', () => {
+  assert.equal(visiblePanelSection([
+    { id: 'wallets', top: -3400 }, { id: 'central', top: -2400 },
+    { id: 'participation', top: -1400 }, { id: 'treasury', top: 172 },
+  ], 172), 'treasury');
 });

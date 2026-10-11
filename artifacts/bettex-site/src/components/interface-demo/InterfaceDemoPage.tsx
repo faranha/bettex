@@ -11,7 +11,6 @@ import { StakingCorridor } from '../demo/StakingCorridor';
 import { CentralDemo } from './CentralDemo';
 import { MockProfilePanel } from './MockProfilePanel';
 import { MockHistoryPanel } from './MockHistoryPanel';
-import { TreasuryHomeEntry } from './TreasuryHomeEntry';
 import { MockTreasuryPanel } from './MockTreasuryPanel';
 import { openDemoNotice, visualDashboard } from './runtime';
 import { MOCK_WALLET_ADDRESSES } from './mock-addresses';
@@ -22,7 +21,13 @@ const ANCHOR_TOP = { scrollMarginTop: 'calc(var(--site-header-h, 56px) + var(--p
 
 function scrollToBlock(id: string) {
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ block: 'start', behavior: 'auto' });
+  if (!el) return;
+  const header = document.querySelector('[data-testid="app-header"]');
+  const nav = document.querySelector('[data-testid="home-anchors"]');
+  const offset = panelScrollOffset(header?.getBoundingClientRect().height ?? 56, nav?.getBoundingClientRect().height ?? 56);
+  // Explicit coordinates avoid adding global scroll-padding to the target's scroll-margin.
+  // Instant also avoids inheriting the institutional site's smooth scrolling.
+  window.scrollTo({ top: Math.max(0, window.scrollY + el.getBoundingClientRect().top - offset), behavior: 'instant' });
 }
 
 function HomeAreas({ d }: { d: ReturnType<typeof visualDashboard> }) {
@@ -78,24 +83,41 @@ function HomeAreas({ d }: { d: ReturnType<typeof visualDashboard> }) {
     else if (chipBounds.right > navBounds.right) nav.scrollLeft += chipBounds.right - navBounds.right;
   }, [active]);
   useEffect(() => {
-    // Legacy ?section=wallets|participation and #hash both land on the matching block; nothing is hidden.
+    // Bookmarks and in-page navigation share the same measured offset.
     const legacy = new URLSearchParams(window.location.search).get('section');
-    const initial = window.location.hash.slice(1) || (legacy === 'wallets' || legacy === 'participation' ? legacy : '');
-    const frame = initial ? requestAnimationFrame(() => scrollToBlock(initial)) : 0;
+    const initial = window.location.hash.slice(1) || HOME_BLOCKS.find(id => id === legacy) || '';
+    let frame = 0;
+    let cancelled = false;
+    const schedule = (id: string) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => { if (!cancelled) scrollToBlock(id); });
+    };
+    if (initial) schedule(initial);
+    const settle = () => { if (initial && !cancelled && window.location.hash.slice(1) === initial) schedule(initial); };
+    void document.fonts.ready.then(settle);
+    window.addEventListener('load', settle, { once: true });
     const onHash = () => {
       if (window.location.hash === last.current) return;
-      last.current = window.location.hash; scrollToBlock(last.current.slice(1));
+      last.current = window.location.hash; schedule(last.current.slice(1));
     };
-    const onAnchor = (e: Event) => scrollToBlock(String((e as CustomEvent).detail));
+    const onAnchor = (e: Event) => schedule(String((e as CustomEvent).detail));
     const types = ['pushState', 'popstate', 'hashchange'];
     types.forEach(t => window.addEventListener(t, onHash));
     window.addEventListener(DEMO_ANCHOR_EVENT, onAnchor);
-    return () => { cancelAnimationFrame(frame); types.forEach(t => window.removeEventListener(t, onHash)); window.removeEventListener(DEMO_ANCHOR_EVENT, onAnchor); };
+    return () => { cancelled = true; cancelAnimationFrame(frame); window.removeEventListener('load', settle); types.forEach(t => window.removeEventListener(t, onHash)); window.removeEventListener(DEMO_ANCHOR_EVENT, onAnchor); };
   }, []);
-  const items = [{ id: HOME_BLOCKS[0], label: x('Carteiras', 'Wallets', 'Carteras') }, { id: HOME_BLOCKS[1], label: x('Central da IA', 'AI Center', 'Central de IA') }, { id: HOME_BLOCKS[2], label: x('Participação', 'Participation', 'Participación') }];
+  const items = [{ id: HOME_BLOCKS[0], label: x('Carteiras', 'Wallets', 'Carteras') }, { id: HOME_BLOCKS[1], label: x('Central da IA', 'AI Center', 'Central de IA') }, { id: HOME_BLOCKS[2], label: x('Participação', 'Participation', 'Participación') }, { id: HOME_BLOCKS[3], label: x('Tesouraria', 'Treasury', 'Tesorería') }];
   return <>
     <nav ref={submenu} aria-label={x('Atalhos do painel', 'Dashboard shortcuts', 'Atajos del panel')} className="panel-submenu" data-testid="home-anchors">
-      {items.map(i => <a key={i.id} href={`#${i.id}`} aria-current={active === i.id ? 'location' : undefined} data-testid={`anchor-home-${i.id}`} className={`inline-flex min-h-10 shrink-0 items-center whitespace-nowrap rounded-xl border px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B] ${active === i.id ? 'border-[#0E7C6B] bg-[#0E7C6B] text-white' : 'border-[#E4DCCB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#E9EEE5]'}`}>{i.label}</a>)}
+      {items.map(i => <a key={i.id} href={`#${i.id}`} onClick={event => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        const target = `#${i.id}`;
+        if (window.location.hash !== target) window.history.pushState(window.history.state, '', `${window.location.pathname}${window.location.search}${target}`);
+        last.current = target;
+        setActive(i.id);
+        scrollToBlock(i.id);
+      }} aria-current={active === i.id ? 'location' : undefined} data-testid={`anchor-home-${i.id}`} className={`inline-flex min-h-10 shrink-0 items-center whitespace-nowrap rounded-xl border px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B] ${active === i.id ? 'border-[#0E7C6B] bg-[#0E7C6B] text-white' : 'border-[#E4DCCB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#E9EEE5]'}`}>{i.label}</a>)}
     </nav>
     <section id="wallets" style={ANCHOR_TOP} aria-label={items[0].label} className="grid min-w-0 gap-4">
       <DemoWalletsCard d={d} addresses={MOCK_WALLET_ADDRESSES} onWallet={openDemoNotice} onExport={openDemoNotice} />
@@ -107,7 +129,9 @@ function HomeAreas({ d }: { d: ReturnType<typeof visualDashboard> }) {
       </div>
     </section>
     <AgentShowcase showOtherAgents={false} showDisclaimer={false} />
-    <TreasuryHomeEntry d={d} />
+    <section id="treasury" style={ANCHOR_TOP} aria-label={items[3].label} className="grid min-w-0 gap-4">
+      <MockTreasuryPanel d={d} embedded />
+    </section>
   </>;
 }
 
@@ -117,13 +141,13 @@ export function InterfaceDemoPage() {
   const search = useSearch();
   const view = demoView(path) ?? 'home';
   const [d] = useState(visualDashboard);
-  const legacyCentral = view === 'central';
+  const legacyArea = view === 'central' || view === 'treasury';
   useEffect(() => {
     // Old /app/central bookmarks: keep query, then land on the home #central anchor.
-    if (!legacyCentral) return;
+    if (!legacyArea) return;
     const target = demoRedirect(path, loc, search, window.location.hash);
     if (target) navigate(target, { replace: true });
-  }, [legacyCentral, path, loc, search, navigate]);
+  }, [legacyArea, path, loc, search, navigate]);
   return <Rates.Provider value={{ r: d.balances.brlPerUsdc, bu: d.balances.bettexUsdc }}>
     <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10" data-testid="interface-demo-page">
       <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 px-3 pt-5 sm:px-5">

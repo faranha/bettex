@@ -34,8 +34,8 @@ test('dashboard wallets do not reserve obsolete mobile footer space before staki
   assert.match(r('./WalletsDashboard.tsx'), /grid min-w-0 gap-4/);
 });
 
-test('main menu keeps Dashboard, Treasury and History; integrated AI Center is not a separate destination', () => {
-  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'treasury', 'wallet'\]/);
+test('main menu keeps Dashboard and History; Treasury and AI Center belong inside Dashboard', () => {
+  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'wallet'\]/);
   assert.match(r('../app/AppHeader.tsx'), /APP_AREAS\.map/);
   const page = r('../../pages/demo.tsx');
   assert.match(page, /tab === 'home' && <WalletsDashboard/);

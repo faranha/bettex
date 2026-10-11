@@ -15,6 +15,14 @@ Não exibir Central da IA como item do menu principal do app.
 
 **How to apply:** A Central permanece abaixo das carteiras no Painel, acessível pela âncora interna. Não reintroduzir um destino separado no menu desktop ou no menu lateral mobile. Preservar os links antigos.
 
+Tesouraria é um submenu do Painel, não um destino do menu principal.
+
+**Why:** O criador corrigiu: “tesouraria eh um submenu no painel”.
+
+**How to apply:** Manter a Tesouraria completa dentro do Painel, com suas
+áreas e detalhes acessíveis. Links antigos devem chegar à âncora da
+Tesouraria sem perder os filtros nem a seleção de agentes.
+
 O submenu do Painel deve continuar acessível durante a rolagem, fixo
 abaixo do cabeçalho, também no celular.
 
