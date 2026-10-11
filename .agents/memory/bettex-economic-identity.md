@@ -3,6 +3,33 @@ name: Identidade econômica da BETTEX
 description: Definição econômica e posicionamento público aprovados pelo criador.
 ---
 
+## Direção comunitária atual
+
+A BETTEX é uma comunidade aberta; BETTEX é um token comunitário.
+Não há empresa ou fundação, salários ou taxas de serviço da BETTEX. A apresentação
+abre com comunidade e propósito, não ganhos do token. Mint, percentuais,
+vesting e mecanismos econômicos aprovados permanecem nas explicações técnicas.
+Esta orientação substitui o enquadramento comercial usado anteriormente.
+
+A motivação de contribuir sem benefício próprio permanece subjacente: não
+nomear esse conceito explicitamente em nenhum texto, em qualquer idioma.
+
+**Why:** O criador corrigiu o uso do rótulo e definiu: “Esse é um conceito subjacente”.
+
+**How to apply:** Usar “comunidade aberta”, sem rotular a motivação; a regra inclui
+textos públicos, metadados, traduções, materiais e orientações do projeto.
+
+**Why:** O criador definiu: “Nós não somos uma empresa, nós somos uma comunidade,
+esse token é um token de comunidade”, “não pode ter salário, não pode ter taxas”
+e pediu preservar “os tokenomics, o mint, os percentis já definidos”.
+
+**How to apply:** Alinhar site, Pitch, documentação, traduções, downloads e demo.
+No demo, retirar taxas também de cartões, filtros, rodadas e exportações, não
+apenas zerar números. Distinguir custos externos reais da rede de receitas da
+comunidade. Não afirmar isenção tributária nem que obrigações legais existem
+somente on-chain. Preservar direitos individuais e controles; não inventar
+voto automático ou propriedade resgatável da tesouraria.
+
 A identidade principal é DeFi com IA: trading com IA, um agente que vai atuar em vários mercados. A apresentação deve ser mais curta, com mais foco na proposta futura e na tokenomics, menos dados acessórios e menos estrutura institucional.
 
 **Why:** O criador definiu: “nosso projeto é DeFi, com IA, um agente, é trading com IA, um agente que vai atuar em vários mercados” e pediu “mais promessas, menos dados, menos estrutura - foco maior na tokenomics”.

@@ -66,7 +66,7 @@ const btnP = 'inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0
 const sel = 'min-h-11 min-w-0 w-full max-w-full rounded-xl border border-[#E4DCCB] bg-white px-2 text-sm';
 const chip = 'inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold';
 
-export function WalletStatement({ d }: { d: DemoDashboard }) {
+export function WalletStatement({ d, visualDemo = false }: { d: DemoDashboard; visualDemo?: boolean }) {
   const { x, tx, loc } = useX();
   const fl = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
   const nativeOk = !isDemoSession(d.profile) && d.profile.provider === 'native';
@@ -85,12 +85,12 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
   };
   const q = useWalletHistory(mode, d.profile.accountId);
   const actual = useMemo(() => q.data?.rows ?? [], [q.data]);
-  const base = actual;
+  const base = useMemo(() => visualDemo ? actual.filter(r => r.type !== 'fee' && r.kind !== 'gas_fee') : actual, [actual, visualDemo]);
   const filters = { wallet, type, state, search };
   const rows = useMemo(() => filterWalletHistory(base, filters), [base, wallet, type, state, search]);
   const states = useMemo(() => [...new Set(base.map(r => r.state))].sort(), [base]);
   const addresses = useMemo(() => [...new Set(base.map(r => r.walletAddress).filter((a): a is string => !!a))].sort(), [base]);
-  const types = useMemo(() => [...new Set([...Object.keys(TYPES), ...base.map(r => r.type)])], [base]);
+  const types = useMemo(() => [...new Set([...Object.keys(TYPES), ...base.map(r => r.type)])].filter(t => !visualDemo || t !== 'fee'), [base, visualDemo]);
   const reset = () => { setWallet(''); setType(''); setState(''); setSearch(''); selectWallet(''); };
   const filtered = !!(wallet || type || state || search.trim());
 
@@ -109,7 +109,7 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
   const dt = (v: string) => formatBrazilDateTime(v, fl);
   const short = (s: string) => s.length > 18 ? `${s.slice(0, 8)}…${s.slice(-6)}` : s;
 
-  const est = x('estimativa, taxa simulada atual', 'estimate, current simulated rate', 'estimación, tasa simulada actual');
+  const est = x('estimativa, cotação ilustrativa atual', 'estimate, current illustrative exchange rate', 'estimación, cotización ilustrativa actual');
   const brlLine = (r: WalletHistoryRow, fee: boolean) => {
     const v = brl(brlReference(r, d, fee));
     return v ? <span className="mt-1 block text-sm font-semibold text-[#3D4A63]" data-testid={fee ? `statement-brl-fee-${r.id}` : `statement-brl-${r.id}`}>≈ {v} <span className="block text-[10px] font-normal text-[#5B6B85]">{est}</span></span>
@@ -153,11 +153,11 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
         {noCredit && <p className="mt-1 text-xs font-semibold text-[#8C2B2B]">{x('Solicitação sem crédito concluído', 'Request without completed credit', 'Solicitud sin crédito completado')}</p>}
       </div>
       <div className="grid min-w-0 content-start gap-2">
-        <div className="min-w-0 rounded-xl border border-dashed border-[#D9CFB8] p-3">
+        {!visualDemo && <div className="min-w-0 rounded-xl border border-dashed border-[#D9CFB8] p-3">
           <p className="text-[11px] font-bold uppercase tracking-wide text-[#5B6B85]">{requestRecord ? x('Taxa cotada', 'Quoted fee', 'Comisión cotizada') : x('Taxa', 'Fee', 'Comisión')}</p>
           {hasFee ? <><p className="break-words text-sm font-bold tabular-nums">{qty(r.feeUsdc, 'USDC')} USDC</p>{brlLine(r, true)}</> : <p className="text-sm text-[#8A94A6]">{r.feeUsdc === null ? x('Taxa em USDC não registrada', 'USDC fee not recorded', 'Comisión en USDC no registrada') : x('Sem taxa em USDC', 'No USDC fee', 'Sin comisión en USDC')}</p>}
           {r.details.gasWei && <p className="mt-1 break-all text-xs tabular-nums">{x('Gás da rede', 'Network gas', 'Gas de la red')}: {qty(decimalQuantity(r.details.gasWei, 18))} ETH</p>}
-        </div>
+        </div>}
         <div className="min-w-0 text-[11px] text-[#5B6B85]">
           <p className="break-words">{x('Origem', 'Source', 'Origen')}: {SRC[r.source] ? tl(SRC, r.source, SRC.illustrative_example) : r.source} · {tl(ENVS, r.environment, ['Ambiente', 'Environment', 'Entorno'])}</p>
           <p className="break-all">ID: {short(r.id)}</p>
@@ -171,7 +171,7 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
 
   const dl = (rs: WalletHistoryRow[], k: 'csv' | 'json') => {
     if (q.isLoading || q.isError) return;
-    downloadWalletHistory(rs, d, k, 'actual');
+    downloadWalletHistory(rs, d, k, 'actual', visualDemo);
   };
   const lbl = 'grid min-w-0 gap-1 text-xs font-semibold text-[#5B6B85]';
   return <section id="wallet-statement" className="dcard grid min-w-0 w-full gap-4 p-4 sm:p-5" data-testid="wallet-statement">
@@ -179,9 +179,9 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
       <div className="min-w-0">
         <h3 className="display text-lg font-extrabold"><WalletHelp id="statement" label={x('Extrato da carteira', 'Wallet statement', 'Extracto de la billetera')}>
           <p>{x('Histórico de movimentos e rendimentos da sua conta. A fonte indicada distingue registros da simulação e registros nativos; não são somados como se fossem o mesmo saldo. Os atalhos de histórico de cada carteira já selecionam o filtro correspondente.', 'History of your account’s movements and earnings. The displayed source distinguishes simulation and native records; they are not added together as one balance. Each wallet’s history shortcut preselects its corresponding filter.', 'Historial de movimientos y ganancias de tu cuenta. La fuente indicada distingue registros de simulación y nativos; no se suman como si fueran un mismo saldo. El acceso al historial de cada cartera preselecciona su filtro correspondiente.')}</p>
-          <p>{x('Cada lançamento mostra sua quantidade, ativo e status. A equivalência em reais é aproximada pela referência atual, não pelo preço histórico de execução. Taxas são identificadas separadamente; não confunda um pedido pendente com uma operação confirmada.', 'Each entry shows its quantity, asset and status. The BRL equivalent is approximate at the current reference rate, not the historical execution price. Fees are identified separately; do not confuse a pending request with a confirmed operation.', 'Cada movimiento muestra su cantidad, activo y estado. La equivalencia en reales es aproximada con la referencia actual, no con el precio histórico de ejecución. Las tarifas se identifican por separado; no confundas una solicitud pendiente con una operación confirmada.')}</p>
+          <p>{x('Cada lançamento mostra sua quantidade, ativo e status. A equivalência em reais é aproximada pela referência atual, não pelo preço histórico de execução. Não confunda um pedido pendente com uma operação confirmada.', 'Each entry shows its quantity, asset and status. The BRL equivalent is approximate at the current reference rate, not the historical execution price. Do not confuse a pending request with a confirmed operation.', 'Cada movimiento muestra su cantidad, activo y estado. La equivalencia en reales es aproximada con la referencia actual, no con el precio histórico de ejecución. No confundas una solicitud pendiente con una operación confirmada.')}</p>
         </WalletHelp></h3>
-        <p className="mt-1 max-w-2xl text-xs text-[#5B6B85]">{x('Valores em BRL são estimativas a taxas simuladas atuais, não o preço de execução histórico. Cotação BETTEX nativa em BRL e ETH não estão disponíveis.', 'BRL values are estimates at current simulated rates, not the historical execution price. Native BETTEX BRL quote and ETH are unavailable.', 'Los valores en BRL son estimaciones a tasas simuladas actuales, no el precio de ejecución histórico. La cotización nativa de BETTEX en BRL y ETH no están disponibles.')}</p>
+        <p className="mt-1 max-w-2xl text-xs text-[#5B6B85]">{x('Valores em BRL são estimativas à cotação ilustrativa atual, não o preço histórico de execução. Cotação BETTEX nativa em BRL e ETH não estão disponíveis.', 'BRL values are estimates at the current illustrative exchange rate, not the historical execution price. Native BETTEX BRL quote and ETH are unavailable.', 'Los valores en BRL son estimaciones a la cotización ilustrativa actual, no al precio histórico de ejecución. La cotización nativa de BETTEX en BRL y ETH no están disponibles.')}</p>
       </div>
       <span className={`${chip} ${mode === 'native' ? 'bg-[#DDF0E4] text-[#0A6657]' : 'bg-[#F0E9DA] text-[#5B6B85]'}`} data-testid="statement-source">
         {mode === 'native' ? x('Registros nativos da conta', 'Native account records', 'Registros nativos de la cuenta') : x('Registros da simulação', 'Simulation records', 'Registros de la simulación')}
@@ -198,10 +198,10 @@ export function WalletStatement({ d }: { d: DemoDashboard }) {
         <p>{x('Todos os registros exporta os registros carregados da fonte selecionada, ignorando os filtros. Filtrados exporta somente os resultados dos filtros atuais, incluindo os que ficam abaixo da tela.', 'All records exports loaded records from the selected source, ignoring filters. Filtered exports only matches for the current filters, including entries below the viewport.', 'Todos los registros exporta los registros cargados de la fuente seleccionada, ignorando los filtros. Filtrados exporta solo los resultados de los filtros actuales, incluidos los que están debajo de la pantalla.')}</p>
         <p>{x('CSV é adequado para planilhas; JSON preserva dados estruturados para análise. Baixar não movimenta saldo. O arquivo pode conter endereços e seu histórico financeiro: compartilhe com cuidado. Registros da simulação não comprovam transações com dinheiro real.', 'CSV is suitable for spreadsheets; JSON preserves structured data for analysis. Downloading does not move funds. Files may contain addresses and your financial history: share carefully. Simulation records do not prove real-money transactions.', 'CSV es adecuado para hojas de cálculo; JSON conserva datos estructurados para análisis. Descargar no mueve saldo. El archivo puede contener direcciones y tu historial financiero: compártelo con cuidado. Los registros de simulación no prueban transacciones con dinero real.')}</p>
       </WalletHelp></div>
-      <p className="text-xs text-[#5B6B85]">{x(`Todos os ${actual.length} registros carregados da fonte selecionada (inclui rendimento e todas as operações de carteira).`, `All ${actual.length} loaded records from the selected source (includes yield and every wallet operation).`, `Los ${actual.length} registros cargados de la fuente seleccionada (incluye rendimiento y todas las operaciones).`)}</p>
+      <p className="text-xs text-[#5B6B85]">{x(`Todos os ${base.length} registros carregados da fonte selecionada (inclui rendimento e todas as operações de carteira).`, `All ${base.length} loaded records from the selected source (includes yield and every wallet operation).`, `Los ${base.length} registros cargados de la fuente seleccionada (incluye rendimiento y todas las operaciones).`)}</p>
       <div className="grid gap-2 sm:grid-cols-2 lg:flex lg:flex-wrap">
-        <button type="button" id="statement-download-all-csv" data-testid="statement-download-all-csv" className={btnP} disabled={q.isLoading || q.isError || !actual.length} onClick={() => dl(actual, 'csv')}>{x('Todos os registros (CSV)', 'All records (CSV)', 'Todos los registros (CSV)')}</button>
-        <button type="button" id="statement-download-all-json" data-testid="statement-download-all-json" className={btn} disabled={q.isLoading || q.isError || !actual.length} onClick={() => dl(actual, 'json')}>{x('Todos os registros (JSON)', 'All records (JSON)', 'Todos los registros (JSON)')}</button>
+        <button type="button" id="statement-download-all-csv" data-testid="statement-download-all-csv" className={btnP} disabled={q.isLoading || q.isError || !base.length} onClick={() => dl(base, 'csv')}>{x('Todos os registros (CSV)', 'All records (CSV)', 'Todos los registros (CSV)')}</button>
+        <button type="button" id="statement-download-all-json" data-testid="statement-download-all-json" className={btn} disabled={q.isLoading || q.isError || !base.length} onClick={() => dl(base, 'json')}>{x('Todos os registros (JSON)', 'All records (JSON)', 'Todos los registros (JSON)')}</button>
           <button type="button" id="statement-download-filtered-csv" data-testid="statement-download-filtered-csv" className={btn} disabled={q.isLoading || q.isError || !rows.length} onClick={() => dl(rows, 'csv')}>{x(`Filtrados (CSV, ${rows.length})`, `Filtered (CSV, ${rows.length})`, `Filtrados (CSV, ${rows.length})`)}</button>
           <button type="button" data-testid="statement-download-filtered-json" className={btn} disabled={q.isLoading || q.isError || !rows.length} onClick={() => dl(rows, 'json')}>{x(`Filtrados (JSON, ${rows.length})`, `Filtered (JSON, ${rows.length})`, `Filtrados (JSON, ${rows.length})`)}</button>
       </div>

@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 4 /Kids [4 0 R 6 0 R 8 0 R 10 0 R] >>
+<< /Type /Pages /Count 5 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,10 +12,10 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3537 >>
+<< /Length 3548 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(BETTEX — reglas y administración) Tj T*
+(BETTEX — comunidad, reglas y administración) Tj T*
 () Tj T*
 (Adecuación legal y jurídica) Tj T*
 () Tj T*
@@ -70,7 +70,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 2953 >>
+<< /Length 2889 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (agentes autorizados.) Tj T*
@@ -89,7 +89,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (El precio pertenece al vendedor. No genera nueva captación ni beneficio de la tesorería, ni) Tj T*
 (adelanta el vesting.) Tj T*
 () Tj T*
-(En ALFA solo se cobrarán tasas de red. La demo es visual y no realiza cobros.) Tj T*
+(BETTEX no cobra comisiones de servicio. Las transacciones reales pueden requerir costos) Tj T*
+(externos de la red, que no son ingresos de la comunidad. La demo es exclusivamente visual, sin) Tj T*
+(comisiones ni cobros.) Tj T*
 () Tj T*
 (Burn Lottery y Double 2X) Tj T*
 () Tj T*
@@ -119,8 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Administración y propósito) Tj T*
 () Tj T*
-(BETTEX es un proyecto DeFi que construye un agente de trading con IA para actuar en diferentes) Tj T*
-(mercados. El token BETTEX conecta a los usuarios con la economía del proyecto y la distribución) Tj T*
 ET
 endstream
 endobj
@@ -128,10 +128,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3120 >>
+<< /Length 3010 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(de resultados, cuando hay beneficio elegible, sin propiedad de la tesorería ni voto automático.) Tj T*
+(BETTEX es una comunidad abierta que construye tecnología DeFi y agentes de IA. BETTEX es el) Tj T*
+(token de la comunidad, sin empresa ni fundación, salarios ni comisiones de servicio. Los) Tj T*
+(recursos y el desarrollo tienen una finalidad comunitaria; las carteras personales siguen) Tj T*
+(perteneciendo a sus titulares.) Tj T*
 () Tj T*
 (Los fundadores administran inicialmente y mantienen el control de los contratos. Las funciones) Tj T*
 (pasan gradualmente a la IA, con evidencias y límites, sin plazo definido. Esto no transfiere el) Tj T*
@@ -140,10 +143,10 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (La participación de la comunidad en las decisiones aún se delimitará. No hay DAO, voto por) Tj T*
 (token ni renuncia de ownership definidos.) Tj T*
 () Tj T*
-(BETTEX sigue la dirección DeFi y DEX, sin empresa física o entidad a constituir. El fundador y) Tj T*
-(el equipo conducen la administración inicial. Agentes de IA asumirán gradualmente esas) Tj T*
-(funciones hasta hacer al agente BETTEX operacionalmente independiente y autónomo. Este objetivo) Tj T*
-(es futuro y no elimina controles o responsabilidades aplicables.) Tj T*
+(El fundador y el equipo organizan la administración inicial de la comunidad. Los agentes de IA) Tj T*
+(asumirán funciones gradualmente hasta que el agente BETTEX sea operativamente independiente y) Tj T*
+(autónomo. Ese objetivo es futuro y no elimina los controles ni las responsabilidades) Tj T*
+(aplicables.) Tj T*
 () Tj T*
 (La transparencia, la responsabilidad y la rendición de cuentas orientan la operación, sin) Tj T*
 (ingresos ni protección del capital garantizados.) Tj T*
@@ -176,9 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Staking y liquidación) Tj T*
 () Tj T*
-(Quien entra durante una ronda recibe cero de esa ronda, incluso sobre beneficios generados) Tj T*
-(después de su entrada, y participa solo en la próxima. El saldo confirmado y elegible se fija) Tj T*
-(al inicio; los aumentos durante la ronda solo participan en la siguiente.) Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,12 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 3324 >>
+<< /Length 3593 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Quien entra durante una ronda recibe cero de esa ronda, incluso sobre beneficios generados) Tj T*
+(después de su entrada, y participa solo en la próxima. El saldo confirmado y elegible se fija) Tj T*
+(al inicio; los aumentos durante la ronda solo participan en la siguiente.) Tj T*
 () Tj T*
 (Peso individual = BETTEX elegible al inicio  x  duración completa de la ronda, sin salida. Los) Tj T*
 (nuevos participantes y los saldos recibidos durante una ronda tienen peso cero en ella; los) Tj T*
@@ -233,26 +236,38 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Arbitrum/Gamma fueron verificadas; esto no define la red de lanzamiento. Otros ejemplos sin) Tj T*
 (acceso privado son simulaciones. No ha habido operaciones con dinero real.) Tj T*
 () Tj T*
-(Plan comercial y lanzamiento en el Pitch: https://bettex.ai/es/pitch#publico) Tj T*
+(Comunidad y lanzamiento en el Pitch: https://bettex.ai/es/pitch#publico) Tj T*
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 40 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 ET
 endstream
 endobj
 xref
-0 12
+0 14
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000134 00000 n 
-0000000231 00000 n 
-0000000357 00000 n 
-0000003946 00000 n 
-0000004072 00000 n 
-0000007077 00000 n 
-0000007203 00000 n 
-0000010375 00000 n 
-0000010503 00000 n 
-trailer << /Size 12 /Root 1 0 R >>
+0000000141 00000 n 
+0000000238 00000 n 
+0000000364 00000 n 
+0000003964 00000 n 
+0000004090 00000 n 
+0000007031 00000 n 
+0000007157 00000 n 
+0000010219 00000 n 
+0000010347 00000 n 
+0000013993 00000 n 
+0000014121 00000 n 
+trailer << /Size 14 /Root 1 0 R >>
 startxref
-13880
+14212
 %%EOF

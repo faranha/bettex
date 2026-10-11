@@ -38,9 +38,9 @@ export function MockHistoryPanel({ d }: { d: DemoDashboard }) {
         onClick={() => navigate(`${demoPath('wallet', loc)}?${(() => { const p = new URLSearchParams(search); p.set('history', a.id); return p.toString(); })()}`)}
         className={`min-h-11 rounded-xl border px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] ${area === a.id ? 'border-[#0E7C6B] bg-[#0E7C6B] text-white' : 'border-[#E4DCCB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#E9EEE5]'}`}>{a.label}</button>)}
     </nav>
-    {area === 'rounds' && <div data-demo-local className="min-w-0"><RoundHistory key="round-history" d={hd} /></div>}
+    {area === 'rounds' && <div data-demo-local className="min-w-0"><RoundHistory key="round-history" d={hd} visualDemo /></div>}
     {area === 'treasury' && <section className="dcard min-w-0 p-4 sm:p-5"><TreasuryDemoProvider><DemoTreasuryStatement d={d} /></TreasuryDemoProvider></section>}
-    {area === 'wallets' && <div data-demo-local className="min-w-0"><WalletStatement key={d.profile.accountId} d={hd} /></div>}
+    {area === 'wallets' && <div data-demo-local className="min-w-0"><WalletStatement key={d.profile.accountId} d={hd} visualDemo /></div>}
     {area === 'audit' && <section id="history-audit" data-demo-local className="dcard grid min-w-0 gap-4 p-4 sm:p-5">
       <h3 className="display text-lg font-extrabold">{x('Auditoria detalhada e operações relacionadas', 'Detailed audit and related operations', 'Auditoría detallada y operaciones relacionadas')}</h3>
       <HistoryPanel mode="demo" accountKey={d.profile.accountId} treasuryAccess={false} visualDemo />

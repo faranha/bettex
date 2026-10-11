@@ -118,8 +118,9 @@ for suffix, expected_sheets in expected_workbooks.items():
         assert len(worksheet_files) == len(expected_sheets), f"{file}: missing or unexpected worksheet files"
         raw=' '.join(z.read(n).decode() for n in z.namelist() if n.endswith('.xml'))
         for pattern in obsolete: assert not re.search(pattern,raw,re.I), f"{file}: obsolete material"
-        alternative = z.read('xl/worksheets/sheet1.xml').decode()
-        assert re.search(r'taxas de rede|network fees|tasas de red', alternative, re.I), f"{file}: missing ALPHA network-cost disclosure"
+        alternative = ' '.join(ElementTree.fromstring(z.read('xl/worksheets/sheet1.xml')).itertext())
+        assert re.search(r'custos externos da rede|external network costs|costos externos de la red', alternative, re.I), f"{file}: missing external network-cost disclosure"
+        assert re.search(r'não cobra taxas de serviço|does not charge service fees|no cobra comisiones de servicio', alternative, re.I), f"{file}: missing community no-service-fee rule"
         assert not re.search(r'contribuição por serviços|service contribution|contribución por servicios|Em avaliação', alternative, re.I), f"{file}: operating-funding proposal reintroduced"
         assert '<v>2.5</v>' not in alternative, f"{file}: fixed fee reintroduced"
         assert 'Tarifa confirmada' not in raw, f"{file}: confirmed fee reintroduced"

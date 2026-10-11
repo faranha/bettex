@@ -5,7 +5,7 @@ export function ServiceFees() {
     <span id="documentacao-provisao-taxas" aria-hidden="true" />
     <span id="documentacao-gross-up" aria-hidden="true" />
     <div className="whitepaper__prose">
-      <p>No ALFA, serão cobradas apenas taxas de rede. O demo é visual e não efetua cobranças.</p>
+      <p>A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, que não são receita da comunidade. O demo é exclusivamente visual, sem taxas ou cobranças.</p>
     </div>
   </section>;
 }

@@ -1,6 +1,8 @@
 # BETTEX
 
-BETTEX is an alpha-stage technology application for coordinating AI-agent
+BETTEX is an open community building DeFi technology and a community token, without salaries or BETTEX service fees. The visual demo has no charges. This repository preserves the approved mint, allocations and technical tokenomics.
+
+The planned application coordinates AI-agent
 proposals, deterministic risk controls, treasury activity and cycle-based
 participation. This repository includes the public site, Pitch, product
 documentation, development application and a test-only smart-contract library.

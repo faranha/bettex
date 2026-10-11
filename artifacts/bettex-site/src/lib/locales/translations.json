@@ -1,4 +1,132 @@
 {
+  "BETTEX | Comunidade aberta e token comunitário": {
+    "en": "BETTEX | Open community and community token",
+    "es": "BETTEX | Comunidad abierta y token comunitario"
+  },
+  "BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA. Token comunitário, colaboração sem salários e sem taxas de serviço.": {
+    "en": "BETTEX is an open community building DeFi technology and AI agents. A community token, with collaboration without salaries or service fees.",
+    "es": "BETTEX es una comunidad abierta que construye tecnología DeFi y agentes de IA. Token comunitario, colaboración sin salarios ni comisiones de servicio."
+  },
+  "Pitch BETTEX | Comunidade, tokenomics e roadmap": {
+    "en": "BETTEX Pitch | Community, tokenomics and roadmap",
+    "es": "Pitch BETTEX | Comunidad, tokenomics y roadmap"
+  },
+  "Conheça a comunidade BETTEX: propósito, tecnologia DeFi, agentes de IA, token comunitário, tokenomics, lançamento e riscos.": {
+    "en": "Learn about the BETTEX community: purpose, DeFi technology, AI agents, community token, tokenomics, launch and risks.",
+    "es": "Conoce la comunidad BETTEX: propósito, tecnología DeFi, agentes de IA, token comunitario, tokenomics, lanzamiento y riesgos."
+  },
+  "Documentação da comunidade BETTEX em seis capítulos: visão, agente e mercados, tokenomics, participação e resultados, roadmap, administração e riscos.": {
+    "en": "BETTEX community documentation in six chapters: vision, agent and markets, tokenomics, participation and results, roadmap, administration and risks.",
+    "es": "Documentación de la comunidad BETTEX en seis capítulos: visión, agente y mercados, tokenomics, participación y resultados, roadmap, administración y riesgos."
+  },
+  "Demo BETTEX | Interface visual da comunidade": {
+    "en": "BETTEX Demo | Community visual interface",
+    "es": "Demo BETTEX | Interfaz visual de la comunidad"
+  },
+  "Conheça a interface visual da comunidade BETTEX: agentes, carteiras e tesouraria ilustrativos, sem dinheiro real, taxas ou operações financeiras.": {
+    "en": "Explore the BETTEX community’s visual interface: illustrative agents, wallets and treasury, with no real money, fees or financial operations.",
+    "es": "Conoce la interfaz visual de la comunidad BETTEX: agentes, carteras y tesorería ilustrativos, sin dinero real, comisiones ni operaciones financieras."
+  },
+  "A BETTEX nasce dessa visão: uma comunidade aberta que constrói tecnologia DeFi e agentes de IA, com colaboração sem salários, sem taxas de serviço e com regras públicas para os recursos comunitários.": {
+    "en": "BETTEX was born from this vision: an open community building DeFi technology and AI agents, with collaboration without salaries or service fees and public rules for community resources.",
+    "es": "BETTEX nace de esta visión: una comunidad abierta que construye tecnología DeFi y agentes de IA, con colaboración sin salarios ni comisiones de servicio y reglas públicas para los recursos comunitarios."
+  },
+  "A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, que não são receita da comunidade. O demo é exclusivamente visual, sem taxas ou cobranças.": {
+    "en": "BETTEX does not charge service fees. Real transactions may require external network costs, which are not community revenue. The demo is exclusively visual, with no fees or charges.",
+    "es": "BETTEX no cobra comisiones de servicio. Las transacciones reales pueden requerir costos externos de la red, que no son ingresos de la comunidad. La demo es exclusivamente visual, sin comisiones ni cobros."
+  },
+  "A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, que não são receita da comunidade. O demo é exclusivamente visual, sem taxas ou cobranças. Envio não equivale a confirmação.": {
+    "en": "BETTEX does not charge service fees. Real transactions may require external network costs, which are not community revenue. The demo is exclusively visual, with no fees or charges. Sending does not mean confirmation.",
+    "es": "BETTEX no cobra comisiones de servicio. Las transacciones reales pueden requerir costos externos de la red, que no son ingresos de la comunidad. La demo es exclusivamente visual, sin comisiones ni cobros. Enviar no equivale a confirmar."
+  },
+  "A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA. BETTEX é o token da comunidade, sem empresa ou fundação, sem salários e sem taxas de serviço. Recursos e desenvolvimento têm finalidade comunitária; as carteiras pessoais continuam pertencendo aos seus titulares.": {
+    "en": "BETTEX is an open community building DeFi technology and AI agents. BETTEX is the community token, with no company or foundation, salaries or service fees. Resources and development serve a community purpose; personal wallets remain the property of their holders.",
+    "es": "BETTEX es una comunidad abierta que construye tecnología DeFi y agentes de IA. BETTEX es el token de la comunidad, sin empresa ni fundación, salarios ni comisiones de servicio. Los recursos y el desarrollo tienen una finalidad comunitaria; las carteras personales siguen perteneciendo a sus titulares."
+  },
+  "A BETTEX é uma comunidade aberta, construída com tecnologia DeFi e negociação prevista em DEX. BETTEX é o token da comunidade, não uma ação de empresa ou fundação. A colaboração é sem salários e sem taxas de serviço. O fundador e o time organizam a administração inicial; agentes de IA assumirão gradualmente funções, com mandatos e controles verificáveis. A autonomia é um objetivo futuro, não uma capacidade já disponível.": {
+    "en": "BETTEX is an open community built with DeFi technology, with trading planned on a DEX. BETTEX is the community token, not equity in a company or foundation. Collaboration is without salaries or service fees. The founder and team organize initial administration; AI agents will gradually take on functions under verifiable mandates and controls. Autonomy is a future goal, not an already available capability.",
+    "es": "BETTEX es una comunidad abierta, construida con tecnología DeFi y negociación prevista en DEX. BETTEX es el token de la comunidad, no una acción de una empresa o fundación. La colaboración es sin salarios ni comisiones de servicio. El fundador y el equipo organizan la administración inicial; los agentes de IA asumirán funciones gradualmente, con mandatos y controles verificables. La autonomía es un objetivo futuro, no una capacidad ya disponible."
+  },
+  "A BETTEX é uma comunidade aberta, sem empresa ou fundação, salários ou taxas de serviço. O fundador e o time organizam a administração inicial e prestam contas dos recursos comunitários. Agentes de IA assumirão gradualmente funções, com mandatos e controles verificáveis. A autonomia não está disponível hoje e não dispensa responsabilidades aplicáveis.": {
+    "en": "BETTEX is an open community, with no company or foundation, salaries or service fees. The founder and team organize initial administration and account for community resources. AI agents will gradually take on functions under verifiable mandates and controls. Autonomy is not available today and does not remove applicable responsibilities.",
+    "es": "BETTEX es una comunidad abierta, sin empresa ni fundación, salarios ni comisiones de servicio. El fundador y el equipo organizan la administración inicial y rinden cuentas de los recursos comunitarios. Los agentes de IA asumirán funciones gradualmente, con mandatos y controles verificables. La autonomía no está disponible hoy y no elimina las responsabilidades aplicables."
+  },
+  "A BETTEX é uma comunidade aberta, sem empresa ou fundação. BETTEX é o token da comunidade. A colaboração é sem salários e sem taxas de serviço. O fundador e o time organizam a administração inicial; o objetivo futuro é transferir funções a agentes de IA até tornar o agente BETTEX operacionalmente independente e autônomo, com mandatos e controles verificáveis.": {
+    "en": "BETTEX is an open community, with no company or foundation. BETTEX is the community token. Collaboration is without salaries or service fees. The founder and team organize initial administration; the future goal is to transfer functions to AI agents until the BETTEX agent becomes operationally independent and autonomous, under verifiable mandates and controls.",
+    "es": "BETTEX es una comunidad abierta, sin empresa ni fundación. BETTEX es el token de la comunidad. La colaboración es sin salarios ni comisiones de servicio. El fundador y el equipo organizan la administración inicial; el objetivo futuro es transferir funciones a agentes de IA hasta que el agente BETTEX sea operativamente independiente y autónomo, con mandatos y controles verificables."
+  },
+  "A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados. BETTEX é o token dessa comunidade, não uma ação de empresa ou fundação.": {
+    "en": "BETTEX is an open community building DeFi technology and AI agents for multiple markets. BETTEX is this community’s token, not equity in a company or foundation.",
+    "es": "BETTEX es una comunidad abierta que construye tecnología DeFi y agentes de IA para varios mercados. BETTEX es el token de esa comunidad, no una acción de una empresa o fundación."
+  },
+  "A colaboração é aberta, sem salários e sem taxas de serviço da BETTEX. Recursos, desenvolvimento e evolução do projeto têm finalidade comunitária. A tesouraria segue regras públicas; as carteiras pessoais continuam pertencendo aos seus titulares.": {
+    "en": "Collaboration is open, without salaries or BETTEX service fees. Resources, development and the project’s evolution serve a community purpose. The treasury follows public rules; personal wallets remain the property of their holders.",
+    "es": "La colaboración es abierta, sin salarios ni comisiones de servicio de BETTEX. Los recursos, el desarrollo y la evolución del proyecto tienen una finalidad comunitaria. La tesorería sigue reglas públicas; las carteras personales siguen perteneciendo a sus titulares."
+  },
+  "A rotina identifica contrato, despesa, beneficiário e fonte; confere orçamento e disponibilidade; autoriza dentro dos poderes; executa e concilia uma única vez. Recursos comunitários, compromissos e patrimônio pessoal dos titulares permanecem separados. A participação da comunidade nas decisões não equivale a um voto automático por token.": {
+    "en": "The process identifies the contract, expense, beneficiary and source; checks budget and availability; authorizes within assigned powers; executes and reconciles once. Community resources, commitments and holders’ personal assets remain separate. Community participation in decisions does not mean automatic voting rights per token.",
+    "es": "El proceso identifica contrato, gasto, beneficiario y fuente; verifica presupuesto y disponibilidad; autoriza dentro de las facultades asignadas; ejecuta y concilia una sola vez. Los recursos comunitarios, compromisos y patrimonio personal de los titulares permanecen separados. La participación de la comunidad en las decisiones no equivale a un voto automático por token."
+  },
+  "BETTEX é o token da comunidade. A tecnologia reúne aplicativo e agentes de IA, com recursos comunitários na tesouraria e regras públicas. As carteiras pessoais pertencem aos seus titulares; o token não dá propriedade resgatável da tesouraria nem voto automático.": {
+    "en": "BETTEX is the community token. The technology combines an app and AI agents, with community resources in the treasury and public rules. Personal wallets belong to their holders; the token does not confer redeemable treasury ownership or automatic voting rights.",
+    "es": "BETTEX es el token de la comunidad. La tecnología reúne una aplicación y agentes de IA, con recursos comunitarios en la tesorería y reglas públicas. Las carteras personales pertenecen a sus titulares; el token no otorga propiedad rescatable de la tesorería ni voto automático."
+  },
+  "BETTEX é o token de uma comunidade aberta que constrói tecnologia DeFi, com negociação prevista em DEX e regras públicas executadas por contratos.": {
+    "en": "BETTEX is the token of an open community building DeFi technology, with trading planned on a DEX and public rules executed by contracts.",
+    "es": "BETTEX es el token de una comunidad abierta que construye tecnología DeFi, con negociación prevista en DEX y reglas públicas ejecutadas por contratos."
+  },
+  "BETTEX — comunidade, regras e administração": {
+    "en": "BETTEX — community, rules and administration",
+    "es": "BETTEX — comunidad, reglas y administración"
+  },
+  "COMUNIDADE ABERTA · TECNOLOGIA DEFI": {
+    "en": "OPEN COMMUNITY · DEFI TECHNOLOGY",
+    "es": "COMUNIDAD ABIERTA · TECNOLOGÍA DEFI"
+  },
+  "Colaboração aberta, sem empresa ou fundação.": {
+    "en": "Open collaboration, with no company or foundation.",
+    "es": "Colaboración abierta, sin empresa ni fundación."
+  },
+  "Colaboração e evolução da comunidade": {
+    "en": "Community collaboration and evolution",
+    "es": "Colaboración y evolución de la comunidad"
+  },
+  "Comunidade aberta": {
+    "en": "Open community",
+    "es": "Comunidad abierta"
+  },
+  "Comunidade e lançamento no Pitch": {
+    "en": "Community and launch in the Pitch",
+    "es": "Comunidad y lanzamiento en el Pitch"
+  },
+  "Não há empresa ou fundação: a colaboração é sem salários e sem taxas de serviço. O fundador e o time organizam o desenvolvimento e a administração inicial da comunidade. A direção futura é transferir funções a agentes de IA, até que o agente BETTEX seja operacionalmente independente e autônomo. Essa autonomia é um objetivo futuro, não uma capacidade já disponível.": {
+    "en": "There is no company or foundation: collaboration is without salaries or service fees. The founder and team organize the community’s development and initial administration. The future direction is to transfer functions to AI agents until the BETTEX agent is operationally independent and autonomous. This autonomy is a future goal, not an already available capability.",
+    "es": "No hay empresa ni fundación: la colaboración es sin salarios ni comisiones de servicio. El fundador y el equipo organizan el desarrollo y la administración inicial de la comunidad. La dirección futura es transferir funciones a agentes de IA hasta que el agente BETTEX sea operativamente independiente y autónomo. Esa autonomía es un objetivo futuro, no una capacidad ya disponible."
+  },
+  "O fundador e o time organizam a administração inicial da comunidade, sem empresa ou fundação. A colaboração é aberta e sem salários. A direção futura é transferir funções a agentes de IA até tornar o agente BETTEX operacionalmente independente e autônomo. Essa autonomia ainda não existe; a evolução exige evidências, mandatos e controles, sem prazo definido.": {
+    "en": "The founder and team organize the community’s initial administration, with no company or foundation. Collaboration is open and without salaries. The future direction is to transfer functions to AI agents until the BETTEX agent becomes operationally independent and autonomous. This autonomy does not yet exist; its evolution requires evidence, mandates and controls, with no fixed deadline.",
+    "es": "El fundador y el equipo organizan la administración inicial de la comunidad, sin empresa ni fundación. La colaboración es abierta y sin salarios. La dirección futura es transferir funciones a agentes de IA hasta que el agente BETTEX sea operativamente independiente y autónomo. Esa autonomía aún no existe; la evolución exige evidencias, mandatos y controles, sin plazo definido."
+  },
+  "O fundador e o time organizam a administração inicial da comunidade. Agentes de IA assumirão gradualmente funções até tornar o agente BETTEX operacionalmente independente e autônomo. Esse objetivo é futuro e não elimina controles ou responsabilidades aplicáveis.": {
+    "en": "The founder and team organize the community’s initial administration. AI agents will gradually take on functions until the BETTEX agent becomes operationally independent and autonomous. This is a future goal and does not remove applicable controls or responsibilities.",
+    "es": "El fundador y el equipo organizan la administración inicial de la comunidad. Los agentes de IA asumirán funciones gradualmente hasta que el agente BETTEX sea operativamente independiente y autónomo. Ese objetivo es futuro y no elimina los controles ni las responsabilidades aplicables."
+  },
+  "O fundador e o time organizam a administração inicial. Agentes de IA assumirão gradualmente funções até tornar o agente BETTEX operacionalmente independente e autônomo. A autonomia é um objetivo futuro, com mandatos e controles verificáveis, não uma capacidade já disponível.": {
+    "en": "The founder and team organize initial administration. AI agents will gradually take on functions until the BETTEX agent becomes operationally independent and autonomous. Autonomy is a future goal under verifiable mandates and controls, not an already available capability.",
+    "es": "El fundador y el equipo organizan la administración inicial. Los agentes de IA asumirán funciones gradualmente hasta que el agente BETTEX sea operativamente independiente y autónomo. La autonomía es un objetivo futuro, con mandatos y controles verificables, no una capacidad ya disponible."
+  },
+  "Sem taxas de serviço; custos externos da rede não são receita da comunidade.": {
+    "en": "No service fees; external network costs are not community revenue.",
+    "es": "Sin comisiones de servicio; los costos externos de la red no son ingresos de la comunidad."
+  },
+  "Token da comunidade BETTEX": {
+    "en": "BETTEX community token",
+    "es": "Token de la comunidad BETTEX"
+  },
+  "Uma comunidade aberta e construída com tecnologia DeFi.": {
+    "en": "An open community built with DeFi technology.",
+    "es": "Una comunidad abierta construida con tecnología DeFi."
+  },
   "O peso determina o direito sobre a parcela distribuível da rodada. Registro ou autorização não é saldo recebido: somente USDC confirmado e conciliado entra na Carteira USDC.": {
     "en": "Weight determines entitlement to the round's distributable allocation. Recording or authorization does not mean funds have been received: only confirmed and reconciled USDC enters the USDC Wallet.",
     "es": "El peso determina el derecho sobre la parte distribuible de la ronda. El registro o la autorización no equivalen a saldo recibido: solo USDC confirmado y conciliado entra en la Cartera USDC."

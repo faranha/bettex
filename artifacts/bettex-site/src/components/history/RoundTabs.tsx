@@ -12,10 +12,10 @@ import { demoPath } from '../demo/demo-navigation';
 type Tab = 'positions' | 'history' | 'closed' | 'fees' | 'burn' | 'lottery';
 type Win = { id: string; startedAt: string; endsAt: string } | null;
 
-export function RoundTabs({ d, roundId, current, roundWindow: win }: { d: DemoDashboard; roundId: string; current: boolean; roundWindow: Win }) {
+export function RoundTabs({ d, roundId, current, roundWindow: win, visualDemo = false }: { d: DemoDashboard; roundId: string; current: boolean; roundWindow: Win; visualDemo?: boolean }) {
   const { x, loc } = useX();
   const search = useSearch(); const [, navigate] = useLocation();
-  const tabs: Tab[] = [...(current ? ['positions' as const] : []), 'history', 'closed', 'fees', 'burn', 'lottery'];
+  const tabs: Tab[] = [...(current ? ['positions' as const] : []), 'history', 'closed', ...(visualDemo ? [] : ['fees' as const]), 'burn', 'lottery'];
   const requested = new URLSearchParams(search).get('roundTab');
   const setTab = (tab: Tab) => {
     const params = new URLSearchParams(search); params.set('roundTab', tab);

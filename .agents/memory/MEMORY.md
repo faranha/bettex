@@ -16,7 +16,7 @@
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
 - [Regras da tesouraria](treasury-rule-evolution.md) — manter administração e controles; definir decisões comunitárias e evolução para gestão por IA.
 - [Visão cripto e gestão por IA](bettex-foundation.md) — sem entidade formal, com domínio dos contratos; fundadores administram inicialmente e IA assume funções.
-- [Identidade e posicionamento](bettex-economic-identity.md) — DeFi, agente de trading com IA em vários mercados; apresentação curta centrada em tokenomics; não é fundo.
+- [Identidade e posicionamento](bettex-economic-identity.md) — comunidade aberta, token comunitário; motivação implícita, sem rótulo; preservar tokenomics técnica.
 - [Engajamento com mercados no app](homepage-market-engagement.md) — painel operacional de BTC, SOL, ETH e agentes pertence ao app, não à homepage.
 - [Telegram flutuante](community-floating-button.md) — convite no canto inferior direito de todas as páginas, desktop e mobile, com opção de fechar.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
