@@ -19,9 +19,9 @@ infraestrutura financeira, autenticação, mint ou publicação.
 
 | Área | Encontrado | Tratamento |
 | --- | --- | --- |
-| Abertura do site | Convite a investir e destaque à distribuição de resultados | Abertura comunitária, mantendo layout, imagens, âncoras e identidade visual |
+| Abertura do site | Reescrita da abertura durante a revisão | Alteração não autorizada, rejeitada pelo criador; textos anteriores restaurados, sem alterar outras seções |
 | Abertura da documentação | Descrição ainda centrada na distribuição econômica | Comunidade, token, regras, desenvolvimento, administração e riscos |
-| Compartilhamento da homepage | Imagem e gerador preservavam slogans sobre ganhos e propriedade | Texto alinhado à comunidade; imagens PT/EN/ES regeneradas |
+| Compartilhamento da homepage | Alteração dos slogans durante a revisão | Alteração não autorizada; gerador, imagens PT/EN/ES e metadados anteriores da homepage restaurados |
 | Simulação anterior de lançamento | Tarifa de US$ 2,50 e receita de operador | Confirmado que não integra o Pitch atual; código identificado como histórico, sem alterar seu cálculo ou suas evidências |
 | Modelo operacional antigo | Cobrança de serviço ainda existente em código preservado | Identificado como histórico, não como comportamento do demo visual |
 | Especificação antiga de contratos | Tarifa e vesting de 36 meses apresentados sem contexto atual | Aviso de incompatibilidade com a política atual e preservação das evidências originais |

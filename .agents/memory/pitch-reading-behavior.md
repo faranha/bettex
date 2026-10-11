@@ -57,8 +57,10 @@ A simulação de lançamento deve permanecer escondida no Pitch, com o conteúdo
 
 **How to apply:** Não exibir a simulação no Pitch nem reintroduzi-la durante reorganizações; preservar os demais conteúdos e gráficos.
 
-No mobile, os quadros de dados da economia real em Ambiente externo e os dados da economia agêntica em Problema devem ser sliders horizontais, mantendo todos os dados e fontes. No desktop, preservar as grades de quadros.
+Os blocos de dados do Pitch, especialmente IA/trabalho e situação econômica, devem ser reorganizados em sliders tanto no desktop quanto no mobile. Essa direção substitui a restrição anterior de sliders apenas no celular.
 
-**Why:** O criador pediu um slider para economizar espaço vertical no celular e solicitou a mesma estratégia para todos os dados da economia agêntica.
+**Why:** O criador pediu mais hype e menos excesso de dados, com sliders “até mesmo no PC”, e exigiu análise de conteúdo e apresentação prévia dos dados irrelevantes ou repetidos propostos para remoção.
+
+**How to apply:** Nesta reorganização, apresentar primeiro o que manter, condensar e remover. Não excluir conteúdo nem executar a criação dos sliders antes da aprovação da proposta. Preservar fontes, limites das evidências, condições econômicas e regras essenciais.
 
 **How to apply:** Preservar leitura e links de cada quadro, permitir deslizar e navegar pelos controles, sem transformar os gráficos ou outros conteúdos do capítulo em slides automaticamente.

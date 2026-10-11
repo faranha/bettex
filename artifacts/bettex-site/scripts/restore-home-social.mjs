@@ -21,12 +21,12 @@ try {
       <g fill="none" stroke="#2B59FF" stroke-opacity=".3"><circle cx="1080" cy="185" r="310"/><circle cx="1080" cy="185" r="395"/></g>
       <image x="40" y="28" width="315" height="95" xlink:href="data:image/png;base64,${logo}"/>
       <g font-family="DejaVu Sans" fill="#F4F1E8">
-        <text x="65" y="155" font-size="17" letter-spacing="3">${text('COMUNIDADE ABERTA · TECNOLOGIA DEFI')}</text>
-        <text x="65" y="250" font-size="57" font-weight="bold">${text('Comunidade aberta.')}</text>
-        <text x="65" y="325" font-size="57" font-weight="bold" fill="#F2B632">${text('Tecnologia com IA.')}</text>
-        <text x="65" y="405" font-size="27">${text('BETTEX é o token da comunidade.')}</text>
+        <text x="65" y="155" font-size="17" letter-spacing="3">${text('AGENTE MULTIMERCADO')}</text>
+        <text x="65" y="250" font-size="57" font-weight="bold">${text('USE IA CONTRA')}</text>
+        <text x="65" y="325" font-size="57" font-weight="bold" fill="#F2B632">${text('O SISTEMA.')}</text>
+        <text x="65" y="405" font-size="27">${text('Seja o dono do jogo. Participe dos resultados da IA.')}</text>
         <path d="M65 555H1135" stroke="#5F86FF" stroke-opacity=".3"/>
-        <text x="65" y="593" font-size="17">${text('Conheça a comunidade')}</text>
+        <text x="65" y="593" font-size="17">${text('Quero participar')}</text>
       </g>
     </svg>`;
     const source = path.join(temp, `${language}.svg`);

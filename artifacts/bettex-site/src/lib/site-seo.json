@@ -2,8 +2,8 @@
   "origin": "https://bettex.ai",
   "pages": {
     "/": {
-      "title": "BETTEX | Comunidade aberta e token comunitário",
-      "description": "BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA. Token comunitário, colaboração sem salários e sem taxas de serviço.",
+      "title": "BETTEX | Projeto DeFi de trading com IA e participação nos resultados",
+      "description": "BETTEX é um projeto DeFi que constrói um agente de trading com IA para vários mercados. O token conecta você à economia do projeto e à distribuição de resultados.",
       "image": "home",
       "index": true
     },
