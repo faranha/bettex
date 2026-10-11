@@ -83,7 +83,6 @@ export function PitchPage() {
         <div className="cover__grid">
           <div className="cover__copy">
             <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Início</span>
-            <p className="cover__market mb-4">O apostador brasileiro é o público inicial; a proposta também atende pessoas que já participam do mercado cripto.</p>
             <h1 className="display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Um projeto DeFi de trading com IA <span className="text-[#F2B632]">para vários mercados.</span></h1>
             <p className="cover__market mt-4"><strong data-i18n="translated">{t(`Mais de 60 milhões de brasileiros formam o público potencial estimado, enquanto o mercado de cripto movimenta cerca de R$ ${cryptoDailyBillions} bilhão em operações diárias e as bets têm uma referência histórica de R$ 600 milhões em depósitos por dia.`)}</strong>{' '}A oportunidade é oferecer um produto de investimento que fale a língua dessas pessoas.</p>
             <p className="cover__notice mt-4 text-[13px] leading-[1.55] text-[#c5d2f1]">{t(HERO_NOTICE)}</p>
