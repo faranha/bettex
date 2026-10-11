@@ -75,6 +75,12 @@ Na abertura da candidatura ao grant, contextualizar a proposta no Brasil com pou
 
 **How to apply:** Preservar o ano e o público de cada pesquisa. Usar as métricas fornecidas para a candidatura, não como tração da BETTEX nem como autorização para revelar o fundador nas páginas públicas.
 
+O valor proposto ao ecossistema Starknet deve incluir a oportunidade de alcançar centenas de milhares de usuários fora do público DeFi existente, apoiada na escala do mercado brasileiro e na distribuição demonstrada pelo fundador. Não reduzir a proposta a interface em português e entrega de testnet.
+
+**Why:** O criador rejeitou esse enquadramento limitado e pediu uma apresentação mais forte da inovação, dos números e do potencial de onboarding.
+
+**How to apply:** Explicar a ligação entre experiência familiar de apostas, estratégias geridas por IA, participação econômica pelo token e controles da tesouraria. Distinguir ambição de escala, cenários ilustrativos, alcance do fundador e adoção comprovada do produto.
+
 O nome público do mercado é “iGaming”, não “Cassinos”, em toda a apresentação, todo o site e todas as páginas, incluindo traduções.
 
 **Why:** O criador pediu expressamente essa troca global.
