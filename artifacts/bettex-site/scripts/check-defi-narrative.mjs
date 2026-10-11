@@ -57,18 +57,24 @@ assert.match(copy, /Token da comunidade BETTEX/);
 assert.doesNotMatch(copy, /token permite participar dos resultados/);
 assert.match(await read('src/lib/business-plan.json'), /token da comunidade, não uma ação de empresa ou fundação/);
 const seo = JSON.parse(await read('src/lib/site-seo.json'));
-for (const page of Object.values(seo.pages)) assert.match(page.description, /comunidade/);
-assert.doesNotMatch(seo.pages['/'].title + seo.pages['/'].description, /distribuição de resultados|participação nos resultados/);
+for (const [route, page] of Object.entries(seo.pages)) {
+  if (route !== '/') assert.match(page.description, /comunidade/);
+}
+// The creator explicitly preserved the original homepage positioning.
+assert.match(seo.pages['/'].title, /Projeto DeFi de trading com IA/);
 const app = await read('src/App.tsx');
-assert.match(app, /Comunidade aberta\./);
-assert.match(app, /Tecnologia com IA\./);
-assert.doesNotMatch(app, /Chega de apostar|Comece a investir|O token BETTEX conecta você à economia/);
+assert.match(app, /Chega de apostar\./);
+assert.match(app, /Comece a investir\./);
+assert.match(app, /O token BETTEX conecta você à economia/);
+assert.match(app, /<span>Entenda o projeto<\/span>/);
+assert.doesNotMatch(app, /Comunidade aberta\.|Tecnologia com IA\./);
 const whitepaper = await read('src/components/WhitepaperSection.tsx');
 assert.doesNotMatch(whitepaper.match(/whitepaper__hero-lede[^>]*>([^<]+)/)?.[1] ?? '', /distribuição de resultados/);
 assert.match(whitepaper, /esta documentação apresenta suas regras, desenvolvimento, administração e riscos/);
 const social = await read('scripts/restore-home-social.mjs');
-assert.doesNotMatch(social, /Seja o dono do jogo|Participe dos resultados da IA/);
-assert.match(social, /Comunidade aberta\./);
+assert.match(social, /Seja o dono do jogo\. Participe dos resultados da IA\./);
+assert.match(social, /USE IA CONTRA/);
+assert.doesNotMatch(social, /Comunidade aberta\./);
 assert.match(copy, /50% tesouraria, 25% participantes e 25% recompra/);
 assert.match(copy, /24 meses/);
 assert.match(copy, /Quem entra durante uma rodada espera a próxima/);

@@ -1,9 +1,15 @@
 ---
 name: Apresentação de marcas tecnológicas
-description: Limites comerciais da exibição de Arbitrum, Allora e Robinhood na homepage BETTEX.
+description: Faixa de marcas tecnológicas, sem Robinhood; alterações limitadas à faixa.
 ---
 
-A exibição de Arbitrum, Starknet, Ethereum, Allora e Robinhood na homepage dá visibilidade às redes e tecnologias. Não inferir patrocínio, endosso, certificação, parceria contratual ou integração já operacional somente pela etiqueta visual.
+A exibição de Arbitrum, Starknet, Ethereum e Allora na homepage dá visibilidade às redes e tecnologias. Não inferir patrocínio, endosso, certificação, parceria contratual ou integração já operacional somente pela etiqueta visual.
+
+Não exibir Robinhood nessa faixa.
+
+**Why:** O criador pediu retirar Robinhood dos parceiros tecnológicos porque “está ocupando muito espaço”.
+
+**How to apply:** Preservar as outras marcas e o restante da página; a retirada da faixa não autoriza apagar referências técnicas à Robinhood na documentação ou no sistema.
 
 **Why:** O criador pediu visibilidade comercial para marcas já mencionadas na arquitetura, sem mudar o status técnico das integrações.
 

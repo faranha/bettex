@@ -29,7 +29,7 @@
 }
 .technology-networks__list {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
   padding: 0;
   margin: 0;
@@ -56,18 +56,15 @@
 .technology-networks__logo--starknet img { width: 142px; }
 .technology-networks__logo--ethereum img { width: 138px; }
 .technology-networks__logo--allora img { width: 112px; }
-.technology-networks__logo--robinhood img { width: 150px; }
 @media (max-width: 600px) {
   .technology-networks__label { left: 16px; }
   .technology-networks__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .technology-networks__list li { min-height: 64px; padding: 16px 12px; }
   .technology-networks__list li:nth-child(2n) { border-inline-end: 0; }
-  .technology-networks__list li:not(:last-child) { border-bottom: 1px solid var(--networks-line); }
-  .technology-networks__list li:last-child { grid-column: 1 / -1; }
+  .technology-networks__list li:nth-last-child(n+3) { border-bottom: 1px solid var(--networks-line); }
   .technology-networks__logo { height: 26px; }
   .technology-networks__logo--arbitrum img { width: 124px; }
   .technology-networks__logo--starknet img { width: 124px; }
   .technology-networks__logo--ethereum img { width: 120px; }
   .technology-networks__logo--allora img { width: 98px; }
-  .technology-networks__logo--robinhood img { width: 130px; }
 }

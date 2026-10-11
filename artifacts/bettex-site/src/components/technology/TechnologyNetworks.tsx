@@ -26,11 +26,6 @@ export function TechnologyNetworks() {
             <img src={`${import.meta.env.BASE_URL}technologies/allora.webp`} alt="Allora" width={523} height={167} loading="lazy" decoding="async" />
           </div>
         </li>
-        <li>
-          <div className="technology-networks__logo technology-networks__logo--robinhood">
-            <img src={`${import.meta.env.BASE_URL}technologies/robinhood.webp`} alt="Robinhood" width={572} height={112} loading="lazy" decoding="async" />
-          </div>
-        </li>
       </ul>
       </div>
     </section>
