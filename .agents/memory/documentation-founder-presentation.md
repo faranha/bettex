@@ -17,8 +17,8 @@ Remover a identificação também de catálogos de tradução, arquivos exportad
 
 ## Candidaturas a grants
 
-Nos rascunhos de candidatura a grants solicitados pelo criador, incluir os detalhes profissionais e links pessoais que ele já forneceu, em vez de substituí-los por placeholders genéricos.
+Nos rascunhos de candidatura a grants solicitados pelo criador, incluir os detalhes profissionais e links pessoais que ele já forneceu, em vez de substituí-los por placeholders genéricos. Não reduzir o desempenho das redes à contagem de seguidores: incluir também engajamento, visualizações e respectivos períodos quando fornecidos.
 
-**Why:** O criador corrigiu explicitamente a omissão de seus detalhes e redes no campo Team da candidatura Starknet.
+**Why:** O criador corrigiu explicitamente a omissão de seus detalhes e redes no campo Team da candidatura Starknet e voltou a cobrar a inclusão de engajamento e visualizações.
 
 **How to apply:** Recuperar as informações fornecidas anteriormente, inclusive no histórico quando foram removidas das páginas públicas. Deixar pendente apenas o que realmente não foi fornecido ou exige confirmação atual. Essa solicitação para a candidatura não autoriza restaurar a identificação no site público.
