@@ -28,9 +28,10 @@ test('sticky submenu is below the header, above normal content and horizontally 
   assert.doesNotMatch(page, /el\.scrollIntoView/);
 });
 
-test('Treasury becomes the active panel section once its heading reaches the submenu', () => {
-  assert.equal(visiblePanelSection([
-    { id: 'wallets', top: -3400 }, { id: 'central', top: -2400 },
-    { id: 'participation', top: -1400 }, { id: 'treasury', top: 172 },
-  ], 172), 'treasury');
+test('page submenus stay below the header without wrapping and Treasury is not a panel section', () => {
+  const css = readFileSync(new URL('../demo/demo.css', import.meta.url), 'utf8');
+  assert.match(css, /\.demo-submenu\{[^}]*position:sticky;top:var\(--site-header-h,56px\);z-index:30/);
+  assert.match(css, /\.demo-submenu\{[^}]*overflow-x:auto/);
+  const model = readFileSync(new URL('./panel-navigation.ts', import.meta.url), 'utf8');
+  assert.doesNotMatch(model, /'treasury'/);
 });

@@ -17,6 +17,16 @@ Não duplicar os breadcrumbs do header na Central da IA nem ampliar a Central al
 
 ## Revisões de legibilidade
 
+No celular, os comandos da câmera devem aparecer sob demanda, sem cobrir
+o mapa dos agentes. Manter acesso para abrir e recolher os comandos.
+
+**Why:** O criador mostrou os ícones sobre o próprio grafo e disse que
+“esses ícones tinham que desaparecer e aparecer”.
+
+**How to apply:** Reservar espaço fora da área desenhada para os controles
+mobile, inclusive quando expandidos. Preservar os gestos e a saída da tela
+ampla; não substituir o problema por outro painel flutuante sobre os nós.
+
 Não reintroduzir “Sobre esta demonstração” nem sua nota expansível acima do grafo. Preservar o título; a instrução posterior concentra a indicação DEMO no menu, sem selo repetido na Central.
 
 **Why:** O criador apontou esse bloco e pediu “tire sobre esta demonstracao por favor”.

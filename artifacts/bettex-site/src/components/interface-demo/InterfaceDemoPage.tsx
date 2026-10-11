@@ -106,7 +106,7 @@ function HomeAreas({ d }: { d: ReturnType<typeof visualDashboard> }) {
     window.addEventListener(DEMO_ANCHOR_EVENT, onAnchor);
     return () => { cancelled = true; cancelAnimationFrame(frame); window.removeEventListener('load', settle); types.forEach(t => window.removeEventListener(t, onHash)); window.removeEventListener(DEMO_ANCHOR_EVENT, onAnchor); };
   }, []);
-  const items = [{ id: HOME_BLOCKS[0], label: x('Carteiras', 'Wallets', 'Carteras') }, { id: HOME_BLOCKS[1], label: x('Central da IA', 'AI Center', 'Central de IA') }, { id: HOME_BLOCKS[2], label: x('Participação', 'Participation', 'Participación') }, { id: HOME_BLOCKS[3], label: x('Tesouraria', 'Treasury', 'Tesorería') }];
+  const items = [{ id: HOME_BLOCKS[0], label: x('Carteiras', 'Wallets', 'Carteras') }, { id: HOME_BLOCKS[1], label: x('Central da IA', 'AI Center', 'Central de IA') }, { id: HOME_BLOCKS[2], label: x('Participação', 'Participation', 'Participación') }];
   return <>
     <nav ref={submenu} aria-label={x('Atalhos do painel', 'Dashboard shortcuts', 'Atajos del panel')} className="panel-submenu" data-testid="home-anchors">
       {items.map(i => <a key={i.id} href={`#${i.id}`} onClick={event => {
@@ -129,9 +129,6 @@ function HomeAreas({ d }: { d: ReturnType<typeof visualDashboard> }) {
       </div>
     </section>
     <AgentShowcase showOtherAgents={false} showDisclaimer={false} />
-    <section id="treasury" style={ANCHOR_TOP} aria-label={items[3].label} className="grid min-w-0 gap-4">
-      <MockTreasuryPanel d={d} embedded />
-    </section>
   </>;
 }
 
@@ -139,15 +136,14 @@ export function InterfaceDemoPage() {
   const { x, loc } = useX();
   const [path, navigate] = useLocation();
   const search = useSearch();
+  const hash = useHash();
   const view = demoView(path) ?? 'home';
   const [d] = useState(visualDashboard);
-  const legacyArea = view === 'central' || view === 'treasury';
   useEffect(() => {
-    // Old /app/central bookmarks: keep query, then land on the home #central anchor.
-    if (!legacyArea) return;
-    const target = demoRedirect(path, loc, search, window.location.hash);
+    // Preserve old Central bookmarks and migrate embedded Treasury bookmarks.
+    const target = demoRedirect(path, loc, search, hash);
     if (target) navigate(target, { replace: true });
-  }, [legacyArea, path, loc, search, navigate]);
+  }, [path, loc, search, hash, navigate]);
   return <Rates.Provider value={{ r: d.balances.brlPerUsdc, bu: d.balances.bettexUsdc }}>
     <main className="demo-root min-h-[calc(100dvh-var(--site-header-h))] pb-10" data-testid="interface-demo-page">
       <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 px-3 pt-5 sm:px-5">

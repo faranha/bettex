@@ -25,7 +25,8 @@ export function useHistoryAnchor(area: HistoryArea, search: string) {
         // deep round/archive anchors still land on the requested subsection.
         const target = id === anchors[area] ? container : panel;
         const header = document.querySelector('[data-testid="app-header"]');
-        const offset = Math.max(0, header?.getBoundingClientRect().bottom ?? 0) + 12;
+        const submenu = container.querySelector('[data-testid="page-submenu"]');
+        const offset = Math.max(0, header?.getBoundingClientRect().bottom ?? 0) + (target === container ? 0 : submenu?.getBoundingClientRect().height ?? 0) + 12;
         window.scrollTo({ top: Math.max(0, window.scrollY + target.getBoundingClientRect().top - offset), behavior: 'instant' });
       });
     };

@@ -233,3 +233,17 @@ button.cg-pan:hover{background:#0A141B}
 .op-unified .cg-stage.cg-imm{border-radius:0}
 .op-unified .cg-support{border:0;border-top:1px solid #15222B;border-radius:0}
 .op-unified .op-part .dcard{border:0;border-top:1px solid #1B2A33;border-radius:0 0 calc(1rem - 1px) calc(1rem - 1px)}
+
+/* mobile camera dock: lives below the pannable viewport, never over nodes */
+.cg-shell{position:absolute;inset:0;display:flex;flex-direction:column}
+.cg-dock{display:none}
+@media (max-width:768px){
+ .cg-shell .cg-scene{position:relative;inset:auto;flex:1 1 auto;min-height:0}
+ .cg-dock{display:block;flex:none;border-top:1px solid #15222B;background:#070C11}
+ .cg-dock-bar{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.3rem .5rem}
+ .cg-dock-toggle{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 .8rem;border:1px solid #1E3441;background:rgba(8,16,22,.85);color:#9FD9EA;font:600 12px/1 inherit;cursor:pointer}
+ .cg-dock-toggle[aria-expanded="true"]{background:#0E3A47;color:#fff}
+ .cg-dock-toggle svg{width:18px;height:18px}
+ .cg-dock-panel{display:flex;flex-wrap:wrap;gap:4px;padding:.2rem .5rem .5rem}
+ .cg-dock-panel[hidden]{display:none}
+}

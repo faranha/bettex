@@ -36,7 +36,7 @@ export function demoPath(view: DemoView, language: Language): string {
 }
 /** Language-aware URL for an area. The AI Center lives on the home: query first, then the #central anchor. */
 export function demoHref(view: DemoView, language: Language, query = '', hash = ''): string {
-  if (view === 'central' || view === 'treasury') return `${demoPath('home', language)}${query}#${view}`;
+  if (view === 'central') return `${demoPath('home', language)}${query}#${view}`;
   return `${demoPath(view, language)}${query}${hash}`;
 }
 /** Keep old bookmarks and wallet filters while moving finance out of Profile. */
@@ -52,19 +52,19 @@ export function demoRedirect(path: string, language: Language, search = '', hash
     else if (requested === 'profile' || requested === 'security') destination = demoPath('account', language);
     if (destination) query.delete('tab');
     if (requested === 'policies') query.set('tab', 'policies');
-  } else if (demoView(normalized) === 'central' || demoView(normalized) === 'treasury') {
-    const area = demoView(normalized);
-    if (area === 'treasury' && query.has('section')) {
-      query.set('treasurySection', query.get('section')!); query.delete('section');
-    }
-    destination = demoPath('home', language); hash = `#${area}`;
+  } else if ((demoView(normalized) === 'home' && (hash === '#treasury' || query.get('section') === 'treasury')) || demoView(normalized) === 'treasury') {
+    const fromHome = demoView(normalized) === 'home';
+    if (fromHome || normalized !== demoPath('treasury', language) || query.has('treasurySection')) destination = demoPath('treasury', language);
+    if (query.has('treasurySection')) {
+      query.set('section', query.get('treasurySection')!); query.delete('treasurySection');
+    } else if (fromHome && query.get('section') === 'treasury') query.delete('section');
+    if (fromHome) hash = '';
+  } else if (demoView(normalized) === 'central') {
+    destination = demoPath('home', language); hash = '#central';
   } else if (['/app/carteiras', '/app/wallets', '/app/carteras'].includes(normalized) || isRemovedSimulationPath(normalized)) {
     destination = demoPath('home', language);
   } else if (demoView(normalized) === 'wallet' && normalized !== demoPath('wallet', language)) {
     destination = demoPath('wallet', language);
-  }
-  if (destination && demoView(destination) === 'treasury') {
-    destination = demoPath('home', language); hash = '#treasury';
   }
   return destination ? `${destination}${query.size ? `?${query}` : ''}${hash}` : null;
 }
