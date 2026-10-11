@@ -82,3 +82,11 @@ Validar os links de percurso pelo conteúdo efetivamente filtrado no destino, n�
 **Why:** O link e o filtro de correlação estavam corretos separadamente, mas a tela de destino não transferia o parâmetro para o estado da consulta; registros sem relação apareciam no percurso.
 
 **How to apply:** Abrir um percurso pelo grafo e conferir que o Histórico mostra somente seus registros, mantendo os exemplos didáticos separados do extrato financeiro pessoal.
+
+Não reintroduzir as abas Controles, Registros e Comunidade acima do grafo.
+
+**Why:** O criador mostrou essas três abas e pediu: “essas 3 abas podem sumir amigo”.
+
+**How to apply:** O grafo fica direto na home, abaixo das carteiras, sem uma
+aba Agentes redundante. Retirar os botões não autoriza apagar os painéis
+existentes nem quebrar seus links.

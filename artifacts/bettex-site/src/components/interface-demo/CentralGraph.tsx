@@ -6,8 +6,6 @@ import { CentralInspector } from './CentralInspector';
 import { CentralScene } from './CentralScene';
 import { SceneTitle, TelemetryStrip, TopRail } from './CentralHud';
 import { SupportNav, GROUPS } from './CentralSupport';
-import { useL } from './CentralAgents';
-import { DemoSubmenu } from './DemoSubmenu';
 import { isGraphSelection, parseSel, rememberSel, selQuery, type Sel } from './central-graph-model';
 import './central-graph.css';
 
@@ -35,18 +33,13 @@ const urlFor = (sel: Sel | null, section?: string) => {
 /** Agent constellation, modal inspector and telemetry strip. Public quotes are read-only; financial examples are local.
  *  Selection lives in the URL (?node= or ?edge=), so deep links, back/forward and language switches keep it. */
 export function CentralGraph({ onAction }: { onAction: () => void }) {
-  const { x } = useFmt(); const L = useL();
+  const { x } = useFmt();
   const narrow = useMedia('(max-width: 768px)'); const reduced = useMedia('(prefers-reduced-motion: reduce)');
   const [sel, setSel] = useState<Sel | null>(() => (typeof window === 'undefined' ? null : parseSel(window.location.search)));
   const [section, setSection] = useState(() => typeof window === 'undefined' ? 'agents' : sectionOf(window.location.search, parseSel(window.location.search)));
   const secRef = useRef(section); secRef.current = section;
   const explicit = useRef(typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('section'));
   const secUrl = () => explicit.current ? secRef.current : undefined;
-  const changeSection = (id: string) => {
-    explicit.current = true; secRef.current = id; setSection(id);
-    const next = urlFor(selRef.current, id);
-    if (next !== `${window.location.pathname}${window.location.search}${window.location.hash}`) window.history.pushState(window.history.state, '', next);
-  };
   const [imm, setImm] = useState(false);
   const head = useRef<HTMLHeadingElement>(null); const back = useRef<HTMLElement | null>(null);
   const gsel = sel && isGraphSelection(sel) ? sel : null; const ssel = sel && !gsel ? sel : null;
@@ -92,19 +85,17 @@ export function CentralGraph({ onAction }: { onAction: () => void }) {
     if (!sel) return;
     head.current?.focus({ preventScroll: true });
   }, [sel?.k, sel?.id]); // eslint-disable-line react-hooks/exhaustive-deps
-  const items = [{ id: 'agents', label: x('Agentes', 'Agents', 'Agentes') }, ...GROUPS.map(g => ({ id: g.key, label: L(g.t) }))];
   const cat = GROUPS.findIndex(g => g.key === section);
   return <>
-    <DemoSubmenu items={items} value={section} onChange={changeSection} panelId="central-panel" testIdPrefix="tab-central" label={x('Área da Central da IA', 'AI Center area', 'Área de la Central de IA')} />
-    <div className="cg-wrap" id="central-panel" role="tabpanel" aria-labelledby={`central-panel-tab-${section}`}>
-    {section === 'agents' && <div className={`cg-stage ${imm && !sel ? "cg-imm" : ""}`} data-testid="central-graph" onKeyDown={e => { if (e.key === 'Escape' && imm) setImm(false); }}
+    <div className="cg-wrap" id="central-panel">
+    <div className={`cg-stage ${imm && !sel ? "cg-imm" : ""}`} data-testid="central-graph" onKeyDown={e => { if (e.key === 'Escape' && imm) setImm(false); }}
       aria-label={x('Central da IA BETTEX: cena interativa de agentes', 'BETTEX AI Center: interactive agent scene', 'Central de IA BETTEX: escena interactiva de agentes')}>
       <TopRail sel={gsel} onPick={pick} />
       <SceneTitle sel={gsel} />
       <div className="cg-main">
         <CentralScene narrow={narrow} reduced={reduced} sel={gsel} onSelect={pick} immersive={imm} onImmersive={() => setImm(v => !v)} />
       </div>
-    </div>}
+    </div>
     <section className="cg-support" data-testid="central-support" aria-label={x('Apoio fora do grafo: controles, registros, capital e tópicos', 'Support outside the graph: controls, records, capital and topics', 'Apoyo fuera del grafo: controles, registros, capital y temas')}>
       {cat >= 0 && <SupportNav sel={ssel} onPick={pick} cat={cat} />}
       <TelemetryStrip onPick={pick} />

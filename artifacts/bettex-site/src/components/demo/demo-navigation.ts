@@ -34,6 +34,11 @@ export function demoPath(view: DemoView, language: Language): string {
   if (view === 'account') return ['/app/minha-conta', '/app/account', '/app/mi-cuenta'][index[language]];
   return ['/app/tesouraria', '/app/treasury', '/app/tesoreria'][index[language]];
 }
+/** Language-aware URL for an area. The AI Center lives on the home: query first, then the #central anchor. */
+export function demoHref(view: DemoView, language: Language, query = '', hash = ''): string {
+  if (view === 'central') return `${demoPath('home', language)}${query}#central`;
+  return `${demoPath(view, language)}${query}${hash}`;
+}
 /** Keep old bookmarks and wallet filters while moving finance out of Profile. */
 export function demoRedirect(path: string, language: Language, search = '', hash = ''): string | null {
   const normalized = path.replace(/^\/(?:en|es)(?=\/)/, '').replace(/^\/demo(?=\/|$)/, '/app').replace(/\/+$/, '');
@@ -47,6 +52,8 @@ export function demoRedirect(path: string, language: Language, search = '', hash
     else if (requested === 'profile' || requested === 'security') destination = demoPath('account', language);
     if (destination) query.delete('tab');
     if (requested === 'policies') query.set('tab', 'policies');
+  } else if (demoView(normalized) === 'central') {
+    destination = demoPath('home', language); hash = '#central';
   } else if (['/app/carteiras', '/app/wallets', '/app/carteras'].includes(normalized) || isRemovedSimulationPath(normalized)) {
     destination = demoPath('home', language);
   } else if (demoView(normalized) === 'wallet' && normalized !== demoPath('wallet', language)) {
