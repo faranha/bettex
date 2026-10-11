@@ -5,7 +5,7 @@ import { useFmt, dec6 } from '../alpha-trading/format';
 import { Help } from '../agent-operations/AgentHelp';
 import { AGENT, FINDING, FACT, INPUT, OUTPUT, RULE, PERM, STATUS, DECISION, ACTIVITY } from '../agent-operations/copy';
 import { defaultSelection, scopeItems, type OpsScope } from '../agent-operations/roles';
-import { AGENTS, REASONING, REASONING_PROVENANCE, SAMPLE_PROVENANCE, FORECASTS, type Run, type Agent, type T3, type Asset } from './central-data';
+import { AGENTS, REASONING, FORECASTS, type Run, type Agent, type T3, type Asset } from './central-data';
 
 const ICON: Record<string, LucideIcon> = { bettex: Workflow, treasury: Landmark, governance: ScrollText, risk: ShieldAlert, execution: Waypoints, reconciliation: GitCompareArrows, predictions: Radar, btc: CircleDollarSign, eth: Coins, sol: Scale };
 const tone = (s: string) => s === 'healthy' || s === 'running' ? 'border-[#0E7C6B]/40 bg-[#E3F1EC] text-[#0A6657]' : s === 'failed' ? 'border-[#B3392A]/40 bg-[#F8E5E1] text-[#8E2A1D]' : 'border-[#C9922A]/50 bg-[#FBF0D6] text-[#7A5410]';
@@ -37,7 +37,7 @@ export function CentralAgents({ scope, onAction, initialId, onMarketSelect }: Pr
     </dl>
     <ul className="mt-2 list-disc pl-5">{r.findings.map(c => <li key={c}>{L(FINDING[c]) || c}</li>)}</ul>
     <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-xs sm:grid-cols-3">{r.facts.map(k => <div key={k.code} className="min-w-0"><dt className="text-[#5B6B85]">{L(FACT[k.code]) || k.code}</dt><dd className="mono break-words font-bold">{factText(k.code, k.value)}</dd></div>)}</dl>
-    {r.evidence.length > 0 && <><p className="mt-2 text-xs font-bold">{x('Evidência de origem (amostra)', 'Source evidence (sample)', 'Evidencia de origen (muestra)')}</p>
+    {r.evidence.length > 0 && <><p className="mt-2 text-xs font-bold">{x('Evidência de origem', 'Source evidence', 'Evidencia de origen')}</p>
       <ul className="mt-1 grid gap-1 text-xs">{r.evidence.map((e, i) => <li key={i} className="break-words rounded-lg border border-[#E4DCCB] bg-[#FFFCF6] p-2">
         <span className="font-bold">{e.unit === 'market' ? e.value : `${e.unit === 'USD' ? factText('forecast_usd', e.value) : e.value} ${e.unit}`}</span>
         {e.blockHeight && <> · {x('bloco', 'block', 'bloque')} <span className="mono">{e.blockHeight}</span></>}
@@ -50,12 +50,12 @@ export function CentralAgents({ scope, onAction, initialId, onMarketSelect }: Pr
     const rec = r.rec === 'monitor' ? x('Monitorar', 'Monitor', 'Monitorear') : r.rec === 'abstain' ? x('Abster-se', 'Abstain', 'Abstenerse') : x('Revisar', 'Review', 'Revisar');
     const List = ({ title, items }: { title: string; items: T3[] }) => <div><h5 className="font-bold">{title}</h5><ul className="list-disc pl-5">{items.map((s, i) => <li key={i}>{L(s)}</li>)}</ul></div>;
     return <section className="mt-3 rounded-xl border border-[#0E7C6B]/30 bg-[#F1F7F3] p-3" data-testid={`ai-reasoning-panel-${a.id}`}>
-      <h4 className="flex flex-wrap items-center gap-2 text-sm font-extrabold"><Sparkles className="h-4 w-4 text-[#0A6657]" aria-hidden="true" />{x('Explicação de raciocínio', 'Reasoning explanation', 'Explicación de razonamiento')} · {name(a.id)} <span className="rounded-full border border-[#C9922A]/60 bg-[#FBF0D6] px-2 py-0.5 text-[10px] font-bold text-[#7A5410]">{x('Ilustrativo', 'Illustrative', 'Ilustrativo')}</span></h4>
-      <p className="mt-1 text-xs text-[#5B6B85]" data-testid={`ai-provenance-${a.id}`}>{x('Proveniência', 'Provenance', 'Procedencia')}: {L(REASONING_PROVENANCE)} {x('Execução de origem', 'Source run', 'Ejecución de origen')}: <span className="mono">{a.latest.id}</span>.</p>
+      <h4 className="flex flex-wrap items-center gap-2 text-sm font-extrabold"><Sparkles className="h-4 w-4 text-[#0A6657]" aria-hidden="true" />{x('Explicação de raciocínio', 'Reasoning explanation', 'Explicación de razonamiento')} · {name(a.id)}</h4>
+      <p className="mt-1 text-xs text-[#5B6B85]" data-testid={`ai-provenance-${a.id}`}>{x('Execução de origem', 'Source run', 'Ejecución de origen')}: <span className="mono">{a.latest.id}</span>.</p>
       <button type="button" data-demo-action data-testid={`button-ai-generate-${a.id}`} onClick={onAction} className="mt-2 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white"><Sparkles className="h-4 w-4" aria-hidden="true" />{x('Gerar análise por IA', 'Generate AI analysis', 'Generar análisis por IA')}</button>
       <div className="mt-3 grid gap-2 rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3 text-sm">
         <p className="font-semibold">{L(r.summary)}</p>
-        <p><b>{x('Sugestão ilustrativa', 'Illustrative suggestion', 'Sugerencia ilustrativa')}:</b> {rec}. <span className="text-xs text-[#5B6B85]">{x('Não é ordem financeira. Execução permitida: não.', 'Not a financial order. Execution allowed: no.', 'No es una orden financiera. Ejecución permitida: no.')}</span></p>
+        <p><b>{x('Sugestão', 'Suggestion', 'Sugerencia')}:</b> {rec}. <span className="text-xs text-[#5B6B85]">{x('Não é ordem financeira. Execução permitida: não.', 'Not a financial order. Execution allowed: no.', 'No es una orden financiera. Ejecución permitida: no.')}</span></p>
         <List title={x('Observações', 'Observations', 'Observaciones')} items={r.obs} />
         <List title={x('Incertezas', 'Uncertainties', 'Incertidumbres')} items={r.unc} />
         <List title={x('Próximos passos sugeridos', 'Suggested next steps', 'Próximos pasos sugeridos')} items={r.next} />
@@ -63,8 +63,8 @@ export function CentralAgents({ scope, onAction, initialId, onMarketSelect }: Pr
   };
 
   const Forecast = ({ id }: { id: Asset }) => { const e = FORECASTS[id]; return <div className="mt-2 rounded-xl border border-[#E4DCCB] bg-[#FBF8F0] p-3 text-xs" data-testid={`forecast-${id}`}>
-    <p className="font-bold">{x('Previsão de preço, não probabilidade de evento', 'Price forecast, not an event probability', 'Previsión de precio, no probabilidad de evento')} <Help label={x('O que é esta previsão', 'What this forecast is', 'Qué es esta previsión')}>{x('Allora publica um preço futuro em USD. Ele não diz a chance de um evento do Polymarket. Valores desta tela são amostras ilustrativas.', 'Allora publishes a future USD price. It does not give the chance of a Polymarket event. Values on this screen are illustrative samples.', 'Allora publica un precio futuro en USD. No indica la probabilidad de un evento de Polymarket. Los valores de esta pantalla son muestras ilustrativas.')}</Help></p>
-    <p className="mt-1">{Number(e.usd).toLocaleString(lc, { minimumFractionDigits: 2 })} USD · {x('bloco', 'block', 'bloque')} <span className="mono">{e.block}</span> ({x('amostra', 'sample', 'muestra')})</p></div>; };
+    <p className="font-bold">{x('Previsão de preço, não probabilidade de evento', 'Price forecast, not an event probability', 'Previsión de precio, no probabilidad de evento')} <Help label={x('O que é esta previsão', 'What this forecast is', 'Qué es esta previsión')}>{x('Allora publica um preço futuro em USD. Ele não diz a chance de um evento do Polymarket.', 'Allora publishes a future USD price. It does not give the chance of a Polymarket event.', 'Allora publica un precio futuro en USD. No indica la probabilidad de un evento de Polymarket.')}</Help></p>
+    <p className="mt-1">{Number(e.usd).toLocaleString(lc, { minimumFractionDigits: 2 })} USD · {x('bloco', 'block', 'bloque')} <span className="mono">{e.block}</span></p></div>; };
 
   const docs = (a: Agent) => { const ag = AGENT[a.id]; return <div className="mt-3 grid gap-3 text-sm" data-testid={`docs-${a.id}`}>
     <p>{L(ag?.role)}</p>
@@ -76,7 +76,7 @@ export function CentralAgents({ scope, onAction, initialId, onMarketSelect }: Pr
       <div><h4 className="font-bold">{x('Permissões', 'Permissions', 'Permisos')}</h4><ul className="list-disc pl-5">{known(PERM, a.perms).map(c => <li key={c}>{L(PERM[c])}</li>)}</ul></div>
     </div>
     <div><h4 className="font-bold">{x('Regras', 'Rules', 'Reglas')}</h4><ul className="list-disc pl-5">{known(RULE, a.rules).map(c => <li key={c}>{L(RULE[c])}</li>)}</ul></div>
-    <p><b>{x('Periodicidade', 'Cadence', 'Periodicidad')}:</b> {x('a cada', 'every', 'cada')} {a.cadenceSeconds} s. {x('Nesta demonstração nenhum ciclo é executado.', 'In this demo no cycle runs.', 'En esta demostración no se ejecuta ningún ciclo.')}</p>
+    <p><b>{x('Periodicidade', 'Cadence', 'Periodicidad')}:</b> {x('a cada', 'every', 'cada')} {a.cadenceSeconds} s.</p>
     <p className="rounded-xl border border-[#C9922A]/50 bg-[#FBF0D6] p-2 text-xs"><b>{x('Não é autorização financeira', 'Not a financial authorization', 'No es autorización financiera')}.</b> {x('Esta análise não assina, não move saldo e não substitui política, orçamento ou aprovação. Execução permitida: não.', 'This analysis does not sign, move balances or replace policy, budget or approval. Execution allowed: no.', 'Este análisis no firma, no mueve saldos y no sustituye política, presupuesto o aprobación. Ejecución permitida: no.')}</p>
   </div>; };
 
@@ -86,10 +86,9 @@ export function CentralAgents({ scope, onAction, initialId, onMarketSelect }: Pr
 
   return <section className="rounded-2xl border border-[#E4DCCB] bg-[#FFFCF6] p-3 sm:p-4" data-testid={scope === 'agents' ? 'agent-ops-full' : `agent-ops-${scope}`}>
     <div className="flex flex-wrap items-center gap-2"><h2 className="display text-lg font-extrabold">{title}</h2>
-      <span className="text-xs text-[#5B6B85]">{x('Amostra de', 'Sample from', 'Muestra de')} {f.date(AGENTS[0].latest.completedAt)}</span><span className="ml-auto" />
+      <span className="text-xs text-[#5B6B85]">{x('Em', 'On', 'El')} {f.date(AGENTS[0].latest.completedAt)}</span><span className="ml-auto" />
       <button type="button" data-demo-action onClick={onAction} data-testid={`button-agents-refresh-${scope}`} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[#E4DCCB] px-3 text-sm font-bold"><RefreshCw className="h-4 w-4" aria-hidden="true" />{x('Atualizar', 'Refresh', 'Actualizar')}</button></div>
     <p className="mt-1 text-xs text-[#5B6B85]" data-testid={`scope-note-${scope}`}>{note}</p>
-    <p className="mt-1 text-[11px] font-bold text-[#7A5410]">{L(SAMPLE_PROVENANCE)}</p>
     {scope === 'agents' && <nav className="mt-3 flex flex-wrap gap-2" aria-label={x('Mercados do agente Cripto', 'Crypto agent markets', 'Mercados del agente Cripto')} data-testid="crypto-market-navigation">
       {(['predictions', 'btc', 'eth', 'sol'] as const).map(id => <button key={id} type="button" aria-pressed={sel === id} data-testid={`crypto-market-${id}`} onClick={() => { setSel(id); setPage(0); onMarketSelect?.(id); }} className={`min-h-11 rounded-xl border px-3 text-sm font-bold ${sel === id ? 'border-[#0E7C6B] bg-[#E3F1EC] text-[#0A6657]' : 'border-[#E4DCCB] bg-[#FFFCF6] hover:bg-[#F3EFE3]'}`}>{id === 'predictions' ? x('Visão geral', 'Overview', 'Visión general') : id.toUpperCase()}</button>)}
     </nav>}

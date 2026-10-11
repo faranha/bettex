@@ -16,6 +16,7 @@ import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipat
 import { PitchObservations } from '@/components/pitch/PitchObservations';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
 import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
+import { formatCryptoDailyBillions } from '@/components/pitch/marketFlow';
 import { PitchHeroGraph } from '@/components/pitch/PitchHeroGraph';
 import { PitchProductResources } from '@/components/pitch/PitchProductResources';
 import { t, useLocale } from '@/lib/i18n';
@@ -23,7 +24,6 @@ import './pitch.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
-const HERO_SUPPORT = 'Uma comunidade aberta construindo um agente BETTEX para diferentes mercados, com o apostador brasileiro como público inicial.';
 const HERO_NOTICE = 'Projeto em planejamento. Hoje existe apenas um demo visual: a operação com dinheiro real ainda não foi lançada.';
 
 function Sec({ id, n, kicker, title, dark = false, summary, hero, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; hero?: string; children: ReactNode }) {
@@ -52,6 +52,7 @@ const Doc = ({ hash, children, dark = false }: { hash: string; children: ReactNo
 
 export function PitchPage() {
   useLocale();
+  const cryptoDailyBillions = formatCryptoDailyBillions();
   useEffect(() => {
     let mounted = true;
     const scrollToHash = () => {
@@ -77,15 +78,16 @@ export function PitchPage() {
     };
   }, []);
   return <main className="pitch">
-    <section id="visao" aria-label="Início" className="cover cover--hero relative overflow-hidden text-[#F4F1E8]">
+    <section id="visao" aria-label="Início" className="cover relative overflow-hidden text-[#F4F1E8]">
       <div className="page-wrap relative pb-8 pt-8 sm:pb-12 sm:pt-14">
-        <div className="cover__grid cover__grid--hero">
+        <div className="cover__grid">
           <div className="cover__copy">
-            <span className="cover__audience mono block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Início</span>
-            <h1 className="display font-extrabold leading-[1.05] tracking-[-.05em]">Um projeto DeFi de trading com IA <span className="text-[#F2B632]">para vários mercados.</span></h1>
-            <p className="cover__support">{t(HERO_SUPPORT)}</p>
-            <p className="cover__notice">{t(HERO_NOTICE)}</p>
-            <div className="cover__ctas">
+            <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Início</span>
+            <p className="cover__market mb-4">O apostador brasileiro é o público inicial; a proposta também atende pessoas que já participam do mercado cripto.</p>
+            <h1 className="display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Um projeto DeFi de trading com IA <span className="text-[#F2B632]">para vários mercados.</span></h1>
+            <p className="cover__market mt-4"><strong data-i18n="translated">{t(`Mais de 60 milhões de brasileiros formam o público potencial estimado, enquanto o mercado de cripto movimenta cerca de R$ ${cryptoDailyBillions} bilhão em operações diárias e as bets têm uma referência histórica de R$ 600 milhões em depósitos por dia.`)}</strong>{' '}A oportunidade é oferecer um produto de investimento que fale a língua dessas pessoas.</p>
+            <p className="cover__notice mt-4 text-[13px] leading-[1.55] text-[#c5d2f1]">{t(HERO_NOTICE)}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
               <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
               <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
             </div>
@@ -103,9 +105,7 @@ export function PitchPage() {
     <FutureSections />
 
     <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" summary="Um agente BETTEX, vários mercados e participação econômica por token." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
-      <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A BETTEX pretende usar agentes de IA para analisar mercados e executar estratégias de trading dentro de mandatos e limites de risco. O staking do token dá acesso ao rateio do pool global quando há lucro elegível; não financia as operações nem garante pagamento.</p>
-      <p className="mb-8 max-w-[900px] text-[15px] leading-7">O usuário participa pelo staking, sem escolher e acompanhar cada operação individual. A proposta combina operação tecnológica, regras verificáveis e participação condicionada nos resultados. O desempenho líquido das estratégias e a utilidade do produto ainda precisam ser demonstrados.</p>
-      <p className="mb-8 max-w-[800px] text-[15px] leading-7">É um projeto DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time administram inicialmente; agentes de IA assumirão gradualmente essas funções. A autonomia operacional do agente BETTEX é um objetivo futuro, dependente de validação, mandatos e controles verificáveis.</p>
+      <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A BETTEX é um projeto DeFi e DEX, sem entidade empresarial, que prevê trading com IA sob mandatos e limites de risco. Pelo staking, o usuário participa do rateio do pool global quando há lucro elegível, sem acompanhar cada operação, financiar o trading ou ter pagamento garantido. A gestão começa com o fundador e o time, com transição gradual para IA condicionada à validação do desempenho e a controles verificáveis.</p>
       <div className="fu-position">
         <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
         <p className="display fu-pos-lead">Resgatar o futuro, transformando a aposta em investimento.</p>

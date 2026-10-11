@@ -51,6 +51,7 @@ import type {
   GetAlloraAnalysis200,
   GetAlphaTradingParams,
   GetDemoHistoryParams,
+  GetDemoPolymarketParams,
   GetDemoRoundArchiveParams,
   GetDemoSimulationParams,
   GetDemoSwapQuoteParams,
@@ -110,20 +111,27 @@ const withQueryKey = <T extends object, K>(query: T, queryKey: K): T & { queryKe
   return result;
 };
 
-export const getGetDemoPolymarketUrl = () => {
+export const getGetDemoPolymarketUrl = (params?: GetDemoPolymarketParams,) => {
+  const normalizedParams = new URLSearchParams();
 
+  Object.entries(params || {}).forEach(([key, value]) => {
 
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
 
+  const stringifiedParams = normalizedParams.toString();
 
-  return `/api/demo/polymarket`
+  return stringifiedParams.length > 0 ? `/api/demo/polymarket?${stringifiedParams}` : `/api/demo/polymarket`
 }
 
 /**
  * @summary Public quotes for the read-only Polymarket interface simulation
  */
-export const getDemoPolymarket = async ( options?: Parameters<typeof customFetch>[1]): Promise<DemoPolymarketFeed> => {
+export const getDemoPolymarket = async (params?: GetDemoPolymarketParams, options?: Parameters<typeof customFetch>[1]): Promise<DemoPolymarketFeed> => {
 
-  return customFetch<DemoPolymarketFeed>(getGetDemoPolymarketUrl(),
+  return customFetch<DemoPolymarketFeed>(getGetDemoPolymarketUrl(params),
   {
     ...options,
     method: 'GET'
@@ -136,23 +144,23 @@ export const getDemoPolymarket = async ( options?: Parameters<typeof customFetch
 
 
 
-export const getGetDemoPolymarketQueryKey = () => {
+export const getGetDemoPolymarketQueryKey = (params?: GetDemoPolymarketParams,) => {
     return [
-    `/api/demo/polymarket`
+    `/api/demo/polymarket`, ...(params ? [params] : [])
     ] as const;
     }
 
 
-export const getGetDemoPolymarketQueryOptions = <TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+export const getGetDemoPolymarketQueryOptions = <TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>(params?: GetDemoPolymarketParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
 ) => {
 
 const {query: queryOptions, request: requestOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getGetDemoPolymarketQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getGetDemoPolymarketQueryKey(params);
 
 
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoPolymarket>>> = ({ signal }) => getDemoPolymarket({ signal, ...requestOptions });
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoPolymarket>>> = ({ signal }) => getDemoPolymarket(params, { signal, ...requestOptions });
 
 
 
@@ -166,7 +174,7 @@ export type GetDemoPolymarketQueryError = ErrorType<void>
 
 
 export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>> & Pick<
+ params: undefined |  GetDemoPolymarketParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>> & Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof getDemoPolymarket>>,
           TError,
@@ -176,7 +184,7 @@ export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPo
  , queryClient?: QueryClient
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>> & Pick<
+ params?: GetDemoPolymarketParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>> & Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof getDemoPolymarket>>,
           TError,
@@ -186,7 +194,7 @@ export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPo
  , queryClient?: QueryClient
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ params?: GetDemoPolymarketParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
  , queryClient?: QueryClient
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
@@ -194,11 +202,11 @@ export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPo
  */
 
 export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ params?: GetDemoPolymarketParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
  , queryClient?: QueryClient
  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
-  const queryOptions = getGetDemoPolymarketQueryOptions(options)
+  const queryOptions = getGetDemoPolymarketQueryOptions(params,options)
 
   const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
 

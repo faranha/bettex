@@ -11,6 +11,12 @@ import * as zod from 'zod';
 /**
  * @summary Public quotes for the read-only Polymarket interface simulation
  */
+export const getDemoPolymarketQueryLocaleDefault = `en`;
+
+export const GetDemoPolymarketQueryParams = zod.object({
+  "locale": zod.enum(['pt', 'en', 'es']).default(getDemoPolymarketQueryLocaleDefault).describe('Language for market questions; original source prices and identifiers are preserved.')
+})
+
 export const GetDemoPolymarketResponse = zod.object({
   "source": zod.string(),
   "fetchedAt": zod.string(),

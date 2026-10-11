@@ -33,6 +33,18 @@ Keep the demo environment notice and restart controls in one compact blue band, 
 
 **How to apply:** Preserve the testnet status, no-real-money warning, simulated-operation notice, public contract link, tab scope and restart confirmation through compact accessible controls.
 
+Do not reintroduce the banner sentences “Comunidade aberta · Token comunitário · Sem salários ou taxas de serviço.” or “Dados ilustrativos · Software em desenvolvimento.”, including their translations.
+
+**Why:** The creator explicitly demanded removal of these two sentences from the app.
+
+**How to apply:** Keep the remaining demo and no-real-money labels and any existing action controls; do not restore the removed promotional or development-status paragraphs.
+
+Every app area, including Painel, Central da IA, Tesouraria, Histórico and Perfil, must have its own subsection submenu in the pill-button style of Histórico. Show only the options belonging to that section. Do not repeat the global menu as breadcrumbs or another complete list of app destinations.
+
+**Why:** The creator reiterated that each page should contain only its own areas/options, then required “todas as areas [...] do app tem que ter submenus assim”, using Histórico as the visual reference.
+
+**How to apply:** Keep general navigation in the top menu or mobile drawer. Remove repeated visible main-area labels such as “Histórico” below that menu; meaningful content headings remain. Preserve each page's filters, folds, tabs and all content while organizing it behind its own submenu.
+
 Use a hamburger with a side drawer in the mobile system header, not an “Areas” dropdown or a permanently stacked destination menu.
 
 **Why:** The creator said the stacked menu occupied too much screen space and covered content while scrolling; later explicitly requested a hamburger instead of the “weird dropdown”.

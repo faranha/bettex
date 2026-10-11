@@ -15,7 +15,7 @@ import { openDemoNotice } from './runtime';
 
 type T3 = readonly [string, string, string];
 const CATS: Record<string, T3> = {
-  opening_snapshot: ['Saldo inicial de exemplo', 'Mock opening balance', 'Saldo inicial de ejemplo'],
+  opening_snapshot: ['Saldo inicial', 'Opening balance', 'Saldo inicial'],
   buyback_funding: ['Financiamento da recompra', 'Buyback funding', 'Fondeo de recompra'],
   buyback_purchase: ['Compra da recompra', 'Buyback purchase', 'Compra de recompra'],
   token_purchase: ['Compra de tokens', 'Token purchase', 'Compra de tokens'],
@@ -24,17 +24,21 @@ const CATS: Record<string, T3> = {
   transfer: ['Transferência', 'Transfer', 'Transferencia'],
 };
 const PARTY: Record<string, T3> = {
-  opening_snapshot: ['Posição inicial do demo', 'Demo opening position', 'Posición inicial de la demo'],
+  opening_snapshot: ['Posição inicial', 'Opening position', 'Posición inicial'],
   operations: ['Operações da tesouraria', 'Treasury operations', 'Operaciones de la tesorería'],
+  btc_strategy: ['Estratégia BTC', 'BTC strategy', 'Estrategia BTC'],
+  eth_strategy: ['Estratégia ETH', 'ETH strategy', 'Estrategia ETH'],
+  sol_strategy: ['Estratégia SOL', 'SOL strategy', 'Estrategia SOL'],
+  yield_strategy: ['Outros investimentos', 'Other investments', 'Otras inversiones'],
   staking_pool: ['Pool de participação', 'Participation pool', 'Pool de participación'],
   buyback_wallet: ['Carteira de recompra', 'Buyback wallet', 'Cartera de recompra'],
   treasury: ['Tesouraria', 'Treasury', 'Tesorería'],
-  swap_pool: ['Pool BETTEX/USDC simulada', 'Simulated BETTEX/USDC pool', 'Pool BETTEX/USDC simulada'],
+  swap_pool: ['Pool BETTEX/USDC', 'BETTEX/USDC pool', 'Pool BETTEX/USDC'],
   burn: ['Queima de tokens', 'Token burn', 'Quema de tokens'],
 };
 const SRC: Record<string, T3> = {
-  modeled_settlement: ['Liquidação modelada', 'Modeled settlement', 'Liquidación modelada'],
-  modeled_demo: ['Demonstração modelada', 'Modeled demo', 'Demostración modelada'],
+  modeled_settlement: ['Liquidação', 'Settlement', 'Liquidación'],
+  modeled_demo: ['Movimento', 'Movement', 'Movimiento'],
 };
 const btn = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-[#0E7C6B] bg-white px-3 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5] disabled:opacity-50';
 const sel = 'min-h-11 min-w-0 w-full max-w-full rounded-xl border border-[#E4DCCB] bg-white px-2 text-sm';
@@ -52,14 +56,21 @@ function pageOf(d: DemoDashboard, f: { account: 'all' | 'treasury' | 'buyback'; 
 /** Compact period movement on the Treasury page (local sample data). */
 export function DemoStatementOverview({ d, from }: { d: DemoDashboard; from: string }) {
   const { x, loc } = useX();
+  const [period, setPeriod] = useState<'current' | 'week' | 'month'>('week');
   const to = brazilDate(d.serverNow);
-  const data = useMemo(() => pageOf(d, { account: 'all', asset: 'all', from: from < to ? from : to, to }, 1, 1, () => ''), [d, from, to]);
+  const days = period === 'month' ? 29 : 6;
+  const since = period === 'current' ? (from < to ? from : to) : brazilDate(Date.parse(`${to}T12:00:00-03:00`) - days * 86_400_000);
+  const data = useMemo(() => pageOf(d, { account: 'all', asset: 'all', from: since, to }, 1, 1, () => ''), [d, since, to]);
   const label = x('Abrir extrato da tesouraria no Histórico', 'Open treasury statement in History', 'Abrir extracto de la tesorería en Historial');
   return <section data-testid="treasury-statement-overview" className="dcard p-4 sm:p-5">
     <div className="mb-3 flex items-start justify-between gap-3">
-      <div className="min-w-0"><h2 className="display text-lg font-extrabold"><WalletHelp id="treasury-movement" label={x('Movimento do período', 'Period movement', 'Movimiento del período')}><p>{x('Resumo completo dos registros locais de exemplo, por conta e ativo. Entradas e saídas não são sinônimos de lucro ou prejuízo. Os saldos se conciliam no modelo, mas não comprovam caixa real. O botão de extrato abre os detalhes no Histórico.', 'Complete summary of local sample records, by account and asset. Inflows and outflows are not the same as profit or loss. Balances reconcile within the model but do not prove real cash. The statement button opens details in History.', 'Resumen completo de registros locales de ejemplo, por cuenta y activo. Entradas y salidas no equivalen a ganancias o pérdidas. Los saldos se concilian en el modelo, pero no prueban caja real. El botón de extracto abre los detalles en Historial.')}</p></WalletHelp></h2>
-        <p className="mt-1 text-xs text-[#5B6B85]">{x('Livro de exemplo completo, com saldos iniciais e movimentos conciliados. Apenas dados fictícios; não é fluxo de caixa verificado.', 'Complete sample ledger with opening balances and reconciled movements. Fictitious data only; not verified cash flow.', 'Libro de ejemplo completo, con saldos iniciales y movimientos conciliados. Solo datos ficticios; no es flujo de caja verificado.')}</p></div>
+      <div className="min-w-0"><h2 className="display text-lg font-extrabold"><WalletHelp id="treasury-movement" label={x('Movimento do período', 'Period movement', 'Movimiento del período')}><p>{x('Resumo completo dos registros locais de exemplo, por conta e ativo. Entradas e saídas não são sinônimos de lucro ou prejuízo. Os saldos se conciliam no modelo, mas não comprovam caixa real. O botão de extrato abre os detalhes no Histórico.', 'Complete summary of local sample records, by account and asset. Inflows and outflows are not the same as profit or loss. Balances reconcile within the model but do not prove real cash. The statement button opens details in History.', 'Resumen completo de registros locales de ejemplo, por cuenta y activo. Entradas y salidas no equivalen a ganancias o pérdidas. Los saldos se concilian en el modelo, pero no prueban caja real. El botón de extracto abre los detalles en Historial.')}</p></WalletHelp></h2></div>
       <Link href={`${demoPath('wallet', loc)}${historyQuery('treasury', { treasuryAccount: 'treasury', treasuryAsset: 'USDC' })}#treasury-statement`} data-testid="link-treasury-statement" aria-label={label} title={label} className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#D8CFBB] bg-[#FFFCF6] text-[#1B2A41] hover:bg-[#F0E9DA]"><FileText className="h-5 w-5" aria-hidden="true" /></Link>
+    </div>
+    <div role="group" aria-label={x('Período do extrato', 'Statement period', 'Período del extracto')} className="mb-4 flex flex-wrap gap-2">
+      {([['current', x('Rodada atual', 'Current round', 'Ronda actual')], ['week', x('7 dias', '7 days', '7 días')], ['month', x('30 dias', '30 days', '30 días')]] as const).map(([id, name]) =>
+        <button key={id} type="button" data-demo-local data-testid={`treasury-period-${id}`} aria-pressed={period === id} onClick={() => setPeriod(id)}
+          className={`min-h-11 rounded-xl border px-3 text-xs font-bold ${period === id ? 'border-[#0E7C6B] bg-[#E6F4EE] text-[#0A6657]' : 'border-[#D8CFBB] text-[#1B2A41]'}`}>{name}</button>)}
     </div>
     <TreasuryStatementSummary data={data} compact />
   </section>;
@@ -95,7 +106,6 @@ export function DemoTreasuryStatement({ d }: { d: DemoDashboard }) {
   </li>;
   return <section id="treasury-statement" data-testid="treasury-statement" className="grid min-w-0 gap-3">
     <h2 className="display text-lg font-extrabold">{x('Extrato da Tesouraria', 'Treasury statement', 'Extracto de la Tesorería')}</h2>
-    <p className="text-xs text-[#5B6B85]">{x('Todas as entradas e saídas financeiras da tesouraria, inclusive renda de investimentos, e da carteira de recompra. Registros de exemplo ilustrativos derivados dos dados locais; sem transações reais.', 'All financial inflows and outflows of the treasury, including investment income, and of the buyback wallet. Illustrative sample records derived from local data; no real transactions.', 'Todas las entradas y salidas financieras de la tesorería, incluidos ingresos de inversión, y de la cartera de recompra. Registros de ejemplo ilustrativos derivados de datos locales; sin transacciones reales.')}</p>
     {wallet && <div data-testid="treasury-wallet-context" className="grid gap-2 rounded-2xl border border-[#C9DCD3] bg-[#F1F7F3] p-3 text-xs text-[#1B2A41]">
       <p className="font-bold">{wname[wallet]}</p>
       {wallet === 'buyback' ? <p>{x('Esta carteira tem lançamentos de caixa próprios, listados abaixo.', 'This wallet has its own cash entries, listed below.', 'Esta cartera tiene asientos de caja propios, listados abajo.')}</p> : <>
@@ -114,9 +124,7 @@ export function DemoTreasuryStatement({ d }: { d: DemoDashboard }) {
       <button type="button" data-demo-action data-testid="button-statement-csv" className={btn} onClick={openDemoNotice}>{x('Baixar CSV', 'Download CSV', 'Descargar CSV')}</button></div>
     {!valid && <p role="alert" className="rounded-xl bg-[#F6DADA] p-3 text-sm text-[#8C2B2B]">{x('A data inicial deve ser anterior à final.', 'The start date must not be after the end date.', 'La fecha inicial no puede ser posterior a la final.')}</p>}
     {data && <>
-      <div role="status" data-testid="treasury-statement-coverage" className="grid gap-1 rounded-2xl border border-[#E5CC87] bg-[#FFF5D9] p-3 text-xs text-[#73531B]"><p className="font-bold">{x('Cobertura parcial', 'Partial coverage', 'Cobertura parcial')}</p>
-        <p>{x('Inclui saldos iniciais fictícios, liquidações modeladas e movimentos do demo. Os registros não representam aportes ou transações reais.', 'Includes fictitious opening balances, modeled settlements and demo movements. These records do not represent real funding or transactions.', 'Incluye saldos iniciales ficticios, liquidaciones modeladas y movimientos de la demo. Los registros no representan aportes ni transacciones reales.')}</p>
-        <p>{x('Posição em', 'As of', 'Posición a')} {formatBrazilDateTime(data.asOf, fl)}</p></div>
+      <p className="text-xs text-[#5B6B85]">{x('Posição em', 'As of', 'Posición a')} {formatBrazilDateTime(data.asOf, fl)}</p>
       {data.balances.length > 0 && <TreasuryStatementSummary data={data} />}
       <p className="text-xs text-[#5B6B85]" aria-live="polite" data-testid="treasury-statement-count">{x(`${data.total} lançamentos · página ${data.page} de ${data.totalPages}`, `${data.total} entries · page ${data.page} of ${data.totalPages}`, `${data.total} asientos · página ${data.page} de ${data.totalPages}`)}</p>
       <p className="text-xs text-[#5B6B85]">{x('O resumo cobre o período inteiro, independentemente da categoria ou da busca.', 'The summary covers the full period regardless of category or search.', 'El resumen cubre todo el período, sin importar la categoría o la búsqueda.')}</p>

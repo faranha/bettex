@@ -19,7 +19,7 @@ const AG: T3 = ['Núcleo interno Cripto', 'Internal Crypto core', 'Núcleo inter
 const SP: T3 = ['Subagente de Cripto', 'Crypto subagent', 'Subagente de Cripto'];
 const CT: T3 = ['Controle, não é agente', 'Control, not an agent', 'Control, no es agente'];
 const SOONT: T3 = ['Em breve, desativado', 'Upcoming, disabled', 'Próximamente, desactivado'];
-const HB: T3 = ['Registros de amostra', 'Sample records', 'Registros de muestra'];
+const HB: T3 = ['Registros', 'Records', 'Registros'];
 
 /** Business and community nodes. Ids equal the PROJECT_TOPICS ids supplied by the shared project model. */
 const BIZ: { id: string; kind: 'hub' | 'control'; sub: T3; wide: P; tall: P; d: number }[] = [

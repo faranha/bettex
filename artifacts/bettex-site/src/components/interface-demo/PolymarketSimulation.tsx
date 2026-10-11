@@ -16,7 +16,7 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
   const [marketId, setMarketId] = useState('');
   const [budget, setBudget] = useState('100');
   const [side, setSide] = useState<'YES' | 'NO'>('YES');
-  const q = useGetDemoPolymarket({ query: { staleTime: 60000, refetchInterval: 60000, retry: 1 } });
+  const q = useGetDemoPolymarket({ locale: loc }, { query: { staleTime: 60000, refetchInterval: 60000, retry: 1 } });
   const data = q.data;
   const markets = useMemo(() => (data?.markets ?? []).filter((m) => m.asset === cur), [data, cur]);
   useEffect(() => {
@@ -38,10 +38,9 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
   const num = (n: number) => n.toLocaleString(lc, { maximumFractionDigits: 4 });
 
   return (
-    <section className="pms" data-testid="polymarket-simulation" aria-label="Polymarket">
+    <section className="pms" data-testid="polymarket-simulation" aria-label={x('Polymarket', 'Polymarket', 'Polymarket')}>
       <div className="pms-lane">
         <b>{x('Polymarket · cotações e simulação', 'Polymarket · quotes and simulation', 'Polymarket · cotizaciones y simulación')}</b>
-        <span>{x('Somente leitura: sem ordens, carteira ou dinheiro real.', 'Read-only: no orders, wallet or real money.', 'Solo lectura: sin órdenes, billetera ni dinero real.')}</span>
       </div>
       {!asset && (
         <div className="pms-tabs" role="group">
@@ -56,9 +55,11 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
         </button>
       </div>
       {q.isLoading && <div className="pms-sk" role="status" aria-label={x('Carregando', 'Loading', 'Cargando')} />}
-      {q.isError && !data && <div className="pms-err" role="alert">{x('Falha ao consultar a Polymarket. Nenhum preço é exibido.', 'Could not query Polymarket. No price is shown.', 'No se pudo consultar Polymarket. No se muestra ningún precio.')}</div>}
+      {q.isError && !data && <div className="pms-err" role="alert">{x('Não foi possível carregar os mercados no idioma selecionado. Tente atualizar as cotações.', 'Could not load markets in the selected language. Try refreshing quotes.', 'No se pudieron cargar los mercados en el idioma seleccionado. Intente actualizar las cotizaciones.')}</div>}
       {q.isError && data && <div className="pms-warn" role="status">{x('A última atualização falhou; exibindo a consulta anterior.', 'The latest refresh failed; showing the previous query.', 'La última actualización falló; se muestra la consulta anterior.')}</div>}
-      {err && <div className="pms-warn" role="status">{x('Fonte indisponível para', 'Source unavailable for', 'Fuente no disponible para')} {cur}: {err.message}</div>}
+      {err && <div className="pms-warn" role="status">{cur}: {err.message === 'no_open_binary_markets'
+        ? x('Nenhum mercado público disponível para este ativo.', 'No public market available for this asset.', 'Ningún mercado público disponible para este activo.')
+        : x('Não foi possível consultar a fonte.', 'Could not query the source.', 'No se pudo consultar la fuente.')}</div>}
       {data && !markets.length && !err && <div className="pms-warn">{x('Nenhum mercado público disponível para este ativo.', 'No public market available for this asset.', 'Ningún mercado público disponible para este activo.')}</div>}
       {data && (
         <div className="pms-grid">
@@ -71,7 +72,7 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
             </label>
             {m && (
               <>
-                <p className="pms-q"><small>{x('Título original da fonte', 'Original source title', 'Título original de la fuente')}: </small>{m.question}</p>
+                <p className="pms-q"><small>{x('Condição do mercado', 'Market condition', 'Condición del mercado')}: </small>{m.question}</p>
                 <dl>
                   <div><dt>{x('SIM', 'YES', 'SÍ')}</dt><dd>{px(m.yesPrice)}</dd></div>
                   <div><dt>{x('NÃO', 'NO', 'NO')}</dt><dd>{px(m.noPrice)}</dd></div>
@@ -84,7 +85,7 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
             )}
           </div>
           <div className="pms-box pms-sim">
-            <h3>{x('Simulação local (exemplo)', 'Local simulation (example)', 'Simulación local (ejemplo)')}</h3>
+            <h3>{x('Simulação local', 'Local simulation', 'Simulación local')}</h3>
             <label>{x('Orçamento de exemplo (USD, máx. 10.000)', 'Example budget (USD, max 10,000)', 'Presupuesto de ejemplo (USD, máx. 10.000)')}
               <input data-testid="pm-budget" type="number" inputMode="decimal" min="0" max={MAX_BUDGET} step="any" value={budget} onChange={(e) => setBudget(e.target.value)} aria-invalid={!budgetOk} />
             </label>
@@ -103,9 +104,9 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
               <div><dt>{x('Se perder', 'If losing', 'Si pierde')}</dt><dd>{ok ? `-${usd(b)}` : dash}</dd></div>
             </dl>
             <p className="pms-note">
-              {x('Exemplo teórico local, não é ordem nem saldo real. Exclui taxas e slippage e não valida liquidez nem execução. Não é lucro garantido nem vantagem de probabilidade; o resultado é incerto e pode ser a perda total do valor simulado.',
+              {x('Exemplo teórico local, não é ordem nem saldo real. Exclui taxas e deslizamento de preço e não valida liquidez nem execução. Não é lucro garantido nem vantagem de probabilidade; o resultado é incerto e pode ser a perda total do valor simulado.',
                 'Local theoretical example, not an order or real balance. Excludes fees and slippage and does not validate liquidity or execution. Not guaranteed profit or a probability edge; the outcome is uncertain and may be a total loss of the simulated amount.',
-                'Ejemplo teórico local, no es una orden ni saldo real. Excluye comisiones y slippage y no valida liquidez ni ejecución. No es beneficio garantizado ni ventaja de probabilidad; el resultado es incierto y puede ser la pérdida total del monto simulado.')}
+                'Ejemplo teórico local, no es una orden ni saldo real. Excluye comisiones y deslizamiento de precio y no valida liquidez ni ejecución. No es beneficio garantizado ni ventaja de probabilidad; el resultado es incierto y puede ser la pérdida total del monto simulado.')}
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { GetDemoPolymarketResponse } from "@workspace/api-zod";
+import { localizeMarketTitles, type MarketLocale } from "../lib/polymarket-titles";
 
 type Asset = "BTC" | "ETH" | "SOL";
 type Market = { asset: Asset; id: string; question: string; url: string; yesPrice: number; noPrice: number; volume24h: number; liquidity: number };
@@ -53,15 +54,25 @@ async function load(): Promise<Feed> {
   return data;
 }
 // The only new demo capability is unsigned public GET data. No accounts, workers, database or CLOB orders.
-router.get("/demo/polymarket", async (_req, res) => {
-  if (cached && cached.until > Date.now()) return res.json(cached.data);
+router.get("/demo/polymarket", async (req, res) => {
+  const locale = (req.query.locale ?? 'en') as MarketLocale;
+  if (!['pt', 'en', 'es'].includes(locale)) return res.status(400).json({ error: 'invalid_locale' });
+  const localized = async (data: Feed) => {
+    const titles = await localizeMarketTitles(data.markets.map(m => m.question), locale);
+    return GetDemoPolymarketResponse.parse({ ...data, markets: data.markets.map((m, i) => ({ ...m, question: titles[i] })) });
+  };
+  if (cached && cached.until > Date.now()) {
+    try { return res.json(await localized(cached.data)); }
+    catch { return res.status(503).json({ error: 'polymarket_translation_unavailable' }); }
+  }
   if (failedUntil > Date.now()) return res.status(503).json({ error: "polymarket_unavailable" });
   try {
     pending ??= load();
     const data = await pending;
     cached = { data, until: Date.now() + 60000 };
     res.setHeader("Cache-Control", "public, max-age=30");
-    return res.json(GetDemoPolymarketResponse.parse(data));
+    try { return res.json(await localized(data)); }
+    catch { return res.status(503).json({ error: 'polymarket_translation_unavailable' }); }
   } catch {
     failedUntil = Date.now() + 15000;
     return res.status(503).json({ error: "polymarket_unavailable" });

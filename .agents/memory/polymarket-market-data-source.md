@@ -1,4 +1,16 @@
 ---
+
+Os títulos dos mercados e as mensagens recebidas da fonte também devem aparecer
+no idioma selecionado, não apenas os controles do painel. Não repetir o título
+original em inglês dentro da interface em português ou espanhol.
+
+**Why:** O criador reiterou: “tudo tem que ser traduzido amigo, veja, tem coisas
+em ingles aqui”, apontando a pergunta do mercado e sua repetição em inglês.
+
+**How to apply:** Traduzir a condição sem alterar ativo, limiar, direção,
+prazo, identificadores, preços ou link da fonte. Manter nomes próprios como
+Polymarket e Ethereum. Falhas de tradução devem ser explícitas no idioma
+selecionado, nunca uma troca silenciosa para inglês ou um evento inventado.
 name: Polymarket market-data source
 description: Distinguishes documentation tools, market-data APIs, execution, and provider settlement from BETTEX wallets.
 ---

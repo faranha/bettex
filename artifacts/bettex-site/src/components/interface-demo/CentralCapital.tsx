@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import { useState } from 'react';
 import { useFmt, card, KV, Tag, dec6 } from '../alpha-trading/format';
-import { CAPITAL, POLICY, FORECASTS, SAMPLE_PROVENANCE, type Asset } from './central-data';
+import { CAPITAL, POLICY, FORECASTS, type Asset } from './central-data';
 import { useL } from './CentralAgents';
 
 const num = (v: string) => Number(v) / 1e6;
@@ -24,7 +24,7 @@ export function CentralCapital({ onAction }: { onAction: () => void }) {
   ];
   return <section className={card} data-testid="alpha-capital" aria-label={x('Capital e controles de risco', 'Capital and risk controls', 'Capital y controles de riesgo')}>
     <h2 className="display text-lg font-extrabold">{x('Capital e controles de risco', 'Capital and risk controls', 'Capital y controles de riesgo')}</h2>
-    <p className="mt-1 text-xs text-[#5B6B85]">{x('Capital e limites pertencem à política e à tesouraria, não aos agentes. A tesouraria inteira não é o capital do agente Cripto. Valores ilustrativos.', 'Capital and limits belong to policy and the Treasury, not to agents. The whole Treasury is not the Crypto agent’s capital. Illustrative values.', 'El capital y los límites pertenecen a la política y la tesorería, no a los agentes. La tesorería completa no es el capital del agente Cripto. Valores ilustrativos.')}</p>
+    <p className="mt-1 text-xs text-[#5B6B85]">{x('Capital e limites pertencem à política e à tesouraria, não aos agentes. A tesouraria inteira não é o capital do agente Cripto.', 'Capital and limits belong to policy and the Treasury, not to agents. The whole Treasury is not the Crypto agent’s capital.', 'El capital y los límites pertenecen a la política y la tesorería, no a los agentes. La tesorería completa no es el capital del agente Cripto.')}</p>
     <h3 className="mt-3 font-bold">{x('Tesouraria inteira', 'Whole Treasury', 'Tesorería completa')}</h3>
     <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3" data-testid="capital-treasury">
       <KV k={x('Ativos totais', 'Total assets', 'Activos totales')} v={u(CAPITAL.total)} />
@@ -60,7 +60,6 @@ export function CentralCapital({ onAction }: { onAction: () => void }) {
     <div className="mt-4 flex flex-wrap gap-2">
       <button type="button" data-demo-action data-testid="button-config-save" onClick={onAction} className="min-h-11 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white">{x('Salvar configuração', 'Save configuration', 'Guardar configuración')}</button>
       <button type="button" data-demo-action data-testid="button-capital-allocate" onClick={onAction} className="min-h-11 rounded-xl border border-[#0E7C6B] px-4 text-sm font-bold text-[#0A6657]">{x('Alterar alocação', 'Change allocation', 'Cambiar asignación')}</button></div>
-    <p className="mt-2 text-[11px] font-bold text-[#7A5410]">{L(SAMPLE_PROVENANCE)}</p>
   </section>;
 }
 
@@ -72,11 +71,10 @@ export function CentralForecast() {
   const fmt = (v: number) => v.toLocaleString(lc, { style: 'currency', currency: 'USD' });
   const h = hover ?? d.series.length - 1;
   return <section className={card} data-testid="allora-analysis"><h2 className="display text-lg font-extrabold">{x('Análise Allora: previsão de preço', 'Allora analysis: price forecast', 'Análisis Allora: previsión de precio')}</h2>
-    <p className="mt-1 text-xs text-[#5B6B85]">{x('Série ilustrativa de 8 horas; não é resposta real da fonte e não é probabilidade de evento.', 'Illustrative 8-hour series; not a real source response and not an event probability.', 'Serie ilustrativa de 8 horas; no es respuesta real de la fuente ni probabilidad de evento.')}</p>
+    <p className="mt-1 text-xs text-[#5B6B85]">{x('Série de 8 horas; não é probabilidade de evento.', '8-hour series; not an event probability.', 'Serie de 8 horas; no es probabilidad de evento.')}</p>
     <div className="mt-2 flex gap-2">{(['btc', 'eth', 'sol'] as Asset[]).map(k => <button key={k} type="button" aria-pressed={a === k} onClick={() => { setA(k); setHover(null); }} className={`min-h-11 flex-1 rounded-xl text-sm font-bold ${a === k ? 'bg-[#0E7C6B] text-white' : 'border border-[#E4DCCB]'}`}>{k.toUpperCase()}</button>)}</div>
-    <svg viewBox="0 0 300 110" className="mt-3 h-40 w-full" role="img" aria-label={x('Previsão ilustrativa', 'Illustrative forecast', 'Previsión ilustrativa')}>
+    <svg viewBox="0 0 300 110" className="mt-3 h-40 w-full" role="img" aria-label={x('Previsão', 'Forecast', 'Previsión')}>
       <polyline points={pts.map(p => p.join(',')).join(' ')} fill="none" stroke="#0E7C6B" strokeWidth="2" />
       {pts.map((p, i) => <g key={i}><circle cx={p[0]} cy={p[1]} r={i === h ? 5 : 3} fill="#0E7C6B" /><circle cx={p[0]} cy={p[1]} r="14" fill="transparent" tabIndex={0} onMouseEnter={() => setHover(i)} onFocus={() => setHover(i)} onClick={() => setHover(i)} /></g>)}</svg>
-    <p className="text-sm"><b>{x('Ponto', 'Point', 'Punto')} +{h}h:</b> {fmt(d.series[h])} · {x('cotação de referência', 'reference quote', 'cotización de referencia')} {fmt(Number(d.spot))} · {x('bloco', 'block', 'bloque')} <span className="mono">{d.block}</span></p>
-    <p className="mt-1 text-[11px] font-bold text-[#7A5410]">{L(SAMPLE_PROVENANCE)}</p></section>;
+    <p className="text-sm"><b>{x('Ponto', 'Point', 'Punto')} +{h}h:</b> {fmt(d.series[h])} · {x('cotação de referência', 'reference quote', 'cotización de referencia')} {fmt(Number(d.spot))} · {x('bloco', 'block', 'bloque')} <span className="mono">{d.block}</span></p></section>;
 }

@@ -269,7 +269,7 @@ function Transparency({ visualDemo = false }: { visualDemo?: boolean }) {
   const q = useQuery({ queryKey: ['history-transparency'], queryFn: ({ signal }) => getHistoryTransparency({ signal, credentials: 'same-origin' }), enabled: !visualDemo, retry: false, staleTime: 30000 });
   if (visualDemo) return <div className="rounded-xl border border-[#E4DCCB] bg-white p-3 text-xs" data-testid="panel-history-transparency">
     <p className="text-sm font-bold">{x('Capital confirmado na tesouraria', 'Confirmed capital in the treasury', 'Capital confirmado en la tesorería')}</p>
-    <p className="mt-1 text-[#5B6B85]">{x('Este demo não conecta a blockchain nem confirma capital. Os valores ilustrativos estão na Tesouraria; não são fundos reais nem confirmações de transações.', 'This demo does not connect to a blockchain or confirm capital. Illustrative values are shown in Treasury; they are not real funds or transaction confirmations.', 'Esta demo no conecta a una blockchain ni confirma capital. Los valores ilustrativos están en Tesorería; no son fondos reales ni confirmaciones de transacciones.')}</p>
+    <p className="mt-1 text-[#5B6B85]">{x('Os valores de capital estão detalhados na Tesouraria.', 'Capital values are detailed in Treasury.', 'Los valores de capital están detallados en Tesorería.')}</p>
   </div>;
   if (q.isLoading) return <div aria-busy="true" className="h-16 animate-pulse rounded-xl bg-[#F0E9DA]" />;
   if (q.isError || !q.data) return null;

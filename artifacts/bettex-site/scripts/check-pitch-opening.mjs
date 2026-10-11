@@ -40,10 +40,12 @@ try {
             competingCallouts: root.querySelectorAll('.cover__market').length,
           };
         });
-        assert.equal(layout.paragraphs, 2, 'Only concise support and visual-demo status belong to the opening');
-        assert.ok(layout.titleFirst, 'No audience or market paragraph above the hero H1');
-        assert.equal(layout.competingCallouts, 0, 'No competing market callout boxes in the hero');
-        assert.equal(await page.locator('.cover--hero .phg').count(), 1, 'Person and orchestrator graph remain in the hero');
+        assert.equal(layout.paragraphs, 3, 'Restored opening keeps audience, market opportunity and visual-demo status');
+        assert.equal(layout.competingCallouts, 2, 'Restored audience and market blocks remain in the opening');
+        const image = page.locator('#visao .cover__project img');
+        assert.equal(await image.count(), 1, 'The main character using the app remains in the restored hero');
+        assert.match(await image.getAttribute('src'), /pitch-hero-app-(pt|en|es)\.webp$/);
+        assert.ok(await image.evaluate(img => img.complete && img.naturalWidth > 0), 'The localized character artwork loads');
         assert.deepEqual(layout.problems, [], `${path} ${width}px`);
         console.log(`PASS ${path} ${width}px: complete opening, no hidden, clipped or overlapping blocks`);
       } finally { await page.close(); }

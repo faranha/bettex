@@ -44,7 +44,16 @@ try {
   assert.equal(b.totalBurnedBettex, b.entries.filter(e => e.kind === 'tokens_burned').reduce((s, e) => s + e.tokensBettex, 0));
   const purchase = b.entries.find(e => e.id.endsWith('-purchase'));
   assert.equal(cents(purchase.tokensBettex * b.referencePriceUsdc), cents(purchase.amountUsdc));
-  const balances = statementBalances(d, statementEntries(d), { account: 'all', asset: 'all', from: '2000-01-01', to: '2099-12-31' });
+  const statement = statementEntries(d);
+  assert.equal(new Set(statement.map(e => e.id)).size, statement.length, 'Statement identifiers must remain unique');
+  assert.equal(statement.filter(e => e.id.startsWith('SAMPLE-HISTORY-D')).length, 168, '21 days of detailed history');
+  const balances = statementBalances(d, statement, { account: 'all', asset: 'all', from: '2000-01-01', to: '2099-12-31' });
+  for (const balance of balances) {
+    assert.ok(Number(balance.opening) >= 0, 'Mock wallets cannot start with negative balances');
+    assert.equal(cents(Number(balance.opening) + Number(balance.inflows) - Number(balance.outflows)), cents(Number(balance.closing)));
+  }
+  assert.ok(Number(balances.find(v => v.account === 'treasury' && v.asset === 'USDC').otherIncome) > 0);
+  assert.ok(statement.some(e => e.income && Number(e.amount) < 0), 'Include losses, not only profitable examples');
   for (const [account, asset, closing] of [['treasury', 'USDC', d.treasury.assetsUsdc], ['buyback', 'USDC', b.walletUsdc], ['buyback', 'BETTEX', b.walletBettex]]) {
     assert.equal(Number(balances.find(v => v.account === account && v.asset === asset).closing), closing);
   }
