@@ -73,7 +73,7 @@ assert.doesNotMatch(pitch, /A decisão de cobrar ou não por serviços/);
 assert.match(pitch, /O custeio de manutenção permanece em aberto/);
 assert.match(pitch, /a operação com dinheiro real ainda não foi lançada/);
 assert.match(await read('src/components/pitch/MarketOpportunity.tsx'), /Público potencial não é uma base de compradores validada/);
-assert.match(pitch, /não financia as operações nem garante pagamento/);
+assert.match(pitch, /Pelo staking, o usuário participa do rateio do pool global quando há lucro elegível, sem acompanhar cada operação, financiar o trading ou ter pagamento garantido/, 'Pitch must preserve conditional profit sharing without funding trading or guaranteeing payments.');
 assert.match(pitch, /O mint público inicial e o aporte de investidores-anjo são frentes distintas de financiamento/);
 assert.match(app, /Chega de apostar\./);
 assert.match(app, /Comece a investir\./);
