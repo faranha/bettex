@@ -1,31 +1,31 @@
 /** @jsxImportSource react */
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from '../demo/ui';
-import { Money } from '../demo/fin';
-import { openDemoNotice } from './runtime';
-import { MOCK_TREASURY_ADDRESSES } from './mock-addresses';
+import { brazilDate } from '../history/TreasuryStatement';
+import { AssetAllocation } from '../demo/TreasuryOverview';
+import { TreasuryWallets } from '../demo/TreasuryWallets';
+import { TreasurySwapPool } from '../demo/TreasurySwapPool';
+import { BurnWalletPanel } from '../demo/BurnWalletPanel';
+import { TreasuryCycle } from '../demo/TreasuryCycle';
+import { TreasuryDemoProvider } from './TreasuryDemoProvider';
+import { TreasuryDemoActivity } from './TreasuryDemoActivity';
+import { DemoStatementOverview } from './TreasuryDemoStatement';
 
+/** Complete Treasury presentation recovered with local illustrative data only. */
 export function MockTreasuryPanel({ d }: { d: DemoDashboard }) {
   const { x } = useX();
-  const t = d.treasury;
-  const cards = [
-    { id: 'operational', label: x('Operacional', 'Operational', 'Operativa'), value: t.assetsUsdc - t.reserveUsdc },
-    { id: 'reserve', label: x('Reserva', 'Reserve', 'Reserva'), value: t.reserveUsdc },
-    { id: 'buyback', label: x('Recompra e queima', 'Buyback and burn', 'Recompra y quema'), value: Math.max(0, t.cycleResultUsdc) * .25 },
-  ];
-  return <section className="dcard grid gap-4 p-4 sm:p-5" data-testid="page-treasury-mock">
-    <h1 className="display text-xl font-extrabold">{x('Tesouraria', 'Treasury', 'Tesorería')}</h1>
-    <p className="text-xs text-[#5B6B85]">{x('Saldos, carteiras e resultados ilustrativos. Sem rede blockchain ou fundos reais.', 'Illustrative balances, wallets and results. No blockchain network or real funds.', 'Saldos, carteras y resultados ilustrativos. Sin red blockchain ni fondos reales.')}</p>
-    <div className="grid gap-3 sm:grid-cols-3">{cards.map(c => <article key={c.id} className="grid gap-3 rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-4">
-      <h2 className="text-sm font-bold">{c.label}</h2><Money v={c.value} a="USDC" big />
-      <details><summary className="min-h-11 cursor-pointer py-3 text-xs font-bold text-[#0A6657]">{x('Ver detalhes', 'View details', 'Ver detalles')}</summary><p className="break-all font-mono text-xs" data-testid={`mock-treasury-address-${c.id}`}>{MOCK_TREASURY_ADDRESSES[c.id as keyof typeof MOCK_TREASURY_ADDRESSES]}</p><p className="text-xs text-[#5B6B85]">{x('Carteira fictícia para apresentação da interface. Não recebe depósitos.', 'Fictitious wallet for presenting the interface. It does not accept deposits.', 'Cartera ficticia para presentar la interfaz. No acepta depósitos.')}</p></details>
-      <button data-demo-action onClick={openDemoNotice} className="min-h-11 rounded-xl border border-[#E4DCCB] px-3 text-sm font-bold">{x('Gerar transação', 'Generate transaction', 'Generar transacción')}</button>
-    </article>)}</div>
-    <div className="grid gap-3 rounded-xl bg-[#E6F4EE] p-4 sm:grid-cols-3">
-      <div><p className="text-xs font-bold">{x('Lucro líquido', 'Net profit', 'Beneficio neto')}</p><Money v={t.cycleResultUsdc} a="USDC" big /></div>
-      <div><p className="text-xs font-bold">{x('Alocação pool', 'Pool allocation', 'Asignación del pool')}</p><Money v={d.staking.poolAllocationUsdc ?? 0} a="USDC" /></div>
-      <div><p className="text-xs font-bold">{x('Recompra', 'Buyback', 'Recompra')}</p><Money v={Math.max(0, t.cycleResultUsdc) * .25} a="USDC" /></div>
-    </div>
-    <button data-demo-action onClick={openDemoNotice} className="min-h-11 justify-self-start rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white">{x('Gerar relatório da tesouraria', 'Generate treasury report', 'Generar informe de tesorería')}</button>
-  </section>;
+  const r = d.treasury.currentRound;
+  return <TreasuryDemoProvider><div className="grid min-w-0 gap-4" data-testid="page-treasury-mock">
+    <header className="grid gap-1"><h1 className="display text-2xl font-extrabold">{x('Tesouraria', 'Treasury', 'Tesorería')}</h1>
+      <p className="text-xs text-[#5B6B85]" data-testid="treasury-demo-note">{x('Valores, carteiras e registros de exemplo ilustrativos. Endereços fictícios que não recebem fundos; nenhuma rede blockchain ou operação real.', 'Illustrative sample values, wallets and records. Fictitious addresses that accept no funds; no blockchain network or real operation.', 'Valores, carteras y registros de ejemplo ilustrativos. Direcciones ficticias que no reciben fondos; ninguna red blockchain ni operación real.')}</p></header>
+    {r ? <section data-testid="treasury-overview" className="grid min-w-0 gap-4">
+      <AssetAllocation r={r} />
+      <TreasuryWallets visualDemo d={d} r={r} layout="vertical" />
+      <TreasurySwapPool visualDemo d={d} />
+      <DemoStatementOverview d={d} from={brazilDate(r.startedAt)} />
+      <BurnWalletPanel visualDemo d={d} />
+      <TreasuryCycle d={d} />
+      <section className="dcard p-4 sm:p-5" data-testid="treasury-current-activity"><h2 className="display mb-2 text-lg font-extrabold">{x('Atividade da rodada atual', 'Current round activity', 'Actividad de la ronda actual')}</h2><TreasuryDemoActivity snapshot={r} endAt={d.serverNow} /></section>
+    </section> : <TreasuryCycle d={d} />}
+  </div></TreasuryDemoProvider>;
 }

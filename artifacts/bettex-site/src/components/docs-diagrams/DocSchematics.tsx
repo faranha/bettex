@@ -63,7 +63,7 @@ export function InvestmentCycleSchematic() {
       { t: 'Carteira USDC', s: 'Compra BETTEX com USDC', tone: 'blue' },
       { t: 'BETTEX na carteira', s: 'Participa automaticamente', tone: 'gold' },
       { t: 'Tesouraria e agentes', s: 'Investem nos quatro mercados', tone: 'blue' },
-      { t: 'Lucro da própria rodada', s: 'Após custos e tributos resolvidos, sujeito aos controles', tone: 'teal' },
+      { t: 'Lucro da própria rodada', s: 'Após custos conciliados, sujeito aos controles', tone: 'teal' },
       { t: 'Crédito em USDC', s: 'Líquido após retenções aplicáveis; recebimento confirmado', tone: 'teal' },
     ]} />
     <p className="ds-loop">Agentes e apuração seguem as rodadas diárias UTC</p>
@@ -191,7 +191,7 @@ export function BuybackSchematic() {
       ]} />
     </Lane>
     <Fork from={{ t: 'Carteira de recompras', s: 'Segregada da tesouraria', tone: 'blue' }} to={[
-      { t: 'Não financia trading, distribuições nem despesas da empresa', tone: 'plain' },
+      { t: 'Não financia trading, distribuições nem despesas operacionais do projeto', tone: 'plain' },
       { t: 'Não conta como reserva defensiva nem capital de estratégia', tone: 'plain' },
       { t: 'Tokens queimados não retornam à circulação nem ao staking', tone: 'plain' },
     ]} />

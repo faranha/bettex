@@ -6,17 +6,17 @@ import { DocImage, DocTerms, Dot } from './DocImage';
 export function DocumentationGovernance() {
   return <>
     <h3 className="whitepaper__subhead" id="documentacao-patrimonio">Separação do patrimônio e do caixa</h3>
-    <div className="whitepaper__prose"><p>Tesouraria, caixa operacional e carteira exclusiva de recompra são contas distintas do projeto, com endereços, registros e mandatos próprios. Essa separação não presume entidade constituída nem blindagem patrimonial automática. Carteiras pessoais pertencem aos titulares.</p><p>A tesouraria reúne o preço integral em USDC dos tokens da comunidade já liberados e os recursos que lhe forem alocados. O mint inicial financia o projeto, com origem, aplicação e custos documentados. Reservas, posições, ordens e obrigações não são caixa livre. O caixa operacional usa financiamento documentado e pode avaliar <a href="#documentacao-taxas">alternativas de sustentabilidade</a>, sem cobrança definida. Um déficit operacional não autoriza retirada automática da tesouraria.</p><p><a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p></div>
+    <div className="whitepaper__prose"><p>Tesouraria, caixa operacional e carteira exclusiva de recompra são contas distintas do projeto, com endereços, registros e mandatos próprios. Essa separação segue as finalidades e os controles do protocolo DeFi. Carteiras pessoais pertencem aos titulares.</p><p>A tesouraria reúne o preço integral em USDC dos tokens da comunidade já liberados e os recursos que lhe forem alocados. O mint inicial financia o projeto, com origem, aplicação e custos documentados. Reservas, posições, ordens e obrigações não são caixa livre. O custeio operacional permanece em aberto, sem cobrança definida. Um déficit operacional não autoriza retirada automática da tesouraria.</p><p><a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p></div>
     <DocImage wide src="app/resultados-soft.webp" alt="Balança, livro-razão e calculadora sobre fundo verde." caption="Registros separados e conciliados para tesouraria, caixa operacional e recompra." />
     <DocTerms id="schematic-boundaries" label="Fronteiras entre contas" items={[
       ['Comunidade em vesting', <Dot items={['Preço dos tokens', 'Em USDC', 'Tesouraria', '100% do preço']} />],
-      ['Serviços', <Dot items={['Taxas de serviço', 'Em USDC', 'Carteira operacional da entidade', 'Fora da tesouraria e do split']} />],
+      ['Rede', <Dot items={['Custos externos de rede', 'Conforme a operação', 'Sem receita empresarial definida', 'Demo sem cobrança']} />],
       ['Resultados', <Dot items={['Parcela do staking', 'Em USDC', 'Carteira USDC do titular', 'Após conciliação']} />],
       ['Recompra e queima', <Dot items={['25% do resultado elegível', 'Em USDC', 'Carteira exclusiva', 'Compra autorizada de BETTEX', 'Burn permanente', 'Destruição irreversível dos tokens adquiridos']} />],
     ]} />
     <h3 className="whitepaper__subhead" id="documentacao-politicas">Administração, custódia e execução</h3>
     <div className="whitepaper__steps">
-      <div><span>01</span><p><strong>Administração.</strong> O fundador coordena o projeto e aprova orçamento, políticas e contratos dentro dos poderes documentados. A entidade será avaliada em etapa posterior. A IA propõe e documenta, sem ampliar os próprios poderes.</p></div>
+      <div><span>01</span><p><strong>Administração.</strong> O fundador coordena o projeto e aprova orçamento, políticas e contratos dentro dos poderes documentados. O objetivo futuro é transferir as funções do fundador e do time a agentes de IA até alcançar autonomia operacional. A IA propõe e documenta, sem ampliar os próprios poderes.</p></div>
       <div><span>02</span><p><strong>Custódia.</strong> O multisig aplica quórum e poderes registrados. Signatários independentes são formalizados, não presumidos como funcionários ou cargos internos.</p></div>
       <div><span>03</span><p><strong>Execução.</strong> Agentes e executores operam dentro de mandatos válidos, sujeitos a risco, liquidez, destinos e orçamento. Fora do mandato, a proposta retorna à aprovação competente.</p></div>
     </div>
@@ -30,7 +30,7 @@ export function DocumentationGovernance() {
     <EntityMultisig />
     <FundSecurityResponsibilities />
     <BuybackPolicy />
-    <h3 className="whitepaper__subhead" id="documentacao-formalizacao">Formalização e rotina administrativa</h3>
-    <div className="whitepaper__prose"><p>A constituição de uma entidade será avaliada em etapa posterior, sem prazo definido ou prioridade imediata. Se adotada, documentará nome, jurisdição, forma jurídica, administração, poderes e responsabilidades. Isso não adia exigências legais de uma atividade: mercados que exijam entidade ou autorização permanecem indisponíveis até o cumprimento dessas condições.</p><p>A rotina identifica contrato, despesa, beneficiário e fonte; confere orçamento, tributos e disponibilidade; autoriza dentro dos poderes; executa e concilia uma única vez; fecha receitas, despesas, obrigações e caixa. Resultado de investimentos, receita de serviços, aportes, dívida e patrimônio dos titulares permanecem separados.</p></div>
+    <h3 className="whitepaper__subhead" id="documentacao-formalizacao">Autonomia e rotina do protocolo</h3>
+    <div className="whitepaper__prose"><p>A BETTEX segue a direção DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time administram inicialmente. Agentes de IA assumirão gradualmente suas funções até alcançar autonomia operacional completa do agente BETTEX, com mandatos e controles verificáveis. A autonomia não está disponível hoje e não dispensa responsabilidades aplicáveis.</p><p>A rotina identifica contrato, despesa, beneficiário e fonte; confere orçamento e disponibilidade; autoriza dentro dos poderes; executa e concilia uma única vez; fecha receitas, despesas, obrigações e caixa. Resultado de investimentos, aportes, compromissos e patrimônio dos titulares permanecem separados.</p></div>
   </>;
 }

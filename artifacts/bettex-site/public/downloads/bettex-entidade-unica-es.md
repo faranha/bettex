@@ -4,9 +4,9 @@ Adecuación legal y jurídica
 
 Cada lanzamiento de BETTEX debe estar adecuado al entorno jurídico de los mercados donde se ofrecerá la solución. La habilitación de cada agente, funcionalidad y categoría depende de una investigación técnico-legal específica y del cumplimiento de los requisitos aplicables. Una fecha en la hoja de ruta no sustituye esta condición.
 
-El proyecto nace descentralizado y no planea una empresa ni fundación formal como estructura. El análisis identifica el país de oferta, el público atendido, la actividad, sus responsables y los proveedores. Oferta y ejecución se evalúan por separado; un permiso en un país no autoriza actuar en otro. Si una actividad exige licencia o autorización, no se liberará antes de cumplir esas condiciones.
+El análisis identifica el país de oferta, el público atendido, la actividad, sus responsables y los proveedores. La oferta y la ejecución se evalúan por separado; un permiso en un país no autoriza operar en otro. Si una actividad exige licencia o autorización, no se habilitará antes de cumplir esas condiciones.
 
-La investigación verifica fuentes oficiales, vigencia y alcance de las normas, licencias y autorizaciones necesarias, condiciones de los proveedores, publicidad, protección del usuario, identificación y prevención del lavado de dinero, protección de datos y obligaciones tributarias, según corresponda. Los responsables jurídicos y técnicos registran las evidencias, la fecha del análisis, las condiciones y los controles exigidos.
+La investigación verifica fuentes oficiales, vigencia y alcance de las normas, licencias y autorizaciones necesarias, términos de los proveedores, publicidad, protección del usuario, identificación y prevención contra el lavado de dinero, protección de datos y responsabilidades aplicables. Los responsables jurídicos y técnicos registran las evidencias, la fecha del análisis, las condiciones y los controles exigidos.
 
 Cada combinación de agente, actividad y territorio debe tener su alcance documentado: en investigación, restringido o autorizado para el lanzamiento. La habilitación depende de un análisis jurídico favorable, autorizaciones cuando sean exigidas y validación de los controles técnicos. Una investigación pendiente, una prohibición o la falta de autorización necesaria impide la oferta y la operación en ese territorio.
 
@@ -22,7 +22,11 @@ Financiación: origen y destino de los recursos
 
 Los aportes de inversores ángeles destinan el 100% de los recursos a producto, tecnología y marketing, sin salarios ni retiros del fundador. La asignación del 15% de los tokens no impone un reparto de financiación: los términos identifican origen, destino y derechos.
 
-El mint inicial del 10% financia el proyecto, mediante ejecución propia o un launchpad asociado. Las ventas del 55% de la comunidad ya liberado destinan el 100% del precio en USDC a la tesorería. Durante el ALFA, solo se cobrarán tasas de red. La decisión de cobrar o no una contribución por servicios se tomará posteriormente con la comunidad, como posible alternativa para sostener las operaciones, sin importe fijado ni adopción confirmada. Los ingresos de reventa pertenecen al vendedor. Captación, ingresos y beneficio distribuible no son equivalentes.
+El mint inicial financia el proyecto, a precio fijo; precio, plazo y plataforma aún se definirán, con cumplimiento legal. La venta de tokens liberados de la comunidad destina el 100% del precio en USDC a la tesorería. Los aportes de inversores tienen términos propios y van a producto, tecnología y marketing, sin salarios. La captación no es beneficio distribuible.
+
+El precio pertenece al vendedor. No genera nueva captación ni beneficio de la tesorería, ni adelanta el vesting.
+
+En ALFA solo se cobrarán tasas de red. La demo es visual y no realiza cobros.
 
 Burn Lottery y Double 2X
 
@@ -38,11 +42,13 @@ El modelo operativo tiene rondas diarias UTC. El demo visual usa un guion distin
 
 Administración y propósito
 
-BETTEX es un proyecto DeFi que construye un agente de trading con IA para operar en distintos mercados. El token BETTEX conecta a los usuarios con la economía del proyecto y con la distribución de resultados, cuando haya beneficio elegible, sin propiedad de la tesorería ni voto societario.
+BETTEX es un proyecto DeFi que construye un agente de trading con IA para actuar en diferentes mercados. El token BETTEX conecta a los usuarios con la economía del proyecto y la distribución de resultados, cuando hay beneficio elegible, sin propiedad de la tesorería ni voto automático.
 
-Los fundadores administran inicialmente el proyecto y mantienen el dominio de los contratos. Las funciones pasan gradualmente a un servicio gestionado por IA, con límites y evidencias, sin plazo definido. No se planea ninguna empresa ni fundación formal; la comunidad participa en decisiones aún por delimitar, sin DAO, voto por token ni renuncia de ownership definidos.
+Los fundadores administran inicialmente y mantienen el control de los contratos. Las funciones pasan gradualmente a la IA, con evidencias y límites, sin plazo definido. Esto no transfiere el control de los contratos.
 
-Pueden contratarse servicios externos especializados según la necesidad. La ausencia de estructura formal no elimina responsabilidades, controles ni exigencias legales, y no se presume exención tributaria. La operación depende de la adecuación por actividad y territorio.
+La participación de la comunidad en las decisiones aún se delimitará. No hay DAO, voto por token ni renuncia de ownership definidos.
+
+BETTEX sigue la dirección DeFi y DEX, sin empresa física o entidad a constituir. El fundador y el equipo conducen la administración inicial. Agentes de IA asumirán gradualmente esas funciones hasta hacer al agente BETTEX operacionalmente independiente y autónomo. Este objetivo es futuro y no elimina controles o responsabilidades aplicables.
 
 La transparencia, la responsabilidad y la rendición de cuentas orientan la operación, sin ingresos ni protección del capital garantizados.
 
@@ -56,9 +62,9 @@ Vesting de 900 millones de BETTEX durante 24 meses desde marzo de 2027: comunida
 
 El 100% del precio en USDC de los tokens de la comunidad ya liberados va a la tesorería. Las tarifas de servicio separadas van a la cuenta operativa. La captación del mint inicial financia el proyecto y exige rendición de cuentas. Los mercados externos no heredan automáticamente las condiciones del swap oficial.
 
-El resultado elegible, tras tributos y controles, recibe 50% tesorería, 25% staking y 25% billetera exclusiva de recompra. Sin pesos, reservas o liquidez suficientes, el 100% queda en la tesorería, sin split futuro. La compra usa autorización administrativa; todo BETTEX adquirido es quemado permanentemente. La billetera exclusiva no es el mecanismo de quema.
+El resultado elegible, tras la conciliación y los controles, recibe un 50% en tesorería, 25% en staking y 25% en la billetera exclusiva de recompra. Sin pesos, reservas o liquidez suficientes, el 100% queda en la tesorería, sin split futuro. La compra requiere autorización administrativa; todo el BETTEX adquirido se quema permanentemente. La billetera exclusiva no es el mecanismo de quema.
 
-Staking y secuencia fiscal
+Staking y liquidación
 
 Quien entra durante una ronda recibe cero de esa ronda, incluso sobre beneficios generados después de su entrada, y participa solo en la próxima. El saldo confirmado y elegible se fija al inicio; los aumentos durante la ronda solo participan en la siguiente.
 
@@ -68,7 +74,7 @@ Ejemplo: A empieza la ronda con 1.000 BETTEX elegibles; B recibe 1.000 a las 12:
 
 Cada ronda paga o no paga, sin acumulación, reapertura o complemento futuro. Cualquier salida BETTEX, incluso parcial, resetea el peso y cancela derechos aún no pagados. Fracciones no ejecutables regresan a la tesorería, sin crédito futuro. USDC recibido sigue siendo personal.
 
-Los tributos imputables a quien sea jurídicamente responsable son determinados, descontados y pagados según la obligación aplicable antes de la ganancia elegible y split. Las retenciones aplicables se resuelven antes del crédito líquido. La provisión no es pago; contabilizar y pagar la misma obligación no permite doble deducción. No existe exención personal universal.
+El crédito en USDC depende de la elegibilidad, la autorización en la propia ronda, la confirmación y la conciliación. Una autorización no equivale a la recepción. El cierre no conserva créditos futuros, y las transferencias inciertas no se liberan por presunción.
 
 Solo USDC confirmado y conciliado entra en el saldo disponible. Los envíos inciertos no autorizan repetición ni son recursos recuperados. Las correcciones mantienen historial y efectos únicos, sin débito automático en la billetera personal.
 

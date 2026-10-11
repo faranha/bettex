@@ -30,7 +30,7 @@ export function downloadWalletHistory(rows: WalletHistoryRow[], d: DemoDashboard
   const content = exportWalletHistory(rows, d, kind, scope);
   const url = URL.createObjectURL(new Blob([content], { type: kind === 'csv' ? 'text/csv;charset=utf-8' : 'application/json;charset=utf-8' }));
   const link = document.createElement('a');
-  link.href = url; link.download = `bettex-${scope === 'examples' ? 'example-' : ''}wallet-history-${new Date().toISOString().slice(0, 10)}.${kind}`;
+  link.setAttribute('data-demo-local', ''); link.href = url; link.download = `bettex-${scope === 'examples' ? 'example-' : ''}wallet-history-${new Date().toISOString().slice(0, 10)}.${kind}`;
   document.body.appendChild(link); link.click(); link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

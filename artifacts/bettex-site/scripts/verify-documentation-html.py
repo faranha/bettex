@@ -1,3 +1,7 @@
+import runpy
+from pathlib import Path as NarrativePath
+
+runpy.run_path(str(NarrativePath(__file__).with_name("verify-defi-narrative.py")))
 """Audit compact documentation, retained references and localized downloads."""
 import json
 import re
@@ -8,6 +12,25 @@ from zipfile import ZipFile
 from xml.etree import ElementTree
 
 app = Path(__file__).resolve().parents[1]
+class HeadingAudit(HTMLParser):
+    """Catch duplicated section headings, including wrapper/child duplicates."""
+    def __init__(self):
+        super().__init__()
+        self.current = None
+        self.headings = []
+    def handle_starttag(self, tag, attrs):
+        if tag in ('h2', 'h3', 'h4'):
+            self.current = (tag, dict(attrs).get('id', ''), [])
+    def handle_data(self, data):
+        if self.current is not None:
+            self.current[2].append(data)
+    def handle_endtag(self, tag):
+        if self.current is not None and tag == self.current[0]:
+            _, anchor, parts = self.current
+            text = re.sub(r'^\s*(?:\d+[.\s]*)+', '', ''.join(parts))
+            self.headings.append((anchor, ' '.join(text.split()).casefold()))
+            self.current = None
+
 class Documentation(HTMLParser):
     def __init__(self):
         super().__init__(); self.stack=[]; self.ids=[]; self.hashes=[]; self.text=[]; self.diagrams=[]; self.chapters=[]
@@ -50,6 +73,10 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     # The whitepaper fills the section before the shared footer.
     shared_footer=re.search(r'<footer\b[^>]*\bid="rodape"[^>]*>',html)
     p=Documentation(); p.feed(html[start:shared_footer.start()] if shared_footer else html[start:])
+    headings=HeadingAudit()
+    headings.feed(html[start:shared_footer.start()] if shared_footer else html[start:])
+    for previous, current in zip(headings.headings, headings.headings[1:]):
+        assert not (previous[1] and previous[1] == current[1]), f"{lang}: repeated consecutive heading {current}"
     duplicates=[id for id,n in Counter(p.ids).items() if n>1]
     assert not duplicates, f"{lang}: duplicate ids {duplicates}"
     assert len(p.chapters)==6, f"{lang}: six principal chapters required"
@@ -76,9 +103,9 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
         assert not re.search(pattern,principal,re.I), f"{lang}: obsolete institutional structure"
     print(f"{lang}: 6 chapters, {len(p.main_diagrams)} principal drawings, technical references accessible, unique ids and {len(p.hashes)} valid internal links.")
 expected_workbooks = {
-    "": ["Sustentabilidade", "Vesting", "Regras"],
-    "-en": ["Sustainability", "Vesting", "Rules"],
-    "-es": ["Sostenibilidad", "Vesting", "Reglas"],
+    "": ["Custos de rede", "Vesting", "Regras"],
+    "-en": ["Network costs", "Vesting", "Rules"],
+    "-es": ["Costos de red", "Vesting", "Reglas"],
 }
 for suffix, expected_sheets in expected_workbooks.items():
     file = app/'public/downloads'/f'bettex-taxas-fundacao{suffix}.xlsx'
@@ -92,6 +119,8 @@ for suffix, expected_sheets in expected_workbooks.items():
         raw=' '.join(z.read(n).decode() for n in z.namelist() if n.endswith('.xml'))
         for pattern in obsolete: assert not re.search(pattern,raw,re.I), f"{file}: obsolete material"
         alternative = z.read('xl/worksheets/sheet1.xml').decode()
+        assert re.search(r'taxas de rede|network fees|tasas de red', alternative, re.I), f"{file}: missing ALPHA network-cost disclosure"
+        assert not re.search(r'contribuição por serviços|service contribution|contribución por servicios|Em avaliação', alternative, re.I), f"{file}: operating-funding proposal reintroduced"
         assert '<v>2.5</v>' not in alternative, f"{file}: fixed fee reintroduced"
         assert 'Tarifa confirmada' not in raw, f"{file}: confirmed fee reintroduced"
-print('Downloads: sustainability alternatives without fixed fees, vesting and rules; no old cash-flow simulation.')
+print('Downloads: network-cost notes only, unchanged vesting and rules; no operating-funding proposal or old cash-flow simulation.')

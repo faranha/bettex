@@ -107,7 +107,7 @@ export function PitchPage() {
     <FutureSections />
 
     <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" summary="Um agente BETTEX, vários mercados e participação econômica por token." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
-      <p className="mb-8 max-w-[800px] text-[15px] leading-7">A BETTEX é um projeto DeFi que constrói um agente de trading com IA para vários mercados. Nenhuma empresa ou fundação formal é planejada: os fundadores administram inicialmente e mantêm o domínio dos contratos, e a gestão evolui gradualmente para um serviço gerido por IA. A operação se limita aos mercados onde a atividade for permitida.</p>
+      <p className="mb-8 max-w-[800px] text-[15px] leading-7">A BETTEX é um projeto DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time conduzem a administração inicial. Agentes de IA assumirão gradualmente essas funções até tornar o agente BETTEX operacionalmente independente e autônomo. A autonomia é um objetivo futuro, com mandatos e controles verificáveis, não uma capacidade já disponível.</p>
       <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A oportunidade é oferecer a quem hoje aposta um produto de investimento com linguagem acessível e participação em resultados, sem prometer lucro.</p>
       <div className="fu-position">
         <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
@@ -117,7 +117,7 @@ export function PitchPage() {
        <PitchProductResources />
       <div className="mt-8 rounded-2xl bg-[#070B1F] p-6 text-[#F4F1E8]">
         <span className="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#F2B632]">Regra do lucro</span>
-        <p className="mt-3 text-[15px] leading-7 text-[#c5d2f1]">Só há lucro elegível após custos reais, tributos, obrigações, avaliação das posições abertas, reservas e liquidez.</p>
+        <p className="mt-3 text-[15px] leading-7 text-[#c5d2f1]">Só há lucro elegível após custos reais, obrigações, avaliação das posições abertas, reservas e liquidez.</p>
         <dl className="mt-6 grid gap-4 sm:grid-cols-3">
           {[['50%', 'Tesouraria', 'Retenção e reinvestimento.'], ['25%', 'Stakers', 'Pool global, rateado pelo peso elegível.'], ['25%', 'Carteira de recompra', 'USDC exclusivo para recompras autorizadas.']].map(([share, destination, explanation]) => <div key={destination} className="border-t border-[#5F86FF]/40 pt-4"><dt className="text-sm font-bold">{destination}</dt><dd className="display mt-2 text-4xl font-extrabold text-[#F2B632]">{share}</dd><dd className="mt-2 text-sm leading-6 text-[#c5d2f1]">{explanation}</dd></div>)}
         </dl>
@@ -162,7 +162,7 @@ export function PitchPage() {
         <Card dark label="Participação" title="Elegibilidade na abertura da rodada">Quem entra durante a rodada recebe zero nela e espera a próxima, inclusive para lucros gerados depois da entrada. Tokens bloqueados, estoque público e valores indisponíveis ficam fora do rateio. Fundador e demais usuários seguem os mesmos critérios.</Card>
       </div>
       </PitchEditorialSplit>
-      <p className="mt-6 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">O titular tem os direitos de participação nos resultados definidos pelo token, não ações da empresa, propriedade da tesouraria, voto societário ou resgate pelo valor patrimonial. Pode ganhar ou perder na revenda, se houver liquidez. Oferta fixa não significa pagamento fixo.</p>
+      <p className="mt-6 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">O titular tem os direitos de participação nos resultados definidos pelo token, não propriedade da tesouraria nem resgate pelo valor patrimonial. Pode ganhar ou perder na revenda, se houver liquidez. Oferta fixa não significa pagamento fixo.</p>
       <Doc dark hash="documentacao-emissao">Oferta, vesting e direitos na documentação</Doc>
     </Sec>
     </section>
@@ -195,7 +195,7 @@ export function PitchPage() {
       <PitchEditorialSplit image={<PitchEditorialImage name="pitch-product-development" />}>
       <div className="grid gap-4 md:grid-cols-3">
         <Card label="Destino do capital" title="Tecnologia e marketing, sem salários">{g.launch.angelFundingUse}</Card>
-        <Card label="Administração inicial" title="Fundadores administram e evoluem para a IA">Os fundadores administram inicialmente e mantêm o domínio dos contratos; as funções evoluem gradualmente para um serviço gerido por IA, sem empresa ou fundação formal planejada. {g.founder.bettexEarnings}</Card>
+        <Card label="Administração inicial" title="Do fundador e do time à autonomia da IA">O fundador e o time administram inicialmente. A direção DeFi e DEX evolui para agentes de IA que assumirão essas funções, até a autonomia operacional completa do agente BETTEX. Essa autonomia é futura e depende de validação e controles. {g.founder.bettexEarnings}</Card>
         <Card label="Em aberto" title="Valor total e termos">Orçamento e marcos do lançamento ainda serão definidos, assim como o valor total e os termos contratuais. Não há oferta formal de venda de tokens nem participação societária proposta aqui.</Card>
       </div>
       </PitchEditorialSplit>

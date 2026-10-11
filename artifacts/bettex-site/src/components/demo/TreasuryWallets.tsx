@@ -13,6 +13,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import './TreasuryWallets.css';
 import { WalletHelp } from './WalletHelp';
+import { openDemoNotice } from '../interface-demo/runtime';
 
 type Purpose = 'operational' | 'reserve' | 'buyback' | 'crypto_agent';
 export const explorerUrl = (a: string) => `https://sepolia.arbiscan.io/address/${a}`;
@@ -49,9 +50,9 @@ function Mt({ label, tip, children, id, tone = 'border-[#D9E3DD]', wide = false 
   return <div data-testid={id} className={`min-w-0 rounded-xl border bg-white/60 p-2 ${tone} ${wide ? 'col-span-full' : ''}`}><div className="mb-0.5 text-[11px] font-bold text-[#5B6B85]"><WalletHelp id={id ?? `treasury-${label}`} label={label}><p>{tip}</p></WalletHelp></div>{children}</div>;
 }
 
-export function TreasuryWallets({ d, r, layout = 'vertical', wallet }: { d: DemoDashboard; r: DemoTreasuryRound; layout?: 'compact' | 'vertical'; wallet?: Purpose }) {
+export function TreasuryWallets({ d, r, layout = 'vertical', wallet, visualDemo = false }: { d: DemoDashboard; r: DemoTreasuryRound; layout?: 'compact' | 'vertical'; wallet?: Purpose; visualDemo?: boolean }) {
   const { x, loc } = useX(); const { num } = useMoney();
-  const q = useGetDemoTreasuryWallets();
+  const q = useGetDemoTreasuryWallets(visualDemo ? { query: { enabled: false } } : undefined);
   const b = burnOf(d); const fl = burnFl(loc);
   const vert = layout === 'vertical';
   const NR = <span className="text-sm font-bold text-[#5B6B85]">{x('Não registrado', 'Not recorded', 'No registrado')}</span>;
@@ -64,15 +65,17 @@ export function TreasuryWallets({ d, r, layout = 'vertical', wallet }: { d: Demo
   const card = (p: Purpose, title: string, role: string, Icon: typeof Landmark, body: ReactNode, tone: string, notes: ReactNode, extra?: ReactNode) => {
     if (wallet && wallet !== p) return null;
     const a = addr(p);
-    const net = x('Endereço de teste · Arbitrum Sepolia', 'Test address · Arbitrum Sepolia', 'Dirección de prueba · Arbitrum Sepolia');
-    const expl = x('Explorer de teste', 'Test explorer', 'Explorer de prueba');
+    const net = visualDemo ? x('Endereço fictício · sem blockchain', 'Fictitious address · no blockchain', 'Dirección ficticia · sin blockchain') : x('Endereço de teste · Arbitrum Sepolia', 'Test address · Arbitrum Sepolia', 'Dirección de prueba · Arbitrum Sepolia');
+    const expl = visualDemo ? x('Explorer indisponível no demo', 'Explorer unavailable in the demo', 'Explorador no disponible en la demo') : x('Explorer de teste', 'Test explorer', 'Explorer de prueba');
     return <article key={p} data-testid={`card-wallet-${p}`} className={`treasury-wallet-card grid w-full min-w-0 content-start gap-3 rounded-2xl border-2 p-3 sm:p-4 ${tone} ${vert ? 'lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:items-center lg:gap-5' : ''}`}>
       <div className="grid min-w-0 gap-2">
         <header className="flex items-start gap-2"><Icon className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
-          <h3 className="display min-w-0 text-base font-extrabold"><WalletHelp id={`treasury-wallet-${p}`} label={title}><p>{role}</p>{notes}<p>{x('Os botões permitem copiar o endereço público, abrir o explorer da rede de teste e consultar o histórico desta carteira. O ícone de carteira abre os detalhes e o endereço. As alocações do app não comprovam fundos on-chain; não envie ativos reais.', 'The buttons copy the public address, open the test-network explorer and view this wallet’s history. The wallet icon opens details and the address. App allocations do not prove on-chain funds; do not send real assets.', 'Los botones copian la dirección pública, abren el explorador de la red de pruebas y consultan el historial de esta cartera. El icono de cartera abre detalles y dirección. Las asignaciones de la app no prueban fondos on-chain; no envíes activos reales.')}</p></WalletHelp></h3></header>
+          <h3 className="display min-w-0 text-base font-extrabold"><WalletHelp id={`treasury-wallet-${p}`} label={title}><p>{role}</p>{notes}<p>{visualDemo ? x('Os botões permitem copiar o identificador fictício e consultar os registros de exemplo desta carteira. O ícone de carteira abre os detalhes. O explorer abre o aviso do demo: não há blockchain conectada nem endereço para receber depósitos.', 'The buttons copy the fictitious identifier and show this wallet’s sample records. The wallet icon opens details. The explorer opens the demo notice: no blockchain is connected and no address can receive deposits.', 'Los botones permiten copiar el identificador ficticio y consultar los registros de ejemplo de esta cartera. El icono de cartera abre los detalles. El explorador abre el aviso de la demo: no hay blockchain conectada ni dirección para recibir depósitos.') : x('Os botões permitem copiar o endereço público, abrir o explorer da rede de teste e consultar o histórico desta carteira. O ícone de carteira abre os detalhes e o endereço. As alocações do app não comprovam fundos on-chain; não envie ativos reais.', 'The buttons copy the public address, open the test-network explorer and view this wallet’s history. The wallet icon opens details and the address. App allocations do not prove on-chain funds; do not send real assets.', 'Los botones copian la dirección pública, abren el explorador de la red de pruebas y consultan el historial de esta cartera. El icono de cartera abre detalles y dirección. Las asignaciones de la app no prueban fondos on-chain; no envíes activos reales.')}</p></WalletHelp></h3></header>
         <div className="flex flex-wrap gap-2">
           {a && <><CopyButton address={a} purpose={p} />
-            <Tip label={expl}><a href={explorerUrl(a)} target="_blank" rel="noopener noreferrer" aria-label={expl} data-testid={`link-explorer-${p}`} className={act}><ExternalLink className="h-4 w-4" aria-hidden="true" /></a></Tip></>}
+            <Tip label={expl}>{visualDemo
+              ? <button type="button" data-demo-action onClick={openDemoNotice} aria-label={expl} data-testid={`link-explorer-${p}`} className={act}><ExternalLink className="h-4 w-4" aria-hidden="true" /></button>
+              : <a href={explorerUrl(a)} target="_blank" rel="noopener noreferrer" aria-label={expl} data-testid={`link-explorer-${p}`} className={act}><ExternalLink className="h-4 w-4" aria-hidden="true" /></a>}</Tip></>}
           <Tip label={histLabel}><Link href={hist(p)} aria-label={histLabel} data-testid={`link-history-${p}`} className={act}><FileText className="h-4 w-4" aria-hidden="true" /></Link></Tip>
           {extra}
           <Helper wallet id={p} label={`${title}: ${x('detalhes e endereço', 'details and address', 'detalles y dirección')}`}>

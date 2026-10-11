@@ -11,7 +11,7 @@ export const roadmapStops = [
   { tag: 'PREVISTO · ALFA E VESTING', date: 'Março de 2027', dateTime: '2027-03', title: 'Sistema ALFA e vesting', description: 'Sistema e escopo inicial validados, com captação de investidores e início do vesting de 24 meses. Liberação não significa venda ou circulação, nem abre todos os mercados.', featured: true },
   { tag: 'PREVISTO · BETA', date: 'Após o ALFA · data a definir', dateTime: undefined, title: 'BETA e go to market', description: 'Evolução do produto a partir das validações do ALFA, ampliando o acesso sem novo lançamento do token.' },
   { tag: 'EVOLUÇÃO FUTURA', date: 'Gradual · data a definir', dateTime: undefined, title: 'Expansão de mercados', description: 'Cada mercado e território só abre com integração e controles validados e adequação legal. Dados públicos não equivalem a operação autorizada.' },
-  { tag: 'DIREÇÃO FUTURA', date: 'Sem prazo', dateTime: undefined, title: 'Gestão crescente por IA', description: 'Funções administrativas e operacionais passam gradualmente ao agente, com limites e evidências. Fundadores mantêm o domínio dos contratos até decisão separada.' },
+  { tag: 'DIREÇÃO FUTURA', date: 'Sem prazo', dateTime: undefined, title: 'Autonomia do agente BETTEX', description: 'Agentes de IA assumirão gradualmente as funções hoje exercidas pelo fundador e pelo time. O objetivo é um agente BETTEX totalmente autônomo na operação, com controles verificáveis. Não é uma capacidade já entregue nem uma promessa de data.' },
 ] as const;
 
 export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {

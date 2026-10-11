@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3470 >>
+<< /Length 3407 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — regras e administração) Tj T*
@@ -24,17 +24,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (investigação técnico-legal específica e do cumprimento das exigências aplicáveis. Uma data no) Tj T*
 (roadmap não substitui essa condição.) Tj T*
 () Tj T*
-(O projeto nasce descentralizado e não planeja uma empresa ou fundação formal como estrutura. A) Tj T*
-(análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os) Tj T*
+(A análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os) Tj T*
 (provedores. Oferta e execução são avaliadas separadamente; uma permissão em um país não) Tj T*
 (autoriza atuação em outro. Se uma atividade exigir licença ou autorização, ela não será) Tj T*
 (liberada antes de cumprir essas condições.) Tj T*
 () Tj T*
 (A investigação verifica fontes oficiais, vigência e alcance das normas, licenças e autorizações) Tj T*
 (necessárias, termos dos provedores, publicidade, proteção do usuário, identificação e prevenção) Tj T*
-(à lavagem de dinheiro, proteção de dados e obrigações tributárias, conforme aplicáveis. Os) Tj T*
-(responsáveis jurídicos e técnicos registram as evidências, a data da análise, as condições e os) Tj T*
-(controles exigidos.) Tj T*
+(à lavagem de dinheiro, proteção de dados e responsabilidades aplicáveis. Os responsáveis) Tj T*
+(jurídicos e técnicos registram as evidências, a data da análise, as condições e os controles) Tj T*
+(exigidos.) Tj T*
 () Tj T*
 (Cada combinação de agente, atividade e território deve ter seu escopo documentado: em) Tj T*
 (investigação, restrito ou autorizado para lançamento. A liberação depende de análise jurídica) Tj T*
@@ -63,6 +62,7 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (validade ou revisão e decisões ficam registrados. Esta seção define requisitos para lançamento;) Tj T*
 (não declara licenças obtidas, pareceres concluídos ou agentes autorizados.) Tj T*
 () Tj T*
+(Financiamento: origem e destino dos recursos) Tj T*
 ET
 endstream
 endobj
@@ -70,21 +70,23 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3206 >>
+<< /Length 3026 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(Financiamento: origem e destino dos recursos) Tj T*
 () Tj T*
 (Aportes-anjo destinam 100% dos recursos a produto, tecnologia e marketing, sem salários ou) Tj T*
 (retiradas do fundador. A alocação de 15% dos tokens não impõe split de financiamento: os termos) Tj T*
 (identificam origem, destino e direitos.) Tj T*
 () Tj T*
-(O mint inicial de 10% financia o projeto, por execução própria ou launchpad parceiro. As vendas) Tj T*
-(dos 55% da comunidade já liberados destinam 100% do preço em USDC à tesouraria. No ALFA, serão) Tj T*
-(cobradas apenas taxas de rede. A decisão de cobrar ou não uma contribuição por serviços será) Tj T*
-(tomada posteriormente com a comunidade, como possível alternativa para sustentar as operações,) Tj T*
-(sem valor fixado nem adoção confirmada. Revenda pertence ao vendedor. Captação, receita e lucro) Tj T*
-(distribuível não são equivalentes.) Tj T*
+(O mint inicial financia o projeto, a preço fixo; preço, janela e plataforma ainda serão) Tj T*
+(definidos, com adequação legal. A venda de tokens liberados da comunidade destina 100% do preço) Tj T*
+(em USDC à tesouraria. Aportes de investidores têm termos próprios e vão a produto, tecnologia e) Tj T*
+(marketing, sem salários. Captação não é lucro distribuível.) Tj T*
+() Tj T*
+(O preço pertence ao vendedor. Não gera nova captação ou lucro da tesouraria, nem antecipa o) Tj T*
+(vesting.) Tj T*
+() Tj T*
+(No ALFA, serão cobradas apenas taxas de rede. O demo é visual e não efetua cobranças.) Tj T*
 () Tj T*
 (Burn Lottery e Double 2X) Tj T*
 () Tj T*
@@ -114,13 +116,11 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (A BETTEX é um projeto DeFi que constrói um agente de trading com IA para atuar em diferentes) Tj T*
 (mercados. O token BETTEX conecta os usuários à economia do projeto e à distribuição de) Tj T*
-(resultados, quando houver lucro elegível, sem propriedade da tesouraria nem voto societário.) Tj T*
+(resultados, quando houver lucro elegível, sem propriedade da tesouraria nem voto automático.) Tj T*
 () Tj T*
-(Os fundadores administram inicialmente o projeto e mantêm o domínio dos contratos. Funções) Tj T*
-(passam gradualmente para um serviço gerido por IA, com limites e evidências, sem prazo) Tj T*
-(definido. Nenhuma empresa ou fundação formal é planejada; a comunidade participa de decisões) Tj T*
-(ainda a delimitar, sem DAO, voto por token ou renúncia de ownership definidos.) Tj T*
-() Tj T*
+(Os fundadores administram inicialmente e mantêm o domínio dos contratos. Funções passam) Tj T*
+(gradualmente à IA, com evidências e limites, sem prazo definido. Isso não transfere o domínio) Tj T*
+(dos contratos.) Tj T*
 ET
 endstream
 endobj
@@ -128,12 +128,17 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3447 >>
+<< /Length 3294 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(Serviços externos especializados podem ser contratados por necessidade. A ausência de estrutura) Tj T*
-(formal não elimina responsabilidades, controles nem exigências legais, e não se presume isenção) Tj T*
-(tributária. A operação depende de adequação por atividade e território.) Tj T*
+() Tj T*
+(A participação da comunidade nas decisões ainda será delimitada. Não há DAO, voto por token ou) Tj T*
+(renúncia de ownership definidos.) Tj T*
+() Tj T*
+(A BETTEX segue a direção DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e) Tj T*
+(o time conduzem a administração inicial. Agentes de IA assumirão gradualmente essas funções até) Tj T*
+(tornar o agente BETTEX operacionalmente independente e autônomo. Esse objetivo é futuro e não) Tj T*
+(elimina controles ou responsabilidades aplicáveis.) Tj T*
 () Tj T*
 (Transparência, responsabilidade e prestação de contas orientam a operação, sem renda ou) Tj T*
 (proteção de capital garantidas.) Tj T*
@@ -155,12 +160,12 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (separadas vão ao caixa operacional. A captação do mint inicial financia o projeto e exige) Tj T*
 (prestação de contas. Mercados externos não herdam automaticamente as condições do swap oficial.) Tj T*
 () Tj T*
-(Resultado elegível, após tributos e controles, recebe 50% tesouraria, 25% staking e 25%) Tj T*
+(Resultado elegível, após conciliação e controles, recebe 50% tesouraria, 25% staking e 25%) Tj T*
 (carteira exclusiva de recompra. Sem pesos, reservas ou liquidez suficientes, 100% fica na) Tj T*
 (tesouraria, sem split futuro. Compra usa autorização administrativa; todo BETTEX adquirido é) Tj T*
 (queimado permanentemente. Carteira exclusiva não é o mecanismo de burn.) Tj T*
 () Tj T*
-(Staking e sequência fiscal) Tj T*
+(Staking e liquidação) Tj T*
 () Tj T*
 (Quem entra durante uma rodada recebe zero dessa rodada, mesmo sobre lucros gerados após a) Tj T*
 (entrada, e participa somente da próxima. O saldo confirmado e elegível é fixado na abertura;) Tj T*
@@ -174,11 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Exemplo: A começa a rodada com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro) Tj T*
 (elegível de 1.000 USDC e condições atendidas, a parcela de staking de 250 USDC paga 250 a A e) Tj T*
 (zero a B. Na rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC) Tj T*
-(cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.) Tj T*
-() Tj T*
-(Cada rodada paga ou não paga, sem acumulação, reabertura ou complemento futuro. Qualquer saída) Tj T*
-(BETTEX, inclusive parcial, zera o peso e cancela direitos ainda não pagos. Frações não) Tj T*
-(executáveis retornam à tesouraria, sem crédito futuro. USDC recebido continua pessoal.) Tj T*
 ET
 endstream
 endobj
@@ -186,14 +186,18 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 1818 >>
+<< /Length 2100 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.) Tj T*
 () Tj T*
-(Tributos imputáveis a quem for juridicamente responsável são apurados, descontados e recolhidos) Tj T*
-(conforme obrigação aplicável antes do lucro elegível e split. Retenções aplicáveis são) Tj T*
-(resolvidas antes do crédito líquido. Provisão não é recolhimento; contabilizar e pagar a mesma) Tj T*
-(obrigação não permite dupla dedução. Não existe isenção pessoal universal.) Tj T*
+(Cada rodada paga ou não paga, sem acumulação, reabertura ou complemento futuro. Qualquer saída) Tj T*
+(BETTEX, inclusive parcial, zera o peso e cancela direitos ainda não pagos. Frações não) Tj T*
+(executáveis retornam à tesouraria, sem crédito futuro. USDC recebido continua pessoal.) Tj T*
+() Tj T*
+(O crédito em USDC depende de elegibilidade, autorização na própria rodada, confirmação e) Tj T*
+(conciliação. Uma autorização não equivale a recebimento. O encerramento não conserva créditos) Tj T*
+(futuros, e transferências incertas não são liberadas por presunção.) Tj T*
 () Tj T*
 (Somente USDC confirmado e conciliado entra no saldo disponível. Envios incertos não autorizam) Tj T*
 (repetição nem são recursos recuperados. Correções mantêm histórico e efeitos únicos, sem débito) Tj T*
@@ -228,13 +232,13 @@ xref
 0000000134 00000 n 
 0000000231 00000 n 
 0000000357 00000 n 
-0000003879 00000 n 
-0000004005 00000 n 
-0000007263 00000 n 
-0000007389 00000 n 
-0000010888 00000 n 
-0000011016 00000 n 
+0000003816 00000 n 
+0000003942 00000 n 
+0000007020 00000 n 
+0000007146 00000 n 
+0000010492 00000 n 
+0000010620 00000 n 
 trailer << /Size 12 /Root 1 0 R >>
 startxref
-12887
+12773
 %%EOF

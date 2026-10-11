@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3403 >>
+<< /Length 3317 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — rules and administration) Tj T*
@@ -24,16 +24,15 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (technical and legal investigation and compliance with applicable requirements. A roadmap date) Tj T*
 (does not replace this condition.) Tj T*
 () Tj T*
-(The project is born decentralized and does not plan a formal company or foundation as a) Tj T*
-(structure. The analysis identifies the offering country, the audience served, the activity,) Tj T*
-(those responsible and the providers. Offer and execution are assessed separately; a permit in) Tj T*
-(one country does not authorize activity in another. If an activity requires a license or) Tj T*
-(authorization, it will not be released before meeting those conditions.) Tj T*
+(The assessment identifies the country of offering, target audience, activity, responsible) Tj T*
+(parties and providers. Offering and execution are assessed separately; permission in one) Tj T*
+(country does not authorize activity in another. If an activity requires a license or) Tj T*
+(authorization, it will not be released before those requirements are met.) Tj T*
 () Tj T*
-(The investigation checks official sources, the effective dates and scope of rules, required) Tj T*
-(licenses and authorizations, provider terms, advertising, user protection, identification and) Tj T*
-(anti-money laundering, data protection and tax obligations, as applicable. Legal and technical) Tj T*
-(staff record the evidence, analysis date, conditions and required controls.) Tj T*
+(The investigation verifies official sources, validity and scope of necessary norms, licenses) Tj T*
+(and authorizations, provider terms, advertising, user protection, identification and anti-money) Tj T*
+(laundering prevention, data protection, and applicable responsibilities. Legal and technical) Tj T*
+(personnel record the evidence, the analysis date, conditions, and required controls.) Tj T*
 () Tj T*
 (Each combination of agent, activity and territory must have its scope documented: under) Tj T*
 (investigation, restricted or authorized for launch. Release requires a favorable legal) Tj T*
@@ -63,6 +62,7 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (licenses obtained, completed legal opinions or authorized agents.) Tj T*
 () Tj T*
 (Financing: sources and uses of funds) Tj T*
+() Tj T*
 ET
 endstream
 endobj
@@ -70,20 +70,22 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3274 >>
+<< /Length 3053 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-() Tj T*
 (Angel contributions allocate 100% of funds to product, technology and marketing, with no) Tj T*
 (founder salaries or withdrawals. The 15% token allocation does not impose a funding split:) Tj T*
 (agreements identify sources, uses and rights.) Tj T*
 () Tj T*
-(The initial 10% mint finances the project, through direct execution or a partner launchpad.) Tj T*
-(Sales of the already released 55% community allocation direct 100% of the USDC price to the) Tj T*
-(treasury. During ALPHA, only network fees will be charged. Whether to charge a service) Tj T*
-(contribution will be decided later with the community, as a possible alternative to sustain) Tj T*
-(operations, with no amount set or adoption confirmed. Resale proceeds belong to the seller.) Tj T*
-(Funding, revenue and distributable profit are not equivalent.) Tj T*
+(The initial fixed-price mint funds the project; price, window and platform are yet to be) Tj T*
+(defined, with legal compliance. Sales of released community tokens send 100% of the USDC price) Tj T*
+(to the treasury. Investor contributions have their own terms and fund product, technology and) Tj T*
+(marketing, with no salaries. Fundraising is not distributable profit.) Tj T*
+() Tj T*
+(The price belongs to the seller. It creates no new funding or treasury profit and does not) Tj T*
+(accelerate vesting.) Tj T*
+() Tj T*
+(Only network fees will be charged during ALPHA. The demo is visual and charges nothing.) Tj T*
 () Tj T*
 (Burn Lottery and Double 2X) Tj T*
 () Tj T*
@@ -111,16 +113,14 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Administration and purpose) Tj T*
 () Tj T*
 (BETTEX is a DeFi project building an AI trading agent to operate in different markets. The) Tj T*
-(BETTEX token connects users to the project economy and to the distribution of results, when) Tj T*
-(there is eligible profit, without ownership of the treasury or any corporate vote.) Tj T*
+(BETTEX token connects users to the project economy and the distribution of results, when there) Tj T*
+(is eligible profit, without treasury ownership or automatic voting.) Tj T*
 () Tj T*
-(The founders initially administer the project and keep ownership of the contracts. Functions) Tj T*
-(gradually move to an AI-managed service, with limits and evidence, with no set deadline. No) Tj T*
-(formal company or foundation is planned; the community takes part in decisions still to be) Tj T*
-(defined, with no DAO, token vote or renunciation of ownership defined.) Tj T*
+(Founders initially administer the project and retain control of the contracts. Functions) Tj T*
+(gradually pass to AI, with evidence and limits and no defined deadline. This does not transfer) Tj T*
+(contract control.) Tj T*
 () Tj T*
-(Specialized external services may be hired as needed. The absence of a formal structure does) Tj T*
-(not remove responsibilities, controls or legal requirements, and no tax exemption is presumed.) Tj T*
+(Community participation in decisions is yet to be defined. No DAO, token voting or ownership) Tj T*
 ET
 endstream
 endobj
@@ -128,10 +128,15 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3266 >>
+<< /Length 3323 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(Operation depends on legal fit per activity and territory.) Tj T*
+(relinquishment has been defined.) Tj T*
+() Tj T*
+(BETTEX follows the DeFi and DEX direction, without a physical company or entity to be formed.) Tj T*
+(The founder and the team conduct initial administration. AI agents will gradually assume these) Tj T*
+(functions until making the BETTEX agent operationally independent and autonomous. This) Tj T*
+(objective is future-oriented and does not eliminate applicable controls or responsibilities.) Tj T*
 () Tj T*
 (Transparency, responsibility and accountability guide the operation, with no guaranteed income) Tj T*
 (or capital protection.) Tj T*
@@ -153,12 +158,12 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (service fees go to the operating account. Initial mint fundraising funds the project and) Tj T*
 (requires reporting. External markets do not automatically inherit official swap terms.) Tj T*
 () Tj T*
-(Eligible result, after taxes and controls, receives 50% to treasury, 25% to staking, and 25% to) Tj T*
-(the exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains) Tj T*
-(in the treasury, without future split. Purchase uses administrative authorization; all acquired) Tj T*
-(BETTEX is burned permanently. The exclusive wallet is not the burn mechanism.) Tj T*
+(Eligible result, after reconciliation and controls, receives 50% treasury, 25% staking, and 25%) Tj T*
+(exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains in) Tj T*
+(the treasury, without future split. Purchase uses administrative authorization; all acquired) Tj T*
+(BETTEX is permanently burned. Exclusive wallet is not the burn mechanism.) Tj T*
 () Tj T*
-(Staking and fiscal sequence) Tj T*
+(Staking and liquidation) Tj T*
 () Tj T*
 (Anyone joining during a round receives zero from that round, even for profit generated after) Tj T*
 (joining, and participates only in the next. The confirmed eligible balance is fixed at opening;) Tj T*
@@ -174,11 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (eligible profit of 1,000 USDC and conditions met, the 250 USDC staking share pays 250 to A and) Tj T*
 (zero to B. In the next round, both eligible from opening and with no exits receive 125 USDC) Tj T*
 (each from new eligible profit of 1,000 USDC. No previous profit is recovered.) Tj T*
-() Tj T*
-(Each round pays or does not pay, without accumulation, reopening, or future supplement. Any) Tj T*
-(BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable) Tj T*
-(fractions return to the treasury, without future credit. Received USDC remains personal.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -186,14 +186,17 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 1896 >>
+<< /Length 2062 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(Taxes attributable to whoever is legally responsible are calculated, deducted, and paid) Tj T*
-(according to the applicable obligation before eligible profit and split. Applicable) Tj T*
-(withholdings are resolved before the net credit. Provision is not payment; accounting for and) Tj T*
-(paying the same obligation does not allow double deduction. There is no universal personal) Tj T*
-(exemption.) Tj T*
+() Tj T*
+(Each round pays or does not pay, without accumulation, reopening, or future supplement. Any) Tj T*
+(BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable) Tj T*
+(fractions return to the treasury, without future credit. Received USDC remains personal.) Tj T*
+() Tj T*
+(USDC credit depends on eligibility, round authorization, confirmation, and reconciliation. An) Tj T*
+(authorization is not equivalent to receipt. Closing does not retain future credits, and) Tj T*
+(uncertain transfers are not released by presumption.) Tj T*
 () Tj T*
 (Only confirmed and reconciled USDC enters the available balance. Uncertain sends do not) Tj T*
 (authorize repetition nor are they recovered resources. Corrections maintain history and unique) Tj T*
@@ -228,13 +231,13 @@ xref
 0000000134 00000 n 
 0000000231 00000 n 
 0000000357 00000 n 
-0000003812 00000 n 
-0000003938 00000 n 
-0000007264 00000 n 
-0000007390 00000 n 
-0000010708 00000 n 
-0000010836 00000 n 
+0000003726 00000 n 
+0000003852 00000 n 
+0000006957 00000 n 
+0000007083 00000 n 
+0000010458 00000 n 
+0000010586 00000 n 
 trailer << /Size 12 /Root 1 0 R >>
 startxref
-12785
+12701
 %%EOF

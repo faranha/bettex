@@ -1,3 +1,4 @@
+import './check-defi-narrative.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { transformWithEsbuild } from 'vite';
@@ -46,6 +47,15 @@ for (const source of ['src/components/VestingChart.tsx', 'src/components/pitch/P
 assert(!/piloto|MAU|5\.000 usuários|Capital do piloto/i.test(JSON.stringify(materials)), 'Downloads must not retain launch targets or projections.');
 assert.equal(materials.pitchLink.href, 'https://bettex.ai/pitch#publico');
 const chapters = await read('src/components/WhitepaperChapters.tsx');
+const publicCopy = await read('src/lib/documentation-copy.ts');
+const networkCosts = await read('src/components/ServiceFees.tsx');
+assert.doesNotMatch(publicCopy + networkCosts, /contribuição por serviços|receita operacional|sustentabilidade operacional|sustentar o serviço pela tesouraria/i, 'Public documentation leaves operating funding open.');
+assert.doesNotMatch(networkCosts, /<h[34]|ServiceFeeTaxes/, 'Network costs have one topic heading, without duplicated revenue subsections.');
+assert.match(networkCosts, /apenas taxas de rede/);
+assert.match(publicCopy, /50% tesouraria, 25% participantes e 25% recompra/);
+assert.match(publicCopy, /24 meses/);
+assert.match(publicCopy, /Quem entra durante uma rodada espera a próxima/);
+assert.match(publicCopy, /Qualquer saída de BETTEX, mesmo parcial, cancela os créditos anteriores ainda não pagos/);
 const principalList = chapters.match(/export const chapters = \[([\s\S]*?)\] as const/);
 assert(principalList, 'The principal chapter list must be identifiable independently of legacy references.');
 const order = [...principalList[1].matchAll(/\{ id: '(documentacao-[\w-]+)', title:/g)].map(m => m[1]);

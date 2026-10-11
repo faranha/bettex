@@ -1,5 +1,6 @@
 - [Disponibilidade dos agentes](agent-trading-availability.md) — home e Central da IA: Cripto aberta por padrão; Esportes, Predictions e Cassino em breve.
 - [Demo exclusivamente visual](interface-visual-demo.md) — instrução atual substitui operação, testnet e emulação persistida; ações operacionais abrem aviso com comunidade.
+- [Central dentro do grafo](ai-center-graph-experience.md) — toda a Central em uma rede espacial imersiva; não um diagrama opcional separado dos painéis.
 - [BETTEX checkout eligibility](bettex-checkout-eligibility.md) — confirm processor approval for investment tokens before wiring real purchases.
 - [Raster asset inspection](raster-asset-inspection.md) — verify logo identity and real alpha; use font-free contact sheets.
 - [Artifact validation environment](artifact-validation-env.md) — manual builds need artifact-scoped runtime variables; do not persist them globally.
@@ -43,7 +44,7 @@
 - [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
 - [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; históricos de sugestões e decisões consultáveis.
-- [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — BETTEX acima de Cripto/BTC/ETH/SOL; preservar IDs de protocolo e separar controles de agentes.
+- [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — BETTEX coordena Cripto; BTC/ETH/SOL são mercados internos, não agentes; preservar IDs e separar controles.
 - [Real agent intelligence](real-agent-intelligence.md) — real inference is required; bound citations to supplied evidence; fixed-rule controls are not substitute intelligence.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
 - [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
@@ -89,4 +90,4 @@
 - [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.
 - [Escopo da atualização documental](documentation-update-scope.md) — documentação, Pitch e derivados; reorganização do lançamento inclui roadmap da homepage, não o aplicativo.
 - [Captação da comunidade](community-launch-funding.md) — mint aberto de 10% a preço fixo; sistema e vesting de 24 meses previstos para março de 2027.
-- [Sustentabilidade operacional](operational-sustainability-positioning.md) — contribuição por serviços só como alternativa em avaliação, sem cobrança definida ou valor fixado.
+- [Sustentabilidade operacional](operational-sustainability-positioning.md) — custeio em aberto; simplificar documentação e retirar receita empresarial, preservando regras essenciais.

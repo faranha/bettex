@@ -4,4 +4,5 @@ export const MOCK_TREASURY_ADDRESSES = {
   operational: 'MOCK-TREASURY-OPERATING',
   reserve: 'MOCK-TREASURY-RESERVE',
   buyback: 'MOCK-TREASURY-BUYBACK',
+  crypto_agent: 'MOCK-TREASURY-CRYPTO-AGENT',
 } as const;

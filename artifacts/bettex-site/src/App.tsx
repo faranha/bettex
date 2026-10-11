@@ -3,6 +3,7 @@ import { PageMetadata } from '@/components/PageMetadata';
 import { InterfaceDemoPage } from '@/components/interface-demo/InterfaceDemoPage';
 import { InterfaceDemoProvider } from '@/components/interface-demo/InterfaceDemoProvider';
 import { DemoActionNotice } from '@/components/interface-demo/DemoActionNotice';
+import { FooterAiGraph } from '@/components/FooterAiGraph';
 import { installVisualDemoTransport } from '@/components/interface-demo/runtime';
 installVisualDemoTransport();
 import { LanguageSelector } from '@/components/LanguageSelector';
@@ -186,6 +187,7 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
     {!compact && <div className="site-footer__cta relative overflow-hidden bg-[#2B59FF]">
       <div aria-hidden="true" className="site-footer__sports">
         <img src={`${import.meta.env.BASE_URL}footer-betting-scene.jpg`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
+        <FooterAiGraph />
       </div>
       <div className="page-wrap relative">
         <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">

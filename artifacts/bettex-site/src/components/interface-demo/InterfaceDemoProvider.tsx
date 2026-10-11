@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import { useEffect, useState, type ReactNode } from 'react';
 import { DemoActionNotice } from './DemoActionNotice';
-import { interfaceDemoPath, isOperationalControl, NOTICE_EVENT, openDemoNotice } from './runtime';
+import { interfaceDemoPath, isLocalReadControl, isOperationalControl, NOTICE_EVENT, openDemoNotice } from './runtime';
 
 /** Document capture also covers Radix portals, keyboard activation and forms. */
 export function InterfaceDemoProvider({ children }: { children: ReactNode }) {
@@ -12,6 +12,8 @@ export function InterfaceDemoProvider({ children }: { children: ReactNode }) {
       if (!interfaceDemoPath(window.location.pathname) || !(event.target instanceof Element)) return;
       if (event.target.closest('[data-testid="interface-demo-notice"]')) return;
       const control = event.target.closest('button,a,input[type="checkbox"],input[type="file"],[role="menuitem"],[role="button"]');
+      if (event.type === 'submit' && event.target.closest('[data-demo-local]')) return;
+      if (control && isLocalReadControl(control)) return;
       if (event.type === 'submit' || control && isOperationalControl(control)) {
         event.preventDefault(); event.stopPropagation(); event.stopImmediatePropagation();
         openDemoNotice();

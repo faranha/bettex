@@ -4,9 +4,9 @@ Legal and regulatory compliance
 
 Every BETTEX launch must already comply with the legal environment of the markets where the solution will be offered. Releasing each agent, feature and category requires a specific technical and legal investigation and compliance with applicable requirements. A roadmap date does not replace this condition.
 
-The project is born decentralized and does not plan a formal company or foundation as a structure. The analysis identifies the offering country, the audience served, the activity, those responsible and the providers. Offer and execution are assessed separately; a permit in one country does not authorize activity in another. If an activity requires a license or authorization, it will not be released before meeting those conditions.
+The assessment identifies the country of offering, target audience, activity, responsible parties and providers. Offering and execution are assessed separately; permission in one country does not authorize activity in another. If an activity requires a license or authorization, it will not be released before those requirements are met.
 
-The investigation checks official sources, the effective dates and scope of rules, required licenses and authorizations, provider terms, advertising, user protection, identification and anti-money laundering, data protection and tax obligations, as applicable. Legal and technical staff record the evidence, analysis date, conditions and required controls.
+The investigation verifies official sources, validity and scope of necessary norms, licenses and authorizations, provider terms, advertising, user protection, identification and anti-money laundering prevention, data protection, and applicable responsibilities. Legal and technical personnel record the evidence, the analysis date, conditions, and required controls.
 
 Each combination of agent, activity and territory must have its scope documented: under investigation, restricted or authorized for launch. Release requires a favorable legal assessment, authorizations where required and validated technical controls. A pending investigation, prohibition or missing required authorization prevents offering and operation in that territory.
 
@@ -22,7 +22,11 @@ Financing: sources and uses of funds
 
 Angel contributions allocate 100% of funds to product, technology and marketing, with no founder salaries or withdrawals. The 15% token allocation does not impose a funding split: agreements identify sources, uses and rights.
 
-The initial 10% mint finances the project, through direct execution or a partner launchpad. Sales of the already released 55% community allocation direct 100% of the USDC price to the treasury. During ALPHA, only network fees will be charged. Whether to charge a service contribution will be decided later with the community, as a possible alternative to sustain operations, with no amount set or adoption confirmed. Resale proceeds belong to the seller. Funding, revenue and distributable profit are not equivalent.
+The initial fixed-price mint funds the project; price, window and platform are yet to be defined, with legal compliance. Sales of released community tokens send 100% of the USDC price to the treasury. Investor contributions have their own terms and fund product, technology and marketing, with no salaries. Fundraising is not distributable profit.
+
+The price belongs to the seller. It creates no new funding or treasury profit and does not accelerate vesting.
+
+Only network fees will be charged during ALPHA. The demo is visual and charges nothing.
 
 Burn Lottery and Double 2X
 
@@ -38,11 +42,13 @@ The operational model has daily UTC rounds. The visual demo uses a separate stor
 
 Administration and purpose
 
-BETTEX is a DeFi project building an AI trading agent to operate in different markets. The BETTEX token connects users to the project economy and to the distribution of results, when there is eligible profit, without ownership of the treasury or any corporate vote.
+BETTEX is a DeFi project building an AI trading agent to operate in different markets. The BETTEX token connects users to the project economy and the distribution of results, when there is eligible profit, without treasury ownership or automatic voting.
 
-The founders initially administer the project and keep ownership of the contracts. Functions gradually move to an AI-managed service, with limits and evidence, with no set deadline. No formal company or foundation is planned; the community takes part in decisions still to be defined, with no DAO, token vote or renunciation of ownership defined.
+Founders initially administer the project and retain control of the contracts. Functions gradually pass to AI, with evidence and limits and no defined deadline. This does not transfer contract control.
 
-Specialized external services may be hired as needed. The absence of a formal structure does not remove responsibilities, controls or legal requirements, and no tax exemption is presumed. Operation depends on legal fit per activity and territory.
+Community participation in decisions is yet to be defined. No DAO, token voting or ownership relinquishment has been defined.
+
+BETTEX follows the DeFi and DEX direction, without a physical company or entity to be formed. The founder and the team conduct initial administration. AI agents will gradually assume these functions until making the BETTEX agent operationally independent and autonomous. This objective is future-oriented and does not eliminate applicable controls or responsibilities.
 
 Transparency, responsibility and accountability guide the operation, with no guaranteed income or capital protection.
 
@@ -56,9 +62,9 @@ Vesting of 900 million BETTEX over 24 months from March 2027: community 550 mill
 
 100% of the USDC price of already released community tokens goes to the treasury. Separate service fees go to the operating account. Initial mint fundraising funds the project and requires reporting. External markets do not automatically inherit official swap terms.
 
-Eligible result, after taxes and controls, receives 50% to treasury, 25% to staking, and 25% to the exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains in the treasury, without future split. Purchase uses administrative authorization; all acquired BETTEX is burned permanently. The exclusive wallet is not the burn mechanism.
+Eligible result, after reconciliation and controls, receives 50% treasury, 25% staking, and 25% exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains in the treasury, without future split. Purchase uses administrative authorization; all acquired BETTEX is permanently burned. Exclusive wallet is not the burn mechanism.
 
-Staking and fiscal sequence
+Staking and liquidation
 
 Anyone joining during a round receives zero from that round, even for profit generated after joining, and participates only in the next. The confirmed eligible balance is fixed at opening; increases during the round participate only in the following round.
 
@@ -68,7 +74,7 @@ Example: A starts the round with 1,000 eligible BETTEX; B receives 1,000 at 12:0
 
 Each round pays or does not pay, without accumulation, reopening, or future supplement. Any BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable fractions return to the treasury, without future credit. Received USDC remains personal.
 
-Taxes attributable to whoever is legally responsible are calculated, deducted, and paid according to the applicable obligation before eligible profit and split. Applicable withholdings are resolved before the net credit. Provision is not payment; accounting for and paying the same obligation does not allow double deduction. There is no universal personal exemption.
+USDC credit depends on eligibility, round authorization, confirmation, and reconciliation. An authorization is not equivalent to receipt. Closing does not retain future credits, and uncertain transfers are not released by presumption.
 
 Only confirmed and reconciled USDC enters the available balance. Uncertain sends do not authorize repetition nor are they recovered resources. Corrections maintain history and unique effects, without automatic debit from the personal wallet.
 

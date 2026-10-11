@@ -1,5 +1,6 @@
 /** Published hashes from the previous 14-chapter documentation, resolved to current destinations. */
 export const documentationAliases: Record<string, string> = {
+  'documentacao-tributos': 'documentacao-staking',
   'documentacao-recompras': 'documentacao-recompra-queima',
   'documentacao-responsabilidade-seguranca': 'documentacao-seguranca',
   'documentacao-entidade': 'documentacao-governanca',

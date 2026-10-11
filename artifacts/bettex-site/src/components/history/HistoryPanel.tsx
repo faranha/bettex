@@ -259,9 +259,13 @@ function Detail({ e, mode, accountKey, view: listView }: { e: HistoryEntry; mode
   </div>;
 }
 
-function Transparency() {
+function Transparency({ visualDemo = false }: { visualDemo?: boolean }) {
   const { x, loc } = useX();
-  const q = useQuery({ queryKey: ['history-transparency'], queryFn: ({ signal }) => getHistoryTransparency({ signal, credentials: 'same-origin' }), retry: false, staleTime: 30000 });
+  const q = useQuery({ queryKey: ['history-transparency'], queryFn: ({ signal }) => getHistoryTransparency({ signal, credentials: 'same-origin' }), enabled: !visualDemo, retry: false, staleTime: 30000 });
+  if (visualDemo) return <div className="rounded-xl border border-[#E4DCCB] bg-white p-3 text-xs" data-testid="panel-history-transparency">
+    <p className="text-sm font-bold">{x('Capital confirmado na tesouraria', 'Confirmed capital in the treasury', 'Capital confirmado en la tesorería')}</p>
+    <p className="mt-1 text-[#5B6B85]">{x('Este demo não conecta a blockchain nem confirma capital. Os valores ilustrativos estão na Tesouraria; não são fundos reais nem confirmações de transações.', 'This demo does not connect to a blockchain or confirm capital. Illustrative values are shown in Treasury; they are not real funds or transaction confirmations.', 'Esta demo no conecta a una blockchain ni confirma capital. Los valores ilustrativos están en Tesorería; no son fondos reales ni confirmaciones de transacciones.')}</p>
+  </div>;
   if (q.isLoading) return <div aria-busy="true" className="h-16 animate-pulse rounded-xl bg-[#F0E9DA]" />;
   if (q.isError || !q.data) return null;
   return <div className="rounded-xl border border-[#E4DCCB] bg-white p-3 text-xs" data-testid="panel-history-transparency">
@@ -275,7 +279,7 @@ function Transparency() {
   </div>;
 }
 
-export function HistoryPanel({ mode, accountKey, initialView, treasuryAccess = false }: { mode: Mode; accountKey: string; csrf?: string; initialView?: View; treasuryAccess?: boolean }) {
+export function HistoryPanel({ mode, accountKey, initialView, treasuryAccess = false, visualDemo = false }: { mode: Mode; accountKey: string; csrf?: string; initialView?: View; treasuryAccess?: boolean; visualDemo?: boolean }) {
   const { x, loc } = useX();
   const views = mode === 'demo' && !treasuryAccess ? VIEWS.filter(v => v !== 'treasury') : VIEWS;
   const [view, setView] = useState<View>(initialView && (mode !== 'demo' || treasuryAccess || initialView !== 'treasury') ? initialView : 'general');
@@ -297,7 +301,7 @@ export function HistoryPanel({ mode, accountKey, initialView, treasuryAccess = f
   const setF = (k: keyof Filters) => (ev: { target: { value: string } }) => setFilters(f => ({ ...f, [k]: ev.target.value }));
   return <section className="grid gap-3" data-testid={`panel-history-${mode}`}>
     <h2 className="display text-lg font-extrabold">{x('Histórico', 'History', 'Historial')}</h2>
-    {(view === 'general' || view === 'treasury') && <Transparency />}
+    {(view === 'general' || view === 'treasury') && <Transparency visualDemo={visualDemo} />}
     <div role="tablist" className="flex gap-1 overflow-x-auto">
       {views.map(v => <button key={v} type="button" role="tab" aria-selected={view === v} data-testid={`tab-history-${v}`} onClick={() => setView(v)}
         className={`min-h-11 shrink-0 rounded-xl px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] ${view === v ? 'bg-[#0E7C6B] text-white' : 'bg-[#F0E9DA]'}`}>{pick(VIEW_L as never, v, loc)}</button>)}

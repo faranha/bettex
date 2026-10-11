@@ -4,14 +4,14 @@ import { FounderProfile } from './FounderProfile';
 
 export function EntityOrganisation() {
   return <>
-    <h3 className="whitepaper__subhead" id="documentacao-empresa">Empresa e participação</h3>
-    <div className="whitepaper__lead"><span>PROJETO DESCENTRALIZADO · FULL STACK AI</span><p>A BETTEX nasce como projeto descentralizado. A constituição de uma entidade e sua formalização institucional não são prioridades imediatas, não estão previstas para o curto prazo e não têm data definida. A operação será limitada aos mercados onde a atividade for permitida, com as autorizações exigidas quando aplicáveis.</p></div>
-    <DocFacts title="Identidade empresarial" facts={[
-      { label: 'ESTRUTURA', value: 'Descentralizada', text: 'Entidade em etapa posterior, sem prazo definido.' },
-      { label: 'ADMINISTRAÇÃO', value: 'Fundador', text: 'Atuação solo, com IA na execução e serviços externos especializados.' },
+    <h3 className="whitepaper__subhead" id="documentacao-empresa">Protocolo DeFi e participação</h3>
+    <div className="whitepaper__lead"><span>PROJETO DESCENTRALIZADO · FULL STACK AI</span><p>A BETTEX é um projeto DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time conduzem a administração inicial. O objetivo é substituir suas funções por agentes de IA até tornar o agente BETTEX operacionalmente independente e autônomo. Essa autonomia é uma direção futura, não uma capacidade já entregue.</p></div>
+    <DocFacts title="Identidade do protocolo" facts={[
+      { label: 'ESTRUTURA', value: 'Descentralizada', text: 'DeFi e DEX, sem constituição de empresa.' },
+      { label: 'ADMINISTRAÇÃO', value: 'Fundador e time', text: 'Administração inicial e evolução para agentes de IA autônomos.' },
       { label: 'PARTICIPAÇÃO', value: 'BETTEX', text: 'Token e direitos do programa, não ações ou voto societário.' },
     ]} />
-    <div className="whitepaper__prose"><p>O fundador coordena o desenvolvimento em modelo full stack AI, sem funcionários. Serviços externos especializados podem ser contratados por necessidade. A descentralização não elimina responsabilidades, controles nem exigências legais; se uma atividade exigir entidade, licença ou autorização, ela não será liberada antes de cumprir essas condições.</p><p>“Fundação BETTEX” é uma denominação histórica, não uma entidade registrada ou uma forma jurídica escolhida. Nome, forma jurídica e jurisdição serão avaliados em etapa posterior. Titulares de BETTEX têm tokens e direitos do programa, não ações, voto societário ou fração resgatável da tesouraria. A governança patrimonial e a custódia estão em <a href="#documentacao-governanca">Governança</a>.</p></div>
+    <div className="whitepaper__prose"><p>O fundador e o time iniciam o desenvolvimento e a administração. Agentes de IA substituirão gradualmente essas funções, com mandatos e controles verificáveis. A direção DeFi não elimina riscos nem responsabilidades aplicáveis.</p><p>BETTEX identifica o projeto e seu agente de IA. Não há constituição de entidade prevista. Os titulares têm tokens e direitos de participação nos resultados, não propriedade resgatável da tesouraria. A custódia e os controles estão em <a href="#documentacao-governanca">Governança</a>.</p></div>
     <h3 className="whitepaper__subhead" id="documentacao-missao">Missão, visão e valores</h3>
     <div className="whitepaper__status-grid">
       <div><span>MISSÃO</span><strong>Participação econômica</strong><p>Ampliar alternativas de participação econômica para pessoas comuns durante a transição provocada pela IA, robótica e automação.</p></div>

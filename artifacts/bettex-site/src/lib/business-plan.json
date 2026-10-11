@@ -6,8 +6,8 @@
   "usersGoal": 5000,
   "monthlyActiveUsersGoal": 1000,
   "monthlyOperationsPerActive": [1, 10, 30],
-  "company": "A BETTEX nasce como projeto descentralizado. A constituição de uma entidade e sua formalização institucional não são prioridades imediatas, não estão previstas para o curto prazo e não têm data definida. A operação será limitada aos mercados onde a atividade for permitida, com as autorizações exigidas quando aplicáveis.",
+  "company": "A BETTEX é um projeto DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time conduzem a administração inicial. Agentes de IA assumirão gradualmente essas funções até tornar o agente BETTEX operacionalmente independente e autônomo. A autonomia é um objetivo futuro, com mandatos e controles verificáveis, não uma capacidade já disponível.",
   "allocation": "Aportes de investidores têm livre alocação. A divisão do piloto não é uma regra geral de captação.",
   "costs": "IA, infraestrutura, segurança, conectores e serviços externos por necessidade, sem orçamento mensal presumido.",
-  "profit": "Receita não é lucro. Custos e tributos identificados precedem o resultado líquido; não há data de equilíbrio presumida."
+  "profit": "Receita não é lucro. Custos efetivos identificados precedem o resultado líquido; não há data de equilíbrio presumida."
 }

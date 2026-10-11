@@ -1,4 +1,16 @@
 {
+  "Close": { "pt": "Fechar", "en": "Close", "es": "Cerrar" },
+  "Loading": { "pt": "Carregando", "en": "Loading", "es": "Cargando" },
+  "Previous": { "pt": "Anterior", "en": "Previous", "es": "Anterior" },
+  "Next": { "pt": "Próximo", "en": "Next", "es": "Siguiente" },
+  "Go to previous page": { "pt": "Ir para a página anterior", "en": "Go to previous page", "es": "Ir a la página anterior" },
+  "Go to next page": { "pt": "Ir para a próxima página", "en": "Go to next page", "es": "Ir a la página siguiente" },
+  "Previous slide": { "pt": "Slide anterior", "en": "Previous slide", "es": "Diapositiva anterior" },
+  "Next slide": { "pt": "Próximo slide", "en": "Next slide", "es": "Diapositiva siguiente" },
+  "Toggle Sidebar": { "pt": "Abrir ou fechar menu lateral", "en": "Toggle Sidebar", "es": "Abrir o cerrar menú lateral" },
+  "Displays the mobile sidebar.": { "pt": "Exibe o menu lateral no celular.", "en": "Displays the mobile sidebar.", "es": "Muestra el menú lateral en el móvil." },
+  "More pages": { "pt": "Mais páginas", "en": "More pages", "es": "Más páginas" },
+  "pagination": { "pt": "Paginação", "en": "pagination", "es": "Paginación" },
   "Technology references": {
     "pt": "Referências tecnológicas",
     "en": "Technology references",

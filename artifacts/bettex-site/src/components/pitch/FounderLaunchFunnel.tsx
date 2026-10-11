@@ -33,9 +33,9 @@ export function FounderLaunchFunnel() {
     </ol>
     <div className="flf__goal">
       <div><strong>{(1000).toLocaleString(getFormatLocale())}</strong><span>{t('primeiros usuários')}</span></div>
-      <div className="flf__zero"><strong>{t('Zero')}</strong><span>{t('custo de aquisição para a empresa')}</span></div>
+      <div className="flf__zero"><strong>{t('Zero')}</strong><span>{t('custo de aquisição para o projeto')}</span></div>
     </div>
-    <p className="flf__note">{t('Meta de planejamento, não tração comprovada. Custo de aquisição zero para a empresa não significa despesas operacionais zero.')}</p>
+    <p className="flf__note">{t('Meta de planejamento, não tração comprovada. Custo de aquisição zero para o projeto não significa despesas operacionais zero.')}</p>
   </figure>;
 }
 

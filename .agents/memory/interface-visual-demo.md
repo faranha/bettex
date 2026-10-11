@@ -3,7 +3,7 @@ name: Demo exclusivamente visual
 description: Escopo atual do app; substitui as exigências anteriores de testnet, operação e emulação persistida.
 ---
 
-O criador pediu: “Vamos converter tudo em demo”. O app deve funcionar como demonstração visual com dados fictícios locais, sem depender de autenticação, banco, agentes reais ou testnet. Navegação, idioma, gráficos, filtros, abas e sanfonas continuam sendo interações visuais.
+O criador pediu: “Vamos converter tudo em demo”. O app, incluindo Tesouraria e Histórico, deve funcionar como demonstração visual com dados fictícios locais, sem depender de autenticação, banco, agentes reais ou testnet. Navegação, idioma, gráficos, filtros, abas e sanfonas continuam sendo interações visuais.
 
 Transações, pedidos, novos registros, alterações persistidas, geração de relatórios e ações equivalentes devem abrir um overlay, sem executar a operação. O texto solicitado é: “Esse é um demo para a interface. É só uma demonstração visual, o software ainda está em desenvolvimento, nos acompanhe pela comunidade”, acompanhado do botão da comunidade.
 
@@ -22,3 +22,9 @@ O criador pediu: “Recuperar a Central completa como demo visual”, após apon
 **Why:** A conversão em demo não autoriza substituir a Central completa por um cartão simplificado da orquestradora.
 
 **How to apply:** Preservar a hierarquia, os mandatos, as análises, os pedidos, as decisões e seus percursos consultáveis, usando exemplos locais claramente identificados. Filtros e detalhes funcionam; ações operacionais continuam abrindo o aviso, sem executar nem persistir.
+
+O criador reiterou sobre a Tesouraria: “nunca lhe mandei tirar ele do ar” e “todo conteúdo que fizemos, tudo em detalhes, sumiu”. Depois apontou a mesma perda no Histórico e pediu recuperá-lo.
+
+**Why:** A conversão em demo também substituiu a Tesouraria e o Histórico completos por apresentações reduzidas. Bloquear operações não autoriza retirar conteúdo, explicações, carteiras, rodadas, extratos ou históricos consultáveis.
+
+**How to apply:** A regra de preservação vale para todas as áreas existentes do aplicativo. Adaptar as apresentações completas para exemplos locais e manter a navegação até seus detalhes; não substituir a interface por resumos porque seus dados originais dependiam da API. Não afirmar recuperação de registros reais quando a tela usa amostras.

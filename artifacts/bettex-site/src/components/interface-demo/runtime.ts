@@ -1,5 +1,7 @@
 import fixture from './fixture.json';
 import type { DemoDashboard } from '@workspace/api-client-react';
+import { localHistoryRoute } from './history-demo-api';
+import { completeDemoData } from './complete-demo-data';
 
 export const INTERFACE_DEMO = true;
 export const NOTICE_EVENT = 'bettex-interface-demo-notice';
@@ -18,8 +20,10 @@ export function visualDashboard(): DemoDashboard {
     if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, value]) => [k, shift(value)]));
     return v;
   };
-  return shift(fixture.dashboard) as DemoDashboard;
+  return completeDemoData(shift(fixture.dashboard) as DemoDashboard);
 }
+
+let historySource: DemoDashboard | null = null;
 
 /** Fail closed: legacy mounted query/mutation paths cannot reach real APIs. */
 export function installVisualDemoTransport() {
@@ -38,9 +42,18 @@ export function installVisualDemoTransport() {
     const path = url.pathname.slice(url.pathname.indexOf('/api/'));
     if (path === '/api/demo/dashboard') return Response.json(visualDashboard());
     if (path === '/api/account/session') return Response.json({ account: null });
-    // No mounted visual page uses RPC, accounts or operational read endpoints.
+    const local = localHistoryRoute(path, url.searchParams, historySource ??= visualDashboard());
+    if (local) return local;
+    // No other mounted visual page uses RPC, accounts or operational read endpoints.
     return Response.json({ error: 'not_available_in_interface_demo' }, { status: 410 });
   };
+}
+
+/** Read-only local History controls (filters, downloads of the displayed sample source) are not operations. */
+export function isLocalReadControl(element: Element): boolean {
+  if (element.hasAttribute('data-demo-action')) return false;
+  if (!element.closest('[data-demo-local]') && !element.hasAttribute('data-demo-local')) return false;
+  return !(element instanceof HTMLAnchorElement && /^https?:/i.test(element.getAttribute('href') ?? '') && !element.href.startsWith(window.location.origin));
 }
 
 export function isOperationalControl(element: Element): boolean {

@@ -1,14 +1,12 @@
 ---
 name: Sustentabilidade operacional
-description: Contribuição por serviços é uma alternativa em avaliação, não política de cobrança definida.
+description: Custeio permanece em aberto; remover explicações públicas de receita empresarial, sem mudar regras essenciais.
 ---
 
-Não apresentar taxas de serviço como cobrança definida ou receita garantida. Apresentar apenas como possibilidade ou alternativa para sustentar as operações, sem valor fixado nem adoção confirmada.
+Simplificar as descrições da documentação e retirar explicações sobre receita, empresa e alternativas de custeio operacional. Deixar o custeio em aberto; não escrever que os responsáveis pagam do próprio bolso, nem sugerir uma fonte de custeio definida.
 
-No ALFA, serão cobradas apenas taxas de rede. A decisão de cobrar ou não por serviços será tomada posteriormente com a comunidade.
+Preservar as regras essenciais do token, vesting, staking, distribuição, tesouraria e controles. No ALFA, apenas taxas de rede; o demo visual não cobra.
 
-**Why:** O criador esclareceu: “podemos mencionar que apenas taxas de rede serao cobradas no alfa, e a decisao de cobrar ou nao é posterior”, “a ser decidido com a comunidade”.
+**Why:** O criador pediu: “simplifique ainda mais a parte da documentacao”, “as regras essenciais nao podem mudar” e “vamos deixar a questao do custeio da empresa em aberto”, sem dizer que os responsáveis custeiam pessoalmente.
 
-**Why:** O criador determinou: “nao podemos mais citar taxas de servico, isso pode afastar pessoas, tem qeu colocar como uma possibilidade, alternativa pra sustentar as operacoes”.
-
-**How to apply:** Aplicar ao site, documentação, Pitch, traduções e derivados. Evitar títulos de política oficial e exemplos de preço fixo na apresentação pública. Distinguir custos externos reais de receitas institucionais possíveis; não ocultar custos efetivos ou transformar cenários fictícios do demo em condições de lançamento.
+**How to apply:** Na documentação, traduções e downloads, retirar o modelo de sustentabilidade, as explicações de receita bruta empresarial e propostas de contribuição por serviços. Não financiar automaticamente a manutenção pela tesouraria. Não ocultar custos externos efetivos nem afirmar isenção legal. A orientação posterior também retira o modelo tributário público das distribuições; consultar Fundação BETTEX. Esta orientação substitui a apresentação anterior de contribuição por serviços como alternativa em avaliação.
