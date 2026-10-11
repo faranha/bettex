@@ -1,7 +1,0 @@
-.distribution-tax__inputs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 20px 0; }
-.distribution-tax__inputs label { display: grid; gap: 8px; font-size: 14px; font-weight: 600; min-width: 0; }
-.distribution-tax__inputs input, .distribution-tax__inputs select { width: 100%; min-width: 0; padding: 12px; border: 1px solid #b9b3a0; border-radius: 4px; background: #fffdf5; color: #13204f; font: inherit; }
-.distribution-tax__inputs input:focus-visible { outline: 2px solid #2b59ff; outline-offset: 2px; }
-.distribution-tax__conditions { display: flex; align-items: flex-start; gap: 10px; margin: 20px 0; font-size: 14px; line-height: 1.6; }
-.distribution-tax__conditions input { margin-top: 4px; accent-color: #2b59ff; flex-shrink: 0; }
-@media (max-width: 768px) { .distribution-tax__inputs { grid-template-columns: 1fr; } }

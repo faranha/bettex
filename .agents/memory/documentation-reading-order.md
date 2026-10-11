@@ -3,6 +3,12 @@ name: Ordem de leitura da documentação
 description: Ordem dos capítulos e leitura compacta da documentação técnica.
 ---
 
+Não repetir títulos consecutivos do mesmo bloco, inclusive quando um componente já possui título próprio e é colocado dentro de outro com cabeçalho.
+
+**Why:** O criador apontou dois títulos “Sustentabilidade operacional” em sequência e pediu: “nao repita titulos assim”.
+
+**How to apply:** Manter um único título com conteúdo, sem cabeçalho vazio acima de outro igual. Conferir o texto renderizado, inclusive traduções e referências técnicas, não somente os títulos declarados no componente pai.
+
 No mobile, o menu da documentação deve seguir o submenu das demais páginas: uma barra imediatamente abaixo do header principal, com acesso aos capítulos e às subseções da área selecionada. Não manter um segundo índice mobile dentro do conteúdo; preservar o índice lateral no desktop.
 
 **Why:** O criador pediu a mesma estrutura de submenu usada nas outras páginas, no lugar do menu de capítulos mostrado no corpo da documentação.

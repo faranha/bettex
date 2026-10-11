@@ -5,7 +5,7 @@ export function EntityMultisig() {
     <section id="documentacao-entidade-multisig" aria-labelledby="entidade-multisig-title">
       <h3 id="entidade-multisig-title" className="whitepaper__subhead">Multisig e liberdade operacional</h3>
       <div className="whitepaper__prose">
-        <p><strong>A administração aprova a política; o multisig autoriza a custódia; o executor atua dentro do mandato.</strong> A rotina não exige reunir assinaturas a cada ordem ou pagamento já coberto por uma autorização válida. Fora do mandato, a movimentação volta à aprovação colegiada. Esta é a política-base para formalização da empresa.</p>
+        <p><strong>A administração aprova a política; o multisig autoriza a custódia; o executor atua dentro do mandato.</strong> A rotina não exige reunir assinaturas a cada ordem ou pagamento já coberto por uma autorização válida. Fora do mandato, a movimentação volta à aprovação colegiada. Esta é a política-base de custódia e mandatos do protocolo DeFi. A futura execução por IA seguirá permissões e controles verificáveis.</p>
       </div>
       <DocFacts title="Política-base de movimentação" cols={3} facts={[
         { label: 'CUSTÓDIA INSTITUCIONAL', value: '2 de 3', text: 'Duas pessoas distintas assinam; uma ausência não paralisa o quórum.' },
@@ -25,7 +25,7 @@ export function EntityMultisig() {
           <caption>Quórum, alçada e liberdade de execução</caption>
           <thead><tr><th scope="col">Movimentação</th><th scope="col">Autorização</th><th scope="col">Execução permitida</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Tributos e serviços externos no orçamento</th><td>Mandato ou lote aprovado por 2/3.</td><td>Executor paga documentos conferidos, dentro dos destinos, valores e vencimentos aprovados, sem nova assinatura por item.</td></tr>
+            <tr><th scope="row">Serviços externos autorizados</th><td>Mandato ou lote aprovado por 2/3.</td><td>Executor paga documentos conferidos, dentro dos destinos, valores e vencimentos aprovados, sem nova assinatura por item.</td></tr>
             <tr><th scope="row">Investimentos e distribuição de resultados</th><td>Mandato 2/3, subordinado às regras vigentes da tesouraria.</td><td>Operações passam pelo risco independente; pagamentos usam obrigações e beneficiários conciliados. Não há aprovação humana por ordem ou crédito.</td></tr>
             <tr><th scope="row">Saída direta sem mandato, reforço de caixa ou despesa extraordinária</th><td>2/3 sobre a transação exata e fundamento aprovado.</td><td>Revalidação do saldo livre e da fonte. Reforço não renova automaticamente limites nem usa reservas ou créditos como caixa livre.</td></tr>
             <tr><th scope="row">Novos poderes, destinos de estratégia ou alterações de controles</th><td>Aprovação administrativa registrada + 2/3 + espera mínima de 24h.</td><td>Inclui signatários, quórum, módulos, permissões a terceiros, atualizações de contratos, limites e novos mandatos estratégicos. Vigência somente após execução e conferência.</td></tr>
@@ -40,7 +40,7 @@ export function EntityMultisig() {
         <p>Cada mandato identifica <strong>carteira de origem, finalidade, executor, ativos e redes, contratos e funções permitidos, destinos, teto por operação, teto acumulado diário UTC, orçamento total e validade máxima de 30 dias</strong>. Nenhum campo obrigatório fica implícito. A soma do executado e comprometido por todos os executores consome o mesmo orçamento; fracionar pagamentos não contorna a alçada.</p>
         <p>A renovação sem ampliar poderes ou orçamento exige 2/3 e nova conferência, sem espera adicional. Ampliar o escopo ou os limites exige o procedimento sensível de 24h. Esgotamento, vencimento, suspensão ou divergência bloqueiam novas execuções; não liberam compromissos incertos nem autorizam reenvio. Um lote aprova seu conteúdo exato, não transferências futuras arbitrárias.</p>
         <p>Fornecedores usam destinos cadastrados e verificados. Distribuições usam os beneficiários e parcelas das obrigações conciliadas, sem exigir cadastro manual de cada titular pelo multisig. O executor não pode trocar o favorecido, atualizar o contrato, criar outro executor, elevar limites, conceder autorização ilimitada de tokens ou alterar os signatários.</p>
-        <p>O caixa operacional e a tesouraria têm carteiras, rubricas e mandatos separados. Na tesouraria continuam valendo reservas conforme política aprovada, capital comprometido, limites de risco, elegibilidade e split 50%/25%/25%. O multisig não muda emissão, vesting, pesos ou créditos dos participantes. Carteiras pessoais e exportação de chaves não entram no multisig da empresa.</p>
+        <p>O caixa operacional e a tesouraria têm carteiras, rubricas e mandatos separados. Na tesouraria continuam valendo reservas conforme política aprovada, capital comprometido, limites de risco, elegibilidade e split 50%/25%/25%. O multisig não muda emissão, vesting, pesos ou créditos dos participantes. Carteiras pessoais e exportação de chaves não entram no multisig do projeto.</p>
       </div>
 
       <h4 className="whitepaper__subhead">Controles técnicos e contas externas</h4>

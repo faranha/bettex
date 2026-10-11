@@ -26,3 +26,9 @@ Quoted property names in copy dictionaries, routing IDs and locale filename suff
 **Why:** A new short-copy dictionary produced hundreds of false localization failures by collecting its quoted keys; real missing paragraphs and download format labels were mixed into the same report.
 
 **How to apply:** Exclude only verified structural identifiers, preserve runtime collection and multilingual coverage, and check for existing translations before adding entries.
+
+Revisar também os padrões em inglês dos componentes compartilhados, inclusive rótulos de acessibilidade. Cobertura completa de chaves não prova que os valores sejam traduções reais.
+
+**Why:** A auditoria principal passava mesmo com textos de paginação, fechamento e navegação em inglês copiados para o espanhol e sem tradução portuguesa.
+
+**How to apply:** Para controles comuns, verificar os valores efetivos depois da combinação dos catálogos. Não tratar nomes próprios, códigos ou símbolos de moeda como falhas por permanecerem iguais.

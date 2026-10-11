@@ -12,7 +12,6 @@ lib = app / "src/lib"
 out = app / "public/downloads"
 out.mkdir(parents=True, exist_ok=True)
 materials = json.loads((lib / "documentation-materials.json").read_text())
-fees = json.loads((lib / "service-fee-proposal.json").read_text())["fees"]
 catalogue = json.loads((lib / "locales/translations.json").read_text())
 ns = "http://schemas.openxmlformats.org"
 
@@ -107,8 +106,9 @@ for lang in ("pt", "en", "es"):
     pdf(stem.with_suffix(".pdf"), paragraphs)
     labels = materials["workbook"]
     c = {v:t(v) for v in labels["columns"]}
-    fee_rows = [[c["Operação"],t("Valor não definido"),c["Incidência"],c["Escopo"]]] + [[t(f["operation"]),t("Em avaliação"),t(f["basis"]),t(f["scope"])] for f in fees]
-    sheets = [(t(labels["fees"]),fee_rows),(t(labels["vesting"]),[[c[x] for x in labels["columns"][4:]]] + vesting),(t(labels["rules"]),[[p] for p in paragraphs])]
+    # Operating funding remains undefined: do not export a service-revenue proposal.
+    network_notes = [[t("No ALFA, serão cobradas apenas taxas de rede. O demo é visual e não efetua cobranças.")]]
+    sheets = [(t("Custos de rede"),network_notes),(t(labels["vesting"]),[[c[x] for x in labels["columns"][4:]]] + vesting),(t(labels["rules"]),[[p] for p in paragraphs])]
     xlsx(out / f"bettex-taxas-fundacao{suffix}.xlsx", sheets)
     # Keep distributed legacy URLs while offering neutral names for the same
     # current content. Never rewrite the historical research workbook.

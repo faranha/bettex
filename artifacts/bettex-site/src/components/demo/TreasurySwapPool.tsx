@@ -11,7 +11,7 @@ import { formatBrazilDateTime } from './brazil-time';
 
 const box = 'rounded-2xl border border-[#E4DCCB] bg-[#FFFCF6] p-3 sm:p-4';
 
-export function TreasurySwapPool({ d }: { d: DemoDashboard }) {
+export function TreasurySwapPool({ d, visualDemo = false }: { d: DemoDashboard; visualDemo?: boolean }) {
   const { x, loc } = useX(); const { num, fl } = useMoney();
   const p = d.treasury.swapPool;
   const c = p?.contract;
@@ -46,7 +46,7 @@ export function TreasurySwapPool({ d }: { d: DemoDashboard }) {
           <div className="mt-2 flex flex-wrap items-center gap-2"><code data-testid="swap-pool-contract-id" className="mono min-w-0 break-all rounded-lg bg-[#F5F1E8] px-2 py-1 text-xs">{c.id}</code><button type="button" data-testid="button-copy-contract-id" onClick={copy} className="inline-flex min-h-11 items-center gap-1 rounded-xl border border-[#D8CFBB] px-3 text-xs font-bold text-[#0A6657] hover:bg-[#EFF6F2]">{copied ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}<span aria-live="polite">{copied ? x('ID copiado', 'ID copied', 'ID copiado') : x('Copiar ID', 'Copy ID', 'Copiar ID')}</span></button></div>
          </> : <p data-testid="swap-pool-contract-unavailable" className="mt-1 text-xs text-[#5B6B85]">{x('Descritor do contrato indisponível.', 'Contract descriptor unavailable.', 'Descriptor del contrato no disponible.')}</p>}
          {copyFailed && <p role="alert" className="mt-1 text-xs text-[#A12D2D]">{x('Não foi possível copiar. Selecione o ID e copie manualmente.', 'Could not copy. Select the ID and copy it manually.', 'No se pudo copiar. Selecciona el ID y cópialo manualmente.')}</p>}
-        <p className="mt-2 text-xs text-[#5B6B85]">{x('Contrato simulado no servidor: não está publicado on-chain e não usa ativos reais.', 'Server-side simulated contract: not deployed on-chain and uses no real assets.', 'Contrato simulado en el servidor: no está desplegado on-chain y no usa activos reales.')}</p>
+        <p className="mt-2 text-xs text-[#5B6B85]">{visualDemo ? x('Descritor fictício local, sem execução ou ativos reais.', 'Fictitious local descriptor, with no execution or real assets.', 'Descriptor ficticio local, sin ejecución ni activos reales.') : x('Contrato simulado no servidor: não está publicado on-chain e não usa ativos reais.', 'Server-side simulated contract: not deployed on-chain and uses no real assets.', 'Contrato simulado en el servidor: no está desplegado on-chain y no usa activos reales.')}</p>
         {p.contractAddress && <p className="mono mt-1 break-all text-xs" data-testid="swap-pool-onchain-address">{x('Endereço on-chain (distinto do ID simulado)', 'On-chain address (distinct from simulated ID)', 'Dirección on-chain (distinta del ID simulado)')}: {p.contractAddress}</p>}
       </div>
        <p className="text-xs text-[#5B6B85]">{x('Uma contribuição por serviços é apenas uma alternativa em avaliação, sem cobrança ou valor definidos. O demo usa números fictícios. Números da loteria são pagos e queimados diretamente em BETTEX, sem usar o AMM.', 'A service contribution is only an alternative under evaluation, with no charge or amount defined. The demo uses fictional figures. Lottery entries are paid and burned directly in BETTEX without using the AMM.', 'Una contribución por servicios es solo una alternativa en evaluación, sin cobro ni importe definidos. El demo usa cifras ficticias. Los números de lotería se pagan y queman directamente en BETTEX sin usar el AMM.')}</p>

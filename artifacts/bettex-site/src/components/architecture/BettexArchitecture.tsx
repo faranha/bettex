@@ -91,17 +91,17 @@ const fig4: Step[] = [
 ];
 const fig5: Step[] = [
   { title: 'Tesouraria BETTEX', text: 'Autoriza a parcela investível para a IA, com alocação dinâmica e respeito à reserva defensiva e aos limites de risco.', tone: 'gold' },
-  { title: 'IA BETTEX', text: 'Opera dentro do mandato e após verificação independente de risco. Apura o resultado líquido conciliado, após custos e tributos, considerando posições abertas. Perdas são reconhecidas permanentemente, sem déficit a compensar com lucros de rodadas futuras.', tone: 'blue', badge: 'Análise e apuração' },
+  { title: 'IA BETTEX', text: 'Opera dentro do mandato e após verificação independente de risco. Apura o resultado líquido conciliado, após custos conciliados, considerando posições abertas. Perdas são reconhecidas permanentemente, sem déficit a compensar com lucros de rodadas futuras.', tone: 'blue', badge: 'Análise e apuração' },
   { title: 'Reservas, liquidez e elegibilidade', text: 'Verifica reservas conforme política aprovada e caixa livre antes e após staking, transferência à carteira de recompra e custos projetados. A soma dos pesos elegíveis da rodada deve ser positiva.', tone: 'teal', badge: 'Condições antes do split', id: 'node-bettex-profit-split',
     extra: (
       <>
         <div className="ba-entry" data-testid="node-bettex-reserve-recovery">
           <div className="ba-split__treasury"><strong>Reserva ou liquidez insuficiente, ou soma dos pesos zero</strong><p>A rodada não paga. 100% do lucro fica na tesouraria, sem crédito ao staking nem alocação à carteira de recompras, nem liberação futura desse resultado. A rodada encerra sem acumular lucro ou pesos para outro rateio.</p></div>
         </div>
-        <p>Somente com tributos aplicáveis apurados e recolhidos conforme obrigação, reserva e liquidez atendidas antes e após as saídas, lucro elegível positivo, posições conciliadas e soma dos pesos elegíveis positiva, aplica o split:</p>
+        <p>Somente com reserva e liquidez atendidas antes e após as saídas, lucro elegível positivo, posições conciliadas e soma dos pesos elegíveis positiva, aplica o split:</p>
         <div className="ba-entry ba-split" aria-label="Split permitido apenas com pesos elegíveis positivos, reserva e liquidez atendidas antes e após staking, transferência à carteira de recompra e custos projetados">
           <div className="ba-split__treasury"><strong>Tesouraria · 50%</strong><p>Retenção e reinvestimento de 50% do lucro distribuível.</p></div>
-          <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Parcela bruta rateada entre participantes elegíveis. Retenções fiscais precedem o pagamento líquido na Carteira USDC, nunca na Carteira BETTEX.</p></div>
+          <div className="ba-split__staking"><strong>Staking · 25%</strong><p>Parcela rateada entre participantes elegíveis. O pagamento confirmado entra na Carteira USDC, nunca na Carteira BETTEX.</p></div>
           <div className="ba-split__buyback"><strong>Carteira de recompras · 25%</strong><p>USDC segregado → compra autorizada de BETTEX → burn permanente de todos os tokens adquiridos.</p></div>
         </div>
       </>
@@ -109,7 +109,7 @@ const fig5: Step[] = [
 ];
 const fig6: Step[] = [
   { title: 'Parcela do staking', text: 'Parcela de 25% do lucro distribuível já separada no desenho 5, vinculada aos resultados e participantes elegíveis. Novos participantes não recebem lucros anteriores. Não há nova apuração ou novo split neste fluxo.', tone: 'blue' },
-  { title: 'Retenção e crédito na Carteira USDC', text: 'Direito bruto identificado; retenções aplicáveis são resolvidas e recolhidas antes da disponibilização líquida. Provisão isolada não libera saldo. USDC transferido entra no disponível após confirmação e conciliação, sem nova dedução do tributo já considerado.', tone: 'teal' },
+  { title: 'Confirmação e crédito na Carteira USDC', text: 'Direito identificado e autorizado na própria rodada. Uma autorização não libera saldo disponível. USDC transferido entra no disponível após confirmação e conciliação, sem crédito duplicado.', tone: 'teal' },
   { title: 'Saque de USDC do staking', text: 'Movimenta USDC recebido sem repetir a distribuição. Não há cobrança de serviço definida. Custos externos e retenções são separados. Sem pagamento em moeda local.' },
 ];
 const fig7: Step[] = [
@@ -187,7 +187,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
 
         {(!figure || figure === '5') && <Figure id="figure-bettex-risk" num="5" title={architectureFigureTitles['5']} lead="Tesouraria → IA BETTEX → verifica reservas, liquidez e pesos elegíveis: retém o lucro ou libera o split.">
           <Steps steps={fig5} label="IA apura lucro, verifica reservas, liquidez e pesos elegíveis; se alguma condição falhar, retém 100% sem split; com condições atendidas aplica 50% tesouraria, 25% staking e 25% carteira de recompras" />
-          <p className="ba-fig__foot">Reserva ou liquidez insuficiente mantém 100% do lucro na tesouraria, sem split ou liberação futura. Com tributos aplicáveis resolvidos e condições atendidas, o resultado elegível recebe 50% tesouraria, 25% staking e 25% carteira de recompra. O USDC da recompra pode acumular; sua compra exige autorização da administração e todo BETTEX adquirido segue para queima permanente. A carteira não financia estratégias, distribuições ou despesas, nem conta como reserva defensiva.</p>
+          <p className="ba-fig__foot">Reserva ou liquidez insuficiente mantém 100% do lucro na tesouraria, sem split ou liberação futura. Com conciliação e condições atendidas, o resultado elegível recebe 50% tesouraria, 25% staking e 25% carteira de recompra. O USDC da recompra pode acumular; sua compra exige autorização da administração e todo BETTEX adquirido segue para queima permanente. A carteira não financia estratégias, distribuições ou despesas, nem conta como reserva defensiva.</p>
           <p className="ba-fig__foot">Perdas reconhecidas são permanentes: não criam déficit a recuperar com resultados futuros. A reserva defensiva e a liquidez continuam obrigatórias. Cada lucro, perda, obrigação e pagamento é registrado uma única vez. Lucros anteriores não entram no rateio de novos participantes.</p>
         </Figure>}
 

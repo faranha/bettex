@@ -38,3 +38,9 @@ O botão “Entre na comunidade” desse rodapé deve ser azul, não amarelo.
 **Why:** O criador mostrou o botão do rodapé e pediu expressamente que fosse azul.
 
 **How to apply:** Preservar o azul também nos estados de interação, com texto e ícone legíveis, sem estender essa alteração a outros convites não solicitados.
+
+Na arte do banner final do site, a IA e o grafo precisam compor a própria ilustração, não um painel separado.
+
+**Why:** O criador mostrou o banner de encerramento e pediu que “a IA, o Grafo, tem que se combinar na arte do rodapé do site”.
+
+**How to apply:** Manter a rede e o núcleo de IA visíveis também no celular, sem cobrir a mensagem ou os botões. Essa arte pertence ao site; não alterar a Central da IA do aplicativo por esse pedido.

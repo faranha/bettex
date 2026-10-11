@@ -7,7 +7,7 @@ const BASE = import.meta.env.BASE_URL;
 export type PitchImageName = 'pitch-economy-separation' | 'pitch-token-participation' | 'pitch-brazil-community' | 'pitch-product-development';
 
 const alts: Record<PitchImageName, string> = {
-  'pitch-economy-separation': 'Duas bandejas de trabalho financeiro separadas sobre uma mesa creme, em azul e dourado, representando tesouraria e empresa distintas',
+  'pitch-economy-separation': 'Duas bandejas de trabalho financeiro separadas sobre uma mesa creme, em azul e dourado, representando tesouraria e caixa operacional distintos',
   'pitch-token-participation': 'Protótipo do token BTEX físico em metal azul e dourado, com símbolo da marca e inscrição BTEX em relevo',
   'pitch-brazil-community': 'Pequeno grupo de pessoas conversando sobre tecnologia em um café brasileiro, cena ilustrativa',
   'pitch-product-development': 'Desenvolvedor trabalhando com código em um notebook, representando a construção do produto e da tecnologia',

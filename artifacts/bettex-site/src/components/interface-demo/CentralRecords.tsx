@@ -77,9 +77,9 @@ export function Journey({ id, onClose }: { id: string; onClose: () => void }) {
       <p className="text-[11px] font-bold text-[#7A5410]">{L(SAMPLE_PROVENANCE)}</p></div></section>;
 }
 
-export function RecordsSection({ views, title, intro, onJourney, onAction }: { views: V[]; title: string; intro: string; onJourney: (id: string) => void; onAction: () => void }) {
+export function RecordsSection({ views, title, intro, onJourney, onAction, initialAsset }: { views: V[]; title: string; intro: string; initialAsset?: Asset; onJourney: (id: string) => void; onAction: () => void }) {
   const { x, L, st } = useBits();
-  const [view, setView] = useState<V>(views[0]); const [asset, setAsset] = useState<'' | Asset>(''); const [state, setState] = useState(''); const [page, setPage] = useState(0);
+  const [view, setView] = useState<V>(views[0]); const [asset, setAsset] = useState<'' | Asset>(initialAsset ?? ''); const [state, setState] = useState(''); const [page, setPage] = useState(0);
   const label: Record<V, string> = { opportunities: x('Pedidos recebidos e comparações', 'Received requests and comparisons', 'Pedidos recibidos y comparaciones'), decisions: x('Decisões da BETTEX', 'BETTEX decisions', 'Decisiones de BETTEX'), orders: x('Ordens', 'Orders', 'Órdenes'), positions: x('Posições abertas', 'Open positions', 'Posiciones abiertas'), closed: x('Encerradas', 'Closed', 'Cerradas') };
   const okA = (a: Asset) => !asset || a === asset; const okS = (s: string) => !state || s === state;
   const items: { key: string; node: ReactNode }[] =

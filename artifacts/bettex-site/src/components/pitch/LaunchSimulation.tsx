@@ -95,7 +95,7 @@ export function LaunchSimulation() {
     { label: t('Saques viáveis concluídos'), get: x => n(x.completedWithdrawals) },
     { label: t('Taxas de saque efetivas'), get: x => usd(x.withdrawalFeesUsd) },
     { label: t('Custo do operador'), get: x => usd(x.operatorCostUsd) },
-    { label: t('Resultado do operador antes de impostos'), get: x => usd(x.operatorResultBeforeTaxUsd), strong: true },
+    { label: t('Resultado operacional estimado'), get: x => usd(x.operatorResultBeforeTaxUsd), strong: true },
     { label: t('Caixa adicional necessário para a operadora'), get: x => usd(x.operatorFundingGapUsd) },
     { label: t('Resultado líquido da estratégia'), get: x => usd(x.treasuryProfitUsd), strong: true },
     { label: t('Ganhos das rodadas positivas'), get: x => usd(x.treasuryGainsUsd) },
@@ -138,7 +138,7 @@ export function LaunchSimulation() {
             {field('m3', t('Novos usuários no mês 3'), '1')}
             {field('ticket', t('Primeira compra por pessoa (USD)'), '1')}
             {field('price', t('Preço ilustrativo por BETTEX (USDC)'), '0.01', t('Preço fixo ilustrativo, não uma cotação de mercado.'))}
-            {field('rate', t('Resultado líquido no mês 1 (%)'), '0.5', t('Já depois de custos e impostos da estratégia.'))}
+            {field('rate', t('Resultado líquido no mês 1 (%)'), '0.5', t('Já depois dos custos da estratégia.'))}
             {field('rate2', t('Resultado líquido no mês 2 (%)'), '0.5')}
             {field('rate3', t('Resultado líquido no mês 3 (%)'), '0.5')}
             {field('cost', t('Custo mensal do operador (USD)'), '1')}
@@ -191,7 +191,7 @@ export function LaunchSimulation() {
               <div><dt>{t('Usuários ativos')}</dt><dd>{n(row.users)}</dd></div>
               <div><dt>{t('Vendas de tokens')}</dt><dd>{usd(row.purchasesUsd)}</dd></div>
               <div><dt>{t('Receita de taxas')}</dt><dd>{usd(row.operatorRevenueUsd)}</dd></div>
-              <div className="ls__gold"><dt>{t('Resultado do operador antes de impostos')}</dt><dd>{usd(row.operatorResultBeforeTaxUsd)}</dd></div>
+              <div className="ls__gold"><dt>{t('Resultado operacional estimado')}</dt><dd>{usd(row.operatorResultBeforeTaxUsd)}</dd></div>
               <div className="ls__blue"><dt>{t('Resultado líquido da estratégia (tesouraria)')}</dt><dd>{usd(row.treasuryProfitUsd)}</dd></div>
             </dl>
             <p className="ls__sep">{t('Os dois resultados são separados e não devem ser somados: o do operador vem de taxas, o da tesouraria vem da estratégia.')}</p>
@@ -267,13 +267,13 @@ export function LaunchSimulation() {
           <li>{t('Outros detentores elegíveis diluiriam o pool e não são modelados.')}</li>
           <li>{t('Unidade executável assumida: 0,000001 USDC. Confirmar a precisão do ativo e do conector antes de qualquer operação real. Frações não executáveis voltam à tesouraria na mesma rodada, sem acumulação entre rodadas.')}</li>
           <li>{t('Saldo em USDC na carteira é dinheiro já liquidado e pode ser guardado para saque; lucro não pago não é crédito a receber.')}</li>
-          <li>{t('A taxa líquida da estratégia já desconta custos e impostos da estratégia. Custos do operador são separados e acumulam por dia.')}</li>
+          <li>{t('A taxa líquida da estratégia já desconta os custos da estratégia. Custos operacionais são separados e acumulam por dia.')}</li>
           <li>{t('Resultado negativo reduz o capital de forma permanente e não financia distribuição nem recompra.')}</li>
           <li>{t('Os outros 25% do lucro ficam reservados para recompra, ainda não executada; não simulamos valorização nem queima.')}</li>
           <li>{t('Sem compras recorrentes extras, transferências ou dinheiro externo.')}</li>
           <li>{t('Sem financiamento anjo não significa sem custos de operação.')}</li>
           <li>{t('A movimentação soma compras primárias e saques brutos concluídos, sem contar tarifas duas vezes. As compras de tokens são capital da tesouraria, não receita da operadora.')}</li>
-          <li>{t('A receita de taxas não inclui tributos da operadora. O resultado operacional mostrado desconta apenas o custo informado.')}</li>
+          <li>{t('O resultado operacional ilustrativo desconta apenas o custo informado. No ALFA, a previsão pública contempla apenas taxas de rede; o demo não cobra.')}</li>
           <li>{t('A taxa mensal é nominal, dividida por 30 e aplicada ao saldo disponível de cada dia. A retenção reinvestida altera esse saldo; perdas reduzem a base dos dias seguintes.')}</li>
           <li>{t('Hipóteses simplificadas de resultados e custos; não representam liquidez real nem autorização regulatória.')}</li>
         </ul>
