@@ -6,7 +6,7 @@ description: Definição econômica e posicionamento público aprovados pelo cri
 ## Direção comunitária atual
 
 A BETTEX é uma comunidade aberta; BETTEX é um token comunitário.
-Não há empresa ou fundação, salários ou taxas de serviço da BETTEX. A apresentação
+Não há empresa ou fundação, salários ou taxas de serviço da BETTEX. Nos materiais autorizados, a apresentação
 abre com comunidade e propósito, não ganhos do token. Mint, percentuais,
 vesting e mecanismos econômicos aprovados permanecem nas explicações técnicas.
 Esta orientação substitui o enquadramento comercial usado anteriormente.
@@ -23,7 +23,7 @@ textos públicos, metadados, traduções, materiais e orientações do projeto.
 esse token é um token de comunidade”, “não pode ter salário, não pode ter taxas”
 e pediu preservar “os tokenomics, o mint, os percentis já definidos”.
 
-**How to apply:** Alinhar site, Pitch, documentação, traduções, downloads e demo.
+**How to apply:** Alinhar documentação e sistema, com suas traduções e derivados, dentro do escopo autorizado. A identidade comunitária não autoriza reformular a homepage: o criador rejeitou expressamente essa interpretação. Consultar [o escopo atual](documentation-update-scope.md) antes de alterar superfícies públicas.
 No demo, retirar taxas também de cartões, filtros, rodadas e exportações, não
 apenas zerar números. Distinguir custos externos reais da rede de receitas da
 comunidade. Não afirmar isenção tributária nem que obrigações legais existem
