@@ -29,6 +29,7 @@
 - [Âncoras e navegação fixa](navigation-anchor-offsets.md) — mudanças de altura precisam considerar rolagem JavaScript e índice fixo, não apenas scroll-margin.
 - [Menus de seções no mobile](mobile-section-menu-style.md) — lista aberta com a identidade BETTEX; o popup nativo do iPhone não atende à estilização solicitada.
 - [SEO e roteamento estático](seo-static-routing.md) — validar HTTP inicial por rota; reescritas genéricas podem apagar o HTML pré-renderizado.
+- [Bots de IA](ai-crawler-policy.md) — restringir treinamento, busca e leitura por bots conhecidos; preservar Google, Bing e visitantes normais.
 - [Embeds em produção](production-embed-policy.md) — o preview Vite não aplica a CSP publicada; verificar o domínio do iframe contra frame-src do servidor.
 - [Domínio oficial](official-domain.md) — bettex.ai confirmado pelo criador; bettex.replit.app deve redirecionar preservando a página.
 - [Overlays mobile](mobile-chart-overlays.md) — largura e posição dos tooltips precisam caber no gráfico, inclusive após expandir sanfonas.

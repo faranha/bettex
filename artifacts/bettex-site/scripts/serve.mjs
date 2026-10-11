@@ -4,7 +4,8 @@ import { stat, readFile, realpath } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { withMetadata } from './seo.mjs';
+import { withMetadata, discovery } from './seo.mjs';
+import { restrictAiCrawler } from './crawler-policy.mjs';
 
 const publicRoot = path.resolve(import.meta.dirname, '../dist/public');
 const officialOrigin = 'https://bettex.ai';
@@ -63,6 +64,17 @@ export function createSiteServer(root = publicRoot) {
       }
       const url = new URL(req.url ?? '/', 'http://localhost');
       const pathname = decodeURIComponent(url.pathname);
+      if (restrictAiCrawler(req, res)) return;
+      if (pathname === '/robots.txt') {
+        const robots = discovery().robots;
+        res.writeHead(200, {
+          'Content-Type': mime['.txt'],
+          'Content-Length': Buffer.byteLength(robots),
+          'Cache-Control': 'no-cache',
+        });
+        res.end(req.method === 'HEAD' ? undefined : robots);
+        return;
+      }
       const legacyApp = pathname.match(/^\/(?:(en|es)\/)?demo(\/.*)?$/);
       if (legacyApp && /^(?:\/?|\/(?:central|saldo|balance|tesouraria|treasury|tesoreria|simulacao|simulation|simulacion)\/?|\/(?:minha-conta|account|mi-cuenta)(?:\/.*)?)$/.test(legacyApp[2] ?? '')) {
         res.writeHead(308, { Location: `${legacyApp[1] ? `/${legacyApp[1]}` : ''}/app${legacyApp[2] ?? ''}${url.search}`, 'Cache-Control': 'no-store' });
