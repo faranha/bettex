@@ -33,7 +33,7 @@ Não reintroduzir “Sobre esta demonstração” nem sua nota expansível acima
 
 **How to apply:** Manter o cabeçalho compacto; os demais avisos existentes continuam identificando o caráter demonstrativo.
 
-Cotações e simulações da Polymarket pertencem aos detalhes dos nós de Cripto e seus subagentes no grafo, inclusive quando apresentados em overlay. Não expor esse painel como um bloco separado abaixo do grafo.
+As cotações da Polymarket pertencem aos detalhes dos nós de Cripto e seus subagentes no grafo, inclusive quando apresentados em overlay. Não expor esse painel como um bloco separado abaixo do grafo. A orientação posterior restringe a Central à consulta, sem simuladores configuráveis pelo usuário.
 
 **Why:** O criador apontou o bloco separado de cotações e simulação e corrigiu: “mesmo em overlay, isso deveria ficar dentro do grapho”.
 

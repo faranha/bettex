@@ -1,14 +1,16 @@
 /** @jsxImportSource react */
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { useX } from './ui';
 
 const PairedDisclosure = createContext<{ expanded: boolean; toggle: () => void } | null>(null);
 
-/** One shared disclosure state for the paired Earnings and Lottery cards. */
+/** Pair disclosures on desktop; stacked mobile cards keep independent local state. */
 export function WalletCardDetailsPair({ children }: { children: ReactNode }) {
   const [expanded, setExpanded] = useState(false);
-  return <PairedDisclosure.Provider value={{ expanded, toggle: () => setExpanded(value => !value) }}>
+  const isMobile = useIsMobile();
+  return <PairedDisclosure.Provider value={isMobile ? null : { expanded, toggle: () => setExpanded(value => !value) }}>
     {children}
   </PairedDisclosure.Provider>;
 }

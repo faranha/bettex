@@ -32,7 +32,7 @@ test('new question formats use translation cache and never return raw English', 
   const originalBase = process.env.AI_INTEGRATIONS_OPENAI_BASE_URL;
   const originalKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
   process.env.AI_INTEGRATIONS_OPENAI_BASE_URL = 'https://translation.test/v1';
-  process.env.AI_INTEGRATIONS_OPENAI_API_KEY = 'unit-test-placeholder';
+  process.env.AI_INTEGRATIONS_OPENAI_API_KEY = 'test-key';
   let calls = 0;
   globalThis.fetch = async () => {
     calls++;

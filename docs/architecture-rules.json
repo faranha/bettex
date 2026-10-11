@@ -28,6 +28,7 @@
     "artifacts/api-server/src/lib/logger.ts"
   ],
   "legacyOwnership": {
+    "artifacts/api-server/src/lib/polymarket-titles.ts": "agents",
     "artifacts/api-server/src/lib/agent-wallet-allocation.ts": "wallets",
     "artifacts/api-server/src/lib/demo-amm-contract.ts": "execution",
     "artifacts/api-server/src/lib/demo-burn-story.ts": "ledger",

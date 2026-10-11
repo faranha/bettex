@@ -57,7 +57,13 @@ try {
           en: 'This sample does not represent the entire Brazilian population, betting returns or measured BETTEX demand.',
           es: 'Este recorte no representa a toda la población brasileña, rendimientos de apuestas ni demanda medida de BETTEX.' };
         assert(source.endsWith(limitations[locale]), `${label}: explicit research limitations`);
-        assert((await text('.pb-problem__hyp p')).includes('BETTEX'), `${label}: founder proposition present`);
+        const opportunity = await text('.pb-problem__hyp p');
+        const cautions = {
+          pt: ['participação condicionada', 'custos e os riscos', 'validada com usuários', 'não promete recuperar perdas de apostas'],
+          en: ['conditional participation', 'costs and risks', 'validated with users', 'does not promise to recover betting losses'],
+          es: ['participación condicionada', 'costos y riesgos', 'validarse con usuarios', 'no promete recuperar pérdidas de apuestas'],
+        };
+        assert(cautions[locale].every(value => opportunity.includes(value)), `${label}: conditional participation, explicit risks, validation and no loss-recovery promise`);
         assert.equal(await text('.pb-problem__doc'), expected.doc, `${label}: documentation label`);
         const doc = new URL(await section.locator('.pb-problem__doc').getAttribute('href'), page.url());
         assert(doc.pathname.endsWith(expected.docPath), `${label}: localized documentation destination`);

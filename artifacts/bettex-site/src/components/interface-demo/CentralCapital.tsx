@@ -6,7 +6,7 @@ import { useL } from './CentralAgents';
 
 const num = (v: string) => Number(v) / 1e6;
 
-export function CentralCapital({ onAction }: { onAction: () => void }) {
+export function CentralCapital() {
   const { x, loc } = useFmt(); const L = useL(); const lc = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
   const u = (v: string) => `${dec6(v, lc)} USDC`;
   const pctOf = (v: string, whole: string) => `${(num(v) / (num(whole) || 1) * 100).toFixed(2)}%`;
@@ -57,9 +57,6 @@ export function CentralCapital({ onAction }: { onAction: () => void }) {
     <ul className="mt-2 list-disc pl-5 text-sm"><li>{x('Cotações mais antigas que o limite de idade não são usadas.', 'Quotes older than the age limit are not used.', 'Las cotizaciones más antiguas que el límite de edad no se usan.')}</li><li>{x('Limites por ordem, por grupo correlacionado e por carteira.', 'Limits per order, per correlated group and per portfolio.', 'Límites por orden, por grupo correlacionado y por cartera.')}</li></ul>
     <h3 className="mt-4 font-bold">{x('Políticas efetivas por especialista', 'Effective policies by specialist', 'Políticas efectivas por especialista')}</h3>
     <ul className="mt-2 grid gap-2 sm:grid-cols-3">{(['btc', 'eth', 'sol'] as Asset[]).map(a => <li key={a} className="rounded-xl border border-[#E4DCCB] p-3 text-sm"><b>{a.toUpperCase()}</b> · <Tag>{x('Ativa', 'Active', 'Activa')}</Tag><p className="mt-1 break-all font-mono text-[11px]">demo-policy-{a}-effective-001</p></li>)}</ul>
-    <div className="mt-4 flex flex-wrap gap-2">
-      <button type="button" data-demo-action data-testid="button-config-save" onClick={onAction} className="min-h-11 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white">{x('Salvar configuração', 'Save configuration', 'Guardar configuración')}</button>
-      <button type="button" data-demo-action data-testid="button-capital-allocate" onClick={onAction} className="min-h-11 rounded-xl border border-[#0E7C6B] px-4 text-sm font-bold text-[#0A6657]">{x('Alterar alocação', 'Change allocation', 'Cambiar asignación')}</button></div>
   </section>;
 }
 

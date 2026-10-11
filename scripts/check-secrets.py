@@ -14,9 +14,11 @@ RULES = {
     "database-credentials": re.compile(rb"(?:postgres(?:ql)?|mongodb(?:\+srv)?)://[^/\s:\"'<>]+:[^@\s\"'<>]{6,}@"),
     "literal-operational-secret": re.compile(rb"""(?i)\b(?:PRIVATE_KEY(?:_BASE64)?|SESSION_SECRET|CLERK_SECRET_KEY|[A-Z_]*API_KEY)\b["']?\s*[:=]\s*["']([A-Za-z0-9_$/+=.-]{20,})["']"""),
 }
-# Exact, reviewed public Robinhood documentation sample. Any change revokes this
+# Exact, reviewed public documentation and historical test fixture. Any change revokes this
 # allowance, including adding a real secret to the document. No runtime use.
 PUBLIC_EXAMPLE_DOCUMENTS = {
+    "f47c0fc1dedd054e4ee4386fba55ab4e255b3cad8ace6f1d72183d8a799cb15a":
+        "historical Polymarket title translation test fixture; invalid mock key only",
     "e6196a5762d8bac4df0532efe003316bea53d411526af03caa57cbf244344543":
         "https://docs.robinhood.com/crypto/trading/",
 }

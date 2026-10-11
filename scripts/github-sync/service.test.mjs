@@ -6,6 +6,14 @@ import path from 'node:path';
 import { context, synchronize, status, acquire, pause, watch } from './service.mjs';
 import { git, inspect, inspectIndex, safeRemote, requireNonPublicRemote } from './guard.mjs';
 
+test('historical mock-key allowance is exact and any file modification revokes it', () => {
+  const current = readFileSync(new URL('../../artifacts/api-server/scripts/polymarket-titles.test.mjs', import.meta.url), 'utf8');
+  const historical = current.replace("'test-key'", "'unit-test-placeholder'");
+  assert.deepEqual(inspect(historical, 'historical-title-test'), []);
+  assert.ok(inspect(historical + '\n// modified\n', 'modified-title-test')
+    .some(finding => finding.category === 'literal-secret'));
+});
+
 function fixture(t, options = {}) {
   const directory = mkdtempSync(path.join(tmpdir(), 'bettex-sync-test-'));
   t.after(() => rmSync(directory, { recursive: true, force: true }));

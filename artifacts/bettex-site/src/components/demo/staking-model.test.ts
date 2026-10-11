@@ -50,7 +50,7 @@ test('staking is a full-width section integrated in dashboard and all wallet vie
   assert.match(read('./StakingCorridor.tsx'), /staking-corridor/);
   assert.doesNotMatch(read('./StakingCorridor.tsx'), /position:\s*fixed|w-\[3[0-9][0-9]px\]/);
 });
-test('live trades is below the chart and dashboard agents follow the chart-clock row without a duplicate top block', () => {
+test('chart and clock precede agents; staking does not restore the removed live-trading shortcut', () => {
   const read = (file: string) => readFileSync(new URL(file, import.meta.url), 'utf8');
   const corridor = read('./StakingCorridor.tsx');
   const clock = read('./StakingRoundClock.tsx');
@@ -62,7 +62,8 @@ test('live trades is below the chart and dashboard agents follow the chart-clock
   const liveTrades = corridor.indexOf('data-testid="staking-live-trading"');
   const sideClock = corridor.indexOf('<StakingRoundClock');
   const agents = corridor.indexOf('{showAgents && <AgentShowcase');
-  assert.ok(chart >= 0 && liveTrades > chart && sideClock > liveTrades && agents > sideClock);
+  assert.equal(liveTrades, -1);
+  assert.ok(chart >= 0 && sideClock > chart && agents > sideClock);
 });
 
 test('scenario keeps realized path separate from forecast, uses payout weight, and never debits losses', () => {
@@ -105,8 +106,8 @@ test('staking presentation uses helpers and earnings cards, not a share donut or
   assert.match(presentation, /staking-projected-earnings/);
   assert.doesNotMatch(presentation, /staking-ticker|animate-ping|timeline\?\.tick/);
   assert.match(presentation, /staking-round-clock/);
-  assert.match(presentation, /staking-live-trading/);
-  assert.match(presentation, /demoPath\('central', loc\)/);
+  assert.doesNotMatch(presentation, /staking-live-trading/);
+  assert.doesNotMatch(presentation, /demoPath\('central', loc\)/);
   assert.match(source, /<Term tip=/);
   assert.match(chart, /hourlyRows/);
   assert.doesNotMatch(chart, /dataKey="forecast"/);
@@ -125,7 +126,9 @@ test('agent tabs belong inside existing staking, without a separate home trading
   assert.ok(start < corridor.indexOf("metric('staking-mine'"));
   assert.ok(end > corridor.indexOf('<StakingRoundClock'));
   assert.ok(end < corridor.lastIndexOf('</section>'));
-  assert.match(home, /<StakingCorridor d=\{d\} showAgents \/>/);
+  assert.match(home, /<StakingCorridor d=\{d\} \/>/);
+  assert.match(home, /<CentralDemo onAction=\{openDemoNotice\} \/>/);
+  assert.match(home, /<AgentShowcase showOtherAgents=\{false\} showDisclaimer=\{false\} \/>/);
   assert.doesNotMatch(home, /<MockCentralPanel compact/);
   for (const key of ['crypto', 'sports', 'predictions', 'casino']) {
     assert.ok(tabs.includes(`key: '${key}'`));

@@ -8,7 +8,7 @@ type Asset = 'BTC' | 'ETH' | 'SOL';
 const ASSETS: Asset[] = ['BTC', 'ETH', 'SOL'];
 const MAX_BUDGET = 10000;
 
-export function PolymarketSimulation({ asset }: { asset?: Asset }) {
+export function PolymarketSimulation({ asset, readOnly = false }: { asset?: Asset; readOnly?: boolean }) {
   const { x, loc, date } = useFmt();
   const lc = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
   const [picked, setPicked] = useState<Asset>(asset ?? 'BTC');
@@ -40,7 +40,7 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
   return (
     <section className="pms" data-testid="polymarket-simulation" aria-label={x('Polymarket', 'Polymarket', 'Polymarket')}>
       <div className="pms-lane">
-        <b>{x('Polymarket · cotações e simulação', 'Polymarket · quotes and simulation', 'Polymarket · cotizaciones y simulación')}</b>
+        <b>{readOnly ? x('Polymarket · cotações', 'Polymarket · quotes', 'Polymarket · cotizaciones') : x('Polymarket · cotações e simulação', 'Polymarket · quotes and simulation', 'Polymarket · cotizaciones y simulación')}</b>
       </div>
       {!asset && (
         <div className="pms-tabs" role="group">
@@ -62,7 +62,7 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
         : x('Não foi possível consultar a fonte.', 'Could not query the source.', 'No se pudo consultar la fuente.')}</div>}
       {data && !markets.length && !err && <div className="pms-warn">{x('Nenhum mercado público disponível para este ativo.', 'No public market available for this asset.', 'Ningún mercado público disponible para este activo.')}</div>}
       {data && (
-        <div className="pms-grid">
+        <div className="pms-grid" style={readOnly ? { gridTemplateColumns: 'minmax(0, 1fr)' } : undefined}>
           <div className="pms-box pms-real">
             <h3>{x('Preços públicos reais', 'Real public prices', 'Precios públicos reales')}</h3>
             <label>{x('Mercado', 'Market', 'Mercado')}
@@ -84,7 +84,7 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
               </>
             )}
           </div>
-          <div className="pms-box pms-sim">
+          {!readOnly && <div className="pms-box pms-sim">
             <h3>{x('Simulação local', 'Local simulation', 'Simulación local')}</h3>
             <label>{x('Orçamento de exemplo (USD, máx. 10.000)', 'Example budget (USD, max 10,000)', 'Presupuesto de ejemplo (USD, máx. 10.000)')}
               <input data-testid="pm-budget" type="number" inputMode="decimal" min="0" max={MAX_BUDGET} step="any" value={budget} onChange={(e) => setBudget(e.target.value)} aria-invalid={!budgetOk} />
@@ -108,7 +108,7 @@ export function PolymarketSimulation({ asset }: { asset?: Asset }) {
                 'Local theoretical example, not an order or real balance. Excludes fees and slippage and does not validate liquidity or execution. Not guaranteed profit or a probability edge; the outcome is uncertain and may be a total loss of the simulated amount.',
                 'Ejemplo teórico local, no es una orden ni saldo real. Excluye comisiones y deslizamiento de precio y no valida liquidez ni ejecución. No es beneficio garantizado ni ventaja de probabilidad; el resultado es incierto y puede ser la pérdida total del monto simulado.')}
             </p>
-          </div>
+          </div>}
         </div>
       )}
     </section>

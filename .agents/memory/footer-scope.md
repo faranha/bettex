@@ -41,6 +41,16 @@ O rodapé deve priorizar navegação eficaz e pouca altura, sobretudo no mobile.
 
 **How to apply:** Evitar voltar a empilhar os grupos de links com grandes espaços. Manter as páginas e a seleção de idioma acessíveis, com identidade concisa de comunidade de investimento com IA.
 
+O menu do rodapé deve apresentar as páginas Página inicial, Pitch,
+Documentação e Demo, sem misturar âncoras de seções internas.
+
+**Why:** O criador corrigiu explicitamente a navegação: os links de seções
+estavam misturados com as páginas do site.
+
+**How to apply:** Usar destinos de páginas no rodapé compartilhado, com
+localização consistente. Não reintroduzir Token, Como opera, Mercados,
+História ou Roadmap como itens desse menu.
+
 O rodapé de navegação deve ter um botão para a comunidade, com ícone do Telegram, tanto no mobile quanto no desktop. O seletor de idioma deve ser um botão horizontal, bem colocado junto dele, com atenção especial ao desktop.
 
 **Why:** Após pedir um convite simples, o criador rejeitou o resultado e pediu melhorar a aparência e a posição do seletor de idioma e do botão de comunidade, sobretudo no desktop.

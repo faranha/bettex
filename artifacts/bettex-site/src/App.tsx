@@ -222,27 +222,18 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
             <span>Comunidade no X</span>
           </a>
         </div>
-        <nav aria-label="Explorar o projeto" className="sf-group">
+        <nav aria-label="Links do projeto" className="sf-group sf-pages" data-testid="footer-page-navigation">
           <h3 className="mono">Explore</h3>
           <ul>
-            <li><a {...linkProps} href={homeAnchor('participacao')}>Token BETTEX</a></li>
-            <li><a {...linkProps} href={homeAnchor('tecnologia')}>Como opera</a></li>
-            <li><a {...linkProps} href={homeAnchor('mercados')}>Mercados</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Links do projeto" className="sf-group">
-          <h3 className="mono">O projeto</h3>
-          <ul>
-            <li><a {...linkProps} href={homeAnchor('historia')}>Por que BETTEX</a></li>
-            <li><a {...linkProps} href={homeAnchor('roadmap')}>Roadmap</a></li>
+            <li><a {...linkProps} href={HOME_PATH}>Página inicial</a></li>
             <li><a {...linkProps} href={`${BASE_PATH}/pitch`}>Pitch</a></li>
             <li><a {...linkProps} href={DOCUMENTATION_PATH}>Documentação</a></li>
+            <li><a {...linkProps} href={`${BASE_PATH}/app`}>Demo</a></li>
           </ul>
         </nav>
       </div>
       <div className="sf-bottom">
         <p>© {new Date().getFullYear()} BETTEX.</p>
-        <a {...linkProps} href={homeAnchor('inicio')}>Voltar ao início <ChevronDown className="h-4 w-4 rotate-180" aria-hidden="true" /></a>
       </div>
     </div>
   </footer>;
