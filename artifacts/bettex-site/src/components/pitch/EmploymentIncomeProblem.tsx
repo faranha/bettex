@@ -1,6 +1,7 @@
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { t } from '../../lib/i18n';
 import { AgenticProblemMetrics } from './AgenticProblemMetrics';
+import { PitchSlider } from './PitchSlider';
 import { OptimusWorkCard } from './OptimusWorkCard';
 
 export function EmploymentIncomeProblem() {
@@ -10,11 +11,13 @@ export function EmploymentIncomeProblem() {
     </div>
     <p className="mono pb-problem__topic">2. Emprego e renda ameaçados pela IA</p>
     <h3 id="problema-ia-t" className="display">É mentira, a era da prosperidade é uma mentira.</h3>
+    <PitchSlider id="emprego-ia-slider" tone="dark" label={['IA, trabalho e renda em blocos', 'AI, work and income blocks', 'IA, trabajo e ingresos por bloques']} slides={[
+      { label: ['Promessa de abundância', 'Promise of abundance', 'Promesa de abundancia'], node: <>
     <p>Musk promete renda universal alta. Nós não acreditamos nisso: nossa tese é que substituir salários por máquinas, sem distribuir os ganhos, levará à miséria universal, não à prosperidade.</p>
     <figure className="pb-problem__opening-video">
       <div className="pb-problem__video-frame">
         <iframe
-          src="https://www.youtube-nocookie.com/embed/HHS8OVYT9cI?rel=0"
+          src="https://www.youtube-nocookie.com/embed/HHS8OVYT9cI?rel=0&enablejsapi=1"
           title={t('Elon Musk e a promessa de abundância')}
           loading="eager"
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -24,6 +27,8 @@ export function EmploymentIncomeProblem() {
       </div>
       <figcaption><a href="https://www.youtube.com/watch?v=HHS8OVYT9cI" target="_blank" rel="noopener noreferrer">{t('USA TODAY · Elon Musk e a promessa de abundância')}<ExternalLink aria-hidden="true" /></a></figcaption>
     </figure>
+      </> },
+      { label: ['Economia agêntica', 'Agentic economy', 'Economía agéntica'], node: <>
     <div className="pb-problem__agentic-intro">
       <h4 className="display">Economia agêntica: não é só conversar com uma IA.</h4>
       <p>Agentes de IA executam tarefas, usam ferramentas e tomam decisões dentro de limites definidos. O risco para o colarinho branco é deixar de ser necessário no fluxo de trabalho. Robôs como o Optimus ampliam essa pressão para o trabalho físico.</p>
@@ -31,15 +36,21 @@ export function EmploymentIncomeProblem() {
     <OptimusWorkCard />
     <AgenticProblemMetrics />
 
+      </> },
+      { label: ['Exposição à IA', 'AI exposure', 'Exposición a la IA'], node: <>
     <div className="pb-problem__response">
       <p>A tese da BETTEX é que automatizar o trabalho sem ampliar o acesso aos ganhos pode produzir miséria, não prosperidade. No estudo de <strong>2024</strong> da OIT e do Banco Mundial, <strong>26% a 38%</strong> dos empregos da América Latina e do Caribe estavam expostos à IA generativa, e <strong>2% a 5%</strong> tinham potencial de automação completa com as capacidades então disponíveis. A exposição à automação era maior em empregos formais e qualificados, inclusive de colarinho branco; ao mesmo tempo, a exclusão digital limitava os benefícios potenciais da IA em cerca de <strong>17 milhões</strong> de postos. Nossa preocupação é que pessoas humildes percam renda ou fiquem fora dos ganhos dessa economia. É esse risco de exclusão que a BETTEX busca enfrentar, não uma certeza de desemprego ou miséria universal.</p>
     </div>
 
+      </> },
+      { label: ['O problema a resolver', 'The problem to solve', 'El problema a resolver'], node: <>
     <div className="pb-problem__response">
       <h4 className="display">O problema que a BETTEX quer resolver</h4>
       <p>Trocar a busca de futuro nas apostas por participação na economia agêntica. Pelo token, a BETTEX propõe acesso à tecnologia e aos resultados previstos pelas suas regras: participar dessa economia, em vez de depender apenas do salário que ela ameaça. Não é renda garantida.</p>
       <a className="tap pb-problem__evidence-link" href="#solucao">Como a BETTEX responde a esse problema<ArrowRight aria-hidden="true" /></a>
     </div>
+      </> },
+    ]} />
     <a className="tap pb-problem__evidence-link" href="#cenario-exclusao">Emprego, automação e economia real<ArrowRight aria-hidden="true" /></a>
   </section>;
 }

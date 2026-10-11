@@ -17,6 +17,7 @@
     "check:locale-entry": "node --test scripts/locale-bootstrap.test.mjs",
     "check:pitch": "python scripts/test_pitch_narrative.py && python scripts/verify_pitch_narrative.py",
     "check:pitch-research": "node scripts/check-pitch-research.mjs",
+    "check:pitch-sliders": "node scripts/check-pitch-sliders.mjs",
     "check:launch": "node --test src/components/pitch/launchSimulation.test.ts",
     "check:responsive": "node scripts/check-responsive.mjs",
     "check:seo": "node scripts/check-seo.mjs",

@@ -4,6 +4,7 @@ import { AudienceOverlap } from './AudienceOverlap';
 import { AudienceAgeProfile } from './AudienceAgeProfile';
 import { audienceScenario } from './audienceScenario';
 import { formatCryptoDailyBillions, marketFlow } from './marketFlow';
+import { PitchSlider } from './PitchSlider';
 import { useLocale } from '../../lib/i18n';
 
 const FLOW = 'https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-amplia-fiscalizacao-contra-bets-ilegais';
@@ -11,8 +12,7 @@ const FLOW = 'https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-am
 export function MarketOpportunity() {
   useLocale();
   const cryptoDailyBillions = formatCryptoDailyBillions();
-  return <div className="pb-market">
-    <div className="pb-market__metrics">
+  const metrics = <div className="pb-market__metrics">
       <article className="pb-market__card pb-market__card--total">
         <div className="pb-market__audience-heading"><UsersRound aria-hidden="true" size={32} /><p className="mono pb-market__label">Público potencial · apostas</p></div>
         <p className="display pb-market__value">≈ {audienceScenario.bettingMillions}</p>
@@ -38,12 +38,17 @@ export function MarketOpportunity() {
           <a href={FLOW} target="_blank" rel="noopener noreferrer">Fazenda / MJSP, 2 out. 2026<ExternalLink aria-hidden="true" /></a>
         </div>
       </article>
-    </div>
-    <AudienceOverlap />
-    <AudienceAgeProfile />
-    <div className="pb-market__opportunity">
+    </div>;
+  const opportunity = <div className="pb-market__opportunity">
       <h3 className="display">Já existe público. Já existe volume financeiro.</h3>
       <p>A BETTEX pretende alcançar apostadores brasileiros e pessoas com experiência em cripto. O público central estimado é um núcleo de afinidade, não o limite de atuação do produto.</p>
-    </div>
+    </div>;
+  return <div className="pb-market">
+    <PitchSlider id="publico-mercado-slider" tone="light" label={['Público e mercado em blocos', 'Audience and market blocks', 'Público y mercado por bloques']} slides={[
+      { label: ['Escala e volume', 'Scale and volume', 'Escala y volumen'], node: metrics },
+      { label: ['Interseção de públicos', 'Audience overlap', 'Intersección de públicos'], node: <AudienceOverlap /> },
+      { label: ['Perfil por idade', 'Age profile', 'Perfil por edad'], node: <AudienceAgeProfile /> },
+      { label: ['Oportunidade', 'Opportunity', 'Oportunidad'], node: opportunity },
+    ]} />
   </div>;
 }
