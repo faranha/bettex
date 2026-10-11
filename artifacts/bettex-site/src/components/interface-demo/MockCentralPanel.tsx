@@ -7,8 +7,6 @@ import { CAPITAL, FORECASTS, POSITIONS, type Asset as MarketAsset } from './cent
 type Tab = 'overview' | 'crypto' | 'sports' | 'predictions' | 'bonus' | 'history';
 type Asset = 'BTC' | 'ETH' | 'SOL';
 
-const btn = 'inline-flex min-h-10 items-center justify-center rounded-xl bg-[#12372A] px-3 text-xs font-bold text-[#F2C14E] hover:bg-[#0C2A1F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227]';
-const ghost = 'inline-flex min-h-10 items-center justify-center rounded-xl border border-[#12372A]/30 px-3 text-xs font-bold hover:bg-[#12372A]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227]';
 const card = 'min-w-0 rounded-2xl border border-[#E4DCCB] bg-white/50 p-3 sm:p-4';
 
 const ASSETS: Asset[] = ['BTC', 'ETH', 'SOL'];
@@ -19,7 +17,7 @@ function Spark({ data, label }: { data: number[]; label: string }) {
   return <svg role="img" aria-label={label} viewBox="0 0 100 42" preserveAspectRatio="none" className="h-16 w-full"><polyline points={pts} fill="none" stroke="#0E7C6B" strokeWidth="2" vectorEffect="non-scaling-stroke" /></svg>;
 }
 
-export function MockCentralPanel({ onAction, compact = false, embedded = false }: { onAction: () => void; compact?: boolean; embedded?: boolean }) {
+export function MockCentralPanel({ compact = false, embedded = false }: { onAction: () => void; compact?: boolean; embedded?: boolean }) {
   const { x, loc } = useX();
   const locale = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
   const usd = (n: number) => n.toLocaleString(locale, { style: 'currency', currency: 'USD' });
@@ -36,7 +34,6 @@ export function MockCentralPanel({ onAction, compact = false, embedded = false }
   const tabs: [Tab, string][] = [
     ['crypto', x('Mercados', 'Markets', 'Mercados')], ['overview', x('Visão geral', 'Overview', 'Resumen')], ['history', x('Histórico', 'History', 'Historial')],
   ];
-  const act = (label: string, cls = btn) => <button type="button" data-demo-action onClick={onAction} className={cls}>{label}</button>;
 
   const positions = POSITIONS.filter(p => p.asset.toUpperCase() === asset).map(p => ({
     id: p.id, a: asset, st: p.state === 'settled' ? 'closed' : 'open',
@@ -66,7 +63,6 @@ export function MockCentralPanel({ onAction, compact = false, embedded = false }
         <p className="text-[10px] font-bold uppercase tracking-widest text-[#8A6D0B]">{x('Orquestrador', 'Orchestrator', 'Orquestador')}</p>
         <h3 className="text-base font-bold">BETTEX</h3>
         <p className="text-sm text-[#5B6B85]">{x('Prioriza propostas dos agentes abaixo e registra decisões de exemplo.', 'Prioritizes proposals from the agents below and logs sample decisions.', 'Prioriza propuestas de los agentes abajo y registra decisiones de ejemplo.')}</p>
-        <div className="mt-2 flex flex-wrap gap-2">{act(x('Enviar proposta', 'Submit proposal', 'Enviar propuesta'))}{act(x('Executar análise', 'Run inference', 'Ejecutar análisis'), ghost)}</div>
       </div>}
 
       <AgentTradingTabs id={compact ? 'home-agent-trading' : 'central-agent-trading'}>
@@ -79,7 +75,7 @@ export function MockCentralPanel({ onAction, compact = false, embedded = false }
           <div className="grid gap-3 sm:grid-cols-2">{agents.map(a => <button key={a.k} type="button" onClick={() => setTab(a.k as Tab)} className={`${card} text-left hover:border-[#C9A227]`}><p className="text-sm font-bold">{a.n}</p><p className="text-xl font-extrabold text-[#0E7C6B]">{a.r}</p><p className="text-xs text-[#5B6B85]">{a.s}</p></button>)}</div>
           <div className={card}><h3 className="mb-2 text-sm font-bold">{x('Decisões recentes', 'Recent decisions', 'Decisiones recientes')}</h3>
              {rowList([[x('Alocação vigente para Cripto', 'Current Crypto allocation', 'Asignación actual a Cripto'), x('Amostra ilustrativa', 'Illustrative sample', 'Muestra ilustrativa'), usdc(Number(CAPITAL.agentAllocated) / 1e6)]])}
-            <div className="mt-2 flex flex-wrap gap-2">{act(x('Aprovar', 'Approve', 'Aprobar'))}{act(x('Rejeitar', 'Reject', 'Rechazar'), ghost)}{act(x('Alocar', 'Allocate', 'Asignar'), ghost)}</div></div>
+          </div>
         </>}
 
         {tab === 'crypto' && <>
@@ -89,14 +85,13 @@ export function MockCentralPanel({ onAction, compact = false, embedded = false }
              <Spark data={forecast.series} label={`${asset} ${x('gráfico ilustrativo', 'illustrative chart', 'gráfico ilustrativo')}`} />
              <p className="text-sm">{x('Cenário hipotético de 8 horas; não valida vantagem, sinal de compra ou probabilidade de evento.', 'Hypothetical 8-hour scenario; it validates neither an edge, a buy signal nor an event probability.', 'Escenario hipotético de 8 horas; no valida ventaja, señal de compra ni probabilidad de evento.')}</p>
              <p className="text-sm"><b>{x('Resultado encerrado de exemplo', 'Closed sample result', 'Resultado cerrado de ejemplo')}:</b> <span className="font-bold text-[#0E7C6B]">{usdc(realized)}</span></p>
-            <div className="mt-2 flex flex-wrap gap-2">{act(x('Enviar ordem', 'Place order', 'Enviar orden'))}{act(x('Cancelar ordem', 'Cancel order', 'Cancelar orden'), ghost)}</div>
           </div>
           <div className={card}>
             <div className="mb-2 flex flex-wrap items-center justify-between gap-2"><h3 className="text-sm font-bold">{x('Posições', 'Positions', 'Posiciones')}</h3>
               <div className="flex gap-1">{(['all', 'open', 'closed'] as const).map(f => <button key={f} type="button" aria-pressed={posFilter === f} onClick={() => setPosFilter(f)} className={`min-h-9 rounded-lg px-2.5 text-xs font-bold ${posFilter === f ? 'bg-[#12372A] text-[#F2C14E]' : 'bg-[#F0E9DA]'}`}>{f === 'all' ? x('Todas', 'All', 'Todas') : f === 'open' ? x('Abertas', 'Open', 'Abiertas') : x('Encerradas', 'Closed', 'Cerradas')}</button>)}</div></div>
             <ul className="grid gap-2">{positions.map((p, i) => <li key={p.id} className="rounded-xl bg-[#F0E9DA] p-3 text-sm">
               <button type="button" aria-expanded={detail === i} onClick={() => setDetail(detail === i ? null : i)} className="flex w-full items-center justify-between gap-2 text-left font-bold"><span>{p.a} · {p.q}</span><span className="text-[#0E7C6B]">{p.pnl}</span></button>
-               {detail === i && <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-[#5B6B85]"><span>{p.st === 'open' ? x('Exemplo de posição em cotas; avaliação não é lucro realizado.', 'Sample share position; valuation is not realized profit.', 'Ejemplo de posición en cuotas; la valoración no es beneficio realizado.') : x('Encerrada com resultado positivo', 'Closed with positive result', 'Cerrada con resultado positivo')}</span>{p.st === 'open' && act(x('Fechar posição', 'Close position', 'Cerrar posición'), ghost)}</div>}
+               {detail === i && <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-[#5B6B85]"><span>{p.st === 'open' ? x('Exemplo de posição em cotas; avaliação não é lucro realizado.', 'Sample share position; valuation is not realized profit.', 'Ejemplo de posición en cuotas; la valoración no es beneficio realizado.') : x('Encerrada com resultado positivo', 'Closed with positive result', 'Cerrada con resultado positivo')}</span></div>}
              </li>)}</ul>
              {positions.length === 0 && <p className="text-xs text-[#5B6B85]">{x('Nenhuma posição neste mercado e filtro.', 'No position in this market and filter.', 'Ninguna posición en este mercado y filtro.')}</p>}
           </div>
@@ -104,21 +99,21 @@ export function MockCentralPanel({ onAction, compact = false, embedded = false }
 
         {tab === 'sports' && <div className={card}><h3 className="mb-2 text-sm font-bold">{x('Esportes', 'Sports', 'Deportes')}</h3>
           {rowList([[x('Surebet: Time A x Time B, mercado 1X2', 'Surebet: Team A v Team B, 1X2 market', 'Surebet: Equipo A vs Equipo B, mercado 1X2'), x('Margem 2,3%', 'Margin 2.3%', 'Margen 2,3%'), '+R$ 118,40'], [x('Cobertura: total de gols acima/abaixo', 'Hedge: total goals over/under', 'Cobertura: total de goles más/menos'), x('Margem 1,7%', 'Margin 1.7%', 'Margen 1,7%'), '+R$ 96,20']])}
-          <div className="mt-2 flex flex-wrap gap-2">{act(x('Enviar solicitação', 'Submit request', 'Enviar solicitud'))}{act(x('Aprovar', 'Approve', 'Aprobar'), ghost)}{act(x('Rejeitar', 'Reject', 'Rechazar'), ghost)}</div></div>}
+        </div>}
 
         {tab === 'predictions' && <div className={card}><h3 className="mb-2 text-sm font-bold">{x('Previsões', 'Predictions', 'Predicciones')}</h3>
           {rowList([[x('Mercado A: resultado sim/não', 'Market A: yes/no outcome', 'Mercado A: resultado sí/no'), x('Prob. 62,5%', 'Prob. 62.5%', 'Prob. 62,5%'), '+R$ 41,30'], [x('Mercado B: faixa de valor', 'Market B: value range', 'Mercado B: rango de valor'), x('Prob. 48,1%', 'Prob. 48.1%', 'Prob. 48,1%'), '+R$ 55,50']])}
-          <div className="mt-2 flex flex-wrap gap-2">{act(x('Enviar posição', 'Submit position', 'Enviar posición'))}{act(x('Cancelar ordem', 'Cancel order', 'Cancelar orden'), ghost)}</div></div>}
+        </div>}
 
         {tab === 'bonus' && <div className={card}><h3 className="mb-2 text-sm font-bold">{x('Bônus', 'Bonus', 'Bonos')}</h3>
           <div role="progressbar" aria-valuenow={68} aria-valuemin={0} aria-valuemax={100} className="h-3 overflow-hidden rounded-full bg-[#F0E9DA]"><div className="h-full w-[68%] bg-[#0E7C6B]" /></div>
           <p className="mt-1 text-xs text-[#5B6B85]">{x('68,4% do requisito cumprido; custo estimado R$ 12,80', '68.4% of requirement met; estimated cost R$ 12.80', '68,4% del requisito cumplido; costo estimado R$ 12,80')}</p>
-          <div className="mt-2 flex flex-wrap gap-2">{act(x('Enviar solicitação', 'Submit request', 'Enviar solicitud'))}{act(x('Alterar política', 'Change policy', 'Cambiar política'), ghost)}</div></div>}
+        </div>}
 
         {tab === 'history' && <div className={card}>
           <div className="mb-2 flex flex-wrap gap-1">{(['all', 'crypto'] as const).map(f => <button key={f} type="button" aria-pressed={hist === f} onClick={() => setHist(f)} className={`min-h-9 rounded-lg px-2.5 text-xs font-bold ${hist === f ? 'bg-[#12372A] text-[#F2C14E]' : 'bg-[#F0E9DA]'}`}>{f === 'all' ? x('Todos', 'All', 'Todos') : x('Cripto', 'Crypto', 'Cripto')}</button>)}</div>
           {rowList(history.map(h => [h.t, h.d, h.v]))}
-          <div className="mt-2">{act(x('Gerar relatório', 'Generate report', 'Generar informe'))} {act(x('Exportar', 'Export', 'Exportar'), ghost)}</div></div>}
+        </div>}
       </div>
       </AgentTradingTabs>
     </section>

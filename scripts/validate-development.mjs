@@ -41,6 +41,7 @@ const steps = [
   ['App rules, navigation and schedules', process.execPath, ['--test', ...demoTests]],
   ['Backend build', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'build']],
   ['Current visual API isolation', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'check:visual-api']],
+  ['Public prediction titles: localized prose and unchanged settlement numbers', process.execPath, ['--test', 'artifacts/api-server/scripts/polymarket-titles.test.mjs']],
   ['Current visual demo, graph and cross-view consistency', 'pnpm', ['--filter', '@workspace/bettex-site', 'run', 'check:demo-consistency']],
   ['Repository documentation links and status boundaries', 'pnpm', ['run', 'check:repository-docs']],
   ['Frontend build, localization and documents', 'pnpm', ['--filter', '@workspace/bettex-site', 'run', 'build']],

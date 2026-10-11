@@ -56,14 +56,14 @@ export function OrderCard({ o, onJourney }: { o: Order; onJourney?: (id: string)
     {o.fills.length === 0 ? <p className="mt-1 text-xs text-[#5B6B85]">{x('Sem execuções registradas.', 'No fills recorded.', 'Sin ejecuciones registradas.')}</p> : <ul className="mt-1 grid gap-1 text-xs">{o.fills.map(fl => <li key={fl.id}>{f.date(fl.at)} · {sh(fl.shares)} @ {fl.price} · {x('caixa', 'cash', 'caja')} {u(fl.cash)} · {fl.source}</li>)}</ul>}
     {onJourney && <button type="button" onClick={() => onJourney(o.requestId)} className={link}>{x('Ver percurso', 'View journey', 'Ver recorrido')}</button>}</li>;
 }
-export function PositionCard({ p, onJourney, onAction }: { p: Position; onJourney?: (id: string) => void; onAction: () => void }) {
+export function PositionCard({ p, onJourney }: { p: Position; onJourney?: (id: string) => void; onAction: () => void }) {
   const { f, L, x, st, u, lc } = useBits();
   return <li className={box} data-testid={`position-${p.id}`}><div className="flex flex-wrap items-center gap-2"><Tag>{st(p.state)}</Tag><Tag>{st(p.exitState)}</Tag><Tag>{st(p.resolution)}</Tag>{p.stale && <Tag warn>{x('Defasada', 'Stale', 'Desactualizada')}</Tag>}</div>
     <p className="mt-2 font-bold">{L(p.event)}</p><p className="text-xs text-[#5B6B85]">{p.asset.toUpperCase()} · {L(p.outcome)} · <span className="mono">{p.id}</span></p>
     <dl className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3"><KV k={x('Quantidade', 'Quantity', 'Cantidad')} v={`${dec6(p.qty, lc)} ${x('cotas', 'shares', 'cuotas')}`} /><KV k={x('Custo de entrada', 'Entry cost', 'Costo de entrada')} v={u(p.cost)} />
       <KV k={x('Valor de saída', 'Exit value', 'Valor de salida')} v={p.exitValue ? u(p.exitValue) : x('indisponível (sem liquidez)', 'unavailable (no liquidity)', 'no disponible (sin liquidez)')} /><KV k={x('Avaliada em', 'Valued at', 'Valuada en')} v={f.date(p.at)} /></dl>
     <div className="flex flex-wrap gap-2">{onJourney && <button type="button" onClick={() => onJourney(p.requestId)} className={link}>{x('Ver percurso', 'View journey', 'Ver recorrido')}</button>}
-      {p.state !== 'settled' && <button type="button" data-demo-action onClick={onAction} data-testid={`button-close-${p.id}`} className={link}>{x('Encerrar posição', 'Close position', 'Cerrar posición')}</button>}</div></li>;
+    </div></li>;
 }
 
 export function Journey({ id, onClose }: { id: string; onClose: () => void }) {

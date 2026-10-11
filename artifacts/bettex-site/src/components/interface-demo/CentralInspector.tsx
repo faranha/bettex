@@ -14,8 +14,6 @@ import { ProjectFlowPanel, ProjectLinksPanel, ProjectTopicPanel } from './Projec
 import './CentralOverlayLayout.css';
 import { SPEC, TAB_LABEL, edgeOf, isBiz, nodeOf, tabsFor, type Sel, type TabSpec } from './central-graph-model';
 
-const act = 'min-h-11 rounded-xl border border-[#0E7C6B] px-4 text-sm font-bold text-[#0A6657]';
-
 function Records({ mode, asset, onAction }: { mode: 'requests' | 'execution'; asset?: Asset; onAction: () => void }) {
   const { x } = useFmt(); const [jid, setJid] = useState<string | null>(null);
   return <div className="grid gap-3">
@@ -25,12 +23,6 @@ function Records({ mode, asset, onAction }: { mode: 'requests' | 'execution'; as
       : <RecordsSection views={['orders', 'positions', 'closed']} onJourney={setJid} onAction={onAction}
         title={x('Registros de execução: ordens e posições', 'Execution records: orders and positions', 'Registros de ejecución: órdenes y posiciones')}
         intro={x('Ordens e posições são registros de execução, separados dos pedidos e decisões.', 'Orders and positions are execution records, separate from the requests and decisions.', 'Órdenes y posiciones son registros de ejecución, separados de los pedidos y decisiones.')} />}
-    <div className="flex flex-wrap gap-2">{mode === 'requests' ? <>
-      <button type="button" data-demo-action data-testid="button-submit-proposal" onClick={onAction} className="min-h-11 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white">{x('Enviar proposta', 'Submit proposal', 'Enviar propuesta')}</button>
-      <button type="button" data-demo-action data-testid="button-run-decision" onClick={onAction} className={act}>{x('Registrar decisão', 'Register decision', 'Registrar decisión')}</button>
-      <button type="button" data-demo-action data-testid="button-run-inference" onClick={onAction} className={act}>{x('Executar análise', 'Run inference', 'Ejecutar análisis')}</button></> : <>
-      <button type="button" data-demo-action data-testid="button-place-order" onClick={onAction} className={act}>{x('Enviar ordem', 'Place order', 'Enviar orden')}</button>
-      <button type="button" data-demo-action data-testid="button-cancel-order" onClick={onAction} className="min-h-11 rounded-xl border border-[#E4DCCB] px-4 text-sm font-bold">{x('Cancelar ordem', 'Cancel order', 'Cancelar orden')}</button></>}</div>
     {jid && <Journey key={jid} id={jid} onClose={() => setJid(null)} />}
   </div>;
 }
@@ -41,11 +33,11 @@ function Body({ t, sel, onAction, onMarketSelect, onPick }: { t: TabSpec; sel: S
     case 'topic': return <ProjectTopicPanel id={id ?? ''} onPick={onPick} />;
     case 'flow': return <ProjectFlowPanel sel={sel.k === 'edge' ? sel : { k: 'node', id: id ?? sel.id }} />;
     case 'links': return <ProjectLinksPanel sel={sel} onPick={onPick} />;
-    case 'overview': return <CentralBettex onAction={onAction} />;
-    case 'agent': return <>{(id === 'predictions' || SPEC.includes(id as Asset)) && <PolymarketSimulation asset={SPEC.includes(id as Asset) ? id?.toUpperCase() as 'BTC' | 'ETH' | 'SOL' : undefined} />}<CentralAgents scope={id === 'bettex' ? 'orchestrator' : 'agents'} initialId={id} onAction={onAction} onMarketSelect={onMarketSelect} /></>;
+    case 'overview': return <CentralBettex />;
+    case 'agent': return <>{(id === 'predictions' || SPEC.includes(id as Asset)) && <PolymarketSimulation readOnly asset={SPEC.includes(id as Asset) ? id?.toUpperCase() as 'BTC' | 'ETH' | 'SOL' : undefined} />}<CentralAgents scope={id === 'bettex' ? 'orchestrator' : 'agents'} initialId={id} onAction={onAction} onMarketSelect={onMarketSelect} /></>;
     case 'control': return <CentralAgents scope="controls" initialId={id} onAction={onAction} />;
     case 'forecast': return <CentralForecast />;
-    case 'capital': return <CentralCapital onAction={onAction} />;
+    case 'capital': return <CentralCapital />;
     case 'markets': return <MockCentralPanel embedded onAction={onAction} />;
     case 'execution': return <Records mode="execution" onAction={onAction} />;
     default: return <Records mode="requests" asset={id && SPEC.includes(id as Asset) ? id as Asset : undefined} onAction={onAction} />;

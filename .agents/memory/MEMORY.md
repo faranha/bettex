@@ -1,6 +1,7 @@
 - [Disponibilidade dos agentes](agent-trading-availability.md) — home e Central da IA: Cripto aberta por padrão; Esportes, Predictions e Cassino em breve.
 - [Demo exclusivamente visual](interface-visual-demo.md) — instrução atual substitui operação, testnet e emulação persistida; ações operacionais abrem aviso com comunidade.
 - [Grafo da Central](ai-center-graph-experience.md) — agentes e subagentes BTC/ETH/SOL; controles e negócio fora; largura padrão, sem breadcrumbs duplicados.
+- [Central da IA somente consulta](ai-center-read-only.md) — usuário acompanha trades, parâmetros e relatórios; sem edição de mandatos, configurações ou operação manual.
 - [BETTEX checkout eligibility](bettex-checkout-eligibility.md) — confirm processor approval for investment tokens before wiring real purchases.
 - [Raster asset inspection](raster-asset-inspection.md) — verify logo identity and real alpha; use font-free contact sheets.
 - [Artifact validation environment](artifact-validation-env.md) — manual builds need artifact-scoped runtime variables; do not persist them globally.

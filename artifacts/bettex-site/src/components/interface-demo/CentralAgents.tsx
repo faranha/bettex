@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { useMemo, useState } from 'react';
-import { Bot, ChevronLeft, ChevronRight, CircleDollarSign, Coins, GitCompareArrows, Landmark, Radar, RefreshCw, Scale, ScrollText, ShieldAlert, Sparkles, Waypoints, Workflow, type LucideIcon } from 'lucide-react';
+import { Bot, ChevronLeft, ChevronRight, CircleDollarSign, Coins, GitCompareArrows, Landmark, Radar, Scale, ScrollText, ShieldAlert, Sparkles, Waypoints, Workflow, type LucideIcon } from 'lucide-react';
 import { useFmt, dec6 } from '../alpha-trading/format';
 import { Help } from '../agent-operations/AgentHelp';
 import { AGENT, FINDING, FACT, INPUT, OUTPUT, RULE, PERM, STATUS, DECISION, ACTIVITY } from '../agent-operations/copy';
@@ -14,7 +14,7 @@ type Props = { scope: OpsScope; onAction: () => void; initialId?: string; onMark
 
 export function useL() { const { loc } = useFmt(); return (t: T3 | undefined) => t ? t[loc === 'pt' ? 0 : loc === 'en' ? 1 : 2] : ''; }
 
-export function CentralAgents({ scope, onAction, initialId, onMarketSelect }: Props) {
+export function CentralAgents({ scope, initialId, onMarketSelect }: Props) {
   const f = useFmt(); const { x, loc } = f; const L = useL();
   const lc = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
   const [sel, setSel] = useState(initialId && scopeItems(scope, AGENTS).some(a => a.id === initialId) ? initialId : defaultSelection(scope));
@@ -52,7 +52,6 @@ export function CentralAgents({ scope, onAction, initialId, onMarketSelect }: Pr
     return <section className="mt-3 rounded-xl border border-[#0E7C6B]/30 bg-[#F1F7F3] p-3" data-testid={`ai-reasoning-panel-${a.id}`}>
       <h4 className="flex flex-wrap items-center gap-2 text-sm font-extrabold"><Sparkles className="h-4 w-4 text-[#0A6657]" aria-hidden="true" />{x('Explicação de raciocínio', 'Reasoning explanation', 'Explicación de razonamiento')} · {name(a.id)}</h4>
       <p className="mt-1 text-xs text-[#5B6B85]" data-testid={`ai-provenance-${a.id}`}>{x('Execução de origem', 'Source run', 'Ejecución de origen')}: <span className="mono">{a.latest.id}</span>.</p>
-      <button type="button" data-demo-action data-testid={`button-ai-generate-${a.id}`} onClick={onAction} className="mt-2 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white"><Sparkles className="h-4 w-4" aria-hidden="true" />{x('Gerar análise por IA', 'Generate AI analysis', 'Generar análisis por IA')}</button>
       <div className="mt-3 grid gap-2 rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3 text-sm">
         <p className="font-semibold">{L(r.summary)}</p>
         <p><b>{x('Sugestão', 'Suggestion', 'Sugerencia')}:</b> {rec}. <span className="text-xs text-[#5B6B85]">{x('Não é ordem financeira. Execução permitida: não.', 'Not a financial order. Execution allowed: no.', 'No es una orden financiera. Ejecución permitida: no.')}</span></p>
@@ -87,7 +86,7 @@ export function CentralAgents({ scope, onAction, initialId, onMarketSelect }: Pr
   return <section className="rounded-2xl border border-[#E4DCCB] bg-[#FFFCF6] p-3 sm:p-4" data-testid={scope === 'agents' ? 'agent-ops-full' : `agent-ops-${scope}`}>
     <div className="flex flex-wrap items-center gap-2"><h2 className="display text-lg font-extrabold">{title}</h2>
       <span className="text-xs text-[#5B6B85]">{x('Em', 'On', 'El')} {f.date(AGENTS[0].latest.completedAt)}</span><span className="ml-auto" />
-      <button type="button" data-demo-action onClick={onAction} data-testid={`button-agents-refresh-${scope}`} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[#E4DCCB] px-3 text-sm font-bold"><RefreshCw className="h-4 w-4" aria-hidden="true" />{x('Atualizar', 'Refresh', 'Actualizar')}</button></div>
+    </div>
     <p className="mt-1 text-xs text-[#5B6B85]" data-testid={`scope-note-${scope}`}>{note}</p>
     {scope === 'agents' && <nav className="mt-3 flex flex-wrap gap-2" aria-label={x('Mercados do agente Cripto', 'Crypto agent markets', 'Mercados del agente Cripto')} data-testid="crypto-market-navigation">
       {(['predictions', 'btc', 'eth', 'sol'] as const).map(id => <button key={id} type="button" aria-pressed={sel === id} data-testid={`crypto-market-${id}`} onClick={() => { setSel(id); setPage(0); onMarketSelect?.(id); }} className={`min-h-11 rounded-xl border px-3 text-sm font-bold ${sel === id ? 'border-[#0E7C6B] bg-[#E3F1EC] text-[#0A6657]' : 'border-[#E4DCCB] bg-[#FFFCF6] hover:bg-[#F3EFE3]'}`}>{id === 'predictions' ? x('Visão geral', 'Overview', 'Visión general') : id.toUpperCase()}</button>)}

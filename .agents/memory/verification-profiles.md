@@ -16,3 +16,14 @@ activation or misstate readiness.
 reference limitations, and require a separately authorized compatibility review
 before reactivation. Local contract success and illustrative reconciliation do
 not prove public-chain deployment or compliance with current economics.
+
+Source-level UI guards must follow the current approved product direction,
+not force previously removed banners or navigation back into the app.
+
+**Why:** Final verification found older guards still requiring content the
+creator had explicitly removed. Restoring that content merely to pass CI would
+reverse the requested visual-demo scope.
+
+**How to apply:** Replace obsolete positive assertions with meaningful checks
+of the current structure and negative assertions for retired UI. Keep financial,
+localization, security and historical-data invariants intact.

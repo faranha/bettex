@@ -28,9 +28,12 @@ export function git(root, args, options = {}) {
 }
 export function inspect(data, label) {
   const findings = [];
-  // Exact public Robinhood documentation sample already reviewed by check-secrets.py.
-  const publicExample = createHash('sha256').update(data).digest('hex') ===
-    'e6196a5762d8bac4df0532efe003316bea53d411526af03caa57cbf244344543';
+  // Exact reviewed public documentation and historical mock-key fixture.
+  // A changed file loses this allowance; all other secret categories still run.
+  const publicExample = [
+    'e6196a5762d8bac4df0532efe003316bea53d411526af03caa57cbf244344543',
+    'f47c0fc1dedd054e4ee4386fba55ab4e255b3cad8ace6f1d72183d8a799cb15a',
+  ].includes(createHash('sha256').update(data).digest('hex'));
   for (const [category, expression] of rules) {
     if (publicExample && category === 'literal-secret') continue;
     expression.lastIndex = 0;

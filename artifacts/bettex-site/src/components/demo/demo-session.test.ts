@@ -12,6 +12,38 @@ test('app footer omits the homepage promotional section while keeping shared nav
   assert.match(app, /function Home\(\)[\s\S]*?return <SitePage>/);
   assert.match(app, /data-testid="link-community-footer-nav"/);
 });
+test('shared footer navigation lists only the four site pages, never internal sections', () => {
+  const app = readFileSync(new URL('../../App.tsx', import.meta.url), 'utf8');
+  const start = app.indexOf('data-testid="footer-page-navigation"');
+  const navigation = app.slice(start, app.indexOf('</nav>', start));
+  assert.equal((navigation.match(/<li>/g) ?? []).length, 4);
+  for (const label of ['Página inicial', 'Pitch', 'Documentação', 'Demo']) {
+    assert.ok(navigation.includes(`>${label}</a>`));
+  }
+  for (const destination of ['href={HOME_PATH}', 'href={`${BASE_PATH}/pitch`}', 'href={DOCUMENTATION_PATH}', 'href={`${BASE_PATH}/app`}']) {
+    assert.ok(navigation.includes(destination));
+  }
+  assert.doesNotMatch(navigation, /homeAnchor|href=.*#|Token BETTEX|Como opera|Mercados|Roadmap|Por que BETTEX/);
+});
+test('AI Center is an observer interface, without user configuration or trading actions', () => {
+  for (const component of ['CentralBettex', 'CentralCapital', 'CentralAgents', 'CentralInspector', 'CentralRecords', 'MockCentralPanel']) {
+    const source = readFileSync(new URL(`../interface-demo/${component}.tsx`, import.meta.url), 'utf8');
+    assert.doesNotMatch(source, /data-demo-action|onClick=\{onAction\}/, component);
+  }
+  const inspector = readFileSync(new URL('../interface-demo/CentralInspector.tsx', import.meta.url), 'utf8');
+  assert.match(inspector, /<PolymarketSimulation readOnly /);
+  const quotes = readFileSync(new URL('../interface-demo/PolymarketSimulation.tsx', import.meta.url), 'utf8');
+  assert.match(quotes, /\{!readOnly && <div className="pms-box pms-sim">/);
+  assert.match(quotes, /data-testid="pm-market-select"/);
+  assert.match(quotes, /data-testid="pm-refresh"/);
+});
+test('Earnings and Lottery expand independently on mobile but remain paired on desktop', () => {
+  const source = readFileSync(new URL('./WalletCardDetails.tsx', import.meta.url), 'utf8');
+  assert.match(source, /const isMobile = useIsMobile\(\)/);
+  assert.match(source, /value=\{isMobile \? null : \{ expanded,/);
+  assert.match(source, /pair\?\.expanded \?\? localExpanded/);
+  assert.match(source, /if \(pair\) pair\.toggle\(\); else setLocalExpanded/);
+});
 test('legacy reset remains in its banner; current visual banner has no reset or live testnet', () => {
   const page = readFileSync(new URL('../../pages/demo.tsx', import.meta.url), 'utf8');
   const banner = readFileSync(new URL('./DemoEnvironmentBanner.tsx', import.meta.url), 'utf8');
@@ -23,10 +55,12 @@ test('legacy reset remains in its banner; current visual banner has no reset or 
    const visualBanner = banner.slice(banner.indexOf('export function DemoEnvironmentBanner('));
    assert.match(visualBanner, /max-w-5xl flex-wrap items-center/);
    assert.match(visualBanner, /DEMO · INTERFACE VISUAL/);
-   assert.match(visualBanner, /Dados ilustrativos/);
+   assert.match(visualBanner, /SEM DINHEIRO REAL/);
+   assert.doesNotMatch(visualBanner, /Dados ilustrativos/);
    assert.doesNotMatch(visualBanner, /Arbitrum|useGetDemoTestnet|onReset/);
    const currentPage = readFileSync(new URL('../interface-demo/InterfaceDemoPage.tsx', import.meta.url), 'utf8');
-   assert.match(currentPage, /<DemoEnvironmentBanner \/>/);
+   assert.doesNotMatch(currentPage, /<DemoEnvironmentBanner \/>/);
+   assert.match(readFileSync(new URL('../app/AppHeader.tsx', import.meta.url), 'utf8'), /DEMO/);
    assert.doesNotMatch(currentPage, /DemoTabControls/);
    assert.match(controls, /flex items-center gap-2 whitespace-nowrap/);
    assert.doesNotMatch(controls, /flex-col/);
