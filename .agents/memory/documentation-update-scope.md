@@ -1,15 +1,15 @@
 ---
 name: Escopo da atualização documental
-description: Atualização visual de documentação, Pitch, site e demo, sem operações reais.
+description: Documentação e sistema autorizados; reformulação da página inicial exige autorização expressa.
 ---
 
-A atualização inclui documentação e Pitch com seus materiais derivados, além da visualização no site e no demo.
+A autorização atual abrange documentação e sistema, além de correções necessárias. Não autoriza reformular a página inicial nem mudar sua abertura para “comunidade aberta”.
 
-**Why:** Após a atualização documental, o criador esclareceu: “preciso que faca as alteracoes na documentacao, nao vamos mintar obviamente, apenas na visualizacao, site, etc, demo, etc”. Esse pedido substitui o limite anterior apenas documental.
+**Why:** O criador corrigiu expressamente: “eu não autorizei mudanças na página inicial” e “eu autorizei mudanças na documentação e no sistema, e correções se fossem necessárias”.
 
-**How to apply:** Alinhar textos, tabelas, gráficos e cenários visuais às regras aprovadas, inclusive no demo. Não executar mint, oferta, transferências, operações de testnet ou publicação; preservar dados e implementações operacionais existentes.
+**How to apply:** Restringir alterações editoriais à documentação e ao sistema. Não interpretar a identidade comunitária como autorização para reescrever a homepage, seus slogans ou materiais de compartilhamento. Reformulações da página inicial exigem autorização expressa. Não executar mint, oferta, transferências, operações de testnet ou publicação; preservar dados e implementações operacionais existentes.
 
-Na revisão de inconsistências, o foco é documentação, textos e apresentação em todo o projeto, não uma auditoria técnica do backend. Conferir os pedidos anteriores e corrigir os resíduos editoriais e conceituais nos materiais atuais.
+Na revisão de inconsistências, conferir os pedidos anteriores e corrigir os resíduos editoriais e conceituais apenas dentro do escopo autorizado; a abrangência da revisão não autoriza alterações editoriais na homepage.
 
 **Why:** O criador reiterou: “preciso de uma analise da documentacao, dos textos, da apresentação” e apontou a permanência de narrativas de empresa e fundação após mudanças solicitadas.
 
@@ -19,4 +19,4 @@ Na reorganização da venda pública anterior ao vesting, o criador também pedi
 
 **Why:** Pediu explicitamente: “no roadmap tem que ser atualizado também que nós vamos fazer a listagem pública pra captação de fundos, criar awareness e depois que vai entrar no ar o alfa”.
 
-**How to apply:** Alinhar o roadmap compartilhado da homepage e do Pitch com a nova cronologia. A atualização permanece visual; não equivale a executar mint, vendas ou abertura de pool.
+**How to apply:** Essa autorização anterior era específica ao roadmap e não permite reformular outras seções da homepage. Respeitar a restrição atual e exigir autorização expressa para novas mudanças na página inicial. Não executar mint, vendas ou abertura de pool.
