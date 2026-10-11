@@ -84,6 +84,6 @@ Policies evolve through approved versions. Administration defines policy; 2-of-3
 
 Treasury, operational cash, exclusive buyback wallet, and personal wallets have their own boundaries. Defensive reserve follows the approved policy, without a general minimum fixed at 50%. New operations require independent risk, availability, and reconciliation.
 
-Arbitrum provides the network and contracts. Allora is a candidate for inferences, not execution. Robinhood Crypto Trading API requires an eligible account in the United States and authorization; it does not prove access to stocks. Arbitrum/Gamma public queries were verified; other examples without private access are simulations. No real money operations took place.
+Starknet and Arbitrum One are network and contract alternatives. BETTEX is in planning and grants fundraising, with no network chosen or presumed approved grant. Starknet requires Cairo implementation and compatible accounts; Arbitrum uses EVM. Allora is a candidate for inferences, not execution. Robinhood Crypto Trading API requires an eligible US account and authorization; it does not prove access to stocks. Arbitrum/Gamma public queries were verified; this does not define the launch network. Other examples without private access are simulations. No real money operations have occurred.
 
 Commercial plan and launch in the Pitch: https://bettex.ai/en/pitch#publico

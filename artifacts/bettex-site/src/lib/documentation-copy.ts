@@ -21,7 +21,7 @@ export const copy = {
   "agP1": "Um único agente BETTEX reúne capacidades por mercado, ampliadas gradualmente.",
   "agP2": "Estão previstos ações e cripto, esportes, previsões e iGaming. Cada mercado só abre após validar integração, controles e adequação legal no território.",
   "agP3": "Dados, análises, propostas e operações são identificados separadamente. Ordens exigem autorização e aprovação independente de risco.",
-  "agP4": "A rede de referência do token é a Arbitrum One. Saldos, compras, distribuições e saques são em USDC; BETTEX é o token de participação.",
+  "agP4": "Starknet e Arbitrum One são alternativas para a infraestrutura on-chain da BETTEX. O projeto está em planejamento e captação de grants; a rede de lançamento ainda não foi escolhida. Saldos, compras, distribuições e saques são previstos em USDC; BETTEX é o token de participação.",
   "agP5": "O agente evolui com evidências e feedback, sem garantia de melhoria nem de desempenho superior ao do mercado.",
   "agFacts": "Capacidades do agente",
   "agF1": "OBSERVAR",

@@ -8,23 +8,23 @@ interface IntegrationNote {
 }
 
 const brandNames: Record<Brand, string> = {
-  arbitrum: 'Arbitrum One',
+  arbitrum: 'Starknet / Arbitrum One',
   allora: 'Allora',
   robinhood: 'Robinhood',
 };
 
 const notes: Record<ArchitectureFigureNumber, IntegrationNote[]> = {
   '1': [
-    { brand: 'arbitrum', placement: 'Etapas 2 e 3 · Carteiras e compra', description: 'Rede de referência do token BETTEX e das transações da carteira. A criação da conta fica no aplicativo.' },
+    { brand: 'arbitrum', placement: 'Etapas 2 e 3 · Carteiras e compra', description: 'Alternativas em avaliação para o token BETTEX e as transações da carteira. Planejamento e captação de grants; escolha da rede em aberto. A criação da conta fica no aplicativo.' },
   ],
   '2': [
-    { brand: 'arbitrum', placement: 'Venda pública · Compra e liquidação', description: 'Rede de referência para transferências de BETTEX e USDC compatível, com confirmação da compra da venda pública e conciliação do recebimento pela tesouraria. Revendas entre titulares têm o vendedor como destinatário do pagamento.' },
+    { brand: 'arbitrum', placement: 'Venda pública · Compra e liquidação', description: 'Na rede escolhida, transferências de BETTEX e USDC compatível exigem confirmação da compra e conciliação do recebimento pela tesouraria. Revendas entre titulares têm o vendedor como destinatário do pagamento.' },
   ],
   '3': [
     { brand: 'arbitrum', placement: 'Etapa 1 · Saldo BETTEX da carteira', description: 'O backend acompanha os tokens confirmados na rede. A elegibilidade e a permanência no staking são verificadas pelo aplicativo.' },
   ],
   '4': [
-    { brand: 'arbitrum', placement: 'Etapas 2 e 3 · Contrato e autorizações', description: 'Rede de referência para o smart contract BETTEX. O contrato do projeto aplica as regras de acesso ao capital; a análise da IA é uma camada separada.' },
+    { brand: 'arbitrum', placement: 'Etapas 2 e 3 · Contrato e autorizações', description: 'Alternativas para os contratos BETTEX, com implementação e validação específicas por rede. Os contratos aplicarão as regras de acesso ao capital; a análise da IA é uma camada separada.' },
   ],
   '5': [
     { brand: 'allora', placement: 'Etapa 2 · Análise da IA', description: 'Inferências opcionais ajudam a avaliar oportunidades. Allora não executa ordens nem decide o split.' },
@@ -37,7 +37,7 @@ const notes: Record<ArchitectureFigureNumber, IntegrationNote[]> = {
   '7': [
     { brand: 'allora', placement: 'Etapa 1 · Agentes de IA', description: 'Consulta opcional de inferências para a análise. Não controla a carteira nem executa ordens.' },
     { brand: 'robinhood', placement: 'Etapas 2 e 3 · Conexão e execução', description: 'Possível API de dados e trading de cripto. Ordens exigem permissões e aprovação independente de risco.' },
-    { brand: 'arbitrum', placement: 'Base das carteiras e contratos', description: 'Infraestrutura de referência da BETTEX, separada das APIs de mercado. As ordens da Robinhood não são transações da Arbitrum.' },
+    { brand: 'arbitrum', placement: 'Base das carteiras e contratos', description: 'Infraestrutura em avaliação, separada das APIs de mercado. As ordens da Robinhood não são transações da Starknet ou da Arbitrum.' },
   ],
   '8': [
     { brand: 'allora', placement: 'Etapas 1 e 2 · Coleta e comparação', description: 'Inferências opcionais entram como sinais na avaliação das oportunidades; a escolha continua com a IA BETTEX.' },

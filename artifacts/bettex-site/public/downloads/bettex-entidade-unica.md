@@ -84,6 +84,6 @@ Políticas evoluem por versões aprovadas. Administração define política; mul
 
 Tesouraria, caixa operacional, carteira exclusiva de recompra e carteiras pessoais têm fronteiras próprias. Reserva defensiva segue a política aprovada, sem mínimo geral fixado em 50%. Novas operações exigem risco independente, disponibilidade e conciliação.
 
-Arbitrum fornece rede e contratos. Allora é candidata a inferências, não execução. Robinhood Crypto Trading API exige conta elegível nos Estados Unidos e autorização; não comprova acesso a ações. Consultas públicas Arbitrum/Gamma foram verificadas; demais exemplos sem acesso privado são simulações. Não houve operações com dinheiro real.
+Starknet e Arbitrum One são alternativas de rede e contratos. A BETTEX está em planejamento e captação de grants, sem rede escolhida ou grant aprovado presumido. Starknet exige implementação Cairo e contas compatíveis; Arbitrum usa EVM. Allora é candidata a inferências, não execução. Robinhood Crypto Trading API exige conta elegível nos Estados Unidos e autorização; não comprova acesso a ações. Consultas públicas Arbitrum/Gamma foram verificadas; isso não define a rede de lançamento. Demais exemplos sem acesso privado são simulações. Não houve operações com dinheiro real.
 
 Plano comercial e lançamento no Pitch: https://bettex.ai/pitch#publico

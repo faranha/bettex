@@ -57,7 +57,7 @@ const legacyChapters = [
   { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O agente BETTEX, a operação em USDC, participação automática e controles.' },
   { id: 'documentacao-entidade', title: 'DeFi e autonomia', subtitle: 'Protocolo DeFi e DEX, administração inicial e evolução para IA autônoma.' },
   { id: 'documentacao-adequacao-legal', title: 'Adequação legal e jurídica', subtitle: 'Investigação técnico-legal, disponibilidade territorial e condições para liberar cada agente.' },
-  { id: 'documentacao-rede', title: 'Arbitrum e ativos', subtitle: 'Arbitrum One, carteira do titular, USDC e entrada por on-ramp externo.' },
+  { id: 'documentacao-rede', title: 'Starknet, Arbitrum e ativos', subtitle: 'Redes em avaliação, carteira do titular, USDC e entrada por on-ramp externo.' },
   { id: 'documentacao-acesso', title: 'Acesso ao aplicativo', subtitle: 'Carteira gerada com a conta, acesso e autorização de ações financeiras.' },
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Mapa orquestrado, catálogo de conectores, consultas verificadas e demonstrações por plataforma.' },
   { id: 'documentacao-agentes', title: 'Agentes de IA', subtitle: 'Orquestradora, tesouraria, quatro mercados, recompra e queima, governança e exemplos de decisão.' },
@@ -115,7 +115,7 @@ function MainBody({ id }: { id: string }) {
         ]} />
         <Prose>{c.agP4}</Prose><Prose>{c.agP5}</Prose>
         <Reference id="documentacao-referencia-agentes" label={c.refAg} parts={[
-          { id: 'documentacao-rede', title: 'Arbitrum e ativos' }, { id: 'documentacao-acesso', title: 'Acesso ao aplicativo' },
+          { id: 'documentacao-rede', title: 'Starknet, Arbitrum e ativos' }, { id: 'documentacao-acesso', title: 'Acesso ao aplicativo' },
           { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações' }, { id: 'documentacao-agentes-detalhe', title: 'Agentes de IA' },
         ]} />
       </>;
@@ -246,11 +246,22 @@ function LegacyBody({ id }: { id: string }) {
     case 'documentacao-rede':
       return <>
         <DocFacts title="Rede e ativos em resumo" facts={[
-          { label: 'REDE DO TOKEN', value: 'Arbitrum One', text: 'Segunda camada do Ethereum, compatível com seu ecossistema.' },
+          { label: 'REDES EM AVALIAÇÃO', value: 'Starknet / Arbitrum One', text: 'Alternativas de segunda camada do Ethereum; escolha de lançamento em aberto.' },
           { label: 'SALDO FINANCEIRO', value: 'USDC', text: 'Compras, distribuições e saques em USDC.' },
           { label: 'PARTICIPAÇÃO', value: 'BETTEX', text: 'Staking por quantidade e tempo elegíveis; taxas em USDC.' },
         ]} />
-        <Subhead>Arbitrum One: escala e integração com Ethereum</Subhead>
+        <Subhead>Escolha da rede e captação de grants</Subhead>
+        <div className="whitepaper__prose">
+          <p>A BETTEX está em fase de planejamento e captação de grants. Starknet e Arbitrum One são alternativas em avaliação, sem rede de lançamento definida. A presença das marcas na área de parceiros não comprova grant aprovado, parceria contratual ou integração operacional.</p>
+          <p>A escolha depende de custos, segurança, disponibilidade de USDC, liquidez em DEX, carteiras, auditoria e suporte do ecossistema. Não há compromisso de operar nas duas redes ao mesmo tempo. Grants apoiam o desenvolvimento e não são lucro de trading nem entram na distribuição aos participantes.</p>
+        </div>
+        <Subhead>Starknet: provas de validade e contas nativas</Subhead>
+        <div className="whitepaper__prose">
+          <p>A <strong>Starknet</strong> é uma rede de segunda camada do Ethereum que utiliza provas de validade STARK. Seus contratos são desenvolvidos em Cairo e as contas possuem abstração nativa. A alternativa exige implementação, carteiras e testes próprios; contratos Solidity e endereços EVM não são transferidos automaticamente.</p>
+          <p>Na Starknet, o percurso previsto é: assinatura pela conta compatível → execução na segunda camada → geração da prova de validade → verificação e liquidação no Ethereum. O aplicativo deverá acompanhar eventos confirmados, conciliar USDC e BETTEX separadamente e validar a disponibilidade dos ativos na rede escolhida.</p>
+          <p>Referências oficiais: <a href="https://docs.starknet.io/" target="_blank" rel="noopener noreferrer">documentação da Starknet</a> · <a href="https://www.starknet.io/grants/" target="_blank" rel="noopener noreferrer">programas de grants da Starknet</a>.</p>
+        </div>
+        <Subhead>Arbitrum One: contratos EVM e rollup otimista</Subhead>
         <div className="whitepaper__prose">
           <p>A <strong>Arbitrum One</strong> é uma rede de segunda camada do Ethereum. Ela amplia a capacidade de processamento e reduz os custos das transações em relação à rede principal, oferecendo uma infraestrutura para contratos inteligentes, tokens e carteiras.</p>
           <p>Utiliza <strong>optimistic rollups</strong>: executa transações na segunda camada e publica os dados em lotes no Ethereum. A compatibilidade com contratos e carteiras desse ecossistema permite emissão e transferências de BETTEX; o backend acompanha confirmações e concilia os eventos com os registros da conta. As chaves e os dados da carteira do titular são exportáveis.</p>
@@ -285,7 +296,7 @@ function LegacyBody({ id }: { id: string }) {
         <Subhead>Carteira, chaves e exportação</Subhead>
         <div className="whitepaper__prose">
           <p>A Carteira BETTEX é a carteira da pessoa criada com a conta no aplicativo oficial; ela pertence ao titular, não à tesouraria do projeto. Ela é livre e portátil: <strong>as chaves e os dados do usuário são exportáveis</strong> por iniciativa do próprio titular. O projeto incentiva a <strong>autocustódia</strong>. Exportar esses dados não é uma etapa do login e não movimenta, por si só, os tokens.</p>
-          <p>A autenticação descrita na <strong>v1</strong> demonstra o controle da carteira sem transmitir chave privada ou frase de recuperação ao servidor. O modelo de acesso utiliza dados básicos e as credenciais da carteira, não uma identidade civil verificada. Arbitrum One é a rede de referência do token.</p>
+          <p>A autenticação descrita na <strong>v1</strong> demonstra o controle da carteira sem transmitir chave privada ou frase de recuperação ao servidor. O modelo de acesso utiliza dados básicos e as credenciais da carteira, não uma identidade civil verificada. A implementação de referência EVM não define a rede de lançamento: Starknet e Arbitrum One continuam em avaliação, com carteiras e autorizações compatíveis com a rede escolhida.</p>
         </div>
         <DocImage src="app/participacao.webp" alt="Ilustração tridimensional de uma carteira e tokens." caption="A Carteira BETTEX pertence ao titular, com chaves e dados exportáveis." />
         <DocTerms id="schematic-wallet-access" items={[
@@ -335,7 +346,7 @@ function LegacyBody({ id }: { id: string }) {
         <Subhead>Allora: integração possível de inferências</Subhead>
         <div className="whitepaper__prose">
           <p>A <strong>Allora</strong> pode fornecer inferências agregadas para enriquecer a análise da BETTEX. Um adaptador de dados pode consultar os tópicos relevantes por API, registrar origem e horário e normalizar os valores recebidos. Intervalos de confiança devem ser tratados quando estiverem disponíveis no tópico, sem pressupor que todas as respostas os contenham.</p>
-          <p>Esses sinais entram na camada de análise junto de preços, probabilidades, liquidez e exposição. A decisão permanece no núcleo BETTEX, com aprovação independente de risco antes de qualquer ordem. Allora não controla a carteira, não executa pagamentos ou ordens e não autentica o usuário. A consulta por API é uma integração possível do backend, não uma afirmação de integração on-chain já validada na Arbitrum.</p>
+          <p>Esses sinais entram na camada de análise junto de preços, probabilidades, liquidez e exposição. A decisão permanece no núcleo BETTEX, com aprovação independente de risco antes de qualquer ordem. Allora não controla a carteira, não executa pagamentos ou ordens e não autentica o usuário. A consulta por API é uma integração possível do backend, não uma afirmação de integração on-chain já validada na Starknet ou na Arbitrum.</p>
           <p>Referência técnica: <a href="https://docs.allora.network/get-started/quickstart-consume" target="_blank" rel="noopener noreferrer">consumo de inferências na documentação oficial da Allora</a>.</p>
         </div>
         <Subhead>Expansão futura das integrações e dos agentes</Subhead>
@@ -486,7 +497,7 @@ const topicTitles = new Map<unknown, string>([
   [ServiceFees, 'Custos de rede'],
   [VestingSchedule, 'Cronograma de vesting'],
   [TokenHolderRights, 'Direitos dos titulares'],
-  [ArbitrumFlowDiagram, 'Fluxo na Arbitrum'],
+  [ArbitrumFlowDiagram, 'Referência técnica: fluxo EVM na Arbitrum'],
   [RobinhoodFlowDiagram, 'Fluxo Robinhood'],
   [ReservePolicy, 'Política de reservas'],
   [InvestmentRiskBase, 'Base de risco do investimento'],

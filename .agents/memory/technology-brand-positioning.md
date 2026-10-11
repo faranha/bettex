@@ -3,7 +3,7 @@ name: Apresentação de marcas tecnológicas
 description: Limites comerciais da exibição de Arbitrum, Allora e Robinhood na homepage BETTEX.
 ---
 
-A exibição de Arbitrum, Ethereum, Allora e Robinhood na homepage dá visibilidade às redes e tecnologias. Não inferir patrocínio, endosso, certificação, parceria contratual ou integração já operacional somente pela etiqueta visual.
+A exibição de Arbitrum, Starknet, Ethereum, Allora e Robinhood na homepage dá visibilidade às redes e tecnologias. Não inferir patrocínio, endosso, certificação, parceria contratual ou integração já operacional somente pela etiqueta visual.
 
 **Why:** O criador pediu visibilidade comercial para marcas já mencionadas na arquitetura, sem mudar o status técnico das integrações.
 
@@ -13,7 +13,7 @@ O criador pediu separar melhor os logos com linhas ou uma tabela muito sutil, qu
 
 **Why:** Após a remoção dos textos anteriores, o criador voltou à faixa e pediu essa identificação e separação para melhorar a responsividade. Corrigiu que não deve haver uma tabela menor dentro da área grande e esclareceu: “Parceiros é um floating tag”.
 
-**How to apply:** Fazer as colunas amplas ocuparem a faixa inteira, sem tabela interna recuada, moldura arredondada interna ou linha de cabeçalho. A etiqueta “Parceiros” flutua sobre a borda superior. Manter divisórias discretas e fundo comum, com quatro colunas no desktop e duas no celular. Exibir apenas a etiqueta solicitada e os logotipos, sem novas descrições.
+**How to apply:** Fazer as colunas amplas ocuparem a faixa inteira, sem tabela interna recuada, moldura arredondada interna ou linha de cabeçalho. A etiqueta “Parceiros” flutua sobre a borda superior. Manter divisórias discretas e fundo comum; acomodar também a Starknet no desktop e duas colunas no celular. Exibir apenas a etiqueta solicitada e os logotipos, sem novas descrições.
 
 O criador pediu a faixa entre o hero e a primeira seção e rejeitou a apresentação com caixas de fundos diferentes. Manter uma apresentação integrada, sem cartões coloridos independentes.
 
