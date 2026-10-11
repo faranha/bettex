@@ -11,10 +11,12 @@ approved blockchain, economics or alpha agent architecture.
 
 ## Actual implementation status
 
+Only the public site and local visual demo are currently exposed. Development adapters, database models, test contracts and operational infrastructure listed below are preserved reference implementations, not active features of the public app or proof of a chosen launch network. Starknet and Arbitrum One remain alternatives under evaluation during planning and grant fundraising.
+
 | Capability | State and limitations |
 | --- | --- |
-| Public site, Pitch and documentation | Implemented; English is the first-visit default, with Portuguese/Spanish preserved |
-| Public app/demo | Canonical `/app` dashboard with live market reads and explicitly emulated financial activity; native account checks are development-only |
+| Public site, Pitch and documentation | Implemented; Portuguese is the first-visit default, with saved English/Spanish preferences preserved |
+| Public app/demo | Canonical `/app` is an exclusively visual demonstration with local fictitious data; no live market reads, authentication, financial execution or persistence |
 | Clerk identity and sessions | Existing adapter; tenant configuration is an external dependency |
 | Native development test accounts | Implemented; consent, isolated sessions and browser-encrypted EVM wallet vaults |
 | PostgreSQL persistence and HTTP contracts | Drizzle, OpenAPI/Orval, generated React clients and Zod validators |

@@ -26,7 +26,7 @@ export function TreasuryDemoActivity({ snapshot, endAt, header }: { snapshot: De
   const fk = (k: string | null) => ({ onramp: x('Saldo adicionado', 'Balance added', 'Saldo agregado'), swap: x('Troca', 'Swap', 'Cambio'), withdraw: x('Saque USDC', 'USDC withdrawal', 'Retiro USDC'), send: x('Envio', 'Send', 'Envío'), transfer: x('Transferência de rendimentos', 'Earnings transfer', 'Transferencia de ganancias') } as Record<string, string>)[k ?? ''] ?? '-';
   const cell = (label: string, v: number | null, signed = false) => <div className="text-xs text-[#5B6B85]">{label}<br />{v == null ? <b>-</b> : <Money v={v} a="USDC" signed={signed} precision={prec(v)} />}</div>;
   const pick = (v: View) => { setView(v); setPage(1); };
-  const tabs: [View, string][] = [['closed', x('Posições encerradas', 'Closed positions', 'Posiciones cerradas')], ['fees', x('Tarifas do operador', 'Operator fees', 'Tarifas del operador')], ['history', x('Tudo', 'Everything', 'Todo')]];
+  const tabs: [View, string][] = [['closed', x('Posições encerradas', 'Closed positions', 'Posiciones cerradas')], ['history', x('Tudo', 'Everything', 'Todo')]];
 
   const row = (it: DemoTreasuryActivityItem) => {
     const head = it.kind === 'position_closed' ? x('Posição encerrada', 'Position closed', 'Posición cerrada') : it.kind === 'operator_fee' ? `${x('Tarifa do operador', 'Operator fee', 'Tarifa del operador')} · ${fk(it.feeKind)}` : x('Saldo de abertura', 'Opening balance', 'Saldo de apertura');

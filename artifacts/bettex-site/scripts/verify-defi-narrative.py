@@ -39,6 +39,10 @@ fiscal = re.compile(
 corporate = re.compile(
     r"empresa privada a constituir|Entidade em etapa posterior|A entidade será avaliada|"
     r"company to be incorporated|empresa por constituir|"
+    r"A entidade define|patrimônio consolidado da entidade|despesa da entidade|"
+    r"despesas institucionais|chaves institucionais|atos institucionais|Resumo da entidade|"
+    r"receita da empresa|company revenue|ingresos de la empresa|"
+    r"(?:consolidated (?:assets|equity|wealth|estate)|patrimonio consolidado).{0,30}(?:entity|entidad)|"
     r"(?:constituição|formalização).{0,100}(?:etapa posterior|prioridades imediatas|curto prazo)",
     re.I,
 )

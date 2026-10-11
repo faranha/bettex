@@ -24,6 +24,6 @@ export function EntityOrganisation() {
     <FounderProfile doc />
     <div className="whitepaper__prose"><p><a href={`${import.meta.env.BASE_URL}pitch#pitch-founder`}>Experiência e atuação no Pitch</a></p></div>
     <BusinessPlan />
-    <div className="whitepaper__prose"><p><a href={`${import.meta.env.BASE_URL}downloads/bettex-entidade-unica.pdf`} download>Resumo da entidade e regras (PDF)</a> · <a href={`${import.meta.env.BASE_URL}downloads/bettex-entidade-unica.docx`} download>Versão editável (DOCX)</a></p></div>
+    <div className="whitepaper__prose"><p><a href={`${import.meta.env.BASE_URL}downloads/bettex-entidade-unica.pdf`} download>Resumo do protocolo e regras (PDF)</a> · <a href={`${import.meta.env.BASE_URL}downloads/bettex-entidade-unica.docx`} download>Versão editável (DOCX)</a></p></div>
   </>;
 }

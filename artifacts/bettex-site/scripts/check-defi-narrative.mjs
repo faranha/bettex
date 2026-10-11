@@ -8,6 +8,7 @@ const components = [
   'ReservePolicy', 'DistributionSettlement', 'DistributionCorrections',
   'StakingDistribution', 'BuybackPolicy', 'AuthorizedOperationCosts',
   'ServiceFees', 'ServiceFeeTaxes', 'SaleChannels', 'RoadmapSection',
+  'FundSecurity', 'pitch/PitchProductResources',
   'architecture/BettexArchitecture', 'docs-diagrams/DocSchematics',
   'pitch/LaunchSimulation', 'pitch/FounderLaunchFunnel',
 ];
@@ -21,12 +22,21 @@ const paths = [
 // or third-party companies cited in market research.
 const corporate = /empresa privada a constituir|Entidade em etapa posterior|A entidade será avaliada|(?:constituição|formalização).{0,100}(?:etapa posterior|prioridades imediatas|curto prazo)/i;
 const fiscal = /\b(?:tributos?|tributação|tributári[oa]s?|impostos?|fiscal|fiscais)\b/i;
+const residualCorporate = /A entidade define|patrimônio consolidado da entidade|despesa da entidade|despesas institucionais|chaves institucionais|atos institucionais|Resumo da entidade|receita da empresa|sustentabilidade operacional/i;
+const problems = [];
 for (const path of paths) {
   const source = await read(path);
-  assert.doesNotMatch(source, corporate, `${path}: retired corporate model`);
-  assert.doesNotMatch(source, fiscal, `${path}: retired fiscal distribution narrative`);
-  assert.doesNotMatch(source, /href="#documentacao-tributos"/, `${path}: retired tax link`);
+  for (const [pattern, reason] of [
+    [corporate, 'retired corporate model'],
+    [fiscal, 'retired fiscal distribution narrative'],
+    [residualCorporate, 'residual corporate presentation'],
+    [/\bretenções\b/i, 'retired withholding assumption'],
+    [/href="#documentacao-tributos"/, 'retired tax link'],
+  ]) {
+    if (pattern.test(source)) problems.push(`${path}: ${reason} (${source.match(pattern)?.[0]})`);
+  }
 }
+assert.equal(problems.length, 0, problems.join('\n'));
 await assert.rejects(fs.access(new URL('../src/components/DistributionTaxes.tsx', import.meta.url)));
 const rights = await read('src/components/TokenHolderRights.tsx');
 assert.match(rights, /DeFi/);
