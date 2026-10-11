@@ -49,6 +49,7 @@ export function DemoEnvironmentBanner({ actions }: { actions?: ReactNode } = {})
     <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-2 text-[11px]">
       <span className="font-extrabold text-[#83ECC2]">{x('DEMO · INTERFACE VISUAL', 'DEMO · VISUAL INTERFACE', 'DEMO · INTERFAZ VISUAL')}</span>
       <span className="rounded-full border border-white/20 px-2 py-1 font-bold">{x('SEM DINHEIRO REAL', 'NO REAL MONEY', 'SIN DINERO REAL')}</span>
+      <p className="text-[#D6DEEB]">{x('Comunidade aberta · Token comunitário · Sem salários ou taxas de serviço.', 'Open community · Community token · No salaries or service fees.', 'Comunidad abierta · Token comunitario · Sin salarios ni comisiones de servicio.')}</p>
       <p className="text-[#D6DEEB]">{x('Dados ilustrativos · Software em desenvolvimento.', 'Illustrative data · Software in development.', 'Datos ilustrativos · Software en desarrollo.')}</p>{actions}
     </div>
   </section>;

@@ -1,4 +1,4 @@
-BETTEX — reglas y administración
+BETTEX — comunidad, reglas y administración
 
 Adecuación legal y jurídica
 
@@ -26,7 +26,7 @@ El mint inicial financia el proyecto, a precio fijo; precio, plazo y plataforma 
 
 El precio pertenece al vendedor. No genera nueva captación ni beneficio de la tesorería, ni adelanta el vesting.
 
-En ALFA solo se cobrarán tasas de red. La demo es visual y no realiza cobros.
+BETTEX no cobra comisiones de servicio. Las transacciones reales pueden requerir costos externos de la red, que no son ingresos de la comunidad. La demo es exclusivamente visual, sin comisiones ni cobros.
 
 Burn Lottery y Double 2X
 
@@ -42,13 +42,13 @@ El modelo operativo tiene rondas diarias UTC. El demo visual usa un guion distin
 
 Administración y propósito
 
-BETTEX es un proyecto DeFi que construye un agente de trading con IA para actuar en diferentes mercados. El token BETTEX conecta a los usuarios con la economía del proyecto y la distribución de resultados, cuando hay beneficio elegible, sin propiedad de la tesorería ni voto automático.
+BETTEX es una comunidad abierta que construye tecnología DeFi y agentes de IA. BETTEX es el token de la comunidad, sin empresa ni fundación, salarios ni comisiones de servicio. Los recursos y el desarrollo tienen una finalidad comunitaria; las carteras personales siguen perteneciendo a sus titulares.
 
 Los fundadores administran inicialmente y mantienen el control de los contratos. Las funciones pasan gradualmente a la IA, con evidencias y límites, sin plazo definido. Esto no transfiere el control de los contratos.
 
 La participación de la comunidad en las decisiones aún se delimitará. No hay DAO, voto por token ni renuncia de ownership definidos.
 
-BETTEX sigue la dirección DeFi y DEX, sin empresa física o entidad a constituir. El fundador y el equipo conducen la administración inicial. Agentes de IA asumirán gradualmente esas funciones hasta hacer al agente BETTEX operacionalmente independiente y autónomo. Este objetivo es futuro y no elimina controles o responsabilidades aplicables.
+El fundador y el equipo organizan la administración inicial de la comunidad. Los agentes de IA asumirán funciones gradualmente hasta que el agente BETTEX sea operativamente independiente y autónomo. Ese objetivo es futuro y no elimina los controles ni las responsabilidades aplicables.
 
 La transparencia, la responsabilidad y la rendición de cuentas orientan la operación, sin ingresos ni protección del capital garantizados.
 
@@ -86,4 +86,4 @@ Tesorería, caja operativa, billetera exclusiva de recompra y billeteras persona
 
 Starknet y Arbitrum One son alternativas de red y contratos. BETTEX está en planificación y captación de subvenciones, sin red elegida ni subvención aprobada presumida. Starknet exige implementación Cairo y cuentas compatibles; Arbitrum usa EVM. Allora es candidata para inferencias, no ejecución. Robinhood Crypto Trading API requiere cuenta elegible en Estados Unidos y autorización; no constituye prueba de acceso a acciones. Las consultas públicas Arbitrum/Gamma fueron verificadas; esto no define la red de lanzamiento. Otros ejemplos sin acceso privado son simulaciones. No ha habido operaciones con dinero real.
 
-Plan comercial y lanzamiento en el Pitch: https://bettex.ai/es/pitch#publico
+Comunidad y lanzamiento en el Pitch: https://bettex.ai/es/pitch#publico

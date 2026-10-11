@@ -5,9 +5,9 @@ import { FounderProfile } from './FounderProfile';
 export function EntityOrganisation() {
   return <>
     <h3 className="whitepaper__subhead" id="documentacao-empresa">Protocolo DeFi e participação</h3>
-    <div className="whitepaper__lead"><span>PROJETO DESCENTRALIZADO · FULL STACK AI</span><p>A BETTEX é um projeto DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time conduzem a administração inicial. O objetivo é substituir suas funções por agentes de IA até tornar o agente BETTEX operacionalmente independente e autônomo. Essa autonomia é uma direção futura, não uma capacidade já entregue.</p></div>
+    <div className="whitepaper__lead"><span>COMUNIDADE ABERTA · TECNOLOGIA DEFI</span><p>A BETTEX é uma comunidade aberta, sem empresa ou fundação. BETTEX é o token da comunidade. A colaboração é sem salários e sem taxas de serviço. O fundador e o time organizam a administração inicial; o objetivo futuro é transferir funções a agentes de IA até tornar o agente BETTEX operacionalmente independente e autônomo, com mandatos e controles verificáveis.</p></div>
     <DocFacts title="Identidade do protocolo" facts={[
-      { label: 'ESTRUTURA', value: 'Descentralizada', text: 'DeFi e DEX, sem constituição de empresa.' },
+      { label: 'ESTRUTURA', value: 'Comunidade aberta', text: 'Colaboração aberta, sem empresa ou fundação.' },
       { label: 'ADMINISTRAÇÃO', value: 'Fundador e time', text: 'Administração inicial e evolução para agentes de IA autônomos.' },
       { label: 'PARTICIPAÇÃO', value: 'BETTEX', text: 'Token e direitos do programa, não ações ou voto societário.' },
     ]} />

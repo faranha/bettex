@@ -62,7 +62,7 @@ const legacyChapters = [
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Mapa orquestrado, catálogo de conectores, consultas verificadas e demonstrações por plataforma.' },
   { id: 'documentacao-agentes', title: 'Agentes de IA', subtitle: 'Orquestradora, tesouraria, quatro mercados, recompra e queima, governança e exemplos de decisão.' },
   { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Mint inicial de 10%, comunidade 55%, fundador/equipe 20%, investidores 15% e vesting de 24 meses.' },
-  { id: 'documentacao-servicos', title: 'Custos de rede', subtitle: 'No ALFA, apenas taxas de rede.' },
+  { id: 'documentacao-servicos', title: 'Custos de rede', subtitle: 'Sem taxas de serviço; custos externos da rede não são receita da comunidade.' },
   { id: 'documentacao-staking', title: 'Staking e distribuição de resultados', subtitle: 'Participação automática, quantidade e tempo, rateio, liquidação e encerramento.' },
   { id: 'documentacao-controles', title: 'Controles de risco', subtitle: 'Limites globais e por mercado, autorizações e pausas de segurança.' },
   { id: 'documentacao-implantacao', title: 'Requisitos operacionais e de segurança', subtitle: 'Controles técnicos, validações e salvaguardas para operar o modelo.' },
@@ -214,7 +214,7 @@ function LegacyBody({ id }: { id: string }) {
       </>;
     case 'documentacao-como-funciona':
       return <>
-        <div className="whitepaper__lead"><span>PRODUTO DE TECNOLOGIA · ECONOMIA PROGRAMÁVEL</span><p>{thesis.purpose}</p><p>A BETTEX é um produto de tecnologia que reúne aplicativo, token e agentes de IA para analisar e executar investimentos em previsões, ações e cripto, esportes e iGaming. O capital das operações fica numa tesouraria separada. O token BETTEX dá acesso ao programa de resultados, sem ações ou propriedade proporcional da tesouraria.</p><p>A BETTEX é um projeto DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time conduzem a administração inicial. Agentes de IA assumirão gradualmente essas funções até tornar o agente BETTEX operacionalmente independente e autônomo. A autonomia é um objetivo futuro, com mandatos e controles verificáveis, não uma capacidade já disponível.</p></div>
+        <div className="whitepaper__lead"><span>COMUNIDADE ABERTA · TECNOLOGIA DEFI</span><p>{thesis.purpose}</p><p>BETTEX é o token da comunidade. A tecnologia reúne aplicativo e agentes de IA, com recursos comunitários na tesouraria e regras públicas. As carteiras pessoais pertencem aos seus titulares; o token não dá propriedade resgatável da tesouraria nem voto automático.</p><p>O fundador e o time organizam a administração inicial. Agentes de IA assumirão gradualmente funções até tornar o agente BETTEX operacionalmente independente e autônomo. A autonomia é um objetivo futuro, com mandatos e controles verificáveis, não uma capacidade já disponível.</p></div>
         <div className="whitepaper__prose"><p><a href="#documentacao-publico">Ler a tese e a oportunidade</a></p></div>
         <div className="whitepaper__status-grid">
           <div><span>01 / ECONOMIA DO TOKEN</span><strong>BETTEX e participação</strong><p>Um bilhão de tokens: 10% mint inicial, 55% comunidade, 20% fundador/equipe e 15% investidores. Os 90% posteriores seguem vesting de 24 meses. <a href="#documentacao-staking">Staking automático</a> por quantidade e tempo elegíveis.</p></div>

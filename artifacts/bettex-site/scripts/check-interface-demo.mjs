@@ -31,6 +31,11 @@ try {
     assert.ok(d.lottery?.eligible, 'Lottery must be present on the first render in every locale');
     assert.equal(d.lottery.ownActiveNumbers, 1);
     assert.ok(d.treasury.cycleResultUsdc > 0);
+    assert.ok(d.history.every(record => record.feeUsdc === 0), 'Visual history cannot retain service fees');
+    for (const round of [d.treasury.currentRound, ...d.rounds.map(round => round.treasurySnapshot)].filter(Boolean)) {
+      assert.equal(round.feesCollectedUsdc, 0, 'Current and archived rounds have no collected fees');
+      assert.ok(Object.values(round.feeBreakdown).every(amount => amount === 0), 'No retired fee category survives');
+    }
     assert.doesNotMatch(JSON.stringify(d), /0x[0-9a-f]{40,}/i, 'Fixtures cannot contain usable-looking blockchain addresses or transaction hashes');
     for (const method of ['POST', 'PUT', 'PATCH', 'DELETE']) {
       for (const url of mutationTargets) {
@@ -50,6 +55,7 @@ try {
       assert.equal(entry.environment, 'simulation');
       assert.equal(entry.chainId, null);
       assert.equal(entry.transactionHash, null);
+      assert.equal(entry.data.feeUnits, undefined, 'Visual audit entries have no fee amounts');
     }
     const lot = await (await window.fetch('/api/demo/dashboard')).json();
     assert.deepEqual(lot.lottery.draws, [], 'No lottery results may be invented');

@@ -2,26 +2,26 @@
   "origin": "https://bettex.ai",
   "pages": {
     "/": {
-      "title": "BETTEX | Projeto DeFi de trading com IA e participação nos resultados",
-      "description": "BETTEX é um projeto DeFi que constrói um agente de trading com IA para vários mercados. O token conecta você à economia do projeto e à distribuição de resultados.",
+      "title": "BETTEX | Comunidade aberta e token comunitário",
+      "description": "BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA. Token comunitário, colaboração sem salários e sem taxas de serviço.",
       "image": "home",
       "index": true
     },
     "/pitch": {
-      "title": "Pitch BETTEX | Agente de trading com IA, tokenomics e roadmap",
-      "description": "Pitch da BETTEX: projeto DeFi que constrói um agente de trading com IA, tokenomics, participação nos resultados, roadmap e riscos.",
+      "title": "Pitch BETTEX | Comunidade, tokenomics e roadmap",
+      "description": "Conheça a comunidade BETTEX: propósito, tecnologia DeFi, agentes de IA, token comunitário, tokenomics, lançamento e riscos.",
       "image": "pitch",
       "index": true
     },
     "/documentacao": {
       "title": "Documentação BETTEX | Tokenomics, participação, roadmap e riscos",
-      "description": "Documentação da BETTEX em seis capítulos: visão, agente e mercados, tokenomics, participação e resultados, roadmap, administração e riscos.",
+      "description": "Documentação da comunidade BETTEX em seis capítulos: visão, agente e mercados, tokenomics, participação e resultados, roadmap, administração e riscos.",
       "image": "documentation",
       "index": true
     },
     "/app": {
-      "title": "Demo BETTEX | Protótipo de participação e resultados",
-      "description": "Explore o protótipo visual da BETTEX: participação, resultados e cenários simulados. Entenda as regras do token, sem dinheiro real ou operações financeiras.",
+      "title": "Demo BETTEX | Interface visual da comunidade",
+      "description": "Conheça a interface visual da comunidade BETTEX: agentes, carteiras e tesouraria ilustrativos, sem dinheiro real, taxas ou operações financeiras.",
       "image": "demo",
       "index": false
     }

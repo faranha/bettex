@@ -22,7 +22,7 @@ export function historyEntries(d: DemoDashboard): HistoryEntry[] {
     const corr = round ? `SAMPLE-CORR-ROUND-${round}` : `SAMPLE-CORR-${m.id}`;
     const kind = m.kind === 'distribution' ? 'distribution_paid' : m.kind === 'receive' ? 'external_deposit' : m.kind;
     const dec = DEC(m.asset);
-    const data: Record<string, unknown> = { operationKind: m.kind, amountUnits: units(m.amount, dec), decimals: String(dec), feeUnits: units(m.feeUsdc, 6) };
+    const data: Record<string, unknown> = { operationKind: m.kind, amountUnits: units(m.amount, dec), decimals: String(dec) };
     if (m.kind === 'distribution') Object.assign(data, { sourceWallet: 'earnings', periodId: round ?? '', ruleVersion: 'demo-model-v1' });
     if (m.sourceWallet) data.sourceWallet = m.sourceWallet;
     if (m.kind === 'swap' && m.sourceAsset && m.sourceAmount != null) Object.assign(data, { paidAsset: m.sourceAsset, paidUnits: units(m.sourceAmount, DEC(m.sourceAsset)), paidDecimals: String(DEC(m.sourceAsset)), mechanism: 'constant_product_demo' });

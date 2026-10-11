@@ -16,6 +16,7 @@ const paths = [
   ...components.map(name => `src/components/${name}.tsx`),
   'src/lib/documentation-copy.ts', 'src/lib/documentation-materials.json',
   'src/lib/business-plan.json', 'src/lib/growth-strategy.json',
+  'src/lib/site-seo.json',
   'src/pages/pitch.tsx',
 ];
 // Match obsolete assertions, not statements rejecting the corporate model
@@ -45,6 +46,18 @@ assert.match(rights, /fundador e o time/);
 assert.match(rights, /independente e autônomo/);
 assert.match(rights, /objetivo futuro, não uma capacidade já disponível/);
 const copy = await read('src/lib/documentation-copy.ts');
+assert.match(copy, /comunidade aberta/);
+assert.match(copy, /A colaboração é aberta/);
+const implicitConcept = /\u0061\u006c\u0074\u0072\u0075(?:\u00ed|\u0069|\u0069\u0301)?\u0073(?:\u0074|\u006d)/i;
+for (const path of paths) assert.doesNotMatch(await read(path), implicitConcept, 'Community motivation must remain implicit');
+assert.doesNotMatch(await read('src/lib/locales/translations.json'), implicitConcept, 'The concept must not be named in any language');
+assert.match(copy, /sem salários e sem taxas de serviço/);
+assert.match(copy, /Token da comunidade BETTEX/);
+assert.doesNotMatch(copy, /token permite participar dos resultados/);
+assert.match(await read('src/lib/business-plan.json'), /token da comunidade, não uma ação de empresa ou fundação/);
+const seo = JSON.parse(await read('src/lib/site-seo.json'));
+for (const page of Object.values(seo.pages)) assert.match(page.description, /comunidade/);
+assert.doesNotMatch(seo.pages['/'].title + seo.pages['/'].description, /distribuição de resultados|participação nos resultados/);
 assert.match(copy, /50% tesouraria, 25% participantes e 25% recompra/);
 assert.match(copy, /24 meses/);
 assert.match(copy, /Quem entra durante uma rodada espera a próxima/);

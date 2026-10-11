@@ -26,7 +26,7 @@ export function Fact({ label, children, wide }: { label: string; children: React
   return <div className={`min-w-0 ${wide ? 'col-span-2 sm:col-span-3' : ''}`}><dt className="text-xs text-[#5B6B85]">{label}</dt><dd className="mono break-words text-sm font-bold text-[#1B2A41]">{children}</dd></div>;
 }
 
-export function SnapshotFacts({ s, missing }: { s: DemoTreasuryRound | undefined; missing: boolean }) {
+export function SnapshotFacts({ s, missing, visualDemo = false }: { s: DemoTreasuryRound | undefined; missing: boolean; visualDemo?: boolean }) {
   const { x, NR, usdc, dt, fl } = useRoundFmt();
   if (!s) return <div className="grid gap-2"><p role="status" data-testid="round-no-snapshot" className="rounded-xl border border-[#E7B98A] bg-[#FFF3E3] p-3 text-sm font-semibold text-[#6B3A10]">{missing ? x('Sem foto de tesouraria: valores financeiros desta rodada Não registrados. Cifras atuais nunca preenchem o passado.', 'No treasury snapshot: this round\'s financial figures are Not recorded. Current figures never fill in the past.', 'Sin foto de tesorería: las cifras financieras de esta ronda No registradas. Las cifras actuales nunca rellenan el pasado.') : NR}</p>
     <p data-testid="round-crypto-unrecorded" className="rounded-xl bg-[#F5F1E8] p-3 text-sm font-semibold text-[#5B6B85]">{x('Alocação do agente Cripto: não registrada nesta rodada.', 'Crypto agent allocation: not recorded in this round.', 'Asignación del agente Cripto: no registrada en esta ronda.')}</p></div>;
@@ -46,12 +46,12 @@ export function SnapshotFacts({ s, missing }: { s: DemoTreasuryRound | undefined
       <Fact label={x('Esperado nos compromissos', 'Expected on commitments', 'Esperado en compromisos')}>{usdc(s.expectedCommittedNetUsdc, true)}</Fact>
       <Fact label={x('Meta aprovada', 'Approved target', 'Meta aprobada')}>{s.targetNetUsdc == null ? x('Não definida', 'Not configured', 'No definida') : usdc(s.targetNetUsdc)}</Fact>
       <Fact label={x('Posições encerradas', 'Closed positions', 'Posiciones cerradas')}>{s.closedOperations == null ? NR : s.closedOperations.toLocaleString(fl)}</Fact></Group>
-    <Group title={x('Tarifas do operador', 'Operator fees', 'Tarifas del operador')} note={`${x('Titular', 'Owner', 'Titular')}: ${x('Operadora privada', 'Private operator', 'Operadora privada')} · ${x('Registro desde', 'Tracked since', 'Registro desde')} ${dt(s.feeTrackingSince)}`}>
+    {!visualDemo && <Group title={x('Tarifas do operador', 'Operator fees', 'Tarifas del operador')} note={`${x('Titular', 'Owner', 'Titular')}: ${x('Operadora privada', 'Private operator', 'Operadora privada')} · ${x('Registro desde', 'Tracked since', 'Registro desde')} ${dt(s.feeTrackingSince)}`}>
       <Fact label={x('Total', 'Total', 'Total')}>{usdc(s.feesCollectedUsdc)}</Fact>
       <Fact label={x('Saldo adicionado', 'Balance added', 'Saldo agregado')}>{usdc(f.onramp)}</Fact><Fact label={x('Troca', 'Swap', 'Cambio')}>{usdc(f.swap)}</Fact>
       <Fact label={x('Saque USDC', 'USDC withdrawal', 'Retiro USDC')}>{usdc(f.withdraw)}</Fact><Fact label={x('Envio', 'Send', 'Envío')}>{usdc(f.send)}</Fact>
-      <Fact label={x('Transferência de rendimentos', 'Earnings transfer', 'Transferencia de ganancias')}>{usdc(f.transfer)}</Fact></Group>
-    {s.coverage === 'partial' && <p className="text-xs font-semibold text-[#B4701A]">{x('Cobertura parcial: tarifas apenas desde o início do registro; custos e saldos anteriores não foram reconstruídos.', 'Partial coverage: fees only since tracking began; earlier costs and balances were not reconstructed.', 'Cobertura parcial: tarifas solo desde el inicio del registro; costos y saldos anteriores no se reconstruyeron.')}</p>}
+      <Fact label={x('Transferência de rendimentos', 'Earnings transfer', 'Transferencia de ganancias')}>{usdc(f.transfer)}</Fact></Group>}
+    {!visualDemo && s.coverage === 'partial' && <p className="text-xs font-semibold text-[#B4701A]">{x('Cobertura parcial: tarifas apenas desde o início do registro; custos e saldos anteriores não foram reconstruídos.', 'Partial coverage: fees only since tracking began; earlier costs and balances were not reconstructed.', 'Cobertura parcial: tarifas solo desde el inicio del registro; costos y saldos anteriores no se reconstruyeron.')}</p>}
   </div>;
 }
 

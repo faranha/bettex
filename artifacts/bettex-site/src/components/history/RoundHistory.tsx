@@ -11,7 +11,7 @@ import { RoundTabs } from './RoundTabs';
 import { RoundArchiveBrowser } from './RoundArchiveBrowser';
 import { TreasuryRoundHeader } from '../demo/TreasuryRoundHeader';
 
-export function RoundHistory({ d }: { d: DemoDashboard }) {
+export function RoundHistory({ d, visualDemo = false }: { d: DemoDashboard; visualDemo?: boolean }) {
   const search = useSearch(); const [, navigate] = useLocation();
   const { x, loc } = useX();
   const requested = new URLSearchParams(search).get('round');
@@ -54,9 +54,9 @@ export function RoundHistory({ d }: { d: DemoDashboard }) {
       : <div className="flex flex-wrap items-center gap-2"><RoundIdentity id={sel.id} testId="round-history-id" />
         <span className={`rounded-full px-2 py-0.5 text-xs font-bold ${isCur ? 'bg-[#DDEBE4] text-[#0A6657]' : 'bg-[#F0E9DA] text-[#5B6B85]'}`}>{isCur ? x('Atual', 'Current', 'Actual') : x('Encerrada', 'Closed', 'Cerrada')}</span></div>}
     {isCur && <p className="text-xs text-[#5B6B85]">{x('Rodada em andamento: distribuição e participação ainda não liquidadas.', 'Round in progress: distribution and participation not settled yet.', 'Ronda en curso: distribución y participación aún no liquidadas.')}</p>}
-    <SnapshotFacts s={snap} missing={!isCur} />
+    <SnapshotFacts s={snap} missing={!isCur} visualDemo={visualDemo} />
     {sel.kind === 'closed' && <ClosedFacts r={sel.round} />}
-    <RoundTabs d={detailDashboard} roundId={sel.id} current={isCur} roundWindow={win} />
+    <RoundTabs d={detailDashboard} roundId={sel.id} current={isCur} roundWindow={win} visualDemo={visualDemo} />
     {browser}
   </>);
 }
