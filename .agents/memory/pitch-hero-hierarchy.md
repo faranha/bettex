@@ -7,6 +7,16 @@ O hero do Pitch deve voltar à composição anterior à abertura com a cena
 orbital. A nova imagem deve usar o personagem principal já estabelecido na
 BETTEX, fazendo algo com o aplicativo.
 
+Não colocar texto de público ou qualquer caixa de conteúdo acima do H1.
+O título deve ser o primeiro destaque de leitura; restaurar uma versão
+anterior do hero não autoriza reintroduzir esse bloco.
+
+**Why:** O criador reiterou: “voce colocou um texto em cima do hero h1
+novamente”, após a restauração trazer de volta o bloco de público.
+
+**How to apply:** Preservar a nova imagem do personagem usando o app e a
+composição aprovada, mas manter os parágrafos de conteúdo abaixo do título.
+
 **Why:** O criador rejeitou a cena orbital e pediu: “traga novamente por favor
 o hero anterior, mas mude a imagem do hero, adicione nosso personagem
 principal fazendo alguma coisa com o app”.
