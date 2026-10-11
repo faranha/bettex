@@ -70,6 +70,42 @@ try {
         assert.deepEqual(badLinks, [], `${label}: external Pitch links open safely in a new tab`);
         assert((await page.locator('.pitch a[href]').evaluateAll(links => links.filter(a => new URL(a.href).origin !== location.origin).length)) > 0, `${label}: non-vacuous external link audit`);
 
+        // Horizontal cards intentionally keep inactive slides outside the viewport.
+        // Verify each one after selecting it, rather than weakening the text audit.
+        for (const track of await section.locator('.mobile-data-carousel__track').all()) {
+          if (!await track.evaluate(el => el.scrollWidth > el.clientWidth + 2)) continue;
+          const carousel = track.locator('..');
+          const cards = track.locator(':scope > *');
+          for (let i = 0; i < await cards.count(); i++) {
+            await carousel.locator('.mobile-data-carousel__dots button').nth(i).click();
+            await page.waitForFunction(({ id, index }) => {
+              const el = document.getElementById(id)?.querySelector('.mobile-data-carousel__track');
+              if (!el) return false;
+              const rect = el.children[index].getBoundingClientRect();
+              const bounds = el.getBoundingClientRect();
+              return rect.left >= bounds.left - 2 && rect.right <= bounds.right + 2;
+            }, { id: await carousel.getAttribute('id'), index: i });
+            const clipped = await cards.nth(i).evaluate(card => {
+              const bounds = card.getBoundingClientRect();
+              const problems = [];
+              const walker = document.createTreeWalker(card, NodeFilter.SHOW_TEXT);
+              while (walker.nextNode()) {
+                const node = walker.currentNode;
+                if (!node.textContent.trim() || node.parentElement.closest('svg')) continue;
+                const range = document.createRange();
+                range.selectNodeContents(node);
+                for (const rect of range.getClientRects()) {
+                  if (rect.left < bounds.left - 2 || rect.right > bounds.right + 2)
+                    problems.push(node.textContent.trim().slice(0, 65));
+                }
+              }
+              return [...new Set(problems)];
+            });
+            assert.deepEqual(clipped, [], `${label}: carousel card ${i + 1} is readable when selected`);
+          }
+          await carousel.locator('.mobile-data-carousel__dots button').first().click();
+          await track.evaluate(el => el.scrollTo({ left: 0, behavior: 'instant' }));
+        }
         const layout = await section.evaluate(root => {
           const problems = [];
           const rects = [];
@@ -80,6 +116,14 @@ try {
             const node = walker.currentNode;
             if (!node.textContent.trim() || node.parentElement.closest('svg')) continue;
             const parent = node.parentElement;
+            const track = parent.closest('.mobile-data-carousel__track');
+            const card = parent.closest('.mobile-data-carousel__track > *');
+            if (track && card && track.scrollWidth > track.clientWidth + tolerance) {
+              const bounds = track.getBoundingClientRect();
+              const rect = card.getBoundingClientRect();
+              // Other slides were independently checked using the carousel controls.
+              if (rect.left < bounds.left - tolerance || rect.right > bounds.right + tolerance) continue;
+            }
             const range = document.createRange();
             range.selectNodeContents(node);
             const text = node.textContent.trim().slice(0, 65);

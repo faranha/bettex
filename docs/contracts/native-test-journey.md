@@ -1,5 +1,10 @@
 # BETTEX integrated test path
 
+> Historical operational test path, not the current visual demo or launch
+> policy. Fees, pricing, custody and execution evidence below describe that
+> earlier implementation. The community rules in [replit.md](../../replit.md)
+> take precedence; this record does not authorize charges or reactivation.
+
 ## Sources and decisions
 
 | Requirement | Source and section | Status |
