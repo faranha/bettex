@@ -13,8 +13,9 @@ test('wallets dashboard, history, AI Center, Treasury and personal Profile have 
     }
   }
   for (const language of ['pt', 'en', 'es'] as const) {
-    assert.equal(demoLabel('home', language), 'Dashboard');
-    assert.equal(demoPageTitle('home', language), 'Dashboard | BETTEX');
+    const homeLabel = { pt: 'Painel', en: 'Dashboard', es: 'Panel' }[language];
+    assert.equal(demoLabel('home', language), homeLabel);
+    assert.equal(demoPageTitle('home', language), `${homeLabel} | BETTEX`);
   }
   assert.equal(demoPageTitle('wallet', 'en'), 'History | BETTEX');
   assert.equal(demoPageTitle('wallet', 'es'), 'Historial | BETTEX');

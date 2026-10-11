@@ -1,5 +1,6 @@
 import type { DemoDashboard, HistoryEntry, HistoryPage, DemoRoundArchivePage, DemoTreasuryActivityPage } from '@workspace/api-client-react';
 import { roundActivity } from './treasury-demo-data';
+import { centralAuditEntries } from './central-audit-data';
 
 /** Local illustrative History source derived only from the visual dashboard seed. No network, no chain. */
 const SAMPLE = 'illustrative_example';
@@ -29,6 +30,7 @@ export function historyEntries(d: DemoDashboard): HistoryEntry[] {
     else if (['withdraw', 'send'].includes(m.kind)) Object.assign(data, { paidAsset: m.asset, paidUnits: units(m.amount, dec), paidDecimals: String(dec) });
     if (m.destination) Object.assign(data, m.kind === 'receive' ? { from: m.destination } : { to: m.destination });
     const at = m.at;
+    // processedAt is the local journal timestamp; state remains pending/failed when applicable.
     const final: HistoryEntry = { ...base, id: m.id, correlationId: corr, category: 'financial', kind, state: m.status, actor: m.kind === 'distribution' ? 'system' : 'user', asset: m.asset, occurredAt: at, requestedAt: at, processedAt: at, data };
     out.push(final);
     if (['withdraw', 'send', 'swap'].includes(m.kind)) {
@@ -43,16 +45,22 @@ export function historyEntries(d: DemoDashboard): HistoryEntry[] {
     out.push({ ...base, id: `SAMPLE-PARTICIPATION-${r.id}`, correlationId: `SAMPLE-CORR-ROUND-${r.id}`, category: 'automatic', kind: 'participation_entered', state: 'recorded', actor: 'system', asset: 'BETTEX', occurredAt: p.startedAt, requestedAt: null, processedAt: p.startedAt,
       data: { quantityUnits: units(p.ownEligibleTokens, 18), decimals: '18', eligibleUnits: units(p.ownEligibleTokens, 18), poolUnits: units(p.totalEligibleTokens, 18), weightUnits: String(p.ownTokenSeconds), mechanism: 'wallet_balance', ruleVersion: 'demo-model-v1', periodId: r.id } });
   }
+  out.push(...centralAuditEntries());
   return out.sort((a, b) => Date.parse(b.occurredAt) - Date.parse(a.occurredAt) || a.id.localeCompare(b.id));
 }
 
 const VIEW: Record<string, RegExp> = { swapping: /swap|purchase|conversion|onramp/, staking: /participation|stake|staking/, distributions: /distribution/ };
+function dateBoundary(value: string | null, end: boolean): number {
+  if (!value) return end ? Infinity : -Infinity;
+  // Calendar-day filters refer to São Paulo, not midnight UTC.
+  return Date.parse(/^\d{4}-\d\d-\d\d$/.test(value) ? `${value}T${end ? '23:59:59.999' : '00:00:00.000'}-03:00` : value);
+}
 
 export function historyPage(all: HistoryEntry[], q: URLSearchParams): HistoryPage {
   const view = q.get('view') ?? 'general';
   const limit = Math.min(50, Math.max(1, Number(q.get('limit') ?? 20) || 20));
   const offset = Number(q.get('cursor') ? atob(q.get('cursor')!).replace('o:', '') : 0) || 0;
-  const from = q.get('from') ? Date.parse(q.get('from')!) : -Infinity, to = q.get('to') ? Date.parse(q.get('to')!) : Infinity;
+  const from = dateBoundary(q.get('from'), false), to = dateBoundary(q.get('to'), true);
   const wallet = q.get('wallet')?.toLowerCase(), corr = q.get('correlationId');
   let rows = view === 'treasury' ? [] : all.filter(e => {
     const k = `${e.kind} ${String((e.data as Record<string, unknown>).operationKind ?? '')}`;

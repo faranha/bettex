@@ -20,3 +20,9 @@ A abertura do Roadmap no mobile deve ser compacta, sem espaços grandes acima do
 **Why:** O criador mostrou a abertura “O caminho da BETTEX” no celular e pediu “diminua essa altura toda no mobile”.
 
 **How to apply:** Reduzir os espaçamentos e manter o título proporcional à tela, sem cortar a introdução ou o cronograma. Não alterar o layout desktop por esse pedido.
+
+Cada etapa do Roadmap deve ter uma cor diferente, aplicada de forma consistente aos seus elementos.
+
+**Why:** O criador mostrou duas etapas com o mesmo azul e pediu que “as cores de cada elemento, etapa, devem diferir”.
+
+**How to apply:** Preservar cores distintas entre etapas, inclusive ao acrescentar novas; manter a identidade de cada etapa nos seus ícones, números, datas, bordas e conexões.

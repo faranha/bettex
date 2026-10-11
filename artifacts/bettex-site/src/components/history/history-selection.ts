@@ -8,7 +8,8 @@ export function selectHistoryArea(search: string, hash = ''): HistoryArea {
   if (p.has('wallet') || hash === '#wallet-statement') return 'wallets';
   if (p.has('treasuryAccount') || p.has('treasuryAsset') || p.has('treasuryWallet') || hash === '#treasury-statement') return 'treasury';
   if (hash === '#history-audit') return 'audit';
-  return 'rounds';
+  if (p.has('round') || p.has('roundTab') || hash === '#round-archive') return 'rounds';
+  return 'wallets';
 }
 
 export function historyQuery(area: HistoryArea, filters: Record<string, string> = {}): string {

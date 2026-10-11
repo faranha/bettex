@@ -1,0 +1,23 @@
+import { createCipheriv, createHash, randomBytes } from "node:crypto";
+import { Wallet } from "ethers";
+import type { TestKeyEnvelope, TreasuryWalletPurpose } from "../domain/treasury-test-wallet";
+
+/** Server-only encryption adapter. Moving this implementation does not change
+ * key derivation, envelope format, AAD, custody or signing authorization. */
+export function sealTreasuryTestKey(privateKey: string, purpose: TreasuryWalletPurpose, address: string, secret: string): TestKeyEnvelope {
+  if (!secret || secret.length < 16) throw new Error("treasury_wallet_encryption_unavailable");
+  const key = createHash("sha256").update("bettex:treasury-test-vault:v1\0").update(secret).digest();
+  const iv = randomBytes(12), cipher = createCipheriv("aes-256-gcm", key, iv);
+  cipher.setAAD(Buffer.from(`${purpose}:${address.toLowerCase()}`));
+  const ciphertext = Buffer.concat([cipher.update(privateKey, "utf8"), cipher.final()]);
+  return { version: 1, iv: iv.toString("base64"), tag: cipher.getAuthTag().toString("base64"), ciphertext: ciphertext.toString("base64") };
+}
+
+export function createTreasuryTestWallet(purpose: TreasuryWalletPurpose, secret: string) {
+  if (!secret || secret.length < 16) throw new Error("treasury_wallet_encryption_unavailable");
+  const wallet = Wallet.createRandom();
+  return {
+    id: `treasury-test-${purpose}`, purpose, address: wallet.address,
+    keyEnvelope: sealTreasuryTestKey(wallet.privateKey, purpose, wallet.address, secret),
+  };
+}

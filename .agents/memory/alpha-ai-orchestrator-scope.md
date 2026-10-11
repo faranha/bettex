@@ -9,9 +9,9 @@ Risk, governance, treasury, execution and reconciliation are controls or operati
 
 The active BTC/ETH/SOL event-market family is presented as Crypto, rather than the general Prediction Markets sector. The current four-sector presentation is specified in replit.md.
 
-BTC, ETH e SOL fazem parte do mesmo agente Cripto. Não apresentá-los como abas de agentes independentes na navegação principal do grafo, nem contá-los como agentes adicionais. A consulta por mercado pertence ao painel do agente Cripto.
+BTC, ETH e SOL fazem parte do mesmo agente Cripto. A orientação posterior inclui os três no grafo como subagentes de Cripto, não como agentes setoriais independentes na navegação principal.
 
-**Why:** O criador corrigiu a hierarquia: “voce colocou uma tab para btc outra para eth outra para sol, mas elas fazem parte do mesmo agente - crypto”.
+**Why:** A hierarquia de um único agente Cripto foi preservada, mas o criador pediu posteriormente: “voce deveria colocar ainda subagentes de BTC, ETH, SOL, no grafo”.
 
 **Why:** The creator explicitly classified the current BTC/USDT-related activity as Crypto. This supersedes the previous product-facing prediction-family label, not the distinction between central orchestration and individual jobs.
 

@@ -82,7 +82,7 @@ function Logo() {
     </span>
     <span className="display text-[22px] max-[359px]:text-[18px] font-extrabold leading-none tracking-[-.075em]">BETTEX</span>
     </a>
-    <DemoAppLink data-i18n="raw" data-testid="brand-alpha-badge" className="inline-flex min-h-11 shrink-0 items-center text-[#F2B632]"><span className="mono rounded border border-[#F2B632]/60 bg-[#F2B632]/10 px-1.5 py-1 text-[9px] font-bold leading-none tracking-[.12em]">ALFA</span></DemoAppLink>
+    <DemoAppLink data-i18n="raw" data-testid="brand-alpha-badge" aria-label={t('Abrir aplicativo')} className="inline-flex min-h-11 shrink-0 items-center text-[#F2B632]"><span className="mono rounded border border-[#F2B632]/60 bg-[#F2B632]/10 px-1.5 py-1 text-[9px] font-bold leading-none tracking-[.12em]">ALFA</span></DemoAppLink>
   </div>;
 }
 
@@ -92,7 +92,7 @@ function MainLinks({ className, onNavigate, uniform = false }: { className: stri
   return <>{mainLinks.map(({ label, href }) => {
     const active = location === href || (href === '/documentacao' && ['/documentation', '/documentacion'].includes(location));
     const appLink = href === '/app';
-    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`site-page-link ${appLink ? 'site-page-link--app' : uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{label}{appLink && <ArrowRight size={16} aria-hidden="true" />}</a>;
+    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`site-page-link ${appLink ? 'site-page-link--app' : uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{appLink && /^\/(documentacao|documentation|documentacion)\/?$/.test(location) ? t('ABRIR APP') : label}{appLink && <ArrowRight size={16} aria-hidden="true" />}</a>;
   })}</>;
 }
 
@@ -161,7 +161,7 @@ function SiteHeader() {
         <MainLinks className="" />
       </nav>
       <div className="hidden xl:flex"><LanguageSelector /></div>
-      <a href={localizedUrl(`${BASE_PATH}/app`)} data-testid="launch-app-mobile" className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md border border-[#F2B632] bg-[#F2B632] px-3 max-[399px]:px-2 text-[11px] font-extrabold text-[#070B1F] hover:bg-[#FFD16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AAC3EE] xl:hidden">{t('ABRIR DEMO')}<ArrowRight size={14} aria-hidden="true" className="max-[399px]:hidden" /></a>
+      <a href={localizedUrl(`${BASE_PATH}/app`)} data-testid="launch-app-mobile" className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md border border-[#F2B632] bg-[#F2B632] px-3 max-[399px]:px-2 text-[11px] font-extrabold text-[#070B1F] hover:bg-[#FFD16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AAC3EE] xl:hidden">{t(/^\/(documentacao|documentation|documentacion)\/?$/.test(location) ? 'ABRIR APP' : 'ABRIR DEMO')}<ArrowRight size={14} aria-hidden="true" className="max-[399px]:hidden" /></a>
       <button type="button" data-testid="public-menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     <div inert={menuOpen}>
@@ -244,11 +244,11 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
   </footer>;
 }
 
-function SitePage({ children, documentation = false, compactFooter = false }: { children: ReactNode; documentation?: boolean; compactFooter?: boolean }) {
+function SitePage({ children, documentation = false }: { children: ReactNode; documentation?: boolean }) {
   return <div style={{ '--pitch-label-1': JSON.stringify(t('Movimentação')), '--pitch-label-2': JSON.stringify(t('Tarifa')), '--pitch-label-3': JSON.stringify(t('Resultado')) } as CSSProperties} className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#F4F1E8]`}>
     <SiteHeader />
     {children}
-    <SiteFooter compact={compactFooter} />
+    <SiteFooter />
   </div>;
 }
 
@@ -347,7 +347,7 @@ function Home() {
 }
 
 function Pitch() {
-  return <SitePage compactFooter><PitchPage /></SitePage>;
+  return <SitePage><PitchPage /></SitePage>;
 }
 
 function Demo() {

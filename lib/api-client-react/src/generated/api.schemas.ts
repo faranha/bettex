@@ -5,6 +5,47 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export type DemoPolymarketMarketAsset = typeof DemoPolymarketMarketAsset[keyof typeof DemoPolymarketMarketAsset];
+
+
+export const DemoPolymarketMarketAsset = {
+  BTC: 'BTC',
+  ETH: 'ETH',
+  SOL: 'SOL',
+} as const;
+
+export interface DemoPolymarketMarket {
+  asset: DemoPolymarketMarketAsset;
+  id: string;
+  question: string;
+  url: string;
+  yesPrice: number;
+  noPrice: number;
+  volume24h: number;
+  liquidity: number;
+}
+
+export type DemoPolymarketSourceErrorAsset = typeof DemoPolymarketSourceErrorAsset[keyof typeof DemoPolymarketSourceErrorAsset];
+
+
+export const DemoPolymarketSourceErrorAsset = {
+  BTC: 'BTC',
+  ETH: 'ETH',
+  SOL: 'SOL',
+} as const;
+
+export interface DemoPolymarketSourceError {
+  asset: DemoPolymarketSourceErrorAsset;
+  message: string;
+}
+
+export interface DemoPolymarketFeed {
+  source: string;
+  fetchedAt: string;
+  markets: DemoPolymarketMarket[];
+  errors: DemoPolymarketSourceError[];
+}
+
 export type Double2xPlayInputColor = typeof Double2xPlayInputColor[keyof typeof Double2xPlayInputColor];
 
 

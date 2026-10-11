@@ -3,6 +3,16 @@ name: Prioridade do tamanho de mercado no Pitch
 description: Abrir o Pitch com o público potencial combinado de apostas e cripto e sua escala financeira.
 ---
 
+O criador aprovou a estrutura de Interseção de públicos (“a estrutura está boa”)
+e pediu imagens. Preservar as duas métricas de públicos potenciais, o destaque
+do público central estimado, a premissa e as fontes ao acrescentar imagens.
+
+**Why:** Aprovação explícita da estrutura existente; o pedido é de imagens,
+não de redesenho nem de alteração do dimensionamento.
+
+**How to apply:** Manter essa organização ao revisar a apresentação da
+interseção, sem transformar a estimativa hipotética em público medido.
+
 O criador exige destacar primeiro o tamanho do público e o volume financeiro, agora em Público, antes de Problema. A capa deve considerar o público potencial combinado de apostas e cripto, mais de 60 milhões de brasileiros, e incluir a movimentação diária de cripto, não apenas os depósitos nas bets. Pediu retirar os cartões de 30 milhões nas bets legalizadas e 10 milhões no ilegal, pois a apresentação desses números parecia conflitante. Também pediu pesquisar brasileiros com experiência em cripto e estimar o público combinado sem dupla contagem.
 
 **Why:** O criador corrigiu uma omissão da abertura e reiterou “Isso tem que estar aqui, no problema e oportunidade” e “tem que ser a primeira coisa do pitch”. Depois explicou que os três números pareciam conflitantes e pediu eliminar os dois do meio, substituindo-os pela comparação com cripto.

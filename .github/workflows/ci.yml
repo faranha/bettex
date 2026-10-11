@@ -50,6 +50,7 @@ jobs:
         run: pnpm sync:test
       - name: PostgreSQL fixture backup tools
         run: sudo apt-get update && sudo apt-get install -y postgresql-client-16
-      - run: pnpm quality
+      - name: Verify current visual product without reactivating legacy runtimes
+        run: pnpm quality:current --continue --report generated-artifacts/ci-current.json
       - name: Generated contracts must be committed
         run: git diff --exit-code -- lib/api-client-react/src/generated lib/api-zod/src/generated

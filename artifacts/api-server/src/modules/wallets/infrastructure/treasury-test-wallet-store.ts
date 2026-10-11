@@ -2,7 +2,8 @@ import { sql } from "drizzle-orm";
 import { getAddress } from "ethers";
 import { db, treasuryTestWallets } from "@workspace/db";
 import { GetDemoTreasuryWalletsResponse } from "@workspace/api-zod";
-import { TREASURY_WALLET_PURPOSES, createTreasuryTestWallet } from "../domain/treasury-test-wallet";
+import { TREASURY_WALLET_PURPOSES } from "../domain/treasury-test-wallet";
+import { createTreasuryTestWallet } from "./treasury-test-vault";
 
 let schema: Promise<unknown> | undefined;
 function ensureSchema() {

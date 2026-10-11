@@ -9,9 +9,17 @@ documentation, development application and a test-only smart-contract library.
 
 **Not a production financial service, an audited investment product, or evidence
 of realized trading performance.** Repository preparation does not change the
-approved blockchain, economics or alpha agent architecture.
+current network-evaluation direction, economics or alpha agent architecture.
 
 ## Actual implementation status
+
+Developer entry point: [documentation index](docs/README.md), [current project
+status](docs/project-status.md), [demo model](docs/demo/README.md),
+[testnet limitations](docs/testnets/README.md) and
+[final GitHub integration checklist](docs/github-finalization.md).
+Use [verification profiles](docs/testing.md) to distinguish the current product
+from preserved operational reference code. Historical reports are not current
+readiness certificates.
 
 Only the public site and local visual demo are currently exposed. Development adapters, database models, test contracts and operational infrastructure listed below are preserved reference implementations, not active features of the public app or proof of a chosen launch network. Starknet and Arbitrum One remain alternatives under evaluation during planning and grant fundraising.
 
@@ -65,15 +73,16 @@ corepack enable
 pnpm install --frozen-lockfile
 python -m pip install "xlsxwriter==3.2.9"
 cp .env.example .env
-# Configure a NEW development PostgreSQL database privately.
-node --env-file=.env --run db:prepare
+# Keep automatic sending paused until the owner reviews the final integration.
+pnpm sync:pause
 pnpm dev:local
 ```
 
-Clerk-dependent account features require the correct tenant configuration.
-Public-site builds and native development test accounts do not require
-production credentials. Do not connect a production database or real funds.
-The launcher does not start/fund the optional local EVM.
+The current public demo does not require authentication or a database.
+Historical operational reference tests have separate requirements; see
+[development.md](docs/development.md) before preparing an isolated database.
+Do not connect a production database or real funds.
+The launcher does not start/fund an EVM. Operational runtime scripts remain disabled.
 
 In Replit, use the existing managed API/site workflows rather than replacing
 them with the clean-clone launcher. Their artifact proxy supplies routing and
@@ -84,15 +93,16 @@ scoped environment variables.
 ```sh
 pnpm sync:test
 pnpm sync:check
-pnpm quality
+pnpm quality:current
 PORT=5173 BASE_PATH=/ pnpm build
 pnpm --filter @workspace/bettex-contracts test
 ```
 
-`quality` includes database-isolation checks requiring a development database
-and PostgreSQL client tools. CI supplies an ephemeral database and runs without
-production credentials or real funds. Test-only transactions stay on isolated
-local EVMs. Passing tests are not an independent audit.
+`quality:current` is the CI profile for the visual product. `quality` retains the
+full historical reference checks, including three integrations whose operational
+prerequisites are currently disabled. Reports list exclusions rather than calling
+them passes. See [testing.md](docs/testing.md). Test-only contract transactions
+stay on isolated local EVMs. Passing tests are not an independent audit.
 
 ## Automatic development synchronization
 

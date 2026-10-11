@@ -60,12 +60,21 @@ const seo = JSON.parse(await read('src/lib/site-seo.json'));
 for (const [route, page] of Object.entries(seo.pages)) {
   if (route !== '/') assert.match(page.description, /comunidade/);
 }
-// The creator explicitly preserved the original homepage positioning.
-assert.match(seo.pages['/'].title, /Projeto DeFi de trading com IA/);
+// The SEO revision leads with community and purpose; the visible hero remains
+// unchanged. Keep the technology/trading identity without restoring earnings-led metadata.
+assert.match(seo.pages['/'].title, /Comunidade DeFi/);
+assert.match(seo.pages['/'].title, /trading com inteligência artificial/);
 const app = await read('src/App.tsx');
 const comparison = await read('src/components/pitch/EconomicComparisonRows.ts');
 assert.match(comparison, /Sem taxas de serviço da BETTEX/);
 assert.doesNotMatch(comparison, /Tarifa fixa de serviço/);
+const pitch = await read('src/pages/pitch.tsx');
+assert.doesNotMatch(pitch, /A decisão de cobrar ou não por serviços/);
+assert.match(pitch, /O custeio de manutenção permanece em aberto/);
+assert.match(pitch, /a operação com dinheiro real ainda não foi lançada/);
+assert.match(await read('src/components/pitch/MarketOpportunity.tsx'), /Público potencial não é uma base de compradores validada/);
+assert.match(pitch, /não financia as operações nem garante pagamento/);
+assert.match(pitch, /O mint público inicial e o aporte de investidores-anjo são frentes distintas de financiamento/);
 assert.match(app, /Chega de apostar\./);
 assert.match(app, /Comece a investir\./);
 assert.match(app, /O token BETTEX conecta você à economia/);
@@ -75,9 +84,11 @@ const whitepaper = await read('src/components/WhitepaperSection.tsx');
 assert.doesNotMatch(whitepaper.match(/whitepaper__hero-lede[^>]*>([^<]+)/)?.[1] ?? '', /distribuição de resultados/);
 assert.match(whitepaper, /esta documentação apresenta suas regras, desenvolvimento, administração e riscos/);
 const social = await read('scripts/restore-home-social.mjs');
-assert.match(social, /Seja o dono do jogo\. Participe dos resultados da IA\./);
-assert.match(social, /USE IA CONTRA/);
-assert.doesNotMatch(social, /Comunidade aberta\./);
+assert.match(social, /generate-social-cards\.mjs/);
+const socialTemplate = `${await read('public/social-preview.html')}\n${await read('public/social-preview.js')}`;
+assert.match(socialTemplate, /Comunidade aberta/);
+assert.match(socialTemplate, /Demonstração visual, sem transações reais/);
+assert.doesNotMatch(socialTemplate, /Seja o dono do jogo\. Participe dos resultados da IA\.|USE IA CONTRA|OUT 2026|JAN 2027/);
 assert.match(copy, /50% tesouraria, 25% participantes e 25% recompra/);
 assert.match(copy, /24 meses/);
 assert.match(copy, /Quem entra durante uma rodada espera a próxima/);

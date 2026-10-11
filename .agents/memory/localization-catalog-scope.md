@@ -5,6 +5,18 @@ description: Distinguish global translated copy from isolated multilingual tuple
 
 The site catalog audit must only collect copy handled by the site's translation runtime. Isolated three-language UI tuples and their export/data helpers need their own language audit; grammar-normalization dictionaries and TypeScript literal types are not page copy.
 
+For public hero and diagram copy handled by the site runtime, prefer the canonical translation catalog over local objects keyed by PT/EN/ES.
+
+**Why:** Local multilingual objects were scanned as Portuguese source messages, so their English and Spanish values incorrectly became new translation requirements.
+
+**How to apply:** Keep one canonical source message and translate it through the site runtime; reserve isolated multilingual tuples for explicitly isolated, separately audited components.
+
+For editorial photographs, separate neutral asset/rights metadata from visible translated copy. Keep alt text as literal canonical translation calls in the UI.
+
+**Why:** Photo selection keys, filenames, author names and license identifiers were collected as Portuguese prose and caused false missing-translation failures.
+
+**How to apply:** Audit alts and explanatory badges normally, while keeping filenames and original authorship/license metadata in an explicitly isolated metadata module. Do not add fake translations for technical identifiers.
+
 **Why:** Scanning those strings as Portuguese source text produced hundreds of false missing-translation errors and blocked the production build despite complete three-language UI labels.
 
 Neutral symbols, proper place names and numeric hour units are not untranslated prose. Word-boundary matching of a bare unit letter does not cover a unit attached to digits.

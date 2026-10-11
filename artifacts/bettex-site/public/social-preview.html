@@ -1,34 +1,74 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="robots" content="noindex, nofollow">
-  <title>BETTEX — imagem de compartilhamento</title>
-  <link rel="icon" type="image/svg+xml" href="bettex-mark-gamblefi.svg">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap');
-    *{box-sizing:border-box}body{margin:0;width:1200px;height:630px;overflow:hidden;background:#070b1f;color:#f4f1e8;font-family:'DM Sans',sans-serif}
-    .card{height:630px;padding:48px 64px;position:relative;background:radial-gradient(ellipse at 93% 30%,#1b3482 0,transparent 60%)}
-    .orbit{position:absolute;right:-115px;top:-145px;width:720px;height:720px;border:1px solid #4261b9;border-radius:50%;opacity:.35;pointer-events:none}
-    .orbit::after{content:'';position:absolute;inset:65px;border:1px solid #6688ff;border-radius:50%}
-    .brand{display:flex;gap:16px;align-items:center;font-size:36px;letter-spacing:-1px;font-weight:800;position:relative}.brand img{width:52px;height:52px}
-    .label{margin:30px 0 20px;color:#8aa5ff;font-size:16px;font-weight:700;letter-spacing:3px;text-transform:uppercase;position:relative}
-    h1{max-width:1030px;margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:66px;line-height:1.08;letter-spacing:-2.5px;font-weight:800;position:relative}
-    h2{margin:24px 0 0;color:#f2b632;font-size:38px;line-height:1.2;letter-spacing:-.8px;max-width:1020px;position:relative}
-    .foot{position:absolute;left:64px;right:64px;bottom:39px;border-top:1px solid #4f64994f;padding-top:22px;display:flex;justify-content:space-between;gap:25px;font-size:17px;color:#b4c2e1}
-    .foot b{color:#f2b632;font-weight:600}
-  </style>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>BETTEX social card</title>
+<link rel="icon" type="image/svg+xml" href="bettex-mark-gamblefi.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@500;600;700&family=Space+Mono:wght@700&display=swap">
+<style>
+:root{--navy:#070b1f;--navy2:#0d1636;--blue:#2b59ff;--blue2:#5f86ff;--gold:#f2b632;--ink:#f4f1e8;--mute:#aebbdc}
+*{box-sizing:border-box}
+html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:var(--navy);color:var(--ink);font-family:'DM Sans',sans-serif}
+.card{position:relative;width:1200px;height:630px;overflow:hidden;background:
+ radial-gradient(ellipse 60% 80% at 88% 40%,#1a3182 0,transparent 70%),linear-gradient(135deg,#070b1f,#0d1636)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--blue)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(#5f86ff14 1px,transparent 1px),linear-gradient(90deg,#5f86ff14 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 80%);mask-image:linear-gradient(90deg,transparent 30%,#000 80%)}
+.top{position:absolute;left:64px;right:64px;top:44px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:14px;font:800 38px 'Bricolage Grotesque',sans-serif;letter-spacing:-1.5px}
+.brand img{width:50px;height:50px}
+.alfa{font:700 13px 'Space Mono',monospace;letter-spacing:2px;color:var(--gold);border:1px solid #f2b63299;padding:4px 8px;border-radius:3px}
+.tag{font:700 15px 'Space Mono',monospace;letter-spacing:3px;text-transform:uppercase;color:var(--blue2)}
+.copy{position:absolute;left:64px;top:158px;width:600px}
+.kick{font:700 16px 'Space Mono',monospace;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.kick::before{content:'';width:34px;height:3px;background:var(--gold)}
+h1{margin:0;font:800 62px/1.04 'Bricolage Grotesque',sans-serif;letter-spacing:-2.4px}
+h1 em{font-style:normal;color:var(--gold)}
+.sub{margin:26px 0 0;font-size:25px;line-height:1.38;color:var(--mute);font-weight:500;max-width:560px}
+.foot{position:absolute;left:64px;right:64px;bottom:34px;border-top:3px solid var(--gold);padding-top:18px;display:flex;justify-content:space-between;font-size:18px;color:#c3cde6;font-weight:600}
+.foot b{font-weight:600;color:var(--ink)}
+.art{position:absolute;left:700px;top:120px;width:440px;height:400px}
+/* home */
+.ring{position:absolute;border:1.5px solid #5f86ff55;border-radius:50%}
+.node{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--blue2);box-shadow:0 0 0 7px #2b59ff33}
+.node.g{background:var(--gold);box-shadow:0 0 0 7px #f2b63233}
+.core{position:absolute;left:140px;top:120px;width:160px;height:160px;border-radius:32px;background:#0a1233;border:2px solid var(--blue);display:grid;place-items:center}
+.core img{width:104px}
+.lines{position:absolute;inset:0}
+/* pitch */
+.tl{position:absolute;left:0;top:0;width:440px;height:400px}
+.step{position:absolute;left:0;width:440px;display:flex;gap:22px;align-items:center}
+.dot{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);border:4px solid var(--blue2);position:relative;z-index:2}
+.step.on .dot{border-color:var(--gold);background:var(--gold)}
+.box{flex:1;background:#0d1840cc;border:1px solid #5f86ff44;border-radius:10px;padding:14px 20px}
+.box small{display:block;font:700 13px 'Space Mono',monospace;letter-spacing:2px;color:var(--blue2);margin-bottom:4px}
+.box span{font:800 28px 'Bricolage Grotesque',sans-serif;letter-spacing:-.8px}
+.vline{position:absolute;left:13px;top:50px;bottom:50px;width:4px;background:linear-gradient(var(--gold),var(--blue2) 60%,#5f86ff33)}
+/* docs */
+.chap{position:absolute;width:210px;height:118px;background:#f4f1e8;color:#0a1233;border-radius:8px;padding:14px 16px;box-shadow:0 14px 28px #0000004d}
+.chap i{font:700 15px 'Space Mono',monospace;font-style:normal;color:#2b59ff;letter-spacing:1px}
+.chap b{position:absolute;left:16px;right:12px;bottom:14px;font:800 21px/1.08 'Bricolage Grotesque',sans-serif;letter-spacing:-.5px}
+.chap::after{content:'';position:absolute;right:14px;top:16px;width:30px;height:4px;background:var(--gold)}
+/* demo */
+.win{position:absolute;inset:0;background:#0b1431;border:1.5px solid #5f86ff77;border-radius:14px;box-shadow:0 24px 50px #0006;overflow:hidden}
+.bar{height:44px;background:#101c46;display:flex;gap:8px;align-items:center;padding:0 16px;border-bottom:1px solid #5f86ff44}
+.bar s{width:11px;height:11px;border-radius:50%;background:#5f86ff66}
+.tabs{display:flex;gap:6px;padding:16px 16px 0}
+.tabs span{font:700 15px 'DM Sans';padding:8px 12px;border-radius:6px;color:var(--mute);background:#13204f}
+.tabs span.a{background:var(--blue);color:#fff}
+.pane{padding:18px 16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pane div{background:#111d47;border-radius:8px;height:92px;padding:14px}
+.pane div i{display:block;height:8px;border-radius:4px;background:#5f86ff55;margin-bottom:10px;width:60%}
+.pane div i+i{width:85%;background:#5f86ff33}
+.pane div.w{grid-column:span 2;height:120px;position:relative}
+.pane svg{position:absolute;left:14px;bottom:10px;right:14px;width:calc(100% - 28px)}
+.badge{position:absolute;right:14px;bottom:14px;background:var(--gold);color:#1a1405;font:700 14px 'DM Sans';padding:7px 12px;border-radius:5px}
+</style>
 </head>
-<body><div class="card"><div class="orbit"></div><div class="brand"><img src="bettex-mark-gamblefi.svg" alt="">BETTEX</div><p class="label" id="label"></p><h1 id="title"></h1><h2 id="question"></h2><div class="foot"><span id="f1"></span><b id="f2"></b></div></div>
-<script>
-const T={
-pt:{home:['Tese do fundador','A IA vai substituir os trabalhadores.','E de onde virá sua renda?'],pitch:['Apresentação do projeto','Pitch BETTEX','Fundador, estratégia e modelo de negócio.'],documentation:['Documentação técnica','Entenda o modelo da BETTEX.','Token, tesouraria, regras e riscos.'],demo:['Demonstração','Demo BETTEX','Em breve.'],f:['Conheça a proposta, as regras e os riscos.','Projeto em validação · Sem renda garantida']},
-en:{home:['Founder thesis','AI will replace workers.','So where will your income come from?'],pitch:['Project presentation','BETTEX Pitch','Founder, strategy and business model.'],documentation:['Technical documentation','Understand the BETTEX model.','Token, treasury, rules and risks.'],demo:['Demonstration','BETTEX Demo','Coming soon.'],f:['Explore the proposal, the rules and the risks.','Project under validation · No guaranteed income']},
-es:{home:['Tesis del fundador','La IA va a reemplazar a los trabajadores.','¿De dónde vendrá tu ingreso?'],pitch:['Presentación del proyecto','Pitch BETTEX','Fundador, estrategia y modelo de negocio.'],documentation:['Documentación técnica','Entiende el modelo de BETTEX.','Token, tesorería, reglas y riesgos.'],demo:['Demostración','Demo BETTEX','Próximamente.'],f:['Conoce la propuesta, las reglas y los riesgos.','Proyecto en validación · Sin ingreso garantizado']}};
-const q=new URLSearchParams(location.search),l=T[q.get('lang')]?q.get('lang'):'pt',d=T[l];
-document.documentElement.lang={pt:'pt-BR',en:'en',es:'es'}[l];
-document.title={pt:'BETTEX — imagem de compartilhamento',en:'BETTEX — sharing image',es:'BETTEX — imagen para compartir'}[l];
-const page=d[q.get('page')]||d.home;
-['label','title','question'].forEach((id,i)=>document.getElementById(id).textContent=page[i]);
-f1.textContent=d.f[0];f2.textContent=d.f[1];
-</script></body></html>
+<body><div class="card"><div class="grid"></div>
+<div class="top"><div class="brand"><img src="bettex-mark-gamblefi.svg" alt="">BETTEX<span class="alfa" id="chip"></span></div><div class="tag" id="tag"></div></div>
+<div class="copy"><div class="kick" id="kick"></div><h1 id="title"></h1><p class="sub" id="sub"></p></div>
+<div class="art" id="art"></div>
+<div class="foot"><span id="f1"></span><b id="f2"></b></div></div>
+<script src="social-preview.js"></script></body></html>

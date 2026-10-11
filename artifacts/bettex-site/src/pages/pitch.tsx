@@ -16,13 +16,15 @@ import { SolutionParticipationFlow } from '@/components/pitch/SolutionParticipat
 import { PitchObservations } from '@/components/pitch/PitchObservations';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
 import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
-import { formatCryptoDailyBillions } from '@/components/pitch/marketFlow';
+import { PitchHeroGraph } from '@/components/pitch/PitchHeroGraph';
 import { PitchProductResources } from '@/components/pitch/PitchProductResources';
 import { t, useLocale } from '@/lib/i18n';
 import './pitch.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
+const HERO_SUPPORT = 'Uma comunidade aberta construindo um agente BETTEX para diferentes mercados, com o apostador brasileiro como público inicial.';
+const HERO_NOTICE = 'Projeto em planejamento. Hoje existe apenas um demo visual: a operação com dinheiro real ainda não foi lançada.';
 
 function Sec({ id, n, kicker, title, dark = false, summary, hero, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; hero?: string; children: ReactNode }) {
   return <section id={id} aria-labelledby={`${id}-t`} className={`slide ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
@@ -50,7 +52,6 @@ const Doc = ({ hash, children, dark = false }: { hash: string; children: ReactNo
 
 export function PitchPage() {
   useLocale();
-  const cryptoDailyBillions = formatCryptoDailyBillions();
   useEffect(() => {
     let mounted = true;
     const scrollToHash = () => {
@@ -76,25 +77,20 @@ export function PitchPage() {
     };
   }, []);
   return <main className="pitch">
-    <section id="visao" aria-label="Início" className="cover relative overflow-hidden text-[#F4F1E8]">
+    <section id="visao" aria-label="Início" className="cover cover--hero relative overflow-hidden text-[#F4F1E8]">
       <div className="page-wrap relative pb-8 pt-8 sm:pb-12 sm:pt-14">
-        <div className="cover__grid">
+        <div className="cover__grid cover__grid--hero">
           <div className="cover__copy">
-            <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Início</span>
-            <p className="cover__market mb-4">O apostador brasileiro é o público inicial; a proposta também atende pessoas que já participam do mercado cripto.</p>
-            <h1 className="pitch-rise display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Um projeto DeFi de trading com IA <span className="text-[#F2B632]">para vários mercados.</span></h1>
-            <p className="pitch-rise cover__market mt-4"><strong data-i18n="translated">{t(`Mais de 60 milhões de brasileiros formam o público potencial estimado, enquanto o mercado de cripto movimenta cerca de R$ ${cryptoDailyBillions} bilhão em operações diárias e as bets têm uma referência histórica de R$ 600 milhões em depósitos por dia.`)}</strong>{' '}A oportunidade é oferecer um produto de investimento que fale a língua dessas pessoas.</p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <span className="cover__audience mono block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Início</span>
+            <h1 className="display font-extrabold leading-[1.05] tracking-[-.05em]">Um projeto DeFi de trading com IA <span className="text-[#F2B632]">para vários mercados.</span></h1>
+            <p className="cover__support">{t(HERO_SUPPORT)}</p>
+            <p className="cover__notice">{t(HERO_NOTICE)}</p>
+            <div className="cover__ctas">
               <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>
               <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">Ler a documentação</a>
             </div>
           </div>
-          <figure className="cover__project pitch-rise">
-            <img src={`${BASE}/pitch-illustrations/pitch-software-development.webp`} alt="Ilustração de tecnologia e desenvolvimento do projeto BETTEX" width={400} height={400} loading="eager" decoding="async" fetchPriority="high" />
-            <figcaption className="mono">
-              <span><strong>BETTEX</strong><small>Tecnologia, comunidade e inteligência artificial</small></span>
-            </figcaption>
-          </figure>
+          <PitchHeroGraph />
         </div>
       </div>
     </section>
@@ -107,8 +103,9 @@ export function PitchPage() {
     <FutureSections />
 
     <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" summary="Um agente BETTEX, vários mercados e participação econômica por token." n="05" kicker="Solução" title={<>IA na operação, participação por token.</>}>
-      <p className="mb-8 max-w-[800px] text-[15px] leading-7">A BETTEX é um projeto DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time conduzem a administração inicial. Agentes de IA assumirão gradualmente essas funções até tornar o agente BETTEX operacionalmente independente e autônomo. A autonomia é um objetivo futuro, com mandatos e controles verificáveis, não uma capacidade já disponível.</p>
-      <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A oportunidade é oferecer a quem hoje aposta um produto de investimento com linguagem acessível e participação em resultados, sem prometer lucro.</p>
+      <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A BETTEX pretende usar agentes de IA para analisar mercados e executar estratégias de trading dentro de mandatos e limites de risco. O staking do token dá acesso ao rateio do pool global quando há lucro elegível; não financia as operações nem garante pagamento.</p>
+      <p className="mb-8 max-w-[900px] text-[15px] leading-7">O usuário participa pelo staking, sem escolher e acompanhar cada operação individual. A proposta combina operação tecnológica, regras verificáveis e participação condicionada nos resultados. O desempenho líquido das estratégias e a utilidade do produto ainda precisam ser demonstrados.</p>
+      <p className="mb-8 max-w-[800px] text-[15px] leading-7">É um projeto DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time administram inicialmente; agentes de IA assumirão gradualmente essas funções. A autonomia operacional do agente BETTEX é um objetivo futuro, dependente de validação, mandatos e controles verificáveis.</p>
       <div className="fu-position">
         <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
         <p className="display fu-pos-lead">Resgatar o futuro, transformando a aposta em investimento.</p>
@@ -124,7 +121,7 @@ export function PitchPage() {
       </div>
       <Doc hash="documentacao-oportunidade">Ver regras na documentação</Doc>
 
-    <Sec id="diferencial" summary="O usuário participa dos resultados do projeto, sem escolher cada operação ou depender apenas da revenda do token." kicker="Diferenciação proposta" title={<>A diferença está <span className="text-[#2B59FF]">no direito econômico.</span></>}>
+    <Sec id="diferencial" summary="Na aposta, o resultado depende do evento. Num token centrado no preço, depende da revenda. A BETTEX propõe também participação no lucro elegível de suas estratégias, sujeita às regras do staking." kicker="Diferenciação proposta" title={<>A diferença está <span className="text-[#2B59FF]">no direito econômico.</span></>}>
       <EconomicComparison rows={economicComparisonRows} />
       <PitchObservations>
         <p>Custos, direitos e regras das alternativas variam conforme a plataforma e o contrato.</p>
@@ -134,7 +131,10 @@ export function PitchPage() {
     </Sec>
 
     <section id="tokenomics" aria-labelledby="economia-t">
-    <Sec id="economia" hero="pitch-illustrations/pitch-token-participation.webp" summary="Emissão, financiamento do projeto e participação nos resultados, com recursos separados." n="06" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Emissão, tesouraria e direitos do token.</span></>}>
+    <Sec id="economia" hero="pitch-illustrations/pitch-economy-separation.webp" summary="Emissão, financiamento do projeto e participação nos resultados, com recursos separados." n="06" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Emissão, tesouraria e direitos do token.</span></>}>
+      <div className="pb-fin-scene" id="financiamento">
+      <img className="pb-fin-scene__figure" src={`${BASE}/hero-person-phone.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      <div className="pb-fin-scene__content">
       <h3 className="display mb-6 text-2xl font-extrabold">Financiamento do projeto e tesouraria ficam separados.</h3>
       <div className="mb-8 grid gap-4 md:grid-cols-2">
         <Card label="Mint público inicial" title="Financiamento do projeto">Mint aberto a preço fixo, separado da comunidade em vesting. Aplicação dos recursos e custos da oferta devem ser documentados antes da abertura.</Card>
@@ -142,8 +142,9 @@ export function PitchPage() {
         <Card label="Investidores-anjo" title="100% para produto, tecnologia e marketing">{g.launch.angelFundingUse}</Card>
         <Card label="Custos de rede" title="ALFA sem tarifa de serviço">No ALFA, apenas custos externos da rede. O custeio de manutenção permanece em aberto, sem retirada automática da tesouraria.</Card>
       </div>
+      </div>
+      </div>
       <PitchObservations><p>Exemplo ilustrativo: 10.000 USDC de lucro elegível destinam 5.000 à tesouraria, 2.500 ao pool global dos stakers e 2.500 à carteira de recompra. Os 25% não são uma taxa de retorno individual. Sem peso elegível ou condições de reserva e liquidez, não há split: 100% fica retido. Rodadas encerradas não acumulam direitos a lucros futuros.</p><p>A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. Todos os tokens adquiridos nas recompras são queimados permanentemente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.</p></PitchObservations>
-      <PitchObservations><p>A decisão de cobrar ou não por serviços será tomada posteriormente com a comunidade e depende de validação jurídica e comercial. Condições e valores deverão ser informados antes de eventual adoção. No ALFA, serão cobradas apenas taxas de rede.</p></PitchObservations>
     </Sec>
 
     <Sec id="token" kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Quatro destinações.</span></>}>
@@ -168,7 +169,7 @@ export function PitchPage() {
     </section>
 
 
-    <Sec id="publico" hero="pitch-illustrations/pitch-brazil-community.webp" summary="Comunidade antes do mint público de dezembro de 2026; sistema/ALFA e vesting previstos para março de 2027, sujeitos à adequação jurídica." n="07" kicker="Fase atual e próximos passos" dark title={<>Preparação. <span className="text-[#F2B632]">Comunidade e mint.</span></>}>
+    <Sec id="publico" hero="pitch-illustrations/pitch-online-community.webp" summary="Comunidade antes do mint público de dezembro de 2026; sistema/ALFA e vesting previstos para março de 2027, sujeitos à adequação jurídica." n="07" kicker="Fase atual e próximos passos" dark title={<>Preparação. <span className="text-[#F2B632]">Comunidade e mint.</span></>}>
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
         <DemoAppLink className="mono">DEMO VISUAL DISPONÍVEL</DemoAppLink>
         <strong>Comunidade antes do lançamento</strong>
@@ -191,12 +192,13 @@ export function PitchPage() {
 
     <RoadmapSection id="pitch-roadmap" />
 
-    <Sec id="recursos" hero="pitch-illustrations/pitch-product-development.webp" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="08" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>
+    <Sec id="recursos" hero="pitch-illustrations/pitch-startup-team.webp" summary="Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador ou financiar uma folha salarial." n="08" kicker="Recursos e riscos" title={<>100% do aporte anjo. <span className="text-[#2B59FF]">Produto, tecnologia e marketing.</span></>}>
+      <p className="mb-8 max-w-[900px] text-[15px] leading-7">O mint público inicial e o aporte de investidores-anjo são frentes distintas de financiamento. O mint tem destinação de 10% da oferta; os investidores têm 15% em vesting. Destinação de tokens não equivale a participação societária, valor de captação ou venda já realizada.</p>
       <PitchEditorialSplit image={<PitchEditorialImage name="pitch-product-development" />}>
       <div className="grid gap-4 md:grid-cols-3">
         <Card label="Destino do capital" title="Tecnologia e marketing, sem salários">{g.launch.angelFundingUse}</Card>
         <Card label="Administração inicial" title="Do fundador e do time à autonomia da IA">O fundador e o time administram inicialmente. A direção DeFi e DEX evolui para agentes de IA que assumirão essas funções, até a autonomia operacional completa do agente BETTEX. Essa autonomia é futura e depende de validação e controles. {g.founder.bettexEarnings}</Card>
-        <Card label="Em aberto" title="Valor total e termos">Orçamento e marcos do lançamento ainda serão definidos, assim como o valor total e os termos contratuais. Não há oferta formal de venda de tokens nem participação societária proposta aqui.</Card>
+        <Card label="Em aberto" title="Valor, contrapartida e marcos">Valor total do aporte, condições de entrada, contrapartida em tokens e marcos de aplicação do capital ainda precisam ser definidos. Os 15% destinados a investidores não estabelecem, por si só, preço, valuation ou participação societária. Não há oferta formal de venda de tokens apresentada aqui.</Card>
       </div>
       </PitchEditorialSplit>
       <Doc hash="documentacao-financiamento-fundacao">Financiamento na documentação</Doc>

@@ -10,7 +10,7 @@ export function PlatformCoverage() {
       <ul className="platform-coverage__list" aria-label="Plataformas de atuação da tecnologia BETTEX">
         {technologyPlatforms.map((platform) => (
           <li key={platform.id}>
-            <img className={`platform-coverage__logo platform-coverage__logo--${platform.id}`} src={`${import.meta.env.BASE_URL}platforms/${platform.logo}`} alt={platform.name} loading="lazy" decoding="async" />
+            <img className={`platform-coverage__logo platform-coverage__logo--${platform.id}`} src={`${import.meta.env.BASE_URL}platforms/${platform.logo}`} width={platform.width} height={platform.height} alt={platform.name} loading="lazy" decoding="async" />
           </li>
         ))}
       </ul>

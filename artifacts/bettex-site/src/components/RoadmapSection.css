@@ -319,6 +319,7 @@
 .roadmap__place:hover .roadmap__icon { transform: rotate(-6deg) scale(1.08); }
 .roadmap__place { border-top: 4px solid var(--sc); padding-top: 36px; }
 .roadmap__place-number, .roadmap__place-number span { color: var(--sd); }
+.roadmap__place-tag { color: var(--sd); }
 .roadmap__pin { background: var(--sc); box-shadow: 0 0 0 1px var(--sc); }
 .roadmap__stop::before { background: var(--sc); }
 .roadmap__place-date,
@@ -329,7 +330,7 @@
 .roadmap__stop--featured .roadmap__place-number span,
 .roadmap__stop--featured .roadmap__place-tag { color: var(--sc); }
 .roadmap__stop--1 { --sc: #2B59FF; --sb: #E3EAFF; --sd: #1B3FC4; }
-.roadmap__stop--2 { --sc: #2B59FF; --sb: #E3EAFF; --sd: #1B3FC4; }
+.roadmap__stop--2 { --sc: #087FA5; --sb: #DDF4FA; --sd: #075F7A; }
 .roadmap__stop--3 { --sc: #F2B632; --sb: #FFF1CC; --sd: #8A5A00; }
 .roadmap__stop--4 { --sc: #0E9F6E; --sb: #D9F5E9; --sd: #0A6B4A; }
 .roadmap__stop--5 { --sc: #8B4DE0; --sb: #EBDDFB; --sd: #5E2BA8; }

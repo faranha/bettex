@@ -50,6 +50,8 @@ import { DocumentationDownloads } from './DocumentationDownloads';
 import { t } from '@/lib/i18n';
 import { copy as c } from '@/lib/documentation-copy';
 import { roadmapStops } from '@/components/RoadmapSection';
+import { DemoAppLink } from '@/components/DemoAppLink';
+import { ChapterArt } from '@/components/ChapterArt';
 import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure';
 
 /** Previous 14-chapter list, retained as source history and for reference bodies. */
@@ -106,6 +108,7 @@ function MainBody({ id }: { id: string }) {
   switch (id) {
     case 'documentacao-agentes':
       return <>
+        <ChapterArt n={1} />
         <div className="whitepaper__lead"><p>{c.agP1}</p></div>
         <Prose>{c.agP2}</Prose><Prose>{c.agP3}</Prose>
         <DocFacts title={c.agFacts} facts={[
@@ -152,13 +155,15 @@ function MainBody({ id }: { id: string }) {
       </>;
     case 'documentacao-roadmap':
       return <>
+        <ChapterArt n={2} />
         <div className="whitepaper__lead"><p>{c.rmP}</p></div>
         <div className="whitepaper__status-grid" data-testid="documentation-roadmap-milestones">
-          {roadmapStops.map((stop, i) => <div key={stop.title}><span>{String(i + 1).padStart(2, '0')} / {stop.tag}</span><strong>{stop.title}</strong><p>{stop.date}. {stop.description}</p></div>)}
+          {roadmapStops.map((stop, i) => <div key={stop.title}><span>{String(i + 1).padStart(2, '0')} / {stop.tag}</span><strong>{stop.title}</strong><p>{stop.date}. {stop.description}</p>{i === 0 && <DemoAppLink>{t('Abrir o demo')}</DemoAppLink>}</div>)}
         </div>
       </>;
     case 'documentacao-riscos':
       return <>
+        <ChapterArt n={3} />
         <Head id="documentacao-governanca">{c.rk1}</Head><Prose>{c.rk1p}</Prose><Prose>{c.rk1q}</Prose>
         <Head id="documentacao-seguranca">{c.rk2}</Head><Prose>{c.rk2p}</Prose>
         <Head id="documentacao-riscos-materiais">{c.rk3}</Head><Prose>{c.rk3p}</Prose>
@@ -170,6 +175,7 @@ function MainBody({ id }: { id: string }) {
       </>;
     default:
       return <>
+        <ChapterArt n={0} />
         <div className="whitepaper__lead"><p>{c.visaoLead}</p></div>
         <Prose>{c.visaoP1}</Prose>
         <DocTerms id="schematic-overview" label={c.visaoEsquema} items={[

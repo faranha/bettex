@@ -1,4 +1,183 @@
 {
+  "ABRIR APP": {
+    "en": "OPEN APP",
+    "es": "ABRIR APP"
+  },
+  "Abrir aplicativo": {
+    "en": "Open application",
+    "es": "Abrir aplicación"
+  },
+  "MOEDAS E PARTICIPAÇÃO": {
+    "en": "CURRENCIES AND PARTICIPATION",
+    "es": "MONEDAS Y PARTICIPACIÓN"
+  },
+  "Saldos e movimentações previstos são em USDC; BETTEX é o token de participação.": {
+    "en": "Planned balances and transfers are denominated in USDC; BETTEX is the participation token.",
+    "es": "Los saldos y movimientos previstos se denominan en USDC; BETTEX es el token de participación."
+  },
+  "VISÃO DO SISTEMA": {
+    "en": "SYSTEM VISION",
+    "es": "VISIÓN DEL SISTEMA"
+  },
+  "A visão da BETTEX reúne tecnologia DeFi, agentes de IA e participação da comunidade, com regras, autorizações e controles independentes.": {
+    "en": "BETTEX's vision brings together DeFi technology, AI agents and community participation, with rules, authorizations and independent controls.",
+    "es": "La visión de BETTEX reúne tecnología DeFi, agentes de IA y participación de la comunidad, con reglas, autorizaciones y controles independientes."
+  },
+  "A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, que não são receita da comunidade.": {
+    "en": "BETTEX does not charge service fees. Real transactions may require external network costs, which are not community revenue.",
+    "es": "BETTEX no cobra tarifas de servicio. Las transacciones reales pueden requerir costos externos de la red, que no son ingresos de la comunidad."
+  },
+  "Regras completas do aplicativo": {
+    "en": "Complete application rules",
+    "es": "Reglas completas de la aplicación"
+  },
+  "Loteria e Double 2X são recursos opcionais, com regras próprias, e não fazem parte da tese de DeFi e trading. O acesso ao aplicativo usa a carteira gerada com a conta, com chaves exportáveis.": {
+    "en": "Lottery and Double 2X are optional features with their own rules and are not part of the DeFi and trading thesis. Access to the application uses the wallet generated with the account, with exportable keys.",
+    "es": "La lotería y Double 2X son funciones opcionales, con reglas propias, y no forman parte de la tesis de DeFi y trading. El acceso a la aplicación utiliza la cartera generada con la cuenta, con claves exportables."
+  },
+  "Seis marcos, da preparação à gestão crescente por IA.": {
+    "en": "Six milestones, from preparation to increasing AI management.",
+    "es": "Seis hitos, desde la preparación hasta una gestión creciente por IA."
+  },
+  "As datas são previsões e os estados distinguem preparação, etapas previstas e evolução futura. Oferta e operação dependem de adequação por atividade e território.": {
+    "en": "Dates are forecasts and statuses distinguish preparation, planned stages and future development. Offering and operation depend on compliance for each activity and territory.",
+    "es": "Las fechas son previsiones y los estados distinguen la preparación, las etapas previstas y la evolución futura. La oferta y la operación dependen de la adecuación por actividad y territorio."
+  },
+  "O modelo operacional tem rodadas diárias UTC. Abas por mercado não criam pools de staking independentes.": {
+    "en": "The operational model has daily UTC rounds. Market tabs do not create separate staking pools.",
+    "es": "El modelo operativo tiene rondas diarias UTC. Las pestañas por mercado no crean pools de staking independientes."
+  },
+  "Tela de análise de mercados, imagem ilustrativa do mercado cripto": {
+    "en": "Market analysis screen, illustrative image of the crypto market",
+    "es": "Pantalla de análisis de mercados, imagen ilustrativa del mercado cripto"
+  },
+  "Imagem recortada e comprimida": {
+    "en": "Cropped and compressed image",
+    "es": "Imagen recortada y comprimida"
+  },
+  "BETTEX | Comunidade DeFi e trading com inteligência artificial": {
+    "en": "BETTEX | DeFi community and artificial intelligence trading",
+    "es": "BETTEX | Comunidad DeFi y trading con inteligencia artificial"
+  },
+  "Comunidade aberta que constrói tecnologia DeFi e um agente de IA para vários mercados. Conheça o token comunitário, o roadmap e a demonstração da BETTEX.": {
+    "en": "An open community building DeFi technology and an AI agent for multiple markets. Explore the BETTEX community token, roadmap and visual demonstration.",
+    "es": "Comunidad abierta que construye tecnología DeFi y un agente de IA para varios mercados. Conoce el token comunitario, la hoja de ruta y la demo de BETTEX."
+  },
+  "Pitch BETTEX | Comunidade, tecnologia DeFi e roadmap": {
+    "en": "BETTEX Pitch | Community, DeFi technology and roadmap",
+    "es": "Pitch BETTEX | Comunidad, tecnología DeFi y hoja de ruta"
+  },
+  "Conheça a proposta da BETTEX: comunidade aberta, agente de IA para vários mercados, token comunitário, tokenomics, estratégia de lançamento e riscos.": {
+    "en": "Explore the BETTEX proposal: an open community, an AI agent for multiple markets, a community token, tokenomics, launch strategy and project risks.",
+    "es": "Conoce la propuesta de BETTEX: comunidad abierta, agente de IA para varios mercados, token comunitario, tokenomics, estrategia de lanzamiento y riesgos."
+  },
+  "Documentação BETTEX | Agente, tokenomics, regras e riscos": {
+    "en": "BETTEX Documentation | Agent, tokenomics, rules and risks",
+    "es": "Documentación BETTEX | Agente, tokenomics, reglas y riesgos"
+  },
+  "Conheça a comunidade BETTEX em seis capítulos: visão, agente e mercados, tokenomics, participação e resultados, roadmap, administração, segurança e riscos.": {
+    "en": "Explore the BETTEX community in six chapters: vision, agent, tokenomics, participation and results, roadmap, administration, security and project risks.",
+    "es": "Conoce la comunidad BETTEX en seis capítulos: visión, agente, tokenomics, participación y resultados, hoja de ruta, administración, seguridad y riesgos."
+  },
+  "Demo BETTEX | Central da IA, Tesouraria e Histórico": {
+    "en": "BETTEX Demo | AI Center, Treasury and History",
+    "es": "Demo BETTEX | Central de IA, Tesorería e Historial"
+  },
+  "Explore a demo visual da comunidade BETTEX: painel, Central da IA, Tesouraria e Histórico conectados. Dados ilustrativos, sem dinheiro real ou transações.": {
+    "en": "Explore the BETTEX community's visual demo: a connected dashboard, AI Center, Treasury and History. Illustrative data, no real money or transactions.",
+    "es": "Explora la demo visual de la comunidad BETTEX: panel, Central de IA, Tesorería e Historial conectados. Datos ilustrativos, sin dinero real ni transacciones."
+  },
+  "BETTEX: comunidade aberta construindo tecnologia DeFi e um agente de IA.": {
+    "en": "BETTEX: an open community building DeFi technology and an AI agent.",
+    "es": "BETTEX: comunidad abierta que construye tecnología DeFi y un agente de IA."
+  },
+  "Pitch BETTEX: comunidade, tecnologia DeFi e roadmap.": {
+    "en": "BETTEX Pitch: community, DeFi technology and roadmap.",
+    "es": "Pitch BETTEX: comunidad, tecnología DeFi y hoja de ruta."
+  },
+  "Documentação BETTEX: seis capítulos sobre o projeto, tokenomics, regras e riscos.": {
+    "en": "BETTEX documentation: six chapters on the project, tokenomics, rules and risks.",
+    "es": "Documentación BETTEX: seis capítulos sobre el proyecto, tokenomics, reglas y riesgos."
+  },
+  "Demo BETTEX: painel, Central da IA, Tesouraria e Histórico em uma interface exclusivamente visual.": {
+    "en": "BETTEX demo: dashboard, AI Center, Treasury and History in a visual-only interface.",
+    "es": "Demo BETTEX: panel, Central de IA, Tesorería e Historial en una interfaz exclusivamente visual."
+  },
+  "Proposta do grafo": {
+    "pt": "Proposta do grafo",
+    "en": "Graph proposal",
+    "es": "Propuesta del grafo"
+  },
+  "Graph proposal": {
+    "pt": "Proposta do grafo",
+    "en": "Graph proposal",
+    "es": "Propuesta del grafo"
+  },
+  "Propuesta del grafo": {
+    "pt": "Proposta do grafo",
+    "en": "Graph proposal",
+    "es": "Propuesta del grafo"
+  },
+  "Decisão do grafo": {
+    "pt": "Decisão do grafo",
+    "en": "Graph decision",
+    "es": "Decisión del grafo"
+  },
+  "Graph decision": {
+    "pt": "Decisão do grafo",
+    "en": "Graph decision",
+    "es": "Decisión del grafo"
+  },
+  "Decisión del grafo": {
+    "pt": "Decisão do grafo",
+    "en": "Graph decision",
+    "es": "Decisión del grafo"
+  },
+  "Ordem do grafo": {
+    "pt": "Ordem do grafo",
+    "en": "Graph order",
+    "es": "Orden del grafo"
+  },
+  "Graph order": {
+    "pt": "Ordem do grafo",
+    "en": "Graph order",
+    "es": "Orden del grafo"
+  },
+  "Orden del grafo": {
+    "pt": "Ordem do grafo",
+    "en": "Graph order",
+    "es": "Orden del grafo"
+  },
+  "Execução de exemplo": {
+    "pt": "Execução de exemplo",
+    "en": "Sample fill",
+    "es": "Ejecución de ejemplo"
+  },
+  "Sample fill": {
+    "pt": "Execução de exemplo",
+    "en": "Sample fill",
+    "es": "Ejecución de ejemplo"
+  },
+  "Ejecución de ejemplo": {
+    "pt": "Execução de exemplo",
+    "en": "Sample fill",
+    "es": "Ejecución de ejemplo"
+  },
+  "Posição do grafo": {
+    "pt": "Posição do grafo",
+    "en": "Graph position",
+    "es": "Posición del grafo"
+  },
+  "Graph position": {
+    "pt": "Posição do grafo",
+    "en": "Graph position",
+    "es": "Posición del grafo"
+  },
+  "Posición del grafo": {
+    "pt": "Posição do grafo",
+    "en": "Graph position",
+    "es": "Posición del grafo"
+  },
   "Conheça a comunidade": {
     "en": "Discover the community",
     "es": "Conoce la comunidad"
@@ -22687,6 +22866,126 @@
     "en": "Starknet grant programs",
     "es": "programas de subvenciones de Starknet"
   },
+  "A BETTEX pretende alcançar apostadores brasileiros e pessoas com experiência em cripto. O público central estimado é um núcleo de afinidade, não o limite de atuação do produto. Esses dados indicam escala, não clientes validados; a movimentação do mercado não corresponde à receita da BETTEX. Converter parte desse público em participantes e usuários recorrentes é uma hipótese comercial a validar.": {
+    "en": "BETTEX aims to reach Brazilian bettors and people with crypto experience. The estimated core audience is an affinity group, not the limit of the product's reach. These figures indicate scale, not validated customers; market transaction volume is not BETTEX revenue. Converting part of this audience into participants and recurring users is a commercial hypothesis to validate.",
+    "es": "BETTEX busca llegar a apostadores brasileños y personas con experiencia en cripto. El público central estimado es un núcleo de afinidad, no el límite de alcance del producto. Estos datos indican escala, no clientes validados; el volumen de operaciones del mercado no equivale a ingresos de BETTEX. Convertir parte de ese público en participantes y usuarios recurrentes es una hipótesis comercial por validar."
+  },
+  "A BETTEX pretende usar agentes de IA para analisar mercados e executar estratégias de trading dentro de mandatos e limites de risco. O staking do token dá acesso ao rateio do pool global quando há lucro elegível; não financia as operações nem garante pagamento.": {
+    "en": "BETTEX intends to use AI agents to analyze markets and execute trading strategies within mandates and risk limits. Token staking provides access to the allocation of the global pool when eligible profit exists; it does not finance operations or guarantee payment.",
+    "es": "BETTEX pretende usar agentes de IA para analizar mercados y ejecutar estrategias de trading dentro de mandatos y límites de riesgo. El staking del token da acceso al reparto del pool global cuando hay beneficio elegible; no financia las operaciones ni garantiza pagos."
+  },
+  "A leitura da BETTEX é que os ganhos da tecnologia podem se concentrar enquanto parte da população perde trabalho, salário e acesso a novas oportunidades. Os indicadores a seguir contextualizam esse risco; não comprovam que a IA já tenha causado esses resultados nem tornam esse cenário inevitável.": {
+    "en": "BETTEX's view is that the gains from technology may become concentrated while part of the population loses work, wages and access to new opportunities. The following indicators put this risk in context; they do not prove that AI has already caused these outcomes or make this scenario inevitable.",
+    "es": "La interpretación de BETTEX es que las ganancias de la tecnología pueden concentrarse mientras parte de la población pierde trabajo, salario y acceso a nuevas oportunidades. Los indicadores siguientes contextualizan ese riesgo; no prueban que la IA ya haya causado esos resultados ni hacen inevitable ese escenario."
+  },
+  "A oportunidade proposta é oferecer ao público de apostas uma experiência de investimento compreensível, com participação condicionada nos resultados de estratégias de trading. A linguagem pode ser familiar; os direitos, os custos e os riscos precisam ser explícitos. Essa migração ainda precisa ser validada com usuários e não promete recuperar perdas de apostas.": {
+    "en": "The proposed opportunity is to offer the betting audience an understandable investment experience, with conditional participation in trading strategy results. The language may be familiar; rights, costs and risks must be explicit. This transition still needs to be validated with users and does not promise to recover betting losses.",
+    "es": "La oportunidad propuesta es ofrecer al público de apuestas una experiencia de inversión comprensible, con participación condicionada en los resultados de estrategias de trading. El lenguaje puede ser familiar; los derechos, costos y riesgos deben ser explícitos. Esa transición aún debe validarse con usuarios y no promete recuperar pérdidas de apuestas."
+  },
+  "A proposta é operar estratégias de trading com IA e distribuir uma parcela do lucro elegível a quem participa pelo staking do token. Hoje, está disponível um demo visual: a operação com dinheiro real ainda não foi lançada.": {
+    "en": "The proposal is to run AI trading strategies and distribute a share of eligible profit to participants who stake the token. A visual demo is available today: real-money operations have not yet launched.",
+    "es": "La propuesta es operar estrategias de trading con IA y distribuir una parte del beneficio elegible entre quienes participan mediante el staking del token. Hoy está disponible una demo visual: la operación con dinero real aún no se ha lanzado."
+  },
+  "A tese da BETTEX é que buscar renda ou quitar dívidas por meio de apostas atribui ao jogo uma função de investimento. Quando os recursos usados são essenciais, a perda pode comprometer as contas da casa.": {
+    "en": "BETTEX's thesis is that seeking income or repaying debts through betting assigns gambling an investment function. When the funds used are essential, losses can compromise household bills.",
+    "es": "La tesis de BETTEX es que buscar ingresos o saldar deudas mediante apuestas atribuye al juego una función de inversión. Cuando los recursos utilizados son esenciales, las pérdidas pueden comprometer las cuentas del hogar."
+  },
+  "Apostar para obter renda ou quitar dívidas coloca recursos essenciais em risco. Para quem não tem reservas, a dependência do salário amplia essa vulnerabilidade. A BETTEX propõe outra forma de participação econômica, com risco de perda e sem renda garantida.": {
+    "en": "Betting to earn income or repay debts puts essential funds at risk. For those without savings, dependence on wages increases this vulnerability. BETTEX proposes another form of economic participation, with risk of loss and no guaranteed income.",
+    "es": "Apostar para obtener ingresos o saldar deudas pone en riesgo recursos esenciales. Para quienes no tienen reservas, la dependencia del salario aumenta esa vulnerabilidad. BETTEX propone otra forma de participación económica, con riesgo de pérdida y sin ingresos garantizados."
+  },
+  "O usuário participa pelo staking, sem escolher e acompanhar cada operação individual. A proposta combina operação tecnológica, regras verificáveis e participação condicionada nos resultados. O desempenho líquido das estratégias e a utilidade do produto ainda precisam ser demonstrados.": {
+    "en": "The user participates through staking, without having to select and monitor each individual trade. The proposal combines technology-driven operations, verifiable rules and conditional participation in results. The strategies' net performance and the product's usefulness still need to be demonstrated.",
+    "es": "El usuario participa mediante el staking, sin tener que elegir y seguir cada operación individual. La propuesta combina operación tecnológica, reglas verificables y participación condicionada en los resultados. El rendimiento neto de las estrategias y la utilidad del producto aún deben demostrarse."
+  },
+  "Indicadores de emprego, custo de vida e riscos de exclusão na transição tecnológica.": {
+    "en": "Employment indicators, cost of living and exclusion risks in the technological transition.",
+    "es": "Indicadores de empleo, costo de vida y riesgos de exclusión en la transición tecnológica."
+  },
+  "Musk apresenta a visão de máquinas substituindo o trabalho humano e de renda universal alta. A tese da BETTEX é outra: sem ampliar o acesso aos ganhos da tecnologia, a automação pode aprofundar a perda de renda e a exclusão antes de produzir prosperidade.": {
+    "en": "Musk presents a vision of machines replacing human work and of universal high income. BETTEX's thesis is different: without broader access to the gains from technology, automation may deepen income loss and exclusion before producing prosperity.",
+    "es": "Musk presenta la visión de máquinas que sustituyen el trabajo humano y de ingresos universales altos. La tesis de BETTEX es otra: sin ampliar el acceso a las ganancias de la tecnología, la automatización puede profundizar la pérdida de ingresos y la exclusión antes de producir prosperidad."
+  },
+  "Na aposta, o resultado depende do evento. Num token centrado no preço, depende da revenda. A BETTEX propõe também participação no lucro elegível de suas estratégias, sujeita às regras do staking.": {
+    "en": "In betting, the result depends on the event. With a price-focused token, it depends on resale. BETTEX also proposes participation in the eligible profit of its strategies, subject to staking rules.",
+    "es": "En una apuesta, el resultado depende del evento. En un token centrado en el precio, depende de la reventa. BETTEX también propone participación en el beneficio elegible de sus estrategias, sujeta a las reglas del staking."
+  },
+  "No estudo de": {
+    "en": "In the",
+    "es": "En el estudio de"
+  },
+  "O mint público inicial e o aporte de investidores-anjo são frentes distintas de financiamento. O mint tem destinação de 10% da oferta; os investidores têm 15% em vesting. Destinação de tokens não equivale a participação societária, valor de captação ou venda já realizada.": {
+    "en": "The initial public mint and angel investment are distinct funding channels. The mint is allocated 10% of the supply; investors have 15% subject to vesting. Token allocation does not equal equity ownership, a fundraising amount or a completed sale.",
+    "es": "El mint público inicial y la aportación de inversores ángeles son vías distintas de financiación. El mint tiene asignado el 10% de la oferta; los inversores tienen el 15% sujeto a vesting. La asignación de tokens no equivale a participación societaria, monto de captación ni una venta ya realizada."
+  },
+  "Público potencial não é uma base de compradores validada. Movimentação do mercado não é receita da BETTEX.": {
+    "en": "A potential audience is not a validated buyer base. Market transaction volume is not BETTEX revenue.",
+    "es": "El público potencial no es una base de compradores validada. El volumen de operaciones del mercado no equivale a ingresos de BETTEX."
+  },
+  "Tese da BETTEX: automação não garante prosperidade para todos.": {
+    "en": "BETTEX's thesis: automation does not guarantee prosperity for everyone.",
+    "es": "Tesis de BETTEX: la automatización no garantiza prosperidad para todos."
+  },
+  "Tese da BETTEX: o cenário apocalíptico": {
+    "en": "BETTEX's thesis: the apocalyptic scenario",
+    "es": "Tesis de BETTEX: el escenario apocalíptico"
+  },
+  "Valor total do aporte, condições de entrada, contrapartida em tokens e marcos de aplicação do capital ainda precisam ser definidos. Os 15% destinados a investidores não estabelecem, por si só, preço, valuation ou participação societária. Não há oferta formal de venda de tokens apresentada aqui.": {
+    "en": "The total investment amount, entry conditions, token consideration and capital deployment milestones still need to be defined. The 15% allocated to investors does not, by itself, establish a price, valuation or equity ownership. No formal token sale offer is presented here.",
+    "es": "El monto total de la aportación, las condiciones de entrada, la contraprestación en tokens y los hitos de aplicación del capital aún deben definirse. El 15% destinado a inversores no establece, por sí solo, precio, valoración ni participación societaria. Aquí no se presenta una oferta formal de venta de tokens."
+  },
+  "Valor, contrapartida e marcos": {
+    "en": "Amount, consideration and milestones",
+    "es": "Monto, contraprestación e hitos"
+  },
+  "de postos. Exposição não equivale a empregos eliminados: são estimativas de potencial técnico e barreiras de acesso, não desemprego futuro comprovado.": {
+    "en": "jobs. Exposure does not equal jobs eliminated: these are estimates of technical potential and access barriers, not proven future unemployment.",
+    "es": "puestos. La exposición no equivale a empleos eliminados: son estimaciones de potencial técnico y barreras de acceso, no desempleo futuro comprobado."
+  },
+  "tinham potencial de automação completa com as capacidades então disponíveis. A exposição era maior em empregos formais e qualificados, inclusive de colarinho branco; a exclusão digital limitava os benefícios potenciais da IA em cerca de": {
+    "en": "had the potential for full automation with the capabilities available at the time. Exposure was higher in formal and skilled jobs, including white-collar roles; digital exclusion limited the potential benefits of AI in around",
+    "es": "tenían potencial de automatización completa con las capacidades disponibles entonces. La exposición era mayor en empleos formales y cualificados, incluidos los de oficina; la exclusión digital limitaba los beneficios potenciales de la IA en cerca de"
+  },
+  "É um projeto DeFi e DEX, sem empresa física ou entidade a constituir. O fundador e o time administram inicialmente; agentes de IA assumirão gradualmente essas funções. A autonomia operacional do agente BETTEX é um objetivo futuro, dependente de validação, mandatos e controles verificáveis.": {
+    "en": "It is a DeFi and DEX project, with no physical company or entity to establish. The founder and team manage it initially; AI agents will gradually assume those functions. Operational autonomy for the BETTEX agent is a future objective, dependent on validation, mandates and verifiable controls.",
+    "es": "Es un proyecto DeFi y DEX, sin empresa física ni entidad por constituir. El fundador y el equipo lo administran inicialmente; agentes de IA asumirán gradualmente esas funciones. La autonomía operativa del agente BETTEX es un objetivo futuro, que depende de validación, mandatos y controles verificables."
+  },
+  "Uma comunidade aberta construindo um agente BETTEX para diferentes mercados, com o apostador brasileiro como público inicial.": {
+    "en": "An open community building a BETTEX agent for different markets, with Brazilian bettors as the initial audience.",
+    "es": "Una comunidad abierta que construye un agente BETTEX para distintos mercados, con el apostador brasileño como público inicial."
+  },
+  "Projeto em planejamento. Hoje existe apenas um demo visual: a operação com dinheiro real ainda não foi lançada.": {
+    "en": "Project in planning. Only a visual demo exists today: real-money operation has not launched.",
+    "es": "Proyecto en planificación. Hoy solo existe un demo visual: la operación con dinero real aún no se lanzó."
+  },
+  "Ilustração: uma pessoa no centro da rede do orquestrador BETTEX, ligado a análise, risco, execução, conciliação e mercados.": {
+    "en": "Illustration: a person at the center of the BETTEX orchestrator network, linked to analysis, risk, execution, reconciliation and markets.",
+    "es": "Ilustración: una persona en el centro de la red del orquestador BETTEX, conectada a análisis, riesgo, ejecución, conciliación y mercados."
+  },
+  "Orquestrador agêntico BETTEX, ilustração conceitual": {
+    "en": "BETTEX agentic orchestrator, conceptual illustration",
+    "es": "Orquestador agéntico BETTEX, ilustración conceptual"
+  },
+  "Análise": {
+    "en": "Analysis",
+    "es": "Análisis"
+  },
+  "A BETTEX pretende alcançar apostadores brasileiros e pessoas com experiência em cripto. O público central estimado é um núcleo de afinidade, não o limite de atuação do produto. Público potencial não é uma base de compradores validada. Movimentação do mercado não é receita da BETTEX. Converter parte desse público em participantes e usuários recorrentes é uma hipótese comercial a validar.": {
+    "en": "BETTEX aims to reach Brazilian bettors and people with crypto experience. The estimated core audience is an affinity group, not the limit of the product's reach. Potential audience is not a validated customer base. Market activity is not BETTEX revenue. Converting part of this audience into participants and recurring users is a commercial hypothesis to validate.",
+    "es": "BETTEX pretende llegar a apostadores brasileños y personas con experiencia en cripto. El público central estimado es un núcleo de afinidad, no el límite del alcance del producto. El público potencial no es una base de compradores validada. El movimiento del mercado no es ingreso de BETTEX. Convertir parte de este público en participantes y usuarios recurrentes es una hipótesis comercial por validar."
+  },
+  "Risco": {
+    "en": "Risk",
+    "es": "Riesgo"
+  },
+  "BTC": {
+    "en": "BTC",
+    "es": "BTC"
+  },
+  "SOL": {
+    "en": "SOL",
+    "es": "SOL"
+  },
   "Sem taxas de serviço da BETTEX; custos externos efetivos de rede e de mercado, quando aplicáveis.": {
     "en": "No BETTEX service fees; actual external network and market costs, where applicable.",
     "es": "Sin tarifas de servicio de BETTEX; costos externos efectivos de red y de mercado, cuando correspondan."
@@ -22694,5 +22993,49 @@
   "é uma rede de segunda camada do Ethereum que utiliza provas de validade STARK. Seus contratos são desenvolvidos em Cairo e as contas possuem abstração nativa. A alternativa exige implementação, carteiras e testes próprios; contratos Solidity e endereços EVM não são transferidos automaticamente.": {
     "en": "is an Ethereum layer-two network that uses STARK validity proofs. Its contracts are developed in Cairo and accounts have native abstraction. The alternative requires its own implementation, wallets, and testing; Solidity contracts and EVM addresses are not automatically transferred.",
     "es": "es una red de capa dos de Ethereum que utiliza pruebas de validez STARK. Sus contratos se desarrollan en Cairo y las cuentas poseen abstracción nativa. La alternativa requiere su propia implementación, carteras y pruebas; los contratos Solidity y las direcciones EVM no se transfieren automáticamente."
+  },
+  "Foto ilustrativa": {
+    "en": "Illustrative photo",
+    "es": "Foto ilustrativa"
+  },
+  "Crédito da foto": {
+    "en": "Photo credit",
+    "es": "Crédito de la foto"
+  },
+  "Mãos sobre anotações e um notebook em uma mesa de escritório, em foto ilustrativa": {
+    "en": "Hands over notes and a laptop on an office desk, illustrative photo",
+    "es": "Manos sobre notas y un portátil en un escritorio de oficina, foto ilustrativa"
+  },
+  "Pessoas conversando em uma feira de empregos, em foto ilustrativa": {
+    "en": "People talking at a job fair, illustrative photo",
+    "es": "Personas conversando en una feria de empleo, foto ilustrativa"
+  },
+  "Pessoas caminhando diante de uma entrada de estação de metrô em um distrito financeiro de Londres, em foto ilustrativa": {
+    "en": "People walking in front of a subway station entrance in a London financial district, illustrative photo",
+    "es": "Personas caminando frente a la entrada de una estación de metro en un distrito financiero de Londres, foto ilustrativa"
+  },
+  "Trabalhador de uniforme laranja em obra viária no Distrito Federal, em foto ilustrativa": {
+    "en": "Worker in an orange uniform at a road construction site in the Federal District, illustrative photo",
+    "es": "Trabajador con uniforme naranja en una obra vial del Distrito Federal, foto ilustrativa"
+  },
+  "Pessoas em um ponto de ônibus com vendedores ambulantes no Rio de Janeiro, em foto ilustrativa": {
+    "en": "People at a bus stop with street vendors in Rio de Janeiro, illustrative photo",
+    "es": "Personas en una parada de autobús con vendedores ambulantes en Río de Janeiro, foto ilustrativa"
+  },
+  "Vendedora ambulante ao lado de um carrinho de rua em um parque, em foto ilustrativa": {
+    "en": "Street vendor beside a street cart in a park, illustrative photo",
+    "es": "Vendedora ambulante junto a un carrito callejero en un parque, foto ilustrativa"
+  },
+  "Mesa de roleta de cassino com fichas, imagem ilustrativa do público apostador": {
+    "en": "Casino roulette table with chips, illustrative image of the betting audience",
+    "es": "Mesa de ruleta de casino con fichas, imagen ilustrativa del público apostador"
+  },
+  "Moeda digital azul e dourada com a marca BTEX, imagem ilustrativa do público cripto": {
+    "en": "Blue and gold digital coin with the BTEX mark, illustrative image of the crypto audience",
+    "es": "Moneda digital azul y dorada con la marca BTEX, imagen ilustrativa del público cripto"
+  },
+  "Imagem ilustrativa, não evidência de público": {
+    "en": "Illustrative image, not audience evidence",
+    "es": "Imagen ilustrativa, no evidencia de público"
   }
 }

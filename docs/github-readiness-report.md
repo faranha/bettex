@@ -1,5 +1,84 @@
 # GitHub and technical-review preparation report
 
+## Current preparation — 2026-10-11
+
+**Prepared for code review and owner-controlled GitHub integration, not financial
+activation. Automatic synchronization remains paused. No commit, push or publication
+was performed during this preparation.**
+
+- Added a current-state documentation index, product/reference matrix, demo guide,
+  data-provenance and arithmetic explanation, testnet matrix, technical-history map
+  and final integration checklist. Canonical decisions explain the reasons.
+- Reviewed the demo and preserved testnet logic. The real current API does **not**
+  mount `src/routes/index.ts`; it blocks operational requests and does not initialize
+  the old account/database/RPC routes. The presence of that router file is not
+  evidence that its endpoints are available.
+- Clarified that generated statement balances and allocated profits reconcile
+  within fixtures, not against independently observed transactions.
+- Preserved contracts, chain state, custody, credentials, authorizations, economics
+  and existing data. Local/public runtime safety throws remain in place.
+- Separated server-side wallet encryption/generation into an infrastructure adapter,
+  preserving key derivation, AAD, envelope format and implementation. Three focused
+  wallet/encryption tests passed, including identity mismatch and missing configuration.
+- Identified individual legacy-file owners and one bounded shared-schema exception.
+  This registers architectural debt; it does not claim that distributed services
+  have already been extracted.
+- Corrected stale assertions for the current roadmap, localized navigation,
+  visual page, compact footer and visual environment banner. No operational
+  boundary was loosened to satisfy a test.
+- Added current API isolation and visual-demo/graph consistency to the quality
+  runner. SEO image-size checking is portable and does not require ImageMagick
+  to audit versioned JPEGs.
+
+### Verification evidence
+
+The first full historical runner completed 33 groups: 27 passed and 6 failed.
+Lint, architecture and obsolete UI assertions were corrected. The three
+operational HTTP/runtime integrations remain **unverified/incompatible**, not passed.
+
+The current-product profile completed 34 groups: 33 passed initially; its remaining
+UI assertions were corrected and the group passed a focused rerun (95 tests).
+All 34 current-profile groups therefore have passing evidence, without a repeated
+full execution. Final lint also passed.
+
+Passed coverage includes TypeScript, generated OpenAPI clients, backend models,
+contracts/local mock-EVM tests, builds, localization, secrets/dependency checks,
+visual transport, real current API denial of 20 mutation requests, graph/history
+consistency, server tests and SEO/social-image checks.
+
+Local, Git-ignored evidence:
+
+- `generated-artifacts/github-preparation/quality.json`: original reference attempt.
+- `generated-artifacts/github-preparation/current.json`: complete current attempt.
+- `generated-artifacts/github-preparation/current-retry.json`: focused correction.
+- `generated-artifacts/github-preparation/current-final.json`: consolidated evidence.
+
+The managed site and API workflows restarted successfully. An anonymous desktop
+capture of `/app/central` loaded the visual experience in Portuguese without a
+browser runtime error. This was an initial-viewport check, not a full interaction
+or accessibility audit. The dense spatial graph still warrants a focused review
+of label overlap under rotation, zoom and narrow viewports; this preparation does
+not claim that visual limitation is resolved.
+
+The GitHub Actions workflow now selects `quality:current`. **No remote Actions
+execution is claimed.** `pnpm quality` still exposes the full historical checks.
+See [testing.md](testing.md) for exact exclusions and prerequisites.
+
+### Remaining gates
+
+1. Owner review of the diff, destination, rights/provenance and distribution license.
+   Existing MIT package metadata is not a newly approved repository-wide license.
+2. Owner-controlled final GitHub integration and confirmation of remote CI.
+3. Separate isolated operational harness and economic compatibility review:
+   preserved fee-bearing purchase/withdrawal paths do not establish compliance
+   with the current no-service-fee policy.
+4. Separate public-testnet validation, legal/security review and authorization
+   before any activation; none is implied by this repository preparation.
+
+The records below are historical. Their account availability, first-visit language,
+quality results, authentication state and synchronization status must not be used
+as observations of the current visual product.
+
 ## Disposition
 
 **Automatic synchronization implemented locally; activation pending authenticated Git transport.**

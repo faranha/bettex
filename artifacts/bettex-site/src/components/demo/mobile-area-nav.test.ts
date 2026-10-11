@@ -8,7 +8,8 @@ test('app pages use the shared mobile area nav and keep desktop nav hidden on mo
   assert.match(header, /<MobileAreaNav current=\{view\}/);
   assert.match(header, /className="[^"]*h-14[^"]*">\s*<MobileAreaNav/);
   assert.match(header, /className="hidden[^"]*sm:block"/);
-  assert.match(r('../../App.tsx'), /data-testid="app-shell"><AppHeader \/><DemoPage \/>/);
+  assert.match(r('../../App.tsx'), /data-testid="app-shell"><AppHeader \/><InterfaceDemoPage \/>/);
+  assert.match(r('../../App.tsx'), /<InterfaceDemoProvider>/);
   assert.doesNotMatch(r('../../pages/demo.tsx'), /<MobileAreaNav/);
   assert.doesNotMatch(r('../alpha-trading/AlphaTradingPanel.tsx'), /<MobileAreaNav/);
   assert.doesNotMatch(r('../alpha-trading/AlphaTradingPanel.tsx'), /<nav[^>]*className="flex flex-wrap/);

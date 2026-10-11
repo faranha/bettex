@@ -17,11 +17,13 @@ export function AudienceOverlap() {
     <div className="pb-overlap__main">
       <ul className="pb-overlap__metrics">
         <li className="pb-overlap__metric" data-testid="audience-betting-labels">
+          <span className="pb-overlap__metric-media"><img src={`${import.meta.env.BASE_URL}pitch-media/casino-roulette.jpg`} alt={t('Mesa de roleta de cassino com fichas, imagem ilustrativa do público apostador')} loading="lazy" decoding="async" style={{ objectPosition: '50% 30%' }} /><span className="pb-overlap__metric-badge mono">{t('Foto ilustrativa')}</span></span>
           <span className="pb-overlap__metric-role mono">{t('Público potencial')}</span>
           <span className="pb-overlap__metric-label">{t('Apostadores')}</span>
           <span className="pb-overlap__metric-value">≈ {bet} <small>{t('milhões')}</small></span>
         </li>
         <li className="pb-overlap__metric" data-testid="audience-crypto-labels">
+          <span className="pb-overlap__metric-media"><img src={`${import.meta.env.BASE_URL}pitch-media/investment-markets.jpg`} alt={t('Tela de análise de mercados, imagem ilustrativa do mercado cripto')} loading="lazy" decoding="async" style={{ objectPosition: '50% 50%' }} /><span className="pb-overlap__metric-badge mono">{t('Foto ilustrativa')}</span></span>
           <span className="pb-overlap__metric-role mono">{t('Público potencial')}</span>
           <span className="pb-overlap__metric-label">{t('Já tiveram')} {t('cripto')}</span>
           <span className="pb-overlap__metric-value">≈ {cry} <small>{t('milhões')}</small></span>

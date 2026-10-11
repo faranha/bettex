@@ -1,7 +1,7 @@
-import fixture from './fixture.json';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { localHistoryRoute } from './history-demo-api';
-import { completeDemoData } from './complete-demo-data';
+import { visualDashboard } from './demo-snapshot';
+export { visualDashboard } from './demo-snapshot';
 
 export const INTERFACE_DEMO = true;
 export const NOTICE_EVENT = 'bettex-interface-demo-notice';
@@ -11,18 +11,6 @@ export const openDemoNotice = () => {
 export function interfaceDemoPath(path: string) {
   return /\/(?:app|demo|sign-in|sign-up)(?:\/|$)/.test(path);
 }
-const openedAt = Date.now();
-export function visualDashboard(): DemoDashboard {
-  const delta = openedAt - fixture.capturedAt;
-  const shift = (v: unknown): unknown => {
-    if (typeof v === 'string' && /^\d{4}-\d\d-\d\dT/.test(v)) return new Date(Date.parse(v) + delta).toISOString();
-    if (Array.isArray(v)) return v.map(shift);
-    if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, value]) => [k, shift(value)]));
-    return v;
-  };
-  return completeDemoData(shift(fixture.dashboard) as DemoDashboard);
-}
-
 let historySource: DemoDashboard | null = null;
 
 /** Fail closed: legacy mounted query/mutation paths cannot reach real APIs. */
@@ -40,6 +28,8 @@ export function installVisualDemoTransport() {
     const staticAsset = /\.(?:js|mjs|css|svg|png|jpe?g|webp|gif|ico|woff2?|ttf|map)$/i.test(url.pathname);
     if (staticAsset && !url.pathname.includes('/api/') && url.origin === window.location.origin) return realFetch(input, init);
     const path = url.pathname.slice(url.pathname.indexOf('/api/'));
+    // Explicit public-data exception: unsigned quotes only. Every mutation and operational read stays blocked.
+    if (path === '/api/demo/polymarket' && url.origin === window.location.origin) return realFetch(input, init);
     if (path === '/api/demo/dashboard') return Response.json(visualDashboard());
     if (path === '/api/account/session') return Response.json({ account: null });
     const local = localHistoryRoute(path, url.searchParams, historySource ??= visualDashboard());

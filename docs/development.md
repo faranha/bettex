@@ -23,6 +23,10 @@ credentials.
 
 ## Database
 
+The current visual demo does not initialize the operational database. This
+section is for preserved reference infrastructure, not a prerequisite for viewing
+`/app`. Do not prepare or migrate an existing database during repository cleanup.
+
 Provision a new empty development PostgreSQL database and set `DATABASE_URL`.
 On a new clone only:
 
@@ -49,11 +53,10 @@ This launches the API on `API_PORT` (8080 by default), Vite on `SITE_PORT`
 artifact proxy owns routing. The launcher sets development mode and pauses
 financial execution; it does not start or fund any EVM.
 
-Open the site and select **Open app**. Public-production builds deliberately
-show an in-development demo, not the operational development dashboard.
-Clerk account features require the correct tenant and public/secret keys.
-Development native test accounts do not require Clerk and must never be treated
-as production authentication.
+Before starting the launcher, run `pnpm sync:pause` while preparing the final
+GitHub integration. Its watcher must not upload changes before owner review.
+Open the site and select **Open demo**. `/app` is visual in development and
+production; preserved account adapters are not available in the current app.
 
 ## In Replit
 
@@ -62,37 +65,38 @@ Use the existing managed workflows `artifacts/api-server: API Server` and
 The separate `github-sync` console workflow runs the watcher while the workspace
 is running. It has no customer-facing interface or HTTP port.
 
-For the optional, explicitly local EVM:
-
-```sh
-PORT=3001 NODE_ENV=development pnpm --filter @workspace/bettex-contracts local:runtime
-```
-
-This binds to loopback, chain 31337, and free mock assets. It is not Arbitrum
-Sepolia, mainnet, or a durable chain. A restart creates a new chain epoch.
+The former local and public runtime scripts are explicitly disabled. Do not
+remove their safety throws or start/fund a chain to view the demo.
+Library tests create their own isolated EVM without activating the runtime.
+See [testnet scope](testnets/README.md).
 
 ## Checks and builds
 
 ```sh
 pnpm sync:check
-pnpm quality
+pnpm quality:current
 PORT=5173 BASE_PATH=/ pnpm build
 pnpm --filter @workspace/api-spec codegen
 ```
 
-`quality` includes lint, known-secret patterns including history, dependency
+`quality:current` includes lint, known-secret patterns including history, dependency
 policy, architectural boundaries, technical-reference tests, generated API
-contracts, TypeScript, backend/domain and account isolation tests, local-EVM
+contracts, TypeScript, backend/domain models, visual API isolation, local-EVM
 contract tests, frontend builds/localization and static-server tests.
-It requires a development database and `pg_dump`/`pg_restore` for its isolated
-database fixture. The fixture copies table structure, not user data, and cleans
-up only its own schema. Contract tests run an isolated local EVM.
+The full `quality` reference profile retains historical HTTP/database integration
+checks whose operational prerequisites are disabled. It is not claimed green.
+See [profiles and limitations](testing.md). Contract tests run an isolated local EVM.
 
 Code generation must not leave changes in generated API files after a clean CI
 run. Do not hand-edit those clients. CI builds and tests only; it does not invoke
 `sync:once`, push Git changes, deploy, or send real transactions.
 
 ## End of every AI task
+
+**During final repository preparation, do not run the sending commands below.**
+Leave the watcher paused; final integration is controlled by the owner.
+The following describes the previously authorized normal synchronization workflow,
+not authorization to upload this preparation.
 
 Run appropriate checks and then:
 

@@ -13,7 +13,7 @@ try {
   const runtime = await import(pathToFileURL(file).href);
   let forwarded = 0, notices = 0;
   globalThis.window = {
-    location: { href: 'https://demo.example/en/app', pathname: '/en/app' },
+    location: { href: 'https://demo.example/en/app', origin: 'https://demo.example', pathname: '/en/app' },
     fetch: async () => { forwarded++; return new Response('asset'); },
     dispatchEvent: () => { notices++; },
   };
@@ -67,10 +67,13 @@ try {
     }
   }
   assert.equal(forwarded, 0, 'No API, upload or RPC request may reach the network');
+  await window.fetch('/api/demo/polymarket');
+  assert.equal(forwarded, 1, 'Only the explicitly requested same-origin public quote GET may reach the server');
+  assert.equal((await window.fetch('https://untrusted.example/api/demo/polymarket')).status, 410);
   const blockedMutations = routes.length * mutationTargets.length * 4;
   assert.equal(notices, blockedMutations);
   const original = runtime.visualDashboard();
   original.balances.usdc = 0;
   assert.ok(runtime.visualDashboard().balances.usdc > 0, 'Views must receive independent immutable examples');
-  console.log(`Visual demo: ${routes.length} routes including Treasury/History in PT/EN/ES and legacy routes, mock records/addresses, stable lottery, ${blockedMutations} mutations blocked, only local read-only History endpoints answered, other operational GET/RPC reads blocked, zero network requests.`);
+  console.log(`Visual demo: ${routes.length} routes, ${blockedMutations} mutations blocked, mock records preserved; only the requested public Polymarket quote GET is forwarded, all other operational reads/RPC blocked.`);
 } finally { await rm(temp, { recursive: true, force: true }); }

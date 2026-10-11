@@ -644,3 +644,45 @@ mtime_ms = 1791718769011
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/e0cac26c-5e96-47df-80ca-391c2bf7e805/88905579-a5f6-477e-bc65-14dc8de6a09e"
 storage_version_token = "1791718793465099"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "eSozEjf5QGCrb8b09NXYS"
+uri = "file://generated-artifacts/pitch-backups/bettex-pitch-before-editorial-2026-10-11-130515.zip"
+type = "unspecified"
+title = "BETTEX — versão anterior do Pitch"
+description = "Versão anterior à revisão editorial: fontes, traduções, mídias do Pitch e HTML PT/EN/ES, com instruções de restauração."
+logical_id = "5845ed66-75a2-4722-858c-ce7f40dcb6f1"
+content_hash = "sha256:347f25172915c0379ad7fef01c721e335104e9d3112a5eb218a5929abbfc90c8"
+size = 5141809
+mtime_ms = 1791723917670
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/5845ed66-75a2-4722-858c-ce7f40dcb6f1/7178e346-79ce-4513-a343-f3a6e0c992eb"
+storage_version_token = "1791724432403512"
+content_type = "application/octet-stream"
+
+[[outputs]]
+id = "Q-zDNU6s5EvF5ORZviOw3"
+uri = "file://artifacts/bettex-site/public/social/home-community.jpg"
+type = "image"
+title = "BETTEX — nova imagem de compartilhamento"
+description = "Homepage em português, 1200 × 630. Comunidade, tecnologia DeFi e IA; sem promessa de rendimento."
+logical_id = "dd616beb-bb8a-4e3f-8235-28de4830dd0d"
+content_hash = "sha256:7d93a06540dd536f9ecc53bc1384374b28301d5b538feab85ffdcd07a03556e3"
+size = 83828
+mtime_ms = 1791730193665
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/dd616beb-bb8a-4e3f-8235-28de4830dd0d/9a3ed98f-891e-4e82-9c0a-b74c14470b54"
+storage_version_token = "1791730472620831"
+content_type = "image/jpeg"
+
+[[outputs]]
+id = "3M0ns1jsqwACXHjZ_bdQK"
+uri = "file://artifacts/bettex-site/public/social/pitch-community.jpg"
+type = "image"
+title = "Pitch BETTEX — compartilhamento"
+description = "Versão em português para encaminhar o projeto. As versões em inglês e espanhol também foram preparadas."
+logical_id = "8c314e50-0cd5-4284-8c02-d9b560936517"
+content_hash = "sha256:4af73cf046cc6ef94957de05bc3700b5f5ef8d40dd5723c3e60561a53fff16c9"
+size = 77320
+mtime_ms = 1791730196239
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8c314e50-0cd5-4284-8c02-d9b560936517/804f367e-e5da-4df2-9665-405a503dd14d"
+storage_version_token = "1791730473486313"
+content_type = "image/jpeg"

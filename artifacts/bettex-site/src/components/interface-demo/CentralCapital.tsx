@@ -9,21 +9,46 @@ const num = (v: string) => Number(v) / 1e6;
 export function CentralCapital({ onAction }: { onAction: () => void }) {
   const { x, loc } = useFmt(); const L = useL(); const lc = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
   const u = (v: string) => `${dec6(v, lc)} USDC`;
-  const total = num(CAPITAL.allocated); const pct = (v: string) => `${(num(v) / total * 100).toFixed(1)}%`;
-  const used = num(CAPITAL.allocated) - num(CAPITAL.reserved) - num(CAPITAL.available);
+  const pctOf = (v: string, whole: string) => `${(num(v) / (num(whole) || 1) * 100).toFixed(2)}%`;
+  const positions = String(Number(CAPITAL.agentCommitted) - Number(CAPITAL.orderReserved));
+  const treasury: [string, string, string, string][] = [
+    [x('Reserva protegida', 'Protected reserve', 'Reserva protegida'), CAPITAL.reserve, '#12372A', 'b'],
+    [x('Liquidez do pool', 'Pool liquidity', 'Liquidez del pool'), CAPITAL.pool, '#5B6B85', 'p'],
+    [x('Comprometido', 'Committed', 'Comprometido'), CAPITAL.reserved, '#C9A227', 'c'],
+    [x('Livre', 'Free', 'Libre'), CAPITAL.available, '#0E7C6B', 'f'],
+  ];
+  const crypto: [string, string, string][] = [
+    [x('Em posições', 'In positions', 'En posiciones'), positions, '#12372A'],
+    [x('Reservado em ordens abertas', 'Reserved in open orders', 'Reservado en órdenes abiertas'), CAPITAL.orderReserved, '#C9A227'],
+    [x('Livre', 'Free', 'Libre'), CAPITAL.agentAvailable, '#0E7C6B'],
+  ];
   return <section className={card} data-testid="alpha-capital" aria-label={x('Capital e controles de risco', 'Capital and risk controls', 'Capital y controles de riesgo')}>
     <h2 className="display text-lg font-extrabold">{x('Capital e controles de risco', 'Capital and risk controls', 'Capital y controles de riesgo')}</h2>
-    <p className="mt-1 text-xs text-[#5B6B85]">{x('Capital e limites pertencem à política e à tesouraria, não aos agentes. Valores simulados de amostra.', 'Capital and limits belong to policy and treasury, not to agents. Simulated sample values.', 'El capital y los límites pertenecen a la política y la tesorería, no a los agentes. Valores simulados de muestra.')}</p>
-    <dl className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-      <KV k={x('Orçamento simulado', 'Simulated budget', 'Presupuesto simulado')} v={u(CAPITAL.total)} />
-      <KV k={x('Alocado ao Cripto', 'Allocated to Crypto', 'Asignado a Cripto')} v={u(CAPITAL.allocated)} />
-      <KV k={x('Reservado em ordens', 'Reserved in orders', 'Reservado en órdenes')} v={u(CAPITAL.reserved)} />
-      <KV k={x('Disponível', 'Available', 'Disponible')} v={u(CAPITAL.available)} /></dl>
-    <div className="mt-3 flex h-3 overflow-hidden rounded-full bg-[#EFE9DA]" role="img" aria-label={x('Divisão do capital alocado', 'Split of allocated capital', 'División del capital asignado')}>
-      <div className="bg-[#12372A]" style={{ width: `${used / total * 100}%` }} /><div className="bg-[#C9A227]" style={{ width: pct(CAPITAL.reserved) }} /><div className="bg-[#0E7C6B]" style={{ width: pct(CAPITAL.available) }} /></div>
-    <p className="mt-1 text-[11px] text-[#5B6B85]">{x('Escuro: em posições · Dourado: reservado · Verde: disponível', 'Dark: in positions · Gold: reserved · Green: available', 'Oscuro: en posiciones · Dorado: reservado · Verde: disponible')}</p>
-    <div className="mt-3"><p className="text-sm font-bold">{x('Exposição', 'Exposure', 'Exposición')}</p>
-      <ul className="mt-1 grid gap-1 text-sm">{CAPITAL.exposure.map(e => <li key={e.asset}>{e.asset.toUpperCase()} · {POLICY.strategy} · {u(e.units)}</li>)}</ul></div>
+    <p className="mt-1 text-xs text-[#5B6B85]">{x('Capital e limites pertencem à política e à tesouraria, não aos agentes. A tesouraria inteira não é o capital do agente Cripto. Valores ilustrativos.', 'Capital and limits belong to policy and the Treasury, not to agents. The whole Treasury is not the Crypto agent’s capital. Illustrative values.', 'El capital y los límites pertenecen a la política y la tesorería, no a los agentes. La tesorería completa no es el capital del agente Cripto. Valores ilustrativos.')}</p>
+    <h3 className="mt-3 font-bold">{x('Tesouraria inteira', 'Whole Treasury', 'Tesorería completa')}</h3>
+    <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3" data-testid="capital-treasury">
+      <KV k={x('Ativos totais', 'Total assets', 'Activos totales')} v={u(CAPITAL.total)} />
+      <KV k={x('Capital de trabalho', 'Working capital', 'Capital de trabajo')} v={u(CAPITAL.allocated)} />
+      <KV k={x('Comprometido, incluindo posições', 'Committed, including positions', 'Comprometido, incluyendo posiciones')} v={u(CAPITAL.reserved)} />
+      <KV k={x('Livre do trabalho', 'Free working capital', 'Libre del trabajo')} v={u(CAPITAL.available)} />
+      <KV k={x('Reserva protegida', 'Protected reserve', 'Reserva protegida')} v={u(CAPITAL.reserve)} />
+      <KV k={x('Liquidez do pool', 'Pool liquidity', 'Liquidez del pool')} v={u(CAPITAL.pool)} /></dl>
+    <div className="mt-3 flex h-3 overflow-hidden rounded-full bg-[#EFE9DA]" role="img" aria-label={x('Divisão dos ativos totais da tesouraria', 'Split of total Treasury assets', 'División de los activos totales de la tesorería')}>
+      {treasury.map(([k, v, c]) => <div key={k} style={{ width: pctOf(v, CAPITAL.total), background: c }} />)}</div>
+    <ul className="mt-1 flex flex-wrap gap-x-3 text-[11px] text-[#5B6B85]">{treasury.map(([k, v, c]) => <li key={k}><span className="mr-1 inline-block h-2 w-2 rounded-full" style={{ background: c }} />{k} {pctOf(v, CAPITAL.total)}</li>)}</ul>
+    <p className="mt-1 text-[11px] text-[#5B6B85]">{x('Soma das quatro faixas = ativos totais. O comprometido já inclui as posições; a recompra é carteira separada e fica fora.', 'The four bands sum to total assets. Committed already includes positions; the buyback is a separate wallet and stays outside.', 'La suma de las cuatro franjas es igual a los activos totales. Lo comprometido ya incluye las posiciones; la recompra es una cartera separada y queda fuera.')}</p>
+    <h3 className="mt-4 font-bold">{x('Carteira do agente Cripto', 'Crypto agent wallet', 'Cartera del agente Cripto')}</h3>
+    <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3" data-testid="capital-crypto">
+      <KV k={x('Alocado ao Cripto', 'Allocated to Crypto', 'Asignado a Cripto')} v={u(CAPITAL.agentAllocated)} />
+      <KV k={x('Comprometido do Cripto', 'Crypto committed', 'Comprometido de Cripto')} v={u(CAPITAL.agentCommitted)} />
+      <KV k={x('Livre do Cripto', 'Crypto free', 'Libre de Cripto')} v={u(CAPITAL.agentAvailable)} /></dl>
+    <div className="mt-3 flex h-3 overflow-hidden rounded-full bg-[#EFE9DA]" role="img" aria-label={x('Divisão do capital alocado ao Cripto', 'Split of capital allocated to Crypto', 'División del capital asignado a Cripto')}>
+      {crypto.map(([k, v, c]) => <div key={k} style={{ width: pctOf(v, CAPITAL.agentAllocated), background: c }} />)}</div>
+    <ul className="mt-1 flex flex-wrap gap-x-3 text-[11px] text-[#5B6B85]">{crypto.map(([k, v, c]) => <li key={k}><span className="mr-1 inline-block h-2 w-2 rounded-full" style={{ background: c }} />{k} {u(v)}</li>)}</ul>
+    <div className="mt-3"><p className="text-sm font-bold">{x('Exposição do Cripto', 'Crypto exposure', 'Exposición de Cripto')}</p>
+      <ul className="mt-1 grid gap-1 text-sm" data-testid="capital-exposure">{CAPITAL.exposure.map(e => <li key={e.asset}>{e.asset.toUpperCase()} · {POLICY.strategy} · {u(e.units)}</li>)}
+        <li>{x('Reserva de ordens abertas', 'Open-order reserve', 'Reserva de órdenes abiertas')} · {u(CAPITAL.orderReserved)}</li>
+        <li className="font-bold">{x('Total comprometido do Cripto', 'Crypto committed total', 'Total comprometido de Cripto')} · {u(CAPITAL.agentCommitted)}</li></ul></div>
     <h3 className="mt-4 font-bold">{x('Controles de risco', 'Risk controls', 'Controles de riesgo')}</h3>
     <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3" data-testid="risk-controls">
       <KV k={x('Versão', 'Version', 'Versión')} v={`${POLICY.version} / ${POLICY.strategy}`} /><KV k={x('Máx. por ordem', 'Max per order', 'Máx. por orden')} v={u(POLICY.maxOrder)} />

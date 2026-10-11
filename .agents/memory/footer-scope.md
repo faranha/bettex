@@ -1,7 +1,13 @@
 ---
 name: Escopo do rodapé
-description: Rodapé compacto com convite ao Telegram, sem redes pessoais do fundador.
+description: Rodapé público compartilhado entre homepage, Pitch e Documentação, com a mesma imagem e convite à comunidade.
 ---
+
+Pitch e Documentação devem ter o mesmo rodapé e a mesma imagem de rodapé da página inicial.
+
+**Why:** O criador pediu: “o pitch tem que ter o mesmo rodapeh e imagem de rodapeh da pagina inicial, da mesma forma a documentacao”.
+
+**How to apply:** Reutilizar o rodapé público completo nessas três páginas, preservando o banner ilustrado no desktop e no celular. Não substituir pelo rodapé compacto do aplicativo.
 
 The app must share the website's compact navigation footer, but not the large blue promotional section with the community image.
 
@@ -39,8 +45,8 @@ O botão “Entre na comunidade” desse rodapé deve ser azul, não amarelo.
 
 **How to apply:** Preservar o azul também nos estados de interação, com texto e ícone legíveis, sem estender essa alteração a outros convites não solicitados.
 
-Na arte do banner final do site, a IA e o grafo precisam compor a própria ilustração, não um painel separado.
+Na arte do banner final do site, a IA e o grafo precisam compor a própria ilustração, não um painel separado. O criador aprovou essa composição e pediu BETTEX no centro, com linhas, contornos e brilhos mais suaves.
 
-**Why:** O criador mostrou o banner de encerramento e pediu que “a IA, o Grafo, tem que se combinar na arte do rodapé do site”.
+**Why:** O criador pediu que “a IA, o Grafo, tem que se combinar na arte do rodapé do site” e depois confirmou “isso ficou bom”, corrigindo o nome central e a aparência grosseira das linhas.
 
-**How to apply:** Manter a rede e o núcleo de IA visíveis também no celular, sem cobrir a mensagem ou os botões. Essa arte pertence ao site; não alterar a Central da IA do aplicativo por esse pedido.
+**How to apply:** Preservar a composição aprovada com a rede e BETTEX no centro, também no celular; evitar traços pesados e brilho excessivo, sem cobrir a mensagem ou os botões. Essa arte pertence ao site; não alterar a Central da IA do aplicativo por esse pedido.

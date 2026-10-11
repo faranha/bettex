@@ -41,7 +41,7 @@ export function MarketOpportunity() {
     </div>;
   const opportunity = <div className="pb-market__opportunity">
       <h3 className="display">Já existe público. Já existe volume financeiro.</h3>
-      <p>A BETTEX pretende alcançar apostadores brasileiros e pessoas com experiência em cripto. O público central estimado é um núcleo de afinidade, não o limite de atuação do produto.</p>
+      <p>A BETTEX pretende alcançar apostadores brasileiros e pessoas com experiência em cripto. O público central estimado é um núcleo de afinidade, não o limite de atuação do produto. Público potencial não é uma base de compradores validada. Movimentação do mercado não é receita da BETTEX. Converter parte desse público em participantes e usuários recorrentes é uma hipótese comercial a validar.</p>
     </div>;
   return <div className="pb-market">
     <PitchSlider id="publico-mercado-slider" tone="light" label={['Público e mercado em blocos', 'Audience and market blocks', 'Público y mercado por bloques']} slides={[

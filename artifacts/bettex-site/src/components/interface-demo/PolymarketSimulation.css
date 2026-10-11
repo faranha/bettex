@@ -1,0 +1,28 @@
+.pms{--c:#35D6FF;--a:#F2C14E;--g:#46E3B0;display:grid;gap:.8rem;min-width:0;padding:.8rem;border:1px solid #1B2A33;border-radius:1rem;background:#05080C;color:#CFE9F2;font:13px/1.45 ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace}
+.pms h3{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#E7F6FB}
+.pms-lane{display:flex;flex-wrap:wrap;gap:.4rem;font-size:11px;color:#7E97A4}
+.pms-lane b{color:var(--c)}
+.pms-tabs{display:flex;flex-wrap:wrap;gap:4px}
+.pms button,.pms select,.pms input{min-height:44px;border:1px solid #1E3441;border-radius:6px;background:#0B141A;color:#CFE9F2;font:inherit;padding:0 .7rem;max-width:100%;min-width:0}
+.pms button{cursor:pointer;font-weight:700}
+.pms button.on{background:#0E3A47;border-color:var(--c);color:#7DE6FF}
+.pms button:disabled{opacity:.5;cursor:not-allowed}
+.pms :focus-visible{outline:2px solid #fff;outline-offset:2px}
+.pms-grid{display:grid;gap:.8rem;grid-template-columns:1fr 1fr}
+.pms-box{display:grid;gap:.5rem;align-content:start;min-width:0;padding:.7rem;border-radius:.7rem}
+.pms-real{border:1px solid #1E3441;background:#070C11}
+.pms-sim{border:1px dashed var(--a);background:#120F06}
+.pms-sim h3{color:var(--a)}
+.pms dl{display:grid;gap:.3rem;margin:0}
+.pms dl div{display:flex;justify-content:space-between;gap:.6rem;border-bottom:1px dashed #1B2A33;padding-bottom:.25rem}
+.pms dt{color:#7E97A4}.pms dd{margin:0;text-align:right;font-weight:700;color:#E7F6FB;overflow-wrap:anywhere}
+.pms label{display:grid;gap:.25rem;font-size:11px;color:#9FB6C1}
+.pms a{color:var(--c);text-decoration:underline;overflow-wrap:anywhere}
+.pms-q{color:#E7F6FB;overflow-wrap:anywhere}
+.pms-note{font-size:11px;color:var(--a)}
+.pms-err{padding:.5rem;border:1px solid #8F3A4B;border-radius:6px;background:#2A1219;color:#FFB4C2;font-size:12px}
+.pms-warn{padding:.5rem;border:1px solid #8F7A38;border-radius:6px;background:#241E0B;color:var(--a);font-size:12px}
+.pms-sk{height:5rem;border-radius:.7rem;background:#0E1A22;animation:pmsp 1.2s ease-in-out infinite alternate}
+@keyframes pmsp{to{opacity:.4}}
+@media (max-width:768px){.pms-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.pms-sk{animation:none}}

@@ -20,10 +20,10 @@ export function MarketsFloorSection() {
               <circle cx="200" cy="200" r="100" stroke="rgba(95,134,255,.3)" strokeDasharray="14 10" />
               <path d="M200 10V390M10 200H390" stroke="rgba(95,134,255,.18)" />
             </svg>
-            <img className="mf-agent mf-agent--a" src={`${import.meta.env.BASE_URL}agents/sportix-serious.webp`} alt="" loading="lazy" />
-            <img className="mf-agent mf-agent--b" src={`${import.meta.env.BASE_URL}agents/tradix-serious.webp`} alt="" loading="lazy" />
-            <img className="mf-agent mf-agent--c" src={`${import.meta.env.BASE_URL}agents/predix-serious.webp`} alt="" loading="lazy" />
-            <img className="mf-brain" src={`${import.meta.env.BASE_URL}agents/bettex-intelligence-brain.webp`} alt="" loading="lazy" />
+            <img className="mf-agent mf-agent--a" src={`${import.meta.env.BASE_URL}agents/sportix-serious.webp`} width={1024} height={1024} alt="" loading="lazy" />
+            <img className="mf-agent mf-agent--b" src={`${import.meta.env.BASE_URL}agents/tradix-serious.webp`} width={1024} height={1024} alt="" loading="lazy" />
+            <img className="mf-agent mf-agent--c" src={`${import.meta.env.BASE_URL}agents/predix-serious.webp`} width={1024} height={1024} alt="" loading="lazy" />
+            <img className="mf-brain" src={`${import.meta.env.BASE_URL}agents/bettex-intelligence-brain.webp`} width={640} height={640} alt="" loading="lazy" />
           </div>
         </div>
       </div>

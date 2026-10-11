@@ -2,7 +2,8 @@
 // not produced by a model, and never mistaken for genuine historical records (see SAMPLE_PROVENANCE).
 export type T3 = [string, string, string];
 export type Asset = 'btc' | 'eth' | 'sol';
-const openedAt = Date.now();
+import { projectSnapshot, units6 } from './demo-project-model';
+const openedAt = Date.parse(projectSnapshot.serverNow);
 const ago = (min: number) => new Date(openedAt - min * 60000).toISOString();
 const ahead = (min: number) => new Date(openedAt + min * 60000).toISOString();
 
@@ -38,7 +39,7 @@ export type Evidence = { source: string; value: string; unit: string; blockHeigh
 export type Run = { id: string; agentId: string; cycleId: string; upstreamRunIds: string[]; status: 'healthy' | 'degraded' | 'failed'; decision: 'monitor' | 'hold' | 'block'; completedAt: string; durationMs: number; findings: string[]; facts: { code: string; value: string }[]; evidence: Evidence[] };
 export type Agent = { id: string; parentId?: string; activity: 'running' | 'stale' | 'not_started'; cadenceSeconds: number; runCount: number; deps: string[]; inputs: string[]; outputs: string[]; rules: string[]; perms: string[]; latest: Run; history: Run[] };
 
-const SPEC_FINDINGS = ['public_analysis_only', 'allora_connected', 'polymarket_observed', 'allora_event_model_required'];
+const SPEC_FINDINGS = ['public_analysis_only', 'polymarket_observed', 'allora_event_model_required'];
 const FORE: Record<Asset, { usd: string; block: string; spot: string }> = { btc: { usd: '67840.25', block: '6120418', spot: '67420.00' }, eth: { usd: '3241.80', block: '6120431', spot: '3215.50' }, sol: { usd: '151.06', block: '6120437', spot: '148.72' } };
 const mk = (id: string, i: number, base: number, cadence: number): Run => {
   const spec = id === 'btc' || id === 'eth' || id === 'sol';
@@ -46,7 +47,7 @@ const mk = (id: string, i: number, base: number, cadence: number): Run => {
   const mins = base + (i * cadence) / 60;
   const findings = id === 'bettex' ? ['opportunities_reviewed', 'eligible_candidates_only', 'execution_requires_authorized_model', 'no_real_orders'] : spec ? (degraded ? ['allora_horizon_elapsed', 'public_analysis_only'] : SPEC_FINDINGS) : id === 'predictions' ? ['polymarket_observed', 'public_analysis_only'] : id === 'treasury' ? (degraded ? ['paper_budget_required'] : ['paper_ledger_verified', 'no_real_orders']) : id === 'governance' ? ['policy_verified', 'valid_policy_required'] : id === 'risk' ? ['policy_verified', 'paper_ledger_verified'] : id === 'execution' ? ['execution_requires_authorized_model', 'no_real_orders', 'no_automatic_retry'] : ['paper_ledger_verified'];
   const facts = id === 'bettex' ? [{ code: 'opportunities', value: '5' }, { code: 'upstream_assessments', value: '9' }, { code: 'active_policies', value: '3' }] : spec ? [{ code: 'forecast_usd', value: FORE[id as Asset].usd }, { code: 'opportunities', value: '2' }] : id === 'treasury' ? [{ code: 'available_usdc_units', value: '380000000' }] : [{ code: 'active_policies', value: '3' }];
-  const evidence: Evidence[] = spec ? [{ source: 'Allora (amostra / sample)', value: FORE[id as Asset].usd, unit: 'USD', blockHeight: FORE[id as Asset].block, producedAt: ago(mins + 3), targetAt: ahead(480 - mins) }, { source: 'Polymarket (amostra / sample)', value: `${id.toUpperCase()} - 8h price range (sample)`, unit: 'market' }] : [];
+  const evidence: Evidence[] = spec ? [{ source: 'Allora', value: FORE[id as Asset].usd, unit: 'USD', blockHeight: FORE[id as Asset].block, producedAt: ago(mins + 3), targetAt: ahead(480 - mins) }, { source: 'Polymarket', value: `${id.toUpperCase()} · 8h`, unit: 'market' }] : [];
   return { id: `demo-run-${id}-${String(i + 1).padStart(3, '0')}`, agentId: id, cycleId: `demo-cycle-${1048 - i}`, upstreamRunIds: id === 'bettex' ? ['btc', 'eth', 'sol', 'predictions'].map(a => `demo-run-${a}-${String(i + 1).padStart(3, '0')}`) : [], status: degraded ? 'degraded' : 'healthy', decision: degraded ? 'hold' : 'monitor', completedAt: ago(mins), durationMs: 180 + i * 37 + id.length * 11, findings, facts, evidence };
 };
 const ag = (id: string, parentId: string | undefined, cadence: number, base: number, runCount: number, deps: string[], inputs: string[], outputs: string[], rules: string[], perms: string[]): Agent => {
@@ -84,7 +85,7 @@ export const REASONING: Record<string, Reasoning> = {
 
 export type Datum = { v: string; money?: boolean };
 export type Request = { id: string; asset: Asset; state: string; queue?: string; market: T3; outcome: T3; reason: T3; operation: T3; price: string; costs: string; liquidity: string; ret: string; loss: string; capital: string; validUntil: string; uncertainty: T3; risks: T3[]; invalidation: T3[]; sources: { name: string; kind: 'polymarket' | 'allora'; ref: string; at: string; evidence: T3 }[]; events: { stage: T3; at: string; reason: T3 }[] };
-const SRC = (a: Asset, m: number): Request['sources'] => [{ name: 'Polymarket (sample)', kind: 'polymarket', ref: `sample-market-${a}-8h`, at: ago(m), evidence: ['Título e preço do mercado de origem', 'Source market title and price', 'Título y precio del mercado de origen'] }, { name: 'Allora (sample)', kind: 'allora', ref: `sample-forecast-${a}-block-${FORE[a].block}`, at: ago(m + 2), evidence: ['Previsão de preço em USD', 'USD price forecast', 'Previsión de precio en USD'] }];
+const SRC = (a: Asset, m: number): Request['sources'] => [{ name: 'Polymarket', kind: 'polymarket', ref: `sample-market-${a}-8h`, at: ago(m), evidence: ['Título e preço do mercado de origem', 'Source market title and price', 'Título y precio del mercado de origen'] }, { name: 'Allora', kind: 'allora', ref: `sample-forecast-${a}-block-${FORE[a].block}`, at: ago(m + 2), evidence: ['Previsão de preço em USD', 'USD price forecast', 'Previsión de precio en USD'] }];
 const RISKS: T3[] = [['Exposição correlacionada em cripto', 'Correlated crypto exposure', 'Exposición correlacionada en cripto'], ['Cotação pode ficar defasada', 'Quote may become stale', 'La cotización puede quedar desactualizada']];
 const INV: T3[] = [['Cotação mais antiga que o limite de idade', 'Quote older than the age limit', 'Cotización más antigua que el límite de edad'], ['Política alterada', 'Policy changed', 'Política cambiada']];
 const UNC: T3 = ['Cenário definido, sem intervalo estatístico', 'Defined scenario, no statistical interval', 'Escenario definido, sin intervalo estadístico'];
@@ -119,8 +120,79 @@ export const POSITIONS: Position[] = [
   { id: 'demo-pos-btc-000', requestId: 'demo-req-btc-000', asset: 'btc', event: S('Bitcoin acima de US$ 65.900 em 8 horas (amostra)', 'Bitcoin above US$ 65,900 in 8 hours (sample)', 'Bitcoin sobre US$ 65.900 en 8 horas (muestra)'), outcome: S('Sim', 'Yes', 'Sí'), state: 'settled', exitState: 'executable', resolution: 'resolved', qty: '84000000', cost: '32800000', fees: '420000', exitValue: '84000000', stale: false, at: ago(1500) },
 ];
 
-export const CAPITAL = { total: '1000000000', allocated: '500000000', reserved: '120000000', available: '380000000', exposure: [{ asset: 'btc' as Asset, units: '150000000' }, { asset: 'eth' as Asset, units: '124000000' }, { asset: 'sol' as Asset, units: '0' }] };
-export const POLICY = { version: 'demo-policy-v1', strategy: 'demo-strategy-v1', maxOrder: '250000000', maxCorrelated: '400000000', maxPortfolio: '800000000', defensive: '200000000', maxQuoteAge: 30 };
+const treasury = projectSnapshot.treasury.currentRound!;
+const crypto = treasury.agentAllocations!.find(a => a.agent === 'crypto')!;
+export const CAPITAL = {
+  total: units6(treasury.assetsUsdc), allocated: units6(treasury.workingUsdc),
+  reserved: units6(treasury.committedUsdc), available: units6(treasury.availableUsdc),
+  reserve: units6(treasury.reserveUsdc), pool: units6(treasury.poolUsdc ?? 0),
+  agentAllocated: units6(crypto.allocatedUsdc), agentCommitted: units6(crypto.committedUsdc), agentAvailable: units6(crypto.availableUsdc),
+  orderReserved: units6(Math.min(40, crypto.committedUsdc)),
+  exposure: [{ asset: 'btc' as Asset, units: '0' }, { asset: 'eth' as Asset, units: '0' }, { asset: 'sol' as Asset, units: '0' }],
+};
+export const POLICY = {
+  version: 'demo-policy-v1', strategy: 'demo-strategy-v1',
+  maxOrder: units6(projectSnapshot.orchestratorBudget!.perOperationLimitUsdc),
+  maxCorrelated: units6(crypto.allocatedUsdc),
+  maxPortfolio: units6(projectSnapshot.orchestratorBudget!.perAgentLimitUsdc),
+  defensive: units6(treasury.reserveUsdc), maxQuoteAge: 30,
+};
+
+// Complete the existing didactic execution trail using the very same Crypto commitment.
+// These examples explain lifecycle states; they are not additional cash-ledger entries.
+const open = POSITIONS.filter(p => p.state !== 'settled' && p.state !== 'closed');
+const positionCapital = crypto.committedUsdc - Number(CAPITAL.orderReserved) / 1e6;
+open.forEach((p, i) => {
+  const capital = positionCapital * (i === 0 ? 0.6 : 0.4);
+  const request = REQUESTS.find(r => r.id === p.requestId)!;
+  const order = ORDERS.find(o => o.requestId === p.requestId)!;
+  const price = Number(request.price.replace(',', '.'));
+  p.cost = units6(capital);
+  p.qty = units6(capital / price);
+  // Show realizable value only where the existing example has an executable exit.
+  if (p.exitValue != null) p.exitValue = units6(capital * 1.025);
+  order.filled = p.qty;
+  order.reserved = i === 1 ? CAPITAL.orderReserved : '0';
+  request.capital = units6(capital + Number(order.reserved) / 1e6);
+  request.loss = request.capital;
+  order.qty = units6(Number(request.capital) / 1e6 / price);
+  order.fills.forEach(f => { f.cash = p.cost; f.shares = p.qty; f.price = request.price; f.fees = p.fees; });
+  DECISIONS.filter(d => d.requestId === request.id).forEach(d => { d.requested = request.capital; });
+});
+ORDERS.filter(o => o.state === 'pending').forEach(o => { o.reserved = '0'; });
+CAPITAL.exposure.forEach(e => { e.units = units6(open.filter(p => p.asset === e.asset).reduce((s, p) => s + Number(p.cost) / 1e6, 0)); });
+const settled = POSITIONS.find(p => p.state === 'settled')!;
+const settledRequest: Request = {
+  ...REQUESTS.find(r => r.id === settled.requestId)!,
+  id: 'demo-req-btc-closed', state: 'allocation_confirmed', queue: undefined,
+  market: settled.event, capital: settled.cost, loss: settled.cost,
+  price: String(Number(settled.cost) / Number(settled.qty)).replace('.', ','),
+  reason: ['Percurso encerrado de exemplo, separado da proposta expirada.', 'Completed sample journey, separate from the expired proposal.', 'Recorrido cerrado de ejemplo, separado de la propuesta expirada.'],
+};
+settled.requestId = settledRequest.id;
+settledRequest.sources = SRC('btc', 1530);
+settledRequest.validUntil = ago(1490);
+REQUESTS.push(settledRequest);
+DECISIONS.push({ id: 'demo-dec-btc-closed', requestId: settledRequest.id, asset: 'btc', state: 'selected', rank: 1, reason: settledRequest.reason, requested: settled.cost, at: ago(1520) });
+ORDERS.push({ id: 'demo-ord-btc-closed', requestId: settledRequest.id, asset: 'btc', outcome: settled.outcome, state: 'filled', direction: 'buy', reason: settledRequest.reason, qty: settled.qty, filled: settled.qty, reserved: '0', updatedAt: ago(1510),
+  fills: [{ id: 'demo-fill-btc-closed', at: ago(1510), shares: settled.qty, price: settledRequest.price, cash: settled.cost, fees: settled.fees, source: 'sample-paper-ledger' }] });
+settledRequest.events = [
+  { stage: ['Recebida', 'Received', 'Recibida'], at: ago(1525), reason: settledRequest.reason },
+  { stage: ['Selecionada', 'Selected', 'Seleccionada'], at: ago(1520), reason: settledRequest.reason },
+  { stage: ['Ordem executada', 'Order filled', 'Orden ejecutada'], at: ago(1510), reason: settledRequest.reason },
+  { stage: ['Posição liquidada', 'Position settled', 'Posición liquidada'], at: settled.at, reason: settledRequest.reason },
+];
+for (const agent of AGENTS) for (const run of agent.history) {
+  run.facts.forEach(f => {
+    if (agent.id === 'treasury' && f.code === 'available_usdc_units') f.value = CAPITAL.available;
+    if (agent.id === 'bettex' && f.code === 'opportunities') f.value = String(REQUESTS.length);
+  });
+}
+REASONING.bettex.summary = [
+  'Há pedidos de exemplo aguardando decisão, selecionados, rejeitados, expirados e encerrados. Cada decisão conserva seu percurso e nenhum pedido altera saldos reais.',
+  'Sample requests are awaiting decisions, selected, rejected, expired and completed. Each decision retains its journey and no request changes real balances.',
+  'Hay solicitudes de ejemplo pendientes de decisión, seleccionadas, rechazadas, expiradas y cerradas. Cada decisión conserva su recorrido y ninguna solicitud cambia saldos reales.',
+];
 export const FORECASTS: Record<Asset, { spot: string; usd: string; block: string; series: number[] }> = {
   btc: { ...FORE.btc, series: [67420, 67510, 67480, 67650, 67720, 67790, 67840] }, eth: { ...FORE.eth, series: [3215, 3221, 3219, 3228, 3233, 3238, 3242] }, sol: { ...FORE.sol, series: [148.7, 149.2, 149.9, 150.1, 150.6, 150.9, 151.1] },
 };

@@ -1,5 +1,7 @@
 /** @jsxImportSource react */
 import { useState, type ReactNode } from 'react';
+import { Link } from 'wouter';
+import { demoPath } from '../demo/demo-navigation';
 import { Radar, CircleDollarSign, X as XIcon } from 'lucide-react';
 import { useFmt, card, KV, Tag, dec6 } from '../alpha-trading/format';
 import { REQUESTS, DECISIONS, ORDERS, POSITIONS, STATE, STATES_BY_VIEW, SAMPLE_PROVENANCE, type Asset, type T3, type Request, type Decision, type Order, type Position } from './central-data';
@@ -52,14 +54,14 @@ export function OrderCard({ o, onJourney }: { o: Order; onJourney?: (id: string)
   return <li className={box} data-testid={`order-${o.id}`}><div className="flex flex-wrap items-center gap-2"><Tag>{st(o.state)}</Tag><Tag>{st(o.direction)}</Tag><Sample /><span className="text-xs">{o.asset.toUpperCase()} · {L(o.outcome)}</span></div>
     <p className="mt-1 break-all font-mono text-[11px] text-[#5B6B85]">{o.id}</p><p className="mt-1 text-sm">{L(o.reason)}</p>
     <dl className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4"><KV k={x('Quantidade', 'Quantity', 'Cantidad')} v={sh(o.qty)} /><KV k={x('Executado', 'Filled', 'Ejecutado')} v={sh(o.filled)} /><KV k={x('Reservado', 'Reserved', 'Reservado')} v={u(o.reserved)} /><KV k={x('Atualizada', 'Updated', 'Actualizada')} v={f.date(o.updatedAt)} /></dl>
-    {o.fills.length === 0 ? <p className="mt-1 text-xs text-[#5B6B85]">{x('Sem execuções registradas.', 'No fills recorded.', 'Sin ejecuciones registradas.')}</p> : <ul className="mt-1 grid gap-1 text-xs">{o.fills.map(fl => <li key={fl.id}>{f.date(fl.at)} · {sh(fl.shares)} @ {fl.price} · {x('caixa', 'cash', 'caja')} {u(fl.cash)} · {x('taxas', 'fees', 'tarifas')} {u(fl.fees)} · {fl.source}</li>)}</ul>}
+    {o.fills.length === 0 ? <p className="mt-1 text-xs text-[#5B6B85]">{x('Sem execuções registradas.', 'No fills recorded.', 'Sin ejecuciones registradas.')}</p> : <ul className="mt-1 grid gap-1 text-xs">{o.fills.map(fl => <li key={fl.id}>{f.date(fl.at)} · {sh(fl.shares)} @ {fl.price} · {x('caixa', 'cash', 'caja')} {u(fl.cash)} · {fl.source}</li>)}</ul>}
     {onJourney && <button type="button" onClick={() => onJourney(o.requestId)} className={link}>{x('Ver percurso', 'View journey', 'Ver recorrido')}</button>}</li>;
 }
 export function PositionCard({ p, onJourney, onAction }: { p: Position; onJourney?: (id: string) => void; onAction: () => void }) {
   const { f, L, x, st, u, Sample, lc } = useBits();
   return <li className={box} data-testid={`position-${p.id}`}><div className="flex flex-wrap items-center gap-2"><Tag>{st(p.state)}</Tag><Tag>{st(p.exitState)}</Tag><Tag>{st(p.resolution)}</Tag><Sample />{p.stale && <Tag warn>{x('Defasada', 'Stale', 'Desactualizada')}</Tag>}</div>
     <p className="mt-2 font-bold">{L(p.event)}</p><p className="text-xs text-[#5B6B85]">{p.asset.toUpperCase()} · {L(p.outcome)} · <span className="mono">{p.id}</span></p>
-    <dl className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3"><KV k={x('Quantidade', 'Quantity', 'Cantidad')} v={`${dec6(p.qty, lc)} ${x('cotas', 'shares', 'cuotas')}`} /><KV k={x('Custo de entrada', 'Entry cost', 'Costo de entrada')} v={u(p.cost)} /><KV k={x('Taxas de entrada', 'Entry fees', 'Tarifas de entrada')} v={u(p.fees)} />
+    <dl className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3"><KV k={x('Quantidade', 'Quantity', 'Cantidad')} v={`${dec6(p.qty, lc)} ${x('cotas', 'shares', 'cuotas')}`} /><KV k={x('Custo de entrada', 'Entry cost', 'Costo de entrada')} v={u(p.cost)} />
       <KV k={x('Valor de saída', 'Exit value', 'Valor de salida')} v={p.exitValue ? u(p.exitValue) : x('indisponível (sem liquidez)', 'unavailable (no liquidity)', 'no disponible (sin liquidez)')} /><KV k={x('Avaliada em', 'Valued at', 'Valuada en')} v={f.date(p.at)} /></dl>
     <div className="flex flex-wrap gap-2">{onJourney && <button type="button" onClick={() => onJourney(p.requestId)} className={link}>{x('Ver percurso', 'View journey', 'Ver recorrido')}</button>}
       {p.state !== 'settled' && <button type="button" data-demo-action onClick={onAction} data-testid={`button-close-${p.id}`} className={link}>{x('Encerrar posição', 'Close position', 'Cerrar posición')}</button>}</div></li>;
@@ -68,6 +70,7 @@ export function PositionCard({ p, onJourney, onAction }: { p: Position; onJourne
 export function Journey({ id, onClose }: { id: string; onClose: () => void }) {
   const { f, L, x, st } = useBits(); const r = REQUESTS.find(q => q.id === id); if (!r) return null;
   return <section className={card} data-testid="alpha-journey" aria-label={x('Percurso completo', 'Full journey', 'Recorrido completo')}>
+    <Link data-demo-local data-testid="link-journey-history" className="inline-flex min-h-11 items-center rounded-xl border border-[#0E7C6B] px-3 text-sm font-bold text-[#0A6657]" href={`${demoPath('wallet', f.loc)}?history=audit&correlationId=${encodeURIComponent(id)}`}>{x('Consultar este percurso no Histórico', 'View this journey in History', 'Consultar este recorrido en el Historial')}</Link>
     <div className="flex items-center justify-between gap-2"><h3 className="display text-lg font-extrabold">{x('Percurso completo', 'Full journey', 'Recorrido completo')}</h3><button type="button" aria-label={x('Fechar', 'Close', 'Cerrar')} data-testid="button-journey-close" onClick={onClose} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full hover:bg-[#E9EEE5]"><XIcon className="h-5 w-5" aria-hidden="true" /></button></div>
     <div className="mt-3 grid gap-3"><p className="text-sm font-bold">{L(r.market)} <Tag>{st(r.state)}</Tag></p>
       <div><p className="text-sm font-bold">{x('Linha do tempo', 'Timeline', 'Línea de tiempo')}</p><ol className="mt-1 grid gap-1 text-sm">{r.events.map((e, i) => <li key={i}><span className="font-mono text-xs">#{i + 1} {f.date(e.at)}</span> · <b>{L(e.stage)}</b> · {L(e.reason)}</li>)}</ol></div>
