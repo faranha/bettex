@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import { useState, type RefObject } from 'react';
 import { X as XIcon } from 'lucide-react';
+import { Title as DialogTitle } from '@radix-ui/react-dialog';
 import { useFmt, Tag } from '../alpha-trading/format';
 import { CentralAgents, useL } from './CentralAgents';
 import { CentralBettex } from './CentralBettex';
@@ -58,12 +59,12 @@ export function CentralInspector({ sel, onClose, onAction, headRef, onPick }: { 
   if (!n && !e) return null;
   const title = n ? `${n.kind === 'spec' ? `${L(nodeOf('predictions').name)} · ` : ''}${L(n.name)}` : `${L(nodeOf(e!.a).name)} → ${L(nodeOf(e!.b).name)}`;
   const kind = n ? (isBiz(n.id) ? (n.kind === 'control' ? x('Regra de liquidação e recompra, ilustrativa', 'Settlement and buyback rule, illustrative', 'Regla de liquidación y recompra, ilustrativa') : x('Negócio e comunidade', 'Business and community', 'Negocio y comunidad')) : n.kind === 'control' ? x('Controle operacional, não é agente', 'Operational control, not an agent', 'Control operativo, no es agente') : n.kind === 'hub' ? x('Registros de amostra', 'Sample records', 'Registros de muestra') : n.kind === 'spec' ? x('Mercado do agente Cripto', 'Crypto agent market', 'Mercado del agente Cripto') : n.kind === 'core' ? x('Inteligência central', 'Central intelligence', 'Inteligencia central') : x('Agente inteligente', 'Intelligent agent', 'Agente inteligente')) : e?.planned ? x('Conexão planejada, desativada', 'Planned connection, disabled', 'Conexión planificada, desactivada') : x('Conexão direcional', 'Directional connection', 'Conexión direccional');
-  return <aside className="cg-drawer" role="dialog" aria-modal="false" aria-labelledby="cg-insp-title" data-demo-local data-testid="graph-inspector" data-target={`${sel.k}:${sel.id}`}>
-    <div className="cg-dhead"><div className="min-w-0"><h2 id="cg-insp-title" ref={headRef} tabIndex={-1} className="display truncate text-lg font-extrabold" data-testid="inspector-title">{title}</h2>
+  return <section className="cg-drawer" data-demo-local data-testid="graph-inspector" data-target={`${sel.k}:${sel.id}`}>
+    <div className="cg-dhead"><div className="min-w-0"><DialogTitle asChild><h2 ref={headRef} tabIndex={-1} className="display text-lg font-extrabold" data-testid="inspector-title">{title}</h2></DialogTitle>
       <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs"><Tag warn={n?.kind === 'control'}>{n?.kind === 'spec' ? x('Subagente de Cripto', 'Crypto subagent', 'Subagente de Cripto') : kind}</Tag><Tag warn>{x('Amostra ilustrativa', 'Illustrative sample', 'Muestra ilustrativa')}</Tag></p></div>
       <button type="button" data-demo-local onClick={onClose} data-testid="button-inspector-close" aria-label={x('Fechar painel e voltar ao grafo', 'Close panel and return to the graph', 'Cerrar panel y volver al grafo')} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full hover:bg-[#E9EEE5]"><XIcon className="h-5 w-5" aria-hidden="true" /></button></div>
     {tabs.length > 1 && <div className="cg-tabs" role="tablist" aria-label={x('Seções do painel', 'Panel sections', 'Secciones del panel')}>{tabs.map((s, k) =>
       <button key={`${s.tab}-${s.id ?? ''}`} type="button" data-demo-local role="tab" id={`cg-tab-${k}`} aria-selected={k === i} aria-controls="cg-tabpanel" data-testid={`inspector-tab-${s.tab}`} onClick={() => setI(k)} className={k === i ? 'on' : ''}>{L(TAB_LABEL[s.tab])}</button>)}</div>}
-    <div className="cg-dbody" role="tabpanel" id="cg-tabpanel" aria-labelledby={tabs.length > 1 ? `cg-tab-${i}` : 'cg-insp-title'}><Body key={`${sel.k}-${sel.id}-${t.tab}-${t.id ?? ''}`} t={t} sel={sel} onAction={onAction} onMarketSelect={id => onPick({ k: 'node', id })} onPick={onPick} /></div>
-  </aside>;
+    <div className="cg-dbody" role="tabpanel" id="cg-tabpanel" aria-labelledby={tabs.length > 1 ? `cg-tab-${i}` : undefined} aria-label={tabs.length === 1 ? title : undefined}><Body key={`${sel.k}-${sel.id}-${t.tab}-${t.id ?? ''}`} t={t} sel={sel} onAction={onAction} onMarketSelect={id => onPick({ k: 'node', id })} onPick={onPick} /></div>
+  </section>;
 }

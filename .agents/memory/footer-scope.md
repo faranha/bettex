@@ -45,8 +45,8 @@ O botão “Entre na comunidade” desse rodapé deve ser azul, não amarelo.
 
 **How to apply:** Preservar o azul também nos estados de interação, com texto e ícone legíveis, sem estender essa alteração a outros convites não solicitados.
 
-Na arte do banner final do site, a IA e o grafo precisam compor a própria ilustração, não um painel separado. O criador aprovou essa composição e pediu BETTEX no centro, com linhas, contornos e brilhos mais suaves.
+Na arte do banner final do site, a IA e o grafo precisam compor a própria ilustração, não um painel separado. O criador aprovou essa composição e pediu BETTEX no centro, com linhas, contornos e brilhos mais suaves. A orientação posterior é usar o ícone da moeda BETTEX no centro, em vez do nome escrito.
 
-**Why:** O criador pediu que “a IA, o Grafo, tem que se combinar na arte do rodapé do site” e depois confirmou “isso ficou bom”, corrigindo o nome central e a aparência grosseira das linhas.
+**Why:** O criador pediu que “a IA, o Grafo, tem que se combinar na arte do rodapé do site” e depois confirmou “isso ficou bom”, corrigindo o nome central e a aparência grosseira das linhas. Depois pediu: “ao inves de bettex coloque a moeda da Bettex o icone dela”.
 
 **How to apply:** Preservar a composição aprovada com a rede e BETTEX no centro, também no celular; evitar traços pesados e brilho excessivo, sem cobrir a mensagem ou os botões. Essa arte pertence ao site; não alterar a Central da IA do aplicativo por esse pedido.

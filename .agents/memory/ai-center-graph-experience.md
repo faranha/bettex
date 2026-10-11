@@ -17,11 +17,29 @@ Não duplicar os breadcrumbs do header na Central da IA nem ampliar a Central al
 
 ## Revisões de legibilidade
 
+Cotações e simulações da Polymarket pertencem aos detalhes dos nós de Cripto e seus subagentes no grafo, inclusive quando apresentados em overlay. Não expor esse painel como um bloco separado abaixo do grafo.
+
+**Why:** O criador apontou o bloco separado de cotações e simulação e corrigiu: “mesmo em overlay, isso deveria ficar dentro do grapho”.
+
+**How to apply:** Manter a leitura dos mercados acessível pelos nós de Cripto, BTC, ETH e SOL, sem duplicar o painel fora dessa navegação. Essa regra não transforma controles de negócio em agentes.
+
+Evitar uma grande lista simultânea de atalhos com o mesmo peso visual nas áreas de apoio da Central. Agrupar por finalidade e mostrar um grupo por vez, preservando o acesso a todos os destinos.
+
+**Why:** O criador rejeitou a organização com todos os controles, registros e tópicos juntos: “a organizacao disso aqui esta pessima [...] uma bagunca visual”.
+
+**How to apply:** Ao acrescentar áreas, preservar a hierarquia e a seleção por categoria, com rótulos legíveis também no celular. Não voltar à lista completa de pequenos botões em sequência.
+
+Os detalhes da Central devem abrir em uma janela overlay ampla e bem definida, não em uma coluna estreita dividindo espaço com o grafo.
+
+**Why:** O criador rejeitou o painel lateral: “fica estranho nao da pra ler tudo” e pediu “abrir em overlay uma janela bem definida”.
+
+**How to apply:** Manter o conteúdo completo e as abas acessíveis, com rolagem própria, fechamento e retorno ao contexto anterior. Não restaurar a coluna estreita ou o painel parcialmente cortado no celular.
+
 A faixa de indicadores da Central deve rolar lateralmente de forma contínua, como um painel Bloomberg.
 
 **Why:** O criador mostrou a faixa com execuções, pedidos, tesouraria, exposição e previsões e pediu “rolando lateralmente estilo painel bloomberg”.
 
-**How to apply:** Preservar a faixa horizontal fora do grafo dos agentes, com o conteúdo e os atalhos dos indicadores. Permitir interromper o movimento para leitura e navegação e respeitar a preferência por movimento reduzido.
+**How to apply:** Preservar a faixa horizontal fora do grafo dos agentes, com o conteúdo e os atalhos dos indicadores. Permitir interromper o movimento para leitura e navegação e respeitar a preferência por movimento reduzido. Não exibir a barra de rolagem nessa faixa: o criador indicou a barra inferior e pediu “aqui nao quero barra de rolagem”.
 
 A Central deve representar a visão atual do negócio, com percursos de leitura entre Central, painel, Tesouraria, Histórico e documentação, sem inserir essas áreas como nós de agentes.
 
