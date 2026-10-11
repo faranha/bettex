@@ -8,7 +8,7 @@ import './AgentShowcase.css';
 
 function ValueViz({ label }: { label: string }) {
   const { x } = useX();
-  return <SportsBrainArt label={label} l1={x('TRADING COM IA', 'AI TRADING', 'TRADING CON IA')} l2={x('ODDS · PROBABILIDADE', 'ODDS · PROBABILITY', 'CUOTAS · PROBABILIDAD')} />;
+  return <SportsBrainArt label={label} l1={x('TRADING COM IA', 'AI TRADING', 'TRADING CON IA')} l2={x('ARBITRAGEM · EXECUÇÃO', 'ARBITRAGE · EXECUTION', 'ARBITRAJE · EJECUCIÓN')} />;
 }
 
 export function AgentShowcase({ variant = 'light', onEnter, showDisclaimer = true, showOtherAgents = true }: { variant?: 'light' | 'dark'; onEnter?: () => void; showDisclaimer?: boolean; showOtherAgents?: boolean }) {
@@ -21,19 +21,19 @@ export function AgentShowcase({ variant = 'light', onEnter, showDisclaimer = tru
   const sports = [x('Futebol', 'Football', 'Fútbol'), x('Basquete', 'Basketball', 'Baloncesto'), x('Tênis', 'Tennis', 'Tenis'), 'UFC'];
   return <section className={`agx flex flex-col p-4 sm:p-6 ${variant === 'dark' ? 'agx-dark' : 'dcard'}`} data-variant={variant} data-testid="panel-agent-showcase" aria-labelledby="agx-title">
     {showDisclaimer && <p className="agx-kick">{x('Demo ALFA, sem dinheiro real', 'ALPHA demo, no real money', 'Demo ALFA, sin dinero real')}</p>}
-    <h2 id="agx-title" className="agx-title">{x('Vem aí: Esportes com Value Betting', 'Coming next: Sports Value Betting', 'Próximamente: Deportes con Value Betting')}</h2>
+    <h2 id="agx-title" className="agx-title">{x('Vem aí: Esportes com Surebet', 'Coming next: Sports Surebet', 'Próximamente: Deportes con Surebet')}</h2>
     <article data-testid="card-agent-sports" aria-disabled="true" data-next="true" className="agx-hero">
       <div>
         <div className="agx-next">
           <span className="agx-badge">{x('Próximo lançamento', 'Next release', 'Próximo lanzamiento')}</span>
           <span data-testid="status-agent-sports" className="agx-badge agx-badge-2"><Lock className="h-3 w-3" aria-hidden />{sportsNext}</span>
         </div>
-        <h3>{x('Inteligência artificial para encontrar apostas de valor.', 'AI built to find value in sports betting.', 'Inteligencia artificial para detectar apuestas de valor.')}</h3>
-        <p>{x('O próximo agente vai comparar odds com probabilidades estimadas para identificar oportunidades de valor em diferentes esportes.', 'Our next agent will compare odds with estimated probabilities to identify value opportunities across sports.', 'El próximo agente comparará cuotas con probabilidades estimadas para identificar oportunidades de valor en distintos deportes.')}</p>
+        <h3>{x('Inteligência artificial para operar surebets ao redor do mundo.', 'Artificial intelligence to execute surebets worldwide.', 'Inteligencia artificial para ejecutar surebets en todo el mundo.')}</h3>
+        <p>{x('O próximo agente de IA será desenvolvido para identificar e executar operações de arbitragem esportiva, com gestão de exposição e limites de risco.', 'The next AI agent will be developed to identify and execute sports arbitrage operations, with exposure management and risk limits.', 'El próximo agente de IA se desarrollará para identificar y ejecutar operaciones de arbitraje deportivo, con gestión de exposición y límites de riesgo.')}</p>
         <ul className="agx-sports" aria-label={x('Exemplos de esportes', 'Sport examples', 'Ejemplos de deportes')}>{sports.map(s => <li key={s}>{s}</li>)}</ul>
-        <p className="agx-note">{x('Ainda não está ativo nesta demo. Análise de probabilidades não garante resultado nem lucro.', 'Not active in this demo yet. Probability analysis does not guarantee any result or profit.', 'Aún no está activo en esta demo. El análisis de probabilidades no garantiza resultado ni ganancia.')}</p>
+        <p className="agx-note">{x('Ainda não está ativo nesta demo. A execução depende das odds, da liquidez e dos limites das plataformas; não há lucro garantido.', 'Not active in this demo yet. Execution depends on odds, liquidity and platform limits; profit is not guaranteed.', 'Aún no está activo en esta demo. La ejecución depende de las cuotas, la liquidez y los límites de las plataformas; no hay ganancias garantizadas.')}</p>
       </div>
-      <ValueViz label={x('Ilustração: odds, probabilidade e oportunidade de valor', 'Illustration: odds, probability and value opportunity', 'Ilustración: cuotas, probabilidad y oportunidad de valor')} />
+      <ValueViz label={x('Ilustração de inteligência artificial para execução de arbitragem esportiva', 'Illustration of artificial intelligence executing sports arbitrage', 'Ilustración de inteligencia artificial para ejecutar arbitraje deportivo')} />
     </article>
     {showOtherAgents && <div className="agx-row">
       <article data-testid="card-agent-crypto" className="agx-crypto"><CryptoBarsArt />

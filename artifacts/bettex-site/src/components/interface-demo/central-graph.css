@@ -225,3 +225,11 @@ button.cg-pan:hover{background:#0A141B}
 .cg-sw .cg-dbody{flex:none;overflow:visible}
 @media (max-width:768px){.cg-sw{padding:.4rem}.cg-sw .cg-drawer{border-radius:.8rem;min-height:0;max-height:none}}
 @media (max-height:600px){.cg-stage{height:max(520px,100dvh)}}
+
+/* unified AI + participation operation area (home only) */
+.op-unified{display:grid;min-width:0;border:1px solid #1B2A33;border-radius:1rem;background:#05080C}
+.op-unified .cg-wrap{gap:0}
+.op-unified .cg-stage{border:0;border-radius:calc(1rem - 1px) calc(1rem - 1px) 0 0}
+.op-unified .cg-stage.cg-imm{border-radius:0}
+.op-unified .cg-support{border:0;border-top:1px solid #15222B;border-radius:0}
+.op-unified .op-part .dcard{border:0;border-top:1px solid #1B2A33;border-radius:0 0 calc(1rem - 1px) calc(1rem - 1px)}

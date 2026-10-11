@@ -1,5 +1,5 @@
 import type { Asset, T3 } from './central-data';
-import { demoPath, type DemoView } from '../demo/demo-navigation';
+import { demoHref, type DemoView } from '../demo/demo-navigation';
 import { PROJECT_CONNECTIONS, PROJECT_TOPICS, type ProjectTopic } from './demo-project-model';
 
 export type P = [number, number];
@@ -237,5 +237,5 @@ export const docHref = (chapter: string, loc: Loc) => `${BASE}${loc === 'pt' ? '
 /** Language-aware route for the app area a topic is read in (wallet is the History area). */
 export function topicHref(t: ProjectTopic, loc: Loc): string {
   const view: DemoView = t.app === 'wallet' ? 'wallet' : t.app;
-  return `${demoPath(view, loc)}${t.query ?? ''}${t.hash ?? ''}`;
+  return demoHref(view, loc, t.query ?? '', t.hash ?? '');
 }

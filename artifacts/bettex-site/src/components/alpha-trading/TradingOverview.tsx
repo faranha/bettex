@@ -6,7 +6,7 @@ import { useGetAlphaTrading, getGetAlphaTradingQueryKey, type GetAlphaTradingPar
 import { useFmt } from './format';
 import { PositionCard, OrderCard } from './Records';
 import { Journey } from './Journey';
-import { demoPath } from '@/components/demo/demo-navigation';
+import { demoHref } from '@/components/demo/demo-navigation';
 
 const POSITIONS: GetAlphaTradingParams = { view: 'positions', limit: 3 };
 const ORDERS: GetAlphaTradingParams = { view: 'orders', limit: 3 };
@@ -20,7 +20,7 @@ export function TradingOverview() {
   return <section className="dcard grid gap-4 p-4 sm:p-5" data-testid="dashboard-agent-trading">
     <div className="flex flex-wrap items-center justify-between gap-2">
       <h2 className="display text-lg font-extrabold">{x('Negociações dos agentes', 'Agent trading', 'Operaciones de los agentes')}</h2>
-      <Link href={demoPath('central', loc)} className="inline-flex min-h-11 items-center rounded-xl border border-[#0E7C6B] px-3 text-sm font-bold text-[#0A6657]">{x('Abrir Central da IA', 'Open AI Center', 'Abrir Central de IA')}</Link>
+      <Link href={demoHref('central', loc)} className="inline-flex min-h-11 items-center rounded-xl border border-[#0E7C6B] px-3 text-sm font-bold text-[#0A6657]">{x('Abrir Central da IA', 'Open AI Center', 'Abrir Central de IA')}</Link>
     </div>
     <p className="text-xs text-[#5B6B85]">{x('Posições e ordens registradas da carteira dos agentes.', 'Recorded positions and orders in the agents’ portfolio.', 'Posiciones y órdenes registradas de la cartera de los agentes.')}</p>
     <div className="grid gap-5">

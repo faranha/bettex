@@ -51,11 +51,32 @@ O gráfico do staking deve mostrar o resultado de cada hora: se aquela hora foi 
 
 **How to apply:** Usar variação líquida entre as leituras do intervalo. Preservar perdas horárias, escolhas de visualização e identificação de intervalos incompletos. A exigência posterior de algo positivo no demo deve ser atendida no roteiro modelado e conciliado, não por valores falsos apenas no gráfico. Não alterar a fórmula de pagamento nem substituir resultados nativos.
 
-Below staking in the app, show the Sports Value Betting promotion without the secondary Crypto, Prediction Markets and Casino row.
+Below staking in the app, show the Sports AI promotion without the secondary Crypto, Prediction Markets and Casino row.
 
 **Why:** The creator circled that row in the app screenshot and asked to remove the section below the sports value system with the other bots.
 
 **How to apply:** Keep Sports and staking intact. This removal targets the in-app promotion, not the separately designed login landing.
+
+O banner de Esportes deve ser independente do contêiner de staking,
+posicionado logo abaixo, não um cartão aninhado dentro dele.
+
+**Why:** O criador mostrou o banner e pediu: “essa parte tem que ser um
+banner separado do container do staking”.
+
+**How to apply:** Manter os gráficos, posição e rodada no cartão de staking.
+O anúncio do próximo agente de IA permanece em um bloco irmão, com sua
+própria apresentação e o texto aprovado.
+
+Grafo da Central da IA, painel de informações e staking devem formar uma
+única área visual, não três cartões desconectados. Não exibir no staking
+um link para abrir a Central que já está integrada nessa mesma área.
+
+**Why:** O criador mostrou os três blocos e pediu: “isso tem que ser
+integrado em uma unica area [...] e o link para central da IA tem que sumir”.
+
+**How to apply:** Preservar os dados, os detalhes dos agentes e os gráficos,
+mas dar ao conjunto uma estrutura visual compartilhada. As âncoras
+continuam navegando dentro da área; o banner de Esportes permanece fora.
 
 The round-clock card should have a playful but very subdued background, without distracting from reading.
 

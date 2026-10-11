@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { useFmt } from '../alpha-trading/format';
-import { demoPath, type DemoView } from '../demo/demo-navigation';
+import { demoPath, demoHref, type DemoView } from '../demo/demo-navigation';
 import { recalledSel, selQuery } from './central-graph-model';
 
 /** Read-only reading journey between demo areas. Plain links, never routed through the operational notice. */
@@ -10,10 +10,10 @@ export function DemoJourneyNav({ view }: { view: DemoView }) {
   const { x, loc } = useFmt();
   const [q, setQ] = useState(() => selQuery(recalledSel()));
   useEffect(() => { setQ(selQuery(recalledSel())); }, [view]);
-  const graph = (id: string) => `${demoPath('central', loc)}?node=${id}`;
+  const graph = (id: string) => demoHref('central', loc, `?node=${id}`);
   const areas: { v: DemoView; label: string; href: string }[] = [
     { v: 'home', label: x('Painel', 'Dashboard', 'Panel'), href: demoPath('home', loc) },
-    { v: 'central', label: x('Central da IA', 'AI Center', 'Central de IA'), href: `${demoPath('central', loc)}${q ? `?${q}` : ''}` },
+    { v: 'central', label: x('Central da IA', 'AI Center', 'Central de IA'), href: demoHref('central', loc, q ? `?${q}` : '') },
     { v: 'treasury', label: x('Tesouraria', 'Treasury', 'Tesorería'), href: demoPath('treasury', loc) },
     { v: 'wallet', label: x('Histórico', 'History', 'Historial'), href: demoPath('wallet', loc) },
   ];

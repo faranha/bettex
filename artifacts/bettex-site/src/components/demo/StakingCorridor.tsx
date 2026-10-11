@@ -1,7 +1,5 @@
 /** @jsxImportSource react */
-import { Coins, Database, Activity } from 'lucide-react';
-import { Link } from 'wouter';
-import { demoPath } from './demo-navigation';
+import { Coins, Database } from 'lucide-react';
 import { AgentShowcase } from './AgentShowcase';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from './ui';
@@ -34,7 +32,7 @@ export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; s
   const cur = v.estimatedOwnUsdc;
   const proj = timeline ? timeline.projectedOwnUsdc : null;
   const signed = (n: number) => `${n > 0 ? '+' : ''}${usd(n)}`;
-  return <section className="dcard grid gap-4 p-4 sm:p-5" data-testid="staking-corridor" aria-label={x('Staking', 'Staking', 'Staking')}>
+  return <><section className="dcard grid gap-4 p-4 sm:p-5" data-testid="staking-corridor" aria-label={x('Staking', 'Staking', 'Staking')}>
     <header className="flex flex-wrap items-start justify-between gap-2">
       <h2 className="display flex items-center gap-2 text-lg font-extrabold"><span className="flex">{[0, 1, 2, 3, 4].map(i => coin(i < lit, i))}</span>
         <Term tip={x('Elegibilidade em autocustódia, não é um cofre bloqueado. Seus BETTEX continuam na sua carteira.', 'Self-custody eligibility, not a locked vault. Your BETTEX stay in your wallet.', 'Elegibilidad en autocustodia, no es una bóveda bloqueada. Tus BETTEX siguen en tu cartera.')}>{x('Staking', 'Staking', 'Participación')}</Term></h2>
@@ -57,13 +55,11 @@ export function StakingCorridor({ d, showAgents = false }: { d: DemoDashboard; s
       <div className="flex min-w-0 flex-col rounded-xl border border-[#E4DCCB] p-3" data-testid="staking-chart-history">
         <h3 className="text-sm font-bold"><Term tip={x('Cada registro mostra a diferença entre o resultado líquido no início e no fim daquela hora, não o total da rodada. O ciclo segue a tesouraria, de 16h às 16h de São Paulo. Horas incompletas são identificadas; projeções não são tratadas como registros.', 'Each record shows the difference between net results at the beginning and end of that hour, not the round total. The cycle follows the treasury, from 16:00 to 16:00 São Paulo time. Incomplete hours are identified; projections are not treated as records.', 'Cada registro muestra la diferencia entre el resultado neto al inicio y al final de esa hora, no el total de la ronda. El ciclo sigue la tesorería, de 16:00 a 16:00 de São Paulo. Las horas incompletas se identifican; las proyecciones no se tratan como registros.')}>{x('Resultado do staking por hora', 'Hourly staking result', 'Resultado del staking por hora')}</Term></h3>
         <StakingMinuteChart points={points} t0={t0} timeline={timeline} empty={native ? na : x('Carregando ciclo…', 'Loading cycle…', 'Cargando ciclo…')} fl={fl} usd={usd} />
-        <Link href={demoPath('central', loc)} data-testid="staking-live-trading" className="group mt-2 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227] bg-[#F2C14E] px-4 py-3 text-sm font-extrabold text-[#12372A] transition-colors hover:bg-[#E5B53C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#12372A]">
-          <Activity className="h-5 w-5 shrink-0" aria-hidden="true" /><span>{x('Abrir Central da IA', 'Open AI Central', 'Abrir Central de IA')}</span>
-        </Link>
       </div>
       <StakingRoundClock serverNow={d.serverNow} nextCycleAt={v.nextCycleAt} native={native} timeline={timeline} current={cur} projected={proj} loading={!!loading} na={na} fl={fl} />
     </div>
-    {showAgents && <AgentShowcase showOtherAgents={false} showDisclaimer={false} />}
     </AgentTradingTabs>
-  </section>;
+  </section>
+    {showAgents && <AgentShowcase showOtherAgents={false} showDisclaimer={false} />}
+  </>;
 }

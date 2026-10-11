@@ -4,16 +4,17 @@ import { Link, useLocation } from 'wouter';
 import { Menu, Send, X } from 'lucide-react';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useX } from '@/components/demo/ui';
-import { demoLabel, demoPath, type DemoView } from '@/components/demo/demo-navigation';
+import { demoLabel, demoHref, type DemoView } from '@/components/demo/demo-navigation';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 
-export const APP_AREAS: DemoView[] = ['home', 'central', 'treasury', 'wallet'];
+export const APP_AREAS: DemoView[] = ['home', 'treasury', 'wallet'];
 
 /** Mobile-only hamburger in the system header, opening a side drawer. */
 export function MobileAreaNav({ current, className = '' }: { current: DemoView; className?: string }) {
   const { x, loc } = useX();
   const [path] = useLocation();
   const [open, setOpen] = useState(false);
+  const isCurrent = (k: DemoView) => current === k;
   useEffect(() => { setOpen(false); }, [path, loc]);
   useEffect(() => {
     const desktop = window.matchMedia('(min-width: 640px)');
@@ -33,7 +34,7 @@ export function MobileAreaNav({ current, className = '' }: { current: DemoView; 
         <div className="flex items-center justify-between gap-2"><DialogTitle className="text-base font-extrabold">{areas}</DialogTitle>
           <DialogClose aria-label={x('Fechar áreas', 'Close areas', 'Cerrar áreas')} data-testid="button-app-areas-close" className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full hover:bg-[#E9EEE5] ${focus}`}><X className="h-5 w-5" aria-hidden="true" /></DialogClose></div>
         <DialogDescription className="sr-only">{x('Escolha uma área do app.', 'Choose an app area.', 'Elige un área de la app.')}</DialogDescription>
-        <nav aria-label={areas}><ul className="grid gap-1">{APP_AREAS.map(k => <li key={k}><Link href={demoPath(k, loc)} data-testid={`nav-mobile-${k}`} aria-current={current === k ? 'page' : undefined} onClick={() => { setOpen(false); window.scrollTo({ top: 0 }); }} className={`flex min-h-11 items-center rounded-xl px-3 text-sm font-bold ${focus} ${current === k ? 'bg-[#E9EEE5] text-[#0A6657]' : 'text-[#1B2A41] hover:bg-[#F1EBDD]'}`}>{demoLabel(k, loc)}</Link></li>)}
+        <nav aria-label={areas}><ul className="grid gap-1">{APP_AREAS.map(k => <li key={k}><Link href={demoHref(k, loc)} data-testid={`nav-mobile-${k}`} aria-current={isCurrent(k) ? 'page' : undefined} onClick={() => { setOpen(false); window.scrollTo({ top: 0 }); }} className={`flex min-h-11 items-center rounded-xl px-3 text-sm font-bold ${focus} ${isCurrent(k) ? 'bg-[#E9EEE5] text-[#0A6657]' : 'text-[#1B2A41] hover:bg-[#F1EBDD]'}`}>{demoLabel(k, loc)}</Link></li>)}
           <li><a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-testid="link-app-community-mobile" onClick={() => setOpen(false)} className={`flex min-h-11 items-center gap-2 rounded-xl px-3 text-sm font-bold text-[#0A6657] hover:bg-[#F1EBDD] ${focus}`}><Send className="h-4 w-4" aria-hidden="true" />{x('Comunidade no Telegram', 'Community on Telegram', 'Comunidad en Telegram')}</a></li></ul></nav>
       </DialogContent>
     </Dialog>

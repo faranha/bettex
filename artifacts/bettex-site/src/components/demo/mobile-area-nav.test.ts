@@ -34,8 +34,8 @@ test('dashboard wallets do not reserve obsolete mobile footer space before staki
   assert.match(r('./WalletsDashboard.tsx'), /grid min-w-0 gap-4/);
 });
 
-test('AI Center follows the dashboard and Treasury precedes History in desktop and mobile menus; Profile stays in the top menu', () => {
-  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'central', 'treasury', 'wallet'\]/);
+test('main menu keeps Dashboard, Treasury and History; integrated AI Center is not a separate destination', () => {
+  assert.match(r('./MobileAreaNav.tsx'), /APP_AREAS: DemoView\[\] = \['home', 'treasury', 'wallet'\]/);
   assert.match(r('../app/AppHeader.tsx'), /APP_AREAS\.map/);
   const page = r('../../pages/demo.tsx');
   assert.match(page, /tab === 'home' && <WalletsDashboard/);
@@ -45,6 +45,14 @@ test('AI Center follows the dashboard and Treasury precedes History in desktop a
   assert.doesNotMatch(menu, /tab: 'wallets'|tab: 'history'/);
   assert.match(menu, /tab: 'profile'/);
   assert.match(menu, /logout/);
+});
+
+test('integrated AI graph is direct content, without the removed support tabs', () => {
+  const graph = r('../interface-demo/CentralGraph.tsx');
+  assert.doesNotMatch(graph, /DemoSubmenu|central-panel-tab-|role="tabpanel"/);
+  assert.doesNotMatch(graph, /section === 'agents' &&/);
+  assert.match(graph, /data-testid="central-graph"/);
+  assert.match(graph, /<CentralInspector/);
 });
 
 test('account history keeps statements but does not repeat balances or wallet cards', () => {

@@ -41,6 +41,18 @@ A seção mantém a identidade de IA com o cérebro e os raios da homepage, sem 
 
 No primeiro cartão de Esportes, futebol deve ser o assunto visual principal; o cérebro e os raios ficam como acessórios secundários.
 
+O texto de Esportes deve apresentar uma IA que identifica e executa
+operações de surebet/arbitragem esportiva ao redor do mundo, não um serviço
+de dicas ou sinais.
+
+**Why:** O criador pediu “inteligencia artificial para operar lucros em sure
+bet ao redor do mundo” e explicou que a apresentação anterior parecia
+oferecer tips ou sinais.
+
+**How to apply:** Enfatizar a execução por agente de IA no cartão. Preservar
+o caráter de próximo lançamento e não transformar surebet em promessa
+de lucro garantido; não alterar capacidades operacionais só por mudar o texto.
+
 **Why:** O criador apontou o cartão e definiu: “this first section must relate to soccer, the brain can come afterwards, can be accessory”.
 
 **How to apply:** Priorizar bola, campo e elementos de futebol na arte de Esportes, sem remover os exemplos de outras modalidades nem alterar o fundo MMA do hero por causa dessa orientação.

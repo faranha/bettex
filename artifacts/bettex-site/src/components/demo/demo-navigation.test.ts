@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { demoView, demoPath, demoLabel, demoPageTitle, demoAccountTab, demoRedirect, isRemovedSimulationPath } from './demo-navigation.ts';
+import { demoView, demoPath, demoLabel, demoPageTitle, demoAccountTab, demoRedirect, demoHref, isRemovedSimulationPath } from './demo-navigation.ts';
 
 test('wallets dashboard, history, AI Center, Treasury and personal Profile have independent reloadable routes', () => {
   for (const language of ['pt', 'en', 'es'] as const) {
@@ -9,7 +9,7 @@ test('wallets dashboard, history, AI Center, Treasury and personal Profile have 
       assert.equal(demoView(path), view);
       assert.equal(demoView(path + '/'), view);
       assert.equal(demoView(path.replace('/app', '/demo')), view);
-      assert.equal(demoRedirect(path, language, '?wallet=earnings'), null);
+      assert.equal(demoRedirect(path, language, '?wallet=earnings'), view === 'central' ? '/app?wallet=earnings#central' : null);
     }
   }
   for (const language of ['pt', 'en', 'es'] as const) {
@@ -62,4 +62,10 @@ test('removed simulation bookmarks redirect to the new wallets dashboard without
       assert.equal(demoRedirect(path, 'pt'), '/app');
     }
   }
+});
+test('AI Center links target the home anchor with query before hash', () => {
+  assert.equal(demoHref('central', 'en', '?node=btc'), '/app?node=btc#central');
+  assert.equal(demoHref('central', 'pt'), '/app#central');
+  assert.equal(demoRedirect('/demo/central', 'es', '?node=eth&section=records', '#x'), '/app?node=eth&section=records#central');
+  assert.equal(demoRedirect('/app', 'pt', '?section=participation'), null);
 });

@@ -9,11 +9,21 @@ Follow the current application direction in replit.md, not older instructions ab
 
 **How to apply:** Consult the current direction before reorganizing menus. Do not restore the old dashboard or Profile finance tabs from historical notes. Moving a destination does not authorize recreating wallets, changing account identity or weakening key-export protections.
 
-AI Center must be immediately beside Dashboard (formerly Wallets) in the app menu, before History.
+Não exibir Central da IA como item do menu principal do app.
 
-**Why:** The creator explicitly said “AI center must be right beside wallets in the meny”, then renamed that page to “Dashboard”.
+**Why:** Depois de integrar a Central à home, o criador corrigiu: “central da IA pode sumir do menu principal”.
 
-**How to apply:** Preserve this ordering in desktop and mobile menus without changing the destinations themselves.
+**How to apply:** A Central permanece abaixo das carteiras no Painel, acessível pela âncora interna. Não reintroduzir um destino separado no menu desktop ou no menu lateral mobile. Preservar os links antigos.
+
+O submenu do Painel deve continuar acessível durante a rolagem, fixo
+abaixo do cabeçalho, também no celular.
+
+**Why:** O criador disse que ao rolar para baixo “a gente perde o submenu”
+e pediu melhorar a navegabilidade da área Painel.
+
+**How to apply:** Considerar as alturas reais do cabeçalho e submenu nos
+destinos das âncoras, sem encobrir títulos. Destacar a seção acompanhada
+na rolagem sem reescrever a URL nem perder a seleção dos agentes.
 
 History contains statements and records without repeating balance cards or the complete wallet block.
 

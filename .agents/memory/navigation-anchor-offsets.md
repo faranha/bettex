@@ -9,6 +9,17 @@ No mobile, o menu principal do hambúrguer deve abrir diretamente abaixo da linh
 
 **How to apply:** Preservar a altura e a seleção do submenu por trás do overlay, bloqueando sua interação enquanto o menu principal estiver aberto. Fechar o overlay restaura o submenu sem alterar fragmento, seção ou rolagem.
 
+Quando uma opção do menu lateral navega para uma âncora, coordenar a
+restauração do foco com a rolagem depois do fechamento do diálogo.
+
+**Why:** O endereço já apontava para a Central na home, mas a restauração
+automática do foco ao botão do header puxava o celular de volta ao topo.
+O mesmo link funcionava como atalho fora do diálogo.
+
+**How to apply:** Restaurar o foco sem induzir rolagem e chegar ao alvo após
+o fechamento do overlay, em vez de depender de um atraso arbitrário.
+Verificar posição real do conteúdo, não apenas o fragmento do endereço.
+
 Ao verificar headers sticky, distinguir rolagem induzida pela automação de uma alteração causada pelo produto.
 
 **Why:** O clique por seletor do Playwright rolou a página antes de acionar o botão; um clique de ponteiro nas coordenadas visíveis do mesmo botão não alterou a posição. O efeito parecia uma regressão de navegação.
