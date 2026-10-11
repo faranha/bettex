@@ -2,14 +2,14 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { demoView, demoPath, demoLabel, demoPageTitle, demoAccountTab, demoRedirect, demoHref, isRemovedSimulationPath } from './demo-navigation.ts';
 
-test('wallets dashboard, history, AI Center, Treasury and personal Profile have independent reloadable routes', () => {
+test('reloadable addresses preserve identity and redirect integrated areas into Dashboard', () => {
   for (const language of ['pt', 'en', 'es'] as const) {
     for (const view of ['home', 'wallet', 'central', 'treasury', 'account'] as const) {
       const path = demoPath(view, language);
       assert.equal(demoView(path), view);
       assert.equal(demoView(path + '/'), view);
       assert.equal(demoView(path.replace('/app', '/demo')), view);
-      assert.equal(demoRedirect(path, language, '?wallet=earnings'), view === 'central' ? '/app?wallet=earnings#central' : null);
+      assert.equal(demoRedirect(path, language, '?wallet=earnings'), view === 'central' || view === 'treasury' ? `/app?wallet=earnings#${view}` : null);
     }
   }
   for (const language of ['pt', 'en', 'es'] as const) {
@@ -33,7 +33,7 @@ test('old profile finance paths and query tabs migrate without losing filters or
         `${demoPath('wallet', language)}?wallet=USDC`);
       assert.equal(demoRedirect(`${root}/profile`, language), demoPath('account', language));
       assert.equal(demoRedirect(`${root}/security/password`, language), demoPath('account', language));
-      assert.equal(demoRedirect(`${root}/policies`, language), `${demoPath('treasury', language)}?tab=policies`);
+      assert.equal(demoRedirect(`${root}/policies`, language), `${demoPath('home', language)}?tab=policies#treasury`);
     }
     for (const legacy of ['/app/saldo', '/app/balance']) {
       assert.equal(demoRedirect(legacy, language, '?wallet=BETTEX'), `${demoPath('wallet', language)}?wallet=BETTEX`);
@@ -68,4 +68,11 @@ test('AI Center links target the home anchor with query before hash', () => {
   assert.equal(demoHref('central', 'pt'), '/app#central');
   assert.equal(demoRedirect('/demo/central', 'es', '?node=eth&section=records', '#x'), '/app?node=eth&section=records#central');
   assert.equal(demoRedirect('/app', 'pt', '?section=participation'), null);
+});
+
+test('Treasury links and legacy pages reach the Dashboard without losing treasury filters', () => {
+  for (const language of ['pt', 'en', 'es'] as const) {
+    assert.equal(demoHref('treasury', language, '?node=btc'), '/app?node=btc#treasury');
+    assert.equal(demoRedirect(demoPath('treasury', language), language, '?section=assets&node=btc'), '/app?node=btc&treasurySection=assets#treasury');
+  }
 });

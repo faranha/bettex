@@ -1,4 +1,4 @@
-export const PANEL_SECTIONS = ['wallets', 'central', 'participation'] as const;
+export const PANEL_SECTIONS = ['wallets', 'central', 'participation', 'treasury'] as const;
 export type PanelSection = typeof PANEL_SECTIONS[number];
 
 export function panelScrollOffset(headerHeight: number, submenuHeight: number) {

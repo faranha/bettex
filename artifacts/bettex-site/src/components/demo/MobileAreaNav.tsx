@@ -7,7 +7,7 @@ import { useX } from '@/components/demo/ui';
 import { demoLabel, demoHref, type DemoView } from '@/components/demo/demo-navigation';
 import { TELEGRAM_COMMUNITY_URL } from '@/lib/community';
 
-export const APP_AREAS: DemoView[] = ['home', 'treasury', 'wallet'];
+export const APP_AREAS: DemoView[] = ['home', 'wallet'];
 
 /** Mobile-only hamburger in the system header, opening a side drawer. */
 export function MobileAreaNav({ current, className = '' }: { current: DemoView; className?: string }) {

@@ -6,7 +6,8 @@ const stk = readFileSync(new URL('../demo/StakingCorridor.tsx', import.meta.url)
 test('participation nested in central; sports and treasury outside', () => {
   const c = page.indexOf('id="central"'), p = page.indexOf('id="participation"'), end = page.indexOf('</section>', p);
   assert.ok(c > 0 && p > c && end > p);
-  assert.ok(page.indexOf('<AgentShowcase') > end && page.indexOf('<TreasuryHomeEntry') > page.indexOf('<AgentShowcase'));
+  assert.ok(page.indexOf('<AgentShowcase') > end && page.indexOf('id="treasury"') > page.indexOf('<AgentShowcase'));
+  assert.match(page, /<MockTreasuryPanel d=\{d\} embedded/);
   assert.ok(!page.includes('showAgents'));
 });
 test('staking has no AI Center link', () => assert.ok(!stk.includes('staking-live-trading')));
