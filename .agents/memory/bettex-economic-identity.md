@@ -69,6 +69,12 @@ A oportunidade comercial é vender um token para um público que aposta como se 
 
 **How to apply:** Apresentar essa tese em linguagem simples no Pitch e nas traduções, preservando a distinção entre estética de aposta e investimento em tecnologia, sem inventar resultados ou garantias.
 
+Na abertura da candidatura ao grant, contextualizar a proposta no Brasil com poucos números de pesquisa que expliquem a motivação financeira dos apostadores. Apresentar a credibilidade do fundador nessa audiência com evidências de alcance e engajamento, sem inventar posição em rankings.
+
+**Why:** O criador pediu números básicos sobre a gravidade do cenário brasileiro e que o fundador fosse apresentado como uma voz de destaque nesse meio.
+
+**How to apply:** Preservar o ano e o público de cada pesquisa. Usar as métricas fornecidas para a candidatura, não como tração da BETTEX nem como autorização para revelar o fundador nas páginas públicas.
+
 O nome público do mercado é “iGaming”, não “Cassinos”, em toda a apresentação, todo o site e todas as páginas, incluindo traduções.
 
 **Why:** O criador pediu expressamente essa troca global.
