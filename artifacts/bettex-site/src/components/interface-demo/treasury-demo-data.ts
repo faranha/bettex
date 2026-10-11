@@ -1,6 +1,7 @@
 import type { DemoDashboard, DemoRound, DemoTreasuryActivityItem, DemoTreasuryRound, TreasuryStatementBalance, TreasuryStatementEntry } from '@workspace/api-client-react';
 const brazilDate = (v: string | number | Date) => new Date(v).toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });
 import { MOCK_TREASURY_ADDRESSES } from './mock-addresses';
+import { historicalStatementSamples, splitStatementAmount } from './treasury-statement-samples';
 
 /** Local illustrative Treasury data derived only from the visual dashboard seed. No network. */
 export const walletsSeed = {
@@ -14,10 +15,17 @@ const usdc = (n: number) => n.toFixed(2);
 const tok = (n: number) => Math.round(n).toFixed(0);
 
 export function statementEntries(d: DemoDashboard): RawEntry[] {
-  const out: RawEntry[] = [];
+  const out: RawEntry[] = historicalStatementSamples(d);
   const base = { status: 'recorded' as const, principal: null };
   const current = d.treasury.currentRound;
-  if (current) out.push({ ...base, id: `SAMPLE-STM-${current.id}-current-income`, at: d.serverNow, account: 'treasury', asset: 'USDC', amount: usdc(current.realizedNetUsdc ?? 0), category: 'investment_income', reference: current.id, counterparty: 'operations', source: 'modeled_demo', internal: false, income: true });
+  if (current) {
+    const values = splitStatementAmount(current.realizedNetUsdc ?? 0, [18, -4, 14, 11, -3, 16, 13, 9, -2, 28], 2);
+    const start = Math.min(Date.parse(current.startedAt), Date.parse(d.serverNow));
+    values.forEach((value, i) => out.push({ ...base, id: `SAMPLE-STM-${current.id}-income-${i + 1}`,
+      at: new Date(start + (i + 1) / values.length * (Date.parse(d.serverNow) - start)).toISOString(),
+      account: 'treasury', asset: 'USDC', amount: usdc(value), category: 'investment_income', reference: current.id,
+      counterparty: ['btc_strategy', 'eth_strategy', 'sol_strategy'][i % 3], source: 'modeled_demo', internal: false, income: true }));
+  }
   for (const r of d.rounds) {
     out.push({ ...base, id: `STM-${r.id}-income`, at: r.endedAt, account: 'treasury', asset: 'USDC', amount: usdc(r.eligibleUsdc), category: 'investment_income', reference: r.id, counterparty: 'operations', source: 'modeled_settlement', internal: false, income: true });
     out.push({ ...base, id: `STM-${r.id}-staking`, at: r.endedAt, account: 'treasury', asset: 'USDC', amount: usdc(-r.stakingUsdc), category: 'transfer', reference: r.id, counterparty: 'staking_pool', source: 'modeled_settlement', internal: true, income: false });
@@ -27,11 +35,16 @@ export function statementEntries(d: DemoDashboard): RawEntry[] {
     const b = { ...base, at: e.at, reference: e.roundId ?? e.id, source: 'modeled_demo' as const, income: false };
     if (e.kind === 'wallet_funded') out.push({ ...b, id: `STM-${e.id}`, account: 'buyback', asset: 'USDC', amount: usdc(e.amountUsdc), category: 'buyback_funding', counterparty: 'treasury', internal: true });
     else if (e.kind === 'tokens_purchased') {
-      out.push({ ...b, id: `STM-${e.id}-usdc`, account: 'buyback', asset: 'USDC', amount: usdc(-e.amountUsdc), category: 'buyback_purchase', counterparty: 'swap_pool', internal: false });
-      out.push({ ...b, id: `STM-${e.id}-bettex`, account: 'buyback', asset: 'BETTEX', amount: tok(e.tokensBettex), category: 'token_purchase', counterparty: 'swap_pool', internal: false });
-    } else if (e.kind === 'tokens_burned') out.push({ ...b, id: `STM-${e.id}`, account: 'buyback', asset: 'BETTEX', amount: tok(-e.tokensBettex), category: 'token_burn', counterparty: 'burn', internal: false });
+      const cash = splitStatementAmount(e.amountUsdc, [23, 31, 19, 27], 2);
+      const tokens = splitStatementAmount(e.tokensBettex, [23, 31, 19, 27], 0);
+      cash.forEach((value, i) => {
+        out.push({ ...b, id: `SAMPLE-STM-${e.id}-usdc-${i + 1}`, account: 'buyback', asset: 'USDC', amount: usdc(-value), category: 'buyback_purchase', counterparty: 'swap_pool', internal: false });
+        out.push({ ...b, id: `SAMPLE-STM-${e.id}-bettex-${i + 1}`, account: 'buyback', asset: 'BETTEX', amount: tok(tokens[i]), category: 'token_purchase', counterparty: 'swap_pool', internal: false });
+      });
+    } else if (e.kind === 'tokens_burned') splitStatementAmount(e.tokensBettex, [18, 24, 33, 25], 0).forEach((value, i) =>
+      out.push({ ...b, id: `SAMPLE-STM-${e.id}-burn-${i + 1}`, account: 'buyback', asset: 'BETTEX', amount: tok(-value), category: 'token_burn', counterparty: 'burn', internal: false }));
   }
-  const start = d.rounds.reduce((t, r) => Math.min(t, Date.parse(r.treasurySnapshot?.startedAt ?? r.endedAt)), Date.parse(current?.startedAt ?? d.serverNow));
+  const start = out.reduce((t, e) => Math.min(t, Date.parse(e.at)), Date.parse(current?.startedAt ?? d.serverNow)) - 1;
   const accounts = [
     ['treasury', 'USDC', d.treasury.assetsUsdc],
     ['buyback', 'USDC', d.treasury.burn?.walletUsdc ?? 0],
@@ -52,12 +65,14 @@ export function statementBalances(d: DemoDashboard, all: RawEntry[], f: Pick<Sta
     const mine = all.filter(e => e.account === account && e.asset === asset);
     const inP = mine.filter(e => { const day = brazilDate(e.at); return day >= f.from && day <= f.to; });
     const sum = (xs: RawEntry[]) => xs.reduce((s, e) => s + Number(e.amount), 0);
-    const inflows = sum(inP.filter(e => Number(e.amount) > 0));
-    const outflows = -sum(inP.filter(e => Number(e.amount) < 0));
+    const movements = inP.filter(e => e.category !== 'opening_snapshot');
+    const inflows = sum(movements.filter(e => Number(e.amount) > 0));
+    const outflows = -sum(movements.filter(e => Number(e.amount) < 0));
     const fmt = (n: number) => asset === 'USDC' ? usdc(n) : tok(n);
     const result = sum(inP.filter(e => e.income));
-    const opening = sum(mine.filter(e => brazilDate(e.at) < f.from));
-    return { account, asset, opening: fmt(opening), inflows: fmt(inflows), outflows: fmt(outflows), closing: fmt(opening + inflows - outflows), income: fmt(result), otherIncome: fmt(0), reconciled: true };
+    const opening = sum(mine.filter(e => brazilDate(e.at) < f.from)) + sum(inP.filter(e => e.category === 'opening_snapshot'));
+    const otherIncome = sum(inP.filter(e => e.income && e.counterparty === 'yield_strategy'));
+    return { account, asset, opening: fmt(opening), inflows: fmt(inflows), outflows: fmt(outflows), closing: fmt(opening + inflows - outflows), income: fmt(result), otherIncome: fmt(otherIncome), reconciled: true };
   });
 }
 

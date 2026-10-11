@@ -3,26 +3,28 @@ name: Hierarquia e arte do hero do Pitch
 description: Correção do criador: um foco de leitura e pessoa dentro do grafo do orquestrador, com bandeira brasileira ao fundo.
 ---
 
-O hero do Pitch deve ter o H1 como destaque principal, sem uma caixa acima
-dele nem três destaques concorrentes. A imagem principal deve mostrar o
-grafo do orquestrador agêntico BETTEX com a pessoa no meio, mantendo a
-bandeira brasileira ao fundo.
+O hero do Pitch deve voltar à composição anterior à abertura com a cena
+orbital. A nova imagem deve usar o personagem principal já estabelecido na
+BETTEX, fazendo algo com o aplicativo.
 
-**Why:** O criador rejeitou a abertura com três grupos de destaque porque não
-sabia o que ler primeiro e corrigiu explicitamente a direção da imagem.
+**Why:** O criador rejeitou a cena orbital e pediu: “traga novamente por favor
+o hero anterior, mas mude a imagem do hero, adicione nosso personagem
+principal fazendo alguma coisa com o app”.
 
-**How to apply:** Manter esta regra no hero do Pitch, sem estendê-la à homepage.
-Preservar o caráter ilustrativo e a distinção entre o projeto planejado e
-a demonstração visual; não apresentar a pessoa como identidade do fundador.
+**How to apply:** Restringir a restauração ao hero do Pitch, preservando as
+demais atualizações da página e a homepage. Manter a identidade visual do
+personagem, em vez de trocar por uma pessoa distante de costas. Mostrar a
+interação com a interface real do demo, no idioma selecionado. A imagem é
+ilustrativa e não representa a identidade do fundador.
 
-A arte do grafo deve ter uma apresentação discreta, sem marcadores e textos
-pesados competindo com a pessoa.
+Não reutilizar a montagem rejeitada de retrato recortado, rótulos flutuantes
+e conexões fortes nem a cena de uma pessoa observando uma rede orbital.
 
-**Why:** O criador rejeitou a versão com contornos fortes e conexões destacadas
-como “ficou grosseiro, vamos mudar isso por favor”.
+**Why:** O criador rejeitou sucessivamente essas artes e depois definiu a
+interação do personagem com o app como a nova direção.
 
-**How to apply:** Refinar a composição sem abandonar a pessoa central, a
-identidade BETTEX ou o fundo brasileiro; conferir legibilidade no celular.
+**How to apply:** Conferir a presença do personagem e sua ação no celular,
+inclusive no mobile, sem substituir o gesto por outro diagrama abstrato.
 
 Os heros de capítulos distintos do Pitch não podem repetir o mesmo fundo.
 

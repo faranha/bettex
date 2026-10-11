@@ -16,6 +16,11 @@ paths:
       operationId: getDemoPolymarket
       tags: [markets]
       summary: Public quotes for the read-only Polymarket interface simulation
+      parameters:
+        - name: locale
+          in: query
+          description: Language for market questions; original source prices and identifiers are preserved.
+          schema: { type: string, enum: [pt, en, es], default: en }
       responses:
         "200":
           description: Public prices, never orders or balances

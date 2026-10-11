@@ -1,4 +1,8 @@
 {
+  "A BETTEX é um projeto DeFi e DEX, sem entidade empresarial, que prevê trading com IA sob mandatos e limites de risco. Pelo staking, o usuário participa do rateio do pool global quando há lucro elegível, sem acompanhar cada operação, financiar o trading ou ter pagamento garantido. A gestão começa com o fundador e o time, com transição gradual para IA condicionada à validação do desempenho e a controles verificáveis.": {
+    "en": "BETTEX is a DeFi and DEX project, without a corporate entity, that plans AI trading under mandates and risk limits. Through staking, users participate in distributions from the global pool when eligible profit exists, without following each trade, funding trading or receiving guaranteed payments. Management starts with the founder and team, with a gradual transition to AI subject to performance validation and verifiable controls.",
+    "es": "BETTEX es un proyecto DeFi y DEX, sin entidad empresarial, que prevé trading con IA bajo mandatos y límites de riesgo. Mediante el staking, el usuario participa en el reparto del pool global cuando hay beneficios elegibles, sin seguir cada operación, financiar el trading ni tener pagos garantizados. La gestión comienza con el fundador y el equipo, con una transición gradual a la IA sujeta a la validación del desempeño y a controles verificables."
+  },
   "ABRIR APP": {
     "en": "OPEN APP",
     "es": "ABRIR APP"
@@ -23037,5 +23041,9 @@
   "Imagem ilustrativa, não evidência de público": {
     "en": "Illustrative image, not audience evidence",
     "es": "Imagen ilustrativa, no evidencia de público"
+  },
+  "Ilustração do personagem da BETTEX consultando as carteiras e a participação no aplicativo pelo celular.": {
+    "en": "Illustration of the BETTEX character checking wallets and participation in the app on his phone.",
+    "es": "Ilustración del personaje de BETTEX consultando las carteras y la participación en la aplicación desde el celular."
   }
 }

@@ -42,7 +42,7 @@ type Props = { narrow: boolean; reduced: boolean; sel: Sel | null; onSelect: (s:
 
 export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImmersive }: Props) {
   const { x, loc } = useFmt(); const L = useL();
-  const quotes = useGetDemoPolymarket({ query: { staleTime: 60000, refetchInterval: 60000, retry: 1 } });
+  const quotes = useGetDemoPolymarket({ locale: loc }, { query: { staleTime: 60000, refetchInterval: 60000, retry: 1 } });
   const world = useMemo<P>(() => narrow ? [420, 880] : [1560, 1060], [narrow]);
   const scene = useMemo(() => buildScene(narrow, world), [narrow, world]);
   const [mode, setMode] = useState<Mode>(narrow ? 'pan' : 'orbit');
@@ -97,7 +97,7 @@ export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImme
         <span className="cg-label"><b>{L(n.name)}</b><i>{L(n.sub)}</i></span></div>;
       return <button key={n.id} type="button" ref={el => { els.current[`n-${n.id}`] = el; }} data-demo-local data-testid={`graph-node-${n.id}`} data-focus-key={`n-${n.id}`} aria-pressed={on} aria-label={`${L(n.name)}, ${L(n.sub)}`}
         className={`cg-node ${n.kind} ${n.group ?? ''} ${on ? 'sel' : ''} ${dim ? 'dim' : ''}`} {...keyAct(() => onSelect({ k: 'node', id: n.id }))}>
-        <span className="cg-orb"><I aria-hidden="true" /></span><span className="cg-label"><b>{L(n.name)}</b><i>{L(n.sub)}</i>{n.kind === 'spec' && <small className="cg-public-price">Polymarket · {quote ? `${(quote.yesPrice * 100).toLocaleString(loc, { maximumFractionDigits: 1 })}¢` : x('Sem cotação', 'No quote', 'Sin cotización')}</small>}</span></button>; })}
+        <span className="cg-orb"><I aria-hidden="true" /></span><span className="cg-label"><b>{L(n.name)}</b><i>{L(n.sub)}</i>{n.kind === 'spec' && <small className="cg-public-price">{x('Polymarket', 'Polymarket', 'Polymarket')} · {quote ? `${(quote.yesPrice * 100).toLocaleString(loc, { maximumFractionDigits: 1 })}¢` : x('Sem cotação', 'No quote', 'Sin cotización')}</small>}</span></button>; })}
     <div className="cg-tools" role="toolbar" aria-label={x('Controles da câmera', 'Camera controls', 'Controles de cámara')}>
       <button type="button" {...tool} className={tb} data-testid="button-graph-zoom-in" aria-label={x('Aproximar', 'Zoom in', 'Acercar')} title={x('Aproximar (+)', 'Zoom in (+)', 'Acercar (+)')} onClick={() => cam.api.zoomBy(1.25)}><ZoomIn aria-hidden="true" /></button>
       <button type="button" {...tool} className={tb} data-testid="button-graph-zoom-out" aria-label={x('Afastar', 'Zoom out', 'Alejar')} title={x('Afastar (-)', 'Zoom out (-)', 'Alejar (-)')} onClick={() => cam.api.zoomBy(0.8)}><ZoomOut aria-hidden="true" /></button>

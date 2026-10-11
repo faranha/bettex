@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Workflow, Settings2, ScrollText } from 'lucide-react';
 import { useFmt, card, KV, Tag, dec6 } from '../alpha-trading/format';
-import { POLICY, AGENTS, REQUESTS, DECISIONS, SAMPLE_PROVENANCE, type T3 } from './central-data';
+import { POLICY, AGENTS, REQUESTS, DECISIONS, type T3 } from './central-data';
 import { useL } from './CentralAgents';
 import { STATUS, DECISION } from '../agent-operations/copy';
 
@@ -18,16 +18,16 @@ export function CentralBettex({ onAction }: { onAction: () => void }) {
   const u = (v: string) => `${dec6(v, lc)} USDC`; const [m, setM] = useState('bettex'); const b = AGENTS[0].latest;
   const mand = MANDATES.find(k => k.id === m) ?? MANDATES[0];
   const hier: [string, string[]][] = [['BETTEX', ['Cripto']]];
-  return <>
+  return <div className="cgo-bettex" data-testid="bettex-overview">
     <nav aria-label={x('Hierarquia', 'Hierarchy', 'Jerarquía')} data-testid="hierarchy" className="flex flex-wrap items-center gap-1.5 text-xs font-bold text-[#0A6657]">
       {hier.map(([a]) => <span key={a} className="inline-flex items-center gap-1.5"><Workflow className="h-4 w-4" aria-hidden="true" />{a}</span>)}<span aria-hidden="true">&gt;</span><span>{x('Cripto', 'Crypto', 'Cripto')}</span><span aria-hidden="true">&gt;</span><span>BTC</span><span aria-hidden="true">/</span><span>ETH</span><span aria-hidden="true">/</span><span>SOL</span></nav>
     <section className="rounded-xl border border-[#C9A227]/50 bg-[#FFFCF6] p-3" data-testid="bettex-summary">
-      <div className="flex flex-wrap items-center gap-2"><h3 className="display text-base font-extrabold">{x('Resumo da BETTEX', 'BETTEX summary', 'Resumen de BETTEX')}</h3><Tag>{L(STATUS[b.status])}</Tag><Tag>{L(DECISION[b.decision])}</Tag><Tag warn>{x('Demonstração visual', 'Visual demo', 'Demostración visual')}</Tag></div>
-      <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4"><KV k={x('Pedidos de amostra', 'Sample requests', 'Pedidos de muestra')} v={REQUESTS.length} /><KV k={x('Decisões de amostra', 'Sample decisions', 'Decisiones de muestra')} v={DECISIONS.length} /><KV k={x('Último ciclo', 'Last cycle', 'Último ciclo')} v={date(b.completedAt)} /><KV k={x('Universo', 'Universe', 'Universo')} v="BTC / ETH / SOL" /></dl>
+      <div className="flex flex-wrap items-center gap-2"><h3 className="display text-base font-extrabold">{x('Resumo da BETTEX', 'BETTEX summary', 'Resumen de BETTEX')}</h3><Tag>{L(STATUS[b.status])}</Tag><Tag>{L(DECISION[b.decision])}</Tag></div>
+      <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4"><KV k={x('Pedidos', 'Requests', 'Pedidos')} v={REQUESTS.length} /><KV k={x('Decisões', 'Decisions', 'Decisiones')} v={DECISIONS.length} /><KV k={x('Último ciclo', 'Last cycle', 'Último ciclo')} v={date(b.completedAt)} /><KV k={x('Universo', 'Universe', 'Universo')} v="BTC / ETH / SOL" /></dl>
     </section>
     <section className="rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="bettex-config">
       <h3 className="flex items-center gap-2 font-bold"><Settings2 className="h-4 w-4 text-[#0A6657]" aria-hidden="true" />{x('Configuração', 'Configuration', 'Configuración')}</h3>
-      <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3"><KV k={x('Modo', 'Mode', 'Modo')} v={x('Simulação, sem dinheiro real', 'Simulation, no real money', 'Simulación, sin dinero real')} /><KV k={x('Máx. por ordem', 'Max per order', 'Máx. por orden')} v={u(POLICY.maxOrder)} /><KV k={x('Máx. portfólio', 'Max portfolio', 'Máx. portafolio')} v={u(POLICY.maxPortfolio)} /><KV k={x('Autorização', 'Authorization', 'Autorización')} v={x('Execução dentro dos mandatos aprovados', 'Execution within approved mandates', 'Ejecución dentro de los mandatos aprobados')} /><KV k={x('Frequência de ciclo', 'Cycle cadence', 'Frecuencia de ciclo')} v="60 s" /><KV k={x('Política', 'Policy', 'Política')} v={`${POLICY.version}`} /></dl>
+      <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3"><KV k={x('Modo', 'Mode', 'Modo')} v={x('Simulação', 'Simulation', 'Simulación')} /><KV k={x('Máx. por ordem', 'Max per order', 'Máx. por orden')} v={u(POLICY.maxOrder)} /><KV k={x('Máx. portfólio', 'Max portfolio', 'Máx. portafolio')} v={u(POLICY.maxPortfolio)} /><KV k={x('Autorização', 'Authorization', 'Autorización')} v={x('Execução dentro dos mandatos aprovados', 'Execution within approved mandates', 'Ejecución dentro de los mandatos aprobados')} /><KV k={x('Frequência de ciclo', 'Cycle cadence', 'Frecuencia de ciclo')} v="60 s" /><KV k={x('Política', 'Policy', 'Política')} v={`${POLICY.version}`} /></dl>
       <button type="button" data-demo-action data-testid="button-bettex-config-save" onClick={onAction} className="mt-3 min-h-11 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white">{x('Salvar configuração', 'Save configuration', 'Guardar configuración')}</button>
     </section>
     <section className="rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="bettex-mandates">
@@ -40,8 +40,6 @@ export function CentralBettex({ onAction }: { onAction: () => void }) {
       <h3 className="font-bold">{x('Autorização e fronteiras', 'Authorization and boundaries', 'Autorización y fronteras')}</h3>
       <ul className="mt-2 list-disc pl-5 text-sm">
         <li>{x('Operações já cobertas por um mandato aprovado são executadas dentro dos limites, sem nova decisão humana a cada operação.', 'Operations already covered by an approved mandate run within limits, without a new human decision for each operation.', 'Las operaciones ya cubiertas por un mandato aprobado se ejecutan dentro de los límites, sin nueva decisión humana en cada operación.')}</li>
-        <li>{x('A recompra exige autorização administrativa e multisig separada; não faz parte da execução dos mandatos.', 'The buyback requires separate administrative and multisig authorization; it is not part of mandate execution.', 'La recompra exige autorización administrativa y multisig separada; no forma parte de la ejecución de mandatos.')}</li>
-        <li>{x('Esta demonstração é apenas ilustrativa: nada aqui executa, autoriza ou prova integração real.', 'This demo is only illustrative: nothing here executes, authorizes or proves a real integration.', 'Esta demostración es solo ilustrativa: nada aquí ejecuta, autoriza ni prueba una integración real.')}</li></ul></section>
-    <p className="text-[11px] font-bold text-[#7A5410]">{L(SAMPLE_PROVENANCE)}</p>
-  </>;
+        <li>{x('A recompra exige autorização administrativa e multisig separada; não faz parte da execução dos mandatos.', 'The buyback requires separate administrative and multisig authorization; it is not part of mandate execution.', 'La recompra exige autorización administrativa y multisig separada; no forma parte de la ejecución de mandatos.')}</li></ul></section>
+  </div>;
 }

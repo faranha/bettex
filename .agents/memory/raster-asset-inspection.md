@@ -9,6 +9,17 @@ For temporary contact sheets, avoid depending on Python Pillow or ImageMagick mo
 
 **How to apply:** When comparing multiple generated raster assets, compose them in `/tmp` against a contrasting background rather than installing a package only for visual inspection.
 
+Use screenshots of the real demo UI for device screens in generated marketing
+art, with a localized screen for each supported language.
+
+**Why:** Generated phone screens invented labels and balances, including
+untranslated or meaningless text. Real screenshots preserve the product's
+visual identity and avoid confusing an invented interface with the app.
+
+**How to apply:** Preserve the established character and natural gesture;
+replace only the device display, respecting perspective and hand occlusion.
+Keep large intermediates out of Git and deploy only optimized artwork.
+
 Do not assume generated images have the aspect ratio requested in the prompt.
 
 **Why:** Four images requested as wide landscape compositions were returned as square images. Prompt wording is not a reliable output-dimension contract.

@@ -17,17 +17,23 @@ Não duplicar os breadcrumbs do header na Central da IA nem ampliar a Central al
 
 ## Revisões de legibilidade
 
+Não reintroduzir “Sobre esta demonstração” nem sua nota expansível acima do grafo. Preservar o título; a instrução posterior concentra a indicação DEMO no menu, sem selo repetido na Central.
+
+**Why:** O criador apontou esse bloco e pediu “tire sobre esta demonstracao por favor”.
+
+**How to apply:** Manter o cabeçalho compacto; os demais avisos existentes continuam identificando o caráter demonstrativo.
+
 Cotações e simulações da Polymarket pertencem aos detalhes dos nós de Cripto e seus subagentes no grafo, inclusive quando apresentados em overlay. Não expor esse painel como um bloco separado abaixo do grafo.
 
 **Why:** O criador apontou o bloco separado de cotações e simulação e corrigiu: “mesmo em overlay, isso deveria ficar dentro do grapho”.
 
 **How to apply:** Manter a leitura dos mercados acessível pelos nós de Cripto, BTC, ETH e SOL, sem duplicar o painel fora dessa navegação. Essa regra não transforma controles de negócio em agentes.
 
-Evitar uma grande lista simultânea de atalhos com o mesmo peso visual nas áreas de apoio da Central. Agrupar por finalidade e mostrar um grupo por vez, preservando o acesso a todos os destinos.
+Evitar uma grande lista simultânea de atalhos ou grades empilhadas de cartões nas áreas de apoio da Central. Manter categorias compactas e apresentar suas opções sob demanda, preservando o acesso a todos os destinos.
 
-**Why:** O criador rejeitou a organização com todos os controles, registros e tópicos juntos: “a organizacao disso aqui esta pessima [...] uma bagunca visual”.
+**Why:** O criador rejeitou a organização com todos os controles, registros e tópicos juntos: “a organizacao disso aqui esta pessima [...] uma bagunca visual”. Depois rejeitou também a grade por categoria: “esse empilhamento ainda esta pessimo nas opcoes”.
 
-**How to apply:** Ao acrescentar áreas, preservar a hierarquia e a seleção por categoria, com rótulos legíveis também no celular. Não voltar à lista completa de pequenos botões em sequência.
+**How to apply:** Ao acrescentar áreas, preservar a hierarquia e a seleção por categoria, com rótulos legíveis também no celular. Não voltar à lista completa de botões ou cartões ocupando várias linhas.
 
 Os detalhes da Central devem abrir em uma janela overlay ampla e bem definida, não em uma coluna estreita dividindo espaço com o grafo.
 
@@ -58,6 +64,12 @@ Conferir a geometria vertical dos painéis com conteúdo longo, antes e depois d
 **Why:** O criador apontou telas se sobrepondo após a revisão anterior. Os testes de contraste passavam, mas o conteúdo longo comprimia a altura das abas; elas ganhavam rolagem vertical e seus botões eram cortados.
 
 **How to apply:** Incluir telas baixas na revisão. Cabeçalho e abas não devem encolher para acomodar o histórico; a área de conteúdo precisa ter espaço útil e ser a responsável pela rolagem vertical.
+
+Nos overlays, separar os blocos internos com espaços reais e hierarquia; evitar cartões encostados e todo o conteúdo empilhado em largura integral quando o desktop permite uma organização melhor.
+
+**Why:** Mesmo depois da janela overlay, o criador reiterou: “reveja o layout dos overlays esta tudo empiljado sem espacos cara olha bem”, mostrando resumo, configuração, mandatos e limites colados.
+
+**How to apply:** Revisar a composição interna, não apenas o tamanho da janela. Preservar informações e ações; organizar blocos relacionados no desktop e manter espaçamento entre seções na coluna do celular.
 
 Conferir o contraste de parágrafos, listas e valores no contexto real do inspetor, não apenas o título ou o componente isolado.
 

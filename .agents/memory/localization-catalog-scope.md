@@ -44,3 +44,16 @@ Revisar também os padrões em inglês dos componentes compartilhados, inclusive
 **Why:** A auditoria principal passava mesmo com textos de paginação, fechamento e navegação em inglês copiados para o espanhol e sem tradução portuguesa.
 
 **How to apply:** Para controles comuns, verificar os valores efetivos depois da combinação dos catálogos. Não tratar nomes próprios, códigos ou símbolos de moeda como falhas por permanecerem iguais.
+
+JSX isolado no componente pai não isola automaticamente os componentes
+compartilhados que ele chama. Rótulos dinâmicos já localizados podem passar
+novamente pelo tradutor global, inclusive em atributos de acessibilidade.
+
+**Why:** Um submenu em inglês caiu no limite de erro porque um controle
+compartilhado tentou traduzir novamente o rótulo inglês já escolhido pela
+interface multilíngue.
+
+**How to apply:** Nas interfaces isoladas com rótulos completos em três idiomas,
+usar primitivas nativas quando o wrapper compartilhado impõe uma segunda
+tradução. Verificar também o conteúdo aberto de menus e os rótulos de
+acessibilidade em EN/ES; a auditoria estática de tuplas sozinha não detecta isso.

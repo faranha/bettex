@@ -1,5 +1,6 @@
 /** @jsxImportSource react */
 import { useState } from 'react';
+import { DemoSubmenu, useSection } from './DemoSubmenu';
 import { useX } from '@/components/demo/ui';
 import { MOCK_WALLET_ADDRESSES } from './mock-addresses';
 
@@ -9,22 +10,21 @@ const field = 'min-h-11 w-full rounded-xl border border-[#E4DCCB] bg-white/60 px
 
 export function MockProfilePanel({ onAction }: { onAction: () => void }) {
   const { x } = useX();
-  const [tab, setTab] = useState<Tab>('prefs');
+  const [tab, setTab] = useSection<Tab>(['prefs', 'security', 'wallet']);
   const [lang, setLang] = useState('pt');
   const [notify, setNotify] = useState(true);
   const tabs: [Tab, string][] = [['prefs', x('Preferências', 'Preferences', 'Preferencias')], ['security', x('Segurança', 'Security', 'Seguridad')], ['wallet', x('Carteira', 'Wallet', 'Cartera')]];
   const act = (label: string) => <button type="button" data-demo-action onClick={onAction} className={btn}>{label}</button>;
   const row = (k: string, v: string) => <div className="flex justify-between gap-3 border-b border-[#E4DCCB] py-2 text-sm"><dt className="text-[#5B6B85]">{k}</dt><dd className="font-bold">{v}</dd></div>;
   return (
+    <div className="grid min-w-0 gap-4">
+    <DemoSubmenu items={tabs.map(([id, label]) => ({ id, label }))} value={tab} onChange={setTab} panelId="profile-panel" testIdPrefix="tab-profile" label={x('Área do perfil', 'Profile area', 'Área del perfil')} />
     <section data-testid="mock-profile-panel" className="grid min-w-0 gap-4 rounded-2xl border border-[#E4DCCB] bg-[#FBF6E9] p-4 text-[#12372A] sm:p-6">
       <header className="flex items-center gap-3">
         <div aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-full bg-[#12372A] text-lg font-extrabold text-[#F2C14E]">{x('UD', 'DU', 'UD')}</div>
-        <div className="min-w-0"><h2 className="text-lg font-bold">{x('Usuário Demo', 'Demo User', 'Usuario Demo')}</h2><p className="text-xs text-[#5B6B85]">{x('Perfil fictício para demonstração', 'Fictitious profile for demonstration', 'Perfil ficticio para demostración')}</p></div>
+        <div className="min-w-0"><h2 className="text-lg font-bold">{x('Usuário Demo', 'Demo User', 'Usuario Demo')}</h2></div>
       </header>
-      <div role="tablist" className="grid grid-cols-3 gap-2">
-        {tabs.map(([k, l]) => <button key={k} type="button" role="tab" aria-selected={tab === k} onClick={() => setTab(k)} className={`min-h-11 rounded-xl text-sm font-bold ${tab === k ? 'bg-[#12372A] text-[#F2C14E]' : 'bg-[#F0E9DA]'}`}>{l}</button>)}
-      </div>
-      <div role="tabpanel" className="grid gap-3">
+      <div role="tabpanel" id="profile-panel" aria-labelledby={`profile-panel-tab-${tab}`} className="grid gap-3">
         {tab === 'prefs' && <>
           <label className="grid gap-1 text-sm font-bold">{x('Idioma', 'Language', 'Idioma')}
             <select value={lang} onChange={e => setLang(e.target.value)} className={field}><option value="pt">{x('Português', 'Português', 'Português')}</option><option value="en">{x('English', 'English', 'English')}</option><option value="es">{x('Español', 'Español', 'Español')}</option></select>
@@ -38,14 +38,14 @@ export function MockProfilePanel({ onAction }: { onAction: () => void }) {
           {act(x('Alterar senha', 'Change password', 'Cambiar contraseña'))}
         </>}
         {tab === 'wallet' && <>
-          <dl>{row(x('Saldo de exemplo', 'Sample balance', 'Saldo de ejemplo'), 'R$ 1.250,00')}{row(x('Carteira fictícia', 'Fictitious wallet', 'Cartera ficticia'), MOCK_WALLET_ADDRESSES.USDC)}</dl>
-          <p className="text-xs text-[#5B6B85]">{x('Endereço mock. Sem rede, conexão de carteira ou depósitos.', 'Mock address. No network, wallet connection or deposits.', 'Dirección mock. Sin red, conexión de cartera ni depósitos.')}</p>
+          <dl>{row(x('Saldo', 'Balance', 'Saldo'), 'R$ 1.250,00')}{row(x('Carteira', 'Wallet', 'Cartera'), MOCK_WALLET_ADDRESSES.USDC)}</dl>
           {act(x('Registrar carteira', 'Register wallet', 'Registrar cartera'))}
           {act(x('Exportar relatório', 'Export report', 'Exportar informe'))}
           {act(x('Fazer depósito', 'Make deposit', 'Hacer depósito'))}
         </>}
       </div>
     </section>
+    </div>
   );
 }
 export default MockProfilePanel;

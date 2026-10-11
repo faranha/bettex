@@ -3372,6 +3372,22 @@ export interface HealthStatus {
  */
 export type DemoTabSessionParameter = string;
 
+export type GetDemoPolymarketParams = {
+/**
+ * Language for market questions; original source prices and identifiers are preserved.
+ */
+locale?: GetDemoPolymarketLocale;
+};
+
+export type GetDemoPolymarketLocale = typeof GetDemoPolymarketLocale[keyof typeof GetDemoPolymarketLocale];
+
+
+export const GetDemoPolymarketLocale = {
+  pt: 'pt',
+  en: 'en',
+  es: 'es',
+} as const;
+
 export type GetAgentCenterParams = {
 agentId?: string;
 /**

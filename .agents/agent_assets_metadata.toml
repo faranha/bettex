@@ -686,3 +686,17 @@ mtime_ms = 1791730196239
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8c314e50-0cd5-4284-8c02-d9b560936517/804f367e-e5da-4df2-9665-405a503dd14d"
 storage_version_token = "1791730473486313"
 content_type = "image/jpeg"
+
+[[outputs]]
+id = "1cZEkVWWf3cSGlvH6sSx5"
+uri = "file://artifacts/bettex-site/public/pitch-hero-orchestrator-scene.webp"
+type = "image"
+title = "Nova arte do hero"
+description = "Arte já aplicada no hero do Pitch, com uma cena integrada da pessoa, da rede de IA e da bandeira brasileira."
+logical_id = "8daeeaea-8318-4917-aaf5-9e12bdc7776f"
+content_hash = "sha256:657b91b3e06df72fa5bf2f631de5f12f2e8d0d8feb032be2e295f36254f5f70a"
+size = 115280
+mtime_ms = 1791744193646
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8daeeaea-8318-4917-aaf5-9e12bdc7776f/3a0cd9a8-43e6-4223-b3d1-428961671d0f"
+storage_version_token = "1791744334061687"
+content_type = "image/webp"

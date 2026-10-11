@@ -205,6 +205,8 @@ export * from './getDemoHistoryCategory';
 export * from './getDemoHistoryEnvironment';
 export * from './getDemoHistoryParams';
 export * from './getDemoHistoryView';
+export * from './getDemoPolymarketLocale';
+export * from './getDemoPolymarketParams';
 export * from './getDemoRoundArchiveParams';
 export * from './getDemoSimulationParams';
 export * from './getDemoSwapQuoteAsset';
