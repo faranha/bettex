@@ -1,4 +1,8 @@
 {
+  "Referências oficiais:": {
+    "en": "Official references:",
+    "es": "Referencias oficiales:"
+  },
   "A análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os provedores. Oferta e execução são avaliadas separadamente; uma permissão em um país não autoriza atuação em outro. Se uma atividade exigir licença ou autorização, ela não será liberada antes de cumprir essas condições.": {
     "en": "The assessment identifies the country of offering, target audience, activity, responsible parties and providers. Offering and execution are assessed separately; permission in one country does not authorize activity in another. If an activity requires a license or authorization, it will not be released before those requirements are met.",
     "es": "El análisis identifica el país de oferta, el público atendido, la actividad, sus responsables y los proveedores. La oferta y la ejecución se evalúan por separado; un permiso en un país no autoriza operar en otro. Si una actividad exige licencia o autorización, no se habilitará antes de cumplir esas condiciones."
@@ -22314,5 +22318,133 @@
   "e participa das distribuições em USDC conforme as regras documentadas de saldo e tempo elegíveis, apuração de lucro, conciliação e reservas. Ter tokens não equivale a administrar a tesouraria e não constitui garantia de rendimento ou de preservação do valor de mercado.": {
     "en": "and participates in USDC distributions according to documented rules of eligible balance and time, profit calculation, reconciliation, and reserves. Having tokens does not equal managing the treasury and does not constitute a guarantee of yield or preservation of market value.",
     "es": "y participa de las distribuciones en USDC según las reglas documentadas de saldo y tiempo elegibles, cálculo de ganancias, conciliación y reservas. Tener tokens no equivale a gestionar la tesorería y no constituye una garantía de rendimiento o de preservación del valor de mercado."
+  },
+  "A BETTEX está em fase de planejamento e captação de grants. Starknet e Arbitrum One são alternativas em avaliação, sem rede de lançamento definida. A presença das marcas na área de parceiros não comprova grant aprovado, parceria contratual ou integração operacional.": {
+    "en": "BETTEX is in the planning and grants fundraising phase. Starknet and Arbitrum One are alternatives under evaluation, with no defined launch network. The presence of brands in the partner area does not prove an approved grant, contractual partnership, or operational integration.",
+    "es": "BETTEX está en fase de planificación y captación de subvenciones. Starknet y Arbitrum One son alternativas bajo evaluación, sin red de lanzamiento definida. La presencia de las marcas en el área de socios no constituye prueba de subvención aprobada, asociación contractual o integración operativa."
+  },
+  "A escolha depende de custos, segurança, disponibilidade de USDC, liquidez em DEX, carteiras, auditoria e suporte do ecossistema. Não há compromisso de operar nas duas redes ao mesmo tempo. Grants apoiam o desenvolvimento e não são lucro de trading nem entram na distribuição aos participantes.": {
+    "en": "The choice depends on costs, security, USDC availability, DEX liquidity, wallets, audits, and ecosystem support. There is no commitment to operate on both networks at the same time. Grants support development and are not trading profits, nor are they included in distribution to participants.",
+    "es": "La elección depende de costes, seguridad, disponibilidad de USDC, liquidez en DEX, carteras, auditoría y soporte del ecosistema. No hay compromiso de operar en ambas redes al mismo tiempo. Las subvenciones apoyan el desarrollo y no son ganancias de trading ni se incluyen en la distribución a los participantes."
+  },
+  "Alternativas de segunda camada do Ethereum; escolha de lançamento em aberto.": {
+    "en": "Ethereum layer-two alternatives; launch choice is open.",
+    "es": "Alternativas de capa dos de Ethereum; elección de lanzamiento abierta."
+  },
+  "Alternativas em avaliação para o token BETTEX e as transações da carteira. Planejamento e captação de grants; escolha da rede em aberto. A criação da conta fica no aplicativo.": {
+    "en": "Alternatives under evaluation for the BETTEX token and wallet transactions. Planning and grants fundraising; network choice is open. Account creation takes place in the application.",
+    "es": "Alternativas bajo evaluación para el token BETTEX y las transacciones de la cartera. Planificación y captación de subvenciones; elección de la red abierta. La creación de la cuenta se realiza en la aplicación."
+  },
+  "Alternativas para os contratos BETTEX, com implementação e validação específicas por rede. Os contratos aplicarão as regras de acesso ao capital; a análise da IA é uma camada separada.": {
+    "en": "Alternatives for BETTEX contracts, with specific implementation and validation per network. The contracts will apply capital access rules; AI analysis is a separate layer.",
+    "es": "Alternativas para los contratos BETTEX, con implementación y validación específicas por red. Los contratos aplicarán las reglas de acceso al capital; el análisis de IA es una capa separada."
+  },
+  "Arbitrum One: contratos EVM e rollup otimista": {
+    "en": "Arbitrum One: EVM contracts and optimistic rollup",
+    "es": "Arbitrum One: contratos EVM y rollup optimista"
+  },
+  "Candidata; consulta pública verificada": {
+    "en": "Candidate; verified public query",
+    "es": "Candidata; consulta pública verificada"
+  },
+  "Candidata; planejamento e captação de grants": {
+    "en": "Candidate; planning and grants fundraising",
+    "es": "Candidata; planificación y captación de subvenciones"
+  },
+  "Carteiras, token, transferências e contratos. Consulta RPC não define a escolha da rede; execução BETTEX exige contratos validados.": {
+    "en": "Wallets, token, transfers, and contracts. RPC query does not define network choice; BETTEX execution requires validated contracts.",
+    "es": "Carteras, token, transferencias y contratos. La consulta RPC no define la elección de la red; la ejecución de BETTEX requiere contratos validados."
+  },
+  "Contas nativas, token, transferências e contratos. Exige implementação Cairo, ativos compatíveis e contratos validados; não há implantação BETTEX confirmada.": {
+    "en": "Native accounts, token, transfers, and contracts. Requires Cairo implementation, compatible assets, and validated contracts; there is no confirmed BETTEX deployment.",
+    "es": "Cuentas nativas, token, transferencias y contratos. Requiere implementación Cairo, activos compatibles y contratos validados; no hay despliegue de BETTEX confirmado."
+  },
+  "Escolha da rede e captação de grants": {
+    "en": "Network choice and grants fundraising",
+    "es": "Elección de la red y captación de subvenciones"
+  },
+  "Esses sinais entram na camada de análise junto de preços, probabilidades, liquidez e exposição. A decisão permanece no núcleo BETTEX, com aprovação independente de risco antes de qualquer ordem. Allora não controla a carteira, não executa pagamentos ou ordens e não autentica o usuário. A consulta por API é uma integração possível do backend, não uma afirmação de integração on-chain já validada na Starknet ou na Arbitrum.": {
+    "en": "These signals enter the analysis layer along with prices, probabilities, liquidity, and exposure. The decision remains with the BETTEX core, with independent risk approval before any order. Allora does not control the wallet, does not execute payments or orders, and does not authenticate the user. The API query is a possible backend integration, not an assertion of on-chain integration already validated on Starknet or Arbitrum.",
+    "es": "Estas señales entran en la capa de análisis junto con precios, probabilidades, liquidez y exposición. La decisión permanece en el núcleo de BETTEX, con aprobación independiente de riesgo antes de cualquier orden. Allora no controla la cartera, no ejecuta pagos u órdenes y no autentica al usuario. La consulta por API es una integración posible del backend, no una afirmación de integración on-chain ya validada en Starknet o Arbitrum."
+  },
+  "Governança ↔ políticas e versões · Starknet ou Arbitrum One: carteiras e contratos, conforme a rede escolhida": {
+    "en": "Governance ↔ policies and versions · Starknet or Arbitrum One: wallets and contracts, depending on the chosen network",
+    "es": "Gobernanza ↔ políticas y versiones · Starknet o Arbitrum One: carteras y contratos, según la red elegida"
+  },
+  "Infraestrutura em avaliação, separada das APIs de mercado. As ordens da Robinhood não são transações da Starknet ou da Arbitrum.": {
+    "en": "Infrastructure under evaluation, separate from market APIs. Robinhood orders are not Starknet or Arbitrum transactions.",
+    "es": "Infraestructura bajo evaluación, separada de las APIs de mercado. Las órdenes de Robinhood no son transacciones de Starknet o Arbitrum."
+  },
+  "JSON-RPC / Cairo": {
+    "en": "JSON-RPC / Cairo",
+    "es": "JSON-RPC / Cairo"
+  },
+  "Na Starknet, o percurso previsto é: assinatura pela conta compatível → execução na segunda camada → geração da prova de validade → verificação e liquidação no Ethereum. O aplicativo deverá acompanhar eventos confirmados, conciliar USDC e BETTEX separadamente e validar a disponibilidade dos ativos na rede escolhida.": {
+    "en": "On Starknet, the planned path is: signature by the compatible account → execution on layer two → generation of validity proof → verification and settlement on Ethereum. The application must track confirmed events, reconcile USDC and BETTEX separately, and validate asset availability on the chosen network.",
+    "es": "En Starknet, el recorrido previsto es: firma por la cuenta compatible → ejecución en la capa dos → generación de la prueba de validez → verificación y liquidación en Ethereum. La aplicación deberá seguir eventos confirmados, conciliar USDC y BETTEX por separado y validar la disponibilidad de los activos en la red elegida."
+  },
+  "Na rede escolhida, transferências de BETTEX e USDC compatível exigem confirmação da compra e conciliação do recebimento pela tesouraria. Revendas entre titulares têm o vendedor como destinatário do pagamento.": {
+    "en": "On the chosen network, BETTEX and compatible USDC transfers require purchase confirmation and receipt reconciliation by the treasury. Resales between holders have the seller as the payment recipient.",
+    "es": "En la red elegida, las transferencias de BETTEX y USDC compatible requieren confirmación de compra y conciliación del recibo por parte de la tesorería. Las reventas entre titulares tienen al vendedor como destinatario del pago."
+  },
+  "Quórum, módulos, acesso e espera. Safe é referência EVM; Starknet exige contas e contratos Cairo compatíveis. Política BETTEX exige testar todos os caminhos de execução.": {
+    "en": "Quorum, modules, access, and waiting. Safe is an EVM reference; Starknet requires compatible Cairo accounts and contracts. BETTEX policy requires testing all execution paths.",
+    "es": "Quórum, módulos, acceso y espera. Safe es referencia EVM; Starknet exige cuentas y contratos Cairo compatibles. La política de BETTEX exige probar todos los caminos de ejecución."
+  },
+  "REDES EM AVALIAÇÃO": {
+    "en": "NETWORKS UNDER EVALUATION",
+    "es": "REDES BAJO EVALUACIÓN"
+  },
+  "Redes em avaliação, carteira do titular, USDC e entrada por on-ramp externo.": {
+    "en": "Networks under evaluation, holder wallet, USDC, and entry via external on-ramp.",
+    "es": "Redes bajo evaluación, cartera del titular, USDC y entrada por on-ramp externo."
+  },
+  "Referência técnica: fluxo EVM na Arbitrum": {
+    "en": "Technical reference: EVM flow on Arbitrum",
+    "es": "Referencia técnica: flujo EVM en Arbitrum"
+  },
+  "Starknet": {
+    "en": "Starknet",
+    "es": "Starknet"
+  },
+  "Starknet / Arbitrum One": {
+    "en": "Starknet / Arbitrum One",
+    "es": "Starknet / Arbitrum One"
+  },
+  "Starknet e Arbitrum One são alternativas de rede e contratos. A BETTEX está em planejamento e captação de grants, sem rede escolhida ou grant aprovado presumido. Starknet exige implementação Cairo e contas compatíveis; Arbitrum usa EVM. Allora é candidata a inferências, não execução. Robinhood Crypto Trading API exige conta elegível nos Estados Unidos e autorização; não comprova acesso a ações. Consultas públicas Arbitrum/Gamma foram verificadas; isso não define a rede de lançamento. Demais exemplos sem acesso privado são simulações. Não houve operações com dinheiro real.": {
+    "en": "Starknet and Arbitrum One are network and contract alternatives. BETTEX is in planning and grants fundraising, with no network chosen or presumed approved grant. Starknet requires Cairo implementation and compatible accounts; Arbitrum uses EVM. Allora is a candidate for inferences, not execution. Robinhood Crypto Trading API requires an eligible US account and authorization; it does not prove access to stocks. Arbitrum/Gamma public queries were verified; this does not define the launch network. Other examples without private access are simulations. No real money operations have occurred.",
+    "es": "Starknet y Arbitrum One son alternativas de red y contratos. BETTEX está en planificación y captación de subvenciones, sin red elegida ni subvención aprobada presumida. Starknet exige implementación Cairo y cuentas compatibles; Arbitrum usa EVM. Allora es candidata para inferencias, no ejecución. Robinhood Crypto Trading API requiere cuenta elegible en Estados Unidos y autorización; no constituye prueba de acceso a acciones. Las consultas públicas Arbitrum/Gamma fueron verificadas; esto no define la red de lanzamiento. Otros ejemplos sin acceso privado son simulaciones. No ha habido operaciones con dinero real."
+  },
+  "Starknet e Arbitrum One são alternativas para a infraestrutura on-chain da BETTEX. O projeto está em planejamento e captação de grants; a rede de lançamento ainda não foi escolhida. Saldos, compras, distribuições e saques são previstos em USDC; BETTEX é o token de participação.": {
+    "en": "Starknet and Arbitrum One are alternatives for BETTEX's on-chain infrastructure. The project is in planning and grants fundraising; the launch network has not yet been chosen. Balances, purchases, distributions, and withdrawals are planned in USDC; BETTEX is the participation token.",
+    "es": "Starknet y Arbitrum One son alternativas para la infraestructura on-chain de BETTEX. El proyecto está en planificación y captación de subvenciones; la red de lanzamiento aún no ha sido elegida. Saldos, compras, distribuciones y retiros están previstos en USDC; BETTEX es el token de participación."
+  },
+  "Starknet, Arbitrum e ativos": {
+    "en": "Starknet, Arbitrum, and assets",
+    "es": "Starknet, Arbitrum y activos"
+  },
+  "Starknet: provas de validade e contas nativas": {
+    "en": "Starknet: validity proofs and native accounts",
+    "es": "Starknet: pruebas de validez y cuentas nativas"
+  },
+  "Ver as alternativas Starknet e Arbitrum, ativos e carteiras": {
+    "en": "See Starknet and Arbitrum alternatives, assets, and wallets",
+    "es": "Ver las alternativas Starknet y Arbitrum, activos y carteras"
+  },
+  "demonstra o controle da carteira sem transmitir chave privada ou frase de recuperação ao servidor. O modelo de acesso utiliza dados básicos e as credenciais da carteira, não uma identidade civil verificada. A implementação de referência EVM não define a rede de lançamento: Starknet e Arbitrum One continuam em avaliação, com carteiras e autorizações compatíveis com a rede escolhida.": {
+    "en": "demonstrates wallet control without transmitting a private key or recovery phrase to the server. The access model uses basic data and wallet credentials, not a verified civil identity. The EVM reference implementation does not define the launch network: Starknet and Arbitrum One remain under evaluation, with wallets and authorizations compatible with the chosen network.",
+    "es": "demuestra el control de la cartera sin transmitir la clave privada o frase de recuperación al servidor. El modelo de acceso utiliza datos básicos y las credenciales de la cartera, no una identidad civil verificada. La implementación de referencia EVM no define la red de lanzamiento: Starknet y Arbitrum One continúan bajo evaluación, con carteras y autorizaciones compatibles con la red elegida."
+  },
+  "documentação da Starknet": {
+    "en": "Starknet documentation",
+    "es": "documentación de Starknet"
+  },
+  "programas de grants da Starknet": {
+    "en": "Starknet grant programs",
+    "es": "programas de subvenciones de Starknet"
+  },
+  "é uma rede de segunda camada do Ethereum que utiliza provas de validade STARK. Seus contratos são desenvolvidos em Cairo e as contas possuem abstração nativa. A alternativa exige implementação, carteiras e testes próprios; contratos Solidity e endereços EVM não são transferidos automaticamente.": {
+    "en": "is an Ethereum layer-two network that uses STARK validity proofs. Its contracts are developed in Cairo and accounts have native abstraction. The alternative requires its own implementation, wallets, and testing; Solidity contracts and EVM addresses are not automatically transferred.",
+    "es": "es una red de capa dos de Ethereum que utiliza pruebas de validez STARK. Sus contratos se desarrollan en Cairo y las cuentas poseen abstracción nativa. La alternativa requiere su propia implementación, carteras y pruebas; los contratos Solidity y las direcciones EVM no se transfieren automáticamente."
   }
 }

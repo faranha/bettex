@@ -48,6 +48,16 @@ assert(!/piloto|MAU|5\.000 usuários|Capital do piloto/i.test(JSON.stringify(mat
 assert.equal(materials.pitchLink.href, 'https://bettex.ai/pitch#publico');
 const chapters = await read('src/components/WhitepaperChapters.tsx');
 const publicCopy = await read('src/lib/documentation-copy.ts');
+assert.match(publicCopy, /Starknet e Arbitrum One são alternativas/);
+assert.match(publicCopy, /planejamento e captação de grants/);
+assert.match(publicCopy, /rede de lançamento ainda não foi escolhida/);
+assert.doesNotMatch(publicCopy + chapters, /A rede de referência do token é a Arbitrum|Arbitrum One é a rede de referência do token/);
+assert.match(chapters, /contratos Solidity e endereços EVM não são transferidos automaticamente/);
+const brands = await read('src/components/technology/TechnologyNetworks.tsx');
+assert.match(brands, /technologies\/starknet\.svg/);
+assert.match(brands, /alt="Starknet"/);
+assert.match(brands, />Parceiros</);
+assert.match(tokenMaterials, /Starknet e Arbitrum One são alternativas/);
 const networkCosts = await read('src/components/ServiceFees.tsx');
 assert.doesNotMatch(publicCopy + networkCosts, /contribuição por serviços|receita operacional|sustentabilidade operacional|sustentar o serviço pela tesouraria/i, 'Public documentation leaves operating funding open.');
 assert.doesNotMatch(networkCosts, /<h[34]|ServiceFeeTaxes/, 'Network costs have one topic heading, without duplicated revenue subsections.');
