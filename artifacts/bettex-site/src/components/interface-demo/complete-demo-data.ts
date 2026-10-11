@@ -4,7 +4,13 @@ import { MOCK_TREASURY_ADDRESSES } from './mock-addresses';
 /** Complete a fresh local seed, never live data. No queries, writes, randomness or timers. */
 export function completeDemoData(d: DemoDashboard): DemoDashboard {
   const poolUsdc = 12_000;
+  // Retired service tariffs must not survive as financial examples in the visual demo.
+  for (const record of d.history) record.feeUsdc = 0;
   const rebalance = (r: DemoTreasuryRound) => {
+    r.feesCollectedUsdc = 0;
+    if (r.feeBreakdown) {
+      for (const kind of Object.keys(r.feeBreakdown) as (keyof typeof r.feeBreakdown)[]) r.feeBreakdown[kind] = 0;
+    }
     r.poolUsdc = poolUsdc;
     r.workingUsdc = r.assetsUsdc - r.reserveUsdc - poolUsdc;
     r.availableUsdc = r.workingUsdc - r.committedUsdc;

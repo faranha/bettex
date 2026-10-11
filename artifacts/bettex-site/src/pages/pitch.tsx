@@ -134,13 +134,13 @@ export function PitchPage() {
     </Sec>
 
     <section id="tokenomics" aria-labelledby="economia-t">
-    <Sec id="economia" hero="pitch-illustrations/pitch-token-participation.webp" summary="Financiamento e sustentabilidade operacional separados dos resultados da tesouraria." n="06" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Receitas, tesouraria e direitos do token.</span></>}>
+    <Sec id="economia" hero="pitch-illustrations/pitch-token-participation.webp" summary="Emissão, financiamento do projeto e participação nos resultados, com recursos separados." n="06" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Emissão, tesouraria e direitos do token.</span></>}>
       <h3 className="display mb-6 text-2xl font-extrabold">Financiamento do projeto e tesouraria ficam separados.</h3>
       <div className="mb-8 grid gap-4 md:grid-cols-2">
         <Card label="Mint público inicial" title="Financiamento do projeto">Mint aberto a preço fixo, separado da comunidade em vesting. Aplicação dos recursos e custos da oferta devem ser documentados antes da abertura.</Card>
         <Card label="Comunidade em vesting" title="100% para a tesouraria">O preço dos tokens da comunidade já liberados financia a tesouraria. A venda não é lucro distribuível; o mint inicial fica separado.</Card>
         <Card label="Investidores-anjo" title="100% para produto, tecnologia e marketing">{g.launch.angelFundingUse}</Card>
-        <Card label="Sustentabilidade operacional" title="Decisão com a comunidade">No ALFA, serão cobradas apenas taxas de rede. A decisão de cobrar ou não uma contribuição por serviços será tomada posteriormente com a comunidade, como possível alternativa para sustentar as operações. Não há valor fixado nem adoção confirmada.</Card>
+        <Card label="Custos de rede" title="ALFA sem tarifa de serviço">No ALFA, apenas custos externos da rede. O custeio de manutenção permanece em aberto, sem retirada automática da tesouraria.</Card>
       </div>
       <PitchObservations><p>Exemplo ilustrativo: 10.000 USDC de lucro elegível destinam 5.000 à tesouraria, 2.500 ao pool global dos stakers e 2.500 à carteira de recompra. Os 25% não são uma taxa de retorno individual. Sem peso elegível ou condições de reserva e liquidez, não há split: 100% fica retido. Rodadas encerradas não acumulam direitos a lucros futuros.</p><p>A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. Todos os tokens adquiridos nas recompras são queimados permanentemente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.</p></PitchObservations>
       <PitchObservations><p>A decisão de cobrar ou não por serviços será tomada posteriormente com a comunidade e depende de validação jurídica e comercial. Condições e valores deverão ser informados antes de eventual adoção. No ALFA, serão cobradas apenas taxas de rede.</p></PitchObservations>

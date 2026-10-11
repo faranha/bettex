@@ -74,7 +74,7 @@ const fig2: Step[] = [
     extra: (
       <div className="ba-entry">
         <div><strong>BETTEX comprado → Titular</strong><p>Recebe a quantidade comprada, sem tarifa deduzida em tokens.</p></div>
-        <div><strong>Sustentabilidade operacional</strong><p><a href="#documentacao-taxas">Alternativas em avaliação</a>; sem cobrança definida.</p></div>
+        <div><strong>Custos de rede</strong><p><a href="#documentacao-taxas">No ALFA, apenas custos externos de rede</a>; custeio de manutenção em aberto.</p></div>
         <div data-testid="node-bettex-treasury"><strong>Preço USDC → Tesouraria BETTEX</strong><p>Recebe 100% do preço dos tokens da comunidade já liberados.</p></div>
       </div>
     ) },
@@ -110,7 +110,7 @@ const fig5: Step[] = [
 const fig6: Step[] = [
   { title: 'Parcela do staking', text: 'Parcela de 25% do lucro distribuível já separada no desenho 5, vinculada aos resultados e participantes elegíveis. Novos participantes não recebem lucros anteriores. Não há nova apuração ou novo split neste fluxo.', tone: 'blue' },
   { title: 'Confirmação e crédito na Carteira USDC', text: 'Direito identificado e autorizado na própria rodada. Uma autorização não libera saldo disponível. USDC transferido entra no disponível após confirmação e conciliação, sem crédito duplicado.', tone: 'teal' },
-  { title: 'Saque de USDC do staking', text: 'Movimenta USDC recebido sem repetir a distribuição. Não há cobrança de serviço definida. Custos externos e retenções são separados. Sem pagamento em moeda local.' },
+  { title: 'Saque de USDC do staking', text: 'Movimenta USDC recebido sem repetir a distribuição. No ALFA, apenas custos de rede informados separadamente do valor transferido. Sem pagamento em moeda local.' },
 ];
 const fig7: Step[] = [
   { title: 'Agentes de IA', text: 'A IA BETTEX coordena agentes que analisam oportunidades e propõem operações nos mercados.', tone: 'blue',

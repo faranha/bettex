@@ -40,7 +40,7 @@ function Schematic({ id, title, children }: { id: string; title: string; childre
     'schematic-asset-roles': 'USDC movimenta valor financeiro; BETTEX define a participação.',
     'schematic-wallet-access': 'Controle pessoal das chaves e acesso ao aplicativo são camadas distintas.',
     'schematic-staking': 'Quantidade e tempo definem o peso da própria rodada; saídas cancelam direitos.',
-    'schematic-boundaries': 'Destinos separados para preço público, serviços, staking e recompra com burn.',
+    'schematic-boundaries': 'Destinos separados para financiamento do projeto, staking e recompra com burn.',
     'schematic-orchestration': 'Dados e inferências entram na análise; risco e mandato precedem ordens.',
     'schematic-mandate': 'Rotina autorizada segue risco independente; mudança de poderes exige nova aprovação.',
     'schematic-governance': 'Proposta, teste, aprovação, espera e versão vigente delimitam a execução.',
@@ -48,7 +48,7 @@ function Schematic({ id, title, children }: { id: string; title: string; childre
     'schematic-vesting': 'A liberação mensal não representa automaticamente venda ou circulação.',
     'schematic-allocation': 'Quatro destinações: mint inicial separado da comunidade, fundador/equipe e investidores.',
     'schematic-risk-authorization': 'Mandato, avaliação, reserva e liquidez precisam passar antes do envio.',
-    'schematic-fees': 'Cada serviço tem fato gerador e pagamento separado do preço dos tokens.',
+    'schematic-fees': 'No ALFA, apenas custos externos de rede, separados do preço dos tokens.',
     'schematic-allora': 'Inferência é insumo de análise, não permissão para movimentar carteira.',
   };
   return <figure className="ds" id={id} data-testid={id} aria-labelledby={`${id}-t`}>
@@ -64,7 +64,7 @@ export function InvestmentCycleSchematic() {
       { t: 'BETTEX na carteira', s: 'Participa automaticamente', tone: 'gold' },
       { t: 'Tesouraria e agentes', s: 'Investem nos quatro mercados', tone: 'blue' },
       { t: 'Lucro da própria rodada', s: 'Após custos conciliados, sujeito aos controles', tone: 'teal' },
-      { t: 'Crédito em USDC', s: 'Líquido após retenções aplicáveis; recebimento confirmado', tone: 'teal' },
+      { t: 'Crédito em USDC', s: 'Após transferência confirmada e conciliação', tone: 'teal' },
     ]} />
     <p className="ds-loop">Agentes e apuração seguem as rodadas diárias UTC</p>
   </Schematic>;
@@ -99,7 +99,7 @@ export function StakingSchematic() {
       { t: 'BETTEX disponível', s: 'Na carteira oficial', tone: 'blue' },
       { t: 'Participação automática', s: 'Sem ativação nem depósito', tone: 'gold' },
       { t: 'Rodada diária UTC', s: 'Saldo elegível na abertura × rodada integral', tone: 'gold' },
-      { t: 'Crédito em USDC', s: 'Líquido após retenções, confirmado na Carteira USDC', tone: 'teal' },
+      { t: 'Crédito em USDC', s: 'Após transferência confirmada e conciliação', tone: 'teal' },
     ]} />
     <Fork from={{ t: 'Entradas e saídas', s: 'Alteram o BETTEX disponível', tone: 'blue' }} to={[
       { t: 'Saída', s: 'Cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado, mesmo quando parcial', tone: 'plain' },
@@ -116,9 +116,6 @@ export function AccountBoundariesSchematic() {
   return <Schematic id="schematic-boundaries" title="Fronteiras entre contas">
     <Lane label="Venda pública">
       <Flow nodes={[{ t: 'Preço dos tokens', s: 'Em USDC', tone: 'blue' }, { t: 'Tesouraria', s: '100% do preço', tone: 'gold' }]} />
-    </Lane>
-    <Lane label="Sustentabilidade operacional">
-      <Flow nodes={[{ t: 'Possível contribuição por serviços', s: 'Alternativa em avaliação', tone: 'blue' }, { t: 'Carteira operacional da entidade', s: 'Fora da tesouraria e do split', tone: 'teal' }]} />
     </Lane>
     <Lane label="Resultados">
       <Flow nodes={[{ t: 'Parcela do staking', s: 'Em USDC', tone: 'blue' }, { t: 'Carteira USDC do titular', s: 'Após conciliação', tone: 'teal' }]} />

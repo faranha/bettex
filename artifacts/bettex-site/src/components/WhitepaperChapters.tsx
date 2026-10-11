@@ -232,13 +232,13 @@ function LegacyBody({ id }: { id: string }) {
           ['BETTEX na carteira', 'Participa automaticamente'],
           ['Tesouraria e agentes', 'Investem nos quatro mercados'],
           ['Lucro da própria rodada', 'Após custos conciliados, sujeito aos controles'],
-          ['Crédito em USDC', 'Líquido após retenções aplicáveis; recebimento confirmado'],
+          ['Crédito em USDC', 'Após transferência confirmada e conciliação'],
         ]} note="Agentes e apuração seguem as rodadas diárias UTC" />
         <BettexFlow figure="1" />
         <Subhead>Camadas do sistema</Subhead>
         <div className="whitepaper__prose">
           <p><strong>USDC é o ativo financeiro; BETTEX é o token de participação.</strong> A interface pode mostrar uma estimativa em moeda local, mas saldo, crédito e saque continuam em USDC. Entrada fiat ocorre por on-ramp externo, sem conta fiduciária ou off-ramp próprio da BETTEX.</p>
-          <p><strong>Capital e recursos operacionais são separados.</strong> O mint inicial financia o projeto; o preço dos tokens da comunidade liberados no vesting vai à tesouraria. A <a href="#documentacao-taxas">sustentabilidade operacional</a> considera alternativas em avaliação, sem cobrança definida. Os tokens não são capital das estratégias. Todo BETTEX adquirido na <a href="#documentacao-recompras">recompra</a> é queimado permanentemente.</p>
+          <p><strong>Capital e recursos operacionais são separados.</strong> O mint inicial financia o projeto; o preço dos tokens da comunidade liberados no vesting vai à tesouraria. No ALFA, apenas <a href="#documentacao-taxas">custos de rede</a>; o custeio de manutenção permanece em aberto. Os tokens não são capital das estratégias. Todo BETTEX adquirido na <a href="#documentacao-recompras">recompra</a> é queimado permanentemente.</p>
           <p><strong>Aplicativo e carteiras → API e livro contábil → tesouraria → agentes e conectores.</strong> As análises comparam probabilidades, preços, liquidez, custos e risco. Operações automáticas respeitam mandatos e controles independentes; mudanças de política exigem aprovação humana. Os quatro mercados são o escopo do projeto, não a obrigação de investir em todos ou a confirmação de conectores ativos.</p>
         </div>
         <div className="whitepaper__aside-callout"><span>QUANDO HÁ DISTRIBUIÇÃO</span><p>O split usa o lucro líquido realizado e conciliado, após custos conciliados, com reservas, liquidez e elegibilidade atendidas: 50% tesouraria, 25% staking e 25% carteira de recompra. Perdas são permanentes, sem déficit a compensar em rodadas futuras.</p><p><a href="#documentacao-entrada-proxima-rodada">Quem entra durante a rodada espera a próxima e não recebe nenhum lucro da rodada atual.</a></p><p>Qualquer saída de BETTEX, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado. Autorizar o direito e confirmar o recebimento em USDC são etapas distintas.</p></div>

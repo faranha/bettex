@@ -1,4 +1,92 @@
 {
+  "O peso determina o direito sobre a parcela distribuível da rodada. Registro ou autorização não é saldo recebido: somente USDC confirmado e conciliado entra na Carteira USDC.": {
+    "en": "Weight determines entitlement to the round's distributable allocation. Recording or authorization does not mean funds have been received: only confirmed and reconciled USDC enters the USDC Wallet.",
+    "es": "El peso determina el derecho sobre la parte distribuible de la ronda. El registro o la autorización no equivalen a saldo recibido: solo USDC confirmado y conciliado entra en la Cartera USDC."
+  },
+  "ALFA sem tarifa de serviço": {
+    "en": "ALFA without service tariffs",
+    "es": "ALFA sin tarifa de servicio"
+  },
+  "No ALFA, apenas custos externos da rede. O custeio de manutenção permanece em aberto, sem retirada automática da tesouraria.": {
+    "en": "For ALFA, only external network costs. Maintenance funding remains open, without automatic treasury withdrawals.",
+    "es": "En ALFA, solo costes externos de la red. La financiación del mantenimiento sigue abierta, sin retiros automáticos de la tesorería."
+  },
+  "Destinos separados para financiamento do projeto, staking e recompra com burn.": {
+    "en": "Separate destinations for project funding, staking and buyback with burn.",
+    "es": "Destinos separados para financiación del proyecto, staking y recompra con quema."
+  },
+  "No ALFA, apenas custos externos de rede, separados do preço dos tokens.": {
+    "en": "For ALFA, only external network costs, separate from token prices.",
+    "es": "En ALFA, solo costes externos de red, separados del precio de los tokens."
+  },
+  "Após transferência confirmada e conciliação": {
+    "en": "After confirmed transfer and reconciliation",
+    "es": "Tras transferencia confirmada y conciliación"
+  },
+  "Emissão, tesouraria e direitos do token.": {
+    "en": "Issuance, treasury and token rights.",
+    "es": "Emisión, tesorería y derechos del token."
+  },
+  "Emissão, financiamento do projeto e participação nos resultados, com recursos separados.": {
+    "en": "Issuance, project funding and profit participation, with separate resources.",
+    "es": "Emisión, financiación del proyecto y participación en los resultados, con recursos separados."
+  },
+  "A BETTEX é um projeto DeFi cujo modelo prevê negociação em DEX e execução das regras por contratos, sem empresa física ou entidade a constituir como estrutura do projeto.": {
+    "en": "BETTEX is a DeFi project whose model envisages DEX trading and rules executed through contracts, without a physical company or an entity to be incorporated as the project's structure.",
+    "es": "BETTEX es un proyecto DeFi cuyo modelo prevé negociación en DEX y ejecución de las reglas mediante contratos, sin empresa física ni entidad por constituir como estructura del proyecto."
+  },
+  "A segregação reduz o caixa operacionalmente disponível da tesouraria, mas não constitui despesa nem uma nova perda no patrimônio consolidado do projeto. A carteira de recompra é registrada separadamente; obrigações, reservas e transferências têm efeitos únicos. Custos efetivos das recompras são conciliados, sem segunda dedução ou reaplicação do split sobre saldos acumulados.": {
+    "en": "Segregation reduces the treasury's operationally available cash, but does not constitute an expense or a new loss in the project's consolidated assets. The buyback wallet is recorded separately; obligations, reserves and transfers have a single effect. Actual buyback costs are reconciled, without a second deduction or reapplying the split to accumulated balances.",
+    "es": "La segregación reduce el efectivo operativamente disponible de la tesorería, pero no constituye un gasto ni una nueva pérdida en el patrimonio consolidado del proyecto. La cartera de recompra se registra por separado; obligaciones, reservas y transferencias tienen efectos únicos. Los costes efectivos de las recompras se concilian, sin segunda deducción ni reaplicación del reparto sobre saldos acumulados."
+  },
+  "Os lucros de 1.000, 500 e 200 entram uma única vez. A perda de 500 é permanente, sem déficit a pagar com lucro futuro. No exemplo, 425 foram destinados ao staking, 425 à carteira de recompra e o patrimônio operacional termina em 100.350; somado à carteira segregada, o patrimônio consolidado é 100.775. A segregação não é despesa do projeto, mas retira recursos da disponibilidade operacional. Os 50% retidos e o saldo de recompra não recebem outro split. Registrar obrigações e depois liquidá-las não reduz o patrimônio duas vezes. Reter 100% por falta de reserva ou liquidez impede ambas as destinações.": {
+    "en": "Profits of 1,000, 500 and 200 are counted only once. The loss of 500 is permanent, with no deficit to repay from future profit. In the example, 425 went to staking, 425 to the buyback wallet, and operational assets end at 100,350; including the segregated wallet, consolidated assets total 100,775. Segregation is not a project expense, but removes resources from operational availability. The retained 50% and buyback balance undergo no further split. Recording obligations and then settling them does not reduce assets twice. Retaining 100% due to insufficient reserves or liquidity prevents both allocations.",
+    "es": "Las ganancias de 1.000, 500 y 200 se contabilizan una sola vez. La pérdida de 500 es permanente, sin déficit que pagar con ganancias futuras. En el ejemplo, 425 se destinaron al staking, 425 a la cartera de recompra y el patrimonio operativo termina en 100.350; sumado a la cartera segregada, el patrimonio consolidado es 100.775. La segregación no es un gasto del proyecto, pero retira recursos de la disponibilidad operativa. El 50% retenido y el saldo de recompra no reciben otro reparto. Registrar obligaciones y después liquidarlas no reduce el patrimonio dos veces. Retener el 100% por falta de reserva o liquidez impide ambas asignaciones."
+  },
+  "A BETTEX adotará proteção dos fundos em camadas: separação entre tesouraria, recursos operacionais e carteiras dos titulares; preservação da autocustódia, sem recolher chaves privadas dos usuários; chaves administrativas independentes, armazenamento protegido e recuperação testada; e aprovação multisig 2/3 para os atos administrativos previstos na política. A execução automática permanecerá limitada a mandatos aprovados, permissões mínimas e limites de exposição, sem permitir que a IA altere seus próprios controles. Conciliação diária, registros auditáveis e monitoramento com alertas acompanharão movimentações e obrigações. Contratos e controles de custódia passarão por testes e auditoria independente antes do uso de recursos reais. Em incidentes, os responsáveis poderão interromper novas execuções afetadas, preservar créditos e registros e iniciar o procedimento de recuperação aprovado; qualquer retomada exigirá conciliação e autorização.": {
+    "en": "BETTEX will adopt layered protection of funds: separation between treasury, operational resources and holders' wallets; preservation of self-custody, without collecting users' private keys; independent administrative keys, protected storage and tested recovery; and 2/3 multisig approval for administrative acts specified in the policy. Automatic execution will remain limited to approved mandates, minimal permissions and exposure limits, without allowing AI to alter its own controls. Daily reconciliation, auditable records and monitoring alerts will accompany movements and obligations. Contracts and custody controls will undergo testing and independent audits before real resources are used. In incidents, those responsible may halt affected new executions, preserve credits and records, and initiate the approved recovery procedure; resumption will require reconciliation and authorization.",
+    "es": "BETTEX adoptará protección de los fondos por capas: separación entre tesorería, recursos operativos y carteras de los titulares; preservación de la autocustodia, sin recopilar claves privadas de los usuarios; claves administrativas independientes, almacenamiento protegido y recuperación probada; y aprobación multisig 2/3 para los actos administrativos previstos en la política. La ejecución automática permanecerá limitada a mandatos aprobados, permisos mínimos y límites de exposición, sin permitir que la IA altere sus propios controles. Conciliación diaria, registros auditables y monitorización con alertas acompañarán movimientos y obligaciones. Los contratos y controles de custodia pasarán por pruebas y auditoría independiente antes del uso de recursos reales. En incidentes, los responsables podrán detener nuevas ejecuciones afectadas, preservar créditos y registros e iniciar el procedimiento de recuperación aprobado; cualquier reanudación exigirá conciliación y autorización."
+  },
+  "Responsáveis e planejamento da segurança do protocolo.": {
+    "en": "Responsibilities and planning for protocol security.",
+    "es": "Responsables y planificación de la seguridad del protocolo."
+  },
+  "Resumo do protocolo e regras (PDF)": {
+    "en": "Protocol and rules summary (PDF)",
+    "es": "Resumen del protocolo y las reglas (PDF)"
+  },
+  "Segurança, auditoria, monitoramento e recuperação têm custos discriminados por necessidade, sem orçamento mensal presumido. A fonte de custeio permanece em aberto; essas despesas exigem planejamento e aprovação, sem retirada automática da tesouraria ou dos créditos dos titulares. Custos efetivos de investimentos seguem a apuração própria.": {
+    "en": "Security, auditing, monitoring and recovery costs are itemized by need, without a presumed monthly budget. Their funding source remains open; these expenses require planning and approval, without automatic withdrawals from the treasury or holders' credits. Actual investment costs follow their own accounting.",
+    "es": "Seguridad, auditoría, monitorización y recuperación tienen costes desglosados por necesidad, sin presupuesto mensual supuesto. La fuente de financiación sigue abierta; estos gastos requieren planificación y aprobación, sin retiros automáticos de la tesorería ni de los créditos de los titulares. Los costes efectivos de inversiones siguen su propia contabilización."
+  },
+  "Sem contribuição de serviço definida": {
+    "en": "No service contribution defined",
+    "es": "Sin contribución de servicio definida"
+  },
+  "O mint inicial financia o projeto; o preço dos tokens da comunidade liberados no vesting vai à tesouraria. No ALFA, apenas": {
+    "en": "The initial mint funds the project; the price of community tokens released through vesting goes to the treasury. For ALFA, only",
+    "es": "El mint inicial financia el proyecto; el precio de los tokens de la comunidad liberados mediante vesting va a la tesorería. En ALFA, solo"
+  },
+  "custos de rede": {
+    "en": "network costs",
+    "es": "costes de red"
+  },
+  "; o custeio de manutenção permanece em aberto. Os tokens não são capital das estratégias. Todo BETTEX adquirido na": {
+    "en": "; maintenance funding remains open. Tokens are not strategy capital. All BETTEX acquired through",
+    "es": "; la financiación del mantenimiento sigue abierta. Los tokens no son capital de las estrategias. Todo BETTEX adquirido en la"
+  },
+  "No ALFA, apenas custos externos de rede": {
+    "en": "For ALFA, only external network costs",
+    "es": "En ALFA, solo costes externos de red"
+  },
+  "; custeio de manutenção em aberto.": {
+    "en": "; maintenance funding remains open.",
+    "es": "; la financiación del mantenimiento sigue abierta."
+  },
+  "Movimenta USDC recebido sem repetir a distribuição. No ALFA, apenas custos de rede informados separadamente do valor transferido. Sem pagamento em moeda local.": {
+    "en": "Moves received USDC without repeating the distribution. For ALFA, only network costs, reported separately from the transferred amount. No local-currency payment.",
+    "es": "Mueve USDC recibido sin repetir la distribución. En ALFA, solo costes de red indicados por separado del importe transferido. Sin pago en moneda local."
+  },
   "Referências oficiais:": {
     "en": "Official references:",
     "es": "Referencias oficiales:"
