@@ -38,13 +38,23 @@ function scan(file) {
     // Compiler-only literal types (e.g. financial field names in Pick<T, K>)
     // are erased and never passed to the page's translation runtime.
     if (ts.isLiteralTypeNode(node)) return;
+    // PitchSlider.label and PitchSlide.label are explicit PT/EN/ES tuples.
+    // Their UI translations are exercised by the slider browser check.
+    if (source.text.includes("import { PitchSlider }") && ts.isArrayLiteralExpression(node) &&
+      node.elements.length === 3 && node.elements.every(ts.isStringLiteral) &&
+      ((ts.isPropertyAssignment(node.parent) && node.parent.name.getText(source) === 'label') ||
+       (ts.isJsxExpression(node.parent) && ts.isJsxAttribute(node.parent.parent) &&
+        node.parent.parent.name.getText(source) === 'label'))) return;
     // Explicit PT/EN/ES labels already have their translations; media queries
     // are browser configuration, not prose passed to the JSX translator.
     if (ts.isCallExpression(node) && (
       (ts.isIdentifier(node.expression) && node.expression.text === 'x' &&
          node.arguments.length === 3 && node.arguments.every(arg => ts.isStringLiteral(arg) || ts.isNoSubstitutionTemplateLiteral(arg) || ts.isTemplateExpression(arg))) ||
-      (ts.isPropertyAccessExpression(node.expression) && ['matchMedia', 'getElementById'].includes(node.expression.name.text))
+      (ts.isPropertyAccessExpression(node.expression) && ['matchMedia', 'getElementById', 'querySelector', 'querySelectorAll', 'closest'].includes(node.expression.name.text))
     )) return;
+    if (file.endsWith('/pitch/PitchSlider.tsx') && ts.isPropertyAssignment(node) &&
+      ['event', 'func'].includes(node.name.getText(source)) && ts.isStringLiteral(node.initializer) &&
+      ['command', 'pauseVideo'].includes(node.initializer.text)) return;
     if (ts.isJsxAttribute(node) && node.name.getText(source) === 'labels' &&
       node.parent.parent.tagName?.getText(source) === 'MobileDataCarousel') return;
     if (ts.isPropertyAssignment(node) && node.name.getText(source).replace(/^['"]|['"]$/g, '') === 'id' && ts.isStringLiteral(node.initializer)) return;

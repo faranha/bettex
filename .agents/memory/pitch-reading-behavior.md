@@ -1,6 +1,6 @@
 ---
 name: Leitura do pitch
-description: Conteúdo do Pitch sempre visível e Diferenciação apresentada em quadro comparativo.
+description: Ordem das áreas, gráficos abertos e sliders aprovados sem cortes de conteúdo.
 ---
 
 A ordem de conteúdo aprovada é: Início (Hero), Público, Problema, Ambiente externo, Solução (incluindo Diferenciação), Fundador, Tokenomics e as partes finais já existentes.
@@ -15,7 +15,7 @@ Cada seção principal da apresentação do Pitch precisa de um hero próprio de
 
 **How to apply:** Estruturar uma abertura identificável antes do conteúdo de cada capítulo, respeitando a ordem aprovada e sem substituir o Hero inicial por essas aberturas. Manter os destinos do menu alinhados ao começo dessas áreas; as subseções internas de Tokenomics não são novos capítulos principais.
 
-No pitch, apresentar todo o conteúdo das seções diretamente na página, sem caixas expansíveis ou controles de expandir e recolher.
+No pitch, não usar caixas expansíveis ou controles de expandir e recolher. Os sliders posteriormente aprovados para os blocos de dados são a exceção à apresentação simultânea de todo o conteúdo.
 
 **Why:** O criador pediu remover as caixas expansíveis e deixar tudo na tela.
 
@@ -61,6 +61,4 @@ Os blocos de dados do Pitch, especialmente IA/trabalho e situação econômica, 
 
 **Why:** O criador pediu mais hype e menos excesso de dados, com sliders “até mesmo no PC”, e exigiu análise de conteúdo e apresentação prévia dos dados irrelevantes ou repetidos propostos para remoção.
 
-**How to apply:** Nesta reorganização, apresentar primeiro o que manter, condensar e remover. Não excluir conteúdo nem executar a criação dos sliders antes da aprovação da proposta. Preservar fontes, limites das evidências, condições econômicas e regras essenciais.
-
-**How to apply:** Preservar leitura e links de cada quadro, permitir deslizar e navegar pelos controles, sem transformar os gráficos ou outros conteúdos do capítulo em slides automaticamente.
+**How to apply:** O criador aprovou “Sliders sem retirar conteúdo”. Implementar desktop e mobile preservando todos os dados, textos, fontes, imagens e ressalvas; não aplicar os cortes ou condensações sugeridos pelo analista. Corrigir apenas a menção incompatível à tarifa de serviço. Preservar leitura e links de cada quadro, permitir deslizar e navegar pelos controles. Manter tabela comparativa, pizza e vesting diretamente visíveis. A autorização é para o Pitch, não para reformular a homepage.

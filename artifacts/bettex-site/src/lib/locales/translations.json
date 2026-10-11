@@ -22687,6 +22687,10 @@
     "en": "Starknet grant programs",
     "es": "programas de subvenciones de Starknet"
   },
+  "Sem taxas de serviço da BETTEX; custos externos efetivos de rede e de mercado, quando aplicáveis.": {
+    "en": "No BETTEX service fees; actual external network and market costs, where applicable.",
+    "es": "Sin tarifas de servicio de BETTEX; costos externos efectivos de red y de mercado, cuando correspondan."
+  },
   "é uma rede de segunda camada do Ethereum que utiliza provas de validade STARK. Seus contratos são desenvolvidos em Cairo e as contas possuem abstração nativa. A alternativa exige implementação, carteiras e testes próprios; contratos Solidity e endereços EVM não são transferidos automaticamente.": {
     "en": "is an Ethereum layer-two network that uses STARK validity proofs. Its contracts are developed in Cairo and accounts have native abstraction. The alternative requires its own implementation, wallets, and testing; Solidity contracts and EVM addresses are not automatically transferred.",
     "es": "es una red de capa dos de Ethereum que utiliza pruebas de validez STARK. Sus contratos se desarrollan en Cairo y las cuentas poseen abstracción nativa. La alternativa requiere su propia implementación, carteras y pruebas; los contratos Solidity y las direcciones EVM no se transfieren automáticamente."

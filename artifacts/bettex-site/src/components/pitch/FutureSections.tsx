@@ -3,6 +3,7 @@ import { USVacancyChart } from './USVacancyChart';
 import { BrazilEmploymentCharts } from './BrazilEmploymentCharts';
 import { InflationOilRisks } from './InflationOilRisks';
 import { LaborWarningReports } from './AICrisisScenario';
+import { PitchSlider } from './PitchSlider';
 import { ChapterHero } from './ChapterHero';
 import './FutureSections.css';
 
@@ -25,10 +26,12 @@ export function FutureSections() {
             </figure>
           </div>
           <ol className="fu-pauta"><li>EUA: vagas abertas</li><li>Brasil: menos novas vagas</li><li>Inflação, petróleo e conflitos globais</li><li>Alertas de um futuro sem trabalho</li></ol>
-          <USVacancyChart />
-          <BrazilEmploymentCharts />
-          <InflationOilRisks />
-          <LaborWarningReports />
+          <PitchSlider id="ambiente-externo-slider" tone="dark" label={['Indicadores econômicos em blocos', 'Economic indicator blocks', 'Indicadores económicos por bloques']} slides={[
+            { label: ['EUA: vagas abertas', 'US: job openings', 'EE. UU.: vacantes'], node: <USVacancyChart /> },
+            { label: ['Brasil: menos novas vagas', 'Brazil: fewer new jobs', 'Brasil: menos empleos nuevos'], node: <BrazilEmploymentCharts /> },
+            { label: ['Inflação, petróleo e conflitos', 'Inflation, oil and conflicts', 'Inflación, petróleo y conflictos'], node: <InflationOilRisks /> },
+            { label: ['Alertas sem trabalho', 'Warnings of a jobless future', 'Alertas de un futuro sin trabajo'], node: <LaborWarningReports /> },
+          ]} />
         </div>
     <section id="resgatar-futuro" aria-labelledby="resgatar-futuro-t" className="fu-environment-signals">
         <h3 id="resgatar-futuro-t" className="display fu-environment-title">O que já acontece na economia real.</h3>

@@ -63,6 +63,9 @@ for (const [route, page] of Object.entries(seo.pages)) {
 // The creator explicitly preserved the original homepage positioning.
 assert.match(seo.pages['/'].title, /Projeto DeFi de trading com IA/);
 const app = await read('src/App.tsx');
+const comparison = await read('src/components/pitch/EconomicComparisonRows.ts');
+assert.match(comparison, /Sem taxas de serviço da BETTEX/);
+assert.doesNotMatch(comparison, /Tarifa fixa de serviço/);
 assert.match(app, /Chega de apostar\./);
 assert.match(app, /Comece a investir\./);
 assert.match(app, /O token BETTEX conecta você à economia/);

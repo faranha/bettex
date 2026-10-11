@@ -14,9 +14,11 @@ assert(existsSync(executablePath), 'Chromium not found. Set CHROMIUM_PATH to an 
 const browser = await chromium.launch({ executablePath, args: ['--no-sandbox'] });
 const normalize = text => text.replace(/\s+/g, ' ').trim();
 // Narrow phone, common phones, both sides of the section breakpoints, desktop.
-const widths = [320, 375, 390, 639, 640, 899, 900, 1440];
+const widths = process.env.PITCH_RESEARCH_WIDTHS?.split(',').map(Number) ?? [320, 375, 390, 639, 640, 899, 900, 1440];
+const selectedResearch = Object.entries(research).filter(([locale]) =>
+  !process.env.PITCH_RESEARCH_LOCALE || locale === process.env.PITCH_RESEARCH_LOCALE);
 try {
-  for (const [locale, expected] of Object.entries(research)) {
+  for (const [locale, expected] of selectedResearch) {
     for (const width of widths) {
       const label = `${expected.path} @ ${width}px`;
       const page = await browser.newPage({ locale: locale === 'pt' ? 'pt-BR' : locale === 'en' ? 'en-US' : 'es-ES', viewport: { width, height: 900 }, reducedMotion: 'reduce' });
@@ -25,11 +27,13 @@ try {
         await page.addInitScript(value => localStorage.setItem('bettex.locale', value), locale);
         const errors = [];
         page.on('pageerror', error => errors.push(error.message));
-        const response = await page.goto(`${base.replace(/\/$/, '')}${expected.path}#problema`);
+        page.setDefaultTimeout(15000);
+        const response = await page.goto(`${base.replace(/\/$/, '')}${expected.path}#problema`, { waitUntil: 'domcontentloaded' });
         assert(response?.ok(), `${label}: route failed`);
         await page.locator('#problema').waitFor({ state: 'visible' });
         await page.evaluate(() => document.fonts.ready);
         const section = page.locator('#problema');
+        await page.locator('#problema-slider .pitch-slider__tab').nth(1).click();
         const text = async selector => normalize(await section.locator(selector).innerText());
         const titles = { pt: 'Uma geração com o futuro em jogo.', en: 'A generation with its future at stake.', es: 'Una generación con su futuro en juego.' };
         assert.equal(await text('#problema-t'), titles[locale], `${label}: approved heading`);
@@ -116,6 +120,8 @@ try {
             const node = walker.currentNode;
             if (!node.textContent.trim() || node.parentElement.closest('svg')) continue;
             const parent = node.parentElement;
+            if (parent.closest('.pitch-slider__panel[hidden]')) continue;
+            if (parent.closest('.pitch-slider__nav, .pitch-slider__foot')) continue;
             const track = parent.closest('.mobile-data-carousel__track');
             const card = parent.closest('.mobile-data-carousel__track > *');
             if (track && card && track.scrollWidth > track.clientWidth + tolerance) {
@@ -186,7 +192,7 @@ try {
       }
     }
   }
-  console.log(`Pitch research: ${widths.length * 3} locale/viewport combinations passed.`);
+  console.log(`Pitch research: ${widths.length * selectedResearch.length} locale/viewport combinations passed.`);
 } finally {
   await browser.close();
 }

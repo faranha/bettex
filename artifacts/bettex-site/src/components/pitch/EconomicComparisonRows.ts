@@ -23,7 +23,7 @@ export const economicComparisonRows: EconomicComparisonRow[] = [
     criterion: 'Custos',
     bet: 'Custos podem estar nas odds e em tarifas da plataforma.',
     priceToken: 'Custos de negociação, spread e rede, conforme mercado e plataforma.',
-    bettex: 'Tarifa fixa de serviço informada antes da operação, em USDC, sem taxa de performance.',
+    bettex: 'Sem taxas de serviço da BETTEX; custos externos efetivos de rede e de mercado, quando aplicáveis.',
   },
   {
     criterion: 'Controle e registros',

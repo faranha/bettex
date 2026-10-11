@@ -2,12 +2,14 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useX } from '@/components/demo/ui';
+import { useInsidePitchSlider } from './PitchSlider';
 import './MobileDataCarousel.css';
 
 export function MobileDataCarousel({ children, className, labels, id }: {
   children: ReactNode; className: string; labels: [string, string, string]; id?: string;
 }) {
   const { x } = useX();
+  const nested = useInsidePitchSlider();
   const track = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [total, setTotal] = useState(0);
@@ -39,6 +41,7 @@ export function MobileDataCarousel({ children, className, labels, id }: {
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     });
   };
+  if (nested) return <div className={className} id={id} role="group" aria-label={x(...labels)}>{children}</div>;
   return <div className="mobile-data-carousel" id={id}>
     <div className={`${className} mobile-data-carousel__track`} ref={track} onScroll={sync}
       role="region" aria-label={x(...labels)} tabIndex={0}
