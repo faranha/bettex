@@ -14,3 +14,11 @@ Remover a identificação também de catálogos de tradução, arquivos exportad
 **Why:** Dados antigos podem permanecer em traduções compiladas e downloads regenerados mesmo após remover o componente que os exibia.
 
 **How to apply:** Conferir fontes e saída de produção, incluindo PDF, DOCX, HTML e materiais multilíngues. Remoção da versão atual não revoga cópias já baixadas ou conteúdos anteriormente indexados.
+
+## Candidaturas a grants
+
+Nos rascunhos de candidatura a grants solicitados pelo criador, incluir os detalhes profissionais e links pessoais que ele já forneceu, em vez de substituí-los por placeholders genéricos.
+
+**Why:** O criador corrigiu explicitamente a omissão de seus detalhes e redes no campo Team da candidatura Starknet.
+
+**How to apply:** Recuperar as informações fornecidas anteriormente, inclusive no histórico quando foram removidas das páginas públicas. Deixar pendente apenas o que realmente não foi fornecido ou exige confirmação atual. Essa solicitação para a candidatura não autoriza restaurar a identificação no site público.
