@@ -77,8 +77,13 @@ class PitchNarrativeTests(unittest.TestCase):
                 errors = audit_pitch(fixture(lang, audience="Corporate investors only."), lang)
                 for expected in ("market", "brazil"):
                     self.assertTrue(any(expected in error for error in errors))
-                identity = COPY[lang][0]
-                self.assertTrue(audit_pitch(fixture(lang).replace(identity, "BETTEX", 1), lang))
+                without_bettor = {
+                    "pt": "Mercado de apostas no Brasil.",
+                    "en": "The betting market in Brazil.",
+                    "es": "El mercado de apuestas en Brasil.",
+                }
+                errors = audit_pitch(fixture(lang, audience=without_bettor[lang]), lang)
+                self.assertTrue(any("missing audience" in error for error in errors))
 
     def test_third_person_user_participation_required_in_narrative(self):
         for lang, (_, participation, _, _, _) in COPY.items():
@@ -90,6 +95,25 @@ class PitchNarrativeTests(unittest.TestCase):
         for lang, (_, participation, _, _, _) in COPY.items():
             with self.subTest(lang=lang):
                 html = fixture(lang, participation).replace(f"<p>{participation}</p>", "", 1)
+                self.assertEqual(audit_pitch(html, lang), [])
+
+    def test_cover_identity_can_move_to_dedicated_audience_section(self):
+        for lang, (identity, _, _, _, _) in COPY.items():
+            with self.subTest(lang=lang):
+                html = fixture(lang).replace(identity, "BETTEX", 1)
+                self.assertEqual(audit_pitch(html, lang), [])
+
+    def test_plural_audience_and_english_participation_are_accepted(self):
+        plurals = {
+            "pt": ("O apostador brasileiro", "Os apostadores brasileiros"),
+            "en": ("The Brazilian bettor", "The Brazilian bettors"),
+            "es": ("El apostador brasileño", "Los apostadores brasileños"),
+        }
+        for lang, (singular, plural) in plurals.items():
+            with self.subTest(lang=lang):
+                html = fixture(lang).replace(singular, plural)
+                if lang == "en":
+                    html = html.replace("The user participates", "Users participate")
                 self.assertEqual(audit_pitch(html, lang), [])
 
     def test_quote_exemption_requires_founder_attribution(self):

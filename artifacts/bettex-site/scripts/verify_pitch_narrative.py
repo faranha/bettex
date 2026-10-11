@@ -89,9 +89,9 @@ RULES = {
         "direct": r"\b(?:voc[eê]s?|teu|tua|teus|tuas)\b",
         "invite": r"\b(?:pare de apostar|deixe de apostar|comece a investir|"
                   r"invista(?: agora)?|troque (?:as )?apostas por investimentos)\b",
-        "audience": r"\bapostador brasileiro\b",
+        "audience": r"\bapostador(?:es)? brasileiro(?:s)?\b",
         "participation": r"\bo usuário participa\b",
-        "brazil": r"\b(?:brasil|brasileiro)\b",
+        "brazil": r"\b(?:brasil|brasileiros?)\b",
         "market": r"\bapostas\b",
     },
     "en": {
@@ -99,7 +99,7 @@ RULES = {
         "invite": r"\b(?:stop betting|quit betting|start investing|"
                   r"invest now|swap betting for investing)\b",
         "audience": r"\bbrazilian bettors?\b",
-        "participation": r"\bthe user participates\b",
+        "participation": r"\b(?:the user participates|users participate)\b",
         "brazil": r"\b(?:brazil|brazilian)\b",
         "market": r"\bbetting\b",
     },
@@ -108,9 +108,9 @@ RULES = {
         "invite": r"\b(?:deja de apostar|deje de apostar|empieza a invertir|"
                   r"empiece a invertir|comienza a invertir|comience a invertir|"
                   r"invierte(?: ahora)?|invierta(?: ahora)?)\b",
-        "audience": r"\bapostador brasileño\b",
+        "audience": r"\bapostador(?:es)? brasileño(?:s)?\b",
         "participation": r"\bel usuario participa\b",
-        "brazil": r"\b(?:brasil|brasileño)\b",
+        "brazil": r"\b(?:brasil|brasileños?)\b",
         "market": r"\bapuestas\b",
     },
 }
@@ -141,13 +141,13 @@ def audit_pitch(html, language):
             continue
         text = text_of(nodes[0])
         if name == "cover":
-            if not re.search(rules["audience"], text, re.I):
-                failures.append(f"{language}/pitch/{name}: missing Brazilian bettor description")
             match = re.search(rules["invite"], text_of(nodes[0], navigation=True), re.I)
             if match:
                 failures.append(f"{language}/pitch/cover: direct betting/investing invitation '{match.group()}'")
         else:
-            for rule in ("brazil", "market"):
+            # The approved cover leads with market scale; audience identity
+            # belongs in the dedicated audience section, not a cover label.
+            for rule in ("audience", "brazil", "market"):
                 if not re.search(rules[rule], text, re.I):
                     failures.append(f"{language}/pitch/publico-pitch: missing {rule} audience")
     return failures
