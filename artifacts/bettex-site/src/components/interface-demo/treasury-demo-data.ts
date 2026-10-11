@@ -71,7 +71,7 @@ function rng(seed: string) {
   return () => { h = Math.imul(h ^ (h >>> 15), 2246822507); h ^= h >>> 13; return ((h >>> 0) % 10000) / 10000; };
 }
 
-const MARKETS = ['BTC/USDC', 'ETH/USDC', 'SOL/USDC', 'ARB/USDC', 'LINK/USDC'];
+const MARKETS = ['BTC/USDC', 'ETH/USDC', 'SOL/USDC'];
 
 /** Deterministic illustrative records whose totals reconcile with the saved snapshot. */
 export function roundActivity(s: DemoTreasuryRound, endAt: string): DemoTreasuryActivityItem[] {
@@ -79,7 +79,8 @@ export function roundActivity(s: DemoTreasuryRound, endAt: string): DemoTreasury
   const rnd = rng(s.id);
   const t0 = Date.parse(s.startedAt);
   const t1 = Math.max(t0 + 60_000, Math.min(Date.parse(endAt), Date.parse(s.endsAt)));
-  const w = Array.from({ length: n }, () => 0.3 + rnd());
+  // Mixed outcomes, not an unrealistically flawless winning streak. Totals stay exact.
+  const w = Array.from({ length: n }, (_, i) => i % 4 === 3 ? -(0.15 + rnd() * 0.3) : 0.3 + rnd());
   const v = Array.from({ length: n }, () => 0.5 + rnd());
   const sw = w.reduce((a, b) => a + b, 0) || 1; const sv = v.reduce((a, b) => a + b, 0) || 1;
   const cents = (x: number) => Math.round(x * 100) / 100;

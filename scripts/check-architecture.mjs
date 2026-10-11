@@ -42,7 +42,9 @@ export function inspectArchitecture(root, { checkDocuments = true } = {}) {
 
   for (const file of files) {
     const relative = slash(path.relative(root, file));
-    if (/^artifacts\/api-server\/src\/(?:lib|utils|services)\//.test(relative) && !rules.legacyFiles.includes(relative)) {
+    if (/^artifacts\/api-server\/src\/(?:lib|utils|services)\//.test(relative) &&
+        !rules.legacyFiles.includes(relative) &&
+        !Object.hasOwn(rules.legacyOwnership ?? {}, relative)) {
       issues.push(`${relative}: arquivo genérico não registrado; definir domínio`);
     }
   }
@@ -74,7 +76,10 @@ export function inspectArchitecture(root, { checkDocuments = true } = {}) {
         const declaration = specifier.parent;
         const bindings = ts.isImportDeclaration(declaration) ? declaration.importClause?.namedBindings : undefined;
         if (owner.layer !== 'infrastructure' || !bindings || !ts.isNamedImports(bindings) ||
-          bindings.elements.length === 0 || bindings.elements.some(item => (item.propertyName ?? item.name).text !== 'db')) {
+          bindings.elements.length === 0 || bindings.elements.some(item => {
+            const imported = (item.propertyName ?? item.name).text;
+            return imported !== 'db' && !(rules.sharedSchemaImports?.[relative] ?? []).includes(imported);
+          })) {
           fail('importar apenas conexão db na infraestrutura; schemas pertencem ao próprio domínio');
         }
       }
@@ -135,7 +140,10 @@ export function inspectArchitecture(root, { checkDocuments = true } = {}) {
   }
   for (const file of moduleFiles) cycle(file);
   return { issues: [...new Set(issues)], modularFiles: moduleFiles.length,
-    legacyFiles: files.filter(file => rules.legacyFiles.includes(slash(path.relative(root, file)))).length };
+    legacyFiles: files.filter(file => {
+      const relative = slash(path.relative(root, file));
+      return rules.legacyFiles.includes(relative) || Object.hasOwn(rules.legacyOwnership ?? {}, relative);
+    }).length };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

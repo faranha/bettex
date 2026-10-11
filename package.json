@@ -9,6 +9,8 @@
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
     "quality": "node scripts/validate-development.mjs",
+    "quality:current": "node scripts/validate-development.mjs --scope current",
+    "check:repository-docs": "node scripts/check-repository-docs.mjs",
     "lint": "eslint artifacts/api-server/src artifacts/bettex-site/src scripts --quiet",
     "check:secrets": "python scripts/check-secrets.py",
     "check:dependencies": "node scripts/check-dependencies.mjs",

@@ -44,7 +44,7 @@ assert.match(games, /Uma jogada a cada 24 horas corridas/);
 assert.match(games, /RTP de 100%.*não garantia/);
 assert.match(games, /nunca créditos de staking pendentes/);
 assert.match(staking, /não pools de staking independentes/);
-assert.match(staking, /não uma conversão da meia-noite UTC/);
+assert.match(staking, /O corte UTC define a rodada do modelo operacional/);
 assert.match(staking, /nextRoundEntryRule/);
 assert.match(entryPolicy, /não recebe nenhum lucro dessa rodada, nem anterior nem posterior/);
 assert.match(entryPolicy, /inclusive acréscimos de saldo/);
@@ -77,7 +77,7 @@ assert.match(pitch, /O demo apresenta a interface com dados ilustrativos/);
 assert.doesNotMatch(pitch, /O ALFA está previsto.*primeiros agentes/);
 
 const text = materials.sections.flatMap(section => section.paragraphs).join('\n');
-for (const label of ['Burn Lottery:', 'Double 2X:', '24 horas corridas', 'sem dinheiro real']) {
+for (const label of ['Burn Lottery:', 'Double 2X:', '24 horas corridas', 'rodadas diárias UTC']) {
   assert.ok(text.includes(label), `Downloads must include ${label}`);
 }
 const roundRules = read('src/lib/distribution-round-policy.ts');

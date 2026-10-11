@@ -37,6 +37,7 @@ import type {
   DemoLotteryEntryOrder,
   DemoLotteryParticipation,
   DemoMovementInput,
+  DemoPolymarketFeed,
   DemoProfileInput,
   DemoRoundArchivePage,
   DemoSwapQuote,
@@ -108,6 +109,107 @@ const withQueryKey = <T extends object, K>(query: T, queryKey: K): T & { queryKe
   }
   return result;
 };
+
+export const getGetDemoPolymarketUrl = () => {
+
+
+
+
+  return `/api/demo/polymarket`
+}
+
+/**
+ * @summary Public quotes for the read-only Polymarket interface simulation
+ */
+export const getDemoPolymarket = async ( options?: Parameters<typeof customFetch>[1]): Promise<DemoPolymarketFeed> => {
+
+  return customFetch<DemoPolymarketFeed>(getGetDemoPolymarketUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDemoPolymarketQueryKey = () => {
+    return [
+    `/api/demo/polymarket`
+    ] as const;
+    }
+
+
+export const getGetDemoPolymarketQueryOptions = <TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDemoPolymarketQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDemoPolymarket>>> = ({ signal }) => getDemoPolymarket({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
+}
+
+export type GetDemoPolymarketQueryResult = NonNullable<Awaited<ReturnType<typeof getDemoPolymarket>>>
+export type GetDemoPolymarketQueryError = ErrorType<void>
+
+
+export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>(
+  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>> & Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoPolymarket>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoPolymarket>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>> & Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof getDemoPolymarket>>,
+          TError,
+          Awaited<ReturnType<typeof getDemoPolymarket>>
+        > , 'initialData'
+      >, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+/**
+ * @summary Public quotes for the read-only Polymarket interface simulation
+ */
+
+export function useGetDemoPolymarket<TData = Awaited<ReturnType<typeof getDemoPolymarket>>, TError = ErrorType<void>>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getDemoPolymarket>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
+ , queryClient?: QueryClient
+ ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+
+  const queryOptions = getGetDemoPolymarketQueryOptions(options)
+
+  const query = useQuery(queryOptions, queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getGetMarketLiveUrl = () => {
 

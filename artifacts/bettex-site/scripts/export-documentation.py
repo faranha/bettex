@@ -107,7 +107,7 @@ for lang in ("pt", "en", "es"):
     labels = materials["workbook"]
     c = {v:t(v) for v in labels["columns"]}
     # Operating funding remains undefined: do not export a service-revenue proposal.
-    network_notes = [[t("A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, que não são receita da comunidade. O demo é exclusivamente visual, sem taxas ou cobranças.")]]
+    network_notes = [[t("A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, que não são receita da comunidade.")]]
     sheets = [(t("Custos de rede"),network_notes),(t(labels["vesting"]),[[c[x] for x in labels["columns"][4:]]] + vesting),(t(labels["rules"]),[[p] for p in paragraphs])]
     xlsx(out / f"bettex-taxas-fundacao{suffix}.xlsx", sheets)
     # Keep distributed legacy URLs while offering neutral names for the same

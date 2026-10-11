@@ -40,7 +40,11 @@ const steps = [
   ['Reproducible build and test contract ABI', 'pnpm', ['--filter', '@workspace/bettex-contracts', 'build']],
   ['App rules, navigation and schedules', process.execPath, ['--test', ...demoTests]],
   ['Backend build', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'build']],
+  ['Current visual API isolation', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'check:visual-api']],
+  ['Current visual demo, graph and cross-view consistency', 'pnpm', ['--filter', '@workspace/bettex-site', 'run', 'check:demo-consistency']],
+  ['Repository documentation links and status boundaries', 'pnpm', ['run', 'check:repository-docs']],
   ['Frontend build, localization and documents', 'pnpm', ['--filter', '@workspace/bettex-site', 'run', 'build']],
+  ['Current SEO and social image contract', 'pnpm', ['--filter', '@workspace/bettex-site', 'run', 'check:seo']],
   ['Server and withdrawal policy', process.execPath, ['--test',
     'artifacts/bettex-site/scripts/serve.test.mjs',
     'artifacts/bettex-site/scripts/wallet-withdrawal-policy.test.mjs']],
@@ -49,6 +53,18 @@ const steps = [
 
 const args = process.argv.slice(2);
 const option = flag => args.includes(flag) ? args[args.indexOf(flag) + 1] : undefined;
+const scope = option('--scope') ?? 'reference';
+if (!['current', 'reference'].includes(scope)) throw new Error('Use --scope current or reference');
+const referenceOnly = new Map([
+  ['Authorization, sessions and isolated restoration', 'Historical HTTP account endpoints are intentionally unavailable in the current visual app.'],
+  ['Isolated history HTTP, pagination and permission revocation', 'Historical operational HTTP endpoints are not mounted by the current app.'],
+  ['Isolated treasury HTTP, governance and execution integration', 'Requires the explicitly disabled local operational runtime; no reactivation during repository preparation.'],
+]);
+const excluded = scope === 'current'
+  ? steps.filter(([label]) => referenceOnly.has(label)).map(([label]) => ({ label, reason: referenceOnly.get(label) }))
+  : [];
+const selectedSteps = steps.filter(([label]) => !excluded.some(item => item.label === label));
+for (const item of excluded) console.log(`NOT VERIFIED (${scope}): ${item.label} — ${item.reason}`);
 const reportPath = option('--report');
 const retryPath = option('--only-failed');
 const retryLabels = retryPath
@@ -56,7 +72,7 @@ const retryLabels = retryPath
   : null;
 const results = [];
 let failed = false;
-for (const [label, command, args] of steps) {
+for (const [label, command, args] of selectedSteps) {
   if (retryLabels && !retryLabels.has(label)) continue;
   console.log(`\n== ${label} ==`);
   const started = Date.now();
@@ -71,8 +87,8 @@ for (const [label, command, args] of steps) {
     ...(result.error ? { error: result.error.code ?? 'execution_failed' } : {}) });
   if (reportPath) {
     mkdirSync(dirname(reportPath), { recursive: true });
-    writeFileSync(reportPath, JSON.stringify({ at: new Date().toISOString(), scope: 'development-isolated',
-      complete: false, results }, null, 2) + '\n');
+    writeFileSync(reportPath, JSON.stringify({ at: new Date().toISOString(), scope,
+      excluded, complete: false, results }, null, 2) + '\n');
   }
   if (result.error) {
     console.error(`Could not execute: ${label}`, result.error.code ?? 'execution_failed');
@@ -83,6 +99,6 @@ for (const [label, command, args] of steps) {
   }
 }
 if (reportPath) writeFileSync(reportPath, JSON.stringify({ at: new Date().toISOString(),
-  scope: 'development-isolated', complete: results.length === (retryLabels?.size ?? steps.length), results }, null, 2) + '\n');
+  scope, excluded, complete: results.length === (retryLabels?.size ?? selectedSteps.length), results }, null, 2) + '\n');
 console.log(`\nDevelopment checks: ${results.filter(r => r.status === 0).length} passed, ${results.filter(r => r.status !== 0).length} failed. This does not certify real financial operations.`);
 process.exitCode = failed ? 1 : 0;

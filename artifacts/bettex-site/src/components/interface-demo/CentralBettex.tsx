@@ -27,7 +27,7 @@ export function CentralBettex({ onAction }: { onAction: () => void }) {
     </section>
     <section className="rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="bettex-config">
       <h3 className="flex items-center gap-2 font-bold"><Settings2 className="h-4 w-4 text-[#0A6657]" aria-hidden="true" />{x('Configuração', 'Configuration', 'Configuración')}</h3>
-      <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3"><KV k={x('Modo', 'Mode', 'Modo')} v={x('Simulação, sem dinheiro real', 'Simulation, no real money', 'Simulación, sin dinero real')} /><KV k={x('Máx. por ordem', 'Max per order', 'Máx. por orden')} v={u(POLICY.maxOrder)} /><KV k={x('Máx. portfólio', 'Max portfolio', 'Máx. portafolio')} v={u(POLICY.maxPortfolio)} /><KV k={x('Autorização', 'Authorization', 'Autorización')} v={x('Humana para qualquer alocação', 'Human, for any allocation', 'Humana para cualquier asignación')} /><KV k={x('Frequência de ciclo', 'Cycle cadence', 'Frecuencia de ciclo')} v="60 s" /><KV k={x('Política', 'Policy', 'Política')} v={`${POLICY.version}`} /></dl>
+      <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3"><KV k={x('Modo', 'Mode', 'Modo')} v={x('Simulação, sem dinheiro real', 'Simulation, no real money', 'Simulación, sin dinero real')} /><KV k={x('Máx. por ordem', 'Max per order', 'Máx. por orden')} v={u(POLICY.maxOrder)} /><KV k={x('Máx. portfólio', 'Max portfolio', 'Máx. portafolio')} v={u(POLICY.maxPortfolio)} /><KV k={x('Autorização', 'Authorization', 'Autorización')} v={x('Execução dentro dos mandatos aprovados', 'Execution within approved mandates', 'Ejecución dentro de los mandatos aprobados')} /><KV k={x('Frequência de ciclo', 'Cycle cadence', 'Frecuencia de ciclo')} v="60 s" /><KV k={x('Política', 'Policy', 'Política')} v={`${POLICY.version}`} /></dl>
       <button type="button" data-demo-action data-testid="button-bettex-config-save" onClick={onAction} className="mt-3 min-h-11 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white">{x('Salvar configuração', 'Save configuration', 'Guardar configuración')}</button>
     </section>
     <section className="rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="bettex-mandates">
@@ -36,6 +36,12 @@ export function CentralBettex({ onAction }: { onAction: () => void }) {
       <p className="mt-2 text-sm" data-testid="mandate-text">{L(mand.text)}</p>
       <button type="button" data-demo-action data-testid="button-mandate-edit" onClick={onAction} className="mt-2 min-h-11 rounded-xl border border-[#0E7C6B] px-4 text-sm font-bold text-[#0A6657]">{x('Editar mandato', 'Edit mandate', 'Editar mandato')}</button>
     </section>
+    <section className="rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="bettex-authorization">
+      <h3 className="font-bold">{x('Autorização e fronteiras', 'Authorization and boundaries', 'Autorización y fronteras')}</h3>
+      <ul className="mt-2 list-disc pl-5 text-sm">
+        <li>{x('Operações já cobertas por um mandato aprovado são executadas dentro dos limites, sem nova decisão humana a cada operação.', 'Operations already covered by an approved mandate run within limits, without a new human decision for each operation.', 'Las operaciones ya cubiertas por un mandato aprobado se ejecutan dentro de los límites, sin nueva decisión humana en cada operación.')}</li>
+        <li>{x('A recompra exige autorização administrativa e multisig separada; não faz parte da execução dos mandatos.', 'The buyback requires separate administrative and multisig authorization; it is not part of mandate execution.', 'La recompra exige autorización administrativa y multisig separada; no forma parte de la ejecución de mandatos.')}</li>
+        <li>{x('Esta demonstração é apenas ilustrativa: nada aqui executa, autoriza ou prova integração real.', 'This demo is only illustrative: nothing here executes, authorizes or proves a real integration.', 'Esta demostración es solo ilustrativa: nada aquí ejecuta, autoriza ni prueba una integración real.')}</li></ul></section>
     <p className="text-[11px] font-bold text-[#7A5410]">{L(SAMPLE_PROVENANCE)}</p>
   </>;
 }

@@ -2,7 +2,8 @@ import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { createDecipheriv, createHash } from "node:crypto";
 import { Wallet, getAddress } from "ethers";
-import { TREASURY_WALLET_PURPOSES, createTreasuryTestWallet, sealTreasuryTestKey } from "./treasury-test-wallet.ts";
+import { TREASURY_WALLET_PURPOSES } from "./treasury-test-wallet.ts";
+import { createTreasuryTestWallet, sealTreasuryTestKey } from "../infrastructure/treasury-test-vault.ts";
 
 const secret = "test-fixture-only-not-an-application-secret";
 test("Treasury and Crypto agent roles get distinct valid addresses and encrypted envelopes", () => {

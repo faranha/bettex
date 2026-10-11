@@ -26,7 +26,7 @@ The initial fixed-price mint funds the project; price, window and platform are y
 
 The price belongs to the seller. It creates no new funding or treasury profit and does not accelerate vesting.
 
-BETTEX does not charge service fees. Real transactions may require external network costs, which are not community revenue. The demo is exclusively visual, with no fees or charges.
+BETTEX does not charge service fees. Real transactions may require external network costs, which are not community revenue.
 
 Burn Lottery and Double 2X
 
@@ -38,7 +38,7 @@ Lottery rules must identify price, prize, funding, timing and odds before accept
 
 Operational round and demonstration
 
-The operational model has daily UTC rounds. The visual demo uses a separate storyline from 16:00 to 16:00 São Paulo time over 24 real hours, with no real money or operations. It is not a conversion of UTC midnight or a change to contracts. Market tabs do not create independent staking pools.
+The operational model has daily UTC rounds. Market tabs do not create separate staking pools.
 
 Administration and purpose
 

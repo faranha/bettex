@@ -10,8 +10,8 @@ import { ALLOWED, DEC, formatUnits, fmtTime, historyLegDecimals } from './format
 
 type Mode = 'native' | 'demo';
 type View = 'general' | 'swapping' | 'staking' | 'distributions' | 'activity' | 'treasury';
-type Filters = { environment: string; category: string; asset: string; state: string; from: string; to: string; kind: string; chainId: string; wallet: string };
-const EMPTY: Filters = { environment: '', category: '', asset: '', state: '', from: '', to: '', kind: '', chainId: '', wallet: '' };
+type Filters = { environment: string; category: string; asset: string; state: string; from: string; to: string; kind: string; chainId: string; wallet: string; correlationId: string };
+const EMPTY: Filters = { environment: '', category: '', asset: '', state: '', from: '', to: '', kind: '', chainId: '', wallet: '', correlationId: '' };
 const iso = (v: string) => { if (!v) return ''; const d = new Date(v); if (isNaN(d.getTime())) return ''; d.setTime(d.getTime() - d.getTimezoneOffset() * 60_000 + 3 * 3_600_000); return d.toISOString(); };
 const toApi = (f: Filters): Record<string, unknown> => ({ ...f, from: iso(f.from), to: iso(f.to), chainId: /^\d+$/.test(f.chainId) ? Number(f.chainId) : '', wallet: f.wallet.trim() });
 const btn = 'inline-flex min-h-11 items-center justify-center rounded-xl border border-[#0E7C6B] bg-white px-3 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5] disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B]';
@@ -42,6 +42,11 @@ const CAT: Record<string, [string, string, string]> = {
   financial: ['Financeiro', 'Financial', 'Financiero'], activity: ['Atividade', 'Activity', 'Actividad'], automatic: ['Automático', 'Automatic', 'Automático'],
 };
 const KIND: Record<string, [string, string, string]> = {
+  agent_request: ['Proposta do grafo', 'Graph proposal', 'Propuesta del grafo'],
+  agent_decision: ['Decisão do grafo', 'Graph decision', 'Decisión del grafo'],
+  agent_order: ['Ordem do grafo', 'Graph order', 'Orden del grafo'],
+  agent_fill: ['Execução de exemplo', 'Sample fill', 'Ejecución de ejemplo'],
+  agent_position: ['Posição do grafo', 'Graph position', 'Posición del grafo'],
   double2x_reserved: ['Saldo reservado para Double 2X', 'Balance reserved for Double 2X', 'Saldo reservado para Double 2X'],
   double2x_won: ['Double 2X: ganho', 'Double 2X: win', 'Double 2X: ganancia'],
   double2x_lost: ['Double 2X: perda', 'Double 2X: loss', 'Double 2X: pérdida'],
@@ -283,7 +288,10 @@ export function HistoryPanel({ mode, accountKey, initialView, treasuryAccess = f
   const { x, loc } = useX();
   const views = mode === 'demo' && !treasuryAccess ? VIEWS.filter(v => v !== 'treasury') : VIEWS;
   const [view, setView] = useState<View>(initialView && (mode !== 'demo' || treasuryAccess || initialView !== 'treasury') ? initialView : 'general');
-  const [filters, setFilters] = useState<Filters>(EMPTY);
+  const [filters, setFilters] = useState<Filters>(() => ({
+    ...EMPTY,
+    correlationId: visualDemo && typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('correlationId') ?? '' : '',
+  }));
   const apiFilters = useMemo(() => toApi(filters), [filters]);
   const scope = JSON.stringify([mode, accountKey, view, apiFilters]);
   const [pg, setPg] = useState<{ k: string; s: (string | null)[] }>({ k: scope, s: [null] });
@@ -307,6 +315,10 @@ export function HistoryPanel({ mode, accountKey, initialView, treasuryAccess = f
         className={`min-h-11 shrink-0 rounded-xl px-3 text-sm font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0E7C6B] ${view === v ? 'bg-[#0E7C6B] text-white' : 'bg-[#F0E9DA]'}`}>{pick(VIEW_L as never, v, loc)}</button>)}
     </div>
     <div className="flex flex-wrap gap-2">
+      {visualDemo && <label className="grid gap-1 text-xs font-bold">
+        {x('Correlação', 'Correlation', 'Correlación')}
+        <input className={sel} value={filters.correlationId} onChange={setF('correlationId')} data-testid="history-correlation-filter" />
+      </label>}
       <select aria-label={x('Ambiente', 'Environment', 'Entorno')} className={sel} value={filters.environment} onChange={setF('environment')}>
         <option value="">{x('Todos os ambientes', 'All environments', 'Todos los entornos')}</option>
         {Object.keys(ENV).map(k => <option key={k} value={k}>{pick(ENV, k, loc)}</option>)}</select>

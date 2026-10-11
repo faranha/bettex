@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check:visual-api": "node scripts/visual-api-boundary.mjs",
     "check:reasoning": "node --test scripts/agent-reasoning.test.mjs",
     "check:agents": "node --test scripts/alpha-hierarchy.test.mjs",
     "check:allora": "node --test scripts/allora-public.test.mjs",

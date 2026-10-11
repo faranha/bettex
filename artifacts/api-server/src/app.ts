@@ -2,6 +2,7 @@ import express, { type Express } from "express";
 import cors from "cors";
 import pinoHttp from "pino-http";
 import healthRouter from "./routes/health";
+import demoPolymarketRouter from "./routes/demo-polymarket";
 import { logger } from "./lib/logger";
 import { allowedOrigin, requestBoundary, safeHttpError } from "./middlewares/http-security";
 
@@ -32,7 +33,7 @@ app.use("/api", (req, res, next) => {
   if (!["GET", "HEAD"].includes(req.method)) {
     return res.status(403).json({ error: "interface_demo_only", message: "Demonstração visual: operações desativadas." });
   }
-  if (req.path === "/healthz") return next();
+  if (req.path === "/healthz" || req.path === "/demo/polymarket") return next();
   if (req.path === "/account/session") return res.json({ account: null });
   return res.status(410).json({ error: "not_available_in_interface_demo", message: "Os dados fictícios do demo são locais. Não há conexão operacional." });
 });
@@ -44,6 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 // even their initialization must not access accounts, databases, RPC or testnet.
 // Implementations and existing records remain preserved but unreachable.
 app.use("/api", healthRouter);
+app.use("/api", demoPolymarketRouter);
 app.use(safeHttpError);
 
 export default app;

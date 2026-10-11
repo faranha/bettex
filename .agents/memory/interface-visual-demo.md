@@ -5,6 +5,12 @@ description: Escopo atual do app; substitui as exigências anteriores de testnet
 
 O criador pediu: “Vamos converter tudo em demo”. O app, incluindo Tesouraria e Histórico, deve funcionar como demonstração visual com dados fictícios locais, sem depender de autenticação, banco, agentes reais ou testnet. Navegação, idioma, gráficos, filtros, abas e sanfonas continuam sendo interações visuais.
 
+Há uma exceção posterior e restrita para a Central: consultar mercados públicos da Polymarket e usar suas cotações em simulações locais. Nenhuma ordem, saldo real, conexão de carteira, persistência financeira ou runtime operacional foi autorizado por essa exceção.
+
+**Why:** O criador pediu “simulacoes de numeros e mercados, conectados no polymarket”.
+
+**How to apply:** Separar visualmente preços públicos reais e números calculados no exemplo. Manter bloqueados os demais acessos operacionais e todas as operações de dinheiro; apresentar falhas da fonte sem trocar preços reais por amostras fictícias.
+
 Transações, pedidos, novos registros, alterações persistidas, geração de relatórios e ações equivalentes devem abrir um overlay, sem executar a operação. O texto solicitado é: “Esse é um demo para a interface. É só uma demonstração visual, o software ainda está em desenvolvimento, nos acompanhe pela comunidade”, acompanhado do botão da comunidade.
 
 **Why:** O criador substituiu expressamente o escopo operacional anterior por uma interface visual, depois de falhas de carregamento e serviços.
@@ -28,3 +34,15 @@ O criador reiterou sobre a Tesouraria: “nunca lhe mandei tirar ele do ar” e 
 **Why:** A conversão em demo também substituiu a Tesouraria e o Histórico completos por apresentações reduzidas. Bloquear operações não autoriza retirar conteúdo, explicações, carteiras, rodadas, extratos ou históricos consultáveis.
 
 **How to apply:** A regra de preservação vale para todas as áreas existentes do aplicativo. Adaptar as apresentações completas para exemplos locais e manter a navegação até seus detalhes; não substituir a interface por resumos porque seus dados originais dependiam da API. Não afirmar recuperação de registros reais quando a tela usa amostras.
+
+O criador pediu revisar inconsistências e simplificar a interface, principalmente Tesouraria e Histórico, “mas ainda guardando dados, lembrando de popular os dados de demonstração”.
+
+**Why:** A simplificação solicitada deve facilitar a consulta, não voltar a retirar informações das áreas recuperadas.
+
+**How to apply:** Usar exemplos locais preenchidos e consistentes. Reduzir o que aparece de imediato por meio de detalhes expansíveis, mantendo registros, filtros, extratos, auditoria e atalhos acessíveis. Não apagar dados existentes nem popular bancos ou executar operações reais para demonstrar a interface.
+
+Conferir também as fórmulas escritas nas explicações e nos novos resumos financeiros, não apenas os valores.
+
+**Why:** Os dados reconciliados incluíam liquidez do pool, mas explicações antigas e um novo resumo voltaram a omiti-la na composição dos ativos mesmo com os testes numéricos passando.
+
+**How to apply:** Comparar legendas, notas e ajudas em todos os idiomas com a composição completa depois de reorganizar a interface. Um teste dos saldos não valida a narrativa financeira dos componentes.

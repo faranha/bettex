@@ -1,4 +1,4 @@
-import { EDGES, NODES, SCENE_Z, route, type EdgeDef, type NodeDef, type P, type Sel } from './central-graph-model';
+import { GRAPH_EDGES as EDGES, GRAPH_NODES as NODES, SCENE_Z, graphRoute as route, type EdgeDef, type NodeDef, type P, type Sel } from './central-graph-model';
 
 export type V3 = [number, number, number];
 export type Cam = { yaw: number; pitch: number; zoom: number; px: number; py: number };
@@ -41,7 +41,7 @@ export function projectPoint(p: V3, c: Cam, w: number, h: number) { setCam(c, w,
 
 function ring(ctx: CanvasRenderingContext2D, c: V3, rad: number, tilt: number, spin: number, steps = 48) {
   ctx.beginPath();
-  for (let i = 0; i <= steps; i++) { const a = (i / steps) * Math.PI * 2 + spin; let x = Math.cos(a) * rad, y = 0, z = Math.sin(a) * rad; const y2 = y * Math.cos(tilt) - z * Math.sin(tilt), z2 = y * Math.sin(tilt) + z * Math.cos(tilt); y = y2; z = z2; pj(c[0] + x, c[1] + y, c[2] + z); if (i) ctx.lineTo(PX, PY); else ctx.moveTo(PX, PY); }
+  for (let i = 0; i <= steps; i++) { const a = (i / steps) * Math.PI * 2 + spin; const x = Math.cos(a) * rad; let y = 0, z = Math.sin(a) * rad; const y2 = y * Math.cos(tilt) - z * Math.sin(tilt), z2 = y * Math.sin(tilt) + z * Math.cos(tilt); y = y2; z = z2; pj(c[0] + x, c[1] + y, c[2] + z); if (i) ctx.lineTo(PX, PY); else ctx.moveTo(PX, PY); }
   ctx.stroke();
 }
 

@@ -21,6 +21,12 @@ Explicitly localized strings from `x(...)` must bypass the automatic JSX prose t
 
 **How to apply:** Mark the native elements carrying explicitly localized labels with `data-i18n="translated"`. Keep catalogue localization enabled for existing content; verify a rendered non-Portuguese route rather than relying on types or catalogue checks alone.
 
+Photo-author and license metadata are not translatable prose, even when embedded in localized accessibility labels.
+
+**Why:** Source catalogue coverage passed, but multilingual prerendering crashed when a dynamic photographer name was treated as a missing translation.
+
+**How to apply:** Keep attribution metadata intact and localize its surrounding labels explicitly. Include a rendered non-Portuguese page with dynamic credits in publication validation.
+
 Already localized monetary amounts must bypass prose translation whether the currency is before or after the number, including negative amounts.
 
 **Why:** Spanish currency formatting places US$ after the amount; treating it as missing prose translation crashed the entire Pitch even with complete source-catalogue coverage.

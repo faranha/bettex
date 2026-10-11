@@ -26,5 +26,34 @@
     "artifacts/api-server/src/lib/demo-state.ts",
     "artifacts/api-server/src/lib/orchestrator.ts",
     "artifacts/api-server/src/lib/logger.ts"
-  ]
+  ],
+  "legacyOwnership": {
+    "artifacts/api-server/src/lib/agent-wallet-allocation.ts": "wallets",
+    "artifacts/api-server/src/lib/demo-amm-contract.ts": "execution",
+    "artifacts/api-server/src/lib/demo-burn-story.ts": "ledger",
+    "artifacts/api-server/src/lib/demo-cycle-clock.ts": "simulation",
+    "artifacts/api-server/src/lib/demo-history-population.ts": "audit",
+    "artifacts/api-server/src/lib/demo-lottery-entries.ts": "simulation",
+    "artifacts/api-server/src/lib/demo-lottery.ts": "simulation",
+    "artifacts/api-server/src/lib/demo-swap-pool.ts": "simulation",
+    "artifacts/api-server/src/lib/demo-trading-presentation.ts": "agents",
+    "artifacts/api-server/src/lib/double2x-chain.ts": "execution",
+    "artifacts/api-server/src/lib/double2x-rules.ts": "risk",
+    "artifacts/api-server/src/lib/double2x-store.ts": "ledger",
+    "artifacts/api-server/src/lib/earnings-wallet.ts": "wallets",
+    "artifacts/api-server/src/lib/objectAcl.ts": "accounts",
+    "artifacts/api-server/src/lib/objectStorage.ts": "accounts",
+    "artifacts/api-server/src/lib/profile-avatar.ts": "accounts",
+    "artifacts/api-server/src/lib/round-archive-store.ts": "audit",
+    "artifacts/api-server/src/lib/scheduled-demo-account.ts": "simulation",
+    "artifacts/api-server/src/lib/scheduled-demo-story.ts": "simulation",
+    "artifacts/api-server/src/lib/treasury-activity-store.ts": "audit",
+    "artifacts/api-server/src/lib/treasury-activity.ts": "audit",
+    "artifacts/api-server/src/lib/treasury-round.ts": "ledger",
+    "artifacts/api-server/src/lib/treasury-statement-store.ts": "audit",
+    "artifacts/api-server/src/lib/treasury-statement.ts": "audit"
+  },
+  "sharedSchemaImports": {
+    "artifacts/api-server/src/modules/wallets/infrastructure/treasury-test-wallet-store.ts": ["treasuryTestWallets"]
+  }
 }

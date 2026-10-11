@@ -23,6 +23,7 @@ export function transactionType(kind: string, operationKind?: string): string {
   const k = operationKind || kind;
   if (/distribution|yield/.test(k)) return 'yield';
   if (/participation|staking/.test(k)) return 'staking';
+  if (/lottery/.test(k)) return 'lottery';
   if (/purchase/.test(k)) return 'purchase';
   if (/swap|conversion/.test(k)) return 'swap';
   if (/withdraw/.test(k)) return 'withdrawal';

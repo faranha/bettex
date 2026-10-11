@@ -61,4 +61,10 @@ Os blocos de dados do Pitch, especialmente IA/trabalho e situação econômica, 
 
 **Why:** O criador pediu mais hype e menos excesso de dados, com sliders “até mesmo no PC”, e exigiu análise de conteúdo e apresentação prévia dos dados irrelevantes ou repetidos propostos para remoção.
 
-**How to apply:** O criador aprovou “Sliders sem retirar conteúdo”. Implementar desktop e mobile preservando todos os dados, textos, fontes, imagens e ressalvas; não aplicar os cortes ou condensações sugeridos pelo analista. Corrigir apenas a menção incompatível à tarifa de serviço. Preservar leitura e links de cada quadro, permitir deslizar e navegar pelos controles. Manter tabela comparativa, pizza e vesting diretamente visíveis. A autorização é para o Pitch, não para reformular a homepage.
+**How to apply:** Na criação dos sliders, o criador aprovou “Sliders sem retirar conteúdo”, sem aplicar os cortes sugeridos pelo analista. Preservar leitura e links de cada quadro, permitir deslizar e navegar pelos controles. Manter tabela comparativa, pizza e vesting diretamente visíveis. A autorização é para o Pitch, não para reformular a homepage.
+
+O criador posteriormente autorizou a revisão editorial proposta, com uma cópia da versão anterior.
+
+**Why:** Após a proposta de melhorar abertura, distinção entre Problema e Ambiente externo, evidências versus tese, solução e financiamento, pediu: “Faça suas melhorias propostas, irmão, e guarde a versão atual.”
+
+**How to apply:** A autorização permite reformular textos e condensar repetições do Pitch; a seleção anterior de sliders sem cortes não impede essa revisão editorial. Preservar dados, fontes, imagens, sliders e regras econômicas. Distinguir demo de operação, público potencial de clientes, movimentação de receita, tese de evidência, mint de aporte anjo e tokens de participação societária. Não alterar a homepage.

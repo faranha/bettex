@@ -8,6 +8,7 @@ const normalize = value => value.replace(/\s+/g, ' ').trim();
 function add(value) {
   value = normalize(value);
   if (/^--[a-z\d_-]+$/i.test(value)) return; // CSS custom-property names are not copy.
+  if (value === 'correlationId') return; // History URL/API field name, never user-facing copy.
   if (/^documentacao-[\w-]+$|^-(en|es)$/.test(value)) return; // Routing ids and localized filename suffixes.
   if (!value || !/[A-Za-zÀ-ÿ]/.test(value) || /^https?:|^[/#@]\S|^\.[a-z]|^#[a-f\d]{3,8}$/i.test(value) || /^[a-z\d_-]+:[^\s]+$/i.test(value)) return;
   if (!value.includes(' ') && /[/[\]{}=]/.test(value)) return;
@@ -24,11 +25,15 @@ function scan(file) {
      file.endsWith('/components/history/WalletStatement.tsx') ||
      (file.includes('/components/history/') && /\/(?:RoundHistory|RoundFacts|RoundTabs|RoundPositions)\.tsx$/.test(file)) ||
      file.endsWith('/components/app/AppHeader.tsx') ||
-     (file.includes('/components/history/') && /\/(?:wallet-history-(?:model|export|examples)|use-wallet-history|history-pagination|round-history-selection)\.ts$/.test(file)) ||
+      (file.includes('/components/history/') && /\/(?:wallet-history-(?:model|export|examples)|use-wallet-history|history-pagination|history-selection|round-history-selection)\.ts$/.test(file)) ||
      file.endsWith('/lib/round-terminology.ts') ||
     file.endsWith('/lib/demo-tab-session.ts') || /\.test\.tsx?$/.test(file)) return;
   if (file.endsWith('.json') && !file.includes('/locales/')) {
-    function visit(value) { if (typeof value === 'string') add(value); else if (value && typeof value === 'object') Object.values(value).forEach(visit); }
+    function visit(value, key) {
+      if (file.endsWith('/lib/site-seo.json') && key === 'image') return; // Social asset filenames, not copy.
+      if (typeof value === 'string') add(value);
+      else if (value && typeof value === 'object') Object.entries(value).forEach(([key, value]) => visit(value, key));
+    }
     visit(JSON.parse(fs.readFileSync(file, 'utf8'))); return;
   }
   if (!/\.tsx?$/.test(file) || file.includes('/lib/localized/') || file.endsWith('/i18n.ts')) return;
@@ -38,6 +43,10 @@ function scan(file) {
     // Compiler-only literal types (e.g. financial field names in Pick<T, K>)
     // are erased and never passed to the page's translation runtime.
     if (ts.isLiteralTypeNode(node)) return;
+    if (ts.isArrayLiteralExpression(node) && node.elements.length === 3 &&
+        node.elements.every(ts.isStringLiteral) &&
+        ['og:type', 'twitter:card'].includes(node.elements[1].text)) return; // Social protocol enums, not labels.
+    if (ts.isPropertyAssignment(node) && node.name.getText(source).replace(/^['"]|['"]$/g, '') === '@type') return; // Schema.org types are protocol identifiers.
     // PitchSlider.label and PitchSlide.label are explicit PT/EN/ES tuples.
     // Their UI translations are exercised by the slider browser check.
     if (source.text.includes("import { PitchSlider }") && ts.isArrayLiteralExpression(node) &&
@@ -59,7 +68,7 @@ function scan(file) {
       node.parent.parent.tagName?.getText(source) === 'MobileDataCarousel') return;
     if (ts.isPropertyAssignment(node) && node.name.getText(source).replace(/^['"]|['"]$/g, '') === 'id' && ts.isStringLiteral(node.initializer)) return;
     if (ts.isJsxElement(node) && ['style', 'script'].includes(node.openingElement.tagName.getText(source))) return;
-    if (ts.isJsxAttribute(node) && ['className','id','key','href','src','d','viewBox','transform','style','align','allow','referrerPolicy','loading','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath'].includes(node.name.getText(source))) return;
+    if (ts.isJsxAttribute(node) && ['className','id','key','href','src','d','viewBox','transform','style','align','textAnchor','preserveAspectRatio','allow','referrerPolicy','loading','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath'].includes(node.name.getText(source))) return;
     // Quoted object property names identify messages; their values are copy.
     if (ts.isStringLiteral(node) && ts.isPropertyAssignment(node.parent) && node.parent.name === node) return;
     if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node) || ts.isJsxText(node)) add(node.text);

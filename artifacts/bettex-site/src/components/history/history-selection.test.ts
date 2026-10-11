@@ -25,8 +25,12 @@ test('old bookmarks retain wallet, statement and round destinations', () => {
 });
 
 test('invalid input never invents a financial account or asset', () => {
-  assert.equal(selectHistoryArea('?history=invalid'), 'rounds');
+  assert.equal(selectHistoryArea('?history=invalid'), 'wallets');
   assert.deepEqual(treasuryFiltersFromSearch('?treasuryAccount=personal&treasuryAsset=ETH'), { account: 'all', asset: 'all' });
+});
+test('history starts with personal statements, while round links remain explicit', () => {
+  assert.equal(selectHistoryArea(''), 'wallets');
+  assert.equal(selectHistoryArea('?round=sample-round'), 'rounds');
 });
 test('assigned Treasury wallets each have an explicit history counterpart', () => {
   for (const purpose of ['operational', 'reserve', 'buyback', 'crypto_agent']) {

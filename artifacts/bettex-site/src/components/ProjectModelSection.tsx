@@ -217,7 +217,7 @@ export function ProjectModelSection() {
             <p className="pm-eyebrow">O modelo da BETTEX</p>
             <h2 id="pm-heading" className="pm-title">Compre, participe.<br /><span>Receba quando houver lucro elegível.</span></h2>
           </div>
-          <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} width={1024} height={1024} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
 
         <div className="pm-panel">

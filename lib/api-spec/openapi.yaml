@@ -11,6 +11,19 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /demo/polymarket:
+    get:
+      operationId: getDemoPolymarket
+      tags: [markets]
+      summary: Public quotes for the read-only Polymarket interface simulation
+      responses:
+        "200":
+          description: Public prices, never orders or balances
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DemoPolymarketFeed" }
+        "503":
+          description: Public source unavailable, without fictional fallback
   /markets/live:
     get:
       operationId: getMarketLive
@@ -736,6 +749,36 @@ components:
         type: string
         pattern: "^[a-f0-9]{64}$"
   schemas:
+    DemoPolymarketMarket:
+      type: object
+      required: [asset, id, question, url, yesPrice, noPrice, volume24h, liquidity]
+      properties:
+        asset: { type: string, enum: [BTC, ETH, SOL] }
+        id: { type: string }
+        question: { type: string }
+        url: { type: string }
+        yesPrice: { type: number }
+        noPrice: { type: number }
+        volume24h: { type: number }
+        liquidity: { type: number }
+    DemoPolymarketSourceError:
+      type: object
+      required: [asset, message]
+      properties:
+        asset: { type: string, enum: [BTC, ETH, SOL] }
+        message: { type: string }
+    DemoPolymarketFeed:
+      type: object
+      required: [source, fetchedAt, markets, errors]
+      properties:
+        source: { type: string }
+        fetchedAt: { type: string }
+        markets:
+          type: array
+          items: { $ref: "#/components/schemas/DemoPolymarketMarket" }
+        errors:
+          type: array
+          items: { $ref: "#/components/schemas/DemoPolymarketSourceError" }
     Double2xPlayInput:
       type: object
       required: [requestId, color, confirmed, expectedStakeUsdc]

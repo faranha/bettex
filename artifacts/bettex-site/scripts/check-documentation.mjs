@@ -63,7 +63,10 @@ assert.doesNotMatch(publicCopy + networkCosts, /contribuição por serviços|rec
 assert.doesNotMatch(networkCosts, /<h[34]|ServiceFeeTaxes/, 'Network costs have one topic heading, without duplicated revenue subsections.');
 assert.match(networkCosts, /não cobra taxas de serviço/);
 assert.match(networkCosts, /custos externos da rede, que não são receita da comunidade/);
-assert.match(networkCosts, /sem taxas ou cobranças/);
+assert.match(networkCosts, /não cobra taxas de serviço/);
+for (const path of ['src/components/WhitepaperSection.tsx', 'src/components/ServiceFees.tsx', 'src/components/DocumentationGames.tsx', 'src/components/DocumentationGovernance.tsx', 'src/components/StakingDistribution.tsx']) {
+  assert.doesNotMatch(await read(path), /\bdemo\b|interface de demonstração|interfaz de demostración/i, `${path}: documentation must describe the final vision, not the demo`);
+}
 assert.match(publicCopy, /50% tesouraria, 25% participantes e 25% recompra/);
 assert.match(publicCopy, /24 meses/);
 assert.match(publicCopy, /Quem entra durante uma rodada espera a próxima/);

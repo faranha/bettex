@@ -22,6 +22,7 @@ const TYPES: Record<string, T3> = {
   approval: ['Aprovação', 'Approval', 'Aprobación'], quote: ['Cotação', 'Quote', 'Cotización'],
   wallet_activity: ['Atividade da carteira', 'Wallet activity', 'Actividad de la billetera'],
   operation: ['Outra operação', 'Other operation', 'Otra operación'],
+  lottery: ['Loteria', 'Lottery', 'Lotería'],
 };
 const STATES: Record<string, T3> = {
   pending: ['Pendente', 'Pending', 'Pendiente'], requested: ['Solicitado', 'Requested', 'Solicitado'],
@@ -43,6 +44,8 @@ const KINDS: Record<string, T3> = {
   participation_entered: ['Entrada em staking', 'Staking entry', 'Entrada en staking'],
   gas_fee: ['Gás da rede', 'Network gas', 'Gas de red'],
   financial_requested: ['Pedido financeiro', 'Financial request', 'Solicitud financiera'],
+  lottery_free_entry: ['Número gratuito da loteria', 'Free lottery number', 'Número gratuito de la lotería'],
+  lottery_entries_purchased: ['Números adicionais da loteria', 'Additional lottery numbers', 'Números adicionales de la lotería'],
 };
 const SRC: Record<string, T3> = {
   demo_json_recovered_or_seeded: ['Arquivo da simulação', 'Simulation archive', 'Archivo de simulación'],
@@ -77,6 +80,7 @@ export function WalletStatement({ d, visualDemo = false }: { d: DemoDashboard; v
   const [type, setType] = useState('');
   const [state, setState] = useState('');
   const [search, setSearch] = useState('');
+  const [includeRequests, setIncludeRequests] = useState(!visualDemo);
   useEffect(() => {
     setWallet(walletFilterFromSearch(routeSearch)); setType(''); setState(''); setSearch('');
   }, [routeSearch]);
@@ -85,14 +89,16 @@ export function WalletStatement({ d, visualDemo = false }: { d: DemoDashboard; v
   };
   const q = useWalletHistory(mode, d.profile.accountId);
   const actual = useMemo(() => q.data?.rows ?? [], [q.data]);
-  const base = useMemo(() => visualDemo ? actual.filter(r => r.type !== 'fee' && r.kind !== 'gas_fee') : actual, [actual, visualDemo]);
+  const base = useMemo(() => visualDemo ? actual.filter(r => r.type !== 'fee' && r.kind !== 'gas_fee' && !r.kind.startsWith('agent_')) : actual, [actual, visualDemo]);
   const filters = { wallet, type, state, search };
-  const rows = useMemo(() => filterWalletHistory(base, filters), [base, wallet, type, state, search]);
+  const rows = useMemo(() => filterWalletHistory(base, filters).filter(r => includeRequests || r.kind !== 'financial_requested'), [base, wallet, type, state, search, includeRequests]);
   const states = useMemo(() => [...new Set(base.map(r => r.state))].sort(), [base]);
   const addresses = useMemo(() => [...new Set(base.map(r => r.walletAddress).filter((a): a is string => !!a))].sort(), [base]);
   const types = useMemo(() => [...new Set([...Object.keys(TYPES), ...base.map(r => r.type)])].filter(t => !visualDemo || t !== 'fee'), [base, visualDemo]);
   const reset = () => { setWallet(''); setType(''); setState(''); setSearch(''); selectWallet(''); };
   const filtered = !!(wallet || type || state || search.trim());
+  const [filtersOpen, setFiltersOpen] = useState(() => !visualDemo || !!(wallet || type || state || search.trim()));
+  useEffect(() => { if (filtered) setFiltersOpen(true); }, [filtered]);
 
   const tl = (m: Record<string, T3>, k: string, fb: T3) => { const v = m[k]; return v ? v[loc === 'pt' ? 0 : loc === 'en' ? 1 : 2] : tx(fb); };
   const typeLabel = (t: string) => tl(TYPES, t, TYPES.operation);
@@ -136,6 +142,7 @@ export function WalletStatement({ d, visualDemo = false }: { d: DemoDashboard; v
           {r.kind === 'transfer' && r.details.targetWallet === 'dollar' && <span className={`${chip} border border-[#E4DCCB]`}>{x('Destino: carteira em dólares', 'Destination: dollar wallet', 'Destino: cartera en dólares')}</span>}
         </div>
         <p className="mt-2 break-words text-sm font-bold">{kindLabel}</p>
+        {r.kind.startsWith('lottery_') && r.details.entryNumbers != null && <p className="break-words text-xs text-[#5B6B85]">{x('Número', 'Number', 'Número')}: {String(r.details.entryNumbers)}</p>}
         <p className="text-xs text-[#5B6B85]">{dt(r.at)} · {x('Horário de Brasília', 'Brasília time', 'Hora de Brasilia')}</p>
         {!KINDS[r.kind] && !TYPES[r.type]?.length && null}
         {!KINDS[r.kind] && r.kind && <p className="break-all text-[11px] text-[#8A94A6]">{x('Identificador técnico', 'Technical identifier', 'Identificador técnico')}: {r.kind}</p>}
@@ -149,8 +156,8 @@ export function WalletStatement({ d, visualDemo = false }: { d: DemoDashboard; v
         {swapLike && !r.paidAmount && r.asset && <p className="text-xs text-[#5B6B85]">{x('Afeta USDC e BETTEX', 'Affects USDC and BETTEX', 'Afecta USDC y BETTEX')}</p>}
         {brlLine(r, false)}
         {requestRecord && <p className="mt-1 text-xs text-[#5B6B85]">{x('Registro da solicitação. A liquidação aparece no comprovante separado; não é uma segunda cobrança.', 'Request audit record. Settlement appears in its separate receipt; this is not a second charge.', 'Registro de la solicitud. La liquidación aparece en su comprobante separado; no es un segundo cobro.')}</p>}
-        {pending && <p className="mt-1 text-xs font-semibold text-[#7A5410]">{x('Ainda não é um crédito concluído', 'Not a completed credit yet', 'Aún no es un crédito completado')}</p>}
-        {noCredit && <p className="mt-1 text-xs font-semibold text-[#8C2B2B]">{x('Solicitação sem crédito concluído', 'Request without completed credit', 'Solicitud sin crédito completado')}</p>}
+        {pending && <p className="mt-1 text-xs font-semibold text-[#7A5410]">{x('Solicitação ainda não concluída', 'Request not completed yet', 'Solicitud aún no completada')}</p>}
+        {noCredit && <p className="mt-1 text-xs font-semibold text-[#8C2B2B]">{x('Solicitação não concluída ou revertida', 'Request failed or reversed', 'Solicitud fallida o revertida')}</p>}
       </div>
       <div className="grid min-w-0 content-start gap-2">
         {!visualDemo && <div className="min-w-0 rounded-xl border border-dashed border-[#D9CFB8] p-3">
@@ -188,12 +195,14 @@ export function WalletStatement({ d, visualDemo = false }: { d: DemoDashboard; v
       </span>
     </div>
 
+    {visualDemo && <label className="flex min-h-11 items-center gap-2 text-xs font-semibold text-[#5B6B85]"><input type="checkbox" checked={includeRequests} onChange={e => setIncludeRequests(e.target.checked)} data-testid="statement-include-requests" />{x('Mostrar também as etapas das solicitações', 'Also show request lifecycle steps', 'Mostrar también las etapas de las solicitudes')}</label>}
     {nativeOk && <div className="flex flex-wrap gap-2">
         <button type="button" data-testid="statement-source-native" aria-pressed={mode === 'native'} className={mode === 'native' ? btnP : btn} onClick={() => { setMode('native'); reset(); }}>{x('Fonte nativa', 'Native source', 'Fuente nativa')}</button>
         <button type="button" data-testid="statement-source-demo" aria-pressed={mode === 'demo'} className={mode === 'demo' ? btnP : btn} onClick={() => { setMode('demo'); reset(); }}>{x('Fonte simulada', 'Simulated source', 'Fuente simulada')}</button>
     </div>}
 
-    <div className="grid gap-2 rounded-2xl border border-[#E4DCCB] bg-[#F5F1E8] p-3 sm:p-4" data-testid="statement-downloads">
+    <details open={!visualDemo} className="group grid gap-2 rounded-2xl border border-[#E4DCCB] bg-[#F5F1E8] p-3 sm:p-4" data-testid="statement-downloads">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 text-sm font-extrabold [&::-webkit-details-marker]:hidden" data-testid="statement-downloads-toggle"><span>{x('Exportar extrato (CSV e JSON)', 'Export statement (CSV and JSON)', 'Exportar extracto (CSV y JSON)')}</span><span aria-hidden className="text-[#0E7C6B] transition-transform group-open:rotate-45">+</span></summary>
       <div className="text-sm font-extrabold"><WalletHelp id="statement-downloads" label={x('Baixar extrato', 'Download statement', 'Descargar extracto')}>
         <p>{x('Todos os registros exporta os registros carregados da fonte selecionada, ignorando os filtros. Filtrados exporta somente os resultados dos filtros atuais, incluindo os que ficam abaixo da tela.', 'All records exports loaded records from the selected source, ignoring filters. Filtered exports only matches for the current filters, including entries below the viewport.', 'Todos los registros exporta los registros cargados de la fuente seleccionada, ignorando los filtros. Filtrados exporta solo los resultados de los filtros actuales, incluidos los que están debajo de la pantalla.')}</p>
         <p>{x('CSV é adequado para planilhas; JSON preserva dados estruturados para análise. Baixar não movimenta saldo. O arquivo pode conter endereços e seu histórico financeiro: compartilhe com cuidado. Registros da simulação não comprovam transações com dinheiro real.', 'CSV is suitable for spreadsheets; JSON preserves structured data for analysis. Downloading does not move funds. Files may contain addresses and your financial history: share carefully. Simulation records do not prove real-money transactions.', 'CSV es adecuado para hojas de cálculo; JSON conserva datos estructurados para análisis. Descargar no mueve saldo. El archivo puede contener direcciones y tu historial financiero: compártelo con cuidado. Los registros de simulación no prueban transacciones con dinero real.')}</p>
@@ -205,9 +214,10 @@ export function WalletStatement({ d, visualDemo = false }: { d: DemoDashboard; v
           <button type="button" id="statement-download-filtered-csv" data-testid="statement-download-filtered-csv" className={btn} disabled={q.isLoading || q.isError || !rows.length} onClick={() => dl(rows, 'csv')}>{x(`Filtrados (CSV, ${rows.length})`, `Filtered (CSV, ${rows.length})`, `Filtrados (CSV, ${rows.length})`)}</button>
           <button type="button" data-testid="statement-download-filtered-json" className={btn} disabled={q.isLoading || q.isError || !rows.length} onClick={() => dl(rows, 'json')}>{x(`Filtrados (JSON, ${rows.length})`, `Filtered (JSON, ${rows.length})`, `Filtrados (JSON, ${rows.length})`)}</button>
       </div>
-    </div>
+    </details>
 
-    <div className="grid min-w-0 gap-3 rounded-2xl border border-[#E4DCCB] bg-[#FBF8F0] p-3 sm:p-4" data-testid="statement-filters">
+    <details open={filtersOpen} onToggle={e => setFiltersOpen(e.currentTarget.open)} className="group grid min-w-0 gap-3 rounded-2xl border border-[#E4DCCB] bg-[#FBF8F0] p-3 sm:p-4" data-testid="statement-filters">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 text-sm font-extrabold [&::-webkit-details-marker]:hidden" data-testid="statement-filters-toggle"><span>{x('Filtros avançados', 'Advanced filters', 'Filtros avanzados')}{filtered ? ` · ${x('ativos', 'active', 'activos')}` : ''}</span><span aria-hidden className="text-[#0E7C6B] transition-transform group-open:rotate-45">+</span></summary>
       <h4 className="text-sm font-extrabold"><WalletHelp id="statement-filters" label={x('Filtrar registros', 'Filter records', 'Filtrar registros')}>
         <p>{x('Carteira limita o extrato a USDC, BETTEX, rendimentos ou um endereço. Tipo de transação seleciona a natureza do movimento, como depósito, envio ou conversão. Status seleciona a etapa registrada: pendente, confirmado, concluído ou falha, por exemplo.', 'Wallet limits the statement to USDC, BETTEX, earnings or an address. Transaction type selects the movement category, such as deposit, send or conversion. Status selects the recorded stage, such as pending, confirmed, completed or failed.', 'Cartera limita el extracto a USDC, BETTEX, ganancias o una dirección. Tipo de transacción selecciona la categoría del movimiento, como depósito, envío o conversión. Estado selecciona la etapa registrada, como pendiente, confirmado, completado o fallido.')}</p>
         <p>{x('A busca encontra ID, hash ou endereço. Os filtros se combinam e não alteram operações ou saldos. Nenhum resultado pode significar apenas que os filtros não correspondem a registros. Para ampliar a consulta, selecione Todas as carteiras, Todos os tipos e Todos os status e limpe a busca.', 'Search finds an ID, hash or address. Filters combine and do not change operations or balances. No matches may simply mean the filters do not match records. Broaden the query with All wallets, All types and All statuses and clear the search.', 'La búsqueda encuentra ID, hash o dirección. Los filtros se combinan y no alteran operaciones ni saldos. Ningún resultado puede significar solo que los filtros no coinciden con registros. Amplía la consulta seleccionando Todas las carteras, Todos los tipos y Todos los estados y vacía la búsqueda.')}</p>
@@ -233,7 +243,7 @@ export function WalletStatement({ d, visualDemo = false }: { d: DemoDashboard; v
         <input data-testid="filter-statement-search" className={sel} value={search} onChange={e => setSearch(e.target.value)} />
       </label>
       </div>
-    </div>
+    </details>
 
     {q.isLoading ? <div className="grid gap-2" data-testid="statement-loading" aria-busy="true">{[0, 1, 2].map(i => <div key={i} className="h-24 animate-pulse rounded-2xl bg-[#EEE9DD]" />)}</div>
       : q.isError ? <div role="alert" className="grid justify-items-start gap-2 rounded-2xl bg-[#F6DADA] p-4 text-sm text-[#8C2B2B]" data-testid="statement-error">

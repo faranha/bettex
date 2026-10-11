@@ -1,5 +1,16 @@
 # Mandatory development instructions — BETTEX
 
+## Current repository-preparation boundary
+
+Read [current status](docs/project-status.md) and [verification profiles](docs/testing.md).
+The public app is visual-only. Do not reactivate operational routes, account
+flows or financial runtimes to make historical tests pass.
+During final repository preparation, leave automatic Git synchronization paused.
+Do not commit, push, resume synchronization or publish without the owner's
+separate instruction. Older normal-task synchronization clauses below do not
+override this boundary. Use the current-product profile and report reference
+exclusions and failures explicitly.
+
 ## Inspect before implementing
 
 1. Read this file, `replit.md`, `docs/architecture.md` and relevant decisions in

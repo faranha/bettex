@@ -5,7 +5,7 @@ import './HumanStorySection.css';
 export function HumanStorySection() {
   return (
     <section id="historia" className="hs-section" aria-labelledby="hs-heading" data-testid="section-narrativa-humana">
-      <img className="hs-photo" src={`${import.meta.env.BASE_URL}story/man-loss-background.jpg`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      <img className="hs-photo" src={`${import.meta.env.BASE_URL}story/man-loss-background.jpg`} width={1024} height={1024} alt="" aria-hidden="true" loading="lazy" decoding="async" />
       <div className="hs-wrap">
         <div className="hs-grid">
           <div className="hs-left">

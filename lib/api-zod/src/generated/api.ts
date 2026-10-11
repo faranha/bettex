@@ -9,6 +9,29 @@ import * as zod from 'zod';
 
 
 /**
+ * @summary Public quotes for the read-only Polymarket interface simulation
+ */
+export const GetDemoPolymarketResponse = zod.object({
+  "source": zod.string(),
+  "fetchedAt": zod.string(),
+  "markets": zod.array(zod.object({
+  "asset": zod.enum(['BTC', 'ETH', 'SOL']),
+  "id": zod.string(),
+  "question": zod.string(),
+  "url": zod.string(),
+  "yesPrice": zod.number(),
+  "noPrice": zod.number(),
+  "volume24h": zod.number(),
+  "liquidity": zod.number()
+})),
+  "errors": zod.array(zod.object({
+  "asset": zod.enum(['BTC', 'ETH', 'SOL']),
+  "message": zod.string()
+}))
+})
+
+
+/**
  * @summary Public BTC, ETH and SOL spot observations; not trade executions
  */
 export const GetMarketLiveResponse = zod.object({

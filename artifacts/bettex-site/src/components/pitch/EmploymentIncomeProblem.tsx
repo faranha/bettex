@@ -10,10 +10,10 @@ export function EmploymentIncomeProblem() {
       <img src={`${import.meta.env.BASE_URL}pitch-future/tesla-optimus.jpg`} alt="" width={1024} height={1024} />
     </div>
     <p className="mono pb-problem__topic">2. Emprego e renda ameaçados pela IA</p>
-    <h3 id="problema-ia-t" className="display">É mentira, a era da prosperidade é uma mentira.</h3>
+    <h3 id="problema-ia-t" className="display">Tese da BETTEX: automação não garante prosperidade para todos.</h3>
     <PitchSlider id="emprego-ia-slider" tone="dark" label={['IA, trabalho e renda em blocos', 'AI, work and income blocks', 'IA, trabajo e ingresos por bloques']} slides={[
       { label: ['Promessa de abundância', 'Promise of abundance', 'Promesa de abundancia'], node: <>
-    <p>Musk promete renda universal alta. Nós não acreditamos nisso: nossa tese é que substituir salários por máquinas, sem distribuir os ganhos, levará à miséria universal, não à prosperidade.</p>
+    <p>Musk apresenta a visão de máquinas substituindo o trabalho humano e de renda universal alta. A tese da BETTEX é outra: sem ampliar o acesso aos ganhos da tecnologia, a automação pode aprofundar a perda de renda e a exclusão antes de produzir prosperidade.</p>
     <figure className="pb-problem__opening-video">
       <div className="pb-problem__video-frame">
         <iframe
@@ -39,7 +39,7 @@ export function EmploymentIncomeProblem() {
       </> },
       { label: ['Exposição à IA', 'AI exposure', 'Exposición a la IA'], node: <>
     <div className="pb-problem__response">
-      <p>A tese da BETTEX é que automatizar o trabalho sem ampliar o acesso aos ganhos pode produzir miséria, não prosperidade. No estudo de <strong>2024</strong> da OIT e do Banco Mundial, <strong>26% a 38%</strong> dos empregos da América Latina e do Caribe estavam expostos à IA generativa, e <strong>2% a 5%</strong> tinham potencial de automação completa com as capacidades então disponíveis. A exposição à automação era maior em empregos formais e qualificados, inclusive de colarinho branco; ao mesmo tempo, a exclusão digital limitava os benefícios potenciais da IA em cerca de <strong>17 milhões</strong> de postos. Nossa preocupação é que pessoas humildes percam renda ou fiquem fora dos ganhos dessa economia. É esse risco de exclusão que a BETTEX busca enfrentar, não uma certeza de desemprego ou miséria universal.</p>
+      <p>No estudo de <strong>2024</strong> da OIT e do Banco Mundial, <strong>26% a 38%</strong> dos empregos da América Latina e do Caribe estavam expostos à IA generativa, e <strong>2% a 5%</strong> tinham potencial de automação completa com as capacidades então disponíveis. A exposição era maior em empregos formais e qualificados, inclusive de colarinho branco; a exclusão digital limitava os benefícios potenciais da IA em cerca de <strong>17 milhões</strong> de postos. Exposição não equivale a empregos eliminados: são estimativas de potencial técnico e barreiras de acesso, não desemprego futuro comprovado.</p>
     </div>
 
       </> },

@@ -1,7 +1,8 @@
 /** @jsxImportSource react */
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useX } from '@/components/demo/ui';
 import { AgentTradingTabs } from './AgentTradingTabs';
+import { CAPITAL, FORECASTS, POSITIONS, type Asset as MarketAsset } from './central-data';
 
 type Tab = 'overview' | 'crypto' | 'sports' | 'predictions' | 'bonus' | 'history';
 type Asset = 'BTC' | 'ETH' | 'SOL';
@@ -10,11 +11,7 @@ const btn = 'inline-flex min-h-10 items-center justify-center rounded-xl bg-[#12
 const ghost = 'inline-flex min-h-10 items-center justify-center rounded-xl border border-[#12372A]/30 px-3 text-xs font-bold hover:bg-[#12372A]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227]';
 const card = 'min-w-0 rounded-2xl border border-[#E4DCCB] bg-white/50 p-3 sm:p-4';
 
-const ASSETS: Record<Asset, { px: string; chg: number; sig: [string, string, string]; pnl: string; series: number[] }> = {
-  BTC: { px: 'US$ 67.420,00', chg: 2.8, sig: ['Momentum de alta, volume acima da média', 'Upward momentum, above-average volume', 'Impulso alcista, volumen sobre el promedio'], pnl: '+US$ 312,40', series: [38, 42, 40, 47, 52, 50, 58, 63, 61, 70] },
-  ETH: { px: 'US$ 3.215,50', chg: 1.4, sig: ['Rompimento de resistência local', 'Local resistance breakout', 'Ruptura de resistencia local'], pnl: '+US$ 128,15', series: [30, 33, 35, 34, 40, 44, 43, 49, 52, 55] },
-  SOL: { px: 'US$ 148,72', chg: 4.1, sig: ['Fluxo comprador crescente', 'Growing buy flow', 'Flujo comprador creciente'], pnl: '+US$ 87,90', series: [20, 24, 23, 30, 35, 33, 41, 46, 50, 58] },
-};
+const ASSETS: Asset[] = ['BTC', 'ETH', 'SOL'];
 
 function Spark({ data, label }: { data: number[]; label: string }) {
   const max = Math.max(...data), min = Math.min(...data);
@@ -24,6 +21,12 @@ function Spark({ data, label }: { data: number[]; label: string }) {
 
 export function MockCentralPanel({ onAction, compact = false, embedded = false }: { onAction: () => void; compact?: boolean; embedded?: boolean }) {
   const { x, loc } = useX();
+  const locale = loc === 'pt' ? 'pt-BR' : loc === 'en' ? 'en-US' : 'es-ES';
+  const usd = (n: number) => n.toLocaleString(locale, { style: 'currency', currency: 'USD' });
+  const usdc = (n: number) => `${n.toLocaleString(locale, { maximumFractionDigits: 2 })} USDC`;
+  const result = (p: typeof POSITIONS[number]) => p.exitValue == null || p.stale
+    ? x('Avaliação indisponível', 'Valuation unavailable', 'Valoración no disponible')
+    : usdc((Number(p.exitValue) - Number(p.cost) - Number(p.fees)) / 1e6);
   const [tab, setTab] = useState<Tab>('crypto');
   const [asset, setAsset] = useState<Asset>('BTC');
   const [posFilter, setPosFilter] = useState<'all' | 'open' | 'closed'>('all');
@@ -35,29 +38,20 @@ export function MockCentralPanel({ onAction, compact = false, embedded = false }
   ];
   const act = (label: string, cls = btn) => <button type="button" data-demo-action onClick={onAction} className={cls}>{label}</button>;
 
-  const positions = useMemo(() => [
-    { id: 'p1', a: asset, st: 'open', q: '0,0120', pnl: '+US$ 42,10' },
-    { id: 'p2', a: asset, st: 'open', q: '0,0450', pnl: '+US$ 18,75' },
-    { id: 'p3', a: asset, st: 'closed', q: '0,0300', pnl: '+US$ 64,20' },
-    { id: 'p4', a: asset, st: 'closed', q: '0,0080', pnl: '+US$ 9,30' },
-  ].filter(p => posFilter === 'all' || p.st === posFilter), [asset, posFilter]);
+  const positions = POSITIONS.filter(p => p.asset.toUpperCase() === asset).map(p => ({
+    id: p.id, a: asset, st: p.state === 'settled' ? 'closed' : 'open',
+    q: `${(Number(p.qty) / 1e6).toLocaleString(locale, { maximumFractionDigits: 6 })} ${x('cotas', 'shares', 'cuotas')}`, pnl: result(p),
+  })).filter(p => posFilter === 'all' || p.st === posFilter);
 
-  const agents = [
-    { k: 'crypto', n: x('Cripto', 'Crypto', 'Cripto'), r: '+US$ 528,45', s: x('3 sinais ativos', '3 active signals', '3 señales activas') },
-    { k: 'sports', n: x('Esportes', 'Sports', 'Deportes'), r: '+R$ 214,60', s: x('2 oportunidades de cobertura', '2 hedge opportunities', '2 oportunidades de cobertura') },
-    { k: 'predictions', n: x('Previsões', 'Predictions', 'Predicciones'), r: '+R$ 96,80', s: x('4 mercados acompanhados', '4 tracked markets', '4 mercados seguidos') },
-    { k: 'bonus', n: x('Bônus', 'Bonus', 'Bonos'), r: '+R$ 52,00', s: x('Progresso de requisito 68,4%', 'Requirement progress 68.4%', 'Progreso de requisito 68,4%') },
-  ].filter(a => a.k === 'crypto');
-  const history = [
-    { k: 'crypto', d: '12/03', t: x('Compra spot SOL encerrada com lucro', 'SOL spot buy closed in profit', 'Compra spot SOL cerrada con ganancia'), v: '+US$ 87,90' },
-    { k: 'sports', d: '11/03', t: x('Cobertura entre duas casas concluída', 'Two-book hedge completed', 'Cobertura entre dos casas completada'), v: '+R$ 48,20' },
-    { k: 'predictions', d: '10/03', t: x('Mercado resolvido a favor da posição', 'Market resolved in favor of position', 'Mercado resuelto a favor de la posición'), v: '+R$ 31,40' },
-    { k: 'bonus', d: '09/03', t: x('Etapa de requisito do bônus cumprida', 'Bonus requirement stage met', 'Etapa de requisito del bono cumplida'), v: '+R$ 20,00' },
-    { k: 'crypto', d: '08/03', t: x('Compra spot BTC encerrada com lucro', 'BTC spot buy closed in profit', 'Compra spot BTC cerrada con ganancia'), v: '+US$ 64,20' },
-    { k: 'sports', d: '06/03', t: x('Surebet de futebol liquidada', 'Football surebet settled', 'Surebet de fútbol liquidada'), v: '+R$ 73,10' },
-  ].filter(h => h.k === 'crypto' && (hist === 'all' || h.k === hist));
+  const agents = [{ k: 'crypto', n: x('Núcleo interno Cripto', 'Internal Crypto core', 'Núcleo interno Cripto'), r: usdc(Number(CAPITAL.agentAllocated) / 1e6), s: x('Capital ilustrativo alocado, não lucro', 'Illustrative allocated capital, not profit', 'Capital ilustrativo asignado, no beneficio') }];
+  const history = POSITIONS.filter(p => p.state === 'settled').map(p => ({
+    k: 'crypto', d: new Date(p.at).toLocaleDateString(locale, { timeZone: 'America/Sao_Paulo' }),
+    t: `${p.asset.toUpperCase()} · ${x('Posição encerrada de exemplo', 'Completed sample position', 'Posición cerrada de ejemplo')}`, v: result(p),
+  })).filter(h => hist === 'all' || h.k === hist);
 
-  const A = ASSETS[asset];
+  const forecast = FORECASTS[asset.toLowerCase() as MarketAsset];
+  const realized = POSITIONS.filter(p => p.asset.toUpperCase() === asset && p.state === 'settled')
+    .reduce((s, p) => s + Number(p.exitValue) - Number(p.cost) - Number(p.fees), 0) / 1e6;
   const rowList = (items: [string, string, string][]) => <ul className="grid gap-2">{items.map(([a, b, c], i) => <li key={i} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[#F0E9DA] p-3 text-sm"><span className="min-w-0 flex-1 font-bold">{a}</span><span className="text-xs text-[#5B6B85]">{b}</span><span className="font-bold text-[#0E7C6B]">{c}</span></li>)}</ul>;
 
   return (
@@ -84,17 +78,17 @@ export function MockCentralPanel({ onAction, compact = false, embedded = false }
         {tab === 'overview' && <>
           <div className="grid gap-3 sm:grid-cols-2">{agents.map(a => <button key={a.k} type="button" onClick={() => setTab(a.k as Tab)} className={`${card} text-left hover:border-[#C9A227]`}><p className="text-sm font-bold">{a.n}</p><p className="text-xl font-extrabold text-[#0E7C6B]">{a.r}</p><p className="text-xs text-[#5B6B85]">{a.s}</p></button>)}</div>
           <div className={card}><h3 className="mb-2 text-sm font-bold">{x('Decisões recentes', 'Recent decisions', 'Decisiones recientes')}</h3>
-            {rowList([[x('Alocação sugerida para Cripto', 'Suggested allocation to Crypto', 'Asignación sugerida a Cripto'), x('Proposta', 'Proposed', 'Propuesta'), '+US$ 528']])}
+             {rowList([[x('Alocação vigente para Cripto', 'Current Crypto allocation', 'Asignación actual a Cripto'), x('Amostra ilustrativa', 'Illustrative sample', 'Muestra ilustrativa'), usdc(Number(CAPITAL.agentAllocated) / 1e6)]])}
             <div className="mt-2 flex flex-wrap gap-2">{act(x('Aprovar', 'Approve', 'Aprobar'))}{act(x('Rejeitar', 'Reject', 'Rechazar'), ghost)}{act(x('Alocar', 'Allocate', 'Asignar'), ghost)}</div></div>
         </>}
 
         {tab === 'crypto' && <>
-          <div className="flex gap-2">{(Object.keys(ASSETS) as Asset[]).map(k => <button key={k} type="button" aria-pressed={asset === k} onClick={() => setAsset(k)} className={`min-h-10 flex-1 rounded-xl text-sm font-bold ${asset === k ? 'bg-[#C9A227] text-[#12372A]' : 'bg-[#F0E9DA]'}`}>{k}</button>)}</div>
+           <div className="flex gap-2">{ASSETS.map(k => <button key={k} type="button" aria-pressed={asset === k} onClick={() => setAsset(k)} className={`min-h-10 flex-1 rounded-xl text-sm font-bold ${asset === k ? 'bg-[#C9A227] text-[#12372A]' : 'bg-[#F0E9DA]'}`}>{k}</button>)}</div>
           <div className={card}>
-            <div className="flex flex-wrap items-baseline justify-between gap-2"><p className="text-lg font-extrabold">{asset} {A.px}</p><p className="font-bold text-[#0E7C6B]">+{A.chg.toLocaleString('pt-BR')}%</p></div>
-            <Spark data={A.series} label={`${asset} ${x('gráfico ilustrativo', 'illustrative chart', 'gráfico ilustrativo')}`} />
-            <p className="text-sm"><b>{x('Sinal', 'Signal', 'Señal')}:</b> {A.sig[loc === 'pt' ? 0 : loc === 'en' ? 1 : 2]}</p>
-            <p className="text-sm"><b>{x('Resultado de exemplo', 'Sample result', 'Resultado de ejemplo')}:</b> <span className="font-bold text-[#0E7C6B]">{A.pnl}</span></p>
+             <div className="flex flex-wrap items-baseline justify-between gap-2"><p className="text-lg font-extrabold">{asset} {usd(Number(forecast.spot))}</p><p className="text-xs">{x('Cotação de referência da amostra', 'Sample reference quote', 'Cotización de referencia de la muestra')}</p></div>
+             <Spark data={forecast.series} label={`${asset} ${x('gráfico ilustrativo', 'illustrative chart', 'gráfico ilustrativo')}`} />
+             <p className="text-sm">{x('Cenário hipotético de 8 horas; não valida vantagem, sinal de compra ou probabilidade de evento.', 'Hypothetical 8-hour scenario; it validates neither an edge, a buy signal nor an event probability.', 'Escenario hipotético de 8 horas; no valida ventaja, señal de compra ni probabilidad de evento.')}</p>
+             <p className="text-sm"><b>{x('Resultado encerrado de exemplo', 'Closed sample result', 'Resultado cerrado de ejemplo')}:</b> <span className="font-bold text-[#0E7C6B]">{usdc(realized)}</span></p>
             <div className="mt-2 flex flex-wrap gap-2">{act(x('Enviar ordem', 'Place order', 'Enviar orden'))}{act(x('Cancelar ordem', 'Cancel order', 'Cancelar orden'), ghost)}</div>
           </div>
           <div className={card}>
@@ -102,8 +96,9 @@ export function MockCentralPanel({ onAction, compact = false, embedded = false }
               <div className="flex gap-1">{(['all', 'open', 'closed'] as const).map(f => <button key={f} type="button" aria-pressed={posFilter === f} onClick={() => setPosFilter(f)} className={`min-h-9 rounded-lg px-2.5 text-xs font-bold ${posFilter === f ? 'bg-[#12372A] text-[#F2C14E]' : 'bg-[#F0E9DA]'}`}>{f === 'all' ? x('Todas', 'All', 'Todas') : f === 'open' ? x('Abertas', 'Open', 'Abiertas') : x('Encerradas', 'Closed', 'Cerradas')}</button>)}</div></div>
             <ul className="grid gap-2">{positions.map((p, i) => <li key={p.id} className="rounded-xl bg-[#F0E9DA] p-3 text-sm">
               <button type="button" aria-expanded={detail === i} onClick={() => setDetail(detail === i ? null : i)} className="flex w-full items-center justify-between gap-2 text-left font-bold"><span>{p.a} · {p.q}</span><span className="text-[#0E7C6B]">{p.pnl}</span></button>
-              {detail === i && <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-[#5B6B85]"><span>{p.st === 'open' ? x('Em andamento, spot sem alavancagem', 'In progress, spot without leverage', 'En curso, spot sin apalancamiento') : x('Encerrada com resultado positivo', 'Closed with positive result', 'Cerrada con resultado positivo')}</span>{p.st === 'open' && act(x('Fechar posição', 'Close position', 'Cerrar posición'), ghost)}</div>}
-            </li>)}</ul>
+               {detail === i && <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-[#5B6B85]"><span>{p.st === 'open' ? x('Exemplo de posição em cotas; avaliação não é lucro realizado.', 'Sample share position; valuation is not realized profit.', 'Ejemplo de posición en cuotas; la valoración no es beneficio realizado.') : x('Encerrada com resultado positivo', 'Closed with positive result', 'Cerrada con resultado positivo')}</span>{p.st === 'open' && act(x('Fechar posição', 'Close position', 'Cerrar posición'), ghost)}</div>}
+             </li>)}</ul>
+             {positions.length === 0 && <p className="text-xs text-[#5B6B85]">{x('Nenhuma posição neste mercado e filtro.', 'No position in this market and filter.', 'Ninguna posición en este mercado y filtro.')}</p>}
           </div>
         </>}
 

@@ -23,5 +23,8 @@ Before changing boundaries, sources of truth, data, security or dependencies, re
 14. [Isolated simulation executions](0013-simulation-executions.md).
 15. [Coordinated development synchronization and clean-clone execution](0014-development-synchronization.md).
 16. [Local withdrawals, atomic entitlement gate and read-only Allora](0015-local-withdrawals-atomic-guard-allora.md).
+17. [Real agent reasoning](0016-real-agent-reasoning.md).
+18. [Visual demo and operational isolation](0017-visual-demo-safety.md).
+19. [GitHub preparation, verification profiles and tracked architecture debt](0018-github-verification-profiles.md).
 
 The old paths in `docs/adr/` remain for compatibility, pointing to these records. Adopted status indicates a development rule, not an implemented financial feature.

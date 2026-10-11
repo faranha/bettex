@@ -26,7 +26,7 @@ O mint inicial financia o projeto, a preço fixo; preço, janela e plataforma ai
 
 O preço pertence ao vendedor. Não gera nova captação ou lucro da tesouraria, nem antecipa o vesting.
 
-A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, que não são receita da comunidade. O demo é exclusivamente visual, sem taxas ou cobranças.
+A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, que não são receita da comunidade.
 
 Burn Lottery e Double 2X
 
@@ -38,7 +38,7 @@ Regulamento da loteria deve identificar preço, prêmio, financiamento, prazo e 
 
 Rodada operacional e demonstração
 
-O modelo operacional tem rodadas diárias UTC. O demo visual usa um roteiro distinto, de 16h a 16h de São Paulo em 24 horas reais, sem dinheiro real ou operações. Não é conversão da meia-noite UTC nem alteração de contratos. Abas por mercado não criam pools de staking independentes.
+O modelo operacional tem rodadas diárias UTC. Abas por mercado não criam pools de staking independentes.
 
 Administração e propósito
 

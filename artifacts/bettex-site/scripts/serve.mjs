@@ -4,6 +4,7 @@ import { stat, readFile, realpath } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { withMetadata } from './seo.mjs';
 
 const publicRoot = path.resolve(import.meta.dirname, '../dist/public');
 const officialOrigin = 'https://bettex.ai';
@@ -69,7 +70,7 @@ export function createSiteServer(root = publicRoot) {
         return;
       }
       // Dedicated app pages must also open directly and after a reload.
-      const appPage = pathname.match(/^\/(?:(en|es)\/)?app\/(central|saldo|balance|tesouraria|treasury|tesoreria|minha-conta|account|mi-cuenta|simulacao|simulation|simulacion)\/?$/)
+      const appPage = pathname.match(/^\/(?:(en|es)\/)?app\/(central|saldo|balance|historico|history|historial|tesouraria|treasury|tesoreria|minha-conta|account|mi-cuenta|simulacao|simulation|simulacion)\/?$/)
         || pathname.match(/^\/(?:(en|es)\/)?app\/(minha-conta|account|mi-cuenta)\/.+$/);
       if (appPage) {
         const language = appPage[1] || 'pt';
@@ -77,14 +78,15 @@ export function createSiteServer(root = publicRoot) {
           ? { pt: 'Central da IA', en: 'AI Center', es: 'Central de IA' }[language]
           : ['minha-conta', 'account', 'mi-cuenta'].includes(appPage[2])
             ? { pt: 'Minha conta', en: 'My account', es: 'Mi cuenta' }[language]
+            : ['historico', 'history', 'historial'].includes(appPage[2])
+              ? { pt: 'Histórico', en: 'History', es: 'Historial' }[language]
             : ['saldo', 'balance'].includes(appPage[2])
               ? { pt: 'Saldo e histórico', en: 'Balance and history', es: 'Saldo e historial' }[language]
             : ['simulacao', 'simulation', 'simulacion'].includes(appPage[2])
               ? { pt: 'Simulação', en: 'Simulation', es: 'Simulación' }[language]
             : { pt: 'Tesouraria', en: 'Treasury', es: 'Tesorería' }[language];
         const shell = path.join(root, language === 'pt' ? 'app/index.html' : `${language}/app/index.html`);
-        const html = (await readFile(shell, 'utf8'))
-          .replace(/<title>[^<]*<\/title>/i, `<title>${title} | BETTEX</title>`)
+        const html = withMetadata(await readFile(shell, 'utf8'), pathname, { title: `${title} | BETTEX` })
           .replace(/<h1([^>]*)>[^<]*<\/h1>/i, `<h1$1>${title}</h1>`)
           .replace(/<meta\s+name=["']robots["'][^>]*>/i, '<meta name="robots" content="noindex,nofollow">')
           .replace(/(<link\s+rel=["']canonical["']\s+href=["'])[^"']+/, `$1${officialOrigin}${pathname.replace(/\/?$/, '/')}`);

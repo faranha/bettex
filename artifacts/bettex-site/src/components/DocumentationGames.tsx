@@ -22,9 +22,9 @@ export function DocumentationGames() {
     <section id="documentacao-recursos-carteiras" className="dg" aria-labelledby="dg-title" data-i18n="translated">
       <h3 id="dg-title" className="dg__sub">{x('Recursos das carteiras: Loteria e Double 2X', 'Wallet features: Lottery and Double 2X', 'Recursos de las carteras: Lotería y Double 2X')}</h3>
       <p className="dg__notice"><strong>{x(
-        'Interface de demonstração: valores e resultados ilustrativos, sem dinheiro real. Os recursos abaixo são descritos como regras e efeitos, não como operações reais interativas. Resultados simulados não comprovam execução, jogadas on-chain, disponibilidade de gás, liquidação por oráculo nem integração externa.',
-        'Demo interface: illustrative values and results, no real money. The features below are described as rules and effects, not as interactive real operations. Simulated outcomes do not prove execution, on-chain plays, gas availability, oracle settlement or external integration.',
-        'Interfaz de demostración: valores y resultados ilustrativos, sin dinero real. Los recursos siguientes se describen como reglas y efectos, no como operaciones reales interactivas. Los resultados simulados no prueban ejecución, jugadas on-chain, disponibilidad de gas, liquidación por oráculo ni integración externa.')}</strong></p>
+        'A execução destes recursos depende de implantação compatível com a rede, autorizações válidas, disponibilidade de gás e liquidação confirmada. As regras e os exemplos não garantem resultado nem pagamento.',
+        'Execution of these features depends on network-compatible deployment, valid authorizations, gas availability and confirmed settlement. The rules and examples do not guarantee an outcome or payment.',
+        'La ejecución de estos recursos depende de una implementación compatible con la red, autorizaciones válidas, disponibilidad de gas y liquidación confirmada. Las reglas y los ejemplos no garantizan un resultado ni un pago.')}</strong></p>
 
       <section id="documentacao-loteria" aria-labelledby="dg-lot">
         <h4 id="dg-lot" className="dg__sub">Burn Lottery</h4>
