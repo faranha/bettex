@@ -1,4 +1,32 @@
 {
+  "Conheça a comunidade": {
+    "en": "Discover the community",
+    "es": "Conoce la comunidad"
+  },
+  "BETTEX é o token da comunidade.": {
+    "en": "BETTEX is the community token.",
+    "es": "BETTEX es el token de la comunidad."
+  },
+  "Comunidade aberta.": {
+    "en": "Open community.",
+    "es": "Comunidad abierta."
+  },
+  "Tecnologia com IA.": {
+    "en": "AI technology.",
+    "es": "Tecnología con IA."
+  },
+  "Uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados.": {
+    "en": "An open community building DeFi technology and AI agents for multiple markets.",
+    "es": "Una comunidad abierta que construye tecnología DeFi y agentes de IA para varios mercados."
+  },
+  "BETTEX é o token da comunidade. Recursos, desenvolvimento e evolução seguem regras públicas.": {
+    "en": "BETTEX is the community token. Resources, development and evolution follow public rules.",
+    "es": "BETTEX es el token de la comunidad. Los recursos, el desarrollo y la evolución siguen reglas públicas."
+  },
+  "A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados. BETTEX é o token da comunidade; esta documentação apresenta suas regras, desenvolvimento, administração e riscos.": {
+    "en": "BETTEX is an open community building DeFi technology and AI agents for multiple markets. BETTEX is the community token; this documentation presents its rules, development, administration and risks.",
+    "es": "BETTEX es una comunidad abierta que construye tecnología DeFi y agentes de IA para varios mercados. BETTEX es el token de la comunidad; esta documentación presenta sus reglas, desarrollo, administración y riesgos."
+  },
   "BETTEX | Comunidade aberta e token comunitário": {
     "en": "BETTEX | Open community and community token",
     "es": "BETTEX | Comunidad abierta y token comunitario"

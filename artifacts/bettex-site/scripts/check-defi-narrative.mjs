@@ -17,6 +17,7 @@ const paths = [
   'src/lib/documentation-copy.ts', 'src/lib/documentation-materials.json',
   'src/lib/business-plan.json', 'src/lib/growth-strategy.json',
   'src/lib/site-seo.json',
+  'src/App.tsx', 'src/components/WhitepaperSection.tsx',
   'src/pages/pitch.tsx',
 ];
 // Match obsolete assertions, not statements rejecting the corporate model
@@ -58,6 +59,16 @@ assert.match(await read('src/lib/business-plan.json'), /token da comunidade, nã
 const seo = JSON.parse(await read('src/lib/site-seo.json'));
 for (const page of Object.values(seo.pages)) assert.match(page.description, /comunidade/);
 assert.doesNotMatch(seo.pages['/'].title + seo.pages['/'].description, /distribuição de resultados|participação nos resultados/);
+const app = await read('src/App.tsx');
+assert.match(app, /Comunidade aberta\./);
+assert.match(app, /Tecnologia com IA\./);
+assert.doesNotMatch(app, /Chega de apostar|Comece a investir|O token BETTEX conecta você à economia/);
+const whitepaper = await read('src/components/WhitepaperSection.tsx');
+assert.doesNotMatch(whitepaper.match(/whitepaper__hero-lede[^>]*>([^<]+)/)?.[1] ?? '', /distribuição de resultados/);
+assert.match(whitepaper, /esta documentação apresenta suas regras, desenvolvimento, administração e riscos/);
+const social = await read('scripts/restore-home-social.mjs');
+assert.doesNotMatch(social, /Seja o dono do jogo|Participe dos resultados da IA/);
+assert.match(social, /Comunidade aberta\./);
 assert.match(copy, /50% tesouraria, 25% participantes e 25% recompra/);
 assert.match(copy, /24 meses/);
 assert.match(copy, /Quem entra durante uma rodada espera a próxima/);

@@ -1,5 +1,10 @@
 # Canonical decision register
 
+Economic assumptions in historical records are not current public policy.
+The latest community rules in [replit.md](../../replit.md) take precedence,
+including no BETTEX service fees and the current mint/vesting forecasts.
+Records of operational tests do not authorize reactivating them in the visual demo.
+
 Before changing boundaries, sources of truth, data, security or dependencies, register context, decision, alternatives, consequences and migration criteria.
 
 1. [Modular contexts and service evolution](0001-service-boundaries.md).

@@ -1,3 +1,5 @@
+// HISTORICAL SCENARIO: retained for compatibility with legacy evidence and tests.
+// Not the current public economics. See replit.md before any reuse.
 import { documentationTokenomics } from '../../lib/tokenomics.ts';
 
 export interface LaunchAssumptions {

@@ -1,3 +1,12 @@
+# Historical test evidence — not current community policy
+
+This document records an earlier test implementation, not the current launch
+specification. Its service fee and 36-month vesting assumptions are obsolete.
+The current direction in [replit.md](../../replit.md) is no BETTEX service fees,
+24-month vesting forecast from March 2027, and a visual-only demo. Preserve
+historical test receipts and implementation facts; do not use them as permission
+to deploy, charge users, or reactivate financial operations.
+
 # Short Specification — BETTEX test contracts
 
 Research registered on 2026-10-05, **before writing the contracts**.

@@ -1,3 +1,5 @@
+// HISTORICAL, UNMOUNTED SCENARIO: its operator fees are not current BETTEX policy.
+// Do not reintroduce this component without reconciling it with replit.md.
 import { useMemo, useState } from 'react';
 import { getFormatLocale, t, useLocale } from '@/lib/i18n';
 import { DEFAULT_LAUNCH_ASSUMPTIONS as D, ILLUSTRATIVE_TOKEN_PRICE_USD, PUBLIC_TOKEN_ALLOCATION, SERVICE_FEE_USD, SETTLEMENT_UNITS_PER_USD, simulateLaunch, type LaunchAssumptions, type LaunchDay } from './launchSimulation';

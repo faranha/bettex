@@ -20,6 +20,7 @@
     "check:launch": "node --test src/components/pitch/launchSimulation.test.ts",
     "check:responsive": "node scripts/check-responsive.mjs",
     "check:seo": "node scripts/check-seo.mjs",
+    "check:community": "node scripts/check-community-copy.mjs && node scripts/check-defi-narrative.mjs",
     "serve": "node scripts/serve.mjs",
     "check:server": "node --test scripts/serve.test.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit"

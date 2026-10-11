@@ -30,6 +30,15 @@ comunidade. Não afirmar isenção tributária nem que obrigações legais exist
 somente on-chain. Preservar direitos individuais e controles; não inventar
 voto automático ou propriedade resgatável da tesouraria.
 
+Verificar o posicionamento em cada superfície pública e em seus geradores,
+não apenas nos metadados ou na documentação principal.
+
+**Why:** Uma fonte editorial alinhada não garante coerência dos outros textos
+visíveis ou das imagens geradas a partir de fontes independentes.
+
+**How to apply:** Conferir separadamente aberturas, metadados, imagens de
+compartilhamento e derivados; distinguir código histórico de política atual.
+
 A identidade principal é DeFi com IA: trading com IA, um agente que vai atuar em vários mercados. A apresentação deve ser mais curta, com mais foco na proposta futura e na tokenomics, menos dados acessórios e menos estrutura institucional.
 
 **Why:** O criador definiu: “nosso projeto é DeFi, com IA, um agente, é trading com IA, um agente que vai atuar em vários mercados” e pediu “mais promessas, menos dados, menos estrutura - foco maior na tokenomics”.

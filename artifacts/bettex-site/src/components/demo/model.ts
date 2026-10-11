@@ -1,3 +1,5 @@
+// HISTORICAL OPERATIONAL MODEL, not the current visual demo or community policy.
+// Preserve test evidence; reconcile obsolete fees before any operational reuse.
 import type { AgentId, DemoAction, DemoState, Movement, Operation, PublicEvent, Round, Status, Text } from './types';
 
 const tr = (pt: string, en: string, es: string): Text => [pt, en, es];

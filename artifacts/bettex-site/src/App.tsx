@@ -313,15 +313,15 @@ function Home() {
         </div>
         <div className="page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[730px] xl:py-16">
           <div className="entrance relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#5a8bfc]/35 bg-[#2B59FF]/15 px-4 py-2 text-[11px] font-bold text-[#F4F1E8]"><span className="h-2 w-2 rounded-full bg-[#36E0D0]" /> PROJETO DEFI · TRADING COM IA</div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#5a8bfc]/35 bg-[#2B59FF]/15 px-4 py-2 text-[11px] font-bold text-[#F4F1E8]"><span className="h-2 w-2 rounded-full bg-[#36E0D0]" /> COMUNIDADE ABERTA · TECNOLOGIA DEFI</div>
             <h1 className="hero-title mt-7 max-w-[690px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold">
-              <span className="block">Chega de apostar.</span>{' '}
-              <span className="block text-[#F2B632]">Comece a investir.</span>
+              <span className="block">Comunidade aberta.</span>{' '}
+              <span className="block text-[#F2B632]">Tecnologia com IA.</span>
             </h1>
-            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Um projeto DeFi que constrói um agente de trading com IA para vários mercados.</h2>
-            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">O token BETTEX conecta você à economia do projeto e à distribuição de resultados, quando houver lucro elegível.</p>
+            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados.</h2>
+            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">BETTEX é o token da comunidade. Recursos, desenvolvimento e evolução seguem regras públicas.</p>
             <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
-              <span>Entenda o projeto</span>
+              <span>Conheça a comunidade</span>
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/20" aria-hidden="true"><ArrowDown size={22} strokeWidth={2.2} /></span>
             </a>
           </div>

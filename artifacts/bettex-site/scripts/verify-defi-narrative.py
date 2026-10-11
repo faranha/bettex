@@ -51,6 +51,8 @@ corporate = re.compile(
 def check(path, text):
     assert not fiscal.search(text), f"{path}: discarded fiscal narrative"
     assert not corporate.search(text), f"{path}: discarded company formation"
+    implicit = re.compile(r"\u0061\u006c\u0074\u0072\u0075(?:\u00ed|\u0069|\u0069\u0301)?\u0073(?:\u0074|\u006d)", re.I)
+    assert not implicit.search(text), f"{path}: community motivation must remain implicit"
 
 
 app = Path(__file__).resolve().parent.parent

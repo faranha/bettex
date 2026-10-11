@@ -223,7 +223,7 @@ export function WhitepaperSection() {
         <div>
           <p className="whitepaper__eyebrow"><span aria-hidden="true" /> v1 · TOKENOMICS, PARTICIPAÇÃO E RISCO</p>
           <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}{' '}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
-          <p className="whitepaper__hero-lede">A BETTEX é um projeto DeFi que constrói um agente de trading com IA para vários mercados. O token BETTEX organiza a participação econômica e a distribuição de resultados.</p>
+          <p className="whitepaper__hero-lede">A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados. BETTEX é o token da comunidade; esta documentação apresenta suas regras, desenvolvimento, administração e riscos.</p>
         </div>
         <div className="whitepaper__hero-note"><span>DEMO VISUAL · USDC</span><p>O demo atual é visual, com dados ilustrativos e sem dinheiro real. Saldos e movimentações previstos são em USDC; BETTEX é o token de participação.</p><p>A entrada em moeda fiduciária depende de um provedor externo habilitado.</p></div>
       </header>
