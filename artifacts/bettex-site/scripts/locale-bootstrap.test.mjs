@@ -8,13 +8,15 @@ const bootstrap = html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
 assert.ok(bootstrap);
 assert.ok(html.indexOf('<script>') < html.indexOf('<body>'));
 
-function visit(path = '/', preferred = null, { base = '/', blocked = false, failNavigation = false, host = 'bettex.ai' } = {}) {
+function visit(path = '/', preferred = null, { base = '/', blocked = false, failNavigation = false, host = 'bettex.ai', languages = ['pt-BR'], zone = 'America/Sao_Paulo' } = {}) {
   const url = new URL(path, `https://${host}`);
   const document = { documentElement: { lang: 'pt-BR', style: { display: '' } } };
   const redirects = [];
   const paints = [];
   runInNewContext(bootstrap.replaceAll('%BASE_URL%', base), {
     document,
+    navigator: { languages, language: languages[0] },
+    Intl: { DateTimeFormat: () => ({ resolvedOptions: () => ({ timeZone: zone }) }) },
     window: {
       location: {
         hostname: url.hostname, pathname: url.pathname, search: url.search, hash: url.hash,
@@ -44,6 +46,30 @@ test('new visitors, Portuguese preferences and unavailable storage stay in Portu
     assert.equal(result.document.documentElement.style.display, '');
   }
   assert.deepEqual(visit('/', 'en', { blocked: true }).redirects, []);
+});
+
+test('browser language order determines the supported automatic language', () => {
+  assert.deepEqual(visit('/', null, { languages: ['en-US'], zone: 'America/Sao_Paulo' }).redirects, ['/en/']);
+  assert.deepEqual(visit('/pitch?ref=x#token', null, { languages: ['es-MX', 'en-US'] }).redirects, ['/es/pitch?ref=x#token']);
+  assert.deepEqual(visit('/', null, { languages: ['fr-FR', 'pt-PT', 'en'] }).redirects, []);
+  assert.deepEqual(visit('/', null, { languages: ['de-DE', 'es-AR', 'en'] }).redirects, ['/es/']);
+});
+
+test('region is used only when no browser language is supported', () => {
+  for (const zone of ['America/Sao_Paulo', 'Europe/Lisbon', 'America/Manaus']) {
+    assert.deepEqual(visit('/', null, { languages: ['fr'], zone }).redirects, []);
+  }
+  for (const zone of ['America/Mexico_City', 'America/Argentina/Buenos_Aires', 'Europe/Madrid']) {
+    assert.deepEqual(visit('/', null, { languages: ['fr'], zone }).redirects, ['/es/']);
+  }
+  assert.deepEqual(visit('/', null, { languages: ['sr-RS'], zone: 'Europe/Belgrade' }).redirects, ['/en/']);
+});
+
+test('manual preferences and explicit URLs win over automatic detection', () => {
+  assert.deepEqual(visit('/', 'pt', { languages: ['en'] }).redirects, []);
+  assert.deepEqual(visit('/', 'es', { languages: ['pt'] }).redirects, ['/es/']);
+  assert.deepEqual(visit('/en/pitch', 'es', { languages: ['pt'] }).redirects, []);
+  assert.deepEqual(visit('/', 'pt', { blocked: true, languages: ['es'] }).redirects, ['/es/']);
 });
 
 test('saved English and Spanish are applied before visible content, preserving query and anchor', () => {

@@ -139,6 +139,8 @@ function SiteHeader() {
   useEffect(() => {
     if (!menuOpen) return;
     const dismissOutside = (event: PointerEvent) => {
+      // The language dropdown is portalled to body, but belongs to this menu.
+      if (event.target instanceof Element && event.target.closest('[data-testid="language-options"]')) return;
       if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setMenuOpen(false);
     };
     const dismissEscape = (event: KeyboardEvent) => {

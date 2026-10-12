@@ -20,9 +20,23 @@
         document.documentElement.lang = explicit ? explicit[1] : 'pt-BR';
         if (explicit) return;
         let preferred;
-        try { preferred = localStorage.getItem('bettex.locale'); } catch { return; }
-        // Portuguese is the default, including when browser storage is blocked.
-        if (preferred !== 'en' && preferred !== 'es') return;
+        try { preferred = localStorage.getItem('bettex.locale'); } catch { /* Detection also works without storage. */ }
+        // A manual preference wins. Otherwise respect browser language order,
+        // then use the time zone as a privacy-preserving regional fallback.
+        if (!['pt', 'en', 'es'].includes(preferred)) {
+          const languages = typeof navigator === 'undefined' ? [] : navigator.languages?.length
+            ? navigator.languages : [navigator.language];
+          preferred = languages.map(language => String(language).toLowerCase().split(/[-_]/)[0])
+            .find(language => ['pt', 'en', 'es'].includes(language));
+          if (!preferred) {
+            let zone = '';
+            try { zone = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch { /* English fallback below. */ }
+            const portuguese = /^(?:America\/(?:Sao_Paulo|Bahia|Fortaleza|Recife|Araguaina|Maceio|Belem|Santarem|Manaus|Cuiaba|Campo_Grande|Porto_Velho|Boa_Vista|Rio_Branco|Noronha)|Brazil\/|Europe\/Lisbon|Atlantic\/(?:Azores|Madeira)|Africa\/(?:Luanda|Maputo)|Asia\/Dili)/;
+            const spanish = /^(?:Europe\/Madrid|Atlantic\/Canary|Africa\/Ceuta|America\/(?:Argentina\/|Buenos_Aires|Cordoba|Rosario|Mendoza|Catamarca|Jujuy|Mexico_City|Cancun|Merida|Monterrey|Matamoros|Chihuahua|Ciudad_Juarez|Ojinaga|Hermosillo|Mazatlan|Bahia_Banderas|Tijuana|Ensenada|Santa_Isabel|Bogota|Lima|Santiago|Punta_Arenas|Caracas|La_Paz|Guayaquil|Asuncion|Montevideo|Havana|Santo_Domingo|Puerto_Rico|Guatemala|Costa_Rica|El_Salvador|Managua|Tegucigalpa|Panama)|Chile\/|Mexico\/|Pacific\/(?:Galapagos|Easter))/;
+            preferred = portuguese.test(zone) ? 'pt' : spanish.test(zone) ? 'es' : 'en';
+          }
+        }
+        if (preferred === 'pt') return;
         const page = canonical.replace(/^\/demo(?=\/|$)/, '/app');
         const target = page === '/documentation' || page === '/documentacion' ? '/documentacao' :
           ['/app/simulacao', '/app/simulation', '/app/simulacion'].includes(page) ? '/app' : page;
