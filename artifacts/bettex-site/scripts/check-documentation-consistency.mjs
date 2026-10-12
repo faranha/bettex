@@ -26,8 +26,13 @@ assert.doesNotMatch(read('src/components/WhitepaperChapters.tsx'), /a participa�
 assert.doesNotMatch(read('src/components/DistributionSettlement.tsx'), /tarifa de saque USDC posterior/);
 assert.doesNotMatch(read('src/components/DistributionSettlement.tsx'), /contribuição operacional|alternativa em avaliação|não são restaurados por nova entrada ou confirmação tardia/);
 for (const file of ['src/components/SaleChannels.tsx', 'src/components/architecture/BettexArchitecture.tsx']) {
-  assert.doesNotMatch(read(file), /contribuição operacional/);
+  assert.doesNotMatch(read(file), /contribuição operacional|contribuição por serviços/);
 }
+assert.doesNotMatch(read('src/components/WhitepaperChapters.tsx'), /contribuição por serviços|Todo BETTEX disponível na carteira oficial (?:passa a participar|participa)/);
+assert.doesNotMatch(read('src/components/TokenHolderRights.tsx'), /Em eventual encerramento, os créditos/);
+assert.doesNotMatch(read('src/components/VestingSchedule.tsx'), /O vesting começa em março de 2027/);
+assert.doesNotMatch(read('src/lib/documentation-copy.ts'), /A oferta total é de 1 bilhão|Todo BETTEX disponível na carteira oficial participa/);
+assert.match(read('src/lib/documentation-copy.ts'), /Teto de emissão: 1 bilhão de BETTEX/);
 assert.doesNotMatch(read('src/components/EntityMultisig.tsx'), /societário|Dividendos/);
 assert.doesNotMatch(read('src/components/FundSecurity.tsx'), /preservar créditos/);
 assert.doesNotMatch(JSON.stringify(materials), /O preço pertence ao vendedor/);
@@ -45,6 +50,7 @@ try {
   for (const language of ['pt', 'en', 'es']) {
     setLocale(language);
     const html = chapters.map((_, index) => renderToStaticMarkup(createElement(ChapterContent, { index }))).join('');
+    assert.doesNotMatch(html, /contribuição por serviços|service contribution|contribución por servicios/i, `${language}: discarded operating-funding proposal`);
     for (const id of [...ids, 'documentacao-governanca-detalhe', 'documentacao-entidade-multisig', 'documentacao-versao-politica']) {
       assert(html.includes(`id="${id}"`), `${language}: unreachable ${id}`);
     }

@@ -10,7 +10,7 @@ export function DocumentationGovernance() {
     <DocImage wide src="app/resultados-soft.webp" alt="Balança, livro-razão e calculadora sobre fundo verde." caption="Registros separados e conciliados para tesouraria, caixa operacional e recompra." />
     <DocTerms id="schematic-boundaries" label="Fronteiras entre contas" items={[
       ['Comunidade em vesting', <Dot items={['Preço dos tokens', 'Em USDC', 'Tesouraria', '100% do preço']} />],
-      ['Rede', <Dot items={['Custos externos de rede', 'Conforme a operação', 'Sem contribuição de serviço definida']} />],
+      ['Rede', <Dot items={['Custos externos de rede', 'Conforme a operação']} />],
       ['Resultados', <Dot items={['Parcela do staking', 'Em USDC', 'Carteira USDC do titular', 'Após conciliação']} />],
       ['Recompra e queima', <Dot items={['25% do resultado elegível', 'Em USDC', 'Carteira exclusiva', 'Compra autorizada de BETTEX', 'Burn permanente', 'Destruição irreversível dos tokens adquiridos']} />],
     ]} />

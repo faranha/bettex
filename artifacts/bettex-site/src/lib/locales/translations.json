@@ -1,4 +1,40 @@
 {
+  "Os 10% do mint inicial ficam separados: não são uma parcela mensal nem antecipam tokens de fundador/equipe ou investidores. O lançamento do sistema está previsto para essa etapa, sujeito à adequação legal e jurídica.": {
+    "en": "The initial mint's 10% remains separate: it is not a monthly installment and does not advance founder/team or investor tokens. The system launch is planned for this stage, subject to legal compliance.",
+    "es": "El 10% del mint inicial queda separado: no es una cuota mensual ni anticipa tokens del fundador/equipo o de los inversores. El lanzamiento del sistema está previsto para esta etapa, sujeto a la adecuación legal y jurídica."
+  },
+  "Teto de emissão: 1 bilhão de BETTEX.": {
+    "en": "Maximum issuance: 1 billion BETTEX.",
+    "es": "Emisión máxima: 1.000 millones de BETTEX."
+  },
+  "A participação é automática, sem ativação nem depósito. Tokens ainda bloqueados no vesting e o estoque de venda não participam.": {
+    "en": "Participation is automatic, without activation or deposit. Tokens still locked in vesting and sales inventory do not participate.",
+    "es": "La participación es automática, sin activación ni depósito. Los tokens aún bloqueados en vesting y el inventario de venta no participan."
+  },
+  "A piscina é fechada e exige acesso ao aplicativo, mas não uma sessão continuamente aberta. Exportar chaves preserva autocustódia, não torna a piscina independente. Tokens não liberados e estoque institucional de venda não participam.": {
+    "en": "The pool is closed and requires access to the app, but not a continuously open session. Exporting keys preserves self-custody, it does not make the pool independent. Unreleased tokens and institutional sales stock do not participate.",
+    "es": "La piscina es cerrada y exige acceso a la aplicación, pero no una sesión continuamente abierta. Exportar llaves preserva la autocustodia, no hace la piscina independiente. Tokens no liberados y stock institucional de venta no participan."
+  },
+  "é o token de participação no staking. Os tokens pertencem ao titular; enviá-los a outra carteira não significa vendê-los ou sacar USDC.": {
+    "en": "is the participation token for staking. The tokens belong to the holder; sending them to another wallet does not mean selling them or withdrawing USDC.",
+    "es": "es el token de participación en el staking. Los tokens pertenecen al titular; enviarlos a otra cartera no significa venderlos ni retirar USDC."
+  },
+  "é o ativo dos saldos financeiros, movimentações e créditos de distribuição. Os ativos têm registros separados.": {
+    "en": "is the asset for financial balances, movements and distribution credits. Assets have separate records.",
+    "es": "es el activo de los saldos financieros, movimientos y créditos de distribución. Los activos tienen registros separados."
+  },
+  "Este fluxo não representa revenda entre titulares. Numa revenda, o pagamento vai ao vendedor, sem nova captação para a tesouraria.": {
+    "en": "This flow does not represent resale between holders. In a resale, payment goes to the seller, without new treasury funding.",
+    "es": "Este flujo no representa reventa entre titulares. En una reventa, el pago va al vendedor, sin nueva captación para la tesorería."
+  },
+  "A compra no aplicativo é liquidada em USDC após confirmação conciliada. O preço destinado à tesouraria e a quantidade de BETTEX creditada são registrados juntos e uma única vez. A aquisição não é investimento dos agentes. A compra credita a carteira gerada com a conta, não um endereço externo escolhido na hora; a venda direta a corretoras tem fluxo próprio. O recibo identifica preço, cotação pertinente, custos externos, tokens adquiridos, destinos e conta.": {
+    "en": "The in-app purchase settles in USDC after reconciled confirmation. The price allocated to the treasury and the BETTEX credited are recorded together, only once. The purchase is not an investment by the agents. It credits the wallet generated with the account, not an external address selected at purchase; direct sales to exchanges have a separate flow. The receipt identifies the price, relevant exchange rate, external costs, tokens acquired, destinations and account.",
+    "es": "La compra en la aplicación se liquida en USDC tras una confirmación conciliada. El precio destinado a la tesorería y los BETTEX acreditados se registran juntos, una sola vez. La adquisición no es una inversión de los agentes. La compra acredita la cartera generada con la cuenta, no una dirección externa elegida al comprar; la venta directa a casas de cambio tiene su propio flujo. El recibo identifica precio, cotización pertinente, costes externos, tokens adquiridos, destinos y cuenta."
+  },
+  "O token não dá propriedade proporcional da tesouraria nem voto automático sobre sua administração. A direção DeFi não elimina riscos nem responsabilidades aplicáveis.": {
+    "en": "The token does not grant proportional ownership of the treasury nor automatic voting on its administration. DeFi direction does not eliminate applicable risks or responsibilities.",
+    "es": "El token no otorga propiedad proporcional de la tesorería ni voto automático sobre su administración. La dirección DeFi no elimina riesgos ni responsabilidades aplicables."
+  },
   "Confere preço, quantidade e custos externos em USDC. Valores e destinos precedem a autorização.": {
     "en": "Checks price, quantity and external costs in USDC. Amounts and destinations precede authorization.",
     "es": "Comprueba precio, cantidad y costes externos en USDC. Los importes y destinos preceden a la autorización."

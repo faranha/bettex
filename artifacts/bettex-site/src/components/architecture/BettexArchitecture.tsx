@@ -159,7 +159,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
 
         {(!figure || figure === '2') && <Figure id="figure-bettex-deposit" num="2" title={architectureFigureTitles['2']} lead="Neste desenho, o vendedor é o projeto: BETTEX vai para a Carteira BETTEX; 100% do preço dos tokens da comunidade pago em USDC vai à tesouraria.">
           <Steps steps={fig2} label="Compra da venda pública: USDC disponível, cotação e confirmação do swap, entrega de BETTEX e envio de USDC à tesouraria" />
-          <p className="ba-fig__foot">Este fluxo não representa revenda entre titulares. Numa revenda, o pagamento vai ao vendedor, sem nova captação para a tesouraria. Uma contribuição por serviços é apenas uma alternativa em avaliação, sem cobrança definida.</p>
+          <p className="ba-fig__foot">Este fluxo não representa revenda entre titulares. Numa revenda, o pagamento vai ao vendedor, sem nova captação para a tesouraria.</p>
           <div className="ba-flow ba-flow--treasury">
             <p className="ba-flow__label">Tesouraria BETTEX · reservas do valor recebido</p>
             <div className="ba-entry ba-reserves" data-testid="node-bettex-reserves">
