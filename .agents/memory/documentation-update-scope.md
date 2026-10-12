@@ -27,6 +27,12 @@ Na revisão de inconsistências, conferir os pedidos anteriores e corrigir os re
 
 **How to apply:** Verificar também referências técnicas abertas, links de downloads, legendas e explicações do demo. Não limitar a busca a frases específicas de constituição: conferir quem é o sujeito do texto, a fase do produto e a coerência entre materiais.
 
+Não exibir opções de download na documentação.
+
+**Why:** O criador pediu: “remova as opcoes de download por favor na parte da documentacao”.
+
+**How to apply:** Não reintroduzir o bloco ou seus botões em atualizações da documentação. A remoção das opções não autoriza apagar arquivos existentes.
+
 Na reorganização da venda pública anterior ao vesting, o criador também pediu atualizar o roadmap, acrescentando essa seção da homepage ao escopo então vigente.
 
 **Why:** Pediu explicitamente: “no roadmap tem que ser atualizado também que nós vamos fazer a listagem pública pra captação de fundos, criar awareness e depois que vai entrar no ar o alfa”.

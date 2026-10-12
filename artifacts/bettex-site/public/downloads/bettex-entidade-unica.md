@@ -74,7 +74,7 @@ Peso = saldo elegível na abertura × duração. Saídas zeram o peso e cancelam
 
 Exemplo: A inicia com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro elegível de 1.000 USDC e condições cumpridas, a parcela de staking de 250 USDC paga 250 a A e zero a B. Na rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.
 
-Pagamentos não acumulam. Saídas parciais zeram direitos. Frações não executáveis voltam à tesouraria, sem crédito futuro.
+Cada rodada paga ou não, sem acumular, reabrir ou complementar. Qualquer saída BETTEX, inclusive parcial, zera o peso e cancela apenas direitos ainda não pagos. Frações não executáveis retornam à tesouraria, sem crédito futuro. USDC recebido continua pessoal.
 
 Crédito depende de elegibilidade, autorização e conciliação. Encerramento de rodada não guarda créditos futuros ou presunções de transferência.
 
