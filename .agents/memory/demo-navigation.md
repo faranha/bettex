@@ -58,6 +58,12 @@ não somente o submenu do Painel.
 Tesouraria e Perfil, com rolagem horizontal em telas estreitas, sem cobrir
 conteúdo nem compensar a altura das barras duas vezes em links profundos.
 
+Ao trocar de página ou selecionar uma aba que substitui o conteúdo no demo, retornar ao topo. Selecionar novamente a aba atual também deve permitir voltar ao início. Atalhos internos do Painel continuam levando ao início da seção escolhida, respeitando as barras fixas.
+
+**Why:** O criador relatou que a rolagem da página anterior era mantida no celular e podia mostrar uma tela vazia ao abrir conteúdo mais curto.
+
+**How to apply:** Não preservar a distância percorrida entre conteúdos diferentes. Não confundir troca de abas com navegação por âncoras nem desfazer destinos de links profundos.
+
 History contains statements and records without repeating balance cards or the complete wallet block.
 
 **Why:** The creator explicitly rejected those duplicated cards in History. Moving History into the main menu does not reverse that content decision.
