@@ -3,6 +3,12 @@ name: Escopo do rodapé
 description: Rodapé público compartilhado entre homepage, Pitch e Documentação, com a mesma imagem e convite à comunidade.
 ---
 
+No link do X no rodapé, usar “Siga a Bettex no X”. Comunidade é apenas no Telegram; não escrever essa observação na interface.
+
+**Why:** O criador pediu essa redação e esclareceu que a comunidade é apenas no Telegram.
+
+**How to apply:** Manter o perfil da BETTEX no X como destino e o convite da comunidade no Telegram. Localizar a chamada do X em EN/ES sem chamá-lo de comunidade; preservar o restante do rodapé.
+
 Pitch e Documentação devem ter o mesmo rodapé e a mesma imagem de rodapé da página inicial.
 
 **Why:** O criador pediu: “o pitch tem que ter o mesmo rodapeh e imagem de rodapeh da pagina inicial, da mesma forma a documentacao”.

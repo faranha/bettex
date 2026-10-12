@@ -20,9 +20,7 @@ const notes: Record<ArchitectureFigureNumber, IntegrationNote[]> = {
   '2': [
     { brand: 'arbitrum', placement: 'Venda pública · Compra e liquidação', description: 'Na rede escolhida, transferências de BETTEX e USDC compatível exigem confirmação da compra e conciliação do recebimento pela tesouraria. Revendas entre titulares têm o vendedor como destinatário do pagamento.' },
   ],
-  '3': [
-    { brand: 'arbitrum', placement: 'Etapa 1 · Saldo BETTEX da carteira', description: 'O backend acompanha os tokens confirmados na rede. A elegibilidade e a permanência no staking são verificadas pelo aplicativo.' },
-  ],
+  '3': [],
   '4': [
     { brand: 'arbitrum', placement: 'Etapas 2 e 3 · Contrato e autorizações', description: 'Alternativas para os contratos BETTEX, com implementação e validação específicas por rede. Os contratos aplicarão as regras de acesso ao capital; a análise da IA é uma camada separada.' },
   ],
@@ -47,6 +45,7 @@ const notes: Record<ArchitectureFigureNumber, IntegrationNote[]> = {
 };
 
 export function ArchitectureIntegrations({ figure }: { figure: ArchitectureFigureNumber }) {
+  if (!notes[figure].length) return null;
   return (
     <footer className="ba-integrations" data-testid={`figure-${figure}-integrations`} aria-label={`Onde entram as tecnologias no desenho ${figure}`}>
       <p className="ba-integrations__title">Onde entram neste desenho</p>

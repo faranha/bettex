@@ -18,7 +18,10 @@ export function BrazilEmploymentCharts() {
   const millions = (value: number) => number(value / 1_000_000, 3);
   const flows = [{ label: t('Entradas'), jobs: data.august.hires }, { label: t('Saídas'), jobs: data.august.separations }];
   return <section id="empregos-brasil" className="us-jobs" aria-labelledby="br-jobs-title">
-    <span className="mono fu-tag">Brasil · Novo Caged · janeiro a agosto</span>
+    <span className="mono fu-tag us-jobs-country">
+      <img className="us-jobs-country-flag" src={`${import.meta.env.BASE_URL}flags/br.svg`} width={24} height={16} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      <span>Brasil · Novo Caged · janeiro a agosto</span>
+    </span>
     <h3 id="br-jobs-title" className="display">02 / Brasil · O motor de novas vagas desacelera</h3>
     <p className="us-jobs-intro">A criação líquida de empregos formais caiu pelo segundo ano consecutivo no acumulado de janeiro a agosto. O saldo de 2026 ficou 25,2% abaixo de 2025 e cerca de 35% abaixo de 2024. O país ainda gera novos vínculos, mas o ritmo recente é de queda.</p>
     <div className="us-jobs-totals">

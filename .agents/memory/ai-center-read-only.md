@@ -3,6 +3,12 @@ name: Central da IA somente consulta
 description: Papel do usuário na Central e ausência de edição ou operação manual.
 ---
 
+O papel do usuário no quadro comparativo do Pitch deve ser: “Participar pelo staking e acompanhar a operação, discutindo na comunidade cada estratégia.”
+
+**Why:** O criador substituiu expressamente a formulação “sem escolher cada estratégia” pela participação na discussão comunitária.
+
+**How to apply:** Preservar a discussão comunitária nas apresentações do papel do usuário e nas traduções. Essa discussão não autoriza edição de mandatos nem operação manual na Central.
+
 O usuário só acompanha os trades na Central da IA; ele não edita mandatos
 nem salva configurações.
 

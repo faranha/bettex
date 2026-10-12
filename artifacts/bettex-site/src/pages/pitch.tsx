@@ -143,14 +143,13 @@ export function PitchPage() {
       </div>
       </div>
       </div>
-      <PitchObservations><p>Exemplo ilustrativo: 10.000 USDC de lucro elegível destinam 5.000 à tesouraria, 2.500 ao pool global dos stakers e 2.500 à carteira de recompra. Os 25% não são uma taxa de retorno individual. Sem peso elegível ou condições de reserva e liquidez, não há split: 100% fica retido. Rodadas encerradas não acumulam direitos a lucros futuros.</p><p>A administração autoriza as recompras, preservando a multisig; não são compras diárias automáticas. O saldo exclusivo não utilizado acumula e não financia estratégias ou despesas. Todos os tokens adquiridos nas recompras são queimados permanentemente. O token não é ação, não dá propriedade do patrimônio e não garante resgate.</p></PitchObservations>
     </Sec>
 
     <Sec id="token" kicker="Oferta, vesting e direitos do token" dark title={<>1 bilhão de BETTEX. <span className="text-[#F2B632]">Quatro destinações.</span></>}>
       <PitchTokenCharts />
       <TokenValueMechanisms />
       <div className="mt-8 grid gap-4 md:grid-cols-2">
-        <Card dark label="Mint público inicial" title="10% · 100 milhões">Mint aberto a qualquer pessoa, a preço fixo, para financiar o projeto. Execução própria ou por launchpad parceiro, sujeita à adequação legal da oferta.</Card>
+        <Card dark label="Mint público inicial" title="10% · 100 milhões">Mint aberto a qualquer pessoa, a preço fixo, para financiar o projeto.</Card>
         <Card dark label="Comunidade" title="55% · 550 milhões">Destinação posterior em vesting de 24 meses, separada dos 10% do mint inicial.</Card>
         <Card dark label="Fundador e equipe" title="20% · 200 milhões">Livre destinação após a liberação, sem antecipação do vesting.</Card>
         <Card dark label="Investidores" title="15% · 150 milhões">Tokens para investidores, sujeitos ao vesting de 24 meses. Aportes e liberação de tokens seguem condições distintas.</Card>

@@ -3,6 +3,18 @@ name: Fundação BETTEX
 description: Sem entidade formal; administração e domínio dos contratos permanecem, com evolução para gestão integral por IA.
 ---
 
+BETTEX é uma comunidade focada na construção do seu agente próprio. “Aberta” é redundante; não apresentar a comunidade como criadora de tecnologia DeFi. A documentação reflete a visão dos fundadores e os anseios da própria comunidade.
+
+**Why:** O criador corrigiu expressamente a abertura da documentação e a descrição limitada a tokenomics, participação e risco.
+
+**How to apply:** Na documentação, apresentar o agente próprio e o escopo técnico, regras e visão comunitária. Isso não elimina os agentes especializados nem a direção DeFi → DeFAI e não autoriza mudanças na homepage ou no Pitch canônicos.
+
+A BETTEX hoje é DeFi e IA. Com o tempo, toda a administração será substituída por IA e a BETTEX será totalmente DeFAI; esta visão é fundamental. Estão previstos agentes de governança, risco e tesouraria, além dos agentes de trading.
+
+**Why:** O criador afirmou “teremos agentes de governança, risco, etc, não apenas de trading, inclusive de tesouraria” e reiterou: “Com o tempo, a administração toda será substituída por IA e seremos totalmente DeFAI - hoje somos DeFI e IA” e “essa visão é fundamental”.
+
+**How to apply:** Distinguir explicitamente o presente DeFi + IA do destino totalmente DeFAI. Explicar a substituição futura de toda a administração, não só algumas funções, na visão, arquitetura, administração, tesouraria e liberação técnico-legal. Preservar controles e não presumir novos poderes, custódia, licença ou autonomia já entregue. Não alterar homepage ou Pitch canônicos sem autorização expressa.
+
 O criador retirou a empresa/fundação formal como estrutura central do projeto. A visão cripto/DEX não significa ausência de administração ou renúncia ao domínio dos contratos.
 
 **Why:** Após pedir uma visão full DEX, o criador corrigiu expressamente a interpretação: “uma coisa é que vamos ter dominio sobre os contratos, mas ter uma instituicao formal fiscica, regulamentada, pagando impostos, isso eh o que estamos dizendo que nao vamos ter”.

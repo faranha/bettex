@@ -11,7 +11,7 @@ export const economicComparisonRows: EconomicComparisonRow[] = [
     criterion: 'Papel do usuário',
     bet: 'Escolher e acompanhar cada aposta.',
     priceToken: 'Decidir quando comprar, manter ou vender o token.',
-    bettex: 'Participar pelo staking e acompanhar a operação, sem escolher cada estratégia.',
+    bettex: 'Participar pelo staking e acompanhar a operação, discutindo na comunidade cada estratégia.',
   },
   {
     criterion: 'Direito econômico',

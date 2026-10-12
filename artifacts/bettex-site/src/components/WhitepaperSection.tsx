@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react
 import { createPortal, flushSync } from 'react-dom';
 import { ChapterContent, chapters } from './WhitepaperChapters';
 import { ChapterVisibility } from './ChapterVisibility';
+import { DocumentationGovernanceMarquee } from './DocumentationGovernanceMarquee';
 import { t, useLocale } from '@/lib/i18n';
 import { resolveDocumentationId } from '@/lib/documentation-aliases';
 import { collectOutline, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
@@ -219,11 +220,12 @@ export function WhitepaperSection() {
     {bar}
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
       <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO · v1</span><span>UM AGENTE · {total} CAPÍTULOS</span></div>
+      <DocumentationGovernanceMarquee />
       <header className="whitepaper__hero page-wrap">
         <div>
-          <p className="whitepaper__eyebrow"><span aria-hidden="true" /> v1 · TOKENOMICS, PARTICIPAÇÃO E RISCO</p>
+          <p className="whitepaper__eyebrow"><span aria-hidden="true" /> v1 · VISÃO, ARQUITETURA E REGRAS</p>
           <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}{' '}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
-          <p className="whitepaper__hero-lede">A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados. BETTEX é o token da comunidade; esta documentação apresenta suas regras, desenvolvimento, administração e riscos.</p>
+          <p className="whitepaper__hero-lede">BETTEX é uma comunidade dedicada à construção do próprio agente de IA. Esta documentação reflete a visão dos fundadores e os anseios da comunidade, incluindo arquitetura técnica, regras, tokenomics e riscos.</p>
         </div>
         <div className="whitepaper__hero-note"><span>MOEDAS E PARTICIPAÇÃO</span><p>Saldos e movimentações previstos são em USDC; BETTEX é o token de participação.</p><p>A entrada em moeda fiduciária depende de um provedor externo habilitado.</p></div>
       </header>

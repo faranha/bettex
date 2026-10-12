@@ -3,6 +3,12 @@ name: Regras de perdas e elegibilidade ao lucro
 description: Correções explícitas do criador sobre perdas, lucro anterior e peso após saída.
 ---
 
+O desenho de participação pelo staking no Pitch deve mostrar o ciclo de 24 horas de forma clara e visível.
+
+**Why:** O criador mostrou o cartão de staking e pediu “adicione um ciclo de 24h claro, visível no desenho”.
+
+**How to apply:** Preservar a representação visual da duração e das etapas da rodada no cartão, não apenas uma menção no texto. Não transformar o ciclo em promessa de pagamento.
+
 Entradas durante uma rodada não recebem NENHUM lucro dela, nem anterior nem posterior à entrada: têm que esperar a próxima rodada. No cartão de rendimentos, mostrar quanto do saldo da carteira participa da rodada atual e quanto ficou fora.
 
 **Why:** O criador explicou: “posso depositar durante o ciclo e aquele deposito nao vai contar” e pediu tornar essa diferença clara no espaço disponível do cartão. Reiterou expressamente, na revisão da documentação e do Pitch: “NENHUM, TEM QUE ESPERAR A PROXIMA”.

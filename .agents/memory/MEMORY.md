@@ -70,7 +70,7 @@
 - [Consistência dos heros](homepage-hero-accent.md) — Mercados: barra só no hero, título/subtítulo 2 + 2 linhas; Nova Economia mantém a exceção de barra integral.
 - [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
 - [Apresentação do fundador](documentation-founder-presentation.md) — identidade reservada; biografia anônima, sem retrato, redes pessoais ou contagens de seguidores.
-- [Artes da documentação](documentation-art-style.md) — menos esquemas, mais texto e imagens; preservar desenhos essenciais no padrão visual anterior.
+- [Artes e leitura da documentação](documentation-art-style.md) — bullets para itens e regras; menos esquemas, mais texto e imagens; preservar os desenhos essenciais.
 - [Responsive text verification](responsive-text-verification.md) — text-range bounds include font leading; distinguish compact heading lines from actual collisions.
 - [Observações editoriais](document-observations.md) — notas agrupadas no fim de cada bloco, sem repetição ou interrupção do conteúdo principal.
 - [Horário do Brasil](brazil-time-display.md) — horários em São Paulo; demo de 16h às 16h em 24 horas reais, sem alterar registros ou contratos nativos.
@@ -89,6 +89,7 @@
 - [Público da entrada do app](app-entry-audience.md) — homem preservado, um único esporte discreto ao fundo; Esportes/Value Betting é o protagonista do próximo lançamento.
 - [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.
 - [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.
+- [Development-banner navigation checks](development-banner-navigation-testing.md) — dismiss the injected preview banner before testing sticky controls; it can create false menu failures.
 - [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.
 - [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.
 - [Escopo da atualização documental](documentation-update-scope.md) — homepage e Pitch aprovados e prontos; não editar essas páginas, inclusive por mudanças compartilhadas.

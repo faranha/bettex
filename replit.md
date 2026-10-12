@@ -1,5 +1,7 @@
 # BETTEX
 
+Current editorial work is limited to documentation. The current homepage and Pitch are finalized and canonical. Their protection below overrides all earlier editorial permissions, including shared-roadmap exceptions.
+
 ## DeFi, AI trading and editorial scope — current instruction
 
 Na documentação, é proibido falar em DEMO fora do marco do roadmap que apresenta o demo e seu link. A documentação apresenta a visão final da BETTEX, não o demo. Aplicar a todos os capítulos, referências técnicas, abertura, idiomas e materiais derivados; preservar regras, riscos e a distinção entre visão e capacidades já comprovadas. Esta instrução não altera o aplicativo visual.
@@ -44,12 +46,12 @@ Older clauses below referring to mandatory entity/company/foundation formation, 
 - In each update, distinguish between implemented, verified with real data, prepared/awaiting configuration, and blocked/awaiting participation; inform what works, what is missing, and what needs the creator. Do not declare an integration concluded that is prepared, simulated, or partially verified; do not hide dependencies.
 - Preserve dependencies between stages and mark as resolved only after verification. Existing simulations do not replace or prove real integration.
 
-## Canonical rule: preserve the homepage
+## Canonical public pages: homepage and Pitch
 
-- Do not touch the homepage content: the content itself is perfect and approved.
-- The allowed scope is only to add the submenu with anchors for existing sections, without changing the content.
-- Apply this rule to upcoming tasks. It replaces previous authorizations to change the homepage content.
-- Expressly authorized exception: update the Roadmap shared with the Pitch according to the current sequence below, without changing other homepage sections.
+- The current homepage and Pitch are completed, approved and canonical in PT/EN/ES.
+- Do not change their content, layout, menus, anchors, language behavior, SEO or artwork. This also applies to effects from shared components, translations, styles, data and assets while editing documentation.
+- Upcoming editorial work is documentation-only. This lock supersedes previous homepage/Pitch permissions, including anchor-menu additions and shared-roadmap exceptions. Further changes require explicit user authorization.
+- Preserve their rendered text and structure against `artifacts/bettex-site/scripts/fixtures/documentation-synthesis-baseline.json`. The canonical section order is recorded there. Verify public navigation with `node artifacts/bettex-site/scripts/check-public-navigation.mjs` when shared navigation changes could affect these pages.
 
 ## Current Roadmap: ALFA seed, funding, BETA
 

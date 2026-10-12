@@ -19,7 +19,10 @@ export function USVacancyChart() {
   const axis = { stroke: '#c5d2f1', fontSize: 11, tickLine: false, axisLine: false };
 
   return <section id="vagas-eua" className="us-jobs" aria-labelledby="us-vacancies-title">
-    <span className="mono fu-tag">EUA · vagas disponíveis, não empregos ocupados</span>
+    <span className="mono fu-tag us-jobs-country">
+      <img className="us-jobs-country-flag" src={`${import.meta.env.BASE_URL}flags/us.svg`} width={24} height={16} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      <span>EUA · vagas disponíveis, não empregos ocupados</span>
+    </span>
     <h3 id="us-vacancies-title" className="display">As vagas abertas caíram do pico de 2022.</h3>
     <div className="us-jobs-totals">
       <div><span>Pico · março de 2022</span><strong>{millions(peak.vacancies)}</strong><span>milhões de vagas abertas</span></div>

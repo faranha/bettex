@@ -1,4 +1,6 @@
 .us-jobs { margin: 34px 0; padding: clamp(20px, 4vw, 40px); border: 1px solid #61a9bd66; background: #0b1128; color: #f4f1e8; }
+.us-jobs .us-jobs-country { display: flex; align-items: center; gap: 8px; }
+.us-jobs-country-flag { display: block; flex: none; width: 24px; height: 16px; object-fit: cover; border-radius: 2px; }
 .fu--two .us-jobs h3, .fu--two .us-jobs h4 { color: #f4f1e8; }
 .fu--two .us-jobs .fu-tag { color: #8ccede; }
 .us-jobs > h3 { margin-top: 14px; font-size: clamp(1.6rem, 3.2vw, 2.7rem); font-weight: 800; line-height: 1.1; letter-spacing: -.035em; }

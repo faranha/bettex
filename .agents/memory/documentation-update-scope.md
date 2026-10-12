@@ -5,9 +5,9 @@ description: Homepage e Pitch aprovados e prontos; não editar essas páginas.
 
 A homepage e o Pitch estão aprovados e prontos. Não editar a homepage nem o Pitch.
 
-**Why:** O criador pediu lembrar: “nao edite a home page nem o pitch eles estao aprovados e prontos”.
+**Why:** O criador pediu lembrar: “nao edite a home page nem o pitch eles estao aprovados e prontos” e reiterou: “volte a salvar como canonicos ambos, finalizamos as alteracoes aqui, nao mexe em mais nada a partir de agora pois vamos alterar a documentacao”.
 
-**How to apply:** Preservar ambas as páginas, inclusive ao alterar componentes, textos, traduções ou dados compartilhados. Esta restrição atual substitui autorizações anteriores de alteração dessas páginas.
+**How to apply:** Tratar as versões atuais de ambas as páginas como canônicas, incluindo menus e âncoras em PT/EN/ES. O próximo escopo é a documentação. Preservar conteúdo, aparência, navegação e comportamento dessas páginas, inclusive ao alterar componentes, textos, traduções, estilos, imagens ou dados compartilhados. Esta restrição atual substitui autorizações anteriores, inclusive exceções para o roadmap. Novas mudanças exigem autorização expressa.
 
 Ao reduzir o volume da documentação, sintetizar a redação sem eliminar tópicos, regras ou conteúdo.
 

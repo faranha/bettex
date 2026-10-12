@@ -1,13 +1,40 @@
 ---
 name: Hero e tese do fundador
-description: A tese sobre substituição de empregos deve ser uma seção separada, não substituir o hero.
+description: Limites do hero, textos aprovados e remoção da faixa Nova Economia da homepage.
 ---
 
 O criador corrigiu: “Eu nunca lhe disse pra modificar o hero com a tese do fundador”. Determinou: “A tese do fundador sobre os empregos deve ser uma seção nova e não um refazimento do hero”.
 
 **Why:** A alteração do hero para apresentar essa tese não foi autorizada.
 
-**How to apply:** Manter a tese numa seção própria e não substituir o conteúdo ou layout do hero ao trabalhar nesse tema. Preservar as demais alterações do site numa restauração específica do hero.
+**How to apply:** Não substituir o conteúdo ou layout do hero ao trabalhar nessa tese. A faixa Nova Economia da homepage foi posteriormente removida a pedido do criador; não recriá-la por causa dessa orientação anterior.
+
+Não exibir a faixa Nova Economia da homepage, com o texto “A IA vai substituir os trabalhadores” e o convite para proteger a família.
+
+**Why:** O criador mostrou essa seção e pediu: “esta section pode sumir”.
+
+**How to apply:** Remover também sua opção na navegação da homepage. Não reintroduzir a faixa; preservar o restante da homepage e as pesquisas do Pitch e da documentação.
+
+Os dois textos de apoio do hero foram definidos literalmente pelo criador:
+
+- “Um agente de IA que opera em mercados de iGaming, esportes e trading por você”
+- “O token BETTEX conecta você à economia do projeto e você não perde seus tokens mesmo em dias ruins”
+
+**Why:** O criador mostrou o hero e determinou: “O TEXTO PRECISA SER ESSE”.
+
+**How to apply:** Preservar estas frases no português, com traduções equivalentes nos outros idiomas. Essa autorização específica não permite reformular o título, o visual ou outras áreas da homepage e do Pitch.
+
+A chamada para a comunidade no bloco sobre apostas deve dizer “USE IA CONTRA O SISTEMA, ENTRE NA NOSSA COMUNIDADE AGORA”.
+
+**Why:** O criador mostrou o antigo texto “CONHEÇA A IA. PARTICIPE DA COMUNIDADE.” e forneceu essa substituição literal.
+
+**How to apply:** Preservar o botão para a comunidade, o visual e as demais áreas. Manter traduções equivalentes em inglês e espanhol.
+
+No roadmap da homepage, não exibir “Não garante a venda dos 10%.” no cartão “Mint público”, nem “Liberação não significa venda ou circulação, nem abre todos os mercados.” no cartão “Sistema ALFA e vesting”.
+
+**Why:** O criador mostrou cada cartão e pediu remover essas frases específicas.
+
+**How to apply:** Preservar o restante do texto, o Pitch e as descrições técnicas da documentação; dados e componentes compartilhados não ampliam a autorização de edição.
 
 A apresentação do aplicativo e a tese sobre IA e empregos são seções distintas e precisam de separação visual evidente.
 
@@ -39,11 +66,11 @@ O hero deve ter uma única frase sobre a comunidade, sem repetir a mesma mensage
 
 **How to apply:** Preservar a etiqueta solicitada e concentrar a frase sobre a comunidade no subtítulo; o parágrafo seguinte explica a IA e a participação nos lucros.
 
-A sequência após a faixa compacta de marcas tecnológicas abaixo do hero deve ser o bloco “Admita: você perde mais do que ganha”, incluindo o uso de IA pelas casas de apostas, seguido pela tese sobre IA e empregos numa faixa compacta com robôs ao fundo, não como outro hero com uma imagem independente.
+A sequência após a faixa compacta de marcas tecnológicas abaixo do hero deve ser o bloco “Admita: você perde mais do que ganha”, incluindo o uso de IA pelas casas de apostas. A antiga faixa seguinte de Nova Economia foi removida.
 
 **Why:** O criador quer conectar o uso de tecnologia contra apostadores à transformação do trabalho pela IA, reduzindo a altura dessa apresentação. Posteriormente pediu a faixa de logotipos imediatamente abaixo do hero.
 
-**How to apply:** Preservar a ligação e a sequência entre os dois temas, também no celular. A faixa compacta de marcas fica antes deles, logo após o hero; o modelo do projeto não deve separá-los. No bloco anterior, destacar que a IA faz as operações e a comunidade ajuda nas decisões, não apenas acompanha resultados. Não modificar o hero principal para apresentar essa tese.
+**How to apply:** Preservar a ordem entre marcas e o bloco sobre apostas, também no celular, sem recriar a faixa Nova Economia. No bloco sobre apostas, destacar que a IA faz as operações e a comunidade ajuda nas decisões, não apenas acompanha resultados. Não modificar o hero principal para apresentar a tese sobre empregos.
 
 O hero não deve conter os links ou botões da comunidade e do demo.
 

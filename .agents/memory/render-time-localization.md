@@ -3,6 +3,18 @@ name: Render-time localization pitfalls
 description: Browser/SSR differences and React fragment handling when localizing existing JSX.
 ---
 
+Sínteses de fragmentos de texto devem preservar pontuação, separação e função gramatical junto a elementos inline, como negritos. Um trecho que continua a frase deve manter verbo e conectores, não virar um rótulo independente nem repetir o conteúdo mantido fora do fragmento. Testes dessa composição devem concatenar os nós de texto sem inserir espaços artificiais.
+
+**Why:** Uma revisão da documentação juntou valores e frases (“BETTEXDestinação”, “detalhaliberação”, “distribuívelGestão”). O criador também encontrou “StarknetRede” e o equivalente em Arbitrum: a síntese removeu “é” e o espaço após a marca. A extração normalizada usada na auditoria adicionava espaços entre nós e escondia o problema.
+
+**How to apply:** Preservar limites de frases e espaços do texto original em todos os formatos da documentação, incluindo cartões e etapas, não apenas parágrafos comuns. Manter verbos e artigos coerentes ao sintetizar trechos e traduzir marcas com o artigo quando necessário. Revisar o fragmento com seus vizinhos: não incluir novamente o ativo ou o título do link que já permanece no JSX. O criador encontrou “USDC.USDC” depois da correção de espaços; cobertura de traduções e testes de junções não detectam duplicações. Conferir a concatenação real dos nós em PT/EN/ES, além dos hashes e da cobertura de traduções, sem alterar o render da homepage ou do Pitch.
+
+A preservação das bordas também precisa abranger os fragmentos editoriais usados em rodapés de diagramas e componentes com classes próprias.
+
+**Why:** A proteção restrita aos contêineres `whitepaper__*` deixou uma frase colada ao link “Governança” no rodapé de um esquema de arquitetura, mesmo após os parágrafos comuns passarem na auditoria.
+
+**How to apply:** Preservar espaços e pontuação dos fragmentos pertencentes ao catálogo editorial da documentação na própria tradução. Manter o escopo por catálogo, não modificar indiscriminadamente a tradução de outras páginas. Auditar ambos os lados das marcas inline e os limites de frases no texto concatenado.
+
 Novos visitantes abrem o site em português. Escolhas manuais de idioma devem continuar preservadas, sem exibir PT antes de redirecionar para EN/ES.
 
 **Why:** O criador relatou a troca automática PT → EN durante o carregamento e escolheu “Português” como padrão para novos visitantes.
@@ -146,3 +158,9 @@ An already-localized parent does not disable eager translation of JSX created fo
 **Why:** Explicit PT/EN/ES copy passed source coverage and TypeScript but failed English prerendering: descendant JSX had already tried to translate its English text before the parent exemption was evaluated.
 
 **How to apply:** Fully self-localized components should use the React JSX runtime and translate all visible copy themselves, including shared strings. Mixed components can exempt individual localized text elements. A root-only exemption is insufficient; verify rendered locales.
+
+React diagnostics remain validation findings even when prerendering and semantic documentation checks exit successfully.
+
+**Why:** Structural formatting through the shared JSX runtime produced static-child and key diagnostics while all text, links, localization and economic-rule checks passed.
+
+**How to apply:** When changing rendered child structure, inspect SSR and browser diagnostics as well as the content checks. Respect React's static-child contract and stable-key requirements; a successful build alone does not certify the transformed tree.
