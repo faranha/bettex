@@ -31,6 +31,6 @@ export function DocumentationGovernance() {
     <FundSecurityResponsibilities />
     <BuybackPolicy />
     <h3 className="whitepaper__subhead" id="documentacao-formalizacao">Autonomia e rotina do protocolo</h3>
-    <div className="whitepaper__prose"><p>A BETTEX é uma comunidade aberta, sem empresa ou fundação, salários ou taxas de serviço. O fundador e o time organizam a administração inicial e prestam contas dos recursos comunitários. Agentes de IA assumirão gradualmente funções, com mandatos e controles verificáveis. A autonomia não está disponível hoje e não dispensa responsabilidades aplicáveis.</p><p>A rotina identifica contrato, despesa, beneficiário e fonte; confere orçamento e disponibilidade; autoriza dentro dos poderes; executa e concilia uma única vez. Recursos comunitários, compromissos e patrimônio pessoal dos titulares permanecem separados. A participação da comunidade nas decisões não equivale a um voto automático por token.</p></div>
+    <div className="whitepaper__prose"><p>A rotina identifica contrato, despesa, beneficiário e fonte; confere orçamento e disponibilidade; autoriza dentro dos poderes; executa e concilia uma única vez. Recursos comunitários, compromissos e patrimônio pessoal dos titulares permanecem separados. A participação da comunidade nas decisões não equivale a um voto automático por token.</p></div>
   </>;
 }

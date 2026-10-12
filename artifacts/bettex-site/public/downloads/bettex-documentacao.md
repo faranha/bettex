@@ -28,8 +28,6 @@ Aportes-anjo destinam 100% dos recursos a produto, tecnologia e marketing, sem s
 
 O mint inicial financia o projeto, a preço fixo; preço, janela e plataforma ainda serão definidos, com adequação legal. A venda de tokens liberados da comunidade destina 100% do preço em USDC à tesouraria. Aportes de investidores têm termos próprios e vão a produto, tecnologia e marketing, sem salários. Captação não é lucro distribuível.
 
-O preço pertence ao vendedor. Não gera nova captação ou lucro da tesouraria, nem antecipa o vesting.
-
 A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, que não são receita da comunidade.
 
 Burn Lottery e Double 2X
@@ -123,8 +121,6 @@ Custos externos de rede ou de terceiros não são taxas de serviço da BETTEX. O
 Lucro da rodada não é recuperação do capital
 
 Não existe compensação de perdas antigas nem requisito de recuperar o pico patrimonial anterior para distribuir. É uma escolha econômica do modelo, não proteção de capital. Um novo lucro pode ser distribuído com o patrimônio ainda abaixo do valor anterior, somente se reserva defensiva, liquidez e demais condições estiverem atendidas.
-
-Exemplo hipotético em USDC, sem outros movimentos ou custos: patrimônio de 100 cai para 80 após perda de 20; um novo lucro de 10 o leva a 90. Havendo condições para o split, 2,5 vão aos participantes, 2,5 à recompra e 5 ficam retidos. O patrimônio operacional termina em 85 e, somado ao USDC segregado de recompra, o patrimônio do projeto é 87,5, ainda abaixo de 100. A recuperação parcial não garante valorização do token. Participantes elegíveis da nova rodada podem diferir dos que estavam presentes na perda.
 
 Elegibilidade, exposição e condições dos jogos
 

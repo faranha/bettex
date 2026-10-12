@@ -87,9 +87,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (to the treasury. Investor contributions have their own terms and fund product, technology and) Tj T*
 (marketing, with no salaries. Fundraising is not distributable profit.) Tj T*
 () Tj T*
-(The price belongs to the seller. It creates no new funding or treasury profit and does not) Tj T*
-(accelerate vesting.) Tj T*
-() Tj T*
 (BETTEX does not charge service fees. Real transactions may require external network costs,) Tj T*
 (which are not community revenue.) Tj T*
 () Tj T*
@@ -121,6 +118,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Founders initially administer the project and retain control of the contracts. Functions) Tj T*
 (gradually pass to AI, with evidence and limits and no defined deadline. This does not transfer) Tj T*
+(contract control.) Tj T*
+() Tj T*
+(Community participation in decisions is yet to be defined. No DAO, token voting or ownership) Tj T*
 ET
 endstream
 endobj
@@ -128,12 +128,9 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3084 >>
+<< /Length 3237 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(contract control.) Tj T*
-() Tj T*
-(Community participation in decisions is yet to be defined. No DAO, token voting or ownership) Tj T*
 (relinquishment has been defined.) Tj T*
 () Tj T*
 (The founder and team organize the community’s initial administration. AI agents will gradually) Tj T*
@@ -179,6 +176,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (weight  /  sum of eligible weights.) Tj T*
 () Tj T*
 (Example: A starts the round with 1,000 eligible BETTEX; B receives 1,000 at 12:00. With) Tj T*
+(eligible profit of 1,000 USDC and conditions met, the 250 USDC staking share pays 250 to A and) Tj T*
+(zero to B. In the next round, both eligible from opening and with no exits receive 125 USDC) Tj T*
+(each from new eligible profit of 1,000 USDC. No previous profit is recovered.) Tj T*
 ET
 endstream
 endobj
@@ -186,12 +186,9 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 3507 >>
+<< /Length 3429 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(eligible profit of 1,000 USDC and conditions met, the 250 USDC staking share pays 250 to A and) Tj T*
-(zero to B. In the next round, both eligible from opening and with no exits receive 125 USDC) Tj T*
-(each from new eligible profit of 1,000 USDC. No previous profit is recovered.) Tj T*
 () Tj T*
 (Each round pays or does not pay, without accumulation, reopening, or future supplement. Any) Tj T*
 (BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable) Tj T*
@@ -237,6 +234,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (be extended by participant, delay, or management convenience. Without these validated) Tj T*
 (parameters and controls, there is no authorization to distribute. Financial closing is the end) Tj T*
 (of this window or the registered early conclusion of all scheduled payments and treatments.) Tj T*
+() Tj T*
+(The weight is only calculated after the cut, with the eligible balance of the opening and the) Tj T*
+(confirmed events of the entire economic period. Entries during the period wait for the next) Tj T*
 ET
 endstream
 endobj
@@ -244,12 +244,9 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
 endobj
 13 0 obj
-<< /Length 3675 >>
+<< /Length 3768 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-() Tj T*
-(The weight is only calculated after the cut, with the eligible balance of the opening and the) Tj T*
-(confirmed events of the entire economic period. Entries during the period wait for the next) Tj T*
 (round; any exit during it resets the full weight to zero. Exits after the cut also cancel) Tj T*
 (rights of the original round not yet paid, without altering the weights or results of the new) Tj T*
 (round through old credit.) Tj T*
@@ -295,6 +292,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Settlement costs and temporal origin) Tj T*
 () Tj T*
 (The economic result is cut before the payment phase. Effective costs belong to the UTC period) Tj T*
+(of their proven realization: settlement costs executed after the cut enter the result of the) Tj T*
+(economic period in which they occurred, not retroactively into the profit that originated that) Tj T*
+(payment. Register the payment round and the economic period of the cost separately, without) Tj T*
 ET
 endstream
 endobj
@@ -302,12 +302,9 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
 endobj
 15 0 obj
-<< /Length 3600 >>
+<< /Length 3532 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(of their proven realization: settlement costs executed after the cut enter the result of the) Tj T*
-(economic period in which they occurred, not retroactively into the profit that originated that) Tj T*
-(payment. Register the payment round and the economic period of the cost separately, without) Tj T*
 (accounting for the same fact twice.) Tj T*
 () Tj T*
 (Before authorizing the split, reserve principal and cost ceiling in each asset and project the) Tj T*
@@ -328,13 +325,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (distributed with equity still below the previous value, only if defensive reserve, liquidity,) Tj T*
 (and other conditions are met.) Tj T*
 () Tj T*
-(Hypothetical example in USDC, without other movements or costs: equity of 100 drops to 80 after) Tj T*
-(a loss of 20; a new profit of 10 brings it to 90. Given conditions for the split, 2.5 go to) Tj T*
-(participants, 2.5 to buyback, and 5 are retained. The operational equity ends at 85 and, added) Tj T*
-(to the segregated buyback USDC, the project equity is 87.5, still below 100. Partial recovery) Tj T*
-(does not guarantee token appreciation. Eligible participants of the new round may differ from) Tj T*
-(those who were present during the loss.) Tj T*
-() Tj T*
 (Eligibility, exposure and game conditions) Tj T*
 () Tj T*
 (Burn Lottery keeps one free number per wallet, not per person. The regulation must set the) Tj T*
@@ -353,16 +343,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Double 2X requires its own mandate with maximum bet, aggregate budget, reserve for simultaneous) Tj T*
 (wins, timeframe, verifiable randomness, and failure procedure. These parameters must be) Tj T*
-ET
-endstream
-endobj
-16 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
-endobj
-17 0 obj
-<< /Length 2678 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (approved and published before opening; without them, the game is unavailable. The authorization) Tj T*
 (grants the entire bet and reserves the obligation to return 2x, considering the bet received) Tj T*
 (and the additional portion from the treasury, without using resources from staking, buyback, or) Tj T*
@@ -373,6 +353,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (withdrawal, including a bet, reduces it once down to zero. External deposits and game wins do) Tj T*
 (not increase the limit. It never exceeds the free USDC balance; bet reserves prevent concurrent) Tj T*
 (reuse. Insufficient evidence blocks the bet.) Tj T*
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 1874 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (The rule of one play every 24 consecutive hours is applied to the official wallet linked to the) Tj T*
 (account; changing sessions, devices, or recovering access does not reset the deadline. It is) Tj T*
@@ -415,15 +405,15 @@ xref
 0000003907 00000 n 
 0000006948 00000 n 
 0000007074 00000 n 
-0000010210 00000 n 
-0000010338 00000 n 
-0000013898 00000 n 
-0000014026 00000 n 
-0000017754 00000 n 
-0000017882 00000 n 
-0000021535 00000 n 
-0000021663 00000 n 
+0000010363 00000 n 
+0000010491 00000 n 
+0000013973 00000 n 
+0000014101 00000 n 
+0000017922 00000 n 
+0000018050 00000 n 
+0000021635 00000 n 
+0000021763 00000 n 
 trailer << /Size 18 /Root 1 0 R >>
 startxref
-24394
+23690
 %%EOF

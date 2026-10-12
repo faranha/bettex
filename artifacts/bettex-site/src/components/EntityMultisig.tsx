@@ -16,7 +16,7 @@ export function EntityMultisig() {
       <h4 className="whitepaper__subhead">Signatários e responsabilidades</h4>
       <div className="whitepaper__prose">
         <p>As carteiras institucionais de custódia adotam <strong>quórum 2 de 3</strong>. A formalização identifica três signatários independentes e suas responsabilidades, sem presumir nomes, vínculo empregatício ou posições internas. As chaves são independentes; duas chaves da mesma pessoa não equivalem a dois controles. A IA e seus executores não são signatários de custódia.</p>
-        <p>O fundador conserva a administração, o orçamento e as políticas; assinar não cria cargo societário nem exige sua presença na rotina. Quem recebe um pagamento não é seu aprovador independente. Pagamentos a partes relacionadas têm aprovação separada por beneficiário, pelos dois não conflitados. Depois da aprovação, o executor liquida dentro do mandato, sem nova assinatura por parcela. Sem dois aprovadores independentes, o item aguarda o procedimento societário e de contingência válido.</p>
+        <p>O fundador conserva a administração, o orçamento e as políticas. Quem recebe um pagamento não é seu aprovador independente. Pagamentos a partes relacionadas têm aprovação separada por beneficiário, pelos dois não conflitados. Depois da aprovação, o executor liquida dentro do mandato, sem nova assinatura por parcela.</p>
       </div>
 
       <h4 className="whitepaper__subhead">Matriz de autorização</h4>
@@ -29,7 +29,6 @@ export function EntityMultisig() {
             <tr><th scope="row">Investimentos e distribuição de resultados</th><td>Mandato 2/3, subordinado às regras vigentes da tesouraria.</td><td>Operações passam pelo risco independente; pagamentos usam obrigações e beneficiários conciliados. Não há aprovação humana por ordem ou crédito.</td></tr>
             <tr><th scope="row">Saída direta sem mandato, reforço de caixa ou despesa extraordinária</th><td>2/3 sobre a transação exata e fundamento aprovado.</td><td>Revalidação do saldo livre e da fonte. Reforço não renova automaticamente limites nem usa reservas ou créditos como caixa livre.</td></tr>
             <tr><th scope="row">Novos poderes, destinos de estratégia ou alterações de controles</th><td>Aprovação administrativa registrada + 2/3 + espera mínima de 24h.</td><td>Inclui signatários, quórum, módulos, permissões a terceiros, atualizações de contratos, limites e novos mandatos estratégicos. Vigência somente após execução e conferência.</td></tr>
-            <tr><th scope="row">Dividendos e partes relacionadas</th><td>Procedimento societário aplicável + dois aprovadores não conflitados.</td><td>Usa somente caixa e resultado próprios, com documentação; não autoriza retirada pessoal da tesouraria de investimentos.</td></tr>
             <tr><th scope="row">Incidente de segurança</th><td>Pausa restrita por responsável habilitado; ações protetivas de custódia por 2/3.</td><td>Suspende novas saídas afetadas. Contenção segue o procedimento abaixo, sem reduzir quórum ou cancelar direitos.</td></tr>
           </tbody>
         </table>

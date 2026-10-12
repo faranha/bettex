@@ -68,7 +68,7 @@ const fig1: Step[] = [
 ];
 const fig2: Step[] = [
   { title: 'Carteira USDC', text: 'A pessoa usa o USDC disponível e confirmado para comprar BETTEX da venda pública do projeto.', tone: 'blue' },
-  { title: 'Confirma o swap', text: 'Confere preço, quantidade e custos externos em USDC. Valores e destinos precedem a autorização; uma contribuição operacional é apenas uma possibilidade em avaliação.', tone: 'gold', id: 'node-treasury-swap',
+  { title: 'Confirma o swap', text: 'Confere preço, quantidade e custos externos em USDC. Valores e destinos precedem a autorização.', tone: 'gold', id: 'node-treasury-swap',
     extra: <div className="ba-swap" aria-label="Compra de BETTEX com USDC"><span>USDC</span><span aria-hidden="true">→</span><span>BETTEX</span></div> },
   { title: 'Compra liquidada', text: 'O preço em USDC vai à tesouraria; o crédito dos BETTEX comprados e os débitos são conciliados juntos uma única vez.', tone: 'teal',
     extra: (

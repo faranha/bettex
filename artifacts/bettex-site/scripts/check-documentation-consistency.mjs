@@ -24,11 +24,16 @@ const materials = JSON.parse(read('src/lib/documentation-materials.json'));
 assert.doesNotMatch(JSON.stringify(materials), /Taxas de serviço separadas vão ao caixa operacional/);
 assert.doesNotMatch(read('src/components/WhitepaperChapters.tsx'), /a participação começa no horário do saldo BETTEX final confirmado|sem KYC nem documentos de identificação/);
 assert.doesNotMatch(read('src/components/DistributionSettlement.tsx'), /tarifa de saque USDC posterior/);
+assert.doesNotMatch(read('src/components/DistributionSettlement.tsx'), /contribuição operacional|alternativa em avaliação|não são restaurados por nova entrada ou confirmação tardia/);
+for (const file of ['src/components/SaleChannels.tsx', 'src/components/architecture/BettexArchitecture.tsx']) {
+  assert.doesNotMatch(read(file), /contribuição operacional/);
+}
+assert.doesNotMatch(read('src/components/EntityMultisig.tsx'), /societário|Dividendos/);
+assert.doesNotMatch(read('src/components/FundSecurity.tsx'), /preservar créditos/);
+assert.doesNotMatch(JSON.stringify(materials), /O preço pertence ao vendedor/);
 assert.match(read('src/lib/documentation-copy.ts'), /"dlDoc": "resumo das regras e administração"/);
-// Recovery example: capital loss is not offset against another round's profit.
-const operational = 100 - 20 + 10 - 10 * .25 - 10 * .25;
-assert.equal(operational, 85);
-assert.equal(operational + 10 * .25, 87.5);
+// Keep the original worked ledger instead of adding another recovery example.
+assert.match(read('src/components/ProfitAccounting.tsx'), /patrimônio consolidado é 100\.775/);
 
 const server = await createServer({
   root, configFile: path.join(root, 'vite.config.ts'),
@@ -59,4 +64,4 @@ try {
 } finally {
   await server.close();
 }
-console.log('Documentation consistency: reachable governance, unique anchors, PT/EN/ES policies and downloads, recovery arithmetic and removed contradictions verified.');
+console.log('Documentation consistency: reachable governance, unique anchors, PT/EN/ES policies and downloads, original worked ledger and removed contradictions verified.');

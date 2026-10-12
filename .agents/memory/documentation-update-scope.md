@@ -9,6 +9,12 @@ A homepage e o Pitch estão aprovados e prontos. Não editar a homepage nem o Pi
 
 **How to apply:** Preservar ambas as páginas, inclusive ao alterar componentes, textos, traduções ou dados compartilhados. Esta restrição atual substitui autorizações anteriores de alteração dessas páginas.
 
+Ao corrigir inconsistências da documentação, remover trechos contraditórios ou repetidos em vez de acrescentar explicações.
+
+**Why:** O criador determinou: “ache novas inconsistencias, mas ao inves de adicionar mais e mais conteudo, remova para deixar tudo consistnete”.
+
+**How to apply:** Manter as regras essenciais, sem criar blocos adicionais para conciliar textos antigos. Preservar homepage e Pitch também quando houver componentes compartilhados.
+
 A autorização anterior abrangia documentação e sistema, além de correções necessárias. Não autorizava reformular a página inicial nem mudar sua abertura para “comunidade aberta”.
 
 **Why:** O criador corrigiu expressamente: “eu não autorizei mudanças na página inicial” e “eu autorizei mudanças na documentação e no sistema, e correções se fossem necessárias”.

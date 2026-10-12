@@ -1,6 +1,6 @@
 import { withdrawalCreditRule, withdrawalPendingRule, withdrawalPaidRule } from '@/lib/staking-withdrawal-policy';
 import { distributionRemainderRule } from '@/lib/staking-rounding-policy';
-import { independentRoundRule, closedRoundPaymentRule } from '@/lib/distribution-round-policy';
+import { closedRoundPaymentRule } from '@/lib/distribution-round-policy';
 import { DocumentationConsistency } from './DocumentationConsistency';
 
 export function DistributionSettlement() {
@@ -10,15 +10,12 @@ export function DistributionSettlement() {
       <DocumentationConsistency area="settlement" />
       <h4 className="whitepaper__subhead" id="documentacao-validacao-rodada">Validação, autorização e encerramento</h4>
       <div className="whitepaper__prose">
-        <p><strong>{independentRoundRule}</strong></p>
         <p>{closedRoundPaymentRule}</p>
         <p>O encerramento registra os pagamentos confirmados, as frações retornadas e os valores comprovadamente não enviados, sem apagar o histórico. Cancelar uma autorização não executada exige bloquear seu envio antigo e registrar uma única vez os efeitos sobre obrigações e recursos disponíveis. Esse retorno à tesouraria não cria lucro em R nem permite outro split do mesmo resultado. Recursos incertos e obrigações pendentes não são liberados por presunção.</p>
         <p><strong>{withdrawalCreditRule}</strong></p>
         <p>{withdrawalPendingRule}</p>
         <p>{withdrawalPaidRule}</p>
         <p>{distributionRemainderRule}</p>
-        <p>Antes de iniciar qualquer pagamento, o executor revalida a ausência de saída de BETTEX desde a acumulação dos créditos. O cancelamento e a autorização de envio são ordenados de forma indivisível por titular e ciclo; uma revisão cancelada não autoriza envio, complemento ou reenvio. Tentativas já enviadas ou incertas permanecem em conciliação, sem restaurar direitos cancelados nem presumir recursos recuperados. O cancelamento da obrigação é registrado uma única vez, separado de lucro, split e pagamento.</p>
-        <p><strong>Antes do envio, validar o direito e os recursos disponíveis.</strong> Confirmar a elegibilidade, a autorização da própria rodada, as reservas, a liquidez e o destino. Registrar envio, confirmação e conciliação separadamente, sem duplicar o crédito. O encerramento sem pagamento não conserva crédito futuro do participante; transferências já iniciadas continuam em conciliação.</p>
         <p><strong>A autorização de pagamento só vale para a própria rodada ainda em execução.</strong> Registrar rodada, participante, peso elegível e valor executável em USDC. A autorização não é recebimento nem saldo disponível. A interface pode apresentar <strong>pagamento em execução</strong> enquanto a rodada estiver aberta para execução; depois do encerramento não existe crédito residual a pagar. Envios já iniciados ficam apenas em conciliação histórica, sem promessa de outro pagamento.</p>
       </div>
       <h4 className="whitepaper__subhead">Executor único e prevenção de duplicidade</h4>
@@ -34,15 +31,11 @@ export function DistributionSettlement() {
       </div>
       <h4 className="whitepaper__subhead">Confirmação USDC e efeitos patrimoniais únicos</h4>
       <div className="whitepaper__prose">
-        <p><strong>O USDC da distribuição só é reconhecido como recebido na Carteira USDC após a transferência on-chain confirmada e conciliada.</strong> A conferência verifica o ativo e a rede compatíveis, o destino da carteira do titular, o valor efetivamente recebido e a referência da transação. Uma transferência apenas enviada, pendente ou com falha não é recebimento confirmado. Antes de reenviar, a conciliação deve verificar o estado da tentativa anterior para evitar pagamento duplicado.</p>
         <p id="documentacao-confirmacao-staking"><strong>Confirmar o recebimento exige critério validado para a rede pertinente.</strong> Registrar critério, versão, fonte, evidências e horário UTC vinculados à transferência original. Conferir ativo, rede, origem, destino e recebimento efetivo; identificador ou notificação isolada não bastam. Sem evidências e conciliação, a transferência permanece em verificação técnica, não como saldo disponível ou crédito residual para pagamento futuro. Não presumir prazo ou número universal de confirmações. Mudanças do critério não reabrem rodadas nem restauram direitos cancelados.</p>
         <p id="documentacao-confirmacao-staking-invalidada"><strong>Uma confirmação comprovadamente invalidada coloca somente a transferência afetada em conciliação.</strong> Conferir novamente a rede, as evidências e o recebimento efetivo. Não apresentar a parcela afetada como disponibilidade confirmada nem contá-la em dois estados. Preservar registros históricos da rodada, dos pesos e da confirmação, com causa e ajustes identificados. Isso não conserva peso elegível após saída de BETTEX, restaura crédito cancelado ou cria direito residual após encerramento. Valores não afetados não são bloqueados apenas por esse fato.</p>
         <p>A invalidação não debita automaticamente a carteira pessoal, autoriza reenvio ou comprova devolução de recursos. Nova confirmação válida apenas concilia a transferência já realizada, sem criar crédito, complemento ou split. Ajustes patrimoniais seguem os fatos comprovados uma única vez. A rodada encerrada permanece encerrada; a conferência da rede não autoriza outro pagamento ou recupera direitos cancelados.</p>
-        <p>A obrigação é reconhecida uma única vez na apuração: P já desconta esse valor e B reflete a parcela do split atribuída aos participantes. A transferência confirmada liquida a obrigação correspondente, sem consumir R nem reduzir P e B novamente pelo mesmo pagamento. Custos de rede são identificados e conciliados separadamente, sem tarifas inventadas ou desconto duplicado. O histórico continua vinculado à rodada original. Atraso no pagamento não preserva o direito: uma saída de BETTEX cancela os créditos anteriores ainda não pagos do ciclo, inclusive os já autorizados. Créditos cancelados deixam de ser pendentes pagáveis e não são restaurados por nova entrada ou confirmação tardia.</p>
-        <p><strong>O valor em execução e o saldo recebido não são dois valores disponíveis.</strong> Confirmar o recebimento baixa a parcela correspondente e atualiza o saldo conciliado da carteira uma única vez. Em pagamento parcial, somente envios já iniciados ou incertos continuam em conciliação após o encerramento; o restante comprovadamente não enviado não vira crédito futuro. O histórico permanece para auditoria, sem somar o valor novamente ao saldo ou reabrir a rodada.</p>
         <p>As <a href="#documentacao-fracoes-rateio">frações não executáveis do rateio retornam à tesouraria</a>, sem crédito pendente, acumulação ou pagamento futuro. Cada pagamento pertence a uma única rodada ainda em execução. Não reunir obrigações de rodadas diferentes, recuperar valores de rodadas encerradas ou incluir frações retornadas e créditos cancelados. Parcelas reservadas, enviadas ou liquidadas não são usadas duas vezes.</p>
         <p>Uma correção distingue o <a href="#documentacao-excesso-pendente">excesso ainda não enviado do excesso já recebido</a>. O saldo confirmado da carteira não é debitado automaticamente. O pagamento indevido já realizado é identificado separadamente da liquidação do direito correto; o pendente não se torna negativo para cobrar esse excesso, e tentativas incertas não são tratadas como capital recuperado.</p>
-        <p>USDC recebido é ativo pessoal. O saque usa saldo líquido disponível, sem repetir distribuição. Autorização, autocustódia e efeitos únicos seguem preservados. Custos externos são discriminados; uma contribuição operacional é apenas uma <a href="#documentacao-taxas">alternativa em avaliação</a>.</p>
       </div>
     </section>
   );

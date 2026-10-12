@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 8 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R] >>
+<< /Type /Pages /Count 7 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -70,7 +70,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3002 >>
+<< /Length 2917 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (jurídica y los controles de riesgo.) Tj T*
@@ -91,9 +91,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (definirán, con cumplimiento legal. La venta de tokens liberados de la comunidad destina el 100%) Tj T*
 (del precio en USDC a la tesorería. Los aportes de inversores tienen términos propios y van a) Tj T*
 (producto, tecnología y marketing, sin salarios. La captación no es beneficio distribuible.) Tj T*
-() Tj T*
-(El precio pertenece al vendedor. No genera nueva captación ni beneficio de la tesorería, ni) Tj T*
-(adelanta el vesting.) Tj T*
 () Tj T*
 (BETTEX no cobra tarifas de servicio. Las transacciones reales pueden requerir costos externos) Tj T*
 (de la red, que no son ingresos de la comunidad.) Tj T*
@@ -121,6 +118,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (El modelo operativo tiene rondas diarias UTC. Las pestañas por mercado no crean pools de) Tj T*
 (staking independientes.) Tj T*
+() Tj T*
+(Administración y propósito) Tj T*
+() Tj T*
 ET
 endstream
 endobj
@@ -128,12 +128,9 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 2989 >>
+<< /Length 2984 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-() Tj T*
-(Administración y propósito) Tj T*
-() Tj T*
 (BETTEX es una comunidad abierta que construye tecnología DeFi y agentes de IA. BETTEX es el) Tj T*
 (token de la comunidad, sin empresa ni fundación, salarios ni comisiones de servicio. Los) Tj T*
 (recursos y el desarrollo tienen una finalidad comunitaria; las carteras personales siguen) Tj T*
@@ -179,6 +176,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (suficientes, el 100% queda en la tesorería, sin split futuro. La compra requiere autorización) Tj T*
 (administrativa; todo el BETTEX adquirido se quema permanentemente. La billetera exclusiva no es) Tj T*
 (el mecanismo de quema.) Tj T*
+() Tj T*
+(Staking y liquidación) Tj T*
+() Tj T*
 ET
 endstream
 endobj
@@ -186,12 +186,9 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 3469 >>
+<< /Length 3572 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-() Tj T*
-(Staking y liquidación) Tj T*
-() Tj T*
 (Quien entra durante una ronda recibe cero de esa ronda, incluso sobre beneficios generados) Tj T*
 (después de su entrada, y participa solo en la próxima. El saldo confirmado y elegible se fija) Tj T*
 (al inicio; los aumentos durante la ronda solo participan en la siguiente.) Tj T*
@@ -237,6 +234,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (inferencias, no ejecución. Robinhood Crypto Trading API requiere cuenta elegible en Estados) Tj T*
 (Unidos y autorización; no constituye prueba de acceso a acciones. Las consultas públicas) Tj T*
 (Arbitrum/Gamma fueron verificadas; esto no define la red de lanzamiento. Otros ejemplos sin) Tj T*
+(acceso privado son simulaciones. No ha habido operaciones con dinero real.) Tj T*
+() Tj T*
+(Período económico, liquidación y cierre financiero) Tj T*
 ET
 endstream
 endobj
@@ -244,12 +244,9 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
 endobj
 13 0 obj
-<< /Length 3667 >>
+<< /Length 3731 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(acceso privado son simulaciones. No ha habido operaciones con dinero real.) Tj T*
-() Tj T*
-(Período económico, liquidación y cierre financiero) Tj T*
 () Tj T*
 (El período económico de la ronda es el intervalo UTC entre 00h00, inclusive, y 00h00 del día) Tj T*
 (siguiente, exclusive. El corte cierra la recolección de resultados y el tiempo elegible de esa) Tj T*
@@ -295,6 +292,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (pagado. El recibo efectivo anterior a la salida permanece personal, tras la confirmación y) Tj T*
 (conciliación. La política registra los criterios de ordenación y finalización de la red;) Tj T*
 (horarios iguales o evidencias insuficientes mantienen el caso bajo verificación.) Tj T*
+() Tj T*
+(Una reserva o transacción indivisible en el banco no impide una transferencia externa realizada) Tj T*
+(por el titular. La implementación debe validar la elegibilidad en el camino efectivo de pago,) Tj T*
 ET
 endstream
 endobj
@@ -302,12 +302,9 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
 endobj
 15 0 obj
-<< /Length 3606 >>
+<< /Length 3552 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-() Tj T*
-(Una reserva o transacción indivisible en el banco no impide una transferencia externa realizada) Tj T*
-(por el titular. La implementación debe validar la elegibilidad en el camino efectivo de pago,) Tj T*
 (con eventos de BETTEX y USDC ordenables y un mecanismo compatible con la red que impida pagar) Tj T*
 (un derecho ya cancelado. Una verificación off-chain anterior al envío, por sí sola, no) Tj T*
 (comprueba esta garantía. Sin la validación de este mecanismo, el pago automático no es) Tj T*
@@ -346,24 +343,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (nuevo beneficio puede ser distribuido con el patrimonio aún por debajo del valor anterior,) Tj T*
 (solamente si la reserva defensiva, la liquidez y demás condiciones están atendidas.) Tj T*
 () Tj T*
-(Ejemplo hipotético en USDC, sin otros movimientos o costos: el patrimonio de 100 cae a 80 tras) Tj T*
-(una pérdida de 20; una nueva ganancia de 10 lo lleva a 90. Habiendo condiciones para el split,) Tj T*
-(2,5 van a los participantes, 2,5 a la recompra y 5 quedan retenidos. El patrimonio operativo) Tj T*
-(termina en 85 y, sumado al USDC segregado de recompra, el patrimonio del proyecto es 87,5,) Tj T*
-(todavía por debajo de 100. La recuperación parcial no garantiza la valorización del token. Los) Tj T*
-(participantes elegibles de la nueva ronda pueden diferir de los que estaban presentes en la) Tj T*
-(pérdida.) Tj T*
-ET
-endstream
-endobj
-16 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
-endobj
-17 0 obj
-<< /Length 3664 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
-() Tj T*
 (Elegibilidad, exposición y condiciones de los juegos) Tj T*
 () Tj T*
 (Burn Lottery mantiene un número gratuito por billetera, no por persona. El reglamento debe) Tj T*
@@ -374,6 +353,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (considerar esa posibilidad, sin presumir un límite por persona o saldo mínimo aún no aprobado.) Tj T*
 () Tj T*
 (El premio de la Burn Lottery y los costes del sorteo requieren una fuente aprobada y cobertura) Tj T*
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 3569 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (antes de aceptar entradas. Los BETTEX pagados son quemados y no financian el premio. El pago,) Tj T*
 (la referencia de quema y la generación de la entrada deben tener un efecto único y un mecanismo) Tj T*
 (de recuperación verificable; si este vínculo no puede ser garantizado, no acepte pagos. El) Tj T*
@@ -411,16 +400,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Comprobar el control de la billetera autentica el acceso, pero no comprueba identidad civil,) Tj T*
 (residencia, edad o elegibilidad para una oferta. El inicio de sesión por billetera no dispensa) Tj T*
-ET
-endstream
-endobj
-18 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 19 0 R >>
-endobj
-19 0 obj
-<< /Length 732 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (identificación, KYC u otros controles cuando son exigidos para la actividad y el territorio. La) Tj T*
 (demostración visual no ofrece operaciones financieras.) Tj T*
 () Tj T*
@@ -436,28 +415,26 @@ ET
 endstream
 endobj
 xref
-0 20
+0 18
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000162 00000 n 
-0000000259 00000 n 
-0000000385 00000 n 
-0000003819 00000 n 
-0000003945 00000 n 
-0000006999 00000 n 
-0000007125 00000 n 
-0000010166 00000 n 
-0000010294 00000 n 
-0000013816 00000 n 
-0000013944 00000 n 
-0000017664 00000 n 
-0000017792 00000 n 
-0000021451 00000 n 
-0000021579 00000 n 
-0000025296 00000 n 
-0000025424 00000 n 
-trailer << /Size 20 /Root 1 0 R >>
+0000000155 00000 n 
+0000000252 00000 n 
+0000000378 00000 n 
+0000003812 00000 n 
+0000003938 00000 n 
+0000006907 00000 n 
+0000007033 00000 n 
+0000010069 00000 n 
+0000010197 00000 n 
+0000013822 00000 n 
+0000013950 00000 n 
+0000017734 00000 n 
+0000017862 00000 n 
+0000021467 00000 n 
+0000021595 00000 n 
+trailer << /Size 18 /Root 1 0 R >>
 startxref
-26208
+25217
 %%EOF
