@@ -6,140 +6,140 @@ https://bettex.ai/en/documentation
 
 Legal and regulatory compliance
 
-Every BETTEX launch must already comply with the legal environment of the markets where the solution will be offered. Releasing each agent, feature and category requires a specific technical and legal investigation and compliance with applicable requirements. A roadmap date does not replace this condition.
+Launches must comply with local laws. Agents and features depend on technical-legal investigation and fulfillment of requirements, regardless of roadmap dates.
 
-The assessment identifies the country of offering, target audience, activity, responsible parties and providers. Offering and execution are assessed separately; permission in one country does not authorize activity in another. If an activity requires a license or authorization, it will not be released before those requirements are met.
+Analysis is individual per country, activity, and responsible party. Permissions are not universal; activities subject to licensing will not be released without proper authorization.
 
-The investigation verifies official sources, validity and scope of necessary norms, licenses and authorizations, provider terms, advertising, user protection, identification and anti-money laundering prevention, data protection, and applicable responsibilities. Legal and technical personnel record the evidence, the analysis date, conditions, and required controls.
+Investigations verify regulations, licenses, terms, advertising, user protection, AML, privacy, and responsibilities, with formal recording of evidence, dates, and required controls.
 
-Each combination of agent, activity and territory must have its scope documented: under investigation, restricted or authorized for launch. Release requires a favorable legal assessment, authorizations where required and validated technical controls. A pending investigation, prohibition or missing required authorization prevents offering and operation in that territory.
+Each combination (agent, activity, territory) requires a documented scope (investigating, restricted, or authorized). Lack of authorization or pending investigation blocks the operation in the territory.
 
-If casino or iGaming is prohibited in Brazil at the time of the offering, that category will not be offered to the Brazilian audience. If prediction markets cannot legally be offered in Brazil, agents in that category will not be released for that market. These are conditional examples: the conclusion depends on a current investigation of the specific activity, not a general statement in this documentation.
+Categories prohibited in Brazil (such as casino or unlicensed prediction) will not be offered. Examples are conditional, depending on the investigation of each specific activity.
 
-The assessment also covers token minting and offering, advertising, in-app games, financial services and each integration. API availability, blockchain use, a foreign license or a partner launchpad do not replace local authorization. Mint authorization does not automatically authorize agents or other features.
+Assessment covers mint, token, advertising, games, services, and integrations. APIs, blockchain, or foreign licenses do not replace the required local authorization.
 
-Before each expansion, compliance is reassessed for the new territory and activity. Regulatory, license, provider or product changes require review. Loss of a required condition suspends affected new offerings and operations; existing positions and obligations receive specific treatment under legal guidance and risk controls.
+Expansions require re-evaluation. Regulatory or product changes suspend affected offers, with existing positions handled according to legal guidance and risk controls.
 
-Territorial availability conditions must be communicated to users and reflected in eligibility, access and execution controls. Evidence, responsible parties, conditions, validity or review periods and decisions are recorded. This section defines launch requirements; it does not claim licenses obtained, completed legal opinions or authorized agents.
+Availability conditions must be disclosed to users and reflected in controls. This section defines launch requirements, it does not certify licenses or completed legal opinions.
 
 Financing: sources and uses of funds
 
-Angel contributions allocate 100% of funds to product, technology and marketing, with no founder salaries or withdrawals. The 15% token allocation does not impose a funding split: agreements identify sources, uses and rights.
+Angel contributions allocate 100% of funds to product, technology, and marketing, with no founder salaries or withdrawals. The 15% token allocation does not impose a funding split: terms identify origin, destination, and rights.
 
-The initial fixed-price mint funds the project; price, window and platform are yet to be defined, with legal compliance. Sales of released community tokens send 100% of the USDC price to the treasury. Investor contributions have their own terms and fund product, technology and marketing, with no salaries. Fundraising is not distributable profit.
+The initial mint finances the project at a fixed price; price, platform, and window definitions follow legal adequacy. Community token sales send 100% in USDC to the treasury. Investor contributions fund product, technology, and marketing, with no salaries; they are not distributable profit.
 
-BETTEX does not charge service fees. Real transactions may require external network costs, which are not community revenue.
+BETTEX does not charge service fees. Real transactions may incur external network costs, which are not community revenue.
 
 Burn Lottery and Double 2X
 
-Burn Lottery: one free number per wallet with staked BETTEX; extra entries paid in BETTEX and fully burned, funding neither prizes nor operating revenue. There is no business cap on numbers. Payment is a BETTEX exit: all prior weight resets and all prior unpaid round credits are cancelled; received USDC remains personal.
+Burn Lottery: one free number per wallet with BETTEX in staking; extras are paid in BETTEX and fully burned. Payment is a BETTEX outflow: it resets prior weight and cancels all prior unpaid credits of the round; received USDC remains personal.
 
-Double 2X: optional red or black game using USDC earnings already received, without pending credits. One play per rolling 24 hours, 50/50 outcome and no game fee. With 10 USDC played, a win returns 20 in total, a net gain of 10 paid by the treasury; a loss returns zero and sends the 10 to the treasury. A theoretical 100% RTP does not guarantee gains per play.
+Double 2X: optional red-or-black game using USDC from already received earnings, without pending credits. One play every 24 consecutive hours, a 50/50 result, and no game fee. With 10 USDC played, a win returns 20 total, a net gain of 10 paid by the treasury; a loss returns zero and sends the 10 to the treasury. A theoretical 100% RTP does not guarantee profit per play.
 
-Lottery rules must identify price, prize, funding, timing and odds before accepting entries. The games are neither investment strategies nor promises of yield; simulated results do not prove execution, public randomness or settlement.
+Lottery rules must identify price, prize, funding, deadline, and probabilities before accepting entries. Games are neither investment strategies nor a promise of returns; simulated results do not prove execution, public randomness, or settlement.
 
 Operational round and demonstration
 
-The operational model has daily UTC rounds. Market tabs do not create separate staking pools.
+The model operates on daily UTC rounds. Market tabs do not create separate staking pools.
 
 Administration and purpose
 
-BETTEX is an open community building DeFi technology and AI agents. BETTEX is the community token, with no company or foundation, salaries or service fees. Resources and development serve a community purpose; personal wallets remain the property of their holders.
+BETTEX is an open DeFi community with no company, foundation, salaries, or service fees. Resources serve the collective; wallets remain under holders’ custody.
 
-Founders initially administer the project and retain control of the contracts. Functions gradually pass to AI, with evidence and limits and no defined deadline. This does not transfer contract control.
+Founders manage contracts initially, with a gradual transition to AI without a deadline. AI management does not imply a transfer of contractual control.
 
-Community participation in decisions is yet to be defined. No DAO, token voting or ownership relinquishment has been defined.
+Community decisions remain undefined, with no DAO structure, token voting, or ownership renunciation.
 
-The founder and team organize the community’s initial administration. AI agents will gradually take on functions until the BETTEX agent becomes operationally independent and autonomous. This is a future goal and does not remove applicable controls or responsibilities.
+Founders organize initial management until AI agents make BETTEX autonomous, while maintaining current controls and responsibilities.
 
-Transparency, responsibility and accountability guide the operation, with no guaranteed income or capital protection.
+Operations focus on transparency and accountability, without guarantees of capital protection or yields.
 
 Token, funding, and burn
 
-Cap of 1 billion BETTEX in four allocations: 10% initial public mint, 55% community, 20% founder/team and 15% investors. The mint is open at a fixed price and funds the project. The price, window, platform and destination of the unminted portion remain to be defined.
+1 billion BETTEX cap: 10% public mint, 55% community, 20% founder/team, and 15% investors. The mint funds the project, with price and platform details to be defined.
 
-Public mint planned for December 10, 2026. System/ALPHA and vesting start planned for March 2027. Each launch requires legal compliance by activity and territory.
+Public mint on 12/10/2026; System/ALFA and vesting start in March 2027, subject to legal compliance.
 
-Vesting of 900 million BETTEX over 24 months from March 2027: community 550 million, founder/team 200 million and investors 150 million, in whole-token 11:4:3 groups. The initial cap of 100 million remains separate; release does not prove sales or circulation.
+Vesting of 900 million BETTEX over 24 months from March 2027: community 550 million, founder/team 200 million, and investors 150 million, in whole groups of 11:4:3. The separate initial cap is 100 million; release does not prove sale or circulation.
 
-100% of the USDC price of the already released community tokens goes to the treasury. BETTEX does not charge service fees. The initial mint funding finances the project and requires accountability. External markets do not automatically inherit the conditions of the official swap.
+100% of community token revenue goes to the treasury, with no service fees. The mint funds the project with accountability; external markets do not replicate the official swap.
 
-Eligible result, after reconciliation and controls, receives 50% treasury, 25% staking, and 25% exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains in the treasury, without future split. Purchase uses administrative authorization; all acquired BETTEX is permanently burned. Exclusive wallet is not the burn mechanism.
+Eligible result is split: 50% treasury, 25% staking, 25% buyback. Without eligible weights, reserves, or liquidity, 100% stays in the treasury. An authorized buyback permanently burns BETTEX; the exclusive wallet is not the burn mechanism.
 
 Staking and liquidation
 
-Anyone joining during a round receives zero from that round, even for profit generated after joining, and participates only in the next. The confirmed eligible balance is fixed at opening; increases during the round participate only in the following round.
+Participants joining during ongoing rounds receive zero profit from that round, only the next. Balances and additions are fixed at the round's opening.
 
-Individual weight = BETTEX eligible at opening × full round duration, with no exit. New participants and balances received during a round have zero weight in it; top-ups do not change the weight of the already eligible balance. Any exit resets all of the holder's weight; participation resumes only in the next round. Gross payment = staking share × individual weight ÷ sum of eligible weights.
+Weight = eligible opening balance × duration. Exits reset the weight and cancel prior unpaid credits; return occurs only in the next round. Additions do not change existing weights. Gross payment = staking portion × individual weight ÷ sum of eligible weights.
 
-Example: A starts the round with 1,000 eligible BETTEX; B receives 1,000 at 12:00. With eligible profit of 1,000 USDC and conditions met, the 250 USDC staking share pays 250 to A and zero to B. In the next round, both eligible from opening and with no exits receive 125 USDC each from new eligible profit of 1,000 USDC. No previous profit is recovered.
+Example: A starts with 1,000 eligible BETTEX; B receives 1,000 at 12:00. With eligible profit of 1,000 USDC and conditions met, the 250 USDC staking portion pays 250 to A and zero to B. In the next round, both eligible from opening and with no exit receive 125 USDC each on new eligible profit of 1,000 USDC. No prior profit is recovered.
 
-Each round pays or does not pay, without accumulation, reopening, or future supplement. Any BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable fractions return to the treasury, without future credit. Received USDC remains personal.
+Payments do not accumulate. Partial exits zero out rights. Non-executable fractions return to the treasury, with no future credit.
 
-USDC credit depends on eligibility, round authorization, confirmation, and reconciliation. An authorization is not equivalent to receipt. Closing does not retain future credits, and uncertain transfers are not released by presumption.
+Credit depends on eligibility, authorization, and reconciliation. Round closing does not hold future credits or transfer presumptions.
 
-Only confirmed and reconciled USDC enters the available balance. Uncertain sends do not authorize repetition nor are they recovered resources. Corrections maintain history and unique effects, without automatic debit from the personal wallet.
+Only reconciled balances are available. Uncertain transfers do not trigger repeats or recoveries; corrections do not alter personal wallets.
 
 Governance and integrations
 
-Policies evolve through approved versions. Administration defines policy; 2-of-3 multisig controls custody; executors act within mandates. Sensitive changes wait at least 24h; already mandated routine does not require new signature per operation. AI does not expand its own permissions.
+Policies evolve via version, with 2-of-3 multisig for custody. Critical changes require 24h notice; routines do not require new signatures; AI does not expand permissions.
 
-Treasury, operational cash, exclusive buyback wallet, and personal wallets have their own boundaries. Defensive reserve follows the approved policy, without a general minimum fixed at 50%. New operations require independent risk, availability, and reconciliation.
+Treasury, operating cash, and wallets have clear boundaries. Defensive reserves follow policy without a 50% minimum. Operations require independent risk assessment.
 
-Starknet and Arbitrum One are network and contract alternatives. BETTEX is in planning and grants fundraising, with no network chosen or presumed approved grant. Starknet requires Cairo implementation and compatible accounts; Arbitrum uses EVM. Allora is a candidate for inferences, not execution. Robinhood Crypto Trading API requires an eligible US account and authorization; it does not prove access to stocks. Arbitrum/Gamma public queries were verified; this does not define the launch network. Other examples without private access are simulations. No real money operations have occurred.
+Starknet and Arbitrum One are alternative networks and contract environments. BETTEX is in planning and grant fundraising, with no chosen network or presumed approved grant. Starknet requires Cairo implementation and compatible accounts; Arbitrum uses EVM. Allora is a candidate for inference, not execution. Robinhood Crypto Trading API requires an eligible U.S. account and authorization; it does not prove access to equities. Public Arbitrum/Gamma queries were verified; they do not define the launch network. Other examples without private access are simulations. There have been no real-money operations.
 
 Economic period, settlement and financial closing
 
-The economic period of the round is the UTC interval between 00:00, inclusive, and 00:00 of the following day, exclusive. The cut ends the collection of results and the eligible time of that round, not its settlement phase. After the cut, assessment and identified payments remain linked exclusively to the original round, while the following economic period is already underway.
+The economic period is the UTC interval between 00:00 and 00:00 the next day. The cutoff ends result collection, but payments are linked to the original round regardless of the current period.
 
-Before operating, the approved policy must set the maximum reconciliation and execution window, the financial closing deadline, the sources, and the confirmation criteria. The window cannot be extended by participant, delay, or management convenience. Without these validated parameters and controls, there is no authorization to distribute. Financial closing is the end of this window or the registered early conclusion of all scheduled payments and treatments.
+Approved policies must set execution windows, deadlines, and sources. Without validated parameters, distribution is not authorized. Closure occurs upon the end of the window or completion of payments.
 
-The weight is only calculated after the cut, with the eligible balance of the opening and the confirmed events of the entire economic period. Entries during the period wait for the next round; any exit during it resets the full weight to zero. Exits after the cut also cancel rights of the original round not yet paid, without altering the weights or results of the new round through old credit.
+Weights are calculated post-cutoff on eligible balances. Entries await the next round; exits nullify weights. Post-cutoff exits cancel pending rights without altering results of new rounds.
 
-The indivisible assessment decision fixes the beneficiaries, weights and distribution denominator, also considering exits already confirmed by that decision. Later exits cancel the corresponding credit without recalculating other participants' allocations or redistributing the cancelled amount. The current zeroed weight and the historical calculation record are separate records. Repeating a decision does not create another split.
+Settlement decisions fix beneficiaries and weights, considering confirmed exits. Subsequent exits cancel credits without redistribution or new splits. Historical records and current weights are distinct.
 
-Calculation, authorization, and execution are stages of the same round, not a new distribution. Do not mix results, beneficiaries, or installments from different rounds. Financial closing eliminates rights provenly not sent; shipments already initiated or uncertain remain only in reconciliation. There is no supplement, reopening, or future credit after this closing.
+Calculation and execution are part of the current round. Financial closure eliminates unsent rights; ongoing payments remain in reconciliation. There is no reopening or post-closure credit.
 
-The executor does not choose beneficiaries by convenience. The payment plan pre-registers deterministic order, installments, resources, and a common deadline; it uses atomic execution when validated for the network. If there is partial processing, it publishes who received, who did not receive, and the cause. Operational failure or underpayment can cause definitive loss of the installment not sent at financial closure: this risk must be informed before participation. Equality of receipt is not promised when the execution is not atomic.
+Payment plans follow deterministic order and use atomic execution when validated for the network. If there is partial processing, they publish who received, who did not, and the cause; failures may cause definitive loss of unsent portions at closing, and that risk must be disclosed in advance.
 
 BETTEX exit and payment order
 
-The relevant order is that of the facts proven on the network, not the arrival of messages to the backend. A BETTEX exit prior to the effective receipt of USDC cancels the right not yet paid. Effective receipt prior to the exit remains personal, after confirmation and reconciliation. The policy registers the criteria for network ordering and finalization; equal times or insufficient evidence keep the case under verification.
+Network order prevails over backend messages. BETTEX exits before USDC receipt cancel rights. Equal timestamps or insufficient evidence suspend finalization.
 
-A reserve or indivisible transaction in the bank does not prevent an external transfer made by the holder. The implementation must validate eligibility in the effective payment path, with orderable BETTEX and USDC events and a network-compatible mechanism that prevents paying an already cancelled right. An off-chain verification prior to submission, alone, does not prove this guarantee. Without validation of this mechanism, the automatic payment is not released.
+Bank reserves do not prevent external transfers. Eligibility requires on-network validation with sortable events. Isolated off-chain checks do not guarantee automatic payment.
 
-Canceling a right does not reverse a transfer already initiated nor prove USDC recovery. An initiated or uncertain shipment is never repeated by presumption. If reconciliation proves undue receipt after a previous departure, register the undue payment and the treasury loss, without restoring the canceled right, automatically charging the personal wallet or creating another split. The USDC already received is not recovered by accounting adjustment.
+Canceling rights does not reverse transfers or prove USDC recovery. Reconciliations with improper receipt generate treasury losses without charging the participant or restoring credits.
 
 Settlement costs and temporal origin
 
-The economic result is cut before the payment phase. Effective costs belong to the UTC period of their proven realization: settlement costs executed after the cut enter the result of the economic period in which they occurred, not retroactively into the profit that originated that payment. Register the payment round and the economic period of the cost separately, without accounting for the same fact twice.
+Costs belong to the period of occurrence, not the payment round. Round and economic period records must be distinct to avoid double counting.
 
-Before authorizing the split, reserve principal and cost ceiling in each asset and project the liquidity after all disbursements. The cost reserve is not a realized expense. Its source and authorization are identified; costs are not silently deducted from the participant's right nor from the exclusive repurchase portion. Differences between reserved and effective cost are reconciled; the remainder is not new profit. If there is not sufficient budget and coverage, do not authorize the split.
+Before authorizing the split, reserve principal and the cost cap for each asset and project liquidity after all disbursements. A cost reserve is not an incurred expense. Identify its source and authorization; do not silently deduct costs from the participant’s right or the exclusive repurchase portion. Reconcile differences between reserved and actual cost; surplus is not new profit. Without sufficient budget and coverage, do not authorize the split.
 
-External network or third-party costs are not BETTEX service fees. Development and maintenance costs remain open. This settlement rule does not authorize using the treasury for general expenses, changing the 50%/25%/25% split, or reopening a closed round.
+External costs are not BETTEX service fees. Settlement rules do not allow using the treasury for general expenses or changing the 50%/25%/25% split.
 
 The round profit is not a capital recovery.
 
-There is no compensation for past losses nor a requirement to recover the previous peak equity to distribute. It is an economic choice of the model, not capital protection. New profit can be distributed with equity still below the previous value, only if defensive reserve, liquidity, and other conditions are met.
+There is no loss compensation or historical equity peak requirement; profits can be distributed if liquidity and reserves exist.
 
 Eligibility, exposure and game conditions
 
-Burn Lottery keeps one free number per wallet, not per person. The regulation must set the cutoff and the eligible balance condition in staking, using a verifiable snapshot and a unique identifier per wallet and draw; transferring after the cutoff does not generate another free number in that draw. A person can control multiple eligible wallets: do not present this rule as protection against multiple identities. The prize budget must consider this possibility, without assuming a limit per person or a minimum balance not yet approved.
+Burn Lottery limits one free number per wallet with BETTEX in staking, using a verifiable snapshot and a unique identifier per wallet and draw. Post-cutoff transfers do not generate new numbers. The budget considers multiple wallets per person; this is not protection against multiple identities.
 
 The Burn Lottery prize and the costs of the draw require an approved source and coverage before accepting entries. The paid BETTEX are burned and do not finance the prize. Payment, burn reference and entry generation must have a single effect and a verifiable recovery mechanism; if this link cannot be guaranteed, do not accept payments. The regulation informs the draw, verifiable randomness, fault handling and the impossibility of undoing a burn by simple adjustment.
 
-Double 2X requires its own mandate with maximum bet, aggregate budget, reserve for simultaneous wins, timeframe, verifiable randomness, and failure procedure. These parameters must be approved and published before opening; without them, the game is unavailable. The authorization grants the entire bet and reserves the obligation to return 2x, considering the bet received and the additional portion from the treasury, without using resources from staking, buyback, or other commitments.
+Double 2X requires a mandate, maximum bet, aggregate budget, reserve for simultaneous wins, time limit, verifiable randomness, and failure procedure before opening. The treasury reserves the 2x payout considering the received stake and the additional portion, without using staking, buyback, or other committed resources.
 
-USDC of yields already received is controlled by a reconciled source limit, not by the physical identity of the fungible tokens. Confirmed distributions increase this limit; each USDC withdrawal, including a bet, reduces it once down to zero. External deposits and game wins do not increase the limit. It never exceeds the free USDC balance; bet reserves prevent concurrent reuse. Insufficient evidence blocks the bet.
+The USDC limit is based on confirmed yields, not token identities. Outflows reduce the limit; external deposits and wins do not increase it. Reserves prevent reuse, the limit never exceeds free USDC balance, and insufficient evidence blocks the bet.
 
-The rule of one play every 24 consecutive hours is applied to the official wallet linked to the account; changing sessions, devices, or recovering access does not reset the deadline. It is not a limit proven by person: multiple wallets are considered in the aggregate budget. Register the start a single time before execution; an uncertain attempt does not allow another play nor does it release the reserve by presumption.
+The rule of one play every rolling 24 hours applies to the official wallet linked to the account; changing session, device, or recovering access does not reset the period. It is not a person-proven limit: multiple wallets count in the aggregate budget. Register the start once before execution; an uncertain attempt does not allow another play or release the reserve by presumption.
 
-The 100% RTP is gross and theoretical: it does not cover gas, randomness, nor guarantee cash equilibrium in the short term. Receipts, obligations, gains, losses, and game costs have their own ledger, reconciled with treasury equity. They do not enter as strategy profit eligible for split nor use the exclusive buyback budget. Equity variations of the games affect the reserve and liquidity controls before new operations and distributions.
+The 100% RTP is theoretical and gross: it does not cover gas or randomness. Games have their own ledger, reconciled with the treasury’s assets; they do not count as strategy profit eligible for the split and do not use the exclusive buyback budget, but they do affect reserves and liquidity.
 
 Authentication and legal eligibility
 
-Proving wallet control authenticates access, but does not prove civil identity, residence, age, or eligibility for an offer. Wallet login does not waive identification, KYC, or other controls when required for the activity and territory. The visual demo does not offer financial operations.
+Wallet authentication does not prove civil identity, residence, or eligibility. KYC and territorial controls remain mandatory when required. The visual demo does not offer financial operations.
 
-Legal investigation defines which controls are necessary for mint, participation, games, and integrations. Verifications from an external provider are not automatically sufficient for BETTEX obligations. Without validated required controls, restrict the supply and the affected operation; do not promise financial access without documents in any territory.
+Legal investigation defines controls for mint, games, and integrations. External providers do not waive BETTEX obligations. Without validation, operation is restricted; financial access is not promised without documents.
 
 Community and launch in the Pitch: https://bettex.ai/en/pitch#publico

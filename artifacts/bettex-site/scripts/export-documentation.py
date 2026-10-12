@@ -15,6 +15,7 @@ materials = json.loads((lib / "documentation-materials.json").read_text())
 consistency = json.loads((lib / "documentation-consistency.json").read_text())
 materials["sections"].extend(consistency["sections"])
 catalogue = json.loads((lib / "locales/translations.json").read_text())
+catalogue.update(json.loads((lib / "locales/documentation-synthesis.json").read_text()))
 ns = "http://schemas.openxmlformats.org"
 
 def xlsx(path, sheets):
@@ -85,7 +86,7 @@ assert vesting[-1][5:] == [550_000_000, 200_000_000, 150_000_000, 900_000_000]
 
 for lang in ("pt", "en", "es"):
     def t(text):
-        if lang == "pt": return text
+        if lang == "pt": return catalogue.get(text, {}).get("pt", text)
         if text not in catalogue or not catalogue[text].get(lang): raise ValueError(f"Missing material translation: {lang}: {text}")
         return catalogue[text][lang]
     suffix = "" if lang == "pt" else f"-{lang}"
