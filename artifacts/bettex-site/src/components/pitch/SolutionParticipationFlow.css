@@ -22,6 +22,18 @@
 .spf__node p { margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: #183173; }
 .spf__node--dark p, .spf__node--treasury p { color: #c5d2f1; }
 .spf__node--gold p { color: #3a2a05; }
+.spf__cycle { display: grid; grid-template-columns: 68px minmax(0,1fr); align-items: center; gap: 14px; margin-top: 16px; padding: 14px; border: 1px solid #c58b0066; border-radius: 14px; background: #fff8e6; }
+.spf__cycle-ring { display: grid; place-items: center; width: 68px; height: 68px; border: 3px solid #8a5d00; border-radius: 50%; background: #13204f; color: #fbe9b8; box-shadow: 0 0 0 4px #c58b001a; }
+.spf__cycle-ring strong { font-size: 25px; font-weight: 800; line-height: 1; letter-spacing: -.04em; }
+.spf__cycle-detail { min-width: 0; }
+.spf__cycle-title { font-size: 14px; font-weight: 800; color: #13204f; }
+.spf__cycle-stages { display: flex; list-style: none; margin: 8px 0 0; padding: 0; border: 1px solid #c58b0066; border-radius: 10px; overflow: hidden; }
+.spf__cycle-stages li { flex: 1 1 0; min-width: 0; padding: 7px 4px; text-align: center; font-size: 11px; font-weight: 700; line-height: 1.4; color: #3a2a05; }
+.spf__cycle-stages li + li { border-left: 1px solid #c58b0066; }
+@media (max-width: 479px) {
+  .spf__cycle { grid-template-columns: minmax(0,1fr); justify-items: center; gap: 12px; padding: 12px; }
+  .spf__cycle-detail { width: 100%; text-align: center; }
+}
 .spf__fine { font-size: 13px !important; }
 .spf__fronts { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
 .spf__fronts li { display: flex; align-items: center; gap: 8px; padding: 10px; border: 1px solid rgba(95,134,255,.55); border-radius: 10px; background: #0d1536; font-size: 13px; font-weight: 700; line-height: 1.25; color: #F4F1E8; min-width: 0; }
@@ -36,7 +48,6 @@
 .spf__lt { order: 2; align-self: center; font-family: var(--app-font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; line-height: 1.35; }
 .spf__line { order: 1; position: relative; width: 0; border-left: 3px solid currentColor; }
 .spf__conn--weight .spf__line { border-left-style: dashed; }
-.spf__line::after { content: ""; position: absolute; left: -8px; bottom: -1px; border: 6.5px solid transparent; border-top: 10px solid currentColor; border-bottom: 0; }
 .spf__conn--out { margin-bottom: 0; }
 .spf__grid > .spf__acq { margin-bottom: 18px; }
 .spf__grid > .spf__dst { margin-top: 0; }
@@ -47,9 +58,7 @@
   .spf__lane > .spf__conn--out .spf__lt { order: 1; align-self: flex-start; }
   .spf__lane > .spf__conn--out .spf__line { order: 2; width: calc(100% + 18px); border-left: 0; border-top: 3px solid currentColor; }
   .spf__lane--wt > .spf__conn--out .spf__line { border-top-style: dashed; }
-  .spf__lane > .spf__conn--out .spf__line::after { left: auto; right: -2px; bottom: auto; top: -8.5px; border: 6.5px solid transparent; border-left: 10px solid currentColor; border-right: 0; }
   .spf__lane--wt::after { content: ""; position: absolute; right: -18px; top: -21px; bottom: -18px; border-right: 3px solid #2b59ff; pointer-events: none; }
-  .spf__lane--wt::before { content: ""; position: absolute; right: -24.5px; bottom: -25px; border: 6.5px solid transparent; border-top: 10px solid #2b59ff; border-bottom: 0; pointer-events: none; }
 }
 @media (max-width: 359px) { .spf__node { padding: 14px; } .spf__fronts { grid-template-columns: minmax(0,1fr); } .spf__lane { padding-left: 10px; margin-left: 4px; } }
 @media (min-width: 1100px) {
@@ -67,8 +76,6 @@
   .spf__lt { order: 1; align-self: auto; font-size: 9px; }
   .spf__line { order: 2; width: 100%; border-left: 0 !important; border-top: 3px solid currentColor; }
   .spf__conn--weight .spf__line { border-top-style: dashed; }
-  .spf__line::after { left: auto; right: -2px; bottom: auto; top: -8.5px; border: 6.5px solid transparent; border-left: 10px solid currentColor; border-right: 0; }
   .spf__lanes { gap: 26px; }
 }
 .spf__next { margin-top: 18px; font-size: 13px; font-weight: 700; color: #2B59FF; }
-.spf__next::before { content: "\2193  "; }

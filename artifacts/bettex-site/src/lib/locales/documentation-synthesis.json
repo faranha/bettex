@@ -1,8 +1,8 @@
 {
   "A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados. BETTEX é o token da comunidade; esta documentação apresenta suas regras, desenvolvimento, administração e riscos.": {
-    "pt": "BETTEX é uma comunidade aberta que cria tecnologia DeFi e agentes de IA para vários mercados. Esta documentação do token BETTEX apresenta regras, desenvolvimento, administração e riscos.",
-    "en": "BETTEX is an open community that creates DeFi technology and AI agents for multiple markets. This BETTEX token documentation presents rules, development, administration, and risks.",
-    "es": "BETTEX es una comunidad abierta que crea tecnología DeFi y agentes de IA para varios mercados. Esta documentación del token BETTEX presenta reglas, desarrollo, administración y riesgos."
+    "pt": "BETTEX é uma comunidade dedicada à construção do próprio agente de IA. Esta documentação reflete a visão dos fundadores e os anseios da comunidade, incluindo arquitetura técnica, regras, tokenomics e riscos.",
+    "en": "BETTEX is a community dedicated to building its own AI agent. This documentation reflects the founders' vision and the community's aspirations, including technical architecture, rules, tokenomics and risks.",
+    "es": "BETTEX es una comunidad dedicada a construir su propio agente de IA. Esta documentación refleja la visión de los fundadores y las aspiraciones de la comunidad, incluyendo arquitectura técnica, reglas, tokenomics y riesgos."
   },
   "1 bilhão de BETTEX: 10% mint inicial, 55% comunidade, 20% fundador/equipe e 15% investidores; vesting de 24 meses.": {
     "pt": "Total de 1 bilhão de BETTEX: 10% mint inicial, 55% comunidade, 20% equipe e 15% investidores, com vesting de 24 meses.",
@@ -10,9 +10,9 @@
     "es": "Total de 1 mil millones de BETTEX: 10% minteo inicial, 55% comunidad, 20% equipo y 15% inversores, con un periodo de vesting de 24 meses."
   },
   "A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados. BETTEX é o token dessa comunidade, não uma ação de empresa ou fundação.": {
-    "pt": "BETTEX é uma comunidade DeFi e IA. O token BETTEX é um ativo da comunidade, não uma ação de empresa ou fundação.",
-    "en": "BETTEX is a DeFi and AI community. The BETTEX token is a community asset, not a share in a company or foundation.",
-    "es": "BETTEX es una comunidad de DeFi e IA. El token BETTEX es un activo de la comunidad, no una acción de empresa o fundación."
+    "pt": "Hoje, BETTEX é uma comunidade DeFi e IA. Com o tempo, toda a administração será substituída por IA, tornando a BETTEX totalmente DeFAI. O token BETTEX é um ativo da comunidade, não uma ação de empresa ou fundação.",
+    "en": "Today, BETTEX is a DeFi and AI community. Over time, all administration will be replaced by AI, making BETTEX fully DeFAI. The BETTEX token is a community asset, not a share in a company or foundation.",
+    "es": "Hoy, BETTEX es una comunidad de DeFi e IA. Con el tiempo, toda la administración será sustituida por IA, convirtiendo a BETTEX en una comunidad totalmente DeFAI. El token BETTEX es un activo de la comunidad, no una acción de empresa o fundación."
   },
   "A visão da BETTEX reúne tecnologia DeFi, agentes de IA e participação da comunidade, com regras, autorizações e controles independentes.": {
     "pt": "A visão BETTEX integra tecnologia DeFi, agentes IA e participação comunitária com governança e controles independentes.",
@@ -55,9 +55,9 @@
     "es": "La elección de red considera costos, seguridad, disponibilidad de USDC, liquidez en DEX, billeteras, auditoría y soporte. No hay compromiso de operar en ambas. Los grants apoyan el desarrollo y no son beneficios distribuibles."
   },
   "é uma rede de segunda camada do Ethereum que utiliza provas de validade STARK. Seus contratos são desenvolvidos em Cairo e as contas possuem abstração nativa. A alternativa exige implementação, carteiras e testes próprios; contratos Solidity e endereços EVM não são transferidos automaticamente.": {
-    "pt": "Rede Ethereum L2 com provas STARK. Contratos Cairo exigem testes e carteiras próprias; contratos Solidity e endereços EVM não são transferidos automaticamente.",
-    "en": "An Ethereum L2 with STARK proofs. Cairo contracts require dedicated testing and wallets; Solidity contracts and EVM addresses are not transferred automatically.",
-    "es": "Una L2 de Ethereum con pruebas STARK. Los contratos Cairo exigen pruebas y billeteras propias; los contratos Solidity y las direcciones EVM no se transfieren automáticamente."
+    "pt": "é uma L2 do Ethereum com provas STARK. Contratos Cairo exigem testes e carteiras próprias; contratos Solidity e endereços EVM não são transferidos automaticamente.",
+    "en": "is an Ethereum L2 with STARK proofs. Cairo contracts require dedicated testing and wallets; Solidity contracts and EVM addresses are not transferred automatically.",
+    "es": "es una L2 de Ethereum con pruebas STARK. Los contratos Cairo exigen pruebas y billeteras propias; los contratos Solidity y las direcciones EVM no se transfieren automáticamente."
   },
   "Na Starknet, o percurso previsto é: assinatura pela conta compatível → execução na segunda camada → geração da prova de validade → verificação e liquidação no Ethereum. O aplicativo deverá acompanhar eventos confirmados, conciliar USDC e BETTEX separadamente e validar a disponibilidade dos ativos na rede escolhida.": {
     "pt": "Fluxo Starknet: assinatura, execução L2, prova e liquidação no Ethereum. O app deve conciliar USDC e BETTEX separadamente e validar ativos.",
@@ -65,24 +65,24 @@
     "es": "Flujo de Starknet: firma, ejecución en L2, prueba y liquidación en Ethereum. La app debe conciliar USDC y BETTEX por separado y validar activos."
   },
   "é uma rede de segunda camada do Ethereum. Ela amplia a capacidade de processamento e reduz os custos das transações em relação à rede principal, oferecendo uma infraestrutura para contratos inteligentes, tokens e carteiras.": {
-    "pt": "Rede Ethereum L2 que amplia capacidade e reduz custos, provendo infraestrutura para contratos, tokens e carteiras.",
-    "en": "Ethereum L2 network that expands capacity and reduces costs, providing infrastructure for contracts, tokens, and wallets.",
-    "es": "Red Ethereum L2 que amplía la capacidad y reduce los costos, proporcionando infraestructura para contratos, tokens y carteras."
+    "pt": "é uma L2 do Ethereum que amplia capacidade e reduz custos, provendo infraestrutura para contratos, tokens e carteiras.",
+    "en": "is an Ethereum L2 that expands capacity and reduces costs, providing infrastructure for contracts, tokens, and wallets.",
+    "es": "es una L2 de Ethereum que amplía la capacidad y reduce los costos, proporcionando infraestructura para contratos, tokens y carteras."
   },
   ": executa transações na segunda camada e publica os dados em lotes no Ethereum. A compatibilidade com contratos e carteiras desse ecossistema permite emissão e transferências de BETTEX; o backend acompanha confirmações e concilia os eventos com os registros da conta. As chaves e os dados da carteira do titular são exportáveis.": {
-    "pt": "Executa transações L2, publicando lotes no Ethereum. Compatibilidade permite emissão e transferência BETTEX; o backend acompanha confirmações, concilia eventos com os registros da conta, e chaves e dados são exportáveis pelo titular.",
-    "en": "It executes L2 transactions and publishes batches to Ethereum. Compatibility allows BETTEX issuance and transfers; the backend tracks confirmations, reconciles events with account records, and keys and data are exportable by the holder.",
-    "es": "Ejecuta transacciones en L2 y publica lotes en Ethereum. La compatibilidad permite emisión y transferencia de BETTEX; el backend sigue confirmaciones, concilia eventos con los registros de la cuenta, y las claves y datos son exportables por el titular."
+    "pt": ": executa transações L2, publicando lotes no Ethereum. Compatibilidade permite emissão e transferência BETTEX; o backend acompanha confirmações, concilia eventos com os registros da conta, e chaves e dados são exportáveis pelo titular.",
+    "en": ": executes L2 transactions and publishes batches to Ethereum. Compatibility allows BETTEX issuance and transfers; the backend tracks confirmations, reconciles events with account records, and keys and data are exportable by the holder.",
+    "es": ": ejecuta transacciones en L2 y publica lotes en Ethereum. La compatibilidad permite emisión y transferencia de BETTEX; el backend sigue confirmaciones, concilia eventos con los registros de la cuenta, y las claves y datos son exportables por el titular."
   },
   "Os saldos financeiros, depósitos, saques e distribuições da pessoa são denominados e movimentados em": {
-    "pt": "Saldos, depósitos, saques e distribuições são denominados e movimentados em USDC.",
-    "en": "Balances, deposits, withdrawals, and distributions are denominated and moved in USDC.",
-    "es": "Los saldos, depósitos, retiros y distribuciones se denominan y mueven en USDC."
+    "pt": "Saldos, depósitos, saques e distribuições são denominados e movimentados em",
+    "en": "Balances, deposits, withdrawals, and distributions are denominated and moved in",
+    "es": "Los saldos, depósitos, retiros y distribuciones se denominan y mueven en"
   },
   "para facilitar a leitura. O saque continua em USDC, com referência em dólar: a estimativa não é saldo fiduciário nem valor a receber em moeda local. A entrada com fiat ocorre por provedores externos de on-ramp. Distribuições exigem lucro elegível ao split, considerando posições abertas, conciliação e reservas atendidas.": {
-    "pt": "Saque e distribuições continuam em USDC, com referência em dólar: a estimativa não é saldo fiduciário nem valor a receber em moeda local. A entrada com fiat ocorre por on-ramp externo; distribuições exigem lucro elegível ao split, com posições abertas, conciliação e reservas atendidas.",
-    "en": "Withdrawals and distributions remain in USDC, with a dollar reference: the estimate is not a fiat balance or an amount receivable in local currency. Fiat entry occurs through an external on-ramp; distributions require profit eligible for the split, with open positions, reconciliation, and reserves satisfied.",
-    "es": "Los retiros y distribuciones siguen en USDC, con referencia en dólares: la estimación no es saldo fiduciario ni importe a recibir en moneda local. La entrada en fiat ocurre por un on-ramp externo; las distribuciones exigen beneficio elegible para el split, con posiciones abiertas, conciliación y reservas cumplidas."
+    "pt": ". Saque e distribuições continuam em USDC, com referência em dólar: a estimativa não é saldo fiduciário nem valor a receber em moeda local. A entrada com fiat ocorre por on-ramp externo; distribuições exigem lucro elegível ao split, com posições abertas, conciliação e reservas atendidas.",
+    "en": ". Withdrawals and distributions remain in USDC, with a dollar reference: the estimate is not a fiat balance or an amount receivable in local currency. Fiat entry occurs through an external on-ramp; distributions require profit eligible for the split, with open positions, reconciliation, and reserves satisfied.",
+    "es": ". Los retiros y distribuciones siguen en USDC, con referencia en dólares: la estimación no es saldo fiduciario ni importe a recibir en moneda local. La entrada en fiat ocurre por un on-ramp externo; las distribuciones exigen beneficio elegible para el split, con posiciones abiertas, conciliación y reservas cumplidas."
   },
   "Saldo efetivo em USDC, com valor estimado na moeda fiduciária da pessoa na interface. A estimativa não altera o ativo nem a moeda do saque.": {
     "pt": "O valor exibido em moeda fiduciária é estimativa apenas para referência visual, sem alterar o ativo ou a moeda de saque.",
@@ -100,14 +100,14 @@
     "es": "Las transferencias cripto tienen un valor neto informado. BETTEX no vende USDC ni realiza pagos en moneda local."
   },
   "é o token de participação no staking. Os tokens pertencem ao titular; enviá-los a outra carteira não significa vendê-los ou sacar USDC.": {
-    "pt": "BETTEX é o token de staking. Tokens pertencem ao titular; transferir entre carteiras não é venda ou saque de USDC.",
-    "en": "BETTEX is the staking token. Tokens belong to the holder; transferring between wallets is not a sale or USDC withdrawal.",
-    "es": "BETTEX es el token de staking. Los tokens pertenecen al titular; transferir entre carteras no es una venta o retiro de USDC."
+    "pt": "é o token de staking. Tokens pertencem ao titular; transferir entre carteiras não é venda ou saque de USDC.",
+    "en": "is the staking token. Tokens belong to the holder; transferring between wallets is not a sale or USDC withdrawal.",
+    "es": "es el token de staking. Los tokens pertenecen al titular; transferir entre carteras no es una venta o retiro de USDC."
   },
   "é o ativo dos saldos financeiros, movimentações e créditos de distribuição. Os ativos têm registros separados.": {
-    "pt": "USDC é o ativo para saldos, movimentações e distribuições. Registros de ativos são mantidos separadamente.",
-    "en": "USDC is the asset for balances, transactions, and distributions. Asset records are kept separately.",
-    "es": "USDC es el activo para saldos, transacciones y distribuciones. Los registros de activos se mantienen por separado."
+    "pt": "é o ativo para saldos, movimentações e distribuições. Registros de ativos são mantidos separadamente.",
+    "en": "is the asset for balances, transactions, and distributions. Asset records are kept separately.",
+    "es": "es el activo para saldos, transacciones y distribuciones. Los registros de activos se mantienen por separado."
   },
   "Os serviços devem validar contrato, rede, origem, destino e confirmações antes de reconhecer um depósito ou concluir um saque. O fluxo exige rede e versão compatíveis de USDC; um comprovante fiat do on-ramp não substitui a confirmação do recebimento. Divergências mantêm o movimento pendente até conciliação.": {
     "pt": "Serviços validam contrato, rede, origem, destino, confirmações e versão compatível de USDC antes de depósitos ou saques. Comprovante fiat do on-ramp não substitui confirmação de recebimento; divergências ficam pendentes até conciliação.",
@@ -125,9 +125,9 @@
     "es": "El acceso confirma el control de la billetera, no la identidad civil. La elegibilidad financiera depende de controles específicos de la actividad y territorio."
   },
   "A Carteira BETTEX é a carteira da pessoa criada com a conta no aplicativo oficial; ela pertence ao titular, não à tesouraria do projeto. Ela é livre e portátil:": {
-    "pt": "A Carteira BETTEX é pessoal, criada no app oficial, pertencente ao titular, sendo livre e portátil.",
-    "en": "The BETTEX Wallet is personal, created on the official app, belongs to the holder, and is free and portable.",
-    "es": "La Billetera BETTEX es personal, creada en la app oficial, pertenece al titular, y es libre y portátil."
+    "pt": "A Carteira BETTEX é pessoal, criada no app oficial, pertencente ao titular, sendo livre e portátil:",
+    "en": "The BETTEX Wallet is personal, created on the official app, belongs to the holder, and is free and portable:",
+    "es": "La Billetera BETTEX es personal, creada en la app oficial, pertenece al titular, y es libre y portátil:"
   },
   ". Exportar esses dados não é uma etapa do login e não movimenta, por si só, os tokens.": {
     "pt": "Exportar dados não integra o login e não movimenta tokens.",
@@ -135,19 +135,19 @@
     "es": "Exportar datos no es parte del inicio de sesión y no mueve tokens."
   },
   "demonstra o controle da carteira sem transmitir chave privada ou frase de recuperação ao servidor. O modelo de acesso utiliza dados básicos e as credenciais da carteira, não uma identidade civil verificada. A implementação de referência EVM não define a rede de lançamento: Starknet e Arbitrum One continuam em avaliação, com carteiras e autorizações compatíveis com a rede escolhida.": {
-    "pt": "Demonstra controle da carteira sem transmitir chaves privadas. O acesso usa dados básicos, não identidade civil verificada. A implementação de referência EVM não define a rede de lançamento: Starknet e Arbitrum One seguem em avaliação, com carteiras e autorizações compatíveis com a rede escolhida.",
-    "en": "It demonstrates wallet control without transmitting private keys. Access uses basic data, not verified civil identity. The EVM reference implementation does not define the launch network: Starknet and Arbitrum One remain under evaluation, with wallets and authorizations compatible with the chosen network.",
-    "es": "Demuestra control de la billetera sin transmitir claves privadas. El acceso usa datos básicos, no identidad civil verificada. La implementación de referencia EVM no define la red de lanzamiento: Starknet y Arbitrum One siguen en evaluación, con billeteras y autorizaciones compatibles con la red elegida."
+    "pt": "demonstra controle da carteira sem transmitir chaves privadas. O acesso usa dados básicos, não identidade civil verificada. A implementação de referência EVM não define a rede de lançamento: Starknet e Arbitrum One seguem em avaliação, com carteiras e autorizações compatíveis com a rede escolhida.",
+    "en": "demonstrates wallet control without transmitting private keys. Access uses basic data, not verified civil identity. The EVM reference implementation does not define the launch network: Starknet and Arbitrum One remain under evaluation, with wallets and authorizations compatible with the chosen network.",
+    "es": "demuestra control de la billetera sin transmitir claves privadas. El acceso usa datos básicos, no identidad civil verificada. La implementación de referencia EVM no define la red de lanzamiento: Starknet y Arbitrum One siguen en evaluación, con billeteras y autorizaciones compatibles con la red elegida."
   },
   ": a pessoa contrata a conversão para USDC no ambiente do provedor. Isso não cria um saldo fiat na BETTEX nem um serviço de saque fiduciário. A autenticação na BETTEX comprova o controle da carteira e não autoriza, por si só, uma movimentação.": {
-    "pt": "Contratação de conversão para USDC ocorre no provedor, sem saldo fiat ou serviço de saque na BETTEX. Autenticação apenas comprova o controle da carteira.",
-    "en": "Conversion to USDC is contracted at the provider, with no fiat balance or withdrawal service at BETTEX. Authentication only proves wallet control.",
-    "es": "La contratación de conversión a USDC ocurre en el proveedor, sin saldo fiat o servicio de retiro en BETTEX. La autenticación solo comprueba el control de la billetera."
+    "pt": ": contratação de conversão para USDC ocorre no provedor, sem saldo fiat ou serviço de saque na BETTEX. Autenticação apenas comprova o controle da carteira.",
+    "en": ": conversion to USDC is contracted at the provider, with no fiat balance or withdrawal service at BETTEX. Authentication only proves wallet control.",
+    "es": ": la contratación de conversión a USDC ocurre en el proveedor, sin saldo fiat o servicio de retiro en BETTEX. La autenticación solo comprueba el control de la billetera."
   },
   "ocorre em seu próprio aplicativo ou ambiente, conforme suas regras. Esses processos são separados do login e da recuperação de acesso por carteira. A verificação do provedor não substitui automaticamente controles exigidos da BETTEX; acesso autenticado não é autorização para oferta ou operação financeira.": {
-    "pt": "Processos do provedor ocorrem em seu ambiente próprio, separados do login BETTEX. Verificação externa não substitui controles internos; acesso não autoriza operações financeiras.",
-    "en": "Provider processes occur in their own environment, separate from BETTEX login. External verification does not replace internal controls; access does not authorize financial operations.",
-    "es": "Los procesos del proveedor ocurren en su propio entorno, separados del inicio de sesión de BETTEX. La verificación externa no sustituye controles internos; el acceso no autoriza operaciones financieras."
+    "pt": "ocorre no ambiente do provedor, separado do login BETTEX. Verificação externa não substitui controles internos; acesso não autoriza operações financeiras.",
+    "en": "takes place in the provider’s environment, separate from BETTEX login. External verification does not replace internal controls; access does not authorize financial operations.",
+    "es": "tiene lugar en el entorno del proveedor, separado del inicio de sesión de BETTEX. La verificación externa no sustituye controles internos; el acceso no autoriza operaciones financieras."
   },
   "A integração financeira acompanha o on-ramp e concilia o USDC efetivamente recebido na rede, sem confundir pagamento fiat ao provedor, confirmação cripto e verificação de identidade. O backend valida a solicitação, o vínculo com a conta, a autorização e o saldo antes de registrar o efeito financeiro. Cada confirmação deve ser processada de forma idempotente, para que mensagens repetidas ou retomadas de serviço não creditem nem transfiram duas vezes.": {
     "pt": "A integração concilia USDC na rede, distinguindo pagamento fiat, confirmação cripto e identidade. O backend valida vínculo, autorização e saldo antes de registrar, garantindo idempotência contra mensagens repetidas.",
@@ -195,9 +195,9 @@
     "es": "Un asiento exige identificador único, cuenta, activo, red, origen, destino, valores, estado y referencia externa. La confirmación on-chain genera un registro único e idempotente; registrar no equivale a transferencia concluida."
   },
   "no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria. O mint inicial financia o projeto e fica separado dessa destinação. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida.": {
-    "pt": "App entrega apenas tokens liberados. 100% do preço USDC vai à tesouraria. Mint inicial financia o projeto. Venda a corretoras exige conciliação.",
-    "en": "App delivers only released tokens. 100% of USDC price goes to treasury. Initial mint funds the project. Sales to brokers require reconciliation.",
-    "es": "La app entrega solo tokens liberados. 100% del precio en USDC va a la tesorería. El mint inicial financia el proyecto. La venta a corretoras requiere conciliación."
+    "pt": "no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço em USDC vai à tesouraria. O mint inicial financia o projeto, separado dessa destinação. Venda a corretoras exige entrega e conciliação, sem presumir integração.",
+    "en": "through the app or directly to brokers delivers only released tokens. 100% of the price paid in USDC goes to the treasury. The initial mint funds the project separately from this allocation. Sales to brokers require delivery and reconciliation; an integration is not presumed.",
+    "es": "en la app o directamente a plataformas de intercambio entrega solo tokens liberados. El 100% del precio en USDC va a la tesorería. El mint inicial financia el proyecto, separado de esta asignación. La venta a plataformas de intercambio requiere entrega y conciliación; no se presume una integración."
   },
   "A conciliação compara USDC recebido, incluindo entradas por on-ramp, saldos e movimentos dos dois ativos, resultados por mercado, custos, reservas e obrigações em USDC. Cada conector informa origem, horário e estado; a visão consolidada permite verificar o risco global. Diferenças devem congelar o fluxo afetado e gerar investigação, nunca saldo artificial. Monitoramento, auditoria e alertas são requisitos operacionais.": {
     "pt": "Conciliação compara USDC recebido, inclusive por on-ramp, saldos e movimentos dos dois ativos, resultados por mercado, custos, reservas e obrigações. Cada conector informa origem, horário e estado; diferenças congelam o fluxo e exigem investigação, com monitoramento, auditoria e alertas.",
@@ -470,9 +470,9 @@
     "es": "Consulta de cotizaciones y precios de compra/venta de criptoactivos. Acceso solo lectura."
   },
   "A IA BETTEX orquestra agentes com responsabilidades distintas. A comunicação é bidirecional: BETTEX define prioridades e pede análises; agentes propõem oportunidades, respondem e refinam. Tesouraria e governança acompanham os mesmos dados conciliados e a mesma versão de política.": {
-    "pt": "IA BETTEX coordena agentes com comunicação bidirecional: define prioridades, pede análises, e agentes respondem e refinam. Tesouraria e governança acompanham dados conciliados e a mesma versão de política.",
-    "en": "BETTEX AI coordinates agents with bidirectional communication: it sets priorities, requests analyses, and agents respond and refine. Treasury and governance follow reconciled data and the same policy version.",
-    "es": "La IA BETTEX coordina agentes con comunicación bidireccional: define prioridades, pide análisis, y los agentes responden y refinan. Tesorería y gobernanza siguen datos conciliados y la misma versión de política."
+    "pt": "Na evolução DeFAI, BETTEX coordenará agentes de trading, tesouraria, risco e governança: define prioridades, pede análises, e agentes propõem, respondem e refinam. Todos usam dados conciliados e a mesma versão de política.",
+    "en": "In the evolution toward DeFAI, BETTEX will coordinate trading, treasury, risk and governance agents: it sets priorities, requests analyses, and agents propose, respond and refine. All use reconciled data and the same policy version.",
+    "es": "En la evolución hacia DeFAI, BETTEX coordinará agentes de trading, tesorería, riesgo y gobernanza: define prioridades, pide análisis, y los agentes proponen, responden y refinan. Todos usan datos conciliados y la misma versión de política."
   },
   "Cruza sinais com liquidez e exposição; Robinhood é possível canal cripto, não acesso presumido a ações.": {
     "pt": "Cruza sinais com liquidez e exposição; Robinhood é canal cripto, sem acesso presumido a ações.",
@@ -485,9 +485,9 @@
     "es": "Flujo: entrada → consulta/respuesta → análisis bidireccional → propuesta → validación independiente → ejecución y conciliación. Cada operación registra datos, horario, versión, capital, costos, motivo y estado."
   },
   "Compromissos simultâneos são registrados indivisivelmente antes do envio; repetição não cria outra ordem. Conciliação devolve estados e resultados aos agentes e à tesouraria. Mudanças de política seguem": {
-    "pt": "Compromissos são registrados indivisivelmente antes do envio; repetição não gera nova ordem. Conciliação reporta estados e resultados aos agentes e tesouraria. Mudanças de política seguem a governança aplicável.",
-    "en": "Commitments are recorded indivisibly before submission; repetition does not generate a new order. Reconciliation reports statuses and results to agents and the treasury. Policy changes follow the applicable governance.",
-    "es": "Los compromisos se registran de forma indivisible antes del envío; la repetición no genera una nueva orden. La conciliación reporta estados y resultados a los agentes y a la tesorería. Los cambios de política siguen la gobernanza aplicable."
+    "pt": "Compromissos são registrados indivisivelmente antes do envio; repetição não gera nova ordem. Conciliação reporta estados e resultados aos agentes e tesouraria. Mudanças de política seguem a",
+    "en": "Commitments are recorded indivisibly before submission; repetition does not generate a new order. Reconciliation reports statuses and results to agents and the treasury. Policy changes follow",
+    "es": "Los compromisos se registran de forma indivisible antes del envío; la repetición no genera una nueva orden. La conciliación reporta estados y resultados a los agentes y a la tesorería. Los cambios de política siguen la"
   },
   "Oferta aceita ou rejeitada com memória de cálculo; não inferir lucro pelo bônus nominal.": {
     "pt": "Oferta aceita ou rejeitada inclui memória de cálculo. Não inferir lucro futuro baseado apenas no bônus nominal.",
@@ -635,9 +635,9 @@
     "es": "El 10% del mint inicial es separado y no adelanta tramos mensuales. El lanzamiento del sistema está previsto para esta etapa, sujeto a adecuación legal."
   },
   ": 550 milhões para a comunidade, 200 milhões para fundador/equipe e 150 milhões para investidores. No mês 24, essas três destinações estarão integralmente liberadas. O teto de 100 milhões do mint inicial completa a alocação máxima de 1 bilhão, mas não representa tokens já emitidos ou vendidos.": {
-    "pt": "Destinação: 550M comunidade, 200M equipe, 150M investidores, liberados integralmente no mês 24. Teto de 100M do mint completa 1 bilhão, não significando emissão ou venda.",
-    "en": "Allocation: 550M community, 200M team, 150M investors, fully released by month 24. 100M mint cap completes 1 billion, not meaning emission or sale.",
-    "es": "Destino: 550M comunidad, 200M equipo, 150M inversores, liberados integralmente en el mes 24. El tope de 100M del mint completa 1 mil millones, sin representar emisión o venta."
+    "pt": ". Destinação: 550M comunidade, 200M equipe, 150M investidores, liberados integralmente no mês 24. Teto de 100M do mint completa 1 bilhão, não significando emissão ou venda.",
+    "en": ". Allocation: 550M community, 200M team, 150M investors, fully released by month 24. 100M mint cap completes 1 billion, not meaning emission or sale.",
+    "es": ". Destino: 550M comunidad, 200M equipo, 150M inversores, liberados integralmente en el mes 24. El tope de 100M del mint completa 1 mil millones, sin representar emisión o venta."
   },
   "As 24 parcelas mantêm a proporção 55:20:15, equivalente a 11:4:3, com pequenos ajustes de arredondamento para tokens inteiros. A agenda mostra": {
     "pt": "24 parcelas mantêm proporção 55:20:15 (11:4:3) com ajustes de arredondamento. A agenda detalha:",
@@ -645,9 +645,9 @@
     "es": "24 cuotas mantienen la proporción 55:20:15 (11:4:3) con ajustes de redondeo. La agenda muestra:"
   },
   ". A gestão não altera meses ou quantidades conforme reservas. Preço, janela e destino dos tokens não mintados na oferta inicial permanecem a definir; não são transferidos automaticamente para este vesting.": {
-    "pt": "Gestão não altera meses ou quantidades por reservas. Preço, janela e destino dos tokens não mintados na oferta inicial permanecem a definir; não são transferidos para este vesting.",
-    "en": "Management does not alter months or quantities due to reserves. The price, window, and destination of tokens not minted in the initial offer remain to be defined; they are not transferred into this vesting.",
-    "es": "La gestión no altera meses ni cantidades por reservas. El precio, la ventana y el destino de los tokens no acuñados en la oferta inicial quedan por definir; no se transfieren a este vesting."
+    "pt": ". Gestão não altera meses ou quantidades por reservas. Preço, janela e destino dos tokens não mintados na oferta inicial permanecem a definir; não são transferidos para este vesting.",
+    "en": ". Management does not alter months or quantities due to reserves. The price, window, and destination of tokens not minted in the initial offer remain to be defined; they are not transferred into this vesting.",
+    "es": ". La gestión no altera meses ni cantidades por reservas. El precio, la ventana y el destino de los tokens no acuñados en la oferta inicial quedan por definir; no se transfieren a este vesting."
   },
   "Quantidades em BETTEX · vesting a partir de março de 2027 · mint inicial separado": {
     "pt": "Quantidades BETTEX via vesting de março de 2027, mantendo mint inicial separado.",
@@ -815,9 +815,9 @@
     "es": "El token no garantiza propiedad o voto en la tesorería. La dirección DeFi mantiene riesgos y responsabilidades."
   },
   "A participação é automática, sem ativação nem depósito. Tokens ainda bloqueados no vesting e o estoque de venda não participam.": {
-    "pt": "A participação é automática, sem ativação ou depósito. Tokens bloqueados no vesting e estoque de venda não participam.",
-    "en": "Participation is automatic, with no activation or deposit. Tokens still locked in vesting and sale inventory do not participate.",
-    "es": "La participación es automática, sin activación ni depósito. Los tokens aún bloqueados en vesting y el stock de venta no participan."
+    "pt": "O staking funciona somente dentro do aplicativo BETTEX, com os tokens disponíveis na Carteira BETTEX do app. A participação é automática, sem ativação ou depósito. Tokens bloqueados no vesting e estoque de venda não participam.",
+    "en": "Staking works only within the BETTEX app, with tokens available in the app's BETTEX Wallet. Participation is automatic, with no activation or deposit. Tokens still locked in vesting and sale inventory do not participate.",
+    "es": "El staking funciona únicamente dentro de la aplicación BETTEX, con los tokens disponibles en la Cartera BETTEX de la app. La participación es automática, sin activación ni depósito. Los tokens aún bloqueados en vesting y el stock de venta no participan."
   },
   "BETTEX disponível na carteira, auto staking e rateio diário por quantidade e tempo, pago na Carteira USDC": {
     "pt": "BETTEX disponível na carteira, auto staking e rateio diário por quantidade e tempo, pago na Carteira USDC",
@@ -940,9 +940,9 @@
     "es": "En la siguiente ronda, si ambos tienen 1.000 BETTEX elegibles en la apertura y sin salida, cada uno tendrá 24.000 token-horas. Con nuevo lucro elegible de 1.000 USDC, cada uno recibe 125 USDC brutos de la nueva parcela de 250. Esto no paga ningún lucro de la ronda anterior."
   },
   "A parcela de staking corresponde a 25% do lucro elegível realizado e conciliado da própria rodada, após os custos efetivos da rodada, com reservas e liquidez atendidas antes e depois dos desembolsos. Outros 50% ficam na tesouraria e 25% vão à": {
-    "pt": "Parcela de staking é 25% do lucro elegível realizado e conciliado da própria rodada, após custos efetivos, com reservas e liquidez atendidas antes e depois dos desembolsos. Outros 50% vão à tesouraria e 25% à recompra.",
-    "en": "The staking portion is 25% of the round’s own eligible profit, realized and reconciled, after actual costs, with reserves and liquidity satisfied before and after disbursements. Another 50% goes to the treasury and 25% to buyback.",
-    "es": "La porción de staking es el 25% del beneficio elegible de la propia ronda, realizado y conciliado, tras costos efectivos, con reservas y liquidez cumplidas antes y después de los desembolsos. Otro 50% va a la tesorería y 25% a la recompra."
+    "pt": "Parcela de staking é 25% do lucro elegível realizado e conciliado da própria rodada, após custos efetivos, com reservas e liquidez atendidas antes e depois dos desembolsos. Outros 50% vão à tesouraria e 25% à",
+    "en": "The staking portion is 25% of the round’s own eligible profit, realized and reconciled, after actual costs, with reserves and liquidity satisfied before and after disbursements. Another 50% goes to the treasury and 25% to",
+    "es": "La porción de staking es el 25% del beneficio elegible de la propia ronda, realizado y conciliado, tras costos efectivos, con reservas y liquidez cumplidas antes y después de los desembolsos. Otro 50% va a la tesorería y 25% a la"
   },
   "100% permanece na tesouraria, sem parcela de staking ou recompra, crédito acumulado ou divisão por zero.": {
     "pt": "Se não houver split, 100% permanece na tesouraria, sem parcela de staking ou recompra, crédito acumulado ou divisão por zero.",
@@ -1345,9 +1345,9 @@
     "es": "Las fechas son estimadas. Las operaciones dependen de la adecuación regulatoria por territorio."
   },
   "O fundador e o time organizam a administração inicial da comunidade, sem empresa ou fundação. A colaboração é aberta e sem salários. A direção futura é transferir funções a agentes de IA até tornar o agente BETTEX operacionalmente independente e autônomo. Essa autonomia ainda não existe; a evolução exige evidências, mandatos e controles, sem prazo definido.": {
-    "pt": "Time fundador administra sem empresa. A colaboração é aberta e sem salários. O objetivo é a autonomia de IA via agente BETTEX, processo ainda em desenvolvimento, sem prazos e sujeito a evidências, mandatos e controles.",
-    "en": "The founding team administers without a company. Collaboration is open and without salaries. The goal is AI autonomy through the BETTEX agent, still under development, with no deadline and subject to evidence, mandates, and controls.",
-    "es": "El equipo fundador administra sin empresa. La colaboración es abierta y sin salarios. El objetivo es la autonomía de IA mediante el agente BETTEX, aún en desarrollo, sin plazos y sujeto a evidencias, mandatos y controles."
+    "pt": "Time fundador administra sem empresa, em colaboração aberta e sem salários. A direção é migrar de DeFi para DeFAI, transferindo funções à IA rumo à autonomia do BETTEX, ainda futura, sem prazo e sujeita a evidências, mandatos e controles.",
+    "en": "The founding team administers without a company, through open collaboration without salaries. The direction is to migrate from DeFi to DeFAI, transferring functions to AI toward BETTEX autonomy, still a future goal, with no deadline and subject to evidence, mandates and controls.",
+    "es": "El equipo fundador administra sin empresa, con colaboración abierta y sin salarios. La dirección es migrar de DeFi a DeFAI, transfiriendo funciones a la IA hacia la autonomía de BETTEX, aún futura, sin plazo y sujeta a evidencias, mandatos y controles."
   },
   "A participação da comunidade nas decisões ainda será delimitada. Não há DAO, voto por token ou renúncia de ownership definidos.": {
     "pt": "Decisões comunitárias seguem indefinidas, sem estrutura de DAO, voto por token ou renúncia de propriedade.",
@@ -1540,9 +1540,9 @@
     "es": "Los lanzamientos deben adaptarse a la normativa local. Los agentes y funcionalidades dependen de la investigación técnico-legal y el cumplimiento de los requisitos, independientemente de las fechas en el roadmap."
   },
   "A análise identifica o país de oferta, o público atendido, a atividade, seus responsáveis e os provedores. Oferta e execução são avaliadas separadamente; uma permissão em um país não autoriza atuação em outro. Se uma atividade exigir licença ou autorização, ela não será liberada antes de cumprir essas condições.": {
-    "pt": "A análise é individual por país, atividade e responsável. Permissões não são universais; atividades sujeitas a licenciamento não serão liberadas sem a devida autorização.",
-    "en": "Analysis is individual per country, activity, and responsible party. Permissions are not universal; activities subject to licensing will not be released without proper authorization.",
-    "es": "El análisis es individual por país, actividad y responsable. Los permisos no son universales; las actividades sujetas a licencias no serán liberadas sin la debida autorización."
+    "pt": "Agentes de trading, governança, risco e tesouraria exigem análise por país, atividade e responsável. Permissões não são universais; atividades sujeitas a licenciamento só são liberadas com autorização.",
+    "en": "Trading, governance, risk and treasury agents require analysis by country, activity and responsible party. Permissions are not universal; activities requiring licensing are released only with authorization.",
+    "es": "Los agentes de trading, gobernanza, riesgo y tesorería requieren un análisis por país, actividad y responsable. Los permisos no son universales; las actividades sujetas a licencia solo se habilitan con autorización."
   },
   "A investigação verifica fontes oficiais, vigência e alcance das normas, licenças e autorizações necessárias, termos dos provedores, publicidade, proteção do usuário, identificação e prevenção à lavagem de dinheiro, proteção de dados e responsabilidades aplicáveis. Os responsáveis jurídicos e técnicos registram as evidências, a data da análise, as condições e os controles exigidos.": {
     "pt": "Investigações verificam normas, licenças, termos, publicidade, proteção ao usuário, PLD, privacidade e responsabilidades, com registro formal de evidências, datas e controles exigidos.",
@@ -2325,9 +2325,9 @@
     "es": "La gobernanza evoluciona mediante versiones documentadas con historial, competencias y pruebas. Las nuevas versiones sustituyen a las anteriores; los cambios no son retroactivos ni afectan el vesting."
   },
   "O agente de governança acompanha desvios e conflitos, organiza o histórico e propõe ajustes. A administração aprova a política; mudanças de custódia e poderes passam pelo multisig e pela espera aplicável. Monitoramento identifica incidentes, pausa os fluxos afetados e exige conciliação e autorização para retomar. Reversão de código ou política é uma nova mudança registrada; não desfaz automaticamente transações irreversíveis.": {
-    "pt": "Agente de governança ajusta políticas. Administração aprova e multisig valida mudanças de custódia. Incidentes pausam fluxos para conciliação. Reversões são novos registros, sem desfazer transações.",
-    "en": "Governance agent adjusts policies. Administration approves and multisig validates custody changes. Incidents pause flows for reconciliation. Reversions are new records, without undoing transactions.",
-    "es": "El agente de gobernanza ajusta políticas. La administración aprueba y el multisig valida los cambios de custodia. Los incidentes detienen flujos para conciliación. Las reversiones son nuevos registros, sin deshacer transacciones."
+    "pt": "Agente de governança propõe políticas; administração aprova. Custódia e poderes exigem multisig e espera aplicável. Incidentes pausam fluxos até conciliação e autorização. Reversões são novos registros, sem desfazer transações.",
+    "en": "The governance agent proposes policies; administration approves. Custody and authority require multisig and the applicable waiting period. Incidents pause flows until reconciliation and authorization. Reversions are new records, without undoing transactions.",
+    "es": "El agente de gobernanza propone políticas; la administración aprueba. Custodia y facultades requieren multisig y la espera aplicable. Los incidentes detienen flujos hasta la conciliación y autorización. Las reversiones son nuevos registros, sin deshacer transacciones."
   },
   "Uma proposta de reduzir exposição registra a versão atual, parâmetros sugeridos, testes com dados de referência e impacto nas ordens existentes. A aprovação define o escopo; alterações sensíveis aguardam ao menos 24 horas. A versão entra em vigor somente após execução conferida. Falha mantém os bloqueios pertinentes e o histórico; a IA não aprova a própria mudança.": {
     "pt": "Uma proposta para reduzir exposição registra versão atual, parâmetros sugeridos, testes com dados de referência e impacto em ordens existentes. A aprovação define o escopo; mudanças sensíveis esperam ao menos 24 horas. A versão vigora só após execução conferida. Falha mantém bloqueios pertinentes e histórico; a IA não aprova a própria mudança.",
@@ -2540,19 +2540,19 @@
     "es": "El modelo opera en rondas diarias UTC. Las pestañas de mercado no crean pools de staking separados."
   },
   "A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA. BETTEX é o token da comunidade, sem empresa ou fundação, sem salários e sem taxas de serviço. Recursos e desenvolvimento têm finalidade comunitária; as carteiras pessoais continuam pertencendo aos seus titulares.": {
-    "pt": "BETTEX é comunidade DeFi aberta sem empresa, fundação, salários ou taxas. Recursos visam o coletivo; carteiras seguem sob custódia dos titulares.",
-    "en": "BETTEX is an open DeFi community with no company, foundation, salaries, or service fees. Resources serve the collective; wallets remain under holders’ custody.",
-    "es": "BETTEX es una comunidad DeFi abierta sin empresa, fundación, salarios ni tarifas de servicio. Los recursos sirven al colectivo; las billeteras siguen bajo custodia de sus titulares."
+    "pt": "Hoje, BETTEX reúne DeFi e IA, com administração inicial dos fundadores. A visão é substituir toda a administração por IA ao longo do tempo e tornar-se totalmente DeFAI. O token é comunitário, sem empresa, fundação, salários ou taxas. Recursos têm finalidade coletiva; carteiras continuam pessoais.",
+    "en": "Today, BETTEX combines DeFi and AI, with founders initially handling administration. The vision is to replace all administration with AI over time and become fully DeFAI. The token is community-based, without a company, foundation, salaries or service fees. Resources serve the collective; wallets remain personal.",
+    "es": "Hoy, BETTEX reúne DeFi e IA, con administración inicial de los fundadores. La visión es sustituir toda la administración por IA con el tiempo y convertirse en una comunidad totalmente DeFAI. El token es comunitario, sin empresa, fundación, salarios ni tarifas. Los recursos sirven al colectivo; las billeteras siguen siendo personales."
   },
   "Os fundadores administram inicialmente e mantêm o domínio dos contratos. Funções passam gradualmente à IA, com evidências e limites, sem prazo definido. Isso não transfere o domínio dos contratos.": {
-    "pt": "Fundadores gerem contratos inicialmente, com transição gradual para IA sem prazo. A gestão da IA não implica transferência de controle contratual.",
-    "en": "Founders manage contracts initially, with a gradual transition to AI without a deadline. AI management does not imply a transfer of contractual control.",
-    "es": "Los fundadores gestionan los contratos inicialmente, con una transición gradual a IA sin fecha límite. La gestión de la IA no implica transferencia de control contractual."
+    "pt": "Os fundadores administram inicialmente. A transição gradual substituirá toda a administração por IA, tornando a BETTEX totalmente DeFAI, com evidências e limites, sem prazo definido. Isso não implica transferência do domínio dos contratos.",
+    "en": "Founders initially handle administration. The gradual transition will replace all administration with AI, making BETTEX fully DeFAI, with evidence and limits and no set deadline. This does not imply a transfer of contract ownership.",
+    "es": "Los fundadores administran inicialmente. La transición gradual sustituirá toda la administración por IA, haciendo a BETTEX totalmente DeFAI, con evidencias y límites, sin fecha definida. Esto no implica transferir el dominio de los contratos."
   },
   "O fundador e o time organizam a administração inicial da comunidade. Agentes de IA assumirão gradualmente funções até tornar o agente BETTEX operacionalmente independente e autônomo. Esse objetivo é futuro e não elimina controles ou responsabilidades aplicáveis.": {
-    "pt": "Fundadores organizam a gestão inicial até que agentes de IA tornem o BETTEX autônomo, mantendo controles e responsabilidades vigentes.",
-    "en": "Founders organize initial management until AI agents make BETTEX autonomous, while maintaining current controls and responsibilities.",
-    "es": "Los fundadores organizan la gestión inicial hasta que los agentes de IA hagan a BETTEX autónomo, manteniendo controles y responsabilidades vigentes."
+    "pt": "Fundadores iniciam a gestão. A direção DeFAI prevê agentes de trading, governança, risco e tesouraria rumo à autonomia do BETTEX, com controles e responsabilidades vigentes.",
+    "en": "Founders initiate management. The DeFAI direction envisions trading, governance, risk and treasury agents toward BETTEX autonomy, with current controls and responsibilities.",
+    "es": "Los fundadores inician la gestión. La dirección DeFAI prevé agentes de trading, gobernanza, riesgo y tesorería hacia la autonomía de BETTEX, con los controles y responsabilidades vigentes."
   },
   "Transparência, responsabilidade e prestação de contas orientam a operação, sem renda ou proteção de capital garantidas.": {
     "pt": "A operação foca em transparência e prestação de contas, sem garantia de proteção de capital ou rendimentos.",

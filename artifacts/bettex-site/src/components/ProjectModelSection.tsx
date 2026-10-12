@@ -276,7 +276,7 @@ export function ProjectModelSection() {
             <button type="button" className="pm-nav-btn" onClick={() => goTo(active + 1)} disabled={active === STEP_COUNT - 1} aria-label="Próxima etapa" data-testid="button-proxima-etapa"><ArrowRight size={18} aria-hidden="true" /></button>
           </div>
           <div className="pm-panel-foot">
-            <p>Sem lucro elegível não há distribuição, e os resultados não são garantidos.</p>
+            <p>Sem lucro elegível não há distribuição, e os resultados não são garantidos.{' '}<span>Mercados proibidos no seu país de origem são desabilitados automaticamente.</span></p>
           </div>
         </div>
         <CommunityCTA source="participacao" label="Entre na comunidade" note="Tire dúvidas antes de participar." className="!justify-end" />

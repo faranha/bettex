@@ -3,6 +3,24 @@ name: Mint público da comunidade e vesting
 description: Mint inicial aberto de 10% a preço fixo; sistema e vesting de 24 meses previstos para março de 2027.
 ---
 
+As atualizações do roadmap devem manter homepage, Pitch e documentação alinhados, inclusive o destino do mint à base da tesouraria e a descrição de ALFA e vesting.
+
+**Why:** O criador reiterou “nao esqueca de atualizar o roadmap no pitch assim como atualizou na homepage e tambem na documentação”.
+
+**How to apply:** Usar a mesma redação aprovada dos marcos nos três roadmaps e nas traduções. A autorização atual abrange a sincronização do Pitch e da documentação com a homepage, não alterações em outros blocos.
+
+No cartão do mint público inicial de 10% no Pitch, não apresentar a frase sobre execução própria ou por launchpad parceiro e adequação legal da oferta.
+
+**Why:** O criador pediu remover expressamente essa frase do cartão.
+
+**How to apply:** Preservar essa remoção editorial nas traduções do cartão, sem alterar as condições reais da oferta ou as referências técnicas em outros documentos.
+
+O valor arrecadado no mint público formará a base da tesouraria.
+
+**Why:** O criador pediu explicitar esse destino dos recursos no cartão “Mint público”.
+
+**How to apply:** Preservar essa finalidade ao apresentar a captação, sem inventar valor arrecadado, proporções adicionais ou captação já concluída.
+
 O criador definiu quatro destinações separadas: **10% para mint público inicial**, **55% para comunidade no vesting**, **20% para fundador/equipe** e **15% para investidores**. O mint é aberto: qualquer pessoa pode mintar por preço fixo, observadas as condições legais da oferta. Financia o projeto e pode ser executado pela própria BETTEX ou por um launchpad parceiro.
 
 **Why:** O criador confirmou o mint aberto a preço fixo e corrigiu expressamente o agrupamento do mint com a comunidade: “sobra no total 55% pra comunidade, não 65”.

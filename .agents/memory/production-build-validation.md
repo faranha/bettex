@@ -15,6 +15,14 @@ Changes to the isolated demo's translated UI also need both demo and site locali
 
 **How to apply:** Check the distinct localization scopes whenever editing rendered labels or translation declarations. Keep SVG rendering attributes out of prose catalogs instead of inventing translations for them. Run the complete production build before saying a publishing failure is resolved.
 
+## SSR image preloads
+
+React's server renderer can hoist preload links for eager images into the rendered root, beyond the image elements themselves.
+
+**Why:** Adding country flags changed protected structure through extra asset-preload links even though all text remained unchanged.
+
+**How to apply:** Account for emitted resource links when deriving authorized structure changes. Use lazy loading for noncritical, below-the-fold images rather than expanding protected baselines to include unnecessary eager preloads.
+
 ## Published image availability
 
 Do not treat a working preview as proof that the published app serves the same image assets.
@@ -22,3 +30,17 @@ Do not treat a working preview as proof that the published app serves the same i
 **Why:** A wallet image returned an image successfully in development but returned an HTML 404 from the published app. The source artwork was intact.
 
 **How to apply:** First confirm the environment and page URL actually shown in the user's screenshot; deployment metadata alone does not establish that they are viewing production. Obtain the published URL through deployment metadata when appropriate and check the exact image request's HTTP status and content type. Distinguish a missing published asset from a damaged drawing; preserve the original artwork when correcting delivery.
+
+## Published documentation versus current build
+
+When repeated documentation reports contradict passing rendered-text checks, compare the exact paragraphs served by the published site with the current build before making further copy changes.
+
+**Why:** The published site still served joined sentences from an earlier build after spacing had been corrected throughout the workspace. More isolated source edits did not explain the continued screenshots.
+
+**How to apply:** Check actual published HTML through the verified deployment URL, preserving inline concatenation. Do not assume the user's screenshot came from production; distinguish observed published defects from workspace defects and explain when publishing remains necessary. Audit complete documentation without asking the creator to provide each remaining example.
+
+Text-flow checks must distinguish inline prose from spatially separated labels in cards and diagrams.
+
+**Why:** Naive concatenation incorrectly reported fact cards and diagram captions as joined words even though CSS lays out their labels separately.
+
+**How to apply:** Check real prose boundaries and sentence punctuation without inserting artificial spaces; preserve explicit structural layout separation for badges, card labels and captions. Do not rewrite correct diagram text just to silence a text-only scan.

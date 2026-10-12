@@ -8,7 +8,7 @@ Legal and regulatory compliance
 
 Launches must comply with local laws. Agents and features depend on technical-legal investigation and fulfillment of requirements, regardless of roadmap dates.
 
-Analysis is individual per country, activity, and responsible party. Permissions are not universal; activities subject to licensing will not be released without proper authorization.
+Trading, governance, risk and treasury agents require analysis by country, activity and responsible party. Permissions are not universal; activities requiring licensing are released only with authorization.
 
 Investigations verify regulations, licenses, terms, advertising, user protection, AML, privacy, and responsibilities, with formal recording of evidence, dates, and required controls.
 
@@ -44,13 +44,13 @@ The model operates on daily UTC rounds. Market tabs do not create separate staki
 
 Administration and purpose
 
-BETTEX is an open DeFi community with no company, foundation, salaries, or service fees. Resources serve the collective; wallets remain under holders’ custody.
+Today, BETTEX combines DeFi and AI, with founders initially handling administration. The vision is to replace all administration with AI over time and become fully DeFAI. The token is community-based, without a company, foundation, salaries or service fees. Resources serve the collective; wallets remain personal.
 
-Founders manage contracts initially, with a gradual transition to AI without a deadline. AI management does not imply a transfer of contractual control.
+Founders initially handle administration. The gradual transition will replace all administration with AI, making BETTEX fully DeFAI, with evidence and limits and no set deadline. This does not imply a transfer of contract ownership.
 
 Community decisions remain undefined, with no DAO structure, token voting, or ownership renunciation.
 
-Founders organize initial management until AI agents make BETTEX autonomous, while maintaining current controls and responsibilities.
+Founders initiate management. The DeFAI direction envisions trading, governance, risk and treasury agents toward BETTEX autonomy, with current controls and responsibilities.
 
 Operations focus on transparency and accountability, without guarantees of capital protection or yields.
 

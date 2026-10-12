@@ -1,9 +1,21 @@
 ---
 name: Estilo das artes da documentação
-description: Menos esquemas, mais texto e imagens; os desenhos anteriores orientam os poucos diagramas essenciais.
+description: Menos esquemas, mais texto e imagens; bullets para itens e regras; preservar os desenhos essenciais.
 ---
 
+Na documentação, “praticamente todos os itens merecem bullets”; aplicar listas onde fizer sentido.
+
+**Why:** O criador apontou que os blocos de elegibilidade, rodada, peso e entradas/saídas estavam apresentados como parágrafos sem bullets.
+
+**How to apply:** Apresentar grupos de regras, condições e etapas em listas sem perder texto, destaques, links ou condições econômicas. Manter introduções e narrativa em parágrafos quando não forem enumerações. Esta orientação não autoriza mudanças na homepage ou no Pitch.
+
 As novas artes da documentação devem seguir o padrão dos desenhos anteriores, tomando “Agentes de IA e conexões com os mercados” como referência de qualidade. Não substituir esse padrão por caixas retangulares de texto.
+
+No topo da documentação, exibir “Conteúdo administrado pelo Agente de Governança em IA da Bettex” em uma faixa marquee vermelha com texto branco.
+
+**Why:** O criador pediu esse aviso e especificou as cores e o movimento.
+
+**How to apply:** Preservar o aviso nos idiomas da documentação e respeitar movimento reduzido. O aviso trata do conteúdo; não constitui autorização para transferir administração operacional ou financeira à IA, nem para alterar homepage ou Pitch.
 
 Depois da padronização, o criador pediu reduzir o número de esquemas: “Deixa em texto e utilize imagens, mais imagens, menos esquemas”. Texto e imagens devem ser a opção padrão; reservar diagramas para os fluxos essenciais, sem repetir o mesmo esquema para cada agente ou assunto já explicado.
 

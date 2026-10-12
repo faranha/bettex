@@ -8,3 +8,9 @@ O lançamento da solução deve ocorrer já adequado ao ambiente jurídico dos m
 **Why:** O criador exigiu “esse lançamento já vem adequado ao ambiente jurídico” e “toda a investigação técnico-legal pra liberar os agentes de acordo com as possibilidades locais de cada mercado onde vamos atuar”.
 
 **How to apply:** Distinguir regra de lançamento de validação jurídica já concluída. Os exemplos de cassino e prediction markets no Brasil não são prova de proibição vigente; verificar fontes oficiais, vigência, alcance, atividade concreta e exigências locais antes de decidir. Reavaliar em cada expansão e mudança regulatória. Uma permissão estrangeira, API, blockchain ou parceiro não autoriza automaticamente a oferta local ou outras funcionalidades.
+
+Na observação da participação na homepage, manter também: “Mercados proibidos no seu país de origem são desabilitados automaticamente.”
+
+**Why:** O criador forneceu essa frase e pediu acrescentá-la à observação existente.
+
+**How to apply:** Preservar o aviso sobre ausência de distribuição sem lucro elegível e resultados não garantidos. Essa alteração de texto não comprova implementação ou validação jurídica de bloqueios por país.

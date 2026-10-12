@@ -173,10 +173,6 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
 
         {(!figure || figure === '3') && <Figure id="figure-bettex-staking" num="3" title={architectureFigureTitles['3']} lead="BETTEX disponível na carteira participa automaticamente. USDC não entra no cálculo do staking.">
           <Steps steps={fig3} label="BETTEX disponível na carteira, auto staking e rateio diário por quantidade e tempo, pago na Carteira USDC" />
-          <p className="ba-fig__foot">Qualquer saída de BETTEX cancela todos os créditos anteriores ainda não pagos do ciclo, inclusive os autorizados, e zera o peso. Entradas durante a rodada só participam da próxima; não recebem nem o lucro anterior nem o posterior da rodada atual. O rateio usa apenas os saldos elegíveis na abertura e mantidos sem saída. Os ganhos são pagos sempre na Carteira USDC, nunca na Carteira BETTEX.</p>
-          <p className="ba-fig__foot">A piscina exige acesso ao aplicativo, mas não uma sessão continuamente aberta.</p>
-          <p className="ba-fig__foot">Soma dos pesos elegíveis zero impede o split e mantém 100% na tesouraria. Qualquer saída, mesmo parcial, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado.</p>
-          <p className="ba-fig__foot">Cada rodada é única: paga ou não paga. Lucro não distribuído fica na tesouraria e não retorna ao rateio. Resultados e pesos de rodadas diferentes nunca são somados para pagamento.</p>
         </Figure>}
 
         {(!figure || figure === '4') && <Figure id="figure-bettex-ai-contract" num="4" title={architectureFigureTitles['4']} lead="O smart contract do agente de IA BETTEX conecta a tesouraria às regras de operação e autorização do capital.">

@@ -3,6 +3,12 @@ name: Texto do produto sem metaconversa
 description: Evitar comentários editoriais sobre a finalidade do pitch, da documentação e do site.
 ---
 
+No trecho “Participação, mercados e recursos das carteiras” do Pitch, descrever precisamente o staking, suas regras, os mercados e a dinâmica dos agentes em relação à BETTEX como inteligência central, sem citar o demo.
+
+**Why:** O criador apontou que o trecho não explicava esses aspectos e exigiu uma descrição clara do funcionamento, em vez de uma descrição do demo.
+
+**How to apply:** Manter o foco nas regras e na arquitetura do produto nesse trecho e suas traduções; não substituir essa explicação por disponibilidade da interface ou dados ilustrativos. Preservar a distinção entre agentes especializados, inteligência central e controles.
+
 Na legenda da foto de Elon Musk no Pitch, mostrar apenas a fonte com link, sem comentários de enquadramento ou tratamento visual e sem uma sequência de informações bibliográficas.
 
 **Why:** O criador exigiu “Bota a fonte e pronto, acabou”, rejeitando a legenda extensa.

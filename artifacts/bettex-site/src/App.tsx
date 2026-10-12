@@ -27,7 +27,6 @@ import '@/components/hero/MarketCard.css';
 import '@/components/SiteFooter.css';
 import '@/pages/pitch.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
-import { NewEconomySection } from '@/components/NewEconomySection';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
@@ -221,7 +220,7 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
           </div>
           <a href={X_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-testid="link-community-x-footer" className="inline-flex min-h-10 w-fit items-center gap-2 text-sm font-semibold text-[#e1e7f4] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4F1E8]">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="sf-community__icon" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.153h7.594l5.243 6.932 6.064-6.932ZM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644Z" /></svg>
-            <span>Comunidade no X</span>
+            <span>Siga a Bettex no X</span>
           </a>
         </div>
         <nav aria-label="Links do projeto" className="sf-group sf-pages" data-testid="footer-page-navigation">
@@ -315,8 +314,8 @@ function Home() {
               <span className="block">Chega de apostar.</span>{' '}
               <span className="block text-[#F2B632]">Comece a investir.</span>
             </h1>
-            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Um projeto DeFi que constrói um agente de IA para mercados de iGaming, esportes e trading.</h2>
-            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">O token BETTEX conecta você à economia do projeto e à distribuição de resultados, quando houver lucro elegível.</p>
+            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Um agente de IA que opera em mercados de iGaming, esportes e trading por você</h2>
+            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">O token BETTEX conecta você à economia do projeto e você não perde seus tokens mesmo em dias ruins</p>
             <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
               <span>Entenda o projeto</span>
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/20" aria-hidden="true"><ArrowDown size={22} strokeWidth={2.2} /></span>
@@ -329,7 +328,6 @@ function Home() {
 
       <TechnologyNetworks />
       <HumanStorySection />
-      <NewEconomySection />
 
       <ProjectModelSection />
 

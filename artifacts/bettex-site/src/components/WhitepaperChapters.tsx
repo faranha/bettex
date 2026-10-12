@@ -62,7 +62,7 @@ const legacyChapters = [
   { id: 'documentacao-rede', title: 'Starknet, Arbitrum e ativos', subtitle: 'Redes em avaliação, carteira do titular, USDC e entrada por on-ramp externo.' },
   { id: 'documentacao-acesso', title: 'Acesso ao aplicativo', subtitle: 'Carteira gerada com a conta, acesso e autorização de ações financeiras.' },
   { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações', subtitle: 'Mapa orquestrado, catálogo de conectores, consultas verificadas e demonstrações por plataforma.' },
-  { id: 'documentacao-agentes', title: 'Agentes de IA', subtitle: 'Orquestradora, tesouraria, quatro mercados, recompra e queima, governança e exemplos de decisão.' },
+  { id: 'documentacao-agentes', title: 'Agentes de IA', subtitle: 'Orquestradora, trading, tesouraria, risco, recompra e queima, governança e decisões.' },
   { id: 'documentacao-emissao', title: 'Token e emissão', subtitle: 'Mint inicial de 10%, comunidade 55%, fundador/equipe 20%, investidores 15% e vesting de 24 meses.' },
   { id: 'documentacao-servicos', title: 'Custos de rede', subtitle: 'Sem taxas de serviço; custos externos da rede não são receita da comunidade.' },
   { id: 'documentacao-staking', title: 'Staking e distribuição de resultados', subtitle: 'Participação automática, quantidade e tempo, rateio, liquidação e encerramento.' },
@@ -83,7 +83,9 @@ export const chapters = [
 export const legacyChapterTitles: ReadonlyMap<string, string> = new Map(legacyChapters.map(ch => [ch.id, ch.title]));
 
 function Prose({ children }: { children: ReactNode }) {
-  return <div className="whitepaper__prose"><p>{children}</p></div>;
+  return <div className="whitepaper__prose">{Array.isArray(children)
+    ? children.map((item, index) => <p key={index}>{item}</p>)
+    : <p>{children}</p>}</div>;
 }
 function Head({ id, children }: { id?: string; children: ReactNode }) {
   return <h3 className="whitepaper__subhead" id={id}>{children}</h3>;
@@ -110,13 +112,13 @@ function MainBody({ id }: { id: string }) {
       return <>
         <ChapterArt n={1} />
         <div className="whitepaper__lead"><p>{c.agP1}</p></div>
-        <Prose>{c.agP2}</Prose><Prose>{c.agP3}</Prose>
+        <Prose>{[c.agP2, c.agP3]}</Prose>
         <DocFacts title={c.agFacts} facts={[
           { label: c.agF1, value: c.agF1v, text: c.agF1t },
           { label: c.agF2, value: c.agF2v, text: c.agF2t },
           { label: c.agF3, value: c.agF3v, text: c.agF3t },
         ]} />
-        <Prose>{c.agP4}</Prose><Prose>{c.agP5}</Prose>
+        <Prose>{[c.agP4, c.agP5]}</Prose>
         <Reference id="documentacao-referencia-agentes" label={c.refAg} parts={[
           { id: 'documentacao-rede', title: 'Starknet, Arbitrum e ativos' }, { id: 'documentacao-acesso', title: 'Acesso ao aplicativo' },
           { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações' }, { id: 'documentacao-agentes-detalhe', title: 'Agentes de IA' },
@@ -164,7 +166,7 @@ function MainBody({ id }: { id: string }) {
     case 'documentacao-riscos':
       return <>
         <ChapterArt n={3} />
-        <Head id="documentacao-governanca">{c.rk1}</Head><Prose>{c.rk1p}</Prose><Prose>{c.rk1q}</Prose>
+        <Head id="documentacao-governanca">{c.rk1}</Head><Prose>{[c.rk1p, c.rk1q]}</Prose>
         <Head id="documentacao-seguranca">{c.rk2}</Head><Prose>{c.rk2p}</Prose>
         <Head id="documentacao-riscos-materiais">{c.rk3}</Head><Prose>{c.rk3p}</Prose>
         <Head id="documentacao-adequacao">{c.rk4}</Head><Prose>{c.rk4p}</Prose>
@@ -264,13 +266,13 @@ function LegacyBody({ id }: { id: string }) {
         </div>
         <Subhead>Starknet: provas de validade e contas nativas</Subhead>
         <div className="whitepaper__prose">
-          <p>A <strong>Starknet</strong> é uma rede de segunda camada do Ethereum que utiliza provas de validade STARK. Seus contratos são desenvolvidos em Cairo e as contas possuem abstração nativa. A alternativa exige implementação, carteiras e testes próprios; contratos Solidity e endereços EVM não são transferidos automaticamente.</p>
+          <p><strong>A Starknet</strong>{' '}é uma rede de segunda camada do Ethereum que utiliza provas de validade STARK. Seus contratos são desenvolvidos em Cairo e as contas possuem abstração nativa. A alternativa exige implementação, carteiras e testes próprios; contratos Solidity e endereços EVM não são transferidos automaticamente.</p>
           <p>Na Starknet, o percurso previsto é: assinatura pela conta compatível → execução na segunda camada → geração da prova de validade → verificação e liquidação no Ethereum. O aplicativo deverá acompanhar eventos confirmados, conciliar USDC e BETTEX separadamente e validar a disponibilidade dos ativos na rede escolhida.</p>
           <p>Referências oficiais: <a href="https://docs.starknet.io/" target="_blank" rel="noopener noreferrer">documentação da Starknet</a> · <a href="https://www.starknet.io/grants/" target="_blank" rel="noopener noreferrer">programas de grants da Starknet</a>.</p>
         </div>
         <Subhead>Arbitrum One: contratos EVM e rollup otimista</Subhead>
         <div className="whitepaper__prose">
-          <p>A <strong>Arbitrum One</strong> é uma rede de segunda camada do Ethereum. Ela amplia a capacidade de processamento e reduz os custos das transações em relação à rede principal, oferecendo uma infraestrutura para contratos inteligentes, tokens e carteiras.</p>
+          <p><strong>A Arbitrum One</strong>{' '}é uma rede de segunda camada do Ethereum. Ela amplia a capacidade de processamento e reduz os custos das transações em relação à rede principal, oferecendo uma infraestrutura para contratos inteligentes, tokens e carteiras.</p>
           <p>Utiliza <strong>optimistic rollups</strong>: executa transações na segunda camada e publica os dados em lotes no Ethereum. A compatibilidade com contratos e carteiras desse ecossistema permite emissão e transferências de BETTEX; o backend acompanha confirmações e concilia os eventos com os registros da conta. As chaves e os dados da carteira do titular são exportáveis.</p>
           <p>Conheça a tecnologia: <a href="https://docs.arbitrum.io/" target="_blank" rel="noopener noreferrer">documentação oficial da Arbitrum</a>.</p>
         </div>
@@ -339,7 +341,7 @@ function LegacyBody({ id }: { id: string }) {
         <div className="whitepaper__prose">
           <p><strong>BETTEX determina a participação no staking; os ganhos são creditados em USDC.</strong> Entradas durante a rodada aguardam a próxima; não recebem nenhum lucro da rodada atual. Qualquer saída de BETTEX, mesmo parcial, zera o peso e cancela os créditos anteriores ainda não pagos. BETTEX não é capital das estratégias dos agentes nem participação societária.</p>
           <p>Cada movimento financeiro em <strong>USDC</strong> deve conter identificador único, conta, ativo, rede, origem, destino, valor bruto, custos, valor líquido, estado e referência externa. Após confirmação da liquidação, os lançamentos correspondentes devem ser registrados juntos e uma única vez. Uma mensagem repetida não pode duplicar os efeitos: o mesmo identificador tem um único efeito contábil. Registrar um movimento não confirma uma transferência on-chain ainda pendente.</p>
-          <p>A <strong>venda dos tokens da comunidade em vesting</strong> no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria. O mint inicial financia o projeto e fica separado dessa destinação. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida.</p><p>{growthStrategy.launch.angelFundingUse} <a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p>
+          <p><strong>A venda dos tokens da comunidade em vesting</strong> no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria. O mint inicial financia o projeto e fica separado dessa destinação. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida.</p><p>{growthStrategy.launch.angelFundingUse} <a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p>
           <p>A conciliação compara USDC recebido, incluindo entradas por on-ramp, saldos e movimentos dos dois ativos, resultados por mercado, custos, reservas e obrigações em USDC. Cada conector informa origem, horário e estado; a visão consolidada permite verificar o risco global. Diferenças devem congelar o fluxo afetado e gerar investigação, nunca saldo artificial. Monitoramento, auditoria e alertas são requisitos operacionais.</p>
         </div>
         <Subhead>Agentes, MCP e APIs de mercado</Subhead>
@@ -414,7 +416,7 @@ function LegacyBody({ id }: { id: string }) {
       </>;
     case 'documentacao-controles':
       return <>
-        <div className="whitepaper__lead"><span>TESOURARIA · AJUSTES SUJEITOS À APROVAÇÃO</span><p><strong>A IA sugere ajustes nas regras da tesouraria e nos controles de risco; as sugestões entram em uma fila para execução e precisam de aprovação da administração do projeto.</strong> O agente da tesouraria propõe otimizações em conjunto com os agentes de investimento, considerando reservas, liquidez e exposição. Essa evolução pode incluir os limites e percentuais apresentados nesta seção, mas nenhuma sugestão altera as regras antes de sua aprovação e execução.</p></div>
+        <div className="whitepaper__lead"><span>TESOURARIA · AJUSTES SUJEITOS À APROVAÇÃO</span><p><strong>A IA sugere ajustes nas regras da tesouraria e nos controles de risco; as sugestões entram em uma fila para execução e precisam de aprovação da administração do projeto.</strong>{' '}O agente da tesouraria propõe otimizações em conjunto com os agentes de investimento, considerando reservas, liquidez e exposição. Essa evolução pode incluir os limites e percentuais apresentados nesta seção, mas nenhuma sugestão altera as regras antes de sua aprovação e execução.</p></div>
         <ReservePolicy />
         <InvestmentRiskBase />
         <BettexFlow figure="5" />

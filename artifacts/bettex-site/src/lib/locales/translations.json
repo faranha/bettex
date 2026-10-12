@@ -55,9 +55,9 @@
     "en": "The indivisible assessment decision fixes the beneficiaries, weights and distribution denominator, also considering exits already confirmed by that decision. Later exits cancel the corresponding credit without recalculating other participants' allocations or redistributing the cancelled amount. The current zeroed weight and the historical calculation record are separate records. Repeating a decision does not create another split.",
     "es": "La decisión indivisible de cálculo fija los beneficiarios, pesos y denominador del reparto, considerando también las salidas ya confirmadas hasta esa decisión. Las salidas posteriores cancelan el crédito correspondiente, sin recalcular el reparto de los demás ni redistribuir el importe cancelado. El peso vigente reducido a cero y el registro histórico del cálculo son registros distintos. Repetir una decisión no crea otro reparto."
   },
-  "Comunidade no X": {
-    "en": "Community on X",
-    "es": "Comunidad en X"
+  "Siga a Bettex no X": {
+    "en": "Follow Bettex on X",
+    "es": "Sigue a Bettex en X"
   },
   "A BETTEX é um projeto DeFi e DEX, sem entidade empresarial, que prevê trading com IA sob mandatos e limites de risco. Pelo staking, o usuário participa do rateio do pool global quando há lucro elegível, sem acompanhar cada operação, financiar o trading ou ter pagamento garantido. A gestão começa com o fundador e o time, com transição gradual para IA condicionada à validação do desempenho e a controles verificáveis.": {
     "en": "BETTEX is a DeFi and DEX project, without a corporate entity, that plans AI trading under mandates and risk limits. Through staking, users participate in distributions from the global pool when eligible profit exists, without following each trade, funding trading or receiving guaranteed payments. Management starts with the founder and team, with a gradual transition to AI subject to performance validation and verifiable controls.",
@@ -978,6 +978,10 @@
     "en": "sale of community vesting tokens",
     "es": "venta de tokens de la comunidad en vesting"
   },
+  "A venda dos tokens da comunidade em vesting": {
+    "en": "The sale of community vesting tokens",
+    "es": "La venta de tokens de la comunidad en vesting"
+  },
   "no aplicativo ou diretamente a corretoras entrega apenas tokens liberados. 100% do preço pago em USDC vai à tesouraria; a tarifa adicional do aplicativo tem destino operacional próprio. O mint inicial financia o projeto e fica separado dessa destinação. A venda a corretoras exige entrega e conciliação específicas, não uma integração presumida.": {
     "en": "in the app or directly to exchanges delivers only released tokens. 100% of the USDC price goes to the treasury; the additional app fee has its own operating destination. The initial mint funds the project and remains separate from this allocation. Sales to exchanges require specific delivery and reconciliation, not assumed integration.",
     "es": "en la aplicación o directamente a plataformas de intercambio entrega solo tokens liberados. El 100% del precio en USDC va a la tesorería; la tarifa adicional de la aplicación tiene destino operativo propio. El mint inicial financia el proyecto y queda separado de esta asignación. La venta a plataformas exige entrega y conciliación específicas, no una integración presumida."
@@ -1249,6 +1253,78 @@
   "Mint aberto a qualquer pessoa, a preço fixo, para financiar o projeto. Execução própria ou por launchpad parceiro, sujeita à adequação legal da oferta.": {
     "en": "Mint open to anyone at a fixed price to fund the project. Operated directly or through a partner launchpad, subject to legal compliance of the offering.",
     "es": "Mint abierto a cualquier persona, a precio fijo, para financiar el proyecto. Ejecución propia o mediante un launchpad asociado, sujeta a la adecuación legal de la oferta."
+  },
+  "Mint aberto a qualquer pessoa, a preço fixo, para financiar o projeto.": {
+    "en": "Mint open to anyone at a fixed price to fund the project.",
+    "es": "Mint abierto a cualquier persona, a precio fijo, para financiar el proyecto."
+  },
+  "Comunidade aberta: de DeFi para DeFAI.": {
+    "en": "An open community: from DeFi to DeFAI.",
+    "es": "Comunidad abierta: de DeFi a DeFAI."
+  },
+  "Comunidade: de DeFi para DeFAI.": {
+    "en": "Community: from DeFi to DeFAI.",
+    "es": "Comunidad: de DeFi a DeFAI."
+  },
+  "A BETTEX é uma comunidade aberta cuja direção é evoluir de DeFi para DeFAI: finanças descentralizadas geridas com agentes de IA. BETTEX é seu token comunitário, não uma ação de empresa ou fundação.": {
+    "en": "BETTEX is an open community whose direction is to evolve from DeFi toward DeFAI: decentralized finance managed with AI agents. BETTEX is its community token, not a share in a company or foundation.",
+    "es": "BETTEX es una comunidad abierta cuya dirección es evolucionar de DeFi hacia DeFAI: finanzas descentralizadas gestionadas con agentes de IA. BETTEX es su token comunitario, no una acción de una empresa o fundación."
+  },
+  "Coordena agentes sob políticas": {
+    "en": "Coordinates agents under policies",
+    "es": "Coordina agentes bajo políticas"
+  },
+  "A migração para DeFAI integra gestão e execução por IA, participação comunitária, regras, autorizações e controles independentes.": {
+    "en": "The migration toward DeFAI combines AI management and execution, community participation, rules, authorizations and independent controls.",
+    "es": "La migración hacia DeFAI integra gestión y ejecución mediante IA, participación comunitaria, reglas, autorizaciones y controles independientes."
+  },
+  "Hoje, BETTEX reúne DeFi e IA, com administração inicial dos fundadores. A visão é substituir toda a administração por IA ao longo do tempo e tornar-se totalmente DeFAI. BETTEX é seu token comunitário, não uma ação de empresa ou fundação.": {
+    "en": "Today, BETTEX combines DeFi and AI, with founders initially handling administration. The vision is to replace all administration with AI over time and become fully DeFAI. BETTEX is its community token, not a share in a company or foundation.",
+    "es": "Hoy, BETTEX reúne DeFi e IA, con administración inicial de los fundadores. La visión es sustituir toda la administración por IA con el tiempo y convertirse en una comunidad totalmente DeFAI. BETTEX es su token comunitario, no una acción de empresa o fundación."
+  },
+  "Hoje somos DeFi e IA. A visão é substituir toda a administração por IA e tornar a BETTEX totalmente DeFAI, preservando participação comunitária, regras, autorizações e controles independentes.": {
+    "en": "Today we combine DeFi and AI. The vision is to replace all administration with AI and make BETTEX fully DeFAI, preserving community participation, rules, authorizations and independent controls.",
+    "es": "Hoy reunimos DeFi e IA. La visión es sustituir toda la administración por IA y hacer a BETTEX totalmente DeFAI, preservando participación comunitaria, reglas, autorizaciones y controles independientes."
+  },
+  "Um coordenador para agentes por mercado e função, sob políticas e autorizações.": {
+    "en": "One coordinator for agents by market and function, under policies and authorizations.",
+    "es": "Un coordinador para agentes por mercado y función, bajo políticas y autorizaciones."
+  },
+  "BETTEX coordenará agentes de trading, governança, risco e tesouraria, com expansão gradual por mercado e função.": {
+    "en": "BETTEX will coordinate trading, governance, risk and treasury agents, with gradual expansion by market and function.",
+    "es": "BETTEX coordinará agentes de trading, gobernanza, riesgo y tesorería, con expansión gradual por mercado y función."
+  },
+  "Mercados, patrimônio, mandatos e limites.": {
+    "en": "Markets, assets, mandates and limits.",
+    "es": "Mercados, patrimonio, mandatos y límites."
+  },
+  "Comparação de oportunidades, reservas, risco e políticas.": {
+    "en": "Comparison of opportunities, reserves, risk and policies.",
+    "es": "Comparación de oportunidades, reservas, riesgo y políticas."
+  },
+  "A tesouraria financia estratégias e mantém reservas, separada das carteiras dos usuários e da recompra. Seu agente apoiará alocação e liquidez sob políticas aprovadas; posições, ordens e obrigações não são saldo livre.": {
+    "en": "The treasury funds strategies and maintains reserves, separate from user wallets and buybacks. Its agent will support allocation and liquidity under approved policies; positions, orders and obligations are not free balances.",
+    "es": "La tesorería financia estrategias y mantiene reservas, separada de las billeteras de los usuarios y de la recompra. Su agente apoyará la asignación y liquidez bajo políticas aprobadas; posiciones, órdenes y obligaciones no son saldo libre."
+  },
+  "Orquestradora, trading, tesouraria, risco, recompra e queima, governança e decisões.": {
+    "en": "Orchestrator, trading, treasury, risk, buyback and burn, governance and decisions.",
+    "es": "Orquestadora, trading, tesorería, riesgo, recompra y quema, gobernanza y decisiones."
+  },
+  "Agente de risco": {
+    "en": "Risk agent",
+    "es": "Agente de riesgo"
+  },
+  "Exposição, perdas, liquidez, limites e propostas.": {
+    "en": "Exposure, losses, liquidity, limits and proposals.",
+    "es": "Exposición, pérdidas, liquidez, límites y propuestas."
+  },
+  "Analisa risco independentemente do trading; propõe limites, sem ampliar permissões.": {
+    "en": "Analyzes risk independently of trading; proposes limits without expanding permissions.",
+    "es": "Analiza el riesgo de forma independiente del trading; propone límites sin ampliar permisos."
+  },
+  "Parecer e alertas; execução sujeita a controles e mandatos aprovados.": {
+    "en": "Assessment and alerts; execution subject to approved controls and mandates.",
+    "es": "Evaluación y alertas; ejecución sujeta a controles y mandatos aprobados."
   },
   "Destinação posterior em vesting de 24 meses, separada dos 10% do mint inicial.": {
     "en": "Subsequent allocation in 24-month vesting, separate from the initial mint's 10%.",
@@ -4114,6 +4190,10 @@
     "en": "Participate through staking and monitor operations without choosing each strategy.",
     "es": "Participar mediante staking y seguir la operación, sin elegir cada estrategia."
   },
+  "Participar pelo staking e acompanhar a operação, discutindo na comunidade cada estratégia.": {
+    "en": "Participate through staking and follow operations, discussing each strategy in the community.",
+    "es": "Participar mediante staking y seguir la operación, discutiendo cada estrategia en la comunidad."
+  },
   "Direito econômico": {
     "en": "Economic entitlement",
     "es": "Derecho económico"
@@ -5758,6 +5838,18 @@
     "en": "GET TO KNOW AI.",
     "es": "CONOCE LA IA."
   },
+  "USE IA CONTRA O SISTEMA,": {
+    "en": "USE AI AGAINST THE SYSTEM,",
+    "es": "USA LA IA CONTRA EL SISTEMA,"
+  },
+  "Mercados proibidos no seu país de origem são desabilitados automaticamente.": {
+    "en": "Markets prohibited in your country of origin are automatically disabled.",
+    "es": "Los mercados prohibidos en tu país de origen se deshabilitan automáticamente."
+  },
+  "ENTRE NA NOSSA COMUNIDADE AGORA": {
+    "en": "JOIN OUR COMMUNITY NOW",
+    "es": "ÚNETE A NUESTRA COMUNIDAD AHORA"
+  },
   "PARTICIPE DA COMUNIDADE.": {
     "en": "JOIN THE COMMUNITY.",
     "es": "PARTICIPA EN LA COMUNIDAD."
@@ -6659,7 +6751,7 @@
     "es": ". La formalización identifica a tres firmantes independientes y sus responsabilidades, sin presumir nombres, vínculos laborales o posiciones internas. Las claves son independientes; dos claves de la misma persona no equivalen a dos controles. La IA y sus ejecutores no son firmantes de custodia."
   },
   ". A interface mostra uma": {
-    "en": ". The interface shows a",
+    "en": ". The interface shows an",
     "es": ". La interfaz muestra una"
   },
   ". A própria reserva e sua exposição entram uma única vez; revalidar não exige reservar novamente o mesmo capital nem somar de novo o compromisso ao acumulado diário. O registro preserva a autorização original e acrescenta a versão, o horário e o resultado da revalidação.": {
@@ -16188,7 +16280,7 @@
   },
   "frações não executáveis do rateio retornam à tesouraria": {
     "en": "non-executable distribution fractions return to the treasury",
-    "es": "las fracciones no ejecutables del reparto regresan a la tesorería"
+    "es": "fracciones no ejecutables del reparto regresan a la tesorería"
   },
   "fresh wallet starts with one exactly credited historical period and a distinct estimate": {
     "en": "fresh wallet starts with one exactly credited historical period and a distinct estimate",
@@ -21850,6 +21942,14 @@
     "en": "A DeFi project building an AI agent for iGaming, sports, and trading markets.",
     "es": "Un proyecto DeFi que construye un agente de IA para mercados de iGaming, deportes y trading."
   },
+  "Um agente de IA que opera em mercados de iGaming, esportes e trading por você": {
+    "en": "An AI agent that operates in iGaming, sports and trading markets for you",
+    "es": "Un agente de IA que opera en mercados de iGaming, deportes y trading por ti"
+  },
+  "O token BETTEX conecta você à economia do projeto e você não perde seus tokens mesmo em dias ruins": {
+    "en": "The BETTEX token connects you to the project’s economy and you don’t lose your tokens even on bad days",
+    "es": "El token BETTEX te conecta con la economía del proyecto y no pierdes tus tokens ni siquiera en días malos"
+  },
   "A BETTEX está construindo um agente de trading com IA para atuar em diferentes mercados. O token BETTEX conecta os usuários à economia do projeto e à distribuição de resultados, quando houver lucro elegível.": {
     "en": "BETTEX is building an AI trading agent to operate in different markets. The BETTEX token connects users to the project economy and to the distribution of results, when there is eligible profit.",
     "es": "BETTEX está construyendo un agente de trading con IA para operar en distintos mercados. El token BETTEX conecta a los usuarios con la economía del proyecto y con la distribución de resultados, cuando haya beneficio elegible."
@@ -22066,6 +22166,34 @@
     "en": "Taking part",
     "es": "Participar"
   },
+  "Participar do Staking": {
+    "en": "Participating in Staking",
+    "es": "Participar en el Staking"
+  },
+  "A Starknet": {
+    "en": "Starknet",
+    "es": "Starknet"
+  },
+  "A Arbitrum One": {
+    "en": "Arbitrum One",
+    "es": "Arbitrum One"
+  },
+  "Conteúdo administrado pelo Agente de Governança em IA da Bettex": {
+    "en": "Content managed by Bettex’s AI Governance Agent",
+    "es": "Contenido administrado por el Agente de Gobernanza con IA de Bettex"
+  },
+  "Pausar aviso em movimento": {
+    "en": "Pause scrolling notice",
+    "es": "Pausar aviso en movimiento"
+  },
+  "Retomar aviso em movimento": {
+    "en": "Resume scrolling notice",
+    "es": "Reanudar aviso en movimiento"
+  },
+  "O staking funciona somente dentro do aplicativo BETTEX, com os tokens disponíveis na Carteira BETTEX do app. A participação é automática, sem ativação ou depósito. Tokens bloqueados no vesting e estoque de venda não participam.": {
+    "en": "Staking works only within the BETTEX app, with tokens available in the app's BETTEX Wallet. Participation is automatic, with no activation or deposit. Tokens still locked in vesting and sale inventory do not participate.",
+    "es": "El staking funciona únicamente dentro de la aplicación BETTEX, con los tokens disponibles en la Cartera BETTEX de la app. La participación es automática, sin activación ni depósito. Los tokens aún bloqueados en vesting y el stock de venta no participan."
+  },
   "Todo BETTEX disponível na carteira oficial participa automaticamente, sem ativação nem depósito. Tokens ainda bloqueados no vesting e o estoque de venda não participam.": {
     "en": "All BETTEX available in the official wallet takes part automatically, with no activation or deposit. Tokens still locked in vesting and the sale stock do not take part.",
     "es": "Todo BETTEX disponible en la cartera oficial participa automáticamente, sin activación ni depósito. Los tokens aún bloqueados en el vesting y el stock de venta no participan."
@@ -22194,6 +22322,54 @@
     "en": "Offer of up to 10% of supply, at a fixed price, under approved rules, terms and eligibility. It does not guarantee the sale of the 10%.",
     "es": "Oferta de hasta el 10% de la emisión, a precio fijo, según reglas, términos y elegibilidad aprobados. No garantiza la venta del 10%."
   },
+  "Oferta de até 10% da emissão, a preço fixo, conforme regras, termos e elegibilidade aprovados.": {
+    "en": "Offer of up to 10% of supply, at a fixed price, under approved rules, terms and eligibility.",
+    "es": "Oferta de hasta el 10% de la emisión, a precio fijo, según reglas, términos y elegibilidad aprobados."
+  },
+  "O valor arrecadado formará a base da tesouraria.": {
+    "en": "The funds raised will form the foundation of the treasury.",
+    "es": "Los fondos recaudados formarán la base de la tesorería."
+  },
+  "Oferta de até 10% da emissão, a preço fixo, conforme regras, termos e elegibilidade aprovados. O valor arrecadado formará a base da tesouraria.": {
+    "en": "Offer of up to 10% of supply, at a fixed price, under approved rules, terms and eligibility. The funds raised will form the foundation of the treasury.",
+    "es": "Oferta de hasta el 10% de la emisión, a precio fijo, según reglas, términos y elegibilidad aprobados. Los fondos recaudados formarán la base de la tesorería."
+  },
+  "24h": {
+    "en": "24h",
+    "es": "24h"
+  },
+  "Ciclo de 24 horas": {
+    "en": "24-hour cycle",
+    "es": "Ciclo de 24 horas"
+  },
+  "Abertura": {
+    "en": "Opening",
+    "es": "Apertura"
+  },
+  "Fechamento": {
+    "en": "Closing",
+    "es": "Cierre"
+  },
+  "Próxima rodada": {
+    "en": "Next round",
+    "es": "Próxima ronda"
+  },
+  "A aquisição de BETTEX conecta a operação à participação do usuário. O mint inicial forma a base da tesouraria; a venda dos tokens da comunidade já liberados amplia esse capital. O saldo elegível define o peso na distribuição em USDC, quando a rodada pode pagar.": {
+    "en": "Acquiring BETTEX connects operations to user participation. The initial mint forms the foundation of the treasury; sales of already released community tokens increase this capital. The eligible balance determines weight in USDC distributions when a round can pay.",
+    "es": "La adquisición de BETTEX conecta la operación con la participación del usuario. El mint inicial forma la base de la tesorería; la venta de los tokens de la comunidad ya liberados amplía ese capital. El saldo elegible define el peso en la distribución en USDC cuando la ronda puede pagar."
+  },
+  "O usuário adquire o token. O valor arrecadado no mint inicial forma a base da tesouraria. A venda primária dos tokens da comunidade já liberados amplia esse capital.": {
+    "en": "The user acquires the token. The funds raised in the initial mint form the foundation of the treasury. Primary sales of community tokens already released increase this capital.",
+    "es": "El usuario adquiere el token. Los fondos recaudados en el mint inicial forman la base de la tesorería. La venta primaria de los tokens de la comunidad ya liberados amplía ese capital."
+  },
+  "Capital formado pelo mint inicial e pelo preço da parcela da comunidade já liberada.": {
+    "en": "Capital formed by the initial mint and the price of the already released community allocation.",
+    "es": "Capital formado por el mint inicial y el precio de la asignación de la comunidad ya liberada."
+  },
+  "mint inicial e venda da comunidade": {
+    "en": "initial mint and community sales",
+    "es": "mint inicial y venta de la comunidad"
+  },
   "PREVISTO · ALFA E VESTING": {
     "en": "PLANNED · ALFA AND VESTING",
     "es": "PREVISTO · ALFA Y VESTING"
@@ -22205,6 +22381,10 @@
   "Sistema e escopo inicial validados, com captação de investidores e início do vesting de 24 meses. Liberação não significa venda ou circulação, nem abre todos os mercados.": {
     "en": "System and initial scope validated, with investor fundraising and the start of the 24-month vesting. Release does not mean sale or circulation, nor does it open all markets.",
     "es": "Sistema y alcance inicial validados, con captación de inversores e inicio del vesting de 24 meses. La liberación no significa venta ni circulación, ni abre todos los mercados."
+  },
+  "Sistema e escopo inicial validados, com captação de investidores e início do vesting de 24 meses.": {
+    "en": "System and initial scope validated, with investor fundraising and the start of the 24-month vesting.",
+    "es": "Sistema y alcance inicial validados, con captación de inversores e inicio del vesting de 24 meses."
   },
   "PREVISTO · BETA": {
     "en": "PLANNED · BETA",
@@ -22261,6 +22441,14 @@
   "v1 · TOKENOMICS, PARTICIPAÇÃO E RISCO": {
     "en": "v1 · TOKENOMICS, PARTICIPATION AND RISK",
     "es": "v1 · TOKENOMICS, PARTICIPACIÓN Y RIESGO"
+  },
+  "v1 · VISÃO, ARQUITETURA E REGRAS": {
+    "en": "v1 · VISION, ARCHITECTURE AND RULES",
+    "es": "v1 · VISIÓN, ARQUITECTURA Y REGLAS"
+  },
+  "BETTEX é uma comunidade dedicada à construção do próprio agente de IA. Esta documentação reflete a visão dos fundadores e os anseios da comunidade, incluindo arquitetura técnica, regras, tokenomics e riscos.": {
+    "en": "BETTEX is a community dedicated to building its own AI agent. This documentation reflects the founders' vision and the community's aspirations, including technical architecture, rules, tokenomics and risks.",
+    "es": "BETTEX es una comunidad dedicada a construir su propio agente de IA. Esta documentación refleja la visión de los fundadores y las aspiraciones de la comunidad, incluyendo arquitectura técnica, reglas, tokenomics y riesgos."
   },
   "A BETTEX é um projeto DeFi que constrói um agente de trading com IA para vários mercados. O token BETTEX organiza a participação econômica e a distribuição de resultados.": {
     "en": "BETTEX is a DeFi project building an AI trading agent for several markets. The BETTEX token organizes economic participation and the distribution of results.",

@@ -8,6 +8,7 @@ const normalize = value => value.replace(/\s+/g, ' ').trim();
 function add(value) {
   value = normalize(value);
   if (/^--[a-z\d_-]+$/i.test(value)) return; // CSS custom-property names are not copy.
+  if (/^[a-z][a-z\d-]*__[a-z\d_-]+$/i.test(value)) return; // BEM CSS class names are structural, not prose.
   if (value === 'correlationId') return; // History URL/API field name, never user-facing copy.
   if (/^documentacao-[\w-]+$|^-(en|es)$/.test(value)) return; // Routing ids and localized filename suffixes.
   if (!value || !/[A-Za-zÀ-ÿ]/.test(value) || /^https?:|^[/#@]\S|^\.[a-z]|^#[a-f\d]{3,8}$/i.test(value) || /^[a-z\d_-]+:[^\s]+$/i.test(value)) return;

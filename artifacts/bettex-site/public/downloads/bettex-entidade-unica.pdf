@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2833 >>
+<< /Length 2863 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — comunidade, regras e administração) Tj T*
@@ -27,8 +27,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Lançamentos devem adequar-se ao jurídico local. Agentes e funcionalidades dependem de) Tj T*
 (investigação técnico-legal e cumprimento de exigências, independentemente de datas no roadmap.) Tj T*
 () Tj T*
-(A análise é individual por país, atividade e responsável. Permissões não são universais;) Tj T*
-(atividades sujeitas a licenciamento não serão liberadas sem a devida autorização.) Tj T*
+(Agentes de trading, governança, risco e tesouraria exigem análise por país, atividade e) Tj T*
+(responsável. Permissões não são universais; atividades sujeitas a licenciamento só são) Tj T*
+(liberadas com autorização.) Tj T*
 () Tj T*
 (Investigações verificam normas, licenças, termos, publicidade, proteção ao usuário, PLD,) Tj T*
 (privacidade e responsabilidades, com registro formal de evidências, datas e controles exigidos.) Tj T*
@@ -62,7 +63,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, sem) Tj T*
 (receita para a comunidade.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -70,9 +70,10 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 2706 >>
+<< /Length 2736 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
 (Burn Lottery e Double 2X) Tj T*
 () Tj T*
 (Burn Lottery: um número grátis por carteira com BETTEX em staking; extras pagos em BETTEX e) Tj T*
@@ -94,17 +95,20 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Administração e propósito) Tj T*
 () Tj T*
-(BETTEX é comunidade DeFi aberta sem empresa, fundação, salários ou taxas. Recursos visam o) Tj T*
-(coletivo; carteiras seguem sob custódia dos titulares.) Tj T*
+(Hoje, BETTEX reúne DeFi e IA, com administração inicial dos fundadores. A visão é substituir) Tj T*
+(toda a administração por IA ao longo do tempo e tornar-se totalmente DeFAI. O token é) Tj T*
+(comunitário, sem empresa, fundação, salários ou taxas. Recursos têm finalidade coletiva;) Tj T*
+(carteiras continuam pessoais.) Tj T*
 () Tj T*
-(Fundadores gerem contratos inicialmente, com transição gradual para IA sem prazo. A gestão da) Tj T*
-(IA não implica transferência de controle contratual.) Tj T*
+(Os fundadores administram inicialmente. A transição gradual substituirá toda a administração) Tj T*
+(por IA, tornando a BETTEX totalmente DeFAI, com evidências e limites, sem prazo definido. Isso) Tj T*
+(não implica transferência do domínio dos contratos.) Tj T*
 () Tj T*
 (Decisões comunitárias seguem indefinidas, sem estrutura de DAO, voto por token ou renúncia de) Tj T*
 (propriedade.) Tj T*
 () Tj T*
-(Fundadores organizam a gestão inicial até que agentes de IA tornem o BETTEX autônomo, mantendo) Tj T*
-(controles e responsabilidades vigentes.) Tj T*
+(Fundadores iniciam a gestão. A direção DeFAI prevê agentes de trading, governança, risco e) Tj T*
+(tesouraria rumo à autonomia do BETTEX, com controles e responsabilidades vigentes.) Tj T*
 () Tj T*
 (A operação foca em transparência e prestação de contas, sem garantia de proteção de capital ou) Tj T*
 (rendimentos.) Tj T*
@@ -117,10 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Mint público em 10/12/2026; Sistema/ALFA e vesting iniciam em março/2027, condicionados à) Tj T*
 (adequação legal.) Tj T*
 () Tj T*
-(Vesting de 900 milhões de BETTEX por 24 meses desde março de 2027: comunidade 550 milhões,) Tj T*
-(fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O teto) Tj T*
-(inicial separado é 100 milhões; liberação não prova venda ou circulação.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -128,9 +128,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3070 >>
+<< /Length 3105 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Vesting de 900 milhões de BETTEX por 24 meses desde março de 2027: comunidade 550 milhões,) Tj T*
+(fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O teto) Tj T*
+(inicial separado é 100 milhões; liberação não prova venda ou circulação.) Tj T*
+() Tj T*
 (100% da receita de tokens da comunidade vai à tesouraria, sem taxas de serviço. O mint financia) Tj T*
 (o projeto com prestação de contas; mercados externos não replicam o swap oficial.) Tj T*
 () Tj T*
@@ -175,10 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (captação de grants, sem rede escolhida ou grant aprovado presumido. Starknet exige) Tj T*
 (implementação Cairo e contas compatíveis; Arbitrum usa EVM. Allora é candidata a inferências,) Tj T*
 (não execução. Robinhood Crypto Trading API exige conta elegível nos Estados Unidos e) Tj T*
-(autorização; não comprova acesso a ações. Consultas públicas Arbitrum/Gamma foram verificadas;) Tj T*
-(não definem a rede de lançamento. Outros exemplos sem acesso privado são simulações. Não houve) Tj T*
-(operações com dinheiro real.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 2967 >>
+<< /Length 2817 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(autorização; não comprova acesso a ações. Consultas públicas Arbitrum/Gamma foram verificadas;) Tj T*
+(não definem a rede de lançamento. Outros exemplos sem acesso privado são simulações. Não houve) Tj T*
+(operações com dinheiro real.) Tj T*
+() Tj T*
 (Período econômico, liquidação e encerramento financeiro) Tj T*
 () Tj T*
 (O período econômico é o intervalo UTC entre 00h00 e 00h00 do dia seguinte. O corte encerra a) Tj T*
@@ -233,10 +237,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Custos pertencem ao período de realização, não à rodada do pagamento. Registros de rodada e) Tj T*
 (períodos econômicos devem ser distintos para evitar contabilização dupla.) Tj T*
 () Tj T*
-(Antes de autorizar o split, reservar principal e teto de custos por ativo e projetar liquidez) Tj T*
-(após todos os desembolsos. Reserva de custos não é despesa realizada. Identificar fonte e) Tj T*
-(autorização; não descontar silenciosamente custos do direito do participante ou da parcela) Tj T*
-(exclusiva de recompra. Conciliar diferenças entre custo reservado e efetivo; sobra não é lucro) Tj T*
 ET
 endstream
 endobj
@@ -244,9 +244,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
 endobj
 13 0 obj
-<< /Length 3107 >>
+<< /Length 3276 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Antes de autorizar o split, reservar principal e teto de custos por ativo e projetar liquidez) Tj T*
+(após todos os desembolsos. Reserva de custos não é despesa realizada. Identificar fonte e) Tj T*
+(autorização; não descontar silenciosamente custos do direito do participante ou da parcela) Tj T*
+(exclusiva de recompra. Conciliar diferenças entre custo reservado e efetivo; sobra não é lucro) Tj T*
 (novo. Sem orçamento e cobertura suficientes, não autorizar split.) Tj T*
 () Tj T*
 (Custos externos não são taxas BETTEX. Regras de liquidação não permitem usar a tesouraria para) Tj T*
@@ -291,10 +295,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Autenticação e elegibilidade jurídica) Tj T*
 () Tj T*
-(Autenticação por carteira não prova identidade civil, residência ou elegibilidade. KYC e) Tj T*
-(controles territoriais permanecem obrigatórios quando exigidos. Demo visual não oferece) Tj T*
-(operações financeiras.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -302,9 +302,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
 endobj
 15 0 obj
-<< /Length 365 >>
+<< /Length 598 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Autenticação por carteira não prova identidade civil, residência ou elegibilidade. KYC e) Tj T*
+(controles territoriais permanecem obrigatórios quando exigidos. Demo visual não oferece) Tj T*
+(operações financeiras.) Tj T*
+() Tj T*
 (Investigação jurídica define controles para mint, jogos e integrações. Provedores externos não) Tj T*
 (dispensam obrigações da BETTEX. Sem validação, a operação é restringida; acesso financeiro não) Tj T*
 (é prometido sem documentos.) Tj T*
@@ -322,17 +326,17 @@ xref
 0000000148 00000 n 
 0000000245 00000 n 
 0000000371 00000 n 
-0000003256 00000 n 
-0000003382 00000 n 
-0000006140 00000 n 
-0000006266 00000 n 
-0000009388 00000 n 
-0000009516 00000 n 
-0000012536 00000 n 
-0000012664 00000 n 
-0000015824 00000 n 
-0000015952 00000 n 
+0000003286 00000 n 
+0000003412 00000 n 
+0000006200 00000 n 
+0000006326 00000 n 
+0000009483 00000 n 
+0000009611 00000 n 
+0000012481 00000 n 
+0000012609 00000 n 
+0000015938 00000 n 
+0000016066 00000 n 
 trailer << /Size 16 /Root 1 0 R >>
 startxref
-16369
+16716
 %%EOF

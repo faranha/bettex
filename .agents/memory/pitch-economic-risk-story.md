@@ -3,6 +3,12 @@ name: Pauta econômica do cenário apocalíptico
 description: A pauta econômica pedida pelo criador pertence ao cenário apocalíptico, com gráficos, matérias e riscos globais.
 ---
 
+As comparações financeiras e os blocos de emprego entre Brasil e EUA devem identificar o país dos dados com sua bandeira.
+
+**Why:** O criador pediu bandeiras nos quatro cartões de renda e reservas e reiterou a exigência para os blocos de vagas disponíveis nos EUA e de empregos do Novo Caged no Brasil.
+
+**How to apply:** A bandeira acompanha a origem dos dados, não o idioma selecionado. Preservar textos, percentuais e fontes.
+
 O Problema 2 precisa apresentar e desenvolver a ameaça ao emprego e à renda no próprio bloco, não ficar reduzido a uma chamada e dois parágrafos que dependem de Ambiente externo para explicar o problema.
 
 **Why:** O usuário reiterou que o conteúdo precisava ser expandido e que ajustar observações não atendia à apresentação do problema.

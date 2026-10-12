@@ -13,12 +13,12 @@ Preservar as regras essenciais do token, vesting, staking, distribuição, tesou
 
 ## Modelo de negócio na candidatura ao grant
 
-Inicialmente não haverá taxas próprias da BETTEX. Os ganhos iniciais dos responsáveis vêm do staking de seus próprios tokens, assim como os dos demais participantes. As recompensas são distribuídas diariamente conforme resultados e elegibilidade, sem retorno garantido.
+Inicialmente não haverá taxas próprias da BETTEX. Não apresentar tarifas como parte do fluxo atual de participação ou como fonte atual da tesouraria. Os ganhos iniciais dos responsáveis vêm do staking de seus próprios tokens, assim como os dos demais participantes. As recompensas são distribuídas diariamente conforme resultados e elegibilidade, sem retorno garantido.
 
 No futuro, podem existir taxas de serviços pagas em USDC e taxas sobre resultados de trading. São possibilidades de evolução, não tarifas aprovadas ou ativas. Não apresentar a ausência inicial de taxas como proibição permanente de monetização.
 
 A visão futura é evoluir para BETTEX Bank, um banco descentralizado para brasileiros e demais usuários BETTEX, conforme o negócio e a adoção avancem.
 
-**Why:** O criador corrigiu o modelo de negócio da candidatura, reiterou a ausência inicial de taxas, explicou os ganhos próprios pelo staking e definiu explicitamente a visão BETTEX Bank.
+**Why:** O criador corrigiu o modelo de negócio da candidatura, reiterou a ausência inicial de taxas, explicou os ganhos próprios pelo staking e definiu explicitamente a visão BETTEX Bank. Na revisão do esquema de participação, voltou a corrigir: “nao cobramos taxas, seja preciso”.
 
 **How to apply:** Na candidatura, separar o modelo inicial, as possibilidades futuras de receita e a visão de longo prazo. Não confundir rendimentos dos tokens próprios com receita operacional de taxas nem afirmar que existe um banco autorizado. Este esclarecimento não autoriza ativar taxas, alterar a distribuição ou restaurar textos nas páginas públicas.

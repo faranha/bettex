@@ -3,6 +3,7 @@ import catalogue from './locales/translations.json';
 import englishSourceMessages from './locales/english-source-messages.json';
 import documentationSynthesis from './locales/documentation-synthesis.json';
 import { roundTerminology } from './round-terminology';
+import { preserveDocumentationSpacing } from './documentation-prose';
 
 export type Locale = 'pt' | 'en' | 'es';
 type Translation = { en: string; es: string; pt?: string };
@@ -48,7 +49,12 @@ function translateMessage(text: string): string {
   const key = normalize(text);
   if (!key || (unchanged.test(key) && (!/\d/.test(key) || !messages[key] || locale === 'pt')) || /^https?:\/\//.test(key)) return text;
   observedMessages.add(key);
-  if (locale === 'pt') return messages[key]?.pt ?? ptOverrides[key] ?? text;
+  if (locale === 'pt') {
+    const result = messages[key]?.pt ?? ptOverrides[key] ?? text;
+    // Documentation fragments also appear in diagram footers and custom blocks,
+    // outside the prose containers handled by the JSX runtime.
+    return Object.hasOwn(documentationSynthesis, key) ? preserveDocumentationSpacing(text, result) : result;
+  }
   if (translatedValues[locale].has(key)) return text;
   const source = messages[key] ? key : folded.get(key.toLocaleLowerCase());
   let result = source ? messages[source][locale] : undefined;

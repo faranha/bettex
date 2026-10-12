@@ -1,46 +1,52 @@
 {
+  "canonicalPublicPages": {
+    "approved": true,
+    "scope": "Homepage and Pitch are finalized. Preserve their content, layout, menus, anchors and PT/EN/ES translations, including effects from shared dependencies. Documentation-only work must not change them.",
+    "homeAnchors": ["inicio", "historia", "participacao", "tecnologia", "mercados", "roadmap"],
+    "pitchAnchors": ["visao", "publico-pitch", "solucao", "tokenomics", "publico", "pitch-roadmap", "recursos"]
+  },
   "routes": {
     "/": {
-      "words": 1406,
-      "structureSha256": "4cabb63664ac4f602c155211cde7e5b5559646016860db00730c70fbe7be71c5",
-      "textSha256": "ad511fb8ea12e94b1585b40069b4ab234611f338f94908deb70314eadd54c0e6"
+      "words": 1336,
+      "structureSha256": "08fbd60ec754b13181dffb6fdff2459c1273a1c847cf471d1764db0e7a0ec859",
+      "textSha256": "cec70de1c18514920ca0d893a24c1ec98fbbe2de62d061a5f73c218529627d93"
     },
     "/pitch": {
-      "words": 5921,
-      "structureSha256": "4ab4a1d9d8f71c6bd337f3bab0cd7eea535a700d832daf4a05c28a3cf7482ae7",
-      "textSha256": "4eab163464aeda7eec730846f28079cb10e12508604063f586295adcfd851a6c"
+      "words": 6098,
+      "structureSha256": "112355dccc4704926478236e43f575d222fbbf9ae2e2e82350bb8d2f4af30f32",
+      "textSha256": "62dfa7970f64e10b6beb24f0314454ccbee3042a60a30bf98c148a267b2876e5"
     },
     "/en/": {
-      "words": 1376,
-      "structureSha256": "9ffabc2ab8bc926574e0fb53d2aa461f38315802cc94904d42fae3f55598de06",
-      "textSha256": "70f6654f20e1bdf8a2dbccb56fdfa0982c6b3f07f71afa19d4579c9a78f49b73"
+      "words": 1301,
+      "structureSha256": "e313e774f933a9d3b31b50ac4ee39c66d2ab39d8053222a1659b7c1093edcfc6",
+      "textSha256": "8bc861eea7bfa99f654ba910aad2f700b7717def943b487361f1e5a785709031"
     },
     "/en/pitch": {
-      "words": 5694,
-      "structureSha256": "262e5a6244bea9a12c835de881ecdb03c9018208019568b644e693c20351ee75",
-      "textSha256": "ba61870613e28a473fa0eaabc837d7dd9069f6ea8c003161998c531083e141e9"
+      "words": 5854,
+      "structureSha256": "9f32ce66171285852b7ec4130837175bac97eada04fa78099a476e400e25b910",
+      "textSha256": "71823246b1dbc17a1d724a7837f8063201d49fbf012fcc0f6e6000e26a8fe106"
     },
     "/es/": {
-      "words": 1474,
-      "structureSha256": "2f61a2986985d080dc59b8696c9f23be2330e54bc896207bd02ee002156fd311",
-      "textSha256": "adfe344bc9848ffa00cd21c1dff6b8bbca48310feb245e70e00b69f73a9ae4bc"
+      "words": 1395,
+      "structureSha256": "6911f98254926f94c0b121f902845333a44b5d21a7b93ea4342fcc6ccba634e7",
+      "textSha256": "e3d3b3c8850c2e6542f1ca7a6583426998e95b083b0f7d001caf8c1aaeb15191"
     },
     "/es/pitch": {
-      "words": 6287,
-      "structureSha256": "5c8726d200f587a2275e1adb33b839e840d11a15216b8d5176f48711536e2e42",
-      "textSha256": "936df46fd67313b6bfd30544d52f95240516b7ebeb4f9f457d4010f75c4f5233"
+      "words": 6480,
+      "structureSha256": "98c4ea689af96a9b66b32c7611f2c623628a0b20ee6b5e95fdb84a3084df44f2",
+      "textSha256": "c15239e2748d78478bb46bb07f63b35f17827e5d56fffc625b3badc044322dac"
     },
     "/documentacao": {
       "words": 27074,
-      "structureSha256": "a699708a82539a64a7eb5e022c890f716ac561a2c9407bbcfafb320df4e6803b"
+      "structureSha256": "12fde124c07341ec220db4ce5be0996863f2ee9ee65d5376fa839c8f0e28c5f5"
     },
     "/en/documentation": {
       "words": 26510,
-      "structureSha256": "ad448cc94f676dca15d36f362f02602705a01bb438565d400c3e7e68d12c2459"
+      "structureSha256": "a90c186eca22bcf7e064ac65b73ba090794e905f2eb1b09e5ffb3f5a9498c8ca"
     },
     "/es/documentacion": {
       "words": 29029,
-      "structureSha256": "c52b50afc3216da2dc3f0ed0cc9f4dd5cf159b156377c42e7bca8045f2b4e2ac"
+      "structureSha256": "02c7a5f0d03a71ee39cd7fe6505672744bdc5f628c5b8ad788d3b024f3e1decf"
     }
   }
 }

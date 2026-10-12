@@ -3,6 +3,12 @@ name: Lottery entry economics
 description: Free numbers for staked wallets, purchased additional entries, and burning all entry payments.
 ---
 
+No Pitch, Burn Lottery e Double 2X devem ser apresentados como recursos adicionais: o primeiro para queima de BETTEX e o segundo para movimentação de rendimentos já recebidos, sem transformar a plataforma em cassino. Explicitar o esquema de queima.
+
+**Why:** O criador pediu esse posicionamento ao mostrar os dois cartões do Pitch e destacou que é importante mencionar o esquema de queima.
+
+**How to apply:** Manter esses recursos separados do núcleo de inteligência central, agentes e staking. Distinguir a queima direta dos pagamentos da loteria da recompra e queima com lucro elegível. Preservar as regras reais e riscos, sem ocultar a possibilidade de perder o valor jogado no Double 2X.
+
 Each wallet with staked BETTEX gets one free lottery number. Additional numbers or entries can be purchased, and are generated once bought. All money paid in the lottery is burned.
 
 Extra entries are paid in BETTEX, not USDC. Burn all BETTEX paid directly, without an AMM purchase. “There is no limit of numbers”: quantity starts at 1 with no per-order or per-draw business cap. Never display a capped counter such as “0/1000”.

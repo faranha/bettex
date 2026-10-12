@@ -26,7 +26,7 @@ export function HumanStorySection() {
             <div className="hs-collage">
               <NewsClipping className="hs-news" showSource caption="A reportagem mostra como uma casa de apostas usou IA para identificar quem tinha mais chance de perder. Na BETTEX, a comunidade acompanha a tecnologia usada nas operações e participa das decisões." />
             </div>
-            <p className="hs-next">CONHEÇA A IA.<br /><strong>PARTICIPE DA COMUNIDADE.</strong></p>
+            <p className="hs-next">USE IA CONTRA O SISTEMA,<br /><strong>ENTRE NA NOSSA COMUNIDADE AGORA</strong></p>
             <CommunityCTA source="historia" tone="dark" className="!mt-4" />
           </div>
         </div>

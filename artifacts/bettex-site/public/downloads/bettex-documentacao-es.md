@@ -8,7 +8,7 @@ Adecuación legal y jurídica
 
 Los lanzamientos deben adaptarse a la normativa local. Los agentes y funcionalidades dependen de la investigación técnico-legal y el cumplimiento de los requisitos, independientemente de las fechas en el roadmap.
 
-El análisis es individual por país, actividad y responsable. Los permisos no son universales; las actividades sujetas a licencias no serán liberadas sin la debida autorización.
+Los agentes de trading, gobernanza, riesgo y tesorería requieren un análisis por país, actividad y responsable. Los permisos no son universales; las actividades sujetas a licencia solo se habilitan con autorización.
 
 Las investigaciones verifican normas, licencias, términos, publicidad, protección del usuario, ALD, privacidad y responsabilidades, con registro formal de evidencias, fechas y controles exigidos.
 
@@ -44,13 +44,13 @@ El modelo opera en rondas diarias UTC. Las pestañas de mercado no crean pools d
 
 Administración y propósito
 
-BETTEX es una comunidad DeFi abierta sin empresa, fundación, salarios ni tarifas de servicio. Los recursos sirven al colectivo; las billeteras siguen bajo custodia de sus titulares.
+Hoy, BETTEX reúne DeFi e IA, con administración inicial de los fundadores. La visión es sustituir toda la administración por IA con el tiempo y convertirse en una comunidad totalmente DeFAI. El token es comunitario, sin empresa, fundación, salarios ni tarifas. Los recursos sirven al colectivo; las billeteras siguen siendo personales.
 
-Los fundadores gestionan los contratos inicialmente, con una transición gradual a IA sin fecha límite. La gestión de la IA no implica transferencia de control contractual.
+Los fundadores administran inicialmente. La transición gradual sustituirá toda la administración por IA, haciendo a BETTEX totalmente DeFAI, con evidencias y límites, sin fecha definida. Esto no implica transferir el dominio de los contratos.
 
 Las decisiones comunitarias siguen indefinidas, sin estructura de DAO, voto por token o renuncia de propiedad.
 
-Los fundadores organizan la gestión inicial hasta que los agentes de IA hagan a BETTEX autónomo, manteniendo controles y responsabilidades vigentes.
+Los fundadores inician la gestión. La dirección DeFAI prevé agentes de trading, gobernanza, riesgo y tesorería hacia la autonomía de BETTEX, con los controles y responsabilidades vigentes.
 
 Las operaciones se centran en la transparencia y rendición de cuentas, sin garantías de protección de capital o rendimientos.
 
