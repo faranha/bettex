@@ -28,8 +28,6 @@ Angel contributions allocate 100% of funds to product, technology and marketing,
 
 The initial fixed-price mint funds the project; price, window and platform are yet to be defined, with legal compliance. Sales of released community tokens send 100% of the USDC price to the treasury. Investor contributions have their own terms and fund product, technology and marketing, with no salaries. Fundraising is not distributable profit.
 
-The price belongs to the seller. It creates no new funding or treasury profit and does not accelerate vesting.
-
 BETTEX does not charge service fees. Real transactions may require external network costs, which are not community revenue.
 
 Burn Lottery and Double 2X
@@ -123,8 +121,6 @@ External network or third-party costs are not BETTEX service fees. Development a
 The round profit is not a capital recovery.
 
 There is no compensation for past losses nor a requirement to recover the previous peak equity to distribute. It is an economic choice of the model, not capital protection. New profit can be distributed with equity still below the previous value, only if defensive reserve, liquidity, and other conditions are met.
-
-Hypothetical example in USDC, without other movements or costs: equity of 100 drops to 80 after a loss of 20; a new profit of 10 brings it to 90. Given conditions for the split, 2.5 go to participants, 2.5 to buyback, and 5 are retained. The operational equity ends at 85 and, added to the segregated buyback USDC, the project equity is 87.5, still below 100. Partial recovery does not guarantee token appreciation. Eligible participants of the new round may differ from those who were present during the loss.
 
 Eligibility, exposure and game conditions
 

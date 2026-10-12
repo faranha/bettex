@@ -28,8 +28,6 @@ Los aportes de inversores ángeles destinan el 100% de los recursos a producto, 
 
 El mint inicial financia el proyecto, a precio fijo; precio, plazo y plataforma aún se definirán, con cumplimiento legal. La venta de tokens liberados de la comunidad destina el 100% del precio en USDC a la tesorería. Los aportes de inversores tienen términos propios y van a producto, tecnología y marketing, sin salarios. La captación no es beneficio distribuible.
 
-El precio pertenece al vendedor. No genera nueva captación ni beneficio de la tesorería, ni adelanta el vesting.
-
 BETTEX no cobra tarifas de servicio. Las transacciones reales pueden requerir costos externos de la red, que no son ingresos de la comunidad.
 
 Burn Lottery y Double 2X
@@ -123,8 +121,6 @@ Los costos externos de red o de terceros no son tasas de servicio de BETTEX. El 
 El beneficio de la ronda no es una recuperación de capital.
 
 No existe compensación de pérdidas antiguas ni requisito de recuperar el pico patrimonial anterior para distribuir. Es una elección económica del modelo, no protección de capital. Un nuevo beneficio puede ser distribuido con el patrimonio aún por debajo del valor anterior, solamente si la reserva defensiva, la liquidez y demás condiciones están atendidas.
-
-Ejemplo hipotético en USDC, sin otros movimientos o costos: el patrimonio de 100 cae a 80 tras una pérdida de 20; una nueva ganancia de 10 lo lleva a 90. Habiendo condiciones para el split, 2,5 van a los participantes, 2,5 a la recompra y 5 quedan retenidos. El patrimonio operativo termina en 85 y, sumado al USDC segregado de recompra, el patrimonio del proyecto es 87,5, todavía por debajo de 100. La recuperación parcial no garantiza la valorización del token. Los participantes elegibles de la nueva ronda pueden diferir de los que estaban presentes en la pérdida.
 
 Elegibilidad, exposición y condiciones de los juegos
 
