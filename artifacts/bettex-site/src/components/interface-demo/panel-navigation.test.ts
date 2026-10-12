@@ -35,3 +35,12 @@ test('page submenus stay below the header without wrapping and Treasury is not a
   const model = readFileSync(new URL('./panel-navigation.ts', import.meta.url), 'utf8');
   assert.doesNotMatch(model, /'treasury'/);
 });
+
+test('tab changes reset scroll after content commits without overriding initial deep links', () => {
+  const submenu = readFileSync(new URL('./DemoSubmenu.tsx', import.meta.url), 'utf8');
+  assert.match(submenu, /useLayoutEffect\(\(\) => \{[\s\S]*?previousValue\.current === value[\s\S]*?window\.scrollTo\(\{ top: 0, behavior: 'instant' \}\)[\s\S]*?\}, \[value\]\)/);
+  assert.match(submenu, /if \(id === value\) window\.scrollTo/);
+  assert.match(submenu, /focus\(\{ preventScroll: true \}\)/);
+  const page = readFileSync(new URL('./InterfaceDemoPage.tsx', import.meta.url), 'utf8');
+  assert.match(page, /useLayoutEffect\(\(\) => \{[\s\S]*?window\.scrollTo\(\{ top: 0, behavior: 'instant' \}\)[\s\S]*?\}, \[path\]\)/);
+});

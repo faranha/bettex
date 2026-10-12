@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useLocation, useSearch } from 'wouter';
 import { useX } from '../demo/ui';
 import { Rates } from '../demo/fin';
@@ -139,6 +139,11 @@ export function InterfaceDemoPage() {
   const hash = useHash();
   const view = demoView(path) ?? 'home';
   const [d] = useState(visualDashboard);
+  useLayoutEffect(() => {
+    // Page changes must not inherit the previous page's vertical position.
+    // Section/deep-link effects run afterwards and keep their measured offsets.
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [path]);
   useEffect(() => {
     // Preserve old Central bookmarks and migrate embedded Treasury bookmarks.
     const target = demoRedirect(path, loc, search, hash);
