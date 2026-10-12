@@ -7,7 +7,7 @@ export function VestingSchedule() {
     <section className="whitepaper__vesting" id="documentacao-vesting" aria-labelledby="vesting-title">
       <h3 id="vesting-title" className="whitepaper__subhead">Agenda mensal de liberação · 24 meses</h3>
       <div className="whitepaper__prose">
-        <p><strong>O vesting começa em março de 2027 e dura 24 meses.</strong> O dia exato ainda será definido. Os 10% do mint inicial ficam separados: não são uma parcela mensal nem antecipam tokens de fundador/equipe ou investidores. O lançamento do sistema está previsto para essa etapa, sujeito à adequação legal e jurídica.</p>
+        <p>Os 10% do mint inicial ficam separados: não são uma parcela mensal nem antecipam tokens de fundador/equipe ou investidores. O lançamento do sistema está previsto para essa etapa, sujeito à adequação legal e jurídica.</p>
         <p>Esta agenda abrange <strong>{formatTokenCount(tokenomics.vestingTotal)} BETTEX</strong>: 550 milhões para a comunidade, 200 milhões para fundador/equipe e 150 milhões para investidores. No mês 24, essas três destinações estarão integralmente liberadas. O teto de 100 milhões do mint inicial completa a alocação máxima de 1 bilhão, mas não representa tokens já emitidos ou vendidos.</p>
         <p>As 24 parcelas mantêm a proporção 55:20:15, equivalente a 11:4:3, com pequenos ajustes de arredondamento para tokens inteiros. A agenda mostra <strong>liberação programada, não venda, circulação ou lucro distribuível</strong>. A gestão não altera meses ou quantidades conforme reservas. Preço, janela e destino dos tokens não mintados na oferta inicial permanecem a definir; não são transferidos automaticamente para este vesting.</p>
       </div>

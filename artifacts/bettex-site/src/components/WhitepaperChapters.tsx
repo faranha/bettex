@@ -215,7 +215,7 @@ function LegacyBody({ id }: { id: string }) {
     case 'documentacao-staking-detalhe':
       return <>
         <h3 className="whitepaper__subhead" id="documentacao-mecanismo-staking">Participação automática e elegibilidade</h3>
-        <div className="whitepaper__prose"><p>Todo BETTEX disponível na carteira oficial participa automaticamente, sem ativação ou depósito adicional. A piscina é fechada e exige acesso ao aplicativo, mas não uma sessão continuamente aberta. Exportar chaves preserva autocustódia, não torna a piscina independente. Tokens não liberados e estoque institucional de venda não participam.</p></div>
+        <div className="whitepaper__prose"><p>A piscina é fechada e exige acesso ao aplicativo, mas não uma sessão continuamente aberta. Exportar chaves preserva autocustódia, não torna a piscina independente. Tokens não liberados e estoque institucional de venda não participam.</p></div>
         <ProfitAccounting />
         <DistributionSettlement />
         <DistributionCorrections />
@@ -285,7 +285,7 @@ function LegacyBody({ id }: { id: string }) {
         </div>
         <BettexFlow figure="2" />
         <Subhead>O que cada ativo representa</Subhead>
-        <div className="whitepaper__prose"><p><strong>BETTEX</strong> é o token de participação no staking. Todo BETTEX disponível na carteira oficial participa automaticamente, sem ativação ou depósito adicional. Os tokens pertencem ao titular; enviá-los a outra carteira não significa vendê-los ou sacar USDC. <strong>USDC</strong> é o ativo dos saldos financeiros, movimentações e créditos de distribuição. Os ativos têm registros separados. Uma contribuição por serviços é apenas uma possibilidade em avaliação, não uma cobrança definida.</p><p>Os serviços devem validar contrato, rede, origem, destino e confirmações antes de reconhecer um depósito ou concluir um saque. O fluxo exige rede e versão compatíveis de USDC; um comprovante fiat do on-ramp não substitui a confirmação do recebimento. Divergências mantêm o movimento pendente até conciliação.</p></div>
+        <div className="whitepaper__prose"><p><strong>BETTEX</strong> é o token de participação no staking. Os tokens pertencem ao titular; enviá-los a outra carteira não significa vendê-los ou sacar USDC. <strong>USDC</strong> é o ativo dos saldos financeiros, movimentações e créditos de distribuição. Os ativos têm registros separados.</p><p>Os serviços devem validar contrato, rede, origem, destino e confirmações antes de reconhecer um depósito ou concluir um saque. O fluxo exige rede e versão compatíveis de USDC; um comprovante fiat do on-ramp não substitui a confirmação do recebimento. Divergências mantêm o movimento pendente até conciliação.</p></div>
         <DocImage src="technology/token-acesso.png" alt="Ilustração tridimensional de um token de acesso." caption="O token BETTEX dá acesso ao programa de resultados, sem representar ações ou propriedade da tesouraria." />
         <DocTerms id="schematic-asset-roles" label="Papéis dos ativos" items={[
           ['USDC', <Dot items={['Ativo financeiro', 'Saldos e compras', 'Distribuições e saques']} />],
@@ -387,7 +387,7 @@ function LegacyBody({ id }: { id: string }) {
           <div><span>PREÇO DOS TOKENS DA VENDA PÚBLICA → TESOURARIA</span><p><strong>Os 55% da comunidade são uma destinação separada dos 10% do mint.</strong> A venda dos tokens da comunidade já liberados destina 100% do preço em USDC à tesouraria. O mint inicial é captação para financiar o projeto, não lucro distribuível. Sua aplicação e prestação de contas devem identificar origem e destino dos recursos, sem presumir que todo o valor será usado em operações dos agentes.</p></div>
         </div>
         <div className="whitepaper__prose">
-          <p>A compra no aplicativo é liquidada em USDC após confirmação conciliada. O preço destinado à tesouraria e a quantidade de BETTEX creditada são registrados juntos e uma única vez. Todo BETTEX disponível na carteira oficial passa a participar automaticamente do staking. A aquisição não é investimento dos agentes. A compra credita a carteira gerada com a conta, não um endereço externo escolhido na hora; a venda direta a corretoras tem fluxo próprio. O recibo identifica preço, cotação pertinente, custos externos, tokens adquiridos, destinos e conta.</p>
+          <p>A compra no aplicativo é liquidada em USDC após confirmação conciliada. O preço destinado à tesouraria e a quantidade de BETTEX creditada são registrados juntos e uma única vez. A aquisição não é investimento dos agentes. A compra credita a carteira gerada com a conta, não um endereço externo escolhido na hora; a venda direta a corretoras tem fluxo próprio. O recibo identifica preço, cotação pertinente, custos externos, tokens adquiridos, destinos e conta.</p>
           <p><strong>BETTEX serve para staking, não pagamento de taxas ou participação societária.</strong> Não é capital das estratégias. O fundador pode vender ou distribuir sua parcela liberada. Novas versões aprofundarão custódia das chaves administrativas, aprovação de mudanças e atualização. Auditoria independente permanece requisito da implementação.</p>
         </div>
         <SaleChannels />
