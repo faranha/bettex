@@ -43,3 +43,9 @@ Preparação, comunidade e mint e afirmou: “isso não pode”.
 
 **How to apply:** Conferir as imagens dos heros entre capítulos ao escolher
 ou substituir fundos. Cada capítulo deve ter uma imagem própria.
+
+O H1 de abertura do Pitch deve dizer “A DeFi trading agent for gamblers and sports bettors”, com o mesmo sentido em português e espanhol.
+
+**Why:** O criador forneceu esse título ao corrigir a abertura genérica sobre vários mercados.
+
+**How to apply:** Aplicar ao hero do Pitch, preservando a homepage e os demais capítulos; manter o público destacado na cor de acento.
