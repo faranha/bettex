@@ -23,6 +23,12 @@ O criador definiu: “cada rodada eh unica e nao retorna, nem soma, nem cumula, 
 
 **How to apply:** Cada rodada UTC usa somente seus próprios resultados e pesos. Lucro de rodada sem pagamento fica na tesouraria, sem liberação futura, créditos acumulados ou complementos depois de encerrada. Conciliação de transferências já iniciadas é auditoria do fato original, não reabertura ou autorização para pagar de novo. O criador reiterou que a revisão deve ser total e “cada rodada seja unica sem residuais”; remover também instruções e traduções antigas contraditórias, em vez de apenas acrescentar uma regra de precedência.
 
+Interpretar a proibição de créditos após encerramento como encerramento financeiro, não como o corte do período econômico UTC. Não inventar prazo de liquidação nem permitir extensão discricionária: a janela deve ser aprovada antes de qualquer operação real.
+
+**Why:** A revisão identificou que exigir permanência integral, conhecer o resultado completo e enviar pagamentos antes do próprio corte torna o fluxo impossível. Separar período econômico e liquidação preserva a independência das rodadas sem introduzir acumulação ou complemento após encerramento financeiro.
+
+**How to apply:** Uma fase de liquidação posterior ao corte continua pertencendo exclusivamente à rodada original. Não misturar beneficiários ou resultados com a próxima. Custos seguem o UTC do fato comprovado, sem recalcular retroativamente o direito que originou o pagamento.
+
 Novos participantes jamais podem receber parte de lucros anteriores. O criador definiu: “sacar o Bettex remove todo direito a créditos passados do ciclo, nao serao pagos, sempre que se saca se perde o direito”.
 
 Qualquer saída de BETTEX, inclusive parcial, cancela todos os créditos do ciclo acumulados até a saída e ainda não pagos e zera todo o peso anterior da rodada, não apenas o peso da quantidade retirada. Não se conserva o peso do período anterior à saída nem o peso anterior do saldo remanescente. O criador rejeitou expressamente a frase “conserva o peso do período em que ela esteve elegível naquela rodada”. A regra alcança créditos executáveis apurados, autorizados e pendentes. Uma nova entrada não recupera o direito perdido. USDC já recebido não é clawback, e saque de USDC não equivale a saída de BETTEX.

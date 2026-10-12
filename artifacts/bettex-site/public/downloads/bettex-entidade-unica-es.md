@@ -1,5 +1,9 @@
 BETTEX — comunidad, reglas y administración
 
+Resumen de las reglas y administración. Los capítulos, dibujos y referencias técnicas completos están en la documentación del sitio. Este archivo no comprueba la implementación u operación financiera.
+
+https://bettex.ai/es/documentacion
+
 Adecuación legal y jurídica
 
 Cada lanzamiento de BETTEX debe estar adecuado al entorno jurídico de los mercados donde se ofrecerá la solución. La habilitación de cada agente, funcionalidad y categoría depende de una investigación técnico-legal específica y del cumplimiento de los requisitos aplicables. Una fecha en la hoja de ruta no sustituye esta condición.
@@ -60,7 +64,7 @@ Mint público previsto para el 10 de diciembre de 2026. Sistema/ALFA e inicio de
 
 Vesting de 900 millones de BETTEX durante 24 meses desde marzo de 2027: comunidad 550 millones, fundador/equipo 200 millones e inversores 150 millones, en grupos enteros 11:4:3. El límite inicial de 100 millones queda separado; la liberación no acredita venta ni circulación.
 
-El 100% del precio en USDC de los tokens de la comunidad ya liberados va a la tesorería. Las tarifas de servicio separadas van a la cuenta operativa. La captación del mint inicial financia el proyecto y exige rendición de cuentas. Los mercados externos no heredan automáticamente las condiciones del swap oficial.
+El 100% del precio en USDC de los tokens de la comunidad ya liberados va a la tesorería. BETTEX no cobra tasas de servicio. La captación del mint inicial financia el proyecto y exige rendición de cuentas. Los mercados externos no heredan automáticamente las condiciones del swap oficial.
 
 El resultado elegible, tras la conciliación y los controles, recibe un 50% en tesorería, 25% en staking y 25% en la billetera exclusiva de recompra. Sin pesos, reservas o liquidez suficientes, el 100% queda en la tesorería, sin split futuro. La compra requiere autorización administrativa; todo el BETTEX adquirido se quema permanentemente. La billetera exclusiva no es el mecanismo de quema.
 
@@ -85,5 +89,61 @@ Las políticas evolucionan por versiones aprobadas. La administración define la
 Tesorería, caja operativa, billetera exclusiva de recompra y billeteras personales tienen fronteras propias. La reserva defensiva sigue la política aprobada, sin un mínimo general fijado en 50%. Nuevas operaciones exigen riesgo independiente, disponibilidad y conciliación.
 
 Starknet y Arbitrum One son alternativas de red y contratos. BETTEX está en planificación y captación de subvenciones, sin red elegida ni subvención aprobada presumida. Starknet exige implementación Cairo y cuentas compatibles; Arbitrum usa EVM. Allora es candidata para inferencias, no ejecución. Robinhood Crypto Trading API requiere cuenta elegible en Estados Unidos y autorización; no constituye prueba de acceso a acciones. Las consultas públicas Arbitrum/Gamma fueron verificadas; esto no define la red de lanzamiento. Otros ejemplos sin acceso privado son simulaciones. No ha habido operaciones con dinero real.
+
+Período económico, liquidación y cierre financiero
+
+El período económico de la ronda es el intervalo UTC entre 00h00, inclusive, y 00h00 del día siguiente, exclusive. El corte cierra la recolección de resultados y el tiempo elegible de esa ronda, no su fase de liquidación. Después del corte, evaluación y pagos identificados continúan vinculados exclusivamente a la ronda original, mientras el período económico siguiente ya está en marcha.
+
+Antes de operar, la política aprobada debe fijar la ventana máxima de conciliación y ejecución, el plazo de cierre financiero, las fuentes y los criterios de confirmación. La ventana no puede ser prorrogada por participante, retraso o conveniencia de la gestión. Sin estos parámetros y controles validados, no hay autorización para distribuir. El cierre financiero es el término de esa ventana o la conclusión anticipada registrada de todos los pagos y tratamientos previstos.
+
+El peso solo es calculado después del corte, con el saldo elegible de la apertura y los eventos confirmados de todo el período económico. Entradas durante el período aguardan la próxima ronda; cualquier salida durante él pone a cero el peso integral. Salidas posteriores al corte también cancelan derechos de la ronda original aún no pagados, sin alterar los pesos o resultados de la nueva ronda por medio de crédito antiguo.
+
+La decisión indivisible de cálculo fija los beneficiarios, pesos y denominador del reparto, considerando también las salidas ya confirmadas hasta esa decisión. Las salidas posteriores cancelan el crédito correspondiente, sin recalcular el reparto de los demás ni redistribuir el importe cancelado. El peso vigente reducido a cero y el registro histórico del cálculo son registros distintos. Repetir una decisión no crea otro reparto.
+
+La determinación, autorización y ejecución son etapas de la misma ronda, no una nueva distribución. No mezclar resultados, beneficiarios o cuotas de rondas diferentes. El cierre financiero elimina derechos comprobadamente no enviados; los envíos ya iniciados o inciertos permanecen solamente en conciliación. No hay complemento, reapertura o crédito futuro después de ese cierre.
+
+El ejecutor no elige beneficiarios por conveniencia. El plan de pagos registra previamente orden determinística, cuotas, recursos y plazo común; usa ejecución atómica cuando es validada para la red. Si hay procesamiento parcial, publica quién recibió, quién no recibió y la causa. Fallo operacional o pago menor puede causar pérdida definitiva de la cuota no enviada en el cierre financiero: este riesgo debe ser informado antes de la participación. No se promete igualdad de recibimiento cuando la ejecución no es atómica.
+
+Salida de BETTEX y orden de los pagos
+
+El orden relevante es el de los hechos comprobados en la red, no la llegada de los mensajes al backend. Una salida de BETTEX anterior al recibo efectivo de USDC cancela el derecho aún no pagado. El recibo efectivo anterior a la salida permanece personal, tras la confirmación y conciliación. La política registra los criterios de ordenación y finalización de la red; horarios iguales o evidencias insuficientes mantienen el caso bajo verificación.
+
+Una reserva o transacción indivisible en el banco no impide una transferencia externa realizada por el titular. La implementación debe validar la elegibilidad en el camino efectivo de pago, con eventos de BETTEX y USDC ordenables y un mecanismo compatible con la red que impida pagar un derecho ya cancelado. Una verificación off-chain anterior al envío, por sí sola, no comprueba esta garantía. Sin la validación de este mecanismo, el pago automático no es liberado.
+
+Cancelar un derecho no revierte una transferencia ya iniciada ni comprueba recuperación de USDC. Un envío iniciado o incierto nunca es repetido por presunción. Si la conciliación comprueba recepción indebida después de una salida anterior, registrar el pago indebido y la pérdida de la tesorería, sin restaurar el derecho cancelado, cobrar automáticamente la billetera personal o crear otro split. El USDC ya recibido no es recuperado por ajuste contable.
+
+Costos de liquidación y origen temporal
+
+El resultado económico es cortado antes de la fase de pagos. Los costes efectivos pertenecen al período UTC de su realización comprobada: los costes de liquidación ejecutados después del corte entran en el resultado del período económico en el que ocurrieron, no retroactivamente en el beneficio que originó aquel pago. Registrar por separado la ronda del pago y el período económico del coste, sin contabilizar el mismo hecho dos veces.
+
+Antes de autorizar el split, reservar el principal y el techo de costos en cada activo y proyectar la liquidez después de todos los desembolsos. La reserva de costos no es un gasto realizado. Su fuente y autorización son identificadas; no se descuentan silenciosamente costos del derecho del participante ni de la parcela exclusiva de recompra. Las diferencias entre el costo reservado y el efectivo son conciliadas; el sobrante no es ganancia nueva. Si no hay presupuesto y cobertura suficientes, no autorizar el split.
+
+Los costos externos de red o de terceros no son tasas de servicio de BETTEX. El costo de desarrollo y mantenimiento continúa abierto. Esta regla de liquidación no autoriza usar la tesorería para gastos generales, cambiar el split 50%/25%/25% o reabrir una ronda cerrada.
+
+El beneficio de la ronda no es una recuperación de capital.
+
+No existe compensación de pérdidas antiguas ni requisito de recuperar el pico patrimonial anterior para distribuir. Es una elección económica del modelo, no protección de capital. Un nuevo beneficio puede ser distribuido con el patrimonio aún por debajo del valor anterior, solamente si la reserva defensiva, la liquidez y demás condiciones están atendidas.
+
+Ejemplo hipotético en USDC, sin otros movimientos o costos: el patrimonio de 100 cae a 80 tras una pérdida de 20; una nueva ganancia de 10 lo lleva a 90. Habiendo condiciones para el split, 2,5 van a los participantes, 2,5 a la recompra y 5 quedan retenidos. El patrimonio operativo termina en 85 y, sumado al USDC segregado de recompra, el patrimonio del proyecto es 87,5, todavía por debajo de 100. La recuperación parcial no garantiza la valorización del token. Los participantes elegibles de la nueva ronda pueden diferir de los que estaban presentes en la pérdida.
+
+Elegibilidad, exposición y condiciones de los juegos
+
+Burn Lottery mantiene un número gratuito por billetera, no por persona. El reglamento debe fijar el corte y la condición de saldo elegible en staking, usando un snapshot verificable e identificador único por billetera y sorteo; transferir después del corte no genera otro número gratuito en aquel sorteo. Una persona puede controlar varias billeteras elegibles: no presentar esa regla como protección contra múltiples identidades. El presupuesto del premio debe considerar esa posibilidad, sin presumir un límite por persona o saldo mínimo aún no aprobado.
+
+El premio de la Burn Lottery y los costes del sorteo requieren una fuente aprobada y cobertura antes de aceptar entradas. Los BETTEX pagados son quemados y no financian el premio. El pago, la referencia de quema y la generación de la entrada deben tener un efecto único y un mecanismo de recuperación verificable; si este vínculo no puede ser garantizado, no acepte pagos. El reglamento informa el sorteo, la aleatoriedad verificable, el tratamiento de fallos y la imposibilidad de deshacer una quema por simple ajuste.
+
+Double 2X exige mandato propio con apuesta máxima, presupuesto agregado, reserva para victorias simultáneas, plazo, aleatoriedad verificable y procedimiento para fallos. Estos parámetros deben ser aprobados y publicados antes de la apertura; sin ellos, el juego queda indisponible. La autorización confiere la apuesta entera y reserva la obligación de devolver 2x, considerando la apuesta recibida y la parcela adicional de la tesorería, sin usar recursos de staking, recompra u otros compromisos.
+
+El USDC de rendimientos ya recibidos es controlado por un límite de origen conciliado, no por la identidad física de los tokens fungibles. Las distribuciones confirmadas aumentan este límite; cada salida de USDC, inclusive una apuesta, lo reduce una sola vez hasta cero. Los depósitos externos y las victorias en el juego no aumentan el límite. Nunca excede el saldo USDC libre; las reservas de apuestas impiden la reutilización concurrente. Evidencia insuficiente bloquea la apuesta.
+
+La regla de una jugada cada 24 horas corridas se aplica a la billetera oficial vinculada a la cuenta; cambiar de sesión, aparato o recuperar el acceso no reinicia el plazo. No es un límite comprobado por persona: múltiples billeteras son consideradas en el presupuesto agregado. Registrar el inicio una única vez antes de la ejecución; un intento incierto no permite otra jugada ni libera la reserva por presunción.
+
+El RTP del 100% es bruto y teórico: no cubre gas, aleatoriedad ni garantiza equilibrio de caja en el corto plazo. Recibos, obligaciones, ganancias, pérdidas y costos de los juegos tienen libro propio, conciliado con el patrimonio de la tesorería. No entran como beneficio de las estrategias elegible al split ni usan el presupuesto exclusivo de recompra. Variaciones patrimoniales de los juegos afectan los controles de reserva y liquidez antes de nuevas operaciones y distribuciones.
+
+Autenticación y elegibilidad jurídica
+
+Comprobar el control de la billetera autentica el acceso, pero no comprueba identidad civil, residencia, edad o elegibilidad para una oferta. El inicio de sesión por billetera no dispensa identificación, KYC u otros controles cuando son exigidos para la actividad y el territorio. La demostración visual no ofrece operaciones financieras.
+
+La investigación jurídica define qué controles son necesarios para el mint, la participación, los juegos y las integraciones. Las verificaciones de un proveedor externo no son automáticamente suficientes para las obligaciones de BETTEX. Sin controles exigidos validados, restringir la oferta y la operación afectada; no prometer acceso financiero sin documentos en cualquier territorio.
 
 Comunidad y lanzamiento en el Pitch: https://bettex.ai/es/pitch#publico

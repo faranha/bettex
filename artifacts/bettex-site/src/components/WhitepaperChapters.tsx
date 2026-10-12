@@ -52,6 +52,7 @@ import { copy as c } from '@/lib/documentation-copy';
 import { roadmapStops } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
 import { ChapterArt } from '@/components/ChapterArt';
+import { DocumentationConsistency } from './DocumentationConsistency';
 import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure';
 
 /** Previous 14-chapter list, retained as source history and for reference bodies. */
@@ -171,6 +172,7 @@ function MainBody({ id }: { id: string }) {
         <Reference id="documentacao-referencia-riscos" label={c.refRisk} parts={[
           { id: 'documentacao-adequacao-legal', title: 'Adequação legal e jurídica' }, { id: 'documentacao-controles', title: 'Controles de risco' },
           { id: 'documentacao-implantacao', title: 'Requisitos operacionais e de segurança' }, { id: 'documentacao-riscos-detalhe' },
+          { id: 'documentacao-governanca-detalhe', title: 'Governança, multisig e mandatos' },
         ]} />
       </>;
     default:
@@ -206,6 +208,7 @@ function LegacyBody({ id }: { id: string }) {
     case 'documentacao-adequacao-legal':
       return <LegalCompliance />;
     case 'documentacao-governanca':
+    case 'documentacao-governanca-detalhe':
       return <DocumentationGovernance />;
     case 'documentacao-servicos':
       return <ServiceFees />;
@@ -229,7 +232,7 @@ function LegacyBody({ id }: { id: string }) {
         </div>
         <DocFacts title="Resumo do modelo" facts={[
           { label: 'OPERAÇÃO', value: 'USDC', text: 'Saldos, compras, distribuições e saques.' },
-          { label: 'TOKEN', value: 'BETTEX', text: 'Participação no staking; serviços pagos em USDC.' },
+          { label: 'TOKEN', value: 'BETTEX', text: 'Participação no staking; resultados recebidos em USDC.' },
           { label: 'TESOURARIA', value: '50% / 25% / 25%', text: 'Split do lucro elegível: tesouraria, staking e carteira de recompra.' },
         ]} />
         <DocImage src="agents/bettex-intelligence-brain.webp" alt="Escultura realista de um cérebro sobre fundo escuro." caption="A IA BETTEX orquestra agentes de análise e execução." />
@@ -254,7 +257,7 @@ function LegacyBody({ id }: { id: string }) {
         <DocFacts title="Rede e ativos em resumo" facts={[
           { label: 'REDES EM AVALIAÇÃO', value: 'Starknet / Arbitrum One', text: 'Alternativas de segunda camada do Ethereum; escolha de lançamento em aberto.' },
           { label: 'SALDO FINANCEIRO', value: 'USDC', text: 'Compras, distribuições e saques em USDC.' },
-          { label: 'PARTICIPAÇÃO', value: 'BETTEX', text: 'Staking por quantidade e tempo elegíveis; taxas em USDC.' },
+          { label: 'PARTICIPAÇÃO', value: 'BETTEX', text: 'Staking por saldo elegível na abertura; pagamento em USDC.' },
         ]} />
         <Subhead>Escolha da rede e captação de grants</Subhead>
         <div className="whitepaper__prose">
@@ -297,8 +300,9 @@ function LegacyBody({ id }: { id: string }) {
           { label: 'ACESSO', value: 'Controle da carteira', text: 'Sem enviar chave privada ou frase de recuperação ao servidor.' },
           { label: 'STAKING', value: 'No aplicativo', text: 'Piscina fechada; não exige manter a sessão aberta continuamente.' },
         ]} />
-        <div className="whitepaper__lead"><span>ACESSO PELA CARTEIRA</span><p>A área pessoal é vinculada à <strong>Carteira BETTEX, gerada na criação da conta</strong>. O acesso utiliza os dados dessa carteira e dados básicos de cadastro, <strong>sem KYC nem documentos de identificação</strong>.</p></div>
-        <Flow label="Autenticação e autorização" steps={['Criar a conta com dados básicos; a carteira da pessoa é gerada na criação da conta. Depois, acessar a área pessoal com os dados dessa carteira.', 'O servidor verifica que a pessoa controla a carteira, sem receber chave privada nem frase de recuperação, e abre uma sessão protegida, com expiração, revogação e trilha de auditoria.', 'Depósitos em USDC exigem recebimento e confirmação on-chain. Saques exigem autorização, saldo disponível, destino e rede compatíveis, além de conciliação da transferência.', 'Uma compra debita USDC e credita BETTEX uma única vez, após confirmação da liquidação; a participação começa no horário do saldo BETTEX final confirmado.', 'A área pessoal apresenta os saldos separados em USDC e BETTEX, os custos e valores líquidos, os lançamentos conciliados e o histórico do agente.']} />
+        <div className="whitepaper__lead"><span>ACESSO PELA CARTEIRA</span><p>A área pessoal é vinculada à <strong>Carteira BETTEX, gerada na criação da conta</strong>. O acesso comprova controle da carteira, não identidade civil. A elegibilidade para atividades financeiras depende dos controles exigidos pela atividade e pelo território.</p></div>
+        <DocumentationConsistency area="identity" />
+        <Flow label="Autenticação e autorização" steps={['Criar a conta com dados básicos; a carteira da pessoa é gerada na criação da conta. Depois, acessar a área pessoal com os dados dessa carteira.', 'O servidor verifica que a pessoa controla a carteira, sem receber chave privada nem frase de recuperação, e abre uma sessão protegida, com expiração, revogação e trilha de auditoria.', 'Depósitos em USDC exigem recebimento e confirmação on-chain. Saques exigem autorização, saldo disponível, destino e rede compatíveis, além de conciliação da transferência.', 'Uma compra debita USDC e credita BETTEX uma única vez, após confirmação da liquidação. O saldo recebido durante a rodada só se torna elegível na abertura da rodada seguinte.', 'A área pessoal apresenta os saldos separados em USDC e BETTEX, os custos e valores líquidos, os lançamentos conciliados e o histórico do agente.']} />
         <Subhead>Carteira, chaves e exportação</Subhead>
         <div className="whitepaper__prose">
           <p>A Carteira BETTEX é a carteira da pessoa criada com a conta no aplicativo oficial; ela pertence ao titular, não à tesouraria do projeto. Ela é livre e portátil: <strong>as chaves e os dados do usuário são exportáveis</strong> por iniciativa do próprio titular. O projeto incentiva a <strong>autocustódia</strong>. Exportar esses dados não é uma etapa do login e não movimenta, por si só, os tokens.</p>
@@ -316,7 +320,7 @@ function LegacyBody({ id }: { id: string }) {
         <Subhead>Sessão e autorização de pagamento</Subhead>
         <div className="whitepaper__prose">
           <p>A entrada com moeda fiduciária utiliza <strong>provedores externos de on-ramp</strong>: a pessoa contrata a conversão para USDC no ambiente do provedor. Isso não cria um saldo fiat na BETTEX nem um serviço de saque fiduciário. A autenticação na BETTEX comprova o controle da carteira e não autoriza, por si só, uma movimentação.</p>
-          <p>Qualquer <strong>verificação de identidade ou KYC exigido pelo provedor</strong> ocorre em seu próprio aplicativo ou ambiente, conforme suas regras. Esses processos são separados do cadastro, do login e da recuperação de acesso da BETTEX: <strong>o KYC do provedor não integra o sistema de autenticação por carteira do projeto</strong>. O acesso atual à BETTEX continua baseado nos dados da carteira e em dados básicos de cadastro, sem KYC nem documentos de identificação.</p>
+          <p>Qualquer <strong>verificação de identidade ou KYC exigido pelo provedor</strong> ocorre em seu próprio aplicativo ou ambiente, conforme suas regras. Esses processos são separados do login e da recuperação de acesso por carteira. A verificação do provedor não substitui automaticamente controles exigidos da BETTEX; acesso autenticado não é autorização para oferta ou operação financeira.</p>
           <p>A integração financeira acompanha o on-ramp e concilia o USDC efetivamente recebido na rede, sem confundir pagamento fiat ao provedor, confirmação cripto e verificação de identidade. O backend valida a solicitação, o vínculo com a conta, a autorização e o saldo antes de registrar o efeito financeiro. Cada confirmação deve ser processada de forma idempotente, para que mensagens repetidas ou retomadas de serviço não creditem nem transfiram duas vezes.</p>
           <p>Troca de aparelho e recuperação de acesso respeitam o controle da carteira pelo titular. Compras e alterações da posição BETTEX passam pelo backend, com autorização da conta e registro dos eventos relevantes. As ordens do agente não podem ser iniciadas por uma sessão comum de usuário nem contornar as autorizações próprias da operação. Autenticação da carteira, autorização financeira e autorização de operações do agente permanecem controles distintos.</p>
         </div>

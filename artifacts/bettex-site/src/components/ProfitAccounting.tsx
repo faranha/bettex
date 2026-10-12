@@ -1,9 +1,11 @@
 import { independentRoundRule, retainedRoundProfitRule } from '@/lib/distribution-round-policy';
+import { DocumentationConsistency } from './DocumentationConsistency';
 
 export function ProfitAccounting() {
   return (
     <section id="documentacao-apuracao" aria-labelledby="apuracao-title">
       <h3 id="apuracao-title" className="whitepaper__subhead">Apuração do lucro e perdas nas posições abertas</h3>
+      <DocumentationConsistency area="economics" />
       <div className="whitepaper__prose">
         <p><strong>{independentRoundRule}</strong></p>
         <p>{retainedRoundProfitRule}</p>

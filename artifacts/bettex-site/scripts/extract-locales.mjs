@@ -30,6 +30,7 @@ function scan(file) {
     file.endsWith('/lib/demo-tab-session.ts') || /\.test\.tsx?$/.test(file)) return;
   if (file.endsWith('.json') && !file.includes('/locales/')) {
     function visit(value, key) {
+      if (file.endsWith('/lib/documentation-consistency.json') && ['id', 'area'].includes(key)) return; // Policy routing metadata, not reader-facing copy.
       if (file.endsWith('/lib/site-seo.json') && key === 'image') return; // Social asset filenames, not copy.
       if (typeof value === 'string') add(value);
       else if (value && typeof value === 'object') Object.entries(value).forEach(([key, value]) => visit(value, key));
@@ -66,6 +67,8 @@ function scan(file) {
       ['command', 'pauseVideo'].includes(node.initializer.text)) return;
     if (ts.isJsxAttribute(node) && node.name.getText(source) === 'labels' &&
       node.parent.parent.tagName?.getText(source) === 'MobileDataCarousel') return;
+    if (ts.isJsxAttribute(node) && node.name.getText(source) === 'area' &&
+      node.parent.parent.tagName?.getText(source) === 'DocumentationConsistency') return; // Policy selection, not displayed copy.
     if (ts.isPropertyAssignment(node) && node.name.getText(source).replace(/^['"]|['"]$/g, '') === 'id' && ts.isStringLiteral(node.initializer)) return;
     if (ts.isJsxElement(node) && ['style', 'script'].includes(node.openingElement.tagName.getText(source))) return;
     if (ts.isJsxAttribute(node) && ['className','id','key','href','src','d','viewBox','transform','style','align','textAnchor','preserveAspectRatio','allow','referrerPolicy','loading','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath','mask','maskUnits'].includes(node.name.getText(source))) return;

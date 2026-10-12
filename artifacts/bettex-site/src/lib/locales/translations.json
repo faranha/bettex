@@ -1,4 +1,8 @@
 {
+  "A decisão indivisível de apuração fixa os beneficiários, pesos e denominador do rateio, considerando também saídas já confirmadas até essa decisão. Saídas posteriores cancelam o crédito correspondente, sem recalcular o rateio dos demais ou redistribuir o valor cancelado. O peso vigente zerado e a memória histórica do cálculo são registros distintos. Uma decisão repetida não cria outro split.": {
+    "en": "The indivisible assessment decision fixes the beneficiaries, weights and distribution denominator, also considering exits already confirmed by that decision. Later exits cancel the corresponding credit without recalculating other participants' allocations or redistributing the cancelled amount. The current zeroed weight and the historical calculation record are separate records. Repeating a decision does not create another split.",
+    "es": "La decisión indivisible de cálculo fija los beneficiarios, pesos y denominador del reparto, considerando también las salidas ya confirmadas hasta esa decisión. Las salidas posteriores cancelan el crédito correspondiente, sin recalcular el reparto de los demás ni redistribuir el importe cancelado. El peso vigente reducido a cero y el registro histórico del cálculo son registros distintos. Repetir una decisión no crea otro reparto."
+  },
   "Comunidade no X": {
     "en": "Community on X",
     "es": "Comunidad en X"
@@ -23061,5 +23065,229 @@
   "Ilustração do personagem da BETTEX consultando as carteiras e a participação no aplicativo pelo celular.": {
     "en": "Illustration of the BETTEX character checking wallets and participation in the app on his phone.",
     "es": "Ilustración del personaje de BETTEX consultando las carteras y la participación en la aplicación desde el celular."
+  },
+  ". O acesso comprova controle da carteira, não identidade civil. A elegibilidade para atividades financeiras depende dos controles exigidos pela atividade e pelo território.": {
+    "en": "Access proves control of the wallet, not civil identity. Eligibility for financial activities depends on the controls required by the activity and the territory.",
+    "es": "El acceso comprueba el control de la billetera, no la identidad civil. La elegibilidad para actividades financieras depende de los controles exigidos por la actividad y por el territorio."
+  },
+  "100% do preço em USDC dos tokens da comunidade já liberados vai à tesouraria. A BETTEX não cobra taxas de serviço. A captação do mint inicial financia o projeto e exige prestação de contas. Mercados externos não herdam automaticamente as condições do swap oficial.": {
+    "en": "100% of the USDC price of the already released community tokens goes to the treasury. BETTEX does not charge service fees. The initial mint funding finances the project and requires accountability. External markets do not automatically inherit the conditions of the official swap.",
+    "es": "El 100% del precio en USDC de los tokens de la comunidad ya liberados va a la tesorería. BETTEX no cobra tasas de servicio. La captación del mint inicial financia el proyecto y exige rendición de cuentas. Los mercados externos no heredan automáticamente las condiciones del swap oficial."
+  },
+  "A carteira exclusiva guarda USDC para a compra; não é o mecanismo de burn. A execução vincula aquisição, quantidade efetivamente recebida e destruição irreversível por mecanismo verificável, com referências conciliadas. Armazenar tokens numa carteira comum não é queimar. Tokens queimados não retornam à circulação nem participam do staking. A BETTEX não cobra taxas de serviço; emissão e vesting continuam os mesmos.": {
+    "en": "The exclusive wallet holds USDC for the purchase; it is not the burn mechanism. Execution links acquisition, quantity effectively received, and irreversible destruction by a verifiable mechanism, with reconciled references. Storing tokens in a common wallet is not burning. Burned tokens do not return to circulation nor participate in staking. BETTEX does not charge service fees; issuance and vesting remain the same.",
+    "es": "La billetera exclusiva guarda USDC para la compra; no es el mecanismo de burn. La ejecución vincula la adquisición, la cantidad efectivamente recibida y la destrucción irreversible por un mecanismo verificable, con referencias conciliadas. Almacenar tokens en una billetera común no es quemar. Los tokens quemados no retornan a la circulación ni participan en el staking. BETTEX no cobra tasas de servicio; la emisión y el vesting continúan siendo los mismos."
+  },
+  "A investigação jurídica define quais controles são necessários para mint, participação, jogos e integrações. Verificações de um provedor externo não são automaticamente suficientes para as obrigações da BETTEX. Sem controles exigidos validados, restringir a oferta e a operação afetadas; não prometer acesso financeiro sem documentos em qualquer território.": {
+    "en": "Legal investigation defines which controls are necessary for mint, participation, games, and integrations. Verifications from an external provider are not automatically sufficient for BETTEX obligations. Without validated required controls, restrict the supply and the affected operation; do not promise financial access without documents in any territory.",
+    "es": "La investigación jurídica define qué controles son necesarios para el mint, la participación, los juegos y las integraciones. Las verificaciones de un proveedor externo no son automáticamente suficientes para las obligaciones de BETTEX. Sin controles exigidos validados, restringir la oferta y la operación afectada; no prometer acceso financiero sin documentos en cualquier territorio."
+  },
+  "A ordem relevante é a dos fatos comprovados na rede, não a chegada das mensagens ao backend. Uma saída de BETTEX anterior ao recebimento efetivo de USDC cancela o direito ainda não pago. Recebimento efetivo anterior à saída permanece pessoal, após confirmação e conciliação. A política registra os critérios de ordenação e finalização da rede; horários iguais ou evidências insuficientes mantêm o caso em verificação.": {
+    "en": "The relevant order is that of the facts proven on the network, not the arrival of messages to the backend. A BETTEX exit prior to the effective receipt of USDC cancels the right not yet paid. Effective receipt prior to the exit remains personal, after confirmation and reconciliation. The policy registers the criteria for network ordering and finalization; equal times or insufficient evidence keep the case under verification.",
+    "es": "El orden relevante es el de los hechos comprobados en la red, no la llegada de los mensajes al backend. Una salida de BETTEX anterior al recibo efectivo de USDC cancela el derecho aún no pagado. El recibo efectivo anterior a la salida permanece personal, tras la confirmación y conciliación. La política registra los criterios de ordenación y finalización de la red; horarios iguales o evidencias insuficientes mantienen el caso bajo verificación."
+  },
+  "A regra de uma jogada a cada 24 horas corridas é aplicada à carteira oficial vinculada à conta; trocar de sessão, aparelho ou recuperar acesso não reinicia o prazo. Não é um limite comprovado por pessoa: múltiplas carteiras são consideradas no orçamento agregado. Registrar o início uma única vez antes da execução; tentativa incerta não permite outra jogada nem libera a reserva por presunção.": {
+    "en": "The rule of one play every 24 consecutive hours is applied to the official wallet linked to the account; changing sessions, devices, or recovering access does not reset the deadline. It is not a limit proven by person: multiple wallets are considered in the aggregate budget. Register the start a single time before execution; an uncertain attempt does not allow another play nor does it release the reserve by presumption.",
+    "es": "La regla de una jugada cada 24 horas corridas se aplica a la billetera oficial vinculada a la cuenta; cambiar de sesión, aparato o recuperar el acceso no reinicia el plazo. No es un límite comprobado por persona: múltiples billeteras son consideradas en el presupuesto agregado. Registrar el inicio una única vez antes de la ejecución; un intento incierto no permite otra jugada ni libera la reserva por presunción."
+  },
+  "Amount too high for this demonstration.": {
+    "en": "Amount too high for this demonstration.",
+    "es": "Monto demasiado alto para esta demostración."
+  },
+  "Antes de autorizar o split, reservar principal e teto de custos em cada ativo e projetar a liquidez após todos os desembolsos. A reserva de custos não é despesa realizada. Sua fonte e autorização são identificadas; não se descontam silenciosamente custos do direito do participante nem da parcela exclusiva de recompra. Diferenças entre custo reservado e efetivo são conciliadas; a sobra não é lucro novo. Se não houver orçamento e cobertura suficientes, não autorizar o split.": {
+    "en": "Before authorizing the split, reserve principal and cost ceiling in each asset and project the liquidity after all disbursements. The cost reserve is not a realized expense. Its source and authorization are identified; costs are not silently deducted from the participant's right nor from the exclusive repurchase portion. Differences between reserved and effective cost are reconciled; the remainder is not new profit. If there is not sufficient budget and coverage, do not authorize the split.",
+    "es": "Antes de autorizar el split, reservar el principal y el techo de costos en cada activo y proyectar la liquidez después de todos los desembolsos. La reserva de costos no es un gasto realizado. Su fuente y autorización son identificadas; no se descuentan silenciosamente costos del derecho del participante ni de la parcela exclusiva de recompra. Las diferencias entre el costo reservado y el efectivo son conciliadas; el sobrante no es ganancia nueva. Si no hay presupuesto y cobertura suficientes, no autorizar el split."
+  },
+  "Antes de operar, a política aprovada deve fixar a janela máxima de conciliação e execução, o prazo de encerramento financeiro, as fontes e os critérios de confirmação. A janela não pode ser prorrogada por participante, atraso ou conveniência da gestão. Sem esses parâmetros e controles validados, não há autorização para distribuir. Encerramento financeiro é o término dessa janela ou a conclusão antecipada registrada de todos os pagamentos e tratamentos previstos.": {
+    "en": "Before operating, the approved policy must set the maximum reconciliation and execution window, the financial closing deadline, the sources, and the confirmation criteria. The window cannot be extended by participant, delay, or management convenience. Without these validated parameters and controls, there is no authorization to distribute. Financial closing is the end of this window or the registered early conclusion of all scheduled payments and treatments.",
+    "es": "Antes de operar, la política aprobada debe fijar la ventana máxima de conciliación y ejecución, el plazo de cierre financiero, las fuentes y los criterios de confirmación. La ventana no puede ser prorrogada por participante, retraso o conveniencia de la gestión. Sin estos parámetros y controles validados, no hay autorización para distribuir. El cierre financiero es el término de esa ventana o la conclusión anticipada registrada de todos los pagos y tratamientos previstos."
+  },
+  "Apuração, autorização e execução são etapas da mesma rodada, não uma nova distribuição. Não misturar resultados, beneficiários ou parcelas de rodadas diferentes. O encerramento financeiro elimina direitos comprovadamente não enviados; envios já iniciados ou incertos permanecem somente em conciliação. Não há complemento, reabertura ou crédito futuro depois desse encerramento.": {
+    "en": "Calculation, authorization, and execution are stages of the same round, not a new distribution. Do not mix results, beneficiaries, or installments from different rounds. Financial closing eliminates rights provenly not sent; shipments already initiated or uncertain remain only in reconciliation. There is no supplement, reopening, or future credit after this closing.",
+    "es": "La determinación, autorización y ejecución son etapas de la misma ronda, no una nueva distribución. No mezclar resultados, beneficiarios o cuotas de rondas diferentes. El cierre financiero elimina derechos comprobadamente no enviados; los envíos ya iniciados o inciertos permanecen solamente en conciliación. No hay complemento, reapertura o crédito futuro después de ese cierre."
+  },
+  "Autenticação e elegibilidade jurídica": {
+    "en": "Authentication and legal eligibility",
+    "es": "Autenticación y elegibilidad jurídica"
+  },
+  "Burn Lottery mantém um número gratuito por carteira, não por pessoa. O regulamento deve fixar o corte e a condição de saldo elegível em staking, usando um snapshot verificável e identificador único por carteira e sorteio; transferir depois do corte não gera outro número gratuito naquele sorteio. Uma pessoa pode controlar várias carteiras elegíveis: não apresentar essa regra como proteção contra múltiplas identidades. O orçamento do prêmio deve considerar essa possibilidade, sem presumir um limite por pessoa ou saldo mínimo ainda não aprovado.": {
+    "en": "Burn Lottery keeps one free number per wallet, not per person. The regulation must set the cutoff and the eligible balance condition in staking, using a verifiable snapshot and a unique identifier per wallet and draw; transferring after the cutoff does not generate another free number in that draw. A person can control multiple eligible wallets: do not present this rule as protection against multiple identities. The prize budget must consider this possibility, without assuming a limit per person or a minimum balance not yet approved.",
+    "es": "Burn Lottery mantiene un número gratuito por billetera, no por persona. El reglamento debe fijar el corte y la condición de saldo elegible en staking, usando un snapshot verificable e identificador único por billetera y sorteo; transferir después del corte no genera otro número gratuito en aquel sorteo. Una persona puede controlar varias billeteras elegibles: no presentar esa regla como protección contra múltiples identidades. El presupuesto del premio debe considerar esa posibilidad, sin presumir un límite por persona o saldo mínimo aún no aprobado."
+  },
+  "Cada rodada diária UTC é única e independente: paga ou não paga. O corte do período econômico não é o encerramento financeiro: a apuração e a liquidação continuam vinculadas à rodada original, dentro da janela máxima previamente aprovada. Uma rodada financeiramente encerrada não reabre, não retorna ao rateio e não soma lucro, pesos ou créditos aos de outra rodada. Pesos de uma rodada sem pagamento não criam direito sobre distribuições futuras.": {
+    "en": "Each daily UTC round is unique and independent: paid or unpaid. The cutoff of the economic period is not the financial closing: the calculation and settlement remain linked to the original round, within the maximum window previously approved. A financially closed round does not reopen, does not return to the distribution, and does not add profit, weights, or credits to those of another round. Weights from a round without payment do not create rights over future distributions.",
+    "es": "Cada ronda diaria UTC es única e independiente: pagada o no pagada. El corte del período económico no es el cierre financiero: la determinación y la liquidación continúan vinculadas a la ronda original, dentro de la ventana máxima previamente aprobada. Una ronda financieramente cerrada no reabre, no retorna al reparto y no suma lucro, pesos o créditos a los de otra ronda. Los pesos de una ronda sin pago no crean derecho sobre distribuciones futuras."
+  },
+  "Cancelar um direito não reverte uma transferência já iniciada nem comprova recuperação de USDC. Um envio iniciado ou incerto nunca é repetido por presunção. Se a conciliação comprovar recebimento indevido depois de uma saída anterior, registrar o pagamento indevido e a perda da tesouraria, sem restaurar o direito cancelado, cobrar automaticamente a carteira pessoal ou criar outro split. O USDC já recebido não é recuperado por ajuste contábil.": {
+    "en": "Canceling a right does not reverse a transfer already initiated nor prove USDC recovery. An initiated or uncertain shipment is never repeated by presumption. If reconciliation proves undue receipt after a previous departure, register the undue payment and the treasury loss, without restoring the canceled right, automatically charging the personal wallet or creating another split. The USDC already received is not recovered by accounting adjustment.",
+    "es": "Cancelar un derecho no revierte una transferencia ya iniciada ni comprueba recuperación de USDC. Un envío iniciado o incierto nunca es repetido por presunción. Si la conciliación comprueba recepción indebida después de una salida anterior, registrar el pago indebido y la pérdida de la tesorería, sin restaurar el derecho cancelado, cobrar automáticamente la billetera personal o crear otro split. El USDC ya recibido no es recuperado por ajuste contable."
+  },
+  "Comprovar controle da carteira autentica o acesso, mas não comprova identidade civil, residência, idade ou elegibilidade para uma oferta. O login por carteira não dispensa identificação, KYC ou outros controles quando exigidos para a atividade e o território. O demo visual não oferece operações financeiras.": {
+    "en": "Proving wallet control authenticates access, but does not prove civil identity, residence, age, or eligibility for an offer. Wallet login does not waive identification, KYC, or other controls when required for the activity and territory. The visual demo does not offer financial operations.",
+    "es": "Comprobar el control de la billetera autentica el acceso, pero no comprueba identidad civil, residencia, edad o elegibilidad para una oferta. El inicio de sesión por billetera no dispensa identificación, KYC u otros controles cuando son exigidos para la actividad y el territorio. La demostración visual no ofrece operaciones financieras."
+  },
+  "Could not determine the next UTC period of the demonstration.": {
+    "en": "Could not determine the next UTC period of the demonstration.",
+    "es": "No se pudo determinar el próximo período UTC de la demostración."
+  },
+  "Could not load preview image:": {
+    "en": "Could not load preview image:",
+    "es": "No se pudo cargar la imagen de vista previa:"
+  },
+  "Could not read community button preference.": {
+    "en": "Could not read community button preference.",
+    "es": "No se pudo leer la preferencia del botón de comunidad."
+  },
+  "Could not save community button preference.": {
+    "en": "Could not save community button preference.",
+    "es": "No se pudo guardar la preferencia del botón de comunidad."
+  },
+  "Custos da liquidação e origem temporal": {
+    "en": "Settlement costs and temporal origin",
+    "es": "Costos de liquidación y origen temporal"
+  },
+  "Custos externos de rede ou de terceiros não são taxas de serviço da BETTEX. O custeio de desenvolvimento e manutenção continua em aberto. Essa regra de liquidação não autoriza usar a tesouraria para despesas gerais, mudar o split 50%/25%/25% ou reabrir uma rodada encerrada.": {
+    "en": "External network or third-party costs are not BETTEX service fees. Development and maintenance costs remain open. This settlement rule does not authorize using the treasury for general expenses, changing the 50%/25%/25% split, or reopening a closed round.",
+    "es": "Los costos externos de red o de terceros no son tasas de servicio de BETTEX. El costo de desarrollo y mantenimiento continúa abierto. Esta regla de liquidación no autoriza usar la tesorería para gastos generales, cambiar el split 50%/25%/25% o reabrir una ronda cerrada."
+  },
+  "Custos, ativos, fontes e validade são discriminados sem valores universais inventados. Conferir disponibilidade em cada ativo e orçamento USDC, sem reserva duplicada; mudanças não aumentam silenciosamente a autorização. Reserva prevista não é despesa: somente custos efetivos conciliados entram na apuração uma vez. Eles não reduzem silenciosamente o direito do participante. Custos externos de um saque posterior são separados e não são receita da BETTEX. Creditar o yield não gera tarifa de serviço. Liquidar a distribuição não é investimento nem novo consumo do acumulado de compromissos de investimento.": {
+    "en": "Costs, assets, sources, and validity are discriminated without invented universal values. Check availability in each asset and USDC budget, without duplicate reservation; changes do not silently increase authorization. Planned reserve is not an expense: only effectively reconciled costs enter the calculation once. They do not silently reduce the participant's right. External costs of a subsequent withdrawal are separate and are not BETTEX revenue. Crediting the yield does not generate a service fee. Settling the distribution is not an investment nor new consumption of accumulated investment commitments.",
+    "es": "Los costos, activos, fuentes y validez se discriminan sin valores universales inventados. Verificar la disponibilidad en cada activo y presupuesto USDC, sin reserva duplicada; los cambios no aumentan silenciosamente la autorización. La reserva prevista no es un gasto: solo los costos efectivos conciliados entran en el cálculo una vez. Ellos no reducen silenciosamente el derecho del participante. Los costos externos de un retiro posterior están separados y no son ingresos de BETTEX. Acreditar el rendimiento no genera una tarifa de servicio. Liquidar la distribución no es una inversión ni un nuevo consumo del acumulado de compromisos de inversión."
+  },
+  "Demonstration is limited to 12 distribution periods.": {
+    "en": "Demonstration is limited to 12 distribution periods.",
+    "es": "La demostración está limitada a 12 períodos de distribución."
+  },
+  "Double 2X exige mandato próprio com aposta máxima, orçamento agregado, reserva para vitórias simultâneas, prazo, aleatoriedade verificável e procedimento para falhas. Esses parâmetros devem ser aprovados e publicados antes da abertura; sem eles, o jogo fica indisponível. A autorização confere a aposta inteira e reserva a obrigação de devolver 2x, considerando a aposta recebida e a parcela adicional da tesouraria, sem usar recursos de staking, recompra ou outros compromissos.": {
+    "en": "Double 2X requires its own mandate with maximum bet, aggregate budget, reserve for simultaneous wins, timeframe, verifiable randomness, and failure procedure. These parameters must be approved and published before opening; without them, the game is unavailable. The authorization grants the entire bet and reserves the obligation to return 2x, considering the bet received and the additional portion from the treasury, without using resources from staking, buyback, or other commitments.",
+    "es": "Double 2X exige mandato propio con apuesta máxima, presupuesto agregado, reserva para victorias simultáneas, plazo, aleatoriedad verificable y procedimiento para fallos. Estos parámetros deben ser aprobados y publicados antes de la apertura; sin ellos, el juego queda indisponible. La autorización confiere la apuesta entera y reserva la obligación de devolver 2x, considerando la apuesta recibida y la parcela adicional de la tesorería, sin usar recursos de staking, recompra u otros compromisos."
+  },
+  "Elegibilidade, exposição e condições dos jogos": {
+    "en": "Eligibility, exposure and game conditions",
+    "es": "Elegibilidad, exposición y condiciones de los juegos"
+  },
+  "Encerrada financeiramente a rodada, ao concluir sua janela de liquidação previamente aprovada, não resta crédito de distribuição a pagar, saldo residual do beneficiário ou obrigação de complemento. Valores não pagos e comprovadamente não enviados ficam na tesouraria; autorizações não executadas são encerradas, sem migração para outra rodada. Transferências já iniciadas, enviadas ou incertas exigem apenas conciliação do fato original: não são créditos de uma nova rodada, não reabrem o rateio e não autorizam novos envios da rodada encerrada. Recursos incertos não são considerados recuperados.": {
+    "en": "Once the round is financially closed, upon concluding its previously approved settlement window, there is no remaining distribution credit to pay, residual beneficiary balance, or obligation for a top-up. Unpaid and demonstrably unsent amounts remain in the treasury; unexecuted authorizations are terminated, with no migration to another round. Transfers already initiated, sent, or uncertain only require reconciliation of the original event: they are not credits of a new round, do not reopen the distribution, and do not authorize new shipments from the closed round. Uncertain resources are not considered recovered.",
+    "es": "Una vez cerrada financieramente la ronda, al concluir su ventana de liquidación previamente aprobada, no queda crédito de distribución por pagar, saldo residual del beneficiario u obligación de complemento. Los valores no pagados y comprobadamente no enviados quedan en la tesorería; las autorizaciones no ejecutadas se cierran, sin migración a otra ronda. Las transferencias ya iniciadas, enviadas o inciertas requieren solo la conciliación del hecho original: no son créditos de una nueva ronda, no reabren el prorrateo y no autorizan nuevos envíos de la ronda cerrada. Los recursos inciertos no se consideran recuperados."
+  },
+  "Exemplo hipotético em USDC, sem outros movimentos ou custos: patrimônio de 100 cai para 80 após perda de 20; um novo lucro de 10 o leva a 90. Havendo condições para o split, 2,5 vão aos participantes, 2,5 à recompra e 5 ficam retidos. O patrimônio operacional termina em 85 e, somado ao USDC segregado de recompra, o patrimônio do projeto é 87,5, ainda abaixo de 100. A recuperação parcial não garante valorização do token. Participantes elegíveis da nova rodada podem diferir dos que estavam presentes na perda.": {
+    "en": "Hypothetical example in USDC, without other movements or costs: equity of 100 drops to 80 after a loss of 20; a new profit of 10 brings it to 90. Given conditions for the split, 2.5 go to participants, 2.5 to buyback, and 5 are retained. The operational equity ends at 85 and, added to the segregated buyback USDC, the project equity is 87.5, still below 100. Partial recovery does not guarantee token appreciation. Eligible participants of the new round may differ from those who were present during the loss.",
+    "es": "Ejemplo hipotético en USDC, sin otros movimientos o costos: el patrimonio de 100 cae a 80 tras una pérdida de 20; una nueva ganancia de 10 lo lleva a 90. Habiendo condiciones para el split, 2,5 van a los participantes, 2,5 a la recompra y 5 quedan retenidos. El patrimonio operativo termina en 85 y, sumado al USDC segregado de recompra, el patrimonio del proyecto es 87,5, todavía por debajo de 100. La recuperación parcial no garantiza la valorización del token. Los participantes elegibles de la nueva ronda pueden diferir de los que estaban presentes en la pérdida."
+  },
+  "Governança, multisig e mandatos": {
+    "en": "Governance, multisig and mandates",
+    "es": "Gobernanza, multisig y mandatos"
+  },
+  "Insufficient BETTEX balance in personal wallet.": {
+    "en": "Insufficient BETTEX balance in personal wallet.",
+    "es": "Saldo insuficiente de BETTEX en la billetera personal."
+  },
+  "Insufficient USDC balance in allocated wallet.": {
+    "en": "Insufficient USDC balance in allocated wallet.",
+    "es": "Saldo insuficiente de USDC en la billetera asignada."
+  },
+  "Insufficient USDC balance in personal wallet.": {
+    "en": "Insufficient USDC balance in personal wallet.",
+    "es": "Saldo insuficiente de USDC en la billetera personal."
+  },
+  "Invalid state to save demonstration of the wallet.": {
+    "en": "Invalid state to save demonstration of the wallet.",
+    "es": "Estado no válido para guardar la demostración de la billetera."
+  },
+  "Invalid time for this demonstration.": {
+    "en": "Invalid time for this demonstration.",
+    "es": "Tiempo no válido para esta demostración."
+  },
+  "Lucro da rodada não é recuperação do capital": {
+    "en": "The round profit is not a capital recovery.",
+    "es": "El beneficio de la ronda no es una recuperación de capital."
+  },
+  "Não existe compensação de perdas antigas nem requisito de recuperar o pico patrimonial anterior para distribuir. É uma escolha econômica do modelo, não proteção de capital. Um novo lucro pode ser distribuído com o patrimônio ainda abaixo do valor anterior, somente se reserva defensiva, liquidez e demais condições estiverem atendidas.": {
+    "en": "There is no compensation for past losses nor a requirement to recover the previous peak equity to distribute. It is an economic choice of the model, not capital protection. New profit can be distributed with equity still below the previous value, only if defensive reserve, liquidity, and other conditions are met.",
+    "es": "No existe compensación de pérdidas antiguas ni requisito de recuperar el pico patrimonial anterior para distribuir. Es una elección económica del modelo, no protección de capital. Un nuevo beneficio puede ser distribuido con el patrimonio aún por debajo del valor anterior, solamente si la reserva defensiva, la liquidez y demás condiciones están atendidas."
+  },
+  "O RTP de 100% é bruto e teórico: não cobre gás, aleatoriedade nem garante equilíbrio de caixa no curto prazo. Recebimentos, obrigações, ganhos, perdas e custos dos jogos têm livro próprio, conciliado com o patrimônio da tesouraria. Não entram como lucro das estratégias elegível ao split nem usam o orçamento exclusivo de recompra. Variações patrimoniais dos jogos afetam os controles de reserva e liquidez antes de novas operações e distribuições.": {
+    "en": "The 100% RTP is gross and theoretical: it does not cover gas, randomness, nor guarantee cash equilibrium in the short term. Receipts, obligations, gains, losses, and game costs have their own ledger, reconciled with treasury equity. They do not enter as strategy profit eligible for split nor use the exclusive buyback budget. Equity variations of the games affect the reserve and liquidity controls before new operations and distributions.",
+    "es": "El RTP del 100% es bruto y teórico: no cubre gas, aleatoriedad ni garantiza equilibrio de caja en el corto plazo. Recibos, obligaciones, ganancias, pérdidas y costos de los juegos tienen libro propio, conciliado con el patrimonio de la tesorería. No entran como beneficio de las estrategias elegible al split ni usan el presupuesto exclusivo de recompra. Variaciones patrimoniales de los juegos afectan los controles de reserva y liquidez antes de nuevas operaciones y distribuciones."
+  },
+  "O executor não escolhe beneficiários por conveniência. O plano de pagamentos registra previamente ordem determinística, parcelas, recursos e prazo comum; usa execução atômica quando validada para a rede. Se houver processamento parcial, publica quem recebeu, quem não recebeu e a causa. Falha operacional ou pagamento a menor pode causar perda definitiva da parcela não enviada no encerramento financeiro: esse risco deve ser informado antes da participação. Não se promete igualdade de recebimento quando a execução não é atômica.": {
+    "en": "The executor does not choose beneficiaries by convenience. The payment plan pre-registers deterministic order, installments, resources, and a common deadline; it uses atomic execution when validated for the network. If there is partial processing, it publishes who received, who did not receive, and the cause. Operational failure or underpayment can cause definitive loss of the installment not sent at financial closure: this risk must be informed before participation. Equality of receipt is not promised when the execution is not atomic.",
+    "es": "El ejecutor no elige beneficiarios por conveniencia. El plan de pagos registra previamente orden determinística, cuotas, recursos y plazo común; usa ejecución atómica cuando es validada para la red. Si hay procesamiento parcial, publica quién recibió, quién no recibió y la causa. Fallo operacional o pago menor puede causar pérdida definitiva de la cuota no enviada en el cierre financiero: este riesgo debe ser informado antes de la participación. No se promete igualdad de recibimiento cuando la ejecución no es atómica."
+  },
+  "O período econômico da rodada diária vai de 00h00 até 00h00 do dia seguinte em UTC. O instante do corte pertence ao período econômico seguinte, sem tempo contado duas vezes. A janela de apuração e liquidação permanece vinculada à rodada original até seu encerramento financeiro. Fundador e investidores seguem os mesmos critérios dos demais titulares.": {
+    "en": "The economic period of the daily round runs from 00:00 to 00:00 of the following day in UTC. The instant of the cut belongs to the following economic period, with no time counted twice. The window for assessment and settlement remains linked to the original round until its financial closure. Founder and investors follow the same criteria as other holders.",
+    "es": "El período económico de la ronda diaria va de 00h00 hasta 00h00 del día siguiente en UTC. El instante del corte pertenece al período económico siguiente, sin tiempo contado dos veces. La ventana de evaluación y liquidación permanece vinculada a la ronda original hasta su cierre financiero. Fundador e inversores siguen los mismos criterios de los demás titulares."
+  },
+  "O período econômico da rodada é o intervalo UTC entre 00h00, inclusive, e 00h00 do dia seguinte, exclusive. O corte encerra a coleta de resultados e o tempo elegível dessa rodada, não a sua fase de liquidação. Depois do corte, apuração e pagamentos identificados continuam vinculados exclusivamente à rodada original, enquanto o período econômico seguinte já está em andamento.": {
+    "en": "The economic period of the round is the UTC interval between 00:00, inclusive, and 00:00 of the following day, exclusive. The cut ends the collection of results and the eligible time of that round, not its settlement phase. After the cut, assessment and identified payments remain linked exclusively to the original round, while the following economic period is already underway.",
+    "es": "El período económico de la ronda es el intervalo UTC entre 00h00, inclusive, y 00h00 del día siguiente, exclusive. El corte cierra la recolección de resultados y el tiempo elegible de esa ronda, no su fase de liquidación. Después del corte, evaluación y pagos identificados continúan vinculados exclusivamente a la ronda original, mientras el período económico siguiente ya está en marcha."
+  },
+  "O peso só é calculado depois do corte, com o saldo elegível da abertura e os eventos confirmados de todo o período econômico. Entradas durante o período aguardam a próxima rodada; qualquer saída durante ele zera o peso integral. Saídas posteriores ao corte também cancelam direitos da rodada original ainda não pagos, sem alterar os pesos ou resultados da nova rodada por meio de crédito antigo.": {
+    "en": "The weight is only calculated after the cut, with the eligible balance of the opening and the confirmed events of the entire economic period. Entries during the period wait for the next round; any exit during it resets the full weight to zero. Exits after the cut also cancel rights of the original round not yet paid, without altering the weights or results of the new round through old credit.",
+    "es": "El peso solo es calculado después del corte, con el saldo elegible de la apertura y los eventos confirmados de todo el período económico. Entradas durante el período aguardan la próxima ronda; cualquier salida durante él pone a cero el peso integral. Salidas posteriores al corte también cancelan derechos de la ronda original aún no pagados, sin alterar los pesos o resultados de la nueva ronda por medio de crédito antiguo."
+  },
+  "O prêmio da Burn Lottery e os custos do sorteio exigem fonte aprovada e cobertura antes de aceitar entradas. Os BETTEX pagos são queimados e não financiam o prêmio. Pagamento, referência de queima e geração da entrada devem ter efeito único e mecanismo de recuperação verificável; se esse vínculo não puder ser garantido, não aceitar pagamentos. O regulamento informa sorteio, aleatoriedade verificável, tratamento de falhas e impossibilidade de desfazer uma queima por simples ajuste.": {
+    "en": "The Burn Lottery prize and the costs of the draw require an approved source and coverage before accepting entries. The paid BETTEX are burned and do not finance the prize. Payment, burn reference and entry generation must have a single effect and a verifiable recovery mechanism; if this link cannot be guaranteed, do not accept payments. The regulation informs the draw, verifiable randomness, fault handling and the impossibility of undoing a burn by simple adjustment.",
+    "es": "El premio de la Burn Lottery y los costes del sorteo requieren una fuente aprobada y cobertura antes de aceptar entradas. Los BETTEX pagados son quemados y no financian el premio. El pago, la referencia de quema y la generación de la entrada deben tener un efecto único y un mecanismo de recuperación verificable; si este vínculo no puede ser garantizado, no acepte pagos. El reglamento informa el sorteo, la aleatoriedad verificable, el tratamiento de fallos y la imposibilidad de deshacer una quema por simple ajuste."
+  },
+  "O resultado econômico é cortado antes da fase de pagamentos. Custos efetivos pertencem ao período UTC de sua realização comprovada: custos de liquidação executada depois do corte entram no resultado do período econômico em que ocorreram, não retroativamente no lucro que originou aquele pagamento. Registrar separadamente rodada do pagamento e período econômico do custo, sem contabilizar o mesmo fato duas vezes.": {
+    "en": "The economic result is cut before the payment phase. Effective costs belong to the UTC period of their proven realization: settlement costs executed after the cut enter the result of the economic period in which they occurred, not retroactively into the profit that originated that payment. Register the payment round and the economic period of the cost separately, without accounting for the same fact twice.",
+    "es": "El resultado económico es cortado antes de la fase de pagos. Los costes efectivos pertenecen al período UTC de su realización comprobada: los costes de liquidación ejecutados después del corte entran en el resultado del período económico en el que ocurrieron, no retroactivamente en el beneficio que originó aquel pago. Registrar por separado la ronda del pago y el período económico del coste, sin contabilizar el mismo hecho dos veces."
+  },
+  "Participation history for this demonstration has reached its limit.": {
+    "en": "Participation history for this demonstration has reached its limit.",
+    "es": "El historial de participación para esta demostración ha llegado a su límite."
+  },
+  "Participação no staking; resultados recebidos em USDC.": {
+    "en": "Participation in staking; results received in USDC.",
+    "es": "Participación en staking; resultados recibidos en USDC."
+  },
+  "Período econômico, liquidação e encerramento financeiro": {
+    "en": "Economic period, settlement and financial closing",
+    "es": "Período económico, liquidación y cierre financiero"
+  },
+  "Provide a valid EVM address for the Arbitrum One network.": {
+    "en": "Provide a valid EVM address for the Arbitrum One network.",
+    "es": "Proporcione una dirección EVM válida para la red Arbitrum One."
+  },
+  "Saída de BETTEX e ordem dos pagamentos": {
+    "en": "BETTEX exit and payment order",
+    "es": "Salida de BETTEX y orden de los pagos"
+  },
+  "Staking por saldo elegível na abertura; pagamento em USDC.": {
+    "en": "Staking by eligible balance at opening; payment in USDC.",
+    "es": "Staking por saldo elegible en la apertura; pago en USDC."
+  },
+  "Transaction time cannot precede an already registered participation change.": {
+    "en": "Transaction time cannot precede an already registered participation change.",
+    "es": "El tiempo de la transacción no puede preceder a un cambio de participación ya registrado."
+  },
+  "USDC de rendimentos já recebidos é controlado por limite de origem conciliado, não pela identidade física dos tokens fungíveis. Distribuições confirmadas aumentam esse limite; cada saída de USDC, inclusive aposta, o reduz uma única vez até zero. Depósitos externos e vitórias no jogo não aumentam o limite. Ele nunca excede o saldo USDC livre; reservas de apostas impedem reutilização concorrente. Evidência insuficiente bloqueia a aposta.": {
+    "en": "USDC of yields already received is controlled by a reconciled source limit, not by the physical identity of the fungible tokens. Confirmed distributions increase this limit; each USDC withdrawal, including a bet, reduces it once down to zero. External deposits and game wins do not increase the limit. It never exceeds the free USDC balance; bet reserves prevent concurrent reuse. Insufficient evidence blocks the bet.",
+    "es": "El USDC de rendimientos ya recibidos es controlado por un límite de origen conciliado, no por la identidad física de los tokens fungibles. Las distribuciones confirmadas aumentan este límite; cada salida de USDC, inclusive una apuesta, lo reduce una sola vez hasta cero. Los depósitos externos y las victorias en el juego no aumentan el límite. Nunca excede el saldo USDC libre; las reservas de apuestas impiden la reutilización concurrente. Evidencia insuficiente bloquea la apuesta."
+  },
+  "Uma compra debita USDC e credita BETTEX uma única vez, após confirmação da liquidação. O saldo recebido durante a rodada só se torna elegível na abertura da rodada seguinte.": {
+    "en": "A purchase debits USDC and credits BETTEX once, after confirmation of the settlement. The balance received during the round only becomes eligible at the opening of the following round.",
+    "es": "Una compra debita USDC y acredita BETTEX una sola vez, tras la confirmación de la liquidación. El saldo recibido durante la ronda solo se vuelve elegible en la apertura de la ronda siguiente."
+  },
+  "Uma reserva ou transação indivisível no banco não impede uma transferência externa feita pelo titular. A implementação deve validar a elegibilidade no caminho efetivo de pagamento, com eventos de BETTEX e USDC ordenáveis e mecanismo compatível com a rede que impeça pagar um direito já cancelado. Uma verificação off-chain anterior ao envio, sozinha, não comprova essa garantia. Sem validação desse mecanismo, o pagamento automático não é liberado.": {
+    "en": "A reserve or indivisible transaction in the bank does not prevent an external transfer made by the holder. The implementation must validate eligibility in the effective payment path, with orderable BETTEX and USDC events and a network-compatible mechanism that prevents paying an already cancelled right. An off-chain verification prior to submission, alone, does not prove this guarantee. Without validation of this mechanism, the automatic payment is not released.",
+    "es": "Una reserva o transacción indivisible en el banco no impide una transferencia externa realizada por el titular. La implementación debe validar la elegibilidad en el camino efectivo de pago, con eventos de BETTEX y USDC ordenables y un mecanismo compatible con la red que impida pagar un derecho ya cancelado. Una verificación off-chain anterior al envío, por sí sola, no comprueba esta garantía. Sin la validación de este mecanismo, el pago automático no es liberado."
+  },
+  "Value too high for this demonstration.": {
+    "en": "Value too high for this demonstration.",
+    "es": "Valor demasiado alto para esta demostración."
+  },
+  "ocorre em seu próprio aplicativo ou ambiente, conforme suas regras. Esses processos são separados do login e da recuperação de acesso por carteira. A verificação do provedor não substitui automaticamente controles exigidos da BETTEX; acesso autenticado não é autorização para oferta ou operação financeira.": {
+    "en": "occurs in your own application or environment, according to your rules. These processes are separate from login and access recovery by wallet. Provider verification does not automatically replace required BETTEX controls; authenticated access is not authorization for financial offering or operation.",
+    "es": "ocurre en su propia aplicación o entorno, conforme a sus reglas. Estos procesos son separados del inicio de sesión y la recuperación de acceso por billetera. La verificación del proveedor no sustituye automáticamente los controles exigidos de BETTEX; el acceso autenticado no es autorización para oferta u operación financiera."
+  },
+  "resumo das regras e administração": {
+    "en": "summary of rules and administration",
+    "es": "resumen de las reglas y administración"
+  },
+  "Resumo das regras e administração. Os capítulos, desenhos e referências técnicas completos estão na documentação do site. Este arquivo não comprova implantação ou operação financeira.": {
+    "en": "Summary of rules and administration. The complete chapters, drawings and technical references are in the site's documentation. This file does not prove deployment or financial operation.",
+    "es": "Resumen de las reglas y administración. Los capítulos, dibujos y referencias técnicas completos están en la documentación del sitio. Este archivo no comprueba la implementación u operación financiera."
   }
 }

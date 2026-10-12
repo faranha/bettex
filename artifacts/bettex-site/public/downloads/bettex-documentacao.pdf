@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 4 /Kids [4 0 R 6 0 R 8 0 R 10 0 R] >>
+<< /Type /Pages /Count 7 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,10 +12,15 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3419 >>
+<< /Length 3326 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — comunidade, regras e administração) Tj T*
+() Tj T*
+(Resumo das regras e administração. Os capítulos, desenhos e referências técnicas completos) Tj T*
+(estão na documentação do site. Este arquivo não comprova implantação ou operação financeira.) Tj T*
+() Tj T*
+(https://bettex.ai/documentacao) Tj T*
 () Tj T*
 (Adequação legal e jurídica) Tj T*
 () Tj T*
@@ -58,11 +63,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (recebem tratamento específico conforme orientação jurídica e controles de risco.) Tj T*
 () Tj T*
 (As condições de disponibilidade por território devem ser informadas ao usuário e refletidas nos) Tj T*
-(controles de elegibilidade, acesso e execução. Evidências, responsáveis, condições, prazo de) Tj T*
-(validade ou revisão e decisões ficam registrados. Esta seção define requisitos para lançamento;) Tj T*
-(não declara licenças obtidas, pareceres concluídos ou agentes autorizados.) Tj T*
-() Tj T*
-(Financiamento: origem e destino dos recursos) Tj T*
 ET
 endstream
 endobj
@@ -70,9 +70,14 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 2907 >>
+<< /Length 3003 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(controles de elegibilidade, acesso e execução. Evidências, responsáveis, condições, prazo de) Tj T*
+(validade ou revisão e decisões ficam registrados. Esta seção define requisitos para lançamento;) Tj T*
+(não declara licenças obtidas, pareceres concluídos ou agentes autorizados.) Tj T*
+() Tj T*
+(Financiamento: origem e destino dos recursos) Tj T*
 () Tj T*
 (Aportes-anjo destinam 100% dos recursos a produto, tecnologia e marketing, sem salários ou) Tj T*
 (retiradas do fundador. A alocação de 15% dos tokens não impõe split de financiamento: os termos) Tj T*
@@ -116,11 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA. BETTEX é o token) Tj T*
 (da comunidade, sem empresa ou fundação, sem salários e sem taxas de serviço. Recursos e) Tj T*
 (desenvolvimento têm finalidade comunitária; as carteiras pessoais continuam pertencendo aos) Tj T*
-(seus titulares.) Tj T*
-() Tj T*
-(Os fundadores administram inicialmente e mantêm o domínio dos contratos. Funções passam) Tj T*
-(gradualmente à IA, com evidências e limites, sem prazo definido. Isso não transfere o domínio) Tj T*
-(dos contratos.) Tj T*
 ET
 endstream
 endobj
@@ -128,9 +128,14 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3303 >>
+<< /Length 3144 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(seus titulares.) Tj T*
+() Tj T*
+(Os fundadores administram inicialmente e mantêm o domínio dos contratos. Funções passam) Tj T*
+(gradualmente à IA, com evidências e limites, sem prazo definido. Isso não transfere o domínio) Tj T*
+(dos contratos.) Tj T*
 () Tj T*
 (A participação da comunidade nas decisões ainda será delimitada. Não há DAO, voto por token ou) Tj T*
 (renúncia de ownership definidos.) Tj T*
@@ -155,9 +160,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (milhões, fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O) Tj T*
 (teto inicial de 100 milhões fica separado; liberação não comprova venda ou circulação.) Tj T*
 () Tj T*
-(100% do preço em USDC dos tokens da comunidade já liberados vai à tesouraria. Taxas de serviço) Tj T*
-(separadas vão ao caixa operacional. A captação do mint inicial financia o projeto e exige) Tj T*
-(prestação de contas. Mercados externos não herdam automaticamente as condições do swap oficial.) Tj T*
+(100% do preço em USDC dos tokens da comunidade já liberados vai à tesouraria. A BETTEX não) Tj T*
+(cobra taxas de serviço. A captação do mint inicial financia o projeto e exige prestação de) Tj T*
+(contas. Mercados externos não herdam automaticamente as condições do swap oficial.) Tj T*
 () Tj T*
 (Resultado elegível, após conciliação e controles, recebe 50% tesouraria, 25% staking e 25%) Tj T*
 (carteira exclusiva de recompra. Sem pesos, reservas ou liquidez suficientes, 100% fica na) Tj T*
@@ -174,11 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (participantes e saldos recebidos durante a rodada têm peso zero nela; acréscimos não alteram o) Tj T*
 (peso do saldo já elegível. Qualquer saída zera todo o peso do titular; retorno só na próxima) Tj T*
 (rodada. Pagamento bruto = parcela de staking  x  peso individual  /  soma dos pesos elegíveis.) Tj T*
-() Tj T*
-(Exemplo: A começa a rodada com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro) Tj T*
-(elegível de 1.000 USDC e condições atendidas, a parcela de staking de 250 USDC paga 250 a A e) Tj T*
-(zero a B. Na rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC) Tj T*
-(cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.) Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,14 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 2269 >>
+<< /Length 3383 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
+(Exemplo: A começa a rodada com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro) Tj T*
+(elegível de 1.000 USDC e condições atendidas, a parcela de staking de 250 USDC paga 250 a A e) Tj T*
+(zero a B. Na rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC) Tj T*
+(cada sobre novo lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.) Tj T*
 () Tj T*
 (Cada rodada paga ou não paga, sem acumulação, reabertura ou complemento futuro. Qualquer saída) Tj T*
 (BETTEX, inclusive parcial, zera o peso e cancela direitos ainda não pagos. Frações não) Tj T*
@@ -221,26 +226,208 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (isso não define a rede de lançamento. Demais exemplos sem acesso privado são simulações. Não) Tj T*
 (houve operações com dinheiro real.) Tj T*
 () Tj T*
+(Período econômico, liquidação e encerramento financeiro) Tj T*
+() Tj T*
+(O período econômico da rodada é o intervalo UTC entre 00h00, inclusive, e 00h00 do dia) Tj T*
+(seguinte, exclusive. O corte encerra a coleta de resultados e o tempo elegível dessa rodada,) Tj T*
+(não a sua fase de liquidação. Depois do corte, apuração e pagamentos identificados continuam) Tj T*
+(vinculados exclusivamente à rodada original, enquanto o período econômico seguinte já está em) Tj T*
+(andamento.) Tj T*
+() Tj T*
+(Antes de operar, a política aprovada deve fixar a janela máxima de conciliação e execução, o) Tj T*
+(prazo de encerramento financeiro, as fontes e os critérios de confirmação. A janela não pode) Tj T*
+(ser prorrogada por participante, atraso ou conveniência da gestão. Sem esses parâmetros e) Tj T*
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 3668 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(controles validados, não há autorização para distribuir. Encerramento financeiro é o término) Tj T*
+(dessa janela ou a conclusão antecipada registrada de todos os pagamentos e tratamentos) Tj T*
+(previstos.) Tj T*
+() Tj T*
+(O peso só é calculado depois do corte, com o saldo elegível da abertura e os eventos) Tj T*
+(confirmados de todo o período econômico. Entradas durante o período aguardam a próxima rodada;) Tj T*
+(qualquer saída durante ele zera o peso integral. Saídas posteriores ao corte também cancelam) Tj T*
+(direitos da rodada original ainda não pagos, sem alterar os pesos ou resultados da nova rodada) Tj T*
+(por meio de crédito antigo.) Tj T*
+() Tj T*
+(A decisão indivisível de apuração fixa os beneficiários, pesos e denominador do rateio,) Tj T*
+(considerando também saídas já confirmadas até essa decisão. Saídas posteriores cancelam o) Tj T*
+(crédito correspondente, sem recalcular o rateio dos demais ou redistribuir o valor cancelado. O) Tj T*
+(peso vigente zerado e a memória histórica do cálculo são registros distintos. Uma decisão) Tj T*
+(repetida não cria outro split.) Tj T*
+() Tj T*
+(Apuração, autorização e execução são etapas da mesma rodada, não uma nova distribuição. Não) Tj T*
+(misturar resultados, beneficiários ou parcelas de rodadas diferentes. O encerramento financeiro) Tj T*
+(elimina direitos comprovadamente não enviados; envios já iniciados ou incertos permanecem) Tj T*
+(somente em conciliação. Não há complemento, reabertura ou crédito futuro depois desse) Tj T*
+(encerramento.) Tj T*
+() Tj T*
+(O executor não escolhe beneficiários por conveniência. O plano de pagamentos registra) Tj T*
+(previamente ordem determinística, parcelas, recursos e prazo comum; usa execução atômica quando) Tj T*
+(validada para a rede. Se houver processamento parcial, publica quem recebeu, quem não recebeu e) Tj T*
+(a causa. Falha operacional ou pagamento a menor pode causar perda definitiva da parcela não) Tj T*
+(enviada no encerramento financeiro: esse risco deve ser informado antes da participação. Não se) Tj T*
+(promete igualdade de recebimento quando a execução não é atômica.) Tj T*
+() Tj T*
+(Saída de BETTEX e ordem dos pagamentos) Tj T*
+() Tj T*
+(A ordem relevante é a dos fatos comprovados na rede, não a chegada das mensagens ao backend.) Tj T*
+(Uma saída de BETTEX anterior ao recebimento efetivo de USDC cancela o direito ainda não pago.) Tj T*
+(Recebimento efetivo anterior à saída permanece pessoal, após confirmação e conciliação. A) Tj T*
+(política registra os critérios de ordenação e finalização da rede; horários iguais ou) Tj T*
+(evidências insuficientes mantêm o caso em verificação.) Tj T*
+() Tj T*
+(Uma reserva ou transação indivisível no banco não impede uma transferência externa feita pelo) Tj T*
+(titular. A implementação deve validar a elegibilidade no caminho efetivo de pagamento, com) Tj T*
+(eventos de BETTEX e USDC ordenáveis e mecanismo compatível com a rede que impeça pagar um) Tj T*
+(direito já cancelado. Uma verificação off-chain anterior ao envio, sozinha, não comprova essa) Tj T*
+(garantia. Sem validação desse mecanismo, o pagamento automático não é liberado.) Tj T*
+() Tj T*
+(Cancelar um direito não reverte uma transferência já iniciada nem comprova recuperação de USDC.) Tj T*
+(Um envio iniciado ou incerto nunca é repetido por presunção. Se a conciliação comprovar) Tj T*
+(recebimento indevido depois de uma saída anterior, registrar o pagamento indevido e a perda da) Tj T*
+(tesouraria, sem restaurar o direito cancelado, cobrar automaticamente a carteira pessoal ou) Tj T*
+(criar outro split. O USDC já recebido não é recuperado por ajuste contábil.) Tj T*
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 3591 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
+(Custos da liquidação e origem temporal) Tj T*
+() Tj T*
+(O resultado econômico é cortado antes da fase de pagamentos. Custos efetivos pertencem ao) Tj T*
+(período UTC de sua realização comprovada: custos de liquidação executada depois do corte entram) Tj T*
+(no resultado do período econômico em que ocorreram, não retroativamente no lucro que originou) Tj T*
+(aquele pagamento. Registrar separadamente rodada do pagamento e período econômico do custo, sem) Tj T*
+(contabilizar o mesmo fato duas vezes.) Tj T*
+() Tj T*
+(Antes de autorizar o split, reservar principal e teto de custos em cada ativo e projetar a) Tj T*
+(liquidez após todos os desembolsos. A reserva de custos não é despesa realizada. Sua fonte e) Tj T*
+(autorização são identificadas; não se descontam silenciosamente custos do direito do) Tj T*
+(participante nem da parcela exclusiva de recompra. Diferenças entre custo reservado e efetivo) Tj T*
+(são conciliadas; a sobra não é lucro novo. Se não houver orçamento e cobertura suficientes, não) Tj T*
+(autorizar o split.) Tj T*
+() Tj T*
+(Custos externos de rede ou de terceiros não são taxas de serviço da BETTEX. O custeio de) Tj T*
+(desenvolvimento e manutenção continua em aberto. Essa regra de liquidação não autoriza usar a) Tj T*
+(tesouraria para despesas gerais, mudar o split 50%/25%/25% ou reabrir uma rodada encerrada.) Tj T*
+() Tj T*
+(Lucro da rodada não é recuperação do capital) Tj T*
+() Tj T*
+(Não existe compensação de perdas antigas nem requisito de recuperar o pico patrimonial anterior) Tj T*
+(para distribuir. É uma escolha econômica do modelo, não proteção de capital. Um novo lucro pode) Tj T*
+(ser distribuído com o patrimônio ainda abaixo do valor anterior, somente se reserva defensiva,) Tj T*
+(liquidez e demais condições estiverem atendidas.) Tj T*
+() Tj T*
+(Exemplo hipotético em USDC, sem outros movimentos ou custos: patrimônio de 100 cai para 80 após) Tj T*
+(perda de 20; um novo lucro de 10 o leva a 90. Havendo condições para o split, 2,5 vão aos) Tj T*
+(participantes, 2,5 à recompra e 5 ficam retidos. O patrimônio operacional termina em 85 e,) Tj T*
+(somado ao USDC segregado de recompra, o patrimônio do projeto é 87,5, ainda abaixo de 100. A) Tj T*
+(recuperação parcial não garante valorização do token. Participantes elegíveis da nova rodada) Tj T*
+(podem diferir dos que estavam presentes na perda.) Tj T*
+() Tj T*
+(Elegibilidade, exposição e condições dos jogos) Tj T*
+() Tj T*
+(Burn Lottery mantém um número gratuito por carteira, não por pessoa. O regulamento deve fixar o) Tj T*
+(corte e a condição de saldo elegível em staking, usando um snapshot verificável e identificador) Tj T*
+(único por carteira e sorteio; transferir depois do corte não gera outro número gratuito naquele) Tj T*
+(sorteio. Uma pessoa pode controlar várias carteiras elegíveis: não apresentar essa regra como) Tj T*
+(proteção contra múltiplas identidades. O orçamento do prêmio deve considerar essa) Tj T*
+(possibilidade, sem presumir um limite por pessoa ou saldo mínimo ainda não aprovado.) Tj T*
+() Tj T*
+(O prêmio da Burn Lottery e os custos do sorteio exigem fonte aprovada e cobertura antes de) Tj T*
+(aceitar entradas. Os BETTEX pagos são queimados e não financiam o prêmio. Pagamento, referência) Tj T*
+(de queima e geração da entrada devem ter efeito único e mecanismo de recuperação verificável;) Tj T*
+(se esse vínculo não puder ser garantido, não aceitar pagamentos. O regulamento informa sorteio,) Tj T*
+(aleatoriedade verificável, tratamento de falhas e impossibilidade de desfazer uma queima por) Tj T*
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 2919 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(simples ajuste.) Tj T*
+() Tj T*
+(Double 2X exige mandato próprio com aposta máxima, orçamento agregado, reserva para vitórias) Tj T*
+(simultâneas, prazo, aleatoriedade verificável e procedimento para falhas. Esses parâmetros) Tj T*
+(devem ser aprovados e publicados antes da abertura; sem eles, o jogo fica indisponível. A) Tj T*
+(autorização confere a aposta inteira e reserva a obrigação de devolver 2x, considerando a) Tj T*
+(aposta recebida e a parcela adicional da tesouraria, sem usar recursos de staking, recompra ou) Tj T*
+(outros compromissos.) Tj T*
+() Tj T*
+(USDC de rendimentos já recebidos é controlado por limite de origem conciliado, não pela) Tj T*
+(identidade física dos tokens fungíveis. Distribuições confirmadas aumentam esse limite; cada) Tj T*
+(saída de USDC, inclusive aposta, o reduz uma única vez até zero. Depósitos externos e vitórias) Tj T*
+(no jogo não aumentam o limite. Ele nunca excede o saldo USDC livre; reservas de apostas impedem) Tj T*
+(reutilização concorrente. Evidência insuficiente bloqueia a aposta.) Tj T*
+() Tj T*
+(A regra de uma jogada a cada 24 horas corridas é aplicada à carteira oficial vinculada à conta;) Tj T*
+(trocar de sessão, aparelho ou recuperar acesso não reinicia o prazo. Não é um limite comprovado) Tj T*
+(por pessoa: múltiplas carteiras são consideradas no orçamento agregado. Registrar o início uma) Tj T*
+(única vez antes da execução; tentativa incerta não permite outra jogada nem libera a reserva) Tj T*
+(por presunção.) Tj T*
+() Tj T*
+(O RTP de 100% é bruto e teórico: não cobre gás, aleatoriedade nem garante equilíbrio de caixa) Tj T*
+(no curto prazo. Recebimentos, obrigações, ganhos, perdas e custos dos jogos têm livro próprio,) Tj T*
+(conciliado com o patrimônio da tesouraria. Não entram como lucro das estratégias elegível ao) Tj T*
+(split nem usam o orçamento exclusivo de recompra. Variações patrimoniais dos jogos afetam os) Tj T*
+(controles de reserva e liquidez antes de novas operações e distribuições.) Tj T*
+() Tj T*
+(Autenticação e elegibilidade jurídica) Tj T*
+() Tj T*
+(Comprovar controle da carteira autentica o acesso, mas não comprova identidade civil,) Tj T*
+(residência, idade ou elegibilidade para uma oferta. O login por carteira não dispensa) Tj T*
+(identificação, KYC ou outros controles quando exigidos para a atividade e o território. O demo) Tj T*
+(visual não oferece operações financeiras.) Tj T*
+() Tj T*
+(A investigação jurídica define quais controles são necessários para mint, participação, jogos e) Tj T*
+(integrações. Verificações de um provedor externo não são automaticamente suficientes para as) Tj T*
+(obrigações da BETTEX. Sem controles exigidos validados, restringir a oferta e a operação) Tj T*
+(afetadas; não prometer acesso financeiro sem documentos em qualquer território.) Tj T*
+() Tj T*
 (Comunidade e lançamento no Pitch: https://bettex.ai/pitch#publico) Tj T*
 () Tj T*
 ET
 endstream
 endobj
 xref
-0 12
+0 18
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000134 00000 n 
-0000000231 00000 n 
-0000000357 00000 n 
-0000003828 00000 n 
-0000003954 00000 n 
-0000006913 00000 n 
-0000007039 00000 n 
-0000010394 00000 n 
-0000010522 00000 n 
-trailer << /Size 12 /Root 1 0 R >>
+0000000155 00000 n 
+0000000252 00000 n 
+0000000378 00000 n 
+0000003756 00000 n 
+0000003882 00000 n 
+0000006937 00000 n 
+0000007063 00000 n 
+0000010259 00000 n 
+0000010387 00000 n 
+0000013823 00000 n 
+0000013951 00000 n 
+0000017672 00000 n 
+0000017800 00000 n 
+0000021444 00000 n 
+0000021572 00000 n 
+trailer << /Size 18 /Root 1 0 R >>
 startxref
-12844
+24544
 %%EOF
