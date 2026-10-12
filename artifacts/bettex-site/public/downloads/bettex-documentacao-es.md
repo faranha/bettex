@@ -74,7 +74,7 @@ Peso = saldo elegible en la apertura × duración. Las salidas ponen el peso en 
 
 Ejemplo: A inicia con 1.000 BETTEX elegibles; B recibe 1.000 a las 12:00. Con beneficio elegible de 1.000 USDC y condiciones cumplidas, la porción de staking de 250 USDC paga 250 a A y cero a B. En la siguiente ronda, ambos elegibles desde la apertura y sin salida reciben 125 USDC cada uno sobre un nuevo beneficio elegible de 1.000 USDC. No se recupera beneficio anterior.
 
-Los pagos no se acumulan. Las salidas parciales eliminan los derechos. Las fracciones no ejecutables regresan a la tesorería, sin crédito futuro.
+Cada ronda paga o no, sin acumular, reabrir ni complementar después. Cualquier salida BETTEX, incluso parcial, anula el peso y cancela solo derechos aún no pagados. Fracciones no ejecutables regresan a tesorería, sin crédito futuro. El USDC recibido sigue siendo personal.
 
 El crédito depende de la elegibilidad, autorización y conciliación. El cierre de la ronda no guarda créditos futuros ni presunciones de transferencia.
 

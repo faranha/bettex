@@ -128,7 +128,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3060 >>
+<< /Length 3206 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (100% of community token revenue goes to the treasury, with no service fees. The mint funds the) Tj T*
@@ -152,8 +152,9 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (the next round, both eligible from opening and with no exit receive 125 USDC each on new) Tj T*
 (eligible profit of 1,000 USDC. No prior profit is recovered.) Tj T*
 () Tj T*
-(Payments do not accumulate. Partial exits zero out rights. Non-executable fractions return to) Tj T*
-(the treasury, with no future credit.) Tj T*
+(Each round pays or does not, without accumulation, reopening or later supplements. Any BETTEX) Tj T*
+(outflow, including partial, resets weight and cancels only still-unpaid rights. Non-executable) Tj T*
+(fractions return to the treasury, without future credit. Received USDC remains personal.) Tj T*
 () Tj T*
 (Credit depends on eligibility, authorization, and reconciliation. Round closing does not hold) Tj T*
 (future credits or transfer presumptions.) Tj T*
@@ -178,7 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (simulations. There have been no real-money operations.) Tj T*
 () Tj T*
 (Economic period, settlement and financial closing) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -189,6 +189,7 @@ endobj
 << /Length 2885 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
 (The economic period is the UTC interval between 00:00 and 00:00 the next day. The cutoff ends) Tj T*
 (result collection, but payments are linked to the original round regardless of the current) Tj T*
 (period.) Tj T*
@@ -236,7 +237,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (source and authorization; do not silently deduct costs from the participant’s right or the) Tj T*
 (exclusive repurchase portion. Reconcile differences between reserved and actual cost; surplus) Tj T*
 (is not new profit. Without sufficient budget and coverage, do not authorize the split.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -247,6 +247,7 @@ endobj
 << /Length 3038 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
 (External costs are not BETTEX service fees. Settlement rules do not allow using the treasury) Tj T*
 (for general expenses or changing the 50%/25%/25% split.) Tj T*
 () Tj T*
@@ -294,7 +295,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Wallet authentication does not prove civil identity, residence, or eligibility. KYC and) Tj T*
 (territorial controls remain mandatory when required. The visual demo does not offer financial) Tj T*
 (operations.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -302,9 +302,10 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
 endobj
 15 0 obj
-<< /Length 372 >>
+<< /Length 381 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
 (Legal investigation defines controls for mint, games, and integrations. External providers do) Tj T*
 (not waive BETTEX obligations. Without validation, operation is restricted; financial access is) Tj T*
 (not promised without documents.) Tj T*
@@ -326,13 +327,13 @@ xref
 0000003387 00000 n 
 0000006110 00000 n 
 0000006236 00000 n 
-0000009348 00000 n 
-0000009476 00000 n 
-0000012414 00000 n 
-0000012542 00000 n 
-0000015633 00000 n 
-0000015761 00000 n 
+0000009494 00000 n 
+0000009622 00000 n 
+0000012560 00000 n 
+0000012688 00000 n 
+0000015779 00000 n 
+0000015907 00000 n 
 trailer << /Size 16 /Root 1 0 R >>
 startxref
-16185
+16340
 %%EOF

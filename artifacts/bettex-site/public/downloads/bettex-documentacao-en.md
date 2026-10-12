@@ -74,7 +74,7 @@ Weight = eligible opening balance × duration. Exits reset the weight and cancel
 
 Example: A starts with 1,000 eligible BETTEX; B receives 1,000 at 12:00. With eligible profit of 1,000 USDC and conditions met, the 250 USDC staking portion pays 250 to A and zero to B. In the next round, both eligible from opening and with no exit receive 125 USDC each on new eligible profit of 1,000 USDC. No prior profit is recovered.
 
-Payments do not accumulate. Partial exits zero out rights. Non-executable fractions return to the treasury, with no future credit.
+Each round pays or does not, without accumulation, reopening or later supplements. Any BETTEX outflow, including partial, resets weight and cancels only still-unpaid rights. Non-executable fractions return to the treasury, without future credit. Received USDC remains personal.
 
 Credit depends on eligibility, authorization, and reconciliation. Round closing does not hold future credits or transfer presumptions.
 

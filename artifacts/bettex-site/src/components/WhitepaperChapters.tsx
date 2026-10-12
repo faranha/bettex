@@ -46,7 +46,6 @@ import { BuybackPolicy } from '@/components/BuybackPolicy';
 import { TokenAllocationSchematic } from '@/components/docs-diagrams/DocSchematics';
 import { DocImage, DocTerms, Dot } from '@/components/DocImage';
 import { FundSecurity } from '@/components/FundSecurity';
-import { DocumentationDownloads } from './DocumentationDownloads';
 import { t } from '@/lib/i18n';
 import { copy as c } from '@/lib/documentation-copy';
 import { roadmapStops } from '@/components/RoadmapSection';
@@ -185,7 +184,6 @@ function MainBody({ id }: { id: string }) {
         ]} />
         <div className="whitepaper__aside-callout"><span>{c.visaoEstadoK}</span><p>{c.visaoEstado}</p></div>
         <div className="whitepaper__prose"><p><a href="#documentacao-emissao">{c.visaoLink}</a></p></div>
-        <DocumentationDownloads label={t(c.dlLabel)} summaryLabel={t(c.dlDoc)} tableLabel={t(c.dlTable)} />
       </>;
   }
 }

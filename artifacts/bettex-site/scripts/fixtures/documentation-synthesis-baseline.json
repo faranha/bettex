@@ -32,15 +32,15 @@
     },
     "/documentacao": {
       "words": 27074,
-      "structureSha256": "4c94f0bd473da8fe3b52d6cfcbb8bc9df054d97896ec0ccc064b405595a21d2f"
+      "structureSha256": "a699708a82539a64a7eb5e022c890f716ac561a2c9407bbcfafb320df4e6803b"
     },
     "/en/documentation": {
       "words": 26510,
-      "structureSha256": "166bc29e0d4c2c8a63effb9695349e0f2f61e64b8845683eac3e62e0e36f0cb5"
+      "structureSha256": "ad448cc94f676dca15d36f362f02602705a01bb438565d400c3e7e68d12c2459"
     },
     "/es/documentacion": {
       "words": 29029,
-      "structureSha256": "bd59fad622ac8fd4ecbc8cc34253e7306f6de8fa6962e3a4a65f159af221a982"
+      "structureSha256": "c52b50afc3216da2dc3f0ed0cc9f4dd5cf159b156377c42e7bca8045f2b4e2ac"
     }
   }
 }
