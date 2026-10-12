@@ -8,7 +8,10 @@ import { renderToStaticMarkup } from 'react-dom/server';
 const root = path.resolve(import.meta.dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const policy = JSON.parse(read('src/lib/documentation-consistency.json'));
-const translations = JSON.parse(read('src/lib/locales/translations.json'));
+const translations = {
+  ...JSON.parse(read('src/lib/locales/translations.json')),
+  ...JSON.parse(read('src/lib/locales/documentation-synthesis.json')),
+};
 const areas = new Set(['settlement', 'economics', 'games', 'identity']);
 const ids = new Set();
 for (const section of policy.sections) {
@@ -33,6 +36,13 @@ assert.doesNotMatch(read('src/components/TokenHolderRights.tsx'), /Em eventual e
 assert.doesNotMatch(read('src/components/VestingSchedule.tsx'), /O vesting começa em março de 2027/);
 assert.doesNotMatch(read('src/lib/documentation-copy.ts'), /A oferta total é de 1 bilhão|Todo BETTEX disponível na carteira oficial participa/);
 assert.match(read('src/lib/documentation-copy.ts'), /Teto de emissão: 1 bilhão de BETTEX/);
+// Risk parameters live in the controls chapter, not a second set of agent examples.
+assert.doesNotMatch(read('src/components/InvestmentAgents.tsx').replace('25% do resultado elegível', ''), /example:|control:|[0-9]+(?:[.,][0-9]+)?%|Exemplo de aceitação e rejeição/);
+assert.match(read('src/components/InvestmentAgents.tsx'), /href="#documentacao-controles"/);
+for (const file of ['src/components/interface-demo/CentralCapital.tsx', 'src/components/interface-demo/CentralBettex.tsx']) {
+  assert.doesNotMatch(read(file), /POLICY\.(?:maxOrder|maxPortfolio|maxCorrelated)/, `${file}: obsolete illustrative risk ceilings`);
+}
+assert.doesNotMatch(read('src/components/demo/TreasurySwapPool.tsx'), /contribuição por serviços|service contribution|contribución por servicios/i);
 assert.doesNotMatch(read('src/components/EntityMultisig.tsx'), /societário|Dividendos/);
 assert.doesNotMatch(read('src/components/FundSecurity.tsx'), /preservar créditos/);
 assert.doesNotMatch(JSON.stringify(materials), /O preço pertence ao vendedor/);
@@ -59,7 +69,7 @@ try {
     const suffix = language === 'pt' ? '' : `-${language}`;
     const summary = read(`public/downloads/bettex-documentacao${suffix}.md`);
     for (const section of policy.sections) {
-      const localize = text => language === 'pt' ? text : translations[text][language];
+      const localize = text => language === 'pt' ? translations[text]?.pt ?? text : translations[text][language];
       assert(summary.includes(localize(section.title)), `${language}: summary title drift`);
       for (const paragraph of section.paragraphs) assert(summary.includes(localize(paragraph)), `${language}: summary policy drift`);
       assert(html.includes(localize(section.title)), `${language}: untranslated rendered heading`);

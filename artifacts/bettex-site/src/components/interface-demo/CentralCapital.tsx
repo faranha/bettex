@@ -51,8 +51,7 @@ export function CentralCapital() {
         <li className="font-bold">{x('Total comprometido do Cripto', 'Crypto committed total', 'Total comprometido de Cripto')} · {u(CAPITAL.agentCommitted)}</li></ul></div>
     <h3 className="mt-4 font-bold">{x('Controles de risco', 'Risk controls', 'Controles de riesgo')}</h3>
     <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3" data-testid="risk-controls">
-      <KV k={x('Versão', 'Version', 'Versión')} v={`${POLICY.version} / ${POLICY.strategy}`} /><KV k={x('Máx. por ordem', 'Max per order', 'Máx. por orden')} v={u(POLICY.maxOrder)} />
-      <KV k={x('Máx. correlacionado', 'Max correlated', 'Máx. correlacionado')} v={u(POLICY.maxCorrelated)} /><KV k={x('Máx. portfólio', 'Max portfolio', 'Máx. portafolio')} v={u(POLICY.maxPortfolio)} />
+      <KV k={x('Versão', 'Version', 'Versión')} v={`${POLICY.version} / ${POLICY.strategy}`} />
       <KV k={x('Defensivo', 'Defensive', 'Defensivo')} v={u(POLICY.defensive)} /><KV k={x('Idade máx. da cotação', 'Max quote age', 'Edad máx. de cotización')} v={`${POLICY.maxQuoteAge} s`} /></dl>
     <ul className="mt-2 list-disc pl-5 text-sm"><li>{x('Cotações mais antigas que o limite de idade não são usadas.', 'Quotes older than the age limit are not used.', 'Las cotizaciones más antiguas que el límite de edad no se usan.')}</li><li>{x('Limites por ordem, por grupo correlacionado e por carteira.', 'Limits per order, per correlated group and per portfolio.', 'Límites por orden, por grupo correlacionado y por cartera.')}</li></ul>
     <h3 className="mt-4 font-bold">{x('Políticas efetivas por especialista', 'Effective policies by specialist', 'Políticas efectivas por especialista')}</h3>

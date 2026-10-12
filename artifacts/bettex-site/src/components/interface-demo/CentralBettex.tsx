@@ -27,7 +27,7 @@ export function CentralBettex() {
     </section>
     <section className="rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="bettex-config">
       <h3 className="flex items-center gap-2 font-bold"><Settings2 className="h-4 w-4 text-[#0A6657]" aria-hidden="true" />{x('Configuração', 'Configuration', 'Configuración')}</h3>
-      <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3"><KV k={x('Modo', 'Mode', 'Modo')} v={x('Simulação', 'Simulation', 'Simulación')} /><KV k={x('Máx. por ordem', 'Max per order', 'Máx. por orden')} v={u(POLICY.maxOrder)} /><KV k={x('Máx. portfólio', 'Max portfolio', 'Máx. portafolio')} v={u(POLICY.maxPortfolio)} /><KV k={x('Autorização', 'Authorization', 'Autorización')} v={x('Execução dentro dos mandatos aprovados', 'Execution within approved mandates', 'Ejecución dentro de los mandatos aprobados')} /><KV k={x('Frequência de ciclo', 'Cycle cadence', 'Frecuencia de ciclo')} v="60 s" /><KV k={x('Política', 'Policy', 'Política')} v={`${POLICY.version}`} /></dl>
+      <dl className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3"><KV k={x('Modo', 'Mode', 'Modo')} v={x('Simulação', 'Simulation', 'Simulación')} /><KV k={x('Autorização', 'Authorization', 'Autorización')} v={x('Execução dentro dos mandatos aprovados', 'Execution within approved mandates', 'Ejecución dentro de los mandatos aprobados')} /><KV k={x('Política', 'Policy', 'Política')} v={`${POLICY.version}`} /></dl>
     </section>
     <section className="rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] p-3" data-testid="bettex-mandates">
       <h3 className="flex items-center gap-2 font-bold"><ScrollText className="h-4 w-4 text-[#0A6657]" aria-hidden="true" />{x('Mandatos', 'Mandates', 'Mandatos')}</h3>

@@ -1,0 +1,46 @@
+{
+  "routes": {
+    "/": {
+      "words": 1406,
+      "structureSha256": "4cabb63664ac4f602c155211cde7e5b5559646016860db00730c70fbe7be71c5",
+      "textSha256": "ad511fb8ea12e94b1585b40069b4ab234611f338f94908deb70314eadd54c0e6"
+    },
+    "/pitch": {
+      "words": 5921,
+      "structureSha256": "4ab4a1d9d8f71c6bd337f3bab0cd7eea535a700d832daf4a05c28a3cf7482ae7",
+      "textSha256": "4eab163464aeda7eec730846f28079cb10e12508604063f586295adcfd851a6c"
+    },
+    "/en/": {
+      "words": 1376,
+      "structureSha256": "9ffabc2ab8bc926574e0fb53d2aa461f38315802cc94904d42fae3f55598de06",
+      "textSha256": "70f6654f20e1bdf8a2dbccb56fdfa0982c6b3f07f71afa19d4579c9a78f49b73"
+    },
+    "/en/pitch": {
+      "words": 5694,
+      "structureSha256": "262e5a6244bea9a12c835de881ecdb03c9018208019568b644e693c20351ee75",
+      "textSha256": "ba61870613e28a473fa0eaabc837d7dd9069f6ea8c003161998c531083e141e9"
+    },
+    "/es/": {
+      "words": 1474,
+      "structureSha256": "2f61a2986985d080dc59b8696c9f23be2330e54bc896207bd02ee002156fd311",
+      "textSha256": "adfe344bc9848ffa00cd21c1dff6b8bbca48310feb245e70e00b69f73a9ae4bc"
+    },
+    "/es/pitch": {
+      "words": 6287,
+      "structureSha256": "5c8726d200f587a2275e1adb33b839e840d11a15216b8d5176f48711536e2e42",
+      "textSha256": "936df46fd67313b6bfd30544d52f95240516b7ebeb4f9f457d4010f75c4f5233"
+    },
+    "/documentacao": {
+      "words": 27074,
+      "structureSha256": "4c94f0bd473da8fe3b52d6cfcbb8bc9df054d97896ec0ccc064b405595a21d2f"
+    },
+    "/en/documentation": {
+      "words": 26510,
+      "structureSha256": "166bc29e0d4c2c8a63effb9695349e0f2f61e64b8845683eac3e62e0e36f0cb5"
+    },
+    "/es/documentacion": {
+      "words": 29029,
+      "structureSha256": "bd59fad622ac8fd4ecbc8cc34253e7306f6de8fa6962e3a4a65f159af221a982"
+    }
+  }
+}

@@ -132,9 +132,6 @@ export const CAPITAL = {
 };
 export const POLICY = {
   version: 'demo-policy-v1', strategy: 'demo-strategy-v1',
-  maxOrder: units6(projectSnapshot.orchestratorBudget!.perOperationLimitUsdc),
-  maxCorrelated: units6(crypto.allocatedUsdc),
-  maxPortfolio: units6(projectSnapshot.orchestratorBudget!.perAgentLimitUsdc),
   defensive: units6(treasury.reserveUsdc), maxQuoteAge: 30,
 };
 
