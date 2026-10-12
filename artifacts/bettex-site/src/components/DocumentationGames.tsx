@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import { useLocale } from '@/lib/i18n';
 import './DocumentationGames.css';
+import { DocumentationConsistency } from './DocumentationConsistency';
 
 export function DocumentationGames() {
   const lc = useLocale();
@@ -72,6 +73,7 @@ export function DocumentationGames() {
           {example('l', x('DERROTA', 'LOSS', 'DERROTA'), '0', '-10')}
         </div>
       </section>
+      <DocumentationConsistency area="games" />
     </section>
   );
 }

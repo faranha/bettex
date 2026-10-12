@@ -12,6 +12,8 @@ lib = app / "src/lib"
 out = app / "public/downloads"
 out.mkdir(parents=True, exist_ok=True)
 materials = json.loads((lib / "documentation-materials.json").read_text())
+consistency = json.loads((lib / "documentation-consistency.json").read_text())
+materials["sections"].extend(consistency["sections"])
 catalogue = json.loads((lib / "locales/translations.json").read_text())
 ns = "http://schemas.openxmlformats.org"
 
@@ -88,8 +90,14 @@ for lang in ("pt", "en", "es"):
         return catalogue[text][lang]
     suffix = "" if lang == "pt" else f"-{lang}"
     title = t(materials["title"])
-    paragraphs = [title]
-    blocks = [f"<h1>{escape(title)}</h1>"]
+    scope = t("Resumo das regras e administração. Os capítulos, desenhos e referências técnicas completos estão na documentação do site. Este arquivo não comprova implantação ou operação financeira.")
+    documentation_url = {
+        "pt": "https://bettex.ai/documentacao",
+        "en": "https://bettex.ai/en/documentation",
+        "es": "https://bettex.ai/es/documentacion",
+    }[lang]
+    paragraphs = [title, scope, documentation_url]
+    blocks = [f"<h1>{escape(title)}</h1>", f"<p>{escape(scope)}</p>", f'<p><a href="{documentation_url}">{documentation_url}</a></p>']
     for section in materials["sections"]:
         paragraphs.append(t(section["title"]))
         blocks.append(f'<h2>{escape(t(section["title"]))}</h2>')

@@ -13,7 +13,7 @@ export function StakingDistribution() {
     <h3 id="rateio-title" className="whitepaper__subhead">Elegibilidade, rodada e peso</h3>
     <div className="whitepaper__prose">
       <p id="documentacao-rodadas-independentes"><strong>{independentRoundRule}</strong></p>
-      <p>A rodada diária vai de 00h00 até 00h00 do dia seguinte em UTC. O encerramento pertence à rodada seguinte, sem tempo contado duas vezes. Fundador e investidores seguem os mesmos critérios dos demais titulares.</p>
+      <p>O período econômico da rodada diária vai de 00h00 até 00h00 do dia seguinte em UTC. O instante do corte pertence ao período econômico seguinte, sem tempo contado duas vezes. A janela de apuração e liquidação permanece vinculada à rodada original até seu encerramento financeiro. Fundador e investidores seguem os mesmos critérios dos demais titulares.</p>
       <p id="documentacao-entrada-proxima-rodada"><strong>{nextRoundEntryRule}</strong></p>
       <p>{openingEligibilityRule}</p>
       <p data-i18n="translated">{x('O corte UTC define a rodada do modelo operacional. As abas de mercado apresentam contribuições para o mesmo pool global, não pools de staking independentes.', 'The UTC cutoff defines the operational-model round. Market tabs show contributions to the same global pool, not separate staking pools.', 'El corte UTC define la ronda del modelo operativo. Las pestañas de mercados muestran contribuciones al mismo pool global, no pools de staking independientes.')}</p>

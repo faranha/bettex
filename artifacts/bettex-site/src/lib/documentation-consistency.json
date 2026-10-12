@@ -1,0 +1,68 @@
+{
+  "sections": [
+    {
+      "id": "documentacao-fases-rodada",
+      "area": "settlement",
+      "title": "Período econômico, liquidação e encerramento financeiro",
+      "paragraphs": [
+        "O período econômico da rodada é o intervalo UTC entre 00h00, inclusive, e 00h00 do dia seguinte, exclusive. O corte encerra a coleta de resultados e o tempo elegível dessa rodada, não a sua fase de liquidação. Depois do corte, apuração e pagamentos identificados continuam vinculados exclusivamente à rodada original, enquanto o período econômico seguinte já está em andamento.",
+        "Antes de operar, a política aprovada deve fixar a janela máxima de conciliação e execução, o prazo de encerramento financeiro, as fontes e os critérios de confirmação. A janela não pode ser prorrogada por participante, atraso ou conveniência da gestão. Sem esses parâmetros e controles validados, não há autorização para distribuir. Encerramento financeiro é o término dessa janela ou a conclusão antecipada registrada de todos os pagamentos e tratamentos previstos.",
+        "O peso só é calculado depois do corte, com o saldo elegível da abertura e os eventos confirmados de todo o período econômico. Entradas durante o período aguardam a próxima rodada; qualquer saída durante ele zera o peso integral. Saídas posteriores ao corte também cancelam direitos da rodada original ainda não pagos, sem alterar os pesos ou resultados da nova rodada por meio de crédito antigo.",
+        "A decisão indivisível de apuração fixa os beneficiários, pesos e denominador do rateio, considerando também saídas já confirmadas até essa decisão. Saídas posteriores cancelam o crédito correspondente, sem recalcular o rateio dos demais ou redistribuir o valor cancelado. O peso vigente zerado e a memória histórica do cálculo são registros distintos. Uma decisão repetida não cria outro split.",
+        "Apuração, autorização e execução são etapas da mesma rodada, não uma nova distribuição. Não misturar resultados, beneficiários ou parcelas de rodadas diferentes. O encerramento financeiro elimina direitos comprovadamente não enviados; envios já iniciados ou incertos permanecem somente em conciliação. Não há complemento, reabertura ou crédito futuro depois desse encerramento.",
+        "O executor não escolhe beneficiários por conveniência. O plano de pagamentos registra previamente ordem determinística, parcelas, recursos e prazo comum; usa execução atômica quando validada para a rede. Se houver processamento parcial, publica quem recebeu, quem não recebeu e a causa. Falha operacional ou pagamento a menor pode causar perda definitiva da parcela não enviada no encerramento financeiro: esse risco deve ser informado antes da participação. Não se promete igualdade de recebimento quando a execução não é atômica."
+      ]
+    },
+    {
+      "id": "documentacao-ordem-saida-pagamento",
+      "area": "settlement",
+      "title": "Saída de BETTEX e ordem dos pagamentos",
+      "paragraphs": [
+        "A ordem relevante é a dos fatos comprovados na rede, não a chegada das mensagens ao backend. Uma saída de BETTEX anterior ao recebimento efetivo de USDC cancela o direito ainda não pago. Recebimento efetivo anterior à saída permanece pessoal, após confirmação e conciliação. A política registra os critérios de ordenação e finalização da rede; horários iguais ou evidências insuficientes mantêm o caso em verificação.",
+        "Uma reserva ou transação indivisível no banco não impede uma transferência externa feita pelo titular. A implementação deve validar a elegibilidade no caminho efetivo de pagamento, com eventos de BETTEX e USDC ordenáveis e mecanismo compatível com a rede que impeça pagar um direito já cancelado. Uma verificação off-chain anterior ao envio, sozinha, não comprova essa garantia. Sem validação desse mecanismo, o pagamento automático não é liberado.",
+        "Cancelar um direito não reverte uma transferência já iniciada nem comprova recuperação de USDC. Um envio iniciado ou incerto nunca é repetido por presunção. Se a conciliação comprovar recebimento indevido depois de uma saída anterior, registrar o pagamento indevido e a perda da tesouraria, sem restaurar o direito cancelado, cobrar automaticamente a carteira pessoal ou criar outro split. O USDC já recebido não é recuperado por ajuste contábil."
+      ]
+    },
+    {
+      "id": "documentacao-custos-liquidacao-periodo",
+      "area": "settlement",
+      "title": "Custos da liquidação e origem temporal",
+      "paragraphs": [
+        "O resultado econômico é cortado antes da fase de pagamentos. Custos efetivos pertencem ao período UTC de sua realização comprovada: custos de liquidação executada depois do corte entram no resultado do período econômico em que ocorreram, não retroativamente no lucro que originou aquele pagamento. Registrar separadamente rodada do pagamento e período econômico do custo, sem contabilizar o mesmo fato duas vezes.",
+        "Antes de autorizar o split, reservar principal e teto de custos em cada ativo e projetar a liquidez após todos os desembolsos. A reserva de custos não é despesa realizada. Sua fonte e autorização são identificadas; não se descontam silenciosamente custos do direito do participante nem da parcela exclusiva de recompra. Diferenças entre custo reservado e efetivo são conciliadas; a sobra não é lucro novo. Se não houver orçamento e cobertura suficientes, não autorizar o split.",
+        "Custos externos de rede ou de terceiros não são taxas de serviço da BETTEX. O custeio de desenvolvimento e manutenção continua em aberto. Essa regra de liquidação não autoriza usar a tesouraria para despesas gerais, mudar o split 50%/25%/25% ou reabrir uma rodada encerrada."
+      ]
+    },
+    {
+      "id": "documentacao-recuperacao-patrimonio",
+      "area": "economics",
+      "title": "Lucro da rodada não é recuperação do capital",
+      "paragraphs": [
+        "Não existe compensação de perdas antigas nem requisito de recuperar o pico patrimonial anterior para distribuir. É uma escolha econômica do modelo, não proteção de capital. Um novo lucro pode ser distribuído com o patrimônio ainda abaixo do valor anterior, somente se reserva defensiva, liquidez e demais condições estiverem atendidas.",
+        "Exemplo hipotético em USDC, sem outros movimentos ou custos: patrimônio de 100 cai para 80 após perda de 20; um novo lucro de 10 o leva a 90. Havendo condições para o split, 2,5 vão aos participantes, 2,5 à recompra e 5 ficam retidos. O patrimônio operacional termina em 85 e, somado ao USDC segregado de recompra, o patrimônio do projeto é 87,5, ainda abaixo de 100. A recuperação parcial não garante valorização do token. Participantes elegíveis da nova rodada podem diferir dos que estavam presentes na perda."
+      ]
+    },
+    {
+      "id": "documentacao-controles-jogos",
+      "area": "games",
+      "title": "Elegibilidade, exposição e condições dos jogos",
+      "paragraphs": [
+        "Burn Lottery mantém um número gratuito por carteira, não por pessoa. O regulamento deve fixar o corte e a condição de saldo elegível em staking, usando um snapshot verificável e identificador único por carteira e sorteio; transferir depois do corte não gera outro número gratuito naquele sorteio. Uma pessoa pode controlar várias carteiras elegíveis: não apresentar essa regra como proteção contra múltiplas identidades. O orçamento do prêmio deve considerar essa possibilidade, sem presumir um limite por pessoa ou saldo mínimo ainda não aprovado.",
+        "O prêmio da Burn Lottery e os custos do sorteio exigem fonte aprovada e cobertura antes de aceitar entradas. Os BETTEX pagos são queimados e não financiam o prêmio. Pagamento, referência de queima e geração da entrada devem ter efeito único e mecanismo de recuperação verificável; se esse vínculo não puder ser garantido, não aceitar pagamentos. O regulamento informa sorteio, aleatoriedade verificável, tratamento de falhas e impossibilidade de desfazer uma queima por simples ajuste.",
+        "Double 2X exige mandato próprio com aposta máxima, orçamento agregado, reserva para vitórias simultâneas, prazo, aleatoriedade verificável e procedimento para falhas. Esses parâmetros devem ser aprovados e publicados antes da abertura; sem eles, o jogo fica indisponível. A autorização confere a aposta inteira e reserva a obrigação de devolver 2x, considerando a aposta recebida e a parcela adicional da tesouraria, sem usar recursos de staking, recompra ou outros compromissos.",
+        "USDC de rendimentos já recebidos é controlado por limite de origem conciliado, não pela identidade física dos tokens fungíveis. Distribuições confirmadas aumentam esse limite; cada saída de USDC, inclusive aposta, o reduz uma única vez até zero. Depósitos externos e vitórias no jogo não aumentam o limite. Ele nunca excede o saldo USDC livre; reservas de apostas impedem reutilização concorrente. Evidência insuficiente bloqueia a aposta.",
+        "A regra de uma jogada a cada 24 horas corridas é aplicada à carteira oficial vinculada à conta; trocar de sessão, aparelho ou recuperar acesso não reinicia o prazo. Não é um limite comprovado por pessoa: múltiplas carteiras são consideradas no orçamento agregado. Registrar o início uma única vez antes da execução; tentativa incerta não permite outra jogada nem libera a reserva por presunção.",
+        "O RTP de 100% é bruto e teórico: não cobre gás, aleatoriedade nem garante equilíbrio de caixa no curto prazo. Recebimentos, obrigações, ganhos, perdas e custos dos jogos têm livro próprio, conciliado com o patrimônio da tesouraria. Não entram como lucro das estratégias elegível ao split nem usam o orçamento exclusivo de recompra. Variações patrimoniais dos jogos afetam os controles de reserva e liquidez antes de novas operações e distribuições."
+      ]
+    },
+    {
+      "id": "documentacao-identidade-elegibilidade",
+      "area": "identity",
+      "title": "Autenticação e elegibilidade jurídica",
+      "paragraphs": [
+        "Comprovar controle da carteira autentica o acesso, mas não comprova identidade civil, residência, idade ou elegibilidade para uma oferta. O login por carteira não dispensa identificação, KYC ou outros controles quando exigidos para a atividade e o território. O demo visual não oferece operações financeiras.",
+        "A investigação jurídica define quais controles são necessários para mint, participação, jogos e integrações. Verificações de um provedor externo não são automaticamente suficientes para as obrigações da BETTEX. Sem controles exigidos validados, restringir a oferta e a operação afetadas; não prometer acesso financeiro sem documentos em qualquer território."
+      ]
+    }
+  ]
+}

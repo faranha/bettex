@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 4 /Kids [4 0 R 6 0 R 8 0 R 10 0 R] >>
+<< /Type /Pages /Count 7 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,10 +12,15 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3328 >>
+<< /Length 3351 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — community, rules and administration) Tj T*
+() Tj T*
+(Summary of rules and administration. The complete chapters, drawings and technical references) Tj T*
+(are in the site's documentation. This file does not prove deployment or financial operation.) Tj T*
+() Tj T*
+(https://bettex.ai/en/documentation) Tj T*
 () Tj T*
 (Legal and regulatory compliance) Tj T*
 () Tj T*
@@ -58,11 +63,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Territorial availability conditions must be communicated to users and reflected in eligibility,) Tj T*
 (access and execution controls. Evidence, responsible parties, conditions, validity or review) Tj T*
-(periods and decisions are recorded. This section defines launch requirements; it does not claim) Tj T*
-(licenses obtained, completed legal opinions or authorized agents.) Tj T*
-() Tj T*
-(Financing: sources and uses of funds) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -70,9 +70,14 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 2934 >>
+<< /Length 2989 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(periods and decisions are recorded. This section defines launch requirements; it does not claim) Tj T*
+(licenses obtained, completed legal opinions or authorized agents.) Tj T*
+() Tj T*
+(Financing: sources and uses of funds) Tj T*
+() Tj T*
 (Angel contributions allocate 100% of funds to product, technology and marketing, with no) Tj T*
 (founder salaries or withdrawals. The 15% token allocation does not impose a funding split:) Tj T*
 (agreements identify sources, uses and rights.) Tj T*
@@ -116,11 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Founders initially administer the project and retain control of the contracts. Functions) Tj T*
 (gradually pass to AI, with evidence and limits and no defined deadline. This does not transfer) Tj T*
-(contract control.) Tj T*
-() Tj T*
-(Community participation in decisions is yet to be defined. No DAO, token voting or ownership) Tj T*
-(relinquishment has been defined.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -128,9 +128,14 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 3374 >>
+<< /Length 3084 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(contract control.) Tj T*
+() Tj T*
+(Community participation in decisions is yet to be defined. No DAO, token voting or ownership) Tj T*
+(relinquishment has been defined.) Tj T*
+() Tj T*
 (The founder and team organize the community’s initial administration. AI agents will gradually) Tj T*
 (take on functions until the BETTEX agent becomes operationally independent and autonomous. This) Tj T*
 (is a future goal and does not remove applicable controls or responsibilities.) Tj T*
@@ -151,9 +156,10 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (founder/team 200 million and investors 150 million, in whole-token 11:4:3 groups. The initial) Tj T*
 (cap of 100 million remains separate; release does not prove sales or circulation.) Tj T*
 () Tj T*
-(100% of the USDC price of already released community tokens goes to the treasury. Separate) Tj T*
-(service fees go to the operating account. Initial mint fundraising funds the project and) Tj T*
-(requires reporting. External markets do not automatically inherit official swap terms.) Tj T*
+(100% of the USDC price of the already released community tokens goes to the treasury. BETTEX) Tj T*
+(does not charge service fees. The initial mint funding finances the project and requires) Tj T*
+(accountability. External markets do not automatically inherit the conditions of the official) Tj T*
+(swap.) Tj T*
 () Tj T*
 (Eligible result, after reconciliation and controls, receives 50% treasury, 25% staking, and 25%) Tj T*
 (exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains in) Tj T*
@@ -173,12 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (weight  /  sum of eligible weights.) Tj T*
 () Tj T*
 (Example: A starts the round with 1,000 eligible BETTEX; B receives 1,000 at 12:00. With) Tj T*
-(eligible profit of 1,000 USDC and conditions met, the 250 USDC staking share pays 250 to A and) Tj T*
-(zero to B. In the next round, both eligible from opening and with no exits receive 125 USDC) Tj T*
-(each from new eligible profit of 1,000 USDC. No previous profit is recovered.) Tj T*
-() Tj T*
-(Each round pays or does not pay, without accumulation, reopening, or future supplement. Any) Tj T*
-(BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable) Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,15 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 2097 >>
+<< /Length 3507 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(eligible profit of 1,000 USDC and conditions met, the 250 USDC staking share pays 250 to A and) Tj T*
+(zero to B. In the next round, both eligible from opening and with no exits receive 125 USDC) Tj T*
+(each from new eligible profit of 1,000 USDC. No previous profit is recovered.) Tj T*
+() Tj T*
+(Each round pays or does not pay, without accumulation, reopening, or future supplement. Any) Tj T*
+(BETTEX exit, including partial, resets the weight and cancels unpaid rights. Non-executable) Tj T*
 (fractions return to the treasury, without future credit. Received USDC remains personal.) Tj T*
 () Tj T*
 (USDC credit depends on eligibility, round authorization, confirmation, and reconciliation. An) Tj T*
@@ -218,26 +224,206 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (this does not define the launch network. Other examples without private access are simulations.) Tj T*
 (No real money operations have occurred.) Tj T*
 () Tj T*
+(Economic period, settlement and financial closing) Tj T*
+() Tj T*
+(The economic period of the round is the UTC interval between 00:00, inclusive, and 00:00 of the) Tj T*
+(following day, exclusive. The cut ends the collection of results and the eligible time of that) Tj T*
+(round, not its settlement phase. After the cut, assessment and identified payments remain) Tj T*
+(linked exclusively to the original round, while the following economic period is already) Tj T*
+(underway.) Tj T*
+() Tj T*
+(Before operating, the approved policy must set the maximum reconciliation and execution window,) Tj T*
+(the financial closing deadline, the sources, and the confirmation criteria. The window cannot) Tj T*
+(be extended by participant, delay, or management convenience. Without these validated) Tj T*
+(parameters and controls, there is no authorization to distribute. Financial closing is the end) Tj T*
+(of this window or the registered early conclusion of all scheduled payments and treatments.) Tj T*
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 3675 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
+(The weight is only calculated after the cut, with the eligible balance of the opening and the) Tj T*
+(confirmed events of the entire economic period. Entries during the period wait for the next) Tj T*
+(round; any exit during it resets the full weight to zero. Exits after the cut also cancel) Tj T*
+(rights of the original round not yet paid, without altering the weights or results of the new) Tj T*
+(round through old credit.) Tj T*
+() Tj T*
+(The indivisible assessment decision fixes the beneficiaries, weights and distribution) Tj T*
+(denominator, also considering exits already confirmed by that decision. Later exits cancel the) Tj T*
+(corresponding credit without recalculating other participants' allocations or redistributing) Tj T*
+(the cancelled amount. The current zeroed weight and the historical calculation record are) Tj T*
+(separate records. Repeating a decision does not create another split.) Tj T*
+() Tj T*
+(Calculation, authorization, and execution are stages of the same round, not a new distribution.) Tj T*
+(Do not mix results, beneficiaries, or installments from different rounds. Financial closing) Tj T*
+(eliminates rights provenly not sent; shipments already initiated or uncertain remain only in) Tj T*
+(reconciliation. There is no supplement, reopening, or future credit after this closing.) Tj T*
+() Tj T*
+(The executor does not choose beneficiaries by convenience. The payment plan pre-registers) Tj T*
+(deterministic order, installments, resources, and a common deadline; it uses atomic execution) Tj T*
+(when validated for the network. If there is partial processing, it publishes who received, who) Tj T*
+(did not receive, and the cause. Operational failure or underpayment can cause definitive loss) Tj T*
+(of the installment not sent at financial closure: this risk must be informed before) Tj T*
+(participation. Equality of receipt is not promised when the execution is not atomic.) Tj T*
+() Tj T*
+(BETTEX exit and payment order) Tj T*
+() Tj T*
+(The relevant order is that of the facts proven on the network, not the arrival of messages to) Tj T*
+(the backend. A BETTEX exit prior to the effective receipt of USDC cancels the right not yet) Tj T*
+(paid. Effective receipt prior to the exit remains personal, after confirmation and) Tj T*
+(reconciliation. The policy registers the criteria for network ordering and finalization; equal) Tj T*
+(times or insufficient evidence keep the case under verification.) Tj T*
+() Tj T*
+(A reserve or indivisible transaction in the bank does not prevent an external transfer made by) Tj T*
+(the holder. The implementation must validate eligibility in the effective payment path, with) Tj T*
+(orderable BETTEX and USDC events and a network-compatible mechanism that prevents paying an) Tj T*
+(already cancelled right. An off-chain verification prior to submission, alone, does not prove) Tj T*
+(this guarantee. Without validation of this mechanism, the automatic payment is not released.) Tj T*
+() Tj T*
+(Canceling a right does not reverse a transfer already initiated nor prove USDC recovery. An) Tj T*
+(initiated or uncertain shipment is never repeated by presumption. If reconciliation proves) Tj T*
+(undue receipt after a previous departure, register the undue payment and the treasury loss,) Tj T*
+(without restoring the canceled right, automatically charging the personal wallet or creating) Tj T*
+(another split. The USDC already received is not recovered by accounting adjustment.) Tj T*
+() Tj T*
+(Settlement costs and temporal origin) Tj T*
+() Tj T*
+(The economic result is cut before the payment phase. Effective costs belong to the UTC period) Tj T*
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 3600 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(of their proven realization: settlement costs executed after the cut enter the result of the) Tj T*
+(economic period in which they occurred, not retroactively into the profit that originated that) Tj T*
+(payment. Register the payment round and the economic period of the cost separately, without) Tj T*
+(accounting for the same fact twice.) Tj T*
+() Tj T*
+(Before authorizing the split, reserve principal and cost ceiling in each asset and project the) Tj T*
+(liquidity after all disbursements. The cost reserve is not a realized expense. Its source and) Tj T*
+(authorization are identified; costs are not silently deducted from the participant's right nor) Tj T*
+(from the exclusive repurchase portion. Differences between reserved and effective cost are) Tj T*
+(reconciled; the remainder is not new profit. If there is not sufficient budget and coverage, do) Tj T*
+(not authorize the split.) Tj T*
+() Tj T*
+(External network or third-party costs are not BETTEX service fees. Development and maintenance) Tj T*
+(costs remain open. This settlement rule does not authorize using the treasury for general) Tj T*
+(expenses, changing the 50%/25%/25% split, or reopening a closed round.) Tj T*
+() Tj T*
+(The round profit is not a capital recovery.) Tj T*
+() Tj T*
+(There is no compensation for past losses nor a requirement to recover the previous peak equity) Tj T*
+(to distribute. It is an economic choice of the model, not capital protection. New profit can be) Tj T*
+(distributed with equity still below the previous value, only if defensive reserve, liquidity,) Tj T*
+(and other conditions are met.) Tj T*
+() Tj T*
+(Hypothetical example in USDC, without other movements or costs: equity of 100 drops to 80 after) Tj T*
+(a loss of 20; a new profit of 10 brings it to 90. Given conditions for the split, 2.5 go to) Tj T*
+(participants, 2.5 to buyback, and 5 are retained. The operational equity ends at 85 and, added) Tj T*
+(to the segregated buyback USDC, the project equity is 87.5, still below 100. Partial recovery) Tj T*
+(does not guarantee token appreciation. Eligible participants of the new round may differ from) Tj T*
+(those who were present during the loss.) Tj T*
+() Tj T*
+(Eligibility, exposure and game conditions) Tj T*
+() Tj T*
+(Burn Lottery keeps one free number per wallet, not per person. The regulation must set the) Tj T*
+(cutoff and the eligible balance condition in staking, using a verifiable snapshot and a unique) Tj T*
+(identifier per wallet and draw; transferring after the cutoff does not generate another free) Tj T*
+(number in that draw. A person can control multiple eligible wallets: do not present this rule) Tj T*
+(as protection against multiple identities. The prize budget must consider this possibility,) Tj T*
+(without assuming a limit per person or a minimum balance not yet approved.) Tj T*
+() Tj T*
+(The Burn Lottery prize and the costs of the draw require an approved source and coverage before) Tj T*
+(accepting entries. The paid BETTEX are burned and do not finance the prize. Payment, burn) Tj T*
+(reference and entry generation must have a single effect and a verifiable recovery mechanism;) Tj T*
+(if this link cannot be guaranteed, do not accept payments. The regulation informs the draw,) Tj T*
+(verifiable randomness, fault handling and the impossibility of undoing a burn by simple) Tj T*
+(adjustment.) Tj T*
+() Tj T*
+(Double 2X requires its own mandate with maximum bet, aggregate budget, reserve for simultaneous) Tj T*
+(wins, timeframe, verifiable randomness, and failure procedure. These parameters must be) Tj T*
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 2678 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+(approved and published before opening; without them, the game is unavailable. The authorization) Tj T*
+(grants the entire bet and reserves the obligation to return 2x, considering the bet received) Tj T*
+(and the additional portion from the treasury, without using resources from staking, buyback, or) Tj T*
+(other commitments.) Tj T*
+() Tj T*
+(USDC of yields already received is controlled by a reconciled source limit, not by the physical) Tj T*
+(identity of the fungible tokens. Confirmed distributions increase this limit; each USDC) Tj T*
+(withdrawal, including a bet, reduces it once down to zero. External deposits and game wins do) Tj T*
+(not increase the limit. It never exceeds the free USDC balance; bet reserves prevent concurrent) Tj T*
+(reuse. Insufficient evidence blocks the bet.) Tj T*
+() Tj T*
+(The rule of one play every 24 consecutive hours is applied to the official wallet linked to the) Tj T*
+(account; changing sessions, devices, or recovering access does not reset the deadline. It is) Tj T*
+(not a limit proven by person: multiple wallets are considered in the aggregate budget. Register) Tj T*
+(the start a single time before execution; an uncertain attempt does not allow another play nor) Tj T*
+(does it release the reserve by presumption.) Tj T*
+() Tj T*
+(The 100% RTP is gross and theoretical: it does not cover gas, randomness, nor guarantee cash) Tj T*
+(equilibrium in the short term. Receipts, obligations, gains, losses, and game costs have their) Tj T*
+(own ledger, reconciled with treasury equity. They do not enter as strategy profit eligible for) Tj T*
+(split nor use the exclusive buyback budget. Equity variations of the games affect the reserve) Tj T*
+(and liquidity controls before new operations and distributions.) Tj T*
+() Tj T*
+(Authentication and legal eligibility) Tj T*
+() Tj T*
+(Proving wallet control authenticates access, but does not prove civil identity, residence, age,) Tj T*
+(or eligibility for an offer. Wallet login does not waive identification, KYC, or other controls) Tj T*
+(when required for the activity and territory. The visual demo does not offer financial) Tj T*
+(operations.) Tj T*
+() Tj T*
+(Legal investigation defines which controls are necessary for mint, participation, games, and) Tj T*
+(integrations. Verifications from an external provider are not automatically sufficient for) Tj T*
+(BETTEX obligations. Without validated required controls, restrict the supply and the affected) Tj T*
+(operation; do not promise financial access without documents in any territory.) Tj T*
+() Tj T*
 (Community and launch in the Pitch: https://bettex.ai/en/pitch#publico) Tj T*
 () Tj T*
 ET
 endstream
 endobj
 xref
-0 12
+0 18
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000134 00000 n 
-0000000231 00000 n 
-0000000357 00000 n 
-0000003737 00000 n 
-0000003863 00000 n 
-0000006849 00000 n 
-0000006975 00000 n 
-0000010401 00000 n 
-0000010529 00000 n 
-trailer << /Size 12 /Root 1 0 R >>
+0000000155 00000 n 
+0000000252 00000 n 
+0000000378 00000 n 
+0000003781 00000 n 
+0000003907 00000 n 
+0000006948 00000 n 
+0000007074 00000 n 
+0000010210 00000 n 
+0000010338 00000 n 
+0000013898 00000 n 
+0000014026 00000 n 
+0000017754 00000 n 
+0000017882 00000 n 
+0000021535 00000 n 
+0000021663 00000 n 
+trailer << /Size 18 /Root 1 0 R >>
 startxref
-12679
+24394
 %%EOF

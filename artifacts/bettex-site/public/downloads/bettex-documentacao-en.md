@@ -1,5 +1,9 @@
 BETTEX — community, rules and administration
 
+Summary of rules and administration. The complete chapters, drawings and technical references are in the site's documentation. This file does not prove deployment or financial operation.
+
+https://bettex.ai/en/documentation
+
 Legal and regulatory compliance
 
 Every BETTEX launch must already comply with the legal environment of the markets where the solution will be offered. Releasing each agent, feature and category requires a specific technical and legal investigation and compliance with applicable requirements. A roadmap date does not replace this condition.
@@ -60,7 +64,7 @@ Public mint planned for December 10, 2026. System/ALPHA and vesting start planne
 
 Vesting of 900 million BETTEX over 24 months from March 2027: community 550 million, founder/team 200 million and investors 150 million, in whole-token 11:4:3 groups. The initial cap of 100 million remains separate; release does not prove sales or circulation.
 
-100% of the USDC price of already released community tokens goes to the treasury. Separate service fees go to the operating account. Initial mint fundraising funds the project and requires reporting. External markets do not automatically inherit official swap terms.
+100% of the USDC price of the already released community tokens goes to the treasury. BETTEX does not charge service fees. The initial mint funding finances the project and requires accountability. External markets do not automatically inherit the conditions of the official swap.
 
 Eligible result, after reconciliation and controls, receives 50% treasury, 25% staking, and 25% exclusive buyback wallet. Without sufficient weights, reserves, or liquidity, 100% remains in the treasury, without future split. Purchase uses administrative authorization; all acquired BETTEX is permanently burned. Exclusive wallet is not the burn mechanism.
 
@@ -85,5 +89,61 @@ Policies evolve through approved versions. Administration defines policy; 2-of-3
 Treasury, operational cash, exclusive buyback wallet, and personal wallets have their own boundaries. Defensive reserve follows the approved policy, without a general minimum fixed at 50%. New operations require independent risk, availability, and reconciliation.
 
 Starknet and Arbitrum One are network and contract alternatives. BETTEX is in planning and grants fundraising, with no network chosen or presumed approved grant. Starknet requires Cairo implementation and compatible accounts; Arbitrum uses EVM. Allora is a candidate for inferences, not execution. Robinhood Crypto Trading API requires an eligible US account and authorization; it does not prove access to stocks. Arbitrum/Gamma public queries were verified; this does not define the launch network. Other examples without private access are simulations. No real money operations have occurred.
+
+Economic period, settlement and financial closing
+
+The economic period of the round is the UTC interval between 00:00, inclusive, and 00:00 of the following day, exclusive. The cut ends the collection of results and the eligible time of that round, not its settlement phase. After the cut, assessment and identified payments remain linked exclusively to the original round, while the following economic period is already underway.
+
+Before operating, the approved policy must set the maximum reconciliation and execution window, the financial closing deadline, the sources, and the confirmation criteria. The window cannot be extended by participant, delay, or management convenience. Without these validated parameters and controls, there is no authorization to distribute. Financial closing is the end of this window or the registered early conclusion of all scheduled payments and treatments.
+
+The weight is only calculated after the cut, with the eligible balance of the opening and the confirmed events of the entire economic period. Entries during the period wait for the next round; any exit during it resets the full weight to zero. Exits after the cut also cancel rights of the original round not yet paid, without altering the weights or results of the new round through old credit.
+
+The indivisible assessment decision fixes the beneficiaries, weights and distribution denominator, also considering exits already confirmed by that decision. Later exits cancel the corresponding credit without recalculating other participants' allocations or redistributing the cancelled amount. The current zeroed weight and the historical calculation record are separate records. Repeating a decision does not create another split.
+
+Calculation, authorization, and execution are stages of the same round, not a new distribution. Do not mix results, beneficiaries, or installments from different rounds. Financial closing eliminates rights provenly not sent; shipments already initiated or uncertain remain only in reconciliation. There is no supplement, reopening, or future credit after this closing.
+
+The executor does not choose beneficiaries by convenience. The payment plan pre-registers deterministic order, installments, resources, and a common deadline; it uses atomic execution when validated for the network. If there is partial processing, it publishes who received, who did not receive, and the cause. Operational failure or underpayment can cause definitive loss of the installment not sent at financial closure: this risk must be informed before participation. Equality of receipt is not promised when the execution is not atomic.
+
+BETTEX exit and payment order
+
+The relevant order is that of the facts proven on the network, not the arrival of messages to the backend. A BETTEX exit prior to the effective receipt of USDC cancels the right not yet paid. Effective receipt prior to the exit remains personal, after confirmation and reconciliation. The policy registers the criteria for network ordering and finalization; equal times or insufficient evidence keep the case under verification.
+
+A reserve or indivisible transaction in the bank does not prevent an external transfer made by the holder. The implementation must validate eligibility in the effective payment path, with orderable BETTEX and USDC events and a network-compatible mechanism that prevents paying an already cancelled right. An off-chain verification prior to submission, alone, does not prove this guarantee. Without validation of this mechanism, the automatic payment is not released.
+
+Canceling a right does not reverse a transfer already initiated nor prove USDC recovery. An initiated or uncertain shipment is never repeated by presumption. If reconciliation proves undue receipt after a previous departure, register the undue payment and the treasury loss, without restoring the canceled right, automatically charging the personal wallet or creating another split. The USDC already received is not recovered by accounting adjustment.
+
+Settlement costs and temporal origin
+
+The economic result is cut before the payment phase. Effective costs belong to the UTC period of their proven realization: settlement costs executed after the cut enter the result of the economic period in which they occurred, not retroactively into the profit that originated that payment. Register the payment round and the economic period of the cost separately, without accounting for the same fact twice.
+
+Before authorizing the split, reserve principal and cost ceiling in each asset and project the liquidity after all disbursements. The cost reserve is not a realized expense. Its source and authorization are identified; costs are not silently deducted from the participant's right nor from the exclusive repurchase portion. Differences between reserved and effective cost are reconciled; the remainder is not new profit. If there is not sufficient budget and coverage, do not authorize the split.
+
+External network or third-party costs are not BETTEX service fees. Development and maintenance costs remain open. This settlement rule does not authorize using the treasury for general expenses, changing the 50%/25%/25% split, or reopening a closed round.
+
+The round profit is not a capital recovery.
+
+There is no compensation for past losses nor a requirement to recover the previous peak equity to distribute. It is an economic choice of the model, not capital protection. New profit can be distributed with equity still below the previous value, only if defensive reserve, liquidity, and other conditions are met.
+
+Hypothetical example in USDC, without other movements or costs: equity of 100 drops to 80 after a loss of 20; a new profit of 10 brings it to 90. Given conditions for the split, 2.5 go to participants, 2.5 to buyback, and 5 are retained. The operational equity ends at 85 and, added to the segregated buyback USDC, the project equity is 87.5, still below 100. Partial recovery does not guarantee token appreciation. Eligible participants of the new round may differ from those who were present during the loss.
+
+Eligibility, exposure and game conditions
+
+Burn Lottery keeps one free number per wallet, not per person. The regulation must set the cutoff and the eligible balance condition in staking, using a verifiable snapshot and a unique identifier per wallet and draw; transferring after the cutoff does not generate another free number in that draw. A person can control multiple eligible wallets: do not present this rule as protection against multiple identities. The prize budget must consider this possibility, without assuming a limit per person or a minimum balance not yet approved.
+
+The Burn Lottery prize and the costs of the draw require an approved source and coverage before accepting entries. The paid BETTEX are burned and do not finance the prize. Payment, burn reference and entry generation must have a single effect and a verifiable recovery mechanism; if this link cannot be guaranteed, do not accept payments. The regulation informs the draw, verifiable randomness, fault handling and the impossibility of undoing a burn by simple adjustment.
+
+Double 2X requires its own mandate with maximum bet, aggregate budget, reserve for simultaneous wins, timeframe, verifiable randomness, and failure procedure. These parameters must be approved and published before opening; without them, the game is unavailable. The authorization grants the entire bet and reserves the obligation to return 2x, considering the bet received and the additional portion from the treasury, without using resources from staking, buyback, or other commitments.
+
+USDC of yields already received is controlled by a reconciled source limit, not by the physical identity of the fungible tokens. Confirmed distributions increase this limit; each USDC withdrawal, including a bet, reduces it once down to zero. External deposits and game wins do not increase the limit. It never exceeds the free USDC balance; bet reserves prevent concurrent reuse. Insufficient evidence blocks the bet.
+
+The rule of one play every 24 consecutive hours is applied to the official wallet linked to the account; changing sessions, devices, or recovering access does not reset the deadline. It is not a limit proven by person: multiple wallets are considered in the aggregate budget. Register the start a single time before execution; an uncertain attempt does not allow another play nor does it release the reserve by presumption.
+
+The 100% RTP is gross and theoretical: it does not cover gas, randomness, nor guarantee cash equilibrium in the short term. Receipts, obligations, gains, losses, and game costs have their own ledger, reconciled with treasury equity. They do not enter as strategy profit eligible for split nor use the exclusive buyback budget. Equity variations of the games affect the reserve and liquidity controls before new operations and distributions.
+
+Authentication and legal eligibility
+
+Proving wallet control authenticates access, but does not prove civil identity, residence, age, or eligibility for an offer. Wallet login does not waive identification, KYC, or other controls when required for the activity and territory. The visual demo does not offer financial operations.
+
+Legal investigation defines which controls are necessary for mint, participation, games, and integrations. Verifications from an external provider are not automatically sufficient for BETTEX obligations. Without validated required controls, restrict the supply and the affected operation; do not promise financial access without documents in any territory.
 
 Community and launch in the Pitch: https://bettex.ai/en/pitch#publico

@@ -119,6 +119,6 @@ export const copy = {
   "rmClose": "As datas indicam o cronograma previsto, não entregas concluídas. Oferta e operação dependem de adequação por atividade e território e podem ser ajustadas. Investir envolve risco e não há rendimento garantido."
 ,
   "dlLabel": "Downloads",
-  "dlDoc": "documentação completa",
+  "dlDoc": "resumo das regras e administração",
   "dlTable": "tabela de tokenomics"
 } as const;
