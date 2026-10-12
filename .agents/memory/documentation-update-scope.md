@@ -1,9 +1,15 @@
 ---
 name: Escopo da atualização documental
-description: Documentação e sistema autorizados; reformulação da página inicial exige autorização expressa.
+description: Homepage e Pitch aprovados e prontos; não editar essas páginas.
 ---
 
-A autorização atual abrange documentação e sistema, além de correções necessárias. Não autoriza reformular a página inicial nem mudar sua abertura para “comunidade aberta”.
+A homepage e o Pitch estão aprovados e prontos. Não editar a homepage nem o Pitch.
+
+**Why:** O criador pediu lembrar: “nao edite a home page nem o pitch eles estao aprovados e prontos”.
+
+**How to apply:** Preservar ambas as páginas, inclusive ao alterar componentes, textos, traduções ou dados compartilhados. Esta restrição atual substitui autorizações anteriores de alteração dessas páginas.
+
+A autorização anterior abrangia documentação e sistema, além de correções necessárias. Não autorizava reformular a página inicial nem mudar sua abertura para “comunidade aberta”.
 
 **Why:** O criador corrigiu expressamente: “eu não autorizei mudanças na página inicial” e “eu autorizei mudanças na documentação e no sistema, e correções se fossem necessárias”.
 

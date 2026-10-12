@@ -91,7 +91,7 @@
 - [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.
 - [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.
 - [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.
-- [Escopo da atualização documental](documentation-update-scope.md) — documentação, Pitch e derivados; reorganização do lançamento inclui roadmap da homepage, não o aplicativo.
+- [Escopo da atualização documental](documentation-update-scope.md) — homepage e Pitch aprovados e prontos; não editar essas páginas, inclusive por mudanças compartilhadas.
 - [Captação da comunidade](community-launch-funding.md) — mint aberto de 10% a preço fixo; sistema e vesting de 24 meses previstos para março de 2027.
 - [Sustentabilidade operacional](operational-sustainability-positioning.md) — custeio em aberto; simplificar documentação e retirar receita empresarial, preservando regras essenciais.
 - [Compartilhamento social](social-sharing-policy.md) — artes duráveis, previsões explícitas e nova URL ao trocar a mensagem; preservar links antigos.
