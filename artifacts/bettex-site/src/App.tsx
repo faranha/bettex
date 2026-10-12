@@ -315,7 +315,7 @@ function Home() {
               <span className="block">Chega de apostar.</span>{' '}
               <span className="block text-[#F2B632]">Comece a investir.</span>
             </h1>
-            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Um projeto DeFi que constrói um agente de trading com IA para vários mercados.</h2>
+            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Um projeto DeFi que constrói um agente de IA para mercados de iGaming, esportes e trading.</h2>
             <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">O token BETTEX conecta você à economia do projeto e à distribuição de resultados, quando houver lucro elegível.</p>
             <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
               <span>Entenda o projeto</span>

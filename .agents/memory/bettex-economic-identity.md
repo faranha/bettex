@@ -106,3 +106,9 @@ Na comparação com apostas, é permitido chamar a aquisição de BETTEX de inve
 **Why:** Ao revisar os riscos do quadro comparativo, o criador pediu deixar claro que “não tem perda do token”, “não é uma aposta, é investimento”.
 
 **How to apply:** Distinguir manter a quantidade de tokens após prejuízos operacionais de preservar seu valor de mercado. Não sugerir capital ou preço garantidos nem retirar os riscos de desvalorização, liquidez e ausência de distribuição.
+
+Na abertura da homepage, nomear os mercados de iGaming, esportes e trading, em vez de usar apenas “several markets” ou “vários mercados”.
+
+**Why:** O criador corrigiu expressamente essa descrição no hero e pediu os mercados por nome.
+
+**How to apply:** Manter a mesma especificidade nas versões portuguesa, inglesa e espanhola do hero, sem ampliar a edição para os demais blocos.
