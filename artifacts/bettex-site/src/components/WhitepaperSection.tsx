@@ -219,11 +219,10 @@ export function WhitepaperSection() {
     <>
     {bar}
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
-      <div className="whitepaper__topline"><span>BETTEX / DOCUMENTAÇÃO · v1</span><span>UM AGENTE · {total} CAPÍTULOS</span></div>
-      <DocumentationGovernanceMarquee />
+      <DocumentationGovernanceMarquee total={total} />
       <header className="whitepaper__hero page-wrap">
         <div>
-          <p className="whitepaper__eyebrow"><span aria-hidden="true" /> v1 · VISÃO, ARQUITETURA E REGRAS</p>
+          <p className="whitepaper__eyebrow" data-i18n="translated"><span aria-hidden="true" /> {t('v1 · VISÃO, ARQUITETURA E REGRAS').replace(/^v1\s*·\s*/, '')}</p>
           <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}{' '}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
           <p className="whitepaper__hero-lede">BETTEX é uma comunidade dedicada à construção do próprio agente de IA. Esta documentação reflete a visão dos fundadores e os anseios da comunidade, incluindo arquitetura técnica, regras, tokenomics e riscos.</p>
         </div>

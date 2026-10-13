@@ -1,16 +1,12 @@
-import { useState } from 'react';
-import { Pause, Play } from 'lucide-react';
-
 const notice = 'Conteúdo administrado pelo Agente de Governança em IA da Bettex';
 
-export function DocumentationGovernanceMarquee() {
-  const [paused, setPaused] = useState(false);
-
+export function DocumentationGovernanceMarquee({ total }: { total: string }) {
   return (
     <div className="whitepaper__governance-marquee" role="note" data-testid="documentation-governance-notice">
+      <span className="whitepaper__governance-meta">BETTEX / DOCUMENTAÇÃO · v1</span>
       <span className="sr-only">{notice}</span>
       <div className="whitepaper__governance-viewport" aria-hidden="true">
-        <div className={`whitepaper__governance-track${paused ? ' is-paused' : ''}`}>
+        <div className="whitepaper__governance-track">
           {[0, 1].map(group => (
             <div className="whitepaper__governance-group" key={group}>
               {[0, 1].map(copy => (
@@ -22,15 +18,7 @@ export function DocumentationGovernanceMarquee() {
           ))}
         </div>
       </div>
-      <button
-        type="button"
-        className="whitepaper__governance-pause"
-        aria-label={paused ? 'Retomar aviso em movimento' : 'Pausar aviso em movimento'}
-        aria-pressed={paused}
-        onClick={() => setPaused(value => !value)}
-      >
-        {paused ? <Play size={15} aria-hidden="true" /> : <Pause size={15} aria-hidden="true" />}
-      </button>
+      <span className="whitepaper__governance-meta">UM AGENTE · {total} CAPÍTULOS</span>
     </div>
   );
 }

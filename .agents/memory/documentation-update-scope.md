@@ -33,6 +33,12 @@ Não exibir opções de download na documentação.
 
 **How to apply:** Não reintroduzir o bloco ou seus botões em atualizações da documentação. A remoção das opções não autoriza apagar arquivos existentes.
 
+Informações de versão e capítulos ficam na faixa vermelha da documentação, sem botão de pausa.
+
+**Why:** O criador pediu: “tudo sobre v1 etc pode estar na banda vermelha, e nao precisa ter botao de pause”.
+
+**How to apply:** Não recriar uma faixa separada para esses metadados nem reintroduzir o botão.
+
 Na reorganização da venda pública anterior ao vesting, o criador também pediu atualizar o roadmap, acrescentando essa seção da homepage ao escopo então vigente.
 
 **Why:** Pediu explicitamente: “no roadmap tem que ser atualizado também que nós vamos fazer a listagem pública pra captação de fundos, criar awareness e depois que vai entrar no ar o alfa”.
