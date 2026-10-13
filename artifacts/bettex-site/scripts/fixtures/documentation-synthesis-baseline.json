@@ -12,9 +12,9 @@
       "textSha256": "cec70de1c18514920ca0d893a24c1ec98fbbe2de62d061a5f73c218529627d93"
     },
     "/pitch": {
-      "words": 6098,
-      "structureSha256": "112355dccc4704926478236e43f575d222fbbf9ae2e2e82350bb8d2f4af30f32",
-      "textSha256": "62dfa7970f64e10b6beb24f0314454ccbee3042a60a30bf98c148a267b2876e5"
+      "words": 6092,
+      "structureSha256": "0ff35e7fbc35406e43719fef89e2d43557baa3c2e0794729620cecf30386eafd",
+      "textSha256": "7088d9b6e250d9bddfd433181253e066cd48b9cf7312567b843f701f5601f084"
     },
     "/en/": {
       "words": 1301,
@@ -22,9 +22,9 @@
       "textSha256": "8bc861eea7bfa99f654ba910aad2f700b7717def943b487361f1e5a785709031"
     },
     "/en/pitch": {
-      "words": 5854,
-      "structureSha256": "9f32ce66171285852b7ec4130837175bac97eada04fa78099a476e400e25b910",
-      "textSha256": "71823246b1dbc17a1d724a7837f8063201d49fbf012fcc0f6e6000e26a8fe106"
+      "words": 5849,
+      "structureSha256": "f6c0b8cea6fbc33d728d68a16195be33d8d523fe8fac2fc1e788186d2eda4b26",
+      "textSha256": "ffdd1deddfa92312e0faf1e9dbf9bcc752a962c5a713961ea336c8efdf7a0044"
     },
     "/es/": {
       "words": 1395,
@@ -32,9 +32,9 @@
       "textSha256": "e3d3b3c8850c2e6542f1ca7a6583426998e95b083b0f7d001caf8c1aaeb15191"
     },
     "/es/pitch": {
-      "words": 6480,
-      "structureSha256": "98c4ea689af96a9b66b32c7611f2c623628a0b20ee6b5e95fdb84a3084df44f2",
-      "textSha256": "c15239e2748d78478bb46bb07f63b35f17827e5d56fffc625b3badc044322dac"
+      "words": 6474,
+      "structureSha256": "dbd2ac083a9eb8a3573eb58ed7f1e6d301dde5dc76ee64704642d54c6647022a",
+      "textSha256": "86b535b686922beabe6ea1ad323a53d87eee6c028568e46030c2f7f08dd494a1"
     },
     "/documentacao": {
       "words": 27074,

@@ -90,6 +90,12 @@ img, svg, video { max-width: 100%; }
   .cover__copy > div { grid-column: 1 / -1; grid-row: auto; }
   .cover__project { grid-column: 1; grid-row: 3; width: min(100%, 220px); box-shadow: 8px 8px 0 rgba(43,89,255,.55); }
 }
+/* Hero cutout: transparent illustration, no frame, plate or caption. */
+.cover__grid > .cover__project { border: 0; border-radius: 0; overflow: visible; box-shadow: none; background: transparent; width: 100%; max-width: 560px; justify-self: center; }
+.cover__grid > .cover__project img { aspect-ratio: 1; object-fit: contain; filter: drop-shadow(0 14px 18px rgba(3,8,30,.38)); animation: pitch-rise .8s cubic-bezier(.2,.7,.2,1) both; }
+@media (min-width: 768px) { .cover__grid > .cover__project { margin-block: -24px; transform: translateX(2%); } }
+@media (max-width: 767px) { .cover__grid > .cover__project { width: min(88%, 340px); max-width: 340px; justify-self: center; box-shadow: none; margin-block: -8px -16px; } }
+@media (prefers-reduced-motion: reduce) { .cover__grid > .cover__project img { animation: none; } }
 .slide { position: relative; }
 .pitch .slide + .slide { border-top: 3px solid #2B59FF; }
 .pitch .slide--dark + .slide, .pitch .fu--one + .slide { border-top-color: #F2B632; }
