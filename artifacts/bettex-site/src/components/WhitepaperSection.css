@@ -13,25 +13,25 @@
 }
 .whitepaper * { box-sizing: border-box; }
 .whitepaper [id] { scroll-margin-top: 100px; }
-.whitepaper__topline { min-height: 37px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px max(20px, calc((100% - 1200px) / 2)); border-bottom: 1px solid var(--wp-line); color: #2B59FF; font: 700 9px/1.4 var(--app-font-mono); letter-spacing: .12em; }
-.whitepaper__governance-marquee { display: flex; align-items: stretch; min-height: 44px; background: #bc202b; color: #fff; }
+.whitepaper__governance-marquee { display: flex; align-items: center; gap: 20px; min-height: 44px; padding: 0 max(20px, calc((100% - 1200px) / 2)); background: #bc202b; color: #fff; }
+.whitepaper__governance-meta { flex: none; font: 700 9px/1.4 var(--app-font-mono); letter-spacing: .12em; }
 .whitepaper__governance-viewport { flex: 1; min-width: 0; overflow: hidden; }
 .whitepaper__governance-track { display: flex; width: max-content; animation: documentation-governance-scroll 32s linear infinite; }
-.whitepaper__governance-group { display: flex; align-items: center; justify-content: space-around; flex-shrink: 0; min-width: 100vw; gap: 32px; padding: 12px 24px; }
+.whitepaper__governance-group { display: flex; align-items: center; justify-content: space-around; flex-shrink: 0; gap: 32px; padding: 12px 16px; }
 .whitepaper__governance-copy { display: inline-flex; align-items: center; gap: 32px; white-space: nowrap; font-size: 13px; font-weight: 700; line-height: 20px; }
 .whitepaper__governance-separator { font-size: 16px; }
-.whitepaper__governance-pause { display: grid; place-items: center; flex: none; width: 44px; min-height: 44px; border: 0; border-left: 1px solid #ffffff40; background: #00000012; color: #fff; cursor: pointer; }
-.whitepaper__governance-pause:hover { background: #00000030; }
-.whitepaper__governance-pause:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
-.whitepaper__governance-track.is-paused { animation-play-state: paused; }
+.whitepaper__governance-marquee:hover .whitepaper__governance-track { animation-play-state: paused; }
+@media (max-width: 760px) {
+  .whitepaper__governance-marquee { flex-wrap: wrap; justify-content: space-between; gap: 0 12px; padding-top: 10px; }
+  .whitepaper__governance-viewport { flex-basis: 100%; order: 1; }
+}
 @keyframes documentation-governance-scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
   .whitepaper__governance-track { width: 100%; animation: none; }
   .whitepaper__governance-group { min-width: 0; width: 100%; justify-content: flex-start; }
   .whitepaper__governance-group + .whitepaper__governance-group,
   .whitepaper__governance-copy + .whitepaper__governance-copy,
-  .whitepaper__governance-separator,
-  .whitepaper__governance-pause { display: none; }
+  .whitepaper__governance-separator { display: none; }
   .whitepaper__governance-copy { white-space: normal; }
 }
 .whitepaper__hero { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(230px, .65fr); gap: clamp(30px, 7vw, 100px); align-items: end; padding-top: clamp(24px, 3vw, 40px); padding-bottom: clamp(68px, 8vw, 106px); }
