@@ -12,7 +12,7 @@ export const documentationChapters = [
   { id: 'documentacao-subagente-esportes', title: 'Subagente de Esportes', subtitle: 'Análise esportiva, oportunidades e condições de execução.', group: 2 },
   { id: 'documentacao-subagente-previsoes', title: 'Subagente de Previsões', subtitle: 'Probabilidades, mercados de eventos e fontes de execução.', group: 2 },
   { id: 'documentacao-subagente-igaming', title: 'Subagente de iGaming', subtitle: 'Análise de condições, bônus e riscos nos mercados de iGaming.', group: 2 },
-  { id: 'documentacao-features', title: 'Features determinísticas', subtitle: 'Funcionalidades do aplicativo que executam regras, não inteligências.', group: 3 },
+  { id: 'documentacao-features', title: 'Features', subtitle: 'Funcionalidades do aplicativo que executam regras, não inteligências.', group: 3 },
   { id: 'documentacao-carteira-bettex', title: 'Carteira BETTEX', subtitle: 'Titularidade, participação e portabilidade da carteira.', group: 3 },
   { id: 'documentacao-carteira-usdc', title: 'Carteira USDC', subtitle: 'Saldo financeiro, on-ramp externo e saques em cripto.', group: 3 },
   { id: 'documentacao-acesso', title: 'Conta, acesso e exportação', subtitle: 'Autenticação, sessão, autorização e dados exportáveis.', group: 3 },
@@ -28,3 +28,23 @@ export const documentationChapters = [
 export const documentationGroups = [
   'Começar aqui', 'Inteligência central', 'Subagentes', 'Features', 'Base compartilhada', 'Evolução',
 ] as const;
+
+const cryptoSpecialists = [
+  'documentacao-especialista-btc', 'documentacao-especialista-eth', 'documentacao-especialista-sol',
+] as const;
+
+export function documentationParentId(id: string): string | undefined {
+  return cryptoSpecialists.some(specialist => specialist === id) ? 'documentacao-subagente-cripto' : undefined;
+}
+
+export function documentationChapterNumber(index: number): string {
+  const chapter = documentationChapters[index];
+  if (chapter.id === 'documentacao-features') return '';
+  const parent = documentationParentId(chapter.id);
+  if (parent) {
+    const parentIndex = documentationChapters.findIndex(item => item.id === parent);
+    const childIndex = cryptoSpecialists.findIndex(id => id === chapter.id);
+    return `${documentationChapterNumber(parentIndex)}.${childIndex + 1}`;
+  }
+  return String(documentationChapters.slice(0, index + 1).filter(item => item.id !== 'documentacao-features' && !documentationParentId(item.id)).length);
+}

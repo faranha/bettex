@@ -40,7 +40,7 @@ test('positioning transforms bettors into investors, never betting into investme
     if (typeof text !== 'string') continue;
     for (const pattern of forbidden) assert.doesNotMatch(text, pattern);
   }
-  const claim = 'A proposta da BETTEX é transformar apostadores em investidores, com estratégias de mercado, automação por IA e gestão de risco.';
+  const claim = 'A proposta da BETTEX é transformar apostadores em investidores por meio de um projeto DeFAI';
   assert.ok(source.includes(claim));
   assert.match(messages[claim].en, /bettors into investors/);
   assert.match(messages[claim].es, /apostadores en inversores/);
@@ -109,7 +109,9 @@ test('documentation openings name every trading market and the betting audience 
   for (const language of ['pt', 'en', 'es']) {
     for (const key of ['hero', 'agP1']) {
       const text = intelligenceTranslations[intelligenceCopy[key]][language].toLowerCase();
-      for (const market of ['esports', 'igaming', language === 'en' ? 'crypto' : 'cripto', 'predictions']) {
+      const sports = { pt: 'esportes (surebet)', en: 'sports (surebet)', es: 'deportes (surebet)' }[language];
+      assert.doesNotMatch(text, /\besports\b/);
+      for (const market of [sports, 'igaming', language === 'en' ? 'crypto' : 'cripto', 'predictions']) {
         assert.ok(text.includes(market), `${language}/${key} omits ${market}`);
       }
       if (key === 'hero') {

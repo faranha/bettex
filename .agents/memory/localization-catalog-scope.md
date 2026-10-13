@@ -57,3 +57,9 @@ interface multilíngue.
 usar primitivas nativas quando o wrapper compartilhado impõe uma segunda
 tradução. Verificar também o conteúdo aberto de menus e os rótulos de
 acessibilidade em EN/ES; a auditoria estática de tuplas sozinha não detecta isso.
+
+Identificadores que selecionam partes de um componente são metadados, não textos da interface.
+
+**Why:** Um novo seletor de documentação foi interpretado como texto traduzível; trocar aspas por uma expressão JSX não mudou a classificação.
+
+**How to apply:** Quando a auditoria exigir tradução de uma chave interna, conferir a classificação de atributos estruturais antes de acrescentar traduções artificiais. Reutilizar a interface estrutural já reconhecida ou delimitar corretamente a nova propriedade, sem desabilitar a auditoria de textos visíveis.

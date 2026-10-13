@@ -5,6 +5,8 @@ import { ArchitectureCatalogue } from './architecture/ArchitectureCatalogue';
 import { BuybackPolicy } from './BuybackPolicy';
 import { DocumentationGames } from './DocumentationGames';
 import { DocumentationChapterIntroduction } from './DocumentationChapterIntroduction';
+import { DocumentationVision, DocumentationDemoJourney, DocumentationConceptsHeading } from './DocumentationVision';
+import { DocumentationFutureMarket, DocumentationFutureReferencesHeading } from './DocumentationFutureMarket';
 import { t } from '@/lib/i18n';
 
 export type BaselineFactory = (id: string) => ReactNode[];
@@ -36,12 +38,15 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
   switch (id) {
     case 'documentacao-como-funciona':
       return <>
-        <div className="whitepaper__aside-callout" data-testid="documentation-poc-scope">
+        <DocumentationVision />
+        <div className="whitepaper__aside-callout" id="documentation-poc-scope" data-testid="documentation-poc-scope">
           <span>{t('DOCUMENTAÇÃO DO DEMO / POC')}</span>
           <p>{t('Esta documentação acompanha o demo e a prova de conceito da BETTEX. Registra a arquitetura e suas regras iniciais como ponto de partida; não certifica operação financeira nem uma versão ALFA já entregue.')}</p>
           <p>{t('O próximo passo é documentar a versão ALFA, depois de consultar a comunidade e testar a receptividade do demo. O retorno dessa etapa orientará a definição da próxima versão.')}</p>
         </div>
+        <DocumentationConceptsHeading />
         <DocumentationChapterIntroduction chapterId={id} />
+        <DocumentationDemoJourney />
         {m(id, range(0, 10))}
       </>;
     case 'documentacao-agentes':
@@ -116,20 +121,23 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
       </>;
     case 'documentacao-subagente-esportes':
       return <>
-        <AgentIntelligence owners={['sports']} />{baseline}
+        <DocumentationFutureMarket part="sports" />
+        <AgentIntelligence owners={['sports']} /><DocumentationFutureReferencesHeading />
         <InvestmentAgents only={['esportes']} intro={false} cycle={false} />
         <ArchitectureCatalogue groups={['integrations']} connectorNames={['Esportes e iGaming']} integrationId="documentacao-conexoes-esportes" />
       </>;
     case 'documentacao-subagente-previsoes':
       return <>
-        <AgentIntelligence owners={['predictions']} />{baseline}
+        <DocumentationFutureMarket part="predictions" />
+        <AgentIntelligence owners={['predictions']} /><DocumentationFutureReferencesHeading />
         <InvestmentAgents only={['previsoes']} intro={false} cycle={false} />
         {nested('documentacao-arquitetura', 9, [1])}
         <ArchitectureCatalogue groups={['integrations']} connectorNames={['Polymarket']} integrationId="documentacao-conexoes-previsoes" />
       </>;
     case 'documentacao-subagente-igaming':
       return <>
-        <AgentIntelligence owners={['igaming']} />{baseline}
+        <DocumentationFutureMarket part="igaming" />
+        <AgentIntelligence owners={['igaming']} /><DocumentationFutureReferencesHeading />
         <InvestmentAgents only={['cassinos']} intro={false} cycle={false} />
         <div className="whitepaper__prose"><p>{t('Os jogos internos Burn Lottery e Double 2X são features determinísticas, não operações deste subagente.')}
           {' '}<a href="#documentacao-jogos">{t('Consultar as regras dos jogos internos')}</a></p>

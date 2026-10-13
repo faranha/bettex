@@ -1,4 +1,4 @@
-- [Disponibilidade dos agentes](agent-trading-availability.md) — home e Central da IA: Cripto aberta por padrão; Esportes, Predictions e Cassino em breve.
+- [Disponibilidade dos agentes](agent-trading-availability.md) — Esportes, Previsões e iGaming indisponíveis no demo e fora da ALFA; preservar a visão futura.
 - [Demo exclusivamente visual](interface-visual-demo.md) — instrução atual substitui operação, testnet e emulação persistida; ações operacionais abrem aviso com comunidade.
 - [Grafo da Central](ai-center-graph-experience.md) — agentes e subagentes BTC/ETH/SOL; controles e negócio fora; largura padrão, sem breadcrumbs duplicados.
 - [Central da IA somente consulta](ai-center-read-only.md) — usuário acompanha trades, parâmetros e relatórios; sem edição de mandatos, configurações ou operação manual.
@@ -57,7 +57,7 @@
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
 - [Rodapé](footer-scope.md) — navegação compacta, convite simples ao Telegram no mobile e desktop; sem redes pessoais do fundador.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
-- [Ordem e leitura da documentação](documentation-reading-order.md) — um capítulo por vez; introduzir conceitos e mostrar o percurso no app antes das regras técnicas.
+- [Ordem e leitura da documentação](documentation-reading-order.md) — página por seção numerada, inclusive subitens; rodapé completo; introduzir conceitos antes das regras.
 - [Arquitetura da documentação](documentation-architecture-ownership.md) — BETTEX e subagentes são atores principais; baseline e referências por responsável; features determinísticas separadas.
 - [Leitura do pitch](pitch-reading-behavior.md) — Público antes de Problema; cenário em Ambiente externo; Economia e Token em Tokenomics; menu segue a ordem das áreas; gráficos abertos.
 - [Go to market no Brasil](pitch-brazil-go-to-market.md) — substituir Onboarding; sem seção de Piloto nem expansão internacional nesse bloco do Pitch.
@@ -87,7 +87,7 @@
 - [Tesouraria e carteiras](treasury-presentation.md) — operacional, reserva e recompra em carteiras de teste distintas; totais sem dupla contagem e histórico separado.
 - [Localization catalog scope](localization-catalog-scope.md) — isolated multilingual tuples need their own audit; compiler types and grammar dictionaries are not page copy.
 - [Roteiro do demo](continuous-test-emulation.md) — timeline predefinida de 24 horas reais; não reintroduzir emulação aleatória como fonte financeira do app.
-- [Público da entrada do app](app-entry-audience.md) — homem preservado, um único esporte discreto ao fundo; Esportes/Value Betting é o protagonista do próximo lançamento.
+- [Público da entrada do app](app-entry-audience.md) — homem preservado, um único esporte discreto ao fundo; o tema esportivo não indica disponibilidade na ALFA.
 - [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.
 - [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.
 - [Development-banner navigation checks](development-banner-navigation-testing.md) — dismiss the injected preview banner before testing sticky controls; it can create false menu failures.

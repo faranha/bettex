@@ -15,11 +15,11 @@ Enquadrar o fundo pela área do hero, não pela altura inteira da página.
 
 **How to apply:** Preservar o esporte reconhecível atrás da entrada em desktop e mobile quando alterar os cartões abaixo dela.
 
-Esportes, com foco em value betting, é o próximo lançamento e a principal atração para o público. Deve receber mais destaque visual do que Cripto, que já está disponível no demo.
+O destaque esportivo da arte representa o interesse do público, não disponibilidade do subagente. Esportes não está disponível nem ativo no demo e não está previsto para a ALFA.
 
-**Why:** O criador reforçou: “the next release is the sports value betting agent, and that's what the audience really wants” e pediu “visual hype around it more than crypto”.
+**Why:** O criador havia pedido destaque esportivo para o público e depois esclareceu que o subagente não faz parte do demo nem do escopo da ALFA.
 
-**How to apply:** Destacar Esportes/Value Betting como protagonista, com Cripto em posição secundária de disponível agora. Preservar Previsões e Cassino como futuros/desativados. Manter a chamada de próximo lançamento, sem habilitar Esportes, inventar data ou sugerir que o CTA do demo cripto abre apostas esportivas.
+**How to apply:** Preservar a direção visual sem afirmar inclusão na ALFA, anúncio de lançamento ou operações disponíveis. Previsões e iGaming também ficam futuros/desativados. Não alterar artes ou páginas já aprovadas sem autorização específica.
 
 Os cartões secundários de Cripto, Previsões e Cassino devem ser compactos. Não retomar o fundo verde no cartão Cripto.
 

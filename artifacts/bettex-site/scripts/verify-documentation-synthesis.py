@@ -6,6 +6,7 @@ import subprocess
 from html.parser import HTMLParser
 from pathlib import Path
 from documentation_synthesis_rules import verify_rules
+from documentation_intralinks import verify_intralinks
 from documentation_spacing_audit import audit_spacing
 from pitch_defai_guard import split_pitch_defai_addition
 
@@ -87,6 +88,7 @@ class Content(HTMLParser):
 
 
 digest = lambda value: hashlib.sha256(value.encode()).hexdigest()
+verify_intralinks(app / "dist/public")
 for route, expected in baseline["routes"].items():
     file = app / "dist/public" / route.strip("/") / "index.html"
     protected_html = file.read_text()
@@ -182,6 +184,25 @@ for route, expected in baseline["routes"].items():
         assert not any(key == "href" and value.startswith("/downloads/")
                        for _, key, value in page.structure), f"Download links restored: {route}"
         language = "en" if route.startswith("/en/") else "es" if route.startswith("/es/") else "pt"
+        # Future markets must not be presented as delivered demo/ALFA capabilities.
+        future_scope = {
+            "pt": "Este subagente não está disponível nem ativo na versão demo e não está previsto para a versão ALFA.",
+            "en": "This subagent is neither available nor active in the demo and is not planned for the ALFA version.",
+            "es": "Este subagente no está disponible ni activo en el demo y no está previsto para la versión ALFA.",
+        }[language]
+        for chapter_id, market in (
+            ("documentacao-subagente-esportes", "sports"),
+            ("documentacao-subagente-previsoes", "predictions"),
+            ("documentacao-subagente-igaming", "igaming"),
+        ):
+            future_article = re.findall(
+                rf'<article\b(?=[^>]*id="{chapter_id}")[^>]*>(.*?)</article>',
+                protected_html, re.S,
+            )
+            assert len(future_article) == 1, f"Missing future market: {route}/{chapter_id}"
+            assert future_scope in future_article[0], f"Missing demo/ALFA exclusion: {route}/{chapter_id}"
+            assert f'data-testid="documentation-future-market-{market}"' in future_article[0], f"Missing future vision: {route}/{chapter_id}"
+
         # Beginner introductions are required in every chapter, before existing rules.
         concept_chapters = (
             "documentacao-como-funciona", "documentacao-agentes", "documentacao-emissao",
@@ -200,7 +221,15 @@ for route, expected in baseline["routes"].items():
             )
             assert introduction, f"Missing beginner introduction: {route}/{chapter_id}"
             first_heading = re.search(r"<h3\b", article)
-            if first_heading:
+            if chapter_id == "documentacao-como-funciona":
+                vision = article.find('data-testid="documentation-vision"')
+                scope = article.find('data-testid="documentation-poc-scope"')
+                concepts = article.find('id="documentacao-conceitos-base"')
+                journey = article.find('data-testid="documentation-demo-journey"')
+                assert 0 <= vision < scope < concepts < introduction.start() < introduction.end() < journey, f"Expected vision, scope, concepts, then demo journey: {route}"
+                assert article.count('class="dv__fig"') == 2, f"Missing explanatory vision/demo diagrams: {route}"
+                assert 'id="documentacao-visao"' in article and 'id="documentacao-percurso-demo"' in article, f"Missing diagram section anchors: {route}"
+            elif first_heading:
                 assert introduction.end() <= first_heading.start(), f"Concepts follow technical rules: {route}/{chapter_id}"
             assert len(re.findall(r"<p\b", introduction[1])) >= 2, f"Introduction lacks explanation: {route}/{chapter_id}"
             if chapter_id == "documentacao-como-funciona":
@@ -210,11 +239,16 @@ for route, expected in baseline["routes"].items():
                 for term in ("Staking", "25%", "USDC"):
                     assert term.lower() in introduction[1].lower(), f"Missing staking explanation: {route}/{term}"
                 assert 'data-testid="documentation-app-introduction"' not in article, f"Feature overview mixed into staking: {route}"
-                features = re.search(r'<article\b(?=[^>]*id="documentacao-features")[^>]*>(.*?)</article>', protected_html, re.S)
-                assert features and 'data-testid="documentation-app-introduction"' in features[1], f"Missing separate feature overview: {route}"
+                features = re.search(r'<section\b(?=[^>]*id="documentacao-features")[^>]*>(.*?)</section>', protected_html, re.S)
+                assert features and 'data-testid="documentation-app-introduction"' in features[1], f"Missing feature section opening: {route}"
+                assert 'data-testid="documentation-features-introduction"' in features[1], f"Missing feature topic overview: {route}"
+                assert 'data-testid="link-documentacao-features"' not in protected_html, f"Feature opening reintroduced as a menu chapter: {route}"
         for key, localized in editorial["openings"].items():
             expected_opening = re.sub(r"\s+", " ", localized[language]).strip()
-            assert expected_opening in page.paragraphs, f"Missing market/audience opening: {language}/{key}"
+            if key == "hero" and language == "es":
+                expected_opening = expected_opening.replace("predictions (mercados de predicción)", "predicciones (mercados de predicción)")
+            # Inline links/bold do not insert spaces beside punctuation.
+            assert expected_opening in page.raw_paragraphs, f"Missing market/audience opening: {language}/{key}"
         flows, spacing_errors = audit_spacing(file.read_text())
         assert not spacing_errors, f"Documentation text-flow spacing errors: {language}: {spacing_errors[:8]}"
         print(f"{route}: {len(flows)} text flows checked across paragraphs, lists, diagrams, captions, headings and tables")

@@ -21,8 +21,20 @@ A apresentação inicial deve identificar esta documentação como a documentaç
 
 **How to apply:** Manter essa distinção na abertura e nos materiais de documentação. Preencher pequenas lacunas explicativas sem inventar poderes, protocolos ou parâmetros ainda não definidos.
 
-A faixa vermelha da documentação deve explicar que ela também cobre a versão demo off-chain. Não deve afirmar que o conteúdo é administrado pelo subagente de governança.
+A faixa vermelha da documentação deve usar exatamente: “Esta documentação cobre a versão demo off-chain (POC) da BETTEX”. Não acrescentar “também” nem qualificações adicionais. Não deve afirmar que o conteúdo é administrado pelo subagente de governança.
 
-**Why:** O criador pediu essa explicação para evitar confusão e rejeitou a observação sobre governança na faixa.
+**Why:** O criador pediu essa explicação para evitar confusão, rejeitou a observação sobre governança na faixa e depois forneceu o texto exato.
 
 **How to apply:** Preservar o aviso de escopo nos três idiomas, sem usar essa correção da faixa para remover o agente de governança da arquitetura.
+
+O mercado citado na abertura da documentação é “esportes (surebet)”, não “esports”.
+
+**Why:** O criador corrigiu explicitamente a identificação desse mercado.
+
+**How to apply:** Não confundir esportes com esportes eletrônicos nas descrições da arquitetura. Preservar o mesmo sentido nas traduções.
+
+Na abertura da documentação, a proposta deve ser expressa como: “A proposta da BETTEX é transformar apostadores em investidores por meio de um projeto DeFAI”.
+
+**Why:** O criador forneceu essa frase para substituir a descrição por estratégias de mercado, automação por IA e gestão de risco.
+
+**How to apply:** Manter essa formulação e seu sentido nas traduções, sem acrescentar explicações à frase aprovada.
