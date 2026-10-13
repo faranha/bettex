@@ -43,6 +43,14 @@ function scan(file) {
   if (!/\.tsx?$/.test(file) || file.includes('/lib/localized/') || file.endsWith('/i18n.ts')) return;
   const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   function visit(node) {
+    if (file.endsWith('/AgentIntelligence.tsx') && ts.isStringLiteral(node) &&
+      ['bettex', 'risk', 'treasury', 'governance', 'crypto', 'sports', 'predictions', 'igaming', 'relations', 'learning', 'context', 'support', 'markets'].includes(node.text)) return;
+    // Documentation ownership selectors are implementation metadata, not prose.
+    if ((file.endsWith('/AgentIntelligence.tsx') || file.endsWith('/ArchitectureCatalogue.tsx')) &&
+      ((ts.isVariableDeclaration(node) && ['allOwners', 'supportOwner'].includes(node.name.getText(source))) ||
+       (ts.isCallExpression(node) && ['has', 'on', 'show'].includes(node.expression.getText(source))) ||
+       (ts.isBinaryExpression(node) && ['part', 'group'].includes(node.left.getText(source))))) return;
+    if (ts.isJsxAttribute(node) && ['owners', 'only', 'groups', 'connectorNames', 'integrationId', 'part'].includes(node.name.getText(source))) return;
     // Closing an SVG path is drawing syntax, not a translatable label.
     if (file.endsWith('/components/VestingPlot.tsx') && ts.isStringLiteral(node) && node.text === 'Z') return;
     if (/\/lib\/documentation-intelligence(?:-presentation)?\.ts$/.test(file) && ts.isArrayLiteralExpression(node) &&

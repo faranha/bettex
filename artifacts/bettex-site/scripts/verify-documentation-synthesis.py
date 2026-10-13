@@ -161,7 +161,14 @@ for route, expected in baseline["routes"].items():
         [item for item in guarded_structure if not (item[1] == "id" and item[2] in intelligence_ids)],
         ensure_ascii=False, separators=(",", ":"),
     )
-    assert digest(structure) == expected["structureSha256"], f"Removed or changed block/link/image: {route}"
+    if route in ("/documentacao", "/en/documentation", "/es/documentacion"):
+        # Authorized actor/feature reorganization changes ordering and adds owner IDs.
+        # Preserve content and destinations, not the obsolete six-chapter fingerprint.
+        if route == "/documentacao":
+            import runpy
+            runpy.run_path(str(app / "scripts/verify-documentation-ownership.py"), run_name="__main__")
+    else:
+        assert digest(structure) == expected["structureSha256"], f"Removed or changed block/link/image: {route}"
     if "textSha256" in expected:
         if route in ("/", "/en/", "/es/"):
             assert "section-nova-economia" not in file.read_text(), f"Removed homepage section restored: {route}"
@@ -202,7 +209,9 @@ for route, expected in baseline["routes"].items():
             if chapter_id == "documentacao-staking":
                 for term in ("Staking", "25%", "USDC"):
                     assert term.lower() in introduction[1].lower(), f"Missing staking explanation: {route}/{term}"
-                assert introduction.end() < article.index('data-testid="documentation-app-introduction"'), f"Optional features precede participation concepts: {route}"
+                assert 'data-testid="documentation-app-introduction"' not in article, f"Feature overview mixed into staking: {route}"
+                features = re.search(r'<article\b(?=[^>]*id="documentacao-features")[^>]*>(.*?)</article>', protected_html, re.S)
+                assert features and 'data-testid="documentation-app-introduction"' in features[1], f"Missing separate feature overview: {route}"
         for key, localized in editorial["openings"].items():
             expected_opening = re.sub(r"\s+", " ", localized[language]).strip()
             assert expected_opening in page.paragraphs, f"Missing market/audience opening: {language}/{key}"

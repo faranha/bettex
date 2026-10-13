@@ -2,6 +2,7 @@ import { useSyncExternalStore } from 'react';
 import catalogue from './locales/translations.json';
 import englishSourceMessages from './locales/english-source-messages.json';
 import documentationSynthesis from './locales/documentation-synthesis.json';
+import documentationArchitecture from './locales/documentation-architecture.json';
 import { intelligenceTranslations } from './documentation-intelligence';
 import { presentationTranslations } from './documentation-intelligence-presentation';
 import { documentationAgentTerminology, isDocumentationPath } from './documentation-agent-terminology';
@@ -12,7 +13,7 @@ export type Locale = 'pt' | 'en' | 'es';
 type Translation = { en: string; es: string; pt?: string };
 // Editorial equivalents retain the full source text and its technical rules.
 // Only documentation-specific keys are included; approved pages are unchanged.
-const messages = { ...catalogue, ...englishSourceMessages, ...documentationSynthesis, ...intelligenceTranslations, ...presentationTranslations } as Record<string, Translation>;
+const messages = { ...catalogue, ...englishSourceMessages, ...documentationSynthesis, ...documentationArchitecture, ...intelligenceTranslations, ...presentationTranslations } as Record<string, Translation>;
 const listeners = new Set<() => void>();
 let locale: Locale = typeof window === 'undefined' ? 'pt' : localeFromPath(window.location.pathname);
 export const observedMessages = new Set<string>();

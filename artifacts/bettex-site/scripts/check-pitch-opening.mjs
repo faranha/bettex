@@ -52,9 +52,22 @@ try {
           const hero = container.getBoundingClientRect();
           const border = parseFloat(getComputedStyle(container).borderBottomWidth) || 0;
           const bounds = figure.getBoundingClientRect();
-          return { width: bounds.width, floorGap: Math.abs(bounds.bottom - (hero.bottom - border)) };
+          const style = getComputedStyle(figure);
+          const img = figure.querySelector('img');
+          const imageBounds = img.getBoundingClientRect();
+          return {
+            width: bounds.width, height: bounds.height,
+            floorGap: Math.abs(bounds.bottom - (hero.bottom - border)),
+            mask: style.maskImage, overflow: style.overflow,
+            insideHero: imageBounds.left >= hero.left && imageBounds.right <= hero.right &&
+              imageBounds.top >= hero.top && imageBounds.bottom <= hero.bottom,
+            completeAspect: Math.abs(imageBounds.width / imageBounds.height - img.naturalWidth / img.naturalHeight) < .01,
+          };
         });
-        assert.ok(framing.width >= (width < 768 ? 200 : 300), 'Character must have a substantial visible composition, not a miniature bust');
+        assert.ok(framing.height >= (width < 768 ? 480 : 640), 'Full-body character must have substantial visible height');
+        assert.equal(framing.mask, 'none', 'Do not fade or mask the character');
+        assert.equal(framing.overflow, 'visible', 'Do not crop the character container');
+        assert.ok(framing.insideHero && framing.completeAspect, 'Show the entire artwork inside the hero without cuts or distortion');
         assert.ok(framing.floorGap <= 2, `Character must reach the hero floor rather than ending with a floating torso cut: ${JSON.stringify(framing)}`);
         assert.deepEqual(layout.problems, [], `${path} ${width}px`);
         console.log(`PASS ${path} ${width}px: complete opening, no hidden, clipped or overlapping blocks`);

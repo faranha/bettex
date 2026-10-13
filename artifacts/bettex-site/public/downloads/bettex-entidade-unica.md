@@ -1,4 +1,8 @@
-BETTEX — comunidade, regras e administração
+BETTEX — Demo e prova de conceito
+
+Esta documentação acompanha o demo e a prova de conceito da BETTEX. Registra a arquitetura e suas regras iniciais como ponto de partida; não certifica operação financeira nem uma versão ALFA já entregue.
+
+O próximo passo é documentar a versão ALFA, depois de consultar a comunidade e testar a receptividade do demo. O retorno dessa etapa orientará a definição da próxima versão.
 
 Resumo das regras e administração. Os capítulos, desenhos e referências técnicas completos estão na documentação do site. Este arquivo não comprova implantação ou operação financeira.
 

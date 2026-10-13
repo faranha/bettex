@@ -17,6 +17,7 @@ consistency = json.loads((lib / "documentation-consistency.json").read_text())
 materials["sections"].extend(consistency["sections"])
 catalogue = json.loads((lib / "locales/translations.json").read_text())
 catalogue.update(json.loads((lib / "locales/documentation-synthesis.json").read_text()))
+catalogue.update(json.loads((lib / "locales/documentation-architecture.json").read_text()))
 # Reuse the same documentation-only nomenclature as the site, including archived
 # downloads. Node is already required by the build; there is no duplicated rule set.
 editorial = subprocess.run(
@@ -120,15 +121,17 @@ for lang in ("pt", "en", "es"):
         if text not in catalogue or not catalogue[text].get(lang): raise ValueError(f"Missing material translation: {lang}: {text}")
         return catalogue[text][lang]
     suffix = "" if lang == "pt" else f"-{lang}"
-    title = t(materials["title"])
+    title = "BETTEX — " + t("Demo e prova de conceito")
     scope = t("Resumo das regras e administração. Os capítulos, desenhos e referências técnicas completos estão na documentação do site. Este arquivo não comprova implantação ou operação financeira.")
     documentation_url = {
         "pt": "https://bettex.ai/documentacao",
         "en": "https://bettex.ai/en/documentation",
         "es": "https://bettex.ai/es/documentacion",
     }[lang]
-    paragraphs = [title, scope, documentation_url]
-    blocks = [f"<h1>{escape(title)}</h1>", f"<p>{escape(scope)}</p>", f'<p><a href="{documentation_url}">{documentation_url}</a></p>']
+    poc_scope = t("Esta documentação acompanha o demo e a prova de conceito da BETTEX. Registra a arquitetura e suas regras iniciais como ponto de partida; não certifica operação financeira nem uma versão ALFA já entregue.")
+    next_scope = t("O próximo passo é documentar a versão ALFA, depois de consultar a comunidade e testar a receptividade do demo. O retorno dessa etapa orientará a definição da próxima versão.")
+    paragraphs = [title, poc_scope, next_scope, scope, documentation_url]
+    blocks = [f"<h1>{escape(title)}</h1>", f"<p>{escape(poc_scope)}</p>", f"<p>{escape(next_scope)}</p>", f"<p>{escape(scope)}</p>", f'<p><a href="{documentation_url}">{documentation_url}</a></p>']
     for section in materials["sections"]:
         paragraphs.append(t(section["title"]))
         blocks.append(f'<h2>{escape(t(section["title"]))}</h2>')

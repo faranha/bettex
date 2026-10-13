@@ -12,10 +12,17 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3061 >>
+<< /Length 3046 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
-(BETTEX — comunidade, regras e administração) Tj T*
+(BETTEX — Demo e prova de conceito) Tj T*
+() Tj T*
+(Esta documentação acompanha o demo e a prova de conceito da BETTEX. Registra a arquitetura e) Tj T*
+(suas regras iniciais como ponto de partida; não certifica operação financeira nem uma versão) Tj T*
+(ALFA já entregue.) Tj T*
+() Tj T*
+(O próximo passo é documentar a versão ALFA, depois de consultar a comunidade e testar a) Tj T*
+(receptividade do demo. O retorno dessa etapa orientará a definição da próxima versão.) Tj T*
 () Tj T*
 (Resumo das regras e administração. Os capítulos, desenhos e referências técnicas completos) Tj T*
 (estão na documentação do site. Este arquivo não comprova implantação ou operação financeira.) Tj T*
@@ -56,13 +63,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (responsável. Permissões não são universais; atividades sujeitas a licenciamento só são) Tj T*
 (liberadas com autorização.) Tj T*
 () Tj T*
-(Investigações verificam normas, licenças, termos, publicidade, proteção ao usuário, PLD,) Tj T*
-(privacidade e responsabilidades, com registro formal de evidências, datas e controles exigidos.) Tj T*
-() Tj T*
-(Cada combinação \(agente, atividade, território\) exige escopo documentado \(investigando,) Tj T*
-(restrito ou autorizado\). Falta de autorização ou investigação pendente bloqueia a operação no) Tj T*
-(território.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -70,9 +70,16 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 2975 >>
+<< /Length 3113 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Investigações verificam normas, licenças, termos, publicidade, proteção ao usuário, PLD,) Tj T*
+(privacidade e responsabilidades, com registro formal de evidências, datas e controles exigidos.) Tj T*
+() Tj T*
+(Cada combinação \(agente, atividade, território\) exige escopo documentado \(investigando,) Tj T*
+(restrito ou autorizado\). Falta de autorização ou investigação pendente bloqueia a operação no) Tj T*
+(território.) Tj T*
+() Tj T*
 (Categorias proibidas no Brasil \(como cassino ou previsão sem licença\) não serão oferecidas.) Tj T*
 (Exemplos são condicionais, dependendo da investigação de cada atividade concreta.) Tj T*
 () Tj T*
@@ -114,13 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (antes de aceitar entradas. Jogos não são estratégias de investimento nem promessa de) Tj T*
 (rendimento; resultados simulados não comprovam execução, aleatoriedade pública ou liquidação.) Tj T*
 () Tj T*
-(Rodada operacional e demonstração) Tj T*
-() Tj T*
-(Modelo opera em rodadas diárias UTC. Abas de mercado não criam pools de staking separados.) Tj T*
-() Tj T*
-(Administração e propósito) Tj T*
-() Tj T*
-(Hoje, BETTEX reúne DeFi e IA, com administração inicial dos fundadores. A visão é substituir) Tj T*
 ET
 endstream
 endobj
@@ -128,9 +128,16 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 2865 >>
+<< /Length 2652 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Rodada operacional e demonstração) Tj T*
+() Tj T*
+(Modelo opera em rodadas diárias UTC. Abas de mercado não criam pools de staking separados.) Tj T*
+() Tj T*
+(Administração e propósito) Tj T*
+() Tj T*
+(Hoje, BETTEX reúne DeFi e IA, com administração inicial dos fundadores. A visão é substituir) Tj T*
 (toda a administração por IA ao longo do tempo e tornar-se totalmente DeFAI. O token é) Tj T*
 (comunitário, sem empresa, fundação, salários ou taxas. Recursos têm finalidade coletiva;) Tj T*
 (carteiras continuam pessoais.) Tj T*
@@ -172,13 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Participantes em rodadas em curso não recebem lucros daquela rodada, apenas da subsequente.) Tj T*
 (Saldos e acréscimos são fixados na abertura da rodada.) Tj T*
 () Tj T*
-(Peso = saldo elegível na abertura  x  duração. Saídas zeram o peso e cancelam créditos) Tj T*
-(anteriores ainda não pagos; retorno só na próxima rodada. Acréscimos não alteram pesos) Tj T*
-(existentes. Pagamento bruto = parcela de staking  x  peso individual  /  soma dos pesos) Tj T*
-(elegíveis.) Tj T*
-() Tj T*
-(Exemplo: A inicia com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro elegível de) Tj T*
-(1.000 USDC e condições cumpridas, a parcela de staking de 250 USDC paga 250 a A e zero a B. Na) Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,16 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 2985 >>
+<< /Length 3137 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Peso = saldo elegível na abertura  x  duração. Saídas zeram o peso e cancelam créditos) Tj T*
+(anteriores ainda não pagos; retorno só na próxima rodada. Acréscimos não alteram pesos) Tj T*
+(existentes. Pagamento bruto = parcela de staking  x  peso individual  /  soma dos pesos) Tj T*
+(elegíveis.) Tj T*
+() Tj T*
+(Exemplo: A inicia com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro elegível de) Tj T*
+(1.000 USDC e condições cumpridas, a parcela de staking de 250 USDC paga 250 a A e zero a B. Na) Tj T*
 (rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC cada sobre novo) Tj T*
 (lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.) Tj T*
 () Tj T*
@@ -230,13 +237,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Pesos são calculados pós-corte sobre o saldo elegível. Entradas aguardam nova rodada; saídas) Tj T*
 (zeram o peso. Saídas pós-corte cancelam direitos pendentes sem alterar resultados de novas) Tj T*
-(rodadas.) Tj T*
-() Tj T*
-(Decisões de apuração fixam beneficiários e pesos, considerando saídas confirmadas. Saídas) Tj T*
-(posteriores cancelam créditos sem redistribuição ou novo split. Registros históricos e pesos) Tj T*
-(atuais são distintos.) Tj T*
-() Tj T*
-(Apuração e execução integram a rodada atual. O encerramento financeiro elimina direitos não) Tj T*
 ET
 endstream
 endobj
@@ -244,9 +244,16 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
 endobj
 13 0 obj
-<< /Length 2931 >>
+<< /Length 2751 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(rodadas.) Tj T*
+() Tj T*
+(Decisões de apuração fixam beneficiários e pesos, considerando saídas confirmadas. Saídas) Tj T*
+(posteriores cancelam créditos sem redistribuição ou novo split. Registros históricos e pesos) Tj T*
+(atuais são distintos.) Tj T*
+() Tj T*
+(Apuração e execução integram a rodada atual. O encerramento financeiro elimina direitos não) Tj T*
 (enviados; pagamentos em curso seguem em conciliação. Não há reabertura ou créditos pós-) Tj T*
 (encerramento.) Tj T*
 () Tj T*
@@ -288,13 +295,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Elegibilidade, exposição e condições dos jogos) Tj T*
 () Tj T*
-(Burn Lottery limita um número gratuito por carteira com BETTEX em staking, com snapshot) Tj T*
-(verificável e identificador único por carteira e sorteio. Transferências pós-corte não geram) Tj T*
-(novos números. O orçamento considera múltiplas carteiras por pessoa; isso não é proteção contra) Tj T*
-(múltiplas identidades.) Tj T*
-() Tj T*
-(O prêmio da Burn Lottery e os custos do sorteio exigem fonte aprovada e cobertura antes de) Tj T*
-(aceitar entradas. Os BETTEX pagos são queimados e não financiam o prêmio. Pagamento, referência) Tj T*
 ET
 endstream
 endobj
@@ -302,9 +302,16 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
 endobj
 15 0 obj
-<< /Length 2367 >>
+<< /Length 2911 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Burn Lottery limita um número gratuito por carteira com BETTEX em staking, com snapshot) Tj T*
+(verificável e identificador único por carteira e sorteio. Transferências pós-corte não geram) Tj T*
+(novos números. O orçamento considera múltiplas carteiras por pessoa; isso não é proteção contra) Tj T*
+(múltiplas identidades.) Tj T*
+() Tj T*
+(O prêmio da Burn Lottery e os custos do sorteio exigem fonte aprovada e cobertura antes de) Tj T*
+(aceitar entradas. Os BETTEX pagos são queimados e não financiam o prêmio. Pagamento, referência) Tj T*
 (de queima e geração da entrada devem ter efeito único e mecanismo de recuperação verificável;) Tj T*
 (se esse vínculo não puder ser garantido, não aceitar pagamentos. O regulamento informa sorteio,) Tj T*
 (aleatoriedade verificável, tratamento de falhas e impossibilidade de desfazer uma queima por) Tj T*
@@ -351,17 +358,17 @@ xref
 0000000148 00000 n 
 0000000245 00000 n 
 0000000371 00000 n 
-0000003484 00000 n 
-0000003610 00000 n 
-0000006637 00000 n 
-0000006763 00000 n 
-0000009680 00000 n 
-0000009808 00000 n 
-0000012846 00000 n 
-0000012974 00000 n 
-0000015958 00000 n 
-0000016086 00000 n 
+0000003469 00000 n 
+0000003595 00000 n 
+0000006760 00000 n 
+0000006886 00000 n 
+0000009590 00000 n 
+0000009718 00000 n 
+0000012908 00000 n 
+0000013036 00000 n 
+0000015840 00000 n 
+0000015968 00000 n 
 trailer << /Size 16 /Root 1 0 R >>
 startxref
-18506
+18932
 %%EOF

@@ -65,17 +65,24 @@ assert.doesNotMatch(networkCosts, /<h[34]|ServiceFeeTaxes/, 'Network costs have 
 assert.match(networkCosts, /não cobra taxas de serviço/);
 assert.match(networkCosts, /custos externos da rede, que não são receita da comunidade/);
 assert.match(networkCosts, /não cobra taxas de serviço/);
-for (const path of ['src/components/WhitepaperSection.tsx', 'src/components/ServiceFees.tsx', 'src/components/DocumentationGames.tsx', 'src/components/DocumentationGovernance.tsx', 'src/components/StakingDistribution.tsx']) {
+// The opening is explicitly demo/POC; economic mechanisms keep their baseline rules.
+assert.match(await read('src/components/WhitepaperSection.tsx'), /DEMO \/ POC/);
+assert.match(await read('src/components/WhitepaperSection.tsx'), /ALFA será documentada após consultar a comunidade e testar a receptividade do demo/);
+for (const path of ['src/components/ServiceFees.tsx', 'src/components/DocumentationGames.tsx', 'src/components/DocumentationGovernance.tsx', 'src/components/StakingDistribution.tsx']) {
   assert.doesNotMatch(await read(path), /\bdemo\b|interface de demonstração|interfaz de demostración/i, `${path}: documentation must describe the final vision, not the demo`);
 }
 assert.match(publicCopy, /50% tesouraria, 25% participantes e 25% recompra/);
 assert.match(publicCopy, /24 meses/);
 assert.match(publicCopy, /Quem entra durante uma rodada espera a próxima/);
 assert.match(publicCopy, /Qualquer saída de BETTEX, mesmo parcial, cancela os créditos anteriores ainda não pagos/);
-const principalList = chapters.match(/export const chapters = \[([\s\S]*?)\] as const/);
+const structure = await read('src/lib/documentation-structure.ts');
+const principalList = structure.match(/export const documentationChapters = \[([\s\S]*?)\] as const/);
 assert(principalList, 'The principal chapter list must be identifiable independently of legacy references.');
 const order = [...principalList[1].matchAll(/\{ id: '(documentacao-[\w-]+)', title:/g)].map(m => m[1]);
-assert.equal(order.length, 6, 'Public documentation has six principal chapters; technical references are not main chapters.');
+assert.equal(order.length, 23, 'Actors and features are independently navigable within six responsibility groups.');
+assert.equal(new Set(order).size, order.length, 'No duplicate chapter IDs.');
+for (const id of ['documentacao-agentes', 'documentacao-subagente-risco', 'documentacao-subagente-tesouraria', 'documentacao-subagente-governanca', 'documentacao-subagente-cripto', 'documentacao-especialista-btc', 'documentacao-especialista-eth', 'documentacao-especialista-sol', 'documentacao-carteira-bettex', 'documentacao-carteira-usdc', 'documentacao-acesso']) assert(order.includes(id), id);
+assert.equal(order.at(-1), 'documentacao-roadmap');
 assert.equal(order[0], 'documentacao-como-funciona');
 assert(!order.includes('documentacao-entidade'), 'An institutional company chapter is no longer a product requirement.');
 for (const id of ['documentacao-emissao', 'documentacao-staking']) assert(order.includes(id));
@@ -110,4 +117,4 @@ assert(!await fs.access(new URL('../src/lib/entity-team.json', import.meta.url))
 for (const obsoleteFile of ['fee-projection-scenarios.json', 'service-fee-taxes.ts', 'operating-targets.json']) {
   assert(!await fs.access(new URL(`../src/lib/${obsoleteFile}`, import.meta.url)).then(() => true, () => false));
 }
-console.log('Documentation: six chapters, DeFi/AI positioning, legal/risk conditions, 10/55/20/15 allocations, 24-month integer vesting and isolated demo baseline verified.');
+console.log('Documentation: actor-owned demo/POC baseline, deterministic features, legal/risk conditions, 10/55/20/15 allocations, 24-month vesting and isolated visual demo verified.');

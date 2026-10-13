@@ -5,6 +5,7 @@ import { ChapterVisibility } from './ChapterVisibility';
 import { DocumentationGovernanceMarquee } from './DocumentationGovernanceMarquee';
 import { DocumentationOutlineItems } from './DocumentationOutlineItems';
 import { intelligenceCopy } from '@/lib/documentation-intelligence';
+import { documentationGroups } from '@/lib/documentation-structure';
 import { t, useLocale } from '@/lib/i18n';
 import { resolveDocumentationId } from '@/lib/documentation-aliases';
 import { collectOutline, formatOutlineTitle, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
@@ -217,8 +218,9 @@ export function WhitepaperSection() {
       <DocumentationGovernanceMarquee />
       <header className="whitepaper__hero page-wrap">
         <div>
-          <p className="whitepaper__eyebrow" data-i18n="translated"><span aria-hidden="true" /> {t('v1 · VISÃO, ARQUITETURA E REGRAS').replace(/^v1\s*·\s*/, '')}</p>
+          <p className="whitepaper__eyebrow" data-i18n="translated"><span aria-hidden="true" /> {t('DEMO / POC · ARQUITETURA E REGRAS INICIAIS')}</p>
           <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}{' '}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
+          <p className="whitepaper__hero-lede">{t('Documentação do demo e da prova de conceito. A versão ALFA será documentada após consultar a comunidade e testar a receptividade do demo.')}</p>
           <p className="whitepaper__hero-lede">{intelligenceCopy.hero}</p>
         </div>
         <div className="whitepaper__hero-note">
@@ -256,6 +258,8 @@ export function WhitepaperSection() {
                 const current = active === index;
                 return (
                   <div key={item.id} className={`whitepaper__toc-group${current ? ' is-current' : ''}`}>
+                    {(index === 0 || chapters[index].group !== chapters[index - 1].group) &&
+                      <p className="whitepaper__aside-label" data-i18n="translated">{t(documentationGroups[chapters[index].group])}</p>}
                     <a href={`#${item.id}`} className={`whitepaper__toc-link${current && !activeItem ? ' is-active' : ''}${current ? ' is-chapter-current' : ''}`}
                       aria-current={current && !activeItem ? 'location' : undefined} onClick={(e) => jump(e, item.id)} data-testid={`link-${item.id}`}>
                       <span className="whitepaper__toc-number">{String(index + 1).padStart(2, '0')}</span>

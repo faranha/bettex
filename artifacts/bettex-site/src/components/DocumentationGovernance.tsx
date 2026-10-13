@@ -4,7 +4,7 @@ import { BuybackPolicy } from './BuybackPolicy';
 import { DocImage, DocTerms, Dot } from './DocImage';
 import { intelligenceCopy } from '@/lib/documentation-intelligence';
 
-export function DocumentationGovernance() {
+export function DocumentationGovernance({ includeBuyback = true }: { includeBuyback?: boolean } = {}) {
   return <>
     <h3 className="whitepaper__subhead">{intelligenceCopy.governanceTitle}</h3>
     <div className="whitepaper__prose"><p>{intelligenceCopy.governanceBaseline}</p><p>{intelligenceCopy.governanceDocumentation}</p></div>
@@ -32,7 +32,7 @@ export function DocumentationGovernance() {
     </details>
     <EntityMultisig />
     <FundSecurityResponsibilities />
-    <BuybackPolicy />
+    {includeBuyback && <BuybackPolicy />}
     <h3 className="whitepaper__subhead" id="documentacao-formalizacao">Autonomia e rotina do protocolo</h3>
     <div className="whitepaper__prose"><p>A rotina identifica contrato, despesa, beneficiário e fonte; confere orçamento e disponibilidade; autoriza dentro dos poderes; executa e concilia uma única vez. Recursos comunitários, compromissos e patrimônio pessoal dos titulares permanecem separados. A participação da comunidade nas decisões não equivale a um voto automático por token.</p></div>
   </>;

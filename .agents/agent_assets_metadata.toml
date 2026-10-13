@@ -700,3 +700,31 @@ mtime_ms = 1791744193646
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8daeeaea-8318-4917-aaf5-9e12bdc7776f/3a0cd9a8-43e6-4223-b3d1-428961671d0f"
 storage_version_token = "1791744334061687"
 content_type = "image/webp"
+
+[[outputs]]
+id = "qgaa6n8bwoSALytmaPiBk"
+uri = "file://generated-artifacts/documentation-snapshots/bettex-documentation-before-restructure-2026-10-13.tar.gz"
+type = "unspecified"
+title = "BETTEX — documentação antes da reestruturação"
+description = "Cópia independente verificada dos fontes, imagens, downloads nos três idiomas e scripts de geração. Sem credenciais ou dados do banco."
+logical_id = "5cfe23bd-43fe-404d-b9ae-da98fe1de32a"
+content_hash = "sha256:4b1a327ff60042ff49b45de55168f5444044236f09db1567d901304f49b38af7"
+size = 34848068
+mtime_ms = 1791922110629
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/5cfe23bd-43fe-404d-b9ae-da98fe1de32a/d09d97bc-4210-4262-9c6d-5b732245c4b1"
+storage_version_token = "1791922188643459"
+content_type = "application/octet-stream"
+
+[[outputs]]
+id = "yWqzzskoc-bCmi2KxR_VQ"
+uri = "file://generated-artifacts/documentation-snapshots/bettex-documentation-restoration-kit.zip"
+type = "unspecified"
+title = "Kit de restauração da documentação"
+description = "Instruções, manifesto de alterações e restaurador seletivo. Usar com a cópia anterior já entregue. Conferência verificada sem alterar nenhum arquivo."
+logical_id = "454eaa4d-5702-48ec-a242-302fbb94df39"
+content_hash = "sha256:41c5d27c549b87b2b47b9808fb0eb6ee3df22426fa184e02ad2e6d00c9297b17"
+size = 5891
+mtime_ms = 1791924131125
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/454eaa4d-5702-48ec-a242-302fbb94df39/88b6a3e0-2d7a-4bec-9ac7-0bd335ea1898"
+storage_version_token = "1791924309710735"
+content_type = "application/octet-stream"

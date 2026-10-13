@@ -17,19 +17,24 @@ const agents: { id: string; name: string; input: string; analysis?: string; resu
   { id: 'governanca', name: 'Agente de governança', input: 'Versões, mandatos, limites, desvios e trilha de operações.', analysis: intelligenceCopy.governance, result: 'Histórico de políticas, alerta, pausa ou versão aprovada em vigor.' },
 ];
 
-export function InvestmentAgents() {
+/** `only` filters by agent id (e.g. 'tesouraria'); `cycle` toggles the shared cycle block; `intro` the lead and links. Defaults render everything. */
+export function InvestmentAgents({ only, cycle = true, intro = true }: { only?: string[]; cycle?: boolean; intro?: boolean } = {}) {
   return <>
+    {intro && <>
     <div className="whitepaper__lead"><span>ORQUESTRAÇÃO · ANÁLISE · CONTROLE</span><p>{intelligenceCopy.baseline}</p></div>
     <p className="doc-terms__note">BETTEX ↔ agente: proposta, pedido de análise e resposta</p>
     <div className="whitepaper__prose"><p><a href="#documentacao-controles">Controles de risco</a></p></div>
-    {agents.map(agent => <section key={agent.id} id={`documentacao-agente-${agent.id}`} className="doc-agent">
+    </>}
+    {agents.filter(agent => !only || only.includes(agent.id)).map(agent => <section key={agent.id} id={`documentacao-agente-${agent.id}`} className="doc-agent">
       <h3 className="whitepaper__subhead doc-agent__head">{portraits[agent.id] ? <AgentPortrait file={portraits[agent.id]} /> : <span className="doc-agent__robot" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4v4M11 4h10M7 12h18v14H7zM3 16h4m18 0h4M11 21h10" fill="none" stroke="currentColor" strokeWidth="2" /><circle cx="12" cy="16" r="2" fill="currentColor" /><circle cx="20" cy="16" r="2" fill="currentColor" /></svg></span>}<span>{agent.name}</span></h3>
       {agent.analysis && <div className="whitepaper__prose"><p>{agent.analysis}</p></div>}
       <DocTerms items={[['Entradas', agent.input], ['Resultado', agent.result]]} />
     </section>)}
+    {cycle && <>
     <h3 className="whitepaper__subhead" id="documentacao-ciclo-agentes">Conectores, decisão e evidência</h3>
     <div className="whitepaper__prose"><p>Entrada → consulta/resposta → análise bidirecional → proposta → validação independente → execução autorizada → conciliação. Cada operação registra dados, horário, versão, capital, custos, motivo e estado. <a href="#documentacao-demonstracoes">Demonstrações públicas e pré-requisitos</a> distinguem consulta de dados, simulação e ordens privadas.</p><p>Compromissos simultâneos são registrados indivisivelmente antes do envio; repetição não cria outra ordem. Conciliação devolve estados e resultados aos agentes e à tesouraria. Mudanças de política seguem <a href="#documentacao-evolucao-bots">Governança</a>, sem ampliar unilateralmente permissões.</p></div>
     <BettexFlow figure="7" />
     <BettexFlow figure="8" />
+    </>}
   </>;
 }

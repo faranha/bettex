@@ -1,0 +1,278 @@
+{
+  "A inteligência da tesouraria analisa recursos e propõe alocações. A recompra e a queima são mecanismos separados: a análise não autoriza alterar a destinação fixa dos resultados nem executar fora dos controles.": {
+    "en": "Treasury intelligence analyzes resources and proposes allocations. Buyback and burn are separate mechanisms: the analysis does not authorize changing the fixed destination of results nor executing outside of controls.",
+    "es": "La inteligencia de tesorería analiza recursos y propone asignaciones. La recompra y la quema son mecanismos separados: el análisis no autoriza cambiar el destino fijo de los resultados ni ejecutar fuera de los controles."
+  },
+  "Análise de condições, bônus e riscos nos mercados de iGaming.": {
+    "en": "Analysis of conditions, bonuses, and risks in iGaming markets.",
+    "es": "Análisis de condiciones, bonos y riesgos en los mercados de iGaming."
+  },
+  "Análise de exposição e baseline de autorização, limites e continuidade.": {
+    "en": "Exposure analysis and authorization baseline, limits, and continuity.",
+    "es": "Análisis de exposición y línea base de autorización, límites y continuidad."
+  },
+  "Análise esportiva, oportunidades e condições de execução.": {
+    "en": "Sports analysis, opportunities, and execution conditions.",
+    "es": "Análisis deportivo, oportunidades y condiciones de ejecución."
+  },
+  "Apuração, liquidação e correções": {
+    "en": "Assessment, settlement, and corrections",
+    "es": "Cálculo, liquidación y correcciones"
+  },
+  "Autenticação, sessão, autorização e dados exportáveis.": {
+    "en": "Authentication, session, authorization, and exportable data.",
+    "es": "Autenticación, sesión, autorización y datos exportables."
+  },
+  "Base compartilhada": {
+    "en": "Shared base",
+    "es": "Base compartida"
+  },
+  "Base técnica e segurança": {
+    "en": "Technical base and security",
+    "es": "Base técnica y seguridad"
+  },
+  "Baseline de Risco": {
+    "en": "Risk Baseline",
+    "es": "Línea base de Riesgo"
+  },
+  "Baseline de Tesouraria": {
+    "en": "Treasury Baseline",
+    "es": "Línea base de Tesorería"
+  },
+  "Baseline e regras iniciais": {
+    "en": "Baseline and initial rules",
+    "es": "Línea base y reglas iniciales"
+  },
+  "Capacidades e fontes de Cripto": {
+    "en": "Crypto capabilities and sources",
+    "es": "Capacidades y fuentes de Cripto"
+  },
+  "Começar aqui": {
+    "en": "Start here",
+    "es": "Empezar aquí"
+  },
+  "Conectores de Esportes e iGaming": {
+    "en": "Sports and iGaming connectors",
+    "es": "Conectores de Deportes e iGaming"
+  },
+  "Consultar as regras dos jogos internos": {
+    "en": "Consult the rules of internal games",
+    "es": "Consultar las reglas de los juegos internos"
+  },
+  "Conta, acesso e exportação": {
+    "en": "Account, access, and export",
+    "es": "Cuenta, acceso y exportación"
+  },
+  "Cripto · BTC": {
+    "en": "Crypto · BTC",
+    "es": "Cripto · BTC"
+  },
+  "Cripto · ETH": {
+    "en": "Crypto · ETH",
+    "es": "Cripto · ETH"
+  },
+  "Cripto · SOL": {
+    "en": "Crypto · SOL",
+    "es": "Cripto · SOL"
+  },
+  "DEMO / POC · ARQUITETURA E REGRAS INICIAIS": {
+    "en": "DEMO / POC · ARCHITECTURE AND INITIAL RULES",
+    "es": "DEMO / POC · ARQUITECTURA Y REGLAS INICIALES"
+  },
+  "DOCUMENTAÇÃO DO DEMO / POC": {
+    "en": "DEMO / POC DOCUMENTATION",
+    "es": "DOCUMENTACIÓN DEL DEMO / POC"
+  },
+  "Demo e prova de conceito": {
+    "en": "Demo and proof of concept",
+    "es": "Demo y prueba de concepto"
+  },
+  "Documentation baseline block missing: {0}/{1}": {
+    "en": "Documentation baseline block missing: {0}/{1}",
+    "es": "Documentation baseline block missing: {0}/{1}"
+  },
+  "Documentation baseline container missing": {
+    "en": "Documentation baseline container missing",
+    "es": "Documentation baseline container missing"
+  },
+  "Documentação do demo e da prova de conceito. A versão ALFA será documentada após consultar a comunidade e testar a receptividade do demo.": {
+    "en": "Demo and proof of concept documentation. The ALFA version will be documented after consulting the community and testing demo receptivity.",
+    "es": "Documentación del demo y de la prueba de concepto. La versión ALFA será documentada tras consultar a la comunidad y probar la receptividad del demo."
+  },
+  "Elegibilidade, rodadas, cálculo, liquidação e correções.": {
+    "en": "Eligibility, rounds, calculation, settlement, and corrections.",
+    "es": "Elegibilidad, rondas, cálculo, liquidación y correcciones."
+  },
+  "Emissão, venda e direitos": {
+    "en": "Issuance, sale, and rights",
+    "es": "Emisión, venta y derechos"
+  },
+  "Emissão, venda, vesting, direitos e destinação dos resultados.": {
+    "en": "Issuance, sale, vesting, rights, and result destination.",
+    "es": "Emisión, venta, vesting, derechos y destino de los resultados."
+  },
+  "Especialização interna do subagente Cripto.": {
+    "en": "Internal specialization of the Crypto subagent.",
+    "es": "Especialización interna del subagente Cripto."
+  },
+  "Esta documentação acompanha o demo e a prova de conceito da BETTEX. Registra a arquitetura e suas regras iniciais como ponto de partida; não certifica operação financeira nem uma versão ALFA já entregue.": {
+    "en": "This documentation accompanies the BETTEX demo and proof of concept. It records the architecture and its initial rules as a starting point; it does not certify a financial operation nor an ALFA version already delivered.",
+    "es": "Esta documentación acompaña al demo y a la prueba de concepto de BETTEX. Registra la arquitectura y sus reglas iniciales como punto de partida; no certifica una operación financiera ni una versión ALFA ya entregada."
+  },
+  "Esta especialização pertence ao subagente Cripto e delimita o ativo acompanhado. Não é um setor independente, não cria uma nova tesouraria e não recebe autorização financeira própria por aparecer no grafo.": {
+    "en": "This specialization belongs to the Crypto subagent and delimits the tracked asset. It is not an independent sector, does not create a new treasury, and does not receive its own financial authorization for appearing in the graph.",
+    "es": "Esta especialización pertenece al subagente Cripto y delimita el activo seguido. No es un sector independiente, no crea una nueva tesorería y no recibe autorización financiera propia por aparecer en el grafo."
+  },
+  "Etapas existentes e evolução após a avaliação da POC.": {
+    "en": "Existing stages and evolution after POC evaluation.",
+    "es": "Etapas existentes y evolución tras la evaluación de la POC."
+  },
+  "Evolução": {
+    "en": "Evolution",
+    "es": "Evolución"
+  },
+  "Execução do mecanismo e separação da análise da tesouraria.": {
+    "en": "Mechanism execution and separation of treasury analysis.",
+    "es": "Ejecución del mecanismo y separación del análisis de la tesorería."
+  },
+  "Features": {
+    "en": "Features",
+    "es": "Features"
+  },
+  "Features determinísticas": {
+    "en": "Deterministic features",
+    "es": "Features determinísticas"
+  },
+  "Features executam regras definidas: apresentam saldos, verificam condições e registram efeitos autorizados. Não são agentes de inteligência artificial. A análise dos agentes e o funcionamento das carteiras, staking e jogos são responsabilidades diferentes.": {
+    "en": "Features execute defined rules: they present balances, verify conditions, and record authorized effects. They are not artificial intelligence agents. Agent analysis and the operation of wallets, staking, and games are different responsibilities.",
+    "es": "Las features ejecutan reglas definidas: presentan saldos, verifican condiciones y registran efectos autorizados. No son agentes de inteligencia artificial. El análisis de los agentes y el funcionamiento de las billeteras, staking y juegos son responsabilidades diferentes."
+  },
+  "Fontes, inferências e conectores de Cripto": {
+    "en": "Crypto sources, inferences, and connectors",
+    "es": "Fuentes, inferencias y conectores de Cripto"
+  },
+  "Funcionalidades do aplicativo que executam regras, não inteligências.": {
+    "en": "Application functionalities that execute rules, not intelligences.",
+    "es": "Funcionalidades de la aplicación que ejecutan reglas, no inteligencias."
+  },
+  "Governança, mandatos e administração": {
+    "en": "Governance, mandates, and administration",
+    "es": "Gobernanza, mandatos y administración"
+  },
+  "Histórico e conciliação": {
+    "en": "History and reconciliation",
+    "es": "Historial y conciliación"
+  },
+  "Infraestrutura comum e segurança": {
+    "en": "Common infrastructure and security",
+    "es": "Infraestructura común y seguridad"
+  },
+  "Inteligência central, orquestração, aprendizado e ponto de partida.": {
+    "en": "Central intelligence, orchestration, learning, and starting point.",
+    "es": "Inteligencia central, orquestación, aprendizaje y punto de partida."
+  },
+  "Jogos internos determinísticos, separados do agente de iGaming.": {
+    "en": "Deterministic internal games, separated from the iGaming agent.",
+    "es": "Juegos internos determinísticos, separados del agente de iGaming."
+  },
+  "Mercados, inferências, conectores e especializações por ativo.": {
+    "en": "Markets, inferences, connectors, and asset-based specializations.",
+    "es": "Mercados, inferencias, conectores y especializaciones por activo."
+  },
+  "O histórico apresenta movimentos e estados registrados. Consultar ou exportar esses dados não inicia operações dos agentes nem muda saldos. Os registros permitem conferir origem, destino, custos e confirmação sem tratar um movimento pendente como dinheiro disponível.": {
+    "en": "The history presents movements and recorded states. Consulting or exporting this data does not initiate agent operations nor change balances. The records allow checking origin, destination, costs, and confirmation without treating a pending movement as available money.",
+    "es": "El historial presenta movimientos y estados registrados. Consultar o exportar estos datos no inicia operaciones de los agentes ni cambia saldos. Los registros permiten comprobar origen, destino, costos y confirmación sin tratar un movimiento pendiente como dinero disponible."
+  },
+  "O ponto de partida utiliza as capacidades e fontes de Cripto, sob os controles de Risco e os recursos autorizados pela Tesouraria. Esta POC não define uma estratégia adicional nem parâmetros exclusivos para esta especialização.": {
+    "en": "The starting point uses Crypto capabilities and sources, under Risk controls and resources authorized by the Treasury. This POC does not define an additional strategy nor exclusive parameters for this specialization.",
+    "es": "El punto de partida utiliza las capacidades y fuentes de Cripto, bajo los controles de Riesgo y los recursos autorizados por la Tesorería. Esta POC no define una estrategia adicional ni parámetros exclusivos para esta especialización."
+  },
+  "O próximo passo é documentar a versão ALFA, depois de consultar a comunidade e testar a receptividade do demo. O retorno dessa etapa orientará a definição da próxima versão.": {
+    "en": "The next step is to document the ALFA version, after consulting the community and testing demo receptivity. Feedback from this stage will guide the definition of the next version.",
+    "es": "El próximo paso es documentar la versión ALFA, tras consultar a la comunidad y probar la receptividad del demo. La retroalimentación de esta etapa orientará la definición de la siguiente versión."
+  },
+  "O sistema, seus conceitos e o percurso da demonstração.": {
+    "en": "The system, its concepts, and the demonstration path.",
+    "es": "El sistema, sus conceptos y el recorrido de la demostración."
+  },
+  "Orquestração, decisões e conectores": {
+    "en": "Orchestration, decisions, and connectors",
+    "es": "Orquestación, decisiones y conectores"
+  },
+  "Os jogos internos Burn Lottery e Double 2X são features determinísticas, não operações deste subagente.": {
+    "en": "The internal games Burn Lottery and Double 2X are deterministic features, not operations of this subagent.",
+    "es": "Los juegos internos Burn Lottery y Double 2X son features determinísticas, no operaciones de este subagente."
+  },
+  "Políticas, propostas, mandatos e supervisão.": {
+    "en": "Policies, proposals, mandates, and supervision.",
+    "es": "Políticas, propuestas, mandatos y supervisión."
+  },
+  "Probabilidades, mercados de eventos e fontes de execução.": {
+    "en": "Probabilities, event markets, and execution sources.",
+    "es": "Probabilidades, mercados de eventos y fuentes de ejecución."
+  },
+  "Recursos, reservas, liquidez e análise de alocação.": {
+    "en": "Resources, reserves, liquidity, and allocation analysis.",
+    "es": "Recursos, reservas, liquidez y análisis de asignación."
+  },
+  "Redes, controles comuns, custódia e condições territoriais.": {
+    "en": "Networks, common controls, custody, and territorial conditions.",
+    "es": "Redes, controles comunes, custodia y condiciones territoriales."
+  },
+  "Registros, estados e conferência dos movimentos financeiros.": {
+    "en": "Records, states, and financial movement verification.",
+    "es": "Registros, estados y comprobación de los movimientos financieros."
+  },
+  "Reservas e fundos em trânsito": {
+    "en": "Reserves and funds in transit",
+    "es": "Reservas y fondos en tránsito"
+  },
+  "Risco, limites e autorização": {
+    "en": "Risk, limits, and authorization",
+    "es": "Riesgo, límites y autorización"
+  },
+  "Saldo financeiro, on-ramp externo e saques em cripto.": {
+    "en": "Financial balance, external on-ramp, and crypto withdrawals.",
+    "es": "Saldo financiero, on-ramp externo y retiros en cripto."
+  },
+  "Staking e distribuição": {
+    "en": "Staking and distribution",
+    "es": "Staking y distribución"
+  },
+  "Subagente de Esportes": {
+    "en": "Sports subagent",
+    "es": "Subagente de Deportes"
+  },
+  "Subagente de Governança": {
+    "en": "Governance subagent",
+    "es": "Subagente de Gobernanza"
+  },
+  "Subagente de Previsões": {
+    "en": "Forecasting subagent",
+    "es": "Subagente de Predicciones"
+  },
+  "Subagente de Risco": {
+    "en": "Risk subagent",
+    "es": "Subagente de Riesgo"
+  },
+  "Subagente de Tesouraria": {
+    "en": "Treasury subagent",
+    "es": "Subagente de Tesorería"
+  },
+  "Subagente de iGaming": {
+    "en": "iGaming subagent",
+    "es": "Subagente de iGaming"
+  },
+  "Subagentes": {
+    "en": "Subagents",
+    "es": "Subagentes"
+  },
+  "Titularidade, participação e portabilidade da carteira.": {
+    "en": "Ownership, participation, and wallet portability.",
+    "es": "Titularidad, participación y portabilidad de la billetera."
+  },
+  "Token e regras econômicas": {
+    "en": "Token and economic rules",
+    "es": "Token y reglas económicas"
+  }
+}

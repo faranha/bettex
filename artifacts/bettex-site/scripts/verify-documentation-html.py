@@ -79,7 +79,10 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
         assert not (previous[1] and previous[1] == current[1]), f"{lang}: repeated consecutive heading {current}"
     duplicates=[id for id,n in Counter(p.ids).items() if n>1]
     assert not duplicates, f"{lang}: duplicate ids {duplicates}"
-    assert len(p.chapters)==6, f"{lang}: six principal chapters required"
+    assert len(p.chapters)==23, f"{lang}: independently navigable actors and features required"
+    assert p.chapters[-1]=='documentacao-roadmap', f"{lang}: roadmap last"
+    for owner in ('risco', 'tesouraria', 'governanca', 'cripto', 'esportes', 'previsoes', 'igaming'):
+        assert f'documentacao-subagente-{owner}' in p.chapters, f"{lang}: missing actor {owner}"
     assert p.chapters[0]=='documentacao-como-funciona', f"{lang}: vision first"
     assert 'documentacao-entidade' not in p.chapters, f"{lang}: institutional structure must not remain a principal chapter"
     assert p.reference_count, f"{lang}: technical reference must remain accessible"
@@ -101,7 +104,7 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     assert 'DeFi' in principal, f"{lang}: missing product positioning"
     for pattern in (r'liderança da empresa BETTEX', r'company to be incorporated', r'empresa a ser constituída', r'empresa por constituir'):
         assert not re.search(pattern,principal,re.I), f"{lang}: obsolete institutional structure"
-    print(f"{lang}: 6 chapters, {len(p.main_diagrams)} principal drawings, technical references accessible, unique ids and {len(p.hashes)} valid internal links.")
+    print(f"{lang}: 23 actor/feature chapters, {len(p.main_diagrams)} principal drawings, local references, unique ids and {len(p.hashes)} valid internal links.")
 expected_workbooks = {
     "": ["Custos de rede", "Vesting", "Regras"],
     "-en": ["Network costs", "Vesting", "Rules"],

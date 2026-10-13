@@ -1,9 +1,9 @@
 /** Documentation-only architecture definitions in the present tense; operational status is stated separately. */
 const passages = {
   governanceNotice: [
-    'Conteúdo administrado pelo subagente de governança',
-    'Content administered by the governance subagent',
-    'Contenido administrado por el subagente de gobernanza',
+    'Esta documentação também cobre a versão demo off-chain (POC) da BETTEX, sem operações financeiras reais.',
+    'This documentation also covers BETTEX’s off-chain demo version (POC), with no real financial operations.',
+    'Esta documentación también cubre la versión demo off-chain (POC) de BETTEX, sin operaciones financieras reales.',
   ],
   governanceDocumentation: [
     'O subagente de governança tem a função de manter e atualizar a documentação do sistema BETTEX. Acompanha decisões e mudanças aprovadas, revisa os capítulos e suas traduções, registra versões e preserva a coerência entre a documentação, a implementação e as regras vigentes. Atualizar a documentação não aprova políticas nem modifica permissões ou direitos econômicos.',
