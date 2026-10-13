@@ -4,11 +4,21 @@ Summary of rules and administration. The complete chapters, drawings and technic
 
 https://bettex.ai/en/documentation
 
+BETTEX agent and subagents
+
+BETTEX is the central agent in a multiagent architecture. Its own intelligence will be developed to interpret the overall context, formulate objectives and build decisions with support from specialized market, risk, treasury and governance subagents. BETTEX system names the complete architecture; BETTEX agent identifies its central intelligence.
+
+Subagents develop analyses and inferences in their specialties. They can challenge the BETTEX agent’s hypotheses, share evidence and receive further questions. They are not independent versions of BETTEX or merely parameter checkers. Central coordination does not remove independent risk validation or authorize bypassing controls.
+
+Governance: interpret and propose evolution
+
+The governance subagent will maintain and update the BETTEX system documentation. It should track approved decisions and changes, review chapters and their translations, record versions and preserve consistency between documentation, implementation and rules in force. Updating documentation does not approve policies or change permissions or economic rights.
+
 Legal and regulatory compliance
 
-Launches must comply with local laws. Agents and features depend on technical-legal investigation and fulfillment of requirements, regardless of roadmap dates.
+Launches must comply with local laws. Subagents and features depend on technical-legal investigation and fulfillment of requirements, regardless of roadmap dates.
 
-Trading, governance, risk and treasury agents require analysis by country, activity and responsible party. Permissions are not universal; activities requiring licensing are released only with authorization.
+Trading, governance, risk and treasury subagents require analysis by country, activity and responsible party. Permissions are not universal; activities requiring licensing are released only with authorization.
 
 Investigations verify regulations, licenses, terms, advertising, user protection, AML, privacy, and responsibilities, with formal recording of evidence, dates, and required controls.
 
@@ -50,7 +60,7 @@ Founders initially handle administration. The gradual transition will replace al
 
 Community decisions remain undefined, with no DAO structure, token voting, or ownership renunciation.
 
-Founders initiate management. The DeFAI direction envisions trading, governance, risk and treasury agents toward BETTEX autonomy, with current controls and responsibilities.
+Founders initiate management. The DeFAI direction envisions trading, governance, risk and treasury subagents toward BETTEX autonomy, with current controls and responsibilities.
 
 Operations focus on transparency and accountability, without guarantees of capital protection or yields.
 

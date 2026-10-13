@@ -2,6 +2,7 @@
 import hashlib
 import json
 import re
+import subprocess
 from html.parser import HTMLParser
 from pathlib import Path
 from documentation_synthesis_rules import verify_rules
@@ -11,6 +12,21 @@ app = Path(__file__).resolve().parents[1]
 baseline = json.loads((app / "scripts/fixtures/documentation-synthesis-baseline.json").read_text())
 catalog = json.loads((app / "src/lib/locales/documentation-synthesis.json").read_text())
 source = json.loads((app / "src/lib/locales/translations.json").read_text())
+editorial = json.loads(subprocess.run(
+    ["node", "--input-type=module", "-e", """
+import { documentationAgentTerminology as terms } from './src/lib/documentation-agent-terminology.ts';
+import { intelligenceCopy, intelligenceTranslations } from './src/lib/documentation-intelligence.ts';
+let input = ''; for await (const part of process.stdin) input += part;
+const catalog = JSON.parse(input);
+const notices = intelligenceTranslations[intelligenceCopy.governanceNotice];
+for (const entry of Object.values(catalog)) {
+  for (const lang of ['pt', 'en', 'es']) entry[lang] = terms(entry[lang], lang);
+}
+console.log(JSON.stringify({ catalog, notices: Object.fromEntries(Object.entries(notices).map(([lang, text]) => [lang, terms(text, lang)])) }));
+"""], input=json.dumps(catalog), text=True, capture_output=True, check=True, cwd=app,
+).stdout)
+notices = editorial["notices"]
+catalog = editorial["catalog"]
 
 for key, entry in catalog.items():
     assert key in source, f"Unknown editorial source: {key}"
@@ -77,6 +93,7 @@ for route, expected in baseline["routes"].items():
         "documentacao-linha-base", "documentacao-inteligencia", "documentacao-inteligencia-bettex",
         "documentacao-inteligencia-risco", "documentacao-inteligencia-governanca",
         "documentacao-inteligencia-tesouraria", "documentacao-aprendizado",
+        "documentacao-agente-subagentes",
     }
     structure = json.dumps(
         [item for item in page.structure if not (item[1] == "id" and item[2] in intelligence_ids)],
@@ -98,8 +115,7 @@ for route, expected in baseline["routes"].items():
         flows, spacing_errors = audit_spacing(file.read_text())
         assert not spacing_errors, f"Documentation text-flow spacing errors: {language}: {spacing_errors[:8]}"
         print(f"{route}: {len(flows)} text flows checked across paragraphs, lists, diagrams, captions, headings and tables")
-        notice_key = "Conteúdo administrado pelo Agente de Governança em IA da Bettex"
-        notice = notice_key if language == "pt" else source[notice_key][language]
+        notice = notices[language]
         assert notice in text, f"Missing localized governance notice: {language}"
         assert 'data-testid="documentation-governance-notice"' in file.read_text(), f"Missing governance marquee: {language}"
         verify_rules(page.paragraphs, language, "site")
@@ -218,7 +234,7 @@ for route, expected in baseline["routes"].items():
                 assert any(autonomy in p.lower() for p in paragraphs), f"Future autonomy presented as delivered: {language}"
             assert any(country in p.lower() and all(role in p.lower() for role in roles)
                        for p in paragraphs), f"Legal scope omits non-trading agents: {language}/{label}"
-        research_future = {"pt": "será desenvolvida", "en": "will be developed", "es": "se desarrollará"}[language]
+        research_future = {"pt": "será desenvolvido", "en": "will be developed", "es": "se desarrollará"}[language]
         assert any((future in p.lower() or research_future in p.lower()) and all(role in p.lower() for role in roles)
                    for p in page.paragraphs), f"Agent roles not presented as planned: {language}"
         count = len(text.split())

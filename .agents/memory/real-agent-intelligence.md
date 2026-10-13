@@ -17,6 +17,24 @@ O criador definiu: “apresentar o que foi feito como linha de base, ponto de pa
 
 **How to apply:** Apresentar a inteligência central BETTEX servida pelos agentes especializados e seus parâmetros iniciais. Não apresentar governança por governança: apresentar seu agente e sua inteligência. Manter regras econômicas e controles essenciais como linha de base, sem inventar definições ausentes nem anunciar inteligência futura como entregue.
 
+A documentação deve tratar a inteligência central como **agente BETTEX** e as especialidades como **subagentes**.
+
+**Why:** O criador definiu: “entao vamos tratar assim agente bettex, e subagentes” e “assim deve ser na documentacao”.
+
+**How to apply:** Usar agente BETTEX para o coordenador com inteligência própria; subagentes para risco, governança, tesouraria e mercados; sistema BETTEX para a arquitetura completa. Preservar análise bidirecional e validação independente, sem apresentar as especialidades como outras BETTEX independentes.
+
+“Agente” é masculino: “o agente BETTEX será desenvolvido”.
+
+**Why:** O criador corrigiu explicitamente a concordância após a mudança de “IA” para “agente”.
+
+**How to apply:** Ao trocar nomenclatura, revisar também artigos e adjetivos, inclusive nos textos renderizados e rótulos dos diagramas. Não masculinizar frases cujo sujeito continue sendo “inteligência”.
+
+O subagente de governança deve ter a função de atualizar a documentação.
+
+**Why:** O criador pediu explicitamente: “no subagente de governança adicione a funcao de atualizar a documentacao”.
+
+**How to apply:** Incluir essa responsabilidade na visão técnica, sem confundir atualização documental com aprovação de políticas ou alteração de direitos.
+
 O criador reiterou: “tme cuidado para nao repetir os erros de formatacao que ja corrigimos”.
 
 **Why:** Já houve junções de palavras e espaços ausentes nas revisões da documentação.

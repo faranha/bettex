@@ -13,18 +13,14 @@
 }
 .whitepaper * { box-sizing: border-box; }
 .whitepaper [id] { scroll-margin-top: 100px; }
-.whitepaper__governance-marquee { display: flex; align-items: center; gap: 20px; min-height: 44px; padding: 0 max(20px, calc((100% - 1200px) / 2)); background: #bc202b; color: #fff; }
+.whitepaper__governance-marquee { min-height: 44px; background: #bc202b; color: #fff; }
 .whitepaper__governance-meta { flex: none; font: 700 9px/1.4 var(--app-font-mono); letter-spacing: .12em; }
-.whitepaper__governance-viewport { flex: 1; min-width: 0; overflow: hidden; }
+.whitepaper__governance-viewport { width: 100%; overflow: hidden; }
 .whitepaper__governance-track { display: flex; width: max-content; animation: documentation-governance-scroll 32s linear infinite; }
 .whitepaper__governance-group { display: flex; align-items: center; justify-content: space-around; flex-shrink: 0; gap: 32px; padding: 12px 16px; }
 .whitepaper__governance-copy { display: inline-flex; align-items: center; gap: 32px; white-space: nowrap; font-size: 13px; font-weight: 700; line-height: 20px; }
 .whitepaper__governance-separator { font-size: 16px; }
 .whitepaper__governance-marquee:hover .whitepaper__governance-track { animation-play-state: paused; }
-@media (max-width: 760px) {
-  .whitepaper__governance-marquee { flex-wrap: wrap; justify-content: space-between; gap: 0 12px; padding-top: 10px; }
-  .whitepaper__governance-viewport { flex-basis: 100%; order: 1; }
-}
 @keyframes documentation-governance-scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
   .whitepaper__governance-track { width: 100%; animation: none; }
@@ -32,7 +28,7 @@
   .whitepaper__governance-group + .whitepaper__governance-group,
   .whitepaper__governance-copy + .whitepaper__governance-copy,
   .whitepaper__governance-separator { display: none; }
-  .whitepaper__governance-copy { white-space: normal; }
+  .whitepaper__governance-copy { flex-wrap: wrap; gap: 8px 20px; white-space: normal; }
 }
 .whitepaper__hero { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(230px, .65fr); gap: clamp(30px, 7vw, 100px); align-items: end; padding-top: clamp(24px, 3vw, 40px); padding-bottom: clamp(68px, 8vw, 106px); }
 .whitepaper__eyebrow, .whitepaper__hero-note > span, .whitepaper__aside-label, .whitepaper__chapter-meta, .whitepaper__chapter-number { font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .11em; }
@@ -476,15 +472,8 @@
   .whitepaper__prose p, .whitepaper__prose ul, .whitepaper__prose ol { font-size: 16px; line-height: 1.8; }
 }
 
-/* Hierarchical outline: numbering, submenu, breadcrumb */
+/* Hierarchical outline: numbering and submenu */
 [data-outline-number]::before { content: attr(data-outline-number); display: inline-block; margin-right: .6em; color: #2B59FF; font: 700 .55em/1 var(--app-font-mono); letter-spacing: .08em; vertical-align: .22em; }
-.whitepaper__crumbs { margin: 0 0 14px; }
-.whitepaper__crumbs ol { display: flex; flex-wrap: wrap; gap: 2px 0; margin: 0; padding: 0; list-style: none; font: 600 10px/1.5 var(--app-font-mono); letter-spacing: .04em; color: #37559b; }
-.whitepaper__crumbs li { min-width: 0; }
-.whitepaper__crumbs li + li::before { content: '/'; margin: 0 6px; color: #8794bb; }
-.whitepaper__crumbs a { color: #1f3f96; text-decoration: underline; text-underline-offset: 3px; }
-.whitepaper__crumbs [aria-current] { color: var(--wp-ink); font-weight: 700; }
-.whitepaper__aside nav.whitepaper__crumbs { border-top: 0; display: block; }
 .whitepaper__toc-group { border-bottom: 1px solid var(--wp-line); }
 .whitepaper__toc-group > .whitepaper__toc-link { border-bottom: 0; }
 .whitepaper__toc-link.is-chapter-current:not(.is-active) { color: var(--wp-ink); }
@@ -501,8 +490,6 @@
 .whitepaper [data-outline-number]:focus-visible, .whitepaper summary:focus-visible { outline: 2px solid #0d2b7f; outline-offset: 3px; }
 .whitepaper :is(h3, h4, details)[id] { scroll-margin-top: calc(var(--site-header-h, 73px) + 24px); }
 @media (max-width: 768px) {
-  .whitepaper__aside nav.whitepaper__crumbs { display: block; position: static; max-height: none; margin: 4px 0 0; padding: 0; background: transparent; box-shadow: none; }
-  .whitepaper__crumbs ol { font-size: 9px; max-height: 32px; overflow: auto; }
   .whitepaper__toc-sublink { padding: 9px 8px 9px 34px; min-height: 40px; align-items: center; }
   .whitepaper__toc-sublink.level-2 { padding-left: 48px; }
   .whitepaper__toc-sublink.level-3 { padding-left: 62px; }

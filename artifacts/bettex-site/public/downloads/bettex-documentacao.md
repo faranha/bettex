@@ -4,11 +4,21 @@ Resumo das regras e administração. Os capítulos, desenhos e referências téc
 
 https://bettex.ai/documentacao
 
+Agente BETTEX e subagentes
+
+BETTEX é o agente central de uma arquitetura multiagente. Sua inteligência própria será desenvolvida para interpretar o contexto geral, formular objetivos e construir decisões com o apoio de subagentes especializados em mercados, risco, tesouraria e governança. Sistema BETTEX é o nome da arquitetura completa; agente BETTEX identifica sua inteligência central.
+
+Os subagentes desenvolvem análises e inferências em suas especialidades. Podem questionar hipóteses do agente BETTEX, compartilhar evidências e receber novas perguntas. Não são versões independentes de BETTEX nem apenas verificadores de parâmetros. A coordenação central não elimina a validação independente de risco nem autoriza ignorar os controles.
+
+Governança: interpretar e propor evolução
+
+O subagente de governança terá a função de manter e atualizar a documentação do sistema BETTEX. Deverá acompanhar decisões e mudanças aprovadas, revisar os capítulos e suas traduções, registrar versões e preservar a coerência entre a documentação, a implementação e as regras vigentes. Atualizar a documentação não aprova políticas nem modifica permissões ou direitos econômicos.
+
 Adequação legal e jurídica
 
-Lançamentos devem adequar-se ao jurídico local. Agentes e funcionalidades dependem de investigação técnico-legal e cumprimento de exigências, independentemente de datas no roadmap.
+Lançamentos devem adequar-se ao jurídico local. Subagentes e funcionalidades dependem de investigação técnico-legal e cumprimento de exigências, independentemente de datas no roadmap.
 
-Agentes de trading, governança, risco e tesouraria exigem análise por país, atividade e responsável. Permissões não são universais; atividades sujeitas a licenciamento só são liberadas com autorização.
+Subagentes de trading, governança, risco e tesouraria exigem análise por país, atividade e responsável. Permissões não são universais; atividades sujeitas a licenciamento só são liberadas com autorização.
 
 Investigações verificam normas, licenças, termos, publicidade, proteção ao usuário, PLD, privacidade e responsabilidades, com registro formal de evidências, datas e controles exigidos.
 
@@ -50,7 +60,7 @@ Os fundadores administram inicialmente. A transição gradual substituirá toda 
 
 Decisões comunitárias seguem indefinidas, sem estrutura de DAO, voto por token ou renúncia de propriedade.
 
-Fundadores iniciam a gestão. A direção DeFAI prevê agentes de trading, governança, risco e tesouraria rumo à autonomia do BETTEX, com controles e responsabilidades vigentes.
+Fundadores iniciam a gestão. A direção DeFAI prevê subagentes de trading, governança, risco e tesouraria rumo à autonomia do BETTEX, com controles e responsabilidades vigentes.
 
 A operação foca em transparência e prestação de contas, sem garantia de proteção de capital ou rendimentos.
 

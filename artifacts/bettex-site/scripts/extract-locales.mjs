@@ -17,6 +17,7 @@ function add(value) {
   keys.add(value);
 }
 function scan(file) {
+  if (file.endsWith('/lib/documentation-agent-terminology.ts')) return; // Editorial normalization, audited separately.
   // Documentation research passages own PT/EN/ES tuples; only PT is a source key.
   // The isolated demo owns three-language tuples, not the site catalogue.
   // Its JSX bypasses the site's runtime and is audited by check-demo-locales.

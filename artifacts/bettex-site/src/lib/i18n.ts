@@ -4,6 +4,7 @@ import englishSourceMessages from './locales/english-source-messages.json';
 import documentationSynthesis from './locales/documentation-synthesis.json';
 import { intelligenceTranslations } from './documentation-intelligence';
 import { presentationTranslations } from './documentation-intelligence-presentation';
+import { documentationAgentTerminology, isDocumentationPath } from './documentation-agent-terminology';
 import { roundTerminology } from './round-terminology';
 import { preserveDocumentationSpacing } from './documentation-prose';
 
@@ -17,6 +18,12 @@ let locale: Locale = typeof window === 'undefined' ? 'pt' : localeFromPath(windo
 export const observedMessages = new Set<string>();
 export const missingMessages = new Set<string>();
 let translationAudit = false;
+let serverTranslationPath = '';
+const documentationValues = { pt: new Set<string>(), en: new Set<string>(), es: new Set<string>() };
+export function setTranslationPath(path: string) { serverTranslationPath = path; }
+function documentationScope() {
+  return isDocumentationPath(typeof window === 'undefined' ? serverTranslationPath : window.location.pathname);
+}
 export function setTranslationAudit(enabled: boolean) { translationAudit = enabled; }
 export const normalize = (text: string) => text.replace(/\s+/g, ' ').trim();
 export const locales: Locale[] = ['pt', 'en', 'es'];
@@ -45,7 +52,15 @@ const patterns = Object.keys(messages).filter(key => /\{\d+\}/.test(key)).map(ke
 const unchanged = /^(?:[\d\s.,%+\-–—×÷=:$€£/()[\]<>→·•…]+|BETTEX|USDC|USD|BRL|ETH|BTC|ARB|API|MCP|HTTP|HTTPS|JSON|CSV|PDF|XLSX|English|Español|Português)$/;
 const ptOverrides: Record<string, string> = { Close: 'Fechar', Loading: 'Carregando', 'Loading...': 'Carregando...', Previous: 'Anterior', Next: 'Próximo' };
 export function t(text: string): string {
-  return roundTerminology(translateMessage(text), locale);
+  const scoped = documentationScope();
+  // Nested fragments can be localized more than once. Recognize already-normalized
+  // documentation text without weakening missing-translation checks elsewhere.
+  if (scoped && documentationValues[locale].has(normalize(text))) return text;
+  const translated = roundTerminology(translateMessage(text), locale);
+  if (!scoped) return translated;
+  const result = documentationAgentTerminology(translated, locale);
+  documentationValues[locale].add(normalize(result));
+  return result;
 }
 function translateMessage(text: string): string {
   const key = normalize(text);

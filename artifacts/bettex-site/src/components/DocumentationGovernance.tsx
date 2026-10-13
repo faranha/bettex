@@ -7,7 +7,7 @@ import { intelligenceCopy } from '@/lib/documentation-intelligence';
 export function DocumentationGovernance() {
   return <>
     <h3 className="whitepaper__subhead">{intelligenceCopy.governanceTitle}</h3>
-    <div className="whitepaper__prose"><p>{intelligenceCopy.governanceBaseline}</p></div>
+    <div className="whitepaper__prose"><p>{intelligenceCopy.governanceBaseline}</p><p>{intelligenceCopy.governanceDocumentation}</p></div>
     <h3 className="whitepaper__subhead" id="documentacao-patrimonio">Separação do patrimônio e do caixa</h3>
     <div className="whitepaper__prose"><p>Tesouraria, caixa operacional e carteira exclusiva de recompra são contas distintas do projeto, com endereços, registros e mandatos próprios. Essa separação segue as finalidades e os controles do protocolo DeFi. Carteiras pessoais pertencem aos titulares.</p><p>A tesouraria reúne o preço integral em USDC dos tokens da comunidade já liberados e os recursos que lhe forem alocados. O mint inicial financia o projeto, com origem, aplicação e custos documentados. Reservas, posições, ordens e obrigações não são caixa livre. O custeio operacional permanece em aberto, sem cobrança definida. Um déficit operacional não autoriza retirada automática da tesouraria.</p><p><a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p></div>
     <DocImage wide src="app/resultados-soft.webp" alt="Balança, livro-razão e calculadora sobre fundo verde." caption="Registros separados e conciliados para tesouraria, caixa operacional e recompra." />
