@@ -1,13 +1,18 @@
 {
+  "Participação automática, elegibilidade, pagamento em USDC e consequências de entrar e sair.": {
+    "pt": "Como o saldo de BETTEX no aplicativo permite participar dos lucros do protocolo, quando houver distribuição.",
+    "en": "How a BETTEX balance in the app allows participation in protocol profits when a distribution occurs.",
+    "es": "Cómo el saldo de BETTEX en la aplicación permite participar en los beneficios del protocolo cuando hay distribución."
+  },
   "A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados. BETTEX é o token da comunidade; esta documentação apresenta suas regras, desenvolvimento, administração e riscos.": {
     "pt": "BETTEX é uma comunidade dedicada à construção do próprio agente de IA. Esta documentação reflete a visão dos fundadores e os anseios da comunidade, incluindo arquitetura técnica, regras, tokenomics e riscos.",
     "en": "BETTEX is a community dedicated to building its own AI agent. This documentation reflects the founders' vision and the community's aspirations, including technical architecture, rules, tokenomics and risks.",
     "es": "BETTEX es una comunidad dedicada a construir su propio agente de IA. Esta documentación refleja la visión de los fundadores y las aspiraciones de la comunidad, incluyendo arquitectura técnica, reglas, tokenomics y riesgos."
   },
   "1 bilhão de BETTEX: 10% mint inicial, 55% comunidade, 20% fundador/equipe e 15% investidores; vesting de 24 meses.": {
-    "pt": "Total de 1 bilhão de BETTEX: 10% mint inicial, 55% comunidade, 20% equipe e 15% investidores, com vesting de 24 meses.",
-    "en": "Total of 1 billion BETTEX: 10% initial mint, 55% community, 20% team and 15% investors, with a 24-month vesting period.",
-    "es": "Total de 1 mil millones de BETTEX: 10% minteo inicial, 55% comunidad, 20% equipo y 15% inversores, con un periodo de vesting de 24 meses."
+    "pt": "DeFAI e DEX: finanças e inteligência artificial descentralizadas, com o token da própria comunidade.",
+    "en": "DeFAI and DEX: decentralized finance and decentralized artificial intelligence, with the community's own token.",
+    "es": "DeFAI y DEX: finanzas e inteligencia artificial descentralizadas, con el token de la propia comunidad."
   },
   "A BETTEX é uma comunidade aberta que constrói tecnologia DeFi e agentes de IA para vários mercados. BETTEX é o token dessa comunidade, não uma ação de empresa ou fundação.": {
     "pt": "Hoje, BETTEX é uma comunidade DeFi e IA. Com o tempo, toda a administração será substituída por IA, tornando a BETTEX totalmente DeFAI. O token BETTEX é um ativo da comunidade, não uma ação de empresa ou fundação.",
@@ -615,9 +620,9 @@
     "es": "Las transacciones tienen referencias verificables. Las decisiones y órdenes externas son registradas por BETTEX, sin presuponer publicación on-chain."
   },
   "BETTEX dá participação nos resultados conforme as regras. Não dá propriedade da tesouraria, voto automático ou resgate patrimonial. Não garante pagamento.": {
-    "pt": "BETTEX oferece participação nos resultados, sem conceder propriedade da tesouraria, voto ou resgate. Pagamento não garantido.",
-    "en": "BETTEX offers participation in results, without granting treasury ownership, voting rights, or redemption. Payment is not guaranteed.",
-    "es": "BETTEX ofrece participación en los resultados, sin otorgar propiedad de la tesorería, voto o rescate. No se garantiza el pago."
+    "pt": "BETTEX é um projeto de finanças descentralizadas (DeFi) e inteligência artificial descentralizada, formado exclusivamente pela própria comunidade. Não há instituição, fundação, empresa ou fundo por trás do projeto. O token BETTEX oferece participação nos resultados, sem conceder propriedade da tesouraria, voto ou resgate. Pagamento não garantido.",
+    "en": "BETTEX is a decentralized finance (DeFi) and decentralized artificial intelligence project, formed exclusively by its own community. There is no institution, foundation, company or fund behind the project. The BETTEX token offers participation in results, without granting treasury ownership, voting rights, or redemption. Payment is not guaranteed.",
+    "es": "BETTEX es un proyecto de finanzas descentralizadas (DeFi) e inteligencia artificial descentralizada, formado exclusivamente por su propia comunidad. No hay institución, fundación, empresa ni fondo detrás del proyecto. El token BETTEX ofrece participación en los resultados, sin otorgar propiedad de la tesorería, voto o rescate. No se garantiza el pago."
   },
   "O mint inicial financia o projeto, a preço fixo; preço, janela e plataforma ainda serão definidos, com adequação legal. A venda de tokens liberados da comunidade destina 100% do preço em USDC à tesouraria. Aportes de investidores têm termos próprios e vão a produto, tecnologia e marketing, sem salários. Captação não é lucro distribuível.": {
     "pt": "Mint inicial financia o projeto a preço fixo; definições de preço, plataforma e janela seguem adequação legal. Venda de tokens da comunidade destina 100% em USDC à tesouraria. Aportes de investidores financiam produto, tecnologia e marketing, sem salários; não são lucro distribuível.",
@@ -810,9 +815,9 @@
     "es": "Vender en la DEX difiere de rescatar capital del proyecto. Retirar tokens por la aplicación o transferirlos directamente tampoco rescata la tesorería. Los activos personales siguen siendo del titular. Cualquier salida de BETTEX, incluso parcial, cancela créditos acumulados y no pagados del ciclo, incluidos los calculados o autorizados. El USDC ya recibido y conciliado permanece del titular."
   },
   "O token não dá propriedade proporcional da tesouraria nem voto automático sobre sua administração. A direção DeFi não elimina riscos nem responsabilidades aplicáveis.": {
-    "pt": "O token não garante propriedade ou voto na tesouraria. Direção DeFi mantém riscos e responsabilidades.",
-    "en": "The token does not guarantee treasury ownership or voting. DeFi direction maintains risks and responsibilities.",
-    "es": "El token no garantiza propiedad o voto en la tesorería. La dirección DeFi mantiene riesgos y responsabilidades."
+    "pt": "O token não garante propriedade ou voto na tesouraria. A descentralização não elimina riscos nem responsabilidades aplicáveis.",
+    "en": "The token does not guarantee treasury ownership or voting. Decentralization does not eliminate applicable risks or responsibilities.",
+    "es": "El token no garantiza propiedad o voto en la tesorería. La descentralización no elimina riesgos ni responsabilidades aplicables."
   },
   "A participação é automática, sem ativação nem depósito. Tokens ainda bloqueados no vesting e o estoque de venda não participam.": {
     "pt": "O staking funciona somente dentro do aplicativo BETTEX, com os tokens disponíveis na Carteira BETTEX do app. A participação é automática, sem ativação ou depósito. Tokens bloqueados no vesting e estoque de venda não participam.",

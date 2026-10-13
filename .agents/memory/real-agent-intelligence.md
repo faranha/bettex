@@ -17,11 +17,29 @@ O criador definiu: “apresentar o que foi feito como linha de base, ponto de pa
 
 **How to apply:** Apresentar a inteligência central BETTEX servida pelos agentes especializados e seus parâmetros iniciais. Não apresentar governança por governança: apresentar seu agente e sua inteligência. Manter regras econômicas e controles essenciais como linha de base, sem inventar definições ausentes nem anunciar inteligência futura como entregue.
 
+A própria documentação é uma linha de base para o desenvolvimento, não uma inteligência já entregue.
+
+**Why:** O criador corrigiu a referência vaga à “linha de base”: “Esta documentação é uma linha de base” e pediu que isso fosse apresentado de forma compreensível.
+
+**How to apply:** Nomear explicitamente a documentação como a linha de base e explicar que ela registra as definições iniciais; evitar referências sem antecedente como “a partir dela”.
+
 A documentação deve tratar a inteligência central como **agente BETTEX** e as especialidades como **subagentes**.
 
 **Why:** O criador definiu: “entao vamos tratar assim agente bettex, e subagentes” e “assim deve ser na documentacao”.
 
 **How to apply:** Usar agente BETTEX para o coordenador com inteligência própria; subagentes para risco, governança, tesouraria e mercados; sistema BETTEX para a arquitetura completa. Preservar análise bidirecional e validação independente, sem apresentar as especialidades como outras BETTEX independentes.
+
+Apresentar a identidade da BETTEX e os papéis dos agentes no presente: “é”, “somos”, não “será” ou “seremos”.
+
+**Why:** O criador reiterou: “nunca fale no futuro, é, o agente é” e “somos, nao seremos, é presente”.
+
+**How to apply:** Usar presente nas definições e descrições dos agentes, inclusive traduções. Separar a definição da arquitetura da disponibilidade operacional comprovada; o tempo verbal não autoriza declarar integrações, autonomia ou resultados validados sem evidência.
+
+O foco do agente BETTEX é orquestração; ele opera com apoio dos subagentes de risco e tesouraria para a tomada de decisões.
+
+**Why:** O criador corrigiu: “o bettex opera com apoio de SUB AGENTES DE RISCO E TESOURARIA para tomada de decisoes, e seu foco é orquestracao”.
+
+**How to apply:** Destacar o foco de orquestração e esse apoio também nos resumos e esquemas, além da visão, da definição do agente e da apresentação dos subagentes. Não apenas mencionar risco e tesouraria ao fim de uma lista de mercados. Preservar inteligência própria e validação independente; não reduzir orquestração a encaminhamento mecânico de tarefas.
 
 “Agente” é masculino: “o agente BETTEX será desenvolvido”.
 

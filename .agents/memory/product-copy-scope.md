@@ -3,6 +3,12 @@ name: Texto do produto sem metaconversa
 description: Evitar comentários editoriais sobre a finalidade do pitch, da documentação e do site.
 ---
 
+Não usar “direção DeFi” para explicar descentralização ou suas consequências.
+
+**Why:** O criador apontou “Direcao defi? nao faz sentido isso”.
+
+**How to apply:** Nomear a descentralização diretamente e explicar a consequência concreta, preservando os riscos, responsabilidades e direitos econômicos em todos os idiomas.
+
 No trecho “Participação, mercados e recursos das carteiras” do Pitch, descrever precisamente o staking, suas regras, os mercados e a dinâmica dos agentes em relação à BETTEX como inteligência central, sem citar o demo.
 
 **Why:** O criador apontou que o trecho não explicava esses aspectos e exigiu uma descrição clara do funcionamento, em vez de uma descrição do demo.

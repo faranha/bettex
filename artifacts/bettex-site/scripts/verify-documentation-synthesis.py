@@ -23,7 +23,7 @@ const notices = intelligenceTranslations[intelligenceCopy.governanceNotice];
 for (const entry of Object.values(catalog)) {
   for (const lang of ['pt', 'en', 'es']) entry[lang] = terms(entry[lang], lang);
 }
-const openings = Object.fromEntries(['hero', 'visaoLead', 'agP1'].map(key => [
+const openings = Object.fromEntries(['hero', 'visaoLead', 'visaoIndependencia', 'agP1'].map(key => [
   key, Object.fromEntries(Object.entries(intelligenceTranslations[intelligenceCopy[key]])
     .map(([lang, text]) => [lang, terms(text, lang)])),
 ]));
@@ -122,6 +122,34 @@ for route, expected in baseline["routes"].items():
     page.feed(protected_html)
     text = " ".join(" ".join(page.parts).split())
     assert text, f"Empty rendered content: {route}"
+    guarded_structure = page.structure
+    if "textSha256" not in expected:
+        # Verify the authorized app case and CTA separately; preserve the original
+        # structure fingerprint for every pre-existing block, image and link.
+        walkthrough_pattern = re.compile(
+            r'<section(?=[^>]*data-testid="documentation-app-walkthrough")[^>]*>(.*?)</section>',
+            re.S,
+        )
+        walkthroughs = walkthrough_pattern.findall(protected_html)
+        assert len(walkthroughs) == 1, f"Missing or duplicated app walkthrough: {route}"
+        walkthrough = Content()
+        walkthrough.feed('<div id="root">' + walkthroughs[0] + '</div>')
+        language = "en" if route.startswith("/en/") else "es" if route.startswith("/es/") else "pt"
+        demo_path = {"pt": "/app", "en": "/en/app", "es": "/es/app"}[language]
+        assert walkthrough.structure == [
+            ["h3", "id", "documentacao-percurso-app"], ["a", "href", demo_path],
+        ], f"App walkthrough heading or localized demo link changed: {route}"
+        walkthrough_text = " ".join(" ".join(walkthrough.parts).split())
+        markers = {
+            "pt": ("hipotéticos", "25 USDC", "não movimentam dinheiro real", "Explorar o demo BETTEX"),
+            "en": ("hypothetical", "25 USDC", "do not move real money", "Explore the BETTEX demo"),
+            "es": ("hipotéticos", "25 USDC", "no mueven dinero real", "Explorar el demo BETTEX"),
+        }
+        for marker in markers[language]:
+            assert marker in walkthrough_text, f"App walkthrough omits {marker}: {route}"
+        original_page = Content()
+        original_page.feed(walkthrough_pattern.sub("", protected_html))
+        guarded_structure = original_page.structure
     # Authorized research additions must not invalidate the original link/image/block guard.
     intelligence_ids = {
         "documentacao-linha-base", "documentacao-inteligencia", "documentacao-inteligencia-bettex",
@@ -130,7 +158,7 @@ for route, expected in baseline["routes"].items():
         "documentacao-agente-subagentes",
     }
     structure = json.dumps(
-        [item for item in page.structure if not (item[1] == "id" and item[2] in intelligence_ids)],
+        [item for item in guarded_structure if not (item[1] == "id" and item[2] in intelligence_ids)],
         ensure_ascii=False, separators=(",", ":"),
     )
     assert digest(structure) == expected["structureSha256"], f"Removed or changed block/link/image: {route}"
@@ -147,6 +175,34 @@ for route, expected in baseline["routes"].items():
         assert not any(key == "href" and value.startswith("/downloads/")
                        for _, key, value in page.structure), f"Download links restored: {route}"
         language = "en" if route.startswith("/en/") else "es" if route.startswith("/es/") else "pt"
+        # Beginner introductions are required in every chapter, before existing rules.
+        concept_chapters = (
+            "documentacao-como-funciona", "documentacao-agentes", "documentacao-emissao",
+            "documentacao-staking", "documentacao-roadmap", "documentacao-riscos",
+        )
+        for chapter_id in concept_chapters:
+            articles = re.findall(
+                rf'<article\b(?=[^>]*id="{chapter_id}")[^>]*>(.*?)</article>',
+                protected_html, re.S,
+            )
+            assert len(articles) == 1, f"Missing or duplicated chapter: {route}/{chapter_id}"
+            article = articles[0]
+            introduction = re.search(
+                rf'<div\b(?=[^>]*data-testid="documentation-concepts-{chapter_id}")[^>]*>(.*?)</div>',
+                article, re.S,
+            )
+            assert introduction, f"Missing beginner introduction: {route}/{chapter_id}"
+            first_heading = re.search(r"<h3\b", article)
+            if first_heading:
+                assert introduction.end() <= first_heading.start(), f"Concepts follow technical rules: {route}/{chapter_id}"
+            assert len(re.findall(r"<p\b", introduction[1])) >= 2, f"Introduction lacks explanation: {route}/{chapter_id}"
+            if chapter_id == "documentacao-como-funciona":
+                for term in ("DeFi", "DEX", "DeFAI", "USDC", "blockchain"):
+                    assert term in introduction[1], f"Unintroduced foundation term: {route}/{term}"
+            if chapter_id == "documentacao-staking":
+                for term in ("Staking", "25%", "USDC"):
+                    assert term.lower() in introduction[1].lower(), f"Missing staking explanation: {route}/{term}"
+                assert introduction.end() < article.index('data-testid="documentation-app-introduction"'), f"Optional features precede participation concepts: {route}"
         for key, localized in editorial["openings"].items():
             expected_opening = re.sub(r"\s+", " ", localized[language]).strip()
             assert expected_opening in page.paragraphs, f"Missing market/audience opening: {language}/{key}"
@@ -245,7 +301,6 @@ for route, expected in baseline["routes"].items():
             "es": ("trading", "gobernanza", "riesgo", "tesorería"),
         }[language]
         country = {"pt": "país", "en": "country", "es": "país"}[language]
-        future = {"pt": "coordenará", "en": "will coordinate", "es": "coordinará"}[language]
         transition = {
             "pt": ("Hoje", "DeFi", "IA", "toda a administração", "totalmente DeFAI"),
             "en": ("Today", "DeFi", "AI", "all administration", "fully DeFAI"),
@@ -258,9 +313,9 @@ for route, expected in baseline["routes"].items():
                     f"Missing DeFi/AI research direction: {language}/{label}"
             else:
                 starting_point = {
-                    "pt": ("linha de base", "arquitetura", "interface demonstrativa"),
-                    "en": ("baseline", "architecture", "demonstration interface"),
-                    "es": ("línea de base", "arquitectura", "interfaz demostrativa"),
+                    "pt": ("regras", "contratos de referência", "controles", "ponto de partida"),
+                    "en": ("rules", "reference contracts", "controls", "starting point"),
+                    "es": ("reglas", "contratos de referencia", "controles", "punto de partida"),
                 }[language]
                 autonomy = {
                     "pt": "autonomia ainda não existe",
@@ -272,9 +327,9 @@ for route, expected in baseline["routes"].items():
                 assert any(autonomy in p.lower() for p in paragraphs), f"Future autonomy presented as delivered: {language}"
             assert any(country in p.lower() and all(role in p.lower() for role in roles)
                        for p in paragraphs), f"Legal scope omits non-trading agents: {language}/{label}"
-        research_future = {"pt": "será desenvolvido", "en": "will be developed", "es": "se desarrollará"}[language]
-        assert any((future in p.lower() or research_future in p.lower()) and all(role in p.lower() for role in roles)
-                   for p in page.paragraphs), f"Agent roles not presented as planned: {language}"
+        identity = {"pt": "o agente bettex é", "en": "the bettex agent is", "es": "el agente bettex es"}[language]
+        assert any(identity in p.lower() and all(role in p.lower() for role in roles)
+                   for p in page.paragraphs), f"Agent identity and supporting roles missing from present-tense definition: {language}"
         count = len(text.split())
         reduction = 100 * (1 - count / expected["words"])
         # The approved agentic presentation adds research content; the former exact

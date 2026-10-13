@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2945 >>
+<< /Length 3061 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — comunidade, regras e administração) Tj T*
@@ -24,25 +24,28 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Agente BETTEX e subagentes) Tj T*
 () Tj T*
-(BETTEX é o agente central de coordenação previsto para uma arquitetura multiagente) Tj T*
-(descentralizada. Sua inteligência própria será desenvolvida para interpretar o contexto geral,) Tj T*
-(formular objetivos e construir decisões. Cada mercado terá seu próprio subagente de trading,) Tj T*
-(que se comunicará diretamente com o agente BETTEX, com apoio de subagentes de risco, tesouraria) Tj T*
-(e governança. Sistema BETTEX é o nome da arquitetura completa; agente BETTEX identifica sua) Tj T*
-(inteligência central.) Tj T*
+(BETTEX é o agente de orquestração da arquitetura multiagente descentralizada descrita nesta) Tj T*
+(documentação. Seu foco é coordenar análises e construir decisões com apoio direto dos) Tj T*
+(subagentes de risco e tesouraria. Os subagentes de trading de cada mercado apresentam propostas) Tj T*
+(e evidências; risco e tesouraria apoiam sua avaliação antes de decisões de alocação ou) Tj T*
+(execução. O subagente de governança acompanha políticas e documentação. Sistema BETTEX) Tj T*
+(identifica a arquitetura completa; agente BETTEX identifica sua inteligência central de) Tj T*
+(orquestração.) Tj T*
 () Tj T*
-(Os subagentes desenvolvem análises e inferências em suas especialidades. Podem questionar) Tj T*
-(hipóteses do agente BETTEX, compartilhar evidências e receber novas perguntas. Não são versões) Tj T*
-(independentes de BETTEX nem apenas verificadores de parâmetros. A coordenação central não) Tj T*
-(elimina a validação independente de risco nem autoriza ignorar os controles.) Tj T*
+(O subagente de risco investiga exposição, cenários de perda e compatibilidade das propostas com) Tj T*
+(os limites vigentes. O subagente de tesouraria analisa capital, reservas, liquidez e) Tj T*
+(compromissos para orientar a disponibilidade e a alocação dos recursos. Ambos produzem análises) Tj T*
+(e inferências para apoiar as decisões do agente BETTEX, podendo questionar hipóteses,) Tj T*
+(compartilhar evidências e solicitar novas análises. Não são apenas verificadores de parâmetros) Tj T*
+(nem versões independentes de BETTEX. A orquestração não elimina a validação independente de) Tj T*
+(risco nem autoriza ignorar controles.) Tj T*
 () Tj T*
 (Governança: interpretar e propor evolução) Tj T*
 () Tj T*
-(O subagente de governança terá a função de manter e atualizar a documentação do sistema BETTEX.) Tj T*
-(Deverá acompanhar decisões e mudanças aprovadas, revisar os capítulos e suas traduções,) Tj T*
-(registrar versões e preservar a coerência entre a documentação, a implementação e as regras) Tj T*
-(vigentes. Atualizar a documentação não aprova políticas nem modifica permissões ou direitos) Tj T*
-(econômicos.) Tj T*
+(O subagente de governança tem a função de manter e atualizar a documentação do sistema BETTEX.) Tj T*
+(Acompanha decisões e mudanças aprovadas, revisa os capítulos e suas traduções, registra versões) Tj T*
+(e preserva a coerência entre a documentação, a implementação e as regras vigentes. Atualizar a) Tj T*
+(documentação não aprova políticas nem modifica permissões ou direitos econômicos.) Tj T*
 () Tj T*
 (Adequação legal e jurídica) Tj T*
 () Tj T*
@@ -60,9 +63,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (restrito ou autorizado\). Falta de autorização ou investigação pendente bloqueia a operação no) Tj T*
 (território.) Tj T*
 () Tj T*
-(Categorias proibidas no Brasil \(como cassino ou previsão sem licença\) não serão oferecidas.) Tj T*
-(Exemplos são condicionais, dependendo da investigação de cada atividade concreta.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -70,9 +70,12 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3003 >>
+<< /Length 2975 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Categorias proibidas no Brasil \(como cassino ou previsão sem licença\) não serão oferecidas.) Tj T*
+(Exemplos são condicionais, dependendo da investigação de cada atividade concreta.) Tj T*
+() Tj T*
 (A avaliação abrange mint, token, publicidade, jogos, serviços e integrações. APIs, blockchain) Tj T*
 (ou licenças estrangeiras não substituem a autorização local necessária.) Tj T*
 () Tj T*
@@ -118,9 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Administração e propósito) Tj T*
 () Tj T*
 (Hoje, BETTEX reúne DeFi e IA, com administração inicial dos fundadores. A visão é substituir) Tj T*
-(toda a administração por IA ao longo do tempo e tornar-se totalmente DeFAI. O token é) Tj T*
-(comunitário, sem empresa, fundação, salários ou taxas. Recursos têm finalidade coletiva;) Tj T*
-(carteiras continuam pessoais.) Tj T*
 ET
 endstream
 endobj
@@ -128,9 +128,12 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 2822 >>
+<< /Length 2865 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(toda a administração por IA ao longo do tempo e tornar-se totalmente DeFAI. O token é) Tj T*
+(comunitário, sem empresa, fundação, salários ou taxas. Recursos têm finalidade coletiva;) Tj T*
+(carteiras continuam pessoais.) Tj T*
 () Tj T*
 (Os fundadores administram inicialmente. A transição gradual substituirá toda a administração) Tj T*
 (por IA, tornando a BETTEX totalmente DeFAI, com evidências e limites, sem prazo definido. Isso) Tj T*
@@ -176,9 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Exemplo: A inicia com 1.000 BETTEX elegíveis; B recebe 1.000 às 12h. Com lucro elegível de) Tj T*
 (1.000 USDC e condições cumpridas, a parcela de staking de 250 USDC paga 250 a A e zero a B. Na) Tj T*
-(rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC cada sobre novo) Tj T*
-(lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,12 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 2926 >>
+<< /Length 2985 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(rodada seguinte, ambos elegíveis desde a abertura e sem saída recebem 125 USDC cada sobre novo) Tj T*
+(lucro elegível de 1.000 USDC. Nenhum lucro anterior é recuperado.) Tj T*
+() Tj T*
 (Cada rodada paga ou não, sem acumular, reabrir ou complementar. Qualquer saída BETTEX,) Tj T*
 (inclusive parcial, zera o peso e cancela apenas direitos ainda não pagos. Frações não) Tj T*
 (executáveis retornam à tesouraria, sem crédito futuro. USDC recebido continua pessoal.) Tj T*
@@ -234,9 +237,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (atuais são distintos.) Tj T*
 () Tj T*
 (Apuração e execução integram a rodada atual. O encerramento financeiro elimina direitos não) Tj T*
-(enviados; pagamentos em curso seguem em conciliação. Não há reabertura ou créditos pós-) Tj T*
-(encerramento.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -244,9 +244,12 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
 endobj
 13 0 obj
-<< /Length 3111 >>
+<< /Length 2931 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(enviados; pagamentos em curso seguem em conciliação. Não há reabertura ou créditos pós-) Tj T*
+(encerramento.) Tj T*
+() Tj T*
 (Planos de pagamento seguem ordem determinística e usam execução atômica quando validada para a) Tj T*
 (rede. Se houver processamento parcial, publica quem recebeu, quem não recebeu e a causa; falhas) Tj T*
 (podem causar perda definitiva de parcelas não enviadas no encerramento, risco que deve ser) Tj T*
@@ -292,9 +295,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (O prêmio da Burn Lottery e os custos do sorteio exigem fonte aprovada e cobertura antes de) Tj T*
 (aceitar entradas. Os BETTEX pagos são queimados e não financiam o prêmio. Pagamento, referência) Tj T*
-(de queima e geração da entrada devem ter efeito único e mecanismo de recuperação verificável;) Tj T*
-(se esse vínculo não puder ser garantido, não aceitar pagamentos. O regulamento informa sorteio,) Tj T*
-(aleatoriedade verificável, tratamento de falhas e impossibilidade de desfazer uma queima por) Tj T*
 ET
 endstream
 endobj
@@ -302,9 +302,12 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
 endobj
 15 0 obj
-<< /Length 2060 >>
+<< /Length 2367 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(de queima e geração da entrada devem ter efeito único e mecanismo de recuperação verificável;) Tj T*
+(se esse vínculo não puder ser garantido, não aceitar pagamentos. O regulamento informa sorteio,) Tj T*
+(aleatoriedade verificável, tratamento de falhas e impossibilidade de desfazer uma queima por) Tj T*
 (simples ajuste.) Tj T*
 () Tj T*
 (Double 2X exige mandato, aposta máxima, orçamento agregado, reserva para vitórias simultâneas,) Tj T*
@@ -348,17 +351,17 @@ xref
 0000000148 00000 n 
 0000000245 00000 n 
 0000000371 00000 n 
-0000003368 00000 n 
-0000003494 00000 n 
-0000006549 00000 n 
-0000006675 00000 n 
-0000009549 00000 n 
-0000009677 00000 n 
-0000012656 00000 n 
-0000012784 00000 n 
-0000015948 00000 n 
-0000016076 00000 n 
+0000003484 00000 n 
+0000003610 00000 n 
+0000006637 00000 n 
+0000006763 00000 n 
+0000009680 00000 n 
+0000009808 00000 n 
+0000012846 00000 n 
+0000012974 00000 n 
+0000015958 00000 n 
+0000016086 00000 n 
 trailer << /Size 16 /Root 1 0 R >>
 startxref
-18189
+18506
 %%EOF

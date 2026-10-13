@@ -14,7 +14,7 @@
     "/pitch": {
       "words": 6092,
       "structureSha256": "0ff35e7fbc35406e43719fef89e2d43557baa3c2e0794729620cecf30386eafd",
-      "textSha256": "7088d9b6e250d9bddfd433181253e066cd48b9cf7312567b843f701f5601f084"
+      "textSha256": "78f66129c41e0d74874d8697974a16069931c6d422339e8d5aa993df885eb4b2"
     },
     "/en/": {
       "words": 1301,
@@ -24,7 +24,7 @@
     "/en/pitch": {
       "words": 5849,
       "structureSha256": "f6c0b8cea6fbc33d728d68a16195be33d8d523fe8fac2fc1e788186d2eda4b26",
-      "textSha256": "ffdd1deddfa92312e0faf1e9dbf9bcc752a962c5a713961ea336c8efdf7a0044"
+      "textSha256": "3408153412fd0121ab5ffe7b229f899c0c81127f912e5c3b8bb646a4f1703d65"
     },
     "/es/": {
       "words": 1395,
@@ -34,7 +34,7 @@
     "/es/pitch": {
       "words": 6474,
       "structureSha256": "dbd2ac083a9eb8a3573eb58ed7f1e6d301dde5dc76ee64704642d54c6647022a",
-      "textSha256": "86b535b686922beabe6ea1ad323a53d87eee6c028568e46030c2f7f08dd494a1"
+      "textSha256": "1b0a8e0ed0be31453a17036c1844ef243cc0b50853350087e3f5d9dd0ad2f386"
     },
     "/documentacao": {
       "words": 27074,

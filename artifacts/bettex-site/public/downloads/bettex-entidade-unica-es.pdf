@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 6 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] >>
+<< /Type /Pages /Count 7 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2917 >>
+<< /Length 2999 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — comunidad, reglas y administración) Tj T*
@@ -25,25 +25,29 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Agente BETTEX y subagentes) Tj T*
 () Tj T*
-(BETTEX es el agente central de coordinación previsto para una arquitectura multiagente) Tj T*
-(descentralizada. Su inteligencia propia se desarrollará para interpretar el contexto general,) Tj T*
-(formular objetivos y construir decisiones. Cada mercado tendrá su propio subagente de trading,) Tj T*
-(que se comunicará directamente con el agente BETTEX, con apoyo de subagentes de riesgo,) Tj T*
-(tesorería y gobernanza. Sistema BETTEX es el nombre de la arquitectura completa; agente BETTEX) Tj T*
-(identifica su inteligencia central.) Tj T*
+(BETTEX es el agente de orquestación de la arquitectura multiagente descentralizada descrita en) Tj T*
+(esta documentación. Su foco es coordinar análisis y construir decisiones con apoyo directo de) Tj T*
+(los subagentes de riesgo y tesorería. Los subagentes de trading de cada mercado presentan) Tj T*
+(propuestas y evidencias; riesgo y tesorería apoyan su evaluación antes de decisiones de) Tj T*
+(asignación o ejecución. El subagente de gobernanza sigue políticas y documentación. Sistema) Tj T*
+(BETTEX identifica la arquitectura completa; agente BETTEX identifica su inteligencia central de) Tj T*
+(orquestación.) Tj T*
 () Tj T*
-(Los subagentes desarrollan análisis e inferencias en sus especialidades. Pueden cuestionar) Tj T*
-(hipótesis del agente BETTEX, compartir evidencias y recibir nuevas preguntas. No son versiones) Tj T*
-(independientes de BETTEX ni simples verificadores de parámetros. La coordinación central no) Tj T*
-(elimina la validación independiente de riesgo ni autoriza ignorar los controles.) Tj T*
+(El subagente de riesgo investiga exposición, escenarios de pérdida y compatibilidad de las) Tj T*
+(propuestas con los límites vigentes. El subagente de tesorería analiza capital, reservas,) Tj T*
+(liquidez y compromisos para orientar la disponibilidad y asignación de recursos. Ambos producen) Tj T*
+(análisis e inferencias para apoyar las decisiones del agente BETTEX, pudiendo cuestionar) Tj T*
+(hipótesis, compartir evidencias y solicitar nuevos análisis. No son simples verificadores de) Tj T*
+(parámetros ni versiones independientes de BETTEX. La orquestación no elimina la validación) Tj T*
+(independiente de riesgo ni autoriza ignorar controles.) Tj T*
 () Tj T*
 (Gobernanza: interpretar y proponer evolución) Tj T*
 () Tj T*
-(El subagente de gobernanza tendrá la función de mantener y actualizar la documentación del) Tj T*
-(sistema BETTEX. Deberá seguir decisiones y cambios aprobados, revisar los capítulos y sus) Tj T*
-(traducciones, registrar versiones y preservar la coherencia entre la documentación, la) Tj T*
-(implementación y las reglas vigentes. Actualizar la documentación no aprueba políticas ni) Tj T*
-(modifica permisos o derechos económicos.) Tj T*
+(El subagente de gobernanza tiene la función de mantener y actualizar la documentación del) Tj T*
+(sistema BETTEX. Sigue decisiones y cambios aprobados, revisa los capítulos y sus traducciones,) Tj T*
+(registra versiones y preserva la coherencia entre la documentación, la implementación y las) Tj T*
+(reglas vigentes. Actualizar la documentación no aprueba políticas ni modifica permisos o) Tj T*
+(derechos económicos.) Tj T*
 () Tj T*
 (Adecuación legal y jurídica) Tj T*
 () Tj T*
@@ -59,10 +63,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (ALD, privacidad y responsabilidades, con registro formal de evidencias, fechas y controles) Tj T*
 (exigidos.) Tj T*
 () Tj T*
-(Cada combinación \(agente, actividad, territorio\) requiere un alcance documentado \(en) Tj T*
-(investigación, restringido o autorizado\). La falta de autorización o una investigación) Tj T*
-(pendiente bloquea la operación en el territorio.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -70,9 +70,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3046 >>
+<< /Length 3140 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Cada combinación \(agente, actividad, territorio\) requiere un alcance documentado \(en) Tj T*
+(investigación, restringido o autorizado\). La falta de autorización o una investigación) Tj T*
+(pendiente bloquea la operación en el territorio.) Tj T*
+() Tj T*
 (Las categorías prohibidas en Brasil \(como casinos o predicciones sin licencia\) no se ofrecerán.) Tj T*
 (Los ejemplos son condicionales, dependiendo de la investigación de cada actividad concreta.) Tj T*
 () Tj T*
@@ -117,10 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (probabilidades antes de aceptar entradas. Los juegos no son estrategias de inversión ni promesa) Tj T*
 (de rendimiento; resultados simulados no prueban ejecución, aleatoriedad pública ni liquidación.) Tj T*
 () Tj T*
-(Ronda operativa y demostración) Tj T*
-() Tj T*
-(El modelo opera en rondas diarias UTC. Las pestañas de mercado no crean pools de staking) Tj T*
-(separados.) Tj T*
 ET
 endstream
 endobj
@@ -128,9 +128,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 2788 >>
+<< /Length 2647 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Ronda operativa y demostración) Tj T*
+() Tj T*
+(El modelo opera en rondas diarias UTC. Las pestañas de mercado no crean pools de staking) Tj T*
+(separados.) Tj T*
 () Tj T*
 (Administración y propósito) Tj T*
 () Tj T*
@@ -175,10 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Staking y liquidación) Tj T*
 () Tj T*
-(Los participantes que se unen durante las rondas en curso no reciben beneficios de esa ronda,) Tj T*
-(solo de la siguiente. Los saldos y adiciones se fijan en la apertura de la ronda.) Tj T*
-() Tj T*
-(Peso = saldo elegible en la apertura  x  duración. Las salidas ponen el peso en cero y cancelan) Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 3161 >>
+<< /Length 3231 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Los participantes que se unen durante las rondas en curso no reciben beneficios de esa ronda,) Tj T*
+(solo de la siguiente. Los saldos y adiciones se fijan en la apertura de la ronda.) Tj T*
+() Tj T*
+(Peso = saldo elegible en la apertura  x  duración. Las salidas ponen el peso en cero y cancelan) Tj T*
 (créditos anteriores aún no pagados; el retorno ocurre solo en la siguiente ronda. Los) Tj T*
 (incrementos no alteran los pesos existentes. Pago bruto = porción de staking  x  peso) Tj T*
 (individual  /  suma de los pesos elegibles.) Tj T*
@@ -233,10 +237,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (independientemente del período actual.) Tj T*
 () Tj T*
 (Las políticas aprobadas deben fijar ventanas de ejecución, plazos y fuentes. Sin parámetros) Tj T*
-(validados, no hay autorización para distribuir. El cierre ocurre al finalizar la ventana o al) Tj T*
-(completar los pagos.) Tj T*
-() Tj T*
-(Los pesos se calculan tras el corte sobre el saldo elegible. Las entradas esperan a la) Tj T*
 ET
 endstream
 endobj
@@ -244,9 +244,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
 endobj
 13 0 obj
-<< /Length 3020 >>
+<< /Length 3027 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(validados, no hay autorización para distribuir. El cierre ocurre al finalizar la ventana o al) Tj T*
+(completar los pagos.) Tj T*
+() Tj T*
+(Los pesos se calculan tras el corte sobre el saldo elegible. Las entradas esperan a la) Tj T*
 (siguiente ronda; las salidas anulan el peso. Las salidas tras el corte cancelan derechos) Tj T*
 (pendientes sin alterar resultados de nuevas rondas.) Tj T*
 () Tj T*
@@ -291,10 +295,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (El beneficio de la ronda no es una recuperación de capital.) Tj T*
 () Tj T*
-(No existe compensación de pérdidas ni requisito de pico patrimonial histórico; los beneficios) Tj T*
-(pueden distribuirse si hay liquidez y reservas.) Tj T*
-() Tj T*
-(Elegibilidad, exposición y condiciones de los juegos) Tj T*
 ET
 endstream
 endobj
@@ -302,9 +302,13 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
 endobj
 15 0 obj
-<< /Length 3126 >>
+<< /Length 3265 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(No existe compensación de pérdidas ni requisito de pico patrimonial histórico; los beneficios) Tj T*
+(pueden distribuirse si hay liquidez y reservas.) Tj T*
+() Tj T*
+(Elegibilidad, exposición y condiciones de los juegos) Tj T*
 () Tj T*
 (Burn Lottery limita un número gratuito por billetera con BETTEX en staking, con snapshot) Tj T*
 (verificable e identificador único por billetera y sorteo. Las transferencias posteriores al) Tj T*
@@ -349,30 +353,42 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (externos no eximen de las obligaciones de BETTEX. Sin validación, la operación se restringe; el) Tj T*
 (acceso financiero no se promete sin documentos.) Tj T*
 () Tj T*
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 120 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (Comunidad y lanzamiento en el Pitch: https://bettex.ai/es/pitch#publico) Tj T*
 () Tj T*
 ET
 endstream
 endobj
 xref
-0 16
+0 18
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000148 00000 n 
-0000000245 00000 n 
-0000000371 00000 n 
-0000003340 00000 n 
-0000003466 00000 n 
-0000006564 00000 n 
-0000006690 00000 n 
-0000009530 00000 n 
-0000009658 00000 n 
-0000012872 00000 n 
-0000013000 00000 n 
-0000016073 00000 n 
-0000016201 00000 n 
-trailer << /Size 16 /Root 1 0 R >>
+0000000155 00000 n 
+0000000252 00000 n 
+0000000378 00000 n 
+0000003429 00000 n 
+0000003555 00000 n 
+0000006747 00000 n 
+0000006873 00000 n 
+0000009572 00000 n 
+0000009700 00000 n 
+0000012984 00000 n 
+0000013112 00000 n 
+0000016192 00000 n 
+0000016320 00000 n 
+0000019638 00000 n 
+0000019766 00000 n 
+trailer << /Size 18 /Root 1 0 R >>
 startxref
-19380
+19938
 %%EOF

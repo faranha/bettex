@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2987 >>
+<< /Length 3187 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — community, rules and administration) Tj T*
@@ -24,23 +24,25 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (BETTEX agent and subagents) Tj T*
 () Tj T*
-(BETTEX is the central coordinating agent envisioned for a decentralized multiagent) Tj T*
-(architecture. Its own intelligence will be developed to interpret the overall context,) Tj T*
-(formulate objectives and build decisions. Each market will have its own trading subagent, which) Tj T*
-(will communicate directly with the BETTEX agent, supported by risk, treasury and governance) Tj T*
-(subagents. BETTEX system names the complete architecture; BETTEX agent identifies its central) Tj T*
-(intelligence.) Tj T*
+(BETTEX is the orchestration agent of the decentralized multiagent architecture described in) Tj T*
+(this documentation. Its focus is to coordinate analyses and build decisions with direct support) Tj T*
+(from risk and treasury subagents. Each market’s trading subagents present proposals and) Tj T*
+(evidence; risk and treasury support their evaluation before allocation or execution decisions.) Tj T*
+(The governance subagent tracks policies and documentation. BETTEX system identifies the) Tj T*
+(complete architecture; BETTEX agent identifies its central orchestration intelligence.) Tj T*
 () Tj T*
-(Subagents develop analyses and inferences in their specialties. They can challenge the BETTEX) Tj T*
-(agent’s hypotheses, share evidence and receive further questions. They are not independent) Tj T*
-(versions of BETTEX or merely parameter checkers. Central coordination does not remove) Tj T*
-(independent risk validation or authorize bypassing controls.) Tj T*
+(The risk subagent investigates exposure, loss scenarios and whether proposals fit current) Tj T*
+(limits. The treasury subagent analyzes capital, reserves, liquidity and commitments to inform) Tj T*
+(the availability and allocation of funds. Both produce analyses and inferences to support the) Tj T*
+(BETTEX agent’s decisions, and may challenge hypotheses, share evidence and request further) Tj T*
+(analyses. They are not merely parameter checkers or independent versions of BETTEX.) Tj T*
+(Orchestration does not remove independent risk validation or authorize bypassing controls.) Tj T*
 () Tj T*
 (Governance: interpret and propose evolution) Tj T*
 () Tj T*
-(The governance subagent will maintain and update the BETTEX system documentation. It should) Tj T*
-(track approved decisions and changes, review chapters and their translations, record versions) Tj T*
-(and preserve consistency between documentation, implementation and rules in force. Updating) Tj T*
+(The governance subagent maintains and updates the BETTEX system documentation. It tracks) Tj T*
+(approved decisions and changes, reviews chapters and their translations, records versions and) Tj T*
+(preserves consistency between documentation, implementation and rules in force. Updating) Tj T*
 (documentation does not approve policies or change permissions or economic rights.) Tj T*
 () Tj T*
 (Legal and regulatory compliance) Tj T*
@@ -61,8 +63,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Categories prohibited in Brazil \(such as casino or unlicensed prediction\) will not be offered.) Tj T*
 (Examples are conditional, depending on the investigation of each specific activity.) Tj T*
-() Tj T*
-(Assessment covers mint, token, advertising, games, services, and integrations. APIs,) Tj T*
 ET
 endstream
 endobj
@@ -70,9 +70,11 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 2897 >>
+<< /Length 2945 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
+(Assessment covers mint, token, advertising, games, services, and integrations. APIs,) Tj T*
 (blockchain, or foreign licenses do not replace the required local authorization.) Tj T*
 () Tj T*
 (Expansions require re-evaluation. Regulatory or product changes suspend affected offers, with) Tj T*
@@ -119,8 +121,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Today, BETTEX combines DeFi and AI, with founders initially handling administration. The vision) Tj T*
 (is to replace all administration with AI over time and become fully DeFAI. The token is) Tj T*
 (community-based, without a company, foundation, salaries or service fees. Resources serve the) Tj T*
-(collective; wallets remain personal.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -128,9 +128,11 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
 endobj
 9 0 obj
-<< /Length 2976 >>
+<< /Length 2825 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(collective; wallets remain personal.) Tj T*
+() Tj T*
 (Founders initially handle administration. The gradual transition will replace all) Tj T*
 (administration with AI, making BETTEX fully DeFAI, with evidence and limits and no set) Tj T*
 (deadline. This does not imply a transfer of contract ownership.) Tj T*
@@ -177,8 +179,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (the next round, both eligible from opening and with no exit receive 125 USDC each on new) Tj T*
 (eligible profit of 1,000 USDC. No prior profit is recovered.) Tj T*
 () Tj T*
-(Each round pays or does not, without accumulation, reopening or later supplements. Any BETTEX) Tj T*
-(outflow, including partial, resets weight and cancels only still-unpaid rights. Non-executable) Tj T*
 ET
 endstream
 endobj
@@ -186,9 +186,11 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
 endobj
 11 0 obj
-<< /Length 2981 >>
+<< /Length 2985 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Each round pays or does not, without accumulation, reopening or later supplements. Any BETTEX) Tj T*
+(outflow, including partial, resets weight and cancels only still-unpaid rights. Non-executable) Tj T*
 (fractions return to the treasury, without future credit. Received USDC remains personal.) Tj T*
 () Tj T*
 (Credit depends on eligibility, authorization, and reconciliation. Round closing does not hold) Tj T*
@@ -235,8 +237,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (rights; ongoing payments remain in reconciliation. There is no reopening or post-closure) Tj T*
 (credit.) Tj T*
 () Tj T*
-(Payment plans follow deterministic order and use atomic execution when validated for the) Tj T*
-(network. If there is partial processing, they publish who received, who did not, and the cause;) Tj T*
 ET
 endstream
 endobj
@@ -244,9 +244,11 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
 endobj
 13 0 obj
-<< /Length 2856 >>
+<< /Length 3028 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(Payment plans follow deterministic order and use atomic execution when validated for the) Tj T*
+(network. If there is partial processing, they publish who received, who did not, and the cause;) Tj T*
 (failures may cause definitive loss of unsent portions at closing, and that risk must be) Tj T*
 (disclosed in advance.) Tj T*
 () Tj T*
@@ -293,8 +295,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (reference and entry generation must have a single effect and a verifiable recovery mechanism;) Tj T*
 (if this link cannot be guaranteed, do not accept payments. The regulation informs the draw,) Tj T*
 (verifiable randomness, fault handling and the impossibility of undoing a burn by simple) Tj T*
-(adjustment.) Tj T*
-() Tj T*
 ET
 endstream
 endobj
@@ -302,9 +302,11 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
 endobj
 15 0 obj
-<< /Length 2064 >>
+<< /Length 2093 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+(adjustment.) Tj T*
+() Tj T*
 (Double 2X requires a mandate, maximum bet, aggregate budget, reserve for simultaneous wins,) Tj T*
 (time limit, verifiable randomness, and failure procedure before opening. The treasury reserves) Tj T*
 (the 2x payout considering the received stake and the additional portion, without using staking,) Tj T*
@@ -348,17 +350,17 @@ xref
 0000000148 00000 n 
 0000000245 00000 n 
 0000000371 00000 n 
-0000003410 00000 n 
-0000003536 00000 n 
-0000006485 00000 n 
-0000006611 00000 n 
-0000009639 00000 n 
-0000009767 00000 n 
-0000012801 00000 n 
-0000012929 00000 n 
-0000015838 00000 n 
-0000015966 00000 n 
+0000003610 00000 n 
+0000003736 00000 n 
+0000006733 00000 n 
+0000006859 00000 n 
+0000009736 00000 n 
+0000009864 00000 n 
+0000012902 00000 n 
+0000013030 00000 n 
+0000016111 00000 n 
+0000016239 00000 n 
 trailer << /Size 16 /Root 1 0 R >>
 startxref
-18083
+18385
 %%EOF

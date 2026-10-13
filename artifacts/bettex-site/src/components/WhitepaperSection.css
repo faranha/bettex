@@ -1,3 +1,18 @@
+.whitepaper .ba + .ba {
+  margin-top: clamp(24px, 3vw, 40px);
+}
+
+.whitepaper__toc-row { display: flex; align-items: stretch; }
+.whitepaper__toc-row > .whitepaper__toc-sublink { flex: 1; min-width: 0; }
+.whitepaper__reference-toggle {
+  flex: 0 0 36px; min-height: 44px; display: grid; place-items: center;
+  border: 0; background: transparent; color: var(--wp-ink); cursor: pointer;
+}
+.whitepaper__reference-toggle:hover { background: rgba(19,32,79,.07); }
+.whitepaper__reference-toggle:focus-visible { outline: 2px solid #2B59FF; outline-offset: -2px; }
+.whitepaper__reference-menu-items { list-style: none; padding: 0; margin: 0; }
+.whitepaper__reference-menu-items[hidden] { display: none; }
+
 .whitepaper {
   --wp-ink: #070B1F;
   --wp-paper: #F4F1E8;
@@ -36,7 +51,7 @@
 .whitepaper__eyebrow span { width: 26px; height: 1px; background: currentColor; }
 .whitepaper__hero h1 { margin: 19px 0 24px; font: 800 clamp(3.4rem, 7vw, 7.1rem)/.96 var(--app-font-serif); letter-spacing: -.08em; overflow-wrap: anywhere; }
 .whitepaper__hero h1 em { font-style: normal; color: #2B59FF; }
-.whitepaper__hero-lede { max-width: 620px; margin: 0; font: 600 clamp(1.2rem, 2.2vw, 1.85rem)/1.35 var(--app-font-serif); letter-spacing: -.03em; }
+.whitepaper__hero-lede { max-width: 620px; margin: 0; font: 400 16px/1.7 var(--app-font-sans); letter-spacing: normal; }
 .whitepaper__hero-note { padding: 4px 0 5px 22px; border-left: 2px solid var(--wp-orange); }
 .whitepaper__hero-note > span { color: #9A6A00; }
 .whitepaper__hero-note p { margin: 11px 0 0; color: #13204F; font-size: 14px; line-height: 1.75; }
@@ -87,7 +102,7 @@
 .whitepaper strong { color: var(--wp-ink); font-weight: 800; }
 .whitepaper__lead { margin: 0 0 31px; padding: clamp(23px, 3vw, 33px); background: #F4F1E8; border: 1px solid #d9d3c0; border-left: 3px solid #102f83; }
 .whitepaper__lead > span, .whitepaper__aside-callout > span, .whitepaper__supply-top > span, .whitepaper__formula > span, .whitepaper__timeline > div > span, .whitepaper__rule-pair > div > span, .whitepaper__limits > div > span, .whitepaper__currency-grid > div > span, .whitepaper__risk-list > div > span { color: #1a347d; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .1em; }
-.whitepaper__lead p { max-width: 690px; margin: 12px 0 0; font: 650 clamp(1.35rem, 2.3vw, 1.85rem)/1.38 var(--app-font-serif); letter-spacing: -.035em; }
+.whitepaper__lead p { max-width: 690px; margin: 12px 0 0; font: 400 15px/1.85 var(--app-font-sans); letter-spacing: normal; }
 .whitepaper__lead--dark { color: var(--wp-paper); background: var(--wp-ink); border-color: var(--wp-ink); }
 .whitepaper__lead--dark > span, .whitepaper__lead--dark strong { color: var(--wp-mint); }
 .whitepaper__aside-callout { margin-top: 36px; padding: 23px 0 23px 23px; border-left: 2px solid var(--wp-orange); }
@@ -250,7 +265,7 @@
 }
 @media (max-width: 480px) {
   .whitepaper__chapter-head h2 { font-size: 2.6rem; }
-  .whitepaper__hero-lede { font-size: 1.28rem; }
+  .whitepaper__hero-lede { font-size: 15px; }
   .whitepaper__timeline > div { grid-template-columns: 1fr; gap: 7px; }
   .whitepaper__timeline p { grid-column: auto; }
   .whitepaper__rule-pair, .whitepaper__markets { grid-template-columns: 1fr; }
@@ -315,7 +330,7 @@
   .whitepaper__hero h1 { font-size: clamp(2.6rem, 14vw, 3.4rem); letter-spacing: -.06em; }
   .whitepaper__chapter-head h2 { font-size: clamp(1.7rem, 8.4vw, 2.2rem); }
   .whitepaper__lead, .whitepaper__supply, .whitepaper__formula, .whitepaper__flow, .whitepaper__glossary { padding: 18px; }
-  .whitepaper__lead p { font-size: 1.15rem; }
+  .whitepaper__lead p { font-size: 14.5px; line-height: 1.75; }
   .whitepaper__market-card, .whitepaper__rule-pair > div, .whitepaper__status-grid > div, .whitepaper__system > div, .whitepaper__currency-grid > div { padding: 18px; }
   .whitepaper__supply-top strong { font-size: 2.1rem; }
   .whitepaper__prose p { font-size: 14.5px; line-height: 1.75; }
@@ -359,7 +374,6 @@
 .whitepaper__prose li::marker { color: #2B59FF; }
 .whitepaper__prose p:last-child, .whitepaper__lead p:last-child { margin-bottom: 0; }
 .whitepaper__lead p + p { margin-top: 18px; }
-.whitepaper__lead p + p { font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.6; font-weight: 550; }
 .whitepaper__status-grid p + p, .whitepaper__system p + p, .whitepaper__currency-grid p + p, .whitepaper__aside-callout p + p, .whitepaper__glossary p + p, .whitepaper__market-card p + p, .whitepaper__hero-note p + p, .whitepaper__technical-body p + p, .whitepaper__risk-list p + p, .whitepaper__steps p + p, .whitepaper__timeline p + p, .whitepaper__rule-pair p + p, .whitepaper__flow li p + p { margin-top: 12px; }
 .whitepaper__hero-lede { max-width: 62ch; }
 .whitepaper__hero-lede + .whitepaper__hero-lede, .whitepaper__hero-lede + p { margin-top: 16px; }
@@ -393,7 +407,6 @@
 }
 @media (max-width: 480px) {
   .whitepaper__prose ul, .whitepaper__prose ol { font-size: 14.5px; padding-left: 1.2em; }
-  .whitepaper__lead p + p { font-size: 1.02rem; }
 }
 @media (min-width: 1100px) {
   .whitepaper__prose p { font-size: 16px; line-height: 1.85; }

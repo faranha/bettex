@@ -45,8 +45,17 @@ try {
         assert.equal(layout.competingCallouts, 1, 'Only the market block below the H1 remains');
         const image = page.locator('#visao .cover__project img');
         assert.equal(await image.count(), 1, 'The main character using the app remains in the restored hero');
-        assert.match(await image.getAttribute('src'), /pitch-hero-app-(pt|en|es)\.webp$/);
+        assert.match(await image.getAttribute('src'), /pitch-hero-app-cutout-(pt|en|es)\.webp$/);
         assert.ok(await image.evaluate(img => img.complete && img.naturalWidth > 0), 'The localized character artwork loads');
+        const framing = await page.locator('#visao .cover__project').evaluate(figure => {
+          const container = figure.closest('#visao');
+          const hero = container.getBoundingClientRect();
+          const border = parseFloat(getComputedStyle(container).borderBottomWidth) || 0;
+          const bounds = figure.getBoundingClientRect();
+          return { width: bounds.width, floorGap: Math.abs(bounds.bottom - (hero.bottom - border)) };
+        });
+        assert.ok(framing.width >= (width < 768 ? 200 : 300), 'Character must have a substantial visible composition, not a miniature bust');
+        assert.ok(framing.floorGap <= 2, `Character must reach the hero floor rather than ending with a floating torso cut: ${JSON.stringify(framing)}`);
         assert.deepEqual(layout.problems, [], `${path} ${width}px`);
         console.log(`PASS ${path} ${width}px: complete opening, no hidden, clipped or overlapping blocks`);
       } finally { await page.close(); }

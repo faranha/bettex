@@ -17,7 +17,7 @@
 - [SVG animation verification](svg-animation-verification.md) — target the animated scene explicitly; button icons are SVGs too and can produce misleading playback checks.
 - [Regras da tesouraria](treasury-rule-evolution.md) — manter administração e controles; definir decisões comunitárias e evolução para gestão por IA.
 - [Visão cripto e gestão por IA](bettex-foundation.md) — sem entidade formal, com domínio dos contratos; fundadores administram inicialmente e IA assume funções.
-- [Identidade e posicionamento](bettex-economic-identity.md) — comunidade aberta, token comunitário; motivação implícita, sem rótulo; preservar tokenomics técnica.
+- [Identidade e posicionamento](bettex-economic-identity.md) — transformar apostadores em investidores, nunca apostas em investimento; comunidade aberta e token comunitário.
 - [Engajamento com mercados no app](homepage-market-engagement.md) — painel operacional de BTC, SOL, ETH e agentes pertence ao app, não à homepage.
 - [Telegram flutuante](community-floating-button.md) — convite no canto inferior direito de todas as páginas, desktop e mobile, com opção de fechar.
 - [Saques diários](daily-withdrawal-behavior.md) — o criador exige modelar o hábito de sacar dinheiro todo dia nas projeções de taxas.
@@ -48,7 +48,7 @@
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
 - [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; históricos de sugestões e decisões consultáveis.
 - [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — BETTEX coordena Cripto; BTC/ETH/SOL são subagentes internos no grafo, não setores independentes.
-- [Real agent intelligence](real-agent-intelligence.md) — real inference is required; bound citations to supplied evidence; fixed-rule controls are not substitute intelligence.
+- [Real agent intelligence](real-agent-intelligence.md) — BETTEX orquestra com apoio de risco e tesouraria; exigir inferência real, não substituir inteligência por controles fixos.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
 - [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
 - [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
@@ -57,7 +57,8 @@
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
 - [Rodapé](footer-scope.md) — navegação compacta, convite simples ao Telegram no mobile e desktop; sem redes pessoais do fundador.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
-- [Ordem e leitura da documentação](documentation-reading-order.md) — Entidade após Visão; um capítulo visível por vez, com subseções apenas da área selecionada.
+- [Ordem e leitura da documentação](documentation-reading-order.md) — um capítulo por vez; introduzir conceitos e mostrar o percurso no app antes das regras técnicas.
+- [Arquitetura da documentação](documentation-architecture-ownership.md) — BETTEX e subagentes são atores principais; baseline e referências por responsável; features determinísticas separadas.
 - [Leitura do pitch](pitch-reading-behavior.md) — Público antes de Problema; cenário em Ambiente externo; Economia e Token em Tokenomics; menu segue a ordem das áreas; gráficos abertos.
 - [Go to market no Brasil](pitch-brazil-go-to-market.md) — substituir Onboarding; sem seção de Piloto nem expansão internacional nesse bloco do Pitch.
 - [Visual e tom do pitch](pitch-visual-direction.md) — leitores: grandes investidores e anjos; usuário: apostador brasileiro, sem “pequeno investidor” ou “adulto” como rótulo.
