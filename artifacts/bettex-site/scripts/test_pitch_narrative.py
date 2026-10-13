@@ -4,6 +4,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from verify_pitch_narrative import audit_pitch, verify_pitch_files
+from test_pitch_defai_guard import PitchDeFAIGuard
 
 
 COPY = {

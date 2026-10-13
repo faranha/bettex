@@ -19,6 +19,7 @@ import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/Pit
 import { formatCryptoDailyBillions } from '@/components/pitch/marketFlow';
 import { PitchHeroGraph } from '@/components/pitch/PitchHeroGraph';
 import { PitchProductResources } from '@/components/pitch/PitchProductResources';
+import { PitchDeFAIVision } from '@/components/pitch/PitchDeFAIVision';
 import { t, useLocale } from '@/lib/i18n';
 import './pitch.css';
 
@@ -131,6 +132,7 @@ export function PitchPage() {
 
     <section id="tokenomics" aria-labelledby="economia-t">
     <Sec id="economia" hero="pitch-illustrations/pitch-economy-separation.webp" summary="Emissão, financiamento do projeto e participação nos resultados, com recursos separados." n="06" kicker="Tokenomics" title={<>Tokenomics.<br /><span className="text-[#2B59FF]">Emissão, tesouraria e direitos do token.</span></>}>
+      <PitchDeFAIVision />
       <div className="pb-fin-scene" id="financiamento">
       <img className="pb-fin-scene__figure" src={`${BASE}/hero-person-phone.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
       <div className="pb-fin-scene__content">
