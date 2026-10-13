@@ -98,3 +98,4 @@
 - [Compartilhamento social](social-sharing-policy.md) — artes duráveis, previsões explícitas e nova URL ao trocar a mensagem; preservar links antigos.
 - [Perfis de verificação](verification-profiles.md) — CI do demo visual não certifica integrações históricas; exclusões explícitas, sem reativar finanças para testes.
 - [Hero do Pitch](pitch-hero-hierarchy.md) — H1 prioritário; personagem usando o app em cutout, sem caixa nem legenda.
+- [Vesting na documentação mobile](documentation-vesting-mobile.md) — consulta compacta dos 24 meses; gráficos visíveis no HTML inicial, sem depender de medir capítulos ocultos.

@@ -1,6 +1,7 @@
 import { formatTokenCount, documentationTokenomics as tokenomics } from '@/lib/tokenomics';
 import { documentationVestingSchedule as vestingSchedule } from '@/lib/documentation-vesting';
 import { VestingChart, MonthlyVestingChart } from '@/components/VestingChart';
+import { VestingMonthSelector } from '@/components/VestingMonthSelector';
 
 export function VestingSchedule() {
   return (
@@ -13,7 +14,8 @@ export function VestingSchedule() {
       </div>
       <MonthlyVestingChart />
       <VestingChart />
-      <div className="whitepaper__vesting-scroll" role="region" aria-label="Agenda dos 24 meses, com rolagem horizontal e vertical" tabIndex={0}>
+      <VestingMonthSelector />
+      <div className="whitepaper__vesting-scroll whitepaper__vesting-desktop" role="region" aria-label="Agenda dos 24 meses, com rolagem horizontal e vertical" tabIndex={0}>
         <table className="whitepaper__vesting-table">
           <caption>Quantidades em BETTEX · vesting a partir de março de 2027 · mint inicial separado</caption>
           <thead>

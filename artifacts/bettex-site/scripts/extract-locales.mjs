@@ -43,6 +43,8 @@ function scan(file) {
   if (!/\.tsx?$/.test(file) || file.includes('/lib/localized/') || file.endsWith('/i18n.ts')) return;
   const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   function visit(node) {
+    // Closing an SVG path is drawing syntax, not a translatable label.
+    if (file.endsWith('/components/VestingPlot.tsx') && ts.isStringLiteral(node) && node.text === 'Z') return;
     if (/\/lib\/documentation-intelligence(?:-presentation)?\.ts$/.test(file) && ts.isArrayLiteralExpression(node) &&
       node.elements.length === 3 && node.elements.every(ts.isStringLiteral)) {
       add(node.elements[0].text);

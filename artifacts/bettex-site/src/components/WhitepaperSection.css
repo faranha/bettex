@@ -40,6 +40,9 @@
 .whitepaper__hero-note { padding: 4px 0 5px 22px; border-left: 2px solid var(--wp-orange); }
 .whitepaper__hero-note > span { color: #9A6A00; }
 .whitepaper__hero-note p { margin: 11px 0 0; color: #13204F; font-size: 14px; line-height: 1.75; }
+.whitepaper__hero-markets { margin: 14px 0; padding-left: 18px; color: #13204F; font-size: 14px; line-height: 1.65; }
+.whitepaper__hero-markets li + li { margin-top: 9px; }
+.whitepaper__hero-markets strong { font-weight: 800; }
 .whitepaper__body { display: grid; grid-template-columns: 244px minmax(0, 1fr); gap: clamp(45px, 7vw, 105px); align-items: start; padding-top: clamp(45px, 6vw, 80px); padding-bottom: clamp(80px, 10vw, 150px); border-top: 1px solid var(--wp-line); }
 .whitepaper__aside { position: sticky; top: 92px; }
 .whitepaper__aside-inner { max-height: calc(100dvh - 110px); overflow-y: auto; scrollbar-color: var(--bettex-scrollbar-thumb) var(--bettex-scrollbar-track); }
@@ -141,9 +144,32 @@
 .whitepaper__vesting-legend i { display: block; width: 10px; height: 10px; flex-shrink: 0; }
 .whitepaper__vesting-chart-body { width: 100%; min-width: 0; height: 320px; }
 .whitepaper__vesting-chart-note { margin: 16px 0 0; }
+.whitepaper__vesting-plot { display: block; width: 100%; height: 100%; }
+.whitepaper__vesting-month { display: none; }
+@media (max-width: 768px) {
+  .whitepaper .whitepaper__vesting-desktop { display: none; }
+  .whitepaper__vesting-month { display: block; margin-top: 24px; border: 1px solid #d9d3c0; padding: 14px 12px; color: #13204F; font-variant-numeric: tabular-nums; }
+  .whitepaper__vesting-month-nav { display: flex; align-items: center; justify-content: space-between; }
+  .whitepaper__vesting-month-nav button { width: 44px; height: 44px; border: 1px solid #d9d3c0; background: #ebe7dc; color: #13204F; font-size: 28px; cursor: pointer; }
+  .whitepaper__vesting-month-nav button:disabled { opacity: .35; cursor: default; }
+  .whitepaper__vesting-range { display: block; padding: 6px 0; }
+  .whitepaper__vesting-range input { display: block; width: 100%; height: 44px; accent-color: #0a256f; cursor: pointer; }
+  .whitepaper__vesting-month-columns, .whitepaper__vesting-month-values > div { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 8px; }
+  .whitepaper__vesting-month-columns { padding: 8px 0; font-size: 11px; font-weight: 700; }
+  .whitepaper__vesting-month-columns span:not(:first-child) { text-align: right; }
+  .whitepaper__vesting-month-values { margin: 0; }
+  .whitepaper__vesting-month-values > div { padding: 12px 0; border-top: 1px solid #d9d3c0; font-size: 11px; }
+  .whitepaper__vesting-month-values dt { line-height: 1.45; font-weight: 600; }
+  .whitepaper__vesting-month-values dd { margin: 0; text-align: right; white-space: nowrap; }
+  .whitepaper__vesting-month-values > div:last-child { font-weight: 800; }
+}
+@media print {
+  .whitepaper .whitepaper__vesting-desktop { display: block; }
+  .whitepaper__vesting-month { display: none; }
+}
 @media (max-width: 600px) {
   .whitepaper__vesting-chart { padding: 18px 10px; }
-  .whitepaper__vesting-chart-body { height: 270px; }
+  .whitepaper__vesting-chart-body { height: auto; aspect-ratio: 2; }
 }
 .whitepaper__markets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 33px; border: 1px solid #d9d3c0; background: #d9d3c0; }
 .whitepaper__market-card { display: flex; min-width: 0; flex-direction: column; padding: 24px; background: #F4F1E8; }
