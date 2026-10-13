@@ -9,11 +9,11 @@ const passages = {
   riskRole: ['Cenários e premissas', 'Scenarios and assumptions', 'Escenarios y premisas'],
   governanceRole: ['Interpretação e propostas', 'Interpretation and proposals', 'Interpretación y propuestas'],
   treasuryRole: ['Capital, liquidez e alternativas', 'Capital, liquidity and alternatives', 'Capital, liquidez y alternativas'],
-  marketsTitle: ['Agentes de mercado', 'Market agents', 'Agentes de mercado'],
+  marketsTitle: ['Subagentes de trading por mercado', 'Trading subagents by market', 'Subagentes de trading por mercado'],
   markets: [
-    'A pesquisa inclui análises e hipóteses em ações e cripto, esportes, previsões e iGaming. A linha de base demonstrativa não executa operações reais; a abertura de cada mercado depende de integração e adequação legal.',
-    'Research includes analyses and hypotheses across equities and crypto, sports, predictions and iGaming. The demonstration baseline does not execute real operations; opening each market depends on integration and legal compliance.',
-    'La investigación incluye análisis e hipótesis en acciones y cripto, deportes, predicciones e iGaming. La línea de base demostrativa no ejecuta operaciones reales; la apertura de cada mercado depende de integración y adecuación legal.',
+    'Cada mercado terá seu próprio subagente de trading, que se comunicará diretamente com o agente BETTEX. A pesquisa inclui análises e hipóteses em ações e cripto, esportes e esports, previsões e iGaming. A linha de base demonstrativa não executa operações reais; a abertura de cada mercado depende de integração e adequação legal.',
+    'Each market will have its own trading subagent, which will communicate directly with the BETTEX agent. Research includes analyses and hypotheses across equities and crypto, sports and esports, predictions and iGaming. The demonstration baseline does not execute real operations; opening each market depends on integration and legal compliance.',
+    'Cada mercado tendrá su propio subagente de trading, que se comunicará directamente con el agente BETTEX. La investigación incluye análisis e hipótesis en acciones y cripto, deportes y esports, predicciones e iGaming. La línea de base demostrativa no ejecuta operaciones reales; la apertura de cada mercado depende de integración y adecuación legal.',
   ],
   paramsTitle: ['Contexto e parâmetros iniciais', 'Initial context and parameters', 'Contexto y parámetros iniciales'],
   params: [

@@ -6,7 +6,7 @@ https://bettex.ai/es/documentacion
 
 Agente BETTEX y subagentes
 
-BETTEX es el agente central de una arquitectura multiagente. Su inteligencia propia se desarrollará para interpretar el contexto general, formular objetivos y construir decisiones con el apoyo de subagentes especializados en mercados, riesgo, tesorería y gobernanza. Sistema BETTEX es el nombre de la arquitectura completa; agente BETTEX identifica su inteligencia central.
+BETTEX es el agente central de coordinación previsto para una arquitectura multiagente descentralizada. Su inteligencia propia se desarrollará para interpretar el contexto general, formular objetivos y construir decisiones. Cada mercado tendrá su propio subagente de trading, que se comunicará directamente con el agente BETTEX, con apoyo de subagentes de riesgo, tesorería y gobernanza. Sistema BETTEX es el nombre de la arquitectura completa; agente BETTEX identifica su inteligencia central.
 
 Los subagentes desarrollan análisis e inferencias en sus especialidades. Pueden cuestionar hipótesis del agente BETTEX, compartir evidencias y recibir nuevas preguntas. No son versiones independientes de BETTEX ni simples verificadores de parámetros. La coordinación central no elimina la validación independiente de riesgo ni autoriza ignorar los controles.
 

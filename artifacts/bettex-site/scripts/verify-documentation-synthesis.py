@@ -22,7 +22,11 @@ const notices = intelligenceTranslations[intelligenceCopy.governanceNotice];
 for (const entry of Object.values(catalog)) {
   for (const lang of ['pt', 'en', 'es']) entry[lang] = terms(entry[lang], lang);
 }
-console.log(JSON.stringify({ catalog, notices: Object.fromEntries(Object.entries(notices).map(([lang, text]) => [lang, terms(text, lang)])) }));
+const openings = Object.fromEntries(['hero', 'visaoLead', 'agP1'].map(key => [
+  key, Object.fromEntries(Object.entries(intelligenceTranslations[intelligenceCopy[key]])
+    .map(([lang, text]) => [lang, terms(text, lang)])),
+]));
+console.log(JSON.stringify({ catalog, openings, notices: Object.fromEntries(Object.entries(notices).map(([lang, text]) => [lang, terms(text, lang)])) }));
 """], input=json.dumps(catalog), text=True, capture_output=True, check=True, cwd=app,
 ).stdout)
 notices = editorial["notices"]
@@ -113,6 +117,9 @@ for route, expected in baseline["routes"].items():
         assert not any(key == "href" and value.startswith("/downloads/")
                        for _, key, value in page.structure), f"Download links restored: {route}"
         language = "en" if route.startswith("/en/") else "es" if route.startswith("/es/") else "pt"
+        for key, localized in editorial["openings"].items():
+            expected_opening = re.sub(r"\s+", " ", localized[language]).strip()
+            assert expected_opening in page.paragraphs, f"Missing market/audience opening: {language}/{key}"
         flows, spacing_errors = audit_spacing(file.read_text())
         assert not spacing_errors, f"Documentation text-flow spacing errors: {language}: {spacing_errors[:8]}"
         print(f"{route}: {len(flows)} text flows checked across paragraphs, lists, diagrams, captions, headings and tables")

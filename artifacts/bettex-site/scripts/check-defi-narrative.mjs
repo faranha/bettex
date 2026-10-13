@@ -88,7 +88,7 @@ const whitepaper = await read('src/components/WhitepaperSection.tsx');
 assert.doesNotMatch(whitepaper.match(/whitepaper__hero-lede[^>]*>([^<]+)/)?.[1] ?? '', /distribuição de resultados/);
 assert.match(whitepaper, /intelligenceCopy\.hero/);
 assert.match(await read('src/lib/documentation-intelligence.ts'), /Esta visão técnica apresenta a linha de base do projeto e sua direção de pesquisa, não um sistema concluído/);
-assert.match(await read('src/lib/documentation-intelligence.ts'), /agente BETTEX: uma inteligência central apoiada por subagentes/);
+assert.match(await read('src/lib/documentation-intelligence.ts'), /O agente BETTEX será a inteligência central de coordenação/);
 const social = await read('scripts/restore-home-social.mjs');
 assert.match(social, /generate-social-cards\.mjs/);
 const socialTemplate = `${await read('public/social-preview.html')}\n${await read('public/social-preview.js')}`;
