@@ -40,8 +40,9 @@ assert.match(tokenMaterials, /24 meses/);
 assert.doesNotMatch(tokenMaterials, /65%|36 meses|13:4:3|650 milhões/);
 for (const source of ['src/components/VestingChart.tsx', 'src/components/pitch/PitchTokenCharts.tsx']) {
   const chart = await read(source);
-  assert.match(chart, /documentation-vesting/);
-  assert.match(chart, /initialMintAllocation/);
+  const dataRenderer = source.endsWith('/VestingChart.tsx') ? await read('src/components/VestingPlot.tsx') : chart;
+  assert.match(dataRenderer, /documentation-vesting/);
+  assert.match(dataRenderer, /initialMintAllocation/);
   assert.match(chart, /[Nn]ão representa emissão executada/);
 }
 assert(!/piloto|MAU|5\.000 usuários|Capital do piloto/i.test(JSON.stringify(materials)), 'Downloads must not retain launch targets or projections.');

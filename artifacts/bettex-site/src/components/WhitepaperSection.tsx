@@ -219,7 +219,17 @@ export function WhitepaperSection() {
           <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}{' '}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
           <p className="whitepaper__hero-lede">{intelligenceCopy.hero}</p>
         </div>
-        <div className="whitepaper__hero-note"><span>MOEDAS E PARTICIPAÇÃO</span><p>Saldos e movimentações previstos são em USDC; BETTEX é o token de participação.</p><p>A entrada em moeda fiduciária depende de um provedor externo habilitado.</p></div>
+        <div className="whitepaper__hero-note">
+          <span>MERCADOS E FOCO</span>
+          <p>O foco é o apostador que hoje trata a aposta como investimento.</p>
+          <ul className="whitepaper__hero-markets">
+            <li><strong>Esportes · Surebetting:</strong>{' '}arbitragem entre odds de diferentes casas de apostas.</li>
+            <li><strong>iGaming:</strong>{' '}análise de probabilidades, valor esperado e risco nos jogos.</li>
+            <li><strong>Predictions:</strong>{' '}negociação de contratos sobre resultados de eventos.</li>
+            <li><strong>Cripto:</strong>{' '}trading de ativos digitais e arbitragem entre mercados.</li>
+          </ul>
+          <p>A proposta da BETTEX é transformar apostas em uma oportunidade real de investimento, com estratégias de mercado, automação por IA e gestão de risco.</p>
+        </div>
       </header>
       <div className="whitepaper__body page-wrap" id="documentacao-indice">
         <aside className="whitepaper__aside" aria-label="Índice da documentação">

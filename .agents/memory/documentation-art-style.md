@@ -5,6 +5,12 @@ description: Menos esquemas, mais texto e imagens; bullets para itens e regras; 
 
 Na documentação, “praticamente todos os itens merecem bullets”; aplicar listas onde fizer sentido.
 
+Na abertura da documentação, a apresentação dos mercados deve explicar Esportes/Surebetting, iGaming, Predictions e Cripto, com foco no apostador que hoje trata a aposta como investimento.
+
+**Why:** O usuário pediu essa apresentação no bloco destacado da abertura e definiu a proposta como oferecer uma oportunidade real de investimento, ou transformar apostas em investimento.
+
+**How to apply:** Apresentar a tese como proposta do projeto, sem prometer retorno. Não reduzir esse bloco a moedas, saldos ou meios de entrada.
+
 **Why:** O criador apontou que os blocos de elegibilidade, rodada, peso e entradas/saídas estavam apresentados como parágrafos sem bullets.
 
 **How to apply:** Apresentar grupos de regras, condições e etapas em listas sem perder texto, destaques, links ou condições econômicas. Manter introduções e narrativa em parágrafos quando não forem enumerações. Esta orientação não autoriza mudanças na homepage ou no Pitch.

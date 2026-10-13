@@ -1,4 +1,39 @@
 {
+  "MERCADOS E FOCO": { "en": "MARKETS AND FOCUS", "es": "MERCADOS Y ENFOQUE" },
+  "O foco é o apostador que hoje trata a aposta como investimento.": {
+    "en": "The focus is the bettor who currently treats betting as an investment.",
+    "es": "El enfoque es el apostador que hoy trata la apuesta como una inversión."
+  },
+  "Esportes · Surebetting:": { "en": "Sports · Surebetting:", "es": "Deportes · Surebetting:" },
+  "arbitragem entre odds de diferentes casas de apostas.": {
+    "en": "arbitrage between odds at different sportsbooks.",
+    "es": "arbitraje entre cuotas de distintas casas de apuestas."
+  },
+  "iGaming:": { "en": "iGaming:", "es": "iGaming:" },
+  "análise de probabilidades, valor esperado e risco nos jogos.": {
+    "en": "analysis of probabilities, expected value and risk in games.",
+    "es": "análisis de probabilidades, valor esperado y riesgo en los juegos."
+  },
+  "Predictions:": { "en": "Predictions:", "es": "Predictions:" },
+  "negociação de contratos sobre resultados de eventos.": {
+    "en": "trading contracts on event outcomes.",
+    "es": "negociación de contratos sobre resultados de eventos."
+  },
+  "Cripto:": { "en": "Crypto:", "es": "Cripto:" },
+  "trading de ativos digitais e arbitragem entre mercados.": {
+    "en": "trading digital assets and arbitrage across markets.",
+    "es": "trading de activos digitales y arbitraje entre mercados."
+  },
+  "A proposta da BETTEX é transformar apostas em uma oportunidade real de investimento, com estratégias de mercado, automação por IA e gestão de risco.": {
+    "en": "BETTEX's proposal is to turn betting into a real investment opportunity through market strategies, AI automation and risk management.",
+    "es": "La propuesta de BETTEX es transformar las apuestas en una oportunidad real de inversión, con estrategias de mercado, automatización mediante IA y gestión del riesgo."
+  },
+  "Total": { "en": "Total", "es": "Total" },
+  "{0} {1} · {2}: {3} BETTEX": { "en": "{0} {1} · {2}: {3} BETTEX", "es": "{0} {1} · {2}: {3} BETTEX" },
+  "Mês anterior": { "en": "Previous month", "es": "Mes anterior" },
+  "Próximo mês": { "en": "Next month", "es": "Mes siguiente" },
+  "Mensal": { "en": "Monthly", "es": "Mensual" },
+  "Acumulado": { "en": "Cumulative", "es": "Acumulado" },
   "Os 10% do mint inicial ficam separados: não são uma parcela mensal nem antecipam tokens de fundador/equipe ou investidores. O lançamento do sistema está previsto para essa etapa, sujeito à adequação legal e jurídica.": {
     "en": "The initial mint's 10% remains separate: it is not a monthly installment and does not advance founder/team or investor tokens. The system launch is planned for this stage, subject to legal compliance.",
     "es": "El 10% del mint inicial queda separado: no es una cuota mensual ni anticipa tokens del fundador/equipo o de los inversores. El lanzamiento del sistema está previsto para esta etapa, sujeto a la adecuación legal y jurídica."
