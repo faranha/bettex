@@ -29,6 +29,24 @@ A documentação deve tratar a inteligência central como **agente BETTEX** e as
 
 **How to apply:** Ao trocar nomenclatura, revisar também artigos e adjetivos, inclusive nos textos renderizados e rótulos dos diagramas. Não masculinizar frases cujo sujeito continue sendo “inteligência”.
 
+A abertura e a visão inicial da documentação devem apresentar subagentes de trading para esports, iGaming, cripto e predictions, e a audiência: pessoas que hoje apostam, tratando apostas como investimento.
+
+**Why:** O criador exigiu que os mercados e a audiência apareçam já na visão inicial, não apenas em capítulos posteriores.
+
+**How to apply:** Manter essas informações na descrição de entrada, na Visão e na descrição do trabalho do agente, nos três idiomas. Apresentar desenvolvimento e pesquisa sem afirmar operação concluída nem prometer retorno; não alterar Homepage ou Pitch por esse pedido.
+
+Cada mercado tem um subagente próprio que se comunica com a inteligência central, o agente BETTEX; não existe um único subagente genérico de mercados.
+
+**Why:** O criador corrigiu explicitamente a descrição dos subagentes.
+
+**How to apply:** Apresentar especialização por mercado e comunicação com BETTEX, inclusive nos resumos e na hierarquia. Inteligência central de coordenação não significa operador centralizado.
+
+A abertura da documentação deve explicitar a migração de DeFi para DeFi AI (DeFAI), com um agente descentralizado, 100% autônomo e independente, sem operador centralizado.
+
+**Why:** O criador exigiu esse conceito na abertura.
+
+**How to apply:** Apresentar autonomia total e descentralização como direção de desenvolvimento, preservando a distinção entre objetivo e capacidade atual.
+
 O subagente de governança deve ter a função de atualizar a documentação.
 
 **Why:** O criador pediu explicitamente: “no subagente de governança adicione a funcao de atualizar a documentacao”.

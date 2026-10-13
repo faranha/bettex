@@ -1,6 +1,38 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { documentationAgentTerminology as terms, isDocumentationPath } from '../src/lib/documentation-agent-terminology.ts';
+import { intelligenceCopy, intelligenceTranslations } from '../src/lib/documentation-intelligence.ts';
+
+test('documentation openings name every trading market and the betting audience in all languages', () => {
+  for (const language of ['pt', 'en', 'es']) {
+    for (const key of ['hero', 'visaoLead', 'agP1']) {
+      const text = intelligenceTranslations[intelligenceCopy[key]][language].toLowerCase();
+      for (const market of ['esports', 'igaming', language === 'en' ? 'crypto' : 'cripto', 'predictions']) {
+        assert.ok(text.includes(market), `${language}/${key} omits ${market}`);
+      }
+      assert.match(text, language === 'en' ? /\bsubagents?\b/ : /\bsubagentes?\b/);
+      assert.ok(text.includes(language === 'en' ? 'each market' : 'cada mercado'));
+      assert.ok(text.includes({ pt: 'seu próprio subagente', en: 'its own trading subagent', es: 'su propio subagente' }[language]));
+      assert.ok(text.includes({ pt: 'se comunicará', en: 'will communicate', es: 'se comunicará' }[language]));
+    }
+    const audience = {
+      pt: 'pessoas que hoje apostam e tratam apostas como investimento',
+      en: 'people who currently bet and treat betting as an investment',
+      es: 'personas que hoy apuestan y tratan las apuestas como una inversión',
+    }[language];
+    for (const key of ['hero', 'visaoLead']) {
+      const text = intelligenceTranslations[intelligenceCopy[key]][language];
+      assert.ok(text.includes(audience),
+        `${language}/${key} omits the intended audience`);
+      for (const concept of ['DeFi', 'DeFi AI', 'DeFAI', '100%',
+        { pt: 'descentralizado', en: 'decentralized', es: 'descentralizado' }[language],
+        { pt: 'independente', en: 'independent', es: 'independiente' }[language],
+        { pt: 'sem operador centralizado', en: 'no centralized operator', es: 'sin operador centralizado' }[language]]) {
+        assert.ok(text.includes(concept), `${language}/${key} omits ${concept}`);
+      }
+    }
+  }
+});
 
 test('central agent stays distinct from specialized subagents in all languages', () => {
   assert.equal(terms('Agente BETTEX coordena agentes de risco. Agente de governança.', 'pt'),
