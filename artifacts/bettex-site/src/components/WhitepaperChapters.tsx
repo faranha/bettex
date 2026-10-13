@@ -13,6 +13,8 @@ import { RobinhoodFlowDiagram } from '@/components/docs-diagrams/RobinhoodFlowDi
 import { VestingSchedule } from '@/components/VestingSchedule';
 import { ServiceFees } from '@/components/ServiceFees';
 import { InvestmentAgents } from '@/components/InvestmentAgents';
+import { AgentIntelligence } from '@/components/AgentIntelligence';
+import { intelligenceCopy } from '@/lib/documentation-intelligence';
 import { StakingDistribution } from '@/components/StakingDistribution';
 import { ProfitAccounting } from '@/components/ProfitAccounting';
 import { DistributionCorrections } from '@/components/DistributionCorrections';
@@ -119,6 +121,7 @@ function MainBody({ id }: { id: string }) {
           { label: c.agF3, value: c.agF3v, text: c.agF3t },
         ]} />
         <Prose>{[c.agP4, c.agP5]}</Prose>
+        <AgentIntelligence />
         <Reference id="documentacao-referencia-agentes" label={c.refAg} parts={[
           { id: 'documentacao-rede', title: 'Starknet, Arbitrum e ativos' }, { id: 'documentacao-acesso', title: 'Acesso ao aplicativo' },
           { id: 'documentacao-arquitetura', title: 'Arquitetura e integrações' }, { id: 'documentacao-agentes-detalhe', title: 'Agentes de IA' },
@@ -181,6 +184,8 @@ function MainBody({ id }: { id: string }) {
         <ChapterArt n={0} />
         <div className="whitepaper__lead"><p>{c.visaoLead}</p></div>
         <Prose>{c.visaoP1}</Prose>
+        <Head id="documentacao-linha-base">{intelligenceCopy.baselineTitle}</Head>
+        <Prose>{intelligenceCopy.baseline}</Prose>
         <DocTerms id="schematic-overview" label={c.visaoEsquema} items={[
           [c.vTes, c.vTesT], [c.vAg, c.vAgT], [c.vTok, c.vTokT], [c.vPar, c.vParT],
         ]} />
