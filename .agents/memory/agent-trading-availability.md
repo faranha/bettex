@@ -9,6 +9,12 @@ Na home e na Central da IA, o criador pediu abas para Cripto, Esportes, Predicti
 
 **How to apply:** Abrir Cripto por padrão e preservar seus ativos e posições. Não apresentar operações ou resultados de Esportes, Predictions e Cassino como agentes disponíveis. Manter o escopo exclusivamente visual do demo.
 
+Esportes, Previsões e iGaming não estão disponíveis nem ativos no demo e não estão previstos para a versão ALFA. A documentação deve manter uma visão conceitual de como poderiam funcionar no futuro.
+
+**Why:** O criador exigiu esclarecer esses três estados e preservar a visão de funcionamento, sem apresentar os agentes como capacidades atuais ou planejadas para a ALFA.
+
+**How to apply:** Explicitar a indisponibilidade e a exclusão do escopo da ALFA nas três áreas e na visão geral. Usar linguagem prospectiva, sem promessa de lançamento, e apresentar detalhes existentes como referências conceituais futuras.
+
 Na home, as abas devem ficar dentro do bloco existente de Staking, junto dos indicadores, gráfico e contador. Não criar uma nova área “Agent trading” abaixo dele.
 
 **Why:** O criador corrigiu explicitamente a localização com dois prints: queria adicionar as abas ao bloco de Staking, não criar outra área.

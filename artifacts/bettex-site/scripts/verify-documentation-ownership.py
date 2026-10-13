@@ -83,7 +83,36 @@ def verify():
         assert not missing_ids, f'{route}: original deep links lost: {sorted(missing_ids)}'
         assert not set(original['links']) - set(current.links), f'{route}: original references lost'
         assert not set(original['images']) - set(current.images), f'{route}: original illustrations lost'
-        expected = Counter(p for p in original['paragraphs'] if p not in metadata)
+        # Precisely scoped copy corrections approved after the ownership snapshot.
+        # Keep the immutable baseline and all other paragraphs protected.
+        approved_proposals = {
+            'A proposta da BETTEX é transformar apostadores em investidores, com estratégias de mercado, automação por IA e gestão de risco.':
+                'A proposta da BETTEX é transformar apostadores em investidores por meio de um projeto DeFAI',
+            "BETTEX's proposal is to turn bettors into investors through market strategies, AI automation and risk management.":
+                "BETTEX's proposal is to turn bettors into investors through a DeFAI project",
+            'La propuesta de BETTEX es transformar a los apostadores en inversores, con estrategias de mercado, automatización mediante IA y gestión del riesgo.':
+                'La propuesta de BETTEX es transformar a los apostadores en inversores mediante un proyecto DeFAI',
+        }
+        def approved_copy(paragraph):
+            if paragraph in approved_proposals:
+                return approved_proposals[paragraph]
+            for prefix, sports in (
+                ('DeFi para DeFi AI (DeFAI). A BETTEX busca desenvolver', 'esportes (surebet)'),
+                ('From DeFi to DeFi AI (DeFAI). BETTEX aims to develop', 'sports (surebet)'),
+                ('De DeFi a DeFi AI (DeFAI). BETTEX busca desarrollar', 'deportes (surebet)'),
+                ('O agente BETTEX é a inteligência de orquestração de um sistema descentralizado.', 'esportes (surebet)'),
+                ('The BETTEX agent is the orchestration intelligence of a decentralized system.', 'sports (surebet)'),
+                ('El agente BETTEX es la inteligencia de orquestación de un sistema descentralizado.', 'deportes (surebet)'),
+            ):
+                if paragraph.startswith(prefix):
+                    updated = paragraph.replace('esports', sports)
+                    # Linked standalone terms use their existing locale translation.
+                    # Scope this to the Spanish opening, not normative body copy.
+                    if prefix.startswith('De DeFi a DeFi AI'):
+                        updated = updated.replace('predictions (mercados de predicción)', 'predicciones (mercados de predicción)')
+                    return updated
+            return paragraph
+        expected = Counter(approved_copy(p) for p in original['paragraphs'] if p not in metadata)
         missing = expected - Counter(current.paragraphs)
         assert not missing, f'{route}: original baseline paragraphs lost: {list(missing.items())[:8]}'
         assert 'documentation-poc-scope' in html, f'{route}: missing explicit POC scope'

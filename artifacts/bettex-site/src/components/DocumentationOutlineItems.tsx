@@ -13,7 +13,7 @@ type Props = {
 
 export function DocumentationOutlineItems(props: Props) {
   return <>{groupReferenceItems(props.items).map(({ item, children }) => {
-    const open = props.expanded[item.id] ?? item.referenceOpen ?? false;
+    const open = props.expanded[item.id] ?? false;
     const childrenId = `reference-menu-${item.id}`;
     return <li key={item.id}>
       <div className="whitepaper__toc-row">

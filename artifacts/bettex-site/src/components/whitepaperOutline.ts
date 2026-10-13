@@ -12,7 +12,7 @@ export type ChapterOutline = { id: string; number: string; title: string; items:
 /** Menu labels omit terminal punctuation; rendered headings and target IDs are untouched. */
 export const formatOutlineTitle = (s: string | null | undefined) =>
   (s ?? '').replace(/\s+/g, ' ').trim().replace(/[.!?…:;]+$/u, '').trim();
-const EXCLUDED = '.whitepaper__timeline, .whitepaper__market-card, .whitepaper__vesting-chart, table, .wp-facts, .whitepaper__status-grid, .whitepaper__system';
+const EXCLUDED = '.whitepaper__timeline, .whitepaper__market-card, .whitepaper__vesting-chart, table, .wp-facts, .whitepaper__status-grid, .whitepaper__system, [data-documentation-opening]';
 
 /** Offset of the real shared site header plus the compact mobile index. */
 export function scrollOffset(target?: Element) {
@@ -35,12 +35,12 @@ export function openAncestors(el: Element) {
  * Scans rendered chapters (so it works after locale changes), assigns stable ids
  * (existing ids kept) and numbering attributes, and returns the outline.
  */
-export function collectOutline(chapters: readonly { id: string; title: string }[]): ChapterOutline[] {
+export function collectOutline(chapters: readonly { id: string; title: string }[], numberForChapter = (index: number) => String(index + 1)): ChapterOutline[] {
   const used = new Set<string>();
   document.querySelectorAll('[id]').forEach(e => used.add(e.id));
   return chapters.map((chapter, ci) => {
     const article = document.getElementById(chapter.id);
-    const number = String(ci + 1);
+    const number = numberForChapter(ci);
     const titleEl = document.getElementById(`title-${chapter.id}`);
     const out: ChapterOutline = { id: chapter.id, number, title: formatOutlineTitle(titleEl?.textContent) || formatOutlineTitle(chapter.title), items: [] };
     if (!article) return out;

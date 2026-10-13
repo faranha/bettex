@@ -17,6 +17,7 @@ function add(value) {
   keys.add(value);
 }
 function scan(file) {
+  if (file.endsWith('/components/documentationReadingPages.ts')) return; // DOM tag/attribute protocol names, no interface copy.
   if (file.endsWith('/lib/documentation-agent-terminology.ts')) return; // Editorial normalization, audited separately.
   // Documentation research passages own PT/EN/ES tuples; only PT is a source key.
   // The isolated demo owns three-language tuples, not the site catalogue.
@@ -43,6 +44,14 @@ function scan(file) {
   if (!/\.tsx?$/.test(file) || file.includes('/lib/localized/') || file.endsWith('/i18n.ts')) return;
   const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   function visit(node) {
+    // DOM event names are protocol identifiers, not displayed labels.
+    if (ts.isStringLiteral(node) && ts.isCallExpression(node.parent) && node.parent.arguments[0] === node &&
+        ts.isPropertyAccessExpression(node.parent.expression) &&
+        ['addEventListener', 'removeEventListener'].includes(node.parent.expression.name.text)) return;
+    // Regex syntax/flags and internal reference-registry assertions are not UI copy.
+    if (ts.isNewExpression(node) && node.expression.getText(source) === 'RegExp') return;
+    if ((file.endsWith('/DocumentationRelatedTopics.tsx') || file.endsWith('/DocumentationFeaturesIntroduction.tsx')) &&
+        ts.isNewExpression(node) && node.expression.getText(source) === 'Error') return;
     if (file.endsWith('/AgentIntelligence.tsx') && ts.isStringLiteral(node) &&
       ['bettex', 'risk', 'treasury', 'governance', 'crypto', 'sports', 'predictions', 'igaming', 'relations', 'learning', 'context', 'support', 'markets'].includes(node.text)) return;
     // Documentation ownership selectors are implementation metadata, not prose.

@@ -1,33 +1,34 @@
 /** @jsxImportSource react */
 import { useLocale } from '@/lib/i18n';
+import { DocumentationLinkedTerms } from './DocumentationLinkedTerms';
 
 /** Explain the concepts before presenting the chapter's rules or technical reference. */
 export function DocumentationChapterIntroduction({ chapterId }: { chapterId: string }) {
   const locale = useLocale();
   const x = (pt: string, en: string, es: string) => locale === 'en' ? en : locale === 'es' ? es : pt;
-  const sections: Record<string, { term: string; text: string }[]> = {
+  const sections: Record<string, { id?: string; term: string; text: string }[]> = {
     'documentacao-como-funciona': [
-      { term: 'BETTEX', text: x(
+      { id: 'documentacao-conceito-bettex', term: 'BETTEX', text: x(
         'é uma comunidade que desenvolve um sistema de regras, chamado protocolo, para coordenar operações com programas de inteligência artificial, chamados agentes, e distribuir parte dos resultados. O participante mantém BETTEX, o ativo digital da comunidade, na carteira do aplicativo; os agentes cuidam da análise e coordenação das operações. No demo atual, tudo é apenas visual, sem movimentar dinheiro real.',
         'is a community developing a system of rules, called a protocol, to coordinate operations through artificial intelligence programs, called agents, and distribute a share of the results. A participant holds BETTEX, the community’s digital asset, in the app wallet; agents handle the analysis and coordination of operations. In the current demo, everything is visual only, without moving real money.',
         'es una comunidad que desarrolla un sistema de reglas, llamado protocolo, para coordinar operaciones mediante programas de inteligencia artificial, llamados agentes, y distribuir parte de los resultados. El participante mantiene BETTEX, el activo digital de la comunidad, en la cartera de la aplicación; los agentes atienden el análisis y la coordinación de operaciones. En el demo actual, todo es solo visual, sin mover dinero real.',
       ) },
-      { term: x('DeFi', 'DeFi', 'DeFi'), text: x(
+      { id: 'documentacao-conceito-defi', term: x('DeFi', 'DeFi', 'DeFi'), text: x(
         'significa finanças descentralizadas: serviços financeiros cujas regras são executadas por programas chamados contratos inteligentes em uma blockchain. A blockchain é um registro digital compartilhado; o contrato aplica as regras desse registro. Descentralização não elimina riscos nem responsabilidades.',
         'means decentralized finance: financial services whose rules are executed by programs called smart contracts on a blockchain. A blockchain is a shared digital record; a contract applies the rules recorded there. Decentralization does not eliminate risks or responsibilities.',
         'significa finanzas descentralizadas: servicios financieros cuyas reglas se ejecutan mediante programas llamados contratos inteligentes en una blockchain. La blockchain es un registro digital compartido; el contrato aplica las reglas de ese registro. La descentralización no elimina riesgos ni responsabilidades.',
       ) },
-      { term: x('DEX', 'DEX', 'DEX'), text: x(
+      { id: 'documentacao-conceito-dex', term: x('DEX', 'DEX', 'DEX'), text: x(
         'é uma plataforma descentralizada para trocar ativos digitais por meio de contratos. Negociar BETTEX em uma DEX significa comprar ou vender o token com outros participantes, não resgatar dinheiro da tesouraria do projeto. A possibilidade de negociação não garante compradores, preço ou liquidez.',
         'is a decentralized platform for exchanging digital assets through contracts. Trading BETTEX on a DEX means buying or selling the token with other participants, not redeeming money from the project treasury. The ability to trade does not guarantee buyers, price or liquidity.',
         'es una plataforma descentralizada para intercambiar activos digitales mediante contratos. Negociar BETTEX en una DEX significa comprar o vender el token con otros participantes, no rescatar dinero de la tesorería del proyecto. La posibilidad de negociar no garantiza compradores, precio ni liquidez.',
       ) },
-      { term: x('DeFAI', 'DeFAI', 'DeFAI'), text: x(
+      { id: 'documentacao-conceito-defai', term: x('DeFAI', 'DeFAI', 'DeFAI'), text: x(
         'combina DeFi com inteligência artificial. Na BETTEX, agentes de IA analisam informações e coordenam propostas e ações conforme permissões e controles. A IA não substitui as regras dos contratos nem torna uma operação automaticamente segura ou lucrativa.',
         'combines DeFi with artificial intelligence. In BETTEX, AI agents analyze information and coordinate proposals and actions under permissions and controls. AI does not replace contract rules or automatically make an operation safe or profitable.',
         'combina DeFi con inteligencia artificial. En BETTEX, agentes de IA analizan información y coordinan propuestas y acciones según permisos y controles. La IA no sustituye las reglas de los contratos ni convierte una operación en automáticamente segura o rentable.',
       ) },
-      { term: x('BETTEX e USDC', 'BETTEX and USDC', 'BETTEX y USDC'), text: x(
+      { id: 'documentacao-conceito-tokens', term: x('BETTEX e USDC', 'BETTEX and USDC', 'BETTEX y USDC'), text: x(
         'são tokens, ativos digitais registrados na blockchain. BETTEX é o token da comunidade: o saldo disponível no aplicativo permite participar dos resultados conforme as regras, sem dar propriedade da tesouraria. USDC é um token referenciado ao dólar, usado para saldos e pagamentos; seu valor em reais pode variar.',
         'are tokens, digital assets recorded on a blockchain. BETTEX is the community token: an available balance in the app allows participation in results under the rules, without conferring treasury ownership. USDC is a dollar-referenced token used for balances and payments; its value in Brazilian reais can vary.',
         'son tokens, activos digitales registrados en la blockchain. BETTEX es el token de la comunidad: el saldo disponible en la aplicación permite participar en los resultados según las reglas, sin dar propiedad de la tesorería. USDC es un token referenciado al dólar, usado para saldos y pagos; su valor en reales brasileños puede variar.',
@@ -117,6 +118,6 @@ export function DocumentationChapterIntroduction({ chapterId }: { chapterId: str
   const paragraphs = sections[chapterId];
   if (!paragraphs) return null;
   return <div className="whitepaper__prose" data-i18n="translated" data-testid={`documentation-concepts-${chapterId}`}>
-    {paragraphs.map(({ term, text }) => <p key={term}><strong>{term}</strong>{' '}{text}</p>)}
+    {paragraphs.map(({ id, term, text }) => <p key={term} id={id}><strong>{term}</strong>{' '}<DocumentationLinkedTerms text={text} contextId={id ?? chapterId} /></p>)}
   </div>;
 }

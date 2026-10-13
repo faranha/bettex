@@ -11,7 +11,7 @@
     "check:burn-analytics": "node --test src/components/demo/burn-analytics.test.ts",
     "check:allocation": "node scripts/extract-locales.mjs && node scripts/check-profit-allocation.mjs",
     "check:rounds": "node scripts/check-round-policy.mjs",
-    "check:docs": "node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs && node scripts/check-documentation-aliases.mjs && node scripts/check-documentation-update.mjs && node scripts/check-documentation-consistency.mjs",
+    "check:docs": "node scripts/check-documentation.mjs && node scripts/check-documentation-navigation.mjs && node scripts/check-documentation-reading-pages.mjs && node scripts/check-documentation-aliases.mjs && node scripts/check-documentation-update.mjs && node scripts/check-documentation-consistency.mjs",
     "check:editorial": "node scripts/check-documentation-aliases.mjs && python ../../scripts/check-editorial-revision.py",
     "check:locales": "node scripts/check-locales.mjs && node --test scripts/shared-locale-copy.test.mjs",
     "check:documentation-prose": "node --experimental-strip-types --test scripts/documentation-prose.test.mjs",
