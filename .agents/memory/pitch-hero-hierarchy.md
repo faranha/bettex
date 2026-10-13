@@ -50,6 +50,12 @@ Preparação, comunidade e mint e afirmou: “isso não pode”.
 **How to apply:** Conferir as imagens dos heros entre capítulos ao escolher
 ou substituir fundos. Cada capítulo deve ter uma imagem própria.
 
+O personagem do hero do Pitch precisa de escala e integração com a composição, usando a homepage como referência de qualidade. Não apresentar um busto pequeno flutuando, com cortes abruptos no meio do fundo.
+
+**Why:** O criador comparou os dois heros e rejeitou o tamanho, posicionamento e recorte do Pitch: “mal cortado, nao encaixado, ele termina com corte, nao esta inteiro, precisa melhorar MUITO”.
+
+**How to apply:** Conferir os limites visíveis da arte, não só o tamanho de seu arquivo com transparências. Preservar rosto e interação com o aplicativo; integrar a base da figura ao limite do hero e suavizar contornos truncados, sem cobrir o texto. Conferir desktop, tablet e mobile; não alterar a homepage para corrigir o Pitch.
+
 O H1 de abertura do Pitch deve dizer “A DeFi trading agent for gamblers and sports bettors”, com o mesmo sentido em português e espanhol.
 
 **Why:** O criador forneceu esse título ao corrigir a abertura genérica sobre vários mercados.

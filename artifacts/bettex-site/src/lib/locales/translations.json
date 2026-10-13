@@ -16,9 +16,9 @@
     "es": "arbitraje entre cuotas de distintas casas de apuestas."
   },
   "iGaming:": { "en": "iGaming:", "es": "iGaming:" },
-  "análise de probabilidades, valor esperado e risco nos jogos.": {
-    "en": "analysis of probabilities, expected value and risk in games.",
-    "es": "análisis de probabilidades, valor esperado y riesgo en los juegos."
+  "mineração de bônus e métodos de extração.": {
+    "en": "bonus mining and extraction methods.",
+    "es": "minería de bonos y métodos de extracción."
   },
   "Predictions:": { "en": "Predictions:", "es": "Predictions:" },
   "negociação de contratos sobre resultados de eventos.": {
@@ -30,9 +30,9 @@
     "en": "trading digital assets and arbitrage across markets.",
     "es": "trading de activos digitales y arbitraje entre mercados."
   },
-  "A proposta da BETTEX é transformar apostas em uma oportunidade real de investimento, com estratégias de mercado, automação por IA e gestão de risco.": {
-    "en": "BETTEX's proposal is to turn betting into a real investment opportunity through market strategies, AI automation and risk management.",
-    "es": "La propuesta de BETTEX es transformar las apuestas en una oportunidad real de inversión, con estrategias de mercado, automatización mediante IA y gestión del riesgo."
+  "A proposta da BETTEX é transformar apostadores em investidores, com estratégias de mercado, automação por IA e gestão de risco.": {
+    "en": "BETTEX's proposal is to turn bettors into investors through market strategies, AI automation and risk management.",
+    "es": "La propuesta de BETTEX es transformar a los apostadores en inversores, con estrategias de mercado, automatización mediante IA y gestión del riesgo."
   },
   "Total": { "en": "Total", "es": "Total" },
   "{0} {1} · {2}: {3} BETTEX": { "en": "{0} {1} · {2}: {3} BETTEX", "es": "{0} {1} · {2}: {3} BETTEX" },
@@ -1311,9 +1311,9 @@
     "en": "BETTEX is an open community whose direction is to evolve from DeFi toward DeFAI: decentralized finance managed with AI agents. BETTEX is its community token, not a share in a company or foundation.",
     "es": "BETTEX es una comunidad abierta cuya dirección es evolucionar de DeFi hacia DeFAI: finanzas descentralizadas gestionadas con agentes de IA. BETTEX es su token comunitario, no una acción de una empresa o fundación."
   },
-  "Coordena agentes sob políticas": {
-    "en": "Coordinates agents under policies",
-    "es": "Coordina agentes bajo políticas"
+  "Orquestração de subagentes": {
+    "en": "Subagent orchestration",
+    "es": "Orquestación de subagentes"
   },
   "A migração para DeFAI integra gestão e execução por IA, participação comunitária, regras, autorizações e controles independentes.": {
     "en": "The migration toward DeFAI combines AI management and execution, community participation, rules, authorizations and independent controls.",
@@ -2647,9 +2647,9 @@
     "en": "Physical BTEX token prototype in blue and gold metal, with the brand symbol and BTEX lettering embossed",
     "es": "Prototipo del token BTEX físico en metal azul y dorado, con el símbolo de la marca y la inscripción BTEX en relieve"
   },
-  "Resgatar o futuro, transformando a aposta em investimento.": {
-    "en": "Reclaiming the future by turning betting into investment.",
-    "es": "Rescatar el futuro, transformando la apuesta en inversión."
+  "Resgatar o futuro, transformando apostadores em investidores.": {
+    "en": "Reclaiming the future by turning bettors into investors.",
+    "es": "Rescatar el futuro, transformando a los apostadores en inversores."
   },
   "Demo BETTEX | Protótipo de participação e resultados": {
     "en": "BETTEX Demo | Participation and results prototype",

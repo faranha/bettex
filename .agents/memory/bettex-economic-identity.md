@@ -5,6 +5,12 @@ description: Definição econômica e posicionamento público aprovados pelo cri
 
 ## Direção comunitária atual
 
+A proposta é transformar apostadores em investidores, nunca transformar apostas em investimento.
+
+**Why:** O criador determinou: “nao podemos falar em nenhum lugar que queremos transformar aposta em investimento, mas transformar apostadores em investidores”.
+
+**How to apply:** Aplicar a distinção em todas as superfícies e traduções, inclusive no Pitch e na documentação. Essa correção global de posicionamento é autorizada mesmo nas páginas antes protegidas contra alterações; não autoriza mudanças não relacionadas nem altera riscos ou regras econômicas.
+
 A BETTEX é uma comunidade aberta; BETTEX é um token comunitário.
 Não há empresa ou fundação, salários ou taxas de serviço da BETTEX. Nos materiais autorizados, a apresentação
 abre com comunidade e propósito, não ganhos do token. Mint, percentuais,

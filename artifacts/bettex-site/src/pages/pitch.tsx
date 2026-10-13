@@ -108,7 +108,7 @@ export function PitchPage() {
       <p className="mb-8 max-w-[900px] text-base leading-7 text-[#183173]">A BETTEX é um projeto DeFi e DEX, sem entidade empresarial, que prevê trading com IA sob mandatos e limites de risco. Pelo staking, o usuário participa do rateio do pool global quando há lucro elegível, sem acompanhar cada operação, financiar o trading ou ter pagamento garantido. A gestão começa com o fundador e o time, com transição gradual para IA condicionada à validação do desempenho e a controles verificáveis.</p>
       <div className="fu-position">
         <span className="fu-signal-icon fu-position-icon"><CircuitBoard aria-hidden="true" /></span>
-        <p className="display fu-pos-lead">Resgatar o futuro, transformando a aposta em investimento.</p>
+        <p className="display fu-pos-lead">Resgatar o futuro, transformando apostadores em investidores.</p>
       </div>
       <SolutionParticipationFlow />
        <PitchProductResources />

@@ -22,6 +22,7 @@ class Element {
   get textContent() { return this.ownText + this.children.map(n => n.textContent).join(''); }
   matches(selector) {
     if (selector === '[id]') return Boolean(this.id);
+    if (selector === '[data-documentation-reference]') return Object.hasOwn(this.attributes, 'data-documentation-reference');
     const [tag, ...classes] = selector.split('.');
     return (!tag || tag.toUpperCase() === this.tagName) && classes.every(c => this.classes.has(c));
   }
@@ -54,7 +55,7 @@ globalThis.HTMLElement = Element;
 globalThis.HTMLDetailsElement = Details;
 const source = await fs.readFile(new URL('../src/components/whitepaperOutline.ts', import.meta.url), 'utf8');
 const compiled = await transformWithEsbuild(source, 'whitepaperOutline.ts', { loader: 'ts' });
-const { collectOutline, openAncestors, scrollOffset, outlineSignature } = await import(`data:text/javascript;base64,${Buffer.from(compiled.code).toString('base64')}`);
+const { collectOutline, groupReferenceItems, openAncestors, scrollOffset, outlineSignature } = await import(`data:text/javascript;base64,${Buffer.from(compiled.code).toString('base64')}`);
 let referenceIds;
 for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vision.'], ['es', 'Visión del proyecto.']]) {
   const root = new Element('div');
@@ -63,6 +64,7 @@ for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vis
   const article = new Element('article', '', 'documentacao-teste');
   const account = new Element('h3', `${locale}: account`);
   const policy = new Details('policy');
+  policy.setAttribute('data-documentation-reference', '');
   const policyHeading = new Element('h3', `${locale}: policy`, '', 'reading__title');
   policy.append(new Element('summary').append(policyHeading));
   const version = new Details('version');
@@ -82,7 +84,8 @@ for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vis
   };
   const chapters = [{ id: article.id, title: 'source title' }];
   const outline = collectOutline(chapters);
-  assert.equal(outline[0].title, title);
+  assert.equal(outline[0].title, title.replace(/\.$/u, ''));
+  assert.equal(document.getElementById('title-documentacao-teste').textContent, title);
   assert.deepEqual(outline[0].items.map(i => i.number), ['1.1', '1.2', '1.2.1', '1.2.1.1', '1.3']);
   assert.deepEqual(outline[0].items.map(i => i.level), [1, 1, 2, 3, 1]);
   assert.equal(account.id, 'documentacao-teste-secao-1-2');
@@ -91,8 +94,14 @@ for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vis
   if (referenceIds) assert.deepEqual(ids, referenceIds);
   referenceIds = ids;
   assert.equal(outlineSignature(collectOutline(chapters)), outlineSignature(outline));
+  const reference = groupReferenceItems(outline[0].items)[1];
+  assert.equal(reference.item.isReference, true);
+  assert.equal(reference.item.referenceOpen, false);
+  assert.deepEqual(reference.children.map(i => i.number), ['1.2.1', '1.2.1.1']);
+  assert.equal(policy.open, false, 'Menu collection must not open the content');
   openAncestors(controls);
   assert(policy.open && version.open);
+  assert.equal(collectOutline(chapters)[0].items.find(i => i.id === policy.id).referenceOpen, true);
   policy.open = false; version.open = false;
   openAncestors(version);
   assert(policy.open && version.open);

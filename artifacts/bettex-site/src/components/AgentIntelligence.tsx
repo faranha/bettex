@@ -9,6 +9,12 @@ export function AgentIntelligence() {
     ['documentacao-inteligencia-governanca', p.governanceRole, c.governanceTitle, c.governance, 'Versões, mandatos, limites, desvios e trilha de operações.'],
     ['documentacao-inteligencia-tesouraria', p.treasuryRole, c.treasuryTitle, c.treasury, 'Patrimônio, reservas, posições, compromissos e obrigações conciliados.'],
   ];
+  const markets = [
+    ['documentacao-subagente-crypto', p.cryptoTitle, p.crypto, p.cryptoProposal],
+    ['documentacao-subagente-sports', p.sportsTitle, p.sports, p.sportsProposal],
+    ['documentacao-subagente-predictions', p.predictionsTitle, p.predictions, p.predictionsProposal],
+    ['documentacao-subagente-igaming', p.igamingTitle, p.igaming, p.igamingProposal],
+  ];
   return <section id="documentacao-inteligencia" data-testid="documentation-agent-intelligence" className="agent-intel">
     <h3 className="whitepaper__subhead">{c.intelligenceTitle}</h3>
     <p className="agent-intel__label">{p.mapLabel}</p>
@@ -43,6 +49,13 @@ export function AgentIntelligence() {
       <section className="agent-intel__markets">
         <h4>{p.marketsTitle}</h4>
         <div className="whitepaper__prose"><p>{p.markets}</p></div>
+        <div className="agent-intel__market-list">
+          {markets.map(([market, title, analysis, proposal]) => <article key={market} data-trading-market={market} className="agent-intel__market">
+            <h5>{title}</h5>
+            <div className="whitepaper__prose"><p>{analysis}</p></div>
+            <div className="agent-intel__context"><span>{p.contributionLabel}</span><p>{proposal}</p></div>
+          </article>)}
+        </div>
       </section>
     </div>
 

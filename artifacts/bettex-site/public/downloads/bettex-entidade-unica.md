@@ -6,13 +6,13 @@ https://bettex.ai/documentacao
 
 Agente BETTEX e subagentes
 
-BETTEX é o agente central de coordenação previsto para uma arquitetura multiagente descentralizada. Sua inteligência própria será desenvolvida para interpretar o contexto geral, formular objetivos e construir decisões. Cada mercado terá seu próprio subagente de trading, que se comunicará diretamente com o agente BETTEX, com apoio de subagentes de risco, tesouraria e governança. Sistema BETTEX é o nome da arquitetura completa; agente BETTEX identifica sua inteligência central.
+BETTEX é o agente de orquestração da arquitetura multiagente descentralizada descrita nesta documentação. Seu foco é coordenar análises e construir decisões com apoio direto dos subagentes de risco e tesouraria. Os subagentes de trading de cada mercado apresentam propostas e evidências; risco e tesouraria apoiam sua avaliação antes de decisões de alocação ou execução. O subagente de governança acompanha políticas e documentação. Sistema BETTEX identifica a arquitetura completa; agente BETTEX identifica sua inteligência central de orquestração.
 
-Os subagentes desenvolvem análises e inferências em suas especialidades. Podem questionar hipóteses do agente BETTEX, compartilhar evidências e receber novas perguntas. Não são versões independentes de BETTEX nem apenas verificadores de parâmetros. A coordenação central não elimina a validação independente de risco nem autoriza ignorar os controles.
+O subagente de risco investiga exposição, cenários de perda e compatibilidade das propostas com os limites vigentes. O subagente de tesouraria analisa capital, reservas, liquidez e compromissos para orientar a disponibilidade e a alocação dos recursos. Ambos produzem análises e inferências para apoiar as decisões do agente BETTEX, podendo questionar hipóteses, compartilhar evidências e solicitar novas análises. Não são apenas verificadores de parâmetros nem versões independentes de BETTEX. A orquestração não elimina a validação independente de risco nem autoriza ignorar controles.
 
 Governança: interpretar e propor evolução
 
-O subagente de governança terá a função de manter e atualizar a documentação do sistema BETTEX. Deverá acompanhar decisões e mudanças aprovadas, revisar os capítulos e suas traduções, registrar versões e preservar a coerência entre a documentação, a implementação e as regras vigentes. Atualizar a documentação não aprova políticas nem modifica permissões ou direitos econômicos.
+O subagente de governança tem a função de manter e atualizar a documentação do sistema BETTEX. Acompanha decisões e mudanças aprovadas, revisa os capítulos e suas traduções, registra versões e preserva a coerência entre a documentação, a implementação e as regras vigentes. Atualizar a documentação não aprova políticas nem modifica permissões ou direitos econômicos.
 
 Adequação legal e jurídica
 

@@ -3,6 +3,9 @@ import { Children } from 'react';
 import thesis from '@/lib/new-economy-thesis.json';
 import growthStrategy from '@/lib/growth-strategy.json';
 import { DocumentationGames } from './DocumentationGames';
+import { DocumentationAppIntroduction } from './DocumentationAppIntroduction';
+import { DocumentationChapterIntroduction } from './DocumentationChapterIntroduction';
+import { DocumentationAppWalkthrough } from './DocumentationAppWalkthrough';
 import { LegalCompliance } from './LegalCompliance';
 import { TechnicalDetails } from './TechnicalDetails';
 import { documentationTokenomics as tokenomics, formatTokenCount } from '@/lib/tokenomics';
@@ -154,6 +157,7 @@ function MainBody({ id }: { id: string }) {
         <Head id="documentacao-saida">{c.pt4}</Head><Prose>{c.pt4p}</Prose>
         <Head id="documentacao-fracoes">{c.pt5}</Head><Prose>{c.pt5p}</Prose>
         <Head id="documentacao-exemplo">{c.pt6}</Head><Prose>{c.pt6p}</Prose>
+        <DocumentationAppIntroduction />
         <Head id="documentacao-regras-demo">{c.pt7}</Head><Prose>{c.pt7p}</Prose>
         <div className="whitepaper__prose"><p><a href="#documentacao-loteria">{c.pt7l}</a></p></div>
         <Reference id="documentacao-referencia-participacao" label={c.refPart} parts={[{ id: 'documentacao-staking-detalhe' }]} />
@@ -182,8 +186,8 @@ function MainBody({ id }: { id: string }) {
     default:
       return <>
         <ChapterArt n={0} />
-        <div className="whitepaper__lead"><p>{c.visaoLead}</p></div>
-        <Prose>{c.visaoP1}</Prose>
+        <DocumentationAppWalkthrough />
+        <div className="whitepaper__lead"><p>{c.visaoLead}</p><p>{c.visaoIndependencia}</p></div>
         <Head id="documentacao-linha-base">{intelligenceCopy.baselineTitle}</Head>
         <Prose>{intelligenceCopy.baseline}</Prose>
         <Head id="documentacao-agente-subagentes">{intelligenceCopy.agentDefinitionTitle}</Head>
@@ -550,5 +554,6 @@ function titleOf(el: ReactElement<{ children?: ReactNode; className?: string; id
 export function ChapterContent({ index }: { index: number }) {
   const raw = MainBody({ id: chapters[index]?.id ?? '' });
   if (!isValidElement(raw) || raw.type !== Fragment) return raw;
-  return <>{groupTopics((raw as ReactElement<{ children: ReactNode }>).props.children, () => 'bare')}</>;
+  return <><DocumentationChapterIntroduction chapterId={chapters[index]?.id ?? ''} />
+    {groupTopics((raw as ReactElement<{ children: ReactNode }>).props.children, () => 'bare')}</>;
 }

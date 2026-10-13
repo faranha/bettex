@@ -3,10 +3,11 @@ import { createPortal, flushSync } from 'react-dom';
 import { ChapterContent, chapters } from './WhitepaperChapters';
 import { ChapterVisibility } from './ChapterVisibility';
 import { DocumentationGovernanceMarquee } from './DocumentationGovernanceMarquee';
+import { DocumentationOutlineItems } from './DocumentationOutlineItems';
 import { intelligenceCopy } from '@/lib/documentation-intelligence';
 import { t, useLocale } from '@/lib/i18n';
 import { resolveDocumentationId } from '@/lib/documentation-aliases';
-import { collectOutline, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
+import { collectOutline, formatOutlineTitle, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
 import './WhitepaperSection.css';
 
 function prefersReduced() {
@@ -20,9 +21,10 @@ export function WhitepaperSection() {
   const [enhanced, setEnhanced] = useState(false);
   const active = selected;
   const [activeId, setActiveId] = useState<string>('');
-  const [outline, setOutline] = useState<ChapterOutline[]>(() => chapters.map((c, i) => ({ id: c.id, number: String(i + 1), title: t(c.title), items: [] })));
+  const [outline, setOutline] = useState<ChapterOutline[]>(() => chapters.map((c, i) => ({ id: c.id, number: String(i + 1), title: formatOutlineTitle(t(c.title)), items: [] })));
   const sigRef = useRef('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [expandedReferences, setExpandedReferences] = useState<Record<string, boolean>>({});
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [slot, setSlot] = useState<HTMLElement | null>(null);
@@ -212,7 +214,7 @@ export function WhitepaperSection() {
     <>
     {bar}
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
-      <DocumentationGovernanceMarquee total={total} />
+      <DocumentationGovernanceMarquee />
       <header className="whitepaper__hero page-wrap">
         <div>
           <p className="whitepaper__eyebrow" data-i18n="translated"><span aria-hidden="true" /> {t('v1 · VISÃO, ARQUITETURA E REGRAS').replace(/^v1\s*·\s*/, '')}</p>
@@ -224,11 +226,11 @@ export function WhitepaperSection() {
           <p>O foco é o apostador que hoje trata a aposta como investimento.</p>
           <ul className="whitepaper__hero-markets">
             <li><strong>Esportes · Surebetting:</strong>{' '}arbitragem entre odds de diferentes casas de apostas.</li>
-            <li><strong>iGaming:</strong>{' '}análise de probabilidades, valor esperado e risco nos jogos.</li>
+            <li><strong>iGaming:</strong>{' '}mineração de bônus e métodos de extração.</li>
             <li><strong>Predictions:</strong>{' '}negociação de contratos sobre resultados de eventos.</li>
             <li><strong>Cripto:</strong>{' '}trading de ativos digitais e arbitragem entre mercados.</li>
           </ul>
-          <p>A proposta da BETTEX é transformar apostas em uma oportunidade real de investimento, com estratégias de mercado, automação por IA e gestão de risco.</p>
+          <p>A proposta da BETTEX é transformar apostadores em investidores, com estratégias de mercado, automação por IA e gestão de risco.</p>
         </div>
       </header>
       <div className="whitepaper__body page-wrap" id="documentacao-indice">
@@ -261,14 +263,9 @@ export function WhitepaperSection() {
                     </a>
                     {current && item.items.length > 0 && (
                       <ul className="whitepaper__toc-sub">
-                        {item.items.map(sub => (
-                          <li key={sub.id}>
-                            <a href={`#${sub.id}`} className={`whitepaper__toc-sublink level-${sub.level}${activeId === sub.id ? ' is-active' : ''}`}
-                              aria-current={activeId === sub.id ? 'location' : undefined} onClick={(e) => jump(e, sub.id)} data-testid={`link-${sub.id}`}>
-                              <span className="whitepaper__toc-subnum">{sub.number}</span><span data-i18n="translated">{sub.title}</span>
-                            </a>
-                          </li>
-                        ))}
+                        <DocumentationOutlineItems items={item.items} activeId={activeId}
+                          expanded={expandedReferences} onNavigate={jump}
+                          onToggle={(id, open) => setExpandedReferences(previous => ({ ...previous, [id]: open }))} />
                       </ul>
                     )}
                   </div>

@@ -157,7 +157,7 @@ An already-localized parent does not disable eager translation of JSX created fo
 
 **Why:** Explicit PT/EN/ES copy passed source coverage and TypeScript but failed English prerendering: descendant JSX had already tried to translate its English text before the parent exemption was evaluated.
 
-**How to apply:** Fully self-localized components should use the React JSX runtime and translate all visible copy themselves, including shared strings. Mixed components can exempt individual localized text elements. A root-only exemption is insufficient; verify rendered locales.
+**How to apply:** Fully self-localized components should use the React JSX runtime and translate all visible copy themselves, including shared strings. Mixed components can exempt individual localized text elements. When passing already-translated children or labels into a shared component using the localized runtime, exempt that receiving boundary too. A root-only exemption is insufficient; verify rendered locales.
 
 React diagnostics remain validation findings even when prerendering and semantic documentation checks exit successfully.
 

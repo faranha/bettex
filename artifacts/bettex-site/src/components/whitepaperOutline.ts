@@ -4,10 +4,14 @@ export type OutlineItem = {
   number: string; // e.g. "2.1.1"
   level: 1 | 2 | 3;
   title: string;
+  isReference?: boolean;
+  referenceOpen?: boolean;
 };
 export type ChapterOutline = { id: string; number: string; title: string; items: OutlineItem[] };
 
-const clean = (s: string | null | undefined) => (s ?? '').replace(/\s+/g, ' ').trim();
+/** Menu labels omit terminal punctuation; rendered headings and target IDs are untouched. */
+export const formatOutlineTitle = (s: string | null | undefined) =>
+  (s ?? '').replace(/\s+/g, ' ').trim().replace(/[.!?…:;]+$/u, '').trim();
 const EXCLUDED = '.whitepaper__timeline, .whitepaper__market-card, .whitepaper__vesting-chart, table, .wp-facts, .whitepaper__status-grid, .whitepaper__system';
 
 /** Offset of the real shared site header plus the compact mobile index. */
@@ -38,7 +42,7 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
     const article = document.getElementById(chapter.id);
     const number = String(ci + 1);
     const titleEl = document.getElementById(`title-${chapter.id}`);
-    const out: ChapterOutline = { id: chapter.id, number, title: clean(titleEl?.textContent) || chapter.title, items: [] };
+    const out: ChapterOutline = { id: chapter.id, number, title: formatOutlineTitle(titleEl?.textContent) || formatOutlineTitle(chapter.title), items: [] };
     if (!article) return out;
     const counters = [0, 0, 0];
     const nodes = article.querySelectorAll<HTMLElement>('h3, h4, summary');
@@ -46,7 +50,6 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
       if (node.closest(EXCLUDED) && !node.closest('.whitepaper__vesting')) return;
       if (node.closest('.whitepaper__chapter-head')) return;
       const reference = node.closest<HTMLDetailsElement>('[data-documentation-reference]');
-      if (reference && !reference.open && node !== reference.querySelector('summary')) return;
       let target: HTMLElement = node;
       let titleHost: HTMLElement = node;
       let depth = 0;
@@ -71,7 +74,7 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
         }
       }
       if (isSummary && node.tagName === 'SUMMARY') titleHost = (node.querySelector('.reading__title') as HTMLElement) ?? node;
-      const title = clean(titleHost.textContent);
+      const title = formatOutlineTitle(titleHost.textContent);
       if (!title) return;
       let level = (Math.min(depth, 2) + 1) as 1 | 2 | 3;
       while (level > 1 && counters[level - 2] === 0) level = (level - 1) as 1 | 2 | 3;
@@ -88,10 +91,26 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
       }
       titleHost.setAttribute('data-outline-number', num);
       if (!isSummary) titleHost.tabIndex = -1;
-      out.items.push({ id: target.id, chapterId: chapter.id, number: num, level, title });
+      out.items.push({ id: target.id, chapterId: chapter.id, number: num, level, title,
+        isReference: !!reference && target === reference,
+        referenceOpen: !!reference?.open });
     });
     return out;
   });
 }
 
-export const outlineSignature = (o: ChapterOutline[]) => o.map(c => `${c.id}|${c.title}|${c.items.map(i => `${i.id}:${i.number}:${i.title}`).join(',')}`).join(';');
+/** Group a reference with its descendants without renumbering or changing targets. */
+export function groupReferenceItems(items: readonly OutlineItem[]) {
+  const groups: { item: OutlineItem; children: OutlineItem[] }[] = [];
+  for (let index = 0; index < items.length; index++) {
+    const item = items[index];
+    const children: OutlineItem[] = [];
+    if (item.isReference) {
+      while (items[index + 1]?.number.startsWith(`${item.number}.`)) children.push(items[++index]);
+    }
+    groups.push({ item, children });
+  }
+  return groups;
+}
+
+export const outlineSignature = (o: ChapterOutline[]) => o.map(c => `${c.id}|${c.title}|${c.items.map(i => `${i.id}:${i.number}:${i.title}:${i.isReference}:${i.referenceOpen}`).join(',')}`).join(';');

@@ -44,3 +44,27 @@ Expectativas e planos de lançamento, metas, projeções e plano comercial ficam
 **Why:** O criador pediu retirar todo esse conteúdo da documentação, não somente atualizar os números.
 
 **How to apply:** Manter na documentação as regras do produto, da entidade, das taxas e os procedimentos técnicos. Não reintroduzir planos de aquisição ou cenários comerciais, inclusive nos materiais baixáveis.
+
+Todas as áreas precisam introduzir os conceitos e recursos antes de pressupor que o leitor já os conhece.
+
+**Why:** O criador apontou que Loteria, Double 2X e exportação de chaves apareciam sem apresentação: “esses elementos adcionais precisam de introducao em algum momento”. Reiterou que a documentação não explica a participação para quem não entende o sistema: “precisa introduzir, falta isso em todas as areas”, incluindo staking, DeFi, DEX e DeFAI.
+
+**How to apply:** Começar cada área com uma explicação didática do conceito e de sua aplicação na BETTEX, antes de elegibilidade, cálculos ou referências técnicas. Na participação, explicar o que é staking e de onde vem um eventual pagamento antes das regras. Introduzir DeFi, DEX, DeFAI e os demais termos na primeira utilização; não deixar suas definições apenas em um glossário ao fim. Explicar os recursos opcionais antes de suas regras, separados da participação, mantendo riscos e estado visual do demo claros.
+
+A abertura da documentação precisa mostrar o funcionamento prático do aplicativo, com um caso ilustrativo e acesso ao demo.
+
+**Why:** O criador pediu “um caso ilustrativo de como funciona o app, funcoes, visao do funcionamento dele, etc, e até link pro demo” porque uma descrição abstrata deixa tudo confuso.
+
+**How to apply:** Apresentar o percurso entre carteiras, participação, agentes e resultados antes dos detalhes técnicos. Distinguir números hipotéticos dos saldos do demo e demonstração visual de operação real; manter o acesso ao demo no idioma selecionado.
+
+Os itens do menu da documentação não precisam de pontuação final.
+
+**Why:** O criador pediu “os itens de menu nao precisam de pontuacao”, apontando os pontos finais nos nomes dos capítulos.
+
+**How to apply:** Omitir pontuação final dos rótulos de navegação em todos os idiomas, no desktop e mobile, preservando títulos do conteúdo, números e pontuação interna necessária.
+
+As referências técnicas precisam de controles individuais para recolher e ampliar seus subitens no menu.
+
+**Why:** O criador pediu “preciso poder recolher e ampliar os itens de referencia tecnica no menu”. O controle do menu foi separado da abertura do conteúdo para preservar o ponto de leitura.
+
+**How to apply:** Manter os controles no desktop e mobile, com acesso por teclado. Recolher uma lista não fecha o conteúdo; o nome da referência continua sendo um link. Não reintroduzir controles globais de expandir tudo.

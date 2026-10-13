@@ -3,9 +3,39 @@ name: Estilo das artes da documentação
 description: Menos esquemas, mais texto e imagens; bullets para itens e regras; preservar os desenhos essenciais.
 ---
 
+Os desenhos consecutivos da documentação precisam de separação visual e espaçamento externo.
+
+**Why:** O criador apontou os desenhos 7 e 8 encostados e pediu “separacao visual entre estes desenhos, espacamento”.
+
+**How to apply:** Manter os quadros individualmente separados no desktop e mobile, sem mudar seu conteúdo nem aplicar ajustes às artes da homepage ou Pitch.
+
 Na documentação, “praticamente todos os itens merecem bullets”; aplicar listas onde fizer sentido.
 
+Os textos dos blocos destacados da documentação devem ter tamanho proporcional ao conteúdo normal, sem parágrafos grandes com aparência de título.
+
+**Why:** O criador apontou o bloco de Visão e pediu: “essa fonte esta desproporcional ao resto do conteudo, em todos os locais, esta grande demais, na documentacao, diminua”.
+
+**How to apply:** Aplicar a mesma escala de leitura aos destaques em todos os capítulos e tamanhos de tela, preservando a hierarquia dos títulos. Não reintroduzir fonte ampliada no segundo parágrafo dos destaques.
+
+O parágrafo de abertura da documentação deve apresentar apenas mercados e visão, sem travessões nem explicação detalhada dos subagentes.
+
+**Why:** O criador pediu “nao use dashes” e “nao precisa explicar todos subagentes em detalhes apenas apresentar mercados e visao”.
+
+**How to apply:** Manter a introdução objetiva; explicações da arquitetura e dos subagentes pertencem aos capítulos internos. Esta instrução se refere ao texto de abertura, não à remoção dos detalhes técnicos da documentação.
+
+O destaque do capítulo Visão deve aprofundar a visão agêntica e independente, sem repetir o subtítulo ou a apresentação de público e mercados da abertura.
+
+**Why:** O criador disse que o texto repetia o subtítulo e pediu “que detalhe melhor a visao agentica e independente”.
+
+**How to apply:** Explicar inteligência própria, investigação, decisões e independência progressiva da intervenção humana, distinguindo a direção futura das capacidades já entregues.
+
 Na abertura da documentação, a apresentação dos mercados deve explicar Esportes/Surebetting, iGaming, Predictions e Cripto, com foco no apostador que hoje trata a aposta como investimento.
+
+O foco de iGaming é mineração de bônus e métodos de extração.
+
+**Why:** O criador esclareceu: “no iGaming, focamos em mineração de bônus, métodos de extração”.
+
+**How to apply:** Usar esse foco na descrição do mercado, em vez de apresentá-lo apenas como análise de probabilidades, valor esperado e risco dos jogos.
 
 **Why:** O usuário pediu essa apresentação no bloco destacado da abertura e definiu a proposta como oferecer uma oportunidade real de investimento, ou transformar apostas em investimento.
 

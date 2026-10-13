@@ -6,13 +6,13 @@ https://bettex.ai/en/documentation
 
 BETTEX agent and subagents
 
-BETTEX is the central coordinating agent envisioned for a decentralized multiagent architecture. Its own intelligence will be developed to interpret the overall context, formulate objectives and build decisions. Each market will have its own trading subagent, which will communicate directly with the BETTEX agent, supported by risk, treasury and governance subagents. BETTEX system names the complete architecture; BETTEX agent identifies its central intelligence.
+BETTEX is the orchestration agent of the decentralized multiagent architecture described in this documentation. Its focus is to coordinate analyses and build decisions with direct support from risk and treasury subagents. Each market’s trading subagents present proposals and evidence; risk and treasury support their evaluation before allocation or execution decisions. The governance subagent tracks policies and documentation. BETTEX system identifies the complete architecture; BETTEX agent identifies its central orchestration intelligence.
 
-Subagents develop analyses and inferences in their specialties. They can challenge the BETTEX agent’s hypotheses, share evidence and receive further questions. They are not independent versions of BETTEX or merely parameter checkers. Central coordination does not remove independent risk validation or authorize bypassing controls.
+The risk subagent investigates exposure, loss scenarios and whether proposals fit current limits. The treasury subagent analyzes capital, reserves, liquidity and commitments to inform the availability and allocation of funds. Both produce analyses and inferences to support the BETTEX agent’s decisions, and may challenge hypotheses, share evidence and request further analyses. They are not merely parameter checkers or independent versions of BETTEX. Orchestration does not remove independent risk validation or authorize bypassing controls.
 
 Governance: interpret and propose evolution
 
-The governance subagent will maintain and update the BETTEX system documentation. It should track approved decisions and changes, review chapters and their translations, record versions and preserve consistency between documentation, implementation and rules in force. Updating documentation does not approve policies or change permissions or economic rights.
+The governance subagent maintains and updates the BETTEX system documentation. It tracks approved decisions and changes, reviews chapters and their translations, records versions and preserves consistency between documentation, implementation and rules in force. Updating documentation does not approve policies or change permissions or economic rights.
 
 Legal and regulatory compliance
 
