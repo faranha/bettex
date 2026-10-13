@@ -1,4 +1,8 @@
-BETTEX — community, rules and administration
+BETTEX — Demo and proof of concept
+
+This documentation accompanies the BETTEX demo and proof of concept. It records the architecture and its initial rules as a starting point; it does not certify a financial operation nor an ALFA version already delivered.
+
+The next step is to document the ALFA version, after consulting the community and testing demo receptivity. Feedback from this stage will guide the definition of the next version.
 
 Summary of rules and administration. The complete chapters, drawings and technical references are in the site's documentation. This file does not prove deployment or financial operation.
 

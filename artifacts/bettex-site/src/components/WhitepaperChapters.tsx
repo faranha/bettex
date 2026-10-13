@@ -3,6 +3,8 @@ import { Children } from 'react';
 import thesis from '@/lib/new-economy-thesis.json';
 import growthStrategy from '@/lib/growth-strategy.json';
 import { DocumentationGames } from './DocumentationGames';
+import { DocumentationOwnedContent } from './DocumentationOwnedContent';
+import { documentationChapters } from '@/lib/documentation-structure';
 import { DocumentationAppIntroduction } from './DocumentationAppIntroduction';
 import { DocumentationChapterIntroduction } from './DocumentationChapterIntroduction';
 import { DocumentationAppWalkthrough } from './DocumentationAppWalkthrough';
@@ -77,14 +79,7 @@ const legacyChapters = [
   { id: 'documentacao-governanca', title: 'Governança', subtitle: 'Políticas evolutivas, carteiras, custódia, mandatos, recompra e queima definitiva.' },
 ] as const;
 
-export const chapters = [
-  { id: 'documentacao-como-funciona', title: c.visaoTitulo, subtitle: c.visaoSub },
-  { id: 'documentacao-agentes', title: c.agTitulo, subtitle: c.agSub },
-  { id: 'documentacao-emissao', title: c.tkTitulo, subtitle: c.tkSub },
-  { id: 'documentacao-staking', title: c.ptTitulo, subtitle: c.ptSub },
-  { id: 'documentacao-roadmap', title: c.rmTitulo, subtitle: c.rmSub },
-  { id: 'documentacao-riscos', title: c.rkTitulo, subtitle: c.rkSub },
-] as const;
+export const chapters = documentationChapters;
 export const legacyChapterTitles: ReadonlyMap<string, string> = new Map(legacyChapters.map(ch => [ch.id, ch.title]));
 
 function Prose({ children }: { children: ReactNode }) {
@@ -220,7 +215,7 @@ function LegacyBody({ id }: { id: string }) {
       return <LegalCompliance />;
     case 'documentacao-governanca':
     case 'documentacao-governanca-detalhe':
-      return <DocumentationGovernance />;
+      return <DocumentationGovernance includeBuyback={false} />;
     case 'documentacao-servicos':
       return <ServiceFees />;
     case 'documentacao-staking-detalhe':
@@ -552,8 +547,10 @@ function titleOf(el: ReactElement<{ children?: ReactNode; className?: string; id
 }
 
 export function ChapterContent({ index }: { index: number }) {
-  const raw = MainBody({ id: chapters[index]?.id ?? '' });
-  if (!isValidElement(raw) || raw.type !== Fragment) return raw;
-  return <><DocumentationChapterIntroduction chapterId={chapters[index]?.id ?? ''} />
-    {groupTopics((raw as ReactElement<{ children: ReactNode }>).props.children, () => 'bare')}</>;
+  const parts = (node: ReactNode) => isValidElement(node) && node.type === Fragment
+    ? Children.toArray((node as ReactElement<{ children: ReactNode }>).props.children)
+    : Children.toArray(node);
+  return <DocumentationOwnedContent id={chapters[index]?.id ?? ''}
+    main={id => parts(MainBody({ id }))}
+    legacy={id => parts(LegacyBody({ id }))} />;
 }

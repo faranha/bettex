@@ -65,7 +65,7 @@ try {
       assert(html.includes(`id="${id}"`), `${language}: unreachable ${id}`);
     }
     const renderedIds = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
-    assert.equal(renderedIds.length, new Set(renderedIds).size, `${language}: duplicate rendered anchors`);
+    assert.equal(renderedIds.length, new Set(renderedIds).size, `${language}: duplicate rendered anchors: ${renderedIds.filter((id, index) => renderedIds.indexOf(id) !== index).join(', ')}`);
     const suffix = language === 'pt' ? '' : `-${language}`;
     const summary = read(`public/downloads/bettex-documentacao${suffix}.md`);
     for (const section of policy.sections) {

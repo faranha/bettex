@@ -227,13 +227,13 @@ img, svg, video { max-width: 100%; }
   .pb-fin-scene__figure { top: 80px; bottom: auto; height: 210px; max-width: 70%; right: 2%; -webkit-mask-image: none; mask-image: none; }
 }
 
-/* Pitch opening hero: true-alpha crop (798x935 @226,43 of 1024 sprite), anchored to the hero floor. */
-.cover__grid > .cover__project--scene { --hp: var(--pitch-hero-padding); position: relative; overflow: hidden; width: 100%; max-width: none; aspect-ratio: 798 / 935; align-self: end; justify-self: end; margin: 0 calc(-1 * var(--hp)) calc(-1 * var(--hp)) 0; transform: none; border: 0; box-shadow: none; background: transparent; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14%), linear-gradient(to top, transparent 0, #000 6%), linear-gradient(to left, transparent 0, #000 6%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0, #000 14%), linear-gradient(to top, transparent 0, #000 6%), linear-gradient(to left, transparent 0, #000 6%); mask-composite: intersect; }
-.cover__grid > .cover__project--scene img { position: absolute; width: 128.32%; max-width: none; height: auto; left: -28.32%; top: -4.6%; aspect-ratio: 1; filter: none; }
+/* Pitch opening hero: complete standing figure (344x947 true-alpha, trimmed to empty transparency only), never cropped or faded. */
+.cover__grid > .cover__project--scene { --hp: var(--pitch-hero-padding); position: relative; overflow: visible; width: min(100%, 290px); max-width: none; aspect-ratio: 344 / 947; align-self: end; justify-self: center; margin: 0 0 calc(-1 * var(--hp)); transform: none; border: 0; box-shadow: none; background: transparent; }
+.cover__grid > .cover__project--scene img { display: block; position: static; width: 100%; max-width: 100%; height: auto; aspect-ratio: 344 / 947; object-fit: contain; filter: none; }
 @media (min-width: 768px) {
   .cover__grid:has(.cover__project--scene) { grid-template-columns: minmax(0, 1fr) minmax(300px, 40%); align-items: stretch; min-height: 0; }
   .cover__grid:has(.cover__project--scene) .cover__copy { align-self: center; padding-bottom: var(--pitch-hero-padding); }
 }
 @media (max-width: 767px) {
-  .cover__grid > .cover__project--scene { grid-column: 1 / -1; grid-row: 6; width: min(86%, 420px); max-width: none; justify-self: end; margin: 0 calc(-1 * var(--hp)) calc(-1 * var(--hp)) 0; }
+  .cover__grid > .cover__project--scene { grid-column: 1 / -1; grid-row: 6; width: min(66%, 260px); max-width: none; justify-self: center; margin: 0 0 calc(-1 * var(--hp)); }
 }

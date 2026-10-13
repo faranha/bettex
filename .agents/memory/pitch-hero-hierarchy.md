@@ -54,7 +54,13 @@ O personagem do hero do Pitch precisa de escala e integração com a composiçã
 
 **Why:** O criador comparou os dois heros e rejeitou o tamanho, posicionamento e recorte do Pitch: “mal cortado, nao encaixado, ele termina com corte, nao esta inteiro, precisa melhorar MUITO”.
 
-**How to apply:** Conferir os limites visíveis da arte, não só o tamanho de seu arquivo com transparências. Preservar rosto e interação com o aplicativo; integrar a base da figura ao limite do hero e suavizar contornos truncados, sem cobrir o texto. Conferir desktop, tablet e mobile; não alterar a homepage para corrigir o Pitch.
+**How to apply:** Conferir os limites visíveis da arte, não só o tamanho de seu arquivo com transparências. Preservar rosto e interação com o aplicativo; manter a figura inteira e sua base nítida junto ao limite do hero, sem cobrir o texto. Conferir desktop, tablet e mobile; não alterar a homepage para corrigir o Pitch.
+
+O personagem deve aparecer inteiro, sem cortes à direita ou à esquerda e sem fade ou degradê na conexão com a linha abaixo. A perspectiva do aplicativo no celular precisa acompanhar corretamente o aparelho e a mão.
+
+**Why:** O criador reiterou: “quero ele inteiro, entendeu? inteiro”, rejeitou os fades e pediu revisão da perspectiva do app.
+
+**How to apply:** Não usar máscaras graduais para esconder recortes. A própria arte precisa ter o contorno completo, e o layout deve exibi-la sem cortar. Ajustar a tela real do app ao plano do celular, preservando o contorno do aparelho e a sobreposição natural dos dedos.
 
 O H1 de abertura do Pitch deve dizer “A DeFi trading agent for gamblers and sports bettors”, com o mesmo sentido em português e espanhol.
 
