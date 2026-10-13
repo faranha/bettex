@@ -106,6 +106,7 @@ for route, expected in baseline["routes"].items():
         assert digest(text) == expected["textSha256"], f"Approved page text changed: {route}"
         print(f"{route}: approved text unchanged")
     else:
+        assert 'whitepaper__crumbs' not in file.read_text(), f"Duplicate navigation path restored: {route}"
         assert intelligence_ids.issubset({item[2] for item in page.structure if item[1] == "id"}), f"Missing agent research presentation: {route}"
         # The creator explicitly removed download options, not archived files.
         assert "documentation-downloads" not in file.read_text(), f"Download controls restored: {route}"

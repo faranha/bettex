@@ -44,3 +44,11 @@ Text-flow checks must distinguish inline prose from spatially separated labels i
 **Why:** Naive concatenation incorrectly reported fact cards and diagram captions as joined words even though CSS lays out their labels separately.
 
 **How to apply:** Check real prose boundaries and sentence punctuation without inserting artificial spaces; preserve explicit structural layout separation for badges, card labels and captions. Do not rewrite correct diagram text just to silence a text-only scan.
+
+## Approved navigation removals
+
+An approved removal of duplicate navigation must also update the rendered-structure baseline, even when TypeScript, navigation tests and the preview pass.
+
+**Why:** Removing the documentation breadcrumb deleted its root anchor from server-rendered HTML, so the old structure fingerprint blocked publishing.
+
+**How to apply:** Compare the prior protected structure with the precise approved removal before updating documentation-only fingerprints. Preserve Homepage/Pitch fingerprints and checks for all unrelated links, images and economic rules. Run the complete production build afterward.
