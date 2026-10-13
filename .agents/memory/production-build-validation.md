@@ -52,3 +52,9 @@ An approved removal of duplicate navigation must also update the rendered-struct
 **Why:** Removing the documentation breadcrumb deleted its root anchor from server-rendered HTML, so the old structure fingerprint blocked publishing.
 
 **How to apply:** Compare the prior protected structure with the precise approved removal before updating documentation-only fingerprints. Preserve Homepage/Pitch fingerprints and checks for all unrelated links, images and economic rules. Run the complete production build afterward.
+
+For a narrowly authorized Pitch addition, verify that addition separately while retaining exact protection of the preexisting Pitch.
+
+**Why:** The creator authorized a DeFi/DeFAI diagram in Tokenomics and treasury, not a general rewrite of the approved Pitch or its economic rules.
+
+**How to apply:** Isolate only the explicit addition, require its localized content and visual nodes, and keep original text, links and structure unchanged outside it. Do not refresh the whole Pitch baseline just to accommodate a new block.

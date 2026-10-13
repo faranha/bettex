@@ -7,6 +7,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from documentation_synthesis_rules import verify_rules
 from documentation_spacing_audit import audit_spacing
+from pitch_defai_guard import split_pitch_defai_addition
 
 app = Path(__file__).resolve().parents[1]
 baseline = json.loads((app / "scripts/fixtures/documentation-synthesis-baseline.json").read_text())
@@ -88,8 +89,37 @@ class Content(HTMLParser):
 digest = lambda value: hashlib.sha256(value.encode()).hexdigest()
 for route, expected in baseline["routes"].items():
     file = app / "dist/public" / route.strip("/") / "index.html"
+    protected_html = file.read_text()
+    if route in ("/pitch", "/en/pitch", "/es/pitch"):
+        protected_html, addition_html = split_pitch_defai_addition(protected_html)
+        addition = Content()
+        addition.feed('<div id="root">' + addition_html + '</div>')
+        addition_text = " ".join(" ".join(addition.parts).split()).lower()
+        language = "en" if route.startswith("/en/") else "es" if route.startswith("/es/") else "pt"
+        markers = {
+            "pt": ("defi", "defi ai", "defai", "100%", "autônomo", "independente",
+                   "descentralizado", "sem operador centralizado", "agente bettex",
+                   "esports", "igaming", "cripto", "previsões", "tesouraria",
+                   "um subagente por mercado", "fundador", "controles verificáveis",
+                   "peso de participação", "não capital", "nem garante retorno"),
+            "en": ("defi", "defi ai", "defai", "100%", "autonomous", "independent",
+                   "decentralized", "no centralized operator", "bettex agent",
+                   "esports", "igaming", "crypto", "predictions", "treasury",
+                   "one subagent per market", "founders", "verifiable controls",
+                   "participation weight", "not capital", "or guarantee returns"),
+            "es": ("defi", "defi ai", "defai", "100%", "autónomo", "independiente",
+                   "descentralizado", "sin operador centralizado", "agente bettex",
+                   "esports", "igaming", "cripto", "predicciones", "tesorería",
+                   "un subagente por mercado", "fundadores", "controles verificables",
+                   "peso de participación", "no capital", "ni garantiza rentabilidad"),
+        }[language]
+        assert all(marker in addition_text for marker in markers), \
+            f"Incomplete decentralized Pitch vision: {route}: {[m for m in markers if m not in addition_text]}"
+        assert 'data-testid="pitch-defai-treasury"' in addition_html, f"Missing treasury diagram node: {route}"
+        assert addition_html.count('class="pdv__node') == 5, f"Missing market/treasury diagram nodes: {route}"
+        print(f"{route}: authorized DeFi/DeFAI diagram, treasury and phased-autonomy vision verified")
     page = Content()
-    page.feed(file.read_text())
+    page.feed(protected_html)
     text = " ".join(" ".join(page.parts).split())
     assert text, f"Empty rendered content: {route}"
     # Authorized research additions must not invalidate the original link/image/block guard.

@@ -14,3 +14,9 @@ O criador pediu “regras claras multisig pra movimentacoes seguindo liberdade o
 **Why:** O controle de custódia deve coexistir com liberdade operacional, não transformar cada investimento ou pagamento já autorizado em uma nova aprovação humana.
 
 **How to apply:** Separar aprovação da política, custódia e execução por mandato limitado. Afirmar bloqueios técnicos apenas no ambiente efetivamente comprovado; prova de controle em EVM local não equivale a multisig institucional, testnet pública ou custódia de produção.
+
+Na Tokenomics e na apresentação da tesouraria do Pitch, explicitar e desenhar a visão de DeFi para DeFi AI (DeFAI) como projeto descentralizado.
+
+**Why:** O criador autorizou essa atualização no Pitch e exigiu que a visão fique clara também no desenho, não somente na documentação.
+
+**How to apply:** Conectar visualmente o agente BETTEX, os subagentes próprios por mercado e o subagente da tesouraria. Distinguir administração inicial e autonomia descentralizada futura; preservar regras econômicas, controles e separação entre capital da tesouraria e peso de staking.
