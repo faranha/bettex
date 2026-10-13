@@ -19,7 +19,8 @@ export function ProfitAccounting() {
         <p>Exemplo na mesma apuração: patrimônio inicial de US$ 100.000, ganho realizado de US$ 1.000 e perda de US$ 5.000 nas posições abertas resultam em US$ 96.000, sem outros movimentos. A avaliação conjunta não autoriza distribuir o ganho isolado ignorando a perda. Isso não cria déficit a compensar com rodadas futuras.</p>
         <p id="apuracao-exemplo"><strong>Exemplo de perda permanente e novos lucros.</strong> Valores em USDC, após cada etapa, com aporte inicial de 100.000. As etapas de resultado representam apurações distintas, líquidas de custos, sem posições abertas ou outros movimentos. Cada split pressupõe reserva defensiva, liquidez e elegibilidade atendidas antes e após a distribuição.</p>
         <p>Neste exemplo, pagamentos aos stakers e transferências à carteira de recompra estão conciliados. Não houve execução de recompras; o saldo segregado continua em USDC.</p>
-        <div className="whitepaper__vesting-scroll" role="region" aria-labelledby="apuracao-exemplo" tabIndex={0}>
+        <p className="whitepaper__table-scroll-hint">Deslize horizontalmente para comparar todas as colunas.</p>
+        <div className="whitepaper__vesting-scroll whitepaper__comparison-scroll" role="region" aria-labelledby="apuracao-exemplo" tabIndex={0}>
           <table className="whitepaper__vesting-table">
             <caption>Patrimônio operacional e carteira de recompra separados · perda permanente · valores em USDC</caption>
             <thead>

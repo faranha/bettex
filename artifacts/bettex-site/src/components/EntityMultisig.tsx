@@ -1,4 +1,6 @@
 import { DocFacts } from './DocFacts';
+import { ResponsiveTableCarousel } from './ResponsiveTableCarousel';
+import { t } from '@/lib/i18n';
 
 export function EntityMultisig() {
   return (
@@ -20,19 +22,19 @@ export function EntityMultisig() {
       </div>
 
       <h4 className="whitepaper__subhead">Matriz de autorização</h4>
-      <div className="whitepaper__vesting-scroll" role="region" aria-label="Regras de autorização multisig, com rolagem horizontal" tabIndex={0}>
+      <ResponsiveTableCarousel count={5} label="Quórum, alçada e liberdade de execução">
         <table className="whitepaper__vesting-table whitepaper__multisig-table">
           <caption>Quórum, alçada e liberdade de execução</caption>
           <thead><tr><th scope="col">Movimentação</th><th scope="col">Autorização</th><th scope="col">Execução permitida</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Serviços externos autorizados</th><td>Mandato ou lote aprovado por 2/3.</td><td>Executor paga documentos conferidos, dentro dos destinos, valores e vencimentos aprovados, sem nova assinatura por item.</td></tr>
-            <tr><th scope="row">Investimentos e distribuição de resultados</th><td>Mandato 2/3, subordinado às regras vigentes da tesouraria.</td><td>Operações passam pelo risco independente; pagamentos usam obrigações e beneficiários conciliados. Não há aprovação humana por ordem ou crédito.</td></tr>
-            <tr><th scope="row">Saída direta sem mandato, reforço de caixa ou despesa extraordinária</th><td>2/3 sobre a transação exata e fundamento aprovado.</td><td>Revalidação do saldo livre e da fonte. Reforço não renova automaticamente limites nem usa reservas ou créditos como caixa livre.</td></tr>
-            <tr><th scope="row">Novos poderes, destinos de estratégia ou alterações de controles</th><td>Aprovação administrativa registrada + 2/3 + espera mínima de 24h.</td><td>Inclui signatários, quórum, módulos, permissões a terceiros, atualizações de contratos, limites e novos mandatos estratégicos. Vigência somente após execução e conferência.</td></tr>
-            <tr><th scope="row">Incidente de segurança</th><td>Pausa restrita por responsável habilitado; ações protetivas de custódia por 2/3.</td><td>Suspende novas saídas afetadas. Contenção segue o procedimento abaixo, sem reduzir quórum ou cancelar direitos.</td></tr>
+            <tr><th scope="row">Serviços externos autorizados</th><td data-label={t('Autorização')}>Mandato ou lote aprovado por 2/3.</td><td data-label={t('Execução permitida')}>Executor paga documentos conferidos, dentro dos destinos, valores e vencimentos aprovados, sem nova assinatura por item.</td></tr>
+            <tr><th scope="row">Investimentos e distribuição de resultados</th><td data-label={t('Autorização')}>Mandato 2/3, subordinado às regras vigentes da tesouraria.</td><td data-label={t('Execução permitida')}>Operações passam pelo risco independente; pagamentos usam obrigações e beneficiários conciliados. Não há aprovação humana por ordem ou crédito.</td></tr>
+            <tr><th scope="row">Saída direta sem mandato, reforço de caixa ou despesa extraordinária</th><td data-label={t('Autorização')}>2/3 sobre a transação exata e fundamento aprovado.</td><td data-label={t('Execução permitida')}>Revalidação do saldo livre e da fonte. Reforço não renova automaticamente limites nem usa reservas ou créditos como caixa livre.</td></tr>
+            <tr><th scope="row">Novos poderes, destinos de estratégia ou alterações de controles</th><td data-label={t('Autorização')}>Aprovação administrativa registrada + 2/3 + espera mínima de 24h.</td><td data-label={t('Execução permitida')}>Inclui signatários, quórum, módulos, permissões a terceiros, atualizações de contratos, limites e novos mandatos estratégicos. Vigência somente após execução e conferência.</td></tr>
+            <tr><th scope="row">Incidente de segurança</th><td data-label={t('Autorização')}>Pausa restrita por responsável habilitado; ações protetivas de custódia por 2/3.</td><td data-label={t('Execução permitida')}>Suspende novas saídas afetadas. Contenção segue o procedimento abaixo, sem reduzir quórum ou cancelar direitos.</td></tr>
           </tbody>
         </table>
-      </div>
+      </ResponsiveTableCarousel>
 
       <h4 className="whitepaper__subhead">Mandato limitado, sem cheque em branco</h4>
       <div className="whitepaper__prose">

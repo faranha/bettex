@@ -145,8 +145,10 @@
 .whitepaper__vesting-chart-body { width: 100%; min-width: 0; height: 320px; }
 .whitepaper__vesting-chart-note { margin: 16px 0 0; }
 .whitepaper__vesting-plot { display: block; width: 100%; height: 100%; }
+.whitepaper__table-nav, .whitepaper__table-scroll-hint { display: none; }
 .whitepaper__vesting-month { display: none; }
 @media (max-width: 768px) {
+  .whitepaper__table-scroll-hint { display: block; color: #37559b; font-size: 12px; line-height: 1.5; }
   .whitepaper .whitepaper__vesting-desktop { display: none; }
   .whitepaper__vesting-month { display: block; margin-top: 24px; border: 1px solid #d9d3c0; padding: 14px 12px; color: #13204F; font-variant-numeric: tabular-nums; }
   .whitepaper__vesting-month-nav { display: flex; align-items: center; justify-content: space-between; }
@@ -466,6 +468,46 @@
   .whitepaper__mobile-index-action span, .whitepaper__mobile-index-action { font-size: 11px; }
   .whitepaper__chapter-head h2 { font-size: clamp(1.6rem, 8vw, 2.2rem); }
   .whitepaper__hero h1 { font-size: clamp(2.3rem, 13vw, 3.4rem); }
+}
+@media (max-width: 768px) {
+  .whitepaper__table-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; color: #13204F; font: 700 13px/1.5 var(--app-font-mono); }
+  .whitepaper__table-nav button { width: 44px; height: 44px; border: 1px solid var(--wp-line); background: #ebe7dc; color: #13204F; font-size: 28px; cursor: pointer; }
+  .whitepaper__table-nav button:disabled { opacity: .35; cursor: default; }
+  .whitepaper .whitepaper__table-card-scroll { overflow-x: auto; overflow-y: hidden; margin-top: 12px; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
+  .whitepaper .whitepaper__table-card-scroll table tbody { display: flex; align-items: flex-start; width: 100%; }
+  .whitepaper .whitepaper__table-card-scroll table tbody tr { flex: 0 0 100%; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+  .whitepaper .whitepaper__table-card-scroll table caption { padding: 0 0 12px; }
+  .whitepaper .whitepaper__comparison-scroll { overflow: auto; border: 1px solid var(--wp-line); }
+  .whitepaper .whitepaper__comparison-scroll table { display: table; width: 660px; min-width: 660px; table-layout: fixed; font-size: 12px; }
+  .whitepaper .whitepaper__comparison-scroll table caption { display: table-caption; padding: 14px; text-align: left; }
+  .whitepaper .whitepaper__comparison-scroll table thead { position: static; display: table-header-group; width: auto; height: auto; overflow: visible; clip-path: none; }
+  .whitepaper .whitepaper__comparison-scroll table tbody { display: table-row-group; }
+  .whitepaper .whitepaper__comparison-scroll table tr { display: table-row; margin: 0; border: 0; }
+  .whitepaper .whitepaper__comparison-scroll table th,
+  .whitepaper .whitepaper__comparison-scroll table td,
+  .whitepaper .whitepaper__comparison-scroll table tr > th[scope="row"] { display: table-cell; width: auto; padding: 12px 10px; white-space: nowrap; text-align: right; }
+  .whitepaper .whitepaper__comparison-scroll table tr > th:first-child { text-align: left; }
+  .whitepaper .whitepaper__comparison-scroll table th:first-child { width: 160px; }
+  .whitepaper .whitepaper__comparison-scroll table thead th { white-space: normal; line-height: 1.5; }
+  .whitepaper .whitepaper__comparison-scroll table tr > th[scope="row"] { white-space: normal; font-size: 12px; line-height: 1.5; padding: 8px 10px; }
+  .whitepaper .whitepaper__comparison-scroll table td::before { content: none; }
+  .whitepaper .whitepaper__comparison-scroll table caption { white-space: normal; }
+}
+@media print {
+  .whitepaper__table-nav, .whitepaper__table-scroll-hint { display: none; }
+  .whitepaper .whitepaper__table-card-scroll, .whitepaper .whitepaper__comparison-scroll { overflow: visible; max-height: none; }
+  .whitepaper .whitepaper__table-card-scroll table { display: table; min-width: 0; width: 100%; table-layout: fixed; }
+  .whitepaper .whitepaper__table-card-scroll table caption { display: table-caption; }
+  .whitepaper .whitepaper__table-card-scroll table thead { position: static; display: table-header-group; width: auto; height: auto; overflow: visible; clip-path: none; }
+  .whitepaper .whitepaper__table-card-scroll table tbody { display: table-row-group; }
+  .whitepaper .whitepaper__table-card-scroll table tr { display: table-row; }
+  .whitepaper .whitepaper__table-card-scroll table th, .whitepaper .whitepaper__table-card-scroll table td,
+  .whitepaper .whitepaper__table-card-scroll table tr > th[scope="row"] { display: table-cell; width: auto; white-space: normal; overflow-wrap: anywhere; }
+  .whitepaper .whitepaper__table-card-scroll table td::before { content: none; }
+  .whitepaper .whitepaper__comparison-scroll table { min-width: 0; width: 100%; table-layout: fixed; font-size: 9px; }
+  .whitepaper .whitepaper__comparison-scroll table th, .whitepaper .whitepaper__comparison-scroll table td,
+  .whitepaper .whitepaper__comparison-scroll table tr > th[scope="row"] { white-space: normal; overflow-wrap: anywhere; padding: 6px 4px; }
+  .whitepaper .whitepaper__comparison-scroll table th:first-child { width: auto; }
 }
 @media (max-width: 340px) {
   .whitepaper__topline { font-size: 7.5px; letter-spacing: .06em; }

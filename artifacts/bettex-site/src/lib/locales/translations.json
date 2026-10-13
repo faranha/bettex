@@ -1,4 +1,10 @@
 {
+  "Deslize horizontalmente para comparar todas as colunas.": {
+    "en": "Swipe horizontally to compare all columns.",
+    "es": "Desliza horizontalmente para comparar todas las columnas."
+  },
+  "Item anterior": { "en": "Previous item", "es": "Elemento anterior" },
+  "Próximo item": { "en": "Next item", "es": "Elemento siguiente" },
   "MERCADOS E FOCO": { "en": "MARKETS AND FOCUS", "es": "MERCADOS Y ENFOQUE" },
   "O foco é o apostador que hoje trata a aposta como investimento.": {
     "en": "The focus is the bettor who currently treats betting as an investment.",
