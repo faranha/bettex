@@ -58,3 +58,9 @@ For a narrowly authorized Pitch addition, verify that addition separately while 
 **Why:** The creator authorized a DeFi/DeFAI diagram in Tokenomics and treasury, not a general rewrite of the approved Pitch or its economic rules.
 
 **How to apply:** Isolate only the explicit addition, require its localized content and visual nodes, and keep original text, links and structure unchanged outside it. Do not refresh the whole Pitch baseline just to accommodate a new block.
+
+When changing a high-priority hero image, inspect both the image source and React's generated image-preload link inside the protected rendered root.
+
+**Why:** Restoring only the image source and removed caption did not reproduce the old protected structure; React had also changed an automatically generated preload URL.
+
+**How to apply:** Prove that reversing both image URLs and the exact authorized caption removal restores the prior fingerprints in every language before aligning their new fingerprints.

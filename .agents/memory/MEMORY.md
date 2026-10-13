@@ -97,4 +97,4 @@
 - [Sustentabilidade operacional](operational-sustainability-positioning.md) — custeio em aberto; simplificar documentação e retirar receita empresarial, preservando regras essenciais.
 - [Compartilhamento social](social-sharing-policy.md) — artes duráveis, previsões explícitas e nova URL ao trocar a mensagem; preservar links antigos.
 - [Perfis de verificação](verification-profiles.md) — CI do demo visual não certifica integrações históricas; exclusões explícitas, sem reativar finanças para testes.
-- [Hero do Pitch](pitch-hero-hierarchy.md) — H1 sem caixas concorrentes; pessoa no centro do grafo do orquestrador, bandeira brasileira ao fundo.
+- [Hero do Pitch](pitch-hero-hierarchy.md) — H1 prioritário; personagem usando o app em cutout, sem caixa nem legenda.

@@ -1,11 +1,17 @@
 ---
 name: Hierarquia e arte do hero do Pitch
-description: Correção do criador: um foco de leitura e pessoa dentro do grafo do orquestrador, com bandeira brasileira ao fundo.
+description: H1 prioritário e personagem usando o app; arte integrada ao fundo, sem caixa nem legenda.
 ---
 
 O hero do Pitch deve voltar à composição anterior à abertura com a cena
 orbital. A nova imagem deve usar o personagem principal já estabelecido na
 BETTEX, fazendo algo com o aplicativo.
+
+A arte do hero do Pitch deve ficar integrada ao fundo, sem legenda e sem caixa. Pode ser um cutout do personagem usando o app.
+
+**Why:** O criador corrigiu: “a imagem no hero do pitch tem que ser melhorada, nao precisa de legenda, pode ser um cutout, nao dentro de uma caixa”.
+
+**How to apply:** Preservar a identidade e a interação com o celular; remover molduras, faixas de legenda e sombras retangulares. Verificar transparência real e leitura no desktop e no celular.
 
 Não colocar texto de público ou qualquer caixa de conteúdo acima do H1.
 O título deve ser o primeiro destaque de leitura; restaurar uma versão

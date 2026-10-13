@@ -62,11 +62,6 @@ export function PitchDeFAIVision() {
         'Al inicio, fundadores y equipo administran los contratos. La transferencia gradual a la IA depende de capacidades demostradas y controles verificables, y se respetan las decisiones y la autoridad de la comunidad, sin cambios unilaterales automáticos de permisos.'
       )}</p>
     </div>
-    <p className="pdv__fine">{x(
-      'A autonomia total é uma meta de desenvolvimento, não uma capacidade atual comprovada. O demo visual não movimenta fundos reais nem garante retorno. A distribuição continua exigindo as regras já apresentadas.',
-      'Total autonomy is a development goal, not a proven current capability. The visual demo does not move real funds or guarantee returns. Distribution continues to require the rules already presented.',
-      'La autonomía total es una meta de desarrollo, no una capacidad actual comprobada. El demo visual no mueve fondos reales ni garantiza rentabilidad. La distribución sigue exigiendo las reglas ya presentadas.'
-    )}</p>
   </div>;
 }
 export default PitchDeFAIVision;

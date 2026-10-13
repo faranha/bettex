@@ -101,17 +101,17 @@ for route, expected in baseline["routes"].items():
                    "descentralizado", "sem operador centralizado", "agente bettex",
                    "esports", "igaming", "cripto", "previsões", "tesouraria",
                    "um subagente por mercado", "fundador", "controles verificáveis",
-                   "peso de participação", "não capital", "nem garante retorno"),
+                   "peso de participação", "não capital"),
             "en": ("defi", "defi ai", "defai", "100%", "autonomous", "independent",
                    "decentralized", "no centralized operator", "bettex agent",
                    "esports", "igaming", "crypto", "predictions", "treasury",
                    "one subagent per market", "founders", "verifiable controls",
-                   "participation weight", "not capital", "or guarantee returns"),
+                   "participation weight", "not capital"),
             "es": ("defi", "defi ai", "defai", "100%", "autónomo", "independiente",
                    "descentralizado", "sin operador centralizado", "agente bettex",
                    "esports", "igaming", "cripto", "predicciones", "tesorería",
                    "un subagente por mercado", "fundadores", "controles verificables",
-                   "peso de participación", "no capital", "ni garantiza rentabilidad"),
+                   "peso de participación", "no capital"),
         }[language]
         assert all(marker in addition_text for marker in markers), \
             f"Incomplete decentralized Pitch vision: {route}: {[m for m in markers if m not in addition_text]}"

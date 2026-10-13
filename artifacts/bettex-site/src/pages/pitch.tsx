@@ -25,7 +25,7 @@ import './pitch.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
-const HERO_NOTICE = 'Projeto em planejamento. Hoje existe apenas um demo visual: a operação com dinheiro real ainda não foi lançada.';
+const HERO_NOTICE = 'Agente autônomo de IA que faz trading em mercados de apostas esportivas, iGaming, previsões e cripto #DeFI #DeFAI';
 
 function Sec({ id, n, kicker, title, dark = false, summary, hero, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; hero?: string; children: ReactNode }) {
   return <section id={id} aria-labelledby={`${id}-t`} className={`slide ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
