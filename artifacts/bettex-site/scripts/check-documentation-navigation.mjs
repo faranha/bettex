@@ -105,4 +105,6 @@ for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vis
   assert.equal(scrollOffset({ closest: () => null }), 72, 'The documentation opening has no sticky chapter index above it.');
   assert.equal(scrollOffset({ closest: () => article }), 184, 'Chapter content compensates only the header and mobile index.');
 }
-console.log('Documentation navigation: 3-level numbering, stable locale ids, collisions, closed ancestors and measured desktop/mobile offsets verified.');
+const readerSource = await fs.readFile(new URL('../src/components/WhitepaperSection.tsx', import.meta.url), 'utf8');
+assert.doesNotMatch(readerSource, /whitepaper__crumbs|crumbs\.map/, 'Do not repeat chapter options in a breadcrumb above the index.');
+console.log('Documentation navigation: single index, 3-level numbering, stable locale ids, collisions, closed ancestors and measured desktop/mobile offsets verified.');

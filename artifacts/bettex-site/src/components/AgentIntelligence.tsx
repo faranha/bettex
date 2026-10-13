@@ -32,7 +32,10 @@ export function AgentIntelligence() {
         {support.map(([id, role, title, text, context]) => <section key={id} id={id} className="agent-intel__agent">
           <strong className="agent-intel__role">{role}</strong>
           <h4>{title}</h4>
-          <div className="whitepaper__prose"><p>{text}</p></div>
+          <div className="whitepaper__prose">
+            <p>{text}</p>
+            {id === 'documentacao-inteligencia-governanca' && <p>{c.governanceDocumentation}</p>}
+          </div>
           <div className="agent-intel__context"><span>{p.initialContext}</span><p>{context}</p></div>
         </section>)}
       </div>

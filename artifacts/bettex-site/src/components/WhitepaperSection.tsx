@@ -192,14 +192,6 @@ export function WhitepaperSection() {
 
   const activeChapter = outline[active] ?? outline[0];
   const activeItem = activeChapter?.items.find(i => i.id === activeId);
-  const crumbs: { label: string; id: string }[] = [{ label: t('Documentação'), id: 'documentacao' }, { label: `${activeChapter.number.padStart(2, '0')} ${activeChapter.title}`, id: activeChapter.id }];
-  if (activeItem) {
-    const list = activeChapter.items;
-    const idx = list.indexOf(activeItem);
-    const chain: typeof list = [activeItem];
-    for (let lvl = activeItem.level - 1, j = idx - 1; lvl >= 1 && j >= 0; j--) if (list[j].level === lvl) { chain.unshift(list[j]); lvl--; }
-    chain.forEach(c => crumbs.push({ label: `${c.number} ${c.title}`, id: c.id }));
-  }
 
   const bar = slot && createPortal(
     <nav className="pitch-subnav" aria-label={t('Capítulos da documentação')} data-testid="documentation-section-nav">
@@ -247,17 +239,6 @@ export function WhitepaperSection() {
                 <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
             </button>
-            <nav className="whitepaper__crumbs" aria-label="Localização atual">
-              <ol>
-                {crumbs.map((c, i) => (
-                  <li key={c.id}>
-                    {i === crumbs.length - 1
-                      ? <span aria-current="location" data-i18n="translated">{c.label}</span>
-                      : <a href={`#${c.id}`} onClick={(e) => jump(e, c.id)} data-i18n="translated">{c.label}</a>}
-                  </li>
-                ))}
-              </ol>
-            </nav>
             <nav id="whitepaper-chapter-menu" className={`whitepaper__chapter-menu${menuOpen ? ' is-open' : ''}`} aria-label="Capítulos da documentação">
               {outline.map((item, index) => {
                 const current = active === index;

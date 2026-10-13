@@ -1,9 +1,31 @@
 /** Documentation-only research vision. These passages do not describe delivered capabilities. */
 const passages = {
+  governanceNotice: [
+    'Conteúdo administrado pelo subagente de governança',
+    'Content administered by the governance subagent',
+    'Contenido administrado por el subagente de gobernanza',
+  ],
+  governanceMetadata: ['AGENTE BETTEX · {0} CAPÍTULOS', 'BETTEX AGENT · {0} CHAPTERS', 'AGENTE BETTEX · {0} CAPÍTULOS'],
+  governanceDocumentation: [
+    'O subagente de governança terá a função de manter e atualizar a documentação do sistema BETTEX. Deverá acompanhar decisões e mudanças aprovadas, revisar os capítulos e suas traduções, registrar versões e preservar a coerência entre a documentação, a implementação e as regras vigentes. Atualizar a documentação não aprova políticas nem modifica permissões ou direitos econômicos.',
+    'The governance subagent will maintain and update the BETTEX system documentation. It should track approved decisions and changes, review chapters and their translations, record versions and preserve consistency between documentation, implementation and rules in force. Updating documentation does not approve policies or change permissions or economic rights.',
+    'El subagente de gobernanza tendrá la función de mantener y actualizar la documentación del sistema BETTEX. Deberá seguir decisiones y cambios aprobados, revisar los capítulos y sus traducciones, registrar versiones y preservar la coherencia entre la documentación, la implementación y las reglas vigentes. Actualizar la documentación no aprueba políticas ni modifica permisos o derechos económicos.',
+  ],
+  agentDefinitionTitle: ['Agente BETTEX e subagentes', 'BETTEX agent and subagents', 'Agente BETTEX y subagentes'],
+  agentDefinition: [
+    'BETTEX é o agente central de uma arquitetura multiagente. Sua inteligência própria será desenvolvida para interpretar o contexto geral, formular objetivos e construir decisões com o apoio de subagentes especializados em mercados, risco, tesouraria e governança. Sistema BETTEX é o nome da arquitetura completa; agente BETTEX identifica sua inteligência central.',
+    'BETTEX is the central agent in a multiagent architecture. Its own intelligence will be developed to interpret the overall context, formulate objectives and build decisions with support from specialized market, risk, treasury and governance subagents. BETTEX system names the complete architecture; BETTEX agent identifies its central intelligence.',
+    'BETTEX es el agente central de una arquitectura multiagente. Su inteligencia propia se desarrollará para interpretar el contexto general, formular objetivos y construir decisiones con el apoyo de subagentes especializados en mercados, riesgo, tesorería y gobernanza. Sistema BETTEX es el nombre de la arquitectura completa; agente BETTEX identifica su inteligencia central.',
+  ],
+  subagentDefinition: [
+    'Os subagentes desenvolvem análises e inferências em suas especialidades. Podem questionar hipóteses do agente BETTEX, compartilhar evidências e receber novas perguntas. Não são versões independentes de BETTEX nem apenas verificadores de parâmetros. A coordenação central não elimina a validação independente de risco nem autoriza ignorar os controles.',
+    'Subagents develop analyses and inferences in their specialties. They can challenge the BETTEX agent’s hypotheses, share evidence and receive further questions. They are not independent versions of BETTEX or merely parameter checkers. Central coordination does not remove independent risk validation or authorize bypassing controls.',
+    'Los subagentes desarrollan análisis e inferencias en sus especialidades. Pueden cuestionar hipótesis del agente BETTEX, compartir evidencias y recibir nuevas preguntas. No son versiones independientes de BETTEX ni simples verificadores de parámetros. La coordinación central no elimina la validación independiente de riesgo ni autoriza ignorar los controles.',
+  ],
   hero: [
-    'BETTEX é uma comunidade dedicada à construção de inteligência artificial para coordenar mercados, risco, tesouraria e governança. Esta visão técnica apresenta a linha de base do projeto e a direção de pesquisa dos agentes, não um sistema concluído.',
-    'BETTEX is a community dedicated to building artificial intelligence to coordinate markets, risk, treasury and governance. This technical vision presents the project baseline and the agents’ research direction, not a completed system.',
-    'BETTEX es una comunidad dedicada a construir inteligencia artificial para coordinar mercados, riesgo, tesorería y gobernanza. Esta visión técnica presenta la línea de base del proyecto y la dirección de investigación de los agentes, no un sistema terminado.',
+    'A comunidade BETTEX desenvolve o agente BETTEX: uma inteligência central apoiada por subagentes de mercados, risco, tesouraria e governança. Esta visão técnica apresenta a linha de base do projeto e sua direção de pesquisa, não um sistema concluído.',
+    'The BETTEX community develops the BETTEX agent: a central intelligence supported by market, risk, treasury and governance subagents. This technical vision presents the project baseline and its research direction, not a completed system.',
+    'La comunidad BETTEX desarrolla el agente BETTEX: una inteligencia central apoyada por subagentes de mercados, riesgo, tesorería y gobernanza. Esta visión técnica presenta la línea de base del proyecto y su dirección de investigación, no un sistema terminado.',
   ],
   visaoSub: [
     'Uma linha de base para desenvolver inteligência, de DeFi para DeFAI.',
@@ -27,9 +49,9 @@ const passages = {
     'Inferencia, colaboración y aprendizaje a partir de una base inicial.',
   ],
   agP1: [
-    'A IA BETTEX será desenvolvida para coordenar agentes especializados de trading, risco, governança e tesouraria, não apenas encaminhar tarefas ou aplicar regras. Seu trabalho será interpretar análises, comparar hipóteses, identificar divergências e pedir novas investigações quando a informação disponível não sustentar uma conclusão.',
-    'BETTEX AI will be developed to coordinate specialized trading, risk, governance and treasury agents, not merely route tasks or apply rules. Its work will be to interpret analyses, compare hypotheses, identify disagreements and request further investigation when available information does not support a conclusion.',
-    'La IA BETTEX se desarrollará para coordinar agentes especializados de trading, riesgo, gobernanza y tesorería, no solo distribuir tareas o aplicar reglas. Su trabajo será interpretar análisis, comparar hipótesis, identificar discrepancias y solicitar nuevas investigaciones cuando la información disponible no sostenga una conclusión.',
+    'O agente BETTEX será desenvolvido para coordenar subagentes especializados de trading, risco, governança e tesouraria, não apenas encaminhar tarefas ou aplicar regras. Seu trabalho será interpretar análises, comparar hipóteses, identificar divergências e pedir novas investigações quando a informação disponível não sustentar uma conclusão.',
+    'The BETTEX agent will be developed to coordinate specialized trading, risk, governance and treasury subagents, not merely route tasks or apply rules. Its work will be to interpret analyses, compare hypotheses, identify disagreements and request further investigation when available information does not support a conclusion.',
+    'El agente BETTEX se desarrollará para coordinar subagentes especializados de trading, riesgo, gobernanza y tesorería, no solo distribuir tareas o aplicar reglas. Su trabajo será interpretar análisis, comparar hipótesis, identificar discrepancias y solicitar nuevas investigaciones cuando la información disponible no sostenga una conclusión.',
   ],
   agP2: [
     'Agentes de risco, governança e tesouraria também precisam de inteligência própria. As definições atuais fornecem contexto inicial para inferir: não pretendem antecipar todos os cenários nem substituir o raciocínio dos agentes por uma lista de condições. A pesquisa abrangerá ações e cripto, esportes, previsões e iGaming; a abertura de cada mercado continua dependente de integração e adequação legal.',
@@ -57,7 +79,7 @@ const passages = {
     'The rules, reference contracts and controls described record the project’s starting point. They are not a definitive solution for every situation. They provide context and initial boundaries for developing agents that analyze problems, propose approaches and assess the need for evolution. Detailed references preserve current economic and security conditions; they are not intelligence itself.',
     'Las reglas, los contratos de referencia y los controles descritos registran el punto de partida del proyecto. No son una solución definitiva para todas las situaciones. Aportan contexto y límites iniciales para desarrollar agentes que analicen problemas, propongan caminos y evalúen la necesidad de evolución. Las referencias detalladas preservan las condiciones económicas y de seguridad vigentes; no son la inteligencia en sí.',
   ],
-  intelligenceTitle: ['Inteligência dos agentes', 'Agent intelligence', 'Inteligencia de los agentes'],
+  intelligenceTitle: ['Agente BETTEX e seus subagentes', 'BETTEX agent and its subagents', 'Agente BETTEX y sus subagentes'],
   coordinationTitle: ['BETTEX: raciocínio e coordenação', 'BETTEX: reasoning and coordination', 'BETTEX: razonamiento y coordinación'],
   coordination: [
     'A partir das análises especializadas, BETTEX deverá construir uma visão conjunta, comparar objetivos e reconhecer conflitos entre oportunidade, risco, liquidez e política. Poderá devolver perguntas aos agentes, solicitar evidências adicionais e revisar sua hipótese. A inteligência está nessa síntese e investigação, não apenas no encaminhamento de uma ordem.',

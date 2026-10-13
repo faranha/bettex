@@ -4,11 +4,21 @@ Resumen de las reglas y administración. Los capítulos, dibujos y referencias t
 
 https://bettex.ai/es/documentacion
 
+Agente BETTEX y subagentes
+
+BETTEX es el agente central de una arquitectura multiagente. Su inteligencia propia se desarrollará para interpretar el contexto general, formular objetivos y construir decisiones con el apoyo de subagentes especializados en mercados, riesgo, tesorería y gobernanza. Sistema BETTEX es el nombre de la arquitectura completa; agente BETTEX identifica su inteligencia central.
+
+Los subagentes desarrollan análisis e inferencias en sus especialidades. Pueden cuestionar hipótesis del agente BETTEX, compartir evidencias y recibir nuevas preguntas. No son versiones independientes de BETTEX ni simples verificadores de parámetros. La coordinación central no elimina la validación independiente de riesgo ni autoriza ignorar los controles.
+
+Gobernanza: interpretar y proponer evolución
+
+El subagente de gobernanza tendrá la función de mantener y actualizar la documentación del sistema BETTEX. Deberá seguir decisiones y cambios aprobados, revisar los capítulos y sus traducciones, registrar versiones y preservar la coherencia entre la documentación, la implementación y las reglas vigentes. Actualizar la documentación no aprueba políticas ni modifica permisos o derechos económicos.
+
 Adecuación legal y jurídica
 
-Los lanzamientos deben adaptarse a la normativa local. Los agentes y funcionalidades dependen de la investigación técnico-legal y el cumplimiento de los requisitos, independientemente de las fechas en el roadmap.
+Los lanzamientos deben adaptarse a la normativa local. Los subagentes y funcionalidades dependen de la investigación técnico-legal y el cumplimiento de los requisitos, independientemente de las fechas en el roadmap.
 
-Los agentes de trading, gobernanza, riesgo y tesorería requieren un análisis por país, actividad y responsable. Los permisos no son universales; las actividades sujetas a licencia solo se habilitan con autorización.
+Los subagentes de trading, gobernanza, riesgo y tesorería requieren un análisis por país, actividad y responsable. Los permisos no son universales; las actividades sujetas a licencia solo se habilitan con autorización.
 
 Las investigaciones verifican normas, licencias, términos, publicidad, protección del usuario, ALD, privacidad y responsabilidades, con registro formal de evidencias, fechas y controles exigidos.
 
@@ -50,7 +60,7 @@ Los fundadores administran inicialmente. La transición gradual sustituirá toda
 
 Las decisiones comunitarias siguen indefinidas, sin estructura de DAO, voto por token o renuncia de propiedad.
 
-Los fundadores inician la gestión. La dirección DeFAI prevé agentes de trading, gobernanza, riesgo y tesorería hacia la autonomía de BETTEX, con los controles y responsabilidades vigentes.
+Los fundadores inician la gestión. La dirección DeFAI prevé subagentes de trading, gobernanza, riesgo y tesorería hacia la autonomía de BETTEX, con los controles y responsabilidades vigentes.
 
 Las operaciones se centran en la transparencia y rendición de cuentas, sin garantías de protección de capital o rendimientos.
 

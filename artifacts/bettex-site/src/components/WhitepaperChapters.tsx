@@ -186,6 +186,8 @@ function MainBody({ id }: { id: string }) {
         <Prose>{c.visaoP1}</Prose>
         <Head id="documentacao-linha-base">{intelligenceCopy.baselineTitle}</Head>
         <Prose>{intelligenceCopy.baseline}</Prose>
+        <Head id="documentacao-agente-subagentes">{intelligenceCopy.agentDefinitionTitle}</Head>
+        <Prose>{[intelligenceCopy.agentDefinition, intelligenceCopy.subagentDefinition]}</Prose>
         <DocTerms id="schematic-overview" label={c.visaoEsquema} items={[
           [c.vTes, c.vTesT], [c.vAg, c.vAgT], [c.vTok, c.vTokT], [c.vPar, c.vParT],
         ]} />

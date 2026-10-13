@@ -1,5 +1,5 @@
 .agent-intel__label { margin: 0 0 14px; color: #1a347d; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .1em; text-transform: uppercase; }
-.agent-intel__label--sub { margin: 0 0 12px; }
+.agent-intel__label--sub { margin: 18px 0 12px; }
 .agent-intel__map { display: flex; flex-direction: column; margin-bottom: 28px; }
 .agent-intel h4 { margin: 0; font: 800 clamp(1.15rem, 2vw, 1.4rem)/1.25 var(--app-font-serif); letter-spacing: -.035em; }
 .agent-intel .whitepaper__prose { margin-block: 14px 0; }
@@ -14,10 +14,10 @@
 .agent-intel__context p { margin: 6px 0 0; font-size: 13px; line-height: 1.6; }
 .agent-intel__core .agent-intel__context { border-color: #ffffff35; }
 .agent-intel__core .agent-intel__context span { color: #F2B632; }
-.agent-intel__links { display: flex; justify-content: space-between; gap: 16px; position: relative; margin: 0 6%; padding: 18px 0; border-inline: 2px solid #2B59FF; }
-.agent-intel__links::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: #2B59FF; }
-.agent-intel__links span { max-width: 44%; color: #1f3e93; font: 600 11px/1.5 var(--app-font-sans); padding-inline: 12px; }
-.agent-intel__links span:last-child { text-align: right; }
+.agent-intel__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 24px; margin: 0; padding: 16px clamp(20px, 3.5vw, 32px); border: 1px solid var(--wp-line); border-top: 0; background: #eeeadf; }
+.agent-intel__links span { display: grid; grid-template-columns: 20px minmax(0, 1fr); align-items: start; gap: 10px; min-width: 0; color: #13204f; font: 600 12px/1.6 var(--app-font-sans); }
+.agent-intel__links span::before { content: "\2191"; color: #2B59FF; font: 700 20px/1 var(--app-font-mono); }
+.agent-intel__links span:last-child::before { content: "\2193"; }
 .agent-intel__support { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--wp-line); background: var(--wp-line); }
 .agent-intel__agent { min-width: 0; padding: 20px; background: #F4F1E8; }
 .agent-intel__agent .agent-intel__role { margin-bottom: 8px; color: #1a347d; }
@@ -34,7 +34,5 @@
 .agent-intel__note { margin: 16px 0 0; padding-left: 14px; border-left: 2px solid var(--wp-orange); color: #9A6A00; font: 700 11px/1.6 var(--app-font-mono); letter-spacing: .04em; }
 @media (max-width: 860px) {
   .agent-intel__support, .agent-intel__rel { grid-template-columns: 1fr; }
-  .agent-intel__links { margin: 0 20px; flex-direction: column; gap: 8px; }
-  .agent-intel__links::before { display: none; }
-  .agent-intel__links span { max-width: none; text-align: left !important; }
+  .agent-intel__links { grid-template-columns: 1fr; gap: 12px; }
 }

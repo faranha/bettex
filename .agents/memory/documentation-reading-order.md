@@ -9,6 +9,12 @@ Não repetir títulos consecutivos do mesmo bloco, inclusive quando um component
 
 **How to apply:** Manter um único título com conteúdo, sem cabeçalho vazio acima de outro igual. Conferir o texto renderizado, inclusive traduções e referências técnicas, não somente os títulos declarados no componente pai.
 
+Não repetir acima do índice lateral o caminho da documentação, do capítulo e das subseções.
+
+**Why:** O criador apontou as opções duplicadas no topo do menu e pediu: “pare com isso”.
+
+**How to apply:** Manter somente a lista de capítulos e subseções com destaque do item atual; não reintroduzir breadcrumbs acima dessa lista.
+
 No mobile, o menu da documentação deve seguir o submenu das demais páginas: uma barra imediatamente abaixo do header principal, com acesso aos capítulos e às subseções da área selecionada. Não manter um segundo índice mobile dentro do conteúdo; preservar o índice lateral no desktop.
 
 **Why:** O criador pediu a mesma estrutura de submenu usada nas outras páginas, no lugar do menu de capítulos mostrado no corpo da documentação.

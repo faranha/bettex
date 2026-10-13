@@ -3,6 +3,7 @@ import json
 import re
 import textwrap
 import shutil
+import subprocess
 from html import escape
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
@@ -16,6 +17,35 @@ consistency = json.loads((lib / "documentation-consistency.json").read_text())
 materials["sections"].extend(consistency["sections"])
 catalogue = json.loads((lib / "locales/translations.json").read_text())
 catalogue.update(json.loads((lib / "locales/documentation-synthesis.json").read_text()))
+# Reuse the same documentation-only nomenclature as the site, including archived
+# downloads. Node is already required by the build; there is no duplicated rule set.
+editorial = subprocess.run(
+    ["node", "--input-type=module", "-e", """
+import { documentationAgentTerminology as terms } from './src/lib/documentation-agent-terminology.ts';
+import { intelligenceCopy, intelligenceTranslations } from './src/lib/documentation-intelligence.ts';
+let input = ''; for await (const part of process.stdin) input += part;
+const catalog = { ...JSON.parse(input), ...intelligenceTranslations };
+for (const [key, entry] of Object.entries(catalog)) {
+  for (const lang of ['pt', 'en', 'es']) {
+    if (entry[lang]) entry[lang] = terms(entry[lang], lang);
+  }
+  if (!entry.pt) entry.pt = terms(key, 'pt');
+}
+console.log(JSON.stringify({ catalog, copy: intelligenceCopy }));
+"""],
+    input=json.dumps(catalogue), text=True, capture_output=True, check=True, cwd=app,
+)
+editorial = json.loads(editorial.stdout)
+catalogue = editorial["catalog"]
+agent_copy = editorial["copy"]
+materials["sections"].insert(0, {
+    "title": agent_copy["agentDefinitionTitle"],
+    "paragraphs": [agent_copy["agentDefinition"], agent_copy["subagentDefinition"]],
+})
+materials["sections"].insert(1, {
+    "title": agent_copy["governanceTitle"],
+    "paragraphs": [agent_copy["governanceDocumentation"]],
+})
 ns = "http://schemas.openxmlformats.org"
 
 def xlsx(path, sheets):
