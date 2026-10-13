@@ -3,6 +3,7 @@ import { createPortal, flushSync } from 'react-dom';
 import { ChapterContent, chapters } from './WhitepaperChapters';
 import { ChapterVisibility } from './ChapterVisibility';
 import { DocumentationGovernanceMarquee } from './DocumentationGovernanceMarquee';
+import { intelligenceCopy } from '@/lib/documentation-intelligence';
 import { t, useLocale } from '@/lib/i18n';
 import { resolveDocumentationId } from '@/lib/documentation-aliases';
 import { collectOutline, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
@@ -224,7 +225,7 @@ export function WhitepaperSection() {
         <div>
           <p className="whitepaper__eyebrow" data-i18n="translated"><span aria-hidden="true" /> {t('v1 · VISÃO, ARQUITETURA E REGRAS').replace(/^v1\s*·\s*/, '')}</p>
           <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}{' '}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>
-          <p className="whitepaper__hero-lede">BETTEX é uma comunidade dedicada à construção do próprio agente de IA. Esta documentação reflete a visão dos fundadores e os anseios da comunidade, incluindo arquitetura técnica, regras, tokenomics e riscos.</p>
+          <p className="whitepaper__hero-lede">{intelligenceCopy.hero}</p>
         </div>
         <div className="whitepaper__hero-note"><span>MOEDAS E PARTICIPAÇÃO</span><p>Saldos e movimentações previstos são em USDC; BETTEX é o token de participação.</p><p>A entrada em moeda fiduciária depende de um provedor externo habilitado.</p></div>
       </header>

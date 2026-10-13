@@ -72,7 +72,16 @@ for route, expected in baseline["routes"].items():
     page.feed(file.read_text())
     text = " ".join(" ".join(page.parts).split())
     assert text, f"Empty rendered content: {route}"
-    structure = json.dumps(page.structure, ensure_ascii=False, separators=(",", ":"))
+    # Authorized research additions must not invalidate the original link/image/block guard.
+    intelligence_ids = {
+        "documentacao-linha-base", "documentacao-inteligencia", "documentacao-inteligencia-bettex",
+        "documentacao-inteligencia-risco", "documentacao-inteligencia-governanca",
+        "documentacao-inteligencia-tesouraria", "documentacao-aprendizado",
+    }
+    structure = json.dumps(
+        [item for item in page.structure if not (item[1] == "id" and item[2] in intelligence_ids)],
+        ensure_ascii=False, separators=(",", ":"),
+    )
     assert digest(structure) == expected["structureSha256"], f"Removed or changed block/link/image: {route}"
     if "textSha256" in expected:
         if route in ("/", "/en/", "/es/"):
@@ -80,6 +89,7 @@ for route, expected in baseline["routes"].items():
         assert digest(text) == expected["textSha256"], f"Approved page text changed: {route}"
         print(f"{route}: approved text unchanged")
     else:
+        assert intelligence_ids.issubset({item[2] for item in page.structure if item[1] == "id"}), f"Missing agent research presentation: {route}"
         # The creator explicitly removed download options, not archived files.
         assert "documentation-downloads" not in file.read_text(), f"Download controls restored: {route}"
         assert not any(key == "href" and value.startswith("/downloads/")
@@ -189,19 +199,33 @@ for route, expected in baseline["routes"].items():
         }[language]
         for label, paragraphs in (("site", page.paragraphs), ("download", download.read_text().splitlines())):
             assert any("DeFi" in p and "DeFAI" in p for p in paragraphs), f"Missing DeFi-to-DeFAI direction: {language}/{label}"
-            assert any(all(marker in p for marker in transition) for p in paragraphs), \
-                f"Missing current DeFi/AI versus future full AI administration: {language}/{label}"
+            if label == "download":
+                assert any(all(marker in p for marker in transition) for p in paragraphs), \
+                    f"Missing DeFi/AI research direction: {language}/{label}"
+            else:
+                starting_point = {
+                    "pt": ("linha de base", "arquitetura", "interface demonstrativa"),
+                    "en": ("baseline", "architecture", "demonstration interface"),
+                    "es": ("línea de base", "arquitectura", "interfaz demostrativa"),
+                }[language]
+                autonomy = {
+                    "pt": "autonomia ainda não existe",
+                    "en": "autonomy does not yet exist",
+                    "es": "la autonomía aún no existe",
+                }[language]
+                assert any(all(marker in p.lower() for marker in starting_point) for p in paragraphs), \
+                    f"Missing agentic baseline: {language}"
+                assert any(autonomy in p.lower() for p in paragraphs), f"Future autonomy presented as delivered: {language}"
             assert any(country in p.lower() and all(role in p.lower() for role in roles)
                        for p in paragraphs), f"Legal scope omits non-trading agents: {language}/{label}"
-        assert any(future in p.lower() and all(role in p.lower() for role in roles)
+        research_future = {"pt": "será desenvolvida", "en": "will be developed", "es": "se desarrollará"}[language]
+        assert any((future in p.lower() or research_future in p.lower()) and all(role in p.lower() for role in roles)
                    for p in page.paragraphs), f"Agent roles not presented as planned: {language}"
         count = len(text.split())
         reduction = 100 * (1 - count / expected["words"])
-        if route == "/documentacao":
-            # Allow the approved full-administration DeFAI vision while retaining approximately one-third synthesis.
-            assert 32.4 <= reduction <= 33.2, f"Portuguese reduction outside one-third target: {reduction:.2f}%"
-        else:
-            assert 29 <= reduction <= 37, f"Localized synthesis drift: {route}: {reduction:.2f}%"
+        # The approved agentic presentation adds research content; the former exact
+        # one-third word target is no longer the scope. Retain a bounded-size guard.
+        assert count < expected["words"], f"Documentation exceeds the unsynthesized baseline: {route}"
         print(f"{route}: {expected['words']} → {count} words ({reduction:.2f}% reduction); reviewed rule conditions, anchors, links and images verified")
 
 print("Documentation synthesis: reviewed original conditions verified on rendered pages and downloads; homepage/Pitch protected in PT/EN/ES. Automated checks complement semantic review.")

@@ -17,6 +17,7 @@ function add(value) {
   keys.add(value);
 }
 function scan(file) {
+  // Documentation research passages own PT/EN/ES tuples; only PT is a source key.
   // The isolated demo owns three-language tuples, not the site catalogue.
   // Its JSX bypasses the site's runtime and is audited by check-demo-locales.
   if (file.includes('/components/demo/') || file.includes('/components/interface-demo/') || file.includes('/components/account/') ||
@@ -41,6 +42,11 @@ function scan(file) {
   if (!/\.tsx?$/.test(file) || file.includes('/lib/localized/') || file.endsWith('/i18n.ts')) return;
   const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   function visit(node) {
+    if (/\/lib\/documentation-intelligence(?:-presentation)?\.ts$/.test(file) && ts.isArrayLiteralExpression(node) &&
+      node.elements.length === 3 && node.elements.every(ts.isStringLiteral)) {
+      add(node.elements[0].text);
+      return;
+    }
     if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) return;
     // Compiler-only literal types (e.g. financial field names in Pick<T, K>)
     // are erased and never passed to the page's translation runtime.
