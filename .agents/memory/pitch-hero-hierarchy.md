@@ -11,6 +11,12 @@ O usuário quer trabalhar o hero do Pitch em conjunto: uma pessoa erguendo a mã
 
 **How to apply:** Esta autorização substitui a direção anterior de mostrar o personagem usando o aplicativo nas orientações abaixo, somente para a arte de abertura. Apresentar a proposta visual antes de substituir a imagem; preservar a homepage, os demais capítulos do Pitch e a prioridade do H1.
 
+O androide deve aparecer inteiro, sem corte à direita, tanto no arquivo da arte quanto no encaixe do hero.
+
+**Why:** O criador corrigiu a primeira proposta: “ele esta cortado a direita, preciso que ele esteja inteiro, e seja colocado no hero sem cortes na direita”.
+
+**How to apply:** Reconstruir partes ausentes antes de aplicar a imagem e reservar margem lateral; não usar ampliação, recorte do contêiner ou posicionamento que volte a cortar o androide no desktop ou no celular.
+
 A arte do hero do Pitch deve ficar integrada ao fundo, sem legenda e sem caixa. Pode ser um cutout do personagem usando o app.
 
 **Why:** O criador corrigiu: “a imagem no hero do pitch tem que ser melhorada, nao precisa de legenda, pode ser um cutout, nao dentro de uma caixa”.

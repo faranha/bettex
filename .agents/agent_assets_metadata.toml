@@ -938,3 +938,17 @@ mtime_ms = 1791998819399
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/63a712c0-3aae-4457-984f-b60f75fc5951/753abe5f-c093-469a-9c00-b734fbb51cd8"
 storage_version_token = "1791998880105118"
 content_type = "image/png"
+
+[[outputs]]
+id = "XlBlQCiGtFP3c8ki05_oK"
+uri = "file://generated-artifacts/pitch-hero/ai-rescue-safe-framing-preview.webp"
+type = "image"
+title = "Arte corrigida — androide inteiro"
+description = "Prévia sobre fundo azul-escuro: androide completo, incluindo costas, pernas e pés, com margem livre à direita. O recorte transparente está preparado; a imagem ainda não foi aplicada ao hero."
+logical_id = "87ce301d-aed3-4c59-a4fa-df1ed3816227"
+content_hash = "sha256:2399778c9e673bd8365ab419de97f93cb3f6c7bd9bbde5a1c6ca797868977ebf"
+size = 103560
+mtime_ms = 1791999086806
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/87ce301d-aed3-4c59-a4fa-df1ed3816227/c931ddd7-fa1c-4cf6-9bdb-0746a2cd37f0"
+storage_version_token = "1791999111838908"
+content_type = "image/webp"
