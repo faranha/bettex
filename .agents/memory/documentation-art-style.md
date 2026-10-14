@@ -13,15 +13,15 @@ Apresentar condições de adoção dentro do contexto explicativo, não como “
 
 ## Identificação visual dos subagentes
 
-Cada subagente deve ter uma arte de identificação na documentação, aproveitando a identidade visual já utilizada nos materiais e na homepage.
+Cada subagente deve ter uma arte na documentação, aproveitando a identidade visual já utilizada nos materiais e na homepage. As imagens ficam somente dentro do conteúdo das seções, nunca ao lado do título.
 
 As apresentações também devem incluir artes conceituais maiores, na linha da arte do Agente BETTEX; retratos de identificação não substituem essas cenas.
 
-**Why:** O criador pediu uma arte conceitual também nas outras seções, usando a apresentação do Agente BETTEX como referência.
+**Why:** O criador pediu uma arte conceitual também nas outras seções, usando a apresentação do Agente BETTEX como referência. Depois definiu: “fica só dentro da sessão as imagens, nunca do lado, é uma regra”.
 
 **Why:** O criador sentiu falta de uma arte para cada agente e pediu uma apresentação visual bonita, sem repetir os erros já corrigidos.
 
-**How to apply:** Preservar a identidade das artes existentes, dar identificação também aos agentes de apoio e manter as especializações cripto vinculadas ao mesmo subagente. Ilustração não substitui os avisos de disponibilidade nem autoriza alterar a homepage.
+**How to apply:** Preservar as artes conceituais no conteúdo expandido, inclusive nos agentes de apoio, e manter as especializações cripto vinculadas ao mesmo subagente. Cabeçalhos têm apenas título, subtítulo e controle. Não reintroduzir retratos laterais. Ilustração não substitui os avisos de disponibilidade nem autoriza alterar a homepage.
 
 ## Roadmap da documentação
 
