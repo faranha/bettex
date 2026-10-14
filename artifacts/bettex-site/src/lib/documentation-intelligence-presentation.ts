@@ -60,6 +60,7 @@ const passages = {
     'Presenta a BETTEX la oportunidad, condiciones contractuales, exposición y escenarios de pérdida. No altera la aleatoriedad de los juegos ni presupone beneficios por participar en una promoción.',
   ],
   contributionLabel: ['Contribuição para BETTEX', 'Contribution to BETTEX', 'Contribución a BETTEX'],
+  cycleTitle: ['Contexto, feedback e aprendizado', 'Context, feedback and learning', 'Contexto, feedback y aprendizaje'],
   paramsTitle: ['Contexto e parâmetros iniciais', 'Initial context and parameters', 'Contexto y parámetros iniciales'],
   params: [
     'Regras, contratos de referência e controles atuais alimentam cada agente como contexto de partida para inferir, não como limite da inteligência. As referências detalhadas preservam as condições econômicas e de segurança vigentes.',

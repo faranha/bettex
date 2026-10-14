@@ -33,9 +33,9 @@
 .agent-intel__panel { min-width: 0; padding: 22px; border: 1px solid var(--wp-line); border-top: 3px solid #102f83; background: #F4F1E8; }
 .agent-intel__panel--loop { border-top-color: #F2B632; }
 .agent-intel__panel .whitepaper__prose p { font-size: 13.5px; line-height: 1.7; }
-.agent-intel__panel ol { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: ai; }
-.agent-intel__panel li { display: grid; grid-template-columns: 28px minmax(0, 1fr); padding: 12px 0; border-top: 1px solid var(--wp-line); color: #13204F; font-size: 13.5px; line-height: 1.6; counter-increment: ai; }
-.agent-intel__panel li::before { content: counter(ai, decimal-leading-zero); color: #2B59FF; font: 700 11px var(--app-font-mono); }
+.agent-intel__panel ol, .agent-intel__cycle-feedback ol { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: ai; }
+.agent-intel__panel li, .agent-intel__cycle-feedback li { display: grid; grid-template-columns: 28px minmax(0, 1fr); padding: 12px 0; border-top: 1px solid var(--wp-line); color: #13204F; font-size: 13.5px; line-height: 1.6; counter-increment: ai; }
+.agent-intel__panel li::before, .agent-intel__cycle-feedback li::before { content: counter(ai, decimal-leading-zero); color: #2B59FF; font: 700 11px var(--app-font-mono); }
 .agent-intel__note { margin: 16px 0 0; padding-left: 14px; border-left: 2px solid var(--wp-orange); color: #9A6A00; font: 700 11px/1.6 var(--app-font-mono); letter-spacing: .04em; }
 @media (max-width: 860px) {
   .agent-intel__support, .agent-intel__rel, .agent-intel__market-list { grid-template-columns: 1fr; }

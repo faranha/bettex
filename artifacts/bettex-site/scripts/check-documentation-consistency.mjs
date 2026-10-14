@@ -63,6 +63,11 @@ try {
     const agentReading = renderToStaticMarkup(createElement(DocumentationRelatedTopics, { sectionId: 'documentacao-agentes' }));
     assert.match(agentReading, /href="#documentacao-controles"/, `${language}: risk controls missing from agent reading suggestions`);
     const html = chapters.map((_, index) => renderToStaticMarkup(createElement(ChapterContent, { index }))).join('');
+    const researchCycles = [...html.matchAll(/<section\b[^>]*data-testid="documentation-agent-research-cycle"[^>]*>([\s\S]*?)<\/section>/g)];
+    assert.equal(researchCycles.length, 1, `${language}: research context, feedback and learning must share one subsection`);
+    const researchCycle = researchCycles[0][1];
+    assert.equal((researchCycle.match(/class="whitepaper__subhead"/g) ?? []).length, 1, `${language}: research cycle must have one visible subsection heading`);
+    assert.match(researchCycle, /class="whitepaper__prose".*?<ol\b[^>]*>.*?<\/ol>.*?class="whitepaper__prose".*?class="agent-intel__note"/s, `${language}: keep context, feedback, learning and closing research note in order`);
     assert.doesNotMatch(html, /contribuição por serviços|service contribution|contribución por servicios/i, `${language}: discarded operating-funding proposal`);
     for (const id of [...ids, 'documentacao-governanca-detalhe', 'documentacao-entidade-multisig', 'documentacao-versao-politica']) {
       assert(html.includes(`id="${id}"`), `${language}: unreachable ${id}`);

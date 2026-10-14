@@ -17,13 +17,12 @@ export function AgentIntelligence({ owners, introduction = false }: { owners?: A
     {has('bettex') && <AgentIntelligenceParts part="bettex" introduction={introduction} />}
     {owners.some(o => o in { risk: 1, treasury: 1, governance: 1 }) && <AgentIntelligenceParts part="support" owners={owners} introduction={introduction} />}
     {owners.some(o => o in { crypto: 1, sports: 1, predictions: 1, igaming: 1 }) && <AgentIntelligenceParts part="markets" owners={owners} introduction={introduction} />}
-    {has('relations') && <AgentIntelligenceParts part="relations" />}
-    {has('learning') && <AgentIntelligenceParts part="learning" />}
+    {(has('relations') || has('learning')) && <AgentResearchCycle />}
   </div>;
   return <AgentIntelligenceFull />;
 }
 
-function AgentIntelligenceParts({ part, owners, introduction = false }: { part: 'context' | 'bettex' | 'support' | 'markets' | 'relations' | 'learning'; owners?: AgentOwner[]; introduction?: boolean }) {
+function AgentIntelligenceParts({ part, owners, introduction = false }: { part: 'context' | 'bettex' | 'support' | 'markets'; owners?: AgentOwner[]; introduction?: boolean }) {
   const on = (o?: AgentOwner) => !owners || (o !== undefined && owners.includes(o));
   const support = [
     ['documentacao-inteligencia-risco', p.riskRole, c.riskTitle, c.risk, 'Exposição, perdas, liquidez, limites e propostas.'],
@@ -71,23 +70,30 @@ function AgentIntelligenceParts({ part, owners, introduction = false }: { part: 
       </article>)}
     </div>
   </section>;
-  if (part === 'relations') return <>
-    <div className="agent-intel__rel">
-      <section className="agent-intel__panel">
-        <h3 className="whitepaper__subhead">{p.paramsTitle}</h3>
-        <div className="whitepaper__prose"><p>{p.params}</p></div>
-      </section>
-      <section className="agent-intel__panel agent-intel__panel--loop">
-        <h3 className="whitepaper__subhead">{p.feedbackTitle}</h3>
-        <ol><li>{p.feedbackUp}</li><li>{p.feedbackDown}</li><li>{p.feedbackLoop}</li></ol>
-      </section>
+  return null;
+}
+
+/** One reading/collapse unit: starting context, feedback, then evaluation. */
+function AgentResearchCycle() {
+  return <section className="agent-intel__cycle" data-testid="documentation-agent-research-cycle">
+    <h3 className="whitepaper__subhead" id="documentacao-aprendizado">
+      <span id="documentacao-agentes-secao-4" aria-hidden="true" />
+      <span id="documentacao-agentes-secao-5" aria-hidden="true" />
+      {p.cycleTitle}
+    </h3>
+    {/* Reserve the two former outline slots so later generated bookmark IDs
+        remain stable. These are not visible or numbered subsections. */}
+    <div hidden aria-hidden="true" data-documentation-opening>
+      <h3>{p.paramsTitle}</h3>
+      <h3>{p.feedbackTitle}</h3>
     </div>
-    <p className="agent-intel__note">{p.researchNote}</p>
-  </>;
-  return <>
-    <h3 className="whitepaper__subhead" id="documentacao-aprendizado">{c.learningTitle}</h3>
+    <div className="whitepaper__prose"><p>{p.params}</p></div>
+    <div className="agent-intel__cycle-feedback">
+      <ol><li>{p.feedbackUp}</li><li>{p.feedbackDown}</li><li>{p.feedbackLoop}</li></ol>
+    </div>
     <div className="whitepaper__prose"><p>{c.learning}</p><p>{c.evaluation}</p></div>
-  </>;
+    <p className="agent-intel__note">{p.researchNote}</p>
+  </section>;
 }
 
 function AgentIntelligenceFull() {
@@ -146,23 +152,6 @@ function AgentIntelligenceFull() {
       </section>
     </div>
 
-    <div className="agent-intel__rel">
-      <section className="agent-intel__panel">
-        <h4>{p.paramsTitle}</h4>
-        <div className="whitepaper__prose"><p>{p.params}</p></div>
-      </section>
-      <section className="agent-intel__panel agent-intel__panel--loop">
-        <h4>{p.feedbackTitle}</h4>
-        <ol>
-          <li>{p.feedbackUp}</li>
-          <li>{p.feedbackDown}</li>
-          <li>{p.feedbackLoop}</li>
-        </ol>
-      </section>
-    </div>
-    <p className="agent-intel__note">{p.researchNote}</p>
-
-    <h3 className="whitepaper__subhead" id="documentacao-aprendizado">{c.learningTitle}</h3>
-    <div className="whitepaper__prose"><p>{c.learning}</p><p>{c.evaluation}</p></div>
+    <AgentResearchCycle />
   </section>;
 }
