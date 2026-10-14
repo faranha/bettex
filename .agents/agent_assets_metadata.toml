@@ -770,3 +770,31 @@ mtime_ms = 1791937379245
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/0876f37e-f4a3-4cb9-ad86-ee20602e178c/beb306d2-3ed7-4f8d-a848-bb87343d61bb"
 storage_version_token = "1791937415074255"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "qQxgJaktRRVF_WChghE6A"
+uri = "file://docs/trading-proposal-contract.md"
+type = "text"
+title = "BETTEX — pacote de investimento, filas e decisão"
+description = "Contrato unificado com risco entregue pelo subagente, alvos e durações, até 12 propostas por rodada, limites de alocação, registros e relatórios. Números propostos para teste; nenhuma operação ativada."
+logical_id = "fe585425-7d96-4ac6-a5dc-580c94669928"
+content_hash = "sha256:e72d84a371feee90baf54d95948c8361a588882db5acab16e762e07010d55ee6"
+size = 23074
+mtime_ms = 1791938606261
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/fe585425-7d96-4ac6-a5dc-580c94669928/146f37a0-a88c-4696-8f0c-579a86966e7c"
+storage_version_token = "1791938770788143"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "YhbJxLMfU8HdFdlQcvH6s"
+uri = "file://docs/trading-cycle-reports.md"
+type = "text"
+title = "BETTEX — relatórios e decisões por ciclo"
+description = "Revisão dos registros atuais, oito famílias de relatórios, vínculo de cada decisão ao ciclo, continuidade dos investimentos, apuração e significado dos gráficos. Definição de negócio; aplicativo e operações não alterados."
+logical_id = "29d509de-2fe4-4831-b88b-a7e456fd57a9"
+content_hash = "sha256:a9cc9be82d55fb72dc707bff1a1b3554ab84122455b1e696a77a6738f737d749"
+size = 20939
+mtime_ms = 1791939441373
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/29d509de-2fe4-4831-b88b-a7e456fd57a9/2f978614-924d-4447-9c28-4cd3dddffbb9"
+storage_version_token = "1791939491865288"
+content_type = "text/markdown"

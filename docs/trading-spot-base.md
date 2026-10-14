@@ -4,6 +4,8 @@
 
 **Etapa atual:** definir lógica e regras básicas, sem escolher tecnologia. A referência principal desta etapa é [lógica de análise, oportunidades e decisão](trading-decision-logic.md). Os parâmetros quantitativos abaixo são rascunhos de pesquisa, não decisões desta etapa; a investigação de DEXs fica como material para depois.
 
+O [pacote unificado de propostas](trading-proposal-contract.md) contém os alvos/durações por estratégia e a hipótese atual de filas, comparação e alocação. As receitas quantitativas abaixo continuam como alternativas de pesquisa, não substituem esse contrato.
+
 **Decisão do criador:** o mandato inicial é negociar BTC, ETH e SOL no mercado spot, sem alavancagem.
 
 **Direção escolhida:** priorizar DEXs e negociação on-chain. Ver [infraestrutura e critérios on-chain](trading-spot-dex.md) para candidatos, representações, custos e regras específicas. Starknet e Arbitrum continuam alternativas; a escolha de DEX não aprova uma rede ou integração.

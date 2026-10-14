@@ -4,6 +4,10 @@
 
 Esta etapa define lógica e regras básicas, **não tecnologia**. Não escolhe rede, plataforma, fornecedor de inferência, modelo, infraestrutura ou mecanismo de execução.
 
+O [pacote único de investimento e as filas](trading-proposal-contract.md) detalham campos obrigatórios, risco entregue pelo subagente, alvos e durações por estratégia, capacidade de até 12 propostas, comparação, alocação e relatórios. Seus números são propostas iniciais de teste, não políticas aprovadas.
+
+A [revisão de relatórios por ciclo](trading-cycle-reports.md) estabelece o dossiê histórico que liga análise, decisão, investimento e apuração, incluindo posições herdadas e gráficos sem dupla contagem.
+
 Mandato definido: BTC, ETH e SOL spot, sem alavancagem, priorizando negociação on-chain. A BETTEX é o agente principal; Cripto coordena especialistas BTC/ETH/SOL. Risco e Tesouraria alimentam e limitam a decisão, mas não formam outra camada de seleção financeira.
 
 As famílias de estratégia abaixo são propostas para organizar a avaliação. Não são estratégias validadas nem autorizações de operação. Rascunhos quantitativos anteriores não estabelecem uma estratégia preferida ou os parâmetros desta etapa.
@@ -19,7 +23,7 @@ As famílias de estratégia abaixo são propostas para organizar a avaliação. 
 
 Rotação é long-only: reduzir uma posição e avaliar outra, podendo permanecer em caixa. Não implica venda a descoberto, arbitragem ou negociação de um par entre os ativos.
 
-Cada família precisa de tese, regime permitido, condição de entrada, objetivo, invalidação, prazo e restrições. Janelas, fórmulas e limites numéricos serão definidos depois dessa lógica.
+Cada família precisa de tese, regime permitido, condição de entrada, alvo absoluto, invalidação, duração esperada, prazo máximo e restrições. As hipóteses iniciais de alvo/duração estão no pacote unificado; condições de mercado e parâmetros de identificação ainda precisam de avaliação.
 
 Duas estratégias favoráveis ao mesmo ativo não são duas oportunidades independentes. Reunir as evidências, indicar a tese principal e não duplicar capital ou exposição. Uma posição conserva sua tese de origem; não trocar de estratégia depois da perda apenas para evitar a saída.
 
@@ -61,7 +65,7 @@ Uma oportunidade deve dizer:
 - ativo, estratégia e situação de mercado;
 - evidências favoráveis, contrárias e ausentes;
 - entrada pretendida, objetivo, invalidação e prazo;
-- benefício líquido esperado, perda planejada e incerteza, quando estimáveis;
+- benefício líquido esperado, perda planejada e incerteza; ausentes, não qualifica para decisão financeira;
 - capital necessário e liquidez/custo de entrada e saída;
 - impacto sobre posições existentes e correlação;
 - validade e acontecimentos que exigem revisão;

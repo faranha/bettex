@@ -20,3 +20,9 @@ O criador esclareceu: “A gente não vai definir ainda a tecnologia, a gente va
 **Why:** Pediu múltiplas estratégias, análise de mercado, tipos de inferência, organização/comunicação/fila de oportunidades e regras de prioridade da BETTEX, confrontados com Tesouraria e Risco como entradas da decisão.
 
 **How to apply:** Nesta etapa, definir comportamento e regras de decisão sem escolher redes, plataformas, fornecedores, modelos ou infraestrutura. Não redirecionar a discussão para comparações tecnológicas nem adaptar o demo antes de formar essa base.
+
+O criador exige um pacote unificado de proposta, independente do ativo, com entrada, saída, alvo, duração e análise de risco já entregue pelo subagente. Os pacotes alimentam a comparação da BETTEX, listas de investimentos ativos/rejeitados e relatórios.
+
+**Why:** Corrigiu a definição genérica: precisam estar estruturados quantidade recebida/comparada, filas de comunicação, mínimo para decidir e alocação de capital, não apenas conceitos.
+
+**How to apply:** Entregar contrato de proposta e fluxo com capacidades e regras explícitas, distinguindo propostas numéricas de políticas aprovadas. Não delegar à BETTEX a criação dos termos ou do risco faltantes nem substituir a análise própria do subagente pelo veto independente de Risco.
