@@ -12,9 +12,9 @@
       "textSha256": "cec70de1c18514920ca0d893a24c1ec98fbbe2de62d061a5f73c218529627d93"
     },
     "/pitch": {
-      "words": 6092,
+      "words": 6077,
       "structureSha256": "f70bab8ed07a604378ebf3d5e610874dddf4141a41faaf2a375ce32987304224",
-      "textSha256": "78f66129c41e0d74874d8697974a16069931c6d422339e8d5aa993df885eb4b2"
+      "textSha256": "92decea093dd257a8cc512e16d9c80f750d1a23f2ca76deb6d6bf32b31be8378"
     },
     "/en/": {
       "words": 1301,
@@ -22,9 +22,9 @@
       "textSha256": "8bc861eea7bfa99f654ba910aad2f700b7717def943b487361f1e5a785709031"
     },
     "/en/pitch": {
-      "words": 5849,
+      "words": 5836,
       "structureSha256": "87563ef571d3ee2a5567bae53cb849a0c364592bee1566134038e01d7207b5ec",
-      "textSha256": "3408153412fd0121ab5ffe7b229f899c0c81127f912e5c3b8bb646a4f1703d65"
+      "textSha256": "eb8254b03850ce9508ef1a15b19eea60eca465f98f92a9bca3e86b792bcaf623"
     },
     "/es/": {
       "words": 1395,
@@ -32,9 +32,9 @@
       "textSha256": "e3d3b3c8850c2e6542f1ca7a6583426998e95b083b0f7d001caf8c1aaeb15191"
     },
     "/es/pitch": {
-      "words": 6474,
+      "words": 6460,
       "structureSha256": "08204d62ec355f1464453ab4fc601b01196c8762737af330b8fdd2c3c340c436",
-      "textSha256": "1b0a8e0ed0be31453a17036c1844ef243cc0b50853350087e3f5d9dd0ad2f386"
+      "textSha256": "05f32ca5d1a65498f97e62f6ccd2687d30270850f0e945b0624ab746464848c2"
     },
     "/documentacao": {
       "words": 27074,
