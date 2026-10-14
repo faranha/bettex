@@ -616,10 +616,8 @@
 .documentation-mobile-slot { display: none; }
 @media (max-width: 768px) {
   .documentation-mobile-slot { display: block; }
-  .whitepaper__aside { display: none; }
-  .whitepaper__aside.is-mobile-open { display: block; position: fixed; inset: 0; z-index: 140; pointer-events: none; }
-  .whitepaper__aside.is-mobile-open .whitepaper__mobile-index { display: none; }
-  .whitepaper__aside.is-mobile-open nav { position: fixed; top: calc(var(--site-header-h, 73px) + 60px); left: 16px; right: 16px; max-height: calc(100dvh - var(--site-header-h, 73px) - 76px); border-radius: 10px; pointer-events: auto; }
+  .whitepaper__aside { display: none !important; }
+  .documentation-page-footer > nav:not(.whitepaper__chapter-pagination), .documentation-page-footer > .whitepaper__back { display: none; }
   .whitepaper__mobile-menu-trigger { flex: 1; min-width: 0; min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid #5f86ff40; border-radius: 6px; background: #070b1f; color: #f4f1e8; padding: 4px 10px; font-size: 14px; font-weight: 600; cursor: pointer; }
   .whitepaper__mobile-menu-trigger > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .whitepaper__mobile-menu-trigger > svg { flex: none; }
@@ -627,7 +625,45 @@
   .whitepaper__body { padding-top: 30px; }
 }
 
+.whitepaper__toc-category-trigger {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; min-height: 48px; padding: 12px 10px; border-bottom: 1px solid #13204f24;
+  background: transparent; color: #13204f; text-align: left; font-weight: 700; cursor: pointer;
+}
+.whitepaper__toc-category-children { padding-left: 12px; border-left: 1px solid #13204f24; }
+.whitepaper__mobile-dropdown {
+  --wp-line: #5f86ff40; --wp-paper: #070b1f;
+  z-index: 160; width: min(390px, calc(100vw - 24px));
+  max-height: min(70dvh, var(--radix-dropdown-menu-content-available-height));
+  overflow-y: auto; overscroll-behavior: contain; padding: 8px;
+  border: 1px solid #5f86ff60; border-radius: 10px; background: #070b1f; color: #f4f1e8;
+}
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger,
+.whitepaper__mobile-dropdown .whitepaper__toc-link,
+.whitepaper__mobile-dropdown .whitepaper__toc-sublink,
+.whitepaper__mobile-dropdown .whitepaper__reference-toggle { color: #f4f1e8; }
+.whitepaper__mobile-dropdown .whitepaper__toc-number,
+.whitepaper__mobile-dropdown .whitepaper__toc-subnum { color: #f2b632; }
+.whitepaper__mobile-dropdown .whitepaper__toc-category-children { border-color: #5f86ff40; }
+.whitepaper__mobile-dropdown [data-highlighted] { outline: none; background: #193265; color: #fff; }
+.whitepaper__mobile-dropdown .whitepaper__toc-link.is-active,
+.whitepaper__mobile-dropdown .whitepaper__toc-sublink.is-active,
+.whitepaper__mobile-dropdown .whitepaper__toc-link[data-highlighted],
+.whitepaper__mobile-dropdown .whitepaper__toc-sublink[data-highlighted] { background: #193265; color: #fff; }
+.whitepaper__mobile-dropdown .whitepaper__toc-link { white-space: normal; }
+
 /* Moved technical reference: collapsed, visually secondary to the main reading. */
+.whitepaper__chapter-accordion > summary { cursor: pointer; list-style: none; position: relative; padding-right: 32px; }
+.whitepaper__chapter-accordion > summary::-webkit-details-marker { display: none; }
+.whitepaper__chapter-accordion > summary::after { content: "+"; position: absolute; right: 0; top: 24px; font-size: 26px; color: #21429c; }
+.whitepaper__chapter-accordion[open] > summary::after { content: "−"; }
+.whitepaper__chapter-accordion:not([open]) > summary { margin-bottom: 0; }
+.whitepaper__chapter-accordion:not([open]) > summary h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+[data-documentation-section-heading] { cursor: pointer; position: relative; padding-right: 42px; }
+.whitepaper__section-toggle { position: absolute; right: 0; top: 0; display: grid; place-items: center; min-width: 36px; min-height: 36px; border: 1px solid #13204f30; border-radius: 6px; background: transparent; color: #21429c; cursor: pointer; }
+.whitepaper__section-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.whitepaper__section-toggle:focus-visible { outline: 2px solid #2b59ff; outline-offset: 2px; }
+[data-documentation-page-hidden] { display: none !important; }
 .whitepaper__reference { margin-top: 2.5rem; border: 1px solid rgba(7, 11, 31, .18); border-radius: 14px; background: rgba(255, 255, 255, .45); }
 .whitepaper__reference > summary { cursor: pointer; padding: 1rem 1.25rem; font-weight: 700; font-size: .875rem; min-height: 44px; }
 .whitepaper__reference-body { padding: 0 1.25rem 1.25rem; }

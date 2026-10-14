@@ -15,11 +15,11 @@ BTC, ETH e SOL são subitens de “Subagente Cripto” no menu, não capítulos 
 
 **How to apply:** Preservar o acesso aos detalhes e aos links diretos, com indentação e numeração subordinada no desktop e mobile.
 
-“Features” é a abertura da seção de funcionalidades, não um capítulo nem um item separado no menu.
+“Features” é a abertura da seção de funcionalidades e um grupo recolhível de navegação, não um capítulo independente.
 
-**Why:** O criador pediu simplificar o nome e corrigiu que a abertura deve detalhar o que será apresentado na seção.
+**Why:** O criador pediu simplificar o nome e depois reiterou que carteiras, conta/acesso e demais funcionalidades precisam estar agrupadas em Features, com seções e subseções, em vez de uma lista sequencial de 17–18 opções.
 
-**How to apply:** Apresentar a introdução antes de Carteira BETTEX, com uma descrição de cada tópico da seção. O menu lista as funcionalidades, sem um item extra para a abertura; preservar a distinção entre funcionalidades e agentes inteligentes.
+**How to apply:** Preservar a introdução antes de Carteira BETTEX, sem criar um artigo extra. No menu, colocar carteiras, conta/acesso, histórico, staking, token, recompra e jogos dentro do grupo Features. Agrupar os subagentes em sua própria categoria; manter especialistas de Cripto e subseções subordinados, com grupos inicialmente recolhidos.
 
 Não repetir títulos consecutivos do mesmo bloco, inclusive quando um componente já possui título próprio e é colocado dentro de outro com cabeçalho.
 
@@ -37,7 +37,7 @@ No mobile, o menu da documentação deve seguir o submenu das demais páginas: u
 
 **Why:** O criador pediu a mesma estrutura de submenu usada nas outras páginas, no lugar do menu de capítulos mostrado no corpo da documentação.
 
-**How to apply:** Manter a seleção vinculada ao leitor existente e considerar a altura real do header com a barra ao navegar para capítulos e subseções. Preservar links diretos, histórico e a leitura de uma seção numerada por vez.
+**How to apply:** Considerar a altura real do header com a barra ao navegar para capítulos e subseções. Preservar links diretos e histórico; os atalhos abrem o conteúdo recolhível na própria página, sem trocar de página de leitura.
 
 A seção chama “Entidade e negócios”, não “Identidade e negócios”, e deve vir imediatamente depois de “Visão do projeto”, nunca no fim.
 
@@ -51,11 +51,11 @@ Não reintroduzir os controles globais “Expandir tudo” e “Recolher tudo”
 
 **How to apply:** Manter o índice e a leitura dos capítulos sem acrescentar novamente essa barra de controles.
 
-A documentação usa páginas de leitura por seção numerada, incluindo subitens como 2.1.1, não apenas por capítulo. Cada página mostra somente seu próprio conteúdo.
+A documentação usa uma única página contínua, no mobile e no desktop. Apresentação, introdução e visão ficam abertas inicialmente; capítulos e subseções são recolhíveis dentro dessa mesma página.
 
-**Why:** O criador rejeitou a apresentação amontoada e esclareceu: “2.1,2.2,2.3... cada um tem que ter sua propria section sua propria pagina, linkado no rodap'e para todas secoes e conteudos”.
+**Why:** O criador substituiu a organização anterior: “todos os elementos recolhíveis dentro de cada seção, as subseções carregando sempre dentro de uma única página, mas recolhíveis, a pessoa abre e fecha se quiser ler”. Acrescentou que isso pode ser aplicado no desktop também.
 
-**How to apply:** Preservar todos os assuntos, a ordem e os links diretos antigos. Incluir no rodapé acesso a todas as seções e conteúdos, inclusive subitens, e navegação anterior/próximo por página. Pais apresentam introdução e links aos filhos, sem juntar seus textos; histórico e recarga preservam a página. Não aplicar essa organização ao Pitch, que tem orientação própria de leitura integral.
+**How to apply:** Permitir abrir e fechar capítulos e subseções independentemente, mantendo os outros trechos abertos e o estado dos filhos. Menu e links diretos abrem os ancestrais necessários e rolam ao conteúdo na mesma página. Não reintroduzir paginação anterior/próxima nem diretórios duplicados no rodapé. Preservar assuntos, ordem, links, histórico, recarga e idiomas. Verificar parágrafos reais, controles por teclado e diagramas; não mover ou recriar os nós de conteúdo. Não aplicar essa organização ao Pitch.
 
 Expectativas e planos de lançamento, metas, projeções e plano comercial ficam exclusivamente no Pitch. Na documentação, deixar apenas um link para o Pitch.
 

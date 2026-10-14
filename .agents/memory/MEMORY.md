@@ -92,7 +92,7 @@
 - [Público da entrada do app](app-entry-audience.md) — homem preservado, um único esporte discreto ao fundo; o tema esportivo não indica disponibilidade na ALFA.
 - [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.
 - [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.
-- [Development-banner navigation checks](development-banner-navigation-testing.md) — dismiss the injected preview banner before testing sticky controls; it can create false menu failures.
+- [Sticky navigation checks](development-banner-navigation-testing.md) — preview banners and automatic locator scrolling can cause false mobile-menu failures; compare real pointer input.
 - [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.
 - [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.
 - [Escopo da atualização documental](documentation-update-scope.md) — homepage e Pitch aprovados e prontos; não editar essas páginas, inclusive por mudanças compartilhadas.

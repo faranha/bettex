@@ -17,6 +17,7 @@ class Element {
   get textContent() { return this.childNodes.map(child => child.textContent).join(''); }
   setAttribute(name, value) { this.attributes.set(name, value); }
   removeAttribute(name) { this.attributes.delete(name); }
+  hasAttribute(name) { return this.attributes.has(name); }
   contains(node) { return this === node || this.childNodes.some(child => child instanceof Element && child.contains(node) || child === node); }
   querySelectorAll(selector) { return nodes(this).slice(1).filter(node => node instanceof Element && selector.split(',').some(part => this.match(node, part.trim()))); }
   querySelector(selector) { return this.querySelectorAll(selector)[0] ?? null; }
@@ -51,12 +52,18 @@ future.setAttribute('data-testid', 'documentation-future-market-sports');
 root.append(intro, future, el('div', '').append(first, el('p', '', 'First explanation'), child, el('p', 'anchor', 'Child explanation')), second, el('p', '', 'Second explanation'), figure, reference);
 globalThis.Element = Element;
 globalThis.Node = { TEXT_NODE: 3, DOCUMENT_POSITION_FOLLOWING: 4 };
-globalThis.document = { getElementById: id => nodes(root).find(node => node.id === id) };
+globalThis.document = { getElementById: id => nodes(root).find(node => node.id === id), createElement: tag => el(tag, '') };
 const source = await fs.readFile(new URL('../src/components/documentationReadingPages.ts', import.meta.url), 'utf8');
 const { code } = await transformWithEsbuild(source, 'documentationReadingPages.ts', { loader: 'ts' });
 const { applyReadingPage, readingPageForTarget } = await import(`data:text/javascript;base64,${Buffer.from(code).toString('base64')}`);
+const accordionSource = await fs.readFile(new URL('../src/components/documentationAccordions.ts', import.meta.url), 'utf8');
+const accordionCode = await transformWithEsbuild(accordionSource.replace("import { applyReadingPage } from './documentationReadingPages';", ''), 'documentationAccordions.ts', { loader: 'ts' });
+globalThis.applyReadingPage = applyReadingPage;
+const { applyDocumentationAccordions, sectionAncestors } = await import(`data:text/javascript;base64,${Buffer.from(accordionCode.code).toString('base64')}`);
 const chapter = { id: 'chapter', items: [
-  { id: 'first' }, { id: 'child' }, { id: 'second' }, { id: 'caption' }, { id: 'reference' }, { id: 'inner' },
+  { id: 'first', number: '2.1' }, { id: 'child', number: '2.1.1' },
+  { id: 'second', number: '2.2' }, { id: 'caption', number: '2.3' },
+  { id: 'reference', number: '2.4' }, { id: 'inner', number: '2.4.1' },
 ] };
 const visible = node => {
   for (let current = node; current; current = current.parentElement) if (current.attributes?.has('data-documentation-page-hidden')) return false;
@@ -65,14 +72,40 @@ const visible = node => {
 const original = root.textContent;
 for (const id of ['chapter', ...chapter.items.map(item => item.id)]) {
   const owners = applyReadingPage(root, chapter, id);
-  for (const [node, owner] of owners) if (node instanceof Text && node.textContent.trim()) assert.equal(visible(node), owner === id, `${id}: ${node.textContent}`);
+  const selectedNumber = chapter.items.find(item => item.id === id)?.number;
+  const belongs = owner => owner === id || id === chapter.id || !!selectedNumber &&
+    !!chapter.items.find(item => item.id === owner)?.number.startsWith(`${selectedNumber}.`);
+  for (const [node, owner] of owners) if (node instanceof Text && node.textContent.trim()) assert.equal(visible(node), belongs(owner), `${id}: ${node.textContent}`);
   assert(visible(notice), 'future-market availability remains visible on every page');
   assert.equal(root.textContent, original, 'no content removed or React node moved');
 }
+applyReadingPage(root, chapter, 'chapter');
+assert(visible(first) && visible(child) && visible(second) && visible(diagram) && visible(inner), 'chapter selection opens real content, including subsections');
+applyReadingPage(root, chapter, 'first');
+assert(visible(child) && visible(document.getElementById('anchor')), 'parent section includes its child content');
+assert(!visible(second), 'parent section does not expose the next sibling');
+applyReadingPage(root, chapter, 'reference');
+assert(visible(inner), 'technical reference selection opens its actual nested content');
 applyReadingPage(root, chapter, 'caption');
 assert(visible(diagram), 'a figure preceding its caption belongs to that caption page');
 assert.equal(readingPageForTarget(root, chapter, diagram), 'caption');
 assert.equal(readingPageForTarget(root, chapter, document.getElementById('anchor')), 'child');
 assert.equal(readingPageForTarget(root, chapter, inner), 'inner');
 assert.equal(readingPageForTarget(root, chapter, intro), 'chapter');
-console.log('Documentation reading pages: intro, siblings, nested sections, reference descendants, figure ownership, deep anchors and persistent availability; original nodes and text preserved.');
+console.log('Documentation reading pages: complete chapters, section descendants, isolated siblings, real reference content, figure ownership, deep anchors and availability; original nodes and text preserved.');
+const accordion = expanded => applyDocumentationAccordions(root, chapter, new Set(expanded), 'Expand', 'Collapse');
+accordion([]);
+assert(visible(intro) && visible(first) && visible(second), 'intro and collapsed top-level section headings stay visible');
+assert(!visible(child) && !visible(document.getElementById('anchor')), 'collapsed parent hides its nested section');
+accordion(['first']);
+assert(visible(child) && !visible(document.getElementById('anchor')), 'opening parent shows a still-collapsed child');
+accordion(['first', 'child']);
+assert(visible(document.getElementById('anchor')), 'child opens inline without hiding another chapter or moving nodes');
+accordion(['child']);
+assert(!visible(child), 'parent may close while remembering the child expansion');
+accordion(['first', 'child']);
+assert(visible(document.getElementById('anchor')), 'reopening parent preserves child state');
+assert.equal(root.textContent, original, 'accordion toggles preserve all original source text');
+assert.deepEqual(sectionAncestors(chapter, 'child'), ['first', 'child']);
+assert.deepEqual(sectionAncestors(chapter, 'inner'), ['reference', 'inner']);
+console.log('Documentation accordions: nested inline expansion, preserved text/state, native references and deep-link ancestor expansion verified.');

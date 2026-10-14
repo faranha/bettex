@@ -14,3 +14,9 @@ O menu hambúrguer principal não deve ter o cabeçalho “Project Pages” / �
 **Why:** O criador disse que o indicador não faz sentido no menu principal: “Não precisa ter aquilo ali. É só o menu.”
 
 **How to apply:** Aplicar a todas as páginas que usam o menu principal, sem substituir o texto removido por outro cabeçalho.
+
+Na documentação mobile, usar o dropdown existente na navegação para capítulos e subseções; remover o índice e o diretório completo de seções de dentro da página.
+
+**Why:** O criador reiterou que o menu não funcionava no celular e pediu: “tem que ser removido o menu on-page” e “tem que ficar só no celular, na navegação mesmo, pela função menu”.
+
+**How to apply:** Usar o comportamento de dropdown do site, não uma sobreposição do índice desktop. Verificar toque, expansão de grupos, seleção de subseções e fechamento no navegador mobile. Preservar o índice desktop e os atalhos anterior/próximo, sem expor uma segunda lista completa no corpo mobile.
