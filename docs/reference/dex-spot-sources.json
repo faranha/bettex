@@ -1,0 +1,34 @@
+{
+  "consulted_date_utc": "2026-10-14",
+  "purpose": "Candidate DEX infrastructure research only; not execution or contract validation",
+  "hash_representation": "webFetch extracted UTF-8 Markdown, not original HTTP response bytes",
+  "sources": [
+    {"url": "https://docs.avnu.fi/introduction", "sha256": "014a2526e1ed5e8c8728786b87c245f4730b31d3207b95434333121c25f722d6", "characters": 6042, "truncated": false},
+    {"url": "https://docs.avnu.fi/docs/swap/execute-swap", "sha256": "2cf57eaeec2093d62bda6250767eb28dee8107437d44d26b71e67c56892c7638", "characters": 3942, "truncated": false},
+    {"url": "https://docs.ekubo.org/integration-guides/swapping/", "sha256": "ffccc4b91f6107a6667199011d91cafc8b7a29f1c5e9624f2086c6d922cc94eb", "characters": 2818, "truncated": false},
+    {"url": "https://developers.uniswap.org/docs/trading/swapping-api/concepts/swap-routing", "sha256": "22f7aa14af5cbf9ae1b7f1083b33308eb38c645fd3ce5fad67854e5b6dc39223", "characters": 4887, "truncated": false},
+    {"url": "https://developers.jup.ag/docs/swap/index.md", "sha256": "f51ccdfcb50d94786ca6a1d213828151cdb2e2a3b149c7710c7df00c7663e788", "characters": 5511, "truncated": false},
+    {"url": "https://docs.jup.ag/user-docs/trade/spot/risks-and-limitations", "sha256": "17149aaf62b23160f4324508df9f221946e37c7cec9b11da0a83241f4fa5535a", "characters": 11881, "truncated": false},
+    {"url": "https://www.coinbase.com/en-gb/blog/coinbase-wrapped-btc-cbbtc-is-now-live", "sha256": "0256d31ecbc7433ef92c4509fab42174ecf22e52c1a31e4c7db11b212f106d8c", "characters": 11015, "truncated": false},
+    {"url": "https://docs.threshold.network/contract-addresses/tbtc", "sha256": "b1c808f33a5d1429073d0196f28411b4eb61885d3b83606b977918c11a279de0", "characters": 8833, "truncated": false},
+    {"url": "https://developers.circle.com/stablecoins/usdc-contract-addresses", "sha256": "791da330fbd4523c1d5b424d33fdd22e399b99b602cd4b9278c08cb210d7efad", "characters": 12887, "truncated": false},
+    {"url": "https://docs.avnu.fi/docs/tokens/index", "sha256": "ee9be3c86922121e24bc124e0cc432d9436bca5ee929911d5a6cc35b096afa03", "characters": 5098, "truncated": false},
+    {"url": "https://docs.avnu.fi/docs/markets/index", "sha256": "ed50f458a4d4181636d8e3ac02a7a24f777d5200f217e094b8a4ed17125fc070", "characters": 4120, "truncated": false},
+    {"url": "https://developers.uniswap.org/docs/trading/swapping-api/supported-chains.md", "sha256": "79db8ae7b1ba062d256a95a5571ca7e0063316789ec67ab08519374e90cfbbbe", "characters": 12181, "truncated": false}
+  ],
+  "local_corpus_consultations": [
+    {
+      "platform": "starknet",
+      "query": "swap token fee finality transaction execution",
+      "url": "https://github.com/starknet-io/starknet-docs/blob/c1fb35198225d7c439b521e28d37181248ff755f/build/starkzap/swap.mdx",
+      "scope": "Official swap-provider documentation; not SDK adoption"
+    },
+    {
+      "platform": "arbitrum",
+      "query": "transaction finality fees gas",
+      "url": "https://docs.arbitrum.io/launch-arbitrum-chain/overview/faq",
+      "content_hash": "0ff15354a68fa9d31ee2278046d2874f2a9b403003d68a67214554a2be2f87a4",
+      "scope": "Canonical corpus queried; no confirmation-depth policy adopted"
+    }
+  ]
+}
