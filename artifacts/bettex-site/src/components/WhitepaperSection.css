@@ -8,7 +8,8 @@
 .whitepaper__chapter-menu-children[hidden] { display: none; }
 .whitepaper [data-documentation-page-hidden] { display: none !important; }
 .whitepaper [data-documentation-page-heading] { margin-top: 0 !important; font-size: clamp(1.65rem, 3vw, 2.4rem); line-height: 1.2; }
-.documentation-page-footer { padding: 24px 0 48px; border-top: 1px solid var(--wp-line); }
+.documentation-page-footer { padding: 24px 0 48px; border: 0; }
+.whitepaper__content:has(> .documentation-page-footer) > .whitepaper__chapter { border-bottom: 0; }
 .documentation-page-footer p { margin: 0 0 16px; }
 .documentation-page-footer ul { list-style: none; padding: 0; margin: 0 0 24px; }
 .documentation-page-footer li > a { display: block; padding: 9px 0; color: #193277; line-height: 1.5; text-decoration: underline; text-underline-offset: 3px; }
@@ -134,6 +135,7 @@
 .whitepaper__technical > summary:focus-visible { outline: 2px solid #2B59FF; outline-offset: 3px; }
 .whitepaper__technical[open] > summary { border-bottom: 1px solid #d9d3c0; }
 .whitepaper__technical-body { min-width: 0; padding: 0 clamp(14px, 3vw, 24px) 24px; }
+section.whitepaper__technical:not(:has(> h3 > [data-documentation-section-toggle][aria-expanded="true"])) > .whitepaper__technical-body { display: none; }
 .whitepaper__supply { margin-bottom: 32px; padding: clamp(23px, 4vw, 38px); background: #F4F1E8; border: 1px solid #d9d3c0; }
 .whitepaper__supply-top { display: flex; flex-direction: column; gap: 5px; }
 .whitepaper__supply-top strong { font: 800 clamp(2.4rem, 5vw, 4.5rem)/1.1 var(--app-font-serif); letter-spacing: -.07em; font-variant-numeric: tabular-nums; }
@@ -252,6 +254,7 @@
 .whitepaper__glossary { margin-top: 36px; padding: 24px; border: 1px solid #d9d3c0; }
 .whitepaper__glossary p { margin-top: 12px; }
 .whitepaper__chapter-pagination { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--wp-line); }
+.documentation-page-footer > .whitepaper__chapter-pagination { margin-top: 0; padding-top: 0; border-top: 0; }
 .whitepaper__chapter-pagination a { display: flex; flex-direction: column; gap: 8px; padding: 19px; border: 1px solid #d9d3c0; color: var(--wp-ink); text-decoration: none; transition: background-color .2s ease, transform .2s ease; }
 .whitepaper__chapter-pagination a:last-child { text-align: right; }
 .whitepaper__chapter-pagination a:hover { background: #F4F1E8; transform: translateY(-2px); }
@@ -418,7 +421,7 @@
 .whitepaper__technical > summary { list-style-position: inside; }
 .whitepaper__subhead { scroll-margin-top: 110px; max-width: 30ch; text-wrap: balance; }
 .whitepaper__prose + .whitepaper__subhead, .whitepaper__status-grid + .whitepaper__subhead { margin-top: 48px; }
-.whitepaper__aside-callout, .whitepaper__lead, .whitepaper__flow { max-width: 710px; }
+.whitepaper__aside-callout, .whitepaper__lead, .whitepaper__flow { width: 100%; max-width: none; }
 .whitepaper__aside-callout p { font-size: 14px; max-width: 64ch; }
 .whitepaper__aside { top: 96px; }
 .whitepaper__aside-inner { max-height: calc(100dvh - 120px); }
@@ -616,7 +619,6 @@
 
 /* Single-chapter reader (progressive enhancement) */
 .whitepaper__chapter[hidden] { display: none; }
-.whitepaper__hero[hidden] { display: none; }
 .whitepaper__content.is-single .whitepaper__chapter { padding-top: 0; border-bottom: 0; animation: wp-enter .28s ease both; }
 .whitepaper__chapter-pagination > span { display: block; }
 .whitepaper__toc-link { padding-block: 10px; }
@@ -735,3 +737,43 @@
 .whitepaper__reference { margin-top: 2.5rem; border: 1px solid rgba(7, 11, 31, .18); border-radius: 14px; background: rgba(255, 255, 255, .45); }
 .whitepaper__reference > summary { cursor: pointer; padding: 1rem 1.25rem; font-weight: 700; font-size: .875rem; min-height: 44px; }
 .whitepaper__reference-body { padding: 0 1.25rem 1.25rem; }
+
+/* One reading hierarchy, independent of the source component or accordion type. */
+.whitepaper [data-documentation-opening][hidden], .whitepaper [data-documentation-opening] [hidden] { display: none !important; }
+.whitepaper .agent-intel--introduction :is(.agent-intel__support, .agent-intel__market-list, .agent-intel__core, .agent-intel__agent, .agent-intel__market) {
+  display: block; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none;
+}
+.whitepaper .doc-agent > .whitepaper__prose:first-child { margin-top: 0; }
+.whitepaper .agent-intel--introduction .agent-intel__context { border: 0; padding: 12px 0 0; }
+.whitepaper .agent-intel--introduction .agent-intel__role { margin-top: 18px; }
+.whitepaper .agent-intel--introduction .agent-intel__core,
+.whitepaper .agent-intel--introduction .agent-intel__core .whitepaper__prose p { color: var(--wp-ink); }
+.whitepaper .agent-intel--introduction .agent-intel__core :is(.agent-intel__tag, .agent-intel__role, .agent-intel__context span) { color: #1a347d; }
+.whitepaper :is(h3, h4, summary)[data-outline-number] {
+  position: relative; display: block; width: 100%; max-width: none; box-sizing: border-box;
+  margin: 32px 0 16px; padding: 0 52px 0 0; color: var(--wp-ink);
+  font: 800 clamp(1.5rem, 2.6vw, 2.05rem)/1.2 var(--app-font-serif);
+  letter-spacing: -.04em; text-align: left; text-wrap: pretty; cursor: pointer;
+  background: transparent; border: 0; border-radius: 0;
+}
+.whitepaper :is(div, section, article, details, figure):has(> :is(h3, h4, summary)[data-outline-number]) {
+  margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none;
+}
+.whitepaper :is(.agent-intel__support, .agent-intel__market-list, .agent-intel__rel):has([data-outline-number]) {
+  display: block; gap: 0; margin: 0; padding: 0; border: 0; background: transparent;
+}
+.whitepaper :is(.whitepaper__reference-body, .whitepaper__technical-body) { padding: 0 0 0 24px; }
+.whitepaper .whitepaper__reading-specialists { padding-left: 24px; border-left: 0; }
+.whitepaper summary[data-outline-number] { list-style: none; }
+.whitepaper summary[data-outline-number]::-webkit-details-marker { display: none; }
+.whitepaper summary[data-outline-number]::marker { content: ''; }
+.whitepaper summary[data-outline-number]::after {
+  content: ''; position: absolute; right: 0; top: 0; width: 36px; height: 36px;
+  box-sizing: border-box; border: 1px solid #13204f30; border-radius: 6px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5 7 5 5 5-5' fill='none' stroke='%2321429c' stroke-width='1.8'/%3E%3C/svg%3E") center / 20px 20px no-repeat;
+}
+.whitepaper details[open] > summary[data-outline-number]::after { transform: rotate(180deg); }
+@media (max-width: 768px) {
+  .whitepaper :is(.whitepaper__reference-body, .whitepaper__technical-body) { padding-left: 16px; }
+  .whitepaper .whitepaper__reading-specialists { padding-left: 16px; }
+}

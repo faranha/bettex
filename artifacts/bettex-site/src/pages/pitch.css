@@ -227,13 +227,30 @@ img, svg, video { max-width: 100%; }
   .pb-fin-scene__figure { top: 80px; bottom: auto; height: 210px; max-width: 70%; right: 2%; -webkit-mask-image: none; mask-image: none; }
 }
 
-/* Pitch opening hero: complete standing figure (344x947 true-alpha, trimmed to empty transparency only), never cropped or faded. */
-.cover__grid > .cover__project--scene { --hp: var(--pitch-hero-padding); position: relative; overflow: visible; width: min(100%, 290px); max-width: none; aspect-ratio: 344 / 947; align-self: end; justify-self: center; margin: 0 0 calc(-1 * var(--hp)); transform: none; border: 0; box-shadow: none; background: transparent; }
-.cover__grid > .cover__project--scene img { display: block; position: static; width: 100%; max-width: 100%; height: auto; aspect-ratio: 344 / 947; object-fit: contain; filter: none; }
+/* The copy sets the hero height. Crop the standing portrait at the section's
+   bottom boundary instead of making the section tall enough to show its feet. */
+.cover__grid:has(.cover__project--scene) { position: relative; }
+.cover__grid > .cover__project--scene {
+  --hp: var(--pitch-hero-padding);
+  position: absolute; top: 0; right: 0; bottom: calc(-1 * var(--hp));
+  overflow: hidden; width: min(40%, 340px); max-width: none;
+  aspect-ratio: auto; margin: 0; transform: none;
+  border: 0; border-radius: 0; box-shadow: none; background: transparent;
+}
+.cover__grid > .cover__project--scene img {
+  display: block; position: absolute; top: 0; left: 0;
+  width: 100%; max-width: 100%; height: auto;
+  aspect-ratio: 344 / 947; object-fit: contain; filter: none; animation: none;
+}
 @media (min-width: 768px) {
   .cover__grid:has(.cover__project--scene) { grid-template-columns: minmax(0, 1fr) minmax(300px, 40%); align-items: stretch; min-height: 0; }
-  .cover__grid:has(.cover__project--scene) .cover__copy { align-self: center; padding-bottom: var(--pitch-hero-padding); }
+  .cover__grid:has(.cover__project--scene) .cover__copy { align-self: center; padding-bottom: 0; }
 }
 @media (max-width: 767px) {
-  .cover__grid > .cover__project--scene { grid-column: 1 / -1; grid-row: 6; width: min(66%, 260px); max-width: none; justify-self: center; margin: 0 0 calc(-1 * var(--hp)); }
+  .cover__grid > .cover__project--scene {
+    position: relative; top: auto; right: auto; bottom: auto;
+    grid-column: 1 / -1; grid-row: 6; width: min(76%, 290px);
+    height: clamp(220px, 70vw, 300px); justify-self: center;
+    margin: 0 0 calc(-1 * var(--hp));
+  }
 }

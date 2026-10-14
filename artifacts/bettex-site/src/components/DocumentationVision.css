@@ -18,8 +18,7 @@
 .dv__node--sub { border-style: dashed; }
 .dv__node--people { border-color: #D99A12; }
 .dv__link { position: relative; display: flex; justify-content: center; align-items: center; min-height: 40px; }
-.dv__link::before { content: ''; position: absolute; top: 0; bottom: 6px; left: 50%; border-left: 2px solid #2B59FF; }
-.dv__link::after { content: ''; position: absolute; bottom: 0; left: calc(50% - 5px); border: 5px solid transparent; border-top: 7px solid #2B59FF; border-bottom: 0; }
+.dv__link::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 2px solid #2B59FF; }
 .dv__link span { position: relative; z-index: 1; padding: 2px 8px; background: #F4F1E8; color: #1f3e93; font-size: 11px; font-weight: 700; text-align: center; }
 .dv__rules { width: 100%; border-color: #D99A12; border-width: 2px; }
 .dv__rules i { color: #9A6A00; }

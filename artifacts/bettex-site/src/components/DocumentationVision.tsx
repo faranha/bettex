@@ -22,8 +22,8 @@ export function DocumentationVision() {
     [x('Governança', 'Governance', 'Gobernanza'), x('políticas e decisões', 'policies and decisions', 'políticas y decisiones')],
   ];
   const feats = [x('Carteiras', 'Wallets', 'Carteras'), x('Staking', 'Staking', 'Participación en staking'), x('Histórico', 'History', 'Historial'), x('Jogos internos', 'Internal games', 'Juegos internos')];
-  return <section className="dv" data-testid="documentation-vision">
-    <h3 className="whitepaper__subhead" id="documentacao-visao">{x('Nossa visão', 'Our vision', 'Nuestra visión')}</h3>
+  return <section className="dv" id="documentacao-visao" data-documentation-opening data-testid="documentation-vision">
+    <h3 hidden className="whitepaper__subhead">{x('Nossa visão', 'Our vision', 'Nuestra visión')}</h3>
     <div className="whitepaper__prose">
       <p><strong>{x('A proposta da BETTEX é transformar apostadores em investidores por meio de um projeto DeFAI.', 'BETTEX’s proposal is to turn bettors into investors through a DeFAI project.', 'La propuesta de BETTEX es transformar apostadores en inversores mediante un proyecto DeFAI.')}</strong>{' '}
         {x('A visão é desenvolver um agente de orquestração BETTEX descentralizado, 100% autônomo e independente, sem operador centralizado, que coordene estratégias de mercado com subagentes inteligentes em esportes (surebet), iGaming, cripto e previsões.',
@@ -73,7 +73,7 @@ export function DocumentationVision() {
 
 export function DocumentationConceptsHeading() {
   const x = useX();
-  return <h3 className="whitepaper__subhead" id="documentacao-conceitos-base">{x('Conceitos para entender a proposta', 'Concepts to understand the proposal', 'Conceptos para entender la propuesta')}</h3>;
+  return <div id="documentacao-conceitos-base" data-documentation-opening><h3 hidden>{x('Conceitos para entender a proposta', 'Concepts to understand the proposal', 'Conceptos para entender la propuesta')}</h3></div>;
 }
 
 /** Off-chain walkthrough of what the demo's screens show. */

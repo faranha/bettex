@@ -31,7 +31,7 @@ export function WhitepaperSection() {
   const [selected, setSelected] = useState(initialTarget.index);
   const [readingGroup, setReadingGroup] = useState<number | null>(null);
   const [enhanced, setEnhanced] = useState(false);
-  const [openReadingSections, setOpenReadingSections] = useState<Set<string>>(() => new Set(['documentacao-visao']));
+  const [openReadingSections, setOpenReadingSections] = useState<Set<string>>(() => new Set());
   const openReadingSectionsRef = useRef(openReadingSections);
   openReadingSectionsRef.current = openReadingSections;
   const [pageId, setPageId] = useState<string>(chapters[0].id);
@@ -179,6 +179,13 @@ export function WhitepaperSection() {
         document.getElementById(chapter.id) ? chapter : localized[index] ?? chapter);
       const sig = outlineSignature(next);
       if (sig !== sigRef.current) { sigRef.current = sig; setOutline(next); }
+      // Deferred content and localized React commits can replace headings
+      // without changing the cached outline. Restore their controls and closed
+      // bodies from the live DOM even when there is no new outline signature.
+      for (const chapter of next) {
+        const content = document.getElementById(chapter.id)?.querySelector<HTMLElement>('[data-documentation-reading-content]');
+        if (content) applyDocumentationAccordions(content, chapter, openReadingSectionsRef.current, t('Expandir'), t('Recolher'));
+      }
     };
     const schedule = () => { window.clearTimeout(timer); timer = window.setTimeout(rebuild, 120); };
     rebuild();
@@ -390,10 +397,10 @@ export function WhitepaperSection() {
             <ChapterContent index={index} />
           </ChapterVisibility.Provider>
         </section>
-        <DocumentationRelatedTopics chapterId={chapter.id} />
         {children.length > 0 && <div className="whitepaper__reading-specialists">
           {children.map(renderReadingChapter)}
         </div>}
+        {chapter.group !== 2 && chapter.group !== 3 && <DocumentationRelatedTopics sectionId={chapter.id} />}
     </article>;
   }
 
@@ -414,6 +421,7 @@ export function WhitepaperSection() {
          <div className="whitepaper__reading-group-children">
           {entries.map(renderReadingChapter)}
         </div>
+        <DocumentationRelatedTopics sectionId={group === 3 ? 'documentacao-features' : `documentation-reading-group-${group}`} />
        </section>;
     });
   }
@@ -456,7 +464,7 @@ export function WhitepaperSection() {
     {bar}
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
       <DocumentationGovernanceMarquee />
-      <header className="whitepaper__hero page-wrap" hidden={!fullDocumentation && sectionGroup !== 0}>
+      <header className="whitepaper__hero page-wrap">
         <div>
           <p className="whitepaper__eyebrow" data-i18n="translated"><span aria-hidden="true" /> {t('DEMO / POC · ARQUITETURA E REGRAS INICIAIS')}</p>
           <h1 id="whitepaper-title" data-i18n="translated">{documentationTitle[0]}{' '}<br /><em data-i18n="translated">{documentationTitle.slice(1).join(' ')}</em></h1>

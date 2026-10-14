@@ -66,7 +66,7 @@ export function DocumentationFutureMarket({ part: market }: { part: Market }) {
   </div>;
 }
 
-export function DocumentationFutureReferencesHeading() {
+export function DocumentationFutureReferencesHeading({ chapterId }: { chapterId?: string } = {}) {
   const x = useX();
-  return <h3 className="whitepaper__subhead">{x('Referências conceituais para evolução futura', 'Conceptual references for future development', 'Referencias conceptuales para la evolución futura')}</h3>;
+  return <div id={chapterId ? `${chapterId}-secao-1` : undefined} data-documentation-opening><h3 hidden>{x('Referências conceituais para evolução futura', 'Conceptual references for future development', 'Referencias conceptuales para la evolución futura')}</h3></div>;
 }

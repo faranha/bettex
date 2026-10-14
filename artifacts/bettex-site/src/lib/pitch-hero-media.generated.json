@@ -1,0 +1,220 @@
+{
+  "pitch-illustrations/pitch-brazil-community.webp": {
+    "method": "fsrcnn-super-resolution",
+    "masterWidth": 4096,
+    "masterHeight": 4096,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/pitch-brazil-community-d94c76ecd5cb-w960.webp",
+        "width": 960
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-brazil-community-d94c76ecd5cb-w1920.webp",
+        "width": 1920
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-brazil-community-d94c76ecd5cb-w2560.webp",
+        "width": 2560
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-brazil-community-d94c76ecd5cb-w4096.webp",
+        "width": 4096
+      }
+    ]
+  },
+  "pitch-illustrations/pitch-token-participation.webp": {
+    "method": "fsrcnn-super-resolution",
+    "masterWidth": 4096,
+    "masterHeight": 4096,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/pitch-token-participation-db1df0351158-w960.webp",
+        "width": 960
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-token-participation-db1df0351158-w1920.webp",
+        "width": 1920
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-token-participation-db1df0351158-w2560.webp",
+        "width": 2560
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-token-participation-db1df0351158-w4096.webp",
+        "width": 4096
+      }
+    ]
+  },
+  "pitch-illustrations/pitch-product-development.webp": {
+    "method": "fsrcnn-super-resolution",
+    "masterWidth": 4096,
+    "masterHeight": 4096,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/pitch-product-development-a48d63436319-w960.webp",
+        "width": 960
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-product-development-a48d63436319-w1920.webp",
+        "width": 1920
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-product-development-a48d63436319-w2560.webp",
+        "width": 2560
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-product-development-a48d63436319-w4096.webp",
+        "width": 4096
+      }
+    ]
+  },
+  "pitch-illustrations/pitch-economy-separation.webp": {
+    "method": "fsrcnn-super-resolution",
+    "masterWidth": 4096,
+    "masterHeight": 4096,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/pitch-economy-separation-74f3c3f17cd6-w960.webp",
+        "width": 960
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-economy-separation-74f3c3f17cd6-w1920.webp",
+        "width": 1920
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-economy-separation-74f3c3f17cd6-w2560.webp",
+        "width": 2560
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-economy-separation-74f3c3f17cd6-w4096.webp",
+        "width": 4096
+      }
+    ]
+  },
+  "pitch-illustrations/pitch-online-community.webp": {
+    "method": "native-photograph",
+    "masterWidth": 5616,
+    "masterHeight": 3744,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/pitch-online-community-9696450ebc53-w960.webp",
+        "width": 960
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-online-community-9696450ebc53-w1920.webp",
+        "width": 1920
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-online-community-9696450ebc53-w2560.webp",
+        "width": 2560
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-online-community-9696450ebc53-w4096.webp",
+        "width": 4096
+      }
+    ]
+  },
+  "pitch-illustrations/pitch-startup-team.webp": {
+    "method": "native-photograph",
+    "masterWidth": 4096,
+    "masterHeight": 2732,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/pitch-startup-team-935d7e5c5193-w960.webp",
+        "width": 960
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-startup-team-935d7e5c5193-w1920.webp",
+        "width": 1920
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-startup-team-935d7e5c5193-w2560.webp",
+        "width": 2560
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-startup-team-935d7e5c5193-w4096.webp",
+        "width": 4096
+      }
+    ]
+  },
+  "pitch-future/urban-poverty-sao-paulo-2024.jpg": {
+    "method": "native-photograph",
+    "masterWidth": 4449,
+    "masterHeight": 2662,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/urban-poverty-sao-paulo-2024-4b043dc1ddf6-w960.webp",
+        "width": 960
+      },
+      {
+        "path": "pitch-heroes-hd/urban-poverty-sao-paulo-2024-4b043dc1ddf6-w1920.webp",
+        "width": 1920
+      },
+      {
+        "path": "pitch-heroes-hd/urban-poverty-sao-paulo-2024-4b043dc1ddf6-w2560.webp",
+        "width": 2560
+      },
+      {
+        "path": "pitch-heroes-hd/urban-poverty-sao-paulo-2024-4b043dc1ddf6-w4096.webp",
+        "width": 4096
+      }
+    ]
+  },
+  "pitch-hero-app-cutout-pt.webp": {
+    "method": "fsrcnn-super-resolution",
+    "masterWidth": 1376,
+    "masterHeight": 3788,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/pitch-hero-app-cutout-pt-6c16ba0d9ae0-w344.webp",
+        "width": 344
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-hero-app-cutout-pt-6c16ba0d9ae0-w688.webp",
+        "width": 688
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-hero-app-cutout-pt-6c16ba0d9ae0-w1376.webp",
+        "width": 1376
+      }
+    ]
+  },
+  "pitch-hero-app-cutout-en.webp": {
+    "method": "fsrcnn-super-resolution",
+    "masterWidth": 1376,
+    "masterHeight": 3788,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/pitch-hero-app-cutout-en-feb886384487-w344.webp",
+        "width": 344
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-hero-app-cutout-en-feb886384487-w688.webp",
+        "width": 688
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-hero-app-cutout-en-feb886384487-w1376.webp",
+        "width": 1376
+      }
+    ]
+  },
+  "pitch-hero-app-cutout-es.webp": {
+    "method": "fsrcnn-super-resolution",
+    "masterWidth": 1376,
+    "masterHeight": 3788,
+    "sources": [
+      {
+        "path": "pitch-heroes-hd/pitch-hero-app-cutout-es-44b69e586609-w344.webp",
+        "width": 344
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-hero-app-cutout-es-44b69e586609-w688.webp",
+        "width": 688
+      },
+      {
+        "path": "pitch-heroes-hd/pitch-hero-app-cutout-es-44b69e586609-w1376.webp",
+        "width": 1376
+      }
+    ]
+  }
+}

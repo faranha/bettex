@@ -3,11 +3,41 @@ name: Estilo das artes da documentação
 description: Menos esquemas, mais texto e imagens; bullets para itens e regras; preservar os desenhos essenciais.
 ---
 
+No mapa da visão, as conexões devem ser apenas linhas, sem pontas de seta.
+
+**Why:** O criador pediu: “as setas na arte estao tortas, tire as setas, deixe apenas linhas”.
+
+**How to apply:** Preservar os blocos, textos e posições dessa arte; não reintroduzir pontas de seta em suas conexões.
+
+As subseções que apresentam gráficos seguem o mesmo padrão das demais: cabeçalho normal, introdução e arte dentro do conteúdo expandido, em toda a documentação.
+
+**Why:** O criador rejeitou as artes azuis substituindo os cabeçalhos na listagem: “elas precisam de uma padronizacao, introducao, e a apresentacao do grafico dentro de si”.
+
+**How to apply:** Não envolver o título numerado no fundo ou contorno do gráfico. O gráfico pode manter sua identidade visual dentro da subseção; preservar a numeração, os links e a lógica de expandir/recolher.
+
+Referências curtas devem ser um único bloco, sem subseções adicionais somente para uma tabela de poucos itens.
+
+**Why:** O criador pediu: “uma referencia tao pequena nao precisa ser quebrada em mais sub secoes, pode ser apenas uma”.
+
+**How to apply:** Manter a descrição, a tabela e os links no mesmo conteúdo expandido da referência; preservar os destinos antigos dos links ao simplificar a hierarquia. Imagens pequenas de apoio não ficam isoladas acima dos dados a que se referem.
+
+Não colocar imagens decorativas nas aberturas de seções e subseções da documentação. Remover retratos soltos dos agentes e as artes de abertura, inclusive o escudo.
+
+**Why:** O criador esclareceu que o problema era geral: “estas imagens que foram colocadas na abertura de secao e sub secao nao estao bem postas, entao preicsam ser removidas ou a padronziacao refeita”. A opção aplicada foi retirar a decoração, não reposicioná-la pontualmente.
+
+**How to apply:** Manter aberturas com título, introdução e conteúdo, sem ícones ou retratos avulsos e sem espaços reservados para eles. Preservar os gráficos e desenhos explicativos dentro do conteúdo. Esta regra substitui a exigência anterior de dar uma arte decorativa a cada área sem esquema.
+
+Padronizar a apresentação de todos os cabeçalhos numerados da documentação, inclusive títulos de agentes, baseline e referências técnicas: mesma tipografia, alinhamento, largura, espaçamento e controle de abertura no mesmo nível.
+
+**Why:** O criador voltou a apontar a inconsistência: “Numa mesma tela, existem três padrões distintos. Isso não faz sentido nenhum”. Reiterou depois: “por que temos dois padroes visuais ainda?”, mostrando parâmetros e feedback dentro de caixas enquanto os demais títulos estavam livres.
+
+**How to apply:** Não apresentar um cabeçalho como cartão, outro como título solto e outro como faixa pequena. A padronização inclui os contêineres dos cabeçalhos: retirar bordas, fundos, faixas coloridas e padding que altere o alinhamento. Conferir seus estilos renderizados, não apenas a tipografia dos títulos. Indentar somente os conteúdos subordinados de maneira consistente. Preservar títulos principais, diagramas dentro do conteúdo, links, numeração e recolhimento inicial.
+
 Os desenhos consecutivos da documentação precisam de separação visual e espaçamento externo.
 
-**Why:** O criador apontou os desenhos 7 e 8 encostados e pediu “separacao visual entre estes desenhos, espacamento”.
+**Why:** O criador pediu “separacao visual entre estes desenhos, espacamento” e reiterou sobre os blocos de coordenação, contexto e feedback: “as artes estao grudadas ... nao pode ficar grudado”.
 
-**How to apply:** Manter os quadros individualmente separados no desktop e mobile, sem mudar seu conteúdo nem aplicar ajustes às artes da homepage ou Pitch.
+**How to apply:** Manter os quadros individualmente separados tanto na vertical quanto na horizontal, no desktop e mobile, inclusive quando estiverem expandidos. Não mudar seu conteúdo nem aplicar ajustes às artes da homepage ou Pitch.
 
 Na documentação, “praticamente todos os itens merecem bullets”; aplicar listas onde fizer sentido.
 
@@ -59,11 +89,23 @@ No topo da documentação, exibir “Conteúdo administrado pelo Agente de Gover
 
 Depois da padronização, o criador pediu reduzir o número de esquemas: “Deixa em texto e utilize imagens, mais imagens, menos esquemas”. Texto e imagens devem ser a opção padrão; reservar diagramas para os fluxos essenciais, sem repetir o mesmo esquema para cada agente ou assunto já explicado.
 
-As áreas da documentação que não tiverem esquemas visuais devem receber algum tipo de arte, mesmo simples: uma imagem recortada ou um ícone.
+Não colocar linhas horizontais decorativas no fim de cada página da documentação, nem separadores duplicados antes da navegação entre capítulos.
 
-**Why:** O criador solicitou apoio visual para todas essas áreas, não somente para Visão.
+**Why:** O criador apontou as linhas no fim das páginas: “voce esta colocando um HR desnecessario ao fim de cada pagina ... nao tem motivo para isso”.
 
-**How to apply:** Conferir a cobertura das áreas sem esquemas e acrescentar arte contextual; não duplicar nem substituir os desenhos existentes.
+**How to apply:** Preservar “Leia também” e os botões Anterior/Próximo, mas sem linhas soltas entre o conteúdo e esses botões. Não remover bordas úteis de cartões ou divisores internos que estruturam o conteúdo.
+
+Não reservar áreas sem conteúdo na documentação nem estreitar o texto para preencher apenas uma parte de um bloco.
+
+**Why:** O criador rejeitou os espaços vazios nas apresentações de Risco e Tesouraria: “area sem conteudo? nao faz sentido esse tipo de elemento ... na documentacao”.
+
+**How to apply:** O layout deve acompanhar o conteúdo realmente apresentado. Não adicionar áreas decorativas vazias nem novos elementos só para ocupar espaço.
+
+Os contêineres da documentação devem ocupar a mesma largura disponível dentro da área de leitura; o texto interno pode continuar com largura de linha confortável.
+
+**Why:** O criador comparou o aviso de datas do Roadmap com o cartão da comunidade e pediu que os contêineres em geral tivessem a mesma largura.
+
+**How to apply:** Alinhar bordas externas de cartões, avisos e fluxos aos demais blocos da seção no desktop e no celular, sem alargar à força os parágrafos internos nem sair de contêineres aninhados.
 
 **Why:** O criador rejeitou artes simplórias e, após a padronização, considerou que havia esquemas demais. Pediu converter boa parte em texto e utilizar mais imagens.
 

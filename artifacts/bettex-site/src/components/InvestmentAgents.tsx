@@ -1,9 +1,7 @@
 import { BettexFlow } from './architecture/BettexArchitecture';
-import { AgentPortrait, DocTerms } from './DocImage';
+import { DocTerms } from './DocImage';
 import './agent-documentation.css';
 import { intelligenceCopy } from '@/lib/documentation-intelligence';
-
-const portraits: Record<string, string> = { orquestradora: 'bettex-intelligence-brain.webp', previsoes: 'predix-serious.webp', 'acoes-cripto': 'tradix-serious.webp', esportes: 'sportix-serious.webp', cassinos: 'bettix-serious.webp' };
 
 const agents: { id: string; name: string; input: string; analysis?: string; result: string }[] = [
   { id: 'orquestradora', name: 'IA BETTEX · orquestradora', input: 'Oportunidades, prioridades e respostas dos agentes.', analysis: intelligenceCopy.coordination, result: 'Prioridade e proposta fundamentadas; retorno aos agentes e histórico.' },
@@ -18,18 +16,18 @@ const agents: { id: string; name: string; input: string; analysis?: string; resu
 ];
 
 /** `only` filters by agent id (e.g. 'tesouraria'); `cycle` toggles the shared cycle block; `intro` the lead and links. Defaults render everything. */
-export function InvestmentAgents({ only, cycle = true, intro = true, embedded = false }: { only?: string[]; cycle?: boolean; intro?: boolean; embedded?: boolean } = {}) {
+export function InvestmentAgents({ only, cycle = true, intro = true, embedded = false, compact = false }: { only?: string[]; cycle?: boolean; intro?: boolean; embedded?: boolean; compact?: boolean } = {}) {
   return <>
     {intro && <>
     <div className="whitepaper__lead"><span>ORQUESTRAÇÃO · ANÁLISE · CONTROLE</span><p>{intelligenceCopy.baseline}</p></div>
     <p className="doc-terms__note">BETTEX ↔ agente: proposta, pedido de análise e resposta</p>
-    <div className="whitepaper__prose"><p><a href="#documentacao-controles">Controles de risco</a></p></div>
     </>}
-    {agents.filter(agent => !only || only.includes(agent.id)).map(agent => <section key={agent.id} id={`documentacao-agente-${agent.id}`} className="doc-agent">
-      {embedded && portraits[agent.id] && <div className="doc-agent__head"><AgentPortrait file={portraits[agent.id]} /></div>}
-      {!embedded && <h3 className="whitepaper__subhead doc-agent__head">{portraits[agent.id] ? <AgentPortrait file={portraits[agent.id]} /> : <span className="doc-agent__robot" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4v4M11 4h10M7 12h18v14H7zM3 16h4m18 0h4M11 21h10" fill="none" stroke="currentColor" strokeWidth="2" /><circle cx="12" cy="16" r="2" fill="currentColor" /><circle cx="20" cy="16" r="2" fill="currentColor" /></svg></span>}<span>{agent.name}</span></h3>}
+    {agents.filter(agent => !only || only.includes(agent.id)).map(agent => <section key={agent.id} id={`documentacao-agente-${agent.id}`} className={`doc-agent${compact ? ' doc-agent--compact' : ''}`}>
+      {!embedded && <h3 className="whitepaper__subhead">{agent.name}</h3>}
       {agent.analysis && <div className="whitepaper__prose"><p>{agent.analysis}</p></div>}
-      <DocTerms items={[['Entradas', agent.input], ['Resultado', agent.result]]} />
+      {compact ? <div className="doc-agent__reference-context">
+        <DocTerms items={[['Entradas', agent.input], ['Resultado', agent.result]]} />
+      </div> : <DocTerms items={[['Entradas', agent.input], ['Resultado', agent.result]]} />}
     </section>)}
     {cycle && <>
     <h3 className="whitepaper__subhead" id="documentacao-ciclo-agentes">Conectores, decisão e evidência</h3>

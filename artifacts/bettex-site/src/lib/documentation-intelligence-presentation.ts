@@ -26,7 +26,7 @@ const passages = {
     'Presents BETTEX with asset theses, evidence, alternative scenarios, costs and liquidity conditions that support or invalidate a proposal.',
     'Presenta a BETTEX tesis por activo, evidencias, escenarios alternativos, costes y condiciones de liquidez que sostienen o invalidan una propuesta.',
   ],
-  sportsTitle: ['Subagente Esportes e esports', 'Sports and esports subagent', 'Subagente Deportes y esports'],
+  sportsTitle: ['Subagente de Esportes', 'Sports subagent', 'Subagente de Deportes'],
   sports: [
     'Interpreta dados de equipes, jogadores, competições e eventos, relacionando contexto esportivo e probabilidades implícitas nas odds. Investiga divergências entre estimativas e preços, value betting e surebetting, sem confundir uma hipótese de vantagem com retorno garantido.',
     'Interprets team, player, competition and event data, relating sporting context to probabilities implied by odds. Investigates differences between estimates and prices, value betting and surebetting, without confusing a hypothesis of an edge with guaranteed returns.',

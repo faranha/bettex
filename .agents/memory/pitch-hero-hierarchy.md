@@ -50,20 +50,26 @@ Preparação, comunidade e mint e afirmou: “isso não pode”.
 **How to apply:** Conferir as imagens dos heros entre capítulos ao escolher
 ou substituir fundos. Cada capítulo deve ter uma imagem própria.
 
-O personagem do hero do Pitch precisa de escala e integração com a composição, usando a homepage como referência de qualidade. Não apresentar um busto pequeno flutuando, com cortes abruptos no meio do fundo.
+O personagem do hero do Pitch precisa de escala e integração com a composição, com sua base colada à linha inferior da seção. Não apresentar um busto pequeno flutuando nem cortes soltos no meio do fundo.
 
 **Why:** O criador comparou os dois heros e rejeitou o tamanho, posicionamento e recorte do Pitch: “mal cortado, nao encaixado, ele termina com corte, nao esta inteiro, precisa melhorar MUITO”.
 
-**How to apply:** Conferir os limites visíveis da arte, não só o tamanho de seu arquivo com transparências. Preservar rosto e interação com o aplicativo; manter a figura inteira e sua base nítida junto ao limite do hero, sem cobrir o texto. Conferir desktop, tablet e mobile; não alterar a homepage para corrigir o Pitch.
+**How to apply:** Conferir os limites visíveis da arte, não só o tamanho de seu arquivo com transparências. Preservar rosto e interação com o aplicativo; manter a base nítida junto ao limite do hero, sem cobrir o texto. Conferir desktop, tablet e mobile; não alterar a homepage para corrigir o Pitch.
 
-O personagem deve aparecer inteiro, sem cortes à direita ou à esquerda e sem fade ou degradê na conexão com a linha abaixo. A perspectiva do aplicativo no celular precisa acompanhar corretamente o aparelho e a mão.
+O hero não precisa ficar alto para mostrar o personagem inteiro. O recorte inferior é seco e coincide exatamente com a linha de corte da seção, sem fade ou degradê. Preservar rosto, mãos e a interação com o aparelho, sem cortes laterais. A perspectiva do aplicativo no celular precisa acompanhar corretamente o aparelho e a mão.
 
-**Why:** O criador reiterou: “quero ele inteiro, entendeu? inteiro”, rejeitou os fades e pediu revisão da perspectiva do app.
+**Why:** O criador substituiu a exigência de corpo inteiro: “nao precisa ser alto assim ... o que importa 'e ter um corte seco na imagem que combine o corte da secao ... o personagem precisa estar colado nela”. A rejeição aos fades e a orientação da perspectiva do app permanecem.
 
-**How to apply:** Não usar máscaras graduais para esconder recortes. A própria arte precisa ter o contorno completo, e o layout deve exibi-la sem cortar. Ajustar a tela real do app ao plano do celular, preservando o contorno do aparelho e a sobreposição natural dos dedos.
+**How to apply:** A altura do hero é definida pelo texto, não pela altura do retrato inteiro. Recortar a parte inferior do personagem no próprio limite da seção, sem espaço abaixo da imagem. Não usar máscaras graduais para esconder recortes. Ajustar a tela real do app ao plano do celular, preservando o contorno do aparelho e a sobreposição natural dos dedos.
 
 O H1 de abertura do Pitch deve dizer “A DeFi trading agent for gamblers and sports bettors”, com o mesmo sentido em português e espanhol.
 
 **Why:** O criador forneceu esse título ao corrigir a abertura genérica sobre vários mercados.
 
 **How to apply:** Aplicar ao hero do Pitch, preservando a homepage e os demais capítulos; manter o público destacado na cor de acento.
+
+Os heros do Pitch precisam funcionar em Full HD, 2K e 4K, não apenas no preview pequeno.
+
+**Why:** O criador apontou que todas as imagens ficavam com qualidade inferior nessas resoluções. As cenas aprovadas devem ser preservadas, não trocadas só para obter mais pixels.
+
+**How to apply:** Preferir fotografias originais maiores e preservar créditos e recortes. Para ilustrações sem matriz maior, a super-resolução é uma melhoria derivada, não uma origem nativa em 4K. Conferir o arquivo realmente selecionado pelo navegador em cada resolução e preservar o corte do personagem na linha inferior da seção.
