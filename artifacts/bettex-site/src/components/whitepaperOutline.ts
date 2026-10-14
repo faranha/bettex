@@ -43,10 +43,12 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
     const number = numberForChapter(ci);
     const titleEl = document.getElementById(`title-${chapter.id}`);
     const out: ChapterOutline = { id: chapter.id, number, title: formatOutlineTitle(titleEl?.textContent) || formatOutlineTitle(chapter.title), items: [] };
-    if (!article) return out;
+    if (!article || chapter.id === 'documentacao-features') return out;
     const counters = [0, 0, 0];
     const nodes = article.querySelectorAll<HTMLElement>('h3, h4, summary');
     nodes.forEach((node, nodeIndex) => {
+      const owner = node.closest('article.whitepaper__chapter');
+      if (owner && owner.id !== chapter.id) return;
       if (node.closest(EXCLUDED) && !node.closest('.whitepaper__vesting')) return;
       if (node.closest('.whitepaper__chapter-head')) return;
       const reference = node.closest<HTMLDetailsElement>('[data-documentation-reference]');
@@ -60,16 +62,16 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
         if (node.querySelector('h3, h4')) return; // heading inside is handled itself below
         isSummary = true;
         target = details;
-        for (let p = details.parentElement; p; p = p.parentElement) if (p instanceof HTMLDetailsElement) depth++;
+        for (let p = details.parentElement; p; p = p.parentElement) if (p instanceof HTMLDetailsElement && !p.matches('.whitepaper__chapter-accordion, .whitepaper__reading-group')) depth++;
       } else {
         const summary = node.closest('summary');
         if (summary) {
           const details = summary.parentElement as HTMLDetailsElement;
           target = details;
           isSummary = true;
-          for (let p = details.parentElement; p; p = p.parentElement) if (p instanceof HTMLDetailsElement) depth++;
+          for (let p = details.parentElement; p; p = p.parentElement) if (p instanceof HTMLDetailsElement && !p.matches('.whitepaper__chapter-accordion, .whitepaper__reading-group')) depth++;
         } else {
-          for (let p = node.parentElement; p; p = p.parentElement) if (p instanceof HTMLDetailsElement) depth++;
+          for (let p = node.parentElement; p; p = p.parentElement) if (p instanceof HTMLDetailsElement && !p.matches('.whitepaper__chapter-accordion, .whitepaper__reading-group')) depth++;
           if (node.tagName === 'H4') depth++;
         }
       }

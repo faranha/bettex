@@ -63,21 +63,17 @@ test('wallet and optional games follow core participation and precede their full
   }
 });
 
-test('project overview includes an illustrative app journey, correct pool arithmetic and a public localized demo link', () => {
+test('project overview keeps only a localized demo link, without a walkthrough', () => {
   const source = readFileSync(new URL('../src/components/DocumentationAppWalkthrough.tsx', import.meta.url), 'utf8');
   const chapters = readFileSync(new URL('../src/components/WhitepaperChapters.tsx', import.meta.url), 'utf8');
   assert.ok(chapters.includes('<DocumentationAppWalkthrough />'));
   assert.ok(chapters.indexOf('<DocumentationAppWalkthrough />') < chapters.indexOf('<div className="whitepaper__lead"><p>{c.visaoLead}'));
   assert.match(source, /<DemoAppLink/);
-  for (const marker of ['1.000 BETTEX elegíveis', '1,000 eligible BETTEX', '1.000 BETTEX elegibles',
-    '25 USDC', 'após liquidação conciliada', 'after reconciled settlement', 'tras liquidación conciliada',
-    'Sem lucro elegível, não há pagamento', 'Without eligible profit, there is no payment', 'Sin beneficio elegible, no hay pago',
-    'exclusivamente visual', 'visual only', 'exclusivamente visual:',
-    'não movimentam dinheiro real', 'do not move real money', 'no mueven dinero real',
-    'não são os saldos do demo', 'not demo balances', 'no son los saldos del demo']) {
-    assert.ok(source.includes(marker), `App journey omits ${marker}`);
-  }
-  assert.equal(10000 * 0.25 * 0.01, 25);
+  for (const label of ['Explorar o demo BETTEX', 'Explore the BETTEX demo', 'Explorar el demo BETTEX']) assert.ok(source.includes(label));
+  assert.match(source, /id="documentacao-percurso-demo"/);
+  assert.doesNotMatch(source, /const steps|<h3|25 USDC|steps\.map/);
+  const owned = readFileSync(new URL('../src/components/DocumentationOwnedContent.tsx', import.meta.url), 'utf8');
+  assert.doesNotMatch(owned, /DocumentationDemoJourney/);
 });
 
 test('token utility identifies the community-only DeFi and decentralized AI project without changing rights', () => {

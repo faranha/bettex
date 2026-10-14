@@ -5,7 +5,7 @@ import { ArchitectureCatalogue } from './architecture/ArchitectureCatalogue';
 import { BuybackPolicy } from './BuybackPolicy';
 import { DocumentationGames } from './DocumentationGames';
 import { DocumentationChapterIntroduction } from './DocumentationChapterIntroduction';
-import { DocumentationVision, DocumentationDemoJourney, DocumentationConceptsHeading } from './DocumentationVision';
+import { DocumentationVision, DocumentationConceptsHeading } from './DocumentationVision';
 import { DocumentationFutureMarket, DocumentationFutureReferencesHeading } from './DocumentationFutureMarket';
 import { t } from '@/lib/i18n';
 
@@ -46,7 +46,6 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
         </div>
         <DocumentationConceptsHeading />
         <DocumentationChapterIntroduction chapterId={id} />
-        <DocumentationDemoJourney />
         {m(id, range(0, 10))}
       </>;
     case 'documentacao-agentes':

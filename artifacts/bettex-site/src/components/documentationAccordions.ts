@@ -47,7 +47,7 @@ export function applyDocumentationAccordions(
     let visible: boolean;
     if (heading && node.tagName !== 'DETAILS') visible = ancestorsOpen(heading.id);
     else if (node.hasAttribute(TOGGLE)) visible = ancestorsOpen(owner);
-    else if (ATOMIC.has(node.tagName)) visible = bodyOpen(owner);
+    else if (ATOMIC.has(node.tagName.toUpperCase())) visible = bodyOpen(owner);
     else {
       const children = Array.from(node.childNodes).map(visit);
       visible = children.some(Boolean) || !children.length && bodyOpen(owner);
