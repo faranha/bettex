@@ -30,3 +30,13 @@ Manter registros de testes e transações sem reescrever fatos históricos.
 
 - [Coerência comunitária](plans/bettex-community-consistency-review.pt.md).
 - [Revisão integral do conteúdo e implementação](plans/bettex-comprehensive-review.pt.md).
+
+## Lógica de Cripto — especificação, não operação
+
+- [Análise e decisão](trading-decision-logic.md).
+- [Pacote de investimento, filas e alocação](trading-proposal-contract.md).
+- [Relatórios e continuidade por ciclo](trading-cycle-reports.md).
+- [Benchmark de mercado e limites de evidência](trading-market-benchmark.md).
+- [Percurso completo de um investimento spot](trading-spot-journey.md).
+
+Esses documentos não escolhem tecnologia nem ativam o demo/ALFA. Valores propostos e exemplos fictícios não são políticas financeiras aprovadas.
