@@ -3,6 +3,12 @@ name: Abas e disponibilidade dos agentes
 description: Disponibilidade atual e separação do trading por agente na home e na Central da IA.
 ---
 
+Tratar esports como parte de Esportes, sem criar o rótulo separado “Esportes e esports” na apresentação dos subagentes.
+
+**Why:** O criador esclareceu: “esports são ESPORTES, nao precisa mencionar ESPORTS”.
+
+**How to apply:** Nomear essa categoria simplesmente Esportes, Sports ou Deportes, conforme o idioma. Isso não altera sua disponibilidade nem cria um agente adicional.
+
 Na home e na Central da IA, o criador pediu abas para Cripto, Esportes, Predictions e Cassino. Somente Cripto abre agora; as outras três ficam “Em breve”.
 
 **Why:** O criador explicou que o trading atual é de cripto e pediu a mesma separação por agente nas duas telas.

@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { createContext, useContext, type ReactNode } from 'react';
 import { ArchitectureIntegrations, type ArchitectureFigureNumber } from './ArchitectureIntegrations';
 import './BettexArchitecture.css';
 
@@ -17,6 +17,18 @@ export const architectureFigureTitles: Record<ArchitectureFigureNumber, string> 
   '7': 'Agentes de IA e conexões com os mercados',
   '8': 'Da coleta de oportunidades ao investimento e registro público',
 };
+
+const figureMetadata: Record<ArchitectureFigureNumber, { id: string; lead: string }> = {
+  '1': { id: 'figure-bettex-wallet', lead: 'Cria a conta, recebe as duas carteiras e compra BETTEX por swap.' },
+  '2': { id: 'figure-bettex-deposit', lead: 'Neste desenho, o vendedor é o projeto: BETTEX vai para a Carteira BETTEX; 100% do preço dos tokens da comunidade pago em USDC vai à tesouraria.' },
+  '3': { id: 'figure-bettex-staking', lead: 'BETTEX disponível na carteira participa automaticamente. USDC não entra no cálculo do staking.' },
+  '4': { id: 'figure-bettex-ai-contract', lead: 'O smart contract do agente de IA BETTEX conecta a tesouraria às regras de operação e autorização do capital.' },
+  '5': { id: 'figure-bettex-risk', lead: 'Tesouraria → IA BETTEX → verifica reservas, liquidez e pesos elegíveis: retém o lucro ou libera o split.' },
+  '6': { id: 'figure-bettex-payout', lead: 'Depois do split do desenho 5: parcela do staking → recebimento confirmado na Carteira USDC → saque em USDC.' },
+  '7': { id: 'figure-bettex-agents', lead: 'Agentes de IA → conexões por MCP ou API → execução automática das operações autorizadas.' },
+  '8': { id: 'figure-bettex-opportunities', lead: 'Coleta oportunidades → compara e escolhe a melhor → investe com autorização → registra todo o ciclo abertamente.' },
+};
+const FigureHeaderContext = createContext(true);
 
 function Steps({ steps, label, stacked = false }: { steps: Step[]; label: string; stacked?: boolean }) {
   return (
@@ -41,13 +53,14 @@ function Steps({ steps, label, stacked = false }: { steps: Step[]; label: string
 }
 
 function Figure({ id, num, title, lead, children }: { id: string; num: ArchitectureFigureNumber; title: string; lead: string; children: ReactNode }) {
+  const showHeader = useContext(FigureHeaderContext);
   return (
     <section className="ba-fig" id={id} data-testid={id} aria-labelledby={`${id}-t`}>
-      <header className="ba-fig__head">
+      {showHeader ? <header className="ba-fig__head">
         <span className="ba-fig__num">Desenho {num} de 8</span>
         <h3 id={`${id}-t`}>{title}</h3>
         <p>{lead}</p>
-      </header>
+      </header> : <span className="ba-fig__num">Desenho {num} de 8</span>}
       {children}
       <ArchitectureIntegrations figure={num} />
     </section>
@@ -153,11 +166,11 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
         <figcaption id={captionId} className={figure ? 'sr-only' : 'ba__note'}>{figure ? architectureFigureTitles[figure] : 'Modelo descrito na v1: conta e carteiras, compra de BETTEX, auto staking, conexão da tesouraria com a IA, operação dos mercados, distribuição dos ganhos, agentes e conexões, coleta de oportunidades, decisão de investimento e registro público de todas as transações.'}</figcaption>
 
       <div className="ba__figs">
-        {(!figure || figure === '1') && <Figure id="figure-bettex-wallet" num="1" title={architectureFigureTitles['1']} lead="Cria a conta, recebe as duas carteiras e compra BETTEX por swap.">
+        {(!figure || figure === '1') && <Figure {...figureMetadata['1']} num="1" title={architectureFigureTitles['1']}>
           <Steps steps={fig1} label="Criação da conta, criação das carteiras USDC e BETTEX e compra por swap" />
         </Figure>}
 
-        {(!figure || figure === '2') && <Figure id="figure-bettex-deposit" num="2" title={architectureFigureTitles['2']} lead="Neste desenho, o vendedor é o projeto: BETTEX vai para a Carteira BETTEX; 100% do preço dos tokens da comunidade pago em USDC vai à tesouraria.">
+        {(!figure || figure === '2') && <Figure {...figureMetadata['2']} num="2" title={architectureFigureTitles['2']}>
           <Steps steps={fig2} label="Compra da venda pública: USDC disponível, cotação e confirmação do swap, entrega de BETTEX e envio de USDC à tesouraria" />
           <p className="ba-fig__foot">Este fluxo não representa revenda entre titulares. Numa revenda, o pagamento vai ao vendedor, sem nova captação para a tesouraria.</p>
           <div className="ba-flow ba-flow--treasury">
@@ -171,37 +184,36 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
           <p className="ba-fig__foot">O mint inicial aberto de 10% tem preço fixo e financia o projeto. O swap oficial vende tokens da comunidade, destinação separada de 55%, já liberados no vesting de 24 meses: 100% do preço em USDC vai à tesouraria. Venda direta a corretoras respeita a mesma agenda. O fundador decide a destinação de sua parcela após liberação. Mercados externos não herdam automaticamente as condições do swap; USDC pessoal não gasto continua fora da tesouraria.</p>
         </Figure>}
 
-        {(!figure || figure === '3') && <Figure id="figure-bettex-staking" num="3" title={architectureFigureTitles['3']} lead="BETTEX disponível na carteira participa automaticamente. USDC não entra no cálculo do staking.">
+        {(!figure || figure === '3') && <Figure {...figureMetadata['3']} num="3" title={architectureFigureTitles['3']}>
           <Steps steps={fig3} label="BETTEX disponível na carteira, auto staking e rateio diário por quantidade e tempo, pago na Carteira USDC" />
         </Figure>}
 
-        {(!figure || figure === '4') && <Figure id="figure-bettex-ai-contract" num="4" title={architectureFigureTitles['4']} lead="O smart contract do agente de IA BETTEX conecta a tesouraria às regras de operação e autorização do capital.">
+        {(!figure || figure === '4') && <Figure {...figureMetadata['4']} num="4" title={architectureFigureTitles['4']}>
           <Steps steps={fig4} label="Tesouraria BETTEX conectada ao agente de IA por contrato inteligente e suas autorizações" />
           <p className="ba-fig__foot">O contrato aplica reservas, limites e permissões à movimentação do capital.</p>
           <p className="ba-fig__foot">A IA propõe mudanças de políticas; a administração aprova versões que passam pelos controles e espera aplicáveis. Investimentos já mandatados seguem risco independente, sem assinatura por ordem. <a href="#documentacao-governanca">Governança</a> detalha política, custódia e execução, separadas da autocustódia pessoal.</p>
         </Figure>}
 
-        {(!figure || figure === '5') && <Figure id="figure-bettex-risk" num="5" title={architectureFigureTitles['5']} lead="Tesouraria → IA BETTEX → verifica reservas, liquidez e pesos elegíveis: retém o lucro ou libera o split.">
+        {(!figure || figure === '5') && <Figure {...figureMetadata['5']} num="5" title={architectureFigureTitles['5']}>
           <Steps steps={fig5} label="IA apura lucro, verifica reservas, liquidez e pesos elegíveis; se alguma condição falhar, retém 100% sem split; com condições atendidas aplica 50% tesouraria, 25% staking e 25% carteira de recompras" />
           <p className="ba-fig__foot">Reserva ou liquidez insuficiente mantém 100% do lucro na tesouraria, sem split ou liberação futura. Com conciliação e condições atendidas, o resultado elegível recebe 50% tesouraria, 25% staking e 25% carteira de recompra. O USDC da recompra pode acumular; sua compra exige autorização da administração e todo BETTEX adquirido segue para queima permanente. A carteira não financia estratégias, distribuições ou despesas, nem conta como reserva defensiva.</p>
           <p className="ba-fig__foot">Perdas reconhecidas são permanentes: não criam déficit a recuperar com resultados futuros. A reserva defensiva e a liquidez continuam obrigatórias. Cada lucro, perda, obrigação e pagamento é registrado uma única vez. Lucros anteriores não entram no rateio de novos participantes.</p>
         </Figure>}
 
-        {(!figure || figure === '6') && <Figure id="figure-bettex-payout" num="6" title={architectureFigureTitles['6']} lead="Depois do split do desenho 5: parcela do staking → recebimento confirmado na Carteira USDC → saque em USDC.">
+        {(!figure || figure === '6') && <Figure {...figureMetadata['6']} num="6" title={architectureFigureTitles['6']}>
           <Steps steps={fig6} label="Parcela do staking já separada pela IA, distribuição pendente até recebimento confirmado na Carteira USDC e saque do USDC recebido" />
           <p className="ba-fig__foot">O registro do direito à distribuição não é saldo on-chain recebido. A obrigação e o posterior pagamento têm efeito único na apuração; a interface não soma o pendente ao saldo já recebido. Custos de rede são identificados separadamente.</p>
           <p className="ba-fig__foot"><a href="#figure-bettex-risk">Ver condições do split no desenho 5</a>.</p>
-          <p className="ba-fig__foot"><a href="#documentacao-taxas">Consultar alternativas de sustentabilidade</a>.</p>
         </Figure>}
 
-        {(!figure || figure === '7') && <Figure id="figure-bettex-agents" num="7" title={architectureFigureTitles['7']} lead="Agentes de IA → conexões por MCP ou API → execução automática das operações autorizadas.">
+        {(!figure || figure === '7') && <Figure {...figureMetadata['7']} num="7" title={architectureFigureTitles['7']}>
           <Steps steps={fig7} label="Agentes de IA com inferências opcionais da Allora, conexões MCP ou API com mercados e execução autorizada automática" />
           <p className="ba-fig__foot">Allora fornece inferências para análise, não executa ordens. Cada conexão usa apenas as ferramentas de consulta ou execução oferecidas e autorizadas pelo serviço.</p>
           <p className="ba-fig__foot">Antes de qualquer envio, a verificação de limites e a reserva de capital são indivisíveis no núcleo central, compartilhado pelos agentes e conectores. Ordens simultâneas não reutilizam o mesmo capital.</p>
           <p className="ba-fig__foot"><a href="#figure-bettex-opportunities">O desenho 8 detalha o ciclo de coleta de oportunidades, escolha, investimento e registro público das transações.</a></p>
         </Figure>}
 
-        {(!figure || figure === '8') && <Figure id="figure-bettex-opportunities" num="8" title={architectureFigureTitles['8']} lead="Coleta oportunidades → compara e escolhe a melhor → investe com autorização → registra todo o ciclo abertamente.">
+        {(!figure || figure === '8') && <Figure {...figureMetadata['8']} num="8" title={architectureFigureTitles['8']}>
           <Steps steps={fig8} stacked label="Coleta de oportunidades nos mercados, comparação e decisão pela melhor oportunidade, investimento automático autorizado e registro público de toda a rodada" />
           <p className="ba-fig__foot">O registro permite acompanhar quais oportunidades foram coletadas, quais foram selecionadas ou descartadas, os motivos da decisão e o valor investido. A escolha e a alocação são dinâmicas, sem parcelas fixas por mercado; somente operações aprovadas pelo risco seguem para investimento.</p>
           <p className="ba-fig__foot">Sem resposta conclusiva após o envio, o resultado permanece desconhecido: capital e exposição continuam comprometidos, sem reenvio automático. Cancelamento solicitado não libera recursos; somente a parcela comprovadamente livre após conciliação pode ser liberada. Execução parcial é registrada uma vez, mantendo reservado o restante incerto.</p>
@@ -215,7 +227,14 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
 }
 
 export function BettexFlow({ figure }: { figure: ArchitectureFigureNumber }) {
-  return <BettexArchitecture surface="dark" heading={false} figure={figure} />;
+  const { id, lead } = figureMetadata[figure];
+  return <section className="documentation-figure-topic" data-documentation-figure-topic={figure}>
+    <h3 className="whitepaper__subhead" id={`${id}-t`}>{architectureFigureTitles[figure]}</h3>
+    <div className="whitepaper__prose"><p>{lead}</p></div>
+    <FigureHeaderContext.Provider value={false}>
+      <BettexArchitecture surface="dark" heading={false} figure={figure} />
+    </FigureHeaderContext.Provider>
+  </section>;
 }
 
 export default BettexArchitecture;

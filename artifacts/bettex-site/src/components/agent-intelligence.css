@@ -18,17 +18,18 @@
 .agent-intel__links span { display: grid; grid-template-columns: 20px minmax(0, 1fr); align-items: start; gap: 10px; min-width: 0; color: #13204f; font: 600 12px/1.6 var(--app-font-sans); }
 .agent-intel__links span::before { content: "\2191"; color: #2B59FF; font: 700 20px/1 var(--app-font-mono); }
 .agent-intel__links span:last-child::before { content: "\2193"; }
-.agent-intel__support { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--wp-line); background: var(--wp-line); }
+.agent-intel__support { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 1px; border: 1px solid var(--wp-line); background: var(--wp-line); }
 .agent-intel__agent { min-width: 0; padding: 20px; background: #F4F1E8; }
 .agent-intel__agent .agent-intel__role { margin-bottom: 8px; color: #1a347d; }
 .agent-intel__agent .whitepaper__prose p { font-size: 13.5px; line-height: 1.7; }
 .agent-intel__markets { margin-top: 14px; padding: 16px 20px; border: 1px dashed #2B59FF; background: #faf8f1; }
 .agent-intel__markets .whitepaper__prose p { font-size: 13.5px; line-height: 1.7; }
 .agent-intel__market-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
+.agent-intel__market-list:has(> .agent-intel__market:only-child) { grid-template-columns: minmax(0, 1fr); }
 .agent-intel__market { min-width: 0; padding-top: 16px; border-top: 2px solid #1a347d; }
 .agent-intel__market h5 { margin: 0; color: #13204f; font: 800 17px/1.3 var(--app-font-serif); letter-spacing: -.02em; }
 .agent-intel__market .agent-intel__context { margin-top: 12px; }
-.agent-intel__rel { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 16px; }
+.agent-intel__rel { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; margin-top: 24px; }
 .agent-intel__panel { min-width: 0; padding: 22px; border: 1px solid var(--wp-line); border-top: 3px solid #102f83; background: #F4F1E8; }
 .agent-intel__panel--loop { border-top-color: #F2B632; }
 .agent-intel__panel .whitepaper__prose p { font-size: 13.5px; line-height: 1.7; }

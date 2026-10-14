@@ -57,7 +57,6 @@ import { t } from '@/lib/i18n';
 import { copy as c } from '@/lib/documentation-copy';
 import { roadmapStops } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
-import { ChapterArt } from '@/components/ChapterArt';
 import { DocumentationConsistency } from './DocumentationConsistency';
 import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure';
 
@@ -110,7 +109,7 @@ function MainBody({ id }: { id: string }) {
   switch (id) {
     case 'documentacao-agentes':
       return <>
-        <ChapterArt n={1} />
+        <></>
         <div className="whitepaper__lead"><p>{c.agP1}</p></div>
         <Prose>{[c.agP2, c.agP3]}</Prose>
         <DocFacts title={c.agFacts} facts={[
@@ -154,12 +153,12 @@ function MainBody({ id }: { id: string }) {
         <Head id="documentacao-exemplo">{c.pt6}</Head><Prose>{c.pt6p}</Prose>
         <DocumentationAppIntroduction />
         <Head id="documentacao-regras-demo">{c.pt7}</Head><Prose>{c.pt7p}</Prose>
-        <div className="whitepaper__prose"><p><a href="#documentacao-loteria">{c.pt7l}</a></p></div>
+        <></>
         <Reference id="documentacao-referencia-participacao" label={c.refPart} parts={[{ id: 'documentacao-staking-detalhe' }]} />
       </>;
     case 'documentacao-roadmap':
       return <>
-        <ChapterArt n={2} />
+        <></>
         <div className="whitepaper__lead"><p>{c.rmP}</p></div>
         <div className="whitepaper__status-grid" data-testid="documentation-roadmap-milestones">
           {roadmapStops.map((stop, i) => <div key={stop.title}><span>{String(i + 1).padStart(2, '0')} / {stop.tag}</span><strong>{stop.title}</strong><p>{stop.date}. {stop.description}</p>{i === 0 && <DemoAppLink>{t('Abrir o demo')}</DemoAppLink>}</div>)}
@@ -167,7 +166,7 @@ function MainBody({ id }: { id: string }) {
       </>;
     case 'documentacao-riscos':
       return <>
-        <ChapterArt n={3} />
+        <></>
         <Head id="documentacao-governanca">{c.rk1}</Head><Prose>{[c.rk1p, c.rk1q]}</Prose>
         <Head id="documentacao-seguranca">{c.rk2}</Head><Prose>{c.rk2p}</Prose>
         <Head id="documentacao-riscos-materiais">{c.rk3}</Head><Prose>{c.rk3p}</Prose>
@@ -180,7 +179,7 @@ function MainBody({ id }: { id: string }) {
       </>;
     default:
       return <>
-        <ChapterArt n={0} />
+        <></>
         <DocumentationAppWalkthrough />
         <div className="whitepaper__lead"><p>{c.visaoLead}</p><p>{c.visaoIndependencia}</p></div>
         <Head id="documentacao-linha-base">{intelligenceCopy.baselineTitle}</Head>
@@ -191,7 +190,7 @@ function MainBody({ id }: { id: string }) {
           [c.vTes, c.vTesT], [c.vAg, c.vAgT], [c.vTok, c.vTokT], [c.vPar, c.vParT],
         ]} />
         <div className="whitepaper__aside-callout"><span>{c.visaoEstadoK}</span><p>{c.visaoEstado}</p></div>
-        <div className="whitepaper__prose"><p><a href="#documentacao-emissao">{c.visaoLink}</a></p></div>
+        <></>
       </>;
   }
 }
@@ -342,7 +341,7 @@ function LegacyBody({ id }: { id: string }) {
           <div><span>03 / AGENTE BETTEX</span><strong>Análises, contratos e conectores</strong><p>Análises e conectores operam fora da rede; contratos aplicam as permissões executáveis on-chain. O núcleo de risco verifica cada operação dentro do mandato. A apuração concilia resultados, posições abertas e obrigações antes de autorizar o split 50%/25%/25%. Esse split define a destinação do resultado, não uma nova entrada de capital: reter os 50% não exige uma transferência fictícia, e atribuir os 25% não confirma seu recebimento. O crédito só fica disponível após liquidação conciliada em USDC.</p></div>
           <div><span>04 / LIQUIDAÇÃO E SUPERVISÃO</span><strong>Serviços operacionais</strong><p>O backend concilia transferências de USDC e BETTEX e o recebimento do on-ramp externo; controles independentes verificam ordens e operadores autorizados aprovam intervenções críticas, pausas e conciliações.</p></div>
         </div>
-        <div className="whitepaper__prose"><p><a href="#documentacao-staking">Apuração e liquidação dos resultados</a> · <a href="#documentacao-recompras">Recompra e queima</a></p></div>
+        <></>
         <Subhead>Dados que precisam bater</Subhead>
         <div className="whitepaper__prose">
           <p><strong>BETTEX determina a participação no staking; os ganhos são creditados em USDC.</strong> Entradas durante a rodada aguardam a próxima; não recebem nenhum lucro da rodada atual. Qualquer saída de BETTEX, mesmo parcial, zera o peso e cancela os créditos anteriores ainda não pagos. BETTEX não é capital das estratégias dos agentes nem participação societária.</p>
@@ -410,7 +409,7 @@ function LegacyBody({ id }: { id: string }) {
         <div id="documentacao-aportes-investidores">
           <Subhead>Dinheiro dos investidores e liberdade do fundador</Subhead>
           <div className="whitepaper__aside-callout">
-            <div><span>APORTES DOS INVESTIDORES</span><p>{growthStrategy.launch.angelFundingUse}</p><p><a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p></div>
+            <div><span>APORTES DOS INVESTIDORES</span><p>{growthStrategy.launch.angelFundingUse}</p></div>
           </div>
           <div className="whitepaper__rule-pair">
             <div><span>FUNDADOR / 20% DE LIVRE DESTINAÇÃO</span><p><strong>{formatTokenCount(tokenomics.teamAllocation)} BETTEX</strong> pertencem ao fundador. Após cada liberação do vesting, ele pode usar os tokens como quiser: distribuir ao time, manter em staking, transferir ou vender. Não existe uma divisão obrigatória dessa parcela com o time. A destinação de suas vendas pessoais é livre.</p></div>

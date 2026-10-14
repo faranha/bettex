@@ -1,6 +1,9 @@
 .ba { --ba-bg:#070B1F; --ba-card:#13204F; --ba-ink:#F4F1E8; --ba-muted:#b9c6ee; --ba-line:rgba(95,134,255,.35); --ba-blue:#5F86FF; --ba-gold:#F2B632; --ba-teal:#36E0D0;
   margin:0; padding:clamp(20px,3vw,34px); border:1px solid var(--ba-line); border-radius:22px; background:var(--ba-bg); color:var(--ba-ink); font-family:var(--app-font-sans); }
 .ba--paper { --ba-bg:#F4F1E8; --ba-card:#FBF9F2; --ba-ink:#070B1F; --ba-muted:#3a4466; --ba-line:#d9d3c0; --ba-blue:#2B59FF; --ba-gold:#B8860B; --ba-teal:#0b7f78; border-radius:0; }
+.documentation-figure-topic { margin: 36px 0; }
+.documentation-figure-topic > .whitepaper__prose { margin: 16px 0 24px; }
+.documentation-figure-topic > .ba { margin: 0; }
 .ba * { box-sizing:border-box; }
 .ba__head { margin-bottom:22px; }
 .ba__eyebrow { margin:0 0 8px; color:var(--ba-blue); font:700 10px/1.4 var(--app-font-mono); letter-spacing:.16em; text-transform:uppercase; }

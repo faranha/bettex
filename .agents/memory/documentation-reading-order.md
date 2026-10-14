@@ -69,11 +69,23 @@ Não reintroduzir os controles globais “Expandir tudo” e “Recolher tudo”
 
 **How to apply:** Manter o índice e a leitura dos capítulos sem acrescentar novamente essa barra de controles.
 
+As subseções começam recolhidas em toda a documentação. Fechar uma subseção oculta também seus elementos e os títulos internos, mesmo quando a numeração antiga os apresenta como irmãos.
+
+**Why:** O criador apontou os títulos internos expostos sob a subseção fechada 2.8.4: “ela precisa estar recolhida, seus elementos nao podem ficar expostos desta forma, em toda documentacao”.
+
+**How to apply:** Respeitar tanto a hierarquia numérica quanto os blocos de conteúdo efetivamente contidos na subseção. Links diretos podem abrir o destino e seus ancestrais; não expandir os demais itens automaticamente. Conferir a entrada pelo capítulo e a entrada por link direto separadamente: a abertura explícita de um destino pode mascarar falhas nos controles e no estado inicial do capítulo.
+
 A documentação carrega somente uma seção principal e seus conteúdos por vez, no mobile e no desktop. Visão é a entrada padrão.
 
 **Why:** O criador substituiu explicitamente a página contínua: “you load only the main section and its contents not all content”, com Visão como índice e navegação próxima/anterior no rodapé.
 
 **How to apply:** Montar apenas a seção principal selecionada: Visão, BETTEX, Subagentes, Features, Base técnica ou Roadmap. Manter os subitens agrupados dentro dela. O rodapé oferece Próximo e, quando existir, Anterior; Visão não tem Anterior e Roadmap não tem Próximo. Menu, intralinks, recarga e histórico devem carregar a seção do destino antes de abrir seus ancestrais. Não manter todos os capítulos ocultos no DOM. Preservar assuntos, ordem, âncoras e idiomas. Não aplicar ao Pitch.
+
+O cabeçalho geral da documentação continua disponível no topo, independentemente da seção ou subseção selecionada.
+
+**Why:** O criador apontou que o cabeçalho desaparecia ao entrar em uma subseção, mesmo fazendo parte da identidade da documentação.
+
+**How to apply:** Não condicionar a renderização do cabeçalho à Visão. Ao navegar por âncoras, continuar levando o leitor ao tópico solicitado; ao voltar ao topo, mostrar o mesmo cabeçalho sem criar uma cópia fixa sobre o conteúdo.
 
 Nenhuma cabeça de seção no topo da documentação fica dentro de uma caixa ou sanfona. Todas as seções começam com título, descritivo e apresentação; depois vêm as subseções.
 
@@ -98,6 +110,12 @@ Todas as áreas precisam introduzir os conceitos e recursos antes de pressupor q
 **Why:** O criador apontou que Loteria, Double 2X e exportação de chaves apareciam sem apresentação: “esses elementos adcionais precisam de introducao em algum momento”. Reiterou que a documentação não explica a participação para quem não entende o sistema: “precisa introduzir, falta isso em todas as areas”, incluindo staking, DeFi, DEX e DeFAI.
 
 **How to apply:** Começar cada área com uma explicação didática do conceito e de sua aplicação na BETTEX, antes de elegibilidade, cálculos ou referências técnicas. Na participação, explicar o que é staking e de onde vem um eventual pagamento antes das regras. Introduzir DeFi, DEX, DeFAI e os demais termos na primeira utilização; não deixar suas definições apenas em um glossário ao fim. Explicar os recursos opcionais antes de suas regras, separados da participação, mantendo riscos e estado visual do demo claros.
+
+Não transformar a descrição de uma área em sua primeira subseção. A introdução fica visível diretamente sob o título da própria seção, sem numeração adicional nem controle de recolher.
+
+**Why:** O criador apontou que o antigo 3.1.1 apenas descrevia o Subagente de Risco (3.1) e reiterou que “o item 1.1 na verdade já tem que ser o 1”; nenhuma seção pode ficar vazia por esconder sua apresentação.
+
+**How to apply:** Revisar todas as áreas por significado, não apagar indiscriminadamente o primeiro tópico. Incorporar apresentações e definições à introdução, mantendo somente regras e assuntos próprios como subseções. Renumerar os tópicos restantes e preservar os destinos dos links anteriores.
 
 A documentação deve oferecer somente o link para o demo, sem detalhamento das telas ou caso ilustrativo de uso.
 

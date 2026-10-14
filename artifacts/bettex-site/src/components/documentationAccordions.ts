@@ -6,6 +6,17 @@ const HEADING = 'data-documentation-section-heading';
 const TOGGLE = 'data-documentation-section-toggle';
 const ATOMIC = new Set(['SVG', 'IMG', 'IFRAME', 'VIDEO', 'CANVAS', 'TABLE']);
 
+/** Technical blocks own their nested content even when legacy numbers are siblings. */
+function enclosingSectionIds(id: string) {
+  const ids: string[] = [];
+  for (let parent = document.getElementById(id)?.parentElement; parent; parent = parent.parentElement) {
+    if (!parent.matches('.whitepaper__technical-body')) continue;
+    const heading = parent.parentElement?.querySelector<HTMLElement>(':scope > h3');
+    if (heading?.id) ids.push(heading.id);
+  }
+  return ids;
+}
+
 /** Collapse existing blocks in place: React nodes and live chart state stay owned by React. */
 export function applyDocumentationAccordions(
   root: HTMLElement, chapter: ChapterOutline, expanded: ReadonlySet<string>,
@@ -32,10 +43,14 @@ export function applyDocumentationAccordions(
     button.setAttribute('aria-expanded', String(open));
     button.setAttribute('aria-label', `${open ? collapseLabel : expandLabel} ${item.title}`);
   }
+  const sectionIds = new Set(chapter.items.map(item => item.id));
+  const enclosingSections = new Map(chapter.items.map(item =>
+    [item.id, enclosingSectionIds(item.id).filter(id => sectionIds.has(id))]));
   const ancestorsOpen = (id: string) => {
     const item = chapter.items.find(entry => entry.id === id);
-    return !item || chapter.items.every(parent => !item.number.startsWith(`${parent.number}.`) ||
-      parent.isReference || expanded.has(parent.id));
+    return (!item || chapter.items.every(parent => !item.number.startsWith(`${parent.number}.`) ||
+      parent.isReference || expanded.has(parent.id))) &&
+      (enclosingSections.get(id) ?? []).every(parent => expanded.has(parent));
   };
   const bodyOpen = (id: string) => id === chapter.id || ancestorsOpen(id) &&
     (expanded.has(id) || !!chapter.items.find(item => item.id === id)?.isReference);
@@ -63,5 +78,9 @@ export function applyDocumentationAccordions(
 /** A deep link opens only its section and ancestors, leaving other accordions unchanged. */
 export function sectionAncestors(chapter: ChapterOutline, id: string) {
   const item = chapter.items.find(entry => entry.id === id);
-  return item ? chapter.items.filter(entry => entry.id === id || item.number.startsWith(`${entry.number}.`)).map(entry => entry.id) : [];
+  if (!item) return [];
+  const enclosing = new Set(enclosingSectionIds(id));
+  const targets = chapter.items.filter(entry => entry.id === id || enclosing.has(entry.id));
+  return chapter.items.filter(entry => targets.some(target =>
+    target.id === entry.id || target.number.startsWith(`${entry.number}.`))).map(entry => entry.id);
 }

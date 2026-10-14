@@ -16,7 +16,7 @@ const connectors = [
 export type CatalogueGroup = 'map' | 'integrations' | 'demonstrations' | 'allora';
 /** Groups: map = documentacao-mapa-arquitetura + schematic-orchestration; integrations = documentacao-catalogo-integracoes (table; connectorNames filters rows by name);
  *  demonstrations = documentacao-demonstracoes + documentacao-consultas-publicas; allora = documentacao-allora-fluxo (+ schematic-allora, Allora/Robinhood prose). */
-export function ArchitectureCatalogue({ groups, connectorNames, integrationId = 'documentacao-catalogo-integracoes' }: { groups?: CatalogueGroup[]; connectorNames?: string[]; integrationId?: string } = {}) {
+export function ArchitectureCatalogue({ groups, connectorNames, integrationId = 'documentacao-catalogo-integracoes', compact = false }: { groups?: CatalogueGroup[]; connectorNames?: string[]; integrationId?: string; compact?: boolean } = {}) {
   const on = (g: CatalogueGroup) => !groups || groups.includes(g);
   const rows = connectorNames ? connectors.filter(x => connectorNames.includes(x.name)) : connectors;
   return <>
@@ -26,19 +26,18 @@ export function ArchitectureCatalogue({ groups, connectorNames, integrationId = 
     <DocImage wide src="technology/rede-inteligencia.png" alt="Rede de módulos conectados cujos fios convergem em um único fluxo luminoso." caption="Dados e inferências de várias fontes alimentam a análise da BETTEX." />
     <div className="whitepaper__prose" id="schematic-orchestration"><p>Governança ↔ políticas e versões · Starknet ou Arbitrum One: carteiras e contratos, conforme a rede escolhida</p></div>
     </>}
-    {on('integrations') && <>
-    <h3 className="whitepaper__subhead" id={integrationId}>Catálogo de integrações</h3>
+    {on('integrations') && <section id={compact ? integrationId : undefined}>
+    <h3 className="whitepaper__subhead" id={compact ? undefined : integrationId} hidden={compact} data-documentation-opening={compact ? '' : undefined}>Catálogo de integrações</h3>
     <div className="whitepaper__prose"><p>Capacidade descrita pelo provedor, consulta demonstrada e integração operacional são estados distintos. Este catálogo identifica o acesso efetivamente verificado; dados públicos não comprovam permissão de negociar.</p></div>
     <ResponsiveTableCarousel count={rows.length} label="Dados, inferência, execução e infraestrutura"><table className="whitepaper__vesting-table whitepaper__business-table">
       <caption>Dados, inferência, execução e infraestrutura</caption>
       <thead><tr><th scope="col">Plataforma</th><th scope="col">Categoria / acesso</th><th scope="col">Estado e função</th></tr></thead>
       <tbody>{rows.map(c => <tr key={c.name}><th scope="row"><a href={c.url} target="_blank" rel="noopener noreferrer">{c.name}</a></th><td data-label={t('Categoria / acesso')}>{c.kind}<br />{c.access}</td><td data-label={t('Estado e função')}><strong>{c.status}</strong><p>{c.function}</p></td></tr>)}</tbody>
     </table></ResponsiveTableCarousel>
-    </>}
+    </section>}
     {on('demonstrations') && <>
     <h3 className="whitepaper__subhead" id="documentacao-demonstracoes">Demonstrações e pré-requisitos</h3>
     <div className="whitepaper__prose"><p>Consultas públicas em 03/10/2026: JSON-RPC eth_chainId no endpoint público da Arbitrum retornou 0xa4b1, correspondente à rede 42161. A consulta Gamma /markets?limit=1&amp;active=true&amp;closed=false retornou o mercado 559651, ativo, não encerrado, com identificadores CLOB. Isso comprova leitura e identificação, não compra, liquidação ou implantação do token.</p></div>
-    <div className="whitepaper__prose"><p><a href="#documentacao-rede">Ver as alternativas Starknet e Arbitrum, ativos e carteiras</a>.</p></div>
     <details className="whitepaper__technical" id="documentacao-consultas-publicas"><summary>Reproduzir as consultas sem movimentar recursos</summary><div className="whitepaper__technical-body"><pre data-i18n="skip"><code>{'POST https://arb1.arbitrum.io/rpc\n{"jsonrpc":"2.0","id":1,"method":"eth_chainId","params":[]}\n\nGET https://gamma-api.polymarket.com/markets?limit=1&active=true&closed=false'}</code></pre><p>Conferir rede, status, timestamp, regras de resolução e identificadores antes de análise. Dados atuais podem diferir do registro consultado. Não há método de envio de transação nessas consultas.</p></div></details>
     </>}
     {on('allora') && <>

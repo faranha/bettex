@@ -3,7 +3,7 @@ import { useLocale } from '@/lib/i18n';
 import './DocumentationGames.css';
 import { DocumentationConsistency } from './DocumentationConsistency';
 
-export function DocumentationGames() {
+export function DocumentationGames({ chapterIntroduction = false }: { chapterIntroduction?: boolean } = {}) {
   const lc = useLocale();
   const x = (pt: string, en: string, es: string) => (lc === 'en' ? en : lc === 'es' ? es : pt);
   const step = (key: string, title: string, sub: string, tone?: 'gold' | 'plain') => (
@@ -20,15 +20,20 @@ export function DocumentationGames() {
     </div>
   );
   return (
-    <section id="documentacao-recursos-carteiras" className="dg" aria-labelledby="dg-title" data-i18n="translated">
-      <h3 id="dg-title" className="dg__sub">{x('Recursos das carteiras: Loteria e Double 2X', 'Wallet features: Lottery and Double 2X', 'Recursos de las carteras: Lotería y Double 2X')}</h3>
-      <p className="dg__notice"><strong>{x(
+    <section id="documentacao-recursos-carteiras" className="dg" aria-labelledby={chapterIntroduction ? 'title-documentacao-jogos' : 'dg-title'} data-i18n="translated">
+      <h3 id={chapterIntroduction ? undefined : 'dg-title'} hidden={chapterIntroduction} data-documentation-opening={chapterIntroduction ? '' : undefined} className="dg__sub">{x('Recursos das carteiras: Loteria e Double 2X', 'Wallet features: Lottery and Double 2X', 'Recursos de las carteras: Lotería y Double 2X')}</h3>
+      {chapterIntroduction && <div className="whitepaper__prose"><p>{x(
+        'Burn Lottery e Double 2X são recursos opcionais das carteiras. A loteria oferece números para sorteios; o Double 2X é um jogo de vermelho ou preto ligado à carteira de rendimentos. Eles têm regras próprias e não fazem parte das estratégias de investimento dos subagentes.',
+        'Burn Lottery and Double 2X are optional wallet features. The lottery provides numbers for draws; Double 2X is a red-or-black game linked to the earnings wallet. They have their own rules and are not part of the subagents’ investment strategies.',
+        'Burn Lottery y Double 2X son funciones opcionales de las carteras. La lotería ofrece números para sorteos; Double 2X es un juego de rojo o negro vinculado a la cartera de rendimientos. Tienen sus propias reglas y no forman parte de las estrategias de inversión de los subagentes.',
+      )}</p></div>}
+      <p id={chapterIntroduction ? 'dg-title' : undefined} className="dg__notice"><strong>{x(
         'A execução destes recursos depende de implantação compatível com a rede, autorizações válidas, disponibilidade de gás e liquidação confirmada. As regras e os exemplos não garantem resultado nem pagamento.',
         'Execution of these features depends on network-compatible deployment, valid authorizations, gas availability and confirmed settlement. The rules and examples do not guarantee an outcome or payment.',
         'La ejecución de estos recursos depende de una implementación compatible con la red, autorizaciones válidas, disponibilidad de gas y liquidación confirmada. Las reglas y los ejemplos no garantizan un resultado ni un pago.')}</strong></p>
 
       <section id="documentacao-loteria" aria-labelledby="dg-lot">
-        <h4 id="dg-lot" className="dg__sub">Burn Lottery</h4>
+        {chapterIntroduction ? <h3 id="dg-lot" className="dg__sub">Burn Lottery</h3> : <h4 id="dg-lot" className="dg__sub">Burn Lottery</h4>}
         <ul className="dg__list">
           <li>{x('Cada carteira com BETTEX em staking recebe um número gratuito.', 'Each wallet with staked BETTEX receives one free number.', 'Cada cartera con BETTEX en staking recibe un número gratuito.')}</li>
           <li>{x('Entradas adicionais são pagas em BETTEX, e todo BETTEX pago é queimado de forma permanente e direta. Não é USDC, receita de serviços nem financiamento de prêmio.', 'Additional entries are paid in BETTEX, and all paid BETTEX is permanently and directly burned. It is not USDC, service revenue or prize financing.', 'Las entradas adicionales se pagan en BETTEX y todo el BETTEX pagado se quema de forma permanente y directa. No es USDC, ingreso por servicios ni financiación de premios.')}</li>
@@ -49,7 +54,7 @@ export function DocumentationGames() {
       </section>
 
       <section id="documentacao-double-2x" aria-labelledby="dg-dbl">
-        <h4 id="dg-dbl" className="dg__sub">Double 2X</h4>
+        {chapterIntroduction ? <h3 id="dg-dbl" className="dg__sub">Double 2X</h3> : <h4 id="dg-dbl" className="dg__sub">Double 2X</h4>}
         <ul className="dg__list">
           <li>{x('Jogo opcional vermelho ou preto, usando apenas USDC de rendimentos já recebidos, nunca créditos de staking pendentes.', 'Optional red or black game using only USDC earnings already received, never pending staking credits.', 'Juego opcional rojo o negro que usa solo USDC de rendimientos ya recibidos, nunca créditos de staking pendientes.')}</li>
           <li>{x('Resultado 50/50. Vitória devolve o dobro da aposta combinada no total, com ganho líquido de uma aposta paga pela tesouraria. Derrota transfere a aposta jogada à tesouraria.', '50/50 outcome. A win returns twice the agreed stake in total, a net gain of one stake paid by the treasury. A loss transfers the played stake to the treasury.', 'Resultado 50/50. Ganar devuelve el doble de la apuesta acordada en total, con ganancia neta de una apuesta pagada por la tesorería. Perder transfiere la apuesta jugada a la tesorería.')}</li>

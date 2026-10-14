@@ -10,7 +10,6 @@ export function SaleChannels() {
       <div className="whitepaper__prose">
         <p>O desenho 2 da arquitetura representa a compra da venda pública do projeto. Seu fluxo de USDC para a tesouraria não descreve toda compra por swap. A revenda entre titulares, por si só, não aumenta P ou B e não entra em R como resultado das estratégias. A venda do token pelo titular não é resgate da tesouraria nem recompra pelo projeto.</p>
         <p>Revendas pessoais não seguem a destinação da venda pública. O fundador destina livremente suas receitas pessoais após a liberação. Revenda não antecipa emissão nem cria novo vesting para unidades liberadas.</p>
-        <p><a href="#documentacao-financiamento-fundacao">Financiamento: origem e destino dos recursos</a></p>
         <p>O preço dos tokens da comunidade é destinado integralmente à tesouraria. Custos externos de rede e de terceiros são separados. Qualquer saída de BETTEX da carteira oficial, por saque, venda ou transferência, cancela todos os créditos anteriores ainda não pagos do ciclo e zera o peso acumulado, mesmo quando parcial.</p>
       </div>
     </section>

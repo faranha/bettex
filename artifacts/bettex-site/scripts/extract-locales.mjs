@@ -18,6 +18,7 @@ function add(value) {
 }
 function scan(file) {
   if (file.endsWith('/lib/documentation-outline.json')) return; // Generated localized navigation metadata, not source copy.
+  if (file.endsWith('/lib/pitch-hero-media.generated.json') || file.endsWith('/lib/pitch-hero-media.ts')) return; // Image resolutions, provenance and srcset URLs, not interface copy.
   if (file.endsWith('/components/documentationReadingPages.ts')) return; // DOM tag/attribute protocol names, no interface copy.
   if (file.endsWith('/components/documentationAccordions.ts')) return; // DOM accordion mechanics; translated labels supplied by its caller.
   if (file.endsWith('/lib/documentation-agent-terminology.ts')) return; // Editorial normalization, audited separately.
@@ -100,7 +101,7 @@ function scan(file) {
       node.parent.parent.tagName?.getText(source) === 'DocumentationConsistency') return; // Policy selection, not displayed copy.
     if (ts.isPropertyAssignment(node) && node.name.getText(source).replace(/^['"]|['"]$/g, '') === 'id' && ts.isStringLiteral(node.initializer)) return;
     if (ts.isJsxElement(node) && ['style', 'script'].includes(node.openingElement.tagName.getText(source))) return;
-    if (ts.isJsxAttribute(node) && ['className','id','key','href','src','d','viewBox','transform','style','align','textAnchor','preserveAspectRatio','allow','referrerPolicy','loading','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath','mask','maskUnits'].includes(node.name.getText(source))) return;
+    if (ts.isJsxAttribute(node) && ['className','id','key','href','src','srcSet','sizes','d','viewBox','transform','style','align','textAnchor','preserveAspectRatio','allow','referrerPolicy','loading','aria-controls','aria-labelledby','aria-describedby','data-testid','data-i18n','role','type','xmlns','fill','stroke','filter','clipPath','mask','maskUnits'].includes(node.name.getText(source))) return;
     // Quoted object property names identify messages; their values are copy.
     if (ts.isStringLiteral(node) && ts.isPropertyAssignment(node.parent) && node.parent.name === node) return;
     if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node) || ts.isJsxText(node)) add(node.text);

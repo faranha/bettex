@@ -54,7 +54,7 @@ function Scene({ n }: { n: number }) {
 }
 
 export function ChapterArt({ n }: { n: number }) {
-  return <div className="chapter-art" aria-hidden="true" role="presentation">
-    <svg viewBox="0 0 360 120" preserveAspectRatio="xMaxYMid meet" focusable="false"><Scene n={n} /></svg>
+  return <div className={`chapter-art${n === 3 ? ' chapter-art--risk' : ''}`} aria-hidden="true" role="presentation">
+    <svg viewBox={n === 3 ? '188 0 124 120' : '0 0 360 120'} preserveAspectRatio="xMidYMid meet" focusable="false"><Scene n={n} /></svg>
   </div>;
 }
