@@ -1,14 +1,15 @@
 import { DocFacts } from './DocFacts';
 import { ResponsiveTableCarousel } from './ResponsiveTableCarousel';
 import { t } from '@/lib/i18n';
+import { DocumentationRulesTable } from './DocumentationRulesTable';
 
 export function EntityMultisig() {
   return (
     <section id="documentacao-entidade-multisig" aria-labelledby="entidade-multisig-title">
       <h3 id="entidade-multisig-title" className="whitepaper__subhead">Multisig e liberdade operacional</h3>
-      <div className="whitepaper__prose">
+      <DocumentationRulesTable>
         <p><strong>A administração aprova a política; o multisig autoriza a custódia; o executor atua dentro do mandato.</strong> A rotina não exige reunir assinaturas a cada ordem ou pagamento já coberto por uma autorização válida. Fora do mandato, a movimentação volta à aprovação colegiada. Esta é a política-base de custódia e mandatos do protocolo DeFi. A futura execução por IA seguirá permissões e controles verificáveis.</p>
-      </div>
+      </DocumentationRulesTable>
       <DocFacts title="Política-base de movimentação" cols={3} facts={[
         { label: 'CUSTÓDIA INSTITUCIONAL', value: '2 de 3', text: 'Duas pessoas distintas assinam; uma ausência não paralisa o quórum.' },
         { label: 'ROTINA AUTORIZADA', value: 'Por mandato', text: 'Execução limitada por finalidade, destinos, orçamento e validade.' },
@@ -16,10 +17,10 @@ export function EntityMultisig() {
       ]} />
 
       <h4 className="whitepaper__subhead">Signatários e responsabilidades</h4>
-      <div className="whitepaper__prose">
+      <DocumentationRulesTable>
         <p>As carteiras institucionais de custódia adotam <strong>quórum 2 de 3</strong>. A formalização identifica três signatários independentes e suas responsabilidades, sem presumir nomes, vínculo empregatício ou posições internas. As chaves são independentes; duas chaves da mesma pessoa não equivalem a dois controles. A IA e seus executores não são signatários de custódia.</p>
         <p>O fundador conserva a administração, o orçamento e as políticas. Quem recebe um pagamento não é seu aprovador independente. Pagamentos a partes relacionadas têm aprovação separada por beneficiário, pelos dois não conflitados. Depois da aprovação, o executor liquida dentro do mandato, sem nova assinatura por parcela.</p>
-      </div>
+      </DocumentationRulesTable>
 
       <h4 className="whitepaper__subhead">Matriz de autorização</h4>
       <ResponsiveTableCarousel count={5} label="Quórum, alçada e liberdade de execução">
@@ -37,19 +38,19 @@ export function EntityMultisig() {
       </ResponsiveTableCarousel>
 
       <h4 className="whitepaper__subhead">Mandato limitado, sem cheque em branco</h4>
-      <div className="whitepaper__prose">
+      <DocumentationRulesTable>
         <p>Cada mandato identifica <strong>carteira de origem, finalidade, executor, ativos e redes, contratos e funções permitidos, destinos, teto por operação, teto acumulado diário UTC, orçamento total e validade máxima de 30 dias</strong>. Nenhum campo obrigatório fica implícito. A soma do executado e comprometido por todos os executores consome o mesmo orçamento; fracionar pagamentos não contorna a alçada.</p>
         <p>A renovação sem ampliar poderes ou orçamento exige 2/3 e nova conferência, sem espera adicional. Ampliar o escopo ou os limites exige o procedimento sensível de 24h. Esgotamento, vencimento, suspensão ou divergência bloqueiam novas execuções; não liberam compromissos incertos nem autorizam reenvio. Um lote aprova seu conteúdo exato, não transferências futuras arbitrárias.</p>
         <p>Fornecedores usam destinos cadastrados e verificados. Distribuições usam os beneficiários e parcelas das obrigações conciliadas, sem exigir cadastro manual de cada titular pelo multisig. O executor não pode trocar o favorecido, atualizar o contrato, criar outro executor, elevar limites, conceder autorização ilimitada de tokens ou alterar os signatários.</p>
         <p>O caixa operacional e a tesouraria têm carteiras, rubricas e mandatos separados. Na tesouraria continuam valendo reservas conforme política aprovada, capital comprometido, limites de risco, elegibilidade e split 50%/25%/25%. O multisig não muda emissão, vesting, pesos ou créditos dos participantes. Carteiras pessoais e exportação de chaves não entram no multisig do projeto.</p>
-      </div>
+      </DocumentationRulesTable>
 
       <h4 className="whitepaper__subhead">Controles técnicos e contas externas</h4>
-      <div className="whitepaper__prose">
+      <DocumentationRulesTable>
         <p><strong>O quórum nativo não aplica sozinho orçamento, espera ou aprovação do administrador.</strong> Em contas como Safe, módulos podem executar sem a verificação normal das assinaturas. A política exige controles técnicos validados para cada caminho: transações diretas, módulos, lotes e permissões a terceiros. Mudanças sensíveis devem ficar sujeitas a um bloqueio temporal verificável, inclusive mudanças no próprio bloqueio. Sem essa cobertura, manter o executor desabilitado e não apresentar as restrições como proteção on-chain existente.</p>
         <p>Antes de assinar, conferir rede, endereço e código do contrato, ativo, destinatário, valor, chamada decodificada, permissões e resultado da simulação quando disponível, usando uma fonte independente da tela que propôs a operação. Cada signatário usa carteira de hardware ou solução institucional equivalente, com dispositivo próprio e cópia de recuperação protegida separadamente; nunca compartilhar sementes ou assinar conteúdo ilegível.</p>
         <p>Em bancos e plataformas que não suportam multisig on-chain, aplicar preparação e aprovação por pessoas diferentes, limites e trilha institucional conforme os recursos disponíveis. Credenciais de negociação não incluem saque irrestrito; saídas usam destinos verificados e autorização separada. Um registro interno não substitui um bloqueio técnico inexistente.</p>
-      </div>
+      </DocumentationRulesTable>
 
       <h4 className="whitepaper__subhead">Emergência e continuidade</h4>
       <div className="whitepaper__prose">

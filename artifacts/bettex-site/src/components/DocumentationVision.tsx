@@ -118,9 +118,9 @@ export function DocumentationTechnologyIntroduction({ children }: { children: Re
     {children}
     <div className="whitepaper__prose">
       <p>{x(
-        'Allora é uma alternativa de inferência de IA: caso utilizada, poderá fornecer previsões e sinais agregados para apoiar a análise dos agentes. Não substitui a inteligência da BETTEX, não controla carteiras nem executa ordens. Sua adoção ainda depende de avaliação, integração e validação.',
-        'Allora is an alternative AI inference provider: if used, it could supply aggregated predictions and signals to support the agents’ analysis. It does not replace BETTEX’s intelligence, control wallets or execute orders. Its adoption still depends on evaluation, integration and validation.',
-        'Allora es una alternativa de inferencia de IA: si se utiliza, podrá proporcionar predicciones y señales agregadas para apoyar el análisis de los agentes. No sustituye la inteligencia de BETTEX, no controla carteras ni ejecuta órdenes. Su adopción aún depende de evaluación, integración y validación.',
+        'A adoção da Allora para fornecer previsões e sinais agregados à análise dos agentes depende de avaliação, integração e validação. Essa fonte de inferência não substitui a inteligência da BETTEX, não controla carteiras nem executa ordens.',
+        'Adopting Allora to supply forecasts and aggregated signals for agent analysis depends on evaluation, integration and validation. This inference source does not replace BETTEX’s intelligence, control wallets or execute orders.',
+        'La adopción de Allora para aportar previsiones y señales agregadas al análisis de los agentes depende de evaluación, integración y validación. Esta fuente de inferencia no sustituye la inteligencia de BETTEX, no controla carteras ni ejecuta órdenes.',
       )}</p>
       <p>{x(
         'Toda esta documentação é teórica: descreve a arquitetura, as integrações e as regras propostas. Esse conteúdo será consolidado e validado antes do lançamento da versão ALFA.',

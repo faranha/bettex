@@ -1,11 +1,12 @@
 import { withdrawalPendingRule } from '@/lib/staking-withdrawal-policy';
 import { independentRoundRule, retainedRoundProfitRule, closedRoundPaymentRule } from '@/lib/distribution-round-policy';
+import { DocumentationRulesTable } from './DocumentationRulesTable';
 
 export function ReservePolicy() {
   return (
     <section id="documentacao-reservas" aria-labelledby="reservas-title">
       <h3 id="reservas-title" className="whitepaper__subhead">Reserva defensiva antes de investir e distribuir</h3>
-      <div className="whitepaper__prose">
+      <DocumentationRulesTable>
         <p><strong>{independentRoundRule}</strong></p>
         <p><strong>Reservas e liquidez precedem a distribuição.</strong> A cobertura considera posições, compromissos e recursos disponíveis, sem dupla contagem. Recursos comprometidos não são caixa livre. Sem conciliação e controles atendidos, a rodada não distribui.</p>
         <p><strong>A reserva defensiva segue os parâmetros da política aprovada, com vigência e versão registradas.</strong> Não existe reserva geral obrigatória de 50% nem divisão fixa entre recursos defensivos e investíveis. A cobertura usa patrimônio líquido atualizado, ativos segregados, obrigações e liquidez conciliados. O piloto de US$ 100 mil não define esse parâmetro.</p>
@@ -21,7 +22,7 @@ export function ReservePolicy() {
         <p>{withdrawalPendingRule}</p>
         <p>Se a soma dos pesos elegíveis da rodada for zero, ela não paga e 100% do lucro fica na tesouraria. Não há parcela de staking, crédito acumulado ou liberação futura. Uma rodada posterior com pesos positivos usa somente seus próprios resultados, conforme a <a href="#documentacao-rodada-sem-pesos">regra para rodada sem pesos elegíveis</a>.</p>
         <p>Alterações nesses parâmetros seguem a fila de sugestões da IA e a aprovação da administração do projeto, com registro de vigência e sem mudança retroativa de rodadas já apuradas. Sem avaliação ou conciliação confiável, a distribuição não é autorizada.</p>
-      </div>
+      </DocumentationRulesTable>
     </section>
   );
 }

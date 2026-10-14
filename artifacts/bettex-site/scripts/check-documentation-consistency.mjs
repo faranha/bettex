@@ -73,9 +73,31 @@ try {
     assert.doesNotMatch(read('src/components/WhitepaperSection.tsx'), /DocumentationRelatedTopics|data-documentation-related-section/, 'Documentation must not render related-reading blocks');
     const html = chapters.map((_, index) => renderToStaticMarkup(createElement(ChapterContent, { index }))).join('');
     const { WhitepaperSection } = await server.ssrLoadModule('/src/components/WhitepaperSection.tsx');
+    const { DocumentationRulesTable } = await server.ssrLoadModule('/src/components/DocumentationRulesTable.tsx');
+    if (language === 'pt') {
+    const ruleFixture = renderToStaticMarkup(createElement(DocumentationRulesTable, {},
+      createElement('p', { id: 'rule-anchor' }, createElement('strong', {}, 'Rule title.'), ' Complete conditions ', createElement('a', { href: '#evidence' }, 'with evidence'), '.'),
+      createElement('p', {}, createElement('strong', {}, 'Standalone rule.')),
+      createElement('p', {}, 'An unabridged rule without a bold opening.')));
+    assert.match(ruleFixture, /<th\b[^>]*scope="row"><strong>Rule title\.<\/strong><\/th>/, `${language}: rule title must be a row header`);
+    assert.match(ruleFixture, /id="rule-anchor"/, `${language}: rule anchors must survive the table conversion`);
+    assert.match(ruleFixture, /Complete conditions <a href="#evidence">with evidence<\/a>\./, `${language}: rule conditions and links must remain intact`);
+    assert.equal((ruleFixture.match(/Standalone rule\./g) ?? []).length, 1, `${language}: standalone rules must not duplicate or disappear`);
+    assert.ok(ruleFixture.includes('An unabridged rule without a bold opening.'), `${language}: plain paragraphs must remain complete`);
+    }
+    const reserveRules = html.match(/<section\b[^>]*id="documentacao-reservas"[^>]*>([\s\S]*?)<\/section>/);
+    assert.ok(reserveRules?.[1].includes('data-testid="documentation-rules-table"'), `${language}: reserve rules must be tabulated inside their subsection`);
+    assert.ok(html.includes('id="documentacao-reserva-investimentos"') && html.includes('id="documentacao-rendimentos-reserva"'), `${language}: precise treasury links must remain available`);
     const { DocumentationRenderContext } = await server.ssrLoadModule('/src/components/DocumentationRenderContext.ts');
     const { documentationChapterNumber } = await server.ssrLoadModule('/src/lib/documentation-structure.ts');
     const reader = renderToStaticMarkup(createElement(DocumentationRenderContext.Provider, { value: true }, createElement(WhitepaperSection)));
+    for (const chapter of chapters.filter(chapter => chapter.id.startsWith('documentacao-subagente-') || chapter.id.startsWith('documentacao-especialista-'))) {
+      assert.equal((html.match(new RegExp(`data-agent-concept="${chapter.id}"`, 'g')) ?? []).length, 1, `${language}: ${chapter.id} needs one conceptual illustration inside its content`);
+      assert.equal((reader.match(new RegExp(`data-documentation-agent-art="${chapter.id}"`, 'g')) ?? []).length, 1, `${language}: each subagent and internal specialist needs exactly one identifying artwork`);
+      const header = reader.match(new RegExp(`<header\\b[^>]*class="[^"]*whitepaper__chapter-head[^"]*"[^>]*>(?:(?!<\\/header>)[\\s\\S])*data-documentation-agent-art="${chapter.id}"(?:(?!<\\/header>)[\\s\\S])*<\\/header>`));
+      assert.ok(header, `${language}: ${chapter.id} artwork must identify its heading even while its body is closed`);
+      assert.match(header[0], /loading="lazy"/, `${language}: identifying artwork must load lazily`);
+    }
     for (const [index, chapter] of chapters.entries()) {
       if (!documentationChapterNumber(index).includes('.')) continue;
       assert.ok(reader.includes(`data-documentation-section-toggle="${chapter.id}" aria-expanded="false" aria-controls="${chapter.id}-body"`), `${language}: ${chapter.id} needs a closed, accessible chapter control`);
@@ -103,12 +125,16 @@ try {
     assert.ok(connectionsIntroduction, `${language}: market connections need their direct explanation`);
     assert.doesNotMatch(connectionsIntroduction[1], /desenho|drawing|design\s+[78]|diagram|diseño/i, `${language}: explain the flow without referring to drawings`);
     assert.ok(connectionsIntroduction[1].includes('BETTEX'), `${language}: the central selection agent must remain explicit`);
-    const candidateLabel = { pt: ' (caso utilizada)', en: ' (if used)', es: ' (si se utiliza)' }[language];
+    assert.doesNotMatch(html, /data-documentation-technology-condition|\(caso utilizada\)|\(if used\)|\(si se utiliza\)/, `${language}: adoption conditions belong in explanatory prose, not brand-name suffixes`);
+    const inferenceContext = {
+      pt: 'A Allora é uma fonte de inferências em avaliação, não um executor de ordens.',
+      en: 'Allora is an inference source under evaluation, not an order executor.',
+      es: 'Allora es una fuente de inferencias en evaluación, no un ejecutor de órdenes.',
+    }[language];
+    assert.ok(html.includes(inferenceContext), `${language}: contextual Allora qualification must not imply confirmed adoption`);
     for (const technology of ['Allora', 'Starknet', 'Arbitrum One', 'Polymarket', 'Robinhood', 'Safe / OpenZeppelin']) {
-      assert.ok(html.includes(`data-documentation-technology-condition="${technology}">${candidateLabel}</span>`), `${language}: named candidate ${technology} must retain its adoption condition`);
+      assert.ok(html.includes(`>${technology}</a>`), `${language}: candidate names and their reference links must remain intact`);
     }
-    const inferencePrefix = { pt: 'Caso utilizada, ', en: 'If used, ', es: 'Si se utiliza, ' }[language];
-    assert.ok(html.includes(`data-documentation-technology-condition="Allora">${inferencePrefix}</span>`), `${language}: Allora diagram caption must not imply confirmed adoption`);
     const agentIntroduction = html.indexOf('data-testid="documentation-concepts-documentacao-agentes"');
     const agentIllustration = html.indexOf('data-testid="documentation-orchestration-illustration"');
     const intelligenceContent = html.indexOf('id="documentacao-inteligencia"', agentIntroduction);
@@ -139,7 +165,7 @@ try {
     assert.ok(agenticVision, `${language}: agentic vision section missing`);
     const agenticTitle = { pt: 'Visão agêntica', en: 'Agentic vision', es: 'Visión agéntica' }[language];
     assert.match(agenticVision[1], new RegExp(`<h2\\b[^>]*>${agenticTitle}</h2>`), `${language}: agentic vision needs a visible H2`);
-    assert.match(agenticVision[1], /src="[^"]*\/pitch-hero-ai-rescue\.webp"/, `${language}: agentic vision must use the approved Pitch hero illustration`);
+    assert.match(agenticVision[1], /src="[^"]*\/technology\/documentation-agentic-core\.webp"/, `${language}: agentic vision must use its dedicated orchestration illustration`);
     assert.match(agenticVision[1], /loading="lazy"/, `${language}: below-the-fold illustration must not preload the image`);
     const researchCycles = [...html.matchAll(/<section\b[^>]*data-testid="documentation-agent-research-cycle"[^>]*>([\s\S]*?)<\/section>/g)];
     assert.equal(researchCycles.length, 1, `${language}: research context, feedback and learning must share one subsection`);

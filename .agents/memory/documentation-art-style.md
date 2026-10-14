@@ -3,6 +3,26 @@ name: Estilo das artes da documentação
 description: Menos esquemas, mais texto e imagens; bullets para itens e regras; preservar os desenhos essenciais.
 ---
 
+## Condições de adoção de tecnologias
+
+Apresentar condições de adoção dentro do contexto explicativo, não como “(caso utilizada)” ao lado de marcas, títulos ou nomes nas tabelas.
+
+**Why:** O criador rejeitou os sufixos repetidos e pediu: “ponha dentro do contexto e nao dessa forma”, revisando todos os lugares.
+
+**How to apply:** Manter nomes de tecnologias limpos. Explicar avaliação, integração, escolha de rede e autorização na descrição correspondente, sem sugerir adoção ou operação confirmada.
+
+## Identificação visual dos subagentes
+
+Cada subagente deve ter uma arte de identificação na documentação, aproveitando a identidade visual já utilizada nos materiais e na homepage.
+
+As apresentações também devem incluir artes conceituais maiores, na linha da arte do Agente BETTEX; retratos de identificação não substituem essas cenas.
+
+**Why:** O criador pediu uma arte conceitual também nas outras seções, usando a apresentação do Agente BETTEX como referência.
+
+**Why:** O criador sentiu falta de uma arte para cada agente e pediu uma apresentação visual bonita, sem repetir os erros já corrigidos.
+
+**How to apply:** Preservar a identidade das artes existentes, dar identificação também aos agentes de apoio e manter as especializações cripto vinculadas ao mesmo subagente. Ilustração não substitui os avisos de disponibilidade nem autoriza alterar a homepage.
+
 ## Roadmap da documentação
 
 O roadmap deve ter uma arte com trilhas, em estilo “mapa do tesouro cyber punk”. Usar a qualidade dos roadmaps da Home e do Pitch como referência, sem alterar essas páginas.

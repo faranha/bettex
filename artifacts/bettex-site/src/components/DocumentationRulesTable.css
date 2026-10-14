@@ -1,0 +1,19 @@
+.documentation-rules { margin: 22px 0 28px; border: 1px solid var(--wp-line); }
+.whitepaper .documentation-rules__table { width: 100%; border-collapse: collapse; table-layout: fixed; color: #13204f; font-size: 14px; line-height: 1.8; }
+.whitepaper .documentation-rules__table th, .whitepaper .documentation-rules__table td { padding: 18px 20px; vertical-align: top; text-align: left; white-space: normal; overflow-wrap: break-word; border: 0; border-bottom: 1px solid var(--wp-line); }
+.whitepaper .documentation-rules__table thead th { background: #10152d; color: #fff; font-size: 12px; font-weight: 700; }
+.whitepaper .documentation-rules__table th:first-child { width: 34%; }
+.whitepaper .documentation-rules__table--numbered th:first-child { width: 64px; }
+.whitepaper .documentation-rules__table tbody th { color: #102f83; font-weight: 700; }
+.whitepaper .documentation-rules__table tbody tr:nth-child(even) { background: #ebe7dc; }
+.whitepaper .documentation-rules__table tbody tr:last-child > * { border-bottom: 0; }
+.whitepaper .documentation-rules__table p { margin: 0; padding: 0; line-height: inherit; }
+.whitepaper .documentation-rules__table p::before { content: none; }
+@media (max-width: 768px) {
+  .whitepaper .documentation-rules__table { font-size: 14px; }
+  .whitepaper .documentation-rules__table tbody tr { margin: 0; padding: 16px; border: 0; border-bottom: 1px solid var(--wp-line); }
+  .whitepaper .documentation-rules__table tbody tr:last-child { border-bottom: 0; }
+  .whitepaper .documentation-rules__table tbody th, .whitepaper .documentation-rules__table tbody td { display: block; width: 100%; padding: 0; border: 0; }
+  .whitepaper .documentation-rules__table tbody th { margin-bottom: 10px; background: none; }
+  .whitepaper .documentation-rules__table tbody td::before { content: none; }
+}
