@@ -4,11 +4,13 @@ import { ChapterContent, chapters } from './WhitepaperChapters';
 import { ChapterVisibility } from './ChapterVisibility';
 import { DocumentationGovernanceMarquee } from './DocumentationGovernanceMarquee';
 import { DocumentationOutlineItems } from './DocumentationOutlineItems';
+import { DocumentationMenuContext, DocumentationMenuItem } from './DocumentationMenuItem';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { DocumentationFeaturesIntroduction } from './DocumentationFeaturesIntroduction';
 import { DocumentationLinkedTerms } from './DocumentationLinkedTerms';
 import { DocumentationRelatedTopics } from './DocumentationRelatedTopics';
-import { DocumentationPageFooter } from './DocumentationPageFooter';
-import { applyReadingPage, readingPageForTarget } from './documentationReadingPages';
+import { readingPageForTarget } from './documentationReadingPages';
+import { applyDocumentationAccordions, sectionAncestors } from './documentationAccordions';
 import { intelligenceCopy } from '@/lib/documentation-intelligence';
 import { documentationGroups, documentationParentId, documentationChapterNumber } from '@/lib/documentation-structure';
 import { t, useLocale } from '@/lib/i18n';
@@ -19,18 +21,16 @@ import './WhitepaperSection.css';
 const featuresIndex = chapters.findIndex(chapter => chapter.id === 'documentacao-features');
 const readingChapters = chapters.filter(chapter => chapter.id !== 'documentacao-features');
 
-function prefersReduced() {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
 export function WhitepaperSection() {
   const documentationTitle = t('Documentação técnica.').split(' ');
   const locale = useLocale();
   const [selected, setSelected] = useState(0);
   const [enhanced, setEnhanced] = useState(false);
+  const [openReadingChapters, setOpenReadingChapters] = useState<Record<string, boolean>>({ [chapters[0].id]: true });
+  const [openReadingSections, setOpenReadingSections] = useState<Set<string>>(() => new Set(['documentacao-visao']));
+  const openReadingSectionsRef = useRef(openReadingSections);
+  openReadingSectionsRef.current = openReadingSections;
   const [pageId, setPageId] = useState<string>(chapters[0].id);
-  const pageRef = useRef(pageId);
-  pageRef.current = pageId;
   const active = selected;
   const [activeId, setActiveId] = useState<string>('');
   const [outline, setOutline] = useState<ChapterOutline[]>(() => chapters.map((c, i) => ({ id: c.id, number: documentationChapterNumber(i), title: formatOutlineTitle(t(c.title)), items: [] })));
@@ -39,48 +39,58 @@ export function WhitepaperSection() {
   outlineRef.current = outline;
   const [menuOpen, setMenuOpen] = useState(false);
   const [expandedChapters, setExpandedChapters] = useState<Record<string, boolean>>({});
+  const [expandedGroups, setExpandedGroups] = useState<Record<number, boolean>>({});
   const [expandedReferences, setExpandedReferences] = useState<Record<string, boolean>>({});
-  const menuRef = useRef<HTMLDivElement>(null);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [slot, setSlot] = useState<HTMLElement | null>(null);
   useEffect(() => { setSlot(document.getElementById('documentation-mobile-slot')); }, []);
   const total = String(readingChapters.length).padStart(2, '0');
 
   const collapseIndex = useCallback(() => {
+    setExpandedGroups({});
     setExpandedChapters({});
     setExpandedReferences({});
   }, []);
   useEffect(collapseIndex, [selected, pageId, locale, collapseIndex]);
 
-  const scrollToId = useCallback((requestedId: string, smooth: boolean) => {
+  const scrollToId = useCallback((requestedId: string, _smooth: boolean) => {
     const id = resolveDocumentationId(requestedId);
     const el = document.getElementById(id);
     if (!el) return false;
     const owner = el.closest<HTMLElement>('article.whitepaper__chapter');
     const index = owner ? chapters.findIndex(chapter => chapter.id === owner.id) : -1;
-    const switchingChapter = owner?.hidden ?? false;
     const content = owner?.querySelector<HTMLElement>('[data-documentation-reading-content]');
     const chapter = outlineRef.current.find(item => item.id === owner?.id);
     const targetPage = content && chapter ? readingPageForTarget(content, chapter, el) : owner?.id;
-    const switchingPage = targetPage && targetPage !== pageRef.current;
+    const expanded = new Set([...openReadingSectionsRef.current,
+      ...(chapter && targetPage ? sectionAncestors(chapter, targetPage) : [])]);
     if (index >= 0) {
-      // Stop an old scroll before collapsing its chapter changes the page height.
-      if (switchingChapter || switchingPage) window.scrollTo({ top: window.scrollY, behavior: 'instant' });
-      // Event/timer callbacks reveal the target before measuring its position.
-      flushSync(() => { setEnhanced(true); setSelected(index); if (targetPage) setPageId(targetPage); });
-      if (content && chapter && targetPage) applyReadingPage(content, chapter, targetPage);
+      window.scrollTo({ top: window.scrollY, behavior: 'instant' });
+      flushSync(() => {
+        setEnhanced(true); setSelected(index); if (targetPage) setPageId(targetPage);
+        setOpenReadingChapters(previous => ({ ...previous, [owner!.id]: true }));
+        setOpenReadingSections(expanded);
+      });
+      // Reveal DOM-owned subsection blocks synchronously, before measuring the
+      // anchor. A React effect alone can run after the first scroll frame.
+      if (content && chapter) applyDocumentationAccordions(content, chapter, expanded, t('Expandir'), t('Recolher'));
     }
     openAncestors(el);
-    requestAnimationFrame(() => {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
       // A page starts before its media, even when its numbered title is a
       // caption below the figure. Precise paragraph anchors still scroll there.
-      const destination = content && chapter?.items.some(item => item.id === id) ? content : el;
+      // Opening a chapter can mount its deferred figure. Do not measure or
+      // focus the old pre-expansion node, which may no longer be connected.
+      const destination = document.getElementById(id);
+      if (!destination) return;
+      openAncestors(destination);
       const top = destination.getBoundingClientRect().top + window.scrollY - scrollOffset(destination);
-      window.scrollTo({ top: Math.max(0, top), behavior: smooth && !switchingChapter && !switchingPage && !prefersReduced() ? 'smooth' : 'instant' });
-      const focusEl = el instanceof HTMLDetailsElement ? el.querySelector<HTMLElement>('summary') ?? el : el;
+      // Accordion expansion changes the document height. A smooth animation
+      // towards its pre-expansion geometry can finish at the wrong section.
+      window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
+      const focusEl = destination instanceof HTMLDetailsElement ? destination.querySelector<HTMLElement>('summary') ?? destination : destination;
       if (!focusEl.hasAttribute('tabindex') && focusEl.tagName !== 'SUMMARY') focusEl.setAttribute('tabindex', '-1');
       focusEl.focus({ preventScroll: true });
-    });
+    }));
     return true;
   }, []);
 
@@ -95,16 +105,32 @@ export function WhitepaperSection() {
     const targetContent = owner?.querySelector<HTMLElement>('[data-documentation-reading-content]');
     if (enhanced && target && targetContent && targetChapter?.items.length) {
       const resolvedPage = readingPageForTarget(targetContent, targetChapter, target);
-      if (targetIndex !== selected || resolvedPage !== pageId) {
+      if (resolvedPage !== pageId) {
         const frame = requestAnimationFrame(() => scrollToId(requestedId, false));
         return () => cancelAnimationFrame(frame);
       }
     }
-    const chapter = outline[selected];
-    const content = chapter && document.getElementById(chapter.id)?.querySelector<HTMLElement>('[data-documentation-reading-content]');
-    if (enhanced && content && chapter) applyReadingPage(content, chapter, pageId);
+    for (const chapter of outline) {
+      const content = document.getElementById(chapter.id)?.querySelector<HTMLElement>('[data-documentation-reading-content]');
+      if (enhanced && content) applyDocumentationAccordions(content, chapter, openReadingSections, t('Expandir'), t('Recolher'));
+    }
     return undefined;
-  }, [outline, selected, pageId, locale, enhanced, scrollToId]);
+  }, [outline, selected, pageId, locale, enhanced, scrollToId, openReadingSections]);
+
+  useEffect(() => {
+    const toggle = (event: globalThis.MouseEvent) => {
+      const heading = (event.target as Element)?.closest<HTMLElement>('[data-documentation-section-heading]');
+      if (!heading || (event.target as Element).closest('a')) return;
+      const id = heading.dataset.documentationSectionHeading!;
+      setOpenReadingSections(previous => {
+        const next = new Set(previous);
+        if (next.has(id)) next.delete(id); else next.add(id);
+        return next;
+      });
+    };
+    document.addEventListener('click', toggle);
+    return () => document.removeEventListener('click', toggle);
+  }, []);
 
   useEffect(() => {
     // This reader restores hash destinations itself; native restoration competes
@@ -120,30 +146,6 @@ export function WhitepaperSection() {
     setEnhanced(true);
     if (initial >= 0 && owner) { setSelected(initial); setPageId(owner.id); }
   }, [scrollToId]);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    const onPointerDown = (event: PointerEvent) => {
-      if (!menuRef.current?.contains(event.target as Node) && !menuButtonRef.current?.contains(event.target as Node)) setMenuOpen(false);
-    };
-    const onFocusIn = (event: FocusEvent) => {
-      if (!menuRef.current?.contains(event.target as Node) && !menuButtonRef.current?.contains(event.target as Node)) setMenuOpen(false);
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setMenuOpen(false);
-        menuButtonRef.current?.focus();
-      }
-    };
-    document.addEventListener('pointerdown', onPointerDown);
-    document.addEventListener('focusin', onFocusIn);
-    document.addEventListener('keydown', onKeyDown);
-    return () => {
-      document.removeEventListener('pointerdown', onPointerDown);
-      document.removeEventListener('focusin', onFocusIn);
-      document.removeEventListener('keydown', onKeyDown);
-    };
-  }, [menuOpen]);
 
   useEffect(() => {
     const root = document.querySelector('.whitepaper__content');
@@ -213,11 +215,12 @@ export function WhitepaperSection() {
       raf = 0;
       const limit = scrollOffset() + 40;
       let curId = '';
-      const c = outline[selected];
-      if (c?.items.some(item => item.id === pageId)) {
-        setActiveId(pageId);
-        return;
-      }
+      let currentIndex = 0;
+      outline.forEach((chapter, index) => {
+        const article = document.getElementById(chapter.id);
+        if (article && article.getBoundingClientRect().top <= limit) currentIndex = index;
+      });
+      const c = outline[currentIndex];
       const el = c ? document.getElementById(c.id) : null;
       if (c && el && el.getClientRects().length && el.getBoundingClientRect().top <= limit) {
         curId = c.id;
@@ -227,6 +230,7 @@ export function WhitepaperSection() {
           if (e.getBoundingClientRect().top <= limit) curId = item.id;
         });
       }
+      setSelected(currentIndex);
       setActiveId(curId === c?.id ? '' : curId);
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(compute); };
@@ -240,38 +244,33 @@ export function WhitepaperSection() {
     if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     collapseIndex();
-    const mobile = window.matchMedia('(max-width: 768px)').matches;
-    const wasOpen = menuOpen;
     setMenuOpen(false);
     if (window.location.hash !== `#${id}`) window.history.pushState(null, '', `#${id}`);
     // Let the overlay close before measuring against the compact index.
     requestAnimationFrame(() => requestAnimationFrame(() => scrollToId(id, true)));
-    if (mobile && wasOpen && id === 'documentacao-indice') menuButtonRef.current?.focus({ preventScroll: true });
   }
 
   const activeChapter = outline[active] ?? outline[0];
   const activeItem = activeChapter?.items.find(i => i.id === activeId);
 
-  function renderMenuChapter(item: ChapterOutline, index: number, nested = false) {
+  function renderMenuChapter(item: ChapterOutline, index: number, nested = false, mobile = false) {
     const current = active === index;
     const children = outline.flatMap((child, childIndex) =>
       documentationParentId(child.id) === item.id ? [{ child, childIndex }] : []);
     const childCurrent = children.some(({ childIndex }) => active === childIndex);
     const open = expandedChapters[item.id] ?? false;
     const hasItems = item.items.length > 0 || children.length > 0;
-    const childrenId = `chapter-menu-${item.id}`;
+    const childrenId = `${mobile ? 1 : 0}-chapter-menu-${item.id}`;
     return <div key={item.id} className={`whitepaper__toc-group${current || childCurrent ? ' is-current' : ''}`}>
-      {!nested && (index === 0 || item.id === 'documentacao-carteira-bettex' || chapters[index].group !== chapters[index - 1].group) &&
-        <p className="whitepaper__aside-label" data-i18n="translated">{t(documentationGroups[chapters[index].group])}</p>}
       <div className="whitepaper__toc-row whitepaper__chapter-menu-row">
-      <a href={`#${item.id}`}
+      <DocumentationMenuItem><a href={`#${item.id}`}
         className={`${nested ? 'whitepaper__toc-sublink whitepaper__crypto-link' : 'whitepaper__toc-link'}${current && !activeItem ? ' is-active' : ''}${current || childCurrent ? ' is-chapter-current' : ''}`}
         aria-current={current && !activeItem ? 'location' : undefined}
         onClick={event => jump(event, item.id)} data-testid={`link-${item.id}`}>
         {!nested && <span className="whitepaper__toc-number">{item.number.padStart(2, '0')}</span>}
         <span data-i18n="translated">{item.title}</span>
-      </a>
-      {hasItems && <button type="button" className="whitepaper__reference-toggle whitepaper__chapter-toggle"
+      </a></DocumentationMenuItem>
+      {hasItems && <DocumentationMenuItem keepOpen><button type="button" className="whitepaper__reference-toggle whitepaper__chapter-toggle"
         data-i18n="translated" aria-expanded={open} aria-controls={childrenId}
         aria-label={`${t(open ? 'Recolher' : 'Expandir')} ${item.title}`}
         data-testid={`toggle-chapter-${item.id}`}
@@ -280,19 +279,44 @@ export function WhitepaperSection() {
           style={{ transform: open ? 'rotate(180deg)' : undefined }}>
           <path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-      </button>}
+      </button></DocumentationMenuItem>}
       </div>
-      {hasItems && <div id={childrenId} className="whitepaper__chapter-menu-children" hidden={!open}>
+      {hasItems && (!mobile || open) && <div id={childrenId} className="whitepaper__chapter-menu-children" hidden={!open}>
       {item.items.length > 0 && <ul className="whitepaper__toc-sub">
         <DocumentationOutlineItems items={item.items} activeId={activeId}
           expanded={expandedReferences} onNavigate={jump}
           onToggle={(id, open) => setExpandedReferences(previous => ({ ...previous, [id]: open }))} />
       </ul>}
       {children.length > 0 && <ul className="whitepaper__crypto-subitems">
-        {children.map(({ child, childIndex }) => <li key={child.id}>{renderMenuChapter(child, childIndex, true)}</li>)}
+        {children.map(({ child, childIndex }) => <li key={child.id}>{renderMenuChapter(child, childIndex, true, mobile)}</li>)}
       </ul>}
       </div>}
     </div>;
+  }
+
+  function renderMenuGroups(mobile = false) {
+    return documentationGroups.map((title, group) => {
+      const entries = outline.map((item, index) => ({ item, index }))
+        .filter(({ item, index }) => chapters[index].group === group &&
+          item.id !== 'documentacao-features' && !documentationParentId(item.id));
+      if (entries.length === 1) return renderMenuChapter(entries[0].item, entries[0].index, false, mobile);
+      if (!entries.length) return null;
+      const open = expandedGroups[group] ?? false;
+      const id = `documentation-menu-${mobile ? 1 : 0}-group-${group}`;
+      return <div key={group} className="whitepaper__toc-category">
+        <DocumentationMenuItem keepOpen><button type="button" className="whitepaper__toc-category-trigger"
+          aria-expanded={open} aria-controls={id} data-testid={`documentation-group-${group}`}
+          onClick={() => setExpandedGroups(previous => ({ ...previous, [group]: !open }))}>
+          <span data-i18n="translated">{t(title)}</span>
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" style={{ transform: open ? 'rotate(180deg)' : undefined }}>
+            <path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+          </svg>
+        </button></DocumentationMenuItem>
+        <div id={id} hidden={!open} className="whitepaper__toc-category-children">
+          {(!mobile || open) && entries.map(({ item, index }) => renderMenuChapter(item, index, false, mobile))}
+        </div>
+      </div>;
+    });
   }
 
   const bar = slot && createPortal(
@@ -300,23 +324,29 @@ export function WhitepaperSection() {
       <div className="page-wrap">
         <div className="pitch-subnav-mobile">
           <span className="mono" data-i18n="translated">{t('Documentação')}</span>
-          <button type="button" ref={menuButtonRef} className="whitepaper__mobile-menu-trigger"
+          <DropdownMenu modal={false} open={menuOpen} onOpenChange={open => {
+            if (open) {
+              collapseIndex();
+              window.dispatchEvent(new Event('bettex:close-public-menu'));
+            }
+            setMenuOpen(open);
+          }}>
+          <DropdownMenuTrigger asChild><button type="button" className="whitepaper__mobile-menu-trigger"
             aria-label={t('Capítulos da documentação')} aria-expanded={menuOpen}
-            aria-controls="whitepaper-chapter-menu" data-testid="documentation-section-select"
-            onClick={() => {
-              if (!menuOpen) {
-                collapseIndex();
-                window.dispatchEvent(new Event('bettex:close-public-menu'));
-                requestAnimationFrame(() => menuRef.current?.querySelector<HTMLElement>(`[data-testid="link-${documentationParentId(activeChapter.id) ?? activeChapter.id}"]`)?.focus({ preventScroll: true }));
-              }
-              setMenuOpen(!menuOpen);
-            }}>
+            data-testid="documentation-section-select">
             <span data-i18n="translated">{documentationParentId(activeChapter.id) ? activeChapter.title : `${activeChapter.number.padStart(2, '0')} ${activeChapter.title}`}</span>
             <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"
               style={{ transform: menuOpen ? 'rotate(180deg)' : undefined }}>
               <path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </button>
+          </button></DropdownMenuTrigger>
+          <DropdownMenuContent className="whitepaper__mobile-dropdown" align="end" sideOffset={6} collisionPadding={12}
+            data-testid="documentation-section-options">
+            <DocumentationMenuContext.Provider value={true}>
+              {renderMenuGroups(true)}
+            </DocumentationMenuContext.Provider>
+          </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </nav>, slot);
@@ -346,56 +376,50 @@ export function WhitepaperSection() {
         </div>
       </header>
       <div className="whitepaper__body page-wrap" id="documentacao-indice">
-        <aside className={`whitepaper__aside${menuOpen ? ' is-mobile-open' : ''}`} aria-label="Índice da documentação">
-          <div className="whitepaper__aside-inner" ref={menuRef}>
+        <aside className="whitepaper__aside" aria-label="Índice da documentação">
+          <div className="whitepaper__aside-inner">
             <div className="whitepaper__aside-label"><span>CAPÍTULOS</span><span>{total} SEÇÕES</span></div>
-            <button type="button" className="whitepaper__mobile-index"
-              aria-expanded={menuOpen} aria-controls="whitepaper-chapter-menu"
-              onClick={() => setMenuOpen(open => !open)}>
-              <span className="whitepaper__mobile-index-copy">
-                <span className="whitepaper__mobile-index-label">CAPÍTULOS · {activeChapter.number.padStart(2, '0')} / {total}</span>
-                <span className="whitepaper__mobile-index-title" data-i18n="translated">{activeItem ? `${activeItem.number} ${activeItem.title}` : activeChapter.title}</span>
-              </span>
-              <span className="whitepaper__mobile-index-action">{menuOpen ? 'Fechar' : 'Explorar'}
-                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              </span>
-            </button>
-            <nav id="whitepaper-chapter-menu" className={`whitepaper__chapter-menu${menuOpen ? ' is-open' : ''}`} aria-label="Capítulos da documentação">
-              {outline.map((item, index) => item.id === 'documentacao-features' || documentationParentId(item.id) ? null : renderMenuChapter(item, index))}
+            <nav id="whitepaper-chapter-menu" className="whitepaper__chapter-menu" aria-label="Capítulos da documentação">
+              {renderMenuGroups()}
             </nav>
           </div>
         </aside>
-        <div className={`whitepaper__content${enhanced ? ' is-single' : ''}`}>
+        <div className="whitepaper__content is-accordion">
           {chapters.map((chapter, index) => {
             if (chapter.id === 'documentacao-features') return null;
             const number = documentationChapterNumber(index).padStart(2, '0');
             return (
-              <article key={chapter.id} id={chapter.id} hidden={enhanced && index !== selected} className="whitepaper__chapter" aria-labelledby={`title-${chapter.id}`}>
-                {chapter.id === 'documentacao-carteira-bettex' && <section id="documentacao-features" data-documentation-opening className="whitepaper__features-opening" hidden={enhanced && index === selected && pageId !== chapter.id}>
+              <article key={chapter.id} id={chapter.id} className="whitepaper__chapter" aria-labelledby={`title-${chapter.id}`}>
+                <details className="whitepaper__chapter-accordion" open={openReadingChapters[chapter.id] ?? false}
+                  onToggle={event => {
+                    const open = event.currentTarget.open;
+                    setOpenReadingChapters(previous => previous[chapter.id] === open ? previous : { ...previous, [chapter.id]: open });
+                  }}>
+                <summary className="whitepaper__chapter-head">
+                  <span className="whitepaper__chapter-number">{number} <i aria-hidden="true" /> {total}</span>
+                  <h2 id={`title-${chapter.id}`}>{chapter.title}<span className="whitepaper__title-period">.</span></h2>
+                  <p>{chapter.subtitle}</p>
+                </summary>
+                {chapter.id === 'documentacao-carteira-bettex' && <section id="documentacao-features" data-documentation-opening className="whitepaper__features-opening">
                   <header className="whitepaper__chapter-head">
                     <h2 id="title-documentacao-features">{t('Features')}</h2>
                   </header>
                   <DocumentationFeaturesIntroduction />
-                  <ChapterVisibility.Provider value={!enhanced || index === selected}>
+                  <ChapterVisibility.Provider value={!enhanced || !!openReadingChapters[chapter.id]}>
                     <ChapterContent index={featuresIndex} />
                   </ChapterVisibility.Provider>
                 </section>}
-                <header className="whitepaper__chapter-head" hidden={enhanced && index === selected && pageId !== chapter.id}>
-                  <span className="whitepaper__chapter-number">{number} <i aria-hidden="true" /> {total}</span>
-                  <h2 id={`title-${chapter.id}`}>{chapter.title}<span className="whitepaper__title-period">.</span></h2>
-                  <p>{chapter.subtitle}</p>
-                </header>
-                <section data-documentation-reading-content
-                  aria-label={index === selected ? (outline[index]?.items.find(item => item.id === pageId)?.title ?? t(chapter.title)) : t(chapter.title)}>
-                  <ChapterVisibility.Provider value={!enhanced || index === selected}>
+                <section data-documentation-reading-content data-i18n="translated"
+                  aria-label={t(chapter.title)}>
+                  <ChapterVisibility.Provider value={!enhanced || !!openReadingChapters[chapter.id]}>
                     <ChapterContent index={index} />
                   </ChapterVisibility.Provider>
                 </section>
                 <DocumentationRelatedTopics chapterId={chapter.id} />
+                </details>
               </article>
             );
           })}
-          <DocumentationPageFooter outline={outline} chapterId={chapters[selected].id} pageId={pageId} onNavigate={jump} />
         </div>
       </div>
     </section>

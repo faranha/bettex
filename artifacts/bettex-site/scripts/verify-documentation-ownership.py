@@ -81,7 +81,11 @@ def verify():
         current.feed(html)
         missing_ids = set(original['ids']) - set(current.ids)
         assert not missing_ids, f'{route}: original deep links lost: {sorted(missing_ids)}'
-        assert not set(original['links']) - set(current.links), f'{route}: original references lost'
+        # The creator explicitly removed the duplicate on-page directory and
+        # its "back to index" control. This is navigation, not a body reference;
+        # keep its bookmark ID, and continue protecting every other original link.
+        missing_links = set(original['links']) - set(current.links) - {'#documentacao-indice'}
+        assert not missing_links, f'{route}: original references lost: {sorted(missing_links)}'
         assert not set(original['images']) - set(current.images), f'{route}: original illustrations lost'
         # Precisely scoped copy corrections approved after the ownership snapshot.
         # Keep the immutable baseline and all other paragraphs protected.

@@ -36,8 +36,9 @@ export function readingPageForTarget(root: HTMLElement, chapter: ChapterOutline,
 
 /**
  * Partition the original live React DOM without moving or cloning its nodes.
- * Each numbered heading starts a page; nested headings start independent pages
- * too. Ancestor shells remain only when they contain the selected page.
+ * A chapter opens its complete content. A numbered section opens its own
+ * content and descendants, never a directory-only intermediate page.
+ * Ancestor shells remain only when they contain the selected section.
  * Charts, images, tables and event handlers stay attached to their real nodes.
  */
 export function applyReadingPage(root: HTMLElement, chapter: ChapterOutline, pageId: string) {
@@ -46,6 +47,11 @@ export function applyReadingPage(root: HTMLElement, chapter: ChapterOutline, pag
     element.removeAttribute(HEADING);
   });
   const points = boundaries(root, chapter);
+  const selectedItem = points.find(point => point.item.id === pageId)?.item;
+  const visiblePages = new Set(pageId === chapter.id
+    ? [chapter.id, ...points.map(point => point.item.id)]
+    : [pageId, ...points.filter(point => selectedItem?.number &&
+      point.item.number.startsWith(`${selectedItem.number}.`)).map(point => point.item.id)]);
   const starts = new Map<Element, string>(points.flatMap(({ item, element, start }) => [[start, item.id], [element, item.id]] as [Element, string][]));
   const owners = new Map<Node, string>();
   let current = chapter.id;
@@ -61,13 +67,13 @@ export function applyReadingPage(root: HTMLElement, chapter: ChapterOutline, pag
     const own = current;
     owners.set(node, own);
     if (ATOMIC.has(node.tagName.toUpperCase())) {
-      if (own !== pageId) node.setAttribute(HIDDEN, '');
+      if (!visiblePages.has(own)) node.setAttribute(HIDDEN, '');
       return new Set([own]);
     }
     const pages = new Set<string>();
     node.childNodes.forEach(child => visit(child).forEach(id => pages.add(id)));
     if (!pages.size) pages.add(own);
-    if (node !== root && !pages.has(pageId)) node.setAttribute(HIDDEN, '');
+    if (node !== root && ![...pages].some(id => visiblePages.has(id))) node.setAttribute(HIDDEN, '');
     return pages;
   };
   visit(root);

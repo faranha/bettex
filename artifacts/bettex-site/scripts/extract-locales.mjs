@@ -18,6 +18,7 @@ function add(value) {
 }
 function scan(file) {
   if (file.endsWith('/components/documentationReadingPages.ts')) return; // DOM tag/attribute protocol names, no interface copy.
+  if (file.endsWith('/components/documentationAccordions.ts')) return; // DOM accordion mechanics; translated labels supplied by its caller.
   if (file.endsWith('/lib/documentation-agent-terminology.ts')) return; // Editorial normalization, audited separately.
   // Documentation research passages own PT/EN/ES tuples; only PT is a source key.
   // The isolated demo owns three-language tuples, not the site catalogue.
