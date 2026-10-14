@@ -9,6 +9,14 @@ BETTEX agents must include actual AI inference. Deterministic controls are usefu
 
 **How to apply:** Distinguish model-generated reasoning, external model observations and fixed-rule checks. Show real model provenance and source evidence. Describe on-demand analysis, autonomous scheduling and financial execution separately; do not claim capabilities that have not been implemented or verified.
 
+## Etapas da seleção de ordens
+
+Inicialmente, os critérios de seleção são determinísticos. A decisão probabilística deve ser implementada na ALFA ou na BETA; no demo não é possível comprová-la com absoluta garantia.
+
+**Why:** O criador pediu critérios de seleção claros no bloco de ordens do agente BETTEX e definiu explicitamente essa progressão.
+
+**How to apply:** Distinguir o ponto de partida determinístico da inteligência probabilística futura. Não exigir inferência operacional do demo visual nem apresentá-lo como prova dessa capacidade. Registrar método e versões usados na decisão, preservando aprovação independente e controles de risco mesmo após a evolução probabilística.
+
 ## Visão técnica e apresentação da documentação
 
 O criador definiu: “apresentar o que foi feito como linha de base, ponto de partida”, mas “o verdadeiro projeto é desenvolver uma IA capaz de partir deste ponto”, sem saber antecipadamente onde chegará; “essa incógnita é o verdadeiro valor do negócio”. Trabalhar mais os agentes e menos as regras. A documentação é visão técnica, não business case.

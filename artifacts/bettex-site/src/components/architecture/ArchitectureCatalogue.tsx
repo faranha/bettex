@@ -1,6 +1,7 @@
 import { DocImage, DocTerms } from '../DocImage';
 import { ResponsiveTableCarousel } from '../ResponsiveTableCarousel';
 import { t } from '@/lib/i18n';
+import { DocumentationTechnologyCondition } from '../DocumentationTechnologyCondition';
 const connectors = [
   { name: 'Starknet', kind: 'Rede e contratos', access: 'JSON-RPC / Cairo', status: 'Candidata; planejamento e captação de grants', function: 'Contas nativas, token, transferências e contratos. Exige implementação Cairo, ativos compatíveis e contratos validados; não há implantação BETTEX confirmada.', url: 'https://docs.starknet.io/' },
   { name: 'Arbitrum One', kind: 'Rede e contratos', access: 'JSON-RPC / EVM', status: 'Candidata; consulta pública verificada', function: 'Carteiras, token, transferências e contratos. Consulta RPC não define a escolha da rede; execução BETTEX exige contratos validados.', url: 'https://docs.arbitrum.io/' },
@@ -16,23 +17,23 @@ const connectors = [
 export type CatalogueGroup = 'map' | 'integrations' | 'demonstrations' | 'allora';
 /** Groups: map = documentacao-mapa-arquitetura + schematic-orchestration; integrations = documentacao-catalogo-integracoes (table; connectorNames filters rows by name);
  *  demonstrations = documentacao-demonstracoes + documentacao-consultas-publicas; allora = documentacao-allora-fluxo (+ schematic-allora, Allora/Robinhood prose). */
-export function ArchitectureCatalogue({ groups, connectorNames, integrationId = 'documentacao-catalogo-integracoes', compact = false }: { groups?: CatalogueGroup[]; connectorNames?: string[]; integrationId?: string; compact?: boolean } = {}) {
+export function ArchitectureCatalogue({ groups, connectorNames, integrationId = 'documentacao-catalogo-integracoes', compact = false, mapIntroduction = false }: { groups?: CatalogueGroup[]; connectorNames?: string[]; integrationId?: string; compact?: boolean; mapIntroduction?: boolean } = {}) {
   const on = (g: CatalogueGroup) => !groups || groups.includes(g);
   const rows = connectorNames ? connectors.filter(x => connectorNames.includes(x.name)) : connectors;
   return <>
-    {on('map') && <>
-    <h3 className="whitepaper__subhead" id="documentacao-mapa-arquitetura">Mapa orquestrado do sistema</h3>
+    {on('map') && <div id={mapIntroduction ? 'documentacao-mapa-arquitetura' : undefined} data-documentation-opening={mapIntroduction ? '' : undefined}>
+    <h3 className="whitepaper__subhead" id={mapIntroduction ? undefined : 'documentacao-mapa-arquitetura'} hidden={mapIntroduction}>Mapa orquestrado do sistema</h3>
     <div className="whitepaper__prose"><p>Fontes de dados e inferências alimentam a IA BETTEX, que coordena análises com os agentes especializados nos dois sentidos. Tesouraria informa capital e liquidez; risco independente valida cada proposta; somente conectores autorizados executam. Respostas e conciliação retornam à orquestradora, à tesouraria e ao histórico.</p></div>
     <DocImage wide src="technology/rede-inteligencia.png" alt="Rede de módulos conectados cujos fios convergem em um único fluxo luminoso." caption="Dados e inferências de várias fontes alimentam a análise da BETTEX." />
     <div className="whitepaper__prose" id="schematic-orchestration"><p>Governança ↔ políticas e versões · Starknet ou Arbitrum One: carteiras e contratos, conforme a rede escolhida</p></div>
-    </>}
+    </div>}
     {on('integrations') && <section id={compact ? integrationId : undefined}>
     <h3 className="whitepaper__subhead" id={compact ? undefined : integrationId} hidden={compact} data-documentation-opening={compact ? '' : undefined}>Catálogo de integrações</h3>
     <div className="whitepaper__prose"><p>Capacidade descrita pelo provedor, consulta demonstrada e integração operacional são estados distintos. Este catálogo identifica o acesso efetivamente verificado; dados públicos não comprovam permissão de negociar.</p></div>
     <ResponsiveTableCarousel count={rows.length} label="Dados, inferência, execução e infraestrutura"><table className="whitepaper__vesting-table whitepaper__business-table">
       <caption>Dados, inferência, execução e infraestrutura</caption>
       <thead><tr><th scope="col">Plataforma</th><th scope="col">Categoria / acesso</th><th scope="col">Estado e função</th></tr></thead>
-      <tbody>{rows.map(c => <tr key={c.name}><th scope="row"><a href={c.url} target="_blank" rel="noopener noreferrer">{c.name}</a></th><td data-label={t('Categoria / acesso')}>{c.kind}<br />{c.access}</td><td data-label={t('Estado e função')}><strong>{c.status}</strong><p>{c.function}</p></td></tr>)}</tbody>
+      <tbody>{rows.map(c => <tr key={c.name}><th scope="row"><a href={c.url} target="_blank" rel="noopener noreferrer">{c.name}</a>{['Starknet', 'Arbitrum One', 'Polymarket', 'Allora', 'Robinhood', 'Safe / OpenZeppelin'].includes(c.name) && <DocumentationTechnologyCondition name={c.name} />}</th><td data-label={t('Categoria / acesso')}>{c.kind}<br />{c.access}</td><td data-label={t('Estado e função')}><strong>{c.status}</strong><p>{c.function}</p></td></tr>)}</tbody>
     </table></ResponsiveTableCarousel>
     </section>}
     {on('demonstrations') && <>

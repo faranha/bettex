@@ -2,13 +2,14 @@ import './extract-locales.mjs';
 import fs from 'node:fs';
 import { intelligenceTranslations } from '../src/lib/documentation-intelligence.ts';
 import { presentationTranslations } from '../src/lib/documentation-intelligence-presentation.ts';
+import { orderStandardTranslations } from '../src/lib/documentation-order-standard.ts';
 const root = new URL('../src/lib/locales/', import.meta.url);
 const source = JSON.parse(fs.readFileSync(new URL('source.json', root), 'utf8'));
 const catalog = fs.readFileSync(new URL('translations.json', root), 'utf8');
 const messages = { ...JSON.parse(catalog),
   ...JSON.parse(fs.readFileSync(new URL('documentation-architecture.json', root), 'utf8')),
   ...JSON.parse(fs.readFileSync(new URL('english-source-messages.json', root), 'utf8')),
-  ...intelligenceTranslations, ...presentationTranslations };
+  ...intelligenceTranslations, ...presentationTranslations, ...orderStandardTranslations };
 const failures = [];
 const seen = new Set();
 let depth = 0;

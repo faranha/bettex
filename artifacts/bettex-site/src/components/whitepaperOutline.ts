@@ -9,6 +9,13 @@ export type OutlineItem = {
 };
 export type ChapterOutline = { id: string; number: string; title: string; items: OutlineItem[] };
 
+/** Numbered areas share the subsection default; direct links reveal their ancestors. */
+export function chapterAncestors(outline: readonly ChapterOutline[], id: string, revealTarget = true) {
+  const target = outline.find(chapter => chapter.id === id);
+  return target ? outline.filter(chapter => chapter.number.includes('.') &&
+    (chapter.id === id && revealTarget || target.number.startsWith(`${chapter.number}.`))).map(chapter => chapter.id) : [];
+}
+
 /** The navigation shows sections and subsections only; deeper topics remain in the reader. */
 export const documentationMenuItems = (items: readonly OutlineItem[]) =>
   items.filter(item => item.number.split('.').length <= 2);

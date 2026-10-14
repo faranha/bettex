@@ -1,5 +1,11 @@
 import { createElement, isValidElement, type ReactElement } from 'react';
 
+/** Inline continuations must not be replaced by standalone summaries. */
+export function isDocumentationContinuation(source: string) {
+  const text = source.trim();
+  return !!text && (/^[,;:]/.test(text) || /^\p{Ll}/u.test(text) || !/[.!?]$/.test(text));
+}
+
 export function preserveDocumentationSpacing(source: string, localized: string) {
   if (!source.trim()) return source;
   const leading = source.match(/^\s+/)?.[0] ?? '';

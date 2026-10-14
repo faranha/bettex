@@ -3307,6 +3307,10 @@
     "en": "More than 60 million Brazilians make up the estimated potential audience, while the crypto market handles around R$ {0} billion in daily operations and betting platforms have a historical reference of R$ 600 million in deposits per day.",
     "es": "Más de 60 millones de brasileños conforman el público potencial estimado, mientras el mercado cripto mueve cerca de R$ {0} mil millones en operaciones diarias y las plataformas de apuestas tienen una referencia histórica de R$ 600 millones en depósitos por día."
   },
+  "Nossa visão é resgatar pessoas de um futuro incerto, usando IA para lhes dar uma participação na era de ouro da humanidade e buscar proteger o capital de quem hoje trata apostas como investimento.": {
+    "en": "Our vision is to rescue people from an uncertain future, using AI to give them a stake in humanity’s golden age and seeking to protect the capital of people who currently treat betting as an investment.",
+    "es": "Nuestra visión es rescatar a las personas de un futuro incierto, usando IA para darles una participación en la edad de oro de la humanidad y buscar proteger el capital de quienes hoy tratan las apuestas como inversión."
+  },
   "A oportunidade é oferecer um produto de investimento que fale a língua dessas pessoas.": {
     "en": "The opportunity is to offer an investment product that speaks these people’s language.",
     "es": "La oportunidad es ofrecer un producto de inversión que hable el idioma de estas personas."
@@ -7367,6 +7371,10 @@
     "en": "The BETTEX AI orchestrates agents with distinct responsibilities. Communication is bidirectional: BETTEX defines priorities and requests analyses; agents propose opportunities, respond, and refine. Treasury and governance track the same reconciled data and the same policy version.",
     "es": "La IA BETTEX orquesta agentes con responsabilidades distintas. La comunicación es bidireccional: BETTEX define prioridades y solicita análisis; los agentes proponen oportunidades, responden y refinan. La tesorería y la gobernanza siguen los mismos datos conciliados y la misma versión de la política."
   },
+  "O agente BETTEX compara as alternativas e seleciona a melhor oportunidade segundo retorno esperado, custos, liquidez, exposição e risco. Registra os critérios e o motivo da escolha.": {
+    "en": "The BETTEX agent compares alternatives and selects the best opportunity based on expected return, costs, liquidity, exposure and risk. It records the criteria and the reason for the choice.",
+    "es": "El agente BETTEX compara las alternativas y selecciona la mejor oportunidad según el retorno esperado, costes, liquidez, exposición y riesgo. Registra los criterios y el motivo de la elección."
+  },
   "A IA compara as alternativas e escolhe a mais vantajosa segundo retorno esperado, custos, liquidez, exposição e risco. Registra os critérios e o motivo da escolha.": {
     "en": "AI compares alternatives and chooses the most advantageous one based on expected return, costs, liquidity, exposure and risk. It records the criteria and the reason for the choice.",
     "es": "La IA compara las alternativas y elige la más ventajosa según el retorno esperado, costes, liquidez, exposición y riesgo. Registra los criterios y el motivo de la elección."
@@ -10462,6 +10470,10 @@
   "Escape": {
     "en": "Escape",
     "es": "Escape"
+  },
+  "Os subagentes coletam oportunidades e analisam alternativas segundo retorno esperado, custos, liquidez, exposição e risco. O agente BETTEX compara as propostas, seleciona a melhor oportunidade e registra os critérios e os motivos da decisão. Define o investimento dentro da parcela investível autorizada e envia a ordem somente após aprovação independente de risco. O registro público acompanha toda a rodada: oportunidades coletadas, selecionadas e descartadas, motivos da decisão, valores investidos e estados das transações.": {
+    "en": "Subagents collect opportunities and analyze alternatives based on expected return, costs, liquidity, exposure and risk. The BETTEX agent compares proposals, selects the best opportunity and records the criteria and reasons for the decision. It defines the investment within the authorized investable portion and sends the order only after independent risk approval. The public record follows the entire round: collected, selected and discarded opportunities, decision reasons, invested amounts and transaction states.",
+    "es": "Los subagentes recopilan oportunidades y analizan alternativas según el retorno esperado, los costes, la liquidez, la exposición y el riesgo. El agente BETTEX compara las propuestas, selecciona la mejor oportunidad y registra los criterios y los motivos de la decisión. Define la inversión dentro de la parte invertible autorizada y envía la orden solo tras la aprobación independiente de riesgo. El registro público abarca toda la ronda: oportunidades recopiladas, seleccionadas y descartadas, motivos de la decisión, importes invertidos y estados de las transacciones."
   },
   "Escolha da melhor oportunidade": {
     "en": "Choosing the best opportunity",

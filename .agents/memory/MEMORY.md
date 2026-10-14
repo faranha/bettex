@@ -50,7 +50,7 @@
 - [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — BETTEX coordena Cripto; BTC/ETH/SOL são subagentes internos no grafo, não setores independentes.
 - [Mandato inicial de Cripto](crypto-spot-mandate.md) — BTC/ETH/SOL spot sem alavancagem; priorizar DEX/on-chain, sem rede escolhida; propostas não são aprovação.
 - [Relatórios e decisões por ciclo](decision-cycle-traceability.md) — percurso subagente/BETTEX/Tesouraria; separar rodadas de análise, ciclos e continuidade sem duplicar resultados.
-- [Real agent intelligence](real-agent-intelligence.md) — BETTEX orquestra com apoio de risco e tesouraria; exigir inferência real, não substituir inteligência por controles fixos.
+- [Real agent intelligence](real-agent-intelligence.md) — seleção inicialmente determinística; decisão probabilística na ALFA ou BETA; demo não comprova inferência real.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
 - [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
 - [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
@@ -103,3 +103,4 @@
 - [Hero do Pitch](pitch-hero-hierarchy.md) — H1 prioritário; personagem usando o app em cutout, sem caixa nem legenda.
 - [Vesting na documentação mobile](documentation-vesting-mobile.md) — consulta compacta dos 24 meses; gráficos visíveis no HTML inicial, sem depender de medir capítulos ocultos.
 - [Build export side effects](build-export-side-effects.md) — full validation may change archive headers only; verify member contents before cleanup and respect Git safeguards.
+- [Padrão das ordens](order-standard-requirements.md) — conceito e arte antes da autorização; tabela técnica completa do registro usado pela tesouraria, execução e retorno.

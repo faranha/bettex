@@ -44,3 +44,27 @@ Na abertura da documentação, a proposta deve ser expressa como: “A proposta 
 **Why:** O criador forneceu essa frase para substituir a descrição por estratégias de mercado, automação por IA e gestão de risco.
 
 **How to apply:** Manter essa formulação e seu sentido nas traduções, sem acrescentar explicações à frase aprovada.
+
+Toda a documentação ainda é teórica e será consolidada antes do lançamento da versão ALFA.
+
+**Why:** O criador exigiu essa explicação ao revisar a apresentação tecnológica da documentação.
+
+**How to apply:** Apresentar arquitetura, integrações e regras como propostas a consolidar e validar, não como uma versão operacional já entregue.
+
+Na apresentação tecnológica, citar obrigatoriamente Allora como alternativa de inferência e explicar sua função.
+
+**Why:** O criador pediu expressamente a inclusão da Allora como alternativa, não como integração presumida.
+
+**How to apply:** Explicar que pode fornecer previsões e sinais agregados para apoiar a análise; não substitui a inteligência da BETTEX, não controla carteiras nem executa ordens.
+
+Ao mencionar nominalmente uma tecnologia candidata, usar “caso utilizada”, “na hipótese de adoção” ou equivalente. Nenhuma escolha tecnológica está 100% confirmada.
+
+**Why:** O criador reiterou essa condição para nomes como Allora e Starknet e pediu explicitamente não alastrar a noção.
+
+**How to apply:** Qualificar a adoção das tecnologias pelo nome, sem espalhar ressalvas às regras, à visão ou aos demais assuntos. Preservar fatos verificados sobre fornecedores externos; existência de uma API ou consulta pública não confirma sua adoção pela BETTEX.
+
+O agente BETTEX seleciona a melhor oportunidade.
+
+**Why:** O criador esclareceu explicitamente o responsável pela seleção no fluxo de oportunidades.
+
+**How to apply:** Nomear o agente BETTEX nessa decisão, preservando os critérios de comparação e o registro dos motivos.

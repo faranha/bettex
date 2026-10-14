@@ -55,7 +55,17 @@ globalThis.HTMLElement = Element;
 globalThis.HTMLDetailsElement = Details;
 const source = await fs.readFile(new URL('../src/components/whitepaperOutline.ts', import.meta.url), 'utf8');
 const compiled = await transformWithEsbuild(source, 'whitepaperOutline.ts', { loader: 'ts' });
-const { collectOutline, groupReferenceItems, openAncestors, scrollOffset, outlineSignature } = await import(`data:text/javascript;base64,${Buffer.from(compiled.code).toString('base64')}`);
+const { chapterAncestors, collectOutline, groupReferenceItems, openAncestors, scrollOffset, outlineSignature } = await import(`data:text/javascript;base64,${Buffer.from(compiled.code).toString('base64')}`);
+const chapterFixture = [
+  ['features', '4'], ['wallet', '4.1'], ['usdc', '4.2'],
+  ['crypto', '3.4'], ['btc', '3.4.10'], ['eth', '3.4.11'], ['other', '3.40'],
+].map(([id, number]) => ({ id, number, title: id, items: [] }));
+assert.deepEqual(chapterAncestors(chapterFixture, 'features'), [], 'Opening an area must not expand any child chapter.');
+assert.deepEqual(chapterAncestors(chapterFixture, 'wallet'), ['wallet'], 'An explicit wallet destination reveals only its chapter.');
+assert.deepEqual(chapterAncestors(chapterFixture, 'wallet', false), [], 'An area-heading link must not expand its body.');
+assert.deepEqual(chapterAncestors(chapterFixture, 'btc'), ['crypto', 'btc'], 'A specialist destination must reveal the parent but not its siblings.');
+assert.deepEqual(chapterAncestors(chapterFixture, 'btc', false), ['crypto'], 'A specialist-heading link reveals its parent but leaves its own body closed.');
+assert.deepEqual(chapterAncestors(chapterFixture, 'missing'), [], 'Unknown destinations must not open unrelated content.');
 let referenceIds;
 for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vision.'], ['es', 'Visión del proyecto.']]) {
   const root = new Element('div');
@@ -120,4 +130,5 @@ assert.doesNotMatch(readerSource, /!introduction|const introduction =/, 'Demo mu
 assert.match(readerSource, /useEffect\(collapseIndex, \[locale, collapseIndex\]\)/, 'Scroll-derived selection must not collapse expanded menu options.');
 assert.match(readerSource, /if \(navigatingRef\.current \|\| menuOpen\) return/, 'Scroll tracking must not overwrite selection during navigation or while the menu overlay is open.');
 assert.match(readerSource, /onCloseAutoFocus=/, 'Menu dismissal must not steal focus back from the navigation destination.');
+assert.match(readerSource, /data-documentation-chapter-body hidden=\{!open\}/, 'Numbered chapter content must obey its expansion state.');
 console.log('Documentation navigation: single index, 3-level numbering, stable locale ids, collisions, closed ancestors and measured desktop/mobile offsets verified.');

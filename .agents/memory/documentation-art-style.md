@@ -3,6 +3,14 @@ name: Estilo das artes da documentação
 description: Menos esquemas, mais texto e imagens; bullets para itens e regras; preservar os desenhos essenciais.
 ---
 
+## Roadmap da documentação
+
+O roadmap deve ter uma arte com trilhas, em estilo “mapa do tesouro cyber punk”. Usar a qualidade dos roadmaps da Home e do Pitch como referência, sem alterar essas páginas.
+
+**Why:** O criador pediu que o roadmap documental também fosse belo e definiu explicitamente essa direção visual.
+
+**How to apply:** Preservar os marcos, a ordem, as datas e as condições existentes; trabalhar a apresentação como um percurso cartográfico conectado, legível também no celular.
+
 No mapa da visão, as conexões devem ser apenas linhas, sem pontas de seta.
 
 **Why:** O criador pediu: “as setas na arte estao tortas, tire as setas, deixe apenas linhas”.

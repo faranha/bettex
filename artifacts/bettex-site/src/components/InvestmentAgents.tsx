@@ -30,9 +30,11 @@ export function InvestmentAgents({ only, cycle = true, intro = true, embedded = 
       </div> : <DocTerms items={[['Entradas', agent.input], ['Resultado', agent.result]]} />}
     </section>)}
     {cycle && <>
-    <h3 className="whitepaper__subhead" id="documentacao-ciclo-agentes">Conectores, decisão e evidência</h3>
-    <div className="whitepaper__prose"><p>Entrada → consulta/resposta → análise bidirecional → proposta → validação independente → execução autorizada → conciliação. Cada operação registra dados, horário, versão, capital, custos, motivo e estado. <a href="#documentacao-demonstracoes">Demonstrações públicas e pré-requisitos</a> distinguem consulta de dados, simulação e ordens privadas.</p><p>Compromissos simultâneos são registrados indivisivelmente antes do envio; repetição não cria outra ordem. Conciliação devolve estados e resultados aos agentes e à tesouraria. Mudanças de política seguem <a href="#documentacao-evolucao-bots">Governança</a>, sem ampliar unilateralmente permissões.</p></div>
-    <BettexFlow figure="7" />
+    {/* Preserve the former outline slot without creating a separate subsection. */}
+    <h3 hidden data-documentation-opening>Conectores, decisão e evidência</h3>
+    <BettexFlow figure="7">
+      <div id="documentacao-ciclo-agentes" className="whitepaper__prose"><p>Entrada → consulta/resposta → análise bidirecional → proposta → validação independente → execução autorizada → conciliação. Cada operação registra dados, horário, versão, capital, custos, motivo e estado. <a href="#documentacao-demonstracoes">Demonstrações públicas e pré-requisitos</a> distinguem consulta de dados, simulação e ordens privadas.</p><p>Compromissos simultâneos são registrados indivisivelmente antes do envio; repetição não cria outra ordem. Conciliação devolve estados e resultados aos agentes e à tesouraria. Mudanças de política seguem <a href="#documentacao-evolucao-bots">Governança</a>, sem ampliar unilateralmente permissões.</p></div>
+    </BettexFlow>
     <BettexFlow figure="8" />
     </>}
   </>;

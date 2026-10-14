@@ -26,6 +26,7 @@ import './pitch.css';
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
 const HERO_NOTICE = 'Agente autônomo de IA que faz trading em mercados de apostas esportivas, iGaming, previsões e cripto #DeFI #DeFAI';
+const HERO_RESCUE_VISION = 'Nossa visão é resgatar pessoas de um futuro incerto, usando IA para lhes dar uma participação na era de ouro da humanidade e buscar proteger o capital de quem hoje trata apostas como investimento.';
 
 function Sec({ id, n, kicker, title, dark = false, summary, hero, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; hero?: string; children: ReactNode }) {
   return <section id={id} aria-labelledby={`${id}-t`} className={`slide ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
@@ -85,7 +86,7 @@ export function PitchPage() {
           <div className="cover__copy">
             <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">Início</span>
             <h1 className="display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">Um agente de trading DeFi <span className="text-[#F2B632]">para jogadores e apostadores esportivos.</span></h1>
-            <p className="cover__market mt-4"><strong data-i18n="translated">{t(`Mais de 60 milhões de brasileiros formam o público potencial estimado, enquanto o mercado de cripto movimenta cerca de R$ ${cryptoDailyBillions} bilhão em operações diárias e as bets têm uma referência histórica de R$ 600 milhões em depósitos por dia.`)}</strong></p>
+            <p className="cover__market mt-4"><strong data-i18n="translated"><span data-pitch-rescue-vision="">{t(HERO_RESCUE_VISION)}</span>{' '}{t(`Mais de 60 milhões de brasileiros formam o público potencial estimado, enquanto o mercado de cripto movimenta cerca de R$ ${cryptoDailyBillions} bilhão em operações diárias e as bets têm uma referência histórica de R$ 600 milhões em depósitos por dia.`)}</strong></p>
             <p className="cover__notice mt-4 text-[13px] leading-[1.55] text-[#c5d2f1]">{t(HERO_NOTICE)}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">Conhecer a BETTEX</a>

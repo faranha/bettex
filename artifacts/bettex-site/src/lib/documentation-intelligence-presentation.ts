@@ -60,6 +60,14 @@ const passages = {
     'Presenta a BETTEX la oportunidad, condiciones contractuales, exposición y escenarios de pérdida. No altera la aleatoriedad de los juegos ni presupone beneficios por participar en una promoción.',
   ],
   contributionLabel: ['Contribuição para BETTEX', 'Contribution to BETTEX', 'Contribución a BETTEX'],
+  overviewTradingLabel: ['Subagentes de trading', 'Trading subagents', 'Subagentes de trading'],
+  overviewTrading: [
+    'Cripto (BTC, ETH e SOL); esportes, iGaming e previsões na visão futura, fora do demo e da ALFA.',
+    'Crypto (BTC, ETH and SOL); sports, iGaming and predictions are part of the future vision, outside the demo and ALFA.',
+    'Cripto (BTC, ETH y SOL); deportes, iGaming y predicciones forman parte de la visión futura, fuera del demo y de ALFA.',
+  ],
+  overviewSupportLabel: ['Subagentes de apoio', 'Support subagents', 'Subagentes de apoyo'],
+  overviewSupport: ['Risco, tesouraria e governança', 'Risk, treasury and governance', 'Riesgo, tesorería y gobernanza'],
   cycleTitle: ['Contexto, feedback e aprendizado', 'Context, feedback and learning', 'Contexto, feedback y aprendizaje'],
   paramsTitle: ['Contexto e parâmetros iniciais', 'Initial context and parameters', 'Contexto y parámetros iniciales'],
   params: [
