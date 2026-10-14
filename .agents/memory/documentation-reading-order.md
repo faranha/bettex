@@ -27,13 +27,13 @@ O capítulo “Demo e prova de conceito” deve começar pela visão e pelos obj
 
 **How to apply:** Manter a visão antes dos avisos de escopo e das definições; integrar esquemas conceituais à explicação, com leitura no celular e distinção entre arquitetura pretendida e demonstração off-chain. O acesso ao demo é somente um link.
 
-BTC, ETH e SOL são subitens de “Subagente Cripto” no menu e no corpo da documentação, não capítulos principais no mesmo nível.
+BTC, ETH e SOL são conteúdos subordinados ao Subagente Cripto no corpo da documentação, não capítulos principais no mesmo nível. Não aparecem no menu, que termina no segundo nível.
 
 **Why:** O criador corrigiu explicitamente a hierarquia do detalhamento de Cripto.
 
-**How to apply:** Preservar o acesso aos detalhes e aos links diretos, com hierarquia subordinada no desktop e mobile. Não listar os especialistas fora do bloco recolhível de Cripto.
+**How to apply:** Preservar os especialistas no conteúdo de Cripto e os links diretos, com hierarquia subordinada no desktop e mobile. O menu aponta para Cripto, sem listar os especialistas no terceiro nível.
 
-“Features” é a abertura da seção de funcionalidades e um grupo recolhível no menu e no corpo da página, não um capítulo independente.
+“Features” é a abertura da seção de funcionalidades e um grupo recolhível no menu, não um capítulo independente. Sua apresentação no corpo da página permanece aberta e sem caixa.
 
 **Why:** O criador pediu simplificar o nome e depois reiterou que carteiras, conta/acesso e demais funcionalidades precisam estar agrupadas em Features, com seções e subseções, em vez de uma lista sequencial de 17–18 opções. Corrigiu novamente que agrupar apenas o menu deixa o conteúdo gigante, sequencial e mal organizado.
 
@@ -81,6 +81,12 @@ Nenhuma cabeça de seção no topo da documentação fica dentro de uma caixa ou
 
 **How to apply:** Manter as aberturas das seis seções e dos capítulos visíveis e sem moldura, fundo de cartão ou controle de recolher. Recolher somente as subseções e referências, não a apresentação. Preservar o carregamento de uma seção principal por vez e a navegação do rodapé. Aplicar somente à documentação.
 
+A numeração da documentação segue a hierarquia das seis seções principais, não uma contagem independente de todos os capítulos.
+
+**Why:** O criador corrigiu explicitamente: Subagentes é 3, Subagente de Risco é 3.1 e Investigar além dos limites é 3.1.1; apontou o erro como generalizado.
+
+**How to apply:** Usar o mesmo número no cabeçalho, índice e tópicos em todos os idiomas. As funcionalidades pertencem à seção 4 e os especialistas pertencem a Cripto. Os especialistas seguem os tópicos do próprio Cripto na ordem de leitura, sem reutilizar seus números. Preservar os IDs e links antigos, mesmo quando seus números mudarem.
+
 Expectativas e planos de lançamento, metas, projeções e plano comercial ficam exclusivamente no Pitch. Na documentação, deixar apenas um link para o Pitch.
 
 **Why:** O criador pediu retirar todo esse conteúdo da documentação, não somente atualizar os números.
@@ -105,11 +111,11 @@ Os itens do menu da documentação não precisam de pontuação final.
 
 **How to apply:** Omitir pontuação final dos rótulos de navegação em todos os idiomas, no desktop e mobile, preservando títulos do conteúdo, números e pontuação interna necessária.
 
-As referências técnicas precisam de controles individuais para recolher e ampliar seus subitens no menu.
+O menu mostra somente seção e subseção, nunca o terceiro nível ou níveis mais profundos.
 
-**Why:** O criador pediu “preciso poder recolher e ampliar os itens de referencia tecnica no menu”. O controle do menu foi separado da abertura do conteúdo para preservar o ponto de leitura.
+**Why:** O criador substituiu a expansão detalhada do menu: “No menu, somente seção e subseção. Não vamos descer até o terceiro nível”.
 
-**How to apply:** Manter os controles no desktop e mobile, com acesso por teclado. Recolher uma lista não fecha o conteúdo; o nome da referência continua sendo um link. Não reintroduzir controles globais de expandir tudo.
+**How to apply:** Aplicar o limite no índice desktop e no menu mobile, também ao rótulo compacto ativo. Subagentes e funcionalidades não têm setas para tópicos de terceiro nível; especialistas de Cripto ficam somente no corpo. Preservar todos os tópicos, numerações e links diretos no conteúdo. Nos capítulos principais, listar somente seus tópicos de segundo nível. Não reintroduzir controles globais de expandir tudo.
 
 Usar termos em negrito com links internos para suas descrições e ampliar as referências úteis entre áreas da documentação.
 

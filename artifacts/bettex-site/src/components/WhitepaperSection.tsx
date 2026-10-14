@@ -15,7 +15,7 @@ import { intelligenceCopy } from '@/lib/documentation-intelligence';
 import { documentationGroups, documentationParentId, documentationChapterNumber } from '@/lib/documentation-structure';
 import { t, useLocale } from '@/lib/i18n';
 import { resolveDocumentationId } from '@/lib/documentation-aliases';
-import { collectOutline, formatOutlineTitle, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
+import { collectOutline, documentationMenuItems, formatOutlineTitle, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
 import './WhitepaperSection.css';
 import { DocumentationRenderContext } from './DocumentationRenderContext';
 import { documentationInitialTarget, documentationOutline, documentationSectionTargets, documentationSectionTitles, documentationTarget } from '@/lib/documentation-navigation';
@@ -173,7 +173,7 @@ export function WhitepaperSection() {
     const root = document.querySelector('.whitepaper__content');
     let timer = 0;
     const rebuild = () => {
-      const collected = collectOutline(chapters, documentationChapterNumber);
+      const collected = collectOutline(chapters, documentationChapterNumber, documentationParentId);
       const localized = documentationOutline(locale);
       const next = collected.map((chapter, index) =>
         document.getElementById(chapter.id) ? chapter : localized[index] ?? chapter);
@@ -294,23 +294,25 @@ export function WhitepaperSection() {
   }
 
   const activeChapter = outline[active] ?? outline[0];
+  const menuActiveChapter = outline.find(chapter => chapter.id === documentationParentId(activeChapter.id)) ?? activeChapter;
   const activeItem = activeChapter?.items.find(i => i.id === activeId);
 
-  function renderMenuChapter(item: ChapterOutline, index: number, nested = false, mobile = false) {
+  function renderMenuChapter(item: ChapterOutline, index: number, mobile = false) {
     const current = readingGroup === null && active === index;
     const children = outline.flatMap((child, childIndex) =>
       documentationParentId(child.id) === item.id ? [{ child, childIndex }] : []);
     const childCurrent = readingGroup === null && children.some(({ childIndex }) => active === childIndex);
     const open = expandedChapters[item.id] ?? false;
-    const hasItems = item.items.length > 0 || children.length > 0;
+    const menuItems = documentationMenuItems(item.items);
+    const hasItems = menuItems.length > 0;
     const childrenId = `${mobile ? 1 : 0}-chapter-menu-${item.id}`;
     return <div key={item.id} className={`whitepaper__toc-group${current || childCurrent ? ' is-current' : ''}`}>
       <div className="whitepaper__toc-row whitepaper__chapter-menu-row">
       <DocumentationMenuItem><a href={`#${item.id}`}
-        className={`${nested ? 'whitepaper__toc-sublink whitepaper__crypto-link' : 'whitepaper__toc-link'}${current && !activeItem ? ' is-active' : ''}${current || childCurrent ? ' is-chapter-current' : ''}`}
+        className={`whitepaper__toc-link${current && !activeItem ? ' is-active' : ''}${current || childCurrent ? ' is-chapter-current' : ''}`}
         aria-current={current && !activeItem ? 'location' : undefined}
         onClick={event => jump(event, item.id)} data-testid={`link-${item.id}`}>
-        <span data-i18n="translated">{item.title}</span>
+        <span className="whitepaper__toc-subnum">{item.number}</span><span data-i18n="translated">{item.title}</span>
       </a></DocumentationMenuItem>
       {hasItems && <DocumentationMenuItem keepOpen><button type="button" className="whitepaper__reference-toggle whitepaper__chapter-toggle"
         data-i18n="translated" aria-expanded={open} aria-controls={childrenId}
@@ -324,14 +326,11 @@ export function WhitepaperSection() {
       </button></DocumentationMenuItem>}
       </div>
       {hasItems && (!mobile || open) && <div id={childrenId} className="whitepaper__chapter-menu-children" hidden={!open}>
-      {item.items.length > 0 && <ul className="whitepaper__toc-sub">
-        <DocumentationOutlineItems items={item.items} activeId={activeId}
+      <ul className="whitepaper__toc-sub">
+        <DocumentationOutlineItems items={menuItems} activeId={activeId}
           expanded={expandedReferences} onNavigate={jump}
           onToggle={(id, open) => setExpandedReferences(previous => ({ ...previous, [id]: open }))} />
-      </ul>}
-      {children.length > 0 && <ul className="whitepaper__crypto-subitems">
-        {children.map(({ child, childIndex }) => <li key={child.id}>{renderMenuChapter(child, childIndex, true, mobile)}</li>)}
-      </ul>}
+      </ul>
       </div>}
     </div>;
   }
@@ -342,7 +341,7 @@ export function WhitepaperSection() {
         .filter(({ item, index }) => chapters[index].group === group &&
           item.id !== 'documentacao-features' && !documentationParentId(item.id));
       if (entries.length === 1) return <div key={group} className="whitepaper__menu-section">
-        {renderMenuChapter(entries[0].item, entries[0].index, false, mobile)}
+        {renderMenuChapter(entries[0].item, entries[0].index, mobile)}
       </div>;
       if (!entries.length) return null;
       const open = expandedGroups[group] ?? false;
@@ -356,7 +355,7 @@ export function WhitepaperSection() {
           aria-current={current ? 'location' : undefined}
           data-testid={`documentation-group-link-${group}`}
           onClick={event => jump(event, documentationSectionTargets[group])}>
-          <span data-i18n="translated">{t(title)}</span>
+          <span className="whitepaper__toc-subnum">{group + 1}</span><span data-i18n="translated">{t(title)}</span>
         </a></DocumentationMenuItem>
         <DocumentationMenuItem keepOpen><button type="button" className="whitepaper__reference-toggle whitepaper__chapter-toggle"
           aria-expanded={open} aria-controls={id} data-testid={`documentation-group-${group}`}
@@ -370,7 +369,7 @@ export function WhitepaperSection() {
         </div>
         </div>
         <div id={id} hidden={!open} className="whitepaper__toc-category-children">
-          {(!mobile || open) && entries.map(({ item, index }) => renderMenuChapter(item, index, false, mobile))}
+          {(!mobile || open) && entries.map(({ item, index }) => renderMenuChapter(item, index, mobile))}
         </div>
       </div>;
     });
@@ -382,7 +381,8 @@ export function WhitepaperSection() {
       documentationParentId(child.id) === chapter.id ? [childIndex] : []);
     return <article key={chapter.id} id={chapter.id} className="whitepaper__chapter" aria-labelledby={`title-${chapter.id}`}>
         <header className="whitepaper__chapter-head">
-          <h2 id={`title-${chapter.id}`}>{chapter.title}<span className="whitepaper__title-period">.</span></h2>
+          <h2 id={`title-${chapter.id}`}><span className="whitepaper__heading-number">{outline[index]?.number ?? documentationChapterNumber(index)}</span>{' '}
+            <span data-documentation-title>{chapter.title}</span><span className="whitepaper__title-period">.</span></h2>
           <p>{chapter.subtitle}</p>
         </header>
         <section data-documentation-reading-content data-i18n="translated" aria-label={t(chapter.title)}>
@@ -433,7 +433,7 @@ export function WhitepaperSection() {
           <DropdownMenuTrigger asChild><button type="button" className="whitepaper__mobile-menu-trigger"
             aria-label={t('Capítulos da documentação')} aria-expanded={menuOpen}
             data-testid="documentation-section-select">
-            <span data-i18n="translated">{readingGroup === null ? activeChapter.title : t(documentationGroups[readingGroup])}</span>
+            <span data-i18n="translated">{readingGroup === null ? `${menuActiveChapter.number} ${menuActiveChapter.title}` : `${readingGroup + 1} ${t(documentationGroups[readingGroup])}`}</span>
             <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"
               style={{ transform: menuOpen ? 'rotate(180deg)' : undefined }}>
               <path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
