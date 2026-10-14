@@ -1,5 +1,7 @@
 # BETTEX — benchmark de mercado para a lógica dos agentes
 
+> **Leitura:** [guia demo/ALFA](documentation-map.md) · **Retorno:** [custos e execução](trading-execution-validation.md)
+
 **Fontes citadas:** 22  
 **Data-base:** 14 de outubro de 2026  
 **Estado:** referência de pesquisa e propostas de especificação; sem implementação ou aprovação de parâmetros

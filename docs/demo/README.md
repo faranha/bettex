@@ -6,7 +6,30 @@ Apresentar o percurso do produto sem exigir conta, saldo, carteira, banco,
 RPC, inferência externa ou autorização para operar. Também permite revisar
 navegação, linguagem, transparência e hierarquia antes de desenvolver a operação.
 
-## Organização
+## Percurso de leitura
+
+Comece pelo [guia do demo e da ALFA](../documentation-map.md), que apresenta o caso prático, os atores e a ordem de aprofundamento.
+
+O painel apresenta a posição fictícia e acesso às áreas. A Central permite acompanhar
+**BETTEX → Cripto → BTC/ETH/SOL**; BTC, ETH e SOL são especialistas internos de Cripto,
+não três setores públicos independentes. Controles, execução e registros ficam fora
+do grafo. Tesouraria e Histórico permitem investigar o mesmo cenário e seus vínculos.
+
+O grafo é a experiência principal da Central, não um desenho separado dos painéis.
+Inspeção, filtros e atalhos devem funcionar também no celular e no idioma selecionado.
+A Central é somente consulta: não oferece edição de mandatos ou operação manual.
+
+## Relação com a especificação da ALFA
+
+O [percurso spot](../trading-spot-journey.md) descreve o funcionamento previsto e um
+exemplo documental; não é uma descrição de uma nova operação ativada no aplicativo.
+As [oito famílias de relatório](../trading-cycle-reports.md) e sua
+[geração](../trading-report-generation.md) ligam análises, decisões, posições e ciclos.
+
+Representação visual, regra especificada, validação e habilitação são estados distintos.
+Os exemplos históricos de cotas de previsão não são compra de BTC/ETH/SOL spot.
+
+## Organização técnica de referência
 
 - `src/App.tsx`: escolhe a experiência pública e monta o provedor visual.
 - `src/components/interface-demo/InterfaceDemoPage.tsx`: composição das áreas.
@@ -22,16 +45,6 @@ navegação, linguagem, transparência e hierarquia antes de desenvolver a opera
 
 Os caminhos acima são relativos a `artifacts/bettex-site/`.
 Não mover componentes compartilhados sem verificar imports, traduções, aliases e testes.
-
-## Percurso
-
-O painel apresenta a posição fictícia e acesso às áreas. A Central organiza a
-BETTEX e suas funções em uma rede espacial; BTC, ETH e SOL são mercados internos,
-não três agentes públicos independentes. Tesouraria e Histórico permitem investigar
-o mesmo cenário e suas correlações. A documentação explica as regras e os objetivos.
-
-O grafo é a experiência principal da Central, não um desenho separado dos painéis.
-Inspeção, filtros e atalhos devem funcionar também no celular e no idioma selecionado.
 
 ## Limites de persistência
 

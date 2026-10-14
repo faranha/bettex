@@ -1,5 +1,7 @@
 # BETTEX — percurso completo de um investimento spot
 
+> **Leitura:** [guia demo/ALFA](documentation-map.md) · **Anterior:** [análise e decisão](trading-decision-logic.md) · **Próximo:** [pacote de investimento](trading-proposal-contract.md)
+
 ## 1. Estado, alcance e documentos de referência
 
 **Especificação documental, não implementação.** Este documento executa a revisão da lógica do demo/ALFA na documentação. Não altera telas, dados do aplicativo, agentes, carteiras, permissões ou operações.

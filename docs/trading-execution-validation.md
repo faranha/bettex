@@ -1,5 +1,7 @@
 # BETTEX — custos, liquidez, controles e validação de execução
 
+> **Leitura:** [guia demo/ALFA](documentation-map.md) · **Anterior:** [avaliação das estratégias](trading-strategy-validation.md) · **Consulta:** [benchmark de mercado](trading-market-benchmark.md)
+
 ## 1. Estado e relação com o percurso
 
 **Especificação documental, sem execução.** Complementa o [percurso spot](trading-spot-journey.md), o [pacote](trading-proposal-contract.md) e a [avaliação de estratégias](trading-strategy-validation.md). Não seleciona rede, DEX, custódia, carteira, fornecedor ou biblioteca e não altera o demo/ALFA.

@@ -1,5 +1,7 @@
 # BETTEX trading model: official API research
 
+> **Pesquisa histórica de APIs e direção anterior do produto.** Afirmações abaixo sobre emulação, navegação, mercados e provedores registram aquele contexto, não o estado atual. O demo é visual e não opera. Consultar o [guia do demo/ALFA](documentation-map.md); esta pesquisa não escolhe tecnologia nem amplia o mandato atual.
+
 Documentation consulted on October 5, 2026. This is the specification for the next engine evolution, not a declaration of already implemented integrations. The current engine remains emulated and does not send orders to external platforms.
 
 ## Product direction

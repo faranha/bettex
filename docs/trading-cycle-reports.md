@@ -1,5 +1,7 @@
 # BETTEX — relatórios, gráficos e registro por ciclo
 
+> **Leitura:** [guia demo/ALFA](documentation-map.md) · **Anterior:** [funções determinísticas](trading-deterministic-functions.md) · **Próximo:** [geração dos relatórios](trading-report-generation.md)
+
 ## 1. Escopo da revisão
 
 Revisão da lógica dos relatórios existentes à luz do [pacote unificado de investimento](trading-proposal-contract.md). Não escolhe tecnologia, não ativa agentes, não altera o demo nem transforma as hipóteses numéricas em políticas aprovadas.
@@ -49,7 +51,7 @@ Essas são lacunas para a implementação futura; não foram corrigidas no aplic
 - `CentralBettex.tsx` e `CentralInspector.tsx`: leituras da Central e seus registros.
 - `MockTreasuryPanel.tsx` e `MockHistoryPanel.tsx`: composição das áreas atuais.
 - [Manual histórico dos agentes](agents-operations.md): relatórios de observação e rodadas periódicas do runtime anterior; não prova atividade financeira do demo atual.
-- [Auditoria do demo](demo/data-and-audit.md): provenance e limites dos dados modelados.
+- [Auditoria do demo](demo/data-and-audit.md): proveniência e limites dos dados modelados.
 
 ## 3. Não confundir os relógios
 
