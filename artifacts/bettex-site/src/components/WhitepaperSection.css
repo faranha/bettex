@@ -388,8 +388,6 @@
 .whitepaper pre code { background: none; padding: 0; }
 .whitepaper__prose a, .whitepaper__aside-callout a, .whitepaper__lead a, .whitepaper__hero-lede a, .whitepaper__hero-note a { color: #0d2b7f; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .whitepaper__prose a:hover { text-decoration-thickness: 2px; }
-.whitepaper__related { margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(19, 32, 79, .15); }
-.whitepaper__related ul { display: flex; flex-wrap: wrap; gap: 8px 24px; padding-left: 20px; }
 .whitepaper__prose { max-width: 68ch; }
 .whitepaper__prose p, .whitepaper__prose li { hyphens: manual; }
 .whitepaper__prose ul, .whitepaper__prose ol { margin: 0; padding-left: 1.4em; color: #13204F; font-size: 15px; line-height: 1.8; }
@@ -652,7 +650,39 @@
 .whitepaper__mobile-dropdown .whitepaper__toc-sublink[data-highlighted] { background: #193265; color: #fff; }
 .whitepaper__mobile-dropdown .whitepaper__toc-link { white-space: normal; }
 
+/* Main chapters are named links; category cards contain subordinate chapters. */
+.whitepaper__menu-section + .whitepaper__menu-section { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--wp-line, #13204f24); }
+.whitepaper__menu-section .whitepaper__toc-group { border: 0; }
+.whitepaper__menu-section .whitepaper__toc-category-trigger {
+  min-height: 46px; padding: 12px; border: 1px solid #13204f30; border-radius: 8px;
+  background: #13204f08; color: #21429c; font-size: 12px; font-weight: 800;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.whitepaper__menu-section .whitepaper__toc-category-children { margin: 8px 0 2px 12px; padding-left: 10px; border-left-width: 2px; }
+.whitepaper__mobile-dropdown .whitepaper__toc-group.is-current { background: transparent; }
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger { background: #102044; color: #f2b632; border-color: #5f86ff50; }
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger[aria-expanded="true"] { background: #142956; }
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger[data-highlighted] { outline: 2px solid #f2b632; outline-offset: -2px; }
+
 /* Moved technical reference: collapsed, visually secondary to the main reading. */
+.whitepaper__content > .whitepaper__chapter:has(> .whitepaper__chapter-accordion:not([open])) { padding: 24px 0; }
+.whitepaper__content > .whitepaper__chapter > .whitepaper__chapter-accordion:not([open]) > summary h2 { margin: 0 0 8px; }
+.whitepaper__content > .whitepaper__chapter > .whitepaper__chapter-accordion:not([open]) > summary::after { top: -4px; }
+.whitepaper__reading-group { margin: 24px 0; border: 1px solid #13204f30; border-radius: 12px; background: #ffffff30; }
+.whitepaper__reading-group-head { list-style: none; cursor: pointer; position: relative; padding: 20px 54px 20px 20px; background: #13204f06; border-radius: 12px; }
+.whitepaper__reading-group-head::-webkit-details-marker { display: none; }
+.whitepaper__reading-group-head h2 { margin: 0; color: #13204f; font-size: clamp(1.3rem, 2.8vw, 1.8rem); font-weight: 800; letter-spacing: -.035em; }
+.whitepaper__reading-group-head::after { content: "+"; position: absolute; right: 20px; top: 18px; color: #21429c; font-size: 26px; }
+.whitepaper__reading-group[open] > summary { border-bottom: 1px solid #13204f20; border-radius: 12px 12px 0 0; }
+.whitepaper__reading-group[open] > summary::after { content: "−"; }
+.whitepaper__reading-group-children { padding: 0 20px 20px; }
+.whitepaper__reading-group-children .whitepaper__chapter { padding: 20px 0; }
+.whitepaper__reading-group-children .whitepaper__chapter:last-child { border-bottom: 0; }
+.whitepaper__reading-group-children .whitepaper__chapter-head h2 { margin: 0 0 8px; font-size: clamp(1.1rem, 2.4vw, 1.5rem); letter-spacing: -.035em; }
+.whitepaper__reading-group-children .whitepaper__chapter-accordion:not([open]) > summary > p { display: none; }
+.whitepaper__reading-group-children .whitepaper__chapter-accordion > summary::after { top: -4px; }
+.whitepaper__reading-specialists { margin-top: 24px; border-left: 2px solid #21429c40; padding-left: 16px; }
+.whitepaper__reading-group-children .whitepaper__features-opening { padding: 20px 0; }
 .whitepaper__chapter-accordion > summary { cursor: pointer; list-style: none; position: relative; padding-right: 32px; }
 .whitepaper__chapter-accordion > summary::-webkit-details-marker { display: none; }
 .whitepaper__chapter-accordion > summary::after { content: "+"; position: absolute; right: 0; top: 24px; font-size: 26px; color: #21429c; }

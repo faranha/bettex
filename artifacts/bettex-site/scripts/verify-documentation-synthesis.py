@@ -126,7 +126,7 @@ for route, expected in baseline["routes"].items():
     assert text, f"Empty rendered content: {route}"
     guarded_structure = page.structure
     if "textSha256" not in expected:
-        # Verify the authorized app case and CTA separately; preserve the original
+        # Verify the authorized link-only replacement separately; preserve the original
         # structure fingerprint for every pre-existing block, image and link.
         walkthrough_pattern = re.compile(
             r'<section(?=[^>]*data-testid="documentation-app-walkthrough")[^>]*>(.*?)</section>',
@@ -139,16 +139,18 @@ for route, expected in baseline["routes"].items():
         language = "en" if route.startswith("/en/") else "es" if route.startswith("/es/") else "pt"
         demo_path = {"pt": "/app", "en": "/en/app", "es": "/es/app"}[language]
         assert walkthrough.structure == [
-            ["h3", "id", "documentacao-percurso-app"], ["a", "href", demo_path],
-        ], f"App walkthrough heading or localized demo link changed: {route}"
+            ["p", "id", "documentacao-percurso-app"],
+            ["a", "id", "documentacao-percurso-demo"], ["a", "href", demo_path],
+        ], f"Expected only the localized demo link and preserved anchors: {route}"
         walkthrough_text = " ".join(" ".join(walkthrough.parts).split())
         markers = {
-            "pt": ("hipotéticos", "25 USDC", "não movimentam dinheiro real", "Explorar o demo BETTEX"),
-            "en": ("hypothetical", "25 USDC", "do not move real money", "Explore the BETTEX demo"),
-            "es": ("hipotéticos", "25 USDC", "no mueven dinero real", "Explorar el demo BETTEX"),
+            "pt": ("Explorar o demo BETTEX",),
+            "en": ("Explore the BETTEX demo",),
+            "es": ("Explorar el demo BETTEX",),
         }
         for marker in markers[language]:
             assert marker in walkthrough_text, f"App walkthrough omits {marker}: {route}"
+        assert walkthrough_text == markers[language][0], f"Demo detail must not replace the link-only block: {route}"
         original_page = Content()
         original_page.feed(walkthrough_pattern.sub("", protected_html))
         guarded_structure = original_page.structure
@@ -225,9 +227,10 @@ for route, expected in baseline["routes"].items():
                 vision = article.find('data-testid="documentation-vision"')
                 scope = article.find('data-testid="documentation-poc-scope"')
                 concepts = article.find('id="documentacao-conceitos-base"')
-                journey = article.find('data-testid="documentation-demo-journey"')
-                assert 0 <= vision < scope < concepts < introduction.start() < introduction.end() < journey, f"Expected vision, scope, concepts, then demo journey: {route}"
-                assert article.count('class="dv__fig"') == 2, f"Missing explanatory vision/demo diagrams: {route}"
+                demo_link = article.find('id="documentacao-percurso-demo"')
+                assert 0 <= vision < scope < concepts < introduction.start() < introduction.end() < demo_link, f"Expected vision, scope, concepts, introduction and demo link: {route}"
+                assert 'data-testid="documentation-demo-journey"' not in article, f"Removed demo walkthrough reappeared: {route}"
+                assert article.count('class="dv__fig"') == 1, f"Preserve the vision diagram, not the removed demo walkthrough: {route}"
                 assert 'id="documentacao-visao"' in article and 'id="documentacao-percurso-demo"' in article, f"Missing diagram section anchors: {route}"
             elif first_heading:
                 assert introduction.end() <= first_heading.start(), f"Concepts follow technical rules: {route}/{chapter_id}"

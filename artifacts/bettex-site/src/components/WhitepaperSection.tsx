@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
+import { useCallback, useEffect, useRef, useState, type MouseEvent, type ReactElement } from 'react';
 import { createPortal, flushSync } from 'react-dom';
 import { ChapterContent, chapters } from './WhitepaperChapters';
 import { ChapterVisibility } from './ChapterVisibility';
@@ -19,12 +19,12 @@ import { collectOutline, formatOutlineTitle, openAncestors, outlineSignature, sc
 import './WhitepaperSection.css';
 
 const featuresIndex = chapters.findIndex(chapter => chapter.id === 'documentacao-features');
-const readingChapters = chapters.filter(chapter => chapter.id !== 'documentacao-features');
 
 export function WhitepaperSection() {
   const documentationTitle = t('Documentação técnica.').split(' ');
   const locale = useLocale();
   const [selected, setSelected] = useState(0);
+  const [readingGroup, setReadingGroup] = useState<number | null>(null);
   const [enhanced, setEnhanced] = useState(false);
   const [openReadingChapters, setOpenReadingChapters] = useState<Record<string, boolean>>({ [chapters[0].id]: true });
   const [openReadingSections, setOpenReadingSections] = useState<Set<string>>(() => new Set(['documentacao-visao']));
@@ -43,7 +43,6 @@ export function WhitepaperSection() {
   const [expandedReferences, setExpandedReferences] = useState<Record<string, boolean>>({});
   const [slot, setSlot] = useState<HTMLElement | null>(null);
   useEffect(() => { setSlot(document.getElementById('documentation-mobile-slot')); }, []);
-  const total = String(readingChapters.length).padStart(2, '0');
 
   const collapseIndex = useCallback(() => {
     setExpandedGroups({});
@@ -67,7 +66,12 @@ export function WhitepaperSection() {
       window.scrollTo({ top: window.scrollY, behavior: 'instant' });
       flushSync(() => {
         setEnhanced(true); setSelected(index); if (targetPage) setPageId(targetPage);
-        setOpenReadingChapters(previous => ({ ...previous, [owner!.id]: true }));
+        setOpenReadingChapters(previous => {
+          const next = { ...previous, [owner!.id]: true };
+          const parent = documentationParentId(owner!.id);
+          if (parent) next[parent] = true;
+          return next;
+        });
         setOpenReadingSections(expanded);
       });
       // Reveal DOM-owned subsection blocks synchronously, before measuring the
@@ -111,6 +115,7 @@ export function WhitepaperSection() {
       }
     }
     for (const chapter of outline) {
+      if (chapter.id === 'documentacao-features') continue;
       const content = document.getElementById(chapter.id)?.querySelector<HTMLElement>('[data-documentation-reading-content]');
       if (enhanced && content) applyDocumentationAccordions(content, chapter, openReadingSections, t('Expandir'), t('Recolher'));
     }
@@ -218,9 +223,18 @@ export function WhitepaperSection() {
       let currentIndex = 0;
       outline.forEach((chapter, index) => {
         const article = document.getElementById(chapter.id);
-        if (article && article.getBoundingClientRect().top <= limit) currentIndex = index;
+        if (article?.getClientRects().length && article.getBoundingClientRect().top <= limit) currentIndex = index;
       });
       const c = outline[currentIndex];
+      let currentGroup: number | null = null;
+      document.querySelectorAll<HTMLElement>('[data-documentation-reading-group]').forEach(group => {
+        const bounds = group.getBoundingClientRect();
+        if (bounds.top > limit || bounds.bottom <= limit) return;
+        const readingChild = [...group.querySelectorAll<HTMLElement>('article.whitepaper__chapter')]
+          .some(child => child.getClientRects().length && child.getBoundingClientRect().top <= limit);
+        if (!readingChild) currentGroup = Number(group.dataset.documentationReadingGroup);
+      });
+      setReadingGroup(currentGroup);
       const el = c ? document.getElementById(c.id) : null;
       if (c && el && el.getClientRects().length && el.getBoundingClientRect().top <= limit) {
         curId = c.id;
@@ -255,19 +269,19 @@ export function WhitepaperSection() {
 
   function renderMenuChapter(item: ChapterOutline, index: number, nested = false, mobile = false) {
     const current = active === index;
+    const introduction = item.id === chapters[0].id;
     const children = outline.flatMap((child, childIndex) =>
       documentationParentId(child.id) === item.id ? [{ child, childIndex }] : []);
     const childCurrent = children.some(({ childIndex }) => active === childIndex);
     const open = expandedChapters[item.id] ?? false;
-    const hasItems = item.items.length > 0 || children.length > 0;
+    const hasItems = !introduction && (item.items.length > 0 || children.length > 0);
     const childrenId = `${mobile ? 1 : 0}-chapter-menu-${item.id}`;
-    return <div key={item.id} className={`whitepaper__toc-group${current || childCurrent ? ' is-current' : ''}`}>
+    return <div key={item.id} className={`whitepaper__toc-group${!introduction && (current || childCurrent) ? ' is-current' : ''}`}>
       <div className="whitepaper__toc-row whitepaper__chapter-menu-row">
       <DocumentationMenuItem><a href={`#${item.id}`}
-        className={`${nested ? 'whitepaper__toc-sublink whitepaper__crypto-link' : 'whitepaper__toc-link'}${current && !activeItem ? ' is-active' : ''}${current || childCurrent ? ' is-chapter-current' : ''}`}
+        className={`${nested ? 'whitepaper__toc-sublink whitepaper__crypto-link' : 'whitepaper__toc-link'}${!introduction && current && !activeItem ? ' is-active' : ''}${!introduction && (current || childCurrent) ? ' is-chapter-current' : ''}`}
         aria-current={current && !activeItem ? 'location' : undefined}
         onClick={event => jump(event, item.id)} data-testid={`link-${item.id}`}>
-        {!nested && <span className="whitepaper__toc-number">{item.number.padStart(2, '0')}</span>}
         <span data-i18n="translated">{item.title}</span>
       </a></DocumentationMenuItem>
       {hasItems && <DocumentationMenuItem keepOpen><button type="button" className="whitepaper__reference-toggle whitepaper__chapter-toggle"
@@ -299,11 +313,13 @@ export function WhitepaperSection() {
       const entries = outline.map((item, index) => ({ item, index }))
         .filter(({ item, index }) => chapters[index].group === group &&
           item.id !== 'documentacao-features' && !documentationParentId(item.id));
-      if (entries.length === 1) return renderMenuChapter(entries[0].item, entries[0].index, false, mobile);
+      if (entries.length === 1) return <div key={group} className="whitepaper__menu-section">
+        {renderMenuChapter(entries[0].item, entries[0].index, false, mobile)}
+      </div>;
       if (!entries.length) return null;
       const open = expandedGroups[group] ?? false;
       const id = `documentation-menu-${mobile ? 1 : 0}-group-${group}`;
-      return <div key={group} className="whitepaper__toc-category">
+      return <div key={group} className="whitepaper__menu-section whitepaper__toc-category">
         <DocumentationMenuItem keepOpen><button type="button" className="whitepaper__toc-category-trigger"
           aria-expanded={open} aria-controls={id} data-testid={`documentation-group-${group}`}
           onClick={() => setExpandedGroups(previous => ({ ...previous, [group]: !open }))}>
@@ -316,6 +332,55 @@ export function WhitepaperSection() {
           {(!mobile || open) && entries.map(({ item, index }) => renderMenuChapter(item, index, false, mobile))}
         </div>
       </div>;
+    });
+  }
+
+  function renderReadingChapter(index: number): ReactElement {
+    const chapter = chapters[index];
+    const children = chapters.flatMap((child, childIndex) =>
+      documentationParentId(child.id) === chapter.id ? [childIndex] : []);
+    return <article key={chapter.id} id={chapter.id} className="whitepaper__chapter" aria-labelledby={`title-${chapter.id}`}>
+      <details className="whitepaper__chapter-accordion" open={openReadingChapters[chapter.id] ?? false}
+        onToggle={event => {
+          const open = event.currentTarget.open;
+          setOpenReadingChapters(previous => previous[chapter.id] === open ? previous : { ...previous, [chapter.id]: open });
+        }}>
+        <summary className="whitepaper__chapter-head">
+          <h2 id={`title-${chapter.id}`}>{chapter.title}<span className="whitepaper__title-period">.</span></h2>
+          <p>{chapter.subtitle}</p>
+        </summary>
+        <section data-documentation-reading-content data-i18n="translated" aria-label={t(chapter.title)}>
+          <ChapterVisibility.Provider value={!enhanced || !!openReadingChapters[chapter.id]}>
+            <ChapterContent index={index} />
+          </ChapterVisibility.Provider>
+        </section>
+        <DocumentationRelatedTopics chapterId={chapter.id} />
+        {children.length > 0 && <div className="whitepaper__reading-specialists">
+          {children.map(renderReadingChapter)}
+        </div>}
+      </details>
+    </article>;
+  }
+
+  function renderReadingGroups() {
+    return documentationGroups.map((title, group) => {
+      const entries = chapters.flatMap((chapter, index) =>
+        chapter.group === group && chapter.id !== 'documentacao-features' && !documentationParentId(chapter.id) ? [index] : []);
+      if (entries.length === 1) return renderReadingChapter(entries[0]);
+      if (!entries.length) return null;
+      return <details key={group} id={`documentation-reading-group-${group}`}
+        className="whitepaper__reading-group" data-documentation-reading-group={group}>
+        <summary className="whitepaper__reading-group-head">
+          <h2 id={group === 3 ? 'title-documentacao-features' : undefined} data-i18n="translated">{t(title)}</h2>
+        </summary>
+        <div className="whitepaper__reading-group-children">
+          {group === 3 && <section id="documentacao-features" data-documentation-opening className="whitepaper__features-opening">
+            <DocumentationFeaturesIntroduction />
+            <ChapterVisibility.Provider value={true}><ChapterContent index={featuresIndex} /></ChapterVisibility.Provider>
+          </section>}
+          {entries.map(renderReadingChapter)}
+        </div>
+      </details>;
     });
   }
 
@@ -334,7 +399,7 @@ export function WhitepaperSection() {
           <DropdownMenuTrigger asChild><button type="button" className="whitepaper__mobile-menu-trigger"
             aria-label={t('Capítulos da documentação')} aria-expanded={menuOpen}
             data-testid="documentation-section-select">
-            <span data-i18n="translated">{documentationParentId(activeChapter.id) ? activeChapter.title : `${activeChapter.number.padStart(2, '0')} ${activeChapter.title}`}</span>
+            <span data-i18n="translated">{readingGroup === null ? activeChapter.title : t(documentationGroups[readingGroup])}</span>
             <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"
               style={{ transform: menuOpen ? 'rotate(180deg)' : undefined }}>
               <path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -378,48 +443,14 @@ export function WhitepaperSection() {
       <div className="whitepaper__body page-wrap" id="documentacao-indice">
         <aside className="whitepaper__aside" aria-label="Índice da documentação">
           <div className="whitepaper__aside-inner">
-            <div className="whitepaper__aside-label"><span>CAPÍTULOS</span><span>{total} SEÇÕES</span></div>
+            <div className="whitepaper__aside-label"><span>CAPÍTULOS</span></div>
             <nav id="whitepaper-chapter-menu" className="whitepaper__chapter-menu" aria-label="Capítulos da documentação">
               {renderMenuGroups()}
             </nav>
           </div>
         </aside>
         <div className="whitepaper__content is-accordion">
-          {chapters.map((chapter, index) => {
-            if (chapter.id === 'documentacao-features') return null;
-            const number = documentationChapterNumber(index).padStart(2, '0');
-            return (
-              <article key={chapter.id} id={chapter.id} className="whitepaper__chapter" aria-labelledby={`title-${chapter.id}`}>
-                <details className="whitepaper__chapter-accordion" open={openReadingChapters[chapter.id] ?? false}
-                  onToggle={event => {
-                    const open = event.currentTarget.open;
-                    setOpenReadingChapters(previous => previous[chapter.id] === open ? previous : { ...previous, [chapter.id]: open });
-                  }}>
-                <summary className="whitepaper__chapter-head">
-                  <span className="whitepaper__chapter-number">{number} <i aria-hidden="true" /> {total}</span>
-                  <h2 id={`title-${chapter.id}`}>{chapter.title}<span className="whitepaper__title-period">.</span></h2>
-                  <p>{chapter.subtitle}</p>
-                </summary>
-                {chapter.id === 'documentacao-carteira-bettex' && <section id="documentacao-features" data-documentation-opening className="whitepaper__features-opening">
-                  <header className="whitepaper__chapter-head">
-                    <h2 id="title-documentacao-features">{t('Features')}</h2>
-                  </header>
-                  <DocumentationFeaturesIntroduction />
-                  <ChapterVisibility.Provider value={!enhanced || !!openReadingChapters[chapter.id]}>
-                    <ChapterContent index={featuresIndex} />
-                  </ChapterVisibility.Provider>
-                </section>}
-                <section data-documentation-reading-content data-i18n="translated"
-                  aria-label={t(chapter.title)}>
-                  <ChapterVisibility.Provider value={!enhanced || !!openReadingChapters[chapter.id]}>
-                    <ChapterContent index={index} />
-                  </ChapterVisibility.Provider>
-                </section>
-                <DocumentationRelatedTopics chapterId={chapter.id} />
-                </details>
-              </article>
-            );
-          })}
+          {renderReadingGroups()}
         </div>
       </div>
     </section>

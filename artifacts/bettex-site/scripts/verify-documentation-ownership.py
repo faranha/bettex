@@ -117,6 +117,24 @@ def verify():
                     return updated
             return paragraph
         expected = Counter(approved_copy(p) for p in original['paragraphs'] if p not in metadata)
+        # Explicitly authorized removal: the illustrative demo walkthrough only.
+        # Retain the immutable baseline and protect all other product paragraphs.
+        language = 'en' if route.startswith('/en/') else 'es' if route.startswith('/es/') else 'pt'
+        removed_demo_prefixes = {
+            'pt': ('Caso ilustrativo:', '1. Entrar e conhecer as carteiras',
+                   '2. Participar de uma rodada', '3. Acompanhar a Central da IA',
+                   '4. Entender o resultado', '5. Consultar e decidir', 'O demo é exclusivamente visual:'),
+            'en': ('Illustrative case:', '1. Enter and explore the wallets',
+                   '2. Participate in a round', '3. Follow the AI Center',
+                   '4. Understand the result', '5. Review and decide', 'The demo is visual only:'),
+            'es': ('Caso ilustrativo:', '1. Entrar y conocer las carteras',
+                   '2. Participar en una ronda', '3. Seguir la Central de IA',
+                   '4. Entender el resultado', '5. Consultar y decidir', 'El demo es exclusivamente visual:'),
+        }
+        for prefix in removed_demo_prefixes[language]:
+            removed = [paragraph for paragraph in expected if paragraph.startswith(prefix)]
+            assert len(removed) == 1, f'{route}: demo-removal exception must match one original paragraph: {prefix}'
+            expected[removed[0]] -= 1
         missing = expected - Counter(current.paragraphs)
         assert not missing, f'{route}: original baseline paragraphs lost: {list(missing.items())[:8]}'
         assert 'documentation-poc-scope' in html, f'{route}: missing explicit POC scope'

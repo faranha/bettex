@@ -3,23 +3,41 @@ name: Ordem de leitura da documentação
 description: Ordem dos capítulos e leitura compacta da documentação técnica.
 ---
 
-O capítulo “Demo e prova de conceito” deve começar pela visão e pelos objetivos, depois explicar os conceitos e mostrar o percurso do demo. Precisa de esquemas visuais explicativos, não apenas texto.
+No menu, “Demo e prova de conceito” é um link simples, sem bloco de destaque nem seta para abrir subitens.
+
+**Why:** O criador apontou que o destaque e a seta desse item não fazem sentido no menu do Demo.
+
+**How to apply:** Preservar o acesso direto ao capítulo e os controles recolhíveis no próprio conteúdo. Não restaurar um submenu no item de entrada nem remover a visão ou seus desenhos por causa dessa correção visual.
+
+As seções principais não exibem números no menu, no seletor mobile nem nos cabeçalhos dos capítulos. Subagentes e Features precisam se distinguir visualmente como grupos.
+
+**Why:** O criador apontou que a divisão parecia estranha porque alguns itens tinham números e outros não, e pediu abolir os números das seções principais e criar divisões claras no menu.
+
+**How to apply:** Usar títulos sem ordinais, separadores entre os blocos e tratamentos próprios para categorias e itens subordinados. Manter a numeração das subseções e os IDs internos para preservar referências e links diretos.
+
+“Leia também” / “Related topics” deve parecer um quadro estruturado, com contorno, título e links em linhas alinhadas, em todas as áreas.
+
+**Why:** O criador apontou que os links estavam completamente desalinhados e “voando”, sem aparência de tabela.
+
+**How to apply:** Manter um link por linha, separadores e espaçamento uniforme no mobile e desktop; não voltar à lista horizontal que quebra em posições diferentes.
+
+O capítulo “Demo e prova de conceito” deve começar pela visão e pelos objetivos, depois explicar os conceitos. Preservar os esquemas da visão, não o detalhamento das telas do demo.
 
 **Why:** O criador apontou que o capítulo começava seco, sem visão nem introdução, e exigiu esquemas visuais.
 
-**How to apply:** Manter a visão antes dos avisos de escopo e das definições; integrar esquemas à explicação, com leitura no celular e distinção entre arquitetura pretendida e demonstração off-chain.
+**How to apply:** Manter a visão antes dos avisos de escopo e das definições; integrar esquemas conceituais à explicação, com leitura no celular e distinção entre arquitetura pretendida e demonstração off-chain. O acesso ao demo é somente um link.
 
-BTC, ETH e SOL são subitens de “Subagente Cripto” no menu, não capítulos principais no mesmo nível.
+BTC, ETH e SOL são subitens de “Subagente Cripto” no menu e no corpo da documentação, não capítulos principais no mesmo nível.
 
 **Why:** O criador corrigiu explicitamente a hierarquia do detalhamento de Cripto.
 
-**How to apply:** Preservar o acesso aos detalhes e aos links diretos, com indentação e numeração subordinada no desktop e mobile.
+**How to apply:** Preservar o acesso aos detalhes e aos links diretos, com hierarquia subordinada no desktop e mobile. Não listar os especialistas fora do bloco recolhível de Cripto.
 
-“Features” é a abertura da seção de funcionalidades e um grupo recolhível de navegação, não um capítulo independente.
+“Features” é a abertura da seção de funcionalidades e um grupo recolhível no menu e no corpo da página, não um capítulo independente.
 
-**Why:** O criador pediu simplificar o nome e depois reiterou que carteiras, conta/acesso e demais funcionalidades precisam estar agrupadas em Features, com seções e subseções, em vez de uma lista sequencial de 17–18 opções.
+**Why:** O criador pediu simplificar o nome e depois reiterou que carteiras, conta/acesso e demais funcionalidades precisam estar agrupadas em Features, com seções e subseções, em vez de uma lista sequencial de 17–18 opções. Corrigiu novamente que agrupar apenas o menu deixa o conteúdo gigante, sequencial e mal organizado.
 
-**How to apply:** Preservar a introdução antes de Carteira BETTEX, sem criar um artigo extra. No menu, colocar carteiras, conta/acesso, histórico, staking, token, recompra e jogos dentro do grupo Features. Agrupar os subagentes em sua própria categoria; manter especialistas de Cripto e subseções subordinados, com grupos inicialmente recolhidos.
+**How to apply:** Preservar a introdução antes de Carteira BETTEX, sem criar um artigo extra. No menu e no conteúdo, colocar carteiras, conta/acesso, histórico, staking, token, recompra e jogos dentro de Features. Agrupar os subagentes em sua própria seção recolhível; manter especialistas de Cripto e subseções subordinados. Os grupos começam recolhidos e seus itens fechados precisam ser compactos, não cartões altos repetidos. Manter uma página contínua e abrir todos os ancestrais dos links diretos.
 
 Não repetir títulos consecutivos do mesmo bloco, inclusive quando um componente já possui título próprio e é colocado dentro de outro com cabeçalho.
 
@@ -69,11 +87,11 @@ Todas as áreas precisam introduzir os conceitos e recursos antes de pressupor q
 
 **How to apply:** Começar cada área com uma explicação didática do conceito e de sua aplicação na BETTEX, antes de elegibilidade, cálculos ou referências técnicas. Na participação, explicar o que é staking e de onde vem um eventual pagamento antes das regras. Introduzir DeFi, DEX, DeFAI e os demais termos na primeira utilização; não deixar suas definições apenas em um glossário ao fim. Explicar os recursos opcionais antes de suas regras, separados da participação, mantendo riscos e estado visual do demo claros.
 
-A abertura da documentação precisa mostrar o funcionamento prático do aplicativo, com um caso ilustrativo e acesso ao demo.
+A documentação deve oferecer somente o link para o demo, sem detalhamento das telas ou caso ilustrativo de uso.
 
-**Why:** O criador pediu “um caso ilustrativo de como funciona o app, funcoes, visao do funcionamento dele, etc, e até link pro demo” porque uma descrição abstrata deixa tudo confuso.
+**Why:** O criador substituiu o pedido anterior de percurso ilustrativo: “remova o detalhamento do demo apenas coloque o link”.
 
-**How to apply:** Apresentar o percurso entre carteiras, participação, agentes e resultados antes dos detalhes técnicos. Distinguir números hipotéticos dos saldos do demo e demonstração visual de operação real; manter o acesso ao demo no idioma selecionado.
+**How to apply:** Não reintroduzir o passo a passo das quatro telas, os cartões do percurso visual nem a simulação narrada de uma rodada. Manter um único link para abrir o demo no idioma selecionado, preservando a visão, os conceitos do projeto e os links diretos antigos.
 
 Os itens do menu da documentação não precisam de pontuação final.
 

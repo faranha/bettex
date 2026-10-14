@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import { t, useLocale } from '@/lib/i18n';
 import { documentationChapters } from '@/lib/documentation-structure';
+import './DocumentationRelatedTopics.css';
 
 const related: Record<string, string[]> = {
   'documentacao-como-funciona': ['documentacao-agentes', 'documentacao-features', 'documentacao-riscos'],
@@ -36,8 +37,13 @@ export function DocumentationRelatedTopics({ chapterId }: { chapterId: string })
     return chapter;
   });
   if (!targets.length) return null;
-  return <aside className="whitepaper__prose whitepaper__related" data-testid={`documentation-related-${chapterId}`}>
-    <p><strong>{x('Leia também', 'Related topics', 'Temas relacionados')}</strong></p>
-    <ul>{targets.map(chapter => <li key={chapter.id}><a href={`#${chapter.id === 'documentacao-carteira-bettex' ? `title-${chapter.id}` : chapter.id}`} data-documentation-intralink="">{t(chapter.title)}</a></li>)}</ul>
+  return <aside id={`documentation-related-${chapterId}`} className="whitepaper__related" aria-label={x('Leia também', 'Related topics', 'Temas relacionados')} data-testid={`documentation-related-${chapterId}`}>
+    <p className="whitepaper__related-title"><strong>{x('Leia também', 'Related topics', 'Temas relacionados')}</strong></p>
+    <ul className="whitepaper__related-list">{targets.map(chapter => <li key={chapter.id}>
+      <a className="whitepaper__related-link" href={`#${chapter.id === 'documentacao-carteira-bettex' ? `title-${chapter.id}` : chapter.id}`} data-documentation-intralink="">
+        <span>{t(chapter.title)}</span>
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10h12m-5-5 5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </a>
+    </li>)}</ul>
   </aside>;
 }
