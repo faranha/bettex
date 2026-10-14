@@ -26,6 +26,14 @@ No demo, essas leituras podem ser exemplos locais identificados como fictícios.
 
 Na ALFA, as mesmas leituras precisam derivar de evidências e estados efetivos. Código histórico ou uma tela preenchida não comprova que esse percurso operacional esteja pronto.
 
+### Papel do usuário e organização da Central
+
+A Central é **somente consulta para o usuário**: acompanhar agentes, propostas, decisões, posições, parâmetros, relatórios e histórico, com filtros e navegação. Não oferecer edição de mandato/alocação, salvamento de configuração, aprovação de propostas, operação manual ou simulador configurável. Responsabilidades operacionais descritas neste documento não viram botões de operação para o participante.
+
+O grafo conserva a hierarquia **BETTEX → Cripto → BTC/ETH/SOL**. Estratégias são linhas de análise dos especialistas, não novos setores ou agentes independentes por padrão. Risco, Governança, Tesouraria, execução e registros são áreas de apoio fora do grafo. Seus pareceres e eventos continuam vinculados ao percurso consultável.
+
+O nó permite chegar à análise e aos registros correspondentes; não informa lucro só por estar ativo ou conectado. Preservar seleção e contexto ao consultar detalhes e retornar. Nenhuma dessas regras restringe, por extensão, ações próprias de carteira ou perfil, que têm escopo separado.
+
 ## 3. Responsáveis e passagem entre etapas
 
 | Etapa | Responsável e entrega | Condição para avançar |
@@ -152,6 +160,20 @@ O salto e a volta dos preços são parte do roteiro fictício. Não se preenche 
 
 Na saída, observar o alvo não é confirmar a venda: antes da confirmação, a posição continua exposta. Se houver execução parcial, o restante permanece aberto com reserva/risco correspondentes. Se houver efeito incerto, reconciliar a mesma tentativa antes de qualquer novo envio.
 
+#### Variante independente: saída parcial no stop
+
+Esta variante **substitui** a saída no alvo do roteiro; não somar seus eventos ao cenário principal. Parte da posição completa de 0,10 ETH, custo carregado de 200,10 e caixa de 29,90.
+
+| Evento fictício | Quantidade e custo | Resultado/estado |
+|---|---|---|
+| Stop observado a 1.950,00; saída vigente executa somente 0,04 ETH | Venda bruta 78,00, custo de saída 0,04; recebimento 77,96; custo de entrada atribuído à parcela 80,04 | Realizado −2,08; restam 0,06 ETH, custo carregado 120,06 |
+| Sem liquidez para o restante; marcação cai a 1.900,00 | Posição restante vale 114,00; caixa passa a 107,86 | Não realizado −6,06; resultado econômico conjunto −8,14 |
+| Saída incompleta permanece em acompanhamento | Reserva de saída restante 0,06 no exemplo simplificado; necessidade real deve ser reavaliada | Não encerrar `I-1`, não liberar toda a reserva nem renovar o prazo para esconder perda |
+
+A perda econômica de 8,14 já excede a perda planejada de 5,20: stop não garante preço ou liquidez. O patrimônio dessa variante é `107,86 + 114,00 = 221,86`, contra 230,00 no início. Realizado e não realizado somam `−2,08 − 6,06 = −8,14`; o custo de entrada não é deduzido novamente.
+
+Registrar alerta, parecer atualizado e tratamento da exposição restante. Se não for conhecido o efeito da tentativa, conservar o estado incerto e reconciliar antes de repetir. Pausa de novas entradas não pode ser interpretada como cancelamento de uma posição ou proibição automática de sua proteção; distinguir impedimento de abertura das restrições reais de saída.
+
 ### 6.5 Dois ciclos, um investimento
 
 A subcarteira começa com 230,00 USDC e não recebe depósitos, retiradas ou outras operações. Ela não representa todo o patrimônio da Tesouraria. A reserva está dentro do caixa, não é um ativo adicional.
@@ -178,16 +200,33 @@ As [oito famílias de relatório](trading-cycle-reports.md) devem permitir consu
 
 | Leitura | Conteúdo deste roteiro |
 |---|---|
-| Especialista | Regime, quatro famílias examináveis, tese escolhida, contrapontos, fontes e proposta/versão |
-| Lote/decisão BETTEX | Todos os recebidos, qualificação, doze planos, restrições, pareceres e escolha |
-| Risco/Tesouraria | Retratos usados, recursos livres, reservas, exposição conjunta e alterações posteriores |
-| Execução | Autorização, ordem, dois preenchimentos de entrada, ordem de saída, custos e reconciliação |
-| Investimento | Tese original, relógio desde a primeira entrada, custo, quantidade, atualizações e encerramento |
-| Ciclo | Abertura/fechamento, eventos próprios, posição herdada e reconciliação de resultado |
+| 1. Análise do subagente | Regime, famílias examinadas, tese, contrapontos, evidências e risco próprio de `AN-ETH-1`/`AN-SOL-1` |
+| 2. Proposta e qualificação | Pacotes, versões, recebimento e validade; ETH/SOL qualificados no roteiro; devolução BTC sem apagar o recibo |
+| 3. Consolidação Cripto | Todos os recebidos, dependência ETH/SOL e pedidos de correção; sem substituir a comparação da BETTEX |
+| 4. Decisão BETTEX | Lote `L-1`, doze planos, tamanhos, pareceres, escolha `D-1` e razões dos descartes |
+| 5. Risco e Governança | `R-1`, cenários, limites/pausas, condições de autorização e alertas; autorização/recusa na autoridade vigente |
+| 6. Tesouraria | `T-1`, recursos livres, obrigações, reserva de `A-1`, consumo por preenchimento e reconciliação |
+| 7. Investimento | Autorização, ordens e preenchimentos de `I-1`; plano original, relógio, mudanças, custos, saída e resultado |
+| 8. Fechamento do ciclo | Abertura/fechamento, eventos próprios, posição herdada, pendências e encaminhamento à apuração existente |
 
 O gráfico de preço marca entrada, alvo e invalidação; não apresenta uma linha prevista como fato. Quantidade/exposição muda nos preenchimentos, não na seleção. Caixa, reservado e livre são leituras relacionadas, não parcelas a somar indiscriminadamente. Resultado realizado, não realizado e patrimônio mantêm suas bases e eventos; contagens distinguem proposta, decisão, ordem, preenchimento e investimento.
 
-Modelo/prompt/memória, dados e parâmetros usados ficam vinculados à análise. Revisões não apagam o estado da época nem usam o resultado futuro como se fosse evidência disponível na decisão.
+Fila/decisões, recursos, exposição/estresse e desempenho por estratégia usam as fontes e cuidados definidos nos [gráficos dos relatórios](trading-cycle-reports.md#10-gráficos-significado-e-origem). Séries mostram período, moeda/unidade, amostra e classe de evidência. Sem observações, mostrar ausência; não desenhar retorno, probabilidade ou intervalo de confiança fictício como medição real.
+
+### Inteligência, evidência e aprendizado auditável
+
+| Registro | Conteúdo exigido |
+|---|---|
+| Dados de entrada | Origem, identificação do instrumento, instante de origem/coleta, validade, janela e versão do conjunto de dados; dependências e lacunas |
+| Método e execução da análise | Estratégia/versão, tipo de cálculo/inferência, modelo/versão quando houver, configuração, prompt/contexto e referência ao estado da memória usado; custo/latência ou falha quando medidos |
+| Saída | Observações, estimativas, horizonte, contrapontos, incerteza, diagnóstico e proposta resultante; cálculo determinístico não é apresentado como inferência de modelo |
+| Base econômica | Desfechos e probabilidades sustentados, origem da calibração, custos por tamanho, incerteza e limites do modelo; alvo potencial não é expectativa |
+| Verificação posterior | Dados/resultados observados no horizonte correto, divergência de preço/custo/duração e erro de previsão; distinguir amostra pequena, simulação e operação |
+| Alteração/aprendizado | Motivo, evidência e versão anterior/nova; avaliação antes de habilitar; nenhuma memória reescreve retrospectivamente a decisão original |
+
+Não exigir exposição pública de raciocínio interno privado, segredos ou credenciais: o registro deve conter justificativa verificável, evidências, entradas/saídas e referências de versão, com acesso adequado. Registrar erro/indisponibilidade sem substituir silenciosamente inferência real por texto ou regras fixas rotulados como IA.
+
+Uma divergência ou um trade vencedor não aprova automaticamente retreinamento, aumento de risco ou mudança de estratégia. Mudanças materiais exigem avaliação e controle de versões; o desempenho de versões anteriores permanece separado. Rejeitadas acompanhadas depois são contrafactuais, não lucro que teria sido garantido.
 
 ## 8. Casos de consistência e critérios de aceite
 
@@ -205,6 +244,10 @@ Modelo/prompt/memória, dados e parâmetros usados ficam vinculados à análise.
 | Saída parcial ou inviável no stop/prazo | Posição restante continua aberta, com alerta; perda planejada não vira garantia |
 | Mudança de alvo, stop, prazo ou tamanho | Nova versão e autorização conforme autoridade vigente; sem reescrever plano/decisão anteriores |
 | Cancelar, substituir ou corrigir registro | Conservar versão, motivo e vínculos; não apagar fatos financeiros |
+| Reenvio da mesma proposta/mensagem | Mesmo recibo e versão reconhecida; não duplicar proposta, intenção ou efeito financeiro |
+| Evento atrasado ou correção posterior ao fechamento | Conservar instante do fato e do registro; correção vinculada e versão do relatório, sem apagar o fechamento original |
+| Modelo indisponível, evidência contaminada ou confiança sem base | Registrar impedimento e origem; não inventar probabilidade nem contornar controles por texto do agente |
+| Retomada após pausa, falha ou revogação | Reconciliar posição/compromissos e revalidar autorização e tese; não executar automaticamente uma fila antiga |
 | Resultado positivo só nas vendas fechadas | Mostrar também inventário, não realizado e custos; admitir resultado total negativo |
 | Investimento atravessa 16h | Herdar posição; não duplicar contagem, custos ou resultado |
 | Depósito/retirada entre cortes | Distinguir fluxo externo de desempenho; não usar variação bruta de saldo como retorno |
@@ -222,5 +265,20 @@ Modelo/prompt/memória, dados e parâmetros usados ficam vinculados à análise.
 | Rede, ativo representado, plataforma, modelo e fornecedor | Não escolhidos |
 
 Para avançar à ALFA, primeiro fixar definições e método de avaliação, registrar variantes testadas, separar treino/validação/teste não visto e medir custos/saída/falhas por tamanho. Demonstrar depois que controles e reconciliação suportam o percurso, sem confundir esse trabalho com autorização de fundos reais.
+
+### Condições de prontidão e pendências explícitas
+
+| Frente | Evidência necessária para considerar atendida | Situação desta entrega |
+|---|---|---|
+| Quatro estratégias | Definições reproduzíveis de janelas, fontes, regime, gatilhos, invalidação e parâmetros por versão; sem ajuste olhando o resultado | Condições conceituais documentadas; definições quantitativas e validação pendentes |
+| Expectativa e tamanho | Método e probabilidades calibrados quando usados; desfechos além de alvo/stop; custos/risco por tamanho e sensibilidade | Contrato documentado; números do exemplo não qualificam expectativa real |
+| Avaliação | Universo disponível à época, treino/validação/teste não visto, tentativas registradas, regimes adversos e comparação líquida na mesma janela | Protocolo exigido; nenhuma estratégia aprovada por esta revisão |
+| Instrumento e execução | Representação/mercado elegíveis, custódia/permissões, liquidez de saída, custos, preenchimentos, falhas e duplicidade verificados | Requisitos definidos; nenhuma rede, rota ou plataforma selecionada/testada |
+| Risco/Tesouraria | Orçamento autorizado, exposição e obrigações reconciliadas, limites, reservas, pausas e autoridade independente verificados | Comportamento documentado; controles do novo percurso não certificados aqui |
+| Inferência e aprendizado | Evidências temporais, versões, tratamento de indisponibilidade, avaliação posterior e mudança controlada | Registro exigido; runtime real não ativado ou validado |
+| Histórico/relatórios | Oito famílias vinculadas, originais preservados, posição entre ciclos, custos/fluxos sem duplicação | Especificação e exemplos aritméticos conferidos; integração operacional não testada |
+| Leitura do usuário | Consulta completa, grafo apenas de agentes e ausência de edição/operação na Central | Regra documentada; interface não alterada nesta revisão |
+
+“Documentado”, “implementado”, “testado” e “autorizado” são estados diferentes. Este documento fecha o percurso e explicita suas exigências; não declara a ALFA pronta, não transforma números sugeridos em política e não usa pendência de pesquisa como autorização para preencher lacunas com hipóteses.
 
 Esta revisão não altera os números do pacote, não concede autoridade nova, não aprova negociação nem modifica homepage/Pitch. O demo permanece exclusivamente visual.
