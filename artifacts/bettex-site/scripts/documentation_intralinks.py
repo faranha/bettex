@@ -1,6 +1,7 @@
 """Validate the explicitly authored documentation cross-references."""
 from html.parser import HTMLParser
 from pathlib import Path
+from documentation_audit_html import documentation_html
 
 
 class References(HTMLParser):
@@ -34,7 +35,7 @@ class References(HTMLParser):
 def verify_intralinks(output):
     for route in ("documentacao", "en/documentation", "es/documentacion"):
         page = References()
-        page.feed((output / route / "index.html").read_text())
+        page.feed(documentation_html(output.parents[1], '/' + route))
         missing = {target for target in page.targets if not target.startswith("#") or target[1:] not in page.ids}
         assert not missing, f"/{route}: broken documentation references: {sorted(missing)}"
         assert not page.nested, f"/{route}: nested hyperlinks"

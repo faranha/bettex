@@ -9,6 +9,12 @@ A arquitetura do projeto é baseada em um agente BETTEX, inteligência central o
 
 **How to apply:** Cada ator deve reunir suas capacidades já descritas, regras iniciais, ponto de partida e baseline, com as referências técnicas pertinentes no próprio item. Apresentar a inteligência central e depois seus subagentes. Separar staking, Carteira BETTEX, Carteira USDC, exportação e demais mecanismos determinísticos das inteligências que analisam ou propõem decisões. Material realmente compartilhado pode ter endereço comum, mas não deve retirar dos atores suas capacidades e regras específicas. Não promover controles fixos a agentes nem reduzir os agentes inteligentes aos monitores determinísticos legados.
 
+Não criar uma subseção com o mesmo nome do agente dentro do próprio capítulo. Distribuir os requisitos técnicos pelo responsável, não apenas criar links para um catálogo separado.
+
+**Why:** O criador apontou a repetição dos nomes de todos os agentes e reiterou que os requisitos deveriam ter sido distribuídos entre as respectivas seções.
+
+**How to apply:** O capítulo identifica o agente uma única vez; seus subitens identificam capacidades, baseline e requisitos concretos. BETTEX reúne execução e conciliação de ordens; Risco reúne limites, precisão e recuperação; Tesouraria reúne reservas, custos e proteção de fundos; Governança reúne aprovações e adequação legal; cada agente de mercado reúne suas fontes e conectores. Somente infraestrutura realmente comum permanece na base técnica compartilhada. Preservar regras, estados de disponibilidade, idiomas e âncoras ao mover conteúdo.
+
 A reorganização também precisa permitir que pessoas sem conhecimento prévio aprendam a arquitetura.
 
 **Why:** O criador pediu um plano de analista/arquiteto de software “tambem revisado por um designer instrucional, para educar as pessoas tambem”.

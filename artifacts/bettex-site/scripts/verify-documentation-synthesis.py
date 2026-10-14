@@ -92,6 +92,9 @@ verify_intralinks(app / "dist/public")
 for route, expected in baseline["routes"].items():
     file = app / "dist/public" / route.strip("/") / "index.html"
     protected_html = file.read_text()
+    if route in ("/documentacao", "/en/documentation", "/es/documentacion"):
+        from documentation_audit_html import documentation_html
+        protected_html = documentation_html(app, route)
     if route in ("/pitch", "/en/pitch", "/es/pitch"):
         protected_html, addition_html = split_pitch_defai_addition(protected_html)
         addition = Content()
@@ -252,14 +255,14 @@ for route, expected in baseline["routes"].items():
                 expected_opening = expected_opening.replace("predictions (mercados de predicción)", "predicciones (mercados de predicción)")
             # Inline links/bold do not insert spaces beside punctuation.
             assert expected_opening in page.raw_paragraphs, f"Missing market/audience opening: {language}/{key}"
-        flows, spacing_errors = audit_spacing(file.read_text())
+        flows, spacing_errors = audit_spacing(protected_html)
         assert not spacing_errors, f"Documentation text-flow spacing errors: {language}: {spacing_errors[:8]}"
         print(f"{route}: {len(flows)} text flows checked across paragraphs, lists, diagrams, captions, headings and tables")
         notice = notices[language]
         assert notice in text, f"Missing localized governance notice: {language}"
         assert 'data-testid="documentation-governance-notice"' in file.read_text(), f"Missing governance marquee: {language}"
         verify_rules(page.paragraphs, language, "site")
-        paragraph_html = "".join(re.findall(r"<p\b[^>]*>.*?</p>", file.read_text(), re.S))
+        paragraph_html = "".join(re.findall(r"<p\b[^>]*>.*?</p>", protected_html, re.S))
         assert not re.search(r"</(?:strong|a|em)>[A-Za-zÀ-ÿ0-9]", paragraph_html), f"Words joined after inline formatting: {language}"
         duplicate_fragments = (
             r"\b(USDC|BETTEX)\.\s*\1\.",

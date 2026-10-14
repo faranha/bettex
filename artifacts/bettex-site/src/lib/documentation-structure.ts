@@ -1,6 +1,6 @@
 /** Navigation groups are responsibilities, not disconnected technical appendices. */
 export const documentationChapters = [
-  { id: 'documentacao-como-funciona', title: 'Demo e prova de conceito', subtitle: 'O sistema, seus conceitos e o percurso da demonstração.', group: 0 },
+  { id: 'documentacao-como-funciona', title: 'Visão do projeto', subtitle: 'O sistema, seus conceitos e o percurso da demonstração.', group: 0 },
   { id: 'documentacao-agentes', title: 'Agente BETTEX', subtitle: 'Inteligência central, orquestração, aprendizado e ponto de partida.', group: 1 },
   { id: 'documentacao-subagente-risco', title: 'Subagente de Risco', subtitle: 'Análise de exposição e baseline de autorização, limites e continuidade.', group: 2 },
   { id: 'documentacao-subagente-tesouraria', title: 'Subagente de Tesouraria', subtitle: 'Recursos, reservas, liquidez e análise de alocação.', group: 2 },
