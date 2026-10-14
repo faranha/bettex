@@ -11,6 +11,12 @@ Todas as seções e subseções seguem o estilo visual dos subagentes: título d
 
 **How to apply:** Preservar o conteúdo, a hierarquia e os controles de expansão; não manter cabeçalhos compactos sem o mesmo tratamento visual.
 
+Os níveis internos precisam ser visivelmente subordinados: recuos progressivos, guias discretas nos blocos expandidos e tamanhos de título claramente distintos. “Continuidade: recuperar controles e conciliar fundos em trânsito” não pode parecer do mesmo nível que “Subagente de Tesouraria”.
+
+**Why:** O criador apontou que os níveis internos estavam quase impossíveis de diferenciar e que a diferença pequena de fonte não bastava.
+
+**How to apply:** Recuar o conteúdo completo de cada ramo expandido, não só o título. Encerrar a guia antes do próximo item irmão e limitar os recuos no celular para preservar a largura de leitura.
+
 As subseções e áreas numeradas da documentação começam recolhidas, com o mesmo controle de expansão em todas elas. Carteiras, Features e Subagentes não são exceções.
 
 **Why:** O criador apontou a Carteira BETTEX carregada aberta e exigiu “um padrão para todas as subseções e áreas”.
