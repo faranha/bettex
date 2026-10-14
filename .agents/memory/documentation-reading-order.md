@@ -51,7 +51,13 @@ BTC, ETH e SOL são conteúdos subordinados ao Subagente Cripto no corpo da docu
 
 **Why:** O criador corrigiu explicitamente a hierarquia do detalhamento de Cripto.
 
-**How to apply:** Preservar os especialistas no conteúdo de Cripto e os links diretos, com hierarquia subordinada no desktop e mobile. O menu aponta para Cripto, sem listar os especialistas no terceiro nível.
+**How to apply:** Preservar os especialistas no conteúdo de Cripto e os links diretos, com hierarquia subordinada no desktop e mobile. Agrupá-los em “Especializações por ativo”; não apresentá-los como irmãos do baseline e da referência técnica. O menu aponta para Cripto, sem listar os especialistas no terceiro nível.
+
+Títulos com a mesma profundidade numérica devem usar o mesmo tamanho, independentemente de serem capítulos React, tópicos ou referências nativas.
+
+**Why:** O criador apontou que BTC tinha fonte maior, mas a mesma profundidade da referência técnica; a tipografia por tipo de componente contradizia a hierarquia numérica.
+
+**How to apply:** Derivar a escala visual da numeração completa. Revisar a estrutura e o índice em conjunto, não corrigir somente a fonte do item apontado.
 
 “Features” é a abertura da seção de funcionalidades e um grupo recolhível no menu, não um capítulo independente. Sua apresentação no corpo da página permanece aberta e sem caixa.
 

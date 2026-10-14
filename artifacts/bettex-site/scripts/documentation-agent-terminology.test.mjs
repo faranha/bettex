@@ -54,7 +54,7 @@ test('selection distinguishes the deterministic baseline, ALFA/BETA inference an
 test('six main sections own their chapter and specialist numbering', () => {
   const number = id => documentationChapterNumber(documentationChapters.findIndex(chapter => chapter.id === id));
   assert.deepEqual(documentationChapters.map((_, index) => documentationChapterNumber(index)), [
-    '1', '2', '3.1', '3.2', '3.3', '3.4', '3.4.1', '3.4.2', '3.4.3', '3.5', '3.6', '3.7',
+    '1', '2', '3.1', '3.2', '3.3', '3.4', '3.4.1.1', '3.4.1.2', '3.4.1.3', '3.5', '3.6', '3.7',
     '4', '4.1', '4.2', '4.3', '4.4', '4.5', '4.6', '4.7', '4.8', '5', '6',
   ]);
   for (const chapter of documentationChapters) {
@@ -63,9 +63,12 @@ test('six main sections own their chapter and specialist numbering', () => {
     else assert.equal(number(chapter.id).split('.')[0], String(chapter.group + 1));
   }
   const btc = documentationChapters.findIndex(chapter => chapter.id === 'documentacao-especialista-btc');
-  assert.equal(documentationChapterNumber(btc, 12), '3.4.13');
-  assert.equal(documentationChapterNumber(btc + 1, 12), '3.4.14');
-  assert.equal(documentationChapterNumber(btc + 2, 12), '3.4.15');
+  assert.equal(documentationChapterNumber(btc, 3), '3.4.3.1');
+  assert.equal(documentationChapterNumber(btc + 1, 3), '3.4.3.2');
+  assert.equal(documentationChapterNumber(btc + 2, 3), '3.4.3.3');
+  assert.equal(documentationChapterNumber(btc, 12), '3.4.12.1');
+  assert.equal(documentationChapterNumber(btc + 1, 12), '3.4.12.2');
+  assert.equal(documentationChapterNumber(btc + 2, 12), '3.4.12.3');
 });
 
 test('menus stop at section and subsection without removing deeper reader topics', () => {

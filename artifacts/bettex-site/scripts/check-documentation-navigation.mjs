@@ -13,6 +13,7 @@ class Element {
     this.children = [];
     this.parentElement = null;
     this.attributes = {};
+    this.dataset = {};
     this.height = 0;
   }
   append(...nodes) {
@@ -106,6 +107,13 @@ for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vis
   assert.equal(document.getElementById('title-documentacao-teste').textContent, title);
   assert.deepEqual(outline[0].items.map(i => i.number), ['1.1', '1.2', '1.2.1', '1.2.1.1', '1.3']);
   assert.deepEqual(outline[0].items.map(i => i.level), [1, 1, 2, 3, 1]);
+  assert.equal(document.getElementById('title-documentacao-teste').dataset.documentationHeadingDepth, '1');
+  for (const item of outline[0].items) {
+    const target = document.getElementById(item.id);
+    const heading = target.tagName === 'DETAILS'
+      ? target.querySelector('.reading__title') ?? target.querySelector('summary') : target;
+    assert.equal(heading.dataset.documentationHeadingDepth, String(item.number.split('.').length));
+  }
   assert.equal(account.id, 'documentacao-teste-secao-1-2');
   assert.equal(policyHeading.attributes['data-outline-number'], '1.2');
   const ids = outline[0].items.map(i => i.id);

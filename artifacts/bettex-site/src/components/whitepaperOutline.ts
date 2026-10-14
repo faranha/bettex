@@ -57,6 +57,7 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
     const parent = collected.find(item => item.id === parentForChapter(chapter.id));
     const number = numberForChapter(ci, parent?.items.filter(item => item.level === 1).length ?? 0);
     const titleEl = document.getElementById(`title-${chapter.id}`);
+    if (titleEl) titleEl.dataset.documentationHeadingDepth = String(number.split('.').length);
     const titleText = titleEl?.querySelector('[data-documentation-title]') ?? titleEl;
     const out: ChapterOutline = { id: chapter.id, number, title: formatOutlineTitle(titleText?.textContent) || formatOutlineTitle(chapter.title), items: [] };
     collected.push(out);
@@ -111,6 +112,7 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
         used.add(id);
       }
       titleHost.setAttribute('data-outline-number', num);
+      titleHost.dataset.documentationHeadingDepth = String(num.split('.').length);
       if (!isSummary) titleHost.tabIndex = -1;
       out.items.push({ id: target.id, chapterId: chapter.id, number: num, level, title,
         isReference: !!reference && target === reference,
