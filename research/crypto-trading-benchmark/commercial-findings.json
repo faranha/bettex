@@ -1,0 +1,251 @@
+{
+  "facts": [
+    {
+      "claim": "A Binance documenta Spot Grid com intervalos de preço aritméticos ou geométricos, ordens sucessivas, pausa fora da faixa, conta de bots separada, reserva para fees e riscos de volatilidade, liquidez e cancelamento/delistagem; página atualizada em 2026-08-13.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://www.binance.com/en/support/faq/what-is-spot-grid-trading-and-how-does-it-work-d5f441e8ab544a5b98241e00efb3a4ab"
+      ]
+    },
+    {
+      "claim": "A OKX documenta Spot DCA com ordem inicial, safety orders em quedas, multiplicadores de tamanho e distância, máximo de ordens, take-profit e stop-loss opcional; alerta que estratégias não garantem lucro e que risco inclui capital reservado, slippage, liquidez e atrasos.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://www.okx.com/en-us/help/whats-the-spot-dca-bot-and-how-to-use-it"
+      ]
+    },
+    {
+      "claim": "KuCoin apresenta DCA como maneira de reduzir preço médio e investir no longo prazo e distingue DCA de Grid; informação obtida em snippet sem data de publicação indicada.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://www.kucoin.com/learn/trading-bot/dca-trading-bot"
+      ]
+    },
+    {
+      "claim": "Cryptohopper documenta configurações de sinais que podem ficar associadas a posição aberta mesmo se Baseconfig ou Config Pools mudarem; sua documentação lista bots Default, Arbitrage, Market Making, Portfolio e Copy. Isso demonstra tipos declarados, não efetividade ou lucro.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://docs.cryptohopper.com/docs/trading-bot/introduction-to-cryptohoppers-trading-bot",
+        "https://www.cryptohopper.com/api-documentation/hopper-config"
+      ]
+    },
+    {
+      "claim": "Coinrule documenta disponibilidade de estratégias para spot crypto e, separadamente, perpetuals; a documentação não comprova todos os ativos, pares ou regiões elegíveis.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://cloud.coinrule.com/docs/getting-started/introduction"
+      ]
+    },
+    {
+      "claim": "Gunbot recomenda tratar estratégias Spot como pontos de partida e ajustar entradas, saídas e limites de risco por par e timeframe; é declaração do fornecedor, não validação de rentabilidade.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://www.gunbot.com/support/docs/guides/trading-logic-and-optimization/selecting-spot-strategies"
+      ]
+    },
+    {
+      "claim": "3Commas documenta estatísticas de bots Grid Spot e Futures com PnL total incluindo realizado e não realizado, fees, volume e ordens fechadas; alterações em parâmetros podem resetar estatísticas.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://help.3commas.io/en/articles/11388471-grid-bot-statistics-page"
+      ]
+    },
+    {
+      "claim": "Bitsgap documenta exibição de Unrealized PNL e alocação de moeda para Grid; outro snippet descreve analytics para bots DCA Short e BTD. Não é evidência independente de desempenho.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://bitsgap.com/helpdesk/article/18010009838748-Analyzing-Your-GRID-Bot-s-Performance",
+        "https://bitsgap.com/helpdesk/article/16398758821148-Getting-Started-with-Bot-s-Analytics"
+      ]
+    },
+    {
+      "claim": "Pionex descreve Grid com ordens de compra abaixo e venda acima do preço e alerta sobre riscos; também publicou aviso de deslistagem de produto de arbitragem específico em 2025-12-01.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://www.pionex.com/blog/pionex-grid-trading-bot",
+        "https://support.pionex.com/hc/en-us/articles/52927049455001-Pionex-Will-Delist-the-Arbitrage-Product-Based-on-TOKEN"
+      ]
+    },
+    {
+      "claim": "Binance e KuCoin publicaram avisos em 2026 de encerramento de serviços de trading bot para determinados pares removidos/deslistados; isso requer controle de encerramento por par e não implica indisponibilidade geral das plataformas.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://www.binance.com/en/support/announcement/detail/277c0e32800b40c3b8ed88a46ceac791",
+        "https://www.kucoin.com/announcement/kucoin-trading-bot-will-delist-060902"
+      ]
+    },
+    {
+      "claim": "3Commas informa que V1 foi desativado em 2026-09-11 e que QuantPilot foi lançado como produto de pesquisa de mercado com IA; mudança de produto não prova desempenho de estratégias Spot.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://help.3commas.io/en/articles/16245835-3commas-v2-everything-you-need-to-know",
+        "https://3commas.io/blog/category/company-news"
+      ]
+    }
+  ],
+  "gaps": [
+    "Não há avaliação de rentabilidade independente, auditoria de execução, backtest comparável, benchmark padronizado ou validação de claims de alpha.",
+    "Não foram confirmados suporte atual e regional para BTC/ETH/SOL, pares específicos, limites, chaves/permissões de API, taxas e slippage, nem comportamento completo sob falhas ou mudanças de versão.",
+    "A evidência coletada não demonstra suporte on-chain/DEX em cada produto e não valida neutralidade de risco para arbitragem, market-making, sinais ou rebalancing.",
+    "Algumas fontes vieram apenas como snippet sem data de publicação/atualização; estado atual é incerto para tais features."
+  ],
+  "implications": [
+    "Qualificar cada proposta como Spot sem alavancagem e separar acumulação de busca de alpha; produtos que também oferecem Futures/Perpetuals não são automaticamente elegíveis.",
+    "Comparar sinais, grids e DCA via pacote comum BETTEX (entrada, stop, target, expiry, duração, tamanhos, custo líquido e risco antes de submissão), mantendo Treasury/Risk independentes e preservando versões e decisões.",
+    "Definir limite de exposição agregada e orçamento máximo de averaging/safety orders; modelar mercado em tendência fora da faixa, queda prolongada, stop ausente/não executável, saldo esgotado, slippage/liquidez e remoção de par.",
+    "Para reportes, separar realizado e flutuante, contabilizar taxas e posições/ordens abertas, reconciliar posição final e preservar métricas antes/depois de mudanças ou resets de parâmetros.",
+    "Não inferir lucro pelo uso do bot nem tratar resultados de backtest, market-making, arbitragem ou sinais como performance validada; exigir evidência verificável e mesma janela de comparação."
+  ],
+  "sources": [
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-01-okx-spot-dca.md",
+      "evidenceType": "fetched",
+      "key": "okx-spot-dca",
+      "notes": "Página primária OKX resumida em página completa; descreve ciclo inicial/safety orders, parâmetros e riscos. Datas conforme fetch: publicada 2025-10-03, atualizada 2026-08-27; Tier 3, comprova features declaradas.",
+      "publishedDate": "2026-08-27 (atualizada; publicada 2025-10-03)",
+      "tier": 3,
+      "title": "What's the Spot DCA bot and how do I use it? | OKX United States",
+      "url": "https://www.okx.com/en-us/help/whats-the-spot-dca-bot-and-how-to-use-it"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-02-binance-spot-grid.md",
+      "evidenceType": "fetched",
+      "key": "binance-spot-grid",
+      "notes": "FAQ primária Binance; descreve mechanics, modo de grade, conta específica e limitações. Publicada 2022-01-06 e atualizada 2026-08-13; Tier 3.",
+      "publishedDate": "2026-08-13 (atualizada; publicada 2022-01-06)",
+      "tier": 3,
+      "title": "What Is Spot Grid Trading and How Does It Work? | Binance",
+      "url": "https://www.binance.com/en/support/faq/what-is-spot-grid-trading-and-how-does-it-work-d5f441e8ab544a5b98241e00efb3a4ab"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-03-3commas-grid-reporting.md",
+      "evidenceType": "fetched",
+      "key": "3commas-grid-reporting",
+      "notes": "Página primária 3Commas; distingue PnL realizado/não realizado e descreve estatísticas, fees e períodos; data no fetch 2026-07-31; inclui Spot e Futures, exigir filtragem Spot.",
+      "publishedDate": "2026-07-31",
+      "tier": 3,
+      "title": "Grid Bot: Statistics Page | 3Commas Help Center",
+      "url": "https://help.3commas.io/en/articles/11388471-grid-bot-statistics-page"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "commercial-search-snippets",
+      "notes": "Arquivo criado neste trabalho com snippets completos de páginas primárias e notícias para Pionex, Binance, OKX, KuCoin, 3Commas, Cryptohopper, Bitsgap, Coinrule e Gunbot. Muitos snippets não informam data; fontes de fornecedores Tier 3.",
+      "publishedDate": "não informada para vários itens (pesquisa: 2026-10-14)",
+      "tier": 3,
+      "title": "Commercial provider search snippets (collected 2026-10-14)",
+      "url": "https://www.pionex.com/blog/pionex-grid-trading-bot"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "binance-spot-dca-snippet",
+      "notes": "Snippet completo da FAQ Binance sobre configuração de compra/tempo/venda de Spot DCA; data não informada.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "What Is Spot DCA and How Does It Work? | Binance",
+      "url": "https://www.binance.com/en/support/faq/detail/27713d3ddb3c406da52f36b9aaaa1360"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "kucoin-dca",
+      "notes": "KuCoin Learn distingue DCA de grid e descreve objetivo de preço médio/acumulação de longo prazo; data não informada.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "DCA Trading Bot | KuCoin Learn",
+      "url": "https://www.kucoin.com/learn/trading-bot/dca-trading-bot"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "cryptohopper-signals",
+      "notes": "Documentação do fornecedor sobre configurações baseadas em sinais e estado das configurações quando posição já está aberta; data não informada.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Introduction to Cryptohopper's Trading bot",
+      "url": "https://docs.cryptohopper.com/docs/trading-bot/introduction-to-cryptohoppers-trading-bot"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "cryptohopper-bot-types",
+      "notes": "API documentation do fornecedor lista arbitrage e market-making entre tipos de bot; declaração não avaliada independentemente.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Bot settings | Cryptohopper API documentation",
+      "url": "https://www.cryptohopper.com/api-documentation/hopper-config"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "coinrule-introduction",
+      "notes": "Documentação Coinrule separa crypto spot e perpetuals; não confirma suporte de cada ativo/par ou região.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Introduction to Coinrule",
+      "url": "https://cloud.coinrule.com/docs/getting-started/introduction"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "gunbot-spot",
+      "notes": "Documentação Gunbot recomenda ajustar entry/exit/risk limits por par/timeframe e define Spot em contraste com Futures.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Selecting the Right Spot Strategy for Gunbot",
+      "url": "https://www.gunbot.com/support/docs/guides/trading-logic-and-optimization/selecting-spot-strategies"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "bitsgap-grid-reporting",
+      "notes": "Snippet Bitsgap declara Unrealized PNL, alocação e atividade; data não informada.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Analyzing Your GRID Bot's Performance | Bitsgap",
+      "url": "https://bitsgap.com/helpdesk/article/18010009838748-Analyzing-Your-GRID-Bot-s-Performance"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "pionex-arbitrage-delisting",
+      "notes": "Aviso oficial Pionex de deslistagem de um produto de arbitragem específico; o snippet identifica 2025-12-01 como data do anúncio e 2025-12-04 como efetiva.",
+      "publishedDate": "2025-12-01",
+      "tier": 3,
+      "title": "Pionex Will Delist the Arbitrage Product Based on TOKEN",
+      "url": "https://support.pionex.com/hc/en-us/articles/52927049455001-Pionex-Will-Delist-the-Arbitrage-Product-Based-on-TOKEN"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "binance-bot-pair-removal",
+      "notes": "Aviso oficial Binance de encerramento dos serviços de bot para pares removidos a partir de data efetiva em 2026-07-10; mudança localizada por pares.",
+      "publishedDate": "2026-07-10",
+      "tier": 3,
+      "title": "Notice of Removal of Spot Trading Pairs",
+      "url": "https://www.binance.com/en/support/announcement/detail/277c0e32800b40c3b8ed88a46ceac791"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "kucoin-bot-pair-delisting",
+      "notes": "Aviso oficial KuCoin de deslistagem de par de bots e recomendação de encerrar bots; data no snippet 2026-06-09.",
+      "publishedDate": "2026-06-09",
+      "tier": 3,
+      "title": "KuCoin Trading Bot Will Delist These Trading Pairs",
+      "url": "https://www.kucoin.com/announcement/kucoin-trading-bot-will-delist-060902"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/commercial-snippets.md",
+      "evidenceType": "snippet",
+      "key": "3commas-v2-change",
+      "notes": "Help center oficial afirma desativação de V1 em 2026-09-11 e menciona QuantPilot; apenas transição do produto documentada.",
+      "publishedDate": "2026-09-11",
+      "tier": 3,
+      "title": "3Commas V2: Everything You Need to Know",
+      "url": "https://help.3commas.io/en/articles/16245835-3commas-v2-everything-you-need-to-know"
+    }
+  ]
+}

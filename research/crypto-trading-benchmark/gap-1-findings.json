@@ -1,0 +1,136 @@
+{
+  "facts": [
+    {
+      "claim": "AgentKit declara carteiras e ações on-chain como transferências, swaps e interações com contratos; evidência de toolkit, não de estratégia autônoma ou desempenho.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://docs.cdp.coinbase.com/agent-kit",
+        "https://docs.cdp.coinbase.com/agent-kit/core-concepts/agents-actions"
+      ]
+    },
+    {
+      "claim": "O README do GOAT descreve ferramentas/plugins que se compõem com carteira, chain e framework; a cópia consultada se identifica como snapshot arquivado e não mantido.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://github.com/goat-sdk/goat/blob/main/README.md"
+      ]
+    },
+    {
+      "claim": "A documentação do Jupiter Trigger declara Trigger V2 com ordens de preço/DCA, OCO TP/SL, partial fills e output dependente de liquidez/slippage; a documentação também descreve vault gerenciado por Privy.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://developers.jup.ag/docs/trigger"
+      ]
+    },
+    {
+      "claim": "O README do plugin Solana descreve operações de token, trading e DeFi; um boletim secundário de 30 maio 2026 reporta migração para plugin-wallet, sem confirmação primária atual nesta pesquisa.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://github.com/elizaos-plugins/plugin-solana/blob/1.x/README.md",
+        "https://elizaos.news/daily/2026-05-30"
+      ]
+    },
+    {
+      "claim": "A documentação CoW TWAP ainda exige Safe, enquanto o recap oficial publicado em 5 outubro 2026 reporta abertura para EOA em setembro; comunicado PR Newswire de 30 setembro ecoa a alegação, mas os requisitos técnicos não estão reconciliados.",
+      "classification": "limitation",
+      "sourceUrls": [
+        "https://docs.cow.fi/cow-protocol/concepts/order-types/twap-orders",
+        "https://cow.fi/learn/cow-dao-monthly-recap-september-2026",
+        "https://www.prnewswire.com/apac/news-releases/cow-swap-opens-twap-orders-to-every-eoa-wallet-removing-the-safe-only-barrier-302894332.html"
+      ]
+    }
+  ],
+  "gaps": [
+    "Coinbase fetch das páginas overview e actions falhou com 404; capacidades suportadas por snippets, não leitura integral.",
+    "Não foi localizada confirmação datada recente de manutenção do GOAT; README consultado está marcado arquivado/não mantido.",
+    "Migração do plugin ElizaOS para plugin-wallet e capacidades atuais não foram confirmadas diretamente em documentação primária atual.",
+    "Claims de ferramenta/produto não verificam trading autônomo seguro, resultados auditados, cobertura de ativos/pares/regiões, nem execução garantida."
+  ],
+  "implications": [
+    "Avaliar agente/estratégia, toolkit de ações de carteira e execução de ordens como camadas diferentes.",
+    "Registrar ordem/versão, custódia e aprovações, estado e fills parciais, preço realizado/slippage, expiração/falha; disponibilidade de ação não substitui proposta completa nem revisão independente de Treasury/Risk.",
+    "Tratar limites Safe/EOA e diferenças V1/V2 como versionados; exigir reconciliação de docs antes de supor suporte atual."
+  ],
+  "sources": [
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-tools-snippets.md",
+      "evidenceType": "snippet",
+      "key": "coinbase-agentkit-overview-actions",
+      "notes": "Snippets oficiais de overview/actions; as URLs tentadas por fetch retornaram 404. Tier 3, claims declaradas.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Coinbase AgentKit — Overview e Agents Actions",
+      "url": "https://docs.cdp.coinbase.com/agent-kit"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-tools-02-goat-toolkit-readme.md",
+      "evidenceType": "fetched",
+      "key": "goat-readme",
+      "notes": "README do projeto descreve composição de ferramentas; página informa que este snapshot está arquivado e não mantido. Tier 3.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "goat-sdk/goat README",
+      "url": "https://github.com/goat-sdk/goat/blob/main/README.md"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-tools-snippets.md",
+      "evidenceType": "snippet",
+      "key": "elizaos-wallet-migration",
+      "notes": "Boletim secundário reporta migração para plugin-wallet; não é confirmação primária. Tier 2.",
+      "publishedDate": "2026-05-30",
+      "tier": 2,
+      "title": "elizaOS News Daily Brief — 2026-05-30",
+      "url": "https://elizaos.news/daily/2026-05-30"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-tools-snippets.md",
+      "evidenceType": "snippet",
+      "key": "elizaos-solana-plugin",
+      "notes": "Snippet do README do plugin em branch 1.x; a atualidade após migração reportada é incerta. Tier 3.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "elizaos-plugins/plugin-solana README at 1.x",
+      "url": "https://github.com/elizaos-plugins/plugin-solana/blob/1.x/README.md"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-1-jupiter-trigger.md",
+      "evidenceType": "fetched",
+      "key": "jupiter-trigger-v2",
+      "notes": "Documentação de produto com diferenças V1/V2, tipos de ordem e restrições de execução. Publicação não informada; fetched 2026-10-14, sem inferir frescor editorial.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Trigger Order API Overview — Jupiter Developers",
+      "url": "https://developers.jup.ag/docs/trigger"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-3-cow-twap.md",
+      "evidenceType": "fetched",
+      "key": "cow-legacy-safe-requirement",
+      "notes": "Documentação descreve TWAP e ainda lista Safe como requisito; entra em conflito com anúncio posterior de EOA. Tier 3.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "TWAP orders — CoW Protocol Documentation",
+      "url": "https://docs.cow.fi/cow-protocol/concepts/order-types/twap-orders"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-tools-03-cow-september-2026.md",
+      "evidenceType": "fetched",
+      "key": "cow-eoa-recap",
+      "notes": "Recap oficial publicado em outubro de 2026 afirma que TWAP passou a estar disponível para EOA; alegação do projeto, não verificação independente do fluxo técnico. Tier 3.",
+      "publishedDate": "2026-10-05",
+      "tier": 3,
+      "title": "CoW DAO Monthly Recap: September 2026",
+      "url": "https://cow.fi/learn/cow-dao-monthly-recap-september-2026"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-tools-snippets.md",
+      "evidenceType": "snippet",
+      "key": "cow-pr-eoa",
+      "notes": "Comunicado distribuído via PR Newswire, claim originada pelo fornecedor; corroborativo mas não independente. Tier 2.",
+      "publishedDate": "2026-09-30",
+      "tier": 2,
+      "title": "CoW Swap Opens TWAP Orders to Every EOA Wallet",
+      "url": "https://www.prnewswire.com/apac/news-releases/cow-swap-opens-twap-orders-to-every-eoa-wallet-removing-the-safe-only-barrier-302894332.html"
+    }
+  ]
+}

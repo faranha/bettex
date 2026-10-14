@@ -1,0 +1,177 @@
+{
+  "facts": [
+    {
+      "claim": "FreqAI documenta pipeline configurável de features/labels, normalização/limpeza/PCA, retreino periódico e backtest histórico que emula retreino; persistência em disco e incompatibilidade com listas dinâmicas de pares também são documentadas. São declarações de capacidade, não evidência de desempenho.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://docs.freqtrade.io/en/2026.7/freqai/"
+      ]
+    },
+    {
+      "claim": "A documentação FreqAI diz que a estratégia-exemplo serve para benchmark/teste, não produção; não confirma execução DEX/on-chain ou performance lucrativa.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://docs.freqtrade.io/en/2026.7/freqai/"
+      ]
+    },
+    {
+      "claim": "FinRL-Meta descreve pipeline treino-validação-trading para reduzir vazamento de informação; FinRL Contests 2023–2025 inclui tarefas diárias de ações e cripto em livro de ofertas de granularidade de segundos. O snippet não especifica ativos, spot, alavancagem ou DEX.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://arxiv.org/html/2112.06753v2",
+        "https://arxiv.org/abs/2504.02281"
+      ]
+    },
+    {
+      "claim": "TradingAgents pesquisa especialização e debate multiagente, com papéis de análise, traders e risco; o paper avalia ações em janela histórica de 2024, declara filtro temporal para evitar look-ahead e trata live deployment como trabalho futuro. Os autores observam que a janela com poucos recuos influenciou métricas elevadas.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://arxiv.org/html/2412.20138v5"
+      ]
+    },
+    {
+      "claim": "FinMem descreve módulos de perfil, memória em camadas e decisão; evidência referenciada é avaliação em ações, não validação de cripto ou spot.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2311.13743"
+      ]
+    },
+    {
+      "claim": "O toolkit IOSCO de 2026 cobre ML, GenAI e agentic AI em mercados de capitais e recomenda governança, documentação de ciclo de vida, validação independente, supervisão humana, logs/audit trail e gestão de terceiros; seu escopo não deve ser convertido em obrigação legal específica de cripto.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://www.iosco.org/library/pubdocs/pdf/IOSCOPD823.pdf"
+      ]
+    },
+    {
+      "claim": "nof1 apresenta Alpha Arena como trading de IA em mercados reais; notícia de 2026-05-15 reporta experimento com capital real e perdas/overtrading em parte dos modelos. Relato secundário e página de projeto não são auditoria de performance nem comprovam status em 2026-10-14.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://nof1.ai/about",
+        "https://www.kucoin.com/news/flash/nof1-s-alpha-arena-pits-ai-models-in-live-trading-backed-by-sui-group-and-karatage"
+      ]
+    },
+    {
+      "claim": "FINRA afirma que membros sujeitos a regras de valores mobiliários permanecem sob exigências de supervisão e controle para estratégias algorítmicas; aplicabilidade a BETTEX/cripto exige análise jurídica separada.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://www.finra.org/rules-guidance/key-topics/algorithmic-trading"
+      ]
+    }
+  ],
+  "gaps": [
+    "Não há evidência verificada de suporte simultâneo a BTC, ETH e SOL spot sem alavancagem, DEX/on-chain, nem de cobertura universal de pares ou regiões.",
+    "Não há evidência suficiente sobre custos reais on-chain, MEV, slippage, execução de ordens, reconciliação financeira ou desempenho independente comparável.",
+    "Point-in-time datasets, memória versionada/auditável e autorização humana pré-submissão não são demonstrados consistentemente pelos exemplos; IOSCO/FINRA são princípios/guidance de escopo distinto e não validam implementação BETTEX.",
+    "Status e metodologia atual de Alpha Arena não estão estabelecidos por snapshots auditados; datas recentes de documentação não provam versão implantada."
+  ],
+  "implications": [
+    "Usar como benchmark de capacidades separadas: predição ML; análise contextual de LLM; coordenação/debate multiagente; e ferramentas de transação. Não fundir essas categorias em um placar de rentabilidade.",
+    "Para propostas comparáveis, exigir datasets point-in-time/versionados e retreino sem vazamento; registrar modelo, prompt, memória, dados, decisão, risco e execução com lineage reproduzível.",
+    "Manter limites independentes de risco e aprovação humana explícita antes da submissão/execução; tratar guardrails como controles BETTEX a validar, não como propriedades automaticamente fornecidas por um agente.",
+    "Separar resultados simulados/equity de cripto experimental e de operação real; exigir validação out-of-sample, paper trading e evidência auditável antes de inferir capacidade operacional.",
+    "Não recomendar tecnologia, cadeia, plataforma ou provedor com este benchmark; a evidência disponível não responde a esses critérios de escolha."
+  ],
+  "sources": [
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-01-freqai-docs.md",
+      "evidenceType": "fetched",
+      "key": "FreqAI docs 2026.7",
+      "notes": "Documentação primária integral, evidencia apenas capacidades declaradas; versão documental de julho de 2026.",
+      "publishedDate": "2026-07 (versão da documentação)",
+      "tier": 3,
+      "title": "Introduction - Freqtrade",
+      "url": "https://docs.freqtrade.io/en/2026.7/freqai/"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-02-tradingagents-paper.md",
+      "evidenceType": "fetched",
+      "key": "TradingAgents paper v5",
+      "notes": "Paper integral; dados e avaliação em ações, paper states simulated historical environment; mais de 18 meses na data de pesquisa.",
+      "publishedDate": "2025-03-02",
+      "tier": 1,
+      "title": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+      "url": "https://arxiv.org/html/2412.20138v5"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-03-iosco-toolkit.md",
+      "evidenceType": "fetched",
+      "key": "IOSCO AI Supervisory Toolkit",
+      "notes": "Toolkit regulatório integral, fonte primária; não vinculante e focado em mercados de capitais, não é regra específica de cripto.",
+      "publishedDate": "2026-05-25",
+      "tier": 1,
+      "title": "FR/02/2026 Supervisory Toolkit for AI Use in Capital Markets",
+      "url": "https://www.iosco.org/library/pubdocs/pdf/IOSCOPD823.pdf"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-snippets.md",
+      "evidenceType": "snippet",
+      "key": "AI-SN-01 FinRL Contests",
+      "notes": "Snippet arXiv arquivado; benchmarking de tarefas 2023–2025 e crypto LOB segundos; sem execução completa do paper.",
+      "publishedDate": "2025-04 (mês confirmado pelo identificador arXiv)",
+      "tier": 1,
+      "title": "FinRL Contests: Benchmarking Data-driven Financial Reinforcement Learning Agents",
+      "url": "https://arxiv.org/abs/2504.02281"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-snippets.md",
+      "evidenceType": "snippet",
+      "key": "AI-SN-02 FinRL-Meta",
+      "notes": "Snippet de preprint sobre pipeline e leakage; antigo (>18 meses), não prova operação atual.",
+      "publishedDate": "2021 (identificador arXiv 2112)",
+      "tier": 1,
+      "title": "FinRL-Meta: A Universe of Near-Real Market Environments for Data-Driven Deep Reinforcement Learning in Quantitative Finance",
+      "url": "https://arxiv.org/html/2112.06753v2"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-snippets.md",
+      "evidenceType": "snippet",
+      "key": "AI-SN-03 FinMem",
+      "notes": "Snippet de pesquisa sobre memória em camadas; autores reportam avaliação em ações; antigo (>18 meses).",
+      "publishedDate": "2023-11 (identificador arXiv 2311)",
+      "tier": 1,
+      "title": "FinMem: A Performance-Enhanced LLM Trading Agent with Layered Memory and Character Design",
+      "url": "https://arxiv.org/abs/2311.13743"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-snippets.md",
+      "evidenceType": "snippet",
+      "key": "AI-SN-04 nof1 project page",
+      "notes": "Snippet de página do projeto; framing auto-declarado e sem evidência auditada de performance ou status atual.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "AI trading in real markets",
+      "url": "https://nof1.ai/about"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-snippets.md",
+      "evidenceType": "snippet",
+      "key": "AI-SN-05 FINRA",
+      "notes": "Snippet de guidance de supervisão de valores mobiliários; aplicabilidade jurídica não transferida automaticamente a cripto.",
+      "publishedDate": "não informada",
+      "tier": 1,
+      "title": "Algorithmic Trading - FINRA.org",
+      "url": "https://www.finra.org/rules-guidance/key-topics/algorithmic-trading"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-snippets.md",
+      "evidenceType": "snippet",
+      "key": "AI-SN-06 TradingAgents changelog",
+      "notes": "Snippet de changelog do fornecedor de jul/2026; sinal de atividade documental, não de versão atualmente implantada nem validação independente.",
+      "publishedDate": "2026-07-05",
+      "tier": 3,
+      "title": "Changelog | TradingAgents",
+      "url": "https://tauricresearch.github.io/TradingAgents/CHANGELOG.html"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/ai-snippets.md",
+      "evidenceType": "snippet",
+      "key": "AI-SN-07 Alpha Arena report",
+      "notes": "Notícia secundária recente; relato de experimento, não auditoria de ledger nem validação independente de ROI.",
+      "publishedDate": "2026-05-15",
+      "tier": 2,
+      "title": "Nof1's Alpha Arena Pits AI Models in Live Trading, Backed by SUI Group and Karatage",
+      "url": "https://www.kucoin.com/news/flash/nof1-s-alpha-arena-pits-ai-models-in-live-trading-backed-by-sui-group-and-karatage"
+    }
+  ]
+}

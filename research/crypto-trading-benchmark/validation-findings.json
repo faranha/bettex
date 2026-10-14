@@ -1,0 +1,152 @@
+{
+  "facts": [
+    {
+      "claim": "Um estudo de 2026 examinou seis estratégias de momentum em cripto, usou testes derivados de block bootstrap e reporta propriedades de cauda/power laws e limitações das métricas baseadas em variância; o conteúdo recuperado não informa custos de transação.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://onlinelibrary.wiley.com/doi/full/10.1002/ijfe.70036"
+      ]
+    },
+    {
+      "claim": "Snippets de dois estudos reportam resultados diferentes sobre regras técnicas versus buy-and-hold: um estudo Bitcoin menciona custos aproximados por taxas de mineradores e melhor robustez de regras diárias; outro não encontra superioridade na amostra estudada.",
+      "classification": "experiment",
+      "sourceUrls": [
+        "https://www.sciencedirect.com/science/article/pii/S1059056024003010",
+        "https://www.emerald.com/jdqs/article-pdf/32/1/23/9465019/jdqs-08-2023-0021.pdf"
+      ]
+    },
+    {
+      "claim": "Estudo empírico do Uniswap v3 analisou 534.198 swaps da interface Uniswap Labs em jan–ago/2023 em pools WETH-USDC e WETH-PEPE, diferenciando slippage benigno e adversarial; resultados são específicos ao dataset, ativos, pools e período.",
+      "classification": "experiment",
+      "sourceUrls": [
+        "https://arxiv.org/html/2309.13648v2"
+      ]
+    },
+    {
+      "claim": "O snippet sobre Deflated Sharpe Ratio diz que a métrica corrige seleção por múltiplos testes e retornos não normais; um preprint de 2025 descreve walk-forward como abordagem para mitigar overfitting e lookahead bias.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://doi.org/10.2139/ssrn.2460551",
+        "https://arxiv.org/abs/2512.12924"
+      ]
+    },
+    {
+      "claim": "A CFTC alerta para esquemas que usam alegações falsas de IA/bots para obter e apropriar-se de dinheiro ou criptoativos; o aviso não caracteriza bots em geral como fraudulentos.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://www.cftc.gov/PressRoom/PressReleases/8854-24"
+      ]
+    },
+    {
+      "claim": "Os resultados disponíveis não justificam afirmações de rentabilidade universal ou de desempenho auditado em produção de bots.",
+      "classification": "limitation",
+      "sourceUrls": [
+        "https://onlinelibrary.wiley.com/doi/full/10.1002/ijfe.70036",
+        "https://www.sciencedirect.com/science/article/pii/S1059056024003010",
+        "https://www.emerald.com/jdqs/article-pdf/32/1/23/9465019/jdqs-08-2023-0021.pdf"
+      ]
+    }
+  ],
+  "gaps": [
+    "A captura CFTC retornou HTTP 429 em duas URLs; nenhum texto completo foi salvo. O comunicado CFTC de 2026 localizado é fraude, mas não especificamente sobre bots.",
+    "Não foram obtidas fontes suficientes para inferir eficácia comparativa de mean reversion, breakout, rotação relativa, grid/averaging, rebalanceamento, market making ou spot-arbitrage.",
+    "Faltam custos atuais específicos para BTC/ETH/SOL e mercados/venues, backtests walk-forward purgados/embargados, comparação com benchmark caixa, controles quantitativos de survivorship bias, amostras e reconciliação de PnL realizado/não realizado."
+  ],
+  "implications": [
+    "Comparar famílias de estratégia separadamente e demarcar spot-arbitrage de funding/basis/opções/leverage; isso é delimitação de escopo, não uma seleção tecnológica.",
+    "Fixar tese/versão por proposta; reservar teste temporal fora da amostra, usar purging/embargo quando aplicável, corrigir múltiplos testes quando muitas variantes forem tentadas e registrar fees, gas, slippage e fills observados.",
+    "Relatar buy-and-hold e caixa, retorno líquido, drawdown e métricas ajustadas ao risco; conservar IDs de proposta, versão, execução e ciclo para reconciliar PnL realizado e não realizado e impedir dupla contagem entre ciclos. Recomendações de desenho, não resultados empíricos."
+  ],
+  "sources": [
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/validation-01-crypto-momentum-2026.md",
+      "evidenceType": "fetched",
+      "key": "wiley-crypto-momentum-2026",
+      "notes": "Síntese salva da página Wiley; conteúdo obtido descreve resumo/metadata, não o texto integral; custos não informados no material recuperado.",
+      "publishedDate": "2026",
+      "tier": 1,
+      "title": "Cryptocurrency Momentum: Is It an Illusion?",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/ijfe.70036"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/validation-02-uniswap-mev-slippage.md",
+      "evidenceType": "fetched",
+      "key": "uniswap-mev-slippage-arxiv",
+      "notes": "Síntese salva do artigo; dados Jan–Aug 2023 em duas pools/interface; versão de 2023 >18 meses na data da pesquisa; não extrapolar para todos DEXs/ativos.",
+      "publishedDate": "2023 (arXiv v2; dataset Jan–Aug 2023)",
+      "tier": 1,
+      "title": "Don’t Let MEV Slip: The Costs of Swapping on the Uniswap Protocol",
+      "url": "https://arxiv.org/html/2309.13648v2"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/validation-snippets.md",
+      "evidenceType": "snippet",
+      "key": "deflated-sharpe-ratio",
+      "notes": "Snippet completo preservado; working paper acadêmico, publicação não informada no snippet; não foi recuperado texto integral.",
+      "publishedDate": "não informada",
+      "tier": 1,
+      "title": "The Deflated Sharpe Ratio: Correcting for Selection Bias, Backtest Overfitting and Non-Normality",
+      "url": "https://doi.org/10.2139/ssrn.2460551"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/validation-snippets.md",
+      "evidenceType": "snippet",
+      "key": "walk-forward-preprint",
+      "notes": "Snippet completo preservado; preprint, não prova por si só eficácia de um protocolo ou estratégia.",
+      "publishedDate": "2025-12",
+      "tier": 1,
+      "title": "Interpretable Hypothesis-Driven Trading: A Rigorous Walk-Forward Validation Framework for Market Microstructure Signals",
+      "url": "https://arxiv.org/abs/2512.12924"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/validation-snippets.md",
+      "evidenceType": "snippet",
+      "key": "bitcoin-technical-rules-costs",
+      "notes": "Snippet reporta resultados e aproxima custo por taxas de mineradores; detalhe metodológico e aplicabilidade a outros ativos não confirmado.",
+      "publishedDate": "2024",
+      "tier": 1,
+      "title": "Are simple technical trading rules profitable in bitcoin markets?",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1059056024003010"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/validation-snippets.md",
+      "evidenceType": "snippet",
+      "key": "technical-rules-buy-hold-crypto",
+      "notes": "Snippet de estudo de regras técnicas com resultado contrário; data não informada no snippet.",
+      "publishedDate": "não informada",
+      "tier": 1,
+      "title": "Do technical trading rules outperform the simple buy-and-hold strategy in the cryptocurrency market?",
+      "url": "https://www.emerald.com/jdqs/article-pdf/32/1/23/9465019/jdqs-08-2023-0021.pdf"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/validation-snippets.md",
+      "evidenceType": "snippet",
+      "key": "crypto-momentum-costs-2020",
+      "notes": "Estudo anterior a 18 meses; snippet atribui custos variáveis por plataforma; usar como evidência histórica, não custo atual.",
+      "publishedDate": "2020",
+      "tier": 1,
+      "title": "Momentum trading in cryptocurrencies: Short-term returns and diversification benefits",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0165176519303647"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/validation-snippets.md",
+      "evidenceType": "snippet",
+      "key": "cftc-ai-bot-advisory",
+      "notes": "Comunicado regulatório oficial, mas página falhou por HTTP 429; snippet preservado; não implica fraude geral em bots.",
+      "publishedDate": "2024",
+      "tier": 1,
+      "title": "CFTC Customer Advisory Cautions the Public to Beware of Artificial Intelligence Scams",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/8854-24"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/validation-snippets.md",
+      "evidenceType": "snippet",
+      "key": "cftc-2026-fraud-context",
+      "notes": "Busca recente oficial; fraude citada não é especificamente trading bots, logo apenas contexto de enforcement, não evidência sobre bots.",
+      "publishedDate": "2026-08-11",
+      "tier": 1,
+      "title": "CFTC Charges Goliath Ventures Inc. and CEO with $400 Million Fraud Scheme",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9280-26"
+    }
+  ]
+}

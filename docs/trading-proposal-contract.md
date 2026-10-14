@@ -8,6 +8,8 @@ Mandato atual: BTC/ETH/SOL spot, sem alavancagem. O formulário é o mesmo para 
 
 Este documento detalha a [lógica de decisão](trading-decision-logic.md) e prevalece sobre a ausência de limites operacionais nos rascunhos anteriores. Preços, métodos e estimativas precisam de evidência; completar o formulário com números inventados não qualifica um investimento.
 
+O [benchmark de mercado](trading-market-benchmark.md) complementa os critérios de evidência, exposição, custos e preservação de versões. Seus exemplos externos não aprovam os números deste pacote nem qualificam automaticamente uma proposta.
+
 ## 2. Cada estratégia entrega um negócio com começo e fim
 
 O subagente não envia apenas “comprar ETH”. Envia preço/faixa de entrada, quantidade, alvo em preço, stop em preço, objetivo líquido, perda planejada, validade para entrar, duração esperada e prazo máximo de permanência.
