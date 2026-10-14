@@ -93,10 +93,12 @@ try {
     const reader = renderToStaticMarkup(createElement(DocumentationRenderContext.Provider, { value: true }, createElement(WhitepaperSection)));
     for (const chapter of chapters.filter(chapter => chapter.id.startsWith('documentacao-subagente-') || chapter.id.startsWith('documentacao-especialista-'))) {
       assert.equal((html.match(new RegExp(`data-agent-concept="${chapter.id}"`, 'g')) ?? []).length, 1, `${language}: ${chapter.id} needs one conceptual illustration inside its content`);
-      assert.equal((reader.match(new RegExp(`data-documentation-agent-art="${chapter.id}"`, 'g')) ?? []).length, 1, `${language}: each subagent and internal specialist needs exactly one identifying artwork`);
-      const header = reader.match(new RegExp(`<header\\b[^>]*class="[^"]*whitepaper__chapter-head[^"]*"[^>]*>(?:(?!<\\/header>)[\\s\\S])*data-documentation-agent-art="${chapter.id}"(?:(?!<\\/header>)[\\s\\S])*<\\/header>`));
-      assert.ok(header, `${language}: ${chapter.id} artwork must identify its heading even while its body is closed`);
-      assert.match(header[0], /loading="lazy"/, `${language}: identifying artwork must load lazily`);
+    }
+    assert.doesNotMatch(reader, /data-documentation-agent-art|whitepaper__chapter-head--agent/, `${language}: title-side artwork must not return`);
+    const chapterHeaders = [...reader.matchAll(/<header\b[^>]*class="[^"]*whitepaper__chapter-head[^"]*"[^>]*>([\s\S]*?)<\/header>/g)];
+    assert.ok(chapterHeaders.length > 0, `${language}: chapter headers must be present`);
+    for (const [, header] of chapterHeaders) {
+      assert.doesNotMatch(header, /<(?:img|picture|figure)\b/, `${language}: images belong inside section content, never alongside section titles`);
     }
     for (const [index, chapter] of chapters.entries()) {
       if (!documentationChapterNumber(index).includes('.')) continue;

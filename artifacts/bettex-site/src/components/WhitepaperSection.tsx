@@ -17,7 +17,6 @@ import { resolveDocumentationId } from '@/lib/documentation-aliases';
 import { chapterAncestors, collectOutline, documentationMenuItems, formatOutlineTitle, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
 import './WhitepaperSection.css';
 import { DocumentationRenderContext } from './DocumentationRenderContext';
-import { DocumentationAgentArtwork, hasDocumentationAgentArtwork } from './DocumentationAgentArtwork';
 import { documentationInitialTarget, documentationOutline, documentationSectionTargets, documentationSectionTitles, documentationTarget } from '@/lib/documentation-navigation';
 
 const featuresIndex = chapters.findIndex(chapter => chapter.id === 'documentacao-features');
@@ -393,7 +392,7 @@ export function WhitepaperSection() {
     const children = chapters.flatMap((child, childIndex) =>
       documentationParentId(child.id) === chapter.id ? [childIndex] : []);
     return <article key={chapter.id} id={chapter.id} className="whitepaper__chapter" aria-labelledby={`title-${chapter.id}`}>
-        <header className={`whitepaper__chapter-head${hasDocumentationAgentArtwork(chapter.id) ? ' whitepaper__chapter-head--agent' : ''}`}>
+        <header className="whitepaper__chapter-head">
           <h2 id={`title-${chapter.id}`} data-documentation-section-heading={collapsible ? chapter.id : undefined}>
             <span className="whitepaper__heading-number">{outline[index]?.number ?? documentationChapterNumber(index)}</span>{' '}
             <span data-documentation-title>{chapter.title}</span><span className="whitepaper__title-period">.</span>
@@ -407,7 +406,6 @@ export function WhitepaperSection() {
             </button>}
           </h2>
           <p>{chapter.subtitle}</p>
-          <DocumentationAgentArtwork chapterId={chapter.id} title={chapter.title} />
         </header>
         <div id={bodyId} data-documentation-chapter-body hidden={!open}>
         <section data-documentation-reading-content data-i18n="translated" aria-label={t(chapter.title)}>
