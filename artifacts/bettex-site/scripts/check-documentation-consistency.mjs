@@ -79,7 +79,7 @@ try {
       createElement('p', { id: 'rule-anchor' }, createElement('strong', {}, 'Rule title.'), ' Complete conditions ', createElement('a', { href: '#evidence' }, 'with evidence'), '.'),
       createElement('p', {}, createElement('strong', {}, 'Standalone rule.')),
       createElement('p', {}, 'An unabridged rule without a bold opening.')));
-    assert.match(ruleFixture, /<th\b[^>]*scope="row"><strong>Rule title\.<\/strong><\/th>/, `${language}: rule title must be a row header`);
+    assert.match(ruleFixture, /<th\b[^>]*scope="row"[^>]*><strong>Rule title\.<\/strong><\/th>/, `${language}: rule title must be a row header`);
     assert.match(ruleFixture, /id="rule-anchor"/, `${language}: rule anchors must survive the table conversion`);
     assert.match(ruleFixture, /Complete conditions <a href="#evidence">with evidence<\/a>\./, `${language}: rule conditions and links must remain intact`);
     assert.equal((ruleFixture.match(/Standalone rule\./g) ?? []).length, 1, `${language}: standalone rules must not duplicate or disappear`);

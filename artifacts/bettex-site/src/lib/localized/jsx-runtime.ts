@@ -4,7 +4,7 @@ import { t, documentationContinuation, localizedUrl, getLocale, type Locale } fr
 import { formatDocumentationProse, preserveDocumentationSpacing } from '../documentation-prose';
 export { Fragment };
 const originals = new WeakMap<object, { props: Record<string, unknown>; locale: Locale }>();
-function documentationChildren(value: unknown, inline = false): unknown {
+export function documentationChildren(value: unknown, inline = false): unknown {
   if (typeof value === 'string') return preserveDocumentationSpacing(value, inline ? documentationContinuation(value) : t(value));
   if (Array.isArray(value)) return value.map(child => documentationChildren(child, inline));
   if (isValidElement(value) && (typeof value.type === 'string' || value.type === Fragment)) {

@@ -1,12 +1,15 @@
 import { Children, cloneElement, isValidElement, type ReactElement, type ReactNode } from 'react';
 import { t } from '@/lib/i18n';
+import { documentationChildren } from '@/lib/localized/jsx-runtime';
 import './DocumentationRulesTable.css';
 
 type Paragraph = ReactElement<{ children?: ReactNode }>;
 
 /** Keep the original rule text, links and anchors; only change its presentation. */
 export function DocumentationRulesTable({ children }: { children: ReactNode }) {
-  const rows = Children.toArray(children).filter(isValidElement).map(node => {
+  // Apply the same contextual fragment localization as prose before splitting
+  // a paragraph across cells or cloning elements (which loses source metadata).
+  const rows = Children.toArray(documentationChildren(children) as ReactNode).filter(isValidElement).map(node => {
     const paragraph = node as Paragraph;
     const parts = Children.toArray(paragraph.props.children);
     const first = parts[0];
@@ -23,10 +26,10 @@ export function DocumentationRulesTable({ children }: { children: ReactNode }) {
       <tbody>{rows.map(({ paragraph, title, body, hasBody }, index) =>
         <tr key={paragraph.key ?? index}>
           {title && !hasBody
-            ? <td colSpan={2}>{paragraph}</td>
+            ? <td colSpan={2} data-i18n="translated">{paragraph}</td>
             : <>
-              <th scope="row">{title ?? String(index + 1).padStart(2, '0')}</th>
-              <td data-label={t('Aplicação e condições')}>{cloneElement(paragraph, {}, body)}</td>
+              <th scope="row" data-i18n="translated">{title ?? String(index + 1).padStart(2, '0')}</th>
+              <td data-label={t('Aplicação e condições')} data-i18n="translated">{cloneElement(paragraph, {}, body)}</td>
             </>}
         </tr>)}</tbody>
     </table>

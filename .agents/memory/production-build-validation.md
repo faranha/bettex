@@ -5,6 +5,12 @@ description: Source checks alone do not cover rendered Pitch copy and regenerate
 
 For Pitch copy, shared components used by the Pitch, and documentation exports, run the complete production build before declaring the changes ready to publish.
 
+Preservation audits must compare complete semantic rules across approved layout changes. When a paragraph becomes a table row, compare its row title and body together; when adoption caveats move into explanations, protect those complete explanations rather than requiring obsolete title suffixes.
+
+**Why:** Publishing was blocked after approved documentation changes because the audit required removed technology labels and interpreted rule-table body cells as incomplete paragraphs.
+
+**How to apply:** Keep the immutable baseline. Normalize only explicitly approved presentation changes and exact editorial replacements; do not exempt entire rules or drop preservation checks to make the build pass.
+
 **Why:** Type checks and translation coverage passed, but rendered English/Spanish narrative and a stale spreadsheet expectation still blocked publishing later in the build. Editorial guards have also retained obsolete cover placement and singular wording after approved copy was reorganized.
 
 **How to apply:** Use the artifact-scoped build environment. Preserve editorial and export checks; correct copy or align outdated expectations with the approved product scope rather than bypassing validation. When audience copy moves out of a hero, enforce its presence in the dedicated audience section; accept grammatical singular/plural equivalents without dropping the substantive rule. Check regenerated outputs, not only committed downloads.
