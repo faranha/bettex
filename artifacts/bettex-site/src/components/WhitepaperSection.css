@@ -76,7 +76,7 @@
 .whitepaper__hero-note { padding: 4px 0 5px 22px; border-left: 2px solid var(--wp-orange); }
 .whitepaper__hero-note > span { color: #9A6A00; }
 .whitepaper__hero-note p { margin: 11px 0 0; color: #13204F; font-size: 14px; line-height: 1.75; }
-.whitepaper__hero-markets { margin: 14px 0; padding-left: 18px; color: #13204F; font-size: 14px; line-height: 1.65; }
+.whitepaper__hero-markets { margin: 14px 0; padding-left: 18px; list-style: disc outside; color: #13204F; font-size: 14px; line-height: 1.65; }
 .whitepaper__hero-markets li + li { margin-top: 9px; }
 .whitepaper__hero-markets strong { font-weight: 800; }
 .whitepaper__body { display: grid; grid-template-columns: 244px minmax(0, 1fr); gap: clamp(45px, 7vw, 105px); align-items: start; padding-top: clamp(45px, 6vw, 80px); padding-bottom: clamp(80px, 10vw, 150px); border-top: 1px solid var(--wp-line); }
@@ -393,6 +393,21 @@
 .whitepaper__prose ul, .whitepaper__prose ol { margin: 0; padding-left: 1.4em; color: #13204F; font-size: 15px; line-height: 1.8; }
 .whitepaper__prose li + li { margin-top: 8px; }
 .whitepaper__prose li::marker { color: #2B59FF; }
+/* Restore semantic list markers removed by the global reset. Custom chart,
+   diagram and navigation lists keep their own presentation. */
+.whitepaper__prose ul:not([class]) { list-style: disc outside; }
+.whitepaper__prose ol:not([class]) { list-style: decimal outside; }
+.whitepaper__prose ul:not([class]) ul:not([class]) { list-style-type: circle; }
+.whitepaper__prose :is(ul, ol):not([class]) > li {
+  display: list-item; padding-inline-start: .25em;
+}
+.whitepaper__prose :is(ul, ol):not([class]) > li + li,
+.whitepaper__prose .whitepaper__rules > li + li { margin-block-start: 16px; }
+/* These must follow the paragraph/list margin resets, including the rules-list
+   shorthand, so introductions, lists and closing paragraphs remain separated. */
+.whitepaper__prose > * + :is(p, ul, ol, .whitepaper__rules) { margin-block-start: 24px; }
+.whitepaper__prose li > * + :is(p, ul, ol) { margin-block-start: 12px; }
+.whitepaper__prose li > :is(ul, ol) { margin-block-start: 12px; }
 .whitepaper__prose p:last-child, .whitepaper__lead p:last-child { margin-bottom: 0; }
 .whitepaper__lead p + p { margin-top: 18px; }
 .whitepaper__status-grid p + p, .whitepaper__system p + p, .whitepaper__currency-grid p + p, .whitepaper__aside-callout p + p, .whitepaper__glossary p + p, .whitepaper__market-card p + p, .whitepaper__hero-note p + p, .whitepaper__technical-body p + p, .whitepaper__risk-list p + p, .whitepaper__steps p + p, .whitepaper__timeline p + p, .whitepaper__rule-pair p + p, .whitepaper__flow li p + p { margin-top: 12px; }
@@ -631,7 +646,7 @@
 }
 .whitepaper__toc-category-children { padding-left: 12px; border-left: 1px solid #13204f24; }
 .whitepaper__mobile-dropdown {
-  --wp-line: #5f86ff40; --wp-paper: #070b1f;
+  --wp-line: #5f86ff40; --wp-paper: #070b1f; --wp-ink: #f4f1e8;
   z-index: 160; width: min(390px, calc(100vw - 24px));
   max-height: min(70dvh, var(--radix-dropdown-menu-content-available-height));
   overflow-y: auto; overscroll-behavior: contain; padding: 8px;
@@ -688,6 +703,19 @@
 }
 .whitepaper__menu-section .whitepaper__toc-category-trigger.is-active { background: #ebe7dc; }
 .whitepaper__mobile-dropdown .whitepaper__toc-category-trigger.is-active { background: #193265; }
+
+/* The dropdown is portaled outside the light document. Override light-theme
+   hover and generic Radix focus colors even when data-highlighted is absent
+   (for example, during touch focus or a pointer moving between options). */
+.whitepaper__mobile-dropdown .whitepaper__toc-row:is(:hover, :focus-within) {
+  background: #193265; color: #fff;
+}
+.whitepaper__mobile-dropdown .whitepaper__toc-sublink:is(:hover, :focus, :focus-visible, :active, [data-highlighted], .is-active) {
+  background: #193265; color: #fff;
+}
+.whitepaper__mobile-dropdown .whitepaper__toc-sublink:focus-visible {
+  outline: 2px solid #f2b632; outline-offset: -2px;
+}
 
 /* Section openings are unboxed and always visible; only their subsections collapse. */
 .whitepaper__heading-number { display: inline-block; margin-right: .3em; color: #21429c; font: 700 .4em/1.4 var(--app-font-mono); letter-spacing: .02em; vertical-align: middle; }

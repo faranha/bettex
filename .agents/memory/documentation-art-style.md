@@ -11,6 +11,10 @@ Os desenhos consecutivos da documentação precisam de separação visual e espa
 
 Na documentação, “praticamente todos os itens merecem bullets”; aplicar listas onde fizer sentido.
 
+**Why:** O criador reiterou a regra ao mostrar “Carteira e recursos opcionais” com recuo, sem bullets nem espaçamento, e pediu revisar novamente a formatação do documento.
+
+**How to apply:** Nas listas textuais, tornar marcadores e numeração visíveis, justificar o recuo pela posição dos marcadores e separar introdução, lista, itens e parágrafo final. Manter parágrafos narrativos alinhados, sem recuo artificial. Preservar a apresentação própria dos menus, legendas e diagramas.
+
 Os textos dos blocos destacados da documentação devem ter tamanho proporcional ao conteúdo normal, sem parágrafos grandes com aparência de título.
 
 **Why:** O criador apontou o bloco de Visão e pediu: “essa fonte esta desproporcional ao resto do conteudo, em todos os locais, esta grande demais, na documentacao, diminua”.
