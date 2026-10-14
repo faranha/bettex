@@ -88,11 +88,14 @@ export function DocumentationAgenticVision({ children }: { children: ReactNode }
     <div className="dv__agentic-layout">
       <figure className="dv__agentic-illustration">
         <img
-          src={`${base}pitch-hero-ai-rescue.webp`}
-          srcSet={`${base}pitch-hero-ai-rescue-640.webp 640w, ${base}pitch-hero-ai-rescue-960.webp 960w, ${base}pitch-hero-ai-rescue.webp 1280w`}
+          src={`${base}technology/documentation-agentic-core.webp`}
           sizes="(max-width: 760px) min(360px, 100vw - 48px), 280px"
-          width={1280} height={1120}
-          alt={t('Uma pessoa erguendo a mão e sendo resgatada por um androide que representa o agente de IA da BETTEX.')}
+          width={718} height={720}
+          alt={x(
+            'Ilustração conceitual de um núcleo de inteligência azul conectado a cinco módulos especializados.',
+            'Conceptual illustration of a blue intelligence core connected to five specialized modules.',
+            'Ilustración conceptual de un núcleo de inteligencia azul conectado a cinco módulos especializados.',
+          )}
           loading="lazy" decoding="async"
         />
       </figure>
@@ -103,8 +106,15 @@ export function DocumentationAgenticVision({ children }: { children: ReactNode }
 
 export function DocumentationTechnologyIntroduction({ children }: { children: ReactNode }) {
   const x = useX();
+  const base = import.meta.env.BASE_URL;
   return <section id="documentacao-tecnologia-introducao" data-documentation-opening>
     <h2 className="whitepaper__subhead">{x('Tecnologia', 'Technology', 'Tecnología')}</h2>
+    <ul className="dv__technology-brands" aria-label={x('Tecnologias citadas na proposta', 'Technologies mentioned in the proposal', 'Tecnologías citadas en la propuesta')}>
+      <li><img src={`${base}technologies/starknet-documentation.svg`} alt="Starknet" width={700} height={159} loading="lazy" decoding="async" /></li>
+      <li><img src={`${base}technologies/arbitrum-documentation.webp`} alt="Arbitrum" width={612} height={156} loading="lazy" decoding="async" /></li>
+      <li><img className="dv__technology-monochrome" src={`${base}technologies/allora.webp`} alt="Allora" width={523} height={167} loading="lazy" decoding="async" /></li>
+      <li className="dv__technology-usdc"><img src={`${base}app/usdc.svg`} alt="" width={96} height={96} loading="lazy" decoding="async" /><span>USDC</span></li>
+    </ul>
     {children}
     <div className="whitepaper__prose">
       <p>{x(
