@@ -9,7 +9,8 @@ export function DocumentationSectionOpening({ group }: { group: 2 | 3 }) {
   return <>
     <header className="whitepaper__chapter-head">
       <h2 id={group === 3 ? 'title-documentacao-features' : 'title-documentacao-subagentes'}>
-        {t(group === 3 ? 'Features' : 'Subagentes')}<span className="whitepaper__title-period">.</span>
+        <span className="whitepaper__heading-number">{group + 1}</span>{' '}
+        <span data-documentation-title>{t(group === 3 ? 'Features' : 'Subagentes')}</span><span className="whitepaper__title-period">.</span>
       </h2>
       <p>{group === 3
         ? t('Funcionalidades do aplicativo que executam regras, não inteligências.')

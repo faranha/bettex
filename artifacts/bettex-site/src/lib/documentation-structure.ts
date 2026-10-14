@@ -37,14 +37,21 @@ export function documentationParentId(id: string): string | undefined {
   return cryptoSpecialists.some(specialist => specialist === id) ? 'documentacao-subagente-cripto' : undefined;
 }
 
-export function documentationChapterNumber(index: number): string {
+export function documentationChapterNumber(index: number, precedingTopics = 0): string {
   const chapter = documentationChapters[index];
-  if (chapter.id === 'documentacao-features') return '';
+  const section = String(chapter.group + 1);
+  if (chapter.id === 'documentacao-features') return section;
   const parent = documentationParentId(chapter.id);
   if (parent) {
     const parentIndex = documentationChapters.findIndex(item => item.id === parent);
     const childIndex = cryptoSpecialists.findIndex(id => id === chapter.id);
-    return `${documentationChapterNumber(parentIndex)}.${childIndex + 1}`;
+    // Specialists follow the parent's own topics, rather than reusing their numbers.
+    return `${documentationChapterNumber(parentIndex)}.${precedingTopics + childIndex + 1}`;
   }
-  return String(documentationChapters.slice(0, index + 1).filter(item => item.id !== 'documentacao-features' && !documentationParentId(item.id)).length);
+  if (chapter.group === 2 || chapter.group === 3) {
+    const siblings = documentationChapters.filter(item => item.group === chapter.group &&
+      item.id !== 'documentacao-features' && !documentationParentId(item.id));
+    return `${section}.${siblings.findIndex(item => item.id === chapter.id) + 1}`;
+  }
+  return section;
 }

@@ -690,6 +690,8 @@
 .whitepaper__mobile-dropdown .whitepaper__toc-category-trigger.is-active { background: #193265; }
 
 /* Section openings are unboxed and always visible; only their subsections collapse. */
+.whitepaper__heading-number { display: inline-block; margin-right: .3em; color: #21429c; font: 700 .4em/1.4 var(--app-font-mono); letter-spacing: .02em; vertical-align: middle; }
+.whitepaper__chapter-menu-row .whitepaper__toc-subnum { flex: 0 0 auto; margin-right: 10px; }
 .whitepaper__reading-group { margin: 24px 0; border: 0; border-radius: 0; background: transparent; }
 .whitepaper__reading-group-children { padding: 0; }
 .whitepaper__reading-group-children .whitepaper__chapter { padding: 36px 0; }

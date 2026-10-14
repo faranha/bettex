@@ -4,7 +4,32 @@ import { test } from 'node:test';
 import { documentationAgentTerminology as terms, isDocumentationPath } from '../src/lib/documentation-agent-terminology.ts';
 import { intelligenceCopy, intelligenceTranslations } from '../src/lib/documentation-intelligence.ts';
 import { presentationCopy, presentationTranslations } from '../src/lib/documentation-intelligence-presentation.ts';
-import { formatOutlineTitle, groupReferenceItems } from '../src/components/whitepaperOutline.ts';
+import { documentationMenuItems, formatOutlineTitle, groupReferenceItems } from '../src/components/whitepaperOutline.ts';
+import { documentationChapters, documentationChapterNumber, documentationParentId } from '../src/lib/documentation-structure.ts';
+
+test('six main sections own their chapter and specialist numbering', () => {
+  const number = id => documentationChapterNumber(documentationChapters.findIndex(chapter => chapter.id === id));
+  assert.deepEqual(documentationChapters.map((_, index) => documentationChapterNumber(index)), [
+    '1', '2', '3.1', '3.2', '3.3', '3.4', '3.4.1', '3.4.2', '3.4.3', '3.5', '3.6', '3.7',
+    '4', '4.1', '4.2', '4.3', '4.4', '4.5', '4.6', '4.7', '4.8', '5', '6',
+  ]);
+  for (const chapter of documentationChapters) {
+    const parent = documentationParentId(chapter.id);
+    if (parent) assert.ok(number(chapter.id).startsWith(`${number(parent)}.`));
+    else assert.equal(number(chapter.id).split('.')[0], String(chapter.group + 1));
+  }
+  const btc = documentationChapters.findIndex(chapter => chapter.id === 'documentacao-especialista-btc');
+  assert.equal(documentationChapterNumber(btc, 12), '3.4.13');
+  assert.equal(documentationChapterNumber(btc + 1, 12), '3.4.14');
+  assert.equal(documentationChapterNumber(btc + 2, 12), '3.4.15');
+});
+
+test('menus stop at section and subsection without removing deeper reader topics', () => {
+  const items = ['1.1', '1.1.1', '2.1', '2.1.1', '3.1.1', '3.4.3.1', '4.2.1', '5.1', '5.1.1']
+    .map(number => ({ id: number, chapterId: 'chapter', number, level: 1, title: number }));
+  assert.deepEqual(documentationMenuItems(items).map(item => item.number), ['1.1', '2.1', '5.1']);
+  assert.equal(items.length, 9);
+});
 
 test('reference menu groups all descendants without consuming adjacent sections or renumbering', () => {
   const make = (number, isReference = false) => ({ id: `item-${number}`, chapterId: 'chapter', number, title: number, level: 1, isReference });

@@ -9,6 +9,10 @@ export type OutlineItem = {
 };
 export type ChapterOutline = { id: string; number: string; title: string; items: OutlineItem[] };
 
+/** The navigation shows sections and subsections only; deeper topics remain in the reader. */
+export const documentationMenuItems = (items: readonly OutlineItem[]) =>
+  items.filter(item => item.number.split('.').length <= 2);
+
 /** Menu labels omit terminal punctuation; rendered headings and target IDs are untouched. */
 export const formatOutlineTitle = (s: string | null | undefined) =>
   (s ?? '').replace(/\s+/g, ' ').trim().replace(/[.!?…:;]+$/u, '').trim();
@@ -35,14 +39,20 @@ export function openAncestors(el: Element) {
  * Scans rendered chapters (so it works after locale changes), assigns stable ids
  * (existing ids kept) and numbering attributes, and returns the outline.
  */
-export function collectOutline(chapters: readonly { id: string; title: string }[], numberForChapter = (index: number) => String(index + 1)): ChapterOutline[] {
+export function collectOutline(chapters: readonly { id: string; title: string }[],
+  numberForChapter = (index: number, _precedingTopics = 0) => String(index + 1),
+  parentForChapter: (id: string) => string | undefined = () => undefined): ChapterOutline[] {
   const used = new Set<string>();
   document.querySelectorAll('[id]').forEach(e => used.add(e.id));
+  const collected: ChapterOutline[] = [];
   return chapters.map((chapter, ci) => {
     const article = document.getElementById(chapter.id);
-    const number = numberForChapter(ci);
+    const parent = collected.find(item => item.id === parentForChapter(chapter.id));
+    const number = numberForChapter(ci, parent?.items.filter(item => item.level === 1).length ?? 0);
     const titleEl = document.getElementById(`title-${chapter.id}`);
-    const out: ChapterOutline = { id: chapter.id, number, title: formatOutlineTitle(titleEl?.textContent) || formatOutlineTitle(chapter.title), items: [] };
+    const titleText = titleEl?.querySelector('[data-documentation-title]') ?? titleEl;
+    const out: ChapterOutline = { id: chapter.id, number, title: formatOutlineTitle(titleText?.textContent) || formatOutlineTitle(chapter.title), items: [] };
+    collected.push(out);
     if (!article || chapter.id === 'documentacao-features') return out;
     const counters = [0, 0, 0];
     const nodes = article.querySelectorAll<HTMLElement>('h3, h4, summary');
@@ -115,4 +125,4 @@ export function groupReferenceItems(items: readonly OutlineItem[]) {
   return groups;
 }
 
-export const outlineSignature = (o: ChapterOutline[]) => o.map(c => `${c.id}|${c.title}|${c.items.map(i => `${i.id}:${i.number}:${i.title}:${i.isReference}:${i.referenceOpen}`).join(',')}`).join(';');
+export const outlineSignature = (o: ChapterOutline[]) => o.map(c => `${c.id}|${c.number}|${c.title}|${c.items.map(i => `${i.id}:${i.number}:${i.title}:${i.isReference}:${i.referenceOpen}`).join(',')}`).join(';');

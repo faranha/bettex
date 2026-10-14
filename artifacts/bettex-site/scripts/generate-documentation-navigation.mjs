@@ -20,9 +20,25 @@ try {
     await page.route('**/*', route => route.abort());
     await page.setContent(`<div id="root">${html}</div>`, { waitUntil: 'domcontentloaded' });
     manifest[locale] = await page.evaluate(code => {
-      const helpers = new Function(`${code};return {collectOutline,documentationChapters,documentationChapterNumber};`)();
+      const helpers = new Function(`${code};return {collectOutline,documentationChapters,documentationChapterNumber,documentationParentId};`)();
       const { documentationChapters: chapters } = helpers;
-      const outline = helpers.collectOutline(chapters, helpers.documentationChapterNumber);
+      const outline = helpers.collectOutline(chapters, helpers.documentationChapterNumber, helpers.documentationParentId);
+      const numbers = new Map([['3', 'documentation-reading-group-2']]);
+      for (const chapter of outline) {
+        for (const item of [chapter, ...chapter.items]) {
+          if (numbers.has(item.number)) throw new Error(`Duplicate documentation number ${item.number}: ${numbers.get(item.number)} / ${item.id}`);
+          const parentNumber = item.number.split('.').slice(0, -1).join('.');
+          if (parentNumber && !numbers.has(parentNumber)) throw new Error(`Missing numbering parent ${parentNumber} for ${item.id}`);
+          if (item !== chapter && !item.number.startsWith(`${chapter.number}.`)) throw new Error(`Topic outside its chapter: ${item.id}`);
+          numbers.set(item.number, item.id);
+        }
+      }
+      // The audit page was SSR-rendered using the previous navigation catalog.
+      // Update only this offline fixture to the freshly collected hierarchy.
+      outline.forEach(chapter => {
+        const marker = document.getElementById(`title-${chapter.id}`)?.querySelector('.whitepaper__heading-number');
+        if (marker) marker.textContent = chapter.number;
+      });
       const targets = {};
       document.querySelectorAll('[id]').forEach(element => {
         const owner = element.closest('article.whitepaper__chapter');
