@@ -111,6 +111,10 @@ try {
       assert.ok(header.includes(`data-documentation-heading-depth="${number.split('.').length}"`), `${language}: chapter ${number} typography must follow numeric depth: ${header.slice(0, 400)}`);
     }
     assert.ok(reader.includes('id="documentacao-especializacoes-cripto"'), `${language}: crypto specialists need an explicit parent group`);
+    const specializationSummary = reader.match(/<details\b[^>]*id="documentacao-especializacoes-cripto"[^>]*>[\s\S]*?<summary\b[^>]*>([\s\S]*?)<\/summary>/)?.[1];
+    assert.ok(specializationSummary, `${language}: specializations need a summary`);
+    assert.match(specializationSummary.replace(/<[^>]*>/g, ''), /\.\s+BTC, ETH/,
+      `${language}: the specialization heading and subtitle need an explicit text separator, even when CSS displays them on separate lines`);
     assert.doesNotMatch(reader, /<details id="documentacao-especializacoes-cripto"[^>]*\bopen(?:=|\s|>)/, `${language}: the specializations group starts collapsed`);
     for (const [index, chapter] of chapters.entries()) {
       if (!documentationChapterNumber(index).includes('.')) continue;

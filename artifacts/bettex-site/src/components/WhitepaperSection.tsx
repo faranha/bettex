@@ -417,7 +417,7 @@ export function WhitepaperSection() {
         </section>
         {children.length > 0 && <details id="documentacao-especializacoes-cripto" className="whitepaper__reading-specialists">
           <summary>
-            {t('Especializações por ativo')}<span data-documentation-heading-period aria-hidden="true">.</span>
+            {t('Especializações por ativo')}<span data-documentation-heading-period aria-hidden="true">.</span>{' '}
             <span className="whitepaper__section-subtitle" data-i18n="translated"
               data-documentation-section-subtitle="documentacao-especializacoes-cripto">
               {t('BTC, ETH e SOL são especialistas internos do subagente Cripto.')}
