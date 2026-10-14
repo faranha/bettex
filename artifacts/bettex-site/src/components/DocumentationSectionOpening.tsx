@@ -8,7 +8,7 @@ export function DocumentationSectionOpening({ group }: { group: 2 | 3 }) {
   const x = (pt: string, en: string, es: string) => locale === 'en' ? en : locale === 'es' ? es : pt;
   return <>
     <header className="whitepaper__chapter-head">
-      <h2 id={group === 3 ? 'title-documentacao-features' : 'title-documentacao-subagentes'}>
+      <h2 id={group === 3 ? 'title-documentacao-features' : 'title-documentacao-subagentes'} data-documentation-heading-depth="1">
         <span className="whitepaper__heading-number">{group + 1}</span>{' '}
         <span data-documentation-title>{t(group === 3 ? 'Features' : 'Subagentes')}</span><span className="whitepaper__title-period">.</span>
       </h2>

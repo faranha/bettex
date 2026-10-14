@@ -121,6 +121,12 @@ No topo da documentação, exibir “Conteúdo administrado pelo Agente de Gover
 
 **How to apply:** Preservar o aviso nos idiomas da documentação e respeitar movimento reduzido. O aviso trata do conteúdo; não constitui autorização para transferir administração operacional ou financeira à IA, nem para alterar homepage ou Pitch.
 
+O B da BETTEX deve ser integrado desde o redesenho das artes, com perspectiva, material, relevo, luz e sombra do objeto; não aplicar um logo plano por cima da imagem. No robô, o B faz parte da própria armadura. A Tesouraria não usa líquidos. Cada subagente merece uma arte própria, dentro do conteúdo, não ao lado dos títulos.
+
+**Why:** O criador rejeitou as marcas aplicadas em overlay no robô, cofre, governança e previsões, pediu redesenhar todas as demais e aprovou especificamente o B central da visão agêntica.
+
+**How to apply:** Preservar a arte aprovada da visão agêntica. Redesenhar os outros objetos considerando o monograma na construção física, em vez de corrigir por composição programática. Não repetir a arte de Cripto para seus especialistas.
+
 Depois da padronização, o criador pediu reduzir o número de esquemas: “Deixa em texto e utilize imagens, mais imagens, menos esquemas”. Texto e imagens devem ser a opção padrão; reservar diagramas para os fluxos essenciais, sem repetir o mesmo esquema para cada agente ou assunto já explicado.
 
 Não colocar linhas horizontais decorativas no fim de cada página da documentação, nem separadores duplicados antes da navegação entre capítulos.

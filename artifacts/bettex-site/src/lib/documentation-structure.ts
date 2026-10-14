@@ -45,8 +45,9 @@ export function documentationChapterNumber(index: number, precedingTopics = 0): 
   if (parent) {
     const parentIndex = documentationChapters.findIndex(item => item.id === parent);
     const childIndex = cryptoSpecialists.findIndex(id => id === chapter.id);
-    // Specialists follow the parent's own topics, rather than reusing their numbers.
-    return `${documentationChapterNumber(parentIndex)}.${precedingTopics + childIndex + 1}`;
+    // The last parent topic is the explicit specializations group. Its children
+    // must not share a level with the parent's baseline and technical reference.
+    return `${documentationChapterNumber(parentIndex)}.${Math.max(1, precedingTopics)}.${childIndex + 1}`;
   }
   if (chapter.group === 2 || chapter.group === 3) {
     const siblings = documentationChapters.filter(item => item.group === chapter.group &&

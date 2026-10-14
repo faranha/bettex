@@ -1,4 +1,12 @@
 {
+  "Especializações por ativo": {
+    "en": "Asset specializations",
+    "es": "Especializaciones por activo"
+  },
+  "BTC, ETH e SOL são especialistas internos do subagente Cripto.": {
+    "en": "BTC, ETH and SOL are internal specialists of the Crypto subagent.",
+    "es": "BTC, ETH y SOL son especialistas internos del subagente Cripto."
+  },
   "Ilustração conceitual: análise de exposição, limites e autorização independente.": {
     "en": "Conceptual illustration: exposure analysis, limits and independent authorization.",
     "es": "Ilustración conceptual: análisis de exposición, límites y autorización independiente."
@@ -14,6 +22,18 @@
   "Ilustração conceitual: o subagente Cripto integra análises de BTC, ETH e SOL.": {
     "en": "Conceptual illustration: the Crypto subagent integrates BTC, ETH and SOL analysis.",
     "es": "Ilustración conceptual: el subagente Cripto integra análisis de BTC, ETH y SOL."
+  },
+  "Ilustração conceitual: o especialista BTC analisa o mercado de Bitcoin.": {
+    "en": "Conceptual illustration: the BTC specialist analyzes the Bitcoin market.",
+    "es": "Ilustración conceptual: el especialista BTC analiza el mercado de Bitcoin."
+  },
+  "Ilustração conceitual: o especialista ETH analisa o mercado de Ethereum.": {
+    "en": "Conceptual illustration: the ETH specialist analyzes the Ethereum market.",
+    "es": "Ilustración conceptual: el especialista ETH analiza el mercado de Ethereum."
+  },
+  "Ilustração conceitual: o especialista SOL analisa o mercado de Solana.": {
+    "en": "Conceptual illustration: the SOL specialist analyzes the Solana market.",
+    "es": "Ilustración conceptual: el especialista SOL analiza el mercado de Solana."
   },
   "Ilustração conceitual: comparação de probabilidades e fontes esportivas na visão futura.": {
     "en": "Conceptual illustration: comparing probabilities and sports sources in the future vision.",

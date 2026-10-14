@@ -136,8 +136,7 @@ export function DocumentationAgentIllustration() {
   const x = useX();
   return <figure id="documentacao-ilustracao-orquestracao" className="dv__orchestration-figure" data-testid="documentation-orchestration-illustration">
     <img
-      src={`${import.meta.env.BASE_URL}technology/bettex-orchestration.webp`}
-      srcSet={`${import.meta.env.BASE_URL}technology/bettex-orchestration.webp?brand=btex`}
+      src={`${import.meta.env.BASE_URL}technology/bettex-orchestration-integrated.webp`}
       width={960} height={960}
       alt={x(
         'Agente BETTEX ao centro, conectado a três núcleos de análise cripto e aos módulos de risco e tesouraria.',

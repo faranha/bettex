@@ -95,11 +95,23 @@ try {
       assert.equal((html.match(new RegExp(`data-agent-concept="${chapter.id}"`, 'g')) ?? []).length, 1, `${language}: ${chapter.id} needs one conceptual illustration inside its content`);
     }
     assert.doesNotMatch(reader, /data-documentation-agent-art|whitepaper__chapter-head--agent/, `${language}: title-side artwork must not return`);
+    const conceptSources = [...html.matchAll(/<figure\b[^>]*data-agent-concept="[^"]+"[^>]*>[\s\S]*?<img\b[^>]*src="([^"]+)"/g)].map(match => match[1]);
+    assert.equal(conceptSources.length, 10, `${language}: all seven subagents and three crypto specialists need artwork`);
+    assert.equal(new Set(conceptSources).size, 10, `${language}: every subagent and specialist needs a distinct illustration`);
+    for (const src of conceptSources) {
+      assert.match(src, /-integrated\.webp$/, `${language}: use physically integrated branding, not the old overlays`);
+      assert.ok(fs.existsSync(path.join(root, 'public', src.replace(/^\//, ''))), `${language}: conceptual illustration must exist`);
+    }
     const chapterHeaders = [...reader.matchAll(/<header\b[^>]*class="[^"]*whitepaper__chapter-head[^"]*"[^>]*>([\s\S]*?)<\/header>/g)];
     assert.ok(chapterHeaders.length > 0, `${language}: chapter headers must be present`);
     for (const [, header] of chapterHeaders) {
       assert.doesNotMatch(header, /<(?:img|picture|figure)\b/, `${language}: images belong inside section content, never alongside section titles`);
+      const number = header.match(/class="whitepaper__heading-number">([\d.]+)</)?.[1];
+      assert.ok(number, `${language}: every chapter heading needs its canonical number`);
+      assert.ok(header.includes(`data-documentation-heading-depth="${number.split('.').length}"`), `${language}: chapter ${number} typography must follow numeric depth: ${header.slice(0, 400)}`);
     }
+    assert.ok(reader.includes('id="documentacao-especializacoes-cripto"'), `${language}: crypto specialists need an explicit parent group`);
+    assert.doesNotMatch(reader, /<details id="documentacao-especializacoes-cripto"[^>]*\bopen(?:=|\s|>)/, `${language}: the specializations group starts collapsed`);
     for (const [index, chapter] of chapters.entries()) {
       if (!documentationChapterNumber(index).includes('.')) continue;
       assert.ok(reader.includes(`data-documentation-section-toggle="${chapter.id}" aria-expanded="false" aria-controls="${chapter.id}-body"`), `${language}: ${chapter.id} needs a closed, accessible chapter control`);
@@ -141,7 +153,7 @@ try {
     const agentIllustration = html.indexOf('data-testid="documentation-orchestration-illustration"');
     const intelligenceContent = html.indexOf('id="documentacao-inteligencia"', agentIntroduction);
     assert.ok(agentIntroduction >= 0 && agentIllustration > agentIntroduction && intelligenceContent > agentIllustration, `${language}: illustration must follow the BETTEX agent introduction`);
-    assert.equal((html.match(/src="[^"]*\/technology\/bettex-orchestration\.webp"/g) ?? []).length, 1, `${language}: exactly one orchestration illustration expected`);
+    assert.equal((html.match(/src="[^"]*\/technology\/bettex-orchestration-integrated\.webp"/g) ?? []).length, 1, `${language}: exactly one orchestration illustration expected`);
     const technology = html.match(/<section\b[^>]*id="documentacao-tecnologia-introducao"[^>]*>([\s\S]*?)<\/section>/);
     assert.ok(technology, `${language}: technology introduction missing`);
     const technologyTitle = { pt: 'Tecnologia', en: 'Technology', es: 'Tecnología' }[language];

@@ -19,6 +19,7 @@ try {
     const page = await browser.newPage();
     await page.route('**/*', route => route.abort());
     await page.setContent(`<div id="root">${html}</div>`, { waitUntil: 'domcontentloaded' });
+    await page.addStyleTag({ content: await readFile(path.join(root, 'src/components/WhitepaperSection.css'), 'utf8') });
     manifest[locale] = await page.evaluate(code => {
       const helpers = new Function(`${code};return {collectOutline,documentationChapters,documentationChapterNumber,documentationParentId};`)();
       const { documentationChapters: chapters } = helpers;
@@ -30,6 +31,16 @@ try {
           const parentNumber = item.number.split('.').slice(0, -1).join('.');
           if (parentNumber && !numbers.has(parentNumber)) throw new Error(`Missing numbering parent ${parentNumber} for ${item.id}`);
           if (item !== chapter && !item.number.startsWith(`${chapter.number}.`)) throw new Error(`Topic outside its chapter: ${item.id}`);
+          if (item === chapter && chapter.id.startsWith('documentacao-especialista-') &&
+            numbers.get(parentNumber) !== 'documentacao-especializacoes-cripto') {
+            throw new Error(`Specialist must belong to the explicit specializations group, not a baseline or reference: ${chapter.id}`);
+          }
+          const heading = item === chapter
+            ? document.getElementById(`title-${item.id}`)
+            : document.querySelector(`[data-outline-number="${item.number}"]`);
+          if (heading?.getAttribute('data-documentation-heading-depth') !== String(item.number.split('.').length)) {
+            throw new Error(`Visual depth differs from numbering depth: ${item.id}`);
+          }
           numbers.set(item.number, item.id);
         }
       }
@@ -55,6 +66,26 @@ try {
       return { outline, targets };
     }, code);
     await writeFile(path.join(output, `${locale}.html`), await page.content());
+    for (const width of [1280, 390]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.evaluate(() => {
+        const sizes = new Map();
+        document.querySelectorAll('.whitepaper__content [data-documentation-heading-depth]').forEach(heading => {
+          const depth = Number(heading.getAttribute('data-documentation-heading-depth'));
+          const size = parseFloat(getComputedStyle(heading).fontSize);
+          if (sizes.has(depth) && Math.abs(sizes.get(depth) - size) > .1) {
+            throw new Error(`Same numeric depth has different font sizes: ${heading.id || heading.textContent.slice(0, 60)}`);
+          }
+          sizes.set(depth, size);
+        });
+        const levels = [...sizes.entries()].sort((a, b) => a[0] - b[0]);
+        for (let i = 1; i < levels.length; i++) {
+          if (levels[i][0] <= 5 && levels[i][1] >= levels[i - 1][1]) {
+            throw new Error(`Nested heading is not smaller: depth ${levels[i][0]}`);
+          }
+        }
+      });
+    }
     await page.close();
   }
   await writeFile(path.join(root, 'src/lib/documentation-outline.json'), JSON.stringify(manifest) + '\n');

@@ -44,7 +44,15 @@ class Documentation(HTMLParser):
     def handle_starttag(self, tag, attrs):
         props=dict(attrs); self.stack.append((tag,props))
         if tag == 'header' and 'whitepaper__chapter-head' in props.get('class','').split():
-            assert not any(t in ('details','summary') for t,_ in self.stack), "Section titles must not be inside collapsible containers"
+            containers=[(t,a) for t,a in self.stack if t in ('details','summary')]
+            specialist=any(t=='article' and a.get('id') in (
+                'documentacao-especialista-btc', 'documentacao-especialista-eth',
+                'documentacao-especialista-sol') for t,a in self.stack)
+            # Main openings stay outside accordions. Only the three specialists
+            # belong inside their explicit, subordinate specializations group.
+            assert not containers or specialist and all(
+                t=='details' and a.get('id')=='documentacao-especializacoes-cripto'
+                for t,a in containers), "Section titles must not be inside unrelated collapsible containers"
             self.section_headers += 1
             self.opening=[]
         in_reference=any('data-documentation-reference' in a for _,a in self.stack)

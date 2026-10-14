@@ -386,6 +386,7 @@ export function WhitepaperSection() {
 
   function renderReadingChapter(index: number): ReactElement {
     const chapter = chapters[index];
+    const number = outline[index]?.number ?? documentationChapterNumber(index);
     const collapsible = documentationChapterNumber(index).includes('.');
     const open = !collapsible || openReadingSections.has(chapter.id);
     const bodyId = `${chapter.id}-body`;
@@ -393,8 +394,9 @@ export function WhitepaperSection() {
       documentationParentId(child.id) === chapter.id ? [childIndex] : []);
     return <article key={chapter.id} id={chapter.id} className="whitepaper__chapter" aria-labelledby={`title-${chapter.id}`}>
         <header className="whitepaper__chapter-head">
-          <h2 id={`title-${chapter.id}`} data-documentation-section-heading={collapsible ? chapter.id : undefined}>
-            <span className="whitepaper__heading-number">{outline[index]?.number ?? documentationChapterNumber(index)}</span>{' '}
+          <h2 id={`title-${chapter.id}`} data-documentation-section-heading={collapsible ? chapter.id : undefined}
+            data-documentation-heading-depth={number.split('.').length}>
+            <span className="whitepaper__heading-number">{number}</span>{' '}
             <span data-documentation-title>{chapter.title}</span><span className="whitepaper__title-period">.</span>
             {collapsible && <button type="button" className="whitepaper__section-toggle"
               data-documentation-section-toggle={chapter.id}
@@ -413,9 +415,16 @@ export function WhitepaperSection() {
             <ChapterContent index={index} />
           </ChapterVisibility.Provider>
         </section>
-        {children.length > 0 && <div className="whitepaper__reading-specialists">
-          {children.map(renderReadingChapter)}
-        </div>}
+        {children.length > 0 && <details id="documentacao-especializacoes-cripto" className="whitepaper__reading-specialists">
+          <summary>
+            {t('Especializações por ativo')}<span data-documentation-heading-period aria-hidden="true">.</span>
+            <span className="whitepaper__section-subtitle" data-i18n="translated"
+              data-documentation-section-subtitle="documentacao-especializacoes-cripto">
+              {t('BTC, ETH e SOL são especialistas internos do subagente Cripto.')}
+            </span>
+          </summary>
+          <div className="whitepaper__specialist-children">{children.map(renderReadingChapter)}</div>
+        </details>}
         </div>
     </article>;
   }
