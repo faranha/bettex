@@ -29,6 +29,12 @@ try {
         const index = chapters.findIndex(chapter => chapter.id === owner?.id);
         if (index >= 0) targets[element.id] = { group: chapters[index].group, index };
         else if (element.closest('#documentacao-features')) targets[element.id] = { group: 3, index: chapters.findIndex(chapter => chapter.id === 'documentacao-features') };
+         else {
+           const group = element.closest('[data-documentation-reading-group]')?.getAttribute('data-documentation-reading-group');
+           if (group !== undefined && group !== null) targets[element.id] = {
+             group: Number(group), index: chapters.findIndex(chapter => chapter.group === Number(group)),
+           };
+         }
       });
       return { outline, targets };
     }, code);

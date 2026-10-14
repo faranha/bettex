@@ -40,8 +40,13 @@ class Documentation(HTMLParser):
         super().__init__(); self.stack=[]; self.ids=[]; self.hashes=[]; self.text=[]; self.diagrams=[]; self.chapters=[]
         self.original_flows=set(); self.illustrations=[]; self.agent_count=0
         self.main_text=[]; self.main_diagrams=[]; self.reference_count=0
+        self.section_headers=0; self.opening=None
     def handle_starttag(self, tag, attrs):
         props=dict(attrs); self.stack.append((tag,props))
+        if tag == 'header' and 'whitepaper__chapter-head' in props.get('class','').split():
+            assert not any(t in ('details','summary') for t,_ in self.stack), "Section titles must not be inside collapsible containers"
+            self.section_headers += 1
+            self.opening=[]
         in_reference=any('data-documentation-reference' in a for _,a in self.stack)
         if 'data-documentation-reference' in props: self.reference_count+=1
         if props.get('id'): self.ids.append(props['id'])
@@ -60,9 +65,14 @@ class Documentation(HTMLParser):
             assert 'alt' in props, f"Missing image alt attribute: {props['src']}"
         if tag in ('img','input','br','hr','meta','link'): self.stack.pop()
     def handle_endtag(self, tag):
+        if tag == 'header' and self.opening is not None:
+            assert ''.join(self.opening).strip(), "Every section opening needs a visible description before its subsections"
+            self.opening=None
         for i in range(len(self.stack)-1,-1,-1):
             if self.stack[i][0]==tag: self.stack=self.stack[:i]; break
     def handle_data(self, text):
+        if self.opening is not None and any(t == 'p' for t,_ in self.stack):
+            self.opening.append(text)
         if not any(t in ('style','script') for t,_ in self.stack):
             self.text.append(text)
             if not any('data-documentation-reference' in a for _,a in self.stack):
@@ -89,6 +99,7 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     duplicates=[id for id,n in Counter(p.ids).items() if n>1]
     assert not duplicates, f"{lang}: duplicate ids {duplicates}"
     verify_chapters(p.chapters, canonical_chapters, lang)
+    assert p.section_headers == len(p.chapters) + 2, f"{lang}: every chapter plus Subagents and Features needs a standalone opening"
     assert 'documentacao-features' in p.ids, f"{lang}: features introduction must remain accessible"
     assert p.chapters[-1]=='documentacao-roadmap', f"{lang}: roadmap last"
     for owner in ('risco', 'tesouraria', 'governanca', 'cripto', 'esportes', 'previsoes', 'igaming'):

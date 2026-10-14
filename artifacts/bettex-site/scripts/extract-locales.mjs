@@ -89,7 +89,7 @@ function scan(file) {
     if (ts.isCallExpression(node) && (
       (ts.isIdentifier(node.expression) && node.expression.text === 'x' &&
          node.arguments.length === 3 && node.arguments.every(arg => ts.isStringLiteral(arg) || ts.isNoSubstitutionTemplateLiteral(arg) || ts.isTemplateExpression(arg))) ||
-      (ts.isPropertyAccessExpression(node.expression) && ['matchMedia', 'getElementById', 'querySelector', 'querySelectorAll', 'closest'].includes(node.expression.name.text))
+       (ts.isPropertyAccessExpression(node.expression) && ['matchMedia', 'getElementById', 'querySelector', 'querySelectorAll', 'closest', 'matches'].includes(node.expression.name.text))
     )) return;
     if (file.endsWith('/pitch/PitchSlider.tsx') && ts.isPropertyAssignment(node) &&
       ['event', 'func'].includes(node.name.getText(source)) && ts.isStringLiteral(node.initializer) &&
