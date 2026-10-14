@@ -16,6 +16,10 @@ Mandato definido: BTC, ETH e SOL spot, sem alavancagem, priorizando negociação
 
 As famílias de estratégia abaixo são propostas para organizar a avaliação. Não são estratégias validadas nem autorizações de operação. Rascunhos quantitativos anteriores não estabelecem uma estratégia preferida ou os parâmetros desta etapa.
 
+A [especificação de avaliação](trading-strategy-validation.md) detalha regras candidatas reproduzíveis, perfis, inferência, expectativa, calibração e rejeição. A [validação de execução](trading-execution-validation.md) define o que demonstrar sobre instrumento, custos, liquidez e controles. Nenhum desses documentos habilita operação.
+
+O [inventário das funções determinísticas](trading-deterministic-functions.md) explicita o apoio prestado aos atores sem substituir sua inteligência; a [geração de relatórios](trading-report-generation.md) liga fatos calculados, análises e apresentação.
+
 ## 2. Múltiplas estratégias
 
 | Família | Situação procurada | Condição básica de entrada | Invalidação/saída | Quando não usar |

@@ -8,6 +8,10 @@ O percurso é **análise → proposta → qualificação → comparação → de
 
 Referências de comportamento: [lógica de decisão](trading-decision-logic.md), [pacote unificado](trading-proposal-contract.md) e [relatórios por ciclo](trading-cycle-reports.md). O [benchmark](trading-market-benchmark.md) informa os critérios, mas não valida estratégias ou parâmetros. Este percurso não substitui regras financeiras aprovadas nem muda a autoridade de Risco/Tesouraria.
 
+Detalhamento das pendências: [definição e avaliação de estratégias](trading-strategy-validation.md) e [custos, liquidez, controles e execução](trading-execution-validation.md). Esses documentos transformam requisitos gerais em fórmulas, registros e casos de verificação, sem declarar validação concluída.
+
+A [geração dos relatórios](trading-report-generation.md) especifica como montar cada família a partir desses registros. O [inventário determinístico](trading-deterministic-functions.md) organiza funções de apoio, limites em relação aos subagentes e referências legadas que não comprovam o novo fluxo.
+
 Mandato: BTC, ETH e SOL spot, sem alavancagem. Nenhuma rede, representação de ativo, plataforma, modelo ou fornecedor é escolhido aqui. Compra de cotas “Sim/Não” sobre o preço de BTC não é compra de BTC.
 
 ## 2. O que precisa estar representado
@@ -270,10 +274,10 @@ Para avançar à ALFA, primeiro fixar definições e método de avaliação, reg
 
 | Frente | Evidência necessária para considerar atendida | Situação desta entrega |
 |---|---|---|
-| Quatro estratégias | Definições reproduzíveis de janelas, fontes, regime, gatilhos, invalidação e parâmetros por versão; sem ajuste olhando o resultado | Condições conceituais documentadas; definições quantitativas e validação pendentes |
-| Expectativa e tamanho | Método e probabilidades calibrados quando usados; desfechos além de alvo/stop; custos/risco por tamanho e sensibilidade | Contrato documentado; números do exemplo não qualificam expectativa real |
+| Quatro estratégias | Definições reproduzíveis de janelas, fontes, regime, gatilhos, invalidação e parâmetros por versão; sem ajuste olhando o resultado | Regras candidatas e perfil detalhados na avaliação; preenchimento/justificativa dos parâmetros e testes pendentes |
+| Expectativa e tamanho | Método e probabilidades calibrados quando usados; desfechos além de alvo/stop; custos/risco por tamanho e sensibilidade | Fórmula, desfechos, sensibilidade e calibração documentados; evidência real e habilitação pendentes |
 | Avaliação | Universo disponível à época, treino/validação/teste não visto, tentativas registradas, regimes adversos e comparação líquida na mesma janela | Protocolo exigido; nenhuma estratégia aprovada por esta revisão |
-| Instrumento e execução | Representação/mercado elegíveis, custódia/permissões, liquidez de saída, custos, preenchimentos, falhas e duplicidade verificados | Requisitos definidos; nenhuma rede, rota ou plataforma selecionada/testada |
+| Instrumento e execução | Representação/mercado elegíveis, custódia/permissões, liquidez de saída, custos, preenchimentos, falhas e duplicidade verificados | Campos, cálculos, transições e plano de verificação detalhados; nenhuma rede, rota ou plataforma selecionada/testada |
 | Risco/Tesouraria | Orçamento autorizado, exposição e obrigações reconciliadas, limites, reservas, pausas e autoridade independente verificados | Comportamento documentado; controles do novo percurso não certificados aqui |
 | Inferência e aprendizado | Evidências temporais, versões, tratamento de indisponibilidade, avaliação posterior e mudança controlada | Registro exigido; runtime real não ativado ou validado |
 | Histórico/relatórios | Oito famílias vinculadas, originais preservados, posição entre ciclos, custos/fluxos sem duplicação | Especificação e exemplos aritméticos conferidos; integração operacional não testada |
