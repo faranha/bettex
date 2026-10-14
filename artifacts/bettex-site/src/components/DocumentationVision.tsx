@@ -89,6 +89,7 @@ export function DocumentationAgenticVision({ children }: { children: ReactNode }
       <figure className="dv__agentic-illustration">
         <img
           src={`${base}technology/documentation-agentic-core.webp`}
+          srcSet={`${base}technology/documentation-agentic-core.webp?brand=btex`}
           sizes="(max-width: 760px) min(360px, 100vw - 48px), 280px"
           width={718} height={720}
           alt={x(
@@ -136,6 +137,7 @@ export function DocumentationAgentIllustration() {
   return <figure id="documentacao-ilustracao-orquestracao" className="dv__orchestration-figure" data-testid="documentation-orchestration-illustration">
     <img
       src={`${import.meta.env.BASE_URL}technology/bettex-orchestration.webp`}
+      srcSet={`${import.meta.env.BASE_URL}technology/bettex-orchestration.webp?brand=btex`}
       width={960} height={960}
       alt={x(
         'Agente BETTEX ao centro, conectado a três núcleos de análise cripto e aos módulos de risco e tesouraria.',
