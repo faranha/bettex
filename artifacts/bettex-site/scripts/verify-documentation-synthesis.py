@@ -133,6 +133,13 @@ for route, expected in baseline["routes"].items():
     text = " ".join(" ".join(page.parts).split())
     assert text, f"Empty rendered content: {route}"
     guarded_structure = page.structure
+    if route in ("/pitch", "/en/pitch", "/es/pitch"):
+        # The creator approved only the opening artwork replacement. Require
+        # that exact new source, then retain the original surrounding baseline.
+        rescue_image = ["img", "src", "/pitch-hero-ai-rescue.webp"]
+        assert guarded_structure.count(rescue_image) == 1, f"Missing approved AI rescue artwork: {route}"
+        original_image = ["img", "src", f"/pitch-hero-app-cutout-{language}.webp"]
+        guarded_structure = [original_image if item == rescue_image else item for item in guarded_structure]
     if "textSha256" not in expected:
         # Verify the authorized link-only replacement separately; preserve the original
         # structure fingerprint for every pre-existing block, image and link.

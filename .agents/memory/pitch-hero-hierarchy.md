@@ -5,11 +5,11 @@ description: H1 prioritário; nova arte de abertura com pessoa sendo resgatada p
 
 ## Direção atual da arte de abertura
 
-O usuário quer trabalhar o hero do Pitch em conjunto: uma pessoa erguendo a mão e sendo resgatada por um agente de IA, um androide reconhecível.
+O usuário aprovou para o hero do Pitch a arte de uma pessoa erguendo a mão e sendo resgatada por um agente de IA, um androide reconhecível.
 
-**Why:** O criador apontou que a arte anterior não remetia a um bot ou agente de IA e pediu expressamente essa nova cena.
+**Why:** O criador apontou que a arte anterior não remetia a um bot ou agente de IA, pediu essa cena e confirmou a aplicação da versão corrigida: “Aplicar ao hero sem cortes laterais”.
 
-**How to apply:** Esta autorização substitui a direção anterior de mostrar o personagem usando o aplicativo nas orientações abaixo, somente para a arte de abertura. Apresentar a proposta visual antes de substituir a imagem; preservar a homepage, os demais capítulos do Pitch e a prioridade do H1.
+**How to apply:** Esta autorização substitui a direção anterior de mostrar o personagem usando o aplicativo nas orientações abaixo, somente para a arte de abertura. Preservar a cena de resgate aprovada, a homepage, os demais capítulos do Pitch e a prioridade do H1.
 
 O androide deve aparecer inteiro, sem corte à direita, tanto no arquivo da arte quanto no encaixe do hero.
 
