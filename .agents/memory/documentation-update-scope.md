@@ -3,6 +3,12 @@ name: Escopo da atualização documental
 description: Homepage e Pitch aprovados e prontos; não editar essas páginas.
 ---
 
+O trabalho atual é exclusivamente documentação para o demo e a ALFA, sem mudanças de código.
+
+**Why:** O criador reiterou: “nao queremos mudanca de codigo queremos documentação para o demo e o alfa”.
+
+**How to apply:** Detalhar lógica, regras, responsabilidades, funções determinísticas, fluxos e relatórios, distinguindo o demo da especificação da ALFA. Não transformar lacunas documentais em implementação, ativação, escolha de tecnologia ou testes operacionais. A autorização histórica para mudanças no sistema não se aplica a este trabalho.
+
 A homepage e o Pitch estão aprovados e prontos. Não editar a homepage nem o Pitch.
 
 **Why:** O criador pediu lembrar: “nao edite a home page nem o pitch eles estao aprovados e prontos” e reiterou: “volte a salvar como canonicos ambos, finalizamos as alteracoes aqui, nao mexe em mais nada a partir de agora pois vamos alterar a documentacao”.

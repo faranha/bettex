@@ -15,11 +15,11 @@ A reorganização também precisa permitir que pessoas sem conhecimento prévio 
 
 **How to apply:** Preservar a sequência conceito e finalidade → papel no sistema → capacidades → baseline e regras → referência técnica, reaproveitando as introduções existentes. Uma proposta de organização não autoriza inventar capacidades, novos atores ou protocolos de comunicação.
 
-A apresentação inicial deve identificar esta documentação como a documentação do demo e da POC. Documentar a versão ALFA é o próximo passo, depois de consultar a comunidade e testar a receptividade do demo.
+A documentação deve distinguir o demo/POC da especificação da ALFA. O escopo atual inclui documentar ambos, sem mudanças de código.
 
-**Why:** O criador definiu explicitamente esse escopo e essa ordem; apresentar a linha de base como uma ALFA já especificada ou entregue mudaria a fase do projeto.
+**Why:** O criador atualizou a ordem anterior, reiterando: “nao queremos mudanca de codigo queremos documentação para o demo e o alfa”.
 
-**How to apply:** Manter essa distinção na abertura e nos materiais de documentação. Preencher pequenas lacunas explicativas sem inventar poderes, protocolos ou parâmetros ainda não definidos.
+**How to apply:** Documentar ambos com escopos e estados explícitos, sem apresentar especificação como funcionalidade entregue ou aprovada. Não inventar poderes, protocolos ou parâmetros ainda não definidos. Ver [escopo documental](documentation-update-scope.md) para a restrição de alterações.
 
 A faixa vermelha da documentação deve usar exatamente: “Esta documentação cobre a versão demo off-chain (POC) da BETTEX”. Não acrescentar “também” nem qualificações adicionais. Não deve afirmar que o conteúdo é administrado pelo subagente de governança.
 
