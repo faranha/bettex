@@ -12,6 +12,8 @@ O [benchmark de mercado](trading-market-benchmark.md) complementa os critérios 
 
 O [percurso spot documentado](trading-spot-journey.md) mostra o pacote chegando à comparação, autorização, execução parcial e relatório por ciclo. Seus valores são fictícios e não alteram as hipóteses ou políticas deste contrato.
 
+Os requisitos de evidência são detalhados em [estratégias e expectativa](trading-strategy-validation.md) e [custos, liquidez e execução](trading-execution-validation.md). Campos ausentes não são preenchidos com valores padrão ou probabilidades inventadas.
+
 ## 2. Cada estratégia entrega um negócio com começo e fim
 
 O subagente não envia apenas “comprar ETH”. Envia preço/faixa de entrada, quantidade, alvo em preço, stop em preço, objetivo líquido, perda planejada, validade para entrar, duração esperada e prazo máximo de permanência.

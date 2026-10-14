@@ -854,3 +854,59 @@ mtime_ms = 1791962570002
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/a41740b6-fb1d-43b7-8b51-0d962945c116/b12e5700-ca42-4f47-88de-3cc83dfcef02"
 storage_version_token = "1791962632469665"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "mWou3GZL7gLFhJbQVFAzf"
+uri = "file://docs/trading-strategy-validation.md"
+type = "text"
+title = "BETTEX — definição e avaliação das estratégias"
+description = "Regras candidatas das quatro estratégias, perfis de investigação, expectativa, calibração, avaliação temporal e critérios de rejeição. Sem estratégias ou parâmetros aprovados."
+logical_id = "8ed03e79-446d-4343-9a25-8b694b13853d"
+content_hash = "sha256:972ab0aaf00a654ebe7eff6ce9edc6ba93d19dbb0588df15a7a40b839f46856b"
+size = 15891
+mtime_ms = 1791962959513
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8ed03e79-446d-4343-9a25-8b694b13853d/38b4f158-e1dc-40de-bd25-ac785d5c12be"
+storage_version_token = "1791963178944876"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "3x_7ZqZtXEzH7c6aGBDIk"
+uri = "file://docs/trading-execution-validation.md"
+type = "text"
+title = "BETTEX — custos, liquidez e controles de execução"
+description = "Custos por tamanho, reservas, autorização, preenchimentos, recuperação de efeitos incertos e reconciliação com depósitos e retiradas. Especificação documental, sem operações."
+logical_id = "0bbaad14-c7c2-4307-aa91-1898ed15e618"
+content_hash = "sha256:00706f7dbef901ba669262787b98d812e5de6cdc4f5278a7b3664a56619209b0"
+size = 15906
+mtime_ms = 1791963137934
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/0bbaad14-c7c2-4307-aa91-1898ed15e618/9f84e1f8-3523-41f8-aecb-31b868372567"
+storage_version_token = "1791963179644202"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "1Thbd3HNTe8LwGO5I8CIq"
+uri = "file://docs/trading-report-generation.md"
+type = "text"
+title = "BETTEX — geração dos relatórios"
+description = "Disparadores, entradas, cálculos, análises, montagem, falhas e versões das oito famílias de relatório. Distingue geração documental especificada de mecanismos legados."
+logical_id = "647d9a95-e9e0-4e92-b3e8-2d4297faaefd"
+content_hash = "sha256:3c654b38c6c06a393ee5a8a644d3465c5f4aa34b62ae988ea2a6afa4738e241f"
+size = 12757
+mtime_ms = 1791963423609
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/647d9a95-e9e0-4e92-b3e8-2d4297faaefd/974c35c0-baa3-41af-9375-fe3a30b07e7b"
+storage_version_token = "1791963513446888"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "EJnfWiWpCTxBFvK38Gnrq"
+uri = "file://docs/trading-deterministic-functions.md"
+type = "text"
+title = "BETTEX — funções determinísticas e subagentes"
+description = "Inventário de 28 responsabilidades de apoio, relação com os atores, contratos de entrada/saída e referências de código consultadas. Não certifica implementação ou funcionamento operacional."
+logical_id = "dce5adb2-7c03-4e34-bc9e-9426c2178182"
+content_hash = "sha256:26f3304cab3fc03ca3ebf2fa33fc5cc89ef186794cdbd76d13a4a3f4a3b55c27"
+size = 14288
+mtime_ms = 1791963365226
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/dce5adb2-7c03-4e34-bc9e-9426c2178182/7c1fae3b-39e5-48dd-af09-2dc27575324c"
+storage_version_token = "1791963514192442"
+content_type = "text/markdown"

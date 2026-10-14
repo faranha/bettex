@@ -12,6 +12,10 @@ O [benchmark de mercado](trading-market-benchmark.md) complementa a revisão com
 
 O [percurso completo spot](trading-spot-journey.md) fornece um caso documental com proposta, decisão, reserva, dois preenchimentos de entrada, saída e reconciliação econômica em dois ciclos, sem alterar o aplicativo.
 
+A [avaliação das estratégias](trading-strategy-validation.md) define o dossiê dos experimentos e a avaliação posterior; a [validação de execução](trading-execution-validation.md) detalha custos, efeitos, recuperação e separação entre fluxos externos e desempenho. Seus exemplos não entram na apuração como resultados reais.
+
+A [especificação de geração](trading-report-generation.md) detalha disparadores, entradas, montagem, estados, revisão e verificações das oito famílias; o [inventário determinístico](trading-deterministic-functions.md) separa os cálculos e controles das responsabilidades inteligentes dos atores. Não comprova geração operacional no demo.
+
 ## 2. Inventário: o que já existe e o que precisa mudar
 
 | Registro existente | Capacidade observada | Revisão lógica necessária |

@@ -38,5 +38,9 @@ Manter registros de testes e transações sem reescrever fatos históricos.
 - [Relatórios e continuidade por ciclo](trading-cycle-reports.md).
 - [Benchmark de mercado e limites de evidência](trading-market-benchmark.md).
 - [Percurso completo de um investimento spot](trading-spot-journey.md).
+- [Definição e avaliação das estratégias](trading-strategy-validation.md).
+- [Custos, liquidez, controles e validação de execução](trading-execution-validation.md).
+- [Funções determinísticas de apoio aos agentes](trading-deterministic-functions.md).
+- [Geração de relatórios e dependências dos subagentes](trading-report-generation.md).
 
 Esses documentos não escolhem tecnologia nem ativam o demo/ALFA. Valores propostos e exemplos fictícios não são políticas financeiras aprovadas.
