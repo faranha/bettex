@@ -42,8 +42,9 @@ for key, entry in catalog.items():
 
 class Content(HTMLParser):
     """Read only the prerendered React root, not metadata or asset tags."""
-    def __init__(self):
+    def __init__(self, ignore_image_preloads=False):
         super().__init__()
+        self.ignore_image_preloads = ignore_image_preloads
         self.depth = 0
         self.skip = 0
         self.parts = []
@@ -54,6 +55,10 @@ class Content(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         props = dict(attrs)
+        # React may hoist or omit image preload hints depending on image loading.
+        # Guard the authored Pitch images and links, not these resource hints.
+        if self.ignore_image_preloads and tag == "link" and props.get("rel") == "preload" and props.get("as") == "image":
+            return
         if not self.depth:
             if tag == "div" and props.get("id") == "root":
                 self.depth = 1
@@ -123,7 +128,7 @@ for route, expected in baseline["routes"].items():
         assert 'data-testid="pitch-defai-treasury"' in addition_html, f"Missing treasury diagram node: {route}"
         assert addition_html.count('class="pdv__node') == 5, f"Missing market/treasury diagram nodes: {route}"
         print(f"{route}: authorized DeFi/DeFAI diagram, treasury and phased-autonomy vision verified")
-    page = Content()
+    page = Content(ignore_image_preloads=route in ("/pitch", "/en/pitch", "/es/pitch"))
     page.feed(protected_html)
     text = " ".join(" ".join(page.parts).split())
     assert text, f"Empty rendered content: {route}"

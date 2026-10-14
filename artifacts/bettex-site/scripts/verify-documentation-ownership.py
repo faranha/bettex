@@ -49,6 +49,32 @@ class DocumentationContent(HTMLParser):
 def verify():
     app = Path(__file__).resolve().parents[1]
     baseline = json.loads((app / 'scripts/documentation-ownership-baseline.json').read_text())
+    # These standalone reading prompts moved into the six section footers.
+    # Identify their positions in the original PT baseline so the same nine
+    # prompt-only paragraphs are excluded in all three aligned locales.
+    relocated_reading_prompts = {
+        'Entender a tokenomics',
+        'Ver as alternativas Starknet e Arbitrum, ativos e carteiras.',
+        'Apuração e liquidação dos resultados · Recompra e queima',
+        'Controles de risco',
+        'Financiamento: origem e destino dos recursos',
+        'Consultar alternativas de sustentabilidade.',
+        'Ver regras de loteria e Double 2X',
+    }
+    reading_prompt_slots = {
+        index for index, paragraph in enumerate(baseline['/documentacao']['paragraphs'])
+        if paragraph in relocated_reading_prompts
+    }
+    assert len(reading_prompt_slots) == 9, 'Reading prompt baseline changed'
+    # Opening portraits were intentionally removed; contextual illustrations
+    # within the chapter content remain protected by the original baseline.
+    removed_opening_portraits = {
+        '/agents/bettex-intelligence-brain.webp',
+        '/agents/predix-serious.webp',
+        '/agents/tradix-serious.webp',
+        '/agents/sportix-serious.webp',
+        '/agents/bettix-serious.webp',
+    }
     # Only the old eyebrow is replaced: the user explicitly changed this document's stage.
     old_eyebrows = {'VISÃO, ARQUITETURA E REGRAS', 'VISION, ARCHITECTURE AND RULES', 'VISIÓN, ARQUITECTURA Y REGLAS'}
     # The six old chapter descriptions are navigation metadata, replaced by the
@@ -87,7 +113,9 @@ def verify():
         # keep its bookmark ID, and continue protecting every other original link.
         missing_links = set(original['links']) - set(current.links) - {'#documentacao-indice'}
         assert not missing_links, f'{route}: original references lost: {sorted(missing_links)}'
-        assert not set(original['images']) - set(current.images), f'{route}: original illustrations lost'
+        assert removed_opening_portraits <= set(original['images']), f'{route}: opening portrait baseline drift'
+        assert not removed_opening_portraits & set(current.images), f'{route}: removed opening portraits restored'
+        assert not (set(original['images']) - removed_opening_portraits) - set(current.images), f'{route}: contextual illustrations lost'
         # Precisely scoped copy corrections approved after the ownership snapshot.
         # Keep the immutable baseline and all other paragraphs protected.
         approved_proposals = {
@@ -117,7 +145,9 @@ def verify():
                         updated = updated.replace('predictions (mercados de predicción)', 'predicciones (mercados de predicción)')
                     return updated
             return paragraph
-        expected = Counter(approved_copy(p) for p in original['paragraphs'] if p not in metadata)
+        assert len(original['paragraphs']) == len(baseline['/documentacao']['paragraphs']), f'{route}: localized baseline alignment changed'
+        expected = Counter(approved_copy(p) for index, p in enumerate(original['paragraphs'])
+                           if index not in reading_prompt_slots and p not in metadata)
         # Explicitly authorized removal: the illustrative demo walkthrough only.
         # Retain the immutable baseline and protect all other product paragraphs.
         language = 'en' if route.startswith('/en/') else 'es' if route.startswith('/es/') else 'pt'
@@ -141,7 +171,7 @@ def verify():
         assert 'documentation-poc-scope' in html, f'{route}: missing explicit POC scope'
         for marker in ('documentacao-subagente-risco', 'documentacao-subagente-tesouraria', 'documentacao-subagente-governanca', 'documentacao-carteira-bettex', 'documentacao-carteira-usdc'):
             assert marker in current.ids, f'{route}: missing owner {marker}'
-        print(f'{route}: original paragraphs, IDs, links and images preserved; POC and owners verified.')
+        print(f'{route}: original paragraphs, IDs, links and contextual images preserved; opening portraits absent; POC and owners verified.')
 
 
 if __name__ == '__main__':

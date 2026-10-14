@@ -38,7 +38,6 @@ assert.doesNotMatch(read('src/lib/documentation-copy.ts'), /A oferta total é de
 assert.match(read('src/lib/documentation-copy.ts'), /Teto de emissão: 1 bilhão de BETTEX/);
 // Risk parameters live in the controls chapter, not a second set of agent examples.
 assert.doesNotMatch(read('src/components/InvestmentAgents.tsx').replace('25% do resultado elegível', ''), /example:|control:|[0-9]+(?:[.,][0-9]+)?%|Exemplo de aceitação e rejeição/);
-assert.match(read('src/components/InvestmentAgents.tsx'), /href="#documentacao-controles"/);
 for (const file of ['src/components/interface-demo/CentralCapital.tsx', 'src/components/interface-demo/CentralBettex.tsx']) {
   assert.doesNotMatch(read(file), /POLICY\.(?:maxOrder|maxPortfolio|maxCorrelated)/, `${file}: obsolete illustrative risk ceilings`);
 }
@@ -56,9 +55,13 @@ const server = await createServer({
 });
 try {
   const { ChapterContent, chapters } = await server.ssrLoadModule('/src/components/WhitepaperChapters.tsx');
+  const { DocumentationRelatedTopics } = await server.ssrLoadModule('/src/components/DocumentationRelatedTopics.tsx');
   const { setLocale } = await server.ssrLoadModule('/src/lib/i18n.ts');
   for (const language of ['pt', 'en', 'es']) {
     setLocale(language);
+    // Reading suggestions belong in the section footer, not the agent's body.
+    const agentReading = renderToStaticMarkup(createElement(DocumentationRelatedTopics, { sectionId: 'documentacao-agentes' }));
+    assert.match(agentReading, /href="#documentacao-controles"/, `${language}: risk controls missing from agent reading suggestions`);
     const html = chapters.map((_, index) => renderToStaticMarkup(createElement(ChapterContent, { index }))).join('');
     assert.doesNotMatch(html, /contribuição por serviços|service contribution|contribución por servicios/i, `${language}: discarded operating-funding proposal`);
     for (const id of [...ids, 'documentacao-governanca-detalhe', 'documentacao-entidade-multisig', 'documentacao-versao-politica']) {
