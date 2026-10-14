@@ -6,12 +6,14 @@ runpy.run_path(str(NarrativePath(__file__).with_name("verify-defi-narrative.py")
 import json
 import re
 from collections import Counter
+from documentation_chapter_audit import expected_chapters, verify_chapters
 from html.parser import HTMLParser
 from pathlib import Path
 from zipfile import ZipFile
 from xml.etree import ElementTree
 
 app = Path(__file__).resolve().parents[1]
+canonical_chapters = expected_chapters(app)
 class HeadingAudit(HTMLParser):
     """Catch duplicated section headings, including wrapper/child duplicates."""
     def __init__(self):
@@ -79,7 +81,8 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
         assert not (previous[1] and previous[1] == current[1]), f"{lang}: repeated consecutive heading {current}"
     duplicates=[id for id,n in Counter(p.ids).items() if n>1]
     assert not duplicates, f"{lang}: duplicate ids {duplicates}"
-    assert len(p.chapters)==23, f"{lang}: independently navigable actors and features required"
+    verify_chapters(p.chapters, canonical_chapters, lang)
+    assert 'documentacao-features' in p.ids, f"{lang}: features introduction must remain accessible"
     assert p.chapters[-1]=='documentacao-roadmap', f"{lang}: roadmap last"
     for owner in ('risco', 'tesouraria', 'governanca', 'cripto', 'esportes', 'previsoes', 'igaming'):
         assert f'documentacao-subagente-{owner}' in p.chapters, f"{lang}: missing actor {owner}"
@@ -104,7 +107,7 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     assert 'DeFi' in principal, f"{lang}: missing product positioning"
     for pattern in (r'liderança da empresa BETTEX', r'company to be incorporated', r'empresa a ser constituída', r'empresa por constituir'):
         assert not re.search(pattern,principal,re.I), f"{lang}: obsolete institutional structure"
-    print(f"{lang}: 23 actor/feature chapters, {len(p.main_diagrams)} principal drawings, local references, unique ids and {len(p.hashes)} valid internal links.")
+    print(f"{lang}: {len(p.chapters)} actor/feature chapters, {len(p.main_diagrams)} principal drawings, local references, unique ids and {len(p.hashes)} valid internal links.")
 expected_workbooks = {
     "": ["Custos de rede", "Vesting", "Regras"],
     "-en": ["Network costs", "Vesting", "Rules"],

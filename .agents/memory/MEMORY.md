@@ -102,3 +102,4 @@
 - [Perfis de verificação](verification-profiles.md) — CI do demo visual não certifica integrações históricas; exclusões explícitas, sem reativar finanças para testes.
 - [Hero do Pitch](pitch-hero-hierarchy.md) — H1 prioritário; personagem usando o app em cutout, sem caixa nem legenda.
 - [Vesting na documentação mobile](documentation-vesting-mobile.md) — consulta compacta dos 24 meses; gráficos visíveis no HTML inicial, sem depender de medir capítulos ocultos.
+- [Build export side effects](build-export-side-effects.md) — full validation may change archive headers only; verify member contents before cleanup and respect Git safeguards.
