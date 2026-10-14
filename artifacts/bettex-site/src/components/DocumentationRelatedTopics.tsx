@@ -16,7 +16,7 @@ const related: Record<string, ReadingSuggestion[]> = {
   ],
   'documentation-reading-group-2': [
     'documentacao-agentes', 'documentacao-riscos', 'documentacao-roadmap',
-    { id: 'documentacao-financiamento-fundacao', title: () => t('Financiamento: origem e destino dos recursos') },
+    { id: 'documentacao-financiamento', title: () => t('Financiamento: origem e destino dos recursos') },
     'documentacao-especialista-btc', 'documentacao-especialista-eth', 'documentacao-especialista-sol',
     { id: 'documentacao-subagente-cripto', title: () => t('Capacidades e fontes de Cripto') },
     { id: 'documentacao-subagente-risco', title: () => t('Baseline de Risco') },
@@ -26,7 +26,7 @@ const related: Record<string, ReadingSuggestion[]> = {
   ],
   'documentacao-features': [
     'documentacao-subagente-tesouraria', 'documentacao-riscos', 'documentacao-como-funciona',
-    { id: 'documentacao-financiamento-fundacao', title: () => t('Financiamento: origem e destino dos recursos') },
+    { id: 'documentacao-financiamento', title: () => t('Financiamento: origem e destino dos recursos') },
     { id: 'documentacao-loteria', title: x => x('Ver regras de loteria e Double 2X', 'View lottery and Double 2X rules', 'Ver reglas de la lotería y Double 2X') },
     { id: 'documentacao-taxas', title: () => t('Consultar alternativas de sustentabilidade') },
   ],

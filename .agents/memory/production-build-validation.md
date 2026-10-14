@@ -70,3 +70,15 @@ When changing a high-priority hero image, inspect both the image source and Reac
 **Why:** Restoring only the image source and removed caption did not reproduce the old protected structure; React had also changed an automatically generated preload URL.
 
 **How to apply:** Prove that reversing both image URLs and the exact authorized caption removal restores the prior fingerprints in every language before aligning their new fingerprints.
+
+Image-preload hints can disappear without any change to approved text, authored links, images or blocks.
+
+**Why:** A documentation-only publish was blocked by a protected Pitch fingerprint even though the live Pitch and the candidate matched in three languages apart from automatically generated image preloads.
+
+**How to apply:** Compare candidate and published rendered content before changing a protected fingerprint. Ignore only resource hints identified as image preloads; continue guarding actual image sources, authored links, IDs and text.
+
+When readers' standalone prompts or decorative portraits move or are removed with approval, align preservation checks with those precise exceptions.
+
+**Why:** Outdated source-location and original-document checks blocked publishing after approved editorial changes, although the contextual illustrations and normative paragraphs still remained.
+
+**How to apply:** Verify the new reading destinations in the rendered footer, exempt only the prompt-only paragraphs and removed portraits, and continue checking substantive prose, contextual assets and internal links in all three languages.
