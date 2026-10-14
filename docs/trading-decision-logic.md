@@ -10,6 +10,8 @@ A [revisão de relatórios por ciclo](trading-cycle-reports.md) estabelece o dos
 
 O [benchmark de bots e agentes](trading-market-benchmark.md) reúne referências de mercado, estratégias e limites das evidências para aprimorar esta lógica. Não seleciona tecnologia nem valida os parâmetros propostos.
 
+O [percurso completo de um investimento spot](trading-spot-journey.md) aplica essa lógica a um exemplo documental, da análise à apuração em dois ciclos, incluindo alternativas, estados e casos de impedimento. Não implementa o percurso no demo/ALFA.
+
 Mandato definido: BTC, ETH e SOL spot, sem alavancagem, priorizando negociação on-chain. A BETTEX é o agente principal; Cripto coordena especialistas BTC/ETH/SOL. Risco e Tesouraria alimentam e limitam a decisão, mas não formam outra camada de seleção financeira.
 
 As famílias de estratégia abaixo são propostas para organizar a avaliação. Não são estratégias validadas nem autorizações de operação. Rascunhos quantitativos anteriores não estabelecem uma estratégia preferida ou os parâmetros desta etapa.

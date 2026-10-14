@@ -10,6 +10,8 @@ Relatórios, gráficos, histórico do subagente, histórico da BETTEX e Tesourar
 
 O [benchmark de mercado](trading-market-benchmark.md) complementa a revisão com referências de resultado realizado/não realizado, alterações de parâmetros e distinção entre experimento e execução. Não altera os ciclos financeiros nem substitui esta lógica.
 
+O [percurso completo spot](trading-spot-journey.md) fornece um caso documental com proposta, decisão, reserva, dois preenchimentos de entrada, saída e reconciliação econômica em dois ciclos, sem alterar o aplicativo.
+
 ## 2. Inventário: o que já existe e o que precisa mudar
 
 | Registro existente | Capacidade observada | Revisão lógica necessária |

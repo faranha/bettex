@@ -21,6 +21,12 @@ O criador esclareceu: “A gente não vai definir ainda a tecnologia, a gente va
 
 **How to apply:** Nesta etapa, definir comportamento e regras de decisão sem escolher redes, plataformas, fornecedores, modelos ou infraestrutura. Não redirecionar a discussão para comparações tecnológicas nem adaptar o demo antes de formar essa base.
 
+O criador reiterou que a execução dessa definição é “para documentação”.
+
+**Why:** Ao autorizar o percurso completo de análise, proposta, comparação, controles, execução e relatório, lembrou expressamente o escopo documental.
+
+**How to apply:** Executar o desenho do percurso nos documentos. Não interpretar “execute” nesse contexto como autorização para alterar a interface, ativar agentes ou implementar operações do demo/ALFA.
+
 O criador exige um pacote unificado de proposta, independente do ativo, com entrada, saída, alvo, duração e análise de risco já entregue pelo subagente. Os pacotes alimentam a comparação da BETTEX, listas de investimentos ativos/rejeitados e relatórios.
 
 **Why:** Corrigiu a definição genérica: precisam estar estruturados quantidade recebida/comparada, filas de comunicação, mínimo para decidir e alocação de capital, não apenas conceitos.
