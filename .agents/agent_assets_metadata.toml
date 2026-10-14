@@ -728,3 +728,45 @@ mtime_ms = 1791924131125
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/454eaa4d-5702-48ec-a242-302fbb94df39/88b6a3e0-2d7a-4bec-9ac7-0bd335ea1898"
 storage_version_token = "1791924309710735"
 content_type = "application/octet-stream"
+
+[[outputs]]
+id = "JjPS_NKqSpuja1qkqv8Rq"
+uri = "file://docs/trading-spot-base.md"
+type = "text"
+title = "Cripto — base de estratégias atualizada para DEXs"
+description = "Estratégias, inteligência, limites propostos e comunicação ajustados para cotações de swap, custos on-chain, stops monitorados e confirmação de transações. Demo permanece visual."
+logical_id = "5b811d87-3fda-439c-9ead-7613db72e91e"
+content_hash = "sha256:479ddec13549a8bf3bb623a04635ac5b94d3aec16eb7cfd4a31381d7765799dc"
+size = 24569
+mtime_ms = 1791937013413
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/5b811d87-3fda-439c-9ead-7613db72e91e/201a9e33-cf3c-4258-8921-5ade0606f2e4"
+storage_version_token = "1791937021010093"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "qWCmFfWKxg069d_SEpk2R"
+uri = "file://docs/trading-spot-dex.md"
+type = "text"
+title = "Cripto spot on-chain — DEXs e infraestrutura"
+description = "Comparação dos candidatos Starknet, Arbitrum e Solana, representações de BTC/ETH/SOL, custos, stops, fila e requisitos de validação. Pesquisa com fontes oficiais; nenhuma integração ou operação ativada."
+logical_id = "f9d21372-ce2f-411b-8bbf-ee46d91f4976"
+content_hash = "sha256:0b3488c177d0b01805424412980c1a4e851de170f718961ab49fff96c40db126"
+size = 18902
+mtime_ms = 1791936983533
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/f9d21372-ce2f-411b-8bbf-ee46d91f4976/e2ccd8f9-5c07-4031-8364-7d8966231ee8"
+storage_version_token = "1791937020356110"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "8i8qpjt-bWD6UToIRTfvv"
+uri = "file://docs/trading-decision-logic.md"
+type = "text"
+title = "BETTEX — lógica e regras básicas de decisão"
+description = "Proposta sem escolhas tecnológicas: quatro famílias de estratégias, análise de mercado, tipos de inferência, organização e comunicação das oportunidades, priorização e compatibilidade com Tesouraria e Risco."
+logical_id = "0876f37e-f4a3-4cb9-ad86-ee20602e178c"
+content_hash = "sha256:c78a9dd315ad9c8f3478e700865d3fc130ceff1685a2b897358f836ef1c71783"
+size = 14266
+mtime_ms = 1791937379245
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/0876f37e-f4a3-4cb9-ad86-ee20602e178c/beb306d2-3ed7-4f8d-a848-bb87343d61bb"
+storage_version_token = "1791937415074255"
+content_type = "text/markdown"

@@ -1,5 +1,7 @@
 # Trading, alpha, and allocation policies
 
+> **Spot design direction:** the creator selected BTC, ETH and SOL spot without leverage for the initial Crypto mandate. See [the proposed spot baseline](trading-spot-base.md). The prediction-contract policies below remain a separate historical simulation design; they do not define or authorize spot trading. The application remains a visual demo.
+
 ## Scope and responsibility
 
 Integration pendencies and creator decisions are tracked in [Allora and Polymarket Integrations](integration-pendencies.md). The existence of these policies does not resolve data/model gaps nor authorize bypassing them.
