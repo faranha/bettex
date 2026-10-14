@@ -1,7 +1,6 @@
 import { DocImage, DocTerms } from '../DocImage';
 import { ResponsiveTableCarousel } from '../ResponsiveTableCarousel';
 import { t } from '@/lib/i18n';
-import { DocumentationTechnologyCondition } from '../DocumentationTechnologyCondition';
 const connectors = [
   { name: 'Starknet', kind: 'Rede e contratos', access: 'JSON-RPC / Cairo', status: 'Candidata; planejamento e captação de grants', function: 'Contas nativas, token, transferências e contratos. Exige implementação Cairo, ativos compatíveis e contratos validados; não há implantação BETTEX confirmada.', url: 'https://docs.starknet.io/' },
   { name: 'Arbitrum One', kind: 'Rede e contratos', access: 'JSON-RPC / EVM', status: 'Candidata; consulta pública verificada', function: 'Carteiras, token, transferências e contratos. Consulta RPC não define a escolha da rede; execução BETTEX exige contratos validados.', url: 'https://docs.arbitrum.io/' },
@@ -33,7 +32,7 @@ export function ArchitectureCatalogue({ groups, connectorNames, integrationId = 
     <ResponsiveTableCarousel count={rows.length} label="Dados, inferência, execução e infraestrutura"><table className="whitepaper__vesting-table whitepaper__business-table">
       <caption>Dados, inferência, execução e infraestrutura</caption>
       <thead><tr><th scope="col">Plataforma</th><th scope="col">Categoria / acesso</th><th scope="col">Estado e função</th></tr></thead>
-      <tbody>{rows.map(c => <tr key={c.name}><th scope="row"><a href={c.url} target="_blank" rel="noopener noreferrer">{c.name}</a>{['Starknet', 'Arbitrum One', 'Polymarket', 'Allora', 'Robinhood', 'Safe / OpenZeppelin'].includes(c.name) && <DocumentationTechnologyCondition name={c.name} />}</th><td data-label={t('Categoria / acesso')}>{c.kind}<br />{c.access}</td><td data-label={t('Estado e função')}><strong>{c.status}</strong><p>{c.function}</p></td></tr>)}</tbody>
+      <tbody>{rows.map(c => <tr key={c.name}><th scope="row"><a href={c.url} target="_blank" rel="noopener noreferrer">{c.name}</a></th><td data-label={t('Categoria / acesso')}>{c.kind}<br />{c.access}</td><td data-label={t('Estado e função')}><strong>{c.status}</strong><p>{c.function}</p></td></tr>)}</tbody>
     </table></ResponsiveTableCarousel>
     </section>}
     {on('demonstrations') && <>

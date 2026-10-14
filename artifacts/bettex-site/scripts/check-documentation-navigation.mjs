@@ -56,6 +56,14 @@ globalThis.HTMLDetailsElement = Details;
 const source = await fs.readFile(new URL('../src/components/whitepaperOutline.ts', import.meta.url), 'utf8');
 const compiled = await transformWithEsbuild(source, 'whitepaperOutline.ts', { loader: 'ts' });
 const { chapterAncestors, collectOutline, groupReferenceItems, openAncestors, scrollOffset, outlineSignature } = await import(`data:text/javascript;base64,${Buffer.from(compiled.code).toString('base64')}`);
+const presentationSource = await fs.readFile(new URL('../src/components/documentationSectionPresentation.ts', import.meta.url), 'utf8');
+const presentationCompiled = await transformWithEsbuild(presentationSource, 'documentationSectionPresentation.ts', { loader: 'ts' });
+const { sectionSubtitleExcerpt } = await import(`data:text/javascript;base64,${Buffer.from(presentationCompiled.code).toString('base64')}`);
+assert.equal(sectionSubtitleExcerpt('  Controles são determinísticos.\\nAs regras completas permanecem no conteúdo.'.replace('\\n', '\n')), 'Controles são determinísticos.');
+assert.equal(sectionSubtitleExcerpt('Fees cost 0.25 USDC. Conditions remain unchanged.'), 'Fees cost 0.25 USDC.');
+assert.equal(sectionSubtitleExcerpt('El mandato limita la exposición. No garantiza beneficios.'), 'El mandato limita la exposición.');
+assert.equal(sectionSubtitleExcerpt(''), '');
+assert.ok(sectionSubtitleExcerpt('Uma explicação detalhada '.repeat(20)).length <= 190, 'Section subtitles must remain compact');
 const chapterFixture = [
   ['features', '4'], ['wallet', '4.1'], ['usdc', '4.2'],
   ['crypto', '3.4'], ['btc', '3.4.10'], ['eth', '3.4.11'], ['other', '3.40'],

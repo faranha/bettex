@@ -5,6 +5,12 @@ description: Ordem dos capítulos e leitura compacta da documentação técnica.
 
 ## Padrão de abertura das subseções
 
+Todas as seções e subseções seguem o estilo visual dos subagentes: título destacado, numeração azul nas subseções, ponto amarelo, subtítulo azul e separadores. Aplicar o que estiver faltando para completar esse padrão.
+
+**Why:** O criador rejeitou a coexistência de dois estilos e escolheu explicitamente o estilo dos subagentes para todos.
+
+**How to apply:** Preservar o conteúdo, a hierarquia e os controles de expansão; não manter cabeçalhos compactos sem o mesmo tratamento visual.
+
 As subseções e áreas numeradas da documentação começam recolhidas, com o mesmo controle de expansão em todas elas. Carteiras, Features e Subagentes não são exceções.
 
 **Why:** O criador apontou a Carteira BETTEX carregada aberta e exigiu “um padrão para todas as subseções e áreas”.

@@ -3,6 +3,12 @@ name: Evolução das regras da tesouraria BETTEX
 description: A tesouraria terá um agente próprio de IA, coordenado com os agentes de investimento.
 ---
 
+Apresentar as regras de tesouraria e governança em tabelas dentro das respectivas subseções, preservando todas as condições e os controles de expansão.
+
+**Why:** O criador pediu: “Essas regras da tesouraria e de governança vamos colocar em tabelas dentro da subseção”.
+
+**How to apply:** Manter a organização por assunto; não mover as regras para uma tabela geral fora da subseção nem reduzir o conteúdo normativo ao reorganizar sua apresentação.
+
 A própria tesouraria tem regras que podem evoluir, com sugestões de um agente de IA em conjunto com os agentes de investimento. O criador retirou a entidade formal, não a administração: os fundadores começam administrando e mantêm domínio dos contratos, com evolução para um serviço gerido por IA. Várias decisões serão da comunidade; competências e mecanismos ainda precisam ser definidos.
 
 **Why:** O criador corrigiu a equivalência entre descentralização e eliminação de poderes: “vamos ter dominio sobre os contratos” e “comecar administrando e depois ter uma iA pra tudo”.

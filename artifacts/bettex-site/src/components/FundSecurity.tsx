@@ -1,3 +1,5 @@
+import { DocumentationRulesTable } from './DocumentationRulesTable';
+
 import { ReadingDisclosure, Topics } from './ReadingDisclosure';
 export function FundSecurity() {
   return <ReadingDisclosure id="documentacao-seguranca-fundos" headingId="seguranca-fundos-title" title={<>Segurança dos fundos</>}><Topics>
@@ -9,9 +11,9 @@ export function FundSecurity() {
 
 export function FundSecurityResponsibilities() {
   return <ReadingDisclosure id="documentacao-responsabilidade-seguranca" headingId="responsabilidade-seguranca-title" title={<>Responsabilidade pela segurança dos fundos</>}><Topics>
-    <div className="whitepaper__prose">
+    <DocumentationRulesTable>
       <p>O fundador administra a política de segurança, orçamento e contratação pontual de serviços externos especializados. Aprovação, execução e conferência têm responsabilidades identificadas, com independência nos controles de custódia. Auditorias e avaliações externas não constituem cargos internos. A IA auxilia detecção e análise, sem assumir responsabilidade jurídica ou receber chaves privadas dos titulares.</p>
       <p>Segurança, auditoria, monitoramento e recuperação têm custos discriminados por necessidade, sem orçamento mensal presumido. A fonte de custeio permanece em aberto; essas despesas exigem planejamento e aprovação, sem retirada automática da tesouraria ou dos créditos dos titulares. Custos efetivos de investimentos seguem a apuração própria. <a href="#documentacao-seguranca-fundos">Proteção dos fundos</a> · <a href="#documentacao-entidade-multisig">Mandatos e custódia</a>.</p>
-    </div>
+    </DocumentationRulesTable>
   </Topics></ReadingDisclosure>;
 }

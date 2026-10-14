@@ -774,7 +774,31 @@ section.whitepaper__technical:not(:has(> h3 > [data-documentation-section-toggle
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5 7 5 5 5-5' fill='none' stroke='%2321429c' stroke-width='1.8'/%3E%3C/svg%3E") center / 20px 20px no-repeat;
 }
 .whitepaper details[open] > summary[data-outline-number]::after { transform: rotate(180deg); }
+/* Every reading section uses the subagent header language, including native details. */
+.whitepaper :is(h3, h4, summary)[data-outline-number] {
+  margin: 36px 0 0; padding-top: 32px; border-top: 1px solid var(--wp-line);
+  font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.08; letter-spacing: -.045em;
+}
+.whitepaper [data-documentation-heading-period] { color: var(--wp-orange); }
+.whitepaper :is(h3, h4, summary)[data-outline-number]::before {
+  margin-right: .6em; color: #21429c; font: 700 .4em/1.4 var(--app-font-mono);
+  letter-spacing: .02em; vertical-align: middle;
+}
+.whitepaper .whitepaper__section-subtitle {
+  display: block; max-width: 680px; margin: 14px 0 36px; color: #21429c;
+  font: 500 clamp(1.07rem, 1.6vw, 1.28rem)/1.5 var(--app-font-serif);
+  letter-spacing: -.018em; cursor: default;
+}
+.whitepaper :is(h3, h4)[data-outline-number] > .whitepaper__section-toggle,
+.whitepaper summary[data-outline-number]::after { top: 32px; }
+.whitepaper summary .whitepaper__section-subtitle { margin-bottom: 0; padding-right: 0; }
+.whitepaper summary[data-outline-number] { padding-bottom: 28px; }
+.whitepaper :is(h3, h4, summary)[data-documentation-section-level="2"],
+.whitepaper :is(h3, h4, summary)[data-documentation-section-level="3"] { font-size: clamp(1.65rem, 3.3vw, 2.45rem); }
 @media (max-width: 768px) {
+  .whitepaper :is(h3, h4, summary)[data-outline-number] { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+  .whitepaper :is(h3, h4, summary)[data-documentation-section-level="2"],
+  .whitepaper :is(h3, h4, summary)[data-documentation-section-level="3"] { font-size: clamp(1.5rem, 7.4vw, 2rem); }
   .whitepaper :is(.whitepaper__reference-body, .whitepaper__technical-body) { padding-left: 16px; }
   .whitepaper .whitepaper__reading-specialists { padding-left: 16px; }
 }

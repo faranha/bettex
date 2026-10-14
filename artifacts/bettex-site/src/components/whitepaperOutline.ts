@@ -93,7 +93,9 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
         }
       }
       if (isSummary && node.tagName === 'SUMMARY') titleHost = (node.querySelector('.reading__title') as HTMLElement) ?? node;
-      const title = formatOutlineTitle(titleHost.textContent);
+      // Native summaries may include a visible description; it is not a menu title.
+      const subtitle = titleHost.querySelector('[data-documentation-section-subtitle]')?.textContent ?? '';
+      const title = formatOutlineTitle(subtitle ? (titleHost.textContent ?? '').replace(subtitle, '') : titleHost.textContent);
       if (!title) return;
       let level = (Math.min(depth, 2) + 1) as 1 | 2 | 3;
       while (level > 1 && counters[level - 2] === 0) level = (level - 1) as 1 | 2 | 3;

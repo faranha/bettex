@@ -1,5 +1,6 @@
 import { applyReadingPage } from './documentationReadingPages';
 import type { ChapterOutline } from './whitepaperOutline';
+import { applySectionPresentation } from './documentationSectionPresentation';
 
 const HIDDEN = 'data-documentation-page-hidden';
 const HEADING = 'data-documentation-section-heading';
@@ -23,6 +24,7 @@ export function applyDocumentationAccordions(
   expandLabel: string, collapseLabel: string,
 ) {
   const owners = applyReadingPage(root, chapter, chapter.id);
+  applySectionPresentation(root, chapter, owners);
   const headings = new Map<Element, (typeof chapter.items)[number]>();
   for (const item of chapter.items) {
     const heading = document.getElementById(item.id);
@@ -60,7 +62,9 @@ export function applyDocumentationAccordions(
     if (!(node instanceof Element)) return false;
     const heading = headings.get(node);
     let visible: boolean;
-    if (heading && node.tagName !== 'DETAILS') visible = ancestorsOpen(heading.id);
+    const subtitleOwner = node.getAttribute('data-documentation-section-subtitle');
+    if (subtitleOwner) visible = ancestorsOpen(subtitleOwner);
+    else if (heading && node.tagName !== 'DETAILS') visible = ancestorsOpen(heading.id);
     else if (node.hasAttribute(TOGGLE)) visible = ancestorsOpen(owner);
     else if (ATOMIC.has(node.tagName.toUpperCase())) visible = bodyOpen(owner);
     else {

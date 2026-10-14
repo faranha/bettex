@@ -1,7 +1,6 @@
 import { createContext, useContext, type ReactNode } from 'react';
 import { ArchitectureIntegrations, type ArchitectureFigureNumber } from './ArchitectureIntegrations';
 import './BettexArchitecture.css';
-import { DocumentationTechnologyCondition } from '../DocumentationTechnologyCondition';
 
 type Surface = 'dark' | 'paper';
 type Tone = 'blue' | 'gold' | 'teal' | 'plain';
@@ -130,14 +129,14 @@ const fig7: Step[] = [
   { title: 'Agentes de IA', text: 'A IA BETTEX coordena agentes que analisam oportunidades e propõem operações nos mercados.', tone: 'blue',
     extra: (
       <div className="ba-entry" data-testid="node-agents-allora">
-        <div><strong>Oráculo · Allora<DocumentationTechnologyCondition name="Allora" /></strong><p>Consulta opcional de inferências de IA para orientar estratégias de trading.</p></div>
+        <div><strong>Oráculo · Allora</strong><p>Fonte opcional de inferências de IA para estratégias de trading, ainda sujeita a avaliação e integração.</p></div>
       </div>
     ) },
   { title: 'Conexão por MCP ou API', text: 'Usam ferramentas MCP onde disponíveis ou APIs autorizadas, conforme os recursos de dados e execução de cada serviço.', tone: 'blue',
     extra: (
       <div className="ba-entry" data-testid="node-agents-market-connections">
-        <div><strong>Polymarket<DocumentationTechnologyCondition name="Polymarket" /></strong><p>API de ordens · CLOB.</p></div>
-        <div><strong>Robinhood<DocumentationTechnologyCondition name="Robinhood" /></strong><p>API de trading de cripto.</p></div>
+        <div><strong>Polymarket</strong><p>O uso da API de ordens CLOB depende de integração, conta e permissões elegíveis.</p></div>
+        <div><strong>Robinhood</strong><p>API de trading de cripto em avaliação; exige integração e acesso autorizado.</p></div>
       </div>
     ) },
   { title: 'Execução automática', text: 'As operações autorizadas são executadas automaticamente. Toda ordem passa pela aprovação independente de risco, limites e permissões antes do envio.', tone: 'gold', id: 'node-agents-automated-execution' },
@@ -209,7 +208,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
 
         {(!figure || figure === '7') && <Figure {...figureMetadata['7']} num="7" title={architectureFigureTitles['7']}>
           <Steps steps={fig7} label="Agentes de IA com inferências opcionais da Allora, conexões MCP ou API com mercados e execução autorizada automática" />
-          <p className="ba-fig__foot"><DocumentationTechnologyCondition name="Allora" prefix />Allora fornece inferências para análise, não executa ordens. Cada conexão usa apenas as ferramentas de consulta ou execução oferecidas e autorizadas pelo serviço.</p>
+          <p className="ba-fig__foot">A Allora é uma fonte de inferências em avaliação, não um executor de ordens. Cada conexão depende de integração e usa apenas as ferramentas de consulta ou execução oferecidas e autorizadas pelo serviço.</p>
           <p className="ba-fig__foot">Antes de qualquer envio, a verificação de limites e a reserva de capital são indivisíveis no núcleo central, compartilhado pelos agentes e conectores. Ordens simultâneas não reutilizam o mesmo capital.</p>
           <p className="ba-fig__foot"><a href="#figure-bettex-opportunities">O desenho 8 detalha o ciclo de coleta de oportunidades, escolha, investimento e registro público das transações.</a></p>
         </Figure>}

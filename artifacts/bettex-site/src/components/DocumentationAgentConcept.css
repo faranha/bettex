@@ -1,0 +1,7 @@
+.documentation-agent-concept { width: 100%; max-width: 560px; margin: 30px auto; }
+.documentation-agent-concept img { display: block; width: 100%; height: auto; border-radius: 18px; background: #080d20; }
+.documentation-agent-concept figcaption { margin-top: 12px; color: #52607a; font-size: 13px; line-height: 1.6; text-align: center; }
+@media (max-width: 768px) {
+  .documentation-agent-concept { margin-block: 24px; }
+  .documentation-agent-concept img { border-radius: 12px; }
+}

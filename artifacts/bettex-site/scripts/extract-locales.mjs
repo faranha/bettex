@@ -27,6 +27,7 @@ function scan(file) {
   if (file.endsWith('/lib/pitch-hero-media.generated.json') || file.endsWith('/lib/pitch-hero-media.ts')) return; // Image resolutions, provenance and srcset URLs, not interface copy.
   if (file.endsWith('/components/documentationReadingPages.ts')) return; // DOM tag/attribute protocol names, no interface copy.
   if (file.endsWith('/components/documentationAccordions.ts')) return; // DOM accordion mechanics; translated labels supplied by its caller.
+  if (file.endsWith('/components/documentationSectionPresentation.ts')) return; // DOM presentation metadata; excerpts come from already localized prose.
   if (file.endsWith('/lib/documentation-agent-terminology.ts')) return; // Editorial normalization, audited separately.
   // Documentation research passages own PT/EN/ES tuples; only PT is a source key.
   // The isolated demo owns three-language tuples, not the site catalogue.
@@ -73,6 +74,10 @@ function scan(file) {
     if (ts.isJsxAttribute(node) && ['owners', 'only', 'groups', 'connectorNames', 'integrationId', 'part'].includes(node.name.getText(source))) return;
     // Closing an SVG path is drawing syntax, not a translatable label.
     if (file.endsWith('/components/VestingPlot.tsx') && ts.isStringLiteral(node) && node.text === 'Z') return;
+    // Rule-table presentation inspects an HTML tag name, not reader-facing copy.
+    if (file.endsWith('/components/DocumentationRulesTable.tsx') && ts.isStringLiteral(node) && node.text === 'strong') return;
+    // Agent artwork filenames are asset references, not translatable copy.
+    if (file.endsWith('/components/DocumentationAgentArtwork.tsx') && ts.isStringLiteral(node) && node.text.endsWith('.webp')) return;
     if (/\/lib\/documentation-(?:intelligence(?:-presentation)?|order-standard)\.ts$/.test(file) && ts.isArrayLiteralExpression(node) &&
       node.elements.length === 3 && node.elements.every(ts.isStringLiteral)) {
       add(node.elements[0].text);
