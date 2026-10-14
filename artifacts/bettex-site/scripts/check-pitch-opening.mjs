@@ -44,9 +44,10 @@ try {
         assert.ok(layout.titleFirst, 'No audience or market paragraph may appear above the hero H1, including after restoring an older hero');
         assert.equal(layout.competingCallouts, 1, 'Only the market block below the H1 remains');
         const image = page.locator('#visao .cover__project img');
-        assert.equal(await image.count(), 1, 'The main character using the app remains in the restored hero');
-        assert.match(await image.getAttribute('src'), /pitch-hero-app-cutout-(pt|en|es)\.webp$/);
-        assert.ok(await image.evaluate(img => img.complete && img.naturalWidth > 0), 'The localized character artwork loads');
+        assert.equal(await image.count(), 1, 'One approved human-and-AI rescue scene appears in the opening hero');
+        assert.match(await image.getAttribute('src'), /pitch-hero-ai-rescue\.webp$/);
+        await image.evaluate(img => img.decode());
+        assert.ok(await image.evaluate(img => img.complete && img.naturalWidth > 0), 'The complete AI rescue artwork loads');
         const framing = await page.locator('#visao .cover__project').evaluate(figure => {
           const container = figure.closest('#visao');
           const hero = container.getBoundingClientRect();
@@ -64,7 +65,7 @@ try {
             completeAspect: Math.abs(imageBounds.width / imageBounds.height - img.naturalWidth / img.naturalHeight) < .01,
           };
         });
-        assert.ok(framing.height >= (width < 768 ? 480 : 640), 'Full-body character must have substantial visible height');
+        assert.ok(framing.width >= Math.min(width - 48, 280), 'The rescue scene remains large enough to read without extending the hero for a standing portrait');
         assert.equal(framing.mask, 'none', 'Do not fade or mask the character');
         assert.equal(framing.overflow, 'visible', 'Do not crop the character container');
         assert.ok(framing.insideHero && framing.completeAspect, 'Show the entire artwork inside the hero without cuts or distortion');
