@@ -1,5 +1,7 @@
 # BETTEX — funções determinísticas de apoio aos agentes
 
+> **Leitura:** [guia demo/ALFA](documentation-map.md) · **Anterior:** [pacote de investimento](trading-proposal-contract.md) · **Próximo:** [relatórios por ciclo](trading-cycle-reports.md)
+
 ## 1. Escopo e fronteira da revisão
 
 Este inventário documenta responsabilidades determinísticas relacionadas a **BETTEX, Cripto e especialistas BTC/ETH/SOL**. Não é uma certificação de todas as funções do repositório, não ativa serviços e não altera o demo.

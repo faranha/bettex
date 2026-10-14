@@ -1,5 +1,7 @@
 # BETTEX — pacote de investimento, filas e decisão
 
+> **Leitura:** [guia demo/ALFA](documentation-map.md) · **Anterior:** [percurso spot](trading-spot-journey.md) · **Próximo:** [funções determinísticas](trading-deterministic-functions.md)
+
 ## 1. Estado e alcance
 
 Esta é uma **proposta inicial de regras de negócio**, sem escolha de tecnologia. Define números para discussão e teste, não autoriza operação nem altera políticas financeiras aprovadas. O demo continua visual.

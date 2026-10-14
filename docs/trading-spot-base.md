@@ -1,5 +1,7 @@
 # Cripto — base inicial de trading spot
 
+> **Rascunho de pesquisa.** Para a especificação atual, seguir o [guia demo/ALFA](documentation-map.md). Perfis, regras candidatas e critérios de avaliação estão em [avaliação das estratégias](trading-strategy-validation.md); as alternativas abaixo não são parâmetros aprovados.
+
 ## 1. Estado da definição
 
 **Etapa atual:** definir lógica e regras básicas, sem escolher tecnologia. A referência principal desta etapa é [lógica de análise, oportunidades e decisão](trading-decision-logic.md). Os parâmetros quantitativos abaixo são rascunhos de pesquisa, não decisões desta etapa; a investigação de DEXs fica como material para depois.

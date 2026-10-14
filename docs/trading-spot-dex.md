@@ -1,5 +1,7 @@
 # Cripto spot on-chain — infraestrutura e critérios para o demo
 
+> **Referência exploratória de infraestrutura.** Não descreve integração ativa no demo nem escolha para a ALFA. Seguir o [guia de leitura](documentation-map.md) e os [critérios de custos e execução](trading-execution-validation.md); nenhuma rede, DEX ou representação é selecionada aqui.
+
 ## 1. Decisão e limites
 
 O criador definiu BTC, ETH e SOL spot, sem alavancagem, e pediu **priorizar DEXs e negociação on-chain**.

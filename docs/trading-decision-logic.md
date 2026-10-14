@@ -1,5 +1,7 @@
 # BETTEX — lógica de análise, oportunidades e decisão
 
+> **Leitura:** [guia demo/ALFA](documentation-map.md) · **Anterior:** [demo visual](demo/README.md) · **Próximo:** [percurso spot](trading-spot-journey.md)
+
 ## 1. Escopo
 
 Esta etapa define lógica e regras básicas, **não tecnologia**. Não escolhe rede, plataforma, fornecedor de inferência, modelo, infraestrutura ou mecanismo de execução.

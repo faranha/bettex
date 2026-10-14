@@ -1,5 +1,7 @@
 # BETTEX — geração dos relatórios e dependências dos subagentes
 
+> **Leitura:** [guia demo/ALFA](documentation-map.md) · **Anterior:** [relatórios por ciclo](trading-cycle-reports.md) · **Próximo:** [avaliação das estratégias](trading-strategy-validation.md)
+
 ## 1. Escopo e constatação da revisão
 
 Este documento especifica **como gerar, vincular, revisar e verificar** as [oito famílias de relatório](trading-cycle-reports.md). Não apenas o que mostrar. Complementa o [inventário determinístico](trading-deterministic-functions.md) e o [percurso spot](trading-spot-journey.md), sem implementar ou ativar geração no aplicativo.
@@ -91,7 +93,7 @@ O mesmo disparador/registro não deve duplicar documento financeiro ou contador 
 
 Relatórios de análise identificam rodada técnica; decisões identificam lote; fatos financeiros identificam o ciclo pelo instante aplicável. Manter os identificadores separados, mesmo quando uma interface agrupa sua consulta.
 
-O corte financeiro de 16h a 16h, em São Paulo, inclui abertura e exclui encerramento. Marcação do fechamento identifica o instante da observação utilizada; não usar preço futuro para completar o período anterior.
+No roteiro visual do demo e nos exemplos documentais, o corte financeiro de 16h a 16h, em São Paulo, inclui abertura e exclui encerramento. Isso não altera instantes, períodos ou regras de registros/contratos nativos; a ALFA deve identificar as regras vigentes de cada relógio. Marcação do fechamento identifica o instante da observação utilizada; não usar preço futuro para completar o período anterior.
 
 Posição herdada conserva identidade/custo e referencia os ciclos de origem. Autorizações/reservas incertas aparecem como pendências, não como caixa liberado. Resultado realizado, variação de não realizado e fluxos externos seguem as bases do relatório de ciclos.
 

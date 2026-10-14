@@ -1,5 +1,7 @@
 # BETTEX — definição e avaliação das estratégias spot
 
+> **Leitura:** [guia demo/ALFA](documentation-map.md) · **Anterior:** [geração dos relatórios](trading-report-generation.md) · **Próximo:** [custos e execução](trading-execution-validation.md)
+
 ## 1. Estado e finalidade
 
 **Regras candidatas para investigação, não estratégias aprovadas.** Este documento detalha as pendências do [percurso spot](trading-spot-journey.md): definições reproduzíveis, inferência, expectativa e avaliação. Não escolhe tecnologia, modelo, rede ou fornecedor, não executa testes de mercado e não altera o demo/ALFA.

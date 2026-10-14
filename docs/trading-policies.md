@@ -1,5 +1,7 @@
 # Trading, alpha, and allocation policies
 
+> **Referência histórica de previsões, não regra spot vigente.** Para a documentação atual do demo e da ALFA, começar pelo [guia de leitura](documentation-map.md) e pelo [pacote de investimento](trading-proposal-contract.md). O conteúdo abaixo preserva o contexto da simulação anterior.
+
 > **Spot design direction:** the creator selected BTC, ETH and SOL spot without leverage for the initial Crypto mandate. See [the proposed spot baseline](trading-spot-base.md). The prediction-contract policies below remain a separate historical simulation design; they do not define or authorize spot trading. The application remains a visual demo.
 
 ## Scope and responsibility
