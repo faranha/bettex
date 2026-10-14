@@ -1,5 +1,6 @@
 /** @jsxImportSource react */
-import { useLocale } from '@/lib/i18n';
+import type { ReactNode } from 'react';
+import { t, useLocale } from '@/lib/i18n';
 import './DocumentationVision.css';
 
 const useX = () => {
@@ -29,17 +30,17 @@ export function DocumentationVision() {
         {x('A visão é desenvolver um agente de orquestração BETTEX descentralizado, 100% autônomo e independente, sem operador centralizado, que coordene estratégias de mercado com subagentes inteligentes em esportes (surebet), iGaming, cripto e previsões.',
           'The vision is to develop a decentralized, 100% autonomous and independent BETTEX orchestration agent, with no centralized operator, coordinating market strategies with intelligent subagents in sports (surebet), iGaming, crypto and predictions.',
           'La visión es desarrollar un agente de orquestación BETTEX descentralizado, 100% autónomo e independiente, sin operador centralizado, que coordine estrategias de mercado con subagentes inteligentes en deportes (surebet), iGaming, cripto y predicciones.')}</p>
-      <p>{x('Isto é uma ambição, não o estado do demo. O objetivo é permitir que a comunidade participe das estratégias de mercado com responsabilidades e regras claras e visibilidade sobre o funcionamento do sistema. Não se trata de rebatizar apostas individuais como investimento nem de garantir retorno.',
-        'This is an ambition, not the state of the demo. The goal is to let the community take part in market strategies with clear responsibilities and rules and visibility into how the system works. It is not about rebranding individual bets as investment, nor guaranteeing returns.',
-        'Esto es una ambición, no el estado del demo. El objetivo es que la comunidad participe en las estrategias de mercado con responsabilidades y reglas claras y visibilidad sobre el funcionamiento del sistema. No se trata de rebautizar apuestas individuales como inversión ni de garantizar retornos.')}</p>
+      <p>{x('A visão da BETTEX é resgatar pessoas de um futuro incerto, usando IA para lhes dar uma participação na era de ouro da humanidade. Enquanto o Estado não organiza soluções sociais para o desaparecimento do emprego como o conhecemos, o projeto busca proteger o capital de quem hoje trata apostas como investimento.',
+        'BETTEX’s vision is to rescue people from an uncertain future, using AI to give them a stake in humanity’s golden age. While the state has yet to put social solutions in place for the disappearance of employment as we know it, the project seeks to protect the capital of people who currently treat betting as an investment.',
+        'La visión de BETTEX es rescatar a las personas de un futuro incierto, usando IA para darles una participación en la edad de oro de la humanidad. Mientras el Estado no organiza soluciones sociales ante la desaparición del empleo tal como lo conocemos, el proyecto busca proteger el capital de quienes hoy tratan las apuestas como inversión.')}</p>
     </div>
     <figure className="dv__fig" aria-labelledby="dv-vision-cap">
       <figcaption id="dv-vision-cap" className="dv__cap">{x('Mapa da visão: quem decide, quem executa regras', 'Vision map: who decides, who executes rules', 'Mapa de la visión: quién decide, quién ejecuta reglas')}</figcaption>
       <ol className="dv__stack">
         <li className="dv__layer">
-          <div className="dv__node dv__node--people"><b>{x('Comunidade', 'Community', 'Comunidad')}</b><small>{x('participa das estratégias', 'takes part in strategies', 'participa en las estrategias')}</small></div>
+          <div className="dv__node dv__node--people"><b>{x('Comunidade', 'Community', 'Comunidad')}</b><small>{x('debate o desenvolvimento', 'discusses development', 'debate el desarrollo')}</small></div>
         </li>
-        <li className="dv__link" aria-hidden="true"><span>{x('participa e acompanha', 'takes part and follows', 'participa y acompaña')}</span></li>
+        <li className="dv__link" aria-hidden="true"><span>{x('debate e acompanha', 'discusses and follows', 'debate y acompaña')}</span></li>
         <li className="dv__layer">
           <div className="dv__node dv__node--core"><i>{x('AGENTE INTELIGENTE · AMBIÇÃO', 'INTELLIGENT AGENT · AMBITION', 'AGENTE INTELIGENTE · AMBICIÓN')}</i><b>{x('Agente de orquestração BETTEX', 'BETTEX orchestration agent', 'Agente de orquestación BETTEX')}</b><small>{x('autônomo, sem operador centralizado', 'autonomous, no centralized operator', 'autónomo, sin operador centralizado')}</small></div>
         </li>
@@ -73,7 +74,72 @@ export function DocumentationVision() {
 
 export function DocumentationConceptsHeading() {
   const x = useX();
-  return <div id="documentacao-conceitos-base" data-documentation-opening><h3 hidden>{x('Conceitos para entender a proposta', 'Concepts to understand the proposal', 'Conceptos para entender la propuesta')}</h3></div>;
+  return <div id="documentacao-conceitos-base" data-documentation-opening>
+    <h3 hidden>{x('Conceitos para entender a proposta', 'Concepts to understand the proposal', 'Conceptos para entender la propuesta')}</h3>
+    <h2 className="whitepaper__subhead">{x('Terminologia Básica', 'Basic Terminology', 'Terminología Básica')}</h2>
+  </div>;
+}
+
+export function DocumentationAgenticVision({ children }: { children: ReactNode }) {
+  const x = useX();
+  const base = import.meta.env.BASE_URL;
+  return <section id="documentacao-visao-agentica" data-documentation-opening>
+    <h2 className="whitepaper__subhead">{x('Visão agêntica', 'Agentic vision', 'Visión agéntica')}</h2>
+    <div className="dv__agentic-layout">
+      <figure className="dv__agentic-illustration">
+        <img
+          src={`${base}pitch-hero-ai-rescue.webp`}
+          srcSet={`${base}pitch-hero-ai-rescue-640.webp 640w, ${base}pitch-hero-ai-rescue-960.webp 960w, ${base}pitch-hero-ai-rescue.webp 1280w`}
+          sizes="(max-width: 760px) min(360px, 100vw - 48px), 280px"
+          width={1280} height={1120}
+          alt={t('Uma pessoa erguendo a mão e sendo resgatada por um androide que representa o agente de IA da BETTEX.')}
+          loading="lazy" decoding="async"
+        />
+      </figure>
+      {children}
+    </div>
+  </section>;
+}
+
+export function DocumentationTechnologyIntroduction({ children }: { children: ReactNode }) {
+  const x = useX();
+  return <section id="documentacao-tecnologia-introducao" data-documentation-opening>
+    <h2 className="whitepaper__subhead">{x('Tecnologia', 'Technology', 'Tecnología')}</h2>
+    {children}
+    <div className="whitepaper__prose">
+      <p>{x(
+        'Allora é uma alternativa de inferência de IA: caso utilizada, poderá fornecer previsões e sinais agregados para apoiar a análise dos agentes. Não substitui a inteligência da BETTEX, não controla carteiras nem executa ordens. Sua adoção ainda depende de avaliação, integração e validação.',
+        'Allora is an alternative AI inference provider: if used, it could supply aggregated predictions and signals to support the agents’ analysis. It does not replace BETTEX’s intelligence, control wallets or execute orders. Its adoption still depends on evaluation, integration and validation.',
+        'Allora es una alternativa de inferencia de IA: si se utiliza, podrá proporcionar predicciones y señales agregadas para apoyar el análisis de los agentes. No sustituye la inteligencia de BETTEX, no controla carteras ni ejecuta órdenes. Su adopción aún depende de evaluación, integración y validación.',
+      )}</p>
+      <p>{x(
+        'Toda esta documentação é teórica: descreve a arquitetura, as integrações e as regras propostas. Esse conteúdo será consolidado e validado antes do lançamento da versão ALFA.',
+        'All of this documentation is theoretical: it describes the proposed architecture, integrations and rules. This content will be consolidated and validated before the ALFA version launches.',
+        'Toda esta documentación es teórica: describe la arquitectura, las integraciones y las reglas propuestas. Este contenido se consolidará y validará antes del lanzamiento de la versión ALFA.',
+      )}</p>
+    </div>
+  </section>;
+}
+
+export function DocumentationAgentIllustration() {
+  const x = useX();
+  return <figure id="documentacao-ilustracao-orquestracao" className="dv__orchestration-figure" data-testid="documentation-orchestration-illustration">
+    <img
+      src={`${import.meta.env.BASE_URL}technology/bettex-orchestration.webp`}
+      width={960} height={960}
+      alt={x(
+        'Agente BETTEX ao centro, conectado a três núcleos de análise cripto e aos módulos de risco e tesouraria.',
+        'BETTEX agent at the center, connected to three crypto-analysis cores and the risk and treasury modules.',
+        'Agente BETTEX en el centro, conectado a tres núcleos de análisis cripto y a los módulos de riesgo y tesorería.',
+      )}
+      loading="lazy" decoding="async"
+    />
+    <figcaption>{x(
+      'Ilustração conceitual: BETTEX coordena os subagentes de Cripto, com apoio de risco e tesouraria.',
+      'Conceptual illustration: BETTEX coordinates the Crypto subagents, supported by risk and treasury.',
+      'Ilustración conceptual: BETTEX coordina los subagentes de Cripto, con apoyo de riesgo y tesorería.',
+    )}</figcaption>
+  </figure>;
 }
 
 /** Off-chain walkthrough of what the demo's screens show. */

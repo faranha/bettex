@@ -1,4 +1,5 @@
 /** Editorial terminology only; never changes permissions, IDs or financial rules. */
+import { documentationOrderTerminology } from './documentation-order-terminology.ts';
 type Language = 'pt' | 'en' | 'es';
 
 export function isDocumentationPath(path: string): boolean {
@@ -12,6 +13,8 @@ function subagent(word: string, replacement: string): string {
 }
 
 export function documentationAgentTerminology(text: string, language: Language): string {
+  text = documentationOrderTerminology(text, language);
+  if (language === 'es') text = text.replace(/\btodo la ronda\b/g, 'toda la ronda');
   if (language === 'en') {
     return text
       .replace(/\bAgent and markets\b/gi, 'BETTEX agent and subagents')
@@ -40,6 +43,7 @@ export function documentationAgentTerminology(text: string, language: Language):
       .replace(/\bBETTEX ↔ agente\b/g, 'Agente BETTEX ↔ subagente');
   }
   return text
+    .replace(/\btodo a rodada\b/g, 'toda a rodada')
     .replace(/\bAgente e mercados\b/gi, 'Agente BETTEX e subagentes')
     .replace(/\bagente de IA BETTEX\b/gi, word => subagent(word, 'agente BETTEX'))
     .replace(/\bA IA BETTEX\b/g, 'O agente BETTEX')

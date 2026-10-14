@@ -6,6 +6,50 @@ import { intelligenceCopy, intelligenceTranslations } from '../src/lib/documenta
 import { presentationCopy, presentationTranslations } from '../src/lib/documentation-intelligence-presentation.ts';
 import { documentationMenuItems, formatOutlineTitle, groupReferenceItems } from '../src/components/whitepaperOutline.ts';
 import { documentationChapters, documentationChapterNumber, documentationParentId } from '../src/lib/documentation-structure.ts';
+import { orderGroups, orderCopy, orderStandardTranslations } from '../src/lib/documentation-order-standard.ts';
+
+test('business orders use consistent terms without renaming evidence or HTTP requests', () => {
+  assert.equal(terms('Repetir o mesmo pedido não duplica a reserva. Novos pedidos recusados não contam.', 'pt'), 'Repetir a mesma ordem não duplica a reserva. Novas ordens recusadas não contam.');
+  assert.equal(terms('A autorização está vinculada à versão do pedido.', 'pt'), 'A autorização está vinculada à versão da ordem.');
+  assert.equal(terms('The same request requires risk authorization.', 'en'), 'The same order requires risk authorization.');
+  assert.equal(terms('La autorización se vincula a la solicitud.', 'es'), 'La autorización se vincula a la orden.');
+  assert.equal(terms('Pedidos de evidência para analisar uma ordem.', 'pt'), 'Pedidos de evidência para analisar uma ordem.');
+  assert.equal(terms('HTTP requests and requests for evidence support execution.', 'en'), 'HTTP requests and requests for evidence support execution.');
+  assert.equal(terms('The order is selected after BETTEX requests new analysis.', 'en'), 'The order is selected after BETTEX requests new analysis.');
+});
+
+test('complete documentary order fields have unique paths, lifecycle requirements and three languages', () => {
+  const fields = orderGroups.flatMap(group => group.fields);
+  assert.ok(fields.length >= 120);
+  assert.equal(new Set(fields.map(field => field.path)).size, fields.length);
+  for (const field of fields) {
+    assert.ok(field.type && field.when);
+    assert.equal(field.copy.length, 3);
+    for (const copy of field.copy) assert.ok(copy.trim());
+    assert.ok(orderStandardTranslations[field.copy[0]]);
+  }
+  for (const path of ['schema_version', 'order_id', 'revisions[].content_hash', 'revisions[].legs[].leg_id', 'authorizations[].financial_snapshot_ref', 'reservation_events[].ledger_entry_ref', 'execution_events[].idempotency_key', 'fills[].execution_event_id', 'costs[].execution_event_id', 'results[].opening_fill_refs', 'results[].closing_fill_refs', 'results[].net_profit', 'events[].corrects_event_id']) {
+    assert.ok(fields.some(field => field.path === path), `Missing canonical order field: ${path}`);
+  }
+  assert.match(orderCopy.scope[0], /proposto/);
+  assert.match(orderCopy.returnText[0], /sem realizar lucro/);
+});
+
+test('selection distinguishes the deterministic baseline, ALFA/BETA inference and demo limitations', () => {
+  for (let index = 0; index < 3; index++) {
+    assert.match(orderCopy.selectionInitial[index], /determin[ií]s/i);
+    assert.match(orderCopy.selectionPhases[index], /ALFA/);
+    assert.match(orderCopy.selectionPhases[index], /BETA/);
+    assert.match(orderCopy.selectionDemo[index], /absolut/i);
+    assert.match(orderCopy.selectionDemo[index], /demo/i);
+  }
+  const paths = new Set(orderGroups.flatMap(group => group.fields).map(field => field.path));
+  for (const suffix of ['method', 'criteria_ref', 'comparison_ref', 'model_ref', 'inference_ref', 'decision_context_ref']) {
+    assert.ok(paths.has(`revisions[].selection.${suffix}`));
+  }
+  assert.match(orderCopy.selectionRanking[0], /identificador estável/);
+  assert.match(orderCopy.selectionAbstain[0], /abstenção/);
+});
 
 test('six main sections own their chapter and specialist numbering', () => {
   const number = id => documentationChapterNumber(documentationChapters.findIndex(chapter => chapter.id === id));

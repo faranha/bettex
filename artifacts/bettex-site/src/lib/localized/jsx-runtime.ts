@@ -1,19 +1,20 @@
 import { jsx as reactJsx, jsxs as reactJsxs, Fragment } from 'react/jsx-runtime';
 import { cloneElement, isValidElement, type ReactElement } from 'react';
-import { t, localizedUrl, getLocale, type Locale } from '../i18n';
+import { t, documentationContinuation, localizedUrl, getLocale, type Locale } from '../i18n';
 import { formatDocumentationProse, preserveDocumentationSpacing } from '../documentation-prose';
 export { Fragment };
 const originals = new WeakMap<object, { props: Record<string, unknown>; locale: Locale }>();
-function documentationChildren(value: unknown): unknown {
-  if (typeof value === 'string') return preserveDocumentationSpacing(value, t(value));
-  if (Array.isArray(value)) return value.map(documentationChildren);
+function documentationChildren(value: unknown, inline = false): unknown {
+  if (typeof value === 'string') return preserveDocumentationSpacing(value, inline ? documentationContinuation(value) : t(value));
+  if (Array.isArray(value)) return value.map(child => documentationChildren(child, inline));
   if (isValidElement(value) && (typeof value.type === 'string' || value.type === Fragment)) {
     const sourceProps = originals.get(value)?.props ?? value.props as Record<string, unknown>;
     if (value.type === 'script' || value.type === 'style'
         || ['translated', 'raw'].includes(sourceProps['data-i18n'] as string)) return value;
     const localized = cloneElement(value as ReactElement<Record<string, unknown>>, {
       ...localizeProps(sourceProps, value.type),
-      children: documentationChildren(sourceProps.children),
+      children: documentationChildren(sourceProps.children, inline || (value.type === 'p'
+        && Array.isArray(sourceProps.children) && sourceProps.children.some(isValidElement))),
     });
     const store = (localized as unknown as { _store?: { validated: number } })._store;
     if (store) store.validated = 1;

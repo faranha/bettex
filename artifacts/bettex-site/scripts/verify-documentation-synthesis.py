@@ -18,18 +18,25 @@ editorial = json.loads(subprocess.run(
     ["node", "--input-type=module", "-e", """
 import { documentationAgentTerminology as terms } from './src/lib/documentation-agent-terminology.ts';
 import { intelligenceCopy, intelligenceTranslations } from './src/lib/documentation-intelligence.ts';
+import { isDocumentationContinuation } from './src/lib/documentation-prose.ts';
+import { roundTerminology } from './src/lib/round-terminology.ts';
 let input = ''; for await (const part of process.stdin) input += part;
-const catalog = JSON.parse(input);
+const { catalog, source } = JSON.parse(input);
 const notices = intelligenceTranslations[intelligenceCopy.governanceNotice];
-for (const entry of Object.values(catalog)) {
-  for (const lang of ['pt', 'en', 'es']) entry[lang] = terms(entry[lang], lang);
+for (const [key, entry] of Object.entries(catalog)) {
+  if (isDocumentationContinuation(key) && source[key]) {
+    entry.pt = source[key].pt ?? key;
+    entry.en = source[key].en;
+    entry.es = source[key].es;
+  }
+  for (const lang of ['pt', 'en', 'es']) entry[lang] = terms(roundTerminology(entry[lang], lang), lang);
 }
 const openings = Object.fromEntries(['hero', 'visaoLead', 'visaoIndependencia', 'agP1'].map(key => [
   key, Object.fromEntries(Object.entries(intelligenceTranslations[intelligenceCopy[key]])
     .map(([lang, text]) => [lang, terms(text, lang)])),
 ]));
 console.log(JSON.stringify({ catalog, openings, notices: Object.fromEntries(Object.entries(notices).map(([lang, text]) => [lang, terms(text, lang)])) }));
-"""], input=json.dumps(catalog), text=True, capture_output=True, check=True, cwd=app,
+"""], input=json.dumps({"catalog": catalog, "source": source}), text=True, capture_output=True, check=True, cwd=app,
 ).stdout)
 notices = editorial["notices"]
 catalog = editorial["catalog"]
@@ -48,6 +55,8 @@ class Content(HTMLParser):
         self.depth = 0
         self.skip = 0
         self.parts = []
+        self.baseline_parts = []
+        self.order_addition_depth = 0
         self.structure = []
         self.paragraphs = []
         self.raw_paragraphs = []
@@ -65,6 +74,8 @@ class Content(HTMLParser):
             return
         if tag == "div":
             self.depth += 1
+            if "data-documentation-order-standard" in props:
+                self.order_addition_depth = self.depth
         if tag in ("script", "style"):
             self.skip += 1
         if tag == "p":
@@ -81,6 +92,8 @@ class Content(HTMLParser):
             self.raw_paragraphs.append(" ".join("".join(self.paragraph_parts).split()))
             self.paragraph_parts = None
         if tag == "div":
+            if self.depth == self.order_addition_depth:
+                self.order_addition_depth = 0
             self.depth -= 1
         if tag in ("script", "style"):
             self.skip -= 1
@@ -88,6 +101,8 @@ class Content(HTMLParser):
     def handle_data(self, text):
         if self.depth and not self.skip:
             self.parts.append(text)
+            if not self.order_addition_depth:
+                self.baseline_parts.append(text)
             if self.paragraph_parts is not None:
                 self.paragraph_parts.append(text)
 
@@ -106,6 +121,21 @@ for route, expected in baseline["routes"].items():
         addition.feed('<div id="root">' + addition_html + '</div>')
         addition_text = " ".join(" ".join(addition.parts).split()).lower()
         language = "en" if route.startswith("/en/") else "es" if route.startswith("/es/") else "pt"
+        # Isolate only the creator-authorized hero sentence. Reversing this
+        # addition must still reproduce the protected preexisting Pitch.
+        rescue_pattern = re.compile(r'<span(?=[^>]*data-pitch-rescue-vision)[^>]*>(.*?)</span>', re.S)
+        rescue_matches = rescue_pattern.findall(protected_html)
+        assert len(rescue_matches) == 1, f"Missing or duplicated hero rescue vision: {route}"
+        rescue_copy = Content()
+        rescue_copy.feed('<div id="root">' + rescue_matches[0] + '</div>')
+        rescue_text = " ".join(" ".join(rescue_copy.parts).split())
+        expected_rescue = {
+            "pt": "Nossa visão é resgatar pessoas de um futuro incerto, usando IA para lhes dar uma participação na era de ouro da humanidade e buscar proteger o capital de quem hoje trata apostas como investimento.",
+            "en": "Our vision is to rescue people from an uncertain future, using AI to give them a stake in humanity’s golden age and seeking to protect the capital of people who currently treat betting as an investment.",
+            "es": "Nuestra visión es rescatar a las personas de un futuro incierto, usando IA para darles una participación en la edad de oro de la humanidad y buscar proteger el capital de quienes hoy tratan las apuestas como inversión.",
+        }[language]
+        assert rescue_text == expected_rescue, f"Hero rescue vision must match its approved localized purpose: {route}"
+        protected_html = rescue_pattern.sub("", protected_html)
         markers = {
             "pt": ("defi", "defi ai", "defai", "100%", "autônomo", "independente",
                    "descentralizado", "sem operador centralizado", "agente bettex",
@@ -321,7 +351,8 @@ for route, expected in baseline["routes"].items():
         kyc_label = kyc_label_key if language == "pt" else source[kyc_label_key][language]
         assert any(kyc_label + " " + catalog[kyc_key][language] in p for p in page.raw_paragraphs), f"Joined or incomplete KYC explanation: {language}"
         fiat_key = next(key for key in catalog if key.startswith("para facilitar a leitura. O saque"))
-        assert any(source["estimativa desse valor na moeda fiduciária da pessoa"].get(language, "estimativa desse valor na moeda fiduciária da pessoa") + catalog[fiat_key][language] in p for p in page.raw_paragraphs), f"Missing sentence boundary after fiat estimate: {language}"
+        fiat_join = "" if catalog[fiat_key][language].startswith((".", ",", ";", ":")) else " "
+        assert any(source["estimativa desse valor na moeda fiduciária da pessoa"].get(language, "estimativa desse valor na moeda fiduciária da pessoa") + fiat_join + catalog[fiat_key][language] in p for p in page.raw_paragraphs), f"Missing sentence boundary after fiat estimate: {language}"
         # Browser textContent concatenates inline nodes without inserting spaces.
         # Normalized extraction above must not hide broken bold-text boundaries.
         starknet_key = next(key for key in catalog if key.startswith("é uma rede de segunda camada do Ethereum que utiliza provas"))
@@ -347,7 +378,7 @@ for route, expected in baseline["routes"].items():
         emphasis = (catalog.get(emphasis_key, {}).get(language)
                     or (emphasis_key if language == "pt" else source[emphasis_key][language]))
         intro = "Esta agenda abrange" if language == "pt" else source["Esta agenda abrange"][language]
-        assert allocation.startswith(". ") and management.startswith(". "), f"Lost vesting sentence boundary: {language}"
+        assert allocation.startswith((". ", ": ")) and management.startswith(". "), f"Lost vesting sentence boundary: {language}"
         assert any(p.startswith(intro + " ") and "BETTEX" + allocation in p
                    for p in page.raw_paragraphs), f"Joined vesting allocation text: {language}"
         assert any(prefix + " " + emphasis + management in p
@@ -395,7 +426,10 @@ for route, expected in baseline["routes"].items():
         reduction = 100 * (1 - count / expected["words"])
         # The approved agentic presentation adds research content; the former exact
         # one-third word target is no longer the scope. Retain a bounded-size guard.
-        assert count < expected["words"], f"Documentation exceeds the unsynthesized baseline: {route}"
+        # The user requested a new complete order specification, not a rewrite
+        # of the old copy. Keep the old-copy size guard without capping this addition.
+        legacy_count = len(" ".join(page.baseline_parts).split())
+        assert legacy_count < expected["words"], f"Preexisting documentation exceeds the unsynthesized baseline: {route}"
         print(f"{route}: {expected['words']} → {count} words ({reduction:.2f}% reduction); reviewed rule conditions, anchors, links and images verified")
 
 print("Documentation synthesis: reviewed original conditions verified on rendered pages and downloads; homepage/Pitch protected in PT/EN/ES. Automated checks complement semantic review.")

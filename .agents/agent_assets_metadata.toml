@@ -952,3 +952,17 @@ mtime_ms = 1791999086806
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/87ce301d-aed3-4c59-a4fa-df1ed3816227/c931ddd7-fa1c-4cf6-9bdb-0746a2cd37f0"
 storage_version_token = "1791999111838908"
 content_type = "image/webp"
+
+[[outputs]]
+id = "vzS50HfluYQBlvjlUqM3T"
+uri = "file://artifacts/bettex-site/public/technology/bettex-orchestration.webp"
+type = "image"
+title = "Ilustração do Agente BETTEX"
+description = "BETTEX no centro, conectado à análise cripto, ao risco e à tesouraria."
+logical_id = "292d1b7f-e9a4-46b9-9f8c-514cbdc051c4"
+content_hash = "sha256:98b69ab0a44615d549254007e43ac01d222ca8eb47b58bffc136ecee5bb87364"
+size = 91898
+mtime_ms = 1792003504931
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/292d1b7f-e9a4-46b9-9f8c-514cbdc051c4/ee1f3189-2e68-460a-b248-d7a30f2bdb14"
+storage_version_token = "1792003683039522"
+content_type = "image/webp"

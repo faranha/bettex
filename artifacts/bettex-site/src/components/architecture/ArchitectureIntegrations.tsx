@@ -1,4 +1,5 @@
 export type ArchitectureFigureNumber = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
+import { DocumentationTechnologyCondition } from '../DocumentationTechnologyCondition';
 
 type Brand = 'arbitrum' | 'allora' | 'robinhood';
 interface IntegrationNote {
@@ -52,7 +53,7 @@ export function ArchitectureIntegrations({ figure }: { figure: ArchitectureFigur
       <ul className="ba-integrations__list">
         {notes[figure].map(({ brand, placement, description }) => (
           <li key={brand} className={`ba-integrations__item ba-integrations__item--${brand}`}>
-            <strong className="ba-integrations__name"><span aria-hidden="true" />{brandNames[brand]}</strong>
+            <strong className="ba-integrations__name"><span aria-hidden="true" />{brandNames[brand]}<DocumentationTechnologyCondition name={brandNames[brand]} /></strong>
             <span className="ba-integrations__placement">{placement}</span>
             <p>{description}</p>
           </li>

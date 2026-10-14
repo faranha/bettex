@@ -118,3 +118,15 @@ Na abertura da homepage, nomear os mercados de iGaming, esportes e trading, em v
 **Why:** O criador corrigiu expressamente essa descrição no hero e pediu os mercados por nome.
 
 **How to apply:** Manter a mesma especificidade nas versões portuguesa, inglesa e espanhola do hero, sem ampliar a edição para os demais blocos.
+
+A comunidade debate o desenvolvimento, não necessariamente a estratégia.
+
+**Why:** O criador corrigiu expressamente o papel da comunidade no mapa da visão.
+
+**How to apply:** Apresentar a comunidade discutindo o desenvolvimento do projeto e acompanhando o sistema; não presumir sua participação nas estratégias de mercado. Manter esse sentido no texto, nos esquemas e nas traduções.
+
+A visão da BETTEX é resgatar pessoas de um futuro incerto, usando IA para lhes dar participação na era de ouro da humanidade enquanto o Estado não organiza soluções sociais para o desaparecimento do emprego como o conhecemos, ao mesmo tempo que busca proteger o capital do público que hoje trata apostas como investimento.
+
+**Why:** O criador definiu essa visão ao substituir o parágrafo de ressalvas na abertura da documentação.
+
+**How to apply:** Apresentar esse propósito como visão e objetivo do projeto, sem converter a proteção de capital em garantia financeira. Preservar os dois aspectos: participação no futuro da IA e proteção do capital do público.

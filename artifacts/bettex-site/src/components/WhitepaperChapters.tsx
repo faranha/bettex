@@ -20,6 +20,7 @@ import { ServiceFees } from '@/components/ServiceFees';
 import { InvestmentAgents } from '@/components/InvestmentAgents';
 import { AgentIntelligence } from '@/components/AgentIntelligence';
 import { intelligenceCopy } from '@/lib/documentation-intelligence';
+import { presentationCopy } from '@/lib/documentation-intelligence-presentation';
 import { StakingDistribution } from '@/components/StakingDistribution';
 import { ProfitAccounting } from '@/components/ProfitAccounting';
 import { DistributionCorrections } from '@/components/DistributionCorrections';
@@ -55,7 +56,7 @@ import { DocImage, DocTerms, Dot } from '@/components/DocImage';
 import { FundSecurity } from '@/components/FundSecurity';
 import { t } from '@/lib/i18n';
 import { copy as c } from '@/lib/documentation-copy';
-import { roadmapStops } from '@/components/RoadmapSection';
+import { DocumentationRoadmapMap } from '@/components/DocumentationRoadmapMap';
 import { DemoAppLink } from '@/components/DemoAppLink';
 import { DocumentationConsistency } from './DocumentationConsistency';
 import { defaultTopicOf, groupTopics, type TopicInfo } from './ReadingDisclosure';
@@ -160,9 +161,7 @@ function MainBody({ id }: { id: string }) {
       return <>
         <></>
         <div className="whitepaper__lead"><p>{c.rmP}</p></div>
-        <div className="whitepaper__status-grid" data-testid="documentation-roadmap-milestones">
-          {roadmapStops.map((stop, i) => <div key={stop.title}><span>{String(i + 1).padStart(2, '0')} / {stop.tag}</span><strong>{stop.title}</strong><p>{stop.date}. {stop.description}</p>{i === 0 && <DemoAppLink>{t('Abrir o demo')}</DemoAppLink>}</div>)}
-        </div>
+        <DocumentationRoadmapMap />
       </>;
     case 'documentacao-riscos':
       return <>
@@ -187,7 +186,10 @@ function MainBody({ id }: { id: string }) {
         <Head id="documentacao-agente-subagentes">{intelligenceCopy.agentDefinitionTitle}</Head>
         <Prose>{[intelligenceCopy.agentDefinition, intelligenceCopy.subagentDefinition]}</Prose>
         <DocTerms id="schematic-overview" label={c.visaoEsquema} items={[
-          [c.vTes, c.vTesT], [c.vAg, c.vAgT], [c.vTok, c.vTokT], [c.vPar, c.vParT],
+          [c.vTes, c.vTesT], [c.vAg, c.vAgT],
+          [presentationCopy.overviewTradingLabel, presentationCopy.overviewTrading],
+          [presentationCopy.overviewSupportLabel, presentationCopy.overviewSupport],
+          [c.vTok, c.vTokT], [c.vPar, c.vParT],
         ]} />
         <div className="whitepaper__aside-callout"><span>{c.visaoEstadoK}</span><p>{c.visaoEstado}</p></div>
         <></>
@@ -350,17 +352,17 @@ function LegacyBody({ id }: { id: string }) {
           <p>A conciliação compara USDC recebido, incluindo entradas por on-ramp, saldos e movimentos dos dois ativos, resultados por mercado, custos, reservas e obrigações em USDC. Cada conector informa origem, horário e estado; a visão consolidada permite verificar o risco global. Diferenças devem congelar o fluxo afetado e gerar investigação, nunca saldo artificial. Monitoramento, auditoria e alertas são requisitos operacionais.</p>
         </div>
         <Subhead>Agentes, MCP e APIs de mercado</Subhead>
-        <div className="whitepaper__prose"><p>O <strong>desenho 7</strong> apresenta os agentes, as conexões e a execução automática. O <strong>desenho 8</strong> mostra como os agentes coletam oportunidades, comparam alternativas e escolhem a melhor segundo retorno esperado, custos, liquidez, exposição e risco. A IA registra os critérios da escolha, define o investimento dentro da parcela investível autorizada e envia a ordem somente após aprovação independente de risco. O registro público acompanha todo o ciclo: oportunidades coletadas, selecionadas e descartadas, motivos da decisão, valores investidos e estados das transações.</p></div>
+        <div className="whitepaper__prose"><p data-testid="documentation-market-connections-introduction">Os subagentes coletam oportunidades e analisam alternativas segundo retorno esperado, custos, liquidez, exposição e risco. O agente BETTEX compara as propostas, seleciona a melhor oportunidade e registra os critérios e os motivos da decisão. Define o investimento dentro da parcela investível autorizada e envia a ordem somente após aprovação independente de risco. O registro público acompanha toda a rodada: oportunidades coletadas, selecionadas e descartadas, motivos da decisão, valores investidos e estados das transações.</p></div>
         <div className="whitepaper__prose"><p>A IA BETTEX coordena agentes que analisam oportunidades e executam automaticamente as operações autorizadas. Os agentes se conectam aos negócios por <strong>MCP (Model Context Protocol)</strong>, quando houver ferramentas disponíveis, ou pelas <strong>APIs</strong> de dados e execução de cada plataforma. Uma ferramenta de consulta não é uma permissão para negociar: o envio de ordens utiliza o recurso de execução autorizado, com aprovação independente de risco e registro de todo o ciclo.</p><p>Na <strong>Polymarket</strong>, a <a href="https://docs.polymarket.com/trading/overview.md" target="_blank" rel="noopener noreferrer">API de trading e o CLOB</a> permitem enviar ordens assinadas e acompanhar sua execução e liquidação. Robinhood e Allora têm os papéis descritos abaixo: conexão de mercado para cripto e inferências de IA para análise, respectivamente.</p><p><strong>Todas as transações do projeto são registradas abertamente</strong>, incluindo vendas de BETTEX, operações nos mercados, movimentações da tesouraria, distribuições e saques. A trilha pública contém horários, ativos, quantidades, valores, custos, estados e referências verificáveis; acompanha falhas, cancelamentos e ajustes, além das execuções concluídas. Correções são novos registros identificados, nunca alterações invisíveis. Chaves privadas, credenciais e dados pessoais ficam fora do registro público. A execução automática respeita reservas, permissões e risco. As quantidades e os meses de liberação dos tokens são definidos pelo cronograma de vesting, não por decisões discricionárias da gestão.</p></div>
         <Subhead>Robinhood: dados e execução de mercado</Subhead>
         <div className="whitepaper__prose">
-          <p>A <strong>Robinhood</strong> faz parte da apresentação técnica como uma possibilidade de conector para o mercado de ações e criptoativos. O conector deve separar leitura de preços e posições, proposta de ordem, aprovação pelo núcleo de risco, execução e conciliação do resultado. A conta operacional do projeto não é a carteira pessoal do titular.</p>
-          <p>A <a href="https://docs.robinhood.com/crypto/trading" target="_blank" rel="noopener noreferrer">Robinhood Crypto Trading API</a> documenta consultas e ordens de <strong>criptoativos</strong>, com disponibilidade para clientes nos Estados Unidos; não estabelece acesso equivalente para ações. Cada canal precisa de autorização e custódia e liquidação compatíveis com a operação cripto inicial. Um conector que exija caixa fiduciário próprio não integra esse escopo.</p>
+          <p><strong>Robinhood</strong> faz parte da apresentação técnica como uma possibilidade de conector para o mercado de ações e criptoativos. O conector deve separar leitura de preços e posições, proposta de ordem, aprovação pelo núcleo de risco, execução e conciliação do resultado. A conta operacional do projeto não é a carteira pessoal do titular.</p>
+          <p><a href="https://docs.robinhood.com/crypto/trading" target="_blank" rel="noopener noreferrer">Robinhood Crypto Trading API</a> documenta consultas e ordens de <strong>criptoativos</strong>, com disponibilidade para clientes nos Estados Unidos; não estabelece acesso equivalente para ações. Cada canal precisa de autorização e custódia e liquidação compatíveis com a operação cripto inicial. Um conector que exija caixa fiduciário próprio não integra esse escopo.</p>
         </div>
         <RobinhoodFlowDiagram />
         <Subhead>Allora: integração possível de inferências</Subhead>
         <div className="whitepaper__prose">
-          <p>A <strong>Allora</strong> pode fornecer inferências agregadas para enriquecer a análise da BETTEX. Um adaptador de dados pode consultar os tópicos relevantes por API, registrar origem e horário e normalizar os valores recebidos. Intervalos de confiança devem ser tratados quando estiverem disponíveis no tópico, sem pressupor que todas as respostas os contenham.</p>
+          <p><strong>Allora</strong> pode fornecer inferências agregadas para enriquecer a análise da BETTEX. Um adaptador de dados pode consultar os tópicos relevantes por API, registrar origem e horário e normalizar os valores recebidos. Intervalos de confiança devem ser tratados quando estiverem disponíveis no tópico, sem pressupor que todas as respostas os contenham.</p>
           <p>Esses sinais entram na camada de análise junto de preços, probabilidades, liquidez e exposição. A decisão permanece no núcleo BETTEX, com aprovação independente de risco antes de qualquer ordem. Allora não controla a carteira, não executa pagamentos ou ordens e não autentica o usuário. A consulta por API é uma integração possível do backend, não uma afirmação de integração on-chain já validada na Starknet ou na Arbitrum.</p>
           <p>Referência técnica: <a href="https://docs.allora.network/get-started/quickstart-consume" target="_blank" rel="noopener noreferrer">consumo de inferências na documentação oficial da Allora</a>.</p>
         </div>

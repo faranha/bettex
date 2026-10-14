@@ -1,0 +1,29 @@
+.order-standard { --order-border: #cfcabd; --order-navy: #14204c; margin: 30px 0; }
+.order-standard > section + section { margin-top: 48px; }
+.order-standard h4 { margin: 32px 0 16px; color: var(--order-navy); font-size: 1.15rem; line-height: 1.4; }
+.order-standard__scope { border-left: 3px solid #dca322; padding: 12px 20px; background: #e9e5d950; }
+.order-standard__scope p { margin: 0; font-size: .88rem; line-height: 1.7; }
+.order-standard__detail-link { display: inline-flex; gap: 14px; margin: 20px 0 0; font-weight: 650; color: #2750a0; text-underline-offset: 4px; }
+.order-standard__intro { line-height: 1.8; }
+.order-standard__types, .order-standard__states dl { margin: 0; }
+.order-standard__types > div, .order-standard__states dl > div { display: grid; grid-template-columns: 170px minmax(0,1fr); gap: 20px; padding: 18px 0; border-top: 1px solid var(--order-border); }
+.order-standard dt, .order-standard dd { margin: 0; line-height: 1.7; }
+.order-standard code { color: var(--order-navy); font-size: .8rem; overflow-wrap: anywhere; white-space: normal; }
+.order-standard__group table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.order-standard__group thead { background: #14204c; color: #f5f2e8; text-align: left; }
+.order-standard__group th, .order-standard__group td { padding: 14px 12px; vertical-align: top; border-bottom: 1px solid var(--order-border); }
+.order-standard__group thead th:first-child { width: 30%; }
+.order-standard__group thead th:nth-child(2) { width: 17%; }
+.order-standard__group tbody th { text-align: left; font-weight: 550; }
+.order-standard__group tbody tr:nth-child(even) { background: #e9e5d950; }
+.order-standard__group td p { margin: 5px 0 0; font-size: .87rem; line-height: 1.7; }
+.order-standard__when { display: block; color: #345192; font-size: .72rem; font-weight: 700; }
+@media (max-width: 620px) {
+  .order-standard__group thead { display: none; }
+  .order-standard__group table, .order-standard__group tbody, .order-standard__group tr, .order-standard__group th, .order-standard__group td { display: block; width: 100%; }
+  .order-standard__group tr { border-top: 1px solid var(--order-border); padding: 16px 0; }
+  .order-standard__group th, .order-standard__group td { border: 0; padding: 4px 12px; }
+  .order-standard__group th code { font-size: .87rem; font-weight: 700; }
+  .order-standard__type code { color: #57637b; }
+  .order-standard__types > div, .order-standard__states dl > div { grid-template-columns: 1fr; gap: 6px; }
+}

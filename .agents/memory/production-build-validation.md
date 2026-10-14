@@ -81,4 +81,16 @@ When readers' standalone prompts or decorative portraits move or are removed wit
 
 **Why:** Outdated source-location and original-document checks blocked publishing after approved editorial changes, although the contextual illustrations and normative paragraphs still remained.
 
-**How to apply:** Verify the new reading destinations in the rendered footer, exempt only the prompt-only paragraphs and removed portraits, and continue checking substantive prose, contextual assets and internal links in all three languages.
+**How to apply:** Exempt only the prompt-only paragraphs and removed portraits, and continue checking substantive prose, contextual assets and internal links in all three languages. Related-reading footers were subsequently removed at the creator's request; do not require their presence.
+
+When the creator removes irrelevant internal word links, validate relevance and key destinations rather than enforcing a minimum volume of hyperlinks.
+
+**Why:** An arbitrary minimum reference count blocked the approved removal of generic terms such as ALFA, despite intact destinations and valid basic references.
+
+**How to apply:** Keep checks for missing destinations, nested links and essential matching references. Explicitly reject unsupported linked terms instead of restoring misleading links to satisfy a count.
+
+Removing automatic links must preserve the localized plain-text label.
+
+**Why:** A link cleanup preserved Portuguese and English but changed a Spanish market label because hyperlink creation also performed its translation.
+
+**How to apply:** Keep localization independent of whether a word receives a link. Verify rendered text in all three languages when simplifying automatic references.

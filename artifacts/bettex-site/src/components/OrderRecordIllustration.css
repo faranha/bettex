@@ -1,0 +1,22 @@
+.ori { margin: 1.5rem 0; color: #0b1433; }
+.ori__body { position: relative; background: #f4f1e8; border: 1px solid #b8c6ea; border-radius: 6px; padding: 1.25rem 1rem; }
+.ori__lines { position: absolute; inset: 1.25rem 0; width: 100%; height: calc(100% - 2.5rem); }
+.ori__spine { stroke: #c9a24a; stroke-width: 2; }
+.ori__list { position: relative; list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+.ori__item { display: grid; grid-template-columns: 1fr 2rem 1fr; align-items: center; min-height: 3rem; }
+.ori__node { grid-column: 2; grid-row: 1; justify-self: center; z-index: 1; width: 2rem; height: 2rem; border-radius: 50%; background: #0b1433; color: #e3c374; border: 2px solid #c9a24a; display: grid; place-items: center; font: 600 .85rem/1 ui-monospace, monospace; }
+.ori__tick { grid-row: 1; height: 1px; background: #4a67a1; }
+.ori__label { grid-row: 1; background: #fff9ea; border: 1px solid #4a67a1; border-radius: 4px; padding: .55rem .7rem; font-size: .9rem; line-height: 1.35; overflow-wrap: anywhere; }
+.ori__item:nth-child(odd) .ori__label { grid-column: 1; margin-right: .4rem; text-align: right; }
+.ori__item:nth-child(odd) .ori__tick { grid-column: 1; width: .4rem; justify-self: end; }
+.ori__item:nth-child(even) .ori__label { grid-column: 3; margin-left: .4rem; }
+.ori__item:nth-child(even) .ori__tick { grid-column: 3; width: .4rem; }
+.ori__caption { margin-top: .6rem; font-size: .85rem; color: #4a5578; }
+@media (max-width: 560px) {
+  .ori__spine { display: none; }
+  .ori__list::before { content: ""; position: absolute; left: 1rem; top: 0; bottom: 0; width: 2px; background: #c9a24a; }
+  .ori__item { grid-template-columns: 2rem .5rem 1fr; }
+  .ori__item .ori__node, .ori__item:nth-child(n) .ori__node { grid-column: 1; }
+  .ori__item:nth-child(n) .ori__tick { grid-column: 2; width: 100%; justify-self: stretch; }
+  .ori__item:nth-child(n) .ori__label { grid-column: 3; margin: 0; text-align: left; }
+}

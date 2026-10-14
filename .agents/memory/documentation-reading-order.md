@@ -3,6 +3,14 @@ name: Ordem de leitura da documentação
 description: Ordem dos capítulos e leitura compacta da documentação técnica.
 ---
 
+## Padrão de abertura das subseções
+
+As subseções e áreas numeradas da documentação começam recolhidas, com o mesmo controle de expansão em todas elas. Carteiras, Features e Subagentes não são exceções.
+
+**Why:** O criador apontou a Carteira BETTEX carregada aberta e exigiu “um padrão para todas as subseções e áreas”.
+
+**How to apply:** Mostrar título, subtítulo e controle no estado inicial; manter textos, imagens e detalhes dentro do conteúdo recolhível. Navegar ao título de uma área não abre automaticamente seu corpo. Preservar links para conteúdos específicos, revelando somente os ancestrais necessários para alcançá-los.
+
 No menu, “Demo e prova de conceito” segue os mesmos controles e destaque dos demais capítulos, com acesso aos seus subitens reais.
 
 **Why:** O pedido anterior de link simples foi substituído pela correção de opções ausentes e seleção inconsistente, especialmente em Demo.
@@ -15,11 +23,11 @@ As seções principais não exibem números no menu, no seletor mobile nem nos c
 
 **How to apply:** Usar títulos sem ordinais, com a mesma tipografia, cor, espaçamento e separadores para todos os itens principais. Distinguir os filhos por recuo e os controles por setas somente onde há subitens; não destacar Subagentes e Features com cartões ou caixa alta. Manter a numeração das subseções e os IDs internos.
 
-“Leia também” / “Related topics” deve parecer um quadro estruturado, com contorno, título e links em linhas alinhadas, em todas as áreas.
+Remover integralmente “Leia também” / “Related topics” / “Temas relacionados” de todos os blocos da documentação.
 
-**Why:** O criador apontou que os links estavam completamente desalinhados e “voando”, sem aparência de tabela.
+**Why:** O criador substituiu a orientação visual anterior e pediu a remoção integral desses quadros.
 
-**How to apply:** Manter um link por linha, separadores e espaçamento uniforme no mobile e desktop; não voltar à lista horizontal que quebra em posições diferentes.
+**How to apply:** Não reintroduzir sugestões de leitura em capítulos ou grupos, em nenhum idioma. Preservar o conteúdo principal, o índice e a navegação anterior/próximo.
 
 O capítulo “Demo e prova de conceito” deve começar pela visão e pelos objetivos, depois explicar os conceitos. Preservar os esquemas da visão, não o detalhamento das telas do demo.
 
@@ -152,3 +160,9 @@ Atualizações da seção ativa por rolagem não devem recolher um índice que o
 **Why:** O criador relatou coloração falha e opções que pareciam recarregar ao selecionar BETTEX agent. A navegação por âncora e o acompanhamento de rolagem podem disputar a seleção durante o fechamento do menu.
 
 **How to apply:** Separar foco/hover de seção atual e manter a seleção de destino durante a navegação. Recolher o índice ao abrir um novo menu, navegar explicitamente ou trocar idioma, não a cada atualização da posição de leitura.
+
+Na documentação, não adicionar links para palavras diferentes: se não há um item para o termo, não adicionar link para outro assunto.
+
+**Why:** O criador rejeitou o link de “blockchain” para DeFi e reiterou a correção ao encontrar ALFA com link: “só o básico que tenha sim uma seção ou subseção; se não tem, não põe link interno”.
+
+**How to apply:** Manter somente termos básicos com definição própria ou nomes explícitos de seções/subseções correspondentes. Deixar sem link termos genéricos, ALFA, demo e prova de conceito; não encaminhar palavras para conceitos apenas relacionados.

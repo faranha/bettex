@@ -1,6 +1,7 @@
 import { createContext, useContext, type ReactNode } from 'react';
 import { ArchitectureIntegrations, type ArchitectureFigureNumber } from './ArchitectureIntegrations';
 import './BettexArchitecture.css';
+import { DocumentationTechnologyCondition } from '../DocumentationTechnologyCondition';
 
 type Surface = 'dark' | 'paper';
 type Tone = 'blue' | 'gold' | 'teal' | 'plain';
@@ -129,21 +130,21 @@ const fig7: Step[] = [
   { title: 'Agentes de IA', text: 'A IA BETTEX coordena agentes que analisam oportunidades e propõem operações nos mercados.', tone: 'blue',
     extra: (
       <div className="ba-entry" data-testid="node-agents-allora">
-        <div><strong>Oráculo · Allora</strong><p>Consulta opcional de inferências de IA para orientar estratégias de trading.</p></div>
+        <div><strong>Oráculo · Allora<DocumentationTechnologyCondition name="Allora" /></strong><p>Consulta opcional de inferências de IA para orientar estratégias de trading.</p></div>
       </div>
     ) },
   { title: 'Conexão por MCP ou API', text: 'Usam ferramentas MCP onde disponíveis ou APIs autorizadas, conforme os recursos de dados e execução de cada serviço.', tone: 'blue',
     extra: (
       <div className="ba-entry" data-testid="node-agents-market-connections">
-        <div><strong>Polymarket</strong><p>API de ordens · CLOB.</p></div>
-        <div><strong>Robinhood</strong><p>API de trading de cripto.</p></div>
+        <div><strong>Polymarket<DocumentationTechnologyCondition name="Polymarket" /></strong><p>API de ordens · CLOB.</p></div>
+        <div><strong>Robinhood<DocumentationTechnologyCondition name="Robinhood" /></strong><p>API de trading de cripto.</p></div>
       </div>
     ) },
   { title: 'Execução automática', text: 'As operações autorizadas são executadas automaticamente. Toda ordem passa pela aprovação independente de risco, limites e permissões antes do envio.', tone: 'gold', id: 'node-agents-automated-execution' },
 ];
 const fig8: Step[] = [
   { title: 'Coleta de oportunidades', text: 'Os agentes coletam oportunidades nos quatro mercados: preços, probabilidades, liquidez, custos e sinais de IA, com origem e horário dos dados.', tone: 'blue', id: 'node-opportunities-collection' },
-  { title: 'Escolha da melhor oportunidade', text: 'A IA compara as alternativas e escolhe a mais vantajosa segundo retorno esperado, custos, liquidez, exposição e risco. Registra os critérios e o motivo da escolha.', tone: 'blue', id: 'node-opportunities-decision' },
+  { title: 'Escolha da melhor oportunidade', text: 'O agente BETTEX compara as alternativas e seleciona a melhor oportunidade segundo retorno esperado, custos, liquidez, exposição e risco. Registra os critérios e o motivo da escolha.', tone: 'blue', id: 'node-opportunities-decision' },
   { title: 'Investimento autorizado', text: 'A IA propõe o valor dentro da parcela investível autorizada. O risco verifica os limites e registra a reserva em uma decisão indivisível, considerando outras ordens. Antes do envio, revalida pelas regras vigentes, sem duplicar a reserva; só então segue para execução automática.', tone: 'gold', id: 'node-opportunities-investment' },
   { title: 'Registro público', text: 'Todas as transações têm registro aberto: horário, plataforma, ativo, quantidade, valores, custos, estado e referência auditável.', tone: 'teal', badge: 'Todas as transações', id: 'node-agents-public-transactions',
     extra: (
@@ -208,7 +209,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
 
         {(!figure || figure === '7') && <Figure {...figureMetadata['7']} num="7" title={architectureFigureTitles['7']}>
           <Steps steps={fig7} label="Agentes de IA com inferências opcionais da Allora, conexões MCP ou API com mercados e execução autorizada automática" />
-          <p className="ba-fig__foot">Allora fornece inferências para análise, não executa ordens. Cada conexão usa apenas as ferramentas de consulta ou execução oferecidas e autorizadas pelo serviço.</p>
+          <p className="ba-fig__foot"><DocumentationTechnologyCondition name="Allora" prefix />Allora fornece inferências para análise, não executa ordens. Cada conexão usa apenas as ferramentas de consulta ou execução oferecidas e autorizadas pelo serviço.</p>
           <p className="ba-fig__foot">Antes de qualquer envio, a verificação de limites e a reserva de capital são indivisíveis no núcleo central, compartilhado pelos agentes e conectores. Ordens simultâneas não reutilizam o mesmo capital.</p>
           <p className="ba-fig__foot"><a href="#figure-bettex-opportunities">O desenho 8 detalha o ciclo de coleta de oportunidades, escolha, investimento e registro público das transações.</a></p>
         </Figure>}
@@ -226,11 +227,12 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
   );
 }
 
-export function BettexFlow({ figure }: { figure: ArchitectureFigureNumber }) {
+export function BettexFlow({ figure, children }: { figure: ArchitectureFigureNumber; children?: ReactNode }) {
   const { id, lead } = figureMetadata[figure];
   return <section className="documentation-figure-topic" data-documentation-figure-topic={figure}>
     <h3 className="whitepaper__subhead" id={`${id}-t`}>{architectureFigureTitles[figure]}</h3>
     <div className="whitepaper__prose"><p>{lead}</p></div>
+    {children}
     <FigureHeaderContext.Provider value={false}>
       <BettexArchitecture surface="dark" heading={false} figure={figure} />
     </FigureHeaderContext.Provider>

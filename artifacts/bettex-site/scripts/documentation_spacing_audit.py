@@ -85,6 +85,22 @@ def audit_spacing(markup):
         match = re.search(rf"[.,;:!?][{LETTERS}]", prose_only(text))
         if match:
             errors.append(("sentence", " ".join(text.split())))
+        # Spaces alone do not make joined fragments grammatically continuous.
+        if re.search(
+            r"(?:casas de apostas\s+Expansões futuras"
+            r"|betting houses\s+Future expansions"
+            r"|casas de apuestas\s+Las expansiones futuras"
+            r"|,\s+Trilha pública contém"
+            r"|,\s+The public trail"
+            r"|são Parâmetros iniciais|are Initial parameters|son Los parámetros iniciales"
+            r"|contam Exposição|count Exposure|cuentan La exposición"
+            r"|API de trading e o CLOB\s+Permitem\b"
+            r"|Trading API and CLOB\s+(?:They allow|Allow)\b"
+            r"|API de trading y el CLOB\s+Permiten\b"
+            r"|todo a rodada|todo la ronda"
+            r"|dia UTC da realização comprovada\.\s+dia UTC da realização comprovada)"
+            , text):
+            errors.append(("continuity", " ".join(text.split())))
     for pair, text in parser.boundaries:
         if re.fullmatch(rf"[{LETTERS}0-9][{LETTERS}0-9]", pair):
             errors.append(("inline", " ".join(text.split())))

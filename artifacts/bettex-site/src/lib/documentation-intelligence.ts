@@ -1,5 +1,12 @@
 /** Documentation-only architecture definitions in the present tense; operational status is stated separately. */
 const passages = {
+  deterministicNotice: ['NOSSO DEMO É DETERMINÍSTICO', 'OUR DEMO IS DETERMINISTIC', 'NUESTRO DEMO ES DETERMINISTA'],
+  selectionStage: [
+    'A seleção inicial das ordens usa critérios determinísticos, explícitos e versionados. A decisão probabilística deve ser implementada na ALFA ou na BETA; o demo visual não comprova essa capacidade com garantia absoluta. Essa evolução mantém o apoio dos subagentes de risco e tesouraria e a aprovação independente antes da execução.',
+    'Initial order selection uses explicit, versioned deterministic criteria. Probabilistic decision-making must be implemented in ALFA or BETA; the visual demo does not establish this capability with absolute assurance. This evolution retains support from risk and treasury subagents and independent approval before execution.',
+    'La selección inicial de órdenes usa criterios deterministas, explícitos y versionados. La decisión probabilística debe implementarse en ALFA o BETA; el demo visual no acredita esta capacidad con garantía absoluta. Esta evolución conserva el apoyo de los subagentes de riesgo y tesorería y la aprobación independiente antes de ejecutar.',
+  ],
+  selectionLink: ['Consultar os critérios de seleção das ordens', 'Read the order selection criteria', 'Consultar los criterios de selección de órdenes'],
   governanceNotice: [
     'Esta documentação cobre a versão demo off-chain (POC) da BETTEX',
     'This documentation covers BETTEX’s off-chain demo version (POC)',

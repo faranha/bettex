@@ -5,9 +5,21 @@ description: Browser/SSR differences and React fragment handling when localizing
 
 Sínteses de fragmentos de texto devem preservar pontuação, separação e função gramatical junto a elementos inline, como negritos. Um trecho que continua a frase deve manter verbo e conectores, não virar um rótulo independente nem repetir o conteúdo mantido fora do fragmento. Testes dessa composição devem concatenar os nós de texto sem inserir espaços artificiais.
 
-**Why:** Uma revisão da documentação juntou valores e frases (“BETTEXDestinação”, “detalhaliberação”, “distribuívelGestão”). O criador também encontrou “StarknetRede” e o equivalente em Arbitrum: a síntese removeu “é” e o espaço após a marca. A extração normalizada usada na auditoria adicionava espaços entre nós e escondia o problema.
+**Why:** Uma revisão da documentação juntou valores e frases (“BETTEXDestinação”, “detalhaliberação”, “distribuívelGestão”). O criador também encontrou “StarknetRede” e o equivalente em Arbitrum: a síntese removeu “é” e o espaço após a marca. A extração normalizada usada na auditoria adicionava espaços entre nós e escondia o problema. Mesmo com espaços, o criador voltou a encontrar frases sem verbo e orações independentes emendadas após negritos (“casas de apostas Expansões futuras” e “abertamente, Trilha pública”). Cobertura de idiomas e testes de espaços não comprovam continuidade gramatical.
 
 **How to apply:** Preservar limites de frases e espaços do texto original em todos os formatos da documentação, incluindo cartões e etapas, não apenas parágrafos comuns. Manter verbos e artigos coerentes ao sintetizar trechos e traduzir marcas com o artigo quando necessário. Revisar o fragmento com seus vizinhos: não incluir novamente o ativo ou o título do link que já permanece no JSX. O criador encontrou “USDC.USDC” depois da correção de espaços; cobertura de traduções e testes de junções não detectam duplicações. Conferir a concatenação real dos nós em PT/EN/ES, além dos hashes e da cobertura de traduções, sem alterar o render da homepage ou do Pitch.
+
+O usuário também exige verificar a capitalização de continuações após links: em “a API de trading e o CLOB permitem”, o verbo não inicia uma nova frase.
+
+**Why:** O criador voltou a apontar “CLOB Permitem” como erro de continuidade, não apenas de espaçamento.
+
+**How to apply:** Validar a frase composta no texto renderizado, preservando a minúscula do verbo após o sujeito mesmo quando há negrito ou hiperlink entre os nós.
+
+Preferir a tradução canônica para continuações dentro de parágrafos com negritos e links; sínteses independentes devem operar sobre frases ou parágrafos completos.
+
+**Why:** Encurtar separadamente as partes de uma mesma oração mudou sua função gramatical, mesmo com espaços corretos. Recuperar a continuação original mantém verbos, conectores e condições sem inventar uma frase nova.
+
+**How to apply:** Preservar as sínteses de parágrafos completos. Se for necessário encurtar um parágrafo misto, editar e revisar a composição inteira nos três idiomas; não voltar a resumir seu complemento isoladamente.
 
 A preservação das bordas também precisa abranger os fragmentos editoriais usados em rodapés de diagramas e componentes com classes próprias.
 
@@ -164,3 +176,9 @@ React diagnostics remain validation findings even when prerendering and semantic
 **Why:** Structural formatting through the shared JSX runtime produced static-child and key diagnostics while all text, links, localization and economic-rule checks passed.
 
 **How to apply:** When changing rendered child structure, inspect SSR and browser diagnostics as well as the content checks. Respect React's static-child contract and stable-key requirements; a successful build alone does not certify the transformed tree.
+
+Terminology normalization can alter Portuguese source copy too; replacing nouns does not automatically fix grammatical agreement.
+
+**Why:** The round terminology pass changed a masculine reference to a cycle into a feminine round while leaving its determiner unchanged.
+
+**How to apply:** Write new copy using the intended final terminology and audit complete rendered sentences in the source language as well as translations. Do not assume a source string is the final displayed paragraph.

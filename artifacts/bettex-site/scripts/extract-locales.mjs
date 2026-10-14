@@ -1,12 +1,14 @@
 import ts from 'typescript';
 import fs from 'node:fs';
 import path from 'node:path';
+import { orderStandardTranslations } from '../src/lib/documentation-order-standard.ts';
 const root = path.resolve(import.meta.dirname, '../src');
 const keys = new Set();
 const templates = new Set();
 const normalize = value => value.replace(/\s+/g, ' ').trim();
 function add(value) {
   value = normalize(value);
+  if (value === 'non-scaling-stroke') return; // SVG vector-effect protocol value.
   if (/^--[a-z\d_-]+$/i.test(value)) return; // CSS custom-property names are not copy.
   if (/^[a-z][a-z\d-]*__[a-z\d_-]+$/i.test(value)) return; // BEM CSS class names are structural, not prose.
   if (value === 'correlationId') return; // History URL/API field name, never user-facing copy.
@@ -16,7 +18,11 @@ function add(value) {
   if (/(?:bg-|text-|grid-|flex-|border-|rounded-|min-h-|max-w-|aria-|data-testid)/.test(value)) return;
   keys.add(value);
 }
+// These typed tuples supply all their localized prose directly; protocol codes,
+// field paths and editorial replacements are not translation source messages.
+Object.keys(orderStandardTranslations).forEach(add);
 function scan(file) {
+  if (/\/lib\/documentation-order-(?:standard|terminology)\.ts$/.test(file)) return;
   if (file.endsWith('/lib/documentation-outline.json')) return; // Generated localized navigation metadata, not source copy.
   if (file.endsWith('/lib/pitch-hero-media.generated.json') || file.endsWith('/lib/pitch-hero-media.ts')) return; // Image resolutions, provenance and srcset URLs, not interface copy.
   if (file.endsWith('/components/documentationReadingPages.ts')) return; // DOM tag/attribute protocol names, no interface copy.
@@ -47,13 +53,15 @@ function scan(file) {
   if (!/\.tsx?$/.test(file) || file.includes('/lib/localized/') || file.endsWith('/i18n.ts')) return;
   const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   function visit(node) {
+    if (file.endsWith('/components/OrderStandard.tsx') && ts.isCallExpression(node) &&
+        node.expression.getText(source) === 'text') return; // Typed catalog keys, not prose.
     // DOM event names are protocol identifiers, not displayed labels.
     if (ts.isStringLiteral(node) && ts.isCallExpression(node.parent) && node.parent.arguments[0] === node &&
         ts.isPropertyAccessExpression(node.parent.expression) &&
         ['addEventListener', 'removeEventListener'].includes(node.parent.expression.name.text)) return;
     // Regex syntax/flags and internal reference-registry assertions are not UI copy.
     if (ts.isNewExpression(node) && node.expression.getText(source) === 'RegExp') return;
-    if ((file.endsWith('/DocumentationRelatedTopics.tsx') || file.endsWith('/DocumentationFeaturesIntroduction.tsx')) &&
+    if (file.endsWith('/DocumentationFeaturesIntroduction.tsx') &&
         ts.isNewExpression(node) && node.expression.getText(source) === 'Error') return;
     if (file.endsWith('/AgentIntelligence.tsx') && ts.isStringLiteral(node) &&
       ['bettex', 'risk', 'treasury', 'governance', 'crypto', 'sports', 'predictions', 'igaming', 'relations', 'learning', 'context', 'support', 'markets'].includes(node.text)) return;
@@ -65,9 +73,16 @@ function scan(file) {
     if (ts.isJsxAttribute(node) && ['owners', 'only', 'groups', 'connectorNames', 'integrationId', 'part'].includes(node.name.getText(source))) return;
     // Closing an SVG path is drawing syntax, not a translatable label.
     if (file.endsWith('/components/VestingPlot.tsx') && ts.isStringLiteral(node) && node.text === 'Z') return;
-    if (/\/lib\/documentation-intelligence(?:-presentation)?\.ts$/.test(file) && ts.isArrayLiteralExpression(node) &&
+    if (/\/lib\/documentation-(?:intelligence(?:-presentation)?|order-standard)\.ts$/.test(file) && ts.isArrayLiteralExpression(node) &&
       node.elements.length === 3 && node.elements.every(ts.isStringLiteral)) {
       add(node.elements[0].text);
+      return;
+    }
+    // Order field tuples: path/type/lifecycle are identifiers; prose is PT/EN/ES.
+    if (file.endsWith('/lib/documentation-order-standard.ts') && ts.isCallExpression(node) &&
+        node.expression.getText(source) === 'f' && node.arguments.length === 6 &&
+        node.arguments.slice(3).every(ts.isStringLiteral)) {
+      add(node.arguments[3].text);
       return;
     }
     if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) return;

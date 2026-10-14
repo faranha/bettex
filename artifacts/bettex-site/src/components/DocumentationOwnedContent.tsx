@@ -5,9 +5,10 @@ import { ArchitectureCatalogue } from './architecture/ArchitectureCatalogue';
 import { BuybackPolicy } from './BuybackPolicy';
 import { DocumentationGames } from './DocumentationGames';
 import { DocumentationChapterIntroduction } from './DocumentationChapterIntroduction';
-import { DocumentationVision, DocumentationConceptsHeading } from './DocumentationVision';
+import { DocumentationVision, DocumentationConceptsHeading, DocumentationAgenticVision, DocumentationAgentIllustration, DocumentationTechnologyIntroduction } from './DocumentationVision';
 import { DocumentationFutureMarket, DocumentationFutureReferencesHeading } from './DocumentationFutureMarket';
 import { t } from '@/lib/i18n';
+import { OrderStandard } from './OrderStandard';
 
 export type BaselineFactory = (id: string) => ReactNode[];
 type Props = { id: string; main: BaselineFactory; legacy: BaselineFactory };
@@ -53,7 +54,8 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
         </div>
         <DocumentationConceptsHeading />
         <DocumentationChapterIntroduction chapterId={id} />
-        <div data-documentation-opening>{m(id, range(0, 3))}</div>
+        <div data-documentation-opening>{m(id, range(0, 2))}</div>
+        <DocumentationAgenticVision>{m(id, [2])}</DocumentationAgenticVision>
         {opening('documentacao-linha-base', m(id, [3, 4]))}
         {opening('documentacao-agente-subagentes', m(id, [5, 6]))}
         <div data-documentation-opening>{m(id, range(7, 10))}</div>
@@ -61,20 +63,23 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
     case 'documentacao-agentes':
       return <>
         <DocumentationChapterIntroduction chapterId={id} />
-        {m(id, range(0, 5))}
+        <DocumentationAgentIllustration />
+        {m(id, range(0, 4))}
         <div id="documentacao-inteligencia">
           <AgentIntelligence owners={['context', 'bettex']} introduction />
+          <DocumentationTechnologyIntroduction>{m(id, [4])}</DocumentationTechnologyIntroduction>
           <AgentIntelligence owners={['relations', 'learning']} />
         </div>
         {baseline}
         <div id="documentacao-agentes-detalhe"><InvestmentAgents only={['orquestradora']} embedded /></div>
-        <ArchitectureCatalogue groups={['map']} />
         {reference('documentacao-referencia-agentes', 'Orquestração, decisões e conectores', <>
+          <ArchitectureCatalogue groups={['map']} mapIntroduction />
           <div id="documentacao-arquitetura">{l('documentacao-arquitetura', [1, 2, 7, 8])}</div>
           {nested('documentacao-arquitetura', 9, [0])}
           {l('documentacao-arquitetura', [15, 16])}
           {l('documentacao-implantacao', [0])}
           {nested('documentacao-implantacao', 2, [2])}
+          <OrderStandard />
           {nested('documentacao-controles', 9, [1, 2, 5, 6, 7])}
           {l('documentacao-controles', [11])}
         </>)}
