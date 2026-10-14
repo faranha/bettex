@@ -1,11 +1,15 @@
 ---
 name: Hierarquia e arte do hero do Pitch
-description: H1 prioritário e personagem usando o app; arte integrada ao fundo, sem caixa nem legenda.
+description: H1 prioritário; nova arte de abertura com pessoa sendo resgatada por androide de IA, integrada ao fundo.
 ---
 
-O hero do Pitch deve voltar à composição anterior à abertura com a cena
-orbital. A nova imagem deve usar o personagem principal já estabelecido na
-BETTEX, fazendo algo com o aplicativo.
+## Direção atual da arte de abertura
+
+O usuário quer trabalhar o hero do Pitch em conjunto: uma pessoa erguendo a mão e sendo resgatada por um agente de IA, um androide reconhecível.
+
+**Why:** O criador apontou que a arte anterior não remetia a um bot ou agente de IA e pediu expressamente essa nova cena.
+
+**How to apply:** Esta autorização substitui a direção anterior de mostrar o personagem usando o aplicativo nas orientações abaixo, somente para a arte de abertura. Apresentar a proposta visual antes de substituir a imagem; preservar a homepage, os demais capítulos do Pitch e a prioridade do H1.
 
 A arte do hero do Pitch deve ficar integrada ao fundo, sem legenda e sem caixa. Pode ser um cutout do personagem usando o app.
 

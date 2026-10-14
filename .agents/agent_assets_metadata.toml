@@ -924,3 +924,17 @@ mtime_ms = 1791966157894
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/8d30fafb-3475-4e26-837b-f82a45168093/112e16c6-7867-4394-8311-2d9ca2462a97"
 storage_version_token = "1791966199349029"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "M3sesi0tGbx6D47IRlvQU"
+uri = "file://generated-artifacts/pitch-hero/ai-rescue-concept.png"
+type = "image"
+title = "Proposta de arte — resgate por um agente de IA"
+description = "Primeira proposta para o hero do Pitch: pessoa erguendo a mão e sendo puxada por um androide. Recorte com transparência real, ainda não aplicado ao site."
+logical_id = "63a712c0-3aae-4457-984f-b60f75fc5951"
+content_hash = "sha256:15f4d8d944998cbc12a61f690f7a8cb614e223e3dd8d9a87a07520f4ba77db1a"
+size = 1526678
+mtime_ms = 1791998819399
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/63a712c0-3aae-4457-984f-b60f75fc5951/753abe5f-c093-469a-9c00-b734fbb51cd8"
+storage_version_token = "1791998880105118"
+content_type = "image/png"
