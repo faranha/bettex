@@ -75,6 +75,12 @@ A documentação carrega somente uma seção principal e seus conteúdos por vez
 
 **How to apply:** Montar apenas a seção principal selecionada: Visão, BETTEX, Subagentes, Features, Base técnica ou Roadmap. Manter os subitens agrupados dentro dela. O rodapé oferece Próximo e, quando existir, Anterior; Visão não tem Anterior e Roadmap não tem Próximo. Menu, intralinks, recarga e histórico devem carregar a seção do destino antes de abrir seus ancestrais. Não manter todos os capítulos ocultos no DOM. Preservar assuntos, ordem, âncoras e idiomas. Não aplicar ao Pitch.
 
+Nenhuma cabeça de seção no topo da documentação fica dentro de uma caixa ou sanfona. Todas as seções começam com título, descritivo e apresentação; depois vêm as subseções.
+
+**Why:** O criador corrigiu a seção Subagentes em uma captura mobile: “Nenhuma cabeça de seção topo pode ficar dentro de um container. Toda a de seção precisa ter um descritivo, uma apresentação. Então as subseções.”
+
+**How to apply:** Manter as aberturas das seis seções e dos capítulos visíveis e sem moldura, fundo de cartão ou controle de recolher. Recolher somente as subseções e referências, não a apresentação. Preservar o carregamento de uma seção principal por vez e a navegação do rodapé. Aplicar somente à documentação.
+
 Expectativas e planos de lançamento, metas, projeções e plano comercial ficam exclusivamente no Pitch. Na documentação, deixar apenas um link para o Pitch.
 
 **Why:** O criador pediu retirar todo esse conteúdo da documentação, não somente atualizar os números.
