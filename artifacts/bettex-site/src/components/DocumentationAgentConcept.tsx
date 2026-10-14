@@ -40,7 +40,7 @@ export function DocumentationAgentConcept({ chapterId }: { chapterId: string }) 
   const caption = `${t(concept.caption)}${specialist ? ` · ${chapterId.slice(-3).toUpperCase()}` : ''}`;
   return <figure id={`${chapterId}-concept-art`} className="documentation-agent-concept"
     data-testid="documentation-agent-concept" data-agent-concept={chapterId}>
-    <img src={`${import.meta.env.BASE_URL}${concept.src}`} width={960} height={960}
+    <img src={`${import.meta.env.BASE_URL}${concept.src}`} srcSet={`${import.meta.env.BASE_URL}${concept.src}?brand=btex`} width={960} height={960}
       alt={caption} data-i18n="translated" loading="lazy" decoding="async" />
     <figcaption data-i18n="translated">{caption}</figcaption>
   </figure>;

@@ -13,6 +13,12 @@ Apresentar condições de adoção dentro do contexto explicativo, não como “
 
 ## Identificação visual dos subagentes
 
+Toda arte gerada para a BETTEX deve incorporar o símbolo B oficial, como ícone ou moeda. No androide do agente BETTEX, o B fica no peito como um herói; na visão do projeto, dentro do núcleo central; em cada agente, integrado ao seu dispositivo, inclusive Risco.
+
+**Why:** O criador exigiu que todas as artes geradas tenham o B de BETTEX e especificou essas posições.
+
+**How to apply:** Usar os contornos oficiais da marca, não um B tipográfico genérico. Integrar o símbolo à cena e preservar as composições aprovadas; a marca não autoriza colocar imagens ao lado dos títulos.
+
 Cada subagente deve ter uma arte na documentação, aproveitando a identidade visual já utilizada nos materiais e na homepage. As imagens ficam somente dentro do conteúdo das seções, nunca ao lado do título.
 
 As apresentações também devem incluir artes conceituais maiores, na linha da arte do Agente BETTEX; retratos de identificação não substituem essas cenas.
