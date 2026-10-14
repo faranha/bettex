@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import json
 import subprocess
+from documentation_audit_html import documentation_html
 
 
 class DocumentationContent(HTMLParser):
@@ -76,7 +77,7 @@ def verify():
             metadata.add(key)
             metadata.update(translations.values())
     for route, original in baseline.items():
-        html = (app / 'dist/public' / route.strip('/') / 'index.html').read_text()
+        html = documentation_html(app, route)
         current = DocumentationContent()
         current.feed(html)
         missing_ids = set(original['ids']) - set(current.ids)

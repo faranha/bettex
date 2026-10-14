@@ -601,6 +601,7 @@
 
 /* Single-chapter reader (progressive enhancement) */
 .whitepaper__chapter[hidden] { display: none; }
+.whitepaper__hero[hidden] { display: none; }
 .whitepaper__content.is-single .whitepaper__chapter { padding-top: 0; border-bottom: 0; animation: wp-enter .28s ease both; }
 .whitepaper__chapter-pagination > span { display: block; }
 .whitepaper__toc-link { padding-block: 10px; }
@@ -650,19 +651,43 @@
 .whitepaper__mobile-dropdown .whitepaper__toc-sublink[data-highlighted] { background: #193265; color: #fff; }
 .whitepaper__mobile-dropdown .whitepaper__toc-link { white-space: normal; }
 
-/* Main chapters are named links; category cards contain subordinate chapters. */
+/* All top-level entries share one row style; indentation conveys hierarchy. */
 .whitepaper__menu-section + .whitepaper__menu-section { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--wp-line, #13204f24); }
 .whitepaper__menu-section .whitepaper__toc-group { border: 0; }
+.whitepaper__menu-section > .whitepaper__toc-group > .whitepaper__chapter-menu-row > .whitepaper__toc-link,
 .whitepaper__menu-section .whitepaper__toc-category-trigger {
-  min-height: 46px; padding: 12px; border: 1px solid #13204f30; border-radius: 8px;
-  background: #13204f08; color: #21429c; font-size: 12px; font-weight: 800;
-  letter-spacing: .08em; text-transform: uppercase;
+  min-height: 46px; padding: 12px 8px 12px 11px; border: 0; border-radius: 0;
+  font-family: inherit; font-size: 13px; font-weight: 700; line-height: 1.4;
+  letter-spacing: normal; text-transform: none; align-items: center;
 }
+.whitepaper__menu-section .whitepaper__toc-category-trigger { background: transparent; color: #193277; padding-right: 10px; }
+.whitepaper__menu-section .whitepaper__toc-category-trigger > svg { flex: none; }
+.whitepaper__menu-section .whitepaper__toc-category-trigger:hover { color: #082575; background: #F4F1E8; }
+.whitepaper__menu-section .whitepaper__toc-category-trigger:focus-visible { outline: 2px solid #0d2b7f; outline-offset: -2px; }
 .whitepaper__menu-section .whitepaper__toc-category-children { margin: 8px 0 2px 12px; padding-left: 10px; border-left-width: 2px; }
 .whitepaper__mobile-dropdown .whitepaper__toc-group.is-current { background: transparent; }
-.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger { background: #102044; color: #f2b632; border-color: #5f86ff50; }
-.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger[aria-expanded="true"] { background: #142956; }
-.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger[data-highlighted] { outline: 2px solid #f2b632; outline-offset: -2px; }
+.whitepaper__mobile-dropdown .whitepaper__toc-link,
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger { color: #f4f1e8; }
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger:hover,
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger[data-highlighted] { background: #193265; color: #fff; }
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger:focus-visible { outline-color: #f2b632; }
+.whitepaper__mobile-dropdown .whitepaper__chapter-menu-row {
+  border-radius: 4px;
+}
+.whitepaper__mobile-dropdown .whitepaper__toc-group.is-current > .whitepaper__chapter-menu-row,
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger.is-active {
+  background: #193265; color: #fff;
+}
+.whitepaper__mobile-dropdown .whitepaper__chapter-menu-row > :is(.whitepaper__toc-link, .whitepaper__toc-sublink, .whitepaper__reference-toggle),
+.whitepaper__mobile-dropdown .whitepaper__chapter-menu-row > :is(.whitepaper__toc-link, .whitepaper__toc-sublink, .whitepaper__reference-toggle)[data-highlighted] {
+  background: transparent; border-radius: 0; color: inherit;
+}
+.whitepaper__mobile-dropdown .whitepaper__chapter-menu-row > .is-active::before { content: none; }
+.whitepaper__mobile-dropdown .whitepaper__chapter-menu-row:has(> [data-highlighted]) {
+  outline: 1px solid #5f86ff80; outline-offset: -1px;
+}
+.whitepaper__menu-section .whitepaper__toc-category-trigger.is-active { background: #ebe7dc; }
+.whitepaper__mobile-dropdown .whitepaper__toc-category-trigger.is-active { background: #193265; }
 
 /* Moved technical reference: collapsed, visually secondary to the main reading. */
 .whitepaper__content > .whitepaper__chapter:has(> .whitepaper__chapter-accordion:not([open])) { padding: 24px 0; }

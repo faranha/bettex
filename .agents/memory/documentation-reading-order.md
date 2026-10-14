@@ -3,17 +3,17 @@ name: Ordem de leitura da documentação
 description: Ordem dos capítulos e leitura compacta da documentação técnica.
 ---
 
-No menu, “Demo e prova de conceito” é um link simples, sem bloco de destaque nem seta para abrir subitens.
+No menu, “Demo e prova de conceito” segue os mesmos controles e destaque dos demais capítulos, com acesso aos seus subitens reais.
 
-**Why:** O criador apontou que o destaque e a seta desse item não fazem sentido no menu do Demo.
+**Why:** O pedido anterior de link simples foi substituído pela correção de opções ausentes e seleção inconsistente, especialmente em Demo.
 
-**How to apply:** Preservar o acesso direto ao capítulo e os controles recolhíveis no próprio conteúdo. Não restaurar um submenu no item de entrada nem remover a visão ou seus desenhos por causa dessa correção visual.
+**How to apply:** Nome navega ao capítulo; seta abre e fecha seu índice, como nos demais capítulos. Não excluir Demo do destaque atual nem dos controles quando houver subitens. Isso não reintroduz o detalhamento de telas do aplicativo.
 
-As seções principais não exibem números no menu, no seletor mobile nem nos cabeçalhos dos capítulos. Subagentes e Features precisam se distinguir visualmente como grupos.
+As seções principais não exibem números no menu, no seletor mobile nem nos cabeçalhos dos capítulos. Todos os itens principais do menu usam o mesmo tratamento visual.
 
-**Why:** O criador apontou que a divisão parecia estranha porque alguns itens tinham números e outros não, e pediu abolir os números das seções principais e criar divisões claras no menu.
+**Why:** O criador pediu abolir os números das seções principais e criar divisões claras. Depois apontou que destacar apenas Subagentes e Features com cartões azuis e letras amarelas não tinha lógica.
 
-**How to apply:** Usar títulos sem ordinais, separadores entre os blocos e tratamentos próprios para categorias e itens subordinados. Manter a numeração das subseções e os IDs internos para preservar referências e links diretos.
+**How to apply:** Usar títulos sem ordinais, com a mesma tipografia, cor, espaçamento e separadores para todos os itens principais. Distinguir os filhos por recuo e os controles por setas somente onde há subitens; não destacar Subagentes e Features com cartões ou caixa alta. Manter a numeração das subseções e os IDs internos.
 
 “Leia também” / “Related topics” deve parecer um quadro estruturado, com contorno, título e links em linhas alinhadas, em todas as áreas.
 
@@ -37,7 +37,7 @@ BTC, ETH e SOL são subitens de “Subagente Cripto” no menu e no corpo da doc
 
 **Why:** O criador pediu simplificar o nome e depois reiterou que carteiras, conta/acesso e demais funcionalidades precisam estar agrupadas em Features, com seções e subseções, em vez de uma lista sequencial de 17–18 opções. Corrigiu novamente que agrupar apenas o menu deixa o conteúdo gigante, sequencial e mal organizado.
 
-**How to apply:** Preservar a introdução antes de Carteira BETTEX, sem criar um artigo extra. No menu e no conteúdo, colocar carteiras, conta/acesso, histórico, staking, token, recompra e jogos dentro de Features. Agrupar os subagentes em sua própria seção recolhível; manter especialistas de Cripto e subseções subordinados. Os grupos começam recolhidos e seus itens fechados precisam ser compactos, não cartões altos repetidos. Manter uma página contínua e abrir todos os ancestrais dos links diretos.
+**How to apply:** Preservar a introdução antes de Carteira BETTEX, sem criar um artigo extra. Colocar carteiras, conta/acesso, histórico, staking, token, recompra e jogos dentro da página principal Features. Agrupar os subagentes na página Subagentes; manter especialistas de Cripto e subseções subordinados. O índice começa recolhido, os itens fechados são compactos e a seção principal selecionada carrega seus conteúdos. Abrir os ancestrais dos links diretos após carregar a página correspondente.
 
 Não repetir títulos consecutivos do mesmo bloco, inclusive quando um componente já possui título próprio e é colocado dentro de outro com cabeçalho.
 
@@ -55,7 +55,7 @@ No mobile, o menu da documentação deve seguir o submenu das demais páginas: u
 
 **Why:** O criador pediu a mesma estrutura de submenu usada nas outras páginas, no lugar do menu de capítulos mostrado no corpo da documentação.
 
-**How to apply:** Considerar a altura real do header com a barra ao navegar para capítulos e subseções. Preservar links diretos e histórico; os atalhos abrem o conteúdo recolhível na própria página, sem trocar de página de leitura.
+**How to apply:** Considerar a altura real do header com a barra ao navegar para capítulos e subseções. Preservar links diretos e histórico; os atalhos carregam a seção principal correspondente e abrem o conteúdo recolhível do destino.
 
 A seção chama “Entidade e negócios”, não “Identidade e negócios”, e deve vir imediatamente depois de “Visão do projeto”, nunca no fim.
 
@@ -69,11 +69,11 @@ Não reintroduzir os controles globais “Expandir tudo” e “Recolher tudo”
 
 **How to apply:** Manter o índice e a leitura dos capítulos sem acrescentar novamente essa barra de controles.
 
-A documentação usa uma única página contínua, no mobile e no desktop. Apresentação, introdução e visão ficam abertas inicialmente; capítulos e subseções são recolhíveis dentro dessa mesma página.
+A documentação carrega somente uma seção principal e seus conteúdos por vez, no mobile e no desktop. Visão é a entrada padrão.
 
-**Why:** O criador substituiu a organização anterior: “todos os elementos recolhíveis dentro de cada seção, as subseções carregando sempre dentro de uma única página, mas recolhíveis, a pessoa abre e fecha se quiser ler”. Acrescentou que isso pode ser aplicado no desktop também.
+**Why:** O criador substituiu explicitamente a página contínua: “you load only the main section and its contents not all content”, com Visão como índice e navegação próxima/anterior no rodapé.
 
-**How to apply:** Permitir abrir e fechar capítulos e subseções independentemente, mantendo os outros trechos abertos e o estado dos filhos. Menu e links diretos abrem os ancestrais necessários e rolam ao conteúdo na mesma página. Não reintroduzir paginação anterior/próxima nem diretórios duplicados no rodapé. Preservar assuntos, ordem, links, histórico, recarga e idiomas. Verificar parágrafos reais, controles por teclado e diagramas; não mover ou recriar os nós de conteúdo. Não aplicar essa organização ao Pitch.
+**How to apply:** Montar apenas a seção principal selecionada: Visão, BETTEX, Subagentes, Features, Base técnica ou Roadmap. Manter os subitens agrupados dentro dela. O rodapé oferece Próximo e, quando existir, Anterior; Visão não tem Anterior e Roadmap não tem Próximo. Menu, intralinks, recarga e histórico devem carregar a seção do destino antes de abrir seus ancestrais. Não manter todos os capítulos ocultos no DOM. Preservar assuntos, ordem, âncoras e idiomas. Não aplicar ao Pitch.
 
 Expectativas e planos de lançamento, metas, projeções e plano comercial ficam exclusivamente no Pitch. Na documentação, deixar apenas um link para o Pitch.
 
@@ -116,3 +116,9 @@ Os itens principais do índice devem começar recolhidos, inclusive o capítulo 
 **Why:** O criador reforçou: “precisamos poder recolher os itens princiais, os indices, eles tem que estar sempre recolhidos”.
 
 **How to apply:** Abrir os índices somente por ação explícita do leitor, no desktop e mobile. Navegação e recarga não devem expandi-los automaticamente. Os controles do índice não recolhem o conteúdo do capítulo nem seguem a abertura de suas referências técnicas.
+
+Atualizações da seção ativa por rolagem não devem recolher um índice que o leitor acabou de abrir; o destaque atual cobre a linha inteira, não fundos separados no nome e na seta.
+
+**Why:** O criador relatou coloração falha e opções que pareciam recarregar ao selecionar BETTEX agent. A navegação por âncora e o acompanhamento de rolagem podem disputar a seleção durante o fechamento do menu.
+
+**How to apply:** Separar foco/hover de seção atual e manter a seleção de destino durante a navegação. Recolher o índice ao abrir um novo menu, navegar explicitamente ou trocar idioma, não a cada atualização da posição de leitura.

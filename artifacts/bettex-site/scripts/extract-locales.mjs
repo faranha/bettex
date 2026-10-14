@@ -10,13 +10,14 @@ function add(value) {
   if (/^--[a-z\d_-]+$/i.test(value)) return; // CSS custom-property names are not copy.
   if (/^[a-z][a-z\d-]*__[a-z\d_-]+$/i.test(value)) return; // BEM CSS class names are structural, not prose.
   if (value === 'correlationId') return; // History URL/API field name, never user-facing copy.
-  if (/^documentacao-[\w-]+$|^-(en|es)$/.test(value)) return; // Routing ids and localized filename suffixes.
+  if (/^documentacao-[\w-]+$|^documentation-(?:reading|menu)-group-|^-(en|es)$/.test(value)) return; // Routing ids and localized filename suffixes.
   if (!value || !/[A-Za-zÀ-ÿ]/.test(value) || /^https?:|^[/#@]\S|^\.[a-z]|^#[a-f\d]{3,8}$/i.test(value) || /^[a-z\d_-]+:[^\s]+$/i.test(value)) return;
   if (!value.includes(' ') && /[/[\]{}=]/.test(value)) return;
   if (/(?:bg-|text-|grid-|flex-|border-|rounded-|min-h-|max-w-|aria-|data-testid)/.test(value)) return;
   keys.add(value);
 }
 function scan(file) {
+  if (file.endsWith('/lib/documentation-outline.json')) return; // Generated localized navigation metadata, not source copy.
   if (file.endsWith('/components/documentationReadingPages.ts')) return; // DOM tag/attribute protocol names, no interface copy.
   if (file.endsWith('/components/documentationAccordions.ts')) return; // DOM accordion mechanics; translated labels supplied by its caller.
   if (file.endsWith('/lib/documentation-agent-terminology.ts')) return; // Editorial normalization, audited separately.

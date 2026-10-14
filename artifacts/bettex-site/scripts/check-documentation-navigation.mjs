@@ -116,4 +116,8 @@ for (const [locale, title] of [['pt', 'Visão do projeto.'], ['en', 'Project vis
 }
 const readerSource = await fs.readFile(new URL('../src/components/WhitepaperSection.tsx', import.meta.url), 'utf8');
 assert.doesNotMatch(readerSource, /whitepaper__crumbs|crumbs\.map/, 'Do not repeat chapter options in a breadcrumb above the index.');
+assert.doesNotMatch(readerSource, /!introduction|const introduction =/, 'Demo must expose its real subsections and use the same current-section styling as other chapters.');
+assert.match(readerSource, /useEffect\(collapseIndex, \[locale, collapseIndex\]\)/, 'Scroll-derived selection must not collapse expanded menu options.');
+assert.match(readerSource, /if \(navigatingRef\.current \|\| menuOpen\) return/, 'Scroll tracking must not overwrite selection during navigation or while the menu overlay is open.');
+assert.match(readerSource, /onCloseAutoFocus=/, 'Menu dismissal must not steal focus back from the navigation destination.');
 console.log('Documentation navigation: single index, 3-level numbering, stable locale ids, collisions, closed ancestors and measured desktop/mobile offsets verified.');

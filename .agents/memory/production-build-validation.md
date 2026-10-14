@@ -47,6 +47,12 @@ Text-flow checks must distinguish inline prose from spatially separated labels i
 
 ## Approved navigation removals
 
+For the single-main-section documentation reader, check both selective loading and whole-document preservation.
+
+**Why:** The creator requires loading only the selected main section. Comparing the initial Vision page alone with the complete-content baseline falsely reports the unmounted sections as deleted.
+
+**How to apply:** Generate fresh, build-only preservation evidence for all sections and separately verify that the actual initial page mounts only Vision. Keep the immutable content baseline and the Homepage/Pitch protections; do not weaken those checks or ship the complete audit document as the public reader.
+
 An approved removal of duplicate navigation must also update the rendered-structure baseline, even when TypeScript, navigation tests and the preview pass.
 
 **Why:** Removing the documentation breadcrumb deleted its root anchor from server-rendered HTML, so the old structure fingerprint blocked publishing.

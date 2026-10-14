@@ -2,12 +2,14 @@ import runpy
 from pathlib import Path as NarrativePath
 
 runpy.run_path(str(NarrativePath(__file__).with_name("verify-defi-narrative.py")))
+runpy.run_path(str(NarrativePath(__file__).with_name("verify-agent-requirement-ownership.py")), run_name="__main__")
 """Audit compact documentation, retained references and localized downloads."""
 import json
 import re
 from collections import Counter
 from documentation_chapter_audit import expected_chapters, verify_chapters
 from html.parser import HTMLParser
+from documentation_audit_html import documentation_html
 from pathlib import Path
 from zipfile import ZipFile
 from xml.etree import ElementTree
@@ -70,7 +72,12 @@ obsolete=[r'quatro posições',r'cinco pessoas',r'50% para a tesouraria e 50% pa
 alias_source=(app/'src/lib/documentation-aliases.ts').read_text()
 aliases=dict(re.findall(r"['\"](documentacao-[^'\"]+)['\"]\s*:\s*['\"]([^'\"]+)['\"]",alias_source))
 for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('es','es/documentacion.html')]:
-    html=(app/'dist/public'/file).read_text()
+    initial=(app/'dist/public'/file).read_text()
+    initial_page=Documentation(); initial_page.feed(initial)
+    assert initial_page.chapters == ['documentacao-como-funciona'], f"{lang}: initial page must load Vision only"
+    assert 'data-testid="documentation-next"' in initial, f"{lang}: initial section needs a next-section footer link"
+    assert 'data-testid="documentation-previous"' not in initial, f"{lang}: Vision has no previous section"
+    html=documentation_html(app, '/' + file.removesuffix('/index.html'))
     start=re.search(r'<section\b[^>]*\bid="documentacao"[^>]*>',html).start()
     # The whitepaper fills the section before the shared footer.
     shared_footer=re.search(r'<footer\b[^>]*\bid="rodape"[^>]*>',html)
