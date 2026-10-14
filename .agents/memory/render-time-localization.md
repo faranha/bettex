@@ -3,6 +3,14 @@ name: Render-time localization pitfalls
 description: Browser/SSR differences and React fragment handling when localizing existing JSX.
 ---
 
+## Contextual prose moved into tables
+
+Localize complete source paragraphs in their original inline context before splitting them into table headings and cells. Treat the resulting cells as already translated.
+
+**Why:** Moving prose directly into rule tables bypassed contextual continuation handling, joining English/Spanish sentences without spaces. Reprocessing the repaired cell fragments then attempted to translate already-translated strings.
+
+**How to apply:** Preserve source metadata until contextual localization is complete, before React child cloning loses that metadata. Verify punctuation and spacing on rendered table cells in all supported languages, not just catalog coverage.
+
 Sínteses de fragmentos de texto devem preservar pontuação, separação e função gramatical junto a elementos inline, como negritos. Um trecho que continua a frase deve manter verbo e conectores, não virar um rótulo independente nem repetir o conteúdo mantido fora do fragmento. Testes dessa composição devem concatenar os nós de texto sem inserir espaços artificiais.
 
 **Why:** Uma revisão da documentação juntou valores e frases (“BETTEXDestinação”, “detalhaliberação”, “distribuívelGestão”). O criador também encontrou “StarknetRede” e o equivalente em Arbitrum: a síntese removeu “é” e o espaço após a marca. A extração normalizada usada na auditoria adicionava espaços entre nós e escondia o problema. Mesmo com espaços, o criador voltou a encontrar frases sem verbo e orações independentes emendadas após negritos (“casas de apostas Expansões futuras” e “abertamente, Trilha pública”). Cobertura de idiomas e testes de espaços não comprovam continuidade gramatical.

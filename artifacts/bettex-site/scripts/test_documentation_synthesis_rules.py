@@ -1,5 +1,6 @@
 """Regression tests use independent expectations, including known unsafe edits."""
 import json
+import runpy
 import unittest
 from pathlib import Path
 
@@ -7,6 +8,7 @@ from documentation_synthesis_rules import RULES, validate_paragraph, verify_rule
 from documentation_spacing_audit import audit_spacing
 
 app = Path(__file__).resolve().parents[1]
+DocumentationContent = runpy.run_path(str(app / 'scripts/verify-documentation-ownership.py'))['DocumentationContent']
 catalog = json.loads((app / "src/lib/locales/documentation-synthesis.json").read_text())
 
 
@@ -17,6 +19,20 @@ def entry(prefix):
 
 
 class SynthesisRules(unittest.TestCase):
+    def test_rule_table_preserves_both_title_and_complete_conditions(self):
+        parser = DocumentationContent()
+        parser.feed('<section id="documentacao"><table data-testid="documentation-rules-table">'
+                    '<tbody><tr><th scope="row"><strong>Reserva segregada.</strong></th>'
+                    '<td><p> Mantém o saldo e <a href="#limite">todos os limites</a>.</p></td></tr>'
+                    '<tr><th scope="row">02</th><td><p>Regra sem título destacado.</p></td></tr>'
+                    '</tbody></table><p>Parágrafo externo intacto.</p></section>')
+        self.assertEqual(parser.paragraphs, [
+            'Reserva segregada. Mantém o saldo e todos os limites.',
+            'Regra sem título destacado.', 'Parágrafo externo intacto.',
+        ])
+        self.assertEqual(parser.links, ['#limite'])
+        self.assertNotIn('Reserva segregada. Mantém o saldo.', parser.paragraphs)
+
     def test_broken_fragment_joins_are_rejected_even_with_spaces(self):
         broken = [
             'As integrações com <strong>plataformas de trading e casas de apostas</strong> Expansões futuras incluirão conectores.',

@@ -17,6 +17,9 @@ class DocumentationContent(HTMLParser):
         self.paragraph = None
         self.paragraphs = []
         self.ids, self.links, self.images = [], [], []
+        self.rule_table_depth = None
+        self.rule_header_parts = None
+        self.rule_header = ''
 
     def handle_starttag(self, tag, attrs):
         props = dict(attrs)
@@ -26,6 +29,12 @@ class DocumentationContent(HTMLParser):
             self.depth += 1
         if not self.depth:
             return
+        if tag == 'table' and props.get('data-testid') == 'documentation-rules-table':
+            self.rule_table_depth = self.depth
+        if self.rule_table_depth and tag == 'tr':
+            self.rule_header = ''
+        if self.rule_table_depth and tag == 'th' and props.get('scope') == 'row':
+            self.rule_header_parts = []
         if props.get('id'):
             self.ids.append(props['id'])
         if tag == 'a' and props.get('href'):
@@ -36,13 +45,26 @@ class DocumentationContent(HTMLParser):
             self.paragraph = []
 
     def handle_data(self, data):
+        if self.rule_header_parts is not None:
+            self.rule_header_parts.append(data)
         if self.depth and self.paragraph is not None:
             self.paragraph.append(data)
 
     def handle_endtag(self, tag):
+        if tag == 'th' and self.rule_header_parts is not None:
+            self.rule_header = ''.join(self.rule_header_parts).strip()
+            self.rule_header_parts = None
         if self.depth and tag == 'p' and self.paragraph is not None:
-            self.paragraphs.append(' '.join(''.join(self.paragraph).split()))
+            text = ''.join(self.paragraph)
+            # Approved rule tables split the original bold lead into a row
+            # header. Rejoin it with the intact paragraph, never exempt the rule.
+            if self.rule_table_depth and self.rule_header and not self.rule_header.isdigit():
+                text = self.rule_header + ' ' + text
+            self.paragraphs.append(' '.join(text.split()))
             self.paragraph = None
+        if tag == 'table' and self.rule_table_depth == self.depth:
+            self.rule_table_depth = None
+            self.rule_header = ''
         if self.depth and tag not in self.void:
             self.depth -= 1
 
@@ -102,6 +124,32 @@ console.log(JSON.stringify(baseline));
     ]
     catalogue = json.loads((app / 'src/lib/locales/translations.json').read_text())
     catalogue.update(json.loads((app / 'src/lib/locales/documentation-synthesis.json').read_text()))
+    catalogue.update(json.loads((app / 'src/lib/locales/documentation-architecture.json').read_text()))
+    # Approved relocation of adoption conditions into the actual explanations.
+    # Match only these exact baseline paragraphs; protect the replacement in
+    # full, including eligibility, independent risk and settlement conditions.
+    technology_rewrites = {
+        'Consulta opcional de inferências de IA para orientar estratégias de trading.':
+            'Fonte opcional de inferências de IA para estratégias de trading, ainda sujeita a avaliação e integração.',
+        'API de ordens · CLOB.':
+            'O uso da API de ordens CLOB depende de integração, conta e permissões elegíveis.',
+        'API de trading de cripto.':
+            'API de trading de cripto em avaliação; exige integração e acesso autorizado.',
+        'Allora fornece inferências, sem executar ordens. Conexões utilizam exclusivamente ferramentas de consulta ou execução autorizadas pelo serviço.':
+            'A Allora é uma fonte de inferências em avaliação, não um executor de ordens. Cada conexão depende de integração e usa apenas as ferramentas de consulta ou execução oferecidas e autorizadas pelo serviço.',
+        'Transações possuem referências verificáveis. Decisões e ordens externas são registradas pela BETTEX, sem exigir publicação on-chain.':
+            'Na rede que for escolhida e validada, transações terão referências verificáveis. Decisões e ordens externas também são registradas pela BETTEX, sem pressupor publicação on-chain.',
+        'O livro registra distribuição pendente. Transferência confirmada liquida a obrigação na carteira; saque não paga novamente.':
+            'A infraestrutura de transferência depende da escolha e validação da rede. O livro contábil registra o direito e a obrigação como distribuição pendente. A transferência on-chain confirmada e conciliada reconhece USDC recebido na carteira do titular e liquida a obrigação. O saque posterior movimenta esse saldo, sem novo pagamento da distribuição.',
+        'Referências on-chain obrigatórias. Falha na reserva/liquidez retém lucro na tesouraria permanentemente. Pagamentos são únicos por rodada.':
+            'A rede ainda será escolhida; nela, transferências compatíveis terão referências on-chain. Se reserva ou liquidez falhar, a rodada não paga e o lucro fica na tesouraria, sem liberação futura. Cada pagamento pertence somente à sua própria rodada.',
+    }
+    technology_slots = {
+        index: technology_rewrites[paragraph]
+        for index, paragraph in enumerate(baseline['/documentacao']['paragraphs'])
+        if paragraph in technology_rewrites
+    }
+    assert set(technology_slots.values()) == set(technology_rewrites.values()), 'Technology rewrite baseline drift'
     catalogue.update(json.loads(subprocess.check_output(
         ['node', '--input-type=module', '-e',
          "import {intelligenceTranslations} from './src/lib/documentation-intelligence.ts'; console.log(JSON.stringify(intelligenceTranslations));"],
@@ -141,19 +189,13 @@ console.log(JSON.stringify(pairs));
             metadata.update(translations.values())
     for route, original in baseline.items():
         html = documentation_html(app, route)
-        # The creator explicitly qualified named technology adoption. Only
-        # these additive inline qualifiers are excluded from the old prose comparison.
+        # Adoption conditions now belong in explanatory prose, not inline
+        # title/brand qualifiers. Do not require or strip the rejected labels.
         qualifier_pattern = re.compile(r'<span\b(?=[^>]*data-documentation-technology-condition)[^>]*>([^<]*)</span>')
         language = 'en' if route.startswith('/en/') else 'es' if route.startswith('/es/') else 'pt'
-        allowed_qualifiers = {
-            'pt': {' (caso utilizada)', 'Caso utilizada, '},
-            'en': {' (if used)', 'If used, '},
-            'es': {' (si se utiliza)', 'Si se utiliza, '},
-        }[language]
-        qualifiers = qualifier_pattern.findall(html)
-        assert qualifiers and all(text in allowed_qualifiers for text in qualifiers), \
-            f'{route}: only approved localized technology qualifiers may be excluded'
-        html = qualifier_pattern.sub('', html)
+        assert not qualifier_pattern.search(html), f'{route}: removed inline technology qualifiers must not return'
+        assert not re.search(r'\((?:caso utilizada|if used|si se utiliza)\)', html, re.I), \
+            f'{route}: technology conditions belong in explanatory prose, not parenthetical labels'
         # The creator clarified who selects opportunities, preserving every
         # evaluation criterion and the recorded rationale in the original rule.
         old_decision = {
@@ -221,6 +263,11 @@ console.log(JSON.stringify(pairs));
             return paragraph
         assert len(original['paragraphs']) == len(baseline['/documentacao']['paragraphs']), f'{route}: localized baseline alignment changed'
         def coherent_copy(paragraph):
+            for index, replacement in technology_slots.items():
+                if paragraph == original['paragraphs'][index]:
+                    localized = replacement if language == 'pt' else catalogue[replacement][language]
+                    assert localized in current.paragraphs, f'{route}: complete technology conditions missing: {localized}'
+                    return localized
             # Normalize business-order terminology only when the complete,
             # independently rendered paragraph confirms that change. A glossary
             # definition of generic request idempotency is not an investment order.
