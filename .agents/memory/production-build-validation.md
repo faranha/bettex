@@ -5,6 +5,12 @@ description: Source checks alone do not cover rendered Pitch copy and regenerate
 
 For Pitch copy, shared components used by the Pitch, and documentation exports, run the complete production build before declaring the changes ready to publish.
 
+Adjacent heading and subtitle spans need explicit text whitespace, even when CSS displays them on separate lines. Validation shell commands must propagate failing exit codes; do not append a successful housekeeping command that masks a failed build check.
+
+**Why:** Publishing caught a heading concatenated with its subtitle after a period. A local validation batch had continued to a successful unrelated command, hiding the failed text-flow audit.
+
+**How to apply:** Use explicit JSX separators where text nodes meet and chain required validation commands with `&&`. Confirm the complete publishing command exits successfully, including post-render checks.
+
 Preservation audits must compare complete semantic rules across approved layout changes. When a paragraph becomes a table row, compare its row title and body together; when adoption caveats move into explanations, protect those complete explanations rather than requiring obsolete title suffixes.
 
 **Why:** Publishing was blocked after approved documentation changes because the audit required removed technology labels and interpreted rule-table body cells as incomplete paragraphs.

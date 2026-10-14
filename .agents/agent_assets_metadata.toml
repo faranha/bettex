@@ -966,3 +966,17 @@ mtime_ms = 1792003504931
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/292d1b7f-e9a4-46b9-9f8c-514cbdc051c4/ee1f3189-2e68-460a-b248-d7a30f2bdb14"
 storage_version_token = "1792003683039522"
 content_type = "image/webp"
+
+[[outputs]]
+id = "AUN27ixWQEbRc38LhpoLo"
+uri = "file://generated-artifacts/documentation-redraw/artes-aplicadas.jpg"
+type = "image"
+title = "11 artes redesenhadas da documentação"
+description = "Primeira linha: BETTEX, Risco, Tesouraria e Governança. Segunda: Cripto, Esportes, Previsões e iGaming. Terceira: BTC, ETH e SOL. Estas são as artes que já carregam no preview."
+logical_id = "66ddf9cd-e8b4-44f5-a0fe-55afa0da8f9a"
+content_hash = "sha256:5e61245d0c90d2f4f489641c0aac7e819354fb346c662d643cdcbf542a8ce557"
+size = 503896
+mtime_ms = 1792021786777
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/66ddf9cd-e8b4-44f5-a0fe-55afa0da8f9a/a0a37e92-4c97-4a26-bcb1-1c33975d3f51"
+storage_version_token = "1792021812825491"
+content_type = "image/jpeg"
