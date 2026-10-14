@@ -1,0 +1,120 @@
+{
+  "facts": [
+    {
+      "claim": "O estudo DRL propõe detectar/rejeitar agentes overfit com uma estimativa PBO; sua experiência usa 10 criptoativos, inclui BTC/ETH/SOL, dados de 5 minutos em 2022, taxa simulada de 0,3% por trade e ignora slippage. No período de teste, comparadores e modelos tiveram retornos acumulados negativos, apesar de desempenho relativo superior do PPO selecionado.",
+      "classification": "experiment",
+      "sourceUrls": [
+        "https://arxiv.org/html/2209.05559v6"
+      ]
+    },
+    {
+      "claim": "O working paper de Liu e Tsyvinski, com versão inicial de agosto de 2018 e versão em periódico de 2021, estuda BTC, Ripple e ETH e relata momentum temporal e proxies de atenção como fatores preditivos específicos do mercado cripto.",
+      "classification": "experiment",
+      "sourceUrls": [
+        "https://www.nber.org/papers/w24877"
+      ]
+    },
+    {
+      "claim": "O estudo publicado em março de 2026 analisa 9 moedas sobreviventes e top-30 de capitalização com dados semanais jan/2017–ago/2024; encontra resultado não significativo no universo sobrevivente e dependência amostral nos resultados trimados do top-30. A análise de sensibilidade aplica custos de 25, 50 e 75 bps; os autores afirmam que o desenho de sobreviventes usa informação ex post e não propõe estratégia tradável.",
+      "classification": "experiment",
+      "sourceUrls": [
+        "https://www.sciencedirect.com/science/article/pii/S1544612326001339"
+      ]
+    },
+    {
+      "claim": "O snippet do artigo original PBO afirma que métodos convencionais de hold-out podem ser pouco confiáveis para backtests de investimento e propõe um framework para estimar probabilidade de backtest overfitting; não houve leitura integral desta fonte neste pacote.",
+      "classification": "limitation",
+      "sourceUrls": [
+        "https://doi.org/10.21314/JCF.2016.322"
+      ]
+    },
+    {
+      "claim": "O snippet de artigo de 2025 sobre momentum cripto atribui resultado de estratégia anterior a cauda pesada causada por um outlier no fim de 2020; é evidência parcial de sensibilidade a outlier, não uma revisão integral nem conclusão universal.",
+      "classification": "limitation",
+      "sourceUrls": [
+        "https://link.springer.com/content/pdf/10.1007/s11408-025-00474-9.pdf"
+      ]
+    },
+    {
+      "claim": "O snippet Monash de agosto de 2023 confirma que sua análise de estratégias trend-following/momentum considera efeitos de custos de transação e menciona intervalo de custos de 0,05% em diante; o excerto não informa resultados completos.",
+      "classification": "limitation",
+      "sourceUrls": [
+        "https://www.monash.edu/__data/assets/pdf_file/0011/3744821/Trend-following-Strategies-for-Crypto-Investors.pdf"
+      ]
+    }
+  ],
+  "gaps": [
+    "Fontes não testam trading DEX/on-chain nem medem gas, impacto de pool, MEV, falhas/reverts, latência ou execução/saída por tamanho.",
+    "Não há teste contemporâneo BTC/ETH/SOL spot long-only de universo atual, live/paper ou reexecução independente; nenhuma conclusão vale universalmente para pares, venues ou ativos.",
+    "PBO não remove mudança de regime, dependência temporal, erro de dados ou seleção pós-hoc; o estudo DRL tem período-teste curto e ignora slippage.",
+    "Os snippets de PBO, Springer e Monash não foram verificados em texto integral e não sustentam extrapolações quantitativas adicionais. Nenhuma falha de busca/fetch ocorreu."
+  ],
+  "implications": [
+    "Use os achados como critérios de avaliação e inferência, não como classificação de ROI nem seleção de fornecedor/tecnologia/rede/plataforma.",
+    "Para cada proposta elegível, preserve universo e dados as-of, número de trials/parâmetros, protocolo de validação e teste selado, risco/custos líquidos por tamanho e racional de rejeição; reporte experimentos históricos separadamente de execução live/paper.",
+    "Para propostas on-chain, exigir evidência própria e independente de custos e capacidade de execução (incluindo gas, slippage/impacto, MEV e falhas), pois a literatura recuperada não os mede.",
+    "Trate momentum e PBO como hipóteses e diagnósticos sujeitos a domínio amostral, custos e validação externa — não como garantias de alpha ou robustez."
+  ],
+  "sources": [
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-eval-01-drl-crypto-overfit.md",
+      "evidenceType": "fetched",
+      "key": "drl-crypto-overfit-2023",
+      "notes": "Texto integral arquivado via webFetch. Preprint arXiv v6; experiência reproduzida em janela específica, 10 moedas e custos fixos, slippage ignorado. Tier 1 acadêmico; mais de 18 meses na data de pesquisa.",
+      "publishedDate": "2023-01-31 (versão v6)",
+      "tier": 1,
+      "title": "Deep Reinforcement Learning for Cryptocurrency Trading: Practical Approach to Address Backtest Overfitting",
+      "url": "https://arxiv.org/html/2209.05559v6"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-eval-02-liu-tsyvinski.md",
+      "evidenceType": "fetched",
+      "key": "nber-liu-tsyvinski-2018",
+      "notes": "Página primária NBER arquivada; contém resumo e publicação relacionada em RFS 2021, não validação de desempenho ao vivo. Tier 1 acadêmico; mais de 18 meses.",
+      "publishedDate": "2018-08 (working paper; versão publicada em periódico em 2021)",
+      "tier": 1,
+      "title": "Risks and Returns of Cryptocurrency",
+      "url": "https://www.nber.org/papers/w24877"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-eval-03-survivor-momentum-2026.md",
+      "evidenceType": "fetched",
+      "key": "survivor-crypto-momentum-2026",
+      "notes": "Artigo completo arquivado, Finance Research Letters/Elsevier. Avalia universo específico e reconhece limite de sobrevivorship/inferência; data recente. Tier 1 acadêmico.",
+      "publishedDate": "2026-03",
+      "tier": 1,
+      "title": "On survivor cryptocurrency momentum",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1544612326001339"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-eval-snippets.md",
+      "evidenceType": "snippet",
+      "key": "pbo-original-snippet",
+      "notes": "Snippet da página do Journal of Computational Finance/DOI; afirma proposta de framework PBO e limite de hold-out em backtests; texto integral não buscado. Data de publicação não informada no snippet. Tier 1 acadêmico.",
+      "publishedDate": "não informada",
+      "tier": 1,
+      "title": "The probability of backtest overfitting",
+      "url": "https://doi.org/10.21314/JCF.2016.322"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-eval-snippets.md",
+      "evidenceType": "snippet",
+      "key": "crypto-momentum-moments-2025-snippet",
+      "notes": "Snippet do artigo Springer registra explicação de outlier/cauda pesada sobre resultados prévios; não foi lido integralmente. Data exata não informada; ano 2025 indicado por DOI/resultado. Tier 1 acadêmico.",
+      "publishedDate": "2025 (data exata não informada)",
+      "tier": 1,
+      "title": "Cryptocurrency momentum has (not) its moments",
+      "url": "https://link.springer.com/content/pdf/10.1007/s11408-025-00474-9.pdf"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/gap-eval-snippets.md",
+      "evidenceType": "snippet",
+      "key": "monash-trend-costs-2023-snippet",
+      "notes": "Snippet de relatório de pesquisa Monash menciona ajuste por custos de transação, mas não fornece resultados integrais. Tier 1 acadêmico; mais de 18 meses.",
+      "publishedDate": "2023-08",
+      "tier": 1,
+      "title": "Trend-following Strategies for Crypto Investors",
+      "url": "https://www.monash.edu/__data/assets/pdf_file/0011/3744821/Trend-following-Strategies-for-Crypto-Investors.pdf"
+    }
+  ]
+}

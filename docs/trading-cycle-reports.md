@@ -8,6 +8,8 @@ O registro completo relaciona **análise → proposta → qualificação → com
 
 Relatórios, gráficos, histórico do subagente, histórico da BETTEX e Tesouraria são leituras desse mesmo percurso. Não produzem números financeiros independentes.
 
+O [benchmark de mercado](trading-market-benchmark.md) complementa a revisão com referências de resultado realizado/não realizado, alterações de parâmetros e distinção entre experimento e execução. Não altera os ciclos financeiros nem substitui esta lógica.
+
 ## 2. Inventário: o que já existe e o que precisa mudar
 
 | Registro existente | Capacidade observada | Revisão lógica necessária |

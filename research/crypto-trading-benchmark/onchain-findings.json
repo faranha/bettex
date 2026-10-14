@@ -1,0 +1,222 @@
+{
+  "facts": [
+    {
+      "claim": "Jupiter Trigger API declara ordens de preço, DCA, tipos condicionais, roteamento de execução e suporte a fills parciais, mas o montante de saída não é garantido; eventos e ajustes de slippage são documentados.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://developers.jup.ag/docs/trigger",
+        "https://developers.jup.ag/docs/trigger/order-history"
+      ]
+    },
+    {
+      "claim": "A documentação da Uniswap descreve liquidez concentrada por faixa, inventário de um só ativo fora da faixa e interrupção de taxas enquanto inativa; taxas de LP não equivalem a retorno direcional spot.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity"
+      ]
+    },
+    {
+      "claim": "CoW TWAP divide ordem em slices de limite; proteção de preço pode adiar uma fatia. Documentação descreve requisito Safe, enquanto anúncio de setembro de 2026 declara disponibilidade EOA, criando possível defasagem a reconciliar.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://docs.cow.fi/cow-protocol/concepts/order-types/twap-orders",
+        "https://www.prnewswire.com/apac/news-releases/cow-swap-opens-twap-orders-to-every-eoa-wallet-removing-the-safe-only-barrier-302894332.html"
+      ]
+    },
+    {
+      "claim": "WBTC, cbBTC e tBTC têm modelos de representação/custódia distintos conforme documentação dos projetos/issuer; disponibilidade e liquidez não devem ser presumidas intercambiáveis por ticker.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://docs.wbtc.network/how-wbtc-works/mint-burn-mechanism",
+        "https://www.coinbase.com/en-gb/cbbtc",
+        "https://www.threshold.network/blog/august-2026-recap-tbtc-verifiable-bitcoin"
+      ]
+    },
+    {
+      "claim": "Documentação Solana descreve taxa base e taxa opcional de prioridade; documentação Jupiter declara RTSE e estratégia de prioridade, sem estabelecer custo ou resultado de rota específico.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://solana.com/docs/core/fees/fee-structure",
+        "https://developers.jup.ag/docs/swap/order-and-execute"
+      ]
+    },
+    {
+      "claim": "A busca produziu indicação inconsistente sobre partial fills Jupiter em snippet comparativo; sem contexto/versionamento completo, prevalece cautela e validação por eventos, não uma garantia.",
+      "classification": "limitation",
+      "sourceUrls": [
+        "https://developers.jup.ag/docs/trigger",
+        "https://developers.jup.ag/docs/trigger/order-history"
+      ]
+    },
+    {
+      "claim": "A pesquisa ACM sobre retorno, taxas e impermanent loss de Uniswap v3 é evidência acadêmica antiga, não avaliação de desempenho atual.",
+      "classification": "experiment",
+      "sourceUrls": [
+        "https://dl.acm.org/doi/abs/10.1145/3560832.3563438"
+      ]
+    }
+  ],
+  "gaps": [
+    "Não foi estabelecida liquidez/impacto atual por pool, cadeia, contrato e representação exatos de BTC/ETH/SOL.",
+    "Não há evidência independente suficiente para fill rate, slippage realizado, falhas, gas, MEV ou performance em condições atuais.",
+    "Não foi reconciliada a divergência de documentação Safe/EOA CoW e nem toda a diferença contextual do snippet de fills parciais Jupiter.",
+    "As fontes de produto não evidenciam geração de tese de trading; suporte universal de ativos, pares, plataformas ou regiões permanece não estabelecido."
+  ],
+  "implications": [
+    "Comparar execução, não méritos de tese: capturar por proposta condição/ordem, rota e ativo representado, execução parcial, resto, cancelamento/expiração, falha, taxas e preço realizado.",
+    "Separar explicitamente posição spot de posição de LP; contabilizar taxas de LP separadamente da exposição/inventário direcional.",
+    "Tratar afirmações de privacidade, MEV, segurança, reservas e desempenho do fornecedor como declarações até haver validação independente; não converter em seleção de tecnologia ou provedor."
+  ],
+  "sources": [
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-1-jupiter-trigger.md",
+      "evidenceType": "fetched",
+      "key": "jupiter-trigger-v2",
+      "notes": "Resumo arquivado de página completa da documentação Jupiter Trigger; Tier 3, declarações de produto.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Trigger Order API Overview - Jupiter Developers",
+      "url": "https://developers.jup.ag/docs/trigger"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-2-uniswap-range.md",
+      "evidenceType": "fetched",
+      "key": "uniswap-concentrated-liquidity",
+      "notes": "Resumo arquivado de página completa sobre ranges, inventário e taxas LP.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Concentrated Liquidity | Uniswap Developers",
+      "url": "https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-3-cow-twap.md",
+      "evidenceType": "fetched",
+      "key": "cow-twap",
+      "notes": "Resumo arquivado de página completa de TWAP; requisito Safe na documentação consultada pode estar desatualizado frente a anúncio EOA.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "TWAP orders | CoW Protocol Documentation",
+      "url": "https://docs.cow.fi/cow-protocol/concepts/order-types/twap-orders"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "jupiter-order-history",
+      "notes": "Snippet integral sobre eventos expirado/falha e ajuste de slippage; contexto limitado.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Order History (Trigger) - Jupiter Developers",
+      "url": "https://developers.jup.ag/docs/trigger/order-history"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "jupiter-changelog-july-2026",
+      "notes": "Snippet de atualização recente da API Trigger/DCA; snippet parcial.",
+      "publishedDate": "2026-07-21",
+      "tier": 3,
+      "title": "Changelog: July 2026 | Developer Platform",
+      "url": "https://developers.jup.ag/changelog/2026-07"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "jupiter-swap-execute",
+      "notes": "Declaração oficial sobre RTSE e prioridade; não comprova resultado realizado.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Order & Execute - Jupiter Developers",
+      "url": "https://developers.jup.ag/docs/swap/order-and-execute"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "cow-eoa-announcement",
+      "notes": "Comunicado distribuído via PR Newswire, claim de fornecedor sobre TWAP em EOAs; requer verificação independente/documental.",
+      "publishedDate": "2026-09-30",
+      "tier": 2,
+      "title": "CoW Swap Opens TWAP Orders to Every EOA Wallet",
+      "url": "https://www.prnewswire.com/apac/news-releases/cow-swap-opens-twap-orders-to-every-eoa-wallet-removing-the-safe-only-barrier-302894332.html"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "cow-intents",
+      "notes": "Snippet oficial do modelo de intents e clearing uniforme; declaração de projeto.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Intents | CoW Protocol Documentation",
+      "url": "https://docs.cow.fi/cow-protocol/concepts/introduction/intents"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "uniswap-deployments",
+      "notes": "Alerta oficial de confirmar endereços de deployment por cadeia.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Uniswap v4 Deployments | Uniswap Developers",
+      "url": "https://developers.uniswap.org/docs/protocols/v4/deployments"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "uniswap-academic-analysis",
+      "notes": "Resumo/snippet de artigo ACM sobre taxas e impermanent loss; pesquisa antiga, anterior a 18 meses.",
+      "publishedDate": "2022 (indicado na busca; snippet não informa data)",
+      "tier": 1,
+      "title": "Concentrated Liquidity Analysis in Uniswap V3",
+      "url": "https://dl.acm.org/doi/abs/10.1145/3560832.3563438"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "wbtc-mint-burn",
+      "notes": "Documentação do projeto declara lastro/custódia e mint/burn 1:1; não é verificação independente de reservas.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Mint/Burn Mechanism - WBTC Docs",
+      "url": "https://docs.wbtc.network/how-wbtc-works/mint-burn-mechanism"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "cbbtc-issuer",
+      "notes": "Descrição de issuer e fluxo elegível para Base; não comprova liquidez por pool.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Coinbase cbBTC",
+      "url": "https://www.coinbase.com/en-gb/cbbtc"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "tbtc-august-2026",
+      "notes": "Publicação da Threshold sobre segurança/bridge; alegação do projeto, não auditoria externa.",
+      "publishedDate": "2026-08 (dia não informado)",
+      "tier": 3,
+      "title": "August 2026 Recap: Securing the Next Phase of tBTC",
+      "url": "https://www.threshold.network/blog/august-2026-recap-tbtc-verifiable-bitcoin"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "solana-fee-structure",
+      "notes": "Docs primárias explicam componente prioritário e escalonamento; sem custos de swap específicos.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Fee Structure - Solana",
+      "url": "https://solana.com/docs/core/fees/fee-structure"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/onchain-snippets.md",
+      "evidenceType": "snippet",
+      "key": "hummingbot-gateway-connectors",
+      "notes": "Documentação Gateway sobre conectores AMM/DEX; apenas contexto de framework, sem recomendação ou confirmação de suporte a cada ativo.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Connectors - Hummingbot",
+      "url": "https://hummingbot.org/connectors/"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+Source: https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity
+Title: Concentrated Liquidity | Uniswap Developers
+Fetched: 2026-10-14T01:05:30.781Z
+
+[LLMs.txt: agent-readable Markdown index of this site at /llms.txt](https://developers.uniswap.org/llms.txt)
+
+Copy MarkdownOpen in...
+
+# Concentrated Liquidity
+
+Understand concentrated liquidity in Uniswap v3 and v4 and how price ranges improve capital efficiency.
+
+Your browser does not support the video tag.
+
+* * *
+
+Concentrated liquidity, first introduced as a native feature in Uniswap v3, maintains the same core implementation in v4, ensuring consistency in how liquidity providers can focus their capital.
+
+## [How Concentrated Liquidity Works](https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity\#how-concentrated-liquidity-works)
+
+The defining idea of Uniswap v3 is concentrated liquidity: liquidity that is allocated within a custom price range.
+In earlier versions, liquidity was distributed uniformly along the price curve between 0 and infinity.
+
+The previously uniform distribution allowed trading across the entire price interval (0, ∞) without any loss of liquidity. However, in many pools, the majority of the liquidity was never used.
+
+Consider stablecoin pairs, where the relative price of the two assets stays relatively constant. The liquidity outside the typical price range of a stablecoin pair is rarely used. For example, the v2 DAI/USDC pair uses ~0.50% of total available capital for trading between $0.99 and $1.01, the price range where most volume typically occurs.
+
+With v3, liquidity providers may concentrate capital to smaller price intervals than (0, ∞). In a stablecoin/stablecoin pair, for example, an LP may choose to allocate capital solely to the 0.99 to 1.01 range. As a result, traders get deeper liquidity around the mid-price, and LPs can earn more fees with the same capital. Liquidity concentrated to a finite interval is called a position. LPs may hold many positions per pool, creating individualized liquidity profiles.
+
+## [What Active Liquidity Means](https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity\#what-active-liquidity-means)
+
+As the price of an asset rises or falls, it may exit the price bounds that LPs have set in a position. When the price exits a position's interval, the position's liquidity is no longer active and no longer earns fees.
+
+As price moves in one direction, LPs gain more of one asset as swappers demand the other, until their entire position consists of a single asset. In v2, this behavior is rare because liquidity is distributed across the full price interval (0, ∞), and LPs typically do not reach either bound except in low-liquidity pools. If price reenters the interval, liquidity becomes active again and in-range LPs begin earning fees once more.
+
+Importantly, LPs are free to create as many positions as they see fit, each with its own price interval. Concentrated liquidity serves as a mechanism to let the market decide what a sensible distribution of liquidity is, as rational LPs are incentivized to concentrate their liquidity while ensuring that their liquidity remains active.
+
+## [Ticks](https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity\#ticks)
+
+To achieve concentrated liquidity, the once continuous spectrum of price space has been partitioned with ticks.
+
+Ticks are the boundaries between discrete areas in price space. Ticks are spaced such that an increase or decrease of 1 tick represents a 0.01% increase or decrease in price at any point in price space.
+
+Ticks function as boundaries for liquidity positions. When a position is created, the provider must choose the lower and upper tick that will represent their position's borders.
+
+As the spot price changes during swapping, the pool contract will continuously exchange the outbound asset for the inbound, progressively using all the liquidity available within the current tick interval (area of price space between two nearest active ticks) until the next tick is reached. At this point, the contract switches to a new tick and activates any dormant liquidity within a position that has a boundary at the newly active tick.
+
+While each pool has the same number of underlying ticks, in practice only a portion of them are able to serve as active ticks. Due to the nature of the v3 smart contracts, tick spacing is directly correlated to the swap fee. Lower fee tiers allow closer potentially active ticks, and higher fees allow a relatively wider spacing of potential active ticks.
+
+While inactive ticks have no impact on transaction cost during swaps, crossing an active tick does increase the cost of the transaction in which it is crossed, as the tick crossing will activate the liquidity within any new positions using the given tick as a border.
+
+In areas where capital efficiency is important, such as stablecoin pairs, narrower tick spacing increases the granularity of liquidity provisioning and may lower swap price impact, improving execution quality.
+
+For more information on fee levels and their correlation to tick spacing, see the [whitepaper](https://uniswap.org/whitepaper-v3.pdf).
+
+[Ecosystem Participants](https://developers.uniswap.org/docs/get-started/concepts/ecosystem-participants) [Range Orders](https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/range-orders)
+
+### On this page
+
+[How Concentrated Liquidity Works](https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity#how-concentrated-liquidity-works) [What Active Liquidity Means](https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity#what-active-liquidity-means) [Ticks](https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity#ticks)
+
+Feedback
+
+Checking your Browser…
+
+Verifying...
+
+Stuck? [Troubleshoot](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/qtgdd/0x4AAAAAAEvLp0EPBPaPQa-Q/light/fbE/new/normal?lang=auto#refresh)
+
+Success!
+
+Verification failed
+
+[Troubleshoot](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/qtgdd/0x4AAAAAAEvLp0EPBPaPQa-Q/light/fbE/new/normal?lang=auto#refresh)
+
+Verification expired
+
+[Refresh](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/qtgdd/0x4AAAAAAEvLp0EPBPaPQa-Q/light/fbE/new/normal?lang=auto#refresh)
+
+Verification expired
+
+[Refresh](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/qtgdd/0x4AAAAAAEvLp0EPBPaPQa-Q/light/fbE/new/normal?lang=auto#refresh)
+
+[Troubleshoot](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/qtgdd/0x4AAAAAAEvLp0EPBPaPQa-Q/light/fbE/new/normal?lang=auto#refresh)
+
+[Cloudflare, opens in a new tab](https://www.cloudflare.com/products/turnstile/?utm_source=turnstile&utm_campaign=widget)
+
+[Privacy](https://www.cloudflare.com/privacypolicy/) • [Help](https://challenges.cloudflare.com/cdn-cgi/challenge-platform/help)

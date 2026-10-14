@@ -798,3 +798,45 @@ mtime_ms = 1791939441373
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/29d509de-2fe4-4831-b88b-a7e456fd57a9/2f978614-924d-4447-9c28-4cd3dddffbb9"
 storage_version_token = "1791939491865288"
 content_type = "text/markdown"
+
+[[outputs]]
+id = "Q7vOMkX7qxeRLhfWx2M03"
+uri = "file://research/crypto-trading-benchmark/notes.md"
+type = "text"
+title = "Pesquisa de bots e agentes cripto — plano e andamento"
+description = "Cinco frentes de pesquisa: frameworks, produtos comerciais, on-chain, IA e avaliação. Fontes e cobertura serão atualizadas neste arquivo."
+logical_id = "b127a0f3-54ed-4668-945e-2e3a006bbc4d"
+content_hash = "sha256:d03de7a365fad23527b4335008e5402212ac2996f8afded8e43b2a05ab9f5a87"
+size = 2468
+mtime_ms = 1791939841669
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/b127a0f3-54ed-4668-945e-2e3a006bbc4d/747f617a-5617-4a4b-9e14-0dc51d8f7523"
+storage_version_token = "1791939901737116"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "S783K8smx5j2QFzDYCqwV"
+uri = "file://research/crypto-trading-benchmark/report.md"
+type = "text"
+title = "Benchmark de bots e agentes cripto"
+description = "Panorama de 25 referências, 13 famílias de estratégias e 55 fontes citadas, com evidências, riscos e limites da comparação."
+logical_id = "cec11948-420a-4a30-bb95-a68c2bc501dd"
+content_hash = "sha256:e6733dc66d260bcb6fa5d810ec0b84a8e92544bf0952eca91a8271fa1e68e73b"
+size = 50133
+mtime_ms = 1791940777461
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/cec11948-420a-4a30-bb95-a68c2bc501dd/f251f050-052e-4afe-afc9-1140334baaaf"
+storage_version_token = "1791940811917768"
+content_type = "text/markdown"
+
+[[outputs]]
+id = "ocXhqj7Oqi80DTocZxugr"
+uri = "file://docs/trading-market-benchmark.md"
+type = "text"
+title = "BETTEX — implicações do benchmark"
+description = "Síntese ligada à lógica de decisão, ao pacote de investimento e aos relatórios. Sem escolha tecnológica ou aprovação de parâmetros."
+logical_id = "562030b8-cb0f-4d57-8bdc-ec461ee7604f"
+content_hash = "sha256:95622d88e46958fd8adead2a70f66365e09ccadf00b4ebfb8de9d99d26179d2b"
+size = 19824
+mtime_ms = 1791940777467
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/562030b8-cb0f-4d57-8bdc-ec461ee7604f/c91cb9d6-9513-4e41-9861-86e9789f9166"
+storage_version_token = "1791940812551655"
+content_type = "text/markdown"

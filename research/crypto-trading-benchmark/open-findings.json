@@ -1,0 +1,296 @@
+{
+  "facts": [
+    {
+      "claim": "Freqtrade documentation describes spot trading, futures for selected exchanges, spot-mode no-shorting, fee-inclusive backtesting, exported trade analysis, lookahead analysis and protection controls; these are declared software capabilities, not independent performance evidence.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://docs.freqtrade.io/en/2026.3/backtesting",
+        "https://docs.freqtrade.io/en/2026.3/faq",
+        "https://www.freqtrade.io/en/stable/lookahead-analysis/",
+        "https://raw.githubusercontent.com/freqtrade/freqtrade/stable/docs/includes/protections.md"
+      ]
+    },
+    {
+      "claim": "Hummingbot V2 separates controllers that consume market data and emit executor actions from self-managing executors; Gateway is documented as middleware standardizing blockchain and DEX interactions.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://hummingbot.org/strategies/v2-strategies/controllers",
+        "https://hummingbot.org/strategies/v2-strategies/executors",
+        "https://hummingbot.org/gateway"
+      ]
+    },
+    {
+      "claim": "Jesse docs list spot and derivatives exchange adapters, state spot does not support short selling, and provide backtest result statistics with a caution against evaluating on net profit alone.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://docs.jesse.trade/docs/supported-exchanges/",
+        "https://docs.jesse.trade/docs/strategies/futures-vs-spot",
+        "https://docs.jesse.trade/docs/backtest/results"
+      ]
+    },
+    {
+      "claim": "LEAN docs describe risk management altering portfolio targets before execution and local backtest result storage; they characterize the engine as open-source, data-agnostic and multi-asset.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://www.quantconnect.com/docs/v2/writing-algorithms/algorithm-framework/risk-management/key-concepts",
+        "https://www.quantconnect.com/docs/v2/lean-cli/api-reference/lean-backtest",
+        "https://cdn.quantconnect.com/docs/i/Quantconnect-Lean-Engine-CSharp.pdf"
+      ]
+    },
+    {
+      "claim": "OctoBot docs describe asyncio producer-consumer architecture, multi-pair/timeframe historical-data collection and backtesting against selected strategies/evaluators/configuration; named exchange coverage does not establish pair-level eligibility or DEX support.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://www.octobot.cloud/en/guides/octobot-developers-environment/architecture",
+        "https://www.octobot.cloud/en/guides/octobot-usage/backtesting",
+        "https://www.octobot.cloud/en/guides/exchanges"
+      ]
+    },
+    {
+      "claim": "Official dated project evidence includes Freqtrade release 2026.8 on 2026-08-31, Hummingbot 2.15.1 in June 2026, Jesse changelog 3.2.3 dated 2026-09-27, OctoBot strategy docs dated 2026-07-30, and a QuantConnect docs changelog entry dated 2026-09-09.",
+      "classification": "documented-feature",
+      "sourceUrls": [
+        "https://github.com/freqtrade/freqtrade/releases/tag/2026.8",
+        "https://hummingbot.org/release-notes/2.15.1/",
+        "https://docs.jesse.trade/docs/changelog",
+        "https://www.octobot.cloud/en/guides/octobot-script-docs/strategies",
+        "https://www.quantconnect.com/docs/v2/meta/change-log"
+      ]
+    },
+    {
+      "claim": "The reviewed evidence does not confirm simultaneous BTC, ETH and SOL spot availability for any specified venue, region, account, network or date, and does not demonstrate audited profitable multi-agent production operation or native BETTEX proposal/governance workflow support.",
+      "classification": "limitation",
+      "sourceUrls": [
+        "https://docs.freqtrade.io/en/latest",
+        "https://docs.jesse.trade/docs/supported-exchanges/",
+        "https://www.octobot.cloud/en/guides/exchanges",
+        "https://hummingbot.org/gateway"
+      ]
+    },
+    {
+      "claim": "Jesse's stated superlative about backtest accuracy and OctoBot's speed/scalability language are vendor claims requiring independent validation.",
+      "classification": "vendor-claim",
+      "sourceUrls": [
+        "https://docs.jesse.trade/docs/backtest",
+        "https://www.octobot.cloud/en/guides/octobot-developers-environment/architecture"
+      ]
+    }
+  ],
+  "gaps": [
+    "No Tier 1 or Tier 2 source was found for independent performance/validity comparison; all cited feature evidence is first-party Tier 3.",
+    "No source verifies actual live BTC/ETH/SOL spot market eligibility by venue, region, account, quote asset, chain/token contract, liquidity or current operational status.",
+    "No common independent tests compare fees, slippage, partial fills, latency, historical data, backtest bias, or execution quality across frameworks.",
+    "Hummingbot Gateway DEX role is documented but eligible pairs/chains are not; Condor was excluded due absent documentation; OctoBot DEX/on-chain support was not established.",
+    "Native BETTEX proposal schema, independent Treasury/Risk approvals, decision preservation and financial-cycle lineage were not documented in these products.",
+    "No first-party recent OctoBot release/shutdown evidence was established; feature-page freshness is unknown where publication date is not provided."
+  ],
+  "implications": [
+    "Treat these products as separable strategy/research/execution components, not as proof of proposal qualification or financial governance.",
+    "Keep spot-only/no-leverage mode and actual venue/instrument eligibility as explicit, independently verified configuration gates; product-level spot support alone is insufficient.",
+    "Use backtests, dry-run/paper workflows, lookahead diagnostics and historical result exports as evidence inputs only; require independent checks of fees, slippage, data integrity and out-of-sample behavior.",
+    "Preserve BETTEX proposal terms and independent Treasury/Risk decisions outside a bot's own strategy/execution state unless an integration is separately documented and validated.",
+    "No technology, chain, venue, platform or provider is selected by this research."
+  ],
+  "sources": [
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-01-freqtrade-backtesting.md",
+      "evidenceType": "fetched",
+      "key": "open-01",
+      "notes": "Full archived official Freqtrade backtesting page; covers assumptions, fees, report/export and backtest workflow. Tier 3 vendor docs; publication date not stated.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Backtesting - Freqtrade",
+      "url": "https://docs.freqtrade.io/en/2026.3/backtesting"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-02-hummingbot-v2-controllers.md",
+      "evidenceType": "fetched",
+      "key": "open-02",
+      "notes": "Full archived official V2 controller page; controller/market-data/action architecture. Feature declaration only; publication date not stated.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Controllers - Hummingbot",
+      "url": "https://hummingbot.org/strategies/v2-strategies/controllers"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-03-hummingbot-gateway.md",
+      "evidenceType": "fetched",
+      "key": "open-03",
+      "notes": "Full archived official Gateway page; DEX/blockchain API middleware role. Does not establish individual pair eligibility; publication date not stated.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Gateway DEX Middleware - Hummingbot",
+      "url": "https://hummingbot.org/gateway"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S04",
+      "notes": "Saved full search snippet: Freqtrade FAQ distinguishes spot from futures on selected exchanges; does not prove any specific market pair.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Freqtrade FAQ",
+      "url": "https://docs.freqtrade.io/en/2026.3/faq"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S05",
+      "notes": "Saved complete snippet describing command-based lookahead-bias probing against backtest indicator/entry/exit differences.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Lookahead analysis - Freqtrade",
+      "url": "https://www.freqtrade.io/en/stable/lookahead-analysis/"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S07",
+      "notes": "Saved complete snippet on self-managing order executors using controller-defined conditions and MarketDataProvider data.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Executors - Hummingbot",
+      "url": "https://hummingbot.org/strategies/v2-strategies/executors"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S09",
+      "notes": "Saved complete release snippet: Gateway security endpoint change and release timing (release 2026-06-17; update note 2026-06-22).",
+      "publishedDate": "2026-06-17",
+      "tier": 3,
+      "title": "2.15.1 - Hummingbot",
+      "url": "https://hummingbot.org/release-notes/2.15.1/"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S11",
+      "notes": "Saved full venue-list snippet with both spot and futures adapters; does not establish asset-level availability.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Supported Exchanges | Jesse",
+      "url": "https://docs.jesse.trade/docs/supported-exchanges/"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S12",
+      "notes": "Saved complete spot/futures snippet: spot does not support short selling; take-profit/stop-loss example is expressly described for futures mode.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Jesse spot/futures docs",
+      "url": "https://docs.jesse.trade/docs/strategies/futures-vs-spot"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S13",
+      "notes": "Saved changelog snippet including 3.2.3 release dated 2026-09-27; establishes a dated project update, not freshness of every feature page.",
+      "publishedDate": "2026-09-27",
+      "tier": 3,
+      "title": "Jesse Changelog",
+      "url": "https://docs.jesse.trade/docs/changelog"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S14",
+      "notes": "Saved snippet: local backtest runs in Docker and results are stored in project backtest timestamp directory.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "lean backtest - QuantConnect",
+      "url": "https://www.quantconnect.com/docs/v2/lean-cli/api-reference/lean-backtest"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S16",
+      "notes": "Saved venue guide snippet; supports only declared venue coverage, not pair-level markets or spot configuration.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Exchanges in OctoBot",
+      "url": "https://www.octobot.cloud/en/guides/exchanges"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S17",
+      "notes": "Saved snippet about collecting historical data for multiple pairs and timeframes from most exchanges; does not establish every market.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Backtesting - OctoBot Cloud",
+      "url": "https://www.octobot.cloud/en/guides/octobot-usage/backtesting"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S18",
+      "notes": "Saved dated OctoBot strategy documentation search snippet describing create/run/backtest functionality; not a release or shutdown report.",
+      "publishedDate": "2026-07-30",
+      "tier": 3,
+      "title": "OctoBot script strategies",
+      "url": "https://www.octobot.cloud/en/guides/octobot-script-docs/strategies"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S22",
+      "notes": "Saved snippet describing risk model operating on portfolio targets before the execution model.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "LEAN Risk Management Key Concepts",
+      "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/algorithm-framework/risk-management/key-concepts"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S23",
+      "notes": "Saved vendor documentation snippet describing LEAN as open-source, data-agnostic and multi-asset; characterization is vendor-authored.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "QuantConnect LEAN Engine documentation",
+      "url": "https://cdn.quantconnect.com/docs/i/Quantconnect-Lean-Engine-CSharp.pdf"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S24",
+      "notes": "Saved backtest result metric and explicit caution against judging only by net profit.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "Results | Jesse",
+      "url": "https://docs.jesse.trade/docs/backtest/results"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S25",
+      "notes": "Saved official architecture snippet describing asyncio producer-consumer design; speed/scalability phrasing is vendor claim.",
+      "publishedDate": "não informada",
+      "tier": 3,
+      "title": "OctoBot architecture",
+      "url": "https://www.octobot.cloud/en/guides/octobot-developers-environment/architecture"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S28",
+      "notes": "Saved complete official release snippet, including removal of Bitmart support due to exchange cessation.",
+      "publishedDate": "2026-08-31",
+      "tier": 3,
+      "title": "Release 2026.8 · freqtrade/freqtrade · GitHub",
+      "url": "https://github.com/freqtrade/freqtrade/releases/tag/2026.8"
+    },
+    {
+      "evidencePath": "research/crypto-trading-benchmark/sources/open-snippets.md",
+      "evidenceType": "snippet",
+      "key": "open-S15",
+      "notes": "Saved changelog snippet showing a 2026-09-09 documentation entry; not a feature-specific engine release claim.",
+      "publishedDate": "2026-09-09",
+      "tier": 3,
+      "title": "Change Log - QuantConnect.com",
+      "url": "https://www.quantconnect.com/docs/v2/meta/change-log"
+    }
+  ]
+}
