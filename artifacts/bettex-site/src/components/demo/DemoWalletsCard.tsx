@@ -18,7 +18,8 @@ export function DemoWalletsCard({ d, onWallet, showReceivedYield = false, showHe
   const { x } = useX();
   return <section className="dcard grid gap-3 p-4 sm:p-5" data-testid="demo-session-wallets">
     {(showHeading || headerActions) && <div className="flex flex-wrap items-center justify-between gap-2">{showHeading && <h2 className="display text-lg font-extrabold">{x('Minhas carteiras', 'My wallets', 'Mis carteras')}</h2>}{headerActions && <div className="ml-auto">{headerActions}</div>}</div>}
-    <div className="grid gap-3 sm:grid-cols-2">{(['USDC', 'BETTEX'] as const).map(asset => <article key={asset} className={`dcard tk-card ${asset === 'USDC' ? 'tk-usdc' : 'tk-bettex'} grid gap-2 rounded-xl p-3`} data-testid={`demo-wallet-${asset.toLowerCase()}`}>
+    <div className="grid gap-3 sm:grid-cols-2"><div className="wallet-unified sm:col-span-2">
+    <div className="grid sm:grid-cols-2">{(['USDC', 'BETTEX'] as const).map(asset => <article key={asset} className={`dcard tk-card ${asset === 'USDC' ? 'tk-usdc' : 'tk-bettex'} grid content-start gap-2 p-3`} data-testid={`demo-wallet-${asset.toLowerCase()}`}>
       <div className="flex items-center justify-between gap-2">
         <h3 className="flex min-w-0 items-center gap-2 text-sm font-bold"><TokenIcon asset={asset} /><WalletHelp id={`balance-${asset}`} label={asset === 'USDC' ? x('Carteira em dólares', 'Dollar wallet', 'Cartera en dólares') : x('Carteira BETTEX', 'BETTEX wallet', 'Cartera BETTEX')}>
           <p>{asset === 'USDC'
@@ -32,12 +33,13 @@ export function DemoWalletsCard({ d, onWallet, showReceivedYield = false, showHe
         <p>{addresses[asset]?.startsWith('MOCK-') ? x('Endereço fictício, apenas para demonstrar a interface. Não existe na blockchain e não recebe depósitos, nem mesmo em testnet.', 'Fictitious address for demonstrating the interface only. It does not exist on the blockchain and cannot receive deposits, even on testnet.', 'Dirección ficticia solo para demostrar la interfaz. No existe en la blockchain y no recibe depósitos, ni siquiera en testnet.') : x(`Endereço para receber ${asset} nesta carteira. Pode ser compartilhado para recebimento; não é sua chave privada. Confira o ativo e a rede indicados no formulário antes de enviar.`, `Address for receiving ${asset} in this wallet. It can be shared to receive funds; it is not your private key. Check the asset and network shown in the form before sending.`, `Dirección para recibir ${asset} en esta cartera. Se puede compartir para recibir fondos; no es tu clave privada. Comprueba el activo y la red del formulario antes de enviar.`)}</p>
       </WalletHelp><span className="mono min-w-0 break-all">{addresses[asset]}</span></div>}
       <Money v={asset === 'USDC' ? d.balances.usdc : d.balances.bettex} a={asset} big />
-      {asset === 'BETTEX' && <WalletPotentialGain d={d} />}
       <div className="flex flex-wrap gap-2"><WalletAction kind={asset === 'USDC' ? 'onramp' : 'receive'} asset={asset} id={`demo-add-${asset}`} label={x('Adicionar saldo', 'Add balance', 'Agregar saldo')} onOpen={onWallet} />
         <WalletAction kind={asset === 'USDC' ? 'withdraw' : 'send'} asset={asset} id={`demo-out-${asset}`} label={x('Retirar', 'Withdraw', 'Retirar')} onOpen={onWallet} />
         <WalletAction kind="swap" asset={asset} id={`demo-swap-${asset}`} label={x('Converter', 'Convert', 'Convertir')} onOpen={onWallet} />
         <WalletHistoryLink wallet={asset} id={`button-wallet-history-${asset.toLowerCase()}`} />
         <WalletActionsHelp asset={asset} exportAvailable={!!onExport} /></div>
-    </article>)}<WalletCardDetailsPair><EarningsWalletCard d={d} onWallet={onWallet} /><BurnedTokensCard d={d} /></WalletCardDetailsPair></div>
+    </article>)}</div>
+    <WalletPotentialGain d={d} />
+    </div><WalletCardDetailsPair><EarningsWalletCard d={d} onWallet={onWallet} /><BurnedTokensCard d={d} /></WalletCardDetailsPair></div>
   </section>;
 }
