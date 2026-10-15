@@ -23,7 +23,7 @@ export function DocumentationOutlineItems(props: Props) {
           className={`whitepaper__toc-sublink level-${item.level}${props.activeId === item.id ? ' is-active' : ''}`}
           aria-current={props.activeId === item.id ? 'location' : undefined}
           onClick={event => props.onNavigate(event, item.id)} data-testid={`link-${item.id}`}>
-          <span className="whitepaper__toc-subnum">{item.number}</span><span data-i18n="translated">{item.title}</span>
+          <span data-i18n="translated">{item.title}</span>
          </a></DocumentationMenuItem>
          {item.isReference && children.length > 0 && <DocumentationMenuItem keepOpen><button type="button"
           className="whitepaper__reference-toggle" data-i18n="translated"
