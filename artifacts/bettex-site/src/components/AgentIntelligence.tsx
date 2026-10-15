@@ -48,7 +48,7 @@ function AgentIntelligenceParts({ part, owners, introduction = false }: { part: 
     <h4 hidden={introduction}>{c.coordinationTitle}</h4>
     <strong id={introduction ? 'documentacao-agentes-secao-3' : undefined} className="agent-intel__role">{p.centerRole}</strong>
     <div className="whitepaper__prose"><p>{c.coordination}</p><p>{c.selectionStage}</p></div>
-    <a href="#documentacao-selecao-ordens">{c.selectionLink}</a>
+    <a className="agent-intel__selection-link" href="#documentacao-selecao-ordens">{c.selectionLink}</a>
     <div className="agent-intel__context"><span>{p.initialContext}</span><p>{p.centralContext}</p></div>
   </section>;
   if (part === 'support') return <div className="agent-intel__support">

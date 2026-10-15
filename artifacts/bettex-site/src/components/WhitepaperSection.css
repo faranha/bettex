@@ -706,6 +706,41 @@ section.whitepaper__technical:not(:has(> h3 > [data-documentation-section-toggle
 .whitepaper__menu-section .whitepaper__toc-category-trigger.is-active { background: #ebe7dc; }
 .whitepaper__mobile-dropdown .whitepaper__toc-category-trigger.is-active { background: #193265; }
 
+/* The gold tree guides connect children to their section without menu numbers.
+   These selectors also cover the mobile dropdown, which is rendered in a portal. */
+.whitepaper__menu-section { --wp-menu-tree: #c58b16; }
+.whitepaper__mobile-dropdown .whitepaper__menu-section { --wp-menu-tree: #f2b632; }
+.whitepaper__menu-section :is(.whitepaper__chapter-menu-children, .whitepaper__reference-menu-items) {
+  margin: 8px 0 10px 14px;
+  padding: 0 0 0 14px;
+  border-left: 2px solid var(--wp-menu-tree);
+}
+.whitepaper__menu-section .whitepaper__toc-category-children {
+  padding-left: 14px;
+  border-left-color: var(--wp-menu-tree);
+}
+.whitepaper__menu-section .whitepaper__chapter-menu-children .whitepaper__toc-sublink {
+  padding-left: 12px;
+}
+.whitepaper__menu-section :is(
+  .whitepaper__toc-category-children > .whitepaper__toc-group > .whitepaper__toc-row,
+  .whitepaper__chapter-menu-children > .whitepaper__toc-sub > li > .whitepaper__toc-row,
+  .whitepaper__reference-menu-items > li > .whitepaper__toc-row
+) { position: relative; }
+.whitepaper__menu-section :is(
+  .whitepaper__toc-category-children > .whitepaper__toc-group > .whitepaper__toc-row,
+  .whitepaper__chapter-menu-children > .whitepaper__toc-sub > li > .whitepaper__toc-row,
+  .whitepaper__reference-menu-items > li > .whitepaper__toc-row
+)::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  width: 12px;
+  border-top: 2px solid var(--wp-menu-tree);
+  pointer-events: none;
+}
+
 /* The dropdown is portaled outside the light document. Override light-theme
    hover and generic Radix focus colors even when data-highlighted is absent
    (for example, during touch focus or a pointer moving between options). */

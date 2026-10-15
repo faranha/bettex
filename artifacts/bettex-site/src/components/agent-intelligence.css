@@ -1,3 +1,22 @@
+.whitepaper .agent-intel__selection-link {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 22px 0 26px;
+  color: #21429c;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.whitepaper .agent-intel__selection-link:hover { color: #102f83; }
+.whitepaper .agent-intel__selection-link:focus-visible {
+  outline: 2px solid #21429c;
+  outline-offset: 5px;
+  border-radius: 2px;
+}
 .agent-intel__label { margin: 0 0 14px; color: #1a347d; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .1em; text-transform: uppercase; }
 .agent-intel__label--sub { margin: 18px 0 12px; }
 .agent-intel__map { display: flex; flex-direction: column; margin-bottom: 28px; }

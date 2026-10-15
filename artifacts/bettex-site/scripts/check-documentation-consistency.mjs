@@ -188,6 +188,9 @@ try {
       assert.ok(html.includes(`>${technology}</a>`), `${language}: candidate names and their reference links must remain intact`);
     }
     const agentIntroduction = html.indexOf('data-testid="documentation-concepts-documentacao-agentes"');
+    assert.doesNotMatch(html, /(?:desenho|drawing|design|diagram|diseño|dibujo)\s+[1-8]\b/i,
+      `${language}: refer to redistributed diagrams by subject, never by their former sequence number`);
+    assert.ok(!html.includes('class="ba-fig__num"'), `${language}: diagrams must not show sequence counters`);
     const agentIllustration = html.indexOf('data-testid="documentation-orchestration-illustration"');
     const intelligenceContent = html.indexOf('id="documentacao-inteligencia"', agentIntroduction);
     assert.ok(agentIntroduction >= 0 && agentIllustration > agentIntroduction && intelligenceContent > agentIllustration, `${language}: illustration must follow the BETTEX agent introduction`);
@@ -204,7 +207,12 @@ try {
     }[language];
     for (const marker of theoreticalStatus) assert.ok(technology[1].includes(marker), `${language}: theoretical/pre-ALFA status missing`);
     const technologyPosition = html.indexOf('id="documentacao-tecnologia-introducao"');
-    assert.ok(technologyPosition > html.indexOf('id="documentacao-inteligencia-bettex"') && technologyPosition < html.indexOf('data-testid="documentation-agent-research-cycle"'), `${language}: technology must close the agent introduction before numbered subsections`);
+    const contextPosition = html.indexOf('id="documentacao-agentes-secao-1"');
+    const responsesPosition = html.indexOf('id="documentacao-inteligencia-bettex"');
+    const researchPosition = html.indexOf('data-testid="documentation-agent-research-cycle"');
+    assert.ok(technologyPosition > agentIllustration && contextPosition > technologyPosition &&
+      responsesPosition > contextPosition && researchPosition > responsesPosition,
+    `${language}: introduce technology before agent context, responses and the research cycle`);
     const overview = html.match(/<div\b[^>]*id="schematic-overview"[^>]*>([\s\S]*?)<\/div>/);
     assert.ok(overview, `${language}: general overview missing`);
     assert.equal((overview[1].match(/<dt\b/g) ?? []).length, 6, `${language}: overview must retain its four original entries and list trading and support subagents`);

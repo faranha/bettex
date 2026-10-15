@@ -56,11 +56,10 @@ function Figure({ id, num, title, lead, children }: { id: string; num: Architect
   const showHeader = useContext(FigureHeaderContext);
   return (
     <section className="ba-fig" id={id} data-testid={id} aria-labelledby={`${id}-t`}>
-      {showHeader ? <header className="ba-fig__head">
-        <span className="ba-fig__num">Desenho {num} de 8</span>
+      {showHeader && <header className="ba-fig__head">
         <h3 id={`${id}-t`}>{title}</h3>
         <p>{lead}</p>
-      </header> : <span className="ba-fig__num">Desenho {num} de 8</span>}
+      </header>}
       {children}
       <ArchitectureIntegrations figure={num} />
     </section>
