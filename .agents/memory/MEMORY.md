@@ -43,7 +43,7 @@
 - [Separação site/app](site-app-separation.md) — experiências distintas no mesmo projeto; voltar ao site precisa funcionar também para usuários autenticados.
 - [Ações da carteira](wallet-action-context.md) — entradas e saídas junto de cada saldo; USDC/BETTEX com conversão nos dois sentidos; saque não limitado ao rendimento.
 - [Dupla das carteiras](wallet-card-symbols.md) — rendimentos verdes com cofrinho e loteria com fogo; os dois cartões expandem e recolhem juntos.
-- [Staking no aplicativo](app-staking-presentation.md) — corredor horizontal no dashboard e Carteiras; posição, pool, lucro, alocação e gráficos; moedas, não fogo.
+- [Staking no aplicativo](app-staking-presentation.md) — posição, pool, lucro e gráficos; sem indicador de alocação, rótulos em uma linha; moedas, não fogo.
 - [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
 - [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; históricos de sugestões e decisões consultáveis.

@@ -7,7 +7,13 @@ Staking deve ser um corredor horizontal de largura total, não uma coluna latera
 
 **Why:** O criador pediu staking nas duas áreas e corrigiu expressamente “not a column a corridor”.
 
-**How to apply:** Incluir o total próprio de BETTEX em participação, sua porcentagem do total, o total participante do pool, o lucro líquido já gerado no ciclo e a alocação dessa rodada, com gráficos e ícones de moedas, não fogo. No celular, reorganizar o conteúdo sem criar transbordamento.
+**How to apply:** Incluir o total próprio de BETTEX em participação, sua porcentagem do total, o total participante do pool e o lucro líquido já gerado no ciclo, com gráficos e ícones de moedas, não fogo. No celular, reorganizar o conteúdo sem criar transbordamento.
+
+Não exibir o indicador “Alocação pool” no resumo de staking. Os rótulos desse resumo devem ser curtos e caber em uma linha.
+
+**Why:** O criador pediu “remova alocacao do pool” e “reduza os textos para nao terem quebra de linha. os labels.”
+
+**How to apply:** Manter as explicações completas nas ajudas e preservar cálculos, dados e gráficos; a remoção é do indicador visual, não da regra econômica.
 
 Staking representa ganhos passivos, não queima de tokens. Usar moedas nos símbolos do staking, inclusive no painel com gráfico, no relógio e na arte decorativa; reservar fogo para queima.
 
