@@ -20,3 +20,9 @@ O criador reforçou que o fundo dessa faixa precisa de uma melhoria visual efeti
 **Why:** O criador apontou novamente a mesma faixa com “pedi pra melhorar esse fundo” e ampliou a consulta dos rendimentos.
 
 **How to apply:** Não reduzir o pedido a uma mudança de texto. Preservar o destaque visual e separar histórico pago de projeções. Ausência de registros não equivale a zero nem autoriza preencher 30 dias extrapolando o histórico. Percentual estimado de rendimento não é probabilidade estatística de lucro; não inventar essa probabilidade.
+
+Não exibir abaixo dos indicadores os textos “Probabilidade de ganho hoje: Não calculada — diferente do rendimento diário projetado acima” e “Ilustrativo, não garantido. Dados de demonstração, não histórico financeiro”.
+
+**Why:** O criador pediu explicitamente a remoção desses dois textos.
+
+**How to apply:** Manter os indicadores e as explicações de cálculo no botão de ajuda, sem reintroduzir essas duas linhas no bloco.
