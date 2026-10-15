@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import { useState, type RefObject } from 'react';
+import { useEffect, useState, type RefObject } from 'react';
 import { X as XIcon } from 'lucide-react';
 import { Title as DialogTitle } from '@radix-ui/react-dialog';
 import { useFmt, Tag } from '../alpha-trading/format';
@@ -12,6 +12,7 @@ import { PolymarketSimulation } from './PolymarketSimulation';
 import type { Asset } from './central-data';
 import { ProjectFlowPanel, ProjectLinksPanel, ProjectTopicPanel } from './ProjectFlowPanel';
 import './CentralOverlayLayout.css';
+import { useRecordNavigation } from './CentralRecordNavigation';
 import { SPEC, TAB_LABEL, edgeOf, isBiz, nodeOf, tabsFor, type Sel, type TabSpec } from './central-graph-model';
 
 function Records({ mode, asset, onAction }: { mode: 'requests' | 'execution'; asset?: Asset; onAction: () => void }) {
@@ -45,8 +46,12 @@ function Body({ t, sel, onAction, onMarketSelect, onPick }: { t: TabSpec; sel: S
 }
 
 export function CentralInspector({ sel, onClose, onAction, headRef, onPick }: { sel: Sel; onClose: () => void; onAction: () => void; headRef: RefObject<HTMLHeadingElement | null>; onPick: (sel: Sel) => void }) {
-  const { x } = useFmt(); const L = useL(); const [i, setI] = useState(0);
-  const tabs = tabsFor(sel); const t = tabs[Math.min(i, tabs.length - 1)];
+  const { x } = useFmt(); const L = useL(); const navigation = useRecordNavigation();
+  const requestId = navigation?.requestId;
+  const tabs = tabsFor(sel); const requestTab = Math.max(0, tabs.findIndex(t => t.tab === 'requests'));
+  const [i, setI] = useState(() => requestId ? requestTab : 0);
+  useEffect(() => { if (requestId) setI(requestTab); }, [requestId, requestTab]);
+  const t = tabs[Math.min(i, tabs.length - 1)];
   const e = sel.k === 'edge' ? edgeOf(sel.id) : undefined;
   const n = sel.k === 'node' ? nodeOf(sel.id) : undefined;
   if (!n && !e) return null;
@@ -58,6 +63,6 @@ export function CentralInspector({ sel, onClose, onAction, headRef, onPick }: { 
       <button type="button" data-demo-local onClick={onClose} data-testid="button-inspector-close" aria-label={x('Fechar painel e voltar ao grafo', 'Close panel and return to the graph', 'Cerrar panel y volver al grafo')} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full hover:bg-[#E9EEE5]"><XIcon className="h-5 w-5" aria-hidden="true" /></button></div>
     {tabs.length > 1 && <div className="cg-tabs" role="tablist" aria-label={x('Seções do painel', 'Panel sections', 'Secciones del panel')}>{tabs.map((s, k) =>
       <button key={`${s.tab}-${s.id ?? ''}`} type="button" data-demo-local role="tab" id={`cg-tab-${k}`} aria-selected={k === i} aria-controls="cg-tabpanel" data-testid={`inspector-tab-${s.tab}`} onClick={() => setI(k)} className={k === i ? 'on' : ''}>{L(TAB_LABEL[s.tab])}</button>)}</div>}
-    <div className="cg-dbody" role="tabpanel" id="cg-tabpanel" aria-labelledby={tabs.length > 1 ? `cg-tab-${i}` : undefined} aria-label={tabs.length === 1 ? title : undefined}><div className="cgo-stack"><Body key={`${sel.k}-${sel.id}-${t.tab}-${t.id ?? ''}`} t={t} sel={sel} onAction={onAction} onMarketSelect={id => onPick({ k: 'node', id })} onPick={onPick} /></div></div>
+    <div className="cg-dbody" role="tabpanel" id="cg-tabpanel" aria-labelledby={tabs.length > 1 ? `cg-tab-${i}` : undefined} aria-label={tabs.length === 1 ? title : undefined}><div className="cgo-stack"><Body key={`${sel.k}-${sel.id}-${t.tab}-${t.id ?? ''}-${requestId ?? ''}`} t={t} sel={sel} onAction={onAction} onMarketSelect={id => onPick({ k: 'node', id })} onPick={onPick} /></div></div>
   </section>;
 }

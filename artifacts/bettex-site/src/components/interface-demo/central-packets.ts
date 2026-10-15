@@ -80,7 +80,7 @@ export const PACKETS: GraphPacket[] = samplePackets.sort((a, b) =>
   Date.parse(a.at) - Date.parse(b.at) || a.id.localeCompare(b.id));
 const packetsById = new Map(PACKETS.map(packet => [packet.id, packet]));
 const requestSlots = new Map(REQUESTS.map((request, index) => [request.id, index]));
-export const PACKET_REPLAY_MS = 32000;
+export const PACKET_REPLAY_MS = 12000;
 
 export function packetById(id: string): GraphPacket | undefined {
   return packetsById.get(id);
@@ -92,7 +92,9 @@ export function packetConversation(packet: GraphPacket): GraphPacket[] {
 
 /** Position along source -> target, independent of camera/edge orientation.
  * Four causal stages: specialist analysis, consolidation, decision, specialist response.
- * Endpoints are held between stages; callers may hide endpoint packets to avoid node clutter. */
+ * Successive replay waves overlap, so analysis and replies remain visible together.
+ * Stage offsets preserve the journey; these repetitions never add historical records.
+ * Endpoints are held between transmissions; callers may hide them to avoid node clutter. */
 export function packetProgress(packet: GraphPacket, elapsedMs: number, reduced = false): number {
   const slot = requestSlots.get(packet.requestId) ?? 0;
   const stage = packet.kind === 'analysis'
@@ -100,7 +102,9 @@ export function packetProgress(packet: GraphPacket, elapsedMs: number, reduced =
     : packet.source === 'bettex' ? 2 : 3;
   if (reduced) return 0.18 + slot * 0.095 + (stage % 2) * 0.035;
   const elapsed = Number.isFinite(elapsedMs) ? Math.max(0, elapsedMs) : 0;
-  const phase = elapsed % PACKET_REPLAY_MS;
   const start = 500 + slot * 1100 + stage * 6000;
-  return Math.max(0, Math.min(1, (phase - start) / 5000));
+  // Include in-flight messages from the preceding wave rather than waiting for
+  // every reply to finish before starting another analysis.
+  const phase = ((elapsed - start) % PACKET_REPLAY_MS + PACKET_REPLAY_MS) % PACKET_REPLAY_MS;
+  return Math.min(1, phase / 5000);
 }
