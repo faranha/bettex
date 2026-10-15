@@ -42,6 +42,12 @@ O criador reiterou sobre a Tesouraria: “nunca lhe mandei tirar ele do ar” e 
 
 **How to apply:** A regra de preservação vale para todas as áreas existentes do aplicativo. Adaptar as apresentações completas para exemplos locais e manter a navegação até seus detalhes; não substituir a interface por resumos porque seus dados originais dependiam da API. Não afirmar recuperação de registros reais quando a tela usa amostras.
 
+Usar a documentação para melhorar o demo existente, não para recriá-lo ou propor um roteiro substituto sem antes examinar o que já existe.
+
+**Why:** O criador corrigiu: “ja temos um demo nao quero recriar ele cara, quero ver oque melhorar pra ele ficar melhor”.
+
+**How to apply:** Comparar os registros, decisões, ordens e históricos atuais com as regras documentadas e apresentar lacunas concretas e melhorias pontuais. Uma conversa de diagnóstico não autoriza implementação.
+
 O criador pediu revisar inconsistências e simplificar a interface, principalmente Tesouraria e Histórico, “mas ainda guardando dados, lembrando de popular os dados de demonstração”.
 
 **Why:** A simplificação solicitada deve facilitar a consulta, não voltar a retirar informações das áreas recuperadas.
