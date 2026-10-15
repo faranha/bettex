@@ -69,11 +69,5 @@ export function WalletPotentialGain({ d }: { d: DemoDashboard }) {
         <small>{s.projected30DaysUsdc === null ? x('Diário × 30, sem reinvestir', 'Daily × 30, no reinvestment', 'Diario × 30, sin reinvertir') : `${brl('USDC', s.projected30DaysUsdc)} · ${x('diário × 30', 'daily × 30', 'diario × 30')}`}</small>
       </div>
     </dl>
-    <p className="wpg-prob" data-testid="wallet-win-probability">
-      <span>{x('Probabilidade de ganho hoje', 'Probability of earning today', 'Probabilidad de ganancia hoy')}:</span>
-      <b>{x('Não calculada', 'Not calculated', 'No calculada')}</b>
-      <span>{x('— diferente do rendimento diário projetado acima.', '— distinct from the projected daily yield above.', '— distinta del rendimiento diario proyectado arriba.')}</span>
-    </p>
-    <p className="wpg-foot">{x('Ilustrativo, não garantido. Dados de demonstração, não histórico financeiro.', 'Illustrative, not guaranteed. Demo data, not financial history.', 'Ilustrativo, no garantizado. Datos de demostración, no historial financiero.')}</p>
   </div>;
 }
