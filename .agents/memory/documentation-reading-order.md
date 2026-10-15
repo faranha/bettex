@@ -135,7 +135,7 @@ Todas as áreas precisam introduzir os conceitos e recursos antes de pressupor q
 
 **Why:** O criador apontou que Loteria, Double 2X e exportação de chaves apareciam sem apresentação: “esses elementos adcionais precisam de introducao em algum momento”. Reiterou que a documentação não explica a participação para quem não entende o sistema: “precisa introduzir, falta isso em todas as areas”, incluindo staking, DeFi, DEX e DeFAI.
 
-**How to apply:** Começar cada área com uma explicação didática do conceito e de sua aplicação na BETTEX, antes de elegibilidade, cálculos ou referências técnicas. Na participação, explicar o que é staking e de onde vem um eventual pagamento antes das regras. Introduzir DeFi, DEX, DeFAI e os demais termos na primeira utilização; não deixar suas definições apenas em um glossário ao fim. Explicar os recursos opcionais antes de suas regras, separados da participação, mantendo riscos e estado visual do demo claros.
+**How to apply:** Começar cada área com uma explicação didática do conceito e de sua aplicação na BETTEX, antes de elegibilidade, cálculos ou referências técnicas. Na participação, explicar o que é staking e de onde vem um eventual pagamento antes das regras. Introduzir DeFi, DEX, DeFAI e os demais termos na primeira utilização; não deixar suas definições apenas em um glossário ao fim. Explicar os recursos opcionais antes de suas regras, separados da participação, mantendo riscos e estado visual do demo claros. No capítulo BETTEX, apresentar a tecnologia antes do contexto operacional, das respostas do agente e do ciclo de pesquisa; o criador pediu essa continuidade sem reescrever o conteúdo aprovado.
 
 Não transformar a descrição de uma área em sua primeira subseção. A introdução fica visível diretamente sob o título da própria seção, sem numeração adicional nem controle de recolher.
 
@@ -202,3 +202,9 @@ O menu da documentação não exibe números de seção nem de subseção.
 **Why:** O criador corrigiu: “nao precisa por o numero no menu cara nem de secao nem subsecao”.
 
 **How to apply:** Mostrar somente os títulos no índice desktop, nas opções do menu mobile e no seletor da seção ativa. Preservar a numeração dos títulos no conteúdo.
+
+Os desenhos da documentação não têm indicação “desenho X de Y”; referências no texto identificam o assunto do desenho, não o número.
+
+**Why:** O criador aprovou o conteúdo e explicou que os desenhos foram distribuídos dentro dele; a antiga sequência deixou de fazer sentido.
+
+**How to apply:** Preservar as artes, os passos internos, o conteúdo e as âncoras. Remover apenas a identificação sequencial dos desenhos e usar referências temáticas nos três idiomas.

@@ -68,8 +68,8 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
         <DocumentationAgentIllustration />
         {m(id, range(0, 4))}
         <div id="documentacao-inteligencia">
-          <AgentIntelligence owners={['context', 'bettex']} introduction />
           <DocumentationTechnologyIntroduction>{m(id, [4])}</DocumentationTechnologyIntroduction>
+          <AgentIntelligence owners={['context', 'bettex']} introduction />
           <AgentIntelligence owners={['relations', 'learning']} />
         </div>
         {baseline}

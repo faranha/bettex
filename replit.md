@@ -2,6 +2,12 @@
 
 Current editorial work is limited to documentation. The current homepage and Pitch are finalized and canonical. Their protection below overrides all earlier editorial permissions, including shared-roadmap exceptions.
 
+## Estrutura aprovada da documentação — regra permanente
+
+O criador considera a documentação aprovada um sistema próprio de leitura e navegação, equivalente ao nosso próprio GitBook. Essa estrutura deve ser respeitada ao adicionar, editar ou remover conteúdo. Uma atualização editorial não autoriza redesenhar a documentação, simplificar sua hierarquia ou substituir seus componentes e comportamentos.
+
+Antes de qualquer alteração na documentação, ler e seguir [o contrato de manutenção da documentação](docs/documentation-maintenance.md). Preservar organização por responsável, separação entre Features e Tokenomics, apresentação visual, navegação desktop/mobile, recolhimento dos tópicos, âncoras, traduções e referências. Mudanças na estrutura aprovada exigem solicitação ou aprovação explícita do criador; não podem ser introduzidas como efeito colateral de uma alteração de conteúdo. Esta regra prevalece sobre descrições estruturais históricas abaixo.
+
 ## DeFi, AI trading and editorial scope — current instruction
 
 Na documentação, é proibido falar em DEMO fora do marco do roadmap que apresenta o demo e seu link. A documentação apresenta a visão final da BETTEX, não o demo. Aplicar a todos os capítulos, referências técnicas, abertura, idiomas e materiais derivados; preservar regras, riscos e a distinção entre visão e capacidades já comprovadas. Esta instrução não altera o aplicativo visual.
@@ -10,7 +16,7 @@ BETTEX is an open community building DeFi technology and an AI agent for multipl
 
 No formal company or foundation is planned as the project structure. Founders initially administer the project and retain control over contracts; the direction is a service progressively managed by AI. This does not require renouncing ownership, abolishing administrative permissions/multisig, creating a DAO, or voting on every operation. Several decisions involve the community, with competencies and mechanisms still to be defined. Absence of an entity does not establish tax exemption or regulatory permission. Operations remain limited to legally permitted markets with required authorizations; a category requiring an unmet entity/license/authorization stays unavailable.
 
-The public documentation has six principal chapters: Vision; Agent and markets; Tokenomics; Participation and results; Roadmap; Administration, security and risks. Preserve access to technical reference and compatibility with old chapter/subsection links. Preserve essential staking/tokenomics drawings and a single visible chapter with its own outline. Public copy describes future goals clearly, not guaranteed returns or financial capabilities proved by the visual demo.
+The public documentation has seven approved principal sections: Project vision; BETTEX agent; Subagents; Features; Tokenomics; Technical base and security; Roadmap. Preserve their order, responsibility-specific chapters, technical references and compatibility with old chapter/subsection links. Display one principal section at a time, with its own outline; menu labels have no section or subsection numbers. Preserve essential drawings without former sequence labels such as “Design 7 of 8”; reference diagrams by subject. Public copy describes future goals clearly, not guaranteed returns or financial capabilities proved by the visual demo.
 
 Current public economics: 1 billion BETTEX; initial mint 10%, community 55%, founder/team 20%, investors 15%; 24-month vesting starting in March 2027 as a forecast, initial mint separate; distributable net profit 50% treasury / 25% participants / 25% buyback. Public mint forecast is December 10, 2026; system/ALFA and vesting forecast is March 2027. Preserve eligibility, exit cancellation of unpaid rights, fractions, accounting, conditional buyback/accumulation and burn rules. ALFA has network fees only; no service tariff or contribution is defined. Maintenance funding remains open: do not prescribe treasury funding or personal funding, introduce a corporate-revenue/tax model, or silently change the split or rights.
 

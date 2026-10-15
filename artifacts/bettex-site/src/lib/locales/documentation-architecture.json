@@ -1,4 +1,21 @@
 {
+  "A governança e a segurança multisig descritas são uma proposta inicial, aberta à discussão com investidores e com a comunidade. A composição, o quórum e os poderes do multisig podem ser revistos por um processo documentado de aprovação, testes e implantação. Até uma revisão entrar em vigor, permanecem os controles da versão vigente; discutir o modelo não autoriza ignorá-los.": {
+    "en": "The governance and multisig security described are an initial proposal, open to discussion with investors and the community. The multisig's composition, quorum and powers may be revised through a documented process of approval, testing and implementation. Until a revision takes effect, the current version's controls remain in force; discussing the model does not authorize bypassing them.",
+    "es": "La gobernanza y la seguridad multisig descritas son una propuesta inicial, abierta al debate con inversores y con la comunidad. La composición, el quórum y los poderes del multisig pueden revisarse mediante un proceso documentado de aprobación, pruebas e implementación. Hasta que una revisión entre en vigor, se mantienen los controles de la versión vigente; debatir el modelo no autoriza a ignorarlos."
+  },
+  "Inicialmente, ainda não há alternativa operacional à atuação do fundador em certas decisões necessárias ao projeto. Essa responsabilidade não é uma estrutura definitiva: a visão é que a inteligência artificial assuma progressivamente essas decisões e substitua as funções de administração e o próprio papel do fundador, até alcançar autonomia operacional. A transição pode ser discutida com investidores e com a comunidade e depende de validação, responsabilidades e controles documentados. Essa visão futura não equivale a uma autonomia já implementada.": {
+    "en": "Initially, there is no operational alternative to the founder making certain decisions necessary for the project. This responsibility is not a permanent structure: the vision is for artificial intelligence to progressively take over those decisions and replace the administration functions and the founder's own role, ultimately achieving operational autonomy. The transition may be discussed with investors and the community and depends on validation, documented responsibilities and controls. This future vision does not mean autonomy is already implemented.",
+    "es": "Inicialmente, aún no existe una alternativa operativa a la intervención del fundador en ciertas decisiones necesarias para el proyecto. Esta responsabilidad no es una estructura definitiva: la visión es que la inteligencia artificial asuma progresivamente esas decisiones y sustituya las funciones de administración y el propio papel del fundador, hasta alcanzar autonomía operativa. La transición puede debatirse con inversores y con la comunidad y depende de validación, responsabilidades y controles documentados. Esta visión futura no equivale a una autonomía ya implementada."
+  },
+  "Onde entram as tecnologias neste fluxo": {
+    "en": "Where technologies fit in this flow",
+    "es": "Dónde intervienen las tecnologías en este flujo"
+  },
+  "Ver condições do split no desenho 5": {
+    "pt": "Ver condições no desenho de distribuição dos ganhos",
+    "en": "See conditions in the profit-distribution diagram",
+    "es": "Ver condiciones en el dibujo de distribución de ganancias"
+  },
   "Tokenomics": { "en": "Tokenomics", "es": "Tokenomics" },
   "Tokenomics reúne a economia do token: emissão, distribuição, venda, vesting, utilidade, direitos, staking, resultados, taxas, recompra e queima. Essas regras ficam separadas das funcionalidades do aplicativo.": {
     "en": "Tokenomics covers the token economy: issuance, allocation, sale, vesting, utility, rights, staking, results, fees, buybacks and burns. These rules are separate from application features.",

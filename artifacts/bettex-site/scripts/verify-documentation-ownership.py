@@ -245,6 +245,29 @@ console.log(JSON.stringify(pairs));
         def approved_copy(paragraph):
             if paragraph in approved_proposals:
                 return approved_proposals[paragraph]
+            # Only diagram references change: identify redistributed figures by
+            # subject while protecting all economic conditions and amounts.
+            for before, after in (
+                ('desenho 5', 'desenho de distribuição dos ganhos'),
+                ('drawing 5', 'the profit-distribution diagram'),
+                ('the design 5', 'the profit-distribution diagram'),
+                ('in design 5', 'in the profit-distribution diagram'),
+                ('dibujo 5', 'dibujo de distribución de ganancias'),
+                ('diseño 5', 'dibujo de distribución de ganancias'),
+                ('O desenho 8', 'O desenho de oportunidades'),
+                ('Drawing 8', 'The opportunity diagram'),
+                ('El dibujo 8', 'El dibujo de oportunidades'),
+                ('O desenho 2', 'O desenho de compra na venda pública'),
+                ('Diagram 2', 'The public-sale purchase diagram'),
+                ('El diagrama 2', 'El diagrama de compra en la venta pública'),
+                ('Ver condições do split no desenho de distribuição dos ganhos',
+                 'Ver condições no desenho de distribuição dos ganhos'),
+                ('See split conditions in the profit-distribution diagram',
+                 'See conditions in the profit-distribution diagram'),
+                ('Ver condiciones del split en el dibujo de distribución de ganancias',
+                 'Ver condiciones en el dibujo de distribución de ganancias'),
+            ):
+                paragraph = paragraph.replace(before, after)
             for prefix, sports in (
                 ('DeFi para DeFi AI (DeFAI). A BETTEX busca desenvolver', 'esportes (surebet)'),
                 ('From DeFi to DeFi AI (DeFAI). BETTEX aims to develop', 'sports (surebet)'),

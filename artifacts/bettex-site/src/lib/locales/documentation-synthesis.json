@@ -515,9 +515,9 @@
     "es": "La verificación de límites y la reserva de capital son indivisibles en el núcleo central para agentes y conectores. Las órdenes simultáneas no reutilizan capital."
   },
   "O desenho 8 detalha o ciclo de coleta de oportunidades, escolha, investimento e registro público das transações.": {
-    "pt": "O desenho 8 detalha o ciclo: coleta de oportunidades, seleção, investimento e registro público das transações.",
-    "en": "Drawing 8 details the cycle: opportunity collection, selection, investment, and public registration of transactions.",
-    "es": "El dibujo 8 detalla el ciclo: recolección de oportunidades, selección, inversión y registro público de las transacciones."
+    "pt": "O desenho de oportunidades detalha a rodada: coleta de oportunidades, seleção, investimento e registro público das transações.",
+    "en": "The opportunity diagram details the round: opportunity collection, selection, investment, and public registration of transactions.",
+    "es": "El dibujo de oportunidades detalla la ronda: recolección de oportunidades, selección, inversión y registro público de las transacciones."
   },
   "Agentes de IA → conexões por MCP ou API → execução automática das operações autorizadas.": {
     "pt": "Agentes IA → conexões por MCP ou API → execução automática das operações autorizadas.",
@@ -575,9 +575,9 @@
     "es": "El registro abierto cubre transacciones: ventas de tokens, operaciones de mercado, tesorería, distribuciones y retiros. Los datos sensibles y claves privadas no se publican."
   },
   "Resultados conciliados seguem para o desenho 5: se faltar reserva, liquidez ou peso elegível, a rodada não paga e 100% do lucro fica na tesouraria, sem liberação futura. Uma rodada posterior considera apenas seus próprios resultados. Isso não altera o vesting: quantidades e meses seguem a liberação predefinida de 24 meses, sem decisão discricionária da gestão. O mint inicial fica separado dessa agenda.": {
-    "pt": "Resultados conciliados vão ao desenho 5: se faltar reserva, liquidez ou peso, rodada não paga e 100% do lucro fica na tesouraria, sem liberação futura. Rodada posterior segue seus resultados. Vesting de 24 meses é fixo, sem gestão discricionária. Mint inicial é separado.",
-    "en": "Reconciled results go to drawing 5: if reserve, liquidity, or weight is missing, the round does not pay and 100% of profit remains in the treasury, without future release. Subsequent rounds follow their own results. 24-month vesting is fixed, without discretionary management. Initial mint is separate.",
-    "es": "Los resultados conciliados van al dibujo 5: si falta reserva, liquidez o peso, la ronda no paga y el 100% del lucro queda en la tesorería, sin liberación futura. La ronda posterior sigue sus propios resultados. El vesting de 24 meses es fijo, sin gestión discrecional. El mint inicial es separado."
+    "pt": "Resultados conciliados vão ao desenho de distribuição dos ganhos: se faltar reserva, liquidez ou peso, rodada não paga e 100% do lucro fica na tesouraria, sem liberação futura. Rodada posterior segue seus resultados. Vesting de 24 meses é fixo, sem gestão discricionária. Mint inicial é separado.",
+    "en": "Reconciled results go to the profit-distribution diagram: if reserve, liquidity, or weight is missing, the round does not pay and 100% of profit remains in the treasury, without future release. Subsequent rounds follow their own results. 24-month vesting is fixed, without discretionary management. Initial mint is separate.",
+    "es": "Los resultados conciliados van al dibujo de distribución de ganancias: si falta reserva, liquidez o peso, la ronda no paga y el 100% del lucro queda en la tesorería, sin liberación futura. La ronda posterior sigue sus propios resultados. El vesting de 24 meses es fijo, sin gestión discrecional. El mint inicial es separado."
   },
   "Coleta oportunidades → compara e escolhe a melhor → investe com autorização → registra todo o ciclo abertamente.": {
     "pt": "Coleta, compara, escolhe, investe com autorização e registra todo o ciclo abertamente.",
@@ -775,9 +775,9 @@
     "es": "La reventa de tokens originalmente públicos no constituye una nueva captación del proyecto."
   },
   "O desenho 2 da arquitetura representa a compra da venda pública do projeto. Seu fluxo de USDC para a tesouraria não descreve toda compra por swap. A revenda entre titulares, por si só, não aumenta P ou B e não entra em R como resultado das estratégias. A venda do token pelo titular não é resgate da tesouraria nem recompra pelo projeto.": {
-    "pt": "O desenho 2 representa a compra da venda pública do projeto. Seu fluxo de USDC à tesouraria não descreve toda compra por swap. A revenda entre titulares não aumenta P ou B nem entra em R como resultado de estratégias. Vender não é resgate de tesouraria nem recompra do projeto.",
-    "en": "Diagram 2 represents the purchase from the project's public sale. Its USDC-to-treasury flow does not describe every swap purchase. Resale between holders does not increase P or B and does not enter R as strategy result. Selling is not a treasury redemption or a project buyback.",
-    "es": "El diagrama 2 representa la compra de la venta pública del proyecto. Su flujo de USDC a la tesorería no describe toda compra por swap. La reventa entre titulares no aumenta P ni B ni entra en R como resultado de estrategias. Vender no es rescate de tesorería ni recompra del proyecto."
+    "pt": "O desenho de compra na venda pública representa a compra da venda pública do projeto. Seu fluxo de USDC à tesouraria não descreve toda compra por swap. A revenda entre titulares não aumenta P ou B nem entra em R como resultado de estratégias. Vender não é resgate de tesouraria nem recompra do projeto.",
+    "en": "The public-sale purchase diagram represents the purchase from the project's public sale. Its USDC-to-treasury flow does not describe every swap purchase. Resale between holders does not increase P or B and does not enter R as strategy result. Selling is not a treasury redemption or a project buyback.",
+    "es": "El diagrama de compra en la venta pública representa la compra de la venta pública del proyecto. Su flujo de USDC a la tesorería no describe toda compra por swap. La reventa entre titulares no aumenta P ni B ni entra en R como resultado de estrategias. Vender no es rescate de tesorería ni recompra del proyecto."
   },
   "Revendas pessoais não seguem a destinação da venda pública. O fundador destina livremente suas receitas pessoais após a liberação. Revenda não antecipa emissão nem cria novo vesting para unidades liberadas.": {
     "pt": "Revendas pessoais não integram a venda pública e não criam novos vestings ou emissões.",
@@ -1000,14 +1000,14 @@
     "es": "El registro no es saldo on-chain. El pago liquida la obligación; los costos de red se separan."
   },
   "Depois do split do desenho 5: parcela do staking → recebimento confirmado na Carteira USDC → saque em USDC.": {
-    "pt": "Após o split do desenho 5: parcela de staking → confirmação na Carteira USDC → saque em USDC.",
-    "en": "After the design 5 split: staking share → confirmation in the USDC Wallet → USDC withdrawal.",
-    "es": "Después del split del diseño 5: parte de staking → confirmación en la Cartera USDC → retiro en USDC."
+    "pt": "Após o split do desenho de distribuição dos ganhos: parcela de staking → confirmação na Carteira USDC → saque em USDC.",
+    "en": "After the profit-distribution diagram split: staking share → confirmation in the USDC Wallet → USDC withdrawal.",
+    "es": "Después del split del dibujo de distribución de ganancias: parte de staking → confirmación en la Cartera USDC → retiro en USDC."
   },
   "Parcela de 25% do lucro distribuível já separada no desenho 5, vinculada aos resultados e participantes elegíveis. Novos participantes não recebem lucros anteriores. Não há nova apuração ou novo split neste fluxo.": {
-    "pt": "Parcela de 25% do lucro distribuível, já separada no desenho 5, vinculada a resultados e participantes elegíveis. Novos participantes não recebem lucros anteriores. Este fluxo não tem nova apuração nem split.",
-    "en": "A 25% share of distributable profit, already separated in design 5, tied to results and eligible participants. New participants do not receive prior profits. This flow has no new calculation or split.",
-    "es": "Parte de 25% de la ganancia distribuible, ya separada en el diseño 5, vinculada a resultados y participantes elegibles. Los nuevos participantes no reciben ganancias anteriores. Este flujo no tiene nueva liquidación ni split."
+    "pt": "Parcela de 25% do lucro distribuível, já separada no desenho de distribuição dos ganhos, vinculada a resultados e participantes elegíveis. Novos participantes não recebem lucros anteriores. Este fluxo não tem nova apuração nem split.",
+    "en": "A 25% share of distributable profit, already separated in the profit-distribution diagram, tied to results and eligible participants. New participants do not receive prior profits. This flow has no new calculation or split.",
+    "es": "Parte de 25% de la ganancia distribuible, ya separada en el dibujo de distribución de ganancias, vinculada a resultados y participantes elegibles. Los nuevos participantes no reciben ganancias anteriores. Este flujo no tiene nueva liquidación ni split."
   },
   "Direito identificado e autorizado na própria rodada. Uma autorização não libera saldo disponível. USDC transferido entra no disponível após confirmação e conciliação, sem crédito duplicado.": {
     "pt": "Autorização não libera saldo. USDC disponível após conciliação, sem duplicidade.",

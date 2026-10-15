@@ -15,6 +15,12 @@ A própria tesouraria tem regras que podem evoluir, com sugestões de um agente 
 
 **How to apply:** Preservar controles e mapear funções humanas para evolução por IA. Distinguir decisões comunitárias, administração e execução por mandato; não tratar permissões administrativas como defeitos a eliminar ou presumir voto on-chain para cada política. A retirada da Fundação não autoriza alteração unilateral pela IA nem muda os poderes existentes neste levantamento.
 
+Governança e segurança multisig podem ser discutidas com investidores e com a comunidade. Inicialmente, não existe alternativa operacional ao fundador tomar certas decisões; eventualmente, essas decisões e o próprio papel do fundador devem ser substituídos por inteligência artificial.
+
+**Why:** O criador explicitou que a atuação inicial do fundador não deve parecer uma estrutura permanente de governança.
+
+**How to apply:** Explicar essa transição nos temas de governança, custódia e responsabilidade pela segurança. Preservar os controles vigentes e distinguir a visão de autonomia futura da capacidade efetivamente validada.
+
 O criador pediu “regras claras multisig pra movimentacoes seguindo liberdade operacional com boas praticas de mercado” na área da empresa.
 
 **Why:** O controle de custódia deve coexistir com liberdade operacional, não transformar cada investimento ou pagamento já autorizado em uma nova aprovação humana.

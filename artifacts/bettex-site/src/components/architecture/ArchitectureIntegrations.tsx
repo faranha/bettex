@@ -47,7 +47,7 @@ const notes: Record<ArchitectureFigureNumber, IntegrationNote[]> = {
 export function ArchitectureIntegrations({ figure }: { figure: ArchitectureFigureNumber }) {
   if (!notes[figure].length) return null;
   return (
-    <footer className="ba-integrations" data-testid={`figure-${figure}-integrations`} aria-label={`Onde entram as tecnologias no desenho ${figure}`}>
+    <footer className="ba-integrations" data-testid={`figure-${figure}-integrations`} aria-label="Onde entram as tecnologias neste fluxo">
       <p className="ba-integrations__title">Onde entram neste desenho</p>
       <ul className="ba-integrations__list">
         {notes[figure].map(({ brand, placement, description }) => (
