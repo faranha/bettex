@@ -26,3 +26,9 @@ Não exibir abaixo dos indicadores os textos “Probabilidade de ganho hoje: Nã
 **Why:** O criador pediu explicitamente a remoção desses dois textos.
 
 **How to apply:** Manter os indicadores e as explicações de cálculo no botão de ajuda, sem reintroduzir essas duas linhas no bloco.
+
+A carteira USDC, BETTEX e os ganhos potenciais precisam priorizar compactação, especialmente no celular; o criador não está satisfeito com blocos grandes que ocupam espaço demais.
+
+**Why:** O criador disse “ocupam espaco demais [...] parece pouco otimizado” após a ampliação do resumo.
+
+**How to apply:** Manter saldos, ações e ganho de hoje fáceis de consultar, mas sem voltar a cartões altos. Endereços e histórico detalhado podem ficar recolhidos; preservar acesso e não apagar os indicadores solicitados.

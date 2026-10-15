@@ -1,13 +1,14 @@
 /** @jsxImportSource react */
 import type { DemoDashboard } from '@workspace/api-client-react';
-import { TrendingUp } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { TrendingUp, ChevronDown } from 'lucide-react';
 import { useMoney } from './fin';
 import { useX } from './ui';
 import { WalletHelp } from './WalletHelp';
 import { walletEarningsSummary } from './wallet-earnings-model';
 import './WalletPotentialGain.css';
 
-export function WalletPotentialGain({ d }: { d: DemoDashboard }) {
+export function WalletPotentialGain({ d, extra }: { d: DemoDashboard; extra?: ReactNode }) {
   const { x } = useX();
   const { brl, num } = useMoney();
   const s = walletEarningsSummary(d);
@@ -50,24 +51,30 @@ export function WalletPotentialGain({ d }: { d: DemoDashboard }) {
       {s.projectedUsdc !== null && <span className="wpg-sub">{num(s.projectedUsdc, 2)} USDC</span>}
     </p>
     <p className="wpg-note wallet-potential-condition">{x('Se mantiver seus BETTEX elegíveis até a apuração.', 'If you keep your eligible BETTEX until settlement.', 'Si mantienes tus BETTEX elegibles hasta la liquidación.')}</p>
-    <dl className="wpg-grid">
-      {hist.map(h => <div key={h.k} className={`wpg-tile ${h.w.complete ? 'ok' : ''}`} data-testid={`wallet-history-${h.k}`}>
-        <dt>{h.l}</dt>
-        <dd>{h.w.recordedUsdc === null ? '—' : brl('USDC', h.w.recordedUsdc)}</dd>
-        <small>{h.w.complete
-          ? h.k === 'yesterday' ? x('Rodada anterior', 'Previous round', 'Ronda anterior') : x('Completo', 'Complete', 'Completo')
-          : x(`Parcial · ${h.w.coveredDays} de ${h.w.days} dias · subtotal registrado`, `Partial · ${h.w.coveredDays} of ${h.w.days} days · recorded subtotal`, `Parcial · ${h.w.coveredDays} de ${h.w.days} días · subtotal registrado`)}</small>
-      </div>)}
-      <div className="wpg-tile" data-testid="wallet-return-daily">
+    <dl className="wpg-rates">
+      <div className="wpg-rate" data-testid="wallet-return-daily">
         <dt>{x('Retorno diário est.', 'Est. daily return', 'Retorno diario est.')}</dt>
         <dd>{pct(s.dailyReturnPercent)}</dd>
         <small>{x('Sobre BETTEX elegíveis', 'On eligible BETTEX', 'Sobre BETTEX elegibles')}</small>
       </div>
-      <div className="wpg-tile" data-testid="wallet-return-monthly">
+      <div className="wpg-rate" data-testid="wallet-return-monthly">
         <dt>{x('Retorno mensal est.', 'Est. monthly return', 'Retorno mensual est.')}</dt>
         <dd>{pct(s.projected30DaysPercent)}</dd>
         <small>{s.projected30DaysUsdc === null ? x('Diário × 30, sem reinvestir', 'Daily × 30, no reinvestment', 'Diario × 30, sin reinvertir') : `${brl('USDC', s.projected30DaysUsdc)} · ${x('diário × 30', 'daily × 30', 'diario × 30')}`}</small>
       </div>
     </dl>
+    <details className="wpg-more" data-testid="wallet-details-disclosure">
+      <summary data-testid="button-wallet-details-toggle"><span>{x('Histórico de ganhos e endereços', 'Earnings history and addresses', 'Historial de ganancias y direcciones')}</span><ChevronDown size={16} aria-hidden="true" className="wpg-chev" /></summary>
+      <dl className="wpg-grid">
+        {hist.map(h => <div key={h.k} className={`wpg-tile ${h.w.complete ? 'ok' : ''}`} data-testid={`wallet-history-${h.k}`}>
+          <dt>{h.l}</dt>
+          <dd>{h.w.recordedUsdc === null ? '—' : brl('USDC', h.w.recordedUsdc)}</dd>
+          <small>{h.w.complete
+            ? h.k === 'yesterday' ? x('Rodada anterior', 'Previous round', 'Ronda anterior') : x('Completo', 'Complete', 'Completo')
+            : x(`Parcial · ${h.w.coveredDays} de ${h.w.days} dias · subtotal registrado`, `Partial · ${h.w.coveredDays} of ${h.w.days} days · recorded subtotal`, `Parcial · ${h.w.coveredDays} de ${h.w.days} días · subtotal registrado`)}</small>
+        </div>)}
+      </dl>
+      {extra}
+    </details>
   </div>;
 }
