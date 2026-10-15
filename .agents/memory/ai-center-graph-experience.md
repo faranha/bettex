@@ -3,6 +3,12 @@ name: Grafo exclusivo dos agentes da Central
 description: Grafo existente com Cripto e subagentes de apoio à BETTEX, consultas bidirecionais e navegação preservada.
 ---
 
+A BETTEX deve dominar o centro como um cérebro neural grande, com volume de planeta. Os agentes ao redor mantêm posições estáveis, sem órbitas animadas; Cripto preserva BTC/ETH/SOL como seus subagentes.
+
+**Why:** O criador propôs “um cerebro gigante como BETTEX no centro [...] como se fosse um planeta” e autorizou aplicar a direção apresentada.
+
+**How to apply:** Evoluir o grafo existente, preservando câmera, trilhos bidirecionais, pacotes consultáveis e relatórios fora do grafo. Movimento suave no cérebro não deve dificultar selecionar os agentes.
+
 O grafo da Central da IA mostra agentes e conexões entre agentes. O criador posteriormente passou a tratar Governança, Risco, Tesouraria, Execução e Conciliação como subagentes de apoio à BETTEX, presentes na rede em lugar dos nós futuros de Esportes, Mercados de previsão e Cassino. As regras antigas que excluíam esses cinco papéis do grafo foram substituídas; áreas do negócio continuam fora.
 
 **Why:** A orientação anterior de integrar toda a Central à rede foi substituída pela correção explícita: “o grafo mostra apenas os agentes [...] se nao eh agente, nao esta aqui, isso deveria estar fora daqui”.
