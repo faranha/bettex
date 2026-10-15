@@ -6,6 +6,7 @@ import { Radar, CircleDollarSign, X as XIcon } from 'lucide-react';
 import { useFmt, card, KV, Tag, dec6 } from '../alpha-trading/format';
 import { REQUESTS, DECISIONS, ORDERS, POSITIONS, STATE, STATES_BY_VIEW, type Asset, type T3, type Request, type Decision, type Order, type Position } from './central-data';
 import { useL } from './CentralAgents';
+import { RelatedPackets, useRecordNavigation } from './CentralRecordNavigation';
 
 const box = 'rounded-xl border border-[#E4DCCB] bg-[#FBF8F0] p-3';
 const sel = 'min-h-11 rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] px-3 text-sm';
@@ -36,7 +37,8 @@ function RequestCard({ r, onJourney }: { r: Request; onJourney: (id: string) => 
     <p className="mt-1 text-xs"><b>{x('Invalidação: ', 'Invalidation: ', 'Invalidación: ')}</b>{r.invalidation.map(L).join('; ')}</p>
     <ul className="mt-2 grid gap-1 text-xs text-[#5B6B85]" data-testid={`sources-${r.id}`}>{r.sources.map(s => <li key={s.ref} className="flex flex-wrap items-center gap-1.5">{s.kind === 'allora' ? <CircleDollarSign className="h-3.5 w-3.5 text-[#0A6657]" aria-hidden="true" /> : <Radar className="h-3.5 w-3.5 text-[#0A6657]" aria-hidden="true" />}<b className="text-[#1B2A41]">{s.name}</b> · <span className="mono break-all">{s.ref}</span> · {f.date(s.at)} · {L(s.evidence)}</li>)}</ul>
     <p className="mt-1 break-all font-mono text-[11px] text-[#5B6B85]">{x('Política', 'Policy', 'Política')}: demo-policy-v1 / demo-strategy-v1</p>
-    <button type="button" onClick={() => onJourney(r.id)} data-testid={`button-journey-${r.id}`} className={link}>{x('Ver percurso completo', 'View full journey', 'Ver recorrido completo')}</button></li>;
+    <button type="button" onClick={() => onJourney(r.id)} data-testid={`button-journey-${r.id}`} className={link}>{x('Ver percurso completo', 'View full journey', 'Ver recorrido completo')}</button>
+    <RelatedPackets requestId={r.id} /></li>;
 }
 function DecisionCard({ d, onJourney }: { d: Decision; onJourney: (id: string) => void }) {
   const { f, L, x, st, u } = useBits();
@@ -80,17 +82,23 @@ export function Journey({ id, onClose }: { id: string; onClose: () => void }) {
 
 export function RecordsSection({ views, title, intro, onJourney, onAction, initialAsset }: { views: V[]; title: string; intro: string; initialAsset?: Asset; onJourney: (id: string) => void; onAction: () => void }) {
   const { x, L, st } = useBits();
-  const [view, setView] = useState<V>(views[0]); const [asset, setAsset] = useState<'' | Asset>(initialAsset ?? ''); const [state, setState] = useState(''); const [page, setPage] = useState(0);
+  const navigation = useRecordNavigation(); const requestId = navigation?.requestId;
+  const [view, setView] = useState<V>(views[0]); const [asset, setAsset] = useState<'' | Asset>(requestId ? '' : initialAsset ?? ''); const [state, setState] = useState(''); const [page, setPage] = useState(0);
   const label: Record<V, string> = { opportunities: x('Pedidos recebidos e comparações', 'Received requests and comparisons', 'Pedidos recibidos y comparaciones'), decisions: x('Decisões da BETTEX', 'BETTEX decisions', 'Decisiones de BETTEX'), orders: x('Ordens', 'Orders', 'Órdenes'), positions: x('Posições abertas', 'Open positions', 'Posiciones abiertas'), closed: x('Encerradas', 'Closed', 'Cerradas') };
   const okA = (a: Asset) => !asset || a === asset; const okS = (s: string) => !state || s === state;
+  const okRequest = (id: string) => !requestId || id === requestId;
   const items: { key: string; node: ReactNode }[] =
-    view === 'opportunities' ? REQUESTS.filter(r => okA(r.asset) && okS(r.state)).map(r => ({ key: r.id, node: <RequestCard key={r.id} r={r} onJourney={onJourney} /> }))
-    : view === 'decisions' ? DECISIONS.filter(d => okA(d.asset) && okS(d.state)).map(d => ({ key: d.id, node: <DecisionCard key={d.id} d={d} onJourney={onJourney} /> }))
-    : view === 'orders' ? ORDERS.filter(o => okA(o.asset) && okS(o.state)).map(o => ({ key: o.id, node: <OrderCard key={o.id} o={o} onJourney={onJourney} /> }))
-    : POSITIONS.filter(p => (view === 'closed' ? ['closed', 'settled'].includes(p.state) : ['open', 'reducing'].includes(p.state)) && okA(p.asset) && okS(p.state)).map(p => ({ key: p.id, node: <PositionCard key={p.id} p={p} onJourney={onJourney} onAction={onAction} /> }));
+    view === 'opportunities' ? REQUESTS.filter(r => okRequest(r.id) && okA(r.asset) && okS(r.state)).map(r => ({ key: r.id, node: <RequestCard key={r.id} r={r} onJourney={onJourney} /> }))
+    : view === 'decisions' ? DECISIONS.filter(d => okRequest(d.requestId) && okA(d.asset) && okS(d.state)).map(d => ({ key: d.id, node: <DecisionCard key={d.id} d={d} onJourney={onJourney} /> }))
+    : view === 'orders' ? ORDERS.filter(o => okRequest(o.requestId) && okA(o.asset) && okS(o.state)).map(o => ({ key: o.id, node: <OrderCard key={o.id} o={o} onJourney={onJourney} /> }))
+    : POSITIONS.filter(p => okRequest(p.requestId) && (view === 'closed' ? ['closed', 'settled'].includes(p.state) : ['open', 'reducing'].includes(p.state)) && okA(p.asset) && okS(p.state)).map(p => ({ key: p.id, node: <PositionCard key={p.id} p={p} onJourney={onJourney} onAction={onAction} /> }));
   const shown = items.slice(page * PER, page * PER + PER); const reset = () => setPage(0);
   return <div className="grid gap-2"><h3 className="display text-base font-extrabold">{title}</h3><p className="text-xs text-[#5B6B85]">{intro}</p>
     <section className={card} data-testid={`records-${views[0]}`}>
+      {requestId && <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[#34748A] p-3" data-testid="selected-request">
+        <p className="break-all text-sm">{x('Proposta selecionada', 'Selected proposal', 'Propuesta seleccionada')}: <span className="font-mono">{requestId}</span></p>
+        <button type="button" className={link} data-testid="button-clear-request" onClick={() => navigation?.clearRequest()}>{x('Ver todos os pedidos', 'View all requests', 'Ver todos los pedidos')}</button>
+      </div>}
       <div className="flex flex-wrap gap-2" role="tablist">{views.map(v => <button key={v} type="button" role="tab" aria-selected={view === v} onClick={() => { setView(v); setState(''); reset(); }} className={`min-h-11 rounded-full px-4 text-sm font-bold ${view === v ? 'bg-[#0E7C6B] text-white' : 'border border-[#E4DCCB]'}`}>{label[v]}</button>)}</div>
       <div className="mt-3 flex flex-wrap gap-2">
         <select aria-label={x('Ativo', 'Asset', 'Activo')} data-testid={`select-asset-${views[0]}`} className={sel} value={asset} onChange={e => { setAsset(e.target.value as '' | Asset); reset(); }}><option value="">{x('Todos os ativos', 'All assets', 'Todos los activos')}</option>{(['btc', 'eth', 'sol'] as const).map(a => <option key={a} value={a}>{a.toUpperCase()}</option>)}</select>

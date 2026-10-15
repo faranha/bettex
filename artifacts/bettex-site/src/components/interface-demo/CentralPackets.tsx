@@ -11,6 +11,7 @@ import { GRAPH_EDGES, nodeOf } from './central-graph-model';
 import { PACKETS, packetById, packetConversation, packetProgress, type GraphPacket } from './central-packets';
 import { bez, ctrlOf, projectPoint, type Cam, type Scene } from './scene3d';
 import './central-packets.css';
+import { useRecordNavigation } from './CentralRecordNavigation';
 
 /** Imperative per-frame placement on the projected Bezier of the packet's own edge. Reverse t when travelling b -> a. */
 export function placePackets(els: Record<string, HTMLElement | null>, sc: Scene, cam: Cam, w: number, h: number, elapsed: number, reduced: boolean) {
@@ -45,6 +46,7 @@ export function PacketButtons({ els, selectedId, onPick, onHold }: { els: React.
 }
 
 export function PacketInspector({ packetId, onClose }: { packetId: string | null; onClose: () => void }) {
+  const navigation = useRecordNavigation();
   const f = useFmt(); const { x, loc } = f; const L = useL(); const [more, setMore] = useState(false);
   const trigger = useRef<HTMLElement | null>(null);
   useEffect(() => { setMore(false); }, [packetId]);
@@ -73,6 +75,9 @@ export function PacketInspector({ packetId, onClose }: { packetId: string | null
             {p.payload.filter(row => row.value !== p.requestId && row.value !== p.decisionId && row.value !== p.summary)
               .map((r, i) => <div key={i}><dt>{L(r.label)}</dt><dd>{val(r.value)}</dd></div>)}</dl>
           <div className="pki-acts">
+            {navigation && <button type="button" className="pki-btn" data-testid="button-packet-request" onClick={() => navigation.openRequest(p.requestId)}>
+              {x('Abrir proposta completa', 'Open full proposal', 'Abrir propuesta completa')}
+            </button>}
             <button type="button" className="pki-btn" aria-expanded={more} data-testid="button-packet-expand" onClick={() => setMore(v => !v)}>{more ? <ChevronUp aria-hidden="true" width={16} height={16} /> : <ChevronDown aria-hidden="true" width={16} height={16} />}{more ? x('Recolher histórico', 'Collapse history', 'Contraer historial') : x('Expandir histórico', 'Expand history', 'Expandir historial')}</button>
             <Link data-demo-local data-testid="link-packet-journey" className="pki-btn" href={`${demoPath('wallet', loc)}?history=audit&correlationId=${encodeURIComponent(p.requestId)}`}>{x('Ver percurso no Histórico', 'View journey in History', 'Ver recorrido en el Historial')}</Link></div>
           {more && <div data-testid="packet-history">

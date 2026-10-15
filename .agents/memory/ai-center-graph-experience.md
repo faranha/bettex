@@ -103,8 +103,8 @@ existentes nem quebrar seus links.
 
 ## Pacotes consultáveis no grafo existente
 
-O criador quer pacotes em movimento no próprio grafo, nos dois sentidos entre BTC/ETH/SOL, Cripto e BETTEX: análises e propostas indo, decisões e orientações voltando. Clicar no pacote abre seus dados; expandir permite consultar os detalhes do histórico relacionado.
+O criador quer pacotes em movimento no próprio grafo, nos dois sentidos entre BTC/ETH/SOL, Cripto e BETTEX: análises e propostas indo, decisões e orientações voltando. Clicar no pacote abre seus dados; expandir permite consultar os detalhes do histórico relacionado. O pacote e o registro completo da proposta devem permitir navegação direta nos dois sentidos, preservando a proposta selecionada ao voltar.
 
-**Why:** O criador confirmou esse percurso e acrescentou: “se a pessoa quiser ver mais detalhes pode expandir e ver os detalhes do historico”.
+**Why:** O criador confirmou esse percurso e acrescentou: “se a pessoa quiser ver mais detalhes pode expandir e ver os detalhes do historico”. Ao comparar o pacote com o painel de pedidos, confirmou a ligação direta entre as duas telas: “sim o ideal é elas estarem conectadas”.
 
 **How to apply:** Melhorar o grafo existente, sem recriar a Central. Vincular os pacotes aos registros demonstrativos e correlacionar envios e respostas; não tratar o movimento visual como prova de agentes ou operações reais.

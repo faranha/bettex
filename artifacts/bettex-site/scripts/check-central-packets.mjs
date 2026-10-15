@@ -70,6 +70,17 @@ try {
     assert.equal(entry.data.feeUnits, fill.fees, 'Audit costs agree with packet details');
   }
   assert.equal(p.packetById('not-a-packet'), undefined);
+  let visibleTotal = 0;
+  for (let elapsed = 0; elapsed < p.PACKET_REPLAY_MS; elapsed += 100) {
+    const visible = p.PACKETS.filter(packet => {
+      const t = p.packetProgress(packet, elapsed);
+      return t > 0.04 && t < 0.96;
+    });
+    assert(visible.some(packet => packet.kind === 'analysis'), 'Analysis continues throughout the replay');
+    assert(visible.some(packet => packet.kind === 'decision'), 'Replies continue throughout the replay');
+    visibleTotal += visible.length;
+  }
+  assert(visibleTotal / (p.PACKET_REPLAY_MS / 100) >= 7, 'Denser traffic without speeding up clickable messages');
   assert.equal(JSON.stringify({ requests: c.REQUESTS, decisions: c.DECISIONS, orders: c.ORDERS, positions: c.POSITIONS, capital: c.CAPITAL }), before, 'Replay never changes financial samples');
   const source = await readFile(join(dir, 'central-packets.ts'), 'utf8');
   assert.doesNotMatch(source, /\b(fetch|WebSocket|localStorage|setInterval)\s*[(.]/, 'Local read-only projection, not a runtime');
