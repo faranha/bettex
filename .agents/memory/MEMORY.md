@@ -104,4 +104,4 @@
 - [Vesting na documentação mobile](documentation-vesting-mobile.md) — consulta compacta dos 24 meses; gráficos visíveis no HTML inicial, sem depender de medir capítulos ocultos.
 - [Build export side effects](build-export-side-effects.md) — full validation may change archive headers only; verify member contents before cleanup and respect Git safeguards.
 - [Padrão das ordens](order-standard-requirements.md) — conceito e arte antes da autorização; tabela técnica completa do registro usado pela tesouraria, execução e retorno.
-- [Ganho potencial na carteira](wallet-potential-earnings.md) — destacar o potencial do dia condicionado à permanência; R$ 300 foi exemplo, não valor fixo.
+- [Carteiras sem faixa de ganhos](wallet-potential-earnings.md) — layout anterior aos ganhos estimados; não reintroduzir a reformulação nem desfazer o grafo.
