@@ -72,6 +72,40 @@ try {
     assert.match(preciseTermLinks, /href="#documentacao-conceito-defi"[^>]*><strong\b[^>]*>DeFi<\/strong><\/a>/, `${language}: DeFi must retain its own definition link`);
     assert.doesNotMatch(read('src/components/WhitepaperSection.tsx'), /DocumentationRelatedTopics|data-documentation-related-section/, 'Documentation must not render related-reading blocks');
     const html = chapters.map((_, index) => renderToStaticMarkup(createElement(ChapterContent, { index }))).join('');
+    const securityHtml = renderToStaticMarkup(createElement(ChapterContent, { index: chapters.findIndex(chapter => chapter.id === 'documentacao-riscos') }));
+    const securityRules = securityHtml.match(/<h3\b[^>]*id="documentacao-seguranca"[^>]*>[\s\S]*?(?=<details\b[^>]*id="documentacao-referencia-riscos")/)?.[0];
+    assert.ok(securityRules, `${language}: security, controls and material risks need one combined topic`);
+    assert.ok(securityRules.includes('data-testid="documentation-security-and-risks"') && securityRules.includes('id="documentacao-riscos-materiais"'),
+      `${language}: the combined topic must preserve both contents and the old risk anchor`);
+    assert.equal((securityRules.match(/class="whitepaper__subhead"/g) ?? []).length, 1,
+      `${language}: material risks must not add a second subsection heading`);
+    const trainingOwners = ['documentacao-agentes', ...chapters
+      .filter(chapter => chapter.id.startsWith('documentacao-subagente-') || chapter.id.startsWith('documentacao-especialista-'))
+      .map(chapter => chapter.id)];
+    for (const owner of trainingOwners) {
+      const ownerHtml = renderToStaticMarkup(createElement(ChapterContent, { index: chapters.findIndex(chapter => chapter.id === owner) }));
+      assert.equal((ownerHtml.match(/data-testid="documentation-agent-training"/g) ?? []).length, 1,
+        `${language}: ${owner} needs one consolidated training strategy`);
+      assert.ok(ownerHtml.includes(`id="${owner}-estrategia-treino"`), `${language}: ${owner} training must have a direct target`);
+      assert.ok(ownerHtml.includes('href="#documentacao-protocolo-treino"') && ownerHtml.includes('href="#documentacao-contrato-ordem"'),
+        `${language}: ${owner} must link to the shared protocol and full technical order contract`);
+      if (owner.startsWith('documentacao-especialista-')) {
+        assert.ok(ownerHtml.includes('crypto-trend-spot-v1'), `${language}: specialists must share the Crypto strategy`);
+        assert.ok(ownerHtml.includes('href="#documentacao-baseline-cripto"'), `${language}: specialist technical reference must lead to Crypto`);
+        assert.doesNotMatch(ownerHtml, /Esta POC não define uma estratégia|This POC does not define an additional strategy|Esta POC no define una estrategia/);
+      }
+    }
+    assert.equal((html.match(/data-testid="documentation-training-protocol"/g) ?? []).length, 1,
+      `${language}: strategy protocol must be defined once, not copied into every subagent`);
+    assert.equal((html.match(/data-documentation-training-addition=""/g) ?? []).length, trainingOwners.length + 1,
+      `${language}: only the requested training profiles and protocol may be excluded from the historical word budget`);
+    const closingRules = html.match(/id="documentacao-saida"[^>]*>[\s\S]*?(?=<details\b[^>]*id="documentacao-referencia-participacao")/)?.[0];
+    assert.ok(closingRules, `${language}: participation closing rules must remain together`);
+    assert.equal((closingRules.match(/class="whitepaper__subhead"/g) ?? []).length, 0,
+      `${language}: exits, fractions, example and optional features must not create separate subsection headings`);
+    for (const id of ['documentacao-fracoes', 'documentacao-exemplo', 'documentacao-regras-demo']) {
+      assert.ok(closingRules.includes(`id="${id}"`), `${language}: merged participation rules must preserve ${id}`);
+    }
     const { WhitepaperSection } = await server.ssrLoadModule('/src/components/WhitepaperSection.tsx');
     const { DocumentationRulesTable } = await server.ssrLoadModule('/src/components/DocumentationRulesTable.tsx');
     if (language === 'pt') {

@@ -4,11 +4,11 @@ import type { ChapterOutline } from '../components/whitepaperOutline';
 import { resolveDocumentationId } from './documentation-aliases';
 
 export const documentationSectionTitles = [
-  'Visão do projeto', 'Agente BETTEX', 'Subagentes', 'Features', 'Base técnica e segurança', 'Roadmap',
+  'Visão do projeto', 'Agente BETTEX', 'Subagentes', 'Features', 'Tokenomics', 'Base técnica e segurança', 'Roadmap',
 ] as const;
 export const documentationSectionTargets = [
   'documentacao-como-funciona', 'documentacao-agentes', 'documentation-reading-group-2',
-  'documentation-reading-group-3', 'documentacao-riscos', 'documentacao-roadmap',
+  'documentation-reading-group-3', 'documentacao-tokenomics', 'documentacao-riscos', 'documentacao-roadmap',
 ] as const;
 
 export function documentationOutline(locale: 'pt' | 'en' | 'es'): ChapterOutline[] {

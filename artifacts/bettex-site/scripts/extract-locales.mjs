@@ -2,6 +2,7 @@ import ts from 'typescript';
 import fs from 'node:fs';
 import path from 'node:path';
 import { orderStandardTranslations } from '../src/lib/documentation-order-standard.ts';
+import { trainingSourceMessages } from '../src/lib/documentation-training.ts';
 const root = path.resolve(import.meta.dirname, '../src');
 const keys = new Set();
 const templates = new Set();
@@ -21,8 +22,10 @@ function add(value) {
 // These typed tuples supply all their localized prose directly; protocol codes,
 // field paths and editorial replacements are not translation source messages.
 Object.keys(orderStandardTranslations).forEach(add);
+trainingSourceMessages.forEach(add);
 function scan(file) {
   if (/\/lib\/documentation-order-(?:standard|terminology)\.ts$/.test(file)) return;
+  if (file.endsWith('/lib/documentation-training.ts')) return; // Typed PT/EN/ES passages and technical profile IDs are audited separately.
   if (file.endsWith('/lib/documentation-outline.json')) return; // Generated localized navigation metadata, not source copy.
   if (file.endsWith('/lib/pitch-hero-media.generated.json') || file.endsWith('/lib/pitch-hero-media.ts')) return; // Image resolutions, provenance and srcset URLs, not interface copy.
   if (file.endsWith('/components/documentationReadingPages.ts')) return; // DOM tag/attribute protocol names, no interface copy.

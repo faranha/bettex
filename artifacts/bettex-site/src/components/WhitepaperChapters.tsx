@@ -149,11 +149,16 @@ function MainBody({ id }: { id: string }) {
         <Head id="documentacao-entrada">{c.pt2}</Head><Prose>{c.pt2p}</Prose>
         <Head id="documentacao-calculo-pagamento">{c.pt3}</Head><Prose>{c.pt3p}</Prose>
         <StakingDistribution />
-        <Head id="documentacao-saida">{c.pt4}</Head><Prose>{c.pt4p}</Prose>
-        <Head id="documentacao-fracoes">{c.pt5}</Head><Prose>{c.pt5p}</Prose>
-        <Head id="documentacao-exemplo">{c.pt6}</Head><Prose>{c.pt6p}</Prose>
+        <Head id="documentacao-saida">{c.pt7}</Head>
+        <div data-testid="documentation-participation-closing-rules">
+          <div className="whitepaper__prose">
+            <p>{c.pt4p}</p>
+            <p id="documentacao-fracoes">{c.pt5p}</p>
+            <p id="documentacao-exemplo">{c.pt6p}</p>
+          </div>
+          <div id="documentacao-regras-demo"><Prose>{c.pt7p}</Prose></div>
+        </div>
         <DocumentationAppIntroduction />
-        <Head id="documentacao-regras-demo">{c.pt7}</Head><Prose>{c.pt7p}</Prose>
         <></>
         <Reference id="documentacao-referencia-participacao" label={c.refPart} parts={[{ id: 'documentacao-staking-detalhe' }]} />
       </>;

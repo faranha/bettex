@@ -22,7 +22,7 @@ export function DocumentationRoadmapMap() {
       <ol className="docmap__list">
         {roadmapStops.map((stop, i) => {
           const demo = i === 0;
-          const featured = Boolean(stop.featured);
+          const featured = Boolean((stop as { readonly featured?: boolean }).featured);
           return (
             <li key={stop.title} className={`docmap__stop${i % 2 ? ' docmap__stop--r' : ''}${featured ? ' docmap__stop--key' : ''}${demo ? ' docmap__stop--demo' : ''}`}>
               {i < last && (

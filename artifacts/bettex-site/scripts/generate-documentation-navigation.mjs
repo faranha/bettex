@@ -24,6 +24,21 @@ try {
       const helpers = new Function(`${code};return {collectOutline,documentationChapters,documentationChapterNumber,documentationParentId};`)();
       const { documentationChapters: chapters } = helpers;
       const outline = helpers.collectOutline(chapters, helpers.documentationChapterNumber, helpers.documentationParentId);
+      const economics = ['documentacao-emissao', 'documentacao-staking', 'documentacao-feature-recompra'];
+      const features = document.querySelector('#documentation-reading-group-3');
+      const tokenomics = document.querySelector('#documentation-reading-group-4');
+      if (!features || !tokenomics || !tokenomics.querySelector('#documentacao-tokenomics')) {
+        throw new Error('Features and Tokenomics need separate main-section openings');
+      }
+      for (const id of economics) {
+        if (features.querySelector(`#${id}`) || !tokenomics.querySelector(`#${id}`)) {
+          throw new Error(`Economic content must belong exclusively to Tokenomics: ${id}`);
+        }
+      }
+      if (features.querySelectorAll('[data-testid="documentation-features-introduction"] li').length !== 5 ||
+          tokenomics.querySelectorAll('[data-testid="documentation-tokenomics-introduction"] li').length !== 3) {
+        throw new Error('Features and Tokenomics introductions must describe only their own topics');
+      }
       const numbers = new Map([['3', 'documentation-reading-group-2']]);
       for (const chapter of outline) {
         for (const item of [chapter, ...chapter.items]) {

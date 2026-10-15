@@ -63,3 +63,9 @@ Identificadores que selecionam partes de um componente são metadados, não text
 **Why:** Um novo seletor de documentação foi interpretado como texto traduzível; trocar aspas por uma expressão JSX não mudou a classificação.
 
 **How to apply:** Quando a auditoria exigir tradução de uma chave interna, conferir a classificação de atributos estruturais antes de acrescentar traduções artificiais. Reutilizar a interface estrutural já reconhecida ou delimitar corretamente a nova propriedade, sem desabilitar a auditoria de textos visíveis.
+
+Tuplas documentais novas precisam integrar tanto o catálogo usado em runtime quanto o extrator e a auditoria de fontes. O pragma de JSX nativo não impede que o coletor de títulos encaminhe rótulos já traduzidos ao tradutor global.
+
+**Why:** A coleta do índice retraduziu um título inglês vindo de tuplas completas; depois a extração estática classificou traduções e caminhos técnicos como fontes em português.
+
+**How to apply:** Auditar as três traduções das tuplas, extrair somente a origem em português e permitir aliases localizados onde os wrappers os reprocessam. Manter caminhos técnicos no módulo de dados tipado, fora da varredura de prosa; não criar traduções fictícias para identificadores.

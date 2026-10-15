@@ -107,8 +107,9 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     duplicates=[id for id,n in Counter(p.ids).items() if n>1]
     assert not duplicates, f"{lang}: duplicate ids {duplicates}"
     verify_chapters(p.chapters, canonical_chapters, lang)
-    assert p.section_headers == len(p.chapters) + 2, f"{lang}: every chapter plus Subagents and Features needs a standalone opening"
+    assert p.section_headers == len(p.chapters) + 3, f"{lang}: every chapter plus Subagents, Features and Tokenomics needs a standalone opening"
     assert 'documentacao-features' in p.ids, f"{lang}: features introduction must remain accessible"
+    assert 'documentacao-tokenomics' in p.ids, f"{lang}: Tokenomics needs its own accessible section opening"
     assert p.chapters[-1]=='documentacao-roadmap', f"{lang}: roadmap last"
     for owner in ('risco', 'tesouraria', 'governanca', 'cripto', 'esportes', 'previsoes', 'igaming'):
         assert f'documentacao-subagente-{owner}' in p.chapters, f"{lang}: missing actor {owner}"

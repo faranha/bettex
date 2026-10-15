@@ -61,7 +61,7 @@ export function collectOutline(chapters: readonly { id: string; title: string }[
     const titleText = titleEl?.querySelector('[data-documentation-title]') ?? titleEl;
     const out: ChapterOutline = { id: chapter.id, number, title: formatOutlineTitle(titleText?.textContent) || formatOutlineTitle(chapter.title), items: [] };
     collected.push(out);
-    if (!article || chapter.id === 'documentacao-features') return out;
+    if (!article || chapter.id === 'documentacao-features' || chapter.id === 'documentacao-tokenomics') return out;
     const counters = [0, 0, 0];
     const nodes = article.querySelectorAll<HTMLElement>('h3, h4, summary');
     nodes.forEach((node, nodeIndex) => {

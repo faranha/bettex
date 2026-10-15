@@ -105,7 +105,7 @@ A documentação carrega somente uma seção principal e seus conteúdos por vez
 
 **Why:** O criador substituiu explicitamente a página contínua: “you load only the main section and its contents not all content”, com Visão como índice e navegação próxima/anterior no rodapé.
 
-**How to apply:** Montar apenas a seção principal selecionada: Visão, BETTEX, Subagentes, Features, Base técnica ou Roadmap. Manter os subitens agrupados dentro dela. O rodapé oferece Próximo e, quando existir, Anterior; Visão não tem Anterior e Roadmap não tem Próximo. Menu, intralinks, recarga e histórico devem carregar a seção do destino antes de abrir seus ancestrais. Não manter todos os capítulos ocultos no DOM. Preservar assuntos, ordem, âncoras e idiomas. Não aplicar ao Pitch.
+**How to apply:** Montar apenas a seção principal selecionada: Visão, BETTEX, Subagentes, Features, Tokenomics, Base técnica ou Roadmap. Manter os subitens agrupados dentro dela. O rodapé oferece Próximo e, quando existir, Anterior; Visão não tem Anterior e Roadmap não tem Próximo. Menu, intralinks, recarga e histórico devem carregar a seção do destino antes de abrir seus ancestrais. Não manter todos os capítulos ocultos no DOM. Preservar assuntos, ordem, âncoras e idiomas. Não aplicar ao Pitch.
 
 O cabeçalho geral da documentação continua disponível no topo, independentemente da seção ou subseção selecionada.
 
@@ -117,9 +117,9 @@ Nenhuma cabeça de seção no topo da documentação fica dentro de uma caixa ou
 
 **Why:** O criador corrigiu a seção Subagentes em uma captura mobile: “Nenhuma cabeça de seção topo pode ficar dentro de um container. Toda a de seção precisa ter um descritivo, uma apresentação. Então as subseções.”
 
-**How to apply:** Manter as aberturas das seis seções e dos capítulos visíveis e sem moldura, fundo de cartão ou controle de recolher. Recolher somente as subseções e referências, não a apresentação. Preservar o carregamento de uma seção principal por vez e a navegação do rodapé. Aplicar somente à documentação.
+**How to apply:** Manter as aberturas das sete seções e dos capítulos visíveis e sem moldura, fundo de cartão ou controle de recolher. Recolher somente as subseções e referências, não a apresentação. Preservar o carregamento de uma seção principal por vez e a navegação do rodapé. Aplicar somente à documentação.
 
-A numeração da documentação segue a hierarquia das seis seções principais, não uma contagem independente de todos os capítulos.
+A numeração da documentação segue a hierarquia das sete seções principais, não uma contagem independente de todos os capítulos.
 
 **Why:** O criador corrigiu explicitamente: Subagentes é 3, Subagente de Risco é 3.1 e Investigar além dos limites é 3.1.1; apontou o erro como generalizado.
 
@@ -184,3 +184,15 @@ Na documentação, não adicionar links para palavras diferentes: se não há um
 **Why:** O criador rejeitou o link de “blockchain” para DeFi e reiterou a correção ao encontrar ALFA com link: “só o básico que tenha sim uma seção ou subseção; se não tem, não põe link interno”.
 
 **How to apply:** Manter somente termos básicos com definição própria ou nomes explícitos de seções/subseções correspondentes. Deixar sem link termos genéricos, ALFA, demo e prova de conceito; não encaminhar palavras para conceitos apenas relacionados.
+
+Evitar fragmentar parágrafos curtos e relacionados em tópicos numerados e sanfonas independentes; reunir saída, frações, exemplo e regras complementares da participação em um único tópico. Segurança, controles e riscos materiais também formam um único tópico.
+
+**Why:** O criador apontou os quatro trechos e corrigiu: “Tudo isso aqui podia ser um único tópico”.
+
+**How to apply:** Usar um único cabeçalho e controle de expansão para esse conjunto, com parágrafos e rótulos internos simples; preservar as regras, o exemplo e os destinos dos links antigos.
+
+Tokenomics é uma seção principal exclusiva, separada de Features.
+
+**Why:** O criador pediu extrair de Features tudo que compõe tokenomics: “não é feature, é tokenomics”.
+
+**How to apply:** Reunir emissão, venda, vesting, direitos, taxas, staking, distribuição de resultados, recompra e queima em Tokenomics. Features mantém as funcionalidades do aplicativo. Preservar o conteúdo e os links antigos; não mover controles técnicos de Risco ou Tesouraria para fora de seus responsáveis.
