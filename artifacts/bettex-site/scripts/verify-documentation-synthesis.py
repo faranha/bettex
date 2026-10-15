@@ -74,7 +74,7 @@ class Content(HTMLParser):
             return
         if tag == "div":
             self.depth += 1
-            if "data-documentation-order-standard" in props:
+            if "data-documentation-order-standard" in props or "data-documentation-training-addition" in props:
                 self.order_addition_depth = self.depth
         if tag in ("script", "style"):
             self.skip += 1
@@ -427,7 +427,10 @@ for route, expected in baseline["routes"].items():
         # The approved agentic presentation adds research content; the former exact
         # one-third word target is no longer the scope. Retain a bounded-size guard.
         # The user requested a new complete order specification, not a rewrite
-        # of the old copy. Keep the old-copy size guard without capping this addition.
+        # of the old copy. The requested training profiles and common protocol
+        # are also additions, not expansions of the historical baseline.
+        # Keep all content in rule, spacing, translation and preservation audits;
+        # exclude only these marked additions from the old-copy word budget.
         legacy_count = len(" ".join(page.baseline_parts).split())
         assert legacy_count < expected["words"], f"Preexisting documentation exceeds the unsynthesized baseline: {route}"
         print(f"{route}: {expected['words']} → {count} words ({reduction:.2f}% reduction); reviewed rule conditions, anchors, links and images verified")

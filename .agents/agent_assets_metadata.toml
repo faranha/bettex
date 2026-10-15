@@ -980,3 +980,17 @@ mtime_ms = 1792021786777
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/66ddf9cd-e8b4-44f5-a0fe-55afa0da8f9a/a0a37e92-4c97-4a26-bcb1-1c33975d3f51"
 storage_version_token = "1792021812825491"
 content_type = "image/jpeg"
+
+[[outputs]]
+id = "tlboYP5io-W497j_8j2ZR"
+uri = "file://generated-artifacts/documentation-redraw/bettex-b-physical-core.png"
+type = "image"
+title = "BETTEX — B como núcleo físico"
+description = "Proposta com B tridimensional amarelo dentro da câmara transparente, integrado à base mecânica. Arte atual do site preservada."
+logical_id = "c1713421-c3e5-4258-ad13-53ccc98e7f27"
+content_hash = "sha256:7d67b3a1b23989d2779034501f1b66dccec70ba43e2050ffaf59f712c94d0e81"
+size = 1477525
+mtime_ms = 1792023234825
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/c1713421-c3e5-4258-ad13-53ccc98e7f27/14e56206-5285-4b20-a01e-5d1a209c53b3"
+storage_version_token = "1792023243828187"
+content_type = "image/png"

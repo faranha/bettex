@@ -7,6 +7,26 @@ import { presentationCopy, presentationTranslations } from '../src/lib/documenta
 import { documentationMenuItems, formatOutlineTitle, groupReferenceItems } from '../src/components/whitepaperOutline.ts';
 import { documentationChapters, documentationChapterNumber, documentationParentId } from '../src/lib/documentation-structure.ts';
 import { orderGroups, orderCopy, orderStandardTranslations } from '../src/lib/documentation-order-standard.ts';
+import { trainingCopy, trainingProfiles } from '../src/lib/documentation-training.ts';
+
+test('documentary training profiles cover every actor with complete translations and technical destinations', () => {
+  assert.equal(Object.keys(trainingProfiles).length, 8);
+  for (const tuple of [
+    ...Object.values(trainingCopy),
+    ...Object.values(trainingProfiles).flatMap(profile => [profile.input, profile.rule, profile.output, ...profile.references.map(([, label]) => label)]),
+  ]) {
+    assert.equal(tuple.length, 3);
+    assert.ok(tuple.every(value => typeof value === 'string' && value.trim().length > 0));
+  }
+  assert.equal(new Set(Object.values(trainingProfiles).map(profile => profile.strategy)).size, 8);
+  const contractPaths = new Set(orderGroups.flatMap(group => group.fields.map(field => field.path)));
+  for (const path of ['origin.strategy_ref', 'revisions[].strategy_ref', 'origin.analysis_run_ref', 'origin.proposal_ref', 'origin.decision_ref', 'revisions[].evidence', 'revisions[].selection.criteria_ref']) {
+    assert.ok(contractPaths.has(path), `training must use the existing order contract: ${path}`);
+  }
+  for (const tuple of [trainingCopy.cryptoParameters, trainingCopy.cryptoExit, trainingCopy.cryptoCalculation]) {
+    for (const value of tuple) assert.match(value, /20|24|14/);
+  }
+});
 
 test('business orders use consistent terms without renaming evidence or HTTP requests', () => {
   assert.equal(terms('Repetir o mesmo pedido não duplica a reserva. Novos pedidos recusados não contam.', 'pt'), 'Repetir a mesma ordem não duplica a reserva. Novas ordens recusadas não contam.');
@@ -51,11 +71,11 @@ test('selection distinguishes the deterministic baseline, ALFA/BETA inference an
   assert.match(orderCopy.selectionAbstain[0], /abstenção/);
 });
 
-test('six main sections own their chapter and specialist numbering', () => {
+test('seven main sections keep Tokenomics separate from Features and own their numbering', () => {
   const number = id => documentationChapterNumber(documentationChapters.findIndex(chapter => chapter.id === id));
   assert.deepEqual(documentationChapters.map((_, index) => documentationChapterNumber(index)), [
     '1', '2', '3.1', '3.2', '3.3', '3.4', '3.4.1.1', '3.4.1.2', '3.4.1.3', '3.5', '3.6', '3.7',
-    '4', '4.1', '4.2', '4.3', '4.4', '4.5', '4.6', '4.7', '4.8', '5', '6',
+    '4', '4.1', '4.2', '4.3', '4.4', '4.5', '5', '5.1', '5.2', '5.3', '6', '7',
   ]);
   for (const chapter of documentationChapters) {
     const parent = documentationParentId(chapter.id);
@@ -69,6 +89,11 @@ test('six main sections own their chapter and specialist numbering', () => {
   assert.equal(documentationChapterNumber(btc, 12), '3.4.12.1');
   assert.equal(documentationChapterNumber(btc + 1, 12), '3.4.12.2');
   assert.equal(documentationChapterNumber(btc + 2, 12), '3.4.12.3');
+  const economics = ['documentacao-emissao', 'documentacao-staking', 'documentacao-feature-recompra'];
+  for (const id of economics) assert.equal(documentationChapters.find(chapter => chapter.id === id)?.group, 4);
+  const features = documentationChapters.filter(chapter => chapter.group === 3).map(chapter => chapter.id);
+  assert.ok(economics.every(id => !features.includes(id)));
+  assert.ok(features.includes('documentacao-jogos'));
 });
 
 test('menus stop at section and subsection without removing deeper reader topics', () => {
@@ -118,12 +143,15 @@ test('positioning transforms bettors into investors, never betting into investme
   assert.match(messages[claim].es, /apostadores en inversores/);
 });
 
-test('wallet and optional games follow core participation and precede their full application rules', () => {
+test('wallet and optional games are introduced in Features before the participation chapters', () => {
   const chapters = readFileSync(new URL('../src/components/WhitepaperChapters.tsx', import.meta.url), 'utf8');
   const staking = chapters.split("case 'documentacao-staking':")[1].split("case 'documentacao-roadmap':")[0];
   assert.ok(staking.includes('<DocumentationAppIntroduction />'));
   assert.ok(staking.indexOf('<DocumentationAppIntroduction />') > staking.indexOf('documentacao-exemplo'));
-  assert.ok(staking.indexOf('<DocumentationAppIntroduction />') < staking.indexOf('documentacao-regras-demo'));
+  const owned = readFileSync(new URL('../src/components/DocumentationOwnedContent.tsx', import.meta.url), 'utf8');
+  const features = owned.split("case 'documentacao-features':")[1].split("case 'documentacao-carteira-bettex':")[0];
+  assert.ok(features.includes("m('documentacao-staking', [10])"));
+  assert.ok(staking.indexOf('<DocumentationAppIntroduction />') > staking.indexOf('documentacao-regras-demo'));
   const introduction = readFileSync(new URL('../src/components/DocumentationAppIntroduction.tsx', import.meta.url), 'utf8');
   for (const marker of ['Burn Lottery', 'Double 2X', '50/50',
     'todo o valor pago é queimado diretamente', 'the entire payment is burned directly', 'todo el importe pagado se quema directamente',

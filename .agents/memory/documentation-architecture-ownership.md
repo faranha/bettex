@@ -68,3 +68,9 @@ O agente BETTEX seleciona a melhor oportunidade.
 **Why:** O criador esclareceu explicitamente o responsável pela seleção no fluxo de oportunidades.
 
 **How to apply:** Nomear o agente BETTEX nessa decisão, preservando os critérios de comparação e o registro dos motivos.
+
+Todos os subagentes e especialistas devem ter uma estratégia-base de treino descrita, suficiente para fundamentar as propostas e os registros ilustrativos do demo, e acesso ao aprofundamento técnico correspondente.
+
+**Why:** O criador pediu “uma estratégia básica pra todos” para conseguir documentar os pedidos e apontou a falta de aprofundamento técnico nos especialistas.
+
+**How to apply:** Distinguir roteiro documental de treino realizado ou estratégia validada. BTC, ETH e SOL compartilham a base de Cripto; não criar setores ou mandatos independentes. Preservar as referências por responsável e ligá-las aos perfis, ao protocolo comum e ao contrato da ordem. Não ativar operação ou persistência no demo.

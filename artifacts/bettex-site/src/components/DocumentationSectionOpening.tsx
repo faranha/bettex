@@ -3,9 +3,19 @@ import { t, useLocale } from '@/lib/i18n';
 import { DocumentationFeaturesIntroduction } from './DocumentationFeaturesIntroduction';
 
 /** Main-section titles and introductions are reading content, never accordion controls. */
-export function DocumentationSectionOpening({ group }: { group: 2 | 3 }) {
+export function DocumentationSectionOpening({ group }: { group: 2 | 3 | 4 }) {
   const locale = useLocale();
   const x = (pt: string, en: string, es: string) => locale === 'en' ? en : locale === 'es' ? es : pt;
+  if (group === 4) return <>
+    <header className="whitepaper__chapter-head">
+      <h2 id="title-documentacao-tokenomics" data-documentation-heading-depth="1">
+        <span className="whitepaper__heading-number">{group + 1}</span>{' '}
+        <span data-documentation-title>{t('Tokenomics')}</span><span className="whitepaper__title-period">.</span>
+      </h2>
+      <p>{t('Emissão, venda, vesting, direitos e destinação dos resultados.')}</p>
+    </header>
+    <DocumentationFeaturesIntroduction economics />
+  </>;
   return <>
     <header className="whitepaper__chapter-head">
       <h2 id={group === 3 ? 'title-documentacao-features' : 'title-documentacao-subagentes'} data-documentation-heading-depth="1">

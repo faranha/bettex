@@ -14,6 +14,7 @@ class ChapterAuditTests(unittest.TestCase):
         self.assertEqual(self.expected[0], "documentacao-como-funciona")
         self.assertEqual(self.expected[-1], "documentacao-roadmap")
         self.assertNotIn("documentacao-features", self.expected)
+        self.assertNotIn("documentacao-tokenomics", self.expected)
         for actor in ("btc", "eth", "sol"):
             self.assertIn(f"documentacao-especialista-{actor}", self.expected)
         self.assertIn("documentacao-carteira-bettex", self.expected)

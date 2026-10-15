@@ -12,7 +12,7 @@ const targets: Record<string, { id: string }> = {
   'Burn Lottery e Double 2X': { id: 'documentacao-jogos' },
 };
 
-export function DocumentationFeaturesIntroduction() {
+export function DocumentationFeaturesIntroduction({ economics = false }: { economics?: boolean } = {}) {
   const locale = useLocale();
   const x = (pt: string, en: string, es: string) => locale === 'en' ? en : locale === 'es' ? es : pt;
   const items = [
@@ -25,17 +25,19 @@ export function DocumentationFeaturesIntroduction() {
     ['Recompra e queima', x('O mecanismo de recompra de BETTEX e a retirada definitiva de tokens de circulação.', 'The BETTEX buyback mechanism and permanent removal of tokens from circulation.', 'El mecanismo de recompra de BETTEX y la retirada definitiva de tokens de circulación.')],
     ['Burn Lottery e Double 2X', x('Jogos internos opcionais, com regras próprias e separados do agente de iGaming.', 'Optional internal games, with their own rules and separate from the iGaming agent.', 'Juegos internos opcionales, con reglas propias y separados del agente de iGaming.')],
   ];
-  return <div className="whitepaper__prose" data-testid="documentation-features-introduction">
-    <p>{x('Esta seção reúne as funcionalidades do aplicativo e as regras que organizam saldos, participação e registros. Os tópicos a seguir detalham cada parte:',
-      'This section brings together the app features and the rules governing balances, participation and records. The following topics detail each part:',
-      'Esta sección reúne las funcionalidades de la aplicación y las reglas que organizan saldos, participación y registros. Los siguientes temas detallan cada parte:')}</p>
-    <ul>{items.map(([title, description]) => {
+  const economicTitles = new Set(['Staking e distribuição', 'Token e regras econômicas', 'Recompra e queima']);
+  const visibleItems = items.filter(([title]) => economicTitles.has(title) === economics);
+  return <div className="whitepaper__prose" data-testid={economics ? 'documentation-tokenomics-introduction' : 'documentation-features-introduction'}>
+    <p>{t(economics
+      ? 'Tokenomics reúne a economia do token: emissão, distribuição, venda, vesting, utilidade, direitos, staking, resultados, taxas, recompra e queima. Essas regras ficam separadas das funcionalidades do aplicativo.'
+      : 'Features reúne as funcionalidades do aplicativo: carteiras, conta, acesso, histórico e jogos internos. As regras econômicas do token ficam na seção Tokenomics.')}</p>
+    <ul>{visibleItems.map(([title, description]) => {
       const target = targets[title];
       if (!target) throw new Error(`Unknown feature reference: ${title}`);
       return <li key={title}><a href={`#${target.id}`} data-documentation-intralink=""><strong>{t(title)}</strong></a>:{' '}{description}</li>;
     })}</ul>
-    <p>{x('No demo atual, essas funcionalidades são apresentadas de forma visual, sem pagamentos, negociações ou movimentação de dinheiro real.',
+    {!economics && <p>{x('No demo atual, essas funcionalidades são apresentadas de forma visual, sem pagamentos, negociações ou movimentação de dinheiro real.',
       'In the current demo, these features are presented visually, without payments, trades or movement of real money.',
-      'En el demo actual, estas funcionalidades se presentan de forma visual, sin pagos, negociaciones ni movimientos de dinero real.')}</p>
+      'En el demo actual, estas funcionalidades se presentan de forma visual, sin pagos, negociaciones ni movimientos de dinero real.')}</p>}
   </div>;
 }

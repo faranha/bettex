@@ -10,6 +10,7 @@ import { DocumentationFutureMarket, DocumentationFutureReferencesHeading } from 
 import { t } from '@/lib/i18n';
 import { OrderStandard } from './OrderStandard';
 import { DocumentationAgentConcept } from './DocumentationAgentConcept';
+import { DocumentationAgentTraining, DocumentationTrainingProtocol } from './DocumentationAgentTraining';
 
 export type BaselineFactory = (id: string) => ReactNode[];
 type Props = { id: string; main: BaselineFactory; legacy: BaselineFactory };
@@ -73,6 +74,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
         </div>
         {baseline}
         <div id="documentacao-agentes-detalhe"><InvestmentAgents only={['orquestradora']} embedded /></div>
+        <DocumentationAgentTraining chapterId={id} />
         {reference('documentacao-referencia-agentes', 'Orquestração, decisões e conectores', <>
           <ArchitectureCatalogue groups={['map']} mapIntroduction />
           <div id="documentacao-arquitetura">{l('documentacao-arquitetura', [1, 2, 7, 8])}</div>
@@ -81,6 +83,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
           {l('documentacao-implantacao', [0])}
           {nested('documentacao-implantacao', 2, [2])}
           <OrderStandard />
+          <DocumentationTrainingProtocol />
           {nested('documentacao-controles', 9, [1, 2, 5, 6, 7])}
           {l('documentacao-controles', [11])}
         </>)}
@@ -90,6 +93,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
         <AgentIntelligence owners={['risk']} introduction />
         <DocumentationAgentConcept chapterId={id} />
         {baseline}<InvestmentAgents only={['risco']} intro={false} cycle={false} embedded />
+        <DocumentationAgentTraining chapterId={id} />
         {reference('documentacao-controles', 'Risco, limites e autorização', <>
           {l('documentacao-controles', range(2, 9))}
           {l('documentacao-controles', [10])}
@@ -103,6 +107,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
         <AgentIntelligence owners={['treasury']} introduction />
         <DocumentationAgentConcept chapterId={id} />
         {baseline}<InvestmentAgents only={['tesouraria', 'recompra-queima']} intro={false} cycle={false} embedded />
+        <DocumentationAgentTraining chapterId={id} />
         {intro('A inteligência da tesouraria analisa recursos e propõe alocações. A recompra e a queima são mecanismos separados: a análise não autoriza alterar a destinação fixa dos resultados nem executar fora dos controles.')}
         {m('documentacao-emissao', [10, 11])}
         {reference('documentacao-baseline-tesouraria', 'Reservas e fundos em trânsito', <>
@@ -118,6 +123,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
         <AgentIntelligence owners={['governance']} introduction />
         <DocumentationAgentConcept chapterId={id} />
         {baseline}<InvestmentAgents only={['governanca']} intro={false} cycle={false} embedded />
+        <DocumentationAgentTraining chapterId={id} />
         {m('documentacao-riscos', [1, 2])}
         {m('documentacao-riscos', [7, 8])}
         {reference('documentacao-governanca-detalhe', 'Governança, mandatos e administração', <>
@@ -131,6 +137,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
         <AgentIntelligence owners={['crypto']} introduction />
         <DocumentationAgentConcept chapterId={id} />
         {baseline}<InvestmentAgents only={['acoes-cripto']} intro={false} cycle={false} embedded />
+        <DocumentationAgentTraining chapterId={id} />
         {reference('documentacao-baseline-cripto', 'Fontes, inferências e conectores de Cripto', <>
           {l('documentacao-arquitetura', range(10, 15))}
           <ArchitectureCatalogue groups={['allora', 'integrations']} connectorNames={['Allora', 'Robinhood']} integrationId="documentacao-conexoes-cripto" />
@@ -143,13 +150,15 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
         <DocumentationAgentConcept chapterId={id} />
         {intro('Esta especialização pertence ao subagente Cripto e delimita o ativo acompanhado. Não é um setor independente, não cria uma nova tesouraria e não recebe autorização financeira própria por aparecer no grafo.')}
         {opening(`${id}-secao-1`, [baseline, <div key="specialist-intro" className="whitepaper__prose">
-          <p>{t('O ponto de partida utiliza as capacidades e fontes de Cripto, sob os controles de Risco e os recursos autorizados pela Tesouraria. Esta POC não define uma estratégia adicional nem parâmetros exclusivos para esta especialização.')}</p>
+          <p>{t('O ponto de partida utiliza as capacidades e fontes de Cripto, sob os controles de Risco e os recursos autorizados pela Tesouraria.')}</p>
         </div>])}
+        <DocumentationAgentTraining chapterId={id} />
       </>;
     case 'documentacao-subagente-esportes':
       return <>
         <DocumentationFutureMarket part="sports" />
         <AgentIntelligence owners={['sports']} introduction /><DocumentationAgentConcept chapterId={id} /><DocumentationFutureReferencesHeading chapterId={id} />
+        <DocumentationAgentTraining chapterId={id} />
         {reference('documentacao-baseline-esportes', 'Conectores de Esportes e iGaming', <>
           <InvestmentAgents only={['esportes']} intro={false} cycle={false} embedded compact />
           <ArchitectureCatalogue groups={['integrations']} connectorNames={['Esportes e iGaming']} integrationId="documentacao-conexoes-esportes" compact />
@@ -159,6 +168,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
       return <>
         <DocumentationFutureMarket part="predictions" />
         <AgentIntelligence owners={['predictions']} introduction /><DocumentationAgentConcept chapterId={id} /><DocumentationFutureReferencesHeading chapterId={id} />
+        <DocumentationAgentTraining chapterId={id} />
         {reference('documentacao-baseline-previsoes', 'Orquestração, decisões e conectores', <>
         <InvestmentAgents only={['previsoes']} intro={false} cycle={false} embedded compact />
         {nested('documentacao-arquitetura', 9, [1])}
@@ -169,6 +179,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
       return <>
         <DocumentationFutureMarket part="igaming" />
         <AgentIntelligence owners={['igaming']} introduction /><DocumentationAgentConcept chapterId={id} /><DocumentationFutureReferencesHeading chapterId={id} />
+        <DocumentationAgentTraining chapterId={id} />
         {reference('documentacao-baseline-igaming', 'Conectores de Esportes e iGaming', <>
         <InvestmentAgents only={['cassinos']} intro={false} cycle={false} embedded compact />
         <ArchitectureCatalogue groups={['integrations']} connectorNames={['Esportes e iGaming']} integrationId="documentacao-conexoes-igaming" compact />
@@ -177,9 +188,11 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
       </>;
     case 'documentacao-features':
       return <>
-        {intro('Features executam regras definidas: apresentam saldos, verificam condições e registram efeitos autorizados. Não são agentes de inteligência artificial. A análise dos agentes e o funcionamento das carteiras, staking e jogos são responsabilidades diferentes.')}
-        {m('documentacao-staking', [14])}
+        {intro('Features executam regras definidas: apresentam saldos, verificam condições e registram efeitos autorizados. Não são agentes de inteligência artificial. Tokenomics reúne as regras econômicas em uma seção própria.')}
+        {m('documentacao-staking', [10])}
       </>;
+    case 'documentacao-tokenomics':
+      return null;
     case 'documentacao-carteira-bettex':
       return <>
         {opening('documentacao-carteira-bettex-secao-1', l('documentacao-acesso', [4, 5, 6, 7, 8]))}
@@ -200,7 +213,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
       return <>
         <DocumentationChapterIntroduction chapterId={id} />
         {opening('documentacao-participar', m(id, [0, 1]))}
-        {m(id, range(2, 14))}{m(id, [15, 16, 17])}
+        {m(id, range(2, 10))}
         {reference('documentacao-referencia-participacao', 'Apuração, liquidação e correções', <div id="documentacao-staking-detalhe">{l('documentacao-staking-detalhe', range(0, 5))}</div>)}
       </>;
     case 'documentacao-emissao':
@@ -220,7 +233,11 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
     case 'documentacao-riscos':
       return <>
         <DocumentationChapterIntroduction chapterId={id} />
-        {m(id, [3, 4, 5, 6])}
+        <h3 id="documentacao-seguranca" className="whitepaper__subhead">{t('Segurança, controles e riscos')}</h3>
+        <div data-testid="documentation-security-and-risks">
+          {m(id, [4])}
+          <div id="documentacao-riscos-materiais">{m(id, [6])}</div>
+        </div>
         {reference('documentacao-referencia-riscos', 'Infraestrutura comum e segurança', <>
           <div id="documentacao-rede">{l('documentacao-rede', range(0, 8))}</div>
           {l('documentacao-arquitetura', [3, 4])}

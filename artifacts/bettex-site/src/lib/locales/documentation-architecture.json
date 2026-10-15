@@ -1,4 +1,21 @@
 {
+  "Tokenomics": { "en": "Tokenomics", "es": "Tokenomics" },
+  "Tokenomics reúne a economia do token: emissão, distribuição, venda, vesting, utilidade, direitos, staking, resultados, taxas, recompra e queima. Essas regras ficam separadas das funcionalidades do aplicativo.": {
+    "en": "Tokenomics covers the token economy: issuance, allocation, sale, vesting, utility, rights, staking, results, fees, buybacks and burns. These rules are separate from application features.",
+    "es": "Tokenomics reúne la economía del token: emisión, distribución, venta, vesting, utilidad, derechos, staking, resultados, comisiones, recompra y quema. Estas reglas están separadas de las funcionalidades de la aplicación."
+  },
+  "Features reúne as funcionalidades do aplicativo: carteiras, conta, acesso, histórico e jogos internos. As regras econômicas do token ficam na seção Tokenomics.": {
+    "en": "Features covers application functionality: wallets, account, access, history and internal games. The token's economic rules belong to the Tokenomics section.",
+    "es": "Features reúne las funcionalidades de la aplicación: carteras, cuenta, acceso, historial y juegos internos. Las reglas económicas del token pertenecen a la sección Tokenomics."
+  },
+  "Features executam regras definidas: apresentam saldos, verificam condições e registram efeitos autorizados. Não são agentes de inteligência artificial. Tokenomics reúne as regras econômicas em uma seção própria.": {
+    "en": "Features execute defined rules: they display balances, check conditions and record authorized effects. They are not artificial intelligence agents. Tokenomics brings economic rules together in its own section.",
+    "es": "Las funcionalidades ejecutan reglas definidas: presentan saldos, verifican condiciones y registran efectos autorizados. No son agentes de inteligencia artificial. Tokenomics reúne las reglas económicas en una sección propia."
+  },
+  "Segurança, controles e riscos": {
+    "en": "Security, controls and risks",
+    "es": "Seguridad, controles y riesgos"
+  },
   "Especializações por ativo": {
     "en": "Asset specializations",
     "es": "Especializaciones por activo"
@@ -269,6 +286,10 @@
   "O histórico apresenta movimentos e estados registrados. Consultar ou exportar esses dados não inicia operações dos agentes nem muda saldos. Os registros permitem conferir origem, destino, custos e confirmação sem tratar um movimento pendente como dinheiro disponível.": {
     "en": "The history presents movements and recorded states. Consulting or exporting this data does not initiate agent operations nor change balances. The records allow checking origin, destination, costs, and confirmation without treating a pending movement as available money.",
     "es": "El historial presenta movimientos y estados registrados. Consultar o exportar estos datos no inicia operaciones de los agentes ni cambia saldos. Los registros permiten comprobar origen, destino, costos y confirmación sin tratar un movimiento pendiente como dinero disponible."
+  },
+  "O ponto de partida utiliza as capacidades e fontes de Cripto, sob os controles de Risco e os recursos autorizados pela Tesouraria.": {
+    "en": "The starting point uses Crypto capabilities and sources, under Risk controls and resources authorized by the Treasury.",
+    "es": "El punto de partida utiliza las capacidades y fuentes de Cripto, bajo los controles de Riesgo y los recursos autorizados por la Tesorería."
   },
   "O ponto de partida utiliza as capacidades e fontes de Cripto, sob os controles de Risco e os recursos autorizados pela Tesouraria. Esta POC não define uma estratégia adicional nem parâmetros exclusivos para esta especialização.": {
     "en": "The starting point uses Crypto capabilities and sources, under Risk controls and resources authorized by the Treasury. This POC does not define an additional strategy nor exclusive parameters for this specialization.",

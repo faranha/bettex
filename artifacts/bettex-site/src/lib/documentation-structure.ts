@@ -17,17 +17,22 @@ export const documentationChapters = [
   { id: 'documentacao-carteira-usdc', title: 'Carteira USDC', subtitle: 'Saldo financeiro, on-ramp externo e saques em cripto.', group: 3 },
   { id: 'documentacao-acesso', title: 'Conta, acesso e exportação', subtitle: 'Autenticação, sessão, autorização e dados exportáveis.', group: 3 },
   { id: 'documentacao-historico', title: 'Histórico e conciliação', subtitle: 'Registros, estados e conferência dos movimentos financeiros.', group: 3 },
-  { id: 'documentacao-staking', title: 'Staking e distribuição', subtitle: 'Elegibilidade, rodadas, cálculo, liquidação e correções.', group: 3 },
-  { id: 'documentacao-emissao', title: 'Token e regras econômicas', subtitle: 'Emissão, venda, vesting, direitos e destinação dos resultados.', group: 3 },
-  { id: 'documentacao-feature-recompra', title: 'Recompra e queima', subtitle: 'Execução do mecanismo e separação da análise da tesouraria.', group: 3 },
   { id: 'documentacao-jogos', title: 'Burn Lottery e Double 2X', subtitle: 'Jogos internos determinísticos, separados do agente de iGaming.', group: 3 },
-  { id: 'documentacao-riscos', title: 'Base técnica e segurança', subtitle: 'Redes, controles comuns, custódia e condições territoriais.', group: 4 },
-  { id: 'documentacao-roadmap', title: 'Roadmap', subtitle: 'Etapas existentes e evolução após a avaliação da POC.', group: 5 },
+  { id: 'documentacao-tokenomics', title: 'Tokenomics', subtitle: 'Emissão, venda, vesting, direitos e destinação dos resultados.', group: 4 },
+  { id: 'documentacao-emissao', title: 'Token e regras econômicas', subtitle: 'Emissão, venda, vesting, direitos e destinação dos resultados.', group: 4 },
+  { id: 'documentacao-staking', title: 'Staking e distribuição', subtitle: 'Elegibilidade, rodadas, cálculo, liquidação e correções.', group: 4 },
+  { id: 'documentacao-feature-recompra', title: 'Recompra e queima', subtitle: 'Execução do mecanismo e separação da análise da tesouraria.', group: 4 },
+  { id: 'documentacao-riscos', title: 'Base técnica e segurança', subtitle: 'Redes, controles comuns, custódia e condições territoriais.', group: 5 },
+  { id: 'documentacao-roadmap', title: 'Roadmap', subtitle: 'Etapas existentes e evolução após a avaliação da POC.', group: 6 },
 ] as const;
 
 export const documentationGroups = [
-  'Começar aqui', 'Inteligência central', 'Subagentes', 'Features', 'Base compartilhada', 'Evolução',
+  'Começar aqui', 'Inteligência central', 'Subagentes', 'Features', 'Tokenomics', 'Base compartilhada', 'Evolução',
 ] as const;
+
+export function documentationIsGroupOpening(id: string): boolean {
+  return id === 'documentacao-features' || id === 'documentacao-tokenomics';
+}
 
 const cryptoSpecialists = [
   'documentacao-especialista-btc', 'documentacao-especialista-eth', 'documentacao-especialista-sol',
@@ -40,7 +45,7 @@ export function documentationParentId(id: string): string | undefined {
 export function documentationChapterNumber(index: number, precedingTopics = 0): string {
   const chapter = documentationChapters[index];
   const section = String(chapter.group + 1);
-  if (chapter.id === 'documentacao-features') return section;
+  if (documentationIsGroupOpening(chapter.id)) return section;
   const parent = documentationParentId(chapter.id);
   if (parent) {
     const parentIndex = documentationChapters.findIndex(item => item.id === parent);
@@ -49,9 +54,9 @@ export function documentationChapterNumber(index: number, precedingTopics = 0): 
     // must not share a level with the parent's baseline and technical reference.
     return `${documentationChapterNumber(parentIndex)}.${Math.max(1, precedingTopics)}.${childIndex + 1}`;
   }
-  if (chapter.group === 2 || chapter.group === 3) {
+  if (chapter.group === 2 || chapter.group === 3 || chapter.group === 4) {
     const siblings = documentationChapters.filter(item => item.group === chapter.group &&
-      item.id !== 'documentacao-features' && !documentationParentId(item.id));
+      !documentationIsGroupOpening(item.id) && !documentationParentId(item.id));
     return `${section}.${siblings.findIndex(item => item.id === chapter.id) + 1}`;
   }
   return section;

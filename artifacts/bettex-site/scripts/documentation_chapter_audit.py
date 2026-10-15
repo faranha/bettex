@@ -8,10 +8,10 @@ def expected_chapters(app):
         [
             "node", "--input-type=module", "-e",
             """
-import { documentationChapters } from './src/lib/documentation-structure.ts';
-// Features introduces the wallet chapter; it is not a standalone article.
+import { documentationChapters, documentationIsGroupOpening } from './src/lib/documentation-structure.ts';
+// Features and Tokenomics introduce their groups; neither is a standalone article.
 console.log(JSON.stringify(documentationChapters
-  .filter(chapter => chapter.id !== 'documentacao-features')
+  .filter(chapter => !documentationIsGroupOpening(chapter.id))
   .map(chapter => chapter.id)));
 """,
         ],

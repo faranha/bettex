@@ -11,7 +11,7 @@ import { DocumentationLinkedTerms } from './DocumentationLinkedTerms';
 import { readingPageForTarget } from './documentationReadingPages';
 import { applyDocumentationAccordions, sectionAncestors } from './documentationAccordions';
 import { intelligenceCopy } from '@/lib/documentation-intelligence';
-import { documentationGroups, documentationParentId, documentationChapterNumber } from '@/lib/documentation-structure';
+import { documentationGroups, documentationIsGroupOpening, documentationParentId, documentationChapterNumber } from '@/lib/documentation-structure';
 import { t, useLocale } from '@/lib/i18n';
 import { resolveDocumentationId } from '@/lib/documentation-aliases';
 import { chapterAncestors, collectOutline, documentationMenuItems, formatOutlineTitle, openAncestors, outlineSignature, scrollOffset, type ChapterOutline } from './whitepaperOutline';
@@ -65,7 +65,7 @@ export function WhitepaperSection() {
       flushSync(() => {
         setSectionGroup(target.group);
         setSelected(target.index);
-        setReadingGroup(id.startsWith('documentation-reading-group-') || id === 'documentacao-features' ? target.group : null);
+        setReadingGroup(id.startsWith('documentation-reading-group-') || documentationIsGroupOpening(id) ? target.group : null);
       });
     }
     const el = document.getElementById(id);
@@ -106,7 +106,7 @@ export function WhitepaperSection() {
       // Accordion expansion changes the document height. A smooth animation
       // towards its pre-expansion geometry can finish at the wrong section.
       window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
-      const focusEl = destination.matches('article.whitepaper__chapter, [data-documentation-reading-group], #documentacao-features')
+      const focusEl = destination.matches('article.whitepaper__chapter, [data-documentation-reading-group], #documentacao-features, #documentacao-tokenomics')
         ? destination.querySelector<HTMLElement>('header h2') ?? destination
         : destination instanceof HTMLDetailsElement ? destination.querySelector<HTMLElement>('summary') ?? destination : destination;
       if (!focusEl.hasAttribute('tabindex') && focusEl.tagName !== 'SUMMARY') focusEl.setAttribute('tabindex', '-1');
@@ -134,7 +134,7 @@ export function WhitepaperSection() {
       }
     }
     for (const chapter of outline) {
-      if (chapter.id === 'documentacao-features') continue;
+      if (documentationIsGroupOpening(chapter.id)) continue;
       const content = document.getElementById(chapter.id)?.querySelector<HTMLElement>('[data-documentation-reading-content]');
       if (enhanced && content) applyDocumentationAccordions(content, chapter, openReadingSections, t('Expandir'), t('Recolher'));
     }
@@ -348,7 +348,7 @@ export function WhitepaperSection() {
     return documentationGroups.map((title, group) => {
       const entries = outline.map((item, index) => ({ item, index }))
         .filter(({ item, index }) => chapters[index].group === group &&
-          item.id !== 'documentacao-features' && !documentationParentId(item.id));
+          !documentationIsGroupOpening(item.id) && !documentationParentId(item.id));
       if (entries.length === 1) return <div key={group} className="whitepaper__menu-section">
         {renderMenuChapter(entries[0].item, entries[0].index, mobile)}
       </div>;
@@ -433,7 +433,7 @@ export function WhitepaperSection() {
     return documentationGroups.map((_, group) => {
       if (!fullDocumentation && group !== sectionGroup) return null;
       const entries = chapters.flatMap((chapter, index) =>
-        chapter.group === group && chapter.id !== 'documentacao-features' && !documentationParentId(chapter.id) ? [index] : []);
+        chapter.group === group && !documentationIsGroupOpening(chapter.id) && !documentationParentId(chapter.id) ? [index] : []);
       if (entries.length === 1) return renderReadingChapter(entries[0]);
       if (!entries.length) return null;
        return <section key={group} id={`documentation-reading-group-${group}`}
@@ -443,6 +443,9 @@ export function WhitepaperSection() {
              <DocumentationSectionOpening group={3} />
             <ChapterVisibility.Provider value={true}><ChapterContent index={featuresIndex} /></ChapterVisibility.Provider>
          </section>}
+          {group === 4 && <section id="documentacao-tokenomics" data-documentation-opening className="whitepaper__features-opening">
+            <DocumentationSectionOpening group={4} />
+          </section>}
          <div className="whitepaper__reading-group-children">
           {entries.map(renderReadingChapter)}
         </div>
