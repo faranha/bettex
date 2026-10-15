@@ -31,11 +31,19 @@ As trocas precisam de trilhos visíveis, com os pacotes presos ao trajeto entre 
 
 **How to apply:** Manter trajetos e pacotes geometricamente alinhados também após mover, girar e ampliar a câmera; diferenciar ida e volta sem criar símbolos decorativos que pareçam transmissões adicionais.
 
-Os relatórios dos subagentes devem ficar fechados por padrão e abrir num painel acionado dentro do grafo; não exibir o bloco aberto na home do app. O acesso não deve depender de clicar nos pacotes em movimento.
+Os relatórios dos subagentes devem ficar fechados por padrão e abrir num painel contextual; não exibir o bloco aberto na home do app. Não manter o botão isolado “Relatórios” no grafo; o acesso continua pelos pacotes e pelos painéis de propostas/agentes.
 
 **Why:** Ao ver o bloco aberto, o criador corrigiu: “isso pode sair da home [...] tem que ficar em um painel que se eu quiser eu abro dentro do grafo, nao assim já aberto”. Isso substitui a apresentação anterior abaixo do grafo.
 
-**How to apply:** Usar o botão Relatórios no grafo, com fechamento e rolagem própria. Preservar consulta, parecer, evidências, relatório técnico e ligação com proposta e decisão. Mostrar um subagente por vez; um parecer não substitui a decisão da BETTEX.
+**How to apply:** Preservar abertura contextual, fechamento e rolagem própria, sem reintroduzir o botão isolado. Preservar consulta, parecer, evidências, relatório técnico e ligação com proposta e decisão. Mostrar um subagente por vez; um parecer não substitui a decisão da BETTEX.
+
+**Why:** Ao apontar o botão isolado “Relatórios” no grafo, o criador disse “desnecessario esse botao”, substituindo a instrução anterior de acesso direto por esse botão.
+
+Não exibir a legenda “Ícones das comunicações” acima do grafo; manter os símbolos nos próprios pacotes.
+
+**Why:** O criador apontou a legenda e disse “nao precisa isso”.
+
+**How to apply:** Não reintroduzir esse bloco explicativo ao modificar os ícones ou o grafo.
 
 Não duplicar os breadcrumbs do header na Central da IA nem ampliar a Central além da largura padrão das páginas do app. Exibir também os agentes em desenvolvimento no topo, com links desativados.
 
