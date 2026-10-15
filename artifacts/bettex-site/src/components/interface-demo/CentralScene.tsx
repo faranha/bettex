@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { Bot, CircleDollarSign, ClipboardList, Coins, Dices, GitCompareArrows, Hand, Landmark, Layers, Maximize2, Minimize2, Move3d, Radar, RotateCcw, RotateCw, Scale, ScrollText, ShieldAlert, Target, Trophy, Waypoints, Wallet, Workflow, ZoomIn, ZoomOut, BarChart3, Users, Gem, Flame, Percent, HandCoins, Ticket, History, LayoutDashboard, Milestone, SlidersHorizontal, ChevronUp, ChevronDown, type LucideIcon } from 'lucide-react';
+import { Bot, CircleDollarSign, ClipboardList, Coins, GitCompareArrows, Hand, Landmark, Layers, Maximize2, Minimize2, Move3d, Radar, RotateCcw, RotateCw, Scale, ScrollText, ShieldAlert, Waypoints, Wallet, Workflow, ZoomIn, ZoomOut, BarChart3, Users, Gem, Flame, Percent, HandCoins, Ticket, History, LayoutDashboard, Milestone, SlidersHorizontal, ChevronUp, ChevronDown, type LucideIcon } from 'lucide-react';
 import { useFmt } from '../alpha-trading/format';
 import { useL } from './CentralAgents';
 import { GRAPH_EDGES as EDGES, GRAPH_NODES as NODES, edgeText, nodeOf, graphRoute as route, type Sel, type P } from './central-graph-model';
@@ -9,7 +9,7 @@ import { useCamera, type Mode } from './useCamera';
 import { PacketButtons, placePackets } from './CentralPackets';
 import { DEMO_PRICE_TICK_MS, demoPriceAt } from './central-demo-prices';
 
-const ICON: Record<string, LucideIcon> = { bettex: Workflow, predictions: Radar, btc: CircleDollarSign, eth: Coins, sol: Scale, treasury: Landmark, governance: ScrollText, risk: ShieldAlert, execution: Waypoints, reconciliation: GitCompareArrows, records: ClipboardList, capital: Wallet, execrec: Layers, markets: BarChart3, s0: Trophy, s1: Target, s2: Dices, community: Users, tokenomics: Gem, participation: HandCoins, settlement: Percent, buyback: Coins, burn: Flame, history: History, dashboard: LayoutDashboard, roadmap: Milestone, games: Ticket };
+const ICON: Record<string, LucideIcon> = { bettex: Workflow, predictions: Radar, btc: CircleDollarSign, eth: Coins, sol: Scale, treasury: Landmark, governance: ScrollText, risk: ShieldAlert, execution: Waypoints, reconciliation: GitCompareArrows, records: ClipboardList, capital: Wallet, execrec: Layers, markets: BarChart3, community: Users, tokenomics: Gem, participation: HandCoins, settlement: Percent, buyback: Coins, burn: Flame, history: History, dashboard: LayoutDashboard, roadmap: Milestone, games: Ticket };
 const pos = (v: V3) => v;
 /** Label-only collision pass: nearer labels keep their spot, others slide vertically (then sideways) into free space. Node coordinates are untouched. */
 function placeLabels(bs: { el: HTMLElement; cx: number; top: number; wd: number; ht: number; z: number }[], w: number, h: number, obstacles: { l: number; t: number; r: number; b: number }[]) {
@@ -139,7 +139,7 @@ export function CentralScene({ narrow, reduced, sel, onSelect, packetId = null, 
       <button type="button" {...tool} className={tb} data-testid="button-graph-reset" aria-label={x('Reiniciar vista', 'Reset view', 'Reiniciar vista')} title={x('Reiniciar vista (0)', 'Reset view (0)', 'Reiniciar vista (0)')} onClick={cam.api.reset}><span aria-hidden="true" className="cg-r0">1:1</span></button>
       <button type="button" {...tool} className={tb} data-testid="button-graph-immersive" aria-pressed={immersive} aria-label={immersive ? x('Sair da tela ampla', 'Exit wide view', 'Salir de la vista amplia') : x('Tela ampla', 'Wide view', 'Vista amplia')} onClick={onImmersive}>{immersive ? <Minimize2 aria-hidden="true" /> : <Maximize2 aria-hidden="true" />}</button>
     </div>}
-    <p className="cg-legend" aria-hidden="true"><span className="d c" />{x('Agentes inteligentes', 'Intelligent agents', 'Agentes inteligentes')} <span className="d w" />{x('Em breve, ligado por linha tracejada', 'Upcoming, dashed link', 'Próximamente, enlace discontinuo')} <span className="pk-legend-analysis">→ {x('Análises', 'Analyses', 'Análisis')}</span> <span className="pk-legend-decision">← {x('Decisões', 'Decisions', 'Decisiones')}</span></p>
+    <p className="cg-legend" aria-hidden="true"><span className="d c" />{x('Subagentes de mercado', 'Market subagents', 'Subagentes de mercado')} <span className="d a" />{x('Subagentes de apoio', 'Support subagents', 'Subagentes de apoyo')} <span className="pk-legend-analysis">→ {x('Consultas', 'Consultations', 'Consultas')}</span> <span className="pk-legend-decision">← {x('Respostas', 'Answers', 'Respuestas')}</span></p>
     </div>
     {narrow && <div className="cg-dock" data-demo-local onKeyDown={e => { if (e.key === 'Escape' && dockOpen) { e.stopPropagation(); setDockOpen(false); toggleRef.current?.focus(); } }}>
       <div className="cg-dock-bar">

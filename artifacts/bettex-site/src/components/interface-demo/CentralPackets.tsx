@@ -13,6 +13,11 @@ import { bez, ctrlOf, projectPoint, type Cam, type Scene } from './scene3d';
 import './central-packets.css';
 import { useRecordNavigation } from './CentralRecordNavigation';
 
+const packetType = (p: GraphPacket): GraphPacket['title'] => p.exchange === 'query'
+  ? ['Consulta', 'Consultation', 'Consulta']
+  : p.exchange === 'opinion' ? ['Parecer', 'Opinion', 'Dictamen']
+  : p.kind === 'analysis' ? ['Análise', 'Analysis', 'Análisis'] : ['Decisão', 'Decision', 'Decisión'];
+
 /** Imperative per-frame placement on the projected Bezier of the packet's own edge. Reverse t when travelling b -> a. */
 export function placePackets(els: Record<string, HTMLElement | null>, sc: Scene, cam: Cam, w: number, h: number, elapsed: number, reduced: boolean) {
   for (const p of PACKETS) {
@@ -37,9 +42,9 @@ export function placePackets(els: Record<string, HTMLElement | null>, sc: Scene,
 }
 
 export function PacketButtons({ els, selectedId, onPick, onHold }: { els: React.MutableRefObject<Record<string, HTMLElement | null>>; selectedId: string | null; onPick: (id: string) => void; onHold: (v: boolean) => void }) {
-  const { x } = useFmt(); const L = useL(); const nm = (id: string) => L(nodeOf(id).name);
+  const L = useL(); const nm = (id: string) => L(nodeOf(id).name);
   return <>{PACKETS.map(p => <button key={p.id} type="button" data-demo-local ref={el => { els.current[p.id] = el; }} data-testid={`graph-packet-${p.id}`} aria-pressed={selectedId === p.id}
-    className={`cg-packet ${p.kind} ${selectedId === p.id ? 'on' : ''}`} aria-label={`${p.kind === 'analysis' ? x('Pacote de análise', 'Analysis packet', 'Paquete de análisis') : x('Pacote de decisão', 'Decision packet', 'Paquete de decisión')}: ${nm(p.source)} → ${nm(p.target)}. ${L(p.title)}`}
+    className={`cg-packet ${p.kind} ${selectedId === p.id ? 'on' : ''}`} aria-label={`${L(packetType(p))}: ${nm(p.source)} → ${nm(p.target)}. ${L(p.title)}`}
     onClick={() => onPick(p.id)} onPointerEnter={() => onHold(true)} onPointerLeave={e => onHold(e.currentTarget.matches(':focus-visible'))} onFocus={() => onHold(true)} onBlur={e => onHold(e.currentTarget.matches(':hover'))}>
     <span className="pk-hit"><span className="pk-chip"><ArrowRight aria-hidden="true" /></span></span>
     <span className="pk-tag">{nm(p.source)} → {nm(p.target)}</span></button>)}</>;
@@ -82,7 +87,7 @@ export function PacketInspector({ packetId, onClose }: { packetId: string | null
             <Link data-demo-local data-testid="link-packet-journey" className="pki-btn" href={`${demoPath('wallet', loc)}?history=audit&correlationId=${encodeURIComponent(p.requestId)}`}>{x('Ver percurso no Histórico', 'View journey in History', 'Ver recorrido en el Historial')}</Link></div>
           {more && <div data-testid="packet-history">
             <ol className="pki-hist" aria-label={x('Troca correlacionada', 'Correlated exchange', 'Intercambio correlacionado')}>{conv.map(c => <li key={c.id} className={c.id === p.id ? 'cur' : ''}>
-              <time>{f.date(c.at)}</time> <span className="mono">{c.kind === 'analysis' ? x('Pedido', 'Request', 'Pedido') : x('Decisão', 'Decision', 'Decisión')}</span>
+              <time>{f.date(c.at)}</time> <span className="mono">{L(packetType(c))}</span>
               <p><b>{nm(c.source)} → {nm(c.target)}</b> · {L(c.title)}</p><p>{L(c.summary)}</p></li>)}</ol>
             {req && <div className="pki-rec"><h3>{x('Proposta de origem', 'Source proposal', 'Propuesta de origen')}</h3><p className="font-mono">{req.id}</p><p>{L(req.market)} · {st(req.state)}</p><p>{L(req.reason)}</p>
               <dl className="pki-kv">

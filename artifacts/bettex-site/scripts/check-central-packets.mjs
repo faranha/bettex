@@ -17,7 +17,7 @@ try {
   const [p, c, g, audit, prices] = await Promise.all(names.map(name => import(pathToFileURL(join(temp, `${name}.mjs`)))));
   const ids = new Set(p.PACKETS.map(packet => packet.id));
   assert.equal(ids.size, p.PACKETS.length, 'Packet identity is unique');
-  assert.equal(p.PACKETS.length, c.REQUESTS.length * 2 + c.DECISIONS.length * 2);
+  assert.equal(p.PACKETS.filter(p => !p.exchange).length, c.REQUESTS.length * 2 + c.DECISIONS.length * 2);
   const before = JSON.stringify({ requests: c.REQUESTS, decisions: c.DECISIONS, orders: c.ORDERS, positions: c.POSITIONS, capital: c.CAPITAL });
   const entries = audit.centralAuditEntries();
   for (const packet of p.PACKETS) {
@@ -38,7 +38,7 @@ try {
       assert(original && original.requestId === packet.requestId, 'No response crosses conversations');
       assert(Date.parse(original.at) <= Date.parse(packet.at), 'Response follows its source');
     }
-    if (packet.kind === 'decision') {
+    if (packet.kind === 'decision' && !packet.exchange) {
       const decision = c.DECISIONS.find(d => d.id === packet.decisionId);
       assert(decision && decision.requestId === request.id, 'No invented decision');
       assert.deepEqual(packet.summary, decision.reason);
@@ -60,7 +60,7 @@ try {
     assert(p.PACKETS.some(packet => packet.source === 'predictions' && packet.target === asset && packet.kind === 'decision'));
   }
   for (const request of c.REQUESTS.filter(r => !c.DECISIONS.some(d => d.requestId === r.id))) {
-    assert(!p.PACKETS.some(packet => packet.requestId === request.id && packet.kind === 'decision'), 'Awaiting a decision remains awaiting');
+    assert(!p.PACKETS.some(packet => packet.requestId === request.id && packet.kind === 'decision' && !packet.exchange), 'An opinion never turns a pending proposal into a decision');
   }
   for (const order of c.ORDERS) for (const fill of order.fills) {
     const entry = entries.find(item => item.id === fill.id);
@@ -70,6 +70,23 @@ try {
     assert.equal(entry.data.feeUnits, fill.fees, 'Audit costs agree with packet details');
   }
   assert.equal(p.packetById('not-a-packet'), undefined);
+  assert(!g.GRAPH_NODES.some(n => ['s0', 's1', 's2'].includes(n.id)), 'Future market placeholders replaced, not activated');
+  for (const agent of g.CONTROLS) {
+    assert(g.GRAPH_NODES.some(n => n.id === agent));
+    assert(g.tabsFor({ k: 'node', id: agent }).some(t => t.tab === 'consultations'));
+    const queries = p.PACKETS.filter(packet => packet.exchange === 'query' && packet.target === agent);
+    assert(queries.length > 0, `BETTEX consults ${agent}`);
+    for (const query of queries) {
+      assert.equal(query.source, 'bettex');
+      const reply = p.PACKETS.find(packet => packet.replyToId === query.id);
+      assert(reply && reply.exchange === 'opinion' && reply.source === agent && reply.target === 'bettex');
+      assert(!reply.decisionId, 'Opinions are not BETTEX approvals');
+      for (const packet of [query, reply]) assert(entries.some(e => e.id === packet.id && e.correlationId === query.requestId), 'Consultation has a correlated audit record');
+      const decision = c.DECISIONS.find(d => d.requestId === query.requestId);
+      if (decision && ['governance', 'risk', 'treasury'].includes(agent)) assert(Date.parse(reply.at) < Date.parse(decision.at), 'Pre-decision opinion precedes the decision');
+      if (decision && ['execution', 'reconciliation'].includes(agent)) assert(Date.parse(query.at) > Date.parse(decision.at), 'Execution follow-up cannot precede selection');
+    }
+  }
   let visibleTotal = 0;
   for (let elapsed = 0; elapsed < p.PACKET_REPLAY_MS; elapsed += 100) {
     const visible = p.PACKETS.filter(packet => {

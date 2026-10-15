@@ -62,9 +62,9 @@ try {
     for (const text of Object.values(g.edgeText(e))) assert.ok(text.length === 3 && text.every(s => s.trim()));
   }
   assert.equal(reached.size, g.NODES.length, 'Every panel retains its documented reading connections');
-  assert.deepEqual(g.GRAPH_NODES.map(n => n.id).sort(), ['bettex', 'btc', 'eth', 'predictions', 's0', 's1', 's2', 'sol']);
+  assert.deepEqual(g.GRAPH_NODES.map(n => n.id).sort(), ['bettex', 'btc', 'eth', 'execution', 'governance', 'predictions', 'reconciliation', 'risk', 'sol', 'treasury']);
   for (const node of g.NODES) {
-    assert.equal(g.isGraphNode(node.id), ['core', 'agent', 'spec', 'soon'].includes(node.kind), 'Controls and business topics stay outside; Crypto subagents stay in the graph');
+    assert.equal(g.isGraphNode(node.id), ['core', 'agent', 'spec'].includes(node.kind) || g.CONTROLS.includes(node.id), 'Market and support subagents belong in the graph; business topics and future market placeholders stay outside');
     assert.equal(g.isGraphSelection({ k: 'node', id: node.id }), g.isGraphNode(node.id));
   }
   for (const edge of g.GRAPH_EDGES) {

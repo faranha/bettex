@@ -1,6 +1,6 @@
 - [Disponibilidade dos agentes](agent-trading-availability.md) — Esportes, Previsões e iGaming indisponíveis no demo e fora da ALFA; preservar a visão futura.
 - [Demo exclusivamente visual](interface-visual-demo.md) — instrução atual substitui operação, testnet e emulação persistida; ações operacionais abrem aviso com comunidade.
-- [Grafo da Central](ai-center-graph-experience.md) — agentes e subagentes BTC/ETH/SOL; controles e negócio fora; largura padrão, sem breadcrumbs duplicados.
+- [Grafo da Central](ai-center-graph-experience.md) — Cripto e subagentes de apoio com consultas bidirecionais; substituem setores futuros, sem recriar a rede.
 - [Central da IA somente consulta](ai-center-read-only.md) — usuário acompanha trades, parâmetros e relatórios; sem edição de mandatos, configurações ou operação manual.
 - [BETTEX checkout eligibility](bettex-checkout-eligibility.md) — confirm processor approval for investment tokens before wiring real purchases.
 - [Raster asset inspection](raster-asset-inspection.md) — verify logo identity and real alpha; use font-free contact sheets.
@@ -104,3 +104,4 @@
 - [Vesting na documentação mobile](documentation-vesting-mobile.md) — consulta compacta dos 24 meses; gráficos visíveis no HTML inicial, sem depender de medir capítulos ocultos.
 - [Build export side effects](build-export-side-effects.md) — full validation may change archive headers only; verify member contents before cleanup and respect Git safeguards.
 - [Padrão das ordens](order-standard-requirements.md) — conceito e arte antes da autorização; tabela técnica completa do registro usado pela tesouraria, execução e retorno.
+- [Ganho potencial na carteira](wallet-potential-earnings.md) — destacar o potencial do dia condicionado à permanência; R$ 300 foi exemplo, não valor fixo.
