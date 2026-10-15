@@ -15,15 +15,6 @@
 @media (prefers-reduced-motion:reduce){.console-dot,.console-pulse{animation:none}}
 .demo-root .dcard.tk-card{color:#fff}
 .demo-root .dcard.tk-bettex{background:linear-gradient(135deg,#14233D,#1B2A41 60%,#2B3F63);border-color:#C9A24A;color:#FFF8E6}
-.demo-root .wallet-unified{min-width:0;overflow:hidden;border:1px solid #889FB4;border-radius:16px;background:#142D35}
-.demo-root .wallet-unified .dcard.tk-card{border:0;border-radius:0}
-.demo-root .wallet-potential{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:3px 12px;margin:0;padding:12px 14px;border-top:1px solid #79D6B340;background:linear-gradient(110deg,#244C4B,#142D35)}
-.demo-root .wallet-potential-heading{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#C7EDDE}
-.demo-root .wallet-potential-icon{display:grid;place-items:center;color:#92E8C3}
-.demo-root .wallet-potential-value{grid-column:2;grid-row:1/4;color:#A4F3CE;font-size:clamp(24px,3vw,30px);font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.demo-root .wallet-potential-condition{grid-column:1;margin:0;color:#DBEAE5;font-size:12px;line-height:1.5}
-.demo-root .wallet-potential-estimate{grid-column:1;color:#B9CFC9;font-size:10px;line-height:1.5}
-@media(max-width:639px){.demo-root .wallet-potential-value{grid-row:2;align-self:start;font-size:24px}.demo-root .wallet-potential-heading{grid-column:1/-1}.demo-root .wallet-unified .tk-bettex{border-top:1px solid #C9A24A40}}
 .demo-root .dcard.tk-usdc{background:linear-gradient(135deg,#EAF3FF,#CFE3FA);border-color:#2775CA;color:#0D2F5C}
 .demo-root .tk-card .text-\[\#5B6B85\],.demo-root .tk-card .mono{color:inherit;opacity:.85}
 .demo-root .tk-bettex .text-\[\#5B6B85\]{color:#E8D9AE;opacity:1}
