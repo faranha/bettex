@@ -66,16 +66,16 @@ export const BIZ_IDS = BIZ.map(b => b.id);
  * NODES remains the complete panel registry so existing support links keep working. */
 export const GRAPH_NODES: NodeDef[] = NODES.filter(n => n.kind === 'core' || n.kind === 'agent' || n.kind === 'spec' || CONTROLS.includes(n.id)).map(n => {
   const layout: Record<string, { wide: P; tall: P }> = {
-    bettex: { wide: [890, 520], tall: [210, 490] },
-    predictions: { wide: [470, 380], tall: [210, 240] },
-    btc: { wide: [260, 130], tall: [70, 90] },
-    eth: { wide: [220, 380], tall: [210, 90] },
-    sol: { wide: [260, 640], tall: [350, 90] },
-    governance: { wide: [1250, 160], tall: [70, 730] },
-    risk: { wide: [1300, 420], tall: [210, 730] },
-    treasury: { wide: [1270, 710], tall: [350, 730] },
-    execution: { wide: [970, 920], tall: [110, 880] },
-    reconciliation: { wide: [630, 880], tall: [310, 880] },
+    bettex: { wide: [780, 470], tall: [210, 390] },
+    predictions: { wide: [470, 390], tall: [210, 340] },
+    btc: { wide: [180, 150], tall: [70, 100] },
+    eth: { wide: [170, 420], tall: [210, 100] },
+    sol: { wide: [180, 690], tall: [350, 100] },
+    governance: { wide: [1140, 160], tall: [70, 590] },
+    risk: { wide: [1190, 420], tall: [210, 590] },
+    treasury: { wide: [1160, 710], tall: [350, 590] },
+    execution: { wide: [840, 840], tall: [110, 760] },
+    reconciliation: { wide: [500, 810], tall: [310, 760] },
   };
   return { ...n, ...layout[n.id] };
 });

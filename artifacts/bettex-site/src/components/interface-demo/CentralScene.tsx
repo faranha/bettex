@@ -50,7 +50,7 @@ export function CentralScene({ narrow, reduced, sel, onSelect, packetId = null, 
     }, DEMO_PRICE_TICK_MS);
     return () => window.clearInterval(timer);
   }, []);
-  const world = useMemo<P>(() => narrow ? [420, 980] : [1560, 1060], [narrow]);
+  const world = useMemo<P>(() => narrow ? [420, 880] : [1560, 1060], [narrow]);
   const scene = useMemo(() => buildScene(narrow, world), [narrow, world]);
   const [mode, setMode] = useState<Mode>(narrow ? 'pan' : 'orbit');
   useEffect(() => { setMode(narrow ? 'pan' : 'orbit'); }, [narrow]);

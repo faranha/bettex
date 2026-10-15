@@ -3,11 +3,17 @@ name: Grafo exclusivo dos agentes da Central
 description: Grafo existente com Cripto e subagentes de apoio à BETTEX, consultas bidirecionais e navegação preservada.
 ---
 
-A BETTEX deve dominar o centro como um cérebro neural grande, com volume de planeta. Os agentes ao redor mantêm posições estáveis, sem órbitas animadas; Cripto preserva BTC/ETH/SOL como seus subagentes.
+A BETTEX mantém o núcleo esférico de partículas e anéis do modelo anterior, sem cérebro gigante.
 
-**Why:** O criador propôs “um cerebro gigante como BETTEX no centro [...] como se fosse um planeta” e autorizou aplicar a direção apresentada.
+**Why:** Após experimentar o cérebro, o criador rejeitou o resultado (“ficou ruim [...] vamos voltar ao modelo anterior”) e pediu redesenhar diretamente, sem rollback do projeto.
 
-**How to apply:** Evoluir o grafo existente, preservando câmera, trilhos bidirecionais, pacotes consultáveis e relatórios fora do grafo. Movimento suave no cérebro não deve dificultar selecionar os agentes.
+**How to apply:** Preservar o visual anterior, câmera, trilhos bidirecionais, pacotes consultáveis e acesso aos relatórios. Ajustes localizados não devem desfazer outras áreas, como as carteiras.
+
+As comunicações precisam de ícones diferentes por moeda e por assunto/tipo da mensagem, não apenas setas iguais.
+
+**Why:** O criador pediu “para cada um dos tipos de moeda, um icone, para cada tipo de consulta, outro icone”.
+
+**How to apply:** Distinguir BTC/ETH/SOL e os assuntos dos subagentes de apoio; manter consulta, parecer, análise e decisão identificáveis sem confundir tipo com direção. As setas indicam o trajeto; símbolos permanecem legíveis.
 
 O grafo da Central da IA mostra agentes e conexões entre agentes. O criador posteriormente passou a tratar Governança, Risco, Tesouraria, Execução e Conciliação como subagentes de apoio à BETTEX, presentes na rede em lugar dos nós futuros de Esportes, Mercados de previsão e Cassino. As regras antigas que excluíam esses cinco papéis do grafo foram substituídas; áreas do negócio continuam fora.
 
@@ -25,11 +31,11 @@ As trocas precisam de trilhos visíveis, com os pacotes presos ao trajeto entre 
 
 **How to apply:** Manter trajetos e pacotes geometricamente alinhados também após mover, girar e ampliar a câmera; diferenciar ida e volta sem criar símbolos decorativos que pareçam transmissões adicionais.
 
-Os relatórios dos subagentes precisam ser consultáveis também fora do grafo, não somente por pacotes em movimento.
+Os relatórios dos subagentes devem ficar fechados por padrão e abrir num painel acionado dentro do grafo; não exibir o bloco aberto na home do app. O acesso não deve depender de clicar nos pacotes em movimento.
 
-**Why:** O criador acrescentou: “E além do grafo, óbvio, tem que ter visualização dos relatórios, etc.”
+**Why:** Ao ver o bloco aberto, o criador corrigiu: “isso pode sair da home [...] tem que ficar em um painel que se eu quiser eu abro dentro do grafo, nao assim já aberto”. Isso substitui a apresentação anterior abaixo do grafo.
 
-**How to apply:** Preservar consulta, parecer, evidências, relatório técnico e ligação com a proposta e decisão. Mostrar um subagente por vez para evitar a lista simultânea de cartões já rejeitada; um parecer não substitui a decisão da BETTEX.
+**How to apply:** Usar o botão Relatórios no grafo, com fechamento e rolagem própria. Preservar consulta, parecer, evidências, relatório técnico e ligação com proposta e decisão. Mostrar um subagente por vez; um parecer não substitui a decisão da BETTEX.
 
 Não duplicar os breadcrumbs do header na Central da IA nem ampliar a Central além da largura padrão das páginas do app. Exibir também os agentes em desenvolvimento no topo, com links desativados.
 

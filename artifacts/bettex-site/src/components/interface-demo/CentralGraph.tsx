@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
+import { FileText, X } from 'lucide-react';
 import { useFmt } from '../alpha-trading/format';
 import { CentralInspector } from './CentralInspector';
 import { PacketInspector } from './CentralPackets';
@@ -11,6 +12,7 @@ import { CentralScene } from './CentralScene';
 import { SceneTitle, TelemetryStrip, TopRail } from './CentralHud';
 import { SupportNav, GROUPS } from './CentralSupport';
 import { CentralSupportReports } from './CentralSupportReports';
+import { PacketIconKey } from './PacketGlyph';
 import { isGraphSelection, parseSel, rememberSel, selQuery, tabsFor, type Sel } from './central-graph-model';
 import './central-graph.css';
 
@@ -49,6 +51,7 @@ export function CentralGraph({ onAction }: { onAction: () => void }) {
   const explicit = useRef(typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('section'));
   const secUrl = () => explicit.current ? secRef.current : undefined;
   const [imm, setImm] = useState(false);
+  const [reportsOpen, setReportsOpen] = useState(false);
   const [packetId, setPacketId] = useState<string | null>(() => { if (typeof window === 'undefined') return null; const v = new URLSearchParams(window.location.search).get('packet'); return v && packetById(v) ? v : null; });
   const packetRef = useRef(packetId); packetRef.current = packetId;
   const [requestId, setRequestId] = useState<string | null>(() => typeof window === 'undefined' ? null : validRequest(new URLSearchParams(window.location.search).get('request')));
@@ -134,12 +137,29 @@ export function CentralGraph({ onAction }: { onAction: () => void }) {
     head.current?.focus({ preventScroll: true });
   }, [sel?.k, sel?.id]); // eslint-disable-line react-hooks/exhaustive-deps
   const cat = GROUPS.findIndex(g => g.key === section);
-  return <CentralRecordNavigation.Provider value={{ requestId, openRequest, openPacket: id => choosePacket(id, true), clearRequest }}>
+  return <CentralRecordNavigation.Provider value={{ requestId, openRequest: id => { setReportsOpen(false); openRequest(id); }, openPacket: id => { setReportsOpen(false); choosePacket(id, true); }, clearRequest }}>
     <div className="cg-wrap" id="central-panel">
-    <div className={`cg-stage ${imm && !sel && !packetId ? "cg-imm" : ""}`} data-testid="central-graph" onKeyDown={e => { if (e.key === 'Escape' && imm) setImm(false); }}
+    <PacketIconKey />
+    <div className={`cg-stage ${imm && !sel && !packetId && !reportsOpen ? "cg-imm" : ""}`} data-testid="central-graph" onKeyDown={e => { if (e.key === 'Escape' && imm) setImm(false); }}
       aria-label={x('Central da IA BETTEX: cena interativa de agentes', 'BETTEX AI Center: interactive agent scene', 'Central de IA BETTEX: escena interactiva de agentes')}>
       <TopRail sel={gsel} onPick={pick} />
       <SceneTitle sel={gsel} />
+      <Dialog.Root open={reportsOpen} onOpenChange={setReportsOpen}>
+        <div className="cg-report-tools"><Dialog.Trigger className="cg-report-trigger" data-demo-local data-testid="button-graph-reports">
+          <FileText size={16} aria-hidden="true" />{x('Relatórios', 'Reports', 'Informes')}
+        </Dialog.Trigger></div>
+        <Dialog.Portal>
+          <Dialog.Overlay className="cg-backdrop" />
+          <Dialog.Content className="cg-reports-panel" data-demo-local data-testid="graph-reports-panel" aria-describedby={undefined}
+            onCloseAutoFocus={event => { if (packetRef.current || selRef.current || requestRef.current) event.preventDefault(); }}>
+            <div className="cg-reports-head">
+              <Dialog.Title>{x('Relatórios', 'Reports', 'Informes')}</Dialog.Title>
+              <Dialog.Close className="cg-reports-close" aria-label={x('Fechar relatórios', 'Close reports', 'Cerrar informes')} data-testid="button-close-graph-reports"><X size={20} aria-hidden="true" /></Dialog.Close>
+            </div>
+            <div className="cg-reports-body"><CentralSupportReports onSelect={id => { setReportsOpen(false); pick({ k: 'node', id }); }} /></div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
       <div className="cg-main">
         <CentralScene narrow={narrow} reduced={reduced} sel={gsel} onSelect={pick} packetId={packetId} onPacket={choosePacket} immersive={imm} onImmersive={() => setImm(v => !v)} />
       </div>
@@ -148,7 +168,6 @@ export function CentralGraph({ onAction }: { onAction: () => void }) {
       {cat >= 0 && <SupportNav sel={ssel} onPick={pick} cat={cat} />}
       <TelemetryStrip onPick={pick} />
     </section>
-    <CentralSupportReports onSelect={id => pick({ k: 'node', id })} />
     <PacketInspector packetId={packetId} onClose={() => choosePacket(null)} />
     <Dialog.Root open={!!sel && !packetId} onOpenChange={open => { if (!open) close(); }}>
       <Dialog.Portal>

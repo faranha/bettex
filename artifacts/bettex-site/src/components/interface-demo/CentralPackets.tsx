@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Link } from 'wouter';
-import { ArrowRight, ChevronDown, ChevronUp, X as XIcon } from 'lucide-react';
+import { ChevronDown, ChevronUp, X as XIcon } from 'lucide-react';
 import { demoPath } from '../demo/demo-navigation';
 import { dec6, useFmt } from '../alpha-trading/format';
 import { useL } from './CentralAgents';
@@ -12,6 +12,7 @@ import { PACKETS, packetById, packetConversation, packetProgress, type GraphPack
 import { ctrlOf, railPoint, type Cam, type Scene } from './scene3d';
 import './central-packets.css';
 import { useRecordNavigation } from './CentralRecordNavigation';
+import { PacketGlyph, packetSubject } from './PacketGlyph';
 
 const packetType = (p: GraphPacket): GraphPacket['title'] => p.exchange === 'query'
   ? ['Consulta', 'Consultation', 'Consulta']
@@ -47,9 +48,9 @@ export function placePackets(els: Record<string, HTMLElement | null>, sc: Scene,
 export function PacketButtons({ els, selectedId, onPick, onHold }: { els: React.MutableRefObject<Record<string, HTMLElement | null>>; selectedId: string | null; onPick: (id: string) => void; onHold: (v: boolean) => void }) {
   const L = useL(); const nm = (id: string) => L(nodeOf(id).name);
   return <>{PACKETS.map(p => <button key={p.id} type="button" data-demo-local ref={el => { els.current[p.id] = el; }} data-testid={`graph-packet-${p.id}`} aria-pressed={selectedId === p.id} data-support-agent={p.exchange ? p.source === 'bettex' ? p.target : p.source : undefined} data-exchange={p.exchange}
-    className={`cg-packet ${p.kind} ${p.exchange ? 'support' : ''} ${p.exchange && ['risk', 'governance'].includes(p.source === 'bettex' ? p.target : p.source) ? 'labeled' : ''} ${selectedId === p.id ? 'on' : ''}`} aria-label={`${L(packetType(p))}: ${nm(p.source)} → ${nm(p.target)}. ${L(p.title)}`}
+     data-subject={packetSubject(p)} title={`${L(packetType(p))} · ${nm(packetSubject(p) === 'crypto' ? 'predictions' : packetSubject(p))}`} className={`cg-packet ${p.kind} ${p.exchange ? 'support' : ''} ${p.exchange && ['risk', 'governance'].includes(p.source === 'bettex' ? p.target : p.source) ? 'labeled' : ''} ${selectedId === p.id ? 'on' : ''}`} aria-label={`${L(packetType(p))}: ${nm(p.source)} → ${nm(p.target)}. ${L(p.title)}`}
     onClick={() => onPick(p.id)} onPointerEnter={() => onHold(true)} onPointerLeave={e => onHold(e.currentTarget.matches(':focus-visible'))} onFocus={() => onHold(true)} onBlur={e => onHold(e.currentTarget.matches(':hover'))}>
-    <span className="pk-hit"><span className="pk-chip"><ArrowRight aria-hidden="true" /></span></span>
+    <span className="pk-hit"><span className="pk-chip"><PacketGlyph packet={p} direction /></span></span>
     <span className="pk-tag">{p.exchange ? `${L(packetType(p))} · ${nm(p.source === 'bettex' ? p.target : p.source)}` : `${nm(p.source)} → ${nm(p.target)}`}</span></button>)}</>;
 }
 
