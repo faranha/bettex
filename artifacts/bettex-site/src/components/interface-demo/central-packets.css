@@ -1,12 +1,21 @@
 .cg-packet{position:absolute;left:-22px;top:-22px;width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;will-change:transform;z-index:150}
 .cg-packet[hidden]{display:none}
 .cg-packet .pk-hit{position:absolute;inset:0;display:grid;place-items:center}
-.cg-packet .pk-chip{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--c);background:#06222B;color:#BFEFFF;transition:transform .15s}
+.cg-packet .pk-chip{display:grid;place-items:center;width:22px;height:20px;border-radius:5px;border:1.5px solid var(--c);background:#06222B;color:#BFEFFF;box-shadow:0 0 0 3px #030D14;transition:transform .15s}
 .cg-packet.decision .pk-chip{border-color:var(--m);background:#2B0E1C;color:#FFC2D8}
 .cg-packet .pk-chip svg{width:14px;height:14px;transform:rotate(var(--ang,0deg))}
 .cg-packet:hover .pk-chip,.cg-packet:focus-visible .pk-chip,.cg-packet.on .pk-chip{transform:scale(1.25);border-color:#fff}
 .cg-packet .pk-tag{position:absolute;left:40px;top:12px;padding:0 .35rem;font-size:10px;line-height:16px;white-space:nowrap;border:1px solid #29424E;background:rgba(5,12,18,.88);color:#9FD9EA;pointer-events:none;opacity:0}
 .cg-packet:hover .pk-tag,.cg-packet:focus-visible .pk-tag{opacity:1}
+.cg-packet.support .pk-chip{border-color:#F2C14E;background:#2C2411;color:#FFE4A5}
+.cg-packet.support.decision .pk-chip{border-color:#46E3B0;background:#0C2A24;color:#B2F7DE}
+.cg-packet.support .pk-tag{border-color:#79632F;color:#FFE4A5}
+.cg-packet.support.decision .pk-tag{border-color:#27765F;color:#B2F7DE}
+.cg-packet.labeled .pk-tag{opacity:0;left:50%;top:35px;transform:translateX(-50%);font-size:9px;line-height:17px;border-radius:4px}
+.cg-packet.labeled[data-label-visible] .pk-tag,.cg-packet.labeled:hover .pk-tag,.cg-packet.labeled:focus-visible .pk-tag{opacity:1}
+.cg-packet.labeled.decision .pk-tag{top:auto;bottom:35px}
+.cg-packet.labeled .pk-tag::before{content:"";position:absolute;left:50%;bottom:100%;height:4px;width:1px;background:#F2C14E}
+.cg-packet.labeled.decision .pk-tag::before{bottom:auto;top:100%;background:#46E3B0}
 .pk-legend-analysis{color:#67DDE3}.pk-legend-decision{color:#FFC2D8}
 .cg-packet-inspector{position:fixed;z-index:51;left:50%;top:50%;transform:translate(-50%,-50%);width:min(640px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow-y:auto;border:1px solid #34748A;border-radius:16px;background:#060F16;color:#D5E7ED;padding:1.1rem 1.25rem 1.4rem;box-shadow:0 28px 100px rgba(0,0,0,.65);font-family:system-ui,sans-serif;color-scheme:dark}
 .cg-packet-inspector :focus-visible{outline:2px solid #7DE6FF;outline-offset:2px}

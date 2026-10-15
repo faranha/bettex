@@ -8,13 +8,13 @@ import { pathToFileURL } from 'node:url';
 const temp = await mkdtemp(join(tmpdir(), 'bettex-packets-'));
 try {
   const dir = resolve(import.meta.dirname, '../src/components/interface-demo');
-  const names = ['central-packets', 'central-data', 'central-graph-model', 'central-audit-data', 'central-demo-prices'];
+  const names = ['central-packets', 'central-data', 'central-graph-model', 'central-audit-data', 'central-demo-prices', 'scene3d'];
   await build({
     entryPoints: names.map(name => join(dir, `${name}.ts`)), outdir: temp,
     outExtension: { '.js': '.mjs' }, bundle: true, splitting: true,
     platform: 'node', format: 'esm', define: { 'import.meta.env.BASE_URL': '"/"' },
   });
-  const [p, c, g, audit, prices] = await Promise.all(names.map(name => import(pathToFileURL(join(temp, `${name}.mjs`)))));
+  const [p, c, g, audit, prices, scene] = await Promise.all(names.map(name => import(pathToFileURL(join(temp, `${name}.mjs`)))));
   const ids = new Set(p.PACKETS.map(packet => packet.id));
   assert.equal(ids.size, p.PACKETS.length, 'Packet identity is unique');
   assert.equal(p.PACKETS.filter(p => !p.exchange).length, c.REQUESTS.length * 2 + c.DECISIONS.length * 2);
@@ -70,6 +70,21 @@ try {
     assert.equal(entry.data.feeUnits, fill.fees, 'Audit costs agree with packet details');
   }
   assert.equal(p.packetById('not-a-packet'), undefined);
+  for (const cam of [
+    { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 },
+    { yaw: 0.8, pitch: -0.35, zoom: 1.6, px: 50, py: -90 },
+  ]) {
+    const a = [-300, -120, 50], b = [200, 250, -40], control = scene.ctrlOf(a, b, 80);
+    for (const t of [0.1, 0.4, 0.8]) {
+      const center = scene.projectPoint(scene.bez(a, control, b, t), cam, 1000, 800);
+      const outgoing = scene.railPoint(a, control, b, t, 1, cam, 1000, 800);
+      const incoming = scene.railPoint(a, control, b, t, -1, cam, 1000, 800);
+      assert(Math.abs(Math.hypot(outgoing.x - center.x, outgoing.y - center.y) - 7) < 1e-8, 'Lane stays 7px from track center at any camera angle');
+      assert(Math.abs((outgoing.x + incoming.x) / 2 - center.x) < 1e-8);
+      assert(Math.abs((outgoing.y + incoming.y) / 2 - center.y) < 1e-8);
+      assert(Number.isFinite(outgoing.angle));
+    }
+  }
   assert(!g.GRAPH_NODES.some(n => ['s0', 's1', 's2'].includes(n.id)), 'Future market placeholders replaced, not activated');
   for (const agent of g.CONTROLS) {
     assert(g.GRAPH_NODES.some(n => n.id === agent));
