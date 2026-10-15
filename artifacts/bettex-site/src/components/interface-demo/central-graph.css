@@ -17,7 +17,9 @@
 .cg-rail button{flex:0 0 auto;min-height:36px;padding:0 .7rem;border:0;border-bottom:2px solid transparent;background:#0B141A;color:#7E97A4;font:600 11px/1 inherit;letter-spacing:.04em;cursor:pointer}
 .cg-rail button:hover{color:#E7F6FB}.cg-rail button.on{background:#0E3A47;color:#7DE6FF;border-bottom-color:var(--c)}
 .cg-rail button:disabled{opacity:.5;cursor:not-allowed}.cg-rail button:disabled:hover{color:#7E97A4}
-.cg-public-price{display:block;margin-top:3px;color:#F2C14E;font-size:10px;white-space:nowrap}
+.cg-public-price{display:block;margin-top:3px;color:#F2C14E;font-size:10px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cg-public-price[data-direction="up"]{color:#7CE4B7}
+.cg-public-price[data-direction="down"]{color:#FFA3B3}
 .cg-stage button:focus-visible,.cg-stage [tabindex]:focus-visible{outline:2px solid #FFF;outline-offset:2px}
 .cg-dbody .pf{color:#12372A}
 .cg-dbody .pf h3,.cg-dbody .pf b{color:#12372A}

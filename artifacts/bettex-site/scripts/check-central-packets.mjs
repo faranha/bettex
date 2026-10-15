@@ -8,13 +8,13 @@ import { pathToFileURL } from 'node:url';
 const temp = await mkdtemp(join(tmpdir(), 'bettex-packets-'));
 try {
   const dir = resolve(import.meta.dirname, '../src/components/interface-demo');
-  const names = ['central-packets', 'central-data', 'central-graph-model', 'central-audit-data'];
+  const names = ['central-packets', 'central-data', 'central-graph-model', 'central-audit-data', 'central-demo-prices'];
   await build({
     entryPoints: names.map(name => join(dir, `${name}.ts`)), outdir: temp,
     outExtension: { '.js': '.mjs' }, bundle: true, splitting: true,
     platform: 'node', format: 'esm', define: { 'import.meta.env.BASE_URL': '"/"' },
   });
-  const [p, c, g, audit] = await Promise.all(names.map(name => import(pathToFileURL(join(temp, `${name}.mjs`)))));
+  const [p, c, g, audit, prices] = await Promise.all(names.map(name => import(pathToFileURL(join(temp, `${name}.mjs`)))));
   const ids = new Set(p.PACKETS.map(packet => packet.id));
   assert.equal(ids.size, p.PACKETS.length, 'Packet identity is unique');
   assert.equal(p.PACKETS.length, c.REQUESTS.length * 2 + c.DECISIONS.length * 2);
@@ -81,10 +81,26 @@ try {
     visibleTotal += visible.length;
   }
   assert(visibleTotal / (p.PACKET_REPLAY_MS / 100) >= 7, 'Denser traffic without speeding up clickable messages');
+  for (const [asset, initial] of [['btc', 53.5], ['eth', 50], ['sol', 51.5]]) {
+    assert.equal(prices.demoPriceAt(asset, 0).cents, initial);
+    const directions = new Set();
+    for (let step = 1; step <= prices.DEMO_PRICE_PERIOD * 3; step++) {
+      const current = prices.demoPriceAt(asset, step);
+      const previous = prices.demoPriceAt(asset, step - 1);
+      assert(current.cents > 0 && current.cents < 100);
+      assert.notEqual(current.cents, previous.cents, 'Every visible tick changes the price');
+      assert(Math.abs(current.cents - previous.cents) <= 0.5, 'Small changes, not arbitrary jumps');
+      assert.deepEqual(current, prices.demoPriceAt(asset, step + prices.DEMO_PRICE_PERIOD));
+      assert.equal(current.direction, current.cents > previous.cents ? 'up' : 'down');
+      directions.add(current.direction);
+    }
+    assert.deepEqual(directions, new Set(['up', 'down']), 'Both rises and falls');
+  }
+  assert.equal(prices.demoPriceAt('bettex', 0), undefined, 'Only BTC/ETH/SOL receive demo prices');
   assert.equal(JSON.stringify({ requests: c.REQUESTS, decisions: c.DECISIONS, orders: c.ORDERS, positions: c.POSITIONS, capital: c.CAPITAL }), before, 'Replay never changes financial samples');
   const source = await readFile(join(dir, 'central-packets.ts'), 'utf8');
   assert.doesNotMatch(source, /\b(fetch|WebSocket|localStorage|setInterval)\s*[(.]/, 'Local read-only projection, not a runtime');
-  console.log(`PASS: ${p.PACKETS.length} packets, both directions for BTC/ETH/SOL, correlated histories, causal replies, 3 locales, static reduced motion, no financial mutations.`);
+  console.log(`PASS: ${p.PACKETS.length} packets, both directions for BTC/ETH/SOL, correlated histories, causal replies, 3 locales, static reduced motion, changing demo prices, no financial mutations.`);
 } finally {
   await rm(temp, { recursive: true, force: true });
 }
