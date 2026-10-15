@@ -321,7 +321,7 @@ export function WhitepaperSection() {
         className={`whitepaper__toc-link${current && !activeItem ? ' is-active' : ''}${current || childCurrent ? ' is-chapter-current' : ''}`}
         aria-current={current && !activeItem ? 'location' : undefined}
         onClick={event => jump(event, item.id)} data-testid={`link-${item.id}`}>
-        <span className="whitepaper__toc-subnum">{item.number}</span><span data-i18n="translated">{item.title}</span>
+        <span data-i18n="translated">{item.title}</span>
       </a></DocumentationMenuItem>
       {hasItems && <DocumentationMenuItem keepOpen><button type="button" className="whitepaper__reference-toggle whitepaper__chapter-toggle"
         data-i18n="translated" aria-expanded={open} aria-controls={childrenId}
@@ -364,7 +364,7 @@ export function WhitepaperSection() {
           aria-current={current ? 'location' : undefined}
           data-testid={`documentation-group-link-${group}`}
           onClick={event => jump(event, documentationSectionTargets[group])}>
-          <span className="whitepaper__toc-subnum">{group + 1}</span><span data-i18n="translated">{t(title)}</span>
+          <span data-i18n="translated">{t(title)}</span>
         </a></DocumentationMenuItem>
         <DocumentationMenuItem keepOpen><button type="button" className="whitepaper__reference-toggle whitepaper__chapter-toggle"
           aria-expanded={open} aria-controls={id} data-testid={`documentation-group-${group}`}
@@ -468,7 +468,7 @@ export function WhitepaperSection() {
           <DropdownMenuTrigger asChild><button type="button" className="whitepaper__mobile-menu-trigger"
             aria-label={t('Capítulos da documentação')} aria-expanded={menuOpen}
             data-testid="documentation-section-select">
-            <span data-i18n="translated">{readingGroup === null ? `${menuActiveChapter.number} ${menuActiveChapter.title}` : `${readingGroup + 1} ${t(documentationGroups[readingGroup])}`}</span>
+            <span data-i18n="translated">{readingGroup === null ? menuActiveChapter.title : t(documentationGroups[readingGroup])}</span>
             <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"
               style={{ transform: menuOpen ? 'rotate(180deg)' : undefined }}>
               <path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />

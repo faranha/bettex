@@ -196,3 +196,9 @@ Tokenomics é uma seção principal exclusiva, separada de Features.
 **Why:** O criador pediu extrair de Features tudo que compõe tokenomics: “não é feature, é tokenomics”.
 
 **How to apply:** Reunir emissão, venda, vesting, direitos, taxas, staking, distribuição de resultados, recompra e queima em Tokenomics. Features mantém as funcionalidades do aplicativo. Preservar o conteúdo e os links antigos; não mover controles técnicos de Risco ou Tesouraria para fora de seus responsáveis.
+
+O menu da documentação não exibe números de seção nem de subseção.
+
+**Why:** O criador corrigiu: “nao precisa por o numero no menu cara nem de secao nem subsecao”.
+
+**How to apply:** Mostrar somente os títulos no índice desktop, nas opções do menu mobile e no seletor da seção ativa. Preservar a numeração dos títulos no conteúdo.
