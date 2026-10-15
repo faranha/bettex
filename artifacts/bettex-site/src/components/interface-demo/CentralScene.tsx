@@ -1,13 +1,13 @@
 /** @jsxImportSource react */
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { Bot, CircleDollarSign, ClipboardList, Coins, Dices, GitCompareArrows, Hand, Landmark, Layers, Maximize2, Minimize2, Move3d, Radar, RotateCcw, RotateCw, Scale, ScrollText, ShieldAlert, Target, Trophy, Waypoints, Wallet, Workflow, ZoomIn, ZoomOut, BarChart3, Users, Gem, Flame, Percent, HandCoins, Ticket, History, LayoutDashboard, Milestone, SlidersHorizontal, ChevronUp, ChevronDown, type LucideIcon } from 'lucide-react';
-import { useGetDemoPolymarket } from '@workspace/api-client-react';
 import { useFmt } from '../alpha-trading/format';
 import { useL } from './CentralAgents';
 import { GRAPH_EDGES as EDGES, GRAPH_NODES as NODES, edgeText, nodeOf, graphRoute as route, type Sel, type P } from './central-graph-model';
 import { bez, buildScene, centerOf, ctrlOf, drawScene, projectPoint, type Cam, type V3 } from './scene3d';
 import { useCamera, type Mode } from './useCamera';
 import { PacketButtons, placePackets } from './CentralPackets';
+import { DEMO_PRICE_TICK_MS, demoPriceAt } from './central-demo-prices';
 
 const ICON: Record<string, LucideIcon> = { bettex: Workflow, predictions: Radar, btc: CircleDollarSign, eth: Coins, sol: Scale, treasury: Landmark, governance: ScrollText, risk: ShieldAlert, execution: Waypoints, reconciliation: GitCompareArrows, records: ClipboardList, capital: Wallet, execrec: Layers, markets: BarChart3, s0: Trophy, s1: Target, s2: Dices, community: Users, tokenomics: Gem, participation: HandCoins, settlement: Percent, buyback: Coins, burn: Flame, history: History, dashboard: LayoutDashboard, roadmap: Milestone, games: Ticket };
 const pos = (v: V3) => v;
@@ -43,7 +43,13 @@ type Props = { narrow: boolean; reduced: boolean; sel: Sel | null; onSelect: (s:
 
 export function CentralScene({ narrow, reduced, sel, onSelect, packetId = null, onPacket, immersive, onImmersive }: Props) {
   const { x, loc } = useFmt(); const L = useL();
-  const quotes = useGetDemoPolymarket({ locale: loc }, { query: { staleTime: 60000, refetchInterval: 60000, retry: 1 } });
+  const [priceTick, setPriceTick] = useState(0);
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      if (!document.hidden) setPriceTick(tick => tick + 1);
+    }, DEMO_PRICE_TICK_MS);
+    return () => window.clearInterval(timer);
+  }, []);
   const world = useMemo<P>(() => narrow ? [420, 880] : [1560, 1060], [narrow]);
   const scene = useMemo(() => buildScene(narrow, world), [narrow, world]);
   const [mode, setMode] = useState<Mode>(narrow ? 'pan' : 'orbit');
@@ -112,12 +118,16 @@ export function CentralScene({ narrow, reduced, sel, onSelect, packetId = null, 
     {EDGES.map(e => <button key={e.id} type="button" disabled={e.planned} ref={el => { els.current[`e-${e.id}`] = el; }} data-testid={`graph-edge-${e.id}`} data-focus-key={`e-${e.id}`} aria-pressed={sel?.k === 'edge' && sel.id === e.id}
       data-demo-local aria-label={`${e.planned ? x('Conexão planejada', 'Planned connection', 'Conexión planificada') : x('Conexão', 'Connection', 'Conexión')}: ${nm(e.a)} → ${nm(e.b)}. ${L(edgeText(e).label)}`} title={`${nm(e.a)} → ${nm(e.b)}: ${L(edgeText(e).label)}`} className={`cg-edge ${e.type} ${e.planned ? 'planned' : ''} ${e.biz ? 'biz' : ''} ${rt.edges.has(e.id) ? 'on' : ''}`} {...keyAct(() => onSelect({ k: 'edge', id: e.id }))}><span /></button>)}
     <PacketButtons els={pkEls} selectedId={packetId} onPick={id => onPacket?.(id)} onHold={v => { hold.current = v; }} />
-    {NODES.map(n => { const I = ICON[n.id] ?? Bot; const on = sel?.k === 'node' && sel.id === n.id; const dim = sel && !rt.nodes.has(n.id); const quote = n.kind === 'spec' ? quotes.data?.markets.find(m => m.asset === n.id.toUpperCase()) : undefined;
+    {NODES.map(n => { const I = ICON[n.id] ?? Bot; const on = sel?.k === 'node' && sel.id === n.id; const dim = sel && !rt.nodes.has(n.id); const price = n.kind === 'spec' ? demoPriceAt(n.id, priceTick) : undefined;
       if (n.kind === 'soon') return <div key={n.id} ref={el => { els.current[`n-${n.id}`] = el; }} className="cg-node soon" role="img" aria-disabled="true" data-testid={`graph-soon-${n.id}`} aria-label={`${L(n.name)}: ${L(n.sub)}`}>
         <span className="cg-label"><b>{L(n.name)}</b><i>{L(n.sub)}</i></span></div>;
       return <button key={n.id} type="button" ref={el => { els.current[`n-${n.id}`] = el; }} data-demo-local data-testid={`graph-node-${n.id}`} data-focus-key={`n-${n.id}`} aria-pressed={on} aria-label={`${L(n.name)}, ${L(n.sub)}`}
         className={`cg-node ${n.kind} ${n.group ?? ''} ${on ? 'sel' : ''} ${dim ? 'dim' : ''}`} {...keyAct(() => onSelect({ k: 'node', id: n.id }))}>
-        <span className="cg-orb"><I aria-hidden="true" /></span><span className="cg-label"><b>{L(n.name)}</b><i>{L(n.sub)}</i>{n.kind === 'spec' && <small className="cg-public-price">{x('Polymarket', 'Polymarket', 'Polymarket')} · {quote ? `${(quote.yesPrice * 100).toLocaleString(loc, { maximumFractionDigits: 1 })}¢` : x('Sem cotação', 'No quote', 'Sin cotización')}</small>}</span></button>; })}
+        <span className="cg-orb"><I aria-hidden="true" /></span><span className="cg-label"><b>{L(n.name)}</b><i>{L(n.sub)}</i>{price && <small className="cg-public-price" data-testid={`graph-price-${n.id}`} data-price-cents={price.cents} data-direction={price.direction}
+          title={x('Preço demonstrativo. As cotações reais da Polymarket estão nos detalhes do agente.', 'Demo price. Real Polymarket quotes are available in the agent details.', 'Precio demostrativo. Las cotizaciones reales de Polymarket están en los detalles del agente.')}>
+          {x('Preço', 'Price', 'Precio')} · {price.cents.toLocaleString(loc, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}¢
+          <span aria-hidden="true">{price.direction === 'up' ? ' ↑' : price.direction === 'down' ? ' ↓' : ''}</span>
+        </small>}</span></button>; })}
     {!narrow && <div className="cg-tools" role="toolbar" aria-label={x('Controles da câmera', 'Camera controls', 'Controles de cámara')}>
       <button type="button" {...tool} className={tb} data-testid="button-graph-zoom-in" aria-label={x('Aproximar', 'Zoom in', 'Acercar')} title={x('Aproximar (+)', 'Zoom in (+)', 'Acercar (+)')} onClick={() => cam.api.zoomBy(1.25)}><ZoomIn aria-hidden="true" /></button>
       <button type="button" {...tool} className={tb} data-testid="button-graph-zoom-out" aria-label={x('Afastar', 'Zoom out', 'Alejar')} title={x('Afastar (-)', 'Zoom out (-)', 'Alejar (-)')} onClick={() => cam.api.zoomBy(0.8)}><ZoomOut aria-hidden="true" /></button>

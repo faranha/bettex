@@ -108,3 +108,9 @@ O criador quer pacotes em movimento no próprio grafo, nos dois sentidos entre B
 **Why:** O criador confirmou esse percurso e acrescentou: “se a pessoa quiser ver mais detalhes pode expandir e ver os detalhes do historico”. Ao comparar o pacote com o painel de pedidos, confirmou a ligação direta entre as duas telas: “sim o ideal é elas estarem conectadas”.
 
 **How to apply:** Melhorar o grafo existente, sem recriar a Central. Vincular os pacotes aos registros demonstrativos e correlacionar envios e respostas; não tratar o movimento visual como prova de agentes ou operações reais.
+
+Os preços nos rótulos de BTC, ETH e SOL devem ter variação demonstrativa frequente, separada das cotações públicas reais disponíveis nos detalhes dos agentes.
+
+**Why:** O criador apontou os valores parados no grafo e disse “os valores aqui tem que ficar mudando”; escolheu explicitamente “Variação demonstrativa” em vez de cotações reais.
+
+**How to apply:** Manter pequenas altas e baixas nos rótulos sem apresentá-las como preços reais da Polymarket. Não alterar registros históricos, decisões ou saldos para produzir esse efeito; não acrescentar avisos repetidos aos cartões.
