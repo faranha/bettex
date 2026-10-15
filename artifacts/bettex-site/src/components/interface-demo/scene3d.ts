@@ -7,9 +7,14 @@ type SEdge = { e: EdgeDef; jit: Float32Array; lift: number; speed: number; phase
 export type Scene = { clusters: Cluster[]; dust: Float32Array; centers: Record<string, V3>; edges: SEdge[]; narrow: boolean };
 
 const CYAN = '53,214,255', MAGENTA = '255,61,139', AMBER = '242,193,78', GREEN = '70,227,176', WHITE = '200,210,225';
-const KIND = { core: { n: 900, R: 170, rgb: CYAN }, agent: { n: 340, R: 115, rgb: CYAN }, spec: { n: 210, R: 82, rgb: CYAN }, control: { n: 150, R: 70, rgb: AMBER }, hub: { n: 150, R: 68, rgb: GREEN }, soon: { n: 70, R: 46, rgb: WHITE } };
+const KIND = { core: { n: 2600, R: 260, rgb: CYAN }, agent: { n: 340, R: 115, rgb: CYAN }, spec: { n: 210, R: 82, rgb: CYAN }, control: { n: 150, R: 70, rgb: AMBER }, hub: { n: 150, R: 68, rgb: GREEN }, soon: { n: 70, R: 46, rgb: WHITE } };
 const EDGE_RGB = { flow: CYAN, control: AMBER, hub: GREEN };
 const F = 1100;
+/** Hemisphere surface point: side +-1, u in [-1,1] (height), th angle (front/back). Central fissure from gap; flatter underside. */
+function brainPt(R: number, side: number, u: number, th: number, rad = 1): V3 {
+  const q = Math.sqrt(Math.max(0, 1 - u * u));
+  return [R * side * (0.09 + Math.abs(q * Math.cos(th)) * 0.76 * rad), R * u * (u < 0 ? 0.7 : 0.57) * rad - R * 0.03, R * q * Math.sin(th) * 0.46 * rad];
+}
 const rng = (seed: number) => () => { seed |= 0; seed = (seed + 0x6D2B79F5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const hash = (s: string) => { let h = 2166136261; for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619); return h >>> 0; };
 
@@ -20,12 +25,21 @@ export const bez = (a: V3, c: V3, b: V3, t: number): V3 => { const u = 1 - t; re
 export function buildScene(narrow: boolean, world: P): Scene {
   const centers: Record<string, V3> = {}; NODES.forEach(n => { centers[n.id] = centerOf(n, narrow, world); });
   const clusters = NODES.map((n): Cluster => {
-    const k = KIND[n.kind]; const R = k.R * (narrow ? 0.72 : 1); const count = Math.round(k.n * (narrow ? 0.6 : 1)); const r = rng(hash(n.id));
+    const k = KIND[n.kind]; const R = k.R * (narrow ? (n.kind === 'core' ? 0.62 : 0.72) : 1); const count = Math.round(k.n * (narrow ? 0.55 : 1)); const r = rng(hash(n.id));
     const pts = new Float32Array((count + 1) * 3);
+    if (n.kind === 'core') {
+      // Two folded hemispheres: surface particles with gyri, a few deep nodes, local synapse links.
+      for (let i = 0; i < count; i++) {
+        const side = i % 2 ? 1 : -1, u = 2 * r() - 1, th = 2 * Math.PI * r();
+        const fold = 1 + 0.05 * Math.sin(11 * th + 6 * u) * Math.cos(7 * u - 2 * th);
+        const rad = (r() < 0.88 ? 0.95 + 0.05 * r() : 0.4 + 0.5 * r()) * fold;
+        const p = brainPt(R, side, u, th, rad); pts[i * 3] = p[0]; pts[i * 3 + 1] = p[1]; pts[i * 3 + 2] = p[2];
+      }
+    } else
     for (let i = 0; i < count; i++) { const u = 2 * r() - 1, th = 2 * Math.PI * r(), q = Math.sqrt(1 - u * u); const rad = R * (r() < 0.7 ? 0.62 + 0.38 * r() : 0.2 + 0.5 * r()); pts[i * 3] = rad * q * Math.cos(th); pts[i * 3 + 1] = rad * u * 0.92; pts[i * 3 + 2] = rad * q * Math.sin(th); }
     const L: number[] = [];
-    for (let i = 0; i < count; i++) { let best = -1, bd = R * 0.48; for (let t = 0; t < 7; t++) { const j = Math.floor(r() * count); if (j === i) continue; const d = Math.hypot(pts[i * 3] - pts[j * 3], pts[i * 3 + 1] - pts[j * 3 + 1], pts[i * 3 + 2] - pts[j * 3 + 2]); if (d < bd) { bd = d; best = j; } } if (best >= 0) L.push(i, best); }
-    const spokes = n.kind === 'core' ? 30 : n.kind === 'agent' ? 12 : n.kind === 'soon' ? 0 : 6; for (let s = 0; s < spokes; s++) L.push(count, Math.floor(r() * count));
+    for (let i = 0; i < count; i++) { let best = -1, bd = R * (n.kind === 'core' ? 0.2 : 0.48); for (let t = 0; t < 7; t++) { const j = Math.floor(r() * count); if (j === i) continue; const d = Math.hypot(pts[i * 3] - pts[j * 3], pts[i * 3 + 1] - pts[j * 3 + 1], pts[i * 3 + 2] - pts[j * 3 + 2]); if (d < bd) { bd = d; best = j; } } if (best >= 0) L.push(i, best); }
+    const spokes = n.kind === 'core' ? 0 : n.kind === 'agent' ? 12 : n.kind === 'soon' ? 0 : 6; for (let s = 0; s < spokes; s++) L.push(count, Math.floor(r() * count));
     return { n, rgb: k.rgb, R, count, pts, lines: Uint32Array.from(L) };
   });
   const r = rng(7); const dust = new Float32Array(700 * 3); for (let i = 0; i < 700; i++) { dust[i * 3] = (r() - 0.5) * 2200; dust[i * 3 + 1] = (r() - 0.5) * 1800; dust[i * 3 + 2] = (r() - 0.5) * 1400; }
@@ -59,22 +73,33 @@ function ring(ctx: CanvasRenderingContext2D, c: V3, rad: number, tilt: number, s
 export function drawScene(ctx: CanvasRenderingContext2D, sc: Scene, cam: Cam, w: number, h: number, t: number, sel: Sel | null, reduced: boolean) {
   setCam(cam, w, h); ctx.clearRect(0, 0, w, h); const rt = route(sel); const hasSel = !!sel; const T = reduced ? 0 : t;
   ctx.fillStyle = `rgba(${WHITE},0.35)`; for (let i = 0; i < sc.dust.length; i += 3) { pj(sc.dust[i], sc.dust[i + 1], sc.dust[i + 2]); ctx.fillRect(PX, PY, PS > 1 ? 1.3 : 0.9, PS > 1 ? 1.3 : 0.9); }
-  const sx = new Float32Array(1200), sy = new Float32Array(1200), ss = new Float32Array(1200);
+  const sx = new Float32Array(3000), sy = new Float32Array(3000), ss = new Float32Array(3000);
   for (const cl of sc.clusters) {
     const on = rt.nodes.has(cl.n.id); const dim = hasSel && !on ? 0.4 : 1; const hi = on && hasSel ? 1.5 : 1; const c = sc.centers[cl.n.id];
-    const spin = T * 0.00006 * (cl.n.kind === 'core' ? 3 : 1); const cs = Math.cos(spin), sn = Math.sin(spin);
+    const core = cl.n.kind === 'core'; const spin = core ? Math.sin(T * 0.00025) * 0.3 : T * 0.00006; const cs = Math.cos(spin), sn = Math.sin(spin);
     for (let i = 0; i <= cl.count; i++) { const x = cl.pts[i * 3], y = cl.pts[i * 3 + 1], z = cl.pts[i * 3 + 2]; pj(c[0] + x * cs + z * sn, c[1] + y, c[2] - x * sn + z * cs); sx[i] = PX; sy[i] = PY; ss[i] = PS; }
     ctx.strokeStyle = `rgba(${cl.rgb},${0.17 * dim * hi})`; ctx.lineWidth = 0.7; ctx.beginPath();
     for (let i = 0; i < cl.lines.length; i += 2) { const a = cl.lines[i], b = cl.lines[i + 1]; ctx.moveTo(sx[a], sy[a]); ctx.lineTo(sx[b], sy[b]); } ctx.stroke();
     ctx.fillStyle = `rgba(${cl.rgb},${0.8 * dim})`; for (let i = 0; i < cl.count; i++) { const z = (0.8 + ss[i] * 0.7) * (cl.n.kind === 'soon' ? 0.9 : 1); ctx.fillRect(sx[i], sy[i], z, z); }
     ctx.fillStyle = `rgba(235,250,255,${0.9 * dim})`; for (let i = 0; i < cl.count; i += 9) { const z = 1.6 + ss[i] * 1.2 * hi; ctx.fillRect(sx[i] - z / 2, sy[i] - z / 2, z, z); }
-    if (cl.n.kind !== 'soon') {
+    if (core) {
+      pj(c[0], c[1], c[2]); const hr = cl.R * 1.25 * PS * cam.zoom; const hg = ctx.createRadialGradient(PX, PY, hr * 0.4, PX, PY, hr); hg.addColorStop(0, `rgba(${CYAN},0.1)`); hg.addColorStop(1, `rgba(${CYAN},0)`); ctx.fillStyle = hg; ctx.beginPath(); ctx.arc(PX, PY, hr, 0, 7); ctx.fill();
+      // Sulci: wavy contour curves over each hemisphere (violet accent) plus a bright fissure line.
+      const rot = (p: V3) => pj(c[0] + p[0] * cs + p[2] * sn, c[1] + p[1], c[2] - p[0] * sn + p[2] * cs);
+      ctx.lineWidth = 0.9; ctx.strokeStyle = `rgba(160,130,255,${0.5 * dim * hi})`;
+      for (const side of [-1, 1]) for (let k = 0; k < 9; k++) {
+        ctx.beginPath(); for (let i = 0; i <= 40; i++) { const sp = i / 40, u = -0.9 + 1.8 * sp, th = 0.15 + (k / 8) * 2.8 + 0.28 * Math.sin(sp * 13 + k * 1.7); rot(brainPt(cl.R, side, u, th, 1.0)); if (i) ctx.lineTo(PX, PY); else ctx.moveTo(PX, PY); } ctx.stroke();
+      }
+      ctx.strokeStyle = `rgba(53,214,255,${0.45 * dim * hi})`;
+      for (const side of [-1, 1]) for (let k = 1; k < 5; k++) {
+        ctx.beginPath(); const u = -0.7 + k * 0.28; for (let i = 0; i <= 36; i++) { const th = 0.1 + (i / 36) * 2.9, uu = u + 0.05 * Math.sin(i * 0.9 + k); rot(brainPt(cl.R, side, uu, th, 1.0)); if (i) ctx.lineTo(PX, PY); else ctx.moveTo(PX, PY); } ctx.stroke();
+      }
+      ctx.strokeStyle = `rgba(235,250,255,${0.6 * dim})`; ctx.lineWidth = 1.2; ctx.beginPath();
+      for (let i = 0; i <= 30; i++) { const th = (i / 30) * Math.PI; rot(brainPt(cl.R, 1, 0.9 * Math.cos(th * 1.0) * 0.0 + (Math.sin(th) > 0 ? 0 : 0), th, 0.001)); if (i) ctx.lineTo(PX, PY); else ctx.moveTo(PX, PY); } ctx.stroke();
+    } else if (cl.n.kind !== 'soon') {
       ctx.strokeStyle = `rgba(${cl.rgb},${0.3 * dim * hi})`; ctx.lineWidth = 0.8; ring(ctx, c, cl.R * 1.2, 0.9, spin * 2); ring(ctx, c, cl.R * 1.38, -0.5, -spin * 1.5);
     } else { ctx.strokeStyle = `rgba(${WHITE},0.25)`; ctx.setLineDash([3, 5]); ring(ctx, c, cl.R * 1.2, 0.7, 0); ctx.setLineDash([]); }
-    if (cl.n.kind === 'core') {
-      ctx.strokeStyle = `rgba(${CYAN},${0.55 * dim * hi})`; ctx.lineWidth = 0.9; const rr = cl.R * 0.5;
-      for (const lat of [-0.8, -0.4, 0, 0.4, 0.8]) { const ro = rr * Math.sqrt(1 - lat * lat); ring(ctx, [c[0], c[1] + rr * lat, c[2]], ro, 0, spin * 4, 36); }
-      for (let m = 0; m < 5; m++) { ctx.beginPath(); for (let i = 0; i <= 28; i++) { const a = (i / 28) * Math.PI * 2, ph = (m / 5) * Math.PI + spin * 4; const x = Math.cos(a) * rr * Math.cos(ph), y = Math.sin(a) * rr, z = Math.cos(a) * rr * Math.sin(ph); pj(c[0] + x, c[1] + y, c[2] + z); if (i) ctx.lineTo(PX, PY); else ctx.moveTo(PX, PY); } ctx.stroke(); }
+    if (core) {
       pj(c[0], c[1], c[2]); const g = ctx.createRadialGradient(PX, PY, 0, PX, PY, 34 * PS * cam.zoom); g.addColorStop(0, `rgba(${MAGENTA},0.85)`); g.addColorStop(1, `rgba(${MAGENTA},0)`); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(PX, PY, 34 * PS * cam.zoom, 0, 7); ctx.fill();
       ctx.fillStyle = `rgb(${MAGENTA})`; const q = 9 * PS * cam.zoom; ctx.save(); ctx.translate(PX, PY); ctx.rotate(Math.PI / 4 + T * 0.0004); ctx.fillRect(-q / 2, -q / 2, q, q); ctx.restore();
     }
