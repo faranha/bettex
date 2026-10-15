@@ -8,10 +8,11 @@ import { dec6, useFmt } from '../alpha-trading/format';
 import { useL } from './CentralAgents';
 import { DECISIONS, ORDERS, POSITIONS, REQUESTS, STATE } from './central-data';
 import { GRAPH_EDGES, nodeOf } from './central-graph-model';
-import { PACKETS, packetById, packetConversation, packetProgress, type GraphPacket } from './central-packets';
+import { PACKETS, packetById, packetProgress, type GraphPacket } from './central-packets';
 import { ctrlOf, railPoint, type Cam, type Scene } from './scene3d';
 import './central-packets.css';
 import { useRecordNavigation } from './CentralRecordNavigation';
+import { JourneyView } from './CentralJourneyView';
 import { PacketGlyph, packetSubject } from './PacketGlyph';
 
 const packetType = (p: GraphPacket): GraphPacket['title'] => p.exchange === 'query'
@@ -46,11 +47,11 @@ export function placePackets(els: Record<string, HTMLElement | null>, sc: Scene,
 }
 
 export function PacketButtons({ els, selectedId, onPick, onHold }: { els: React.MutableRefObject<Record<string, HTMLElement | null>>; selectedId: string | null; onPick: (id: string) => void; onHold: (v: boolean) => void }) {
-  const L = useL(); const nm = (id: string) => L(nodeOf(id).name);
+  const L = useL(); const nav = useRecordNavigation(); const nm = (id: string) => L(nodeOf(id).name);
   return <>{PACKETS.map(p => <button key={p.id} type="button" data-demo-local ref={el => { els.current[p.id] = el; }} data-testid={`graph-packet-${p.id}`} aria-pressed={selectedId === p.id} data-support-agent={p.exchange ? p.source === 'bettex' ? p.target : p.source : undefined} data-exchange={p.exchange}
      data-subject={packetSubject(p)} title={`${L(packetType(p))} · ${nm(packetSubject(p) === 'crypto' ? 'predictions' : packetSubject(p))}`} className={`cg-packet ${p.kind} ${p.exchange ? 'support' : ''} ${p.exchange && ['risk', 'governance'].includes(p.source === 'bettex' ? p.target : p.source) ? 'labeled' : ''} ${selectedId === p.id ? 'on' : ''}`} aria-label={`${L(packetType(p))}: ${nm(p.source)} → ${nm(p.target)}. ${L(p.title)}`}
     onClick={() => onPick(p.id)} onPointerEnter={() => onHold(true)} onPointerLeave={e => onHold(e.currentTarget.matches(':focus-visible'))} onFocus={() => onHold(true)} onBlur={e => onHold(e.currentTarget.matches(':hover'))}>
-    <span className="pk-hit"><span className="pk-chip"><PacketGlyph packet={p} direction /></span></span>
+    <span className="pk-hit" data-context={nav?.requestId ? p.requestId === nav.requestId ? 'active' : 'other' : undefined}><span className="pk-chip"><PacketGlyph packet={p} direction /></span></span>
     <span className="pk-tag">{p.exchange ? `${L(packetType(p))} · ${nm(p.source === 'bettex' ? p.target : p.source)}` : `${nm(p.source)} → ${nm(p.target)}`}</span></button>)}</>;
 }
 
@@ -64,7 +65,8 @@ export function PacketInspector({ packetId, onClose }: { packetId: string | null
   const money = (units: string) => `${quantity(units)} USDC`;
   const st = (s: string) => (STATE[s] ? L(STATE[s]) : s);
   const val = (v: GraphPacket['payload'][number]['value']) => typeof v === 'string' ? v : L(v);
-  const conv = p ? packetConversation(p) : [];
+  const related = p ? (p.replyToId ? packetById(p.replyToId) : PACKETS.find(q => q.replyToId === p.id)) : undefined;
+  const supportAgent = p?.exchange ? (p.source === 'bettex' ? p.target : p.source) : null;
   const req = p ? REQUESTS.find(r => r.id === p.requestId) : undefined;
   const decs = p ? DECISIONS.filter(d => d.requestId === p.requestId) : [];
   const ords = p ? ORDERS.filter(o => o.requestId === p.requestId) : [];
@@ -79,6 +81,7 @@ export function PacketInspector({ packetId, onClose }: { packetId: string | null
             <p className="pki-route">{nm(p.source)} → {nm(p.target)} · {f.date(p.at)}</p></div>
             <Dialog.Close className="pki-x" aria-label={x('Fechar', 'Close', 'Cerrar')} data-testid="button-packet-close"><XIcon aria-hidden="true" width={18} height={18} /></Dialog.Close></div>
           <p className="pki-sum">{L(p.summary)}</p>
+          {req && <p className="pki-source" data-testid="packet-proposal-context"><b>{x('Proposta atual', 'Current proposal', 'Propuesta actual')}</b> · {L(req.market)} · {st(req.state)}</p>}
           <dl className="pki-kv"><div><dt>{x('Proposta relacionada', 'Related proposal', 'Propuesta relacionada')}</dt><dd className="font-mono">{p.requestId}</dd></div>
             {p.decisionId && <div><dt>{x('Decisão', 'Decision', 'Decisión')}</dt><dd className="font-mono">{p.decisionId}</dd></div>}
             {p.payload.filter(row => row.value !== p.requestId && row.value !== p.decisionId && row.value !== p.summary)
@@ -87,12 +90,12 @@ export function PacketInspector({ packetId, onClose }: { packetId: string | null
             {navigation && <button type="button" className="pki-btn" data-testid="button-packet-request" onClick={() => navigation.openRequest(p.requestId)}>
               {x('Abrir proposta completa', 'Open full proposal', 'Abrir propuesta completa')}
             </button>}
+            {navigation && <button type="button" className="pki-btn" data-testid="button-packet-reports" onClick={() => navigation.openReports(p.requestId, supportAgent)}>{x('Relatórios', 'Reports', 'Informes')}</button>}
+            {navigation && related && <button type="button" className="pki-btn" data-testid="button-packet-related" onClick={() => navigation.openPacket(related.id)}>{p.replyToId ? x('Ver consulta relacionada', 'View related query', 'Ver consulta relacionada') : x('Ver parecer relacionado', 'View related reply', 'Ver dictamen relacionado')}</button>}
             <button type="button" className="pki-btn" aria-expanded={more} data-testid="button-packet-expand" onClick={() => setMore(v => !v)}>{more ? <ChevronUp aria-hidden="true" width={16} height={16} /> : <ChevronDown aria-hidden="true" width={16} height={16} />}{more ? x('Recolher histórico', 'Collapse history', 'Contraer historial') : x('Expandir histórico', 'Expand history', 'Expandir historial')}</button>
             <Link data-demo-local data-testid="link-packet-journey" className="pki-btn" href={`${demoPath('wallet', loc)}?history=audit&correlationId=${encodeURIComponent(p.requestId)}`}>{x('Ver percurso no Histórico', 'View journey in History', 'Ver recorrido en el Historial')}</Link></div>
           {more && <div data-testid="packet-history">
-            <ol className="pki-hist" aria-label={x('Troca correlacionada', 'Correlated exchange', 'Intercambio correlacionado')}>{conv.map(c => <li key={c.id} className={c.id === p.id ? 'cur' : ''}>
-              <time>{f.date(c.at)}</time> <span className="mono">{L(packetType(c))}</span>
-              <p><b>{nm(c.source)} → {nm(c.target)}</b> · {L(c.title)}</p><p>{L(c.summary)}</p></li>)}</ol>
+            <JourneyView requestId={p.requestId} currentId={p.id} showAudit={false} />
             {req && <div className="pki-rec"><h3>{x('Proposta de origem', 'Source proposal', 'Propuesta de origen')}</h3><p className="font-mono">{req.id}</p><p>{L(req.market)} · {st(req.state)}</p><p>{L(req.reason)}</p>
               <dl className="pki-kv">
                 <div><dt>{x('Capital', 'Capital', 'Capital')}</dt><dd>{money(req.capital)}</dd></div>

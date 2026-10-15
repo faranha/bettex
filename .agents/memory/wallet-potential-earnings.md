@@ -14,3 +14,9 @@ O destaque do ganho potencial não deve esticar a carteira em dólares nem criar
 **Why:** O criador apontou que o ganho aumentou a altura da carteira em dólar e sugeriu unificar para resolver.
 
 **How to apply:** Manter o destaque da estimativa separado dos saldos disponíveis; ao organizar os dois ativos juntos, não atribuir rendimento ao USDC.
+
+O criador reforçou que o fundo dessa faixa precisa de uma melhoria visual efetiva e pediu ganhos de ontem, últimos 7 e 30 dias, além de percentuais para hoje e 30 dias.
+
+**Why:** O criador apontou novamente a mesma faixa com “pedi pra melhorar esse fundo” e ampliou a consulta dos rendimentos.
+
+**How to apply:** Não reduzir o pedido a uma mudança de texto. Preservar o destaque visual e separar histórico pago de projeções. Ausência de registros não equivale a zero nem autoriza preencher 30 dias extrapolando o histórico. Percentual estimado de rendimento não é probabilidade estatística de lucro; não inventar essa probabilidade.

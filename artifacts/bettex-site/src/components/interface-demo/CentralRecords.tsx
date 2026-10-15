@@ -6,6 +6,7 @@ import { Radar, CircleDollarSign, X as XIcon } from 'lucide-react';
 import { useFmt, card, KV, Tag, dec6 } from '../alpha-trading/format';
 import { REQUESTS, DECISIONS, ORDERS, POSITIONS, STATE, STATES_BY_VIEW, type Asset, type T3, type Request, type Decision, type Order, type Position } from './central-data';
 import { useL } from './CentralAgents';
+import { JourneyView } from './CentralJourneyView';
 import { RelatedPackets, useRecordNavigation } from './CentralRecordNavigation';
 
 const box = 'rounded-xl border border-[#E4DCCB] bg-[#FBF8F0] p-3';
@@ -74,8 +75,7 @@ export function Journey({ id, onClose }: { id: string; onClose: () => void }) {
     <Link data-demo-local data-testid="link-journey-history" className="inline-flex min-h-11 items-center rounded-xl border border-[#0E7C6B] px-3 text-sm font-bold text-[#0A6657]" href={`${demoPath('wallet', f.loc)}?history=audit&correlationId=${encodeURIComponent(id)}`}>{x('Consultar este percurso no Histórico', 'View this journey in History', 'Consultar este recorrido en el Historial')}</Link>
     <div className="flex items-center justify-between gap-2"><h3 className="display text-lg font-extrabold">{x('Percurso completo', 'Full journey', 'Recorrido completo')}</h3><button type="button" aria-label={x('Fechar', 'Close', 'Cerrar')} data-testid="button-journey-close" onClick={onClose} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full hover:bg-[#E9EEE5]"><XIcon className="h-5 w-5" aria-hidden="true" /></button></div>
     <div className="mt-3 grid gap-3"><p className="text-sm font-bold">{L(r.market)} <Tag>{st(r.state)}</Tag></p>
-      <div><p className="text-sm font-bold">{x('Linha do tempo', 'Timeline', 'Línea de tiempo')}</p><ol className="mt-1 grid gap-1 text-sm">{r.events.map((e, i) => <li key={i}><span className="font-mono text-xs">#{i + 1} {f.date(e.at)}</span> · <b>{L(e.stage)}</b> · {L(e.reason)}</li>)}</ol></div>
-      {DECISIONS.filter(d => d.requestId === id).length > 0 && <div><p className="text-sm font-bold">{x('Decisões', 'Decisions', 'Decisiones')}</p><ul className="mt-1 grid gap-1 text-sm">{DECISIONS.filter(d => d.requestId === id).map(d => <li key={d.id}>{f.date(d.at)} · <b>{st(d.state)}</b> · {L(d.reason)}</li>)}</ul></div>}
+      <JourneyView requestId={id} showAudit />
       {ORDERS.filter(o => o.requestId === id).length > 0 && <div><p className="text-sm font-bold">{x('Ordens', 'Orders', 'Órdenes')}</p><ul className="mt-1 grid gap-2">{ORDERS.filter(o => o.requestId === id).map(o => <OrderCard key={o.id} o={o} />)}</ul></div>}
       {POSITIONS.filter(p => p.requestId === id).length > 0 && <div><p className="text-sm font-bold">{x('Posições', 'Positions', 'Posiciones')}</p><ul className="mt-1 grid gap-2">{POSITIONS.filter(p => p.requestId === id).map(p => <PositionCard key={p.id} p={p} onAction={() => undefined} />)}</ul></div>}</div></section>;
 }

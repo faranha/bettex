@@ -1,6 +1,9 @@
 .cg-packet{position:absolute;left:-22px;top:-22px;width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;will-change:transform;z-index:150}
 .cg-packet[hidden]{display:none}
 .cg-packet .pk-hit{position:absolute;inset:0;display:grid;place-items:center}
+.cg-packet .pk-hit[data-context=other]{opacity:.24}
+.cg-packet:hover .pk-hit[data-context=other],.cg-packet:focus-visible .pk-hit[data-context=other]{opacity:1}
+.cg-packet .pk-hit[data-context=active] .pk-chip{box-shadow:0 0 0 3px #030D14,0 0 12px #67DDE35C}
 .cg-packet .pk-chip{position:relative;display:grid;place-items:center;width:28px;height:26px;border-radius:6px;border:1.5px solid var(--c);background:#06222B;color:#BFEFFF;box-shadow:0 0 0 3px #030D14;transition:transform .15s}
 .cg-packet.decision .pk-chip{border-color:var(--m);background:#2B0E1C;color:#FFC2D8}
 .cg-packet .pk-chip svg{width:17px;height:17px}

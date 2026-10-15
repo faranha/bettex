@@ -3,12 +3,18 @@ import { createContext, useContext } from 'react';
 import { useFmt } from '../alpha-trading/format';
 import { useL } from './CentralAgents';
 import { nodeOf } from './central-graph-model';
-import { PACKETS } from './central-packets';
+import { requestJourney } from './central-journey';
 
 type RecordNavigation = {
   requestId: string | null;
+  reportAgentId: string | null;
+  agentMonitoring: boolean;
   openRequest: (id: string) => void;
   openPacket: (id: string) => void;
+  openReports: (requestId?: string | null, agentId?: string | null) => void;
+  openAgent: (id: string) => void;
+  selectRequest: (id: string) => void;
+  selectReportAgent: (id: string) => void;
   clearRequest: () => void;
 };
 
@@ -18,7 +24,7 @@ export const useRecordNavigation = () => useContext(CentralRecordNavigation);
 /** The record and its messages share an identity; these are links, not new records. */
 export function RelatedPackets({ requestId }: { requestId: string }) {
   const nav = useRecordNavigation(); const { x, date } = useFmt(); const L = useL();
-  const packets = PACKETS.filter(p => p.requestId === requestId);
+  const packets = requestJourney(requestId)?.packets ?? [];
   if (!nav || !packets.length) return null;
   return <details className="mt-3 rounded-xl border border-[#34748A] p-3" data-testid={`related-packets-${requestId}`}>
     <summary className="cursor-pointer py-2 text-sm font-bold text-[#0A6657]">

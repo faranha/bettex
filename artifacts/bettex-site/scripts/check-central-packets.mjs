@@ -8,13 +8,59 @@ import { pathToFileURL } from 'node:url';
 const temp = await mkdtemp(join(tmpdir(), 'bettex-packets-'));
 try {
   const dir = resolve(import.meta.dirname, '../src/components/interface-demo');
-  const names = ['central-packets', 'central-data', 'central-graph-model', 'central-audit-data', 'central-demo-prices', 'scene3d'];
+  const names = ['central-packets', 'central-data', 'central-graph-model', 'central-audit-data', 'central-demo-prices', 'scene3d', 'central-journey', 'central-view'];
   await build({
     entryPoints: names.map(name => join(dir, `${name}.ts`)), outdir: temp,
     outExtension: { '.js': '.mjs' }, bundle: true, splitting: true,
     platform: 'node', format: 'esm', define: { 'import.meta.env.BASE_URL': '"/"' },
   });
-  const [p, c, g, audit, prices, scene] = await Promise.all(names.map(name => import(pathToFileURL(join(temp, `${name}.mjs`)))));
+  const [p, c, g, audit, prices, scene, journey, view] = await Promise.all(names.map(name => import(pathToFileURL(join(temp, `${name}.mjs`)))));
+  for (const request of c.REQUESTS) {
+    const trace = journey.requestJourney(request.id);
+    assert(trace && trace.request.id === request.id);
+    assert.equal(trace.packets.length, p.PACKETS.filter(packet => packet.requestId === request.id).length);
+    assert.equal(new Set(trace.entries.map(entry => entry.id)).size, trace.entries.length, 'Journey entries are not duplicated');
+    assert(trace.entries.every((entry, i) => !i || Date.parse(trace.entries[i - 1].at) <= Date.parse(entry.at)), 'One chronological projection');
+    assert(trace.decisions.every(decision => decision.requestId === request.id));
+    assert(trace.orders.every(order => order.requestId === request.id));
+    assert(trace.positions.every(position => position.requestId === request.id));
+    assert(trace.auditIds.every(id => audit.centralAuditEntries().some(entry => entry.id === id && entry.correlationId === request.id)));
+    assert(trace.entries.every(entry => !entry.id.startsWith('demo-run-')), 'Generic monitoring is not proposal evidence');
+    if (request.state === 'awaiting_decision') {
+      assert.equal(trace.decisions.length, 0, 'Pending proposal never gets an invented decision');
+      assert.equal(trace.orders.length, 0, 'Pending proposal never gets an invented order');
+    }
+  }
+  const rejected = journey.requestJourney('demo-req-sol-001');
+  assert(rejected.orders.every(order => order.state === 'cancelled' && order.fills.length === 0 && order.filled === '0'));
+  assert.equal(rejected.positions.length, 0, 'Rejected SOL has no executed position');
+  let context = view.readCentralView('');
+  const ethPacket = p.PACKETS.find(packet => packet.requestId === 'demo-req-eth-000' && packet.source === 'governance');
+  context = view.transitionCentralView(context, { type: 'packet', id: ethPacket.id });
+  assert.equal(context.requestId, ethPacket.requestId, 'Graph clicks establish proposal context');
+  context = view.transitionCentralView(context, { type: 'reports' });
+  assert.equal(context.requestId, ethPacket.requestId);
+  assert.equal(context.reportAgentId, 'governance');
+  assert.equal(context.packetId, null);
+  assert.equal(context.selection, null);
+  assert(context.reportsOpen, 'Only reports overlay remains');
+  assert.deepEqual(view.readCentralView(view.writeCentralView('?lang=es&section=agents', context)), context, 'Reports context survives reload');
+  const reportSearch = new URLSearchParams(view.writeCentralView('?lang=es', context));
+  assert.equal(reportSearch.get('lang'), 'es', 'Language selection is preserved');
+  context = view.transitionCentralView(context, { type: 'request', id: ethPacket.requestId });
+  assert.equal(context.reportsOpen, false);
+  assert.equal(context.packetId, null);
+  assert.equal(context.selection.id, 'predictions');
+  const solPacket = p.PACKETS.find(packet => packet.requestId === 'demo-req-sol-001' && packet.exchange);
+  context = view.transitionCentralView(context, { type: 'packet', id: solPacket.id });
+  assert.equal(context.requestId, solPacket.requestId, 'Cross-request packet overrides stale proposal');
+  assert.equal(context.selection, null);
+  assert.equal(view.readCentralView(`?packet=${ethPacket.id}&request=${solPacket.requestId}`).requestId, ethPacket.requestId, 'Packet wins over conflicting URL request');
+  context = view.transitionCentralView(context, { type: 'close' });
+  assert.equal(context.packetId, null);
+  assert.equal(context.requestId, solPacket.requestId, 'Closing retains proposal focus without reopening a second overlay');
+  context = view.transitionCentralView(context, { type: 'clearRequest' });
+  assert.equal(context.requestId, null);
   const ids = new Set(p.PACKETS.map(packet => packet.id));
   assert.equal(ids.size, p.PACKETS.length, 'Packet identity is unique');
   assert.equal(p.PACKETS.filter(p => !p.exchange).length, c.REQUESTS.length * 2 + c.DECISIONS.length * 2);
