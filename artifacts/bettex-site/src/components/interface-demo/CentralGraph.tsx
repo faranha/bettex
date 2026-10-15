@@ -3,6 +3,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useFmt } from '../alpha-trading/format';
 import { CentralInspector } from './CentralInspector';
+import { PacketInspector } from './CentralPackets';
+import { packetById } from './central-packets';
 import { CentralScene } from './CentralScene';
 import { SceneTitle, TelemetryStrip, TopRail } from './CentralHud';
 import { SupportNav, GROUPS } from './CentralSupport';
@@ -23,8 +25,9 @@ const sectionOf = (search: string, sel: Sel | null) => {
   if (sel && !isGraphSelection(sel)) { const g = GROUPS.find(g => g.ids.includes(sel.id)); if (g) return g.key; }
   return 'agents';
 };
-const urlFor = (sel: Sel | null, section?: string) => {
+const urlFor = (sel: Sel | null, section?: string, packet?: string | null) => {
   const q = new URLSearchParams(window.location.search); q.delete('node'); q.delete('edge');
+  if (packet !== undefined) { q.delete('packet'); if (packet) q.set('packet', packet); }
   if (section) q.set('section', section);
   if (sel) q.set(sel.k, sel.id);
   const s = q.toString(); return `${window.location.pathname}${s ? `?${s}` : ''}${window.location.hash}`;
@@ -41,6 +44,15 @@ export function CentralGraph({ onAction }: { onAction: () => void }) {
   const explicit = useRef(typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('section'));
   const secUrl = () => explicit.current ? secRef.current : undefined;
   const [imm, setImm] = useState(false);
+  const [packetId, setPacketId] = useState<string | null>(() => { if (typeof window === 'undefined') return null; const v = new URLSearchParams(window.location.search).get('packet'); return v && packetById(v) ? v : null; });
+  const packetRef = useRef(packetId); packetRef.current = packetId;
+  const choosePacket = (id: string | null) => {
+    if (id && !packetById(id)) return;
+    packetRef.current = id; setPacketId(id);
+    const next = urlFor(selRef.current, secUrl(), id);
+    if (id) window.history.pushState(window.history.state, '', next);
+    else window.history.replaceState(window.history.state, '', next);
+  };
   const head = useRef<HTMLHeadingElement>(null); const back = useRef<HTMLElement | null>(null);
   const gsel = sel && isGraphSelection(sel) ? sel : null; const ssel = sel && !gsel ? sel : null;
   const selRef = useRef(sel); selRef.current = sel;
@@ -66,9 +78,17 @@ export function CentralGraph({ onAction }: { onAction: () => void }) {
     const sync = (ev: Event) => {
       if (window.location.pathname !== home.current) return;
       const p = parseSel(window.location.search);
+      const rawPacket = new URLSearchParams(window.location.search).get('packet');
+      const nextPacket = rawPacket && packetById(rawPacket) ? rawPacket : null;
       if (ev.type === 'popstate') {
+        packetRef.current = nextPacket; setPacketId(nextPacket);
         selRef.current = p; setSel(p); rememberSel(p);
         const sc = sectionOf(window.location.search, p); explicit.current = new URLSearchParams(window.location.search).has('section'); secRef.current = sc; setSection(sc); return;
+      }
+      if (nextPacket && nextPacket !== packetRef.current) { packetRef.current = nextPacket; setPacketId(nextPacket); }
+      if (packetRef.current && !rawPacket) {
+        const fix = urlFor(p ?? selRef.current, secUrl(), packetRef.current);
+        window.history.replaceState(window.history.state, '', fix);
       }
       if (p) { if (!same(selRef.current, p)) { selRef.current = p; setSel(p); rememberSel(p); } return; }
       // A language switch or route helper rewrote the URL without our parameter: keep the reading position.
@@ -88,19 +108,20 @@ export function CentralGraph({ onAction }: { onAction: () => void }) {
   const cat = GROUPS.findIndex(g => g.key === section);
   return <>
     <div className="cg-wrap" id="central-panel">
-    <div className={`cg-stage ${imm && !sel ? "cg-imm" : ""}`} data-testid="central-graph" onKeyDown={e => { if (e.key === 'Escape' && imm) setImm(false); }}
+    <div className={`cg-stage ${imm && !sel && !packetId ? "cg-imm" : ""}`} data-testid="central-graph" onKeyDown={e => { if (e.key === 'Escape' && imm) setImm(false); }}
       aria-label={x('Central da IA BETTEX: cena interativa de agentes', 'BETTEX AI Center: interactive agent scene', 'Central de IA BETTEX: escena interactiva de agentes')}>
       <TopRail sel={gsel} onPick={pick} />
       <SceneTitle sel={gsel} />
       <div className="cg-main">
-        <CentralScene narrow={narrow} reduced={reduced} sel={gsel} onSelect={pick} immersive={imm} onImmersive={() => setImm(v => !v)} />
+        <CentralScene narrow={narrow} reduced={reduced} sel={gsel} onSelect={pick} packetId={packetId} onPacket={choosePacket} immersive={imm} onImmersive={() => setImm(v => !v)} />
       </div>
     </div>
     <section className="cg-support" data-testid="central-support" aria-label={x('Apoio fora do grafo: controles, registros, capital e tópicos', 'Support outside the graph: controls, records, capital and topics', 'Apoyo fuera del grafo: controles, registros, capital y temas')}>
       {cat >= 0 && <SupportNav sel={ssel} onPick={pick} cat={cat} />}
       <TelemetryStrip onPick={pick} />
     </section>
-    <Dialog.Root open={!!sel} onOpenChange={open => { if (!open) close(); }}>
+    <PacketInspector packetId={packetId} onClose={() => choosePacket(null)} />
+    <Dialog.Root open={!!sel && !packetId} onOpenChange={open => { if (!open) close(); }}>
       <Dialog.Portal>
         <Dialog.Overlay className="cg-backdrop" data-testid="central-modal-backdrop" />
         <Dialog.Content className="cg-modal" data-demo-local data-testid="central-modal" aria-modal="true" aria-describedby={undefined}

@@ -29,7 +29,7 @@ export function centralAuditEntries(): HistoryEntry[] {
       { market: o.asset.toUpperCase(), filledUnits: o.filled, reservedUsdc: Number(o.reserved) / 1e6 },
       DECISIONS.find(d => d.requestId === o.requestId)?.id ?? o.requestId);
     for (const f of o.fills) add(f.id, o.requestId, f.at, 'agent_fill', 'recorded',
-      { market: o.asset.toUpperCase(), quantityUnits: f.shares, cashUsdc: Number(f.cash) / 1e6 }, o.id);
+      { market: o.asset.toUpperCase(), quantityUnits: f.shares, decimals: 6, feeUnits: f.fees, cashUsdc: Number(f.cash) / 1e6 }, o.id);
   }
   for (const p of POSITIONS) add(p.id, p.requestId, p.at, 'agent_position', p.state,
     { market: p.asset.toUpperCase(), costUsdc: Number(p.cost) / 1e6, exitValueUsdc: p.exitValue == null ? null : Number(p.exitValue) / 1e6, liquidity: p.exitState, resolution: p.resolution },

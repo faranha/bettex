@@ -7,6 +7,7 @@ import { useL } from './CentralAgents';
 import { GRAPH_EDGES as EDGES, GRAPH_NODES as NODES, edgeText, nodeOf, graphRoute as route, type Sel, type P } from './central-graph-model';
 import { bez, buildScene, centerOf, ctrlOf, drawScene, projectPoint, type Cam, type V3 } from './scene3d';
 import { useCamera, type Mode } from './useCamera';
+import { PacketButtons, placePackets } from './CentralPackets';
 
 const ICON: Record<string, LucideIcon> = { bettex: Workflow, predictions: Radar, btc: CircleDollarSign, eth: Coins, sol: Scale, treasury: Landmark, governance: ScrollText, risk: ShieldAlert, execution: Waypoints, reconciliation: GitCompareArrows, records: ClipboardList, capital: Wallet, execrec: Layers, markets: BarChart3, s0: Trophy, s1: Target, s2: Dices, community: Users, tokenomics: Gem, participation: HandCoins, settlement: Percent, buyback: Coins, burn: Flame, history: History, dashboard: LayoutDashboard, roadmap: Milestone, games: Ticket };
 const pos = (v: V3) => v;
@@ -38,9 +39,9 @@ function placeLabels(bs: { el: HTMLElement; cx: number; top: number; wd: number;
   }
 }
 
-type Props = { narrow: boolean; reduced: boolean; sel: Sel | null; onSelect: (s: Sel) => void; immersive: boolean; onImmersive: () => void };
+type Props = { narrow: boolean; reduced: boolean; sel: Sel | null; onSelect: (s: Sel) => void; packetId?: string | null; onPacket?: (id: string) => void; immersive: boolean; onImmersive: () => void };
 
-export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImmersive }: Props) {
+export function CentralScene({ narrow, reduced, sel, onSelect, packetId = null, onPacket, immersive, onImmersive }: Props) {
   const { x, loc } = useFmt(); const L = useL();
   const quotes = useGetDemoPolymarket({ locale: loc }, { query: { staleTime: 60000, refetchInterval: 60000, retry: 1 } });
   const world = useMemo<P>(() => narrow ? [420, 880] : [1560, 1060], [narrow]);
@@ -51,11 +52,16 @@ export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImme
   const selRef = useRef(sel); selRef.current = sel;
   const sceneRef = useRef(scene); sceneRef.current = scene;
 
+  const pkEls = useRef<Record<string, HTMLElement | null>>({}); const hold = useRef(false); const openRef = useRef(false); openRef.current = !!packetId;
+  const clock = useRef({ last: 0, el: 0 });
   const frame = (c: Cam, w: number, h: number, t: number) => {
     const canvas = cv.current; if (!canvas) return; const dpr = Math.min(window.devicePixelRatio || 1, 2);
     if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); }
     const ctx = canvas.getContext('2d'); if (!ctx) return; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const eff = { ...c, yaw: c.yaw + (reduced ? 0 : Math.sin(t * 0.00018) * 0.06) };
+    const ck = clock.current;
+    if (!reduced && !hold.current && !openRef.current && ck.last) ck.el += Math.min(100, Math.max(0, t - ck.last));
+    ck.last = t;
+    const eff = { ...c, yaw: c.yaw + (reduced ? 0 : Math.sin(ck.el * 0.00018) * 0.06) };
     const sc = sceneRef.current; drawScene(ctx, sc, eff, w, h, t, selRef.current, reduced);
     // Measure as a batch before changing transforms/top offsets; avoid a layout flush per node.
     const labels = new Map(NODES.map(n => {
@@ -72,6 +78,7 @@ export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImme
     }).filter(b => b.r > 0 && b.l < w && b.b > 0 && b.t < h);
     placeLabels(boxes, w, h, obstacles);
     for (const e of sc.edges) { const el = els.current[`e-${e.e.id}`]; if (!el) continue; const a = sc.centers[e.e.a], b = sc.centers[e.e.b]; const m = bez(a, ctrlOf(a, b, e.lift), b, 0.5); const q = projectPoint(m, eff, w, h); el.style.transform = `translate3d(${q.x.toFixed(1)}px,${q.y.toFixed(1)}px,0)`; }
+    placePackets(pkEls.current, sc, eff, w, h, ck.el, reduced);
   };
   const cam = useCamera({ narrow, world, reduced, wheelAlways: immersive, mode, frame });
   const { w, h } = cam.size;
@@ -104,6 +111,7 @@ export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImme
     <canvas ref={cv} className="cg-canvas" aria-hidden="true" data-testid="graph-canvas" style={{ width: '100%', height: '100%' }} />
     {EDGES.map(e => <button key={e.id} type="button" disabled={e.planned} ref={el => { els.current[`e-${e.id}`] = el; }} data-testid={`graph-edge-${e.id}`} data-focus-key={`e-${e.id}`} aria-pressed={sel?.k === 'edge' && sel.id === e.id}
       data-demo-local aria-label={`${e.planned ? x('Conexão planejada', 'Planned connection', 'Conexión planificada') : x('Conexão', 'Connection', 'Conexión')}: ${nm(e.a)} → ${nm(e.b)}. ${L(edgeText(e).label)}`} title={`${nm(e.a)} → ${nm(e.b)}: ${L(edgeText(e).label)}`} className={`cg-edge ${e.type} ${e.planned ? 'planned' : ''} ${e.biz ? 'biz' : ''} ${rt.edges.has(e.id) ? 'on' : ''}`} {...keyAct(() => onSelect({ k: 'edge', id: e.id }))}><span /></button>)}
+    <PacketButtons els={pkEls} selectedId={packetId} onPick={id => onPacket?.(id)} onHold={v => { hold.current = v; }} />
     {NODES.map(n => { const I = ICON[n.id] ?? Bot; const on = sel?.k === 'node' && sel.id === n.id; const dim = sel && !rt.nodes.has(n.id); const quote = n.kind === 'spec' ? quotes.data?.markets.find(m => m.asset === n.id.toUpperCase()) : undefined;
       if (n.kind === 'soon') return <div key={n.id} ref={el => { els.current[`n-${n.id}`] = el; }} className="cg-node soon" role="img" aria-disabled="true" data-testid={`graph-soon-${n.id}`} aria-label={`${L(n.name)}: ${L(n.sub)}`}>
         <span className="cg-label"><b>{L(n.name)}</b><i>{L(n.sub)}</i></span></div>;
@@ -121,7 +129,7 @@ export function CentralScene({ narrow, reduced, sel, onSelect, immersive, onImme
       <button type="button" {...tool} className={tb} data-testid="button-graph-reset" aria-label={x('Reiniciar vista', 'Reset view', 'Reiniciar vista')} title={x('Reiniciar vista (0)', 'Reset view (0)', 'Reiniciar vista (0)')} onClick={cam.api.reset}><span aria-hidden="true" className="cg-r0">1:1</span></button>
       <button type="button" {...tool} className={tb} data-testid="button-graph-immersive" aria-pressed={immersive} aria-label={immersive ? x('Sair da tela ampla', 'Exit wide view', 'Salir de la vista amplia') : x('Tela ampla', 'Wide view', 'Vista amplia')} onClick={onImmersive}>{immersive ? <Minimize2 aria-hidden="true" /> : <Maximize2 aria-hidden="true" />}</button>
     </div>}
-    <p className="cg-legend" aria-hidden="true"><span className="d c" />{x('Agentes inteligentes', 'Intelligent agents', 'Agentes inteligentes')} <span className="d w" />{x('Em breve, ligado por linha tracejada', 'Upcoming, dashed link', 'Próximamente, enlace discontinuo')}</p>
+    <p className="cg-legend" aria-hidden="true"><span className="d c" />{x('Agentes inteligentes', 'Intelligent agents', 'Agentes inteligentes')} <span className="d w" />{x('Em breve, ligado por linha tracejada', 'Upcoming, dashed link', 'Próximamente, enlace discontinuo')} <span className="pk-legend-analysis">→ {x('Análises', 'Analyses', 'Análisis')}</span> <span className="pk-legend-decision">← {x('Decisões', 'Decisions', 'Decisiones')}</span></p>
     </div>
     {narrow && <div className="cg-dock" data-demo-local onKeyDown={e => { if (e.key === 'Escape' && dockOpen) { e.stopPropagation(); setDockOpen(false); toggleRef.current?.focus(); } }}>
       <div className="cg-dock-bar">
