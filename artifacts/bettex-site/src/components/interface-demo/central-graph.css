@@ -37,7 +37,7 @@
 .cg-node{position:absolute;left:-24px;top:-24px;width:48px;height:48px;padding:0;border:0;background:none;color:inherit;cursor:pointer;will-change:transform}
 .cg-orb{position:absolute;left:0;top:0;display:grid;width:48px;height:48px;place-items:center;border-radius:50%;border:1px solid rgba(53,214,255,.0);background:transparent;color:#BFEFFF;transition:background .25s,border-color .25s}
 .cg-orb svg{width:18px;height:18px;opacity:.85}
-.cg-node.control .cg-orb{color:#FFE7A8}.cg-node.hub .cg-orb{color:#B6F6DE}
+.cg-node.control .cg-orb{color:#FFE7A8;border:1px dashed rgba(242,193,78,.55);background:rgba(242,193,78,.07)}.cg-node.control .cg-label{border-left:3px solid var(--a)}.cg-node.hub .cg-orb{color:#B6F6DE}
 .cg-node:hover .cg-orb,.cg-node:focus-visible .cg-orb{border-color:rgba(255,255,255,.55);background:rgba(53,214,255,.12)}
 .cg-node.sel .cg-orb{border-color:var(--c);background:rgba(53,214,255,.2)}.cg-node.control.sel .cg-orb{border-color:var(--a);background:rgba(242,193,78,.2)}.cg-node.hub.sel .cg-orb{border-color:var(--g);background:rgba(70,227,176,.2)}
 .cg-node.core .cg-orb{color:#FFD3E3}

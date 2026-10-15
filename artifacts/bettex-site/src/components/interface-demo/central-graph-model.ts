@@ -7,7 +7,7 @@ export type NodeKind = 'core' | 'agent' | 'spec' | 'control' | 'hub' | 'soon';
 export type NodeDef = { id: string; kind: NodeKind; name: T3; sub: T3; wide: P; tall: P; d: number; group?: 'biz' };
 export type EdgeDef = { id: string; a: string; b: string; type: 'flow' | 'control' | 'hub'; label?: T3; condition?: T3; planned?: boolean; biz?: boolean };
 export type Sel = { k: 'node' | 'edge'; id: string };
-export type TabId = 'overview' | 'agent' | 'forecast' | 'requests' | 'capital' | 'execution' | 'markets' | 'control' | 'topic' | 'flow' | 'links';
+export type TabId = 'overview' | 'agent' | 'forecast' | 'requests' | 'capital' | 'execution' | 'markets' | 'control' | 'topic' | 'flow' | 'links' | 'consultations';
 
 export const WIDE_SIZE: P = [1560, 1060];
 export const TALL_SIZE: P = [420, 2080];
@@ -17,7 +17,7 @@ export const HUBS = ['records', 'capital', 'execrec', 'markets'];
 
 const AG: T3 = ['Núcleo interno Cripto', 'Internal Crypto core', 'Núcleo interno Cripto'];
 const SP: T3 = ['Subagente de Cripto', 'Crypto subagent', 'Subagente de Cripto'];
-const CT: T3 = ['Controle, não é agente', 'Control, not an agent', 'Control, no es agente'];
+const CT: T3 = ['Subagente de apoio', 'Support subagent', 'Subagente de apoyo'];
 const SOONT: T3 = ['Em breve, desativado', 'Upcoming, disabled', 'Próximamente, desactivado'];
 const HB: T3 = ['Registros', 'Records', 'Registros'];
 
@@ -62,20 +62,22 @@ export const hasNode = (id: string) => NODES.some(n => n.id === id);
 export const isBiz = (id: string) => nodeOf(id)?.group === 'biz';
 export const BIZ_IDS = BIZ.map(b => b.id);
 
-/** Only current and planned agents belong to the spatial graph.
+/** Market and support subagents belong to the spatial graph.
  * NODES remains the complete panel registry so existing support links keep working. */
-export const GRAPH_NODES: NodeDef[] = NODES.filter(n => n.kind === 'core' || n.kind === 'agent' || n.kind === 'spec' || n.kind === 'soon').map(n => {
+export const GRAPH_NODES: NodeDef[] = NODES.filter(n => n.kind === 'core' || n.kind === 'agent' || n.kind === 'spec' || CONTROLS.includes(n.id)).map(n => {
   const layout: Record<string, { wide: P; tall: P }> = {
     bettex: { wide: [780, 470], tall: [210, 390] },
     predictions: { wide: [470, 390], tall: [210, 340] },
     btc: { wide: [180, 150], tall: [70, 100] },
     eth: { wide: [170, 420], tall: [210, 100] },
     sol: { wide: [180, 690], tall: [350, 100] },
-    s0: { wide: [600, 810], tall: [70, 760] },
-    s1: { wide: [1140, 240], tall: [210, 760] },
-    s2: { wide: [1130, 750], tall: [350, 760] },
+    governance: { wide: [1140, 160], tall: [70, 590] },
+    risk: { wide: [1190, 420], tall: [210, 590] },
+    treasury: { wide: [1160, 710], tall: [350, 590] },
+    execution: { wide: [840, 840], tall: [110, 760] },
+    reconciliation: { wide: [500, 810], tall: [310, 760] },
   };
-  return { ...n, ...layout[n.id], ...(n.kind === 'soon' ? { sub: ['Agente em breve, desativado', 'Upcoming agent, disabled', 'Agente próximamente, desactivado'] as T3 } : {}) };
+  return { ...n, ...layout[n.id] };
 });
 const GRAPH_IDS = new Set(GRAPH_NODES.map(n => n.id));
 export const isGraphNode = (id: string) => GRAPH_IDS.has(id);
@@ -99,11 +101,6 @@ export const edgeOf = (id: string) => EDGES.find(e => e.id === id);
 
 export const GRAPH_EDGES: EdgeDef[] = [
   ...EDGES.filter(e => isGraphNode(e.a) && isGraphNode(e.b)),
-  ...(['s0', 's1', 's2'] as const).map(id => ({
-    id: `bettex-${id}`, a: 'bettex', b: id, type: 'hub' as const,
-    label: ['Agente planejado', 'Planned agent', 'Agente planificado'] as T3,
-    condition: PLAN_COND, planned: true,
-  })),
 ];
 export const isGraphSelection = (sel: Sel | null) => !!sel && (sel.k === 'node' ? isGraphNode(sel.id) : GRAPH_EDGES.some(e => e.id === sel.id));
 export function graphRoute(sel: Sel | null): { edges: Set<string>; nodes: Set<string> } {
@@ -123,7 +120,7 @@ export function graphRoute(sel: Sel | null): { edges: Set<string>; nodes: Set<st
 
 const LEGACY: Record<EdgeDef['type'], { label: T3; condition: T3 }> = {
   flow: { label: ['Pedido do mercado ao agente', 'Market request to the agent', 'Pedido del mercado al agente'], condition: ['Especialistas só enviam pedidos; a BETTEX compara e decide dentro dos mandatos.', 'Specialists only send requests; BETTEX compares and decides within mandates.', 'Los especialistas solo envían pedidos; BETTEX compara y decide dentro de los mandatos.'] },
-  control: { label: ['Verificação de controle', 'Control check', 'Verificación de control'], condition: ['O controle verifica regras e limites. Não é agente e não cria operações próprias.', 'The control checks rules and limits. It is not an agent and creates no operations of its own.', 'El control verifica reglas y límites. No es agente y no crea operaciones propias.'] },
+  control: { label: ['Consulta e parecer de apoio', 'Support consultation and opinion', 'Consulta y dictamen de apoyo'], condition: ['A BETTEX consulta o subagente, recebe seu parecer e mantém a decisão central. O parecer não autoriza operações por si só.', 'BETTEX consults the subagent, receives its opinion and retains the central decision. An opinion alone does not authorize operations.', 'BETTEX consulta al subagente, recibe su dictamen y mantiene la decisión central. El dictamen no autoriza operaciones por sí solo.'] },
   hub: { label: ['Registros de amostra', 'Sample records', 'Registros de muestra'], condition: ['Registros ilustrativos separados por função: pedidos, capital, execução e mercados.', 'Illustrative records separated by function: requests, capital, execution and markets.', 'Registros ilustrativos separados por función: pedidos, capital, ejecución y mercados.'] },
 };
 export function edgeText(e: EdgeDef): { label: T3; condition: T3 } {
@@ -152,8 +149,7 @@ function baseTabs(sel: Sel): TabSpec[] {
     if (id === 'bettex') return [{ tab: 'overview' }, { tab: 'agent', id }, { tab: 'requests' }];
     if (id === 'predictions') return [{ tab: 'agent', id }, { tab: 'forecast' }, { tab: 'requests' }];
     if (SPEC.includes(id as Asset)) return [{ tab: 'agent', id }, { tab: 'forecast' }, { tab: 'requests', id }];
-    if (id === 'execution' || id === 'reconciliation') return [{ tab: 'control', id }, { tab: 'execution' }];
-    if (CONTROLS.includes(id)) return [{ tab: 'control', id }, { tab: 'capital' }];
+    if (CONTROLS.includes(id)) return [{ tab: 'consultations', id }, { tab: 'control', id }, { tab: id === 'execution' || id === 'reconciliation' ? 'execution' : 'capital' }];
     return [{ tab: id === 'records' ? 'requests' : id === 'capital' ? 'capital' : id === 'execrec' ? 'execution' : 'markets' }];
   }
   const e = edgeOf(sel.id);
@@ -161,6 +157,7 @@ function baseTabs(sel: Sel): TabSpec[] {
   if (e.biz) return [{ tab: 'links', id: e.id }];
   if (SPEC.includes(e.a as Asset)) return [{ tab: 'requests', id: e.a }, { tab: 'agent', id: e.a }, { tab: 'forecast' }];
   if (e.id === 'predictions-bettex') return [{ tab: 'requests' }, { tab: 'agent', id: 'predictions' }];
+  if (e.a === 'bettex' && CONTROLS.includes(e.b)) return baseTabs({ k: 'node', id: e.b });
   if (e.type === 'control') return e.b === 'execution' || e.b === 'reconciliation' ? [{ tab: 'control', id: e.b }, { tab: 'execution' }] : [{ tab: 'control', id: e.b }, { tab: 'capital' }];
   return baseTabs({ k: 'node', id: e.b });
 }
@@ -179,6 +176,7 @@ export function tabsFor(sel: Sel): TabSpec[] {
 }
 
 export const TAB_LABEL: Record<TabId, T3> = {
+  consultations: ['Consultas e pareceres', 'Consultations and opinions', 'Consultas y dictámenes'],
   overview: ['Resumo e mandatos', 'Summary and mandates', 'Resumen y mandatos'], agent: ['Raciocínio e relatórios', 'Reasoning and reports', 'Razonamiento e informes'],
   forecast: ['Previsão Allora', 'Allora forecast', 'Previsión Allora'], requests: ['Pedidos e decisões', 'Requests and decisions', 'Pedidos y decisiones'],
   capital: ['Capital e política', 'Capital and policy', 'Capital y política'], execution: ['Ordens e posições', 'Orders and positions', 'Órdenes y posiciones'],

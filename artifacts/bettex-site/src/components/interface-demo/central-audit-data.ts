@@ -1,5 +1,6 @@
 import type { HistoryEntry } from '@workspace/api-client-react';
 import { REQUESTS, DECISIONS, ORDERS, POSITIONS } from './central-data';
+import { PACKETS } from './central-packets';
 
 /** Correlated didactic lifecycle, not cash movements or genuine agent output. */
 export function centralAuditEntries(): HistoryEntry[] {
@@ -34,5 +35,9 @@ export function centralAuditEntries(): HistoryEntry[] {
   for (const p of POSITIONS) add(p.id, p.requestId, p.at, 'agent_position', p.state,
     { market: p.asset.toUpperCase(), costUsdc: Number(p.cost) / 1e6, exitValueUsdc: p.exitValue == null ? null : Number(p.exitValue) / 1e6, liquidity: p.exitState, resolution: p.resolution },
     ORDERS.find(o => o.requestId === p.requestId)?.id ?? p.requestId);
+  for (const p of PACKETS.filter(p => p.exchange)) add(p.id, p.requestId, p.at,
+    'agent_request', 'recorded',
+    { title: p.title, reason: p.summary, sourceAgent: p.source, targetAgent: p.target, exchange: p.exchange },
+    p.replyToId ?? p.requestId);
   return out;
 }

@@ -12,6 +12,7 @@ import { WalletCardDetailsPair } from './WalletCardDetails';
 import { WalletHistoryLink } from './WalletHistoryLink';
 import { WalletHelp } from './WalletHelp';
 import { WalletActionsHelp } from './WalletActionsHelp';
+import { WalletPotentialGain } from './WalletPotentialGain';
 
 export function DemoWalletsCard({ d, onWallet, showReceivedYield = false, showHeading = true, headerActions, onExport, addresses }: { d: DemoDashboard; onWallet: (kind: Kind, asset: Asset) => void; showReceivedYield?: boolean; showHeading?: boolean; headerActions?: ReactNode; onExport?: (asset: Asset) => void; addresses?: Partial<Record<Asset, string>> }) {
   const { x } = useX();
@@ -31,6 +32,7 @@ export function DemoWalletsCard({ d, onWallet, showReceivedYield = false, showHe
         <p>{addresses[asset]?.startsWith('MOCK-') ? x('Endereço fictício, apenas para demonstrar a interface. Não existe na blockchain e não recebe depósitos, nem mesmo em testnet.', 'Fictitious address for demonstrating the interface only. It does not exist on the blockchain and cannot receive deposits, even on testnet.', 'Dirección ficticia solo para demostrar la interfaz. No existe en la blockchain y no recibe depósitos, ni siquiera en testnet.') : x(`Endereço para receber ${asset} nesta carteira. Pode ser compartilhado para recebimento; não é sua chave privada. Confira o ativo e a rede indicados no formulário antes de enviar.`, `Address for receiving ${asset} in this wallet. It can be shared to receive funds; it is not your private key. Check the asset and network shown in the form before sending.`, `Dirección para recibir ${asset} en esta cartera. Se puede compartir para recibir fondos; no es tu clave privada. Comprueba el activo y la red del formulario antes de enviar.`)}</p>
       </WalletHelp><span className="mono min-w-0 break-all">{addresses[asset]}</span></div>}
       <Money v={asset === 'USDC' ? d.balances.usdc : d.balances.bettex} a={asset} big />
+      {asset === 'BETTEX' && <WalletPotentialGain d={d} />}
       <div className="flex flex-wrap gap-2"><WalletAction kind={asset === 'USDC' ? 'onramp' : 'receive'} asset={asset} id={`demo-add-${asset}`} label={x('Adicionar saldo', 'Add balance', 'Agregar saldo')} onOpen={onWallet} />
         <WalletAction kind={asset === 'USDC' ? 'withdraw' : 'send'} asset={asset} id={`demo-out-${asset}`} label={x('Retirar', 'Withdraw', 'Retirar')} onOpen={onWallet} />
         <WalletAction kind="swap" asset={asset} id={`demo-swap-${asset}`} label={x('Converter', 'Convert', 'Convertir')} onOpen={onWallet} />

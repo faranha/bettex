@@ -1,4 +1,5 @@
 import { DECISIONS, REQUESTS, type T3 } from './central-data';
+import { supportPackets } from './central-support-packets';
 
 /** A visual replay of existing sample records, not a transport or an agent runtime.
  * Animation never creates decisions, changes balances, or rewrites historical time. */
@@ -15,6 +16,7 @@ export type GraphPacket = {
   payload: { label: T3; value: T3 | string }[];
   replyToId?: string;
   decisionId?: string;
+  exchange?: 'query' | 'opinion';
 };
 
 const text = (pt: string, en: string, es: string): T3 => [pt, en, es];
@@ -76,7 +78,7 @@ for (const request of REQUESTS) {
   }
 }
 
-export const PACKETS: GraphPacket[] = samplePackets.sort((a, b) =>
+export const PACKETS: GraphPacket[] = [...samplePackets, ...supportPackets()].sort((a, b) =>
   Date.parse(a.at) - Date.parse(b.at) || a.id.localeCompare(b.id));
 const packetsById = new Map(PACKETS.map(packet => [packet.id, packet]));
 const requestSlots = new Map(REQUESTS.map((request, index) => [request.id, index]));
@@ -102,7 +104,10 @@ export function packetProgress(packet: GraphPacket, elapsedMs: number, reduced =
     : packet.source === 'bettex' ? 2 : 3;
   if (reduced) return 0.18 + slot * 0.095 + (stage % 2) * 0.035;
   const elapsed = Number.isFinite(elapsedMs) ? Math.max(0, elapsedMs) : 0;
-  const start = 500 + slot * 1100 + stage * 6000;
+  const supportSlot = ['governance', 'risk', 'treasury', 'execution', 'reconciliation'].indexOf(packet.source === 'bettex' ? packet.target : packet.source);
+  const start = packet.exchange
+    ? 800 + Math.max(0, supportSlot) * 1800 + slot * 350 + (packet.exchange === 'opinion' ? 6000 : 0)
+    : 500 + slot * 1100 + stage * 6000;
   // Include in-flight messages from the preceding wave rather than waiting for
   // every reply to finish before starting another analysis.
   const phase = ((elapsed - start) % PACKET_REPLAY_MS + PACKET_REPLAY_MS) % PACKET_REPLAY_MS;

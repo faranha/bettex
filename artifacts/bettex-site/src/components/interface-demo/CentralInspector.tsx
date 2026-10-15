@@ -13,6 +13,7 @@ import type { Asset } from './central-data';
 import { ProjectFlowPanel, ProjectLinksPanel, ProjectTopicPanel } from './ProjectFlowPanel';
 import './CentralOverlayLayout.css';
 import { useRecordNavigation } from './CentralRecordNavigation';
+import { CentralConsultations } from './CentralConsultations';
 import { SPEC, TAB_LABEL, edgeOf, isBiz, nodeOf, tabsFor, type Sel, type TabSpec } from './central-graph-model';
 
 function Records({ mode, asset, onAction }: { mode: 'requests' | 'execution'; asset?: Asset; onAction: () => void }) {
@@ -31,6 +32,7 @@ function Records({ mode, asset, onAction }: { mode: 'requests' | 'execution'; as
 function Body({ t, sel, onAction, onMarketSelect, onPick }: { t: TabSpec; sel: Sel; onAction: () => void; onMarketSelect: (id: string) => void; onPick: (s: Sel) => void }) {
   const id = t.id;
   switch (t.tab) {
+    case 'consultations': return <CentralConsultations agentId={id ?? ''} />;
     case 'topic': return <ProjectTopicPanel id={id ?? ''} onPick={onPick} />;
     case 'flow': return <ProjectFlowPanel sel={sel.k === 'edge' ? sel : { k: 'node', id: id ?? sel.id }} />;
     case 'links': return <ProjectLinksPanel sel={sel} onPick={onPick} />;
@@ -56,7 +58,7 @@ export function CentralInspector({ sel, onClose, onAction, headRef, onPick }: { 
   const n = sel.k === 'node' ? nodeOf(sel.id) : undefined;
   if (!n && !e) return null;
   const title = n ? `${n.kind === 'spec' ? `${L(nodeOf('predictions').name)} · ` : ''}${L(n.name)}` : `${L(nodeOf(e!.a).name)} → ${L(nodeOf(e!.b).name)}`;
-  const kind = n ? (isBiz(n.id) ? (n.kind === 'control' ? x('Regra de liquidação e recompra', 'Settlement and buyback rule', 'Regla de liquidación y recompra') : x('Negócio e comunidade', 'Business and community', 'Negocio y comunidad')) : n.kind === 'control' ? x('Controle operacional, não é agente', 'Operational control, not an agent', 'Control operativo, no es agente') : n.kind === 'hub' ? x('Registros', 'Records', 'Registros') : n.kind === 'spec' ? x('Mercado do agente Cripto', 'Crypto agent market', 'Mercado del agente Cripto') : n.kind === 'core' ? x('Inteligência central', 'Central intelligence', 'Inteligencia central') : x('Agente inteligente', 'Intelligent agent', 'Agente inteligente')) : e?.planned ? x('Conexão planejada, desativada', 'Planned connection, disabled', 'Conexión planificada, desactivada') : x('Conexão direcional', 'Directional connection', 'Conexión direccional');
+  const kind = n ? (isBiz(n.id) ? (n.kind === 'control' ? x('Regra de liquidação e recompra', 'Settlement and buyback rule', 'Regla de liquidación y recompra') : x('Negócio e comunidade', 'Business and community', 'Negocio y comunidad')) : n.kind === 'control' ? x('Subagente de apoio à BETTEX', 'BETTEX support subagent', 'Subagente de apoyo a BETTEX') : n.kind === 'hub' ? x('Registros', 'Records', 'Registros') : n.kind === 'spec' ? x('Mercado do agente Cripto', 'Crypto agent market', 'Mercado del agente Cripto') : n.kind === 'core' ? x('Inteligência central', 'Central intelligence', 'Inteligencia central') : x('Agente inteligente', 'Intelligent agent', 'Agente inteligente')) : e?.planned ? x('Conexão planejada, desativada', 'Planned connection, disabled', 'Conexión planificada, desactivada') : x('Conexão direcional', 'Directional connection', 'Conexión direccional');
   return <section className="cg-drawer" data-demo-local data-testid="graph-inspector" data-target={`${sel.k}:${sel.id}`}>
     <div className="cg-dhead"><div className="min-w-0"><DialogTitle asChild><h2 ref={headRef} tabIndex={-1} className="display text-lg font-extrabold" data-testid="inspector-title">{title}</h2></DialogTitle>
       <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs"><Tag warn={n?.kind === 'control'}>{n?.kind === 'spec' ? x('Subagente de Cripto', 'Crypto subagent', 'Subagente de Cripto') : kind}</Tag></p></div>

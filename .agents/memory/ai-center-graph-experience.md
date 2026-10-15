@@ -1,19 +1,23 @@
 ---
 name: Grafo exclusivo dos agentes da Central
-description: Agentes e subagentes de Cripto ficam no grafo; controles e áreas do negócio ficam fora, sem navegação duplicada ou largura especial.
+description: Grafo existente com Cripto e subagentes de apoio à BETTEX, consultas bidirecionais e navegação preservada.
 ---
 
-O grafo da Central da IA mostra apenas agentes e conexões entre agentes. O que não é agente fica fora do grafo, em áreas de apoio separadas.
+O grafo da Central da IA mostra agentes e conexões entre agentes. O criador posteriormente passou a tratar Governança, Risco, Tesouraria, Execução e Conciliação como subagentes de apoio à BETTEX, presentes na rede em lugar dos nós futuros de Esportes, Mercados de previsão e Cassino. As regras antigas que excluíam esses cinco papéis do grafo foram substituídas; áreas do negócio continuam fora.
 
 **Why:** A orientação anterior de integrar toda a Central à rede foi substituída pela correção explícita: “o grafo mostra apenas os agentes [...] se nao eh agente, nao esta aqui, isso deveria estar fora daqui”.
 
-**How to apply:** Manter a experiência espacial dos agentes, sem transformar controles ou temas do negócio em agentes. Governança, risco, tesouraria, execução, registros, capital, comunidade, token, jogos e participação continuam acessíveis fora da rede. A orientação posterior do criador inclui BTC, ETH e SOL no grafo como subagentes de Cripto, não como agentes setoriais independentes. Preservar painéis, atalhos, links antigos e a ausência de operações reais.
+**How to apply:** Manter a experiência espacial existente, com BTC, ETH e SOL como subagentes internos de Cripto. Os cinco subagentes de apoio respondem a consultas da BETTEX, sem transformar registros, capital, comunidade, token, jogos e participação em agentes. Preservar painéis, atalhos, links antigos e a ausência de operações reais.
+
+**Why da mudança de escopo:** O criador apontou os nós futuros e pediu: “Ao invés de esportes, cassinos e tal [...] risco, governança, os outros subagentes que ajudam e trabalham pra Betex”, incluindo emular consultas e trocas para decisões.
+
+**How to apply às trocas:** Representar consultas da BETTEX e pareceres de volta com pacotes consultáveis, vinculados às propostas. Distinguir parecer de decisão central e consultas anteriores à decisão de confirmações de execução/conciliação posteriores. Não inventar aprovação para uma proposta pendente.
 
 Não duplicar os breadcrumbs do header na Central da IA nem ampliar a Central além da largura padrão das páginas do app. Exibir também os agentes em desenvolvimento no topo, com links desativados.
 
 **Why:** O criador corrigiu expressamente: “ja temos no header, nao faz isso”, “nao respeitou a largura da pagina, nao faca isso” e pediu os demais agentes, mesmo “em desenvolvimento, em breve”.
 
-**How to apply:** Reutilizar a largura e navegação principal do aplicativo. BTC, ETH e SOL pertencem à hierarquia interna de Cripto; os demais setores previstos continuam visíveis e indisponíveis.
+**How to apply:** Reutilizar a largura e navegação principal do aplicativo. BTC, ETH e SOL pertencem à hierarquia interna de Cripto. A instrução posterior substitui os setores futuros no grafo por subagentes de apoio, sem ativar aqueles mercados.
 
 ## Revisões de legibilidade
 
