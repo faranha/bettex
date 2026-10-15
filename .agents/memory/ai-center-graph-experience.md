@@ -13,6 +13,18 @@ O grafo da Central da IA mostra agentes e conexões entre agentes. O criador pos
 
 **How to apply às trocas:** Representar consultas da BETTEX e pareceres de volta com pacotes consultáveis, vinculados às propostas. Distinguir parecer de decisão central e consultas anteriores à decisão de confirmações de execução/conciliação posteriores. Não inventar aprovação para uma proposta pendente.
 
+As trocas precisam de trilhos visíveis, com os pacotes presos ao trajeto entre os agentes. Governança e Risco devem ter suas consultas e pareceres identificáveis diretamente no grafo.
+
+**Why:** O criador apontou que “não tem um trilho, as informações parecem que estão voando desconexas” e exigiu visualização dos pacotes de Governança e Risco no gráfico.
+
+**How to apply:** Manter trajetos e pacotes geometricamente alinhados também após mover, girar e ampliar a câmera; diferenciar ida e volta sem criar símbolos decorativos que pareçam transmissões adicionais.
+
+Os relatórios dos subagentes precisam ser consultáveis também fora do grafo, não somente por pacotes em movimento.
+
+**Why:** O criador acrescentou: “E além do grafo, óbvio, tem que ter visualização dos relatórios, etc.”
+
+**How to apply:** Preservar consulta, parecer, evidências, relatório técnico e ligação com a proposta e decisão. Mostrar um subagente por vez para evitar a lista simultânea de cartões já rejeitada; um parecer não substitui a decisão da BETTEX.
+
 Não duplicar os breadcrumbs do header na Central da IA nem ampliar a Central além da largura padrão das páginas do app. Exibir também os agentes em desenvolvimento no topo, com links desativados.
 
 **Why:** O criador corrigiu expressamente: “ja temos no header, nao faz isso”, “nao respeitou a largura da pagina, nao faca isso” e pediu os demais agentes, mesmo “em desenvolvimento, em breve”.

@@ -149,7 +149,7 @@ function baseTabs(sel: Sel): TabSpec[] {
     if (id === 'bettex') return [{ tab: 'overview' }, { tab: 'agent', id }, { tab: 'requests' }];
     if (id === 'predictions') return [{ tab: 'agent', id }, { tab: 'forecast' }, { tab: 'requests' }];
     if (SPEC.includes(id as Asset)) return [{ tab: 'agent', id }, { tab: 'forecast' }, { tab: 'requests', id }];
-    if (CONTROLS.includes(id)) return [{ tab: 'consultations', id }, { tab: 'control', id }, { tab: id === 'execution' || id === 'reconciliation' ? 'execution' : 'capital' }];
+    if (CONTROLS.includes(id)) return [{ tab: 'control', id }, { tab: 'consultations', id }, { tab: id === 'execution' || id === 'reconciliation' ? 'execution' : 'capital' }];
     return [{ tab: id === 'records' ? 'requests' : id === 'capital' ? 'capital' : id === 'execrec' ? 'execution' : 'markets' }];
   }
   const e = edgeOf(sel.id);
@@ -180,7 +180,7 @@ export const TAB_LABEL: Record<TabId, T3> = {
   overview: ['Resumo e mandatos', 'Summary and mandates', 'Resumen y mandatos'], agent: ['Raciocínio e relatórios', 'Reasoning and reports', 'Razonamiento e informes'],
   forecast: ['Previsão Allora', 'Allora forecast', 'Previsión Allora'], requests: ['Pedidos e decisões', 'Requests and decisions', 'Pedidos y decisiones'],
   capital: ['Capital e política', 'Capital and policy', 'Capital y política'], execution: ['Ordens e posições', 'Orders and positions', 'Órdenes y posiciones'],
-  markets: ['Mercados', 'Markets', 'Mercados'], control: ['Política de controle', 'Control policy', 'Política de control'],
+  markets: ['Mercados', 'Markets', 'Mercados'], control: ['Relatórios e verificações', 'Reports and checks', 'Informes y verificaciones'],
   topic: ['Regras e documentação', 'Rules and documentation', 'Reglas y documentación'], flow: ['Fluxo e valores', 'Flow and values', 'Flujo y valores'],
   links: ['Conexões e leitura', 'Connections and reading', 'Conexiones y lectura'],
 };

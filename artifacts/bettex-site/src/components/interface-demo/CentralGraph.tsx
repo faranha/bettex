@@ -10,6 +10,7 @@ import { CentralRecordNavigation } from './CentralRecordNavigation';
 import { CentralScene } from './CentralScene';
 import { SceneTitle, TelemetryStrip, TopRail } from './CentralHud';
 import { SupportNav, GROUPS } from './CentralSupport';
+import { CentralSupportReports } from './CentralSupportReports';
 import { isGraphSelection, parseSel, rememberSel, selQuery, tabsFor, type Sel } from './central-graph-model';
 import './central-graph.css';
 
@@ -147,6 +148,7 @@ export function CentralGraph({ onAction }: { onAction: () => void }) {
       {cat >= 0 && <SupportNav sel={ssel} onPick={pick} cat={cat} />}
       <TelemetryStrip onPick={pick} />
     </section>
+    <CentralSupportReports onSelect={id => pick({ k: 'node', id })} />
     <PacketInspector packetId={packetId} onClose={() => choosePacket(null)} />
     <Dialog.Root open={!!sel && !packetId} onOpenChange={open => { if (!open) close(); }}>
       <Dialog.Portal>

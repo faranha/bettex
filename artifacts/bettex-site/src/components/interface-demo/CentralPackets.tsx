@@ -9,7 +9,7 @@ import { useL } from './CentralAgents';
 import { DECISIONS, ORDERS, POSITIONS, REQUESTS, STATE } from './central-data';
 import { GRAPH_EDGES, nodeOf } from './central-graph-model';
 import { PACKETS, packetById, packetConversation, packetProgress, type GraphPacket } from './central-packets';
-import { bez, ctrlOf, projectPoint, type Cam, type Scene } from './scene3d';
+import { ctrlOf, railPoint, type Cam, type Scene } from './scene3d';
 import './central-packets.css';
 import { useRecordNavigation } from './CentralRecordNavigation';
 
@@ -20,34 +20,37 @@ const packetType = (p: GraphPacket): GraphPacket['title'] => p.exchange === 'que
 
 /** Imperative per-frame placement on the projected Bezier of the packet's own edge. Reverse t when travelling b -> a. */
 export function placePackets(els: Record<string, HTMLElement | null>, sc: Scene, cam: Cam, w: number, h: number, elapsed: number, reduced: boolean) {
+  const labels = new Map<string, { el: HTMLElement; distance: number }>();
   for (const p of PACKETS) {
     const el = els[p.id]; const se = sc.edges.find(q => q.e.id === p.edgeId); const e = GRAPH_EDGES.find(q => q.id === p.edgeId);
     if (!el || !se || !e) continue;
     const a = sc.centers[e.a], b = sc.centers[e.b], c = ctrlOf(a, b, se.lift);
     const rev = p.source !== e.a; const t = packetProgress(p, elapsed, reduced); const tt = rev ? 1 - t : t;
-    const q = projectPoint(bez(a, c, b, tt), cam, w, h); const x0 = q.x, y0 = q.y;
+    const q = railPoint(a, c, b, tt, rev ? -1 : 1, cam, w, h);
     // In-flight packets only: endpoint piles would obscure nodes and steal their clicks.
     // Reduced motion keeps one accessible packet per edge/direction instead of overlapping every replay.
     const available = reduced
       ? PACKETS.find(other => other.edgeId === p.edgeId && other.kind === p.kind)?.id === p.id
       : t > 0.04 && t < 0.96;
     el.hidden = !available || q.x < 22 || q.x > w - 22 || q.y < 22 || q.y > h - 22;
-    const t2 = Math.min(1, Math.max(0, tt + (rev ? -0.02 : 0.02))); const t1 = Math.min(1, Math.max(0, tt - (rev ? -0.02 : 0.02)));
-    const q2 = projectPoint(bez(a, c, b, t2), cam, w, h); const x2 = q2.x, y2 = q2.y;
-    const q1 = projectPoint(bez(a, c, b, t1), cam, w, h);
-    const ang = Math.atan2(y2 - q1.y, x2 - q1.x) * 180 / Math.PI;
-    const off = p.kind === 'decision' ? 16 : -16;
-    el.style.transform = `translate3d(${x0.toFixed(1)}px,${(y0 + off).toFixed(1)}px,0)`; el.style.setProperty('--ang', `${ang.toFixed(0)}deg`);
+    el.removeAttribute('data-label-visible');
+    if (!el.hidden && p.exchange) {
+      const key = `${p.edgeId}-${p.kind}`; const distance = Math.abs(t - 0.5);
+      if (!labels.has(key) || labels.get(key)!.distance > distance) labels.set(key, { el, distance });
+    }
+    el.style.transform = `translate3d(${q.x.toFixed(1)}px,${q.y.toFixed(1)}px,0)`;
+    el.style.setProperty('--ang', `${(q.angle + (rev ? 180 : 0)).toFixed(0)}deg`);
   }
+  labels.forEach(({ el }) => el.setAttribute('data-label-visible', ''));
 }
 
 export function PacketButtons({ els, selectedId, onPick, onHold }: { els: React.MutableRefObject<Record<string, HTMLElement | null>>; selectedId: string | null; onPick: (id: string) => void; onHold: (v: boolean) => void }) {
   const L = useL(); const nm = (id: string) => L(nodeOf(id).name);
-  return <>{PACKETS.map(p => <button key={p.id} type="button" data-demo-local ref={el => { els.current[p.id] = el; }} data-testid={`graph-packet-${p.id}`} aria-pressed={selectedId === p.id}
-    className={`cg-packet ${p.kind} ${selectedId === p.id ? 'on' : ''}`} aria-label={`${L(packetType(p))}: ${nm(p.source)} → ${nm(p.target)}. ${L(p.title)}`}
+  return <>{PACKETS.map(p => <button key={p.id} type="button" data-demo-local ref={el => { els.current[p.id] = el; }} data-testid={`graph-packet-${p.id}`} aria-pressed={selectedId === p.id} data-support-agent={p.exchange ? p.source === 'bettex' ? p.target : p.source : undefined} data-exchange={p.exchange}
+    className={`cg-packet ${p.kind} ${p.exchange ? 'support' : ''} ${p.exchange && ['risk', 'governance'].includes(p.source === 'bettex' ? p.target : p.source) ? 'labeled' : ''} ${selectedId === p.id ? 'on' : ''}`} aria-label={`${L(packetType(p))}: ${nm(p.source)} → ${nm(p.target)}. ${L(p.title)}`}
     onClick={() => onPick(p.id)} onPointerEnter={() => onHold(true)} onPointerLeave={e => onHold(e.currentTarget.matches(':focus-visible'))} onFocus={() => onHold(true)} onBlur={e => onHold(e.currentTarget.matches(':hover'))}>
     <span className="pk-hit"><span className="pk-chip"><ArrowRight aria-hidden="true" /></span></span>
-    <span className="pk-tag">{nm(p.source)} → {nm(p.target)}</span></button>)}</>;
+    <span className="pk-tag">{p.exchange ? `${L(packetType(p))} · ${nm(p.source === 'bettex' ? p.target : p.source)}` : `${nm(p.source)} → ${nm(p.target)}`}</span></button>)}</>;
 }
 
 export function PacketInspector({ packetId, onClose }: { packetId: string | null; onClose: () => void }) {

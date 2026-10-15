@@ -39,6 +39,17 @@ function setCam(c: Cam, w: number, h: number) { CY = Math.cos(c.yaw); SY = Math.
 function pj(x: number, y: number, z: number) { const x2 = x * CY + z * SY, z2 = -x * SY + z * CY; const y3 = y * CP - z2 * SP, z3 = y * SP + z2 * CP; const s = F / Math.max(120, F - z3); PX = W / 2 + OX + x2 * s * ZOOM; PY = H / 2 + OY + y3 * s * ZOOM; PS = s; }
 export function projectPoint(p: V3, c: Cam, w: number, h: number) { setCam(c, w, h); pj(p[0], p[1], p[2]); return { x: PX, y: PY, s: PS }; }
 
+/** Shared screen-space track for canvas rails AND clickable packets.
+ * A normal offset (not a vertical offset) keeps packets on their lane at any camera angle. */
+export function railPoint(a: V3, c: V3, b: V3, t: number, lane: 1 | -1, cam: Cam, w: number, h: number) {
+  const q = projectPoint(bez(a, c, b, t), cam, w, h);
+  const before = projectPoint(bez(a, c, b, Math.max(0, t - 0.005)), cam, w, h);
+  const after = projectPoint(bez(a, c, b, Math.min(1, t + 0.005)), cam, w, h);
+  const dx = after.x - before.x, dy = after.y - before.y;
+  const length = Math.hypot(dx, dy) || 1;
+  return { x: q.x - dy / length * lane * 7, y: q.y + dx / length * lane * 7, angle: Math.atan2(dy, dx) * 180 / Math.PI };
+}
+
 function ring(ctx: CanvasRenderingContext2D, c: V3, rad: number, tilt: number, spin: number, steps = 48) {
   ctx.beginPath();
   for (let i = 0; i <= steps; i++) { const a = (i / steps) * Math.PI * 2 + spin; const x = Math.cos(a) * rad; let y = 0, z = Math.sin(a) * rad; const y2 = y * Math.cos(tilt) - z * Math.sin(tilt), z2 = y * Math.sin(tilt) + z * Math.cos(tilt); y = y2; z = z2; pj(c[0] + x, c[1] + y, c[2] + z); if (i) ctx.lineTo(PX, PY); else ctx.moveTo(PX, PY); }
@@ -70,9 +81,30 @@ export function drawScene(ctx: CanvasRenderingContext2D, sc: Scene, cam: Cam, w:
   }
   for (const se of sc.edges) {
     const a = sc.centers[se.e.a], b = sc.centers[se.e.b], c = ctrlOf(a, b, se.lift); const act = rt.edges.has(se.e.id); const rgb = EDGE_RGB[se.e.type]; const dim = hasSel && !act ? 0.45 : 1;
-    ctx.strokeStyle = `rgba(${rgb},${act ? 0.75 : 0.22 * dim})`; ctx.lineWidth = act ? 1.5 : 0.7; ctx.beginPath();
-    for (let i = 0; i <= 28; i++) { const p = bez(a, c, b, i / 28); pj(p[0], p[1], p[2]); if (i) ctx.lineTo(PX, PY); else ctx.moveTo(PX, PY); } ctx.stroke();
-    const N = act ? 60 : 30; ctx.fillStyle = `rgba(${rgb},${act ? 0.95 : 0.6 * dim})`;
-    for (let i = 0; i < N; i++) { const tt = (i / N + (reduced ? se.phase : se.phase + T * 0.00007 * se.speed)) % 1; const p = bez(a, c, b, tt); pj(p[0] + se.jit[i * 3], p[1] + se.jit[i * 3 + 1], p[2] + se.jit[i * 3 + 2]); const z = (act ? 1.8 : 1.2) * (0.7 + PS * 0.5); ctx.fillRect(PX - z / 2, PY - z / 2, z, z); }
+    const traffic = se.e.a === 'bettex' || se.e.b === 'predictions' || se.e.id === 'predictions-bettex';
+    if (!traffic) {
+      ctx.strokeStyle = `rgba(${rgb},${act ? 0.45 : 0.13 * dim})`; ctx.lineWidth = 1; ctx.beginPath();
+      for (let i = 0; i <= 32; i++) { const p = bez(a, c, b, i / 32); pj(p[0], p[1], p[2]); if (i) ctx.lineTo(PX, PY); else ctx.moveTo(PX, PY); } ctx.stroke();
+      continue;
+    }
+    const support = se.e.type === 'control';
+    for (const lane of [1, -1] as const) {
+      const color = support ? lane === 1 ? AMBER : GREEN : lane === 1 ? CYAN : MAGENTA;
+      ctx.beginPath();
+      for (let i = 0; i <= 48; i++) {
+        const p = railPoint(a, c, b, i / 48, lane, cam, w, h);
+        if (i) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y);
+      }
+      // Broad dark bed separates the route from the particle field.
+      ctx.strokeStyle = 'rgba(2,10,16,.9)'; ctx.lineWidth = 5; ctx.stroke();
+      ctx.strokeStyle = `rgba(${color},${(act ? 0.85 : 0.52) * dim})`; ctx.lineWidth = act ? 1.8 : 1.3; ctx.stroke();
+      // Fixed direction markers belong to the track; only record-backed packets move.
+      for (const t of [0.32, 0.68]) {
+        const p = railPoint(a, c, b, t, lane, cam, w, h);
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate((p.angle + (lane === -1 ? 180 : 0)) * Math.PI / 180);
+        ctx.beginPath(); ctx.moveTo(-3, -3); ctx.lineTo(1, 0); ctx.lineTo(-3, 3);
+        ctx.strokeStyle = `rgba(${color},${0.8 * dim})`; ctx.lineWidth = 1.3; ctx.stroke(); ctx.restore();
+      }
+    }
   }
 }
