@@ -100,3 +100,11 @@ Não reintroduzir as abas Controles, Registros e Comunidade acima do grafo.
 **How to apply:** O grafo fica direto na home, abaixo das carteiras, sem uma
 aba Agentes redundante. Retirar os botões não autoriza apagar os painéis
 existentes nem quebrar seus links.
+
+## Pacotes consultáveis no grafo existente
+
+O criador quer pacotes em movimento no próprio grafo, nos dois sentidos entre BTC/ETH/SOL, Cripto e BETTEX: análises e propostas indo, decisões e orientações voltando. Clicar no pacote abre seus dados; expandir permite consultar os detalhes do histórico relacionado.
+
+**Why:** O criador confirmou esse percurso e acrescentou: “se a pessoa quiser ver mais detalhes pode expandir e ver os detalhes do historico”.
+
+**How to apply:** Melhorar o grafo existente, sem recriar a Central. Vincular os pacotes aos registros demonstrativos e correlacionar envios e respostas; não tratar o movimento visual como prova de agentes ou operações reais. A definição foi aprovada em conversa, sem autorização para implementar naquele momento.
