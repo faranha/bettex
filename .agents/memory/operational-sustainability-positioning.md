@@ -22,3 +22,21 @@ A visão futura é evoluir para BETTEX Bank, um banco descentralizado para brasi
 **Why:** O criador corrigiu o modelo de negócio da candidatura, reiterou a ausência inicial de taxas, explicou os ganhos próprios pelo staking e definiu explicitamente a visão BETTEX Bank. Na revisão do esquema de participação, voltou a corrigir: “nao cobramos taxas, seja preciso”.
 
 **How to apply:** Na candidatura, separar o modelo inicial, as possibilidades futuras de receita e a visão de longo prazo. Não confundir rendimentos dos tokens próprios com receita operacional de taxas nem afirmar que existe um banco autorizado. Este esclarecimento não autoriza ativar taxas, alterar a distribuição ou restaurar textos nas páginas públicas.
+
+## Condição para continuidade
+
+O criador condicionou a continuidade do projeto ao recebimento de algum grant ou apoio externo.
+
+**Why:** O criador disse que não tem mais o que dar ao projeto, “a não ser que nós recebamos algum tipo de grant [...] algum apoio”.
+
+**How to apply:** Não pressupor mais dedicação ou financiamento pessoal do criador ao recomendar próximos passos. Distinguir oportunidades de apoio de recursos efetivamente aprovados; análises não autorizam retomada de desenvolvimento.
+
+## Escala do grant e valor do produto
+
+O criador busca pequenos grants iniciais, seed, de cerca de US$ 10 mil para continuar o desenvolvimento, não financiamento para lançar toda a operação.
+
+O maior valor da BETTEX, segundo o criador, é a visão de produto para um mercado, não a visão de tecnologia.
+
+**Why:** O criador corrigiu uma análise que deu peso excessivo à diferenciação tecnológica e avaliou a captação como se precisasse financiar toda a visão.
+
+**How to apply:** Avaliar a adequação a grants seed pela oportunidade de produto, público e entregas compatíveis com esse valor. Separar essa avaliação da prontidão para operação financeira ou captação pública; não exigir tecnologia proprietária como premissa para reconhecer o valor do produto.

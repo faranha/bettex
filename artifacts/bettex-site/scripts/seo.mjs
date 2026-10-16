@@ -25,6 +25,16 @@ export const htmlFile = route => route === '/' ? 'index.html' : `${route.replace
 // The public static host serves directory indexes and redirects to a final
 // trailing slash. Canonicals and sitemap entries must use that final URL.
 export const canonicalPath = route => route === '/' ? '/' : `${route.replace(/\/+$/, '')}/`;
+// The build retains flat HTML files for host compatibility, but they must not
+// become separate searchable copies of the directory-index pages.
+export function htmlAliasTarget(pathname) {
+  let route;
+  if (pathname.endsWith('/index.html')) route = pathname.slice(0, -11) || '/';
+  else if (pathname.endsWith('.html')) route = pathname.slice(0, -5);
+  else return undefined;
+  if (route === '/en' || route === '/es') route += '/';
+  return routes[route] ? canonicalPath(route) : undefined;
+}
 function translated(text, language) {
   if (language === 'pt') return text;
   if (!messages[text]?.[language]) throw new Error(`Missing ${language} SEO translation: ${text}`);
@@ -74,7 +84,7 @@ export function withMetadata(html, path, overrides) {
   return html.replace(/<!-- SEO:START -->[\s\S]*?<!-- SEO:END -->/, `<!-- SEO:START -->${metadata(path, overrides)}<!-- SEO:END -->`);
 }
 export function discovery() {
-  const urls = Object.entries(routes).filter(([, page]) => page.index).map(([path, page]) => `<url><loc>${escape(`${seo.origin}${canonicalPath(path)}`)}</loc>${languages.map(lang => `<xhtml:link rel="alternate" hreflang="${lang === 'pt' ? 'pt-BR' : lang}" href="${seo.origin}${canonicalPath(localizedPath(page.page, lang))}"/>`).join('')}</url>`).join('\n');
+  const urls = Object.entries(routes).filter(([, page]) => page.index).map(([path, page]) => `<url><loc>${escape(`${seo.origin}${canonicalPath(path)}`)}</loc>${languages.map(lang => `<xhtml:link rel="alternate" hreflang="${lang === 'pt' ? 'pt-BR' : lang}" href="${seo.origin}${canonicalPath(localizedPath(page.page, lang))}"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${seo.origin}${canonicalPath(localizedPath(page.page, 'pt'))}"/></url>`).join('\n');
   return {
     robots: robotsPolicy(seo.origin),
     sitemap: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}</urlset>\n`,

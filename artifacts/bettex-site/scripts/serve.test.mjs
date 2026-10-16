@@ -152,6 +152,47 @@ test('static assets, discovery files, byte ranges and HEAD work', async () => {
   assert.equal(head.status, 200);
   assert.equal(head.body, '');
 });
+test('HTML aliases redirect once to their canonical page, preserving queries', async () => {
+  for (const [alias, target] of [
+    ['/index.html', '/'],
+    ['/pitch.html', '/pitch/'],
+    ['/pitch/index.html', '/pitch/'],
+    ['/documentacao.html', '/documentacao/'],
+    ['/en.html', '/en/'],
+    ['/en/index.html', '/en/'],
+    ['/en/documentation.html', '/en/documentation/'],
+    ['/es/documentacion/index.html', '/es/documentacion/'],
+    ['/app.html', '/app/'],
+  ]) {
+    for (const method of ['GET', 'HEAD']) {
+      const res = await get(`${alias}?utm_source=seo&ref=a%2Fb`, {}, method);
+      assert.equal(res.status, 301, alias);
+      assert.equal(res.headers.location, `${target}?utm_source=seo&ref=a%2Fb`, alias);
+      assert.equal(res.body, '');
+    }
+    assert.equal((await get(target)).status, 200, target);
+  }
+});
+test('downloads and demo stay accessible but out of search indexes', async () => {
+  for (const url of [
+    '/downloads/bettex-documentacao.html',
+    '/downloads/bettex-documentacao-en.html',
+    '/downloads/bettex-documentacao-es.html',
+    '/downloads/bettex-entidade-unica.html',
+    '/app/', '/en/app/', '/es/app/',
+  ]) {
+    const res = await get(url, { 'User-Agent': 'Googlebot/2.1' });
+    assert.equal(res.status, 200, url);
+    assert.equal(res.headers['x-robots-tag'], 'noindex, follow', url);
+    assert.equal((await get(url, {}, 'HEAD')).headers['x-robots-tag'], 'noindex, follow', url);
+  }
+  for (const url of ['/', '/pitch/', '/documentacao/', '/en/', '/es/']) {
+    const res = await get(url);
+    assert.equal(res.headers['x-robots-tag'], undefined, url);
+    assert.match(res.body, /name="robots" content="index, follow"/, url);
+  }
+  assert.equal((await get('/social-preview.html')).headers['x-robots-tag'], 'noindex, nofollow');
+});
 test('CSP allows only hashed inline scripts and denies private artifacts and escaped symlinks', async () => {
   const directory = await mkdtemp(path.join(tmpdir(), 'bettex-static-security-'));
   const script = 'console.log("public-fixture");';

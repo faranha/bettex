@@ -109,6 +109,19 @@ try {
   const sitemap = await (await fetch(origin + '/sitemap.xml')).text();
   assert.ok(sitemap.startsWith('<?xml'));
   assert.equal((sitemap.match(/<loc>/g) ?? []).length, 9);
+  for (const [, entry] of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+    const loc = capture(entry, /<loc>([^<]+)<\/loc>/);
+    const alternates = [...entry.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)];
+    assert.deepEqual(alternates.map(([, language]) => language), ['pt-BR', 'en', 'es', 'x-default'], loc);
+    assert.equal(alternates[3][2], alternates[0][2], `${loc}: default language matches HTML`);
+    for (const [, , href] of alternates) {
+      const response = await fetch(origin + new URL(href).pathname, { redirect: 'manual' });
+      assert.equal(response.status, 200, `${loc}: alternate is a final URL`);
+      const html = await response.text();
+      assert.equal(capture(html, /rel="canonical" href="([^"]+)"/), href, `${loc}: alternate is canonical`);
+      assert.match(html, /name="robots" content="index, follow"/, `${loc}: alternate is indexable`);
+    }
+  }
   assert.ok(!sitemap.includes('/demo'));
   assert.ok(!sitemap.includes('/app'));
   const missing = await fetch(origin + '/pagina-inexistente');
