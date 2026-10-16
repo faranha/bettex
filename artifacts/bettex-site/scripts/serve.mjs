@@ -4,7 +4,7 @@ import { stat, readFile, realpath } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { withMetadata, discovery } from './seo.mjs';
+import { withMetadata, discovery, htmlAliasTarget } from './seo.mjs';
 import { restrictAiCrawler } from './crawler-policy.mjs';
 
 const publicRoot = path.resolve(import.meta.dirname, '../dist/public');
@@ -65,6 +65,12 @@ export function createSiteServer(root = publicRoot) {
       const url = new URL(req.url ?? '/', 'http://localhost');
       const pathname = decodeURIComponent(url.pathname);
       if (restrictAiCrawler(req, res)) return;
+      const aliasTarget = htmlAliasTarget(pathname);
+      if (aliasTarget) {
+        res.writeHead(301, { Location: aliasTarget + url.search });
+        res.end();
+        return;
+      }
       if (pathname === '/robots.txt') {
         const robots = discovery().robots;
         res.writeHead(200, {
@@ -164,6 +170,13 @@ export function createSiteServer(root = publicRoot) {
         'X-Content-Type-Options': 'nosniff',
         'Accept-Ranges': 'bytes',
       };
+      // Downloadable copies are not independent landing pages. Keep them
+      // accessible to crawlers so they can actually see the noindex directive.
+      if (pathname.startsWith('/downloads/') || /^\/(?:(?:en|es)\/)?app\/$/.test(pathname)) {
+        headers['X-Robots-Tag'] = 'noindex, follow';
+      } else if (pathname === '/social-preview.html') {
+        headers['X-Robots-Tag'] = 'noindex, nofollow';
+      }
       let start = 0;
       let end = info.size - 1;
       let status = 200;
