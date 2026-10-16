@@ -37,6 +37,8 @@ O criador busca pequenos grants iniciais, seed, de cerca de US$ 10 mil para cont
 
 O maior valor da BETTEX, segundo o criador, é a visão de produto para um mercado, não a visão de tecnologia.
 
+O público pretendido não tem acesso à tecnologia. A proposta é oferecer uma participação simples: “Ele compra o token, ele não compra a tecnologia”. O usuário não deve precisar operar ou configurar as ferramentas de IA para participar.
+
 **Why:** O criador corrigiu uma análise que deu peso excessivo à diferenciação tecnológica e avaliou a captação como se precisasse financiar toda a visão.
 
-**How to apply:** Avaliar a adequação a grants seed pela oportunidade de produto, público e entregas compatíveis com esse valor. Separar essa avaliação da prontidão para operação financeira ou captação pública; não exigir tecnologia proprietária como premissa para reconhecer o valor do produto.
+**How to apply:** Avaliar a adequação a grants seed pela oportunidade de produto, público e entregas compatíveis com esse valor. Distinguir concorrentes que oferecem ferramentas para o usuário operar de uma participação mediada pelo token. Separar essa avaliação da prontidão para operação financeira ou captação pública; não exigir tecnologia proprietária como premissa para reconhecer o valor do produto. Essa intenção de simplicidade não comprova que o acesso já esteja resolvido nem cria propriedade resgatável da tesouraria ou retorno garantido.
