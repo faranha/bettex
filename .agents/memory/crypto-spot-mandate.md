@@ -40,3 +40,13 @@ O criador quer transformar o agente de cripto em um “quantum trader”: analis
 **Why:** Ao se preparar para continuar o desenvolvimento, definiu essa direção para a inteligência de Cripto.
 
 **How to apply:** Priorizar a discussão de fluxos, comportamento de carteiras e indícios de manipulação, sem tratar esses indícios como prova de intenção ou promessa de antecipação. O termo usado não confirma uma escolha por computação quântica. A direção não autoriza implementação, execução financeira ou alteração das páginas públicas.
+
+## Universo de ativos e visão quântica
+
+O criador determina que a visão quântica entre na BETTEX, deixando a discussão do significado de “quântico” para depois. Quer investigar on-chain quem move o mercado, em vez de fazer trading baseado em gráficos.
+
+BTC, ETH e SOL são os três ativos iniciais para validar essa abordagem, não um limite permanente. O criador quer introduzir novos ativos no subagente Cripto, “assim como faria uma exchange”; a composição do universo de ativos ainda está em discussão.
+
+**Why:** O criador esclareceu sua visão do portfólio e a função dos três ativos iniciais.
+
+**How to apply:** Distinguir conjunto inicial de validação de universo expansível. Não fixar novas moedas, critérios de inclusão ou escopo de lançamento sem discussão; a analogia com exchange não autoriza criar uma exchange. Não antecipar uma definição técnica de “quântico” nem apresentar a abordagem como validada.
