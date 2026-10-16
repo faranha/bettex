@@ -32,3 +32,11 @@ O criador exige um pacote unificado de proposta, independente do ativo, com entr
 **Why:** Corrigiu a definição genérica: precisam estar estruturados quantidade recebida/comparada, filas de comunicação, mínimo para decidir e alocação de capital, não apenas conceitos.
 
 **How to apply:** Entregar contrato de proposta e fluxo com capacidades e regras explícitas, distinguindo propostas numéricas de políticas aprovadas. Não delegar à BETTEX a criação dos termos ou do risco faltantes nem substituir a análise própria do subagente pelo veto independente de Risco.
+
+## Inteligência de fluxos e comportamento
+
+O criador quer transformar o agente de cripto em um “quantum trader”: analisar padrões de manipulação e carteiras on-chain, tentando antecipar movimentos mais do que ler gráficos.
+
+**Why:** Ao se preparar para continuar o desenvolvimento, definiu essa direção para a inteligência de Cripto.
+
+**How to apply:** Priorizar a discussão de fluxos, comportamento de carteiras e indícios de manipulação, sem tratar esses indícios como prova de intenção ou promessa de antecipação. O termo usado não confirma uma escolha por computação quântica. A direção não autoriza implementação, execução financeira ou alteração das páginas públicas.
