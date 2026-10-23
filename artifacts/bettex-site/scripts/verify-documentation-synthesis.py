@@ -22,7 +22,6 @@ import { isDocumentationContinuation } from './src/lib/documentation-prose.ts';
 import { roundTerminology } from './src/lib/round-terminology.ts';
 let input = ''; for await (const part of process.stdin) input += part;
 const { catalog, source } = JSON.parse(input);
-const notices = intelligenceTranslations[intelligenceCopy.governanceNotice];
 for (const [key, entry] of Object.entries(catalog)) {
   if (isDocumentationContinuation(key) && source[key]) {
     entry.pt = source[key].pt ?? key;
@@ -35,10 +34,9 @@ const openings = Object.fromEntries(['hero', 'visaoLead', 'visaoIndependencia', 
   key, Object.fromEntries(Object.entries(intelligenceTranslations[intelligenceCopy[key]])
     .map(([lang, text]) => [lang, terms(text, lang)])),
 ]));
-console.log(JSON.stringify({ catalog, openings, notices: Object.fromEntries(Object.entries(notices).map(([lang, text]) => [lang, terms(text, lang)])) }));
+console.log(JSON.stringify({ catalog, openings }));
 """], input=json.dumps({"catalog": catalog, "source": source}), text=True, capture_output=True, check=True, cwd=app,
 ).stdout)
-notices = editorial["notices"]
 catalog = editorial["catalog"]
 
 for key, entry in catalog.items():
@@ -300,9 +298,9 @@ for route, expected in baseline["routes"].items():
         flows, spacing_errors = audit_spacing(protected_html)
         assert not spacing_errors, f"Documentation text-flow spacing errors: {language}: {spacing_errors[:8]}"
         print(f"{route}: {len(flows)} text flows checked across paragraphs, lists, diagrams, captions, headings and tables")
-        notice = notices[language]
-        assert notice in text, f"Missing localized governance notice: {language}"
-        assert 'data-testid="documentation-governance-notice"' in file.read_text(), f"Missing governance marquee: {language}"
+        assert 'data-testid="documentation-governance-notice"' not in file.read_text(), f"Removed governance marquee reappeared: {language}"
+        for removed_notice in ("NOSSO DEMO É DETERMINÍSTICO", "OUR DEMO IS DETERMINISTIC", "NUESTRO DEMO ES DETERMINISTA"):
+            assert removed_notice.casefold() not in text.casefold(), f"Removed deterministic banner notice reappeared: {language}"
         verify_rules(page.paragraphs, language, "site")
         paragraph_html = "".join(re.findall(r"<p\b[^>]*>.*?</p>", protected_html, re.S))
         assert not re.search(r"</(?:strong|a|em)>[A-Za-zÀ-ÿ0-9]", paragraph_html), f"Words joined after inline formatting: {language}"
