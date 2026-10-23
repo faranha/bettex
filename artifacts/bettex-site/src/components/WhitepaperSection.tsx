@@ -2,7 +2,6 @@ import { useCallback, useContext, useEffect, useRef, useState, type MouseEvent, 
 import { createPortal, flushSync } from 'react-dom';
 import { ChapterContent, chapters } from './WhitepaperChapters';
 import { ChapterVisibility } from './ChapterVisibility';
-import { DocumentationGovernanceMarquee } from './DocumentationGovernanceMarquee';
 import { DocumentationOutlineItems } from './DocumentationOutlineItems';
 import { DocumentationMenuContext, DocumentationMenuItem } from './DocumentationMenuItem';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -490,7 +489,6 @@ export function WhitepaperSection() {
     <>
     {bar}
     <section id="documentacao" className="whitepaper" aria-labelledby="whitepaper-title">
-      <DocumentationGovernanceMarquee />
       <header className="whitepaper__hero page-wrap">
         <div>
           <p className="whitepaper__eyebrow" data-i18n="translated"><span aria-hidden="true" /> {t('DEMO / POC · ARQUITETURA E REGRAS INICIAIS')}</p>

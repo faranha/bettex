@@ -39,11 +39,11 @@ Não exibir opções de download na documentação.
 
 **How to apply:** Não reintroduzir o bloco ou seus botões em atualizações da documentação. A remoção das opções não autoriza apagar arquivos existentes.
 
-Informações de versão e capítulos ficam na faixa vermelha da documentação, sem botão de pausa.
+Não exibir a faixa vermelha da documentação nem a chamada “OUR DEMO IS DETERMINISTIC” e suas traduções.
 
-**Why:** O criador pediu: “tudo sobre v1 etc pode estar na banda vermelha, e nao precisa ter botao de pause”.
+**Why:** O criador substituiu a orientação anterior: “pode tirar isso irmao e a faixa vermelha da documentacao, pode tirar ela inteiramente”.
 
-**How to apply:** Não recriar uma faixa separada para esses metadados nem reintroduzir o botão.
+**How to apply:** Não reintroduzir a faixa ou realocar suas chamadas em outro banner. Isso não altera as regras técnicas do demo.
 
 Na reorganização da venda pública anterior ao vesting, o criador também pediu atualizar o roadmap, acrescentando essa seção da homepage ao escopo então vigente.
 
