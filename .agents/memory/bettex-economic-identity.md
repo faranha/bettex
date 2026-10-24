@@ -11,6 +11,12 @@ O público principal continua sendo o apostador brasileiro, especialmente quem a
 
 **How to apply:** Separar público de aquisição, utilidade do token e universo de operação do agente. Não centrar a proposta em ferramentas para traders nem confundir ausência de decisões operacionais do usuário com ausência de risco. Não apresentar a compra do token como comprovadamente melhor para quem perdeu em apostas; dados de tamanho de audiência exigem fonte antes de publicação.
 
+O criador enfatiza a motivação econômica da participação: “esse é um investimento com retorno todos os dias”. Não reduzir a utilidade do token a acesso ou participação genérica, omitindo os resultados distribuídos nos ciclos diários.
+
+**Why:** O criador corrigiu a descrição que destacou participação e ausência de decisões manuais, mas deixou de explicar a expectativa de retorno diário.
+
+**How to apply:** Explicar a participação nos resultados e a periodicidade diária conforme as regras de staking e elegibilidade. Distinguir expectativa de retorno, frequência de apuração e pagamento de lucro efetivamente disponível; não converter a frase em garantia de lucro diário nem afirmar que o demo já paga retornos reais.
+
 A proposta é transformar apostadores em investidores, nunca transformar apostas em investimento.
 
 **Why:** O criador determinou: “nao podemos falar em nenhum lugar que queremos transformar aposta em investimento, mas transformar apostadores em investidores”.
