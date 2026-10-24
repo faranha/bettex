@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BETTEX 1.0 — Registro de preservação</title>
+<style>
+body{font:16px/1.65 system-ui,sans-serif;color:#162039;background:#f4f1e8;margin:0}
+main{max-width:850px;margin:auto;padding:48px 24px}
+h1{font-size:42px;line-height:1.15}h2{margin-top:36px}
+.label{font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.box{background:white;border:1px solid #ccc;padding:20px;border-radius:10px;margin:24px 0}
+.pending{border-left:5px solid #a96800}code{overflow-wrap:anywhere;font-size:13px}
+table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:10px;border-bottom:1px solid #ddd}
+small{color:#485368}
+@media print{main{padding:0}body{background:white}.box{break-inside:avoid}}
+</style>
+<main>
+<p class="label">Referência canônica do projeto</p>
+<h1>BETTEX 1.0</h1>
+<p>Preservação do estado atual antes de implementar a nova direção de produto.
+Nenhuma mudança de posicionamento, mercado, ativo ou tecnologia foi aplicada.</p>
+<p><strong>Captura iniciada:</strong> 24 de outubro de 2026, 21h46 UTC.<br>
+<strong>Cópias privadas verificadas:</strong> 24 de outubro de 2026, 21h50 UTC.</p>
+<div class="box pending">
+<strong>Estado: projeto, banco de desenvolvimento e App Storage preservados.</strong>
+Ainda não é uma recuperação integral de produção: o banco de produção e os
+serviços externos exigem preservação própria. O checkpoint BETTEX 1.0 ainda
+será criado pelo responsável pelo projeto.
+</div>
+<h2>O que foi preservado</h2>
+<table>
+<tr><th>Camada</th><th>Resultado</th></tr>
+<tr><td>Projeto e materiais</td><td>21.191 arquivos; código, configurações,
+traduções, imagens, documentos, materiais enviados, corpus local e build da web.</td></tr>
+<tr><td>Banco de desenvolvimento</td><td>Dump PostgreSQL consistente; estrutura,
+registros e sequências. Todos os blocos do dump foram decodificados sem erro.</td></tr>
+<tr><td>App Storage</td><td>63 objetos copiados para área privada, com
+verificação de tamanho e CRC32C e registro dos metadados originais.</td></tr>
+<tr><td>Referências visuais</td><td>Homepage, Pitch, documentação e aplicativo,
+em capturas desktop de 1280 × 900.</td></tr>
+<tr><td>Armazenamento durável</td><td>Três arquivos do pacote enviados para
+App Storage privado e relidos para verificar SHA-256.</td></tr>
+</table>
+<h2>Integridade</h2>
+<p><strong>Arquivo do projeto:</strong> 702.492.139 bytes.<br>
+<code>191244a48c1ecbf8f62cfd1cf54d41cf92f1f38a767b56534060669c67bbb4f4</code></p>
+<p><strong>Banco de desenvolvimento:</strong> 28.099.537 bytes.<br>
+<code>4055be6e0471c82da3d9f3990e9adf8b1775237723834455bcd96a09fb260fb0</code></p>
+<p>O arquivo do projeto inclui um inventário com SHA-256 de cada arquivo.
+O recibo privado registra as gerações e os caminhos das cópias no App Storage.</p>
+<h2>Onde está a referência</h2>
+<ul>
+<li>Procedimento canônico: <code>docs/releases/BETTEX-1.0.md</code>.</li>
+<li>Registro: <code>docs/releases/bettex-1.0-record.json</code>.</li>
+<li>Pacote privado local: <code>generated-artifacts/releases/bettex-1.0/</code>.</li>
+<li>Cópia durável: prefixo <code>canonical-releases/bettex-1.0</code>
+dentro do diretório privado configurado no App Storage.</li>
+</ul>
+<p>Os dumps e arquivos privados não estão disponíveis em rotas públicas nem
+incluídos no GitHub. Este documento não contém credenciais ou dados dos usuários.</p>
+<h2>Limites e pendências</h2>
+<ul>
+<li><strong>Produção:</strong> o banco publicado é separado e ainda não foi
+exportado. O dump de desenvolvimento não o substitui.</li>
+<li><strong>Clerk:</strong> contas, configurações do tenant e sessões não estão
+exportadas no pacote.</li>
+<li><strong>Segredos:</strong> valores não foram exportados; devem ser
+preservados no gerenciador de Secrets.</li>
+<li><strong>Dependências e runtime:</strong> lockfile e configurações são
+preservados, mas dependências instaladas e memória dos processos não.</li>
+<li><strong>Estado externo:</strong> dados ao vivo, blockchain e respostas de
+terceiros não voltam no tempo por restauração do projeto.</li>
+<li><strong>Validação:</strong> houve verificação do conteúdo dos arquivos e do
+dump, não um ensaio completo de recuperação em ambiente isolado.</li>
+</ul>
+<h2>Quando pedir “restaure a versão 1.0”</h2>
+<ol>
+<li>Ler o procedimento e o registro canônicos. Não reconstruir por aproximação.</li>
+<li>Preservar o estado então atual e confirmar perdas de dados antes de substituí-los.</li>
+<li>Usar o checkpoint correspondente, quando existir, e conferir as opções de
+recuperação do banco de desenvolvimento.</li>
+<li>Recuperar as cópias privadas e validar hashes antes de extrair ou restaurar.</li>
+<li>Restaurar cada camada separadamente, incluindo produção e configurações
+externas somente quando houver backup e autorização.</li>
+<li>Comparar páginas e funcionalidades com as referências; validar o build.
+Não publicar automaticamente.</li>
+</ol>
+<h2>Próximo marco</h2>
+<p>Completar a preservação dos dados de produção e as referências externas,
+depois criar o checkpoint chamado <strong>BETTEX 1.0</strong>. Nunca substituir
+os pacotes existentes por uma versão posterior com o mesmo nome.</p>
+<small>Documento de preservação. A garantia de recuperação depende da existência,
+integridade e disponibilidade de todas as camadas indicadas.</small>
+</main>
+</html>

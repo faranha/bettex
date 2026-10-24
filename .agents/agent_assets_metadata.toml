@@ -1008,3 +1008,17 @@ mtime_ms = 1792157162819
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/d9759857-1cad-42e9-873a-2ad039b86d24/4f4a263c-f93e-40cd-ae06-87cb30c31b93"
 storage_version_token = "1792157174821686"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "qdZWb3RncEgiTsrjvqTqm"
+uri = "file://docs/releases/BETTEX-1.0.html"
+type = "html"
+title = "BETTEX 1.0 — Registro de preservação"
+description = "Inventário, integridade dos backups, procedimento de restauração e pendências para recuperação completa."
+logical_id = "4ee5b1c9-8f00-4984-bdc2-449e9bf93793"
+content_hash = "sha256:38797e252285b12175ddb09de0dd1af057bfb90e77f1b1ad29469ced34ef12cd"
+size = 5493
+mtime_ms = 1792878728030
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:85425081-599c-486e-b440-09d683e33512/4ee5b1c9-8f00-4984-bdc2-449e9bf93793/974db9e0-3a4e-4302-ab02-488001854f64"
+storage_version_token = "1792878885284203"
+content_type = "text/html"
