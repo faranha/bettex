@@ -50,3 +50,11 @@ BTC, ETH e SOL são os três ativos iniciais para validar essa abordagem, não u
 **Why:** O criador esclareceu sua visão do portfólio e a função dos três ativos iniciais.
 
 **How to apply:** Distinguir conjunto inicial de validação de universo expansível. Não fixar novas moedas, critérios de inclusão ou escopo de lançamento sem discussão; a analogia com exchange não autoriza criar uma exchange. Não antecipar uma definição técnica de “quântico” nem apresentar a abordagem como validada.
+
+## Analogia comercial com corretora
+
+O criador quer usar a similaridade com uma corretora para explicar uma mudança de experiência: em vez de o usuário escolher e operar ativos pela corretora, participa por meio do token BETTEX e o agente analisa e faz o trading. A inclusão de ativos está ligada à identificação de padrões pelo agente, especialmente indícios de manipulação, não apenas ao crescimento do catálogo.
+
+**Why:** O criador corrigiu a interpretação de “listagem”: “você tem agora um token de um agente que faz o trade” e explicou que esse é o motivo da similaridade com a corretora.
+
+**How to apply:** Tratar a analogia como posicionamento e substituição da experiência de decisão manual, não como pedido para construir uma exchange. Distinguir observação, habilitação de um ativo e execução; não presumir padrões validados, direitos novos do token ou eliminação da infraestrutura de negociação.
