@@ -5,6 +5,12 @@ description: Definição econômica e posicionamento público aprovados pelo cri
 
 ## Direção comunitária atual
 
+Para o planejamento da BETTEX 1.5, o criador pediu uma apresentação mais objetiva, que possa crescer, começando com um agente que busque padrões de manipulação e fale a linguagem do público de apostas.
+
+**Why:** O criador relacionou explicitamente a nova proposta ao interesse desse público por manipulação.
+
+**How to apply:** Tratar isso como direção de planejamento, não capacidade implementada ou autorização para alterar a homepage. Distinguir indícios de manipulação de prova e não prometer previsão ou lucro.
+
 O público principal continua sendo o apostador brasileiro, especialmente quem aposta e perde. O eventual foco operacional exclusivo em cripto não muda essa audiência. O criador distingue quem compra BETTEX pela utilidade de participar do sistema, sem tomar as decisões de trading dos ativos, de quem negocia o próprio token de forma discricionária para tentar lucrar com sua cotação; este segundo público também existe, mas não é o alvo principal.
 
 **Why:** O criador corrigiu a interpretação de que especializar a operação em cripto mudaria o público: “A audiência continua a mesma” e “Comprar o token pela utilidade dele. O discricionário vai comprar pelo trading em si”.
