@@ -24,8 +24,8 @@ Nenhuma mudança de posicionamento, mercado, ativo ou tecnologia foi aplicada.</
 <div class="box pending">
 <strong>Estado: projeto, banco de desenvolvimento e App Storage preservados.</strong>
 Ainda não é uma recuperação integral de produção: o banco de produção e os
-serviços externos exigem preservação própria. O checkpoint BETTEX 1.0 ainda
-será criado pelo responsável pelo projeto.
+serviços externos exigem preservação própria. O responsável designou o ponto
+do histórico identificado abaixo como destino canônico BETTEX 1.0.
 </div>
 <h2>O que foi preservado</h2>
 <table>
@@ -77,7 +77,7 @@ dump, não um ensaio completo de recuperação em ambiente isolado.</li>
 <ol>
 <li>Ler o procedimento e o registro canônicos. Não reconstruir por aproximação.</li>
 <li>Preservar o estado então atual e confirmar perdas de dados antes de substituí-los.</li>
-<li>Usar o checkpoint correspondente, quando existir, e conferir as opções de
+<li>Localizar o checkpoint correspondente ao commit canônico abaixo e conferir as opções de
 recuperação do banco de desenvolvimento.</li>
 <li>Recuperar as cópias privadas e validar hashes antes de extrair ou restaurar.</li>
 <li>Restaurar cada camada separadamente, incluindo produção e configurações
@@ -85,10 +85,20 @@ externas somente quando houver backup e autorização.</li>
 <li>Comparar páginas e funcionalidades com as referências; validar o build.
 Não publicar automaticamente.</li>
 </ol>
-<h2>Próximo marco</h2>
-<p>Completar a preservação dos dados de produção e as referências externas,
-depois criar o checkpoint chamado <strong>BETTEX 1.0</strong>. Nunca substituir
-os pacotes existentes por uma versão posterior com o mesmo nome.</p>
+<h2>Destino exato de rollback: BETTEX 1.0</h2>
+<p>Os pedidos <strong>“VOLTE PARA versão 1.0”</strong> e
+<strong>“restaure a versão 1.0”</strong> apontam para:</p>
+<p><code>73d157195397694a5abafc2bb3971db30b1560b7</code><br>
+24/10/2026, 21h54min57s UTC.<br>
+Título: <strong>Add release documentation and workspace capture script for BETTEX 1.0</strong>.</p>
+<p>Não substituir esse alvo pelo último deploy ou por commits posteriores de
+documentação. O commit foi verificado no Git; um UUID separado do checkpoint
+Replit não está disponível pelas ferramentas usadas. Localizar o ponto
+correspondente no histórico por commit, data e título. Esta anotação não
+executa rollback nem cria ou renomeia checkpoints na interface.</p>
+<p>A preservação independente de produção e das configurações externas
+continua pendente. Nunca substituir os pacotes existentes por uma versão
+posterior com o mesmo nome.</p>
 <small>Documento de preservação. A garantia de recuperação depende da existência,
 integridade e disponibilidade de todas as camadas indicadas.</small>
 </main>
