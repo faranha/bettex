@@ -8,7 +8,7 @@ import { installVisualDemoTransport } from '@/components/interface-demo/runtime'
 installVisualDemoTransport();
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useLocale, localizedUrl, t } from '@/lib/i18n';
-import { ArrowDown, ArrowRight, ChartCandlestick, ChevronDown, Menu, Radar, Spade, Trophy, X, type LucideIcon } from 'lucide-react';
+import { ArrowDown, ArrowRight, Menu, X } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -18,15 +18,12 @@ import { Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
 import { DocumentationPage } from '@/pages/documentation';
 import { PitchPage } from '@/pages/pitch';
 import { DemoPage } from '@/pages/demo';
-import { TechnologySection } from '@/components/technology/TechnologySection';
-import { MarketsFloorSection } from '@/components/robot-floor/MarketsFloorSection';
 import { HeroBenefit } from '@/components/hero/HeroBenefit';
 import { BettexMark } from '@/components/BettexMark';
-import { MarketMark, type MarketKind } from '@/components/hero/MarketMark';
-import '@/components/hero/MarketCard.css';
 import '@/components/SiteFooter.css';
 import '@/pages/pitch.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
+import { HomeOperationSection, HomeFocusSection } from '@/components/HomeRevisionSections';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
@@ -50,23 +47,6 @@ const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
 const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR DEMO', href: '/app' }] as const;
 const legacyChapterIds = legacyDocumentationHashes;
 const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
-type Market = {
-  name: string;
-  kind: MarketKind;
-  icon: LucideIcon;
-  visual: string;
-  area: string;
-  intro: string;
-  detail: string;
-};
-
-const markets: Market[] = [
-  { name: 'Ações e cripto', kind: 'trading', icon: ChartCandlestick, visual: 'símbolo de gráfico de negociação', area: 'Ações e cripto', intro: 'Negociação de ações e criptoativos.', detail: 'Compara tendências, liquidez e risco antes de negociar ativos financeiros.' },
-  { name: 'Esportes', kind: 'sports', icon: Trophy, visual: 'símbolo de bola esportiva', area: 'Esportes', intro: 'Surebet automatizada.', detail: 'Compara cotações entre casas de apostas e automatiza a execução de apostas combinadas.' },
-  { name: 'Previsões', kind: 'predictions', icon: Radar, visual: 'símbolo de cenários ramificados', area: 'Previsões', intro: 'Mercados de previsão.', detail: 'Analisa probabilidades, cenários e preços em eventos futuros.' },
-  { name: 'iGaming', kind: 'casino', icon: Spade, visual: 'símbolo de naipe de espadas', area: 'iGaming', intro: 'Exploração automatizada de bônus.', detail: 'Analisa as regras dos bônus e automatiza os métodos para aproveitar as ofertas disponíveis.' },
-];
-
 function usePageLinkProps() {
   // Internal site navigation always stays in the current tab.
   return {};
@@ -182,13 +162,13 @@ function SiteHeader() {
   </header>;
 }
 
-function SiteFooter({ compact = false }: { compact?: boolean }) {
+function SiteFooter({ compact = false, home = false }: { compact?: boolean; home?: boolean }) {
   const linkProps = usePageLinkProps();
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
     {!compact && <div className="site-footer__cta relative overflow-hidden bg-[#2B59FF]">
       <div aria-hidden="true" className="site-footer__sports">
         <img src={`${import.meta.env.BASE_URL}footer-betting-scene.jpg`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
-        <FooterAiGraph />
+        <FooterAiGraph single={home} />
       </div>
       <div className="page-wrap relative">
         <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">
@@ -240,35 +220,12 @@ function SiteFooter({ compact = false }: { compact?: boolean }) {
   </footer>;
 }
 
-function SitePage({ children, documentation = false }: { children: ReactNode; documentation?: boolean }) {
+function SitePage({ children, documentation = false, home = false }: { children: ReactNode; documentation?: boolean; home?: boolean }) {
   return <div style={{ '--pitch-label-1': JSON.stringify(t('Movimentação')), '--pitch-label-2': JSON.stringify(t('Tarifa')), '--pitch-label-3': JSON.stringify(t('Resultado')) } as CSSProperties} className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#F4F1E8]`}>
     <SiteHeader />
     {children}
-    <SiteFooter />
+    <SiteFooter home={home} />
   </div>;
-}
-
-function MarketCard({ market, number }: { market: Market; number: number }) {
-  return <article className={`market-card market-card--${market.kind} flex h-full flex-col overflow-hidden rounded-[18px] border border-[#070B1F]/15 bg-[#F4F1E8]`}>
-    <div className="market-card__stage relative flex h-[190px] shrink-0 items-center justify-center overflow-hidden sm:h-[205px]">
-      <div className="market-card__index absolute left-5 top-5 z-20 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em]"><market.icon className="h-4 w-4" aria-hidden="true" />0{number} / {market.area}</div>
-      <span className="market-card__crosshair market-card__crosshair--tl" aria-hidden="true" />
-      <span className="market-card__crosshair market-card__crosshair--br" aria-hidden="true" />
-      <div className="market-card__composition relative z-10" role="img" aria-label={`Mercado de ${market.area}, ${market.visual}`}>
-        <span className="market-card__ring market-card__ring--outer" aria-hidden="true" />
-        <span className="market-card__ring market-card__ring--inner" aria-hidden="true" />
-        <span className="market-card__chip market-card__chip--a" aria-hidden="true"><i /><i /><i /><i /></span>
-        <span className="market-card__chip market-card__chip--b" aria-hidden="true"><i /><i /><i /><i /></span>
-        <span className="market-card__tile" aria-hidden="true"><MarketMark kind={market.kind} className="market-card__mark" /></span>
-      </div>
-      <div className="market-card__stage-foot absolute bottom-3 left-5 right-5 z-20 flex justify-between border-t border-white/15 pt-2 text-[8px] font-bold uppercase tracking-[.16em]"><span>BETTEX / MERCADO</span><span>0{number} / 04</span></div>
-    </div>
-    <div className="flex flex-1 flex-col p-5 sm:p-6">
-      <div className="min-h-[75px]"><h4 className="display text-[22px] font-extrabold leading-none tracking-[-.055em] text-[#070B1F]">{market.name}</h4><p className="display mt-2 text-base font-bold leading-5 text-[#122353]">{market.intro}</p></div>
-      <p className="market-card__label mono mt-4 text-[9px] font-bold uppercase tracking-[.12em]">Como a BETTEX atua</p>
-      <p className="mt-2 min-h-[70px] text-[13px] leading-[1.55] text-[#183173]">{market.detail}</p>
-    </div>
-  </article>;
 }
 
 function Home() {
@@ -300,7 +257,7 @@ function Home() {
     };
   }, []);
 
-  return <SitePage>
+  return <SitePage home>
     <main className="home-page">
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#F4F1E8]">
         <div className="hero-intro-stage relative">
@@ -314,8 +271,9 @@ function Home() {
               <span className="block">Chega de apostar.</span>{' '}
               <span className="block text-[#F2B632]">Comece a investir.</span>
             </h1>
-            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Um agente de IA que opera em mercados de iGaming, esportes e trading por você</h2>
-            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">O token BETTEX conecta você à economia do projeto e você não perde seus tokens mesmo em dias ruins</p>
+            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.</h2>
+            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">A IA faz as operações. Você participa dos lucros com o token BETTEX.</p>
+            <p className="mt-3 max-w-[520px] text-[17px] font-bold leading-[1.5] text-[#F2B632] sm:text-lg">Ganhe até 1% por dia de lucro.</p>
             <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
               <span>Entenda o projeto</span>
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/20" aria-hidden="true"><ArrowDown size={22} strokeWidth={2.2} /></span>
@@ -326,16 +284,14 @@ function Home() {
         </div>
       </section>
 
-      <TechnologyNetworks />
+      <TechnologyNetworks label="Tecnologias" />
       <HumanStorySection />
 
       <ProjectModelSection />
 
-       <TechnologySection>
-         {markets.map((market, index) => <div className="technology-section__agent-slot" key={market.name}><MarketCard market={market} number={index + 1} /></div>)}
-       </TechnologySection>
-       <MarketsFloorSection />
-        <RoadmapSection />
+      <HomeOperationSection />
+      <HomeFocusSection />
+      <RoadmapSection variant="home" />
 
     </main>
   </SitePage>;

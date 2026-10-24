@@ -15,8 +15,16 @@ export const roadmapStops = [
   { tag: 'DIREÇÃO FUTURA', date: 'Sem prazo', dateTime: undefined, title: 'Autonomia do agente BETTEX', description: 'Agentes de IA assumirão gradualmente as funções hoje exercidas pelo fundador e pelo time. O objetivo é um agente BETTEX totalmente autônomo na operação, com controles verificáveis. Não é uma capacidade já entregue nem uma promessa de data.' },
 ] as const;
 
-export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
-  const total = String(roadmapStops.length).padStart(2, '0');
+type Stop = { tag: string; date: string; dateTime?: string; title: string; description: string; featured?: boolean; extra?: string };
+const homeRoadmapStops: readonly Stop[] = roadmapStops.map((stop, i): Stop => i === 2
+  ? { ...stop, extra: 'Foco inicial em cripto: um agente de IA em um mercado cripto, com o ativo inicial ainda a definir.' }
+  : i === 4
+    ? { ...stop, title: 'Expansão de ativos', description: 'Novos ativos cripto só entram após validação, com integração, controles verificados e adequação legal. Dados públicos não equivalem a operação autorizada.' }
+    : stop);
+
+export function RoadmapSection({ id = 'roadmap', variant = 'default' }: { id?: string; variant?: 'default' | 'home' } = {}) {
+  const stops: readonly Stop[] = variant === 'home' ? homeRoadmapStops : roadmapStops;
+  const total = String(stops.length).padStart(2, '0');
   return (
     <section className="roadmap" id={id} aria-labelledby={`${id}-title`}>
       <div className="roadmap__wrap">
@@ -38,12 +46,12 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
           </div>
 
           <ol className="roadmap__stops">
-            {roadmapStops.map((stop, index) => {
+            {stops.map((stop, index) => {
               const Icon = icons[index];
               const number = String(index + 1).padStart(2, '0');
               return (
               <li
-                className={`roadmap__stop roadmap__stop--${index + 1}${'featured' in stop ? ' roadmap__stop--featured' : ''}`}
+                className={`roadmap__stop roadmap__stop--${index + 1}${stop.featured ? ' roadmap__stop--featured' : ''}`}
                 key={stop.title}
                 data-testid={`roadmap-step-${index + 1}`}
               >
@@ -57,6 +65,7 @@ export function RoadmapSection({ id = 'roadmap' }: { id?: string } = {}) {
                   <time className="roadmap__place-date" dateTime={stop.dateTime}>{stop.date}</time>
                   <h3>{stop.title}</h3>
                   <p>{stop.description}</p>
+                  {stop.extra && <p><strong>{stop.extra}</strong></p>}
                   {(index === 0 || index === 2) && <DemoAppLink className="roadmap__features roadmap__features--demo" data-testid={index === 2 ? 'roadmap-alpha-features' : 'roadmap-beta-features'}><span>Abrir o demo</span><ArrowRight size={16} aria-hidden="true" /></DemoAppLink>}
                 </article>
               </li>

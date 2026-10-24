@@ -110,6 +110,32 @@ verify_intralinks(app / "dist/public")
 for route, expected in baseline["routes"].items():
     file = app / "dist/public" / route.strip("/") / "index.html"
     protected_html = file.read_text()
+    if route in ("/", "/en/", "/es/"):
+        # The creator authorized the complete 1.5 homepage revision. Keep the
+        # original immutable baseline for Pitch/docs and guard the new home
+        # against its own approved copy, anchors and single-agent scope.
+        language = "en" if route.startswith("/en/") else "es" if route.startswith("/es/") else "pt"
+        home = Content()
+        home.feed(protected_html)
+        home_text = " ".join(" ".join(home.parts).split())
+        home_catalog = json.loads((app / "src/lib/locales/english-source-messages.json").read_text())
+        for key in (
+            "Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.",
+            "Ganhe até 1% por dia de lucro.",
+            "A IA faz as operações. Você participa dos lucros com o token BETTEX.",
+            "Observa", "Identifica", "Investe", "Foco inicial",
+        ):
+            phrase = key if language == "pt" else home_catalog[key][language]
+            assert phrase in home_text, f"Missing approved 1.5 homepage text: {route}: {phrase}"
+        for anchor in ("inicio", "historia", "participacao", "tecnologia", "mercados", "roadmap"):
+            assert f'id="{anchor}"' in protected_html, f"Missing homepage anchor: {route}: {anchor}"
+        assert len(re.findall(r"<h1\b", protected_html)) == 1, f"Homepage must retain one H1: {route}"
+        assert 'section-nova-economia' not in protected_html, f"Removed section restored: {route}"
+        assert 'technology-section__agents' not in protected_html, f"Old multimarket diagram restored: {route}"
+        assert 'alt="Starknet"' in protected_html and 'alt="Allora"' in protected_html, route
+        assert not re.search(r'alt="(?:Ethereum|Arbitrum)"', protected_html), route
+        print(f"{route}: approved 1.5 homepage copy, anchors and single-agent presentation verified")
+        continue
     if route in ("/documentacao", "/en/documentation", "/es/documentacion"):
         from documentation_audit_html import documentation_html
         protected_html = documentation_html(app, route)
@@ -168,6 +194,15 @@ for route, expected in baseline["routes"].items():
         assert guarded_structure.count(rescue_image) == 1, f"Missing approved AI rescue artwork: {route}"
         original_image = ["img", "src", f"/pitch-hero-app-cutout-{language}.webp"]
         guarded_structure = [original_image if item == rescue_image else item for item in guarded_structure]
+        # The shared brand strip was separately authorized to lose exactly
+        # Ethereum and Arbitrum. Reconstruct only those two historical image
+        # entries so every other Pitch link/image/block remains fingerprinted.
+        assert not any(item == ["img", "src", "/technologies/arbitrum.webp"] or
+                       item == ["img", "src", "/technologies/ethereum.webp"]
+                       for item in guarded_structure), f"Retired brand restored: {route}"
+        for kept, removed in (("starknet.svg", "arbitrum.webp"), ("allora.webp", "ethereum.webp")):
+            position = guarded_structure.index(["img", "src", f"/technologies/{kept}"])
+            guarded_structure.insert(position, ["img", "src", f"/technologies/{removed}"])
     if "textSha256" not in expected:
         # Verify the authorized link-only replacement separately; preserve the original
         # structure fingerprint for every pre-existing block, image and link.

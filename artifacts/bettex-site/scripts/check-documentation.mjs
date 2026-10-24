@@ -57,7 +57,10 @@ assert.match(chapters, /contratos Solidity e endereços EVM não são transferid
 const brands = await read('src/components/technology/TechnologyNetworks.tsx');
 assert.match(brands, /technologies\/starknet\.svg/);
 assert.match(brands, /alt="Starknet"/);
-assert.match(brands, />Parceiros</);
+assert.match(brands, /label = 'Parceiros'/);
+assert.match(brands, /alt="Allora"/);
+assert.doesNotMatch(brands, /alt="(?:Ethereum|Arbitrum)"/);
+assert.match(await read('src/App.tsx'), /<TechnologyNetworks label="Tecnologias"/);
 assert.match(tokenMaterials, /Starknet e Arbitrum One são alternativas/);
 const networkCosts = await read('src/components/ServiceFees.tsx');
 assert.doesNotMatch(publicCopy + networkCosts, /contribuição por serviços|receita operacional|sustentabilidade operacional|sustentar o serviço pela tesouraria/i, 'Public documentation leaves operating funding open.');

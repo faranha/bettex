@@ -2,8 +2,14 @@
 import { useId } from 'react';
 
 /** Decorative luminous AI graph for the footer CTA. Pure SVG, aria-hidden. */
-export function FooterAiGraph() {
+export function FooterAiGraph({ single = false }: { single?: boolean } = {}) {
   const id = useId().replace(/:/g, '');
+  if (single) return <svg className="footer-ai" viewBox="0 0 640 420" aria-hidden="true" focusable="false">
+    <defs><radialGradient id={`${id}c`}><stop offset="0" stopColor="#fff6d6" /><stop offset=".35" stopColor="#F2B632" /><stop offset="1" stopColor="#F2B632" stopOpacity="0" /></radialGradient></defs>
+    <circle cx="380" cy="210" r="150" fill={`url(#${id}c)`} className="footer-ai__halo" opacity=".18" />
+    <circle cx="380" cy="210" r="46" className="footer-ai__ring" /><circle cx="380" cy="210" r="30" fill="#070B1F" stroke="#F2B632" strokeWidth="1.1" />
+    <image href={`${import.meta.env.BASE_URL}bettex-mark-gamblefi.svg`} x="358" y="188" width="44" height="44" preserveAspectRatio="xMidYMid meet" />
+  </svg>;
   return <svg className="footer-ai" viewBox="0 0 640 420" aria-hidden="true" focusable="false">
     <defs>
       <radialGradient id={`${id}c`}><stop offset="0" stopColor="#fff6d6" /><stop offset=".35" stopColor="#F2B632" /><stop offset="1" stopColor="#F2B632" stopOpacity="0" /></radialGradient>

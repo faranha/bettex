@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { ArrowDownRight, ArrowLeft, ArrowRight, Wallet } from 'lucide-react';
 import { CommunityCTA } from '@/components/CommunityCTA';
-import { TokenIllustration, DepositIllustration, CoordinationIllustration } from '@/components/ProjectModelIllustrations';
+import { TokenIllustration, DepositIllustration } from '@/components/ProjectModelIllustrations';
 
-const markets = ['Previsões', 'Ações e cripto', 'Esportes', 'iGaming'] as const;
 
 const STEP_COUNT = 4;
 const dotLabels = ['Ir para a etapa 1', 'Ir para a etapa 2', 'Ir para a etapa 3', 'Ir para a etapa 4'];
@@ -202,20 +201,11 @@ export function ProjectModelSection() {
         }
         @media (prefers-reduced-motion: reduce) { .pm-dot::before { transition: none; } }
       `}</style>
-      <div className="pm-casino-wheel" aria-hidden="true" />
-      <div className="pm-casino-cards" aria-hidden="true"><span className="pm-casino-card">♠</span><span className="pm-casino-card">♦</span></div>
-      <div className="pm-sport-ball" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="60" cy="60" r="54" />
-          <path d="M60 34 79 48 72 70 48 70 41 48Z" fill="currentColor" fillOpacity=".12" />
-          <path d="M60 34V7 M79 48l26-9 M72 70l16 29 M48 70 32 99 M41 48l-26-9 M15 39l13-22 M60 7 28 17 M60 7l32 10 M105 39 92 17 M32 99l28 14 28-14" />
-        </svg>
-      </div>
       <div className="pm-wrap">
         <div className="pm-head">
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
-            <h2 id="pm-heading" className="pm-title">Compre, participe.<br /><span>Receba quando houver lucro elegível.</span></h2>
+            <h2 id="pm-heading" className="pm-title">Compre, participe.<br /><span>Receba sua parte dos lucros.</span></h2>
           </div>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-celebrating.webp`} width={1024} height={1024} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
@@ -229,7 +219,7 @@ export function ProjectModelSection() {
               <span className="pm-index">01 / COMPRA</span>
               <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
               <h3>Compre <em>BETTEX.</em></h3>
-              <p className="pm-detail">Faça sua compra pelo aplicativo e acompanhe seus tokens. A entrada em moeda local depende de provedor externo habilitado.</p>
+              <p className="pm-detail">Compre BETTEX pelo aplicativo e acompanhe seus tokens.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / SALDO BETTEX</span>
@@ -240,19 +230,10 @@ export function ProjectModelSection() {
               <p className="pm-detail">Todo BETTEX na carteira oficial participa automaticamente, sem ativação. Quem entra durante uma rodada espera a próxima. Receber a sua parte não tira seus tokens, mas qualquer saída cancela créditos ainda não pagos.</p>
             </div>
             <div className="pm-step">
-              <span className="pm-index">03 / ANÁLISE E OPERAÇÕES</span>
-              <div className="pm-visual" aria-hidden="true">
-                <CoordinationIllustration />
-              </div>
-              <h3>Nossa IA analisa <em>e opera em vários mercados.</em></h3>
-              <p className="pm-detail">Um agente BETTEX cruza análises de diferentes mercados antes de cada operação, segundo critérios e limites de risco.</p>
-              <div className="pm-agent-list" aria-label="Mercados em que a BETTEX opera">
-                {markets.map((market) => (
-                  <div className="pm-agent" key={market}>
-                    <strong>{market}</strong>
-                  </div>
-                ))}
-              </div>
+              <span className="pm-index">03 / AGENTE DE IA</span>
+              <div className="pm-visual" aria-hidden="true"><img src={`${import.meta.env.BASE_URL}agents/bettex-intelligence-brain.webp`} alt="" width={84} height={84} loading="lazy" decoding="async" style={{ height: 84, width: 84, objectFit: 'contain' }} /></div>
+              <h3>Um agente de IA <em>investe contra a manipulação.</em></h3>
+              <p className="pm-detail">Um único agente de IA identifica padrões de manipulação no mercado cripto e investe contra quem os provoca, segundo critérios e limites de risco.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">04 / RESULTADO</span>
@@ -263,7 +244,8 @@ export function ProjectModelSection() {
                 <ArrowDownRight className="pm-profit-arrow" size={31} strokeWidth={2.2} />
                 <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
               </div>
-              <h3>Quando houver lucro elegível, <em>você recebe sua parte.</em></h3>
+              <h3>Você recebe <em>sua parte dos lucros.</em></h3>
+              <p className="pm-detail">Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é creditada em USDC.</p>
             </div>
           </div>
           <div className="pm-nav" data-testid="controls-etapas">
@@ -276,7 +258,7 @@ export function ProjectModelSection() {
             <button type="button" className="pm-nav-btn" onClick={() => goTo(active + 1)} disabled={active === STEP_COUNT - 1} aria-label="Próxima etapa" data-testid="button-proxima-etapa"><ArrowRight size={18} aria-hidden="true" /></button>
           </div>
           <div className="pm-panel-foot">
-            <p>Sem lucro elegível não há distribuição, e os resultados não são garantidos.{' '}<span>Mercados proibidos no seu país de origem são desabilitados automaticamente.</span></p>
+            <p>Sem lucro elegível não há distribuição, e os resultados não são garantidos.</p>
           </div>
         </div>
         <CommunityCTA source="participacao" label="Entre na comunidade" note="Tire dúvidas antes de participar." className="!justify-end" />

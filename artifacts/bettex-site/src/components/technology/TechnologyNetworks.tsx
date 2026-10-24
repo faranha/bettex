@@ -1,10 +1,10 @@
 import './TechnologyNetworks.css';
 
-export function TechnologyNetworks() {
+export function TechnologyNetworks({ label = 'Parceiros' }: { label?: string } = {}) {
   return (
     <section id="redes-tecnologias" className="technology-networks" aria-label="Redes e tecnologias" data-testid="technology-networks">
       <div className="technology-networks__wrap">
-      <p className="technology-networks__label">Parceiros</p>
+      <p className="technology-networks__label">{label}</p>
       <ul className="technology-networks__list">
         <li>
           <div className="technology-networks__logo technology-networks__logo--starknet">

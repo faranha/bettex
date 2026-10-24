@@ -39,6 +39,19 @@ operações e não autoriza publicação.
 
 ## Registro de evolução
 
+### Homepage — execução autorizada em 25/10/2026
+
+Aplicar o plano aprovado à homepage, preservando “Chega de apostar. Comece a
+investir.”, a identidade visual e a narrativa para o apostador brasileiro.
+A explicação do agente deve destacar a identificação de padrões de manipulação
+no mercado e o investimento contra quem manipula.
+
+O escopo inclui hero, participação pelo token, funcionamento do agente, foco
+inicial em cripto, roadmap e elementos de navegação, com traduções PT/EN/ES.
+Preservar as regras econômicas e as demais páginas ao alterar componentes
+compartilhados. Ethereum e Arbitrum foram retirados da faixa de marcas,
+mantendo Starknet e Allora. A atualização da homepage não publica o projeto.
+
 As próximas decisões e implementações devem identificar seu estado explicitamente.
 O checkpoint de referência próprio da 1.5 será registrado quando for designado,
 sem substituir o destino de restauração da 1.0.
