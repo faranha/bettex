@@ -88,7 +88,25 @@ Não afirmar que o snapshot é completo enquanto essas pendências existirem.
 
 ## Checkpoint
 
-O criador pretende criar o checkpoint **depois** desta preservação, com o nome
-**BETTEX 1.0**. Não afirmar que esse checkpoint já foi criado por este trabalho.
-Quando ele existir, associar sua identificação ao registro, sem modificar os
-payloads já preservados.
+O criador designou expressamente **este ponto do histórico** como o destino
+canônico de rollback **BETTEX 1.0**.
+
+- **Commit exato:** `73d157195397694a5abafc2bb3971db30b1560b7`.
+- **Data do commit:** `2026-10-24T21:54:57Z` (24/10/2026, 23h54min57s em
+  Africa/Khartoum).
+- **Título no histórico:** `Add release documentation and workspace capture script for BETTEX 1.0`.
+- **Comandos equivalentes:** “VOLTE PARA versão 1.0”, “VOLTE PARA versao 1.0”
+  e “restaure a versão 1.0”.
+
+Esses pedidos apontam para **esse commit**, não para o commit anterior à captura,
+o último deploy, a versão mais recente ou os commits posteriores que apenas
+registram esta identificação. Não mudar o alvo por causa de novas alterações.
+
+O identificador acima foi conferido no Git. Um UUID separado do checkpoint da
+interface Replit não está disponível pelas ferramentas usadas; não inventá-lo.
+Ao abrir o histórico de checkpoints, localizar o ponto correspondente a esse
+commit, data e título antes de confirmar a restauração.
+
+Esta anotação não executa rollback, não cria ou renomeia um checkpoint na
+interface e não altera os payloads preservados. As limitações de produção,
+Clerk e Secrets descritas acima continuam válidas.

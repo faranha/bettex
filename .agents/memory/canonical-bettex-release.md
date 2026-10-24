@@ -5,9 +5,15 @@ description: Significado do pedido de restauração e distinção entre versão 
 
 O criador pediu salvar a versão atual inteira como **BETTEX 1.0**, antes de implementar a simplificação discutida. “Restaure a versão 1.0” deve apontar para a referência documentada em `docs/releases/BETTEX-1.0.md`, nunca para uma aproximação reconstruída a partir da conversa.
 
-**Why:** O criador exige que o site e sistema possam voltar à aparência e ao estado preservados e pretende criar um checkpoint chamado 1.0 depois da preservação.
+**Why:** O criador exige que o site e sistema possam voltar à aparência e ao estado preservados e depois designou expressamente o ponto atual do histórico como o destino de “VOLTE PARA versao 1.0”.
 
 **How to apply:** Confirmar existência e integridade dos arquivos indicados no registro canônico. Não sobrescrever os backups da 1.0. Consultar as limitações de produção, Clerk, Secrets e serviços externos antes de prometer restauração integral. A direção de cripto, um ativo e retirada de Arbitrum continuava somente no planejamento no momento da solicitação.
+
+O destino exato está fixado na seção “Checkpoint” do documento canônico e no registro JSON associado. Não trocar esse alvo por um commit posterior que apenas documenta a referência, pelo último deploy ou pelo snapshot anterior à captura.
+
+**Why:** O criador pediu: “registre na documentacao este exato checkpoint” e “o rollback vai apontar para cá”.
+
+**How to apply:** Conferir commit, data e título registrados antes de orientar um rollback. Distinguir a referência Git verificada de um UUID de checkpoint Replit que não tenha sido obtido.
 
 Uma versão canônica exige preservar dados e arquivos fora do Git; a integridade de uma cópia enviada deve ser verificada relendo-a no armazenamento de destino, não apenas calculando o hash local.
 

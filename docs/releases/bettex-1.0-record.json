@@ -21,8 +21,19 @@
   "privateStorageRelativePrefix": "canonical-releases/bettex-1.0",
   "integrityAuthority": "Private payload-manifest.json and storage-receipt.json; SHA-256 plus object generation references.",
   "checkpoint": {
-    "intendedName": "BETTEX 1.0",
-    "status": "to be created by the creator after preservation"
+    "name": "BETTEX 1.0",
+    "status": "canonical rollback target designated by the creator",
+    "gitCommit": "73d157195397694a5abafc2bb3971db30b1560b7",
+    "gitCommitCreatedAtUtc": "2026-10-24T21:54:57Z",
+    "gitCommitTitle": "Add release documentation and workspace capture script for BETTEX 1.0",
+    "replitCheckpointId": null,
+    "identificationNote": "Exact verified Git reference for the point designated by the creator; no separate Replit checkpoint UUID is available through the tools used.",
+    "restoreCommands": [
+      "VOLTE PARA versão 1.0",
+      "VOLTE PARA versao 1.0",
+      "restaure a versão 1.0"
+    ],
+    "doNotRetargetToLaterCommits": true
   },
   "externalRecoveryRequired": [
     "Independent production database backup",
