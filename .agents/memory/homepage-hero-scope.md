@@ -29,6 +29,12 @@ O criador exige que o plano da nova homepage detalhe cada seção e cada element
 
 **How to apply:** Inspecionar a página existente antes de propor alterações; separar plano de execução autorizada e não interpretar a troca de marcas como migração técnica de rede.
 
+O criador determinou que o documento siga o que ele aprovar, sem adicionar observações editoriais do assistente como o comentário sobre sustentação das chamadas de ganho diário e saída.
+
+**Why:** O criador pediu: “Voce vai fazer como eu aprovar sem adicionar observacoes como essa no documento”.
+
+**How to apply:** Manter comentários de revisão separados do documento e do copy aprovado; não inserir essa metaconversa como conteúdo do produto.
+
 ## Histórico de textos de apoio anterior à direção da 1.5
 
 Os dois textos de apoio do hero haviam sido definidos literalmente pelo criador:
