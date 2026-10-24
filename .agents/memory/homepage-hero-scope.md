@@ -15,7 +15,17 @@ Não exibir a faixa Nova Economia da homepage, com o texto “A IA vai substitui
 
 **How to apply:** Remover também sua opção na navegação da homepage. Não reintroduzir a faixa; preservar o restante da homepage e as pesquisas do Pitch e da documentação.
 
-Os dois textos de apoio do hero foram definidos literalmente pelo criador:
+## Direção do hero para a BETTEX 1.5
+
+O criador corrigiu a proposta de reformulação: o pitch não deve mudar muito e o hero deve preservar “Chega de apostar, comece a investir”. Rejeitou o apoio sobre operar em iGaming, esportes e trading e propôs “Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser” e “Ganhe até 1% por dia de lucro”.
+
+**Why:** O criador rejeitou substituir a promessa principal por uma narrativa sobre investigação de manipulação.
+
+**How to apply:** No planejamento da 1.5, simplificar sem reinventar o pitch; explicar o agente abaixo da proposta principal. As frases econômicas são copy solicitado, não evidência de retorno ou liquidez: verificar sustentação antes de apresentá-las como capacidades reais. Esta discussão não altera o site.
+
+## Histórico de textos de apoio anterior à direção da 1.5
+
+Os dois textos de apoio do hero haviam sido definidos literalmente pelo criador:
 
 - “Um agente de IA que opera em mercados de iGaming, esportes e trading por você”
 - “O token BETTEX conecta você à economia do projeto e você não perde seus tokens mesmo em dias ruins”
