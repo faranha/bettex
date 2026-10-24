@@ -23,6 +23,12 @@ O criador corrigiu a proposta de reformulação: o pitch não deve mudar muito e
 
 **How to apply:** No planejamento da 1.5, simplificar sem reinventar o pitch; explicar o agente abaixo da proposta principal. As frases econômicas são copy solicitado, não evidência de retorno ou liquidez: verificar sustentação antes de apresentá-las como capacidades reais. Esta discussão não altera o site.
 
+O criador exige que o plano da nova homepage detalhe cada seção e cada elemento, incluindo o que será preservado, removido e substituído. Pediu iniciar retirando Ethereum e Arbitrum da apresentação de marcas, mantendo apenas Starknet e Allora.
+
+**Why:** O criador rejeitou planos genéricos que não explicitam como cada parte da página atual será alterada.
+
+**How to apply:** Inspecionar a página existente antes de propor alterações; separar plano de execução autorizada e não interpretar a troca de marcas como migração técnica de rede.
+
 ## Histórico de textos de apoio anterior à direção da 1.5
 
 Os dois textos de apoio do hero haviam sido definidos literalmente pelo criador:
