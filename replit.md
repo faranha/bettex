@@ -1,5 +1,14 @@
 # BETTEX
 
+## Versionamento atual
+
+A versão em desenvolvimento é **BETTEX 1.5**, a partir de 25/10/2026.
+Organizar os novos planos, decisões e implementações nessa versão, conforme
+`docs/releases/README.md` e `docs/releases/current-version.json`.
+A **BETTEX 1.0** permanece congelada como referência de restauração, no destino
+exato registrado em `docs/releases/bettex-1.0-record.json`.
+O registro da 1.5 não altera o produto, a publicação ou as autorizações editoriais.
+
 Current editorial work is limited to documentation. The current homepage and Pitch are finalized and canonical. Their protection below overrides all earlier editorial permissions, including shared-roadmap exceptions.
 
 ## Estrutura aprovada da documentação — regra permanente
