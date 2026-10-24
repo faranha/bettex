@@ -1,0 +1,11 @@
+{
+  "product": "BETTEX",
+  "developmentVersion": "1.5",
+  "status": "in-development",
+  "effectiveFrom": "2026-10-25",
+  "versionDocument": "docs/releases/BETTEX-1.5.md",
+  "frozenRestoreVersion": "1.0",
+  "restoreRecord": "docs/releases/bettex-1.0-record.json",
+  "versionRegistrationChangesProduct": false,
+  "publicationStatus": "not changed by version registration"
+}
