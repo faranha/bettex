@@ -15,8 +15,8 @@ export function HumanStorySection() {
               <p className="hs-risk-label">A IA opera. A comunidade participa.</p>
               <h3>Na BETTEX, não é impulso: a IA faz as operações.</h3>
               <ul>
-                <li><strong>Análise, não palpite</strong><span>Nossa IA cruza análises de diferentes mercados antes de operar.</span></li>
-                <li><strong>Você faz parte da comunidade</strong><span>Compartilhe ideias, acompanhe as operações e ajude nas decisões do projeto.</span></li>
+                <li><strong>Análise, não palpite</strong><span>Nossa IA identifica padrões de manipulação no mercado e investe contra quem os provoca.</span></li>
+                <li><strong>Participe sem escolher operações</strong><span>Você participa dos lucros com o token BETTEX, sem decidir cada operação, e acompanha o projeto na comunidade.</span></li>
               </ul>
             </div>
           </div>

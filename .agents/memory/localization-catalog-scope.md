@@ -7,6 +7,12 @@ The site catalog audit must only collect copy handled by the site's translation 
 
 For public hero and diagram copy handled by the site runtime, prefer the canonical translation catalog over local objects keyed by PT/EN/ES.
 
+SEO translation coverage must be checked separately from runtime UI coverage: a message present in a supplemental runtime catalog can still be missing from the catalog consumed by prerendered metadata.
+
+**Why:** Homepage UI localization passed, but prerendering failed on the new SEO description because metadata used only the primary catalog.
+
+**How to apply:** Put new page descriptions in the catalog actually consumed by the SEO generator and verify prerendering in all three languages.
+
 **Why:** Local multilingual objects were scanned as Portuguese source messages, so their English and Spanish values incorrectly became new translation requirements.
 
 **How to apply:** Keep one canonical source message and translate it through the site runtime; reserve isolated multilingual tuples for explicitly isolated, separately audited components.

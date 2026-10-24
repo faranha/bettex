@@ -9,7 +9,7 @@ A **BETTEX 1.0** permanece congelada como referência de restauração, no desti
 exato registrado em `docs/releases/bettex-1.0-record.json`.
 O registro da 1.5 não altera o produto, a publicação ou as autorizações editoriais.
 
-Current editorial work is limited to documentation. The current homepage and Pitch are finalized and canonical. Their protection below overrides all earlier editorial permissions, including shared-roadmap exceptions.
+Em 25/10/2026, o criador autorizou executar o plano da homepage BETTEX 1.5: preservar o hero “Chega de apostar. Comece a investir.” e a identidade visual, simplificar para um agente focado inicialmente em cripto e explicitar a identificação de padrões de manipulação e operações contra quem manipula. O escopo desta autorização é a homepage e suas traduções PT/EN/ES; não altera a operação do demo, a tokenomics, o Pitch ou a documentação. Componentes compartilhados devem preservar as demais páginas. A retirada de Ethereum e Arbitrum da faixa compartilhada de marcas já foi autorizada separadamente.
 
 ## Estrutura aprovada da documentação — regra permanente
 

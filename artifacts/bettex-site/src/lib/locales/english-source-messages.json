@@ -1,16 +1,79 @@
 {
-  "Close": { "pt": "Fechar", "en": "Close", "es": "Cerrar" },
-  "Loading": { "pt": "Carregando", "en": "Loading", "es": "Cargando" },
-  "Previous": { "pt": "Anterior", "en": "Previous", "es": "Anterior" },
-  "Next": { "pt": "Próximo", "en": "Next", "es": "Siguiente" },
-  "Go to previous page": { "pt": "Ir para a página anterior", "en": "Go to previous page", "es": "Ir a la página anterior" },
-  "Go to next page": { "pt": "Ir para a próxima página", "en": "Go to next page", "es": "Ir a la página siguiente" },
-  "Previous slide": { "pt": "Slide anterior", "en": "Previous slide", "es": "Diapositiva anterior" },
-  "Next slide": { "pt": "Próximo slide", "en": "Next slide", "es": "Diapositiva siguiente" },
-  "Toggle Sidebar": { "pt": "Abrir ou fechar menu lateral", "en": "Toggle Sidebar", "es": "Abrir o cerrar menú lateral" },
-  "Displays the mobile sidebar.": { "pt": "Exibe o menu lateral no celular.", "en": "Displays the mobile sidebar.", "es": "Muestra el menú lateral en el móvil." },
-  "More pages": { "pt": "Mais páginas", "en": "More pages", "es": "Más páginas" },
-  "pagination": { "pt": "Paginação", "en": "pagination", "es": "Paginación" },
+  "Você recebe": {
+    "pt": "Você recebe",
+    "en": "You receive",
+    "es": "Recibes"
+  },
+  "sua parte dos lucros.": {
+    "pt": "sua parte dos lucros.",
+    "en": "your share of the profits.",
+    "es": "tu parte de los beneficios."
+  },
+  "Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é creditada em USDC.": {
+    "pt": "Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é creditada em USDC.",
+    "en": "Results are calculated in daily cycles. When profits are available for distribution, your share is credited in USDC.",
+    "es": "Los resultados se calculan en ciclos diarios. Cuando hay beneficios disponibles para distribuir, tu parte se acredita en USDC."
+  },
+  "Close": {
+    "pt": "Fechar",
+    "en": "Close",
+    "es": "Cerrar"
+  },
+  "Loading": {
+    "pt": "Carregando",
+    "en": "Loading",
+    "es": "Cargando"
+  },
+  "Previous": {
+    "pt": "Anterior",
+    "en": "Previous",
+    "es": "Anterior"
+  },
+  "Next": {
+    "pt": "Próximo",
+    "en": "Next",
+    "es": "Siguiente"
+  },
+  "Go to previous page": {
+    "pt": "Ir para a página anterior",
+    "en": "Go to previous page",
+    "es": "Ir a la página anterior"
+  },
+  "Go to next page": {
+    "pt": "Ir para a próxima página",
+    "en": "Go to next page",
+    "es": "Ir a la página siguiente"
+  },
+  "Previous slide": {
+    "pt": "Slide anterior",
+    "en": "Previous slide",
+    "es": "Diapositiva anterior"
+  },
+  "Next slide": {
+    "pt": "Próximo slide",
+    "en": "Next slide",
+    "es": "Diapositiva siguiente"
+  },
+  "Toggle Sidebar": {
+    "pt": "Abrir ou fechar menu lateral",
+    "en": "Toggle Sidebar",
+    "es": "Abrir o cerrar menú lateral"
+  },
+  "Displays the mobile sidebar.": {
+    "pt": "Exibe o menu lateral no celular.",
+    "en": "Displays the mobile sidebar.",
+    "es": "Muestra el menú lateral en el móvil."
+  },
+  "More pages": {
+    "pt": "Mais páginas",
+    "en": "More pages",
+    "es": "Más páginas"
+  },
+  "pagination": {
+    "pt": "Paginação",
+    "en": "pagination",
+    "es": "Paginación"
+  },
   "Technology references": {
     "pt": "Referências tecnológicas",
     "en": "Technology references",
@@ -90,5 +153,210 @@
     "en": "Value too high for this demonstration.",
     "es": "Valor muy alto para esta demostración.",
     "pt": "Valor muito alto para esta demonstração."
+  },
+  "Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.": {
+    "pt": "Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.",
+    "en": "Earn money every day with a single investment and leave whenever you want.",
+    "es": "Gana dinero todos los días con una única inversión y sal cuando quieras."
+  },
+  "A IA faz as operações. Você participa dos lucros com o token BETTEX.": {
+    "pt": "A IA faz as operações. Você participa dos lucros com o token BETTEX.",
+    "en": "The AI makes the trades. You share in the profits with the BETTEX token.",
+    "es": "La IA hace las operaciones. Tú participas en las ganancias con el token BETTEX."
+  },
+  "Ganhe até 1% por dia de lucro.": {
+    "pt": "Ganhe até 1% por dia de lucro.",
+    "en": "Earn up to 1% profit per day.",
+    "es": "Gana hasta un 1% de beneficio por día."
+  },
+  "Tecnologias": {
+    "pt": "Tecnologias",
+    "en": "Technologies",
+    "es": "Tecnologías"
+  },
+  "Nossa IA identifica padrões de manipulação no mercado e investe contra quem os provoca.": {
+    "pt": "Nossa IA identifica padrões de manipulação no mercado e investe contra quem os provoca.",
+    "en": "Our AI identifies market manipulation patterns and invests against those causing them.",
+    "es": "Nuestra IA identifica patrones de manipulación en el mercado e invierte contra quienes los provocan."
+  },
+  "Participe sem escolher operações": {
+    "pt": "Participe sem escolher operações",
+    "en": "Participate without choosing trades",
+    "es": "Participa sin elegir operaciones"
+  },
+  "Você participa dos lucros com o token BETTEX, sem decidir cada operação, e acompanha o projeto na comunidade.": {
+    "pt": "Você participa dos lucros com o token BETTEX, sem decidir cada operação, e acompanha o projeto na comunidade.",
+    "en": "You share in the profits with the BETTEX token without deciding each trade, and follow the project in the community.",
+    "es": "Participas en las ganancias con el token BETTEX, sin decidir cada operación, y sigues el proyecto en la comunidad."
+  },
+  "Receba sua parte dos lucros.": {
+    "pt": "Receba sua parte dos lucros.",
+    "en": "Receive your share of the profits.",
+    "es": "Recibe tu parte de las ganancias."
+  },
+  "Compre BETTEX pelo aplicativo e acompanhe seus tokens.": {
+    "pt": "Compre BETTEX pelo aplicativo e acompanhe seus tokens.",
+    "en": "Buy BETTEX in the app and track your tokens.",
+    "es": "Compra BETTEX en la aplicación y sigue tus tokens."
+  },
+  "03 / AGENTE DE IA": {
+    "pt": "03 / AGENTE DE IA",
+    "en": "03 / AI AGENT",
+    "es": "03 / AGENTE DE IA"
+  },
+  "Um agente de IA": {
+    "pt": "Um agente de IA",
+    "en": "One AI agent",
+    "es": "Un agente de IA"
+  },
+  "investe contra a manipulação.": {
+    "pt": "investe contra a manipulação.",
+    "en": "invests against manipulation.",
+    "es": "invierte contra la manipulación."
+  },
+  "Um único agente de IA identifica padrões de manipulação no mercado cripto e investe contra quem os provoca, segundo critérios e limites de risco.": {
+    "pt": "Um único agente de IA identifica padrões de manipulação no mercado cripto e investe contra quem os provoca, segundo critérios e limites de risco.",
+    "en": "A single AI agent identifies manipulation patterns in the crypto market and invests against those causing them, under risk criteria and limits.",
+    "es": "Un único agente de IA identifica patrones de manipulación en el mercado cripto e invierte contra quienes los provocan, según criterios y límites de riesgo."
+  },
+  "Receba sua parte dos lucros": {
+    "pt": "Receba sua parte dos lucros",
+    "en": "Receive your share of the profits",
+    "es": "Recibe tu parte de las ganancias"
+  },
+  "em USDC, todos os dias.": {
+    "pt": "em USDC, todos os dias.",
+    "en": "in USDC, every day.",
+    "es": "en USDC, todos los días."
+  },
+  "Foco inicial": {
+    "pt": "Foco inicial",
+    "en": "Initial focus",
+    "es": "Enfoque inicial"
+  },
+  "Um agente.": {
+    "pt": "Um agente.",
+    "en": "One agent.",
+    "es": "Un agente."
+  },
+  "Análise antes de cada operação.": {
+    "pt": "Análise antes de cada operação.",
+    "en": "Analysis before every trade.",
+    "es": "Análisis antes de cada operación."
+  },
+  "Antes de cada operação, o agente BETTEX analisa carteiras, volume e liquidez para identificar padrões de manipulação do mercado. Quando identifica, investe contra quem manipula, dentro dos controles de risco. Se não houver oportunidade, ele não opera.": {
+    "pt": "Antes de cada operação, o agente BETTEX analisa carteiras, volume e liquidez para identificar padrões de manipulação do mercado. Quando identifica, investe contra quem manipula, dentro dos controles de risco. Se não houver oportunidade, ele não opera.",
+    "en": "Before every trade, the BETTEX agent analyzes wallets, volume and liquidity to identify market manipulation patterns. When it finds one, it invests against those manipulating, within risk controls. If there is no opportunity, it does not trade.",
+    "es": "Antes de cada operación, el agente BETTEX analiza carteras, volumen y liquidez para identificar patrones de manipulación del mercado. Cuando los identifica, invierte contra quienes manipulan, dentro de los controles de riesgo. Si no hay oportunidad, no opera."
+  },
+  "Observa": {
+    "pt": "Observa",
+    "en": "Observes",
+    "es": "Observa"
+  },
+  "Identifica": {
+    "pt": "Identifica",
+    "en": "Identifies",
+    "es": "Identifica"
+  },
+  "Investe": {
+    "pt": "Investe",
+    "en": "Invests",
+    "es": "Invierte"
+  },
+  "Carteiras, volume e liquidez do mercado.": {
+    "pt": "Carteiras, volume e liquidez do mercado.",
+    "en": "Market wallets, volume and liquidity.",
+    "es": "Carteras, volumen y liquidez del mercado."
+  },
+  "Padrões de manipulação.": {
+    "pt": "Padrões de manipulação.",
+    "en": "Manipulation patterns.",
+    "es": "Patrones de manipulación."
+  },
+  "Posições contra a manipulação, dentro dos controles de risco. Sem oportunidade, não opera.": {
+    "pt": "Posições contra a manipulação, dentro dos controles de risco. Sem oportunidade, não opera.",
+    "en": "Positions against manipulation, within risk controls. No opportunity, no trade.",
+    "es": "Posiciones contra la manipulación, dentro de los controles de riesgo. Sin oportunidad, no opera."
+  },
+  "Cérebro representando a inteligência artificial da BETTEX": {
+    "pt": "Cérebro representando a inteligência artificial da BETTEX",
+    "en": "Brain representing BETTEX artificial intelligence",
+    "es": "Cerebro que representa la inteligencia artificial de BETTEX"
+  },
+  "Começamos focados.": {
+    "pt": "Começamos focados.",
+    "en": "We start focused.",
+    "es": "Empezamos enfocados."
+  },
+  "Expandimos com validação.": {
+    "pt": "Expandimos com validação.",
+    "en": "We expand with validation.",
+    "es": "Ampliamos con validación."
+  },
+  "Começamos com um agente de IA em um mercado cripto. O ativo inicial ainda não foi escolhido. Novos ativos cripto só entram depois de validação.": {
+    "pt": "Começamos com um agente de IA em um mercado cripto. O ativo inicial ainda não foi escolhido. Novos ativos cripto só entram depois de validação.",
+    "en": "We start with one AI agent in one crypto market. The initial asset has not been chosen yet. New crypto assets only enter after validation.",
+    "es": "Empezamos con un agente de IA en un mercado cripto. El activo inicial aún no ha sido elegido. Los nuevos activos cripto solo entran tras la validación."
+  },
+  "Um agente de IA focado em um mercado cripto": {
+    "pt": "Um agente de IA focado em um mercado cripto",
+    "en": "An AI agent focused on one crypto market",
+    "es": "Un agente de IA enfocado en un mercado cripto"
+  },
+  "Mercado cripto": {
+    "pt": "Mercado cripto",
+    "en": "Crypto market",
+    "es": "Mercado cripto"
+  },
+  "Agora": {
+    "pt": "Agora",
+    "en": "Now",
+    "es": "Ahora"
+  },
+  "Depois": {
+    "pt": "Depois",
+    "en": "Later",
+    "es": "Después"
+  },
+  "Um agente, um mercado cripto": {
+    "pt": "Um agente, um mercado cripto",
+    "en": "One agent, one crypto market",
+    "es": "Un agente, un mercado cripto"
+  },
+  "Ativo inicial: a definir.": {
+    "pt": "Ativo inicial: a definir.",
+    "en": "Initial asset: to be defined.",
+    "es": "Activo inicial: por definir."
+  },
+  "Mais ativos cripto": {
+    "pt": "Mais ativos cripto",
+    "en": "More crypto assets",
+    "es": "Más activos cripto"
+  },
+  "Somente após validação.": {
+    "pt": "Somente após validação.",
+    "en": "Only after validation.",
+    "es": "Solo tras la validación."
+  },
+  "Foco inicial em cripto: um agente de IA em um mercado cripto, com o ativo inicial ainda a definir.": {
+    "pt": "Foco inicial em cripto: um agente de IA em um mercado cripto, com o ativo inicial ainda a definir.",
+    "en": "Initial crypto focus: one AI agent in one crypto market, with the initial asset still to be defined.",
+    "es": "Enfoque inicial en cripto: un agente de IA en un mercado cripto, con el activo inicial aún por definir."
+  },
+  "Expansão de ativos": {
+    "pt": "Expansão de ativos",
+    "en": "Asset expansion",
+    "es": "Ampliación de activos"
+  },
+  "Novos ativos cripto só entram após validação, com integração, controles verificados e adequação legal. Dados públicos não equivalem a operação autorizada.": {
+    "pt": "Novos ativos cripto só entram após validação, com integração, controles verificados e adequação legal. Dados públicos não equivalem a operação autorizada.",
+    "en": "New crypto assets only enter after validation, with integration, verified controls and legal compliance. Public data does not equal authorized operation.",
+    "es": "Los nuevos activos cripto solo entran tras la validación, con integración, controles verificados y adecuación legal. Los datos públicos no equivalen a una operación autorizada."
+  },
+  "Comunidade aberta que constrói um agente de IA que identifica padrões de manipulação no mercado cripto e investe contra quem manipula. Conheça o token, o roadmap e a demonstração da BETTEX.": {
+    "pt": "Comunidade aberta que constrói um agente de IA que identifica padrões de manipulação no mercado cripto e investe contra quem manipula. Conheça o token, o roadmap e a demonstração da BETTEX.",
+    "en": "Open community building an AI agent that identifies manipulation patterns in the crypto market and invests against those manipulating it. Explore the BETTEX token, roadmap and demo.",
+    "es": "Comunidad abierta que construye un agente de IA que identifica patrones de manipulación en el mercado cripto e invierte contra quienes manipulan. Conoce el token, la hoja de ruta y la demo de BETTEX."
   }
 }

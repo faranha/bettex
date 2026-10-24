@@ -21,7 +21,7 @@ O criador corrigiu a proposta de reformulação: o pitch não deve mudar muito e
 
 **Why:** O criador rejeitou substituir a promessa principal por uma narrativa sobre investigação de manipulação.
 
-**How to apply:** No planejamento da 1.5, simplificar sem reinventar o pitch; explicar o agente abaixo da proposta principal. As frases econômicas são copy solicitado, não evidência de retorno ou liquidez: verificar sustentação antes de apresentá-las como capacidades reais. Esta discussão não altera o site.
+**How to apply:** Na 1.5, simplificar sem reinventar o pitch; explicar o agente abaixo da proposta principal. As frases econômicas são copy solicitado, não evidência de retorno ou liquidez. O criador posteriormente autorizou executar o plano na homepage, sem ampliar o escopo para outras páginas ou para operação financeira.
 
 O criador exige que o plano da nova homepage detalhe cada seção e cada elemento, incluindo o que será preservado, removido e substituído. Pediu iniciar retirando Ethereum e Arbitrum da apresentação de marcas, mantendo apenas Starknet e Allora.
 
@@ -34,6 +34,12 @@ O criador determinou que o documento siga o que ele aprovar, sem adicionar obser
 **Why:** O criador pediu: “Voce vai fazer como eu aprovar sem adicionar observacoes como essa no documento”.
 
 **How to apply:** Manter comentários de revisão separados do documento e do copy aprovado; não inserir essa metaconversa como conteúdo do produto.
+
+O criador definiu a mensagem central do agente: “nosso aplicativo identifica padroes de manipulacoa no mercado e investe contra quem manipula” e autorizou “pode partir pra 1.5 na home”.
+
+**Why:** A explicação anterior, limitada a observar possíveis movimentos, não expressava o posicionamento solicitado.
+
+**How to apply:** Tornar a identificação de padrões e a atuação contra a manipulação explícitas na homepage, preservando o demo exclusivamente visual e sem inventar evidências de desempenho.
 
 ## Histórico de textos de apoio anterior à direção da 1.5
 

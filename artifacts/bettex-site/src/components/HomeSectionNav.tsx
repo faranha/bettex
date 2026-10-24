@@ -5,7 +5,7 @@ const sections = [
   { id: 'historia', label: 'Por que BETTEX' },
   { id: 'participacao', label: 'Token BETTEX' },
   { id: 'tecnologia', label: 'Como opera' },
-  { id: 'mercados', label: 'Mercados' },
+  { id: 'mercados', label: 'Foco inicial' },
   { id: 'roadmap', label: 'Roadmap' },
 ] as const;
 
