@@ -1,5 +1,6 @@
 import { ArrowRight, Bot, Wallet, Coins, CalendarCheck, Banknote, ShieldAlert, QrCode, ReceiptText, ArrowDownToLine, ArrowUpFromLine, ArrowLeftRight, Network } from 'lucide-react';
 import { useX } from './pitchCopy';
+import { PitchSlider } from './PitchSlider';
 import './PitchNarrative.css';
 
 export function PitchContext() {
@@ -27,19 +28,29 @@ export function PitchJourney() {
     { Icon: Banknote, t: x('Recebimento líquido no Pix', 'Net payout via Pix', 'Cobro neto por Pix') },
   ];
   return <div className="pn pn__journey" data-testid="pitch-participation-journey">
-    <p className="pn__lead">{x('O usuário participa dos resultados da operação em cripto coordenada pelo agente central BETTEX, com vários subagentes, sem acompanhar cada operação e sem ativação manual. A participação vem do saldo de BETTEX na carteira oficial.', 'The user participates in the results of crypto operations coordinated by the central BETTEX agent, with multiple subagents, without following each trade or manual activation. Participation comes from the BETTEX balance in the official wallet.', 'El usuario participa en los resultados de la operación en cripto coordinada por el agente central BETTEX, con varios subagentes, sin seguir cada operación ni activación manual. La participación proviene del saldo de BETTEX en la cartera oficial.')}</p>
+    <PitchSlider id="jornada-slider" tone="light" label={['Jornada de participação em blocos', 'Participation journey blocks', 'Jornada de participación por bloques']} slides={[
+      { label: ['Compra e participação', 'Purchase and participation', 'Compra y participación'], node: <>
+    <p className="pn__lead">{x('Compre BETTEX e receba sua parte dos lucros elegíveis em reais, sem precisar operar cripto. Compra, Pix e pagamentos reais são serviços previstos; hoje, apenas demo visual.', 'Buy BETTEX and receive your share of eligible profits in reais, without trading crypto yourself. Purchase, Pix and real payments are planned services; today, only a visual demo is available.', 'Compra BETTEX y recibe tu parte de los beneficios elegibles en reales, sin operar en cripto. Compra, Pix y pagos reales son servicios previstos; hoy solo hay un demo visual.')}</p>
     <ol className="pn__steps">
       {steps.map(({ Icon, t }, i) => <li key={i} className="pn__step"><span className="pn__stepn mono">{String(i + 1).padStart(2, '0')}</span><Icon size={24} aria-hidden="true" /><strong>{t}</strong></li>)}
     </ol>
+    <div id="diferencial" className="pn__diff">
+      <strong>{x('Diferença de direito econômico', 'Difference in economic right', 'Diferencia de derecho económico')}</strong>
+      <span>{x('Na aposta, o resultado depende do evento; num token centrado no preço, da revenda. Aqui, a proposta é participar do lucro elegível de uma estratégia, nas regras da carteira.', 'In betting, the outcome depends on the event; in a price-centered token, on resale. Here, the proposal is participation in the eligible profit of a strategy, under the wallet rules.', 'En la apuesta, el resultado depende del evento; en un token centrado en el precio, de la reventa. Aquí, la propuesta es participar en el beneficio elegible de una estrategia, según las reglas de la cartera.')}</span>
+    </div>
+      </> },
+      { label: ['Pix e custos', 'Pix and costs', 'Pix y costes'], node: <>
     <div className="pn__pix" data-testid="pitch-pix-planned">
       <span className="pn__pixtag mono">{x('Recurso previsto', 'Planned feature', 'Recurso previsto')}</span>
-      <h4 className="display pn__icon-heading"><QrCode aria-hidden="true" /><span>{x('Pix para receber em reais', 'Pix to receive reais', 'Pix para recibir reales')}</span></h4>
+      <h4 className="display pn__icon-heading"><QrCode aria-hidden="true" /><span>{x('Saque TODOS OS DIAS via Pix.', 'Withdraw EVERY DAY via Pix.', 'Retira TODOS LOS DÍAS por Pix.')}</span></h4>
       <p>{x('Pix previsto; integração, custos, prazos e disponibilidade sujeitos à validação e adequação jurídica.', 'Pix is planned; integration, costs, timelines and availability are subject to validation and legal compliance.', 'Pix previsto; integración, costes, plazos y disponibilidad sujetos a validación y adecuación jurídica.')}</p>
-      <p>{x('A BETTEX faz a compra e a venda de BETTEX para o usuário e a conversão entre cripto e reais. A operação e a contabilidade interna usam cripto e USDC; o participante não precisa operar cripto por conta própria.', 'BETTEX handles BETTEX purchases and sales for the user and conversion between crypto and reais. Operations and internal accounting use crypto and USDC; participants do not need to handle crypto themselves.', 'BETTEX realiza la compra y venta de BETTEX para el usuario y la conversión entre cripto y reales. La operación y la contabilidad interna usan cripto y USDC; el participante no necesita operar cripto por su cuenta.')}</p>
+      <p>{x('A BETTEX cuida da compra, venda e conversão para reais. Operação e contabilidade em cripto e USDC.', 'BETTEX handles purchases, sales and conversion to reais. Operations and accounting use crypto and USDC.', 'BETTEX se encarga de la compra, venta y conversión a reales. Operación y contabilidad en cripto y USDC.')}</p>
     </div>
     <div className="pn__pix" data-testid="pitch-operation-fees" aria-labelledby="pitch-operation-fees-t">
       <span className="pn__pixtag mono">{x('Custos da operação', 'Transaction costs', 'Costes de la operación')}</span>
       <h4 id="pitch-operation-fees-t" className="display pn__icon-heading"><ReceiptText aria-hidden="true" /><span>{x('Recebimento no Pix, após descontar as taxas.', 'Pix payout, after fees are deducted.', 'Cobro por Pix, después de descontar las comisiones.')}</span></h4>
+      <details className="pn__cost-details">
+      <summary>{x('Ver custos e descontos', 'View costs and deductions', 'Ver costes y deducciones')}</summary>
       <ul className="pn__rules pn__icon-rules">
         <li><ArrowDownToLine aria-hidden="true" /><span>{x('On-ramp: entrada de reais e conversão para cripto para participar.', 'On-ramp: depositing reais and converting to crypto to participate.', 'On-ramp: entrada de reales y conversión a cripto para participar.')}</span></li>
         <li><ArrowLeftRight aria-hidden="true" /><span>{x('Compra e venda de BETTEX: negociação dos tokens para o usuário.', 'BETTEX purchases and sales: trading tokens for the user.', 'Compra y venta de BETTEX: negociación de los tokens para el usuario.')}</span></li>
@@ -47,8 +58,13 @@ export function PitchJourney() {
         <li><Network aria-hidden="true" /><span>{x('Taxas de rede e demais custos das operações realizadas também são considerados.', 'Network fees and other costs of completed transactions are also included.', 'También se consideran las comisiones de red y los demás costes de las operaciones realizadas.')}</span></li>
       </ul>
       <p>{x('Essas operações têm custo. As taxas são debitadas dos ganhos diários do participante; o valor recebido em reais é líquido desses descontos, não o ganho bruto.', 'These transactions have costs. Fees are deducted from the participant’s daily earnings; the amount received in reais is net of these deductions, not gross earnings.', 'Estas operaciones tienen coste. Las comisiones se descuentan de las ganancias diarias del participante; el importe recibido en reales es neto de estos descuentos, no la ganancia bruta.')}</p>
+      </details>
       <p className="font-bold">{x('Ganhos diários − taxas das operações = valor líquido a receber no Pix.', 'Daily earnings − transaction fees = net amount to receive via Pix.', 'Ganancias diarias − comisiones de las operaciones = importe neto a cobrar por Pix.')}</p>
     </div>
+      </> },
+      { label: ['Liberdade e regras', 'Freedom and rules', 'Libertad y reglas'], node: <>
+    <h4 className="display pn__exit-title">{x('Saia quando quiser.', 'Leave whenever you want.', 'Sal cuando quieras.')}</h4>
+    <p>{x('Venda todos os tokens que comprou. A venda depende de compradores e liquidez, sem preço ou recompra garantidos.', 'Sell all the tokens you bought. Sales depend on buyers and liquidity, with no guaranteed price or buyback.', 'Vende todos los tokens que compraste. La venta depende de compradores y liquidez, sin precio ni recompra garantizados.')}</p>
     <ul className="pn__rules">
       <li>{x('Compra durante uma rodada qualifica para a próxima rodada.', 'A purchase during a round qualifies for the next round.', 'Una compra durante una ronda califica para la siguiente.')}</li>
       <li>{x('Receber lucro não queima tokens.', 'Receiving profit does not burn tokens.', 'Cobrar beneficio no quema tokens.')}</li>
@@ -56,10 +72,8 @@ export function PitchJourney() {
       <li>{x('Venda só com liquidez; sem lucro, sem distribuição.', 'Selling only with liquidity; no profit, no distribution.', 'Venta solo con liquidez; sin beneficio, sin distribución.')}</li>
     </ul>
     <p className="pn__fine"><ShieldAlert size={14} aria-hidden="true" /> {x('O token pode perder valor. O demo é apenas visual: sem Pix, trading ou pagamentos reais. Nenhum retorno é garantido.', 'The token can lose value. The demo is visual only: no real Pix, trading or payments. No return is guaranteed.', 'El token puede perder valor. El demo es solo visual: sin Pix, trading ni pagos reales. No se garantiza ningún retorno.')}</p>
-    <div id="diferencial" className="pn__diff">
-      <strong>{x('Diferença de direito econômico', 'Difference in economic right', 'Diferencia de derecho económico')}</strong>
-      <span>{x('Na aposta, o resultado depende do evento; num token centrado no preço, da revenda. Aqui, a proposta é participar do lucro elegível de uma estratégia, nas regras da carteira.', 'In betting, the outcome depends on the event; in a price-centered token, on resale. Here, the proposal is participation in the eligible profit of a strategy, under the wallet rules.', 'En la apuesta, el resultado depende del evento; en un token centrado en el precio, de la reventa. Aquí, la propuesta es participar en el beneficio elegible de una estrategia, según las reglas de la cartera.')}</span>
-    </div>
+      </> },
+    ]} />
   </div>;
 }
 
@@ -67,7 +81,7 @@ export function PitchStrategy() {
   const x = useX();
   return <div className="pn pn--ink pn__strategy">
     <div className="pn__prose pn__prose--ink">
-      <p>{x('O agente central BETTEX coordena vários subagentes de análise quantitativa distribuída para identificar padrões de manipulação no mercado cripto. Esses padrões orientam a seleção dos ativos e os momentos de entrada e saída, sob critérios e limites de risco. Não há ativo inicial fixo.', 'The central BETTEX agent coordinates multiple subagents performing distributed quantitative analysis to identify manipulation patterns in the crypto market. These patterns guide asset selection and entry and exit timing, under risk criteria and limits. There is no fixed initial asset.', 'El agente central BETTEX coordina varios subagentes de análisis cuantitativo distribuido para identificar patrones de manipulación en el mercado cripto. Estos patrones orientan la selección de activos y los momentos de entrada y salida, bajo criterios y límites de riesgo. No hay un activo inicial fijo.')}</p>
+      <p>{x('BETTEX coordena subagentes de análise quantitativa para identificar padrões de manipulação em cripto. Eles orientam a seleção de ativos, entradas e saídas, dentro dos limites de risco e das etapas de validação do Roadmap.', 'BETTEX coordinates quantitative-analysis subagents to identify manipulation patterns in crypto. They guide asset selection, entries and exits within risk limits and the Roadmap’s validation stages.', 'BETTEX coordina subagentes de análisis cuantitativo para identificar patrones de manipulación en cripto. Orientan la selección de activos, entradas y salidas dentro de los límites de riesgo y las etapas de validación del Roadmap.')}</p>
       <p>{x('O agente opera com a tesouraria, nunca com os tokens dos usuários. O fundador e o time administram no início; a autonomia futura depende de desempenho validado e de controles.', 'The agent operates with the treasury, never with users’ tokens. The founder and team administer at first; future autonomy depends on validated performance and controls.', 'El agente opera con la tesorería, nunca con los tokens de los usuarios. El fundador y el equipo administran al inicio; la autonomía futura depende de un desempeño validado y de controles.')}</p>
     </div>
     <dl className="pn__facts">

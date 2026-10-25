@@ -1,0 +1,6 @@
+.pb-problem__automation .pitch-slider__panel { padding-top: 8px; }
+.pb-problem__automation .fu-scenario:empty { display: none; }
+.pitch .chero { padding-block: clamp(20px, 2.6vw, 36px); }
+.pitch .chero__grid { min-height: 0; }
+.pitch .chero__title { margin-top: 10px; font-size: clamp(1.5rem, 2.8vw, 2.3rem); }
+.pitch .chero__summary { margin-top: 10px; font-size: 15px; line-height: 1.55; }
