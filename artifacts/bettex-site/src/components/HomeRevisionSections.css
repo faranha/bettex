@@ -102,16 +102,18 @@
 .ew-dot[data-active=true]::after{width:28px;background:#2B59FF}
 .ew-nav:focus-visible,.ew-dot:focus-visible{outline:3px solid #F2B632;outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.ew-slide{transition:none}}
-/* Only the visible mobile slide contributes height. Keep the other panels
-   measurable for the chart without reserving their height below the wallet. */
+/* The 1% slide defines the mobile height, even when another panel is visible.
+   Fit the other illustrations into that height so navigation never moves. */
 @media(max-width:899px){
+  .ew-nav{min-height:90px}
   .ew-track{display:block}
-  .ew-slide{position:absolute;inset:0 0 auto}
-  .ew-slide[data-active=true]{position:relative;inset:auto}
+  .ew-slide{position:absolute;inset:0;height:100%}
+  .ew-slide:first-child{position:relative;inset:auto;height:auto}
+  .ew-s2{height:100%;grid-template-rows:auto minmax(0,1fr);gap:20px;align-items:stretch}
+  .ew-s2 .ew-offer{align-self:start}
+  .ew-card{min-height:0;grid-template-rows:minmax(0,1fr) auto}
+  .ew-chart{height:100%;min-height:0}
+  .ew-s2 .ew-free-art{height:100%;min-height:0;align-self:stretch;margin-block:0}
+  .ew-free-art svg{height:100%;max-height:100%}
 }
-.ew-paths{list-style:none;margin:0;padding:0;display:grid;gap:10px;width:100%}
-.ew-paths li{display:grid;gap:2px;padding:12px 14px;border:1px solid #d6dcef;border-left:4px solid #2B59FF;border-radius:12px;background:rgba(255,255,255,.92)}
-.ew-paths li:last-child{border-left-color:#F2B632}
-.ew-paths strong{font-weight:800;color:#183173}
-.ew-paths span{font-size:14px;line-height:1.45;color:#2c3756}
 .ew-s2 .ew-free-art{justify-self:center;width:min(100%,400px)}

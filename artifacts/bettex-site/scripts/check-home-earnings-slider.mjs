@@ -8,12 +8,12 @@ const browser = await chromium.launch({
 });
 const errors = [];
 try {
-  for (const [locale, route, cap, explanation] of [
-    ['pt-BR', '/', 'Limite 1%', 'O lucro depende da operação real.'],
-    ['en-US', '/en/', '1% cap', 'Profit depends on actual operation.'],
-    ['es-ES', '/es/', 'Límite 1%', 'El beneficio depende de la operación real.'],
+  for (const [locale, route, explanation] of [
+    ['pt-BR', '/', 'Sem lucro, não há distribuição.'],
+    ['en-US', '/en/', 'No profit, no distribution.'],
+    ['es-ES', '/es/', 'Sin beneficio, no hay distribución.'],
   ]) {
-    for (const width of [390, 1280]) {
+    for (const width of [320, 390, 1280]) {
       const context = await browser.newContext({
         locale, viewport: { width, height: 900 }, reducedMotion: 'reduce', hasTouch: true,
       });
@@ -47,6 +47,27 @@ try {
       assert.equal(await second.evaluate(el => el.inert), true);
       assert.equal(await third.evaluate(el => el.inert), true);
       assert.equal(await first.getAttribute('aria-label'), '1 / 3');
+      const baseline = await carousel.evaluate(el => ({
+        height: el.querySelector('.ew-track').getBoundingClientRect().height,
+        control: el.querySelector('.ew-ctrl').getBoundingClientRect().top - el.getBoundingClientRect().top,
+        controlHeight: el.querySelector('.ew-ctrl').getBoundingClientRect().height,
+      }));
+      const assertStable = async () => {
+        const current = await carousel.evaluate(el => ({
+          height: el.querySelector('.ew-track').getBoundingClientRect().height,
+          control: el.querySelector('.ew-ctrl').getBoundingClientRect().top - el.getBoundingClientRect().top,
+          controlHeight: el.querySelector('.ew-ctrl').getBoundingClientRect().height,
+          fits: [...el.querySelectorAll('.ew-slide[data-active="true"] h3, .ew-slide[data-active="true"] p, .ew-slide[data-active="true"] .ew-chart, .ew-slide[data-active="true"] .ew-free-art')].every(node => {
+            const rect = node.getBoundingClientRect();
+            const panel = el.querySelector('.ew-track').getBoundingClientRect();
+            return rect.top >= panel.top - 1 && rect.bottom <= panel.bottom + 1;
+          }),
+        }));
+        assert.ok(Math.abs(current.height - baseline.height) < 2, 'All slides must match the 1% slide height');
+        assert.ok(Math.abs(current.control - baseline.control) < 2, 'Navigation must not move between slides');
+        assert.ok(Math.abs(current.controlHeight - baseline.controlHeight) < 2, 'Destination labels must not resize navigation');
+        assert.equal(current.fits, true, 'Copy, chart and illustration fit without clipping');
+      };
 
       await next.click();
       await second.waitFor({ state: 'visible' });
@@ -56,24 +77,20 @@ try {
       assert.equal(await first.evaluate(el => el.inert), true);
       assert.ok((await second.textContent()).includes(explanation));
       assert.ok((await second.textContent()).includes('BETTEX'));
-      assert.ok((await page.getByTestId('text-earnings-illustrative').textContent()).length > 60);
+      assert.ok((await page.getByTestId('text-earnings-illustrative').textContent()).length > 40);
       const labels = page.locator('[data-testid="chart-earnings-returns"] .recharts-label-list text');
       await labels.first().waitFor({ state: 'visible' });
+      await assertStable();
       const expected = [1, 0.5, 0.2, 0, 1].map(value =>
         `${new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }).format(value)}%`);
       assert.deepEqual(await labels.allTextContents(), expected);
-      assert.ok((await page.getByTestId('chart-earnings-returns').textContent()).includes(cap));
+      assert.equal(await page.locator('[data-testid="chart-earnings-returns"] .recharts-reference-line').count(), 0, 'No dotted 1% line or limit annotation');
       // Hidden-slide fonts can load on first reveal; compare the shared grid
       // cells, not a pre-font-load snapshot of the whole section.
       const heights = await carousel.locator('.ew-slide').evaluateAll(slides =>
         slides.map(slide => slide.getBoundingClientRect().height));
       assert.equal(heights.length, 3);
-      if (width >= 900) {
-        assert.ok(heights.every(height => Math.abs(height - heights[0]) < 2), 'Desktop slides share grid height');
-      } else {
-        const trackHeight = (await carousel.locator('.ew-track').boundingBox()).height;
-        assert.ok(Math.abs(trackHeight - heights[1]) < 2, 'Mobile height follows the active slide');
-      }
+      assert.ok(heights.every(height => Math.abs(height - heights[0]) < 2), 'All slides share the same height');
       assert.equal(await second.evaluate(el =>
         [...el.querySelectorAll('.ew-card, .ew-chart, h3, p')].every(node => {
           const rect = node.getBoundingClientRect();
@@ -86,6 +103,7 @@ try {
       await second.waitFor({ state: 'visible' });
       await page.keyboard.press('ArrowRight');
       await third.waitFor({ state: 'visible' });
+      await assertStable();
       assert.equal(await carousel.getAttribute('data-active-slide'), '3');
       assert.equal(await third.getAttribute('aria-label'), '3 / 3');
       assert.equal(await next.isDisabled(), false);
