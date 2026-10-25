@@ -156,10 +156,10 @@ export function ProjectModelSection() {
           .pm-casino-cards { display: block; top: 292px; right: 180px; opacity: .52; transform: scale(.56); transform-origin: top right; }
           .pm-sport-ball { top: 12px; right: -20px; width: 96px; opacity: .42; }
           .pm-wrap { width: min(100% - 32px, 1200px); }
-           .pm-head { min-height: 0; padding-bottom: 170px; margin-bottom: 20px; }
-          .pm-title { max-width: none; font-size: clamp(2rem, 8.35vw, 3rem); letter-spacing: -.04em; }
-           .pm-head-note { max-width: 190px; margin-top: 13px; }
-           .pm-person { right: -5px; bottom: -26px; width: 200px; height: 205px; }
+           .pm-head { min-height: 180px; padding: 0; margin-bottom: 20px; display: flex; flex-direction: column; justify-content: center; }
+          .pm-title { max-width: 64%; font-size: clamp(1.55rem, 6.6vw, 2.3rem); letter-spacing: -.04em; overflow-wrap: break-word; text-shadow: 0 2px 8px #070B1F, 0 0 2px #070B1F; }
+           .pm-head-note { max-width: 62%; margin-top: 10px; }
+           .pm-person { right: -14px; top: auto; bottom: -20px; transform: none; width: 190px; height: 190px; object-position: center; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 42%); mask-image: linear-gradient(90deg, transparent 0%, #000 42%); }
           .pm-panel { border-radius: 22px; }
           .pm-panel-top { padding: 23px 23px 0; }
           .pm-panel-count { display: none; }
@@ -177,8 +177,8 @@ export function ProjectModelSection() {
         @media (max-width: 370px) {
           .pm-casino-cards { display: none; }
           .pm-sport-ball { top: 360px; right: 172px; width: 66px; opacity: .4; }
-          .pm-person { right: -25px; width: 170px; height: 180px; }
-          .pm-head-note { max-width: 145px; }
+          .pm-person { right: -22px; width: 165px; height: 165px; }
+          .pm-head-note { max-width: 60%; }
           .pm-agent-list { grid-template-columns: 1fr 1fr; }
           .pm-agent { padding: 8px; }
           .pm-agent strong { font-size: 11px; }

@@ -60,10 +60,10 @@ export function HomeEarningsSection() {
               <div className="ew-offer">
                 <p className="hr-eyebrow">{t('Liberdade de entrar e sair')}</p>
                 <h3 className="ew-h2 ew-freedom-title">
-                  <span className="ew-freedom-intro">{t('Seu token.')}</span>
-                  <strong className="ew-freedom-emphasis">{t('Sua escolha.')}</strong>
+                  <span className="ew-freedom-intro">{t('Saia')}</span>
+                  <strong className="ew-freedom-emphasis">{t('quando quiser.')}</strong>
                 </h3>
-                <p className="ew-p2">{t('Venda no app BETTEX a preço de mercado ou retire para sua carteira e venda em corretoras.')}</p>
+                <p className="ew-p2">{t('Venda todos os tokens que comprou.')}</p>
                 <p className="ew-foot">{t('Venda sujeita à liquidez, sem preço ou recompra garantidos. Demo sem operações reais.')}</p>
               </div>
               <EarningsFreedomIllustration />

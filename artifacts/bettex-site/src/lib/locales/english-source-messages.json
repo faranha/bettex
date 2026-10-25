@@ -1,4 +1,19 @@
 {
+  "Saia": {
+    "pt": "Saia",
+    "en": "Leave",
+    "es": "Sal"
+  },
+  "quando quiser.": {
+    "pt": "quando quiser.",
+    "en": "whenever you want.",
+    "es": "cuando quieras."
+  },
+  "Venda todos os tokens que comprou.": {
+    "pt": "Venda todos os tokens que comprou.",
+    "en": "Sell all the tokens you bought.",
+    "es": "Vende todos los tokens que compraste."
+  },
   "Ganhe conforme nossa IA opera.": {
     "pt": "Ganhe conforme nossa IA opera.",
     "en": "Earn as our AI trades.",
