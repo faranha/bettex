@@ -2,10 +2,8 @@ import { SectionAnchorNav } from './SectionAnchorNav';
 
 const sections = [
   { id: 'inicio', label: 'Início da página' },
-  { id: 'historia', label: 'Por que BETTEX' },
-  { id: 'participacao', label: 'Token BETTEX' },
-  { id: 'tecnologia', label: 'Como opera' },
   { id: 'mercados', label: 'Ganhos diários' },
+  { id: 'participacao', label: 'Token BETTEX' },
   { id: 'roadmap', label: 'Roadmap' },
 ] as const;
 

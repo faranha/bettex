@@ -120,13 +120,14 @@ for route, expected in baseline["routes"].items():
         home_text = " ".join(" ".join(home.parts).split())
         home_catalog = json.loads((app / "src/lib/locales/english-source-messages.json").read_text())
         for key in (
-            "Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.",
+            "Chegou a hora de ganhar. A gente opera em cripto. Você recebe em reais.",
+            "Você não precisa saber operar nem negociar cripto.",
             "Ganhe até 1% por dia de lucro.",
-            "Observa", "Identifica", "Investe", "Ganhos diários",
+            "Ganhos diários",
         ):
             phrase = key if language == "pt" else home_catalog[key][language]
             assert phrase in home_text, f"Missing approved 1.5 homepage text: {route}: {phrase}"
-        for anchor in ("inicio", "historia", "participacao", "tecnologia", "mercados", "roadmap"):
+        for anchor in ("inicio", "participacao", "tecnologia", "mercados", "roadmap"):
             assert f'id="{anchor}"' in protected_html, f"Missing homepage anchor: {route}: {anchor}"
         assert len(re.findall(r"<h1\b", protected_html)) == 1, f"Homepage must retain one H1: {route}"
         assert 'section-nova-economia' not in protected_html, f"Removed section restored: {route}"

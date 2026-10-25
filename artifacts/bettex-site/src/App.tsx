@@ -23,8 +23,7 @@ import { BettexMark } from '@/components/BettexMark';
 import '@/components/SiteFooter.css';
 import '@/pages/pitch.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
-import { HomeOperationSection, HomeEarningsSection } from '@/components/HomeRevisionSections';
-import { HumanStorySection } from '@/components/HumanStorySection';
+import { HomeEarningsSection } from '@/components/HomeRevisionSections';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
 import { legacyDocumentationHashes } from '@/lib/documentation-aliases';
@@ -165,17 +164,18 @@ function SiteHeader() {
 function SiteFooter({ compact = false, home = false }: { compact?: boolean; home?: boolean }) {
   const linkProps = usePageLinkProps();
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
-    {!compact && <div className="site-footer__cta relative overflow-hidden bg-[#2B59FF]">
+    {!compact && <div className={`site-footer__cta${home ? ' site-footer__cta--home' : ''} relative overflow-hidden bg-[#2B59FF]`}>
       <div aria-hidden="true" className="site-footer__sports">
-        <img src={`${import.meta.env.BASE_URL}footer-betting-scene.jpg`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
-        <FooterAiGraph single={home} />
+        <img src={`${import.meta.env.BASE_URL}${home ? 'footer-invest-scene.webp' : 'footer-betting-scene.jpg'}`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
+        {!home && <FooterAiGraph />}
       </div>
       <div className="page-wrap relative">
         <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">
           <div className="pb-2 lg:pb-20">
             <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#F4F1E8]">BETTEX</span>
-            <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#F2B632]">e se torne dono do jogo</span></h2>
-            <p className="mt-6 max-w-[390px] text-base font-medium leading-7 text-[#F4F1E8]">Participe dos resultados da IA com o token BETTEX.</p>
+            {home ? <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">{t('Pare de apostar com seu dinheiro.')}</span><span className="block text-[#F2B632]">{t('Comece a investir com inteligência.')}</span></h2>
+            <p className="mt-6 max-w-[420px] text-base font-medium leading-7 text-[#F4F1E8]">{t('A BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.')}</p></> : <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#F2B632]">e se torne dono do jogo</span></h2>
+            <p className="mt-6 max-w-[390px] text-base font-medium leading-7 text-[#F4F1E8]">Participe dos resultados da IA com o token BETTEX.</p></>}
             <div className="mt-6 flex flex-wrap gap-3">
               <a {...linkProps} href={homeAnchor('roadmap')} className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#070B1F] px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#13204F] focus-visible:outline-[#F2B632]">Ver o roadmap <ArrowRight className="h-4 w-4 text-[#F2B632]" aria-hidden="true" /></a>
               <a {...linkProps} href={DOCUMENTATION_PATH} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#F4F1E8] hover:text-[#070B1F] focus-visible:outline-[#F2B632]">Ler a documentação</a>
@@ -262,7 +262,7 @@ function Home() {
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#F4F1E8]">
         <div className="hero-intro-stage relative">
         <div className="home-hero-background" aria-hidden="true">
-          <img src={`${import.meta.env.BASE_URL}hero-football-background.jpg`} alt="" width={1024} height={1024} loading="eager" decoding="async" />
+          <img src={`${import.meta.env.BASE_URL}hero-crypto-trading-background.webp`} alt="" width={1600} height={1600} loading="eager" decoding="async" />
         </div>
         <div className="page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[730px] xl:py-16">
           <div className="entrance relative z-10">
@@ -271,10 +271,11 @@ function Home() {
               <span className="block">Chega de apostar.</span>{' '}
               <span className="block text-[#F2B632]">Comece a investir.</span>
             </h1>
-            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.</h2>
-            <p className="mt-5 max-w-[520px] text-[17px] font-bold leading-[1.5] text-[#F2B632] sm:text-lg">Ganhe até 1% por dia de lucro.</p>
+            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Chegou a hora de ganhar. A gente opera em cripto. Você recebe em reais.</h2>
+            <p className="mt-4 max-w-[520px] text-[16px] leading-[1.5] text-[#F4F1E8]">Você não precisa saber operar nem negociar cripto.</p>
+            <p className="mt-4 max-w-[520px] text-[17px] font-bold leading-[1.5] text-[#F2B632] sm:text-lg">Ganhe até 1% por dia de lucro.</p>
             <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
-              <span>Entenda o projeto</span>
+              <span>Quero participar</span>
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/20" aria-hidden="true"><ArrowDown size={22} strokeWidth={2.2} /></span>
             </a>
           </div>
@@ -284,12 +285,10 @@ function Home() {
       </section>
 
       <TechnologyNetworks label="Tecnologias" ethereum />
-      <HumanStorySection />
+      <HomeEarningsSection />
 
       <ProjectModelSection />
 
-      <HomeOperationSection />
-      <HomeEarningsSection />
       <RoadmapSection variant="home" />
 
     </main>

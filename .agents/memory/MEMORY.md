@@ -58,6 +58,7 @@
 - [Mercados no mobile](mobile-market-content.md) — não repetir os quatro cartões de agentes abaixo da animação; a apresentação anterior já cobre esse conteúdo.
 - [Slides na homepage mobile](homepage-mobile-slides.md) — participação, carteira e agentes em slides horizontais para reduzir altura; preservar desktop e todo o conteúdo.
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
+- [Benefício em reais](customer-brl-positioning.md) — operação em cripto, recebimento em BRL; conhecimento de cripto não deve ser exigido do participante.
 - [Rodapé](footer-scope.md) — navegação compacta, convite simples ao Telegram no mobile e desktop; sem redes pessoais do fundador.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
 - [Ordem e leitura da documentação](documentation-reading-order.md) — página por seção numerada, inclusive subitens; rodapé completo; introduzir conceitos antes das regras.
