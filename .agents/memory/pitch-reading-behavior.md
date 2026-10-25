@@ -3,6 +3,12 @@ name: Leitura do pitch
 description: Ordem das áreas, gráficos abertos e sliders aprovados sem cortes de conteúdo.
 ---
 
+O Roadmap não deve aparecer no Pitch; permanece na homepage.
+
+**Why:** O criador pediu “tira o roadmap do pitch”.
+
+**How to apply:** Não reintroduzir essa seção nem referências que pressuponham sua presença no Pitch. Preservar o Roadmap da homepage.
+
 O Pitch não deve apresentar aporte anjo.
 
 **Why:** O criador pediu “remove o aporte anjo do pitch”.
