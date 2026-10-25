@@ -1,4 +1,49 @@
 {
+  "Lucro automático em reais na conta BETTEX, para detentores elegíveis do token.": {
+    "pt": "Lucro automático em reais na conta BETTEX, para detentores elegíveis do token.",
+    "en": "Automatic profit payments in reais to the BETTEX account, for eligible token holders.",
+    "es": "Beneficios automáticos en reales en la cuenta BETTEX, para titulares elegibles del token."
+  },
+  "Exemplo ilustrativo. Sem retorno garantido ou pagamentos reais.": {
+    "pt": "Exemplo ilustrativo. Sem retorno garantido ou pagamentos reais.",
+    "en": "Illustrative example. No guaranteed returns or real payments.",
+    "es": "Ejemplo ilustrativo. Sin rentabilidad garantizada ni pagos reales."
+  },
+  "Até 1% ao dia. Nunca fixo.": {
+    "pt": "Até 1% ao dia. Nunca fixo.",
+    "en": "Up to 1% a day. Never fixed.",
+    "es": "Hasta un 1% al día. Nunca fijo."
+  },
+  "O lucro depende da operação real.": {
+    "pt": "O lucro depende da operação real.",
+    "en": "Profit depends on actual operation.",
+    "es": "El beneficio depende de la operación real."
+  },
+  "Detentores elegíveis do token recebem sua parte automaticamente em reais, na conta BETTEX.": {
+    "pt": "Detentores elegíveis do token recebem sua parte automaticamente em reais, na conta BETTEX.",
+    "en": "Eligible token holders receive their share automatically in reais, in their BETTEX account.",
+    "es": "Los titulares elegibles del token reciben su parte automáticamente en reales, en su cuenta BETTEX."
+  },
+  "Exemplo ilustrativo, não é histórico real. Sem retorno garantido ou pagamentos reais.": {
+    "pt": "Exemplo ilustrativo, não é histórico real. Sem retorno garantido ou pagamentos reais.",
+    "en": "Illustrative example, not actual history. No guaranteed returns or real payments.",
+    "es": "Ejemplo ilustrativo, no es un historial real. Sin rentabilidad garantizada ni pagos reales."
+  },
+  "Venda pelo app BETTEX ou retire os tokens para sua carteira e venda em corretoras compatíveis.": {
+    "pt": "Venda pelo app BETTEX ou retire os tokens para sua carteira e venda em corretoras compatíveis.",
+    "en": "Sell through the BETTEX app, or withdraw tokens to your wallet and sell on compatible exchanges.",
+    "es": "Vende en la app BETTEX o retira los tokens a tu cartera y vende en exchanges compatibles."
+  },
+  "A venda depende de compradores e liquidez. Sem preço mínimo ou recompra garantidos.": {
+    "pt": "A venda depende de compradores e liquidez. Sem preço mínimo ou recompra garantidos.",
+    "en": "Selling depends on buyers and liquidity. No guaranteed minimum price or buyback.",
+    "es": "La venta depende de compradores y liquidez. Sin precio mínimo ni recompra garantizados."
+  },
+  "Demonstração visual, sem vendas ou saques reais.": {
+    "pt": "Demonstração visual, sem vendas ou saques reais.",
+    "en": "Visual demo, with no real sales or withdrawals.",
+    "es": "Demostración visual, sin ventas ni retiros reales."
+  },
   "Como funciona?": {
     "pt": "Como funciona?",
     "en": "How does it work?",

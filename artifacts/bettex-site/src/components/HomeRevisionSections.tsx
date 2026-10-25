@@ -45,29 +45,25 @@ export function HomeEarningsSection() {
             <div className="hr-wrap ew-s2">
               <div className="ew-offer">
                 <p className="hr-eyebrow">{t('Retorno diário ilustrativo')}</p>
-                <h3 className="ew-h2">{t('Limite diário, não rendimento fixo.')}</h3>
-                <p className="ew-p2">{t('1% é o limite distribuível por dia, não um rendimento fixo. O lucro depende da operação real.')}</p>
+                <h3 className="ew-h2">{t('Até 1% ao dia. Nunca fixo.')}</h3>
                 <p className="ew-rhythm">{t('Sem lucro, não há distribuição.')}</p>
-                <p className="ew-p2">{t('Havendo lucro distribuível, todos os detentores elegíveis do token recebem sua parte automaticamente, em reais, na conta BETTEX, conforme as regras de participação.')}</p>
+                <p className="ew-p2">{t('Lucro automático em reais na conta BETTEX, para detentores elegíveis do token.')}</p>
               </div>
               <div className="ew-card">
                 <EarningsReturnChart />
-                <p className="ew-foot" data-testid="text-earnings-illustrative">{t('Valores ilustrativos, não são histórico real de operações. Demonstração visual, sem pagamentos reais. Sem retorno garantido.')}</p>
+                <p className="ew-foot" data-testid="text-earnings-illustrative">{t('Exemplo ilustrativo. Sem retorno garantido ou pagamentos reais.')}</p>
               </div>
             </div>
           </div>
           <div className="ew-slide" role="group" aria-roledescription={t('Slide')} aria-label="3 / 3" data-active={i === 2} aria-hidden={i !== 2} inert={i !== 2} data-testid="slide-earnings-3">
             <div className="hr-wrap ew-s2">
               <div className="ew-offer">
-                <p className="hr-eyebrow">{t('Liberdade para sair')}</p>
+                <p className="hr-eyebrow">{t('Liberdade de entrar e sair')}</p>
                 <h3 className="ew-h2">{t('Você não fica preso.')}</h3>
                 <p className="ew-rhythm">{t('Venda seus tokens quando quiser, ao preço de mercado.')}</p>
-                <ul className="ew-paths">
-                  <li><strong>{t('Pelo aplicativo BETTEX')}</strong><span>{t('Venda seus tokens diretamente pelo aplicativo.')}</span></li>
-                  <li><strong>{t('Pela sua própria carteira')}</strong><span>{t('Retire os tokens para a sua carteira e venda em corretoras compatíveis.')}</span></li>
-                </ul>
-                <p className="ew-foot">{t('Venda sujeita a compradores, liquidez e disponibilidade de mercado. Sem preço mínimo ou recompra garantidos.')}</p>
-                <p className="ew-foot">{t('Demonstração visual: nenhum saque ou venda de tokens é realizado de verdade.')}</p>
+                <p className="ew-p2">{t('Venda pelo app BETTEX ou retire os tokens para sua carteira e venda em corretoras compatíveis.')}</p>
+                <p className="ew-foot">{t('A venda depende de compradores e liquidez. Sem preço mínimo ou recompra garantidos.')}</p>
+                <p className="ew-foot">{t('Demonstração visual, sem vendas ou saques reais.')}</p>
               </div>
               <EarningsFreedomIllustration />
             </div>

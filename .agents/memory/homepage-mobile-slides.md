@@ -7,7 +7,13 @@ No carrossel de ganhos da homepage, os controles mobile devem ficar próximos da
 
 **Why:** O criador apontou o grande vão abaixo da carteira e pediu o nome da próxima área à direita, além da navegação anterior/próximo.
 
-**How to apply:** Ajustar a área à altura do slide visível no celular, preservando seus textos e ilustrações. Os rótulos dos destinos devem acompanhar o idioma selecionado e indicar corretamente para onde cada controle leva.
+O texto dos rendimentos deve continuar curto, sem repetir em vários parágrafos as condições já resumidas no título e no destaque.
+
+**Why:** O criador reiterou “menos texto aqui também” ao mostrar esse slide. Preservar as condições essenciais não exige repetir a mesma explicação.
+
+**How to apply:** Usar a altura do primeiro slide (“Até 1%”) como referência para todos os itens, sem mover os controles ao trocar de slide. Simplificar o conteúdo dos demais no mesmo padrão, preservando as condições essenciais e as ilustrações. Não voltar à altura variável por slide: o criador corrigiu que isso quebra a navegação. Os rótulos dos destinos devem acompanhar o idioma selecionado e indicar corretamente para onde cada controle leva.
+
+Conferir também a altura da linha de controles: os títulos dos destinos ocupam quantidades diferentes de linhas. Mesmo com painéis de altura idêntica, redimensionar esses botões pode acionar a ancoragem de rolagem do navegador e deslocar o viewport.
 
 No mobile, o modelo de participação (“Compre, ative, lucre”) e os agentes devem usar slides horizontais, em vez de empilhar todas as etapas e cartões. A carteira BETTEX com o cérebro fica fora do slider, em um bloco fixo acima dele. Preservar o layout de computador.
 
