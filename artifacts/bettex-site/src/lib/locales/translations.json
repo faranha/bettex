@@ -7,29 +7,50 @@
     "en": "Swipe horizontally to compare all columns.",
     "es": "Desliza horizontalmente para comparar todas las columnas."
   },
-  "Item anterior": { "en": "Previous item", "es": "Elemento anterior" },
-  "Próximo item": { "en": "Next item", "es": "Elemento siguiente" },
-  "MERCADOS E FOCO": { "en": "MARKETS AND FOCUS", "es": "MERCADOS Y ENFOQUE" },
+  "Item anterior": {
+    "en": "Previous item",
+    "es": "Elemento anterior"
+  },
+  "Próximo item": {
+    "en": "Next item",
+    "es": "Elemento siguiente"
+  },
+  "MERCADOS E FOCO": {
+    "en": "MARKETS AND FOCUS",
+    "es": "MERCADOS Y ENFOQUE"
+  },
   "O foco é o apostador que hoje trata a aposta como investimento.": {
     "en": "The focus is the bettor who currently treats betting as an investment.",
     "es": "El enfoque es el apostador que hoy trata la apuesta como una inversión."
   },
-  "Esportes · Surebetting:": { "en": "Sports · Surebetting:", "es": "Deportes · Surebetting:" },
+  "Esportes · Surebetting:": {
+    "en": "Sports · Surebetting:",
+    "es": "Deportes · Surebetting:"
+  },
   "arbitragem entre odds de diferentes casas de apostas.": {
     "en": "arbitrage between odds at different sportsbooks.",
     "es": "arbitraje entre cuotas de distintas casas de apuestas."
   },
-  "iGaming:": { "en": "iGaming:", "es": "iGaming:" },
+  "iGaming:": {
+    "en": "iGaming:",
+    "es": "iGaming:"
+  },
   "mineração de bônus e métodos de extração.": {
     "en": "bonus mining and extraction methods.",
     "es": "minería de bonos y métodos de extracción."
   },
-  "Predictions:": { "en": "Predictions:", "es": "Predictions:" },
+  "Predictions:": {
+    "en": "Predictions:",
+    "es": "Predictions:"
+  },
   "negociação de contratos sobre resultados de eventos.": {
     "en": "trading contracts on event outcomes.",
     "es": "negociación de contratos sobre resultados de eventos."
   },
-  "Cripto:": { "en": "Crypto:", "es": "Cripto:" },
+  "Cripto:": {
+    "en": "Crypto:",
+    "es": "Cripto:"
+  },
   "trading de ativos digitais e arbitragem entre mercados.": {
     "en": "trading digital assets and arbitrage across markets.",
     "es": "trading de activos digitales y arbitraje entre mercados."
@@ -38,12 +59,30 @@
     "en": "BETTEX's proposal is to turn bettors into investors through a DeFAI project",
     "es": "La propuesta de BETTEX es transformar a los apostadores en inversores mediante un proyecto DeFAI"
   },
-  "Total": { "en": "Total", "es": "Total" },
-  "{0} {1} · {2}: {3} BETTEX": { "en": "{0} {1} · {2}: {3} BETTEX", "es": "{0} {1} · {2}: {3} BETTEX" },
-  "Mês anterior": { "en": "Previous month", "es": "Mes anterior" },
-  "Próximo mês": { "en": "Next month", "es": "Mes siguiente" },
-  "Mensal": { "en": "Monthly", "es": "Mensual" },
-  "Acumulado": { "en": "Cumulative", "es": "Acumulado" },
+  "Total": {
+    "en": "Total",
+    "es": "Total"
+  },
+  "{0} {1} · {2}: {3} BETTEX": {
+    "en": "{0} {1} · {2}: {3} BETTEX",
+    "es": "{0} {1} · {2}: {3} BETTEX"
+  },
+  "Mês anterior": {
+    "en": "Previous month",
+    "es": "Mes anterior"
+  },
+  "Próximo mês": {
+    "en": "Next month",
+    "es": "Mes siguiente"
+  },
+  "Mensal": {
+    "en": "Monthly",
+    "es": "Mensual"
+  },
+  "Acumulado": {
+    "en": "Cumulative",
+    "es": "Acumulado"
+  },
   "Os 10% do mint inicial ficam separados: não são uma parcela mensal nem antecipam tokens de fundador/equipe ou investidores. O lançamento do sistema está previsto para essa etapa, sujeito à adequação legal e jurídica.": {
     "en": "The initial mint's 10% remains separate: it is not a monthly installment and does not advance founder/team or investor tokens. The system launch is planned for this stage, subject to legal compliance.",
     "es": "El 10% del mint inicial queda separado: no es una cuota mensual ni anticipa tokens del fundador/equipo o de los inversores. El lanzamiento del sistema está previsto para esta etapa, sujeto a la adecuación legal y jurídica."
@@ -23594,5 +23633,125 @@
   "Resumo das regras e administração. Os capítulos, desenhos e referências técnicas completos estão na documentação do site. Este arquivo não comprova implantação ou operação financeira.": {
     "en": "Summary of rules and administration. The complete chapters, drawings and technical references are in the site's documentation. This file does not prove deployment or financial operation.",
     "es": "Resumen de las reglas y administración. Los capítulos, dibujos y referencias técnicas completos están en la documentación del sitio. Este archivo no comprueba la implementación u operación financiera."
+  },
+  "Ilustração conceitual: análise do mercado leva a uma ordem": {
+    "en": "Conceptual illustration: market analysis leads to an order",
+    "es": "Ilustración conceptual: el análisis del mercado lleva a una orden"
+  },
+  "Como a participação funciona": {
+    "en": "How participation works",
+    "es": "Cómo funciona la participación"
+  },
+  "O saldo de BETTEX é a sua elegibilidade para participar do lucro global. Você não escolhe operações nem financia trades: quem opera é o agente, com o capital da tesouraria.": {
+    "en": "Your BETTEX balance is your eligibility to take part in the global profit pool. You do not choose operations or fund trades: the agent operates, using treasury capital.",
+    "es": "Su saldo de BETTEX es su elegibilidad para participar en el lucro global. Usted no elige operaciones ni financia trades: opera el agente, con el capital de la tesorería."
+  },
+  "Caminho da participação, da Carteira USDC ao saque ou reconversão": {
+    "en": "Participation path, from the USDC Wallet to withdrawal or reconversion",
+    "es": "Camino de la participación, de la Cartera USDC al retiro o reconversión"
+  },
+  "Recebe depósitos cripto e é usada para comprar BETTEX.": {
+    "en": "Receives crypto deposits and is used to buy BETTEX.",
+    "es": "Recibe depósitos cripto y se usa para comprar BETTEX."
+  },
+  "Guarda os seus tokens. Cada token na carteira oficial participa automaticamente, sem ativação.": {
+    "en": "Holds your tokens. Every token in the official wallet participates automatically, with no activation.",
+    "es": "Guarda sus tokens. Cada token en la cartera oficial participa automáticamente, sin activación."
+  },
+  "Agente cripto": {
+    "en": "Crypto agent",
+    "es": "Agente cripto"
+  },
+  "Um único agente, financiado pela tesouraria, opera contra a manipulação do mercado.": {
+    "en": "A single agent, funded by the treasury, operates against market manipulation.",
+    "es": "Un único agente, financiado por la tesorería, opera contra la manipulación del mercado."
+  },
+  "Lucro líquido distribuível": {
+    "en": "Net distributable profit",
+    "es": "Lucro neto distribuible"
+  },
+  "Após custos e obrigações, o lucro efetivo é repartido entre três destinos.": {
+    "en": "After costs and obligations, the actual profit is split among three destinations.",
+    "es": "Tras costos y obligaciones, el lucro efectivo se reparte entre tres destinos."
+  },
+  "A parte dos participantes é creditada na Carteira USDC, sem vender BETTEX.": {
+    "en": "The participants' share is credited to the USDC Wallet, without selling BETTEX.",
+    "es": "La parte de los participantes se acredita en la Cartera USDC, sin vender BETTEX."
+  },
+  "Saque ou reconversão": {
+    "en": "Withdrawal or reconversion",
+    "es": "Retiro o reconversión"
+  },
+  "O USDC pode ser sacado ou convertido de volta em BETTEX.": {
+    "en": "USDC can be withdrawn or converted back into BETTEX.",
+    "es": "El USDC puede retirarse o convertirse de nuevo en BETTEX."
+  },
+  "Participantes": {
+    "en": "Participants",
+    "es": "Participantes"
+  },
+  "Carteira exclusiva de recompra; todo BETTEX adquirido é queimado.": {
+    "en": "Dedicated buyback wallet; all BETTEX acquired is burned.",
+    "es": "Cartera exclusiva de recompra; todo BETTEX adquirido se quema."
+  },
+  "Divisão do lucro líquido distribuível: 50% tesouraria, 25% participantes, 25% recompra": {
+    "en": "Split of net distributable profit: 50% treasury, 25% participants, 25% buyback",
+    "es": "División del lucro neto distribuible: 50% tesorería, 25% participantes, 25% recompra"
+  },
+  "Fluxo de participação": {
+    "en": "Participation flow",
+    "es": "Flujo de participación"
+  },
+  "O saldo de BETTEX define apenas a elegibilidade. Ele não é capital transferido para o motor de operações e não dá direito de resgate sobre a tesouraria nem liquidez de venda garantida.": {
+    "en": "The BETTEX balance only defines eligibility. It is not capital transferred to the trading engine and gives no redemption right over the treasury or guaranteed sale liquidity.",
+    "es": "El saldo de BETTEX solo define la elegibilidad. No es capital transferido al motor de operaciones y no da derecho de rescate sobre la tesorería ni liquidez de venta garantizada."
+  },
+  "Fluxo do capital de operação": {
+    "en": "Trading capital flow",
+    "es": "Flujo del capital de operación"
+  },
+  "O agente opera com recursos da tesouraria. Nenhum participante financia individualmente as operações escolhidas.": {
+    "en": "The agent operates with treasury resources. No participant individually funds the chosen operations.",
+    "es": "El agente opera con recursos de la tesorería. Ningún participante financia individualmente las operaciones elegidas."
+  },
+  "Token e USDC têm funções diferentes": {
+    "en": "Token and USDC have different purposes",
+    "es": "Token y USDC tienen funciones distintas"
+  },
+  "A Carteira BETTEX guarda os tokens que dão participação. A Carteira USDC recebe depósitos, serve para compras e recebe os créditos de lucro. Receber lucro não consome nem vende seus tokens.": {
+    "en": "The BETTEX Wallet holds the tokens that give participation. The USDC Wallet receives deposits, is used for purchases and receives profit credits. Receiving profit does not consume or sell your tokens.",
+    "es": "La Cartera BETTEX guarda los tokens que dan participación. La Cartera USDC recibe depósitos, sirve para compras y recibe los créditos de lucro. Recibir lucro no consume ni vende sus tokens."
+  },
+  "Rodadas diárias independentes": {
+    "en": "Independent daily rounds",
+    "es": "Rondas diarias independientes"
+  },
+  "Cada rodada dura 24 horas e é independente. Quem entra durante uma rodada espera a próxima.": {
+    "en": "Each round lasts 24 hours and is independent. Anyone entering during a round waits for the next one.",
+    "es": "Cada ronda dura 24 horas y es independiente. Quien entra durante una ronda espera la siguiente."
+  },
+  "Regras de elegibilidade": {
+    "en": "Eligibility rules",
+    "es": "Reglas de elegibilidad"
+  },
+  "Qualquer saída de BETTEX, mesmo parcial, cancela os créditos ainda não pagos.": {
+    "en": "Any BETTEX exit, even partial, cancels credits not yet paid.",
+    "es": "Cualquier salida de BETTEX, aunque sea parcial, cancela los créditos aún no pagados."
+  },
+  "Rodadas encerradas sem pagamento não acumulam lucros para o futuro.": {
+    "en": "Closed rounds with no payout do not accumulate profits for the future.",
+    "es": "Las rondas cerradas sin pago no acumulan lucros para el futuro."
+  },
+  "Sem lucro elegível, não há distribuição, e os resultados não são garantidos.": {
+    "en": "Without eligible profit there is no distribution, and results are not guaranteed.",
+    "es": "Sin lucro elegible no hay distribución, y los resultados no están garantizados."
+  },
+  "O USDC já recebido continua sendo seu.": {
+    "en": "USDC already received remains yours.",
+    "es": "El USDC ya recibido sigue siendo suyo."
+  },
+  "Ver o passo a passo da participação": {
+    "en": "See the step-by-step participation",
+    "es": "Ver el paso a paso de la participación"
   }
 }

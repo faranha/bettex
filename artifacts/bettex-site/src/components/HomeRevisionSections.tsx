@@ -1,5 +1,7 @@
-import { ArrowRight, ChartCandlestick } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { CommunityCTA } from '@/components/CommunityCTA';
+import { EarningsWalletIllustration } from '@/components/EarningsWalletIllustration';
+import { HomeParticipationLogic } from '@/components/HomeParticipationLogic';
 import './HomeRevisionSections.css';
 
 const brain = () => `${import.meta.env.BASE_URL}agents/bettex-intelligence-brain.webp`;
@@ -15,6 +17,7 @@ export function HomeOperationSection() {
           </div>
           <p className="hr-note">Antes de cada operação, o agente BETTEX analisa carteiras, volume e liquidez para identificar padrões de manipulação do mercado. Quando identifica, investe contra quem manipula, dentro dos controles de risco. Se não houver oportunidade, ele não opera.</p>
         </header>
+        <HomeParticipationLogic />
         <div className="hr-flow" data-testid="diagram-home-flow">
           <div className="hr-brain" role="img" aria-label="Cérebro representando a inteligência artificial da BETTEX">
             <img src={brain()} alt="" width={640} height={640} loading="lazy" decoding="async" />
@@ -33,28 +36,25 @@ export function HomeOperationSection() {
   );
 }
 
-export function HomeFocusSection() {
+export function HomeEarningsSection() {
   return (
     <section id="mercados" className="hr-section hr-focus" aria-labelledby="hr-focus-title">
       <div className="hr-wrap">
         <header className="hr-head">
           <div>
-            <p className="hr-eyebrow">Foco inicial</p>
-            <h2 id="hr-focus-title" className="hr-title">Começamos focados.<br /><em>Expandimos com validação.</em></h2>
+            <p className="hr-eyebrow">Ganhos diários</p>
+            <h2 id="hr-focus-title" className="hr-title">Seu BETTEX participa.<br />{' '}<em>O lucro chega à sua carteira.</em></h2>
           </div>
-          <p className="hr-note">Começamos com um agente de IA em um mercado cripto. O ativo inicial ainda não foi escolhido. Novos ativos cripto só entram depois de validação.</p>
+          <p className="hr-note">A cada ciclo de 24 horas, quando há lucro real disponível, a sua parte é paga em USDC. O seu saldo de BETTEX continua com você.</p>
         </header>
-        <div className="hr-focus-grid">
-          <div className="hr-focus-art" role="img" aria-label="Um agente de IA focado em um mercado cripto">
-            <img src={brain()} alt="" width={640} height={640} loading="lazy" decoding="async" />
-            <span className="hr-focus-chip"><ChartCandlestick size={18} aria-hidden="true" />Mercado cripto</span>
-          </div>
-          <div className="hr-focus-list">
-            <div className="hr-focus-item"><span>Agora</span><h3>Um agente, um mercado cripto</h3><p>Ativo inicial: a definir.</p></div>
-            <div className="hr-focus-item"><span>Depois</span><h3>Mais ativos cripto</h3><p>Somente após validação.</p></div>
-          </div>
-        </div>
-        <CommunityCTA source="mercados" note="Veja de perto o que a IA acompanha." />
+        <EarningsWalletIllustration />
+        <ul className="ew-benefits">
+          <li className="hr-focus-item"><span>Todo dia</span><h3>Dinheiro todo dia</h3><p>Os resultados são apurados em ciclos diários.</p></li>
+          <li className="hr-focus-item"><span>Sem vender</span><h3>BETTEX continua seu</h3><p>Você recebe os ganhos sem vender o seu token.</p></li>
+          <li className="hr-focus-item ew-hot"><span>USDC</span><h3>Saque ou reinvista</h3><p>Use o USDC recebido como preferir, conforme as regras de saída.</p></li>
+        </ul>
+        <a href="#participacao" className="ew-link" data-testid="link-earnings-participation">Ver como participar <ArrowRight size={18} aria-hidden="true" /></a>
+        <CommunityCTA source="mercados" note="Entre e acompanhe os ganhos diários." />
       </div>
     </section>
   );

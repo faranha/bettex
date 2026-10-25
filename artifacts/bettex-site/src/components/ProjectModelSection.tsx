@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { ArrowDownRight, ArrowLeft, ArrowRight, Wallet } from 'lucide-react';
 import { CommunityCTA } from '@/components/CommunityCTA';
+import { OrderFlowIllustration } from '@/components/HomeIllustrations';
 import { TokenIllustration, DepositIllustration } from '@/components/ProjectModelIllustrations';
 
 
@@ -109,6 +110,7 @@ export function ProjectModelSection() {
          .pm-index { display: block; margin-bottom: 12px; color: #5F86FF; font: 700 11px/1 var(--app-font-mono); }
         .pm-step h3 { margin: 0; font: 800 clamp(1.3rem, 1.95vw, 1.8rem)/1.18 var(--app-font-serif); letter-spacing: -.045em; overflow-wrap: anywhere; text-wrap: balance; }
         .pm-step h3 em { color: var(--pm-lime); font-style: normal; }
+        .pm-step .pm-agent-title em { display: block; margin-top: .08em; }
         .pm-detail { margin: 12px 0 0; color: #87a0dd; font-size: 12px; line-height: 1.55; }
          .pm-visual { display: flex; align-items: center; height: 84px; margin-bottom: 15px; }
          .pm-profit-visual { position: relative; width: 205px; }
@@ -218,7 +220,7 @@ export function ProjectModelSection() {
             <div className="pm-step">
               <span className="pm-index">01 / COMPRA</span>
               <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
-              <h3>Compre <em>BETTEX.</em></h3>
+              <h3>Compre{' '}<em>BETTEX.</em></h3>
               <p className="pm-detail">Compre BETTEX pelo aplicativo e acompanhe seus tokens.</p>
             </div>
             <div className="pm-step">
@@ -226,13 +228,13 @@ export function ProjectModelSection() {
               <div className="pm-visual" aria-hidden="true">
                 <DepositIllustration />
               </div>
-              <h3>O token <em>é seu.</em></h3>
+              <h3>O token{' '}<em>é seu.</em></h3>
               <p className="pm-detail">Todo BETTEX na carteira oficial participa automaticamente, sem ativação. Quem entra durante uma rodada espera a próxima. Receber a sua parte não tira seus tokens, mas qualquer saída cancela créditos ainda não pagos.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / AGENTE DE IA</span>
-              <div className="pm-visual" aria-hidden="true"><img src={`${import.meta.env.BASE_URL}agents/bettex-intelligence-brain.webp`} alt="" width={84} height={84} loading="lazy" decoding="async" style={{ height: 84, width: 84, objectFit: 'contain' }} /></div>
-              <h3>Um agente de IA <em>investe contra a manipulação.</em></h3>
+              <div className="pm-visual"><OrderFlowIllustration /></div>
+              <h3 className="pm-agent-title">Um agente de IA{' '}<em>investe contra a manipulação.</em></h3>
               <p className="pm-detail">Um único agente de IA identifica padrões de manipulação no mercado cripto e investe contra quem os provoca, segundo critérios e limites de risco.</p>
             </div>
             <div className="pm-step">
@@ -244,7 +246,7 @@ export function ProjectModelSection() {
                 <ArrowDownRight className="pm-profit-arrow" size={31} strokeWidth={2.2} />
                 <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
               </div>
-              <h3>Você recebe <em>sua parte dos lucros.</em></h3>
+              <h3>Você recebe{' '}<em>sua parte dos lucros.</em></h3>
               <p className="pm-detail">Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é creditada em USDC.</p>
             </div>
           </div>
