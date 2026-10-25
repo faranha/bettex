@@ -14,3 +14,9 @@ A comunicação da oferta deve dizer explicitamente “você recebe no Pix” e 
 **Why:** O criador reforçou “voce recebe no PIX, PIX, parte dos lucros no PIX”, apontando os textos do hero e de ganhos diários.
 
 **How to apply:** Manter Pix explícito nesses dois trechos e nas traduções. Isso define o posicionamento do produto, não comprova integração ou pagamentos reais no demo.
+
+A apresentação dos ganhos deve explicar que o limite distribuível é 1% ao dia e que o lucro depende da operação. A parte dos lucros dos detentores elegíveis do token é paga automaticamente em reais na conta BETTEX.
+
+**Why:** O criador pediu um slide de rendimentos diários variáveis e essas explicações, com crédito na conta BETTEX.
+
+**How to apply:** Distinguir o teto de distribuição de um rendimento fixo ou garantido. A comunicação da conta em reais não altera a contabilidade interna em cripto nem habilita pagamentos reais no demo.

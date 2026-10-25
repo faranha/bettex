@@ -13,14 +13,9 @@
 .hab-node { fill: #9fe9ff; opacity: .5; animation: hab-pulse 5s ease-in-out infinite; }
 .hab-node--1 { animation-delay: -1.7s; } .hab-node--2 { animation-delay: -3.3s; }
 @keyframes hab-pulse { 0%, 100% { opacity: .25; } 50% { opacity: .8; } }
-[data-paused="true"], [data-paused="true"] * { animation-play-state: paused !important; }
-.hab-toggle { position: absolute; z-index: 3; right: 8px; bottom: 8px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 9999px; border: 1px solid rgba(159,233,255,.35); background: rgba(4,16,48,.55); color: #F4F1E8; cursor: pointer; opacity: .75; transition: opacity .2s; }
-.hab-toggle:hover, .hab-toggle:focus-visible { opacity: 1; }
-.hab-toggle:focus-visible { outline: 2px solid #F2B632; outline-offset: 2px; }
 @media (max-width: 767px) { .hab-net { width: 100%; opacity: .45; } .hab-track:nth-of-type(n+3), .hab-signal--2, .hab-signal--3 { display: none; } .hab-light { opacity: .5; } }
 @media (prefers-reduced-motion: reduce) {
   .hab-drift, .hab-light, .hab-signal, .hab-node { animation: none !important; }
   .hab-drift { transform: scale(1.03); }
   .hab-signal { display: none; }
-  .hab-toggle { display: none; }
 }

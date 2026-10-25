@@ -15,6 +15,12 @@ A homepage deve apresentar uma baleia e gráficos de trade com o título: “Bal
 
 **How to apply:** Preservar o conceito visual e a mensagem nas traduções. Os gráficos são ilustrativos; não apresentá-los como operações reais ou prova de previsão. A estratégia segue em validação, sem lucro ou antecipação garantidos.
 
+No mobile, a baleia deve ser fundo do conteúdo, não ficar abaixo ocupando espaço separado. A área do conteúdo pode ser um pouco mais alta para acomodar a ilustração.
+
+**Why:** O criador apontou o espaço desnecessário da baleia abaixo do texto e pediu explicitamente que ela fosse o fundo do conteúdo.
+
+**How to apply:** Sobrepor a arte original e o texto na mesma área, preservando contraste, leitura e acesso ao botão. Não reservar uma segunda região vertical apenas para a baleia; preservar o desktop.
+
 A baleia dessa seção deve usar a primeira ilustração em traços livres, integrada ao gráfico e sem container. Essa direção substitui as experiências mecânica e steampunk. O botão da documentação deve ter tamanho moderado, não ocupar toda a coluna.
 
 **Why:** Após pedir a ilustração livre, o criador experimentou uma baleia mecânica, rejeitou a primeira por caricatura e a segunda por steampunk. Sua direção final foi “vamos voltar aquela baleia anterior a primeira desenhada de forma livre” e “volte sem fazer rollback”.
