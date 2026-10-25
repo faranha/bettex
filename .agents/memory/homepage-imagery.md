@@ -15,11 +15,11 @@ A homepage deve apresentar uma baleia e gráficos de trade com o título: “Bal
 
 **How to apply:** Preservar o conceito visual e a mensagem nas traduções. Os gráficos são ilustrativos; não apresentá-los como operações reais ou prova de previsão. A estratégia segue em validação, sem lucro ou antecipação garantidos.
 
-A baleia dessa seção deve ser desenhada/ilustrada e compor o fundo junto com o gráfico, sem ficar contida em um container.
+A baleia dessa seção deve ser ilustrada, mecânica e artística, sem aparência caricata, e compor o fundo junto com o gráfico, sem ficar contida em um container. O botão da documentação deve ter tamanho moderado, não ocupar toda a coluna.
 
-**Why:** O criador rejeitou a fotografia em um quadro: “a baleia tem que ser desenhada, ilustrada, ao fundo, o grafico tambem, nao pode ficar contido em um container, tem que ser mais artistico”.
+**Why:** O criador rejeitou a fotografia em um quadro: “a baleia tem que ser desenhada, ilustrada, ao fundo, o grafico tambem, nao pode ficar contido em um container, tem que ser mais artistico”. Depois especificou: “a baleia tem que ser mecanica”. Ao ver a versão de placas simples e olho circular grande, corrigiu: “botao ficou grande demais, a baleia ficou caricata demais, pouco artistica”.
 
-**How to apply:** Integrar baleia e gráfico em uma composição artística aberta sobre o fundo da seção, também no mobile. Não voltar à foto realista nem ao painel com borda e cantos arredondados; preservar os textos aprovados e sua legibilidade.
+**How to apply:** Integrar baleia mecânica e gráfico em uma composição artística aberta sobre o fundo da seção, também no mobile. Preferir proporções naturais de baleia, materiais metálicos detalhados e um olho discreto; evitar aspecto de brinquedo, sorriso e olho circular exagerado. Não substituir por uma baleia natural, fotografia em quadro ou painel com borda e cantos arredondados; preservar os textos aprovados, sua legibilidade e o acesso à documentação.
 
 Não exibir o rótulo “Ilustração conceitual” na seção da baleia.
 
@@ -87,17 +87,17 @@ O bloco que sucedia a explicação do agente na 1.5 deve destacar ganhos diário
 
 **How to apply:** Apresentar o benefício financeiro e o recebimento em reais, com ilustração própria. Preservar as regras econômicas na documentação e no Pitch, sem reinserir o bloco técnico na homepage.
 
-Nesse bloco, não empilhar caixas explicativas, relógio, benefícios e vários convites. A apresentação deve ser de venda: “Até 1% de lucro por dia”, carteira recebendo dinheiro e decisão do usuário de vender ou sair.
+Nesse bloco, não empilhar caixas explicativas, relógio, benefícios e vários convites. A apresentação deve ser de venda: “Até 1% de lucro por dia”, carteira recebendo dinheiro e decisão do usuário de vender ou sair. Deve ficar claro que os lucros podem variar de 0 a 1% ao dia, conforme a rentabilidade do agente BETTEX.
 
-**Why:** O criador reiterou que “isso aqui é pra vender” e rejeitou a composição empilhada; quer que o visitante pense “Isso que eu quero”.
+**Why:** O criador reiterou que “isso aqui é pra vender” e rejeitou a composição empilhada; quer que o visitante pense “Isso que eu quero”. Depois pediu explicitamente que os lucros variáveis de 0 a 1% por dia e sua dependência da rentabilidade do agente fossem esclarecidos nessa seção.
 
-**How to apply:** Uma oferta visual integrada, com hierarquia forte, carteira com moedas entrando e uma única chamada para participar. Manter as explicações detalhadas nas áreas existentes, sem transformá-las novamente na composição desse bloco.
+**How to apply:** Uma oferta visual integrada, com hierarquia forte, carteira com moedas entrando e uma única chamada para participar. Explicar a variação e a dependência do desempenho junto da oferta, sem apresentar 1% como retorno fixo ou garantido. Manter as explicações detalhadas nas áreas existentes, sem transformá-las novamente na composição desse bloco.
 
-A oferta de ganhos diários deve ser a primeira seção de conteúdo após o hero, com base branca e cores adaptadas à versão clara. A composição foi considerada “quase perfeita”; complementar com imagem suave ao fundo e logo oficial na carteira, sem refazer o layout.
+A oferta de ganhos diários deve ser a primeira seção de conteúdo após o hero, com base branca e cores adaptadas à versão clara. A composição foi considerada “quase perfeita”; usar apenas a sala ao fundo, sem robô, e logo oficial na carteira, sem refazer o layout.
 
-**Why:** O criador pediu “isso aqui tem que ser a secao logo depoois do hero” e “ofundo tem que ser branco ... inverte as cores”. Depois disse “esta quase perfeito” e pediu uma imagem de fundo e o logo BETTEX na carteira.
+**Why:** O criador pediu “isso aqui tem que ser a secao logo depoois do hero” e “ofundo tem que ser branco ... inverte as cores”. Depois disse “esta quase perfeito” e pediu uma imagem de fundo e o logo BETTEX na carteira. Após experimentar o androide no fundo, corrigiu: “o robo ficou ruim aqui vamos deixar apenas a sala ao fudo”.
 
-**How to apply:** Preservar a faixa de tecnologias junto ao hero; apresentar o benefício antes dos demais blocos e refletir essa ordem na navegação. Manter a imagem de fundo leve, principalmente atrás da carteira, sem prejudicar leitura nem transformar a seção em fundo escuro.
+**How to apply:** Preservar a faixa de tecnologias junto ao hero; apresentar o benefício antes dos demais blocos e refletir essa ordem na navegação. Manter apenas a sala clara como fundo leve, principalmente atrás da carteira, sem reintroduzir o robô nessa seção, prejudicar leitura ou transformar a seção em fundo escuro.
 
 O roadmap da homepage deve ter uma imagem própria ao lado de cada etapa e evitar o estreitamento visual em “V”.
 
