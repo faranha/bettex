@@ -10,6 +10,7 @@ const normalize = value => value.replace(/\s+/g, ' ').trim();
 function add(value) {
   value = normalize(value);
   if (value === 'non-scaling-stroke') return; // SVG vector-effect protocol value.
+  if (/^[Mm][\s\d.,eE+\-MmZzLlHhVvCcSsQqTtAa]+$/.test(value)) return; // SVG path data, not interface copy.
   if (/^--[a-z\d_-]+$/i.test(value)) return; // CSS custom-property names are not copy.
   if (/^[a-z][a-z\d-]*__[a-z\d_-]+$/i.test(value)) return; // BEM CSS class names are structural, not prose.
   if (value === 'correlationId') return; // History URL/API field name, never user-facing copy.

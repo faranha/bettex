@@ -1,0 +1,26 @@
+.hab-drift { position: absolute; inset: 0; transform: scale(1.03); animation: hab-pan 36s ease-in-out infinite alternate; will-change: transform; }
+.hab-drift > img { position: absolute; inset: 0; }
+@keyframes hab-pan { from { transform: scale(1.03) translate3d(-1.2%, .8%, 0); } to { transform: scale(1.03) translate3d(1.2%, -.8%, 0); } }
+.hab-light { position: absolute; z-index: 1; right: -10%; top: 5%; width: 70%; height: 90%; background: radial-gradient(closest-side, rgba(54,224,208,.18), rgba(43,89,255,.1) 55%, transparent); opacity: .7; animation: hab-breathe 12s ease-in-out infinite alternate; will-change: transform, opacity; }
+@keyframes hab-breathe { from { opacity: .45; transform: scale(.94) translate3d(-3%, 2%, 0); } to { opacity: .85; transform: scale(1.06) translate3d(3%, -2%, 0); } }
+.hab-net { position: absolute; z-index: 1; top: 0; right: 0; width: 62%; height: 100%; opacity: .85; }
+.hab-track { fill: none; stroke: #6f9bff; stroke-width: 1; stroke-opacity: .22; vector-effect: non-scaling-stroke; }
+.hab-signal { fill: none; stroke: #36E0D0; stroke-width: 2; stroke-linecap: round; stroke-opacity: .85; stroke-dasharray: 5 95; stroke-dashoffset: 5; vector-effect: non-scaling-stroke; animation: hab-flow 9s linear infinite; }
+.hab-signal--1 { animation-duration: 12s; animation-delay: -4s; stroke: #6f9bff; }
+.hab-signal--2 { animation-duration: 14s; animation-delay: -8s; }
+.hab-signal--3 { animation-duration: 11s; animation-delay: -2s; stroke: #6f9bff; }
+@keyframes hab-flow { to { stroke-dashoffset: -95; } }
+.hab-node { fill: #9fe9ff; opacity: .5; animation: hab-pulse 5s ease-in-out infinite; }
+.hab-node--1 { animation-delay: -1.7s; } .hab-node--2 { animation-delay: -3.3s; }
+@keyframes hab-pulse { 0%, 100% { opacity: .25; } 50% { opacity: .8; } }
+[data-paused="true"], [data-paused="true"] * { animation-play-state: paused !important; }
+.hab-toggle { position: absolute; z-index: 3; right: 8px; bottom: 8px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 9999px; border: 1px solid rgba(159,233,255,.35); background: rgba(4,16,48,.55); color: #F4F1E8; cursor: pointer; opacity: .75; transition: opacity .2s; }
+.hab-toggle:hover, .hab-toggle:focus-visible { opacity: 1; }
+.hab-toggle:focus-visible { outline: 2px solid #F2B632; outline-offset: 2px; }
+@media (max-width: 767px) { .hab-net { width: 100%; opacity: .45; } .hab-track:nth-of-type(n+3), .hab-signal--2, .hab-signal--3 { display: none; } .hab-light { opacity: .5; } }
+@media (prefers-reduced-motion: reduce) {
+  .hab-drift, .hab-light, .hab-signal, .hab-node { animation: none !important; }
+  .hab-drift { transform: scale(1.03); }
+  .hab-signal { display: none; }
+  .hab-toggle { display: none; }
+}

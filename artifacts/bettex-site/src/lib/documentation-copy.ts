@@ -105,7 +105,7 @@ export const copy = {
   "rm2x": "Oferta de até 10% da emissão, a preço fixo, conforme regras, termos e elegibilidade aprovados. O valor arrecadado formará a base da tesouraria.",
   "rm3tag": "PREVISTO · ALFA E VESTING",
   "rm3t": "Sistema ALFA e vesting",
-  "rm3x": "Sistema e escopo inicial validados, com captação de investidores e início do vesting de 24 meses.",
+  "rm3x": "Validação técnica e jurídica, adequação regulatória, captação e início do vesting de 24 meses.",
   "rm4tag": "PREVISTO · BETA",
   "rm4d": "Após o ALFA · data a definir",
   "rm4t": "BETA e go to market",

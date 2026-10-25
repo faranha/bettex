@@ -3,23 +3,13 @@ import './HeroBenefit.css';
 export function HeroBenefit() {
   const base = import.meta.env.BASE_URL;
   return (
-    <div className="hero-benefit entrance entrance-delay" role="group" aria-label="Homem em primeiro plano ao lado de um robô de IA prateado, em uma cena de trading de cripto">
-      <div className="hero-benefit__robot">
+    <div className="hero-benefit entrance entrance-delay" role="group" aria-label="Homem em primeiro plano ao lado de um robô de IA branco, em uma cena de trading de cripto">
+      <div className="hero-benefit__float">
         <img
-          src={`${base}hero-ai-robot.webp`}
-          alt=""
-          width={613}
-          height={956}
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-      <div className="hero-benefit__person">
-        <img
-          src={`${base}hero-person-centered.webp`}
-          alt="Homem de camisa bege olhando de lado para a câmera"
-          width={514}
-          height={968}
+          src={`${base}hero-duo-partnership.webp`}
+          alt="Homem sorrindo com o celular na mão, com um robô de IA branco ao lado apoiando a mão no ombro dele"
+          width={866}
+          height={900}
           loading="eager"
           decoding="async"
           fetchPriority="high"

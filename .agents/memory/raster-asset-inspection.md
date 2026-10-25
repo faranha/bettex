@@ -3,6 +3,12 @@ name: Raster asset inspection
 description: Visual authenticity and transparency checks, plus font-free raster comparisons.
 ---
 
+When verifying high-density responsive images, check the selected resource and its decoded pixel dimensions, not only the element's `naturalWidth`.
+
+**Why:** Width-descriptor `srcset` applies density correction to intrinsic dimensions, so a correctly selected high-resolution file can report a smaller `naturalWidth` and produce a false failure.
+
+**How to apply:** Confirm `currentSrc`, then decode that resource without responsive descriptors or inspect its bitmap dimensions. Test the actual device pixel ratio.
+
 For temporary contact sheets, avoid depending on Python Pillow or ImageMagick montage's default font; use font-free ImageMagick or FFmpeg composition instead.
 
 **Why:** Pillow was unavailable here, and montage failed to resolve a font even without requesting visible labels. A font-free composition worked.

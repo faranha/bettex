@@ -20,7 +20,7 @@ export const roadmapStops = [
 
 type Stop = { tag: string; date: string; dateTime?: string; title: string; description: string; featured?: boolean; extra?: string };
 const homeRoadmapStops: readonly Stop[] = roadmapStops.map((stop, i): Stop => i === 2
-  ? { ...stop, extra: 'Foco inicial em cripto: um agente de IA em um mercado cripto, com o ativo inicial ainda a definir.' }
+  ? { ...stop, extra: 'Um agente de IA em cripto. Ativo inicial a definir.' }
   : i === 4
     ? { ...stop, title: 'Expansão de ativos', description: 'Novos ativos cripto só entram após validação, com integração, controles verificados e adequação legal. Dados públicos não equivalem a operação autorizada.' }
     : stop);
