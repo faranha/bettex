@@ -19,6 +19,7 @@ import { DocumentationPage } from '@/pages/documentation';
 import { PitchPage } from '@/pages/pitch';
 import { DemoPage } from '@/pages/demo';
 import { HeroBenefit } from '@/components/hero/HeroBenefit';
+import { HeroAnimatedBackground } from '@/components/hero/HeroAnimatedBackground';
 import { BettexMark } from '@/components/BettexMark';
 import '@/components/SiteFooter.css';
 import '@/pages/pitch.css';
@@ -166,7 +167,17 @@ function SiteFooter({ compact = false, home = false }: { compact?: boolean; home
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
     {!compact && <div className={`site-footer__cta${home ? ' site-footer__cta--home' : ''} relative overflow-hidden bg-[#2B59FF]`}>
       <div aria-hidden="true" className="site-footer__sports">
-        <img src={`${import.meta.env.BASE_URL}${home ? 'footer-rio-scene.webp' : 'footer-betting-scene.jpg'}`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
+        <img
+          src={`${import.meta.env.BASE_URL}${home ? 'footer-rio-scene-hd.webp' : 'footer-betting-scene.jpg'}`}
+          srcSet={home ? `${import.meta.env.BASE_URL}footer-rio-scene-sharp.webp 1024w, ${import.meta.env.BASE_URL}footer-rio-scene-hd.webp 2048w` : undefined}
+          sizes={home ? '(max-width: 1023px) 100vw, 1000px' : undefined}
+          width={home ? 2048 : 1024}
+          height={home ? 2048 : 1024}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="site-footer__sports-photo"
+        />
         {!home && <FooterAiGraph />}
       </div>
       <div className="page-wrap relative">
@@ -174,7 +185,7 @@ function SiteFooter({ compact = false, home = false }: { compact?: boolean; home
           <div className="pb-2 lg:pb-20">
             <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#F4F1E8]">BETTEX</span>
             {home ? <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">{t('Comece a ganhar.')}</span><span className="block text-[#F2B632]">{t('Invista com inteligência.')}</span></h2>
-            <p className="mt-6 max-w-[420px] text-base font-medium leading-7 text-[#F4F1E8]">{t('A BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.')}</p></> : <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#F2B632]">e se torne dono do jogo</span></h2>
+            <p className="mt-6 max-w-[420px] text-base font-medium leading-7 text-[#F4F1E8]">{t('O agente IA da BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.')}</p></> : <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#F2B632]">e se torne dono do jogo</span></h2>
             <p className="mt-6 max-w-[390px] text-base font-medium leading-7 text-[#F4F1E8]">Participe dos resultados da IA com o token BETTEX.</p></>}
             <div className="mt-6 flex flex-wrap gap-3">
               <a {...linkProps} href={DOCUMENTATION_PATH} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#F4F1E8] hover:text-[#070B1F] focus-visible:outline-[#F2B632]">Ler a documentação</a>
@@ -260,9 +271,7 @@ function Home() {
     <main className="home-page">
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#F4F1E8]">
         <div className="hero-intro-stage relative">
-        <div className="home-hero-background" aria-hidden="true">
-          <img src={`${import.meta.env.BASE_URL}hero-crypto-trading-background.webp`} alt="" width={1600} height={1600} loading="eager" decoding="async" />
-        </div>
+        <HeroAnimatedBackground />
         <div className="page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[730px] xl:py-16">
           <div className="entrance relative z-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#5a8bfc]/35 bg-[#2B59FF]/15 px-4 py-2 text-[11px] font-bold text-[#F4F1E8]"><span className="h-2 w-2 rounded-full bg-[#36E0D0]" /> PROJETO DEFI · TRADING COM IA</div>

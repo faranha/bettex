@@ -21,9 +21,15 @@ Na abertura da homepage, o fundo deve comunicar lucro, investimento e trading cr
 
 A arte que acompanha o rapaz no hero deve transmitir sucesso e complementar sua presença, sem parecer uma carteirinha colada. O criador sugeriu um robô espelhando o rapaz.
 
-**Why:** O criador rejeitou a carteira no hero e pediu “algo como sucesso ... algo que cmplemente bem o rapaz - pode ser um robo espelhando ele”.
+**Why:** O criador rejeitou a carteira no hero e pediu “algo como sucesso ... algo que cmplemente bem o rapaz - pode ser um robo espelhando ele”. Mesmo com o robô branco, apontou que “ta faltando vida no hero”.
 
-**How to apply:** Preservar o homem e priorizar uma composição coerente entre humano e sua contraparte de IA, com proporção, perspectiva e iluminação compatíveis. Essa direção é do hero e não rejeita a carteira animada na seção de ganhos.
+**How to apply:** Preservar a identidade do homem e priorizar uma composição coerente entre humano e sua contraparte de IA, com proporção, perspectiva e iluminação compatíveis. Trabalhar expressão e interação entre os personagens, não apenas substituir o modelo do robô ou acrescentar brilho a dois recortes posando. Essa direção é do hero e não rejeita a carteira animada na seção de ganhos.
+
+Para o robô do hero, seguir a linguagem do agente branco do Pitch: carcaça clara, visor escuro, luz azul e articulações mecânicas, mas criar outro modelo, não reutilizar o mesmo.
+
+**Why:** O criador mostrou o agente do Pitch e pediu “prefiro esse agente esse robo aqui na home, mais nesse estilo, nao o mesmo”.
+
+**How to apply:** Substituir o humanoide de rosto humano e metal prateado por um parceiro de IA nesse estilo. Não alterar o robô do Pitch nem copiar sua pose de ajudar uma pessoa.
 
 **How to apply:** Nas demais imagens editoriais, alinhar a fotografia e seu degradê aos limites do conteúdo, inclusive em telas largas e no celular. O fundo do hero é a exceção: ocupa toda a largura.
 
@@ -57,11 +63,11 @@ Nesse bloco, não empilhar caixas explicativas, relógio, benefícios e vários 
 
 **How to apply:** Uma oferta visual integrada, com hierarquia forte, carteira com moedas entrando e uma única chamada para participar. Manter as explicações detalhadas nas áreas existentes, sem transformá-las novamente na composição desse bloco.
 
-A oferta de ganhos diários deve ser a primeira seção de conteúdo após o hero, com fundo branco e cores adaptadas à versão clara.
+A oferta de ganhos diários deve ser a primeira seção de conteúdo após o hero, com base branca e cores adaptadas à versão clara. A composição foi considerada “quase perfeita”; complementar com imagem suave ao fundo e logo oficial na carteira, sem refazer o layout.
 
-**Why:** O criador pediu “isso aqui tem que ser a secao logo depoois do hero” e “ofundo tem que ser branco ... inverte as cores”.
+**Why:** O criador pediu “isso aqui tem que ser a secao logo depoois do hero” e “ofundo tem que ser branco ... inverte as cores”. Depois disse “esta quase perfeito” e pediu uma imagem de fundo e o logo BETTEX na carteira.
 
-**How to apply:** Preservar a faixa de tecnologias junto ao hero; apresentar o benefício antes dos demais blocos e refletir essa ordem na navegação.
+**How to apply:** Preservar a faixa de tecnologias junto ao hero; apresentar o benefício antes dos demais blocos e refletir essa ordem na navegação. Manter a imagem de fundo leve, principalmente atrás da carteira, sem prejudicar leitura nem transformar a seção em fundo escuro.
 
 O roadmap da homepage deve ter uma imagem própria ao lado de cada etapa e evitar o estreitamento visual em “V”.
 

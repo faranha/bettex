@@ -26,7 +26,7 @@ test('public ALFA and feature links share the localized app entry', () => {
   assert.doesNotMatch(roadmap, /hideMintSalesDisclaimer|hideAlphaReleaseDisclaimer/);
   const documentation = read('../../lib/documentation-copy.ts');
   assert.match(documentation, /"rm2x": "Oferta de até 10% da emissão, a preço fixo, conforme regras, termos e elegibilidade aprovados\. O valor arrecadado formará a base da tesouraria\."/);
-  assert.match(documentation, /"rm3x": "Sistema e escopo inicial validados, com captação de investidores e início do vesting de 24 meses\."/);
+  assert.match(documentation, /"rm3x": "Validação técnica e jurídica, adequação regulatória, captação e início do vesting de 24 meses\."/);
   assert.match(roadmap, /Não é uma capacidade já entregue nem uma promessa de data/);
   assert.match(roadmap, /date: 'Após o ALFA · data a definir'/);
   assert.doesNotMatch(roadmap, /current: true|BETA · TGE|Outubro de 2026|Novembro de 2026|Janeiro de 2027/);

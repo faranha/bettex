@@ -1,8 +1,14 @@
 import { useId } from 'react';
 
-// Coins start fully inside the viewBox (centre y=44, radius 24) and fall into the wallet mouth.
-// [x, static rest y]. Fall distance is 270, so coins finish behind the front face (y>=268).
-const coins: Array<[number, number]> = [[150, 150], [300, 140], [215, 90], [270, 185], [185, 190]];
+// Even the largest coin starts inside the viewBox and ends behind the wallet front.
+// Denominations are decorative, not account balances or projected earnings.
+const coins = [
+  { x: 150, restY: 150, value: 1, scale: 0.78 },
+  { x: 300, restY: 140, value: 50, scale: 1.3 },
+  { x: 215, restY: 90, value: 10, scale: 1.02 },
+  { x: 270, restY: 185, value: 20, scale: 1.16 },
+  { x: 185, restY: 190, value: 5, scale: 0.9 },
+];
 const START_Y = 44;
 
 export function EarningsWalletIllustration() {
@@ -24,18 +30,19 @@ export function EarningsWalletIllustration() {
         <rect x="76" y="236" width="308" height="80" rx="24" fill={`url(#${id('back')})`} stroke="#5F86FF" strokeOpacity=".35" strokeWidth="2" />
         <ellipse cx="230" cy="256" rx="142" ry="20" fill="#03061a" />
         <ellipse cx="230" cy="256" rx="142" ry="20" fill="none" stroke="#8FA8FF" strokeOpacity=".4" strokeWidth="2" />
-        {coins.map(([x, restY], i) => (
+        {coins.map(({ x, restY, value, scale }, i) => (
           <g
             key={i}
             className="ew-coin"
             style={{ ['--rest' as string]: `${restY - START_Y}px`, ['--delay' as string]: `${(-i * 0.96).toFixed(2)}s` }}
           >
-            <g transform={`translate(${x} ${START_Y})`}>
+            <g transform={`translate(${x} ${START_Y}) scale(${scale})`}>
               <circle r="24" cy="4" fill={`url(#${id('edge')})`} />
               <circle r="24" fill={`url(#${id('gold')})`} stroke="#9A6409" strokeWidth="2" />
               <circle r="18" fill="none" stroke="#FFF3C9" strokeOpacity=".75" strokeWidth="1.5" />
               <path d="M-16 -8 A18 18 0 0 1 4 -17" fill="none" stroke="#fff" strokeOpacity=".7" strokeWidth="2.5" strokeLinecap="round" />
-              <text y="5" textAnchor="middle" fontSize="14" fontWeight="800" fill="#6B4606" fontFamily="var(--app-font-serif)">R$</text>
+              <text y="-6" textAnchor="middle" fontSize="8" fontWeight="800" fill="#6B4606" fontFamily="var(--app-font-serif)">R$</text>
+              <text y="11" textAnchor="middle" fontSize="18" fontWeight="800" fill="#6B4606" fontFamily="var(--app-font-serif)">{value}</text>
             </g>
           </g>
         ))}
@@ -43,6 +50,7 @@ export function EarningsWalletIllustration() {
         <path d="M76 274 H384" stroke="#fff" strokeOpacity=".28" strokeWidth="3" strokeLinecap="round" />
         <path d="M84 392 H300" stroke="#8FA8FF" strokeOpacity=".4" strokeWidth="2" strokeDasharray="6 7" strokeLinecap="round" />
         <path d="M84 300 H250" stroke="#8FA8FF" strokeOpacity=".4" strokeWidth="2" strokeDasharray="6 7" strokeLinecap="round" />
+        <image href={`${import.meta.env.BASE_URL}bettex-mark-gamblefi.svg`} x="130" y="312" width="60" height="60" opacity=".95" />
         <path d="M290 322 H408 Q422 322 422 336 V362 Q422 376 408 376 H290 Q268 376 268 349 Q268 322 290 322 Z" fill="#0D1530" stroke={`url(#${id('gold')})`} strokeWidth="4" />
         <circle cx="302" cy="349" r="10" fill={`url(#${id('gold')})`} stroke="#9A6409" strokeWidth="1.5" />
         <circle cx="299" cy="346" r="3" fill="#fff" fillOpacity=".7" />

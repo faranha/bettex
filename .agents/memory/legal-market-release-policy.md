@@ -9,6 +9,12 @@ O lançamento da solução deve ocorrer já adequado ao ambiente jurídico dos m
 
 **How to apply:** Distinguir regra de lançamento de validação jurídica já concluída. Os exemplos de cassino e prediction markets no Brasil não são prova de proibição vigente; verificar fontes oficiais, vigência, alcance, atividade concreta e exigências locais antes de decidir. Reavaliar em cada expansão e mudança regulatória. Uma permissão estrangeira, API, blockchain ou parceiro não autoriza automaticamente a oferta local ou outras funcionalidades.
 
+A adequação jurídica e regulatória deve aparecer já na etapa ALFA do roadmap, não somente na expansão.
+
+**Why:** O criador pediu “no roadmap tem que inserir regulamentacao juridica e legal no alfa”.
+
+**How to apply:** Apresentar como marco planejado do ALFA e manter os roadmaps sincronizados. Não afirmar que a regularização já foi concluída.
+
 Na observação da participação na homepage, manter também: “Mercados proibidos no seu país de origem são desabilitados automaticamente.”
 
 **Why:** O criador forneceu essa frase e pediu acrescentá-la à observação existente.

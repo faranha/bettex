@@ -344,10 +344,10 @@
     "en": "Only after validation.",
     "es": "Solo tras la validación."
   },
-  "Foco inicial em cripto: um agente de IA em um mercado cripto, com o ativo inicial ainda a definir.": {
-    "pt": "Foco inicial em cripto: um agente de IA em um mercado cripto, com o ativo inicial ainda a definir.",
-    "en": "Initial crypto focus: one AI agent in one crypto market, with the initial asset still to be defined.",
-    "es": "Enfoque inicial en cripto: un agente de IA en un mercado cripto, con el activo inicial aún por definir."
+  "Um agente de IA em cripto. Ativo inicial a definir.": {
+    "pt": "Um agente de IA em cripto. Ativo inicial a definir.",
+    "en": "One AI agent in crypto. Initial asset to be defined.",
+    "es": "Un agente de IA en cripto. Activo inicial por definir."
   },
   "Expansão de ativos": {
     "pt": "Expansão de ativos",
@@ -494,10 +494,10 @@
     "en": "You don't need to know how to trade or handle crypto.",
     "es": "No necesitas saber operar ni negociar cripto."
   },
-  "Homem em primeiro plano ao lado de um robô de IA prateado, em uma cena de trading de cripto": {
-    "pt": "Homem em primeiro plano ao lado de um robô de IA prateado, em uma cena de trading de cripto",
-    "en": "Man in the foreground beside a silver AI robot, in a crypto trading scene",
-    "es": "Hombre en primer plano junto a un robot de IA plateado, en una escena de trading de cripto"
+  "Homem em primeiro plano ao lado de um robô de IA branco, em uma cena de trading de cripto": {
+    "pt": "Homem em primeiro plano ao lado de um robô de IA branco, em uma cena de trading de cripto",
+    "en": "Man in the foreground beside a white AI robot, in a crypto trading scene",
+    "es": "Hombre en primer plano junto a un robot de IA blanco, en una escena de trading de cripto"
   },
   "Ilustração de uma carteira recebendo reais": {
     "pt": "Ilustração de uma carteira recebendo reais",
@@ -619,19 +619,34 @@
     "en": "Start investing intelligently.",
     "es": "Empieza a invertir con inteligencia."
   },
-  "A BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.": {
-    "pt": "A BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.",
-    "en": "BETTEX trades in crypto. You receive in reais, with no need to know how to trade.",
-    "es": "BETTEX opera en cripto. Recibes en reales, sin necesidad de saber operar."
+  "O agente IA da BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.": {
+    "pt": "O agente IA da BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.",
+    "en": "BETTEX's AI agent trades crypto. You receive reais, with no need to know how to trade.",
+    "es": "El agente de IA de BETTEX opera con cripto. Recibes en reales, sin necesidad de saber operar."
   },
   "Comece a ganhar.": {
     "pt": "Comece a ganhar.",
     "en": "Start earning.",
     "es": "Empieza a ganar."
   },
+  "Homem sorrindo com o celular na mão, com um robô de IA branco ao lado apoiando a mão no ombro dele": {
+    "pt": "Homem sorrindo com o celular na mão, com um robô de IA branco ao lado apoiando a mão no ombro dele",
+    "en": "Smiling man holding a phone, with a white AI robot beside him resting a hand on his shoulder",
+    "es": "Hombre sonriente con un teléfono en la mano y un robot de IA blanco a su lado apoyando una mano en su hombro"
+  },
   "Invista com inteligência.": {
     "pt": "Invista com inteligência.",
     "en": "Invest smartly.",
     "es": "Invierte con inteligencia."
+  },
+  "Pausar animação de fundo": {
+    "pt": "Pausar animação de fundo",
+    "en": "Pause background animation",
+    "es": "Pausar animación de fondo"
+  },
+  "Reproduzir animação de fundo": {
+    "pt": "Reproduzir animação de fundo",
+    "en": "Play background animation",
+    "es": "Reproducir animación de fondo"
   }
 }
