@@ -19,7 +19,7 @@ try {
       });
       const page = await context.newPage();
       page.on('pageerror', error => errors.push(`${locale}/${width}: ${error.message}`));
-      await page.goto(`${base}${route}#mercados`, { waitUntil: 'networkidle' });
+      await page.goto(`${base}${route}#mercados`, { waitUntil: 'domcontentloaded' });
       const section = page.locator('#mercados');
       const carousel = page.getByTestId('carousel-earnings');
       const first = page.getByTestId('slide-earnings-1');
@@ -35,7 +35,14 @@ try {
       await page.evaluate(() => new Promise(resolve =>
         requestAnimationFrame(() => requestAnimationFrame(resolve))));
       assert.equal(await carousel.getAttribute('data-active-slide'), '1');
-      assert.equal(await prev.isDisabled(), true);
+      assert.equal(await prev.isDisabled(), false);
+      assert.ok((await next.innerText()).includes({ 'pt-BR': 'Rendimentos', 'en-US': 'Earnings', 'es-ES': 'Rendimientos' }[locale]));
+      if (width < 900) {
+        const gap = await carousel.evaluate(el =>
+          el.querySelector('.ew-ctrl').getBoundingClientRect().top
+          - el.querySelector('[data-active="true"] .ew-grid').getBoundingClientRect().bottom);
+        assert.ok(gap >= 0 && gap <= 32, `Controls should be close to the wallet, not after a blank panel (${gap}px)`);
+      }
       assert.equal(await first.locator('.ew-bot, [data-testid="link-earnings-participation"]').count(), 0, 'The circled CTA and notice below the wallet must stay removed');
       assert.equal(await second.evaluate(el => el.inert), true);
       assert.equal(await third.evaluate(el => el.inert), true);
@@ -61,7 +68,12 @@ try {
       const heights = await carousel.locator('.ew-slide').evaluateAll(slides =>
         slides.map(slide => slide.getBoundingClientRect().height));
       assert.equal(heights.length, 3);
-      assert.ok(heights.every(height => Math.abs(height - heights[0]) < 2), 'All slides must share the same grid height');
+      if (width >= 900) {
+        assert.ok(heights.every(height => Math.abs(height - heights[0]) < 2), 'Desktop slides share grid height');
+      } else {
+        const trackHeight = (await carousel.locator('.ew-track').boundingBox()).height;
+        assert.ok(Math.abs(trackHeight - heights[1]) < 2, 'Mobile height follows the active slide');
+      }
       assert.equal(await second.evaluate(el =>
         [...el.querySelectorAll('.ew-card, .ew-chart, h3, p')].every(node => {
           const rect = node.getBoundingClientRect();
@@ -76,7 +88,7 @@ try {
       await third.waitFor({ state: 'visible' });
       assert.equal(await carousel.getAttribute('data-active-slide'), '3');
       assert.equal(await third.getAttribute('aria-label'), '3 / 3');
-      assert.equal(await next.isDisabled(), true);
+      assert.equal(await next.isDisabled(), false);
       assert.equal(await chooseThird.getAttribute('aria-current'), 'true');
       assert.equal(await second.evaluate(el => el.inert), true);
       await page.getByTestId('illustration-earnings-freedom').waitFor({ state: 'visible' });
@@ -95,6 +107,10 @@ try {
         await section.screenshot({ path: file });
         console.log(`Screenshot: ${file}`);
       }
+      await next.click();
+      await first.waitFor({ state: 'visible' });
+      await prev.click();
+      await third.waitFor({ state: 'visible' });
       await prev.click();
       await second.waitFor({ state: 'visible' });
       await chooseFirst.click();

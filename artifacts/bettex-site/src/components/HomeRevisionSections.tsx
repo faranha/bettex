@@ -6,11 +6,13 @@ import { EarningsReturnChart } from '@/components/EarningsReturnChart';
 import { t, useLocale } from '@/lib/i18n';
 import './HomeRevisionSections.css';
 
+const slideTitles = ['Como funciona?', 'Rendimentos', 'Liberdade de entrar e sair'] as const;
+
 export function HomeEarningsSection() {
   useLocale();
   const [i, setI] = useState(0);
   const x0 = useRef<number | null>(null);
-  const go = (n: number) => setI(Math.max(0, Math.min(2, n)));
+  const go = (n: number) => setI((n + slideTitles.length) % slideTitles.length);
   const onKey = (e: KeyboardEvent) => {
     if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1); }
     else if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1); }
@@ -72,13 +74,19 @@ export function HomeEarningsSection() {
           </div>
         </div>
         <div className="hr-wrap ew-ctrl">
-          <button type="button" className="ew-nav" onClick={() => go(i - 1)} disabled={i === 0} aria-label={t('Slide anterior')} data-testid="button-earnings-prev"><ArrowLeft size={20} aria-hidden="true" /></button>
+          <button type="button" className="ew-nav ew-nav--prev" onClick={() => go(i - 1)} data-testid="button-earnings-prev">
+            <ArrowLeft size={20} aria-hidden="true" />
+            <span className="ew-nav-copy"><span className="ew-nav-direction">{t('Anterior')}</span><span>{t(slideTitles[(i + 2) % 3])}</span></span>
+          </button>
           <div className="ew-dots">
             {[0, 1, 2].map(n => (
               <button key={n} type="button" className="ew-dot" aria-label={t(n === 2 ? 'Ir para o slide 3' : n ? 'Ir para o slide 2' : 'Ir para o slide 1')} aria-current={i === n} data-active={i === n} onClick={() => go(n)} data-testid={`button-earnings-slide-${n + 1}`} />
             ))}
           </div>
-          <button type="button" className="ew-nav" onClick={() => go(i + 1)} disabled={i === 2} aria-label={t('Próximo slide')} data-testid="button-earnings-next"><ArrowRight size={20} aria-hidden="true" /></button>
+          <button type="button" className="ew-nav ew-nav--next" onClick={() => go(i + 1)} data-testid="button-earnings-next">
+            <span className="ew-nav-copy"><span className="ew-nav-direction">{t('Próximo')}</span><span>{t(slideTitles[(i + 1) % 3])}</span></span>
+            <ArrowRight size={20} aria-hidden="true" />
+          </button>
         </div>
       </div>
     </section>
