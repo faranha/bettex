@@ -1,4 +1,29 @@
 {
+  "Ganhe conforme nossa IA opera.": {
+    "pt": "Ganhe conforme nossa IA opera.",
+    "en": "Earn as our AI trades.",
+    "es": "Gana según opera nuestra IA."
+  },
+  "Seu token.": {
+    "pt": "Seu token.",
+    "en": "Your token.",
+    "es": "Tu token."
+  },
+  "Sua escolha.": {
+    "pt": "Sua escolha.",
+    "en": "Your choice.",
+    "es": "Tu elección."
+  },
+  "Venda no app BETTEX a preço de mercado ou retire para sua carteira e venda em corretoras.": {
+    "pt": "Venda no app BETTEX a preço de mercado ou retire para sua carteira e venda em corretoras.",
+    "en": "Sell in the BETTEX app at market price, or withdraw to your wallet and sell on exchanges.",
+    "es": "Vende en la app BETTEX a precio de mercado o retira a tu cartera y vende en exchanges."
+  },
+  "Venda sujeita à liquidez, sem preço ou recompra garantidos. Demo sem operações reais.": {
+    "pt": "Venda sujeita à liquidez, sem preço ou recompra garantidos. Demo sem operações reais.",
+    "en": "Sales depend on liquidity, with no guaranteed price or buyback. Demo with no real transactions.",
+    "es": "Venta sujeta a liquidez, sin precio ni recompra garantizados. Demo sin operaciones reales."
+  },
   "Lucro automático em reais na conta BETTEX, para detentores elegíveis do token.": {
     "pt": "Lucro automático em reais na conta BETTEX, para detentores elegíveis do token.",
     "en": "Automatic profit payments in reais to the BETTEX account, for eligible token holders.",

@@ -3,15 +3,46 @@ name: Slides mobile da homepage
 description: Apresentações de participação, carteira e agentes devem reduzir a rolagem vertical no celular.
 ---
 
-No carrossel de ganhos da homepage, os controles mobile devem ficar próximos da carteira, sem espaço reservado pelos slides mais altos. Os botões anterior e próximo devem indicar o título do destino: como funciona, rendimentos ou liberdade de entrar e sair.
+Não exibir o botão “Quero participar” no slide de ganhos de 1% da homepage, no mobile nem no desktop.
 
-**Why:** O criador apontou o grande vão abaixo da carteira e pediu o nome da próxima área à direita, além da navegação anterior/próximo.
+**Why:** O criador reiterou a remoção ao mostrar esse botão abaixo do texto de ganhos.
+
+**How to apply:** Preservar os controles do carrossel. Essa remoção se refere ao bloco de ganhos, não ao botão com o mesmo texto no hero.
+
+Os três slides de ganhos devem ter fundo limpo, sem o cenário de janela com a linha vertical e sem a divisória horizontal abaixo do conteúdo.
+
+**Why:** O criador pediu retirar esse fundo e essas linhas “de todos slides”.
+
+**How to apply:** Preservar as ilustrações, os textos, a altura compartilhada e os controles; não reintroduzir o cenário decorativo atrás do carrossel.
+
+Os slides de rendimentos e liberdade precisam ter presença visual comparável ao slide de 1%, com uma apresentação mais viva e forte e pouco texto.
+
+**Why:** O criador pediu “ocupe melhor o espaço”, “mais vivido mais forte” e o conteúdo ocupando o mesmo espaço do 1%. Reiterou, mostrando o slide de liberdade: “mais destaque como 1% e menos texto”.
+
+**How to apply:** Usar a área disponível para ampliar a hierarquia visual e o gráfico, em vez de deixar um cartão pequeno cercado de vazio. Preservar a altura de referência do primeiro slide, os controles estáveis e o caráter ilustrativo dos dados.
+
+No carrossel de ganhos da homepage, os controles devem ficar próximos do conteúdo, sem grandes vazios no painel nem nas bordas da seção, no mobile e no desktop. Os botões anterior e próximo devem indicar o título do destino: como funciona, rendimentos ou liberdade de entrar e sair.
+
+**Why:** O criador apontou o grande vão abaixo da carteira e pediu o nome da próxima área à direita, além da navegação anterior/próximo. Reiterou que a distribuição precisa ficar boa e a seção está alta demais.
+
+**How to apply:** Usar a altura do primeiro slide (“Até 1%”) como referência para todos os itens, sem mover os controles ao trocar de slide. Essa referência pode ser reduzida junto com os espaçamentos da seção, sem cortar conteúdo ou fixar a altura antiga. Não voltar à altura variável por slide: o criador corrigiu que isso quebra a navegação. Os rótulos dos destinos devem acompanhar o idioma selecionado e indicar corretamente para onde cada controle leva.
 
 O texto dos rendimentos deve continuar curto, sem repetir em vários parágrafos as condições já resumidas no título e no destaque.
 
 **Why:** O criador reiterou “menos texto aqui também” ao mostrar esse slide. Preservar as condições essenciais não exige repetir a mesma explicação.
 
-**How to apply:** Usar a altura do primeiro slide (“Até 1%”) como referência para todos os itens, sem mover os controles ao trocar de slide. Simplificar o conteúdo dos demais no mesmo padrão, preservando as condições essenciais e as ilustrações. Não voltar à altura variável por slide: o criador corrigiu que isso quebra a navegação. Os rótulos dos destinos devem acompanhar o idioma selecionado e indicar corretamente para onde cada controle leva.
+A chamada dos rendimentos deve ser “Ganhe conforme nossa IA opera”, acompanhada do robô BETTEX, em vez de “Nunca fixo”.
+
+**Why:** O criador rejeitou essa chamada e pediu explicitamente a nova mensagem e o robô.
+
+**How to apply:** Destacar a atuação da IA sem prometer lucro: preservar o aviso de que sem lucro não há distribuição e o caráter ilustrativo do gráfico. A arte deve usar a identidade do robô BETTEX, não um robô genérico.
+
+Não exibir a legenda “Exemplo ilustrativo. Sem retorno garantido ou pagamentos reais.” abaixo do gráfico de rendimentos.
+
+**Why:** O criador pediu retirar essa frase ao mostrar a legenda no celular.
+
+**How to apply:** Não reintroduzir essa legenda ao ajustar o gráfico ou a composição com o robô. Isso não remove o aviso “Sem lucro, não há distribuição”.
+
 
 Conferir também a altura da linha de controles: os títulos dos destinos ocupam quantidades diferentes de linhas. Mesmo com painéis de altura idêntica, redimensionar esses botões pode acionar a ancoragem de rolagem do navegador e deslocar o viewport.
 

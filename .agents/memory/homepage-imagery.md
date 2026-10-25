@@ -27,6 +27,12 @@ A baleia dessa seção deve usar a primeira ilustração em traços livres, inte
 
 **How to apply:** Preservar a ilustração original de linhas livres e o gráfico no fundo, inclusive no mobile. Não reintroduzir as versões robótica ou steampunk nem fotografia em quadro. Ajustes nessa arte são locais; preservar o botão menor, os textos atuais e as demais seções, sem restaurar o projeto inteiro.
 
+Na seção “Baleias e mercado”, o fundo deve ser único para todo o container, sem transição visível entre a arte e a área ao redor.
+
+**Why:** O criador mostrou a borda do fundo da imagem no celular e disse: “Não pode ter essa transição, tem que ser um único fundo pra todo o container”.
+
+**How to apply:** Manter o fundo e o brilho no container inteiro e a ilustração transparente. Não voltar a colocar um retângulo de fundo ou degradê limitado às dimensões da arte.
+
 Não exibir o rótulo “Ilustração conceitual” na seção da baleia.
 
 **Why:** O criador pediu “tira esse ilustracao conceitual”, apontando especificamente a legenda no canto da arte.
