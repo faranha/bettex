@@ -1,4 +1,19 @@
 {
+  "Operação simplificada em Bitcoin.": {
+    "pt": "Operação simplificada em Bitcoin.",
+    "en": "Simplified Bitcoin trading.",
+    "es": "Operación simplificada en Bitcoin."
+  },
+  "Os lucros podem variar de 0 a 1% ao dia, conforme a rentabilidade do agente BETTEX.": {
+    "pt": "Os lucros podem variar de 0 a 1% ao dia, conforme a rentabilidade do agente BETTEX.",
+    "en": "Profits may vary from 0 to 1% per day, depending on the BETTEX agent’s profitability.",
+    "es": "Los beneficios pueden variar del 0 al 1% al día, según la rentabilidad del agente BETTEX."
+  },
+  "Sem retorno garantido. Distribuição depende de lucro. Venda sujeita à liquidez.": {
+    "pt": "Sem retorno garantido. Distribuição depende de lucro. Venda sujeita à liquidez.",
+    "en": "No guaranteed return. Distribution depends on profit. Sales are subject to liquidity.",
+    "es": "Sin retorno garantizado. La distribución depende de los beneficios. La venta está sujeta a liquidez."
+  },
   "Você recebe": {
     "pt": "Você recebe",
     "en": "You receive",
@@ -668,6 +683,16 @@
     "pt": "Ilustração conceitual",
     "en": "Conceptual illustration",
     "es": "Ilustración conceptual"
+  },
+  "Ler a documentação técnica": {
+    "pt": "Ler a documentação técnica",
+    "en": "Read the technical documentation",
+    "es": "Leer la documentación técnica"
+  },
+  "Baleia mecânica com armadura metálica e circuitos luminosos sobre um gráfico de mercado": {
+    "pt": "Baleia mecânica com armadura metálica e circuitos luminosos sobre um gráfico de mercado",
+    "en": "Mechanical whale with metallic armor and glowing circuits over a market chart",
+    "es": "Ballena mecánica con armadura metálica y circuitos luminosos sobre un gráfico de mercado"
   },
   "Baleia jubarte nadando em mar azul-meia-noite": {
     "pt": "Baleia jubarte nadando em mar azul-meia-noite",
