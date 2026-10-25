@@ -3,6 +3,12 @@ name: Direção visual do pitch
 description: O pitch deve ser uma apresentação limpa, com a foto real do fundador, sem fundos de cassino nem foto de gráficos.
 ---
 
+O Pitch deve acompanhar a oferta simplificada da home: foco exclusivo em cripto, lucro diário e soluções como Pix, sem os demais agentes. Preservar o mesmo público e a mesma audiência.
+
+**Why:** O criador pediu “simplificar o pitch, e focar nessas solucoes novas - pix por exemplo, lucro diario [...] foco em cripto only, sem os demais agentes, mas ainda o mesmo publico e auidiencia”.
+
+**How to apply:** Ao revisar o Pitch, priorizar benefícios e experiência simples em reais; retirar a apresentação multissetorial. Distinguir proposta de produto de funções já operacionais. Esta instrução não autoriza remover agentes ou recursos do aplicativo nem alterar regras econômicas.
+
 O criador quer um pitch com composição visual de apresentação, distinto da homepage, usando a foto fornecida do fundador. Rejeitou os fundos fotográficos repetidos de cassino e a imagem de gráfico ao lado do retrato: não reintroduzir esses elementos.
 
 **Why:** Após pedir mais imagens, o criador considerou a execução com cassino e gráfico uma “bagunça visual”. A correção mais recente prevalece: manter a foto real, sem essas imagens competindo com texto e retrato.
