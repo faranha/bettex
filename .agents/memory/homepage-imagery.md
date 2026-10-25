@@ -47,6 +47,12 @@ O bloco que sucedia a explicação do agente na 1.5 deve destacar ganhos diário
 
 **How to apply:** Apresentar o benefício financeiro e o fluxo BETTEX → lucros em USDC na carteira, com ilustração própria. Preservar a explicação da lógica do negócio e as regras econômicas nas áreas correspondentes.
 
+Nesse bloco, não empilhar caixas explicativas, relógio, benefícios e vários convites. A apresentação deve ser de venda: “Até 1% de lucro por dia”, carteira recebendo dinheiro e decisão do usuário de vender ou sair.
+
+**Why:** O criador reiterou que “isso aqui é pra vender” e rejeitou a composição empilhada; quer que o visitante pense “Isso que eu quero”.
+
+**How to apply:** Uma oferta visual integrada, com hierarquia forte, carteira com moedas entrando e uma única chamada para participar. Manter as explicações detalhadas nas áreas existentes, sem transformá-las novamente na composição desse bloco.
+
 O roadmap da homepage deve ter uma imagem própria ao lado de cada etapa e evitar o estreitamento visual em “V”.
 
 **Why:** O criador pediu “precisa por uma imagem, algo do lado de cada caixa, fazer mais visual” ao rejeitar o slider estreito sob o cabeçalho largo.

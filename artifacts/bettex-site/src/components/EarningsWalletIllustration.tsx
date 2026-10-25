@@ -1,30 +1,34 @@
-import { Wallet } from 'lucide-react';
+const coins: Array<[number, number, string]> = [[150, 10, 'USDC'], [210, 0, 'B'], [265, 20, 'USDC'], [180, -50, 'B'], [240, -60, 'USDC']];
 
 export function EarningsWalletIllustration() {
   return (
-    <div className="ew" role="group" aria-label="Ilustração conceitual: seu BETTEX permanece com você e o lucro diário chega em USDC à carteira">
-      <div className="ew-node ew-node--token">
-        <svg viewBox="0 0 96 96" width={96} height={96} aria-hidden="true">
-          <circle cx="48" cy="48" r="44" fill="#13204F" stroke="#F2B632" strokeWidth="4" />
-          <circle cx="48" cy="48" r="34" fill="none" stroke="#5F86FF" strokeWidth="1.5" />
-          <text x="48" y="62" textAnchor="middle" fontSize="42" fontWeight="800" fill="#F2B632" fontFamily="var(--app-font-serif)">B</text>
-        </svg>
-        <strong>BETTEX</strong>
-        <span>Seu saldo fica com você</span>
-      </div>
-      <div className="ew-flow" aria-hidden="true">
-        <svg viewBox="0 0 120 120" width={120} height={120} className="ew-clock">
-          <circle cx="60" cy="60" r="52" fill="#0D1530" stroke="#5F86FF" strokeWidth="2" strokeDasharray="3 7" className="hi-dash" />
-          <path d="M60 8 A52 52 0 1 1 59.9 8" fill="none" stroke="#F2B632" strokeWidth="4" strokeLinecap="round" opacity=".9" />
-        </svg>
-        <b className="ew-clock__h">24h</b>
-        <span className="ew-line" />
-      </div>
-      <div className="ew-node ew-node--wallet">
-        <span className="ew-wallet"><Wallet size={44} strokeWidth={1.8} aria-hidden="true" /></span>
-        <strong>Carteira USDC</strong>
-        <span>Lucro diário em USDC</span>
-      </div>
+    <div className="ew-art" aria-hidden="true">
+      <svg viewBox="0 0 420 400">
+        <defs>
+          <radialGradient id="ew-glow"><stop offset="0" stopColor="#F2B632" stopOpacity=".45" /><stop offset="1" stopColor="#F2B632" stopOpacity="0" /></radialGradient>
+          <linearGradient id="ew-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#2B59FF" /><stop offset="1" stopColor="#13204F" /></linearGradient>
+          <linearGradient id="ew-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#FFD266" /><stop offset="1" stopColor="#D9961A" /></linearGradient>
+        </defs>
+        <ellipse cx="210" cy="300" rx="200" ry="90" fill="url(#ew-glow)" />
+        <circle cx="210" cy="200" r="150" fill="none" stroke="#5F86FF" strokeOpacity=".25" strokeDasharray="3 8" className="hi-dash" />
+        <rect x="95" y="215" width="230" height="30" rx="8" fill="#0A1030" opacity=".6" />
+        <path d="M110 250 L128 215 H292 L310 250 Z" fill="#070B1F" />
+        {coins.map(([x, y, t], i) => (
+          <g key={i} className="ew-coin">
+            <g transform={`translate(${x} ${y + 60})`}>
+              <circle r="21" fill="url(#ew-gold)" stroke="#8a5d0a" strokeWidth="2" />
+              <circle r="15" fill="none" stroke="#fff3c9" strokeOpacity=".7" />
+              <text y={t === 'B' ? 7 : 4} textAnchor="middle" fontSize={t === 'B' ? 20 : 9} fontWeight="800" fill="#6b4606" fontFamily="var(--app-font-serif)">{t}</text>
+            </g>
+          </g>
+        ))}
+        <rect x="70" y="235" width="280" height="140" rx="26" fill="url(#ew-body)" stroke="#8FA8FF" strokeOpacity=".5" strokeWidth="2" />
+        <path d="M70 265 H350" stroke="#070B1F" strokeOpacity=".35" strokeWidth="2" />
+        <rect x="258" y="288" width="108" height="56" rx="18" fill="#0D1530" stroke="#F2B632" strokeWidth="3" />
+        <circle cx="286" cy="316" r="8" fill="#F2B632" />
+        <circle cx="140" cy="318" r="30" fill="#0D1530" stroke="#F2B632" strokeWidth="3" />
+        <text x="140" y="330" textAnchor="middle" fontSize="34" fontWeight="800" fill="#F2B632" fontFamily="var(--app-font-serif)">B</text>
+      </svg>
     </div>
   );
 }
