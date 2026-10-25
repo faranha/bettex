@@ -9,7 +9,7 @@ import { DemoAppLink } from '@/components/DemoAppLink';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
 import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
 import { PitchHeroGraph } from '@/components/pitch/PitchHeroGraph';
-import { PitchContext, PitchJourney, PitchStrategy, PitchFunding, PitchRisks } from '@/components/pitch/PitchNarrative';
+import { PitchContext, PitchJourney, PitchStrategy, PitchFunding } from '@/components/pitch/PitchNarrative';
 import { useX } from '@/components/pitch/pitchCopy';
 import { t } from '@/lib/i18n';
 import './pitch.css';
@@ -99,11 +99,11 @@ export function PitchPage() {
       <div id="ambiente-externo"><EmploymentIncomeProblem /></div>
     </Sec>
 
-    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" n="04" kicker={x('Solução', 'Solution', 'Solución')} title={x('Uma jornada de participação.', 'One participation journey.', 'Una jornada de participación.')} summary={x('Compra, carteira, BTX e subagentes, apuração e recebimento em reais.', 'Purchase, wallet, BTX and subagents, calculation and payout in reais.', 'Compra, cartera, BTX y subagentes, cálculo y cobro en reales.')}>
+    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" n="04" kicker={x('Solução', 'Solution', 'Solución')} title={x('Uma jornada de participação.', 'One participation journey.', 'Una jornada de participación.')} summary={x('Compra, carteira, BETTEX e subagentes, apuração e recebimento em reais.', 'Purchase, wallet, BETTEX and subagents, calculation and payout in reais.', 'Compra, cartera, BETTEX y subagentes, cálculo y cobro en reales.')}>
       <PitchJourney />
     </Sec>
 
-    <Sec id="estrategia" kicker={x('Estratégia', 'Strategy', 'Estrategia')} dark title={<>{x('BTX e subagentes.', 'BTX and subagents.', 'BTX y subagentes.')} <span className="text-[#F2B632]">{x('Operação guiada por padrões.', 'Pattern-driven trading.', 'Operación guiada por patrones.')}</span></>}>
+    <Sec id="estrategia" kicker={x('Estratégia', 'Strategy', 'Estrategia')} dark title={<>{x('BETTEX e subagentes.', 'BETTEX and subagents.', 'BETTEX y subagentes.')} <span className="text-[#F2B632]">{x('Operação guiada por padrões.', 'Pattern-driven trading.', 'Operación guiada por patrones.')}</span></>}>
       <PitchStrategy />
     </Sec>
 
@@ -145,11 +145,6 @@ export function PitchPage() {
 
     <RoadmapSection id="pitch-roadmap" variant="home" />
 
-    <Sec id="recursos" kicker={x('Custos e riscos', 'Costs and risks', 'Costes y riesgos')} title={x('Custos e riscos da participação.', 'Participation costs and risks.', 'Costes y riesgos de la participación.')}>
-      <p className="mt-6 text-sm leading-7 text-[#183173]">{x('Compra e venda de BETTEX, on-ramp, off-ramp e rede têm custos, debitados dos ganhos diários do participante. O recebimento em reais é líquido dessas taxas. O custeio de manutenção permanece em aberto, sem retirada automática da tesouraria.', 'BETTEX purchases and sales, on-ramp, off-ramp and network transactions have costs, deducted from the participant’s daily earnings. Payouts in reais are net of these fees. Maintenance funding remains unresolved, with no automatic treasury withdrawal.', 'La compra y venta de BETTEX, el on-ramp, el off-ramp y la red tienen costes, descontados de las ganancias diarias del participante. El cobro en reales es neto de estas comisiones. La financiación del mantenimiento sigue abierta, sin retiros automáticos de la tesorería.')}</p>
-      <PitchRisks />
-      <Doc hash="documentacao-financiamento-fundacao">{x('Financiamento na documentação', 'Funding in the documentation', 'Financiación en la documentación')}</Doc>
-    </Sec>
   </main>;
 }
 export default PitchPage;

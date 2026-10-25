@@ -10,7 +10,6 @@ const sections = [
   { id: 'tokenomics', label: 'Tokenomics' },
   { id: 'publico', label: 'Comunidade e aquisição' },
   { id: 'pitch-roadmap', label: 'Roadmap' },
-  { id: 'recursos', label: 'Custos e riscos' },
 ] as const;
 
 export function PitchSectionNav({ onNavigate, menuOpen }: { onNavigate: () => void; menuOpen?: boolean }) {

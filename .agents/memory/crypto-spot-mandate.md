@@ -9,7 +9,7 @@ A ALFA é uma operação simplificada em Bitcoin, apresentada em uma linha no ro
 
 **How to apply:** Usar essa descrição curta para a fase ALFA, preservando o parágrafo separado sobre validação técnica/jurídica e vesting. Não reintroduzir nesse trecho o texto sobre ausência de ativo inicial fixo, nem interpretar a correção editorial como autorização para ativar trading no demo.
 
-A estratégia geral de Cripto, além desse escopo simplificado da ALFA, não tem ativo inicial fixo nem ativo inicial “a definir”. A análise quantitativa distribuída identifica padrões de manipulação; esses padrões orientam a seleção dos ativos e os pontos de entrada e saída, coordenados pelo BTX e seus subagentes.
+A estratégia geral de Cripto, além desse escopo simplificado da ALFA, não tem ativo inicial fixo nem ativo inicial “a definir”. A análise quantitativa distribuída identifica padrões de manipulação; esses padrões orientam a seleção dos ativos e os pontos de entrada e saída, coordenados pelo agente BETTEX e seus subagentes.
 
 **Why:** O criador esclareceu: “não tem ativo inicial [...] a gente identifica padrões e opera em cima dos padrões de manipulação e entra e sai. Então não é a definir”.
 

@@ -13,10 +13,15 @@
 .hw-docs:hover{background:#ffd36b;border-color:#fff0be}
 .hw-docs:focus-visible{outline:3px solid #fff;outline-offset:5px}
 .hw-art{position:absolute;inset:0;margin:0}
-.hw-art img{position:absolute;top:0;right:0;width:min(100%,1120px);height:100%;object-fit:cover;object-position:center;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 20%);mask-image:linear-gradient(90deg,transparent,#000 20%)}
+.hw-art svg{position:absolute;inset:0;width:100%;height:100%}
+.hw-line{stroke-dasharray:1;stroke-dashoffset:1;animation:hw-draw 3.5s ease forwards}
+.hw-whale{animation:hw-float 9s ease-in-out infinite;transform-origin:760px 350px}
+@keyframes hw-draw{to{stroke-dashoffset:0}}
+@keyframes hw-float{50%{transform:translateY(-10px) rotate(-.6deg)}}
 @media(max-width:899px){
   .hw-sec{align-items:flex-start;min-height:780px}
   .hw-docs{gap:12px;padding:14px 18px}
-  .hw-art img{top:auto;bottom:0;width:100%;height:360px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 15%);mask-image:linear-gradient(180deg,transparent,#000 15%)}
+  .hw-art svg{inset:auto;left:-46vw;bottom:0;width:146vw;max-width:none;height:auto;aspect-ratio:1200/700}
   .hw-sec::after{background:linear-gradient(180deg,#070B1F 0%,rgba(7,11,31,.9) 38%,rgba(7,11,31,0) 58%),linear-gradient(180deg,rgba(7,11,31,0) 92%,#070B1F 100%)}
 }
+@media(prefers-reduced-motion:reduce){.hw-line{animation:none;stroke-dashoffset:0}.hw-whale{animation:none}}
