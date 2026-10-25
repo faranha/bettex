@@ -3,6 +3,12 @@ name: Slides mobile da homepage
 description: Apresentações de participação, carteira e agentes devem reduzir a rolagem vertical no celular.
 ---
 
+No carrossel de ganhos da homepage, os controles mobile devem ficar próximos da carteira, sem espaço reservado pelos slides mais altos. Os botões anterior e próximo devem indicar o título do destino: como funciona, rendimentos ou liberdade de entrar e sair.
+
+**Why:** O criador apontou o grande vão abaixo da carteira e pediu o nome da próxima área à direita, além da navegação anterior/próximo.
+
+**How to apply:** Ajustar a área à altura do slide visível no celular, preservando seus textos e ilustrações. Os rótulos dos destinos devem acompanhar o idioma selecionado e indicar corretamente para onde cada controle leva.
+
 No mobile, o modelo de participação (“Compre, ative, lucre”) e os agentes devem usar slides horizontais, em vez de empilhar todas as etapas e cartões. A carteira BETTEX com o cérebro fica fora do slider, em um bloco fixo acima dele. Preservar o layout de computador.
 
 **Why:** O criador pediu slides por etapa “pra não ocupar tanta altura do site” e depois solicitou “a mesma coisa” para a carteira e os agentes. Em seguida, especificou que “o slider não deve incluir esse do cérebro”, pois esse bloco torna o slider alto demais para os cartões seguintes.

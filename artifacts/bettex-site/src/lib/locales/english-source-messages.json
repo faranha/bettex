@@ -1,4 +1,24 @@
 {
+  "Como funciona?": {
+    "pt": "Como funciona?",
+    "en": "How does it work?",
+    "es": "¿Cómo funciona?"
+  },
+  "Rendimentos": {
+    "pt": "Rendimentos",
+    "en": "Earnings",
+    "es": "Rendimientos"
+  },
+  "Liberdade de entrar e sair": {
+    "pt": "Liberdade de entrar e sair",
+    "en": "Freedom to enter and exit",
+    "es": "Libertad para entrar y salir"
+  },
+  "Próximo": {
+    "pt": "Próximo",
+    "en": "Next",
+    "es": "Siguiente"
+  },
   "Dia": {
     "pt": "Dia",
     "en": "Day",
