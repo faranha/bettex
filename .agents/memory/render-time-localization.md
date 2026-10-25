@@ -17,6 +17,12 @@ Localize complete source paragraphs in their original inline context before spli
 
 **How to apply:** Preserve source metadata until contextual localization is complete, before React child cloning loses that metadata. Verify punctuation and spacing on rendered table cells in all supported languages, not just catalog coverage.
 
+Chart callback results also pass through strict runtime translation, including tick labels, formatter output and source credits. Register the whole formatted message in each language, not just the currency-unit suffix.
+
+**Why:** Type checking cannot catch these runtime misses. Even a proper source name or an already-formatted BRL amount can trigger the page error boundary if its complete string is unregistered.
+
+**How to apply:** Use complete PT/EN/ES messages for credits and categorical labels. For dynamic amounts, register the complete locale-formatted result. Check a non-Portuguese render after charts mount; a Portuguese screenshot alone cannot detect this failure.
+
 Sínteses de fragmentos de texto devem preservar pontuação, separação e função gramatical junto a elementos inline, como negritos. Um trecho que continua a frase deve manter verbo e conectores, não virar um rótulo independente nem repetir o conteúdo mantido fora do fragmento. Testes dessa composição devem concatenar os nós de texto sem inserir espaços artificiais.
 
 **Why:** Uma revisão da documentação juntou valores e frases (“BETTEXDestinação”, “detalhaliberação”, “distribuívelGestão”). O criador também encontrou “StarknetRede” e o equivalente em Arbitrum: a síntese removeu “é” e o espaço após a marca. A extração normalizada usada na auditoria adicionava espaços entre nós e escondia o problema. Mesmo com espaços, o criador voltou a encontrar frases sem verbo e orações independentes emendadas após negritos (“casas de apostas Expansões futuras” e “abertamente, Trilha pública”). Cobertura de idiomas e testes de espaços não comprovam continuidade gramatical.

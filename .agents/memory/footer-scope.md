@@ -68,3 +68,9 @@ O botão “Entre na comunidade” desse rodapé deve ser azul, não amarelo.
 **Why:** O criador mostrou o botão do rodapé e pediu expressamente que fosse azul.
 
 **How to apply:** Preservar o azul também nos estados de interação, com texto e ícone legíveis, sem estender essa alteração a outros convites não solicitados.
+
+Incluir o Instagram oficial @bettex.ai como rede social no rodapé compartilhado.
+
+**Why:** O criador pediu “adicionar o instagram no rodapé como rede social tambem - @bettex.ai”.
+
+**How to apply:** Preservar o Telegram e o X, acrescentando o Instagram sem criar rodapés diferentes entre as páginas.

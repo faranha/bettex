@@ -17,6 +17,7 @@
 .sf-community:hover { background: #2147D9; border-color: #2147D9; }
 .sf-community__icon { width: 18px; height: 18px; flex: none; color: currentColor; }
 .sf-community:focus-visible { outline: 2px solid #F4F1E8; outline-offset: 3px; }
+.sf-socials { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0 20px; min-width: 0; }
 .sf-x { grid-column: 1 / -1; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; width: fit-content; font-size: 14px; font-weight: 600; color: #e1e7f4; }
 .sf-x:hover { color: #fff; }
 

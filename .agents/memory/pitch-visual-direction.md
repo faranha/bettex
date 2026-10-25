@@ -9,6 +9,18 @@ O Pitch deve ser redesenhado seguindo o padrão visual da homepage: conteúdo fl
 
 **How to apply:** Não resolver apenas removendo rótulos ou compactando os banners anteriores. Integrar os títulos ao conteúdo e manter a homepage intacta. A foto atual do bot está aprovada e deve encostar no limite inferior do fundo do hero, sem espaço sobrando e sem linha divisória.
 
+No Pitch, reproduzir as cores, o estilo visual e o tamanho do H1 da homepage; usar mais gráficos para explicar os dados.
+
+**Why:** O criador pediu “apenas reproduza as cores da homepage por favor, o tamanho dos h1”, esclareceu “no pitch” e acrescentou “reproduza tambem o estilo visual, precisamos de mais graficos”.
+
+**How to apply:** Usar a homepage atual como referência real, não uma aproximação de paleta ou tipografia. Manter o conteúdo, as seções unificadas e o rodapé; gráficos quantitativos precisam usar dados e regras existentes, sem inventar projeções.
+
+Melhorar a estrutura do Pitch seção por seção, não apenas igualar cores e fontes.
+
+**Why:** Ao comparar o carrossel ilustrado da home com os cartões do público do Pitch, o criador apontou a diferença de estrutura e pediu “vamos secao por secao”.
+
+**How to apply:** Trabalhar somente a seção em discussão. Usar a hierarquia real da home: mensagem e número protagonistas, texto mais curto, visual relevante e navegação integrada ao conteúdo, sem repetir grades de cartões concorrentes.
+
 Separar os blocos com cores e fundos, sem linhas divisórias. A copy deve conectar explicitamente público → problema desse público → proposta da BETTEX, com H1 claro e títulos que continuem o raciocínio.
 
 **Why:** O criador reforçou que “naao precisa da linah divisoria” e que, depois de apresentar o público, a seção seguinte deve mostrar seu problema com uma copy clara.
@@ -26,6 +38,18 @@ Tokenomics também deve ser uma única seção compacta, com um fundo e um títu
 **Why:** O criador apontou os dois blocos e reiterou “tokenomics tambem esta parecendo 2 dsecoes distintas, tem que unificar, otimizar o espaco”.
 
 **How to apply:** Integrar os gráficos e regras ao mesmo bloco visual, reduzir aberturas e espaço desperdiçado e preservar números, datas, séries e condições.
+
+Não reintroduzir no Pitch a seção “Hoje, um demo visual. A comunidade prepara o lançamento.”, incluindo o cartão da fase atual, o bloco Community-driven com a imagem das pessoas e a sanfona de condições do mint.
+
+**Why:** O criador mostrou essa seção inteira e pediu “deleta essa section”.
+
+**How to apply:** Não restaurar esse bloco nem remover os avisos de demo e risco das outras seções. A orientação posterior permite um novo convite final à comunidade, sem os antigos cartões e condições do lançamento.
+
+Finalizar o Pitch com um convite à comunidade, um link bem grande para o Telegram e acesso às redes sociais da BETTEX.
+
+**Why:** O criador pediu uma seção final “convidando as pessoas para virem para nossa comunidade, um link bem grande pra comunidade e redes sociais”.
+
+**How to apply:** Colocar o convite antes do rodapé global e manter o foco em entrar na comunidade e acompanhar o projeto, sem ressuscitar a seção de preparação do lançamento removida.
 
 A homepage é a referência para a síntese e apresentação do Pitch, especialmente a primeira seção depois do hero.
 
@@ -188,6 +212,12 @@ O pitch não deve ter rolagem lateral, inclusive no índice de seções.
 **Why:** O criador afirmou “em hipótese alguma tem que ter rolagem lateral” ao mostrar a barra horizontal do menu.
 
 **How to apply:** Fazer o conteúdo caber na largura disponível, com quebra de linhas quando necessário. Não apenas esconder a barra de rolagem.
+
+Não fragmentar o Pitch em abas com apenas um parágrafo. Reunir assuntos relacionados e apresentar mais dados no mesmo bloco.
+
+**Why:** O criador rejeitou as abas isoladas de exposição à IA e do problema a resolver, pedindo consolidá-las e limitar esse menu a cinco tópicos visíveis sem rolagem lateral.
+
+**How to apply:** Priorizar conteúdo substancial por aba, reunindo explicação, evidências e a ligação com a BETTEX. Preservar fontes e distinguir previsões, potencial técnico e fatos medidos.
 
 Na estrutura do pitch, retirar Fontes e Estágio, reunir Recursos e riscos e preservar o conteúdo das demais seções. Não reintroduzir o índice na capa; a navegação por áreas deve ficar numa linha adicional abaixo do header, fixa junto dele e exclusiva do Pitch.
 

@@ -7,7 +7,7 @@ import { installVisualDemoTransport } from '@/components/interface-demo/runtime'
 installVisualDemoTransport();
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useLocale, localizedUrl, t } from '@/lib/i18n';
-import { ArrowDown, ArrowRight, Menu, X } from 'lucide-react';
+import { ArrowDown, ArrowRight, Instagram, Menu, X } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -29,7 +29,7 @@ import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
 import { legacyDocumentationHashes } from '@/lib/documentation-aliases';
 import { FloatingCommunityCTA, TelegramIcon } from '@/components/CommunityCTA';
-import { TELEGRAM_COMMUNITY_URL, X_COMMUNITY_URL } from '@/lib/community';
+import { INSTAGRAM_URL, TELEGRAM_COMMUNITY_URL, X_COMMUNITY_URL } from '@/lib/community';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { AppHeader } from '@/components/app/AppHeader';
 import { AppSessionGate } from '@/components/app/AppSessionGate';
@@ -170,10 +170,16 @@ function SiteFooter() {
             <LanguageSelector className="sf-lang" showLabel />
             <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="sf-community" data-community-source="footer" data-testid="link-community-footer-nav"><TelegramIcon className="sf-community__icon" /><span>Entre na comunidade</span></a>
           </div>
+          <div className="sf-socials">
           <a href={X_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-testid="link-community-x-footer" className="sf-x focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4F1E8]">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="sf-community__icon" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.153h7.594l5.243 6.932 6.064-6.932ZM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644Z" /></svg>
             <span>Siga a Bettex no X</span>
           </a>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" data-testid="link-instagram-footer" className="sf-x focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4F1E8]">
+            <Instagram className="sf-community__icon" aria-hidden="true" />
+            <span data-i18n="raw">Instagram · @bettex.ai</span>
+          </a>
+          </div>
         </div>
         <nav aria-label="Links do projeto" className="sf-group sf-pages" data-testid="footer-page-navigation">
           <h3 className="mono">Explore</h3>

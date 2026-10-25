@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { PitchTokenCharts } from './PitchTokenCharts';
+import { PitchProfitSplitChart } from './PitchProfitSplitChart';
 import { useX } from './pitchCopy';
 import './PitchTokenomics.css';
 
@@ -23,8 +24,10 @@ export function PitchTokenomics() {
           </div>
           <div className="ptk__profit" role="group" aria-label={x('Divisão do lucro elegível', 'Split of eligible profit', 'División del beneficio elegible')}>
             <h3 className="display">{x('Lucro elegível: após custos, obrigações, avaliação das posições abertas, reservas e liquidez', 'Eligible profit: after costs, obligations, valuation of open positions, reserves and liquidity', 'Beneficio elegible: tras costes, obligaciones, valoración de posiciones abiertas, reservas y liquidez')}</h3>
-            <div className="ptk__bar" aria-hidden="true"><i style={{ flex: 50 }} /><i style={{ flex: 25 }} /><i style={{ flex: 25 }} /></div>
-            <dl>{split.map(([p, n, d], i) => <div key={i}><dt>{n}</dt><dd className="display">{p}</dd><dd>{d}</dd></div>)}</dl>
+            <div className="ptk__profit-layout">
+              <PitchProfitSplitChart rows={split.map(([p, name]) => ({ name, pct: parseFloat(p) }))} />
+              <dl>{split.map(([p, n, d], i) => <div key={i}><dt>{n}</dt><dd className="display">{p}</dd><dd>{d}</dd></div>)}</dl>
+            </div>
           </div>
         </div>
         <p className="ptk__rule">{x('Todo BETTEX na carteira oficial participa automaticamente, sem chamada manual de staking; tokens bloqueados e estoque de venda ficam fora. A participação nos resultados não vem de emissão de tokens e não garante preço, resgate nem valor patrimonial.', 'All BETTEX in the official wallet participates automatically, with no manual staking call; locked tokens and sale inventory are excluded. Participation in results does not come from token issuance and guarantees no price, redemption or net asset value.', 'Todo BETTEX en la cartera oficial participa automáticamente, sin llamada manual de staking; los tokens bloqueados y el stock de venta quedan fuera. La participación en los resultados no proviene de emisión de tokens y no garantiza precio, rescate ni valor patrimonial.')}</p>
