@@ -63,6 +63,12 @@ O rodapé de navegação deve ter um botão para a comunidade, com ícone do Tel
 
 **How to apply:** Usar o destino aprovado https://t.me/bettextoken e agrupar os dois controles junto da identidade do rodapé, inclusive nos rodapés compactos. Manter bandeira, nome do idioma e indicador do menu na mesma linha; preservar o seletor compacto do cabeçalho. O convite no banner azul e o botão flutuante não substituem esse botão.
 
+O rodapé da homepage deve ser aplicado em todo o site onde houver rodapé global.
+
+**Why:** Após igualar o Pitch à homepage, o criador ampliou: “o footer da home tem que ser aplicado em todo site onte tiver o footer”.
+
+**How to apply:** Usar o mesmo rodapé global completo na homepage, Pitch, documentação e demo, incluindo arte, chamada final, controles e links. Preservar navegação interna dos capítulos e rodapés de gráficos, que não são o rodapé global do site.
+
 O botão “Entre na comunidade” desse rodapé deve ser azul, não amarelo.
 
 **Why:** O criador mostrou o botão do rodapé e pediu expressamente que fosse azul.

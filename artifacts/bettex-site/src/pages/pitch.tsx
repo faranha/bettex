@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import g from '@/lib/growth-strategy.json';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { AudienceSection } from '@/components/pitch/AudienceSection';
+import { EmploymentIncomeProblem } from '@/components/pitch/EmploymentIncomeProblem';
 import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
 import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
 import { RoadmapSection } from '@/components/RoadmapSection';
@@ -90,6 +91,11 @@ export function PitchPage() {
 
     <AudienceSection />
     <PitchContext />
+    <div className="pb-problem">
+      <div className="page-wrap">
+        <EmploymentIncomeProblem />
+      </div>
+    </div>
 
     <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" n="03" kicker={x('Produto', 'Product', 'Producto')} title={x('Uma jornada de participação.', 'One participation journey.', 'Una jornada de participación.')} summary={x('Compra, carteira, agente, apuração e recebimento em reais.', 'Purchase, wallet, agent, calculation and payout in reais.', 'Compra, cartera, agente, cálculo y cobro en reales.')}>
       <PitchJourney />
