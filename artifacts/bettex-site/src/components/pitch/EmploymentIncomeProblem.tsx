@@ -3,6 +3,9 @@ import { t } from '../../lib/i18n';
 import { AgenticProblemMetrics } from './AgenticProblemMetrics';
 import { PitchSlider } from './PitchSlider';
 import { OptimusWorkCard } from './OptimusWorkCard';
+import { LaborSignals } from './LaborSignals';
+import { USVacancyChart } from './USVacancyChart';
+import { BrazilEmploymentCharts } from './BrazilEmploymentCharts';
 import './ProblemSection.css';
 
 export function EmploymentIncomeProblem() {
@@ -52,5 +55,15 @@ export function EmploymentIncomeProblem() {
     </div>
       </> },
     ]} />
+    <div id="cenario-exclusao" className="fu-scenario">
+      <section id="resgatar-futuro" className="fu-environment-signals" aria-labelledby="resgatar-futuro-t">
+        <h4 id="resgatar-futuro-t" className="display fu-environment-title">O que já acontece na economia real.</h4>
+        <LaborSignals />
+      </section>
+      <PitchSlider id="emprego-indicadores-slider" tone="dark" label={['Indicadores econômicos em blocos', 'Economic indicator blocks', 'Indicadores económicos por bloques']} slides={[
+        { label: ['EUA: vagas abertas', 'US: job openings', 'EE. UU.: vacantes'], node: <USVacancyChart /> },
+        { label: ['Brasil: menos novas vagas', 'Brazil: fewer new jobs', 'Brasil: menos empleos nuevos'], node: <BrazilEmploymentCharts /> },
+      ]} />
+    </div>
   </section>;
 }

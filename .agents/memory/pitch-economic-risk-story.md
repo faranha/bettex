@@ -9,6 +9,12 @@ Preservar no Pitch a parte sobre IA substituir empregos, mesmo ao simplificar a 
 
 **How to apply:** Manter o argumento sobre emprego e renda, com Musk, automação e Optimus, antes da solução. Não reduzir tudo a uma menção genérica à insegurança do emprego, nem reintroduzir os blocos explicitamente retirados abaixo.
 
+Os números do mercado de trabalho também devem permanecer nessa parte do Pitch.
+
+**Why:** O criador reiterou após recuperar a seção de IA: “a parte dos numeros desemprego, aquilo era otimo”.
+
+**How to apply:** Preservar os indicadores de desemprego e fragilidade do trabalho, o gráfico de vagas abertas dos EUA e a evolução de criação de empregos no Brasil, com fontes e períodos. Não confundir menos vagas com desemprego nem atribuir causalidade à IA sem evidência.
+
 As comparações financeiras e os blocos de emprego entre Brasil e EUA devem identificar o país dos dados com sua bandeira.
 
 **Why:** O criador pediu bandeiras nos quatro cartões de renda e reservas e reiterou a exigência para os blocos de vagas disponíveis nos EUA e de empregos do Novo Caged no Brasil.
