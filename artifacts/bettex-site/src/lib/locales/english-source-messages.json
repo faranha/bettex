@@ -1,4 +1,89 @@
 {
+  "Dia": {
+    "pt": "Dia",
+    "en": "Day",
+    "es": "Día"
+  },
+  "Exemplo ilustrativo de retorno diário": {
+    "pt": "Exemplo ilustrativo de retorno diário",
+    "en": "Illustrative daily return example",
+    "es": "Ejemplo ilustrativo de retorno diario"
+  },
+  "Limite distribuível de 1% ao dia": {
+    "pt": "Limite distribuível de 1% ao dia",
+    "en": "Distributable limit of 1% per day",
+    "es": "Límite distribuible del 1% al día"
+  },
+  "Limite 1%": {
+    "pt": "Limite 1%",
+    "en": "1% cap",
+    "es": "Límite 1%"
+  },
+  "Limite diário, não rendimento fixo.": {
+    "pt": "Limite diário, não rendimento fixo.",
+    "en": "A daily limit, not a fixed yield.",
+    "es": "Límite diario, no rendimiento fijo."
+  },
+  "1% é o limite distribuível por dia, não um rendimento fixo. O lucro depende da operação real.": {
+    "pt": "1% é o limite distribuível por dia, não um rendimento fixo. O lucro depende da operação real.",
+    "en": "1% is the distributable daily limit, not a fixed yield. Profit depends on actual operation.",
+    "es": "El 1% es el límite distribuible por día, no un rendimiento fijo. El beneficio depende de la operación real."
+  },
+  "Sem lucro, não há distribuição.": {
+    "pt": "Sem lucro, não há distribuição.",
+    "en": "No profit, no distribution.",
+    "es": "Sin beneficio, no hay distribución."
+  },
+  "Havendo lucro distribuível, todos os detentores elegíveis do token recebem sua parte automaticamente, em reais, na conta BETTEX, conforme as regras de participação.": {
+    "pt": "Havendo lucro distribuível, todos os detentores elegíveis do token recebem sua parte automaticamente, em reais, na conta BETTEX, conforme as regras de participação.",
+    "en": "When there is distributable profit, all eligible token holders automatically receive their share, in reais, in their BETTEX account, under the participation rules.",
+    "es": "Si hay beneficio distribuible, todos los titulares elegibles del token reciben su parte automáticamente, en reales, en su cuenta BETTEX, según las reglas de participación."
+  },
+  "Valores ilustrativos, não são histórico real de operações. Demonstração visual, sem pagamentos reais. Sem retorno garantido.": {
+    "pt": "Valores ilustrativos, não são histórico real de operações. Demonstração visual, sem pagamentos reais. Sem retorno garantido.",
+    "en": "Illustrative values, not actual trading history. Visual demo, no real payments. No guaranteed return.",
+    "es": "Valores ilustrativos, no son historial real de operaciones. Demostración visual, sin pagos reales. Sin retorno garantizado."
+  },
+  "Retorno diário ilustrativo": {
+    "pt": "Retorno diário ilustrativo",
+    "en": "Illustrative daily return",
+    "es": "Retorno diario ilustrativo"
+  },
+  "Carrossel de ganhos diários": {
+    "pt": "Carrossel de ganhos diários",
+    "en": "Daily earnings carousel",
+    "es": "Carrusel de ganancias diarias"
+  },
+  "Carrossel": {
+    "pt": "Carrossel",
+    "en": "Carousel",
+    "es": "Carrusel"
+  },
+  "Slide": {
+    "pt": "Slide",
+    "en": "Slide",
+    "es": "Diapositiva"
+  },
+  "Slide anterior": {
+    "pt": "Slide anterior",
+    "en": "Previous slide",
+    "es": "Diapositiva anterior"
+  },
+  "Próximo slide": {
+    "pt": "Próximo slide",
+    "en": "Next slide",
+    "es": "Diapositiva siguiente"
+  },
+  "Ir para o slide 1": {
+    "pt": "Ir para o slide 1",
+    "en": "Go to slide 1",
+    "es": "Ir a la diapositiva 1"
+  },
+  "Ir para o slide 2": {
+    "pt": "Ir para o slide 2",
+    "en": "Go to slide 2",
+    "es": "Ir a la diapositiva 2"
+  },
   "Operação simplificada em Bitcoin.": {
     "pt": "Operação simplificada em Bitcoin.",
     "en": "Simplified Bitcoin trading.",
@@ -768,5 +853,55 @@
     "pt": "Estratégia",
     "en": "Strategy",
     "es": "Estrategia"
+  },
+  "Ir para o slide 3": {
+    "pt": "Ir para o slide 3",
+    "en": "Go to slide 3",
+    "es": "Ir a la diapositiva 3"
+  },
+  "Liberdade para sair": {
+    "pt": "Liberdade para sair",
+    "en": "Freedom to leave",
+    "es": "Libertad para salir"
+  },
+  "Você não fica preso.": {
+    "pt": "Você não fica preso.",
+    "en": "You are not locked in.",
+    "es": "No quedas atrapado."
+  },
+  "Venda seus tokens quando quiser, ao preço de mercado.": {
+    "pt": "Venda seus tokens quando quiser, ao preço de mercado.",
+    "en": "Sell your tokens whenever you want, at the market price.",
+    "es": "Vende tus tokens cuando quieras, al precio de mercado."
+  },
+  "Pelo aplicativo BETTEX": {
+    "pt": "Pelo aplicativo BETTEX",
+    "en": "Through the BETTEX app",
+    "es": "Desde la aplicación BETTEX"
+  },
+  "Venda seus tokens diretamente pelo aplicativo.": {
+    "pt": "Venda seus tokens diretamente pelo aplicativo.",
+    "en": "Sell your tokens directly through the app.",
+    "es": "Vende tus tokens directamente desde la aplicación."
+  },
+  "Pela sua própria carteira": {
+    "pt": "Pela sua própria carteira",
+    "en": "Through your own wallet",
+    "es": "Desde tu propia billetera"
+  },
+  "Retire os tokens para a sua carteira e venda em corretoras compatíveis.": {
+    "pt": "Retire os tokens para a sua carteira e venda em corretoras compatíveis.",
+    "en": "Withdraw the tokens to your wallet and sell on compatible exchanges.",
+    "es": "Retira los tokens a tu billetera y vende en exchanges compatibles."
+  },
+  "Venda sujeita a compradores, liquidez e disponibilidade de mercado. Sem preço mínimo ou recompra garantidos.": {
+    "pt": "Venda sujeita a compradores, liquidez e disponibilidade de mercado. Sem preço mínimo ou recompra garantidos.",
+    "en": "Sales depend on buyers, liquidity and market availability. No minimum price or guaranteed buyback.",
+    "es": "La venta está sujeta a compradores, liquidez y disponibilidad de mercado. Sin precio mínimo ni recompra garantizados."
+  },
+  "Demonstração visual: nenhum saque ou venda de tokens é realizado de verdade.": {
+    "pt": "Demonstração visual: nenhum saque ou venda de tokens é realizado de verdade.",
+    "en": "Visual demo: no real withdrawals or token sales are made.",
+    "es": "Demostración visual: no se realiza ningún retiro ni venta real de tokens."
   }
 }

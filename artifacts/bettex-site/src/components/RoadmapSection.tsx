@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, ArrowRight, ArrowLeft } from 'lucide-react';
 import { t } from '@/lib/i18n';
-import { CommunityCTA } from './CommunityCTA';
 import { DemoAppLink } from './DemoAppLink';
 import { copy } from '@/lib/documentation-copy';
 import { RoadmapIllustration } from './RoadmapIllustration';
@@ -123,14 +122,6 @@ export function RoadmapSection({ id = 'roadmap', variant = 'default', scope = 'd
           <div className="roadmap__destination" aria-hidden="true"><span className="roadmap__destination-dot" /> CAMINHO EM CONSTRUÇÃO</div>
         </div>
 
-        <aside className="roadmap__closing" aria-label="Observação sobre o percurso">
-          <div className="roadmap__closing-mark" aria-hidden="true"><span /><span /><span /></div>
-          <div>
-            <span className="roadmap__closing-label">O QUE IMPORTA NESTA ROTA</span>
-            <p>As datas indicam o cronograma previsto, não entregas concluídas. Oferta e operação dependem de adequação por atividade e território e podem ser ajustadas. Investir envolve risco e não há rendimento garantido.</p>
-            <CommunityCTA source="roadmap" label="Entre na comunidade" note="Acompanhe cada etapa de perto." tone="light" />
-          </div>
-        </aside>
       </div>
     </section>
   );

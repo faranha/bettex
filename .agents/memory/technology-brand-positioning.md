@@ -13,6 +13,12 @@ Na homepage, o criador pediu restaurar Ethereum ao lado de Starknet e Allora e a
 
 **How to apply:** Preservar essas três marcas legíveis na faixa abaixo do hero. O pedido não autoriza alterar a rede operacional ou reintroduzir Arbitrum.
 
+No celular, mostrar somente Starknet e Ethereum em uma única linha. Allora aparece apenas no computador.
+
+**Why:** O criador esclareceu “alora nao deve aparecer no celular” e “esta quebrando uma linha não quero”.
+
+**How to apply:** Na faixa com as três marcas, ocultar Allora no breakpoint mobile e preservar as duas restantes lado a lado, sem uma segunda linha. Manter a apresentação desktop intacta.
+
 O Pitch também deve exibir os logos de Starknet, Allora e Ethereum.
 
 **Why:** O criador pediu explicitamente “pitch precisa ter os logos da starknet, allora e eth”.

@@ -3,6 +3,12 @@ name: Menus de seções no mobile
 description: O menu aberto deve usar a identidade BETTEX, em vez da apresentação nativa do iPhone.
 ---
 
+Na homepage mobile, não exibir o submenu de seções (“Página inicial”, “Início da página”, “Ganhos diários” etc.). Preservar o menu principal, o submenu da homepage no desktop e a navegação das outras páginas.
+
+**Why:** O criador disse que esse submenu no mobile “não precisa na home page”.
+
+**How to apply:** Não reservar altura para a barra oculta. As âncoras da homepage devem considerar somente o cabeçalho principal no mobile; preservar os menus de seções do Pitch e da documentação.
+
 O seletor de seções da homepage mobile deve abrir um menu estilizado com a identidade BETTEX, não o popup nativo do iPhone.
 
 **Why:** O criador corrigiu explicitamente a ausência de estilização do menu aberto e repetiu que ele precisa ser estilizado.

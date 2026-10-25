@@ -71,8 +71,8 @@
   .technology-networks__logo--allora img { width: 98px; }
   .technology-networks--ethereum .technology-networks__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .technology-networks--ethereum .technology-networks__list li { min-height: 72px; }
-  .technology-networks--ethereum .technology-networks__list li:nth-child(-n+2) { border-bottom: 1px solid var(--networks-line); }
-  .technology-networks--ethereum .technology-networks__list li:last-child { grid-column: 1 / -1; }
+  .technology-networks--ethereum .technology-networks__list li { border-bottom: 0; }
+  .technology-networks--ethereum .technology-networks__list li:last-child { display: none; }
   .technology-networks--ethereum .technology-networks__logo { height: 34px; }
   .technology-networks--ethereum .technology-networks__logo--starknet img { width: 150px; }
   .technology-networks--ethereum .technology-networks__logo--ethereum img { width: 144px; }
