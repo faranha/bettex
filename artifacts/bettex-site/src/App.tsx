@@ -3,7 +3,6 @@ import { PageMetadata } from '@/components/PageMetadata';
 import { InterfaceDemoPage } from '@/components/interface-demo/InterfaceDemoPage';
 import { InterfaceDemoProvider } from '@/components/interface-demo/InterfaceDemoProvider';
 import { DemoActionNotice } from '@/components/interface-demo/DemoActionNotice';
-import { FooterAiGraph } from '@/components/FooterAiGraph';
 import { installVisualDemoTransport } from '@/components/interface-demo/runtime';
 installVisualDemoTransport();
 import { LanguageSelector } from '@/components/LanguageSelector';
@@ -162,31 +161,29 @@ function SiteHeader() {
   </header>;
 }
 
-function SiteFooter({ compact = false, home = false }: { compact?: boolean; home?: boolean }) {
+function SiteFooter() {
   const linkProps = usePageLinkProps();
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
-    {!compact && <div className={`site-footer__cta${home ? ' site-footer__cta--home' : ''} relative overflow-hidden bg-[#2B59FF]`}>
+    <div className="site-footer__cta site-footer__cta--home relative overflow-hidden bg-[#2B59FF]">
       <div aria-hidden="true" className="site-footer__sports">
         <img
-          src={`${import.meta.env.BASE_URL}${home ? 'footer-rio-scene-hd.webp' : 'footer-betting-scene.jpg'}`}
-          srcSet={home ? `${import.meta.env.BASE_URL}footer-rio-scene-sharp.webp 1024w, ${import.meta.env.BASE_URL}footer-rio-scene-hd.webp 2048w` : undefined}
-          sizes={home ? '(max-width: 1023px) 100vw, 1000px' : undefined}
-          width={home ? 2048 : 1024}
-          height={home ? 2048 : 1024}
+          src={`${import.meta.env.BASE_URL}footer-rio-scene-hd.webp`}
+          srcSet={`${import.meta.env.BASE_URL}footer-rio-scene-sharp.webp 1024w, ${import.meta.env.BASE_URL}footer-rio-scene-hd.webp 2048w`}
+          sizes="(max-width: 1023px) 100vw, 1000px"
+          width={2048}
+          height={2048}
           alt=""
           loading="lazy"
           decoding="async"
           className="site-footer__sports-photo"
         />
-        {!home && <FooterAiGraph />}
       </div>
       <div className="page-wrap relative">
         <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">
           <div className="pb-2 lg:pb-20">
             <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#F4F1E8]">BETTEX</span>
-            {home ? <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">{t('Comece a ganhar.')}</span><span className="block text-[#F2B632]">{t('Invista com inteligência.')}</span></h2>
-            <p className="mt-6 max-w-[420px] text-base font-medium leading-7 text-[#F4F1E8]">{t('O agente IA da BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.')}</p></> : <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#F2B632]">e se torne dono do jogo</span></h2>
-            <p className="mt-6 max-w-[390px] text-base font-medium leading-7 text-[#F4F1E8]">Participe dos resultados da IA com o token BETTEX.</p></>}
+            <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">{t('Comece a ganhar.')}</span><span className="block text-[#F2B632]">{t('Invista com inteligência.')}</span></h2>
+            <p className="mt-6 max-w-[420px] text-base font-medium leading-7 text-[#F4F1E8]">{t('O agente IA da BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.')}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a {...linkProps} href={DOCUMENTATION_PATH} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#F4F1E8] hover:text-[#070B1F] focus-visible:outline-[#F2B632]">Ler a documentação</a>
               <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-community-source="footer" data-testid="link-community-footer" className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F4F1E8] px-6 py-3.5 text-sm font-bold text-[#070B1F] hover:bg-white focus-visible:outline-[#F2B632]"><TelegramIcon className="h-5 w-5" />Vem pra comunidade</a>
@@ -197,7 +194,7 @@ function SiteFooter({ compact = false, home = false }: { compact?: boolean; home
           </div>
         </div>
       </div>
-    </div>}
+    </div>
     <div className="h-1 bg-[#F2B632]" aria-hidden="true" />
     <div className="page-wrap relative">
       <div className="sf-nav">
@@ -230,11 +227,11 @@ function SiteFooter({ compact = false, home = false }: { compact?: boolean; home
   </footer>;
 }
 
-function SitePage({ children, documentation = false, home = false }: { children: ReactNode; documentation?: boolean; home?: boolean }) {
+function SitePage({ children, documentation = false }: { children: ReactNode; documentation?: boolean }) {
   return <div style={{ '--pitch-label-1': JSON.stringify(t('Movimentação')), '--pitch-label-2': JSON.stringify(t('Tarifa')), '--pitch-label-3': JSON.stringify(t('Resultado')) } as CSSProperties} className={`min-h-[100dvh] ${documentation ? '' : 'overflow-x-clip'} bg-[#F4F1E8]`}>
     <SiteHeader />
     {children}
-    <SiteFooter home={home} />
+    <SiteFooter />
   </div>;
 }
 
@@ -267,7 +264,7 @@ function Home() {
     };
   }, []);
 
-  return <SitePage home>
+  return <SitePage>
     <main className="home-page">
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#F4F1E8]">
         <div className="hero-intro-stage relative">
@@ -311,7 +308,7 @@ function Demo() {
   if (isRemovedSimulationPath(path)) return <Redirect to={`/app${typeof window === 'undefined' ? '' : window.location.search}`} />;
   if (path === '/app/login') return <Redirect to="/sign-in" />;
   if (!demoView(path)) return <NotFound />;
-  return <InterfaceDemoProvider><div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><InterfaceDemoPage /><SiteFooter compact /></div></InterfaceDemoProvider>;
+  return <InterfaceDemoProvider><div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><InterfaceDemoPage /><SiteFooter /></div></InterfaceDemoProvider>;
 }
 
 function Documentation() {

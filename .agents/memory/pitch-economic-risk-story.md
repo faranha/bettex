@@ -3,6 +3,12 @@ name: Pauta econômica do cenário apocalíptico
 description: A pauta econômica pedida pelo criador pertence ao cenário apocalíptico, com gráficos, matérias e riscos globais.
 ---
 
+Preservar no Pitch a parte sobre IA substituir empregos, mesmo ao simplificar a apresentação.
+
+**Why:** Após a simplificação, o criador perguntou “cade a parte da IA robar o emprego das pessoas eu gostava daqui”.
+
+**How to apply:** Manter o argumento sobre emprego e renda, com Musk, automação e Optimus, antes da solução. Não reduzir tudo a uma menção genérica à insegurança do emprego, nem reintroduzir os blocos explicitamente retirados abaixo.
+
 As comparações financeiras e os blocos de emprego entre Brasil e EUA devem identificar o país dos dados com sua bandeira.
 
 **Why:** O criador pediu bandeiras nos quatro cartões de renda e reservas e reiterou a exigência para os blocos de vagas disponíveis nos EUA e de empregos do Novo Caged no Brasil.

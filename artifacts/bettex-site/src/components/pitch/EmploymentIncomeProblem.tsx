@@ -3,6 +3,7 @@ import { t } from '../../lib/i18n';
 import { AgenticProblemMetrics } from './AgenticProblemMetrics';
 import { PitchSlider } from './PitchSlider';
 import { OptimusWorkCard } from './OptimusWorkCard';
+import './ProblemSection.css';
 
 export function EmploymentIncomeProblem() {
   return <section id="problema-emprego-renda" className="pb-problem__automation" aria-labelledby="problema-ia-t">
@@ -51,6 +52,5 @@ export function EmploymentIncomeProblem() {
     </div>
       </> },
     ]} />
-    <a className="tap pb-problem__evidence-link" href="#cenario-exclusao">Emprego, automação e economia real<ArrowRight aria-hidden="true" /></a>
   </section>;
 }
