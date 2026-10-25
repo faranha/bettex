@@ -1,7 +1,9 @@
 import { ExternalLink } from 'lucide-react';
 import { MobileDataCarousel } from './MobileDataCarousel';
+import { useX } from './pitchCopy';
 
 export function AgenticProblemMetrics() {
+  const x = useX();
   return <MobileDataCarousel id="economia-agentica-dados" className="pb-problem__agentic-metrics" labels={['Dados da economia agêntica', 'Agentic economy data', 'Datos de la economía agéntica']}>
     <article>
       <p className="mono pb-problem__agentic-label">Economia agêntica</p>
@@ -16,6 +18,13 @@ export function AgenticProblemMetrics() {
       <h4>Dos empregos expostos à IA generativa</h4>
       <p>Estimativa da OIT e do Banco Mundial. Exposição significa transformação possível das tarefas, não esse percentual de postos eliminados.</p>
       <a href="https://www.ilo.org/publications/buffer-or-bottleneck-employment-exposure-generative-ai-and-digital-divide" target="_blank" rel="noopener noreferrer">OIT / Banco Mundial · estudo, 2024<ExternalLink aria-hidden="true" /></a>
+    </article>
+    <article>
+      <p className="mono pb-problem__agentic-label">{x('Automação completa', 'Full automation', 'Automatización completa')}</p>
+      <p className="display pb-problem__agentic-value">2–5%</p>
+      <h4>{x('Dos empregos com potencial de automação completa', 'Of jobs with full automation potential', 'De los empleos con potencial de automatización completa')}</h4>
+      <p>{x('Estimativa técnica para a América Latina e o Caribe no estudo de 2024. É diferente de exposição à IA e não representa empregos já eliminados.', 'A technical estimate for Latin America and the Caribbean in the 2024 study. It differs from AI exposure and does not represent jobs already eliminated.', 'Estimación técnica para América Latina y el Caribe en el estudio de 2024. Es distinta de la exposición a la IA y no representa empleos ya eliminados.')}</p>
+      <a href="https://www.ilo.org/publications/buffer-or-bottleneck-employment-exposure-generative-ai-and-digital-divide" target="_blank" rel="noopener noreferrer">{x('OIT / Banco Mundial · estudo, 2024', 'ILO / World Bank · study, 2024', 'OIT / Banco Mundial · estudio, 2024')}<ExternalLink aria-hidden="true" /></a>
     </article>
     <article>
       <p className="mono pb-problem__agentic-label">A desigualdade de acesso</p>
