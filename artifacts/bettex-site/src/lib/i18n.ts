@@ -48,6 +48,19 @@ const translatedValues = {
   en: new Set(Object.values(messages).flatMap(value => [normalize(value.en), normalize(roundTerminology(value.en, 'en'))])),
   es: new Set(Object.values(messages).flatMap(value => [normalize(value.es), normalize(roundTerminology(value.es, 'es'))])),
 };
+/** Register explicit PT/EN/ES copy before the JSX runtime localizes its children.
+ * Existing catalog entries remain authoritative; unrelated pages are unchanged.
+ */
+export function registerMessage(pt: string, en: string, es: string) {
+  const key = normalize(pt);
+  if (messages[key]) return;
+  messages[key] = { en, es };
+  folded.set(key.toLocaleLowerCase(), key);
+  translatedValues.en.add(normalize(en));
+  translatedValues.en.add(normalize(roundTerminology(en, 'en')));
+  translatedValues.es.add(normalize(es));
+  translatedValues.es.add(normalize(roundTerminology(es, 'es')));
+}
 const patterns = Object.keys(messages).filter(key => /\{\d+\}/.test(key)).map(key => ({
   key,
   regex: new RegExp('^' + key.split(/(\{\d+\})/).map(part => /^\{\d+\}$/.test(part) ? '(.+?)' : part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('') + '$'),

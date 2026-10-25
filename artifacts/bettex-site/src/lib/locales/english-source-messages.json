@@ -484,10 +484,10 @@
     "en": "I want to take part",
     "es": "Quiero participar"
   },
-  "Nosso agente IA opera em cripto, você recebe em reais.": {
-    "pt": "Nosso agente IA opera em cripto, você recebe em reais.",
-    "en": "Our AI agent trades crypto, you receive reais.",
-    "es": "Nuestro agente de IA opera con cripto, tú recibes en reales."
+  "Nosso agente IA opera em cripto, você recebe no Pix.": {
+    "pt": "Nosso agente IA opera em cripto, você recebe no Pix.",
+    "en": "Our AI agent trades crypto, you receive via Pix.",
+    "es": "Nuestro agente de IA opera con cripto, tú recibes por Pix."
   },
   "Você não precisa saber operar nem negociar cripto.": {
     "pt": "Você não precisa saber operar nem negociar cripto.",
@@ -549,10 +549,10 @@
     "en": "Illustrative preview",
     "es": "Vista previa ilustrativa"
   },
-  "Receba sua parte dos lucros em reais. Você não precisa saber operar cripto.": {
-    "pt": "Receba sua parte dos lucros em reais. Você não precisa saber operar cripto.",
-    "en": "Receive your share of the profits in reais. You don't need to know how to trade crypto.",
-    "es": "Recibe tu parte de los beneficios en reales. No necesitas saber operar cripto."
+  "Receba sua parte dos lucros no Pix. Você não precisa saber operar cripto.": {
+    "pt": "Receba sua parte dos lucros no Pix. Você não precisa saber operar cripto.",
+    "en": "Receive your share of the profits via Pix. You don't need to know how to trade crypto.",
+    "es": "Recibe tu parte de los beneficios por Pix. No necesitas saber operar cripto."
   },
   "Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é entregue a você em reais. A operação e a contabilidade interna usam cripto, e você não precisa operar cripto.": {
     "pt": "Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é entregue a você em reais. A operação e a contabilidade interna usam cripto, e você não precisa operar cripto.",
@@ -648,5 +648,10 @@
     "pt": "Reproduzir animação de fundo",
     "en": "Play background animation",
     "es": "Reproducir animación de fondo"
+  },
+  "Estratégia": {
+    "pt": "Estratégia",
+    "en": "Strategy",
+    "es": "Estrategia"
   }
 }

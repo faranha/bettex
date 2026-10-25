@@ -25,11 +25,13 @@ const homeRoadmapStops: readonly Stop[] = roadmapStops.map((stop, i): Stop => i 
     ? { ...stop, title: 'Expansão de ativos', description: 'Novos ativos cripto só entram após validação, com integração, controles verificados e adequação legal. Dados públicos não equivalem a operação autorizada.' }
     : stop);
 
-export function RoadmapSection({ id = 'roadmap', variant = 'default' }: { id?: string; variant?: 'default' | 'home' } = {}) {
+const pitchRoadmapStops: readonly Stop[] = homeRoadmapStops.map((stop, i): Stop => i === 4 || i === 2 ? stop : roadmapStops[i]);
+
+export function RoadmapSection({ id = 'roadmap', variant = 'default', scope = 'default' }: { id?: string; variant?: 'default' | 'home'; scope?: 'default' | 'pitch' } = {}) {
   const slider = variant === 'home';
   const trackRef = useRef<HTMLOListElement>(null);
   const [active, setActive] = useState(0);
-  const stops: readonly Stop[] = variant === 'home' ? homeRoadmapStops : roadmapStops;
+  const stops: readonly Stop[] = variant === 'home' ? homeRoadmapStops : scope === 'pitch' ? pitchRoadmapStops : roadmapStops;
   const total = String(stops.length).padStart(2, '0');
   useEffect(() => {
     const track = trackRef.current;
