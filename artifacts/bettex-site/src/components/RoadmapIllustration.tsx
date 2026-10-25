@@ -40,12 +40,14 @@ function Scene({ index }: { index: number }) {
       </>);
     case 4:
       return (<>
-        <path d="M30 220h260" stroke="#5E2BA8" strokeWidth="3" />
-        {[0, 1, 2, 3].map(i => <g key={i}><circle cx={70 + i * 60} cy={160 - i * 28} r={26 + i * 3} fill={['#EBDDFB', '#fff', '#F2B632', '#8B4DE0'][i]} stroke="#5E2BA8" strokeWidth="3" /></g>)}
-        <path d="M70 160L130 132 190 104 250 76" stroke="#8B4DE0" strokeWidth="3" strokeDasharray="5 7" fill="none" />
-        <path d="M60 150h20M130 122h20M192 96v16M184 104h16" stroke="#070B1F" strokeWidth="4" strokeLinecap="round" />
-        <path d="M241 76h18M250 67v18" stroke="#F4F1E8" strokeWidth="4" strokeLinecap="round" />
-        <rect x="40" y="36" width="64" height="28" rx="14" fill="#fff" stroke="#8B4DE0" strokeWidth="3" /><circle cx="56" cy="50" r="7" fill="#8B4DE0" />
+        {[0, 1, 2].map(i => { const cx = 56 + i * 72; return (<g key={i}>
+          <circle cx={cx} cy="78" r="30" fill={['#EBDDFB', '#fff', '#F2B632'][i]} stroke="#5E2BA8" strokeWidth="3" />
+          <path d={`M${cx - 11} 79l8 8 15-17`} fill="none" stroke="#5E2BA8" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx={cx} cy="142" r="6" fill="#8B4DE0" />
+        </g>); })}
+        <circle cx="272" cy="78" r="30" fill="none" stroke="#8B4DE0" strokeWidth="3" strokeDasharray="7 7" />
+        <path d="M262 78h20M272 68v20" stroke="#8B4DE0" strokeWidth="5" strokeLinecap="round" />
+        <circle cx="272" cy="142" r="6" fill="none" stroke="#8B4DE0" strokeWidth="3" />
       </>);
     default:
       return (<>
@@ -61,7 +63,7 @@ function Scene({ index }: { index: number }) {
 export function RoadmapIllustration({ index }: { index: number }) {
   return (
     <div className={`roadmap-art roadmap-art--${index + 1}`} aria-hidden="true">
-      <svg viewBox="0 0 320 260" focusable="false"><Scene index={index} /></svg>
+      <svg viewBox={index === 4 ? '0 0 320 180' : '0 0 320 260'} focusable="false"><Scene index={index} /></svg>
     </div>
   );
 }
