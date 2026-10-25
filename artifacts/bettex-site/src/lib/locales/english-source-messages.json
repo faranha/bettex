@@ -448,5 +448,35 @@
     "pt": "Entre e acompanhe os ganhos diários.",
     "en": "Join and follow the daily earnings.",
     "es": "Entra y sigue las ganancias diarias."
+  },
+  "Até": {
+    "pt": "Até",
+    "en": "Up to",
+    "es": "Hasta"
+  },
+  "de lucro por dia.": {
+    "pt": "de lucro por dia.",
+    "en": "profit per day.",
+    "es": "de beneficio por día."
+  },
+  "Receba sua parte dos lucros em USDC, direto na carteira.": {
+    "pt": "Receba sua parte dos lucros em USDC, direto na carteira.",
+    "en": "Receive your share of the profits in USDC, straight to your wallet.",
+    "es": "Recibe tu parte de los beneficios en USDC, directo en la billetera."
+  },
+  "Você decide quando vender e sair.": {
+    "pt": "Você decide quando vender e sair.",
+    "en": "You decide when to sell and leave.",
+    "es": "Tú decides cuándo vender y salir."
+  },
+  "Distribuição depende de lucro. Venda sujeita à liquidez.": {
+    "pt": "Distribuição depende de lucro. Venda sujeita à liquidez.",
+    "en": "Distribution depends on profit. Sales subject to liquidity.",
+    "es": "La distribución depende del beneficio. Venta sujeta a liquidez."
+  },
+  "Quero participar": {
+    "pt": "Quero participar",
+    "en": "I want to take part",
+    "es": "Quiero participar"
   }
 }

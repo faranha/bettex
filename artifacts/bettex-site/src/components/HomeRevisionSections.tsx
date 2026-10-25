@@ -1,5 +1,4 @@
 import { ArrowRight } from 'lucide-react';
-import { CommunityCTA } from '@/components/CommunityCTA';
 import { EarningsWalletIllustration } from '@/components/EarningsWalletIllustration';
 import { HomeParticipationLogic } from '@/components/HomeParticipationLogic';
 import './HomeRevisionSections.css';
@@ -38,23 +37,19 @@ export function HomeOperationSection() {
 
 export function HomeEarningsSection() {
   return (
-    <section id="mercados" className="hr-section hr-focus" aria-labelledby="hr-focus-title">
-      <div className="hr-wrap">
-        <header className="hr-head">
-          <div>
-            <p className="hr-eyebrow">Ganhos diários</p>
-            <h2 id="hr-focus-title" className="hr-title">Seu BETTEX participa.<br />{' '}<em>O lucro chega à sua carteira.</em></h2>
-          </div>
-          <p className="hr-note">A cada ciclo de 24 horas, quando há lucro real disponível, a sua parte é paga em USDC. O seu saldo de BETTEX continua com você.</p>
-        </header>
+    <section id="mercados" className="hr-section ew-sec" aria-labelledby="hr-focus-title">
+      <div className="hr-wrap ew-grid">
+        <div className="ew-offer ew-top">
+          <p className="hr-eyebrow">Ganhos diários</p>
+          <h2 id="hr-focus-title" className="ew-h">Até{' '}<strong>1%</strong>{' '}de lucro por dia.</h2>
+          <p className="ew-p">Receba sua parte dos lucros em USDC, direto na carteira.</p>
+          <p className="ew-free">Você decide quando vender e sair.</p>
+        </div>
         <EarningsWalletIllustration />
-        <ul className="ew-benefits">
-          <li className="hr-focus-item"><span>Todo dia</span><h3>Dinheiro todo dia</h3><p>Os resultados são apurados em ciclos diários.</p></li>
-          <li className="hr-focus-item"><span>Sem vender</span><h3>BETTEX continua seu</h3><p>Você recebe os ganhos sem vender o seu token.</p></li>
-          <li className="hr-focus-item ew-hot"><span>USDC</span><h3>Saque ou reinvista</h3><p>Use o USDC recebido como preferir, conforme as regras de saída.</p></li>
-        </ul>
-        <a href="#participacao" className="ew-link" data-testid="link-earnings-participation">Ver como participar <ArrowRight size={18} aria-hidden="true" /></a>
-        <CommunityCTA source="mercados" note="Entre e acompanhe os ganhos diários." />
+        <div className="ew-offer ew-bot">
+          <a href="#participacao" className="ew-link" data-testid="link-earnings-participation">Quero participar <ArrowRight size={18} aria-hidden="true" /></a>
+          <p className="ew-foot">Distribuição depende de lucro. Venda sujeita à liquidez.</p>
+        </div>
       </div>
     </section>
   );
