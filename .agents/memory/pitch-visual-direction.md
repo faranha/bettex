@@ -7,7 +7,25 @@ O Pitch deve ser redesenhado seguindo o padrão visual da homepage: conteúdo fl
 
 **Why:** O criador reforçou: “isso precisa ser redesenhado, nao precisa de abertura em cada etapa do pitch cara, entende? [...] siga mesmo o padrao visual da home”.
 
-**How to apply:** Não resolver apenas removendo rótulos ou compactando os banners anteriores. Integrar os títulos ao conteúdo e manter a homepage intacta. A foto atual do bot está aprovada e deve encostar na linha inferior do hero, sem espaço sobrando.
+**How to apply:** Não resolver apenas removendo rótulos ou compactando os banners anteriores. Integrar os títulos ao conteúdo e manter a homepage intacta. A foto atual do bot está aprovada e deve encostar no limite inferior do fundo do hero, sem espaço sobrando e sem linha divisória.
+
+Separar os blocos com cores e fundos, sem linhas divisórias. A copy deve conectar explicitamente público → problema desse público → proposta da BETTEX, com H1 claro e títulos que continuem o raciocínio.
+
+**Why:** O criador reforçou que “naao precisa da linah divisoria” e que, depois de apresentar o público, a seção seguinte deve mostrar seu problema com uma copy clara.
+
+**How to apply:** Não apresentar títulos independentes como itens de um índice. Manter os dados, as condições do produto e a distinção entre proposta e demo visual, sem alterar a homepage.
+
+A solução BETTEX deve aparecer em uma única seção: apresentação do produto, jornada de participação e explicação da IA/tesouraria com visual unificado, sem corte de fundo entre produto e estratégia.
+
+**Why:** O criador apontou os dois blocos e pediu “unificar o visual e apresentar a soulcao: bettex é a solucao, uma secao”.
+
+**How to apply:** Não recriar “BETTEX e subagentes” como uma seção autônoma. Preservar informações técnicas, custos, Pix previsto, regras e avisos dentro da apresentação da solução.
+
+Tokenomics também deve ser uma única seção compacta, com um fundo e um título principal; economia, oferta, vesting e direitos não devem parecer duas seções distintas.
+
+**Why:** O criador apontou os dois blocos e reiterou “tokenomics tambem esta parecendo 2 dsecoes distintas, tem que unificar, otimizar o espaco”.
+
+**How to apply:** Integrar os gráficos e regras ao mesmo bloco visual, reduzir aberturas e espaço desperdiçado e preservar números, datas, séries e condições.
 
 A homepage é a referência para a síntese e apresentação do Pitch, especialmente a primeira seção depois do hero.
 
