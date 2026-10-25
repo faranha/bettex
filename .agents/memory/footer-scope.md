@@ -3,11 +3,11 @@ name: Escopo do rodapé
 description: Rodapé antigo de navegação restaurado, compartilhado no site, sem o bloco ilustrado do Rio.
 ---
 
-No link do X no rodapé, usar “Siga a Bettex no X”. Comunidade é apenas no Telegram; não escrever essa observação na interface.
+No link do X no rodapé, usar “Siga a Bettex no X” junto ao endereço “@bettexai”, seguindo o padrão do Instagram. Comunidade é apenas no Telegram; não escrever essa observação na interface.
 
-**Why:** O criador pediu essa redação e esclareceu que a comunidade é apenas no Telegram.
+**Why:** O criador pediu essa redação, esclareceu que a comunidade é apenas no Telegram e depois pediu exibir o @bettexai junto ao link do X para manter o mesmo padrão do Instagram.
 
-**How to apply:** Manter o perfil da BETTEX no X como destino e o convite da comunidade no Telegram. Localizar a chamada do X em EN/ES sem chamá-lo de comunidade; preservar o restante do rodapé.
+**How to apply:** Manter o perfil da BETTEX no X como destino e o convite da comunidade no Telegram. Localizar a chamada do X em EN/ES sem chamá-lo de comunidade, mantendo @bettexai sem tradução; preservar o restante do rodapé.
 
 Pitch e Documentação devem ter o mesmo rodapé global da página inicial.
 

@@ -173,7 +173,7 @@ function SiteFooter() {
           <div className="sf-socials">
           <a href={X_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-testid="link-community-x-footer" className="sf-x focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4F1E8]">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="sf-community__icon" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.153h7.594l5.243 6.932 6.064-6.932ZM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644Z" /></svg>
-            <span>Siga a Bettex no X</span>
+            <span>{t('Siga a Bettex no X')} · <span data-i18n="raw">@bettexai</span></span>
           </a>
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" data-testid="link-instagram-footer" className="sf-x focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4F1E8]">
             <Instagram className="sf-community__icon" aria-hidden="true" />

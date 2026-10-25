@@ -20,7 +20,17 @@ export function EmploymentIncomeProblem() {
     <h3 id="problema-ia-t" className="display">{x('Automação não garante prosperidade para todos.', 'Automation does not guarantee prosperity for everyone.', 'La automatización no garantiza prosperidad para todos.')}</h3>
     <PitchSlider id="emprego-ia-slider" tone="dark" label={['IA, trabalho, renda e indicadores em blocos', 'AI, work and income blocks', 'IA, trabajo e ingresos por bloques']} slides={[
       { label: ['Promessa de abundância', 'Promise of abundance', 'Promesa de abundancia'], node: <>
-    <p>{x('Musk prevê máquinas no lugar do trabalho humano e renda universal alta. Tese da BETTEX: sem acesso aos ganhos da tecnologia, a automação pode aprofundar a perda de renda e a exclusão antes de gerar prosperidade.','Musk envisions machines replacing human work and high universal income. BETTEX thesis: without access to technology gains, automation can deepen income loss and exclusion before producing prosperity.','Musk prevé máquinas en lugar del trabajo humano e ingreso universal alto. Tesis de BETTEX: sin acceso a los beneficios de la tecnología, la automatización puede profundizar la pérdida de ingresos y la exclusión antes de generar prosperidad.')}</p>
+    <figure className="pb-problem__musk-quote">
+      <blockquote>
+        <p>{x('“Acho que, de longe, o resultado mais provável é uma era de abundância em que não teremos apenas renda básica universal, mas renda alta universal.”', '“I think by far the most likely outcome is an age of abundance where we don’t just have universal basic income, we have universal high income.”', '“Creo que, con diferencia, el resultado más probable es una era de abundancia en la que no tendremos solo una renta básica universal, sino una renta alta universal.”')}</p>
+      </blockquote>
+      <figcaption>
+        {x('Elon Musk · Casa Branca, 29 set. 2026 · tradução nossa', 'Elon Musk · White House, Sep. 29, 2026', 'Elon Musk · Casa Blanca, 29 sep. 2026 · traducción propia')}
+        <a href="https://www.businessinsider.com/elon-musk-ai-abundance-trump-jobs-wealth-healthcare-ubi-robots-2026-9" target="_blank" rel="noopener noreferrer">{x('Business Insider, 30 set. 2026', 'Business Insider, Sep. 30, 2026', 'Business Insider, 30 sep. 2026')}<ExternalLink aria-hidden="true" /></a>
+      </figcaption>
+      <img src={`${import.meta.env.BASE_URL}pitch-future/elon-musk-quote-illustration.png`} alt={x('Ilustração editorial de Elon Musk.', 'Editorial illustration of Elon Musk.', 'Ilustración editorial de Elon Musk.')} width={1024} height={1024} loading="lazy" />
+    </figure>
+    <p className="pb-problem__musk-thesis">{x('Tese da BETTEX: sem acesso aos ganhos da tecnologia, a automação pode aprofundar a perda de renda e a exclusão antes de gerar prosperidade.', 'BETTEX thesis: without access to technology gains, automation can deepen income loss and exclusion before producing prosperity.', 'Tesis de BETTEX: sin acceso a los beneficios de la tecnología, la automatización puede profundizar la pérdida de ingresos y la exclusión antes de generar prosperidad.')}</p>
     <figure className="pb-problem__opening-video">
       <div className="pb-problem__video-frame">
         <iframe

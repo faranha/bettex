@@ -119,6 +119,12 @@ O destaque brasileiro desse argumento deve medir salário ou renda regular usado
 
 **How to apply:** Selecionar indicadores que respondam às perguntas sobre origem dos recursos e reservas. Não trocar uso de salário por inadimplência nem apresentar dois percentuais separados como uma prevalência conjunta.
 
+O dado da pesquisa da Copa deve abrir a seção Problema 1 do Pitch: 74% dos que pretendiam apostar na Copa de 2026 viam nas bets uma forma de quitar dívidas pendentes.
+
+**Why:** O criador corrigiu que o dado da Copa havia sido omitido e pediu que fosse a abertura da seção, não um conteúdo posterior.
+
+**How to apply:** Manter a população pesquisada e a fonte CNDL/SPC Brasil e Offerwise: 600 participantes de 18 anos ou mais, nas 27 capitais, com intenção de gastos na Copa; coleta de 27/04 a 05/05/2026. Os 74% reúnem 31% de concordância total e 43% parcial. Não generalizar para toda a população, retorno das apostas ou demanda da BETTEX.
+
 Na parte de Elon Musk, manter apenas o conteúdo mais polêmico, problemático e apocalíptico, sem a contraposição otimista ou explicações secundárias.
 
 **Why:** O criador pediu deixar nessa parte “só aquilo que for mais polêmico, mais problemático, mais apocalíptico”.

@@ -1,5 +1,5 @@
 .ptc { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 20px; margin-bottom: 32px; color: #F4F1E8; }
-.ptc__panel { margin: 0; min-width: 0; padding: clamp(16px,2.4vw,24px); border: 1px solid rgba(43,89,255,.4); border-radius: 12px; background: #0d1536; }
+.ptc__panel { align-self: stretch; margin: 0; min-width: 0; padding: clamp(16px,2.4vw,24px); border: 1px solid rgba(43,89,255,.4); border-radius: 12px; background: #0d1536; }
 .ptc__panel h3 { margin: 0; font-size: 1.1rem; font-weight: 800; letter-spacing: -.02em; }
 .ptc__panel figcaption p { margin: 4px 0 0; font-size: 13px; color: #c5d2f1; }
 .ptc__pie { position: relative; height: 240px; margin-top: 12px; }

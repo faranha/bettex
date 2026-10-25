@@ -41,7 +41,7 @@ Não reintroduzir o rodapé extenso de notas e fontes abaixo da tese de oportuni
 
 **Why:** O criador mostrou o bloco e pediu remover tudo, explicando que não há espaço na apresentação para conteúdo que não seja tese ou número grande que a justifique.
 
-**How to apply:** Manter essa área focada na tese e nos números principais. A remoção desse bloco não transforma estimativas em medições nem elimina os riscos ou a documentação do restante do produto.
+**How to apply:** Manter essa área focada na tese e nos números principais. Remover também o bloco de ressalvas após o carrossel de público e mercado, inclusive seu conteúdo expansível, sem retirar os dados do carrossel. A remoção não transforma estimativas em medições nem elimina os riscos ou a documentação do restante do produto.
 
 Usar os volumes diários de cripto e bets como referências separadas, não uma soma apresentada como capital único disponível. Operações de cripto incluem pagamentos, stablecoins e atividade empresarial; o total não mede exclusivamente investimentos especulativos.
 

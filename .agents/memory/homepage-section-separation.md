@@ -19,7 +19,7 @@ O encerramento do Roadmap deve ficar próximo do rodapé, sem uma grande área v
 
 **Why:** O criador marcou esse intervalo e reclamou que o gap era “enorme e desproporcional”.
 
-**How to apply:** Manter apenas um respiro compacto após o encerramento, sem somar uma margem inferior grande a um bloco vazio de transição. Preservar o texto, o convite e o conteúdo do rodapé.
+**How to apply:** Manter um respiro compacto, mas visível, depois dos controles do slider antes do rodapé; não somar uma margem inferior grande a um bloco vazio de transição. Preservar o texto, o convite e o conteúdo do rodapé.
 
 A abertura do Roadmap no mobile deve ser compacta, sem espaços grandes acima do título, entre o título e a descrição ou antes da primeira etapa.
 

@@ -68,7 +68,7 @@
 - [Go to market no Brasil](pitch-brazil-go-to-market.md) — substituir Onboarding; sem seção de Piloto nem expansão internacional nesse bloco do Pitch.
 - [Visual e tom do pitch](pitch-visual-direction.md) — padrão da homepage, sem aberturas por etapa; bot encostado na linha inferior; preservar público e evidências.
 - [Ícones das receitas](pitch-revenue-visuals.md) — Operadora e Tesouraria usam ícones, não a foto das bandejas; não confundir com Community-driven.
-- [Pauta do cenário apocalíptico](pitch-economic-risk-story.md) — reunir emprego EUA, gráfico brasileiro, matérias sombrias, bolha da IA e perda de patrimônio/salário no mesmo trecho.
+- [Pauta do cenário apocalíptico](pitch-economic-risk-story.md) — Problema 1 abre com os 74% da pesquisa da Copa; preserve também as evidências essenciais sobre emprego.
 - [Mercado na abertura do Pitch](pitch-market-priority.md) — apostas e cripto são públicos potenciais; 6,9 milhões é o núcleo, não o limite; público e fluxo financeiro primeiro.
 - [Esquemas do staking](staking-visual-explanations.md) — manter os desenhos originais junto da fórmula e do pagamento, dentro da mesma seção expandida.
 - [Separação das seções](homepage-section-separation.md) — Nova Economia e Roadmap devem parecer blocos visuais distintos, também no celular.

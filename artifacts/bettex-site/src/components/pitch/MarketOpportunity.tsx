@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from 'react';
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import './MarketOpportunity.css';
-import { AudienceOverlap } from './AudienceOverlap';
-import { AudienceAgeProfile } from './AudienceAgeProfile';
-import { AudienceFlowChart } from './AudienceFlowChart';
-import { audienceScenario } from './audienceScenario';
-import { formatCryptoDailyBillions } from './marketFlow';
+import { AudienceFlowChart, BETS_URL } from './AudienceFlowChart';
+import { audienceGeometry as G, audienceScenario } from './audienceScenario';
+import { formatCryptoDailyBillions, marketFlow } from './marketFlow';
 import { useX } from './pitchCopy';
 import { getFormatLocale } from '../../lib/i18n';
 
+const BETTING_AGE_SOURCE = 'https://www.gov.br/fazenda/pt-br/composicao/orgaos/secretaria-de-premios-e-apostas/apresentacoes/defeso-2deg-panorama-semestral-de-apostas-de-quota-fixa-jan-2026.pdf';
+const CRYPTO_AGE_SOURCE = 'https://valorinveste.globo.com/mercados/cripto/noticia/2026/08/18/cripto-ja-e-conhecida-por-2-em-cada-3-brasileiros-mas-so-8percent-investem.ghtml';
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 export function MarketOpportunity() {
@@ -18,6 +18,9 @@ export function MarketOpportunity() {
   const x0 = useRef<number | null>(null);
   const cryptoDailyBillions = formatCryptoDailyBillions();
   const share = (audienceScenario.cryptoShare * 100).toLocaleString(getFormatLocale(), { maximumFractionDigits: 1 });
+  const fmt1 = (n: number) => n.toLocaleString(getFormatLocale(), { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const overlap = fmt1(audienceScenario.overlapMillions);
+  const mil = x('milhões', 'million', 'millones');
   const src = (href: string, label: string) => <a className="mk-src" href={href} target="_blank" rel="noopener noreferrer">{label}<ExternalLink aria-hidden="true" /></a>;
 
   const slides: { title: string; node: ReactNode }[] = [
@@ -47,18 +50,70 @@ export function MarketOpportunity() {
         <p className="mk-share__cap">{x('do público pesquisado tem ou já teve dinheiro em cripto', 'of the surveyed audience has or once had money in crypto', 'del público encuestado tiene o ha tenido dinero en cripto')}</p>
       </div>
     </div> },
-    { title: x('Volume diário', 'Daily volume', 'Volumen diario'), node: <div className="mk-grid mk-grid--chart">
+    { title: x('Volume diário', 'Daily volume', 'Volumen diario'), node: <div className="mk-grid">
       <div className="mk-offer">
         <p className="mk-eyebrow">{x('Movimentação diária · cripto', 'Daily flow · crypto', 'Movimiento diario · cripto')}</p>
         <p className="mk-big" data-testid="audience-money-value"><strong>R$ {cryptoDailyBillions}</strong></p>
         <h3 className="mk-h">{x('bilhão por dia, aproximadamente', 'billion per day, approximately', 'mil millones por día, aproximadamente')}</h3>
         <p className="mk-rhythm">{x('Volume bruto de operações, não receita da BETTEX.', 'Gross operations volume, not BETTEX revenue.', 'Volumen bruto de operaciones, no ingreso de BETTEX.')}</p>
-        <p className="mk-p">{x('R$ 283 bilhões em operações no primeiro semestre de 2026. Inclui negociações, stablecoins e operações empresariais.', 'R$283 billion in operations in the first half of 2026. Includes trading, stablecoins and corporate operations.', 'R$283 mil millones en operaciones en el primer semestre de 2026. Incluye negociaciones, stablecoins y operaciones empresariales.')}</p>
+        <p className="mk-p">{x('R$ 283 bilhões em 181 dias do 1º semestre de 2026, com negociações, stablecoins e operações empresariais. Bets: cerca de R$ 600 milhões por dia em depósitos, referência histórica anterior à proibição de setembro de 2026. Medidas distintas, que não se somam.', 'R$283 billion over 181 days of H1 2026, including trading, stablecoins and corporate operations. Bets: about R$600 million per day in deposits, a historical reference before the September 2026 ban. Distinct measures that do not add up.', 'R$283 mil millones en 181 días del 1.er semestre de 2026, con negociaciones, stablecoins y operaciones empresariales. Bets: cerca de R$600 millones por día en depósitos, referencia histórica anterior a la prohibición de septiembre de 2026. Medidas distintas que no se suman.')}</p>
+        <div className="mk-srcs">
+          {src(marketFlow.cryptoSourceUrl, x('Receita Federal / Valor Investe · set. 2026', 'Federal Revenue / Valor Investe · Sep. 2026', 'Receita Federal / Valor Investe · sep. 2026'))}
+          {src(BETS_URL, x('Fazenda / MJSP, 2 out. 2026', 'Ministry of Finance / MJSP, Oct. 2, 2026', 'Hacienda / MJSP, 2 oct. 2026'))}
+        </div>
       </div>
-      <AudienceFlowChart />
+      <div className="mk-stage mk-stage--ink mk-stage--chart">
+        <p className="mk-stage__cap mono">{x('R$ bilhões por dia, em média', 'R$ billions per day, on average', 'miles de millones de R$ por día, en promedio')}</p>
+        <AudienceFlowChart />
+      </div>
     </div> },
-    { title: x('Interseção', 'Overlap', 'Intersección'), node: <AudienceOverlap /> },
-    { title: x('Faixa etária', 'Age profile', 'Franja de edad'), node: <AudienceAgeProfile /> },
+    { title: x('Interseção', 'Overlap', 'Intersección'), node: <div className="mk-grid" id="audience-overlap" data-testid="audience-overlap" role="group" aria-labelledby="audience-overlap-title">
+      <div className="mk-offer">
+        <p className="mk-eyebrow">{x('Cenário hipotético · não é medição', 'Hypothetical scenario · not a measurement', 'Escenario hipotético · no es medición')}</p>
+        <p className="mk-big" data-testid="audience-core-value"><span aria-hidden="true">≈ </span><strong>{overlap}</strong><span className="mk-unit">{mil}</span></p>
+        <h3 className="mk-h" id="audience-overlap-title">{x('público central estimado', 'estimated core audience', 'público central estimado')}</h3>
+        <p className="mk-rhythm">{x(`Premissa de independência: ${audienceScenario.bettingMillions} milhões × ${share}% = ${overlap} milhões.`, `Independence assumption: ${audienceScenario.bettingMillions} million × ${share}% = ${overlap} million.`, `Premisa de independencia: ${audienceScenario.bettingMillions} millones × ${share}% = ${overlap} millones.`)}</p>
+        <p className="mk-p">{x('O núcleo reúne, neste cenário, apostadores com experiência em cripto. É um núcleo de afinidade, não o limite de atuação do produto.', 'In this scenario the core brings together bettors with crypto experience. It is an affinity nucleus, not the limit of the product’s reach.', 'En este escenario, el núcleo reúne a apostadores con experiencia en cripto. Es un núcleo de afinidad, no el límite de actuación del producto.')}</p>
+        <div className="mk-srcs">
+          {src(audienceScenario.bettingSourceUrl, x('Apostas: Fazenda / SIGAP, via Folha · set. 2026', 'Betting: Ministry of Finance / SIGAP, via Folha · Sep. 2026', 'Apuestas: Hacienda / SIGAP, vía Folha · sep. 2026'))}
+          {src(audienceScenario.cryptoSourceUrl, x('Datafolha / Paradigma · publicado em ago. 2026', 'Datafolha / Paradigma · published Aug. 2026', 'Datafolha / Paradigma · publicado en ago. 2026'))}
+        </div>
+      </div>
+      <div className="mk-stage mk-stage--ink">
+        <svg className="mk-venn" viewBox={`0 0 ${Math.round(G.cryptoX + G.cryptoRadius + 20)} 350`} role="img" aria-label={x(`Círculos proporcionais: ${audienceScenario.bettingMillions} milhões de apostadores, ${audienceScenario.cryptoMillions} milhões com cripto e ${overlap} milhões na interseção hipotética`, `Proportional circles: ${audienceScenario.bettingMillions} million bettors, ${audienceScenario.cryptoMillions} million with crypto and ${overlap} million in the hypothetical overlap`, `Círculos proporcionales: ${audienceScenario.bettingMillions} millones de apostadores, ${audienceScenario.cryptoMillions} millones con cripto y ${overlap} millones en la intersección hipotética`)}>
+          <defs><clipPath id="mk-clip-bet"><circle cx={G.bettingX} cy={175} r={G.bettingRadius} /></clipPath></defs>
+          <circle cx={G.bettingX} cy={175} r={G.bettingRadius} fill="#2B59FF" fillOpacity=".75" />
+          <circle cx={G.cryptoX} cy={175} r={G.cryptoRadius} fill="#F4F1E8" fillOpacity=".8" />
+          <circle cx={G.cryptoX} cy={175} r={G.cryptoRadius} fill="#F2B632" clipPath="url(#mk-clip-bet)" />
+          <text x={G.bettingX - 55} y={170} textAnchor="middle" fill="#F4F1E8" fontSize="30" fontWeight="800">{audienceScenario.bettingMillions}</text>
+          <text x={G.bettingX - 55} y={196} textAnchor="middle" fill="#F4F1E8" fontSize="15">{x('apostas', 'betting', 'apuestas')}</text>
+          <text x={G.cryptoX + 50} y={170} textAnchor="middle" fill="#070B1F" fontSize="30" fontWeight="800">{audienceScenario.cryptoMillions}</text>
+          <text x={G.cryptoX + 50} y={196} textAnchor="middle" fill="#070B1F" fontSize="15">{x('cripto', 'crypto', 'cripto')}</text>
+        </svg>
+        <p className="mk-stage__cap mono">{x(`Interseção ${overlap} milhões (dourado)`, `Overlap ${overlap} million (gold)`, `Intersección ${overlap} millones (dorado)`)}</p>
+      </div>
+    </div> },
+    { title: x('Faixa etária', 'Age profile', 'Franja de edad'), node: <div className="mk-grid" id="publico-faixa-etaria" role="group" aria-labelledby="publico-faixa-etaria-t">
+      <div className="mk-offer">
+        <p className="mk-eyebrow">{x('Apostas · maioria do público', 'Betting · most of the audience', 'Apuestas · mayoría del público')}</p>
+        <p className="mk-big" data-testid="audience-age-value"><strong>25–40</strong><span className="mk-unit">{x('anos', 'years', 'años')}</span></p>
+        <h3 className="mk-h" id="publico-faixa-etaria-t">{x('Faixas etárias: apostas e cripto', 'Age bands: betting and crypto', 'Franjas de edad: apuestas y cripto')}</h3>
+        <p className="mk-rhythm">{x('Denominadores diferentes: não são o mesmo perfil.', 'Different denominators: not the same profile.', 'Denominadores distintos: no son el mismo perfil.')}</p>
+        <p className="mk-p">{x('Apostas: 51,3% dos apostadores do mercado regulado em 2025 (22,7% entre 25 e 30 anos; 28,6% entre 31 e 40). Cripto: 32% das pessoas de 16 a 24 anos têm ou já tiveram criptomoedas, em 2026.', 'Betting: 51.3% of regulated-market bettors in 2025 (22.7% aged 25–30; 28.6% aged 31–40). Crypto: 32% of people aged 16–24 have or once had cryptocurrencies, in 2026.', 'Apuestas: 51,3% de los apostadores del mercado regulado en 2025 (22,7% entre 25 y 30 años; 28,6% entre 31 y 40). Cripto: 32% de las personas de 16 a 24 años tienen o han tenido criptomonedas, en 2026.')}</p>
+        <div className="mk-srcs">
+          {src(BETTING_AGE_SOURCE, x('Fazenda / SIGAP · dados de 2025, publicado em jan. 2026', 'Ministry of Finance / SIGAP · 2025 data, published Jan. 2026', 'Hacienda / SIGAP · datos de 2025, publicado en ene. 2026'))}
+          {src(CRYPTO_AGE_SOURCE, x('Datafolha / Paradigma · Valor Investe, ago. 2026', 'Datafolha / Paradigma · Valor Investe, Aug. 2026', 'Datafolha / Paradigma · Valor Investe, ago. 2026'))}
+        </div>
+      </div>
+      <div className="mk-stage mk-stage--ink mk-stage--bars">
+        <div className="mk-bar"><p><b>{x('51,3%', '51.3%', '51,3%')}</b> {x('dos apostadores regulados, 25–40 anos', 'of regulated bettors, aged 25–40', 'de los apostadores regulados, 25–40 años')}</p>
+          <div className="mk-share__bar" role="img" aria-label={x('51,3% dos apostadores regulados em 2025 têm 25 a 40 anos', '51.3% of regulated bettors in 2025 are aged 25 to 40', 'El 51,3% de los apostadores regulados en 2025 tiene de 25 a 40 años')}><span style={{ width: '22.7%' }} /><span className="mk-seg2" style={{ width: '28.6%' }} /></div>
+          <small>{x('22,7% (25–30) + 28,6% (31–40)', '22.7% (25–30) + 28.6% (31–40)', '22,7% (25–30) + 28,6% (31–40)')}</small></div>
+        <div className="mk-bar"><p><b>32%</b> {x('das pessoas de 16–24 anos já tiveram cripto', 'of people aged 16–24 ever held crypto', 'de las personas de 16–24 años han tenido cripto')}</p>
+          <div className="mk-share__bar" role="img" aria-label={x('32% das pessoas de 16 a 24 anos têm ou já tiveram cripto, em 2026', '32% of people aged 16 to 24 have or once had crypto, in 2026', 'El 32% de las personas de 16 a 24 años tiene o ha tenido cripto, en 2026')}><span className="mk-seg3" style={{ width: '32%' }} /></div>
+          <small>{x('Dentro da faixa etária, 2026', 'Within the age band, 2026', 'Dentro de la franja de edad, 2026')}</small></div>
+      </div>
+    </div> },
   ];
 
   const n = slides.length;
@@ -91,7 +146,7 @@ export function MarketOpportunity() {
   return <div className="pb-market mk" ref={root}>
     <div id="publico-mercado-slider" role="region" aria-roledescription={x('Carrossel', 'Carousel', 'Carrusel')} aria-label={x('Público e mercado em blocos', 'Audience and market blocks', 'Público y mercado por bloques')} onKeyDown={onKey} data-testid="carousel-audience" data-active-slide={i + 1}>
       <div className="mk-track" onPointerDown={down} onPointerUp={up} onPointerCancel={() => { x0.current = null; }}>
-        {slides.map((s, k) => <div key={k} className="mk-slide" data-slide-index={k} hidden={k !== i} role="group" aria-roledescription={x('Slide', 'Slide', 'Diapositiva')} aria-label={`${k + 1} / ${n}`}>{s.node}</div>)}
+        {slides.map((s, k) => <div key={k} className="mk-slide" data-slide-index={k} data-active={k === i} aria-hidden={k !== i} inert={k !== i} role="group" aria-roledescription={x('Slide', 'Slide', 'Diapositiva')} aria-label={`${k + 1} / ${n}`}>{s.node}</div>)}
       </div>
       <div className="mk-ctrl">
         <button type="button" className="mk-nav mk-nav--prev" onClick={() => go(i - 1)} data-testid="button-audience-prev">
@@ -106,14 +161,6 @@ export function MarketOpportunity() {
           <ArrowRight size={20} aria-hidden="true" />
         </button>
       </div>
-    </div>
-    <div className="mk-note">
-      <p><strong>{x('Já existe público. Já existe volume financeiro.', 'The audience exists. The financial volume exists.', 'Ya existe público. Ya existe volumen financiero.')}</strong> {x('Público potencial não é uma base de compradores validada, e a movimentação do mercado não é receita da BETTEX.', 'Potential audience is not a validated buyer base, and market flow is not BETTEX revenue.', 'El público potencial no es una base de compradores validada, y el movimiento del mercado no es ingreso de BETTEX.')}</p>
-      <details>
-        <summary>{x('Ler a ressalva completa', 'Read the full caveat', 'Leer la salvedad completa')}</summary>
-        <p>{x('É esse público que a BETTEX busca alcançar com uma proposta de investimento, não de aposta: experiência familiar, custos claros e risco de perda explícito. Os dados a seguir mostram sua escala e o volume financeiro envolvido.', 'This is the audience BETTEX aims to reach with an investment proposal, not a betting product: a familiar experience, clear costs and explicit risk of loss. The data below shows its scale and the financial volume involved.', 'Es el público al que BETTEX busca llegar con una propuesta de inversión, no de apuestas: una experiencia familiar, costes claros y riesgo de pérdida explícito. Los datos siguientes muestran su escala y el volumen financiero involucrado.')}</p>
-        <p>{x('A BETTEX pretende alcançar apostadores brasileiros e pessoas com experiência em cripto. O público central estimado é um núcleo de afinidade, não o limite de atuação do produto. Público potencial não é uma base de compradores validada. Movimentação do mercado não é receita da BETTEX. Converter parte desse público em participantes e usuários recorrentes é uma hipótese comercial a validar.', 'BETTEX aims to reach Brazilian bettors and people with crypto experience. The estimated core audience is an affinity nucleus, not the limit of the product’s reach. Potential audience is not a validated buyer base. Market flow is not BETTEX revenue. Converting part of this audience into participants and recurring users is a commercial hypothesis to be validated.', 'BETTEX pretende alcanzar a apostadores brasileños y a personas con experiencia en cripto. El público central estimado es un núcleo de afinidad, no el límite de actuación del producto. El público potencial no es una base de compradores validada. El movimiento del mercado no es ingreso de BETTEX. Convertir parte de ese público en participantes y usuarios recurrentes es una hipótesis comercial por validar.')}</p>
-      </details>
     </div>
   </div>;
 }
