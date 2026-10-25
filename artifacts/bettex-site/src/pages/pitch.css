@@ -2,7 +2,7 @@
 .whitepaper .whitepaper__aside { top: calc(var(--site-header-h) + 20px); }
 .whitepaper [id], .whitepaper__content { scroll-margin-top: calc(var(--site-header-h) + 28px); }
 .whitepaper section[id] { scroll-margin-top: calc(var(--site-header-h) + 12px); }
-.pitch [id] { scroll-margin-top: calc(var(--pitch-sticky-h, 100px) + 16px); }
+.pitch [id] { scroll-margin-top: 0; }
 .pitch-grid { background-image: linear-gradient(rgba(95,134,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(95,134,255,.09) 1px, transparent 1px); background-size: 44px 44px; }
 @keyframes pitch-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 .pitch-rise { animation: pitch-rise .7s cubic-bezier(.2,.7,.2,1) both; }
@@ -199,7 +199,7 @@ img, svg, video { max-width: 100%; }
   background: transparent;
 }
 .pitch-community + .pitch-observations { margin-top: 0; }
-.pitch-community { scroll-margin-top: calc(var(--pitch-sticky-h, 100px) + 24px); }
+.pitch-community { scroll-margin-top: 0; }
 @media (max-width: 767px) {
   .pitch-community { grid-template-columns: minmax(0, 1fr); margin-top: 36px; }
 }

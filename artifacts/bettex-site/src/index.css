@@ -109,10 +109,10 @@
 
 .display { font-family: var(--app-font-serif); }
 /* Homepage anchors account for the sticky header once, not once per section. */
-html:has(.home-page) { scroll-padding-top: var(--home-sticky-h, var(--site-header-h, 73px)); }
+html:has(.home-page) { scroll-padding-top: var(--site-header-h, 73px); }
 .home-page section[id] { scroll-margin-top: 0; }
 /* Each page compensates its persistent navigation exactly once. */
-html:has(.pitch) { scroll-padding-top: var(--pitch-sticky-h, 120px); }
+html:has(.pitch) { scroll-padding-top: var(--site-header-h, 73px); }
 html:has(.whitepaper) { scroll-padding-top: var(--documentation-sticky-h, var(--site-header-h, 73px)); }
 .whitepaper[id], .whitepaper [id], .whitepaper__content { scroll-margin-top: 0 !important; }
 /* Native scrolling stays available, with the same treatment on both axes. */

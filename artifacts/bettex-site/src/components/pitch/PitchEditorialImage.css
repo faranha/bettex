@@ -12,7 +12,7 @@
   .pes--left { grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 40px; }
   .pes--right { grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 40px; }
   .pes--right .pes__media { order: 2; justify-self: end; }
-  .pes--left .pes__media, .pes--right .pes__media { position: sticky; top: calc(var(--pitch-sticky-h, 120px) + 16px); }
+  .pes--left .pes__media, .pes--right .pes__media { position: sticky; top: calc(var(--site-header-h, 73px) + 16px); }
   .pes--left .pei { transform: rotate(-1deg); }
   .pes--right .pei { transform: rotate(1deg); }
 }

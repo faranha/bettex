@@ -3,6 +3,12 @@ name: Deslocamento das âncoras sob navegação fixa
 description: Ao mudar a altura da navegação, conferir a rolagem JavaScript e o índice fixo, não apenas scroll-margin.
 ---
 
+Homepage e Pitch não devem ter submenu de seções, nem no desktop nem no mobile. O menu principal e o índice da documentação permanecem.
+
+**Why:** O criador considera a homepage suficientemente resumida e pediu retirar o submenu das duas páginas.
+
+**How to apply:** Não reintroduzir os submenus na homepage ou no Pitch. Nesses percursos, descontar somente o cabeçalho principal ao navegar para âncoras. As orientações abaixo sobre submenus continuam restritas às páginas que ainda os possuem.
+
 Aplicar o deslocamento das barras fixas apenas uma vez. `scroll-padding`
 global e `scroll-margin` do destino são cumulativos; rolagem com comportamento
 `auto` também pode herdar o `smooth` do site institucional.
