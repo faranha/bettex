@@ -75,11 +75,11 @@ Nas composições com pessoas e celular, personagens e cenário precisam ter per
 
 **How to apply:** Quando houver pedido para rever essas composições, usar contexto de investimento cripto com aparelho visível no desktop e no mobile. Evitar mistura de recortes desconectados; não confundir referência visual com funcionalidades operacionais disponíveis.
 
-No CTA final da homepage, o logo BETTEX deve fazer parte da própria imagem de fundo, não ser um símbolo flutuante sobre a cena. A mensagem deve ser ampla: “Pare de apostar com seu dinheiro”, sem “refém das apostas”.
+No CTA final da homepage, preservar o estilo da fotografia de investimento, mas com cenário reconhecível do Rio de Janeiro, Brasil, e sem a aplicação artificial do “B”. A mensagem deve destacar ganhar e investir com inteligência, não “Pare de apostar com seu dinheiro”.
 
-**Why:** O criador pediu outro fundo com “o logo da bettex incorporado na imagem do fundo”, incluindo na mensagem quem compra e vende moedas em corretoras.
+**Why:** O criador aprovou a fotografia, mas rejeitou o símbolo por parecer artificial e pediu contexto brasileiro: “tem que ser o RJ”. Depois esclareceu explicitamente que RJ é Rio de Janeiro, Brasil, não uma pessoa.
 
-**How to apply:** Usar contexto de investimento cripto e o símbolo oficial integrado de forma coerente à iluminação e perspectiva da cena. Não limitar esse convite a futebol ou casas de apostas.
+**How to apply:** Mostrar a pessoa usando o celular em ambiente de investimento com vista reconhecível do Rio, sem letreiro ou símbolo sobreposto. Não voltar a perguntar quem é RJ nessa direção visual. Preservar o contexto amplo de investimentos, sem limitar a futebol ou casas de apostas.
 
 O símbolo e a moldura do logo no cabeçalho e no rodapé devem ficar sem amarelo, com acabamento mais discreto e elegante.
 

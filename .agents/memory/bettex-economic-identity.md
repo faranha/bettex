@@ -11,7 +11,7 @@ Para o planejamento da BETTEX 1.5, o criador pediu uma apresentação mais objet
 
 **How to apply:** Tratar isso como direção de planejamento, não capacidade implementada ou autorização para alterar a homepage. Distinguir indícios de manipulação de prova e não prometer previsão ou lucro.
 
-O público inclui o apostador brasileiro e também quem especula comprando e vendendo moedas em corretoras. Na comunicação atual da homepage, não limitar a mensagem a quem é “refém das apostas”: a direção é “Pare de apostar com seu dinheiro”. O criador distingue quem compra BETTEX pela utilidade de participar do sistema, sem tomar as decisões de trading dos ativos, de quem negocia o próprio token de forma discricionária para tentar lucrar com sua cotação.
+O público inclui o apostador brasileiro e também quem especula comprando e vendendo moedas em corretoras. Na comunicação atual da homepage, não limitar a mensagem a quem é “refém das apostas”; destacar ganhar e investir com inteligência. O criador rejeitou depois a frase “Pare de apostar com seu dinheiro”. O criador distingue quem compra BETTEX pela utilidade de participar do sistema, sem tomar as decisões de trading dos ativos, de quem negocia o próprio token de forma discricionária para tentar lucrar com sua cotação.
 
 **Why:** Após preservar a audiência de apostas na especialização cripto, o criador ampliou a comunicação: “vamos deixar mais amplo” e “abrange tambem quem aposta no sentido de comprar e vender moeda em corretora”.
 
