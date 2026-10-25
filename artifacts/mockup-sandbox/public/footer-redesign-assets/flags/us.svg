@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 100">
+  <defs>
+    <pattern id="stripes" width="190" height="15.3846" patternUnits="userSpaceOnUse"><path fill="#b22234" d="M0 0h190v7.6923H0z"/></pattern>
+    <path id="star" fill="#fff" d="m0-2.2.65 1.5 1.65.1-1.25 1.1.4 1.6L0 1.25-1.45 2.1l.4-1.6-1.25-1.1 1.65-.1z"/>
+    <g id="six"><use href="#star" x="6.33"/><use href="#star" x="19"/><use href="#star" x="31.67"/><use href="#star" x="44.33"/><use href="#star" x="57"/><use href="#star" x="69.67"/></g>
+    <g id="five"><use href="#star" x="12.67"/><use href="#star" x="25.33"/><use href="#star" x="38"/><use href="#star" x="50.67"/><use href="#star" x="63.33"/></g>
+  </defs>
+  <path fill="#fff" d="M0 0h190v100H0z"/>
+  <path fill="url(#stripes)" d="M0 0h190v100H0z"/>
+  <path fill="#3c3b6e" d="M0 0h76v53.846H0z"/>
+  <use href="#six" y="5"/><use href="#five" y="10.5"/><use href="#six" y="16"/><use href="#five" y="21.5"/><use href="#six" y="27"/><use href="#five" y="32.5"/><use href="#six" y="38"/><use href="#five" y="43.5"/><use href="#six" y="49"/>
+</svg>

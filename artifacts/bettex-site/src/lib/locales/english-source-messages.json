@@ -344,10 +344,10 @@
     "en": "Only after validation.",
     "es": "Solo tras la validación."
   },
-  "Um agente de IA em cripto. Ativo inicial a definir.": {
-    "pt": "Um agente de IA em cripto. Ativo inicial a definir.",
-    "en": "One AI agent in crypto. Initial asset to be defined.",
-    "es": "Un agente de IA en cripto. Activo inicial por definir."
+  "BTX coordena subagentes de análise quantitativa distribuída. A operação entra e sai conforme padrões de manipulação, sem ativo inicial fixo.": {
+    "pt": "BTX coordena subagentes de análise quantitativa distribuída. A operação entra e sai conforme padrões de manipulação, sem ativo inicial fixo.",
+    "en": "BTX coordinates subagents performing distributed quantitative analysis. Trades enter and exit based on manipulation patterns, without a fixed initial asset.",
+    "es": "BTX coordina subagentes de análisis cuantitativo distribuido. La operación entra y sale según patrones de manipulación, sin un activo inicial fijo."
   },
   "Expansão de ativos": {
     "pt": "Expansão de ativos",
@@ -648,6 +648,96 @@
     "pt": "Reproduzir animação de fundo",
     "en": "Play background animation",
     "es": "Reproducir animación de fondo"
+  },
+  "Baleias manipulam o mercado. Nós sabemos quando entrar.": {
+    "pt": "Baleias manipulam o mercado. Nós sabemos quando entrar.",
+    "en": "Whales manipulate the market. We know when to enter.",
+    "es": "Las ballenas manipulan el mercado. Nosotros sabemos cuándo entrar."
+  },
+  "Nós descobrimos o padrão das baleias por meio de análise quantitativa distribuída, e a nossa IA administra os investimentos.": {
+    "pt": "Nós descobrimos o padrão das baleias por meio de análise quantitativa distribuída, e a nossa IA administra os investimentos.",
+    "en": "We discover whale patterns through distributed quantitative analysis, and our AI manages the investments.",
+    "es": "Descubrimos el patrón de las ballenas mediante análisis cuantitativo distribuido, y nuestra IA administra las inversiones."
+  },
+  "Estratégia em validação. Não há garantia de antecipar movimentos ou obter lucro.": {
+    "pt": "Estratégia em validação. Não há garantia de antecipar movimentos ou obter lucro.",
+    "en": "Strategy under validation. There is no guarantee of anticipating movements or making a profit.",
+    "es": "Estrategia en validación. No hay garantía de anticipar movimientos ni de obtener ganancias."
+  },
+  "Ilustração conceitual": {
+    "pt": "Ilustração conceitual",
+    "en": "Conceptual illustration",
+    "es": "Ilustración conceptual"
+  },
+  "Baleia jubarte nadando em mar azul-meia-noite": {
+    "pt": "Baleia jubarte nadando em mar azul-meia-noite",
+    "en": "Humpback whale swimming in a midnight blue sea",
+    "es": "Ballena jorobada nadando en un mar azul medianoche"
+  },
+  "Baleias e mercado": {
+    "pt": "Baleias e mercado",
+    "en": "Whales and the market",
+    "es": "Ballenas y mercado"
+  },
+  "Custos e riscos": {
+    "pt": "Custos e riscos",
+    "en": "Costs and risks",
+    "es": "Costes y riesgos"
+  },
+  "03 / INTELIGÊNCIA DISTRIBUÍDA": {
+    "pt": "03 / INTELIGÊNCIA DISTRIBUÍDA",
+    "en": "03 / DISTRIBUTED INTELLIGENCE",
+    "es": "03 / INTELIGENCIA DISTRIBUIDA"
+  },
+  "BTX e subagentes": {
+    "pt": "BTX e subagentes",
+    "en": "BTX and subagents",
+    "es": "BTX y subagentes"
+  },
+  "operam por padrões.": {
+    "pt": "operam por padrões.",
+    "en": "trade based on patterns.",
+    "es": "operan según patrones."
+  },
+  "O agente central BTX coordena vários subagentes de análise quantitativa distribuída. Os padrões de manipulação identificados orientam a seleção dos ativos e as entradas e saídas, sob critérios e limites de risco, sem ativo inicial fixo.": {
+    "pt": "O agente central BTX coordena vários subagentes de análise quantitativa distribuída. Os padrões de manipulação identificados orientam a seleção dos ativos e as entradas e saídas, sob critérios e limites de risco, sem ativo inicial fixo.",
+    "en": "The central BTX agent coordinates multiple subagents performing distributed quantitative analysis. The manipulation patterns identified guide asset selection and entries and exits, under risk criteria and limits, without a fixed initial asset.",
+    "es": "El agente central BTX coordina varios subagentes de análisis cuantitativo distribuido. Los patrones de manipulación identificados orientan la selección de activos y las entradas y salidas, bajo criterios y límites de riesgo, sin un activo inicial fijo."
+  },
+  "Automação não garante prosperidade para todos.": {
+    "pt": "Automação não garante prosperidade para todos.",
+    "en": "Automation does not guarantee prosperity for everyone.",
+    "es": "La automatización no garantiza prosperidad para todos."
+  },
+  "Homem com celular ao lado de um robô de IA branco, de expressão neutra e com o logo da BETTEX": {
+    "pt": "Homem com celular ao lado de um robô de IA branco, de expressão neutra e com o logo da BETTEX",
+    "en": "Man holding a phone beside a white AI robot with a neutral expression and the BETTEX logo",
+    "es": "Hombre con un celular junto a un robot de IA blanco, de expresión neutra y con el logo de BETTEX"
+  },
+  "03 / OPERAÇÃO": {
+    "pt": "03 / OPERAÇÃO",
+    "en": "03 / TRADING",
+    "es": "03 / OPERACIÓN"
+  },
+  "Nossa IA": {
+    "pt": "Nossa IA",
+    "en": "Our AI",
+    "es": "Nuestra IA"
+  },
+  "opera por padrões.": {
+    "pt": "opera por padrões.",
+    "en": "trades based on patterns.",
+    "es": "opera siguiendo patrones."
+  },
+  "Nossa IA analisa padrões de manipulação do mercado para escolher os ativos e os momentos de compra e venda, respeitando limites de risco.": {
+    "pt": "Nossa IA analisa padrões de manipulação do mercado para escolher os ativos e os momentos de compra e venda, respeitando limites de risco.",
+    "en": "Our AI analyzes market manipulation patterns to select assets and decide when to buy and sell, within risk limits.",
+    "es": "Nuestra IA analiza patrones de manipulación del mercado para elegir los activos y los momentos de compra y venta, respetando los límites de riesgo."
+  },
+  "Início": {
+    "pt": "Início",
+    "en": "Start",
+    "es": "Inicio"
   },
   "Estratégia": {
     "pt": "Estratégia",

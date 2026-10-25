@@ -1,11 +1,9 @@
 import { useEffect, type ReactNode } from 'react';
 import { ArrowRight } from 'lucide-react';
-import g from '@/lib/growth-strategy.json';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { AudienceSection } from '@/components/pitch/AudienceSection';
 import { EmploymentIncomeProblem } from '@/components/pitch/EmploymentIncomeProblem';
 import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
-import { FounderLaunchFunnel } from '@/components/pitch/FounderLaunchFunnel';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
@@ -18,13 +16,14 @@ import './pitch.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
+const LEGACY_PITCH_SECTIONS: Record<string, { id: string }> = { tese: { id: 'visao' } };
 
 function Sec({ id, n, kicker, title, dark = false, summary, hero, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; hero?: string; children: ReactNode }) {
   return <section id={id} aria-labelledby={`${id}-t`} className={`slide ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
     {hero && n ? <ChapterHero id={id} n={n} kicker={kicker} title={title} summary={summary ?? ''} src={hero} tone={id === 'solucao' ? 'blue' : 'ink'} /> : <header className={`slide__head ${dark ? 'slide__head--ink' : 'slide__head--paper'}`}>
       <div className="page-wrap slide__headin">
         <div className={`mono flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}><span className="h-px w-10 shrink-0 bg-current" aria-hidden="true" />{kicker}</div>
-        <h3 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h3>
+        <h2 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h2>
         {summary ? <p className={`mt-5 max-w-[700px] text-base leading-7 ${dark ? 'text-[#e3eaff]' : 'text-[#183173]'}`}>{summary}</p> : null}
       </div>
     </header>}
@@ -49,7 +48,11 @@ export function PitchPage() {
     const scrollToHash = () => {
       const id = window.location.hash.slice(1);
       if (!mounted || !id) return;
-      const el = document.getElementById(id);
+      const targetId = LEGACY_PITCH_SECTIONS[id]?.id ?? id;
+      if (targetId !== id) {
+        window.history.replaceState(window.history.state, '', `#${targetId}`);
+      }
+      const el = document.getElementById(targetId);
       if (!el) return;
       el.scrollIntoView({ block: 'start', behavior: 'instant' });
     };
@@ -75,8 +78,8 @@ export function PitchPage() {
           <div className="cover__copy">
             <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">{x('Início', 'Start', 'Inicio')}</span>
             <h1 className="display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">{x('IA em cripto.', 'AI in crypto.', 'IA en cripto.')} <span className="text-[#F2B632]">{x('Participação nos lucros em reais.', 'Profit participation in reais.', 'Participación en los beneficios en reales.')}</span></h1>
-            <p className="cover__market mt-4"><strong>{x('A BETTEX propõe transformar apostadores em investidores: participação nos resultados de um agente de IA em cripto, com apuração diária e recebimento em reais. Pix previsto.', 'BETTEX aims to turn bettors into investors: participation in the results of an AI agent in crypto, with daily calculation and payouts in reais. Pix is planned.', 'BETTEX propone convertir a apostadores en inversores: participación en los resultados de un agente de IA en cripto, con cálculo diario y cobro en reales. Pix previsto.')}</strong></p>
-            <p className="cover__notice mt-4 text-[13px] leading-[1.55] text-[#c5d2f1]">{x('Demo visual disponível. Sem trading, pagamentos ou retornos garantidos.', 'Visual demo available. No trading, payments or guaranteed returns.', 'Demo visual disponible. Sin trading, pagos ni retornos garantizados.')}</p>
+            <p className="cover__market mt-4"><strong>{x('Nossa tese: transformar apostadores em investidores para depender menos do salário em um cenário de avanço da automação e da IA. A BETTEX propõe participação nos resultados da nossa IA em cripto, com apuração diária e recebimento em reais. Pix previsto.', 'Our thesis: turn bettors into investors so they rely less on wages as automation and AI advance. BETTEX proposes participation in the results of our AI’s crypto trading, with daily calculation and payouts in reais. Pix is planned.', 'Nuestra tesis: convertir a apostadores en inversores para depender menos del salario ante el avance de la automatización y la IA. BETTEX propone participar en los resultados de nuestra IA en cripto, con cálculo diario y cobro en reales. Pix previsto.')}</strong></p>
+            <p className="cover__notice mt-4 text-[13px] leading-[1.55] text-[#c5d2f1]">{x('Demo visual disponível. Sem trading, pagamentos ou retornos garantidos. Há risco de perda.', 'Visual demo available. No trading, payments or guaranteed returns. There is a risk of loss.', 'Demo visual disponible. Sin trading, pagos ni retornos garantizados. Existe riesgo de pérdida.')}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">{t('Conhecer a BETTEX')}</a>
               <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">{t('Ler a documentação')}</a>
@@ -87,21 +90,20 @@ export function PitchPage() {
       </div>
     </section>
 
-    <TechnologyNetworks label="Tecnologias" />
+    <TechnologyNetworks label="Tecnologias" ethereum />
 
     <AudienceSection />
-    <PitchContext />
-    <div className="pb-problem">
-      <div className="page-wrap">
-        <EmploymentIncomeProblem />
-      </div>
-    </div>
 
-    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" n="03" kicker={x('Produto', 'Product', 'Producto')} title={x('Uma jornada de participação.', 'One participation journey.', 'Una jornada de participación.')} summary={x('Compra, carteira, agente, apuração e recebimento em reais.', 'Purchase, wallet, agent, calculation and payout in reais.', 'Compra, cartera, agente, cálculo y cobro en reales.')}>
+    <Sec id="problema" kicker={x('Problema', 'Problem', 'Problema')} hero="pitch-illustrations/pitch-token-participation.webp" n="03" title={x('Perdas nas apostas. Renda sob pressão.', 'Betting losses. Income under pressure.', 'Pérdidas en las apuestas. Ingresos bajo presión.')} summary={x('Dinheiro essencial exposto nas apostas, poucas reservas e riscos para emprego e salário.', 'Essential money exposed to betting, limited savings and risks to jobs and wages.', 'Dinero esencial expuesto a las apuestas, pocas reservas y riesgos para el empleo y el salario.')}>
+      <PitchContext />
+      <div id="ambiente-externo"><EmploymentIncomeProblem /></div>
+    </Sec>
+
+    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" n="04" kicker={x('Solução', 'Solution', 'Solución')} title={x('Uma jornada de participação.', 'One participation journey.', 'Una jornada de participación.')} summary={x('Compra, carteira, BTX e subagentes, apuração e recebimento em reais.', 'Purchase, wallet, BTX and subagents, calculation and payout in reais.', 'Compra, cartera, BTX y subagentes, cálculo y cobro en reales.')}>
       <PitchJourney />
     </Sec>
 
-    <Sec id="estrategia" kicker={x('Estratégia', 'Strategy', 'Estrategia')} dark title={<>{x('Um agente, uma hipótese.', 'One agent, one hypothesis.', 'Un agente, una hipótesis.')} <span className="text-[#F2B632]">{x('Cripto sob limites de risco.', 'Crypto under risk limits.', 'Cripto bajo límites de riesgo.')}</span></>}>
+    <Sec id="estrategia" kicker={x('Estratégia', 'Strategy', 'Estrategia')} dark title={<>{x('BTX e subagentes.', 'BTX and subagents.', 'BTX y subagentes.')} <span className="text-[#F2B632]">{x('Operação guiada por padrões.', 'Pattern-driven trading.', 'Operación guiada por patrones.')}</span></>}>
       <PitchStrategy />
     </Sec>
 
@@ -131,7 +133,6 @@ export function PitchPage() {
         <DemoAppLink data-testid="pitch-open-alpha-demo" />
       </aside>
       <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">{x('A promoção para a comunidade precede o mint inicial, cuja receita forma a base da tesouraria. A abertura pode começar com baixa captação, sem reduzir automaticamente o preço fixo. Preço, janela e plataforma ainda serão definidos.', 'Community promotion precedes the initial mint, whose proceeds form the base of the treasury. Opening may begin with low take-up, without automatically lowering the fixed price. Price, window and platform are still to be defined.', 'La promoción a la comunidad precede al mint inicial, cuyos ingresos forman la base de la tesorería. La apertura puede comenzar con baja captación, sin reducir automáticamente el precio fijo. Precio, ventana y plataforma aún se definirán.')}</p>
-      <FounderLaunchFunnel />
       <div className="pitch-community" id="pitch-community">
         <div className="pitch-community__copy">
           <p className="mono text-[11px] font-bold uppercase tracking-[.18em] text-[#5F86FF]">Community-driven</p>
@@ -142,15 +143,9 @@ export function PitchPage() {
       </div>
     </Sec>
 
-    <RoadmapSection id="pitch-roadmap" scope="pitch" />
+    <RoadmapSection id="pitch-roadmap" variant="home" />
 
-    <Sec id="recursos" hero="pitch-illustrations/pitch-startup-team.webp" summary={x('Capital para construir o produto e desenvolver o mercado, não para remunerar o fundador.', 'Capital to build the product and develop the market, not to pay the founder.', 'Capital para construir el producto y desarrollar el mercado, no para remunerar al fundador.')} n="07" kicker={x('Investimento', 'Investment', 'Inversión')} title={<>{x('100% do aporte anjo.', '100% of the angel contribution.', '100% del aporte ángel.')} <span className="text-[#2B59FF]">{x('Produto, tecnologia e marketing.', 'Product, technology and marketing.', 'Producto, tecnología y marketing.')}</span></>}>
-      <PitchEditorialSplit image={<PitchEditorialImage name="pitch-product-development" />}>
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card label={x('Destino do capital', 'Use of capital', 'Destino del capital')} title={x('Tecnologia e marketing, sem salários', 'Technology and marketing, no salaries', 'Tecnología y marketing, sin salarios')}>{g.launch.angelFundingUse}</Card>
-        <Card label={x('Em aberto', 'Open', 'Abierto')} title={x('Valor, condições e marcos', 'Amount, terms and milestones', 'Importe, condiciones e hitos')}>{x('Valor do aporte, condições, contrapartida em tokens e marcos ainda estão em definição. Os 15% de investidores não são valuation nem participação societária, e não há oferta formal aqui.', 'Contribution amount, terms, token consideration and milestones are still being defined. The investors’ 15% is not a valuation or equity, and there is no formal offer here.', 'El importe del aporte, las condiciones, la contrapartida en tokens y los hitos aún se están definiendo. El 15% de inversores no es valoración ni participación societaria, y aquí no hay oferta formal.')}</Card>
-      </div>
-      </PitchEditorialSplit>
+    <Sec id="recursos" kicker={x('Custos e riscos', 'Costs and risks', 'Costes y riesgos')} title={x('Custos e riscos da participação.', 'Participation costs and risks.', 'Costes y riesgos de la participación.')}>
       <p className="mt-6 text-sm leading-7 text-[#183173]">{x('Compra e venda de BETTEX, on-ramp, off-ramp e rede têm custos, debitados dos ganhos diários do participante. O recebimento em reais é líquido dessas taxas. O custeio de manutenção permanece em aberto, sem retirada automática da tesouraria.', 'BETTEX purchases and sales, on-ramp, off-ramp and network transactions have costs, deducted from the participant’s daily earnings. Payouts in reais are net of these fees. Maintenance funding remains unresolved, with no automatic treasury withdrawal.', 'La compra y venta de BETTEX, el on-ramp, el off-ramp y la red tienen costes, descontados de las ganancias diarias del participante. El cobro en reales es neto de estas comisiones. La financiación del mantenimiento sigue abierta, sin retiros automáticos de la tesorería.')}</p>
       <PitchRisks />
       <Doc hash="documentacao-financiamento-fundacao">{x('Financiamento na documentação', 'Funding in the documentation', 'Financiación en la documentación')}</Doc>

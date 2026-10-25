@@ -3,11 +3,23 @@ name: Leitura do pitch
 description: Ordem das áreas, gráficos abertos e sliders aprovados sem cortes de conteúdo.
 ---
 
-A ordem de conteúdo aprovada é: Início (Hero), Público, Problema, Ambiente externo, Solução (incluindo Diferenciação), Fundador, Tokenomics e as partes finais já existentes.
+O Pitch não deve apresentar aporte anjo.
 
-**Why:** O criador distinguiu apresentação do público, problemas e análise do cenário, e pediu reorganizar o conteúdo antes de ajustar o menu.
+**Why:** O criador pediu “remove o aporte anjo do pitch”.
 
-**How to apply:** Público termina imediatamente antes de “Apostar não é investir”, que abre Problema. Problema apresenta duas questões: perdas em apostas tratadas como investimento e desemprego/renda ameaçados pela IA, segundo a visão da BETTEX. Ambiente externo reúne Musk e economia real, antes separados em IA e trabalho e Resgatar o futuro. Solução vem depois, com Diferenciação dentro dela. Tokenomics reúne os antigos blocos Economia e Token, preservando suas subseções e gráficos. O criador posteriormente pediu alinhar o menu: manter a mesma ordem de áreas no desktop e no celular, sem reintroduzir IA e trabalho, Resgatar o futuro, Economia, Token ou Diferenciação como itens principais separados.
+**How to apply:** Não reintroduzir a seção de captação anjo nem o cartão de investidores-anjo em Tokenomics. Preservar as alocações do token, as taxas e os riscos; a retirada da apresentação não altera as regras econômicas.
+
+O bloco “Plano inicial de validação da demanda” também foi retirado do Pitch.
+
+**Why:** O criador mostrou o bloco inteiro, com financiamento do fundador, etapas e metas, e pediu “pode tirar do pitch”.
+
+**How to apply:** Não reintroduzir esse bloco ao revisar a apresentação. Preservar a seção seguinte sobre a comunidade.
+
+A ordem atual do Pitch é: Início (Hero com tese resumida), Público, Problema, Solução, Estratégia, Tokenomics, Comunidade e aquisição, Roadmap e Custos e riscos.
+
+**Why:** Após definir os capítulos, o criador pediu “a tese tem que estar sumarizada no inicio do pitch” e “no menu ao inves de inicio do pitch apenas coloque Inicio - remova essa secao”, apontando a seção Tese.
+
+**How to apply:** Resumir a tese na abertura, como visão do projeto, sem seção ou item de menu Tese. O primeiro item deve ser “Início”, não “Início do Pitch”; links antigos para a tese devem levar à abertura. Público reúne escala, interseção, perfil e oportunidade; termina antes de Problema. Problema reúne perdas nas apostas e vulnerabilidade de emprego/renda, com gráficos e fontes, sem confundir essas evidências com a tese. Solução continua como capítulo próprio, não Produto. Tokenomics mantém Economia e Token como partes internas. Preservar as traduções, as condições da proposta e os riscos.
 
 Cada seção principal da apresentação do Pitch precisa de um hero próprio de abertura no meio da página, alinhado ao menu. “Hero de subseção” não significa um novo Hero de homepage ou do topo.
 

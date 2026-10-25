@@ -1,6 +1,6 @@
 ---
 name: Escopo do rodapé
-description: Rodapé público compartilhado entre homepage, Pitch e Documentação, com a mesma imagem e convite à comunidade.
+description: Rodapé antigo de navegação restaurado, compartilhado no site, sem o bloco ilustrado do Rio.
 ---
 
 No link do X no rodapé, usar “Siga a Bettex no X”. Comunidade é apenas no Telegram; não escrever essa observação na interface.
@@ -9,23 +9,11 @@ No link do X no rodapé, usar “Siga a Bettex no X”. Comunidade é apenas no 
 
 **How to apply:** Manter o perfil da BETTEX no X como destino e o convite da comunidade no Telegram. Localizar a chamada do X em EN/ES sem chamá-lo de comunidade; preservar o restante do rodapé.
 
-Pitch e Documentação devem ter o mesmo rodapé e a mesma imagem de rodapé da página inicial.
+Pitch e Documentação devem ter o mesmo rodapé global da página inicial.
 
 **Why:** O criador pediu: “o pitch tem que ter o mesmo rodapeh e imagem de rodapeh da pagina inicial, da mesma forma a documentacao”.
 
-**How to apply:** Reutilizar o rodapé público completo nessas três páginas, preservando o banner ilustrado no desktop e no celular. Não substituir pelo rodapé compacto do aplicativo.
-
-The app must share the website's compact navigation footer, but not the large blue promotional section with the community image.
-
-**Why:** The creator asked for the website footer in the app, then clarified that the image/message section belongs to the homepage, not the app footer.
-
-**How to apply:** Keep navigation, community links and language controls aligned. Omit the entire promotional image/message section from app routes; preserve it on the homepage. Do not introduce a separate app-footer design.
-
-Na chamada “Deixe de ser refém das bets e vire dono do jogo”, o fundo atrás das três pessoas deve ter tema de futebol, mantendo as pessoas.
-
-**Why:** O criador pediu futebol também nessa seção da homepage antes do rodapé e disse que pode deixar “aquela galera ali”.
-
-**How to apply:** Trocar apenas o fundo dessa chamada. Preservar o retrato do grupo, os textos e a navegação compacta do rodapé.
+**How to apply:** Reutilizar o mesmo rodapé de navegação em todas as páginas. A orientação posterior de remover o bloco ilustrado prevalece sobre a antiga exigência de manter a imagem.
 
 O rodapé não deve exibir o bloco “Redes do fundador”, seu nome ou os links pessoais desse bloco.
 
@@ -67,16 +55,16 @@ O rodapé da homepage deve ser aplicado em todo o site onde houver rodapé globa
 
 **Why:** Após igualar o Pitch à homepage, o criador ampliou: “o footer da home tem que ser aplicado em todo site onte tiver o footer”.
 
-**How to apply:** Usar o mesmo rodapé global completo na homepage, Pitch, documentação e demo, incluindo arte, chamada final, controles e links. Preservar navegação interna dos capítulos e rodapés de gráficos, que não são o rodapé global do site.
+**How to apply:** Usar o mesmo rodapé global na homepage, Pitch, documentação e demo, com marca, controles, links e copyright. Preservar navegação interna dos capítulos e rodapés de gráficos, que não são o rodapé global do site.
+
+Restaurar o rodapé antigo de navegação e remover o bloco inteiro que tinha a foto do Rio de Janeiro, inclusive a chamada “Comece a ganhar. Invista com inteligência.”.
+
+**Why:** Após rejeitar também a versão com miniatura, o criador pediu “trazer o antigo rodapé de volta, removendo aquela parte que tinha a foto do Rio de Janeiro”.
+
+**How to apply:** Consultar o histórico para recuperar a estrutura anterior: marca, idioma e comunidade agrupados; links de páginas ao lado no desktop; copyright no fim. Sem a foto, miniatura, chamada promocional ou faixa amarela. Isso substitui as orientações anteriores de manter a imagem e reposicionar a chamada. Não desfazer as demais alterações do site.
 
 O botão “Entre na comunidade” desse rodapé deve ser azul, não amarelo.
 
 **Why:** O criador mostrou o botão do rodapé e pediu expressamente que fosse azul.
 
 **How to apply:** Preservar o azul também nos estados de interação, com texto e ícone legíveis, sem estender essa alteração a outros convites não solicitados.
-
-Na arte do banner final do site, a IA e o grafo precisam compor a própria ilustração, não um painel separado. O criador aprovou essa composição e pediu BETTEX no centro, com linhas, contornos e brilhos mais suaves. A orientação posterior é usar o ícone da moeda BETTEX no centro, em vez do nome escrito.
-
-**Why:** O criador pediu que “a IA, o Grafo, tem que se combinar na arte do rodapé do site” e depois confirmou “isso ficou bom”, corrigindo o nome central e a aparência grosseira das linhas. Depois pediu: “ao inves de bettex coloque a moeda da Bettex o icone dela”.
-
-**How to apply:** Preservar a composição aprovada com a rede e BETTEX no centro, também no celular; evitar traços pesados e brilho excessivo, sem cobrir a mensagem ou os botões. Essa arte pertence ao site; não alterar a Central da IA do aplicativo por esse pedido.

@@ -48,8 +48,8 @@
 - [Plataformas do protótipo](trading-provider-direction.md) — esportes/previsões na Polymarket; meme coins Robinhood/FOMO; base do aplicativo, sem trades reais.
 - [Allora e gráficos operacionais](allora-product-direction.md) — inferências reais e gráfico clicável no lugar do resumo; separar APIs e não inventar intervalos de confiança.
 - [Fila da Central da IA](ai-central-queue.md) — origem com ícone e nome por agente; históricos de sugestões e decisões consultáveis.
-- [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — BETTEX coordena Cripto; BTC/ETH/SOL são subagentes internos no grafo, não setores independentes.
-- [Mandato inicial de Cripto](crypto-spot-mandate.md) — BTC/ETH/SOL spot sem alavancagem; priorizar DEX/on-chain, sem rede escolhida; propostas não são aprovação.
+- [ALFA AI hierarchy](alpha-ai-orchestrator-scope.md) — BTX é o coordenador central de vários subagentes; não apresentar a estrutura inteira como um único agente.
+- [Estratégia de Cripto](crypto-spot-mandate.md) — sem ativo inicial fixo ou “a definir”; padrões de manipulação orientam seleção, entradas e saídas.
 - [Relatórios e decisões por ciclo](decision-cycle-traceability.md) — percurso subagente/BETTEX/Tesouraria; separar rodadas de análise, ciclos e continuidade sem duplicar resultados.
 - [Real agent intelligence](real-agent-intelligence.md) — seleção inicialmente determinística; decisão probabilística na ALFA ou BETA; demo não comprova inferência real.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.

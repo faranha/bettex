@@ -3,6 +3,12 @@ name: Separação visual das seções da homepage
 description: Nova Economia e Roadmap devem parecer blocos distintos, não uma seção contínua.
 ---
 
+O roadmap da homepage deve ser replicado no Pitch, não o modelo antigo.
+
+**Why:** O criador reiterou: “ja falei que o roadmap da home em que ser replicado no pitch e nao o modelo antigo”.
+
+**How to apply:** Usar no Pitch a mesma apresentação em slides, ilustrações, etapas e controles da homepage. Não manter estilos exclusivos antigos que alterem o roadmap no Pitch; preservar o destino de navegação da página.
+
 A Nova Economia e “O caminho da BETTEX” precisam ficar visualmente separadas.
 
 **Why:** O criador mostrou as duas seções com o mesmo fundo e reclamou que o caminho da BETTEX “se misturou com a nova economia”, pedindo separação visual.

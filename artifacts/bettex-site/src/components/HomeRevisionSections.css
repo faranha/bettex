@@ -66,3 +66,12 @@
 .ew-grid{position:relative;z-index:1}
 @media(min-width:900px){.ew-bg{width:62%}}
 @media(max-width:899px){.ew-bg{top:auto;bottom:0;height:52%;opacity:.4;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 40%,#000 80%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 40%,#000 80%,transparent)}}
+/* ew composition: tighten text and wallet into one centered unit */
+.ew-grid::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:8%;right:0;top:50%;height:min(100%,520px);transform:translateY(-50%);background:radial-gradient(ellipse 60% 60% at 58% 50%,rgba(43,89,255,.09),rgba(242,182,50,.07) 55%,transparent 75%)}
+.ew-grid::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;background:linear-gradient(to right,transparent,rgba(43,89,255,.22) 20%,rgba(43,89,255,.22) 80%,transparent)}
+@media(min-width:900px){
+.ew-grid{width:min(100% - 64px,1060px);grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);column-gap:8px;padding-bottom:8px}
+.ew-art{width:min(100%,540px);justify-self:start;margin-left:-8px}
+.ew-top,.ew-bot{padding-left:0}
+}
+@media(max-width:899px){.ew-art{width:min(86%,340px);margin-block:-4px}}

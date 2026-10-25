@@ -3,6 +3,12 @@ name: ALFA AI orchestrator and agent scope
 description: BETTEX is independent central intelligence; controls are not agents; the active BTC/ETH/SOL family is presented as Crypto.
 ---
 
+Na apresentação pública, o agente central é o BTX e ele coordena vários subagentes de análise quantitativa distribuída. Não apresentar a estrutura inteira como “um único agente” nem informar “Agentes: 1”.
+
+**Why:** O criador corrigiu o Pitch: “o agente central é o BTX, mas aqui tem vários subagentes”, e pediu alinhamento com a homepage.
+
+**How to apply:** Distinguir o coordenador dos subagentes na home e no Pitch, preservando os identificadores técnicos existentes. A correção da apresentação não autoriza ativar operações reais no demo nem mudar serviços ou contratos.
+
 BETTEX is the independent orchestrator, not the treasury or governance. Present the aggregate requests it receives, comparisons and decisions separately from the individual agents' jobs below it.
 
 Risk, governance, treasury, execution and reconciliation are controls or operational services, not agents. Do not mix their reports into agent cards, source-agent selectors or agent request histories.
