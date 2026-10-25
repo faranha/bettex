@@ -7,11 +7,10 @@ export function PitchContext() {
   const x = useX();
   return <div className="pn pn__context">
       <div>
-        <p className="mono pn__kicker">{x('Perdas nas apostas', 'Betting losses', 'Pérdidas en las apuestas')}</p>
-        <h3 id="pn-context-t" className="display pn__h">{x('Apostar não é renda. Falta uma porta de entrada para investir.', 'Betting is not income. There is no on-ramp to investing.', 'Apostar no es ingreso. Falta una puerta de entrada para invertir.')}</h3>
+        <h3 id="pn-context-t" className="display pn__h">{x('Sem reservas, a perda pesa nas contas da casa.', 'Without savings, losses strain household bills.', 'Sin ahorros, las pérdidas afectan las cuentas del hogar.')}</h3>
       </div>
       <div className="pn__prose">
-        <p>{x('O apostador brasileiro muitas vezes trata a aposta como fonte de renda, com dinheiro essencial exposto e sem reservas. Perder esse dinheiro pode comprometer as contas da casa. Apostar para obter renda não é o mesmo que investir.', 'The Brazilian bettor often treats betting as income, exposing essential money without reserves. Losing that money can compromise household bills. Betting for income is not the same as investing.', 'El apostador brasileño suele tratar la apuesta como fuente de ingresos, con dinero esencial expuesto y sin reservas. Perder ese dinero puede comprometer las cuentas del hogar. Apostar para obtener ingresos no es lo mismo que invertir.')}</p>
+        <p>{x('Quem usa dinheiro essencial para tentar obter renda nas apostas arrisca o orçamento do mês. Apostar não é investir: o resultado depende de um evento, e a perda pode agravar a falta de reserva.', 'Using essential money to seek income from betting puts the monthly budget at risk. Betting is not investing: the outcome depends on an event, and a loss can worsen the lack of savings.', 'Quien usa dinero esencial para intentar obtener ingresos de las apuestas arriesga el presupuesto del mes. Apostar no es invertir: el resultado depende de un evento, y una pérdida puede agravar la falta de ahorros.')}</p>
         <p className="pn__fine">{x('Contexto, não prova de causalidade: a BETTEX não promete recuperar perdas de apostas nem garante renda.', 'Context, not proof of causality: BETTEX does not promise to recover betting losses or guarantee income.', 'Contexto, no prueba de causalidad: BETTEX no promete recuperar pérdidas de apuestas ni garantiza ingresos.')}</p>
         <a href="#publico-pitch" className="pn__link">{x('Ver dados e fontes do público', 'See audience data and sources', 'Ver datos y fuentes del público')}<ArrowRight size={16} aria-hidden="true" /></a>
       </div>
@@ -79,8 +78,8 @@ export function PitchJourney() {
 
 export function PitchStrategy() {
   const x = useX();
-  return <div className="pn pn--ink pn__strategy">
-    <div className="pn__prose pn__prose--ink">
+  return <div className="pn pn__strategy">
+    <div className="pn__prose">
       <p>{x('BETTEX coordena subagentes de análise quantitativa para identificar padrões de manipulação em cripto. Eles orientam a seleção de ativos, entradas e saídas, dentro dos limites de risco e das etapas de validação.', 'BETTEX coordinates quantitative-analysis subagents to identify manipulation patterns in crypto. They guide asset selection, entries and exits within risk limits and validation stages.', 'BETTEX coordina subagentes de análisis cuantitativo para identificar patrones de manipulación en cripto. Orientan la selección de activos, entradas y salidas dentro de los límites de riesgo y las etapas de validación.')}</p>
       <p>{x('O agente opera com a tesouraria, nunca com os tokens dos usuários. O fundador e o time administram no início; a autonomia futura depende de desempenho validado e de controles.', 'The agent operates with the treasury, never with users’ tokens. The founder and team administer at first; future autonomy depends on validated performance and controls.', 'El agente opera con la tesorería, nunca con los tokens de los usuarios. El fundador y el equipo administran al inicio; la autonomía futura depende de un desempeño validado y de controles.')}</p>
     </div>

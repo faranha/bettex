@@ -60,7 +60,7 @@ export function PitchPage() {
       <div className="page-wrap relative pb-8 pt-8 sm:pb-12 sm:pt-14">
         <div className="cover__grid">
           <div className="cover__copy">
-            <h1 className="display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">{x('IA opera em cripto.', 'AI trades crypto.', 'La IA opera en cripto.')} <span className="text-[#F2B632]">{x('Você participa dos lucros.', 'You share in the profits.', 'Tú participas en los beneficios.')}</span></h1>
+            <h1 className="display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">{x('Investir, não apostar.', 'Invest, not bet.', 'Invertir, no apostar.')} <span className="text-[#F2B632]">{x('Com IA operando em cripto.', 'With AI trading crypto.', 'Con IA operando en cripto.')}</span></h1>
             <p className="cover__market mt-4"><strong>{x('Compre BETTEX e participe dos lucros elegíveis da nossa IA. Recebimento em reais e saque TODOS OS DIAS via Pix previstos, sem precisar saber operar cripto.', 'Buy BETTEX and share in our AI’s eligible profits. Payouts in reais and withdrawals EVERY DAY via Pix are planned, with no need to know how to trade crypto.', 'Compra BETTEX y participa en los beneficios elegibles de nuestra IA. Cobros en reales y retiros TODOS LOS DÍAS por Pix previstos, sin tener que saber operar en cripto.')}</strong></p>
             <p className="cover__notice mt-4 text-[13px] leading-[1.55] text-[#c5d2f1]">{x('Demo visual disponível. Sem trading, pagamentos ou retornos garantidos. Há risco de perda.', 'Visual demo available. No trading, payments or guaranteed returns. There is a risk of loss.', 'Demo visual disponible. Sin trading, pagos ni retornos garantizados. Existe riesgo de pérdida.')}</p>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -77,22 +77,22 @@ export function PitchPage() {
 
     <AudienceSection />
 
-    <Sec id="problema" kicker={x('Problema', 'Problem', 'Problema')} title={x('Perdas nas apostas. Renda sob pressão.', 'Betting losses. Income under pressure.', 'Pérdidas en las apuestas. Ingresos bajo presión.')} summary={x('Dinheiro essencial exposto nas apostas, poucas reservas e riscos para emprego e salário.', 'Essential money exposed to betting, limited savings and risks to jobs and wages.', 'Dinero esencial expuesto a las apuestas, pocas reservas y riesgos para el empleo y el salario.')}>
+    <Sec id="problema" title={x('Mas apostar para ter renda pode comprometer o essencial.', 'But betting for income can put essential money at risk.', 'Pero apostar para obtener ingresos puede poner en riesgo lo esencial.')} summary={x('Esse público pode enfrentar duas pressões: perdas que comprometem o orçamento de hoje e mudanças no trabalho que ameaçam a renda de amanhã.', 'This audience can face two pressures: losses that jeopardize today’s budget and changes in work that threaten tomorrow’s income.', 'Este público puede enfrentar dos presiones: pérdidas que comprometen el presupuesto de hoy y cambios en el trabajo que amenazan los ingresos de mañana.')}>
       <PitchContext />
       <div id="ambiente-externo"><EmploymentIncomeProblem /></div>
     </Sec>
 
-    <Sec id="solucao" kicker={x('Solução', 'Solution', 'Solución')} title={x('Compre BETTEX. Participe dos lucros.', 'Buy BETTEX. Share in the profits.', 'Compra BETTEX. Participa en los beneficios.')} summary={x('A IA opera em cripto. Você acompanha seus tokens e recebe sua parte em reais, quando houver lucro elegível.', 'AI trades crypto. You track your tokens and receive your share in reais when there is eligible profit.', 'La IA opera en cripto. Tú sigues tus tokens y recibes tu parte en reales cuando hay beneficio elegible.')}>
+    <Sec id="solucao" title={<>{x('BETTEX é a solução.', 'BETTEX is the solution.', 'BETTEX es la solución.')} <span className="text-[#2B59FF]">{x('Participação nos lucros da IA.', 'Sharing in AI’s profits.', 'Participación en los beneficios de la IA.')}</span></>} summary={x('Em vez de depender do resultado de uma aposta, a proposta é ter BETTEX e participar dos lucros elegíveis de uma IA que opera cripto. Recebimento em reais previsto, sem lucro ou retorno garantido.', 'Instead of depending on a bet’s outcome, the proposal is to hold BETTEX and share in the eligible profits of an AI trading crypto. Payouts in reais are planned; profits and returns are not guaranteed.', 'En lugar de depender del resultado de una apuesta, la propuesta es tener BETTEX y participar en los beneficios elegibles de una IA que opera en cripto. Cobros en reales previstos, sin beneficio ni rentabilidad garantizados.')}>
       <PitchJourney />
-    </Sec>
-
-    <Sec id="estrategia" kicker={x('Estratégia', 'Strategy', 'Estrategia')} dark title={<>{x('BETTEX e subagentes.', 'BETTEX and subagents.', 'BETTEX y subagentes.')} <span className="text-[#F2B632]">{x('Operação guiada por padrões.', 'Pattern-driven trading.', 'Operación guiada por patrones.')}</span></>}>
-      <PitchStrategy />
+      <div id="estrategia" className="pitch-solution-engine" aria-labelledby="estrategia-t">
+        <h3 id="estrategia-t" className="display">{x('Como a IA busca esses resultados.', 'How AI seeks these results.', 'Cómo la IA busca estos resultados.')}</h3>
+        <PitchStrategy />
+      </div>
     </Sec>
 
     <PitchTokenomics />
 
-    <Sec id="publico" summary={x('Demo visual hoje. Comunidade e preparação para as próximas etapas, sujeitas à adequação jurídica.', 'Visual demo today. Community and preparation for the next stages, subject to legal compliance.', 'Demo visual hoy. Comunidad y preparación para las próximas etapas, sujetas a adecuación jurídica.')} kicker={x('Fase atual e próximos passos', 'Current phase and next steps', 'Fase actual y próximos pasos')} dark title={<>{x('Preparação.', 'Preparation.', 'Preparación.')} <span className="text-[#F2B632]">{x('Comunidade e mint.', 'Community and mint.', 'Comunidad y mint.')}</span></>}>
+    <Sec id="publico" summary={x('A proposta ainda está em preparação. Hoje há um demo visual; comunidade, mint e próximas etapas dependem de validação e adequação jurídica.', 'The proposal is still being prepared. Today there is a visual demo; the community, mint and next stages are subject to validation and legal compliance.', 'La propuesta sigue en preparación. Hoy hay un demo visual; la comunidad, el mint y las próximas etapas dependen de validación y adecuación jurídica.')} dark title={<>{x('Hoje, um demo visual.', 'Today, a visual demo.', 'Hoy, un demo visual.')} <span className="text-[#F2B632]">{x('A comunidade prepara o lançamento.', 'The community prepares for launch.', 'La comunidad prepara el lanzamiento.')}</span></>}>
       <div className="pitch-launch-layout">
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
         <DemoAppLink className="mono">DEMO VISUAL DISPONÍVEL</DemoAppLink>

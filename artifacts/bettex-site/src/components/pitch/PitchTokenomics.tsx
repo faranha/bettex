@@ -12,10 +12,10 @@ export function PitchTokenomics() {
     ['25%', x('Participantes elegíveis', 'Eligible holders', 'Participantes elegibles'), x('Rateio pelo peso elegível na carteira.', 'Shared by eligible weight in the wallet.', 'Reparto según el peso elegible en la cartera.')],
     ['25%', x('Recompra e queima', 'Buyback and burn', 'Recompra y quema'), x('Compras autorizadas; tokens queimados.', 'Authorized purchases; tokens burned.', 'Compras autorizadas; tokens quemados.')],
   ];
-  return <div id="tokenomics" className="ptk">
-    <section id="economia" aria-labelledby="economia-t" className="ptk__eco">
-      <div className="page-wrap">
-        <h2 id="economia-t" className="display ptk__h">{x('Capital não é lucro.', 'Capital is not profit.', 'Capital no es beneficio.')} <span>{x('Tesouraria e direitos do token.', 'Treasury and token rights.', 'Tesorería y derechos del token.')}</span></h2>
+  return <section id="tokenomics" className="ptk" aria-labelledby="economia-t">
+    <div className="page-wrap">
+      <h2 id="economia-t" className="display ptk__h">{x('1 bilhão de BETTEX.', '1 billion BETTEX.', '1.000 millones de BETTEX.')} <span>{x('Participação nos lucros elegíveis.', 'Sharing in eligible profits.', 'Participación en los beneficios elegibles.')}</span></h2>
+      <div id="economia" className="ptk__eco">
         <div className="ptk__cols">
           <div className="ptk__capital">
             <h3 className="display">{x('Capital: mint inicial e vendas da comunidade', 'Capital: initial mint and community sales', 'Capital: mint inicial y ventas de la comunidad')}</h3>
@@ -29,10 +29,8 @@ export function PitchTokenomics() {
         </div>
         <p className="ptk__rule">{x('Todo BETTEX na carteira oficial participa automaticamente, sem chamada manual de staking; tokens bloqueados e estoque de venda ficam fora. A participação nos resultados não vem de emissão de tokens e não garante preço, resgate nem valor patrimonial.', 'All BETTEX in the official wallet participates automatically, with no manual staking call; locked tokens and sale inventory are excluded. Participation in results does not come from token issuance and guarantees no price, redemption or net asset value.', 'Todo BETTEX en la cartera oficial participa automáticamente, sin llamada manual de staking; los tokens bloqueados y el stock de venta quedan fuera. La participación en los resultados no proviene de emisión de tokens y no garantiza precio, rescate ni valor patrimonial.')}</p>
       </div>
-    </section>
-    <section id="token" aria-labelledby="token-t" className="ptk__tok">
-      <div className="page-wrap">
-        <h2 id="token-t" className="display ptk__h">{x('1 bilhão de BETTEX.', '1 billion BETTEX.', '1.000 millones de BETTEX.')} <span>{x('Quatro destinações.', 'Four allocations.', 'Cuatro destinos.')}</span></h2>
+      <div id="token" className="ptk__tok" aria-labelledby="token-t">
+        <h3 id="token-t" className="sr-only">{x('Oferta fixa e liberação dos tokens', 'Fixed supply and token release', 'Oferta fija y liberación de los tokens')}</h3>
         <PitchTokenCharts />
         <div className="ptk__facts">
           <div><b>{x('Liberação: 24 meses a partir de março de 2027', 'Release: 24 months from March 2027', 'Liberación: 24 meses desde marzo de 2027')}</b><p>{x('Os 90% posteriores liberam em parcelas mensais: comunidade 55%, fundador e equipe 20%, investidores 15%. O mint inicial de 10%, em 10 de dezembro de 2026, é separado. Liberar não comprova venda.', 'The later 90% is released in monthly installments: community 55%, founder and team 20%, investors 15%. The 10% initial mint, on December 10, 2026, is separate. Release does not prove a sale.', 'El 90% posterior se libera en cuotas mensuales: comunidad 55%, fundador y equipo 20%, inversores 15%. El mint inicial del 10%, el 10 de diciembre de 2026, es aparte. Liberar no prueba una venta.')}</p></div>
@@ -40,6 +38,6 @@ export function PitchTokenomics() {
         </div>
         <a href={`${DOC}#documentacao-emissao`} className="ptk__doc">{x('Oferta, vesting e regras na documentação', 'Supply, vesting and rules in the documentation', 'Oferta, vesting y reglas en la documentación')}<ArrowRight size={16} aria-hidden="true" /></a>
       </div>
-    </section>
-  </div>;
+    </div>
+  </section>;
 }

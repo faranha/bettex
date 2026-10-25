@@ -49,6 +49,21 @@
   .pitch .cover__grid > .cover__project img { animation: none; }
 }
 .pitch .cover > .page-wrap { align-items: stretch; }
+.pitch .cover { border-bottom: 0; }
+.pitch .cover::after { display: none; }
+.pitch > .technology-networks { border-block: 0; }
+.pitch .slide + .slide, .pitch #solucao { border-top: 0; }
+.pitch #problema { background: #E6ECFF; }
+.pitch #publico { background: #102252; }
+.pitch .pitch-solution-engine { margin-top: 36px; }
+.pitch .pitch-solution-engine > h3 {
+  margin: 0 0 16px; color: #070B1F; font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  line-height: 1.15; font-weight: 800; letter-spacing: -.04em;
+}
+.pitch .pitch-solution-engine .pn__facts { gap: 12px; margin-top: 20px; }
+.pitch .pitch-solution-engine .pn__facts > div { border: 0; background: rgba(43, 89, 255, .055); padding: 16px; }
+.pitch .pitch-solution-engine .pn__facts dt { color: #183173; }
+.pitch .pitch-solution-engine .pn__facts dd { color: #070B1F; }
 .pitch .slide__body--flow { padding-block: 40px 48px; }
 .pitch .slide--flow + .slide--flow { border-top-width: 0; }
 .pitch .slide--flow.slide--dark .slide__body--flow { border-top: 0; }
