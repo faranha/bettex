@@ -13,6 +13,7 @@ import { PitchContext, PitchJourney, PitchStrategy, PitchFunding } from '@/compo
 import { useX } from '@/components/pitch/pitchCopy';
 import { t } from '@/lib/i18n';
 import './pitch.css';
+import './pitch-compact.css';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
@@ -77,12 +78,12 @@ export function PitchPage() {
         <div className="cover__grid">
           <div className="cover__copy">
             <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">{x('Início', 'Start', 'Inicio')}</span>
-            <h1 className="display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">{x('IA em cripto.', 'AI in crypto.', 'IA en cripto.')} <span className="text-[#F2B632]">{x('Participação nos lucros em reais.', 'Profit participation in reais.', 'Participación en los beneficios en reales.')}</span></h1>
-            <p className="cover__market mt-4"><strong>{x('Nossa tese: transformar apostadores em investidores para depender menos do salário em um cenário de avanço da automação e da IA. A BETTEX propõe participação nos resultados da nossa IA em cripto, com apuração diária e recebimento em reais. Pix previsto.', 'Our thesis: turn bettors into investors so they rely less on wages as automation and AI advance. BETTEX proposes participation in the results of our AI’s crypto trading, with daily calculation and payouts in reais. Pix is planned.', 'Nuestra tesis: convertir a apostadores en inversores para depender menos del salario ante el avance de la automatización y la IA. BETTEX propone participar en los resultados de nuestra IA en cripto, con cálculo diario y cobro en reales. Pix previsto.')}</strong></p>
+            <h1 className="display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">{x('IA opera em cripto.', 'AI trades crypto.', 'La IA opera en cripto.')} <span className="text-[#F2B632]">{x('Você participa dos lucros.', 'You share in the profits.', 'Tú participas en los beneficios.')}</span></h1>
+            <p className="cover__market mt-4"><strong>{x('Compre BETTEX e participe dos lucros elegíveis da nossa IA. Recebimento em reais e saque TODOS OS DIAS via Pix previstos, sem precisar saber operar cripto.', 'Buy BETTEX and share in our AI’s eligible profits. Payouts in reais and withdrawals EVERY DAY via Pix are planned, with no need to know how to trade crypto.', 'Compra BETTEX y participa en los beneficios elegibles de nuestra IA. Cobros en reales y retiros TODOS LOS DÍAS por Pix previstos, sin tener que saber operar en cripto.')}</strong></p>
             <p className="cover__notice mt-4 text-[13px] leading-[1.55] text-[#c5d2f1]">{x('Demo visual disponível. Sem trading, pagamentos ou retornos garantidos. Há risco de perda.', 'Visual demo available. No trading, payments or guaranteed returns. There is a risk of loss.', 'Demo visual disponible. Sin trading, pagos ni retornos garantizados. Existe riesgo de pérdida.')}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#solucao" className="tap inline-flex min-h-11 items-center gap-2 rounded-full bg-[#2B59FF] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#1E44D6]">{t('Conhecer a BETTEX')}</a>
-              <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-2.5 text-sm font-bold hover:bg-[#F4F1E8] hover:text-[#070B1F]">{t('Ler a documentação')}</a>
+              <a href={DOC} className="tap inline-flex min-h-11 items-center gap-2 px-1 py-2 text-sm font-bold underline underline-offset-4 hover:text-[#F2B632]">{t('Documentação')}</a>
             </div>
           </div>
           <PitchHeroGraph />
@@ -99,7 +100,7 @@ export function PitchPage() {
       <div id="ambiente-externo"><EmploymentIncomeProblem /></div>
     </Sec>
 
-    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" n="04" kicker={x('Solução', 'Solution', 'Solución')} title={x('Uma jornada de participação.', 'One participation journey.', 'Una jornada de participación.')} summary={x('Compra, carteira, BETTEX e subagentes, apuração e recebimento em reais.', 'Purchase, wallet, BETTEX and subagents, calculation and payout in reais.', 'Compra, cartera, BETTEX y subagentes, cálculo y cobro en reales.')}>
+    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" n="04" kicker={x('Solução', 'Solution', 'Solución')} title={x('Compre BETTEX. Participe dos lucros.', 'Buy BETTEX. Share in the profits.', 'Compra BETTEX. Participa en los beneficios.')} summary={x('A IA opera em cripto. Você acompanha seus tokens e recebe sua parte em reais, quando houver lucro elegível.', 'AI trades crypto. You track your tokens and receive your share in reais when there is eligible profit.', 'La IA opera en cripto. Tú sigues tus tokens y recibes tu parte en reales cuando hay beneficio elegible.')}>
       <PitchJourney />
     </Sec>
 
@@ -125,14 +126,14 @@ export function PitchPage() {
     </Sec>
     </section>
 
-    <Sec id="publico" hero="pitch-illustrations/pitch-online-community.webp" summary="Comunidade antes do mint público de dezembro de 2026; sistema/ALFA e vesting previstos para março de 2027, sujeitos à adequação jurídica." n="06" kicker="Fase atual e próximos passos" dark title={<>Preparação. <span className="text-[#F2B632]">Comunidade e mint.</span></>}>
+    <Sec id="publico" hero="pitch-illustrations/pitch-online-community.webp" summary={x('Demo visual hoje. Comunidade e preparação para as próximas etapas, sujeitas à adequação jurídica.', 'Visual demo today. Community and preparation for the next stages, subject to legal compliance.', 'Demo visual hoy. Comunidad y preparación para las próximas etapas, sujetas a adecuación jurídica.')} n="06" kicker={x('Fase atual e próximos passos', 'Current phase and next steps', 'Fase actual y próximos pasos')} dark title={<>{x('Preparação.', 'Preparation.', 'Preparación.')} <span className="text-[#F2B632]">{x('Comunidade e mint.', 'Community and mint.', 'Comunidad y mint.')}</span></>}>
+      <div className="pitch-launch-layout">
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
         <DemoAppLink className="mono">DEMO VISUAL DISPONÍVEL</DemoAppLink>
         <strong>Comunidade antes do lançamento</strong>
-        <p>O demo apresenta a interface com dados ilustrativos, sem dinheiro real ou execução de operações. O mint público está previsto para 10 de dezembro de 2026; sistema/ALFA, captação de investidores e início do vesting, para março de 2027. BETA e go to market vêm depois do ALFA, com data a definir. Cada lançamento depende de adequação legal por atividade e território.</p>
+        <p>{x('Hoje, interface com dados ilustrativos, sem dinheiro real ou execução. Captação de investidores prevista na ALFA; BETA e go to market vêm depois, sem data definida. Lançamentos dependem de adequação jurídica por atividade e território. Datas no Roadmap.', 'Today, an interface with illustrative data, no real money or execution. Investor fundraising is planned for ALFA; BETA and go to market follow, with no set date. Launches depend on legal compliance by activity and territory. Dates are in the Roadmap.', 'Hoy, una interfaz con datos ilustrativos, sin dinero real ni ejecución. Captación de inversores prevista en ALFA; BETA y go to market vendrán después, sin fecha definida. Lanzamientos sujetos a adecuación jurídica por actividad y territorio. Fechas en el Roadmap.')}</p>
         <DemoAppLink data-testid="pitch-open-alpha-demo" />
       </aside>
-      <p className="mb-8 max-w-[800px] text-[15px] leading-7 text-[#c5d2f1]">{x('A promoção para a comunidade precede o mint inicial, cuja receita forma a base da tesouraria. A abertura pode começar com baixa captação, sem reduzir automaticamente o preço fixo. Preço, janela e plataforma ainda serão definidos.', 'Community promotion precedes the initial mint, whose proceeds form the base of the treasury. Opening may begin with low take-up, without automatically lowering the fixed price. Price, window and platform are still to be defined.', 'La promoción a la comunidad precede al mint inicial, cuyos ingresos forman la base de la tesorería. La apertura puede comenzar con baja captación, sin reducir automáticamente el precio fijo. Precio, ventana y plataforma aún se definirán.')}</p>
       <div className="pitch-community" id="pitch-community">
         <div className="pitch-community__copy">
           <p className="mono text-[11px] font-bold uppercase tracking-[.18em] text-[#5F86FF]">Community-driven</p>
@@ -141,6 +142,11 @@ export function PitchPage() {
         </div>
         <img src={`${BASE}/pitch-illustrations/pitch-community-people-cutout.webp`} alt={t('Pessoas sorrindo e interagindo com notebook, tablet e celular, em um recorte sem fundo com elementos tecnológicos')} width={1021} height={886} loading="lazy" decoding="async" />
       </div>
+      </div>
+      <details className="pitch-launch-details">
+        <summary>{x('Condições do mint', 'Mint conditions', 'Condiciones del mint')}</summary>
+        <p>{x('A comunidade antecede o mint a preço fixo, cuja receita inicia a tesouraria. Preço, janela e plataforma seguem em definição. Baixa captação não reduz automaticamente o preço.', 'The community precedes the fixed-price mint, whose proceeds establish the treasury. Price, window and platform remain to be defined. Low fundraising does not automatically lower the price.', 'La comunidad precede al mint a precio fijo, cuyos ingresos inician la tesorería. Precio, ventana y plataforma siguen por definir. Una captación baja no reduce automáticamente el precio.')}</p>
+      </details>
     </Sec>
 
     <RoadmapSection id="pitch-roadmap" variant="home" />

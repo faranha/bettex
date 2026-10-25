@@ -9,6 +9,12 @@ A homepage é a referência para a síntese e apresentação do Pitch, especialm
 
 **How to apply:** Usar a clareza, hierarquia e objetividade dessa seção para orientar propostas de revisão do Pitch, sem presumir autorização para reescrever todo o conteúdo.
 
+Na síntese do Pitch, preservar os números e usar conteúdo lateral, horizontal e sliders para economizar espaço; a nova homepage também orienta o tamanho do hero e a descrição dos serviços.
+
+**Why:** O criador autorizou executar a melhoria com essas condições, pedindo “tente nao descartar os numeros”.
+
+**How to apply:** Reduzir repetições, não as evidências. Manter fontes, períodos, premissas e séries consultáveis; apresentar recebimento em reais, saque diário previsto e liberdade de venda com as condições do produto.
+
 O Pitch deve acompanhar a oferta simplificada da home: foco exclusivo em cripto, lucro diário e soluções como Pix, sem os demais agentes. Preservar o mesmo público e a mesma audiência.
 
 **Why:** O criador pediu “simplificar o pitch, e focar nessas solucoes novas - pix por exemplo, lucro diario [...] foco em cripto only, sem os demais agentes, mas ainda o mesmo publico e auidiencia”.
