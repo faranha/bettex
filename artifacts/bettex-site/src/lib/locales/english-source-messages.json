@@ -359,10 +359,10 @@
     "en": "Only after validation.",
     "es": "Solo tras la validación."
   },
-  "BTX coordena subagentes de análise quantitativa distribuída. A operação entra e sai conforme padrões de manipulação, sem ativo inicial fixo.": {
-    "pt": "BTX coordena subagentes de análise quantitativa distribuída. A operação entra e sai conforme padrões de manipulação, sem ativo inicial fixo.",
-    "en": "BTX coordinates subagents performing distributed quantitative analysis. Trades enter and exit based on manipulation patterns, without a fixed initial asset.",
-    "es": "BTX coordina subagentes de análisis cuantitativo distribuido. La operación entra y sale según patrones de manipulación, sin un activo inicial fijo."
+  "BETTEX coordena subagentes de análise quantitativa distribuída. A operação entra e sai conforme padrões de manipulação, sem ativo inicial fixo.": {
+    "pt": "BETTEX coordena subagentes de análise quantitativa distribuída. A operação entra e sai conforme padrões de manipulação, sem ativo inicial fixo.",
+    "en": "BETTEX coordinates subagents performing distributed quantitative analysis. Trades enter and exit based on manipulation patterns, without a fixed initial asset.",
+    "es": "BETTEX coordina subagentes de análisis cuantitativo distribuido. La operación entra y sale según patrones de manipulación, sin un activo inicial fijo."
   },
   "Expansão de ativos": {
     "pt": "Expansão de ativos",
@@ -714,20 +714,20 @@
     "en": "03 / DISTRIBUTED INTELLIGENCE",
     "es": "03 / INTELIGENCIA DISTRIBUIDA"
   },
-  "BTX e subagentes": {
-    "pt": "BTX e subagentes",
-    "en": "BTX and subagents",
-    "es": "BTX y subagentes"
+  "BETTEX e subagentes": {
+    "pt": "BETTEX e subagentes",
+    "en": "BETTEX and subagents",
+    "es": "BETTEX y subagentes"
   },
   "operam por padrões.": {
     "pt": "operam por padrões.",
     "en": "trade based on patterns.",
     "es": "operan según patrones."
   },
-  "O agente central BTX coordena vários subagentes de análise quantitativa distribuída. Os padrões de manipulação identificados orientam a seleção dos ativos e as entradas e saídas, sob critérios e limites de risco, sem ativo inicial fixo.": {
-    "pt": "O agente central BTX coordena vários subagentes de análise quantitativa distribuída. Os padrões de manipulação identificados orientam a seleção dos ativos e as entradas e saídas, sob critérios e limites de risco, sem ativo inicial fixo.",
-    "en": "The central BTX agent coordinates multiple subagents performing distributed quantitative analysis. The manipulation patterns identified guide asset selection and entries and exits, under risk criteria and limits, without a fixed initial asset.",
-    "es": "El agente central BTX coordina varios subagentes de análisis cuantitativo distribuido. Los patrones de manipulación identificados orientan la selección de activos y las entradas y salidas, bajo criterios y límites de riesgo, sin un activo inicial fijo."
+  "O agente central BETTEX coordena vários subagentes de análise quantitativa distribuída. Os padrões de manipulação identificados orientam a seleção dos ativos e as entradas e saídas, sob critérios e limites de risco, sem ativo inicial fixo.": {
+    "pt": "O agente central BETTEX coordena vários subagentes de análise quantitativa distribuída. Os padrões de manipulação identificados orientam a seleção dos ativos e as entradas e saídas, sob critérios e limites de risco, sem ativo inicial fixo.",
+    "en": "The central BETTEX agent coordinates multiple subagents performing distributed quantitative analysis. The manipulation patterns identified guide asset selection and entries and exits, under risk criteria and limits, without a fixed initial asset.",
+    "es": "El agente central BETTEX coordina varios subagentes de análisis cuantitativo distribuido. Los patrones de manipulación identificados orientan la selección de activos y las entradas y salidas, bajo criterios y límites de riesgo, sin un activo inicial fijo."
   },
   "Automação não garante prosperidade para todos.": {
     "pt": "Automação não garante prosperidade para todos.",

@@ -15,11 +15,11 @@ A homepage deve apresentar uma baleia e gráficos de trade com o título: “Bal
 
 **How to apply:** Preservar o conceito visual e a mensagem nas traduções. Os gráficos são ilustrativos; não apresentá-los como operações reais ou prova de previsão. A estratégia segue em validação, sem lucro ou antecipação garantidos.
 
-A baleia dessa seção deve ser ilustrada, mecânica e artística, sem aparência caricata, e compor o fundo junto com o gráfico, sem ficar contida em um container. O botão da documentação deve ter tamanho moderado, não ocupar toda a coluna.
+A baleia dessa seção deve usar a primeira ilustração em traços livres, integrada ao gráfico e sem container. Essa direção substitui as experiências mecânica e steampunk. O botão da documentação deve ter tamanho moderado, não ocupar toda a coluna.
 
-**Why:** O criador rejeitou a fotografia em um quadro: “a baleia tem que ser desenhada, ilustrada, ao fundo, o grafico tambem, nao pode ficar contido em um container, tem que ser mais artistico”. Depois especificou: “a baleia tem que ser mecanica”. Ao ver a versão de placas simples e olho circular grande, corrigiu: “botao ficou grande demais, a baleia ficou caricata demais, pouco artistica”.
+**Why:** Após pedir a ilustração livre, o criador experimentou uma baleia mecânica, rejeitou a primeira por caricatura e a segunda por steampunk. Sua direção final foi “vamos voltar aquela baleia anterior a primeira desenhada de forma livre” e “volte sem fazer rollback”.
 
-**How to apply:** Integrar baleia mecânica e gráfico em uma composição artística aberta sobre o fundo da seção, também no mobile. Preferir proporções naturais de baleia, materiais metálicos detalhados e um olho discreto; evitar aspecto de brinquedo, sorriso e olho circular exagerado. Não substituir por uma baleia natural, fotografia em quadro ou painel com borda e cantos arredondados; preservar os textos aprovados, sua legibilidade e o acesso à documentação.
+**How to apply:** Preservar a ilustração original de linhas livres e o gráfico no fundo, inclusive no mobile. Não reintroduzir as versões robótica ou steampunk nem fotografia em quadro. Ajustes nessa arte são locais; preservar o botão menor, os textos atuais e as demais seções, sem restaurar o projeto inteiro.
 
 Não exibir o rótulo “Ilustração conceitual” na seção da baleia.
 

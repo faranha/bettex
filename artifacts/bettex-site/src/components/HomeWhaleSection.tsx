@@ -1,11 +1,12 @@
 import { t, useLocale } from '@/lib/i18n';
 import { ArrowUpRight } from 'lucide-react';
+import { FreeformWhaleArtwork } from '@/components/FreeformWhaleArtwork';
 import './HomeWhaleSection.css';
 
 const H1 = 'Baleias manipulam o mercado. Nós sabemos quando entrar.';
 const H2 = 'Nós descobrimos o padrão das baleias por meio de análise quantitativa distribuída, e a nossa IA administra os investimentos.';
 const NOTE = 'Estratégia em validação. Não há garantia de antecipar movimentos ou obter lucro.';
-const ALT = 'Baleia mecânica com armadura metálica e circuitos luminosos sobre um gráfico de mercado';
+const ALT = 'Baleia jubarte nadando em mar azul-meia-noite';
 const EYEBROW = 'Baleias e mercado';
 const DOC = `${import.meta.env.BASE_URL}documentacao`;
 
@@ -14,7 +15,7 @@ export function HomeWhaleSection() {
   return (
     <section id="baleias" className="hw-sec" aria-labelledby="hw-title" data-testid="section-home-whale">
       <figure className="hw-art" role="img" aria-label={t(ALT)} data-testid="img-whale-art">
-        <img src={`${import.meta.env.BASE_URL}mechanical-whale-artistic.webp`} alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async" />
+        <FreeformWhaleArtwork />
       </figure>
       <div className="hw-wrap">
         <div className="hw-copy">

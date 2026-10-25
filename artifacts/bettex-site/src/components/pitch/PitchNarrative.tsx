@@ -1,9 +1,6 @@
-import { ArrowRight, Bot, Landmark, Wallet, Coins, CalendarCheck, Banknote, ShieldAlert, QrCode, ReceiptText, ArrowDownToLine, ArrowUpFromLine, ArrowLeftRight, Network } from 'lucide-react';
+import { ArrowRight, Bot, Wallet, Coins, CalendarCheck, Banknote, ShieldAlert, QrCode, ReceiptText, ArrowDownToLine, ArrowUpFromLine, ArrowLeftRight, Network } from 'lucide-react';
 import { useX } from './pitchCopy';
 import './PitchNarrative.css';
-
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
-const DOC = `${BASE}/documentacao`;
 
 export function PitchContext() {
   const x = useX();
@@ -25,12 +22,12 @@ export function PitchJourney() {
   const steps = [
     { Icon: Coins, t: x('Compra BETTEX', 'Buys BETTEX', 'Compra BETTEX') },
     { Icon: Wallet, t: x('Participação automática na carteira', 'Automatic participation in the wallet', 'Participación automática en la cartera') },
-    { Icon: Bot, t: x('BTX coordena os subagentes', 'BTX coordinates the subagents', 'BTX coordina los subagentes') },
+    { Icon: Bot, t: x('BETTEX coordena os subagentes', 'BETTEX coordinates the subagents', 'BETTEX coordina los subagentes') },
     { Icon: CalendarCheck, t: x('Apuração e desconto de taxas', 'Calculation and fee deduction', 'Cálculo y descuento de comisiones') },
     { Icon: Banknote, t: x('Recebimento líquido no Pix', 'Net payout via Pix', 'Cobro neto por Pix') },
   ];
   return <div className="pn pn__journey" data-testid="pitch-participation-journey">
-    <p className="pn__lead">{x('O usuário participa dos resultados da operação em cripto coordenada pelo agente central BTX, com vários subagentes, sem acompanhar cada operação e sem ativação manual. A participação vem do saldo de BETTEX na carteira oficial.', 'The user participates in the results of crypto operations coordinated by the central BTX agent, with multiple subagents, without following each trade or manual activation. Participation comes from the BETTEX balance in the official wallet.', 'El usuario participa en los resultados de la operación en cripto coordinada por el agente central BTX, con varios subagentes, sin seguir cada operación ni activación manual. La participación proviene del saldo de BETTEX en la cartera oficial.')}</p>
+    <p className="pn__lead">{x('O usuário participa dos resultados da operação em cripto coordenada pelo agente central BETTEX, com vários subagentes, sem acompanhar cada operação e sem ativação manual. A participação vem do saldo de BETTEX na carteira oficial.', 'The user participates in the results of crypto operations coordinated by the central BETTEX agent, with multiple subagents, without following each trade or manual activation. Participation comes from the BETTEX balance in the official wallet.', 'El usuario participa en los resultados de la operación en cripto coordinada por el agente central BETTEX, con varios subagentes, sin seguir cada operación ni activación manual. La participación proviene del saldo de BETTEX en la cartera oficial.')}</p>
     <ol className="pn__steps">
       {steps.map(({ Icon, t }, i) => <li key={i} className="pn__step"><span className="pn__stepn mono">{String(i + 1).padStart(2, '0')}</span><Icon size={24} aria-hidden="true" /><strong>{t}</strong></li>)}
     </ol>
@@ -70,11 +67,11 @@ export function PitchStrategy() {
   const x = useX();
   return <div className="pn pn--ink pn__strategy">
     <div className="pn__prose pn__prose--ink">
-      <p>{x('O agente central BTX coordena vários subagentes de análise quantitativa distribuída para identificar padrões de manipulação no mercado cripto. Esses padrões orientam a seleção dos ativos e os momentos de entrada e saída, sob critérios e limites de risco. Não há ativo inicial fixo.', 'The central BTX agent coordinates multiple subagents performing distributed quantitative analysis to identify manipulation patterns in the crypto market. These patterns guide asset selection and entry and exit timing, under risk criteria and limits. There is no fixed initial asset.', 'El agente central BTX coordina varios subagentes de análisis cuantitativo distribuido para identificar patrones de manipulación en el mercado cripto. Estos patrones orientan la selección de activos y los momentos de entrada y salida, bajo criterios y límites de riesgo. No hay un activo inicial fijo.')}</p>
+      <p>{x('O agente central BETTEX coordena vários subagentes de análise quantitativa distribuída para identificar padrões de manipulação no mercado cripto. Esses padrões orientam a seleção dos ativos e os momentos de entrada e saída, sob critérios e limites de risco. Não há ativo inicial fixo.', 'The central BETTEX agent coordinates multiple subagents performing distributed quantitative analysis to identify manipulation patterns in the crypto market. These patterns guide asset selection and entry and exit timing, under risk criteria and limits. There is no fixed initial asset.', 'El agente central BETTEX coordina varios subagentes de análisis cuantitativo distribuido para identificar patrones de manipulación en el mercado cripto. Estos patrones orientan la selección de activos y los momentos de entrada y salida, bajo criterios y límites de riesgo. No hay un activo inicial fijo.')}</p>
       <p>{x('O agente opera com a tesouraria, nunca com os tokens dos usuários. O fundador e o time administram no início; a autonomia futura depende de desempenho validado e de controles.', 'The agent operates with the treasury, never with users’ tokens. The founder and team administer at first; future autonomy depends on validated performance and controls.', 'El agente opera con la tesorería, nunca con los tokens de los usuarios. El fundador y el equipo administran al inicio; la autonomía futura depende de un desempeño validado y de controles.')}</p>
     </div>
     <dl className="pn__facts">
-      <div><dt>{x('Estrutura de IA', 'AI structure', 'Estructura de IA')}</dt><dd>{x('BTX + subagentes', 'BTX + subagents', 'BTX + subagentes')}</dd></div>
+      <div><dt>{x('Estrutura de IA', 'AI structure', 'Estructura de IA')}</dt><dd>{x('BETTEX + subagentes', 'BETTEX + subagents', 'BETTEX + subagentes')}</dd></div>
       <div><dt>{x('Capital operado', 'Operated capital', 'Capital operado')}</dt><dd>{x('Tesouraria', 'Treasury', 'Tesorería')}</dd></div>
       <div><dt>{x('Entradas e saídas das operações', 'Trade entries and exits', 'Entradas y salidas de las operaciones')}</dt><dd>{x('Padrões de manipulação', 'Manipulation patterns', 'Patrones de manipulación')}</dd></div>
     </dl>
@@ -100,17 +97,3 @@ export function PitchFunding() {
   </div>;
 }
 
-export function PitchRisks() {
-  const x = useX();
-  const risks = [
-    x('Mercado e perda: o token e o capital podem perder valor.', 'Market and loss: the token and capital can lose value.', 'Mercado y pérdida: el token y el capital pueden perder valor.'),
-    x('Liquidez: a venda depende de haver compradores.', 'Liquidity: selling depends on buyers existing.', 'Liquidez: la venta depende de que haya compradores.'),
-    x('Validação da estratégia de IA: desempenho ainda não provado.', 'AI strategy validation: performance is not yet proven.', 'Validación de la estrategia de IA: rendimiento aún no probado.'),
-    x('Jurídico e Pix: dependem de adequação e de integração.', 'Legal and Pix: depend on compliance and integration.', 'Jurídico y Pix: dependen de adecuación e integración.'),
-  ];
-  return <div className="pn pn__risks" data-testid="pitch-risks">
-    <p className="mono pn__kicker">{x('Riscos principais', 'Main risks', 'Riesgos principales')}</p>
-    <ul>{risks.map(r => <li key={r}>{r}</li>)}</ul>
-    <a href={`${DOC}#documentacao-financiamento-fundacao`} className="pn__link"><Landmark size={16} aria-hidden="true" />{x('Financiamento e regras na documentação', 'Funding and rules in the documentation', 'Financiación y reglas en la documentación')}</a>
-  </div>;
-}

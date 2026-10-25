@@ -15,9 +15,9 @@ O bloco “Plano inicial de validação da demanda” também foi retirado do Pi
 
 **How to apply:** Não reintroduzir esse bloco ao revisar a apresentação. Preservar a seção seguinte sobre a comunidade.
 
-A ordem atual do Pitch é: Início (Hero com tese resumida), Público, Problema, Solução, Estratégia, Tokenomics, Comunidade e aquisição, Roadmap e Custos e riscos.
+A ordem atual do Pitch é: Início (Hero com tese resumida), Público, Problema, Solução, Estratégia, Tokenomics, Comunidade e aquisição e Roadmap. Não há capítulo nem item de menu “Custos e riscos”.
 
-**Why:** Após definir os capítulos, o criador pediu “a tese tem que estar sumarizada no inicio do pitch” e “no menu ao inves de inicio do pitch apenas coloque Inicio - remova essa secao”, apontando a seção Tese.
+**Why:** Após definir os capítulos, o criador pediu “a tese tem que estar sumarizada no inicio do pitch” e “no menu ao inves de inicio do pitch apenas coloque Inicio - remova essa secao”, apontando a seção Tese. Depois apontou “Custos e riscos da participação” e pediu “remova esse secao do conteudo e do meny”.
 
 **How to apply:** Resumir a tese na abertura, como visão do projeto, sem seção ou item de menu Tese. O primeiro item deve ser “Início”, não “Início do Pitch”; links antigos para a tese devem levar à abertura. Público reúne escala, interseção, perfil e oportunidade; termina antes de Problema. Problema reúne perdas nas apostas e vulnerabilidade de emprego/renda, com gráficos e fontes, sem confundir essas evidências com a tese. Solução continua como capítulo próprio, não Produto. Tokenomics mantém Economia e Token como partes internas. Preservar as traduções, as condições da proposta e os riscos.
 
