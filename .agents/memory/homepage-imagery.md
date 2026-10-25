@@ -9,6 +9,12 @@ O criador pediu: “Nós precisamos trabalhar com imagens sempre”, ao apontar 
 
 **How to apply:** Incluir imagens relevantes e visíveis também no mobile ao trabalhar nas seções do site, preservando o copy aprovado e a separação entre a tese e o hero.
 
+Na abertura de “O modelo da BETTEX” no mobile, o texto e o rapaz devem ocupar a mesma área, não duas faixas verticais separadas.
+
+**Why:** O criador disse que “o texto e a imagem do rapaz não podem ficar em linhas diferentes”, aceitando colocar o rapaz no fundo.
+
+**How to apply:** Integrar a pessoa ao lado ou ao fundo do título, sem reservar uma segunda região abaixo do texto. Preservar a leitura, a imagem existente e o desktop.
+
 A homepage deve apresentar uma baleia e gráficos de trade com o título: “Baleias manipulam o mercado. Nós sabemos quando entrar.” A explicação é: “Nós descobrimos o padrão das baleias por meio de análise quantitativa distribuída, e a nossa IA administra os investimentos.”
 
 **Why:** O criador pediu essa seção e depois corrigiu o posicionamento: “Nós sabemos quando entrar”, análise quantitativa distribuída identifica o padrão e a IA administra os investimentos.

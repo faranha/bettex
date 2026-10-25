@@ -1,6 +1,6 @@
 ---
 name: Responsive text verification
-description: Distinguishing text-range geometry from visible glyph collisions in compact headings.
+description: Reliable responsive text and carousel geometry checks.
 ---
 
 Treat browser text-range intersections as a possible collision, not conclusive evidence that painted letters overlap. Compact display headings can have overlapping font-leading bounds across adjacent lines.
@@ -20,3 +20,9 @@ For compact financial comparisons on mobile, constrain the descriptive column an
 **Why:** Long step descriptions made the first column occupy the entire phone viewport, hiding every numeric column until a swipe.
 
 **How to apply:** Keep at least the step and its adjacent result readable together where the viewport permits; preserve horizontal access to all columns and the full desktop/print table.
+
+Verify carousel stability against current local references, not an absolute navigation position captured before the page settles.
+
+**Why:** Initial absolute baselines produced misleading displacement assertions while the current first-slide height and the gap between content and controls were correct. Font or upstream layout timing was suspected, not established.
+
+**How to apply:** Wait for the destination slide to be visible. Measure its stage, the intrinsic first slide and the navigation gap in the same browser evaluation. Compare positions relative to the section when checking movement between slides.

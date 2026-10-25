@@ -32,7 +32,6 @@ export function EarningsFreedomIllustration() {
           <rect x="232" y="390" width="26" height="12" rx="3" fill="none" stroke="#F2B632" strokeWidth="2.5" />
           <circle cx="288" cy="396" r="5" fill="url(#ef-gold)" />
         </g>
-        <path d="M280 372 Q300 392 276 410" fill="none" stroke="#D9A074" strokeWidth="16" strokeLinecap="round" />
         {/* tokens leaving, two paths */}
         <path d="M322 290 Q372 250 404 196" fill="none" stroke="#2B59FF" strokeWidth="3" strokeDasharray="6 7" strokeLinecap="round" className="hi-dash" />
         <path d="M326 330 Q388 330 410 292" fill="none" stroke="#F2B632" strokeWidth="3" strokeDasharray="6 7" strokeLinecap="round" className="hi-dash" />

@@ -77,7 +77,7 @@
 - [Marcas tecnológicas](technology-brand-positioning.md) — exibir marcas não afirma parceria nem integração; restringir alterações à faixa abaixo do hero.
 - [Apresentação do fundador](documentation-founder-presentation.md) — identidade reservada; biografia anônima, sem retrato, redes pessoais ou contagens de seguidores.
 - [Artes e leitura da documentação](documentation-art-style.md) — bullets para itens e regras; menos esquemas, mais texto e imagens; preservar os desenhos essenciais.
-- [Responsive text verification](responsive-text-verification.md) — text-range bounds include font leading; distinguish compact heading lines from actual collisions.
+- [Responsive text verification](responsive-text-verification.md) — text bounds include font leading; compare carousel geometry with current local references, not stale absolute positions.
 - [Observações editoriais](document-observations.md) — notas agrupadas no fim de cada bloco, sem repetição ou interrupção do conteúdo principal.
 - [Horário do Brasil](brazil-time-display.md) — horários em São Paulo; demo de 16h às 16h em 24 horas reais, sem alterar registros ou contratos nativos.
 - [Evidências de contratos](test-contract-evidence.md) — EVM local não prova compra pública; runtime equivalente também exige validar vínculos imutáveis.

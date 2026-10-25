@@ -119,7 +119,7 @@ export function RoadmapSection({ id = 'roadmap', variant = 'default', scope = 'd
             <span className="roadmap__slider-count" aria-live="polite" aria-atomic="true">{String(active + 1).padStart(2, '0')} / {total}</span>
             <button type="button" className="roadmap__slider-arrow" onClick={() => goTo(active + 1)} disabled={active === stops.length - 1} aria-label={t('Próxima etapa')} aria-controls={`${id}-slides`}><ArrowRight size={20} aria-hidden="true" /></button>
           </div>}
-          <div className="roadmap__destination" aria-hidden="true"><span className="roadmap__destination-dot" /> CAMINHO EM CONSTRUÇÃO</div>
+          {!slider && <div className="roadmap__destination" aria-hidden="true"><span className="roadmap__destination-dot" /> CAMINHO EM CONSTRUÇÃO</div>}
         </div>
 
       </div>

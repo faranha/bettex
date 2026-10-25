@@ -116,10 +116,10 @@ try {
       assert.equal(await second.evaluate(el => el.inert), true);
       await page.getByTestId('illustration-earnings-freedom').waitFor({ state: 'visible' });
       const freedomCopy = (await third.textContent()).toLowerCase();
-      const marketPrice = { 'pt-BR': 'preço de mercado', 'en-US': 'market price', 'es-ES': 'precio de mercado' }[locale];
-      assert.ok(freedomCopy.includes(marketPrice), 'Explain sale at market price');
-      assert.ok(/corretoras|exchanges/.test(freedomCopy), 'Include external exchanges, not just the app');
-      assert.ok(freedomCopy.includes('bettex'));
+      const sellAll = { 'pt-BR': 'venda todos os tokens que comprou.', 'en-US': 'sell all the tokens you bought.', 'es-ES': 'vende todos los tokens que compraste.' }[locale];
+      assert.ok(freedomCopy.includes(sellAll), 'Clearly explain freedom to sell all purchased tokens');
+      assert.ok(/liquidez|liquidity/.test(freedomCopy), 'Keep the liquidity condition separate from the main message');
+      assert.equal(await third.locator('path[d="M280 372 Q300 392 276 410"]').count(), 0, 'Do not show the detached finger across the phone screen');
       assert.equal(await third.evaluate(el =>
         [...el.querySelectorAll('svg, h3, p')].every(node => {
           const rect = node.getBoundingClientRect();
