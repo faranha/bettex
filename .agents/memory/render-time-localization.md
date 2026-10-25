@@ -3,6 +3,12 @@ name: Render-time localization pitfalls
 description: Browser/SSR differences and React fragment handling when localizing existing JSX.
 ---
 
+Tríades PT/EN/ES escolhidas localmente também passam pelo localizador do JSX. Conferir a renderização real nos três idiomas: uma auditoria estática pode aprovar as tríades enquanto o navegador rejeita a tradução já selecionada.
+
+**Why:** A simplificação do Pitch passou na checagem de idiomas, mas o navegador tratou a nova frase em inglês como uma chave sem tradução.
+
+**How to apply:** Registrar as equivalências antes da renderização, sem sobrescrever traduções canônicas já existentes. Validar as rotas PT/EN/ES de fato, não apenas a extração estática.
+
 ## Contextual prose moved into tables
 
 Localize complete source paragraphs in their original inline context before splitting them into table headings and cells. Treat the resulting cells as already translated.

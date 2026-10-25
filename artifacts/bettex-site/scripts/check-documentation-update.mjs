@@ -33,7 +33,13 @@ assert.doesNotMatch(JSON.stringify(materials), /(?:100|50) mil\b|livre aloca|5\.
 assert.match(JSON.stringify(materials), /Aportes-anjo destinam 100%/);
 
 assert.match(chapters, /<DocumentationGames \/>/);
-assert.match(pitch, /<PitchProductResources \/>/);
+// The simplified crypto-only Pitch omits games without removing their documentation.
+assert.doesNotMatch(pitch, /<(?:PitchProductResources|PitchDeFAIVision|SolutionParticipationFlow)\b/);
+assert.match(pitch, /<PitchJourney \/>/);
+const pitchNarrative = read('src/components/pitch/PitchNarrative.tsx');
+assert.match(pitchNarrative, /Pix previsto; integração, custos, prazos e disponibilidade sujeitos à validação e adequação jurídica/);
+assert.match(pitchNarrative, /O usuário participa dos resultados de um único agente de IA em cripto/);
+assert.match(pitchNarrative, /após custos, obrigações, avaliação das posições abertas, reservas e liquidez/);
 for (const id of ['documentacao-loteria', 'documentacao-double-2x']) {
   assert.ok(games.includes(`id="${id}"`));
   assert.ok(pitchGames.includes(`/documentacao#${id}`));

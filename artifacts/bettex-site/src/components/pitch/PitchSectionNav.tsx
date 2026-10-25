@@ -5,6 +5,7 @@ const sections = [
   { id: 'visao', label: 'Início do Pitch' },
   { id: 'publico-pitch', label: 'Público e oportunidade' },
   { id: 'solucao', label: 'Produto' },
+  { id: 'estrategia', label: 'Estratégia' },
   { id: 'tokenomics', label: 'Tokenomics' },
   { id: 'publico', label: 'Comunidade e aquisição' },
   { id: 'pitch-roadmap', label: 'Roadmap' },

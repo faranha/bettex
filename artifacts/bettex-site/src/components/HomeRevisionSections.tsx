@@ -12,7 +12,7 @@ export function HomeEarningsSection() {
           <p className="hr-eyebrow">Ganhos diários</p>
           <h2 id="hr-focus-title" className="ew-h"><span className="ew-h-top">Até{' '}<strong>1%</strong></span>{' '}<span className="ew-h-sub">de lucro por dia.</span></h2>
           <p className="ew-rhythm">Todo dia, um novo ciclo.</p>
-          <p className="ew-p">Receba sua parte dos lucros em reais. Você não precisa saber operar cripto.</p>
+          <p className="ew-p">Receba sua parte dos lucros no Pix. Você não precisa saber operar cripto.</p>
           <p className="ew-free">Você decide quando vender e sair.</p>
         </div>
         <EarningsWalletIllustration />
