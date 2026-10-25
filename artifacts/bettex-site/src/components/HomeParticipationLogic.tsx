@@ -2,12 +2,12 @@ import { ArrowDown, ArrowRight, Bot, Coins, Landmark, Layers, Repeat2, Wallet } 
 import './HomeParticipationLogic.css';
 
 const steps = [
-  { n: '01', icon: Wallet, title: 'Carteira USDC', text: 'Recebe depósitos cripto e é usada para comprar BETTEX.' },
+  { n: '01', icon: Wallet, title: 'Compra de BETTEX', text: 'Você compra BETTEX pelo aplicativo. A conversão cripto é feita pelo projeto, não por você.' },
   { n: '02', icon: Coins, title: 'Carteira BETTEX', text: 'Guarda os seus tokens. Cada token na carteira oficial participa automaticamente, sem ativação.' },
   { n: '03', icon: Bot, title: 'Agente cripto', text: 'Um único agente, financiado pela tesouraria, opera contra a manipulação do mercado.' },
   { n: '04', icon: Layers, title: 'Lucro líquido distribuível', text: 'Após custos e obrigações, o lucro efetivo é repartido entre três destinos.' },
-  { n: '05', icon: Wallet, title: 'Crédito em USDC', text: 'A parte dos participantes é creditada na Carteira USDC, sem vender BETTEX.' },
-  { n: '06', icon: Repeat2, title: 'Saque ou reconversão', text: 'O USDC pode ser sacado ou convertido de volta em BETTEX.' },
+  { n: '05', icon: Wallet, title: 'Entrega em reais', text: 'A parte dos participantes é apresentada e entregue em reais, sem vender BETTEX. A liquidação interna usa USDC.' },
+  { n: '06', icon: Repeat2, title: 'Saque ou reconversão', text: 'Você decide quando vender seus tokens. Venda sujeita à liquidez.' },
 ];
 
 const split = [
@@ -23,7 +23,7 @@ export function HomeParticipationLogic() {
         <h3 className="hpl-h">Como a participação funciona</h3>
         <p>O saldo de BETTEX é a sua elegibilidade para participar do lucro global. Você não escolhe operações nem financia trades: quem opera é o agente, com o capital da tesouraria.</p>
       </div>
-      <ol className="hpl-path" aria-label="Caminho da participação, da Carteira USDC ao saque ou reconversão">
+      <ol className="hpl-path" aria-label="Caminho da participação, da compra de BETTEX ao saque ou reconversão">
         {steps.map((s, i) => (
           <li key={s.n} className="hpl-node">
             <span className="hpl-node__n">{s.n}</span>
@@ -56,8 +56,8 @@ export function HomeParticipationLogic() {
           <p>O agente opera com recursos da tesouraria. Nenhum participante financia individualmente as operações escolhidas.</p>
         </div>
         <div className="hpl-card">
-          <h4>Token e USDC têm funções diferentes</h4>
-          <p>A Carteira BETTEX guarda os tokens que dão participação. A Carteira USDC recebe depósitos, serve para compras e recebe os créditos de lucro. Receber lucro não consome nem vende seus tokens.</p>
+          <h4>Token e USDC interno têm funções diferentes</h4>
+          <p>A Carteira BETTEX guarda os tokens que dão participação. O USDC é apenas a moeda de liquidação interna das operações e da contabilidade; para você, o resultado é apresentado em reais. Receber lucro não consome nem vende seus tokens.</p>
         </div>
         <div className="hpl-card hpl-card--alt">
           <h4>Rodadas diárias independentes</h4>
@@ -71,7 +71,7 @@ export function HomeParticipationLogic() {
           <li>Qualquer saída de BETTEX, mesmo parcial, cancela os créditos ainda não pagos.</li>
           <li>Rodadas encerradas sem pagamento não acumulam lucros para o futuro.</li>
           <li>Sem lucro elegível, não há distribuição, e os resultados não são garantidos.</li>
-          <li>O USDC já recebido continua sendo seu.</li>
+          <li>O valor já recebido continua sendo seu.</li>
         </ul>
         <a href="#participacao" className="hpl-link">Ver o passo a passo da participação</a>
       </details>

@@ -14,6 +14,11 @@
     "en": "Results are calculated in daily cycles. When profits are available for distribution, your share is credited in USDC.",
     "es": "Los resultados se calculan en ciclos diarios. Cuando hay beneficios disponibles para distribuir, tu parte se acredita en USDC."
   },
+  "Homem em primeiro plano, com um fundo de trading de cripto e um recorte de notícia": {
+    "pt": "Homem em primeiro plano, com um fundo de trading de cripto e um recorte de notícia",
+    "en": "Man in the foreground, with a crypto trading background and a news clipping",
+    "es": "Hombre en primer plano, con un fondo de trading de cripto y un recorte de noticia"
+  },
   "Close": {
     "pt": "Fechar",
     "en": "Close",
@@ -478,5 +483,145 @@
     "pt": "Quero participar",
     "en": "I want to take part",
     "es": "Quiero participar"
+  },
+  "Chegou a hora de ganhar. A gente opera em cripto. Você recebe em reais.": {
+    "pt": "Chegou a hora de ganhar. A gente opera em cripto. Você recebe em reais.",
+    "en": "It's time to earn. We trade in crypto. You receive reais.",
+    "es": "Llegó la hora de ganar. Nosotros operamos en cripto. Tú recibes en reales."
+  },
+  "Você não precisa saber operar nem negociar cripto.": {
+    "pt": "Você não precisa saber operar nem negociar cripto.",
+    "en": "You don't need to know how to trade or handle crypto.",
+    "es": "No necesitas saber operar ni negociar cripto."
+  },
+  "Homem em primeiro plano ao lado de um robô de IA prateado, em uma cena de trading de cripto": {
+    "pt": "Homem em primeiro plano ao lado de um robô de IA prateado, em uma cena de trading de cripto",
+    "en": "Man in the foreground beside a silver AI robot, in a crypto trading scene",
+    "es": "Hombre en primer plano junto a un robot de IA plateado, en una escena de trading de cripto"
+  },
+  "Ilustração de uma carteira recebendo reais": {
+    "pt": "Ilustração de uma carteira recebendo reais",
+    "en": "Illustration of a wallet receiving reais",
+    "es": "Ilustración de una cartera que recibe reales"
+  },
+  "Você não precisa fazer as operações para": {
+    "pt": "Você não precisa fazer as operações para",
+    "en": "You don't need to make the trades to",
+    "es": "No necesitas hacer las operaciones para"
+  },
+  "participar dos lucros.": {
+    "pt": "participar dos lucros.",
+    "en": "share in the profits.",
+    "es": "participar de los beneficios."
+  },
+  "A IA opera. Seu BETTEX dá participação nos resultados. Você acompanha tudo pelo aplicativo e decide quando vender seus tokens.": {
+    "pt": "A IA opera. Seu BETTEX dá participação nos resultados. Você acompanha tudo pelo aplicativo e decide quando vender seus tokens.",
+    "en": "The AI trades. Your BETTEX gives you a share of the results. You follow everything in the app and decide when to sell your tokens.",
+    "es": "La IA opera. Tu BETTEX te da participación en los resultados. Lo sigues todo en la aplicación y decides cuándo vender tus tokens."
+  },
+  "Não precisa saber operar cripto. Você recebe em reais.": {
+    "pt": "Não precisa saber operar cripto. Você recebe em reais.",
+    "en": "No need to know how to trade crypto. You receive reais.",
+    "es": "No necesitas saber operar cripto. Recibes en reales."
+  },
+  "Veja como participar": {
+    "pt": "Veja como participar",
+    "en": "See how to take part",
+    "es": "Mira cómo participar"
+  },
+  "Prévia ilustrativa do aplicativo BETTEX, com token BETTEX, saldo em reais e resultados. Sem valores.": {
+    "pt": "Prévia ilustrativa do aplicativo BETTEX, com token BETTEX, saldo em reais e resultados. Sem valores.",
+    "en": "Illustrative preview of the BETTEX app, with the BETTEX token, balance in reais and results. No amounts.",
+    "es": "Vista previa ilustrativa de la aplicación BETTEX, con token BETTEX, saldo en reales y resultados. Sin valores."
+  },
+  "Saldo em reais": {
+    "pt": "Saldo em reais",
+    "en": "Balance in reais",
+    "es": "Saldo en reales"
+  },
+  "Resultados": {
+    "pt": "Resultados",
+    "en": "Results",
+    "es": "Resultados"
+  },
+  "Prévia ilustrativa": {
+    "pt": "Prévia ilustrativa",
+    "en": "Illustrative preview",
+    "es": "Vista previa ilustrativa"
+  },
+  "Receba sua parte dos lucros em reais. Você não precisa saber operar cripto.": {
+    "pt": "Receba sua parte dos lucros em reais. Você não precisa saber operar cripto.",
+    "en": "Receive your share of the profits in reais. You don't need to know how to trade crypto.",
+    "es": "Recibe tu parte de los beneficios en reales. No necesitas saber operar cripto."
+  },
+  "Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é entregue a você em reais. A operação e a contabilidade interna usam cripto, e você não precisa operar cripto.": {
+    "pt": "Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é entregue a você em reais. A operação e a contabilidade interna usam cripto, e você não precisa operar cripto.",
+    "en": "Results are calculated in daily cycles. When profit is available for distribution, your share is delivered to you in reais. Operations and internal accounting use crypto, and you don't need to trade crypto.",
+    "es": "Los resultados se calculan en ciclos diarios. Cuando haya beneficio disponible para distribución, tu parte se entrega en reales. La operación y la contabilidad interna usan cripto, y no necesitas operar cripto."
+  },
+  "Compra de BETTEX": {
+    "pt": "Compra de BETTEX",
+    "en": "BETTEX purchase",
+    "es": "Compra de BETTEX"
+  },
+  "Você compra BETTEX pelo aplicativo. A conversão cripto é feita pelo projeto, não por você.": {
+    "pt": "Você compra BETTEX pelo aplicativo. A conversão cripto é feita pelo projeto, não por você.",
+    "en": "You buy BETTEX in the app. The crypto conversion is handled by the project, not by you.",
+    "es": "Compras BETTEX en la aplicación. La conversión cripto la hace el proyecto, no tú."
+  },
+  "Entrega em reais": {
+    "pt": "Entrega em reais",
+    "en": "Delivery in reais",
+    "es": "Entrega en reales"
+  },
+  "A parte dos participantes é apresentada e entregue em reais, sem vender BETTEX. A liquidação interna usa USDC.": {
+    "pt": "A parte dos participantes é apresentada e entregue em reais, sem vender BETTEX. A liquidação interna usa USDC.",
+    "en": "The participants' share is presented and delivered in reais, without selling BETTEX. Internal settlement uses USDC.",
+    "es": "La parte de los participantes se presenta y se entrega en reales, sin vender BETTEX. La liquidación interna usa USDC."
+  },
+  "Você decide quando vender seus tokens. Venda sujeita à liquidez.": {
+    "pt": "Você decide quando vender seus tokens. Venda sujeita à liquidez.",
+    "en": "You decide when to sell your tokens. Sales are subject to liquidity.",
+    "es": "Tú decides cuándo vender tus tokens. Venta sujeta a liquidez."
+  },
+  "Caminho da participação, da compra de BETTEX ao saque ou reconversão": {
+    "pt": "Caminho da participação, da compra de BETTEX ao saque ou reconversão",
+    "en": "Participation path, from the BETTEX purchase to withdrawal or reconversion",
+    "es": "Camino de la participación, de la compra de BETTEX al retiro o reconversión"
+  },
+  "A Carteira BETTEX guarda os tokens que dão participação. O USDC é apenas a moeda de liquidação interna das operações e da contabilidade; para você, o resultado é apresentado em reais. Receber lucro não consome nem vende seus tokens.": {
+    "pt": "A Carteira BETTEX guarda os tokens que dão participação. O USDC é apenas a moeda de liquidação interna das operações e da contabilidade; para você, o resultado é apresentado em reais. Receber lucro não consome nem vende seus tokens.",
+    "en": "The BETTEX Wallet holds the tokens that give participation. USDC is only the internal settlement currency for operations and accounting; for you, the result is presented in reais. Receiving profit neither uses nor sells your tokens.",
+    "es": "La Cartera BETTEX guarda los tokens que dan participación. El USDC es solo la moneda de liquidación interna de las operaciones y la contabilidad; para ti, el resultado se presenta en reales. Recibir beneficio no consume ni vende tus tokens."
+  },
+  "Token e USDC interno têm funções diferentes": {
+    "pt": "Token e USDC interno têm funções diferentes",
+    "en": "The token and internal USDC have different roles",
+    "es": "El token y el USDC interno tienen funciones diferentes"
+  },
+  "O valor já recebido continua sendo seu.": {
+    "pt": "O valor já recebido continua sendo seu.",
+    "en": "Value already received remains yours.",
+    "es": "El valor ya recibido sigue siendo tuyo."
+  },
+  "Todo dia, um novo ciclo.": {
+    "pt": "Todo dia, um novo ciclo.",
+    "en": "Every day, a new cycle.",
+    "es": "Todos los días, un nuevo ciclo."
+  },
+  "Pare de apostar com seu dinheiro.": {
+    "pt": "Pare de apostar com seu dinheiro.",
+    "en": "Stop gambling with your money.",
+    "es": "Deja de apostar con tu dinero."
+  },
+  "Comece a investir com inteligência.": {
+    "pt": "Comece a investir com inteligência.",
+    "en": "Start investing intelligently.",
+    "es": "Empieza a invertir con inteligencia."
+  },
+  "A BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.": {
+    "pt": "A BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.",
+    "en": "BETTEX trades in crypto. You receive in reais, with no need to know how to trade.",
+    "es": "BETTEX opera en cripto. Recibes en reales, sin necesidad de saber operar."
   }
 }

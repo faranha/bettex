@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { ArrowDownRight, ArrowLeft, ArrowRight, Wallet } from 'lucide-react';
-import { CommunityCTA } from '@/components/CommunityCTA';
 import { OrderFlowIllustration } from '@/components/HomeIllustrations';
 import { TokenIllustration, DepositIllustration } from '@/components/ProjectModelIllustrations';
 
@@ -247,7 +246,7 @@ export function ProjectModelSection() {
                 <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
               </div>
               <h3>Você recebe{' '}<em>sua parte dos lucros.</em></h3>
-              <p className="pm-detail">Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é creditada em USDC.</p>
+              <p className="pm-detail">Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é entregue a você em reais. A operação e a contabilidade interna usam cripto, e você não precisa operar cripto.</p>
             </div>
           </div>
           <div className="pm-nav" data-testid="controls-etapas">
@@ -263,7 +262,6 @@ export function ProjectModelSection() {
             <p>Sem lucro elegível não há distribuição, e os resultados não são garantidos.</p>
           </div>
         </div>
-        <CommunityCTA source="participacao" label="Entre na comunidade" note="Tire dúvidas antes de participar." className="!justify-end" />
       </div>
     </section>
   );

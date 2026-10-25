@@ -78,29 +78,26 @@ assert.match(pitch, /Pelo staking, o usuário participa do rateio do pool global
 assert.match(pitch, /O mint público inicial e o aporte de investidores-anjo são frentes distintas de financiamento/);
 assert.match(app, /Chega de apostar\./);
 assert.match(app, /Comece a investir\./);
-assert.ok(app.includes('Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.'));
+assert.ok(app.includes('Chegou a hora de ganhar. A gente opera em cripto. Você recebe em reais.'));
+assert.ok(app.includes('Você não precisa saber operar nem negociar cripto.'));
 assert.ok(!app.includes('A IA faz as operações. Você participa dos lucros com o token BETTEX.'));
 assert.ok(app.includes('Ganhe até 1% por dia de lucro.'));
 assert.doesNotMatch(app, /Um agente de IA que opera em mercados de iGaming/);
 const homeOperation = await read('src/components/HomeRevisionSections.tsx');
-assert.match(homeOperation, /identificar padrões de manipulação do mercado/);
-assert.match(homeOperation, /investe contra quem manipula/);
-assert.match(homeOperation, /Se não houver oportunidade, ele não opera/);
 assert.match(app, /<RoadmapSection variant="home"/);
-assert.match(app, /<HomeOperationSection/);
-assert.match(homeOperation, /<HomeParticipationLogic/);
-const homeBusiness = await read('src/components/HomeParticipationLogic.tsx');
-for (const concept of [
-  'Carteira USDC', 'Carteira BETTEX', 'capital da tesouraria',
-  'sem vender BETTEX', 'Saque ou reconversão',
-  'Cada rodada dura 24 horas', 'espera a próxima',
-  'mesmo parcial', 'não acumulam lucros para o futuro',
-]) assert.ok(homeBusiness.includes(concept), `Homepage must retain business logic: ${concept}`);
-assert.equal((homeBusiness.match(/pct: '50%'/g) ?? []).length, 1);
-assert.equal((homeBusiness.match(/pct: '25%'/g) ?? []).length, 2);
+assert.doesNotMatch(app, /HomeOperationSection/);
+assert.doesNotMatch(homeOperation, /HomeParticipationLogic|hr-op-title|diagram-home-flow/);
+assert.match(app, /<HomeEarningsSection/);
+assert.ok(app.indexOf('<HomeEarningsSection') < app.indexOf('<ProjectModelSection'), 'Daily benefit must be the first content section after the hero technology strip');
+assert.ok(homeOperation.includes('Receba sua parte dos lucros em reais. Você não precisa saber operar cripto.'));
+assert.ok(homeOperation.includes('Você decide quando vender e sair.'));
+assert.doesNotMatch(await read('src/components/HomeSectionNav.tsx'), /Como opera/);
 assert.doesNotMatch(app, /NewEconomySection/);
 assert.doesNotMatch(await read('src/components/HomeSectionNav.tsx'), /nova-economia/);
-assert.match(app, /<span>Entenda o projeto<\/span>/);
+assert.match(app, /<span>Quero participar<\/span>/);
+assert.doesNotMatch(await read('src/components/hero/HeroBenefit.tsx'), /NewsClipping|jogo de futebol/);
+assert.doesNotMatch(app, /HumanStorySection/);
+assert.doesNotMatch(await read('src/components/HomeSectionNav.tsx'), /Por que BETTEX/);
 assert.doesNotMatch(app, /Comunidade aberta\.|Tecnologia com IA\./);
 const whitepaper = await read('src/components/WhitepaperSection.tsx');
 assert.doesNotMatch(whitepaper.match(/whitepaper__hero-lede[^>]*>([^<]+)/)?.[1] ?? '', /distribuição de resultados/);

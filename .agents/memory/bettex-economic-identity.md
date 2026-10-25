@@ -11,9 +11,9 @@ Para o planejamento da BETTEX 1.5, o criador pediu uma apresentação mais objet
 
 **How to apply:** Tratar isso como direção de planejamento, não capacidade implementada ou autorização para alterar a homepage. Distinguir indícios de manipulação de prova e não prometer previsão ou lucro.
 
-O público principal continua sendo o apostador brasileiro, especialmente quem aposta e perde. O eventual foco operacional exclusivo em cripto não muda essa audiência. O criador distingue quem compra BETTEX pela utilidade de participar do sistema, sem tomar as decisões de trading dos ativos, de quem negocia o próprio token de forma discricionária para tentar lucrar com sua cotação; este segundo público também existe, mas não é o alvo principal.
+O público inclui o apostador brasileiro e também quem especula comprando e vendendo moedas em corretoras. Na comunicação atual da homepage, não limitar a mensagem a quem é “refém das apostas”: a direção é “Pare de apostar com seu dinheiro”. O criador distingue quem compra BETTEX pela utilidade de participar do sistema, sem tomar as decisões de trading dos ativos, de quem negocia o próprio token de forma discricionária para tentar lucrar com sua cotação.
 
-**Why:** O criador corrigiu a interpretação de que especializar a operação em cripto mudaria o público: “A audiência continua a mesma” e “Comprar o token pela utilidade dele. O discricionário vai comprar pelo trading em si”.
+**Why:** Após preservar a audiência de apostas na especialização cripto, o criador ampliou a comunicação: “vamos deixar mais amplo” e “abrange tambem quem aposta no sentido de comprar e vender moeda em corretora”.
 
 **How to apply:** Separar público de aquisição, utilidade do token e universo de operação do agente. Não centrar a proposta em ferramentas para traders nem confundir ausência de decisões operacionais do usuário com ausência de risco. Não apresentar a compra do token como comprovadamente melhor para quem perdeu em apostas; dados de tamanho de audiência exigem fonte antes de publicação.
 
