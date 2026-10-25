@@ -6,7 +6,7 @@ export function HomeEarningsSection() {
   return (
     <section id="mercados" className="hr-section ew-sec" aria-labelledby="hr-focus-title">
       <span id="tecnologia" className="absolute top-0" aria-hidden="true" />
-      <img className="ew-bg" src={`${import.meta.env.BASE_URL}earnings-bg.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      <img className="ew-bg" src={`${import.meta.env.BASE_URL}earnings-android-bg.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" width="1024" height="1024" />
       <div className="hr-wrap ew-grid">
         <div className="ew-offer ew-top">
           <p className="hr-eyebrow">Ganhos diários</p>
