@@ -13,7 +13,15 @@ Preservar as regras essenciais do token, vesting, staking, distribuição, tesou
 
 ## Modelo de negócio na candidatura ao grant
 
-Inicialmente não haverá taxas próprias da BETTEX. Não apresentar tarifas como parte do fluxo atual de participação ou como fonte atual da tesouraria. Os ganhos iniciais dos responsáveis vêm do staking de seus próprios tokens, assim como os dos demais participantes. As recompensas são distribuídas diariamente conforme resultados e elegibilidade, sem retorno garantido.
+### Esclarecimento posterior sobre custos para o participante
+
+A BETTEX faz a compra e venda de BETTEX para o usuário e converte entre cripto e reais. Compra, venda, on-ramp e off-ramp têm custos, debitados dos ganhos diários; o participante recebe o valor líquido em reais.
+
+**Why:** O criador esclareceu: “ele paga taxas para receber em real” e “tudo isso sao taxas que sao descontadas [...] tudo tem um custo que é debitado dos ganhos diarios”.
+
+**How to apply:** Explicitar esses custos na jornada e no recebimento, sem resumir tudo a taxas de rede ou sugerir gratuidade. Não inventar percentuais, valores, receita própria da BETTEX ou regra para ganhos insuficientes; não confundir a apresentação do modelo com pagamentos reais no demo.
+
+Inicialmente não haverá taxas próprias da BETTEX. Não apresentar tarifas próprias como fonte atual da tesouraria; isso não elimina os custos operacionais debitados dos ganhos diários conforme o esclarecimento acima. Os ganhos iniciais dos responsáveis vêm do staking de seus próprios tokens, assim como os dos demais participantes. As recompensas são distribuídas diariamente conforme resultados e elegibilidade, sem retorno garantido.
 
 No futuro, podem existir taxas de serviços pagas em USDC e taxas sobre resultados de trading. São possibilidades de evolução, não tarifas aprovadas ou ativas. Não apresentar a ausência inicial de taxas como proibição permanente de monetização.
 

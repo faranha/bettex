@@ -28,8 +28,8 @@ export function PitchJourney() {
     { Icon: Coins, t: x('Compra BETTEX', 'Buys BETTEX', 'Compra BETTEX') },
     { Icon: Wallet, t: x('Participação automática na carteira', 'Automatic participation in the wallet', 'Participación automática en la cartera') },
     { Icon: Bot, t: x('O agente opera cripto', 'The agent trades crypto', 'El agente opera cripto') },
-    { Icon: CalendarCheck, t: x('Apuração diária', 'Daily calculation', 'Cálculo diario') },
-    { Icon: Banknote, t: x('Recebimento em reais', 'Payout in reais', 'Cobro en reales') },
+    { Icon: CalendarCheck, t: x('Apuração e desconto de taxas', 'Calculation and fee deduction', 'Cálculo y descuento de comisiones') },
+    { Icon: Banknote, t: x('Recebimento líquido no Pix', 'Net payout via Pix', 'Cobro neto por Pix') },
   ];
   return <div className="pn pn__journey" data-testid="pitch-participation-journey">
     <p className="pn__lead">{x('O usuário participa dos resultados de um único agente de IA em cripto, sem acompanhar operações e sem ativação manual. A participação vem do saldo de BETTEX na carteira oficial.', 'The user participates in the results of a single AI agent in crypto, without following trades and without manual activation. Participation comes from the BETTEX balance in the official wallet.', 'El usuario participa en los resultados de un único agente de IA en cripto, sin seguir operaciones y sin activación manual. La participación proviene del saldo de BETTEX en la cartera oficial.')}</p>
@@ -40,7 +40,19 @@ export function PitchJourney() {
       <span className="pn__pixtag mono">{x('Recurso previsto', 'Planned feature', 'Recurso previsto')}</span>
       <h4 className="display">{x('Pix para receber em reais', 'Pix to receive reais', 'Pix para recibir reales')}</h4>
       <p>{x('Pix previsto; integração, custos, prazos e disponibilidade sujeitos à validação e adequação jurídica.', 'Pix is planned; integration, costs, timelines and availability are subject to validation and legal compliance.', 'Pix previsto; integración, costes, plazos y disponibilidad sujetos a validación y adecuación jurídica.')}</p>
-      <p>{x('A operação e a contabilidade interna usam cripto e USDC. A experiência prevista para o participante é receber em reais, sem precisar operar cripto.', 'Operations and internal accounting use crypto and USDC. The planned experience lets participants receive reais without having to trade crypto.', 'La operación y la contabilidad interna usan cripto y USDC. La experiencia prevista permite al participante recibir reales sin tener que operar cripto.')}</p>
+      <p>{x('A BETTEX faz a compra e a venda de BETTEX para o usuário e a conversão entre cripto e reais. A operação e a contabilidade interna usam cripto e USDC; o participante não precisa operar cripto por conta própria.', 'BETTEX handles BETTEX purchases and sales for the user and conversion between crypto and reais. Operations and internal accounting use crypto and USDC; participants do not need to handle crypto themselves.', 'BETTEX realiza la compra y venta de BETTEX para el usuario y la conversión entre cripto y reales. La operación y la contabilidad interna usan cripto y USDC; el participante no necesita operar cripto por su cuenta.')}</p>
+    </div>
+    <div className="pn__pix" data-testid="pitch-operation-fees" aria-labelledby="pitch-operation-fees-t">
+      <span className="pn__pixtag mono">{x('Custos da operação', 'Transaction costs', 'Costes de la operación')}</span>
+      <h4 id="pitch-operation-fees-t" className="display">{x('Recebimento no Pix, após descontar as taxas.', 'Pix payout, after fees are deducted.', 'Cobro por Pix, después de descontar las comisiones.')}</h4>
+      <ul className="pn__rules">
+        <li>{x('On-ramp: entrada de reais e conversão para cripto para participar.', 'On-ramp: depositing reais and converting to crypto to participate.', 'On-ramp: entrada de reales y conversión a cripto para participar.')}</li>
+        <li>{x('Compra e venda de BETTEX: negociação dos tokens para o usuário.', 'BETTEX purchases and sales: trading tokens for the user.', 'Compra y venta de BETTEX: negociación de los tokens para el usuario.')}</li>
+        <li>{x('Off-ramp: conversão de cripto para reais para receber no Pix.', 'Off-ramp: converting crypto to reais for payout via Pix.', 'Off-ramp: conversión de cripto a reales para cobrar por Pix.')}</li>
+        <li>{x('Taxas de rede e demais custos das operações realizadas também são considerados.', 'Network fees and other costs of completed transactions are also included.', 'También se consideran las comisiones de red y los demás costes de las operaciones realizadas.')}</li>
+      </ul>
+      <p>{x('Essas operações têm custo. As taxas são debitadas dos ganhos diários do participante; o valor recebido em reais é líquido desses descontos, não o ganho bruto.', 'These transactions have costs. Fees are deducted from the participant’s daily earnings; the amount received in reais is net of these deductions, not gross earnings.', 'Estas operaciones tienen coste. Las comisiones se descuentan de las ganancias diarias del participante; el importe recibido en reales es neto de estos descuentos, no la ganancia bruta.')}</p>
+      <p className="font-bold">{x('Ganhos diários − taxas das operações = valor líquido a receber no Pix.', 'Daily earnings − transaction fees = net amount to receive via Pix.', 'Ganancias diarias − comisiones de las operaciones = importe neto a cobrar por Pix.')}</p>
     </div>
     <ul className="pn__rules">
       <li>{x('Compra durante uma rodada qualifica para a próxima rodada.', 'A purchase during a round qualifies for the next round.', 'Una compra durante una ronda califica para la siguiente.')}</li>

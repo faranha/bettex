@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Search, MessageSquare, Smartphone, Wallet, ArrowRight, ArrowDown } from 'lucide-react';
+import { Search, MessageSquare, Smartphone, Wallet } from 'lucide-react';
 import { getFormatLocale, t, useLocale } from '@/lib/i18n';
 import './FounderLaunchFunnel.css';
 
@@ -28,7 +28,7 @@ export function FounderLaunchFunnel() {
         <em>{t(s.line)}</em>
         <p>{t(s.note)}</p>
       </li>
-      {i < 2 && <li className="flf__arrow" aria-hidden="true"><ArrowRight className="flf__ar" size={22} /><ArrowDown className="flf__ad" size={22} /></li>}
+      {i < 2 && <li className="flf__arrow" aria-hidden="true" />}
       </Fragment>)}
     </ol>
     <div className="flf__goal">

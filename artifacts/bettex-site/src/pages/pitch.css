@@ -124,6 +124,7 @@ img, svg, video { max-width: 100%; }
 .slide--dark .slide__head + .slide__body { border-top: 0; }
 #fundador > .chero + .slide__body,
 #publico > .chero + .slide__body { border-top: 0; }
+#publico > .slide__body { padding-bottom: 0; }
 #publico .pitch-validation-status { display: grid; gap: 8px; margin-bottom: 28px; padding: 18px 22px; border-left: 3px solid #F2B632; background: #13204f; }
 #publico .pitch-validation-status > span { color: #F2B632; font-size: 10px; font-weight: 700; letter-spacing: .14em; }
 #publico .pitch-validation-status > strong { font-size: 18px; line-height: 1.3; }

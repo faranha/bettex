@@ -80,6 +80,12 @@ assert.match(pitchNarrative, /O usuário participa dos resultados de um único a
 assert.match(pitchNarrative, /sem lucro, sem distribuição/);
 assert.match(pitchNarrative, /O agente opera com a tesouraria, nunca com os tokens dos usuários/);
 assert.match(pitchNarrative, /Nenhum retorno é garantido/);
+assert.match(pitchNarrative, /A BETTEX faz a compra e a venda de BETTEX para o usuário e a conversão entre cripto e reais/);
+assert.match(pitchNarrative, /On-ramp: entrada de reais e conversão para cripto/);
+assert.match(pitchNarrative, /Off-ramp: conversão de cripto para reais para receber no Pix/);
+assert.match(pitchNarrative, /As taxas são debitadas dos ganhos diários do participante/);
+assert.match(pitchNarrative, /Ganhos diários − taxas das operações = valor líquido a receber no Pix/);
+assert.doesNotMatch(pitch, /No ALFA, apenas custos externos de rede/);
 assert.match(pitchNarrative, /O mint inicial forma a base da tesouraria/);
 assert.match(pitchNarrative, /100% para produto, tecnologia e marketing/);
 assert.match(app, /Chega de apostar\./);
