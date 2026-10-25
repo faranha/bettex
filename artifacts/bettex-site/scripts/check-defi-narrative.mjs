@@ -78,8 +78,9 @@ assert.match(pitch, /Pelo staking, o usuário participa do rateio do pool global
 assert.match(pitch, /O mint público inicial e o aporte de investidores-anjo são frentes distintas de financiamento/);
 assert.match(app, /Chega de apostar\./);
 assert.match(app, /Comece a investir\./);
-assert.ok(app.includes('Chegou a hora de ganhar. A gente opera em cripto. Você recebe em reais.'));
-assert.ok(app.includes('Você não precisa saber operar nem negociar cripto.'));
+assert.ok(app.includes('Nosso agente IA opera em cripto, você recebe em reais.'));
+assert.ok(!app.includes('Chegou a hora de ganhar. A gente opera em cripto. Você recebe em reais.'));
+assert.ok(!app.includes('Você não precisa saber operar nem negociar cripto.'));
 assert.ok(!app.includes('A IA faz as operações. Você participa dos lucros com o token BETTEX.'));
 assert.ok(app.includes('Ganhe até 1% por dia de lucro.'));
 assert.doesNotMatch(app, /Um agente de IA que opera em mercados de iGaming/);

@@ -177,7 +177,6 @@ function SiteFooter({ compact = false, home = false }: { compact?: boolean; home
             <p className="mt-6 max-w-[420px] text-base font-medium leading-7 text-[#F4F1E8]">{t('A BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.')}</p></> : <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#F2B632]">e se torne dono do jogo</span></h2>
             <p className="mt-6 max-w-[390px] text-base font-medium leading-7 text-[#F4F1E8]">Participe dos resultados da IA com o token BETTEX.</p></>}
             <div className="mt-6 flex flex-wrap gap-3">
-              <a {...linkProps} href={homeAnchor('roadmap')} className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#070B1F] px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#13204F] focus-visible:outline-[#F2B632]">Ver o roadmap <ArrowRight className="h-4 w-4 text-[#F2B632]" aria-hidden="true" /></a>
               <a {...linkProps} href={DOCUMENTATION_PATH} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#F4F1E8] hover:text-[#070B1F] focus-visible:outline-[#F2B632]">Ler a documentação</a>
               <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-community-source="footer" data-testid="link-community-footer" className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F4F1E8] px-6 py-3.5 text-sm font-bold text-[#070B1F] hover:bg-white focus-visible:outline-[#F2B632]"><TelegramIcon className="h-5 w-5" />Vem pra comunidade</a>
             </div>
@@ -271,8 +270,7 @@ function Home() {
               <span className="block">Chega de apostar.</span>{' '}
               <span className="block text-[#F2B632]">Comece a investir.</span>
             </h1>
-            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Chegou a hora de ganhar. A gente opera em cripto. Você recebe em reais.</h2>
-            <p className="mt-4 max-w-[520px] text-[16px] leading-[1.5] text-[#F4F1E8]">Você não precisa saber operar nem negociar cripto.</p>
+            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Nosso agente IA opera em cripto, você recebe em reais.</h2>
             <p className="mt-4 max-w-[520px] text-[17px] font-bold leading-[1.5] text-[#F2B632] sm:text-lg">Ganhe até 1% por dia de lucro.</p>
             <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
               <span>Quero participar</span>
