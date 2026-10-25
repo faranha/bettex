@@ -3,6 +3,12 @@ name: Comportamento de saques diários
 description: Premissa de comportamento do usuário exigida pelo criador para as projeções econômicas.
 ---
 
+Na homepage, destacar explicitamente o saque diário com “TODOS OS DIAS”.
+
+**Why:** O criador pediu que essa frequência apareça na comunicação dos ganhos diários.
+
+**How to apply:** Apresentar a possibilidade de saque separada da condição de distribuição dos lucros; não transformar saque diário em promessa de rentabilidade diária garantida.
+
 O criador afirma: “as pessoas vão fazer saques diários”, “as pessoas querem dinheiro todo dia” e “nós temos que modelar o comportamento do usuário para fazer essa projeção dos ganhos”.
 
 Ao propor uma tarifa fixa por saque, o criador também declarou a expectativa de que as pessoas acumulem mais antes de sacar. É uma hipótese de incentivo, não uma mudança de comportamento comprovada.

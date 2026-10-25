@@ -46,7 +46,7 @@ export function HomeEarningsSection() {
                 <p className="hr-eyebrow">{t('Retorno diário ilustrativo')}</p>
                 <h3 className="ew-h2">{t('Ganhe conforme nossa IA opera.')}</h3>
                 <p className="ew-rhythm">{t('Sem lucro, não há distribuição.')}</p>
-                <p className="ew-p2">{t('Lucro automático em reais na conta BETTEX, para detentores elegíveis do token.')}</p>
+                <p className="ew-p2"><strong>{t('Saque TODOS OS DIAS via Pix.')}</strong><br />{t('Lucro automático em reais na conta BETTEX, para detentores elegíveis do token.')}</p>
               </div>
               <div className="ew-card ew-ai-stage">
                 <span className="ew-ai-orb" aria-hidden="true" />
