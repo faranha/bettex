@@ -4,7 +4,6 @@ import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { AudienceSection } from '@/components/pitch/AudienceSection';
 import { EmploymentIncomeProblem } from '@/components/pitch/EmploymentIncomeProblem';
 import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
-import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
 import { ChapterHero } from '@/components/pitch/ChapterHero';
 import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
@@ -131,7 +130,7 @@ export function PitchPage() {
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
         <DemoAppLink className="mono">DEMO VISUAL DISPONÍVEL</DemoAppLink>
         <strong>Comunidade antes do lançamento</strong>
-        <p>{x('Hoje, interface com dados ilustrativos, sem dinheiro real ou execução. Captação de investidores prevista na ALFA; BETA e go to market vêm depois, sem data definida. Lançamentos dependem de adequação jurídica por atividade e território. Datas no Roadmap.', 'Today, an interface with illustrative data, no real money or execution. Investor fundraising is planned for ALFA; BETA and go to market follow, with no set date. Launches depend on legal compliance by activity and territory. Dates are in the Roadmap.', 'Hoy, una interfaz con datos ilustrativos, sin dinero real ni ejecución. Captación de inversores prevista en ALFA; BETA y go to market vendrán después, sin fecha definida. Lanzamientos sujetos a adecuación jurídica por actividad y territorio. Fechas en el Roadmap.')}</p>
+        <p>{x('Hoje, interface com dados ilustrativos, sem dinheiro real ou execução. Captação de investidores prevista na ALFA; BETA e go to market vêm depois, sem data definida. Lançamentos dependem de adequação jurídica por atividade e território.', 'Today, an interface with illustrative data, no real money or execution. Investor fundraising is planned for ALFA; BETA and go to market follow, with no set date. Launches depend on legal compliance by activity and territory.', 'Hoy, una interfaz con datos ilustrativos, sin dinero real ni ejecución. Captación de inversores prevista en ALFA; BETA y go to market vendrán después, sin fecha definida. Lanzamientos sujetos a adecuación jurídica por actividad y territorio.')}</p>
         <DemoAppLink data-testid="pitch-open-alpha-demo" />
       </aside>
       <div className="pitch-community" id="pitch-community">
@@ -149,7 +148,6 @@ export function PitchPage() {
       </details>
     </Sec>
 
-    <RoadmapSection id="pitch-roadmap" variant="home" />
 
   </main>;
 }
