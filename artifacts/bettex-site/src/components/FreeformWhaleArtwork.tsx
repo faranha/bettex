@@ -17,12 +17,7 @@ export function FreeformWhaleArtwork() {
           <stop offset=".5" stopColor="#5F86FF" stopOpacity=".7" />
           <stop offset="1" stopColor="#F2B632" stopOpacity=".95" />
         </linearGradient>
-        <radialGradient id="hw-glow" cx=".65" cy=".45" r=".6">
-          <stop offset="0" stopColor="#2B59FF" stopOpacity=".28" />
-          <stop offset="1" stopColor="#2B59FF" stopOpacity="0" />
-        </radialGradient>
       </defs>
-      <rect width="1200" height="700" fill="url(#hw-glow)" />
       <g fill="none" stroke="#5F86FF" strokeWidth="1" opacity=".16">
         {[120, 220, 320, 420, 520, 620].map((y) => <path key={y} d={`M0 ${y}H1200`} strokeDasharray="2 10" />)}
         {[0, 1, 2, 3, 4].map((i) => (

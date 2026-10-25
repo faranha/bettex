@@ -26,7 +26,6 @@ export function HomeEarningsSection() {
   return (
     <section id="mercados" className="hr-section ew-sec" aria-labelledby="hr-focus-title">
       <span id="tecnologia" className="absolute top-0" aria-hidden="true" />
-      <img className="ew-bg" src={`${import.meta.env.BASE_URL}earnings-bg.webp`} alt="" aria-hidden="true" loading="lazy" decoding="async" width="1024" height="1024" />
       <div role="region" aria-roledescription={t('Carrossel')} aria-label={t('Carrossel de ganhos diários')} onKeyDown={onKey} data-testid="carousel-earnings" data-active-slide={i + 1}>
         <div className="ew-track" onPointerDown={down} onPointerUp={up} onPointerCancel={() => { x0.current = null; }}>
           <div className="ew-slide" role="group" aria-roledescription={t('Slide')} aria-label="1 / 3" data-active={i === 0} aria-hidden={i !== 0} inert={i !== 0} data-testid="slide-earnings-1">
@@ -42,28 +41,30 @@ export function HomeEarningsSection() {
             </div>
           </div>
           <div className="ew-slide" role="group" aria-roledescription={t('Slide')} aria-label="2 / 3" data-active={i === 1} aria-hidden={i !== 1} inert={i !== 1} data-testid="slide-earnings-2">
-            <div className="hr-wrap ew-s2">
+            <div className="hr-wrap ew-s2 ew-ai">
               <div className="ew-offer">
                 <p className="hr-eyebrow">{t('Retorno diário ilustrativo')}</p>
-                <h3 className="ew-h2">{t('Até 1% ao dia. Nunca fixo.')}</h3>
+                <h3 className="ew-h2">{t('Ganhe conforme nossa IA opera.')}</h3>
                 <p className="ew-rhythm">{t('Sem lucro, não há distribuição.')}</p>
                 <p className="ew-p2">{t('Lucro automático em reais na conta BETTEX, para detentores elegíveis do token.')}</p>
               </div>
-              <div className="ew-card">
-                <EarningsReturnChart />
-                <p className="ew-foot" data-testid="text-earnings-illustrative">{t('Exemplo ilustrativo. Sem retorno garantido ou pagamentos reais.')}</p>
+              <div className="ew-card ew-ai-stage">
+                <span className="ew-ai-orb" aria-hidden="true" />
+                <img className="ew-ai-robot" src={`${import.meta.env.BASE_URL}earnings-bettex-robot.webp`} alt="" width={720} height={720} loading="eager" decoding="async" />
+                <div className="ew-ai-chart"><EarningsReturnChart /></div>
               </div>
             </div>
           </div>
           <div className="ew-slide" role="group" aria-roledescription={t('Slide')} aria-label="3 / 3" data-active={i === 2} aria-hidden={i !== 2} inert={i !== 2} data-testid="slide-earnings-3">
-            <div className="hr-wrap ew-s2">
+            <div className="hr-wrap ew-s2 ew-freedom">
               <div className="ew-offer">
                 <p className="hr-eyebrow">{t('Liberdade de entrar e sair')}</p>
-                <h3 className="ew-h2">{t('Você não fica preso.')}</h3>
-                <p className="ew-rhythm">{t('Venda seus tokens quando quiser, ao preço de mercado.')}</p>
-                <p className="ew-p2">{t('Venda pelo app BETTEX ou retire os tokens para sua carteira e venda em corretoras compatíveis.')}</p>
-                <p className="ew-foot">{t('A venda depende de compradores e liquidez. Sem preço mínimo ou recompra garantidos.')}</p>
-                <p className="ew-foot">{t('Demonstração visual, sem vendas ou saques reais.')}</p>
+                <h3 className="ew-h2 ew-freedom-title">
+                  <span className="ew-freedom-intro">{t('Seu token.')}</span>
+                  <strong className="ew-freedom-emphasis">{t('Sua escolha.')}</strong>
+                </h3>
+                <p className="ew-p2">{t('Venda no app BETTEX a preço de mercado ou retire para sua carteira e venda em corretoras.')}</p>
+                <p className="ew-foot">{t('Venda sujeita à liquidez, sem preço ou recompra garantidos. Demo sem operações reais.')}</p>
               </div>
               <EarningsFreedomIllustration />
             </div>

@@ -72,12 +72,17 @@ try {
       await next.click();
       await second.waitFor({ state: 'visible' });
       assert.equal(await carousel.getAttribute('data-active-slide'), '2');
+      const robot = second.locator('img[src*="earnings-bettex-robot.webp"]');
+      await robot.waitFor({ state: 'visible' });
+      await robot.evaluate(image => image.decode());
+      assert.ok(await robot.evaluate(image => image.naturalWidth > 0), 'The BETTEX robot must load, not show a broken image');
+      assert.doesNotMatch(await second.textContent(), /Nunca fixo|Never fixed|Nunca fijo/i);
       assert.equal(await next.isDisabled(), false);
       assert.equal(await chooseSecond.getAttribute('aria-current'), 'true');
       assert.equal(await first.evaluate(el => el.inert), true);
       assert.ok((await second.textContent()).includes(explanation));
       assert.ok((await second.textContent()).includes('BETTEX'));
-      assert.ok((await page.getByTestId('text-earnings-illustrative').textContent()).length > 40);
+      assert.equal(await page.getByTestId('text-earnings-illustrative').count(), 0);
       const labels = page.locator('[data-testid="chart-earnings-returns"] .recharts-label-list text');
       await labels.first().waitFor({ state: 'visible' });
       await assertStable();

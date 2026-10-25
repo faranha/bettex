@@ -1,4 +1,4 @@
-.hw-sec{position:relative;overflow:hidden;color:#F4F1E8;background:#070B1F;padding:clamp(72px,9vw,120px) 0;min-height:clamp(560px,62vw,720px);display:flex;align-items:center}
+.hw-sec{position:relative;overflow:hidden;color:#F4F1E8;background:radial-gradient(ellipse at 65% 45%,rgba(43,89,255,.28),rgba(43,89,255,0) 65%),#070B1F;padding:clamp(72px,9vw,120px) 0;min-height:clamp(560px,62vw,720px);display:flex;align-items:center}
 .hw-sec::after{content:"";z-index:2;position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#070B1F 0%,rgba(7,11,31,.88) 34%,rgba(7,11,31,0) 68%),linear-gradient(180deg,#070B1F 0%,rgba(7,11,31,0) 14%,rgba(7,11,31,0) 86%,#070B1F 100%)}
 .hw-wrap{position:relative;z-index:3;width:min(100% - 32px,1200px);margin-inline:auto}
 .hw-copy{max-width:540px}
