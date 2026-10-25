@@ -14,7 +14,7 @@ export function EmploymentIncomeProblem() {
       <img src={`${import.meta.env.BASE_URL}pitch-future/tesla-optimus.jpg`} alt="" width={1024} height={1024} />
     </div>
     <p className="mono pb-problem__topic">2. Emprego e renda ameaçados pela IA</p>
-    <h3 id="problema-ia-t" className="display">Tese da BETTEX: automação não garante prosperidade para todos.</h3>
+    <h3 id="problema-ia-t" className="display">Automação não garante prosperidade para todos.</h3>
     <PitchSlider id="emprego-ia-slider" tone="dark" label={['IA, trabalho e renda em blocos', 'AI, work and income blocks', 'IA, trabajo e ingresos por bloques']} slides={[
       { label: ['Promessa de abundância', 'Promise of abundance', 'Promesa de abundancia'], node: <>
     <p>Musk apresenta a visão de máquinas substituindo o trabalho humano e de renda universal alta. A tese da BETTEX é outra: sem ampliar o acesso aos ganhos da tecnologia, a automação pode aprofundar a perda de renda e a exclusão antes de produzir prosperidade.</p>

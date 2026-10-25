@@ -3,6 +3,12 @@ name: Texto do produto sem metaconversa
 description: Evitar comentários editoriais sobre a finalidade do pitch, da documentação e do site.
 ---
 
+No cartão de operação da homepage, usar “Nossa IA” em vez de “BTX e subagentes” e explicar sua atuação de forma simples, sem detalhar a hierarquia dos agentes.
+
+**Why:** O criador corrigiu: “nao pecisa falar btx e subagentes, apenas NOSSA IA amigo.. seja simples”.
+
+**How to apply:** Simplificar a comunicação comercial desse cartão, preservando a estratégia por padrões e os limites de risco. Isso não modifica a arquitetura técnica nem exige apagar os responsáveis da documentação.
+
 Não usar “direção DeFi” para explicar descentralização ou suas consequências.
 
 **Why:** O criador apontou “Direcao defi? nao faz sentido isso”.

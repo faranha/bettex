@@ -11,7 +11,13 @@ Na homepage, o criador pediu restaurar Ethereum ao lado de Starknet e Allora e a
 
 **Why:** O criador pediu explicitamente “devolve o ethereum aqui ficou pequeno” após a redução para duas marcas.
 
-**How to apply:** Preservar essas três marcas legíveis na faixa abaixo do hero. O pedido não autoriza alterar a rede operacional, reintroduzir Arbitrum ou mudar a faixa do Pitch.
+**How to apply:** Preservar essas três marcas legíveis na faixa abaixo do hero. O pedido não autoriza alterar a rede operacional ou reintroduzir Arbitrum.
+
+O Pitch também deve exibir os logos de Starknet, Allora e Ethereum.
+
+**Why:** O criador pediu explicitamente “pitch precisa ter os logos da starknet, allora e eth”.
+
+**How to apply:** Manter as três marcas na faixa de tecnologias do Pitch, sem inferir parceria ou integração operacional.
 
 **Why:** O criador pediu retirar Robinhood dos parceiros tecnológicos porque “está ocupando muito espaço”.
 

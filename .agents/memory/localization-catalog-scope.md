@@ -23,6 +23,12 @@ For editorial photographs, separate neutral asset/rights metadata from visible t
 
 **How to apply:** Audit alts and explanatory badges normally, while keeping filenames and original authorship/license metadata in an explicitly isolated metadata module. Do not add fake translations for technical identifiers.
 
+Navigation anchor IDs also need to stay out of translatable conditional expressions; simply moving an ID into a local constant does not necessarily isolate it from the scanner.
+
+**Why:** A locale-specific navigation label caused a routing ID to be collected as visible copy; aliasing it to a constant still produced the same false missing-translation errors.
+
+**How to apply:** Keep label selection based on existing copy or explicitly isolated metadata, and verify the source-message audit without inventing translations for IDs. Preserve route and anchor values.
+
 **Why:** Scanning those strings as Portuguese source text produced hundreds of false missing-translation errors and blocked the production build despite complete three-language UI labels.
 
 Neutral symbols, proper place names and numeric hour units are not untranslated prose. Word-boundary matching of a bare unit letter does not cover a unit attached to digits.
@@ -66,9 +72,9 @@ acessibilidade em EN/ES; a auditoria estática de tuplas sozinha não detecta is
 
 Identificadores que selecionam partes de um componente são metadados, não textos da interface.
 
-**Why:** Um novo seletor de documentação foi interpretado como texto traduzível; trocar aspas por uma expressão JSX não mudou a classificação.
+**Why:** Um novo seletor de documentação foi interpretado como texto traduzível; trocar aspas por uma expressão JSX não mudou a classificação. Aliases de âncoras também foram coletados como prosa quando escritos como ternário ou mapa genérico de strings.
 
-**How to apply:** Quando a auditoria exigir tradução de uma chave interna, conferir a classificação de atributos estruturais antes de acrescentar traduções artificiais. Reutilizar a interface estrutural já reconhecida ou delimitar corretamente a nova propriedade, sem desabilitar a auditoria de textos visíveis.
+**How to apply:** Quando a auditoria exigir tradução de uma chave interna, conferir a classificação de atributos estruturais antes de acrescentar traduções artificiais. Reutilizar a interface estrutural já reconhecida, como metadados com campo `id` para destinos de âncoras, ou delimitar corretamente a nova propriedade, sem desabilitar a auditoria de textos visíveis.
 
 Tuplas documentais novas precisam integrar tanto o catálogo usado em runtime quanto o extrator e a auditoria de fontes. O pragma de JSX nativo não impede que o coletor de títulos encaminhe rótulos já traduzidos ao tradutor global.
 

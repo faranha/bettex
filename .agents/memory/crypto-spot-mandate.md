@@ -3,6 +3,12 @@ name: Mandato inicial de Cripto
 description: Escolha do criador por BTC/ETH/SOL spot; separar esse mandato das consultas Polymarket e de propostas de parâmetros.
 ---
 
+A direção pública atual não tem ativo inicial fixo nem ativo inicial “a definir”. A análise quantitativa distribuída identifica padrões de manipulação; esses padrões orientam a seleção dos ativos e os pontos de entrada e saída, coordenados pelo BTX e seus subagentes.
+
+**Why:** O criador esclareceu: “não tem ativo inicial [...] a gente identifica padrões e opera em cima dos padrões de manipulação e entra e sai. Então não é a definir”.
+
+**How to apply:** Alinhar homepage, Pitch e roadmap a essa estratégia definida, sem transformar a seleção orientada por padrões em uma pendência de escolha do primeiro ativo. A seleção histórica de BTC/ETH/SOL abaixo não deve ser apresentada como um ativo inicial obrigatório; isso não comprova desempenho nem autoriza mudar o runtime do demo.
+
 O criador escolheu “BTC, ETH e SOL no mercado spot”, na alternativa definida como compra e venda dos próprios ativos, sem alavancagem.
 
 **Why:** Pediu concentrar o trabalho em Cripto e formar a base de estratégias, inteligência, seleção, organização, comunicação e fila antes de levá-la ao demo.

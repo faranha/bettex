@@ -231,10 +231,10 @@ export function ProjectModelSection() {
               <p className="pm-detail">Todo BETTEX na carteira oficial participa automaticamente, sem ativação. Quem entra durante uma rodada espera a próxima. Receber a sua parte não tira seus tokens, mas qualquer saída cancela créditos ainda não pagos.</p>
             </div>
             <div className="pm-step">
-              <span className="pm-index">03 / AGENTE DE IA</span>
+              <span className="pm-index">03 / OPERAÇÃO</span>
               <div className="pm-visual"><OrderFlowIllustration /></div>
-              <h3 className="pm-agent-title">Um agente de IA{' '}<em>investe contra a manipulação.</em></h3>
-              <p className="pm-detail">Um único agente de IA identifica padrões de manipulação no mercado cripto e investe contra quem os provoca, segundo critérios e limites de risco.</p>
+              <h3 className="pm-agent-title">Nossa IA{' '}<em>opera por padrões.</em></h3>
+              <p className="pm-detail">Nossa IA analisa padrões de manipulação do mercado para escolher os ativos e os momentos de compra e venda, respeitando limites de risco.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">04 / RESULTADO</span>

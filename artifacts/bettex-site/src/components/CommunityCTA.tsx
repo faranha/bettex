@@ -42,8 +42,6 @@ export function FloatingCommunityCTA() {
 
   if (dismissed) return null;
   return (
-    <>
-      <div className="community-float__spacer" aria-hidden="true" />
       <div className="community-float">
         <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="community-float__link" data-community-source="floating" data-testid="link-community-floating">
           <span className="community-float__badge"><TelegramIcon className="community-float__icon" /></span>
@@ -51,6 +49,5 @@ export function FloatingCommunityCTA() {
         </a>
         <button type="button" className="community-float__close" onClick={dismiss} aria-label="Fechar convite da comunidade" data-testid="button-community-floating-close"><X size={18} aria-hidden="true" /></button>
       </div>
-    </>
   );
 }

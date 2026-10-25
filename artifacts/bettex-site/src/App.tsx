@@ -24,6 +24,7 @@ import '@/components/SiteFooter.css';
 import '@/pages/pitch.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
 import { HomeEarningsSection } from '@/components/HomeRevisionSections';
+import { HomeWhaleSection } from '@/components/HomeWhaleSection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
 import { legacyDocumentationHashes } from '@/lib/documentation-aliases';
@@ -164,38 +165,6 @@ function SiteHeader() {
 function SiteFooter() {
   const linkProps = usePageLinkProps();
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
-    <div className="site-footer__cta site-footer__cta--home relative overflow-hidden bg-[#2B59FF]">
-      <div aria-hidden="true" className="site-footer__sports">
-        <img
-          src={`${import.meta.env.BASE_URL}footer-rio-scene-hd.webp`}
-          srcSet={`${import.meta.env.BASE_URL}footer-rio-scene-sharp.webp 1024w, ${import.meta.env.BASE_URL}footer-rio-scene-hd.webp 2048w`}
-          sizes="(max-width: 1023px) 100vw, 1000px"
-          width={2048}
-          height={2048}
-          alt=""
-          loading="lazy"
-          decoding="async"
-          className="site-footer__sports-photo"
-        />
-      </div>
-      <div className="page-wrap relative">
-        <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">
-          <div className="pb-2 lg:pb-20">
-            <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#F4F1E8]">BETTEX</span>
-            <h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">{t('Comece a ganhar.')}</span><span className="block text-[#F2B632]">{t('Invista com inteligência.')}</span></h2>
-            <p className="mt-6 max-w-[420px] text-base font-medium leading-7 text-[#F4F1E8]">{t('O agente IA da BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.')}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a {...linkProps} href={DOCUMENTATION_PATH} className="tap inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-[#F4F1E8]/70 px-6 py-3.5 text-sm font-bold text-[#F4F1E8] hover:bg-[#F4F1E8] hover:text-[#070B1F] focus-visible:outline-[#F2B632]">Ler a documentação</a>
-              <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-community-source="footer" data-testid="link-community-footer" className="tap inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F4F1E8] px-6 py-3.5 text-sm font-bold text-[#070B1F] hover:bg-white focus-visible:outline-[#F2B632]"><TelegramIcon className="h-5 w-5" />Vem pra comunidade</a>
-            </div>
-          </div>
-          <div className="relative z-10 mx-auto w-full max-w-[400px] self-end lg:max-w-[540px] lg:justify-self-end">
-            <div className="h-[260px] lg:h-[420px]" aria-hidden="true" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="h-1 bg-[#F2B632]" aria-hidden="true" />
     <div className="page-wrap relative">
       <div className="sf-nav">
         <div className="sf-brand">
@@ -205,7 +174,7 @@ function SiteFooter() {
             <LanguageSelector className="sf-lang" showLabel />
             <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="sf-community" data-community-source="footer" data-testid="link-community-footer-nav"><TelegramIcon className="sf-community__icon" /><span>Entre na comunidade</span></a>
           </div>
-          <a href={X_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-testid="link-community-x-footer" className="inline-flex min-h-10 w-fit items-center gap-2 text-sm font-semibold text-[#e1e7f4] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4F1E8]">
+          <a href={X_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" data-testid="link-community-x-footer" className="sf-x focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4F1E8]">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="sf-community__icon" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.153h7.594l5.243 6.932 6.064-6.932ZM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644Z" /></svg>
             <span>Siga a Bettex no X</span>
           </a>
@@ -290,6 +259,7 @@ function Home() {
 
       <TechnologyNetworks label="Tecnologias" ethereum />
       <HomeEarningsSection />
+      <HomeWhaleSection />
 
       <ProjectModelSection />
 

@@ -9,6 +9,24 @@ O criador pediu: “Nós precisamos trabalhar com imagens sempre”, ao apontar 
 
 **How to apply:** Incluir imagens relevantes e visíveis também no mobile ao trabalhar nas seções do site, preservando o copy aprovado e a separação entre a tese e o hero.
 
+A homepage deve apresentar uma baleia e gráficos de trade com o título: “Baleias manipulam o mercado. Nós sabemos quando entrar.” A explicação é: “Nós descobrimos o padrão das baleias por meio de análise quantitativa distribuída, e a nossa IA administra os investimentos.”
+
+**Why:** O criador pediu essa seção e depois corrigiu o posicionamento: “Nós sabemos quando entrar”, análise quantitativa distribuída identifica o padrão e a IA administra os investimentos.
+
+**How to apply:** Preservar o conceito visual e a mensagem nas traduções. Os gráficos são ilustrativos; não apresentá-los como operações reais ou prova de previsão. A estratégia segue em validação, sem lucro ou antecipação garantidos.
+
+A baleia dessa seção deve ser desenhada/ilustrada e compor o fundo junto com o gráfico, sem ficar contida em um container.
+
+**Why:** O criador rejeitou a fotografia em um quadro: “a baleia tem que ser desenhada, ilustrada, ao fundo, o grafico tambem, nao pode ficar contido em um container, tem que ser mais artistico”.
+
+**How to apply:** Integrar baleia e gráfico em uma composição artística aberta sobre o fundo da seção, também no mobile. Não voltar à foto realista nem ao painel com borda e cantos arredondados; preservar os textos aprovados e sua legibilidade.
+
+Não exibir o rótulo “Ilustração conceitual” na seção da baleia.
+
+**Why:** O criador pediu “tira esse ilustracao conceitual”, apontando especificamente a legenda no canto da arte.
+
+**How to apply:** Omitir essa legenda nos três idiomas, sem retirar o aviso de estratégia em validação ou alterar a arte e os textos principais.
+
 A fotografia na seção “Admita: você perde mais do que ganha” deve ficar dentro da área de conteúdo, sem escapar pela esquerda.
 
 **Why:** O criador mostrou a fotografia afastada do conteúdo e pediu “nao deixe a imagem escapar para esquerda”.
@@ -30,6 +48,18 @@ Para o robô do hero, seguir a linguagem do agente branco do Pitch: carcaça cla
 **Why:** O criador mostrou o agente do Pitch e pediu “prefiro esse agente esse robo aqui na home, mais nesse estilo, nao o mesmo”.
 
 **How to apply:** Substituir o humanoide de rosto humano e metal prateado por um parceiro de IA nesse estilo. Não alterar o robô do Pitch nem copiar sua pose de ajudar uma pessoa.
+
+O robô do hero deve ter expressão neutra/séria, sem sorriso, e o logo oficial da BETTEX visível.
+
+**Why:** O criador rejeitou o robô sorridente: “Por que está dando risada [...] Cadê o logo da Betex aqui nesse robô? A gente tem que redesenhar esse robô.”
+
+**How to apply:** Redesenhar a linguagem do robô, não apenas colar a marca no modelo sorridente. Aplicar o emblema oficial, sem logotipo inventado pela geração; preservar o homem e a composição do hero.
+
+No peito desse robô, usar apenas o símbolo oficial em prata metálica, monocromático e discreto, sem borda ou placa colorida.
+
+**Why:** O criador considerou a composição “quase perfeito” e pediu corrigir somente o logo do peito: “metalico, sem cor [...] mais discreto, prateado apenas, sem borda”.
+
+**How to apply:** Integrar o símbolo à carcaça clara, em vez de aplicar um adesivo com moldura. Preservar a composição aprovada, o homem e os demais detalhes do robô.
 
 **How to apply:** Nas demais imagens editoriais, alinhar a fotografia e seu degradê aos limites do conteúdo, inclusive em telas largas e no celular. O fundo do hero é a exceção: ocupa toda a largura.
 

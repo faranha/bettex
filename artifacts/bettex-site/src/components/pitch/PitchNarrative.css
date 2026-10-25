@@ -24,6 +24,11 @@
 .pn__rules li { padding-left: 14px; border-left: 3px solid #F2B632; font-size: 14.5px; line-height: 1.6; color: #183173; }
 .pn__pix .pn__rules { margin-bottom: 20px; }
 .pn__pix .pn__rules li { color: #e3eaff; }
+.pn__pix .pn__icon-heading { display: flex; align-items: flex-start; gap: 12px; }
+.pn__icon-heading > svg { flex: none; width: 28px; height: 28px; margin-top: .12em; color: #F2B632; }
+.pn__icon-heading > span { min-width: 0; }
+.pn__pix .pn__icon-rules li { display: grid; grid-template-columns: 22px minmax(0, 1fr); align-items: start; gap: 10px; padding-left: 0; border-left: 0; }
+.pn__icon-rules li > svg { width: 22px; height: 22px; margin-top: 1px; color: #F2B632; }
 .pn__diff { margin-top: 28px; display: grid; gap: 6px; padding-top: 18px; border-top: 1px solid rgba(7,11,31,.2); font-size: 14.5px; line-height: 1.7; color: #183173; }
 .pn__diff strong { color: #070B1F; }
 .pn__facts { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0; margin: 28px 0 0; }
