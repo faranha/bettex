@@ -26,9 +26,9 @@
 }
 @media (min-width: 768px) {
   .pitch #jornada-slider .pitch-slider__panel[data-slide-index="1"]:not([hidden]) {
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch;
   }
-  .pitch #jornada-slider .pitch-slider__panel[data-slide-index="1"] > .pn__pix { margin: 0; }
+  .pitch #jornada-slider .pitch-slider__panel[data-slide-index="1"] > .pn__pix { display: flex; flex-direction: column; min-width: 0; margin: 0; }
 }
 @media (max-width: 767px) {
   .pitch .cover { --pitch-hero-padding: 24px; }
@@ -52,7 +52,7 @@
 .pitch .cover::after { display: none; }
 .pitch > .technology-networks { border-block: 0; }
 .pitch .slide + .slide, .pitch #solucao { border-top: 0; }
-.pitch #problema { background: #fff; }
+.pitch #problema { background: #F4F1E8; }
 .pitch #publico { background: #0D1530; }
 .pitch .pitch-solution-engine { margin-top: 36px; }
 .pitch .pitch-solution-engine > h3 {

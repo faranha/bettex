@@ -340,7 +340,7 @@
 .roadmap__stop--9 { --sc: #0EA5C6; --sb: #D6F3FA; --sd: #0A6A82; }
 .roadmap__stop--current .roadmap__place { border-color: #2B59FF; box-shadow: 0 0 0 2px rgba(43,89,255,.12), 0 13px 27px rgba(7,11,31,.06); }
 .roadmap--slider .roadmap__intro { padding-bottom: 36px; }
-.roadmap--slider .roadmap__map { max-width: 820px; margin-inline: auto; padding-top: 32px; }
+.roadmap--slider .roadmap__map { max-width: 820px; margin-inline: auto; padding: 32px 0; }
 .roadmap--slider .roadmap__stops {
   display: flex; flex-direction: row; gap: 20px; overflow-x: auto;
   scroll-snap-type: x mandatory; overscroll-behavior-x: contain;

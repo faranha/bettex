@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldAlert } from 'lucide-react';
 import { PitchTokenCharts } from './PitchTokenCharts';
 import { PitchProfitSplitChart } from './PitchProfitSplitChart';
 import { useX } from './pitchCopy';
@@ -18,10 +18,6 @@ export function PitchTokenomics() {
       <h2 id="economia-t" className="display ptk__h">{x('1 bilhão de BETTEX.', '1 billion BETTEX.', '1.000 millones de BETTEX.')} <span>{x('Participação nos lucros elegíveis.', 'Sharing in eligible profits.', 'Participación en los beneficios elegibles.')}</span></h2>
       <div id="economia" className="ptk__eco">
         <div className="ptk__cols">
-          <div className="ptk__capital">
-            <h3 className="display">{x('Capital: mint inicial e vendas da comunidade', 'Capital: initial mint and community sales', 'Capital: mint inicial y ventas de la comunidad')}</h3>
-            <p>{x('O mint inicial forma a base da tesouraria; as vendas primárias de tokens da comunidade já liberados a ampliam. Capital captado não é lucro do trading.', 'The initial mint forms the base of the treasury; primary sales of released community tokens add to it. Capital raised is not trading profit.', 'El mint inicial forma la base de la tesorería; las ventas primarias de tokens de la comunidad ya liberados la amplían. El capital captado no es beneficio del trading.')}</p>
-          </div>
           <div className="ptk__profit" role="group" aria-label={x('Divisão do lucro elegível', 'Split of eligible profit', 'División del beneficio elegible')}>
             <h3 className="display">{x('Lucro elegível: após custos, obrigações, avaliação das posições abertas, reservas e liquidez', 'Eligible profit: after costs, obligations, valuation of open positions, reserves and liquidity', 'Beneficio elegible: tras costes, obligaciones, valoración de posiciones abiertas, reservas y liquidez')}</h3>
             <div className="ptk__profit-layout">
@@ -29,8 +25,18 @@ export function PitchTokenomics() {
               <dl>{split.map(([p, n, d], i) => <div key={i}><dt>{n}</dt><dd className="display">{p}</dd><dd>{d}</dd></div>)}</dl>
             </div>
           </div>
+          <div className="ptk__capital">
+            <h3 className="display">{x('Capital: mint inicial e vendas da comunidade', 'Capital: initial mint and community sales', 'Capital: mint inicial y ventas de la comunidad')}</h3>
+            <p>{x('O mint inicial forma a base da tesouraria; as vendas primárias de tokens da comunidade já liberados a ampliam. Capital captado não é lucro do trading.', 'The initial mint forms the base of the treasury; primary sales of released community tokens add to it. Capital raised is not trading profit.', 'El mint inicial forma la base de la tesorería; las ventas primarias de tokens de la comunidad ya liberados la amplían. El capital captado no es beneficio del trading.')}</p>
+          </div>
         </div>
-        <p className="ptk__rule">{x('Todo BETTEX na carteira oficial participa automaticamente, sem chamada manual de staking; tokens bloqueados e estoque de venda ficam fora. A participação nos resultados não vem de emissão de tokens e não garante preço, resgate nem valor patrimonial.', 'All BETTEX in the official wallet participates automatically, with no manual staking call; locked tokens and sale inventory are excluded. Participation in results does not come from token issuance and guarantees no price, redemption or net asset value.', 'Todo BETTEX en la cartera oficial participa automáticamente, sin llamada manual de staking; los tokens bloqueados y el stock de venta quedan fuera. La participación en los resultados no proviene de emisión de tokens y no garantiza precio, rescate ni valor patrimonial.')}</p>
+        <aside className="ptk__rule" role="note" aria-labelledby="ptk-rule-title">
+          <ShieldAlert aria-hidden="true" />
+          <div>
+            <strong id="ptk-rule-title">{x('Atenção: regras de participação', 'Important participation rules', 'Atención: reglas de participación')}</strong>
+            <p>{x('Todo BETTEX na carteira oficial participa automaticamente, sem chamada manual de staking; tokens bloqueados e estoque de venda ficam fora. A participação nos resultados não vem de emissão de tokens e não garante preço, resgate nem valor patrimonial.', 'All BETTEX in the official wallet participates automatically, with no manual staking call; locked tokens and sale inventory are excluded. Participation in results does not come from token issuance and guarantees no price, redemption or net asset value.', 'Todo BETTEX en la cartera oficial participa automáticamente, sin llamada manual de staking; los tokens bloqueados y el stock de venta quedan fuera. La participación en los resultados no proviene de emisión de tokens y no garantiza precio, rescate ni valor patrimonial.')}</p>
+          </div>
+        </aside>
       </div>
       <div id="token" className="ptk__tok" aria-labelledby="token-t">
         <h3 id="token-t" className="sr-only">{x('Oferta fixa e liberação dos tokens', 'Fixed supply and token release', 'Oferta fija y liberación de los tokens')}</h3>

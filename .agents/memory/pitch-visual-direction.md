@@ -13,13 +13,37 @@ No Pitch, reproduzir as cores, o estilo visual e o tamanho do H1 da homepage; us
 
 **Why:** O criador pediu “apenas reproduza as cores da homepage por favor, o tamanho dos h1”, esclareceu “no pitch” e acrescentou “reproduza tambem o estilo visual, precisamos de mais graficos”.
 
-**How to apply:** Usar a homepage atual como referência real, não uma aproximação de paleta ou tipografia. Manter o conteúdo, as seções unificadas e o rodapé; gráficos quantitativos precisam usar dados e regras existentes, sem inventar projeções.
+**How to apply:** Usar a homepage atual como referência real, não uma aproximação de paleta ou tipografia. Ao alinhar o hero do Pitch, reutilizar a composição real da home, incluindo altura, escala do H1, botão e arte; não criar uma versão aproximada. Manter o conteúdo, as seções unificadas e o rodapé; gráficos quantitativos precisam usar dados e regras existentes, sem inventar projeções.
 
 Melhorar a estrutura do Pitch seção por seção, não apenas igualar cores e fontes.
 
 **Why:** Ao comparar o carrossel ilustrado da home com os cartões do público do Pitch, o criador apontou a diferença de estrutura e pediu “vamos secao por secao”.
 
 **How to apply:** Trabalhar somente a seção em discussão. Usar a hierarquia real da home: mensagem e número protagonistas, texto mais curto, visual relevante e navegação integrada ao conteúdo, sem repetir grades de cartões concorrentes.
+
+Preservar o padrão editorial da home no carrossel de público, com a mesma altura e o mesmo tratamento visual em todos os slides.
+
+**Why:** O criador confirmou que a mudança “melhorou MUITO”, mas rejeitou a mistura entre slides editoriais e painéis escuros de outra estrutura, além das alturas diferentes.
+
+**How to apply:** Manter número e texto em destaque junto do visual. Interseção, faixa etária e gráficos seguem o mesmo padrão dos demais slides. A troca de conteúdo não pode deslocar setas ou indicadores, inclusive no celular.
+
+Cards do Pitch exibidos lado a lado devem manter as mesmas dimensões e bordas alinhadas, inclusive quando um deles tem detalhes expansíveis.
+
+**Why:** O criador apontou que os cards de Pix e custos pareciam desalinhados e exigiu o mesmo tamanho.
+
+**How to apply:** Esticar os cards dentro da mesma linha de grade para igualar suas alturas. Ao abrir detalhes, manter ambos alinhados sem ocultar ou cortar conteúdo.
+
+A seção de problema deve ter fundo diferente da seção de público e um H1 claro, no padrão dos títulos principais do site.
+
+**Why:** O criador apontou que os dois blocos brancos se confundiam e pediu expressamente diferenciação do fundo e respeito à estilização geral do H1.
+
+**How to apply:** Preservar a separação visual entre as duas seções e a hierarquia do título, sem alterar o carrossel de público já aprovado.
+
+O convite final à comunidade deve usar tons claros e uma imagem de hero à direita.
+
+**Why:** O criador rejeitou o fundo escuro desse bloco e pediu uma imagem de destaque ao lado direito. Depois rejeitou o degradê no pé do recorte e pediu que as pessoas encostassem na divisão com o rodapé.
+
+**How to apply:** Preservar a chamada ao Telegram e os links sociais. No celular, manter a imagem visível abaixo do conteúdo, sem retirar a apresentação visual. Manter o recorte das pessoas sem máscara em degradê, encostado ao limite inferior da seção junto à divisão com o rodapé.
 
 Separar os blocos com cores e fundos, sem linhas divisórias. A copy deve conectar explicitamente público → problema desse público → proposta da BETTEX, com H1 claro e títulos que continuem o raciocínio.
 
@@ -37,7 +61,7 @@ Tokenomics também deve ser uma única seção compacta, com um fundo e um títu
 
 **Why:** O criador apontou os dois blocos e reiterou “tokenomics tambem esta parecendo 2 dsecoes distintas, tem que unificar, otimizar o espaco”.
 
-**How to apply:** Integrar os gráficos e regras ao mesmo bloco visual, reduzir aberturas e espaço desperdiçado e preservar números, datas, séries e condições.
+**How to apply:** Integrar os gráficos e regras ao mesmo bloco visual, reduzir aberturas e espaço desperdiçado e preservar números, datas, séries e condições. Dar destaque às regras de participação e à ausência de garantias em uma caixa de alerta dentro desse mesmo bloco, sem criar uma seção nova.
 
 Não reintroduzir no Pitch a seção “Hoje, um demo visual. A comunidade prepara o lançamento.”, incluindo o cartão da fase atual, o bloco Community-driven com a imagem das pessoas e a sanfona de condições do mint.
 

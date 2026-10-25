@@ -84,9 +84,9 @@ export function PitchStrategy() {
       <p>{x('O agente opera com a tesouraria, nunca com os tokens dos usuários. O fundador e o time administram no início; a autonomia futura depende de desempenho validado e de controles.', 'The agent operates with the treasury, never with users’ tokens. The founder and team administer at first; future autonomy depends on validated performance and controls.', 'El agente opera con la tesorería, nunca con los tokens de los usuarios. El fundador y el equipo administran al inicio; la autonomía futura depende de un desempeño validado y de controles.')}</p>
     </div>
     <dl className="pn__facts">
-      <div><dt>{x('Estrutura de IA', 'AI structure', 'Estructura de IA')}</dt><dd>{x('BETTEX + subagentes', 'BETTEX + subagents', 'BETTEX + subagentes')}</dd></div>
-      <div><dt>{x('Capital operado', 'Operated capital', 'Capital operado')}</dt><dd>{x('Tesouraria', 'Treasury', 'Tesorería')}</dd></div>
-      <div><dt>{x('Entradas e saídas das operações', 'Trade entries and exits', 'Entradas y salidas de las operaciones')}</dt><dd>{x('Padrões de manipulação', 'Manipulation patterns', 'Patrones de manipulación')}</dd></div>
+      <div><dt><span className="pn__fact-icon" aria-hidden="true"><Network size={20} strokeWidth={2.2} /></span><span>{x('Estrutura de IA', 'AI structure', 'Estructura de IA')}</span></dt><dd>{x('BETTEX + subagentes', 'BETTEX + subagents', 'BETTEX + subagentes')}</dd></div>
+      <div><dt><span className="pn__fact-icon" aria-hidden="true"><Wallet size={20} strokeWidth={2.2} /></span><span>{x('Capital operado', 'Operated capital', 'Capital operado')}</span></dt><dd>{x('Tesouraria', 'Treasury', 'Tesorería')}</dd></div>
+      <div><dt><span className="pn__fact-icon" aria-hidden="true"><ArrowLeftRight size={20} strokeWidth={2.2} /></span><span>{x('Entradas e saídas das operações', 'Trade entries and exits', 'Entradas y salidas de las operaciones')}</span></dt><dd>{x('Padrões de manipulação', 'Manipulation patterns', 'Patrones de manipulación')}</dd></div>
     </dl>
   </div>;
 }
