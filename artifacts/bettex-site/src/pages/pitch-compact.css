@@ -48,3 +48,11 @@
 @media (prefers-reduced-motion: reduce) {
   .pitch .cover__grid > .cover__project img { animation: none; }
 }
+.pitch .cover > .page-wrap { align-items: stretch; }
+.pitch .slide__body--flow { padding-block: 40px 48px; }
+.pitch .slide--flow + .slide--flow { border-top-width: 0; }
+.pitch .slide--flow.slide--dark .slide__body--flow { border-top: 0; }
+@media (min-width: 768px) { .pitch .cover__grid:has(.cover__project--scene) .cover__copy { padding-block: 24px; } }
+@media (max-width: 767px) {
+  .pitch .cover__grid > .cover__project--scene { margin-bottom: calc(-1 * var(--pitch-hero-padding)); }
+}

@@ -1,14 +1,11 @@
 import { useEffect, type ReactNode } from 'react';
-import { ArrowRight } from 'lucide-react';
 import { TechnologyNetworks } from '@/components/technology/TechnologyNetworks';
 import { AudienceSection } from '@/components/pitch/AudienceSection';
 import { EmploymentIncomeProblem } from '@/components/pitch/EmploymentIncomeProblem';
-import { PitchTokenCharts } from '@/components/pitch/PitchTokenCharts';
+import { PitchTokenomics } from '@/components/pitch/PitchTokenomics';
 import { DemoAppLink } from '@/components/DemoAppLink';
-import { ChapterHero } from '@/components/pitch/ChapterHero';
-import { PitchEditorialImage, PitchEditorialSplit } from '@/components/pitch/PitchEditorialImage';
 import { PitchHeroGraph } from '@/components/pitch/PitchHeroGraph';
-import { PitchContext, PitchJourney, PitchStrategy, PitchFunding } from '@/components/pitch/PitchNarrative';
+import { PitchContext, PitchJourney, PitchStrategy } from '@/components/pitch/PitchNarrative';
 import { useX } from '@/components/pitch/pitchCopy';
 import { t } from '@/lib/i18n';
 import './pitch.css';
@@ -18,28 +15,15 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const DOC = `${BASE}/documentacao`;
 const LEGACY_PITCH_SECTIONS: Record<string, { id: string }> = { tese: { id: 'visao' } };
 
-function Sec({ id, n, kicker, title, dark = false, summary, hero, children }: { id: string; n?: string; kicker: string; title: ReactNode; dark?: boolean; summary?: string; hero?: string; children: ReactNode }) {
-  return <section id={id} aria-labelledby={`${id}-t`} className={`slide ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
-    {hero && n ? <ChapterHero id={id} n={n} kicker={kicker} title={title} summary={summary ?? ''} src={hero} tone={id === 'solucao' ? 'blue' : 'ink'} /> : <header className={`slide__head ${dark ? 'slide__head--ink' : 'slide__head--paper'}`}>
-      <div className="page-wrap slide__headin">
-        <div className={`mono flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}><span className="h-px w-10 shrink-0 bg-current" aria-hidden="true" />{kicker}</div>
-        <h2 id={`${id}-t`} className="display mt-4 max-w-[860px] text-[clamp(1.9rem,4.6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-.06em]">{title}</h2>
-        {summary ? <p className={`mt-5 max-w-[700px] text-base leading-7 ${dark ? 'text-[#e3eaff]' : 'text-[#183173]'}`}>{summary}</p> : null}
-      </div>
-    </header>}
-    <div className="page-wrap slide__body">{children}</div>
+function Sec({ id, title, dark = false, summary, children }: { id: string; n?: string; kicker?: string; title: ReactNode; dark?: boolean; summary?: string; hero?: string; children: ReactNode }) {
+  return <section id={id} aria-labelledby={`${id}-t`} className={`slide slide--flow ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
+    <div className="page-wrap slide__body slide__body--flow">
+      <h2 id={`${id}-t`} className="display max-w-[860px] text-[clamp(1.7rem,3.6vw,2.8rem)] font-extrabold leading-[1.05] tracking-[-.05em]">{title}</h2>
+      {summary ? <p className={`mt-3 max-w-[700px] text-base leading-7 ${dark ? 'text-[#e3eaff]' : 'text-[#183173]'}`}>{summary}</p> : null}
+      <div className="mt-6">{children}</div>
+    </div>
   </section>;
 }
-
-function Card({ label, title, children, dark = false }: { label: string; title: string; children: ReactNode; dark?: boolean }) {
-  return <div className={`rounded-2xl border p-6 ${dark ? 'border-[#2B59FF]/40 bg-[#0d1536]' : 'border-[#070B1F]/15 bg-white/50'}`}>
-    <span className={`mono text-[10px] font-bold uppercase tracking-[.14em] ${dark ? 'text-[#5F86FF]' : 'text-[#2B59FF]'}`}>{label}</span>
-    <h3 className="display mt-3 text-xl font-extrabold leading-tight tracking-[-.04em]">{title}</h3>
-    <p className={`mt-3 text-[15px] leading-7 ${dark ? 'text-[#c5d2f1]' : 'text-[#183173]'}`}>{children}</p>
-  </div>;
-}
-
-const Doc = ({ hash, children, dark = false }: { hash: string; children: ReactNode; dark?: boolean }) => <a href={`${DOC}#${hash}`} className={`tap inline-flex min-h-11 items-center gap-2 text-sm font-bold underline underline-offset-4 ${dark ? 'text-[#F2B632]' : 'text-[#2B59FF]'}`}>{children}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>;
 
 export function PitchPage() {
   const x = useX();
@@ -72,11 +56,10 @@ export function PitchPage() {
     };
   }, []);
   return <main className="pitch">
-    <section id="visao" aria-label="Início" className="cover relative overflow-hidden text-[#F4F1E8]">
+    <section id="visao" aria-label={x('Apresentação', 'Overview', 'Presentación')} className="cover relative overflow-hidden text-[#F4F1E8]">
       <div className="page-wrap relative pb-8 pt-8 sm:pb-12 sm:pt-14">
         <div className="cover__grid">
           <div className="cover__copy">
-            <span className="cover__audience mono mb-5 block text-xs font-bold uppercase tracking-[.12em] text-[#F2B632]">{x('Início', 'Start', 'Inicio')}</span>
             <h1 className="display text-[clamp(1.65rem,3.3vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-.05em]">{x('IA opera em cripto.', 'AI trades crypto.', 'La IA opera en cripto.')} <span className="text-[#F2B632]">{x('Você participa dos lucros.', 'You share in the profits.', 'Tú participas en los beneficios.')}</span></h1>
             <p className="cover__market mt-4"><strong>{x('Compre BETTEX e participe dos lucros elegíveis da nossa IA. Recebimento em reais e saque TODOS OS DIAS via Pix previstos, sem precisar saber operar cripto.', 'Buy BETTEX and share in our AI’s eligible profits. Payouts in reais and withdrawals EVERY DAY via Pix are planned, with no need to know how to trade crypto.', 'Compra BETTEX y participa en los beneficios elegibles de nuestra IA. Cobros en reales y retiros TODOS LOS DÍAS por Pix previstos, sin tener que saber operar en cripto.')}</strong></p>
             <p className="cover__notice mt-4 text-[13px] leading-[1.55] text-[#c5d2f1]">{x('Demo visual disponível. Sem trading, pagamentos ou retornos garantidos. Há risco de perda.', 'Visual demo available. No trading, payments or guaranteed returns. There is a risk of loss.', 'Demo visual disponible. Sin trading, pagos ni retornos garantizados. Existe riesgo de pérdida.')}</p>
@@ -94,12 +77,12 @@ export function PitchPage() {
 
     <AudienceSection />
 
-    <Sec id="problema" kicker={x('Problema', 'Problem', 'Problema')} hero="pitch-illustrations/pitch-token-participation.webp" n="03" title={x('Perdas nas apostas. Renda sob pressão.', 'Betting losses. Income under pressure.', 'Pérdidas en las apuestas. Ingresos bajo presión.')} summary={x('Dinheiro essencial exposto nas apostas, poucas reservas e riscos para emprego e salário.', 'Essential money exposed to betting, limited savings and risks to jobs and wages.', 'Dinero esencial expuesto a las apuestas, pocas reservas y riesgos para el empleo y el salario.')}>
+    <Sec id="problema" kicker={x('Problema', 'Problem', 'Problema')} title={x('Perdas nas apostas. Renda sob pressão.', 'Betting losses. Income under pressure.', 'Pérdidas en las apuestas. Ingresos bajo presión.')} summary={x('Dinheiro essencial exposto nas apostas, poucas reservas e riscos para emprego e salário.', 'Essential money exposed to betting, limited savings and risks to jobs and wages.', 'Dinero esencial expuesto a las apuestas, pocas reservas y riesgos para el empleo y el salario.')}>
       <PitchContext />
       <div id="ambiente-externo"><EmploymentIncomeProblem /></div>
     </Sec>
 
-    <Sec id="solucao" hero="pitch-illustrations/pitch-product-development.webp" n="04" kicker={x('Solução', 'Solution', 'Solución')} title={x('Compre BETTEX. Participe dos lucros.', 'Buy BETTEX. Share in the profits.', 'Compra BETTEX. Participa en los beneficios.')} summary={x('A IA opera em cripto. Você acompanha seus tokens e recebe sua parte em reais, quando houver lucro elegível.', 'AI trades crypto. You track your tokens and receive your share in reais when there is eligible profit.', 'La IA opera en cripto. Tú sigues tus tokens y recibes tu parte en reales cuando hay beneficio elegible.')}>
+    <Sec id="solucao" kicker={x('Solução', 'Solution', 'Solución')} title={x('Compre BETTEX. Participe dos lucros.', 'Buy BETTEX. Share in the profits.', 'Compra BETTEX. Participa en los beneficios.')} summary={x('A IA opera em cripto. Você acompanha seus tokens e recebe sua parte em reais, quando houver lucro elegível.', 'AI trades crypto. You track your tokens and receive your share in reais when there is eligible profit.', 'La IA opera en cripto. Tú sigues tus tokens y recibes tu parte en reales cuando hay beneficio elegible.')}>
       <PitchJourney />
     </Sec>
 
@@ -107,25 +90,9 @@ export function PitchPage() {
       <PitchStrategy />
     </Sec>
 
-    <section id="tokenomics" aria-labelledby="economia-t">
-    <Sec id="economia" hero="pitch-illustrations/pitch-economy-separation.webp" n="05" kicker="Tokenomics" summary={x('Capital captado e lucro do trading são coisas distintas.', 'Capital raised and trading profit are distinct.', 'El capital captado y el beneficio del trading son distintos.')} title={<>Tokenomics.<br /><span className="text-[#2B59FF]">{x('Tesouraria e direitos do token.', 'Treasury and token rights.', 'Tesorería y derechos del token.')}</span></>}>
-      <PitchFunding />
-    </Sec>
+    <PitchTokenomics />
 
-    <Sec id="token" kicker={x('Oferta, vesting e direitos do token', 'Supply, vesting and token rights', 'Oferta, vesting y derechos del token')} dark title={<>{x('1 bilhão de BETTEX.', '1 billion BETTEX.', '1.000 millones de BETTEX.')} <span className="text-[#F2B632]">{x('Quatro destinações.', 'Four allocations.', 'Cuatro destinos.')}</span></>}>
-      <PitchTokenCharts />
-      <div className="mt-8" />
-      <PitchEditorialSplit dark side="right" image={<PitchEditorialImage dark name="pitch-token-participation" />}>
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card dark label={x('Liberação', 'Release', 'Liberación')} title={x('24 meses a partir de março de 2027', '24 months from March 2027', '24 meses desde marzo de 2027')}>{x('Os 90% posteriores liberam em parcelas mensais: comunidade 55%, fundador e equipe 20%, investidores 15%. O mint inicial de 10%, em 10 de dezembro de 2026, é separado. Liberar não comprova venda.', 'The later 90% is released in monthly installments: community 55%, founder and team 20%, investors 15%. The 10% initial mint, on December 10, 2026, is separate. Release does not prove a sale.', 'El 90% posterior se libera en cuotas mensuales: comunidad 55%, fundador y equipo 20%, inversores 15%. El mint inicial del 10%, el 10 de diciembre de 2026, es aparte. Liberar no prueba una venta.')}</Card>
-        <Card dark label={x('Direitos', 'Rights', 'Derechos')} title={x('Participação, não equity', 'Participation, not equity', 'Participación, no equity')}>{x('A destinação de 10% do mint não equivale aos 15% de investidores, a tokens vendidos nem a participação societária. O titular não tem propriedade da tesouraria nem resgate por valor patrimonial, e pode perder na revenda.', 'The 10% mint allotment is not the same as the investors’ 15%, tokens sold or equity. The holder has no ownership of the treasury or redemption at net asset value, and may lose on resale.', 'La asignación del 10% del mint no equivale al 15% de inversores, a tokens vendidos ni a participación societaria. El titular no tiene propiedad de la tesorería ni rescate por valor patrimonial, y puede perder en la reventa.')}</Card>
-      </div>
-      </PitchEditorialSplit>
-      <Doc dark hash="documentacao-emissao">{x('Oferta, vesting e regras na documentação', 'Supply, vesting and rules in the documentation', 'Oferta, vesting y reglas en la documentación')}</Doc>
-    </Sec>
-    </section>
-
-    <Sec id="publico" hero="pitch-illustrations/pitch-online-community.webp" summary={x('Demo visual hoje. Comunidade e preparação para as próximas etapas, sujeitas à adequação jurídica.', 'Visual demo today. Community and preparation for the next stages, subject to legal compliance.', 'Demo visual hoy. Comunidad y preparación para las próximas etapas, sujetas a adecuación jurídica.')} n="06" kicker={x('Fase atual e próximos passos', 'Current phase and next steps', 'Fase actual y próximos pasos')} dark title={<>{x('Preparação.', 'Preparation.', 'Preparación.')} <span className="text-[#F2B632]">{x('Comunidade e mint.', 'Community and mint.', 'Comunidad y mint.')}</span></>}>
+    <Sec id="publico" summary={x('Demo visual hoje. Comunidade e preparação para as próximas etapas, sujeitas à adequação jurídica.', 'Visual demo today. Community and preparation for the next stages, subject to legal compliance.', 'Demo visual hoy. Comunidad y preparación para las próximas etapas, sujetas a adecuación jurídica.')} kicker={x('Fase atual e próximos passos', 'Current phase and next steps', 'Fase actual y próximos pasos')} dark title={<>{x('Preparação.', 'Preparation.', 'Preparación.')} <span className="text-[#F2B632]">{x('Comunidade e mint.', 'Community and mint.', 'Comunidad y mint.')}</span></>}>
       <div className="pitch-launch-layout">
       <aside className="pitch-validation-status" data-testid="pitch-current-phase" aria-label="Fase atual do projeto">
         <DemoAppLink className="mono">DEMO VISUAL DISPONÍVEL</DemoAppLink>

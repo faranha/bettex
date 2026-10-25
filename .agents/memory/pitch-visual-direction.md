@@ -1,7 +1,13 @@
 ---
 name: Direção visual do pitch
-description: O pitch deve ser uma apresentação limpa, com a foto real do fundador, sem fundos de cassino nem foto de gráficos.
+description: Pitch contínuo no padrão visual da homepage, sem aberturas de capítulo; manter dados e a arte aprovada do bot.
 ---
+
+O Pitch deve ser redesenhado seguindo o padrão visual da homepage: conteúdo fluido, separado por cores e fundos, sem abertura em cada etapa e sem nomear os blocos como capítulos. Preservar títulos úteis, dados, fontes e regras; otimizar Tokenomics nesse mesmo padrão.
+
+**Why:** O criador reforçou: “isso precisa ser redesenhado, nao precisa de abertura em cada etapa do pitch cara, entende? [...] siga mesmo o padrao visual da home”.
+
+**How to apply:** Não resolver apenas removendo rótulos ou compactando os banners anteriores. Integrar os títulos ao conteúdo e manter a homepage intacta. A foto atual do bot está aprovada e deve encostar na linha inferior do hero, sem espaço sobrando.
 
 A homepage é a referência para a síntese e apresentação do Pitch, especialmente a primeira seção depois do hero.
 
@@ -21,7 +27,7 @@ O Pitch deve acompanhar a oferta simplificada da home: foco exclusivo em cripto,
 
 **How to apply:** Ao revisar o Pitch, priorizar benefícios e experiência simples em reais; retirar a apresentação multissetorial. Distinguir proposta de produto de funções já operacionais. Esta instrução não autoriza remover agentes ou recursos do aplicativo nem alterar regras econômicas.
 
-O criador quer um pitch com composição visual de apresentação, distinto da homepage, usando a foto fornecida do fundador. Rejeitou os fundos fotográficos repetidos de cassino e a imagem de gráfico ao lado do retrato: não reintroduzir esses elementos.
+Direção histórica, substituída pelo padrão da homepage e pela arte atual do bot: apresentação distinta da homepage com foto do fundador. Continua valendo a rejeição a fundos repetidos de cassino e à imagem de gráfico ao lado do retrato.
 
 **Why:** Após pedir mais imagens, o criador considerou a execução com cassino e gráfico uma “bagunça visual”. A correção mais recente prevalece: manter a foto real, sem essas imagens competindo com texto e retrato.
 
