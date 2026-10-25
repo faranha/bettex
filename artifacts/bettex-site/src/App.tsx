@@ -166,14 +166,14 @@ function SiteFooter({ compact = false, home = false }: { compact?: boolean; home
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
     {!compact && <div className={`site-footer__cta${home ? ' site-footer__cta--home' : ''} relative overflow-hidden bg-[#2B59FF]`}>
       <div aria-hidden="true" className="site-footer__sports">
-        <img src={`${import.meta.env.BASE_URL}${home ? 'footer-invest-scene.webp' : 'footer-betting-scene.jpg'}`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
+        <img src={`${import.meta.env.BASE_URL}${home ? 'footer-rio-scene.webp' : 'footer-betting-scene.jpg'}`} width={1024} height={1024} alt="" loading="lazy" decoding="async" className="site-footer__sports-photo" />
         {!home && <FooterAiGraph />}
       </div>
       <div className="page-wrap relative">
         <div className="grid items-end gap-6 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:gap-10">
           <div className="pb-2 lg:pb-20">
             <span className="mono text-[10px] font-bold uppercase tracking-[.2em] text-[#F4F1E8]">BETTEX</span>
-            {home ? <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">{t('Pare de apostar com seu dinheiro.')}</span><span className="block text-[#F2B632]">{t('Comece a investir com inteligência.')}</span></h2>
+            {home ? <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">{t('Comece a ganhar.')}</span><span className="block text-[#F2B632]">{t('Invista com inteligência.')}</span></h2>
             <p className="mt-6 max-w-[420px] text-base font-medium leading-7 text-[#F4F1E8]">{t('A BETTEX opera em cripto. Você recebe em reais, sem precisar saber operar.')}</p></> : <><h2 className="display mt-5 max-w-[760px] text-[clamp(2.25rem,4.3vw,4rem)] font-extrabold leading-[1.04] tracking-[-.065em] text-[#F4F1E8]"><span className="block">Deixe de ser um </span><span className="block">refém das apostas </span><span className="block text-[#F2B632]">e se torne dono do jogo</span></h2>
             <p className="mt-6 max-w-[390px] text-base font-medium leading-7 text-[#F4F1E8]">Participe dos resultados da IA com o token BETTEX.</p></>}
             <div className="mt-6 flex flex-wrap gap-3">

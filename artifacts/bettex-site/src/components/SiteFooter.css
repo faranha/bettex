@@ -46,7 +46,7 @@
 @keyframes footer-ai-pulse { 50% { transform: scale(1.06); opacity: .24; } }
 @media (max-width: 1023px) { .footer-ai { right: 0; top: auto; bottom: 0; width: 100%; height: 300px; -webkit-mask-image: none; mask-image: none; } }
 @media (prefers-reduced-motion: reduce) { .footer-ai__link--core, .footer-ai__ring, .footer-ai__pulse { animation: none; } }
-.site-footer__cta--home .site-footer__sports-photo { width: min(100%, 1000px); object-position: 78% 40%; }
+.site-footer__cta--home .site-footer__sports-photo { width: min(100%, 1000px); object-position: 70% 45%; }
 @media (max-width: 1023px) {
   .site-footer__cta--home .site-footer__sports-photo { top: auto; height: 360px; object-position: 74% 35%; }
   .site-footer__cta--home .site-footer__sports::after {
