@@ -3,8 +3,8 @@ type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/earnings-gap/Current.tsx": () => import("../components/mockups/earnings-gap/Current.tsx"),
   "./components/mockups/earnings-gap/EarningsWalletIllustration.tsx": () => import("../components/mockups/earnings-gap/EarningsWalletIllustration.tsx"),
-  "./components/mockups/footer-redesign/Current.tsx": () => import("../components/mockups/footer-redesign/Current.tsx"),
-  "./components/mockups/footer-redesign/LanguageSelector.tsx": () => import("../components/mockups/footer-redesign/LanguageSelector.tsx"),
   "./components/mockups/treasury-movement/Balanced.tsx": () => import("../components/mockups/treasury-movement/Balanced.tsx"),
-  "./components/mockups/treasury-movement/Current.tsx": () => import("../components/mockups/treasury-movement/Current.tsx")
+  "./components/mockups/treasury-movement/Current.tsx": () => import("../components/mockups/treasury-movement/Current.tsx"),
+  "./components/mockups/footer-redesign/Current.tsx": () => import("../components/mockups/footer-redesign/Current.tsx"),
+  "./components/mockups/footer-redesign/LanguageSelector.tsx": () => import("../components/mockups/footer-redesign/LanguageSelector.tsx")
 };
