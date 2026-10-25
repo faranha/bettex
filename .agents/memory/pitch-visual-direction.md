@@ -3,6 +3,12 @@ name: Direção visual do pitch
 description: O pitch deve ser uma apresentação limpa, com a foto real do fundador, sem fundos de cassino nem foto de gráficos.
 ---
 
+A homepage é a referência para a síntese e apresentação do Pitch, especialmente a primeira seção depois do hero.
+
+**Why:** O criador definiu essa referência após aprovar a simplificação da homepage.
+
+**How to apply:** Usar a clareza, hierarquia e objetividade dessa seção para orientar propostas de revisão do Pitch, sem presumir autorização para reescrever todo o conteúdo.
+
 O Pitch deve acompanhar a oferta simplificada da home: foco exclusivo em cripto, lucro diário e soluções como Pix, sem os demais agentes. Preservar o mesmo público e a mesma audiência.
 
 **Why:** O criador pediu “simplificar o pitch, e focar nessas solucoes novas - pix por exemplo, lucro diario [...] foco em cripto only, sem os demais agentes, mas ainda o mesmo publico e auidiencia”.
