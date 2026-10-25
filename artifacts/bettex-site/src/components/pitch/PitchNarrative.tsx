@@ -7,7 +7,7 @@ export function PitchContext() {
   const x = useX();
   return <div className="pn pn__context">
       <div>
-        <p className="mono pn__kicker">{x('1. Perdas nas apostas', '1. Betting losses', '1. Pérdidas en las apuestas')}</p>
+        <p className="mono pn__kicker">{x('Perdas nas apostas', 'Betting losses', 'Pérdidas en las apuestas')}</p>
         <h3 id="pn-context-t" className="display pn__h">{x('Apostar não é renda. Falta uma porta de entrada para investir.', 'Betting is not income. There is no on-ramp to investing.', 'Apostar no es ingreso. Falta una puerta de entrada para invertir.')}</h3>
       </div>
       <div className="pn__prose">

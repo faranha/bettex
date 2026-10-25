@@ -16,7 +16,7 @@ export function EmploymentIncomeProblem() {
     <div className="pb-problem__robot-background" aria-hidden="true">
       <img src={`${import.meta.env.BASE_URL}pitch-future/tesla-optimus.jpg`} alt="" width={1024} height={1024} />
     </div>
-    <p className="mono pb-problem__topic">{x('2. Emprego e renda ameaçados pela IA', '2. Jobs and income threatened by AI', '2. Empleo e ingresos amenazados por la IA')}</p>
+    <p className="mono pb-problem__topic">{x('Emprego e renda ameaçados pela IA', 'Jobs and income threatened by AI', 'Empleo e ingresos amenazados por la IA')}</p>
     <h3 id="problema-ia-t" className="display">{x('Automação não garante prosperidade para todos.', 'Automation does not guarantee prosperity for everyone.', 'La automatización no garantiza prosperidad para todos.')}</h3>
     <PitchSlider id="emprego-ia-slider" tone="dark" label={['IA, trabalho, renda e indicadores em blocos', 'AI, work and income blocks', 'IA, trabajo e ingresos por bloques']} slides={[
       { label: ['Promessa de abundância', 'Promise of abundance', 'Promesa de abundancia'], node: <>
