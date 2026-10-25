@@ -1,7 +1,10 @@
-import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, ArrowRight } from 'lucide-react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { FlaskConical, ScrollText, Rocket, Compass, MessagesSquare, Bot, ArrowRight, ArrowLeft } from 'lucide-react';
+import { t } from '@/lib/i18n';
 import { CommunityCTA } from './CommunityCTA';
 import { DemoAppLink } from './DemoAppLink';
 import { copy } from '@/lib/documentation-copy';
+import { RoadmapIllustration } from './RoadmapIllustration';
 import './RoadmapSection.css';
 
 const icons = [MessagesSquare, ScrollText, Rocket, FlaskConical, Compass, Bot];
@@ -23,10 +26,44 @@ const homeRoadmapStops: readonly Stop[] = roadmapStops.map((stop, i): Stop => i 
     : stop);
 
 export function RoadmapSection({ id = 'roadmap', variant = 'default' }: { id?: string; variant?: 'default' | 'home' } = {}) {
+  const slider = variant === 'home';
+  const trackRef = useRef<HTMLOListElement>(null);
+  const [active, setActive] = useState(0);
   const stops: readonly Stop[] = variant === 'home' ? homeRoadmapStops : roadmapStops;
   const total = String(stops.length).padStart(2, '0');
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!slider || !track) return;
+    const sync = () => {
+      const left = track.getBoundingClientRect().left;
+      const distances = Array.from(track.children, child => Math.abs(child.getBoundingClientRect().left - left));
+      setActive(distances.indexOf(Math.min(...distances)));
+    };
+    track.addEventListener('scroll', sync, { passive: true });
+    const observer = new ResizeObserver(sync);
+    observer.observe(track);
+    sync();
+    return () => { track.removeEventListener('scroll', sync); observer.disconnect(); };
+  }, [slider]);
+  const goTo = (index: number) => {
+    const track = trackRef.current;
+    const next = Math.max(0, Math.min(stops.length - 1, index));
+    const card = track?.children[next];
+    if (!track || !card) return;
+    track.scrollTo({
+      left: track.scrollLeft + card.getBoundingClientRect().left - track.getBoundingClientRect().left,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+    });
+  };
+  const onKeyDown = (event: KeyboardEvent<HTMLOListElement>) => {
+    if (event.target !== event.currentTarget) return;
+    const next = event.key === 'ArrowRight' ? active + 1 : event.key === 'ArrowLeft' ? active - 1 : event.key === 'Home' ? 0 : event.key === 'End' ? stops.length - 1 : undefined;
+    if (next === undefined) return;
+    event.preventDefault();
+    goTo(next);
+  };
   return (
-    <section className="roadmap" id={id} aria-labelledby={`${id}-title`}>
+    <section className={`roadmap${slider ? ' roadmap--slider' : ''}`} id={id} aria-labelledby={`${id}-title`}>
       <div className="roadmap__wrap">
         <header className="roadmap__intro">
           <div>
@@ -45,7 +82,7 @@ export function RoadmapSection({ id = 'roadmap', variant = 'default' }: { id?: s
             <span>LEITURA 01 → {total}</span>
           </div>
 
-          <ol className="roadmap__stops">
+          <ol className="roadmap__stops" id={slider ? `${id}-slides` : undefined} ref={slider ? trackRef : undefined} tabIndex={slider ? 0 : undefined} onKeyDown={slider ? onKeyDown : undefined}>
             {stops.map((stop, index) => {
               const Icon = icons[index];
               const number = String(index + 1).padStart(2, '0');
@@ -58,6 +95,7 @@ export function RoadmapSection({ id = 'roadmap', variant = 'default' }: { id?: s
                 <span className="roadmap__pin" aria-hidden="true"><span /></span>
                 <article className="roadmap__place">
                   <span className="roadmap__icon" aria-hidden="true"><Icon strokeWidth={2.2} /></span>
+                  {slider && <RoadmapIllustration index={index} />}
                   <div className="roadmap__place-top">
                     <span className="roadmap__place-number">{number}<span> / {total}</span></span>
                     <span className="roadmap__place-tag">{stop.tag}</span>
@@ -72,6 +110,14 @@ export function RoadmapSection({ id = 'roadmap', variant = 'default' }: { id?: s
               );
             })}
           </ol>
+          {slider && <div className="roadmap__slider-controls" data-testid="roadmap-slider-controls">
+            <button type="button" className="roadmap__slider-arrow" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label={t('Etapa anterior')} aria-controls={`${id}-slides`}><ArrowLeft size={20} aria-hidden="true" /></button>
+            <div className="roadmap__slider-dots">
+              {stops.map((stop, index) => <button type="button" key={stop.title} className="roadmap__slider-dot" onClick={() => goTo(index)} aria-label={t(stop.title)} aria-current={active === index ? 'step' : undefined} aria-controls={`${id}-slides`} />)}
+            </div>
+            <span className="roadmap__slider-count" aria-live="polite" aria-atomic="true">{String(active + 1).padStart(2, '0')} / {total}</span>
+            <button type="button" className="roadmap__slider-arrow" onClick={() => goTo(active + 1)} disabled={active === stops.length - 1} aria-label={t('Próxima etapa')} aria-controls={`${id}-slides`}><ArrowRight size={20} aria-hidden="true" /></button>
+          </div>}
           <div className="roadmap__destination" aria-hidden="true"><span className="roadmap__destination-dot" /> CAMINHO EM CONSTRUÇÃO</div>
         </div>
 

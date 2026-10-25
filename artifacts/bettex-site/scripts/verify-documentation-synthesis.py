@@ -122,8 +122,7 @@ for route, expected in baseline["routes"].items():
         for key in (
             "Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.",
             "Ganhe até 1% por dia de lucro.",
-            "A IA faz as operações. Você participa dos lucros com o token BETTEX.",
-            "Observa", "Identifica", "Investe", "Foco inicial",
+            "Observa", "Identifica", "Investe", "Ganhos diários",
         ):
             phrase = key if language == "pt" else home_catalog[key][language]
             assert phrase in home_text, f"Missing approved 1.5 homepage text: {route}: {phrase}"
@@ -133,7 +132,8 @@ for route, expected in baseline["routes"].items():
         assert 'section-nova-economia' not in protected_html, f"Removed section restored: {route}"
         assert 'technology-section__agents' not in protected_html, f"Old multimarket diagram restored: {route}"
         assert 'alt="Starknet"' in protected_html and 'alt="Allora"' in protected_html, route
-        assert not re.search(r'alt="(?:Ethereum|Arbitrum)"', protected_html), route
+        assert 'alt="Ethereum"' in protected_html, route
+        assert 'alt="Arbitrum"' not in protected_html, route
         print(f"{route}: approved 1.5 homepage copy, anchors and single-agent presentation verified")
         continue
     if route in ("/documentacao", "/en/documentation", "/es/documentacion"):

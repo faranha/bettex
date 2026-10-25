@@ -79,7 +79,7 @@ assert.match(pitch, /O mint público inicial e o aporte de investidores-anjo sã
 assert.match(app, /Chega de apostar\./);
 assert.match(app, /Comece a investir\./);
 assert.ok(app.includes('Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.'));
-assert.ok(app.includes('A IA faz as operações. Você participa dos lucros com o token BETTEX.'));
+assert.ok(!app.includes('A IA faz as operações. Você participa dos lucros com o token BETTEX.'));
 assert.ok(app.includes('Ganhe até 1% por dia de lucro.'));
 assert.doesNotMatch(app, /Um agente de IA que opera em mercados de iGaming/);
 const homeOperation = await read('src/components/HomeRevisionSections.tsx');
@@ -88,6 +88,16 @@ assert.match(homeOperation, /investe contra quem manipula/);
 assert.match(homeOperation, /Se não houver oportunidade, ele não opera/);
 assert.match(app, /<RoadmapSection variant="home"/);
 assert.match(app, /<HomeOperationSection/);
+assert.match(homeOperation, /<HomeParticipationLogic/);
+const homeBusiness = await read('src/components/HomeParticipationLogic.tsx');
+for (const concept of [
+  'Carteira USDC', 'Carteira BETTEX', 'capital da tesouraria',
+  'sem vender BETTEX', 'Saque ou reconversão',
+  'Cada rodada dura 24 horas', 'espera a próxima',
+  'mesmo parcial', 'não acumulam lucros para o futuro',
+]) assert.ok(homeBusiness.includes(concept), `Homepage must retain business logic: ${concept}`);
+assert.equal((homeBusiness.match(/pct: '50%'/g) ?? []).length, 1);
+assert.equal((homeBusiness.match(/pct: '25%'/g) ?? []).length, 2);
 assert.doesNotMatch(app, /NewEconomySection/);
 assert.doesNotMatch(await read('src/components/HomeSectionNav.tsx'), /nova-economia/);
 assert.match(app, /<span>Entenda o projeto<\/span>/);

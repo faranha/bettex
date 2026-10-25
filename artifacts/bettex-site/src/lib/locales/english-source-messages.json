@@ -358,5 +358,95 @@
     "pt": "Comunidade aberta que constrói um agente de IA que identifica padrões de manipulação no mercado cripto e investe contra quem manipula. Conheça o token, o roadmap e a demonstração da BETTEX.",
     "en": "Open community building an AI agent that identifies manipulation patterns in the crypto market and invests against those manipulating it. Explore the BETTEX token, roadmap and demo.",
     "es": "Comunidad abierta que construye un agente de IA que identifica patrones de manipulación en el mercado cripto e invierte contra quienes manipulan. Conoce el token, la hoja de ruta y la demo de BETTEX."
+  },
+  "Ganhos diários": {
+    "pt": "Ganhos diários",
+    "en": "Daily earnings",
+    "es": "Ganancias diarias"
+  },
+  "Seu BETTEX participa.": {
+    "pt": "Seu BETTEX participa.",
+    "en": "Your BETTEX takes part.",
+    "es": "Tu BETTEX participa."
+  },
+  "O lucro chega à sua carteira.": {
+    "pt": "O lucro chega à sua carteira.",
+    "en": "The profit reaches your wallet.",
+    "es": "El beneficio llega a tu billetera."
+  },
+  "A cada ciclo de 24 horas, quando há lucro real disponível, a sua parte é paga em USDC. O seu saldo de BETTEX continua com você.": {
+    "pt": "A cada ciclo de 24 horas, quando há lucro real disponível, a sua parte é paga em USDC. O seu saldo de BETTEX continua com você.",
+    "en": "In each 24-hour cycle, when real profit is available, your share is paid in USDC. Your BETTEX balance stays with you.",
+    "es": "En cada ciclo de 24 horas, cuando hay beneficio real disponible, tu parte se paga en USDC. Tu saldo de BETTEX sigue contigo."
+  },
+  "Ilustração conceitual: seu BETTEX permanece com você e o lucro diário chega em USDC à carteira": {
+    "pt": "Ilustração conceitual: seu BETTEX permanece com você e o lucro diário chega em USDC à carteira",
+    "en": "Conceptual illustration: your BETTEX stays with you and the daily profit arrives in USDC in your wallet",
+    "es": "Ilustración conceptual: tu BETTEX permanece contigo y el beneficio diario llega en USDC a la billetera"
+  },
+  "Seu saldo fica com você": {
+    "pt": "Seu saldo fica com você",
+    "en": "Your balance stays with you",
+    "es": "Tu saldo sigue contigo"
+  },
+  "Carteira USDC": {
+    "pt": "Carteira USDC",
+    "en": "USDC wallet",
+    "es": "Billetera USDC"
+  },
+  "Lucro diário em USDC": {
+    "pt": "Lucro diário em USDC",
+    "en": "Daily profit in USDC",
+    "es": "Beneficio diario en USDC"
+  },
+  "Todo dia": {
+    "pt": "Todo dia",
+    "en": "Every day",
+    "es": "Todos los días"
+  },
+  "Dinheiro todo dia": {
+    "pt": "Dinheiro todo dia",
+    "en": "Money every day",
+    "es": "Dinero todos los días"
+  },
+  "Os resultados são apurados em ciclos diários.": {
+    "pt": "Os resultados são apurados em ciclos diários.",
+    "en": "Results are calculated in daily cycles.",
+    "es": "Los resultados se calculan en ciclos diarios."
+  },
+  "Sem vender": {
+    "pt": "Sem vender",
+    "en": "No selling",
+    "es": "Sin vender"
+  },
+  "BETTEX continua seu": {
+    "pt": "BETTEX continua seu",
+    "en": "BETTEX stays yours",
+    "es": "BETTEX sigue siendo tuyo"
+  },
+  "Você recebe os ganhos sem vender o seu token.": {
+    "pt": "Você recebe os ganhos sem vender o seu token.",
+    "en": "You receive the earnings without selling your token.",
+    "es": "Recibes las ganancias sin vender tu token."
+  },
+  "Saque ou reinvista": {
+    "pt": "Saque ou reinvista",
+    "en": "Withdraw or reinvest",
+    "es": "Retira o reinvierte"
+  },
+  "Use o USDC recebido como preferir, conforme as regras de saída.": {
+    "pt": "Use o USDC recebido como preferir, conforme as regras de saída.",
+    "en": "Use the USDC you receive as you prefer, under the existing exit rules.",
+    "es": "Usa el USDC recibido como prefieras, según las reglas de salida."
+  },
+  "Ver como participar": {
+    "pt": "Ver como participar",
+    "en": "See how to take part",
+    "es": "Ver cómo participar"
+  },
+  "Entre e acompanhe os ganhos diários.": {
+    "pt": "Entre e acompanhe os ganhos diários.",
+    "en": "Join and follow the daily earnings.",
+    "es": "Entra y sigue las ganancias diarias."
   }
 }

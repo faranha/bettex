@@ -1,0 +1,11 @@
+.roadmap-art { display: grid; place-items: center; min-height: 190px; border-radius: 14px; background: var(--sb); border: 1px solid color-mix(in srgb, var(--sc) 35%, transparent); overflow: hidden; }
+.roadmap-art svg { width: 100%; max-width: 360px; height: auto; display: block; }
+.roadmap__stop--featured .roadmap-art { background: #0d1540; border-color: rgba(242,182,50,.45); }
+.roadmap--slider .roadmap__place { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); column-gap: 32px; align-content: start; }
+.roadmap--slider .roadmap__place > :not(.roadmap-art):not(.roadmap__icon) { grid-column: 1; }
+.roadmap--slider .roadmap__place > .roadmap-art { grid-column: 2; grid-row: 1 / span 8; align-self: stretch; }
+.roadmap--slider .roadmap__place > .roadmap__features { justify-self: start; min-width: 200px; }
+@media (max-width: 800px) {
+  .roadmap--slider .roadmap__place { display: flex; }
+  .roadmap--slider .roadmap-art { order: -1; min-height: 160px; max-height: 190px; margin-bottom: 18px; }
+}

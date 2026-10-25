@@ -29,6 +29,30 @@ A ilustração da IA no cartão da Carteira BETTEX deve ser séria, como um cér
 
 **How to apply:** Preservar essa direção para essa ilustração. Não estender a rejeição automaticamente à animação de outros agentes ou aos demais robôs do site.
 
+Na homepage 1.5, variar as ilustrações e os gráficos explicativos em vez de repetir o cérebro em várias seções.
+
+**Why:** O criador apontou “voce usou e abusou do cerebro precisa retomar alguns graficos diferentes”.
+
+**How to apply:** Usar representações distintas de participação, análise do mercado e expansão, preservando a direção de um agente único. A aprovação do cérebro em um contexto não autoriza repeti-lo por toda a página.
+
+Simplificar a homepage não autoriza retirar as explicações e os diagramas da lógica do negócio.
+
+**Why:** Após a simplificação da 1.5, o criador corrigiu: “voce sumiu com tudo que explicava a logica do negocio”.
+
+**How to apply:** Preservar o percurso compreensível entre token, participação, carteiras, atuação da IA e recebimento dos resultados; mudar a cobertura de mercados ou variar a arte não deve eliminar essas relações.
+
+O bloco que sucedia a explicação do agente na 1.5 deve destacar ganhos diários, carteira, BETTEX e dinheiro recebido, não foco inicial e expansão de ativos.
+
+**Why:** O criador rejeitou esse bloco de pesquisa/expansão e pediu: “aqui tem que ser o ganho diario, a carteira, bettex, dinheiro todo dia, foco na ganancia”.
+
+**How to apply:** Apresentar o benefício financeiro e o fluxo BETTEX → lucros em USDC na carteira, com ilustração própria. Preservar a explicação da lógica do negócio e as regras econômicas nas áreas correspondentes.
+
+O roadmap da homepage deve ter uma imagem própria ao lado de cada etapa e evitar o estreitamento visual em “V”.
+
+**Why:** O criador pediu “precisa por uma imagem, algo do lado de cada caixa, fazer mais visual” ao rejeitar o slider estreito sob o cabeçalho largo.
+
+**How to apply:** Alinhar a largura dos slides à do cabeçalho e manter ilustrações distintas por etapa, sem alterar textos, datas ou o roadmap do Pitch.
+
 No CTA final da homepage, mostrar contexto de apostas em futebol e alguém usando o celular, não um grupo posando num campo como uma academia de treinamento. Personagens e cenário precisam ter perspectiva, escala e iluminação coerentes.
 
 **Why:** O criador rejeitou a montagem incompatível entre fundo e grupo e depois esclareceu: “looks like a coaching academy, we need to see the betting” e “change a bit the background and the characters and add someone doing something on their mobile”.

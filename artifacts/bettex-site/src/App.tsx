@@ -23,7 +23,7 @@ import { BettexMark } from '@/components/BettexMark';
 import '@/components/SiteFooter.css';
 import '@/pages/pitch.css';
 import { ProjectModelSection } from '@/components/ProjectModelSection';
-import { HomeOperationSection, HomeFocusSection } from '@/components/HomeRevisionSections';
+import { HomeOperationSection, HomeEarningsSection } from '@/components/HomeRevisionSections';
 import { HumanStorySection } from '@/components/HumanStorySection';
 import { RoadmapSection } from '@/components/RoadmapSection';
 import { DemoAppLink } from '@/components/DemoAppLink';
@@ -272,8 +272,7 @@ function Home() {
               <span className="block text-[#F2B632]">Comece a investir.</span>
             </h1>
             <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Ganhe dinheiro todo dia com um único investimento e saia a hora que quiser.</h2>
-            <p className="mt-5 max-w-[520px] text-[17px] leading-[1.6] text-[#c5d2f1] sm:text-lg">A IA faz as operações. Você participa dos lucros com o token BETTEX.</p>
-            <p className="mt-3 max-w-[520px] text-[17px] font-bold leading-[1.5] text-[#F2B632] sm:text-lg">Ganhe até 1% por dia de lucro.</p>
+            <p className="mt-5 max-w-[520px] text-[17px] font-bold leading-[1.5] text-[#F2B632] sm:text-lg">Ganhe até 1% por dia de lucro.</p>
             <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
               <span>Entenda o projeto</span>
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/20" aria-hidden="true"><ArrowDown size={22} strokeWidth={2.2} /></span>
@@ -284,13 +283,13 @@ function Home() {
         </div>
       </section>
 
-      <TechnologyNetworks label="Tecnologias" />
+      <TechnologyNetworks label="Tecnologias" ethereum />
       <HumanStorySection />
 
       <ProjectModelSection />
 
       <HomeOperationSection />
-      <HomeFocusSection />
+      <HomeEarningsSection />
       <RoadmapSection variant="home" />
 
     </main>
