@@ -51,11 +51,11 @@ A foto de Musk deve ficar integrada à abertura de “O cenário apocalíptico�
 
 **How to apply:** Manter retrato e crédito junto da introdução do cenário, com leitura adaptada ao desktop e ao celular. Preservar as caixas individuais dos gráficos; não recriar o invólucro vermelho nem a abertura removida.
 
-O item 2 de Problema deve ser resumido, com mais tópicos e números e menos parágrafos. O fundo do Optimus deve se integrar ao container com degradê, sem corte abrupto.
+O bloco de emprego deve ser resumido, com mais tópicos e números e menos parágrafos. Seu fundo deve mostrar robôs trabalhando numa fábrica, integrado ao container com degradê, sem corte abrupto, em vez de um Optimus isolado.
 
-**Why:** O criador pediu “mais topicos, numeros, menos paragrafos” e apontou o corte visível da imagem.
+**Why:** O criador pediu “mais topicos, numeros, menos paragrafos”. Depois confirmou gostar do bloco e pediu uma foto de robôs numa fábrica, com degradê no estilo da seção sobre brasileiros endividados.
 
-**How to apply:** Manter uma introdução curta antes do vídeo e uma explicação compacta após ele. Não inventar estatísticas para atender ao pedido de números; preservar a leitura sobre a imagem.
+**How to apply:** Preservar título, dados e slider, mudando apenas a arte de fundo e sua integração visual. Manter a cena industrial visível e a transição suave para o fundo escuro, inclusive no celular. Não inventar estatísticas nem reintroduzir o vídeo removido.
 
 O item 2 deve apresentar a economia agêntica como o problema ao qual a BETTEX responde: tese de miséria universal em vez de renda universal alta, com atenção à América Latina, pessoas humildes e sobretudo empregos de colarinho branco.
 
@@ -136,6 +136,12 @@ A abertura do bloco de emprego usa “Enquanto isso… os empregos começam a de
 **Why:** O criador pediu esse encadeamento e a retirada do “2”, exigindo clareza na apresentação.
 
 **How to apply:** Preservar a transição direta entre fragilidade financeira e emprego; não reintroduzir a numeração decorativa desse cabeçalho.
+
+O quadro da promessa de abundância de Musk deve destacar “É MENTIRA”, com fundo vermelho e letras brancas.
+
+**Why:** O criador marcou a citação e pediu esse texto “bem chocante”, preferencialmente em branco sobre vermelho.
+
+**How to apply:** Preservar a citação, a fonte e o retrato. Identificar o contraponto como posição da BETTEX, sem confundi-lo com a fala citada ou com uma conclusão científica comprovada.
 
 O dado da pesquisa da Copa integra a seção Problema 1 do Pitch: 74% dos que pretendiam apostar na Copa de 2026 viam nas bets uma forma de quitar dívidas pendentes.
 
