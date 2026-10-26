@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 6 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] >>
+<< /Type /Pages /Count 7 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3046 >>
+<< /Length 2972 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — Demo e prova de conceito) Tj T*
@@ -31,21 +31,13 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Agente BETTEX e subagentes) Tj T*
 () Tj T*
-(BETTEX é o agente de orquestração da arquitetura multiagente descentralizada descrita nesta) Tj T*
-(documentação. Seu foco é coordenar análises e construir decisões com apoio direto dos) Tj T*
-(subagentes de risco e tesouraria. Os subagentes de trading de cada mercado apresentam propostas) Tj T*
-(e evidências; risco e tesouraria apoiam sua avaliação antes de decisões de alocação ou) Tj T*
-(execução. O subagente de governança acompanha políticas e documentação. Sistema BETTEX) Tj T*
-(identifica a arquitetura completa; agente BETTEX identifica sua inteligência central de) Tj T*
-(orquestração.) Tj T*
+(BETTEX é a inteligência central: interpreta evidências, compara hipóteses e coordena subagentes) Tj T*
+(de análise cripto, Risco, Tesouraria e Governança. O desenvolvimento definirá como essa) Tj T*
+(colaboração evolui; não há um único algoritmo obrigatório para todas as decisões.) Tj T*
 () Tj T*
-(O subagente de risco investiga exposição, cenários de perda e compatibilidade das propostas com) Tj T*
-(os limites vigentes. O subagente de tesouraria analisa capital, reservas, liquidez e) Tj T*
-(compromissos para orientar a disponibilidade e a alocação dos recursos. Ambos produzem análises) Tj T*
-(e inferências para apoiar as decisões do agente BETTEX, podendo questionar hipóteses,) Tj T*
-(compartilhar evidências e solicitar novas análises. Não são apenas verificadores de parâmetros) Tj T*
-(nem versões independentes de BETTEX. A orquestração não elimina a validação independente de) Tj T*
-(risco nem autoriza ignorar controles.) Tj T*
+(Os subagentes investigam, questionam hipóteses e contribuem para as decisões da BETTEX. Risco) Tj T*
+(analisa exposição e cenários; Tesouraria acompanha capital e liquidez; Governança apoia a) Tj T*
+(evolução das políticas. Não são apenas verificadores de parâmetros.) Tj T*
 () Tj T*
 (Governança: interpretar e propor evolução) Tj T*
 () Tj T*
@@ -53,6 +45,39 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Acompanha decisões e mudanças aprovadas, revisa os capítulos e suas traduções, registra versões) Tj T*
 (e preserva a coerência entre a documentação, a implementação e as regras vigentes. Atualizar a) Tj T*
 (documentação não aprova políticas nem modifica permissões ou direitos econômicos.) Tj T*
+() Tj T*
+(Escopo atual e desenvolvimento da IA) Tj T*
+() Tj T*
+(O negócio atual opera somente em cripto. A IA busca padrões de manipulação, fluxos e) Tj T*
+(comportamento de mercado para orientar a escolha de moedas e os momentos de entrada e saída.) Tj T*
+() Tj T*
+(Não há quantidade fixa de moedas nem lista permanente de três ativos. BTC, ETH e SOL são) Tj T*
+(exemplos de especialização; outras moedas podem ser analisadas conforme as oportunidades e a) Tj T*
+(qualidade das informações.) Tj T*
+() Tj T*
+(Esta documentação define o negócio e as responsabilidades, sem fechar antecipadamente todos os) Tj T*
+(métodos da IA. Os fluxos e referências técnicas são pontos de partida para desenvolvimento e) Tj T*
+(avaliação, não algoritmos obrigatórios. Direitos econômicos e separação patrimonial não são) Tj T*
+(redefinidos por uma inferência.) Tj T*
+() Tj T*
+(O rendimento de cada participante fica limitado a 1% ao dia sobre seu valor elegível. É um teto) Tj T*
+(individual, não uma promessa de pagamento nem um limite de rentabilidade da tesouraria. Sem) Tj T*
+(lucro elegível, não há distribuição.) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 2903 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
+(Ainda precisam ser definidos a fonte e o instante de avaliação do valor elegível em USDC, o) Tj T*
+(tratamento de custos no teto e o destino de eventuais excedentes. Essas definições devem fechar) Tj T*
+(a contabilidade sem alterar silenciosamente o split de 50% / 25% / 25%. Não há crédito futuro) Tj T*
+(presumido.) Tj T*
 () Tj T*
 (Adequação legal e jurídica) Tj T*
 () Tj T*
@@ -63,16 +88,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (responsável. Permissões não são universais; atividades sujeitas a licenciamento só são) Tj T*
 (liberadas com autorização.) Tj T*
 () Tj T*
-ET
-endstream
-endobj
-6 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
-endobj
-7 0 obj
-<< /Length 3113 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (Investigações verificam normas, licenças, termos, publicidade, proteção ao usuário, PLD,) Tj T*
 (privacidade e responsabilidades, com registro formal de evidências, datas e controles exigidos.) Tj T*
 () Tj T*
@@ -106,6 +121,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (A BETTEX não cobra taxas de serviço. Transações reais podem exigir custos externos da rede, sem) Tj T*
 (receita para a comunidade.) Tj T*
 () Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 2829 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (Burn Lottery e Double 2X) Tj T*
 () Tj T*
 (Burn Lottery: um número grátis por carteira com BETTEX em staking; extras pagos em BETTEX e) Tj T*
@@ -121,16 +146,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (antes de aceitar entradas. Jogos não são estratégias de investimento nem promessa de) Tj T*
 (rendimento; resultados simulados não comprovam execução, aleatoriedade pública ou liquidação.) Tj T*
 () Tj T*
-ET
-endstream
-endobj
-8 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
-endobj
-9 0 obj
-<< /Length 2652 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (Rodada operacional e demonstração) Tj T*
 () Tj T*
 (Modelo opera em rodadas diárias UTC. Abas de mercado não criam pools de staking separados.) Tj T*
@@ -164,6 +179,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (adequação legal.) Tj T*
 () Tj T*
 (Vesting de 900 milhões de BETTEX por 24 meses desde março de 2027: comunidade 550 milhões,) Tj T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 3109 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O teto) Tj T*
 (inicial separado é 100 milhões; liberação não prova venda ou circulação.) Tj T*
 () Tj T*
@@ -179,16 +204,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Participantes em rodadas em curso não recebem lucros daquela rodada, apenas da subsequente.) Tj T*
 (Saldos e acréscimos são fixados na abertura da rodada.) Tj T*
 () Tj T*
-ET
-endstream
-endobj
-10 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
-endobj
-11 0 obj
-<< /Length 3137 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (Peso = saldo elegível na abertura  x  duração. Saídas zeram o peso e cancelam créditos) Tj T*
 (anteriores ainda não pagos; retorno só na próxima rodada. Acréscimos não alteram pesos) Tj T*
 (existentes. Pagamento bruto = parcela de staking  x  peso individual  /  soma dos pesos) Tj T*
@@ -222,6 +237,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (implementação Cairo e contas compatíveis; Arbitrum usa EVM. Allora é candidata a inferências,) Tj T*
 (não execução. Robinhood Crypto Trading API exige conta elegível nos Estados Unidos e) Tj T*
 (autorização; não comprova acesso a ações. Consultas públicas Arbitrum/Gamma foram verificadas;) Tj T*
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 2816 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (não definem a rede de lançamento. Outros exemplos sem acesso privado são simulações. Não houve) Tj T*
 (operações com dinheiro real.) Tj T*
 () Tj T*
@@ -237,16 +262,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Pesos são calculados pós-corte sobre o saldo elegível. Entradas aguardam nova rodada; saídas) Tj T*
 (zeram o peso. Saídas pós-corte cancelam direitos pendentes sem alterar resultados de novas) Tj T*
-ET
-endstream
-endobj
-12 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
-endobj
-13 0 obj
-<< /Length 2751 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (rodadas.) Tj T*
 () Tj T*
 (Decisões de apuração fixam beneficiários e pesos, considerando saídas confirmadas. Saídas) Tj T*
@@ -280,6 +295,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (períodos econômicos devem ser distintos para evitar contabilização dupla.) Tj T*
 () Tj T*
 (Antes de autorizar o split, reservar principal e teto de custos por ativo e projetar liquidez) Tj T*
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 3271 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (após todos os desembolsos. Reserva de custos não é despesa realizada. Identificar fonte e) Tj T*
 (autorização; não descontar silenciosamente custos do direito do participante ou da parcela) Tj T*
 (exclusiva de recompra. Conciliar diferenças entre custo reservado e efetivo; sobra não é lucro) Tj T*
@@ -295,16 +320,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Elegibilidade, exposição e condições dos jogos) Tj T*
 () Tj T*
-ET
-endstream
-endobj
-14 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
-endobj
-15 0 obj
-<< /Length 2911 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (Burn Lottery limita um número gratuito por carteira com BETTEX em staking, com snapshot) Tj T*
 (verificável e identificador único por carteira e sorteio. Transferências pós-corte não geram) Tj T*
 (novos números. O orçamento considera múltiplas carteiras por pessoa; isso não é proteção contra) Tj T*
@@ -338,6 +353,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Autenticação e elegibilidade jurídica) Tj T*
 () Tj T*
 (Autenticação por carteira não prova identidade civil, residência ou elegibilidade. KYC e) Tj T*
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 501 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (controles territoriais permanecem obrigatórios quando exigidos. Demo visual não oferece) Tj T*
 (operações financeiras.) Tj T*
 () Tj T*
@@ -351,24 +376,26 @@ ET
 endstream
 endobj
 xref
-0 16
+0 18
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000148 00000 n 
-0000000245 00000 n 
-0000000371 00000 n 
-0000003469 00000 n 
-0000003595 00000 n 
-0000006760 00000 n 
-0000006886 00000 n 
-0000009590 00000 n 
-0000009718 00000 n 
+0000000155 00000 n 
+0000000252 00000 n 
+0000000378 00000 n 
+0000003402 00000 n 
+0000003528 00000 n 
+0000006483 00000 n 
+0000006609 00000 n 
+0000009490 00000 n 
+0000009618 00000 n 
+0000012780 00000 n 
 0000012908 00000 n 
-0000013036 00000 n 
-0000015840 00000 n 
-0000015968 00000 n 
-trailer << /Size 16 /Root 1 0 R >>
+0000015777 00000 n 
+0000015905 00000 n 
+0000019229 00000 n 
+0000019357 00000 n 
+trailer << /Size 18 /Root 1 0 R >>
 startxref
-18932
+19910
 %%EOF

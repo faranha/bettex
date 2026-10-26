@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 2987 >>
+<< /Length 2864 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — Demo y prueba de concepto) Tj T*
@@ -33,21 +33,13 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Agente BETTEX y subagentes) Tj T*
 () Tj T*
-(BETTEX es el agente de orquestación de la arquitectura multiagente descentralizada descrita en) Tj T*
-(esta documentación. Su foco es coordinar análisis y construir decisiones con apoyo directo de) Tj T*
-(los subagentes de riesgo y tesorería. Los subagentes de trading de cada mercado presentan) Tj T*
-(propuestas y evidencias; riesgo y tesorería apoyan su evaluación antes de decisiones de) Tj T*
-(asignación o ejecución. El subagente de gobernanza sigue políticas y documentación. Sistema) Tj T*
-(BETTEX identifica la arquitectura completa; agente BETTEX identifica su inteligencia central de) Tj T*
-(orquestación.) Tj T*
+(BETTEX es la inteligencia central: interpreta evidencias, compara hipótesis y coordina) Tj T*
+(subagentes de análisis cripto, Riesgo, Tesorería y Gobernanza. El desarrollo definirá cómo) Tj T*
+(evoluciona esta colaboración; no hay un único algoritmo obligatorio para todas las decisiones.) Tj T*
 () Tj T*
-(El subagente de riesgo investiga exposición, escenarios de pérdida y compatibilidad de las) Tj T*
-(propuestas con los límites vigentes. El subagente de tesorería analiza capital, reservas,) Tj T*
-(liquidez y compromisos para orientar la disponibilidad y asignación de recursos. Ambos producen) Tj T*
-(análisis e inferencias para apoyar las decisiones del agente BETTEX, pudiendo cuestionar) Tj T*
-(hipótesis, compartir evidencias y solicitar nuevos análisis. No son simples verificadores de) Tj T*
-(parámetros ni versiones independientes de BETTEX. La orquestación no elimina la validación) Tj T*
-(independiente de riesgo ni autoriza ignorar controles.) Tj T*
+(Los subagentes investigan, cuestionan hipótesis y contribuyen a las decisiones de BETTEX.) Tj T*
+(Riesgo analiza exposición y escenarios; Tesorería sigue capital y liquidez; Gobernanza apoya la) Tj T*
+(evolución de las políticas. No son simples verificadores de parámetros.) Tj T*
 () Tj T*
 (Gobernanza: interpretar y proponer evolución) Tj T*
 () Tj T*
@@ -57,12 +49,20 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (reglas vigentes. Actualizar la documentación no aprueba políticas ni modifica permisos o) Tj T*
 (derechos económicos.) Tj T*
 () Tj T*
-(Adecuación legal y jurídica) Tj T*
+(Alcance actual y desarrollo de la IA) Tj T*
 () Tj T*
-(Los lanzamientos deben adaptarse a la normativa local. Los subagentes y funcionalidades) Tj T*
-(dependen de la investigación técnico-legal y el cumplimiento de los requisitos,) Tj T*
-(independientemente de las fechas en el roadmap.) Tj T*
+(El negocio actual opera solamente en cripto. La IA busca patrones de manipulación, flujos y) Tj T*
+(comportamiento de mercado para orientar la elección de monedas y los momentos de entrada y) Tj T*
+(salida.) Tj T*
 () Tj T*
+(No hay una cantidad fija de monedas ni una lista permanente de tres activos. BTC, ETH y SOL son) Tj T*
+(ejemplos de especialización; otras monedas pueden analizarse según las oportunidades y la) Tj T*
+(calidad de la información.) Tj T*
+() Tj T*
+(Esta documentación define el negocio y las responsabilidades sin cerrar de antemano todos los) Tj T*
+(métodos de la IA. Los flujos y referencias técnicas son puntos de partida para el desarrollo y) Tj T*
+(evaluación, no algoritmos obligatorios. Los derechos económicos y la separación patrimonial no) Tj T*
+(se redefinen mediante una inferencia.) Tj T*
 ET
 endstream
 endobj
@@ -70,9 +70,25 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3080 >>
+<< /Length 2974 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
+(El rendimiento de cada participante se limita al 1% diario sobre su valor elegible. Es un) Tj T*
+(límite individual, no una promesa de pago ni un límite de rentabilidad de la tesorería. Sin) Tj T*
+(beneficio elegible no hay distribución.) Tj T*
+() Tj T*
+(Aún deben definirse la fuente y el momento de valoración del saldo elegible en USDC, el) Tj T*
+(tratamiento de costes en el límite y el destino de posibles excedentes. Estas definiciones) Tj T*
+(deben conciliar la contabilidad sin cambiar silenciosamente el reparto 50% / 25% / 25%. No se) Tj T*
+(presume crédito futuro.) Tj T*
+() Tj T*
+(Adecuación legal y jurídica) Tj T*
+() Tj T*
+(Los lanzamientos deben adaptarse a la normativa local. Los subagentes y funcionalidades) Tj T*
+(dependen de la investigación técnico-legal y el cumplimiento de los requisitos,) Tj T*
+(independientemente de las fechas en el roadmap.) Tj T*
+() Tj T*
 (Los subagentes de trading, gobernanza, riesgo y tesorería requieren un análisis por país,) Tj T*
 (actividad y responsable. Los permisos no son universales; las actividades sujetas a licencia) Tj T*
 (solo se habilitan con autorización.) Tj T*
@@ -105,6 +121,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (financiación: los términos identifican origen, destino y derechos.) Tj T*
 () Tj T*
 (El mint inicial financia el proyecto a precio fijo; las definiciones de precio, plataforma y) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 2901 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (ventana siguen la adecuación legal. La venta de tokens de la comunidad destina el 100% en USDC) Tj T*
 (a la tesorería. Los aportes de inversores financian producto, tecnología y marketing, sin) Tj T*
 (salarios; no son beneficio distribuible.) Tj T*
@@ -121,16 +147,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Double 2X: juego opcional de rojo o negro con USDC de rendimientos ya recibidos, sin créditos) Tj T*
 (pendientes. Una jugada cada 24 horas corridas, resultado 50/50 y sin tasa de juego. Con 10 USDC) Tj T*
-ET
-endstream
-endobj
-8 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
-endobj
-9 0 obj
-<< /Length 2846 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (jugados, una victoria devuelve 20 en total, ganancia neta de 10 pagada por la tesorería; una) Tj T*
 (derrota devuelve cero y envía los 10 a la tesorería. RTP teórico de 100% no garantiza ganancia) Tj T*
 (por jugada.) Tj T*
@@ -163,6 +179,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (vigentes.) Tj T*
 () Tj T*
 (Las operaciones se centran en la transparencia y rendición de cuentas, sin garantías de) Tj T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 2965 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (protección de capital o rendimientos.) Tj T*
 () Tj T*
 (Token, captación y quema) Tj T*
@@ -179,16 +205,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (El 100% de los ingresos de tokens de la comunidad va a la tesorería, sin comisiones. El mint) Tj T*
 (financia el proyecto con rendición de cuentas; los mercados externos no replican el swap) Tj T*
-ET
-endstream
-endobj
-10 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
-endobj
-11 0 obj
-<< /Length 3142 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (oficial.) Tj T*
 () Tj T*
 (El resultado elegible se divide: 50% tesorería, 25% staking, 25% recompra. Sin pesos, reservas) Tj T*
@@ -221,6 +237,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Solo el saldo conciliado está disponible. Los envíos inciertos no generan repeticiones o) Tj T*
 (recuperaciones; las correcciones no alteran las billeteras personales.) Tj T*
 () Tj T*
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 3083 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (Gobernanza e integraciones) Tj T*
 () Tj T*
 (Las políticas evolucionan por versión, con multisig 2 de 3 para custodia. Los cambios críticos) Tj T*
@@ -237,16 +263,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (no demuestra acceso a acciones. Se verificaron consultas públicas de Arbitrum/Gamma; no definen) Tj T*
 (la red de lanzamiento. Otros ejemplos sin acceso privado son simulaciones. No hubo operaciones) Tj T*
 (con dinero real.) Tj T*
-ET
-endstream
-endobj
-12 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
-endobj
-13 0 obj
-<< /Length 2982 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Período económico, liquidación y cierre financiero) Tj T*
 () Tj T*
@@ -279,6 +295,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (El orden de red prevalece sobre los mensajes de backend. Las salidas de BETTEX antes de recibir) Tj T*
 (USDC cancelan derechos. Horarios iguales o evidencia insuficiente suspenden la finalización.) Tj T*
 () Tj T*
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 3282 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (Las reservas bancarias no impiden transferencias externas. La elegibilidad requiere validación) Tj T*
 (en red con eventos ordenables. Las verificaciones off-chain aisladas no garantizan el pago) Tj T*
 (automático.) Tj T*
@@ -295,16 +321,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Antes de autorizar el split, reservar principal y techo de costos por activo y proyectar) Tj T*
 (liquidez tras todos los desembolsos. La reserva de costos no es gasto realizado. Identificar) Tj T*
 (fuente y autorización; no descontar silenciosamente costos del derecho del participante ni de) Tj T*
-ET
-endstream
-endobj
-14 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
-endobj
-15 0 obj
-<< /Length 3226 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (la cuota exclusiva de recompra. Conciliar diferencias entre costo reservado y efectivo; el) Tj T*
 (sobrante no es ganancia nueva. Sin presupuesto y cobertura suficientes, no autorizar el split.) Tj T*
 () Tj T*
@@ -337,6 +353,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (El límite de USDC se basa en rendimientos confirmados, no en identidades de tokens. Las salidas) Tj T*
 (reducen el límite; los depósitos externos y las ganancias no lo aumentan. Las reservas impiden) Tj T*
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 1602 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (la reutilización, el límite nunca excede el saldo libre de USDC y la evidencia insuficiente) Tj T*
 (bloquea la apuesta.) Tj T*
 () Tj T*
@@ -353,16 +379,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Autenticación y elegibilidad jurídica) Tj T*
 () Tj T*
-ET
-endstream
-endobj
-16 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
-endobj
-17 0 obj
-<< /Length 635 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (La autenticación por billetera no prueba identidad civil, residencia ni elegibilidad. KYC y) Tj T*
 (controles territoriales siguen siendo obligatorios cuando se exijan. La demo visual no ofrece) Tj T*
 (operaciones financieras.) Tj T*
@@ -384,19 +400,19 @@ xref
 0000000155 00000 n 
 0000000252 00000 n 
 0000000378 00000 n 
-0000003417 00000 n 
-0000003543 00000 n 
-0000006675 00000 n 
-0000006801 00000 n 
-0000009699 00000 n 
-0000009827 00000 n 
-0000013022 00000 n 
-0000013150 00000 n 
-0000016185 00000 n 
-0000016313 00000 n 
-0000019592 00000 n 
-0000019720 00000 n 
+0000003294 00000 n 
+0000003420 00000 n 
+0000006446 00000 n 
+0000006572 00000 n 
+0000009525 00000 n 
+0000009653 00000 n 
+0000012671 00000 n 
+0000012799 00000 n 
+0000015935 00000 n 
+0000016063 00000 n 
+0000019398 00000 n 
+0000019526 00000 n 
 trailer << /Size 18 /Root 1 0 R >>
 startxref
-20407
+21181
 %%EOF

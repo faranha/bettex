@@ -1,4 +1,5 @@
 import { t } from '@/lib/i18n';
+import { businessRules } from '@/lib/documentation-business';
 import './DocumentationAgentConcept.css';
 
 const concepts: Record<string, { src: string; caption: string }> = {
@@ -16,7 +17,7 @@ const concepts: Record<string, { src: string; caption: string }> = {
   },
   'documentacao-subagente-cripto': {
     src: 'technology/subagent-concept-crypto-integrated.webp',
-    caption: 'Ilustração conceitual: o subagente Cripto integra análises de BTC, ETH e SOL.',
+    caption: businessRules.specialist[0],
   },
   'documentacao-subagente-esportes': {
     src: 'technology/subagent-concept-sports-integrated.webp',

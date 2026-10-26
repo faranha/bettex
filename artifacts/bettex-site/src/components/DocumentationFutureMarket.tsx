@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import { useLocale } from '@/lib/i18n';
 import { DocumentationLinkedTerms } from './DocumentationLinkedTerms';
+import { DocumentationBusinessRules } from './DocumentationBusinessRules';
 
 type Market = 'sports' | 'predictions' | 'igaming';
 const useX = () => {
@@ -8,7 +9,22 @@ const useX = () => {
   return (pt: string, en: string, es: string) => locale === 'en' ? en : locale === 'es' ? es : pt;
 };
 
-export function DocumentationFutureMarket({ part: market }: { part: Market }) {
+export function DocumentationFutureMarket({ part }: { part: Market }) {
+  return <div>
+    <DocumentationBusinessRules rules={['retired']} />
+    <details className="whitepaper__reference" data-documentation-reference>
+      <summary><LegacyMarketLabel /></summary>
+      <LegacyDocumentationFutureMarket part={part} />
+    </details>
+  </div>;
+}
+
+function LegacyMarketLabel() {
+  const x = useX();
+  return <>{x('Referência histórica da v1 — fora do escopo atual', 'Historical v1 reference — outside the current scope', 'Referencia histórica de la v1 — fuera del alcance actual')}</>;
+}
+
+function LegacyDocumentationFutureMarket({ part: market }: { part: Market }) {
   const x = useX();
   const visions: Record<Market, { overview: string; steps: [string, string][]; example: string }> = {
     sports: {

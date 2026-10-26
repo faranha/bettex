@@ -20,3 +20,9 @@ Na reorganização da documentação, o criador quer simplificar mais, especialm
 **Why:** O criador acrescentou expressamente essa direção ao planejamento da revisão documental.
 
 **How to apply:** O plano não deve apenas encurtar e preservar todas as prescrições antigas. Reavaliar quais regras precisam existir e quais decisões devem permanecer abertas ao desenvolvimento da IA. Não apresentar parâmetros históricos como novas decisões aprovadas.
+
+Preservar a estrutura do documento, sua apresentação, capítulos e hierarquia de títulos, incluindo H1s. Preservar os fluxos e imagens existentes; imagens podem mudar quando necessário, mas sem mudar demais.
+
+**Why:** O criador reiterou essas restrições ao autorizar a aplicação das melhorias.
+
+**How to apply:** Rever o conteúdo dentro do esquema existente, sem trocar a organização ou a identidade visual. Limitar mudanças nas artes e nos rótulos ao necessário para manter coerência com o negócio atual.

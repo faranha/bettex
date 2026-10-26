@@ -1,5 +1,6 @@
 /** Documentation-only labels for the agent hierarchy. Research direction, not delivered capability. */
-const passages = {
+import { businessPresentation } from './documentation-business.ts';
+const legacyPassages = {
   mapLabel: ['Hierarquia de pesquisa dos agentes', 'Agent research hierarchy', 'Jerarquía de investigación de los agentes'],
   centerTag: ['Inteligência central', 'Central intelligence', 'Inteligencia central'],
   centerRole: ['Sintetiza, compara hipóteses e pede novas investigações', 'Synthesizes, compares hypotheses and requests further investigation', 'Sintetiza, compara hipótesis y solicita nuevas investigaciones'],
@@ -86,10 +87,11 @@ const passages = {
   ],
 } as const satisfies Record<string, readonly [string, string, string]>;
 
+const passages = { ...legacyPassages, ...businessPresentation };
 export const presentationCopy = Object.fromEntries(
   Object.entries(passages).map(([id, [pt]]) => [id, pt]),
 ) as { [K in keyof typeof passages]: (typeof passages)[K][0] };
 
 export const presentationTranslations = Object.fromEntries(
-  Object.values(passages).map(([pt, en, es]) => [pt, { pt, en, es }]),
+  [...Object.values(legacyPassages), ...Object.values(businessPresentation)].map(([pt, en, es]) => [pt, { pt, en, es }]),
 );

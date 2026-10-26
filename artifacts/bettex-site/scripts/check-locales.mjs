@@ -4,13 +4,14 @@ import { intelligenceTranslations } from '../src/lib/documentation-intelligence.
 import { presentationTranslations } from '../src/lib/documentation-intelligence-presentation.ts';
 import { orderStandardTranslations } from '../src/lib/documentation-order-standard.ts';
 import { trainingTranslations } from '../src/lib/documentation-training.ts';
+import { businessTranslations } from '../src/lib/documentation-business.ts';
 const root = new URL('../src/lib/locales/', import.meta.url);
 const source = JSON.parse(fs.readFileSync(new URL('source.json', root), 'utf8'));
 const catalog = fs.readFileSync(new URL('translations.json', root), 'utf8');
 const messages = { ...trainingTranslations, ...JSON.parse(catalog),
   ...JSON.parse(fs.readFileSync(new URL('documentation-architecture.json', root), 'utf8')),
   ...JSON.parse(fs.readFileSync(new URL('english-source-messages.json', root), 'utf8')),
-  ...intelligenceTranslations, ...presentationTranslations, ...orderStandardTranslations };
+  ...intelligenceTranslations, ...presentationTranslations, ...orderStandardTranslations, ...businessTranslations };
 const failures = [];
 const seen = new Set();
 let depth = 0;

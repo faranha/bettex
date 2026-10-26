@@ -90,7 +90,7 @@ try {
       assert.ok(ownerHtml.includes('href="#documentacao-protocolo-treino"') && ownerHtml.includes('href="#documentacao-contrato-ordem"'),
         `${language}: ${owner} must link to the shared protocol and full technical order contract`);
       if (owner.startsWith('documentacao-especialista-')) {
-        assert.ok(ownerHtml.includes('crypto-trend-spot-v1'), `${language}: specialists must share the Crypto strategy`);
+        assert.doesNotMatch(ownerHtml, /crypto-trend-spot-v1/, `${language}: specialists must not prescribe the historical fixed Crypto strategy`);
         assert.ok(ownerHtml.includes('href="#documentacao-baseline-cripto"'), `${language}: specialist technical reference must lead to Crypto`);
         assert.doesNotMatch(ownerHtml, /Esta POC não define uma estratégia|This POC does not define an additional strategy|Esta POC no define una estrategia/);
       }

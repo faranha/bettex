@@ -1,3 +1,4 @@
+import { DocumentationMarketFocus } from './DocumentationBusinessRules';
 import { useCallback, useContext, useEffect, useRef, useState, type MouseEvent, type ReactElement } from 'react';
 import { createPortal, flushSync } from 'react-dom';
 import { ChapterContent, chapters } from './WhitepaperChapters';
@@ -499,12 +500,7 @@ export function WhitepaperSection() {
         <div className="whitepaper__hero-note">
           <span>MERCADOS E FOCO</span>
           <p>O foco é o apostador que hoje trata a aposta como investimento.</p>
-          <ul className="whitepaper__hero-markets">
-            <li><strong><DocumentationLinkedTerms text={t('Esportes · Surebetting:')} /></strong>{' '}arbitragem entre odds de diferentes casas de apostas.</li>
-            <li><strong><DocumentationLinkedTerms text={t('iGaming:')} /></strong>{' '}mineração de bônus e métodos de extração.</li>
-            <li><strong><DocumentationLinkedTerms text={t('Predictions:')} /></strong>{' '}negociação de contratos sobre resultados de eventos.</li>
-            <li><strong><DocumentationLinkedTerms text={t('Cripto:')} /></strong>{' '}trading de ativos digitais e arbitragem entre mercados.</li>
-          </ul>
+          <DocumentationMarketFocus />
           <p data-i18n="translated"><DocumentationLinkedTerms text={t('A proposta da BETTEX é transformar apostadores em investidores por meio de um projeto DeFAI')} /></p>
         </div>
       </header>

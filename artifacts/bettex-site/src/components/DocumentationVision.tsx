@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import type { ReactNode } from 'react';
 import { t, useLocale } from '@/lib/i18n';
+import { businessIntelligence } from '@/lib/documentation-business';
 import './DocumentationVision.css';
 
 const useX = () => {
@@ -12,10 +13,10 @@ const useX = () => {
 export function DocumentationVision() {
   const x = useX();
   const subs = [
-    [x('Esportes', 'Sports', 'Deportes'), x('surebet', 'surebet', 'surebet')],
-    ['iGaming', x('bônus e promoções', 'bonuses and promotions', 'bonos y promociones')],
-    [x('Cripto', 'Crypto', 'Cripto'), 'BTC · ETH · SOL'],
-    [x('Previsões', 'Predictions', 'Predicciones'), x('mercados de eventos', 'event markets', 'mercados de eventos')],
+    [x('Cripto', 'Crypto', 'Cripto'), x('universo aberto de moedas', 'open coin universe', 'universo abierto de monedas')],
+    [x('Padrões', 'Patterns', 'Patrones'), x('indícios de manipulação', 'signs of manipulation', 'indicios de manipulación')],
+    [x('Fluxos', 'Flows', 'Flujos'), x('carteiras e comportamento', 'wallets and behavior', 'carteras y comportamiento')],
+    [x('Oportunidades', 'Opportunities', 'Oportunidades'), x('entradas e saídas', 'entries and exits', 'entradas y salidas')],
   ];
   const support = [
     [x('Risco', 'Risk', 'Riesgo'), x('exposição e limites', 'exposure and limits', 'exposición y límites')],
@@ -27,9 +28,7 @@ export function DocumentationVision() {
     <h3 hidden className="whitepaper__subhead">{x('Nossa visão', 'Our vision', 'Nuestra visión')}</h3>
     <div className="whitepaper__prose">
       <p><strong>{x('A proposta da BETTEX é transformar apostadores em investidores por meio de um projeto DeFAI.', 'BETTEX’s proposal is to turn bettors into investors through a DeFAI project.', 'La propuesta de BETTEX es transformar apostadores en inversores mediante un proyecto DeFAI.')}</strong>{' '}
-        {x('A visão é desenvolver um agente de orquestração BETTEX descentralizado, 100% autônomo e independente, sem operador centralizado, que coordene estratégias de mercado com subagentes inteligentes em esportes (surebet), iGaming, cripto e previsões.',
-          'The vision is to develop a decentralized, 100% autonomous and independent BETTEX orchestration agent, with no centralized operator, coordinating market strategies with intelligent subagents in sports (surebet), iGaming, crypto and predictions.',
-          'La visión es desarrollar un agente de orquestación BETTEX descentralizado, 100% autónomo e independiente, sin operador centralizado, que coordine estrategias de mercado con subagentes inteligentes en deportes (surebet), iGaming, cripto y predicciones.')}</p>
+        {x(...businessIntelligence.hero)}</p>
       <p>{x('A visão da BETTEX é resgatar pessoas de um futuro incerto, usando IA para lhes dar uma participação na era de ouro da humanidade. Enquanto o Estado não organiza soluções sociais para o desaparecimento do emprego como o conhecemos, o projeto busca proteger o capital de quem hoje trata apostas como investimento.',
         'BETTEX’s vision is to rescue people from an uncertain future, using AI to give them a stake in humanity’s golden age. While the state has yet to put social solutions in place for the disappearance of employment as we know it, the project seeks to protect the capital of people who currently treat betting as an investment.',
         'La visión de BETTEX es rescatar a las personas de un futuro incierto, usando IA para darles una participación en la edad de oro de la humanidad. Mientras el Estado no organiza soluciones sociales ante la desaparición del empleo tal como lo conocemos, el proyecto busca proteger el capital de quienes hoy tratan las apuestas como inversión.')}</p>
@@ -67,7 +66,7 @@ export function DocumentationVision() {
         </li>
       </ol>
       <p className="dv__note">{x('O mapa representa a arquitetura pretendida. No demo off-chain, essas funções são apenas ilustradas, sem operações financeiras reais.', 'The map represents the intended architecture. In the off-chain demo, these functions are only illustrated, with no real financial operations.', 'El mapa representa la arquitectura prevista. En el demo off-chain, estas funciones solo se ilustran, sin operaciones financieras reales.')}</p>
-      <p className="dv__note">{x('Esportes, Previsões e iGaming fazem parte da visão futura: não estão disponíveis nem ativos no demo e não estão previstos para a versão ALFA.', 'Sports, Predictions and iGaming are part of the future vision: they are neither available nor active in the demo and are not planned for the ALFA version.', 'Deportes, Predicciones e iGaming forman parte de la visión futura: no están disponibles ni activos en el demo y no están previstos para la versión ALFA.')}</p>
+      <p className="dv__note">{x(...businessIntelligence.agP2)}</p>
     </figure>
   </section>;
 }
