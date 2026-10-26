@@ -3,6 +3,12 @@ name: Pauta econômica do cenário apocalíptico
 description: A pauta econômica pedida pelo criador pertence ao cenário apocalíptico, com gráficos, matérias e riscos globais.
 ---
 
+O bloco dos 74% e da Copa de 2026 precisa de uma bola de futebol visível junto ao personagem sentado.
+
+**Why:** O criador reiterou o pedido da bola e esclareceu com uma captura que falava desse bloco, não do torcedor da seção dos 40 milhões.
+
+**How to apply:** Preservar uma referência visual explícita ao futebol neste bloco. A bola na seção Público não substitui esta exigência.
+
 Preservar no Pitch a parte sobre IA substituir empregos, mesmo ao simplificar a apresentação.
 
 **Why:** Após a simplificação, o criador perguntou “cade a parte da IA robar o emprego das pessoas eu gostava daqui”.

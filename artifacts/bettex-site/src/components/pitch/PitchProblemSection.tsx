@@ -31,7 +31,10 @@ export function PitchProblemSection() {
                 )}
               </span>
             </div>
-            <img className="pitch-problem__character" src={`${import.meta.env.BASE_URL}pitch-future/household-character-cutout.svg`} alt="" aria-hidden="true" width={80} height={80} loading="lazy" />
+            <div className="pitch-problem__football-scene" aria-hidden="true">
+              <img className="pitch-problem__character" src={`${import.meta.env.BASE_URL}pitch-future/household-character-cutout.svg`} alt="" width={80} height={80} loading="lazy" />
+              <img className="pitch-problem__football" src={`${import.meta.env.BASE_URL}pitch-future/football.svg`} alt="" width={100} height={100} loading="lazy" />
+            </div>
             </div>
 
             <div className="pitch-problem__claim-wrap">

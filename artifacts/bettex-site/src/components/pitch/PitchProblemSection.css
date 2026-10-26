@@ -43,6 +43,19 @@
   object-fit: contain;
 }
 
+.pitch-problem__football-scene {
+  position: relative;
+  width: min(100%, 300px);
+}
+
+.pitch-problem__football {
+  position: absolute;
+  right: -12px;
+  bottom: 4px;
+  width: 84px;
+  height: 84px;
+}
+
 .pitch-problem__hero .pitch-problem__stat {
   color: #f2b632;
 }
@@ -381,6 +394,13 @@
   .pitch-problem__character {
     width: 100%;
     height: 250px;
+  }
+
+  .pitch-problem__football {
+    right: -4px;
+    bottom: 24px;
+    width: 60px;
+    height: 60px;
   }
 
   .pitch-problem__stat-column .pitch-problem__stat {
