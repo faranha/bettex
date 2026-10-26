@@ -3,6 +3,12 @@ name: Escopo do rodapé
 description: Rodapé antigo de navegação restaurado, compartilhado no site, sem o bloco ilustrado do Rio.
 ---
 
+O link de navegação da página inicial deve se chamar “Home”, no cabeçalho desktop/mobile e no rodapé, em todos os idiomas.
+
+**Why:** O criador reiterou: “eu ja tinha dito pra transformar Pagina Inicial em Home”.
+
+**How to apply:** Não reintroduzir “Página Inicial”, “Página inicial” ou “Homepage” como rótulo desse destino. Manter a URL e o comportamento da navegação.
+
 No link do X no rodapé, usar “Siga a Bettex no X” junto ao endereço “@bettexai”, seguindo o padrão do Instagram. Comunidade é apenas no Telegram; não escrever essa observação na interface.
 
 **Why:** O criador pediu essa redação, esclareceu que a comunidade é apenas no Telegram e depois pediu exibir o @bettexai junto ao link do X para manter o mesmo padrão do Instagram.

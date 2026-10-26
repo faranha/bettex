@@ -17,7 +17,7 @@ test('shared footer navigation lists only the four site pages, never internal se
   const start = app.indexOf('data-testid="footer-page-navigation"');
   const navigation = app.slice(start, app.indexOf('</nav>', start));
   assert.equal((navigation.match(/<li>/g) ?? []).length, 4);
-  for (const label of ['Página inicial', 'Pitch', 'Documentação', 'Demo']) {
+  for (const label of ['Home', 'Pitch', 'Documentação', 'Demo']) {
     assert.ok(navigation.includes(`>${label}</a>`));
   }
   for (const destination of ['href={HOME_PATH}', 'href={`${BASE_PATH}/pitch`}', 'href={DOCUMENTATION_PATH}', 'href={`${BASE_PATH}/app`}']) {

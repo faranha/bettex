@@ -42,7 +42,7 @@ import { SignInPage, SignUpPage } from '@/pages/auth';
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 const HOME_PATH = `${BASE_PATH}/`;
 const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
-const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Nossa Missão', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR DEMO', href: '/app' }] as const;
+const mainLinks = [{ label: 'Home', href: '/' }, { label: 'Nossa Missão', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR DEMO', href: '/app' }] as const;
 const legacyChapterIds = legacyDocumentationHashes;
 const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
 function usePageLinkProps() {
@@ -187,7 +187,7 @@ function SiteFooter() {
         <nav aria-label="Links do projeto" className="sf-group sf-pages" data-testid="footer-page-navigation">
           <h3 className="mono">Explore</h3>
           <ul>
-            <li><a {...linkProps} href={HOME_PATH}>Página inicial</a></li>
+            <li><a {...linkProps} href={HOME_PATH}>Home</a></li>
             <li><a {...linkProps} href={`${BASE_PATH}/pitch`}><span data-i18n="raw">{({ pt: 'Nossa Missão', en: 'Our Mission', es: 'Nuestra misión' } as const)[language]}</span></a></li>
             <li><a {...linkProps} href={DOCUMENTATION_PATH}>Documentação</a></li>
             <li><a {...linkProps} href={`${BASE_PATH}/app`}>Demo</a></li>

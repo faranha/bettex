@@ -103,7 +103,7 @@
 - [Sustentabilidade operacional](operational-sustainability-positioning.md) — custeio em aberto; simplificar documentação e retirar receita empresarial, preservando regras essenciais.
 - [Compartilhamento social](social-sharing-policy.md) — artes duráveis, previsões explícitas e nova URL ao trocar a mensagem; preservar links antigos.
 - [Perfis de verificação](verification-profiles.md) — CI do demo visual não certifica integrações históricas; exclusões explícitas, sem reativar finanças para testes.
-- [Hero do Pitch](pitch-hero-hierarchy.md) — H1 prioritário; personagem usando o app em cutout, sem caixa nem legenda.
+- [Hero do Pitch](pitch-hero-hierarchy.md) — estrutura da home, cena de resgate à direita; missão direta sobre futuro perdido, robôs e bets.
 - [Integração de mockup do Pitch](pitch-mockup-integration.md) — mockup aprovado integra-se diretamente no Build; não abrir o Designer nem mudar para Design sem pedido.
 - [Vesting na documentação mobile](documentation-vesting-mobile.md) — consulta compacta dos 24 meses; gráficos visíveis no HTML inicial, sem depender de medir capítulos ocultos.
 - [Build export side effects](build-export-side-effects.md) — full validation may change archive headers only; verify member contents before cleanup and respect Git safeguards.

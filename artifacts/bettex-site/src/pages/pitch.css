@@ -104,9 +104,8 @@ img, svg, video { max-width: 100%; }
 .slide__head--ink h2 span { color: #F2B632; }
 .slide__head--paper { background: #F4F1E8; }
 #solucao { border-top: 6px solid #2B59FF; isolation: isolate; overflow: hidden; }
-#solucao > .slide__illustration { position: absolute; z-index: 0; top: 0; right: 0; width: min(780px, 90vw); height: 100%; object-fit: contain; object-position: right center; opacity: .2; pointer-events: none; user-select: none; }
 #solucao > .slide__body { position: relative; z-index: 1; }
-#solucao.slide--flow { background-color: #E8EEFF; }
+#solucao.slide--flow { background-color: #fff; }
 #solucao .slide__head {
   background: #13204F;
   color: #F4F1E8;

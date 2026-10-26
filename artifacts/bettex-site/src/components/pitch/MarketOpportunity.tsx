@@ -25,6 +25,7 @@ export function MarketOpportunity() {
 
   const slides: { title: string; node: ReactNode }[] = [
     { title: x('Apostas', 'Betting', 'Apuestas'), node: <div className="mk-grid">
+      <div className="mk-audience-intro">
       <div className="mk-offer">
         <p className="mk-eyebrow">{x('Público potencial · apostas', 'Potential audience · betting', 'Público potencial · apuestas')}</p>
         <p className="mk-big" data-testid="audience-betting-value"><span aria-hidden="true">≈ </span><strong>{audienceScenario.bettingMillions}</strong><span className="mk-unit">{x('milhões', 'million', 'millones')}</span></p>
@@ -32,6 +33,7 @@ export function MarketOpportunity() {
         <p className="mk-rhythm">{x('Estimativa de mercado, não uma contagem oficial.', 'A market estimate, not an official count.', 'Estimación de mercado, no un recuento oficial.')}</p>
         <p className="mk-p">{x('Cenário da BETTEX para a escala do público de apostas no Brasil, considerando diferentes tipos de plataformas.', 'BETTEX scenario for the scale of the betting audience in Brazil, across different types of platforms.', 'Escenario de BETTEX para la escala del público de apuestas en Brasil, considerando distintos tipos de plataformas.')}</p>
         {src(audienceScenario.bettingSourceUrl, x('Apostas: Fazenda / SIGAP, via Folha · set. 2026', 'Betting: Ministry of Finance / SIGAP, via Folha · Sep. 2026', 'Apuestas: Hacienda / SIGAP, vía Folha · sep. 2026'))}
+      </div>
       </div>
       <figure className="mk-stage"><img src={`${BASE}/pitch-illustrations/pitch-brazil-community.webp`} alt={x('Ilustração de uma comunidade brasileira conectada', 'Illustration of a connected Brazilian community', 'Ilustración de una comunidad brasileña conectada')} loading="lazy" decoding="async" /></figure>
     </div> },
