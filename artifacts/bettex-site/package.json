@@ -23,6 +23,8 @@
     "check:pitch-opening": "node scripts/check-pitch-opening.mjs",
     "check:demo-consistency": "node scripts/check-demo-consistency.mjs && node scripts/check-interface-demo.mjs && node scripts/check-demo-project.mjs && node scripts/check-central-packets.mjs && node --test src/components/history/history-selection.test.ts",
     "check:central-packets": "node scripts/check-central-packets.mjs",
+    "check:demo-session": "node --test src/lib/app-session.test.ts",
+    "check:demo-transition": "node scripts/check-demo-transition.mjs",
     "check:launch": "node --test src/components/pitch/launchSimulation.test.ts",
     "check:responsive": "node scripts/check-responsive.mjs",
     "check:seo": "node scripts/check-seo.mjs",

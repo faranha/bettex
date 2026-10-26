@@ -2,6 +2,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import ts from 'typescript';
 import assert from 'node:assert/strict';
+import { businessIntelligence, businessRules } from '../src/lib/documentation-business.ts';
+
+// Shared, authored PT/EN/ES tuples are checked just as strictly as inline copy.
+const sharedDemoTuples = new Map();
+for (const [group, entries] of Object.entries({ businessIntelligence, businessRules })) {
+  for (const [key, tuple] of Object.entries(entries)) {
+    assert.ok(tuple.length === 3 && tuple.every(value => typeof value === 'string' && value.trim()), `${group}.${key}: incomplete shared translation`);
+    sharedDemoTuples.set(`${group}.${key}`, tuple);
+  }
+}
 
 const root = path.resolve(import.meta.dirname, '../src/components/demo');
 const files = fs.readdirSync(root).filter(f => /\.(ts|tsx)$/.test(f) && !f.endsWith('.test.ts')).map(f => path.join(root, f));
@@ -71,7 +81,9 @@ for (const file of files) {
     }
     if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && ['x', 'tr'].includes(node.expression.text)) {
       tuples++;
-      if (node.arguments.length !== 3 || node.arguments.some(a => !ts.isStringLiteral(a) && !ts.isTemplateExpression(a) && !ts.isNoSubstitutionTemplateLiteral(a))) report(node, 'Translation must explicitly provide PT, EN, ES.');
+      const sharedTuple = node.arguments.length === 1 && ts.isSpreadElement(node.arguments[0])
+        && sharedDemoTuples.has(node.arguments[0].expression.getText(source));
+      if (!sharedTuple && (node.arguments.length !== 3 || node.arguments.some(a => !ts.isStringLiteral(a) && !ts.isTemplateExpression(a) && !ts.isNoSubstitutionTemplateLiteral(a)))) report(node, 'Translation must explicitly provide PT, EN, ES.');
       else for (const a of node.arguments) if (!a.getText(source).slice(1,-1).trim()) report(node, 'Empty translation.');
     }
     if (ts.isJsxText(node)) {

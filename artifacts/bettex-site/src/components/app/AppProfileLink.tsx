@@ -6,14 +6,17 @@ import { useGetDemoDashboard, getGetDemoDashboardQueryKey } from '@workspace/api
 import { useX } from '@/components/demo/ui';
 import { demoPath } from '@/components/demo/demo-navigation';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { useAppLogout } from './use-app-logout';
-import { openDemoNotice, visualDashboard } from '@/components/interface-demo/runtime';
+import { endAppSession } from '@/lib/app-session';
+import { useQueryClient } from '@tanstack/react-query';
+import { visualDashboard } from '@/components/interface-demo/runtime';
 
 export function AppProfileLink() {
   const { x, loc } = useX();
-  const [path] = useLocation();
+  const [path, navigate] = useLocation();
+  const cache = useQueryClient();
   const [open, setOpen] = useState(false);
-  const logout = openDemoNotice, busy = false, failed = false;
+  const logout = () => { endAppSession(); cache.clear(); navigate('/sign-in'); };
+  const busy = false, failed = false;
   useEffect(() => { setOpen(false); }, [path, loc]);
   const data = visualDashboard();
   const name = data?.profile.nickname?.trim() || data?.profile.name;
@@ -37,9 +40,9 @@ export function AppProfileLink() {
         </Link>
       </DropdownMenuItem>)}
       <DropdownMenuSeparator />
-      <DropdownMenuItem disabled={busy} data-testid="account-menu-logout" onSelect={event => { event.preventDefault(); void logout(); }} className="min-h-11 gap-2 text-[#B4421A]">
+      <DropdownMenuItem data-demo-local disabled={busy} data-testid="account-menu-logout" onSelect={event => { event.preventDefault(); void logout(); }} className="min-h-11 gap-2 text-[#B4421A]">
         {busy ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <LogOut className="h-4 w-4" aria-hidden="true" />}
-        {busy ? x('Saindo…', 'Logging out…', 'Saliendo…') : x('Sair da conta', 'Log out', 'Cerrar sesión')}
+        {busy ? x('Saindo…', 'Logging out…', 'Saliendo…') : x('Sair do demo', 'Leave demo', 'Salir del demo')}
       </DropdownMenuItem>
       {failed && <p role="alert" className="px-2 py-1 text-xs text-[#B4421A]">{x('Não foi possível sair. Tente novamente.', 'Could not log out. Please try again.', 'No se pudo cerrar sesión. Inténtalo de nuevo.')}</p>}
     </DropdownMenuContent>

@@ -1,4 +1,5 @@
 /** @jsxImportSource react */
+import { DemoParticipationRules } from '../interface-demo/DemoBusinessContext';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from './ui';
 import { Money } from './fin';
@@ -24,6 +25,7 @@ export function EarningsStakingSummary({ d }: { d: DemoDashboard }) {
   ];
   return <section className="grid min-w-0 gap-2 rounded-lg border border-[#0E7C6B]/20 bg-white/50 p-3" data-testid="earnings-round-stake">
     <h4 className="text-xs font-bold text-[#0A6657]">{x('Sua participação na rodada atual', 'Your participation in the current round', 'Tu participación en la ronda actual')}</h4>
+    <DemoParticipationRules />
     <dl className="grid min-w-0 divide-y divide-[#0E7C6B]/20 border-y border-[#0E7C6B]/20">
       {values.map(({ id, label, value, help }) => <div key={id} className="grid min-w-0 grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-center gap-x-3 py-3">
         <dt className="min-w-0 text-[11px] font-semibold text-[#3F6F63]"><WalletHelp id={`stake-${id}`} label={label}><p>{help}</p></WalletHelp></dt>

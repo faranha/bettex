@@ -1,4 +1,5 @@
 /** @jsxImportSource react */
+import { DemoBusinessContext } from './DemoBusinessContext';
 import type { DemoDashboard } from '@workspace/api-client-react';
 import { useX } from '../demo/ui';
 import { brazilDate } from '../history/TreasuryStatement';
@@ -51,6 +52,7 @@ export function MockTreasuryPanel({ d }: { d: DemoDashboard }) {
           </section>
           <TreasuryWallets visualDemo d={d} r={r} layout="vertical" />
         </>}
+        <DemoBusinessContext area="treasury" />
         {sec === 'assets' && <>
           <DemoFold id="composition" title={x('Composição dos ativos', 'Asset allocation', 'Composición de activos')} hint={x('Reserva, capital operacional e liquidez', 'Reserves, working capital and liquidity', 'Reserva, capital operativo y liquidez')}><AssetAllocation r={r} className="min-w-0" /></DemoFold>
           <DemoFold id="swap" title={x('Pool de troca', 'Swap pool', 'Pool de intercambio')} hint={x('Liquidez e preços', 'Liquidity and prices', 'Liquidez y precios')}><TreasurySwapPool visualDemo d={d} /></DemoFold>

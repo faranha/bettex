@@ -5,6 +5,14 @@ description: Escopo atual do app; substitui as exigências anteriores de testnet
 
 O criador pediu: “Vamos converter tudo em demo”. O app, incluindo Tesouraria e Histórico, deve funcionar como demonstração visual com dados fictícios locais, sem depender de autenticação, banco, agentes reais ou testnet. Navegação, idioma, gráficos, filtros, abas e sanfonas continuam sendo interações visuais.
 
+## Entrada demonstrativa obrigatória
+
+A tela de login apresenta apenas Cripto, sem outros agentes ou próximos agentes. Toda abertura e recarga completa do aplicativo deve começar deslogada; a pessoa precisa fazer o login demo explicitamente. A navegação interna mantém o acesso durante aquela abertura. Não reutilizar acesso salvo nem sessões reais para pular essa entrada.
+
+**Why:** O criador apontou que o aplicativo estava sempre carregando logado e exigiu que sempre carregasse deslogado, com login demo.
+
+**How to apply:** Preservar o caráter visual: login demo não é autenticação real nem autorização financeira. Conferir acesso direto a páginas internas, recarga, navegação e saída. Não retirar essa entrada para simplificar previews ou testes.
+
 Há uma exceção posterior e restrita para a Central: consultar mercados públicos da Polymarket e usar suas cotações em simulações locais. Nenhuma ordem, saldo real, conexão de carteira, persistência financeira ou runtime operacional foi autorizado por essa exceção.
 
 **Why:** O criador pediu “simulacoes de numeros e mercados, conectados no polymarket”.
