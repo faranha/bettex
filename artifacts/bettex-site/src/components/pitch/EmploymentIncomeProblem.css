@@ -5,13 +5,16 @@
 .pitch .chero__title { margin-top: 10px; font-size: clamp(1.5rem, 2.8vw, 2.3rem); }
 .pitch .chero__summary { margin-top: 10px; font-size: 15px; line-height: 1.55; }
 
-.pb-problem__musk-quote { display: grid; grid-template-columns: minmax(0,1fr) minmax(170px,.34fr); gap: clamp(16px,3vw,32px); align-items: center; margin: 20px 0 14px; padding: clamp(16px,3vw,26px); border: 1px solid rgba(242,182,50,.3); border-left: 4px solid #F2B632; background: rgba(7,11,31,.76); }
-.pb-problem__musk-quote blockquote { grid-column: 1; grid-row: 1; min-width: 0; margin: 0; }
-.pb-problem__musk-quote blockquote > p { margin: 0; color: #F4F1E8; font-size: clamp(1.15rem,2.3vw,1.8rem); font-weight: 700; line-height: 1.35; }
-.pb-problem__musk-quote figcaption { grid-column: 1; grid-row: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 0 8px; color: #c5d2f1; font-size: 12px; line-height: 1.5; }
-.pb-problem__musk-quote figcaption a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; color: #F2B632; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.pb-problem__musk-quote { display: grid; grid-template-columns: minmax(0,1fr) minmax(170px,.34fr); gap: clamp(16px,3vw,32px); align-items: center; margin: 20px 0 14px; padding: clamp(20px,3vw,36px); border: 1px solid #dc2626; background: #b91c1c; color: #fff; }
+.pb-problem__musk-verdict { grid-column: 1 / -1; grid-row: 1; display: grid; gap: 10px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.35); }
+.pb-problem__musk-verdict span { font: 700 11px/1.5 var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.pb-problem__musk-verdict strong { font-family: var(--app-font-serif); font-size: clamp(2.8rem, 6.5vw, 6rem); font-weight: 900; line-height: .98; letter-spacing: -.05em; color: #fff; }
+.pb-problem__musk-quote blockquote { grid-column: 1; grid-row: 2; min-width: 0; margin: 0; }
+.pb-problem__musk-quote blockquote > p { margin: 0; color: #fff; font-size: clamp(1.15rem,2.3vw,1.8rem); font-weight: 700; line-height: 1.35; }
+.pb-problem__musk-quote figcaption { grid-column: 1; grid-row: 3; display: flex; flex-wrap: wrap; align-items: center; gap: 0 8px; color: #fff; font-size: 12px; line-height: 1.5; }
+.pb-problem__musk-quote figcaption a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .pb-problem__musk-quote figcaption svg { width: 14px; height: 14px; flex: none; }
-.pb-problem__musk-quote > img { grid-column: 2; grid-row: 1 / span 2; display: block; width: 100%; height: auto; max-height: 270px; object-fit: contain; object-position: center bottom; }
+.pb-problem__musk-quote > img { grid-column: 2; grid-row: 2 / span 2; display: block; width: 100%; height: auto; max-height: 270px; object-fit: contain; object-position: center bottom; }
 .pb-problem__musk-thesis { margin: 0 0 14px; color: #e3eaff; font-size: 14px; line-height: 1.6; }
 
 /* All five topics remain visible. Keep this layout local to the jobs block. */

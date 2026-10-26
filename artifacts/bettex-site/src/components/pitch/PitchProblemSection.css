@@ -306,15 +306,21 @@
 }
 
 .pitch-problem__automation .pb-problem__robot-background img {
-  top: -26%;
-  right: -4%;
-  width: min(75%, 920px);
-  opacity: 0.68;
-  mask-image: linear-gradient(180deg, #000 40%, transparent 100%);
+  top: 0;
+  left: 0;
+  right: auto;
+  width: 68%;
+  height: min(100%, 1050px);
+  object-fit: cover;
+  object-position: left center;
+  opacity: .85;
+  mask-image: none;
 }
 
 .pitch-problem__automation .pb-problem__robot-background::after {
-  background: linear-gradient(90deg, #070b1f 20%, rgba(7, 11, 31, 0.88) 48%, rgba(7, 11, 31, 0.22) 100%);
+  background:
+    linear-gradient(90deg, rgba(7,11,31,.32), rgba(7,11,31,.8) 46%, #070b1f 76%),
+    linear-gradient(180deg, transparent 300px, #070b1f 1050px);
 }
 
 .pitch-problem__automation .pitch-problem__shell {
@@ -441,15 +447,18 @@
   }
 
   .pitch-problem__automation .pb-problem__robot-background img {
-    top: 5%;
-    right: -45%;
-    width: 145%;
+    top: 0;
+    left: 0;
+    right: auto;
+    width: 100%;
+    height: 780px;
+    object-position: 35% top;
   }
 
   .pitch-problem__automation .pb-problem__robot-background::after {
     background:
-      linear-gradient(90deg, rgba(7, 11, 31, 0.96), rgba(7, 11, 31, 0.68)),
-      linear-gradient(0deg, #070b1f 35%, transparent 100%);
+      linear-gradient(90deg, rgba(7,11,31,.64), rgba(7,11,31,.76)),
+      linear-gradient(180deg, transparent 240px, #070b1f 780px);
   }
 
   .pitch-problem__work-heading {

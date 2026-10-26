@@ -13,7 +13,7 @@ export function EmploymentIncomeProblem() {
   const x = useX();
   return <section id="problema-emprego-renda" className="pb-problem__automation pitch-problem__automation" aria-labelledby="problema-ia-t">
     <div className="pb-problem__robot-background" aria-hidden="true">
-      <img src={`${import.meta.env.BASE_URL}pitch-future/tesla-optimus.jpg`} alt="" width={1024} height={1024} />
+      <img src={`${import.meta.env.BASE_URL}pitch-future/factory-robots-background.webp`} alt="" width={660} height={920} loading="lazy" />
     </div>
     <div className="pitch-problem__shell">
       <div className="pitch-problem__work-heading">
@@ -32,6 +32,10 @@ export function EmploymentIncomeProblem() {
     <PitchSlider id="emprego-ia-slider" tone="dark" label={['IA, trabalho, renda e indicadores em blocos', 'AI, work and income blocks', 'IA, trabajo e ingresos por bloques']} slides={[
       { label: ['Promessa de abundância', 'Promise of abundance', 'Promesa de abundancia'], node: <>
     <figure className="pb-problem__musk-quote">
+      <div className="pb-problem__musk-verdict">
+        <span>{x('Posição da BETTEX', 'BETTEX’s position', 'Posición de BETTEX')}</span>
+        <strong>{x('É MENTIRA', 'IT’S A LIE', 'ES MENTIRA')}</strong>
+      </div>
       <blockquote>
         <p>{x('“Acho que, de longe, o resultado mais provável é uma era de abundância em que não teremos apenas renda básica universal, mas renda alta universal.”', '“I think by far the most likely outcome is an age of abundance where we don’t just have universal basic income, we have universal high income.”', '“Creo que, con diferencia, el resultado más probable es una era de abundancia en la que no tendremos solo una renta básica universal, sino una renta alta universal.”')}</p>
       </blockquote>

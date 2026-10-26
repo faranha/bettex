@@ -30,7 +30,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: #070b1f !important;
+  background: #fff !important;
 }
 .pb-aud__backdrop {
   position: absolute;
@@ -48,29 +48,13 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(7,11,31,.94), rgba(7,11,31,.72) 45%, rgba(7,11,31,.48)), linear-gradient(0deg, rgba(7,11,31,.8), transparent 35%);
-}
-.pb-aud .mk-big,
-.pb-aud .mk-eyebrow,
-.pb-aud .pb-market a.mk-src {
-  color: #f2c65d;
-}
-.pb-aud .mk-unit,
-.pb-aud .mk-h {
-  color: #f4f1e8;
-}
-.pb-aud .mk-rhythm {
-  color: #e0e8fc;
-  border-left-color: #f2b632;
-}
-.pb-aud .mk-p {
-  color: #d6def0;
+  background: linear-gradient(90deg, rgba(255,255,255,.97), rgba(255,255,255,.8) 42%, rgba(255,255,255,.16)), linear-gradient(0deg, rgba(255,255,255,.3), transparent 40%);
 }
 .pb-aud__title {
   grid-column: 1 / -1;
   max-width: 1000px;
   margin: 0 0 clamp(24px, 4vw, 48px);
-  color: #f4f1e8;
+  color: #070b1f;
   font-family: var(--app-font-serif);
   font-size: clamp(2.2rem, 4.8vw, 4rem);
   font-weight: 800;
