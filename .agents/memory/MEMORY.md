@@ -1,3 +1,4 @@
+- [Negócio cripto atual](current-crypto-business.md) — somente cripto, moedas sem limite fixo; teto diário de 1% sobre o valor elegível de cada participante.
 - [BETTEX 1.0 canônica](canonical-bettex-release.md) — referência de restauração anterior à simplificação; conferir documento, backups e limites externos antes de restaurar.
 - [Disponibilidade dos agentes](agent-trading-availability.md) — Esportes, Previsões e iGaming indisponíveis no demo e fora da ALFA; preservar a visão futura.
 - [Demo exclusivamente visual](interface-visual-demo.md) — instrução atual substitui operação, testnet e emulação persistida; ações operacionais abrem aviso com comunidade.
