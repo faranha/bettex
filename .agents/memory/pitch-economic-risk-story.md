@@ -27,11 +27,11 @@ O Problema 2 precisa apresentar e desenvolver a ameaça ao emprego e à renda no
 
 **How to apply:** Explicar substituição de funções, concentração dos ganhos, efeito sobre o orçamento de quem depende do salário e relação com perdas nas apostas. Não mover capítulos ou repetir toda a pauta de Ambiente externo sem solicitação. Manter observações ao fim do bloco.
 
-O vídeo da USA TODAY sobre Musk e a “era da abundância”, indicado pelo usuário, fica no Problema 2 após o título e o parágrafo introdutório, antes das explicações detalhadas.
+O vídeo da USA TODAY sobre Musk e a “era da abundância” foi removido do Pitch a pedido do criador.
 
-**Why:** O usuário corrigiu a ordem: “o video precisa vir depois de alguma introducao”.
+**Why:** O pedido posterior de remoção substituiu a orientação anterior sobre a posição do vídeo.
 
-**How to apply:** Preservar essa sequência ao editar o trecho. Distinguir a fala de Musk da interpretação crítica da BETTEX, sem afirmar que o vídeo prova intenção de enganar.
+**How to apply:** Não reintroduzir o player nem sua legenda. Preservar a introdução e as demais evidências escritas sobre emprego e renda.
 
 O fundo do hero de Ambiente externo deve usar uma fotografia de miséria contemporânea em centros urbanos nos anos 2020, sem explosões, guerra ou bandeiras e não o robô da Tesla.
 
@@ -119,11 +119,17 @@ O destaque brasileiro desse argumento deve medir salário ou renda regular usado
 
 **How to apply:** Selecionar indicadores que respondam às perguntas sobre origem dos recursos e reservas. Não trocar uso de salário por inadimplência nem apresentar dois percentuais separados como uma prevalência conjunta.
 
-O dado da pesquisa da Copa deve abrir a seção Problema 1 do Pitch: 74% dos que pretendiam apostar na Copa de 2026 viam nas bets uma forma de quitar dívidas pendentes.
+O dado da pesquisa da Copa integra a seção Problema 1 do Pitch: 74% dos que pretendiam apostar na Copa de 2026 viam nas bets uma forma de quitar dívidas pendentes.
 
-**Why:** O criador corrigiu que o dado da Copa havia sido omitido e pediu que fosse a abertura da seção, não um conteúdo posterior.
+**Why:** O criador exigiu preservar esse dado e posteriormente uniu a apresentação da pesquisa ao conteúdo sobre orçamento doméstico.
 
 **How to apply:** Manter a população pesquisada e a fonte CNDL/SPC Brasil e Offerwise: 600 participantes de 18 anos ou mais, nas 27 capitais, com intenção de gastos na Copa; coleta de 27/04 a 05/05/2026. Os 74% reúnem 31% de concordância total e 43% parcial. Não generalizar para toda a população, retorno das apostas ou demanda da BETTEX.
+
+A pesquisa dos 74% e o bloco de orçamento doméstico formam uma única seção com o título “Brasileiros endividados perdem tudo em bets”.
+
+**Why:** O criador mostrou os dois blocos e pediu que virassem uma única seção com esse título.
+
+**How to apply:** Não separar novamente os dois conteúdos em faixas ou capítulos distintos. Preservar o alcance real da pesquisa, a fonte e as ressalvas; o título não altera o que os 74% medem.
 
 Na parte de Elon Musk, manter apenas o conteúdo mais polêmico, problemático e apocalíptico, sem a contraposição otimista ou explicações secundárias.
 
@@ -149,7 +155,7 @@ Não reintroduzir o bloco “Desta vez, a perda pode acontecer dos dois lados”
 
 **How to apply:** Retirar também a referência “Desta vez, patrimônio e salário” da pauta. Preservar gráficos, alertas e demais conteúdos do cenário apocalíptico.
 
-A tese de pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA, define o segundo problema. Esse item deve tratar diretamente da visão de Musk de substituir o trabalho humano por máquinas e da promessa de renda universal alta, rejeitada pela tese da BETTEX, com o vídeo depois da introdução.
+A tese de pessoas sem renda, com crise e miséria antes da prosperidade prometida pela IA, define o segundo problema. Esse item deve tratar diretamente da visão de Musk de substituir o trabalho humano por máquinas e da promessa de renda universal alta, rejeitada pela tese da BETTEX, sem reintroduzir o vídeo removido.
 
 **Why:** O criador esclareceu que “é sobre apresentar a visão de resgate frente ao apocalipse iminente” e pediu um parágrafo claro ligando essa crença à missão de resgatar o futuro agora.
 
