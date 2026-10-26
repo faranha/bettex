@@ -23,10 +23,102 @@
 
 .pitch-problem__hero {
   position: relative;
+  isolation: isolate;
   padding: clamp(36px, 5.3vw, 76px) 0 40px;
-  background-color: var(--problem-paper);
-  background-image: radial-gradient(rgba(24, 49, 115, 0.1) 0.7px, transparent 0.7px);
-  background-size: 11px 11px;
+  background: #080e1d;
+  color: #f4f1e8;
+}
+
+.pitch-problem__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pitch-problem__backdrop img {
+  width: 68%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% center;
+  opacity: .75;
+}
+
+.pitch-problem__backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8,14,29,.3), rgba(8,14,29,.8) 46%, #080e1d 76%), linear-gradient(0deg, #080e1d, transparent 40%);
+}
+
+.pitch-problem__hero .pitch-problem__stat {
+  color: #f2b632;
+}
+
+.pitch-problem__hero .pitch-problem__percent,
+.pitch-problem__hero .pitch-problem__stat-caption,
+.pitch-problem__hero .pitch-problem__evidence-label {
+  color: #f4f1e8;
+}
+
+.pitch-problem__hero .pitch-problem__household-body p {
+  color: #d5ddef;
+}
+
+.pitch-problem__hero .pitch-problem__link,
+.pitch-problem__hero .pitch-problem__evidence-copy a,
+.pitch-problem__hero .pitch-problem__down {
+  color: #f2c65d;
+}
+
+.pitch-problem__hero .pitch-problem__evidence {
+  background: rgba(8,14,29,.82);
+  border-top-color: rgba(244,241,232,.22);
+}
+
+.pitch-problem__hero .pitch-problem__evidence-copy p {
+  color: #c1ccdf;
+}
+
+.pitch-problem__evidence-copy p + p {
+  margin-top: 16px;
+}
+
+.pitch-problem__debt-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.pitch-problem__debt-metrics article {
+  padding: 22px;
+  border: 1px solid rgba(244,241,232,.2);
+  border-top: 3px solid #f2b632;
+  border-radius: 10px;
+  background: rgba(8,14,29,.88);
+}
+
+.pitch-problem__debt-metrics strong {
+  color: #f2c65d;
+  font-family: var(--app-font-serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1;
+}
+
+.pitch-problem__debt-metrics p {
+  margin: 12px 0 0;
+  color: #e2e7f2;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.pitch-problem__image-note {
+  margin: 0 0 24px;
+  color: #b4c0d5;
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .pitch-problem__index,
@@ -287,6 +379,25 @@
 }
 
 @media (max-width: 767px) {
+  .pitch-problem__backdrop img {
+    width: 100%;
+    height: 700px;
+    object-position: 30% top;
+  }
+
+  .pitch-problem__backdrop::after {
+    background: linear-gradient(0deg, #080e1d calc(100% - 650px), rgba(8,14,29,.45)), linear-gradient(90deg, rgba(8,14,29,.3), rgba(8,14,29,.6));
+  }
+
+  .pitch-problem__debt-metrics {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .pitch-problem__debt-metrics article {
+    padding: 18px;
+  }
+
   .pitch-problem__shell {
     width: min(calc(100% - 36px), 620px);
   }
