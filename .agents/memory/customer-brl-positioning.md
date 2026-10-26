@@ -26,3 +26,9 @@ Na seção “Visão BETTEX” do carrossel da Homepage, não repetir as chamada
 **Why:** O criador pediu remover esses dois textos para abrir espaço à mensagem principal sobre dias sem lucro e tokens mantidos.
 
 **How to apply:** Manter essa seção focada na mensagem principal, sem reintroduzir Pix ou recebimento garantido em reais.
+
+No slide “Visão BETTEX”, explicar somente que sem lucro elegível não há distribuição e os tokens continuam com o participante; não acrescentar nesse texto queda de preço ou perdas na revenda.
+
+**Why:** O criador rejeitou explicitamente o acréscimo “mas o preço pode cair e a revenda gerar perdas” nesse slide.
+
+**How to apply:** Aplicar também às traduções desse slide. Não ampliar essa correção local para apagar os avisos de risco das demais seções nem substituir o trecho por uma garantia de ausência de perdas.
