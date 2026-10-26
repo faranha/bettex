@@ -1,20 +1,29 @@
 import { useSyncExternalStore } from 'react';
 
 // This grants access to the presentation only. APIs authenticate real accounts separately.
-const KEY = 'bettex.app.demo-active';
-const EVENT = 'bettex-app-session';
+let active = false;
+const listeners = new Set<() => void>();
 function subscribe(callback: () => void) {
-  window.addEventListener(EVENT, callback);
-  return () => window.removeEventListener(EVENT, callback);
+  listeners.add(callback);
+  return () => { listeners.delete(callback); };
 }
 export function startAppSession() {
-  sessionStorage.setItem(KEY, 'true');
-  window.dispatchEvent(new Event(EVENT));
+  active = true;
+  listeners.forEach(callback => callback());
 }
 export function endAppSession() {
-  sessionStorage.removeItem(KEY);
-  window.dispatchEvent(new Event(EVENT));
+  active = false;
+  listeners.forEach(callback => callback());
 }
+// A browser may restore an old document from its back/forward cache without
+// re-running this module. Leaving/restoring it must not restore demo access.
+if (typeof window !== 'undefined') {
+  window.addEventListener('pagehide', endAppSession);
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) endAppSession();
+  });
+}
+export const appSessionSnapshot = () => active;
 export function useAppSession() {
-  return useSyncExternalStore(subscribe, () => sessionStorage.getItem(KEY) === 'true', () => false);
+  return useSyncExternalStore(subscribe, appSessionSnapshot, () => false);
 }

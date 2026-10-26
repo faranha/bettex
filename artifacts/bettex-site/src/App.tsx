@@ -282,7 +282,7 @@ function Demo() {
   if (isRemovedSimulationPath(path)) return <Redirect to={`/app${typeof window === 'undefined' ? '' : window.location.search}`} />;
   if (path === '/app/login') return <Redirect to="/sign-in" />;
   if (!demoView(path)) return <NotFound />;
-  return <InterfaceDemoProvider><div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><InterfaceDemoPage /><SiteFooter /></div></InterfaceDemoProvider>;
+  return <AppSessionGate><InterfaceDemoProvider><div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><InterfaceDemoPage /><SiteFooter /></div></InterfaceDemoProvider></AppSessionGate>;
 }
 
 function Documentation() {
@@ -298,8 +298,7 @@ function HomeRoute() {
 }
 
 function SignInEntry() {
-  const [, navigate] = useLocation();
-  return <><main className="min-h-[100dvh] bg-[#FBF8F0]"><h1 className="sr-only">BETTEX</h1></main><DemoActionNotice open onOpenChange={open => { if (!open) navigate('/app'); }} /></>;
+  return <SignInPage />;
 }
 
 function SignUpEntry() {

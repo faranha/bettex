@@ -1,3 +1,4 @@
+import { applyCryptoDemoScope } from './crypto-demo-scope';
 // Local, illustrative sample data for the visual-demo Central. Hand-written; not read from any API,
 // not produced by a model, and never mistaken for genuine historical records (see SAMPLE_PROVENANCE).
 export type T3 = [string, string, string];
@@ -84,7 +85,7 @@ export const REASONING: Record<string, Reasoning> = {
 };
 
 export type Datum = { v: string; money?: boolean };
-export type Request = { id: string; asset: Asset; state: string; queue?: string; market: T3; outcome: T3; reason: T3; operation: T3; price: string; costs: string; liquidity: string; ret: string; loss: string; capital: string; validUntil: string; uncertainty: T3; risks: T3[]; invalidation: T3[]; sources: { name: string; kind: 'polymarket' | 'allora'; ref: string; at: string; evidence: T3 }[]; events: { stage: T3; at: string; reason: T3 }[] };
+export type Request = { id: string; asset: Asset; state: string; queue?: string; market: T3; outcome: T3; reason: T3; operation: T3; price: string; costs: string; liquidity: string; ret: string; loss: string; capital: string; validUntil: string; uncertainty: T3; risks: T3[]; invalidation: T3[]; sources: { name: string; kind: 'polymarket' | 'allora' | 'demo'; ref: string; at: string; evidence: T3 }[]; events: { stage: T3; at: string; reason: T3 }[] };
 const SRC = (a: Asset, m: number): Request['sources'] => [{ name: 'Polymarket', kind: 'polymarket', ref: `sample-market-${a}-8h`, at: ago(m), evidence: ['Título e preço do mercado de origem', 'Source market title and price', 'Título y precio del mercado de origen'] }, { name: 'Allora', kind: 'allora', ref: `sample-forecast-${a}-block-${FORE[a].block}`, at: ago(m + 2), evidence: ['Previsão de preço em USD', 'USD price forecast', 'Previsión de precio en USD'] }];
 const RISKS: T3[] = [['Exposição correlacionada em cripto', 'Correlated crypto exposure', 'Exposición correlacionada en cripto'], ['Cotação pode ficar defasada', 'Quote may become stale', 'La cotización puede quedar desactualizada']];
 const INV: T3[] = [['Cotação mais antiga que o limite de idade', 'Quote older than the age limit', 'Cotización más antigua que el límite de edad'], ['Política alterada', 'Policy changed', 'Política cambiada']];
@@ -190,6 +191,8 @@ REASONING.bettex.summary = [
   'Sample requests are awaiting decisions, selected, rejected, expired and completed. Each decision retains its journey and no request changes real balances.',
   'Hay solicitudes de ejemplo pendientes de decisión, seleccionadas, rechazadas, expiradas y cerradas. Cada decisión conserva su recorrido y ninguna solicitud cambia saldos reales.',
 ];
+applyCryptoDemoScope({ requests: REQUESTS, decisions: DECISIONS, orders: ORDERS, positions: POSITIONS, reasoning: REASONING });
+
 export const FORECASTS: Record<Asset, { spot: string; usd: string; block: string; series: number[] }> = {
   btc: { ...FORE.btc, series: [67420, 67510, 67480, 67650, 67720, 67790, 67840] }, eth: { ...FORE.eth, series: [3215, 3221, 3219, 3228, 3233, 3238, 3242] }, sol: { ...FORE.sol, series: [148.7, 149.2, 149.9, 150.1, 150.6, 150.9, 151.1] },
 };

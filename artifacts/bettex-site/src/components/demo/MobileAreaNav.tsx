@@ -48,7 +48,7 @@ export function MobileAreaNav({ current, className = '' }: { current: DemoView; 
       <DialogTrigger asChild>
         <button ref={trigger} type="button" aria-label={menu} data-testid="button-app-areas" className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-[#E4DCCB] bg-[#FFFCF6] text-[#1B2A41] ${focus}`}><Menu className="h-5 w-5" aria-hidden="true" /></button>
       </DialogTrigger>
-      <DialogContent data-testid="app-menu-drawer" onCloseAutoFocus={event => {
+      <DialogContent data-testid="app-menu-drawer" style={{ left: 0, top: 0, transform: 'none' }} onCloseAutoFocus={event => {
         event.preventDefault();
         trigger.current?.focus({ preventScroll: true });
         const target = destination.current;
