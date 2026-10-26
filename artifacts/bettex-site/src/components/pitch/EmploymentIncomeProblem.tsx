@@ -12,11 +12,9 @@ import './EmploymentIncomeProblem.css';
 export function EmploymentIncomeProblem() {
   const x = useX();
   return <section id="problema-emprego-renda" className="pb-problem__automation pitch-problem__automation" aria-labelledby="problema-ia-t">
-    <div className="pb-problem__robot-background" aria-hidden="true">
-      <img src={`${import.meta.env.BASE_URL}pitch-future/factory-robots-background.webp`} alt="" width={660} height={920} loading="lazy" />
-    </div>
     <div className="pitch-problem__shell">
       <div className="pitch-problem__work-heading">
+        <div className="pitch-problem__work-copy">
         <p className="mono pb-problem__topic pitch-problem__work-topic">
           {x('Emprego e renda ameaçados pela IA', 'Jobs and income threatened by AI', 'Empleo e ingresos amenazados por la IA')}
         </p>
@@ -27,6 +25,8 @@ export function EmploymentIncomeProblem() {
             'Mientras tanto… los empleos empiezan a desaparecer.',
           )}
         </h3>
+        </div>
+        <img className="pitch-problem__robot-cutout" src={`${import.meta.env.BASE_URL}pitch-future/robot-working-cutout.svg`} alt="" aria-hidden="true" width={80} height={80} loading="lazy" />
         <ArrowDownRight className="pitch-problem__work-arrow" aria-hidden="true" />
       </div>
     <PitchSlider id="emprego-ia-slider" tone="dark" label={['IA, trabalho, renda e indicadores em blocos', 'AI, work and income blocks', 'IA, trabajo e ingresos por bloques']} slides={[

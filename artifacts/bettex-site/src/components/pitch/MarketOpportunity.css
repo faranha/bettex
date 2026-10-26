@@ -41,14 +41,20 @@
 .pb-aud__backdrop img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: .55;
 }
 .pb-aud__backdrop::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(255,255,255,.97), rgba(255,255,255,.8) 42%, rgba(255,255,255,.16)), linear-gradient(0deg, rgba(255,255,255,.3), transparent 40%);
+  background: linear-gradient(90deg, rgba(255,255,255,.75), rgba(255,255,255,.3) 45%, rgba(255,255,255,.08));
+}
+@media (max-width: 767px) {
+  .pb-aud__backdrop img {
+    object-position: center top;
+  }
 }
 .pb-aud__title {
   grid-column: 1 / -1;

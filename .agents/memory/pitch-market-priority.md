@@ -55,11 +55,11 @@ O slider de público deve ter um H1 visível antes dos slides.
 
 **How to apply:** Preservar uma abertura visual própria para a seção; títulos internos dos slides e cabeçalhos ocultos não substituem esse título.
 
-A seção de público do Pitch deve ter fundo claro com muitas pessoas; podem ser bonecos ou figuras humanas. Não usar multidão em estádio escuro.
+A seção de público do Pitch deve ter fundo claro com quatro ou cinco personagens desenhados, em estilo de bonecos, não uma multidão.
 
-**Why:** Após pedir uma multidão e aceitar estádio, o criador corrigiu a direção: “o fundo tem que ser claro, podem ser bonecos, pessoas muitas pessoas sabe, mas claro nao assim”.
+**Why:** Após exigir fundo claro, o criador refinou a direção: “melhor desenhar personagens cara, uns 4 ou 5, sabe? e colocar no fundo, uns bonecos”.
 
-**How to apply:** Manter a multidão em uma composição branca e luminosa na seção inteira, atrás do título e do slider, com texto escuro e destaques azuis. Não limitar as pessoas a uma imagem interna de slide nem reintroduzir o tratamento noturno.
+**How to apply:** Manter poucos personagens maiores e espaçados numa composição branca e luminosa atrás do título e do slider, com texto escuro e destaques azuis. Não reintroduzir multidão fotográfica, estádio ou tratamento noturno.
 
 No rodapé abaixo do destaque de 6,9 milhões, citar apenas as fontes. Não reinserir ali o cartão de alcance combinado nem os parágrafos de escopo, hipóteses e elegibilidade.
 
