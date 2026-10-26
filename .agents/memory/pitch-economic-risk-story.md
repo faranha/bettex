@@ -125,6 +125,18 @@ O bloco unificado sobre brasileiros endividados deve exibir também os dados de 
 
 **How to apply:** Preservar os três indicadores distintos da Futura: 64,3% usavam salários ou rendimentos regulares; 65,9% tinham ganhar dinheiro como principal motivação; 65,7% não tinham dinheiro guardado. Motivação não é renda obtida. A pesquisa ouviu mil pessoas em dezembro de 2024, das quais quase 9% apostavam em esportes; os percentuais são desse subgrupo, não de todos os entrevistados. Usar imagem editorial sombria com indicação de ilustração, sem apresentá-la como registro de um entrevistado real.
 
+Não reintroduzir o painel “Fontes e alcance dos dados” abaixo dos indicadores do problema no Pitch.
+
+**Why:** O criador mostrou especificamente esse painel e pediu removê-lo, substituindo a exigência anterior de manter a metodologia visível nesse bloco.
+
+**How to apply:** Preservar os percentuais e o restante da seção. A remoção do painel não altera o alcance real das pesquisas nem autoriza generalizar seus resultados.
+
+A abertura do bloco de emprego usa “Enquanto isso… os empregos começam a desaparecer”, sem o marcador “02 / Renda de amanhã”.
+
+**Why:** O criador pediu esse encadeamento e a retirada do “2”, exigindo clareza na apresentação.
+
+**How to apply:** Preservar a transição direta entre fragilidade financeira e emprego; não reintroduzir a numeração decorativa desse cabeçalho.
+
 O dado da pesquisa da Copa integra a seção Problema 1 do Pitch: 74% dos que pretendiam apostar na Copa de 2026 viam nas bets uma forma de quitar dívidas pendentes.
 
 **Why:** O criador exigiu preservar esse dado e posteriormente uniu a apresentação da pesquisa ao conteúdo sobre orçamento doméstico.

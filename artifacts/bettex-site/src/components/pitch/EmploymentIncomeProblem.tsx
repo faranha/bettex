@@ -17,17 +17,14 @@ export function EmploymentIncomeProblem() {
     </div>
     <div className="pitch-problem__shell">
       <div className="pitch-problem__work-heading">
-        <span className="pitch-problem__index pitch-problem__work-index">
-          {x('02 / RENDA DE AMANHÃ', '02 / TOMORROW’S INCOME', '02 / INGRESOS DE MAÑANA')}
-        </span>
         <p className="mono pb-problem__topic pitch-problem__work-topic">
           {x('Emprego e renda ameaçados pela IA', 'Jobs and income threatened by AI', 'Empleo e ingresos amenazados por la IA')}
         </p>
         <h3 id="problema-ia-t" className="display pitch-problem__work-title">
           {x(
-            'Automação não garante prosperidade para todos.',
-            'Automation does not guarantee prosperity for everyone.',
-            'La automatización no garantiza prosperidad para todos.',
+            'Enquanto isso… os empregos começam a desaparecer.',
+            'Meanwhile… jobs are starting to disappear.',
+            'Mientras tanto… los empleos empiezan a desaparecer.',
           )}
         </h3>
         <ArrowDownRight className="pitch-problem__work-arrow" aria-hidden="true" />

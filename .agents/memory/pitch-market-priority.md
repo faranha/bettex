@@ -55,6 +55,12 @@ O slider de público deve ter um H1 visível antes dos slides.
 
 **How to apply:** Preservar uma abertura visual própria para a seção; títulos internos dos slides e cabeçalhos ocultos não substituem esse título.
 
+A seção de público do Pitch deve ter uma multidão como imagem de fundo; um estádio é uma opção aprovada.
+
+**Why:** O criador pediu “background de multidao aqui pode ser ate em estadio”.
+
+**How to apply:** Manter o fundo na seção inteira, atrás do título e do slider, com contraste suficiente para os números, textos e controles; não limitar a multidão a uma imagem interna de slide.
+
 No rodapé abaixo do destaque de 6,9 milhões, citar apenas as fontes. Não reinserir ali o cartão de alcance combinado nem os parágrafos de escopo, hipóteses e elegibilidade.
 
 **Why:** O criador marcou todo esse rodapé e pediu “apenas cite as fontes para informação, só isso”.

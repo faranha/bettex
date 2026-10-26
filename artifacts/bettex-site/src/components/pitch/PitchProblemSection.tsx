@@ -1,11 +1,7 @@
-import { ArrowDownRight, ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowDownRight, ArrowRight } from 'lucide-react';
 import { EmploymentIncomeProblem } from './EmploymentIncomeProblem';
 import { useX } from './pitchCopy';
 import './PitchProblemSection.css';
-
-const WORLD_CUP_SOURCE =
-  'https://site.cndl.org.br/copa-do-mundo-vai-levar-992-milhoes-de-consumidores-as-compras-apontam-cndlspc-brasil/';
-const FUTURA_SOURCE = 'https://www.estadao.com.br/economia/veja-graficos-perfil-social-financeiro-aposta-bets/';
 
 export function PitchProblemSection() {
   const x = useX();
@@ -93,45 +89,6 @@ export function PitchProblemSection() {
             </article>
           </div>
           <p className="pitch-problem__image-note">{x('Imagem ilustrativa gerada por IA; não retrata um participante das pesquisas.', 'AI-generated illustrative image; it does not depict a survey participant.', 'Imagen ilustrativa generada por IA; no representa a un participante de las encuestas.')}</p>
-          <aside
-            className="pitch-problem__evidence"
-            aria-label={x('Contexto da pesquisa', 'Survey context', 'Contexto de la encuesta')}
-          >
-            <div className="pitch-problem__evidence-label">
-              <span className="pitch-problem__evidence-dot" aria-hidden="true" />
-              <span>
-                {x(
-                  'Fontes e alcance dos dados',
-                  'Sources and scope of the data',
-                  'Fuentes y alcance de los datos',
-                )}
-              </span>
-            </div>
-            <div className="pitch-problem__evidence-copy">
-              <p>
-                {x(
-                  'CNDL/SPC Brasil e Offerwise: 600 participantes de 18 anos ou mais nas 27 capitais, com intenção de gastos na Copa; coleta de 27/04 a 05/05/2026. O dado reúne 31% de concordância total e 43% parcial. Não representa toda a população, retorno de apostas ou demanda da BETTEX.',
-                  'CNDL/SPC Brasil and Offerwise: 600 participants aged 18+ in the 27 capitals who intended to spend on the World Cup; fieldwork ran from Apr 27 to May 5, 2026. The result combines 31% strong and 43% partial agreement. It does not represent the full population, betting returns, or demand for BETTEX.',
-                  'CNDL/SPC Brasil y Offerwise: 600 participantes de 18 años o más en las 27 capitales, con intención de gastar en el Mundial; la encuesta se realizó del 27 de abril al 5 de mayo de 2026. El dato reúne un 31% de acuerdo total y un 43% parcial. No representa a toda la población, los retornos de las apuestas ni la demanda de BETTEX.',
-                )}{' '}
-                <a href={WORLD_CUP_SOURCE} target="_blank" rel="noopener noreferrer">
-                  {x('Ver pesquisa original', 'View original survey', 'Ver investigación original')}
-                  <ExternalLink aria-hidden="true" />
-                </a>
-              </p>
-              <p>
-                {x(
-                  '64,3%, 65,9% e 65,7%: Futura Inteligência, divulgada pelo Estadão em 14/02/2025. Levantamento com mil pessoas em dezembro de 2024; quase 9% disseram realizar apostas esportivas. Os três percentuais se referem aos apostadores entrevistados e medem condições distintas, não a ocorrência conjunta. Ganhar dinheiro é uma motivação declarada, não renda extra comprovada. A amostra é diferente da pesquisa da Copa.',
-                  '64.3%, 65.9% and 65.7%: Futura Inteligência, reported by Estadão on February 14, 2025. The survey interviewed 1,000 people in December 2024; nearly 9% reported sports betting. These three percentages refer to the surveyed bettors and measure separate conditions, not their joint occurrence. Making money is a stated motivation, not proven extra income. This sample differs from the World Cup survey.',
-                  '64,3%, 65,9% y 65,7%: Futura Inteligência, publicada por Estadão el 14/02/2025. Encuesta a mil personas en diciembre de 2024; casi el 9% declaró realizar apuestas deportivas. Los tres porcentajes se refieren a los apostadores encuestados y miden condiciones distintas, no su concurrencia. Ganar dinero es una motivación declarada, no ingresos extra comprobados. La muestra es distinta de la encuesta del Mundial.',
-                )}{' '}
-                <a href={FUTURA_SOURCE} target="_blank" rel="noopener noreferrer">
-                  {x('Ver levantamento Futura / Estadão', 'View Futura / Estadão survey', 'Ver encuesta Futura / Estadão')}
-                  <ExternalLink aria-hidden="true" />
-                </a>
-              </p>
-            </div>
-          </aside>
         </div>
       </div>
 

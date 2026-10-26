@@ -26,12 +26,51 @@
 .cover__market a { color: #c5d2f1; font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 1000px) { .pb-market__metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pb-market__card--money { grid-column: 1 / -1; } }
 @media (max-width: 639px) { .pb-market__metrics { gap: 12px; } .pb-market__card { padding: 16px; } .pb-market__card h3 { font-size: 14px; } .pb-market__card > p:not(.pb-market__label):not(.pb-market__value) { font-size: 12px; } .pb-market__opportunity { padding: 20px; } }/* Audience carousel: homepage earnings structure (dominant metric, open white space, controls below). */
-.pb-aud { background: #fff !important; }
+.pb-aud {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #070b1f !important;
+}
+.pb-aud__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.pb-aud__backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.pb-aud__backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7,11,31,.94), rgba(7,11,31,.72) 45%, rgba(7,11,31,.48)), linear-gradient(0deg, rgba(7,11,31,.8), transparent 35%);
+}
+.pb-aud .mk-big,
+.pb-aud .mk-eyebrow,
+.pb-aud .pb-market a.mk-src {
+  color: #f2c65d;
+}
+.pb-aud .mk-unit,
+.pb-aud .mk-h {
+  color: #f4f1e8;
+}
+.pb-aud .mk-rhythm {
+  color: #e0e8fc;
+  border-left-color: #f2b632;
+}
+.pb-aud .mk-p {
+  color: #d6def0;
+}
 .pb-aud__title {
   grid-column: 1 / -1;
   max-width: 1000px;
   margin: 0 0 clamp(24px, 4vw, 48px);
-  color: #070b1f;
+  color: #f4f1e8;
   font-family: var(--app-font-serif);
   font-size: clamp(2.2rem, 4.8vw, 4rem);
   font-weight: 800;
