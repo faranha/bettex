@@ -17,7 +17,7 @@ export function VestingSchedule() {
       <VestingMonthSelector />
       <div className="whitepaper__vesting-scroll whitepaper__vesting-desktop" role="region" aria-label="Agenda dos 24 meses, com rolagem horizontal e vertical" tabIndex={0}>
         <table className="whitepaper__vesting-table">
-          <caption>Quantidades em BETTEX · vesting a partir de março de 2027 · mint inicial separado</caption>
+          <caption>Quantidades em BETTEX · vesting a partir de junho de 2027 · mint inicial separado</caption>
           <thead>
             <tr><th scope="col">Mês</th><th scope="col">Comunidade · mensal</th><th scope="col">Fundador e equipe · mensal</th><th scope="col">Investidores · mensal</th><th scope="col">Total mensal</th><th scope="col">Comunidade · acumulado</th><th scope="col">Fundador e equipe · acumulado</th><th scope="col">Investidores · acumulado</th><th scope="col">Total acumulado</th></tr>
           </thead>

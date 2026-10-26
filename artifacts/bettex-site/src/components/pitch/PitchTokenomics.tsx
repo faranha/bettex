@@ -43,8 +43,8 @@ export function PitchTokenomics() {
         <PitchTokenCharts />
         <div className="ptk__facts">
           <div>
-            <b>{x('Liberação: 24 meses a partir de março de 2027', 'Release: 24 months from March 2027', 'Liberación: 24 meses desde marzo de 2027')}</b>
-            <p>{x('Os 90% posteriores liberam em parcelas mensais: comunidade 55%, fundador e equipe 20%, investidores 15%. O mint inicial de 10%, em 10 de dezembro de 2026, é separado. Liberar não comprova venda.', 'The later 90% is released in monthly installments: community 55%, founder and team 20%, investors 15%. The 10% initial mint, on December 10, 2026, is separate. Release does not prove a sale.', 'El 90% posterior se libera en cuotas mensuales: comunidad 55%, fundador y equipo 20%, inversores 15%. El mint inicial del 10%, el 10 de diciembre de 2026, es aparte. Liberar no prueba una venta.')}</p>
+            <b>{x('Liberação: 24 meses a partir de junho de 2027', 'Release: 24 months from June 2027', 'Liberación: 24 meses desde junio de 2027')}</b>
+            <p>{x('Os 90% posteriores liberam em parcelas mensais: comunidade 55%, fundador e equipe 20%, investidores 15%. O mint inicial de 10%, em março de 2027, é separado. Liberar não comprova venda.', 'The later 90% is released in monthly installments: community 55%, founder and team 20%, investors 15%. The 10% initial mint, in March 2027, is separate. Release does not prove a sale.', 'El 90% posterior se libera en cuotas mensuales: comunidad 55%, fundador y equipo 20%, inversores 15%. El mint inicial del 10%, en marzo de 2027, es aparte. Liberar no prueba una venta.')}</p>
             <p>{x('A alocação de 10% do mint e os 15% de investidores são destinações distintas de tokens, não ações de uma empresa nem comprovação de tokens vendidos.', 'The 10% mint allotment and the investors’ 15% are distinct token allocations, not company shares or proof of tokens sold.', 'La asignación del 10% del mint y el 15% de inversores son destinos distintos de tokens, no acciones de una empresa ni prueba de tokens vendidos.')}</p>
           </div>
           <div>

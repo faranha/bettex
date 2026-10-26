@@ -15,8 +15,9 @@ test('public ALFA and feature links share the localized app entry', () => {
   assert.doesNotMatch(roadmap, /Em breve, features|features--soon/);
   assert.match(roadmap, /index === 0 \|\| index === 2/);
   assert.match(roadmap, /<DemoAppLink className="roadmap__features/);
-  assert.match(roadmap, /date: '10 de dezembro de 2026'/);
-  assert.match(roadmap, /date: 'Março de 2027'/);
+  assert.match(roadmap, /date: 'Março de 2027', dateTime: '2027-03', title: 'Mint público'/);
+  assert.match(roadmap, /date: 'Junho de 2027', dateTime: '2027-06', title: 'Sistema ALFA e vesting'/);
+  assert.doesNotMatch(roadmap, /2026-12-10|10 de dezembro de 2026/);
   assert.match(roadmap, /Cada mercado e território só abre com integração e controles validados e adequação legal/);
   assert.match(roadmap, /Dados públicos não equivalem a operação autorizada/);
   assert.match(roadmap, /vesting de 24 meses/);

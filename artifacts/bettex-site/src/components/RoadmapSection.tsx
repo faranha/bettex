@@ -10,8 +10,8 @@ const icons = [MessagesSquare, ScrollText, Rocket, FlaskConical, Compass, Bot];
 
 export const roadmapStops = [
   { tag: 'DISPONÍVEL COMO DEMO', date: 'Atual', dateTime: undefined, title: 'Comunidade e preparação', description: 'Interface visual acessível e canal de feedback com a comunidade. O demo não comprova trading nem dinheiro real.' },
-  { tag: 'PREVISTO · MINT PÚBLICO', date: '10 de dezembro de 2026', dateTime: '2026-12-10', title: 'Mint público', description: copy.rm2x },
-  { tag: 'PREVISTO · ALFA E VESTING', date: 'Março de 2027', dateTime: '2027-03', title: 'Sistema ALFA e vesting', description: copy.rm3x, featured: true },
+  { tag: 'PREVISTO · MINT PÚBLICO', date: 'Março de 2027', dateTime: '2027-03', title: 'Mint público', description: copy.rm2x },
+  { tag: 'PREVISTO · ALFA E VESTING', date: 'Junho de 2027', dateTime: '2027-06', title: 'Sistema ALFA e vesting', description: copy.rm3x, featured: true },
   { tag: 'PREVISTO · BETA', date: 'Após o ALFA · data a definir', dateTime: undefined, title: 'BETA e go to market', description: 'Evolução do produto a partir das validações do ALFA, ampliando o acesso sem novo lançamento do token.' },
   { tag: 'EVOLUÇÃO FUTURA', date: 'Gradual · data a definir', dateTime: undefined, title: 'Expansão de mercados', description: 'Cada mercado e território só abre com integração e controles validados e adequação legal. Dados públicos não equivalem a operação autorizada.' },
   { tag: 'DIREÇÃO FUTURA', date: 'Sem prazo', dateTime: undefined, title: 'Autonomia do agente BETTEX', description: 'Agentes de IA assumirão gradualmente as funções hoje exercidas pelo fundador e pelo time. O objetivo é um agente BETTEX totalmente autônomo na operação, com controles verificáveis. Não é uma capacidade já entregue nem uma promessa de data.' },
@@ -73,7 +73,7 @@ export function RoadmapSection({ id = 'roadmap', variant = 'default', scope = 'd
           </div>
           <div className="roadmap__intro-side">
             <span className="roadmap__intro-index" aria-hidden="true">01 → {total}</span>
-            <p>Mint público em 10 de dezembro de 2026. Sistema, ALFA e início do vesting de 24 meses previstos para março de 2027. Cada lançamento depende da adequação legal e jurídica da oferta, da atividade e do território atendido.</p>
+            <p>Mint público em março de 2027. Sistema, ALFA e início do vesting de 24 meses previstos para junho de 2027. Cada lançamento depende da adequação legal e jurídica da oferta, da atividade e do território atendido.</p>
           </div>
         </header>
 

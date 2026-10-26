@@ -1,6 +1,6 @@
 ---
 name: Mint público da comunidade e vesting
-description: Mint inicial aberto de 10% a preço fixo; sistema e vesting de 24 meses previstos para março de 2027.
+description: Mint inicial aberto de 10% a preço fixo previsto para março de 2027; ALFA e vesting de 24 meses em junho de 2027.
 ---
 
 As atualizações do roadmap devem manter homepage, Pitch e documentação alinhados, inclusive o destino do mint à base da tesouraria e a descrição de ALFA e vesting.
@@ -27,8 +27,8 @@ O criador definiu quatro destinações separadas: **10% para mint público inici
 
 **How to apply:** Preservando a emissão máxima de 1 bilhão, apresentar quatro destinações que somam 100%: 100 milhões para o mint inicial, 550 milhões para a comunidade, 200 milhões para fundador/equipe e 150 milhões para investidores. Não rotular a comunidade como 65% nem agregar a ela os 10% do mint. O vesting abrange as três destinações posteriores, que somam 90%. Distinguir teto de emissão inicial de quantidade efetivamente mintada. O preço, a janela, a plataforma e o destino da parcela não mintada ainda não foram definidos. Não presumir emissão integral antecipada, venda de todo o teto, abertura de pool ou garantia de preço secundário.
 
-A promoção para a comunidade precede o mint. A abertura pública está prevista para **10 de dezembro de 2026**. O criador passou a prever o lançamento do sistema e o início do vesting para **março de 2027**, com **24 meses de vesting**, substituindo os 36 meses anteriores. A captação de investidores acompanha a etapa ALFA.
+A promoção para a comunidade precede o mint. A abertura pública está prevista para **março de 2027**, sem dia definido. O lançamento do sistema e o início do vesting estão previstos para **junho de 2027**, com **24 meses de vesting**. A captação de investidores acompanha a etapa ALFA.
 
-**Why:** Confirmou os anos do lançamento público e do ALFA e depois especificou “vesting comeca a partir de marco de 2027 quando devemos lancar nosso sistema” e “vamos ajustar o vesting para 24 meses”.
+**Why:** Em 26 de outubro de 2026, o criador pediu “empurrar o mint pra março do ano que vem” e confirmou: “tem que também empurrar as outras datas no roadmap e em qualquer outro lugar do documento proporcionalmente à frente”. O deslocamento é de três meses; a duração de 24 meses não mudou.
 
-**How to apply:** Usar março para o lançamento previsto do sistema e para o início da agenda posterior, sem afirmar entrega concluída ou inventar dia exato. Manter BETA após ALFA e mercados após BETA. Não incorporar compras antecipadas, estoque pessoal ou trades do fundador. A discussão atual define regras, mas não autoriza executar mint, oferta, pool, transferências ou publicação. O criador ampliou a atualização visual para site e demo; preservar o backend e não ativar operações.
+**How to apply:** Sincronizar as datas previstas no site, Pitch, documentação, demo e traduções. Manter BETA após ALFA e mercados após BETA; etapas sem data continuam sem data. Não alterar datas históricas de pesquisas ou inventar dia exato. Não incorporar compras antecipadas, estoque pessoal ou trades do fundador. A discussão define regras, mas não autoriza executar mint, oferta, pool, transferências ou publicação; preservar o backend e não ativar operações.

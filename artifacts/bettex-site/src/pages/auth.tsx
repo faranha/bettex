@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useX } from '@/components/demo/ui';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { startAppSession } from '@/lib/app-session';
-import { AgentShowcase } from '@/components/demo/AgentShowcase';
 import { BettexMark } from '@/components/BettexMark';
 import './auth.css';
 
@@ -34,16 +33,22 @@ function ClientAuthPage({ mode }: { mode: 'sign-in' | 'sign-up' }) {
     <div className="auth-stage">
     <section className="auth-hero">
       <p className="auth-kicker">{x('Ambiente de testes', 'Test environment', 'Entorno de pruebas')}</p>
-      <h1 className="auth-title">{x('Participe da cripto com IA, com visão e sem achismo.', 'Take part in crypto with AI, with clarity instead of guesswork.', 'Participa en cripto con IA, con claridad y sin suposiciones.')}</h1>
-      <p className="auth-lead">{x('Analise padrões de manipulação e possíveis oportunidades de entrada e saída. A inteligência está em desenvolvimento; esta é uma demo visual com dados simulados.', 'Analyze manipulation patterns and possible entry and exit opportunities. The intelligence is under development; this is a visual demo with simulated data.', 'Analiza patrones de manipulación y posibles oportunidades de entrada y salida. La inteligencia está en desarrollo; esta es una demo visual con datos simulados.')}</p>
+      <h1 className="auth-title">{x('Seja o dono da IA, pare de apostar, comece a investir.', 'Own the AI. Stop betting, start investing.', 'Sé el dueño de la IA, deja de apostar, empieza a invertir.')}</h1>
+      <p className="auth-lead">{x('A BETTEX é uma IA de trading cripto que pertence à comunidade. Você não aluga um sinal: participa como dono.', 'BETTEX is a crypto trading AI owned by its community. You do not rent a signal: you take part as an owner.', 'BETTEX es una IA de trading cripto que pertenece a la comunidad. No alquilas una señal: participas como dueño.')}</p>
       <button type="button" data-testid="button-demo-alex" className="auth-cta" onClick={enter}>
         <span>{x('Entrar no demo', 'Enter the demo', 'Entrar en la demo')}</span>
         <span className="auth-cta-icon"><ArrowRight className="h-5 w-5" aria-hidden="true" /></span>
       </button>
     </section>
-    <div className="auth-figure"><img className="auth-phone" src={`${base}hero-person-centered.webp`} alt="" aria-hidden="true" width={514} height={968} /></div>
+    <div className="auth-figure" aria-hidden="true">
+      <div className="auth-halo"><i className="auth-ring r1" /><i className="auth-ring r2" /></div>
+      <img className="auth-phone" src={`${base}hero-duo-btx-silver.webp`} alt="" width={1024} height={1024} />
+      <span className="auth-chip c1">{x('Dono', 'Owner', 'Dueño')}</span>
+      <span className="auth-chip c2">{x('Comunidade', 'Community', 'Comunidad')}</span>
+      <span className="auth-chip c3">{x('IA BETTEX', 'BETTEX AI', 'IA BETTEX')}</span>
     </div>
-    <div className="auth-agents"><AgentShowcase variant="dark" showDisclaimer={false} onEnter={() => { qc.clear(); startAppSession(); }} /></div>
+    </div>
+    <p className="auth-note">{x('Demo visual com dados simulados. Nenhum dinheiro real é usado e não há promessa de retorno.', 'Visual demo with simulated data. No real money is used and no returns are promised.', 'Demo visual con datos simulados. No se usa dinero real ni se promete rentabilidad.')}</p>
   </main>;
 }
 export const SignInPage = () => <AuthPage mode="sign-in" />;

@@ -42,3 +42,24 @@
 @media(max-width:639px){
   .auth-agents{padding-bottom:calc(124px + env(safe-area-inset-bottom,0px))}
 }
+
+.auth-stage{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center}
+.auth-figure{position:relative;align-self:center;justify-content:center;align-items:center;min-height:min(70vh,620px)}
+.auth-title{font-size:clamp(2.2rem,5vw,4.2rem)}
+.auth-phone{position:relative;z-index:2;width:min(100%,600px);max-height:none;-webkit-mask-image:linear-gradient(180deg,#000 80%,transparent);mask-image:linear-gradient(180deg,#000 80%,transparent)}
+.auth-halo{position:absolute;z-index:1;width:min(88%,540px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(43,89,255,.55),rgba(43,89,255,.12) 60%,transparent 72%)}
+.auth-ring{position:absolute;inset:-6%;border-radius:50%;border:1px dashed rgba(151,182,255,.45);animation:auth-spin 40s linear infinite}
+.auth-ring.r2{inset:8%;border:1px solid rgba(242,182,50,.45);animation-duration:60s;animation-direction:reverse}
+.auth-chip{position:absolute;z-index:3;padding:8px 14px;border-radius:999px;font:700 12px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#F4F1E8;background:rgba(7,11,31,.78);border:1px solid rgba(242,182,50,.6);backdrop-filter:blur(8px);animation:auth-float 6s ease-in-out infinite}
+.auth-chip.c1{top:12%;left:2%}.auth-chip.c2{top:46%;right:0;animation-delay:-2s}.auth-chip.c3{bottom:14%;left:6%;animation-delay:-4s;border-color:rgba(115,144,255,.7)}
+.auth-note{position:relative;z-index:1;max-width:1240px;margin:0 auto;width:100%;padding:0 clamp(16px,4vw,48px) 28px;font-size:12px;color:#9FB0E6}
+@keyframes auth-spin{to{transform:rotate(360deg)}}
+@keyframes auth-float{50%{transform:translateY(-8px)}}
+@media(max-width:860px){
+ .auth-stage{grid-template-columns:minmax(0,1fr)}
+ .auth-figure{min-height:0;margin-top:12px}
+ .auth-phone{width:min(96vw,460px)}
+ .auth-chip.c1{left:0}.auth-chip{font-size:10px;padding:6px 10px}
+ .auth-note{padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+}
+@media(prefers-reduced-motion:reduce){.auth-ring,.auth-chip{animation:none}}

@@ -32,8 +32,9 @@ assert.match(commercialLink, /id="documentacao-financiamento-fundacao"/, 'The Pi
 assert.match(commercialLink, /g\.launch\.angelFundingUse/, 'Pitch and documentation use the same approved angel-funding copy.');
 const materials = JSON.parse(await read('src/lib/documentation-materials.json'));
 const tokenMaterials = materials.sections.flatMap(section => section.paragraphs).join(' ');
-assert.match(tokenMaterials, /10 de dezembro de 2026/);
+assert.doesNotMatch(tokenMaterials, /10 de dezembro de 2026/);
 assert.match(tokenMaterials, /março de 2027/);
+assert.match(tokenMaterials, /junho de 2027/);
 assert.match(tokenMaterials, /24 meses/);
 // Integer allocation proportions are proved above for every vesting row;
 // the short public document need not repeat the technical 11:4:3 formula.
