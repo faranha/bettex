@@ -92,7 +92,13 @@ O hero deve ter uma única frase sobre a comunidade, sem repetir a mesma mensage
 
 **Why:** O criador apontou a duplicação e reiterou: “É uma frase só sobre a comunidade”.
 
-**How to apply:** Preservar a etiqueta solicitada e concentrar a frase sobre a comunidade no subtítulo; o parágrafo seguinte explica a IA e a participação nos lucros.
+**How to apply:** Concentrar a frase sobre a comunidade no subtítulo; o parágrafo seguinte explica a IA e a participação nos lucros.
+
+O criador pediu remover o selo tipo pin dos heros da Homepage e da Missão; não o recriar nessas páginas.
+
+**Why:** O criador afirmou que não quer esse selo na Homepage nem na Missão.
+
+**How to apply:** Manter os heros sem o selo e preservar os demais títulos, textos, CTAs e elementos visuais.
 
 A sequência após a faixa compacta de marcas tecnológicas abaixo do hero deve ser o bloco “Admita: você perde mais do que ganha”, incluindo o uso de IA pelas casas de apostas. A antiga faixa seguinte de Nova Economia foi removida.
 

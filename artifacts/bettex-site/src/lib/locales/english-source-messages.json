@@ -144,6 +144,16 @@
     "en": "No profit, no distribution.",
     "es": "Sin beneficio, no hay distribución."
   },
+  "Visão BETTEX": {
+    "pt": "Visão BETTEX",
+    "en": "BETTEX vision",
+    "es": "Visión de BETTEX"
+  },
+  "Com a BETTEX, você não fica no negativo: sem lucro naquele dia, não há distribuição e seus tokens continuam com você.": {
+    "pt": "Com a BETTEX, você não fica no negativo: sem lucro naquele dia, não há distribuição e seus tokens continuam com você.",
+    "en": "With BETTEX, you don't go negative: no profit that day means no distribution, and your tokens remain yours.",
+    "es": "Con BETTEX no quedas en negativo: si no hay ganancias ese día, no hay distribución y conservas tus tokens."
+  },
   "Havendo lucro distribuível, todos os detentores elegíveis do token recebem sua parte automaticamente, em reais, na conta BETTEX, conforme as regras de participação.": {
     "pt": "Havendo lucro distribuível, todos os detentores elegíveis do token recebem sua parte automaticamente, em reais, na conta BETTEX, conforme as regras de participação.",
     "en": "When there is distributable profit, all eligible token holders automatically receive their share, in reais, in their BETTEX account, under the participation rules.",

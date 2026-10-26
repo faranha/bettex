@@ -10,7 +10,7 @@ export function EarningsReturnChart() {
   const data = DAILY_RETURNS.map((v, i) => ({ day: `${t('Dia')} ${i + 1}`, v }));
   return (
     <div className="ew-chart" data-testid="chart-earnings-returns" role="img"
-      aria-label={`${t('Exemplo ilustrativo de retorno diário')}: ${DAILY_RETURNS.map((v, i) => `${t('Dia')} ${i + 1} ${fmt(v)}`).join(', ')}. ${t('Limite distribuível de 1% ao dia')}.`}>
+      aria-label={`${t('Visão BETTEX')}: ${DAILY_RETURNS.map((v, i) => `${t('Dia')} ${i + 1} ${fmt(v)}`).join(', ')}. ${t('Limite distribuível de 1% ao dia')}.`}>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 34, right: 8, bottom: 4, left: 8 }}>
           <defs><linearGradient id="ew-bar-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#F2B632" /><stop offset="0.35" stopColor="#5F86FF" /><stop offset="1" stopColor="#2B59FF" /></linearGradient></defs>

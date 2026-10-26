@@ -38,7 +38,6 @@
 /* Selectors that expected direct children of their section keep working inside slides. */
 .pb-problem__automation .pitch-slider__panel > p { margin-top: 0; max-width: 900px; font-size: 16px; line-height: 1.7; color: #e3eaff; }
 .pb-problem__automation .pitch-slider__panel > .pb-problem__agentic-intro,
-.pb-problem__automation .pitch-slider__panel > .pb-problem__opening-video,
 .pb-problem__automation .pitch-slider__panel > .pb-problem__response,
 .pb-problem__automation .pitch-slider__panel > .pb-problem__agentic-metrics { margin-top: 0; margin-bottom: 0; }
 .pb-problem__automation .pitch-slider__panel > * + * { margin-top: 24px; }

@@ -43,10 +43,9 @@ export function HomeEarningsSection() {
           <div className="ew-slide" role="group" aria-roledescription={t('Slide')} aria-label="2 / 3" data-active={i === 1} aria-hidden={i !== 1} inert={i !== 1} data-testid="slide-earnings-2">
             <div className="hr-wrap ew-s2 ew-ai">
               <div className="ew-offer">
-                <p className="hr-eyebrow">{t('Retorno diário ilustrativo')}</p>
+                <p className="hr-eyebrow">{t('Visão BETTEX')}</p>
                 <h3 className="ew-h2">{t('Ganhe conforme nossa IA opera.')}</h3>
-                <p className="ew-rhythm">{t('Sem lucro, não há distribuição.')}</p>
-                <p className="ew-p2"><strong>{t('Saque TODOS OS DIAS via Pix.')}</strong><br />{t('Lucro automático em reais na conta BETTEX, para detentores elegíveis do token.')}</p>
+                <p className="ew-rhythm">{t('Com a BETTEX, você não fica no negativo: sem lucro naquele dia, não há distribuição e seus tokens continuam com você.')}</p>
               </div>
               <div className="ew-card ew-ai-stage">
                 <span className="ew-ai-orb" aria-hidden="true" />

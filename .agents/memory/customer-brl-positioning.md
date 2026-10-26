@@ -20,3 +20,15 @@ A apresentação dos ganhos deve explicar que o limite distribuível é 1% ao di
 **Why:** O criador pediu um slide de rendimentos diários variáveis e essas explicações, com crédito na conta BETTEX.
 
 **How to apply:** Distinguir o teto de distribuição de um rendimento fixo ou garantido. A comunicação da conta em reais não altera a contabilidade interna em cripto nem habilita pagamentos reais no demo.
+
+A visão do criador para o rendimento diário é que o participante não fica no negativo: em um dia sem lucro, a distribuição daquele dia é zero e os tokens continuam com o participante.
+
+**Why:** O criador esclareceu: “você nunca perde, apenas deixa de lucrar naquele dia, e ainda tem seus tokens”.
+
+**How to apply:** Em gráficos e textos de ganhos diários, representar dias sem lucro como 0% de distribuição, não como retorno negativo; preservar a ideia de que o participante mantém seus tokens.
+
+Na seção “Visão BETTEX” do carrossel da Homepage, não repetir as chamadas de saque diário via Pix nem de lucro automático em reais na conta BETTEX.
+
+**Why:** O criador pediu remover esses dois textos para abrir espaço à mensagem principal sobre dias sem lucro e tokens mantidos.
+
+**How to apply:** Manter essa seção focada na mensagem principal; as orientações gerais de Pix e recebimento em reais continuam valendo nos outros trechos aprovados.

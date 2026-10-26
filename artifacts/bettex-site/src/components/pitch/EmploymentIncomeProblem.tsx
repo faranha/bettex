@@ -1,5 +1,4 @@
-import { ArrowRight, ExternalLink } from 'lucide-react';
-import { t } from '../../lib/i18n';
+import { ArrowDownRight, ArrowRight, ExternalLink } from 'lucide-react';
 import { useX } from './pitchCopy';
 import { AgenticProblemMetrics } from './AgenticProblemMetrics';
 import { PitchSlider } from './PitchSlider';
@@ -12,12 +11,27 @@ import './EmploymentIncomeProblem.css';
 
 export function EmploymentIncomeProblem() {
   const x = useX();
-  return <section id="problema-emprego-renda" className="pb-problem__automation" aria-labelledby="problema-ia-t">
+  return <section id="problema-emprego-renda" className="pb-problem__automation pitch-problem__automation" aria-labelledby="problema-ia-t">
     <div className="pb-problem__robot-background" aria-hidden="true">
       <img src={`${import.meta.env.BASE_URL}pitch-future/tesla-optimus.jpg`} alt="" width={1024} height={1024} />
     </div>
-    <p className="mono pb-problem__topic">{x('Emprego e renda ameaçados pela IA', 'Jobs and income threatened by AI', 'Empleo e ingresos amenazados por la IA')}</p>
-    <h3 id="problema-ia-t" className="display">{x('Automação não garante prosperidade para todos.', 'Automation does not guarantee prosperity for everyone.', 'La automatización no garantiza prosperidad para todos.')}</h3>
+    <div className="pitch-problem__shell">
+      <div className="pitch-problem__work-heading">
+        <span className="pitch-problem__index pitch-problem__work-index">
+          {x('02 / RENDA DE AMANHÃ', '02 / TOMORROW’S INCOME', '02 / INGRESOS DE MAÑANA')}
+        </span>
+        <p className="mono pb-problem__topic pitch-problem__work-topic">
+          {x('Emprego e renda ameaçados pela IA', 'Jobs and income threatened by AI', 'Empleo e ingresos amenazados por la IA')}
+        </p>
+        <h3 id="problema-ia-t" className="display pitch-problem__work-title">
+          {x(
+            'Automação não garante prosperidade para todos.',
+            'Automation does not guarantee prosperity for everyone.',
+            'La automatización no garantiza prosperidad para todos.',
+          )}
+        </h3>
+        <ArrowDownRight className="pitch-problem__work-arrow" aria-hidden="true" />
+      </div>
     <PitchSlider id="emprego-ia-slider" tone="dark" label={['IA, trabalho, renda e indicadores em blocos', 'AI, work and income blocks', 'IA, trabajo e ingresos por bloques']} slides={[
       { label: ['Promessa de abundância', 'Promise of abundance', 'Promesa de abundancia'], node: <>
     <figure className="pb-problem__musk-quote">
@@ -31,19 +45,6 @@ export function EmploymentIncomeProblem() {
       <img src={`${import.meta.env.BASE_URL}pitch-future/elon-musk-quote-illustration.png`} alt={x('Ilustração editorial de Elon Musk.', 'Editorial illustration of Elon Musk.', 'Ilustración editorial de Elon Musk.')} width={1024} height={1024} loading="lazy" />
     </figure>
     <p className="pb-problem__musk-thesis">{x('Tese da BETTEX: sem acesso aos ganhos da tecnologia, a automação pode aprofundar a perda de renda e a exclusão antes de gerar prosperidade.', 'BETTEX thesis: without access to technology gains, automation can deepen income loss and exclusion before producing prosperity.', 'Tesis de BETTEX: sin acceso a los beneficios de la tecnología, la automatización puede profundizar la pérdida de ingresos y la exclusión antes de generar prosperidad.')}</p>
-    <figure className="pb-problem__opening-video">
-      <div className="pb-problem__video-frame">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/HHS8OVYT9cI?rel=0&enablejsapi=1"
-          title={t('Elon Musk e a promessa de abundância')}
-          loading="eager"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
-      </div>
-      <figcaption><a href="https://www.youtube.com/watch?v=HHS8OVYT9cI" target="_blank" rel="noopener noreferrer">{t('USA TODAY · Elon Musk e a promessa de abundância')}<ExternalLink aria-hidden="true" /></a></figcaption>
-    </figure>
       </> },
       { label: ['Agentes e renda', 'Agents and income', 'Agentes e ingresos'], node: <>
     <div className="pb-problem__agentic-intro">
@@ -72,5 +73,6 @@ export function EmploymentIncomeProblem() {
       { label: ['Vagas nos EUA', 'US job openings', 'Vacantes en EE. UU.'], node: <div id="emprego-indicadores-slider"><USVacancyChart /></div> },
       { label: ['Emprego no Brasil', 'Jobs in Brazil', 'Empleo en Brasil'], node: <BrazilEmploymentCharts /> },
     ]} />
+    </div>
   </section>;
 }
