@@ -60,3 +60,8 @@
  .auth-note{padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
 }
 @media(prefers-reduced-motion:reduce){.auth-ring{animation:none}}
+
+.auth-stage,.auth-agents,.auth-note{max-width:none;width:min(100% - 40px,1200px);padding-inline:0;margin-inline:auto}
+.auth-hero{padding-inline:0}
+@media(min-width:861px){.auth-header{width:min(100% - 40px,1200px);margin-inline:auto;padding-inline:0}.auth-stage{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}.auth-hero{width:min(100%,550px);justify-self:center}}
+@media(max-width:860px){.auth-stage,.auth-agents,.auth-note{width:min(100% - 32px,1200px)}.auth-hero{padding-inline:0}}

@@ -1,10 +1,10 @@
+import { DocumentationCryptoScope } from '../DocumentationCryptoScope';
 import { DocImage, DocTerms } from '../DocImage';
 import { ResponsiveTableCarousel } from '../ResponsiveTableCarousel';
 import { t } from '@/lib/i18n';
 const connectors = [
   { name: 'Starknet', kind: 'Rede e contratos', access: 'JSON-RPC / Cairo', status: 'Candidata; planejamento e captação de grants', function: 'Contas nativas, token, transferências e contratos. Exige implementação Cairo, ativos compatíveis e contratos validados; não há implantação BETTEX confirmada.', url: 'https://docs.starknet.io/' },
   { name: 'Arbitrum One', kind: 'Rede e contratos', access: 'JSON-RPC / EVM', status: 'Candidata; consulta pública verificada', function: 'Carteiras, token, transferências e contratos. Consulta RPC não define a escolha da rede; execução BETTEX exige contratos validados.', url: 'https://docs.arbitrum.io/' },
-  { name: 'Polymarket', kind: 'Dados e negociação', access: 'Gamma / CLOB API', status: 'Dados públicos verificados; ordens condicionadas', function: 'Gamma descobre mercados. CLOB recebe ordens assinadas com conta, permissões e território elegíveis.', url: 'https://docs.polymarket.com/market-data/overview' },
   { name: 'Allora', kind: 'Inferência', access: 'API / SDK', status: 'Candidata; exemplo testnet documentado', function: 'Inferência agregada, tópico e timestamp. API requer chave; não envia ordens nem controla carteiras.', url: 'https://docs.allora.network/get-started/quickstart-consume' },
   { name: 'Robinhood', kind: 'Dados e negociação cripto', access: 'Crypto Trading API', status: 'Candidata; acesso autorizado necessário', function: 'Conta elegível nos Estados Unidos, credenciais e assinatura. API cripto não estabelece negociação de ações.', url: 'https://docs.robinhood.com/crypto/trading' },
   { name: 'Safe / OpenZeppelin', kind: 'Custódia e permissões', access: 'Contratos / SDK', status: 'Recursos documentados; validação por implantação', function: 'Quórum, módulos, acesso e espera. Safe é referência EVM; Starknet exige contas e contratos Cairo compatíveis. Política BETTEX exige testar todos os caminhos de execução.', url: 'https://docs.safe.global/advanced/smart-account-concepts' },
@@ -37,8 +37,8 @@ export function ArchitectureCatalogue({ groups, connectorNames, integrationId = 
     </section>}
     {on('demonstrations') && <>
     <h3 className="whitepaper__subhead" id="documentacao-demonstracoes">Demonstrações e pré-requisitos</h3>
-    <div className="whitepaper__prose"><p>Consultas públicas em 03/10/2026: JSON-RPC eth_chainId no endpoint público da Arbitrum retornou 0xa4b1, correspondente à rede 42161. A consulta Gamma /markets?limit=1&amp;active=true&amp;closed=false retornou o mercado 559651, ativo, não encerrado, com identificadores CLOB. Isso comprova leitura e identificação, não compra, liquidação ou implantação do token.</p></div>
-    <details className="whitepaper__technical" id="documentacao-consultas-publicas"><summary>Reproduzir as consultas sem movimentar recursos</summary><div className="whitepaper__technical-body"><pre data-i18n="skip"><code>{'POST https://arb1.arbitrum.io/rpc\n{"jsonrpc":"2.0","id":1,"method":"eth_chainId","params":[]}\n\nGET https://gamma-api.polymarket.com/markets?limit=1&active=true&closed=false'}</code></pre><p>Conferir rede, status, timestamp, regras de resolução e identificadores antes de análise. Dados atuais podem diferir do registro consultado. Não há método de envio de transação nessas consultas.</p></div></details>
+    <div className="whitepaper__prose"><DocumentationCryptoScope part="publicQuery" /></div>
+    <details className="whitepaper__technical" id="documentacao-consultas-publicas"><summary>Reproduzir as consultas sem movimentar recursos</summary><div className="whitepaper__technical-body"><pre data-i18n="skip"><code data-i18n="skip">{'POST https://arb1.arbitrum.io/rpc\n{"jsonrpc":"2.0","id":1,"method":"eth_chainId","params":[]}'}</code></pre><DocumentationCryptoScope part="publicQuery" /></div></details>
     </>}
     {on('allora') && <>
     <h4 className="whitepaper__subhead" id="documentacao-allora-fluxo">Allora: da inferência à análise</h4>
@@ -48,7 +48,7 @@ export function ArchitectureCatalogue({ groups, connectorNames, integrationId = 
       ['Risco independente', 'validação ou rejeição'],
       ['Conector autorizado', 'eventual execução → conciliação'],
     ]} note="Allora não controla carteira, não envia pagamentos e não executa ordens." />
-    <div className="whitepaper__prose"><p>O quickstart oficial usa tópico 69 em testnet, consultado por API com chave e resposta assinada. A demonstração BETTEX desse percurso é simulada: validar origem, horário e normalização, cruzar preços e liquidez, rejeitar sinal vencido e executar somente após risco independente. Sem credencial autorizada, não se afirma consulta Allora realizada.</p><p>Robinhood documenta preços, posições, ordens e cancelamentos de cripto, com assinatura e conta elegível. O exemplo é simulado sem essas permissões: proposta de ordem → risco → chamada autorizada → estado → conciliação. Não é transação Arbitrum nem acesso a ações. Esportes e iGaming exigem canal e regras específicos; suas demonstrações de agentes são simulações parametrizadas.</p></div>
+    <div className="whitepaper__prose"><p>O quickstart oficial usa tópico 69 em testnet, consultado por API com chave e resposta assinada. A demonstração BETTEX desse percurso é simulada: validar origem, horário e normalização, cruzar preços e liquidez, rejeitar sinal vencido e executar somente após risco independente. Sem credencial autorizada, não se afirma consulta Allora realizada.</p><DocumentationCryptoScope part="connector" /></div>
     </>}
   </>;
 }

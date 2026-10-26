@@ -1,11 +1,12 @@
 import { createContext, useContext, type ReactNode } from 'react';
+import { DocumentationCryptoScope } from '../DocumentationCryptoScope';
 import { ArchitectureIntegrations, type ArchitectureFigureNumber } from './ArchitectureIntegrations';
 import './BettexArchitecture.css';
 
 type Surface = 'dark' | 'paper';
 type Tone = 'blue' | 'gold' | 'teal' | 'plain';
 
-interface Step { title: string; text: string; tone?: Tone; badge?: string; id?: string; extra?: ReactNode }
+interface Step { title: string; text: ReactNode; tone?: Tone; badge?: string; id?: string; extra?: ReactNode }
 
 export const architectureFigureTitles: Record<ArchitectureFigureNumber, string> = {
   '1': 'Conta, carteiras e compra de BETTEX',
@@ -134,14 +135,13 @@ const fig7: Step[] = [
   { title: 'Conexão por MCP ou API', text: 'Usam ferramentas MCP onde disponíveis ou APIs autorizadas, conforme os recursos de dados e execução de cada serviço.', tone: 'blue',
     extra: (
       <div className="ba-entry" data-testid="node-agents-market-connections">
-        <div><strong>Polymarket</strong><p>O uso da API de ordens CLOB depende de integração, conta e permissões elegíveis.</p></div>
         <div><strong>Robinhood</strong><p>API de trading de cripto em avaliação; exige integração e acesso autorizado.</p></div>
       </div>
     ) },
   { title: 'Execução automática', text: 'As operações autorizadas são executadas automaticamente. Toda ordem passa pela aprovação independente de risco, limites e permissões antes do envio.', tone: 'gold', id: 'node-agents-automated-execution' },
 ];
 const fig8: Step[] = [
-  { title: 'Coleta de oportunidades', text: 'Os agentes coletam oportunidades nos quatro mercados: preços, probabilidades, liquidez, custos e sinais de IA, com origem e horário dos dados.', tone: 'blue', id: 'node-opportunities-collection' },
+  { title: 'Coleta de oportunidades', text: <DocumentationCryptoScope part="collection" inline />, tone: 'blue', id: 'node-opportunities-collection' },
   { title: 'Escolha da melhor oportunidade', text: 'O agente BETTEX compara as alternativas e seleciona a melhor oportunidade segundo retorno esperado, custos, liquidez, exposição e risco. Registra os critérios e o motivo da escolha.', tone: 'blue', id: 'node-opportunities-decision' },
   { title: 'Investimento autorizado', text: 'A IA propõe o valor dentro da parcela investível autorizada. O risco verifica os limites e registra a reserva em uma decisão indivisível, considerando outras ordens. Antes do envio, revalida pelas regras vigentes, sem duplicar a reserva; só então segue para execução automática.', tone: 'gold', id: 'node-opportunities-investment' },
   { title: 'Registro público', text: 'Todas as transações têm registro aberto: horário, plataforma, ativo, quantidade, valores, custos, estado e referência auditável.', tone: 'teal', badge: 'Todas as transações', id: 'node-agents-public-transactions',
@@ -178,7 +178,7 @@ export function BettexArchitecture({ surface = 'dark', heading = true, figure }:
               <div><strong>Reserva defensiva</strong><p>Ativos efetivamente segregados conforme política aprovada, sem percentual geral fixado em 50%.</p></div>
               <div><strong>Parcela investível</strong><p>Alocação dinâmica conforme oportunidades, liquidez e limites de risco.</p></div>
             </div>
-            <p className="ba-fig__foot">O algoritmo analisa oportunidades em previsões, ações e cripto, esportes e iGaming e distribui a parcela investível conforme as melhores oportunidades identificadas. As estratégias incluem surebet nos esportes, com comparação de odds e cobertura dos resultados entre casas, e bonus hunting (mineração de bônus) no iGaming, com análise das promoções, requisitos de aposta e elegibilidade. A alocação é dinâmica, sem percentuais fixos por mercado, preservando a reserva defensiva e a verificação independente de risco.</p>
+            <DocumentationCryptoScope part="allocation" className="ba-fig__foot" />
           </div>
           <p className="ba-fig__foot">O mint inicial aberto de 10% tem preço fixo e financia o projeto. O swap oficial vende tokens da comunidade, destinação separada de 55%, já liberados no vesting de 24 meses: 100% do preço em USDC vai à tesouraria. Venda direta a corretoras respeita a mesma agenda. O fundador decide a destinação de sua parcela após liberação. Mercados externos não herdam automaticamente as condições do swap; USDC pessoal não gasto continua fora da tesouraria.</p>
         </Figure>}

@@ -149,3 +149,10 @@
 @media (max-width: 899px) {
   .pb-aud .mk-stage { height: 300px; min-height: 300px; }
 }
+
+@media (min-width: 900px) {
+  .pb-aud__title { margin-inline: auto; text-align: center; }
+  .mk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mk-stage { justify-self: end; }
+  .pb-aud__front-fan { left: max(20px, calc((100% - 1200px) / 2)); width: 160px; }
+}

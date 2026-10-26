@@ -1,4 +1,12 @@
 {
+  "POST https://arb1.arbitrum.io/rpc {\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_chainId\",\"params\":[]}": {
+    "en": "POST https://arb1.arbitrum.io/rpc\n{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_chainId\",\"params\":[]}",
+    "es": "POST https://arb1.arbitrum.io/rpc\n{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_chainId\",\"params\":[]}"
+  },
+  "Jogos internos com regras próprias, separados do trading cripto.": {
+    "en": "Internal games with their own rules, separate from crypto trading.",
+    "es": "Juegos internos con reglas propias, separados del trading cripto."
+  },
   "A governança e a segurança multisig descritas são uma proposta inicial, aberta à discussão com investidores e com a comunidade. A composição, o quórum e os poderes do multisig podem ser revistos por um processo documentado de aprovação, testes e implantação. Até uma revisão entrar em vigor, permanecem os controles da versão vigente; discutir o modelo não autoriza ignorá-los.": {
     "en": "The governance and multisig security described are an initial proposal, open to discussion with investors and the community. The multisig's composition, quorum and powers may be revised through a documented process of approval, testing and implementation. Until a revision takes effect, the current version's controls remain in force; discussing the model does not authorize bypassing them.",
     "es": "La gobernanza y la seguridad multisig descritas son una propuesta inicial, abierta al debate con inversores y con la comunidad. La composición, el quórum y los poderes del multisig pueden revisarse mediante un proceso documentado de aprobación, pruebas e implementación. Hasta que una revisión entre en vigor, se mantienen los controles de la versión vigente; debatir el modelo no autoriza a ignorarlos."

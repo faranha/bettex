@@ -30,9 +30,9 @@ export function DocumentationSectionOpening({ group }: { group: 2 | 3 | 4 }) {
     </header>
     {group === 3 ? <DocumentationFeaturesIntroduction /> : <div className="whitepaper__prose">
       <p>{x(
-        'Os subagentes apoiam o agente BETTEX em áreas específicas. Risco, Tesouraria e Governança tratam de exposição, recursos e políticas. Cripto, Esportes, Previsões e iGaming organizam as análises de seus mercados. Cripto inclui as especializações BTC, ETH e SOL.',
-        'Subagents support the BETTEX agent in specific areas. Risk, Treasury and Governance address exposure, resources and policies. Crypto, Sports, Predictions and iGaming organize analysis of their markets. Crypto includes BTC, ETH and SOL specializations.',
-        'Los subagentes apoyan al agente BETTEX en áreas específicas. Riesgo, Tesorería y Gobernanza abordan exposición, recursos y políticas. Cripto, Deportes, Predicciones e iGaming organizan los análisis de sus mercados. Cripto incluye las especializaciones BTC, ETH y SOL.',
+        'Os subagentes apoiam o agente BETTEX no trading cripto. Risco, Tesouraria e Governança tratam de exposição, recursos e políticas. Cripto analisa padrões de manipulação, seleciona ativos e avalia entradas e saídas. BTC, ETH e SOL ilustram especializações internas; não limitam o universo de moedas.',
+        'Subagents support the BETTEX agent in crypto trading. Risk, Treasury and Governance address exposure, resources and policies. Crypto analyzes manipulation patterns, selects assets and evaluates entries and exits. BTC, ETH and SOL illustrate internal specializations; they do not limit the coin universe.',
+        'Los subagentes apoyan al agente BETTEX en el trading cripto. Riesgo, Tesorería y Gobernanza abordan exposición, recursos y políticas. Cripto analiza patrones de manipulación, selecciona activos y evalúa entradas y salidas. BTC, ETH y SOL ilustran especializaciones internas; no limitan el universo de monedas.',
       )}</p>
     </div>}
   </>;

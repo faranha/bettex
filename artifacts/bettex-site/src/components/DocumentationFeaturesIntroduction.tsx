@@ -23,7 +23,7 @@ export function DocumentationFeaturesIntroduction({ economics = false }: { econo
     ['Staking e distribuição', x('Participação, elegibilidade por rodada e distribuição de resultados, quando houver.', 'Participation, eligibility per round and distribution of results, when available.', 'Participación, elegibilidad por ronda y distribución de resultados, cuando los haya.')],
     ['Token e regras econômicas', x('Emissão, vesting, direitos e destinação dos resultados.', 'Issuance, vesting, rights and allocation of results.', 'Emisión, vesting, derechos y destino de los resultados.')],
     ['Recompra e queima', x('O mecanismo de recompra de BETTEX e a retirada definitiva de tokens de circulação.', 'The BETTEX buyback mechanism and permanent removal of tokens from circulation.', 'El mecanismo de recompra de BETTEX y la retirada definitiva de tokens de circulación.')],
-    ['Burn Lottery e Double 2X', x('Jogos internos opcionais, com regras próprias e separados do agente de iGaming.', 'Optional internal games, with their own rules and separate from the iGaming agent.', 'Juegos internos opcionales, con reglas propias y separados del agente de iGaming.')],
+    ['Burn Lottery e Double 2X', x('Jogos internos opcionais, com regras próprias e separados do trading cripto.', 'Optional internal games, with their own rules and separate from crypto trading.', 'Juegos internos opcionales, con reglas propias y separados del trading cripto.')],
   ];
   const economicTitles = new Set(['Staking e distribuição', 'Token e regras econômicas', 'Recompra e queima']);
   const visibleItems = items.filter(([title]) => economicTitles.has(title) === economics);
