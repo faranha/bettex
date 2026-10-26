@@ -21,9 +21,9 @@ for (const file of activeFiles) {
 }
 
 const localized = [
-  { prefix: '', ownership: 'dono da IA', technology: 'tecnologia', decentralization: 'descentraliza', founder: 'fundador', fund: 'não um fundo de investimentos', profit: 'lucro elegível' },
-  { prefix: '/en', ownership: 'owner of the AI', technology: 'technology', decentralization: 'decentraliz', founder: 'founder', fund: 'not an investment fund', profit: 'eligible profit' },
-  { prefix: '/es', ownership: 'dueño de la IA', technology: 'tecnología', decentralization: 'descentraliza', founder: 'fundador', fund: 'no un fondo de inversión', profit: 'beneficio' },
+  { prefix: '', ownership: ['dono da IA', 'dono do token'], technology: 'tecnologia', decentralization: 'descentraliza', founder: 'fundador', fund: 'não um fundo de investimentos', profit: 'lucro elegível', voting: 'votar', rules: 'regras digitais', company: ['sem empresa ou fundo', 'não existe empresa'], demo: ['demo não oferece votação real', 'não no demo atual'] },
+  { prefix: '/en', ownership: ['owner of the AI', 'own the token'], technology: 'technology', decentralization: 'decentraliz', founder: 'founder', fund: 'not an investment fund', profit: 'eligible profit', voting: 'vote', rules: 'digital', company: ['no company or fund', 'no company, fund'], demo: ['demo does not offer real voting', 'not in the current demo'] },
+  { prefix: '/es', ownership: ['dueño de la IA', 'dueño del token'], technology: 'tecnología', decentralization: 'descentraliza', founder: 'fundador', fund: 'no un fondo de inversión', profit: 'beneficio', voting: 'votar', rules: 'reglas digitales', company: ['sin empresa ni fondo', 'no hay empresa'], demo: ['demo no ofrece votación real', 'no en el demo actual'] },
 ];
 const plain = html => html.replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, '')
   .replace(/<[^>]*>/g, ' ').replace(/<!--[\s\S]*?-->/g, '').replace(/\s+/g, ' ');
@@ -41,8 +41,11 @@ try {
     for (const suffix of ['/', '/pitch']) {
       const path = `${language.prefix}${suffix}`;
       const text = plain(render(path));
-      for (const key of ['ownership', 'technology', 'decentralization', 'founder', 'fund', 'profit']) {
+      for (const key of ['technology', 'decentralization', 'founder', 'fund', 'profit', 'voting', 'rules']) {
         assert.ok(text.toLowerCase().includes(language[key].toLowerCase()), `${path}: missing ${key}`);
+      }
+      for (const key of ['ownership', 'company', 'demo']) {
+        assert.ok(language[key].some(phrase => text.toLowerCase().includes(phrase.toLowerCase())), `${path}: missing ${key}`);
       }
       if (language.prefix) {
         for (const pt of ['Com BETTEX, você se torna', 'A IA da comunidade', 'Os resultados também são seus', 'A apuração é diária', 'Ao comprar BETTEX']) {
@@ -53,7 +56,7 @@ try {
         assert.ok(text.includes('25%'), `${path}: profit split missing`);
         assert.ok(text.includes('50%'), `${path}: treasury split missing`);
       }
-      console.log(`Ownership, initial administration, risk and localization: ${path}`);
+      console.log(`Community ownership, DeFi, digital rules, planned voting, risk and localization: ${path}`);
     }
   }
 } finally {

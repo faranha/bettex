@@ -19,9 +19,9 @@ export function PitchMissionHero() {
           'Los robots se llevarán los empleos. Las apuestas, el dinero.',
         )}</h2>
         <p>{x(
-          'A IA também deve pertencer às pessoas. Com BETTEX, você se torna dono da IA e parte de um projeto de tecnologia descentralizada.',
-          'AI should belong to people too. With BETTEX, you become an owner of the AI and part of a decentralized technology project.',
-          'La IA también debe pertenecer a las personas. Con BETTEX, te conviertes en dueño de la IA y formas parte de un proyecto de tecnología descentralizada.',
+          'A IA também deve pertencer às pessoas. Com BETTEX, você tem o token e é dono da IA junto à comunidade de um projeto descentralizado de DeFi e inteligência artificial.',
+          'AI should belong to people too. With BETTEX, you hold the token and become an owner of the AI together with the community of a decentralized DeFi and artificial intelligence project.',
+          'La IA también debe pertenecer a las personas. Con BETTEX, tienes el token y eres dueño de la IA junto a la comunidad de un proyecto descentralizado de DeFi e inteligencia artificial.',
         )}</p>
         <a href="#solucao" className="tap pitch-mission-hero__button">
           <span>{x('Conhecer a BETTEX', 'Discover BETTEX', 'Conocer BETTEX')}</span>

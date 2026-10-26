@@ -4,7 +4,7 @@ import { FreeformWhaleArtwork } from '@/components/FreeformWhaleArtwork';
 import './HomeWhaleSection.css';
 
 const H1 = 'Baleias manipulam o mercado. A comunidade tem sua IA.';
-const H2 = 'O agente BETTEX usa análise quantitativa distribuída para buscar padrões de manipulação em cripto. É a IA de quem tem o token, não um serviço de gestão para clientes.';
+const H2 = 'O agente BETTEX usa análise quantitativa distribuída para buscar padrões de manipulação em cripto. É tecnologia da comunidade: quem tem BETTEX é dono da IA, não cliente de uma gestora.';
 const NOTE = 'Estratégia em validação. Não há garantia de antecipar movimentos ou obter lucro.';
 const ALT = 'Baleia jubarte nadando em mar azul-meia-noite';
 const EYEBROW = 'Baleias e mercado';
