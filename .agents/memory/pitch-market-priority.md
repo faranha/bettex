@@ -49,6 +49,12 @@ Usar os volumes diários de cripto e bets como referências separadas, não uma 
 
 **How to apply:** Incluir cripto no destaque financeiro, identificar a média do período e manter a referência de bets como histórica. Não confundir volume bruto de operações com captação, dinheiro exclusivo do público de varejo ou demanda pela BETTEX.
 
+O slider de público deve ter um H1 visível antes dos slides.
+
+**Why:** O criador cobrou explicitamente o título que faltava acima do slider.
+
+**How to apply:** Preservar uma abertura visual própria para a seção; títulos internos dos slides e cabeçalhos ocultos não substituem esse título.
+
 No rodapé abaixo do destaque de 6,9 milhões, citar apenas as fontes. Não reinserir ali o cartão de alcance combinado nem os parágrafos de escopo, hipóteses e elegibilidade.
 
 **Why:** O criador marcou todo esse rodapé e pediu “apenas cite as fontes para informação, só isso”.
