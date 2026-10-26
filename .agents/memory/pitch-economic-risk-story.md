@@ -51,11 +51,11 @@ A foto de Musk deve ficar integrada à abertura de “O cenário apocalíptico�
 
 **How to apply:** Manter retrato e crédito junto da introdução do cenário, com leitura adaptada ao desktop e ao celular. Preservar as caixas individuais dos gráficos; não recriar o invólucro vermelho nem a abertura removida.
 
-O bloco de emprego deve ser resumido, com mais tópicos e números e menos parágrafos. Seu fundo deve mostrar robôs trabalhando numa fábrica, integrado ao container com degradê, sem corte abrupto, em vez de um Optimus isolado.
+O bloco de emprego deve ser resumido, com mais tópicos e números e menos parágrafos. A arte deve ser um robô desenhado trabalhando, isolado em cutout transparente à direita do título, não uma cena de fábrica no fundo.
 
-**Why:** O criador pediu “mais topicos, numeros, menos paragrafos”. Depois confirmou gostar do bloco e pediu uma foto de robôs numa fábrica, com degradê no estilo da seção sobre brasileiros endividados.
+**Why:** Após rejeitar a foto e exigir desenho, o criador pediu o mesmo tratamento cutout da pessoa angustiada: “a mesma coisa aqui, tem que refazer e aqui tem que por na direita e nao na esquerda”.
 
-**How to apply:** Preservar título, dados e slider, mudando apenas a arte de fundo e sua integração visual. Manter a cena industrial visível e a transição suave para o fundo escuro, inclusive no celular. Não inventar estatísticas nem reintroduzir o vídeo removido.
+**How to apply:** Usar personagem desenhado e de corpo inteiro, executando uma tarefa com as mãos, com transparência real e sem cenário ou painel de imagem. Posicionar à direita do título também no celular; preservar o slider, os dados e o quadro vermelho. Não reintroduzir a fábrica de fundo nem arte gigante à esquerda.
 
 O item 2 deve apresentar a economia agêntica como o problema ao qual a BETTEX responde: tese de miséria universal em vez de renda universal alta, com atenção à América Latina, pessoas humildes e sobretudo empregos de colarinho branco.
 
@@ -124,6 +124,12 @@ O bloco unificado sobre brasileiros endividados deve exibir também os dados de 
 **Why:** O criador reiterou que esses dados já existiam e exigiu colocá-los nessa seção, com uma imagem de fundo mais triste que destaque o impacto negativo das bets.
 
 **How to apply:** Preservar os três indicadores distintos da Futura: 64,3% usavam salários ou rendimentos regulares; 65,9% tinham ganhar dinheiro como principal motivação; 65,7% não tinham dinheiro guardado. Motivação não é renda obtida. A pesquisa ouviu mil pessoas em dezembro de 2024, das quais quase 9% apostavam em esportes; os percentuais são desse subgrupo, não de todos os entrevistados. Usar imagem editorial sombria com indicação de ilustração, sem apresentá-la como registro de um entrevistado real.
+
+Na seção sobre brasileiros endividados, a arte deve ser um personagem isolado desenhado, em cutout transparente aplicado diretamente à página, não uma fotografia nem uma cena ilustrada com fundo.
+
+**Why:** O criador pediu desenho e esclareceu duas vezes: “era cutout desenho aplicado a pagina” e “era personagem isolado desenho”.
+
+**How to apply:** Mostrar a pessoa angustiada sem cenário, quarto, mesa, moldura ou painel de imagem. Preservar a transparência real e os percentuais da seção; não transformar novamente a arte em foto de fundo.
 
 Não reintroduzir o painel “Fontes e alcance dos dados” abaixo dos indicadores do problema no Pitch.
 

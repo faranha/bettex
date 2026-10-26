@@ -18,7 +18,7 @@ const LEGACY_PITCH_SECTIONS: Record<string, { id: string }> = { tese: { id: 'vis
 function Sec({ id, title, dark = false, summary, children, heading = 'h2', puppetBackground = false }: { id: string; n?: string; kicker?: string; title: ReactNode; dark?: boolean; summary?: ReactNode; hero?: string; children: ReactNode; heading?: 'h1' | 'h2'; puppetBackground?: boolean }) {
   const Heading = heading;
   return <section id={id} aria-labelledby={`${id}-t`} className={`slide slide--flow ${dark ? 'slide--dark bg-[#070B1F] text-[#F4F1E8]' : 'bg-[#F4F1E8] text-[#070B1F]'}`}>
-    {puppetBackground && <img className="slide__illustration" src={`${BASE}/pitch-solution-puppet.png`} alt="" aria-hidden="true" loading="lazy" />}
+    {puppetBackground && <img className="slide__illustration" src={`${BASE}/pitch-future/shared-prosperity-cutout.svg`} alt="" aria-hidden="true" loading="lazy" />}
     <div className="page-wrap slide__body slide__body--flow">
       <Heading id={`${id}-t`} className={heading === 'h1' ? 'hero-title max-w-[1040px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold' : 'display max-w-[860px] text-[clamp(1.7rem,3.6vw,2.8rem)] font-extrabold leading-[1.05] tracking-[-.05em]'}>{title}</Heading>
       {summary ? <p className={`mt-3 max-w-[700px] text-base leading-7 ${dark ? 'text-[#e3eaff]' : 'text-[#183173]'}`}>{summary}</p> : null}

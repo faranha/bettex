@@ -9,9 +9,6 @@ export function PitchProblemSection() {
   return (
     <section id="problema" className="pitch-problem" aria-labelledby="problema-t">
       <div className="pitch-problem__hero">
-        <div className="pitch-problem__backdrop" aria-hidden="true">
-          <img src={`${import.meta.env.BASE_URL}pitch-future/household-betting-debt.webp`} alt="" width={1024} height={1024} loading="lazy" />
-        </div>
         <div className="pitch-problem__shell">
           <h2 id="problema-t" className="pitch-problem__title">
             {x(
@@ -22,6 +19,7 @@ export function PitchProblemSection() {
           </h2>
 
           <div className="pitch-problem__opening">
+            <div className="pitch-problem__stat-column">
             <div className="pitch-problem__stat" aria-hidden="true">
               <span>74</span>
               <span className="pitch-problem__percent">%</span>
@@ -32,6 +30,8 @@ export function PitchProblemSection() {
                   'de quienes pensaban apostar en la Copa Mundial de 2026',
                 )}
               </span>
+            </div>
+            <img className="pitch-problem__character" src={`${import.meta.env.BASE_URL}pitch-future/household-character-cutout.svg`} alt="" aria-hidden="true" width={80} height={80} loading="lazy" />
             </div>
 
             <div className="pitch-problem__claim-wrap">

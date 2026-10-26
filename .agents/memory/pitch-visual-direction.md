@@ -63,6 +63,12 @@ A solução BETTEX deve aparecer em uma única seção: apresentação do produt
 
 **How to apply:** Não recriar “BETTEX e subagentes” como uma seção autônoma. Preservar informações técnicas, custos, Pix previsto, regras e avisos dentro da apresentação da solução.
 
+A arte decorativa da seção Solução deve representar prosperidade, não uma marionete controlada por fios.
+
+**Why:** O criador marcou a marionete e pediu substituí-la por uma imagem de prosperidade.
+
+**How to apply:** Usar uma ilustração otimista de autonomia e bem-estar no tratamento cutout da página. Preservar os textos, as regras e as ressalvas econômicas; a imagem não representa promessa de retorno garantido.
+
 Tokenomics também deve ser uma única seção compacta, com um fundo e um título principal; economia, oferta, vesting e direitos não devem parecer duas seções distintas.
 
 **Why:** O criador apontou os dois blocos e reiterou “tokenomics tambem esta parecendo 2 dsecoes distintas, tem que unificar, otimizar o espaco”.
