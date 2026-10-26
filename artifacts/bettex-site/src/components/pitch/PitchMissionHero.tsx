@@ -10,7 +10,7 @@ export function PitchMissionHero() {
     <div className="page-wrap pitch-mission-hero__layout">
       <div className="pitch-mission-hero__copy">
         <h1 id="pitch-mission-title" className="hero-title">
-          <span>{x('Resgatar pessoas', 'Rescue people', 'Rescatar a las personas')}</span>
+          <span>{x('Resgatar pessoas', 'Rescue people', 'Rescatar a las personas')}</span>{' '}
           <span className="pitch-mission-hero__accent">{x('de um futuro perdido.', 'from a lost future.', 'de un futuro perdido.')}</span>
         </h1>
         <h2>{x(

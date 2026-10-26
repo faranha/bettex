@@ -35,7 +35,7 @@ export function MarketOpportunity() {
         {src(audienceScenario.bettingSourceUrl, x('Apostas: Fazenda / SIGAP, via Folha · set. 2026', 'Betting: Ministry of Finance / SIGAP, via Folha · Sep. 2026', 'Apuestas: Hacienda / SIGAP, vía Folha · sep. 2026'))}
       </div>
       </div>
-      <figure className="mk-stage"><img src={`${BASE}/pitch-illustrations/pitch-brazil-community.webp`} alt={x('Ilustração de uma comunidade brasileira conectada', 'Illustration of a connected Brazilian community', 'Ilustración de una comunidad brasileña conectada')} loading="lazy" decoding="async" /></figure>
+      <figure className="mk-stage"><img src={`${BASE}/pitch-illustrations/pitch-brazil-community.webp`} alt={x('Ilustração de uma comunidade brasileira conectada', 'Illustration of a connected Brazilian community', 'Ilustración de una comunidad brasileña conectada')} width={1024} height={1024} loading="lazy" decoding="async" /></figure>
     </div> },
     { title: x('Cripto', 'Crypto', 'Cripto'), node: <div className="mk-grid">
       <div className="mk-offer">
