@@ -315,8 +315,8 @@ O hero de `/pitch` deve seguir a estrutura visual da homepage, com texto e botã
 
 **How to apply:** Manter a homepage intacta; reaproveitar sua composição visual, não sua imagem ou copy. Não voltar ao hero centralizado apenas textual. Ver detalhes em pitch-hero-hierarchy.md.
 
-Na seção Público, usar um personagem desenhado em 2D, em cutout transparente fora do fundo, sem grupo atrás do conteúdo. O torcedor deve ser maior, de frente e encostado na divisão inferior da seção. A seção precisa ser compacta.
+Na seção Público, usar um personagem desenhado em 2D, em cutout transparente fora do fundo, sem grupo atrás do conteúdo. Deve ser maior, de frente e encostado na divisão inferior da seção, com celular e sem bola de futebol. A seção precisa ser compacta.
 
-**Why:** Após desenhar a posição desejada à esquerda e pedir uma referência ao futebol, o criador corrigiu a pose e o tamanho: “ele tem que ser maior, de frente, e colado na barra de divisao da section”.
+**Why:** O criador pediu “maior, de frente, e colado na barra de divisao da section” e depois esclareceu com uma captura dos 40 milhões: “aqui eu nao queria por ele com bola de futebol”. A bola pedida pertence ao bloco dos 74% e da Copa de 2026.
 
-**How to apply:** Usar torcedor em pé de frente, com celular e bola, na lateral esquerda. Ancorar os pés na borda inferior da seção, sem margem transparente que os deixe flutuando. Reservar espaço para não cobrir texto, foto ou controles, inclusive no celular. Não reservar altura pelo slide inativo mais alto. Preservar a foto interna do slider e o hero.
+**How to apply:** Usar personagem em pé de frente, com celular e sem bola, na lateral esquerda. Ancorar os pés na borda inferior da seção, sem margem transparente que os deixe flutuando. Reservar espaço para não cobrir texto, foto ou controles, inclusive no celular. Não reservar altura pelo slide inativo mais alto. Preservar a foto interna do slider, o hero e a bola do bloco dos 74%.
