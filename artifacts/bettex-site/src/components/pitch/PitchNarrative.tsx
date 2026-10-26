@@ -31,7 +31,7 @@ export function PitchJourney() {
       { label: ['Compra e participação', 'Purchase and participation', 'Compra y participación'], node: <>
     <p className="pn__lead">{x('Ter BETTEX é ser dono da IA junto à comunidade, com participação nos lucros elegíveis conforme as regras do token, sem precisar operar manualmente. A liquidação é em USDC. Hoje, o demo é apenas visual, sem compras ou pagamentos reais.', 'Holding BETTEX means owning the AI together with the community, with participation in eligible profits under the token rules, without trading manually. Settlement is in USDC. Today, the demo is visual only, with no real purchases or payments.', 'Tener BETTEX es ser dueño de la IA junto a la comunidad, con participación en los beneficios elegibles según las reglas del token, sin operar manualmente. La liquidación es en USDC. Hoy, el demo es solo visual, sin compras ni pagos reales.')}</p>
     <ol className="pn__steps">
-      {steps.map(({ Icon, t }, i) => <li key={i} className="pn__step"><span className="pn__stepn mono">{String(i + 1).padStart(2, '0')}</span><Icon size={24} aria-hidden="true" /><strong>{t}</strong></li>)}
+      {steps.map(({ Icon, t }, i) => <li key={i} className="pn__step"><span className="pn__stepn mono">{String(i + 1).padStart(2, '0')}</span><span className="pn__step-icon" aria-hidden="true"><Icon size={26} strokeWidth={1.7} /></span><strong>{t}</strong></li>)}
     </ol>
     <div id="diferencial" className="pn__diff">
       <strong>{x('Diferença de direito econômico', 'Difference in economic right', 'Diferencia de derecho económico')}</strong>
