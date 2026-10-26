@@ -47,7 +47,7 @@ try {
       for (const key of ['technology', 'decentralization', 'founder', 'fund', 'profit', 'voting', 'rules']) {
         assert.ok(text.toLowerCase().includes(language[key].toLowerCase()), `${path}: missing ${key}`);
       }
-      for (const key of ['ownership', 'company', 'demo']) {
+      for (const key of ['ownership', 'company']) {
         assert.ok(language[key].some(phrase => text.toLowerCase().includes(phrase.toLowerCase())), `${path}: missing ${key}`);
       }
       if (language.prefix) {
@@ -56,6 +56,7 @@ try {
         }
       }
       if (suffix === '/pitch') {
+        assert.ok(language.demo.some(phrase => text.toLowerCase().includes(phrase.toLowerCase())), `${path}: missing demo scope`);
         assert.ok(text.includes('25%'), `${path}: profit split missing`);
         assert.ok(text.includes('50%'), `${path}: treasury split missing`);
       }

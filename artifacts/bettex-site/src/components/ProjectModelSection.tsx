@@ -261,7 +261,7 @@ export function ProjectModelSection() {
           </div>
           <div className="pm-panel-foot">
             <p>Sem lucro elegível não há distribuição, e os resultados não são garantidos.</p>
-             <p className="pm-buyback-note">A comunidade pode contribuir e votar nas decisões do projeto, conforme regras digitais de governança. Os mecanismos de votação serão definidos e disponibilizados por etapas; o demo não oferece votação real.</p>
+             <p className="pm-buyback-note">A comunidade pode contribuir e votar nas decisões do projeto, conforme regras digitais de governança. Os mecanismos de votação serão definidos e disponibilizados por etapas.</p>
             <p className="pm-buyback-note">O fundador administra no início. A descentralização e a autonomia por IA evoluem por etapas, com controles e validação. BETTEX é um projeto de tecnologia, não um fundo de investimentos.</p>
           </div>
         </div>
