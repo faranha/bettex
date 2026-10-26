@@ -119,6 +119,12 @@ O destaque brasileiro desse argumento deve medir salário ou renda regular usado
 
 **How to apply:** Selecionar indicadores que respondam às perguntas sobre origem dos recursos e reservas. Não trocar uso de salário por inadimplência nem apresentar dois percentuais separados como uma prevalência conjunta.
 
+O bloco unificado sobre brasileiros endividados deve exibir também os dados de uso da renda do mês, motivação de ganhar dinheiro e falta de reservas, não apenas os 74% da Copa ou um link para outra área.
+
+**Why:** O criador reiterou que esses dados já existiam e exigiu colocá-los nessa seção, com uma imagem de fundo mais triste que destaque o impacto negativo das bets.
+
+**How to apply:** Preservar os três indicadores distintos da Futura: 64,3% usavam salários ou rendimentos regulares; 65,9% tinham ganhar dinheiro como principal motivação; 65,7% não tinham dinheiro guardado. Motivação não é renda obtida. A pesquisa ouviu mil pessoas em dezembro de 2024, das quais quase 9% apostavam em esportes; os percentuais são desse subgrupo, não de todos os entrevistados. Usar imagem editorial sombria com indicação de ilustração, sem apresentá-la como registro de um entrevistado real.
+
 O dado da pesquisa da Copa integra a seção Problema 1 do Pitch: 74% dos que pretendiam apostar na Copa de 2026 viam nas bets uma forma de quitar dívidas pendentes.
 
 **Why:** O criador exigiu preservar esse dado e posteriormente uniu a apresentação da pesquisa ao conteúdo sobre orçamento doméstico.

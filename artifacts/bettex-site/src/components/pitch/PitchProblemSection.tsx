@@ -5,6 +5,7 @@ import './PitchProblemSection.css';
 
 const WORLD_CUP_SOURCE =
   'https://site.cndl.org.br/copa-do-mundo-vai-levar-992-milhoes-de-consumidores-as-compras-apontam-cndlspc-brasil/';
+const FUTURA_SOURCE = 'https://www.estadao.com.br/economia/veja-graficos-perfil-social-financeiro-aposta-bets/';
 
 export function PitchProblemSection() {
   const x = useX();
@@ -12,6 +13,9 @@ export function PitchProblemSection() {
   return (
     <section id="problema" className="pitch-problem" aria-labelledby="problema-t">
       <div className="pitch-problem__hero">
+        <div className="pitch-problem__backdrop" aria-hidden="true">
+          <img src={`${import.meta.env.BASE_URL}pitch-future/household-betting-debt.webp`} alt="" width={1024} height={1024} loading="lazy" />
+        </div>
         <div className="pitch-problem__shell">
           <h2 id="problema-t" className="pitch-problem__title">
             {x(
@@ -74,6 +78,21 @@ export function PitchProblemSection() {
             <ArrowDownRight className="pitch-problem__down" aria-hidden="true" />
           </div>
 
+          <div className="pitch-problem__debt-metrics">
+            <article>
+              <strong>{x('64,3%', '64.3%', '64,3%')}</strong>
+              <p>{x('usavam salários ou rendimentos regulares para apostar.', 'used wages or regular income to place bets.', 'usaban salarios o ingresos regulares para apostar.')}</p>
+            </article>
+            <article>
+              <strong>{x('65,9%', '65.9%', '65,9%')}</strong>
+              <p>{x('tinham ganhar dinheiro como principal razão para apostar.', 'named making money as their main reason for betting.', 'tenían ganar dinero como principal motivo para apostar.')}</p>
+            </article>
+            <article>
+              <strong>{x('65,7%', '65.7%', '65,7%')}</strong>
+              <p>{x('diziam não ter dinheiro guardado.', 'said they had no money saved.', 'decían no tener dinero ahorrado.')}</p>
+            </article>
+          </div>
+          <p className="pitch-problem__image-note">{x('Imagem ilustrativa gerada por IA; não retrata um participante das pesquisas.', 'AI-generated illustrative image; it does not depict a survey participant.', 'Imagen ilustrativa generada por IA; no representa a un participante de las encuestas.')}</p>
           <aside
             className="pitch-problem__evidence"
             aria-label={x('Contexto da pesquisa', 'Survey context', 'Contexto de la encuesta')}
@@ -82,9 +101,9 @@ export function PitchProblemSection() {
               <span className="pitch-problem__evidence-dot" aria-hidden="true" />
               <span>
                 {x(
-                  'O que esse número mede',
-                  'What this number measures',
-                  'Qué mide esta cifra',
+                  'Fontes e alcance dos dados',
+                  'Sources and scope of the data',
+                  'Fuentes y alcance de los datos',
                 )}
               </span>
             </div>
@@ -97,6 +116,17 @@ export function PitchProblemSection() {
                 )}{' '}
                 <a href={WORLD_CUP_SOURCE} target="_blank" rel="noopener noreferrer">
                   {x('Ver pesquisa original', 'View original survey', 'Ver investigación original')}
+                  <ExternalLink aria-hidden="true" />
+                </a>
+              </p>
+              <p>
+                {x(
+                  '64,3%, 65,9% e 65,7%: Futura Inteligência, divulgada pelo Estadão em 14/02/2025. Levantamento com mil pessoas em dezembro de 2024; quase 9% disseram realizar apostas esportivas. Os três percentuais se referem aos apostadores entrevistados e medem condições distintas, não a ocorrência conjunta. Ganhar dinheiro é uma motivação declarada, não renda extra comprovada. A amostra é diferente da pesquisa da Copa.',
+                  '64.3%, 65.9% and 65.7%: Futura Inteligência, reported by Estadão on February 14, 2025. The survey interviewed 1,000 people in December 2024; nearly 9% reported sports betting. These three percentages refer to the surveyed bettors and measure separate conditions, not their joint occurrence. Making money is a stated motivation, not proven extra income. This sample differs from the World Cup survey.',
+                  '64,3%, 65,9% y 65,7%: Futura Inteligência, publicada por Estadão el 14/02/2025. Encuesta a mil personas en diciembre de 2024; casi el 9% declaró realizar apuestas deportivas. Los tres porcentajes se refieren a los apostadores encuestados y miden condiciones distintas, no su concurrencia. Ganar dinero es una motivación declarada, no ingresos extra comprobados. La muestra es distinta de la encuesta del Mundial.',
+                )}{' '}
+                <a href={FUTURA_SOURCE} target="_blank" rel="noopener noreferrer">
+                  {x('Ver levantamento Futura / Estadão', 'View Futura / Estadão survey', 'Ver encuesta Futura / Estadão')}
                   <ExternalLink aria-hidden="true" />
                 </a>
               </p>
