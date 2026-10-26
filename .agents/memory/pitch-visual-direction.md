@@ -308,3 +308,9 @@ O hero de `/pitch` deve apresentar a missão e a visão da BETTEX sem duplicar o
 **Why:** O criador corrigiu explicitamente que o hero estava duplicado e precisava expressar a missão/visão e o objetivo de “resgatar as pessoas”.
 
 **How to apply:** Manter a homepage intacta. Em `/pitch`, usar a missão e a visão aprovadas em vez de reutilizar o hero da homepage; preservar as demais seções salvo pedido expresso.
+
+Na seção Público, a imagem de fundo deve ser um grupo de personagens desenhados em 2D, com transparência real, livremente aplicado na seção, não bonecos 3D ou fotografia.
+
+**Why:** O criador repetiu que queria desenho transparente e esclareceu: “eu estou falanmdo da foto de fundo do background”. A referência era o grupo atrás do conteúdo, não a foto retangular à direita.
+
+**How to apply:** Manter quatro ou cinco adultos desenhados, sem cenário, moldura ou fundo opaco. Não substituir a foto interna do slider nem alterar o hero por confundir essas três áreas.
