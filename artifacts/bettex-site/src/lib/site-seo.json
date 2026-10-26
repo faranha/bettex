@@ -3,16 +3,16 @@
   "pages": {
     "/": {
       "title": "BETTEX | Comunidade DeFi e trading com inteligência artificial",
-      "description": "Com BETTEX, você se torna dono da IA e integra um projeto de tecnologia descentralizada. Conheça a comunidade, a participação nos resultados, as regras e o demo visual.",
+      "description": "Com BETTEX, você é dono da IA junto à comunidade. Conheça o projeto DeFi, a participação nos lucros elegíveis, as regras, os riscos e o demo visual.",
       "image": "home-community",
       "imageAlt": "BETTEX: comunidade aberta construindo tecnologia DeFi e um agente de IA.",
       "index": true
     },
     "/pitch": {
-      "title": "Pitch BETTEX | Comunidade, tecnologia DeFi e roadmap",
-      "description": "A IA é de quem tem BETTEX. Entenda o projeto de tecnologia descentralizada, a gestão inicial, a tokenomics, os resultados elegíveis e os riscos.",
+      "title": "Nossa Missão | Comunidade e inteligência artificial BETTEX",
+      "description": "Conheça a missão da BETTEX: IA nas mãos da comunidade, tecnologia DeFi e participação nos lucros elegíveis, com liquidação em USDC e sem retorno garantido.",
       "image": "pitch-community",
-      "imageAlt": "Pitch BETTEX: comunidade, tecnologia DeFi e roadmap.",
+      "imageAlt": "Nossa Missão BETTEX: inteligência artificial nas mãos da comunidade.",
       "index": true
     },
     "/documentacao": {

@@ -84,6 +84,17 @@ try {
       assert.equal((html.match(/<h1\b/g) ?? []).length, 1, route);
       for (const [img] of html.matchAll(/<img\b[^>]*>/g)) assert.match(img, /\balt="/, `${route}: image needs an alt attribute`);
     }
+    if (record.page === '/' || record.page === '/pitch') {
+      for (const [img] of html.matchAll(/<img\b[^>]*>/g)) {
+        assert.match(img, /\bwidth="[1-9]\d*"/, `${route}: image needs intrinsic width`);
+        assert.match(img, /\bheight="[1-9]\d*"/, `${route}: image needs intrinsic height`);
+      }
+    }
+    if (record.page === '/pitch') {
+      const missionName = { pt: 'Nossa Missão', en: 'Our Mission', es: 'Nuestra misión' }[record.language];
+      assert.ok(capture(html, /<title>([^<]+)<\/title>/).startsWith(missionName), `${route}: title must match Our Mission navigation`);
+      assert.match(html, /<h2[^>]*id="publico-pitch-t"/, `${route}: audience must not introduce another H1`);
+    }
   }
   // Deep links shared with investors must carry the demo's own initial
   // metadata, even before any browser JavaScript runs.
