@@ -84,7 +84,6 @@ export function PitchProblemSection() {
               <p>{x('diziam não ter dinheiro guardado.', 'said they had no money saved.', 'decían no tener dinero ahorrado.')}</p>
             </article>
           </div>
-          <p className="pitch-problem__image-note">{x('Imagem ilustrativa gerada por IA; não retrata um participante das pesquisas.', 'AI-generated illustrative image; it does not depict a survey participant.', 'Imagen ilustrativa generada por IA; no representa a un participante de las encuestas.')}</p>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from 'react';
-import { ArrowLeft, ArrowRight, Bitcoin, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowLeftRight, Bitcoin, Blend, ExternalLink, UsersRound } from 'lucide-react';
 import './MarketOpportunity.css';
 import { AudienceFlowChart, BETS_URL } from './AudienceFlowChart';
 import { audienceGeometry as G, audienceScenario } from './audienceScenario';
@@ -65,7 +65,8 @@ export function MarketOpportunity() {
           {src(BETS_URL, x('Fazenda / MJSP, 2 out. 2026', 'Ministry of Finance / MJSP, Oct. 2, 2026', 'Hacienda / MJSP, 2 oct. 2026'))}
         </div>
       </div>
-      <div className="mk-stage mk-stage--ink mk-stage--chart">
+      <div className="mk-stage mk-stage--ink mk-stage--chart mk-stage--icon">
+        <span className="mk-share__icon" aria-hidden="true"><ArrowLeftRight size={28} strokeWidth={1.7} /></span>
         <p className="mk-stage__cap mono">{x('R$ bilhões por dia, em média', 'R$ billions per day, on average', 'miles de millones de R$ por día, en promedio')}</p>
         <AudienceFlowChart />
       </div>
@@ -82,7 +83,8 @@ export function MarketOpportunity() {
           {src(audienceScenario.cryptoSourceUrl, x('Datafolha / Paradigma · publicado em ago. 2026', 'Datafolha / Paradigma · published Aug. 2026', 'Datafolha / Paradigma · publicado en ago. 2026'))}
         </div>
       </div>
-      <div className="mk-stage mk-stage--ink">
+      <div className="mk-stage mk-stage--ink mk-stage--icon">
+        <span className="mk-share__icon" aria-hidden="true"><Blend size={28} strokeWidth={1.7} /></span>
         <svg className="mk-venn" viewBox={`0 0 ${Math.round(G.cryptoX + G.cryptoRadius + 20)} 350`} role="img" aria-label={x(`Círculos proporcionais: ${audienceScenario.bettingMillions} milhões de apostadores, ${audienceScenario.cryptoMillions} milhões com cripto e ${overlap} milhões na interseção hipotética`, `Proportional circles: ${audienceScenario.bettingMillions} million bettors, ${audienceScenario.cryptoMillions} million with crypto and ${overlap} million in the hypothetical overlap`, `Círculos proporcionales: ${audienceScenario.bettingMillions} millones de apostadores, ${audienceScenario.cryptoMillions} millones con cripto y ${overlap} millones en la intersección hipotética`)}>
           <defs><clipPath id="mk-clip-bet"><circle cx={G.bettingX} cy={175} r={G.bettingRadius} /></clipPath></defs>
           <circle cx={G.bettingX} cy={175} r={G.bettingRadius} fill="#2B59FF" fillOpacity=".75" />
@@ -108,7 +110,8 @@ export function MarketOpportunity() {
           {src(CRYPTO_AGE_SOURCE, x('Datafolha / Paradigma · Valor Investe, ago. 2026', 'Datafolha / Paradigma · Valor Investe, Aug. 2026', 'Datafolha / Paradigma · Valor Investe, ago. 2026'))}
         </div>
       </div>
-      <div className="mk-stage mk-stage--ink mk-stage--bars">
+      <div className="mk-stage mk-stage--ink mk-stage--bars mk-stage--icon">
+        <span className="mk-share__icon" aria-hidden="true"><UsersRound size={28} strokeWidth={1.7} /></span>
         <div className="mk-bar"><p><b>{x('51,3%', '51.3%', '51,3%')}</b> {x('dos apostadores regulados, 25–40 anos', 'of regulated bettors, aged 25–40', 'de los apostadores regulados, 25–40 años')}</p>
           <div className="mk-share__bar" role="img" aria-label={x('51,3% dos apostadores regulados em 2025 têm 25 a 40 anos', '51.3% of regulated bettors in 2025 are aged 25 to 40', 'El 51,3% de los apostadores regulados en 2025 tiene de 25 a 40 años')}><span style={{ width: '22.7%' }} /><span className="mk-seg2" style={{ width: '28.6%' }} /></div>
           <small>{x('22,7% (25–30) + 28,6% (31–40)', '22.7% (25–30) + 28.6% (31–40)', '22,7% (25–30) + 28,6% (31–40)')}</small></div>

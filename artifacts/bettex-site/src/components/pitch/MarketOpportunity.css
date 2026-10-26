@@ -138,3 +138,5 @@
 .mk-srcs { display: grid; gap: 0; }
 .mk-offer { gap: 10px; }
 .mk-big strong { font-size: clamp(3.6rem, 11vw, 7rem); }
+.mk-stage--icon { position: relative; padding-top: 72px; min-height: 300px; }
+.mk-stage--icon .mk-share__icon { top: 16px; width: 44px; height: 44px; }
