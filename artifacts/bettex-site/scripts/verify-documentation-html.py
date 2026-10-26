@@ -111,8 +111,10 @@ for lang, file in [('pt','documentacao.html'),('en','en/documentation.html'),('e
     assert 'documentacao-features' in p.ids, f"{lang}: features introduction must remain accessible"
     assert 'documentacao-tokenomics' in p.ids, f"{lang}: Tokenomics needs its own accessible section opening"
     assert p.chapters[-1]=='documentacao-roadmap', f"{lang}: roadmap last"
-    for owner in ('risco', 'tesouraria', 'governanca', 'cripto', 'esportes', 'previsoes', 'igaming'):
+    for owner in ('risco', 'tesouraria', 'governanca', 'cripto'):
         assert f'documentacao-subagente-{owner}' in p.chapters, f"{lang}: missing actor {owner}"
+    for owner in ('esportes', 'previsoes', 'igaming'):
+        assert f'documentacao-subagente-{owner}' not in p.chapters, f"{lang}: retired actor {owner}"
     assert p.chapters[0]=='documentacao-como-funciona', f"{lang}: vision first"
     assert 'documentacao-entidade' not in p.chapters, f"{lang}: institutional structure must not remain a principal chapter"
     assert p.reference_count, f"{lang}: technical reference must remain accessible"

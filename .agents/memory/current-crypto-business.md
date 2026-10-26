@@ -9,6 +9,12 @@ O negócio atual tem trading somente em cripto, sem limite fixo de moedas e com 
 
 **How to apply:** A documentação atual não deve apresentar Esportes, Previsões e iGaming como outros mercados de trading do negócio. Universo expansível de moedas não significa exposição ilimitada nem elimina limites de risco. Não alterar páginas aprovadas para acomodar a documentação antiga.
 
+Não manter capítulos de Esportes, Previsões ou iGaming na documentação atual, nem conservá-los como referências históricas ou compromissos de expansão futura. A revisão abrange também índice, introduções, desenhos, contratos de ordens, conectores, riscos e traduções.
+
+**Why:** O criador apontou que a presença desses subagentes contrariava o produto efetivamente vendido e reiterou a exigência de ajustar toda a documentação, não apenas avisar que os mercados estavam indisponíveis.
+
+**How to apply:** Preservar os subagentes de apoio Risco, Tesouraria e Governança e as regras próprias dos jogos internos. Não interpretar a remoção dos mercados de trading como autorização para apagar controles econômicos ou funcionalidades atuais.
+
 O teto de 1% ao dia se aplica ao rendimento de cada participante sobre seu valor elegível, não à rentabilidade do capital operado pela tesouraria.
 
 **Why:** O criador confirmou expressamente a opção “Ao rendimento de cada participante sobre seu valor elegível”.

@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { createServer, transformWithEsbuild } from 'vite';
 import { chromium } from 'playwright-core';
+import { assertDocumentationProductScope } from './documentation-product-scope.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const output = path.resolve(root, '../../generated-artifacts/documentation-audits');
@@ -19,6 +20,14 @@ try {
     const page = await browser.newPage();
     await page.route('**/*', route => route.abort());
     await page.setContent(`<div id="root">${html}</div>`, { waitUntil: 'domcontentloaded' });
+    const productScope = await page.evaluate(() => {
+      const documentBody = document.querySelector('#documentacao');
+      return {
+        text: documentBody?.textContent ?? '',
+        ids: [...(documentBody?.querySelectorAll('[id]') ?? [])].map(element => element.id),
+      };
+    });
+    assertDocumentationProductScope({ ...productScope, locale });
     await page.addStyleTag({ content: await readFile(path.join(root, 'src/components/WhitepaperSection.css'), 'utf8') });
     manifest[locale] = await page.evaluate(code => {
       const helpers = new Function(`${code};return {collectOutline,documentationChapters,documentationChapterNumber,documentationParentId};`)();

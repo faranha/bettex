@@ -26,17 +26,13 @@ owners = {
         'documentacao-baseline-cripto', 'documentacao-allora-fluxo',
         'documentacao-conexoes-cripto',
     ],
-    'documentacao-subagente-esportes': [
-        'documentacao-baseline-esportes', 'documentacao-conexoes-esportes',
-    ],
-    'documentacao-subagente-previsoes': [
-        'documentacao-baseline-previsoes', 'documentacao-conexoes-previsoes',
-    ],
-    'documentacao-subagente-igaming': [
-        'documentacao-baseline-igaming', 'documentacao-conexoes-igaming',
-    ],
 }
 
+retired_targets = [
+    f'documentacao-{prefix}-{market}'
+    for prefix in ('subagente', 'baseline', 'conexoes')
+    for market in ('esportes', 'previsoes', 'igaming')
+]
 
 class Ownership(HTMLParser):
     void = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
@@ -72,6 +68,8 @@ def verify():
         audit = Ownership()
         audit.feed(documentation_html(app, '/' + route))
         assert not audit.duplicate_agent_headings, f'{route}: agent names repeated as child headings'
+        for target in retired_targets:
+            assert target not in audit.targets, f'{route}: retired market remains: {target}'
         for owner, targets in owners.items():
             for target in targets:
                 assert audit.targets.get(target) == [owner], (

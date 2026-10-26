@@ -130,8 +130,9 @@ try {
     }
     assert.doesNotMatch(reader, /data-documentation-agent-art|whitepaper__chapter-head--agent/, `${language}: title-side artwork must not return`);
     const conceptSources = [...html.matchAll(/<figure\b[^>]*data-agent-concept="[^"]+"[^>]*>[\s\S]*?<img\b[^>]*src="([^"]+)"/g)].map(match => match[1]);
-    assert.equal(conceptSources.length, 10, `${language}: all seven subagents and three crypto specialists need artwork`);
-    assert.equal(new Set(conceptSources).size, 10, `${language}: every subagent and specialist needs a distinct illustration`);
+    const expectedConcepts = chapters.filter(chapter => chapter.id.startsWith('documentacao-subagente-') || chapter.id.startsWith('documentacao-especialista-')).length;
+    assert.equal(conceptSources.length, expectedConcepts, `${language}: all current subagents and crypto specialists need artwork`);
+    assert.equal(new Set(conceptSources).size, expectedConcepts, `${language}: every subagent and specialist needs a distinct illustration`);
     for (const src of conceptSources) {
       assert.match(src, /-integrated\.webp$/, `${language}: use physically integrated branding, not the old overlays`);
       assert.ok(fs.existsSync(path.join(root, 'public', src.replace(/^\//, ''))), `${language}: conceptual illustration must exist`);
@@ -168,9 +169,9 @@ try {
     const proseParagraphs = [...html.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)].map(match => match[1].replace(/<[^>]*>/g, ''));
     assert.doesNotMatch(proseParagraphs.join('\n'), /\btodo a rodada\b|\btodo la ronda\b/, `${language}: round terminology must preserve gender agreement`);
     const continuationChecks = {
-      pt: ['casas de apostas serão ampliadas futuramente', 'registradas abertamente, incluindo vendas de BETTEX', 'A trilha pública contém horários', 'API de trading e o CLOB permitem'],
-      en: ['betting houses will be expanded in the future', 'recorded openly, including BETTEX sales', 'The public trail contains verifiable times', 'Trading API and CLOB allow'],
-      es: ['casas de apuestas serán ampliadas', 'son registradas abiertamente, incluyendo ventas de BETTEX', 'El rastro público contiene horarios', 'API de trading y el CLOB permiten'],
+      pt: ['evolução das integrações se concentra no trading cripto', 'registradas abertamente, incluindo vendas de BETTEX', 'A trilha pública contém horários', 'Robinhood documenta consultas e ordens de cripto'],
+      en: ['Integration development focuses on crypto trading', 'recorded openly, including BETTEX sales', 'The public trail contains verifiable times', 'Robinhood documents crypto queries and orders'],
+      es: ['evolución de las integraciones se centra en el trading cripto', 'son registradas abiertamente, incluyendo ventas de BETTEX', 'El rastro público contiene horarios', 'Robinhood documenta consultas y órdenes de cripto'],
     }[language];
     for (const continuation of continuationChecks) assert.ok(proseParagraphs.some(paragraph => paragraph.includes(continuation)), `${language}: broken inline prose continuation: ${continuation}`);
     const connectionsIntroduction = html.match(/<p\b[^>]*data-testid="documentation-market-connections-introduction"[^>]*>([\s\S]*?)<\/p>/);
@@ -184,7 +185,7 @@ try {
       es: 'Allora es una fuente de inferencias en evaluación, no un ejecutor de órdenes.',
     }[language];
     assert.ok(html.includes(inferenceContext), `${language}: contextual Allora qualification must not imply confirmed adoption`);
-    for (const technology of ['Allora', 'Starknet', 'Arbitrum One', 'Polymarket', 'Robinhood', 'Safe / OpenZeppelin']) {
+    for (const technology of ['Allora', 'Starknet', 'Arbitrum One', 'Robinhood', 'Safe / OpenZeppelin']) {
       assert.ok(html.includes(`>${technology}</a>`), `${language}: candidate names and their reference links must remain intact`);
     }
     const agentIntroduction = html.indexOf('data-testid="documentation-concepts-documentacao-agentes"');
@@ -216,7 +217,7 @@ try {
     const overview = html.match(/<div\b[^>]*id="schematic-overview"[^>]*>([\s\S]*?)<\/div>/);
     assert.ok(overview, `${language}: general overview missing`);
     assert.equal((overview[1].match(/<dt\b/g) ?? []).length, 6, `${language}: overview must retain its four original entries and list trading and support subagents`);
-    assert.match(overview[1], /BTC.*ETH.*SOL/, `${language}: crypto subagents missing from overview`);
+    assert.match(overview[1], /cripto|crypto/i, `${language}: crypto trading missing from overview`);
     const supportRoles = { pt: 'Risco, tesouraria e governança', en: 'Risk, treasury and governance', es: 'Riesgo, tesorería y gobernanza' }[language];
     assert.ok(overview[1].includes(supportRoles), `${language}: risk, treasury and governance missing from overview`);
     const terminologyTitle = { pt: 'Terminologia Básica', en: 'Basic Terminology', es: 'Terminología Básica' }[language];

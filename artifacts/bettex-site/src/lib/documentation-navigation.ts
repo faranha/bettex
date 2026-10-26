@@ -1,5 +1,5 @@
 import catalog from './documentation-outline.json';
-import { documentationChapters, documentationParentId } from './documentation-structure';
+import { documentationChapters, documentationParentId, documentationChapterNumber } from './documentation-structure';
 import type { ChapterOutline } from '../components/whitepaperOutline';
 import { resolveDocumentationId } from './documentation-aliases';
 
@@ -12,12 +12,20 @@ export const documentationSectionTargets = [
 ] as const;
 
 export function documentationOutline(locale: 'pt' | 'en' | 'es'): ChapterOutline[] {
-  return catalog[locale].outline as ChapterOutline[];
+  const outline = catalog[locale].outline as ChapterOutline[];
+  return documentationChapters.map((chapter, index) => ({
+    ...(outline.find(item => item.id === chapter.id) ?? { id: chapter.id, title: chapter.title, items: [] }),
+    number: documentationChapterNumber(index),
+  }));
 }
 
 export function documentationTarget(id: string, locale: 'pt' | 'en' | 'es') {
   const targets = catalog[locale].targets as Record<string, { group: number; index: number }>;
-  if (targets[id]) return targets[id];
+  if (targets[id]) {
+    const previousChapter = catalog[locale].outline[targets[id].index];
+    const index = documentationChapters.findIndex(chapter => chapter.id === previousChapter?.id);
+    if (index >= 0) return { group: documentationChapters[index].group, index };
+  }
   const group = documentationSectionTargets.findIndex(target => target === id);
   if (group >= 0) return { group, index: documentationChapters.findIndex(chapter => chapter.group === group) };
   const index = documentationChapters.findIndex(chapter => id === chapter.id || id === `title-${chapter.id}` || id.startsWith(`${chapter.id}-secao-`));

@@ -112,3 +112,5 @@
 - [Build export side effects](build-export-side-effects.md) — full validation may change archive headers only; verify member contents before cleanup and respect Git safeguards.
 - [Padrão das ordens](order-standard-requirements.md) — conceito e arte antes da autorização; tabela técnica completa do registro usado pela tesouraria, execução e retorno.
 - [Carteiras sem faixa de ganhos](wallet-potential-earnings.md) — layout anterior aos ganhos estimados; não reintroduzir a reformulação nem desfazer o grafo.
+- [Centralização visual](page-visual-centering.md) — conferir o conjunto visível de texto e arte em telas largas; margens iguais do container não bastam.
+- [Bootstrap da documentação](documentation-generation-bootstrap.md) — o catálogo gerado alimenta sua própria regeneração; reconciliar capítulos por ID, não por posição.

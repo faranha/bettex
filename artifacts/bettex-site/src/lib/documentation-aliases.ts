@@ -1,5 +1,14 @@
 /** Published hashes from the previous 14-chapter documentation, resolved to current destinations. */
 export const documentationAliases: Record<string, string> = {
+  'documentacao-subagente-esportes': 'documentacao-subagente-cripto',
+  'documentacao-subagente-previsoes': 'documentacao-subagente-cripto',
+  'documentacao-subagente-igaming': 'documentacao-subagente-cripto',
+  'documentacao-baseline-esportes': 'documentacao-subagente-cripto',
+  'documentacao-baseline-previsoes': 'documentacao-subagente-cripto',
+  'documentacao-baseline-igaming': 'documentacao-subagente-cripto',
+  'documentacao-conexoes-esportes': 'documentacao-subagente-cripto',
+  'documentacao-conexoes-previsoes': 'documentacao-subagente-cripto',
+  'documentacao-conexoes-igaming': 'documentacao-subagente-cripto',
   'documentacao-tributos': 'documentacao-staking',
   'documentacao-recompras': 'documentacao-recompra-queima',
   'documentacao-responsabilidade-seguranca': 'documentacao-seguranca',

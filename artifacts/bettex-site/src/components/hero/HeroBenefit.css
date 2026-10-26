@@ -13,7 +13,9 @@
   background: transparent;
 }
 @media (min-width: 1280px) {
-  .hero-benefit { position: absolute; right: max(32px, calc((100% - 1200px) / 2)); bottom: 0; width: min(56vw, 680px); margin: 0; z-index: 1; }
+  .home-page .hero-intro-content { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+  .home-page .hero-intro-copy { width: min(100%, 550px); justify-self: center; }
+  .hero-benefit { position: absolute; right: max(32px, calc((100% - 1200px) / 2)); bottom: 0; width: min(50vw, 600px); margin: 0; z-index: 1; }
 }
 .hero-benefit__float { position: absolute; left: 4%; bottom: -18px; width: 92%; animation: hero-duo-breathe 8s ease-in-out infinite; will-change: transform; }
 .hero-benefit__float > img { display: block; width: 100%; height: auto; filter: drop-shadow(0 18px 28px rgba(4,16,48,.45)); }

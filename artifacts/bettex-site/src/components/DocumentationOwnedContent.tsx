@@ -6,7 +6,6 @@ import { BuybackPolicy } from './BuybackPolicy';
 import { DocumentationGames } from './DocumentationGames';
 import { DocumentationChapterIntroduction } from './DocumentationChapterIntroduction';
 import { DocumentationVision, DocumentationConceptsHeading, DocumentationAgenticVision, DocumentationAgentIllustration, DocumentationTechnologyIntroduction } from './DocumentationVision';
-import { DocumentationFutureMarket, DocumentationFutureReferencesHeading } from './DocumentationFutureMarket';
 import { t } from '@/lib/i18n';
 import { OrderStandard } from './OrderStandard';
 import { DocumentationAgentConcept } from './DocumentationAgentConcept';
@@ -158,38 +157,6 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
           <p>{t('O ponto de partida utiliza as capacidades e fontes de Cripto, sob os controles de Risco e os recursos autorizados pela Tesouraria.')}</p>
         </div>])}
         <DocumentationAgentTraining chapterId={id} />
-      </>;
-    case 'documentacao-subagente-esportes':
-      return <>
-        <DocumentationFutureMarket part="sports" />
-        <AgentIntelligence owners={['sports']} introduction /><DocumentationAgentConcept chapterId={id} /><DocumentationFutureReferencesHeading chapterId={id} />
-        <DocumentationAgentTraining chapterId={id} />
-        {reference('documentacao-baseline-esportes', 'Conectores de Esportes e iGaming', <>
-          <InvestmentAgents only={['esportes']} intro={false} cycle={false} embedded compact />
-          <ArchitectureCatalogue groups={['integrations']} connectorNames={['Esportes e iGaming']} integrationId="documentacao-conexoes-esportes" compact />
-        </>)}
-      </>;
-    case 'documentacao-subagente-previsoes':
-      return <>
-        <DocumentationFutureMarket part="predictions" />
-        <AgentIntelligence owners={['predictions']} introduction /><DocumentationAgentConcept chapterId={id} /><DocumentationFutureReferencesHeading chapterId={id} />
-        <DocumentationAgentTraining chapterId={id} />
-        {reference('documentacao-baseline-previsoes', 'Orquestração, decisões e conectores', <>
-        <InvestmentAgents only={['previsoes']} intro={false} cycle={false} embedded compact />
-        {nested('documentacao-arquitetura', 9, [1])}
-        <ArchitectureCatalogue groups={['integrations']} connectorNames={['Polymarket']} integrationId="documentacao-conexoes-previsoes" compact />
-        </>)}
-      </>;
-    case 'documentacao-subagente-igaming':
-      return <>
-        <DocumentationFutureMarket part="igaming" />
-        <AgentIntelligence owners={['igaming']} introduction /><DocumentationAgentConcept chapterId={id} /><DocumentationFutureReferencesHeading chapterId={id} />
-        <DocumentationAgentTraining chapterId={id} />
-        {reference('documentacao-baseline-igaming', 'Conectores de Esportes e iGaming', <>
-        <InvestmentAgents only={['cassinos']} intro={false} cycle={false} embedded compact />
-        <ArchitectureCatalogue groups={['integrations']} connectorNames={['Esportes e iGaming']} integrationId="documentacao-conexoes-igaming" compact />
-        <div className="whitepaper__prose"><p>{t('Os jogos internos Burn Lottery e Double 2X são features determinísticas, não operações deste subagente.')}</p></div>
-        </>)}
       </>;
     case 'documentacao-features':
       return <>

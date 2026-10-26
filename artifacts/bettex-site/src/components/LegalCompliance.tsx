@@ -1,4 +1,5 @@
 import materials from '@/lib/documentation-materials.json';
+import { DocumentationCryptoScope } from './DocumentationCryptoScope';
 
 const policy = materials.sections.find(section => section.title === 'Adequação legal e jurídica');
 if (!policy || policy.paragraphs.length !== 8) {
@@ -18,7 +19,8 @@ export function LegalCompliance() {
     <section id="documentacao-disponibilidade-territorial">
       <h3 className="whitepaper__subhead">Disponibilidade por mercado e território</h3>
       <div className="whitepaper__prose">
-        {paragraphs.slice(4, 6).map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+        <DocumentationCryptoScope part="legal" />
+        <p>{paragraphs[5]}</p>
       </div>
     </section>
     <section id="documentacao-revisao-juridica">
