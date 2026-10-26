@@ -221,7 +221,7 @@ export function ProjectModelSection() {
               <span className="pm-index">01 / COMPRA</span>
               <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
               <h3>Compre{' '}<em>BETTEX.</em></h3>
-              <p className="pm-detail">O token conecta você à IA e à comunidade BETTEX. Compra pelo aplicativo prevista; hoje, demo visual.</p>
+              <p className="pm-detail">O token conecta você à IA e à comunidade BETTEX. Sua participação começa com BETTEX na carteira.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / SALDO BETTEX</span>
