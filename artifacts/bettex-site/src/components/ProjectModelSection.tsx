@@ -247,7 +247,7 @@ export function ProjectModelSection() {
                 <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
               </div>
               <h3>Os resultados{' '}<em>também são seus.</em></h3>
-              <p className="pm-detail">O token dá direito à participação nos lucros elegíveis, conforme as regras do projeto. A apuração é diária; recebimento em reais previsto. Operação e contabilidade em cripto, sem precisar operar manualmente.</p>
+              <p className="pm-detail">O token dá direito à participação nos lucros elegíveis, conforme as regras do projeto. A apuração é diária, com liquidação em USDC. Operação e contabilidade em cripto, sem precisar operar manualmente.</p>
             </div>
           </div>
           <div className="pm-nav" data-testid="controls-etapas">

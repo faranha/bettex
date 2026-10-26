@@ -58,7 +58,7 @@
 - [Mercados no mobile](mobile-market-content.md) — não repetir os quatro cartões de agentes abaixo da animação; a apresentação anterior já cobre esse conteúdo.
 - [Slides na homepage mobile](homepage-mobile-slides.md) — participação, carteira e agentes em slides horizontais para reduzir altura; preservar desktop e todo o conteúdo.
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
-- [Benefício em reais](customer-brl-positioning.md) — operação em cripto, recebimento em BRL; sem lucro há distribuição zero; a homepage evita copy repetida de Pix na seção Visão BETTEX.
+- [Pagamentos sem Pix](customer-brl-positioning.md) — Pix e promessa de recebimento em reais fora da oferta atual; preservar liquidação cripto e demais recursos.
 - [Liberdade de saída](participant-exit-freedom.md) — venda a mercado pelo app ou retirada dos tokens para corretoras; sem resgate, preço ou liquidez garantidos.
 - [Rodapé](footer-scope.md) — navegação compacta, convite simples ao Telegram no mobile e desktop; sem redes pessoais do fundador.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.

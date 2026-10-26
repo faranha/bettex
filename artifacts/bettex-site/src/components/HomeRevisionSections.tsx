@@ -34,7 +34,7 @@ export function HomeEarningsSection() {
                 <p className="hr-eyebrow">Ganhos diários</p>
                 <h2 id="hr-focus-title" className="ew-h"><span className="ew-h-top">Até{' '}<strong>1%</strong></span>{' '}<span className="ew-h-sub">de lucro por dia.</span></h2>
                 <p className="ew-rhythm">Os lucros podem variar de 0 a 1% ao dia, conforme a rentabilidade do agente BETTEX.</p>
-                <p className="ew-p">Com BETTEX, a IA também é sua. Participação nos resultados, com Pix previsto.</p>
+                <p className="ew-p">Com BETTEX, a IA também é sua. Participe dos resultados conforme as regras do token.</p>
               </div>
               <EarningsWalletIllustration />
             </div>

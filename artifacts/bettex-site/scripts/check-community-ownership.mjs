@@ -41,6 +41,9 @@ try {
     for (const suffix of ['/', '/pitch']) {
       const path = `${language.prefix}${suffix}`;
       const text = plain(render(path));
+      assert.doesNotMatch(text, /\bpix\b/i, `${path}: removed payment method returned`);
+      assert.doesNotMatch(text, /recebimento em reais|recebe no Pix|payouts? in reais|cobros? en reales/i, `${path}: fiat payout promise returned`);
+      assert.ok(text.includes('USDC'), `${path}: crypto settlement missing`);
       for (const key of ['technology', 'decentralization', 'founder', 'fund', 'profit', 'voting', 'rules']) {
         assert.ok(text.toLowerCase().includes(language[key].toLowerCase()), `${path}: missing ${key}`);
       }

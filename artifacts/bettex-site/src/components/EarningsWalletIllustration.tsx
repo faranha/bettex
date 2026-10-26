@@ -41,7 +41,7 @@ export function EarningsWalletIllustration() {
               <circle r="24" fill={`url(#${id('gold')})`} stroke="#9A6409" strokeWidth="2" />
               <circle r="18" fill="none" stroke="#FFF3C9" strokeOpacity=".75" strokeWidth="1.5" />
               <path d="M-16 -8 A18 18 0 0 1 4 -17" fill="none" stroke="#fff" strokeOpacity=".7" strokeWidth="2.5" strokeLinecap="round" />
-              <text y="-6" textAnchor="middle" fontSize="8" fontWeight="800" fill="#6B4606" fontFamily="var(--app-font-serif)">R$</text>
+              <text y="-6" textAnchor="middle" fontSize="8" fontWeight="800" fill="#6B4606" fontFamily="var(--app-font-serif)">USDC</text>
               <text y="11" textAnchor="middle" fontSize="18" fontWeight="800" fill="#6B4606" fontFamily="var(--app-font-serif)">{value}</text>
             </g>
           </g>
