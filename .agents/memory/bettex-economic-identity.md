@@ -9,7 +9,19 @@ Quem compra BETTEX se torna dono da IA junto à comunidade. Não há uma separa�
 
 **Why:** O criador reiterou: “Não existe nós e o usuário”, “a pessoa é dona da IA” e “não é nós dando para ela”. Definiu a BETTEX como projeto de tecnologia descentralizada, aberto e de quem tiver o token, não um fundo de investimentos.
 
-**How to apply:** Esse conceito deve permear a Home e Nossa Missão, inclusive traduções e descrições de busca. A autorização atual permite revisar a linguagem das duas páginas, substituindo a proteção editorial anterior somente nesse escopo; preservar composição, dados, regras e riscos. Evitar “nosso agente”, “nossa IA”, “nós descobrimos o padrão” e a relação provedor/cliente. A gestão inicial do fundador e a descentralização/autonomia futuras devem ser explícitas; não presumir governança por voto, propriedade individual da tesouraria, resgate patrimonial ou infraestrutura já totalmente descentralizada.
+Ao explicar os direitos do token, começar pelo caráter comunitário e pela ausência de empresa ou instituição por trás. Explicar separadamente o capital em cripto/DeFi, a administração inicial e o objetivo de descentralização; os percentuais do mint pertencem à explicação de emissão, não à definição de ser dono da IA.
+
+**Why:** Ao revisar o parágrafo de direitos, o criador reforçou que “não existe empresa, não existe instituição, todo o dinheiro é DeFi” e pediu que isso fosse bem explicado.
+
+**How to apply:** Não limitar a explicação a negativas como “não é equity” ou “não tem propriedade da tesouraria”. Explicar primeiro comunidade, IA e token; preservar depois as regras e riscos, distinguindo a estrutura proposta do demo visual atual.
+
+**How to apply:** Esse conceito deve permear a Home e Nossa Missão, inclusive traduções e descrições de busca. A autorização atual permite revisar a linguagem das duas páginas, substituindo a proteção editorial anterior somente nesse escopo; preservar composição, dados, regras e riscos. Evitar “nosso agente”, “nossa IA”, “nós descobrimos o padrão” e a relação provedor/cliente. A gestão inicial do fundador e a descentralização/autonomia futuras devem ser explícitas; não presumir propriedade individual da tesouraria, resgate patrimonial ou infraestrutura já totalmente descentralizada.
+
+A participação comunitária inclui contribuir com o projeto e votar em decisões. Apresentar o token, a IA e a tecnologia como pertencentes aos participantes, em um projeto de DeFi e IA com regras digitais, não uma iniciativa privada de empresa ou fundo.
+
+**Why:** O criador reiterou a revisão integral da Home e do Pitch e acrescentou explicitamente: “As regras são claras, são digitais. E as pessoas podem ajudar, inclusive participar votando nas decisões”.
+
+**How to apply:** Explicitar contribuições e participação por voto nas duas páginas e traduções. Essa instrução substitui a antiga cautela de não mencionar votação. Não inventar peso dos votos, quórum, matérias elegíveis ou poderes sobre contratos; os mecanismos exigem definição e implementação próprias, e o demo visual não oferece votação real.
 
 Para o planejamento da BETTEX 1.5, o criador pediu uma apresentação mais objetiva, que possa crescer, começando com um agente que busque padrões de manipulação e fale a linguagem do público de apostas.
 

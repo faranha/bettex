@@ -207,7 +207,7 @@ export function ProjectModelSection() {
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
             <h2 id="pm-heading" className="pm-title">Tenha BETTEX.<br /><span>Seja dono da IA.</span></h2>
-            <p className="pm-head-note">Tecnologia descentralizada, aberta à comunidade. A IA pertence a quem tem BETTEX.</p>
+            <p className="pm-head-note">Um projeto comunitário de DeFi e IA, sem empresa ou fundo por trás. A tecnologia é de quem tem BETTEX.</p>
           </div>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-drawn-cutout.svg`} width={80} height={80} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
@@ -261,6 +261,7 @@ export function ProjectModelSection() {
           </div>
           <div className="pm-panel-foot">
             <p>Sem lucro elegível não há distribuição, e os resultados não são garantidos.</p>
+             <p className="pm-buyback-note">A comunidade pode contribuir e votar nas decisões do projeto, conforme regras digitais de governança. Os mecanismos de votação serão definidos e disponibilizados por etapas; o demo não oferece votação real.</p>
             <p className="pm-buyback-note">O fundador administra no início. A descentralização e a autonomia por IA evoluem por etapas, com controles e validação. BETTEX é um projeto de tecnologia, não um fundo de investimentos.</p>
           </div>
         </div>

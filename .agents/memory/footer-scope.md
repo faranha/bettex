@@ -3,6 +3,12 @@ name: Escopo do rodapé
 description: Rodapé antigo de navegação restaurado, compartilhado no site, sem o bloco ilustrado do Rio.
 ---
 
+O convite final da comunidade no Pitch é distinto do rodapé global: preservar a imagem de pessoas e dar presença visual aos perfis do Instagram e X acima do convite ao Telegram, afastados da divisão inferior.
+
+**Why:** O criador reclamou que os perfis estavam “muito colados no rodapé” e “sem imagem”, e sugeriu colocá-los mais acima do Telegram, possivelmente em overlay.
+
+**How to apply:** Não voltar aos pequenos links junto à borda inferior. Preservar as imagens e os destinos das redes; verificar a composição no desktop e no celular, sem reformular o rodapé global.
+
 O link de navegação da página inicial deve se chamar “Home”, no cabeçalho desktop/mobile e no rodapé, em todos os idiomas.
 
 **Why:** O criador reiterou: “eu ja tinha dito pra transformar Pagina Inicial em Home”.
