@@ -5,6 +5,12 @@ description: H1 prioritário; nova arte de abertura com pessoa sendo resgatada p
 
 ## Direção atual da arte de abertura
 
+A bandeira do Brasil deve permanecer no fundo do hero do Pitch, junto da cena de resgate, sem substituir a arte nem alterar a homepage.
+
+**Why:** O criador pediu restaurá-la: “costumava ter uma bandeira do brasil cara no hero do pitch coloca ela de novo”.
+
+**How to apply:** Reutilizar a bandeira estilizada já existente como camada decorativa atrás do conteúdo; preservar contraste e a cena de resgate no desktop e no celular.
+
 O hero do Pitch deve seguir a estrutura visual da homepage: H1 e botão à esquerda, arte grande à direita integrada ao fundo. A imagem é o robô estendendo a mão para resgatar uma pessoa, não a arte da homepage.
 
 **Why:** O criador reiterou que o Pitch deve respeitar “essa estrutura visual aqui, h1, posicao da imagem botao” e pediu recuperar a cena de resgate.
