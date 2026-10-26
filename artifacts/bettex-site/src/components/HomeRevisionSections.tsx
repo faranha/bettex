@@ -35,7 +35,6 @@ export function HomeEarningsSection() {
                 <h2 id="hr-focus-title" className="ew-h"><span className="ew-h-top">Até{' '}<strong>1%</strong></span>{' '}<span className="ew-h-sub">de lucro por dia.</span></h2>
                 <p className="ew-rhythm">Os lucros podem variar de 0 a 1% ao dia, conforme a rentabilidade do agente BETTEX.</p>
                 <p className="ew-p">Com BETTEX, a IA também é sua. Participação nos resultados, com Pix previsto.</p>
-                <p className="ew-free">Você decide quando vender e sair.</p>
               </div>
               <EarningsWalletIllustration />
             </div>
