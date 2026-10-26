@@ -9,8 +9,8 @@ export function PitchFinalCommunity() {
   return <section id="pitch-comunidade" aria-labelledby="pitch-comunidade-t" className="pfc">
     <div className="page-wrap pfc__in">
       <div className="pfc__copy">
-      <h2 id="pitch-comunidade-t" className="hero-title pfc__h">{x('Entre na comunidade.', 'Join the community.', 'Únete a la comunidad.')} <span>{x('Fale com a gente.', 'Talk to us.', 'Habla con nosotros.')}</span></h2>
-      <p className="pfc__p">{x('Tire dúvidas, acompanhe as novidades e ajude a construir a BETTEX junto com quem já está aqui.', 'Ask questions, follow the news and help build BETTEX alongside the people already here.', 'Resuelve dudas, sigue las novedades y ayuda a construir BETTEX junto a quienes ya están aquí.')}</p>
+      <h2 id="pitch-comunidade-t" className="hero-title pfc__h">{x('Entre na comunidade.', 'Join the community.', 'Únete a la comunidad.')} <span>{x('Construa a BETTEX.', 'Build BETTEX.', 'Construye BETTEX.')}</span></h2>
+      <p className="pfc__p">{x('Um projeto aberto, construído com a comunidade. Tire dúvidas, acompanhe a evolução e participe: com BETTEX, a IA também é sua.', 'An open project, built with the community. Ask questions, follow its progress and take part: with BETTEX, the AI is yours too.', 'Un proyecto abierto, construido con la comunidad. Resuelve dudas, sigue su evolución y participa: con BETTEX, la IA también es tuya.')}</p>
       <a href={TELEGRAM_COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="pfc__tg tap" data-testid="link-pitch-final-telegram" data-community-source="pitch-final">
         <TelegramIcon className="pfc__tgi" />
         <span className="pfc__tgt"><small>{x('Comunidade oficial', 'Official community', 'Comunidad oficial')}</small><strong>{x('Entrar no Telegram', 'Join on Telegram', 'Entrar en Telegram')}</strong></span>

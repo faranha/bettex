@@ -5,6 +5,12 @@ description: Definição econômica e posicionamento público aprovados pelo cri
 
 ## Direção comunitária atual
 
+Quem compra BETTEX se torna dono da IA junto à comunidade. Não há uma separação editorial entre “nós”, fornecedores da IA, e o usuário, cliente de rendimentos. A participação nos ganhos decorre do token e das regras do projeto, não de uma empresa entregando “sua parte” a clientes.
+
+**Why:** O criador reiterou: “Não existe nós e o usuário”, “a pessoa é dona da IA” e “não é nós dando para ela”. Definiu a BETTEX como projeto de tecnologia descentralizada, aberto e de quem tiver o token, não um fundo de investimentos.
+
+**How to apply:** Esse conceito deve permear a Home e Nossa Missão, inclusive traduções e descrições de busca. A autorização atual permite revisar a linguagem das duas páginas, substituindo a proteção editorial anterior somente nesse escopo; preservar composição, dados, regras e riscos. Evitar “nosso agente”, “nossa IA”, “nós descobrimos o padrão” e a relação provedor/cliente. A gestão inicial do fundador e a descentralização/autonomia futuras devem ser explícitas; não presumir governança por voto, propriedade individual da tesouraria, resgate patrimonial ou infraestrutura já totalmente descentralizada.
+
 Para o planejamento da BETTEX 1.5, o criador pediu uma apresentação mais objetiva, que possa crescer, começando com um agente que busque padrões de manipulação e fale a linguagem do público de apostas.
 
 **Why:** O criador relacionou explicitamente a nova proposta ao interesse desse público por manipulação.

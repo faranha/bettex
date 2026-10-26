@@ -19,9 +19,9 @@ export function PitchMissionHero() {
           'Los robots se llevarán los empleos. Las apuestas, el dinero.',
         )}</h2>
         <p>{x(
-          'Nossa missão é transformar apostadores em investidores, com participação nos resultados da IA.',
-          'Our mission is to turn bettors into investors, with a share in AI’s results.',
-          'Nuestra misión es transformar apostadores en inversores, con participación en los resultados de la IA.',
+          'A IA também deve pertencer às pessoas. Com BETTEX, você se torna dono da IA e parte de um projeto de tecnologia descentralizada.',
+          'AI should belong to people too. With BETTEX, you become an owner of the AI and part of a decentralized technology project.',
+          'La IA también debe pertenecer a las personas. Con BETTEX, te conviertes en dueño de la IA y formas parte de un proyecto de tecnología descentralizada.',
         )}</p>
         <a href="#solucao" className="tap pitch-mission-hero__button">
           <span>{x('Conhecer a BETTEX', 'Discover BETTEX', 'Conocer BETTEX')}</span>

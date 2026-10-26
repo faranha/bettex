@@ -206,7 +206,8 @@ export function ProjectModelSection() {
         <div className="pm-head">
           <div>
             <p className="pm-eyebrow">O modelo da BETTEX</p>
-            <h2 id="pm-heading" className="pm-title">Compre, participe.<br /><span>Receba sua parte dos lucros.</span></h2>
+            <h2 id="pm-heading" className="pm-title">Tenha BETTEX.<br /><span>Seja dono da IA.</span></h2>
+            <p className="pm-head-note">Tecnologia descentralizada, aberta à comunidade. A IA pertence a quem tem BETTEX.</p>
           </div>
           <img className="pm-person" src={`${import.meta.env.BASE_URL}model-supporter-drawn-cutout.svg`} width={80} height={80} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         </div>
@@ -220,7 +221,7 @@ export function ProjectModelSection() {
               <span className="pm-index">01 / COMPRA</span>
               <div className="pm-visual" aria-hidden="true"><TokenIllustration /></div>
               <h3>Compre{' '}<em>BETTEX.</em></h3>
-              <p className="pm-detail">Compre BETTEX pelo aplicativo e acompanhe seus tokens.</p>
+              <p className="pm-detail">O token conecta você à IA e à comunidade BETTEX. Compra pelo aplicativo prevista; hoje, demo visual.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">02 / SALDO BETTEX</span>
@@ -228,13 +229,13 @@ export function ProjectModelSection() {
                 <DepositIllustration />
               </div>
               <h3>O token{' '}<em>é seu.</em></h3>
-              <p className="pm-detail">Todo BETTEX na carteira oficial participa automaticamente, sem ativação. Quem entra durante uma rodada espera a próxima. Receber a sua parte não tira seus tokens, mas qualquer saída cancela créditos ainda não pagos.</p>
+              <p className="pm-detail">Todo BETTEX na carteira oficial participa automaticamente, sem ativação. Quem entra durante uma rodada espera a próxima. A distribuição de resultados não tira seus tokens, mas qualquer saída cancela créditos ainda não pagos.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">03 / OPERAÇÃO</span>
               <div className="pm-visual"><OrderFlowIllustration /></div>
-              <h3 className="pm-agent-title">Nossa IA{' '}<em>opera por padrões.</em></h3>
-              <p className="pm-detail">Nossa IA analisa padrões de manipulação do mercado para escolher os ativos e os momentos de compra e venda, respeitando limites de risco.</p>
+              <h3 className="pm-agent-title">A IA da comunidade{' '}<em>opera por padrões.</em></h3>
+              <p className="pm-detail">O agente BETTEX busca padrões de manipulação do mercado para orientar a seleção de ativos, entradas e saídas, respeitando limites de risco.</p>
             </div>
             <div className="pm-step">
               <span className="pm-index">04 / RESULTADO</span>
@@ -245,8 +246,8 @@ export function ProjectModelSection() {
                 <ArrowDownRight className="pm-profit-arrow" size={31} strokeWidth={2.2} />
                 <span className="pm-profit-wallet"><Wallet size={27} strokeWidth={1.8} /></span>
               </div>
-              <h3>Você recebe{' '}<em>sua parte dos lucros.</em></h3>
-              <p className="pm-detail">Os resultados são apurados em ciclos diários. Quando houver lucro disponível para distribuição, sua parte é entregue a você em reais. A operação e a contabilidade interna usam cripto, e você não precisa operar cripto.</p>
+              <h3>Os resultados{' '}<em>também são seus.</em></h3>
+              <p className="pm-detail">O token dá direito à participação nos lucros elegíveis, conforme as regras do projeto. A apuração é diária; recebimento em reais previsto. Operação e contabilidade em cripto, sem precisar operar manualmente.</p>
             </div>
           </div>
           <div className="pm-nav" data-testid="controls-etapas">
@@ -260,6 +261,7 @@ export function ProjectModelSection() {
           </div>
           <div className="pm-panel-foot">
             <p>Sem lucro elegível não há distribuição, e os resultados não são garantidos.</p>
+            <p className="pm-buyback-note">O fundador administra no início. A descentralização e a autonomia por IA evoluem por etapas, com controles e validação. BETTEX é um projeto de tecnologia, não um fundo de investimentos.</p>
           </div>
         </div>
       </div>
