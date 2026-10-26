@@ -13,7 +13,13 @@ Na abertura de “O modelo da BETTEX” no mobile, o texto e o rapaz devem ocupa
 
 **Why:** O criador disse que “o texto e a imagem do rapaz não podem ficar em linhas diferentes”, aceitando colocar o rapaz no fundo.
 
-**How to apply:** Integrar a pessoa ao lado ou ao fundo do título, sem reservar uma segunda região abaixo do texto. Preservar a leitura, a imagem existente e o desktop.
+**How to apply:** Integrar a pessoa ao lado ou ao fundo do título, sem reservar uma segunda região abaixo do texto. Preservar a leitura e o desktop, seguindo a atualização de estilo abaixo.
+
+O rapaz de camisa rubro-negra em “O modelo da BETTEX” deve ser desenhado no mesmo estilo das ilustrações do Pitch, não fotográfico.
+
+**Why:** O criador apontou esse personagem e pediu: “esse cara voce vai transformar em desenho no estilo qeu estamos criando para pagina de pitch”.
+
+**How to apply:** Manter camisa listrada, sorriso e pose de comemoração, com traços 2D e fundo realmente transparente. Não recolocar a versão fotográfica nem alterar o restante da seção ao atualizar essa arte.
 
 A homepage deve apresentar uma baleia e gráficos de trade com o título: “Baleias manipulam o mercado. Nós sabemos quando entrar.” A explicação é: “Nós descobrimos o padrão das baleias por meio de análise quantitativa distribuída, e a nossa IA administra os investimentos.”
 
