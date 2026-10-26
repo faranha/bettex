@@ -44,7 +44,7 @@ export function HomeEarningsSection() {
               <div className="ew-offer">
                 <p className="hr-eyebrow">{t('Visão BETTEX')}</p>
                 <h3 className="ew-h2">{t('Uma IA de quem tem BETTEX.')}</h3>
-                <p className="ew-rhythm">{t('Sem lucro elegível, não há distribuição. Os tokens continuam com você, mas o preço pode cair e a revenda gerar perdas.')}</p>
+                <p className="ew-rhythm">{t('Sem lucro elegível, não há distribuição. Os tokens continuam com você.')}</p>
               </div>
               <div className="ew-card ew-ai-stage">
                 <span className="ew-ai-orb" aria-hidden="true" />
