@@ -50,7 +50,7 @@ export const copy = {
   "tk3": "Mint e venda",
   "tk3p": "O mint inicial financia o projeto, a preço fixo; preço, janela e plataforma ainda serão definidos, com adequação legal. A venda de tokens liberados da comunidade destina 100% do preço em USDC à tesouraria. Aportes de investidores têm termos próprios e vão a produto, tecnologia e marketing, sem salários. Captação não é lucro distribuível.",
   "tk4": "Vesting",
-  "tk4p": "900 milhões de BETTEX são liberados em parcelas mensais durante 24 meses, com início previsto em março de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões. O mint inicial fica separado. Liberação não comprova circulação nem venda.",
+  "tk4p": "900 milhões de BETTEX são liberados em parcelas mensais durante 24 meses, com início previsto em junho de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões. O mint inicial fica separado. Liberação não comprova circulação nem venda.",
   "tk5": "Tesouraria",
   "tk5p": "A tesouraria financia estratégias e mantém reservas, separada das carteiras dos usuários e da recompra. Seu agente apoiará alocação e liquidez sob políticas aprovadas; posições, ordens e obrigações não são saldo livre.",
   "tk6": "Resultados",

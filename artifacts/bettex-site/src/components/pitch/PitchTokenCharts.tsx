@@ -65,6 +65,6 @@ export function PitchTokenCharts() {
       </div>
       <p className="ptc__note">{t('Cenário de alocação máxima: 100 milhões do teto do mint inicial mais 900 milhões em vesting até o mês 24. Não representa emissão executada.')}</p>
     </figure>
-    <p className="ptc__disclosure">{t('Mint aberto a preço fixo antes do vesting. Liberação mensal a partir de março de 2027 por 24 meses; não comprova venda, circulação ou saldo pessoal.')}</p>
+    <p className="ptc__disclosure">{t('Mint aberto a preço fixo antes do vesting. Liberação mensal a partir de junho de 2027 por 24 meses; não comprova venda, circulação ou saldo pessoal.')}</p>
   </div>;
 }

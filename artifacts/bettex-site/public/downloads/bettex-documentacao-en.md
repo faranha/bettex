@@ -84,9 +84,9 @@ Token, funding, and burn
 
 1 billion BETTEX cap: 10% public mint, 55% community, 20% founder/team, and 15% investors. The mint funds the project, with price and platform details to be defined.
 
-Public mint on 12/10/2026; System/ALFA and vesting start in March 2027, subject to legal compliance.
+Public mint in March 2027; System/ALFA and vesting start in June 2027, subject to legal compliance.
 
-Vesting of 900 million BETTEX over 24 months from March 2027: community 550 million, founder/team 200 million, and investors 150 million, in whole groups of 11:4:3. The separate initial cap is 100 million; release does not prove sale or circulation.
+Vesting of 900 million BETTEX over 24 months from June 2027: community 550 million, founder/team 200 million, and investors 150 million, in whole groups of 11:4:3. The separate initial cap is 100 million; release does not prove sale or circulation.
 
 100% of community token revenue goes to the treasury, with no service fees. The mint funds the project with accountability; external markets do not replicate the official swap.
 

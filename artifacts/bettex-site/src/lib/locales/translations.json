@@ -1026,9 +1026,9 @@
     "en": "The price in USDC goes to the treasury; purchased BETTEX credits and debits are reconciled together only once.",
     "es": "El precio en USDC va a la tesorería; el crédito de los BETTEX comprados y los débitos se concilian juntos una sola vez."
   },
-  "Os 550 milhões da comunidade seguem vesting de 24 meses a partir de março de 2027. A venda utiliza somente tokens já liberados; 100% do preço em USDC vai à tesouraria. A compra no aplicativo e a venda direta a corretoras exigem confirmação e conciliação. Captação não é lucro distribuível.": {
-    "en": "The community's 550 million tokens follow 24-month vesting from March 2027. Sales use only released tokens; 100% of the price in USDC goes to the treasury. In-app purchases and direct sales to exchanges require confirmation and reconciliation. Funding is not distributable profit.",
-    "es": "Los 550 millones de la comunidad siguen un vesting de 24 meses desde marzo de 2027. La venta utiliza solo tokens ya liberados; el 100% del precio en USDC va a la tesorería. La compra en la aplicación y la venta directa a casas de cambio requieren confirmación y conciliación. La captación no es beneficio distribuible."
+  "Os 550 milhões da comunidade seguem vesting de 24 meses a partir de junho de 2027. A venda utiliza somente tokens já liberados; 100% do preço em USDC vai à tesouraria. A compra no aplicativo e a venda direta a corretoras exigem confirmação e conciliação. Captação não é lucro distribuível.": {
+    "en": "The community's 550 million tokens follow 24-month vesting from June 2027. Sales use only released tokens; 100% of the price in USDC goes to the treasury. In-app purchases and direct sales to exchanges require confirmation and reconciliation. Funding is not distributable profit.",
+    "es": "Los 550 millones de la comunidad siguen un vesting de 24 meses desde junio de 2027. La venta utiliza solo tokens ya liberados; el 100% del precio en USDC va a la tesorería. La compra en la aplicación y la venta directa a casas de cambio requieren confirmación y conciliación. La captación no es beneficio distribuible."
   },
   "Planilha de sustentabilidade e vesting": {
     "en": "Sustainability and vesting spreadsheet",
@@ -1142,13 +1142,13 @@
     "en": "This scenario exceeds the community's 550 million tokens. Increase the price or reduce purchases.",
     "es": "Este escenario supera los 550 millones de tokens de la comunidad. Aumente el precio o reduzca las compras."
   },
-  "As tarifas não queimam BETTEX, não reduzem a quantidade adquirida e não alteram o teto de 1 bilhão: 10% mint público inicial, 55% comunidade, 20% fundador/equipe e 15% investidores. O vesting dos últimos três grupos dura 24 meses a partir de março de 2027. O peso de staking continua a acompanhar quantidade e tempo elegíveis dos tokens pessoais.": {
-    "en": "Fees do not burn BETTEX, reduce the purchased quantity or change the 1 billion cap: 10% initial public mint, 55% community, 20% founder/team and 15% investors. Vesting for the latter three groups lasts 24 months from March 2027. Staking weight continues to track the eligible quantity and time of personal tokens.",
-    "es": "Las tarifas no queman BETTEX, no reducen la cantidad adquirida ni alteran el límite de 1.000 millones: 10% mint público inicial, 55% comunidad, 20% fundador/equipo y 15% inversores. El vesting de los últimos tres grupos dura 24 meses desde marzo de 2027. El peso del staking sigue la cantidad y el tiempo elegibles de los tokens personales."
+  "As tarifas não queimam BETTEX, não reduzem a quantidade adquirida e não alteram o teto de 1 bilhão: 10% mint público inicial, 55% comunidade, 20% fundador/equipe e 15% investidores. O vesting dos últimos três grupos dura 24 meses a partir de junho de 2027. O peso de staking continua a acompanhar quantidade e tempo elegíveis dos tokens pessoais.": {
+    "en": "Fees do not burn BETTEX, reduce the purchased quantity or change the 1 billion cap: 10% initial public mint, 55% community, 20% founder/team and 15% investors. Vesting for the latter three groups lasts 24 months from June 2027. Staking weight continues to track the eligible quantity and time of personal tokens.",
+    "es": "Las tarifas no queman BETTEX, no reducen la cantidad adquirida ni alteran el límite de 1.000 millones: 10% mint público inicial, 55% comunidad, 20% fundador/equipo y 15% inversores. El vesting de los últimos tres grupos dura 24 meses desde junio de 2027. El peso del staking sigue la cantidad y el tiempo elegibles de los tokens personales."
   },
-  "Mint público previsto para 10 de dezembro de 2026. Sistema/ALFA e início do vesting previstos para março de 2027. Cada lançamento depende de adequação legal por atividade e território.": {
-    "en": "Public mint planned for December 10, 2026. System/ALPHA and vesting start planned for March 2027. Each launch requires legal compliance by activity and territory.",
-    "es": "Mint público previsto para el 10 de diciembre de 2026. Sistema/ALFA e inicio del vesting previstos para marzo de 2027. Cada lanzamiento depende de adecuación legal por actividad y territorio."
+  "Mint público previsto para março de 2027. Sistema/ALFA e início do vesting previstos para junho de 2027. Cada lançamento depende de adequação legal por atividade e território.": {
+    "en": "Public mint planned for March 2027. System/ALPHA and vesting start planned for June 2027. Each launch requires legal compliance by activity and territory.",
+    "es": "Mint público previsto para en marzo de 2027. Sistema/ALFA e inicio del vesting previstos para junio de 2027. Cada lanzamiento depende de adecuación legal por actividad y territorio."
   },
   "Financiamento do projeto": {
     "en": "Project funding",
@@ -1398,9 +1398,9 @@
     "en": "Mint open to anyone at a fixed price, up to 100 million BETTEX, subject to eligibility and legal compliance. It funds the project, operated directly or by a partner launchpad. The price, window, platform and destination of the unminted portion remain to be defined. The fixed offering price does not guarantee a resale price floor.",
     "es": "Mint abierto a cualquier persona, a precio fijo, hasta 100 millones de BETTEX, sujeto a elegibilidad y adecuación jurídica. Financia el proyecto, por ejecución propia o launchpad asociado. El precio, la ventana, la plataforma y el destino de la parte no emitida aún se definirán. El precio fijo de la oferta no garantiza un mínimo de reventa."
   },
-  "Os 550 milhões da comunidade seguem vesting de 24 meses a partir de março de 2027. A venda utiliza somente tokens já liberados; 100% do preço em USDC vai à tesouraria e tarifas de serviço ficam separadas. A compra no aplicativo e a venda direta a corretoras exigem confirmação e conciliação. Captação não é lucro distribuível.": {
-    "en": "The community's 550 million follows 24-month vesting starting in March 2027. Sales use only already released tokens; 100% of the USDC price goes to the treasury and service fees remain separate. In-app purchases and direct sales to exchanges require confirmation and reconciliation. Fundraising is not distributable profit.",
-    "es": "Los 550 millones de la comunidad siguen un vesting de 24 meses a partir de marzo de 2027. La venta utiliza solo tokens ya liberados; el 100% del precio en USDC va a la tesorería y las tarifas de servicio quedan separadas. La compra en la aplicación y la venta directa a plataformas de intercambio exigen confirmación y conciliación. La captación no es beneficio distribuible."
+  "Os 550 milhões da comunidade seguem vesting de 24 meses a partir de junho de 2027. A venda utiliza somente tokens já liberados; 100% do preço em USDC vai à tesouraria e tarifas de serviço ficam separadas. A compra no aplicativo e a venda direta a corretoras exigem confirmação e conciliação. Captação não é lucro distribuível.": {
+    "en": "The community's 550 million follows 24-month vesting starting in June 2027. Sales use only already released tokens; 100% of the USDC price goes to the treasury and service fees remain separate. In-app purchases and direct sales to exchanges require confirmation and reconciliation. Fundraising is not distributable profit.",
+    "es": "Los 550 millones de la comunidad siguen un vesting de 24 meses a partir de junio de 2027. La venta utiliza solo tokens ya liberados; el 100% del precio en USDC va a la tesorería y las tarifas de servicio quedan separadas. La compra en la aplicación y la venta directa a plataformas de intercambio exigen confirmación y conciliación. La captación no es beneficio distribuible."
   },
   "Agenda mensal de liberação · 24 meses": {
     "en": "Monthly release schedule · 24 months",
@@ -1410,9 +1410,9 @@
     "en": "24-month schedule with horizontal and vertical scrolling",
     "es": "Calendario de 24 meses con desplazamiento horizontal y vertical"
   },
-  "O vesting começa em março de 2027 e dura 24 meses.": {
-    "en": "Vesting begins in March 2027 and lasts 24 months.",
-    "es": "El vesting comienza en marzo de 2027 y dura 24 meses."
+  "O vesting começa em junho de 2027 e dura 24 meses.": {
+    "en": "Vesting begins in June 2027 and lasts 24 months.",
+    "es": "El vesting comienza en junio de 2027 y dura 24 meses."
   },
   "O dia exato ainda será definido. Os 10% do mint inicial ficam separados: não são uma parcela mensal nem antecipam tokens de fundador/equipe ou investidores. O lançamento do sistema está previsto para essa etapa, sujeito à adequação legal e jurídica.": {
     "en": "The exact day remains to be defined. The initial mint's 10% remains separate: it is not a monthly installment and does not accelerate founder/team or investor tokens. The system launch is planned for this stage, subject to legal and regulatory compliance.",
@@ -1430,9 +1430,9 @@
     "en": ". Management does not change months or quantities based on reserves. The price, window and destination of tokens not minted in the initial offering remain to be defined; they are not automatically transferred to this vesting.",
     "es": ". La administración no modifica meses ni cantidades según las reservas. El precio, la ventana y el destino de los tokens no emitidos en la oferta inicial siguen por definir; no se transfieren automáticamente a este vesting."
   },
-  "Quantidades em BETTEX · vesting a partir de março de 2027 · mint inicial separado": {
-    "en": "Quantities in BETTEX · vesting from March 2027 · initial mint separate",
-    "es": "Cantidades en BETTEX · vesting desde marzo de 2027 · mint inicial separado"
+  "Quantidades em BETTEX · vesting a partir de junho de 2027 · mint inicial separado": {
+    "en": "Quantities in BETTEX · vesting from June 2027 · initial mint separate",
+    "es": "Cantidades en BETTEX · vesting desde junio de 2027 · mint inicial separado"
   },
   "Cenário de alocação máxima: teto de 100 milhões do mint inicial, separado dos 900 milhões liberados em 24 meses. Não representa emissão executada.": {
     "en": "Maximum allocation scenario: initial mint cap of 100 million, separate from the 900 million released over 24 months. It does not represent executed issuance.",
@@ -1446,9 +1446,9 @@
     "en": "Before the first vesting release",
     "es": "Antes de la primera liberación del vesting"
   },
-  "Mês 0 antecede o vesting de março de 2027. O gráfico considera o teto integral do mint como cenário, não como venda comprovada. No mês 24, 900 milhões do vesting mais 100 milhões do teto inicial somam a alocação máxima de 1 bilhão. A tabela exclui o mint e fecha em 900 milhões. Liberação não comprova venda, circulação ou saldo pessoal.": {
-    "en": "Month 0 precedes vesting in March 2027. The chart considers the full mint cap as a scenario, not a proven sale. In month 24, 900 million in vesting plus the initial cap of 100 million total the maximum allocation of 1 billion. The table excludes the mint and closes at 900 million. Release does not prove sales, circulation or personal balances.",
-    "es": "El mes 0 precede al vesting de marzo de 2027. El gráfico considera el límite íntegro del mint como escenario, no como venta comprobada. En el mes 24, 900 millones del vesting más 100 millones del límite inicial suman la asignación máxima de mil millones. La tabla excluye el mint y cierra en 900 millones. La liberación no acredita venta, circulación ni saldo personal."
+  "Mês 0 antecede o vesting de junho de 2027. O gráfico considera o teto integral do mint como cenário, não como venda comprovada. No mês 24, 900 milhões do vesting mais 100 milhões do teto inicial somam a alocação máxima de 1 bilhão. A tabela exclui o mint e fecha em 900 milhões. Liberação não comprova venda, circulação ou saldo pessoal.": {
+    "en": "Month 0 precedes vesting in June 2027. The chart considers the full mint cap as a scenario, not a proven sale. In month 24, 900 million in vesting plus the initial cap of 100 million total the maximum allocation of 1 billion. The table excludes the mint and closes at 900 million. Release does not prove sales, circulation or personal balances.",
+    "es": "El mes 0 precede al vesting de junio de 2027. El gráfico considera el límite íntegro del mint como escenario, no como venta comprobada. En el mes 24, 900 millones del vesting más 100 millones del límite inicial suman la asignación máxima de mil millones. La tabla excluye el mint y cierra en 900 millones. La liberación no acredita venta, circulación ni saldo personal."
   },
   "24 parcelas quase uniformes dos 900 milhões em vesting, com ajustes inteiros em grupos de 11:4:3. O mint inicial não entra nas barras mensais.": {
     "en": "24 nearly uniform installments of the 900 million in vesting, with whole-token adjustments in 11:4:3 groups. The initial mint is not included in the monthly bars.",
@@ -1462,9 +1462,9 @@
     "en": "Maximum allocation scenario: 100 million from the initial mint cap plus 900 million in vesting through month 24. It does not represent executed issuance.",
     "es": "Escenario de asignación máxima: 100 millones del límite del mint inicial más 900 millones en vesting hasta el mes 24. No representa emisión ejecutada."
   },
-  "Mint aberto a preço fixo antes do vesting. Liberação mensal a partir de março de 2027 por 24 meses; não comprova venda, circulação ou saldo pessoal.": {
-    "en": "Open fixed-price mint before vesting. Monthly releases from March 2027 for 24 months; they do not prove sales, circulation or personal balances.",
-    "es": "Mint abierto a precio fijo antes del vesting. Liberación mensual desde marzo de 2027 durante 24 meses; no acredita venta, circulación ni saldo personal."
+  "Mint aberto a preço fixo antes do vesting. Liberação mensal a partir de junho de 2027 por 24 meses; não comprova venda, circulação ou saldo pessoal.": {
+    "en": "Open fixed-price mint before vesting. Monthly releases from June 2027 for 24 months; they do not prove sales, circulation or personal balances.",
+    "es": "Mint abierto a precio fijo antes del vesting. Liberación mensual desde junio de 2027 durante 24 meses; no acredita venta, circulación ni saldo personal."
   },
   "Mint aberto a qualquer pessoa, a preço fixo, para financiar o projeto. Execução própria ou por launchpad parceiro, sujeita à adequação legal da oferta.": {
     "en": "Mint open to anyone at a fixed price to fund the project. Operated directly or through a partner launchpad, subject to legal compliance of the offering.",
@@ -1554,25 +1554,25 @@
     "en": "Monthly installments over 24 months",
     "es": "Cuotas mensuales durante 24 meses"
   },
-  "Vesting dos 90% posteriores a partir de março de 2027: comunidade 55%, fundador/equipe 20% e investidores 15%. O mint inicial fica separado. Liberação não comprova venda ou circulação.": {
-    "en": "Vesting of the subsequent 90% from March 2027: community 55%, founder/team 20% and investors 15%. The initial mint remains separate. Release does not prove sales or circulation.",
-    "es": "Vesting del 90% posterior desde marzo de 2027: comunidad 55%, fundador/equipo 20% e inversores 15%. El mint inicial queda separado. La liberación no acredita venta ni circulación."
+  "Vesting dos 90% posteriores a partir de junho de 2027: comunidade 55%, fundador/equipe 20% e investidores 15%. O mint inicial fica separado. Liberação não comprova venda ou circulação.": {
+    "en": "Vesting of the subsequent 90% from June 2027: community 55%, founder/team 20% and investors 15%. The initial mint remains separate. Release does not prove sales or circulation.",
+    "es": "Vesting del 90% posterior desde junio de 2027: comunidad 55%, fundador/equipo 20% e inversores 15%. El mint inicial queda separado. La liberación no acredita venta ni circulación."
   },
-  "Comunidade antes do mint público de dezembro de 2026; sistema/ALFA e vesting previstos para março de 2027, sujeitos à adequação jurídica.": {
-    "en": "Community before the December 2026 public mint; system/ALPHA and vesting planned for March 2027, subject to legal compliance.",
-    "es": "Comunidad antes del mint público de diciembre de 2026; sistema/ALFA y vesting previstos para marzo de 2027, sujetos a adecuación jurídica."
+  "Comunidade antes do mint público de dezembro de 2026; sistema/ALFA e vesting previstos para junho de 2027, sujeitos à adequação jurídica.": {
+    "en": "Community before the December 2026 public mint; system/ALPHA and vesting planned for June 2027, subject to legal compliance.",
+    "es": "Comunidad antes del mint público de diciembre de 2026; sistema/ALFA y vesting previstos para junio de 2027, sujetos a adecuación jurídica."
   },
-  "O demo apresenta a interface com dados ilustrativos, sem dinheiro real ou execução de operações. O mint público está previsto para 10 de dezembro de 2026; sistema/ALFA, captação de investidores e início do vesting, para março de 2027. BETA e go to market vêm depois do ALFA, com data a definir. Cada lançamento depende de adequação legal por atividade e território.": {
-    "en": "The demo presents the interface with illustrative data, without real money or executed operations. The public mint is planned for December 10, 2026; system/ALPHA, investor fundraising and vesting start for March 2027. BETA and go to market follow ALPHA, with the date to be defined. Each launch requires legal compliance by activity and territory.",
-    "es": "La demo presenta la interfaz con datos ilustrativos, sin dinero real ni ejecución de operaciones. El mint público está previsto para el 10 de diciembre de 2026; sistema/ALFA, captación de inversores e inicio del vesting para marzo de 2027. BETA y go to market vienen después del ALFA, con fecha por definir. Cada lanzamiento depende de adecuación legal por actividad y territorio."
+  "O demo apresenta a interface com dados ilustrativos, sem dinheiro real ou execução de operações. O mint público está previsto para março de 2027; sistema/ALFA, captação de investidores e início do vesting, para junho de 2027. BETA e go to market vêm depois do ALFA, com data a definir. Cada lançamento depende de adequação legal por atividade e território.": {
+    "en": "The demo presents the interface with illustrative data, without real money or executed operations. The public mint is planned for March 2027; system/ALPHA, investor fundraising and vesting start for June 2027. BETA and go to market follow ALPHA, with the date to be defined. Each launch requires legal compliance by activity and territory.",
+    "es": "La demo presenta la interfaz con datos ilustrativos, sin dinero real ni ejecución de operaciones. El mint público está previsto para en marzo de 2027; sistema/ALFA, captación de inversores e inicio del vesting para junio de 2027. BETA y go to market vienen después del ALFA, con fecha por definir. Cada lanzamiento depende de adecuación legal por actividad y territorio."
   },
   "A promoção para a comunidade precede o mint inicial, cuja receita financia o projeto. A abertura pode começar com baixa captação, sem reduzir automaticamente o preço fixo nem exigir a venda de todo o teto. Preço, janela, plataforma e destino da parcela não mintada ainda serão definidos.": {
     "en": "Community promotion precedes the initial mint, whose proceeds fund the project. Opening may begin with low fundraising, without automatically reducing the fixed price or requiring the full cap to sell. The price, window, platform and destination of the unminted portion remain to be defined.",
     "es": "La promoción a la comunidad precede al mint inicial, cuyos ingresos financian el proyecto. La apertura puede comenzar con baja captación, sin reducir automáticamente el precio fijo ni exigir la venta de todo el límite. El precio, la ventana, la plataforma y el destino de la parte no emitida aún se definirán."
   },
-  "Promover a BETTEX para a comunidade antes do mint público inicial, previsto para 10 de dezembro de 2026. Mint aberto a preço fixo, com teto de 10% da emissão, para financiar o projeto, por execução própria ou launchpad parceiro. Sistema/ALFA e captação de investidores previstos para março de 2027, junto do início do vesting de 24 meses. O demo visual não comprova operação ou captação; cada lançamento exige adequação jurídica local.": {
-    "en": "Promote BETTEX to the community before the initial public mint, planned for December 10, 2026. Open fixed-price mint capped at 10% of issuance to fund the project, operated directly or by a partner launchpad. System/ALPHA and investor fundraising are planned for March 2027, alongside the start of 24-month vesting. The visual demo does not prove operations or fundraising; each launch requires local legal compliance.",
-    "es": "Promover BETTEX a la comunidad antes del mint público inicial, previsto para el 10 de diciembre de 2026. Mint abierto a precio fijo, con límite del 10% de la emisión, para financiar el proyecto, por ejecución propia o launchpad asociado. Sistema/ALFA y captación de inversores previstos para marzo de 2027, junto al inicio del vesting de 24 meses. La demo visual no acredita operación ni captación; cada lanzamiento exige adecuación jurídica local."
+  "Promover a BETTEX para a comunidade antes do mint público inicial, previsto para março de 2027. Mint aberto a preço fixo, com teto de 10% da emissão, para financiar o projeto, por execução própria ou launchpad parceiro. Sistema/ALFA e captação de investidores previstos para junho de 2027, junto do início do vesting de 24 meses. O demo visual não comprova operação ou captação; cada lançamento exige adequação jurídica local.": {
+    "en": "Promote BETTEX to the community before the initial public mint, planned for March 2027. Open fixed-price mint capped at 10% of issuance to fund the project, operated directly or by a partner launchpad. System/ALPHA and investor fundraising are planned for June 2027, alongside the start of 24-month vesting. The visual demo does not prove operations or fundraising; each launch requires local legal compliance.",
+    "es": "Promover BETTEX a la comunidad antes del mint público inicial, previsto para en marzo de 2027. Mint abierto a precio fijo, con límite del 10% de la emisión, para financiar el proyecto, por ejecución propia o launchpad asociado. Sistema/ALFA y captación de inversores previstos para junio de 2027, junto al inicio del vesting de 24 meses. La demo visual no acredita operación ni captación; cada lanzamiento exige adecuación jurídica local."
   },
   "10% da emissão, a preço fixo, para financiar o projeto. Execução própria ou launchpad parceiro; captação não é lucro distribuível.": {
     "en": "10% of issuance at a fixed price to fund the project. Operated directly or by a partner launchpad; fundraising is not distributable profit.",
@@ -1598,9 +1598,9 @@
     "en": "Cap of 1 billion BETTEX in four allocations: 10% initial public mint, 55% community, 20% founder/team and 15% investors. The mint is open at a fixed price and funds the project. The price, window, platform and destination of the unminted portion remain to be defined.",
     "es": "Límite de mil millones de BETTEX en cuatro asignaciones: 10% mint público inicial, 55% comunidad, 20% fundador/equipo y 15% inversores. El mint es abierto a precio fijo y financia el proyecto. El precio, la ventana, la plataforma y el destino de la parte no emitida aún se definirán."
   },
-  "Vesting de 900 milhões de BETTEX por 24 meses a partir de março de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O teto inicial de 100 milhões fica separado; liberação não comprova venda ou circulação.": {
-    "en": "Vesting of 900 million BETTEX over 24 months from March 2027: community 550 million, founder/team 200 million and investors 150 million, in whole-token 11:4:3 groups. The initial cap of 100 million remains separate; release does not prove sales or circulation.",
-    "es": "Vesting de 900 millones de BETTEX durante 24 meses desde marzo de 2027: comunidad 550 millones, fundador/equipo 200 millones e inversores 150 millones, en grupos enteros 11:4:3. El límite inicial de 100 millones queda separado; la liberación no acredita venta ni circulación."
+  "Vesting de 900 milhões de BETTEX por 24 meses a partir de junho de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O teto inicial de 100 milhões fica separado; liberação não comprova venda ou circulação.": {
+    "en": "Vesting of 900 million BETTEX over 24 months from June 2027: community 550 million, founder/team 200 million and investors 150 million, in whole-token 11:4:3 groups. The initial cap of 100 million remains separate; release does not prove sales or circulation.",
+    "es": "Vesting de 900 millones de BETTEX durante 24 meses desde junio de 2027: comunidad 550 millones, fundador/equipo 200 millones e inversores 150 millones, en grupos enteros 11:4:3. El límite inicial de 100 millones queda separado; la liberación no acredita venta ni circulación."
   },
   "100% do preço em USDC dos tokens da comunidade já liberados vai à tesouraria. Taxas de serviço separadas vão ao caixa operacional. A captação do mint inicial financia o projeto e exige prestação de contas. Mercados externos não herdam automaticamente as condições do swap oficial.": {
     "en": "100% of the USDC price of already released community tokens goes to the treasury. Separate service fees go to the operating account. Initial mint fundraising funds the project and requires reporting. External markets do not automatically inherit official swap terms.",
@@ -1682,9 +1682,9 @@
     "en": "Open public minting for up to 10% of total issuance at a fixed price to fund the project and build awareness of BETTEX. Operated directly or through a partner launchpad, subject to legal compliance of the offering and applicable eligibility.",
     "es": "Abrir el mint público de hasta el 10% de la emisión total, a precio fijo, para financiar el proyecto y dar a conocer BETTEX. Ejecución propia o mediante un launchpad asociado, sujeta a la adecuación legal de la oferta y la elegibilidad aplicable."
   },
-  "Lançar o sistema e a versão ALFA do agente em março de 2027, com escopo adequado ao ambiente jurídico local. Liberar somente agentes e funcionalidades validados para cada território. Recolher feedback da comunidade e captar investidores para a evolução do negócio.": {
-    "en": "Launch the system and agent ALPHA version in March 2027 with a scope compliant with the local legal environment. Release only agents and features validated for each territory. Gather community feedback and raise capital from investors to develop the business.",
-    "es": "Lanzar el sistema y la versión ALFA del agente en marzo de 2027, con un alcance adecuado al entorno jurídico local. Habilitar solo agentes y funcionalidades validados para cada territorio. Recoger comentarios de la comunidad y captar inversores para desarrollar el negocio."
+  "Lançar o sistema e a versão ALFA do agente em junho de 2027, com escopo adequado ao ambiente jurídico local. Liberar somente agentes e funcionalidades validados para cada território. Recolher feedback da comunidade e captar investidores para a evolução do negócio.": {
+    "en": "Launch the system and agent ALPHA version in June 2027 with a scope compliant with the local legal environment. Release only agents and features validated for each territory. Gather community feedback and raise capital from investors to develop the business.",
+    "es": "Lanzar el sistema y la versión ALFA del agente en junio de 2027, con un alcance adecuado al entorno jurídico local. Habilitar solo agentes y funcionalidades validados para cada territorio. Recoger comentarios de la comunidad y captar inversores para desarrollar el negocio."
   },
   "Iniciar o vesting de 24 meses: 55% para a comunidade, 20% para fundador e equipe e 15% para investidores. Os 10% do mint público inicial ficam separados. O início acompanha a etapa prevista de lançamento do sistema.": {
     "en": "Begin 24-month vesting: 55% for the community, 20% for the founder and team and 15% for investors. The initial public mint's 10% remains separate. Vesting begins alongside the planned system launch stage.",
@@ -1702,9 +1702,9 @@
     "en": "A new expansion stage for the BETTEX app, with its own structure and legal compliance before any financial services offering. Format, features and scope remain open.",
     "es": "Una nueva etapa de expansión de la aplicación BETTEX, con estructura y adecuación jurídica propias antes de cualquier oferta de servicios financieros. El formato, los recursos y el alcance siguen abiertos."
   },
-  "Mint público em 10 de dezembro de 2026. Sistema, ALFA e início do vesting de 24 meses previstos para março de 2027. Cada lançamento depende da adequação legal e jurídica da oferta, da atividade e do território atendido.": {
-    "en": "Public minting on December 10, 2026. The system, ALPHA and start of 24-month vesting are planned for March 2027. Every launch depends on legal and regulatory compliance of the offering, activity and territory served.",
-    "es": "Mint público el 10 de diciembre de 2026. El sistema, el ALFA y el inicio del vesting de 24 meses están previstos para marzo de 2027. Cada lanzamiento depende de la adecuación legal y jurídica de la oferta, la actividad y el territorio atendido."
+  "Mint público em março de 2027. Sistema, ALFA e início do vesting de 24 meses previstos para junho de 2027. Cada lançamento depende da adequação legal e jurídica da oferta, da atividade e do território atendido.": {
+    "en": "Public minting in March 2027. The system, ALPHA and start of 24-month vesting are planned for June 2027. Every launch depends on legal and regulatory compliance of the offering, activity and territory served.",
+    "es": "Mint público en marzo de 2027. El sistema, el ALFA y el inicio del vesting de 24 meses están previstos para junio de 2027. Cada lanzamiento depende de la adecuación legal y jurídica de la oferta, la actividad y el territorio atendido."
   },
   "As datas indicam o cronograma previsto, não entregas concluídas nem autorizações obtidas. Cada lançamento depende de adequação legal e jurídica, testes e controles aplicáveis. Se uma categoria não puder ser oferecida legalmente num território, ela fica fora da oferta local. O planejamento pode ser ajustado. Investir envolve risco e não há rendimento garantido.": {
     "en": "Dates indicate the planned schedule, not completed deliveries or obtained authorizations. Each launch requires legal and regulatory compliance, applicable tests and controls. If a category cannot legally be offered in a territory, it is excluded from the local offering. Plans may change. Investing involves risk and no return is guaranteed.",
@@ -1714,9 +1714,9 @@
     "en": "TOKEN · PUBLIC SALE",
     "es": "TOKEN · VENTA PÚBLICA"
   },
-  "10 de dezembro de 2026": {
-    "en": "December 10, 2026",
-    "es": "10 de diciembre de 2026"
+  "Março de 2027": {
+    "en": "March 2027",
+    "es": "Marzo de 2027"
   },
   "Lançamento público do token BETTEX": {
     "en": "BETTEX token public launch",
@@ -1742,9 +1742,9 @@
     "en": "VESTING · RELEASE",
     "es": "VESTING · LIBERACIÓN"
   },
-  "10 de março de 2027": {
+  "10 de junho de 2027": {
     "en": "March 10, 2027",
-    "es": "10 de marzo de 2027"
+    "es": "10 de junio de 2027"
   },
   "Início do vesting": {
     "en": "Vesting begins",
@@ -1774,9 +1774,9 @@
     "en": "After the markets open",
     "es": "Después de la apertura de los mercados"
   },
-  "Token para o público em 10 de dezembro de 2026. ALFA do agente e captação de investidores no primeiro trimestre de 2027. Vesting a partir de 10 de março de 2027, três meses após a venda pública.": {
-    "en": "Token public launch on December 10, 2026. Agent ALPHA and investor fundraising in Q1 2027. Vesting begins on March 10, 2027, three months after the public sale.",
-    "es": "Token para el público el 10 de diciembre de 2026. ALFA del agente y captación de inversores en el primer trimestre de 2027. Vesting a partir del 10 de marzo de 2027, tres meses después de la venta pública."
+  "Token para o público em março de 2027. ALFA do agente e captação de investidores no primeiro trimestre de 2027. Vesting a partir de 10 de junho de 2027, três meses após a venda pública.": {
+    "en": "Token public launch in March 2027. Agent ALPHA and investor fundraising in Q1 2027. Vesting begins on March 10, 2027, three months after the public sale.",
+    "es": "Token para el público en marzo de 2027. ALFA del agente y captación de inversores en el primer trimestre de 2027. Vesting a partir del 10 de junio de 2027, tres meses después de la venta pública."
   },
   "Os agentes executam.": {
     "en": "The agents execute.",
@@ -11818,9 +11818,9 @@
     "en": "Orchestrated map, connector catalog, verified queries, and demonstrations by platform.",
     "es": "Mapa orquestado, catálogo de conectores, consultas verificadas y demostraciones por plataforma."
   },
-  "Março de 2027": {
-    "en": "March 2027",
-    "es": "Marzo de 2027"
+  "Junho de 2027": {
+    "en": "June 2027",
+    "es": "Junio de 2027"
   },
   "Matriz de autorização": {
     "en": "Authorization matrix",
@@ -22214,9 +22214,9 @@
     "en": "CURRENT STATE AND NEXT MILESTONE",
     "es": "ESTADO ACTUAL Y PRÓXIMO HITO"
   },
-  "Hoje existe um demo visual, com dados ilustrativos, sem dinheiro real nem operações. O mint público está previsto para 10 de dezembro de 2026; sistema/ALFA e início do vesting, para março de 2027.": {
-    "en": "Today there is a visual demo, with illustrative data, no real money and no operations. The public mint is planned for December 10, 2026; the system/ALFA and the start of vesting, for March 2027.",
-    "es": "Hoy existe un demo visual, con datos ilustrativos, sin dinero real ni operaciones. El mint público está previsto para el 10 de diciembre de 2026; el sistema/ALFA y el inicio del vesting, para marzo de 2027."
+  "Hoje existe um demo visual, com dados ilustrativos, sem dinheiro real nem operações. O mint público está previsto para março de 2027; sistema/ALFA e início do vesting, para junho de 2027.": {
+    "en": "Today there is a visual demo, with illustrative data, no real money and no operations. The public mint is planned for March 2027; the system/ALFA and the start of vesting, for June 2027.",
+    "es": "Hoy existe un demo visual, con datos ilustrativos, sin dinero real ni operaciones. El mint público está previsto para en marzo de 2027; el sistema/ALFA y el inicio del vesting, para junio de 2027."
   },
   "Entender a tokenomics": {
     "en": "Understand the tokenomics",
@@ -22334,9 +22334,9 @@
     "en": "The initial mint, at a fixed price, funds the project; price, window and platform are still to be defined, and the offer depends on legal fit. The price of released community tokens that are sold goes to the treasury. Investor contributions have their own terms and go to product, technology and marketing, with no salaries. Fundraising is not distributable profit.",
     "es": "El mint inicial, a precio fijo, financia el proyecto; precio, ventana y plataforma aún se definirán, y la oferta depende de la adecuación legal. El precio de los tokens de la comunidad liberados y vendidos va a la tesorería. Los aportes de inversores tienen términos propios y se destinan a producto, tecnología y marketing, sin salarios. La captación no es beneficio distribuible."
   },
-  "900 milhões de BETTEX são liberados em parcelas mensais durante 24 meses, com início previsto em março de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões. O mint inicial fica separado. Liberação não comprova circulação nem venda.": {
-    "en": "900 million BETTEX are released in monthly installments over 24 months, starting in March 2027: community 550 million, founder/team 200 million and investors 150 million. The initial mint is separate. Release does not prove circulation or sale.",
-    "es": "900 millones de BETTEX se liberan en cuotas mensuales durante 24 meses, con inicio previsto en marzo de 2027: comunidad 550 millones, fundador/equipo 200 millones e inversores 150 millones. El mint inicial queda separado. La liberación no prueba circulación ni venta."
+  "900 milhões de BETTEX são liberados em parcelas mensais durante 24 meses, com início previsto em junho de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões. O mint inicial fica separado. Liberação não comprova circulação nem venda.": {
+    "en": "900 million BETTEX are released in monthly installments over 24 months, starting in June 2027: community 550 million, founder/team 200 million and investors 150 million. The initial mint is separate. Release does not prove circulation or sale.",
+    "es": "900 millones de BETTEX se liberan en cuotas mensuales durante 24 meses, con inicio previsto en junio de 2027: comunidad 550 millones, fundador/equipo 200 millones e inversores 150 millones. El mint inicial queda separado. La liberación no prueba circulación ni venta."
   },
   "Tesouraria e manutenção": {
     "en": "Treasury and upkeep",

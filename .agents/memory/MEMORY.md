@@ -38,6 +38,7 @@
 - [Render-time localization](render-time-localization.md) — exclude app JSX runtimes from Vite prebundling; fragments and cloned elements need rendered-text audits.
 - [Idioma de entrada](site-language-preferences.md) — detectar navegador e região sem localização precisa; preservar escolha manual e idioma explícito do link.
 - [Large localization edits](large-localization-edits.md) — failed large saves can leave source ahead of translations; prepare and save separately, then audit coverage.
+- [Catálogos grandes](catalog-processing-limits.md) — preferir patches ou geradores; leitura e escrita integrais podem exceder o orçamento e reiniciar o notebook.
 - [Technical document translation](technical-document-translation.md) — bounded LLM rewrites can insert citations or alter URLs; audit structure, links and numeric fidelity before saving.
 - [Elegibilidade ao lucro](profit-entitlement-rules.md) — entradas esperam a próxima rodada; ciclos sem acumulação; saídas cancelam direitos e frações vão à tesouraria.
 - [Demonstração e fase ALFA](demo-prototype-scope.md) — banco básico e emulação automática; app claro, suporte no Telegram; sem dinheiro real.
@@ -93,14 +94,14 @@
 - [Tesouraria e carteiras](treasury-presentation.md) — operacional, reserva e recompra em carteiras de teste distintas; totais sem dupla contagem e histórico separado.
 - [Localization catalog scope](localization-catalog-scope.md) — isolated multilingual tuples need their own audit; compiler types and grammar dictionaries are not page copy.
 - [Roteiro do demo](continuous-test-emulation.md) — timeline predefinida de 24 horas reais; não reintroduzir emulação aleatória como fonte financeira do app.
-- [Público da entrada do app](app-entry-audience.md) — homem preservado, um único esporte discreto ao fundo; o tema esportivo não indica disponibilidade na ALFA.
+- [Entrada do demo](demo-entry-ownership.md) — robô BETTEX, gráfico maior e propriedade da IA; não usar pitch genérico de análise cripto.
 - [Carteira e total de queima](burn-wallet-accounting.md) — USDC de recompra e BETTEX aguardando queima são saldos; o total já queimado é cumulativo e separado.
 - [Preview embutido](embedded-preview-debugging.md) — testes em janela separada não descartam falhas no iframe; confirmar contexto e falhas anteriores à API.
 - [Sticky navigation checks](development-banner-navigation-testing.md) — preview banners and automatic locator scrolling can cause false mobile-menu failures; compare real pointer input.
 - [Lottery entries](lottery-entry-economics.md) — one free number per staked wallet; extra entries generated after purchase; all entry payments burned.
 - [Double 2X game](double-2x-game.md) — red/black earnings game; on-chain when funded, explicit simulation without test gas; 100% RTP and rolling 24-hour limit.
 - [Escopo da atualização documental](documentation-update-scope.md) — homepage e Pitch aprovados e prontos; não editar essas páginas, inclusive por mudanças compartilhadas.
-- [Captação da comunidade](community-launch-funding.md) — mint aberto de 10% a preço fixo; sistema e vesting de 24 meses previstos para março de 2027.
+- [Captação da comunidade](community-launch-funding.md) — mint de 10% em março de 2027; ALFA e início do vesting de 24 meses em junho de 2027.
 - [Sustentabilidade operacional](operational-sustainability-positioning.md) — custeio em aberto; simplificar documentação e retirar receita empresarial, preservando regras essenciais.
 - [Compartilhamento social](social-sharing-policy.md) — artes duráveis, previsões explícitas e nova URL ao trocar a mensagem; preservar links antigos.
 - [Perfis de verificação](verification-profiles.md) — CI do demo visual não certifica integrações históricas; exclusões explícitas, sem reativar finanças para testes.

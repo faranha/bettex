@@ -22,7 +22,7 @@ export function VestingChart() {
       <div className="whitepaper__vesting-chart-body" aria-label="Gráfico da alocação máxima com mint inicial separado e vesting de 24 meses">
         <VestingPlot cumulative />
       </div>
-      <p className="whitepaper__vesting-chart-note">Mês 0 antecede o vesting de março de 2027. O gráfico considera o teto integral do mint como cenário, não como venda comprovada. No mês 24, 900 milhões do vesting mais 100 milhões do teto inicial somam a alocação máxima de 1 bilhão. A tabela exclui o mint e fecha em 900 milhões. Liberação não comprova venda, circulação ou saldo pessoal.</p>
+      <p className="whitepaper__vesting-chart-note">Mês 0 antecede o vesting de junho de 2027. O gráfico considera o teto integral do mint como cenário, não como venda comprovada. No mês 24, 900 milhões do vesting mais 100 milhões do teto inicial somam a alocação máxima de 1 bilhão. A tabela exclui o mint e fecha em 900 milhões. Liberação não comprova venda, circulação ou saldo pessoal.</p>
     </figure>
   );
 }

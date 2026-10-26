@@ -9,8 +9,8 @@ export const PROJECT_RULES = {
   allocations: { mint: 10, community: 55, team: 20, investors: 15 },
   profit: { treasury: 50, participants: 25, buyback: 25 },
   vestingMonths: 24,
-  mintForecast: '2026-12-10',
-  launchForecast: '2027-03',
+  mintForecast: '2027-03',
+  launchForecast: '2027-06',
   launchNetwork: null,
   serviceFees: 0,
 } as const;
@@ -32,8 +32,8 @@ export const PROJECT_TOPICS: ProjectTopic[] = [
   { id: 'tokenomics', chapter: 'documentacao-emissao', title: ['Token e mint', 'Token and mint', 'Token y mint'],
     summary: ['1 bilhão de BETTEX: 10% mint inicial, 55% comunidade, 20% fundador/equipe e 15% investidores.', '1 billion BETTEX: 10% initial mint, 55% community, 20% founder/team and 15% investors.', '1.000 millones de BETTEX: 10% mint inicial, 55% comunidad, 20% fundador/equipo y 15% inversores.'],
     rules: [
-      ['Mint inicial aberto, a preço fixo, previsto para 10 de dezembro de 2026. Venda primária alimenta a tesouraria, não é lucro distribuível.', 'Open initial mint at a fixed price, forecast for December 10, 2026. Primary sales fund the treasury, not distributable profit.', 'Mint inicial abierto a precio fijo, previsto para el 10 de diciembre de 2026. La venta primaria alimenta la tesorería, no es beneficio distribuible.'],
-      ['Mint separado do vesting de 24 meses; sistema/ALFA e início do vesting previstos para março de 2027. Datas são previsões, não capacidades já disponíveis.', 'Mint separate from 24-month vesting; system/ALFA and vesting start forecast for March 2027. Dates are forecasts, not capabilities already available.', 'Mint separado del vesting de 24 meses; sistema/ALFA e inicio del vesting previstos para marzo de 2027. Las fechas son previsiones, no capacidades ya disponibles.'],
+      ['Mint inicial aberto, a preço fixo, previsto para março de 2027. Venda primária alimenta a tesouraria, não é lucro distribuível.', 'Open initial mint at a fixed price, forecast for March 2027. Primary sales fund the treasury, not distributable profit.', 'Mint inicial abierto a precio fijo, previsto para marzo de 2027. La venta primaria alimenta la tesorería, no es beneficio distribuible.'],
+      ['Mint separado do vesting de 24 meses; sistema/ALFA e início do vesting previstos para junho de 2027. Datas são previsões, não capacidades já disponíveis.', 'Mint separate from 24-month vesting; system/ALFA and vesting start forecast for June 2027. Dates are forecasts, not capabilities already available.', 'Mint separado del vesting de 24 meses; sistema/ALFA e inicio del vesting previstos para junio de 2027. Las fechas son previsiones, no capacidades ya disponibles.'],
     ], app: 'home' },
   { id: 'participation', chapter: 'documentacao-staking', title: ['Participação e rendimentos', 'Participation and earnings', 'Participación y rendimientos'],
     summary: ['O saldo elegível participa automaticamente pelo peso de quantidade e tempo.', 'Eligible balances participate automatically through quantity and time weighting.', 'El saldo elegible participa automáticamente mediante el peso de cantidad y tiempo.'],

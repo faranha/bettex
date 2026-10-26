@@ -84,9 +84,9 @@ Token, captação e queima
 
 Teto de 1 bilhão de BETTEX: 10% mint público, 55% comunidade, 20% fundador/equipe e 15% investidores. O mint financia o projeto, com detalhes de preço e plataforma a definir.
 
-Mint público em 10/12/2026; Sistema/ALFA e vesting iniciam em março/2027, condicionados à adequação legal.
+Mint público em março de 2027; Sistema/ALFA e vesting iniciam em junho/2027, condicionados à adequação legal.
 
-Vesting de 900 milhões de BETTEX por 24 meses desde março de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O teto inicial separado é 100 milhões; liberação não prova venda ou circulação.
+Vesting de 900 milhões de BETTEX por 24 meses desde junho de 2027: comunidade 550 milhões, fundador/equipe 200 milhões e investidores 150 milhões, em grupos inteiros 11:4:3. O teto inicial separado é 100 milhões; liberação não prova venda ou circulação.
 
 100% da receita de tokens da comunidade vai à tesouraria, sem taxas de serviço. O mint financia o projeto com prestação de contas; mercados externos não replicam o swap oficial.
 
