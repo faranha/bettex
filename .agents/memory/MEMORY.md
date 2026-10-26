@@ -67,6 +67,7 @@
 - [Ordem e leitura da documentação](documentation-reading-order.md) — página por seção numerada, inclusive subitens; rodapé completo; introduzir conceitos antes das regras.
 - [Arquitetura da documentação](documentation-architecture-ownership.md) — BETTEX e subagentes são atores principais; baseline e referências por responsável; features determinísticas separadas.
 - [Leitura do pitch](pitch-reading-behavior.md) — Público antes de Problema; cenário em Ambiente externo; Economia e Token em Tokenomics; menu segue a ordem das áreas; gráficos abertos.
+- [Slides de público](pitch-audience-carousel.md) — texto conciso, altura estável e controles alinhados; personagem lateral fora do mobile.
 - [Go to market no Brasil](pitch-brazil-go-to-market.md) — substituir Onboarding; sem seção de Piloto nem expansão internacional nesse bloco do Pitch.
 - [Hero e missão do Pitch](pitch-visual-direction.md) — abertura de /pitch com missão/visão próprias, sem duplicar a arte ou a copy do hero da homepage.
 - [Ícones das receitas](pitch-revenue-visuals.md) — Operadora e Tesouraria usam ícones, não a foto das bandejas; não confundir com Community-driven.

@@ -53,13 +53,19 @@ export function MarketOpportunity() {
         <p className="mk-share__cap">{x('do público pesquisado tem ou já teve dinheiro em cripto', 'of the surveyed audience has or once had money in crypto', 'del público encuestado tiene o ha tenido dinero en cripto')}</p>
       </div>
     </div> },
-    { title: x('Volume diário', 'Daily volume', 'Volumen diario'), node: <div className="mk-grid">
+    { title: x('Volume diário', 'Daily volume', 'Volumen diario'), node: <div className="mk-grid" id="audience-daily-volume">
       <div className="mk-offer">
         <p className="mk-eyebrow">{x('Movimentação diária · cripto', 'Daily flow · crypto', 'Movimiento diario · cripto')}</p>
         <p className="mk-big" data-testid="audience-money-value"><strong>R$ {cryptoDailyBillions}</strong></p>
-        <h3 className="mk-h">{x('bilhão por dia, aproximadamente', 'billion per day, approximately', 'mil millones por día, aproximadamente')}</h3>
+        <h3 className="mk-h">{x('bilhão por dia, em média', 'billion per day, on average', 'mil millones por día, en promedio')}</h3>
         <p className="mk-rhythm">{x('Volume bruto de operações, não receita da BETTEX.', 'Gross operations volume, not BETTEX revenue.', 'Volumen bruto de operaciones, no ingreso de BETTEX.')}</p>
-        <p className="mk-p">{x('R$ 283 bilhões em 181 dias do 1º semestre de 2026, com negociações, stablecoins e operações empresariais. Bets: cerca de R$ 600 milhões por dia em depósitos, referência histórica anterior à proibição de setembro de 2026. Medidas distintas, que não se somam.', 'R$283 billion over 181 days of H1 2026, including trading, stablecoins and corporate operations. Bets: about R$600 million per day in deposits, a historical reference before the September 2026 ban. Distinct measures that do not add up.', 'R$283 mil millones en 181 días del 1.er semestre de 2026, con negociaciones, stablecoins y operaciones empresariales. Bets: cerca de R$600 millones por día en depósitos, referencia histórica anterior a la prohibición de septiembre de 2026. Medidas distintas que no se suman.')}</p>
+        <p className="mk-p">{x('Cripto: média do 1º semestre de 2026. Bets: depósitos históricos. São volumes distintos, não somáveis.', 'Crypto: H1 2026 average. Betting: historical deposits. Distinct volumes, not to be added together.', 'Cripto: promedio del 1.er semestre de 2026. Apuestas: depósitos históricos. Volúmenes distintos, no sumables.')}</p>
+        <details className="mk-method">
+          <summary>{x('Base e metodologia', 'Data and methodology', 'Datos y metodología')}</summary>
+          <div className="mk-method__content">
+            <p>{x('R$ 283 bilhões em 181 dias do 1º semestre de 2026, com negociações, stablecoins e operações empresariais. Bets: cerca de R$ 600 milhões por dia em depósitos, referência histórica anterior à proibição de setembro de 2026. Medidas distintas, que não se somam.', 'R$283 billion over 181 days of H1 2026, including trading, stablecoins and corporate operations. Bets: about R$600 million per day in deposits, a historical reference before the September 2026 ban. Distinct measures that do not add up.', 'R$283 mil millones en 181 días del 1.er semestre de 2026, con negociaciones, stablecoins y operaciones empresariales. Bets: cerca de R$600 millones por día en depósitos, referencia histórica anterior a la prohibición de septiembre de 2026. Medidas distintas que no se suman.')}</p>
+          </div>
+        </details>
         <div className="mk-srcs">
           {src(marketFlow.cryptoSourceUrl, x('Receita Federal / Valor Investe · set. 2026', 'Federal Revenue / Valor Investe · Sep. 2026', 'Receita Federal / Valor Investe · sep. 2026'))}
           {src(BETS_URL, x('Fazenda / MJSP, 2 out. 2026', 'Ministry of Finance / MJSP, Oct. 2, 2026', 'Hacienda / MJSP, 2 oct. 2026'))}

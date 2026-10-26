@@ -6,7 +6,6 @@ import { Rates } from '../demo/fin';
 import { demoView, demoRedirect } from '../demo/demo-navigation';
 import { DEMO_ANCHOR_EVENT, useHash } from '../demo/use-hash';
 import { DemoWalletsCard } from '../demo/DemoWalletsCard';
-import { AgentShowcase } from '../demo/AgentShowcase';
 import { StakingCorridor } from '../demo/StakingCorridor';
 import { CentralDemo } from './CentralDemo';
 import { MockProfilePanel } from './MockProfilePanel';
@@ -128,7 +127,6 @@ function HomeAreas({ d }: { d: ReturnType<typeof visualDashboard> }) {
         <StakingCorridor d={d} />
       </div>
     </section>
-    <AgentShowcase showOtherAgents={false} showDisclaimer={false} />
   </>;
 }
 

@@ -1,6 +1,7 @@
 .pitch-mission-hero {
   position: relative;
   overflow: hidden;
+  height: var(--home-hero-height, auto);
   color: #f4f1e8;
   border-left: 10px solid #2b59ff;
   border-bottom: 4px solid #f2b632;
@@ -21,7 +22,8 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 8px;
-  min-height: 680px;
+  height: var(--home-hero-inner-height, auto);
+  min-height: var(--home-hero-inner-height, 680px);
   align-items: center;
 }
 .pitch-mission-hero__copy {
@@ -98,12 +100,12 @@
     background-size: auto 480px;
     mask-image: linear-gradient(180deg, transparent 15%, #000 70%);
   }
-  .pitch-mission-hero__layout { grid-template-columns: minmax(0, 1fr); gap: 0; min-height: 0; }
-  .pitch-mission-hero__copy { padding-block: 32px 8px; }
+  .pitch-mission-hero__layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 0; min-height: var(--home-hero-inner-height, 0px); }
+  .pitch-mission-hero__copy { padding-block: 16px 8px; }
   .pitch-mission-hero__copy h1 { font-size: clamp(2rem, 8.7vw, 3.3rem); }
-  .pitch-mission-hero__copy h2 { margin-top: 20px; font-size: 1.3rem; }
-  .pitch-mission-hero__copy p { font-size: 15px; }
-  .pitch-mission-hero__button { min-height: 60px; margin-top: 24px; font-size: 16px; }
-  .pitch-mission-hero__art { width: min(100%, 440px); justify-self: center; }
-  .pitch-mission-hero__art img { max-height: 340px; }
+  .pitch-mission-hero__copy h2 { margin-top: 14px; font-size: 1.3rem; }
+  .pitch-mission-hero__copy p { margin-top: 10px; font-size: 15px; }
+  .pitch-mission-hero__button { min-height: 56px; margin-top: 20px; font-size: 16px; }
+  .pitch-mission-hero__art { width: min(100%, 440px); height: 100%; min-height: 0; justify-self: center; }
+  .pitch-mission-hero__art img { height: 100%; max-height: 100%; }
 }

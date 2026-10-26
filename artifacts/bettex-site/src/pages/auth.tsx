@@ -43,9 +43,6 @@ function ClientAuthPage({ mode }: { mode: 'sign-in' | 'sign-up' }) {
     <div className="auth-figure" aria-hidden="true">
       <div className="auth-halo"><i className="auth-ring r1" /><i className="auth-ring r2" /></div>
       <img className="auth-phone" src={`${base}hero-duo-btx-silver.webp`} alt="" width={1024} height={1024} />
-      <span className="auth-chip c1">{x('Dono', 'Owner', 'Dueño')}</span>
-      <span className="auth-chip c2">{x('Comunidade', 'Community', 'Comunidad')}</span>
-      <span className="auth-chip c3">{x('IA BETTEX', 'BETTEX AI', 'IA BETTEX')}</span>
     </div>
     </div>
     <p className="auth-note">{x('Demo visual com dados simulados. Nenhum dinheiro real é usado e não há promessa de retorno.', 'Visual demo with simulated data. No real money is used and no returns are promised.', 'Demo visual con datos simulados. No se usa dinero real ni se promete rentabilidad.')}</p>
