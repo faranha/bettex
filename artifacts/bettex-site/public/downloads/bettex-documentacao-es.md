@@ -10,13 +10,25 @@ https://bettex.ai/es/documentacion
 
 Agente BETTEX y subagentes
 
-BETTEX es el agente de orquestación de la arquitectura multiagente descentralizada descrita en esta documentación. Su foco es coordinar análisis y construir decisiones con apoyo directo de los subagentes de riesgo y tesorería. Los subagentes de trading de cada mercado presentan propuestas y evidencias; riesgo y tesorería apoyan su evaluación antes de decisiones de asignación o ejecución. El subagente de gobernanza sigue políticas y documentación. Sistema BETTEX identifica la arquitectura completa; agente BETTEX identifica su inteligencia central de orquestación.
+BETTEX es la inteligencia central: interpreta evidencias, compara hipótesis y coordina subagentes de análisis cripto, Riesgo, Tesorería y Gobernanza. El desarrollo definirá cómo evoluciona esta colaboración; no hay un único algoritmo obligatorio para todas las decisiones.
 
-El subagente de riesgo investiga exposición, escenarios de pérdida y compatibilidad de las propuestas con los límites vigentes. El subagente de tesorería analiza capital, reservas, liquidez y compromisos para orientar la disponibilidad y asignación de recursos. Ambos producen análisis e inferencias para apoyar las decisiones del agente BETTEX, pudiendo cuestionar hipótesis, compartir evidencias y solicitar nuevos análisis. No son simples verificadores de parámetros ni versiones independientes de BETTEX. La orquestación no elimina la validación independiente de riesgo ni autoriza ignorar controles.
+Los subagentes investigan, cuestionan hipótesis y contribuyen a las decisiones de BETTEX. Riesgo analiza exposición y escenarios; Tesorería sigue capital y liquidez; Gobernanza apoya la evolución de las políticas. No son simples verificadores de parámetros.
 
 Gobernanza: interpretar y proponer evolución
 
 El subagente de gobernanza tiene la función de mantener y actualizar la documentación del sistema BETTEX. Sigue decisiones y cambios aprobados, revisa los capítulos y sus traducciones, registra versiones y preserva la coherencia entre la documentación, la implementación y las reglas vigentes. Actualizar la documentación no aprueba políticas ni modifica permisos o derechos económicos.
+
+Alcance actual y desarrollo de la IA
+
+El negocio actual opera solamente en cripto. La IA busca patrones de manipulación, flujos y comportamiento de mercado para orientar la elección de monedas y los momentos de entrada y salida.
+
+No hay una cantidad fija de monedas ni una lista permanente de tres activos. BTC, ETH y SOL son ejemplos de especialización; otras monedas pueden analizarse según las oportunidades y la calidad de la información.
+
+Esta documentación define el negocio y las responsabilidades sin cerrar de antemano todos los métodos de la IA. Los flujos y referencias técnicas son puntos de partida para el desarrollo y evaluación, no algoritmos obligatorios. Los derechos económicos y la separación patrimonial no se redefinen mediante una inferencia.
+
+El rendimiento de cada participante se limita al 1% diario sobre su valor elegible. Es un límite individual, no una promesa de pago ni un límite de rentabilidad de la tesorería. Sin beneficio elegible no hay distribución.
+
+Aún deben definirse la fuente y el momento de valoración del saldo elegible en USDC, el tratamiento de costes en el límite y el destino de posibles excedentes. Estas definiciones deben conciliar la contabilidad sin cambiar silenciosamente el reparto 50% / 25% / 25%. No se presume crédito futuro.
 
 Adecuación legal y jurídica
 

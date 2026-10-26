@@ -10,13 +10,25 @@ https://bettex.ai/en/documentation
 
 BETTEX agent and subagents
 
-BETTEX is the orchestration agent of the decentralized multiagent architecture described in this documentation. Its focus is to coordinate analyses and build decisions with direct support from risk and treasury subagents. Each market’s trading subagents present proposals and evidence; risk and treasury support their evaluation before allocation or execution decisions. The governance subagent tracks policies and documentation. BETTEX system identifies the complete architecture; BETTEX agent identifies its central orchestration intelligence.
+BETTEX is the central intelligence: it interprets evidence, compares hypotheses and coordinates crypto-analysis, Risk, Treasury and Governance subagents. Development will define how this collaboration evolves; no single mandatory algorithm governs every decision.
 
-The risk subagent investigates exposure, loss scenarios and whether proposals fit current limits. The treasury subagent analyzes capital, reserves, liquidity and commitments to inform the availability and allocation of funds. Both produce analyses and inferences to support the BETTEX agent’s decisions, and may challenge hypotheses, share evidence and request further analyses. They are not merely parameter checkers or independent versions of BETTEX. Orchestration does not remove independent risk validation or authorize bypassing controls.
+Subagents investigate, challenge hypotheses and contribute to BETTEX decisions. Risk analyzes exposure and scenarios; Treasury tracks capital and liquidity; Governance supports policy evolution. They are not merely parameter checkers.
 
 Governance: interpret and propose evolution
 
 The governance subagent maintains and updates the BETTEX system documentation. It tracks approved decisions and changes, reviews chapters and their translations, records versions and preserves consistency between documentation, implementation and rules in force. Updating documentation does not approve policies or change permissions or economic rights.
+
+Current scope and AI development
+
+The current business trades crypto only. AI seeks manipulation patterns, flows and market behavior to guide coin selection and entry and exit timing.
+
+There is no fixed number of coins or permanent three-asset list. BTC, ETH and SOL are specialization examples; other coins may be analyzed according to opportunities and information quality.
+
+This documentation defines the business and responsibilities without prematurely fixing every AI method. Flows and technical references are starting points for development and evaluation, not mandatory algorithms. Economic rights and asset segregation are not redefined by an inference.
+
+Each participant’s return is capped at 1% per day on their eligible value. This is an individual cap, not a payment promise or a treasury return limit. Without eligible profit there is no distribution.
+
+The source and timing for valuing eligible holdings in USDC, treatment of costs under the cap and destination of any excess still need definition. These definitions must reconcile the accounting without silently changing the 50% / 25% / 25% split. No future credit is presumed.
 
 Legal and regulatory compliance
 

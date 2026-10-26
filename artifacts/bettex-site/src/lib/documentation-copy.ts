@@ -1,5 +1,6 @@
 /** Portuguese source copy for the compact documentation; PT/EN/ES live in locales/translations.json. */
 import { intelligenceCopy as intelligence } from './documentation-intelligence';
+import { businessRules } from './documentation-business';
 export const copy = {
   "visaoTitulo": "Visão",
   "visaoSub": intelligence.visaoSub,
@@ -72,7 +73,7 @@ export const copy = {
   "pt2": "Entrada",
   "pt2p": "A elegibilidade é fixada na abertura da rodada. Quem entra durante uma rodada espera a próxima e não recebe nenhum lucro da rodada atual, inclusive sobre lucros gerados depois da entrada.",
   "pt3": "Cálculo e pagamento",
-  "pt3p": "Havendo lucro elegível, a parcela de 25% é rateada pelo peso de cada participante (BETTEX elegível na abertura multiplicado pela duração integral da rodada, sem saída) e creditada em USDC após liquidação conciliada. Sem lucro elegível, não há pagamento.",
+  "pt3p": businessRules.distribution[0],
   "pt4": "Saída",
   "pt4p": "Qualquer saída de BETTEX, mesmo parcial, cancela os créditos anteriores ainda não pagos e zera o peso acumulado; o titular volta na rodada seguinte. O USDC já recebido continua pessoal.",
   "pt5": "Frações e rodadas encerradas",
@@ -89,7 +90,7 @@ export const copy = {
   "rkSub": "Administração inicial, evolução para gestão por IA, controles e riscos materiais.",
   "rk1": "Administração e evolução",
   "rk1p": intelligence.rk1p,
-  "rk1q": "A participação da comunidade nas decisões ainda será delimitada. Não há DAO, voto por token ou renúncia de ownership definidos.",
+  "rk1q": businessRules.governance[0],
   "rk2": "Segurança e controles",
   "rk2p": "Controles independentes e limites determinísticos permanecem. A IA não detém chaves pessoais, não amplia as próprias permissões e opera dentro de mandatos. A custódia usa multisig e carteiras separadas por finalidade.",
   "rk3": "Riscos materiais",

@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 6 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] >>
+<< /Type /Pages /Count 7 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 3189 >>
+<< /Length 2874 >>
 stream
 BT /F1 10 Tf 14 TL 48 790 Td
 (BETTEX — Demo and proof of concept) Tj T*
@@ -31,19 +31,13 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (BETTEX agent and subagents) Tj T*
 () Tj T*
-(BETTEX is the orchestration agent of the decentralized multiagent architecture described in) Tj T*
-(this documentation. Its focus is to coordinate analyses and build decisions with direct support) Tj T*
-(from risk and treasury subagents. Each market’s trading subagents present proposals and) Tj T*
-(evidence; risk and treasury support their evaluation before allocation or execution decisions.) Tj T*
-(The governance subagent tracks policies and documentation. BETTEX system identifies the) Tj T*
-(complete architecture; BETTEX agent identifies its central orchestration intelligence.) Tj T*
+(BETTEX is the central intelligence: it interprets evidence, compares hypotheses and coordinates) Tj T*
+(crypto-analysis, Risk, Treasury and Governance subagents. Development will define how this) Tj T*
+(collaboration evolves; no single mandatory algorithm governs every decision.) Tj T*
 () Tj T*
-(The risk subagent investigates exposure, loss scenarios and whether proposals fit current) Tj T*
-(limits. The treasury subagent analyzes capital, reserves, liquidity and commitments to inform) Tj T*
-(the availability and allocation of funds. Both produce analyses and inferences to support the) Tj T*
-(BETTEX agent’s decisions, and may challenge hypotheses, share evidence and request further) Tj T*
-(analyses. They are not merely parameter checkers or independent versions of BETTEX.) Tj T*
-(Orchestration does not remove independent risk validation or authorize bypassing controls.) Tj T*
+(Subagents investigate, challenge hypotheses and contribute to BETTEX decisions. Risk analyzes) Tj T*
+(exposure and scenarios; Treasury tracks capital and liquidity; Governance supports policy) Tj T*
+(evolution. They are not merely parameter checkers.) Tj T*
 () Tj T*
 (Governance: interpret and propose evolution) Tj T*
 () Tj T*
@@ -51,6 +45,38 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (approved decisions and changes, reviews chapters and their translations, records versions and) Tj T*
 (preserves consistency between documentation, implementation and rules in force. Updating) Tj T*
 (documentation does not approve policies or change permissions or economic rights.) Tj T*
+() Tj T*
+(Current scope and AI development) Tj T*
+() Tj T*
+(The current business trades crypto only. AI seeks manipulation patterns, flows and market) Tj T*
+(behavior to guide coin selection and entry and exit timing.) Tj T*
+() Tj T*
+(There is no fixed number of coins or permanent three-asset list. BTC, ETH and SOL are) Tj T*
+(specialization examples; other coins may be analyzed according to opportunities and information) Tj T*
+(quality.) Tj T*
+() Tj T*
+(This documentation defines the business and responsibilities without prematurely fixing every) Tj T*
+(AI method. Flows and technical references are starting points for development and evaluation,) Tj T*
+(not mandatory algorithms. Economic rights and asset segregation are not redefined by an) Tj T*
+(inference.) Tj T*
+() Tj T*
+(Each participant’s return is capped at 1% per day on their eligible value. This is an) Tj T*
+(individual cap, not a payment promise or a treasury return limit. Without eligible profit there) Tj T*
+(is no distribution.) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 2905 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
+() Tj T*
+(The source and timing for valuing eligible holdings in USDC, treatment of costs under the cap) Tj T*
+(and destination of any excess still need definition. These definitions must reconcile the) Tj T*
+(accounting without silently changing the 50% / 25% / 25% split. No future credit is presumed.) Tj T*
 () Tj T*
 (Legal and regulatory compliance) Tj T*
 () Tj T*
@@ -63,16 +89,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Investigations verify regulations, licenses, terms, advertising, user protection, AML, privacy,) Tj T*
 (and responsibilities, with formal recording of evidence, dates, and required controls.) Tj T*
-ET
-endstream
-endobj
-6 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
-endobj
-7 0 obj
-<< /Length 2939 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Each combination \(agent, activity, territory\) requires a documented scope \(investigating,) Tj T*
 (restricted, or authorized\). Lack of authorization or pending investigation blocks the operation) Tj T*
@@ -105,6 +121,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (are not community revenue.) Tj T*
 () Tj T*
 (Burn Lottery and Double 2X) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 2849 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Burn Lottery: one free number per wallet with BETTEX in staking; extras are paid in BETTEX and) Tj T*
 (fully burned. Payment is a BETTEX outflow: it resets prior weight and cancels all prior unpaid) Tj T*
@@ -121,16 +147,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Operational round and demonstration) Tj T*
 () Tj T*
-ET
-endstream
-endobj
-8 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
-endobj
-9 0 obj
-<< /Length 2804 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (The model operates on daily UTC rounds. Market tabs do not create separate staking pools.) Tj T*
 () Tj T*
 (Administration and purpose) Tj T*
@@ -163,6 +179,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Vesting of 900 million BETTEX over 24 months from March 2027: community 550 million,) Tj T*
 (founder/team 200 million, and investors 150 million, in whole groups of 11:4:3. The separate) Tj T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 3228 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (initial cap is 100 million; release does not prove sale or circulation.) Tj T*
 () Tj T*
 (100% of community token revenue goes to the treasury, with no service fees. The mint funds the) Tj T*
@@ -179,16 +205,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Weight = eligible opening balance  x  duration. Exits reset the weight and cancel prior unpaid) Tj T*
 (credits; return occurs only in the next round. Additions do not change existing weights. Gross) Tj T*
-ET
-endstream
-endobj
-10 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
-endobj
-11 0 obj
-<< /Length 3099 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (payment = staking portion  x  individual weight  /  sum of eligible weights.) Tj T*
 () Tj T*
 (Example: A starts with 1,000 eligible BETTEX; B receives 1,000 at 12:00. With eligible profit) Tj T*
@@ -221,6 +237,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (and authorization; it does not prove access to equities. Public Arbitrum/Gamma queries were) Tj T*
 (verified; they do not define the launch network. Other examples without private access are) Tj T*
 (simulations. There have been no real-money operations.) Tj T*
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 2755 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 () Tj T*
 (Economic period, settlement and financial closing) Tj T*
 () Tj T*
@@ -237,16 +263,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (rounds.) Tj T*
 () Tj T*
 (Settlement decisions fix beneficiaries and weights, considering confirmed exits. Subsequent) Tj T*
-ET
-endstream
-endobj
-12 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
-endobj
-13 0 obj
-<< /Length 2850 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (exits cancel credits without redistribution or new splits. Historical records and current) Tj T*
 (weights are distinct.) Tj T*
 () Tj T*
@@ -279,6 +295,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Before authorizing the split, reserve principal and the cost cap for each asset and project) Tj T*
 (liquidity after all disbursements. A cost reserve is not an incurred expense. Identify its) Tj T*
 (source and authorization; do not silently deduct costs from the participant’s right or the) Tj T*
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 3113 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (exclusive repurchase portion. Reconcile differences between reserved and actual cost; surplus) Tj T*
 (is not new profit. Without sufficient budget and coverage, do not authorize the split.) Tj T*
 () Tj T*
@@ -295,16 +321,6 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Burn Lottery limits one free number per wallet with BETTEX in staking, using a verifiable) Tj T*
 (snapshot and a unique identifier per wallet and draw. Post-cutoff transfers do not generate new) Tj T*
 (numbers. The budget considers multiple wallets per person; this is not protection against) Tj T*
-ET
-endstream
-endobj
-14 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
-endobj
-15 0 obj
-<< /Length 2631 >>
-stream
-BT /F1 10 Tf 14 TL 48 790 Td
 (multiple identities.) Tj T*
 () Tj T*
 (The Burn Lottery prize and the costs of the draw require an approved source and coverage before) Tj T*
@@ -337,6 +353,16 @@ BT /F1 10 Tf 14 TL 48 790 Td
 (Authentication and legal eligibility) Tj T*
 () Tj T*
 (Wallet authentication does not prove civil identity, residence, or eligibility. KYC and) Tj T*
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 503 >>
+stream
+BT /F1 10 Tf 14 TL 48 790 Td
 (territorial controls remain mandatory when required. The visual demo does not offer financial) Tj T*
 (operations.) Tj T*
 () Tj T*
@@ -350,24 +376,26 @@ ET
 endstream
 endobj
 xref
-0 16
+0 18
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000148 00000 n 
-0000000245 00000 n 
-0000000371 00000 n 
-0000003612 00000 n 
-0000003738 00000 n 
-0000006729 00000 n 
-0000006855 00000 n 
-0000009711 00000 n 
-0000009839 00000 n 
-0000012991 00000 n 
-0000013119 00000 n 
-0000016022 00000 n 
-0000016150 00000 n 
-trailer << /Size 16 /Root 1 0 R >>
+0000000155 00000 n 
+0000000252 00000 n 
+0000000378 00000 n 
+0000003304 00000 n 
+0000003430 00000 n 
+0000006387 00000 n 
+0000006513 00000 n 
+0000009414 00000 n 
+0000009542 00000 n 
+0000012823 00000 n 
+0000012951 00000 n 
+0000015759 00000 n 
+0000015887 00000 n 
+0000019053 00000 n 
+0000019181 00000 n 
+trailer << /Size 18 /Root 1 0 R >>
 startxref
-18834
+19736
 %%EOF

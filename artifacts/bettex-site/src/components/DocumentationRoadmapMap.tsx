@@ -1,10 +1,14 @@
 import { roadmapStops } from './RoadmapSection';
 import { DemoAppLink } from './DemoAppLink';
 import { t } from '@/lib/i18n';
+import { businessRules } from '@/lib/documentation-business';
 import './DocumentationRoadmapMap.css';
 
 export function DocumentationRoadmapMap() {
-  const last = roadmapStops.length - 1;
+  const stops = roadmapStops.map((stop, index) => index === 4
+    ? { ...stop, title: businessRules.evolutionTitle[0], description: businessRules.evolution[0] }
+    : stop);
+  const last = stops.length - 1;
   return (
     <div id="documentacao-roadmap-mapa" className="docmap" data-testid="documentation-roadmap-milestones">
       <svg className="docmap__terrain" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
@@ -20,7 +24,7 @@ export function DocumentationRoadmapMap() {
         </g>
       </svg>
       <ol className="docmap__list">
-        {roadmapStops.map((stop, i) => {
+        {stops.map((stop, i) => {
           const demo = i === 0;
           const featured = Boolean((stop as { readonly featured?: boolean }).featured);
           return (

@@ -4,6 +4,7 @@ import englishSourceMessages from './locales/english-source-messages.json';
 import documentationSynthesis from './locales/documentation-synthesis.json';
 import documentationArchitecture from './locales/documentation-architecture.json';
 import { intelligenceTranslations } from './documentation-intelligence';
+import { businessTranslations } from './documentation-business';
 import { presentationTranslations } from './documentation-intelligence-presentation';
 import { orderStandardTranslations } from './documentation-order-standard';
 import { trainingTranslations } from './documentation-training';
@@ -15,7 +16,7 @@ export type Locale = 'pt' | 'en' | 'es';
 type Translation = { en: string; es: string; pt?: string };
 // Editorial equivalents retain the full source text and its technical rules.
 // Only documentation-specific keys are included; approved pages are unchanged.
-const messages = { ...trainingTranslations, ...catalogue, ...englishSourceMessages, ...documentationSynthesis, ...documentationArchitecture, ...intelligenceTranslations, ...presentationTranslations, ...orderStandardTranslations } as Record<string, Translation>;
+const messages = { ...trainingTranslations, ...catalogue, ...englishSourceMessages, ...documentationSynthesis, ...documentationArchitecture, ...intelligenceTranslations, ...presentationTranslations, ...orderStandardTranslations, ...businessTranslations } as Record<string, Translation>;
 const listeners = new Set<() => void>();
 let locale: Locale = typeof window === 'undefined' ? 'pt' : localeFromPath(window.location.pathname);
 export const observedMessages = new Set<string>();

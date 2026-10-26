@@ -11,6 +11,7 @@ import { t } from '@/lib/i18n';
 import { OrderStandard } from './OrderStandard';
 import { DocumentationAgentConcept } from './DocumentationAgentConcept';
 import { DocumentationAgentTraining, DocumentationTrainingProtocol } from './DocumentationAgentTraining';
+import { DocumentationBusinessRules } from './DocumentationBusinessRules';
 
 export type BaselineFactory = (id: string) => ReactNode[];
 type Props = { id: string; main: BaselineFactory; legacy: BaselineFactory };
@@ -34,7 +35,10 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
   const reference = (anchor: string, title: string, body: ReactNode) =>
     <details className="whitepaper__reference" id={anchor} data-documentation-reference>
       <summary>{t('Referência técnica')}: {t(title)}</summary>
-      <div className="whitepaper__reference-body">{body}</div>
+      <div className="whitepaper__reference-body">
+        {title === 'Estrutura inicial para desenvolvimento' && <DocumentationBusinessRules rules={['reference']} />}
+        {body}
+      </div>
     </details>;
   const baseline = <h3 className="whitepaper__subhead">{t('Baseline e regras iniciais')}</h3>;
   const intro = (text: string) => <div className="whitepaper__lead"><p>{t(text)}</p></div>;
@@ -73,7 +77,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
           <AgentIntelligence owners={['relations', 'learning']} />
         </div>
         {baseline}
-        <div id="documentacao-agentes-detalhe"><InvestmentAgents only={['orquestradora']} embedded /></div>
+        <div id="documentacao-agentes-detalhe">{reference('documentacao-orquestracao-referencia-inicial', 'Estrutura inicial para desenvolvimento', <InvestmentAgents only={['orquestradora']} embedded />)}</div>
         <DocumentationAgentTraining chapterId={id} />
         {reference('documentacao-referencia-agentes', 'Orquestração, decisões e conectores', <>
           <ArchitectureCatalogue groups={['map']} mapIntroduction />
@@ -92,7 +96,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
       return <>
         <AgentIntelligence owners={['risk']} introduction />
         <DocumentationAgentConcept chapterId={id} />
-        {baseline}<InvestmentAgents only={['risco']} intro={false} cycle={false} embedded />
+        {baseline}{reference('documentacao-risco-referencia-inicial', 'Estrutura inicial para desenvolvimento', <InvestmentAgents only={['risco']} intro={false} cycle={false} embedded />)}
         <DocumentationAgentTraining chapterId={id} />
         {reference('documentacao-controles', 'Risco, limites e autorização', <>
           {l('documentacao-controles', range(2, 9))}
@@ -106,7 +110,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
       return <>
         <AgentIntelligence owners={['treasury']} introduction />
         <DocumentationAgentConcept chapterId={id} />
-        {baseline}<InvestmentAgents only={['tesouraria', 'recompra-queima']} intro={false} cycle={false} embedded />
+        {baseline}{reference('documentacao-tesouraria-referencia-inicial', 'Estrutura inicial para desenvolvimento', <InvestmentAgents only={['tesouraria', 'recompra-queima']} intro={false} cycle={false} embedded />)}
         <DocumentationAgentTraining chapterId={id} />
         {intro('A inteligência da tesouraria analisa recursos e propõe alocações. A recompra e a queima são mecanismos separados: a análise não autoriza alterar a destinação fixa dos resultados nem executar fora dos controles.')}
         {m('documentacao-emissao', [10, 11])}
@@ -136,7 +140,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
       return <>
         <AgentIntelligence owners={['crypto']} introduction />
         <DocumentationAgentConcept chapterId={id} />
-        {baseline}<InvestmentAgents only={['acoes-cripto']} intro={false} cycle={false} embedded />
+        {baseline}{reference('documentacao-cripto-referencia-inicial', 'Estrutura inicial para desenvolvimento', <InvestmentAgents only={['acoes-cripto']} intro={false} cycle={false} embedded />)}
         <DocumentationAgentTraining chapterId={id} />
         {reference('documentacao-baseline-cripto', 'Fontes, inferências e conectores de Cripto', <>
           {l('documentacao-arquitetura', range(10, 15))}
@@ -149,6 +153,7 @@ export function DocumentationOwnedContent({ id, main, legacy }: Props) {
       return <>
         <DocumentationAgentConcept chapterId={id} />
         {intro('Esta especialização pertence ao subagente Cripto e delimita o ativo acompanhado. Não é um setor independente, não cria uma nova tesouraria e não recebe autorização financeira própria por aparecer no grafo.')}
+        <DocumentationBusinessRules rules={['specialist']} />
         {opening(`${id}-secao-1`, [baseline, <div key="specialist-intro" className="whitepaper__prose">
           <p>{t('O ponto de partida utiliza as capacidades e fontes de Cripto, sob os controles de Risco e os recursos autorizados pela Tesouraria.')}</p>
         </div>])}

@@ -24,21 +24,35 @@ editorial = subprocess.run(
     ["node", "--input-type=module", "-e", """
 import { documentationAgentTerminology as terms } from './src/lib/documentation-agent-terminology.ts';
 import { intelligenceCopy, intelligenceTranslations } from './src/lib/documentation-intelligence.ts';
+import { businessIntelligence, businessRules, businessTranslations } from './src/lib/documentation-business.ts';
 let input = ''; for await (const part of process.stdin) input += part;
-const catalog = { ...JSON.parse(input), ...intelligenceTranslations };
+const catalog = { ...JSON.parse(input), ...intelligenceTranslations, ...businessTranslations };
 for (const [key, entry] of Object.entries(catalog)) {
   for (const lang of ['pt', 'en', 'es']) {
     if (entry[lang]) entry[lang] = terms(entry[lang], lang);
   }
   if (!entry.pt) entry.pt = terms(key, 'pt');
 }
-console.log(JSON.stringify({ catalog, copy: intelligenceCopy }));
+console.log(JSON.stringify({ catalog, copy: intelligenceCopy, business: { intelligence: businessIntelligence, rules: businessRules } }));
 """],
     input=json.dumps(catalogue), text=True, capture_output=True, check=True, cwd=app,
 )
 editorial = json.loads(editorial.stdout)
 catalogue = editorial["catalog"]
 agent_copy = editorial["copy"]
+business = editorial["business"]
+# These are the same current-scope passages rendered on the site, not a second
+# independent financial rule source. Retain the existing download structure.
+materials["sections"].insert(0, {
+    "title": "Escopo atual e desenvolvimento da IA",
+    "paragraphs": [
+        business["intelligence"]["agP1"][0],
+        business["intelligence"]["agP2"][0],
+        business["intelligence"]["baseline"][0],
+        business["rules"]["cap"][0],
+        business["rules"]["openEconomics"][0],
+    ],
+})
 materials["sections"].insert(0, {
     "title": agent_copy["agentDefinitionTitle"],
     "paragraphs": [agent_copy["agentDefinition"], agent_copy["subagentDefinition"]],
