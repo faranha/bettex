@@ -58,9 +58,13 @@
 .pb-aud .pb-problem__wrap {
   position: relative;
 }
+.pb-aud:has(#publico-mercado-slider:not([data-active-slide="1"])) .pb-aud__front-fan {
+  display: none;
+}
 @media (max-width: 767px) {
   .mk-audience-intro { padding-left: 0; }
   .pb-aud .pb-market { padding-left: 88px; }
+  .pb-aud:has(#publico-mercado-slider:not([data-active-slide="1"])) .pb-market { padding-left: 0; }
   .pb-aud__front-fan { left: 0; width: 96px; height: 260px; }
 }
 .pb-aud__title {
@@ -90,6 +94,8 @@
 .mk-stage { margin: 0; justify-self: center; width: min(100%, 420px); height: clamp(230px, 62vw, 340px); border-radius: 24px; overflow: hidden; background: radial-gradient(circle at 85% 0, rgba(43,89,255,.55), transparent 55%), #070B1F; border-left: 6px solid #F2B632; }
 .mk-stage img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: .92; }
 .mk-stage--ink { display: grid; align-content: center; gap: 16px; padding: clamp(20px, 4vw, 36px); color: #F4F1E8; }
+.mk-stage--crypto { position: relative; }
+.mk-share__icon { position: absolute; top: 20px; right: 20px; display: grid; place-items: center; width: clamp(44px, 5vw, 58px); height: clamp(44px, 5vw, 58px); border: 1px solid rgba(242,182,50,.4); border-radius: 50%; background: rgba(242,182,50,.1); color: #F2B632; }
 .mk-share { margin: 0; font-size: clamp(3.6rem, 12vw, 6rem); font-weight: 800; line-height: .95; letter-spacing: -.06em; color: #F2B632; }
 .mk-share__bar { height: 16px; border-radius: 999px; background: rgba(95,134,255,.22); overflow: hidden; }
 .mk-share__bar span { display: block; height: 100%; border-radius: 999px; background: #2B59FF; }

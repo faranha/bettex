@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from 'react';
-import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Bitcoin, ExternalLink } from 'lucide-react';
 import './MarketOpportunity.css';
 import { AudienceFlowChart, BETS_URL } from './AudienceFlowChart';
 import { audienceGeometry as G, audienceScenario } from './audienceScenario';
@@ -46,7 +46,8 @@ export function MarketOpportunity() {
         <p className="mk-p">{x(`${share}% dos brasileiros no público pesquisado dizem ter ou já ter tido dinheiro em criptomoedas.`, `${share}% of Brazilians in the surveyed audience say they have or once had money in cryptocurrencies.`, `${share}% de los brasileños en el público encuestado dicen tener o haber tenido dinero en criptomonedas.`)}</p>
         {src(audienceScenario.cryptoSourceUrl, x('Datafolha / Paradigma · publicado em ago. 2026', 'Datafolha / Paradigma · published Aug. 2026', 'Datafolha / Paradigma · publicado en ago. 2026'))}
       </div>
-      <div className="mk-stage mk-stage--ink">
+      <div className="mk-stage mk-stage--ink mk-stage--crypto">
+        <span className="mk-share__icon" aria-hidden="true"><Bitcoin size={32} strokeWidth={1.7} /></span>
         <p className="mk-share display">{share}%</p>
         <div className="mk-share__bar" role="img" aria-label={x(`${share}% do público pesquisado`, `${share}% of the surveyed audience`, `${share}% del público encuestado`)}><span style={{ width: `${audienceScenario.cryptoShare * 100}%` }} /></div>
         <p className="mk-share__cap">{x('do público pesquisado tem ou já teve dinheiro em cripto', 'of the surveyed audience has or once had money in crypto', 'del público encuestado tiene o ha tenido dinero en cripto')}</p>
