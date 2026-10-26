@@ -1,4 +1,5 @@
 .auth-page{position:relative;isolation:isolate;overflow:hidden;min-height:100dvh;display:grid;grid-template-rows:auto 1fr auto;align-items:center;color:#F4F1E8;background:radial-gradient(circle at 82% 23%,rgba(43,89,255,.28),transparent 38%),radial-gradient(circle at 12% 100%,rgba(242,182,50,.1),transparent 36%),#070B1F}
+.auth-page + .site-footer{border-top:1px solid rgba(159,176,230,.35)}
 .auth-photo{position:absolute;inset:0 0 auto;height:clamp(740px,62vw,940px);z-index:-3;background:#070B1F center/cover no-repeat;background-position:50% 60%;opacity:.3;filter:saturate(.9) brightness(.9)}
 .auth-page::after{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(7,11,31,.88) 18%,rgba(7,11,31,.4) 50%,rgba(7,11,31,.05))}
 .auth-pattern{position:absolute;inset:0;z-index:-2;background-image:radial-gradient(rgba(151,182,255,.18) 1.2px,transparent 1.2px);background-size:27px 27px;mask-image:linear-gradient(90deg,transparent,#000 80%)}
