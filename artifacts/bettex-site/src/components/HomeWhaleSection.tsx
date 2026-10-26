@@ -3,8 +3,8 @@ import { ArrowUpRight } from 'lucide-react';
 import { FreeformWhaleArtwork } from '@/components/FreeformWhaleArtwork';
 import './HomeWhaleSection.css';
 
-const H1 = 'Baleias manipulam o mercado. Nós sabemos quando entrar.';
-const H2 = 'Nós descobrimos o padrão das baleias por meio de análise quantitativa distribuída, e a nossa IA administra os investimentos.';
+const H1 = 'Baleias manipulam o mercado. A comunidade tem sua IA.';
+const H2 = 'O agente BETTEX usa análise quantitativa distribuída para buscar padrões de manipulação em cripto. É a IA de quem tem o token, não um serviço de gestão para clientes.';
 const NOTE = 'Estratégia em validação. Não há garantia de antecipar movimentos ou obter lucro.';
 const ALT = 'Baleia jubarte nadando em mar azul-meia-noite';
 const EYEBROW = 'Baleias e mercado';

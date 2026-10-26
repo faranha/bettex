@@ -3,7 +3,7 @@ name: Fundação BETTEX
 description: Sem entidade formal; administração e domínio dos contratos permanecem, com evolução para gestão integral por IA.
 ---
 
-BETTEX é uma comunidade focada na construção do seu agente próprio. “Aberta” é redundante; não apresentar a comunidade como criadora de tecnologia DeFi. A documentação reflete a visão dos fundadores e os anseios da própria comunidade.
+BETTEX é uma comunidade focada na construção do seu agente próprio. A direção atual apresenta um projeto de tecnologia descentralizada, aberto e pertencente a quem tem BETTEX; consultar bettex-economic-identity.md. A documentação reflete a visão dos fundadores e os anseios da própria comunidade.
 
 **Why:** O criador corrigiu expressamente a abertura da documentação e a descrição limitada a tokenomics, participação e risco.
 

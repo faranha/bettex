@@ -34,7 +34,7 @@ export function HomeEarningsSection() {
                 <p className="hr-eyebrow">Ganhos diários</p>
                 <h2 id="hr-focus-title" className="ew-h"><span className="ew-h-top">Até{' '}<strong>1%</strong></span>{' '}<span className="ew-h-sub">de lucro por dia.</span></h2>
                 <p className="ew-rhythm">Os lucros podem variar de 0 a 1% ao dia, conforme a rentabilidade do agente BETTEX.</p>
-                <p className="ew-p">Receba sua parte dos lucros no Pix. Você não precisa saber operar cripto.</p>
+                <p className="ew-p">Com BETTEX, a IA também é sua. Participação nos resultados, com Pix previsto.</p>
                 <p className="ew-free">Você decide quando vender e sair.</p>
               </div>
               <EarningsWalletIllustration />
@@ -44,8 +44,8 @@ export function HomeEarningsSection() {
             <div className="hr-wrap ew-s2 ew-ai">
               <div className="ew-offer">
                 <p className="hr-eyebrow">{t('Visão BETTEX')}</p>
-                <h3 className="ew-h2">{t('Ganhe conforme nossa IA opera.')}</h3>
-                <p className="ew-rhythm">{t('Com a BETTEX, você não fica no negativo: sem lucro naquele dia, não há distribuição e seus tokens continuam com você.')}</p>
+                <h3 className="ew-h2">{t('Uma IA de quem tem BETTEX.')}</h3>
+                <p className="ew-rhythm">{t('Sem lucro elegível, não há distribuição. Os tokens continuam com você, mas o preço pode cair e a revenda gerar perdas.')}</p>
               </div>
               <div className="ew-card ew-ai-stage">
                 <span className="ew-ai-orb" aria-hidden="true" />

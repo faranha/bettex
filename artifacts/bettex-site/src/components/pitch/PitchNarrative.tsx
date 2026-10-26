@@ -20,7 +20,7 @@ export function PitchContext() {
 export function PitchJourney() {
   const x = useX();
   const steps = [
-    { Icon: Coins, t: x('Compra BETTEX', 'Buys BETTEX', 'Compra BETTEX') },
+    { Icon: Coins, t: x('BETTEX: dono da IA', 'BETTEX: an owner of the AI', 'BETTEX: dueño de la IA') },
     { Icon: Wallet, t: x('Participação automática na carteira', 'Automatic participation in the wallet', 'Participación automática en la cartera') },
     { Icon: Bot, t: x('BETTEX coordena os subagentes', 'BETTEX coordinates the subagents', 'BETTEX coordina los subagentes') },
     { Icon: CalendarCheck, t: x('Apuração e desconto de taxas', 'Calculation and fee deduction', 'Cálculo y descuento de comisiones') },
@@ -29,13 +29,13 @@ export function PitchJourney() {
   return <div className="pn pn__journey" data-testid="pitch-participation-journey">
     <PitchSlider id="jornada-slider" tone="light" label={['Jornada de participação em blocos', 'Participation journey blocks', 'Jornada de participación por bloques']} slides={[
       { label: ['Compra e participação', 'Purchase and participation', 'Compra y participación'], node: <>
-    <p className="pn__lead">{x('Compre BETTEX e receba sua parte dos lucros elegíveis em reais, sem precisar operar cripto. Compra, Pix e pagamentos reais são serviços previstos; hoje, apenas demo visual.', 'Buy BETTEX and receive your share of eligible profits in reais, without trading crypto yourself. Purchase, Pix and real payments are planned services; today, only a visual demo is available.', 'Compra BETTEX y recibe tu parte de los beneficios elegibles en reales, sin operar en cripto. Compra, Pix y pagos reales son servicios previstos; hoy solo hay un demo visual.')}</p>
+    <p className="pn__lead">{x('Ter BETTEX é ser dono da IA junto à comunidade, com participação nos lucros elegíveis conforme as regras do token, sem precisar operar cripto. Compra, Pix e pagamentos reais são recursos previstos; hoje, apenas demo visual.', 'Holding BETTEX means owning the AI together with the community, with participation in eligible profits under the token rules, without trading crypto yourself. Purchase, Pix and real payments are planned features; today, only a visual demo is available.', 'Tener BETTEX es ser dueño de la IA junto a la comunidad, con participación en los beneficios elegibles según las reglas del token, sin operar en cripto. Compra, Pix y pagos reales son funciones previstas; hoy solo hay un demo visual.')}</p>
     <ol className="pn__steps">
       {steps.map(({ Icon, t }, i) => <li key={i} className="pn__step"><span className="pn__stepn mono">{String(i + 1).padStart(2, '0')}</span><Icon size={24} aria-hidden="true" /><strong>{t}</strong></li>)}
     </ol>
     <div id="diferencial" className="pn__diff">
       <strong>{x('Diferença de direito econômico', 'Difference in economic right', 'Diferencia de derecho económico')}</strong>
-      <span>{x('Na aposta, o resultado depende do evento; num token centrado no preço, da revenda. Aqui, a proposta é participar do lucro elegível de uma estratégia, nas regras da carteira.', 'In betting, the outcome depends on the event; in a price-centered token, on resale. Here, the proposal is participation in the eligible profit of a strategy, under the wallet rules.', 'En la apuesta, el resultado depende del evento; en un token centrado en el precio, de la reventa. Aquí, la propuesta es participar en el beneficio elegible de una estrategia, según las reglas de la cartera.')}</span>
+      <span>{x('Na aposta, o resultado depende do evento; num token centrado no preço, da revenda. Na BETTEX, o token conecta seu titular à IA e à comunidade, com direito à participação nos lucros elegíveis segundo as regras da carteira. Não é uma empresa oferecendo rendimento a clientes.', 'In betting, the outcome depends on the event; in a price-centered token, on resale. In BETTEX, the token connects its holder to the AI and the community, with the right to participate in eligible profits under the wallet rules. This is not a company offering returns to customers.', 'En la apuesta, el resultado depende del evento; en un token centrado en el precio, de la reventa. En BETTEX, el token conecta a su titular con la IA y la comunidad, con derecho a participar en los beneficios elegibles según las reglas de la cartera. No es una empresa ofreciendo rentabilidad a clientes.')}</span>
     </div>
       </> },
       { label: ['Pix e custos', 'Pix and costs', 'Pix y costes'], node: <>
@@ -84,7 +84,7 @@ export function PitchStrategy() {
         <p>{x('BETTEX coordena subagentes de análise quantitativa para identificar padrões de manipulação em cripto. Eles orientam a seleção de ativos, entradas e saídas, dentro dos limites de risco e das etapas de validação.', 'BETTEX coordinates quantitative-analysis subagents to identify manipulation patterns in crypto. They guide asset selection, entries and exits within risk limits and validation stages.', 'BETTEX coordina subagentes de análisis cuantitativo para identificar patrones de manipulación en cripto. Orientan la selección de activos, entradas y salidas dentro de los límites de riesgo y las etapas de validación.')}</p>
       </article>
       <article className="pn__strategy-card">
-        <p>{x('O agente opera com a tesouraria, nunca com os tokens dos usuários. O fundador e o time administram no início; a autonomia futura depende de desempenho validado e de controles.', 'The agent operates with the treasury, never with users’ tokens. The founder and team administer at first; future autonomy depends on validated performance and controls.', 'El agente opera con la tesorería, nunca con los tokens de los usuarios. El fundador y el equipo administran al inicio; la autonomía futura depende de un desempeño validado y de controles.')}</p>
+        <p>{x('O agente da comunidade opera com a tesouraria, nunca com os tokens de seus titulares. O fundador e o time administram no início; a descentralização e a autonomia por IA evoluem por etapas, com desempenho validado e controles. BETTEX é um projeto de tecnologia, não um fundo de investimentos.', 'The community’s agent operates with the treasury, never with holders’ tokens. The founder and team administer at first; decentralization and AI autonomy advance in stages, with validated performance and controls. BETTEX is a technology project, not an investment fund.', 'El agente de la comunidad opera con la tesorería, nunca con los tokens de sus titulares. El fundador y el equipo administran al inicio; la descentralización y la autonomía de la IA avanzan por etapas, con desempeño validado y controles. BETTEX es un proyecto de tecnología, no un fondo de inversión.')}</p>
       </article>
     </div>
     <dl className="pn__facts">

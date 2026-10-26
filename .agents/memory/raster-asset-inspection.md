@@ -3,6 +3,12 @@ name: Raster asset inspection
 description: Visual authenticity and transparency checks, plus font-free raster comparisons.
 ---
 
+When removing a held prop from a character, reconstruct the space between the limb and torso as real transparency; deleting the prop can expose the original solid silhouette underneath.
+
+**Why:** Removing a football left a blue shirt-colored area between a bent arm and the torso. A preview on white initially hid that the negative space was still filled.
+
+**How to apply:** Inspect the inner arm and hand contours, not just the missing object. Verify alpha inside the opening and opaque pixels on the neighboring garment, then check the character in the actual page.
+
 When verifying high-density responsive images, check the selected resource and its decoded pixel dimensions, not only the element's `naturalWidth`.
 
 **Why:** Width-descriptor `srcset` applies density correction to intrinsic dimensions, so a correctly selected high-resolution file can report a smaller `naturalWidth` and produce a false failure.

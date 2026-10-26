@@ -3,14 +3,14 @@
   "pages": {
     "/": {
       "title": "BETTEX | Comunidade DeFi e trading com inteligência artificial",
-      "description": "Comunidade aberta que constrói um agente de IA que identifica padrões de manipulação no mercado cripto e investe contra quem manipula. Conheça o token, o roadmap e a demonstração da BETTEX.",
+      "description": "Com BETTEX, você se torna dono da IA e integra um projeto de tecnologia descentralizada. Conheça a comunidade, a participação nos resultados, as regras e o demo visual.",
       "image": "home-community",
       "imageAlt": "BETTEX: comunidade aberta construindo tecnologia DeFi e um agente de IA.",
       "index": true
     },
     "/pitch": {
       "title": "Pitch BETTEX | Comunidade, tecnologia DeFi e roadmap",
-      "description": "Conheça a proposta da BETTEX: comunidade aberta, agente de IA para vários mercados, token comunitário, tokenomics, estratégia de lançamento e riscos.",
+      "description": "A IA é de quem tem BETTEX. Entenda o projeto de tecnologia descentralizada, a gestão inicial, a tokenomics, os resultados elegíveis e os riscos.",
       "image": "pitch-community",
       "imageAlt": "Pitch BETTEX: comunidade, tecnologia DeFi e roadmap.",
       "index": true
