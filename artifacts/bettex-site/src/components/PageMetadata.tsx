@@ -13,7 +13,9 @@ export function PageMetadata() {
     const key = ['/documentation', '/documentacion'].includes(location) ? '/documentacao' : location.replace(/\/$/, '') || '/';
     const view = demoView(location);
     const page = seo.pages[(view ? '/app' : key) as keyof typeof seo.pages];
-    const title = view && view !== 'home' ? demoPageTitle(view, language) : t(page?.title ?? 'Página não encontrada | BETTEX');
+    const title = key === '/pitch'
+      ? ({ pt: 'Nossa Missão | BETTEX', en: 'Our Mission | BETTEX', es: 'Nuestra misión | BETTEX' } as const)[language]
+      : view && view !== 'home' ? demoPageTitle(view, language) : t(page?.title ?? 'Página não encontrada | BETTEX');
     const description = page ? t(page.description) : t('A página solicitada não foi encontrada.');
     const path = localizedUrl(`${base}${page ? key : location}`);
     const canonicalPath = (route: string) => route === '/' ? '/' : `${route.replace(/\/+$/, '')}/`;

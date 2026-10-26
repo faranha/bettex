@@ -153,6 +153,7 @@
 .ew-ai .ew-offer:has(+ .ew-card) .ew-h2{font-size:clamp(2.2rem,9vw,3rem);line-height:.98;letter-spacing:-.055em;text-wrap:balance;overflow-wrap:break-word}
 .ew-ai .ew-offer:has(+ .ew-card) .ew-h2::first-line{color:#070B1F}
 .ew-ai .ew-offer:has(+ .ew-card) .ew-h2{color:#2B59FF}
+.ew-ai .ew-rhythm{padding-left:0;border-left:0;font-size:clamp(1rem,2vw,1.25rem);line-height:1.4}
 @media(min-width:900px){.ew-ai .ew-offer:has(+ .ew-card) .ew-h2{font-size:clamp(2.6rem,4.8vw,4rem)}}
 .ew-ai .ew-card.ew-ai-stage{position:relative;display:block;padding:0;min-height:0;background:none;box-shadow:none;border-radius:0;overflow:hidden;align-self:stretch;container-type:size}
 .ew-ai .ew-ai-stage::before{display:none}

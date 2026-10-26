@@ -3,6 +3,12 @@ name: Direção visual do pitch
 description: Pitch contínuo no padrão visual da homepage, sem aberturas de capítulo; manter dados e a arte aprovada do bot.
 ---
 
+Renomear “Pitch” para “Nossa Missão” significa alterar apenas os rótulos da navegação, o título da página e o CTA indicado na homepage. Preservar integralmente o conteúdo, o layout, a tipografia, a arte e as seções existentes. O CTA da homepage deve dizer “Leia nossa missão” e apontar para `/pitch`.
+
+**Why:** O criador esclareceu que a solicitação era apenas renomear; a reformulação integral apagou conteúdo e rompeu a identidade visual aprovada.
+
+**How to apply:** Em pedidos de renomeação, não reescrever nem redesenhar a página. Manter `/pitch` e seus capítulos; atualizar somente os pontos de navegação, título e CTA especificados.
+
 O Pitch deve ser redesenhado seguindo o padrão visual da homepage: conteúdo fluido, separado por cores e fundos, sem abertura em cada etapa e sem nomear os blocos como capítulos. Preservar títulos úteis, dados, fontes e regras; otimizar Tokenomics nesse mesmo padrão.
 
 **Why:** O criador reforçou: “isso precisa ser redesenhado, nao precisa de abertura em cada etapa do pitch cara, entende? [...] siga mesmo o padrao visual da home”.
@@ -290,3 +296,9 @@ Não reintroduzir o painel escuro “Alto risco: pode haver perda parcial ou tot
 **Why:** O criador apontou esse painel em uma captura e pediu removê-lo.
 
 **How to apply:** Manter o restante da seção. Essa remoção é específica do painel do Pitch, não das condições econômicas ou dos avisos na documentação.
+
+O hero de `/pitch` deve apresentar a missão e a visão da BETTEX sem duplicar o hero, a arte ou a copy da homepage. A missão é transformar apostadores em investidores, nunca transformar apostas em investimento; a visão é resgatar pessoas de um futuro incerto, com participação na era da IA e busca de proteção do capital.
+
+**Why:** O criador corrigiu explicitamente que o hero estava duplicado e precisava expressar a missão/visão e o objetivo de “resgatar as pessoas”.
+
+**How to apply:** Manter a homepage intacta. Em `/pitch`, usar a missão e a visão aprovadas em vez de reutilizar o hero da homepage; preservar as demais seções salvo pedido expresso.

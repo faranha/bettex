@@ -54,11 +54,11 @@
 - [Real agent intelligence](real-agent-intelligence.md) — seleção inicialmente determinística; decisão probabilística na ALFA ou BETA; demo não comprova inferência real.
 - [Coluna do próximo ciclo](next-cycle-layout.md) — participação, saldo e timer ao lado do gráfico; projeções ficam no gráfico, não na coluna.
 - [Gestão de conta](account-management-scope.md) — painel completo no menu; carteira Arbitrum atribuída ao cadastro e exportação de chaves são requisitos; identidade real.
-- [Hero e tese](homepage-hero-scope.md) — tese do fundador sobre empregos em seção própria; não substituir nem refazer o hero para apresentá-la.
+- [Hero e tese](homepage-hero-scope.md) — tese do fundador em seção própria; manter os heros da Homepage e da Missão sem o selo tipo pin.
 - [Mercados no mobile](mobile-market-content.md) — não repetir os quatro cartões de agentes abaixo da animação; a apresentação anterior já cobre esse conteúdo.
 - [Slides na homepage mobile](homepage-mobile-slides.md) — participação, carteira e agentes em slides horizontais para reduzir altura; preservar desktop e todo o conteúdo.
 - [Imagens na homepage](homepage-imagery.md) — seções devem trabalhar com imagens também no mobile; a tese sobre empregos não deve ficar só em texto.
-- [Benefício em reais](customer-brl-positioning.md) — operação em cripto, recebimento em BRL; conhecimento de cripto não deve ser exigido do participante.
+- [Benefício em reais](customer-brl-positioning.md) — operação em cripto, recebimento em BRL; sem lucro há distribuição zero; a homepage evita copy repetida de Pix na seção Visão BETTEX.
 - [Liberdade de saída](participant-exit-freedom.md) — venda a mercado pelo app ou retirada dos tokens para corretoras; sem resgate, preço ou liquidez garantidos.
 - [Rodapé](footer-scope.md) — navegação compacta, convite simples ao Telegram no mobile e desktop; sem redes pessoais do fundador.
 - [Texto sem metaconversa](product-copy-scope.md) — apresentar o negócio, sem explicar a finalidade do pitch ou narrar a produção da documentação.
@@ -66,7 +66,7 @@
 - [Arquitetura da documentação](documentation-architecture-ownership.md) — BETTEX e subagentes são atores principais; baseline e referências por responsável; features determinísticas separadas.
 - [Leitura do pitch](pitch-reading-behavior.md) — Público antes de Problema; cenário em Ambiente externo; Economia e Token em Tokenomics; menu segue a ordem das áreas; gráficos abertos.
 - [Go to market no Brasil](pitch-brazil-go-to-market.md) — substituir Onboarding; sem seção de Piloto nem expansão internacional nesse bloco do Pitch.
-- [Visual e tom do pitch](pitch-visual-direction.md) — padrão da homepage, sem aberturas por etapa; bot encostado na linha inferior; preservar público e evidências.
+- [Hero e missão do Pitch](pitch-visual-direction.md) — abertura de /pitch com missão/visão próprias, sem duplicar a arte ou a copy do hero da homepage.
 - [Ícones das receitas](pitch-revenue-visuals.md) — Operadora e Tesouraria usam ícones, não a foto das bandejas; não confundir com Community-driven.
 - [Pauta do cenário apocalíptico](pitch-economic-risk-story.md) — Problema 1 abre com os 74% da pesquisa da Copa; preserve também as evidências essenciais sobre emprego.
 - [Mercado na abertura do Pitch](pitch-market-priority.md) — apostas e cripto são públicos potenciais; 6,9 milhões é o núcleo, não o limite; público e fluxo financeiro primeiro.
@@ -104,6 +104,7 @@
 - [Compartilhamento social](social-sharing-policy.md) — artes duráveis, previsões explícitas e nova URL ao trocar a mensagem; preservar links antigos.
 - [Perfis de verificação](verification-profiles.md) — CI do demo visual não certifica integrações históricas; exclusões explícitas, sem reativar finanças para testes.
 - [Hero do Pitch](pitch-hero-hierarchy.md) — H1 prioritário; personagem usando o app em cutout, sem caixa nem legenda.
+- [Integração de mockup do Pitch](pitch-mockup-integration.md) — mockup aprovado integra-se diretamente no Build; não abrir o Designer nem mudar para Design sem pedido.
 - [Vesting na documentação mobile](documentation-vesting-mobile.md) — consulta compacta dos 24 meses; gráficos visíveis no HTML inicial, sem depender de medir capítulos ocultos.
 - [Build export side effects](build-export-side-effects.md) — full validation may change archive headers only; verify member contents before cleanup and respect Git safeguards.
 - [Padrão das ordens](order-standard-requirements.md) — conceito e arte antes da autorização; tabela técnica completa do registro usado pela tesouraria, execução e retorno.

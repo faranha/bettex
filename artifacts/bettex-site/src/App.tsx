@@ -42,7 +42,7 @@ import { SignInPage, SignUpPage } from '@/pages/auth';
 const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 const HOME_PATH = `${BASE_PATH}/`;
 const DOCUMENTATION_PATH = `${BASE_PATH}/documentacao`;
-const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Pitch', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR DEMO', href: '/app' }] as const;
+const mainLinks = [{ label: 'Página Inicial', href: '/' }, { label: 'Nossa Missão', href: '/pitch' }, { label: 'Documentação', href: '/documentacao' }, { label: 'ABRIR DEMO', href: '/app' }] as const;
 const legacyChapterIds = legacyDocumentationHashes;
 const homeAnchor = (id: string) => `${HOME_PATH}#${id}`;
 function usePageLinkProps() {
@@ -65,11 +65,13 @@ function Logo() {
 
 function MainLinks({ className, onNavigate, uniform = false }: { className: string; onNavigate?: () => void; uniform?: boolean }) {
   const [location] = useLocation();
+  const language = useLocale();
   const linkProps = usePageLinkProps();
   return <>{mainLinks.map(({ label, href }) => {
     const active = location === href || (href === '/documentacao' && ['/documentation', '/documentacion'].includes(location));
     const appLink = href === '/app';
-    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`site-page-link ${appLink ? 'site-page-link--app' : uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{appLink && /^\/(documentacao|documentation|documentacion)\/?$/.test(location) ? t('ABRIR APP') : label}{appLink && <ArrowRight size={16} aria-hidden="true" />}</a>;
+    const visibleLabel = href === '/pitch' ? ({ pt: 'Nossa Missão', en: 'Our Mission', es: 'Nuestra misión' } as const)[language] : label;
+    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${href === '/pitch' ? 'pitch' : label.toLowerCase()}`} className={`site-page-link ${appLink ? 'site-page-link--app' : uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{appLink && /^\/(documentacao|documentation|documentacion)\/?$/.test(location) ? t('ABRIR APP') : href === '/pitch' ? <span data-i18n="raw">{visibleLabel}</span> : label}{appLink && <ArrowRight size={16} aria-hidden="true" />}</a>;
   })}</>;
 }
 
@@ -159,6 +161,7 @@ function SiteHeader() {
 }
 
 function SiteFooter() {
+  const language = useLocale();
   const linkProps = usePageLinkProps();
   return <footer id="rodape" className="site-footer relative overflow-hidden bg-[#070B1F] text-[#e1e7f4]">
     <div className="page-wrap relative">
@@ -185,7 +188,7 @@ function SiteFooter() {
           <h3 className="mono">Explore</h3>
           <ul>
             <li><a {...linkProps} href={HOME_PATH}>Página inicial</a></li>
-            <li><a {...linkProps} href={`${BASE_PATH}/pitch`}>Pitch</a></li>
+            <li><a {...linkProps} href={`${BASE_PATH}/pitch`}><span data-i18n="raw">{({ pt: 'Nossa Missão', en: 'Our Mission', es: 'Nuestra misión' } as const)[language]}</span></a></li>
             <li><a {...linkProps} href={DOCUMENTATION_PATH}>Documentação</a></li>
             <li><a {...linkProps} href={`${BASE_PATH}/app`}>Demo</a></li>
           </ul>
@@ -242,8 +245,7 @@ function Home() {
         <HeroAnimatedBackground />
         <div className="hero-intro-content page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[680px] xl:py-16">
           <div className="hero-intro-copy entrance relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#5a8bfc]/35 bg-[#2B59FF]/15 px-4 py-2 text-[11px] font-bold text-[#F4F1E8]"><span className="h-2 w-2 rounded-full bg-[#36E0D0]" /> PROJETO DEFI · TRADING COM IA</div>
-            <h1 className="hero-title mt-7 max-w-[690px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold">
+            <h1 className="hero-title max-w-[690px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold">
               <span className="block">Chega de apostar.</span>{' '}
               <span className="block text-[#F2B632]">Comece a investir.</span>
             </h1>

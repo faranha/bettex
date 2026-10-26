@@ -6,6 +6,8 @@ export const modules: ModuleMap = {
   "./components/mockups/footer-redesign/Current.tsx": () => import("../components/mockups/footer-redesign/Current.tsx"),
   "./components/mockups/footer-redesign/LanguageSelector.tsx": () => import("../components/mockups/footer-redesign/LanguageSelector.tsx"),
   "./components/mockups/pitch-audience-reference/Current.tsx": () => import("../components/mockups/pitch-audience-reference/Current.tsx"),
+  "./components/mockups/pitch-problem-section/Current.tsx": () => import("../components/mockups/pitch-problem-section/Current.tsx"),
+  "./components/mockups/pitch-problem-section/Redesign.tsx": () => import("../components/mockups/pitch-problem-section/Redesign.tsx"),
   "./components/mockups/treasury-movement/Balanced.tsx": () => import("../components/mockups/treasury-movement/Balanced.tsx"),
   "./components/mockups/treasury-movement/Current.tsx": () => import("../components/mockups/treasury-movement/Current.tsx")
 };

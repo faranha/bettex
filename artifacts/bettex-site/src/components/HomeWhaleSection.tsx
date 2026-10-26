@@ -1,4 +1,4 @@
-import { t, useLocale } from '@/lib/i18n';
+import { localizedUrl, t, useLocale } from '@/lib/i18n';
 import { ArrowUpRight } from 'lucide-react';
 import { FreeformWhaleArtwork } from '@/components/FreeformWhaleArtwork';
 import './HomeWhaleSection.css';
@@ -8,10 +8,12 @@ const H2 = 'Nós descobrimos o padrão das baleias por meio de análise quantita
 const NOTE = 'Estratégia em validação. Não há garantia de antecipar movimentos ou obter lucro.';
 const ALT = 'Baleia jubarte nadando em mar azul-meia-noite';
 const EYEBROW = 'Baleias e mercado';
-const DOC = `${import.meta.env.BASE_URL}documentacao`;
+const MISSION = `${import.meta.env.BASE_URL}pitch`;
 
 export function HomeWhaleSection() {
-  useLocale();
+  const language = useLocale();
+  const missionLabel = ({ pt: 'Leia nossa missão', en: 'Read our mission', es: 'Lee nuestra misión' } as const)[language];
+  const missionHref = localizedUrl(MISSION, language);
   return (
     <section id="baleias" className="hw-sec" aria-labelledby="hw-title" data-testid="section-home-whale">
       <figure className="hw-art" role="img" aria-label={t(ALT)} data-testid="img-whale-art">
@@ -23,8 +25,8 @@ export function HomeWhaleSection() {
           <h2 id="hw-title" className="hw-h">{t(H1)}</h2>
           <p className="hw-p">{t(H2)}</p>
           <p className="hw-note" data-testid="text-whale-disclaimer">{t(NOTE)}</p>
-          <a href={DOC} className="hw-docs" data-testid="link-whale-documentation">
-            <span>{t('Ler a documentação técnica')}</span>
+          <a href={missionHref} className="hw-docs" data-testid="link-whale-mission">
+            <span data-i18n="raw">{missionLabel}</span>
             <ArrowUpRight aria-hidden="true" />
           </a>
         </div>
