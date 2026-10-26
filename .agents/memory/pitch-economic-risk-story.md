@@ -53,6 +53,12 @@ A foto de Musk deve ficar integrada à abertura de “O cenário apocalíptico�
 
 O bloco de emprego deve ser resumido, com mais tópicos e números e menos parágrafos. A arte deve ser um robô desenhado trabalhando, isolado em cutout transparente à direita do título, não uma cena de fábrica no fundo.
 
+No slide “Agentes e renda”, aproveitar toda a largura disponível e manter apresentação econômica em altura, sem deixar uma faixa vazia à direita do Optimus e dos indicadores.
+
+**Why:** O criador marcou a área desperdiçada e reiterou: “use melhor o espaco aqui amigo voce precisa ser mais economico”.
+
+**How to apply:** Evitar limites estreitos herdados no conteúdo desse slide; imagem menor ao lado do texto, indicadores distribuídos horizontalmente no desktop e leitura compacta no celular, sem omitir dados ou fontes.
+
 **Why:** Após rejeitar a foto e exigir desenho, o criador pediu o mesmo tratamento cutout da pessoa angustiada: “a mesma coisa aqui, tem que refazer e aqui tem que por na direita e nao na esquerda”.
 
 **How to apply:** Usar personagem desenhado e de corpo inteiro, executando uma tarefa com as mãos, com transparência real e sem cenário ou painel de imagem. Posicionar à direita do título também no celular; preservar o slider, os dados e o quadro vermelho. Não reintroduzir a fábrica de fundo nem arte gigante à esquerda.

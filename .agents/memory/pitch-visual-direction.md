@@ -69,6 +69,12 @@ A arte decorativa da seção Solução deve representar prosperidade, não uma m
 
 **How to apply:** Usar uma ilustração otimista de autonomia e bem-estar no tratamento cutout da página. Preservar os textos, as regras e as ressalvas econômicas; a imagem não representa promessa de retorno garantido.
 
+A seção Solução deve ter fundo branco e a ilustração com cores normais numa área própria à direita, nunca como marca-d’água atrás dos textos. “Seja dono da IA.” é o destaque; etapas e explicação operacional devem evitar excesso de caixas, sombras e divisórias.
+
+**Why:** O criador rejeitou o aspecto esmaecido como “opaco parece 1999” e aprovou aplicar a composição limpa proposta, não apenas ajustar a opacidade.
+
+**How to apply:** Preservar os três blocos da jornada, sua navegação e as condições econômicas. Separar a arte do texto e usar alinhamento e espaçamento, sem voltar ao fundo lilás com desenho translúcido.
+
 Tokenomics também deve ser uma única seção compacta, com um fundo e um título principal; economia, oferta, vesting e direitos não devem parecer duas seções distintas.
 
 **Why:** O criador apontou os dois blocos e reiterou “tokenomics tambem esta parecendo 2 dsecoes distintas, tem que unificar, otimizar o espaco”.
@@ -303,14 +309,14 @@ Não reintroduzir o painel escuro “Alto risco: pode haver perda parcial ou tot
 
 **How to apply:** Manter o restante da seção. Essa remoção é específica do painel do Pitch, não das condições econômicas ou dos avisos na documentação.
 
-O hero de `/pitch` deve apresentar a missão e a visão da BETTEX sem duplicar o hero, a arte ou a copy da homepage. A missão é transformar apostadores em investidores, nunca transformar apostas em investimento; a visão é resgatar pessoas de um futuro incerto, com participação na era da IA e busca de proteção do capital.
+O hero de `/pitch` deve seguir a estrutura visual da homepage, com texto e botão à esquerda e a cena de resgate por um robô à direita. A missão é resgatar pessoas de um futuro perdido: robôs vão tomar os empregos e as bets, o dinheiro. Transformar apostadores em investidores é a resposta proposta.
 
-**Why:** O criador corrigiu explicitamente que o hero estava duplicado e precisava expressar a missão/visão e o objetivo de “resgatar as pessoas”.
+**Why:** O criador pediu expressamente seguir “h1, posicao da imagem botao” da homepage, recuperar a arte do robô resgatando uma pessoa e tornar essa missão fácil de entender.
 
-**How to apply:** Manter a homepage intacta. Em `/pitch`, usar a missão e a visão aprovadas em vez de reutilizar o hero da homepage; preservar as demais seções salvo pedido expresso.
+**How to apply:** Manter a homepage intacta; reaproveitar sua composição visual, não sua imagem ou copy. Não voltar ao hero centralizado apenas textual. Ver detalhes em pitch-hero-hierarchy.md.
 
-Na seção Público, a imagem de fundo deve ser um grupo de personagens desenhados em 2D, com transparência real, livremente aplicado na seção, não bonecos 3D ou fotografia.
+Na seção Público, usar um personagem desenhado em 2D, em cutout transparente fora do fundo, sem grupo atrás do conteúdo. O torcedor deve ser maior, de frente e encostado na divisão inferior da seção. A seção precisa ser compacta.
 
-**Why:** O criador repetiu que queria desenho transparente e esclareceu: “eu estou falanmdo da foto de fundo do background”. A referência era o grupo atrás do conteúdo, não a foto retangular à direita.
+**Why:** Após desenhar a posição desejada à esquerda e pedir uma referência ao futebol, o criador corrigiu a pose e o tamanho: “ele tem que ser maior, de frente, e colado na barra de divisao da section”.
 
-**How to apply:** Manter quatro ou cinco adultos desenhados, sem cenário, moldura ou fundo opaco. Não substituir a foto interna do slider nem alterar o hero por confundir essas três áreas.
+**How to apply:** Usar torcedor em pé de frente, com celular e bola, na lateral esquerda. Ancorar os pés na borda inferior da seção, sem margem transparente que os deixe flutuando. Reservar espaço para não cobrir texto, foto ou controles, inclusive no celular. Não reservar altura pelo slide inativo mais alto. Preservar a foto interna do slider e o hero.

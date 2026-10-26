@@ -31,35 +31,41 @@
   isolation: isolate;
   overflow: hidden;
   background: #fff !important;
+  padding-block: clamp(28px, 3vw, 44px);
 }
-.pb-aud__backdrop {
+.pb-aud .pb-problem__wrap {
+  row-gap: 20px;
+}
+.pb-aud__heading {
+  grid-column: 1 / -1;
+}
+.mk-audience-intro {
+  padding-left: 160px;
+  min-width: 0;
+}
+.pb-aud__front-fan {
   position: absolute;
-  inset: 0;
-  z-index: -1;
+  left: max(0px, calc((100% - 1200px) / 2 - 40px));
+  bottom: 0;
+  display: block;
+  width: 190px;
+  max-width: none;
+  height: 480px;
+  object-fit: contain;
+  object-position: left bottom;
   pointer-events: none;
 }
-.pb-aud__backdrop img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
-  opacity: .55;
-}
-.pb-aud__backdrop::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(255,255,255,.75), rgba(255,255,255,.3) 45%, rgba(255,255,255,.08));
+.pb-aud .pb-problem__wrap {
+  position: relative;
 }
 @media (max-width: 767px) {
-  .pb-aud__backdrop img {
-    object-position: center top;
-  }
+  .mk-audience-intro { padding-left: 0; }
+  .pb-aud .pb-market { padding-left: 88px; }
+  .pb-aud__front-fan { left: 0; width: 96px; height: 260px; }
 }
 .pb-aud__title {
-  grid-column: 1 / -1;
   max-width: 1000px;
-  margin: 0 0 clamp(24px, 4vw, 48px);
+  margin: 0;
   color: #070b1f;
   font-family: var(--app-font-serif);
   font-size: clamp(2.2rem, 4.8vw, 4rem);
@@ -91,6 +97,7 @@
 .mk-track { display: grid; touch-action: pan-y; }
 .mk-slide { grid-area: 1 / 1; min-width: 0; visibility: hidden; opacity: 0; transition: opacity .3s; }
 .mk-slide[data-active=true] { visibility: visible; opacity: 1; }
+.pb-aud .mk-slide:not([data-active=true]) { display: none; }
 @media (prefers-reduced-motion: reduce) { .mk-slide { transition: none; } }
 .mk-ctrl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; width: min(100%, 660px); margin: 20px auto 0; }
 .mk-nav { display: flex; align-items: center; gap: 10px; min-width: 0; min-height: 56px; padding: 8px 12px; border-radius: 12px; border: 1px solid #d6dcef; background: rgba(255,255,255,.94); color: #183173; cursor: pointer; font-size: 12px; font-weight: 800; line-height: 1.25; }

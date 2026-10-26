@@ -45,13 +45,23 @@ export function LaborSignals() {
     const el = ref.current; if (!el) return;
     const kids = Array.from(el.children) as HTMLElement[];
     setTotal(kids.length);
+    if (el.clientWidth <= 0 || kids.length === 0) return;
     let best = 0, d = Infinity;
     const left = el.getBoundingClientRect().left;
     kids.forEach((k, i) => { const v = Math.abs(k.getBoundingClientRect().left - left); if (v < d) { d = v; best = i; } });
-    if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 2) best = kids.length - 1;
+    if (el.scrollWidth > el.clientWidth && el.scrollLeft + el.clientWidth >= el.scrollWidth - 2) best = kids.length - 1;
     setActive(best);
   }, []);
-  useEffect(() => { sync(); window.addEventListener('resize', sync); return () => window.removeEventListener('resize', sync); }, [sync]);
+  useEffect(() => {
+    sync();
+    const observer = new ResizeObserver(sync);
+    if (ref.current) observer.observe(ref.current);
+    window.addEventListener('resize', sync);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', sync);
+    };
+  }, [sync]);
   const go = (i: number) => {
     const el = ref.current; if (!el) return;
     const k = el.children[Math.max(0, Math.min(total - 1, i))] as HTMLElement | undefined; if (!k) return;

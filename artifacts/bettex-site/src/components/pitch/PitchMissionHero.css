@@ -1,0 +1,93 @@
+.pitch-mission-hero {
+  position: relative;
+  overflow: hidden;
+  color: #f4f1e8;
+  border-left: 10px solid #2b59ff;
+  border-bottom: 4px solid #f2b632;
+  background: radial-gradient(ellipse at 83% 42%, #132854 0, transparent 55%), #070b1f;
+}
+.pitch-mission-hero__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  min-height: 680px;
+  align-items: center;
+}
+.pitch-mission-hero__copy {
+  position: relative;
+  z-index: 1;
+  padding-block: 64px;
+}
+.pitch-mission-hero__copy h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 4.6vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -.05em;
+}
+.pitch-mission-hero__copy h1 > span { display: block; }
+.pitch-mission-hero__accent { color: #f2b632; }
+.pitch-mission-hero__copy h2 {
+  max-width: 550px;
+  margin: 24px 0 0;
+  font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.pitch-mission-hero__copy p {
+  max-width: 520px;
+  margin: 18px 0 0;
+  color: #f2b632;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.pitch-mission-hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: min(100%, 320px);
+  min-height: 68px;
+  margin-top: 32px;
+  padding: 12px 12px 12px 28px;
+  border: 1px solid #7390ff66;
+  border-radius: 999px;
+  background: #2b59ff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px #2b59ff40;
+}
+.pitch-mission-hero__button:hover { background: #1e44d6; }
+.pitch-mission-hero__button:focus-visible { outline: 3px solid #f2b632; outline-offset: 4px; }
+.pitch-mission-hero__button-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid #ffffff33;
+  background: #ffffff26;
+}
+.pitch-mission-hero__art { align-self: end; margin: 0; min-width: 0; }
+.pitch-mission-hero__art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 650px;
+  object-fit: contain;
+  object-position: center bottom;
+}
+@media (max-width: 767px) {
+  .pitch-mission-hero { border-left-width: 5px; }
+  .pitch-mission-hero__layout { grid-template-columns: minmax(0, 1fr); gap: 0; min-height: 0; }
+  .pitch-mission-hero__copy { padding-block: 32px 8px; }
+  .pitch-mission-hero__copy h1 { font-size: clamp(2rem, 8.7vw, 3.3rem); }
+  .pitch-mission-hero__copy h2 { margin-top: 20px; font-size: 1.3rem; }
+  .pitch-mission-hero__copy p { font-size: 15px; }
+  .pitch-mission-hero__button { min-height: 60px; margin-top: 24px; font-size: 16px; }
+  .pitch-mission-hero__art { width: min(100%, 440px); justify-self: center; }
+  .pitch-mission-hero__art img { max-height: 340px; }
+}

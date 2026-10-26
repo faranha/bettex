@@ -5,6 +5,18 @@ description: H1 prioritário; nova arte de abertura com pessoa sendo resgatada p
 
 ## Direção atual da arte de abertura
 
+O hero do Pitch deve seguir a estrutura visual da homepage: H1 e botão à esquerda, arte grande à direita integrada ao fundo. A imagem é o robô estendendo a mão para resgatar uma pessoa, não a arte da homepage.
+
+**Why:** O criador reiterou que o Pitch deve respeitar “essa estrutura visual aqui, h1, posicao da imagem botao” e pediu recuperar a cena de resgate.
+
+**How to apply:** Manter a homepage intacta e usar sua hierarquia e composição como referência para o Pitch, sem voltar à abertura centralizada só com texto.
+
+A missão deve ser entendida diretamente como “resgatar as pessoas de um futuro perdido”, porque “os robos vao tomar os empregos e as bets o dinheiro”.
+
+**Why:** O criador afirmou que a missão anterior estava difícil de entender e definiu essa relação causal nas próprias palavras.
+
+**How to apply:** Essa mensagem é a prioridade do H1 e do texto de apoio; transformar apostadores em investidores é a resposta do projeto, não um substituto para explicar a missão. Preservar os três idiomas.
+
 O usuário aprovou para o hero do Pitch a arte de uma pessoa erguendo a mão e sendo resgatada por um agente de IA, um androide reconhecível.
 
 **Why:** O criador apontou que a arte anterior não remetia a um bot ou agente de IA, pediu essa cena e confirmou a aplicação da versão corrigida: “Aplicar ao hero sem cortes laterais”.

@@ -58,13 +58,6 @@ export function PitchProblemSection() {
                   'Quien usa dinero esencial para intentar obtener ingresos de las apuestas arriesga el presupuesto del mes. Apostar no es invertir: el resultado depende de un evento, y una pérdida puede agravar la falta de ahorros.',
                 )}
               </p>
-              <p className="pitch-problem__caveat">
-                {x(
-                  'Contexto, não prova de causalidade: a BETTEX não promete recuperar perdas de apostas nem garante renda.',
-                  'Context, not proof of causality: BETTEX does not promise to recover betting losses or guarantee income.',
-                  'Contexto, no prueba de causalidad: BETTEX no promete recuperar pérdidas de apuestas ni garantiza ingresos.',
-                )}
-              </p>
               <a href="#publico-pitch" className="pitch-problem__link">
                 {x('Ver dados e fontes do público', 'See audience data and sources', 'Ver datos y fuentes del público')}
                 <ArrowRight size={16} aria-hidden="true" />

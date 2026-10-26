@@ -9,7 +9,7 @@ const sections = [
 
 export function HomeSectionNav({ onNavigate, menuOpen }: { onNavigate: () => void; menuOpen?: boolean }) {
   return <div className="hidden xl:block">
-    <SectionAnchorNav sections={sections} label="Página inicial" ariaLabel="Seções da página inicial"
+    <SectionAnchorNav sections={sections} label="Home" ariaLabel="Seções da página inicial"
       data-testid="home-section-nav" offsetProperty="--home-sticky-h" onNavigate={onNavigate} menuOpen={menuOpen} styledMobile />
   </div>;
 }
