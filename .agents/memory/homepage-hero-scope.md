@@ -94,6 +94,12 @@ O hero deve ter uma única frase sobre a comunidade, sem repetir a mesma mensage
 
 **How to apply:** Concentrar a frase sobre a comunidade no subtítulo; o parágrafo seguinte explica a IA e a participação nos lucros.
 
+Na Missão, a altura do hero tem que ser a mesma da Home, inclusive no celular.
+
+**Why:** O criador apontou a diferença e pediu que o hero da Missão tivesse a mesma altura da Home.
+
+**How to apply:** Usar a Home como referência, preservando seus textos e aparência; ajustar a composição da Missão ao espaço disponível, levando em conta o idioma e a largura da tela.
+
 O criador pediu remover o selo tipo pin dos heros da Homepage e da Missão; não o recriar nessas páginas.
 
 **Why:** O criador afirmou que não quer esse selo na Homepage nem na Missão.

@@ -39,8 +39,9 @@ export function AppHeader({ current, className = '' }: { current?: DemoView; cla
       <Link href={demoHref('home', loc)} aria-label={x('BETTEX, meu painel', 'BETTEX, my dashboard', 'BETTEX, mi panel')} data-testid="link-app-brand" className="flex min-w-0 shrink-0 items-center gap-2 rounded-lg">
         <BettexMark className="h-7 w-7" />
         <span className="hidden text-base font-extrabold tracking-wide text-[#1B2A41] sm:inline">BETTEX</span>
+        <span className="text-[10px] font-extrabold tracking-widest text-[#9A6C12]">{x('ALFA', 'ALPHA', 'ALFA')}</span>
       </Link>
-      <button type="button" data-demo-action data-testid="button-demo-notice" onClick={openDemoNotice} className="inline-flex min-h-11 items-center rounded-full border border-[#0E7C6B] bg-[#E9EEE5] px-3 text-[10px] font-extrabold tracking-widest text-[#0A6657]">{x('DEMO', 'DEMO', 'DEMO')}</button>
+      <button type="button" data-demo-action data-testid="button-demo-notice" onClick={openDemoNotice} className="inline-flex min-h-11 shrink-0 items-center px-1 text-[10px] font-extrabold tracking-widest text-[#0A6657] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B]">{x('DEMO', 'DEMO', 'DEMO')}</button>
       <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
         <AppProfileLink />
         <a href={siteHref} data-testid="link-back-to-website" className="inline-flex min-h-11 items-center gap-1 rounded-full px-2 text-xs font-semibold text-[#5B6B85] hover:text-[#0A6657]">

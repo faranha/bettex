@@ -1,12 +1,18 @@
 import { ArrowDown } from 'lucide-react';
+import { useState, type CSSProperties } from 'react';
+import { HomeHeroHeightReference } from '../hero/HomeHeroContent';
 import { useX } from './pitchCopy';
 import './PitchMissionHero.css';
 
 export function PitchMissionHero() {
   const x = useX();
   const base = import.meta.env.BASE_URL;
+  const [homeHeight, setHomeHeight] = useState(0);
 
-  return <section id="visao" className="pitch-mission-hero" aria-labelledby="pitch-mission-title">
+  return <>
+  <HomeHeroHeightReference onHeight={setHomeHeight} />
+  <section id="visao" className="pitch-mission-hero" aria-labelledby="pitch-mission-title"
+    style={homeHeight ? { '--home-hero-height': `${homeHeight}px`, '--home-hero-inner-height': `${homeHeight - 4}px` } as CSSProperties : undefined}>
     <div className="page-wrap pitch-mission-hero__layout">
       <div className="pitch-mission-hero__copy">
         <h1 id="pitch-mission-title" className="hero-title">
@@ -37,5 +43,6 @@ export function PitchMissionHero() {
           loading="eager" decoding="async" fetchPriority="high" />
       </figure>
     </div>
-  </section>;
+  </section>
+  </>;
 }

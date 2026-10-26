@@ -1,0 +1,9 @@
+.home-hero-height-reference {
+  position: fixed;
+  inset: 0 0 auto;
+  visibility: hidden;
+  pointer-events: none;
+  contain: layout style;
+  z-index: -1;
+}
+.home-hero-height-reference .entrance { animation: none; }

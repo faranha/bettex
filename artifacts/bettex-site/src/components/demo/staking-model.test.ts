@@ -128,7 +128,7 @@ test('agent tabs belong inside existing staking, without a separate home trading
   assert.ok(end < corridor.lastIndexOf('</section>'));
   assert.match(home, /<StakingCorridor d=\{d\} \/>/);
   assert.match(home, /<CentralDemo onAction=\{openDemoNotice\} \/>/);
-  assert.match(home, /<AgentShowcase showOtherAgents=\{false\} showDisclaimer=\{false\} \/>/);
+  assert.doesNotMatch(home, /AgentShowcase/);
   assert.doesNotMatch(home, /<MockCentralPanel compact/);
   for (const key of ['crypto', 'sports', 'predictions', 'casino']) {
     assert.ok(tabs.includes(`key: '${key}'`));

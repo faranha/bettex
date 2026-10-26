@@ -18,6 +18,7 @@ import { DocumentationPage } from '@/pages/documentation';
 import { PitchPage } from '@/pages/pitch';
 import { DemoPage } from '@/pages/demo';
 import { HeroBenefit } from '@/components/hero/HeroBenefit';
+import { HomeHeroContent } from '@/components/hero/HomeHeroContent';
 import { HeroAnimatedBackground } from '@/components/hero/HeroAnimatedBackground';
 import { BettexMark } from '@/components/BettexMark';
 import '@/components/SiteFooter.css';
@@ -243,20 +244,7 @@ function Home() {
       <section id="inicio" className="hero-bg relative overflow-hidden text-[#F4F1E8]">
         <div className="hero-intro-stage relative">
         <HeroAnimatedBackground />
-        <div className="hero-intro-content page-wrap relative grid items-center pb-2 pt-8 sm:pt-16 xl:min-h-[680px] xl:py-16">
-          <div className="hero-intro-copy entrance relative z-10">
-            <h1 className="hero-title max-w-[690px] text-[clamp(2.3rem,5.2vw,4.4rem)] font-extrabold">
-              <span className="block">Chega de apostar.</span>{' '}
-              <span className="block text-[#F2B632]">Comece a investir.</span>
-            </h1>
-            <h2 className="mt-5 max-w-[550px] text-[clamp(1.3rem,2.3vw,1.7rem)] font-bold leading-[1.25] text-[#F4F1E8]">Com BETTEX, você é dono do token e da IA junto à comunidade.</h2>
-            <p className="mt-4 max-w-[520px] text-[17px] font-bold leading-[1.5] text-[#F2B632] sm:text-lg">Ganhe até 1% por dia de lucro.</p>
-            <a href="#participacao" data-testid="link-hero-projeto" className="tap mt-8 inline-flex min-h-[68px] w-full max-w-[320px] items-center justify-between gap-5 rounded-full border border-[#7390ff]/40 bg-[#2B59FF] py-3 pl-7 pr-3 text-lg font-bold text-white shadow-[0_10px_30px_rgba(43,89,255,0.25)] transition-colors hover:bg-[#1E44D6] focus-visible:outline-[#F2B632]">
-              <span>Quero ser dono da IA</span>
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/20" aria-hidden="true"><ArrowDown size={22} strokeWidth={2.2} /></span>
-            </a>
-          </div>
-        </div>
+        <HomeHeroContent />
         <HeroBenefit />
         </div>
       </section>
@@ -282,7 +270,7 @@ function Demo() {
   if (isRemovedSimulationPath(path)) return <Redirect to={`/app${typeof window === 'undefined' ? '' : window.location.search}`} />;
   if (path === '/app/login') return <Redirect to="/sign-in" />;
   if (!demoView(path)) return <NotFound />;
-  return <AppSessionGate><InterfaceDemoProvider><div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><InterfaceDemoPage /><SiteFooter /></div></InterfaceDemoProvider></AppSessionGate>;
+  return <AppSessionGate entry={<SignInEntry />}><InterfaceDemoProvider><div className="min-h-[100dvh] min-w-0 overflow-x-clip bg-[#FBF8F0]" data-testid="app-shell"><AppHeader /><InterfaceDemoPage /><SiteFooter /></div></InterfaceDemoProvider></AppSessionGate>;
 }
 
 function Documentation() {
@@ -298,7 +286,7 @@ function HomeRoute() {
 }
 
 function SignInEntry() {
-  return <SignInPage />;
+  return <><SignInPage /><SiteFooter /></>;
 }
 
 function SignUpEntry() {

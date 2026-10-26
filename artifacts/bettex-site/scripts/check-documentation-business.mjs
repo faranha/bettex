@@ -50,12 +50,12 @@ try {
     assert.doesNotMatch(html, /Missing (?:pt|en|es) translation:/, route);
   }
   const protectedPages = {
-    '/': 'b696046d5ceb847c3b2d3f1be0a5770ad11b88a61c33192e3ac7b8552a76d71d',
-    '/pitch': 'fad767460a10646e85909fa1248ae41b89e10c9d4433f110e0854cbee4067b13',
-    '/en/': '07269eae425b1f3306ad50f478dff39907efaaaa81e6fcc155ccb41393b2e6c2',
-    '/en/pitch': 'a122155f9a59a98c7d2a37fa9bda44cdc7c2283c1fed3fc10bf266e425ad5beb',
-    '/es/': 'e194fc350c4e03eac533cc12696bb490c8a5de7c2e022edc3b6cfc38bad5ca7c',
-    '/es/pitch': 'e466a2f3bbe375b404dbb31a550cd3ca28e65c1bd170f475a90a79fce5e6310c',
+    '/': '70c29d896e1c82790286678eada5f1652c75f948dfb0699052eca6fceea74e7b',
+    '/pitch': '0ec5fea30da01a43984f96b4f56407f0de9942a7f248910a8bf5860ea95e9552',
+    '/en/': '15717be8ea9471e294ac13bac7b2cee25786deffc1287777d6620574cd7de2ef',
+    '/en/pitch': 'e18d9c38e50e8e3c7f3af5bf56d7514844be237b9ef818cffc9e9b47d9163da8',
+    '/es/': 'e26eb0d1256eb225ce8d63ddc1608436c20da88fc3636b28868ac97997688557',
+    '/es/pitch': '8f040b752244a0656073a159a560b4d012a4db85898e123b24a0b640c1340b80',
   };
   for (const [route, expected] of Object.entries(protectedPages)) {
     const main = render(route).match(/<main\b[\s\S]*?<\/main>/)?.[0];
