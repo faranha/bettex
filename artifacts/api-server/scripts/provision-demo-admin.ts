@@ -12,7 +12,7 @@ import { decimalUnits } from "../src/modules/audit";
 
 async function provision(input: { email: string; displayName: string; password: string }) {
   if (process.env.NODE_ENV !== "development") throw new Error("development_required");
-  const domain = process.env.REPLIT_DEV_DOMAIN;
+  const domain = process.env.BETTEX_DEV_DOMAIN ?? process.env.REPLIT_DEV_DOMAIN;
   if (!domain) throw new Error("development_domain_required");
   let account = await accountsStore().byEmail(input.email.trim().toLowerCase());
   let sessionCookie = "";

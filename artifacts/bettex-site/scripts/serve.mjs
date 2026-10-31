@@ -29,6 +29,8 @@ export function createSiteServer(root = publicRoot) {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('Referrer-Policy', 'no-referrer');
     res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    // Legacy clickjacking fallback; matches CSP frame-ancestors 'self'.
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
     // Deployment CSP: no arbitrary base URLs, plugins or inline event handlers.
     // Clerk's proxy is same-origin; hosted Clerk and Turnstile remain explicit.
     res.setHeader('Content-Security-Policy', [

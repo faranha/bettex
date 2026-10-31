@@ -42,8 +42,6 @@
     "artifacts/api-server/src/lib/double2x-rules.ts": "risk",
     "artifacts/api-server/src/lib/double2x-store.ts": "ledger",
     "artifacts/api-server/src/lib/earnings-wallet.ts": "wallets",
-    "artifacts/api-server/src/lib/objectAcl.ts": "accounts",
-    "artifacts/api-server/src/lib/objectStorage.ts": "accounts",
     "artifacts/api-server/src/lib/profile-avatar.ts": "accounts",
     "artifacts/api-server/src/lib/round-archive-store.ts": "audit",
     "artifacts/api-server/src/lib/scheduled-demo-account.ts": "simulation",

@@ -23,12 +23,12 @@
     "check:demo": "node --test scripts/demo-state.test.mjs scripts/orchestrator.test.mjs scripts/treasury-round.test.mjs scripts/staking-timeline.test.mjs scripts/scheduled-demo-story.test.mjs scripts/earnings-wallet.test.mjs",
     "check:accounts": "node --test scripts/personal-accounts.test.mjs scripts/nickname.test.mjs",
     "check:journey": "node --test scripts/native-journey.test.mjs scripts/local-round.test.mjs",
+    "check:avatar": "node scripts/profile-avatar-integration.mjs",
     "check:security": "node --test scripts/http-security.test.mjs && node scripts/security-isolation.mjs"
   },
   "dependencies": {
     "@clerk/express": "^2.1.75",
     "@clerk/shared": "^4.38.0",
-    "@google-cloud/storage": "^8.2.0",
     "@workspace/api-zod": "workspace:*",
     "@workspace/bettex-contracts": "workspace:*",
     "@workspace/db": "workspace:*",

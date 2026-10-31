@@ -48,6 +48,7 @@ const steps = [
   ['Server and withdrawal policy', process.execPath, ['--test',
     'artifacts/bettex-site/scripts/serve.test.mjs',
     'artifacts/bettex-site/scripts/wallet-withdrawal-policy.test.mjs']],
+  ['Profile pictures stored in Postgres (no external object storage)', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'check:avatar']],
   ['Secrets in newly generated bundles', 'python', ['scripts/check-secrets.py']],
 ];
 

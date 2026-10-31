@@ -1,4 +1,4 @@
-import { Router, type Request, type Response } from "express";
+import express, { Router, type Request, type Response } from "express";
 import { quoteDemoSwap } from "../lib/demo-swap-pool";
 import { TRANSACTION_FEE_USDC } from "../lib/earnings-wallet";
 import { createHash, randomBytes, randomUUID, timingSafeEqual } from "node:crypto";
@@ -15,7 +15,7 @@ import { CommandSimulationBody, GetSimulationResponse } from "@workspace/api-zod
 import { simulationSnapshot, mutateSimulation } from "../modules/simulation/infrastructure/scenario-store";
 import { permittedOrigin } from "./test-accounts";
 import { demoTabIdentity } from "../modules/simulation/infrastructure/demo-tab-session";
-import { avatarStorage, ProfileAvatarError, validateProfileAvatar, serveProfileAvatar, validAvatarId, removeProfileAvatar } from "../lib/profile-avatar";
+import { AVATAR_LIMIT, AVATAR_TYPES, createAvatarUpload, storeAvatarUpload, ProfileAvatarError, validateProfileAvatar, serveProfileAvatar, validAvatarId, removeProfileAvatar } from "../lib/profile-avatar";
 import { GetDemoRoundArchiveQueryParams, GetDemoRoundArchiveResponse } from "@workspace/api-zod";
 import { roundArchivePage } from "../lib/round-archive-store";
 import { statementFilters } from "../lib/treasury-statement";
@@ -289,10 +289,15 @@ router.post("/demo/profile/avatar/upload-url", async (req, res) => {
     // never from a client-provided owner/account id.
     await userDashboard(req, res);
     if (!res.locals.demoHistorySubject) { res.status(403).json({ error: "authentication_required" }); return; }
-    const uploadURL = await avatarStorage.getObjectEntityUploadURL();
-    const objectPath = avatarStorage.normalizeObjectEntityPath(uploadURL);
+    const { uploadURL, objectPath } = createAvatarUpload();
     const result = await userDashboard(req, res, { avatarUpload: { ...input.data, objectPath, expiresAt: Date.now() + 15 * 60_000 } });
     if (result) res.json(RequestDemoProfileAvatarResponse.parse({ uploadURL, objectPath }));
+  } catch (error) { errorResponse(req, res, error); }
+});
+router.put("/demo/profile/avatar/upload/:id", express.raw({ type: [...AVATAR_TYPES], limit: AVATAR_LIMIT }), async (req, res) => {
+  try {
+    await storeAvatarUpload(req.params.id, req.headers["content-type"], req.body);
+    res.sendStatus(200);
   } catch (error) { errorResponse(req, res, error); }
 });
 router.get("/profile-pictures/:id", async (req, res) => {
