@@ -1,0 +1,58 @@
+name: Development quality
+on:
+  pull_request:
+  push:
+    branches: [main, master, 'development/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: bettex_ci
+          POSTGRES_USER: bettex_ci
+          # Ephemeral fixture credential, not shared with any real environment.
+          POSTGRES_PASSWORD: isolated-github-actions-fixture
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U bettex_ci -d bettex_ci"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      DATABASE_URL: postgresql://bettex_ci@localhost:5432/bettex_ci
+      PGPASSWORD: isolated-github-actions-fixture
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: pnpm/action-setup@d9184bf108216479bc5a137cc391f4d7b14c870b # v6.1.0
+        with:
+          version: 10.26.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - run: python -m pip install "xlsxwriter==3.2.9"
+      - name: Headless Chromium for rendered documentation checks
+        run: pnpm --filter @workspace/bettex-site exec playwright-core install --with-deps chromium
+      - name: PostgreSQL fixture backup tools
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client-16
+      - name: Verify current visual product without reactivating legacy runtimes
+        run: pnpm quality:current --continue --report generated-artifacts/ci-current.json
+      - name: Generated contracts must be committed
+        run: git diff --exit-code -- lib/api-client-react/src/generated lib/api-zod/src/generated
+      - name: Vercel production build output
+        run: pnpm run build:vercel

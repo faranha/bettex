@@ -1,0 +1,205 @@
+@layer theme, base, clerk, components, utilities;
+@import 'tailwindcss';
+@import '@clerk/themes/shadcn.css';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root, .dark {
+  --bettex-scrollbar-thumb: #2B59FF;
+  --bettex-scrollbar-track: #e5e0d4;
+  --background: 44 33% 94%;
+  --foreground: 231 65% 7%;
+  --border: 44 20% 82%;
+  --input: 222 40% 70%;
+  --ring: 222 90% 52%;
+  --card: 44 33% 96%;
+  --card-foreground: 224 62% 14%;
+  --card-border: 222 40% 82%;
+  --popover: 222 60% 98%;
+  --popover-foreground: 224 62% 14%;
+  --popover-border: 222 40% 82%;
+  --primary: 228 100% 58%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 44 25% 88%;
+  --secondary-foreground: 224 62% 14%;
+  --muted: 44 25% 90%;
+  --muted-foreground: 222 25% 36%;
+  --accent: 41 88% 58%;
+  --accent-foreground: 224 62% 14%;
+  --destructive: 7 70% 43%;
+  --destructive-foreground: 0 0% 100%;
+  --sidebar: 222 60% 96%;
+  --sidebar-foreground: 224 62% 14%;
+  --sidebar-border: 222 40% 82%;
+  --sidebar-primary: 222 90% 52%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 222 60% 90%;
+  --sidebar-accent-foreground: 224 62% 14%;
+  --sidebar-ring: 222 90% 52%;
+  --chart-1: 222 90% 52%;
+  --chart-2: 17 90% 65%;
+  --chart-3: 218 76% 68%;
+  --chart-4: 40 95% 58%;
+  --chart-5: 175 73% 54%;
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: 'Bricolage Grotesque', sans-serif;
+  --app-font-mono: 'Space Mono', monospace;
+  --radius: 1rem;
+  --button-outline: rgba(4,19,59,.16);
+  --badge-outline: rgba(4,19,59,.1);
+  --elevate-1: rgba(4,19,59,.04);
+  --elevate-2: rgba(4,19,59,.08);
+  --opaque-button-border-intensity: -8;
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --primary-border: hsl(var(--primary));
+  --secondary-border: hsl(var(--secondary));
+  --muted-border: hsl(var(--muted));
+  --accent-border: hsl(var(--accent));
+  --destructive-border: hsl(var(--destructive));
+  --shadow-xs: 0 4px 10px rgba(3,17,57,.05);
+  --shadow-sm: 0 10px 28px rgba(3,17,57,.08);
+  --shadow: 0 18px 44px rgba(3,17,57,.1);
+  --shadow-lg: 0 28px 65px rgba(3,17,57,.14);
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--site-header-h, 73px); }
+  body { @apply bg-background text-foreground antialiased font-sans; }
+  button, input { font: inherit; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+  ::selection { background: #2B59FF; color: #fff; }
+  :focus-visible { outline: 3px solid #F2B632; outline-offset: 3px; }
+}
+
+.display { font-family: var(--app-font-serif); }
+/* Homepage anchors account for the sticky header once, not once per section. */
+html:has(.home-page) { scroll-padding-top: var(--home-sticky-h, var(--site-header-h, 73px)); }
+.home-page section[id] { scroll-margin-top: 0; }
+/* Each page compensates its persistent navigation exactly once. */
+html:has(.pitch) { scroll-padding-top: var(--pitch-sticky-h, 120px); }
+html:has(.whitepaper) { scroll-padding-top: var(--documentation-sticky-h, var(--site-header-h, 73px)); }
+.whitepaper[id], .whitepaper [id], .whitepaper__content { scroll-margin-top: 0 !important; }
+/* Native scrolling stays available, with the same treatment on both axes. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bettex-scrollbar-thumb) var(--bettex-scrollbar-track);
+}
+
+.site-header,
+.lang-selector__menu {
+  --bettex-scrollbar-track: #11162b;
+}
+
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: var(--bettex-scrollbar-track); border-radius: 999px; }
+*::-webkit-scrollbar-thumb {
+  background: var(--bettex-scrollbar-thumb);
+  border: 2px solid var(--bettex-scrollbar-track);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover { background: #5a7aff; }
+*::-webkit-scrollbar-corner { background: var(--bettex-scrollbar-track); }
+*::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+
+@media (forced-colors: active) {
+  * { scrollbar-color: auto !important; }
+}
+
+.mono { font-family: var(--app-font-mono); }
+.page-wrap { width: min(100% - 40px, 1200px); margin-inline: auto; }
+.pill { border-radius: 999px; }
+.hero-bg { background: radial-gradient(circle at 82% 23%, rgba(43,89,255,.22), transparent 34%), radial-gradient(circle at 15% 100%, rgba(242,182,50,.07), transparent 35%), #070B1F; }
+.hero-pattern { background-image: radial-gradient(rgba(151,182,255,.21) 1.2px, transparent 1.2px); background-size: 27px 27px; }
+/* Match the Pitch's 10px rail. Nova Economia keeps its approved full-area rail;
+   Mercados owns a separate hero-only rail in its component stylesheet. */
+.home-page .hero-intro-stage::before,
+.home-page > .ne-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 10px;
+  background: #2B59FF;
+  z-index: 5;
+  pointer-events: none;
+}
+/* Mobile heroes omit the decorative left rail; desktop accents stay unchanged. */
+@media (max-width: 767px) {
+  .home-page .hero-intro-stage::before,
+  .home-page > .ne-section::before,
+  .home-page .markets-floor__hero::before,
+  .home-page .chero::before,
+  .pitch .cover::after,
+  .pitch .chero::before {
+    display: none;
+  }
+}
+.hero-title { font-family: var(--app-font-serif); letter-spacing: -.065em; line-height: .98; }
+@media (max-width: 360px) {
+  .hero-title { font-size: 2.05rem !important; overflow-wrap: normal; word-break: normal; }
+}
+.agent-image { filter: drop-shadow(0 20px 25px rgba(3,16,54,.17)); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.agent-card:hover .agent-image { transform: translateY(-10px) rotate(-3deg) scale(1.04); }
+.entrance { animation: rise .7s cubic-bezier(.18,.72,.25,1) both; }
+.entrance-delay { animation-delay: .16s; }
+.tap { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+.tap:hover:not(:disabled) { transform: translateY(-2px); }
+.tap:active:not(:disabled) { transform: translateY(1px); }
+.number-input::-webkit-inner-spin-button, .number-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.number-input { appearance: textfield; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 767px) { .page-wrap { width: min(100% - 32px, 1200px); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+
+/* Unified site navigation: text tabs with an underline rule, no capsules. */
+.site-main-nav { align-items: stretch; align-self: stretch; gap: 2px; margin-right: 14px; }
+.site-page-link--tab { position: relative; display: inline-flex; align-items: center; padding: 0 12px; font-size: 13px; font-weight: 600; color: #aebbd9; transition: color .15s; }
+.site-page-link--tab::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; background: #2b59ff; transform: scaleX(0); transition: transform .18s; }
+.site-page-link--tab:hover { color: #f4f1e8; }
+.site-page-link--tab[aria-current="page"] { color: #fff; }
+.site-page-link--tab[aria-current="page"]::after { transform: scaleX(1); }
+.site-page-link--tile { display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-left: 2px solid #2b59ff40; font-size: 15px; font-weight: 600; color: #c5d2f1; }
+.site-page-link--tile[aria-current="page"] { border-left-color: #2b59ff; color: #fff; background: #13204f; }
+.site-header .lang-selector { border-radius: 6px; border-color: #5f86ff40; }
+.site-page-link--app { display: inline-flex; align-items: center; justify-content: center; align-self: center; gap: 12px; min-height: 38px; margin-left: 12px; padding: 0 16px; border: 1px solid #f2b632; border-radius: 6px; background: #f2b632; color: #070b1f; font-size: 12px; font-weight: 800; letter-spacing: .055em; white-space: nowrap; text-decoration: none; transition: background-color .15s, border-color .15s; }
+.site-page-link--app:hover { background: #ffd16a; border-color: #ffd16a; }
+.site-page-link--app[aria-current="page"] { background: #ffd16a; border-color: #fff0bc; box-shadow: inset 0 0 0 1px #070b1f; }
+.site-page-link--app:focus-visible { outline: 2px solid #aac3ee; outline-offset: 3px; }
+@media (max-width: 1279px) { .site-page-link--app { grid-column: 1 / -1; align-self: stretch; width: 100%; min-height: 44px; margin: 8px 0 0; border-radius: 0; } }

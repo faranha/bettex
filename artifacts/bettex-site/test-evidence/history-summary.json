@@ -1,0 +1,101 @@
+{
+  "suite": "BETTEX History follow-up E2E",
+  "route": "/testes/conta",
+  "result": "passed_with_documented_limits",
+  "resolved_issue": {
+    "area": "HistoryPanel date filter",
+    "expected": "A valid interval bracketing a confirmed purchase returns the matching record.",
+    "actual": "The UI shows 'Não foi possível carregar o histórico.' and the request returns HTTP 400.",
+    "reproduction_interval_utc": {
+      "from": "2026-10-05T08:50",
+      "to": "2026-10-05T08:53"
+    },
+    "local_equivalent": "05:50-05:53 Horário de Brasília",
+    "recovery": "Fixed HTTP ISO-date decoding before generated Date-model validation. Verified through authenticated HTTP and PostgreSQL integration checks; browser was not rerun.",
+    "post_fix_status": 200,
+    "post_fix_matching_principal_found": true
+  },
+  "native_financial_flow": {
+    "repeated": false,
+    "test_funding_usdc": 25.0,
+    "purchase_count": 1,
+    "purchase_bettex": 100.0,
+    "purchase_principal_usdc": 5.0,
+    "purchase_fee_usdc": 2.5,
+    "post_restart_usdc": 17.5,
+    "post_restart_bettex": 100.0,
+    "chain_id": 31337,
+    "chain_workflow_restarted": false
+  },
+  "history": {
+    "initial_history_items": 35,
+    "limit_2_pages": 18,
+    "pagination_duplicates": false,
+    "pagination_omissions": false,
+    "purchase_snapshot_preserved": true,
+    "integer_unit_fields_encoded_as_integer_strings": true,
+    "swapping_excludes_test_funding": true,
+    "native_staking_records": 1,
+    "native_distribution_records": 0,
+    "native_treasury_non_admin_status": 403,
+    "authorized_purchase_timeline_items": 11
+  },
+  "privacy": {
+    "anonymous_history_status": 401,
+    "non_admin_treasury_status": 403,
+    "second_owner_received_first_owner_records": false,
+    "foreign_cursor_status": 400,
+    "secret_like_history_field_names_found": false
+  },
+  "profile_and_backup": {
+    "profile_change_saved": true,
+    "profile_change_journaled": true,
+    "logout_login_profile_persisted": true,
+    "encrypted_export_authorized": true,
+    "export_result_journaled": true,
+    "download_event_intercepted_and_canceled": true,
+    "backup_file_saved_or_inspected": false
+  },
+  "persistence": {
+    "api_server_restart_count": 1,
+    "workflow_restarted": "artifacts/api-server: API Server",
+    "history_items_before_restart": 40,
+    "same_history_ids_after_restart": true,
+    "purchase_and_funding_metadata_unchanged": true,
+    "native_balances_unchanged": true
+  },
+  "demo_isolation": {
+    "distribution_preview_status": "Calculado",
+    "distribution_preview_source": "Simulação",
+    "distribution_preview_value_usdc": 0,
+    "preview_paid_or_settled": false,
+    "outgoing_bettex": 1.0,
+    "demo_outgoing_status": "Confirmado in demo statement; request event remained simulation-scoped",
+    "demo_bettex_after": 12499.0,
+    "native_history_unchanged_after_demo": true
+  },
+  "limitations": [
+    "No screenshots attached because logged-in views expose account identity or wallet information.",
+    "Post-fix checks used HTTP and automated integration verification, not another full browser pass.",
+    "Encrypted backup download was canceled; contents were not inspected.",
+    "Native execution is local EVM only. Native distributions and public-chain funding/withdrawals are not implemented; demo activity is simulated."
+  ],
+  "post_fix_checks": {
+    "http_period_status": 200,
+    "http_period_matching_principal_found": true,
+    "admin_without_permission": 403,
+    "admin_with_persisted_permission": 200,
+    "admin_after_revocation": 403,
+    "permission_grant_and_revocation_journaled": true,
+    "synthetic_admin_privilege_and_session_removed": true,
+    "tied_timestamp_pagination": "7 records, pages of 2, no omissions or duplicates",
+    "midstream_insert_excluded_from_snapshot": true,
+    "append_only_database_trigger": true,
+    "correction_projection_in_list_and_detail": true,
+    "immediate_demo_swap_price_snapshot": true,
+    "demo_treasury_net_return_and_cost": true,
+    "demo_retention_distribution_pool_and_buyback_reserve": true,
+    "adapter_tests_created_no_fake_financial_database_records": true,
+    "locale_and_production_build": "PT/EN/ES catalog complete; TypeScript and frontend build passed"
+  }
+}

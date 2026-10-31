@@ -1,0 +1,159 @@
+BETTEX — Demo y prueba de concepto
+
+Esta documentación acompaña al demo y a la prueba de concepto de BETTEX. Registra la arquitectura y sus reglas iniciales como punto de partida; no certifica una operación financiera ni una versión ALFA ya entregada.
+
+El próximo paso es documentar la versión ALFA, tras consultar a la comunidad y probar la receptividad del demo. La retroalimentación de esta etapa orientará la definición de la siguiente versión.
+
+Resumen de las reglas y administración. Los capítulos, dibujos y referencias técnicas completos están en la documentación del sitio. Este archivo no comprueba la implementación u operación financiera.
+
+https://bettex.ai/es/documentacion
+
+Agente BETTEX y subagentes
+
+BETTEX es el agente de orquestación de la arquitectura multiagente descentralizada descrita en esta documentación. Su foco es coordinar análisis y construir decisiones con apoyo directo de los subagentes de riesgo y tesorería. Los subagentes de trading de cada mercado presentan propuestas y evidencias; riesgo y tesorería apoyan su evaluación antes de decisiones de asignación o ejecución. El subagente de gobernanza sigue políticas y documentación. Sistema BETTEX identifica la arquitectura completa; agente BETTEX identifica su inteligencia central de orquestación.
+
+El subagente de riesgo investiga exposición, escenarios de pérdida y compatibilidad de las propuestas con los límites vigentes. El subagente de tesorería analiza capital, reservas, liquidez y compromisos para orientar la disponibilidad y asignación de recursos. Ambos producen análisis e inferencias para apoyar las decisiones del agente BETTEX, pudiendo cuestionar hipótesis, compartir evidencias y solicitar nuevos análisis. No son simples verificadores de parámetros ni versiones independientes de BETTEX. La orquestación no elimina la validación independiente de riesgo ni autoriza ignorar controles.
+
+Gobernanza: interpretar y proponer evolución
+
+El subagente de gobernanza tiene la función de mantener y actualizar la documentación del sistema BETTEX. Sigue decisiones y cambios aprobados, revisa los capítulos y sus traducciones, registra versiones y preserva la coherencia entre la documentación, la implementación y las reglas vigentes. Actualizar la documentación no aprueba políticas ni modifica permisos o derechos económicos.
+
+Adecuación legal y jurídica
+
+Los lanzamientos deben adaptarse a la normativa local. Los subagentes y funcionalidades dependen de la investigación técnico-legal y el cumplimiento de los requisitos, independientemente de las fechas en el roadmap.
+
+Los subagentes de trading, gobernanza, riesgo y tesorería requieren un análisis por país, actividad y responsable. Los permisos no son universales; las actividades sujetas a licencia solo se habilitan con autorización.
+
+Las investigaciones verifican normas, licencias, términos, publicidad, protección del usuario, ALD, privacidad y responsabilidades, con registro formal de evidencias, fechas y controles exigidos.
+
+Cada combinación (agente, actividad, territorio) requiere un alcance documentado (en investigación, restringido o autorizado). La falta de autorización o una investigación pendiente bloquea la operación en el territorio.
+
+Las categorías prohibidas en Brasil (como casinos o predicciones sin licencia) no se ofrecerán. Los ejemplos son condicionales, dependiendo de la investigación de cada actividad concreta.
+
+La evaluación abarca el mint, token, publicidad, juegos, servicios e integraciones. Las APIs, blockchain o licencias extranjeras no sustituyen la autorización local necesaria.
+
+Las expansiones requieren reevaluación. Los cambios regulatorios o de producto suspenden las ofertas afectadas, con las posiciones existentes tratadas según la orientación legal y controles de riesgo.
+
+Las condiciones de disponibilidad deben informarse al usuario y reflejarse en los controles. Esta sección define requisitos de lanzamiento, no certifica licencias ni dictámenes concluidos.
+
+Financiación: origen y destino de los recursos
+
+Los aportes ángel destinan 100% de los recursos a producto, tecnología y marketing, sin salarios ni retiros del fundador. La asignación de 15% de los tokens no impone un split de financiación: los términos identifican origen, destino y derechos.
+
+El mint inicial financia el proyecto a precio fijo; las definiciones de precio, plataforma y ventana siguen la adecuación legal. La venta de tokens de la comunidad destina el 100% en USDC a la tesorería. Los aportes de inversores financian producto, tecnología y marketing, sin salarios; no son beneficio distribuible.
+
+BETTEX no cobra tarifas de servicio. Las transacciones reales pueden exigir costos externos de la red, que no son ingresos de la comunidad.
+
+Burn Lottery y Double 2X
+
+Burn Lottery: un número gratis por billetera con BETTEX en staking; extras pagados en BETTEX y quemados íntegramente. El pago es una salida de BETTEX: pone en cero el peso anterior y cancela todos los créditos anteriores aún no pagados de la ronda; el USDC recibido sigue siendo personal.
+
+Double 2X: juego opcional de rojo o negro con USDC de rendimientos ya recibidos, sin créditos pendientes. Una jugada cada 24 horas corridas, resultado 50/50 y sin tasa de juego. Con 10 USDC jugados, una victoria devuelve 20 en total, ganancia neta de 10 pagada por la tesorería; una derrota devuelve cero y envía los 10 a la tesorería. RTP teórico de 100% no garantiza ganancia por jugada.
+
+El reglamento de la lotería debe identificar precio, premio, financiación, plazo y probabilidades antes de aceptar entradas. Los juegos no son estrategias de inversión ni promesa de rendimiento; resultados simulados no prueban ejecución, aleatoriedad pública ni liquidación.
+
+Ronda operativa y demostración
+
+El modelo opera en rondas diarias UTC. Las pestañas de mercado no crean pools de staking separados.
+
+Administración y propósito
+
+Hoy, BETTEX reúne DeFi e IA, con administración inicial de los fundadores. La visión es sustituir toda la administración por IA con el tiempo y convertirse en una comunidad totalmente DeFAI. El token es comunitario, sin empresa, fundación, salarios ni tarifas. Los recursos sirven al colectivo; las billeteras siguen siendo personales.
+
+Los fundadores administran inicialmente. La transición gradual sustituirá toda la administración por IA, haciendo a BETTEX totalmente DeFAI, con evidencias y límites, sin fecha definida. Esto no implica transferir el dominio de los contratos.
+
+Las decisiones comunitarias siguen indefinidas, sin estructura de DAO, voto por token o renuncia de propiedad.
+
+Los fundadores inician la gestión. La dirección DeFAI prevé subagentes de trading, gobernanza, riesgo y tesorería hacia la autonomía de BETTEX, con los controles y responsabilidades vigentes.
+
+Las operaciones se centran en la transparencia y rendición de cuentas, sin garantías de protección de capital o rendimientos.
+
+Token, captación y quema
+
+Tope de 1 mil millones de BETTEX: 10% mint público, 55% comunidad, 20% fundador/equipo y 15% inversores. El mint financia el proyecto, con detalles de precio y plataforma por definir.
+
+Mint público el 10/12/2026; Sistema/ALFA y vesting inician en marzo de 2027, condicionados a la adecuación legal.
+
+Vesting de 900 millones de BETTEX durante 24 meses desde marzo de 2027: comunidad 550 millones, fundador/equipo 200 millones e inversores 150 millones, en grupos enteros de 11:4:3. El límite inicial separado es 100 millones; la liberación no prueba venta ni circulación.
+
+El 100% de los ingresos de tokens de la comunidad va a la tesorería, sin comisiones. El mint financia el proyecto con rendición de cuentas; los mercados externos no replican el swap oficial.
+
+El resultado elegible se divide: 50% tesorería, 25% staking, 25% recompra. Sin pesos, reservas o liquidez, el 100% queda en la tesorería. Una recompra autorizada quema BETTEX permanentemente; la billetera exclusiva no es el mecanismo de quema.
+
+Staking y liquidación
+
+Los participantes que se unen durante las rondas en curso no reciben beneficios de esa ronda, solo de la siguiente. Los saldos y adiciones se fijan en la apertura de la ronda.
+
+Peso = saldo elegible en la apertura × duración. Las salidas ponen el peso en cero y cancelan créditos anteriores aún no pagados; el retorno ocurre solo en la siguiente ronda. Los incrementos no alteran los pesos existentes. Pago bruto = porción de staking × peso individual ÷ suma de los pesos elegibles.
+
+Ejemplo: A inicia con 1.000 BETTEX elegibles; B recibe 1.000 a las 12:00. Con beneficio elegible de 1.000 USDC y condiciones cumplidas, la porción de staking de 250 USDC paga 250 a A y cero a B. En la siguiente ronda, ambos elegibles desde la apertura y sin salida reciben 125 USDC cada uno sobre un nuevo beneficio elegible de 1.000 USDC. No se recupera beneficio anterior.
+
+Cada ronda paga o no, sin acumular, reabrir ni complementar después. Cualquier salida BETTEX, incluso parcial, anula el peso y cancela solo derechos aún no pagados. Fracciones no ejecutables regresan a tesorería, sin crédito futuro. El USDC recibido sigue siendo personal.
+
+El crédito depende de la elegibilidad, autorización y conciliación. El cierre de la ronda no guarda créditos futuros ni presunciones de transferencia.
+
+Solo el saldo conciliado está disponible. Los envíos inciertos no generan repeticiones o recuperaciones; las correcciones no alteran las billeteras personales.
+
+Gobernanza e integraciones
+
+Las políticas evolucionan por versión, con multisig 2 de 3 para custodia. Los cambios críticos requieren 24h de aviso; las rutinas no requieren nuevas firmas; la IA no amplía permisos.
+
+La tesorería, el efectivo y las billeteras tienen fronteras claras. Las reservas defensivas siguen la política sin mínimo del 50%. Las operaciones requieren evaluación de riesgo independiente.
+
+Starknet y Arbitrum One son alternativas de red y contratos. BETTEX está en planificación y captación de grants, sin red elegida ni grant aprobado presumido. Starknet exige implementación en Cairo y cuentas compatibles; Arbitrum usa EVM. Allora es candidata para inferencias, no para ejecución. Robinhood Crypto Trading API exige cuenta elegible en Estados Unidos y autorización; no demuestra acceso a acciones. Se verificaron consultas públicas de Arbitrum/Gamma; no definen la red de lanzamiento. Otros ejemplos sin acceso privado son simulaciones. No hubo operaciones con dinero real.
+
+Período económico, liquidación y cierre financiero
+
+El período económico es el intervalo UTC entre las 00:00 y las 00:00 del día siguiente. El corte termina la recolección de resultados, pero los pagos se vinculan a la ronda original independientemente del período actual.
+
+Las políticas aprobadas deben fijar ventanas de ejecución, plazos y fuentes. Sin parámetros validados, no hay autorización para distribuir. El cierre ocurre al finalizar la ventana o al completar los pagos.
+
+Los pesos se calculan tras el corte sobre el saldo elegible. Las entradas esperan a la siguiente ronda; las salidas anulan el peso. Las salidas tras el corte cancelan derechos pendientes sin alterar resultados de nuevas rondas.
+
+Las decisiones de liquidación fijan beneficiarios y pesos, considerando salidas confirmadas. Las salidas posteriores cancelan créditos sin redistribución ni nuevos splits. Los registros históricos y pesos actuales son distintos.
+
+La liquidación y ejecución integran la ronda actual. El cierre financiero elimina derechos no enviados; los pagos en curso siguen en conciliación. No hay reapertura ni créditos post-cierre.
+
+Los planes de pago siguen un orden determinista y usan ejecución atómica cuando está validada para la red. Si hay procesamiento parcial, publican quién recibió, quién no y la causa; las fallas pueden causar pérdida definitiva de las porciones no enviadas al cierre, y ese riesgo debe comunicarse previamente.
+
+Salida de BETTEX y orden de los pagos
+
+El orden de red prevalece sobre los mensajes de backend. Las salidas de BETTEX antes de recibir USDC cancelan derechos. Horarios iguales o evidencia insuficiente suspenden la finalización.
+
+Las reservas bancarias no impiden transferencias externas. La elegibilidad requiere validación en red con eventos ordenables. Las verificaciones off-chain aisladas no garantizan el pago automático.
+
+Cancelar derechos no revierte transferencias ni prueba la recuperación de USDC. Las conciliaciones con recepción indebida generan pérdidas de tesorería sin cobrar al participante ni restaurar créditos.
+
+Costos de liquidación y origen temporal
+
+Los costos pertenecen al período de realización, no a la ronda de pago. Los registros de ronda y periodos económicos deben ser distintos para evitar la doble contabilización.
+
+Antes de autorizar el split, reservar principal y techo de costos por activo y proyectar liquidez tras todos los desembolsos. La reserva de costos no es gasto realizado. Identificar fuente y autorización; no descontar silenciosamente costos del derecho del participante ni de la cuota exclusiva de recompra. Conciliar diferencias entre costo reservado y efectivo; el sobrante no es ganancia nueva. Sin presupuesto y cobertura suficientes, no autorizar el split.
+
+Los costos externos no son comisiones de BETTEX. Las reglas de liquidación no permiten usar la tesorería para gastos generales ni cambiar el split de 50%/25%/25%.
+
+El beneficio de la ronda no es una recuperación de capital.
+
+No existe compensación de pérdidas ni requisito de pico patrimonial histórico; los beneficios pueden distribuirse si hay liquidez y reservas.
+
+Elegibilidad, exposición y condiciones de los juegos
+
+Burn Lottery limita un número gratuito por billetera con BETTEX en staking, con snapshot verificable e identificador único por billetera y sorteo. Las transferencias posteriores al corte no generan nuevos números. El presupuesto considera múltiples billeteras por persona; esto no es protección contra múltiples identidades.
+
+El premio de la Burn Lottery y los costes del sorteo requieren una fuente aprobada y cobertura antes de aceptar entradas. Los BETTEX pagados son quemados y no financian el premio. El pago, la referencia de quema y la generación de la entrada deben tener un efecto único y un mecanismo de recuperación verificable; si este vínculo no puede ser garantizado, no acepte pagos. El reglamento informa el sorteo, la aleatoriedad verificable, el tratamiento de fallos y la imposibilidad de deshacer una quema por simple ajuste.
+
+Double 2X exige mandato, apuesta máxima, presupuesto agregado, reserva para victorias simultáneas, plazo, aleatoriedad verificable y procedimiento ante fallas antes de abrir. La tesorería reserva el pago 2x considerando la apuesta recibida y la porción adicional, sin usar recursos de staking, recompra u otros compromisos.
+
+El límite de USDC se basa en rendimientos confirmados, no en identidades de tokens. Las salidas reducen el límite; los depósitos externos y las ganancias no lo aumentan. Las reservas impiden la reutilización, el límite nunca excede el saldo libre de USDC y la evidencia insuficiente bloquea la apuesta.
+
+La regla de una jugada cada 24 horas corridas se aplica a la billetera oficial vinculada a la cuenta; cambiar de sesión, dispositivo o recuperar acceso no reinicia el plazo. No es un límite comprobado por persona: varias billeteras cuentan en el presupuesto agregado. Registrar el inicio una vez antes de ejecutar; un intento incierto no permite otra jugada ni libera la reserva por presunción.
+
+El RTP del 100% es teórico y bruto: no cubre gas ni aleatoriedad. Los juegos tienen libro propio, conciliado con el patrimonio de la tesorería; no cuentan como beneficio de estrategia elegible para el split ni usan el presupuesto exclusivo de recompra, pero sí afectan reservas y liquidez.
+
+Autenticación y elegibilidad jurídica
+
+La autenticación por billetera no prueba identidad civil, residencia ni elegibilidad. KYC y controles territoriales siguen siendo obligatorios cuando se exijan. La demo visual no ofrece operaciones financieras.
+
+La investigación jurídica define controles para mint, juegos e integraciones. Los proveedores externos no eximen de las obligaciones de BETTEX. Sin validación, la operación se restringe; el acceso financiero no se promete sin documentos.
+
+Comunidad y lanzamiento en el Pitch: https://bettex.ai/es/pitch#publico

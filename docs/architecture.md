@@ -1,0 +1,133 @@
+# BETTEX canonical architecture
+
+Real language-model analysis belongs to `agents`, via its inference port and infrastructure adapter, with persisted provenance separate from deterministic controls. See [real agent reasoning](decisions/0016-real-agent-reasoning.md).
+
+The `simulation` context only contains identified scenario executions and coordinates the public APIs for `agents`, `risk`, `execution`, `ledger` and `reconciliation`. Its logs and clock are isolated from other environments. See [isolated executions decision](decisions/0013-simulation-executions.md).
+
+Anonymous demo-tab identity hashing is a simulation infrastructure adapter. The `public-testnet` context contains the read-only Arbitrum Sepolia activity-registry adapter; it is not a financial execution service and grants no account or trading permissions.
+
+Allora/Polymarket integrations follow the [collaboration rule and the canonical registry of pending items](integration-pendencies.md). Unresolved impediments require participation from the creator; do not authorize substitutions, inferences, or economic choices to circumvent them.
+
+This is the normative map of domains, dependencies, and sources of truth. Consult before implementing. [AGENTS.md](../AGENTS.md) defines the routine; [decisions/](decisions/README.md), the decisions. The [support document](architecture/README.md) describes financial gates and the evolution toward services.
+
+## Current state, without confusing intention with implementation
+
+The existing monorepo uses React/Vite, OpenAPI/Orval/Zod, Express, Clerk, and PostgreSQL/Drizzle. Identity and persistence are real. The internal development demonstration keeps balances, operations, quotes, and orchestration emulated; production blocks this API/timer and shows placeholders. There is no complete equity ledger nor production financial signature. Native development accounts are integrated into `/demo/minha-conta`, with two real EVM wallets generated on the client. Their initial association is Arbitrum Sepolia; the holder can accept additional association to the local EVM 31337 for testing supplies and purchases that are actually executed and reconciled. These data are not the emulated balances of the demonstration.
+
+The Roadmap defines ALFA seed with token/contracts/agents, fundraising and formalization afterwards, and BETA with go to market. This product intention does not prove that the financial infrastructure already exists.
+
+The modules below are mandatory boundaries for incremental migration, **not already implemented folders/services**. Do not rename demonstrative JSONB to present it as a ledger.
+
+## Map and ownership
+
+| Module | Domain, rules and own data | Direct dependencies allowed via public API |
+| --- | --- | --- |
+| `accounts` | Users, internal identity, external link, permissions and account cycle | None |
+| `wallets` | Accounts/address/network, custody model, recovery and export; restricted signature port | `accounts` |
+| `ledger` | Accounting, entries, accounting accounts, obligations, reserves and derived balances | `accounts` |
+| `agents` | Specialist → market → BETTEX; proposals, evidence and selection | `risk` |
+| `risk` | Mandates, limits, deterministic authorization and treasury policy | `ledger`, `wallets` |
+| `execution` | Orders, attempts, adapters and external result not yet reconciled | `risk`, `ledger`, `wallets` |
+| `reconciliation` | External confirmations, fills, divergences and reorganizations | `execution`, `ledger`, `wallets` |
+| `audit` | Durable trail of proposals, decisions, attempts and results | None; consumes event contracts |
+
+Permitted access does not grant access to internal tables. `agents` only requests evaluation from the public risk contract; it never calls wallet, ledger, executor, or signer directly. Strategies do not have financial authority. Integration events do not create a reverse dependency between domains.
+
+[Canonical hierarchy](agent-hierarchy.md): first branch BETTEX → Prediction Market → BTC, ETH, and SOL specialists. [Simulated strategy](prediction-paper-trading.md) shares the existing risk policy and hierarchy: the queue belongs to `agents`, controls to `risk`, simulated budget to `ledger`, orders/positions to `execution`, conference to `reconciliation`, and events to `audit`. Treasury is a transversal control, not competing for opportunities. Emulation is exclusive to development/tests; production does not generate its activity and the public demo shows placeholders.
+
+## Layers
+
+```text
+artifacts/api-server/src/modules/<domain>/
+  index.ts         Public API: contracts, ports and use cases
+  domain/          invariants, entities, states and pure policies
+  application/     flows and coordination via ports
+  infrastructure/  repositories and vendor adapters
+  transport/       HTTP, messages and contract translation
+```
+
+- `domain` depends only on its own domain and approved pure contracts/primitives.
+- `application` depends on its own domain/application and allowed public APIs; not on concrete adapters.
+- `infrastructure` implements ports of its own domain/application.
+- `transport` invokes application and uses contracts; it does not concentrate financial decisions.
+- Validators generated by `@workspace/api-zod` are allowed transport contracts, not external vendors or dependencies allowed in the pure domain.
+- `index.ts` does not export repositories, internal schemas, SDKs, or handlers as a domain API.
+- Adapter composition/injection stays outside the central rules.
+- Vendors are accessed by infrastructure adapters; changing a vendor does not change the central rule.
+- Shared contracts do not contain risk decisions, balances, or strategies.
+- Import cycles are not allowed, even between files in the same module.
+- Repositories use the `db` connection and schemas of their own context; global/namespace imports that expose tables from all contexts are not public API.
+
+HTTP interfaces continue in `lib/api-spec`; types/validators are generated in existing libraries. Event contracts can gain their own library when used, without empty scaffolding.
+
+## Sources of truth
+
+| Information | Authoritative source |
+| --- | --- |
+| External authentication | Clerk, verified by backend; never arbitrary client claims |
+| Personal test account | `accounts`, with scrypt, opaque session, consent and lockout outside of development; does not migrate Clerk identity |
+| App entry and demo access | The current ALFA landing page offers only explicit tab-scoped Alex demo entry; native and Clerk credential/signup forms are temporarily hidden, not removed from the underlying account infrastructure. Existing authenticated sessions remain valid. The presentation gate is not authentication and grants no API authority; logout revokes actual sessions before clearing presentation state and account caches. |
+| Nicknames | Accounts receive a persisted random alias independent of their real name, email and authentication provider; legacy empty aliases are backfilled on first profile load. Owner edits survive future sessions. Nicknames are private now; the profile editor states that they will become publicly visible in the future. No public nickname directory or visibility is enabled by this change. |
+| Staking chart emulation | Randomized account-scoped 24-hour chart scenarios start at hour 16 and are persisted alongside test profiles. The existing background demo ticker advances them independently of browser reads and catches up after restart. Six real seconds represent six scenario minutes. Historical readings and projected points remain distinct; calculated chart earnings are provisional, not ledger credits. This chart-only scenario never alters wallet balances, creates trades or supplies missing native protocol aggregates. |
+| Personal test wallets | `wallets`, with public metadata and encrypted vault; key and decryption exclusively in the browser |
+| Internal ownership/permissions | `accounts`, derived and verified on the server |
+| Confirmed on-chain transaction | Correct blockchain, permitted contracts and confirmation/reorganization policy |
+| External order/fill | Authorized brokerage/provider and its reconciled confirmations |
+| Platform accounting position | Internal ledger, reconciled with external sources |
+| Mandate and authorization | Approved versioned policy and deterministic decision from `risk` |
+| Current demonstrative state | Backend/PostgreSQL demonstrative; not real financial balance |
+
+UI, cache, screen price, agent message, and isolated executor response do not substitute these sources.
+
+## Operation and traceability
+
+`proposal → risk authorization → reserve → execution attempt → confirmation/reconciliation → final entry`.
+
+Each operation has `operationId`, identity/scope, idempotency key, and explicit states; proposals, decisions, attempts, and events have their own linked IDs. The “uncertain result” state maintains the reserve until reconciliation. A repeated message does not create another execution.
+
+Use integer units per asset, serialized as strings, explicit network/contract/scale, and defined rounding. Distinguish confirmed balance, reserved balance, and available balance. Reserve, entry, and outbox are atomic; balance derives from entries, not from mutation of a number in the frontend.
+
+Registry of proposal/evidence, mandate/version, decision/motive, attempt, and result is durable. Compensations preserve the past. Discarding screen logs does not erase commands, decisions, or entries.
+
+## Failures, cancellation and recovery
+
+- Without mandatory risk validation, trusted source, or authorization: block new orders and new exposures.
+- Cancellation requires identified order, own authorization, and external confirmation; cancellation request does not prove cancellation.
+- Timeout/restart requires query and reconciliation by the same identifier before resending.
+- Exposure reduction requires pre-approved emergency mandate, deterministic limits, and audit. It does not grant unrestricted signature to the agent.
+- Revocation/interruption blocks new operations, preserving reading, reconciliation, and authorized safe procedures.
+- Recovery operations do not dispense with identity, network, destination, and idempotency checks.
+
+## Legacy and evolution
+
+### Integrated personal registration
+
+[Personal test wallets decision](decisions/0006-personal-test-wallets.md): `/testes/conta` redirects to the account within the app. Existing Clerk accounts are preserved, without email migration; valid native identity has precedence. The composition point `routes/test-accounts.ts` injects the adapters of the two contexts and coordinates a single transaction for registration and password change. Modules do not access each other's internal tables. The legacy compositor `lib/account-identity.ts` resolves the native adapter, without re-exporting infrastructure through the `accounts` public API. Encrypted vault is not authorization for an AI to operate a wallet. Equity ledger and real financial distribution remain pending; test contracts are described below.
+
+### Exclusively test on-chain library
+
+[Test contracts decision](decisions/0007-testnet-contract-library.md) and [specification with sources](contracts/bettex-testnet-spec.md): `lib/bettex-contracts` contains Solidity sources, compilation/ABI, and local EVM verification. Its auxiliary development node is documented in the [journey decision](decisions/0009-native-blockchain-journey.md), without parallel authentication or database. The contracts are on-chain adapters consumed by existing boundaries; they do not implement equity ledger or full results distribution. There is no mainnet authorization or public deployment in this configuration.
+
+[Contracts observation](decisions/0008-test-contract-observation.md): `reconciliation` is the owner of account links and EVM evidence. The dashboard uses existing Clerk, reads Arbitrum Sepolia, validates runtime/block, and does not replace ledger with external balances. The purchase is signed exclusively by the user's wallet, with network protection, exact budget, and idempotency; public deployment/funding remain pending.
+
+[Native blockchain journey](decisions/0009-native-blockchain-journey.md): `/demo/minha-conta` gathers registration/vault/session; the old path only redirects. `wallets` has the explicit local association, RPC adapter, and restricted personal signature; `execution` has operations/steps/nonce/executor persisted before sending; `reconciliation` validates runtime, receipts, and block hashes and keeps event evidence; `ledger` calculates eligible balance × time, records double entries USDC/BETTEX, and verifies balances against the chain. The [test round](decisions/0010-local-round-settlement.md) calculates synthetic result explicitly limited, reserves obligations, pays local USDC, and segregates repurchase funds. This is not external profit calculation nor real strategy ledger. Local EVM uses free MockUSDC and is identified as local; node restart is a new chain, not restoration of previous balances.
+
+### Engineering support: official documentation
+
+`tools/technical-docs/` collects, versions, and queries public technical references. It is a development tool outside financial domains, without HTTP routes or interface. It stores only official documents in `data/technical-docs/`; it does not read accounts, credentials, or user data.
+
+Before changing integration, consult `pnpm docs:query --platform <platform> --query "<subject>"`, verify used versions, and register references in the documentation of the change. Update/recovery and coverage are described in [technical-documentation.md](technical-documentation.md). Deployment and persistence policy: [corresponding decision](decisions/0005-technical-documentation.md).
+
+The [incremental migration decision](decisions/0004-canonical-boundaries.md) records current mixed files, their owners, and criteria for removing exceptions. Do not put new rules in generic folders nor duplicate rules in the frontend.
+
+The executable dependency list is in [architecture-rules.json](architecture-rules.json). `pnpm check:architecture` blocks new unregistered generic files, invalid dependencies/layers, access to internals of other modules, and cycles in the modular backend code.
+
+This verifier is static and limited to the Express base: it does not prove ownership in dynamic SQL, runtime authorization, or vendor security. Tests and review remain mandatory. Future services must be included explicitly in the verification as they are created.
+
+Changes to the map, dependencies, or exceptions require an explicit decision in `docs/decisions/`, update of this document, the manifest, and the tests before implementation.
+
+### Treasury and Governance
+
+The [canonical control capability](treasury-governance.md) and the [integration decision](decisions/0011-treasury-governance-control.md) distribute analysis/proposal in `agents`, authorization/policies in `risk`, reserves/obligations in `ledger`, permissions in `accounts`, movement in `execution`, and evidence in `audit`/`reconciliation`/`wallets`.
+
+The `treasury-governance` and `treasury-resources` routes are composition, not a parallel financial domain. The agent port exposes only observation and proposal. The same treasury lock protects allocations and round settlement; versions and reserves are persisted before sending. The proven implementation is **local, for development, and with test assets**; it does not represent institutional governance, holder voting, or public network deployment.

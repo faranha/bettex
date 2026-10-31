@@ -1,0 +1,251 @@
+import assert from 'node:assert/strict';
+import { after, test } from 'node:test';
+import { request } from 'node:http';
+import { createSiteServer } from './serve.mjs';
+import { routes, seo, canonicalPath } from './seo.mjs';
+import { mkdtemp, readFile, writeFile, symlink, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { AI_HTTP_AGENTS, AI_ROBOTS_TOKENS, isRestrictedAiAgent, robotsPolicy } from './crawler-policy.mjs';
+
+const server = createSiteServer();
+await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+after(() => new Promise(resolve => server.close(resolve)));
+test('dedicated app destinations load their localized shell directly', async () => {
+  for (const [url, title] of [
+    ['/demo/tesouraria', 'Tesouraria'],
+    ['/en/demo/treasury', 'Treasury'],
+    ['/es/demo/tesoreria', 'Tesorería'],
+    ['/demo/central', 'Central da IA'],
+    ['/demo/minha-conta', 'Minha conta'],
+    ['/en/demo/account', 'My account'],
+    ['/es/demo/mi-cuenta', 'Mi cuenta'],
+    ['/demo/minha-conta/security', 'Minha conta'],
+    ['/en/demo/account/security', 'My account'],
+    ['/es/demo/mi-cuenta/profile', 'Mi cuenta'],
+  ]) {
+    const canonical = url.replace('/demo', '/app');
+    const res = await get(canonical);
+    assert.equal(res.status, 200);
+    assert.match(res.body, new RegExp(`<title>${title} \\| BETTEX</title>`));
+    assert.match(res.headers['x-robots-tag'], /noindex/);
+    assert.ok(res.body.includes(`href="https://bettex.ai${canonical}/"`));
+  }
+  assert.equal((await get('/demo/unknown')).status, 404);
+});
+test('legacy demo URLs redirect to the same app area and preserve query parameters', async () => {
+  for (const url of ['/demo', '/en/demo/central', '/es/demo/mi-cuenta/security', '/demo/saldo', '/en/demo/simulation']) {
+    const res = await get(`${url}?preview=public`);
+    assert.equal(res.status, 308);
+    assert.equal(res.headers.location, `${url.replace('/demo', '/app')}?preview=public`);
+  }
+});
+function get(url, headers = {}, method = 'GET') {
+  return new Promise((resolve, reject) => {
+    const req = request({ hostname: '127.0.0.1', port: server.address().port, path: url, headers, method }, res => {
+      const chunks = [];
+      res.on('data', chunk => chunks.push(chunk));
+      res.on('end', () => resolve({ status: res.statusCode, headers: res.headers, body: Buffer.concat(chunks).toString() }));
+    });
+    req.on('error', reject);
+    req.end();
+  });
+}
+
+test('known AI agents cannot retrieve pages, app routes or assets, including HEAD and ranges', async () => {
+  for (const agent of AI_HTTP_AGENTS) {
+    const headers = { 'User-Agent': `Mozilla/5.0 (compatible; ${agent}/1.0)` };
+    for (const url of ['/', '/en/pitch/', '/app/central', '/bettex-mark.svg', '/assets/example.js']) {
+      const response = await get(url, headers);
+      assert.equal(response.status, 403, `${agent}: ${url}`);
+      assert.equal(response.headers['cache-control'], 'private, no-store');
+      assert.match(response.headers.vary, /User-Agent/i);
+      assert.doesNotMatch(response.body, /<html|<svg|BETTEX/);
+    }
+    const head = await get('/pitch/', headers, 'HEAD');
+    assert.equal(head.status, 403);
+    assert.equal(head.body, '');
+    assert.equal((await get('/bettex-mark.svg', { ...headers, Range: 'bytes=0-9' })).status, 403);
+  }
+});
+test('AI agents can read robots.txt, which preserves ordinary search and the canonical sitemap', async () => {
+  const expected = robotsPolicy(seo.origin);
+  assert.equal(await readFile(new URL('../public/robots.txt', import.meta.url), 'utf8'), expected);
+  for (const agent of AI_HTTP_AGENTS) {
+    const response = await get('/robots.txt?policy=1', { 'User-Agent': agent });
+    assert.equal(response.status, 200);
+    assert.equal(response.body, expected);
+    assert.equal(response.headers['cache-control'], 'no-cache');
+  }
+  const head = await get('/robots.txt', { 'User-Agent': 'GPTBot' }, 'HEAD');
+  assert.equal(head.status, 200);
+  assert.equal(head.body, '');
+  const [ordinary, ai] = expected.split('# Restrict');
+  assert.match(ordinary, /User-agent: \*\nAllow: \//);
+  for (const agent of AI_ROBOTS_TOKENS) assert.ok(ai.includes(`User-agent: ${agent}\n`), agent);
+  assert.match(ai, /Disallow: \//);
+  assert.doesNotMatch(ai, /User-agent: (Googlebot|bingbot|Applebot)\n/i);
+  assert.ok(expected.includes(`Sitemap: ${seo.origin}/sitemap.xml`));
+});
+test('search crawlers, social previews and humans keep access without broad bot matching', async () => {
+  for (const agent of ['Googlebot/2.1', 'bingbot/2.0', 'Applebot/0.1', 'TelegramBot', 'facebookexternalhit/1.1', 'Twitterbot/1.0', 'Mozilla/5.0 Chrome/131.0', 'NotClaudeBot/1.0', 'Google-Extended', 'Applebot-Extended']) {
+    assert.equal(isRestrictedAiAgent(agent), false, agent);
+    assert.equal((await get('/', { 'User-Agent': agent })).status, 200, agent);
+  }
+  assert.equal(isRestrictedAiAgent(undefined), false);
+  assert.equal(isRestrictedAiAgent('gPtBoT/1.4'), true);
+  assert.equal((await get('/bettex-mark.svg', { 'User-Agent': 'Googlebot/2.1' })).status, 200);
+  assert.match((await get('/pitch/')).headers.vary, /User-Agent/i);
+});
+
+test('legacy domain permanently redirects with path and complete query intact', async () => {
+  for (const url of ['/', '/pitch/', '/en/documentation/?utm_source=telegram&ref=a%2Fb', '/robots.txt', '//example.org/x']) {
+    const res = await get(url, { Host: 'bettex.replit.app' });
+    assert.equal(res.status, 301);
+    assert.equal(res.headers.location, 'https://bettex.ai' + url);
+    assert.equal(new URL(res.headers.location).hostname, 'bettex.ai');
+  }
+});
+test('proxy-forwarded legacy host redirects, including uppercase and port', async () => {
+  const res = await get('/es/pitch/?a=1', { Host: 'internal', 'X-Forwarded-Host': 'BETTEX.REPLIT.APP:443, internal' });
+  assert.equal(res.status, 301);
+  assert.equal(res.headers.location, 'https://bettex.ai/es/pitch/?a=1');
+});
+test('legacy direct host cannot be masked by a different forwarded host', async () => {
+  const res = await get('/en/pitch/?ref=legacy', { Host: 'bettex.replit.app', 'X-Forwarded-Host': 'bettex.ai' });
+  assert.equal(res.status, 301);
+  assert.equal(res.headers.location, 'https://bettex.ai/en/pitch/?ref=legacy');
+  assert.equal(res.headers['cache-control'], 'no-store');
+  assert.equal(res.body, '');
+});
+test('official, development and unrelated hosts do not redirect', async () => {
+  for (const host of ['bettex.ai', 'localhost', 'preview.replit.dev', 'bettex.replit.app.attacker.test']) {
+    assert.equal((await get('/', { Host: host })).status, 200);
+  }
+  assert.equal((await get('/', { Host: 'internal', 'X-Forwarded-Host': 'bettex.ai' })).status, 200);
+});
+test('every localized route serves its prerendered HTML and canonical', async () => {
+  for (const route of Object.keys(routes)) {
+    const res = await get(canonicalPath(route), { Host: 'bettex.ai' });
+    assert.equal(res.status, 200, route);
+    assert.ok(res.body.includes(`rel="canonical" href="${seo.origin}${canonicalPath(route)}"`), route);
+    assert.equal((res.body.match(/<h1\b/g) ?? []).length, 1, route);
+    assert.equal(res.headers['cache-control'], 'no-cache');
+  }
+});
+test('directory redirects preserve query and do not loop', async () => {
+  const res = await get('/pitch?utm_source=x');
+  assert.equal(res.status, 301);
+  assert.equal(res.headers.location, '/pitch/?utm_source=x');
+  assert.equal((await get(res.headers.location)).status, 200);
+});
+test('static assets, discovery files, byte ranges and HEAD work', async () => {
+  assert.ok((await get('/robots.txt')).body.includes('https://bettex.ai/sitemap.xml'));
+  assert.ok((await get('/sitemap.xml')).body.includes('<urlset'));
+  const res = await get('/bettex-mark.svg', { Range: 'bytes=0-9' });
+  assert.equal(res.status, 206);
+  assert.equal(res.headers['content-type'], 'image/svg+xml');
+  assert.equal(res.headers['content-length'], '10');
+  assert.equal((await get('/bettex-mark.svg', { Range: 'bytes=999999999-' })).status, 416);
+  const head = await get('/pitch/', {}, 'HEAD');
+  assert.equal(head.status, 200);
+  assert.equal(head.body, '');
+});
+test('HTML aliases redirect once to their canonical page, preserving queries', async () => {
+  for (const [alias, target] of [
+    ['/index.html', '/'],
+    ['/pitch.html', '/pitch/'],
+    ['/pitch/index.html', '/pitch/'],
+    ['/documentacao.html', '/documentacao/'],
+    ['/en.html', '/en/'],
+    ['/en/index.html', '/en/'],
+    ['/en/documentation.html', '/en/documentation/'],
+    ['/es/documentacion/index.html', '/es/documentacion/'],
+    ['/app.html', '/app/'],
+  ]) {
+    for (const method of ['GET', 'HEAD']) {
+      const res = await get(`${alias}?utm_source=seo&ref=a%2Fb`, {}, method);
+      assert.equal(res.status, 301, alias);
+      assert.equal(res.headers.location, `${target}?utm_source=seo&ref=a%2Fb`, alias);
+      assert.equal(res.body, '');
+    }
+    assert.equal((await get(target)).status, 200, target);
+  }
+});
+test('downloads and demo stay accessible but out of search indexes', async () => {
+  for (const url of [
+    '/downloads/bettex-documentacao.html',
+    '/downloads/bettex-documentacao-en.html',
+    '/downloads/bettex-documentacao-es.html',
+    '/downloads/bettex-entidade-unica.html',
+    '/app/', '/en/app/', '/es/app/',
+  ]) {
+    const res = await get(url, { 'User-Agent': 'Googlebot/2.1' });
+    assert.equal(res.status, 200, url);
+    assert.equal(res.headers['x-robots-tag'], 'noindex, follow', url);
+    assert.equal((await get(url, {}, 'HEAD')).headers['x-robots-tag'], 'noindex, follow', url);
+  }
+  for (const url of ['/', '/pitch/', '/documentacao/', '/en/', '/es/']) {
+    const res = await get(url);
+    assert.equal(res.headers['x-robots-tag'], undefined, url);
+    assert.match(res.body, /name="robots" content="index, follow"/, url);
+  }
+  assert.equal((await get('/social-preview.html')).headers['x-robots-tag'], 'noindex, nofollow');
+});
+test('CSP allows only hashed inline scripts and denies private artifacts and escaped symlinks', async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'bettex-static-security-'));
+  const script = 'console.log("public-fixture");';
+  await writeFile(path.join(directory, 'index.html'), `<script>${script}</script>`);
+  await writeFile(path.join(directory, '.env'), 'not-a-real-secret');
+  await writeFile(path.join(directory, 'backup.dump'), 'fixture');
+  await symlink('/etc/hostname', path.join(directory, 'escaped.txt'));
+  const isolated = createSiteServer(directory);
+  await new Promise(resolve => isolated.listen(0, '127.0.0.1', resolve));
+  try {
+    const url = `http://127.0.0.1:${isolated.address().port}`;
+    const response = await fetch(url);
+    assert.equal(response.status, 200);
+    const csp = response.headers.get('content-security-policy');
+    assert.ok(csp.includes(`'sha256-${createHash('sha256').update(script).digest('base64')}'`));
+    assert.ok(csp.includes("script-src-attr 'none'"));
+    assert.ok(!csp.includes("'unsafe-eval'"));
+    // Preview uses Vite, so it cannot expose a deployment-only frame-src block.
+    const videoComponent = await readFile(new URL('../src/components/pitch/EmploymentIncomeProblem.tsx', import.meta.url), 'utf8');
+    const videoSrc = videoComponent.match(/src="(https:\/\/[^"]+\/embed\/[^"]+)"/)?.[1];
+    assert.ok(videoSrc, 'Pitch must retain its embedded reference video');
+    const frameSources = csp.split('; ').find(d => d.startsWith('frame-src '))?.split(' ').slice(1) ?? [];
+    assert.ok(frameSources.includes(new URL(videoSrc).origin), 'Published CSP must allow the actual Pitch video origin');
+    assert.ok(!frameSources.includes('*') && !frameSources.includes('https:'), 'Do not permit arbitrary iframe providers');
+    assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
+    for (const file of ['.env', 'backup.dump', 'escaped.txt']) {
+      assert.equal((await fetch(`${url}/${file}`)).status, 404, file);
+    }
+  } finally {
+    await new Promise(resolve => isolated.close(resolve));
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+test('unknown pages return real noindex 404, malformed paths and traversal are rejected', async () => {
+  const missing = await get('/missing-page');
+  assert.equal(missing.status, 404);
+  assert.ok(missing.body.includes('noindex, follow'));
+  assert.equal((await get('/%ZZ')).status, 400);
+  assert.equal((await get('/..%2F..%2Fpackage.json')).status, 400);
+  assert.equal((await get('/', {}, 'POST')).status, 405);
+});
+test('personal balance and history reload directly in all languages without indexing', async () => {
+  for (const [route, title] of [
+    ['/app/saldo', 'Saldo e histórico'],
+    ['/en/app/balance', 'Balance and history'],
+    ['/es/app/saldo', 'Saldo e historial'],
+  ]) {
+    for (const suffix of ['', '/']) {
+      const res = await get(route + suffix);
+      assert.equal(res.status, 200, route);
+      assert.ok(res.body.includes(`<title>${title} | BETTEX</title>`), route);
+      assert.ok(res.body.includes(`href="${seo.origin}${route}/"`), route);
+      assert.equal(res.headers['x-robots-tag'], 'noindex, nofollow');
+    }
+  }
+});

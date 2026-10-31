@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BETTEX — evidência do percurso local</title>
+<style>body{font:16px/1.55 system-ui,sans-serif;color:#192d35;background:#f7f5ee;margin:0}main{max-width:850px;margin:auto;padding:28px}h1,h2{line-height:1.2}.notice,section{padding:18px;background:white;border:1px solid #ddd8cd;border-radius:12px;margin:16px 0}.notice{background:#fff1dd}table{width:100%;border-collapse:collapse}td,th{padding:9px;text-align:left;border-bottom:1px solid #eee}code{font:12px/1.8 monospace;overflow-wrap:anywhere;display:block}small{color:#586d72}li{margin:6px 0}</style>
+<main>
+<h1>BETTEX: percurso confirmado na EVM local</h1>
+<p>Verificação pela interface em <strong>/testes/conta</strong>, com carteira pessoal, assinatura no navegador, recibos RPC e registros PostgreSQL. Data: 5 de outubro de 2026.</p>
+<div class="notice"><strong>Ambiente de testes — ativos sem valor financeiro.</strong><br>EVM LOCAL, chainId 31337. Não é implantação ou compra em testnet pública. MockUSDC não é USDC Circle público. Não há explorador público para estes hashes.</div>
+<section><h2>Valores confirmados</h2><table>
+<tr><th>Etapa</th><th>Resultado</th></tr>
+<tr><td>Abastecimento gratuito</td><td>25 USDC; 0,003 ETH na carteira de depósitos e 0,001 ETH na Carteira BETTEX</td></tr>
+<tr><td>Compra</td><td>100 BETTEX × 0,05 USDC = 5 USDC de principal</td></tr>
+<tr><td>Taxa separada</td><td>2,50 USDC para a companhia; não incluídos no principal da tesouraria</td></tr>
+<tr><td>Total pago em USDC</td><td>7,50 USDC; gas separado em ETH</td></tr>
+<tr><td>Saldo final</td><td>17,50 USDC e 100 BETTEX na carteira destinatária</td></tr>
+<tr><td>Participação</td><td>100 BETTEX elegíveis; início confirmado e peso quantidade × tempo, sem depósito custodial</td></tr>
+<tr><td>Tesouraria</td><td>5 USDC efetivamente recebidos como principal</td></tr>
+<tr><td>Gas efetivo da compra</td><td>180.253 gas; 180.253.001.261.771 wei = 0,000180253001261771 ETH</td></tr>
+</table></section>
+<section><h2>Recibos de transação</h2>
+<p><strong>Abastecimento USDC</strong> — sucesso, bloco 166, índice do evento 0.</p>
+<code>0x9ad0ce0516fd4e3a609835ae5f042142cc589390d887a53dedda64364185a5c5</code>
+<p><strong>Aprovação exata</strong> — sucesso, bloco 186. Allowance: 7.500.000 unidades USDC (7,50 USDC), não ilimitada.</p>
+<code>0xa5ead0887bed1dc404656551b6da9f302b90b40bdce2965aef413c30788444f6</code>
+<p><strong>Compra final</strong> — sucesso, bloco 288, evento PrimaryPurchase no índice 3. Transferências de USDC e BETTEX na mesma transação foram conferidas.</p>
+<code>0x5a03fbf522e30f3b35aed15dd84dbb889ef05e58da776d036d64c4996105bfbc</code>
+<p>Hash do bloco da compra:</p>
+<code>0x0878aa10a6d7150d40300fbfeb446ec0005de376ea121a71f984ae54975ccc6c</code>
+</section>
+<section><h2>Verificação pela interface e persistência</h2><ul>
+<li>Cadastro e sessão existentes; QR/endereço/copiar correspondentes à carteira.</li>
+<li>Segundo pedido de abastecimento não duplicou saldo nem histórico.</li>
+<li>Senha incorreta não assinou nem movimentou fundos.</li>
+<li>Aprovação e compra exigiram confirmações distintas; a mesma operação retomou após reload entre etapas.</li>
+<li>Duplo clique na compra gerou uma única compra e um único evento de compra.</li>
+<li>Sair, entrar e recarregar preservou saldos, início da participação e histórico.</li>
+<li>Cotação de 100.000 BETTEX foi rejeitada por USDC insuficiente, sem transação adicional.</li>
+<li>Português e inglês, viewport 402 × 844: sem overflow horizontal.</li>
+<li>PostgreSQL confirmou as etapas approve/buy e seus hashes, além do PrimaryPurchase 31337/bloco 288/índice 3 com principal 5.000.000 e taxa 2.500.000 em unidades USDC.</li>
+</ul><small>A primeira passagem encontrou duas condições de UI que interrompiam a retomada após aprovação. Foram corrigidas e a operação original, sem novo abastecimento ou novo identificador, completou a compra.</small></section>
+<section><h2>Limitações explícitas</h2><ul>
+<li>Contratos públicos, reserva pública financiada e assinatura institucional autorizada ainda não estão disponíveis para verificar Arbitrum Sepolia.</li>
+<li>Apuração/distribuição de rendimentos e contabilidade patrimonial completa de reservas/obrigações permanecem indisponíveis. Nenhum lucro foi inventado.</li>
+<li>Reiniciar o backend preserva o banco e a conciliação. Reiniciar o nó EVM local cria outra cadeia; registros arquivados não restauram seus saldos.</li>
+<li>Nenhum dinheiro real, token STC, recompra ou conversão inversa foi introduzido.</li>
+</ul></section>
+<p><small>Evidência técnica sanitizada: artifacts/bettex-site/test-evidence/native-journey-e2e.json. Senhas, chaves privadas, cookies, cofre e identidade pessoal não fazem parte deste relatório.</small></p>
+</main></html>

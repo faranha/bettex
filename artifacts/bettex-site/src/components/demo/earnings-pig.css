@@ -1,0 +1,22 @@
+.earnings-pig { flex-shrink: 0; overflow: visible; filter: drop-shadow(0 5px 7px rgba(14,124,107,.16)); }
+.earnings-pig__body { transform-box: fill-box; transform-origin: center bottom; animation: earnings-pig-bob 3.4s ease-in-out infinite; }
+.earnings-pig__coin { animation: earnings-pig-coin 3.4s ease-in-out infinite; }
+.earnings-pig__sparkles { animation: earnings-pig-sparkles 3.4s ease-in-out infinite; }
+@keyframes earnings-pig-bob {
+  0%, 45%, 100% { transform: translateY(0) rotate(0deg); }
+  22% { transform: translateY(-2px) rotate(-3deg); }
+  32% { transform: translateY(1px) scale(1.035,.97); }
+}
+@keyframes earnings-pig-coin {
+  0%, 8% { transform: translateY(-3px); opacity: 0; }
+  18% { transform: translateY(0); opacity: 1; }
+  32% { transform: translateY(17px); opacity: 1; }
+  38%, 100% { transform: translateY(19px); opacity: 0; }
+}
+@keyframes earnings-pig-sparkles {
+  0%, 48%, 100% { opacity: .3; }
+  25%, 35% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .earnings-pig, .earnings-pig * { animation: none !important; }
+}

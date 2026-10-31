@@ -1,0 +1,7 @@
+.public-app-landing .ip-side { min-width: 0; }
+.public-app-landing .ip-tab { min-height: 44px; }
+.public-app-landing .ip-device:focus-visible { outline: 3px solid #F2B632; outline-offset: 4px; border-radius: 12px; }
+@media (max-width: 860px) {
+  .public-app-landing .ip-device { grid-row: 2; }
+  .public-app-landing .ip-copy { grid-row: 3; }
+}

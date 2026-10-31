@@ -1,0 +1,350 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { test } from 'node:test';
+import { documentationAgentTerminology as terms, isDocumentationPath } from '../src/lib/documentation-agent-terminology.ts';
+import { intelligenceCopy, intelligenceTranslations } from '../src/lib/documentation-intelligence.ts';
+import { presentationCopy, presentationTranslations } from '../src/lib/documentation-intelligence-presentation.ts';
+import { documentationMenuItems, formatOutlineTitle, groupReferenceItems } from '../src/components/whitepaperOutline.ts';
+import { documentationChapters, documentationChapterNumber, documentationParentId } from '../src/lib/documentation-structure.ts';
+import { orderGroups, orderCopy, orderStandardTranslations } from '../src/lib/documentation-order-standard.ts';
+import { trainingCopy, trainingProfiles } from '../src/lib/documentation-training.ts';
+
+test('documentary training profiles cover every actor with complete translations and technical destinations', () => {
+  assert.equal(Object.keys(trainingProfiles).length, 8);
+  for (const tuple of [
+    ...Object.values(trainingCopy),
+    ...Object.values(trainingProfiles).flatMap(profile => [profile.input, profile.rule, profile.output, ...profile.references.map(([, label]) => label)]),
+  ]) {
+    assert.equal(tuple.length, 3);
+    assert.ok(tuple.every(value => typeof value === 'string' && value.trim().length > 0));
+  }
+  assert.equal(new Set(Object.values(trainingProfiles).map(profile => profile.strategy)).size, 8);
+  const contractPaths = new Set(orderGroups.flatMap(group => group.fields.map(field => field.path)));
+  for (const path of ['origin.strategy_ref', 'revisions[].strategy_ref', 'origin.analysis_run_ref', 'origin.proposal_ref', 'origin.decision_ref', 'revisions[].evidence', 'revisions[].selection.criteria_ref']) {
+    assert.ok(contractPaths.has(path), `training must use the existing order contract: ${path}`);
+  }
+  for (const tuple of [trainingCopy.cryptoParameters, trainingCopy.cryptoExit, trainingCopy.cryptoCalculation]) {
+    for (const value of tuple) assert.match(value, /20|24|14/);
+  }
+});
+
+test('business orders use consistent terms without renaming evidence or HTTP requests', () => {
+  assert.equal(terms('Repetir o mesmo pedido não duplica a reserva. Novos pedidos recusados não contam.', 'pt'), 'Repetir a mesma ordem não duplica a reserva. Novas ordens recusadas não contam.');
+  assert.equal(terms('A autorização está vinculada à versão do pedido.', 'pt'), 'A autorização está vinculada à versão da ordem.');
+  assert.equal(terms('The same request requires risk authorization.', 'en'), 'The same order requires risk authorization.');
+  assert.equal(terms('La autorización se vincula a la solicitud.', 'es'), 'La autorización se vincula a la orden.');
+  assert.equal(terms('Pedidos de evidência para analisar uma ordem.', 'pt'), 'Pedidos de evidência para analisar uma ordem.');
+  assert.equal(terms('HTTP requests and requests for evidence support execution.', 'en'), 'HTTP requests and requests for evidence support execution.');
+  assert.equal(terms('The order is selected after BETTEX requests new analysis.', 'en'), 'The order is selected after BETTEX requests new analysis.');
+});
+
+test('complete documentary order fields have unique paths, lifecycle requirements and three languages', () => {
+  const fields = orderGroups.flatMap(group => group.fields);
+  assert.ok(fields.length >= 120);
+  assert.equal(new Set(fields.map(field => field.path)).size, fields.length);
+  for (const field of fields) {
+    assert.ok(field.type && field.when);
+    assert.equal(field.copy.length, 3);
+    for (const copy of field.copy) assert.ok(copy.trim());
+    assert.ok(orderStandardTranslations[field.copy[0]]);
+  }
+  for (const path of ['schema_version', 'order_id', 'revisions[].content_hash', 'revisions[].legs[].leg_id', 'authorizations[].financial_snapshot_ref', 'reservation_events[].ledger_entry_ref', 'execution_events[].idempotency_key', 'fills[].execution_event_id', 'costs[].execution_event_id', 'results[].opening_fill_refs', 'results[].closing_fill_refs', 'results[].net_profit', 'events[].corrects_event_id']) {
+    assert.ok(fields.some(field => field.path === path), `Missing canonical order field: ${path}`);
+  }
+  assert.match(orderCopy.scope[0], /proposto/);
+  assert.match(orderCopy.returnText[0], /sem realizar lucro/);
+});
+
+test('selection distinguishes the deterministic baseline, ALFA/BETA inference and demo limitations', () => {
+  for (let index = 0; index < 3; index++) {
+    assert.match(orderCopy.selectionInitial[index], /determin[ií]s/i);
+    assert.match(orderCopy.selectionPhases[index], /ALFA/);
+    assert.match(orderCopy.selectionPhases[index], /BETA/);
+    assert.match(orderCopy.selectionDemo[index], /absolut/i);
+    assert.match(orderCopy.selectionDemo[index], /demo/i);
+  }
+  const paths = new Set(orderGroups.flatMap(group => group.fields).map(field => field.path));
+  for (const suffix of ['method', 'criteria_ref', 'comparison_ref', 'model_ref', 'inference_ref', 'decision_context_ref']) {
+    assert.ok(paths.has(`revisions[].selection.${suffix}`));
+  }
+  assert.match(orderCopy.selectionRanking[0], /identificador estável/);
+  assert.match(orderCopy.selectionAbstain[0], /abstenção/);
+});
+
+test('seven main sections keep Tokenomics separate from Features and own their numbering', () => {
+  const number = id => documentationChapterNumber(documentationChapters.findIndex(chapter => chapter.id === id));
+  assert.deepEqual(documentationChapters.map((_, index) => documentationChapterNumber(index)), [
+    '1', '2', '3.1', '3.2', '3.3', '3.4', '3.4.1.1', '3.4.1.2', '3.4.1.3', '3.5', '3.6', '3.7',
+    '4', '4.1', '4.2', '4.3', '4.4', '4.5', '5', '5.1', '5.2', '5.3', '6', '7',
+  ]);
+  for (const chapter of documentationChapters) {
+    const parent = documentationParentId(chapter.id);
+    if (parent) assert.ok(number(chapter.id).startsWith(`${number(parent)}.`));
+    else assert.equal(number(chapter.id).split('.')[0], String(chapter.group + 1));
+  }
+  const btc = documentationChapters.findIndex(chapter => chapter.id === 'documentacao-especialista-btc');
+  assert.equal(documentationChapterNumber(btc, 3), '3.4.3.1');
+  assert.equal(documentationChapterNumber(btc + 1, 3), '3.4.3.2');
+  assert.equal(documentationChapterNumber(btc + 2, 3), '3.4.3.3');
+  assert.equal(documentationChapterNumber(btc, 12), '3.4.12.1');
+  assert.equal(documentationChapterNumber(btc + 1, 12), '3.4.12.2');
+  assert.equal(documentationChapterNumber(btc + 2, 12), '3.4.12.3');
+  const economics = ['documentacao-emissao', 'documentacao-staking', 'documentacao-feature-recompra'];
+  for (const id of economics) assert.equal(documentationChapters.find(chapter => chapter.id === id)?.group, 4);
+  const features = documentationChapters.filter(chapter => chapter.group === 3).map(chapter => chapter.id);
+  assert.ok(economics.every(id => !features.includes(id)));
+  assert.ok(features.includes('documentacao-jogos'));
+});
+
+test('menus stop at section and subsection without removing deeper reader topics', () => {
+  const items = ['1.1', '1.1.1', '2.1', '2.1.1', '3.1.1', '3.4.3.1', '4.2.1', '5.1', '5.1.1']
+    .map(number => ({ id: number, chapterId: 'chapter', number, level: 1, title: number }));
+  assert.deepEqual(documentationMenuItems(items).map(item => item.number), ['1.1', '2.1', '5.1']);
+  assert.equal(items.length, 9);
+});
+
+test('reference menu groups all descendants without consuming adjacent sections or renumbering', () => {
+  const make = (number, isReference = false) => ({ id: `item-${number}`, chapterId: 'chapter', number, title: number, level: 1, isReference });
+  const items = [make('2.1'), make('2.3', true), make('2.3.1'), make('2.3.7'), make('2.3.7.1'), make('2.4'), make('2.5', true), make('2.5.1')];
+  const groups = groupReferenceItems(items);
+  assert.deepEqual(groups.map(group => group.item.number), ['2.1', '2.3', '2.4', '2.5']);
+  assert.deepEqual(groups[1].children.map(item => item.number), ['2.3.1', '2.3.7', '2.3.7.1']);
+  assert.deepEqual(groups[3].children.map(item => item.number), ['2.5.1']);
+  assert.deepEqual(groupReferenceItems([]), []);
+  assert.equal(groups[1].item, items[1]);
+  assert.equal(groups[1].children[2], items[4]);
+});
+
+test('documentation menu omits terminal punctuation without changing meaningful commas or numbering', () => {
+  for (const title of ['Visão.', 'Agente BETTEX e subagentes.', 'Tokenomics.', 'Participation and results.', 'Administración, seguridad y riesgos.']) {
+    assert.equal(formatOutlineTitle(title), title.slice(0, -1));
+  }
+  assert.equal(formatOutlineTitle('  Administração, segurança\n e riscos.  '), 'Administração, segurança e riscos');
+  assert.equal(formatOutlineTitle('2.1.1 Fórmula:'), '2.1.1 Fórmula');
+  assert.equal(formatOutlineTitle('Roadmap'), 'Roadmap');
+  assert.equal(formatOutlineTitle(undefined), '');
+});
+
+test('positioning transforms bettors into investors, never betting into investment', () => {
+  const messages = JSON.parse(readFileSync(new URL('../src/lib/locales/translations.json', import.meta.url), 'utf8'));
+  const source = JSON.parse(readFileSync(new URL('../src/lib/locales/source.json', import.meta.url), 'utf8'));
+  const forbidden = [
+    /\btransform(?:ar|ando)\s+(?:as?\s+)?apostas?\s+em\s+[^.]*\binvestimentos?\b/i,
+    /\bturn(?:ing)?\s+betting\s+into\s+[^.]*\binvestment\b/i,
+    /\btransform(?:ar|ando)\s+(?:(?:la|las)\s+)?apuestas?\s+en\s+[^.]*\binversi[oó]n\b/i,
+  ];
+  for (const text of [...source, ...Object.keys(messages), ...Object.values(messages).flatMap(Object.values)]) {
+    if (typeof text !== 'string') continue;
+    for (const pattern of forbidden) assert.doesNotMatch(text, pattern);
+  }
+  const claim = 'A proposta da BETTEX é transformar apostadores em investidores por meio de um projeto DeFAI';
+  assert.ok(source.includes(claim));
+  assert.match(messages[claim].en, /bettors into investors/);
+  assert.match(messages[claim].es, /apostadores en inversores/);
+});
+
+test('wallet and optional games are introduced in Features before the participation chapters', () => {
+  const chapters = readFileSync(new URL('../src/components/WhitepaperChapters.tsx', import.meta.url), 'utf8');
+  const staking = chapters.split("case 'documentacao-staking':")[1].split("case 'documentacao-roadmap':")[0];
+  assert.ok(staking.includes('<DocumentationAppIntroduction />'));
+  assert.ok(staking.indexOf('<DocumentationAppIntroduction />') > staking.indexOf('documentacao-exemplo'));
+  const owned = readFileSync(new URL('../src/components/DocumentationOwnedContent.tsx', import.meta.url), 'utf8');
+  const features = owned.split("case 'documentacao-features':")[1].split("case 'documentacao-carteira-bettex':")[0];
+  assert.ok(features.includes("m('documentacao-staking', [10])"));
+  assert.ok(staking.indexOf('<DocumentationAppIntroduction />') > staking.indexOf('documentacao-regras-demo'));
+  const introduction = readFileSync(new URL('../src/components/DocumentationAppIntroduction.tsx', import.meta.url), 'utf8');
+  for (const marker of ['Burn Lottery', 'Double 2X', '50/50',
+    'todo o valor pago é queimado diretamente', 'the entire payment is burned directly', 'todo el importe pagado se quema directamente',
+    'nunca créditos pendentes', 'never pending credits', 'nunca créditos pendientes',
+    'derrota perde o valor jogado', 'a loss forfeits the played amount', 'perder supone perder el importe jugado',
+    'exclusivamente visual', 'visual only', 'exclusivamente visual y',
+    'controlar a carteira fora do aplicativo', 'control the wallet outside the application', 'controlar la cartera fuera del aplicativo']) {
+    assert.ok(introduction.includes(marker), `App introduction omits ${marker}`);
+  }
+});
+
+test('project overview keeps only a localized demo link, without a walkthrough', () => {
+  const source = readFileSync(new URL('../src/components/DocumentationAppWalkthrough.tsx', import.meta.url), 'utf8');
+  const chapters = readFileSync(new URL('../src/components/WhitepaperChapters.tsx', import.meta.url), 'utf8');
+  assert.ok(chapters.includes('<DocumentationAppWalkthrough />'));
+  assert.ok(chapters.indexOf('<DocumentationAppWalkthrough />') < chapters.indexOf('<div className="whitepaper__lead"><p>{c.visaoLead}'));
+  assert.match(source, /<DemoAppLink/);
+  for (const label of ['Explorar o demo BETTEX', 'Explore the BETTEX demo', 'Explorar el demo BETTEX']) assert.ok(source.includes(label));
+  assert.match(source, /id="documentacao-percurso-demo"/);
+  assert.doesNotMatch(source, /const steps|<h3|25 USDC|steps\.map/);
+  const owned = readFileSync(new URL('../src/components/DocumentationOwnedContent.tsx', import.meta.url), 'utf8');
+  assert.doesNotMatch(owned, /DocumentationDemoJourney/);
+});
+
+test('token utility identifies the community-only DeFi and decentralized AI project without changing rights', () => {
+  const synthesis = JSON.parse(readFileSync(new URL('../src/lib/locales/documentation-synthesis.json', import.meta.url), 'utf8'));
+  const key = 'BETTEX dá participação nos resultados conforme as regras. Não dá propriedade da tesouraria, voto automático ou resgate patrimonial. Não garante pagamento.';
+  const markers = {
+    pt: ['finanças descentralizadas', 'inteligência artificial descentralizada', 'exclusivamente pela própria comunidade', 'Não há instituição, fundação, empresa ou fundo', 'sem conceder propriedade da tesouraria, voto ou resgate', 'Pagamento não garantido'],
+    en: ['decentralized finance', 'decentralized artificial intelligence', 'exclusively by its own community', 'no institution, foundation, company or fund', 'without granting treasury ownership, voting rights, or redemption', 'Payment is not guaranteed'],
+    es: ['finanzas descentralizadas', 'inteligencia artificial descentralizada', 'exclusivamente por su propia comunidad', 'No hay institución, fundación, empresa ni fondo', 'sin otorgar propiedad de la tesorería, voto o rescate', 'No se garantiza el pago'],
+  };
+  for (const language of ['pt', 'en', 'es']) {
+    for (const marker of markers[language]) assert.ok(synthesis[key][language].includes(marker), `${language} omits ${marker}`);
+  }
+});
+
+test('tokenomics subtitle introduces DeFAI, DEX and decentralization instead of allocations', () => {
+  const synthesis = JSON.parse(readFileSync(new URL('../src/lib/locales/documentation-synthesis.json', import.meta.url), 'utf8'));
+  const key = '1 bilhão de BETTEX: 10% mint inicial, 55% comunidade, 20% fundador/equipe e 15% investidores; vesting de 24 meses.';
+  for (const language of ['pt', 'en', 'es']) {
+    const subtitle = synthesis[key][language];
+    for (const term of ['DeFAI', 'DEX', { pt: 'descentralizadas', en: 'decentralized', es: 'descentralizadas' }[language]]) {
+      assert.ok(subtitle.includes(term), `${language} omits ${term}`);
+    }
+    assert.doesNotMatch(subtitle, /\d|%|vesting/i);
+  }
+});
+
+test('documentation openings name every trading market and the betting audience in all languages', () => {
+  for (const language of ['pt', 'en', 'es']) {
+    for (const key of ['hero', 'agP1']) {
+      const text = intelligenceTranslations[intelligenceCopy[key]][language].toLowerCase();
+      const sports = { pt: 'esportes (surebet)', en: 'sports (surebet)', es: 'deportes (surebet)' }[language];
+      assert.doesNotMatch(text, /\besports\b/);
+      for (const market of [sports, 'igaming', language === 'en' ? 'crypto' : 'cripto', 'predictions']) {
+        assert.ok(text.includes(market), `${language}/${key} omits ${market}`);
+      }
+      if (key === 'hero') {
+        assert.doesNotMatch(text, /[—–]|\bsubagents?\b|\bsubagentes?\b/);
+        assert.ok(text.split(/\s+/).length <= 85, `${language}/hero is too detailed`);
+      } else {
+        assert.match(text, language === 'en' ? /\bsubagents?\b/ : /\bsubagentes?\b/);
+        assert.ok(text.includes(language === 'en' ? 'each market' : 'cada mercado'));
+        assert.ok(text.includes({ pt: 'seu próprio subagente', en: 'its own trading subagent', es: 'su propio subagente' }[language]));
+        assert.ok(text.includes({ pt: 'se comunica', en: 'communicates', es: 'se comunica' }[language]));
+      }
+    }
+    const audience = {
+      pt: 'pessoas que hoje apostam e tratam apostas como investimento',
+      en: 'people who currently bet and treat betting as an investment',
+      es: 'personas que hoy apuestan y tratan las apuestas como una inversión',
+    }[language];
+    for (const key of ['hero']) {
+      const text = intelligenceTranslations[intelligenceCopy[key]][language];
+      assert.ok(text.includes(audience),
+        `${language}/${key} omits the intended audience`);
+      for (const concept of ['DeFi', 'DeFi AI', 'DeFAI', '100%',
+        { pt: 'descentralizado', en: 'decentralized', es: 'descentralizado' }[language],
+        { pt: 'independente', en: 'independent', es: 'independiente' }[language],
+        { pt: 'sem operador centralizado', en: 'no centralized operator', es: 'sin operador centralizado' }[language]]) {
+        assert.ok(text.includes(concept), `${language}/${key} omits ${concept}`);
+      }
+    }
+  }
+});
+
+test('vision develops agentic reasoning and independence without repeating the market introduction', () => {
+  const concepts = {
+    pt: ['formular objetivos', 'incertezas', 'revisa estratégias', 'fundador', 'controles de risco', 'limites de autorização', 'desenvolvida e validada', 'sem garantia de retorno'],
+    en: ['set objectives', 'uncertainty', 'revises strategies', 'founder', 'risk controls', 'authorization limits', 'developed and validated', 'no guarantee of returns'],
+    es: ['formular objetivos', 'incertidumbres', 'revisa estrategias', 'fundador', 'controles de riesgo', 'límites de autorización', 'desarrollarse y validarse', 'sin garantía de rentabilidad'],
+  };
+  for (const language of ['pt', 'en', 'es']) {
+    const reasoning = intelligenceTranslations[intelligenceCopy.visaoLead][language];
+    const independence = intelligenceTranslations[intelligenceCopy.visaoIndependencia][language];
+    const text = `${reasoning} ${independence}`;
+    for (const concept of concepts[language]) assert.ok(text.includes(concept), `${language}/vision omits ${concept}`);
+    assert.doesNotMatch(text, /[—–]|\besports\b|\biGaming\b|\bpredictions\b/);
+    assert.notEqual(reasoning, intelligenceTranslations[intelligenceCopy.hero][language]);
+  }
+});
+
+test('BETTEX orchestration explicitly depends on risk and treasury decision support in every presentation', () => {
+  const markers = {
+    pt: ['orquestração', 'risco', 'tesouraria', 'decisões'],
+    en: ['orchestration', 'risk', 'treasury', 'decision'],
+    es: ['orquestación', 'riesgo', 'tesorería', 'decisiones'],
+  };
+  for (const language of ['pt', 'en', 'es']) {
+    for (const key of ['visaoLead', 'agentDefinition', 'subagentDefinition', 'agP1']) {
+      const text = intelligenceTranslations[intelligenceCopy[key]][language].toLowerCase();
+      for (const marker of markers[language]) assert.ok(text.includes(marker), `${language}/${key} omits ${marker}`);
+    }
+    const support = intelligenceTranslations[intelligenceCopy.subagentDefinition][language];
+    for (const marker of { pt: ['capital', 'reservas', 'liquidez'], en: ['capital', 'reserves', 'liquidity'], es: ['capital', 'reservas', 'liquidez'] }[language]) {
+      assert.ok(support.includes(marker), `${language}/treasury omits ${marker}`);
+    }
+  }
+});
+
+test('agent identity and roles use the present tense in all languages', () => {
+  const keys = ['agentDefinition', 'subagentDefinition', 'visaoLead', 'agP1', 'agP2', 'agP3', 'agP5',
+    'governanceDocumentation', 'coordination', 'risk', 'governance', 'treasury', 'learning', 'evaluation', 'governanceBaseline'];
+  const future = /(?<!\p{L})(?:será|serão|terá|terão|deverá|deverão|coordenará|investigará|analisará|desenvolverá|comunicará|will|should|tendrá|deberá|desarrollará|comunicará)(?!\p{L})/iu;
+  for (const language of ['pt', 'en', 'es']) {
+    for (const key of keys) {
+      assert.doesNotMatch(intelligenceTranslations[intelligenceCopy[key]][language], future, `${language}/${key} uses the future`);
+    }
+    const introduction = intelligenceTranslations[intelligenceCopy.agP1][language];
+    assert.ok(introduction.startsWith({
+      pt: 'O agente BETTEX é', en: 'The BETTEX agent is', es: 'El agente BETTEX es',
+    }[language]));
+  }
+});
+
+test('central agent stays distinct from specialized subagents in all languages', () => {
+  assert.equal(terms('Agente BETTEX coordena agentes de risco. Agente de governança.', 'pt'),
+    'Agente BETTEX coordena subagentes de risco. Subagente de governança.');
+  assert.equal(terms('BETTEX AI coordinates agents. Risk agent and governance agent.', 'en'),
+    'BETTEX agent coordinates subagents. Risk subagent and governance subagent.');
+  assert.equal(terms('La IA BETTEX coordina agentes. Agente de riesgo.', 'es'),
+    'El agente BETTEX coordina subagentes. Subagente de riesgo.');
+});
+
+test('trading specialties present analysis and contributions in every language, without future claims', () => {
+  const component = readFileSync(new URL('../src/components/AgentIntelligence.tsx', import.meta.url), 'utf8');
+  for (const market of ['crypto', 'sports', 'predictions', 'igaming']) {
+    assert.ok(component.includes(`['documentacao-subagente-${market}', p.${market}Title, p.${market}, p.${market}Proposal]`));
+    for (const language of ['pt', 'en', 'es']) {
+      for (const key of [`${market}Title`, market, `${market}Proposal`]) {
+        const text = presentationTranslations[presentationCopy[key]][language];
+        assert.ok(text.length > 8, `${language}/${key} is missing`);
+        assert.doesNotMatch(text, /(?<!\p{L})(?:será|terá|deverá|will|should|tendrá|deberá)(?!\p{L})/iu);
+      }
+      assert.ok(presentationTranslations[presentationCopy[`${market}Proposal`]][language].includes('BETTEX'));
+    }
+  }
+  for (const language of ['pt', 'en', 'es']) {
+    assert.doesNotMatch(presentationTranslations[presentationCopy.markets][language],
+      /(?<!\p{L})(?:terá|comunicará|will|tendrá)(?!\p{L})/iu);
+  }
+});
+
+test('normalization is idempotent and preserves spacing, amounts and identifiers', () => {
+  for (const language of ['pt', 'en', 'es']) {
+    const source = '  BETTEX · 50% / 25% / 25% · USDC · documentacao-agentes · agentes agents  ';
+    const once = terms(source, language);
+    assert.equal(terms(once, language), once);
+    assert.ok(once.startsWith('  ') && once.endsWith('  '));
+    assert.ok(once.includes('50% / 25% / 25% · USDC · documentacao-agentes'));
+  }
+});
+
+test('central agent labels and their articles never duplicate the word agent', () => {
+  assert.equal(terms('Tesouraria conectada ao agente de IA BETTEX; análises da IA BETTEX.', 'pt'),
+    'Tesouraria conectada ao agente BETTEX; análises do agente BETTEX.');
+  assert.equal(terms('BETTEX AI agent', 'en'), 'BETTEX agent');
+  assert.equal(terms('Agente de IA BETTEX', 'es'), 'Agente BETTEX');
+});
+
+test('agent agreement is masculine, while intelligence agreement stays feminine', () => {
+  assert.equal(terms('A IA BETTEX será desenvolvida. Sua inteligência será desenvolvida.', 'pt'),
+    'O agente BETTEX será desenvolvido. Sua inteligência será desenvolvida.');
+  assert.equal(terms('IA BETTEX · orquestradora', 'pt'), 'agente BETTEX · orquestrador');
+  assert.equal(terms('IA BETTEX · orquestadora', 'es'), 'agente BETTEX · orquestador');
+});
+
+test('terminology applies only to documentation routes, including artifact prefixes', () => {
+  for (const path of ['/documentacao', '/en/documentation/', '/es/documentacion#documentacao-agentes', '/bettex/documentacao']) {
+    assert.equal(isDocumentationPath(path), true);
+  }
+  for (const path of ['/', '/pitch', '/en/pitch', '/app', '/app/documentacao-extra']) {
+    assert.equal(isDocumentationPath(path), false);
+  }
+});

@@ -1,0 +1,41 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+
+const read = (file: string) => readFileSync(new URL(file, import.meta.url), 'utf8');
+
+test('public ALFA and feature links share the localized app entry', () => {
+  const link = read('../DemoAppLink.tsx');
+  assert.match(link, /useLocale\(\)/);
+  assert.match(link, /import\.meta\.env\.BASE_URL/);
+  assert.match(link, /localizedUrl\(appPath, locale\)/);
+  assert.match(link, /t\('Abrir o demo'\)/);
+  assert.doesNotMatch(link, /target="_blank"|localhost|replit\.dev/);
+  const roadmap = read('../RoadmapSection.tsx');
+  assert.doesNotMatch(roadmap, /Em breve, features|features--soon/);
+  assert.match(roadmap, /index === 0 \|\| index === 2/);
+  assert.match(roadmap, /<DemoAppLink className="roadmap__features/);
+  assert.match(roadmap, /date: '10 de dezembro de 2026'/);
+  assert.match(roadmap, /date: 'Março de 2027'/);
+  assert.match(roadmap, /Cada mercado e território só abre com integração e controles validados e adequação legal/);
+  assert.match(roadmap, /Dados públicos não equivalem a operação autorizada/);
+  assert.match(roadmap, /vesting de 24 meses/);
+  assert.match(roadmap, /description: copy\.rm2x/);
+  assert.match(roadmap, /description: copy\.rm3x/);
+  assert.match(roadmap, /<p>\{stop\.description\}<\/p>/);
+  assert.doesNotMatch(roadmap, /hideMintSalesDisclaimer|hideAlphaReleaseDisclaimer/);
+  const documentation = read('../../lib/documentation-copy.ts');
+  assert.match(documentation, /"rm2x": "Oferta de até 10% da emissão, a preço fixo, conforme regras, termos e elegibilidade aprovados\. O valor arrecadado formará a base da tesouraria\."/);
+  assert.match(documentation, /"rm3x": "Sistema e escopo inicial validados, com captação de investidores e início do vesting de 24 meses\."/);
+  assert.match(roadmap, /Não é uma capacidade já entregue nem uma promessa de data/);
+  assert.match(roadmap, /date: 'Após o ALFA · data a definir'/);
+  assert.doesNotMatch(roadmap, /current: true|BETA · TGE|Outubro de 2026|Novembro de 2026|Janeiro de 2027/);
+  const app = read('../../App.tsx');
+  assert.match(app, /<RoadmapSection \/>/);
+  assert.match(read('../../pages/pitch.tsx'), /<RoadmapSection id="pitch-roadmap" \/>/);
+  assert.match(read('../WhitepaperChapters.tsx'), /roadmapStops\.map/);
+  assert.match(app, /<DemoAppLink[^>]*data-testid="brand-alpha-badge"/);
+  assert.match(read('../../pages/pitch.tsx'), /<DemoAppLink data-testid="pitch-open-alpha-demo"/);
+  assert.doesNotMatch(read('./PublicDemoPage.tsx'), /Coming soon|Próximamente|is on its way/);
+  assert.match(read('../live-markets/LiveMarketsSection.tsx'), /<DemoAppLink/);
+});

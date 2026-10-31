@@ -1,0 +1,33 @@
+{
+  "origin": "https://bettex.ai",
+  "pages": {
+    "/": {
+      "title": "BETTEX | Comunidade DeFi e trading com inteligência artificial",
+      "description": "Comunidade aberta que constrói tecnologia DeFi e um agente de IA para vários mercados. Conheça o token comunitário, o roadmap e a demonstração da BETTEX.",
+      "image": "home-community",
+      "imageAlt": "BETTEX: comunidade aberta construindo tecnologia DeFi e um agente de IA.",
+      "index": true
+    },
+    "/pitch": {
+      "title": "Pitch BETTEX | Comunidade, tecnologia DeFi e roadmap",
+      "description": "Conheça a proposta da BETTEX: comunidade aberta, agente de IA para vários mercados, token comunitário, tokenomics, estratégia de lançamento e riscos.",
+      "image": "pitch-community",
+      "imageAlt": "Pitch BETTEX: comunidade, tecnologia DeFi e roadmap.",
+      "index": true
+    },
+    "/documentacao": {
+      "title": "Documentação BETTEX | Agente, tokenomics, regras e riscos",
+      "description": "Conheça a comunidade BETTEX em seis capítulos: visão, agente e mercados, tokenomics, participação e resultados, roadmap, administração, segurança e riscos.",
+      "image": "documentation-community",
+      "imageAlt": "Documentação BETTEX: seis capítulos sobre o projeto, tokenomics, regras e riscos.",
+      "index": true
+    },
+    "/app": {
+      "title": "Demo BETTEX | Central da IA, Tesouraria e Histórico",
+      "description": "Explore a demo visual da comunidade BETTEX: painel, Central da IA, Tesouraria e Histórico conectados. Dados ilustrativos, sem dinheiro real ou transações.",
+      "image": "demo-community",
+      "imageAlt": "Demo BETTEX: painel, Central da IA, Tesouraria e Histórico em uma interface exclusivamente visual.",
+      "index": false
+    }
+  }
+}

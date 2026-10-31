@@ -1,0 +1,24 @@
+{
+  "name": "@workspace/bettex-contracts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./runtime": "./src/runtime.ts",
+    "./verified-artifacts": "./src/verified-artifacts.json"
+  },
+  "scripts": {
+    "build": "node scripts/compile.mjs",
+    "local:runtime": "node scripts/local-runtime.mjs",
+    "public:prepare": "node scripts/public-demo-runtime.mjs --prepare",
+    "public:runtime": "node scripts/public-demo-runtime.mjs --watch",
+    "test": "node --test test/contracts.test.mjs test/app-flow.test.mjs test/wallet-services.test.mjs"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "5.6.1",
+    "esbuild": "0.28.2",
+    "ethers": "6.17.0",
+    "hardhat": "3.18.1",
+    "solc": "0.8.37"
+  }
+}

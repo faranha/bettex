@@ -1,0 +1,33 @@
+/* Shared content geometry inside Central overlay panels. Scoped to new wrapper classes only. */
+.cg-dbody .cgo-stack{display:grid;gap:1.25rem;min-width:0;align-content:start}
+.cg-dbody .cgo-stack>*{min-width:0;margin-top:0}
+.cg-dbody .cgo-stack>section,.cg-dbody .cgo-stack>.pf{margin-top:0}
+
+.cg-dbody .cgo-bettex{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;min-width:0}
+.cg-dbody .cgo-bettex>*{min-width:0;margin:0}
+.cg-dbody .cgo-bettex>section{padding:1.15rem 1.25rem}
+.cg-dbody .cgo-bettex>section>h3,.cg-dbody .cgo-bettex>section>div:first-child{margin-bottom:0}
+.cg-dbody .cgo-bettex>section dl{margin-top:1rem;gap:1rem 1.25rem}
+.cg-dbody .cgo-bettex>section [role="tablist"]{margin-top:1rem;gap:.6rem}
+.cg-dbody .cgo-bettex>section [data-testid="mandate-text"]{margin-top:1rem;line-height:1.65}
+.cg-dbody .cgo-bettex>section ul{margin-top:1rem;display:grid;gap:.6rem;line-height:1.6}
+.cg-dbody .cgo-bettex>section button[data-demo-action]{margin-top:1.25rem}
+.cg-dbody .cgo-bettex>nav{padding:0 .15rem}
+.cg-dbody .cgo-bettex>p{padding:0 .15rem;line-height:1.5}
+
+@media (min-width:900px){
+  .cg-dbody .cgo-bettex{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem 1.5rem}
+  .cg-dbody .cgo-bettex>nav,.cg-dbody .cgo-bettex>[data-testid="bettex-summary"],.cg-dbody .cgo-bettex>[data-testid="bettex-authorization"],.cg-dbody .cgo-bettex>p{grid-column:1/-1}
+  .cg-dbody .cgo-bettex>[data-testid="bettex-config"] dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:768px){
+  .cg-modal .cg-tabs[role="tablist"]{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+  .cg-modal .cg-tabs button{flex-shrink:0}
+  .cg-dbody .cgo-stack,.cg-dbody .cgo-bettex{gap:1rem}
+  .cg-dbody .cgo-bettex>section{padding:1rem}
+  .cg-dbody .cgo-bettex>section dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cg-dbody .cgo-bettex>section button[data-demo-action]{width:100%}
+}
+@media (max-width:360px){
+  .cg-dbody .cgo-bettex>[data-testid="bettex-config"] dl{grid-template-columns:minmax(0,1fr)}
+}

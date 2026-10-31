@@ -1,0 +1,8 @@
+.treasury-wallet-card {
+  overflow-wrap: anywhere;
+}
+.treasury-wallet-card [data-amount],
+.treasury-wallet-card [data-amount] > span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "platforms": {
+    "starknet": {
+      "root": "https://docs.starknet.io/",
+      "hosts": ["docs.starknet.io"],
+      "owners": ["starknet-io"],
+      "proof": "Creator requested Starknet documentation. GitHub API verifies starknet-io/starknet-docs, whose homepage is https://docs.starknet.io. Its docs.json footer links to the same repository.",
+      "repositories": ["starknet-io/starknet-docs"],
+      "paths": ["/"]
+    },
+    "arbitrum": {
+      "root": "https://docs.arbitrum.io/",
+      "hosts": ["docs.arbitrum.io"],
+      "owners": ["OffchainLabs"],
+      "proof": "Official docs link to https://github.com/OffchainLabs/arbitrum-docs/edit/master/docs/get-started/overview.mdx",
+      "repositories": ["OffchainLabs/arbitrum-docs"],
+      "paths": ["/"]
+    },
+    "ethereum": {
+      "root": "https://ethereum.org/developers/docs/",
+      "hosts": ["ethereum.org", "eips.ethereum.org", "ercs.ethereum.org"],
+      "owners": ["ethereum"],
+      "proof": "Public repository ethereum/ethereum-org-website: GitHub API verified owner ethereum and homepage https://ethereum.org/. README identifies the official website.",
+      "repositories": ["ethereum/ethereum-org-website"],
+      "paths": ["/en/developers/docs", "/developers/docs", "/llms", "/sitemap", "/sitemaps/sitemap/en.xml", "/robots.txt"],
+      "standards": [
+        "https://eips.ethereum.org/EIPS/eip-155",
+        "https://eips.ethereum.org/EIPS/eip-1559",
+        "https://eips.ethereum.org/EIPS/eip-712",
+        "https://ercs.ethereum.org/ERCS/erc-20",
+        "https://ercs.ethereum.org/ERCS/erc-2612",
+        "https://eips.ethereum.org/EIPS/eip-1193"
+      ],
+      "standards_reason": "ERC-20 token, network/replay, fees and restricted signing; permit and wallet-provider interfaces are references for planned requirements, not adopted implementations."
+    },
+    "allora": {
+      "root": "https://docs.allora.network/",
+      "hosts": ["docs.allora.network"],
+      "owners": ["allora-network"],
+      "proof": "Official docs footer links to https://github.com/allora-network/docs and the allora-network organization.",
+      "repositories": ["allora-network/docs"],
+      "paths": ["/"]
+    },
+    "robinhood": {
+      "root": "https://docs.robinhood.com/",
+      "hosts": ["docs.robinhood.com"],
+      "owners": [],
+      "proof": "Creator registered the official docs.robinhood.com domain. Third-party/unofficial SDKs are not approved.",
+      "repositories": [],
+      "paths": ["/"]
+    },
+    "polymarket": {
+      "root": "https://docs.polymarket.com/",
+      "hosts": ["docs.polymarket.com"],
+      "owners": ["Polymarket"],
+      "proof": "Official published documentation links directly to SDK repositories under github.com/Polymarket.",
+      "repositories": [],
+      "paths": ["/"]
+    }
+  }
+}

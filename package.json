@@ -1,0 +1,41 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
+  "packageManager": "pnpm@10.26.1",
+  "scripts": {
+    "preinstall": "sh -c 'case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
+    "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
+    "quality": "node scripts/validate-development.mjs",
+    "quality:current": "node scripts/validate-development.mjs --scope current",
+    "check:repository-docs": "node scripts/check-repository-docs.mjs",
+    "lint": "eslint artifacts/api-server/src artifacts/bettex-site/src scripts --quiet",
+    "check:secrets": "python3 scripts/check-secrets.py",
+    "check:dependencies": "node scripts/check-dependencies.mjs",
+    "check:security": "pnpm lint && pnpm check:secrets && pnpm check:dependencies && pnpm --filter @workspace/api-server run check:security",
+    "check:architecture": "node scripts/check-architecture.mjs && node --test scripts/check-architecture.test.mjs",
+    "dev:local": "node --env-file-if-exists=.env scripts/dev-local.mjs",
+    "db:prepare": "pnpm --filter @workspace/db push",
+    "docs:sync": "python3 tools/technical-docs/cli.py sync",
+    "docs:query": "python3 tools/technical-docs/cli.py query",
+    "docs:status": "python3 tools/technical-docs/cli.py status",
+    "docs:inventory": "python3 tools/technical-docs/cli.py inventory",
+    "docs:changes": "python3 tools/technical-docs/cli.py changes",
+    "check:technical-docs": "python3 -m unittest discover -s tools/technical-docs/tests -v",
+    "build:vercel": "bash scripts/vercel/build.sh"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=24.12.0 <25",
+    "pnpm": "10.26.1"
+  },
+  "devDependencies": {
+    "eslint": "10.12.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "typescript-eslint": "8.71.0",
+    "prettier": "^3.9.6",
+    "typescript": "~5.9.3"
+  }
+}

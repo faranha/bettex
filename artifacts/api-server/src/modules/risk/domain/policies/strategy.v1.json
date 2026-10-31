@@ -1,0 +1,23 @@
+{
+  "id": "event-probability-hold",
+  "version": 1,
+  "type": "strategy",
+  "scope": "predictions",
+  "schemaVersion": 1,
+  "name": "Probabilidade de evento e manutenção até resolução",
+  "implementation": "calibrated-event-lower-bound/1",
+  "justification": "Exige probabilidade de resolução calibrada, custos completos, profundidade para a ordem inteira e plano de saída. Previsão de preço não é probabilidade do evento.",
+  "previousVersion": null,
+  "openPositions": "preserve_original_exit_and_apply_emergency_controls",
+  "horizon": "event_resolution",
+  "controls": {
+    "allowedAssets": ["btc", "eth", "sol"],
+    "allowedProviders": ["polymarket_gamma_clob"],
+    "allowedMarkets": ["prediction"],
+    "maxHorizonSeconds": 86400,
+    "requireCalibratedModel": true,
+    "requireCompleteCosts": true,
+    "requireExitPlan": true,
+    "requireReconciliation": true
+  }
+}

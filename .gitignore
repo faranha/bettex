@@ -1,0 +1,83 @@
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+dist
+tmp
+out-tsc
+*.tsbuildinfo
+.expo
+.expo-shared
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
+
+# Local tool caches
+.cache/
+.local/
+
+# Vercel build output and local project link
+.vercel/
+
+# Persistent public documentation corpus: not temporary, not shipped with the app.
+/data/technical-docs/
+/data/docs-backup-*/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.dump
+*.backup
+/backups/
+/lib/bettex-contracts/build/
+/lib/bettex-contracts/cache/
+/lib/bettex-contracts/artifacts/
+
+# Private workspace state and generated review output.
+/.config/
+/.conversation/
+/.pythonlibs/
+*.log
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+/data/runtime/
+/screenshots/
+/generated-artifacts/
+# Uploaded instructions are not product source. Existing assets remain intact.
+/attached_assets/Pasted-*.txt
+/attached_assets/*.zip

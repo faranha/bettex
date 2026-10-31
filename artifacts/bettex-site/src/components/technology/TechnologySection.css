@@ -1,0 +1,143 @@
+.technology-section {
+  --tech-ink: #070B1F;
+  --tech-mint: #5F86FF;
+  color: var(--tech-ink);
+  background: linear-gradient(to bottom, #ECE8DA, #F4F1E8) bottom / 100% 24px no-repeat, #ECE8DA;
+  padding: clamp(62px, 8vw, 110px) 0 24px;
+}
+.technology-section *, .technology-section *::before, .technology-section *::after { box-sizing: border-box; }
+.technology-section__wrap { width: min(calc(100% - 40px), 1200px); margin-inline: auto; }
+.technology-section__intro { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px 50px; margin-bottom: clamp(30px, 4vw, 48px); }
+.technology-section__eyebrow { color: #2B59FF; margin: 0 0 14px; font: 700 10px/1.4 var(--app-font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; }
+.technology-section__title { margin: 0; font: 800 clamp(2.7rem, 5vw, 5rem)/1.02 var(--app-font-serif, sans-serif); letter-spacing: -.065em; }
+.technology-section__title em { color: #2B59FF; font-style: normal; }
+.technology-section__intro-note { max-width: 345px; margin: 0 0 5px; color: #13204F; font-size: 14px; line-height: 1.7; }
+
+.technology-section__hierarchy { position: relative; }
+.technology-section__entry { display: grid; grid-template-columns: minmax(0, 185px) minmax(80px, 125px) minmax(0, 1fr); align-items: center; gap: clamp(10px, 2vw, 24px); }
+.technology-section__deposit-flow {
+  display: flex; flex-direction: column; align-items: center; min-width: 0;
+}
+.technology-section__token {
+  display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 14px;
+  border: 1px solid #d9d3c0; border-radius: 17px; background: #F4F1E8; text-align: center;
+  box-shadow: 0 10px 32px rgba(20,40,95, .06);
+}
+.technology-section__coin { display: grid; place-items: center; width: 40px; height: 40px; flex: none; }
+.technology-section__coin img { display: block; width: 100%; height: 100%; }
+.technology-section__token-copy { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.technology-section__token-copy strong { font: 800 15px/1.1 var(--app-font-serif, sans-serif); letter-spacing: -.04em; }
+.technology-section__token-copy small { color: #4b5578; font-size: 11px; line-height: 1.3; }
+.technology-section__deposit-label {
+  margin: 0 0 6px; color: #13204F; text-align: center;
+  font: 700 9px/1.4 var(--app-font-mono, monospace); letter-spacing: .08em; text-transform: uppercase;
+}
+.technology-section__deposit-path { position: relative; width: 100%; height: 34px; }
+.technology-section__deposit-path::before {
+  content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 2px dashed #4f75cc;
+}
+.technology-section__wallet {
+  position: relative; display: flex; align-items: center; justify-content: space-between;
+  min-height: 218px; gap: 18px; overflow: hidden; border-radius: 22px;
+  padding: 22px clamp(22px, 3vw, 38px); background: #070B1F; color: #F4F1E8;
+}
+.technology-section__wallet::before { content: ""; position: absolute; top: -110px; right: -100px; width: 410px; height: 410px; border: 1px solid rgba(109,151,248,.17); border-radius: 50%; box-shadow: 0 0 0 42px rgba(109,151,248,.035), 0 0 0 90px rgba(109,151,248,.025); pointer-events: none; }
+.technology-section__wallet-copy { position: relative; z-index: 1; max-width: 580px; }
+.technology-section__wallet-kicker { color: var(--tech-mint); font: 700 10px/1.4 var(--app-font-mono, monospace); letter-spacing: .15em; text-transform: uppercase; }
+.technology-section__wallet h3 { display: flex; align-items: center; gap: clamp(9px, 1.2vw, 14px); margin: 10px 0; font: 800 clamp(2.5rem, 4.4vw, 4rem)/1 var(--app-font-serif, sans-serif); letter-spacing: -.07em; }
+.technology-section__wallet h3 em { color: var(--tech-mint); font-style: normal; }
+.technology-section__wallet-heading-icon { display: grid; flex: none; width: clamp(34px, 3.6vw, 50px); height: clamp(34px, 3.6vw, 50px); place-items: center; border: 1px solid rgba(109,151,248, .55); border-radius: 12px; background: rgba(109,151,248, .12); color: var(--tech-mint); }
+.technology-section__wallet-heading-icon svg { width: 65%; height: 65%; }
+.technology-section__wallet p { max-width: 540px; margin: 0; color: #becdf0; font-size: 13px; line-height: 1.55; }
+.technology-section__wallet-art {
+  position: relative; z-index: 1; flex: none; display: grid; place-items: center; overflow: hidden;
+  width: 175px; height: 190px;
+}
+.technology-section__wallet-art::before { content: ""; position: absolute; inset: 8px 0 24px; border-radius: 50%; background: radial-gradient(ellipse at 43% 48%, rgba(54,183,255,.28), rgba(43,89,255,.12) 42%, transparent 72%); pointer-events: none; }
+.technology-section__ai-brain { position: relative; z-index: 1; display: block; width: 90%; height: calc(100% - 20px); object-fit: contain; mix-blend-mode: lighten; filter: drop-shadow(0 0 10px rgba(88,181,255,.3)); }
+.technology-section__brain-energy { position: absolute; inset: 0 0 20px; z-index: 2; width: 100%; height: calc(100% - 20px); pointer-events: none; }
+.brain-energy__blue { color: #7CE8FF; filter: drop-shadow(0 0 4px currentColor); animation: brain-energy-pulse 4.8s ease-in-out infinite; }
+.brain-energy__gold { color: #FFD16F; filter: drop-shadow(0 0 3px currentColor); animation: brain-energy-pulse 6.4s -2s ease-in-out infinite; }
+@keyframes brain-energy-pulse { 0%,100% { opacity: .6; } 45% { opacity: 1; } 70% { opacity: .8; } }
+@media (prefers-reduced-motion: reduce) { .brain-energy__blue, .brain-energy__gold { animation: none; opacity: 1; } }
+.technology-section__ai-label {
+  position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+  color: #c5d2f1;
+  font: 600 10px/1.4 var(--app-font-mono, monospace); letter-spacing: .1em; white-space: nowrap;
+}
+.technology-section__branch { height: 46px; position: relative; width: 75%; margin: 0 auto; border-bottom: 1px solid #4f75cc; }
+.technology-section__branch::before { content: ""; position: absolute; width: 1px; height: 100%; top: 0; left: 50%; background: #4f75cc; }
+.technology-section__branch::after { content: ""; position: absolute; width: 7px; height: 7px; bottom: -4px; left: calc(50% - 3px); border-radius: 50%; background: #2B59FF; }
+.technology-section__agents-label { position: relative; z-index: 2; display: block; width: fit-content; max-width: 100%; margin: 9px auto 35px; padding: 3px 12px; border-radius: 999px; background: #F4F1E8; box-shadow: 0 0 0 4px #F4F1E8; color: #1a347b; font: 700 10px/1.5 var(--app-font-mono, monospace); letter-spacing: .15em; text-align: center; text-transform: uppercase; }
+.technology-section__agents { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.technology-section__agents > * { position: relative; min-width: 0; }
+.technology-section__agents > *::before { content: ""; position: absolute; z-index: 1; top: -59px; left: 50%; width: 1px; height: 59px; background: #4f75cc; }
+.technology-section__agents > *::after { content: ""; position: absolute; z-index: 1; top: -63px; left: calc(50% - 4px); width: 8px; height: 8px; border: 2px solid #F4F1E8; border-radius: 50%; background: #2B59FF; }
+.technology-section__result-path { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; height: 63px; }
+.technology-section__result-path span { justify-self: center; width: 1px; height: 32px; background: #4f75cc; }
+.technology-section__result-path::before { content: ""; position: absolute; top: 31px; left: calc((100% - 48px) / 8); right: calc((100% - 48px) / 8); height: 1px; background: #4f75cc; }
+.technology-section__result-path::after { content: ""; position: absolute; top: 31px; left: 50%; width: 1px; height: 32px; background: #4f75cc; }
+.technology-section__result { position: relative; display: flex; align-items: center; gap: 24px; width: min(100%, 850px); margin: 0 auto; padding: 28px 36px; border: 1px solid #d9d3c0; border-radius: 22px; background: #F4F1E8; box-shadow: 0 16px 40px rgba(17,34,80, .08); }
+.technology-section__result-arrow { position: absolute; top: -17px; left: calc(50% - 17px); display: grid; place-items: center; width: 34px; height: 34px; border: 3px solid #F4F1E8; border-radius: 50%; background: #2B59FF; color: #fff; }
+.technology-section__result-icon { flex: none; display: grid; place-items: center; width: 66px; height: 66px; border-radius: 18px; background: #c4d4f9; color: #011d6d; }
+.technology-section__result-kicker { color: #2B59FF; font: 700 10px/1.5 var(--app-font-mono, monospace); letter-spacing: .13em; text-transform: uppercase; }
+.technology-section__result h3 { margin: 7px 0 9px; color: var(--tech-ink); font: 800 clamp(1.65rem, 3vw, 2.4rem)/1.12 var(--app-font-serif, sans-serif); letter-spacing: -.045em; }
+.technology-section__result p { max-width: 670px; margin: 0; color: #13204F; font-size: 14px; line-height: 1.65; }
+@media (max-width: 1000px) {
+  .technology-section__agents { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .technology-section__branch { width: 2px; height: 38px; border: 0; background: #4f75cc; }
+  .technology-section__branch::before { display: none; }
+  .technology-section__branch::after { bottom: -3px; left: -2px; }
+  .technology-section__agents > *::before, .technology-section__agents > *::after { display: none; }
+  .technology-section__agents-label { margin: 14px auto 24px; }
+  .technology-section__result-path { display: block; width: 1px; height: 48px; margin: 0 auto; background: #4f75cc; }
+  .technology-section__result-path span, .technology-section__result-path::before, .technology-section__result-path::after { display: none; }
+}
+@media (max-width: 850px) {
+  .technology-section__entry { grid-template-columns: 1fr; gap: 0; }
+  .technology-section__token { width: min(100%, 260px); margin: 0 auto; flex-direction: row; justify-content: center; text-align: left; padding: 10px 14px; }
+  .technology-section__token-copy { align-items: flex-start; }
+  .technology-section__coin { width: 36px; height: 36px; }
+  .technology-section__deposit-flow { width: min(100%, 280px); margin: 0 auto; }
+  .technology-section__deposit-label { margin: 8px 0 0; }
+  .technology-section__deposit-path { width: 34px; height: 52px; }
+  .technology-section__deposit-path::before { top: 0; bottom: 0; left: 50%; right: auto; border-top: 0; border-left: 2px dashed #4f75cc; }
+  .technology-section__wallet { min-height: 0; padding: 22px; }
+  .technology-section__wallet-art { width: 140px; height: 158px; }
+  .technology-section__wallet h3 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+}
+@media (max-width: 767px) {
+  .technology-section__wrap { width: min(calc(100% - 32px), 1200px); }
+  .technology-section__intro { gap: 14px; }
+  .technology-section__agents { grid-template-columns: 1fr; gap: 16px; }
+  .technology-section__result { align-items: flex-start; gap: 14px; padding: 27px 20px 22px; }
+  .technology-section__result-icon { width: 44px; height: 44px; border-radius: 12px; }
+  .technology-section__result-icon svg { width: 23px; height: 23px; }
+  .technology-section__result h3 { font-size: clamp(1.4rem, 6vw, 1.75rem); }
+}
+@media (max-width: 480px) {
+  .technology-section__wallet { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
+  .technology-section__wallet h3 { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .technology-section__wallet p { font-size: 12px; }
+  .technology-section__wallet-art { align-self: center; width: 140px; height: 158px; }
+}
+
+
+.technology-section__nav { display: none; }
+@media (max-width: 767px) {
+  .technology-section__hierarchy { display: flex; align-items: flex-start; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; touch-action: pan-x pan-y; padding: 22px 0 20px; }
+  .technology-section__hierarchy::-webkit-scrollbar { display: none; }
+  .technology-section__hierarchy:focus-visible { outline: 2px solid #2B59FF; outline-offset: 2px; }
+  .technology-section__agent-slot, .technology-section__hierarchy > .technology-section__result { flex: 0 0 100%; width: 100%; max-width: 100%; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+  .technology-section__hierarchy > .technology-section__agents { display: contents; }
+  .technology-section__hierarchy > .technology-section__branch, .technology-section__hierarchy > .technology-section__result-path { display: none; }
+  .technology-section__hierarchy > .technology-section__agents-label { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; box-shadow: none; }
+  .technology-section__nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .technology-section__nav-btn { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #4f75cc; border-radius: 50%; background: #F4F1E8; color: #070B1F; cursor: pointer; }
+  .technology-section__nav-btn:disabled { opacity: .35; cursor: default; }
+  .technology-section__dots { display: flex; align-items: center; gap: 0; }
+  .technology-section__dot { position: relative; width: 30px; height: 44px; border: 0; background: none; padding: 0; cursor: pointer; }
+  .technology-section__dot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 999px; background: rgba(43,89,255,.3); transition: transform .25s ease, background-color .25s ease; }
+  .technology-section__dot[data-active="true"]::before { background: #2B59FF; transform: scaleX(2.2); }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) { .technology-section__dot::before { transition: none; } }

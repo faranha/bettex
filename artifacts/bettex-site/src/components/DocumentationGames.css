@@ -1,0 +1,25 @@
+.dg { margin: 40px 0; color: #13204F; }
+.dg__sub { margin: 36px 0 14px; font: 800 clamp(1.3rem, 2.4vw, 1.75rem)/1.2 var(--app-font-serif); letter-spacing: -.04em; }
+.dg__notice { margin: 20px 0; padding: 14px 18px; border: 1px solid #d9d3c0; border-left: 3px solid #D99A12; background: #F4F1E8; font-size: 14px; line-height: 1.7; }
+.dg__list { margin: 14px 0 0; padding-left: 1.3em; font-size: 15px; line-height: 1.75; max-width: 68ch; }
+.dg__list li + li { margin-top: 8px; }
+.dg__list li::marker { color: #2B59FF; }
+.dg__fig { margin: 24px 0; padding: 18px; border: 1px solid #d9d3c0; background: #F4F1E8; }
+.dg__cap { margin: 0 0 14px; color: #1a347d; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.dg__flow { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; margin: 0; padding: 0; list-style: none; }
+.dg__flow li { position: relative; min-width: 0; padding: 12px; border: 1px solid #d9d3c0; border-top: 3px solid #102f83; border-radius: 10px; background: #faf8f1; }
+.dg__flow li.is-gold { border-top-color: #F2B632; }
+.dg__flow li.is-plain { border-top-color: #8a93b5; }
+.dg__flow li:not(:last-child)::after { content: ''; position: absolute; left: 50%; bottom: -15px; width: 8px; height: 8px; border: solid #102f83; border-width: 0 2px 2px 0; transform: translateX(-50%) rotate(45deg); }
+.dg__flow strong { display: block; font-size: 13px; line-height: 1.35; }
+.dg__flow p { margin: 5px 0 0; font-size: 12px; line-height: 1.5; color: #21429c; }
+.dg__ex { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 20px 0 0; border: 1px solid #d9d3c0; background: #d9d3c0; }
+.dg__ex > div { padding: 16px; background: #F4F1E8; }
+.dg__ex span { color: #1a347d; font: 700 10px/1.5 var(--app-font-mono); letter-spacing: .08em; }
+.dg__ex dl { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; margin: 10px 0 0; font-size: 13px; font-variant-numeric: tabular-nums; }
+.dg__ex dt { margin: 0; } .dg__ex dd { margin: 0; font-weight: 800; text-align: right; }
+@media (min-width: 820px) {
+  .dg__flow { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 26px; }
+  .dg__flow li:not(:last-child)::after { left: auto; right: -19px; bottom: auto; top: 50%; transform: translateY(-50%) rotate(-45deg); }
+}
+@media (max-width: 480px) { .dg__ex { grid-template-columns: 1fr; } }

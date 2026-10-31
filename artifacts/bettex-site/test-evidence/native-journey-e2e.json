@@ -1,0 +1,418 @@
+{
+  "capturedAt": "2026-10-05T08:03:32.085Z",
+  "journeyHttpStatus": 200,
+  "journey": {
+    "epoch": "e6bc18bb-5724-4435-9ef5-e0704613f740",
+    "chainId": 31337,
+    "environment": "local_evm",
+    "updatedAt": "2026-10-05T08:03:54.000Z",
+    "blockNumber": 203,
+    "blockHash": "0x8d261031aa40176b6c5389c0efa32e2f61db89b3e79a42fa740e0ae30349aaa5",
+    "balances": {
+      "usdc": "25000000",
+      "bettex": "0",
+      "depositGas": "2954064999678455",
+      "bettexGas": "1000000000000000"
+    },
+    "sale": {
+      "price": "50000",
+      "fee": "2500000",
+      "available": "18055544000000000000000000",
+      "sold": "0",
+      "paused": false,
+      "usdc": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "reserveUsdc": "99975000000"
+    },
+    "treasury": {
+      "balanceUsdc": "0",
+      "principalUsdc": "0",
+      "soldBettex": "0"
+    },
+    "participation": {
+      "model": "wallet_balance",
+      "balance": "0",
+      "eligible": "0",
+      "startedAt": null,
+      "roundStart": 1791158400,
+      "roundEnd": 1791244800,
+      "settlement": "not_implemented",
+      "assessedUsdc": null,
+      "availableUsdc": null,
+      "paidUsdc": null
+    },
+    "events": [
+      {
+        "id": "0x9ad0ce0516fd4e3a609835ae5f042142cc589390d887a53dedda64364185a5c5:0:0xabfe60f92b5fc9551716c6179e974e2b4f7a296e4cc8f0807e01749f7b16aea8",
+        "hash": "0x9ad0ce0516fd4e3a609835ae5f042142cc589390d887a53dedda64364185a5c5",
+        "value": "25000000",
+        "timestamp": 1791187291,
+        "blockNumber": 166,
+        "logIndex": 0,
+        "blockHash": "0xabfe60f92b5fc9551716c6179e974e2b4f7a296e4cc8f0807e01749f7b16aea8",
+        "kind": "free_test_funding"
+      }
+    ],
+    "archivedCount": 0,
+    "operations": [
+      {
+        "id": "0x88e443bd8cf82d3f7220de5d9cffb3bc8cdc096c02856b0599ea6d0797b750d5",
+        "epoch": "e6bc18bb-5724-4435-9ef5-e0704613f740",
+        "kind": "fund",
+        "quantity": "0",
+        "principal": "0",
+        "fee": "0",
+        "createdAt": "2026-10-05T08:01:05.752Z",
+        "stages": [
+          {
+            "state": "confirmed",
+            "transactionHash": "0xe8eb606cbecdfe4da52657492a812a8b21daf9772672752768baca68b3656a9f"
+          },
+          {
+            "state": "confirmed",
+            "transactionHash": "0x783677bd90fff34522309deb20f5b5aaa1215b055338e07c4e175d713ee07fff"
+          },
+          {
+            "state": "confirmed",
+            "transactionHash": "0x9ad0ce0516fd4e3a609835ae5f042142cc589390d887a53dedda64364185a5c5"
+          },
+          {
+            "state": "confirmed",
+            "transactionHash": "0xa13b89608a7a6cb075de132c5503b41b5307a21d959febaf734b00ebc93ef183"
+          }
+        ]
+      },
+      {
+        "id": "0x4c9dc29d13230de1ffee6b807e1f1698ef6930b64767c4dee561ea4a1a90f196",
+        "epoch": "e6bc18bb-5724-4435-9ef5-e0704613f740",
+        "kind": "purchase",
+        "quantity": "100",
+        "principal": "5000000",
+        "fee": "2500000",
+        "createdAt": "2026-10-05T08:01:48.109Z",
+        "stages": [
+          {
+            "state": "confirmed",
+            "transactionHash": "0xa5ead0887bed1dc404656551b6da9f302b90b40bdce2965aef413c30788444f6"
+          }
+        ]
+      }
+    ]
+  },
+  "baseline": {
+    "usdc": 0,
+    "bettex": 0,
+    "depositGasEth": 0,
+    "bettexGasEth": 0,
+    "treasuryUsdc": 0,
+    "eventCount": 0
+  },
+  "approvalRpc": {
+    "chainId": "0x7a69",
+    "transactionHash": "0xa5ead0887bed1dc404656551b6da9f302b90b40bdce2965aef413c30788444f6",
+    "status": "0x1",
+    "blockNumber": "0xba",
+    "gasUsed": "0xb36f",
+    "allowanceWei": "7500000",
+    "expectedAllowanceWei": "7500000"
+  },
+  "flowStatus": "Approval confirmed; UI returned to quote form; no separate purchase signature or purchase transaction.",
+  "postFixReload": {
+    "route": "/testes/conta",
+    "network": "EVM LOCAL",
+    "chainId": 31337,
+    "journeyHttpStatus": 200,
+    "operationId": "0x4c9dc29d13230de1ffee6b807e1f1698ef6930b64767c4dee561ea4a1a90f196",
+    "apiStages": [
+      {
+        "state": "confirmed",
+        "transactionHash": "0xa5ead0887bed1dc404656551b6da9f302b90b40bdce2965aef413c30788444f6"
+      }
+    ],
+    "uiActiveOperation": true,
+    "signingFormPresent": false,
+    "purchaseSubmitted": false,
+    "note": "Same operation persisted after reload but remained approval-only; no unambiguous resume control was available. No replacement operation created."
+  },
+  "finalJourney": {
+    "httpStatus": 200,
+    "body": {
+      "epoch": "e6bc18bb-5724-4435-9ef5-e0704613f740",
+      "chainId": 31337,
+      "environment": "local_evm",
+      "updatedAt": "2026-10-05T08:13:19.000Z",
+      "blockNumber": 345,
+      "blockHash": "0x0e5bdc7cd5c5288b36fc1bc8141472d20cfacb19c9340ffd6faf4e755a5f577e",
+      "balances": {
+        "usdc": "17500000",
+        "bettex": "100000000000000000000",
+        "depositGas": "2773811998416684",
+        "bettexGas": "1000000000000000"
+      },
+      "sale": {
+        "price": "50000",
+        "fee": "2500000",
+        "available": "18055444000000000000000000",
+        "sold": "100000000000000000000",
+        "paused": false,
+        "usdc": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "reserveUsdc": "99975000000"
+      },
+      "treasury": {
+        "balanceUsdc": "5000000",
+        "principalUsdc": "5000000",
+        "soldBettex": "100000000000000000000"
+      },
+      "participation": {
+        "model": "wallet_balance",
+        "balance": "100000000000000000000",
+        "eligible": "100000000000000000000",
+        "startedAt": 1791187771,
+        "roundStart": 1791158400,
+        "roundEnd": 1791244800,
+        "settlement": "not_implemented",
+        "assessedUsdc": null,
+        "availableUsdc": null,
+        "paidUsdc": null
+      },
+      "events": [
+        {
+          "id": "0x9ad0ce0516fd4e3a609835ae5f042142cc589390d887a53dedda64364185a5c5:0:0xabfe60f92b5fc9551716c6179e974e2b4f7a296e4cc8f0807e01749f7b16aea8",
+          "hash": "0x9ad0ce0516fd4e3a609835ae5f042142cc589390d887a53dedda64364185a5c5",
+          "value": "25000000",
+          "timestamp": 1791187291,
+          "blockNumber": 166,
+          "logIndex": 0,
+          "blockHash": "0xabfe60f92b5fc9551716c6179e974e2b4f7a296e4cc8f0807e01749f7b16aea8",
+          "kind": "free_test_funding"
+        },
+        {
+          "id": "0x5a03fbf522e30f3b35aed15dd84dbb889ef05e58da776d036d64c4996105bfbc:3:0x0878aa10a6d7150d40300fbfeb446ec0005de376ea121a71f984ae54975ccc6c",
+          "kind": "purchase",
+          "hash": "0x5a03fbf522e30f3b35aed15dd84dbb889ef05e58da776d036d64c4996105bfbc",
+          "blockNumber": 288,
+          "blockHash": "0x0878aa10a6d7150d40300fbfeb446ec0005de376ea121a71f984ae54975ccc6c",
+          "logIndex": 3,
+          "timestamp": 1791187771,
+          "value": "5000000",
+          "bettex": "100000000000000000000",
+          "principal": "5000000",
+          "fee": "2500000",
+          "treasuryReceived": "5000000",
+          "gasWei": "180253001261771"
+        }
+      ],
+      "archivedCount": 0,
+      "operations": [
+        {
+          "id": "0x88e443bd8cf82d3f7220de5d9cffb3bc8cdc096c02856b0599ea6d0797b750d5",
+          "epoch": "e6bc18bb-5724-4435-9ef5-e0704613f740",
+          "kind": "fund",
+          "quantity": "0",
+          "principal": "0",
+          "fee": "0",
+          "createdAt": "2026-10-05T08:01:05.752Z",
+          "stages": [
+            {
+              "state": "confirmed",
+              "transactionHash": "0x783677bd90fff34522309deb20f5b5aaa1215b055338e07c4e175d713ee07fff"
+            },
+            {
+              "state": "confirmed",
+              "transactionHash": "0x9ad0ce0516fd4e3a609835ae5f042142cc589390d887a53dedda64364185a5c5"
+            },
+            {
+              "state": "confirmed",
+              "transactionHash": "0xa13b89608a7a6cb075de132c5503b41b5307a21d959febaf734b00ebc93ef183"
+            },
+            {
+              "state": "confirmed",
+              "transactionHash": "0xe8eb606cbecdfe4da52657492a812a8b21daf9772672752768baca68b3656a9f"
+            }
+          ]
+        },
+        {
+          "id": "0x4c9dc29d13230de1ffee6b807e1f1698ef6930b64767c4dee561ea4a1a90f196",
+          "epoch": "e6bc18bb-5724-4435-9ef5-e0704613f740",
+          "kind": "purchase",
+          "quantity": "100",
+          "principal": "5000000",
+          "fee": "2500000",
+          "createdAt": "2026-10-05T08:01:48.109Z",
+          "stages": [
+            {
+              "state": "confirmed",
+              "transactionHash": "0x5a03fbf522e30f3b35aed15dd84dbb889ef05e58da776d036d64c4996105bfbc"
+            },
+            {
+              "state": "confirmed",
+              "transactionHash": "0xa5ead0887bed1dc404656551b6da9f302b90b40bdce2965aef413c30788444f6"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "completion": {
+    "environment": "EVM LOCAL",
+    "chainId": 31337,
+    "originalPurchaseOperationId": "0x4c9dc29d13230de1ffee6b807e1f1698ef6930b64767c4dee561ea4a1a90f196",
+    "approvalConfirmed": true,
+    "buyDraftResumedOnReloadSameId": true,
+    "finalBuyDoubleClickProducedSinglePurchase": true,
+    "eventCount": 2,
+    "operations": [
+      {
+        "id": "0x88e443bd8cf82d3f7220de5d9cffb3bc8cdc096c02856b0599ea6d0797b750d5",
+        "kind": "fund",
+        "quantity": "0",
+        "principal": "0",
+        "fee": "0",
+        "stages": [
+          {
+            "state": "confirmed",
+            "transactionHash": "0x783677bd90fff34522309deb20f5b5aaa1215b055338e07c4e175d713ee07fff"
+          },
+          {
+            "state": "confirmed",
+            "transactionHash": "0x9ad0ce0516fd4e3a609835ae5f042142cc589390d887a53dedda64364185a5c5"
+          },
+          {
+            "state": "confirmed",
+            "transactionHash": "0xa13b89608a7a6cb075de132c5503b41b5307a21d959febaf734b00ebc93ef183"
+          },
+          {
+            "state": "confirmed",
+            "transactionHash": "0xe8eb606cbecdfe4da52657492a812a8b21daf9772672752768baca68b3656a9f"
+          }
+        ]
+      },
+      {
+        "id": "0x4c9dc29d13230de1ffee6b807e1f1698ef6930b64767c4dee561ea4a1a90f196",
+        "kind": "purchase",
+        "quantity": "100",
+        "principal": "5000000",
+        "fee": "2500000",
+        "stages": [
+          {
+            "state": "confirmed",
+            "transactionHash": "0x5a03fbf522e30f3b35aed15dd84dbb889ef05e58da776d036d64c4996105bfbc"
+          },
+          {
+            "state": "confirmed",
+            "transactionHash": "0xa5ead0887bed1dc404656551b6da9f302b90b40bdce2965aef413c30788444f6"
+          }
+        ]
+      }
+    ],
+    "rpc": {
+      "chainId": "0x7a69",
+      "latestBlock": "0x159",
+      "depositUsdc": "17500000",
+      "depositBettex": "0",
+      "treasuryUsdc": "5000000",
+      "operatingUsdc": "2500000",
+      "depositGasWei": "0x9dac46ed6df2c",
+      "bettexGasWei": "0x38d7ea4c68000"
+    },
+    "receipts": {
+      "0x9ad0ce0516fd4e3a609835ae5f042142cc589390d887a53dedda64364185a5c5": {
+        "status": "0x1",
+        "blockNumber": "0xa6",
+        "blockHash": "0xabfe60f92b5fc9551716c6179e974e2b4f7a296e4cc8f0807e01749f7b16aea8",
+        "gasUsed": "0xd0bb",
+        "effectiveGasPrice": "0x3b9aca07",
+        "gasCostWei": "53435000374045",
+        "logCount": 1
+      },
+      "0x5a03fbf522e30f3b35aed15dd84dbb889ef05e58da776d036d64c4996105bfbc": {
+        "status": "0x1",
+        "blockNumber": "0x120",
+        "blockHash": "0x0878aa10a6d7150d40300fbfeb446ec0005de376ea121a71f984ae54975ccc6c",
+        "gasUsed": "0x2c01d",
+        "effectiveGasPrice": "0x3b9aca07",
+        "gasCostWei": "180253001261771",
+        "logCount": 4
+      },
+      "0x783677bd90fff34522309deb20f5b5aaa1215b055338e07c4e175d713ee07fff": {
+        "status": "0x1",
+        "blockNumber": "0xa5",
+        "blockHash": "0x1ca3d78c30a39542c6814e43ac87b92e873bbcfc0a1d5469e1b36116bb059213",
+        "gasUsed": "0x5208",
+        "effectiveGasPrice": "0x3b9aca07",
+        "gasCostWei": "21000000147000",
+        "logCount": 0
+      },
+      "0xa13b89608a7a6cb075de132c5503b41b5307a21d959febaf734b00ebc93ef183": {
+        "status": "0x1",
+        "blockNumber": "0xa3",
+        "blockHash": "0x42d586a0e2e15c6cfa69e7ec444345c1e3e315e9b716f2231e7c492be1f96142",
+        "gasUsed": "0xbdf0",
+        "effectiveGasPrice": "0x3b9aca07",
+        "gasCostWei": "48624000340368",
+        "logCount": 1
+      },
+      "0xe8eb606cbecdfe4da52657492a812a8b21daf9772672752768baca68b3656a9f": {
+        "status": "0x1",
+        "blockNumber": "0xa4",
+        "blockHash": "0xe9ef0aa3f3353c02c02b49909e15f7f6c8b25dd65099760806219ee7add9033a",
+        "gasUsed": "0x5208",
+        "effectiveGasPrice": "0x3b9aca07",
+        "gasCostWei": "21000000147000",
+        "logCount": 0
+      },
+      "0xa5ead0887bed1dc404656551b6da9f302b90b40bdce2965aef413c30788444f6": {
+        "status": "0x1",
+        "blockNumber": "0xba",
+        "blockHash": "0x043cf97dca21e61aef61af51016ef04e6bd4e89510b6618591a4411944e8bcfa",
+        "gasUsed": "0xb36f",
+        "effectiveGasPrice": "0x3b9aca07",
+        "gasCostWei": "45935000321545",
+        "logCount": 1
+      }
+    },
+    "postRelogin": {
+      "apiStatus": 200,
+      "persisted": true,
+      "noActiveOperation": true,
+      "noApprovalPrompt": true
+    },
+    "insufficientQuote": {
+      "method": "POST",
+      "path": "/api/test-account/journey",
+      "quantity": 100000,
+      "httpStatus": 503,
+      "code": "usdc_insufficient",
+      "uiMessage": "USDC TESTE insuficiente na carteira de depósitos.",
+      "noSigningForm": true,
+      "noTransactionBlocksAfterPurchase": true
+    },
+    "mobile": {
+      "viewport": {
+        "width": 402,
+        "height": 844
+      },
+      "portuguese": {
+        "documentWidth": 392,
+        "bodyWidth": 392,
+        "horizontalOverflow": false
+      },
+      "english": {
+        "documentWidth": 392,
+        "bodyWidth": 392,
+        "horizontalOverflow": false,
+        "untranslated": [
+          "Ambiente de testes — ativos sem valor financeiro.",
+          "Época"
+        ]
+      },
+      "communityCtaDismissed": true
+    },
+    "publicTestnetProof": false,
+    "depositQrCopy": {
+      "qrVisible": true,
+      "copyButtonWorked": true,
+      "clipboardMatchedRenderedAddress": true,
+      "network": "EVM LOCAL chainId 31337"
+    }
+  }
+}

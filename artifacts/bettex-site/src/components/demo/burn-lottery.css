@@ -1,0 +1,34 @@
+.bl-card { position: relative; overflow: hidden; border-radius: 16px; color: #F4F1E8; background: radial-gradient(120% 90% at 100% 0%, rgba(43,89,255,.5), transparent 55%), radial-gradient(90% 70% at 0% 100%, rgba(255,122,26,.22), transparent 60%), #070B1F; padding: 14px; box-shadow: 0 10px 26px rgba(7,11,31,.22); transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s; }
+.bl-card::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(151,182,255,.18) 1px, transparent 1px); background-size: 14px 14px; mask-image: linear-gradient(135deg, #000, transparent 55%); -webkit-mask-image: linear-gradient(135deg, #000, transparent 55%); pointer-events: none; }
+.bl-card > * { position: relative; }
+.bl-card:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(7,11,31,.3); }
+.bl-flame { flex-shrink: 0; overflow: visible; filter: drop-shadow(0 6px 10px rgba(255,122,26,.35)); }
+.bl-flame__body { transform-origin: 32px 66px; transform: scale(.82); transition: transform .45s cubic-bezier(.2,.8,.2,1.2); }
+.bl-flame[data-lit="true"] .bl-flame__body { transform: scale(1); }
+.bl-flame:not([data-lit="true"]) { filter: saturate(.7) drop-shadow(0 4px 8px rgba(255,122,26,.18)); }
+.bl-flame__sparks { opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .5s; }
+.bl-flame__coin { transform-origin: 32px 52px; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.bl-card:hover .bl-flame__body { animation: bl-sway 1.2s ease-in-out 1; transform: scale(1); }
+.bl-card:hover .bl-flame__sparks, .bl-flame[data-lit="true"] .bl-flame__sparks { opacity: 1; transform: translateY(-3px); }
+.bl-card:hover .bl-flame__coin { transform: rotate(120deg); }
+@keyframes bl-sway { 0%,100% { transform: scale(1) skewX(0); } 35% { transform: scale(1.06,1.03) skewX(-3deg); } 70% { transform: scale(.98,1.05) skewX(2deg); } }
+.bl-timer { font-variant-numeric: tabular-nums; color: #F2B632; letter-spacing: -.03em; }
+.bl-ticket { position: relative; background: #FFF6DC; color: #070B1F; border-radius: 12px; padding: 12px 16px; -webkit-mask: radial-gradient(circle 8px at 0 50%, transparent 97%, #000) left / 51% 100% no-repeat, radial-gradient(circle 8px at 100% 50%, transparent 97%, #000) right / 51% 100% no-repeat; mask: radial-gradient(circle 8px at 0 50%, transparent 97%, #000) left / 51% 100% no-repeat, radial-gradient(circle 8px at 100% 50%, transparent 97%, #000) right / 51% 100% no-repeat; border-left: 4px solid #FF7A1A; }
+.bl-join { display: flex; min-height: 48px; align-items: center; gap: 12px; padding: 6px 12px; border-radius: 12px; border: 1.5px solid rgba(244,241,232,.28); font-size: 14px; font-weight: 700; cursor: pointer; transition: background-color .2s, border-color .2s, transform .15s; }
+.bl-join:hover:not(.is-disabled) { border-color: #F2B632; background: rgba(242,182,50,.1); }
+.bl-join:active:not(.is-disabled) { transform: scale(.985); }
+.bl-join.is-on { border-color: #F2B632; background: rgba(242,182,50,.16); }
+.bl-join.is-disabled { opacity: .6; cursor: not-allowed; }
+.bl-check { appearance: none; -webkit-appearance: none; flex-shrink: 0; display: grid; place-content: center; width: 26px; height: 26px; border-radius: 8px; border: 2px solid #F4F1E8; background: transparent; transition: background-color .2s, border-color .2s, transform .25s cubic-bezier(.2,.8,.2,1.4); }
+.bl-check::after { content: ""; width: 12px; height: 7px; border-left: 3px solid #070B1F; border-bottom: 3px solid #070B1F; transform: rotate(-45deg) scale(0) translateY(-1px); transition: transform .2s cubic-bezier(.2,.8,.2,1.4); }
+.bl-check:checked { background: #F2B632; border-color: #F2B632; transform: scale(1.06); }
+.bl-check:checked::after { transform: rotate(-45deg) scale(1) translateY(-1px); }
+.bl-check:focus-visible { outline: 3px solid #AAC3EE; outline-offset: 3px; }
+.bl-hist { display: inline-flex; height: 44px; width: 44px; flex-shrink: 0; align-items: center; justify-content: center; border-radius: 12px; border: 1.5px solid rgba(244,241,232,.28); color: #F4F1E8; transition: background-color .2s, color .2s, transform .2s; }
+.bl-hist:hover { background: #F2B632; color: #070B1F; border-color: #F2B632; transform: rotate(-12deg); }
+.bl-card .bl-term, .bl-card button { color: inherit; }
+@media (prefers-reduced-motion: reduce) {
+  .bl-card, .bl-card * { animation: none !important; transition: none !important; }
+  .bl-card, .bl-card:hover { transform: none; }
+  .bl-card:hover .bl-flame__body, .bl-card:hover .bl-flame__coin, .bl-hist:hover { animation: none; transform: none; }
+}

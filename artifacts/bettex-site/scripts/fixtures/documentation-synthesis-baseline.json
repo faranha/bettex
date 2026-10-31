@@ -1,0 +1,52 @@
+{
+  "canonicalPublicPages": {
+    "approved": true,
+    "scope": "Homepage and Pitch are finalized. Preserve their content, layout, menus, anchors and PT/EN/ES translations, including effects from shared dependencies. Documentation-only work must not change them.",
+    "homeAnchors": ["inicio", "historia", "participacao", "tecnologia", "mercados", "roadmap"],
+    "pitchAnchors": ["visao", "publico-pitch", "solucao", "tokenomics", "publico", "pitch-roadmap", "recursos"]
+  },
+  "routes": {
+    "/": {
+      "words": 1336,
+      "structureSha256": "08fbd60ec754b13181dffb6fdff2459c1273a1c847cf471d1764db0e7a0ec859",
+      "textSha256": "cec70de1c18514920ca0d893a24c1ec98fbbe2de62d061a5f73c218529627d93"
+    },
+    "/pitch": {
+      "words": 6077,
+      "structureSha256": "f70bab8ed07a604378ebf3d5e610874dddf4141a41faaf2a375ce32987304224",
+      "textSha256": "92decea093dd257a8cc512e16d9c80f750d1a23f2ca76deb6d6bf32b31be8378"
+    },
+    "/en/": {
+      "words": 1301,
+      "structureSha256": "e313e774f933a9d3b31b50ac4ee39c66d2ab39d8053222a1659b7c1093edcfc6",
+      "textSha256": "8bc861eea7bfa99f654ba910aad2f700b7717def943b487361f1e5a785709031"
+    },
+    "/en/pitch": {
+      "words": 5836,
+      "structureSha256": "87563ef571d3ee2a5567bae53cb849a0c364592bee1566134038e01d7207b5ec",
+      "textSha256": "eb8254b03850ce9508ef1a15b19eea60eca465f98f92a9bca3e86b792bcaf623"
+    },
+    "/es/": {
+      "words": 1395,
+      "structureSha256": "6911f98254926f94c0b121f902845333a44b5d21a7b93ea4342fcc6ccba634e7",
+      "textSha256": "e3d3b3c8850c2e6542f1ca7a6583426998e95b083b0f7d001caf8c1aaeb15191"
+    },
+    "/es/pitch": {
+      "words": 6460,
+      "structureSha256": "08204d62ec355f1464453ab4fc601b01196c8762737af330b8fdd2c3c340c436",
+      "textSha256": "05f32ca5d1a65498f97e62f6ccd2687d30270850f0e945b0624ab746464848c2"
+    },
+    "/documentacao": {
+      "words": 27074,
+      "structureSha256": "3534a17178f2cce1a726b62a5542026298eeded79d94ad126e93e58d1461a0c9"
+    },
+    "/en/documentation": {
+      "words": 26510,
+      "structureSha256": "ceaff8f7b324a04218c8a8e5e918f1a9cf5805ccfd6dc57a48af17fb6ec3ce02"
+    },
+    "/es/documentacion": {
+      "words": 29029,
+      "structureSha256": "12e016ad63cc64e30ceb4721f15b81496e761616bd705591448053237d40a919"
+    }
+  }
+}

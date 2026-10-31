@@ -1,0 +1,159 @@
+{
+  "founder": {
+    "biography": "O fundador tem experiência no mercado e no desenvolvimento de operações. Mantém uma audiência própria e canais de relacionamento com comunidades, que podem apoiar a divulgação e a validação da BETTEX. Sua atuação combina definição da estratégia e coordenação do projeto, com IA e serviços especializados.",
+    "bettexEarnings": "O fundador não recebe salário ou pró-labore nem faz retiradas do caixa operacional do projeto. Seus únicos ganhos na BETTEX são os eventuais ganhos com seus próprios tokens, sujeitos às mesmas regras dos demais titulares e sem retorno garantido."
+  },
+  "launch": {
+    "country": "Brasil",
+    "angelFundingUse": "100% dos aportes de investidores-anjo serão destinados ao produto, à tecnologia e ao marketing. Os recursos financiam desenvolvimento, infraestrutura e automação, além de marketing, sem pagamento de salários e sem retiradas para o fundador.",
+    "initialUsersGoal": 1000,
+    "strategy": "Promover a BETTEX para a comunidade antes do mint público inicial, previsto para 10 de dezembro de 2026. Mint aberto a preço fixo, com teto de 10% da emissão, para financiar o projeto, por execução própria ou launchpad parceiro. Sistema/ALFA e captação de investidores previstos para março de 2027, junto do início do vesting de 24 meses. O demo visual não comprova operação ou captação; cada lançamento exige adequação jurídica local.",
+    "goalDefinition": "Meta de primeiros 1.000 usuários únicos no Brasil nos três primeiros meses de operação, com cadastro elegível e ativação no produto. Interesse, compradores e usuários ativados serão medidos separadamente. É uma meta, não tração comprovada.",
+    "funnel": [
+      "Interesse no produto",
+      "Demo BETTEX",
+      "Feedback e validação"
+    ],
+    "channels": [
+      {
+        "name": "Interesse no produto",
+        "purpose": "Medir o interesse pela proposta da BETTEX."
+      },
+      {
+        "name": "Demo BETTEX",
+        "purpose": "Testar o uso do aplicativo em um ambiente demonstrativo."
+      },
+      {
+        "name": "Feedback e validação",
+        "purpose": "Avaliar compreensão, utilidade e intenção de uso."
+      }
+    ],
+    "brandNarrative": "A tese central é a substituição crescente de trabalho humano por IA e robótica e o risco de exclusão dos ganhos para quem depende exclusivamente do salário. BETTEX propõe participação nos lucros elegíveis de estratégias geridas por IA numa economia programável, com regras compreensíveis, gestão responsável e prestação de contas. É visão do fundador, não previsão comprovada do fim de todos os empregos. Não usar medo de desemprego para pressionar compras, nem apresentar o token como tratamento, recuperação de perdas ou renda garantida."
+  },
+  "media": {
+    "status": "Cenário de mídia paga para uma fase posterior aos três primeiros meses; a aquisição inicial é orgânica e financiada pelo fundador, sem cobrança ao projeto. Não é campanha executada ou CAC comprovado.",
+    "monthlyPaidMediaUsd": 3000,
+    "monthlyMarketingTotalUsd": 6000,
+    "paidAllocation": [
+      {
+        "name": "Performance",
+        "amountUsd": 1800,
+        "purpose": "Testar criativos e aquisição qualificada, com atribuição por canal e coorte."
+      },
+      {
+        "name": "Construção de marca",
+        "amountUsd": 750,
+        "purpose": "Distribuir conteúdo de posicionamento e medir alcance qualificado e busca pela marca."
+      },
+      {
+        "name": "Construção de narrativa",
+        "amountUsd": 450,
+        "purpose": "Distribuir explicações, evolução do piloto e prestação de contas; medir compreensão e interesse."
+      }
+    ],
+    "otherMarketing": [
+      {
+        "name": "Criadores e campanhas",
+        "amountUsd": 1500
+      },
+      {
+        "name": "Produção de peças",
+        "amountUsd": 1000
+      },
+      {
+        "name": "Localização",
+        "amountUsd": 500
+      }
+    ],
+    "measurement": "Separar custo por interessado, por usuário ativado, CAC pago por comprador e CAC total. O CAC total inclui os custos de marketing e pessoal alocados uma única vez, inclusive distribuição orgânica. US$12 por primeiro comprador continua apenas sensibilidade antiga do plano; não é CAC medido nem alvo validado para os 1.000 usuários.",
+    "constraints": "Publicidade e oferta dependem de revisão jurídica, elegibilidade e políticas das plataformas. Conteúdo educativo não pode disfarçar uma oferta proibida. Não há campanhas, público de anúncios ou integrações de mídia implementados aqui."
+  },
+  "retention": {
+    "actions": [
+      {
+        "name": "Onboarding claro",
+        "detail": "Explicar direitos, tarifas, USDC, riscos e liquidez, confirmando compreensão antes de uso financeiro."
+      },
+      {
+        "name": "Valor recorrente",
+        "detail": "Análises e relatórios compreensíveis, com resultados positivos, negativos ou sem lucro e registros de decisões; sem inventar desempenho."
+      },
+      {
+        "name": "Comunidade e suporte",
+        "detail": "Perguntas e feedback com o fundador, atendimento com prazos publicados e acompanhamento de incidentes."
+      },
+      {
+        "name": "Comunicação consentida",
+        "detail": "Atualizações úteis com escolha de frequência e cancelamento; sem urgência artificial, pressão para aportar ou incentivar operações tarifadas."
+      },
+      {
+        "name": "Melhoria por coorte",
+        "detail": "Identificar abandono no onboarding e motivos de saída; testar melhorias com critérios previamente definidos."
+      }
+    ],
+    "metrics": [
+      "Ativação por canal",
+      "Retenção D7 e D30 por coorte",
+      "Usuários ativos mensais",
+      "Reativação e abandono",
+      "Resolução de suporte",
+      "CAC total e contribuição de serviços por coorte"
+    ],
+    "definition": "Retenção mede retorno para atividade útil após ativação, não apenas abrir uma notificação, sacar diariamente ou gerar mais tarifas. Definir eventos e janelas antes do piloto, deduplicar usuários com base legal e preservar privacidade. Taxas de retenção ainda serão medidas, não previstas como fatos."
+  },
+  "expansion": {
+    "status": "Países candidatos para investigação após validar o Brasil; não mercados autorizados ou próximos lançamentos garantidos.",
+    "comparisonYear": 2023,
+    "criteria": "Afinidade regional latino-americana, presença digital, urbanização e capacidade econômica agregada comparável. Isso não comprova perfil de apostador, demanda pelo token ou adequação individual.",
+    "countries": [
+      {
+        "name": "Brasil",
+        "code": "BRA",
+        "gdpPppPerCapita": 21193.0721417478,
+        "internetPercent": 84.15060238,
+        "urbanPercent": 87.6159710235763,
+        "reason": "Mercado inicial e base de comparação; distribuição já estabelecida pelo fundador."
+      },
+      {
+        "name": "Colômbia",
+        "code": "COL",
+        "gdpPppPerCapita": 21281.7475207548,
+        "internetPercent": 77.33686322,
+        "urbanPercent": 78.275571579544,
+        "reason": "PIB per capita em PPC próximo ao Brasil e ampla presença digital; investigar público e adaptação ao espanhol."
+      },
+      {
+        "name": "México",
+        "code": "MEX",
+        "gdpPppPerCapita": 25188.3182559609,
+        "internetPercent": 81.18318755,
+        "urbanPercent": 79.4734935748046,
+        "reason": "Presença digital próxima à brasileira e mercado latino-americano; capacidade econômica média um pouco maior."
+      },
+      {
+        "name": "Peru",
+        "code": "PER",
+        "gdpPppPerCapita": 17041.5682788302,
+        "internetPercent": 79.48484477,
+        "urbanPercent": 84.7810255849745,
+        "reason": "Presença digital e urbanização próximas, com capacidade econômica média menor; testar a fricção das tarifas e valores pequenos."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Banco Mundial — PIB per capita, PPC",
+        "url": "https://api.worldbank.org/v2/country/BRA;COL;MEX;PER/indicator/NY.GDP.PCAP.PP.CD?format=json&date=2023&per_page=100"
+      },
+      {
+        "label": "Banco Mundial — usuários de internet",
+        "url": "https://api.worldbank.org/v2/country/BRA;COL;MEX;PER/indicator/IT.NET.USER.ZS?format=json&date=2023&per_page=100"
+      },
+      {
+        "label": "Banco Mundial — população urbana",
+        "url": "https://api.worldbank.org/v2/country/BRA;COL;MEX;PER/indicator/SP.URB.TOTL.IN.ZS?format=json&date=2023&per_page=100"
+      }
+    ],
+    "methodNote": "Indicadores de 2023, ano comum de comparação, não retrato atual. PIB per capita em PPC usa dólares internacionais correntes; não é salário individual, renda de apostadores ou taxa de câmbio. Fontes consultadas em 3 de outubro de 2026.",
+    "gates": "Antes de avançar: entrevistas locais, teste de mensagem e tarifas, retenção e CAC sustentável no Brasil, idioma e suporte locais, verificação de oferta/publicidade/estratégias, contratos de provedores e operação/USDC permitidos. Escalar orçamento só com validação; adequação regulatória prevalece sobre afinidade de perfil."
+  }
+}

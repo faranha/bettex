@@ -1,0 +1,9 @@
+{
+  "status": "alternative_under_evaluation",
+  "taxTreatment": "to_be_evaluated_before_adoption",
+  "currency": "USD",
+  "paymentAsset": "USDC",
+  "fees": [
+    { "operation": "Possível contribuição por serviços", "amountUsd": null, "basis": "Em avaliação, sem valor definido", "scope": "No ALFA, apenas taxas de rede. Contribuição por serviços: decisão posterior com a comunidade." }
+  ]
+}

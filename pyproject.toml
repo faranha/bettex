@@ -1,0 +1,10 @@
+[project]
+name = "bettex-tools"
+version = "0.1.0"
+description = "Ferramentas para gerar planilhas da documentação BETTEX"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.5.4",
+    "opencv-contrib-python-headless>=5.0.0.93",
+    "xlsxwriter>=3.2.9",
+]

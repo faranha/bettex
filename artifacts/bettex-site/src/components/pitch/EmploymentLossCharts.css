@@ -1,0 +1,8 @@
+.employment-loss-figure { margin: 16px 0; min-width: 0; }
+.employment-loss-stage { width: 100%; height: 240px; min-width: 0; }
+.employment-loss-stage--donut { height: 190px; }
+.employment-loss-legend { display: grid; gap: 10px; font-size: 12px; line-height: 1.5; color: #e0e8fc; }
+.employment-loss-legend > div { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; align-items: start; gap: 8px; }
+.employment-loss-legend i { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; }
+.employment-loss-legend strong { white-space: nowrap; }
+.us-losses .employment-loss-note { color: #c5d2f1; font-size: 11px; line-height: 1.7; margin: 12px 0; }

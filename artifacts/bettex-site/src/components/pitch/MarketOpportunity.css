@@ -1,0 +1,28 @@
+.pb-problem__market-head, .pb-market { grid-column: 1 / -1; }
+.pb-problem__market-head .pb-problem__summary { max-width: 880px; }
+.pb-market__metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pb-market__card { min-width: 0; padding: 22px; border-radius: 6px; background: #070b1f; color: #f4f1e8; display: flex; flex-direction: column; align-items: flex-start; border-top: 4px solid #2b59ff; }
+.pb-market__card--total { background: #2b59ff; border-top-color: #f2b632; }
+.pb-market__card--estimate { border-top-color: #8495bb; }
+.pb-market__card--money { border-top-color: #f2b632; }
+.pb-market__audience-heading { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.pb-market__audience-heading > svg { flex: none; color: #f2b632; }
+.pb-market__label { margin: 0; color: #c5d2f1; font-size: 10px; line-height: 1.6; letter-spacing: .08em; text-transform: uppercase; }
+.pb-market__value { margin: 20px 0 8px; font-size: clamp(1.8rem, 3.4vw, 3rem); font-weight: 800; letter-spacing: -.05em; line-height: 1.1; color: #f2b632; }
+.pb-market__card h3 { margin: 0; font-size: 16px; line-height: 1.4; font-weight: 700; }
+.pb-market__card > p:not(.pb-market__label):not(.pb-market__value) { margin: 16px 0 0; color: #e0e8fc; font-size: 13px; line-height: 1.65; flex: 1; }
+.pb-market a { display: inline; color: #2b59ff; font-size: 12px; font-weight: 700; line-height: 1.7; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.pb-market a svg { display: inline; width: 12px; height: 12px; margin-left: 5px; vertical-align: -2px; }
+.pb-market__card a { color: #c5d2f1; margin-top: 18px; }
+.pb-market__betting-flow { margin-top: 18px; padding-top: 16px; border-top: 1px solid #8495bb66; color: #e0e8fc; font-size: 12px; line-height: 1.65; }
+.pb-market__betting-flow p { margin: 0 0 8px; }
+.pb-market__betting-flow strong { color: #f2b632; }
+.pb-market__opportunity { margin-top: 24px; padding: 24px; background: #fff9; border-left: 4px solid #f2b632; }
+.pb-market__opportunity h3 { margin: 0; font-size: clamp(1.3rem, 2.4vw, 1.9rem); font-weight: 800; line-height: 1.2; letter-spacing: -.03em; }
+.pb-market__opportunity p { margin: 16px 0 0; color: #183173; font-size: 15px; line-height: 1.7; }
+.cover__market { padding: 16px 20px; border-left: 4px solid #f2b632; background: #10234d99; color: #e3eaff; font-size: 16px; line-height: 1.65; }
+.cover__market strong { color: #f2b632; }
+.cover .cover__market { animation: none; }
+.cover__market a { color: #c5d2f1; font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1000px) { .pb-market__metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pb-market__card--money { grid-column: 1 / -1; } }
+@media (max-width: 639px) { .pb-market__metrics { gap: 12px; } .pb-market__card { padding: 16px; } .pb-market__card h3 { font-size: 14px; } .pb-market__card > p:not(.pb-market__label):not(.pb-market__value) { font-size: 12px; } .pb-market__opportunity { padding: 20px; } }

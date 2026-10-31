@@ -1,0 +1,129 @@
+/** @jsxImportSource react */
+import { useEffect, useState, type FormEvent } from 'react';
+import { useLocation } from 'wouter';
+import { SignIn, SignUp, useUser } from '@clerk/react';
+import { useGetTestAccountSession, type TestAccountSnapshot } from '@workspace/api-client-react';
+import { useQueryClient } from '@tanstack/react-query';
+import { ArrowLeft, FlaskConical, Loader2 } from 'lucide-react';
+import { useX } from '@/components/demo/ui';
+import { inp } from '@/components/demo/fin';
+import { LanguageSelector } from '@/components/LanguageSelector';
+import { AccountPanel } from '@/components/account/account-ui/AccountPanel';
+import { signInTestAccount } from '@/components/account/test-account-client';
+import { startAppSession } from '@/lib/app-session';
+import { BettexMark } from '@/components/BettexMark';
+
+const btn = 'inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#0E7C6B] px-4 text-sm font-bold text-white hover:bg-[#0A6657] disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B]';
+const btn2 = 'inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#0E7C6B] bg-white px-4 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0E7C6B]';
+const card = 'rounded-2xl border border-[#E4DCCB] bg-white p-5';
+
+function NativeSignIn({ onDone }: { onDone: () => void }) {
+  const { x } = useX();
+  const qc = useQueryClient();
+  const [email, setEmail] = useState('');
+  const [pw, setPw] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+  const submit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (busy || email.length < 4 || !pw) return;
+    setBusy(true); setErr('');
+    try {
+      const snap = await signInTestAccount(email.trim(), pw);
+      if (!snap?.account) throw new Error('no_account');
+      qc.setQueryData(['test-account-session'], snap);
+      setPw('');
+      onDone();
+    } catch {
+      setPw('');
+      setErr(x('E-mail ou senha incorretos, ou conta indisponível.', 'Incorrect email or password, or account unavailable.', 'Correo o contraseña incorrectos, o cuenta no disponible.'));
+    } finally { setBusy(false); }
+  };
+  return <form className={`${card} grid gap-3`} onSubmit={e => void submit(e)} data-testid="form-native-signin">
+    <h2 className="display text-lg font-extrabold">{x('Entrar com conta BETTEX', 'Sign in with a BETTEX account', 'Entrar con cuenta BETTEX')}</h2>
+    <label className="grid gap-1 text-sm font-semibold">{x('E-mail', 'Email', 'Correo electrónico')}
+      <input data-testid="input-email" className={inp} type="email" autoComplete="email" maxLength={254} value={email} onChange={e => setEmail(e.target.value)} /></label>
+    <label className="grid gap-1 text-sm font-semibold">{x('Senha', 'Password', 'Contraseña')}
+      <input data-testid="input-password" className={inp} type="password" autoComplete="current-password" maxLength={128} value={pw} onChange={e => setPw(e.target.value)} /></label>
+    {err && <p role="alert" className="text-sm font-semibold text-[#B4421A]">{err}</p>}
+    <button type="submit" data-testid="button-submit-auth" className={btn} disabled={busy || email.length < 4 || !pw}>
+      {busy && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+      {busy ? x('Aguarde…', 'Please wait…', 'Espera…') : x('Entrar', 'Sign in', 'Entrar')}</button>
+  </form>;
+}
+
+function NativeSignUp({ onDone }: { onDone: () => void }) {
+  const session = useGetTestAccountSession({ query: { retry: false, queryKey: ['test-account-session'] } });
+  const snap = session.data as TestAccountSnapshot | undefined;
+  const [seenGuest, setSeenGuest] = useState(false);
+  useEffect(() => {
+    if (session.isLoading) return;
+    if (snap?.enabled && !snap.account) setSeenGuest(true);
+    // Only advance after a signup performed on this page.
+    if (seenGuest && snap?.account) onDone();
+  }, [session.isLoading, snap, seenGuest, onDone]);
+  return <AccountPanel />;
+}
+
+export function AuthPage({ mode }: { mode: 'sign-in' | 'sign-up' }) {
+  return typeof window === 'undefined' ? <main className="demo-root min-h-96" /> : <ClientAuthPage mode={mode} />;
+}
+function ClientAuthPage({ mode }: { mode: 'sign-in' | 'sign-up' }) {
+  const { x, loc } = useX();
+  const [, navigate] = useLocation();
+  const { isLoaded, isSignedIn } = useUser();
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const prefix = loc === 'pt' ? '' : `/${loc}`;
+  const redirect = `${base}${prefix}/app`;
+  const home = `${base}${prefix}/` ;
+  const qc = useQueryClient();
+  const enter = () => { qc.clear(); startAppSession(); navigate('/app'); };
+  useEffect(() => { if (isLoaded && isSignedIn) navigate('/app', { replace: true }); }, [isLoaded, isSignedIn, navigate]);
+  const signIn = mode === 'sign-in';
+  const other = signIn ? '/sign-up' : '/sign-in';
+
+  return <main className="demo-root min-h-[100dvh] bg-[#F7F2E6] text-[#1B2A41]" style={{ background: '#F7F2E6', color: '#1B2A41' }}>
+    <header className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-4">
+      <a href={home} className="flex items-center gap-2 font-extrabold tracking-wide" aria-label={x('BETTEX ALFA', 'BETTEX ALPHA', 'BETTEX ALFA')}>
+        <BettexMark className="h-8 w-8 shrink-0" />
+        <span className="display hidden sm:inline">{x('BETTEX ALFA', 'BETTEX ALPHA', 'BETTEX ALFA')}</span>
+      </a>
+      <div className="flex items-center gap-2">
+        <a href={home} className="inline-flex min-h-11 items-center gap-1 rounded-xl px-3 text-sm font-bold text-[#0A6657] hover:bg-[#E9EEE5]">
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" /><span className="sr-only sm:not-sr-only">{x('Voltar ao site', 'Back to site', 'Volver al sitio')}</span></a>
+        <LanguageSelector />
+      </div>
+    </header>
+    <div className="mx-auto grid max-w-5xl gap-8 px-4 pb-16 pt-6 lg:grid-cols-[1fr_1.1fr]">
+      <section className="grid content-start gap-4">
+        <p className="mono text-xs font-bold uppercase tracking-widest text-[#0A6657]">{x('Tecnologia · finanças simuladas', 'Technology · simulated finance', 'Tecnología · finanzas simuladas')}</p>
+        <h1 className="display text-4xl font-extrabold leading-tight sm:text-5xl">{signIn ? x('Entrar na BETTEX ALFA', 'Sign in to BETTEX ALFA', 'Entrar a BETTEX ALFA') : x('Criar sua conta', 'Create your account', 'Crear tu cuenta')}</h1>
+        <p className="max-w-md text-[#5B6B85]">{x('Ambiente de tecnologia com finanças simuladas. Cada conta nativa recebe carteiras pessoais próprias; nenhum dinheiro real é movimentado.', 'A technology environment with simulated finance. Each native account gets its own personal wallets; no real money moves.', 'Entorno de tecnología con finanzas simuladas. Cada cuenta nativa recibe carteras personales propias; no se mueve dinero real.')}</p>
+        <div className={`${card} grid gap-3`} data-testid="card-demo-entry">
+          <p className="flex items-center gap-2 text-sm font-bold"><FlaskConical className="h-4 w-4 text-[#B4421A]" aria-hidden="true" />{x('Demonstração · sem dinheiro real', 'Demo · no real money', 'Demostración · sin dinero real')}</p>
+          <p className="text-sm text-[#5B6B85]">{x('Explore o aplicativo como Alex, uma persona fictícia com dados de exemplo.', 'Explore the app as Alex, a fictional persona with sample data.', 'Explora la aplicación como Alex, un personaje ficticio con datos de ejemplo.')}</p>
+          <button type="button" data-testid="button-demo-alex" className={btn2} onClick={enter}>{x('Entrar como Alex (demo)', 'Enter as Alex (demo)', 'Entrar como Alex (demo)')}</button>
+        </div>
+      </section>
+      <section className="grid min-w-0 content-start gap-6">
+        {signIn ? <NativeSignIn onDone={enter} /> : <NativeSignUp onDone={enter} />}
+        <div className="grid gap-3">
+          <p className="mono text-center text-xs font-bold uppercase tracking-widest text-[#5B6B85]">{x('ou continue com', 'or continue with', 'o continúa con')}</p>
+          <div className="flex justify-center">
+            {signIn
+              ? <SignIn routing="hash" forceRedirectUrl={redirect} signUpUrl={`${base}${prefix}/sign-up`} />
+              : <SignUp routing="hash" forceRedirectUrl={redirect} signInUrl={`${base}${prefix}/sign-in`} />}
+          </div>
+        </div>
+        <p className="text-center text-sm">
+          {signIn ? x('Ainda não tem conta?', 'No account yet?', '¿Aún no tienes cuenta?') : x('Já tem conta?', 'Already have an account?', '¿Ya tienes cuenta?')}{' '}
+          <button type="button" className="font-bold text-[#0A6657] underline" onClick={() => navigate(other)}>
+            {signIn ? x('Criar conta', 'Create account', 'Crear cuenta') : x('Entrar', 'Sign in', 'Entrar')}</button>
+        </p>
+      </section>
+    </div>
+  </main>;
+}
+export const SignInPage = () => <AuthPage mode="sign-in" />;
+export const SignUpPage = () => <AuthPage mode="sign-up" />;
+export default AuthPage;

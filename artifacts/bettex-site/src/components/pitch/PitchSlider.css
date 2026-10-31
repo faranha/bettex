@@ -1,0 +1,48 @@
+.pitch-slider { --ps-ink: #070B1F; --ps-accent: #2B59FF; --ps-line: rgba(7,11,31,.2); grid-column: 1 / -1; min-width: 0; width: 100%; color: inherit; scroll-margin-top: 160px; }
+.pitch-slider--dark { --ps-ink: #F4F1E8; --ps-accent: #F2B632; --ps-line: rgba(244,241,232,.25); }
+.pitch-slider:focus-visible { outline: 2px solid var(--ps-accent); outline-offset: 6px; }
+.pitch-slider__nav { display: flex; align-items: stretch; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--ps-line); }
+.pitch-slider__tabs { display: flex; gap: 4px; min-width: 0; margin: 0; padding: 0; list-style: none; overflow-x: auto; scrollbar-width: none; }
+.pitch-slider__tabs::-webkit-scrollbar { display: none; }
+.pitch-slider__tabs li { flex: none; }
+.pitch-slider__tab { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 14px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: inherit; opacity: .62; font-size: 13px; font-weight: 700; text-align: left; transition: opacity .2s, border-color .2s; }
+.pitch-slider__tab:hover { opacity: 1; }
+.pitch-slider__tab[aria-current="true"] { opacity: 1; border-bottom-color: var(--ps-accent); }
+.pitch-slider__n { color: var(--ps-accent); font-size: 11px; }
+.pitch-slider__ctrl { display: flex; align-items: center; gap: 10px; flex: none; }
+.pitch-slider__ctrl button, .pitch-slider__foot button { display: inline-grid; grid-auto-flow: column; align-items: center; justify-content: center; gap: 6px; min-width: 44px; min-height: 44px; padding: 0 12px; border: 1px solid var(--ps-accent); border-radius: 8px; background: transparent; color: var(--ps-accent); font-size: 13px; font-weight: 700; }
+.pitch-slider--light .pitch-slider__ctrl button, .pitch-slider--light .pitch-slider__foot button { color: #2B59FF; }
+.pitch-slider__ctrl button:hover:not(:disabled), .pitch-slider__foot button:hover:not(:disabled) { background: var(--ps-accent); color: #070B1F; }
+.pitch-slider--light .pitch-slider__ctrl button:hover:not(:disabled), .pitch-slider--light .pitch-slider__foot button:hover:not(:disabled) { color: #fff; }
+.pitch-slider button:disabled { opacity: .3; cursor: default; }
+.pitch-slider__ctrl svg, .pitch-slider__foot svg { width: 18px; height: 18px; }
+.pitch-slider__pos { min-width: 52px; text-align: center; font-size: 12px; }
+.pitch-slider__bar { height: 3px; background: var(--ps-line); }
+.pitch-slider__bar span { display: block; height: 100%; background: var(--ps-accent); transform-origin: left; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.pitch-slider__stage { padding-top: clamp(20px, 3vw, 32px); touch-action: pan-y; }
+.pitch-slider__panel { display: flow-root; min-width: 0; animation: pitch-slide-in .38s cubic-bezier(.2,.7,.2,1) both; }
+.pitch-slider__panel[hidden] { display: none; }
+.pitch-slider__panel > * + * { margin-top: clamp(20px, 3vw, 32px); }
+.pitch-slider__foot { display: none; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--ps-line); }
+@keyframes pitch-slide-in { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
+@media (max-width: 767px) {
+  .pitch-slider__nav { flex-direction: column; gap: 0; }
+  .pitch-slider__ctrl { display: none; }
+  .pitch-slider__foot { display: flex; }
+  .pitch-slider__tab { min-height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pitch-slider__panel { animation: none; }
+  .pitch-slider__bar span { transition: none; }
+}
+/* Selectors that expected direct children of their section keep working inside slides. */
+.pb-problem__automation .pitch-slider__panel > p { margin-top: 0; max-width: 900px; font-size: 16px; line-height: 1.7; color: #e3eaff; }
+.pb-problem__automation .pitch-slider__panel > .pb-problem__agentic-intro,
+.pb-problem__automation .pitch-slider__panel > .pb-problem__opening-video,
+.pb-problem__automation .pitch-slider__panel > .pb-problem__response,
+.pb-problem__automation .pitch-slider__panel > .pb-problem__agentic-metrics { margin-top: 0; margin-bottom: 0; }
+.pb-problem__automation .pitch-slider__panel > * + * { margin-top: 24px; }
+.pb-problem__automation .pitch-slider__panel > .pb-problem__response { padding-top: 0; border-top: 0; }
+.pb-problem__automation .pitch-slider { margin-top: 24px; }
+.pb-problem__automation > .pb-problem__evidence-link { margin-top: 24px; }
+.fu .pitch-slider { margin-top: 32px; }
