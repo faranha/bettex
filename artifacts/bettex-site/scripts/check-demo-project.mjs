@@ -76,9 +76,13 @@ try {
   assert.equal(g.CHAPTERS.length, 6);
   assert.equal(new Set(p.PROJECT_TOPICS.map(t => t.chapter)).size, 6);
   const doc = await readFile(join(dir, '../WhitepaperChapters.tsx'), 'utf8');
+  // Current chapter anchors live in lib/documentation-structure.ts; WhitepaperChapters keeps
+  // only the previous 14-chapter list, so require the current anchor and its rendered body.
+  const structure = await readFile(join(dir, '../../lib/documentation-structure.ts'), 'utf8');
   for (const topic of p.PROJECT_TOPICS) {
     assert.ok(g.hasNode(topic.id));
-    assert.ok(doc.includes(`id: '${topic.chapter}'`), 'Existing documentation anchor');
+    assert.ok(structure.includes(`id: '${topic.chapter}'`), 'Existing documentation anchor');
+    assert.ok(doc.includes(`case '${topic.chapter}':`), 'Documentation anchor has a rendered chapter body');
     assert.ok(g.chaptersFor({ k: 'node', id: topic.id }).includes(topic.chapter));
     for (const text of [topic.title, topic.summary, ...topic.rules]) assert.ok(text.length === 3 && text.every(s => s.trim()));
   }

@@ -42,6 +42,9 @@ jobs:
           node-version-file: .node-version
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # The site build and visual checks drive Playwright; runners ship no browser for it.
+      - name: Playwright headless browser
+        run: pnpm --filter @workspace/bettex-site exec playwright-core install --with-deps chromium-headless-shell
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.13'

@@ -55,7 +55,14 @@ try {
       assert.equal(entry.environment, 'simulation');
       assert.equal(entry.chainId, null);
       assert.equal(entry.transactionHash, null);
-      assert.equal(entry.data.feeUnits, undefined, 'Visual audit entries have no fee amounts');
+      // Since the central graph packets (check-central-packets.mjs), illustrative paper fills
+      // carry the same sample fee as their packet; every other visual entry stays fee-free.
+      if (entry.kind === 'agent_fill' && entry.data.graphDemoRecord === true) {
+        assert.match(String(entry.data.feeUnits), /^\d+$/, 'Illustrative fills carry integer sample fee units');
+        assert.equal(entry.data.provenance, 'handwritten_visual_example_no_execution');
+      } else {
+        assert.equal(entry.data.feeUnits, undefined, 'Visual audit entries other than illustrative fills have no fee amounts');
+      }
     }
     const lot = await (await window.fetch('/api/demo/dashboard')).json();
     assert.deepEqual(lot.lottery.draws, [], 'No lottery results may be invented');

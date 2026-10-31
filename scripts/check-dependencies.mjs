@@ -15,9 +15,21 @@ for (const advisory of Object.values(report.advisories)) {
   if (!['critical', 'high'].includes(advisory.severity)) continue;
   // No upstream fix (confirmed official GHSA). Patterns are developer-owned.
   // Expiring exception ONLY for this advisory, not for braces as a whole.
-  const accepted = advisory.github_advisory_id === 'GHSA-vfj7-8cjw-p6xm'
+  const acceptedBraces = advisory.github_advisory_id === 'GHSA-vfj7-8cjw-p6xm'
     && advisory.module_name === 'braces' && new Date() < new Date('2026-11-05T00:00:00Z');
-  console.log(`${advisory.severity}: ${advisory.module_name}: ${advisory.github_advisory_id}: ${accepted ? 'reviewed, non-user-controlled patterns; expires 2026-11-05' : 'BLOCKED'}`);
+  // GHSA-mrhx-c7xc-m3w5 is fixed only in zod 4.6.6 (zod@4 is overridden to it in
+  // pnpm-workspace.yaml). The 3.x line has no patched release; the workspace uses
+  // the classic zod 3 API (never zod/v4) and API JSON bodies are capped at 64kb.
+  // Expiring exception ONLY while every finding is a 3.x copy; any 4.x copy below
+  // 4.6.6 stays blocked.
+  const versions = (advisory.findings || []).map(finding => finding.version);
+  const acceptedZod3 = advisory.github_advisory_id === 'GHSA-mrhx-c7xc-m3w5'
+    && advisory.module_name === 'zod' && versions.length > 0 && versions.every(v => v.startsWith('3.'))
+    && new Date() < new Date('2027-01-31T00:00:00Z');
+  const accepted = acceptedBraces || acceptedZod3;
+  const note = acceptedBraces ? 'reviewed, non-user-controlled patterns; expires 2026-11-05'
+    : 'reviewed, zod 3.x has no patched release; expires 2027-01-31';
+  console.log(`${advisory.severity}: ${advisory.module_name}: ${advisory.github_advisory_id}: ${accepted ? note : 'BLOCKED'}`);
   if (!accepted) blocked++;
 }
 console.log(`Dependency audit: ${blocked} unaccepted critical/high advisories.`);

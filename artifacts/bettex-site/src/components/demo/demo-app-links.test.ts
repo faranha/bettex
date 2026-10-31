@@ -33,7 +33,10 @@ test('public ALFA and feature links share the localized app entry', () => {
   const app = read('../../App.tsx');
   assert.match(app, /<RoadmapSection \/>/);
   assert.match(read('../../pages/pitch.tsx'), /<RoadmapSection id="pitch-roadmap" \/>/);
-  assert.match(read('../WhitepaperChapters.tsx'), /roadmapStops\.map/);
+  // The documentation roadmap moved into DocumentationRoadmapMap, which still renders the shared stops.
+  assert.match(read('../WhitepaperChapters.tsx'), /<DocumentationRoadmapMap \/>/);
+  assert.match(read('../DocumentationRoadmapMap.tsx'), /import \{ roadmapStops \} from '\.\/RoadmapSection'/);
+  assert.match(read('../DocumentationRoadmapMap.tsx'), /roadmapStops\.map/);
   assert.match(app, /<DemoAppLink[^>]*data-testid="brand-alpha-badge"/);
   assert.match(read('../../pages/pitch.tsx'), /<DemoAppLink data-testid="pitch-open-alpha-demo"/);
   assert.doesNotMatch(read('./PublicDemoPage.tsx'), /Coming soon|Próximamente|is on its way/);
