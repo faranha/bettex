@@ -2,21 +2,21 @@
 
 > Historical operational test path, not the current visual demo or launch
 > policy. Fees, pricing, custody and execution evidence below describe that
-> earlier implementation. The community rules in [replit.md](../../replit.md)
+> earlier implementation. The community rules in [PROJECT.md](../../PROJECT.md)
 > take precedence; this record does not authorize charges or reactivation.
 
 ## Sources and decisions
 
 | Requirement | Source and section | Status |
 | --- | --- | --- |
-| Personal wallets, session, vault and ownership | `docs/decisions/0006-personal-test-wallets.md`, §§ account, vault and initial association; `replit.md` §102 | Approved. Reuse; no Clerk migration. |
-| Principal of the purchase in the treasury and separate fee | `replit.md` §§89, 92, 115; `BettexPrimarySale.sol`, `_purchase` and `APP_FEE_USDC` | Approved. Effects confirmed in ERC-20 events of the same purchase. |
+| Personal wallets, session, vault and ownership | `docs/decisions/0006-personal-test-wallets.md`, §§ account, vault and initial association; `PROJECT.md` §102 | Approved. Reuse; no Clerk migration. |
+| Principal of the purchase in the treasury and separate fee | `PROJECT.md` §§89, 92, 115; `BettexPrimarySale.sol`, `_purchase` and `APP_FEE_USDC` | Approved. Effects confirmed in ERC-20 events of the same purchase. |
 | Predefined public vesting | `docs/contracts/bettex-testnet-spec.md`; `TestnetSchedule.sol`, `releasedGroups`; `BettexPrimarySale.sol`, `inventory` | Approved; the local fixture uses 36 monthly dates, not additional issuance. |
-| Quantity × time, official wallet, UTC round | `replit.md` §§101, 104; §105 for outputs | Approved: balance-based model, no custodial deposit; entries are not retroactive, partial exit cancels previous weight. |
+| Quantity × time, official wallet, UTC round | `PROJECT.md` §§101, 104; §105 for outputs | Approved: balance-based model, no custodial deposit; entries are not retroactive, partial exit cancels previous weight. |
 | Use whole units and reconciled source | `docs/architecture.md`, Sources of truth/Operation/Failures; decision 0002 | Applied to path values. Does not equate to a complete equity ledger. |
-| Repetition/restart/lost response | `replit.md` §172; `docs/architecture.md` §§72, 82 | A step reserves nonce/executor before the connector. Confirmed/uncertain is not resent. |
-| Reserves/clearing/distribution | `replit.md` §§90, 95, 154–174 | Approved rules, controller/clearing of this previous delivery still incomplete. Unavailable, no invented zeros. |
-| USDC in earnings wallet | `replit.md` §90 vs old annex §157 | Divergence identified. This path does not perform staking payments nor choose a new destination. |
+| Repetition/restart/lost response | `PROJECT.md` §172; `docs/architecture.md` §§72, 82 | A step reserves nonce/executor before the connector. Confirmed/uncertain is not resent. |
+| Reserves/clearing/distribution | `PROJECT.md` §§90, 95, 154–174 | Approved rules, controller/clearing of this previous delivery still incomplete. Unavailable, no invented zeros. |
+| USDC in earnings wallet | `PROJECT.md` §90 vs old annex §157 | Divergence identified. This path does not perform staking payments nor choose a new destination. |
 
 “STC” is not an asset found in current documentation/configuration. The implemented asset is test USDC with 6 decimals, separate from BETTEX with 18 decimals. The local fixture is not the public Circle USDC.
 
@@ -45,7 +45,7 @@
 
 9. Execute/resume **Test distribution**: global synthetic result limited to 1 USDC per UTC round. If this is the only eligible weight, it receives 0.25 USDC; re-executing does not duplicate the hash or the balance. Consult the entry in Distributions in the shared history.
 
-The USDC/BETTEX journal reconstructs and reconciles wallet/treasury balances in whole units, with reversals audited in reorganization. It does not offer automatic repurchase, on-chain inverse conversion or real trading profit. See [local settlement limits](../decisions/0010-local-round-settlement.md) and [review matrix](../requirements/review-2026-10-05.md). Emulated demo values are not evidence of the EVM. Local payment via EOA does not guarantee atomicity against concurrent BETTEX exit or round flip during submission; it is not authorized for public finance.
+The USDC/BETTEX journal reconstructs and reconciles wallet/treasury balances in whole units, with reversals audited in reorganization. It does not offer automatic repurchase, on-chain inverse conversion or real trading profit. See [local settlement limits](../decisions/0010-local-round-settlement.md) and `review matrix`. Emulated demo values are not evidence of the EVM. Local payment via EOA does not guarantee atomicity against concurrent BETTEX exit or round flip during submission; it is not authorized for public finance.
 
 ## Official technical references
 

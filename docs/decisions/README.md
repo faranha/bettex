@@ -1,7 +1,7 @@
 # Canonical decision register
 
 Economic assumptions in historical records are not current public policy.
-The latest community rules in [replit.md](../../replit.md) take precedence,
+The latest community rules in [PROJECT.md](../../PROJECT.md) take precedence,
 including no BETTEX service fees and the current mint/vesting forecasts.
 Records of operational tests do not authorize reactivating them in the visual demo.
 

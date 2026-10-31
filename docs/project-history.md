@@ -13,7 +13,7 @@ nos documentos vinculados e no histórico Git.
 | Tesouraria | Reservas, governança e trilhas de auditoria | Manter controle, passivos e transparência sem dupla contagem | [Tesouraria](treasury-governance.md), decisão 11 |
 | IA e mercados | Hierarquia, políticas, inferência e pesquisa | Separar previsão, oportunidade, risco e execução | [Agentes](agents.md), decisões 12–16 |
 | Simulação | Cenários e dados isolados | Investigar falhas sem apresentar resultado simulado como lucro real | [Simulação](simulation.md) |
-| Publicação de código | Guardas de sincronização, clone e CI | Evitar vazamento de segredos e envio automático incompleto | [GitHub](github-sync.md), decisão 14 |
+| Publicação de código | Guardas de sincronização, clone e CI | Evitar vazamento de segredos e envio automático incompleto | `GitHub`, decisão 14 |
 | Produto comunitário | Seis capítulos, tokenomics e regras atuais | Preservar propósito e condições sem inventar entidade, receita ou garantias | [Estado atual](project-status.md) |
 | Demo visual | Painel, grafo espacial, histórico e tesouraria correlacionados | Apresentar o produto sem ativar serviços financeiros | [Demo](demo/README.md), decisão 17 |
 | Site e SEO | Traduções, downloads, HTML inicial e imagens sociais | Tornar leitura e compartilhamento consistentes com o produto atual | [Preparação GitHub](github-finalization.md) |

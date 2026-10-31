@@ -240,7 +240,7 @@ Dados ilustrativos, observados, estimados e nativos permanecem identificados e n
 
 ## 11. Relação com Tesouraria e apuração
 
-Preservar [regras do projeto](../replit.md), [controle da Tesouraria](treasury-governance.md) e [compatibilidade econômica](trading-decision-logic.md#9-compatibilidade-com-as-regras-existentes).
+Preservar [regras do projeto](../PROJECT.md), [controle da Tesouraria](treasury-governance.md) e [compatibilidade econômica](trading-decision-logic.md#9-compatibilidade-com-as-regras-existentes).
 
 - Capital retornado não é lucro. Entradas/saídas de capital não são desempenho da estratégia.
 - Resultado de uma venda não dispara distribuição direta.

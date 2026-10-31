@@ -244,4 +244,4 @@ Fontes oficiais consultadas, todas em 14/10/2026:
 
 Inventário e consultas locais executados: `pnpm docs:inventory`; consultas Starknet sobre swaps/execução e Arbitrum sobre fees/finality. A presença de `ethers` não garante compatibilidade com Cairo ou Solana.
 
-Hashes das representações Markdown extraídas estão em [registro das fontes](reference/dex-spot-sources.json). Não são hashes dos bytes HTTP originais nem comprovação do estado de contratos. Endpoints, versões, rotas e permissões devem ser revalidados quando houver implementação.
+Hashes das representações Markdown extraídas estão em `registro das fontes`. Não são hashes dos bytes HTTP originais nem comprovação do estado de contratos. Endpoints, versões, rotas e permissões devem ser revalidados quando houver implementação.

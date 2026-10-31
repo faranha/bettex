@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const read = (path) => readFileSync(fileURLToPath(new URL(`../${path}`, import.meta.url)), 'utf8');
 const messages = JSON.parse(read('src/lib/locales/source.json'));
 const translations = JSON.parse(read('src/lib/locales/translations.json'));
-const projectRules = read('../../replit.md').split('\n');
+const projectRules = read('../../PROJECT.md').split('\n');
 const forbidden = [
   /rodada da liberação/iu,
   /lucro realizado líquido acumulado/iu,

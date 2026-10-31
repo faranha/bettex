@@ -15,7 +15,7 @@ const server = await createServer({ configFile: path.join(root, 'vite.config.ts'
   server: { middlewareMode: true }, appType: 'custom' });
 try {
   const { render } = await server.ssrLoadModule('/src/entry-server.tsx');
-  const base = process.env.BASE_PATH.replace(/\/$/, '');
+  const base = (process.env.BASE_PATH ?? '/').replace(/\/$/, '');
   for (const [route, page] of Object.entries(routes)) {
     const body = render(`${base}${route}`);
     if (!body.includes('<h1')) throw new Error(`Prerender failed: no H1 for ${route}`);

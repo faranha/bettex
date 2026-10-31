@@ -8,7 +8,7 @@ The creator provided mandatory architectural rules. Usable documents and code al
 
 ## Decision and justification
 
-`AGENTS.md` guides implementations, `docs/architecture.md` defines the map/dependencies/sources of truth, and `docs/decisions/` registers justifications. `replit.md` requires its consultation before changes. Previous documents are support or referrals, not concurrent records.
+`AGENTS.md` guides implementations, `docs/architecture.md` defines the map/dependencies/sources of truth, and `docs/decisions/` registers justifications. `PROJECT.md` requires its consultation before changes. Previous documents are support or referrals, not concurrent records.
 
 New rules belong to the map contexts. Current exceptions are explicit:
 

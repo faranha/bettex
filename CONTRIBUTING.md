@@ -1,7 +1,7 @@
 # Development rules
 
 Before implementing, read [AGENTS.md](AGENTS.md), [canonical architecture](docs/architecture.md),
-`replit.md`, [current project status](docs/project-status.md) and the
+`PROJECT.md`, [current project status](docs/project-status.md) and the
 [relevant decisions](docs/decisions/README.md).
 
 ## Mandatory principles

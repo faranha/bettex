@@ -24,11 +24,11 @@ This resolves the missing public ingestion/UI adapter in item A, not the signed 
 
 Native local USDC withdrawals and BETTEX sending are also integrated. BETTEX → USDC redemption remains blocked without approved pricing/liquidity. Atomic payout protection is integrated for new guarded runtimes and verified independently; the existing chain is preserved and legacy payouts are blocked rather than reset. See [decision](decisions/0015-local-withdrawals-atomic-guard-allora.md) and the updated review below.
 
-Authenticated development audit completed with no permission grants or real financial movements. Account persistence, complete isolated simulation, protected Treasury denial, Central interactions/localization and all 13 documentation chapters were exercised. Hidden vesting charts are gated and visible charts remount with positive desktop/mobile dimensions. Follow-up interaction corrections and exact limits are in [visual review](requirements/dashboard-visual-review.md).
+Authenticated development audit completed with no permission grants or real financial movements. Account persistence, complete isolated simulation, protected Treasury denial, Central interactions/localization and all 13 documentation chapters were exercised. Hidden vesting charts are gated and visible charts remount with positive desktop/mobile dimensions. Follow-up interaction corrections and exact limits are in `visual review`.
 
 Published-site read-only verification: health returns 200; `/api/agents/center` returns 404, confirmed in production logs. Current workspace registration/build includes the route. Updating the published version is still pending; no publication occurred here.
 
-Public probes for the first matching open market/outcome returned no ask liquidity for BTC/ETH and stale book for SOL. Reports are [BTC](requirements/market-depth-btc.json), [ETH](requirements/market-depth-eth.json), [SOL](requirements/market-depth-sol.json). These are bounded explorations, not proof that all markets for an asset lack liquidity. No values were fabricated to qualify those books.
+Public probes for the first matching open market/outcome returned no ask liquidity for BTC/ETH and stale book for SOL. Reports are `BTC`, `ETH`, `SOL`. These are bounded explorations, not proof that all markets for an asset lack liquidity. No values were fabricated to qualify those books.
 
 Integration-catalog search returned no matching Robinhood/FOMO/bonus connectors. It does not prove that external APIs do not exist; provider identity/access and approved scope remain required.
 

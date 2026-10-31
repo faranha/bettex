@@ -23,6 +23,19 @@ export function translateMarketTitle(question: string, locale: MarketLocale): st
     const word = prep === 'by' ? (locale === 'pt' ? 'até' : 'hasta') : locale === 'pt' ? 'em' : 'en';
     return `${word} ${translated}`;
   };
+  const weekly = question.match(/^Will (Bitcoin|Ethereum|Solana) (reach|dip to) (\$[\d,.]+) ([A-Za-z]+) (\d{1,2})-(?:([A-Za-z]+) )?(\d{1,2})\?$/);
+  if (weekly) {
+    const [, asset, verb, price, startMonth, startDay, endMonth, endDay] = weekly;
+    const name = (value: string) => months.find(m => m[0] === value)?.[locale === 'pt' ? 1 : 2];
+    const from = name(startMonth), to = name(endMonth ?? startMonth);
+    if (!from || !to) return null;
+    const day = (d: string) => (locale === 'pt' && d === '1' ? '1º' : d);
+    const span = locale === 'pt'
+      ? (endMonth ? `de ${day(startDay)} de ${from} a ${day(endDay)} de ${to}` : `de ${day(startDay)} a ${day(endDay)} de ${to}`)
+      : (endMonth ? `del ${startDay} de ${from} al ${endDay} de ${to}` : `del ${startDay} al ${endDay} de ${to}`);
+    if (locale === 'pt') return `${asset === 'Solana' ? 'A' : 'O'} ${asset} ${verb === 'reach' ? 'atingirá' : 'cairá para'} ${price} ${span}?`;
+    return `¿${asset} ${verb === 'reach' ? 'alcanzará' : 'caerá a'} ${price} ${span}?`;
+  }
   const simple = question.match(/^Will (Bitcoin|Ethereum|Solana) (reach|dip to) (\$[\d,.]+) (in|by|on) (.+)\?$/);
   if (simple) {
     const [, asset, verb, price, prep, value] = simple;
@@ -48,18 +61,27 @@ const failedUntil = new Map<MarketLocale, number>();
 let pending: Promise<void> | null = null;
 const numbers = (s: string) => JSON.stringify((s.match(/\d+(?:[.,:]\d+)*/g) ?? []).sort());
 
-/** Unfamiliar source formats are translated, not exposed in English or replaced by invented events. */
+/** Optional OpenAI-compatible provider. Unset in the static deployment: titles the deterministic
+ * translator does not cover are then shown in their original English, never replaced by invented events. */
+function translationProvider(): { base: string; secret: string } | null {
+  const secret = process.env.OPENAI_API_KEY || process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+  const base = process.env.OPENAI_BASE_URL || process.env.AI_INTEGRATIONS_OPENAI_BASE_URL || (secret ? 'https://api.openai.com/v1' : '');
+  return secret && base ? { base, secret } : null;
+}
+
+/** Unfamiliar source formats are translated when a provider is configured; otherwise (or if it fails) they stay in English. */
 export async function localizeMarketTitles(questions: string[], locale: MarketLocale): Promise<string[]> {
   const key = (s: string) => `${locale}:${s}`;
   const missing = () => [...new Set(questions)].filter(q => !translateMarketTitle(q, locale) && !cache.has(key(q)));
-  if (missing().length && pending) await pending;
+  const english = () => questions.map(q => translateMarketTitle(q, locale) ?? cache.get(key(q)) ?? q);
+  const provider = translationProvider();
+  if (!provider) return english();
+  if (missing().length && pending) await pending.catch(() => undefined);
   if (missing().length) {
-    if ((failedUntil.get(locale) ?? 0) > Date.now()) throw new Error('translation_unavailable');
+    if ((failedUntil.get(locale) ?? 0) > Date.now()) return english();
     const source = missing();
     pending = (async () => {
-      const base = process.env.AI_INTEGRATIONS_OPENAI_BASE_URL;
-      const secret = process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
-      if (!base || !secret) throw new Error('translation_unavailable');
+      const { base, secret } = provider;
       const response = await fetch(`${base.replace(/\/$/, '')}/chat/completions`, {
         method: 'POST', signal: AbortSignal.timeout(25000),
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${secret}` },
@@ -85,8 +107,8 @@ export async function localizeMarketTitles(questions: string[], locale: MarketLo
       validated.forEach((title, i) => cache.set(key(source[i]), title));
     })();
     try { await pending; }
-    catch (error) { failedUntil.set(locale, Date.now() + 15000); throw error; }
+    catch { failedUntil.set(locale, Date.now() + 15000); return english(); }
     finally { pending = null; }
   }
-  return questions.map(q => translateMarketTitle(q, locale) ?? cache.get(key(q))!);
+  return english();
 }

@@ -66,7 +66,7 @@ Leia o caso e as regras principais antes das fórmulas e referências. Cada docu
 | 9 | [Custos e execução](trading-execution-validation.md) | Como tratar liquidez, autorização, efeitos incertos e resultados? |
 | Consulta | [Benchmark de mercado](trading-market-benchmark.md) | Que referências apoiam a investigação, sem aprovar parâmetros? |
 
-**Regra de leitura:** as [instruções atuais](../replit.md) e regras aprovadas prevalecem sobre exemplos, hipóteses e material histórico. Valores candidatos não viram política porque aparecem numa fórmula.
+**Regra de leitura:** as [instruções atuais](../PROJECT.md) e regras aprovadas prevalecem sobre exemplos, hipóteses e material histórico. Valores candidatos não viram política porque aparecem numa fórmula.
 
 As pesquisas anteriores sobre [base spot](trading-spot-base.md) e [DEX/on-chain](trading-spot-dex.md), assim como os registros de [políticas de previsões](trading-policies.md) e [provedores](trading-provider-model.md), são referências de contexto. Não substituem esta ordem nem ampliam a oferta do demo/ALFA.
 

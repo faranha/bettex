@@ -5,7 +5,7 @@ import { chromium } from 'playwright-core';
 const url = process.env.CENTRAL_AUDIT_URL ??
   `https://${process.env.REPLIT_DEV_DOMAIN}/en/app/central`;
 const nodes = ['bettex', 'predictions', 'btc', 'eth', 'sol', 'governance', 'risk', 'treasury', 'execution', 'reconciliation', 'records', 'capital', 'execrec', 'markets'];
-const browser = await chromium.launch({ executablePath: '/repl/tools/bin/chromium', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
 const failures = [];
 let checks = 0;
 

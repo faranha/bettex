@@ -21,11 +21,9 @@ informar perfil, data, pré-requisitos, limitações e falhas pendentes.
 
 ## Sincronização e revisão
 
-A preparação não envia commits nem publica o produto. Durante a revisão, manter
-o watcher pausado com `pnpm sync:pause`. Para a integração final, o responsável
-deve revisar a configuração e autenticação de Git seguindo [github-sync.md](github-sync.md).
-Não executar `sync:resume` ou `sync:once` antes dessa revisão: esses comandos
-podem criar commit e enviar a branch autorizada.
+A preparação não envia commits nem publica o produto. O antigo sincronizador
+automático foi removido; envios são commits revisados. O deploy de produção é
+feito pela Vercel a partir de `main` ([deploy na Vercel](deployment-vercel.md)).
 
 O fluxo recomendado é uma branch de revisão e um pull request, com CI e revisão
 humana. Não alterar visibilidade do repositório, branch de destino ou permissões

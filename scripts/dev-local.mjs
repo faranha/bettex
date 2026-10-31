@@ -1,4 +1,4 @@
-// Portable clean-clone launcher. Replit uses its existing managed workflows instead.
+// Portable clean-clone launcher for local development.
 import { spawn } from 'node:child_process';
 if (process.env.NODE_ENV === 'production') throw new Error('Development launcher is forbidden in production.');
 if (!process.env.DATABASE_URL) throw new Error('Configure a fresh development DATABASE_URL before starting the API.');
@@ -14,6 +14,4 @@ launch(['--filter', '@workspace/bettex-site', 'run', 'dev'], {
   PORT: process.env.SITE_PORT || '5173', BASE_PATH: process.env.BASE_PATH || '/',
   BETTEX_LOCAL_API_PROXY: `http://127.0.0.1:${process.env.API_PORT || '8080'}`,
 });
-// Local startup includes synchronization recovery; the same lock coordinates task triggers.
-launch(['sync:watch'], {});
 for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => { for (const child of children) child.kill(signal); });

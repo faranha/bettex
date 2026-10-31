@@ -1,6 +1,6 @@
 # BETTEX Agent Hierarchy
 
-Canonical document complementary to the [architecture](architecture.md) and [Treasury control](treasury-governance.md). Source: [creator instruction](../attached_assets/Pasted-Replit-antes-de-aprofundar-o-desenvolvimento-dos-agente_1791181766428.txt).
+Canonical document complementary to the [architecture](architecture.md) and [Treasury control](treasury-governance.md). Source: `creator instruction`.
 
 ## Responsibilities and names
 

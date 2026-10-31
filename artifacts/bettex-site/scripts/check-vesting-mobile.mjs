@@ -12,7 +12,7 @@ for (const route of routes) {
   assert.equal((html.match(/data-vesting-month=/g) ?? []).length, 24, route);
   assert.equal((html.match(/data-vesting-series=/g) ?? []).length, 4, route);
 }
-const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? '/repl/tools/bin/chromium', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
 try {
   for (const route of routes) {
     const page = await browser.newPage({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });

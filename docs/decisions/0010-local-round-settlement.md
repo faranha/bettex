@@ -2,7 +2,7 @@
 
 ## Sources and resolution
 
-Treasury prompts, full path and histories in attached_assets, current full review; replit.md (single rounds, exits, fractions, split), docs/architecture.md and decisions 0007/0009.
+Treasury prompts, full path and histories in attached_assets, current full review; PROJECT.md (single rounds, exits, fractions, split), docs/architecture.md and decisions 0007/0009.
 
 Participation follows BETTEX balance × confirmed time, without a new custody contract. Calculation/payments belong to ledger; execution uses the existing executor and journal; operational signature remains in the local wallets adapter. No personal key passes to the server.
 

@@ -44,9 +44,12 @@ Thumbs.db
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
 
-# Replit
+# Local tool caches
 .cache/
 .local/
+
+# Vercel build output and local project link
+.vercel/
 
 # Persistent public documentation corpus: not temporary, not shipped with the app.
 /data/technical-docs/

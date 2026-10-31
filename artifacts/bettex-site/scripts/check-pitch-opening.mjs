@@ -7,7 +7,7 @@ const widths = process.env.PITCH_OPENING_WIDTHS?.split(',').map(Number) ?? [320,
 const locales = [['pt', '/pitch'], ['en', '/en/pitch'], ['es', '/es/pitch']]
   .filter(([locale]) => !process.env.PITCH_OPENING_LOCALE || locale === process.env.PITCH_OPENING_LOCALE);
 const browser = await chromium.launch({
-  executablePath: process.env.CHROMIUM_PATH ?? '/repl/tools/bin/chromium', args: ['--no-sandbox'],
+  executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'],
 });
 try {
   for (const [locale, path] of locales) {

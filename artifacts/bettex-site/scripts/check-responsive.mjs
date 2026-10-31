@@ -6,7 +6,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 const base = process.env.AUDIT_URL ?? 'http://127.0.0.1:80';
 const widths = [320, 360, 390, 430, 768, 1024, 1440];
 const routes = ['/', '/pitch', '/documentacao', '/demo'];
-const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? '/repl/tools/bin/chromium', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
 const results = [];
 const errors = [];
 const page = await browser.newPage({ reducedMotion: 'reduce' });

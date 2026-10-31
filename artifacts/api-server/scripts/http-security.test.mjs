@@ -21,10 +21,10 @@ function request(method, origin, type = 'application/json', path = '/api/demo/mo
   return { res, passed };
 }
 test('origins cannot be extended by a forged Host, HTTP scheme, suffix or arbitrary local port', () => {
-  const env = { NODE_ENV: 'production', REPLIT_DEV_DOMAIN: 'preview.replit.dev' };
+  const env = { NODE_ENV: 'production', EXTRA_TRUSTED_HOSTS: 'preview.example.dev' };
   assert.equal(allowedOrigin(trusted, env), true);
   for (const value of ['http://bettex.ai', 'https://bettex.ai.evil.test', 'https://bettex.ai:444',
-    'https://preview.replit.dev', 'http://localhost:25336', 'null', 'https://bettex.ai/path']) {
+    'https://preview.example.dev', 'http://localhost:25336', 'null', 'https://bettex.ai/path']) {
     assert.equal(allowedOrigin(value, env), false);
   }
 });

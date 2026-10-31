@@ -1,6 +1,6 @@
 # BETTEX — documentação e evidências
 
-As instruções comunitárias atuais estão em [replit.md](../replit.md).
+As instruções comunitárias atuais estão em [PROJECT.md](../PROJECT.md).
 Documentos de implementação, decisões, pesquisas e relatórios antigos registram
 o contexto em que foram produzidos; não substituem as regras atuais.
 
@@ -23,7 +23,7 @@ Para consultar a organização técnica e suas evidências, usar:
 Código operacional preservado e evidência histórica não são recursos ativos do demo.
 
 1. Correções e instruções mais recentes do criador.
-2. Direção atual em `replit.md`.
+2. Direção atual em `PROJECT.md`.
 3. Documentação pública e regras técnicas aprovadas, incluindo tokenomics.
 4. Registros históricos, apenas como evidência da implementação anterior.
 
@@ -34,8 +34,8 @@ Manter registros de testes e transações sem reescrever fatos históricos.
 
 ## Revisões
 
-- [Coerência comunitária](plans/bettex-community-consistency-review.pt.md).
-- [Revisão integral do conteúdo e implementação](plans/bettex-comprehensive-review.pt.md).
+- `Coerência comunitária`.
+- `Revisão integral do conteúdo e implementação`.
 
 ## Lógica de Cripto — especificação, não operação
 

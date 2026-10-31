@@ -34,7 +34,6 @@ const steps = [
   ['Isolated treasury HTTP, governance and execution integration', 'pnpm', ['--filter', '@workspace/api-server', 'run', 'check:treasury-integration']],
   ['Research book precision and fail-closed depth', process.execPath, ['--test', 'tools/market-validation/book_probe.test.mjs']],
   ['Offline research model and holdout isolation', 'python', ['-m', 'unittest', 'discover', '-s', 'tools/market-validation', '-p', 'test_*.py']],
-  ['Git synchronization safeguards without upload', 'pnpm', ['run', 'sync:test']],
   ['Encryption and wallet preservation', 'pnpm', ['--filter', '@workspace/bettex-site', 'run', 'check:wallets']],
   ['Test contracts, tokenomics and local EVM transactions', 'pnpm', ['--filter', '@workspace/bettex-contracts', 'test']],
   ['Reproducible build and test contract ABI', 'pnpm', ['--filter', '@workspace/bettex-contracts', 'build']],

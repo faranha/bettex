@@ -41,39 +41,33 @@ The SQL migration files under `lib/db/migrations/` document historical changes;
 their dedicated migration scripts must only be used after reviewing applicability.
 Do not run `push-force` on a shared database.
 
-## Outside Replit
+## Local development
 
 ```sh
 pnpm dev:local
 ```
 
-This launches the API on `API_PORT` (8080 by default), Vite on `SITE_PORT`
-(5173), and the coordinated sync watcher. Vite's opt-in local proxy keeps
-`/api` requests on the browser's origin. It is disabled in Replit, whose existing
-artifact proxy owns routing. The launcher sets development mode and pauses
-financial execution; it does not start or fund any EVM.
+This launches the API on `API_PORT` (8080 by default) and Vite on `SITE_PORT`
+(5173). Vite's opt-in local proxy keeps `/api` requests on the browser's
+origin. The launcher sets development mode and pauses financial execution; it
+does not start or fund any EVM.
 
-Before starting the launcher, run `pnpm sync:pause` while preparing the final
-GitHub integration. Its watcher must not upload changes before owner review.
 Open the site and select **Open demo**. `/app` is visual in development and
 production; preserved account adapters are not available in the current app.
-
-## In Replit
-
-Use the existing managed workflows `artifacts/api-server: API Server` and
-`artifacts/bettex-site: web`. They supply separate ports and artifact base paths.
-The separate `github-sync` console workflow runs the watcher while the workspace
-is running. It has no customer-facing interface or HTTP port.
 
 The former local and public runtime scripts are explicitly disabled. Do not
 remove their safety throws or start/fund a chain to view the demo.
 Library tests create their own isolated EVM without activating the runtime.
 See [testnet scope](testnets/README.md).
 
+## Production
+
+Production is deployed by Vercel from `main`; see
+[Vercel deployment](deployment-vercel.md).
+
 ## Checks and builds
 
 ```sh
-pnpm sync:check
 pnpm quality:current
 PORT=5173 BASE_PATH=/ pnpm build
 pnpm --filter @workspace/api-spec codegen
@@ -88,23 +82,5 @@ checks whose operational prerequisites are disabled. It is not claimed green.
 See [profiles and limitations](testing.md). Contract tests run an isolated local EVM.
 
 Code generation must not leave changes in generated API files after a clean CI
-run. Do not hand-edit those clients. CI builds and tests only; it does not invoke
-`sync:once`, push Git changes, deploy, or send real transactions.
-
-## End of every AI task
-
-**During final repository preparation, do not run the sending commands below.**
-Leave the watcher paused; final integration is controlled by the owner.
-The following describes the previously authorized normal synchronization workflow,
-not authorization to upload this preparation.
-
-Run appropriate checks and then:
-
-```sh
-pnpm sync:once -- "Describe the completed development change in English"
-pnpm sync:status
-```
-
-A nonzero synchronization exit means the task is **not synchronized**. Report
-the phase and recovery action. A local commit alone is not proof of a push.
-See [github-sync.md](github-sync.md) for activation and conflicts.
+run. Do not hand-edit those clients. CI builds and tests only; it does not push
+Git changes, deploy, or send real transactions.

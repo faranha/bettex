@@ -68,7 +68,7 @@ Registrar o que mudou e informar qualquer efeito estrutural encontrado antes de 
 
 ## Referências de manutenção
 
-- [Instruções gerais e prioridades do projeto](../replit.md).
+- [Instruções gerais e prioridades do projeto](../PROJECT.md).
 - [Estrutura canônica dos capítulos e da numeração](../artifacts/bettex-site/src/lib/documentation-structure.ts).
 - [Títulos principais e resolução dos destinos](../artifacts/bettex-site/src/lib/documentation-navigation.ts).
 - [Composição dos conteúdos por responsável](../artifacts/bettex-site/src/components/DocumentationOwnedContent.tsx).

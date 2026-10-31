@@ -180,7 +180,7 @@ before claiming that this separate visual check passes.
    and verify the advertised remote hash with `sync:status`.
 5. Confirm actual GitHub Actions and grant-reviewer access.
 
-See [github-sync.md](github-sync.md) for exact commands, pause/recovery and
+See `github-sync.md` for exact commands, pause/recovery and
 troubleshooting. The watcher cannot execute while the workspace is inactive.
 Its local startup recovery does not provide always-on hosting.
 

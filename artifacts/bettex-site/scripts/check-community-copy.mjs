@@ -19,10 +19,10 @@ async function scan(directory) {
     }
   }
 }
-for (const directory of ['artifacts/bettex-site/src', 'artifacts/bettex-site/scripts', 'artifacts/api-server/src', 'lib', 'docs', '.agents/memory']) {
+for (const directory of ['artifacts/bettex-site/src', 'artifacts/bettex-site/scripts', 'artifacts/api-server/src', 'lib', 'docs']) {
   await scan(path.join(root, directory));
 }
-for (const file of ['README.md', 'replit.md']) {
+for (const file of ['README.md', 'PROJECT.md']) {
   assert.ok(!implicit.test(await fs.readFile(path.join(root, file), 'utf8')), file);
   count++;
 }

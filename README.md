@@ -36,7 +36,7 @@ Only the public site and local visual demo are currently exposed. Development ad
 | Solidity contracts | Source, compilation and isolated local-EVM tests; no public deployment/mainnet claim |
 | Public-testnet observation | Arbitrum Sepolia adapter/association; deployment/funding and end-to-end evidence remain separate |
 | Allora / live trading providers | Research/read capabilities and explicit unresolved integration gates; no invented connectivity |
-| GitHub synchronization | Configured for the creator-authorized public `faranha/bettex`, branch `development/bettex`; authenticated push remains required |
+| Hosting | Vercel Build Output API from `faranha/bettex` `main`; see [Vercel deployment](docs/deployment-vercel.md) |
 
 See [simulation](docs/simulation.md) and [integration blockers](docs/integration-pendencies.md)
 before interpreting balances, histories, transactions, approvals or performance.
@@ -51,7 +51,6 @@ before interpreting balances, histories, transactions, approvals or performance.
 ```text
 artifacts/bettex-site/     Public content and development web application
 artifacts/api-server/      HTTP API and existing domain modules
-artifacts/mockup-sandbox/  Isolated component design previews
 lib/api-spec/             OpenAPI source and code generator
 lib/api-client-react/     Generated hooks/types
 lib/api-zod/              Generated transport validators
@@ -59,8 +58,9 @@ lib/db/                   Database schema and migration material
 lib/bettex-contracts/     Test-only Solidity sources, compilation and EVM tests
 docs/                     Architecture, decisions, limitations and review guides
 tools/technical-docs/     Official-reference research tooling, not a financial agent
-scripts/github-sync/      Coordinated task/background synchronization
-.github/workflows/        Verification only; no automatic deployment
+scripts/vercel/           Vercel build and Build Output API packaging
+scripts/neon/             Database backup restore helper (no data in Git)
+.github/workflows/        Verification only; deployment is Vercel's Git integration
 ```
 
 ## Installation and execution
@@ -71,10 +71,8 @@ pnpm version and the external services described in [development.md](docs/develo
 ```sh
 corepack enable
 pnpm install --frozen-lockfile
-python -m pip install "xlsxwriter==3.2.9"
+python3 -m pip install "xlsxwriter==3.2.9"
 cp .env.example .env
-# Keep automatic sending paused until the owner reviews the final integration.
-pnpm sync:pause
 pnpm dev:local
 ```
 
@@ -84,17 +82,14 @@ Historical operational reference tests have separate requirements; see
 Do not connect a production database or real funds.
 The launcher does not start/fund an EVM. Operational runtime scripts remain disabled.
 
-In Replit, use the existing managed API/site workflows rather than replacing
-them with the clean-clone launcher. Their artifact proxy supplies routing and
-scoped environment variables.
+Production runs on Vercel; see [Vercel deployment](docs/deployment-vercel.md).
 
 ## Verification
 
 ```sh
-pnpm sync:test
-pnpm sync:check
 pnpm quality:current
 PORT=5173 BASE_PATH=/ pnpm build
+pnpm build:vercel
 pnpm --filter @workspace/bettex-contracts test
 ```
 
@@ -104,25 +99,18 @@ prerequisites are currently disabled. Reports list exclusions rather than callin
 them passes. See [testing.md](docs/testing.md). Test-only contract transactions
 stay on isolated local EVMs. Passing tests are not an independent audit.
 
-## Automatic development synchronization
+## Deployment
 
-```sh
-pnpm sync:watch
-pnpm sync:once -- "Summarize the completed development change in English"
-pnpm sync:status
-pnpm sync:pause
-pnpm sync:resume
-```
+`bettex.ai` is served by Vercel. `pnpm build:vercel` builds the site exactly as
+before (same static prerender and the same `serve.mjs` routing, headers and
+redirects), then packages two Node 24 functions with the Build Output API: the
+static site server and the Express `/api` app. Preview hosts on `*.vercel.app`
+are sent `X-Robots-Tag: noindex`. No secrets are required; see
+[Vercel deployment](docs/deployment-vercel.md).
 
-The watcher and task-completion command share one lock, wait for stable writes,
-check staged content, run verification, create nonempty development checkpoints,
-fetch/push safely and verify the resulting remote commit. Failed pushes preserve
-work and retry. Divergence requires explicit human recovery.
-
-**Automatic synchronization implemented locally; activation pending native Git
-push authentication.** The API connector alone does not authorize Git transport.
-GitHub Actions does not upload local Replit edits. A stopped
-workspace cannot run the watcher. See [activation and operations](docs/github-sync.md).
+The public demo does not read a database. A PostgreSQL backup restore helper
+for Neon is documented in [Neon restore](docs/neon-restore.md); backups are
+never stored in this repository.
 
 ## Technical and grant review
 
@@ -134,12 +122,10 @@ workspace cannot run the watcher. See [activation and operations](docs/github-sy
 6. [Preparation and verification report](docs/github-readiness-report.md).
 
 Public product/app destination: [bettex.ai/en/app](https://bettex.ai/en/app).
-It is an ALFA demonstration, not live financial execution. The managed
-workspace preview is the development surface.
+It is an ALFA demonstration, not live financial execution.
 
 The owner explicitly authorized public upload to `faranha/bettex` only. Preserve
-that destination, its visibility and `main`; synchronization targets only
-`development/bettex`. Do not generalize this permission to other repositories.
+that destination, its visibility and `main`. Do not generalize this permission to other repositories.
 No repository-wide license file was found; existing package `license` metadata
 is preserved, not treated as proof of redistribution rights. Uploaded assets,
 third-party research and source material require provenance/ownership review

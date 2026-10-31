@@ -84,7 +84,7 @@ wheels = [
 ]
 
 [[package]]
-name = "repl-nix-workspace"
+name = "bettex-tools"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

@@ -302,4 +302,4 @@ Em um pacote real ainda seriam necessárias evidências verificadas, avaliação
 - Prazo máximo atingido sem saída concluída: permanece ativo/em saída, com risco explícito.
 - Posição encerrada com lucro: encaminhar à apuração; não distribuir diretamente.
 
-Referências de autoridade preservadas: [hierarquia e separação entre seleção/autorização](agent-hierarchy.md), [Tesouraria](treasury-governance.md) e [regras do projeto](../replit.md). Nenhuma parte deste contrato ativa os fluxos históricos ou muda permissões.
+Referências de autoridade preservadas: [hierarquia e separação entre seleção/autorização](agent-hierarchy.md), [Tesouraria](treasury-governance.md) e [regras do projeto](../PROJECT.md). Nenhuma parte deste contrato ativa os fluxos históricos ou muda permissões.

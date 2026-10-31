@@ -175,7 +175,7 @@ Esta revisão preserva:
 | Direitos de participação existentes | Preservar elegibilidade por rodada, cancelamento de créditos não pagos após qualquer saída de BETTEX e retorno de frações não executáveis à Tesouraria, sem acumulação. |
 | Separação de carteiras e destinações | Recompra não utilizada permanece segregada; não vira nova receita, crédito do participante ou orçamento livre de trading. |
 
-Referências: [regras do projeto](../replit.md), [controle da Tesouraria](treasury-governance.md) e [hierarquia histórica](agent-hierarchy.md). A hierarquia histórica inclui previsões; não redefine o mandato spot atual. Seus limites de autoridade e segregação continuam relevantes.
+Referências: [regras do projeto](../PROJECT.md), [controle da Tesouraria](treasury-governance.md) e [hierarquia histórica](agent-hierarchy.md). A hierarquia histórica inclui previsões; não redefine o mandato spot atual. Seus limites de autoridade e segregação continuam relevantes.
 
 Os pequenos valores e limites do controlador local são fixtures históricas, não parâmetros econômicos desta lógica. Nenhum novo percentual de risco ou reserva é aprovado aqui.
 

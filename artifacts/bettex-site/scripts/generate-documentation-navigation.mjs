@@ -6,7 +6,7 @@ import { chromium } from 'playwright-core';
 const root = path.resolve(import.meta.dirname, '..');
 const output = path.resolve(root, '../../generated-artifacts/documentation-audits');
 const server = await createServer({ configFile: path.join(root, 'vite.config.ts'), mode: 'production', server: { middlewareMode: true } });
-const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? '/repl/tools/bin/chromium', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
 const manifest = {};
 try {
   const { render } = await server.ssrLoadModule('/src/entry-server.tsx');

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { chromium } from 'playwright-core';
 
 const base = process.env.AUDIT_URL ?? 'http://localhost:80';
-const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? '/repl/tools/bin/chromium', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
 try {
   for (const route of ['/documentacao', '/en/documentation', '/es/documentacion']) {
     const page = await browser.newPage({ locale: 'pt-BR', viewport: { width: 360, height: 900 }, reducedMotion: 'reduce' });

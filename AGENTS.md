@@ -5,22 +5,20 @@
 Read [current status](docs/project-status.md) and [verification profiles](docs/testing.md).
 The public app is visual-only. Do not reactivate operational routes, account
 flows or financial runtimes to make historical tests pass.
-During final repository preparation, leave automatic Git synchronization paused.
-Do not commit, push, resume synchronization or publish without the owner's
-separate instruction. Older normal-task synchronization clauses below do not
-override this boundary. Use the current-product profile and report reference
+Do not commit, push, deploy or publish without the owner's separate
+instruction; pushes to `main` deploy to production through Vercel. Use the current-product profile and report reference
 exclusions and failures explicitly.
 
 ## Inspect before implementing
 
-1. Read this file, `replit.md`, `docs/architecture.md` and relevant decisions in
+1. Read this file, `PROJECT.md`, `docs/architecture.md` and relevant decisions in
    `docs/decisions/`. Canonical documents take precedence over stale summaries.
 2. Identify the owning domain and existing implementation before creating one.
 3. Check permitted dependencies, data ownership, authorization and sources of truth.
 4. Define proportional acceptance criteria and tests, including failure behavior.
 5. Record and justify architectural evolution before adding parallel structure.
 
-`replit.md` holds product scope; this file defines development procedure;
+`PROJECT.md` holds product scope; this file defines development procedure;
 architecture and decisions define technical boundaries. Resolve conflicts
 explicitly, never through silent exceptions.
 
@@ -113,16 +111,8 @@ reconciliation confirms.**
 - Update affected contract/UI/documentation; never hand-edit generated clients.
 - Run `pnpm check:architecture` and proportional checks; broad delivery uses `pnpm quality`.
 - Verify authorization, calculation, idempotency, concurrency and recovery when affected.
-- Keep the repository private. Preserve history and existing license decisions.
-  Never commit secrets/private data or credentials in remote URLs.
-- Complete the coordinated task step after every AI development task:
-
-  ```sh
-  pnpm sync:once -- "Concise English summary of the actual completed change"
-  pnpm sync:status
-  ```
-
-- Use the existing watcher/lock. Do not add competing auto-commit scripts.
+- This repository is public. Preserve existing license decisions.
+  Never commit secrets/private data, database dumps or credentials in remote URLs.
 - Verify the remote advertises the resulting commit and report its hash/branch.
   A local commit alone must never be described as synchronized.
 - Explicitly report pending connection, failed checks/push, conflicts or pause.
@@ -131,4 +121,4 @@ reconciliation confirms.**
   automatically resolve divergence or merge/deploy into production.
 
 Additional references: `CONTRIBUTING.md`, `SECURITY.md`, `threat_model.md`,
-`docs/development.md`, `docs/github-sync.md`.
+`docs/development.md`, `docs/deployment-vercel.md`.

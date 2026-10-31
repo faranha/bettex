@@ -4,7 +4,7 @@ import type { ErrorRequestHandler, RequestHandler } from "express";
 export function trustedOrigins(env: NodeJS.ProcessEnv = process.env) {
   const origins = new Set(["https://bettex.ai", "https://www.bettex.ai"]);
   if (env.NODE_ENV !== "production") {
-    for (const host of [env.REPLIT_DEV_DOMAIN, ...(env.REPLIT_DOMAINS?.split(",") ?? [])]) {
+    for (const host of env.EXTRA_TRUSTED_HOSTS?.split(",").map(value => value.trim()) ?? []) {
       if (host && /^[a-z0-9.-]+$/i.test(host)) origins.add(`https://${host}`);
     }
     for (const host of ["localhost", "127.0.0.1"]) {

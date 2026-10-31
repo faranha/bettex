@@ -12,7 +12,7 @@
     "quality:current": "node scripts/validate-development.mjs --scope current",
     "check:repository-docs": "node scripts/check-repository-docs.mjs",
     "lint": "eslint artifacts/api-server/src artifacts/bettex-site/src scripts --quiet",
-    "check:secrets": "python scripts/check-secrets.py",
+    "check:secrets": "python3 scripts/check-secrets.py",
     "check:dependencies": "node scripts/check-dependencies.mjs",
     "check:security": "pnpm lint && pnpm check:secrets && pnpm check:dependencies && pnpm --filter @workspace/api-server run check:security",
     "check:architecture": "node scripts/check-architecture.mjs && node --test scripts/check-architecture.test.mjs",
@@ -25,12 +25,13 @@
     "sync:check": "pnpm lint && pnpm check:architecture && pnpm sync:test && pnpm typecheck",
     "dev:local": "node --env-file-if-exists=.env scripts/dev-local.mjs",
     "db:prepare": "pnpm --filter @workspace/db push",
-    "docs:sync": "python tools/technical-docs/cli.py sync",
-    "docs:query": "python tools/technical-docs/cli.py query",
-    "docs:status": "python tools/technical-docs/cli.py status",
-    "docs:inventory": "python tools/technical-docs/cli.py inventory",
-    "docs:changes": "python tools/technical-docs/cli.py changes",
-    "check:technical-docs": "python -m unittest discover -s tools/technical-docs/tests -v"
+    "docs:sync": "python3 tools/technical-docs/cli.py sync",
+    "docs:query": "python3 tools/technical-docs/cli.py query",
+    "docs:status": "python3 tools/technical-docs/cli.py status",
+    "docs:inventory": "python3 tools/technical-docs/cli.py inventory",
+    "docs:changes": "python3 tools/technical-docs/cli.py changes",
+    "check:technical-docs": "python3 -m unittest discover -s tools/technical-docs/tests -v",
+    "build:vercel": "bash scripts/vercel/build.sh"
   },
   "private": true,
   "engines": {

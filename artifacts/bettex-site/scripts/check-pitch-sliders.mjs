@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { chromium } from 'playwright-core';
 
 const base = (process.env.PITCH_RESEARCH_URL ?? `https://${process.env.REPLIT_DEV_DOMAIN}`).replace(/\/$/, '');
-const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? '/repl/tools/bin/chromium', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
 const ids = ['publico-mercado-slider', 'problema-slider', 'emprego-ia-slider', 'ambiente-externo-slider'];
 const locales = { pt: '/pitch', en: '/en/pitch', es: '/es/pitch' };
 let panelsChecked = 0;

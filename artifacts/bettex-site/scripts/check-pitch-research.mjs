@@ -9,7 +9,7 @@ import { research } from './pitch-research-expectations.mjs';
 const base = process.env.PITCH_RESEARCH_URL
   ?? (process.env.REPLIT_DEV_DOMAIN ? `https://${process.env.REPLIT_DEV_DOMAIN}` : null);
 assert(base, 'Set PITCH_RESEARCH_URL to the running site URL (including its base path).');
-const executablePath = process.env.CHROMIUM_PATH ?? '/repl/tools/bin/chromium';
+const executablePath = process.env.CHROMIUM_PATH || undefined;
 assert(existsSync(executablePath), 'Chromium not found. Set CHROMIUM_PATH to an installed Chromium executable.');
 const browser = await chromium.launch({ executablePath, args: ['--no-sandbox'] });
 const normalize = text => text.replace(/\s+/g, ' ').trim();

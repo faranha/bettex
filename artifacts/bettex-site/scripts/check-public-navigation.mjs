@@ -5,7 +5,7 @@ import { chromium } from 'playwright-core';
 const canonical = JSON.parse(readFileSync(new URL('./fixtures/documentation-synthesis-baseline.json', import.meta.url))).canonicalPublicPages;
 assert.equal(canonical.approved, true);
 const base = (process.env.PUBLIC_NAVIGATION_URL ?? `https://${process.env.REPLIT_DEV_DOMAIN}`).replace(/\/$/, '');
-const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? '/repl/tools/bin/chromium', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
 let anchorsChecked = 0;
 let scenario = 0;
 
