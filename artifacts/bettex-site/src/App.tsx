@@ -91,7 +91,7 @@ function MainLinks({ className, onNavigate, uniform = false }: { className: stri
   return <>{mainLinks.map(({ label, href }) => {
     const active = location === href || (href === '/documentacao' && ['/documentation', '/documentacion'].includes(location));
     const appLink = href === '/app';
-    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`site-page-link ${appLink ? 'site-page-link--app' : uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{appLink && /^\/(documentacao|documentation|documentacion)\/?$/.test(location) ? t('ABRIR APP') : label}{appLink && <ArrowRight size={16} aria-hidden="true" />}</a>;
+    return <a key={href} {...linkProps} href={`${BASE_PATH}${href}`} onClick={onNavigate} aria-current={active ? 'page' : undefined} data-testid={`link-main-${label.toLowerCase()}`} className={`site-page-link ${appLink ? 'site-page-link--app' : uniform ? 'site-page-link--tile' : 'site-page-link--tab'} ${className}`}>{label}{appLink && <ArrowRight size={16} aria-hidden="true" />}</a>;
   })}</>;
 }
 
@@ -162,7 +162,7 @@ function SiteHeader() {
         <MainLinks className="" />
       </nav>
       <div className="hidden xl:flex"><LanguageSelector /></div>
-      <a href={localizedUrl(`${BASE_PATH}/app`)} data-testid="launch-app-mobile" className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md border border-[#F2B632] bg-[#F2B632] px-3 max-[399px]:px-2 text-[11px] font-extrabold text-[#070B1F] hover:bg-[#FFD16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AAC3EE] xl:hidden">{t(/^\/(documentacao|documentation|documentacion)\/?$/.test(location) ? 'ABRIR APP' : 'ABRIR DEMO')}<ArrowRight size={14} aria-hidden="true" className="max-[399px]:hidden" /></a>
+      <a href={localizedUrl(`${BASE_PATH}/app`)} data-testid="launch-app-mobile" className="ml-auto inline-flex min-h-11 shrink-0 items-center gap-2 rounded-md border border-[#F2B632] bg-[#F2B632] px-3 max-[399px]:px-2 text-[11px] font-extrabold text-[#070B1F] hover:bg-[#FFD16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#AAC3EE] xl:hidden">{t('ABRIR DEMO')}<ArrowRight size={14} aria-hidden="true" className="max-[399px]:hidden" /></a>
       <button type="button" data-testid="public-menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#2B59FF]/60 xl:hidden">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
     </div>
     <div inert={menuOpen}>
