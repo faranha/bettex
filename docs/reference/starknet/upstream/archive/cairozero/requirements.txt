@@ -52,7 +52,7 @@ pluggy==1.0.0
 prometheus-client==0.16.0
 protobuf==4.22.3
 pycryptodome==3.17
-Pygments==2.15.1
+Pygments==2.20.0
 pyrsistent==0.19.3
 pytest-asyncio==0.21.0
 pytest-profiling==1.7.0
