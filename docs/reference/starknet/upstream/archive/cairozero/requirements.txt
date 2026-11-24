@@ -50,7 +50,7 @@ pip==23.0.1
 pipdeptree==2.7.0
 pluggy==1.0.0
 prometheus-client==0.16.0
-protobuf==4.22.3
+protobuf==5.29.6
 pycryptodome==3.17
 Pygments==2.15.1
 pyrsistent==0.19.3
